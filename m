@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA820CA0FF0
-	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Sep 2025 17:28:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 677BECA1005
+	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Sep 2025 19:50:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WuZkhbByow1+GbymEmAzHyeuXFyCikBiFDosOd2pNHg=; b=rKwI3w3Gg5/Jr+
-	zaNEjYueGciK3+wZj8g0xBg8kPGZgao5ttyg1CbwLqafPHo3i2swG14liz7MjrqhUlAk8K5t3qJBu
-	zhTnS/m3/GJj8Tq4k98t/1s18hDXvBd5I5OcjL4t2SzLd96znJzQZBVqrSJVtVPv2Tu/zR7mI60kS
-	fE9u4r4J8QkBwmk2hl1c1utzVgvuhurg5KAVVEb77TqDqC8y6Gusxch+GqurotCBhg/mINzTekW0R
-	an40NqRpA74MQoiRcR1/d1Yy+UlRbO1145cvv+xQfjwBmHtLxNkJO08q1QhkJc7P7kkt9NyywLy8+
-	PYxHbL/o4ff3TFI6lq+w==;
+	List-Owner; bh=UIOFllty7qLsf7iwkp2qmR5ODy2cmCsv2HmRi02sevA=; b=cbbaiOyYQ/lwry
+	kF1sVqzg91S6o1jXpmz7y9eoztzay4bvnF3yFCcLpttlZ9iuIHsez1xDyD069eqBvr/IaXC9Eyr4N
+	ESvxiuaVTE2U1wAHFbXQZz30K0CDcOfCZ2Rmlt8l6v8qRJnhOjLq06EoYwrz+wQLbmYYEAAHVzlhi
+	cIDC3lJN9NcKjoYDfTBELBKdilFotglZbXfRAJ8QbeDScMvaieZyLkCPr/ozAnFUpw77M/i07/psj
+	oTJ0LJkfBm77uIVB+kmB9UNyKTwOsGEYBQgtfnnGlElfitzI2ggZYUMd2ZJqqrHwMUs4u9RThMb+s
+	GwlimEfkFWutV0XM/O0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ut8Kg-0000000DSSZ-2NN5;
-	Mon, 01 Sep 2025 17:28:42 +0000
-Received: from chumsalmon.baetis.net ([209.222.21.150])
+	id 1utAYD-0000000Dhk0-3qb3;
+	Mon, 01 Sep 2025 19:50:49 +0000
+Received: from chumsalmon.baetis.net ([2001:19f0:5:5b58:5400:5ff:fe17:97e8])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ut5BC-0000000Cnva-1gt4;
-	Mon, 01 Sep 2025 14:06:43 +0000
+	id 1ut7LL-0000000DFmS-2fXk;
+	Mon, 01 Sep 2025 16:25:21 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=tahomasoft.com;
-	s=default; t=1756735600;
-	bh=1XxOBuK1jPvFLidfH5rRW5Wuh7M+R0jjZsE4m5PIeq0=;
+	s=default; t=1756743917;
+	bh=oqLCMPmrU2maHdetgpMqd9TGV9xAUoi5L40b0QiYVxA=;
 	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=lWVjHllmo3jYTaed4r5Q/1QLUNfK53lNVMW4umuMpR29lSr9OFwE8VUOSdcp+25kz
-	 6ipWcMn8xufiYrbZV7p+dV11ieWCHY9PdooMt3sNIOqzX4Q2t5VJCSmB+fVZ6tgZud
-	 mLy9M8QzyBQVCihEA4ojHSskIBmvdvr4pPJ+6sISE6F0Hps5FcV2DQgDMDlNMCHqmQ
-	 JB5rlk/WDMW2PDy3j7PCs8bvh0JMEgWPYTG8ekRtzYajdXIUi/MJW3Uf36QE74Y8/M
-	 FxnjSEGENaSnLpRKa314H9JR8z/2wxhkcvakZLnbtTs9kcsB4xNd1nBZDhGivW8Xe2
-	 IWM0j6cCKYAzw==
+	b=ogtN0J2iBrpFvd9fpGuxFCpXqzimN4Jzc7Oc9ChsgDSPWWHfNYU2+v/hTf7/Wd7mE
+	 1DKhBgSbwsYPbzlch9TIO+hYyGOfkpQ7f4T7QVkScYgpDl7N952kZfdvkPWmcD7yjo
+	 Rjc6cw2UFjgE+sqPTAslomrLimjKm/Cu4Ix0BnrZ50e744FcTnWCd5er4yAHXLwVp7
+	 oy4tzC7XIqjhJupDPk+rRhfqUsSzMgqEPlsX3vZCxSKkNNwZX5MPYZ1ogWr9ofZj/I
+	 YhZZfXSb0SgQLeNUm6FAfYbVHdClyRLXQSQRmd3Zk3okp1ZR6xVos2S+X+chZ9NIHn
+	 OMX3ebi8PaiuA==
 Received: from WahpenayoPeak.tahoma.link (unknown [IPv6:2600:4040:50be:5a04:892f:ee51:308e:70d0])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by chumsalmon.baetis.net (Postfix) with ESMTPSA id 4AEFD27E468;
-	Mon,  1 Sep 2025 14:06:40 +0000 (UTC)
-Date: Mon, 1 Sep 2025 10:06:39 -0400
+	by chumsalmon.baetis.net (Postfix) with ESMTPSA id 7334C27E494;
+	Mon,  1 Sep 2025 16:25:17 +0000 (UTC)
+Date: Mon, 1 Sep 2025 12:25:16 -0400
 From: Erik Beck <xunil@tahomasoft.com>
 To: Chukun Pan <amadeus@jmu.edu.cn>
 Cc: conor+dt@kernel.org, devicetree@vger.kernel.org, heiko@sntech.de,
@@ -50,7 +50,7 @@ Cc: conor+dt@kernel.org, devicetree@vger.kernel.org, heiko@sntech.de,
  linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Andrew
  Lunn <andrew@lunn.ch>
 Subject: Re: [PATCH 3/4] arm64: dts: rockchip: Add HINLINK H68K
-Message-ID: <20250901100639.234ba07b.xunil@tahomasoft.com>
+Message-ID: <20250901122516.775b6e3e.xunil@tahomasoft.com>
 In-Reply-To: <20250901062437.780cc71a.xunil@tahomasoft.com>
 References: <20250830171409.592c1f63.xunil@tahomasoft.com>
  <20250901070008.68662-1-amadeus@jmu.edu.cn>
@@ -59,8 +59,8 @@ Organization: Tahoma Soft
 X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250901_070642_687665_8922B78D 
-X-CRM114-Status: GOOD (  22.83  )
+X-CRM114-CacheID: sfid-20250901_092519_840162_37E64067 
+X-CRM114-Status: GOOD (  21.86  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,8 +77,11 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 1 Sep 2025 06:24:37 -0400
-Erik Beck <xunil@tahomasoft.com> wrote:
+
+Resending due to mailer error.
+
+>>>> On Mon, 1 Sep 2025 06:24:37 -0400
+>>>> Erik Beck <xunil@tahomasoft.com> wrote:
 
 > On Mon,  1 Sep 2025 15:00:08 +0800
 > Chukun Pan <amadeus@jmu.edu.cn> wrote:
