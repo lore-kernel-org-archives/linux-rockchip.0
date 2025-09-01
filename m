@@ -4,59 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59A9BCA1002
-	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Sep 2025 11:05:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5960ECA0FF0
+	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Sep 2025 12:07:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8nU/OVOBdB1bc7KEsmMhsh66qGzHr2ajmD8ROb/3T7c=; b=2RYMn+Vqdr1wYl
-	2X6i8EaUmQhz/7DWhxj6UrhMm9ybIUcLwacKBGVd48bLmhzrCLzoVn8FvLA9sgItJ61+9vFyUiAwl
-	Uoe51cl11CFr9072OTvVc6ghb3OgtF6/7/ui54RACdGQsgqw510rOEb8d7kLRgVWApno0K4/W9k1H
-	jzpLuH+NMUnAa2q0VwgvMHk7D1DSEjo6CLNNu5cUhSNqVRT6k7TAyuMdTD8Mcsv7BZJgXXQZjtFl4
-	F734QMGwmWgaJZf5u5NZeju5UlFQqC5/KYQ5dMZJbXMXy6e9zfhX13g+PfQOulswtA3DVz/QDR1Tm
-	cyAVHAWMjqpjJ1fXqnSQ==;
+	List-Owner; bh=+VLNGHW195pC0L3UUfaDMBEnsRHxvzWVGG+eVGXNbMs=; b=NiAyTQ1RNwekp/
+	dp40YYWuUOZ+8gI/A2A4srXXsrlJHSFMQ3AMpABfSUe+k+19ZSEcQvaYT4gb9x2pBXZaIWhh3wBjG
+	QcBkj+4oiSVuUzJXS2Uqx5yWUdDTdV9A/P8K8hV4jV7o151oZyfwq54ZbFXJLyronBnfsv8IzIhKl
+	kBMQYOfJGL2ILkcgfBfVMehCBKe53IPcLXAenmLwMxlFSa/qWH/9OcjTbUOF2xdE2idFuE6KQi44a
+	RhH4Qert1TC21Oz6lhQL3lJE4VNHl8ww4mFzxRg4ix9thQRmt6hLYXFGogdqgcmpFU7lyrtbZQdAW
+	Ia/cNbgBZ7R5lSojyq0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ut2LM-0000000BzR3-24j8;
-	Mon, 01 Sep 2025 11:05:00 +0000
-Received: from mail-m49197.qiye.163.com ([45.254.49.197])
+	id 1ut3K5-0000000CCUT-3zZo;
+	Mon, 01 Sep 2025 12:07:45 +0000
+Received: from chumsalmon.baetis.net ([209.222.21.150])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ut1L7-0000000Bpku-0Nsu;
-	Mon, 01 Sep 2025 10:00:42 +0000
-Received: from localhost.localdomain (unknown [119.122.212.9])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 2148c25b2;
-	Mon, 1 Sep 2025 18:00:38 +0800 (GMT+08:00)
-From: Chukun Pan <amadeus@jmu.edu.cn>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Chukun Pan <amadeus@jmu.edu.cn>,
-	FUKAUMI Naoki <naoki@radxa.com>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org
-Subject: [PATCH v3 3/3] arm64: dts: rockchip: update pinctrl names for Radxa E52C
-Date: Mon,  1 Sep 2025 18:00:27 +0800
-Message-Id: <20250901100027.164594-4-amadeus@jmu.edu.cn>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20250901100027.164594-1-amadeus@jmu.edu.cn>
-References: <20250901100027.164594-1-amadeus@jmu.edu.cn>
+	id 1ut1iK-0000000BtwX-2Ee8;
+	Mon, 01 Sep 2025 10:24:41 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=tahomasoft.com;
+	s=default; t=1756722278;
+	bh=u7YCD9fr0ldbGVoQNxWglQgoPoPk6uWhscfR4YAgSE4=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=MEkLwsitD11xl2cD3/PnCGFmrbkuPWWYg4uyCHww4j27rrZgEcRG4VFMr+pv2ypYA
+	 VSRMs4cWKiZhYipgzNh+khUe1OTde+q8WVLOTwD+ZANLp53bn7pyUpt6JuWozpiCIo
+	 vD1TmzSPwLH9QsS3oJAGZh5EDylfAZuEVDFYobhliLoTJ0jbMUSi9BG3LBaYOOhbLZ
+	 sjPu1leMqMcNo5Y3NsHUMs2OoVDlB5SlhozYqdP0vxsT6wEtyDMON2R+sm8kqq3mlR
+	 1HOEdvMUQbNwqq10W2tLiLDfCt62c/pWcRnocMNwU++Fzmqsov5d1zLYHnEmMYv/BE
+	 WRqoXtBZ9waRQ==
+Received: from WahpenayoPeak.tahoma.link (unknown [IPv6:2600:4040:50be:5a04:19eb:3ff6:89a2:9ef0])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature ECDSA (prime256v1) server-digest SHA256)
+	(No client certificate requested)
+	by chumsalmon.baetis.net (Postfix) with ESMTPSA id A49DF27E468;
+	Mon,  1 Sep 2025 10:24:38 +0000 (UTC)
+Date: Mon, 1 Sep 2025 06:24:37 -0400
+From: Erik Beck <xunil@tahomasoft.com>
+To: Chukun Pan <amadeus@jmu.edu.cn>
+Cc: conor+dt@kernel.org, devicetree@vger.kernel.org, heiko@sntech.de,
+ krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Andrew
+ Lunn <andrew@lunn.ch>
+Subject: Re: [PATCH 3/4] arm64: dts: rockchip: Add HINLINK H68K
+Message-ID: <20250901062437.780cc71a.xunil@tahomasoft.com>
+In-Reply-To: <20250901070008.68662-1-amadeus@jmu.edu.cn>
+References: <20250830171409.592c1f63.xunil@tahomasoft.com>
+	<20250901070008.68662-1-amadeus@jmu.edu.cn>
+Organization: Tahoma Soft
+X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-X-HM-Tid: 0a9904b8b73803a2kunmfa64e5773746df
-X-HM-MType: 10
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkaGUpKVkNLHkhLHxgaGUoeTFYeHw5VEwETFhoSFy
-	QUDg9ZV1kYEgtZQVlKSkJVSklJVUlKSVVCWVdZFhoPEhUdFFlBWU9LSFVKS0hKTkxOVUpLS1VKQk
-	tLWQY+
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250901_030041_296290_E05D1DEE 
-X-CRM114-Status: UNSURE (   8.86  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250901_032440_704032_7C47DBA5 
+X-CRM114-Status: GOOD (  18.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,77 +76,79 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Updated the pinctrl names of the user key and power LED according
-to the schematic. Also updated the nodenames of other pinctrls.
+On Mon,  1 Sep 2025 15:00:08 +0800
+Chukun Pan <amadeus@jmu.edu.cn> wrote:
 
-Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
----
- arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dts | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+> Hi,
+> 
+> > Please change phy-mode here to "rgmii". This change will yield an
+> > ethernet speed throughput change of a factor of 100+.   
+> 
+> > Same as above: Please change phy-mode here to "rgmii". This change
+> > will yield an ethernet speed throughput change of a factor of 100+.   
+> 
+> This doesn't make sense. When I first submitted it to coolsnowwolf/lede
+> in 2022, I used "rgmii-id" as the phy-mode, and it worked:
+> https://github.com/coolsnowwolf/lede/blob/master/target/linux/rockchip/files/arch/arm64/boot/dts/rockchip/rk3568-opc-h68k.dts#L24
+> 
+> Are you experiencing issues with both eth0 and eth1 or just one of them?
+> Are you using the generic-rk3568 target for U-Boot?
+> 
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dts b/arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dts
-index 302a30e423ad..5d000b9e49a8 100644
---- a/arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dts
-@@ -42,7 +42,7 @@ button-0 {
- 	keys-1 {
- 		compatible = "gpio-keys";
- 		pinctrl-names = "default";
--		pinctrl-0 = <&btn_0>;
-+		pinctrl-0 = <&pwm15_ir_m1>;
- 
- 		button-1 {
- 			label = "User";
-@@ -55,7 +55,7 @@ button-1 {
- 	leds-0 {
- 		compatible = "gpio-leds";
- 		pinctrl-names = "default";
--		pinctrl-0 = <&led_0>;
-+		pinctrl-0 = <&power_led>;
- 
- 		led-0 {
- 			color = <LED_COLOR_ID_GREEN>;
-@@ -306,13 +306,13 @@ &pcie2x1l2 {
- 
- &pinctrl {
- 	keys {
--		btn_0: button-0 {
-+		pwm15_ir_m1: pwm15-ir-m1 {
- 			rockchip,pins = <4 RK_PB3 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
- 
- 	leds {
--		led_0: led-0 {
-+		power_led: power-led {
- 			rockchip,pins = <3 RK_PC4 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
-@@ -328,19 +328,19 @@ pcie20x1_2_perstn_m0: pcie-2 {
- 	};
- 
- 	regulators {
--		vcc_5v0_pwren_h: regulator-5v0-1 {
-+		vcc_5v0_pwren_h: vcc-5v0-pwren-h {
- 			rockchip,pins = <4 RK_PA3 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
- 
- 	rtc {
--		rtc_int_l: rtc-0 {
-+		rtc_int_l: rtc-int-l {
- 			rockchip,pins = <0 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
- 
- 	usb {
--		usb_otg_pwren_h: regulator-5v0-0 {
-+		usb_otg_pwren_h: usb-otg-pwren-h {
- 			rockchip,pins = <0 RK_PD4 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
--- 
-2.25.1
+Hi Chukun, thanks for your response. 
+
+At Andrew Lunn's suggestion, I'm doing
+more granular and rigorous testing, now using iperf3. I'll post more details
+of results here after I retest a couple of scenarios. 
+
+However, I will report now that so far, I'm getting better (faster) and more
+consistent results using iperf3.
+
+~Erik
+
+> I can't reproduce your problem in my test.
+> 
+> eth0/gmac1 (as lan):
+> root@OpenWrt:~# iperf3 -c 192.168.1.100
+> Connecting to host 192.168.1.100, port 5201
+> [ ID] Interval           Transfer     Bitrate         Retr
+> [  5]   0.00-10.00  sec  1.10 GBytes   942 Mbits/sec   29            sender
+> [  5]   0.00-10.04  sec  1.10 GBytes   936 Mbits/sec
+> receiver
+> 
+> root@OpenWrt:~# iperf3 -c 192.168.1.100 -R
+> Connecting to host 192.168.1.100, port 5201
+> Reverse mode, remote host 192.168.1.100 is sending
+> [ ID] Interval           Transfer     Bitrate         Retr
+> [  5]   0.00-10.04  sec  1.10 GBytes   939 Mbits/sec    1            sender
+> [  5]   0.00-10.00  sec  1.10 GBytes   941 Mbits/sec
+> receiver
+> 
+> eth1/gmac0 (as wan):
+> root@OpenWrt:~# iperf3 -c 192.168.0.2 -P 4
+> Connecting to host 192.168.0.2, port 5201
+> [ ID] Interval           Transfer     Bitrate         Retr
+> [SUM]   0.00-10.00  sec  1.10 GBytes   945 Mbits/sec  1191
+> sender [SUM]   0.00-10.05  sec  1.09 GBytes   935 Mbits/sec
+>  receiver
+> 
+> root@OpenWrt:~# iperf3 -c 192.168.0.2 -R
+> Connecting to host 192.168.0.2, port 5201
+> Reverse mode, remote host 192.168.0.2 is sending
+> [ ID] Interval           Transfer     Bitrate         Retr
+> [  5]   0.00-10.06  sec  1.10 GBytes   939 Mbits/sec    6            sender
+> [  5]   0.00-10.00  sec  1.10 GBytes   941 Mbits/sec
+> receiver
+> 
+> --
+> 2.25.1
+> 
+> 
+> 
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
 
 _______________________________________________
