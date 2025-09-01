@@ -4,75 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8332CA0FFD
-	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Sep 2025 07:29:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 801C7CA0FF0
+	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Sep 2025 07:43:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NhW+PNfRdPF05PE6iuwsFGYTo/Y8ZV8XncOmJBgNmTY=; b=bBVRKt1Zbbwn1dnd90JxkeGP+H
-	qDo5c2A2X/3NeOrwUlFNXPfMUIkMvoyHd15NkpprMVX92IgCIfY9vUzjct+4BoZJCJ+bujxAfWywJ
-	ON4usV5WwjOhONY+XQ2xJhB8JTSOjWP5uvt2QrnZpaLNaPGyQbrqI6lXKTVz0Ad4Id9yHNuO7N6th
-	aRcnyHsarPCvgVYMDlSTPiwL0Pz9ariALM7sRvZe6OTzWovO50j84Aeqjwa+MD8A+9BOJ+PejQNie
-	e4FJVw8opzRIa3nfvvAWBae0i77DUFNx58Gsag5cGVexKA1fTPDzlBfmmm9sRoxw6sF9KaGQzxK15
-	DhKx/yxA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=f0QqugnoMYpB2/GROJdJPkrNsTaWPPk8FUpxzgmqQDY=; b=CFQsITwxKg4N4q
+	xVRYsXILnSnkpZ/pwk83rl0fwsEE5UWdgdLJcJ/WrH4yQayaj5cOItbI79KI4lqo4SJTKL98ycQB6
+	xZ8CVknyL5jlZjntZGfeaAFKPxmn5KTCYlTqB67sstGDNuYMRTmhTngdzH1XkB7OUDT9Iyoon6TWo
+	Ogmuca4LmNBmc9lgjYpeLbJKCMly3qDaum9G8+TgUK8o7oqk3sppqvCfodBbw7Sr045LVFG+XcW31
+	ziA5TCo4kxetZLuRe2JFrDb/OqoWjjL0VJZcr3/NsJu1QmxQKsTanXUgDrqY0PTgu0tey0NkuORIJ
+	0dNGAqz8Azb5qu3tcq6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1usyyd-0000000BRG9-2mk7;
-	Mon, 01 Sep 2025 07:29:19 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1uszC2-0000000BTF3-0SHm;
+	Mon, 01 Sep 2025 07:43:10 +0000
+Received: from mail-m49198.qiye.163.com ([45.254.49.198])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1usyQo-0000000BNHS-0bD0;
-	Mon, 01 Sep 2025 06:54:23 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 8B6B04467E;
-	Mon,  1 Sep 2025 06:54:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EDC11C4AF0C;
-	Mon,  1 Sep 2025 06:54:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1756709661;
-	bh=fwrdXGVjUYTBQheWc/IsdqXrl6C9veTKc/wEeMzy6Ro=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=LmFUTpLl5iNLL2/TUwx1oABydVV7GBecXV4IgcoopSl28MYX7ugia5dDbWbet1kRl
-	 2cUHjwsW3S1ULyP/3pVqmTKsG83ZwlsxcbqtcoS+Ri4DqcNDsJfc5SRP4tYq2CRoF6
-	 PIv881LCWriz19Xc0NTpcm53tr9N6JTq6TOgM1EX+vSkoTNFJkBm2apRhZs+a6qXnw
-	 SJE+f2KobYNeXxhWHfGsDH23e5HjX092guokAQUjSCOhALU8BWA2+TOe6hrmoORmJd
-	 LVmQpsWHJLRV97+Xaco5MOtBzfHz0xWnXt9F8njQLdoj1v42qRayegs8nHKmE2UEGC
-	 7NppgdOlpgS9A==
-Date: Mon, 1 Sep 2025 08:54:18 +0200
-From: Maxime Ripard <mripard@kernel.org>
-To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
-	Simona Vetter <simona@ffwll.ch>, Sandy Huang <hjc@rock-chips.com>, 
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, Chen-Yu Tsai <wens@csie.org>, 
-	Samuel Holland <samuel@sholland.org>, Dave Stevenson <dave.stevenson@raspberrypi.com>, 
-	=?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, 
-	Liu Ying <victor.liu@nxp.com>, Rob Clark <robin.clark@oss.qualcomm.com>, 
-	Dmitry Baryshkov <lumag@kernel.org>, Abhinav Kumar <abhinav.kumar@linux.dev>, 
-	Jessica Zhang <jessica.zhang@oss.qualcomm.com>, Sean Paul <sean@poorly.run>, 
-	Marijn Suijten <marijn.suijten@somainline.org>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, 
-	linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org
-Subject: Re: [PATCH v2 1/8] drm/connector: let drivers declare infoframes as
- unsupported
-Message-ID: <20250901-illustrious-dark-kagu-f4ef76@houat>
-References: <20250819-drm-limit-infoframes-v2-0-7595dda24fbd@oss.qualcomm.com>
- <20250819-drm-limit-infoframes-v2-1-7595dda24fbd@oss.qualcomm.com>
- <20250820-artichoke-silkworm-of-election-521b5e@houat>
- <v7w7xkefm6ap7delx7wsvxmc76fwptqhe4ehokzfh4baueb7hr@acrx36exv42v>
- <20250827-adorable-ocelot-of-adventure-ba88b7@houat>
- <jrvjvayhjczgb4yx3xshbv3e6ndzkmb7uu3ynoes2maniwjg37@hamxu5mzqmf7>
+	id 1usyWc-0000000BOD5-1HAp;
+	Mon, 01 Sep 2025 07:00:25 +0000
+Received: from amadeus-Vostro-3710.lan (unknown [119.122.212.9])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 21418c670;
+	Mon, 1 Sep 2025 15:00:11 +0800 (GMT+08:00)
+From: Chukun Pan <amadeus@jmu.edu.cn>
+To: xunil@tahomasoft.com
+Cc: amadeus@jmu.edu.cn,
+	conor+dt@kernel.org,
+	devicetree@vger.kernel.org,
+	heiko@sntech.de,
+	krzk+dt@kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 3/4] arm64: dts: rockchip: Add HINLINK H68K
+Date: Mon,  1 Sep 2025 15:00:08 +0800
+Message-Id: <20250901070008.68662-1-amadeus@jmu.edu.cn>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20250830171409.592c1f63.xunil@tahomasoft.com>
+References: <20250830171409.592c1f63.xunil@tahomasoft.com>
 MIME-Version: 1.0
-In-Reply-To: <jrvjvayhjczgb4yx3xshbv3e6ndzkmb7uu3ynoes2maniwjg37@hamxu5mzqmf7>
+X-HM-Tid: 0a99041382c703a2kunm1c90e51f35d11a
+X-HM-MType: 10
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkZSR9DVh1CSB9KHRlNSRhNTlYeHw5VEwETFhoSFy
+	QUDg9ZV1kYEgtZQVlKSkJVSklJVUlKSVVCWVdZFhoPEhUdFFlBWU9LSFVKS0lIQkhCVUpLS1VKQk
+	tLWQY+
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250831_235422_230347_F5933873 
-X-CRM114-Status: GOOD (  58.17  )
+X-CRM114-CacheID: sfid-20250901_000022_550172_751C216A 
+X-CRM114-Status: UNSURE (   7.79  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,213 +67,62 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3910635157787902190=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi,
 
---===============3910635157787902190==
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="y4s6v275ws7f4w3b"
-Content-Disposition: inline
+> Please change phy-mode here to "rgmii". This change will yield an
+> ethernet speed throughput change of a factor of 100+. 
 
+> Same as above: Please change phy-mode here to "rgmii". This change
+> will yield an ethernet speed throughput change of a factor of 100+. 
 
---y4s6v275ws7f4w3b
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v2 1/8] drm/connector: let drivers declare infoframes as
- unsupported
-MIME-Version: 1.0
+This doesn't make sense. When I first submitted it to coolsnowwolf/lede
+in 2022, I used "rgmii-id" as the phy-mode, and it worked:
+https://github.com/coolsnowwolf/lede/blob/master/target/linux/rockchip/files/arch/arm64/boot/dts/rockchip/rk3568-opc-h68k.dts#L24
 
-On Wed, Aug 27, 2025 at 05:04:53PM +0300, Dmitry Baryshkov wrote:
-> On Wed, Aug 27, 2025 at 09:30:20AM +0200, Maxime Ripard wrote:
-> > On Wed, Aug 20, 2025 at 12:52:44PM +0300, Dmitry Baryshkov wrote:
-> > > On Wed, Aug 20, 2025 at 09:15:36AM +0200, Maxime Ripard wrote:
-> > > > Hi,
-> > > >=20
-> > > > On Tue, Aug 19, 2025 at 09:57:30PM +0300, Dmitry Baryshkov wrote:
-> > > > > Currently DRM framework expects that the HDMI connector driver su=
-pports
-> > > > > all infoframe types: it generates the data as required and calls =
-into
-> > > > > the driver to program all of them, letting the driver to soft-fai=
-l if
-> > > > > the infoframe is unsupported. This has a major drawback on usersp=
-ace
-> > > > > API: the framework also registers debugfs files for all Infoframe=
- types,
-> > > > > possibly surprising the users when infoframe is visible in the de=
-bugfs
-> > > > > file, but it is not visible on the wire.
-> > > > >=20
-> > > > > Let drivers declare that they support only a subset of infoframes,
-> > > > > creating a more consistent interface.
-> > > > >=20
-> > > > > Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.co=
-m>
-> > > >=20
-> > > > I'm not really convinced. Infoframes aren't really something you sh=
-ould
-> > > > ignore, AVI is effectively mandatory, HDMI kind of is too, AUDIO is=
- if
-> > > > audio support is enabled, DRM is mandatory if HDR is used.
-> > >=20
-> > > Nevertheless, sun4i, innohdmi, adv7511, it6263 and rk3066 drivers
-> > > provide support only for the AVI infoframe.
-> >=20
-> > Yes, but it's still something we shouldn't paper over. The spec mandates
-> > it, if drivers want to deviate from it it's something we should warn
-> > about, not silence.
-> >=20
-> > sun4i is a good example, to me at least since I have the doc. The
-> > hardware supports AVI, Audio, ACP, and SPD. HDR isn't supported, so DRM
-> > isn't either. The only missing one is HDMI, but the documentation isn't
-> > the best so it might still be supported. In short, it's a driver issue.
-> >=20
-> > adv7511 supports AVI, Audio, ACP, SPD, ACP, and looks to have a
-> > mechanism to send any infoframe as is. So, again, driver issue.
->=20
-> I've send a patch, enabling SPD and VSI (HDMI) InfoFrames on ADV7511.
->=20
-> >=20
-> > I couldn't find the other datasheet, but I'd be very surprised if it
-> > wasn't the case for these too.
-> >=20
-> > > Some of them can be extended to support other infoframe kinds (e.g.
-> > > ADV7511 has two spare infoframes which can be used for HDMI and SPD).
-> > >=20
-> > > > SPD is indeed optional though.
-> > > >=20
-> > > > So, it's really dynamic in essence, and not really something we sho=
-uld
-> > > > expect drivers to ignore.
-> > > >=20
-> > > > I do acknowledge that a lot of drivers just silently ignore the
-> > > > infoframes they don't support at the moment, which isn't great eith=
-er.
-> > > >=20
-> > > > Maybe we should standardize and document what drivers should do when
-> > > > they don't support a given infoframe type?
-> > >=20
-> > > The chips might be generating infoframes internally. This series was
-> > > triggered by LT9611UXC, which does all HDMI work under the hood in the
-> > > firmware. See [1]. The series I posted hooks HDMI audio directly into
-> > > the bridge driver, but I'd really prefer to be able to use
-> > > drm_atomic_helper_connector_hdmi_hotplug(), especially if I ever get =
-to
-> > > implementing CEC support for it.
-> > >=20
-> > > ADV7511 likewise generates audio infoframe without Linux
-> > > help (audio-related fields are programmed, but it's not the
-> > > infoframe itself).
-> >=20
-> > Implementing the write_infoframe hooks as a nop with a comment in those
-> > case is totally reasonable to me.
-> >=20
-> > I'd still like to document that drivers should only return 0 if they
-> > programmed the infoframe, and -ENOTSUPP (and the core logging a warning)
-> > otherwise.
-> >=20
-> > That way, we would be able to differentiate between the legimitate
-> > LT9611UXC case, and the "driver is broken" sun4i (and others) case.
->=20
-> I don't want to end up in a sitation where userspace has a different
-> idea of the InfoFrame being sent than the actual one being present on
-> the wire.
+Are you experiencing issues with both eth0 and eth1 or just one of them?
+Are you using the generic-rk3568 target for U-Boot?
 
-It's not ideal, sure, but also, what's wrong with it? We're doing it
-*all the time*. Modes programmed by userspace are adjusted for the
-hardware, and thus the mode reported by the CRTC turns out different
-than the one actually used in hardware. Audio sampling rates might not
-match exactly what we're doing. The quirks infrastructure disables part
-of the EDID the userspace has access to, etc.
+I can't reproduce your problem in my test.
 
-And all those are under the userspace control, which the infoframes
-aren't.
+eth0/gmac1 (as lan):
+root@OpenWrt:~# iperf3 -c 192.168.1.100
+Connecting to host 192.168.1.100, port 5201
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-10.00  sec  1.10 GBytes   942 Mbits/sec   29            sender
+[  5]   0.00-10.04  sec  1.10 GBytes   936 Mbits/sec                  receiver
 
-> It seems, we need several states per the infoframe:
->=20
-> - Not supported
+root@OpenWrt:~# iperf3 -c 192.168.1.100 -R
+Connecting to host 192.168.1.100, port 5201
+Reverse mode, remote host 192.168.1.100 is sending
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-10.04  sec  1.10 GBytes   939 Mbits/sec    1            sender
+[  5]   0.00-10.00  sec  1.10 GBytes   941 Mbits/sec                  receiver
 
-Honestly, I'm not sure we need a state for that one. If that infoframe
-was set by the framework, then the driver must support it. And if it
-wasn't, then there's nothing in debugfs.
+eth1/gmac0 (as wan):
+root@OpenWrt:~# iperf3 -c 192.168.0.2 -P 4
+Connecting to host 192.168.0.2, port 5201
+[ ID] Interval           Transfer     Bitrate         Retr
+[SUM]   0.00-10.00  sec  1.10 GBytes   945 Mbits/sec  1191             sender
+[SUM]   0.00-10.05  sec  1.09 GBytes   935 Mbits/sec                  receiver
 
-> - Autogenerated
+root@OpenWrt:~# iperf3 -c 192.168.0.2 -R
+Connecting to host 192.168.0.2, port 5201
+Reverse mode, remote host 192.168.0.2 is sending
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-10.06  sec  1.10 GBytes   939 Mbits/sec    6            sender
+[  5]   0.00-10.00  sec  1.10 GBytes   941 Mbits/sec                  receiver
 
-Do we have any way to read them back on those?
-
-> - Generated by software
->=20
-> E.g. in case of ADV7511 we can declare that Audio InfofFrame is
-> autogenerated, AVI, HDMI and SPD as 'software-generated' and DRM (HDR)
-> as unsupported. LT9611UXC will declare all (need to check) frame types
-> as auto.
->=20
-> This way we can implement the checks and still keep userspace from
-> having irrelevant data in debugfs.
-
-If the only thing you're after is to prevent inconsistent data in
-userpace for devices that can generate it automatically, then I guess we
-could just implement an (optional) callback to read an infoframe from
-the hardware when reading from debugfs. Would that work?
-
-> I will update my patchset to implement this, but I have another question
-> beforehand: should we just declare VSI support or should it be more exact,
-> specifying that the driver support HVS (00:0c:03), HVFS (c4:5d:d8), etc?
-
-I guess you're talking about HDMI 1.4 Vendor specific Infoframe vs HDMI
-2.0 HF-VSIF here?
-
-If so, the toggle should be HDMI 2.0 support. We'll need that toggle for
-other things anyway (scrambler, YUV420, etc.)
-
-> I'm asking, because e.g. MSM HDMI controller has hardware support for
-> generating HVS frames (but only HVS, the OUI is not programmed, register
-> format doesn't match 1:1 frame contents, etc). I instead ended up using
-> GENERIC0, because it was more flexible (it's like SPARE packets on
-> ADV7511, the contents is being sent as is). However if we ever need to
-> send DRM infoframes, we might need to switch from GENERIC0 to HVS, for
-> the price of being unable to send HVFS frames.
-
-Section 10.2 of the HDMI 2.0 states:
-
-  Transmission of the HF-VSIF by Source Devices is optional unless one (or
-  more) of the features listed in Table 10-1 is active 1. If such features
-  are active, transmission of the HF-VSIF is mandatory.
-
-The features in question being 3d.
-
-So unless you're supporting 3d, suppporting VSI only seems ok to me.
-
-Maxime
-
---y4s6v275ws7f4w3b
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCaLVDFgAKCRAnX84Zoj2+
-dsW/AX0U83PxVz2ZFGRVhJWXbdOSlFJaS3ZJB3hJQHhEvUxAjMDyEmsQtJpab64J
-jlTA8AgBgJFA5ObmVPWx35prpq51wIE1WmPfaEIYnyIy9Nwy/I77gfqMjdFA5fGb
-bQYMz+U6mQ==
-=xcRb
------END PGP SIGNATURE-----
-
---y4s6v275ws7f4w3b--
+--
+2.25.1
 
 
---===============3910635157787902190==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============3910635157787902190==--
-
