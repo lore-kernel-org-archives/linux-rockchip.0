@@ -4,62 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B316CA1002
-	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Sep 2025 23:13:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19D68CA1002
+	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Sep 2025 00:52:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:To:From:Reply-To:Cc:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
+	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iSUtzdkymtArSkKmFRIGqqHVr5MY59pHZy/YUBc5ZEk=; b=bT2ZHk6st381m9
-	fmWBHSMGrBQM0vyoqFyO4GVZw+01pR2ztLExwLndI2iAfYgzbMURnJ9ISEP1MTMMaEEPpU7Fyp5OE
-	SKpwIe1nSLXwWZuWL0omY/5Q4DxzKq6WPySjKNkKLP5975e9RFP3LQuV25HZOHm5cdBosSAnwcdQJ
-	3mwAiCyDSEzleQRryvEvi252eQ8AWzydafOzt8EYDc1QZAR8GdExYyqJF71fr92iTfpSqvsuzM6Hl
-	E1JwIoRB14PeUotveH84tQNnpWkybFNZ/jX2aMttNdvTaiAIq31WmSOAsESxwEIdlJsfZS+6tyjXW
-	M/VXrHnkWYI/4vIXP71g==;
+	List-Owner; bh=6NX7LBetiGkMvLqAfmy2oxuTmD7eDUr4oNDytED7n9k=; b=JxXI9DoTEOZkGR
+	lDwaiBU9X96zDz92x7V7CjokztH1zbqCpPkV+P25I30lsGELDUPhYN1v4mTgqCqOoIJiWNLGuNO2L
+	JtKRI7kqC2bAhPLytB+KNEDIAy+BDyTMJs1KmzE98DkZr9jxSixxctaHkQTXl6169iO0Ga8ThpAPy
+	j8iIy3t4R130KMPUC5Hwik7fHUamObrZ8uoTyMaGpaRHSlsj9NfVeUvpVdNJaoF3v6twgrGzfGIQl
+	0HkMbJvzwKGeomC4TqvKWCY75gFZA4+YHctcmGEqbdwHVSQ5yQE4FWaYvfmDn4AYWOLD6UrnmkbIK
+	75K2HycRYIQlY5x9dk7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utDiD-0000000EFqY-3GhA;
-	Mon, 01 Sep 2025 23:13:21 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1utFGU-0000000EYqV-2jwC;
+	Tue, 02 Sep 2025 00:52:50 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ut80r-0000000DPP4-0JwJ;
-	Mon, 01 Sep 2025 17:08:14 +0000
+	id 1utBez-0000000Dtt8-2d1E;
+	Mon, 01 Sep 2025 21:01:53 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id B30784516A;
-	Mon,  1 Sep 2025 17:08:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DD3B3C4AF09;
-	Mon,  1 Sep 2025 17:08:08 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 0E048601E9;
+	Mon,  1 Sep 2025 21:01:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id A7BB4C4CEF7;
+	Mon,  1 Sep 2025 21:01:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1756746492;
-	bh=Ja93BNF+w9Y+juSkpFLMtct5ihTyu7k3QSDMWQqxw+o=;
-	h=From:To:In-Reply-To:References:Subject:Date:From;
-	b=nqzJr3/kInRF4RAUv1LtECAn7lgX/SE7cXFYTn8hEw81z0y7CsnIczEVggZnPzrIg
-	 37dciELZGe6Jo1Io/agHNcO+ZIsQqH7N2FBabD2rxBOlbP+/LtwIie0cYj+PD0RFXg
-	 tjNgPwwiIITnzkTs8QcVWCdzLhW2Hg15Wk33FoXnY3a2ibPuhl7xnTWydblQ9zsrr0
-	 hg0fk2RIHmQD+qrfs3m/SOsYy+UVzScTbbhjG2434+KRG1hE9entEFp9868HTey0Cs
-	 DmAezIVP+DTrxT/HLiR8vNuIz3ov0xU267maYJL51Y2KvR1n3ISQjBqvKpJD4lNUK9
-	 9CzOfX1aW4XNA==
-From: Vinod Koul <vkoul@kernel.org>
-To: Kishon Vijay Abraham I <kishon@kernel.org>, 
- Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, 
- Geert Uytterhoeven <geert+renesas@glider.be>, 
- Magnus Damm <magnus.damm@gmail.com>, Heiko Stuebner <heiko@sntech.de>, 
- linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org, 
- linux-renesas-soc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, Liao Yuanhong <liaoyuanhong@vivo.com>
-In-Reply-To: <20250828122401.17441-1-liaoyuanhong@vivo.com>
-References: <20250828122401.17441-1-liaoyuanhong@vivo.com>
-Subject: Re: (subset) [PATCH 0/3] phy: Remove redundant ternary operators
-Message-Id: <175674648843.186496.241265078555502799.b4-ty@kernel.org>
-Date: Mon, 01 Sep 2025 22:38:08 +0530
+	s=k20201202; t=1756760512;
+	bh=1sx3B1KICtDjf4DR2eWZu0vSeJzYHOxzQ4xJumzeAtc=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
+	b=XkoWhKMjQB6gbvpKIp/AOEGBepJ0nRjMBF3GTFxzyUOGfcIFueD+Cc9AFgAsMhDeO
+	 0emRqz1xu2gN8aoMwgRDCKJGmI4nJgTCAoCnjH/K7fJ9TkRYOkSDawEaw2iFVu8ax6
+	 o04mXEEjcnW44L/02dN/pn8sWZdGD4puIFf3a0P0vIHyRghAyWztzMPHFsOGNEV3sD
+	 GHSJ2aF/+Vgwb8+7Suxz2QP9teYQpz7ckdr3DDXD6XSnNUlbKUCNQdb3zpN6QkXQGB
+	 cBuo5S/m79+QASQ+XTKHkgnMr53URgN6v5K2VtyNkrFnlLyvtuJPfujwM3tj2D5m9U
+	 HdgxhX9ek0Ipw==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8F57ACA1005;
+	Mon,  1 Sep 2025 21:01:52 +0000 (UTC)
+From: Michael Riesch via B4 Relay <devnull+michael.riesch.collabora.com@kernel.org>
+Date: Mon, 01 Sep 2025 22:47:42 +0200
+Subject: [PATCH v3 1/7] dt-bindings: soc: rockchip: add rk3588 csidphy grf
+ syscon
 MIME-Version: 1.0
-X-Mailer: b4 0.13.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250901_100813_138360_DF98EDA4 
-X-CRM114-Status: UNSURE (   5.79  )
-X-CRM114-Notice: Please train this message.
+Message-Id: <20250616-rk3588-csi-dphy-v3-1-a5ccd5f1f438@collabora.com>
+References: <20250616-rk3588-csi-dphy-v3-0-a5ccd5f1f438@collabora.com>
+In-Reply-To: <20250616-rk3588-csi-dphy-v3-0-a5ccd5f1f438@collabora.com>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Kever Yang <kever.yang@rock-chips.com>, 
+ Jagan Teki <jagan@amarulasolutions.com>, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>, 
+ Diederik de Haas <didi.debian@cknow.org>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, 
+ Heiko Stuebner <heiko@sntech.de>, 
+ Collabora Kernel Team <kernel@collabora.com>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ linux-phy@lists.infradead.org, 
+ Michael Riesch <michael.riesch@collabora.com>
+X-Mailer: b4 0.12.0
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1756759662; l=927;
+ i=michael.riesch@collabora.com; s=20250410; h=from:subject:message-id;
+ bh=+caMXhRTVArPpx+x7pVyqXS9t7uDPpRu8sQdXP1mzpo=;
+ b=GhQI9Eco07YwwzPj4YTacxR9ShNGnxBwmititeHbHW1kIAEG2Bw+zEuUCgD/mYM9Ly6AOr296
+ l4E1Rg7ApYBDnXLv/WBlnyGdN7ZTjKeScLWhpLvyf0aUIDe7NY2fqHA
+X-Developer-Key: i=michael.riesch@collabora.com; a=ed25519;
+ pk=+MWX1fffLFZtTPG/I6XdYm/+OSvpRE8D9evQaWbiN04=
+X-Endpoint-Received: by B4 Relay for michael.riesch@collabora.com/20250410
+ with auth_id=371
+X-Original-From: Michael Riesch <michael.riesch@collabora.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,34 +89,37 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Reply-To: michael.riesch@collabora.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+From: Michael Riesch <michael.riesch@collabora.com>
 
-On Thu, 28 Aug 2025 20:23:54 +0800, Liao Yuanhong wrote:
-> For ternary operators in the form of "a ? true : false", if 'a' itself
-> returns a boolean result, the ternary operator can be omitted. Remove
-> redundant ternary operators to clean up the code.
-> 
-> Liao Yuanhong (3):
->   phy: hisilicon: Remove redundant ternary operators
->   phy: renesas: rcar-gen3-usb2: Remove redundant ternary operators
->   phy: rockchip: usbdp: Remove redundant ternary operators
-> 
-> [...]
+Add CSIDPHY GRF syscon compatible for the Rockchip RK3588.
 
-Applied, thanks!
+Acked-by: Rob Herring (Arm) <robh@kernel.org>
+Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
+---
+ Documentation/devicetree/bindings/soc/rockchip/grf.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-[1/3] phy: hisilicon: Remove redundant ternary operators
-      commit: da938e39a81642748db3ec2385e8a53fe03d9bd1
-[3/3] phy: rockchip: usbdp: Remove redundant ternary operators
-      commit: 0c5375b06060fa40a8f8ce2e926bde125fdf6c3b
+diff --git a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+index 1ab0b092e2a5..b6e04e6491e9 100644
+--- a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
++++ b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+@@ -47,6 +47,7 @@ properties:
+               - rockchip,rk3576-vop-grf
+               - rockchip,rk3588-bigcore0-grf
+               - rockchip,rk3588-bigcore1-grf
++              - rockchip,rk3588-csidphy-grf
+               - rockchip,rk3588-dcphy-grf
+               - rockchip,rk3588-hdptxphy-grf
+               - rockchip,rk3588-ioc
 
-Best regards,
 -- 
-~Vinod
+2.39.5
 
 
 
