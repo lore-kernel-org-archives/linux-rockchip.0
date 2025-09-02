@@ -4,127 +4,117 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 253D3CCD193
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 12:03:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4093CCD199
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 12:03:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=px5+jgvUeMX4g/xqUjrSiMS1UCLcb95WKn6wkeugF9c=; b=uQ6b55HqMzfWEC
-	D9szExRGWcPP5OPOBKLca8oTgNCX/sG9YiDQ21E37HFtw3OZ1U0ZYUvouFLqVL+PDS9TE1VzvXPqZ
-	lHgwpOWzrtXbKfWjQb+SCR5YJKCQfkicjKOdHhRcADjyfdSqVukA4Asi8lVJ1kAIiANLdDNOnderk
-	N8gkeWfckFhiqgHj/eWHouFFrBySn/z7AC3j7G08oufCv4yeLAA+7RL3c7+85yCbCK0/ftvurBzt/
-	RrdYWxHaPQaLKnoy2m8ZMWRgN9R7JyzQK2ShS3U6IH94e+KoQqRBZTVe51zeONgWDMprtK8RsM3Lx
-	AnyFuJGJXLEGQ9hHY5lw==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=upbNRAZTaLh/eIMO/yCZhtGqpaEHsv/1ZOyxCOaqKNA=; b=rPJRYbXqm386AY
+	GB17HOqedyoLryfKk6r1qnYlMHhTt3DJ9KXeznYYI5rfzMsqJn6Lyt6uiII+OcBBeaWP8X/bdkST7
+	fE+rnRduM94D85EXqcr9DIi0AyjiYuOPzGOo99nUjHPFNCO0r0C1eX0lf5cmpNCTaFqJfQdI4/0Sr
+	FmmVOm+EY0sLrF9v5rMMZjZjtfKbB9ZcBRONKbRYHUAzbQy8Drwz+s1n86IVhlSMEDWHuGGmsHsEf
+	ZeDEjuIXa6uFuTxooCw5uABa8QPjRLPZyEqS3qM1o6CKQhiZf7X7oNB/J8oLRSuQi9B5WWwu3vF4l
+	ucA80lw+lJeqk4Ez8VVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAocA-0000000DHL5-28dl;
-	Mon, 20 Oct 2025 12:03:50 +0000
-Received: from mail-qk1-f173.google.com ([209.85.222.173])
+	id 1vAocA-0000000DHMF-3rOm;
+	Mon, 20 Oct 2025 12:03:52 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ut1HJ-0000000Boyd-2kRE;
-	Mon, 01 Sep 2025 09:56:46 +0000
-Received: by mail-qk1-f173.google.com with SMTP id af79cd13be357-7e86faa158fso433559885a.1;
-        Mon, 01 Sep 2025 02:56:45 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1756720604; x=1757325404;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=5tFy+S32zcH8SOQI+WY2rqVzMFSU7CQi//EUuweLF5I=;
-        b=QeGSYqQAxb0KpwTx9Mt+sPGlA62aZmVnnL95+3aTSlFtUAhn9dRIbv5cIU5tDDLojo
-         hCLEHa2Ywu6M6EP7lLpt50lTlzOxYHge9KS+k0IZ/6G9GuYnjsyqvjRiuRP2VVQdrXl5
-         N/fE5sFGbMIUS+IxdRx7siZs7T7ugCdkHXopoZgm2aCT/NS5fUMUL9O55nNMKLrz5855
-         SLSAKP9gii2nqtp8iMG3Sgl/2HOZTo0Bk7yFF2J0X+8ie0Ce9rz1XSEcgvG5uRdvjdf1
-         t1OV4ovIKSq0MeovUOtEiY4LJ1OZDEvkKYR2WHS75oNpGw6+rnIxShSUIes9O7pK2D9L
-         mWjg==
-X-Forwarded-Encrypted: i=1; AJvYcCUGN823dmWPVJ1ScMjYrIAsJUiHSEt6WRYDgxIta0ep9w3B3Gx5RU26AK7x4euruhVfiYJp1TOZn661YZNTGsw=@lists.infradead.org, AJvYcCUIDNZrFqOLRCXImzyZySU7E2znyZoMTY+H1ehWmfupaORxRj6ym1M2wy7LrXkn5bd+sFyaFu5glWQlFn8=@lists.infradead.org, AJvYcCUz6jbe7+vN/P60+4vfSPEdgphqOY4t86U0ry8r8pesq9yBpff3PC8RCm1w/GXYBMWGI+NExLbkvqmo8X3ubtY=@lists.infradead.org, AJvYcCWGZfDOZikjI0M2Uijih68BvJSjVJMCq+yo1lf8yimYJA4kWJjhWGM2IcSNCw1u8KospDanKqaz9TUCA1vNT01fXQ==@lists.infradead.org, AJvYcCXLWHPFi1adwm5oVr5EzqXfLioC76p4ByN/217j8Z+2CAFCOMHlcsuZIJq2HXDVAZDkoF+gweovp4epW20x@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw0PEZ8CB4k++o8cMP7x2oC76sMHajGWnZ/aS2J3o6SEUXDSdpO
-	VEVYRpaAS0APB/HTOi7y1nLlC950AU9RDIcf8OTz0WA58B4rZuEgLlH0D1bu0GQV
-X-Gm-Gg: ASbGncs8J1r/7n8NH1lcDaUv3V5xNyMTE8fb2yvZ1+FVnvrljnFSWg9XbjURUymdFwo
-	E5lMjgRyaWC/AGNhDuF1ehz/GkhL0t2P5UK82Jg052bM3oP+hEcZpfSNPqt/OL9ru/ZL52V1H0+
-	cO33N69jAQKFd4PQTIBgEIE+gKGrECEzLaadIDTyCJUbXGr9drqB59qTvA0l9RcRPe3rHxy5anu
-	3SjL5TMgqgdPIcQKGGrDvCADEyfXG/OrlrAHAttTZ+lt3I/mq+dPIqClGUe1+SYPnullMd5ie62
-	9kPszWv3lKLJVfjo3kbZ9FwaioatmRar/AR1E7Lr7wtyghtEKq3zNjKhUwqbugqu+NTcM0HLMu9
-	O/Dj72sDxnjrGs7WOt81l9GIigB8U4oKfi2fVFcUqEa0oYHdcwSAuEofEH1TN2nlnoP5zDRGCZ/
-	Q=
-X-Google-Smtp-Source: AGHT+IEsmNnDrB6ocUqGiuiQCEhS4q2C+hHIrA0gIuSC1hiJw0xLsZUP11DGSe+mt2G/BQArvfTCpg==
-X-Received: by 2002:a05:620a:390e:b0:7fc:f87e:8cd3 with SMTP id af79cd13be357-7ff2b9816famr678153185a.32.1756720604126;
-        Mon, 01 Sep 2025 02:56:44 -0700 (PDT)
-Received: from mail-qt1-f173.google.com (mail-qt1-f173.google.com. [209.85.160.173])
-        by smtp.gmail.com with ESMTPSA id af79cd13be357-7fc14660af1sm626381385a.39.2025.09.01.02.56.43
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 01 Sep 2025 02:56:43 -0700 (PDT)
-Received: by mail-qt1-f173.google.com with SMTP id d75a77b69052e-4b32c1fdcb4so13798951cf.1;
-        Mon, 01 Sep 2025 02:56:43 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCVKRiCYCcjesex82HLtmDcS/yijG8faPrxynj/xJ5HnZaZg7XFcdnJm4nnoYXsepzVfbRRkf8nqTUsYuc4=@lists.infradead.org, AJvYcCVVqhQ03WfuMFhCqJ5+AFv8pvP+vn20JX19bxUwKjWrgJLWQJpF/HTHED5NKyniHgk7Ge6KFVwXagnn6PKAwEsEmw==@lists.infradead.org, AJvYcCVgAdDXxmnaNY/IaDqgirrQuDJSIEAuuW2wZTTjsqM0Mc90PXbSvtqut3AytFUiWa4rF1Isoo65IQawF7Dp@lists.infradead.org, AJvYcCWA1Ij7oAo84uzRn+8EryjwlgeMXqsN6UfOGmiSbdSQjIyz5d3u1Yv4x4Rsl+i1+cE9tODWJRVztpuS7K1qQmI=@lists.infradead.org, AJvYcCWff84Lb6LM27WtjKiUKRIfGf9cE8JG0SAlFoTzuxaDt/l9zLoQnuixl7NxLTgtaralXNfZ88sjsSPFMnNXXaA=@lists.infradead.org
-X-Received: by 2002:a05:6102:5e8e:b0:50d:feb0:316e with SMTP id
- ada2fe7eead31-52aeb7798e1mr2104974137.2.1756720196368; Mon, 01 Sep 2025
- 02:49:56 -0700 (PDT)
+	id 1utNQG-0000000GPlW-0G0h;
+	Tue, 02 Sep 2025 09:35:28 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id EE34560208;
+	Tue,  2 Sep 2025 09:35:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2BAD7C4CEED;
+	Tue,  2 Sep 2025 09:35:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1756805726;
+	bh=3poV5F4OTyuRzmlPkHGlQg8JZPj5BWouxJpCLjRcULw=;
+	h=From:Subject:Date:To:Cc:From;
+	b=Gg0xn6eBgjkuXDsgQXi930itFluOepXttxGbk50IzEbPFErHzlIAu/xb9Is5TWq6E
+	 bYeCN7TYItHNnXtDOF9ZVkHf32DKg2uDxpvtOSXnBpuexaUt9/Vjtwk01K7J6Lw574
+	 jCUPcubaFtcP/UXfrxZs7kbTPA1+HucbTXiyEW/8WiadQelrZrmwHieZrsG81h/Y5I
+	 4riUfDP9txpBuw6sVecadxckCAMIBSLSbUP38qo8yGgLbleE2+GFaW5ZbccTZDKL3q
+	 98FJ6nBGZAt9Emg8xnkCrKm/HOqXZHIo6/ztXz3K/1a2Fa60u+Bij7IQtCIgjVnnQ3
+	 b3js9rK+zc0kw==
+From: Maxime Ripard <mripard@kernel.org>
+Subject: [PATCH v2 00/37] drm/atomic: Get rid of existing states (not
+ really)
+Date: Tue, 02 Sep 2025 11:34:59 +0200
+Message-Id: <20250902-drm-no-more-existing-state-v2-0-de98fc5f6d66@kernel.org>
 MIME-Version: 1.0
-References: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
- <1907e1c7-2b15-4729-8497-a7e6f0526366@kernel.org> <aKhVVJPEPxCoKKjI@x1>
- <4d31df9e-62c9-4988-9301-2911ff7de229@kernel.org> <aKhr8NYhei59At0s@x1> <7c6cc42c-fc76-4300-b0d2-8dabf54cf337@kernel.org>
-In-Reply-To: <7c6cc42c-fc76-4300-b0d2-8dabf54cf337@kernel.org>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Mon, 1 Sep 2025 11:49:45 +0200
-X-Gmail-Original-Message-ID: <CAMuHMdUB4QGBaMk5r5eNRCPriUWAY+LBE2C7kVEkE9eCNE1TUA@mail.gmail.com>
-X-Gm-Features: Ac12FXwQn8nZWuX__OUteos14KQ8Ceq7TOY9AfEwCR3rwgzCn6YxJiejdZ6ywp8
-Message-ID: <CAMuHMdUB4QGBaMk5r5eNRCPriUWAY+LBE2C7kVEkE9eCNE1TUA@mail.gmail.com>
-Subject: Re: [PATCH 000/114] clk: convert drivers from deprecated round_rate()
- to determine_rate()
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Brian Masney <bmasney@redhat.com>, Michael Turquette <mturquette@baylibre.com>, 
-	Stephen Boyd <sboyd@kernel.org>, Sudeep Holla <sudeep.holla@arm.com>, 
-	Cristian Marussi <cristian.marussi@arm.com>, Chen Wang <unicorn_wang@outlook.com>, 
-	Inochi Amaoto <inochiama@gmail.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, 
-	Alexandre Belloni <alexandre.belloni@bootlin.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>, 
-	Paul Cercueil <paul@crapouillou.net>, Keguang Zhang <keguang.zhang@gmail.com>, 
-	Taichi Sugaya <sugaya.taichi@socionext.com>, Takao Orito <orito.takao@socionext.com>, 
-	Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
-	Jacky Huang <ychuang3@nuvoton.com>, Shan-Chun Hung <schung@nuvoton.com>, 
-	Vladimir Zapolskiy <vz@mleia.com>, Piotr Wojtaszczyk <piotr.wojtaszczyk@timesys.com>, 
-	Paul Walmsley <paul.walmsley@sifive.com>, Samuel Holland <samuel.holland@sifive.com>, 
-	Yixun Lan <dlan@gentoo.org>, Steen Hegelund <Steen.Hegelund@microchip.com>, 
-	Daniel Machon <daniel.machon@microchip.com>, UNGLinuxDriver@microchip.com, 
-	Orson Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang@linux.alibaba.com>, 
-	Chunyan Zhang <zhang.lyra@gmail.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
-	Alexandre Torgue <alexandre.torgue@foss.st.com>, Michal Simek <michal.simek@amd.com>, 
-	Maxime Ripard <mripard@kernel.org>, =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, 
-	Manivannan Sadhasivam <mani@kernel.org>, Sven Peter <sven@kernel.org>, Janne Grunau <j@jannau.net>, 
-	Alyssa Rosenzweig <alyssa@rosenzweig.io>, Neal Gompa <neal@gompa.dev>, 
-	Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>, Ray Jui <rjui@broadcom.com>, 
-	Scott Branden <sbranden@broadcom.com>, 
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Max Filippov <jcmvbkbc@gmail.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Daniel Palmer <daniel@thingy.jp>, 
-	Romain Perier <romain.perier@gmail.com>, Andrew Lunn <andrew@lunn.ch>, 
-	Gregory Clement <gregory.clement@bootlin.com>, 
-	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Bjorn Andersson <andersson@kernel.org>, 
-	Geert Uytterhoeven <geert+renesas@glider.be>, Heiko Stuebner <heiko@sntech.de>, 
-	Andrea della Porta <andrea.porta@suse.com>, Sylwester Nawrocki <s.nawrocki@samsung.com>, 
-	Chanwoo Choi <cw00.choi@samsung.com>, Alim Akhtar <alim.akhtar@samsung.com>, 
-	Qin Jian <qinjian@cqplus1.com>, Viresh Kumar <vireshk@kernel.org>, 
-	Ulf Hansson <ulf.hansson@linaro.org>, Luca Ceresoli <luca.ceresoli@bootlin.com>, 
-	Alex Helms <alexander.helms.jy@renesas.com>, Linus Walleij <linus.walleij@linaro.org>, 
-	Liviu Dudau <liviu.dudau@arm.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
-	Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>, linux-clk@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, arm-scmi@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, sophgo@lists.linux.dev, 
-	linux-mips@vger.kernel.org, imx@lists.linux.dev, 
-	linux-riscv@lists.infradead.org, spacemit@lists.linux.dev, 
-	linux-stm32@st-md-mailman.stormreply.com, patches@opensource.cirrus.com, 
-	linux-actions@lists.infradead.org, asahi@lists.linux.dev, 
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
-	linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-samsung-soc@vger.kernel.org, soc@lists.linux.dev
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250901_025645_701123_562C4D75 
-X-CRM114-Status: GOOD (  37.79  )
-X-Mailman-Approved-At: Mon, 20 Oct 2025 04:56:04 -0700
+X-B4-Tracking: v=1; b=H4sIAEO6tmgC/42NQQqDMBBFryKz7pQYCWhXvUdxocmoQ2tSJhIsk
+ rs39QRdvsfn/QMiCVOEW3WAUOLIwRfQlwrsMviZkF1h0Eob1WqDTlb0AdcghLRz3NjPGLdhI+z
+ GRhtt66FpRiiBt9DE+xl/9IWXsg7yOb9S/bN/ZVONCifVWuu6qTW2uz9JPL2uQWboc85fCEyJM
+ MUAAAA=
+X-Change-ID: 20250825-drm-no-more-existing-state-9b3252c1a33b
+To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+ Simona Vetter <simona@ffwll.ch>
+Cc: dri-devel@lists.freedesktop.org, Maxime Ripard <mripard@kernel.org>, 
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
+ Louis Chauvet <louis.chauvet@bootlin.com>, 
+ Haneen Mohammed <hamohammed.sa@gmail.com>, 
+ Melissa Wen <melissa.srw@gmail.com>, Jyri Sarha <jyri.sarha@iki.fi>, 
+ Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, 
+ Paul Cercueil <paul@crapouillou.net>, linux-mips@vger.kernel.org, 
+ Liviu Dudau <liviu.dudau@arm.com>, Russell King <linux@armlinux.org.uk>, 
+ Manikandan Muralidharan <manikandan.m@microchip.com>, 
+ Dharma Balasubiramani <dharma.b@microchip.com>, 
+ Nicolas Ferre <nicolas.ferre@microchip.com>, 
+ Alexandre Belloni <alexandre.belloni@bootlin.com>, 
+ Claudiu Beznea <claudiu.beznea@tuxon.dev>, 
+ linux-arm-kernel@lists.infradead.org, Inki Dae <inki.dae@samsung.com>, 
+ Seung-Woo Kim <sw0312.kim@samsung.com>, 
+ Kyungmin Park <kyungmin.park@samsung.com>, 
+ Krzysztof Kozlowski <krzk@kernel.org>, 
+ Alim Akhtar <alim.akhtar@samsung.com>, linux-samsung-soc@vger.kernel.org, 
+ Liu Ying <victor.liu@nxp.com>, Shawn Guo <shawnguo@kernel.org>, 
+ Sascha Hauer <s.hauer@pengutronix.de>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ Fabio Estevam <festevam@gmail.com>, imx@lists.linux.dev, 
+ Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>, 
+ Lucas Stach <l.stach@pengutronix.de>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Anitha Chrisanthus <anitha.chrisanthus@intel.com>, 
+ Edmund Dea <edmund.j.dea@intel.com>, Paul Kocialkowski <paulk@sys-base.io>, 
+ Sui Jingfeng <suijingfeng@loongson.cn>, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Rob Clark <robin.clark@oss.qualcomm.com>, 
+ Dmitry Baryshkov <lumag@kernel.org>, 
+ Abhinav Kumar <abhinav.kumar@linux.dev>, 
+ Jessica Zhang <jessica.zhang@oss.qualcomm.com>, Sean Paul <sean@poorly.run>, 
+ Marijn Suijten <marijn.suijten@somainline.org>, 
+ linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org, 
+ Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>, linux-rockchip@lists.infradead.org, 
+ Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Samuel Holland <samuel@sholland.org>, linux-sunxi@lists.linux.dev, 
+ Thierry Reding <thierry.reding@gmail.com>, 
+ Mikko Perttunen <mperttunen@nvidia.com>, 
+ Jonathan Hunter <jonathanh@nvidia.com>, linux-tegra@vger.kernel.org, 
+ Hans de Goede <hansg@kernel.org>, 
+ Dave Stevenson <dave.stevenson@raspberrypi.com>, 
+ =?utf-8?q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>, 
+ Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=5363; i=mripard@kernel.org;
+ h=from:subject:message-id; bh=3poV5F4OTyuRzmlPkHGlQg8JZPj5BWouxJpCLjRcULw=;
+ b=owGbwMvMwCmsHn9OcpHtvjLG02pJDBnbdnmf+qD93Jp5ietOW8UKmwkzQ4S/nq5f6MfwUL/xg
+ NX6qRusOqayMAhzMsiKKbI8kQk7vbx9cZWD/cofMHNYmUCGMHBxCsBEJv5jbDhhJCbZKyNotWbd
+ uTd/KqdbtHVdz2n7ofD/2fo/RTOFli7dmdxnwSCemJxWmXfj3q0p4YwNP7cdvWCvdNvIN3mjy43
+ IOSvOtfyqnaL6ovgT56NCZpm5IiV9ee138nZL5PotiuhIXzMBAA==
+X-Developer-Key: i=mripard@kernel.org; a=openpgp;
+ fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
+X-Mailman-Approved-At: Mon, 20 Oct 2025 04:56:18 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -141,70 +131,112 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, 23 Aug 2025 at 18:43, Krzysztof Kozlowski <krzk@kernel.org> wrote:
-> On 22/08/2025 15:09, Brian Masney wrote:
-> > On Fri, Aug 22, 2025 at 02:23:50PM +0200, Krzysztof Kozlowski wrote:
-> >> On 22/08/2025 13:32, Brian Masney wrote:
-> >>> 7 of the 114 patches in this series needs a v2 with a minor fix. I see
-> >>> several paths forward to merging this. It's ultimately up to Stephen how
-> >>> he wants to proceed.
-> >>>
-> >>> - I send Stephen a PULL request with all of these patches with the minor
-> >>>   cleanups to the 7 patches. Depending on the timing, Stephen can merge
-> >>>   the other work first, and I deal with cleaning up the merge conflicts.
-> >>>   Or he can if he prefers to instead.
-> >>>
-> >>> - Stephen applies everyone else's work first to his tree, and then the
-> >>>   good 107 patches in this series. He skips anything that doesn't apply
-> >>>   due to other people's work and I follow up with a smaller series.
-> >>
-> >> Both cause cross tree merge conflicts. Anyway, please document clearly
-> >> the dependencies between patches.
-> >
-> > This series only touches drivers/clk, so it shouldn't cause any issues
-> > with other subsystems, unless there's a topic branch somewhere, or I'm
-> > missing something?
->
-> Individual maintainers handle subdirectories.
+Hi,
 
-FWI(still)W, I have taken the Renesas SoC-specific patches through
-the renesas-clk tree...
+Here's a series to get rid of the drm_atomic_helper_get_existing_*_state
+accessors.
 
-> > There are some drivers under drivers/clk/ where there is an entry in the
-> > MAINTAINERS file that's not Stephen, although it wasn't clear to me if
-> > all of those people will send PULL requests to Stephen. I described on
-> > the cover how how the series was broken up.
-> >
-> >   - Patches 4-70 are for drivers where there is no clk submaintainer
-> >   - Patches 71-110 are for drivers where this is an entry in MAINTAINERS
-> >     (for drivers/clk)
->
-> It's hidden between multiple other descriptions of patches, so I really
-> would not think that this means that it is okay by individual maintainer
-> to take the patch.
->
-> This really should be the one most important part of the cover letter
-> for something like this.
-> ..
+The initial intent was to remove the __drm_*_state->state pointer to
+only rely on old and new states, but we still need it now to know which
+of the two we need to free: if a state has not been committed (either
+dropped or checked only), then we need to free the new one, if it has
+been committed we need to free the old state. 
 
-It was indeed rather implicit:
+Thus, the state pointer is kept (and documented) only to point to the
+state we should free eventually.
 
-   "Once all of my conversion patches across the various trees in the kernel
-    have been merged, I will post a small series that removes the
-    round_rate() op from the clk core and the documentation. Here's the
-    other patch series that are currently in flight that need to be merged
-    before we can remove round_rate() from the core. [...]"
+All users have been converted to the relevant old or new state
+accessors.  
 
-Gr{oetje,eeting}s,
+This was tested on tidss.
 
-                        Geert
+Let me know what you think,
+Maxime
 
+Signed-off-by: Maxime Ripard <mripard@kernel.org>
+---
+Changes in v2:
+- Dropped the first and second patches
+- Reworked the recipient list to be nicer with SMTPs
+- Link to v1: https://lore.kernel.org/r/20250825-drm-no-more-existing-state-v1-0-f08ccd9f85c9@kernel.org
+
+---
+Maxime Ripard (37):
+      drm/atomic: Convert drm_atomic_get_connector_state() to use new connector state
+      drm/atomic: Remove unused drm_atomic_get_existing_connector_state()
+      drm/atomic: Document __drm_connectors_state state pointer
+      drm/atomic: Convert __drm_atomic_get_current_plane_state() to modern accessor
+      drm/atomic: Convert drm_atomic_get_plane_state() to use new plane state
+      drm/vkms: Convert vkms_crtc_atomic_check() to use new plane state
+      drm/tilcdc: crtc: Use drm_atomic_helper_check_crtc_primary_plane()
+      drm/atomic: Remove unused drm_atomic_get_existing_plane_state()
+      drm/atomic: Document __drm_planes_state state pointer
+      drm/atomic: Convert drm_atomic_get_crtc_state() to use new connector state
+      drm/ingenic: ipu: Switch to drm_atomic_get_new_crtc_state()
+      drm/arm/malidp: Switch to drm_atomic_get_new_crtc_state()
+      drm/armada: Switch to drm_atomic_get_new_crtc_state()
+      drm/atmel-hlcdc: Switch to drm_atomic_get_new_crtc_state()
+      drm/exynos: Switch to drm_atomic_get_new_crtc_state()
+      drm/imx-dc: Switch to drm_atomic_get_new_crtc_state()
+      drm/imx-dcss: Switch to drm_atomic_get_new_crtc_state()
+      drm/imx-ipuv3: Switch to drm_atomic_get_new_crtc_state()
+      drm/ingenic: Switch to drm_atomic_get_new_crtc_state()
+      drm/kmb: Switch to drm_atomic_get_new_crtc_state()
+      drm/logicvc: Switch to drm_atomic_get_new_crtc_state()
+      drm/loongson: Switch to drm_atomic_get_new_crtc_state()
+      drm/mediatek: Switch to drm_atomic_get_new_crtc_state()
+      drm/msm/mdp5: Switch to drm_atomic_get_new_crtc_state()
+      drm/omap: Switch to drm_atomic_get_new_crtc_state()
+      drm/rockchip: Switch to drm_atomic_get_new_crtc_state()
+      drm/sun4i: Switch to drm_atomic_get_new_crtc_state()
+      drm/tegra: Switch to drm_atomic_get_new_crtc_state()
+      drm/tilcdc: Switch to drm_atomic_get_new_crtc_state()
+      drm/vboxvideo: Switch to drm_atomic_get_new_crtc_state()
+      drm/vc4: Switch to drm_atomic_get_new_crtc_state()
+      drm/atomic: Switch to drm_atomic_get_new_crtc_state()
+      drm/framebuffer: Switch to drm_atomic_get_new_crtc_state()
+      drm/atomic: Remove unused drm_atomic_get_existing_crtc_state()
+      drm/atomic: Document __drm_crtcs_state state pointer
+      drm/atomic: Convert drm_atomic_get_private_obj_state() to use new plane state
+      drm/atomic: Document __drm_private_objs_state state pointer
+
+ drivers/gpu/drm/arm/malidp_planes.c             |   2 +-
+ drivers/gpu/drm/armada/armada_plane.c           |   3 +-
+ drivers/gpu/drm/atmel-hlcdc/atmel_hlcdc_plane.c |   2 +-
+ drivers/gpu/drm/drm_atomic.c                    |  21 ++--
+ drivers/gpu/drm/drm_framebuffer.c               |   2 +-
+ drivers/gpu/drm/exynos/exynos_drm_plane.c       |   2 +-
+ drivers/gpu/drm/imx/dc/dc-plane.c               |   2 +-
+ drivers/gpu/drm/imx/dcss/dcss-plane.c           |   4 +-
+ drivers/gpu/drm/imx/ipuv3/ipuv3-plane.c         |   3 +-
+ drivers/gpu/drm/ingenic/ingenic-drm-drv.c       |   3 +-
+ drivers/gpu/drm/ingenic/ingenic-ipu.c           |   4 +-
+ drivers/gpu/drm/kmb/kmb_plane.c                 |   3 +-
+ drivers/gpu/drm/logicvc/logicvc_layer.c         |   4 +-
+ drivers/gpu/drm/loongson/lsdc_plane.c           |   2 +-
+ drivers/gpu/drm/mediatek/mtk_plane.c            |   3 +-
+ drivers/gpu/drm/msm/disp/mdp5/mdp5_plane.c      |   7 +-
+ drivers/gpu/drm/omapdrm/omap_plane.c            |   2 +-
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c     |   6 +-
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c    |   2 +-
+ drivers/gpu/drm/sun4i/sun8i_ui_layer.c          |   3 +-
+ drivers/gpu/drm/sun4i/sun8i_vi_layer.c          |   3 +-
+ drivers/gpu/drm/tegra/dc.c                      |   2 +-
+ drivers/gpu/drm/tilcdc/tilcdc_crtc.c            |   9 +-
+ drivers/gpu/drm/tilcdc/tilcdc_plane.c           |   3 +-
+ drivers/gpu/drm/vboxvideo/vbox_mode.c           |   8 +-
+ drivers/gpu/drm/vc4/vc4_plane.c                 |   6 +-
+ drivers/gpu/drm/vkms/vkms_crtc.c                |   4 +-
+ include/drm/drm_atomic.h                        | 144 ++++++++++++------------
+ 28 files changed, 124 insertions(+), 135 deletions(-)
+---
+base-commit: 7fa4d8dc380fbd81a9d702a855c50690c9c6442c
+change-id: 20250825-drm-no-more-existing-state-9b3252c1a33b
+
+Best regards,
 -- 
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
+Maxime Ripard <mripard@kernel.org>
 
-In personal conversations with technical people, I call myself a hacker. But
-when I'm talking to journalists I just say "programmer" or something like that.
-                                -- Linus Torvalds
 
 _______________________________________________
 Linux-rockchip mailing list
