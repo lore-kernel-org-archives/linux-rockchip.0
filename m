@@ -4,66 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50B18CA1005
-	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Sep 2025 08:01:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D1A2CA0FFE
+	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Sep 2025 08:52:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2fxQorb2mID7/CnJl7mwrPJtaIrDLeEkPm3/SijqGoM=; b=UscfsVVukVOm7x
-	8AQsDy+YZDl6XvccJiTWIgbjxZx2LoW/cr6ghROAqft01biSpJ3dcVCKMBRO+PF8qxsZsZrYAlVS4
-	+HSxxD1Rdkdrl6CEKbXcEjuABE8lfKTlPz1EQ4wvjez4Wr3dIGk+wmEud6tavaopyVlS749sASh4A
-	3NUzr0oQxEI8SdbBrMC82HfXNxXlB8cU7RfzaJlf4ViLrGhFg980EATE+zTVMW/B5SIzpqIvxjaxZ
-	4FbYlibzM4+cf7ZevN8ZOpmuMIGcB5qVJhG8NkRJceUi4Po/ZPei+GkYr1K8CkSGrdU+/33+GMETK
-	7DyY2NbNXF/6Yzh8czAg==;
+	List-Owner; bh=m4O78D74hue7ziazMq1xW53j0bfVkJICS7e8ZFgieAg=; b=IkQR6HB3oC5Vw1
+	BboGY1Eqzx9P/1XYsBq42IHZinAlj00P4csjmLUVSgE+FCGvopF2JcGDC9FD86hZ82fgBpKS+GINK
+	BGeTqsyLZCj0IRPEZ3MNPA4XN802oPSOElYFLR6UPLhjU7sPllZ1/f6uKEP7YmaJRIvtuHLP6NcXB
+	+/2Aiw9pbPPaJwdRr6CeEXgvyb5fZaQhEYJwhTM5ST3XTUSuq8rEf3wIBQ/DyW55+br7tXcxwomXf
+	zuyrVEVpEk3MTsCb+Gq30Sr2fpSB+p/loytftEyPVTCypNf2+XdF3a/uLtDNFWzuFl6odmk5qER2v
+	iIFzlhNL03g2p5r8OsNQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utLxN-0000000FtNa-3ley;
-	Tue, 02 Sep 2025 08:01:33 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1utMkT-0000000GBlZ-3JxT;
+	Tue, 02 Sep 2025 08:52:17 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utLrs-0000000Fr7t-0kZ2;
-	Tue, 02 Sep 2025 07:55:53 +0000
+	id 1utMSB-0000000G4Qu-2dDX;
+	Tue, 02 Sep 2025 08:33:23 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id B6D9D4330B;
-	Tue,  2 Sep 2025 07:55:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EF9FAC4CEF8;
-	Tue,  2 Sep 2025 07:55:49 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 00DD460210;
+	Tue,  2 Sep 2025 08:33:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AC295C4CEF7;
+	Tue,  2 Sep 2025 08:33:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1756799750;
-	bh=fGhLLwdCedmb+/WPqlL245TpagpYHJiGJoMQWGa2fHs=;
+	s=k20201202; t=1756802002;
+	bh=Hqr2PkWeqj78bgEo/ix/HnyM3/D2QqFTKb1SDJ42Iko=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=bOkBWf+syJfTDnMKxIgzan3/kkMFxM1aVMv+RSJbTkuKOZIQrMSiMiSz7TNzb/W9r
-	 HklilaSAMpDzzfPhjsillI34OGFmDeV+RAL8efOr2wJJYSfu2jXKWl5htarNBHL/i8
-	 RV+l08rI8yY6hbZL+0QU9j/8HQ8+cyDlmm7zSiXXJ6S0//PPfEANm9aPmyi9a1k8rz
-	 j85gpapJ606lRIKboiz5GA/OrCpHWFNABLCPLxpnY5o/AsiONvChZqXbwSHh8XVwgd
-	 yCSoy3Zgf1vl20t0JGqxGkVNwFFik/6KZW/Cv2Cj+PQC57uT93Nk9UlqE8wkikQolg
-	 vFZycSq/3NOxw==
-Date: Tue, 2 Sep 2025 09:55:47 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Michael Riesch <michael.riesch@collabora.com>
-Cc: Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Vinod Koul <vkoul@kernel.org>, 
-	Kishon Vijay Abraham I <kishon@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Kever Yang <kever.yang@rock-chips.com>, Jagan Teki <jagan@amarulasolutions.com>, 
-	Sebastian Reichel <sebastian.reichel@collabora.com>, Diederik de Haas <didi.debian@cknow.org>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Collabora Kernel Team <kernel@collabora.com>, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org
-Subject: Re: [PATCH v3 3/7] dt-bindings: phy: rockchip-inno-csi-dphy: add
- rk3588 variant
-Message-ID: <20250902-piquant-secret-moose-06c4b6@kuoka>
-References: <20250616-rk3588-csi-dphy-v3-0-a5ccd5f1f438@collabora.com>
- <20250616-rk3588-csi-dphy-v3-3-a5ccd5f1f438@collabora.com>
+	b=eexVNZZOyCZ752U7B0Hxcl7iDb0v3eqNyGVNEJNzf0PCN5A3mrQ0AScJt5LA06Hf8
+	 a5sf4rqTHCA59xQlkbFYGFgseE5b3iaP3LEVm/20ZJspA8j5cy22VIF+SVI9igcSgz
+	 0UlRax8yYiV6MUzZXJbGEAZWizY2Zbj39kpJnvfo8/I0NyNYCiVGbUpt2+IQaDmq0L
+	 vc9Y3Prxj+tY0TBlksdY/5gts7JPJHy/mZCpxdYkUbWOgVxD7JuiK6wKZJbtvOYKwk
+	 qPcfUTqYDxqxCBibyub+dc0VK8JsdVpshCG+MpMFB7DMdDvni4nEY0L6G7UG+G/O6F
+	 AgY1n5wtbq6Aw==
+Date: Tue, 2 Sep 2025 10:33:16 +0200
+From: Niklas Cassel <cassel@kernel.org>
+To: Hans Zhang <18255117159@163.com>
+Cc: lpieralisi@kernel.org, kwilczynski@kernel.org, bhelgaas@google.com,
+	heiko@sntech.de, mani@kernel.org, yue.wang@amlogic.com,
+	pali@kernel.org, neil.armstrong@linaro.org, robh@kernel.org,
+	jingoohan1@gmail.com, khilman@baylibre.com, jbrunet@baylibre.com,
+	martin.blumenstingl@googlemail.com, linux-pci@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-amlogic@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v5 0/2] Configure root port MPS during host probing
+Message-ID: <aLarzJZI3E_sb7_Y@flawful.org>
+References: <20250620155507.1022099-1-18255117159@163.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20250616-rk3588-csi-dphy-v3-3-a5ccd5f1f438@collabora.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250902_005552_237402_815FC860 
-X-CRM114-Status: GOOD (  16.11  )
+In-Reply-To: <20250620155507.1022099-1-18255117159@163.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,53 +74,18 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Sep 01, 2025 at 10:47:44PM +0200, Michael Riesch wrote:
-> The Rockchip RK3588 variant of the CSI-2 DPHY features two reset lines.
-> Add the variant and allow for the additional reset.
-> 
-> Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
-> ---
->  .../bindings/phy/rockchip-inno-csi-dphy.yaml       | 50 +++++++++++++++++++++-
->  1 file changed, 49 insertions(+), 1 deletion(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/phy/rockchip-inno-csi-dphy.yaml b/Documentation/devicetree/bindings/phy/rockchip-inno-csi-dphy.yaml
-> index 9ad72518e6da..e37c9fd74788 100644
-> --- a/Documentation/devicetree/bindings/phy/rockchip-inno-csi-dphy.yaml
-> +++ b/Documentation/devicetree/bindings/phy/rockchip-inno-csi-dphy.yaml
-> @@ -21,6 +21,7 @@ properties:
->        - rockchip,rk3326-csi-dphy
->        - rockchip,rk3368-csi-dphy
->        - rockchip,rk3568-csi-dphy
-> +      - rockchip,rk3588-csi-dphy
->  
->    reg:
->      maxItems: 1
-> @@ -40,11 +41,15 @@ properties:
->  
->    resets:
->      items:
-> -      - description: exclusive PHY reset line
-> +      - description: APB reset line
-> +      - description: PHY reset line
+On Fri, Jun 20, 2025 at 11:55:05PM +0800, Hans Zhang wrote:
+> Current PCIe initialization exhibits a key optimization gap: Root Ports
+> may operate with non-optimal Maximum Payload Size (MPS) settings. While
+> downstream device configuration is handled during bus enumeration, Root
+> Port MPS values inherited from firmware or hardware defaults often fail
+> to utilize the full capabilities supported by controller hardware. This
+> results in suboptimal data transfer efficiency throughout the PCIe
+> hierarchy.
 
-That's changing the order, before first was the phy....
+(snip)
 
-> +    minItems: 1
->  
->    reset-names:
->      items:
->        - const: apb
-> +      - const: phy
-
-Although here first was apb? Quite confusing.
-
-Anyway "phy" reset for "phy" is pretty non-informative, please give some
-useful name.
-
-> +    minItems: 1
-
-Best regards,
-Krzysztof
+Gentle ping.
 
 
 _______________________________________________
