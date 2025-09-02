@@ -4,57 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0002CA1005
-	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Sep 2025 06:52:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 797E3CA1005
+	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Sep 2025 07:00:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ud0Mti7L2tig28HST0sHLA2CjSu2acC0uVcB2gkhu6A=; b=O50iV5VNA6MKbl
-	5tlqMqhtGfjzTnvyM+WvWBaTk1nZjRJQgrS+V+4A/U0um/vsu0yE0wUDKozcHzQOzT0hCJw86ZChm
-	KlGA6Kfdpg4geyRKUamQLhZxG57dZRG68Fhyr/pXC57t0WQGAB0ad5zQETWmT/oFK7p5XfSwjsXOg
-	Ms945S2PivfzaatVx00x2UQIwdB16R64jLFoQt5/cmYmFity67AKyqlEcorf0CgMHszpg8Phpw0AF
-	3SY+t2lN3aDEoBwngMzrhLMvDW3OCsCyGW56gAtzZAie3nObky8+iflROwzTTIUhlC5PIxiViuxFz
-	kvrF6OQRsdh/xPrEigCw==;
+	List-Owner; bh=JskoFqCJ4L+JO+uOFZlAq1kFZCzpsLXYKn3ATuu9s80=; b=hZ0TSC6Cv0o6t9
+	8+t7uxhwtb1GwLavUH/IdSiUhg+zvTpiKFDYvVhlN64m2WwM/+A3zEM8Fu+UjzMslDa8gID0dIxl4
+	wru8sf3JtiL/hdYOS4Ouo5EWyqZ4ve5y3tZh04Xotv05oF6hik25IDyyQ4l62Js7EcMW31fRKkdeV
+	wUAmc8hjOdhxAd0iwxIBDIi2PCYTPxQFKW890EKVp21jfw5oNTvr3K/L992SW4ZBghs94SPuIfJ0v
+	Rq++DncsbCbw3Uvdp0u+pYjnmy4VPC5na62SldNVW5ZzJFbrolK5YFzbzuIWHQ+ANBzMLYnbwc3RS
+	mPThz6V6qcLGQHLP2HdQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utKsc-0000000FcC5-3w7x;
-	Tue, 02 Sep 2025 06:52:34 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1utL0U-0000000Fe7m-1ZfB;
+	Tue, 02 Sep 2025 07:00:42 +0000
+Received: from mail-m155101.qiye.163.com ([101.71.155.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utKpr-0000000Fbdt-2OXV;
-	Tue, 02 Sep 2025 06:49:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=L3hysh1IuHC3Dp9XzTNJn7TLfYrR5FrB1YWba0t3M3k=; b=cjdiXPnWzvSvRuv8Q6fPuIwF/4
-	sHkk1gs59SSS6D16goSAnv08ppr71gIlpiKtrGwjWSvhv/ZyOouGVsLmf/Y429du9uAXmv4M0fI6m
-	3MGd0rZ+b1Ov/laSJ9w6G6KiRBdYw0EY9D+m8gLKaNAmsu7ZVCx4rTzWsZUT9tg5QP3vjCPShjeVM
-	yjDna1BAzyPmkD7XPvRdHZJbHHl/nR2PPOubn74Tcg9ShSIoAb5F4xv6GPHW+CcBaXkr++nwz/IyV
-	FYAFPYqj9qz8406lYoZvNonf6I4XZKG8SUeRI1mjUFsr+hYGhtOlCSJbmM0HHuS3kLH+pIXpjwEgE
-	r7DFLeNg==;
-Received: from [61.8.145.255] (helo=phil.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1utKpf-0003Qz-Ke; Tue, 02 Sep 2025 08:49:31 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: =?UTF-8?B?5p2O57u06LGq?= <cn.liweihao@gmail.com>
-Cc: robh@kernel.org, hjc@rock-chips.com, andy.yan@rock-chips.com,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-clk@vger.kernel.org
-Subject: Re: [PATCH v1 3/7] dt-bindings: clock: rk3368: Add SCLK_MIPIDSI_24M
-Date: Tue, 02 Sep 2025 08:49:29 +0200
-Message-ID: <5052759.PIDvDuAF1L@phil>
-In-Reply-To: <CAPEOAkQYA+XSx9QJSmNFLypH0ifE1jvui=MHiEHZ+5a3SR7=uA@mail.gmail.com>
-References: <20250831104855.45883-1-cn.liweihao@gmail.com> <2235041.irdbgypaU6@diego>
- <CAPEOAkQYA+XSx9QJSmNFLypH0ifE1jvui=MHiEHZ+5a3SR7=uA@mail.gmail.com>
+	id 1utL0R-0000000Fe50-1OWu;
+	Tue, 02 Sep 2025 07:00:40 +0000
+Received: from localhost.localdomain (unknown [119.122.212.9])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 2164fd079;
+	Tue, 2 Sep 2025 15:00:22 +0800 (GMT+08:00)
+From: Chukun Pan <amadeus@jmu.edu.cn>
+To: xunil@tahomasoft.com
+Cc: amadeus@jmu.edu.cn,
+	andrew@lunn.ch,
+	conor+dt@kernel.org,
+	devicetree@vger.kernel.org,
+	heiko@sntech.de,
+	krzk+dt@kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 3/4] arm64: dts: rockchip: Add HINLINK H68K
+Date: Tue,  2 Sep 2025 15:00:19 +0800
+Message-Id: <20250902070019.856305-1-amadeus@jmu.edu.cn>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20250901100639.234ba07b.xunil@tahomasoft.com>
+References: <20250901100639.234ba07b.xunil@tahomasoft.com>
 MIME-Version: 1.0
+X-HM-Tid: 0a99093a0aff03a2kunm41dc6c2c7aad6
+X-HM-MType: 10
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlCH08aVk5CHUwaSEJLHR1CS1YeHw5VEwETFhoSFy
+	QUDg9ZV1kYEgtZQVlKSkJVSklJVUlKSVVCWVdZFhoPEhUdFFlBWU9LSFVKS0lCTUtKVUpLS1VLWQ
+	Y+
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250901_234943_630720_5740CD5E 
-X-CRM114-Status: GOOD (  24.29  )
+X-CRM114-CacheID: sfid-20250902_000039_572832_4631EDDD 
+X-CRM114-Status: UNSURE (   5.71  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,55 +68,31 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGksCgpBbSBNb250YWcsIDEuIFNlcHRlbWJlciAyMDI1LCAwMjoxNzowMCBNaXR0ZWxldXJvcMOk
-aXNjaGUgU29tbWVyemVpdCBzY2hyaWViIOadjue7tOixqjoKPiBJIGFjdHVhbGx5IHVzZWQgc2Ny
-aXB0IHRvIGdldCB0aGUgbWFpbnRhaW5lciBsaXN0LCBidXQgSSB3YXMgbm90IHN1cmUKPiB3aGV0
-aGVyIEkgc2hvdWxkIHNlbmQtdG8gb3IgY2MgZXZlcnkgbWFpbnRhaW5lciwgc28gSSBjb25zdWx0
-ZWQgdGhlCj4gQUksIGFuZCB0aGUgQUkgc2FpZCB0byB0cnkgbm90IHRvIGRvIHNvIGJlY2F1c2Ug
-aXQgbWlnaHQgYmUgY29uc2lkZXJlZAo+IG5vaXNlIGVtYWlsLCBhbmQgb25seSBzZW5kIGl0IHRv
-IHRoZSBtYWluIG1haW50YWluZXJzLgoKcGxlYXNlIGRvbid0IHRvcC1wb3N0IDotKQpodHRwczov
-L2RvY3Mua2VybmVsLm9yZy9wcm9jZXNzL3N1Ym1pdHRpbmctcGF0Y2hlcy5odG1sI3VzZS10cmlt
-bWVkLWludGVybGVhdmVkLXJlcGxpZXMtaW4tZW1haWwtZGlzY3Vzc2lvbnMKCgo+IFNob3VsZCBJ
-IGNjIGFsbCB0aGUgZGV2aWNldHJlZSBtYWludGFpbmVycyB3aXRoIHRoZSBuZXh0IHBhdGNoZXM/
-CgpMb29rcyBsaWtlIHdlIGRpZCBnZXQgYW4gQWNrIHN0aWxsIHdpdGggZXZlbiBvbmx5IG9uZSBt
-YWludGFpbmVyIGxpc3RlZCwKc28gZG9uJ3QgbmVlZCBhIHJlc2VuZCAuLi4gYnV0IHllYWgsIHBs
-ZWFzZSBpbmNsdWRlIHBlb3BsZSBsaXN0ZWQgYXMKZGlyZWN0IG1haW50YWluZXJzIGluIHRoZSBm
-dXR1cmUuCgpXb3JrZmxvd3MgZGlmZmVyLCBzbyB3aGVuIHN1Ym1pdHRpbmcgYSBwYXRjaCB5b3Ug
-Y2FuJ3Qga25vdyBpZiBtYWludGFpbmVycwp3b3JrIGZyb20gcGF0Y2h3b3JrIG9yIGRpcmVjdGx5
-IGZyb20gdGhlaXIgaW5ib3guCgpTbyBpdCdzIHNhZmVyIHRvIGluY2x1ZGUgbW9yZSBwZW9wbGUg
-dGhhbiBub3QgZW5vdWdoIDotKQoKU29tZSB0cmltbWluZyBvZiB0aGUgbGlzdCBjYW4gYmUgZG9u
-ZSB0aG91Z2gsIGZvciBleGFtcGxlIHlvdXIgZHJtIHBhdGNoZXMKd291bGQgbGlzdCB0aGUgY29y
-ZSBkcm0gbWFpbnRhaW5lcnMgd2hvIG1vc3QgbGlrZWx5IGRvIG5vdCByZWFsbHkgY2FyZQphYm91
-dCBpbmRpdmlkdWFsIGRyaXZlciBwYXRjaGVzIDstKSAuCgpnZXRfbWFpbnRhaW5lcnMucGwgdGhh
-bmtmdWxseSBkb2VzIGxpc3QgdGhlIHJvbGUsIHNvIHlvdSBjYW4gZGVjaWRlIGJhc2VkCm9uIHRo
-YXQuCgoKSGVpa28KCgo+IEJlc3QgcmVnYXJkcywKPiBXZWlIYW8KPiAKPiBIZWlrbyBTdMO8Ym5l
-ciA8aGVpa29Ac250ZWNoLmRlPiDkuo4yMDI15bm0OOaciDMx5pel5ZGo5pelIDIzOjAw5YaZ6YGT
-77yaCj4gPgo+ID4gSGksCj4gPiBBbSBTb25udGFnLCAzMS4gQXVndXN0IDIwMjUsIDEyOjQ4OjUx
-IE1pdHRlbGV1cm9ww6Rpc2NoZSBTb21tZXJ6ZWl0IHNjaHJpZWIgV2VpSGFvIExpOgo+ID4gPiBB
-ZGQgYSBjbG9jayBpZCBmb3IgbWlwaSBkc2kgcmVmZXJlbmNlIGNsb2NrLCBtaXBpIGRzaSBub2Rl
-IHVzZWQgaXQuCj4gPiA+Cj4gPiA+IFNpZ25lZC1vZmYtYnk6IFdlaUhhbyBMaSA8Y24ubGl3ZWlo
-YW9AZ21haWwuY29tPgo+ID4KPiA+IHlvdSBtaXNzZWQgYSBudW1iZXIgb2YgZGV2aWNldHJlZSBt
-YWludGFpbmVycywgUm9iIHRoYW5rZnVsbHkgZG9lcwo+ID4gbm90IG5lZWQgdG8gZG8gdGhpcyBv
-biBoaXMgb3duIGFueW1vcmUuCj4gPgo+ID4gc28gcGxlYXNlIGdldCB0aGUgYXBwcm9wcmlhdGUg
-bGlzdCBvZiBtYWludGFpbmVycyB2aWEgc2NyaXB0cy9nZXRfbWFpbnRhaW5lci5wbAo+ID4KPiA+
-IENoYW5nZSBpdHNlbGYgbG9va3MgZmluZSB0aG91Z2guCj4gPgo+ID4gSGVpa28KPiA+Cj4gPiA+
-IC0tLQo+ID4gPiAgaW5jbHVkZS9kdC1iaW5kaW5ncy9jbG9jay9yazMzNjgtY3J1LmggfCAxICsK
-PiA+ID4gIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKQo+ID4gPgo+ID4gPiBkaWZmIC0t
-Z2l0IGEvaW5jbHVkZS9kdC1iaW5kaW5ncy9jbG9jay9yazMzNjgtY3J1LmggYi9pbmNsdWRlL2R0
-LWJpbmRpbmdzL2Nsb2NrL3JrMzM2OC1jcnUuaAo+ID4gPiBpbmRleCBlYmFlM2NiZjguLmI5NTFl
-MjkwNiAxMDA2NDQKPiA+ID4gLS0tIGEvaW5jbHVkZS9kdC1iaW5kaW5ncy9jbG9jay9yazMzNjgt
-Y3J1LmgKPiA+ID4gKysrIGIvaW5jbHVkZS9kdC1iaW5kaW5ncy9jbG9jay9yazMzNjgtY3J1LmgK
-PiA+ID4gQEAgLTcyLDYgKzcyLDcgQEAKPiA+ID4gICNkZWZpbmUgU0NMS19TRkMgICAgICAgICAg
-ICAgMTI2Cj4gPiA+ICAjZGVmaW5lIFNDTEtfTUFDICAgICAgICAgICAgIDEyNwo+ID4gPiAgI2Rl
-ZmluZSBTQ0xLX01BQ1JFRl9PVVQgICAgICAgICAgICAgIDEyOAo+ID4gPiArI2RlZmluZSBTQ0xL
-X01JUElEU0lfMjRNICAgICAxMjkKPiA+ID4gICNkZWZpbmUgU0NMS19USU1FUjEwICAgICAgICAg
-MTMzCj4gPiA+ICAjZGVmaW5lIFNDTEtfVElNRVIxMSAgICAgICAgIDEzNAo+ID4gPiAgI2RlZmlu
-ZSBTQ0xLX1RJTUVSMTIgICAgICAgICAxMzUKPiA+ID4KPiA+Cj4gPgo+ID4KPiA+Cj4gCgoKCgoK
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9j
-a2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0
-cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Hi,
+
+> So what I said earlier regarding rgmii vs rgmii-id DOES NOT hold up
+> under more rigorous and careful testing.
+
+So the following question does not exist?
+
+>> Changing this makes a huge difference in the ethernet throughput speed. With
+>> rgmii-id mode specified, throughput is about 6.5 Mbs. Changing this to rgmii
+>> mode increases throughput to about 960 Mbs.
+
+If the iperf3 test does not reach Gigabit, you can run it in
+multiple threads. e.g. `iperf3 -c xxx -P 4`
+
+--
+2.25.1
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
