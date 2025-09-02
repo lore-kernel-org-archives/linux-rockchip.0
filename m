@@ -4,51 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FFEECA1007
-	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Sep 2025 00:59:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8C4CCA1005
+	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Sep 2025 01:55:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:Cc:From:Subject:
-	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uyne6VAZV9L2cCVXY5r8hiCs4huHY0xapVxDFrt3QB0=; b=Dk8ECCT0hZV7oo
-	GBdGq7LOmZFgglCFo+8MTynvigm2JR/KxoObRGW1fEXMfPXTjWarEB4FLyjb3Y7J8I4Ur+/wxUyO/
-	PJMKst63e6FKIPEgdRgLQztXC5kxvLwA7oOBy9upA2/xhhzFIIJfHD0Y7MM9bSZ6xWELMesG10fdY
-	qjwyBubrtVph+NUE2mACWX2shKJNz6F/eKdvodsUhozyZ5SucJMXCrdZqzO1URsacydqS5AaGJFPT
-	ifBP96H9NhnkZ/OCxJijIUVYBvYiftVoA9452sTOhYev4Ti/Mt12lt/5fO19aopI2cMEy9bSNji5F
-	TWEzxjtD/j1L4ctwa1YQ==;
+	List-Owner; bh=Sp/JdFK7QG5uSJKUPQvxTeRTmjoir2L/XHHyuwN++hc=; b=t0jcf25b18You+
+	1haMnbcp+kVH8IwGn6MqD2lhCtSFPy1WwVzFG2HMpmFPYdL2kavMKNTf1XlxVZQXUfPfGHpHr+UWN
+	lDcrKTBgJrLh8kUrSu4jBQhiAP1T/nfYHD8RuIr1NndMyZ2hR9cM6mKfOne1viSziaN+vhwvfWqjv
+	Ft/aNjY4WjCFCHxtp4+fve+grgbvG2gbWKWmpdILkDb9C+9aFCFXyu4wCepDLO5Ez1yLmxDfr2Qe5
+	X/qWgASuSonA1/KbZHvFZfd2ifV0cras0J9uPi9VETKfsTwu3Napt3CeZVQlxK4UEAuGWXuiop4WK
+	k7RxuYYgLvv10KB3l+0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utbq8-00000002xPn-04NW;
-	Wed, 03 Sep 2025 00:59:08 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1utciu-000000038gC-3HbV;
+	Wed, 03 Sep 2025 01:55:44 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utbnM-00000002wiz-258s;
-	Wed, 03 Sep 2025 00:56:19 +0000
-Received: from neptunite.rasen.tech (unknown [IPv6:2404:7a81:160:2100:30ba:ee2f:ad96:6665])
-	by perceval.ideasonboard.com (Postfix) with UTF8SMTPSA id 111D3162B;
-	Wed,  3 Sep 2025 02:55:01 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1756860902;
-	bh=vMUBpOspAwuRbk3s8zYi5ml7mvtL6cW/MHTRA4NY7ro=;
-	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
-	b=M09UjxbaNl4O7Aq5tpPeCiAvMeaYwv5r0yOTL0GZdgx+4CItYw64sXEQszZXQYdYP
-	 0GJ1Y1XRYj0p3daiEop57gWfDtU6YT1+OVvMuYMJLP4WyXuxJx5jJUhSz3QSvrOFlC
-	 XQxrbiuL8S0iIyk2o/nCeDhN+ir2y/Mf2w+OunwY=
+	id 1utXsB-00000001xmA-3utZ;
+	Tue, 02 Sep 2025 20:45:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1756845898;
+	bh=EeHJeDSHpbH+IexE1yw0lzjuysLYioK+B9ubY4ryVHI=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=EpcfYCy/tQqZiTCo2bwQc4KdIcB1SddsV+5TI5s5kkB/LQIFoOBHM6bVPPTk3AR/X
+	 prMuF/eTpWElI+brOSwefY/cjWhuEnCj42mbKWuCu9sMMKHw6HEoZGXbBJ6I//vxTq
+	 BuNxYxoLolU6jpnDgyh6OQMZXat1LbeaUBswyKL1mXp4YRoRFdndqvRc1p6H8i11Mu
+	 Hji56tHMkjgVYQhya9zY9hlDxZWdehCoP85IbPKjWu1lcrEwrjpMNfuabR7ZVC6qjx
+	 BG5b8+f+BPE7Zob2VFvdWTLp+DF6MMj59Gvb4D6hBedA6RsSIOq48yKdtZHCuCfzfN
+	 sPLbFFqjsBpog==
+Received: from localhost (unknown [82.79.138.60])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with UTF8SMTPSA id 38D8017E0579;
+	Tue,  2 Sep 2025 22:44:58 +0200 (CEST)
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Date: Tue, 02 Sep 2025 23:44:42 +0300
+Subject: [PATCH v4 07/11] phy: rockchip: samsung-hdptx: Compute clk rate
+ from PLL config
 MIME-Version: 1.0
-In-Reply-To: <m31popxjqk.fsf@t19.piap.pl>
-References: <175308758352.3134829.9472501038683860006@localhost> <m3qzxyug1s.fsf@t19.piap.pl> <m3cy9futcj.fsf@t19.piap.pl> <m34iumujcs.fsf@t19.piap.pl> <m3zfcet41n.fsf@t19.piap.pl> <m3a545t789.fsf@t19.piap.pl> <20250812103243.GK30054@pendragon.ideasonboard.com> <175501095338.74722.11604545949710100799@localhost> <CAHCN7xKq_o_u7PhPMcZ2W9nzrFP8+CnhaYJOyxnjpKfbMTBCEw@mail.gmail.com> <m31popxjqk.fsf@t19.piap.pl>
-Subject: Re: FYI: i.MX8MP ISP (RKISP1) MI registers corruption: resolved
-From: Paul Elder <paul.elder@ideasonboard.com>
-Cc: Stefan Klug <stefan.klug@ideasonboard.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Dafna Hirschfeld <dafna@fastmail.com>, Heiko Stuebner <heiko@sntech.de>, Jacopo Mondi <jacopo.mondi@ideasonboard.com>, Ondrej Jirman <megi@xff.cz>, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-To: Adam Ford <aford173@gmail.com>, Krzysztof =?utf-8?q?Ha=C5=82asa?= <khalasa@piap.pl>
-Date: Wed, 03 Sep 2025 09:56:04 +0900
-Message-ID: <175686096405.1542294.2802960782852730947@neptunite.rasen.tech>
-User-Agent: alot/0.0.0
+Message-Id: <20250902-phy-hdptx-frl-v4-7-7d69176373ce@collabora.com>
+References: <20250902-phy-hdptx-frl-v4-0-7d69176373ce@collabora.com>
+In-Reply-To: <20250902-phy-hdptx-frl-v4-0-7d69176373ce@collabora.com>
+To: Vinod Koul <vkoul@kernel.org>, 
+ Kishon Vijay Abraham I <kishon@kernel.org>, 
+ Heiko Stuebner <heiko@sntech.de>, Algea Cao <algea.cao@rock-chips.com>, 
+ Dmitry Baryshkov <lumag@kernel.org>
+Cc: kernel@collabora.com, linux-phy@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250902_175616_676650_C4255AB3 
-X-CRM114-Status: GOOD (  13.52  )
+X-CRM114-CacheID: sfid-20250902_134500_120766_64867852 
+X-CRM114-Status: GOOD (  12.40  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -60,40 +73,133 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgS3J6eXN6dG9mLAoKUXVvdGluZyBLcnp5c3p0b2YgSGHFgmFzYSAoMjAyNS0wOS0wMiAxODo1
-NDoyNykKPiBIaSwKPiAKPiBzdW1tYXJ5Ogo+IAo+IEkndmUgZG9uZSBhIGZldyBhZGRpdGlvbmFs
-IHRlc3RzIGFuZCBpdCBzZWVtcyB0aGUgTUVESUFfQVhJIGNsb2NrIGlzIHRoZQo+IHByb2JsZW0u
-IFJlZHVjaW5nIGl0IHRvIDQwMCBNSHogd2hpbGUgc3RpbGwgcnVubmluZyBNRURJQV9JU1AgYXQg
-NTAwIE1Iego+IHByb2R1Y2VzIG5vIGVycm9ycy4KPiBNRURJQV9JU1AgYXQgNDAwIE1IeiBhbmQg
-TUVESUFfQVhJIGF0IDUwMCBNSHogcHJvZHVjZXMgZXJyb3JzLCB0aG91Z2gKPiAocmVnaXN0ZXIg
-YWRkcmVzcyBlcnJvcnMgd2hpbGUgcmVhZGluZyBhbmQgd3JpdGluZyBmcm9tL3RvIElTUCBNSQo+
-IChtZW1vcnkgaW50ZXJmYWNlKSByZWdpc3RlcnMsIG9ubHkgb24gdGhlIHNlY29uZGFyeSBJU1Ag
-KGlzcDEpLCBhbmQKPiBnZW5lcmFsbHkgb25seSB3aGlsZSBzdHJlYW1pbmcgZGF0YSBmcm9tIHRo
-ZSBJU1ApLgo+IAo+IFdoYXQgaXMgZHJpdmVuIGJ5IE1FRElBX0FYSSBjbG9jayByb290PyBNRURJ
-QU1JWDogSVNJLCBMQ0RJRiwgSVNQLCBEV0UuCj4gCj4gQWNjb3JkaW5nIHRvIGJvdGggZGF0YXNo
-ZWV0cyAoaW5kdXN0cmlhbCBhbmQgY29tbWVyY2lhbCksIE1FRElBX0FYSQo+IGlzIGxpbWl0ZWQg
-dG8gNDAwIE1IeiBpbiBub3JtYWwgbW9kZSBhbmQgNTAwIE1IeiBpbiBvdmVyZHJpdmUgbW9kZS4K
-PiBBbGwgbXkgaGFyZHdhcmUgaXMgc2V0dXAgZm9yIG92ZXJkcml2ZSBtb2RlLCB0aG91Z2ggKHR3
-byBtYW51ZmFjdHVyZXJzLAo+IGJvdGggdXNpbmcgdGhlIHNhbWUgUE1JQyBzZXR1cCkuCgpUaGFu
-a3MgZm9yIHRoZSBpbnZlc3RpZ2F0aW9uIQoKPiAKPiBTaW5jZSBubyBoYXJkd2FyZSBpbiB0aGUg
-b2ZmaWNpYWwgTGludXgga2VybmVsIHRyZWUgKERUKSB1c2VzIHRoZSBzZWNvbmQKPiBJU1AuLi4g
-U2hvdWxkIHdlIGp1c3QgYWRkIGEgd2FybmluZyB0byB0aGUgaW14OG1wLmR0c2kgYW5kIGJlIGRv
-bmUgd2l0aAo+IGl0PwoKYWZhaXUgd2UgY2FuJ3QgeWV0IHVzZSB0aGUgSVNJIGFuZCBJU1Agc2lt
-dWx0YW5lb3VzbHksIHNvIHRoZSBJU0kgaXMKZW5hYmxlZCBieSBkZWZhdWx0IGFuZCB5b3UgbmVl
-ZCBvdmVybGF5cyB0byBlbmFibGUgdGhlIElTUCwgc28KdGVjaG5pY2FsbHkgbm90aGluZyB1cHN0
-cmVhbSB1c2VzIGVpdGhlciBJU1AuIFRvIG15IGtub3dsZWRnZSwgdGhlcmUgaXMKaGFyZHdhcmUg
-d2hlcmUgeW91IGNhbiB1c2UgYm90aCB0aG91Z2gsIHN1Y2ggYXMgdGhlIERlYml4IFNPTSBBCihp
-bXg4bXAtZGViaXgtc29tLWEtYm1iLTA4LmR0cykgWzBdLgoKClBhdWwKClswXSBodHRwczovL2Rl
-Yml4LmlvL2hhcmR3YXJlL2RlYml4LXNvbS1hLWlvLWJvYXJkLmh0bWwKCj4gT3V0IG9mIHRyZWUg
-aGFyZHdhcmUgdXNpbmcgaXNwMSAoY3NpMSkgb2J2aW91c2x5IGV4aXN0cy4KPiAtLSAKPiBLcnp5
-c3p0b2YgIkNocmlzIiBIYcWCYXNhCj4gCj4gU2llxIcgQmFkYXdjemEgxYF1a2FzaWV3aWN6Cj4g
-UHJ6ZW15c8WCb3d5IEluc3R5dHV0IEF1dG9tYXR5a2kgaSBQb21pYXLDs3cgUElBUAo+IEFsLiBK
-ZXJvem9saW1za2llIDIwMiwgMDItNDg2IFdhcnN6YXdhCgpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGlu
-dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Improve ->recalc_rate() callback of hdptx_phy_clk_ops to calculate the
+initial clock rate based on the actual PHY PLL configuration as
+retrieved from the related hardware registers.
+
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+---
+ drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 91 ++++++++++++++++++++++-
+ 1 file changed, 90 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
+index 8e38adcb8f13325b87e27d6d809cfa1bfd91521c..2303c132172135d3a2678cbd5a1bac6a3e139c47 100644
+--- a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
++++ b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
+@@ -1850,12 +1850,101 @@ static void rk_hdptx_phy_clk_unprepare(struct clk_hw *hw)
+ 	rk_hdptx_phy_consumer_put(hdptx, true);
+ }
+ 
++#define PLL_REF_CLK 24000000ULL
++
++static u64 rk_hdptx_phy_clk_calc_rate_from_pll_cfg(struct rk_hdptx_phy *hdptx)
++{
++	struct ropll_config ropll_hw;
++	u64 fout, sdm;
++	u32 mode, val;
++	int ret;
++
++	ret = regmap_read(hdptx->regmap, CMN_REG(0008), &mode);
++	if (ret)
++		return 0;
++
++	if (mode & LCPLL_LCVCO_MODE_EN_MASK)
++		return 0;
++
++	ret = regmap_read(hdptx->regmap, CMN_REG(0051), &val);
++	if (ret)
++		return 0;
++	ropll_hw.pms_mdiv = val;
++
++	ret = regmap_read(hdptx->regmap, CMN_REG(005E), &val);
++	if (ret)
++		return 0;
++	ropll_hw.sdm_en = val & ROPLL_SDM_EN_MASK;
++
++	ret = regmap_read(hdptx->regmap, CMN_REG(0064), &val);
++	if (ret)
++		return 0;
++	ropll_hw.sdm_num_sign = val & ROPLL_SDM_NUM_SIGN_RBR_MASK;
++
++	ret = regmap_read(hdptx->regmap, CMN_REG(0065), &val);
++	if (ret)
++		return 0;
++	ropll_hw.sdm_num = val;
++
++	ret = regmap_read(hdptx->regmap, CMN_REG(0060), &val);
++	if (ret)
++		return 0;
++	ropll_hw.sdm_deno = val;
++
++	ret = regmap_read(hdptx->regmap, CMN_REG(0069), &val);
++	if (ret)
++		return 0;
++	ropll_hw.sdc_n = (val & ROPLL_SDC_N_RBR_MASK) + 3;
++
++	ret = regmap_read(hdptx->regmap, CMN_REG(006c), &val);
++	if (ret)
++		return 0;
++	ropll_hw.sdc_num = val;
++
++	ret = regmap_read(hdptx->regmap, CMN_REG(0070), &val);
++	if (ret)
++		return 0;
++	ropll_hw.sdc_deno = val;
++
++	ret = regmap_read(hdptx->regmap, CMN_REG(0086), &val);
++	if (ret)
++		return 0;
++	ropll_hw.pms_sdiv = ((val & PLL_PCG_POSTDIV_SEL_MASK) >> 4) + 1;
++
++	fout = PLL_REF_CLK * ropll_hw.pms_mdiv;
++	if (ropll_hw.sdm_en) {
++		sdm = div_u64(PLL_REF_CLK * ropll_hw.sdc_deno *
++			      ropll_hw.pms_mdiv * ropll_hw.sdm_num,
++			      16 * ropll_hw.sdm_deno *
++			      (ropll_hw.sdc_deno * ropll_hw.sdc_n - ropll_hw.sdc_num));
++
++		if (ropll_hw.sdm_num_sign)
++			fout = fout - sdm;
++		else
++			fout = fout + sdm;
++	}
++
++	return div_u64(fout * 2, ropll_hw.pms_sdiv * 10);
++}
++
+ static unsigned long rk_hdptx_phy_clk_recalc_rate(struct clk_hw *hw,
+ 						  unsigned long parent_rate)
+ {
+ 	struct rk_hdptx_phy *hdptx = to_rk_hdptx_phy(hw);
++	u32 status;
++	u64 rate;
++	int ret;
++
++	if (hdptx->hw_rate)
++		return hdptx->hw_rate;
++
++	ret = regmap_read(hdptx->grf, GRF_HDPTX_CON0, &status);
++	if (ret || !(status & HDPTX_I_PLL_EN))
++		return 0;
++
++	rate = rk_hdptx_phy_clk_calc_rate_from_pll_cfg(hdptx);
+ 
+-	return hdptx->hw_rate;
++	return DIV_ROUND_CLOSEST_ULL(rate * 8, hdptx->hdmi_cfg.bpc);
+ }
+ 
+ static long rk_hdptx_phy_clk_round_rate(struct clk_hw *hw, unsigned long rate,
+
+-- 
+2.51.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
