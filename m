@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9A43CA1005
-	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Sep 2025 00:45:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA1DECA1007
+	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Sep 2025 00:45:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IONzyXS7xzcagKLczqiqpn56c4LvVzzBo5sxFVEqQ0Y=; b=hTaUcybKu+8Xhe
-	UmOraoCbK2mpOeZl8/0Da1+bRpL9f0OYuTha31TdGBkgUqTgnN88Sl7CDW2VQbbXtz04TKgadB+P3
-	AqerXj+mkrDjtXe9eaQj2tbDVQePfrEi2wfScdzE8/6Gy8I3Ji/tBsaqsCiQFC6jEYec4W93O1Wyg
-	OLheGtvfdlxC1Uf09lwyn9s5eZyne6NOB3HqgAeOVxb/Sq/GlKMY1OvsLWUCE3l+olF4pnXwu2Ddz
-	jLAyfxs0PJs7CXGOrvTCLhQv0+xJF6ZSnNz2/slFaCjUubkrj+u7EfPYaGzRCs+Kl4ArMraa0msBI
-	0elapzh0ceIYkmS/bYcQ==;
+	List-Owner; bh=uPeW/Aa9/fUgLHURxXL6WgjQWp5PNYkSMhNkBy7Vk9E=; b=hThPD/5YdZ/R28
+	8EI9XrWP7Q3r8XQ+pZOBYvvUfsXzYlPtwTcgg+ymTzXuTo/iR20Zi6aHt1ZhoCD0SnlRxepV8DXZQ
+	qZksF+E+qmqEZlGMv2NSdkF1gWuOF16HpBzs5nOZ0wFjd0m+ITGbdsk7CUKl0D6I9wVefLf/4LkUJ
+	4L9S9ko+QkrgIRnjttO/1RFC1jFAJI0HARaTB+s0hr7qarCqAlJYalVLeqajnAWWxLFLjoZIc7diN
+	rBbC/DF2X30PwiGbKURmtummeNDY8qVAExmeKeMHQ7JmQuG7fyrisYnhwMBgAZTYSHRpFhkzvI36x
+	3E8EbZkmRB4yoFlY+ABA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utbcx-00000002qqT-3vtJ;
-	Wed, 03 Sep 2025 00:45:31 +0000
+	id 1utbd7-00000002r6w-2Mhx;
+	Wed, 03 Sep 2025 00:45:41 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utXsA-00000001xlW-47us;
-	Tue, 02 Sep 2025 20:45:00 +0000
+	id 1utXsC-00000001xmY-2Z7U;
+	Tue, 02 Sep 2025 20:45:01 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1756845897;
-	bh=+ulTgVMuc8q58rccheVSt5e6g1eN8x/meYpqfjuKxlg=;
+	s=mail; t=1756845899;
+	bh=NNLPTKtx/ZzBkGT6fzsckp1Yqu0jL2qYmg8gJGldf4c=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=Ht41DGqAtDj/YP4N6+QjAve+5zbn/kG4bhe9Dfp3jhC+yXCTsJfMGvyfsNSRjTtrn
-	 svQXxA5Zz3T+SqyqxZ7O0EHgnUL5FqVcO5j3PbWbsiU8fb439EpJ8GWO8mWc3oitMr
-	 pG0BILiwWMNVQ+6TBqrNjH9hGNzgPyW8p9Wn1Qam0+oS8S3gVePDHNtjszLpOnNBht
-	 0XUlZ9pxE3UrjXDrl8vxwKIEfAt3FyIi2jn6wf1yt2XHgDIVKt4jm8HnqTN+bOKKc6
-	 3d62tIhWf7p15sAgYcR5rmL2CxSlPZgD+U85+2wyt38JmfKurb56Qv8LD6pQL/sYLL
-	 vCP9wRp6d6T5A==
+	b=ghJyRqXZNtVVacX25JFsyBeBoCUwgLsHoZZcjYOubidu+4pt52vJEzo5FT68gEstT
+	 xRj6wLjox6yO/n+zuwAr6DkKMA0T+cV3O993iNjqCvVtzZCq0APBL1xOTRK5O1949p
+	 6+QEwCHFjZOV+ituyDPINz9x4yPJw0PJ5BLcxC/O9UPDBz5UZCv7DDSDqFTOF2eoIa
+	 F1ikPuh5wT5M5Jyt12i2Y9VYsDoe55WwEUU67VCSGr3SxIa3TAWZdenxM7Q3EdNwBz
+	 4+sfyOBgY57q31cOoEj+waFbH2F5Mto35meZ34n4pCYbAThfpKF2w2dTuuAf9Lwvh/
+	 X5GigWPGo0+3g==
 Received: from localhost (unknown [82.79.138.60])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with UTF8SMTPSA id 5ADC817E0456;
-	Tue,  2 Sep 2025 22:44:57 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with UTF8SMTPSA id 166A817E129F;
+	Tue,  2 Sep 2025 22:44:59 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Tue, 02 Sep 2025 23:44:41 +0300
-Subject: [PATCH v4 06/11] phy: rockchip: samsung-hdptx: Cleanup
- *_cmn_init_seq lists
+Date: Tue, 02 Sep 2025 23:44:43 +0300
+Subject: [PATCH v4 08/11] phy: rockchip: samsung-hdptx: Drop hw_rate driver
+ data
 MIME-Version: 1.0
-Message-Id: <20250902-phy-hdptx-frl-v4-6-7d69176373ce@collabora.com>
+Message-Id: <20250902-phy-hdptx-frl-v4-8-7d69176373ce@collabora.com>
 References: <20250902-phy-hdptx-frl-v4-0-7d69176373ce@collabora.com>
 In-Reply-To: <20250902-phy-hdptx-frl-v4-0-7d69176373ce@collabora.com>
 To: Vinod Koul <vkoul@kernel.org>, 
@@ -60,9 +60,8 @@ Cc: kernel@collabora.com, linux-phy@lists.infradead.org,
  linux-rockchip@lists.infradead.org
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250902_134459_172020_8DC14A07 
-X-CRM114-Status: UNSURE (   9.19  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250902_134500_804169_2CDC170E 
+X-CRM114-Status: GOOD (  13.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,112 +78,63 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Drop redundant reg_sequence entries from rk_hdptx_common_cmn_init_seq[],
-i.e. those that are either duplicated or overridden in
-rk_hdptx_tmds_cmn_init_seq[].
+The ->hw_rate member of struct rk_hdptx_phy was mainly used to keep
+track of the clock rate programmed in hardware and support implementing
+the ->recalc_rate() callback in hdptx_phy_clk_ops.
 
-Additionally, a few items do not really belong to the former, hence move
-them to the latter.  That's mostly a preparatory step for adding FRL
-support.
-
-No functional changes intended at this point.
+Computing the clock rate from the actual PHY PLL configuration seems to
+work reliably, hence remove the now redundant struct member.
 
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 22 ++++------------------
- 1 file changed, 4 insertions(+), 18 deletions(-)
+ drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 13 ++-----------
+ 1 file changed, 2 insertions(+), 11 deletions(-)
 
 diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-index 574e468e5070d225aa5ce4d648aad2bcae851b4b..8e38adcb8f13325b87e27d6d809cfa1bfd91521c 100644
+index 2303c132172135d3a2678cbd5a1bac6a3e139c47..7b1526c1ea3dfc26323d7b90631dc9fd2e3a7266 100644
 --- a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
 +++ b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-@@ -465,13 +465,11 @@ static const struct reg_sequence rk_hdptx_common_cmn_init_seq[] = {
- 	REG_SEQ0(CMN_REG(000e), 0x0f),
- 	REG_SEQ0(CMN_REG(000f), 0x0f),
- 	REG_SEQ0(CMN_REG(0010), 0x04),
--	REG_SEQ0(CMN_REG(0011), 0x00),
- 	REG_SEQ0(CMN_REG(0012), 0x26),
- 	REG_SEQ0(CMN_REG(0013), 0x22),
- 	REG_SEQ0(CMN_REG(0014), 0x24),
- 	REG_SEQ0(CMN_REG(0015), 0x77),
- 	REG_SEQ0(CMN_REG(0016), 0x08),
--	REG_SEQ0(CMN_REG(0017), 0x00),
- 	REG_SEQ0(CMN_REG(0018), 0x04),
- 	REG_SEQ0(CMN_REG(0019), 0x48),
- 	REG_SEQ0(CMN_REG(001a), 0x01),
-@@ -479,13 +477,7 @@ static const struct reg_sequence rk_hdptx_common_cmn_init_seq[] = {
- 	REG_SEQ0(CMN_REG(001c), 0x01),
- 	REG_SEQ0(CMN_REG(001d), 0x64),
- 	REG_SEQ0(CMN_REG(001f), 0x00),
--	REG_SEQ0(CMN_REG(0026), 0x53),
- 	REG_SEQ0(CMN_REG(0029), 0x01),
--	REG_SEQ0(CMN_REG(0030), 0x00),
--	REG_SEQ0(CMN_REG(0031), 0x20),
--	REG_SEQ0(CMN_REG(0032), 0x30),
--	REG_SEQ0(CMN_REG(0033), 0x0b),
--	REG_SEQ0(CMN_REG(0034), 0x23),
- 	REG_SEQ0(CMN_REG(0035), 0x00),
- 	REG_SEQ0(CMN_REG(0038), 0x00),
- 	REG_SEQ0(CMN_REG(0039), 0x00),
-@@ -496,7 +488,6 @@ static const struct reg_sequence rk_hdptx_common_cmn_init_seq[] = {
- 	REG_SEQ0(CMN_REG(003f), 0x83),
- 	REG_SEQ0(CMN_REG(0040), 0x06),
- 	REG_SEQ0(CMN_REG(0041), 0x20),
--	REG_SEQ0(CMN_REG(0042), 0xb8),
- 	REG_SEQ0(CMN_REG(0043), 0x00),
- 	REG_SEQ0(CMN_REG(0044), 0x46),
- 	REG_SEQ0(CMN_REG(0045), 0x24),
-@@ -506,14 +497,9 @@ static const struct reg_sequence rk_hdptx_common_cmn_init_seq[] = {
- 	REG_SEQ0(CMN_REG(004b), 0x00),
- 	REG_SEQ0(CMN_REG(004c), 0x01),
- 	REG_SEQ0(CMN_REG(004d), 0x64),
--	REG_SEQ0(CMN_REG(004e), 0x14),
- 	REG_SEQ0(CMN_REG(004f), 0x00),
- 	REG_SEQ0(CMN_REG(0050), 0x00),
--	REG_SEQ0(CMN_REG(005d), 0x0c),
- 	REG_SEQ0(CMN_REG(005f), 0x01),
--	REG_SEQ0(CMN_REG(006b), 0x04),
--	REG_SEQ0(CMN_REG(0073), 0x30),
--	REG_SEQ0(CMN_REG(0074), 0x00),
- 	REG_SEQ0(CMN_REG(0075), 0x20),
- 	REG_SEQ0(CMN_REG(0076), 0x30),
- 	REG_SEQ0(CMN_REG(0077), 0x08),
-@@ -525,13 +511,10 @@ static const struct reg_sequence rk_hdptx_common_cmn_init_seq[] = {
- 	REG_SEQ0(CMN_REG(007e), 0x00),
- 	REG_SEQ0(CMN_REG(007f), 0x00),
- 	REG_SEQ0(CMN_REG(0080), 0x00),
--	REG_SEQ0(CMN_REG(0081), 0x09),
- 	REG_SEQ0(CMN_REG(0082), 0x04),
- 	REG_SEQ0(CMN_REG(0083), 0x24),
- 	REG_SEQ0(CMN_REG(0084), 0x20),
- 	REG_SEQ0(CMN_REG(0085), 0x03),
--	REG_SEQ0(CMN_REG(0086), 0x01),
--	REG_SEQ0(CMN_REG(0087), 0x0c),
- 	REG_SEQ0(CMN_REG(008a), 0x55),
- 	REG_SEQ0(CMN_REG(008b), 0x25),
- 	REG_SEQ0(CMN_REG(008c), 0x2c),
-@@ -543,7 +526,6 @@ static const struct reg_sequence rk_hdptx_common_cmn_init_seq[] = {
- 	REG_SEQ0(CMN_REG(0092), 0x00),
- 	REG_SEQ0(CMN_REG(0093), 0x00),
- 	REG_SEQ0(CMN_REG(009a), 0x11),
--	REG_SEQ0(CMN_REG(009b), 0x10),
- };
+@@ -401,7 +401,6 @@ struct rk_hdptx_phy {
  
- static const struct reg_sequence rk_hdptx_tmds_cmn_init_seq[] = {
-@@ -577,9 +559,13 @@ static const struct reg_sequence rk_hdptx_tmds_cmn_init_seq[] = {
- 	REG_SEQ0(CMN_REG(0048), 0x11),
- 	REG_SEQ0(CMN_REG(004e), 0x34),
- 	REG_SEQ0(CMN_REG(005c), 0x25),
-+	REG_SEQ0(CMN_REG(005d), 0x0c),
- 	REG_SEQ0(CMN_REG(005e), 0x4f),
-+	REG_SEQ0(CMN_REG(006b), 0x04),
-+	REG_SEQ0(CMN_REG(0073), 0x30),
- 	REG_SEQ0(CMN_REG(0074), 0x04),
- 	REG_SEQ0(CMN_REG(0081), 0x01),
-+	REG_SEQ0(CMN_REG(0086), 0x01),
- 	REG_SEQ0(CMN_REG(0087), 0x04),
- 	REG_SEQ0(CMN_REG(0089), 0x00),
- 	REG_SEQ0(CMN_REG(0095), 0x00),
+ 	/* clk provider */
+ 	struct clk_hw hw;
+-	unsigned long hw_rate;
+ 	bool restrict_rate_change;
+ 
+ 	atomic_t usage_count;
+@@ -963,7 +962,7 @@ static int rk_hdptx_tmds_ropll_cmn_config(struct rk_hdptx_phy *hdptx)
+ {
+ 	const struct ropll_config *cfg = NULL;
+ 	struct ropll_config rc = {0};
+-	int ret, i;
++	int i;
+ 
+ 	if (!hdptx->hdmi_cfg.tmds_char_rate)
+ 		return 0;
+@@ -1025,12 +1024,7 @@ static int rk_hdptx_tmds_ropll_cmn_config(struct rk_hdptx_phy *hdptx)
+ 	regmap_update_bits(hdptx->regmap, CMN_REG(0086), PLL_PCG_CLK_EN_MASK,
+ 			   FIELD_PREP(PLL_PCG_CLK_EN_MASK, 0x1));
+ 
+-	ret = rk_hdptx_post_enable_pll(hdptx);
+-	if (!ret)
+-		hdptx->hw_rate = DIV_ROUND_CLOSEST_ULL(hdptx->hdmi_cfg.tmds_char_rate * 8,
+-						       hdptx->hdmi_cfg.bpc);
+-
+-	return ret;
++	return rk_hdptx_post_enable_pll(hdptx);
+ }
+ 
+ static int rk_hdptx_tmds_ropll_mode_config(struct rk_hdptx_phy *hdptx)
+@@ -1935,9 +1929,6 @@ static unsigned long rk_hdptx_phy_clk_recalc_rate(struct clk_hw *hw,
+ 	u64 rate;
+ 	int ret;
+ 
+-	if (hdptx->hw_rate)
+-		return hdptx->hw_rate;
+-
+ 	ret = regmap_read(hdptx->grf, GRF_HDPTX_CON0, &status);
+ 	if (ret || !(status & HDPTX_I_PLL_EN))
+ 		return 0;
 
 -- 
 2.51.0
