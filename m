@@ -4,50 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D434ACA1005
-	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Sep 2025 00:45:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADD98CA1009
+	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Sep 2025 00:45:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RWX1HcUfD1Y9mreLAJ6Aks7MAlXo1t8MYcNm2j7vg5g=; b=KYJknfWWLUNTmh
-	bciSFZXxGEPi6tFMiJxOTRukdWGG/VSgjGCcFtxR4YH5nu5Z5LTbvZQOacGMChP8gAk/GIzpReHA/
-	oenq84OugZDgIBOG09L9maIawUCm+KExEcaDEpteqqqOkwbI1gPoPCBRcSZ/xpxQHCCUf0/0NWGL3
-	jKUH1PEXPOc7M/21PfWgPddpzwQulNIk0eWzlcRRzAgktm/s4grHzV0s6goYxpnAkiBzeSOxWfyaG
-	4lQozCQtvNTJObOQFuKEEKIzI7JuBg7KQk7pCzrmT8tdOUPGKREQD+fipehqWEb9Z8r30n9O+tKq+
-	NfnwxZM46OzbvRsiZxhg==;
+	List-Owner; bh=rCmM8VdPQHWWFnzqaOsLWLkJBf3Z3/TeA1SvLNXdoFM=; b=fXZXwrn5c3IMwU
+	m7WN4dtW1/gd8dYt6eUuzR4S8C5XNQU3pdc7yY3OxA3c5v+KwJRugrBIJ0wCE3W8g1r+WMq92ugZw
+	BmHSLvg59hrOrlUtSPyEFHKMsfuopcXT4R2V9cf2Aya+lstQGuQys0IUIJdOW1IosvZma6UUVzVt1
+	bG3RPnBYI4WaZvX4JKzDo04xtB1bI73hckrC4dD3R26s8WBF7UAIPzyTuyncPz94VJ7kb0HxCM8Dj
+	EoPHY74UenVKI7SiRRXo5EB2yH15+/i3/xo+V5CFqm4NoZV+yUtfp5IhrMsNLaXdeTJAXaZvIxjQK
+	twi7FhmbIE2BJFUi8Vug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utbcV-00000002prC-2cq8;
-	Wed, 03 Sep 2025 00:45:03 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1utbcm-00000002qUE-3Zcp;
+	Wed, 03 Sep 2025 00:45:20 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utXs6-00000001xj6-3snr;
-	Tue, 02 Sep 2025 20:44:56 +0000
+	id 1utXs8-00000001xk4-3drB;
+	Tue, 02 Sep 2025 20:44:58 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1756845893;
-	bh=uAjAgXeRfa++7TzMQXDYJfWBDuyTpZXti/Fx/3Cs76Y=;
+	s=mail; t=1756845895;
+	bh=NJrsZm+XslOrstRkwUP+LGJxEKnCXN99uXajYxVhMJw=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=LkMlajey5rMhK3SiLl/e9e1G+zPnjm9acE7YS3qIdCLphhOI7k8+7Kp3zkpwoB4KC
-	 RmlMF3Fe5k3wsxRp3Q0ylmVmAZcLAEnYcvz8tRPMWQ1cS8blpWAsLjS6RlRsVnryER
-	 YtvjzGCQ9LinZ+F2cp9Ll8XT8Oos2hzpA+gk4Ra6GHbcSat1A/PUYagt7HaCwZ39+7
-	 KVt7Vp6cHLRGQVzMUVf9cZ5Rb1G0RRkpH82d3cxIfNDP/pG4qFtr23U1ghSvS4wnWr
-	 3cz/EFmi0Y4/cQ5A5jZBZp75CiliaDz4lznTVNgZ8RPSDXsYXcKIfKbiZVxuF/7nbN
-	 LxChYZvas5Wxg==
+	b=pS73GTkWNh0xdCU1QBI5BCUSS67msH4gcPfcvBSg4jTFOF6OsZafA70swschM0Css
+	 86h3Hh4qcbdCowrcDZp8xlab4lT7UG08ne8jCQh8OXvygZR7VnYEifPuEIjXvDkNHA
+	 NquFhW3FXue03lr0Xo7TlOtAVRYT4BifZZbEm8BDFp7Umj1Mz3l3gBG8CTTnAJhNfO
+	 rcmDdEx29DB9LdvtjUu6tPj3bPL08nyAm3e0crDtOlS7flNyLc7EIO1OwztVSC8kHZ
+	 lFomolsYWVZHdO1id24Xns7wxkxxBbugHfa/9upA6FcoqzpilBQ0hPIjNVe872TU+h
+	 A7ear5u/tcJ1w==
 Received: from localhost (unknown [82.79.138.60])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with UTF8SMTPSA id 254AF17E0579;
-	Tue,  2 Sep 2025 22:44:53 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with UTF8SMTPSA id CFEE417E136C;
+	Tue,  2 Sep 2025 22:44:54 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Tue, 02 Sep 2025 23:44:36 +0300
-Subject: [PATCH v4 01/11] phy: hdmi: Add HDMI 2.1 FRL configuration options
+Date: Tue, 02 Sep 2025 23:44:38 +0300
+Subject: [PATCH v4 03/11] phy: rockchip: samsung-hdptx: Fix coding style
+ alignment
 MIME-Version: 1.0
-Message-Id: <20250902-phy-hdptx-frl-v4-1-7d69176373ce@collabora.com>
+Message-Id: <20250902-phy-hdptx-frl-v4-3-7d69176373ce@collabora.com>
 References: <20250902-phy-hdptx-frl-v4-0-7d69176373ce@collabora.com>
 In-Reply-To: <20250902-phy-hdptx-frl-v4-0-7d69176373ce@collabora.com>
 To: Vinod Koul <vkoul@kernel.org>, 
@@ -59,8 +60,9 @@ Cc: kernel@collabora.com, linux-phy@lists.infradead.org,
  linux-rockchip@lists.infradead.org
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250902_134455_113051_18FC5D45 
-X-CRM114-Status: GOOD (  12.46  )
+X-CRM114-CacheID: sfid-20250902_134457_088260_426C9990 
+X-CRM114-Status: UNSURE (   8.15  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,62 +79,61 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The HDMI 2.1 specification introduced the Fixed Rate Link (FRL) mode,
-aiming to replace the older Transition-Minimized Differential Signaling
-(TMDS) mode used in previous HDMI versions to support much higher
-bandwidths (up to 48 Gbps) for modern video and audio formats.
+Handle a bunch of reported checkpatch.pl complaints:
 
-FRL has been designed to support ultra high resolution formats at high
-refresh rates like 8K@60Hz or 4K@120Hz, and eliminates the need for
-dynamic bandwidth adjustments, which reduces latency.  It operates with
-3 or 4 lanes at different link rates: 3Gbps, 6Gbps, 8Gbps, 10Gbps or
-12Gbps.
-
-Add support for configuring the FRL mode for HDMI PHYs.
+  CHECK: Alignment should match open parenthesis
 
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- include/linux/phy/phy-hdmi.h | 19 +++++++++++++++++--
- 1 file changed, 17 insertions(+), 2 deletions(-)
+ drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/include/linux/phy/phy-hdmi.h b/include/linux/phy/phy-hdmi.h
-index f0ec963c6e84f1b7728acafc824dff191c6b873d..d4cf4430ee8f3bf0f18a109c5a7640293a4293b1 100644
---- a/include/linux/phy/phy-hdmi.h
-+++ b/include/linux/phy/phy-hdmi.h
-@@ -6,16 +6,31 @@
- #ifndef __PHY_HDMI_H_
- #define __PHY_HDMI_H_
- 
-+#include <linux/types.h>
-+
-+enum phy_hdmi_mode {
-+	PHY_HDMI_MODE_TMDS,
-+	PHY_HDMI_MODE_FRL,
-+};
-+
- /**
-  * struct phy_configure_opts_hdmi - HDMI configuration set
-- * @tmds_char_rate: HDMI TMDS Character Rate in Hertz.
-  * @bpc: Bits per color channel.
-+ * @tmds_char_rate: HDMI TMDS Character Rate in Hertz.
-+ * @frl.rate_per_lane: HDMI FRL Rate per Lane in Gbps.
-+ * @frl.lanes: HDMI FRL lanes count.
-  *
-  * This structure is used to represent the configuration state of a HDMI phy.
-  */
- struct phy_configure_opts_hdmi {
--	unsigned long long tmds_char_rate;
- 	unsigned int bpc;
-+	union {
-+		unsigned long long tmds_char_rate;
-+		struct {
-+			u8 rate_per_lane;
-+			u8 lanes;
-+		} frl;
-+	};
- };
- 
- #endif /* __PHY_HDMI_H_ */
+diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
+index b7af27eac293c46647c3abbcb7128939d4ee012d..a729e15de9e097a54c02ea965c5cc85534338302 100644
+--- a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
++++ b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
+@@ -1656,11 +1656,11 @@ static void rk_hdptx_phy_set_voltage(struct rk_hdptx_phy *hdptx,
+ 		regmap_update_bits(hdptx->regmap, LANE_REG(030a) + offset,
+ 				   LN_TX_JEQ_EVEN_CTRL_RBR_MASK,
+ 				   FIELD_PREP(LN_TX_JEQ_EVEN_CTRL_RBR_MASK,
+-				   ctrl->tx_jeq_even_ctrl));
++					      ctrl->tx_jeq_even_ctrl));
+ 		regmap_update_bits(hdptx->regmap, LANE_REG(030c) + offset,
+ 				   LN_TX_JEQ_ODD_CTRL_RBR_MASK,
+ 				   FIELD_PREP(LN_TX_JEQ_ODD_CTRL_RBR_MASK,
+-				   ctrl->tx_jeq_odd_ctrl));
++					      ctrl->tx_jeq_odd_ctrl));
+ 		regmap_update_bits(hdptx->regmap, LANE_REG(0311) + offset,
+ 				   LN_TX_SER_40BIT_EN_RBR_MASK,
+ 				   FIELD_PREP(LN_TX_SER_40BIT_EN_RBR_MASK, 0x1));
+@@ -1670,11 +1670,11 @@ static void rk_hdptx_phy_set_voltage(struct rk_hdptx_phy *hdptx,
+ 		regmap_update_bits(hdptx->regmap, LANE_REG(030b) + offset,
+ 				   LN_TX_JEQ_EVEN_CTRL_HBR_MASK,
+ 				   FIELD_PREP(LN_TX_JEQ_EVEN_CTRL_HBR_MASK,
+-				   ctrl->tx_jeq_even_ctrl));
++					      ctrl->tx_jeq_even_ctrl));
+ 		regmap_update_bits(hdptx->regmap, LANE_REG(030d) + offset,
+ 				   LN_TX_JEQ_ODD_CTRL_HBR_MASK,
+ 				   FIELD_PREP(LN_TX_JEQ_ODD_CTRL_HBR_MASK,
+-				   ctrl->tx_jeq_odd_ctrl));
++					      ctrl->tx_jeq_odd_ctrl));
+ 		regmap_update_bits(hdptx->regmap, LANE_REG(0311) + offset,
+ 				   LN_TX_SER_40BIT_EN_HBR_MASK,
+ 				   FIELD_PREP(LN_TX_SER_40BIT_EN_HBR_MASK, 0x1));
+@@ -1685,11 +1685,11 @@ static void rk_hdptx_phy_set_voltage(struct rk_hdptx_phy *hdptx,
+ 		regmap_update_bits(hdptx->regmap, LANE_REG(030b) + offset,
+ 				   LN_TX_JEQ_EVEN_CTRL_HBR2_MASK,
+ 				   FIELD_PREP(LN_TX_JEQ_EVEN_CTRL_HBR2_MASK,
+-				   ctrl->tx_jeq_even_ctrl));
++					      ctrl->tx_jeq_even_ctrl));
+ 		regmap_update_bits(hdptx->regmap, LANE_REG(030d) + offset,
+ 				   LN_TX_JEQ_ODD_CTRL_HBR2_MASK,
+ 				   FIELD_PREP(LN_TX_JEQ_ODD_CTRL_HBR2_MASK,
+-				   ctrl->tx_jeq_odd_ctrl));
++					      ctrl->tx_jeq_odd_ctrl));
+ 		regmap_update_bits(hdptx->regmap, LANE_REG(0311) + offset,
+ 				   LN_TX_SER_40BIT_EN_HBR2_MASK,
+ 				   FIELD_PREP(LN_TX_SER_40BIT_EN_HBR2_MASK, 0x1));
 
 -- 
 2.51.0
