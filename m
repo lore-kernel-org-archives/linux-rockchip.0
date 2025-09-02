@@ -4,65 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E48CACA1005
-	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Sep 2025 21:45:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B96ADCA1005
+	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Sep 2025 21:45:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
-	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ur0Fr1o79N6TsBt/lwMkihQ4z6pzmJQgfnd56UVW3Bw=; b=WRbfdbGMb1X/st
-	Spt+mdjRJ+NmGU6HLAJXENDDXFG0zDwnbH81Rfl+JOGyGN8eLrqOZo/ky2EGGrAAEvCPMLC+jQ4xs
-	rRXrAQkVJndWJBvhhbQx0Q+Pcm4PvIIO7+VlyPLxa3sHdY6SUAgKrI9qDK1mMxuGqPEg+pigfoDqb
-	BSnPUsH3gcd6TWCQsj5ZGA9W67t6+yCHcQYQBxg4SctgQvz/XaKin9yRAjHGGCQ7Et3Rva9m0akX3
-	4spjcd9s8laK6qX66uYNK6sXERERPh1TmGYeYjJ7+ilFDwfrdLWaDogJ3JSGeVLr+GyJqaJ6KTDvL
-	eyTYF7IDqUIbqR7/OhuA==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=vV81MbUSVo2uBRRUy2OsdWhlAjD6lFqBiBPScIoWx1A=; b=nPzEMWT9+EPzlp
+	0Yi/6syZvtw22VqsAD82HD6pgD+wnW9AC/z5gLCl+7rDQ5X+C2nrHseADOHeJ8taVIWkvrWAizCgi
+	BSboBOIICeRKln1kwKjt9hjmPidvMRlnVaiFiRgJfY35GEudFPq6nPdvVomdKaewc+hL+JE3iI2IF
+	TecHEokAKG9DXOfFgaIdIsze/h9aNWbgW2s6fyaMmqzo8LjfUhVl4opz9PYwJJKwilTm/zbbt1NzN
+	DIbs+YgL+mfQz9TehSjTPjrUDlohGLNWrAVecDSP1EdhBvsddoa+vEGahIu1vACJFmOWD93tr0Mr1
+	f4RxKxhLp+cj8/qzwWww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utYoE-00000002DPJ-0Nue;
-	Tue, 02 Sep 2025 21:44:58 +0000
+	id 1utYoK-00000002DYj-2ETz;
+	Tue, 02 Sep 2025 21:45:04 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utUTX-000000017G5-3wqE;
-	Tue, 02 Sep 2025 17:07:21 +0000
+	id 1utUTY-000000017GM-2sT2;
+	Tue, 02 Sep 2025 17:07:22 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1756832837;
-	bh=LR53mkG+mbobU4tLnlfm/nOI9xIl/+sBawJ/Q6bMwJY=;
-	h=From:Subject:Date:To:Cc:From;
-	b=hjqWFO/AJyR6esVG/If33vfD6nK5724Fj5f6i7dLHQqlLvtpKR7DdvjW2g6wsDkcI
-	 pJsMJNT/r2FfU+ivkGofcFms1ZILN50b6hGZ5crcstPM/OB+cCekxw43KKt/hefGGB
-	 37khEnSE7iNqPAcYxXb9Yxu10rrP5vLznjRMdo4cN1JXocjU0zA4imrKOpaR2/7jpN
-	 CwqWZhHsUOxjENQWq0odRo4DofsuCk2H7eSBtZLtezDfW8+ULL8gh6/14cbEkzoTJh
-	 tZ+4Jk+aid364ss9a7vwFL6p4wCVVe0ZYY4TVSyG6oCbkoN05QFhU0mdWs2dEjMaZq
-	 WRdavYxbtN51w==
+	s=mail; t=1756832839;
+	bh=QPBBXvF4CU0wV1LurPOFo7Rxahye8bU0R5m3P6yDM8c=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=nfaH1FYXk8NE2nhYBWpJ4GjKfiCFL1R2a1VfYh0O5CXkelLtWCQJZr+csyO+pyFgv
+	 GiVe7Bn6OXoWqGRzoZiY3ZLdueArI4zcdVRUHtNpGRv5SOgzNkchztqHWoev+P2wgF
+	 OLvpUjl4LcfBSI7MrmehNPWxUVnaRnv1Iqitd9z0iJ7AeWXJMamgR0XIByjY618Nwy
+	 j2fvbO/mpc5rM7ozFc9O67qHAIMEDNDwbr0Uv9Z22OqTKWmKQsvr9lSXXpQl+SO4SJ
+	 GIHB4RskvpkOe0z/L0SqN0sJMzjGLwFqNYRjCPHYTHa4CptHwfuIVipwoDIquEvHM0
+	 4AdEe9XBVWU8w==
 Received: from localhost (unknown [82.79.138.60])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with UTF8SMTPSA id 7C8FB17E129F;
-	Tue,  2 Sep 2025 19:07:17 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with UTF8SMTPSA id 2630F17E131D;
+	Tue,  2 Sep 2025 19:07:19 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Subject: [PATCH 0/3] Fixes for phy-rockchip-samsung-hdptx
-Date: Tue, 02 Sep 2025 20:06:58 +0300
-Message-Id: <20250902-phy-hdptx-fixes-v1-0-e8d9ef9748d6@collabora.com>
+Date: Tue, 02 Sep 2025 20:07:00 +0300
+Subject: [PATCH 2/3] phy: rockchip: samsung-hdptx: Reduce ROPLL loop
+ bandwidth
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIADIkt2gC/x3LTQqAIBBA4avIrBsw++8q0UJqzNmYaEQR3b2h5
- cfjPZApMWUY1QOJTs68B0FZKFi8DRshr2Iw2jR60Aajv9Gv8bjQ8UUZu0r3zpGtl9aCXDHRH2S
- a5vf9AMD+O6FhAAAA
-X-Change-ID: 20250902-phy-hdptx-fixes-7308ffea4c6a
+Message-Id: <20250902-phy-hdptx-fixes-v1-2-e8d9ef9748d6@collabora.com>
+References: <20250902-phy-hdptx-fixes-v1-0-e8d9ef9748d6@collabora.com>
+In-Reply-To: <20250902-phy-hdptx-fixes-v1-0-e8d9ef9748d6@collabora.com>
 To: Vinod Koul <vkoul@kernel.org>, 
  Kishon Vijay Abraham I <kishon@kernel.org>, 
  Heiko Stuebner <heiko@sntech.de>, Dmitry Baryshkov <lumag@kernel.org>, 
  Algea Cao <algea.cao@rock-chips.com>
 Cc: kernel@collabora.com, linux-phy@lists.infradead.org, 
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, Andy Yan <andy.yan@rock-chips.com>
+ linux-kernel@vger.kernel.org
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250902_100720_140551_0838F741 
-X-CRM114-Status: UNSURE (   6.51  )
+X-CRM114-CacheID: sfid-20250902_100720_875661_1BAECE77 
+X-CRM114-Status: UNSURE (   9.48  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -80,27 +79,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-These patches were initially part of the HDMI 2.1 FRL support series [1]
-aiming to provide a few fixes for the Samsung HDMI/eDP Transmitter Combo
-PHY.
+Due to its relatively low frequency, a noise stemming from the 24MHz PLL
+reference clock may traverse the low-pass loop filter of ROPLL, which
+could potentially generate some HDMI flash artifacts.
 
-I'm sending this as a distinct series right now, since the FRL part
-might require additional time for review.
+Reduce ROPLL loop bandwidth in an attempt to mitigate the problem.
 
-[1] https://lore.kernel.org/r/20250818-phy-hdptx-frl-v3-0-c79997d8bb2b@collabora.com
-
+Fixes: 553be2830c5f ("phy: rockchip: Add Samsung HDMI/eDP Combo PHY driver")
+Co-developed-by: Algea Cao <algea.cao@rock-chips.com>
+Signed-off-by: Algea Cao <algea.cao@rock-chips.com>
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
-Cristian Ciocaltea (3):
-      phy: rockchip: samsung-hdptx: Fix reported clock rate in high bpc mode
-      phy: rockchip: samsung-hdptx: Reduce ROPLL loop bandwidth
-      phy: rockchip: samsung-hdptx: Prevent Inter-Pair Skew from exceeding the limits
+ drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
- drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 27 +++++++++++++----------
- 1 file changed, 15 insertions(+), 12 deletions(-)
----
-base-commit: 33bcf93b9a6b028758105680f8b538a31bc563cf
-change-id: 20250902-phy-hdptx-fixes-7308ffea4c6a
+diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
+index aee03e8655f66d4b25de39bd2b2bf49d7a8b5b86..8ba9b53c2309b22a496574b7731377049f50068f 100644
+--- a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
++++ b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
+@@ -500,9 +500,7 @@ static const struct reg_sequence rk_hdtpx_common_cmn_init_seq[] = {
+ 	REG_SEQ0(CMN_REG(0043), 0x00),
+ 	REG_SEQ0(CMN_REG(0044), 0x46),
+ 	REG_SEQ0(CMN_REG(0045), 0x24),
+-	REG_SEQ0(CMN_REG(0046), 0xff),
+ 	REG_SEQ0(CMN_REG(0047), 0x00),
+-	REG_SEQ0(CMN_REG(0048), 0x44),
+ 	REG_SEQ0(CMN_REG(0049), 0xfa),
+ 	REG_SEQ0(CMN_REG(004a), 0x08),
+ 	REG_SEQ0(CMN_REG(004b), 0x00),
+@@ -575,6 +573,8 @@ static const struct reg_sequence rk_hdtpx_tmds_cmn_init_seq[] = {
+ 	REG_SEQ0(CMN_REG(0034), 0x00),
+ 	REG_SEQ0(CMN_REG(003d), 0x40),
+ 	REG_SEQ0(CMN_REG(0042), 0x78),
++	REG_SEQ0(CMN_REG(0046), 0xdd),
++	REG_SEQ0(CMN_REG(0048), 0x11),
+ 	REG_SEQ0(CMN_REG(004e), 0x34),
+ 	REG_SEQ0(CMN_REG(005c), 0x25),
+ 	REG_SEQ0(CMN_REG(005e), 0x4f),
+
+-- 
+2.51.0
 
 
 _______________________________________________
