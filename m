@@ -4,55 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8A6BCA1009
-	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Sep 2025 21:45:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C01B7CA1007
+	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Sep 2025 21:45:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:Cc:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QJt/jATDn4sghDWLNddsw+8txnnzeWs1bEkWlB0Bz3o=; b=P9D0PH7OjAvHMU5U2OwOt9aEnc
-	VNJui8Nl00CEr2jaPGRqTYy1AEC0hN/lvOB3bc7DOgdXcPWtaJuiJt+bhfasvAXJmcMkdLz5IFlmZ
-	xhZzmc5yMIOHyovsVkaSbXVGveGPgKqzJU3RN7jqXdAHxL/B9BckE8bxoEtfMS2Vrc7S+NLKZuNyw
-	iY12Zlr1YVU/VDNwQAmhoyW72bc0QZhHmA3qZ6DQ8AezZ0vo8Z2hjuboEkTAPwjb1r1kXEK3V78CM
-	LQKNtAznNnDAL+BZCZXmLZnalWke1AxBtAjCBY44OjT/0IphMbUkyY9yOPLZFGmbT4Dmru71P9fqt
-	dcLznH4w==;
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=T25w5I++f49Sy+As28lEigElAP/TRmW4SVf+bX57aFE=; b=Nk0vy/XKgleyeGTdaVNP6JqkyI
+	EmtNYrRi/KS4xJhsj2XIu51AJM7cKuIjLWWkXWWeYVoK9Aj/r/psrS4ud0r1+VzUJ+q+zphT1jgAk
+	8eBDGMqbOfZFXXPuaqp87Fq5g1ey+1mSfHQ17G15XSXROQw7WF9u70MJqAdCJmQzBCA+0wDHyJSpH
+	bM5oeRAkazuZe2CxebjKm1e88eSspRqls9cnwDp80w1v4BbtnpBCwr9eN70dbrEBLYFmZQ485FFEd
+	L8r5xGVWSPGfZULJrNhZQWyGpv+rZHj4fUtM/vbGOE2HzhYlDVzZSJm74SJwT5qrEOQYrw0RnQuP4
+	JmR/6NLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utYoa-00000002Dsu-2Pef;
-	Tue, 02 Sep 2025 21:45:20 +0000
+	id 1utYor-00000002EE3-1C8W;
+	Tue, 02 Sep 2025 21:45:37 +0000
 Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utUTi-000000017JZ-42OQ;
-	Tue, 02 Sep 2025 17:07:31 +0000
+	id 1utUy1-00000001EN5-0dPp;
+	Tue, 02 Sep 2025 17:38:49 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 44E6E6021A;
-	Tue,  2 Sep 2025 17:07:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 30155C4CEED;
-	Tue,  2 Sep 2025 17:07:28 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 91CBF60055;
+	Tue,  2 Sep 2025 17:38:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9AFE0C4CEED;
+	Tue,  2 Sep 2025 17:38:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1756832850;
-	bh=IYDkzilxbSRyvx9Io0tT0IQnawm6gQq1M15aM43RTy0=;
+	s=k20201202; t=1756834728;
+	bh=J9yRl+1sYXysHV78nqhCneCzmXn+YCT41OoxWUn1W70=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=QrJcHnY2/wjwWY+uPJoel9dpLf4kO7HdRU6XfNCfelnVc14HkpJBicDAYW3ppNTJA
-	 zDtST6cdUj/fpUtCh1fdfTBW6oTh+xS3J6pr5Y4TlOuIuwTQn5likfZAlWe/x5gPZu
-	 dgIz5ucR3jdTarirjfImBycxGgX25tWjBXNetCXkbAR8RxmHDzC0q0uCAPK8WoE4+M
-	 tuEG8LKwJNUsqoR+l/XjRIzziPicjVv0D8Z3Fa/lPjyOeLABlHA8p2jd79ULtQ8tnE
-	 lPYzPJWO25WBnAn/VqyYrfzYh0xj7tumOMcunOQdGWGSO4bfNc/MW8ruyl7SAfD9eY
-	 C8oiFXpa8hRcA==
-Date: Tue, 2 Sep 2025 19:07:25 +0200
+	b=galXQsTOy6Nmhq4l/sFifocjOVmnYPMbu8QyED/3YdiDrrbJorHsB1SSIeS8E6VvP
+	 Uz+fs/dvHmXrxaqQG5+c0G2fxRLr7YSOtoIOiGUpG69ni3FlIouslNveVnfbEij/cl
+	 RzMet1lZ8FhUsFQhmrLd2DSXG8IQ9kYJbEAJ97asib0On812k+/z8CuGS4eXpWuY5j
+	 qfs5vGdt4d25mKDA3GOIk7wddbRrKMIirbO4dwqdautQDKZEd+78TzNegkAhWlFgwD
+	 psUHTpD9kaT87XUaarJ9TjeZFIomKjHheKcfAEvYqzPouSTvUzBJaSzPa7VNXCdFw+
+	 RJfS5DqyBFvhw==
+Date: Tue, 2 Sep 2025 19:38:44 +0200
 From: Maxime Ripard <mripard@kernel.org>
 To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-Subject: Re: [PATCH v7 00/10] Add support for RK3588 DisplayPort Controller
-Message-ID: <3ygqnj4idey7u4m7ltlv7pnfhkkvcepmpfdijdszctaeopq3ky@qteg33comjl3>
-References: <20250822063959.692098-1-andyshrk@163.com>
- <bochli5u37mhc6eup7h2oz3yeignofbbj4k5nrvm2k7zf6f4ov@t2sje4gmveqa>
- <d040da3e-501f-45d8-bcbb-95fa77e94a59@suse.de>
- <20250828-tangible-wakeful-coati-ec27d1@houat>
- <n3scvjsx2aec2ijnr5wwevkmhtegkts5nb43yti7dkjujqaezq@shbcy7ftibzo>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+	Simona Vetter <simona@ffwll.ch>, Sandy Huang <hjc@rock-chips.com>, 
+	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, Chen-Yu Tsai <wens@csie.org>, 
+	Samuel Holland <samuel@sholland.org>, Dave Stevenson <dave.stevenson@raspberrypi.com>, 
+	=?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, 
+	Liu Ying <victor.liu@nxp.com>, Rob Clark <robin.clark@oss.qualcomm.com>, 
+	Dmitry Baryshkov <lumag@kernel.org>, Abhinav Kumar <abhinav.kumar@linux.dev>, 
+	Jessica Zhang <jessica.zhang@oss.qualcomm.com>, Sean Paul <sean@poorly.run>, 
+	Marijn Suijten <marijn.suijten@somainline.org>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, 
+	linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org
+Subject: Re: [PATCH v2 1/8] drm/connector: let drivers declare infoframes as
+ unsupported
+Message-ID: <hyfwwfiazs4rspjre24zgf6n4uq3267qawnyxrksy7n4wfqiuq@46lcdlmdik3s>
+References: <20250819-drm-limit-infoframes-v2-0-7595dda24fbd@oss.qualcomm.com>
+ <20250819-drm-limit-infoframes-v2-1-7595dda24fbd@oss.qualcomm.com>
+ <20250820-artichoke-silkworm-of-election-521b5e@houat>
+ <v7w7xkefm6ap7delx7wsvxmc76fwptqhe4ehokzfh4baueb7hr@acrx36exv42v>
+ <20250827-adorable-ocelot-of-adventure-ba88b7@houat>
+ <jrvjvayhjczgb4yx3xshbv3e6ndzkmb7uu3ynoes2maniwjg37@hamxu5mzqmf7>
+ <20250901-illustrious-dark-kagu-f4ef76@houat>
+ <rkxdyzm4uwvq5nxw5q25qv2xqqqvirgn77u54jydebm6a2wrk3@m2y3y3zcjb4j>
 MIME-Version: 1.0
-In-Reply-To: <n3scvjsx2aec2ijnr5wwevkmhtegkts5nb43yti7dkjujqaezq@shbcy7ftibzo>
+In-Reply-To: <rkxdyzm4uwvq5nxw5q25qv2xqqqvirgn77u54jydebm6a2wrk3@m2y3y3zcjb4j>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,118 +83,202 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: neil.armstrong@linaro.org, sebastian.reichel@collabora.com, heiko@sntech.de, stephen@radxa.com, linux-kernel@vger.kernel.org, hjc@rock-chips.com, dri-devel@lists.freedesktop.org, Andy Yan <andyshrk@163.com>, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, yubing.zhang@rock-chips.com, naoki@radxa.com, Laurent.pinchart@ideasonboard.com, Thomas Zimmermann <tzimmermann@suse.de>, Andy Yan <andy.yan@rock-chips.com>, krzk+dt@kernel.org, robh@kernel.org, linux-arm-kernel@lists.infradead.org
-Content-Type: multipart/mixed; boundary="===============3391313660641089215=="
+Content-Type: multipart/mixed; boundary="===============7245558916772490607=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============3391313660641089215==
+--===============7245558916772490607==
 Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="kkc2r2aygpzd7tty"
+	protocol="application/pgp-signature"; boundary="rcrjatrx3rsahkt5"
 Content-Disposition: inline
 
 
---kkc2r2aygpzd7tty
+--rcrjatrx3rsahkt5
 Content-Type: text/plain; protected-headers=v1; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v7 00/10] Add support for RK3588 DisplayPort Controller
+Subject: Re: [PATCH v2 1/8] drm/connector: let drivers declare infoframes as
+ unsupported
 MIME-Version: 1.0
 
-On Thu, Aug 28, 2025 at 03:56:21PM +0300, Dmitry Baryshkov wrote:
-> On Thu, Aug 28, 2025 at 10:05:28AM +0200, Maxime Ripard wrote:
-> > On Thu, Aug 28, 2025 at 09:50:34AM +0200, Thomas Zimmermann wrote:
-> > > Hi
+On Tue, Sep 02, 2025 at 06:12:39AM +0300, Dmitry Baryshkov wrote:
+> On Mon, Sep 01, 2025 at 08:54:18AM +0200, Maxime Ripard wrote:
+> > On Wed, Aug 27, 2025 at 05:04:53PM +0300, Dmitry Baryshkov wrote:
+> > > On Wed, Aug 27, 2025 at 09:30:20AM +0200, Maxime Ripard wrote:
+> > > > On Wed, Aug 20, 2025 at 12:52:44PM +0300, Dmitry Baryshkov wrote:
+> > > > > On Wed, Aug 20, 2025 at 09:15:36AM +0200, Maxime Ripard wrote:
+> > > > > > Hi,
+> > > > > >=20
+> > > > > > On Tue, Aug 19, 2025 at 09:57:30PM +0300, Dmitry Baryshkov wrot=
+e:
+> > > > > > > Currently DRM framework expects that the HDMI connector drive=
+r supports
+> > > > > > > all infoframe types: it generates the data as required and ca=
+lls into
+> > > > > > > the driver to program all of them, letting the driver to soft=
+-fail if
+> > > > > > > the infoframe is unsupported. This has a major drawback on us=
+erspace
+> > > > > > > API: the framework also registers debugfs files for all Infof=
+rame types,
+> > > > > > > possibly surprising the users when infoframe is visible in th=
+e debugfs
+> > > > > > > file, but it is not visible on the wire.
+> > > > > > >=20
+> > > > > > > Let drivers declare that they support only a subset of infofr=
+ames,
+> > > > > > > creating a more consistent interface.
+> > > > > > >=20
+> > > > > > > Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcom=
+m.com>
+> > > > > >=20
+> > > > > > I'm not really convinced. Infoframes aren't really something yo=
+u should
+> > > > > > ignore, AVI is effectively mandatory, HDMI kind of is too, AUDI=
+O is if
+> > > > > > audio support is enabled, DRM is mandatory if HDR is used.
+> > > > >=20
+> > > > > Nevertheless, sun4i, innohdmi, adv7511, it6263 and rk3066 drivers
+> > > > > provide support only for the AVI infoframe.
+> > > >=20
+> > > > Yes, but it's still something we shouldn't paper over. The spec man=
+dates
+> > > > it, if drivers want to deviate from it it's something we should warn
+> > > > about, not silence.
+> > > >=20
+> > > > sun4i is a good example, to me at least since I have the doc. The
+> > > > hardware supports AVI, Audio, ACP, and SPD. HDR isn't supported, so=
+ DRM
+> > > > isn't either. The only missing one is HDMI, but the documentation i=
+sn't
+> > > > the best so it might still be supported. In short, it's a driver is=
+sue.
+> > > >=20
+> > > > adv7511 supports AVI, Audio, ACP, SPD, ACP, and looks to have a
+> > > > mechanism to send any infoframe as is. So, again, driver issue.
 > > >=20
-> > > Am 28.08.25 um 00:24 schrieb Dmitry Baryshkov:
-> > > > On Fri, Aug 22, 2025 at 02:39:44PM +0800, Andy Yan wrote:
-> > > > > From: Andy Yan <andy.yan@rock-chips.com>
-> > > > >=20
-> > > > >=20
-> > > > > There are two DW DPTX based DisplayPort Controller on rk3588 which
-> > > > > are compliant with the DisplayPort Specification Version 1.4 with
-> > > > > the following features:
-> > > > >=20
-> > > > > * DisplayPort 1.4a
-> > > > > * Main Link: 1/2/4 lanes
-> > > > > * Main Link Support 1.62Gbps, 2.7Gbps, 5.4Gbps and 8.1Gbps
-> > > > > * AUX channel 1Mbps
-> > > > > * Single Stream Transport(SST)
-> > > > > * Multistream Transport (MST)
-> > > > > * Type-C support (alternate mode)
-> > > > > * HDCP 2.2, HDCP 1.3
-> > > > > * Supports up to 8/10 bits per color component
-> > > > > * Supports RBG, YCbCr4:4:4, YCbCr4:2:2, YCbCr4:2:0
-> > > > > * Pixel clock up to 594MHz
-> > > > > * I2S, SPDIF audio interface
-> > > > >=20
-> > > > > The current version of this patch series only supports basic disp=
-lay outputs.
-> > > > > I conducted tests with DP0 in 1080p and 4K@60 YCbCr4:2:0 modes; t=
-he ALT/Type-C
-> > > > > mode was tested on Rock 5B, DP1 was tested on Rock 5 ITX by Steph=
-en and Piotr.
-> > > > > HDCP and audio features remain unimplemented.
-> > > > > For RK3588, it's only support SST, while in the upcoming RK3576, =
-it can support
-> > > > > MST output.
-> > > > >=20
-> > > > [skipped changelog]
-> > > >=20
-> > > > > Andy Yan (10):
-> > > > >    dt-bindings: display: rockchip: Add schema for RK3588 DPTX Con=
-troller
-> > > > >    drm/bridge: synopsys: Add DW DPTX Controller support library
-> > > > >    drm/rockchip: Add RK3588 DPTX output support
-> > > > >    MAINTAINERS: Add entry for DW DPTX Controller bridge
-> > > > I tried pushing patches 1-4, but got the following error:
-> > > >=20
-> > > > dim: ERROR: 5a68dcf5837a ("MAINTAINERS: Add entry for DW DPTX Contr=
-oller bridge"): Mandatory Maintainer Acked-by missing., aborting
-> > > >=20
-> > > > I'm not sure how to handle MAINTAINERS changes (or whether it's fin=
-e for
-> > > > me or not), so I will probably push patches 1-3 in a few days, if n=
-obody
-> > > > beats me (or unless somebody points out a correct process for
-> > > > MAINTAINERS changes).
+> > > I've send a patch, enabling SPD and VSI (HDMI) InfoFrames on ADV7511.
 > > >=20
-> > > That warning has been added recently to make sure that patches do not=
- get in
-> > > without sufficient review. It's overly pedantic, though.
+> > > >=20
+> > > > I couldn't find the other datasheet, but I'd be very surprised if it
+> > > > wasn't the case for these too.
+> > > >=20
+> > > > > Some of them can be extended to support other infoframe kinds (e.=
+g.
+> > > > > ADV7511 has two spare infoframes which can be used for HDMI and S=
+PD).
+> > > > >=20
+> > > > > > SPD is indeed optional though.
+> > > > > >=20
+> > > > > > So, it's really dynamic in essence, and not really something we=
+ should
+> > > > > > expect drivers to ignore.
+> > > > > >=20
+> > > > > > I do acknowledge that a lot of drivers just silently ignore the
+> > > > > > infoframes they don't support at the moment, which isn't great =
+either.
+> > > > > >=20
+> > > > > > Maybe we should standardize and document what drivers should do=
+ when
+> > > > > > they don't support a given infoframe type?
+> > > > >=20
+> > > > > The chips might be generating infoframes internally. This series =
+was
+> > > > > triggered by LT9611UXC, which does all HDMI work under the hood i=
+n the
+> > > > > firmware. See [1]. The series I posted hooks HDMI audio directly =
+into
+> > > > > the bridge driver, but I'd really prefer to be able to use
+> > > > > drm_atomic_helper_connector_hdmi_hotplug(), especially if I ever =
+get to
+> > > > > implementing CEC support for it.
+> > > > >=20
+> > > > > ADV7511 likewise generates audio infoframe without Linux
+> > > > > help (audio-related fields are programmed, but it's not the
+> > > > > infoframe itself).
+> > > >=20
+> > > > Implementing the write_infoframe hooks as a nop with a comment in t=
+hose
+> > > > case is totally reasonable to me.
+> > > >=20
+> > > > I'd still like to document that drivers should only return 0 if they
+> > > > programmed the infoframe, and -ENOTSUPP (and the core logging a war=
+ning)
+> > > > otherwise.
+> > > >=20
+> > > > That way, we would be able to differentiate between the legimitate
+> > > > LT9611UXC case, and the "driver is broken" sun4i (and others) case.
+> > >=20
+> > > I don't want to end up in a sitation where userspace has a different
+> > > idea of the InfoFrame being sent than the actual one being present on
+> > > the wire.
 > >=20
-> > It's not "overly pedantic", it follows the contribution rules. I'd argue
-> > that, if anything, we've been overly tolerant with that kind of
-> > practices.
+> > It's not ideal, sure, but also, what's wrong with it? We're doing it
+> > *all the time*. Modes programmed by userspace are adjusted for the
+> > hardware, and thus the mode reported by the CRTC turns out different
+> > than the one actually used in hardware. Audio sampling rates might not
+> > match exactly what we're doing. The quirks infrastructure disables part
+> > of the EDID the userspace has access to, etc.
 > >=20
-> > We do have a bug with handling MAINTAINERS changes at the moment. But
-> > everything else shouldn't be ignored: either patch MAINTAINERS to
-> > reflect the actual contribution path, or get the maintainers Ack.
+> > And all those are under the userspace control, which the infoframes
+> > aren't.
 >=20
-> For me that points out that MAINTAINERS changes should be integrated
-> into the corresponding driver patch rather than being a separate patch.
+> I think there is a differnece between 'change userspace input',
+> 'knowingly mangle data' and 'lie to userspace because the driver doesn't
+> care'. This is especially important e.g. if a user is trying to debug
+> AV issues which can be caused by wrong information in the infoframe.
 
-Not really. It's really just a bug in dim, there's no hidden intent :)
+We can play semantics if you want, but the line is *very* fine between
+"mangling data" and "lying".
+
+If the mode has been mangled, and you don't report that it has been to
+userspace, are you lying?
+
+I guess you could argue both ways, but it's really the same than what
+we're discussing here. Except for the fact that one is a central part of
+the uapi, that the userspace depends on, and one is a debugfs file that
+*isn't* a uAPI, and the userspace really shouldn't depend on.
+
+> > > It seems, we need several states per the infoframe:
+> > >=20
+> > > - Not supported
+> >=20
+> > Honestly, I'm not sure we need a state for that one. If that infoframe
+> > was set by the framework, then the driver must support it. And if it
+> > wasn't, then there's nothing in debugfs.
+>=20
+> Yes, I ended up dropping this and having two separate flags.
+>=20
+> >=20
+> > > - Autogenerated
+> >=20
+> > Do we have any way to read them back on those?
+>=20
+> Usually not. E.g. I don't think I can read back Audio InfoFrame on
+> ADV7511. Nor can I read InfoFrames on LT9611UXC.
+
+Then if you don't have access to it, we can just not register the
+debugfs files.
 
 Maxime
 
---kkc2r2aygpzd7tty
+--rcrjatrx3rsahkt5
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCaLckTAAKCRAnX84Zoj2+
-dvUNAYCXA+YfH43/lvB6Cay1XQoaT6hY+j/3vvS/vks7PUidYe3u20HeFQ6TDCMt
-fDk7xbsBfAg4iZlxbGaBsHx/isVkX0/hsjK1EZiqd0QFjc1leQ3iDtnQ7qFLJv9m
-BMMAuZ+5Zg==
-=yuqj
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCaLcrpAAKCRAnX84Zoj2+
+dmn+AX9uKTQUrvsMDdQUvDxi/gST+e7W9A4EczjnFgGEq5QN5en8i+F/9RXq/HUg
+FCAoXccBgLwnwYPqh00A635JjRQAGg5eljItdNuu9ZTITiOIath6Qz4WyYpmdyUF
+HAFD2hq1nQ==
+=L//j
 -----END PGP SIGNATURE-----
 
---kkc2r2aygpzd7tty--
+--rcrjatrx3rsahkt5--
 
 
---===============3391313660641089215==
+--===============7245558916772490607==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -186,5 +289,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============3391313660641089215==--
+--===============7245558916772490607==--
 
