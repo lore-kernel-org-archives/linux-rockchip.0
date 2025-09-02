@@ -4,59 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 797E3CA1005
-	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Sep 2025 07:00:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36F56CA1005
+	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Sep 2025 07:58:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JskoFqCJ4L+JO+uOFZlAq1kFZCzpsLXYKn3ATuu9s80=; b=hZ0TSC6Cv0o6t9
-	8+t7uxhwtb1GwLavUH/IdSiUhg+zvTpiKFDYvVhlN64m2WwM/+A3zEM8Fu+UjzMslDa8gID0dIxl4
-	wru8sf3JtiL/hdYOS4Ouo5EWyqZ4ve5y3tZh04Xotv05oF6hik25IDyyQ4l62Js7EcMW31fRKkdeV
-	wUAmc8hjOdhxAd0iwxIBDIi2PCYTPxQFKW890EKVp21jfw5oNTvr3K/L992SW4ZBghs94SPuIfJ0v
-	Rq++DncsbCbw3Uvdp0u+pYjnmy4VPC5na62SldNVW5ZzJFbrolK5YFzbzuIWHQ+ANBzMLYnbwc3RS
-	mPThz6V6qcLGQHLP2HdQ==;
+	List-Owner; bh=9qRlTALc7XqdXVsmCh/jZ1lT6LQjbJ27Ey/m7ih4S/M=; b=yhD0YNl4GclxbP
+	laVfbuR508Db0aZv+bxyxMWli585AhFjtPRRccwmdWIOWzhV/FlTS6zm+zfmhqTs/PTD3qAfFbFWN
+	/S8O7Y/mMFcjO9kU3Iql1iSEZaExFSTLkAvl7Cds003iCgqz8plSzQN2NCPis8KylcOJ668SF8Y8z
+	qba5uc8mydxmjlTGYov3hNBn6GwbtGKvg68jH5O0jD/9c70jj6VJT6vkOetXR+wLheL6CrmIQeezo
+	fapZkdtVCpiRP81+IL4WnliGtkfJ9/myr7htjZq4Ta2WZIdyBoBC5YjKS2TjbTpHbNqFv7oHD3u0p
+	wRPt411mpNPHkl8IzBhg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utL0U-0000000Fe7m-1ZfB;
-	Tue, 02 Sep 2025 07:00:42 +0000
-Received: from mail-m155101.qiye.163.com ([101.71.155.101])
+	id 1utLug-0000000FsHW-026s;
+	Tue, 02 Sep 2025 07:58:46 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utL0R-0000000Fe50-1OWu;
-	Tue, 02 Sep 2025 07:00:40 +0000
-Received: from localhost.localdomain (unknown [119.122.212.9])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 2164fd079;
-	Tue, 2 Sep 2025 15:00:22 +0800 (GMT+08:00)
-From: Chukun Pan <amadeus@jmu.edu.cn>
-To: xunil@tahomasoft.com
-Cc: amadeus@jmu.edu.cn,
-	andrew@lunn.ch,
-	conor+dt@kernel.org,
-	devicetree@vger.kernel.org,
-	heiko@sntech.de,
-	krzk+dt@kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 3/4] arm64: dts: rockchip: Add HINLINK H68K
-Date: Tue,  2 Sep 2025 15:00:19 +0800
-Message-Id: <20250902070019.856305-1-amadeus@jmu.edu.cn>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20250901100639.234ba07b.xunil@tahomasoft.com>
-References: <20250901100639.234ba07b.xunil@tahomasoft.com>
+	id 1utLqI-0000000Fqhs-2lCJ;
+	Tue, 02 Sep 2025 07:54:15 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 671F843DDC;
+	Tue,  2 Sep 2025 07:54:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9EDD7C4CEF7;
+	Tue,  2 Sep 2025 07:54:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1756799654;
+	bh=3nc/wkBY2bIc1bkSOsEmjMvNtgdGFa44cp61YSHyt68=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=J+9aQw9ulXkFfxweHD0usIU9tUka6m/saOX7lfURvNS73/s+vZUjXpPiwvIF0aPs9
+	 kMLLegURfcv+TrpfzoGri1z3EELyoDPZTwLlumruzT4Fg+71EWCh3/KqtjQM+nO+5O
+	 WA39kPdE4IiGiY/L1BCXWnJ6etZuDIqW3nZ27GXvyUGBAjbKtYmDWY02Lj+OteWC/+
+	 UTmSurQWJz12coiGLFdRx21aeS1Zu61/y8B5sgauy4bW/kXhH6rf5GliYRFALACxP7
+	 gWN+LYta+UqsP667bGMEMOzWMGDIofIa1g12JVsHTsdlx2kpD/IO9C6Ps14ZUVIiSC
+	 UztVm3kqf4aCA==
+Date: Tue, 2 Sep 2025 09:54:11 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Michael Riesch <michael.riesch@collabora.com>
+Cc: Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Vinod Koul <vkoul@kernel.org>, 
+	Kishon Vijay Abraham I <kishon@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	Kever Yang <kever.yang@rock-chips.com>, Jagan Teki <jagan@amarulasolutions.com>, 
+	Sebastian Reichel <sebastian.reichel@collabora.com>, Diederik de Haas <didi.debian@cknow.org>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Collabora Kernel Team <kernel@collabora.com>, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, 
+	stable@kernel.org
+Subject: Re: [PATCH v3 2/7] dt-bindings: phy: rockchip-inno-csi-dphy: make
+ power-domains non-required
+Message-ID: <20250902-diligent-satisfied-oxpecker-10ea0e@kuoka>
+References: <20250616-rk3588-csi-dphy-v3-0-a5ccd5f1f438@collabora.com>
+ <20250616-rk3588-csi-dphy-v3-2-a5ccd5f1f438@collabora.com>
 MIME-Version: 1.0
-X-HM-Tid: 0a99093a0aff03a2kunm41dc6c2c7aad6
-X-HM-MType: 10
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlCH08aVk5CHUwaSEJLHR1CS1YeHw5VEwETFhoSFy
-	QUDg9ZV1kYEgtZQVlKSkJVSklJVUlKSVVCWVdZFhoPEhUdFFlBWU9LSFVKS0lCTUtKVUpLS1VLWQ
-	Y+
+Content-Disposition: inline
+In-Reply-To: <20250616-rk3588-csi-dphy-v3-2-a5ccd5f1f438@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250902_000039_572832_4631EDDD 
-X-CRM114-Status: UNSURE (   5.71  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250902_005414_721613_869D3A3D 
+X-CRM114-Status: GOOD (  15.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,23 +81,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On Mon, Sep 01, 2025 at 10:47:43PM +0200, Michael Riesch wrote:
+> There are variants of the Rockchip Innosilicon CSI DPHY (e.g., the RK3568
+> variant) that are powered on by default as they are part of the ALIVE power
+> domain.
+> Remove 'power-domains' from the required properties in order to avoid false
+> negatives.
+> 
+> Fixes: 22c8e0a69b7f ("dt-bindings: phy: add compatible for rk356x to rockchip-inno-csi-dphy")
+> Cc: stable@kernel.org
+> Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
+> ---
+>  .../devicetree/bindings/phy/rockchip-inno-csi-dphy.yaml   | 15 ++++++++++++++-
+>  1 file changed, 14 insertions(+), 1 deletion(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/phy/rockchip-inno-csi-dphy.yaml b/Documentation/devicetree/bindings/phy/rockchip-inno-csi-dphy.yaml
+> index 5ac994b3c0aa..9ad72518e6da 100644
+> --- a/Documentation/devicetree/bindings/phy/rockchip-inno-csi-dphy.yaml
+> +++ b/Documentation/devicetree/bindings/phy/rockchip-inno-csi-dphy.yaml
+> @@ -51,13 +51,26 @@ properties:
+>      description:
+>        Some additional phy settings are access through GRF regs.
+>  
+> +allOf:
 
-> So what I said earlier regarding rgmii vs rgmii-id DOES NOT hold up
-> under more rigorous and careful testing.
+Please move it after required: block.
 
-So the following question does not exist?
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
->> Changing this makes a huge difference in the ethernet throughput speed. With
->> rgmii-id mode specified, throughput is about 6.5 Mbs. Changing this to rgmii
->> mode increases throughput to about 960 Mbs.
-
-If the iperf3 test does not reach Gigabit, you can run it in
-multiple threads. e.g. `iperf3 -c xxx -P 4`
-
---
-2.25.1
-
+Best regards,
+Krzysztof
 
 
 _______________________________________________
