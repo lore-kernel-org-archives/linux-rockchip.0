@@ -4,82 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70A76CA0FF2
-	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Sep 2025 17:24:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01048CA1009
+	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Sep 2025 17:41:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8asZlScxwRw4h1wRKVRYjchPlnydlo1px8f8+zKB5Bo=; b=b52TMAYTW7+fOM
-	hkSMTxmjAd1Gwq7So1pGv0Fu7fyYDaBggLd/71ZNQA3GgmJ4II84GwxWA00ImiXDE1ciNB0QKPYE6
-	XncageNvGujD5+2kW56FvPvoucgFxKk+E9QAMwwhJgVAZx6KTT1HtnPmffzJCd9P/vF2HpnbaW9kf
-	Knum2lmbAJ0tyTZNgrJLaKqCE8Gz9sXafJCimg2OOlApT8O2XjhiIUVhTO3QzSq0ZXqGvktgGGjHU
-	TNGgBAJuoJRBd+gQdUNX/J6EEnWxSWOX76YcHEQo1TDsDqcALzZYdbSVlKL/tXdHnts9STZKD1Bfd
-	UYl0IKK0TpQFoeKFWXxw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OZzDTDeibGtZLmxsv9Kkm0pVUsG766MVsx27932ihOI=; b=2oQM5xg0hlT4n9hIN3/qlMCls3
+	E3FdU/ucngqKt17zN7arXI0kebPL1mA84M9zsHaHq5eL4+aaV3NpFHjEo0at8K19t31IdMvhsbQmb
+	ziFUIBkjwihzHk6zFLdoYSrtR6+Ml9j8eQXaX/8LUE4MQaqQkjuxFqsyhgUBlELVXavGQm+rhIaLI
+	6EY3jMtwqjYYxYEoUlRdw8i6NEE/+/hg9Ciygtwad/w6oOK0l4vXY27TD3LIhR4fup3C2RyxCRGkS
+	nlj8/j7vWzQzoGNZeZrwXjZhS/UFb4wpiwo3Pd/Ul95Tgfs/k358AQAMOsbhD4sC3X3QGkmPIwHfd
+	UgFBapYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utrDQ-00000007BOj-32jA;
-	Wed, 03 Sep 2025 17:24:12 +0000
-Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
+	id 1utrTe-00000007DEf-3dnC;
+	Wed, 03 Sep 2025 17:40:58 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utng3-00000006cYE-1jJE;
-	Wed, 03 Sep 2025 13:37:32 +0000
-Received: by mail-ed1-x536.google.com with SMTP id 4fb4d7f45d1cf-61e8fdfd9b4so2051754a12.1;
-        Wed, 03 Sep 2025 06:37:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1756906650; x=1757511450; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=PbL/EGQbhxJhOitVzc5HwwJYAZFXLJWkRn1NxA9OrZc=;
-        b=KIo/pYVWeuNL/d7N3BAkUf8PAEgwmqRz9Pokd2Yb1VHBYg0ncvbImS7A9Lr/dd0mxV
-         4ooguxEMmudczldpUjXnCgir6SbYgAxUBOqFbXvZh0y1hh+BIcQijXsmA88ZBRiJXox7
-         giuSCEosOh63miFUQPKvgK+rGk2h/IpszzrvobGjEQUYCL79F69R3jM/5vMJ8WkbdjQf
-         VSwfL+UScwdeTFQ0pF+FDSLfrGYM9vs+mefoCRU2klWbgx4YG7i4CKdFBMbeExDCPppk
-         nH36P4B6aZYO9s/+XACP+x540ijTthmc0DcQkmd7EoXpyZ010abmI8D0oQ/0R9Ctwh6K
-         kG1Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1756906650; x=1757511450;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=PbL/EGQbhxJhOitVzc5HwwJYAZFXLJWkRn1NxA9OrZc=;
-        b=CW7tWvsKsr7QMzIjl5+zyqkmWHXaqaSHiktPaespUjr5Oht+kekDZGrkkCVr4f0C7o
-         ly+HSnHS7dAteepAmP/Sjk93iJd5/z12jew6Sedrc4zXLUHJgk2+CWzDVLnIbX6IUOfP
-         KqFJj+zZq5/JJ0vI4/mFTsn8HFdGz2h41NW560hB2jvqJZL5uS9AZ4Hm3+Qow5c4FLW9
-         N3U/9Wtn5xG04FRFL2dtthbn9nkNI2zv0AcioPB0ygU50pTVINUwmptlDDVHd7a8rNv8
-         MWYtJ4wU7zdfC3lJ0HIVvCEXhvvUEVIDPYtE/olIdRPwgrRFqlZS8AyiLnDkr00QrEYy
-         tddQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVvbw6DtnrkwLqaw2gCC+EO4ZPF1qgnRuc60Pa9s8vwURqreXbEBczxQjM74h+yk8Pney52y2hgALYqR0+D5j8=@lists.infradead.org, AJvYcCXLksKz847TTsF30P3OJrMwd3ODbiepoY5ErcuJ3bttm0fxA1UAq2Ixbskp585oodkPec8sL66njZmnODQ04EiB@lists.infradead.org
-X-Gm-Message-State: AOJu0YxVvx6ptH3uyl+RMnr1gJxu5Q99lEuj8Djut3hhqJ9XmtNXIB8C
-	G0dyN/PNQc7O1boFaYorznSDm+GdUDN1zFS58ybWq8WEG3NkxfBb86sdfe30nWLMrZA1GFr+pUS
-	eXlOAJVX1mW3KWFpF9m1UMPGS6kDoU2w=
-X-Gm-Gg: ASbGnct4VAg1kAnwQLpInMry4QH2FYqoDm4XYMmhZL9wflFG71coe1AbSm5ulyUtYsT
-	gMsGs8Wz4etoqY4xMl7ijR/lePfq3MoR4gblaGjNHwk/v6Fb1GGceucCwmagPTygMnbmGoxPm9E
-	Rwy9aZbjTAFlzyzDqs0Ds02WR9JfLseFp5rkiCRqKbwdytrPaJOvKglJ/2TM5sBhCB2b5hl7BWP
-	g2S+QTtGp5yfPllVb+Q7u2qVejEVqnMVTbS
-X-Google-Smtp-Source: AGHT+IHvQXQHTKEMoyFaTqaFVMbln/qgY7S7KV3L7ZG8Nf/m54vluMUEQq7iKiQYNXvspMMnhgUINllpQJ2XVCLCUPs=
-X-Received: by 2002:a05:6402:3494:b0:61d:9a4c:d03 with SMTP id
- 4fb4d7f45d1cf-61d9a4c0e7cmr11965634a12.13.1756906649669; Wed, 03 Sep 2025
- 06:37:29 -0700 (PDT)
-MIME-Version: 1.0
-References: <20250831104855.45883-1-cn.liweihao@gmail.com> <20250831104855.45883-2-cn.liweihao@gmail.com>
- <42028191.XM6RcZxFsP@phil>
-In-Reply-To: <42028191.XM6RcZxFsP@phil>
-From: =?UTF-8?B?5p2O57u06LGq?= <cn.liweihao@gmail.com>
-Date: Wed, 3 Sep 2025 21:37:25 +0800
-X-Gm-Features: Ac12FXx8u4DAg0EdT2iuAXVd9emM64ORc15VdHEwcPQcLyGaOTv-5kYx7yMGYWo
-Message-ID: <CAPEOAkTjVN4auBj_CLrt0XN6SqU2=ogLjZDecEwGx00pixJNAw@mail.gmail.com>
-Subject: Re: [PATCH v1 1/7] drm/rockchip: dsi: Add support for RK3368
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: robh@kernel.org, hjc@rock-chips.com, andy.yan@rock-chips.com, 
+	id 1utnnJ-00000006dp9-1ngd;
+	Wed, 03 Sep 2025 13:45:02 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1756907098;
+	bh=ueWHIf9d79yBu/xoe2MyNyLUSaPK1ynnR4XQhYYYAAg=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=gygmG0jefBTVHTdvu7MTAa1kGNz0BtjW8x4yYTuee16ehpKx5198ZSqNRqXNH5ynr
+	 fHvybg3f/PiNcsYz5nzjg7DKdlmoqUckBN9F8xB8IeADqDTCcHpWUFWEaRlKzR8yIP
+	 bjIO5PVx4kKJpxOGi9yynyilLPxu9147ONUaURTyO/QCdc22pq0/Y1qhDyR0Iy4+TN
+	 bBKFLj6kOhMOGhHreQM5+9mGdvAtBX8sYXqUDuTT5rHrsocV5mufSQS88mFOoSJ0FY
+	 sZ2jNgRB3/RZQC54P6bIpfdDhVGmNpPtqsrgGgPgYvMbQYhuPVBY57VYaZrOttJqaX
+	 J4mRJNaDDThuQ==
+Received: from [IPv6:2606:6d00:11:5a76::5ac] (unknown [IPv6:2606:6d00:11:5a76::5ac])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 262D717E0199;
+	Wed,  3 Sep 2025 15:44:57 +0200 (CEST)
+Message-ID: <d70c5113608c89fd79687a7669b0fa53140bea7b.camel@collabora.com>
+Subject: Re: [PATCH v2 1/7] media: rkvdec: Add HEVC backend
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Jonas Karlman <jonas@kwiboo.se>, Detlev Casanova
+	 <detlev.casanova@collabora.com>
+Cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Mauro Carvalho Chehab
+	 <mchehab@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Alex Bee
+	 <knaerzche@gmail.com>, Sebastian Fricke <sebastian.fricke@collabora.com>, 
+	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
 	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-clk@vger.kernel.org
+	linux-kernel@vger.kernel.org
+Date: Wed, 03 Sep 2025 09:44:54 -0400
+In-Reply-To: <8394c12a-1e1e-44fc-9bb5-92a464dfe410@kwiboo.se>
+References: <20250810212454.3237486-1-jonas@kwiboo.se>
+	 <20250810212454.3237486-2-jonas@kwiboo.se>
+	 <432ab63698b27ca5bce3a7a30d630685aff782b6.camel@collabora.com>
+	 <8394c12a-1e1e-44fc-9bb5-92a464dfe410@kwiboo.se>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+Organization: Collabora Canada
+User-Agent: Evolution 3.56.2 (3.56.2-1.fc42) 
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250903_063731_454650_66B2A4B4 
-X-CRM114-Status: GOOD (  12.28  )
+X-CRM114-CacheID: sfid-20250903_064501_654427_F1867A29 
+X-CRM114-Status: GOOD (  32.27  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,27 +90,172 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============9176125947640876309=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGksCgpIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPiDkuo4yMDI15bm0OeaciDPml6Xl
-kajkuIkgMjA6MDflhpnpgZPvvJoKPgo+IGFzIGEgZ2VuZXJhbCByZW1hcmssIHRoaXMgcGF0Y2gg
-d2lsbCBsaWtlbHkgbmVlZCB0byB3YWl0IGZvciA2LjE4LXJjMSwKPiBiZWNhdXNlIGEgYmlnIHVw
-ZGF0ZSBvZiB0aGUgSElXT1JEX01BU0sgbWFjcm9zIHdhcyBtZXJnZWQgWzBdLgo+Cj4gU28gaW50
-cm9kdWNpbmcgYSBuZXcgdXNlciBub3cgd291bGQgY2F1c2UgaGF2b2sgOi0pIC4KPgo+IEFsc28g
-d2hlbiBzZW5kaW5nIGEgdjIsIHBsZWFzZSBiYXNlIGl0IG9uIHRvcCBvZiB0aGF0IGNoYW5nZXNl
-dCwgb3IKPiBqdXN0IHRha2UgbGludXgtbmV4dCBbMV0gYXMgYSBiYXNlLgo+Cj4gQWxzbyBpbiBh
-IHNlcGFyYXRlIHBhdGNoLCBwbGVhc2UgYWRkIHRoZSBuZWVkZWQgcmszMzY4IGVudHJ5IHRvIHRo
-ZQo+IGRldmljZXRyZWUgYmluZGluZyBbMl0sIHRoaXMgd2lsbCBwYWNpZnkgdGhlIGJvdCB0aGF0
-IGNoZWNrZWQgeW91cgo+IGRldmljZXRyZWUgY2hhbmdlcyA6LSkgLgo+Cj4gUGxlYXNlIGFsc28g
-bWFrZSBzdXJlIHRoYXQgcmVsZXZhbnQgYWRkaXRpb25zIHRvIHRoZSBsaXN0cyBiZWxvdwo+IGFy
-ZSBtYWRlICh0aGUgYmluZGluZyBjb250YWlucyBzcGVjaWZpYyBzZXR0aW5ncyBmb3Igc29tZSBj
-b250cm9sbGVycwo+IGZ1cnRlciBiZWxvdykgLgo+CgpHb3QgaXQuIEknbGwgcmViYXNlIG15IHBh
-dGNoIHNlcmlhbCB0byBsaW51eC1uZXh0IHRyZWUgYW5kIHRlc3QgaXQKYmVmb3JlIHNlbmRpbmcg
-djIsIGFuZCBJIHdpbGwgYWxzbyBhZGQgdGhlIG5lY2Vzc2FyeSBjb21taXQKZGVzY3JpcHRpb24g
-YW5kIGRldmljZSB0cmVlIGJpbmRpbmcgaW5mb3JtYXRpb24uCgpZb3VycywKV2VpaGFvCgpfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hp
-cCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8v
-bGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+
+--===============9176125947640876309==
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-01LGmJnWEk6ULtBixrzA"
+
+
+--=-01LGmJnWEk6ULtBixrzA
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hi,
+
+Le mercredi 03 septembre 2025 =C3=A0 09:28 +0200, Jonas Karlman a =C3=A9cri=
+t=C2=A0:
+> Hi Nicolas,
+>=20
+> On 8/29/2025 10:22 PM, Nicolas Dufresne wrote:
+> > Le dimanche 10 ao=C3=BBt 2025 =C3=A0 21:24 +0000, Jonas Karlman a =C3=
+=A9crit=C2=A0:
+> > > The Rockchip VDEC supports the HEVC codec with the Main and Main10
+> > > Profile up to Level 5.1 High tier: 4096x2304@60 fps.
+> > >=20
+> > > Add the backend for HEVC format to the decoder.
+> > >=20
+> > > Signed-off-by: Alex Bee <knaerzche@gmail.com>
+> > > Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+> > > Signed-off-by: Sebastian Fricke <sebastian.fricke@collabora.com>
+> > > Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+> >=20
+> > Re-reading myself, most of my comments were off or really "nitty". So l=
+et's move
+> > forward and spare you the v3. Detlev is happy to rebase and work on top=
+ of your
+> > series, so let's help everyone getting better RK codec support.
+> >=20
+> > Tested-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+> > Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+> >=20
+> > Just to be transparent, during testing, it was notice that some concurr=
+ent
+> > decoding resulted into failures. I tested Detlev port to structure regi=
+sters,
+> > and it didn't change anything (so probably not a stalled state, or one =
+that we
+> > control). This could easily be a HW issue with older chip. Since you ha=
+ve used
+> > this for years without major issue reported, I happy to move on.
+>=20
+> Thanks, I found some minor changes compared to the LibreELEC version
+> that I am running some new tests on, plan to send out a v3 as soon as
+> testing completes later today.
+
+Ok, I will be patient then.
+
+>=20
+> In LibreELEC version we enable some error detection,
+>=20
+> 	// sw_cabac_error_e - cabac error enable
+> 	writel(0xfdfffffd, rkvdec->regs + RKVDEC_REG_STRMD_ERR_EN);
+> 	// slice end error enable =3D BIT(28)
+> 	// frame end error enable =3D BIT(29)
+> 	writel(0x30000000, rkvdec->regs + RKVDEC_REG_H264_ERR_E);
+>=20
+> and in this series it was fully disabled to closer match H264/VP9:
+>=20
+> 	writel(0, rkvdec->regs + RKVDEC_REG_STRMD_ERR_EN);
+> 	writel(0, rkvdec->regs + RKVDEC_REG_H264_ERR_E);
+
+In error detection mode, the IP will emit an IRQ on the first error. It doe=
+s not
+self reset, this is just to let you read the macroblock index that wasn't
+decoded properly. The problem is that we don't know how to resume it. That =
+lead
+to HW lockup and timeout on packet lost during RTP streaming tests. It is l=
+ikely
+best to keep this off. It is meant to be used to do concealment of lost
+macroblock in software.
+
+>=20
+> There is also an extra memset(0, ...) in rkvdec_hevc_start:
+>=20
+> 	memset(priv_tbl, 0, sizeof(*priv_tbl));
+>=20
+> This should not really be needed and was removed in this series.
+
+Ack.
+
+>=20
+> Still unclear if any of these will result in a changed behavior. Enable
+> of cabac/slice end/frame end error could possible activate some more
+> states when block issue a self-reset, but I am only guessing.
+>=20
+> One thing to note for the flaky tests is that when they fail, they
+> typically just end up with a different consistent checksum. I have not
+> done any visual inspection of those frames, but will extract each frame
+> and compare them both bitwise and visually.
+
+Thanks, looking forward v3. Please note the fh changes, which I needed to
+manually apply here.
+
+Nicolas
+
+>=20
+> Regards,
+> Jonas
+>=20
+> >=20
+> > regards,
+> > Nicolas
+> >=20
+> > > ---
+> > > Changes in v2:
+> > > - Use new_value in transpose_and_flatten_matrices()
+> > > - Add NULL check for ctrl->new_elems in rkvdec_hevc_run_preamble()
+> > > - Set RKVDEC_WR_DDR_ALIGN_EN for RK3328
+> > > ---
+> > > =C2=A0.../media/platform/rockchip/rkvdec/Makefile=C2=A0=C2=A0 |=C2=A0=
+=C2=A0=C2=A0 2 +-
+> > > =C2=A0.../rockchip/rkvdec/rkvdec-hevc-data.c=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0 | 1848 +++++++++++++++++
+> > > =C2=A0.../platform/rockchip/rkvdec/rkvdec-hevc.c=C2=A0=C2=A0=C2=A0 |=
+=C2=A0 817 ++++++++
+> > > =C2=A0.../platform/rockchip/rkvdec/rkvdec-regs.h=C2=A0=C2=A0=C2=A0 |=
+=C2=A0=C2=A0=C2=A0 2 +
+> > > =C2=A0.../media/platform/rockchip/rkvdec/rkvdec.c=C2=A0=C2=A0 |=C2=A0=
+=C2=A0 76 +
+> > > =C2=A0.../media/platform/rockchip/rkvdec/rkvdec.h=C2=A0=C2=A0 |=C2=A0=
+=C2=A0=C2=A0 1 +
+> > > =C2=A06 files changed, 2745 insertions(+), 1 deletion(-)
+> > > =C2=A0create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvde=
+c-hevc-data.c
+> > > =C2=A0create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvde=
+c-hevc.c
+>=20
+> [snip]
+
+--=-01LGmJnWEk6ULtBixrzA
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaLhGVgAKCRDZQZRRKWBy
+9FCIAQCI6CQzFHJa2ahw9v9vkMrM8rY/vHwc0Y9bQvtjN0ajggD+IDtToz6FywF5
+f3aZ8Z6hHZTjgca9WG/TO6CEF2n7swQ=
+=kQsS
+-----END PGP SIGNATURE-----
+
+--=-01LGmJnWEk6ULtBixrzA--
+
+
+--===============9176125947640876309==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============9176125947640876309==--
+
