@@ -4,74 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD80ECA0FF2
-	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Sep 2025 12:33:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2FE0CA0FF2
+	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Sep 2025 12:50:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=B8ZKqo7hduWn2nC3b/cIeuzJXd+l3c8pq/WZE30xHao=; b=BejZ8SoSaB/ABM
-	m+y6XSABquR2rWrC3bqB9DFpdrCt/S1zqulWcIX4Wix4SjZ/HWHvWz7pLAkUW9qNhCIZxQoNcXqeK
-	zYFT+em72K9UinJMFpe+ycwaWg7R9iMkc84o6XdHzP0gJvbIZsLlDk60d6MwKT98Tg8rqNNSwsUkv
-	pnMkhnp/K53mERp/0gCuEUhkef0SymqMse5ivznUcwnKdfQiSzN7pef5PRvlRwJn1JNM38q4q12hK
-	d+98Owcgin2zDc6eMyws+h8m5Fpd56At5VYmO9G52Pimoc6vvVsPs2jEHbuYzuOJnkrOCS0FN/o32
-	rBWhRt3lpeDHuNNjMqGw==;
+	List-Owner; bh=STnN5dZOubIXJcwmqNIMEblX9oDqhlwINBf48d6zmZw=; b=OpCaANzYqh4xIK
+	LK1t6vv9QeOyUXhYRupgYJRrHqnCUjrMcNAZLvn/FPENKA5BFwopBq8Quh1k3uWA5HGDgcRtYPOsx
+	70lXVAHbTTf1jlALtSFR0cCjPtXOYFpsL1AoU5P1fQtwmtUUzkXj5lh3WgGCWvp34Rqs5Ke/qijq1
+	u6X7MQw60bT4nxOqVIPaE8l/hii34hx57mZp0pqCgk6sLwcgfWgonrjp7RZjdQCdqf6GGTL9qVWQV
+	kQXRue2icZzmluWasbcVvSqhY7G8RxgpioqOIAvAwYvDLO+LuZom8v3n2MsEsf2OoZwq9pozl1kVt
+	9SEqNg0mF8UqANvcoekg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utmfc-00000006OZT-2CWv;
-	Wed, 03 Sep 2025 12:33:00 +0000
-Received: from m16.mail.163.com ([117.135.210.4])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utlMk-00000006BUZ-2Vkc;
-	Wed, 03 Sep 2025 11:09:28 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version; bh=w+
-	YFILZ09hDE7uhPppDTedo0FA7XkYeemu7K3M7CyI4=; b=aGiseXeYgE8b37dozA
-	lM3/ijkpdYDSuEG7wY4xVEix53kGXB7yaevpQpqDRd4IdKmIR39jh6pVge2N+74r
-	ZcaVXY4Rv09KHOtH7CZyBnC9a+Ulwrgk6c5ZH/CGVXC6Ej9Cl+YYOZf9wun+TOap
-	0vJGYohe0q5xQApM9XyOYBj+o=
-Received: from ProDesk.. (unknown [])
-	by gzga-smtp-mtada-g1-4 (Coremail) with SMTP id _____wC3ZLuqIbhoXAZsFw--.3268S3;
-	Wed, 03 Sep 2025 19:08:33 +0800 (CST)
-From: Andy Yan <andyshrk@163.com>
-To: dmitry.baryshkov@oss.qualcomm.com,
-	heiko@sntech.de
-Cc: mripard@kernel.org,
-	neil.armstrong@linaro.org,
-	andrzej.hajda@intel.com,
-	jernej.skrabec@gmail.com,
-	jonas@kwiboo.se,
-	Laurent.pinchart@ideasonboard.com,
-	maarten.lankhorst@linux.intel.com,
-	rfoss@kernel.org,
-	simona@ffwll.ch,
-	tzimmermann@suse.de,
-	knaerzche@gmail.com,
-	devicetree@vger.kernel.org,
-	dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Andy Yan <andy.yan@rock-chips.com>
-Subject: [PATCH v7 1/2] drm/rockchip: inno-hdmi: Convert to drm bridge
-Date: Wed,  3 Sep 2025 19:07:38 +0800
-Message-ID: <20250903110825.776807-2-andyshrk@163.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250903110825.776807-1-andyshrk@163.com>
+	id 1utmwA-00000006SWF-0iIP;
+	Wed, 03 Sep 2025 12:50:06 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1utmAL-00000006JNy-3QYr;
+	Wed, 03 Sep 2025 12:00:44 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=k4cN3xt/qKgL84LiRRIA1ZLAwOaQPNgJrwdqAxhyfxE=; b=BCXGpPFzMGk6UamurRpYd2wdRp
+	ZwvRdFfi9HAg9CLq7DHKjggrk0xGrnlMF0Z2JrsyHFwZCnqjscaTzaoHTaZWGc/ixUjMSLQgDVCXe
+	JbO5YKtLslL0yNw9px0JwvfiHbiOsYUZyb9si8BcvcN6oumgP0CuxG1Qa23pBhLuP6+EO1RPDcgSM
+	+L8NLt4/ir87dI7R1xCpcnjOxGUp5qY0E55sAACpZncI4jFqymxPF86K73mnovkA7TqN5/vdh2RVg
+	kewNywdzimTCV5a9Y3UfwfpKu3Fq9XAf9GYQ+lDWEObIDAm8l18sgH7G9p1qBaeE9uDEfnU3lQB52
+	9rf9ZW2w==;
+Received: from [213.70.40.217] (helo=phil.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1utm9Z-0007F7-MT; Wed, 03 Sep 2025 13:59:53 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: dmitry.baryshkov@oss.qualcomm.com, Andy Yan <andyshrk@163.com>
+Cc: mripard@kernel.org, neil.armstrong@linaro.org, andrzej.hajda@intel.com,
+ jernej.skrabec@gmail.com, jonas@kwiboo.se, Laurent.pinchart@ideasonboard.com,
+ maarten.lankhorst@linux.intel.com, rfoss@kernel.org, simona@ffwll.ch,
+ tzimmermann@suse.de, knaerzche@gmail.com, devicetree@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ Andy Yan <andy.yan@rock-chips.com>
+Subject: Re: [PATCH v7 1/2] drm/rockchip: inno-hdmi: Convert to drm bridge
+Date: Wed, 03 Sep 2025 13:59:51 +0200
+Message-ID: <5255838.1BCLMh4Saa@phil>
+In-Reply-To: <20250903110825.776807-2-andyshrk@163.com>
 References: <20250903110825.776807-1-andyshrk@163.com>
+ <20250903110825.776807-2-andyshrk@163.com>
 MIME-Version: 1.0
-X-CM-TRANSID: _____wC3ZLuqIbhoXAZsFw--.3268S3
-X-Coremail-Antispam: 1Uf129KBjvAXoWfWF17Zw48Wr4DZryUtr15CFg_yoW5KFy3Co
-	Z7JFn8Xr4xuryxWrWUKF10kF4jva1ayrn3Z3WrArWDZan8Gw4jga47KryrZFZrXF1avrW2
-	kw1kKrs3Xrn7Jr4kn29KB7ZKAUJUUUU8529EdanIXcx71UUUUU7v73VFW2AGmfu7bjvjm3
-	AaLaJ3UbIYCTnIWIevJa73UjIFyTuYvjxUseT5DUUUU
-X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbBEgO9Xmi4G1HLPQAAse
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250903_040926_966071_CC3AA675 
-X-CRM114-Status: GOOD (  23.85  )
+X-CRM114-CacheID: sfid-20250903_050042_153085_47A571A6 
+X-CRM114-Status: GOOD (  30.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,1091 +70,659 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Andy Yan <andy.yan@rock-chips.com>
-
-Convert it to drm bridge driver, it will be convenient for us to
-migrate the connector part to the display driver later.
-
-Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
-
----
-
-Changes in v7:
-- Rebase on latest drm-misc-next
-
-Changes in v6:
-- Rebase on latest drm-misc-next
-- Link to V5: https://lore.kernel.org/linux-rockchip/20250512124615.2848731-1-andyshrk@163.com/
-
-Changes in v5:
-- Split cleanup code to seperate patch
-- Switch to devm_drm_bridge_alloc() API
-- Link to V4: https://lore.kernel.org/linux-rockchip/20250422070455.432666-1-andyshrk@163.com/
-
-Changes in v4:
-- Do not store colorimetry within inno_hdmi struct
-- Link to V3: https://lore.kernel.org/linux-rockchip/20250402123150.238234-1-andyshrk@163.com/
-
-Changes in v3:
-- First included in v3
-- Link to V2: https://lore.kernel.org/dri-devel/20250325132944.171111-1-andyshrk@163.com/
-
- drivers/gpu/drm/bridge/Kconfig                |   7 +
- drivers/gpu/drm/bridge/Makefile               |   1 +
- .../inno_hdmi.c => bridge/inno-hdmi.c}        | 502 +++++-------------
- drivers/gpu/drm/rockchip/Kconfig              |   1 +
- drivers/gpu/drm/rockchip/Makefile             |   2 +-
- drivers/gpu/drm/rockchip/inno_hdmi-rockchip.c | 188 +++++++
- include/drm/bridge/inno_hdmi.h                |  33 ++
- 7 files changed, 366 insertions(+), 368 deletions(-)
- rename drivers/gpu/drm/{rockchip/inno_hdmi.c => bridge/inno-hdmi.c} (69%)
- create mode 100644 drivers/gpu/drm/rockchip/inno_hdmi-rockchip.c
- create mode 100644 include/drm/bridge/inno_hdmi.h
-
-diff --git a/drivers/gpu/drm/bridge/Kconfig b/drivers/gpu/drm/bridge/Kconfig
-index 6945029b35929..f3d0503ee4c35 100644
---- a/drivers/gpu/drm/bridge/Kconfig
-+++ b/drivers/gpu/drm/bridge/Kconfig
-@@ -100,6 +100,13 @@ config DRM_I2C_NXP_TDA998X
- 	help
- 	  Support for NXP Semiconductors TDA998X HDMI encoders.
- 
-+config DRM_INNO_HDMI
-+	tristate
-+	select DRM_BRIDGE_CONNECTOR
-+	select DRM_DISPLAY_HDMI_HELPER
-+	select DRM_DISPLAY_HELPER
-+	select DRM_KMS_HELPER
-+
- config DRM_ITE_IT6263
- 	tristate "ITE IT6263 LVDS/HDMI bridge"
- 	depends on OF
-diff --git a/drivers/gpu/drm/bridge/Makefile b/drivers/gpu/drm/bridge/Makefile
-index c7dc03182e592..909c21cc3acd3 100644
---- a/drivers/gpu/drm/bridge/Makefile
-+++ b/drivers/gpu/drm/bridge/Makefile
-@@ -10,6 +10,7 @@ obj-$(CONFIG_DRM_FSL_LDB) += fsl-ldb.o
- tda998x-y := tda998x_drv.o
- obj-$(CONFIG_DRM_I2C_NXP_TDA998X) += tda998x.o
- 
-+obj-$(CONFIG_DRM_INNO_HDMI) += inno-hdmi.o
- obj-$(CONFIG_DRM_ITE_IT6263) += ite-it6263.o
- obj-$(CONFIG_DRM_ITE_IT6505) += ite-it6505.o
- obj-$(CONFIG_DRM_LONTIUM_LT8912B) += lontium-lt8912b.o
-diff --git a/drivers/gpu/drm/rockchip/inno_hdmi.c b/drivers/gpu/drm/bridge/inno-hdmi.c
-similarity index 69%
-rename from drivers/gpu/drm/rockchip/inno_hdmi.c
-rename to drivers/gpu/drm/bridge/inno-hdmi.c
-index 1ab3ad4bde9ea..ab4572eb83950 100644
---- a/drivers/gpu/drm/rockchip/inno_hdmi.c
-+++ b/drivers/gpu/drm/bridge/inno-hdmi.c
-@@ -3,12 +3,14 @@
-  * Copyright (C) Rockchip Electronics Co., Ltd.
-  *    Zheng Yang <zhengyang@rock-chips.com>
-  *    Yakir Yang <ykk@rock-chips.com>
-+ *    Andy Yan <andyshrk@163.com>
-  */
- 
- #include <linux/irq.h>
- #include <linux/clk.h>
- #include <linux/delay.h>
- #include <linux/err.h>
-+#include <linux/i2c.h>
- #include <linux/hdmi.h>
- #include <linux/mfd/syscon.h>
- #include <linux/mod_devicetable.h>
-@@ -17,18 +19,18 @@
- #include <linux/platform_device.h>
- #include <linux/regmap.h>
- 
-+#include <drm/bridge/inno_hdmi.h>
- #include <drm/drm_atomic.h>
- #include <drm/drm_atomic_helper.h>
- #include <drm/drm_edid.h>
- #include <drm/drm_of.h>
-+#include <drm/drm_print.h>
- #include <drm/drm_probe_helper.h>
- #include <drm/drm_simple_kms_helper.h>
- 
- #include <drm/display/drm_hdmi_helper.h>
- #include <drm/display/drm_hdmi_state_helper.h>
- 
--#include "rockchip_drm_drv.h"
--
- #define INNO_HDMI_MIN_TMDS_CLOCK  25000000U
- 
- #define DDC_SEGMENT_ADDR		0x30
-@@ -382,29 +384,6 @@ enum {
- #define HDMI_CEC_BUSFREETIME_H		0xdd
- #define HDMI_CEC_LOGICADDR		0xde
- 
--#define HIWORD_UPDATE(val, mask)	((val) | (mask) << 16)
--
--#define RK3036_GRF_SOC_CON2	0x148
--#define RK3036_HDMI_PHSYNC	BIT(4)
--#define RK3036_HDMI_PVSYNC	BIT(5)
--
--enum inno_hdmi_dev_type {
--	RK3036_HDMI,
--	RK3128_HDMI,
--};
--
--struct inno_hdmi_phy_config {
--	unsigned long pixelclock;
--	u8 pre_emphasis;
--	u8 voltage_level_control;
--};
--
--struct inno_hdmi_variant {
--	enum inno_hdmi_dev_type dev_type;
--	struct inno_hdmi_phy_config *phy_configs;
--	struct inno_hdmi_phy_config *default_phy_config;
--};
--
- struct inno_hdmi_i2c {
- 	struct i2c_adapter adap;
- 
-@@ -417,41 +396,17 @@ struct inno_hdmi_i2c {
- 
- struct inno_hdmi {
- 	struct device *dev;
--
-+	struct drm_bridge bridge;
- 	struct clk *pclk;
- 	struct clk *refclk;
- 	void __iomem *regs;
- 	struct regmap *grf;
- 
--	struct drm_connector	connector;
--	struct rockchip_encoder	encoder;
--
- 	struct inno_hdmi_i2c *i2c;
- 	struct i2c_adapter *ddc;
--
--	const struct inno_hdmi_variant *variant;
--};
--
--struct inno_hdmi_connector_state {
--	struct drm_connector_state	base;
--	unsigned int			colorimetry;
-+	const struct inno_hdmi_plat_data *plat_data;
- };
- 
--static struct inno_hdmi *encoder_to_inno_hdmi(struct drm_encoder *encoder)
--{
--	struct rockchip_encoder *rkencoder = to_rockchip_encoder(encoder);
--
--	return container_of(rkencoder, struct inno_hdmi, encoder);
--}
--
--static struct inno_hdmi *connector_to_inno_hdmi(struct drm_connector *connector)
--{
--	return container_of(connector, struct inno_hdmi, connector);
--}
--
--#define to_inno_hdmi_conn_state(conn_state) \
--	container_of_const(conn_state, struct inno_hdmi_connector_state, base)
--
- enum {
- 	CSC_RGB_0_255_TO_ITU601_16_235_8BIT,
- 	CSC_RGB_0_255_TO_ITU709_16_235_8BIT,
-@@ -494,23 +449,15 @@ static const char coeff_csc[][24] = {
- 	},
- };
- 
--static struct inno_hdmi_phy_config rk3036_hdmi_phy_configs[] = {
--	{  74250000, 0x3f, 0xbb },
--	{ 165000000, 0x6f, 0xbb },
--	{      ~0UL, 0x00, 0x00 }
--};
--
--static struct inno_hdmi_phy_config rk3128_hdmi_phy_configs[] = {
--	{  74250000, 0x3f, 0xaa },
--	{ 165000000, 0x5f, 0xaa },
--	{      ~0UL, 0x00, 0x00 }
--};
-+static struct inno_hdmi *bridge_to_inno_hdmi(struct drm_bridge *bridge)
-+{
-+	return container_of(bridge, struct inno_hdmi, bridge);
-+}
- 
- static int inno_hdmi_find_phy_config(struct inno_hdmi *hdmi,
- 				     unsigned long pixelclk)
- {
--	const struct inno_hdmi_phy_config *phy_configs =
--						hdmi->variant->phy_configs;
-+	const struct inno_hdmi_phy_config *phy_configs = hdmi->plat_data->phy_configs;
- 	int i;
- 
- 	for (i = 0; phy_configs[i].pixelclock != ~0UL; i++) {
-@@ -582,12 +529,12 @@ static void inno_hdmi_power_up(struct inno_hdmi *hdmi,
- 	int ret = inno_hdmi_find_phy_config(hdmi, mpixelclock);
- 
- 	if (ret < 0) {
--		phy_config = hdmi->variant->default_phy_config;
-+		phy_config = hdmi->plat_data->default_phy_config;
- 		DRM_DEV_ERROR(hdmi->dev,
- 			      "Using default phy configuration for TMDS rate %lu",
- 			      mpixelclock);
- 	} else {
--		phy_config = &hdmi->variant->phy_configs[ret];
-+		phy_config = &hdmi->plat_data->phy_configs[ret];
- 	}
- 
- 	inno_hdmi_sys_power(hdmi, false);
-@@ -637,14 +584,13 @@ static void inno_hdmi_init_hw(struct inno_hdmi *hdmi)
- 	hdmi_modb(hdmi, HDMI_STATUS, m_MASK_INT_HOTPLUG, v_MASK_INT_HOTPLUG(1));
- }
- 
--static int inno_hdmi_disable_frame(struct drm_connector *connector,
--				   enum hdmi_infoframe_type type)
-+static int inno_hdmi_bridge_clear_infoframe(struct drm_bridge *bridge,
-+					    enum hdmi_infoframe_type type)
- {
--	struct inno_hdmi *hdmi = connector_to_inno_hdmi(connector);
-+	struct inno_hdmi *hdmi = bridge_to_inno_hdmi(bridge);
- 
- 	if (type != HDMI_INFOFRAME_TYPE_AVI) {
--		drm_err(connector->dev,
--			"Unsupported infoframe type: %u\n", type);
-+		drm_err(bridge->dev, "Unsupported infoframe type: %u\n", type);
- 		return 0;
- 	}
- 
-@@ -653,20 +599,19 @@ static int inno_hdmi_disable_frame(struct drm_connector *connector,
- 	return 0;
- }
- 
--static int inno_hdmi_upload_frame(struct drm_connector *connector,
--				  enum hdmi_infoframe_type type,
--				  const u8 *buffer, size_t len)
-+static int inno_hdmi_bridge_write_infoframe(struct drm_bridge *bridge,
-+					    enum hdmi_infoframe_type type,
-+					    const u8 *buffer, size_t len)
- {
--	struct inno_hdmi *hdmi = connector_to_inno_hdmi(connector);
-+	struct inno_hdmi *hdmi = bridge_to_inno_hdmi(bridge);
- 	ssize_t i;
- 
- 	if (type != HDMI_INFOFRAME_TYPE_AVI) {
--		drm_err(connector->dev,
--			"Unsupported infoframe type: %u\n", type);
-+		drm_err(bridge->dev, "Unsupported infoframe type: %u\n", type);
- 		return 0;
- 	}
- 
--	inno_hdmi_disable_frame(connector, type);
-+	inno_hdmi_bridge_clear_infoframe(bridge, type);
- 
- 	for (i = 0; i < len; i++)
- 		hdmi_writeb(hdmi, HDMI_CONTROL_PACKET_ADDR + i, buffer[i]);
-@@ -674,23 +619,26 @@ static int inno_hdmi_upload_frame(struct drm_connector *connector,
- 	return 0;
- }
- 
--static const struct drm_connector_hdmi_funcs inno_hdmi_hdmi_connector_funcs = {
--	.clear_infoframe	= inno_hdmi_disable_frame,
--	.write_infoframe	= inno_hdmi_upload_frame,
--};
--
--static int inno_hdmi_config_video_csc(struct inno_hdmi *hdmi)
-+static int inno_hdmi_config_video_csc(struct inno_hdmi *hdmi,
-+				      struct drm_connector *connector,
-+				      struct drm_display_mode *mode)
- {
--	struct drm_connector *connector = &hdmi->connector;
- 	struct drm_connector_state *conn_state = connector->state;
--	struct inno_hdmi_connector_state *inno_conn_state =
--					to_inno_hdmi_conn_state(conn_state);
- 	int c0_c2_change = 0;
- 	int csc_enable = 0;
- 	int csc_mode = 0;
- 	int auto_csc = 0;
- 	int value;
- 	int i;
-+	int colorimetry;
-+	u8 vic = drm_match_cea_mode(mode);
-+
-+	if (vic == 6 || vic == 7 || vic == 21 || vic == 22 ||
-+	    vic == 2 || vic == 3 || vic == 17 || vic == 18)
-+		colorimetry = HDMI_COLORIMETRY_ITU_601;
-+	else
-+		colorimetry = HDMI_COLORIMETRY_ITU_709;
-+
- 
- 	/* Input video mode is SDR RGB24bit, data enable signal from external */
- 	hdmi_writeb(hdmi, HDMI_VIDEO_CONTRL1, v_DE_EXTERNAL |
-@@ -720,7 +668,7 @@ static int inno_hdmi_config_video_csc(struct inno_hdmi *hdmi)
- 			return 0;
- 		}
- 	} else {
--		if (inno_conn_state->colorimetry == HDMI_COLORIMETRY_ITU_601) {
-+		if (colorimetry == HDMI_COLORIMETRY_ITU_601) {
- 			if (conn_state->hdmi.output_format == HDMI_COLORSPACE_YUV444) {
- 				csc_mode = CSC_RGB_0_255_TO_ITU601_16_235_8BIT;
- 				auto_csc = AUTO_CSC_DISABLE;
-@@ -738,8 +686,7 @@ static int inno_hdmi_config_video_csc(struct inno_hdmi *hdmi)
- 	}
- 
- 	for (i = 0; i < 24; i++)
--		hdmi_writeb(hdmi, HDMI_VIDEO_CSC_COEF + i,
--			    coeff_csc[csc_mode][i]);
-+		hdmi_writeb(hdmi, HDMI_VIDEO_CSC_COEF + i, coeff_csc[csc_mode][i]);
- 
- 	value = v_SOF_DISABLE | csc_enable | v_COLOR_DEPTH_NOT_INDICATED(1);
- 	hdmi_writeb(hdmi, HDMI_VIDEO_CONTRL3, value);
-@@ -753,15 +700,11 @@ static int inno_hdmi_config_video_csc(struct inno_hdmi *hdmi)
- static int inno_hdmi_config_video_timing(struct inno_hdmi *hdmi,
- 					 struct drm_display_mode *mode)
- {
--	int value, psync;
--
--	if (hdmi->variant->dev_type == RK3036_HDMI) {
--		psync = mode->flags & DRM_MODE_FLAG_PHSYNC ? RK3036_HDMI_PHSYNC : 0;
--		value = HIWORD_UPDATE(psync, RK3036_HDMI_PHSYNC);
--		psync = mode->flags & DRM_MODE_FLAG_PVSYNC ? RK3036_HDMI_PVSYNC : 0;
--		value |= HIWORD_UPDATE(psync, RK3036_HDMI_PVSYNC);
--		regmap_write(hdmi->grf, RK3036_GRF_SOC_CON2, value);
--	}
-+	const struct inno_hdmi_plat_ops *plat_ops = hdmi->plat_data->ops;
-+	u32 value;
-+
-+	if (plat_ops && plat_ops->enable)
-+		plat_ops->enable(hdmi->dev, mode);
- 
- 	/* Set detail external video timing polarity and interlace mode */
- 	value = v_EXTERANL_VIDEO(1);
-@@ -810,14 +753,16 @@ static int inno_hdmi_config_video_timing(struct inno_hdmi *hdmi,
- 	return 0;
- }
- 
--static int inno_hdmi_setup(struct inno_hdmi *hdmi,
--			   struct drm_atomic_state *state)
-+static int inno_hdmi_setup(struct inno_hdmi *hdmi, struct drm_atomic_state *state)
- {
--	struct drm_connector *connector = &hdmi->connector;
--	struct drm_display_info *display = &connector->display_info;
-+	struct drm_bridge *bridge = &hdmi->bridge;
-+	struct drm_connector *connector;
-+	struct drm_display_info *info;
- 	struct drm_connector_state *new_conn_state;
- 	struct drm_crtc_state *new_crtc_state;
- 
-+	connector = drm_atomic_get_new_connector_for_encoder(state, bridge->encoder);
-+
- 	new_conn_state = drm_atomic_get_new_connector_state(state, connector);
- 	if (WARN_ON(!new_conn_state))
- 		return -EINVAL;
-@@ -826,17 +771,18 @@ static int inno_hdmi_setup(struct inno_hdmi *hdmi,
- 	if (WARN_ON(!new_crtc_state))
- 		return -EINVAL;
- 
-+	info = &connector->display_info;
-+
- 	/* Mute video and audio output */
- 	hdmi_modb(hdmi, HDMI_AV_MUTE, m_AUDIO_MUTE | m_VIDEO_BLACK,
- 		  v_AUDIO_MUTE(1) | v_VIDEO_MUTE(1));
- 
- 	/* Set HDMI Mode */
--	hdmi_writeb(hdmi, HDMI_HDCP_CTRL,
--		    v_HDMI_DVI(display->is_hdmi));
-+	hdmi_writeb(hdmi, HDMI_HDCP_CTRL, v_HDMI_DVI(info->is_hdmi));
- 
- 	inno_hdmi_config_video_timing(hdmi, &new_crtc_state->adjusted_mode);
- 
--	inno_hdmi_config_video_csc(hdmi);
-+	inno_hdmi_config_video_csc(hdmi, connector, &new_crtc_state->adjusted_mode);
- 
- 	drm_atomic_helper_connector_hdmi_update_infoframes(connector, state);
- 
-@@ -857,9 +803,11 @@ static int inno_hdmi_setup(struct inno_hdmi *hdmi,
- 	return 0;
- }
- 
--static enum drm_mode_status inno_hdmi_display_mode_valid(struct inno_hdmi *hdmi,
--							 const struct drm_display_mode *mode)
-+static enum drm_mode_status inno_hdmi_bridge_mode_valid(struct drm_bridge *bridge,
-+							const struct drm_display_info *info,
-+							const struct drm_display_mode *mode)
- {
-+	struct inno_hdmi *hdmi = bridge_to_inno_hdmi(bridge);
- 	unsigned long mpixelclk, max_tolerance;
- 	long rounded_refclk;
- 
-@@ -889,189 +837,57 @@ static enum drm_mode_status inno_hdmi_display_mode_valid(struct inno_hdmi *hdmi,
- 	return MODE_OK;
- }
- 
--static void inno_hdmi_encoder_enable(struct drm_encoder *encoder,
--				     struct drm_atomic_state *state)
--{
--	struct inno_hdmi *hdmi = encoder_to_inno_hdmi(encoder);
--
--	inno_hdmi_setup(hdmi, state);
--}
--
--static void inno_hdmi_encoder_disable(struct drm_encoder *encoder,
--				      struct drm_atomic_state *state)
--{
--	struct inno_hdmi *hdmi = encoder_to_inno_hdmi(encoder);
--
--	inno_hdmi_standby(hdmi);
--}
--
--static int
--inno_hdmi_encoder_atomic_check(struct drm_encoder *encoder,
--			       struct drm_crtc_state *crtc_state,
--			       struct drm_connector_state *conn_state)
--{
--	struct rockchip_crtc_state *s = to_rockchip_crtc_state(crtc_state);
--	struct drm_display_mode *mode = &crtc_state->adjusted_mode;
--	u8 vic = drm_match_cea_mode(mode);
--	struct inno_hdmi_connector_state *inno_conn_state =
--					to_inno_hdmi_conn_state(conn_state);
--
--	s->output_mode = ROCKCHIP_OUT_MODE_P888;
--	s->output_type = DRM_MODE_CONNECTOR_HDMIA;
--
--	if (vic == 6 || vic == 7 ||
--	    vic == 21 || vic == 22 ||
--	    vic == 2 || vic == 3 ||
--	    vic == 17 || vic == 18)
--		inno_conn_state->colorimetry = HDMI_COLORIMETRY_ITU_601;
--	else
--		inno_conn_state->colorimetry = HDMI_COLORIMETRY_ITU_709;
--
--	return 0;
--}
--
--static const struct drm_encoder_helper_funcs inno_hdmi_encoder_helper_funcs = {
--	.atomic_check	= inno_hdmi_encoder_atomic_check,
--	.atomic_enable	= inno_hdmi_encoder_enable,
--	.atomic_disable	= inno_hdmi_encoder_disable,
--};
--
- static enum drm_connector_status
--inno_hdmi_connector_detect(struct drm_connector *connector, bool force)
-+inno_hdmi_bridge_detect(struct drm_bridge *bridge, struct drm_connector *connector)
- {
--	struct inno_hdmi *hdmi = connector_to_inno_hdmi(connector);
-+	struct inno_hdmi *hdmi = bridge_to_inno_hdmi(bridge);
- 
- 	return (hdmi_readb(hdmi, HDMI_STATUS) & m_HOTPLUG) ?
- 		connector_status_connected : connector_status_disconnected;
- }
- 
--static int inno_hdmi_connector_get_modes(struct drm_connector *connector)
-+static const struct drm_edid *
-+inno_hdmi_bridge_edid_read(struct drm_bridge *bridge, struct drm_connector *connector)
- {
--	struct inno_hdmi *hdmi = connector_to_inno_hdmi(connector);
-+	struct inno_hdmi *hdmi = bridge_to_inno_hdmi(bridge);
- 	const struct drm_edid *drm_edid;
--	int ret = 0;
--
--	if (!hdmi->ddc)
--		return 0;
--
--	drm_edid = drm_edid_read_ddc(connector, hdmi->ddc);
--	drm_edid_connector_update(connector, drm_edid);
--	ret = drm_edid_connector_add_modes(connector);
--	drm_edid_free(drm_edid);
--
--	return ret;
--}
--
--static enum drm_mode_status
--inno_hdmi_connector_mode_valid(struct drm_connector *connector,
--			       const struct drm_display_mode *mode)
--{
--	struct inno_hdmi *hdmi = connector_to_inno_hdmi(connector);
--
--	return  inno_hdmi_display_mode_valid(hdmi, mode);
--}
- 
--static void
--inno_hdmi_connector_destroy_state(struct drm_connector *connector,
--				  struct drm_connector_state *state)
--{
--	struct inno_hdmi_connector_state *inno_conn_state =
--						to_inno_hdmi_conn_state(state);
-+	drm_edid = drm_edid_read_ddc(connector, bridge->ddc);
-+	if (!drm_edid)
-+		dev_dbg(hdmi->dev, "failed to get edid\n");
- 
--	__drm_atomic_helper_connector_destroy_state(&inno_conn_state->base);
--	kfree(inno_conn_state);
-+	return drm_edid;
- }
- 
--static void inno_hdmi_connector_reset(struct drm_connector *connector)
-+static void inno_hdmi_bridge_atomic_enable(struct drm_bridge *bridge,
-+					   struct drm_atomic_state *state)
- {
--	struct inno_hdmi_connector_state *inno_conn_state;
--
--	if (connector->state) {
--		inno_hdmi_connector_destroy_state(connector, connector->state);
--		connector->state = NULL;
--	}
--
--	inno_conn_state = kzalloc(sizeof(*inno_conn_state), GFP_KERNEL);
--	if (!inno_conn_state)
--		return;
--
--	__drm_atomic_helper_connector_reset(connector, &inno_conn_state->base);
--	__drm_atomic_helper_connector_hdmi_reset(connector, connector->state);
-+	struct inno_hdmi *hdmi = bridge_to_inno_hdmi(bridge);
- 
--	inno_conn_state->colorimetry = HDMI_COLORIMETRY_ITU_709;
-+	inno_hdmi_setup(hdmi, state);
- }
- 
--static struct drm_connector_state *
--inno_hdmi_connector_duplicate_state(struct drm_connector *connector)
-+static void inno_hdmi_bridge_atomic_disable(struct drm_bridge *bridge,
-+					    struct drm_atomic_state *state)
- {
--	struct inno_hdmi_connector_state *inno_conn_state;
--
--	if (WARN_ON(!connector->state))
--		return NULL;
--
--	inno_conn_state = kmemdup(to_inno_hdmi_conn_state(connector->state),
--				  sizeof(*inno_conn_state), GFP_KERNEL);
--
--	if (!inno_conn_state)
--		return NULL;
-+	struct inno_hdmi *hdmi = bridge_to_inno_hdmi(bridge);
- 
--	__drm_atomic_helper_connector_duplicate_state(connector,
--						      &inno_conn_state->base);
--
--	return &inno_conn_state->base;
-+	inno_hdmi_standby(hdmi);
- }
- 
--static const struct drm_connector_funcs inno_hdmi_connector_funcs = {
--	.fill_modes = drm_helper_probe_single_connector_modes,
--	.detect = inno_hdmi_connector_detect,
--	.reset = inno_hdmi_connector_reset,
--	.atomic_duplicate_state = inno_hdmi_connector_duplicate_state,
--	.atomic_destroy_state = inno_hdmi_connector_destroy_state,
--};
--
--static struct drm_connector_helper_funcs inno_hdmi_connector_helper_funcs = {
--	.atomic_check = drm_atomic_helper_connector_hdmi_check,
--	.get_modes = inno_hdmi_connector_get_modes,
--	.mode_valid = inno_hdmi_connector_mode_valid,
-+static const struct drm_bridge_funcs inno_hdmi_bridge_funcs = {
-+	.atomic_duplicate_state = drm_atomic_helper_bridge_duplicate_state,
-+	.atomic_destroy_state = drm_atomic_helper_bridge_destroy_state,
-+	.atomic_reset = drm_atomic_helper_bridge_reset,
-+	.atomic_enable = inno_hdmi_bridge_atomic_enable,
-+	.atomic_disable = inno_hdmi_bridge_atomic_disable,
-+	.detect = inno_hdmi_bridge_detect,
-+	.edid_read = inno_hdmi_bridge_edid_read,
-+	.hdmi_clear_infoframe = inno_hdmi_bridge_clear_infoframe,
-+	.hdmi_write_infoframe = inno_hdmi_bridge_write_infoframe,
-+	.mode_valid = inno_hdmi_bridge_mode_valid,
- };
- 
--static int inno_hdmi_register(struct drm_device *drm, struct inno_hdmi *hdmi)
--{
--	struct drm_encoder *encoder = &hdmi->encoder.encoder;
--	struct device *dev = hdmi->dev;
--
--	encoder->possible_crtcs = drm_of_find_possible_crtcs(drm, dev->of_node);
--
--	/*
--	 * If we failed to find the CRTC(s) which this encoder is
--	 * supposed to be connected to, it's because the CRTC has
--	 * not been registered yet.  Defer probing, and hope that
--	 * the required CRTC is added later.
--	 */
--	if (encoder->possible_crtcs == 0)
--		return -EPROBE_DEFER;
--
--	drm_encoder_helper_add(encoder, &inno_hdmi_encoder_helper_funcs);
--	drm_simple_encoder_init(drm, encoder, DRM_MODE_ENCODER_TMDS);
--
--	hdmi->connector.polled = DRM_CONNECTOR_POLL_HPD;
--
--	drm_connector_helper_add(&hdmi->connector,
--				 &inno_hdmi_connector_helper_funcs);
--	drmm_connector_hdmi_init(drm, &hdmi->connector,
--				 "Rockchip", "Inno HDMI",
--				 &inno_hdmi_connector_funcs,
--				 &inno_hdmi_hdmi_connector_funcs,
--				 DRM_MODE_CONNECTOR_HDMIA,
--				 hdmi->ddc,
--				 BIT(HDMI_COLORSPACE_RGB),
--				 8);
--
--	drm_connector_attach_encoder(&hdmi->connector, encoder);
--
--	return 0;
--}
--
- static irqreturn_t inno_hdmi_i2c_irq(struct inno_hdmi *hdmi)
- {
- 	struct inno_hdmi_i2c *i2c = hdmi->i2c;
-@@ -1111,7 +927,7 @@ static irqreturn_t inno_hdmi_irq(int irq, void *dev_id)
- {
- 	struct inno_hdmi *hdmi = dev_id;
- 
--	drm_helper_hpd_irq_event(hdmi->connector.dev);
-+	drm_helper_hpd_irq_event(hdmi->bridge.dev);
- 
- 	return IRQ_HANDLED;
- }
-@@ -1243,128 +1059,80 @@ static struct i2c_adapter *inno_hdmi_i2c_adapter(struct inno_hdmi *hdmi)
- 	return adap;
- }
- 
--static int inno_hdmi_bind(struct device *dev, struct device *master,
--				 void *data)
-+struct inno_hdmi *inno_hdmi_bind(struct device *dev,
-+				 struct drm_encoder *encoder,
-+				 const struct inno_hdmi_plat_data *plat_data)
- {
- 	struct platform_device *pdev = to_platform_device(dev);
--	struct drm_device *drm = data;
- 	struct inno_hdmi *hdmi;
--	const struct inno_hdmi_variant *variant;
- 	int irq;
- 	int ret;
- 
--	hdmi = devm_kzalloc(dev, sizeof(*hdmi), GFP_KERNEL);
--	if (!hdmi)
--		return -ENOMEM;
--
--	hdmi->dev = dev;
-+	if (!plat_data->phy_configs || !plat_data->default_phy_config) {
-+		dev_err(dev, "Missing platform PHY ops\n");
-+		return ERR_PTR(-ENODEV);
-+	}
- 
--	variant = of_device_get_match_data(hdmi->dev);
--	if (!variant)
--		return -EINVAL;
-+	hdmi = devm_drm_bridge_alloc(dev, struct inno_hdmi, bridge, &inno_hdmi_bridge_funcs);
-+	if (IS_ERR(hdmi))
-+		return ERR_CAST(hdmi);
- 
--	hdmi->variant = variant;
-+	hdmi->dev = dev;
-+	hdmi->plat_data = plat_data;
- 
- 	hdmi->regs = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(hdmi->regs))
--		return PTR_ERR(hdmi->regs);
-+		return ERR_CAST(hdmi->regs);
- 
- 	hdmi->pclk = devm_clk_get_enabled(hdmi->dev, "pclk");
--	if (IS_ERR(hdmi->pclk))
--		return dev_err_probe(dev, PTR_ERR(hdmi->pclk), "Unable to get HDMI pclk\n");
-+	if (IS_ERR(hdmi->pclk)) {
-+		dev_err_probe(dev, PTR_ERR(hdmi->pclk), "Unable to get HDMI pclk\n");
-+		return ERR_CAST(hdmi->pclk);
-+	}
- 
- 	hdmi->refclk = devm_clk_get_optional_enabled(hdmi->dev, "ref");
--	if (IS_ERR(hdmi->refclk))
--		return dev_err_probe(dev, PTR_ERR(hdmi->refclk), "Unable to get HDMI refclk\n");
--
--	if (hdmi->variant->dev_type == RK3036_HDMI) {
--		hdmi->grf = syscon_regmap_lookup_by_phandle(dev->of_node, "rockchip,grf");
--		if (IS_ERR(hdmi->grf))
--			return dev_err_probe(dev,
--					     PTR_ERR(hdmi->grf), "Unable to get rockchip,grf\n");
-+	if (IS_ERR(hdmi->refclk)) {
-+		dev_err_probe(dev, PTR_ERR(hdmi->refclk), "Unable to get HDMI refclk\n");
-+		return ERR_CAST(hdmi->refclk);
- 	}
- 
--	irq = platform_get_irq(pdev, 0);
--	if (irq < 0)
--		return irq;
--
- 	inno_hdmi_init_hw(hdmi);
- 
--	hdmi->ddc = inno_hdmi_i2c_adapter(hdmi);
--	if (IS_ERR(hdmi->ddc))
--		return PTR_ERR(hdmi->ddc);
--
--	ret = inno_hdmi_register(drm, hdmi);
--	if (ret)
--		return ret;
--
--	dev_set_drvdata(dev, hdmi);
-+	irq = platform_get_irq(pdev, 0);
-+	if (irq < 0)
-+		return ERR_PTR(irq);
- 
- 	ret = devm_request_threaded_irq(dev, irq, inno_hdmi_hardirq,
- 					inno_hdmi_irq, IRQF_SHARED,
- 					dev_name(dev), hdmi);
--	if (ret < 0)
--		goto err_cleanup_hdmi;
--
--	return 0;
--err_cleanup_hdmi:
--	hdmi->connector.funcs->destroy(&hdmi->connector);
--	hdmi->encoder.encoder.funcs->destroy(&hdmi->encoder.encoder);
--	return ret;
--}
--
--static void inno_hdmi_unbind(struct device *dev, struct device *master,
--			     void *data)
--{
--	struct inno_hdmi *hdmi = dev_get_drvdata(dev);
--
--	hdmi->connector.funcs->destroy(&hdmi->connector);
--	hdmi->encoder.encoder.funcs->destroy(&hdmi->encoder.encoder);
--}
-+	if (ret)
-+		return ERR_PTR(ret);
- 
--static const struct component_ops inno_hdmi_ops = {
--	.bind	= inno_hdmi_bind,
--	.unbind	= inno_hdmi_unbind,
--};
-+	hdmi->bridge.driver_private = hdmi;
-+	hdmi->bridge.ops = DRM_BRIDGE_OP_DETECT |
-+			   DRM_BRIDGE_OP_EDID |
-+			   DRM_BRIDGE_OP_HDMI |
-+			   DRM_BRIDGE_OP_HPD;
-+	hdmi->bridge.of_node = pdev->dev.of_node;
-+	hdmi->bridge.type = DRM_MODE_CONNECTOR_HDMIA;
-+	hdmi->bridge.vendor = "Inno";
-+	hdmi->bridge.product = "Inno HDMI";
-+
-+	hdmi->bridge.ddc = inno_hdmi_i2c_adapter(hdmi);
-+	if (IS_ERR(hdmi->bridge.ddc))
-+		return ERR_CAST(hdmi->bridge.ddc);
-+
-+	ret = devm_drm_bridge_add(dev, &hdmi->bridge);
-+	if (ret)
-+		return ERR_PTR(ret);
- 
--static int inno_hdmi_probe(struct platform_device *pdev)
--{
--	return component_add(&pdev->dev, &inno_hdmi_ops);
--}
-+	ret = drm_bridge_attach(encoder, &hdmi->bridge, NULL, DRM_BRIDGE_ATTACH_NO_CONNECTOR);
-+	if (ret)
-+		return ERR_PTR(ret);
- 
--static void inno_hdmi_remove(struct platform_device *pdev)
--{
--	component_del(&pdev->dev, &inno_hdmi_ops);
-+	return hdmi;
- }
--
--static const struct inno_hdmi_variant rk3036_inno_hdmi_variant = {
--	.dev_type = RK3036_HDMI,
--	.phy_configs = rk3036_hdmi_phy_configs,
--	.default_phy_config = &rk3036_hdmi_phy_configs[1],
--};
--
--static const struct inno_hdmi_variant rk3128_inno_hdmi_variant = {
--	.dev_type = RK3128_HDMI,
--	.phy_configs = rk3128_hdmi_phy_configs,
--	.default_phy_config = &rk3128_hdmi_phy_configs[1],
--};
--
--static const struct of_device_id inno_hdmi_dt_ids[] = {
--	{ .compatible = "rockchip,rk3036-inno-hdmi",
--	  .data = &rk3036_inno_hdmi_variant,
--	},
--	{ .compatible = "rockchip,rk3128-inno-hdmi",
--	  .data = &rk3128_inno_hdmi_variant,
--	},
--	{},
--};
--MODULE_DEVICE_TABLE(of, inno_hdmi_dt_ids);
--
--struct platform_driver inno_hdmi_driver = {
--	.probe  = inno_hdmi_probe,
--	.remove = inno_hdmi_remove,
--	.driver = {
--		.name = "innohdmi-rockchip",
--		.of_match_table = inno_hdmi_dt_ids,
--	},
--};
-+EXPORT_SYMBOL_GPL(inno_hdmi_bind);
-+MODULE_AUTHOR("Andy Yan <andyshrk@163.com>");
-+MODULE_DESCRIPTION("INNOSILICON HDMI transmitter library");
-+MODULE_LICENSE("GPL");
-diff --git a/drivers/gpu/drm/rockchip/Kconfig b/drivers/gpu/drm/rockchip/Kconfig
-index 14ec0281d45a4..e2f355f87ae51 100644
---- a/drivers/gpu/drm/rockchip/Kconfig
-+++ b/drivers/gpu/drm/rockchip/Kconfig
-@@ -15,6 +15,7 @@ config DRM_ROCKCHIP
- 	select DRM_DW_HDMI_QP if ROCKCHIP_DW_HDMI_QP
- 	select DRM_DW_MIPI_DSI if ROCKCHIP_DW_MIPI_DSI
- 	select DRM_DW_MIPI_DSI2 if ROCKCHIP_DW_MIPI_DSI2
-+	select DRM_INNO_HDMI if ROCKCHIP_INNO_HDMI
- 	select GENERIC_PHY if ROCKCHIP_DW_MIPI_DSI
- 	select GENERIC_PHY_MIPI_DPHY if ROCKCHIP_DW_MIPI_DSI
- 	select SND_SOC_HDMI_CODEC if ROCKCHIP_CDN_DP && SND_SOC
-diff --git a/drivers/gpu/drm/rockchip/Makefile b/drivers/gpu/drm/rockchip/Makefile
-index 097f062399c7a..948b0f906d3d8 100644
---- a/drivers/gpu/drm/rockchip/Makefile
-+++ b/drivers/gpu/drm/rockchip/Makefile
-@@ -15,7 +15,7 @@ rockchipdrm-$(CONFIG_ROCKCHIP_DW_HDMI_QP) += dw_hdmi_qp-rockchip.o
- rockchipdrm-$(CONFIG_ROCKCHIP_DW_MIPI_DSI) += dw-mipi-dsi-rockchip.o
- rockchipdrm-$(CONFIG_ROCKCHIP_DW_MIPI_DSI2) += dw-mipi-dsi2-rockchip.o
- rockchipdrm-$(CONFIG_ROCKCHIP_DW_DP) += dw_dp-rockchip.o
--rockchipdrm-$(CONFIG_ROCKCHIP_INNO_HDMI) += inno_hdmi.o
-+rockchipdrm-$(CONFIG_ROCKCHIP_INNO_HDMI) += inno_hdmi-rockchip.o
- rockchipdrm-$(CONFIG_ROCKCHIP_LVDS) += rockchip_lvds.o
- rockchipdrm-$(CONFIG_ROCKCHIP_RGB) += rockchip_rgb.o
- rockchipdrm-$(CONFIG_ROCKCHIP_RK3066_HDMI) += rk3066_hdmi.o
-diff --git a/drivers/gpu/drm/rockchip/inno_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/inno_hdmi-rockchip.c
-new file mode 100644
-index 0000000000000..31cb2a90308c1
---- /dev/null
-+++ b/drivers/gpu/drm/rockchip/inno_hdmi-rockchip.c
-@@ -0,0 +1,188 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+/*
-+ * Copyright (C) Rockchip Electronics Co., Ltd.
-+ *    Zheng Yang <zhengyang@rock-chips.com>
-+ *    Andy Yan <andy.yan@rock-chips.com>
-+ */
-+#include <linux/err.h>
-+#include <linux/mfd/syscon.h>
-+#include <linux/mod_devicetable.h>
-+#include <linux/module.h>
-+#include <linux/platform_device.h>
-+#include <linux/regmap.h>
-+
-+#include <drm/bridge/inno_hdmi.h>
-+#include <drm/drm_bridge_connector.h>
-+#include <drm/drm_of.h>
-+
-+#include "rockchip_drm_drv.h"
-+
-+#define HIWORD_UPDATE(val, mask)	((val) | (mask) << 16)
-+
-+#define RK3036_GRF_SOC_CON2	0x148
-+#define RK3036_HDMI_PHSYNC	BIT(4)
-+#define RK3036_HDMI_PVSYNC	BIT(5)
-+
-+enum inno_hdmi_dev_type {
-+	RK3036_HDMI,
-+	RK3128_HDMI,
-+};
-+
-+struct inno_hdmi_connector_state {
-+	struct drm_connector_state	base;
-+	unsigned int			colorimetry;
-+};
-+
-+struct rockchip_inno_hdmi {
-+	struct inno_hdmi *base;
-+	struct device *dev;
-+	struct regmap *grf;
-+	struct rockchip_encoder encoder;
-+};
-+
-+static struct inno_hdmi_phy_config rk3036_hdmi_phy_configs[] = {
-+	{  74250000, 0x3f, 0xbb },
-+	{ 165000000, 0x6f, 0xbb },
-+	{      ~0UL, 0x00, 0x00 }
-+};
-+
-+static struct inno_hdmi_phy_config rk3128_hdmi_phy_configs[] = {
-+	{  74250000, 0x3f, 0xaa },
-+	{ 165000000, 0x5f, 0xaa },
-+	{      ~0UL, 0x00, 0x00 }
-+};
-+
-+static void inno_hdmi_rk3036_enable(struct device *dev, struct drm_display_mode *mode)
-+{
-+	struct rockchip_inno_hdmi *hdmi = dev_get_drvdata(dev);
-+	int value, psync;
-+
-+	psync = mode->flags & DRM_MODE_FLAG_PHSYNC ? RK3036_HDMI_PHSYNC : 0;
-+	value = HIWORD_UPDATE(psync, RK3036_HDMI_PHSYNC);
-+	psync = mode->flags & DRM_MODE_FLAG_PVSYNC ? RK3036_HDMI_PVSYNC : 0;
-+	value |= HIWORD_UPDATE(psync, RK3036_HDMI_PVSYNC);
-+	regmap_write(hdmi->grf, RK3036_GRF_SOC_CON2, value);
-+}
-+
-+static int inno_hdmi_encoder_atomic_check(struct drm_encoder *encoder,
-+					  struct drm_crtc_state *crtc_state,
-+					  struct drm_connector_state *conn_state)
-+{
-+	struct rockchip_crtc_state *s = to_rockchip_crtc_state(crtc_state);
-+
-+	s->output_mode = ROCKCHIP_OUT_MODE_P888;
-+	s->output_type = DRM_MODE_CONNECTOR_HDMIA;
-+
-+	return 0;
-+}
-+
-+static const struct drm_encoder_helper_funcs inno_hdmi_rockchip_encoder_helper_funcs = {
-+	.atomic_check	= inno_hdmi_encoder_atomic_check,
-+};
-+
-+static int inno_hdmi_rockchip_bind(struct device *dev, struct device *master, void *data)
-+{
-+	struct drm_device *drm = data;
-+	struct drm_connector *connector;
-+	struct drm_encoder *encoder;
-+	struct rockchip_inno_hdmi *hdmi;
-+	const struct inno_hdmi_plat_data *plat_data;
-+	int ret;
-+
-+	hdmi = devm_kzalloc(dev, sizeof(*hdmi), GFP_KERNEL);
-+	if (!hdmi)
-+		return -ENOMEM;
-+
-+	hdmi->dev = dev;
-+
-+	plat_data = of_device_get_match_data(hdmi->dev);
-+	if (!plat_data)
-+		return -EINVAL;
-+
-+	if (of_device_is_compatible(dev->of_node, "rockchip,rk3036-inno-hdmi")) {
-+		hdmi->grf = syscon_regmap_lookup_by_phandle(dev->of_node, "rockchip,grf");
-+		if (IS_ERR(hdmi->grf))
-+			return dev_err_probe(dev,
-+					     PTR_ERR(hdmi->grf), "Unable to get rockchip,grf\n");
-+	}
-+
-+	encoder = &hdmi->encoder.encoder;
-+	encoder->possible_crtcs = drm_of_find_possible_crtcs(drm, dev->of_node);
-+
-+	/*
-+	 * If we failed to find the CRTC(s) which this encoder is
-+	 * supposed to be connected to, it's because the CRTC has
-+	 * not been registered yet.  Defer probing, and hope that
-+	 * the required CRTC is added later.
-+	 */
-+	if (encoder->possible_crtcs == 0)
-+		return -EPROBE_DEFER;
-+
-+	ret = drmm_encoder_init(drm, encoder, NULL, DRM_MODE_ENCODER_TMDS, NULL);
-+	if (ret)
-+		return ret;
-+
-+	drm_encoder_helper_add(encoder, &inno_hdmi_rockchip_encoder_helper_funcs);
-+
-+	dev_set_drvdata(dev, hdmi);
-+
-+	hdmi->base = inno_hdmi_bind(dev, encoder, plat_data);
-+
-+	connector = drm_bridge_connector_init(drm, encoder);
-+	if (IS_ERR(connector)) {
-+		ret = PTR_ERR(connector);
-+		dev_err(hdmi->dev, "failed to init bridge connector: %d\n", ret);
-+		return ret;
-+	}
-+
-+	return drm_connector_attach_encoder(connector, encoder);
-+}
-+
-+static const struct component_ops inno_hdmi_rockchip_ops = {
-+	.bind	= inno_hdmi_rockchip_bind,
-+};
-+
-+static int inno_hdmi_rockchip_probe(struct platform_device *pdev)
-+{
-+	return component_add(&pdev->dev, &inno_hdmi_rockchip_ops);
-+}
-+
-+static void inno_hdmi_rockchip_remove(struct platform_device *pdev)
-+{
-+	component_del(&pdev->dev, &inno_hdmi_rockchip_ops);
-+}
-+
-+static const struct inno_hdmi_plat_ops rk3036_inno_hdmi_plat_ops = {
-+	.enable = inno_hdmi_rk3036_enable,
-+};
-+
-+static const struct inno_hdmi_plat_data rk3036_inno_hdmi_plat_data = {
-+	.ops = &rk3036_inno_hdmi_plat_ops,
-+	.phy_configs = rk3036_hdmi_phy_configs,
-+	.default_phy_config = &rk3036_hdmi_phy_configs[1],
-+};
-+
-+static const struct inno_hdmi_plat_data rk3128_inno_hdmi_plat_data = {
-+	.phy_configs = rk3128_hdmi_phy_configs,
-+	.default_phy_config = &rk3128_hdmi_phy_configs[1],
-+};
-+
-+static const struct of_device_id inno_hdmi_rockchip_dt_ids[] = {
-+	{ .compatible = "rockchip,rk3036-inno-hdmi",
-+	  .data = &rk3036_inno_hdmi_plat_data,
-+	},
-+	{ .compatible = "rockchip,rk3128-inno-hdmi",
-+	  .data = &rk3128_inno_hdmi_plat_data,
-+	},
-+	{},
-+};
-+MODULE_DEVICE_TABLE(of, inno_hdmi_rockchip_dt_ids);
-+
-+struct platform_driver inno_hdmi_driver = {
-+	.probe  = inno_hdmi_rockchip_probe,
-+	.remove = inno_hdmi_rockchip_remove,
-+	.driver = {
-+		.name = "innohdmi-rockchip",
-+		.of_match_table = inno_hdmi_rockchip_dt_ids,
-+	},
-+};
-diff --git a/include/drm/bridge/inno_hdmi.h b/include/drm/bridge/inno_hdmi.h
-new file mode 100644
-index 0000000000000..8b39655212e24
---- /dev/null
-+++ b/include/drm/bridge/inno_hdmi.h
-@@ -0,0 +1,33 @@
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
-+/*
-+ * Copyright (c) 2025 Rockchip Electronics Co., Ltd.
-+ */
-+
-+#ifndef __INNO_HDMI__
-+#define __INNO_HDMI__
-+
-+struct device;
-+struct drm_encoder;
-+struct drm_display_mode;
-+struct inno_hdmi;
-+
-+struct inno_hdmi_plat_ops {
-+	void (*enable)(struct device *pdev, struct drm_display_mode *mode);
-+};
-+
-+struct inno_hdmi_phy_config {
-+	unsigned long pixelclock;
-+	u8 pre_emphasis;
-+	u8 voltage_level_control;
-+};
-+
-+struct inno_hdmi_plat_data {
-+	const struct inno_hdmi_plat_ops *ops;
-+	struct inno_hdmi_phy_config *phy_configs;
-+	struct inno_hdmi_phy_config *default_phy_config;
-+};
-+
-+struct inno_hdmi *inno_hdmi_bind(struct device *pdev,
-+				 struct drm_encoder *encoder,
-+				 const struct inno_hdmi_plat_data *plat_data);
-+#endif /* __INNO_HDMI__ */
--- 
-2.43.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgQW5keSwKCkFtIE1pdHR3b2NoLCAzLiBTZXB0ZW1iZXIgMjAyNSwgMTM6MDc6MzggTWl0dGVs
+ZXVyb3DDpGlzY2hlIFNvbW1lcnplaXQgc2NocmllYiBBbmR5IFlhbjoKPiBGcm9tOiBBbmR5IFlh
+biA8YW5keS55YW5Acm9jay1jaGlwcy5jb20+Cj4gCj4gQ29udmVydCBpdCB0byBkcm0gYnJpZGdl
+IGRyaXZlciwgaXQgd2lsbCBiZSBjb252ZW5pZW50IGZvciB1cyB0bwo+IG1pZ3JhdGUgdGhlIGNv
+bm5lY3RvciBwYXJ0IHRvIHRoZSBkaXNwbGF5IGRyaXZlciBsYXRlci4KPiAKPiBTaWduZWQtb2Zm
+LWJ5OiBBbmR5IFlhbiA8YW5keS55YW5Acm9jay1jaGlwcy5jb20+Cgptb3JlIGxpa2UgYSBnZW5l
+cmFsIHJlbWFyaywgdGhpcyBlc3NlbnRpYWxseSBjb25mbGljdHMgd2l0aCB0aGUKYmlnIGhpd29y
+ZC1jbGVhbnVwIFswXSB0aGF0IHdhcyBtZXJnZWQgdG9kYXksIGFzIHRoZSBpbm5vLWhkbWkgZHJp
+dmVyCiJsb3N0IiBpdHMgc2VwYXJhdGUgSElXT1JEX1VQREFURSBtYWNybyBpbiBmYXZvciBhIG5p
+Y2VyIGdlbmVyaWMgb25lLgoKSSdtIG5vdCBzdXJlIHdoYXQgdGhlIGJlc3Qgd2F5IHRvIHByb2Nl
+ZWQgaXMsIGFwYXJ0IGZyb20gd2FpdGluZyBmb3IKNi4xOC1yYzEuCgoKSGVpa28KCgoKWzBdIGh0
+dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xpbnV4LXJvY2tjaGlwLzIwMjUwODI1LWJ5ZXdvcmQtdXBk
+YXRlLXYzLTAtOTQ3Yjg0MWNkYjI5QGNvbGxhYm9yYS5jb20vCgo+IC0tLQo+IAo+IENoYW5nZXMg
+aW4gdjc6Cj4gLSBSZWJhc2Ugb24gbGF0ZXN0IGRybS1taXNjLW5leHQKPiAKPiBDaGFuZ2VzIGlu
+IHY2Ogo+IC0gUmViYXNlIG9uIGxhdGVzdCBkcm0tbWlzYy1uZXh0Cj4gLSBMaW5rIHRvIFY1OiBo
+dHRwczovL2xvcmUua2VybmVsLm9yZy9saW51eC1yb2NrY2hpcC8yMDI1MDUxMjEyNDYxNS4yODQ4
+NzMxLTEtYW5keXNocmtAMTYzLmNvbS8KPiAKPiBDaGFuZ2VzIGluIHY1Ogo+IC0gU3BsaXQgY2xl
+YW51cCBjb2RlIHRvIHNlcGVyYXRlIHBhdGNoCj4gLSBTd2l0Y2ggdG8gZGV2bV9kcm1fYnJpZGdl
+X2FsbG9jKCkgQVBJCj4gLSBMaW5rIHRvIFY0OiBodHRwczovL2xvcmUua2VybmVsLm9yZy9saW51
+eC1yb2NrY2hpcC8yMDI1MDQyMjA3MDQ1NS40MzI2NjYtMS1hbmR5c2hya0AxNjMuY29tLwo+IAo+
+IENoYW5nZXMgaW4gdjQ6Cj4gLSBEbyBub3Qgc3RvcmUgY29sb3JpbWV0cnkgd2l0aGluIGlubm9f
+aGRtaSBzdHJ1Y3QKPiAtIExpbmsgdG8gVjM6IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xpbnV4
+LXJvY2tjaGlwLzIwMjUwNDAyMTIzMTUwLjIzODIzNC0xLWFuZHlzaHJrQDE2My5jb20vCj4gCj4g
+Q2hhbmdlcyBpbiB2MzoKPiAtIEZpcnN0IGluY2x1ZGVkIGluIHYzCj4gLSBMaW5rIHRvIFYyOiBo
+dHRwczovL2xvcmUua2VybmVsLm9yZy9kcmktZGV2ZWwvMjAyNTAzMjUxMzI5NDQuMTcxMTExLTEt
+YW5keXNocmtAMTYzLmNvbS8KPiAKPiAgZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9LY29uZmlnICAg
+ICAgICAgICAgICAgIHwgICA3ICsKPiAgZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9NYWtlZmlsZSAg
+ICAgICAgICAgICAgIHwgICAxICsKPiAgLi4uL2lubm9faGRtaS5jID0+IGJyaWRnZS9pbm5vLWhk
+bWkuY30gICAgICAgIHwgNTAyICsrKysrLS0tLS0tLS0tLS0tLQo+ICBkcml2ZXJzL2dwdS9kcm0v
+cm9ja2NoaXAvS2NvbmZpZyAgICAgICAgICAgICAgfCAgIDEgKwo+ICBkcml2ZXJzL2dwdS9kcm0v
+cm9ja2NoaXAvTWFrZWZpbGUgICAgICAgICAgICAgfCAgIDIgKy0KPiAgZHJpdmVycy9ncHUvZHJt
+L3JvY2tjaGlwL2lubm9faGRtaS1yb2NrY2hpcC5jIHwgMTg4ICsrKysrKysKPiAgaW5jbHVkZS9k
+cm0vYnJpZGdlL2lubm9faGRtaS5oICAgICAgICAgICAgICAgIHwgIDMzICsrCj4gIDcgZmlsZXMg
+Y2hhbmdlZCwgMzY2IGluc2VydGlvbnMoKyksIDM2OCBkZWxldGlvbnMoLSkKPiAgcmVuYW1lIGRy
+aXZlcnMvZ3B1L2RybS97cm9ja2NoaXAvaW5ub19oZG1pLmMgPT4gYnJpZGdlL2lubm8taGRtaS5j
+fSAoNjklKQo+ICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2lu
+bm9faGRtaS1yb2NrY2hpcC5jCj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBpbmNsdWRlL2RybS9icmlk
+Z2UvaW5ub19oZG1pLmgKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9L
+Y29uZmlnIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9LY29uZmlnCj4gaW5kZXggNjk0NTAyOWIz
+NTkyOS4uZjNkMDUwM2VlNGMzNSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdl
+L0tjb25maWcKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL0tjb25maWcKPiBAQCAtMTAw
+LDYgKzEwMCwxMyBAQCBjb25maWcgRFJNX0kyQ19OWFBfVERBOTk4WAo+ICAJaGVscAo+ICAJICBT
+dXBwb3J0IGZvciBOWFAgU2VtaWNvbmR1Y3RvcnMgVERBOTk4WCBIRE1JIGVuY29kZXJzLgo+ICAK
+PiArY29uZmlnIERSTV9JTk5PX0hETUkKPiArCXRyaXN0YXRlCj4gKwlzZWxlY3QgRFJNX0JSSURH
+RV9DT05ORUNUT1IKPiArCXNlbGVjdCBEUk1fRElTUExBWV9IRE1JX0hFTFBFUgo+ICsJc2VsZWN0
+IERSTV9ESVNQTEFZX0hFTFBFUgo+ICsJc2VsZWN0IERSTV9LTVNfSEVMUEVSCj4gKwo+ICBjb25m
+aWcgRFJNX0lURV9JVDYyNjMKPiAgCXRyaXN0YXRlICJJVEUgSVQ2MjYzIExWRFMvSERNSSBicmlk
+Z2UiCj4gIAlkZXBlbmRzIG9uIE9GCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9icmlk
+Z2UvTWFrZWZpbGUgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL01ha2VmaWxlCj4gaW5kZXggYzdk
+YzAzMTgyZTU5Mi4uOTA5YzIxY2MzYWNkMyAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0v
+YnJpZGdlL01ha2VmaWxlCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9NYWtlZmlsZQo+
+IEBAIC0xMCw2ICsxMCw3IEBAIG9iai0kKENPTkZJR19EUk1fRlNMX0xEQikgKz0gZnNsLWxkYi5v
+Cj4gIHRkYTk5OHgteSA6PSB0ZGE5OTh4X2Rydi5vCj4gIG9iai0kKENPTkZJR19EUk1fSTJDX05Y
+UF9UREE5OThYKSArPSB0ZGE5OTh4Lm8KPiAgCj4gK29iai0kKENPTkZJR19EUk1fSU5OT19IRE1J
+KSArPSBpbm5vLWhkbWkubwo+ICBvYmotJChDT05GSUdfRFJNX0lURV9JVDYyNjMpICs9IGl0ZS1p
+dDYyNjMubwo+ICBvYmotJChDT05GSUdfRFJNX0lURV9JVDY1MDUpICs9IGl0ZS1pdDY1MDUubwo+
+ICBvYmotJChDT05GSUdfRFJNX0xPTlRJVU1fTFQ4OTEyQikgKz0gbG9udGl1bS1sdDg5MTJiLm8K
+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2lubm9faGRtaS5jIGIvZHJp
+dmVycy9ncHUvZHJtL2JyaWRnZS9pbm5vLWhkbWkuYwo+IHNpbWlsYXJpdHkgaW5kZXggNjklCj4g
+cmVuYW1lIGZyb20gZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2lubm9faGRtaS5jCj4gcmVuYW1l
+IHRvIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvaW5uby1oZG1pLmMKPiBpbmRleCAxYWIzYWQ0YmRl
+OWVhLi5hYjQ1NzJlYjgzOTUwIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
+cC9pbm5vX2hkbWkuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvaW5uby1oZG1pLmMK
+PiBAQCAtMywxMiArMywxNCBAQAo+ICAgKiBDb3B5cmlnaHQgKEMpIFJvY2tjaGlwIEVsZWN0cm9u
+aWNzIENvLiwgTHRkLgo+ICAgKiAgICBaaGVuZyBZYW5nIDx6aGVuZ3lhbmdAcm9jay1jaGlwcy5j
+b20+Cj4gICAqICAgIFlha2lyIFlhbmcgPHlra0Byb2NrLWNoaXBzLmNvbT4KPiArICogICAgQW5k
+eSBZYW4gPGFuZHlzaHJrQDE2My5jb20+Cj4gICAqLwo+ICAKPiAgI2luY2x1ZGUgPGxpbnV4L2ly
+cS5oPgo+ICAjaW5jbHVkZSA8bGludXgvY2xrLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9kZWxheS5o
+Pgo+ICAjaW5jbHVkZSA8bGludXgvZXJyLmg+Cj4gKyNpbmNsdWRlIDxsaW51eC9pMmMuaD4KPiAg
+I2luY2x1ZGUgPGxpbnV4L2hkbWkuaD4KPiAgI2luY2x1ZGUgPGxpbnV4L21mZC9zeXNjb24uaD4K
+PiAgI2luY2x1ZGUgPGxpbnV4L21vZF9kZXZpY2V0YWJsZS5oPgo+IEBAIC0xNywxOCArMTksMTgg
+QEAKPiAgI2luY2x1ZGUgPGxpbnV4L3BsYXRmb3JtX2RldmljZS5oPgo+ICAjaW5jbHVkZSA8bGlu
+dXgvcmVnbWFwLmg+Cj4gIAo+ICsjaW5jbHVkZSA8ZHJtL2JyaWRnZS9pbm5vX2hkbWkuaD4KPiAg
+I2luY2x1ZGUgPGRybS9kcm1fYXRvbWljLmg+Cj4gICNpbmNsdWRlIDxkcm0vZHJtX2F0b21pY19o
+ZWxwZXIuaD4KPiAgI2luY2x1ZGUgPGRybS9kcm1fZWRpZC5oPgo+ICAjaW5jbHVkZSA8ZHJtL2Ry
+bV9vZi5oPgo+ICsjaW5jbHVkZSA8ZHJtL2RybV9wcmludC5oPgo+ICAjaW5jbHVkZSA8ZHJtL2Ry
+bV9wcm9iZV9oZWxwZXIuaD4KPiAgI2luY2x1ZGUgPGRybS9kcm1fc2ltcGxlX2ttc19oZWxwZXIu
+aD4KPiAgCj4gICNpbmNsdWRlIDxkcm0vZGlzcGxheS9kcm1faGRtaV9oZWxwZXIuaD4KPiAgI2lu
+Y2x1ZGUgPGRybS9kaXNwbGF5L2RybV9oZG1pX3N0YXRlX2hlbHBlci5oPgo+ICAKPiAtI2luY2x1
+ZGUgInJvY2tjaGlwX2RybV9kcnYuaCIKPiAtCj4gICNkZWZpbmUgSU5OT19IRE1JX01JTl9UTURT
+X0NMT0NLICAyNTAwMDAwMFUKPiAgCj4gICNkZWZpbmUgRERDX1NFR01FTlRfQUREUgkJMHgzMAo+
+IEBAIC0zODIsMjkgKzM4NCw2IEBAIGVudW0gewo+ICAjZGVmaW5lIEhETUlfQ0VDX0JVU0ZSRUVU
+SU1FX0gJCTB4ZGQKPiAgI2RlZmluZSBIRE1JX0NFQ19MT0dJQ0FERFIJCTB4ZGUKPiAgCj4gLSNk
+ZWZpbmUgSElXT1JEX1VQREFURSh2YWwsIG1hc2spCSgodmFsKSB8IChtYXNrKSA8PCAxNikKPiAt
+Cj4gLSNkZWZpbmUgUkszMDM2X0dSRl9TT0NfQ09OMgkweDE0OAo+IC0jZGVmaW5lIFJLMzAzNl9I
+RE1JX1BIU1lOQwlCSVQoNCkKPiAtI2RlZmluZSBSSzMwMzZfSERNSV9QVlNZTkMJQklUKDUpCj4g
+LQo+IC1lbnVtIGlubm9faGRtaV9kZXZfdHlwZSB7Cj4gLQlSSzMwMzZfSERNSSwKPiAtCVJLMzEy
+OF9IRE1JLAo+IC19Owo+IC0KPiAtc3RydWN0IGlubm9faGRtaV9waHlfY29uZmlnIHsKPiAtCXVu
+c2lnbmVkIGxvbmcgcGl4ZWxjbG9jazsKPiAtCXU4IHByZV9lbXBoYXNpczsKPiAtCXU4IHZvbHRh
+Z2VfbGV2ZWxfY29udHJvbDsKPiAtfTsKPiAtCj4gLXN0cnVjdCBpbm5vX2hkbWlfdmFyaWFudCB7
+Cj4gLQllbnVtIGlubm9faGRtaV9kZXZfdHlwZSBkZXZfdHlwZTsKPiAtCXN0cnVjdCBpbm5vX2hk
+bWlfcGh5X2NvbmZpZyAqcGh5X2NvbmZpZ3M7Cj4gLQlzdHJ1Y3QgaW5ub19oZG1pX3BoeV9jb25m
+aWcgKmRlZmF1bHRfcGh5X2NvbmZpZzsKPiAtfTsKPiAtCj4gIHN0cnVjdCBpbm5vX2hkbWlfaTJj
+IHsKPiAgCXN0cnVjdCBpMmNfYWRhcHRlciBhZGFwOwo+ICAKPiBAQCAtNDE3LDQxICszOTYsMTcg
+QEAgc3RydWN0IGlubm9faGRtaV9pMmMgewo+ICAKPiAgc3RydWN0IGlubm9faGRtaSB7Cj4gIAlz
+dHJ1Y3QgZGV2aWNlICpkZXY7Cj4gLQo+ICsJc3RydWN0IGRybV9icmlkZ2UgYnJpZGdlOwo+ICAJ
+c3RydWN0IGNsayAqcGNsazsKPiAgCXN0cnVjdCBjbGsgKnJlZmNsazsKPiAgCXZvaWQgX19pb21l
+bSAqcmVnczsKPiAgCXN0cnVjdCByZWdtYXAgKmdyZjsKPiAgCj4gLQlzdHJ1Y3QgZHJtX2Nvbm5l
+Y3Rvcgljb25uZWN0b3I7Cj4gLQlzdHJ1Y3Qgcm9ja2NoaXBfZW5jb2RlcgllbmNvZGVyOwo+IC0K
+PiAgCXN0cnVjdCBpbm5vX2hkbWlfaTJjICppMmM7Cj4gIAlzdHJ1Y3QgaTJjX2FkYXB0ZXIgKmRk
+YzsKPiAtCj4gLQljb25zdCBzdHJ1Y3QgaW5ub19oZG1pX3ZhcmlhbnQgKnZhcmlhbnQ7Cj4gLX07
+Cj4gLQo+IC1zdHJ1Y3QgaW5ub19oZG1pX2Nvbm5lY3Rvcl9zdGF0ZSB7Cj4gLQlzdHJ1Y3QgZHJt
+X2Nvbm5lY3Rvcl9zdGF0ZQliYXNlOwo+IC0JdW5zaWduZWQgaW50CQkJY29sb3JpbWV0cnk7Cj4g
+Kwljb25zdCBzdHJ1Y3QgaW5ub19oZG1pX3BsYXRfZGF0YSAqcGxhdF9kYXRhOwo+ICB9Owo+ICAK
+PiAtc3RhdGljIHN0cnVjdCBpbm5vX2hkbWkgKmVuY29kZXJfdG9faW5ub19oZG1pKHN0cnVjdCBk
+cm1fZW5jb2RlciAqZW5jb2RlcikKPiAtewo+IC0Jc3RydWN0IHJvY2tjaGlwX2VuY29kZXIgKnJr
+ZW5jb2RlciA9IHRvX3JvY2tjaGlwX2VuY29kZXIoZW5jb2Rlcik7Cj4gLQo+IC0JcmV0dXJuIGNv
+bnRhaW5lcl9vZihya2VuY29kZXIsIHN0cnVjdCBpbm5vX2hkbWksIGVuY29kZXIpOwo+IC19Cj4g
+LQo+IC1zdGF0aWMgc3RydWN0IGlubm9faGRtaSAqY29ubmVjdG9yX3RvX2lubm9faGRtaShzdHJ1
+Y3QgZHJtX2Nvbm5lY3RvciAqY29ubmVjdG9yKQo+IC17Cj4gLQlyZXR1cm4gY29udGFpbmVyX29m
+KGNvbm5lY3Rvciwgc3RydWN0IGlubm9faGRtaSwgY29ubmVjdG9yKTsKPiAtfQo+IC0KPiAtI2Rl
+ZmluZSB0b19pbm5vX2hkbWlfY29ubl9zdGF0ZShjb25uX3N0YXRlKSBcCj4gLQljb250YWluZXJf
+b2ZfY29uc3QoY29ubl9zdGF0ZSwgc3RydWN0IGlubm9faGRtaV9jb25uZWN0b3Jfc3RhdGUsIGJh
+c2UpCj4gLQo+ICBlbnVtIHsKPiAgCUNTQ19SR0JfMF8yNTVfVE9fSVRVNjAxXzE2XzIzNV84QklU
+LAo+ICAJQ1NDX1JHQl8wXzI1NV9UT19JVFU3MDlfMTZfMjM1XzhCSVQsCj4gQEAgLTQ5NCwyMyAr
+NDQ5LDE1IEBAIHN0YXRpYyBjb25zdCBjaGFyIGNvZWZmX2NzY1tdWzI0XSA9IHsKPiAgCX0sCj4g
+IH07Cj4gIAo+IC1zdGF0aWMgc3RydWN0IGlubm9faGRtaV9waHlfY29uZmlnIHJrMzAzNl9oZG1p
+X3BoeV9jb25maWdzW10gPSB7Cj4gLQl7ICA3NDI1MDAwMCwgMHgzZiwgMHhiYiB9LAo+IC0JeyAx
+NjUwMDAwMDAsIDB4NmYsIDB4YmIgfSwKPiAtCXsgICAgICB+MFVMLCAweDAwLCAweDAwIH0KPiAt
+fTsKPiAtCj4gLXN0YXRpYyBzdHJ1Y3QgaW5ub19oZG1pX3BoeV9jb25maWcgcmszMTI4X2hkbWlf
+cGh5X2NvbmZpZ3NbXSA9IHsKPiAtCXsgIDc0MjUwMDAwLCAweDNmLCAweGFhIH0sCj4gLQl7IDE2
+NTAwMDAwMCwgMHg1ZiwgMHhhYSB9LAo+IC0JeyAgICAgIH4wVUwsIDB4MDAsIDB4MDAgfQo+IC19
+Owo+ICtzdGF0aWMgc3RydWN0IGlubm9faGRtaSAqYnJpZGdlX3RvX2lubm9faGRtaShzdHJ1Y3Qg
+ZHJtX2JyaWRnZSAqYnJpZGdlKQo+ICt7Cj4gKwlyZXR1cm4gY29udGFpbmVyX29mKGJyaWRnZSwg
+c3RydWN0IGlubm9faGRtaSwgYnJpZGdlKTsKPiArfQo+ICAKPiAgc3RhdGljIGludCBpbm5vX2hk
+bWlfZmluZF9waHlfY29uZmlnKHN0cnVjdCBpbm5vX2hkbWkgKmhkbWksCj4gIAkJCQkgICAgIHVu
+c2lnbmVkIGxvbmcgcGl4ZWxjbGspCj4gIHsKPiAtCWNvbnN0IHN0cnVjdCBpbm5vX2hkbWlfcGh5
+X2NvbmZpZyAqcGh5X2NvbmZpZ3MgPQo+IC0JCQkJCQloZG1pLT52YXJpYW50LT5waHlfY29uZmln
+czsKPiArCWNvbnN0IHN0cnVjdCBpbm5vX2hkbWlfcGh5X2NvbmZpZyAqcGh5X2NvbmZpZ3MgPSBo
+ZG1pLT5wbGF0X2RhdGEtPnBoeV9jb25maWdzOwo+ICAJaW50IGk7Cj4gIAo+ICAJZm9yIChpID0g
+MDsgcGh5X2NvbmZpZ3NbaV0ucGl4ZWxjbG9jayAhPSB+MFVMOyBpKyspIHsKPiBAQCAtNTgyLDEy
+ICs1MjksMTIgQEAgc3RhdGljIHZvaWQgaW5ub19oZG1pX3Bvd2VyX3VwKHN0cnVjdCBpbm5vX2hk
+bWkgKmhkbWksCj4gIAlpbnQgcmV0ID0gaW5ub19oZG1pX2ZpbmRfcGh5X2NvbmZpZyhoZG1pLCBt
+cGl4ZWxjbG9jayk7Cj4gIAo+ICAJaWYgKHJldCA8IDApIHsKPiAtCQlwaHlfY29uZmlnID0gaGRt
+aS0+dmFyaWFudC0+ZGVmYXVsdF9waHlfY29uZmlnOwo+ICsJCXBoeV9jb25maWcgPSBoZG1pLT5w
+bGF0X2RhdGEtPmRlZmF1bHRfcGh5X2NvbmZpZzsKPiAgCQlEUk1fREVWX0VSUk9SKGhkbWktPmRl
+diwKPiAgCQkJICAgICAgIlVzaW5nIGRlZmF1bHQgcGh5IGNvbmZpZ3VyYXRpb24gZm9yIFRNRFMg
+cmF0ZSAlbHUiLAo+ICAJCQkgICAgICBtcGl4ZWxjbG9jayk7Cj4gIAl9IGVsc2Ugewo+IC0JCXBo
+eV9jb25maWcgPSAmaGRtaS0+dmFyaWFudC0+cGh5X2NvbmZpZ3NbcmV0XTsKPiArCQlwaHlfY29u
+ZmlnID0gJmhkbWktPnBsYXRfZGF0YS0+cGh5X2NvbmZpZ3NbcmV0XTsKPiAgCX0KPiAgCj4gIAlp
+bm5vX2hkbWlfc3lzX3Bvd2VyKGhkbWksIGZhbHNlKTsKPiBAQCAtNjM3LDE0ICs1ODQsMTMgQEAg
+c3RhdGljIHZvaWQgaW5ub19oZG1pX2luaXRfaHcoc3RydWN0IGlubm9faGRtaSAqaGRtaSkKPiAg
+CWhkbWlfbW9kYihoZG1pLCBIRE1JX1NUQVRVUywgbV9NQVNLX0lOVF9IT1RQTFVHLCB2X01BU0tf
+SU5UX0hPVFBMVUcoMSkpOwo+ICB9Cj4gIAo+IC1zdGF0aWMgaW50IGlubm9faGRtaV9kaXNhYmxl
+X2ZyYW1lKHN0cnVjdCBkcm1fY29ubmVjdG9yICpjb25uZWN0b3IsCj4gLQkJCQkgICBlbnVtIGhk
+bWlfaW5mb2ZyYW1lX3R5cGUgdHlwZSkKPiArc3RhdGljIGludCBpbm5vX2hkbWlfYnJpZGdlX2Ns
+ZWFyX2luZm9mcmFtZShzdHJ1Y3QgZHJtX2JyaWRnZSAqYnJpZGdlLAo+ICsJCQkJCSAgICBlbnVt
+IGhkbWlfaW5mb2ZyYW1lX3R5cGUgdHlwZSkKPiAgewo+IC0Jc3RydWN0IGlubm9faGRtaSAqaGRt
+aSA9IGNvbm5lY3Rvcl90b19pbm5vX2hkbWkoY29ubmVjdG9yKTsKPiArCXN0cnVjdCBpbm5vX2hk
+bWkgKmhkbWkgPSBicmlkZ2VfdG9faW5ub19oZG1pKGJyaWRnZSk7Cj4gIAo+ICAJaWYgKHR5cGUg
+IT0gSERNSV9JTkZPRlJBTUVfVFlQRV9BVkkpIHsKPiAtCQlkcm1fZXJyKGNvbm5lY3Rvci0+ZGV2
+LAo+IC0JCQkiVW5zdXBwb3J0ZWQgaW5mb2ZyYW1lIHR5cGU6ICV1XG4iLCB0eXBlKTsKPiArCQlk
+cm1fZXJyKGJyaWRnZS0+ZGV2LCAiVW5zdXBwb3J0ZWQgaW5mb2ZyYW1lIHR5cGU6ICV1XG4iLCB0
+eXBlKTsKPiAgCQlyZXR1cm4gMDsKPiAgCX0KPiAgCj4gQEAgLTY1MywyMCArNTk5LDE5IEBAIHN0
+YXRpYyBpbnQgaW5ub19oZG1pX2Rpc2FibGVfZnJhbWUoc3RydWN0IGRybV9jb25uZWN0b3IgKmNv
+bm5lY3RvciwKPiAgCXJldHVybiAwOwo+ICB9Cj4gIAo+IC1zdGF0aWMgaW50IGlubm9faGRtaV91
+cGxvYWRfZnJhbWUoc3RydWN0IGRybV9jb25uZWN0b3IgKmNvbm5lY3RvciwKPiAtCQkJCSAgZW51
+bSBoZG1pX2luZm9mcmFtZV90eXBlIHR5cGUsCj4gLQkJCQkgIGNvbnN0IHU4ICpidWZmZXIsIHNp
+emVfdCBsZW4pCj4gK3N0YXRpYyBpbnQgaW5ub19oZG1pX2JyaWRnZV93cml0ZV9pbmZvZnJhbWUo
+c3RydWN0IGRybV9icmlkZ2UgKmJyaWRnZSwKPiArCQkJCQkgICAgZW51bSBoZG1pX2luZm9mcmFt
+ZV90eXBlIHR5cGUsCj4gKwkJCQkJICAgIGNvbnN0IHU4ICpidWZmZXIsIHNpemVfdCBsZW4pCj4g
+IHsKPiAtCXN0cnVjdCBpbm5vX2hkbWkgKmhkbWkgPSBjb25uZWN0b3JfdG9faW5ub19oZG1pKGNv
+bm5lY3Rvcik7Cj4gKwlzdHJ1Y3QgaW5ub19oZG1pICpoZG1pID0gYnJpZGdlX3RvX2lubm9faGRt
+aShicmlkZ2UpOwo+ICAJc3NpemVfdCBpOwo+ICAKPiAgCWlmICh0eXBlICE9IEhETUlfSU5GT0ZS
+QU1FX1RZUEVfQVZJKSB7Cj4gLQkJZHJtX2Vycihjb25uZWN0b3ItPmRldiwKPiAtCQkJIlVuc3Vw
+cG9ydGVkIGluZm9mcmFtZSB0eXBlOiAldVxuIiwgdHlwZSk7Cj4gKwkJZHJtX2VycihicmlkZ2Ut
+PmRldiwgIlVuc3VwcG9ydGVkIGluZm9mcmFtZSB0eXBlOiAldVxuIiwgdHlwZSk7Cj4gIAkJcmV0
+dXJuIDA7Cj4gIAl9Cj4gIAo+IC0JaW5ub19oZG1pX2Rpc2FibGVfZnJhbWUoY29ubmVjdG9yLCB0
+eXBlKTsKPiArCWlubm9faGRtaV9icmlkZ2VfY2xlYXJfaW5mb2ZyYW1lKGJyaWRnZSwgdHlwZSk7
+Cj4gIAo+ICAJZm9yIChpID0gMDsgaSA8IGxlbjsgaSsrKQo+ICAJCWhkbWlfd3JpdGViKGhkbWks
+IEhETUlfQ09OVFJPTF9QQUNLRVRfQUREUiArIGksIGJ1ZmZlcltpXSk7Cj4gQEAgLTY3NCwyMyAr
+NjE5LDI2IEBAIHN0YXRpYyBpbnQgaW5ub19oZG1pX3VwbG9hZF9mcmFtZShzdHJ1Y3QgZHJtX2Nv
+bm5lY3RvciAqY29ubmVjdG9yLAo+ICAJcmV0dXJuIDA7Cj4gIH0KPiAgCj4gLXN0YXRpYyBjb25z
+dCBzdHJ1Y3QgZHJtX2Nvbm5lY3Rvcl9oZG1pX2Z1bmNzIGlubm9faGRtaV9oZG1pX2Nvbm5lY3Rv
+cl9mdW5jcyA9IHsKPiAtCS5jbGVhcl9pbmZvZnJhbWUJPSBpbm5vX2hkbWlfZGlzYWJsZV9mcmFt
+ZSwKPiAtCS53cml0ZV9pbmZvZnJhbWUJPSBpbm5vX2hkbWlfdXBsb2FkX2ZyYW1lLAo+IC19Owo+
+IC0KPiAtc3RhdGljIGludCBpbm5vX2hkbWlfY29uZmlnX3ZpZGVvX2NzYyhzdHJ1Y3QgaW5ub19o
+ZG1pICpoZG1pKQo+ICtzdGF0aWMgaW50IGlubm9faGRtaV9jb25maWdfdmlkZW9fY3NjKHN0cnVj
+dCBpbm5vX2hkbWkgKmhkbWksCj4gKwkJCQkgICAgICBzdHJ1Y3QgZHJtX2Nvbm5lY3RvciAqY29u
+bmVjdG9yLAo+ICsJCQkJICAgICAgc3RydWN0IGRybV9kaXNwbGF5X21vZGUgKm1vZGUpCj4gIHsK
+PiAtCXN0cnVjdCBkcm1fY29ubmVjdG9yICpjb25uZWN0b3IgPSAmaGRtaS0+Y29ubmVjdG9yOwo+
+ICAJc3RydWN0IGRybV9jb25uZWN0b3Jfc3RhdGUgKmNvbm5fc3RhdGUgPSBjb25uZWN0b3ItPnN0
+YXRlOwo+IC0Jc3RydWN0IGlubm9faGRtaV9jb25uZWN0b3Jfc3RhdGUgKmlubm9fY29ubl9zdGF0
+ZSA9Cj4gLQkJCQkJdG9faW5ub19oZG1pX2Nvbm5fc3RhdGUoY29ubl9zdGF0ZSk7Cj4gIAlpbnQg
+YzBfYzJfY2hhbmdlID0gMDsKPiAgCWludCBjc2NfZW5hYmxlID0gMDsKPiAgCWludCBjc2NfbW9k
+ZSA9IDA7Cj4gIAlpbnQgYXV0b19jc2MgPSAwOwo+ICAJaW50IHZhbHVlOwo+ICAJaW50IGk7Cj4g
+KwlpbnQgY29sb3JpbWV0cnk7Cj4gKwl1OCB2aWMgPSBkcm1fbWF0Y2hfY2VhX21vZGUobW9kZSk7
+Cj4gKwo+ICsJaWYgKHZpYyA9PSA2IHx8IHZpYyA9PSA3IHx8IHZpYyA9PSAyMSB8fCB2aWMgPT0g
+MjIgfHwKPiArCSAgICB2aWMgPT0gMiB8fCB2aWMgPT0gMyB8fCB2aWMgPT0gMTcgfHwgdmljID09
+IDE4KQo+ICsJCWNvbG9yaW1ldHJ5ID0gSERNSV9DT0xPUklNRVRSWV9JVFVfNjAxOwo+ICsJZWxz
+ZQo+ICsJCWNvbG9yaW1ldHJ5ID0gSERNSV9DT0xPUklNRVRSWV9JVFVfNzA5Owo+ICsKPiAgCj4g
+IAkvKiBJbnB1dCB2aWRlbyBtb2RlIGlzIFNEUiBSR0IyNGJpdCwgZGF0YSBlbmFibGUgc2lnbmFs
+IGZyb20gZXh0ZXJuYWwgKi8KPiAgCWhkbWlfd3JpdGViKGhkbWksIEhETUlfVklERU9fQ09OVFJM
+MSwgdl9ERV9FWFRFUk5BTCB8Cj4gQEAgLTcyMCw3ICs2NjgsNyBAQCBzdGF0aWMgaW50IGlubm9f
+aGRtaV9jb25maWdfdmlkZW9fY3NjKHN0cnVjdCBpbm5vX2hkbWkgKmhkbWkpCj4gIAkJCXJldHVy
+biAwOwo+ICAJCX0KPiAgCX0gZWxzZSB7Cj4gLQkJaWYgKGlubm9fY29ubl9zdGF0ZS0+Y29sb3Jp
+bWV0cnkgPT0gSERNSV9DT0xPUklNRVRSWV9JVFVfNjAxKSB7Cj4gKwkJaWYgKGNvbG9yaW1ldHJ5
+ID09IEhETUlfQ09MT1JJTUVUUllfSVRVXzYwMSkgewo+ICAJCQlpZiAoY29ubl9zdGF0ZS0+aGRt
+aS5vdXRwdXRfZm9ybWF0ID09IEhETUlfQ09MT1JTUEFDRV9ZVVY0NDQpIHsKPiAgCQkJCWNzY19t
+b2RlID0gQ1NDX1JHQl8wXzI1NV9UT19JVFU2MDFfMTZfMjM1XzhCSVQ7Cj4gIAkJCQlhdXRvX2Nz
+YyA9IEFVVE9fQ1NDX0RJU0FCTEU7Cj4gQEAgLTczOCw4ICs2ODYsNyBAQCBzdGF0aWMgaW50IGlu
+bm9faGRtaV9jb25maWdfdmlkZW9fY3NjKHN0cnVjdCBpbm5vX2hkbWkgKmhkbWkpCj4gIAl9Cj4g
+IAo+ICAJZm9yIChpID0gMDsgaSA8IDI0OyBpKyspCj4gLQkJaGRtaV93cml0ZWIoaGRtaSwgSERN
+SV9WSURFT19DU0NfQ09FRiArIGksCj4gLQkJCSAgICBjb2VmZl9jc2NbY3NjX21vZGVdW2ldKTsK
+PiArCQloZG1pX3dyaXRlYihoZG1pLCBIRE1JX1ZJREVPX0NTQ19DT0VGICsgaSwgY29lZmZfY3Nj
+W2NzY19tb2RlXVtpXSk7Cj4gIAo+ICAJdmFsdWUgPSB2X1NPRl9ESVNBQkxFIHwgY3NjX2VuYWJs
+ZSB8IHZfQ09MT1JfREVQVEhfTk9UX0lORElDQVRFRCgxKTsKPiAgCWhkbWlfd3JpdGViKGhkbWks
+IEhETUlfVklERU9fQ09OVFJMMywgdmFsdWUpOwo+IEBAIC03NTMsMTUgKzcwMCwxMSBAQCBzdGF0
+aWMgaW50IGlubm9faGRtaV9jb25maWdfdmlkZW9fY3NjKHN0cnVjdCBpbm5vX2hkbWkgKmhkbWkp
+Cj4gIHN0YXRpYyBpbnQgaW5ub19oZG1pX2NvbmZpZ192aWRlb190aW1pbmcoc3RydWN0IGlubm9f
+aGRtaSAqaGRtaSwKPiAgCQkJCQkgc3RydWN0IGRybV9kaXNwbGF5X21vZGUgKm1vZGUpCj4gIHsK
+PiAtCWludCB2YWx1ZSwgcHN5bmM7Cj4gLQo+IC0JaWYgKGhkbWktPnZhcmlhbnQtPmRldl90eXBl
+ID09IFJLMzAzNl9IRE1JKSB7Cj4gLQkJcHN5bmMgPSBtb2RlLT5mbGFncyAmIERSTV9NT0RFX0ZM
+QUdfUEhTWU5DID8gUkszMDM2X0hETUlfUEhTWU5DIDogMDsKPiAtCQl2YWx1ZSA9IEhJV09SRF9V
+UERBVEUocHN5bmMsIFJLMzAzNl9IRE1JX1BIU1lOQyk7Cj4gLQkJcHN5bmMgPSBtb2RlLT5mbGFn
+cyAmIERSTV9NT0RFX0ZMQUdfUFZTWU5DID8gUkszMDM2X0hETUlfUFZTWU5DIDogMDsKPiAtCQl2
+YWx1ZSB8PSBISVdPUkRfVVBEQVRFKHBzeW5jLCBSSzMwMzZfSERNSV9QVlNZTkMpOwo+IC0JCXJl
+Z21hcF93cml0ZShoZG1pLT5ncmYsIFJLMzAzNl9HUkZfU09DX0NPTjIsIHZhbHVlKTsKPiAtCX0K
+PiArCWNvbnN0IHN0cnVjdCBpbm5vX2hkbWlfcGxhdF9vcHMgKnBsYXRfb3BzID0gaGRtaS0+cGxh
+dF9kYXRhLT5vcHM7Cj4gKwl1MzIgdmFsdWU7Cj4gKwo+ICsJaWYgKHBsYXRfb3BzICYmIHBsYXRf
+b3BzLT5lbmFibGUpCj4gKwkJcGxhdF9vcHMtPmVuYWJsZShoZG1pLT5kZXYsIG1vZGUpOwo+ICAK
+PiAgCS8qIFNldCBkZXRhaWwgZXh0ZXJuYWwgdmlkZW8gdGltaW5nIHBvbGFyaXR5IGFuZCBpbnRl
+cmxhY2UgbW9kZSAqLwo+ICAJdmFsdWUgPSB2X0VYVEVSQU5MX1ZJREVPKDEpOwo+IEBAIC04MTAs
+MTQgKzc1MywxNiBAQCBzdGF0aWMgaW50IGlubm9faGRtaV9jb25maWdfdmlkZW9fdGltaW5nKHN0
+cnVjdCBpbm5vX2hkbWkgKmhkbWksCj4gIAlyZXR1cm4gMDsKPiAgfQo+ICAKPiAtc3RhdGljIGlu
+dCBpbm5vX2hkbWlfc2V0dXAoc3RydWN0IGlubm9faGRtaSAqaGRtaSwKPiAtCQkJICAgc3RydWN0
+IGRybV9hdG9taWNfc3RhdGUgKnN0YXRlKQo+ICtzdGF0aWMgaW50IGlubm9faGRtaV9zZXR1cChz
+dHJ1Y3QgaW5ub19oZG1pICpoZG1pLCBzdHJ1Y3QgZHJtX2F0b21pY19zdGF0ZSAqc3RhdGUpCj4g
+IHsKPiAtCXN0cnVjdCBkcm1fY29ubmVjdG9yICpjb25uZWN0b3IgPSAmaGRtaS0+Y29ubmVjdG9y
+Owo+IC0Jc3RydWN0IGRybV9kaXNwbGF5X2luZm8gKmRpc3BsYXkgPSAmY29ubmVjdG9yLT5kaXNw
+bGF5X2luZm87Cj4gKwlzdHJ1Y3QgZHJtX2JyaWRnZSAqYnJpZGdlID0gJmhkbWktPmJyaWRnZTsK
+PiArCXN0cnVjdCBkcm1fY29ubmVjdG9yICpjb25uZWN0b3I7Cj4gKwlzdHJ1Y3QgZHJtX2Rpc3Bs
+YXlfaW5mbyAqaW5mbzsKPiAgCXN0cnVjdCBkcm1fY29ubmVjdG9yX3N0YXRlICpuZXdfY29ubl9z
+dGF0ZTsKPiAgCXN0cnVjdCBkcm1fY3J0Y19zdGF0ZSAqbmV3X2NydGNfc3RhdGU7Cj4gIAo+ICsJ
+Y29ubmVjdG9yID0gZHJtX2F0b21pY19nZXRfbmV3X2Nvbm5lY3Rvcl9mb3JfZW5jb2RlcihzdGF0
+ZSwgYnJpZGdlLT5lbmNvZGVyKTsKPiArCj4gIAluZXdfY29ubl9zdGF0ZSA9IGRybV9hdG9taWNf
+Z2V0X25ld19jb25uZWN0b3Jfc3RhdGUoc3RhdGUsIGNvbm5lY3Rvcik7Cj4gIAlpZiAoV0FSTl9P
+TighbmV3X2Nvbm5fc3RhdGUpKQo+ICAJCXJldHVybiAtRUlOVkFMOwo+IEBAIC04MjYsMTcgKzc3
+MSwxOCBAQCBzdGF0aWMgaW50IGlubm9faGRtaV9zZXR1cChzdHJ1Y3QgaW5ub19oZG1pICpoZG1p
+LAo+ICAJaWYgKFdBUk5fT04oIW5ld19jcnRjX3N0YXRlKSkKPiAgCQlyZXR1cm4gLUVJTlZBTDsK
+PiAgCj4gKwlpbmZvID0gJmNvbm5lY3Rvci0+ZGlzcGxheV9pbmZvOwo+ICsKPiAgCS8qIE11dGUg
+dmlkZW8gYW5kIGF1ZGlvIG91dHB1dCAqLwo+ICAJaGRtaV9tb2RiKGhkbWksIEhETUlfQVZfTVVU
+RSwgbV9BVURJT19NVVRFIHwgbV9WSURFT19CTEFDSywKPiAgCQkgIHZfQVVESU9fTVVURSgxKSB8
+IHZfVklERU9fTVVURSgxKSk7Cj4gIAo+ICAJLyogU2V0IEhETUkgTW9kZSAqLwo+IC0JaGRtaV93
+cml0ZWIoaGRtaSwgSERNSV9IRENQX0NUUkwsCj4gLQkJICAgIHZfSERNSV9EVkkoZGlzcGxheS0+
+aXNfaGRtaSkpOwo+ICsJaGRtaV93cml0ZWIoaGRtaSwgSERNSV9IRENQX0NUUkwsIHZfSERNSV9E
+VkkoaW5mby0+aXNfaGRtaSkpOwo+ICAKPiAgCWlubm9faGRtaV9jb25maWdfdmlkZW9fdGltaW5n
+KGhkbWksICZuZXdfY3J0Y19zdGF0ZS0+YWRqdXN0ZWRfbW9kZSk7Cj4gIAo+IC0JaW5ub19oZG1p
+X2NvbmZpZ192aWRlb19jc2MoaGRtaSk7Cj4gKwlpbm5vX2hkbWlfY29uZmlnX3ZpZGVvX2NzYyho
+ZG1pLCBjb25uZWN0b3IsICZuZXdfY3J0Y19zdGF0ZS0+YWRqdXN0ZWRfbW9kZSk7Cj4gIAo+ICAJ
+ZHJtX2F0b21pY19oZWxwZXJfY29ubmVjdG9yX2hkbWlfdXBkYXRlX2luZm9mcmFtZXMoY29ubmVj
+dG9yLCBzdGF0ZSk7Cj4gIAo+IEBAIC04NTcsOSArODAzLDExIEBAIHN0YXRpYyBpbnQgaW5ub19o
+ZG1pX3NldHVwKHN0cnVjdCBpbm5vX2hkbWkgKmhkbWksCj4gIAlyZXR1cm4gMDsKPiAgfQo+ICAK
+PiAtc3RhdGljIGVudW0gZHJtX21vZGVfc3RhdHVzIGlubm9faGRtaV9kaXNwbGF5X21vZGVfdmFs
+aWQoc3RydWN0IGlubm9faGRtaSAqaGRtaSwKPiAtCQkJCQkJCSBjb25zdCBzdHJ1Y3QgZHJtX2Rp
+c3BsYXlfbW9kZSAqbW9kZSkKPiArc3RhdGljIGVudW0gZHJtX21vZGVfc3RhdHVzIGlubm9faGRt
+aV9icmlkZ2VfbW9kZV92YWxpZChzdHJ1Y3QgZHJtX2JyaWRnZSAqYnJpZGdlLAo+ICsJCQkJCQkJ
+Y29uc3Qgc3RydWN0IGRybV9kaXNwbGF5X2luZm8gKmluZm8sCj4gKwkJCQkJCQljb25zdCBzdHJ1
+Y3QgZHJtX2Rpc3BsYXlfbW9kZSAqbW9kZSkKPiAgewo+ICsJc3RydWN0IGlubm9faGRtaSAqaGRt
+aSA9IGJyaWRnZV90b19pbm5vX2hkbWkoYnJpZGdlKTsKPiAgCXVuc2lnbmVkIGxvbmcgbXBpeGVs
+Y2xrLCBtYXhfdG9sZXJhbmNlOwo+ICAJbG9uZyByb3VuZGVkX3JlZmNsazsKPiAgCj4gQEAgLTg4
+OSwxODkgKzgzNyw1NyBAQCBzdGF0aWMgZW51bSBkcm1fbW9kZV9zdGF0dXMgaW5ub19oZG1pX2Rp
+c3BsYXlfbW9kZV92YWxpZChzdHJ1Y3QgaW5ub19oZG1pICpoZG1pLAo+ICAJcmV0dXJuIE1PREVf
+T0s7Cj4gIH0KPiAgCj4gLXN0YXRpYyB2b2lkIGlubm9faGRtaV9lbmNvZGVyX2VuYWJsZShzdHJ1
+Y3QgZHJtX2VuY29kZXIgKmVuY29kZXIsCj4gLQkJCQkgICAgIHN0cnVjdCBkcm1fYXRvbWljX3N0
+YXRlICpzdGF0ZSkKPiAtewo+IC0Jc3RydWN0IGlubm9faGRtaSAqaGRtaSA9IGVuY29kZXJfdG9f
+aW5ub19oZG1pKGVuY29kZXIpOwo+IC0KPiAtCWlubm9faGRtaV9zZXR1cChoZG1pLCBzdGF0ZSk7
+Cj4gLX0KPiAtCj4gLXN0YXRpYyB2b2lkIGlubm9faGRtaV9lbmNvZGVyX2Rpc2FibGUoc3RydWN0
+IGRybV9lbmNvZGVyICplbmNvZGVyLAo+IC0JCQkJICAgICAgc3RydWN0IGRybV9hdG9taWNfc3Rh
+dGUgKnN0YXRlKQo+IC17Cj4gLQlzdHJ1Y3QgaW5ub19oZG1pICpoZG1pID0gZW5jb2Rlcl90b19p
+bm5vX2hkbWkoZW5jb2Rlcik7Cj4gLQo+IC0JaW5ub19oZG1pX3N0YW5kYnkoaGRtaSk7Cj4gLX0K
+PiAtCj4gLXN0YXRpYyBpbnQKPiAtaW5ub19oZG1pX2VuY29kZXJfYXRvbWljX2NoZWNrKHN0cnVj
+dCBkcm1fZW5jb2RlciAqZW5jb2RlciwKPiAtCQkJICAgICAgIHN0cnVjdCBkcm1fY3J0Y19zdGF0
+ZSAqY3J0Y19zdGF0ZSwKPiAtCQkJICAgICAgIHN0cnVjdCBkcm1fY29ubmVjdG9yX3N0YXRlICpj
+b25uX3N0YXRlKQo+IC17Cj4gLQlzdHJ1Y3Qgcm9ja2NoaXBfY3J0Y19zdGF0ZSAqcyA9IHRvX3Jv
+Y2tjaGlwX2NydGNfc3RhdGUoY3J0Y19zdGF0ZSk7Cj4gLQlzdHJ1Y3QgZHJtX2Rpc3BsYXlfbW9k
+ZSAqbW9kZSA9ICZjcnRjX3N0YXRlLT5hZGp1c3RlZF9tb2RlOwo+IC0JdTggdmljID0gZHJtX21h
+dGNoX2NlYV9tb2RlKG1vZGUpOwo+IC0Jc3RydWN0IGlubm9faGRtaV9jb25uZWN0b3Jfc3RhdGUg
+Kmlubm9fY29ubl9zdGF0ZSA9Cj4gLQkJCQkJdG9faW5ub19oZG1pX2Nvbm5fc3RhdGUoY29ubl9z
+dGF0ZSk7Cj4gLQo+IC0Jcy0+b3V0cHV0X21vZGUgPSBST0NLQ0hJUF9PVVRfTU9ERV9QODg4Owo+
+IC0Jcy0+b3V0cHV0X3R5cGUgPSBEUk1fTU9ERV9DT05ORUNUT1JfSERNSUE7Cj4gLQo+IC0JaWYg
+KHZpYyA9PSA2IHx8IHZpYyA9PSA3IHx8Cj4gLQkgICAgdmljID09IDIxIHx8IHZpYyA9PSAyMiB8
+fAo+IC0JICAgIHZpYyA9PSAyIHx8IHZpYyA9PSAzIHx8Cj4gLQkgICAgdmljID09IDE3IHx8IHZp
+YyA9PSAxOCkKPiAtCQlpbm5vX2Nvbm5fc3RhdGUtPmNvbG9yaW1ldHJ5ID0gSERNSV9DT0xPUklN
+RVRSWV9JVFVfNjAxOwo+IC0JZWxzZQo+IC0JCWlubm9fY29ubl9zdGF0ZS0+Y29sb3JpbWV0cnkg
+PSBIRE1JX0NPTE9SSU1FVFJZX0lUVV83MDk7Cj4gLQo+IC0JcmV0dXJuIDA7Cj4gLX0KPiAtCj4g
+LXN0YXRpYyBjb25zdCBzdHJ1Y3QgZHJtX2VuY29kZXJfaGVscGVyX2Z1bmNzIGlubm9faGRtaV9l
+bmNvZGVyX2hlbHBlcl9mdW5jcyA9IHsKPiAtCS5hdG9taWNfY2hlY2sJPSBpbm5vX2hkbWlfZW5j
+b2Rlcl9hdG9taWNfY2hlY2ssCj4gLQkuYXRvbWljX2VuYWJsZQk9IGlubm9faGRtaV9lbmNvZGVy
+X2VuYWJsZSwKPiAtCS5hdG9taWNfZGlzYWJsZQk9IGlubm9faGRtaV9lbmNvZGVyX2Rpc2FibGUs
+Cj4gLX07Cj4gLQo+ICBzdGF0aWMgZW51bSBkcm1fY29ubmVjdG9yX3N0YXR1cwo+IC1pbm5vX2hk
+bWlfY29ubmVjdG9yX2RldGVjdChzdHJ1Y3QgZHJtX2Nvbm5lY3RvciAqY29ubmVjdG9yLCBib29s
+IGZvcmNlKQo+ICtpbm5vX2hkbWlfYnJpZGdlX2RldGVjdChzdHJ1Y3QgZHJtX2JyaWRnZSAqYnJp
+ZGdlLCBzdHJ1Y3QgZHJtX2Nvbm5lY3RvciAqY29ubmVjdG9yKQo+ICB7Cj4gLQlzdHJ1Y3QgaW5u
+b19oZG1pICpoZG1pID0gY29ubmVjdG9yX3RvX2lubm9faGRtaShjb25uZWN0b3IpOwo+ICsJc3Ry
+dWN0IGlubm9faGRtaSAqaGRtaSA9IGJyaWRnZV90b19pbm5vX2hkbWkoYnJpZGdlKTsKPiAgCj4g
+IAlyZXR1cm4gKGhkbWlfcmVhZGIoaGRtaSwgSERNSV9TVEFUVVMpICYgbV9IT1RQTFVHKSA/Cj4g
+IAkJY29ubmVjdG9yX3N0YXR1c19jb25uZWN0ZWQgOiBjb25uZWN0b3Jfc3RhdHVzX2Rpc2Nvbm5l
+Y3RlZDsKPiAgfQo+ICAKPiAtc3RhdGljIGludCBpbm5vX2hkbWlfY29ubmVjdG9yX2dldF9tb2Rl
+cyhzdHJ1Y3QgZHJtX2Nvbm5lY3RvciAqY29ubmVjdG9yKQo+ICtzdGF0aWMgY29uc3Qgc3RydWN0
+IGRybV9lZGlkICoKPiAraW5ub19oZG1pX2JyaWRnZV9lZGlkX3JlYWQoc3RydWN0IGRybV9icmlk
+Z2UgKmJyaWRnZSwgc3RydWN0IGRybV9jb25uZWN0b3IgKmNvbm5lY3RvcikKPiAgewo+IC0Jc3Ry
+dWN0IGlubm9faGRtaSAqaGRtaSA9IGNvbm5lY3Rvcl90b19pbm5vX2hkbWkoY29ubmVjdG9yKTsK
+PiArCXN0cnVjdCBpbm5vX2hkbWkgKmhkbWkgPSBicmlkZ2VfdG9faW5ub19oZG1pKGJyaWRnZSk7
+Cj4gIAljb25zdCBzdHJ1Y3QgZHJtX2VkaWQgKmRybV9lZGlkOwo+IC0JaW50IHJldCA9IDA7Cj4g
+LQo+IC0JaWYgKCFoZG1pLT5kZGMpCj4gLQkJcmV0dXJuIDA7Cj4gLQo+IC0JZHJtX2VkaWQgPSBk
+cm1fZWRpZF9yZWFkX2RkYyhjb25uZWN0b3IsIGhkbWktPmRkYyk7Cj4gLQlkcm1fZWRpZF9jb25u
+ZWN0b3JfdXBkYXRlKGNvbm5lY3RvciwgZHJtX2VkaWQpOwo+IC0JcmV0ID0gZHJtX2VkaWRfY29u
+bmVjdG9yX2FkZF9tb2Rlcyhjb25uZWN0b3IpOwo+IC0JZHJtX2VkaWRfZnJlZShkcm1fZWRpZCk7
+Cj4gLQo+IC0JcmV0dXJuIHJldDsKPiAtfQo+IC0KPiAtc3RhdGljIGVudW0gZHJtX21vZGVfc3Rh
+dHVzCj4gLWlubm9faGRtaV9jb25uZWN0b3JfbW9kZV92YWxpZChzdHJ1Y3QgZHJtX2Nvbm5lY3Rv
+ciAqY29ubmVjdG9yLAo+IC0JCQkgICAgICAgY29uc3Qgc3RydWN0IGRybV9kaXNwbGF5X21vZGUg
+Km1vZGUpCj4gLXsKPiAtCXN0cnVjdCBpbm5vX2hkbWkgKmhkbWkgPSBjb25uZWN0b3JfdG9faW5u
+b19oZG1pKGNvbm5lY3Rvcik7Cj4gLQo+IC0JcmV0dXJuICBpbm5vX2hkbWlfZGlzcGxheV9tb2Rl
+X3ZhbGlkKGhkbWksIG1vZGUpOwo+IC19Cj4gIAo+IC1zdGF0aWMgdm9pZAo+IC1pbm5vX2hkbWlf
+Y29ubmVjdG9yX2Rlc3Ryb3lfc3RhdGUoc3RydWN0IGRybV9jb25uZWN0b3IgKmNvbm5lY3RvciwK
+PiAtCQkJCSAgc3RydWN0IGRybV9jb25uZWN0b3Jfc3RhdGUgKnN0YXRlKQo+IC17Cj4gLQlzdHJ1
+Y3QgaW5ub19oZG1pX2Nvbm5lY3Rvcl9zdGF0ZSAqaW5ub19jb25uX3N0YXRlID0KPiAtCQkJCQkJ
+dG9faW5ub19oZG1pX2Nvbm5fc3RhdGUoc3RhdGUpOwo+ICsJZHJtX2VkaWQgPSBkcm1fZWRpZF9y
+ZWFkX2RkYyhjb25uZWN0b3IsIGJyaWRnZS0+ZGRjKTsKPiArCWlmICghZHJtX2VkaWQpCj4gKwkJ
+ZGV2X2RiZyhoZG1pLT5kZXYsICJmYWlsZWQgdG8gZ2V0IGVkaWRcbiIpOwo+ICAKPiAtCV9fZHJt
+X2F0b21pY19oZWxwZXJfY29ubmVjdG9yX2Rlc3Ryb3lfc3RhdGUoJmlubm9fY29ubl9zdGF0ZS0+
+YmFzZSk7Cj4gLQlrZnJlZShpbm5vX2Nvbm5fc3RhdGUpOwo+ICsJcmV0dXJuIGRybV9lZGlkOwo+
+ICB9Cj4gIAo+IC1zdGF0aWMgdm9pZCBpbm5vX2hkbWlfY29ubmVjdG9yX3Jlc2V0KHN0cnVjdCBk
+cm1fY29ubmVjdG9yICpjb25uZWN0b3IpCj4gK3N0YXRpYyB2b2lkIGlubm9faGRtaV9icmlkZ2Vf
+YXRvbWljX2VuYWJsZShzdHJ1Y3QgZHJtX2JyaWRnZSAqYnJpZGdlLAo+ICsJCQkJCSAgIHN0cnVj
+dCBkcm1fYXRvbWljX3N0YXRlICpzdGF0ZSkKPiAgewo+IC0Jc3RydWN0IGlubm9faGRtaV9jb25u
+ZWN0b3Jfc3RhdGUgKmlubm9fY29ubl9zdGF0ZTsKPiAtCj4gLQlpZiAoY29ubmVjdG9yLT5zdGF0
+ZSkgewo+IC0JCWlubm9faGRtaV9jb25uZWN0b3JfZGVzdHJveV9zdGF0ZShjb25uZWN0b3IsIGNv
+bm5lY3Rvci0+c3RhdGUpOwo+IC0JCWNvbm5lY3Rvci0+c3RhdGUgPSBOVUxMOwo+IC0JfQo+IC0K
+PiAtCWlubm9fY29ubl9zdGF0ZSA9IGt6YWxsb2Moc2l6ZW9mKCppbm5vX2Nvbm5fc3RhdGUpLCBH
+RlBfS0VSTkVMKTsKPiAtCWlmICghaW5ub19jb25uX3N0YXRlKQo+IC0JCXJldHVybjsKPiAtCj4g
+LQlfX2RybV9hdG9taWNfaGVscGVyX2Nvbm5lY3Rvcl9yZXNldChjb25uZWN0b3IsICZpbm5vX2Nv
+bm5fc3RhdGUtPmJhc2UpOwo+IC0JX19kcm1fYXRvbWljX2hlbHBlcl9jb25uZWN0b3JfaGRtaV9y
+ZXNldChjb25uZWN0b3IsIGNvbm5lY3Rvci0+c3RhdGUpOwo+ICsJc3RydWN0IGlubm9faGRtaSAq
+aGRtaSA9IGJyaWRnZV90b19pbm5vX2hkbWkoYnJpZGdlKTsKPiAgCj4gLQlpbm5vX2Nvbm5fc3Rh
+dGUtPmNvbG9yaW1ldHJ5ID0gSERNSV9DT0xPUklNRVRSWV9JVFVfNzA5Owo+ICsJaW5ub19oZG1p
+X3NldHVwKGhkbWksIHN0YXRlKTsKPiAgfQo+ICAKPiAtc3RhdGljIHN0cnVjdCBkcm1fY29ubmVj
+dG9yX3N0YXRlICoKPiAtaW5ub19oZG1pX2Nvbm5lY3Rvcl9kdXBsaWNhdGVfc3RhdGUoc3RydWN0
+IGRybV9jb25uZWN0b3IgKmNvbm5lY3RvcikKPiArc3RhdGljIHZvaWQgaW5ub19oZG1pX2JyaWRn
+ZV9hdG9taWNfZGlzYWJsZShzdHJ1Y3QgZHJtX2JyaWRnZSAqYnJpZGdlLAo+ICsJCQkJCSAgICBz
+dHJ1Y3QgZHJtX2F0b21pY19zdGF0ZSAqc3RhdGUpCj4gIHsKPiAtCXN0cnVjdCBpbm5vX2hkbWlf
+Y29ubmVjdG9yX3N0YXRlICppbm5vX2Nvbm5fc3RhdGU7Cj4gLQo+IC0JaWYgKFdBUk5fT04oIWNv
+bm5lY3Rvci0+c3RhdGUpKQo+IC0JCXJldHVybiBOVUxMOwo+IC0KPiAtCWlubm9fY29ubl9zdGF0
+ZSA9IGttZW1kdXAodG9faW5ub19oZG1pX2Nvbm5fc3RhdGUoY29ubmVjdG9yLT5zdGF0ZSksCj4g
+LQkJCQkgIHNpemVvZigqaW5ub19jb25uX3N0YXRlKSwgR0ZQX0tFUk5FTCk7Cj4gLQo+IC0JaWYg
+KCFpbm5vX2Nvbm5fc3RhdGUpCj4gLQkJcmV0dXJuIE5VTEw7Cj4gKwlzdHJ1Y3QgaW5ub19oZG1p
+ICpoZG1pID0gYnJpZGdlX3RvX2lubm9faGRtaShicmlkZ2UpOwo+ICAKPiAtCV9fZHJtX2F0b21p
+Y19oZWxwZXJfY29ubmVjdG9yX2R1cGxpY2F0ZV9zdGF0ZShjb25uZWN0b3IsCj4gLQkJCQkJCSAg
+ICAgICZpbm5vX2Nvbm5fc3RhdGUtPmJhc2UpOwo+IC0KPiAtCXJldHVybiAmaW5ub19jb25uX3N0
+YXRlLT5iYXNlOwo+ICsJaW5ub19oZG1pX3N0YW5kYnkoaGRtaSk7Cj4gIH0KPiAgCj4gLXN0YXRp
+YyBjb25zdCBzdHJ1Y3QgZHJtX2Nvbm5lY3Rvcl9mdW5jcyBpbm5vX2hkbWlfY29ubmVjdG9yX2Z1
+bmNzID0gewo+IC0JLmZpbGxfbW9kZXMgPSBkcm1faGVscGVyX3Byb2JlX3NpbmdsZV9jb25uZWN0
+b3JfbW9kZXMsCj4gLQkuZGV0ZWN0ID0gaW5ub19oZG1pX2Nvbm5lY3Rvcl9kZXRlY3QsCj4gLQku
+cmVzZXQgPSBpbm5vX2hkbWlfY29ubmVjdG9yX3Jlc2V0LAo+IC0JLmF0b21pY19kdXBsaWNhdGVf
+c3RhdGUgPSBpbm5vX2hkbWlfY29ubmVjdG9yX2R1cGxpY2F0ZV9zdGF0ZSwKPiAtCS5hdG9taWNf
+ZGVzdHJveV9zdGF0ZSA9IGlubm9faGRtaV9jb25uZWN0b3JfZGVzdHJveV9zdGF0ZSwKPiAtfTsK
+PiAtCj4gLXN0YXRpYyBzdHJ1Y3QgZHJtX2Nvbm5lY3Rvcl9oZWxwZXJfZnVuY3MgaW5ub19oZG1p
+X2Nvbm5lY3Rvcl9oZWxwZXJfZnVuY3MgPSB7Cj4gLQkuYXRvbWljX2NoZWNrID0gZHJtX2F0b21p
+Y19oZWxwZXJfY29ubmVjdG9yX2hkbWlfY2hlY2ssCj4gLQkuZ2V0X21vZGVzID0gaW5ub19oZG1p
+X2Nvbm5lY3Rvcl9nZXRfbW9kZXMsCj4gLQkubW9kZV92YWxpZCA9IGlubm9faGRtaV9jb25uZWN0
+b3JfbW9kZV92YWxpZCwKPiArc3RhdGljIGNvbnN0IHN0cnVjdCBkcm1fYnJpZGdlX2Z1bmNzIGlu
+bm9faGRtaV9icmlkZ2VfZnVuY3MgPSB7Cj4gKwkuYXRvbWljX2R1cGxpY2F0ZV9zdGF0ZSA9IGRy
+bV9hdG9taWNfaGVscGVyX2JyaWRnZV9kdXBsaWNhdGVfc3RhdGUsCj4gKwkuYXRvbWljX2Rlc3Ry
+b3lfc3RhdGUgPSBkcm1fYXRvbWljX2hlbHBlcl9icmlkZ2VfZGVzdHJveV9zdGF0ZSwKPiArCS5h
+dG9taWNfcmVzZXQgPSBkcm1fYXRvbWljX2hlbHBlcl9icmlkZ2VfcmVzZXQsCj4gKwkuYXRvbWlj
+X2VuYWJsZSA9IGlubm9faGRtaV9icmlkZ2VfYXRvbWljX2VuYWJsZSwKPiArCS5hdG9taWNfZGlz
+YWJsZSA9IGlubm9faGRtaV9icmlkZ2VfYXRvbWljX2Rpc2FibGUsCj4gKwkuZGV0ZWN0ID0gaW5u
+b19oZG1pX2JyaWRnZV9kZXRlY3QsCj4gKwkuZWRpZF9yZWFkID0gaW5ub19oZG1pX2JyaWRnZV9l
+ZGlkX3JlYWQsCj4gKwkuaGRtaV9jbGVhcl9pbmZvZnJhbWUgPSBpbm5vX2hkbWlfYnJpZGdlX2Ns
+ZWFyX2luZm9mcmFtZSwKPiArCS5oZG1pX3dyaXRlX2luZm9mcmFtZSA9IGlubm9faGRtaV9icmlk
+Z2Vfd3JpdGVfaW5mb2ZyYW1lLAo+ICsJLm1vZGVfdmFsaWQgPSBpbm5vX2hkbWlfYnJpZGdlX21v
+ZGVfdmFsaWQsCj4gIH07Cj4gIAo+IC1zdGF0aWMgaW50IGlubm9faGRtaV9yZWdpc3RlcihzdHJ1
+Y3QgZHJtX2RldmljZSAqZHJtLCBzdHJ1Y3QgaW5ub19oZG1pICpoZG1pKQo+IC17Cj4gLQlzdHJ1
+Y3QgZHJtX2VuY29kZXIgKmVuY29kZXIgPSAmaGRtaS0+ZW5jb2Rlci5lbmNvZGVyOwo+IC0Jc3Ry
+dWN0IGRldmljZSAqZGV2ID0gaGRtaS0+ZGV2Owo+IC0KPiAtCWVuY29kZXItPnBvc3NpYmxlX2Ny
+dGNzID0gZHJtX29mX2ZpbmRfcG9zc2libGVfY3J0Y3MoZHJtLCBkZXYtPm9mX25vZGUpOwo+IC0K
+PiAtCS8qCj4gLQkgKiBJZiB3ZSBmYWlsZWQgdG8gZmluZCB0aGUgQ1JUQyhzKSB3aGljaCB0aGlz
+IGVuY29kZXIgaXMKPiAtCSAqIHN1cHBvc2VkIHRvIGJlIGNvbm5lY3RlZCB0bywgaXQncyBiZWNh
+dXNlIHRoZSBDUlRDIGhhcwo+IC0JICogbm90IGJlZW4gcmVnaXN0ZXJlZCB5ZXQuICBEZWZlciBw
+cm9iaW5nLCBhbmQgaG9wZSB0aGF0Cj4gLQkgKiB0aGUgcmVxdWlyZWQgQ1JUQyBpcyBhZGRlZCBs
+YXRlci4KPiAtCSAqLwo+IC0JaWYgKGVuY29kZXItPnBvc3NpYmxlX2NydGNzID09IDApCj4gLQkJ
+cmV0dXJuIC1FUFJPQkVfREVGRVI7Cj4gLQo+IC0JZHJtX2VuY29kZXJfaGVscGVyX2FkZChlbmNv
+ZGVyLCAmaW5ub19oZG1pX2VuY29kZXJfaGVscGVyX2Z1bmNzKTsKPiAtCWRybV9zaW1wbGVfZW5j
+b2Rlcl9pbml0KGRybSwgZW5jb2RlciwgRFJNX01PREVfRU5DT0RFUl9UTURTKTsKPiAtCj4gLQlo
+ZG1pLT5jb25uZWN0b3IucG9sbGVkID0gRFJNX0NPTk5FQ1RPUl9QT0xMX0hQRDsKPiAtCj4gLQlk
+cm1fY29ubmVjdG9yX2hlbHBlcl9hZGQoJmhkbWktPmNvbm5lY3RvciwKPiAtCQkJCSAmaW5ub19o
+ZG1pX2Nvbm5lY3Rvcl9oZWxwZXJfZnVuY3MpOwo+IC0JZHJtbV9jb25uZWN0b3JfaGRtaV9pbml0
+KGRybSwgJmhkbWktPmNvbm5lY3RvciwKPiAtCQkJCSAiUm9ja2NoaXAiLCAiSW5ubyBIRE1JIiwK
+PiAtCQkJCSAmaW5ub19oZG1pX2Nvbm5lY3Rvcl9mdW5jcywKPiAtCQkJCSAmaW5ub19oZG1pX2hk
+bWlfY29ubmVjdG9yX2Z1bmNzLAo+IC0JCQkJIERSTV9NT0RFX0NPTk5FQ1RPUl9IRE1JQSwKPiAt
+CQkJCSBoZG1pLT5kZGMsCj4gLQkJCQkgQklUKEhETUlfQ09MT1JTUEFDRV9SR0IpLAo+IC0JCQkJ
+IDgpOwo+IC0KPiAtCWRybV9jb25uZWN0b3JfYXR0YWNoX2VuY29kZXIoJmhkbWktPmNvbm5lY3Rv
+ciwgZW5jb2Rlcik7Cj4gLQo+IC0JcmV0dXJuIDA7Cj4gLX0KPiAtCj4gIHN0YXRpYyBpcnFyZXR1
+cm5fdCBpbm5vX2hkbWlfaTJjX2lycShzdHJ1Y3QgaW5ub19oZG1pICpoZG1pKQo+ICB7Cj4gIAlz
+dHJ1Y3QgaW5ub19oZG1pX2kyYyAqaTJjID0gaGRtaS0+aTJjOwo+IEBAIC0xMTExLDcgKzkyNyw3
+IEBAIHN0YXRpYyBpcnFyZXR1cm5fdCBpbm5vX2hkbWlfaXJxKGludCBpcnEsIHZvaWQgKmRldl9p
+ZCkKPiAgewo+ICAJc3RydWN0IGlubm9faGRtaSAqaGRtaSA9IGRldl9pZDsKPiAgCj4gLQlkcm1f
+aGVscGVyX2hwZF9pcnFfZXZlbnQoaGRtaS0+Y29ubmVjdG9yLmRldik7Cj4gKwlkcm1faGVscGVy
+X2hwZF9pcnFfZXZlbnQoaGRtaS0+YnJpZGdlLmRldik7Cj4gIAo+ICAJcmV0dXJuIElSUV9IQU5E
+TEVEOwo+ICB9Cj4gQEAgLTEyNDMsMTI4ICsxMDU5LDgwIEBAIHN0YXRpYyBzdHJ1Y3QgaTJjX2Fk
+YXB0ZXIgKmlubm9faGRtaV9pMmNfYWRhcHRlcihzdHJ1Y3QgaW5ub19oZG1pICpoZG1pKQo+ICAJ
+cmV0dXJuIGFkYXA7Cj4gIH0KPiAgCj4gLXN0YXRpYyBpbnQgaW5ub19oZG1pX2JpbmQoc3RydWN0
+IGRldmljZSAqZGV2LCBzdHJ1Y3QgZGV2aWNlICptYXN0ZXIsCj4gLQkJCQkgdm9pZCAqZGF0YSkK
+PiArc3RydWN0IGlubm9faGRtaSAqaW5ub19oZG1pX2JpbmQoc3RydWN0IGRldmljZSAqZGV2LAo+
+ICsJCQkJIHN0cnVjdCBkcm1fZW5jb2RlciAqZW5jb2RlciwKPiArCQkJCSBjb25zdCBzdHJ1Y3Qg
+aW5ub19oZG1pX3BsYXRfZGF0YSAqcGxhdF9kYXRhKQo+ICB7Cj4gIAlzdHJ1Y3QgcGxhdGZvcm1f
+ZGV2aWNlICpwZGV2ID0gdG9fcGxhdGZvcm1fZGV2aWNlKGRldik7Cj4gLQlzdHJ1Y3QgZHJtX2Rl
+dmljZSAqZHJtID0gZGF0YTsKPiAgCXN0cnVjdCBpbm5vX2hkbWkgKmhkbWk7Cj4gLQljb25zdCBz
+dHJ1Y3QgaW5ub19oZG1pX3ZhcmlhbnQgKnZhcmlhbnQ7Cj4gIAlpbnQgaXJxOwo+ICAJaW50IHJl
+dDsKPiAgCj4gLQloZG1pID0gZGV2bV9remFsbG9jKGRldiwgc2l6ZW9mKCpoZG1pKSwgR0ZQX0tF
+Uk5FTCk7Cj4gLQlpZiAoIWhkbWkpCj4gLQkJcmV0dXJuIC1FTk9NRU07Cj4gLQo+IC0JaGRtaS0+
+ZGV2ID0gZGV2Owo+ICsJaWYgKCFwbGF0X2RhdGEtPnBoeV9jb25maWdzIHx8ICFwbGF0X2RhdGEt
+PmRlZmF1bHRfcGh5X2NvbmZpZykgewo+ICsJCWRldl9lcnIoZGV2LCAiTWlzc2luZyBwbGF0Zm9y
+bSBQSFkgb3BzXG4iKTsKPiArCQlyZXR1cm4gRVJSX1BUUigtRU5PREVWKTsKPiArCX0KPiAgCj4g
+LQl2YXJpYW50ID0gb2ZfZGV2aWNlX2dldF9tYXRjaF9kYXRhKGhkbWktPmRldik7Cj4gLQlpZiAo
+IXZhcmlhbnQpCj4gLQkJcmV0dXJuIC1FSU5WQUw7Cj4gKwloZG1pID0gZGV2bV9kcm1fYnJpZGdl
+X2FsbG9jKGRldiwgc3RydWN0IGlubm9faGRtaSwgYnJpZGdlLCAmaW5ub19oZG1pX2JyaWRnZV9m
+dW5jcyk7Cj4gKwlpZiAoSVNfRVJSKGhkbWkpKQo+ICsJCXJldHVybiBFUlJfQ0FTVChoZG1pKTsK
+PiAgCj4gLQloZG1pLT52YXJpYW50ID0gdmFyaWFudDsKPiArCWhkbWktPmRldiA9IGRldjsKPiAr
+CWhkbWktPnBsYXRfZGF0YSA9IHBsYXRfZGF0YTsKPiAgCj4gIAloZG1pLT5yZWdzID0gZGV2bV9w
+bGF0Zm9ybV9pb3JlbWFwX3Jlc291cmNlKHBkZXYsIDApOwo+ICAJaWYgKElTX0VSUihoZG1pLT5y
+ZWdzKSkKPiAtCQlyZXR1cm4gUFRSX0VSUihoZG1pLT5yZWdzKTsKPiArCQlyZXR1cm4gRVJSX0NB
+U1QoaGRtaS0+cmVncyk7Cj4gIAo+ICAJaGRtaS0+cGNsayA9IGRldm1fY2xrX2dldF9lbmFibGVk
+KGhkbWktPmRldiwgInBjbGsiKTsKPiAtCWlmIChJU19FUlIoaGRtaS0+cGNsaykpCj4gLQkJcmV0
+dXJuIGRldl9lcnJfcHJvYmUoZGV2LCBQVFJfRVJSKGhkbWktPnBjbGspLCAiVW5hYmxlIHRvIGdl
+dCBIRE1JIHBjbGtcbiIpOwo+ICsJaWYgKElTX0VSUihoZG1pLT5wY2xrKSkgewo+ICsJCWRldl9l
+cnJfcHJvYmUoZGV2LCBQVFJfRVJSKGhkbWktPnBjbGspLCAiVW5hYmxlIHRvIGdldCBIRE1JIHBj
+bGtcbiIpOwo+ICsJCXJldHVybiBFUlJfQ0FTVChoZG1pLT5wY2xrKTsKPiArCX0KPiAgCj4gIAlo
+ZG1pLT5yZWZjbGsgPSBkZXZtX2Nsa19nZXRfb3B0aW9uYWxfZW5hYmxlZChoZG1pLT5kZXYsICJy
+ZWYiKTsKPiAtCWlmIChJU19FUlIoaGRtaS0+cmVmY2xrKSkKPiAtCQlyZXR1cm4gZGV2X2Vycl9w
+cm9iZShkZXYsIFBUUl9FUlIoaGRtaS0+cmVmY2xrKSwgIlVuYWJsZSB0byBnZXQgSERNSSByZWZj
+bGtcbiIpOwo+IC0KPiAtCWlmIChoZG1pLT52YXJpYW50LT5kZXZfdHlwZSA9PSBSSzMwMzZfSERN
+SSkgewo+IC0JCWhkbWktPmdyZiA9IHN5c2Nvbl9yZWdtYXBfbG9va3VwX2J5X3BoYW5kbGUoZGV2
+LT5vZl9ub2RlLCAicm9ja2NoaXAsZ3JmIik7Cj4gLQkJaWYgKElTX0VSUihoZG1pLT5ncmYpKQo+
+IC0JCQlyZXR1cm4gZGV2X2Vycl9wcm9iZShkZXYsCj4gLQkJCQkJICAgICBQVFJfRVJSKGhkbWkt
+PmdyZiksICJVbmFibGUgdG8gZ2V0IHJvY2tjaGlwLGdyZlxuIik7Cj4gKwlpZiAoSVNfRVJSKGhk
+bWktPnJlZmNsaykpIHsKPiArCQlkZXZfZXJyX3Byb2JlKGRldiwgUFRSX0VSUihoZG1pLT5yZWZj
+bGspLCAiVW5hYmxlIHRvIGdldCBIRE1JIHJlZmNsa1xuIik7Cj4gKwkJcmV0dXJuIEVSUl9DQVNU
+KGhkbWktPnJlZmNsayk7Cj4gIAl9Cj4gIAo+IC0JaXJxID0gcGxhdGZvcm1fZ2V0X2lycShwZGV2
+LCAwKTsKPiAtCWlmIChpcnEgPCAwKQo+IC0JCXJldHVybiBpcnE7Cj4gLQo+ICAJaW5ub19oZG1p
+X2luaXRfaHcoaGRtaSk7Cj4gIAo+IC0JaGRtaS0+ZGRjID0gaW5ub19oZG1pX2kyY19hZGFwdGVy
+KGhkbWkpOwo+IC0JaWYgKElTX0VSUihoZG1pLT5kZGMpKQo+IC0JCXJldHVybiBQVFJfRVJSKGhk
+bWktPmRkYyk7Cj4gLQo+IC0JcmV0ID0gaW5ub19oZG1pX3JlZ2lzdGVyKGRybSwgaGRtaSk7Cj4g
+LQlpZiAocmV0KQo+IC0JCXJldHVybiByZXQ7Cj4gLQo+IC0JZGV2X3NldF9kcnZkYXRhKGRldiwg
+aGRtaSk7Cj4gKwlpcnEgPSBwbGF0Zm9ybV9nZXRfaXJxKHBkZXYsIDApOwo+ICsJaWYgKGlycSA8
+IDApCj4gKwkJcmV0dXJuIEVSUl9QVFIoaXJxKTsKPiAgCj4gIAlyZXQgPSBkZXZtX3JlcXVlc3Rf
+dGhyZWFkZWRfaXJxKGRldiwgaXJxLCBpbm5vX2hkbWlfaGFyZGlycSwKPiAgCQkJCQlpbm5vX2hk
+bWlfaXJxLCBJUlFGX1NIQVJFRCwKPiAgCQkJCQlkZXZfbmFtZShkZXYpLCBoZG1pKTsKPiAtCWlm
+IChyZXQgPCAwKQo+IC0JCWdvdG8gZXJyX2NsZWFudXBfaGRtaTsKPiAtCj4gLQlyZXR1cm4gMDsK
+PiAtZXJyX2NsZWFudXBfaGRtaToKPiAtCWhkbWktPmNvbm5lY3Rvci5mdW5jcy0+ZGVzdHJveSgm
+aGRtaS0+Y29ubmVjdG9yKTsKPiAtCWhkbWktPmVuY29kZXIuZW5jb2Rlci5mdW5jcy0+ZGVzdHJv
+eSgmaGRtaS0+ZW5jb2Rlci5lbmNvZGVyKTsKPiAtCXJldHVybiByZXQ7Cj4gLX0KPiAtCj4gLXN0
+YXRpYyB2b2lkIGlubm9faGRtaV91bmJpbmQoc3RydWN0IGRldmljZSAqZGV2LCBzdHJ1Y3QgZGV2
+aWNlICptYXN0ZXIsCj4gLQkJCSAgICAgdm9pZCAqZGF0YSkKPiAtewo+IC0Jc3RydWN0IGlubm9f
+aGRtaSAqaGRtaSA9IGRldl9nZXRfZHJ2ZGF0YShkZXYpOwo+IC0KPiAtCWhkbWktPmNvbm5lY3Rv
+ci5mdW5jcy0+ZGVzdHJveSgmaGRtaS0+Y29ubmVjdG9yKTsKPiAtCWhkbWktPmVuY29kZXIuZW5j
+b2Rlci5mdW5jcy0+ZGVzdHJveSgmaGRtaS0+ZW5jb2Rlci5lbmNvZGVyKTsKPiAtfQo+ICsJaWYg
+KHJldCkKPiArCQlyZXR1cm4gRVJSX1BUUihyZXQpOwo+ICAKPiAtc3RhdGljIGNvbnN0IHN0cnVj
+dCBjb21wb25lbnRfb3BzIGlubm9faGRtaV9vcHMgPSB7Cj4gLQkuYmluZAk9IGlubm9faGRtaV9i
+aW5kLAo+IC0JLnVuYmluZAk9IGlubm9faGRtaV91bmJpbmQsCj4gLX07Cj4gKwloZG1pLT5icmlk
+Z2UuZHJpdmVyX3ByaXZhdGUgPSBoZG1pOwo+ICsJaGRtaS0+YnJpZGdlLm9wcyA9IERSTV9CUklE
+R0VfT1BfREVURUNUIHwKPiArCQkJICAgRFJNX0JSSURHRV9PUF9FRElEIHwKPiArCQkJICAgRFJN
+X0JSSURHRV9PUF9IRE1JIHwKPiArCQkJICAgRFJNX0JSSURHRV9PUF9IUEQ7Cj4gKwloZG1pLT5i
+cmlkZ2Uub2Zfbm9kZSA9IHBkZXYtPmRldi5vZl9ub2RlOwo+ICsJaGRtaS0+YnJpZGdlLnR5cGUg
+PSBEUk1fTU9ERV9DT05ORUNUT1JfSERNSUE7Cj4gKwloZG1pLT5icmlkZ2UudmVuZG9yID0gIklu
+bm8iOwo+ICsJaGRtaS0+YnJpZGdlLnByb2R1Y3QgPSAiSW5ubyBIRE1JIjsKPiArCj4gKwloZG1p
+LT5icmlkZ2UuZGRjID0gaW5ub19oZG1pX2kyY19hZGFwdGVyKGhkbWkpOwo+ICsJaWYgKElTX0VS
+UihoZG1pLT5icmlkZ2UuZGRjKSkKPiArCQlyZXR1cm4gRVJSX0NBU1QoaGRtaS0+YnJpZGdlLmRk
+Yyk7Cj4gKwo+ICsJcmV0ID0gZGV2bV9kcm1fYnJpZGdlX2FkZChkZXYsICZoZG1pLT5icmlkZ2Up
+Owo+ICsJaWYgKHJldCkKPiArCQlyZXR1cm4gRVJSX1BUUihyZXQpOwo+ICAKPiAtc3RhdGljIGlu
+dCBpbm5vX2hkbWlfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPiAtewo+IC0J
+cmV0dXJuIGNvbXBvbmVudF9hZGQoJnBkZXYtPmRldiwgJmlubm9faGRtaV9vcHMpOwo+IC19Cj4g
+KwlyZXQgPSBkcm1fYnJpZGdlX2F0dGFjaChlbmNvZGVyLCAmaGRtaS0+YnJpZGdlLCBOVUxMLCBE
+Uk1fQlJJREdFX0FUVEFDSF9OT19DT05ORUNUT1IpOwo+ICsJaWYgKHJldCkKPiArCQlyZXR1cm4g
+RVJSX1BUUihyZXQpOwo+ICAKPiAtc3RhdGljIHZvaWQgaW5ub19oZG1pX3JlbW92ZShzdHJ1Y3Qg
+cGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+IC17Cj4gLQljb21wb25lbnRfZGVsKCZwZGV2LT5kZXYs
+ICZpbm5vX2hkbWlfb3BzKTsKPiArCXJldHVybiBoZG1pOwo+ICB9Cj4gLQo+IC1zdGF0aWMgY29u
+c3Qgc3RydWN0IGlubm9faGRtaV92YXJpYW50IHJrMzAzNl9pbm5vX2hkbWlfdmFyaWFudCA9IHsK
+PiAtCS5kZXZfdHlwZSA9IFJLMzAzNl9IRE1JLAo+IC0JLnBoeV9jb25maWdzID0gcmszMDM2X2hk
+bWlfcGh5X2NvbmZpZ3MsCj4gLQkuZGVmYXVsdF9waHlfY29uZmlnID0gJnJrMzAzNl9oZG1pX3Bo
+eV9jb25maWdzWzFdLAo+IC19Owo+IC0KPiAtc3RhdGljIGNvbnN0IHN0cnVjdCBpbm5vX2hkbWlf
+dmFyaWFudCByazMxMjhfaW5ub19oZG1pX3ZhcmlhbnQgPSB7Cj4gLQkuZGV2X3R5cGUgPSBSSzMx
+MjhfSERNSSwKPiAtCS5waHlfY29uZmlncyA9IHJrMzEyOF9oZG1pX3BoeV9jb25maWdzLAo+IC0J
+LmRlZmF1bHRfcGh5X2NvbmZpZyA9ICZyazMxMjhfaGRtaV9waHlfY29uZmlnc1sxXSwKPiAtfTsK
+PiAtCj4gLXN0YXRpYyBjb25zdCBzdHJ1Y3Qgb2ZfZGV2aWNlX2lkIGlubm9faGRtaV9kdF9pZHNb
+XSA9IHsKPiAtCXsgLmNvbXBhdGlibGUgPSAicm9ja2NoaXAscmszMDM2LWlubm8taGRtaSIsCj4g
+LQkgIC5kYXRhID0gJnJrMzAzNl9pbm5vX2hkbWlfdmFyaWFudCwKPiAtCX0sCj4gLQl7IC5jb21w
+YXRpYmxlID0gInJvY2tjaGlwLHJrMzEyOC1pbm5vLWhkbWkiLAo+IC0JICAuZGF0YSA9ICZyazMx
+MjhfaW5ub19oZG1pX3ZhcmlhbnQsCj4gLQl9LAo+IC0Je30sCj4gLX07Cj4gLU1PRFVMRV9ERVZJ
+Q0VfVEFCTEUob2YsIGlubm9faGRtaV9kdF9pZHMpOwo+IC0KPiAtc3RydWN0IHBsYXRmb3JtX2Ry
+aXZlciBpbm5vX2hkbWlfZHJpdmVyID0gewo+IC0JLnByb2JlICA9IGlubm9faGRtaV9wcm9iZSwK
+PiAtCS5yZW1vdmUgPSBpbm5vX2hkbWlfcmVtb3ZlLAo+IC0JLmRyaXZlciA9IHsKPiAtCQkubmFt
+ZSA9ICJpbm5vaGRtaS1yb2NrY2hpcCIsCj4gLQkJLm9mX21hdGNoX3RhYmxlID0gaW5ub19oZG1p
+X2R0X2lkcywKPiAtCX0sCj4gLX07Cj4gK0VYUE9SVF9TWU1CT0xfR1BMKGlubm9faGRtaV9iaW5k
+KTsKPiArTU9EVUxFX0FVVEhPUigiQW5keSBZYW4gPGFuZHlzaHJrQDE2My5jb20+Iik7Cj4gK01P
+RFVMRV9ERVNDUklQVElPTigiSU5OT1NJTElDT04gSERNSSB0cmFuc21pdHRlciBsaWJyYXJ5Iik7
+Cj4gK01PRFVMRV9MSUNFTlNFKCJHUEwiKTsKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJt
+L3JvY2tjaGlwL0tjb25maWcgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvS2NvbmZpZwo+IGlu
+ZGV4IDE0ZWMwMjgxZDQ1YTQuLmUyZjM1NWY4N2FlNTEgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9n
+cHUvZHJtL3JvY2tjaGlwL0tjb25maWcKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
+S2NvbmZpZwo+IEBAIC0xNSw2ICsxNSw3IEBAIGNvbmZpZyBEUk1fUk9DS0NISVAKPiAgCXNlbGVj
+dCBEUk1fRFdfSERNSV9RUCBpZiBST0NLQ0hJUF9EV19IRE1JX1FQCj4gIAlzZWxlY3QgRFJNX0RX
+X01JUElfRFNJIGlmIFJPQ0tDSElQX0RXX01JUElfRFNJCj4gIAlzZWxlY3QgRFJNX0RXX01JUElf
+RFNJMiBpZiBST0NLQ0hJUF9EV19NSVBJX0RTSTIKPiArCXNlbGVjdCBEUk1fSU5OT19IRE1JIGlm
+IFJPQ0tDSElQX0lOTk9fSERNSQo+ICAJc2VsZWN0IEdFTkVSSUNfUEhZIGlmIFJPQ0tDSElQX0RX
+X01JUElfRFNJCj4gIAlzZWxlY3QgR0VORVJJQ19QSFlfTUlQSV9EUEhZIGlmIFJPQ0tDSElQX0RX
+X01JUElfRFNJCj4gIAlzZWxlY3QgU05EX1NPQ19IRE1JX0NPREVDIGlmIFJPQ0tDSElQX0NETl9E
+UCAmJiBTTkRfU09DCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9NYWtl
+ZmlsZSBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9NYWtlZmlsZQo+IGluZGV4IDA5N2YwNjIz
+OTljN2EuLjk0OGIwZjkwNmQzZDggMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tj
+aGlwL01ha2VmaWxlCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL01ha2VmaWxlCj4g
+QEAgLTE1LDcgKzE1LDcgQEAgcm9ja2NoaXBkcm0tJChDT05GSUdfUk9DS0NISVBfRFdfSERNSV9R
+UCkgKz0gZHdfaGRtaV9xcC1yb2NrY2hpcC5vCj4gIHJvY2tjaGlwZHJtLSQoQ09ORklHX1JPQ0tD
+SElQX0RXX01JUElfRFNJKSArPSBkdy1taXBpLWRzaS1yb2NrY2hpcC5vCj4gIHJvY2tjaGlwZHJt
+LSQoQ09ORklHX1JPQ0tDSElQX0RXX01JUElfRFNJMikgKz0gZHctbWlwaS1kc2kyLXJvY2tjaGlw
+Lm8KPiAgcm9ja2NoaXBkcm0tJChDT05GSUdfUk9DS0NISVBfRFdfRFApICs9IGR3X2RwLXJvY2tj
+aGlwLm8KPiAtcm9ja2NoaXBkcm0tJChDT05GSUdfUk9DS0NISVBfSU5OT19IRE1JKSArPSBpbm5v
+X2hkbWkubwo+ICtyb2NrY2hpcGRybS0kKENPTkZJR19ST0NLQ0hJUF9JTk5PX0hETUkpICs9IGlu
+bm9faGRtaS1yb2NrY2hpcC5vCj4gIHJvY2tjaGlwZHJtLSQoQ09ORklHX1JPQ0tDSElQX0xWRFMp
+ICs9IHJvY2tjaGlwX2x2ZHMubwo+ICByb2NrY2hpcGRybS0kKENPTkZJR19ST0NLQ0hJUF9SR0Ip
+ICs9IHJvY2tjaGlwX3JnYi5vCj4gIHJvY2tjaGlwZHJtLSQoQ09ORklHX1JPQ0tDSElQX1JLMzA2
+Nl9IRE1JKSArPSByazMwNjZfaGRtaS5vCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9y
+b2NrY2hpcC9pbm5vX2hkbWktcm9ja2NoaXAuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9p
+bm5vX2hkbWktcm9ja2NoaXAuYwo+IG5ldyBmaWxlIG1vZGUgMTAwNjQ0Cj4gaW5kZXggMDAwMDAw
+MDAwMDAwMC4uMzFjYjJhOTAzMDhjMQo+IC0tLSAvZGV2L251bGwKPiArKysgYi9kcml2ZXJzL2dw
+dS9kcm0vcm9ja2NoaXAvaW5ub19oZG1pLXJvY2tjaGlwLmMKPiBAQCAtMCwwICsxLDE4OCBAQAo+
+ICsvLyBTUERYLUxpY2Vuc2UtSWRlbnRpZmllcjogR1BMLTIuMC1vbmx5Cj4gKy8qCj4gKyAqIENv
+cHlyaWdodCAoQykgUm9ja2NoaXAgRWxlY3Ryb25pY3MgQ28uLCBMdGQuCj4gKyAqICAgIFpoZW5n
+IFlhbmcgPHpoZW5neWFuZ0Byb2NrLWNoaXBzLmNvbT4KPiArICogICAgQW5keSBZYW4gPGFuZHku
+eWFuQHJvY2stY2hpcHMuY29tPgo+ICsgKi8KPiArI2luY2x1ZGUgPGxpbnV4L2Vyci5oPgo+ICsj
+aW5jbHVkZSA8bGludXgvbWZkL3N5c2Nvbi5oPgo+ICsjaW5jbHVkZSA8bGludXgvbW9kX2Rldmlj
+ZXRhYmxlLmg+Cj4gKyNpbmNsdWRlIDxsaW51eC9tb2R1bGUuaD4KPiArI2luY2x1ZGUgPGxpbnV4
+L3BsYXRmb3JtX2RldmljZS5oPgo+ICsjaW5jbHVkZSA8bGludXgvcmVnbWFwLmg+Cj4gKwo+ICsj
+aW5jbHVkZSA8ZHJtL2JyaWRnZS9pbm5vX2hkbWkuaD4KPiArI2luY2x1ZGUgPGRybS9kcm1fYnJp
+ZGdlX2Nvbm5lY3Rvci5oPgo+ICsjaW5jbHVkZSA8ZHJtL2RybV9vZi5oPgo+ICsKPiArI2luY2x1
+ZGUgInJvY2tjaGlwX2RybV9kcnYuaCIKPiArCj4gKyNkZWZpbmUgSElXT1JEX1VQREFURSh2YWws
+IG1hc2spCSgodmFsKSB8IChtYXNrKSA8PCAxNikKPiArCj4gKyNkZWZpbmUgUkszMDM2X0dSRl9T
+T0NfQ09OMgkweDE0OAo+ICsjZGVmaW5lIFJLMzAzNl9IRE1JX1BIU1lOQwlCSVQoNCkKPiArI2Rl
+ZmluZSBSSzMwMzZfSERNSV9QVlNZTkMJQklUKDUpCj4gKwo+ICtlbnVtIGlubm9faGRtaV9kZXZf
+dHlwZSB7Cj4gKwlSSzMwMzZfSERNSSwKPiArCVJLMzEyOF9IRE1JLAo+ICt9Owo+ICsKPiArc3Ry
+dWN0IGlubm9faGRtaV9jb25uZWN0b3Jfc3RhdGUgewo+ICsJc3RydWN0IGRybV9jb25uZWN0b3Jf
+c3RhdGUJYmFzZTsKPiArCXVuc2lnbmVkIGludAkJCWNvbG9yaW1ldHJ5Owo+ICt9Owo+ICsKPiAr
+c3RydWN0IHJvY2tjaGlwX2lubm9faGRtaSB7Cj4gKwlzdHJ1Y3QgaW5ub19oZG1pICpiYXNlOwo+
+ICsJc3RydWN0IGRldmljZSAqZGV2Owo+ICsJc3RydWN0IHJlZ21hcCAqZ3JmOwo+ICsJc3RydWN0
+IHJvY2tjaGlwX2VuY29kZXIgZW5jb2RlcjsKPiArfTsKPiArCj4gK3N0YXRpYyBzdHJ1Y3QgaW5u
+b19oZG1pX3BoeV9jb25maWcgcmszMDM2X2hkbWlfcGh5X2NvbmZpZ3NbXSA9IHsKPiArCXsgIDc0
+MjUwMDAwLCAweDNmLCAweGJiIH0sCj4gKwl7IDE2NTAwMDAwMCwgMHg2ZiwgMHhiYiB9LAo+ICsJ
+eyAgICAgIH4wVUwsIDB4MDAsIDB4MDAgfQo+ICt9Owo+ICsKPiArc3RhdGljIHN0cnVjdCBpbm5v
+X2hkbWlfcGh5X2NvbmZpZyByazMxMjhfaGRtaV9waHlfY29uZmlnc1tdID0gewo+ICsJeyAgNzQy
+NTAwMDAsIDB4M2YsIDB4YWEgfSwKPiArCXsgMTY1MDAwMDAwLCAweDVmLCAweGFhIH0sCj4gKwl7
+ICAgICAgfjBVTCwgMHgwMCwgMHgwMCB9Cj4gK307Cj4gKwo+ICtzdGF0aWMgdm9pZCBpbm5vX2hk
+bWlfcmszMDM2X2VuYWJsZShzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBkcm1fZGlzcGxheV9t
+b2RlICptb2RlKQo+ICt7Cj4gKwlzdHJ1Y3Qgcm9ja2NoaXBfaW5ub19oZG1pICpoZG1pID0gZGV2
+X2dldF9kcnZkYXRhKGRldik7Cj4gKwlpbnQgdmFsdWUsIHBzeW5jOwo+ICsKPiArCXBzeW5jID0g
+bW9kZS0+ZmxhZ3MgJiBEUk1fTU9ERV9GTEFHX1BIU1lOQyA/IFJLMzAzNl9IRE1JX1BIU1lOQyA6
+IDA7Cj4gKwl2YWx1ZSA9IEhJV09SRF9VUERBVEUocHN5bmMsIFJLMzAzNl9IRE1JX1BIU1lOQyk7
+Cj4gKwlwc3luYyA9IG1vZGUtPmZsYWdzICYgRFJNX01PREVfRkxBR19QVlNZTkMgPyBSSzMwMzZf
+SERNSV9QVlNZTkMgOiAwOwo+ICsJdmFsdWUgfD0gSElXT1JEX1VQREFURShwc3luYywgUkszMDM2
+X0hETUlfUFZTWU5DKTsKPiArCXJlZ21hcF93cml0ZShoZG1pLT5ncmYsIFJLMzAzNl9HUkZfU09D
+X0NPTjIsIHZhbHVlKTsKPiArfQo+ICsKPiArc3RhdGljIGludCBpbm5vX2hkbWlfZW5jb2Rlcl9h
+dG9taWNfY2hlY2soc3RydWN0IGRybV9lbmNvZGVyICplbmNvZGVyLAo+ICsJCQkJCSAgc3RydWN0
+IGRybV9jcnRjX3N0YXRlICpjcnRjX3N0YXRlLAo+ICsJCQkJCSAgc3RydWN0IGRybV9jb25uZWN0
+b3Jfc3RhdGUgKmNvbm5fc3RhdGUpCj4gK3sKPiArCXN0cnVjdCByb2NrY2hpcF9jcnRjX3N0YXRl
+ICpzID0gdG9fcm9ja2NoaXBfY3J0Y19zdGF0ZShjcnRjX3N0YXRlKTsKPiArCj4gKwlzLT5vdXRw
+dXRfbW9kZSA9IFJPQ0tDSElQX09VVF9NT0RFX1A4ODg7Cj4gKwlzLT5vdXRwdXRfdHlwZSA9IERS
+TV9NT0RFX0NPTk5FQ1RPUl9IRE1JQTsKPiArCj4gKwlyZXR1cm4gMDsKPiArfQo+ICsKPiArc3Rh
+dGljIGNvbnN0IHN0cnVjdCBkcm1fZW5jb2Rlcl9oZWxwZXJfZnVuY3MgaW5ub19oZG1pX3JvY2tj
+aGlwX2VuY29kZXJfaGVscGVyX2Z1bmNzID0gewo+ICsJLmF0b21pY19jaGVjawk9IGlubm9faGRt
+aV9lbmNvZGVyX2F0b21pY19jaGVjaywKPiArfTsKPiArCj4gK3N0YXRpYyBpbnQgaW5ub19oZG1p
+X3JvY2tjaGlwX2JpbmQoc3RydWN0IGRldmljZSAqZGV2LCBzdHJ1Y3QgZGV2aWNlICptYXN0ZXIs
+IHZvaWQgKmRhdGEpCj4gK3sKPiArCXN0cnVjdCBkcm1fZGV2aWNlICpkcm0gPSBkYXRhOwo+ICsJ
+c3RydWN0IGRybV9jb25uZWN0b3IgKmNvbm5lY3RvcjsKPiArCXN0cnVjdCBkcm1fZW5jb2RlciAq
+ZW5jb2RlcjsKPiArCXN0cnVjdCByb2NrY2hpcF9pbm5vX2hkbWkgKmhkbWk7Cj4gKwljb25zdCBz
+dHJ1Y3QgaW5ub19oZG1pX3BsYXRfZGF0YSAqcGxhdF9kYXRhOwo+ICsJaW50IHJldDsKPiArCj4g
+KwloZG1pID0gZGV2bV9remFsbG9jKGRldiwgc2l6ZW9mKCpoZG1pKSwgR0ZQX0tFUk5FTCk7Cj4g
+KwlpZiAoIWhkbWkpCj4gKwkJcmV0dXJuIC1FTk9NRU07Cj4gKwo+ICsJaGRtaS0+ZGV2ID0gZGV2
+Owo+ICsKPiArCXBsYXRfZGF0YSA9IG9mX2RldmljZV9nZXRfbWF0Y2hfZGF0YShoZG1pLT5kZXYp
+Owo+ICsJaWYgKCFwbGF0X2RhdGEpCj4gKwkJcmV0dXJuIC1FSU5WQUw7Cj4gKwo+ICsJaWYgKG9m
+X2RldmljZV9pc19jb21wYXRpYmxlKGRldi0+b2Zfbm9kZSwgInJvY2tjaGlwLHJrMzAzNi1pbm5v
+LWhkbWkiKSkgewo+ICsJCWhkbWktPmdyZiA9IHN5c2Nvbl9yZWdtYXBfbG9va3VwX2J5X3BoYW5k
+bGUoZGV2LT5vZl9ub2RlLCAicm9ja2NoaXAsZ3JmIik7Cj4gKwkJaWYgKElTX0VSUihoZG1pLT5n
+cmYpKQo+ICsJCQlyZXR1cm4gZGV2X2Vycl9wcm9iZShkZXYsCj4gKwkJCQkJICAgICBQVFJfRVJS
+KGhkbWktPmdyZiksICJVbmFibGUgdG8gZ2V0IHJvY2tjaGlwLGdyZlxuIik7Cj4gKwl9Cj4gKwo+
+ICsJZW5jb2RlciA9ICZoZG1pLT5lbmNvZGVyLmVuY29kZXI7Cj4gKwllbmNvZGVyLT5wb3NzaWJs
+ZV9jcnRjcyA9IGRybV9vZl9maW5kX3Bvc3NpYmxlX2NydGNzKGRybSwgZGV2LT5vZl9ub2RlKTsK
+PiArCj4gKwkvKgo+ICsJICogSWYgd2UgZmFpbGVkIHRvIGZpbmQgdGhlIENSVEMocykgd2hpY2gg
+dGhpcyBlbmNvZGVyIGlzCj4gKwkgKiBzdXBwb3NlZCB0byBiZSBjb25uZWN0ZWQgdG8sIGl0J3Mg
+YmVjYXVzZSB0aGUgQ1JUQyBoYXMKPiArCSAqIG5vdCBiZWVuIHJlZ2lzdGVyZWQgeWV0LiAgRGVm
+ZXIgcHJvYmluZywgYW5kIGhvcGUgdGhhdAo+ICsJICogdGhlIHJlcXVpcmVkIENSVEMgaXMgYWRk
+ZWQgbGF0ZXIuCj4gKwkgKi8KPiArCWlmIChlbmNvZGVyLT5wb3NzaWJsZV9jcnRjcyA9PSAwKQo+
+ICsJCXJldHVybiAtRVBST0JFX0RFRkVSOwo+ICsKPiArCXJldCA9IGRybW1fZW5jb2Rlcl9pbml0
+KGRybSwgZW5jb2RlciwgTlVMTCwgRFJNX01PREVfRU5DT0RFUl9UTURTLCBOVUxMKTsKPiArCWlm
+IChyZXQpCj4gKwkJcmV0dXJuIHJldDsKPiArCj4gKwlkcm1fZW5jb2Rlcl9oZWxwZXJfYWRkKGVu
+Y29kZXIsICZpbm5vX2hkbWlfcm9ja2NoaXBfZW5jb2Rlcl9oZWxwZXJfZnVuY3MpOwo+ICsKPiAr
+CWRldl9zZXRfZHJ2ZGF0YShkZXYsIGhkbWkpOwo+ICsKPiArCWhkbWktPmJhc2UgPSBpbm5vX2hk
+bWlfYmluZChkZXYsIGVuY29kZXIsIHBsYXRfZGF0YSk7Cj4gKwo+ICsJY29ubmVjdG9yID0gZHJt
+X2JyaWRnZV9jb25uZWN0b3JfaW5pdChkcm0sIGVuY29kZXIpOwo+ICsJaWYgKElTX0VSUihjb25u
+ZWN0b3IpKSB7Cj4gKwkJcmV0ID0gUFRSX0VSUihjb25uZWN0b3IpOwo+ICsJCWRldl9lcnIoaGRt
+aS0+ZGV2LCAiZmFpbGVkIHRvIGluaXQgYnJpZGdlIGNvbm5lY3RvcjogJWRcbiIsIHJldCk7Cj4g
+KwkJcmV0dXJuIHJldDsKPiArCX0KPiArCj4gKwlyZXR1cm4gZHJtX2Nvbm5lY3Rvcl9hdHRhY2hf
+ZW5jb2Rlcihjb25uZWN0b3IsIGVuY29kZXIpOwo+ICt9Cj4gKwo+ICtzdGF0aWMgY29uc3Qgc3Ry
+dWN0IGNvbXBvbmVudF9vcHMgaW5ub19oZG1pX3JvY2tjaGlwX29wcyA9IHsKPiArCS5iaW5kCT0g
+aW5ub19oZG1pX3JvY2tjaGlwX2JpbmQsCj4gK307Cj4gKwo+ICtzdGF0aWMgaW50IGlubm9faGRt
+aV9yb2NrY2hpcF9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+ICt7Cj4gKwly
+ZXR1cm4gY29tcG9uZW50X2FkZCgmcGRldi0+ZGV2LCAmaW5ub19oZG1pX3JvY2tjaGlwX29wcyk7
+Cj4gK30KPiArCj4gK3N0YXRpYyB2b2lkIGlubm9faGRtaV9yb2NrY2hpcF9yZW1vdmUoc3RydWN0
+IHBsYXRmb3JtX2RldmljZSAqcGRldikKPiArewo+ICsJY29tcG9uZW50X2RlbCgmcGRldi0+ZGV2
+LCAmaW5ub19oZG1pX3JvY2tjaGlwX29wcyk7Cj4gK30KPiArCj4gK3N0YXRpYyBjb25zdCBzdHJ1
+Y3QgaW5ub19oZG1pX3BsYXRfb3BzIHJrMzAzNl9pbm5vX2hkbWlfcGxhdF9vcHMgPSB7Cj4gKwku
+ZW5hYmxlID0gaW5ub19oZG1pX3JrMzAzNl9lbmFibGUsCj4gK307Cj4gKwo+ICtzdGF0aWMgY29u
+c3Qgc3RydWN0IGlubm9faGRtaV9wbGF0X2RhdGEgcmszMDM2X2lubm9faGRtaV9wbGF0X2RhdGEg
+PSB7Cj4gKwkub3BzID0gJnJrMzAzNl9pbm5vX2hkbWlfcGxhdF9vcHMsCj4gKwkucGh5X2NvbmZp
+Z3MgPSByazMwMzZfaGRtaV9waHlfY29uZmlncywKPiArCS5kZWZhdWx0X3BoeV9jb25maWcgPSAm
+cmszMDM2X2hkbWlfcGh5X2NvbmZpZ3NbMV0sCj4gK307Cj4gKwo+ICtzdGF0aWMgY29uc3Qgc3Ry
+dWN0IGlubm9faGRtaV9wbGF0X2RhdGEgcmszMTI4X2lubm9faGRtaV9wbGF0X2RhdGEgPSB7Cj4g
+KwkucGh5X2NvbmZpZ3MgPSByazMxMjhfaGRtaV9waHlfY29uZmlncywKPiArCS5kZWZhdWx0X3Bo
+eV9jb25maWcgPSAmcmszMTI4X2hkbWlfcGh5X2NvbmZpZ3NbMV0sCj4gK307Cj4gKwo+ICtzdGF0
+aWMgY29uc3Qgc3RydWN0IG9mX2RldmljZV9pZCBpbm5vX2hkbWlfcm9ja2NoaXBfZHRfaWRzW10g
+PSB7Cj4gKwl7IC5jb21wYXRpYmxlID0gInJvY2tjaGlwLHJrMzAzNi1pbm5vLWhkbWkiLAo+ICsJ
+ICAuZGF0YSA9ICZyazMwMzZfaW5ub19oZG1pX3BsYXRfZGF0YSwKPiArCX0sCj4gKwl7IC5jb21w
+YXRpYmxlID0gInJvY2tjaGlwLHJrMzEyOC1pbm5vLWhkbWkiLAo+ICsJICAuZGF0YSA9ICZyazMx
+MjhfaW5ub19oZG1pX3BsYXRfZGF0YSwKPiArCX0sCj4gKwl7fSwKPiArfTsKPiArTU9EVUxFX0RF
+VklDRV9UQUJMRShvZiwgaW5ub19oZG1pX3JvY2tjaGlwX2R0X2lkcyk7Cj4gKwo+ICtzdHJ1Y3Qg
+cGxhdGZvcm1fZHJpdmVyIGlubm9faGRtaV9kcml2ZXIgPSB7Cj4gKwkucHJvYmUgID0gaW5ub19o
+ZG1pX3JvY2tjaGlwX3Byb2JlLAo+ICsJLnJlbW92ZSA9IGlubm9faGRtaV9yb2NrY2hpcF9yZW1v
+dmUsCj4gKwkuZHJpdmVyID0gewo+ICsJCS5uYW1lID0gImlubm9oZG1pLXJvY2tjaGlwIiwKPiAr
+CQkub2ZfbWF0Y2hfdGFibGUgPSBpbm5vX2hkbWlfcm9ja2NoaXBfZHRfaWRzLAo+ICsJfSwKPiAr
+fTsKPiBkaWZmIC0tZ2l0IGEvaW5jbHVkZS9kcm0vYnJpZGdlL2lubm9faGRtaS5oIGIvaW5jbHVk
+ZS9kcm0vYnJpZGdlL2lubm9faGRtaS5oCj4gbmV3IGZpbGUgbW9kZSAxMDA2NDQKPiBpbmRleCAw
+MDAwMDAwMDAwMDAwLi44YjM5NjU1MjEyZTI0Cj4gLS0tIC9kZXYvbnVsbAo+ICsrKyBiL2luY2x1
+ZGUvZHJtL2JyaWRnZS9pbm5vX2hkbWkuaAo+IEBAIC0wLDAgKzEsMzMgQEAKPiArLyogU1BEWC1M
+aWNlbnNlLUlkZW50aWZpZXI6IEdQTC0yLjAtb3ItbGF0ZXIgKi8KPiArLyoKPiArICogQ29weXJp
+Z2h0IChjKSAyMDI1IFJvY2tjaGlwIEVsZWN0cm9uaWNzIENvLiwgTHRkLgo+ICsgKi8KPiArCj4g
+KyNpZm5kZWYgX19JTk5PX0hETUlfXwo+ICsjZGVmaW5lIF9fSU5OT19IRE1JX18KPiArCj4gK3N0
+cnVjdCBkZXZpY2U7Cj4gK3N0cnVjdCBkcm1fZW5jb2RlcjsKPiArc3RydWN0IGRybV9kaXNwbGF5
+X21vZGU7Cj4gK3N0cnVjdCBpbm5vX2hkbWk7Cj4gKwo+ICtzdHJ1Y3QgaW5ub19oZG1pX3BsYXRf
+b3BzIHsKPiArCXZvaWQgKCplbmFibGUpKHN0cnVjdCBkZXZpY2UgKnBkZXYsIHN0cnVjdCBkcm1f
+ZGlzcGxheV9tb2RlICptb2RlKTsKPiArfTsKPiArCj4gK3N0cnVjdCBpbm5vX2hkbWlfcGh5X2Nv
+bmZpZyB7Cj4gKwl1bnNpZ25lZCBsb25nIHBpeGVsY2xvY2s7Cj4gKwl1OCBwcmVfZW1waGFzaXM7
+Cj4gKwl1OCB2b2x0YWdlX2xldmVsX2NvbnRyb2w7Cj4gK307Cj4gKwo+ICtzdHJ1Y3QgaW5ub19o
+ZG1pX3BsYXRfZGF0YSB7Cj4gKwljb25zdCBzdHJ1Y3QgaW5ub19oZG1pX3BsYXRfb3BzICpvcHM7
+Cj4gKwlzdHJ1Y3QgaW5ub19oZG1pX3BoeV9jb25maWcgKnBoeV9jb25maWdzOwo+ICsJc3RydWN0
+IGlubm9faGRtaV9waHlfY29uZmlnICpkZWZhdWx0X3BoeV9jb25maWc7Cj4gK307Cj4gKwo+ICtz
+dHJ1Y3QgaW5ub19oZG1pICppbm5vX2hkbWlfYmluZChzdHJ1Y3QgZGV2aWNlICpwZGV2LAo+ICsJ
+CQkJIHN0cnVjdCBkcm1fZW5jb2RlciAqZW5jb2RlciwKPiArCQkJCSBjb25zdCBzdHJ1Y3QgaW5u
+b19oZG1pX3BsYXRfZGF0YSAqcGxhdF9kYXRhKTsKPiArI2VuZGlmIC8qIF9fSU5OT19IRE1JX18g
+Ki8KPiAKCgoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+XwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFk
+ZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4
+LXJvY2tjaGlwCg==
