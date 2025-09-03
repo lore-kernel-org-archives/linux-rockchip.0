@@ -4,180 +4,129 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91FACCD13CF
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Nov 2025 12:28:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41935CD13DA
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Nov 2025 12:28:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=kDOl/s2ppaaIMVTbJziXGTkxdKqTy+nfwcj+Dv1rHS4=; b=gu+eCNwRSxepvZ
-	xXaUwPQGeqKyv12JrYdx+WG6XnfX9f9Ps/yi9PAf4BHkJ2Teyq3x10PyvvowTWWNigzvow7b0rndk
-	hiNpJ1hIC9sFayPEW/qFlr9R/WVAp6oIp5anR8q8EGp0StEIUgr0Eliyckc6ZH7+7eYDmLN1tlRLb
-	X1TUC9rj163VeVgVj4EYyC8feLhKlHTuwI1+MZbQ2LB88Q47SIuDRKqmvUnxD+8uHxw5VcOpPytAb
-	FDy6NOrQYOwVoezTs7OhcsvKwnw8G53fch/OetptpVZN2ukN6eM9aux/h9S4RY6t+tQVG3qr6bQSv
-	7k+FvZE+pUIbvENrRvYA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=PrNUfWkyL0LpP+VkTdYQ2VaHz74Zh/NRFCAFab17ibc=; b=Oy8yRIabmIl0xT
+	1i3lANU2/Mk1zrtHyfusxBpCg44ip8GMDtSZykWVepAHJ69hRodR1pTh4vctzdPRbcevkOPH6gtUy
+	sjI4AIuKhFMAflBep5wH4maXJm6RPvTNOm402OeWSyUys1XyeDznWBWi8CL5Ep0yC/4WKRz6eJZS4
+	HVucNT8ZtmgVksgywi/cpnnmoj6QpD77gtLP0JRLhbkIYWBQbcM1Y37yB8tH7GwdHo4S0yB2tB9CF
+	qYPLNapVnkBX3sf8Pm4ey4LAV/qdsx52Wjkz84CeOWIVwEKG686EnYuw2qLw22t7YstwSz5kVMQmb
+	aGS4xyYhd5iXByKILqDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGz6X-0000000FROd-29he;
-	Thu, 06 Nov 2025 12:28:41 +0000
-Received: from mail-westeuropeazlp170120005.outbound.protection.outlook.com ([2a01:111:f403:c201::5] helo=AS8PR03CU001.outbound.protection.outlook.com)
+	id 1vGz6d-0000000FRZW-0S7r;
+	Thu, 06 Nov 2025 12:28:47 +0000
+Received: from mgamail.intel.com ([198.175.65.11])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWcWN-00000005pCN-1M7Y;
-	Tue, 01 Jul 2025 15:03:45 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=W8MOSp7pe9k2H4V5YNRU35tsMd1sXqx6mhVs0xUQrlky3RlLkX4SxN5oX2bE7IAaFIpnLkxYxwQlw+RmLvXb6qYu7fjCkqvZjkcmztbGc08Znp78Qctuw/cwNxcFa0y1AJobiwfsfpXsk3wrUMeACpxuDU3D4IMCt9Bzf4ARVsPNpvzsu5qDB60SStb7bKSrkXHTIjnfAjNEn80ULZhnZcCrPzRcxfaLkTn+7S2dCSU8FlVEqlSWUqV0xO0nmF+pdA2sCQIHe1X5dKBAHnjZQjuJjOtsK2mTAY4nvzMXMUdX2zEO1DwvMEQZinCPUqzICd1ox0ky3DF6vnvItNTP1A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=9cAneGTSKATKMTpzy7/kfCOmcH/oE0TYc+IG4grBVe8=;
- b=DKHjAFitay6diFoAXTGTagi7LuMA/kKWiIErQrqQe7yz87dEx+2STUCDQe/k7UYLuBaNoKeM3OHa8FtlnuDNaOU6QrJqY+O9O8bBUV8Jugyyq1cL9B5DAW2KGEjnbbrLg9YpCB8gf6xR+L+TIJ6fc9twdhsl7Ex37XKM8JDxSE7hqmjqOaQ2SmtjlT0CC6emBOsBhDTzgGiq2pxBRTTlv0ARNuwHV6J4GEy1GzWFmYgxsKiAXyd88Cz7BHfiWRmNn0XBDPcbSpnJPGYcCiZlpZ6fzdfPV0jRRTf277Xb4rYssA4FbDXBXnleQx13vCi0rAcEG/A83CMnD5f5lRIM3Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 195.60.68.100) smtp.rcpttodomain=vger.kernel.org smtp.mailfrom=axis.com;
- dmarc=pass (p=none sp=none pct=100) action=none header.from=axis.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=axis.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=9cAneGTSKATKMTpzy7/kfCOmcH/oE0TYc+IG4grBVe8=;
- b=mYxOjZNJrbjF/Uae6VK6SEzC8J0Px0RJS2OT16wRZ8bWRZCdsYSiORWRyuL7rLp0lOuzTHT7WUjFw1vmAOVJIlfc5iZyeYmruM3gabjheYWjkiL3MFflZzD5S3M1DEtG1kgleaGFFMcCd2nCedRCcjwJ2glBFDNrTpWOZaNda+Q=
-Received: from PR3P191CA0019.EURP191.PROD.OUTLOOK.COM (2603:10a6:102:54::24)
- by GV2PR02MB11370.eurprd02.prod.outlook.com (2603:10a6:150:2a2::14) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8901.19; Tue, 1 Jul
- 2025 15:03:34 +0000
-Received: from AMS0EPF000001A6.eurprd05.prod.outlook.com
- (2603:10a6:102:54:cafe::b6) by PR3P191CA0019.outlook.office365.com
- (2603:10a6:102:54::24) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.8901.19 via Frontend Transport; Tue,
- 1 Jul 2025 15:03:34 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 195.60.68.100)
- smtp.mailfrom=axis.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=axis.com;
-Received-SPF: Pass (protection.outlook.com: domain of axis.com designates
- 195.60.68.100 as permitted sender) receiver=protection.outlook.com;
- client-ip=195.60.68.100; helo=mail.axis.com; pr=C
-Received: from mail.axis.com (195.60.68.100) by
- AMS0EPF000001A6.mail.protection.outlook.com (10.167.16.233) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.20.8901.15 via Frontend Transport; Tue, 1 Jul 2025 15:03:34 +0000
-Received: from pc52311-2249 (10.4.0.13) by se-mail01w.axis.com (10.20.40.7)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.44; Tue, 1 Jul
- 2025 17:03:33 +0200
-From: Waqar Hameed <waqar.hameed@axis.com>
-To: Vignesh Raghavendra <vigneshr@ti.com>, Julien Panis <jpanis@baylibre.com>,
-	William Breathitt Gray <wbg@kernel.org>, Linus Walleij
-	<linus.walleij@linaro.org>, Bartosz Golaszewski <brgl@bgdev.pl>, Peter Rosin
-	<peda@axentia.se>, Jonathan Cameron <jic23@kernel.org>, David Lechner
-	<dlechner@baylibre.com>, =?utf-8?Q?Nuno_S=C3=A1?= <nuno.sa@analog.com>, "Andy
- Shevchenko" <andy@kernel.org>, Cosmin Tanislav <cosmin.tanislav@analog.com>,
-	Lars-Peter Clausen <lars@metafoo.de>, Michael Hennerich
-	<Michael.Hennerich@analog.com>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "Matteo
- Martelli" <matteomartelli3@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
-	Francesco Dolcini <francesco@dolcini.it>,
-	=?utf-8?Q?Jo=C3=A3o_Paulo_Gon=C3=A7alves?= <jpaulo.silvagoncalves@gmail.com>,
-	Hugo Villeneuve <hvilleneuve@dimonoff.com>, Subhajit Ghosh
-	<subhajit.ghosh@tweaklogic.com>, Mudit Sharma <muditsharma.info@gmail.com>,
-	Gerald Loacker <gerald.loacker@wolfvision.net>, Song Qiang
-	<songqiang1304521@gmail.com>, Crt Mori <cmo@melexis.com>, Dmitry Torokhov
-	<dmitry.torokhov@gmail.com>, Ulf Hansson <ulf.hansson@linaro.org>, "Karol
- Gugala" <kgugala@antmicro.com>, Mateusz Holenko <mholenko@antmicro.com>,
-	Gabriel Somlo <gsomlo@gmail.com>, Joel Stanley <joel@jms.id.au>, "Claudiu
- Manoil" <claudiu.manoil@nxp.com>, Vladimir Oltean <vladimir.oltean@nxp.com>,
-	Wei Fang <wei.fang@nxp.com>, Clark Wang <xiaoning.wang@nxp.com>, Andrew Lunn
-	<andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, "Eric
- Dumazet" <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
-	<pabeni@redhat.com>, Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I
-	<kishon@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, Alim Akhtar
-	<alim.akhtar@samsung.com>, Sebastian Reichel <sre@kernel.org>,
-	=?utf-8?Q?Uwe_Kleine-K=C3=B6nig?= <ukleinek@kernel.org>, Neil Armstrong
-	<neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, "Jerome
- Brunet" <jbrunet@baylibre.com>, Martin Blumenstingl
-	<martin.blumenstingl@googlemail.com>, Han Xu <han.xu@nxp.com>, Haibo Chen
-	<haibo.chen@nxp.com>, Yogesh Gaur <yogeshgaur.83@gmail.com>, Mark Brown
-	<broonie@kernel.org>, Avri Altman <avri.altman@wdc.com>, Bart Van Assche
-	<bvanassche@acm.org>, "James E.J. Bottomley"
-	<James.Bottomley@HansenPartnership.com>, "Martin K. Petersen"
-	<martin.petersen@oracle.com>, Souradeep Chowdhury
-	<quic_schowdhu@quicinc.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Liam Girdwood <lgirdwood@gmail.com>, Peter Ujfalusi
-	<peter.ujfalusi@linux.intel.com>, Bard Liao
-	<yung-chuan.liao@linux.intel.com>, Ranjani Sridharan
-	<ranjani.sridharan@linux.intel.com>, Daniel Baluta <daniel.baluta@nxp.com>,
-	Kai Vehmanen <kai.vehmanen@linux.intel.com>, Pierre-Louis Bossart
-	<pierre-louis.bossart@linux.dev>, Jaroslav Kysela <perex@perex.cz>, "Takashi
- Iwai" <tiwai@suse.com>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer
-	<s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>
-CC: <kernel@axis.com>, <linux-iio@vger.kernel.org>,
-	<linux-omap@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-gpio@vger.kernel.org>, <linux-i2c@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-rockchip@lists.infradead.org>, <linux-input@vger.kernel.org>,
-	<linux-mmc@vger.kernel.org>, <imx@lists.linux.dev>, <netdev@vger.kernel.org>,
-	<linux-phy@lists.infradead.org>, <linux-samsung-soc@vger.kernel.org>,
-	<linux-pm@vger.kernel.org>, <linux-pwm@vger.kernel.org>,
-	<linux-amlogic@lists.infradead.org>, <linux-spi@vger.kernel.org>,
-	<linux-scsi@vger.kernel.org>, <linux-arm-msm@vger.kernel.org>,
-	<linux-usb@vger.kernel.org>, <sound-open-firmware@alsa-project.org>,
-	<linux-sound@vger.kernel.org>
-Subject: [PATCH] Remove error prints for devm_add_action_or_reset()
-User-Agent: a.out
-Date: Tue, 1 Jul 2025 17:03:33 +0200
-Message-ID: <pnd7c0s6ji2.fsf@axis.com>
+	id 1utsrw-00000007PdR-1Rhc;
+	Wed, 03 Sep 2025 19:10:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1756926609; x=1788462609;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=nqS3UzHQKIkIb/Rkk4XlaX9LsWxMZrg1+PMmz+JaHDI=;
+  b=Tkt1kU36Kk3CoUnN4zOGXRiYTrbAkdfxLxyseQ+9RwGXaRk9Q1ZGGWCA
+   pOaud677XwQeHiK1T09GvbSWrLMAwyJkjIdNwT3N4rjFFi+PXhI7r94ns
+   NdJrGR0mx7ix+NvAvycrhehfFOD6D7vAT8d8G+8A8z052k1yHORYtH6S0
+   C8DfZUUTKofVCoGOL5kZDxz8TZzFvwMChgEUsrzPIzlp/LzfzN6srGoVY
+   WS2QTBI00TxJKRbABsbHnXys66t7aCnt4dj6SV17f2zVpiiJ9bwZkLLJ+
+   q8T/+zy3nImZNyVfQbVm6oHe4pT5DL3/beRtPBZB2qxmOYkGMeiR10PEW
+   w==;
+X-CSE-ConnectionGUID: H3x/pTFbTY2ITf878bhEdQ==
+X-CSE-MsgGUID: k0JsXy60Qs+W755juHXsZg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11542"; a="69513746"
+X-IronPort-AV: E=Sophos;i="6.18,236,1751266800"; 
+   d="scan'208";a="69513746"
+Received: from orviesa008.jf.intel.com ([10.64.159.148])
+  by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Sep 2025 12:10:01 -0700
+X-CSE-ConnectionGUID: nGwL7IPyTYW/wuPoo+6uVg==
+X-CSE-MsgGUID: AsgfiIXISiG9KRkXNJLYfg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.18,236,1751266800"; 
+   d="scan'208";a="171814105"
+Received: from bergbenj-mobl1.ger.corp.intel.com (HELO localhost) ([10.245.244.11])
+  by orviesa008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Sep 2025 12:09:45 -0700
+Date: Wed, 3 Sep 2025 22:09:41 +0300
+From: Ville =?iso-8859-1?Q?Syrj=E4l=E4?= <ville.syrjala@linux.intel.com>
+To: Maxime Ripard <mripard@kernel.org>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+	dri-devel@lists.freedesktop.org,
+	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+	Louis Chauvet <louis.chauvet@bootlin.com>,
+	Haneen Mohammed <hamohammed.sa@gmail.com>,
+	Melissa Wen <melissa.srw@gmail.com>, Jyri Sarha <jyri.sarha@iki.fi>,
+	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
+	Paul Cercueil <paul@crapouillou.net>, linux-mips@vger.kernel.org,
+	Liviu Dudau <liviu.dudau@arm.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Manikandan Muralidharan <manikandan.m@microchip.com>,
+	Dharma Balasubiramani <dharma.b@microchip.com>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+	linux-arm-kernel@lists.infradead.org,
+	Inki Dae <inki.dae@samsung.com>,
+	Seung-Woo Kim <sw0312.kim@samsung.com>,
+	Kyungmin Park <kyungmin.park@samsung.com>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	linux-samsung-soc@vger.kernel.org, Liu Ying <victor.liu@nxp.com>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>, imx@lists.linux.dev,
+	Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>,
+	Lucas Stach <l.stach@pengutronix.de>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Anitha Chrisanthus <anitha.chrisanthus@intel.com>,
+	Edmund Dea <edmund.j.dea@intel.com>,
+	Paul Kocialkowski <paulk@sys-base.io>,
+	Sui Jingfeng <suijingfeng@loongson.cn>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Rob Clark <robin.clark@oss.qualcomm.com>,
+	Dmitry Baryshkov <lumag@kernel.org>,
+	Abhinav Kumar <abhinav.kumar@linux.dev>,
+	Jessica Zhang <jessica.zhang@oss.qualcomm.com>,
+	Sean Paul <sean@poorly.run>,
+	Marijn Suijten <marijn.suijten@somainline.org>,
+	linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org,
+	Sandy Huang <hjc@rock-chips.com>,
+	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	linux-rockchip@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>, linux-sunxi@lists.linux.dev,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Mikko Perttunen <mperttunen@nvidia.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>, linux-tegra@vger.kernel.org,
+	Hans de Goede <hansg@kernel.org>,
+	Dave Stevenson <dave.stevenson@raspberrypi.com>,
+	=?iso-8859-1?Q?Ma=EDra?= Canal <mcanal@igalia.com>,
+	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>
+Subject: Re: [PATCH v2 00/37] drm/atomic: Get rid of existing states (not
+ really)
+Message-ID: <aLiSdWgOl15jb8Ga@intel.com>
+References: <20250902-drm-no-more-existing-state-v2-0-de98fc5f6d66@kernel.org>
 MIME-Version: 1.0
-X-Originating-IP: [10.4.0.13]
-X-ClientProxiedBy: se-mail01w.axis.com (10.20.40.7) To se-mail01w.axis.com
- (10.20.40.7)
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: AMS0EPF000001A6:EE_|GV2PR02MB11370:EE_
-X-MS-Office365-Filtering-Correlation-Id: d1c626fa-2cf1-4b9a-e4b3-08ddb8b07380
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|82310400026|1800799024|7416014|376014|36860700013|921020;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?CZ0HQPMSo5LyGmbbgk5k7hxK7WQ0xrWD7nfY85QTZjo4IFtCikp7/DAGu5lG?=
- =?us-ascii?Q?MSMD9HQUU0PKce7iCIu6z9P1ildKGw/vC6cG4QNHgGZOr6yPVxPqWW2AAoBj?=
- =?us-ascii?Q?c2aLgnnTCuqHlwgpb05+zDXazmv/mIoNrmwF38QbXSb6gpeXFE8Et69wyUJK?=
- =?us-ascii?Q?OuE7enVhjjK69WhtGpR6FGNDN0kdkQD4K+nxcwiWDUJNAiN9m/StP5Q6vESy?=
- =?us-ascii?Q?Go/Y98Vn906bzhJASIgq4Eb3pW/XysRSMRpBqxQUBI0HqgYENVBkGB5TTxC3?=
- =?us-ascii?Q?yfAcA1pdupcpeQFot3xdin+En4EJNyFfMju2iGvGqwrRX/5vx2X3jJcoffjE?=
- =?us-ascii?Q?ui3tiNExN5sWiHsUBwXCeGxWWdO7OnJlVEvGTYIMsqoiP4YleuNdGDAT8Gi+?=
- =?us-ascii?Q?rpuOaJvSp3MrZK6gfE72HAZoT2RJnhevNv4AXiLUsYZjZ9gY9lWKKVNLqB+I?=
- =?us-ascii?Q?zRdSFOdf6TjFB5kLZKOLgqSLfL/fzto/JZiXGAr1v6zFFK7BwPJeZo//XdbI?=
- =?us-ascii?Q?Q4QUf/hkaTn7GmFIaV9+przl7qthOEqNzezR8PswWaiIhgQt6wfmDUMFzTwT?=
- =?us-ascii?Q?fjbryFCGPhJPeXsrY0gIEkZe8Nb0y4Sk/xH7eTPiCBQ96GGhg4jzO9D8eMRA?=
- =?us-ascii?Q?OVUWByPuJu7VvNAZfWRVzJHsrS3BqYPqC8eEePflnMvJ7w5q0cXw4Su1Ng0R?=
- =?us-ascii?Q?I4rVR0pT8j2mXryxigBaD01BqqjH211vnVjmmd723i/H2uycKzY/hIKoyuZ2?=
- =?us-ascii?Q?nV28LQO8dYgqTBNhwricNjMPdEm24go1hqT0PPC0CkSBkmEM5qZ/UT6hCiiO?=
- =?us-ascii?Q?gg3anP5dkvKJsbwYj79KBEvS5ET20b54Xdg2LoMgL8V06Wxmf6ICxZ6JnKBy?=
- =?us-ascii?Q?78wxccmXmAvy3roVVTpu3trkTrdYjPtgZZiMryCJ9a/NGU/EjhcGAL+wx9QB?=
- =?us-ascii?Q?/IYwQfc/6ZkKYB6eBpPxnV5hKAax5HyH+9CTff1qgSBSVs/xdRsjJxuKIEc5?=
- =?us-ascii?Q?8kZPKEXz8/Uac6wxK7gx75fiV+T3iN9Ztq2YFmdy5RhIWSisHDhSHmBQ2fZY?=
- =?us-ascii?Q?k1m8Kqc1S4kWXykEItKlaBq2F6ci2qiB4xe8aLPV+jWjzcsM0OnD4djrwx2X?=
- =?us-ascii?Q?QIPaMdEIzWQqnoB0g7yTAdc43eu6WjG3aARLlgx2+VYATqAyHSgiYBWDmmkW?=
- =?us-ascii?Q?POFErlXeuch+vkldpF7T9RnPFFQZbK87JMUD2P94epugIwzCB63eeYbj8gd/?=
- =?us-ascii?Q?5Pqa/iNrwr4YGqojPOx/d2pVy1dalA5QqUeXysHsZEuhTgIINNBqu7P2H2t/?=
- =?us-ascii?Q?2U1DGVwRXzcNq/kjevVTB7HXrmXiFHX8C9hfMD/avjWTGSH+e/NEk7SshWDU?=
- =?us-ascii?Q?746CI2cN7jdmskfpYv6b0xYh3iIfSChCb4Psd4yTCVvWj+eCIyriS+PaPnAw?=
- =?us-ascii?Q?Di3mXonOfn9+g4krYinftFFk2mBEkRqt6KihXGPJNy9kVP+Ss6isndsZ9XKO?=
- =?us-ascii?Q?gUq0hGDO1nGPF9A=3D?=
-X-Forefront-Antispam-Report: CIP:195.60.68.100;CTRY:SE;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.axis.com;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230040)(82310400026)(1800799024)(7416014)(376014)(36860700013)(921020);DIR:OUT;SFP:1101;
-X-OriginatorOrg: axis.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 01 Jul 2025 15:03:34.7469
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: d1c626fa-2cf1-4b9a-e4b3-08ddb8b07380
-X-MS-Exchange-CrossTenant-Id: 78703d3c-b907-432f-b066-88f7af9ca3af
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=78703d3c-b907-432f-b066-88f7af9ca3af;Ip=[195.60.68.100];Helo=[mail.axis.com]
-X-MS-Exchange-CrossTenant-AuthSource: AMS0EPF000001A6.eurprd05.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: GV2PR02MB11370
+Content-Disposition: inline
+In-Reply-To: <20250902-drm-no-more-existing-state-v2-0-de98fc5f6d66@kernel.org>
+X-Patchwork-Hint: comment
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250701_080343_721441_E2151458 
-X-CRM114-Status: GOOD (  17.69  )
+X-CRM114-CacheID: sfid-20250903_121008_416975_0C536465 
+X-CRM114-Status: GOOD (  30.52  )
 X-Mailman-Approved-At: Thu, 06 Nov 2025 04:28:36 -0800
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -190,570 +139,151 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-When `devm_add_action_or_reset()` fails, it is due to a failed memory
-allocation and will thus return `-ENOMEM`. `dev_err_probe()` doesn't do
-anything when error is `-ENOMEM`. Therefore, remove the useless call to
-`dev_err_probe()` when `devm_add_action_or_reset()` fails, and just
-return the value instead.
+On Tue, Sep 02, 2025 at 11:34:59AM +0200, Maxime Ripard wrote:
+> Hi,
+> =
 
-Signed-off-by: Waqar Hameed <waqar.hameed@axis.com>
----
-This patch was inspired from a discussion from another patch:
+> Here's a series to get rid of the drm_atomic_helper_get_existing_*_state
+> accessors.
+> =
 
-  https://lore.kernel.org/all/pndqzz07v0j.fsf@axis.com/
+> The initial intent was to remove the __drm_*_state->state pointer to
+> only rely on old and new states, but we still need it now to know which
+> of the two we need to free: if a state has not been committed (either
+> dropped or checked only), then we need to free the new one, if it has
+> been committed we need to free the old state. =
 
-The calls were identified with
+> =
 
-  rgrep -A10 "devm_add_action_or_reset(" | grep -B10 dev_err_probe
+> Thus, the state pointer is kept (and documented) only to point to the
+> state we should free eventually.
+> =
 
-The resulting output was then parsed semi-manually and the changes
-created with the help of Emacs macros.
+> All users have been converted to the relevant old or new state
+> accessors.  =
 
- drivers/counter/ti-ecap-capture.c                | 2 +-
- drivers/gpio/gpio-twl4030.c                      | 4 +---
- drivers/i2c/muxes/i2c-mux-mule.c                 | 3 +--
- drivers/iio/accel/msa311.c                       | 2 +-
- drivers/iio/adc/ad4130.c                         | 3 +--
- drivers/iio/adc/ad7124.c                         | 2 +-
- drivers/iio/adc/ad7173.c                         | 3 +--
- drivers/iio/adc/mt6577_auxadc.c                  | 3 +--
- drivers/iio/adc/pac1921.c                        | 3 +--
- drivers/iio/adc/rockchip_saradc.c                | 3 +--
- drivers/iio/adc/ti-ads1119.c                     | 3 +--
- drivers/iio/adc/ti-ads7924.c                     | 6 ++----
- drivers/iio/frequency/adf4350.c                  | 3 +--
- drivers/iio/light/al3000a.c                      | 2 +-
- drivers/iio/light/apds9306.c                     | 2 +-
- drivers/iio/light/bh1745.c                       | 3 +--
- drivers/iio/light/opt4001.c                      | 3 +--
- drivers/iio/light/opt4060.c                      | 3 +--
- drivers/iio/magnetometer/als31300.c              | 2 +-
- drivers/iio/magnetometer/tmag5273.c              | 2 +-
- drivers/iio/proximity/vl53l0x-i2c.c              | 3 +--
- drivers/iio/temperature/mlx90635.c               | 6 ++----
- drivers/input/touchscreen/zforce_ts.c            | 3 +--
- drivers/mmc/host/litex_mmc.c                     | 3 +--
- drivers/net/ethernet/freescale/enetc/enetc4_pf.c | 3 +--
- drivers/phy/samsung/phy-exynos5-usbdrd.c         | 3 +--
- drivers/power/supply/mt6370-charger.c            | 4 ++--
- drivers/power/supply/rt9467-charger.c            | 8 ++++----
- drivers/pwm/pwm-meson.c                          | 3 +--
- drivers/spi/spi-nxp-fspi.c                       | 2 +-
- drivers/ufs/core/ufshcd.c                        | 3 +--
- drivers/usb/misc/qcom_eud.c                      | 3 +--
- sound/soc/sof/imx/imx-common.c                   | 2 +-
- 33 files changed, 39 insertions(+), 64 deletions(-)
+> =
 
-diff --git a/drivers/counter/ti-ecap-capture.c b/drivers/counter/ti-ecap-capture.c
-index 3faaf7f60539..114f2d33f193 100644
---- a/drivers/counter/ti-ecap-capture.c
-+++ b/drivers/counter/ti-ecap-capture.c
-@@ -528,7 +528,7 @@ static int ecap_cnt_probe(struct platform_device *pdev)
- 	/* Register a cleanup callback to care for disabling PM */
- 	ret = devm_add_action_or_reset(dev, ecap_cnt_pm_disable, dev);
- 	if (ret)
--		return dev_err_probe(dev, ret, "failed to add pm disable action\n");
-+		return ret;
- 
- 	ret = devm_counter_add(dev, counter_dev);
- 	if (ret)
-diff --git a/drivers/gpio/gpio-twl4030.c b/drivers/gpio/gpio-twl4030.c
-index 0d17985a5fdc..172e7a6283dc 100644
---- a/drivers/gpio/gpio-twl4030.c
-+++ b/drivers/gpio/gpio-twl4030.c
-@@ -596,9 +596,7 @@ static int gpio_twl4030_probe(struct platform_device *pdev)
- 
- 		ret = devm_add_action_or_reset(&pdev->dev, gpio_twl4030_power_off_action, d);
- 		if (ret)
--			return dev_err_probe(&pdev->dev, ret,
--					     "failed to install power off handler\n");
--
-+			return ret;
- 	}
- 
- 	return 0;
-diff --git a/drivers/i2c/muxes/i2c-mux-mule.c b/drivers/i2c/muxes/i2c-mux-mule.c
-index 284ff4afeeac..617ca058d2c9 100644
---- a/drivers/i2c/muxes/i2c-mux-mule.c
-+++ b/drivers/i2c/muxes/i2c-mux-mule.c
-@@ -91,8 +91,7 @@ static int mule_i2c_mux_probe(struct platform_device *pdev)
- 
- 	ret = devm_add_action_or_reset(mux_dev, mule_i2c_mux_remove, muxc);
- 	if (ret)
--		return dev_err_probe(mux_dev, ret,
--				     "Failed to register mux remove\n");
-+		return ret;
- 
- 	/* Create device adapters */
- 	for_each_child_of_node(mux_dev->of_node, dev) {
-diff --git a/drivers/iio/accel/msa311.c b/drivers/iio/accel/msa311.c
-index c31c53abc3d0..f18b06832c0a 100644
---- a/drivers/iio/accel/msa311.c
-+++ b/drivers/iio/accel/msa311.c
-@@ -1197,7 +1197,7 @@ static int msa311_probe(struct i2c_client *i2c)
- 	 */
- 	err = devm_add_action_or_reset(dev, msa311_powerdown, msa311);
- 	if (err)
--		return dev_err_probe(dev, err, "can't add powerdown action\n");
-+		return err;
- 
- 	err = pm_runtime_set_active(dev);
- 	if (err)
-diff --git a/drivers/iio/adc/ad4130.c b/drivers/iio/adc/ad4130.c
-index 6cf790ff3eb5..ff778a44323f 100644
---- a/drivers/iio/adc/ad4130.c
-+++ b/drivers/iio/adc/ad4130.c
-@@ -2035,8 +2035,7 @@ static int ad4130_probe(struct spi_device *spi)
- 
- 	ret = devm_add_action_or_reset(dev, ad4130_disable_regulators, st);
- 	if (ret)
--		return dev_err_probe(dev, ret,
--				     "Failed to add regulators disable action\n");
-+		return ret;
- 
- 	ret = ad4130_soft_reset(st);
- 	if (ret)
-diff --git a/drivers/iio/adc/ad7124.c b/drivers/iio/adc/ad7124.c
-index 92596f15e797..fd86470bd838 100644
---- a/drivers/iio/adc/ad7124.c
-+++ b/drivers/iio/adc/ad7124.c
-@@ -1306,7 +1306,7 @@ static int ad7124_probe(struct spi_device *spi)
- 		ret = devm_add_action_or_reset(&spi->dev, ad7124_reg_disable,
- 					       st->vref[i]);
- 		if (ret)
--			return dev_err_probe(dev, ret, "Failed to register disable handler for regulator #%d\n", i);
-+			return ret;
- 	}
- 
- 	st->mclk = devm_clk_get_enabled(&spi->dev, "mclk");
-diff --git a/drivers/iio/adc/ad7173.c b/drivers/iio/adc/ad7173.c
-index b3e6bd2a55d7..a7f67d8ee9e0 100644
---- a/drivers/iio/adc/ad7173.c
-+++ b/drivers/iio/adc/ad7173.c
-@@ -1707,8 +1707,7 @@ static int ad7173_fw_parse_device_config(struct iio_dev *indio_dev)
- 
- 	ret = devm_add_action_or_reset(dev, ad7173_disable_regulators, st);
- 	if (ret)
--		return dev_err_probe(dev, ret,
--				     "Failed to add regulators disable action\n");
-+		return ret;
- 
- 	ret = device_property_match_property_string(dev, "clock-names",
- 						    ad7173_clk_sel,
-diff --git a/drivers/iio/adc/mt6577_auxadc.c b/drivers/iio/adc/mt6577_auxadc.c
-index 3343b54e8e44..fe9e3ece3fda 100644
---- a/drivers/iio/adc/mt6577_auxadc.c
-+++ b/drivers/iio/adc/mt6577_auxadc.c
-@@ -297,8 +297,7 @@ static int mt6577_auxadc_probe(struct platform_device *pdev)
- 
- 	ret = devm_add_action_or_reset(&pdev->dev, mt6577_power_off, adc_dev);
- 	if (ret)
--		return dev_err_probe(&pdev->dev, ret,
--				     "Failed to add action to managed power off\n");
-+		return ret;
- 
- 	ret = devm_iio_device_register(&pdev->dev, indio_dev);
- 	if (ret < 0)
-diff --git a/drivers/iio/adc/pac1921.c b/drivers/iio/adc/pac1921.c
-index 72aa4ca2e5a4..35433250b008 100644
---- a/drivers/iio/adc/pac1921.c
-+++ b/drivers/iio/adc/pac1921.c
-@@ -1279,8 +1279,7 @@ static int pac1921_probe(struct i2c_client *client)
- 	ret = devm_add_action_or_reset(dev, pac1921_regulator_disable,
- 				       priv->vdd);
- 	if (ret)
--		return dev_err_probe(dev, ret,
--			"Cannot add action for vdd regulator disposal\n");
-+		return ret;
- 
- 	msleep(PAC1921_POWERUP_TIME_MS);
- 
-diff --git a/drivers/iio/adc/rockchip_saradc.c b/drivers/iio/adc/rockchip_saradc.c
-index 325e3747a134..02d7bf137f2e 100644
---- a/drivers/iio/adc/rockchip_saradc.c
-+++ b/drivers/iio/adc/rockchip_saradc.c
-@@ -529,8 +529,7 @@ static int rockchip_saradc_probe(struct platform_device *pdev)
- 	ret = devm_add_action_or_reset(&pdev->dev,
- 				       rockchip_saradc_regulator_disable, info);
- 	if (ret)
--		return dev_err_probe(&pdev->dev, ret,
--				     "failed to register devm action\n");
-+		return ret;
- 
- 	ret = regulator_get_voltage(info->vref);
- 	if (ret < 0)
-diff --git a/drivers/iio/adc/ti-ads1119.c b/drivers/iio/adc/ti-ads1119.c
-index d280c949cf47..bf23b7beb5f8 100644
---- a/drivers/iio/adc/ti-ads1119.c
-+++ b/drivers/iio/adc/ti-ads1119.c
-@@ -780,8 +780,7 @@ static int ads1119_probe(struct i2c_client *client)
- 
- 	ret = devm_add_action_or_reset(dev, ads1119_powerdown, st);
- 	if (ret)
--		return dev_err_probe(dev, ret,
--				     "Failed to add powerdown action\n");
-+		return ret;
- 
- 	return devm_iio_device_register(dev, indio_dev);
- }
-diff --git a/drivers/iio/adc/ti-ads7924.c b/drivers/iio/adc/ti-ads7924.c
-index b1f745f75dbe..46255c530cb4 100644
---- a/drivers/iio/adc/ti-ads7924.c
-+++ b/drivers/iio/adc/ti-ads7924.c
-@@ -399,8 +399,7 @@ static int ads7924_probe(struct i2c_client *client)
- 
- 	ret = devm_add_action_or_reset(dev, ads7924_reg_disable, data->vref_reg);
- 	if (ret)
--		return dev_err_probe(dev, ret,
--				     "failed to add regulator disable action\n");
-+		return ret;
- 
- 	ret = ads7924_reset(indio_dev);
- 	if (ret < 0)
-@@ -414,8 +413,7 @@ static int ads7924_probe(struct i2c_client *client)
- 
- 	ret = devm_add_action_or_reset(dev, ads7924_set_idle_mode, data);
- 	if (ret)
--		return dev_err_probe(dev, ret,
--				     "failed to add idle mode action\n");
-+		return ret;
- 
- 	/* Use minimum signal acquire time. */
- 	ret = regmap_update_bits(data->regmap, ADS7924_ACQCONFIG_REG,
-diff --git a/drivers/iio/frequency/adf4350.c b/drivers/iio/frequency/adf4350.c
-index 47f1c7e9efa9..6665409a9a87 100644
---- a/drivers/iio/frequency/adf4350.c
-+++ b/drivers/iio/frequency/adf4350.c
-@@ -673,8 +673,7 @@ static int adf4350_probe(struct spi_device *spi)
- 
- 	ret = devm_add_action_or_reset(&spi->dev, adf4350_power_down, indio_dev);
- 	if (ret)
--		return dev_err_probe(&spi->dev, ret,
--				     "Failed to add action to managed power down\n");
-+		return ret;
- 
- 	return devm_iio_device_register(&spi->dev, indio_dev);
- }
-diff --git a/drivers/iio/light/al3000a.c b/drivers/iio/light/al3000a.c
-index 6f301c067045..9871096cbab3 100644
---- a/drivers/iio/light/al3000a.c
-+++ b/drivers/iio/light/al3000a.c
-@@ -94,7 +94,7 @@ static int al3000a_init(struct al3000a_data *data)
- 
- 	ret = devm_add_action_or_reset(dev, al3000a_set_pwr_off, data);
- 	if (ret)
--		return dev_err_probe(dev, ret, "failed to add action\n");
-+		return ret;
- 
- 	ret = regmap_write(data->regmap, AL3000A_REG_SYSTEM, AL3000A_CONFIG_RESET);
- 	if (ret)
-diff --git a/drivers/iio/light/apds9306.c b/drivers/iio/light/apds9306.c
-index e9b237de180a..7d2f3738b967 100644
---- a/drivers/iio/light/apds9306.c
-+++ b/drivers/iio/light/apds9306.c
-@@ -1305,7 +1305,7 @@ static int apds9306_probe(struct i2c_client *client)
- 
- 	ret = devm_add_action_or_reset(dev, apds9306_powerdown, data);
- 	if (ret)
--		return dev_err_probe(dev, ret, "failed to add action or reset\n");
-+		return ret;
- 
- 	ret = devm_iio_device_register(dev, indio_dev);
- 	if (ret)
-diff --git a/drivers/iio/light/bh1745.c b/drivers/iio/light/bh1745.c
-index 56ab5fe90ff9..613561dd4083 100644
---- a/drivers/iio/light/bh1745.c
-+++ b/drivers/iio/light/bh1745.c
-@@ -816,8 +816,7 @@ static int bh1745_init(struct bh1745_data *data)
- 
- 	ret = devm_add_action_or_reset(dev, bh1745_power_off, data);
- 	if (ret)
--		return dev_err_probe(dev, ret,
--				     "Failed to add action or reset\n");
-+		return ret;
- 
- 	return 0;
- }
-diff --git a/drivers/iio/light/opt4001.c b/drivers/iio/light/opt4001.c
-index ba4eb82d9bc2..95167273bb90 100644
---- a/drivers/iio/light/opt4001.c
-+++ b/drivers/iio/light/opt4001.c
-@@ -428,8 +428,7 @@ static int opt4001_probe(struct i2c_client *client)
- 					opt4001_chip_off_action,
- 					chip);
- 	if (ret < 0)
--		return dev_err_probe(&client->dev, ret,
--				     "Failed to setup power off action\n");
-+		return ret;
- 
- 	return devm_iio_device_register(&client->dev, indio_dev);
- }
-diff --git a/drivers/iio/light/opt4060.c b/drivers/iio/light/opt4060.c
-index f4085020e03e..e2f42d87760a 100644
---- a/drivers/iio/light/opt4060.c
-+++ b/drivers/iio/light/opt4060.c
-@@ -1301,8 +1301,7 @@ static int opt4060_probe(struct i2c_client *client)
- 
- 	ret = devm_add_action_or_reset(dev, opt4060_chip_off_action, chip);
- 	if (ret < 0)
--		return dev_err_probe(dev, ret,
--				     "Failed to setup power off action\n");
-+		return ret;
- 
- 	ret = opt4060_setup_buffer(chip, indio_dev);
- 	if (ret)
-diff --git a/drivers/iio/magnetometer/als31300.c b/drivers/iio/magnetometer/als31300.c
-index f72af829715f..928e1378304c 100644
---- a/drivers/iio/magnetometer/als31300.c
-+++ b/drivers/iio/magnetometer/als31300.c
-@@ -373,7 +373,7 @@ static int als31300_probe(struct i2c_client *i2c)
- 
- 	ret = devm_add_action_or_reset(dev, als31300_power_down, data);
- 	if (ret)
--		return dev_err_probe(dev, ret, "failed to add powerdown action\n");
-+		return ret;
- 
- 	indio_dev->info = &als31300_info;
- 	indio_dev->modes = INDIO_DIRECT_MODE;
-diff --git a/drivers/iio/magnetometer/tmag5273.c b/drivers/iio/magnetometer/tmag5273.c
-index 2ca5c26f0091..bdb656b031b1 100644
---- a/drivers/iio/magnetometer/tmag5273.c
-+++ b/drivers/iio/magnetometer/tmag5273.c
-@@ -642,7 +642,7 @@ static int tmag5273_probe(struct i2c_client *i2c)
- 	 */
- 	ret = devm_add_action_or_reset(dev, tmag5273_power_down, data);
- 	if (ret)
--		return dev_err_probe(dev, ret, "failed to add powerdown action\n");
-+		return ret;
- 
- 	ret = pm_runtime_set_active(dev);
- 	if (ret < 0)
-diff --git a/drivers/iio/proximity/vl53l0x-i2c.c b/drivers/iio/proximity/vl53l0x-i2c.c
-index ef4aa7b2835e..b92fbd27755b 100644
---- a/drivers/iio/proximity/vl53l0x-i2c.c
-+++ b/drivers/iio/proximity/vl53l0x-i2c.c
-@@ -352,8 +352,7 @@ static int vl53l0x_probe(struct i2c_client *client)
- 
- 	error = devm_add_action_or_reset(&client->dev, vl53l0x_power_off, data);
- 	if (error)
--		return dev_err_probe(&client->dev, error,
--				     "Failed to install poweroff action\n");
-+		return ret;
- 
- 	indio_dev->name = "vl53l0x";
- 	indio_dev->info = &vl53l0x_info;
-diff --git a/drivers/iio/temperature/mlx90635.c b/drivers/iio/temperature/mlx90635.c
-index f7f88498ba0e..1175c7887ae1 100644
---- a/drivers/iio/temperature/mlx90635.c
-+++ b/drivers/iio/temperature/mlx90635.c
-@@ -977,8 +977,7 @@ static int mlx90635_probe(struct i2c_client *client)
- 	ret = devm_add_action_or_reset(&client->dev, mlx90635_disable_regulator,
- 				       mlx90635);
- 	if (ret < 0)
--		return dev_err_probe(&client->dev, ret,
--				     "failed to setup regulator cleanup action\n");
-+		return ret;
- 
- 	ret = mlx90635_wakeup(mlx90635);
- 	if (ret < 0)
-@@ -986,8 +985,7 @@ static int mlx90635_probe(struct i2c_client *client)
- 
- 	ret = devm_add_action_or_reset(&client->dev, mlx90635_sleep, mlx90635);
- 	if (ret < 0)
--		return dev_err_probe(&client->dev, ret,
--				     "failed to setup low power cleanup\n");
-+		return ret;
- 
- 	ret = regmap_read(mlx90635->regmap_ee, MLX90635_EE_VERSION, &dsp_version);
- 	if (ret < 0)
-diff --git a/drivers/input/touchscreen/zforce_ts.c b/drivers/input/touchscreen/zforce_ts.c
-index df42fdf36ae3..4d000b5b3ae6 100644
---- a/drivers/input/touchscreen/zforce_ts.c
-+++ b/drivers/input/touchscreen/zforce_ts.c
-@@ -739,8 +739,7 @@ static int zforce_probe(struct i2c_client *client)
- 
- 	error = devm_add_action_or_reset(&client->dev, zforce_reset, ts);
- 	if (error)
--		return dev_err_probe(&client->dev, error,
--				     "failed to register reset action\n");
-+		return error;
- 
- 	snprintf(ts->phys, sizeof(ts->phys),
- 		 "%s/input0", dev_name(&client->dev));
-diff --git a/drivers/mmc/host/litex_mmc.c b/drivers/mmc/host/litex_mmc.c
-index b338ccfa8f33..08764cb8aa3d 100644
---- a/drivers/mmc/host/litex_mmc.c
-+++ b/drivers/mmc/host/litex_mmc.c
-@@ -531,8 +531,7 @@ static int litex_mmc_probe(struct platform_device *pdev)
- 
- 	ret = devm_add_action_or_reset(dev, litex_mmc_free_host_wrapper, mmc);
- 	if (ret)
--		return dev_err_probe(dev, ret,
--				     "Can't register mmc_free_host action\n");
-+		return ret;
- 
- 	host = mmc_priv(mmc);
- 	host->mmc = mmc;
-diff --git a/drivers/net/ethernet/freescale/enetc/enetc4_pf.c b/drivers/net/ethernet/freescale/enetc/enetc4_pf.c
-index b3dc1afeefd1..38fb81db48c2 100644
---- a/drivers/net/ethernet/freescale/enetc/enetc4_pf.c
-+++ b/drivers/net/ethernet/freescale/enetc/enetc4_pf.c
-@@ -1016,8 +1016,7 @@ static int enetc4_pf_probe(struct pci_dev *pdev,
- 
- 	err = devm_add_action_or_reset(dev, enetc4_pci_remove, pdev);
- 	if (err)
--		return dev_err_probe(dev, err,
--				     "Add enetc4_pci_remove() action failed\n");
-+		return err;
- 
- 	/* si is the private data. */
- 	si = pci_get_drvdata(pdev);
-diff --git a/drivers/phy/samsung/phy-exynos5-usbdrd.c b/drivers/phy/samsung/phy-exynos5-usbdrd.c
-index 917a76d584f0..28ba11e42823 100644
---- a/drivers/phy/samsung/phy-exynos5-usbdrd.c
-+++ b/drivers/phy/samsung/phy-exynos5-usbdrd.c
-@@ -1859,8 +1859,7 @@ static int exynos5_usbdrd_setup_notifiers(struct exynos5_usbdrd_phy *phy_drd)
- 					       exynos5_usbdrd_orien_switch_unregister,
- 					       phy_drd);
- 		if (ret)
--			return dev_err_probe(phy_drd->dev, ret,
--					     "Failed to register TypeC orientation devm action\n");
-+			return ret;
- 	}
- 
- 	return 0;
-diff --git a/drivers/power/supply/mt6370-charger.c b/drivers/power/supply/mt6370-charger.c
-index 98579998b300..29510af4e595 100644
---- a/drivers/power/supply/mt6370-charger.c
-+++ b/drivers/power/supply/mt6370-charger.c
-@@ -898,7 +898,7 @@ static int mt6370_chg_probe(struct platform_device *pdev)
- 	ret = devm_add_action_or_reset(dev, mt6370_chg_destroy_attach_lock,
- 				       &priv->attach_lock);
- 	if (ret)
--		return dev_err_probe(dev, ret, "Failed to init attach lock\n");
-+		return ret;
- 
- 	priv->attach = MT6370_ATTACH_STAT_DETACH;
- 
-@@ -909,7 +909,7 @@ static int mt6370_chg_probe(struct platform_device *pdev)
- 
- 	ret = devm_add_action_or_reset(dev, mt6370_chg_destroy_wq, priv->wq);
- 	if (ret)
--		return dev_err_probe(dev, ret, "Failed to init wq\n");
-+		return ret;
- 
- 	ret = devm_work_autocancel(dev, &priv->bc12_work, mt6370_chg_bc12_work_func);
- 	if (ret)
-diff --git a/drivers/power/supply/rt9467-charger.c b/drivers/power/supply/rt9467-charger.c
-index e9aba9ad393c..e2ff9c4609ef 100644
---- a/drivers/power/supply/rt9467-charger.c
-+++ b/drivers/power/supply/rt9467-charger.c
-@@ -1218,25 +1218,25 @@ static int rt9467_charger_probe(struct i2c_client *i2c)
- 	ret = devm_add_action_or_reset(dev, rt9467_chg_destroy_adc_lock,
- 				       &data->adc_lock);
- 	if (ret)
--		return dev_err_probe(dev, ret, "Failed to init ADC lock\n");
-+		return ret;
- 
- 	mutex_init(&data->attach_lock);
- 	ret = devm_add_action_or_reset(dev, rt9467_chg_destroy_attach_lock,
- 				       &data->attach_lock);
- 	if (ret)
--		return dev_err_probe(dev, ret, "Failed to init attach lock\n");
-+		return ret;
- 
- 	mutex_init(&data->ichg_ieoc_lock);
- 	ret = devm_add_action_or_reset(dev, rt9467_chg_destroy_ichg_ieoc_lock,
- 				       &data->ichg_ieoc_lock);
- 	if (ret)
--		return dev_err_probe(dev, ret, "Failed to init ICHG/IEOC lock\n");
-+		return ret;
- 
- 	init_completion(&data->aicl_done);
- 	ret = devm_add_action_or_reset(dev, rt9467_chg_complete_aicl_done,
- 				       &data->aicl_done);
- 	if (ret)
--		return dev_err_probe(dev, ret, "Failed to init AICL done completion\n");
-+		return ret;
- 
- 	ret = rt9467_do_charger_init(data);
- 	if (ret)
-diff --git a/drivers/pwm/pwm-meson.c b/drivers/pwm/pwm-meson.c
-index 8c6bf3d49753..e90d37d4f956 100644
---- a/drivers/pwm/pwm-meson.c
-+++ b/drivers/pwm/pwm-meson.c
-@@ -520,8 +520,7 @@ static int meson_pwm_init_channels_s4(struct pwm_chip *chip)
- 		ret = devm_add_action_or_reset(dev, meson_pwm_s4_put_clk,
- 					       meson->channels[i].clk);
- 		if (ret)
--			return dev_err_probe(dev, ret,
--					     "Failed to add clk_put action\n");
-+			return ret;
- 	}
- 
- 	return 0;
-diff --git a/drivers/spi/spi-nxp-fspi.c b/drivers/spi/spi-nxp-fspi.c
-index e63c77e41823..1bdc8a51befb 100644
---- a/drivers/spi/spi-nxp-fspi.c
-+++ b/drivers/spi/spi-nxp-fspi.c
-@@ -1283,7 +1283,7 @@ static int nxp_fspi_probe(struct platform_device *pdev)
- 
- 	ret = devm_add_action_or_reset(dev, nxp_fspi_cleanup, f);
- 	if (ret)
--		return dev_err_probe(dev, ret, "Failed to register nxp_fspi_cleanup\n");
-+		return ret;
- 
- 	return devm_spi_register_controller(&pdev->dev, ctlr);
- }
-diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-index 50adfb8b335b..3be165080a15 100644
---- a/drivers/ufs/core/ufshcd.c
-+++ b/drivers/ufs/core/ufshcd.c
-@@ -10476,8 +10476,7 @@ int ufshcd_alloc_host(struct device *dev, struct ufs_hba **hba_handle)
- 	err = devm_add_action_or_reset(dev, ufshcd_devres_release,
- 				       host);
- 	if (err)
--		return dev_err_probe(dev, err,
--				     "failed to add ufshcd dealloc action\n");
-+		return err;
- 
- 	host->nr_maps = HCTX_TYPE_POLL + 1;
- 	hba = shost_priv(host);
-diff --git a/drivers/usb/misc/qcom_eud.c b/drivers/usb/misc/qcom_eud.c
-index 83079c414b4f..67832790acad 100644
---- a/drivers/usb/misc/qcom_eud.c
-+++ b/drivers/usb/misc/qcom_eud.c
-@@ -193,8 +193,7 @@ static int eud_probe(struct platform_device *pdev)
- 
- 	ret = devm_add_action_or_reset(chip->dev, eud_role_switch_release, chip);
- 	if (ret)
--		return dev_err_probe(chip->dev, ret,
--				"failed to add role switch release action\n");
-+		return ret;
- 
- 	chip->base = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(chip->base))
-diff --git a/sound/soc/sof/imx/imx-common.c b/sound/soc/sof/imx/imx-common.c
-index 62bf707aa909..0ea232a38533 100644
---- a/sound/soc/sof/imx/imx-common.c
-+++ b/sound/soc/sof/imx/imx-common.c
-@@ -404,7 +404,7 @@ static int imx_probe(struct snd_sof_dev *sdev)
- 				       imx_unregister_action,
- 				       sdev);
- 	if (ret)
--		return dev_err_probe(sdev->dev, ret, "failed to add devm action\n");
-+		return ret;
- 
- 	common->ipc_handle = dev_get_drvdata(&common->ipc_dev->dev);
- 	if (!common->ipc_handle)
--- 
-2.39.5
+> This was tested on tidss.
+> =
 
+> Let me know what you think,
+> Maxime
+> =
+
+> Signed-off-by: Maxime Ripard <mripard@kernel.org>
+
+<replying again to see if my smtp issues are now solved...>
+
+Other than the pre-existing ingenic private state issue that
+Dmitry spotted I didn't see anything obviously wrong.
+
+So apart from that the series is
+Reviewed-by: Ville Syrj=E4l=E4 <ville.syrjala@linux.intel.com>
+
+> ---
+> Changes in v2:
+> - Dropped the first and second patches
+> - Reworked the recipient list to be nicer with SMTPs
+> - Link to v1: https://lore.kernel.org/r/20250825-drm-no-more-existing-sta=
+te-v1-0-f08ccd9f85c9@kernel.org
+> =
+
+> ---
+> Maxime Ripard (37):
+>       drm/atomic: Convert drm_atomic_get_connector_state() to use new con=
+nector state
+>       drm/atomic: Remove unused drm_atomic_get_existing_connector_state()
+>       drm/atomic: Document __drm_connectors_state state pointer
+>       drm/atomic: Convert __drm_atomic_get_current_plane_state() to moder=
+n accessor
+>       drm/atomic: Convert drm_atomic_get_plane_state() to use new plane s=
+tate
+>       drm/vkms: Convert vkms_crtc_atomic_check() to use new plane state
+>       drm/tilcdc: crtc: Use drm_atomic_helper_check_crtc_primary_plane()
+>       drm/atomic: Remove unused drm_atomic_get_existing_plane_state()
+>       drm/atomic: Document __drm_planes_state state pointer
+>       drm/atomic: Convert drm_atomic_get_crtc_state() to use new connecto=
+r state
+>       drm/ingenic: ipu: Switch to drm_atomic_get_new_crtc_state()
+>       drm/arm/malidp: Switch to drm_atomic_get_new_crtc_state()
+>       drm/armada: Switch to drm_atomic_get_new_crtc_state()
+>       drm/atmel-hlcdc: Switch to drm_atomic_get_new_crtc_state()
+>       drm/exynos: Switch to drm_atomic_get_new_crtc_state()
+>       drm/imx-dc: Switch to drm_atomic_get_new_crtc_state()
+>       drm/imx-dcss: Switch to drm_atomic_get_new_crtc_state()
+>       drm/imx-ipuv3: Switch to drm_atomic_get_new_crtc_state()
+>       drm/ingenic: Switch to drm_atomic_get_new_crtc_state()
+>       drm/kmb: Switch to drm_atomic_get_new_crtc_state()
+>       drm/logicvc: Switch to drm_atomic_get_new_crtc_state()
+>       drm/loongson: Switch to drm_atomic_get_new_crtc_state()
+>       drm/mediatek: Switch to drm_atomic_get_new_crtc_state()
+>       drm/msm/mdp5: Switch to drm_atomic_get_new_crtc_state()
+>       drm/omap: Switch to drm_atomic_get_new_crtc_state()
+>       drm/rockchip: Switch to drm_atomic_get_new_crtc_state()
+>       drm/sun4i: Switch to drm_atomic_get_new_crtc_state()
+>       drm/tegra: Switch to drm_atomic_get_new_crtc_state()
+>       drm/tilcdc: Switch to drm_atomic_get_new_crtc_state()
+>       drm/vboxvideo: Switch to drm_atomic_get_new_crtc_state()
+>       drm/vc4: Switch to drm_atomic_get_new_crtc_state()
+>       drm/atomic: Switch to drm_atomic_get_new_crtc_state()
+>       drm/framebuffer: Switch to drm_atomic_get_new_crtc_state()
+>       drm/atomic: Remove unused drm_atomic_get_existing_crtc_state()
+>       drm/atomic: Document __drm_crtcs_state state pointer
+>       drm/atomic: Convert drm_atomic_get_private_obj_state() to use new p=
+lane state
+>       drm/atomic: Document __drm_private_objs_state state pointer
+> =
+
+>  drivers/gpu/drm/arm/malidp_planes.c             |   2 +-
+>  drivers/gpu/drm/armada/armada_plane.c           |   3 +-
+>  drivers/gpu/drm/atmel-hlcdc/atmel_hlcdc_plane.c |   2 +-
+>  drivers/gpu/drm/drm_atomic.c                    |  21 ++--
+>  drivers/gpu/drm/drm_framebuffer.c               |   2 +-
+>  drivers/gpu/drm/exynos/exynos_drm_plane.c       |   2 +-
+>  drivers/gpu/drm/imx/dc/dc-plane.c               |   2 +-
+>  drivers/gpu/drm/imx/dcss/dcss-plane.c           |   4 +-
+>  drivers/gpu/drm/imx/ipuv3/ipuv3-plane.c         |   3 +-
+>  drivers/gpu/drm/ingenic/ingenic-drm-drv.c       |   3 +-
+>  drivers/gpu/drm/ingenic/ingenic-ipu.c           |   4 +-
+>  drivers/gpu/drm/kmb/kmb_plane.c                 |   3 +-
+>  drivers/gpu/drm/logicvc/logicvc_layer.c         |   4 +-
+>  drivers/gpu/drm/loongson/lsdc_plane.c           |   2 +-
+>  drivers/gpu/drm/mediatek/mtk_plane.c            |   3 +-
+>  drivers/gpu/drm/msm/disp/mdp5/mdp5_plane.c      |   7 +-
+>  drivers/gpu/drm/omapdrm/omap_plane.c            |   2 +-
+>  drivers/gpu/drm/rockchip/rockchip_drm_vop.c     |   6 +-
+>  drivers/gpu/drm/rockchip/rockchip_drm_vop2.c    |   2 +-
+>  drivers/gpu/drm/sun4i/sun8i_ui_layer.c          |   3 +-
+>  drivers/gpu/drm/sun4i/sun8i_vi_layer.c          |   3 +-
+>  drivers/gpu/drm/tegra/dc.c                      |   2 +-
+>  drivers/gpu/drm/tilcdc/tilcdc_crtc.c            |   9 +-
+>  drivers/gpu/drm/tilcdc/tilcdc_plane.c           |   3 +-
+>  drivers/gpu/drm/vboxvideo/vbox_mode.c           |   8 +-
+>  drivers/gpu/drm/vc4/vc4_plane.c                 |   6 +-
+>  drivers/gpu/drm/vkms/vkms_crtc.c                |   4 +-
+>  include/drm/drm_atomic.h                        | 144 ++++++++++++------=
+------
+>  28 files changed, 124 insertions(+), 135 deletions(-)
+> ---
+> base-commit: 7fa4d8dc380fbd81a9d702a855c50690c9c6442c
+> change-id: 20250825-drm-no-more-existing-state-9b3252c1a33b
+> =
+
+> Best regards,
+> -- =
+
+> Maxime Ripard <mripard@kernel.org>
+
+-- =
+
+Ville Syrj=E4l=E4
+Intel
 
 _______________________________________________
 Linux-rockchip mailing list
