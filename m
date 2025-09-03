@@ -4,74 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1745DCA1015
-	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Sep 2025 02:10:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4757BCA1015
+	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Sep 2025 02:10:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ytiGIoFYH1yY81HrM3QDOaASGJiRZNQZuRP9w5HlTuc=; b=0/hMbC5/R57rDK
-	tRbONtwR56k9tw70l2mbsQlUNSmdkKlpms+SlLF6MIpX+7pdR7qy5FLNqvvthSWt9mfEKynNWmQhG
-	jsTCSWbA9XWkPl2wYWgzRibKSwiej/kNecb7UakyYdOpZ9Affw2alvBVuwOONaDbykXDKjc7GtxLI
-	YtA4xcCY6aIFt2TzSn0qzXl2WD2IHYFjTiM/l94jacRT0chLOvntXBrdwvE4tNv03WrglKt+OslEB
-	B0GSNvniaIdaw/QCwgPzXnxskpoymOC4NsGDs0VwFqldVCoD3F9cFbNctojEPp9Cfkg1k4EK0A4oZ
-	XsDxsJM8D1UFZZs7JkXw==;
+	List-Owner; bh=97eYquY6oGWUYv8lNlMVE9t0YHn26qqBfIJd58W9x1g=; b=tTSSWdrwb9jLJS
+	MAxjIDoLbiReXQUVPUCGYreBkhUkuxAmGKzqLkzwkhvaSzzjZgtg8dbpMSrj8MM+NrXjy47rExCI7
+	vJDJQJ3PlKPc4kdgVdiT9ANudvDBNCD0ZWpe+avwl0bduDHNFgrPJO6Mdw7X5v1kCRxzONGBJuivY
+	zw6iOxiX9oYim+cbNGFu2pYWIc9FUXujUBkZV5lrPsQKrWMmyzzcSrfbmpvPE2BU+y0wOnOXrjR38
+	Rka66udxyNTvTq1R+evYGzVt5H/qHy6HFk7gUIocryQ+9wgVu7lFM+nzSU5+KOSU+kDZ4YmxK6Ub7
+	aN5ae8FC2ZoFUFbHPi4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utzQU-00000008E1X-1IMb;
-	Thu, 04 Sep 2025 02:10:14 +0000
-Received: from aposti.net ([185.119.170.32])
+	id 1utzQz-00000008F3x-00vr;
+	Thu, 04 Sep 2025 02:10:45 +0000
+Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utt25-00000007RW4-1y71;
-	Wed, 03 Sep 2025 19:20:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=crapouillou.net;
-	s=mail; t=1756927235;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=c+ZgGU/Y7ymCGJS4a8iBSCEwRU68y0Cdd3gwtYGpdv4=;
-	b=Z0xvlH/ECfsC59swm4ATc7moQPplDnhXIzmBF4X35r6pJmnBDDeoU1Ie5Ab1yxhe+1ln8W
-	GcUQb2ZLGdW9NnPudS1kvJ3oXxwi39axE8bJQYRDLCQpq4QuYcwKIMP6MOFv74jzcnlQqN
-	tMc5uO4lOOAAr/7RBg88uyXzuq33+zQ=
-Message-ID: <f19aa842d210bf4cd3d7abf03ea7323f9e52df75.camel@crapouillou.net>
-Subject: Re: [PATCH 024/114] clk: ingenic: x1000-cgu: convert from
- round_rate() to determine_rate()
-From: Paul Cercueil <paul@crapouillou.net>
-To: bmasney@redhat.com, Michael Turquette <mturquette@baylibre.com>, Stephen
- Boyd <sboyd@kernel.org>
-Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	arm-scmi@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	sophgo@lists.linux.dev, linux-mips@vger.kernel.org, imx@lists.linux.dev, 
-	linux-riscv@lists.infradead.org, spacemit@lists.linux.dev, 
-	linux-stm32@st-md-mailman.stormreply.com, patches@opensource.cirrus.com, 
-	linux-actions@lists.infradead.org, asahi@lists.linux.dev, 
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
-	linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-samsung-soc@vger.kernel.org, soc@lists.linux.dev
-Date: Wed, 03 Sep 2025 21:20:32 +0200
-In-Reply-To: <20250811-clk-for-stephen-round-rate-v1-24-b3bf97b038dc@redhat.com>
-References: <20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com>
-	 <20250811-clk-for-stephen-round-rate-v1-24-b3bf97b038dc@redhat.com>
-Autocrypt: addr=paul@crapouillou.net; prefer-encrypt=mutual;
- keydata=mQENBF0KhcEBCADkfmrzdTOp/gFOMQX0QwKE2WgeCJiHPWkpEuPH81/HB2dpjPZNW03ZM
- LQfECbbaEkdbN4YnPfXgcc1uBe5mwOAPV1MBlaZcEt4M67iYQwSNrP7maPS3IaQJ18ES8JJ5Uf5Uz
- FZaUawgH+oipYGW+v31cX6L3k+dGsPRM0Pyo0sQt52fsopNPZ9iag0iY7dGNuKenaEqkYNjwEgTtN
- z8dt6s3hMpHIKZFL3OhAGi88wF/21isv0zkF4J0wlf9gYUTEEY3Eulx80PTVqGIcHZzfavlWIdzhe
- +rxHTDGVwseR2Y1WjgFGQ2F+vXetAB8NEeygXee+i9nY5qt9c07m8mzjABEBAAG0JFBhdWwgQ2VyY
- 3VlaWwgPHBhdWxAY3JhcG91aWxsb3UubmV0PokBTgQTAQoAOBYhBNdHYd8OeCBwpMuVxnPua9InSr
- 1BBQJdCoXBAhsDBQsJCAcCBhUKCQgLAgQWAgMBAh4BAheAAAoJEHPua9InSr1BgvIH/0kLyrI3V0f
- 33a6D3BJwc1grbygPVYGuC5l5eMnAI+rDmLR19E2yvibRpgUc87NmPEQPpbbtAZt8On/2WZoE5OIP
- dlId/AHNpdgAtGXo0ZX4LGeVPjxjdkbrKVHxbcdcnY+zzaFglpbVSvp76pxqgVg8PgxkAAeeJV+ET
- 4t0823Gz2HzCL/6JZhvKAEtHVulOWoBh368SYdolp1TSfORWmHzvQiCCCA+j0cMkYVGzIQzEQhX7U
- rf9N/nhU5/SGLFEi9DcBfXoGzhyQyLXflhJtKm3XGB1K/pPulbKaPcKAl6rIDWPuFpHkSbmZ9r4KF
- lBwgAhlGy6nqP7O3u7q23hRU=
+	id 1utubW-00000007cUs-0Qyz;
+	Wed, 03 Sep 2025 21:01:19 +0000
+Received: by mail-pf1-x435.google.com with SMTP id d2e1a72fcca58-77250e45d36so337414b3a.0;
+        Wed, 03 Sep 2025 14:01:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1756933277; x=1757538077; darn=lists.infradead.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=t/ulgWiFwR6WnPcNdoSAtJQKq5PncNuo7vNG7WHcRgo=;
+        b=fC8NfEVQYXGKC0EUEBHn4OsTez3bXrhkppO5RhAWUu7SiwcIyt73pIAcXkVmECQBok
+         UsXtavH/i/Vq9mYCnPE6srmCHnPolre3rL4WmbA2X8HyWbzQqrypbRyIBqfVPdFp3CIU
+         /5Vqti8stAIUSFpWL65XwOxOUJ8HyKTncsODUQ5ZiysG/TPsTYJaD5XU5gDJb3Js57xx
+         FjN5cmrWtrMDlnOWn3/f5Lzy17QgS2LExSfrzKFvI5SVjFoONi+6fEBvrc319dmAawxX
+         6+/++unmu9zN9s6oepMZH0UhRBZa6Ik4xNGfk+tZL0BWC05x05GIHIyPff07AR6K0wK5
+         jVwA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1756933277; x=1757538077;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=t/ulgWiFwR6WnPcNdoSAtJQKq5PncNuo7vNG7WHcRgo=;
+        b=R2ncgn+QM11VQBVfMf+3/wHkeAms90m4ykSmJTNEO+q84Yz8lTsxpcrKsjEDT53owu
+         CpxCekR/Qm8I83QRnmZTF2W4NCp/Q352ej9567jOA+aFyWTzqtgtma/1SiQbKWhFpna2
+         nw+MtnWf2p4R9qRddflI2zwy/Sp3M8L+zTwrbmY5FdB++XGo1YOqfGkoZNdlxe2Zw/GF
+         M7XttAxtThDdQccO9WqzzHs5BJ+8nlGNVerSej6fcrgZ5eDqoxkVn3/Gjhe1bAZZBy6G
+         9ZwB2Pf2G9ZK4gFzXUyuepbhnwgb6nJsP4zTyDcP3LdXIHWBfScSjHleOVcFpfOynHmS
+         8mZA==
+X-Forwarded-Encrypted: i=1; AJvYcCWLWm6HW0286n3nvqAD/YVY1nrzM2fOIo0Txv+iltpjOYJu5HtT05L12xklbpmBoCbhp67/mQ0GeK4OtZ6lm2k=@lists.infradead.org, AJvYcCXN5JamSa4rekGnDw6tmESia6MRLgyUz3kWyCI9sDT/UBdNe+RO/1xTGC7xo1MTSrVM9qAWyzxtkafo7SaqTTYj@lists.infradead.org
+X-Gm-Message-State: AOJu0YycwsExmlKVbg9XQvaTNgV4Ni72IaGXH8iO+0peTBW+egW8buhb
+	E0ChQxHuHLdN4LsW4b+61+JmA9Jqol6RPMWqce9vRz/nmCT7gk2Cf8pT
+X-Gm-Gg: ASbGncvujHIdUvxZuulktPQ7T6EOo3ZBGkebF0Rr+9KAif4KUFASM9mizCqyZJ9E9lA
+	f0uwSRoPOB3EeodR9C42TMVnqndrX4SNbza2qUirwGBGlHQWAE+jU/O0CHrKtyxh5cARKPMexGc
+	f7rP30XSARvGWraHvwdpXO8a+UDu/OceF+QcjyQOE83bUzhYAo+0V675+fAvVnsw3Fl+BoTAQft
+	dIQB8qATJVpzZa1/edsWWzJmGN4vp9zos5u0VTQyhCTswzbNhgFrzacouQafJaBH2Hq6NSe27AB
+	BuxyTJil1L7Mma0GMs9tdFlnFhdhWJ/nMZRoBNFAYaEEhhEdOpB9Q7kfaqciWsHN7NNU++B4MV2
+	2aMGJjSdU2dUO7ALD/gLjPH9YY+ljQnMb6EMvel0vyIw=
+X-Google-Smtp-Source: AGHT+IFmpCYt7p1ydoAkbSRULtTV0VpiAIvlL44IcB4e4sl/UMWQQ2dm1zJl84YOPMOhIdmIlupGmA==
+X-Received: by 2002:a05:6a20:5493:b0:243:78a:8273 with SMTP id adf61e73a8af0-243d6f8b258mr23472656637.57.1756933277061;
+        Wed, 03 Sep 2025 14:01:17 -0700 (PDT)
+Received: from localhost ([216.228.127.131])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-b4cd366a909sm14914404a12.52.2025.09.03.14.01.15
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 03 Sep 2025 14:01:16 -0700 (PDT)
+Date: Wed, 3 Sep 2025 17:01:14 -0400
+From: Yury Norov <yury.norov@gmail.com>
+To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Andy Yan <andyshrk@163.com>,
+	mripard@kernel.org, neil.armstrong@linaro.org,
+	andrzej.hajda@intel.com, jernej.skrabec@gmail.com, jonas@kwiboo.se,
+	Laurent.pinchart@ideasonboard.com,
+	maarten.lankhorst@linux.intel.com, rfoss@kernel.org,
+	simona@ffwll.ch, tzimmermann@suse.de, knaerzche@gmail.com,
+	devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	Andy Yan <andy.yan@rock-chips.com>
+Subject: Re: [PATCH v7 1/2] drm/rockchip: inno-hdmi: Convert to drm bridge
+Message-ID: <aLismmDJfusG0x0Z@yury>
+References: <20250903110825.776807-1-andyshrk@163.com>
+ <20250903110825.776807-2-andyshrk@163.com>
+ <5255838.1BCLMh4Saa@phil>
+ <4ox7yh3i47odinoaalzjz7d3gvx36bxbaspo6qfvvvl3jqhdiv@24ownjco3ud2>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <4ox7yh3i47odinoaalzjz7d3gvx36bxbaspo6qfvvvl3jqhdiv@24ownjco3ud2>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250903_122037_672439_B9B8E006 
-X-CRM114-Status: GOOD (  13.07  )
+X-CRM114-CacheID: sfid-20250903_140118_145026_6ACDE329 
+X-CRM114-Status: GOOD (  23.80  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,45 +104,69 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-TGUgbHVuZGkgMTEgYW/Du3QgMjAyNSDDoCAxMToxOCAtMDQwMCwgQnJpYW4gTWFzbmV5IHZpYSBC
-NCBSZWxheSBhCsOpY3JpdMKgOgo+IEZyb206IEJyaWFuIE1hc25leSA8Ym1hc25leUByZWRoYXQu
-Y29tPgo+IAo+IFRoZSByb3VuZF9yYXRlKCkgY2xrIG9wcyBpcyBkZXByZWNhdGVkLCBzbyBtaWdy
-YXRlIHRoaXMgZHJpdmVyIGZyb20KPiByb3VuZF9yYXRlKCkgdG8gZGV0ZXJtaW5lX3JhdGUoKSB1
-c2luZyB0aGUgQ29jY2luZWxsZSBzZW1hbnRpYyBwYXRjaAo+IG9uIHRoZSBjb3ZlciBsZXR0ZXIg
-b2YgdGhpcyBzZXJpZXMuCj4gCj4gU2lnbmVkLW9mZi1ieTogQnJpYW4gTWFzbmV5IDxibWFzbmV5
-QHJlZGhhdC5jb20+CgpSZXZpZXdlZC1ieTogUGF1bCBDZXJjdWVpbCA8cGF1bEBjcmFwb3VpbGxv
-dS5uZXQ+CgpDaGVlcnMsCi1QYXVsCgo+IC0tLQo+IMKgZHJpdmVycy9jbGsvaW5nZW5pYy94MTAw
-MC1jZ3UuYyB8IDE5ICsrKysrKysrKystLS0tLS0tLS0KPiDCoDEgZmlsZSBjaGFuZ2VkLCAxMCBp
-bnNlcnRpb25zKCspLCA5IGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2Ns
-ay9pbmdlbmljL3gxMDAwLWNndS5jCj4gYi9kcml2ZXJzL2Nsay9pbmdlbmljL3gxMDAwLWNndS5j
-Cj4gaW5kZXgKPiBmZWIwM2VlZDRmZThjOGY2MTdlZjk4MjU0YTUyMmQ3MmQ0NTJhYzE3Li5kODA4
-ODZjYWYzOTMzMDlhMGM5MDhjMDZmYjUKPiBhYThiNTlhY2VkMTI3IDEwMDY0NAo+IC0tLSBhL2Ry
-aXZlcnMvY2xrL2luZ2VuaWMveDEwMDAtY2d1LmMKPiArKysgYi9kcml2ZXJzL2Nsay9pbmdlbmlj
-L3gxMDAwLWNndS5jCj4gQEAgLTg0LDE2ICs4NCwxNyBAQCBzdGF0aWMgdW5zaWduZWQgbG9uZwo+
-IHgxMDAwX290Z19waHlfcmVjYWxjX3JhdGUoc3RydWN0IGNsa19odyAqaHcsCj4gwqAJcmV0dXJu
-IHBhcmVudF9yYXRlOwo+IMKgfQo+IMKgCj4gLXN0YXRpYyBsb25nIHgxMDAwX290Z19waHlfcm91
-bmRfcmF0ZShzdHJ1Y3QgY2xrX2h3ICpodywgdW5zaWduZWQKPiBsb25nIHJlcV9yYXRlLAo+IC0J
-CQkJwqDCoMKgwqDCoCB1bnNpZ25lZCBsb25nICpwYXJlbnRfcmF0ZSkKPiArc3RhdGljIGludCB4
-MTAwMF9vdGdfcGh5X2RldGVybWluZV9yYXRlKHN0cnVjdCBjbGtfaHcgKmh3LAo+ICsJCQkJCXN0
-cnVjdCBjbGtfcmF0ZV9yZXF1ZXN0Cj4gKnJlcSkKPiDCoHsKPiAtCWlmIChyZXFfcmF0ZSA8IDE4
-MDAwMDAwKQo+IC0JCXJldHVybiAxMjAwMDAwMDsKPiAtCj4gLQlpZiAocmVxX3JhdGUgPCAzNjAw
-MDAwMCkKPiAtCQlyZXR1cm4gMjQwMDAwMDA7Cj4gKwlpZiAocmVxLT5yYXRlIDwgMTgwMDAwMDAp
-Cj4gKwkJcmVxLT5yYXRlID0gMTIwMDAwMDA7Cj4gKwllbHNlIGlmIChyZXEtPnJhdGUgPCAzNjAw
-MDAwMCkKPiArCQlyZXEtPnJhdGUgPSAyNDAwMDAwMDsKPiArCWVsc2UKPiArCQlyZXEtPnJhdGUg
-PSA0ODAwMDAwMDsKPiDCoAo+IC0JcmV0dXJuIDQ4MDAwMDAwOwo+ICsJcmV0dXJuIDA7Cj4gwqB9
-Cj4gwqAKPiDCoHN0YXRpYyBpbnQgeDEwMDBfb3RnX3BoeV9zZXRfcmF0ZShzdHJ1Y3QgY2xrX2h3
-ICpodywgdW5zaWduZWQgbG9uZwo+IHJlcV9yYXRlLAo+IEBAIC0xNjEsNyArMTYyLDcgQEAgc3Rh
-dGljIGludCB4MTAwMF91c2JfcGh5X2lzX2VuYWJsZWQoc3RydWN0IGNsa19odwo+ICpodykKPiDC
-oAo+IMKgc3RhdGljIGNvbnN0IHN0cnVjdCBjbGtfb3BzIHgxMDAwX290Z19waHlfb3BzID0gewo+
-IMKgCS5yZWNhbGNfcmF0ZSA9IHgxMDAwX290Z19waHlfcmVjYWxjX3JhdGUsCj4gLQkucm91bmRf
-cmF0ZSA9IHgxMDAwX290Z19waHlfcm91bmRfcmF0ZSwKPiArCS5kZXRlcm1pbmVfcmF0ZSA9IHgx
-MDAwX290Z19waHlfZGV0ZXJtaW5lX3JhdGUsCj4gwqAJLnNldF9yYXRlID0geDEwMDBfb3RnX3Bo
-eV9zZXRfcmF0ZSwKPiDCoAo+IMKgCS5lbmFibGUJCT0geDEwMDBfdXNiX3BoeV9lbmFibGUsCgpf
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2Nr
-Y2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRw
-Oi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+On Wed, Sep 03, 2025 at 03:30:47PM +0300, Dmitry Baryshkov wrote:
+> On Wed, Sep 03, 2025 at 01:59:51PM +0200, Heiko Stuebner wrote:
+> > Hi Andy,
+> > =
+
+> > Am Mittwoch, 3. September 2025, 13:07:38 Mitteleurop=E4ische Sommerzeit=
+ schrieb Andy Yan:
+> > > From: Andy Yan <andy.yan@rock-chips.com>
+> > > =
+
+> > > Convert it to drm bridge driver, it will be convenient for us to
+> > > migrate the connector part to the display driver later.
+> > > =
+
+> > > Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+> > =
+
+> > more like a general remark, this essentially conflicts with the
+> > big hiword-cleanup [0] that was merged today, as the inno-hdmi driver
+> > "lost" its separate HIWORD_UPDATE macro in favor a nicer generic one.
+> > =
+
+> > I'm not sure what the best way to proceed is, apart from waiting for
+> > 6.18-rc1.
+> =
+
+> I'd say, the correct way to handle would have been to:
+> - merge only FIELD_PREP_WM16 addition into bitmap-for-next using
+>   immutable tag
+> - merge the tag + all other patches into subsystem trees. Otherwise
+>   that series can cause a lot of conflicts with all affected subsystems.
+> =
+
+> Yury, would it be possible to implement this plan instead of pulling
+> everything through your tree?
+
+Yeah, this is 100% technically correct way of moving things.
+
+The problem is that driver maintainers are usually not quick taking
+this type of changes. In my experience, if we merge #1 only, we'll
+end up with just another flavor of HIWORD_UPDATE(), maybe adopted
+by a couple of drivers.
+
+This is exactly opposite to the original goal of the series: nice and
+almost complete consolidation of scattered HIWORD_UPDATE() versions.
+
+So far, there's the only conflict with the others, and Andy said he's
+OK to hold his series.
+
+I would prefer to have all those patches in bitmap-for-next for a while.
+If there will be more conflicts, then yeah, I'll follow your route.
+Otherwise, let's keep things as they are, and encourage developers to
+test their patches against linux-next, as they normally should.
+
+Thanks,
+Yury
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
