@@ -4,63 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17929CA1012
-	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Sep 2025 21:32:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66D84CA1012
+	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Sep 2025 22:27:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=YeakmbGQJxybdfK4JZ1NF7/EaAGHNt7vFxTC92krNtI=; b=fujb7W61i/gri+
-	Z/Qx2+f+4fhGuA4q6iUlGA16DmUpBvsHDGIJCDH389PmoHKn3XdZdZMLfxgJ38YHKeDXI9k0jYmu5
-	GpdUeZTfB9KVptXAJkYRiuriYo1oBP8mXYDPklImUl8H7a4bWDH9odf2dCasxW8w1DsUphN1xZVMc
-	2qNVmkr/QwBhVo9/w6vRRtP46VlapZWK4zJ6z9SnaA51ZudsnAyONBgJJXitg2i5cYD8EmpvScJoE
-	RQyzElQVmNalgHx/GziQiUDv9L4E89PqvcRIz+qdSujJeMKuxLX7Yo5DhrL9G1rAcqkE/O4spIn/f
-	v1LETCTGXEgx+KhrU1Kg==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ZdfgtWWMBRVs0v6YHzK9a55bbZxLbDDe+SPb/v6GfYU=; b=yRgJVbJ94gLlxc
+	6Rs0E9Y+i/RBYR37vvkk9KHUguV9w+PiO3PQeDPqAAn0ctMvI4KIIHIKuwcD9Gm0GVQeyECXXocsO
+	B2T1nnPG2uQmwwx5JVWQiT1VmW3ScbDY02s6vpsjNsOTM06W4hd9PAcUKX+H2K4ZlReOCDgXSPV/B
+	RH5A9wWKJAef12km4b67KRxUhfKM/VyjgSMcQcPzTkcELOJoDajnsGrTKEzxLoxI+6YKBt4frkBjZ
+	RMd/wmsX15oqz/+bYkpPLju5WzQ/rjkhkMIlsf6esjJ5xG/LGGn+yhM31RN1B5pYgX8RrY1Tx1Hkh
+	WZiBSsqzEJ+aodGi3Tmg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utv5I-00000007h0N-11dJ;
-	Wed, 03 Sep 2025 21:32:04 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1utvx4-00000007nPx-1Y2a;
+	Wed, 03 Sep 2025 22:27:38 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utrO9-00000007CS8-0vXU;
-	Wed, 03 Sep 2025 17:35:18 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 6BFAA419FF;
-	Wed,  3 Sep 2025 17:35:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 19105C4CEE7;
-	Wed,  3 Sep 2025 17:35:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1756920916;
-	bh=q6ydgpRA1n1VIVTSnFUEGYa1rwgxWt3LP1v3p67itsg=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=sOZUP0mp3NJ6r81IFD9cb54V0EIXSHPX4quWZcx7vduX1mse2py9qfzIn+h5zuWlv
-	 IGIC8P0JLeQCX7+F9zxFxViT/V0bbbGHfszPFQCw3zic8XAUhHytPYFc0Fxn/E0xtL
-	 qep8q3Ow1ncZvuj/xkcI5usGLSfQF8fAyLDdHx6wdbfKmeXfcBPL2e3n71Gipez7HM
-	 LvU6ILGBUSCQd53RY2UApho63BbVysdM2MY263lNWtLOgxkLLk/DcTYCNJx2DeT9Bh
-	 X9nDUEjFog3CwA+rj3KD4PuZBQM9JxKXdruBrmZ6kg59MR2SetrlWmH39myq1Zqtjh
-	 A1fPV98oJ59HA==
-Date: Wed, 3 Sep 2025 12:35:14 -0500
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Hans Zhang <18255117159@163.com>
-Cc: lpieralisi@kernel.org, kwilczynski@kernel.org, bhelgaas@google.com,
-	heiko@sntech.de, mani@kernel.org, yue.wang@amlogic.com,
-	pali@kernel.org, neil.armstrong@linaro.org, robh@kernel.org,
-	jingoohan1@gmail.com, khilman@baylibre.com, jbrunet@baylibre.com,
-	martin.blumenstingl@googlemail.com, linux-pci@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-amlogic@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	Niklas Cassel <cassel@kernel.org>
-Subject: Re: [PATCH v5 1/2] PCI: Configure root port MPS during host probing
-Message-ID: <20250903173514.GA1207260@bhelgaas>
+	id 1utsa2-00000007M29-105G;
+	Wed, 03 Sep 2025 18:51:39 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1756925496;
+	bh=W2yIZ1r7+6qnWApJGxqlyhaa17wQLXOaVNluzcmFVhE=;
+	h=From:Subject:Date:To:Cc:From;
+	b=WplZt4+NdVhr6ry32gY6C8TZaOlkCqq6nL4/e3+L7VqxmBwViO7tweg/69LCu9OOS
+	 1ae1uSmiIae+j5GtQWNWwE6IFUtbEBpV0KYgoHPJ6pWY4MILoDyM8YlFsV4vwy1Zrn
+	 i2qGtutH52IZe9PBTDC0OYDNt3OjJUDERy/68Ir+rc9vrLOc1y8Jd9UhYlBW/y++2x
+	 9ed33NPS4FCFpx8a+Rsgr8cincngotXD6u7bpT2R2E6J2JTw8eYdTK4w88cAHjqTms
+	 ZKzlmtVLctGbsWbpOXdVxYBrmpSfqF96JiwjmDM3/xM0ToF9HGito1+vyuLmaSxOPO
+	 Y2s08niMaO5Qg==
+Received: from localhost (unknown [82.79.138.60])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with UTF8SMTPSA id CE98D17E0199;
+	Wed,  3 Sep 2025 20:51:35 +0200 (CEST)
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Subject: [PATCH v4 0/6] Add HDMI CEC support to Rockchip RK3588/RK3576 SoCs
+Date: Wed, 03 Sep 2025 21:50:58 +0300
+Message-Id: <20250903-rk3588-hdmi-cec-v4-0-fa25163c4b08@collabora.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <76cdf841-2c72-4faa-b2b9-7b2098337de0@163.com>
+X-B4-Tracking: v=1; b=H4sIABKOuGgC/23NTQrCMBAF4KuUrI2kk4SmrryHuMivDbaNJBKU0
+ rubFkSxLmbxHrxvJpRs9DahQzWhaLNPPowlsF2FdCfHi8XelIyAACcNoTheKRcCd2bwWFtdTgr
+ HgRrHBCqrW7TOP1bxdC658+ke4nN9kOulfVtsY+UaEwzKCGNFQ4g2Rx36XqoQ5V6HAS1ehi+jJ
+ lsDiuFKxZSlTOn6n0E/hgC+NWgxWk6BOQXAW/g15nl+AS6G7G06AQAA
+X-Change-ID: 20250703-rk3588-hdmi-cec-cea8f523df48
+To: Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>
+Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, Algea Cao <algea.cao@rock-chips.com>, 
+ Derek Foreman <derek.foreman@collabora.com>, 
+ Daniel Stone <daniels@collabora.com>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250903_103517_305947_E0E9595D 
-X-CRM114-Status: GOOD (  30.86  )
+X-CRM114-CacheID: sfid-20250903_115138_430579_E686046E 
+X-CRM114-Status: GOOD (  16.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,86 +90,83 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 04, 2025 at 01:11:22AM +0800, Hans Zhang wrote:
-> On 2025/9/3 01:48, Bjorn Helgaas wrote:
-> > On Fri, Jun 20, 2025 at 11:55:06PM +0800, Hans Zhang wrote:
-> > > Current PCIe initialization logic may leave root ports operating with
-> > > non-optimal Maximum Payload Size (MPS) settings. While downstream device
-> > > configuration is handled during bus enumeration, root port MPS values
-> > > inherited from firmware or hardware defaults ...
-> > 
-> > Apparently Root Port MPS configuration is different from that for
-> > downstream devices?
+The first patch in the series implements the CEC capability of the
+Synopsys DesignWare HDMI QP TX controller found in RK3588 & RK3576 Socs.
+This is based on the downstream code, but rewritten on top of the CEC
+helpers added recently to the DRM HDMI connector framework.
 
-> Yes, at the very beginning, the situation I tested was like the previous
-> reply:
-> https://lore.kernel.org/linux-pci/bb40385c-6839-484c-90b2-d6c7ecb95ba9@163.com/
+The second patch is needed for RK3576 in order to fixup the timer base
+setup according to the actual reference clock rate, which differs
+slightly from RK3588.
 
-I meant that this commit log suggests the *code path* is different for
-Root Ports than other devices.
+The following three patches setup platform data with the new information
+expected by the HDMI QP transmitter library, while improving the error
+handling in the probe path.
 
-> > > might not utilize the full
-> > > capabilities supported by the controller hardware. This can result in
-> > > suboptimal data transfer efficiency across the PCIe hierarchy.
-> > > 
-> > > During host controller probing phase, when PCIe bus tuning is enabled,
-> > > the implementation now configures root port MPS settings to their
-> > > hardware-supported maximum values. Specifically, when configuring the MPS
-> > > for a PCIe device, if the device is a root port and the bus tuning is not
-> > > disabled (PCIE_BUS_TUNE_OFF), the MPS is set to 128 << dev->pcie_mpss to
-> > > match the Root Port's maximum supported payload size. The Max Read Request
-> > > Size (MRRS) is subsequently adjusted through existing companion logic to
-> > > maintain compatibility with PCIe specifications.
-> > > 
-> > > Note that this initial setting of the root port MPS to the maximum might
-> > > be reduced later during the enumeration of downstream devices if any of
-> > > those devices do not support the maximum MPS of the root port.
-> > > 
-> > > Explicit initialization at host probing stage ensures consistent PCIe
-> > > topology configuration before downstream devices perform their own MPS
-> > > negotiations. This proactive approach addresses platform-specific
-> > > requirements where controller drivers depend on properly initialized
-> > > root port settings, while maintaining backward compatibility through
-> > > PCIE_BUS_TUNE_OFF conditional checks. Hardware capabilities are fully
-> > > utilized without altering existing device negotiation behaviors.
+Please note the CEC helpers were affected by a resource deallocation
+issue which could crash the kernel and freeze the system under certain
+test conditions.  This has been already fixed in v6.17-rc1 via commit
+19920ab98e17 ("drm/display: hdmi-cec-helper: Fix adapter
+unregistration").
 
-> > Update the MRRS "to maintain compatibility" part.  I'm dubious about
-> > there being a spec compatibility issue with respect to MRRS.  Cite the
-> > relevant section if there is an issue.
-> 
-> The description is inaccurate. I will correct it.
-> 
-> I plan to modify the commit message as follows:
-> If there are any incorrect descriptions, please correct them. Thank you very
-> much.
-> 
-> Current PCIe initialization logic may leave Root Ports operating with
-> non-optimal Maximum Payload Size (MPS) settings. While downstream device
-> configuration is handled during bus enumeration, Root Port MPS values
-> inherited from firmware or hardware defaults might not utilize the full
-> capabilities supported by the controller hardware. This can result in
-> suboptimal data transfer efficiency across the PCIe hierarchy.
-> 
-> With this patch, during the host controller probing phase and when PCIe
-> bus tuning is enabled, the implementation configures Root Port MPS
-> settings to their hardware-supported maximum values. Specifically, when
-> configuring the MPS for a PCIe device, if the device is a Root Port and
-> the bus tuning is not disabled (PCIE_BUS_TUNE_OFF), the MPS is set to
-> 128 << dev->pcie_mpss to match the Root Port's maximum supported payload
-> size. The Max Read Request Size (MRRS) is subsequently adjusted by
-> existing logic in pci_configure_mps() to ensure it is not less than the
-> MPS, maintaining compliance with PCIe specifications (see PCIe r7.0,
-> sec 7.5.3.4).
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+---
+Changes in v4:
+- Fixed the bisect-related issues reported by Daniel by implementing
+  the following operations in dw_hdmi_qp_bind():
+  * Disable CEC support when the related IRQ is not available
+  * Set ref_clk_rate to vendor default in case it was not provided by
+    the platform driver
+  * In both scenarios, also print a warning message to highlight the
+    need for fixing the platform driver
+- Simplified dw_hdmi_qp_cec_init() a bit
+  * Removed the now obsolete cec->irq validation test
+  * Removed the superfluous error checking and logging around
+    devm_request_threaded_irq() call (it already handles all that)
+- Collected R-b tags from Daniel
+- Rebased series onto next-20250903
+- Link to v3: https://lore.kernel.org/r/20250825-rk3588-hdmi-cec-v3-0-95324fb22592@collabora.com
 
-AFAICS, sec 7.5.3.4 doesn't say anything about a relationship between
-MRRS and MPS.  MPS is a constraint on the payload size of TLPs with
-data (Memory Writes, Completions with Data, etc).  MRRS is a
-constraint on the Length field in a Memory Read Request.  A single
-Memory Read can be satisified with several Completions.  MPS is one of
-the things that determines how many Completions are required.
+Changes in v3:
+- Fixup PATCH 1 according to the recent upstream commit 02bb63d1a593
+  ("drm/bridge: Make dp/hdmi_audio_* callback keep the same paramter
+  order with get_modes") which changed the signature of ->hdmi_cec_init()
+  callback of struct drm_bridge_funcs; while at it, also update the
+  copyright section
+- Updated cover letter to indicate that the CEC helpers fix is already
+  available since v6.17-rc1
+- Rebased series onto next-20250825
+- Link to v2: https://lore.kernel.org/r/20250710-rk3588-hdmi-cec-v2-0-f5884be34bc1@collabora.com
 
-This has more details and a lot of good discussion:
-https://www.xilinx.com/support/documentation/white_papers/wp350.pdf
+Changes in v2:
+- Collected R-b tag from Dmitry
+- Restructured the generic bridge patches to not depend on the
+  platform-specific changes and updated cover letter accordingly (Heiko)
+- Replaced the loop searching for "ref" clock with clk_get() (Maxime)
+- Added new patch "drm/rockchip: dw_hdmi_qp: Improve error handling with
+  dev_err_probe()"
+- Link to v1: https://lore.kernel.org/r/20250704-rk3588-hdmi-cec-v1-0-2bd8de8700cd@collabora.com
+
+---
+Cristian Ciocaltea (6):
+      drm/bridge: dw-hdmi-qp: Add CEC support
+      drm/bridge: dw-hdmi-qp: Fixup timer base setup
+      drm/rockchip: dw_hdmi_qp: Improve error handling with dev_err_probe()
+      drm/rockchip: dw_hdmi_qp: Provide CEC IRQ in dw_hdmi_qp_plat_data
+      drm/rockchip: dw_hdmi_qp: Provide ref clock rate in dw_hdmi_qp_plat_data
+      arm64: defconfig: Enable DW HDMI QP CEC support
+
+ arch/arm64/configs/defconfig                   |   1 +
+ drivers/gpu/drm/bridge/synopsys/Kconfig        |   8 +
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c   | 224 ++++++++++++++++++++++++-
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.h   |  14 ++
+ drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c |  77 +++++----
+ include/drm/bridge/dw_hdmi_qp.h                |   2 +
+ 6 files changed, 284 insertions(+), 42 deletions(-)
+---
+base-commit: 5d50cf9f7cf20a17ac469c20a2e07c29c1f6aab7
+change-id: 20250703-rk3588-hdmi-cec-cea8f523df48
+
 
 _______________________________________________
 Linux-rockchip mailing list
