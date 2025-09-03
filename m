@@ -4,90 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED13ACA100C
-	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Sep 2025 09:40:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFB8DCA1009
+	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Sep 2025 09:46:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Q5wOJUl0TK6lVBEghOCdEhZleXccoK8TlzfP0HXiQmE=; b=Q6KOadVKj+Yyng
-	6ORQVgsDWxzbrie7IGLgXOa/lcD+O1oFLyCdUH/04YYAbKQzUhqeF1Zoxa31mBZWqUVdVVQ57DzYG
-	z/46L1SFOjRQytMkJTdKJyPTWuRhQxDlc6MEaeMD1gvh0aanEsu41m9sKgBC+vW2NX8ZFEtlJ+or8
-	4CDBcIz025rmePLzkvWMYGzhH98SqfADAkgnkELpPNFJRAIo9YbT17VZWhdJDgE5GlbxD/yAt7XOY
-	b+c3nauCrSvf5KjSPahWabbrAGe/CksG5BfGet3nfeR8l0ES/h7PBizAtTAUPHZHlpNmvJHv0ViV1
-	yCE/MdDcOLrQtQA6fmAg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=9xU1WqJc11CU7n2/hHkeJtxhTLuMZxzFpEdPflwi+AA=; b=05oQIZfO+b1g3P
+	fnoRl1DhoAlrgjrf7dYSkxKpGKlrs+R1tSyJOBDpgS3NdPzp6RyjAL7WEF7m0NTwgkuUO337+H3DB
+	qIKUpwiRE/0awG5WQ6ytc8ZfMd5xeCCiqUoSsVu3sJVx5bH9MCKcYf+jk6uUyp2uQKyw43svK57Ny
+	Ba9Sv98sl66vnbFchH97Auexfu5BAmhxOK1qekqdCDi7Dv8deNSfRI/96LrH3M6yQ5c9harsivBul
+	rMqxHVFX326JOWLzm5vYJl7pmpVstWPKEJ01Vcd/kvLf8eO8OV6iWBVK/ddEKQizfElv/jM7GAgsX
+	418QCu8zPRi6vxJ/9TXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utjyp-00000005xbR-2uh3;
-	Wed, 03 Sep 2025 09:40:39 +0000
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+	id 1utk4F-00000005yMt-2BtW;
+	Wed, 03 Sep 2025 09:46:15 +0000
+Received: from bg4.exmail.qq.com ([43.155.67.158])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utiWS-00000005Pf3-2RIt;
-	Wed, 03 Sep 2025 08:07:17 +0000
-Received: by mail-wm1-x332.google.com with SMTP id 5b1f17b1804b1-45b76a30584so1267255e9.1;
-        Wed, 03 Sep 2025 01:07:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1756886835; x=1757491635; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=hZTy5PSuTM5rEw0pIf6nxs+pKdYAXNk6URBgB/E9ySA=;
-        b=YNzawDtyubX0Dz+EbC+hoD/GsknkC+Ogo4m3hG4r7XYlxkRKQY1g+1OPpNbyzOBTsl
-         UBE77ZWJ4LTqf5gZZcyzN2UGu0gCt8qU038Pgpwr8Zep8b7sCRre4iwlF1jxdJJWyPpn
-         TpV10CowUYYgVdtKdEpwykQYhnEbKKiG09gZvReX78n99JFalwuf59VeG77+huRkzm8+
-         UB3sgaYJTHqW/eFt4MxUTA0ef+f6IB1oFN49R/hJC9I4dbRO5cT0wRokm28bDD9aU9tG
-         nrBlowC/BoAMq4UnUeU1Z0FEmLpNyJIW9jqeVbTHZQPB+JR+7lwdia5hN9CJ2S8iRoFX
-         fzqA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1756886835; x=1757491635;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=hZTy5PSuTM5rEw0pIf6nxs+pKdYAXNk6URBgB/E9ySA=;
-        b=OXJ5qHP7IF0dLORnC6LGxb1JgC2IsULMxvNyTOBM28KJ3Avo8k1iACvz1ob2THQHHk
-         sulU8okq8MA3uXiixhAjWR3+jtBD+2/6vaBK2F3d+VriyK5mvpCOfUz5kcWelC60cj10
-         bQcZDHCzGuHGd56AuhYcwcEdTtNDvWvE5e9JMzi5c1z53tBY07rgkTUWM+PmBfGj01Ud
-         ybsm8Rc/SAbEBuc47oltI5/7neGQ72DiW/+EWBrZZGrTmVeKfymDbOJTtQUofGok5Pq4
-         ZYTnBnTrtzh9rvpYbPip5R9tqORBTQgvh4iqq92mO5zo76liPW82YGJ/ttjjmEiu8UJF
-         ZOBA==
-X-Forwarded-Encrypted: i=1; AJvYcCUYIwZ+TybPosEfUZ25Ppg1DV7ZySmUbIvMXH00I806obIgN+pHfk790+pH+r/lKsSS0HuWaiWUahm2ybuhAYA=@lists.infradead.org, AJvYcCXm2AY5Cqr1nqPPTx5zmcH6TAE9pZ5hOblUZBC96mZFdQbLRlXML9lCfoVN2lVWoEhYKYfH5CTpJLe6vdNotAo1@lists.infradead.org
-X-Gm-Message-State: AOJu0YzRI87k1LcEyeVQeZo4yAnmMwp3Nwvd5gbN/SwTQhndIpOQbkYK
-	QeoTFCR/4vjLNOo53B/zIgV3RY/6ZQdKEBjPO7Y0be2QvPgO/UC1NuMu
-X-Gm-Gg: ASbGncuH8LFmlaNI5IFiR6juaYVDLZCWW2WAvHSx8kxhmRDY5P7Z240BqmCBoItuvPc
-	qldMZbN4RjNalZUMhokG7puOytfBGA+OUg6BczzBf5dPpBk1NOxwd0z+pwzz1g0I2yGO5L8IX6+
-	znh7UyKMpTLJZbtDcyyHsSLCD9K1de8kteBzUUNBe+H0WEqm2bbyLP8GzWydOWSV17QI5WsO1X4
-	nn+hc9cn/n0+y//QQcgp0mcX6Wc/JG+HEnSfLZci37d/GqZr7EnYqWaCPyMFt9mqnOTRd/rCprb
-	cLapwOON7x1kWcICalzAy1SC4RDyZy89tQFyNsKYjZVSJbDsX5GuCqiYD7Z3gAA1PwkA1YmBUJ6
-	1MVEyjXIRH5a0H3lWY4NrMJOuHGDXKoAYwiKPmdiactXCOouiKhiYOPtnDcSxBA==
-X-Google-Smtp-Source: AGHT+IEpGBOP1B1Jph5fgexU4vMmswDuYQqgA49JGWQuOcwTIUvg6AkoYPsE1hTfBRhrYgvcN4/h2A==
-X-Received: by 2002:a05:6000:2883:b0:3cb:9930:78bd with SMTP id ffacd0b85a97d-3d064dfe9camr6000577f8f.5.1756886834510;
-        Wed, 03 Sep 2025 01:07:14 -0700 (PDT)
-Received: from thomas-precision3591.u-ga.fr ([2001:660:5301:24:6179:26f2:8797:e6a9])
-        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-3d3a7492001sm17768599f8f.42.2025.09.03.01.07.13
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 03 Sep 2025 01:07:14 -0700 (PDT)
-From: Thomas Fourier <fourier.thomas@gmail.com>
-To: 
-Cc: Thomas Fourier <fourier.thomas@gmail.com>,
-	stable@vger.kernel.org,
-	Corentin Labbe <clabbe@baylibre.com>,
-	Herbert Xu <herbert@gondor.apana.org.au>,
-	"David S. Miller" <davem@davemloft.net>,
-	Heiko Stuebner <heiko@sntech.de>,
-	John Keeping <john@keeping.me.uk>,
-	linux-crypto@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] crypto: rockchip - Fix dma_unmap_sg() nents value
-Date: Wed,  3 Sep 2025 10:06:46 +0200
-Message-ID: <20250903080648.614539-2-fourier.thomas@gmail.com>
-X-Mailer: git-send-email 2.43.0
+	id 1utirg-00000005Zhb-2Ap9
+	for linux-rockchip@lists.infradead.org;
+	Wed, 03 Sep 2025 08:29:15 +0000
+X-QQ-mid: zesmtpip3t1756888125t2bf0b974
+X-QQ-Originating-IP: hNMMUBWBZAMjlucA+xBTHqWVycX+g2+pxJSCJlsVS4I=
+Received: from [IPV6:240f:10b:7440:1:81b2:3bee ( [localhost])
+	by bizesmtp.qq.com (ESMTP) with 
+	id ; Wed, 03 Sep 2025 16:28:40 +0800 (CST)
+X-QQ-SSF: 0000000000000000000000000000000
+X-QQ-GoodBg: 0
+X-BIZMAIL-ID: 13612785056484846069
+Message-ID: <57969F385B5AF318+653dac83-8227-4987-84c6-f3e08b10085c@radxa.com>
+Date: Wed, 3 Sep 2025 17:28:39 +0900
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 0/3] Add Radxa CM5 module and IO board dts
+To: Joseph Kogut <joseph.kogut@gmail.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Jimmy Hon <honyuenkwun@gmail.com>
+Cc: Steve deRosier <derosier@cal-sierra.com>, devicetree@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+References: <20250617-rk3588s-cm5-io-dts-upstream-v5-0-8d96854a5bbd@gmail.com>
+Content-Language: en-US
+From: FUKAUMI Naoki <naoki@radxa.com>
+In-Reply-To: <20250617-rk3588s-cm5-io-dts-upstream-v5-0-8d96854a5bbd@gmail.com>
+X-QQ-SENDSIZE: 520
+Feedback-ID: zesmtpip:radxa.com:qybglogicsvrgz:qybglogicsvrgz8a-1
+X-QQ-XMAILINFO: OSf9GMjVgk1FA5RtHdGYUb7MCjBdmMO+pQAtQLTr1sfyTpwGKoKr8jsF
+	+EXcjURPAA9kAAgejrTybPwiqCfA5iCvT99nPT8BRuX6sPYtQGnuX7KcWIQutfPAIwWQzp7
+	TeG5UlcxyRTJAykdxg1OMabUMdphTwtS8pblkin2r2Sr2CMPthebaQc/Ez/dAdmGGzDDz/R
+	S7//jrz4TgqGFwLb/DdEiSk6/0VGwQPbBtVYRemnr3xqqlx6du5dQEDvSFgYp1cBTEmE4XD
+	ZyHdY79E46x8gcbzY+GxdNDALozoWDAMi8cVl9pah2B1DQPd3mWcCqOXDgexkBvzCbuSLQr
+	bUDvmLL/YQkJQs+YGyGR5vLOEMu8ozltdHwyEH4fhHJAtqeO6VvRuvHhEEofzIs3RPZ8JAR
+	NuEaWINnsuYeLyyh3B4r7fUQoXgSk7F1TuRWNXz1tAEHQ9njL+a9fPZK7VLJg4MEdnzOOHR
+	8h8SRdmnoCrV+gcMEf4tORuHI6YyVPNY9nfby3GARrYZ+GcVdJ0SP3I1AMmNU64XrRrf39I
+	1HCC3NSDVRFmklNzu/TDLt8t87Wxo+uB5T92fOAmD0owiNJln6C1zSGgwmqfASfNLxBJLnx
+	0Fs5dpZp/W9+jkp0cd73gs9bsXNnWToyxDOAyD/q6xL1AqQ5eeAqwRVk1765v/kTVW5AJ8r
+	BW+YPC8yhnxR1BOe//xmJmDoAyJtP5zMnSDJvCcr7YmCMnxsmKv4BcQE2T7UMkmaNXfwoUQ
+	ImCmUE0uD7/yYMW0tjTzV4HPNxlpnsApt4Esx7uUCHKbOFB4XO2/9Q6Hm56RQiBXTGnhREh
+	9sB4pPd6YgCPjR4Xi4HDw0z6SACg3anWzQ1ABq0Z7N6yCtB/qK2SON1CHf570hoUDwZB4OD
+	bkN0mTYQ+oEG9CdC9HoWf+j+NzkqPk6SXZD3Q/3vqbiMWFA9gTkxAT/T34o5KpBjM00gUmH
+	AikN1d6hYhXkyy9jNSByU4lUdzM1kZZo6Ft1dK1iYoXc46WCJc8e3G1fjAtIEwDALzrr27D
+	7P6ZawnoOl7EKqQvrYCcgPurV01ALDiv3AoQW0wHaZfn68jsBKvFKlrcGbQKg8j3FL2At6c
+	pjDTTAdww/j+8EWbiuo9Hw2nByypChStA==
+X-QQ-XMRINFO: M/715EihBoGSf6IYSX1iLFg=
+X-QQ-SPAM: true
+X-QQ-RECHKSPAM: 3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250903_010716_618782_7A074714 
-X-CRM114-Status: GOOD (  12.48  )
+X-CRM114-CacheID: sfid-20250903_012912_875631_C4E6C2B8 
+X-CRM114-Status: GOOD (  14.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,36 +87,78 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The dma_unmap_sg() functions should be called with the same nents as the
-dma_map_sg(), not the value the map function returned.
+Hi Joseph,
 
-Fixes: 57d67c6e8219 ("crypto: rockchip - rework by using crypto_engine")
-Cc: <stable@vger.kernel.org>
-Signed-off-by: Thomas Fourier <fourier.thomas@gmail.com>
----
- drivers/crypto/rockchip/rk3288_crypto_ahash.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+I'm thinking of continuing your work, so if you've already done 
+something, please let me know.
 
-diff --git a/drivers/crypto/rockchip/rk3288_crypto_ahash.c b/drivers/crypto/rockchip/rk3288_crypto_ahash.c
-index d6928ebe9526..b9f5a8b42e66 100644
---- a/drivers/crypto/rockchip/rk3288_crypto_ahash.c
-+++ b/drivers/crypto/rockchip/rk3288_crypto_ahash.c
-@@ -254,7 +254,7 @@ static void rk_hash_unprepare(struct crypto_engine *engine, void *breq)
- 	struct rk_ahash_rctx *rctx = ahash_request_ctx(areq);
- 	struct rk_crypto_info *rkc = rctx->dev;
- 
--	dma_unmap_sg(rkc->dev, areq->src, rctx->nrsg, DMA_TO_DEVICE);
-+	dma_unmap_sg(rkc->dev, areq->src, sg_nents(areq->src), DMA_TO_DEVICE);
- }
- 
- static int rk_hash_run(struct crypto_engine *engine, void *breq)
--- 
-2.43.0
+Best regards,
+
+--
+FUKAUMI Naoki
+Radxa Computer (Shenzhen) Co., Ltd.
+
+On 6/18/25 07:11, Joseph Kogut wrote:
+> This patch series adds initial device tree support for the Radxa CM5 SoM
+> and accompanying IO board.
+> 
+> V4 -> V5:
+>    Patch (2/3), per Jimmy:
+>    - Alias eMMC to mmc0
+>    - Remove unused sdio alias
+>    - Move gmac, hdmi0 nodes to carrier board dts
+> 
+>    Patch (3/3), per Jimmy:
+>    - Enable hdmi0_sound and i2s5_8ch
+>    - Remove redundant enablement of sdhci
+>    - Enable usb_host2_xhci
+> 
+>    - Tested HDMI audio
+> 
+> V3 -> V4:
+>    - Fixed XHCI initialization bug by changing try-power-role from source
+>      to sink
+> 
+> V2 -> V3:
+>    - Addressed YAML syntax error in dt binding (per Rob)
+>    - Fixed whitespace issue in dts reported by checkpatch.pl
+>    - Split base SoM and carrier board into separate patches
+>    - Added further details about the SoM and carrier to the commit
+>      messages
+> 
+> V1 -> V2:
+>    - Added copyright header and data sheet links
+>    - Removed non-existent property
+>    - Sorted alphabetically
+>    - Removed errant whitespace
+>    - Moved status to the end of each node
+>    - Removed pinctrl-names property from leds (indicated by CHECK_DTBS)
+>    - Removed delays from gmac with internal delay
+> 
+> - Link to v4: https://lore.kernel.org/r/20250605-rk3588s-cm5-io-dts-upstream-v4-0-8445db5ca6b0@gmail.com
+> 
+> Signed-off-by: Joseph Kogut <joseph.kogut@gmail.com>
+> ---
+> Joseph Kogut (3):
+>        dt-bindings: arm: rockchip: Add Radxa CM5 IO board
+>        arm64: dts: rockchip: Add rk3588 based Radxa CM5
+>        arm64: dts: rockchip: Add support for CM5 IO carrier
+> 
+>   .../devicetree/bindings/arm/rockchip.yaml          |   7 +
+>   arch/arm64/boot/dts/rockchip/Makefile              |   1 +
+>   .../boot/dts/rockchip/rk3588s-radxa-cm5-io.dts     | 486 +++++++++++++++++++++
+>   .../arm64/boot/dts/rockchip/rk3588s-radxa-cm5.dtsi | 135 ++++++
+>   4 files changed, 629 insertions(+)
+> ---
+> base-commit: 0af2f6be1b4281385b618cb86ad946eded089ac8
+> change-id: 20250605-rk3588s-cm5-io-dts-upstream-f4d1e853977e
+> 
+> Best regards,
 
 
 _______________________________________________
