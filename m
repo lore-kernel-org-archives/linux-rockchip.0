@@ -4,74 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C5F3CA1012
-	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Sep 2025 23:12:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06C08CA1010
+	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Sep 2025 23:18:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AJCxlwC7+oYuVFk+S9PYmuwor/RCH5Zt1t8Wo2ItP4g=; b=EAkqRpOd+QiAzq
-	AjgyC7RWgjPCaqg6kVFhVbyYQH7iO5MubmdQSekWBnHwp4mr65n3uKiOBFNrKdyoeEg4hrb9HqqnA
-	uY+pEsMqRCdD+FdtEVWH0PqpXBP5jUXN50Lqus4cSoVcSvquzvrTBChJGl3IWb4iab78ZYLgcRigk
-	5xLUXEi2EfRFK+E37D3w3X0+1twNlxVlQ7yEDjFnpDuL0MHh7TfVeYSjaU/69HbM/nBqB9FMTcckB
-	1BLZA5cxIrDDnkI6Ze/u2b/8p7WexqE9x5CDwWyZyIaeGP4ISI1TT5aH8jO1TYXwrlby8XTnaLTNi
-	zkB7/FenqsAJHE+MGIjw==;
+	List-Archive:List-Unsubscribe:List-Id:CC:To:Subject:From:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=rklJ5GdCmfIARo9g5au7xwbun5YGoMwwz+ZsEYXN/pg=; b=Bh1or+yrzG4iqc
+	rLsSAUvYPpZSgTZOprGzvT2siOhOOANss3c+6mjYRuTCrpS/zIdA5f6wKU9qhiYUYuatVuDWNhXEl
+	wIHKz9oDep5b8wiuG8zQlbFjZE6ouXJVh6OD4rZgUorCaTX3lFWOU25UNIALuSCoS8uLdozAt979x
+	b9sTah0K/zErwH5kc4tKCY69UaMGQNnDAci2NX7aO9AnKFU2wXjuGwdM5WR2FtNapElozyZkOhl9x
+	nr88H0oxWtKHfNHgqIl+nEd/oL+UKozQ86bhpdFHBHsRbEs9E37+65RvzzNkSIPF7gJoq69kgzv+Q
+	wxIxIe0DfsJyqK3/MZcA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utwe3-00000007sWo-1AVb;
-	Wed, 03 Sep 2025 23:12:03 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1utwkf-00000007tkf-1AWB;
+	Wed, 03 Sep 2025 23:18:53 +0000
+Received: from mx01.omp.ru ([90.154.21.10])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utsm2-00000007Ot9-22F6;
-	Wed, 03 Sep 2025 19:04:03 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1756926240;
-	bh=9Ua+kHD6dZXWFYSTLBnaWhHDHs7De+8cQbEk82diXxY=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Mjqf/1i+n2F2T+E2x0S+h/VMNrYClSu5CFnbV+Rp0Y5U+ay1NBWFRhnJi8Jl32NRW
-	 FVUhJlfRd4kzjpwBnds9OsX1rSCG7kQ9CFgSRP2QPWPAYt9F+NXjAJJz7AKZ0I9hSx
-	 HjYuZhWAktlwABJIoqFSkTutstdSByr9eP88LUlUGzwpIYEswV/kgRGfYsDJeEWogx
-	 UW3YlN2Z1KVn2h8J0DhBAFDnzitN841ANZnp7rkLUKdVzhlNxhtNaHW+OsF9TnHoC9
-	 Ik2GBlPjCNJCXegw/6/TLtZ3h/zpjNmJzP13UcRj+Omdtl6StOpYF6mmhqjM5DKu+f
-	 YFjyxmRkoITEg==
-Received: from [192.168.1.90] (unknown [82.79.138.60])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9D09E17E1283;
-	Wed,  3 Sep 2025 21:03:59 +0200 (CEST)
-Message-ID: <80932583-5055-420b-bd92-9ee9ec7d6c1a@collabora.com>
-Date: Wed, 3 Sep 2025 22:03:59 +0300
+	id 1uttUW-00000007U3Q-0If5;
+	Wed, 03 Sep 2025 19:50:01 +0000
+Received: from [192.168.2.102] (213.87.131.167) by msexch01.omp.ru
+ (10.188.4.12) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.1258.12; Wed, 3 Sep
+ 2025 22:49:38 +0300
+Message-ID: <179c9e8c-8760-41e6-aad7-7a128df60984@omp.ru>
+Date: Wed, 3 Sep 2025 22:48:54 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 2/6] drm/bridge: dw-hdmi-qp: Fixup timer base setup
-To: Daniel Stone <daniel@fooishbar.org>
-Cc: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
- kernel@collabora.com, dri-devel@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20250825-rk3588-hdmi-cec-v3-0-95324fb22592@collabora.com>
- <20250825-rk3588-hdmi-cec-v3-2-95324fb22592@collabora.com>
- <CAPj87rN55DOhWeCU1o0=rOkGbrP4M8v+a6xeB5eboLdCiJ-vzw@mail.gmail.com>
+From: Sergey Shtylyov <s.shtylyov@omp.ru>
+Subject: [PATCH] pinctrl: rockchip: fix NULL ptr deref in
+ rockchip_pinctrl_parse_groups()
+To: Linus Walleij <linus.walleij@linaro.org>, Heiko Stuebner
+	<heiko@sntech.de>, <linux-gpio@vger.kernel.org>
+CC: <linux-arm-kernel@lists.infradead.org>,
+	<linux-rockchip@lists.infradead.org>
 Content-Language: en-US
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-In-Reply-To: <CAPj87rN55DOhWeCU1o0=rOkGbrP4M8v+a6xeB5eboLdCiJ-vzw@mail.gmail.com>
+Organization: Open Mobile Platform
+X-Originating-IP: [213.87.131.167]
+X-ClientProxiedBy: msexch01.omp.ru (10.188.4.12) To msexch01.omp.ru
+ (10.188.4.12)
+X-KSE-ServerInfo: msexch01.omp.ru, 9
+X-KSE-AntiSpam-Interceptor-Info: scan successful
+X-KSE-AntiSpam-Version: 6.1.1, Database issued on: 09/03/2025 19:33:07
+X-KSE-AntiSpam-Status: KAS_STATUS_NOT_DETECTED
+X-KSE-AntiSpam-Method: none
+X-KSE-AntiSpam-Rate: 0
+X-KSE-AntiSpam-Info: Lua profiles 196014 [Sep 03 2025]
+X-KSE-AntiSpam-Info: Version: 6.1.1.11
+X-KSE-AntiSpam-Info: Envelope from: s.shtylyov@omp.ru
+X-KSE-AntiSpam-Info: LuaCore: 66 0.3.66
+ fc5dda3b6b70d34b3701db39319eece2aeb510fb
+X-KSE-AntiSpam-Info: {rep_avail}
+X-KSE-AntiSpam-Info: {Tracking_uf_ne_domains}
+X-KSE-AntiSpam-Info: {Tracking_from_domain_doesnt_match_to}
+X-KSE-AntiSpam-Info: omp.ru:7.1.1;127.0.0.199:7.1.2;d41d8cd98f00b204e9800998ecf8427e.com:7.1.1
+X-KSE-AntiSpam-Info: {Tracking_ip_hunter}
+X-KSE-AntiSpam-Info: FromAlignment: s
+X-KSE-AntiSpam-Info: ApMailHostAddress: 213.87.131.167
+X-KSE-AntiSpam-Info: Rate: 0
+X-KSE-AntiSpam-Info: Status: not_detected
+X-KSE-AntiSpam-Info: Method: none
+X-KSE-AntiSpam-Info: Auth:dmarc=temperror header.from=omp.ru;spf=temperror
+ smtp.mailfrom=omp.ru;dkim=none
+X-KSE-Antiphishing-Info: Clean
+X-KSE-Antiphishing-ScanningType: Heuristic
+X-KSE-Antiphishing-Method: None
+X-KSE-Antiphishing-Bases: 09/03/2025 19:34:00
+X-KSE-Antivirus-Interceptor-Info: scan successful
+X-KSE-Antivirus-Info: Clean, bases: 9/3/2025 3:35:00 PM
+X-KSE-Attachment-Filter-Triggered-Rules: Clean
+X-KSE-Attachment-Filter-Triggered-Filters: Clean
+X-KSE-BulkMessagesFiltering-Scan-Result: InTheLimit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250903_120402_708063_4801921E 
-X-CRM114-Status: GOOD (  18.37  )
+X-CRM114-CacheID: sfid-20250903_125000_125559_631D2832 
+X-CRM114-Status: GOOD (  12.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,47 +97,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Daniel,
+In the Rockchip driver, rockchip_pinctrl_parse_groups() assumes that the
+"rockchip,pins" property will always be present in the DT node it parses
+and so doesn't check the result of of_get_property() for NULL. If the DT
+passed to the kernel happens to have such property missing, then we will
+get a kernel oops when the pointer is dereferenced in the *for* loop just
+a few lines after the call.  I think it's better to play safe by checking
+the list variable for NULL (and reporting error if so), like we check the
+size variable for validity further down...
 
-On 8/29/25 6:21 PM, Daniel Stone wrote:
-> Hi Cristian,
-> 
-> On Mon, 25 Aug 2025 at 10:57, Cristian Ciocaltea
-> <cristian.ciocaltea@collabora.com> wrote:
->> @@ -1255,6 +1254,11 @@ struct dw_hdmi_qp *dw_hdmi_qp_bind(struct platform_device *pdev,
->>                 return ERR_PTR(-ENODEV);
->>         }
->>
->> +       if (!plat_data->ref_clk_rate) {
->> +               dev_err(dev, "Missing ref_clk rate\n");
->> +               return ERR_PTR(-ENODEV);
->> +       }
-> 
-> This introduces another bisect cliff, as the Rockchip integration
-> isn't added until patch 5/6, meaning together with the previous patch
-> the driver isn't usable between patches 1-5. It would be most sensible
-> I think to keep a default until the users have been fixed up. But
-> maybe a better sequence for this series would be:
-> * dev_err_probe() cleanup (easy, no dependencies)
-> * add refclk to plat_data (populated but unused)
-> * use refclk instead of hardcoded frequency in bridge driver, make it mandatory
-> * add CEC IRQ to plat_data (populated but unused)
-> * add CEC support to driver, probably make it not mandatory to provide
-> CEC IRQ in DT since it doesn't seem required for correct operation?
-> * enable CEC in defconfig
+Found by Linux Verification Center (linuxtesting.org) with the Svace static
+analysis tool.
 
-Yeah, this is pretty similar to how the initial series looked like.  The
-current sequence follows Heiko's suggestion, which I (still) think it's the
-correct approach.
+Fixes: d3e5116119bd ("pinctrl: add pinctrl driver for Rockchip SoCs")
+Signed-off-by: Sergey Shtylyov <s.shtylyov@omp.ru>
 
-Both bisect issues are now fixed in v4:
+---
+The patch is against the master branch of Linus Torvalds' linux.git repo.
 
-https://lore.kernel.org/all/20250903-rk3588-hdmi-cec-v4-0-fa25163c4b08@collabora.com/
+ drivers/pinctrl/pinctrl-rockchip.c |    4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-Thanks for the review!
-
-Regards,
-Cristian
+Index: linux/drivers/pinctrl/pinctrl-rockchip.c
+===================================================================
+--- linux.orig/drivers/pinctrl/pinctrl-rockchip.c
++++ linux/drivers/pinctrl/pinctrl-rockchip.c
+@@ -3488,7 +3488,9 @@ static int rockchip_pinctrl_parse_groups
+ 	 * do sanity check and calculate pins number
+ 	 */
+ 	list = of_get_property(np, "rockchip,pins", &size);
+-	/* we do not check return since it's safe node passed down */
++	if (!list)
++		return dev_err_probe(dev, -EINVAL,
++				     "%pOF: no rockchip,pins property\n", np);
+ 	size /= sizeof(*list);
+ 	if (!size || size % 4)
+ 		return dev_err_probe(dev, -EINVAL,
 
 _______________________________________________
 Linux-rockchip mailing list
