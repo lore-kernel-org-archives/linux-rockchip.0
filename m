@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BECD9CA0FF2
-	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Sep 2025 12:27:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB51CCA1010
+	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Sep 2025 12:30:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=8WVHIpriWCw0LXtrW75+bwJ4AOMx+Q3hIz9I/6zbuZo=; b=gNv/QhE1TZyNGp
-	gbtPfkE1mrTcHLdvqy7wW9W8+Hk2EWNXEWOHZOMUSIYErD/FJDJls9pNGkjXcvWdzy1apSF6BzPVj
-	jz22e7IOlU1lcpXXNkrwBjNp0IIyd6uO8MZhVLseuW5L03JHNGuaa306OqAJLKXvW1QRj0MSIlpor
-	gehveUpc5EmSIO858BhDUci1VWfVvp3gJGpzLfZsR7NKYAd7WvJ5LL+7RiDvnBIOs7saxj0G2iVWg
-	Qz614y8hdLC3Mpfx5XrQWt1F1EdMPiQmNwXjvbxif3K7n1+Jl5HLnqo7n2PG/j5ORrHxiH8e3I+g8
-	pIjhCKMMX1j+Sn10Jk+A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=h8Eq2XAOcDX+x3Q/LAAanlF69OcnkSd8UViIihZ/Cao=; b=0SfTOWoxn1+hxh
+	iA8QSFgwb6juGLLb3RGWAnIEDFPk4N3C45U5OroAe1/ZgbggZTA9FDUtPET0kggz0zgE2drzADXWf
+	vaRUPYaxslPum9YY8+krGJbRjoQTSPR5bm/B1tRSLyFTxuZZLHrgPAkfZuro0uKyPf2KvPg5ewhti
+	RUftfUeZv/ijaZ02g0TePZc6IahtbH43z1oaXPQtXn/ot2Tz5PDxlnckglLmO1pMwel/fZtCjujgy
+	4UaqgNx0xSrtIxuK6+LNx1TsXlco3WmVMw0hoZXeLnt5E1Shg2YIjWLjVZ+f0XUjaZlm0cCLp6dcY
+	MP/76nYo7ai3c0k8VD3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utma5-00000006NkH-2ci2;
-	Wed, 03 Sep 2025 12:27:17 +0000
+	id 1utmcw-00000006OEk-06Nr;
+	Wed, 03 Sep 2025 12:30:14 +0000
 Received: from m16.mail.163.com ([220.197.31.3])
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utlMh-00000006BTj-1r9L;
+	id 1utlMi-00000006BU5-05ed;
 	Wed, 03 Sep 2025 11:09:25 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version; bh=8M
-	OUPpxvBzRqyAiJo7hZF/8jlxk1AL8PcT2GXnQjst8=; b=ayNngg9LBaRM4vEZ7p
-	Y0SroSRdLTxuXYo4rfV0S/kZgHUSRdIBxPsaWZSItpjp7yn199vazYxL0Jv8/fHT
-	tNZSLUJjMMNjO+Tr0UUCy0k0snpG64jJei4XDblwNedAYb7VOX66k1kYVlNzJ41+
-	Ey9SHtOCPS2gC6pt/IeN0A94M=
+	s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version; bh=c0
+	/SBiSXOOl6HFr+JmOjCWEmu3pstjSyRziH55Av6WA=; b=pzmGJUW5GsUD0zajgM
+	1dLJ5xfepWw+5r6dKHs8FqtSnbSrW6yE4YGJJgieet+W9uNB1cCZPLY2cMlHAziF
+	CeAW/sq3nKyZtSTjyQ6nN4BdM4UVJOfciEZrD2to83lqxyMEtbXujEgp3CHn79sV
+	nTWuDvNnkqHafHOXA5tRWUOXE=
 Received: from ProDesk.. (unknown [])
-	by gzga-smtp-mtada-g1-4 (Coremail) with SMTP id _____wC3ZLuqIbhoXAZsFw--.3268S2;
-	Wed, 03 Sep 2025 19:08:32 +0800 (CST)
+	by gzga-smtp-mtada-g1-4 (Coremail) with SMTP id _____wC3ZLuqIbhoXAZsFw--.3268S4;
+	Wed, 03 Sep 2025 19:08:34 +0800 (CST)
 From: Andy Yan <andyshrk@163.com>
 To: dmitry.baryshkov@oss.qualcomm.com,
 	heiko@sntech.de
@@ -55,21 +55,23 @@ Cc: mripard@kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	Andy Yan <andy.yan@rock-chips.com>
-Subject: [PATCH v7 0/2] Convert inno hdmi to drm bridge
-Date: Wed,  3 Sep 2025 19:07:37 +0800
-Message-ID: <20250903110825.776807-1-andyshrk@163.com>
+Subject: [PATCH v7 2/2] MAINTAINERS: Add entry for Innosilicon hdmi bridge library
+Date: Wed,  3 Sep 2025 19:07:39 +0800
+Message-ID: <20250903110825.776807-3-andyshrk@163.com>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250903110825.776807-1-andyshrk@163.com>
+References: <20250903110825.776807-1-andyshrk@163.com>
 MIME-Version: 1.0
-X-CM-TRANSID: _____wC3ZLuqIbhoXAZsFw--.3268S2
-X-Coremail-Antispam: 1Uf129KBjvJXoW7CF4fZw1rGr1fWF4xCF4DArb_yoW8Zr1Upa
-	yjkFW5CF47u3W2gFs7CF4fAr1Sya1DJw4S9ry7X34SvFW29F15Awna9F4aqrnrZr47CF42
-	yrZ7Ja47KFy7ZaDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jf3kZUUUUU=
+X-CM-TRANSID: _____wC3ZLuqIbhoXAZsFw--.3268S4
+X-Coremail-Antispam: 1Uf129KBjvdXoW7GFy8uFyxCFy5Kr17Zr48tFb_yoWfGrX_GF
+	18JrW8Zr4jkFWjy397Ca1fX3sIkw4xtF1fXFn5tws7Jwn8AryDJwn2gryIgr15CF1xGayq
+	qayUXF9Ikr13WjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7IU0iqXJUUUUU==
 X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbBEBe9Xmi4H7lERwABsQ
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbBEAO9Xmi4H7lLfwAAsy
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250903_040923_782432_F028E74B 
-X-CRM114-Status: UNSURE (   9.35  )
+X-CRM114-CacheID: sfid-20250903_040924_360399_261C8B65 
+X-CRM114-Status: UNSURE (   7.73  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -89,56 +91,37 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Andy Yan <andy.yan@rock-chips.com>
 
+Add entry for Innosilicon hdmi bridge library
 
-Convert it to drm bridge driver, it will be convenient for us to
-migrate the connector part to the display driver later.
+Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+---
 
-Patches that have already been merged in drm-misc-next are dropped.
+(no changes since v1)
 
+ MAINTAINERS | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-Changes in v7:
-- Rebase on latest drm-misc-next
-- Link to V6: https://lore.kernel.org/linux-rockchip/20250717081344.1355613-1-andyshrk@163.com/
-
-Changes in v6:
-- Rebase on latest drm-misc-next
-- Link to V5: https://lore.kernel.org/linux-rockchip/20250512124615.2848731-1-andyshrk@163.com/
-
-Changes in v5:
-- Split cleanup code to seperate patch
-- Switch to devm_drm_bridge_alloc() API
-- Link to V4: https://lore.kernel.org/linux-rockchip/20250422070455.432666-1-andyshrk@163.com/
-
-Changes in v4:
-- Do not store colorimetry within inno_hdmi struct
-- Link to V3: https://lore.kernel.org/linux-rockchip/20250402123150.238234-1-andyshrk@163.com/
-
-Changes in v3:
-- First included in v3
-- Link to V2: https://lore.kernel.org/dri-devel/20250325132944.171111-1-andyshrk@163.com/
-
-Andy Yan (2):
-  drm/rockchip: inno-hdmi: Convert to drm bridge
-  MAINTAINERS: Add entry for Innosilicon hdmi bridge library
-
- MAINTAINERS                                   |   8 +
- drivers/gpu/drm/bridge/Kconfig                |   7 +
- drivers/gpu/drm/bridge/Makefile               |   1 +
- .../inno_hdmi.c => bridge/inno-hdmi.c}        | 502 +++++-------------
- drivers/gpu/drm/rockchip/Kconfig              |   1 +
- drivers/gpu/drm/rockchip/Makefile             |   2 +-
- drivers/gpu/drm/rockchip/inno_hdmi-rockchip.c | 188 +++++++
- include/drm/bridge/inno_hdmi.h                |  33 ++
- 8 files changed, 374 insertions(+), 368 deletions(-)
- rename drivers/gpu/drm/{rockchip/inno_hdmi.c => bridge/inno-hdmi.c} (69%)
- create mode 100644 drivers/gpu/drm/rockchip/inno_hdmi-rockchip.c
- create mode 100644 include/drm/bridge/inno_hdmi.h
-
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 88851907b6725..d4b5eea84cb9f 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -12085,6 +12085,14 @@ M:	Samuel Holland <samuel@sholland.org>
+ S:	Maintained
+ F:	drivers/power/supply/ip5xxx_power.c
+ 
++INNOSILICON HDMI BRIDGE DRIVER
++M:	Andy Yan <andy.yan@rock-chips.com>
++L:	dri-devel@lists.freedesktop.org
++S:	Maintained
++T:	git https://gitlab.freedesktop.org/drm/misc/kernel.git
++F:	drivers/gpu/drm/bridge/inno-hdmi.c
++F:	include/drm/bridge/inno_hdmi.h
++
+ INOTIFY
+ M:	Jan Kara <jack@suse.cz>
+ R:	Amir Goldstein <amir73il@gmail.com>
 -- 
 2.43.0
-
-base-commit: 021ec46a5795eaf39f80c116704861cacf04c8b2
-branch: rk3036_hdmi_bridge_v7
 
 
 _______________________________________________
