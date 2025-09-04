@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4A13CA1002
-	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Sep 2025 12:35:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04C7DCA1002
+	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Sep 2025 12:36:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EGZGXpD7vGABuyvlzUkqvQ2jACGWrCG24iAB0LMk8wE=; b=P+7GV69PG1OFKO
-	qjPprlxAwgS8AG8zs4YP7H6c/C1SQQ+2nHiKbdDfp+dTUbaaqbK/1Z6OtWFQi1PF18MfUvQc30iYH
-	cKzVxcz5UeEeDIS3lvPdBnXR4eTWZN7HBuj35R/mlfiRYFr+uW/qApsFVIuw1NH1qhE8gom8TnWQc
-	0f+mythePp0YXqYA7kBIMRKafqDrPB+SpyC6aPpCuM5bQbroz/TQHZaYUVyar00ulop1pfvaNIARD
-	6r0MZsm4VTQXHR49Xk4vsByeMLD4M0tymt8aUK6WFnQq+yjGAUFOx+tfHfY1Vvy0p2J6pbesjWbKH
-	4SX8oU+6kRPclWPufBgg==;
+	List-Owner; bh=kcIdOR0rdwzfqctEsyiiAGw32c/rtmNuWMGJU7zN7Z8=; b=ON9QUeEhc0nF3P
+	v3Ev1LukuUf0OfPZgZArQdwfnW7XtiolK3jJNTazZcsYwPgsfD4pHfapxthiWWnoFqxcp4DWUer2f
+	8Ig8VAtd84k0jZwKdAtwb4ESsUV9ftfET+c8ZJk75iGUaJXOoMGnN4ubbDMfLWUOYnq0ka+5nwYFU
+	z/2id4X16cm9UYEV/LnL+Kkrva08K4gyKK7qwfuSFbUrXhh72sxMWFAAcsm5L1UvAwc08gxI624eK
+	4yHpgF96WU5UO/yQ9/XqfDUGHSA1ClMgkU7ofSmUUIuIb6/brdv/kcJLdbcZamwwU8blcbjpq2e53
+	VEBpaBCGfQJaYVebK6Iw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uu9Bh-0000000BbI7-0Ph3;
-	Thu, 04 Sep 2025 12:35:37 +0000
+	id 1uu9CY-0000000Bbkh-2Y4a;
+	Thu, 04 Sep 2025 12:36:30 +0000
 Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uu7mU-0000000B5gO-1uYg;
-	Thu, 04 Sep 2025 11:05:32 +0000
+	id 1uu7oW-0000000B6bT-36Gh;
+	Thu, 04 Sep 2025 11:07:38 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
 	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=PrZXrE8m4b6VE58jUKKj5WGOEJfOjU7pp7prPNE0Z9Y=; b=HP6SOgLB686PBk0qc6hRAnXjUl
-	oPUd/osUYYtpYBh5wkx/Rfzj6j9ZinhRXVFxvPPYqhvXiolj2mhJRuRoehEWoowWGTrGM3TiOHV38
-	c5ZVuOH8GhNJaiyknBgBhWrHz9HDxW0aZp7QzPzUZYluQWqgV4f2f5WzenHosRWXBBpf840z3gee6
-	6pHV291CkgIU6+BzO2B+LSnW7XYPgFRsc96fcTTFqITKaD2WHoy4NDVJSFiiuDhUJlyQHn9LfmcL3
-	rte8Tjwko4kcKaL4feZNoElphViui4rHHlfyVxYOm9zWw6EtBUjf9xTx8h2UIjVqtD2Simm5b576W
-	fVnviNVA==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:33562)
+	bh=hhNQHJCCEEIbETm8PsRs80LMVSc5JQABFf4Nlp+TIXg=; b=lEWSoEyeyy0AyBUXEFyFioY2Qr
+	5ViAolylKJpUMXiqgDYZoq8Q2U5vNy3IYHQiNtDaLOL63OeTSyPUN/fZ58GNpOsaL59AcrLDG1GkW
+	4wl4fHb07tolpFqA/OQnNgJqcy4MiF54oENi78ThqDzJrDdEWjk8t+h2hUflqJ2Fhj9uVqfP2k7lr
+	C06yWvlC9kho/WlJKl5pyaT7G6AAavlFJksygtaEGJRIhnQgZBdcdkQLvtFLVB3P7g71C2ECvU3oQ
+	luqQbLl1fCFMiMjc9FsaQy3lb7KEPPDAz769ltbrReVkWXzsRbf6vBWCoJ5BnppVbbt+P82sEeHz5
+	t4bXFjbw==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:45246)
 	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.98.2)
 	(envelope-from <linux@armlinux.org.uk>)
-	id 1uu7mL-000000001rr-0hSY;
-	Thu, 04 Sep 2025 12:05:21 +0100
+	id 1uu7oN-000000001s7-3uL3;
+	Thu, 04 Sep 2025 12:07:27 +0100
 Received: from linux by shell.armlinux.org.uk with local (Exim 4.98.2)
 	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1uu7mJ-000000001SE-17WY;
-	Thu, 04 Sep 2025 12:05:19 +0100
-Date: Thu, 4 Sep 2025 12:05:19 +0100
+	id 1uu7oM-000000001SM-3QdA;
+	Thu, 04 Sep 2025 12:07:26 +0100
+Date: Thu, 4 Sep 2025 12:07:26 +0100
 From: "Russell King (Oracle)" <linux@armlinux.org.uk>
 To: Chaoyi Chen <chaoyi.chen@rock-chips.com>
 Cc: Yao Zi <ziyao@disroot.org>, Andrew Lunn <andrew+netdev@lunn.ch>,
@@ -60,16 +60,17 @@ Cc: Yao Zi <ziyao@disroot.org>, Andrew Lunn <andrew+netdev@lunn.ch>,
 	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
 Subject: Re: [PATCH net] net: stmmac: dwmac-rk: Ensure clk_phy doesn't
  contain invalid address
-Message-ID: <aLlyb6WvoBiBfUx3@shell.armlinux.org.uk>
+Message-ID: <aLly7lJ05xQjqCWn@shell.armlinux.org.uk>
 References: <20250904031222.40953-3-ziyao@disroot.org>
  <aLlwv3v8ACha8b-3@shell.armlinux.org.uk>
  <b5fbeb3f-9962-444d-85b3-3b8a11f69266@rock-chips.com>
+ <aLlyb6WvoBiBfUx3@shell.armlinux.org.uk>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <b5fbeb3f-9962-444d-85b3-3b8a11f69266@rock-chips.com>
+In-Reply-To: <aLlyb6WvoBiBfUx3@shell.armlinux.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250904_040530_505641_5E8A8794 
-X-CRM114-Status: GOOD (  21.72  )
+X-CRM114-CacheID: sfid-20250904_040736_785343_60CFA267 
+X-CRM114-Status: GOOD (  23.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,31 +87,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 04, 2025 at 07:03:10PM +0800, Chaoyi Chen wrote:
-> 
-> On 9/4/2025 6:58 PM, Russell King (Oracle) wrote:
-> > On Thu, Sep 04, 2025 at 03:12:24AM +0000, Yao Zi wrote:
-> > >   	if (plat->phy_node) {
-> > >   		bsp_priv->clk_phy = of_clk_get(plat->phy_node, 0);
-> > >   		ret = PTR_ERR_OR_ZERO(bsp_priv->clk_phy);
-> > > -		/* If it is not integrated_phy, clk_phy is optional */
-> > > +		/*
-> > > +		 * If it is not integrated_phy, clk_phy is optional. But we must
-> > > +		 * set bsp_priv->clk_phy to NULL if clk_phy isn't proivded, or
-> > > +		 * the error code could be wrongly taken as an invalid pointer.
-> > > +		 */
-> > I'm concerned by this. This code is getting the first clock from the DT
-> > description of the PHY. We don't know what type of PHY it is, or what
-> > the DT description of that PHY might suggest that the first clock would
-> > be.
+On Thu, Sep 04, 2025 at 12:05:19PM +0100, Russell King (Oracle) wrote:
+> On Thu, Sep 04, 2025 at 07:03:10PM +0800, Chaoyi Chen wrote:
 > > 
-> > However, we're geting it and setting it to 50MHz. What if the clock is
-> > not what we think it is?
+> > On 9/4/2025 6:58 PM, Russell King (Oracle) wrote:
+> > > On Thu, Sep 04, 2025 at 03:12:24AM +0000, Yao Zi wrote:
+> > > >   	if (plat->phy_node) {
+> > > >   		bsp_priv->clk_phy = of_clk_get(plat->phy_node, 0);
+> > > >   		ret = PTR_ERR_OR_ZERO(bsp_priv->clk_phy);
+> > > > -		/* If it is not integrated_phy, clk_phy is optional */
+> > > > +		/*
+> > > > +		 * If it is not integrated_phy, clk_phy is optional. But we must
+> > > > +		 * set bsp_priv->clk_phy to NULL if clk_phy isn't proivded, or
+> > > > +		 * the error code could be wrongly taken as an invalid pointer.
+> > > > +		 */
+> > > I'm concerned by this. This code is getting the first clock from the DT
+> > > description of the PHY. We don't know what type of PHY it is, or what
+> > > the DT description of that PHY might suggest that the first clock would
+> > > be.
+> > > 
+> > > However, we're geting it and setting it to 50MHz. What if the clock is
+> > > not what we think it is?
+> > 
+> > We only set integrated_phy to 50M, which are all known targets. For external PHYs, we do not perform frequency settings.
 > 
-> We only set integrated_phy to 50M, which are all known targets. For external PHYs, we do not perform frequency settings.
+> Same question concerning enabling and disabling another device's clock
+> that the other device should be handling.
 
-Same question concerning enabling and disabling another device's clock
-that the other device should be handling.
+Let me be absolutely clear: I consider *everything* that is going on
+with clk_phy here to be a dirty hack.
+
+Resources used by a device that has its own driver should be managed
+by _that_ driver alone, not by some other random driver.
 
 -- 
 RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
