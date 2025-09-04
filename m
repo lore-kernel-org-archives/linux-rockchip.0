@@ -4,72 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5254CA1012
-	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Sep 2025 18:32:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55F61CA1013
+	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Sep 2025 19:52:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=twpjVgDABUa6c/zm6UFKfBQ7GTiShz/HAAu2i4VVVhs=; b=fL8W4gJ/ZyNPNY
-	F4aYKPN+an8A2vekPBgOaMPpVPl+KapMfSwfc+x1X5xWJK7+wWXM5UfmaRzQsGV8g3A+pyhwfaKq/
-	q+e6jtNHWtuwkeEFlNZrelBkoPNkDQlCxmD+9JP9JSMyOJgGwt9wXfRknhLOQMVGwJm1yTJ3Gqko6
-	4/OKR+3TRiAfVt7HXwAajbb6QyqkcybCDcp7LOXYEsPvI/QKj8nIoWn9qBiCVJrA1hf43L9Yg5oiD
-	9fK0vb51776tKP8KYPhNWnKThb3ZkQ9i5ZfpkFUL7UVInc2e7lzPYI3IW/M5np/FmEwdBoHO997ji
-	VQ+b+0DqStsazvCWk0ZA==;
+	List-Owner; bh=Kbgquu6ABnYQ3Qbxw4tpkzZFNnG2j69ymMo92FU/bj0=; b=qTVIrBMf4Fihh2
+	mAQ1uPXRk9EmeVbpvG12y9wHPgaWGQfypZQrUHJsD1aN0U+sgTD22qkZFbi9QB6pnVLtWk1rcAEBd
+	DM4Z+PNIvgBa8xCEV35jJkQtGEcSyfiZfsOQdRCD4oZdadIj6m488NR8Cz33tWaMLYWd26bJHQb21
+	s0LpjlN1KA6+Rv1XY0dW3yLT15TCWWK2Q6OeArriAnZ+us0bgivGqBieG8xATQBGi5D3p4csmM86B
+	bXLsU/TM9EhrE/clxQkKLtWjLDA/+HLT+ichyk3rjfXg7kh+4+2g4dwKH3njFP79AZq1omf8lSjZd
+	hstd1QlJsEnme90qUczA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uuEkh-0000000Db1g-2DZV;
-	Thu, 04 Sep 2025 18:32:07 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1uuFzu-0000000E1vk-0Wt0;
+	Thu, 04 Sep 2025 19:51:54 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uuAZ1-0000000C4Km-18QE;
-	Thu, 04 Sep 2025 14:03:47 +0000
+	id 1uuB3t-0000000CFg5-1bNz;
+	Thu, 04 Sep 2025 14:35:41 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id B088D601AD;
-	Thu,  4 Sep 2025 14:03:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 879F7C4CEF5;
-	Thu,  4 Sep 2025 14:03:42 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id C64C160210;
+	Thu,  4 Sep 2025 14:35:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4991CC4CEF0;
+	Thu,  4 Sep 2025 14:35:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1756994626;
-	bh=R15ptoc9ZlyJDelkbhGWd7+PsXr/DbQC7TFvXfTYnKA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=QC/MO2Y21Nvl8IUs+sKbBsur180b4DnqC1iRGs4cDEmtA2dB/F/DnTrHtME+ejmVt
-	 Luw0G/b7TvS7mgqn4/WGSz4oN0IxJL4Qp4DYbP1QiYIZ6dJC+aYOy016xPny2cLPdp
-	 qXCYd3SoXMaiy6V8e+4y/EWctLTx89eNUWbPQlzkcICrdqPWKjBZ5cM+cm2gN0i5to
-	 2uHoLd86exMI9vMi6Eaz9JWEuNZ+hMpteDcLawe2q2LzBrnzIqS75vGOlEqBd9cdCI
-	 5172NQ1AECfMvUm+FZS/Svpc+N9NQOhz7vDTOR9r2AfIE9ewQk1UYNlx+Ffe+LAe7R
-	 1esFMTJP1dR+Q==
-Date: Thu, 4 Sep 2025 16:03:39 +0200
-From: Niklas Cassel <cassel@kernel.org>
-To: Manivannan Sadhasivam <mani@kernel.org>
-Cc: manivannan.sadhasivam@oss.qualcomm.com,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Mahesh J Salgaonkar <mahesh@linux.ibm.com>,
-	Oliver O'Halloran <oohall@gmail.com>, Will Deacon <will@kernel.org>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Rob Herring <robh@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
-	Philipp Zabel <p.zabel@pengutronix.de>, linux-pci@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
-	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	s=k20201202; t=1756996540;
+	bh=zI6dlT7OfZMIFDyCs2yOrFWg2VXfUlEcp0qJeItApO0=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=W+BqF3zyMBbLODFjNyiAuAEyCtRns/mqv+H9HndxC3iKNf3z/4J/jCuKNAl5evtkt
+	 HaHHknaPNaPM8UHHc4aYtWQ2maQXO+lXKmffFqsB32SQjtzkd7C0QHzyW+ZHWCeNA1
+	 5Zk6XmzwlEjXUsZ9YSHfWb++3W2n7kiIY57bi/TYPL+SBmR4URCuAgy+UjTkym491x
+	 GWndwGJKIXbcWxY5CxfzrU/Gs8/l7coFDPlqOceCwf5hv4Ys5iN2NRlunCjpaBBJi/
+	 au2wEFxhFBKTVZ5z1oNsGC9jMHqj7TRtgHL3FQatPNn3P5MB42z22fB04/7qyu3rRA
+	 //A/W+hLISu7g==
+From: Bjorn Andersson <andersson@kernel.org>
+To: Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Vladimir Zapolskiy <vz@mleia.com>,
+	Piotr Wojtaszczyk <piotr.wojtaszczyk@timesys.com>,
+	Chen Wang <unicorn_wang@outlook.com>,
+	Inochi Amaoto <inochiama@gmail.com>,
+	Michal Simek <michal.simek@amd.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Andrea della Porta <andrea.porta@suse.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Brian Masney <bmasney@redhat.com>
+Cc: linux-clk@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	sophgo@lists.linux.dev,
+	linux-arm-msm@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	Wilfred Mallawa <wilfred.mallawa@wdc.com>,
-	Krishna Chaitanya Chundru <krishna.chundru@oss.qualcomm.com>,
-	Lukas Wunner <lukas@wunner.de>
-Subject: Re: [PATCH v6 0/4] PCI: Add support for resetting the Root Ports in
- a platform specific way
-Message-ID: <aLmcO8ukT-CDZMuT@ryzen>
-References: <20250715-pci-port-reset-v6-0-6f9cce94e7bb@oss.qualcomm.com>
- <aHoh1XfhR8EB_5yY@ryzen>
- <aHokdhpJUhSZ5FSp@ryzen>
- <tujurux64if24z7w7h6wjxhrnh4owkgiv33u2fftp7zr5ucv2m@2ijo5ok5jhfk>
- <aJ743hJw-T9y3waX@ryzen>
- <lakgphb7ym3cybwmpdqyipzi4tlkwbfijzhd4r6hvhho3pc7iu@6ludgw6wqkjh>
+	Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
+Subject: Re: (subset) [PATCH 0/8] clk: convert drivers from deprecated round_rate() to determine_rate()
+Date: Thu,  4 Sep 2025 09:35:32 -0500
+Message-ID: <175699653023.2182903.15754546225268713483.b4-ty@kernel.org>
+X-Mailer: git-send-email 2.49.0
+In-Reply-To: <20250828-clk-round-rate-v2-v1-0-b97ec8ba6cc4@redhat.com>
+References: <20250828-clk-round-rate-v2-v1-0-b97ec8ba6cc4@redhat.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <lakgphb7ym3cybwmpdqyipzi4tlkwbfijzhd4r6hvhho3pc7iu@6ludgw6wqkjh>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,197 +83,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Mani,
 
-On Fri, Aug 29, 2025 at 09:44:08PM +0530, Manivannan Sadhasivam wrote:
-> On Fri, Aug 15, 2025 at 11:07:42AM GMT, Niklas Cassel wrote:
-
-(snip)
-
-> > > > > ## On EP side:
-> > > > > # echo 0 > /sys/kernel/config/pci_ep/controllers/a40000000.pcie-ep/start && \
-> > > > >   sleep 0.1 && echo 1 > /sys/kernel/config/pci_ep/controllers/a40000000.pcie-ep/start
-> > > > > 
-> > > > > Basically all tests timeout
-> > > > > # FAILED: 1 / 16 tests passed.
-> > > > > 
-> > > > > Which is the same as before this patch series.
-> > > 
-> > > This is kind of expected since the pci_endpoint_test driver doesn't have the AER
-> > > err_handlers defined.
-> > 
-> > I see.
-> > Would be nice if we could add them then, so that we can verify that this
-> > series is working as intended.
-
-(snip)
-
-> Ok, thanks for the logs. I guess what is happening here is that we are not
-> saving/restoring the config space of the devices under the Root Port if linkdown
-> is happens. TBH, we cannot do that from the PCI core since once linkdown
-> happens, we cannot access any devices underneath the Root Port. But if
-> err_handlers are available for drivers for all devices, they could do something
-> smart like below:
+On Thu, 28 Aug 2025 20:38:19 -0400, Brian Masney wrote:
+> Here's a minor v2 to my larger 114 patch series at
+> https://lore.kernel.org/linux-clk/20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com/
+> that only includes 8 patches where a v2 was needed. To reduce the noise
+> in everyone's mailboxes I'm not including the other 106 patches that are
+> still valid. I will supply a 'b4 am --cherry-pick xxx' command on the
+> other cover letter to exclude the patches in this series.
 > 
-> diff --git a/drivers/misc/pci_endpoint_test.c b/drivers/misc/pci_endpoint_test.c
-> index c4e5e2c977be..9aabf1fe902e 100644
-> --- a/drivers/misc/pci_endpoint_test.c
-> +++ b/drivers/misc/pci_endpoint_test.c
-> @@ -989,6 +989,8 @@ static int pci_endpoint_test_probe(struct pci_dev *pdev,
->  
->         pci_set_drvdata(pdev, test);
->  
-> +       pci_save_state(pdev);
-> +
->         id = ida_alloc(&pci_endpoint_test_ida, GFP_KERNEL);
->         if (id < 0) {
->                 ret = id;
-> @@ -1140,12 +1142,31 @@ static const struct pci_device_id pci_endpoint_test_tbl[] = {
->  };
->  MODULE_DEVICE_TABLE(pci, pci_endpoint_test_tbl);
->  
-> +static pci_ers_result_t pci_endpoint_test_error_detected(struct pci_dev *pdev,
-> +                                              pci_channel_state_t state)
-> +{
-> +       return PCI_ERS_RESULT_NEED_RESET;
-> +}
-> +
-> +static pci_ers_result_t pci_endpoint_test_slot_reset(struct pci_dev *pdev)
-> +{
-> +       pci_restore_state(pdev);
-> +
-> +       return PCI_ERS_RESULT_RECOVERED;
-> +}
-> +
-> +static const struct pci_error_handlers pci_endpoint_test_err_handler = {
-> +       .error_detected = pci_endpoint_test_error_detected,
-> +       .slot_reset = pci_endpoint_test_slot_reset,
-> +};
-> +
->  static struct pci_driver pci_endpoint_test_driver = {
->         .name           = DRV_MODULE_NAME,
->         .id_table       = pci_endpoint_test_tbl,
->         .probe          = pci_endpoint_test_probe,
->         .remove         = pci_endpoint_test_remove,
->         .sriov_configure = pci_sriov_configure_simple,
-> +       .err_handler    = &pci_endpoint_test_err_handler,
->  };
->  module_pci_driver(pci_endpoint_test_driver);
-> 
-> This essentially saves the good known config space during probe and restores it
-> during the slot_reset callback. Ofc, the state would've been overwritten if
-> suspend/resume happens in-between, but the point I'm making is that unless all
-> device drivers restore their known config space, devices cannot be resumed
-> properly post linkdown recovery.
-> 
-> I can add a patch based on the above diff in next revision if that helps. Right
-> now, I do not have access to my endpoint test setup. So can't test anything.
+> [...]
 
-I tested your patch series + your suggested change above, and after a:
+Applied, thanks!
 
-## On EP side:
-# echo 0 > /sys/kernel/config/pci_ep/controllers/a40000000.pcie-ep/start && \
-  sleep 0.1 && echo 1 > /sys/kernel/config/pci_ep/controllers/a40000000.pcie-ep/start
+[2/8] clk: qcom: alpha-pll: convert from round_rate() to determine_rate()
+      commit: 0e56e3369b60506ac030546c8a63a1aef153d486
 
-Instead of:
-
-# FAILED: 1 / 16 tests passed.
-
-I now get:
-# FAILED: 7 / 16 tests passed.
-
-Test cases 1-7 now passes (the test cases related to BARs),
-all other test cases still fail:
-
-# /pcitest 
-TAP version 13
-1..16
-# Starting 16 tests from 9 test cases.
-#  RUN           pci_ep_bar.BAR0.BAR_TEST ...
-#            OK  pci_ep_bar.BAR0.BAR_TEST
-ok 1 pci_ep_bar.BAR0.BAR_TEST
-#  RUN           pci_ep_bar.BAR1.BAR_TEST ...
-#            OK  pci_ep_bar.BAR1.BAR_TEST
-ok 2 pci_ep_bar.BAR1.BAR_TEST
-#  RUN           pci_ep_bar.BAR2.BAR_TEST ...
-#            OK  pci_ep_bar.BAR2.BAR_TEST
-ok 3 pci_ep_bar.BAR2.BAR_TEST
-#  RUN           pci_ep_bar.BAR3.BAR_TEST ...
-#            OK  pci_ep_bar.BAR3.BAR_TEST
-ok 4 pci_ep_bar.BAR3.BAR_TEST
-#  RUN           pci_ep_bar.BAR4.BAR_TEST ...
-#      SKIP      BAR is disabled
-#            OK  pci_ep_bar.BAR4.BAR_TEST
-ok 5 pci_ep_bar.BAR4.BAR_TEST # SKIP BAR is disabled
-#  RUN           pci_ep_bar.BAR5.BAR_TEST ...
-#            OK  pci_ep_bar.BAR5.BAR_TEST
-ok 6 pci_ep_bar.BAR5.BAR_TEST
-#  RUN           pci_ep_basic.CONSECUTIVE_BAR_TEST ...
-#            OK  pci_ep_basic.CONSECUTIVE_BAR_TEST
-ok 7 pci_ep_basic.CONSECUTIVE_BAR_TEST
-#  RUN           pci_ep_basic.LEGACY_IRQ_TEST ...
-# pci_endpoint_test.c:106:LEGACY_IRQ_TEST:Expected 0 (0) == ret (-110)
-# pci_endpoint_test.c:106:LEGACY_IRQ_TEST:Test failed for Legacy IRQ
-# LEGACY_IRQ_TEST: Test failed
-#          FAIL  pci_ep_basic.LEGACY_IRQ_TEST
-not ok 8 pci_ep_basic.LEGACY_IRQ_TEST
-#  RUN           pci_ep_basic.MSI_TEST ...
-# pci_endpoint_test.c:118:MSI_TEST:Expected 0 (0) == ret (-110)
-# pci_endpoint_test.c:118:MSI_TEST:Test failed for MSI1
-# pci_endpoint_test.c:118:MSI_TEST:Expected 0 (0) == ret (-110)
-# pci_endpoint_test.c:118:MSI_TEST:Test failed for MSI2
-# pci_endpoint_test.c:118:MSI_TEST:Expected 0 (0) == ret (-110)
-# pci_endpoint_test.c:118:MSI_TEST:Test failed for MSI3
-...
-
-
-I think I know the reason.. you save the state before the IRQs have been allocated.
-
-Perhaps we need to save the state after enabling IRQs?
-
-I tried this patch on top of your patch:
---- a/drivers/misc/pci_endpoint_test.c
-+++ b/drivers/misc/pci_endpoint_test.c
-@@ -851,6 +851,8 @@ static int pci_endpoint_test_set_irq(struct pci_endpoint_test *test,
-                return ret;
-        }
- 
-+       pci_save_state(pdev);
-+
-        return 0;
- }
-
-
-But still:
-# FAILED: 7 / 16 tests passed.
-
-So... apparently that did not help...
-
-I tried with the following change as well (on top of my patch above):
-
-+static pci_ers_result_t pci_endpoint_test_slot_reset(struct pci_dev *pdev)
-+{
-+       struct pci_endpoint_test *test = pci_get_drvdata(pdev);
-+       int irq_type = test->irq_type;
-+
-+       pci_restore_state(pdev);
-+
-+       if (irq_type != PCITEST_IRQ_TYPE_UNDEFINED) {
-+               pci_endpoint_test_clear_irq(test);
-+               pci_endpoint_test_set_irq(test, irq_type);
-+       }
-+
-+       return PCI_ERS_RESULT_RECOVERED;
-+}
-
-But still only:
-# FAILED: 7 / 16 tests passed.
-
-Do you have any suggestions?
-
-
-Kind regards,
-Niklas
+Best regards,
+-- 
+Bjorn Andersson <andersson@kernel.org>
 
 _______________________________________________
 Linux-rockchip mailing list
