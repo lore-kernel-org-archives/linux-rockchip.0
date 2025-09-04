@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEACACA1015
-	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Sep 2025 12:04:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7E8DCA1002
+	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Sep 2025 12:13:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=S75klH2Lve2O2DZclGJu1gnsftEYwaxiXksbgHAlA2s=; b=wCEeNAekFtqWKN
-	ZxYlGsQJhS1eB9OzXpWWdIr5u0ehtmtmqPFcCOpcB20ANCvMYma8Ak2vVLiELtO9B5Tdj5V1owfw4
-	Sb6MAXoM4UAR01cpVoUwJA96HMZUlkoCet9k9nP1mTs0uNB7+8/+jsn6NPqKbGziGkRRIKO4rWx7H
-	gEx2Ot+is5u4Xtr6Qnf4EWLIXbnsb2LGtbvYtwuVB2g3FKpjphem2py8NLZFmYuN2hf5Raxaw2OAc
-	d+syB8SuAczKKbSR7hKkDTvFMx+ac0mpangtJPp2zPN9G8lMYeoeeLm/p9rpNFnSt667T/SWc7CjY
-	1Knzh3NRXBCWb+7SSoAg==;
+	List-Owner; bh=z2PQrRE3/BvOoJsx63qg9vmaQ2rQo2rDV1dzFaGimNI=; b=eeFeynS+y54K51
+	+q/sogzPPUWMzKuqw5msgioOT2ufnw/tNxocf3DF++0csIjDo1H+I22s1OPe9QeChisdbCWb2aN9A
+	8ru8XRoQFNM2qRMMTTYVRE51qzose2xNPT3hCdNRWr1r80PrFf8M24C1RnbEgm/onWxCicvF9V7iW
+	K2l8NuKZ2/icj8+yveEmY/Kqh/OhyLOC7WWph47Rt8diA8DQMfsLQGpaAWp4zbUo6jrg8CUiGDxet
+	cb2lxoMhZBiq4lnK/FjxAzmeks8S0KB6Bvz8vpugzi72d570YMEefSK6qosXI1c0dG4d60JhuOVnA
+	7hn/N/e8IfinDPWtpaPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uu8hj-0000000BQmZ-1iF7;
-	Thu, 04 Sep 2025 12:04:39 +0000
+	id 1uu8q3-0000000BU7g-0Pgh;
+	Thu, 04 Sep 2025 12:13:15 +0000
 Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uu7XK-0000000B0Xk-49xz;
-	Thu, 04 Sep 2025 10:49:52 +0000
+	id 1uu7fX-0000000B3Os-2FYo;
+	Thu, 04 Sep 2025 10:58:20 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
 	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=bj32BBEvUFT2bJkkrxWT0RFZIhU2FlKAOhIlf8DSq2w=; b=Lx3+0R+dpb/wJElSmqaV0NtkZz
-	eTTNZctX6+i+m9OQ22cwkZZ3TayAC92JyDE9QjiiVa0ezKrm2f85j0udld84+A1Bq18CpP3KIo6gS
-	n/8UI99jE0BpF9yNxgIuJRorHPjvbqwzKJ+M2JLYJi8za4yz/fkXnkLjB6u50owuAIfiFwvMvL14k
-	CK6jG6j96MktoCUm0+ZYmravCe76zJlYEpzuaTZ8CWYBuIecQVweB/jcGh8rF4/5FBvNETF/Lryai
-	KeYc71O2fJxnJKTCPGxJW/YOCAFjPdizfyeyNm55mDOH+MzP/GwwgV39BK1SSiaED6bgRdIt+qvZX
-	M1T2GIHg==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:56074)
+	bh=0+dGMtdtbtPkJn14dHatEx4CiUjsN+rJYDHVha04vms=; b=Hceoe2W9SjDvm+/UrrvyknUWpK
+	4OF4nbG9zdLI7FmDlGd4t+cGFfcNs4Cb8m8ZMZN5iNhs7TbMrSp1O+UEOs7eA8XtUpg2yyV58e8GO
+	ty2qX1Aqn19LOsV34Jjou2Xa1/fCJIv199mdEXYheDlPIa3WJzmRRg+I80XTOf5K64kX0tXQqb1y2
+	YcmwP26pbT0FzdCxUylGypZw8MXNbEi8scU3mmHiw1kQnlK+IRXmCjIyuiXgXQqrtI2gpe0xjLb0F
+	yJx9lmSLgBdwv/wouAniGZcCnEH9x4OiFPa0ZYqUqtVeIq7C6w77gA3OX8EuCUmVUUCyiptzkgim6
+	HL889VZA==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:55126)
 	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.98.2)
 	(envelope-from <linux@armlinux.org.uk>)
-	id 1uu7X7-000000001qG-0LDt;
-	Thu, 04 Sep 2025 11:49:37 +0100
+	id 1uu7fN-000000001r8-1SFK;
+	Thu, 04 Sep 2025 11:58:09 +0100
 Received: from linux by shell.armlinux.org.uk with local (Exim 4.98.2)
 	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1uu7X3-000000001Rs-38vh;
-	Thu, 04 Sep 2025 11:49:33 +0100
-Date: Thu, 4 Sep 2025 11:49:33 +0100
+	id 1uu7fM-000000001S6-0098;
+	Thu, 04 Sep 2025 11:58:08 +0100
+Date: Thu, 4 Sep 2025 11:58:07 +0100
 From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Simon Horman <horms@kernel.org>
-Cc: Yao Zi <ziyao@disroot.org>, Andrew Lunn <andrew+netdev@lunn.ch>,
+To: Yao Zi <ziyao@disroot.org>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
 	"David S. Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
 	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
@@ -61,15 +61,14 @@ Cc: Yao Zi <ziyao@disroot.org>, Andrew Lunn <andrew+netdev@lunn.ch>,
 	linux-rockchip@lists.infradead.org
 Subject: Re: [PATCH net] net: stmmac: dwmac-rk: Ensure clk_phy doesn't
  contain invalid address
-Message-ID: <aLluvYQ-i-Z9vyp7@shell.armlinux.org.uk>
+Message-ID: <aLlwv3v8ACha8b-3@shell.armlinux.org.uk>
 References: <20250904031222.40953-3-ziyao@disroot.org>
- <20250904103443.GH372207@horms.kernel.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20250904103443.GH372207@horms.kernel.org>
+In-Reply-To: <20250904031222.40953-3-ziyao@disroot.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250904_034951_031859_7F1F054C 
-X-CRM114-Status: GOOD (  16.44  )
+X-CRM114-CacheID: sfid-20250904_035819_576146_D0789D70 
+X-CRM114-Status: GOOD (  18.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,37 +85,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 04, 2025 at 11:34:43AM +0100, Simon Horman wrote:
-> Thanks, and sorry for my early confusion about applying this patch.
-> 
-> I agree that the bug you point out is addressed by this patch.
-> Although I wonder if it is cleaner not to set bsp_priv->clk_phy
-> unless there is no error, rather than setting it then resetting
-> it if there is an error.
+On Thu, Sep 04, 2025 at 03:12:24AM +0000, Yao Zi wrote:
+>  	if (plat->phy_node) {
+>  		bsp_priv->clk_phy = of_clk_get(plat->phy_node, 0);
+>  		ret = PTR_ERR_OR_ZERO(bsp_priv->clk_phy);
+> -		/* If it is not integrated_phy, clk_phy is optional */
+> +		/*
+> +		 * If it is not integrated_phy, clk_phy is optional. But we must
+> +		 * set bsp_priv->clk_phy to NULL if clk_phy isn't proivded, or
+> +		 * the error code could be wrongly taken as an invalid pointer.
+> +		 */
 
-+1 !
+I'm concerned by this. This code is getting the first clock from the DT
+description of the PHY. We don't know what type of PHY it is, or what
+the DT description of that PHY might suggest that the first clock would
+be.
 
-> More importantly, I wonder if there is another bug: does clk_set_rate need
-> to be called in the case where there is no error and bsp_priv->integrated_phy
-> is false?
+However, we're geting it and setting it to 50MHz. What if the clock is
+not what we think it is?
 
-I think there's another issue:
+I'm not sure we should be delving in to some other device's DT
+properties to then get resources that it _uses_ to then effectively
+take control those resources.
 
-static int rk_gmac_clk_init(struct plat_stmmacenet_data *plat)
-{
-...
-        if (plat->phy_node) {
-                bsp_priv->clk_phy = of_clk_get(plat->phy_node, 0);
-...
+I think we need way more detail on what's going on. Commit da114122b83
+merely stated:
 
-static void rk_gmac_remove(struct platform_device *pdev)
-{
-...
-        if (priv->plat->phy_node && bsp_priv->integrated_phy)
-                clk_put(bsp_priv->clk_phy);
+    For external phy, clk_phy should be optional, and some external phy
+    need the clock input from clk_phy. This patch adds support for setting
+    clk_phy for external phy.
 
-So if bsp_priv->integrated_phy is false, then we get the clock but
-don't put it.
+If the external PHY requires a clock supplied to it, shouldn't the PHY
+driver itself be getting that clock and setting it appropriately?
 
 -- 
 RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
