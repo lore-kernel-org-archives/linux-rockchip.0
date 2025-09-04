@@ -4,126 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE520CA1010
-	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Sep 2025 02:20:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E309CA1014
+	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Sep 2025 03:05:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Lf8c2XeUpKqDgZR6c9rTri01UA9L2mIGzl9mMZp21kw=; b=nqIw5cjgtSznQ8
-	6VUScbwvi16u70TtFvjwzQ/YMIiCXUO1mJ9cCW2RV6Cl8QZvWmT6jQbe/0c0CTpZb9SdendtI6C3v
-	9fgt9JkDHXcQpRNpi21tvkypa5LUbEXgADj880itKkOczhh3dpD52jGX5Y30kdR9qSvfahZJKyobK
-	H/LKcjb/PGXu6ScDqZKpyqV7+b/i9a2v+4mt/YfruRMxiuh7MjQHyUKztoNGdj9JW9+ruCRo7eJrl
-	bnd+bGOPcpRi4ZEaeF0OKaVOcGWX0cq1TgKgFvXJnT5m1l0U1UB4/BJeNGWdY/dLnHW0LfI5T2WSQ
-	LnRt1ONxj4WCJxvYbz8A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Wqe8TMZMK8dQWXoAKOpk179jJKg2VvWl/NHOHpghYrk=; b=FcATGjOyRzPC2L
+	M1SMvbkG4ydaj7KFuSm9zwgNubJXQccgntgK88eFPvzRo4UfbuFhxDHyjYRd+VKwnGLxp8xXHM2R5
+	pi+3uRkkIxsRYOyUKD8LbF75QUzgw0ylxvVPnYzjXiSEtqFtyLd5NiKc9V2kXiEfM9UtJ49F0/8+A
+	lVvQJ6OGz87nKz4sdu1iUudw6e2D5DIuTTVII/jygE5amVtN5RLxFx+k/ngJk/stFNXNonAOShhlO
+	kEUYsY9I4dWjKdgKMT6AGPsKc1KlO9LiUQumRgr6j8yv6fldUELfWb4bbCyl8Ma+zNRfZXboUOZNg
+	lvi2J2MylyYZpE1c30OQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utzam-00000008Mbx-1KHN;
-	Thu, 04 Sep 2025 02:20:52 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1uu0HT-00000008Z3w-3cKE;
+	Thu, 04 Sep 2025 03:04:59 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utzY0-00000008LUo-0qWr
-	for linux-rockchip@lists.infradead.org;
-	Thu, 04 Sep 2025 02:18:01 +0000
-Received: from pps.filterd (m0279869.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 5841RPKT003955
-	for <linux-rockchip@lists.infradead.org>; Thu, 4 Sep 2025 02:17:59 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	qkFwydJsxqdgKqOJsAZ1HDk8X8ftVkpre+cMSSd/UDM=; b=HYWdy/0/zGXNvniC
-	YSpkv3GBj1r6CrCdX69ovIPoytEWNU9RERQfYcx2oTjSxWrQ7mq8T1eTnMmsmgWZ
-	VTYYhktA8UPp+u2F5OfPKogforhOErJ0WP0PM5XXOU6igHHSexuX5OiEZzwPt8mg
-	jS2IflRnkmp6N7BXM0Tz4p+1sf7wU6L0RuJz3V4XMNZGXSeL59g0a8Tf89XjNSBA
-	0hhw0v0Ls5ul5tK4y06uwohAFQIsed+krasNFCaJobCHRcOX3V9j2Anc77/MZt/0
-	kwUL5ecFYDDWunFW/R4ZbPdl1Ra8lyt/xdj38Aa1MHNhdjDqnPwOuA3Lxa/dDPNl
-	pzvbvw==
-Received: from mail-qv1-f69.google.com (mail-qv1-f69.google.com [209.85.219.69])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 48ura8wr7k-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
-	for <linux-rockchip@lists.infradead.org>; Thu, 04 Sep 2025 02:17:59 +0000 (GMT)
-Received: by mail-qv1-f69.google.com with SMTP id 6a1803df08f44-728f554de59so5093306d6.0
-        for <linux-rockchip@lists.infradead.org>; Wed, 03 Sep 2025 19:17:59 -0700 (PDT)
+	id 1uu0Ej-00000008YLl-3kB8;
+	Thu, 04 Sep 2025 03:02:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=QT7by1gfa9pKhUAtv+8oGByeE/LYqWFquUc9CO+EUmo=; b=SzNchODQ1dpKsEuysE3M5cUA5n
+	RfxxT4TPOwAUUOLqAXwFJBt9xKtCjAqjh/8M+JhlSct34VuhlkQnLe8jsqs9OAduorzYpPmQoD8qK
+	2Dvu3TOmoNeXmIDBm2VdSQSttEe3maM0nzgqu3eO+BytOqBunUVjR4j9baH1z5VBlt+X/MOMP07u4
+	rUWQK2FmIwQpelWvZ5nVNPwaNe+E6sLGK6b+5/zl+DxWyrraSW+f3/xUzsRPaHAnudgEtL67QSsq7
+	DamRN/eALMv6n8q7ro6zkgaQ6f3NqKMp0iVQqWogqmSar/90qxHVng5y5Vi1SFSer6HF/FosTo3L4
+	MA37bftA==;
+Received: from mail-ot1-x333.google.com ([2607:f8b0:4864:20::333])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uu0Ef-00000004Gu6-3dJq;
+	Thu, 04 Sep 2025 03:02:08 +0000
+Received: by mail-ot1-x333.google.com with SMTP id 46e09a7af769-74526ca79beso559074a34.0;
+        Wed, 03 Sep 2025 20:02:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1756954922; x=1757559722; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=QT7by1gfa9pKhUAtv+8oGByeE/LYqWFquUc9CO+EUmo=;
+        b=FYnze3Inpg1IS5vv5R5kMR/A2MsAApANnjxmt9UxifcWKE1Yncw9MdWXMVOM5fL2bj
+         CoNW/Dhbi0FFRhKJyys78pat1vIcBKDP2WMQE/4CX6sfLI8MiLSkfkeiLLBwPGFAulk/
+         92d3M385rJPzgceIAfa3CGu3yv4tlL0detlFgjBZXnCL3algYrcktJz51q0r3ZqTcROD
+         p0lkqdugEe1xhU1TpKlxnx++UDDeqCN8DORtq4XlGHgU1R2xz4RfYvbi2UYldI/kG9HT
+         X8jkGE9N6uAlTIVsCimLJ5iN179haf++K8oIiDuf760UlgwKKiQvU8kw6BEewsU6d1OB
+         OA9Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1756952278; x=1757557078;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=qkFwydJsxqdgKqOJsAZ1HDk8X8ftVkpre+cMSSd/UDM=;
-        b=jnjR8BXweCUCl9RDnqLvJU7B5KmrOtyTVI2Iaaq3jtrbrQTYLLLB8BZdjskLLKoPIL
-         hF4njQNy6ud4ASknmuwo/0zk+cH4CQm7VbkaVTqQi45vWzxyBGQvKRSI6+n8viIpKu7y
-         NtztUT6AWTPy/g+ynndEopODXy/0YbZGZJUQBqEgy/oJNR0Z6MGd7yY3HlVWBB828Grg
-         KVA5coqSZuhXxgw76Ybi0aTkZrCZg9gs5DbzzPz5zwjejL6kf7UbZevLYkvSf1AEA4ci
-         T66kZYfIaX/0OELqRCjcbXTxD/ykQnxzEnUJ39mrVjheiGirJg6frCYpZGChX52rloaS
-         6wbw==
-X-Forwarded-Encrypted: i=1; AJvYcCUNnwR9cmwvxHxK6l4XaP/ALClZ5p7OBjke+2hKH8sfWqABCaYRS7wyzizwfNQ7b2RbWDAfxB4bhNgZsfYniA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyJozsVV+mGQNJ7vGZkNK0TgiLcytPYX7SOCnqDmnaP1AVPHGn1
-	V/DD7QOrM2fSdvHj0/CZpl8UoI8wWeQhYxKxw8B2s1LWkZz+3Ku3kkjE6hNUHy3CxEOsHUh3S6p
-	o3+Fs3INp9nv5EVUcLWIKCgdqdHoOeCH3UyNT2KiR3ZdGYEaacJF+s8z/xv/E6jSRhiyROz3Njv
-	c=
-X-Gm-Gg: ASbGncvj9OM1OxKnc9VxZxPcyj/RvYXxOXxG5KORqckNf+etwSt/YNRWM729Mm3Ztke
-	O5yBdxj1sLxZbdMzEwVBtlv3jNbWS9Q5xrUIxpBr6ZrwDgwVynnyDcBXam7/5i/fMSPdL0C6xac
-	WW/G8zjfkCa/6iehzjvvgWu34SHSEp8bdL8kMVeWTiece4nUZFWQKND3QC8dMI1AV9PMjsnqG1i
-	hE9YRux465vx/Bk6ewE18jM8LkjUXOlwC2B1sJ/EFCyKijR1dU0zBl7Fex2omv0JlNdZ7o0rghU
-	Htc6UxH3hTnWOV6oLmVqEpsSrT2XccuvN6dH4+R6rC+uRBnn0AxGg/qrrdN+xrfSDGa2uxAOWLh
-	keMbcosVCOF98fOosxoTWS6UyXn3ouM405QUAtlqvBMFOoJyIo5lC
-X-Received: by 2002:a05:6214:501d:b0:712:e30b:ef1d with SMTP id 6a1803df08f44-712e30bf1f3mr189032636d6.63.1756952278132;
-        Wed, 03 Sep 2025 19:17:58 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEpnx/oWiqnFeeBH9c95exPgNTFpxW3/4KJo+Lqf24gUbaClGKKsJlqB65JLkcbt0YEKckERw==
-X-Received: by 2002:a05:6214:501d:b0:712:e30b:ef1d with SMTP id 6a1803df08f44-712e30bf1f3mr189032376d6.63.1756952277581;
-        Wed, 03 Sep 2025 19:17:57 -0700 (PDT)
-Received: from umbar.lan (2001-14ba-a0c3-3a00-264b-feff-fe8b-be8a.rev.dnainternet.fi. [2001:14ba:a0c3:3a00:264b:feff:fe8b:be8a])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-5608ab928f3sm863017e87.39.2025.09.03.19.17.56
+        d=1e100.net; s=20230601; t=1756954922; x=1757559722;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=QT7by1gfa9pKhUAtv+8oGByeE/LYqWFquUc9CO+EUmo=;
+        b=k1P44gLcMeWOy9JjfJKgvd6POAKzJR5lPFtMVFzyK2zgFBhnqeR2VrPpwGCOOKZ1Bk
+         EhnfeqyjcNFKa6QkqxLNgHuaI1KyWEK5JSFvL/dIHvygRsw5ByIGKU31C2/rJqkv9zUq
+         E8SP7u/eWTz8yUKKnQenlq4rsDpIfFJaJxeqGQoeOcv+a1xnN8Hbph8JDEbRyKTQZOm/
+         bILfeqYw8Gcm+VzM0RuTckYJ5uW7Y4WWmTiyWrO9DFNOggvpkE/9HPC/L7/cgqIPsjKZ
+         rfqq71pzNdi5/PQaI+sEuf/UKzLm1e6irFp1/M1sYsHJCpfgsZCrw/UTrlz57Vy48pDi
+         rjMg==
+X-Forwarded-Encrypted: i=1; AJvYcCUtwLmoSGD20wzBJ22VB4OTtnC2bTbpk8LymLnkos1SfEKoTzLnrca3kJSP5zt4XZzEvJBxdiog8zw1buS8peYD@lists.infradead.org, AJvYcCVUGsGRshatFNDwde4BoHMa9yrhMhJYo7ALSTSYPjKgD0kqDCPEarNZwRdIrA3fNkK3TfhrCDEDDh/a1MysdVo=@lists.infradead.org
+X-Gm-Message-State: AOJu0YyBKvgRgmr0FKoH2FmuKDzL97zlPL1/77TG+zKXennr6H6QfbdK
+	w72msweQNRtLXg+aQfLp/WLAGktrv0XVmpTalGEtVcrTpUnp/EGKqurP
+X-Gm-Gg: ASbGnctmHQm0M29wgF+Arr/OiWkPvieXQD/7bTUBcn2jNDdYUeJPhIvmSsrfh4fx5Np
+	QuUWLO6+F19FGlpjI6Oq/i2EAxwKWLE0DetqfzGJPuAieikyH54suwB4uM/jDPyqj8hJTd2MiBi
+	18ab0Oq/vCH5YUmz0RD1mYxuIhMNYUzyquOzdO+JZ/yKWu1wZMtGtOIykLIxbUV0PGIeiXp5K7H
+	GWVSi5eY7b1BR8PzQ2Mex3Hj4jUZTTStN1Ss0GqAEq6rZlC8oDztHfmhToOqyKzlrROOFOaYfx6
+	63BvmwMvN27xhdyeeJxi3DGFOzV8rLO5/VecPkV12ry9lFAMV1XMzvXmBPXUK6Hg3rWEzDnWoND
+	on8ZlOlSwHDRxUA1LxBOxIYjURlKEM4qixxT2XijClfdvglJPJOc=
+X-Google-Smtp-Source: AGHT+IFikeTWfA0Ri8vuJ5/yqUfpE5MwjQOIwn7/c1zwNw8O5lCPtcAHELSxXUuR8uEwh3MYjWv1DA==
+X-Received: by 2002:a05:6830:398a:b0:745:a1d8:9deb with SMTP id 46e09a7af769-745a1d8a3bemr829168a34.1.1756954921729;
+        Wed, 03 Sep 2025 20:02:01 -0700 (PDT)
+Received: from localhost.localdomain ([2603:8081:ad00:4a:c274:2bff:fefd:7058])
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7457428b1b8sm2555110a34.6.2025.09.03.20.02.00
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 03 Sep 2025 19:17:56 -0700 (PDT)
-Date: Thu, 4 Sep 2025 05:17:54 +0300
-From: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-To: Yury Norov <yury.norov@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Andy Yan <andyshrk@163.com>,
-        mripard@kernel.org, neil.armstrong@linaro.org, andrzej.hajda@intel.com,
-        jernej.skrabec@gmail.com, jonas@kwiboo.se,
-        Laurent.pinchart@ideasonboard.com, maarten.lankhorst@linux.intel.com,
-        rfoss@kernel.org, simona@ffwll.ch, tzimmermann@suse.de,
-        knaerzche@gmail.com, devicetree@vger.kernel.org,
-        dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
-        linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
-        Andy Yan <andy.yan@rock-chips.com>
-Subject: Re: [PATCH v7 1/2] drm/rockchip: inno-hdmi: Convert to drm bridge
-Message-ID: <irvff5zmeqyy7yn3idc5rr2ekx5gmpcib45rrqk2vhkt33mdy4@q346i2jkehtt>
-References: <20250903110825.776807-1-andyshrk@163.com>
- <20250903110825.776807-2-andyshrk@163.com>
- <5255838.1BCLMh4Saa@phil>
- <4ox7yh3i47odinoaalzjz7d3gvx36bxbaspo6qfvvvl3jqhdiv@24ownjco3ud2>
- <aLismmDJfusG0x0Z@yury>
+        Wed, 03 Sep 2025 20:02:01 -0700 (PDT)
+From: Jimmy Hon <honyuenkwun@gmail.com>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Cenk Uluisik <cenk.uluisik@googlemail.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	Jimmy Hon <honyuenkwun@gmail.com>
+Subject: [PATCH] arm64: dts: rockchip: Fix the headphone detection on the orangepi 5
+Date: Thu,  4 Sep 2025 03:01:50 +0000
+Message-ID: <20250904030150.986042-1-honyuenkwun@gmail.com>
+X-Mailer: git-send-email 2.51.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <aLismmDJfusG0x0Z@yury>
-X-Proofpoint-ORIG-GUID: -pJniPE7Cort9CD2dB5IgkLwI8XrgQhZ
-X-Proofpoint-GUID: -pJniPE7Cort9CD2dB5IgkLwI8XrgQhZ
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwODMwMDAyMCBTYWx0ZWRfX/rVU39yIWCWe
- hufMG2ZheiRiE5khrArE1N7hO67pOjmuJr/4+1eZcQO/dsQO/LHxyHnZT3pjmSkunlO+cGG37Jw
- Vv5desnDAEkLVzxIZ+6hicRL8p1MJjThQY2FTDq7iglluTv2UCnykFm8HkXlE0sFEIxM5ve3i0+
- 5JHCDy1GRR1RR8jgzBP/O6jDKUQRroathR20cMfrq7Zs3Lg9yBOmmGpwiIZCIdfHwHTNShima8E
- HduP1LJWvBTmYQF2cTiJ092YX65Fgkh6dOjZHLeFeG2J9SsqWKWWrxt9U5HsHcosQ1sMZ56lh4A
- roP+CMNngCFk5xk8uz7YL4h6NV+6PW8N7wg4JvDYX6gtNoMJBSqwt60BZZPPAFZ3kjh99+tRuKH
- hXqy5lDM
-X-Authority-Analysis: v=2.4 cv=VNndn8PX c=1 sm=1 tr=0 ts=68b8f6d7 cx=c_pps
- a=wEM5vcRIz55oU/E2lInRtA==:117 a=xqWC_Br6kY4A:10 a=8nJEP1OIZ-IA:10
- a=yJojWOMRYYMA:10 a=s8YR1HE3AAAA:8 a=Fob2wsIVxNtBE8oepsMA:9 a=3ZKOabzyN94A:10
- a=wPNLvfGTeEIA:10 a=OIgjcC2v60KrkQgK7BGD:22 a=jGH_LyMDp9YhSvY-UuyI:22
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1117,Hydra:6.1.9,FMLib:17.12.80.40
- definitions=2025-09-04_01,2025-08-28_01,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- suspectscore=0 spamscore=0 impostorscore=0 malwarescore=0 bulkscore=0
- clxscore=1015 adultscore=0 priorityscore=1501 phishscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.19.0-2507300000 definitions=main-2508300020
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250903_191800_350154_E8495095 
-X-CRM114-Status: GOOD (  31.50  )
+X-CRM114-CacheID: sfid-20250904_040206_432041_50D74E6D 
+X-CRM114-Status: GOOD (  11.65  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -135,77 +110,46 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 03, 2025 at 05:01:14PM -0400, Yury Norov wrote:
-> On Wed, Sep 03, 2025 at 03:30:47PM +0300, Dmitry Baryshkov wrote:
-> > On Wed, Sep 03, 2025 at 01:59:51PM +0200, Heiko Stuebner wrote:
-> > > Hi Andy,
-> > > =
+The logic of the headphone detect pin seems to be inverted, with this
+change headphones actually output sound when plugged in.
 
-> > > Am Mittwoch, 3. September 2025, 13:07:38 Mitteleurop=E4ische Sommerze=
-it schrieb Andy Yan:
-> > > > From: Andy Yan <andy.yan@rock-chips.com>
-> > > > =
+Does not need workaround of using pin-switches to enable output.
 
-> > > > Convert it to drm bridge driver, it will be convenient for us to
-> > > > migrate the connector part to the display driver later.
-> > > > =
+Verified by checking /sys/kernel/debug/gpio.
 
-> > > > Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
-> > > =
+Fixes: ae46756faff8 ("arm64: dts: rockchip: analog audio on Orange Pi 5")
+Signed-off-by: Jimmy Hon <honyuenkwun@gmail.com>
+---
+similar to the fix for the Orange Pi 5 Plus [1]
 
-> > > more like a general remark, this essentially conflicts with the
-> > > big hiword-cleanup [0] that was merged today, as the inno-hdmi driver
-> > > "lost" its separate HIWORD_UPDATE macro in favor a nicer generic one.
-> > > =
+[1] https://lore.kernel.org/linux-rockchip/20250823-orangepi5-v1-1-ae77dd0e06d7@hotmail.com/
+---
+ arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dtsi | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-> > > I'm not sure what the best way to proceed is, apart from waiting for
-> > > 6.18-rc1.
-> > =
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dtsi
+index 34d195872a99..9bc7662ce9c8 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dtsi
+@@ -42,9 +42,8 @@ analog-sound {
+ 		simple-audio-card,bitclock-master = <&masterdai>;
+ 		simple-audio-card,format = "i2s";
+ 		simple-audio-card,frame-master = <&masterdai>;
+-		simple-audio-card,hp-det-gpios = <&gpio1 RK_PD5 GPIO_ACTIVE_LOW>;
++		simple-audio-card,hp-det-gpios = <&gpio1 RK_PD5 GPIO_ACTIVE_HIGH>;
+ 		simple-audio-card,mclk-fs = <256>;
+-		simple-audio-card,pin-switches = "Headphones";
+ 		simple-audio-card,routing =
+ 			"Headphones", "LOUT1",
+ 			"Headphones", "ROUT1",
+-- 
+2.51.0
 
-> > I'd say, the correct way to handle would have been to:
-> > - merge only FIELD_PREP_WM16 addition into bitmap-for-next using
-> >   immutable tag
-> > - merge the tag + all other patches into subsystem trees. Otherwise
-> >   that series can cause a lot of conflicts with all affected subsystems.
-> > =
-
-> > Yury, would it be possible to implement this plan instead of pulling
-> > everything through your tree?
-> =
-
-> Yeah, this is 100% technically correct way of moving things.
-> =
-
-> The problem is that driver maintainers are usually not quick taking
-> this type of changes. In my experience, if we merge #1 only, we'll
-> end up with just another flavor of HIWORD_UPDATE(), maybe adopted
-> by a couple of drivers.
-> =
-
-> This is exactly opposite to the original goal of the series: nice and
-> almost complete consolidation of scattered HIWORD_UPDATE() versions.
-> =
-
-> So far, there's the only conflict with the others, and Andy said he's
-> OK to hold his series.
-> =
-
-> I would prefer to have all those patches in bitmap-for-next for a while.
-> If there will be more conflicts, then yeah, I'll follow your route.
-> Otherwise, let's keep things as they are, and encourage developers to
-> test their patches against linux-next, as they normally should.
-
-Ack, thanks for the explanation.
-
--- =
-
-With best wishes
-Dmitry
 
 _______________________________________________
 Linux-rockchip mailing list
