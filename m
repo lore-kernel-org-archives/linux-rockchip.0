@@ -4,69 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E92D7CA1015
-	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Sep 2025 19:54:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C785CCA1013
+	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Sep 2025 19:54:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Ho+UNFpSg2ENvOif3ERXDOZoD95CwA+nRNg33idxoVY=; b=bd9VwMWYMZvvP3
-	r8a1coGUw+7yQIk3dNAScukOH+QxaBy+6D1m1Ybo1Pmj6Z6IRCRH3PFM9dqntglUS6C5s9uepNHyQ
-	MX2RdlNs51Rplq+vUOiyrMv+VB/0DSZkCHue3r8YTxXRciZvAnPA+E6CXotpM0IYE1pCr2OQJ758s
-	y9NrqguFljhTrr7zXe9+qWr6jvz2PNb6MqWGtJry3QVLH7gsKjfRjr2XSMt7AyYdAJMhc8seSgJ/N
-	tGphAYcoV7/COQ/n8K+zqcUyilMIDmDKNIzEZOaf3t/LTDm0+ZS3aI6FKeVpQiM63OpoUkfoGxXce
-	jZr21N/nm94MbF36JITA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ecT8hQ9cgQoYFCBRADxTtpldowFtTkC/bV5CUjLLKVY=; b=yD4Ruzxobwnm8Q
+	uMVoe6ss+bvdK+6G8bXnl4trU58AGhsidfreXUeaLkC/KVcLevLZI+Eh5ePfSHVkZy2jMNTbkglR5
+	ZwYPhos5jjq+I0swxjxfIlEz6epRX/PAJi+3Kxzl6uDMwgk5ujr9diEv8L2OKvzyAeT5/H1E02eF0
+	qCyMg6xmQLVY04BbIz+hkNN4IlU/3q0WPdgRIoC1/nxWd3DBXOamfi7Bbr44E2f6zKFB/a6CTtWbd
+	NLMi7WwHjiWbO5IoBrDraXAH3aFpjMjlSKP0IwTlDwYtPIswCw64wPWyHcYsbywjqP+Dx+a2VxqeJ
+	iwc9ZISXlfuHthZhT7VQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uuG1t-0000000E4aq-3kW3;
-	Thu, 04 Sep 2025 19:53:57 +0000
-Received: from mail-oa1-x29.google.com ([2001:4860:4864:20::29])
+	id 1uuG1u-0000000E4c4-3G8u;
+	Thu, 04 Sep 2025 19:53:58 +0000
+Received: from mail-oa1-x2b.google.com ([2001:4860:4864:20::2b])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uuCVO-0000000Ckv5-1DzR
+	id 1uuCVP-0000000Ckvb-0L2t
 	for linux-rockchip@lists.infradead.org;
-	Thu, 04 Sep 2025 16:08:11 +0000
-Received: by mail-oa1-x29.google.com with SMTP id 586e51a60fabf-31533486f07so1441880fac.0
-        for <linux-rockchip@lists.infradead.org>; Thu, 04 Sep 2025 09:08:09 -0700 (PDT)
+	Thu, 04 Sep 2025 16:08:12 +0000
+Received: by mail-oa1-x2b.google.com with SMTP id 586e51a60fabf-30ccec59b4bso965037fac.3
+        for <linux-rockchip@lists.infradead.org>; Thu, 04 Sep 2025 09:08:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1757002089; x=1757606889; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=dnLQTlyK5KH3ehk4moKP2An86eSERrKdK5nAInHs2V4=;
-        b=ccCtCEZ6YoRh6RiOWKut1bo4E+jKYG/N2vOmV7fM6UyWVHb/2nCcuiRvdajignzc7v
-         i62mPav8Sn+sxionIlhPaIrYzVrz2b5HS2jwTavt/WmACuuYCO2gUac7uRj8sd7Ikq2e
-         nraFCyCAz0fYmXEO16wIZzBPuo5uO0qjHamV4pZqWNRCYu27NGwE18gXItRfW+v+rfnD
-         ZhqJlejJM3oe8XPIy/AaI3To+31ZgXnPZtqVkCjmY6CX/M3nz4vwteN1KYXy/9m41sb1
-         gMRrdmKsAsOQvPZ+/BiEcry0i1ZN+TdTN3JvhAs2VMrRZZ2Ez/VaBLw6anCxZeA7OPE+
-         UFFw==
+        d=gmail.com; s=20230601; t=1757002090; x=1757606890; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=rwhaNZ08bBHEsR9rXeumkyMkgjmU5QxiFqlW2m7YgJA=;
+        b=Hnn6EWIPkNkQj8d2PqESQScMRdEuKYZIxiqfNd4UGje4/Bw0D1kMeSE3fY/DHHh5es
+         HRoVln7YK49GXye+Xi10UIIj/KJlsXhEMp4RmLmQsq5rBgqo4L38SWNEAbPDgYjGJcLH
+         KeX61+bsVBek6/kCsCA7CAY6DimBd9ljM/AK1IBLKnI75W+RckhHUNA2qhTIPO/LXOmT
+         y4dNA9n6kWV4ybVM7l7CGGmCHYZteeg/mE0BtU8BH9NsUug+VlFxNrfjnt/IwPYl3AQ8
+         WmjSm/dR3p7uZrzTHxPT+8KDNdPqy7Wzau9Xmv/wBnd9Py2lbILMlMQiuPQRTGiP812J
+         K9VQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1757002089; x=1757606889;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=dnLQTlyK5KH3ehk4moKP2An86eSERrKdK5nAInHs2V4=;
-        b=ZBKA8dYHgt8qldR2KatXT4rd3Am3vWZdChXF32mlBQxo48zDu47L7IobIzOCMjMe0B
-         HOohERHlhGMJ239//beqVmqXaqPkF6/0Nykxl9EwjrX7YByWpZJXGq4ZgRk1RJEPsu8A
-         nQysaE8cqf/qDlxeukoLNYqlwgoNbHJ2xFCDuYt72GxORnsnKtQ0oaCX/yeoXzg6BXX2
-         nKemrVXPyHfNAaRzBJcDctZ3aFZy4fMDJ67OpNuDv2RUIDUDfvKjUmzPU1jQDAnvaLWO
-         Rwr57+d113D95BilvKH8IReeMna06LMyERNsH+TCXuA/nrNkdOEi6UU7kgeJ8/yc446h
-         eDhA==
-X-Gm-Message-State: AOJu0Yxfy7x+IXVE/VLzYdQgwdUjecyZDYMuBPfJhPz1uJs7W2Z/oS0J
-	/aiGEqkFLq2t001PoCZmnqEMlJSZpnhZYlkt34ifqfsj6xtE6ghrlThUGy7+pw==
-X-Gm-Gg: ASbGncvIFEEKpHQjUYb/MCVgghPeozuqvWZDcxyo97OArex0ECpDAr46BZosgv/5YZo
-	Oh4ueOiJgxYtEhGihGFxKg1ctM9/WwGGPgbzI6YmxiH/ZVsiwOZNMNbEfnfokmMS1nT3mUF0JlS
-	gw+ElrxfKh/PvQMyOK3YytqPWjSqocJ+Jd0OgMKwAsWa/4FjnWpm1lOvoYv8uxMNKf50didyG+e
-	HAJGAR9IdtXHX6x/GMWNA0uMbg0E5ESB9ZiS5dQDYtbDBIAOykWPoQfnRPnDVjDE5RhTMpxBtby
-	O6gydTpYf6Cv1lQI26hRxXjI3y9dm2VRyhSfUidEkdlsy1NCcLW9GVAfTkexpadZmfLAcPaO8gH
-	LnLCI16+tNFnw9sRQ63AC/vvpEGe7KTpMnSgksQaUbjZuNNAgE/2b
-X-Google-Smtp-Source: AGHT+IHAQn8TOWyz0EjpBcfuRhkynnc9V07I0DmI0NICnfkyTH8REAuzTc1BBFIjCRqvT5UC1qY6Zg==
-X-Received: by 2002:a05:6870:7308:b0:2c2:4d73:ec43 with SMTP id 586e51a60fabf-31f3bc02ed3mr118866fac.15.1757002087843;
-        Thu, 04 Sep 2025 09:08:07 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1757002090; x=1757606890;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=rwhaNZ08bBHEsR9rXeumkyMkgjmU5QxiFqlW2m7YgJA=;
+        b=qzJ30OvBo1NP4mLBiPudhm/p2gjRjip8Jljbqz6EotCJ8VZKwUhmf8812TJjpuLIUv
+         Bo2+zjrFFkVU76gko87NgPbJ3uDPIb+EX2HhH9PDDurL6YDb+0v9tp0xeVrjiF5d1cd+
+         UJoUJoxSys/Kx15XlL1mlMMM4LlHYph+5MV69JGXE10e0CX53zQXxQwscmGEjcmtaa+W
+         c54a3kD2BhVBCvbPhmczq77wcS6qCalTpBZstW4n/X2a3Nh4Pw3XUoNCPxKIKMP2E5LE
+         a92WqJB5xf3gsZltFNTwzOqULE6ZOJV0oI21Gjeqlkofj1Vh3tBYxQss1vNBuxZPdCBT
+         c3mA==
+X-Gm-Message-State: AOJu0Yzxiy18WI7wtH8H2uM77P5mP5jH1ArNyQD5BNVyjlC5O5HoLNaA
+	nZxf0e4qwk2mkX28U08Rq6i7JAGlCjbyhRKxo+bmAFQjKaJXb5kSH7gr2iZE1Q==
+X-Gm-Gg: ASbGncs7oD2gpYtPW+avju2lr8CCvRyTIE0I783qKnHZQnrPV6aFP4SSNdkwc3TR63D
+	/yduXFDIl+ATjN5z2pxgu2KaaeiQ7s6lKCgupJN9/avGSis4HphiyT6DboZXJsSMy1MzjuiQaSt
+	tGnMcYlf4dPtEfGIqaCkjIXFBppGkMDNBRdMFgbtmyKE38oU3N+nyhtiXZBbW778YTdtsfVDTU0
+	LlK8IGtZLJUQz+n4rfW4fkBVtyoZ0NEne/Gx7yDuyCFPaXuuw7n1gkH7QYE8BxGluMiB/Uhqjfp
+	bTj0rSeg6CyUvw7oNdqwfG/ZHOw822/7QFN+KfKidDs08sMYIPMcWFyN3Y5Yt94u/hsRZqaN+gf
+	Edz25YNDDXnu3+6pG8qAQKXsZPJsDI5/40Li8h50XOQh7rSs/VRfl
+X-Google-Smtp-Source: AGHT+IENuFTdThjy0C5PyNoJorQO0LITvjpC+z0vdRcLw4nPd9pMxYj4t6vj1Pai80yUZzJHVZlP7A==
+X-Received: by 2002:a05:6871:8313:b0:314:9683:3758 with SMTP id 586e51a60fabf-31963480aa8mr9731532fac.49.1757002088822;
+        Thu, 04 Sep 2025 09:08:08 -0700 (PDT)
 Received: from localhost.localdomain ([2600:1700:fb0:1bc0:c51e:64e3:dc5d:9652])
         by smtp.gmail.com with ESMTPSA id 586e51a60fabf-319b5fcbf6asm2437593fac.20.2025.09.04.09.08.07
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 04 Sep 2025 09:08:07 -0700 (PDT)
+        Thu, 04 Sep 2025 09:08:08 -0700 (PDT)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: linux-rockchip@lists.infradead.org
 Cc: linux-pm@vger.kernel.org,
@@ -79,15 +80,18 @@ Cc: linux-pm@vger.kernel.org,
 	conor+dt@kernel.org,
 	krzk+dt@kernel.org,
 	robh@kernel.org,
-	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH v8 0/5] Add Texas Instruments BQ25703A Charger
-Date: Thu,  4 Sep 2025 11:05:25 -0500
-Message-ID: <20250904160530.66178-1-macroalpha82@gmail.com>
+	Chris Morgan <macromorgan@hotmail.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: [PATCH v8 1/5] dt-bindings: mfd: ti,bq25703a: Add TI BQ25703A Charger
+Date: Thu,  4 Sep 2025 11:05:26 -0500
+Message-ID: <20250904160530.66178-2-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250904160530.66178-1-macroalpha82@gmail.com>
+References: <20250904160530.66178-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250904_090810_340533_8E40F5C7 
-X-CRM114-Status: GOOD (  17.39  )
+X-CRM114-CacheID: sfid-20250904_090811_121655_E7B62E98 
+X-CRM114-Status: GOOD (  13.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,80 +110,139 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-Add support for the Texas Instruments BQ25703A charger manager. The
-device integrates a boost converter with the charger manager. This
-series adds the device as an MFD with separate regulator and power
-supply drivers. This allows us to manage a circular dependency with
-a type-c port manager which depends on the regulator for usb-otg
-but supplies power to the BQ25703A charger.
+Document the Texas instruments BQ25703A series of charger managers/
+buck/boost regulators.
 
+Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
-Changes since RFC
- - Corrected some minor issues with code and device-tree labels.
- - Replaced most of the manufacturer specific device-tree properties
-   with monitored-battery properties.
-Changes since V2
- - Added reference to power-supply.yaml and removed note for i2c
-   address per recommendation from Sebastian.
- - Corrected documentation error for charger driver found by kernel
-   test robot.
- - Corrected duplicate POWER_SUPPLY_USB_TYPE_PD entry and corrected
-   ichg logic in power supply changed function.
- - Corrected missing linux/bitfield.h header in regulator driver found
-   by kernel test robot.
-Changes since V3
- - Changed name of regulator from usb_otg_vbus to just vbus to align
-   with datasheet.
- - Additional cleanup of the device tree documentation.
-Changes since V4
- - Replaced instances of dev_err followed by a return in the probe
-   functions with a return of dev_err_probe instead.
- - Simplified cell definition of main driver for probe.
- - Updated copyright year to 2025 on copyright strings.
-Changes since V5
- - Removed erroneous Reviewed-by tag from mfd patch.
- - Made mfd_cells static const in mfd probe function.
- - Removed unneeded enum from header file.
-Changes since V6
- - Fixed https://lore.kernel.org/all/202508181503.GrRD2T4C-lkp@intel.com/
-   by explicitly setting the register in question to 0 and adding a
-   note to describe the change.
- - Fixed https://lore.kernel.org/all/202508210308.Lw2Klipk-lkp@intel.com/
-   by changing an IS_ERR_OR_NULL() to just an IS_ERR().
- - Fixed https://lore.kernel.org/all/202508141051.hwl2Erq6-lkp@intel.com/
-   by removing the uninitalized variable in question which is not
-   needed.
-Changes since V7:
- - Changed regmap cache type in mfd to REGCACHE_MAPLE.
- - Corrected mfd_cell struct location.
- - Added whitespace for readability. 
-
-Chris Morgan (5):
-  dt-bindings: mfd: ti,bq25703a: Add TI BQ25703A Charger
-  mfd: bq257xx: Add support for BQ25703A core driver
-  power: supply: bq257xx: Add support for BQ257XX charger
-  regulator: bq257xx: Add bq257xx boost regulator driver
-  arm64: dts: rockchip: Add USB and charger to Gameforce Ace
-
- .../devicetree/bindings/mfd/ti,bq25703a.yaml  | 117 +++
- .../dts/rockchip/rk3588s-gameforce-ace.dts    | 122 +++
- drivers/mfd/Kconfig                           |  11 +
- drivers/mfd/Makefile                          |   1 +
- drivers/mfd/bq257xx.c                         |  99 +++
- drivers/power/supply/Kconfig                  |   7 +
- drivers/power/supply/Makefile                 |   1 +
- drivers/power/supply/bq257xx_charger.c        | 755 ++++++++++++++++++
- drivers/regulator/Kconfig                     |   8 +
- drivers/regulator/Makefile                    |   1 +
- drivers/regulator/bq257xx-regulator.c         | 186 +++++
- include/linux/mfd/bq257xx.h                   | 104 +++
- 12 files changed, 1412 insertions(+)
+ .../devicetree/bindings/mfd/ti,bq25703a.yaml  | 117 ++++++++++++++++++
+ 1 file changed, 117 insertions(+)
  create mode 100644 Documentation/devicetree/bindings/mfd/ti,bq25703a.yaml
- create mode 100644 drivers/mfd/bq257xx.c
- create mode 100644 drivers/power/supply/bq257xx_charger.c
- create mode 100644 drivers/regulator/bq257xx-regulator.c
- create mode 100644 include/linux/mfd/bq257xx.h
 
+diff --git a/Documentation/devicetree/bindings/mfd/ti,bq25703a.yaml b/Documentation/devicetree/bindings/mfd/ti,bq25703a.yaml
+new file mode 100644
+index 000000000000..ba14663c9266
+--- /dev/null
++++ b/Documentation/devicetree/bindings/mfd/ti,bq25703a.yaml
+@@ -0,0 +1,117 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/mfd/ti,bq25703a.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: BQ25703A Charger Manager/Buck/Boost Converter
++
++maintainers:
++  - Chris Morgan <macromorgan@hotmail.com>
++
++allOf:
++  - $ref: /schemas/power/supply/power-supply.yaml#
++
++properties:
++  compatible:
++    const: ti,bq25703a
++
++  reg:
++    const: 0x6b
++
++  input-current-limit-microamp:
++    description:
++      Maximum total input current allowed used for both charging and
++      powering the device.
++    minimum: 50000
++    maximum: 6400000
++    default: 3250000
++
++  interrupts:
++    maxItems: 1
++
++  monitored-battery:
++    description:
++      A minimum of constant-charge-current-max-microamp,
++      constant-charge-voltage-max-microvolt, and
++      voltage-min-design-microvolt are required.
++
++  regulators:
++    type: object
++    additionalProperties: false
++    description:
++      Boost converter regulator output of bq257xx.
++
++    properties:
++      vbus:
++        type: object
++        $ref: /schemas/regulator/regulator.yaml
++        additionalProperties: false
++
++        properties:
++          regulator-name: true
++          regulator-min-microamp:
++            minimum: 0
++            maximum: 6350000
++          regulator-max-microamp:
++            minimum: 0
++            maximum: 6350000
++          regulator-min-microvolt:
++            minimum: 4480000
++            maximum: 20800000
++          regulator-max-microvolt:
++            minimum: 4480000
++            maximum: 20800000
++          enable-gpios:
++            description:
++              The BQ25703 may require both a register write and a GPIO
++              toggle to enable the boost regulator.
++
++        required:
++          - regulator-name
++          - regulator-min-microamp
++          - regulator-max-microamp
++          - regulator-min-microvolt
++          - regulator-max-microvolt
++
++unevaluatedProperties: false
++
++required:
++  - compatible
++  - reg
++  - input-current-limit-microamp
++  - monitored-battery
++  - power-supplies
++
++examples:
++  - |
++    #include <dt-bindings/gpio/gpio.h>
++    #include <dt-bindings/interrupt-controller/irq.h>
++    #include <dt-bindings/pinctrl/rockchip.h>
++    i2c {
++        #address-cells = <1>;
++        #size-cells = <0>;
++
++        bq25703: charger@6b {
++            compatible = "ti,bq25703a";
++            reg = <0x6b>;
++            input-current-limit-microamp = <5000000>;
++            interrupt-parent = <&gpio0>;
++            interrupts = <RK_PD5 IRQ_TYPE_LEVEL_LOW>;
++            monitored-battery = <&battery>;
++            power-supplies = <&fusb302>;
++
++            regulators {
++                usb_otg_vbus: vbus {
++                    enable-gpios = <&gpio4 RK_PA6 GPIO_ACTIVE_HIGH>;
++                    regulator-max-microamp = <960000>;
++                    regulator-max-microvolt = <5088000>;
++                    regulator-min-microamp = <512000>;
++                    regulator-min-microvolt = <4992000>;
++                    regulator-name = "usb_otg_vbus";
++                };
++            };
++        };
++    };
++
++...
 -- 
 2.43.0
 
