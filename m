@@ -4,62 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BA7ECA1015
-	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Sep 2025 19:53:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C889CA1013
+	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Sep 2025 19:54:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jSWXNCxcIMOojLfGFz0lKoBK69uLY/aw8tl3Z9EI6sI=; b=2vRSalLI9EvG8y
-	PWITZGjS7DByh7p0HPW6b3fITvFgv6U2LjFzB0DByKYrLhVxWqQ0YXh9ODs0wm+7XuAAy0NKye0pY
-	eGSEKCNq0TdltxCfGUUuVNdmX9SgKI7O3HSajx3Q444qitu/bhuNFfRwDa9/B7sCi7lzSlUPWblsl
-	QkAC5NYqrzz2x3Cb4uVa2++FcyADI+FdaDEcMm/Ylphu0g/u+6/exeXPA+TiKJ38f8ON6viVQvpee
-	5ELF/RNTxtot1hlgMMLRIwFLjoK6xlm4N8GZouK73u3WXrBFj6LprOKW4hyEH6HOdciwQqiaft69q
-	kOa17zU9rdc4ZFB8259A==;
+	List-Owner; bh=JcG5ZFMtwELAL20qg9w0vc0ShD5z8RLcIDe4N6KFyR8=; b=xWbn+DwWMWkiDk
+	MHBPa9PSEI4QP4qGpB4hXfTUXGP8fa4P9dTsshrBoO7C0jUVvjFBYs4vdDfXiwYTHNjufEGm9jQpw
+	1bOeqnijv58p5mMIXZg2ymtTgObPCqBSfYO8Q/wXiXQmhVW7+F77pmU3ZBrW5z+Ot+6KTzbDJeXzJ
+	AX8QC/nSLAgb9KaeKK2AvF5pxLtNj6AF4Efnu7OKiEOyKcmoV/YPAb97k3Jm77d1HgyoIw5NjFapn
+	mA7tqkXrAvY5WOQ06hesy0L8LDKbUenuf1Lw/m410BYyJW7wZ6wbmKUy9SF1o3zZR0IYrW3C6vbjo
+	Y0oXnbhwZsSxrkV8ZKJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uuG1V-0000000E463-1c2Q;
-	Thu, 04 Sep 2025 19:53:33 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1uuG1q-0000000E4Vb-0NSe;
+	Thu, 04 Sep 2025 19:53:54 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uuC7l-0000000CbgW-2sfL
+	id 1uuCDC-0000000CdsB-27Iz
 	for linux-rockchip@lists.infradead.org;
-	Thu, 04 Sep 2025 15:43:46 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1757000609; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=Ngqd/d0J8XSNUO/KtRPyFJJL623lECHioy3AP5gZFL43wkQLftfAuO7hfafcScy0kCH8Tl6clO8Io/jVh/b8dqnlrmIZZtaCjZTkqaEyIRmyzKgaBxZiS4nJPS9keTbLYw0RGaluPAAihLmXGZnrnoiVxRLt1UVeJ9CA77F2XDc=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1757000609; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=tIoaxid+0bjo9EUFBk5X1+Q8h8mftkxRLwsEL6mj4dA=; 
-	b=k4h3NGVH50FrtpetX2RjCfeH2BMVFoyp6Axu3XhkusBmrJd5AphR3X1UIaDYal2PpP+qqZjZykMqJjzxG3qU2moSyu6I7mAvn/AVFTKPl400vEX+3FyBCauuHFOO0VK2ce1t3U0S0WfGuVQIP2QuPWv7hkIWRFbigRkTolmeVo4=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1757000609;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=tIoaxid+0bjo9EUFBk5X1+Q8h8mftkxRLwsEL6mj4dA=;
-	b=EJIdeJ+rM8uagbR+jpN2kBACdRK4+cQwL2RYwsbqQpS1r6DZJVTRx8mZhZrtQNeV
-	oa9F/omLsN4YPTDzXBp5HweVYxS6gFoou8IdvJA5RGzSq6ychuMHGtrPsLp7y9hQ/HW
-	PGhveIK+1HoLAn5XoqIo9PEDHS28wqJQemhA1BoY=
-Received: by mx.zohomail.com with SMTPS id 175700060827947.89453074437267;
-	Thu, 4 Sep 2025 08:43:28 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: Ulf Hansson <ulf.hansson@linaro.org>
+	Thu, 04 Sep 2025 15:49:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=XYh+pZ0ydjTT94jg1/0pqmUjG8A4r6oEnz4JTByybdg=; b=tKBcXIo/ChuSMx9/OxQSUTwFPb
+	glh44Cizftyzd+ebSE2FtAFPBagLvp8t+WT+FkSYRVLMMJmBqqyzORqBvdpsQ/wrSwJQC2z3EamEK
+	3gcQNrKCVB7mG9sUWOolk3FObAdQYsyuhW4RQKiCmguooJ+ucWUEKy0RcQhBHJFSK6pqmeoO9HVuZ
+	WNIBtG6Qk4k5QNdk9yfkek7XHT7ILDlml55AMZIXNMyFFWmkEyppiVb/GYOP0IHrsi3yjVNeWAUVK
+	JgsX61o4h4FifFBuv5crtnMR9X6JFTapZbmiaw0XGu9kjJi3VkERC13YVM6BxrZvxdl2QG2yfoU+p
+	EHnQu5SA==;
+Received: from i53875bb9.versanet.de ([83.135.91.185] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1uuCD7-0008Mm-3T; Thu, 04 Sep 2025 17:49:17 +0200
+From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
+To: Ulf Hansson <ulf.hansson@linaro.org>,
+ Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 Subject: Re: [PATCH] pmdomian: core: don't unset stay_on during sync_state
-Date: Thu, 04 Sep 2025 17:43:23 +0200
-Message-ID: <3556261.BddDVKsqQX@workhorse>
-In-Reply-To: <3332408.jE0xQCEvom@workhorse>
+Date: Thu, 04 Sep 2025 17:49:16 +0200
+Message-ID: <117136352.nniJfEyVGO@diego>
+In-Reply-To: <20250902-rk3576-lockup-regression-v1-1-c4a0c9daeb00@collabora.com>
 References: <20250902-rk3576-lockup-regression-v1-1-c4a0c9daeb00@collabora.com>
- <CAPDyKFpAOLiBOoAhv+GQcobU_g_AWrB9iyOGmodROLtRmR30JA@mail.gmail.com>
- <3332408.jE0xQCEvom@workhorse>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250904_084345_797352_8B3AD732 
-X-CRM114-Status: GOOD (  42.99  )
+X-CRM114-CacheID: sfid-20250904_084922_710441_517F3E27 
+X-CRM114-Status: GOOD (  11.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,172 +64,127 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-pm@vger.kernel.org, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, kernel@collabora.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: linux-pm@vger.kernel.org, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, kernel@collabora.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thursday, 4 September 2025 14:50:13 Central European Summer Time you wrote:
-> On Thursday, 4 September 2025 11:17:01 Central European Summer Time Ulf Hansson wrote:
-> > On Tue, 2 Sept 2025 at 20:23, Nicolas Frattaroli
-> > <nicolas.frattaroli@collabora.com> wrote:
-> > >
-> > > This reverts commit de141a9aa52d6b2fbeb63f98975c2c72276f0878.
-> > 
-> > I can't find this commit hash. What tree are you using when testing this?
-> > 
-> > Are you trying to revert 0e789b491ba04c31de5c71249487593e386baa67 ?
-> 
-> Probably, I did the revert on a rebased branch and then rebased the revert
-> onto v6.17-rc4 so it likely is the wrong hash here. I'll fix this in v2 if
-> there is a v2 (it might actually become a different patch, see huge text
-> below, sorry!)
-> 
-> > 
-> > >
-> > > On RK3576, the UFS controller's power domain has a quirk that requires
-> > > it to stay enabled, infrastricture for which was added in Commit
-> > > cd3fa304ba5c ("pmdomain: core: Introduce dev_pm_genpd_rpm_always_on()").
-> > >
-> > > Unfortunately, Commit de141a9aa52d ("pmdomain: core: Leave powered-on
-> > > genpds on until sync_state") appears to break this quirk wholesale. The
-> > > result is that RK3576 devices with the UFS controller enabled but unused
-> > > will freeze once pmdomain shuts off unused domains.
-> > >
-> > > Revert it until a better fix can be found.
-> > 
-> > This sounds a bit vague to me, can you please clarify and elaborate a
-> > bit more so I can try to help.
-> > 
-> > What does "UFS controller enabled but unused" actually mean? Has the
-> > UFS controller driver been probed successfully and thus its
-> > corresponding device been attached to its PM domain?
-> 
-> It means the UFS controller driver has probed, but does not find a
-> UFS storage chip connected to it, and therefore reports a probe
-> failure. This is a possibility on single-board computers like the
-> Radxa ROCK 4D, where the UFS storage is a separate module that plugs
-> into some headers.
-> 
-> > Moreover, the behaviour of dev_pm_genpd_rpm_always_on() is orthogonal
-> > to what 0e789b491ba0 ("pmdomain: core: Leave powered-on genpds on
-> > until sync_state") brings along with its corresponding sync_state
-> > series for genpd [1]. Again, more information is needed to understand
-> > what goes wrong.
-> 
-> [snip very long rubber duck debugging session]
-
-Okay so I believe I have found the root cause of the regression. UFS is
-innocent, disabling UFS just happens to avoid it due to how the timing of
-things works out.
-
-The real issue is that the NPU power domains on the RK3576, which are
-currently unused, have an undeclared dependency on vdd_npu_s0.
-
-Declaring this dependency with a `domain-supply` and adding the
-necessary flag in the rockchip PD controller to use it does not solve
-he problem. This is because the rockchip PD controller cannot acquire
-those supplies during probe, as they're not available yet and their
-availability depends on the PD controller finishing probe.
-
-That's why it acquires them in the PD enable callback, but the NPU
-PDs are never enabled because they're unused.
-
-This worked fine when unused PDs were still turned off quite early, as
-this meant they were turned off before regulators. Now the unused
-regulators are turned off before turning off the unused PDs happens.
-
-I don't really see an easy way to fix this with a patch that's fit for
-an rc cycle. We can't request the regulator early or even just add a
-device link, as the regulator is not around yet.
-
-Marking vdd_npu_s0 as always-on would be abusing DT to work around a
-Linux kernel shortcoming, which is a no-no.
-
-What we need is either a way to register with pmdomain core that
-certain PDs need a late init for additional supplies, which is then
-called before any of the unused regulator power off functionality is
-invoked by the regulator core.
-
-Any ideas?
-
-Kind regards,
-Nicolas Frattaroli
-
-
-> 
-> Kind regards,
-> Nicolas Frattaroli
-> 
-> > 
-> > Kind regards
-> > Uffe
-> > 
-> > [1]
-> > https://lore.kernel.org/all/20250701114733.636510-1-ulf.hansson@linaro.org/
-> > 
-> > >
-> > > Fixes: de141a9aa52d ("pmdomain: core: Leave powered-on genpds on until sync_state")
-> > > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> > > ---
-> > >  drivers/pmdomain/core.c | 4 ----
-> > >  1 file changed, 4 deletions(-)
-> > >
-> > > diff --git a/drivers/pmdomain/core.c b/drivers/pmdomain/core.c
-> > > index 0006ab3d078972cc72a6dd22a2144fb31443e3da..4eba30c7c2fabcb250444fee27d7554473a4d0c2 100644
-> > > --- a/drivers/pmdomain/core.c
-> > > +++ b/drivers/pmdomain/core.c
-> > > @@ -1357,7 +1357,6 @@ static int genpd_runtime_resume(struct device *dev)
-> > >         return ret;
-> > >  }
-> > >
-> > > -#ifndef CONFIG_PM_GENERIC_DOMAINS_OF
-> > >  static bool pd_ignore_unused;
-> > >  static int __init pd_ignore_unused_setup(char *__unused)
-> > >  {
-> > > @@ -1393,7 +1392,6 @@ static int __init genpd_power_off_unused(void)
-> > >         return 0;
-> > >  }
-> > >  late_initcall_sync(genpd_power_off_unused);
-> > > -#endif
-> > >
-> > >  #ifdef CONFIG_PM_SLEEP
-> > >
-> > > @@ -3494,7 +3492,6 @@ void of_genpd_sync_state(struct device_node *np)
-> > >         list_for_each_entry(genpd, &gpd_list, gpd_list_node) {
-> > >                 if (genpd->provider == of_fwnode_handle(np)) {
-> > >                         genpd_lock(genpd);
-> > > -                       genpd->stay_on = false;
-> > >                         genpd_power_off(genpd, false, 0);
-> > >                         genpd_unlock(genpd);
-> > >                 }
-> > > @@ -3522,7 +3519,6 @@ static void genpd_provider_sync_state(struct device *dev)
-> > >
-> > >         case GENPD_SYNC_STATE_SIMPLE:
-> > >                 genpd_lock(genpd);
-> > > -               genpd->stay_on = false;
-> > >                 genpd_power_off(genpd, false, 0);
-> > >                 genpd_unlock(genpd);
-> > >                 break;
-> > >
-> > > ---
-> > > base-commit: 5cc61f86dff464a63b6a6e4758f26557fda4d494
-> > > change-id: 20250902-rk3576-lockup-regression-5b1f1fb7ff21
-> > >
-> > > Best regards,
-> > > --
-> > > Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> > >
-> > 
-> 
-> 
-
-
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGksCgpBbSBEaWVuc3RhZywgMi4gU2VwdGVtYmVyIDIwMjUsIDIwOjIzOjA0IE1pdHRlbGV1cm9w
+w6Rpc2NoZSBTb21tZXJ6ZWl0IHNjaHJpZWIgTmljb2xhcyBGcmF0dGFyb2xpOgo+IFRoaXMgcmV2
+ZXJ0cyBjb21taXQgZGUxNDFhOWFhNTJkNmIyZmJlYjYzZjk4OTc1YzJjNzIyNzZmMDg3OC4KPiAK
+PiBPbiBSSzM1NzYsIHRoZSBVRlMgY29udHJvbGxlcidzIHBvd2VyIGRvbWFpbiBoYXMgYSBxdWly
+ayB0aGF0IHJlcXVpcmVzCj4gaXQgdG8gc3RheSBlbmFibGVkLCBpbmZyYXN0cmljdHVyZSBmb3Ig
+d2hpY2ggd2FzIGFkZGVkIGluIENvbW1pdAo+IGNkM2ZhMzA0YmE1YyAoInBtZG9tYWluOiBjb3Jl
+OiBJbnRyb2R1Y2UgZGV2X3BtX2dlbnBkX3JwbV9hbHdheXNfb24oKSIpLgo+IAo+IFVuZm9ydHVu
+YXRlbHksIENvbW1pdCBkZTE0MWE5YWE1MmQgKCJwbWRvbWFpbjogY29yZTogTGVhdmUgcG93ZXJl
+ZC1vbgo+IGdlbnBkcyBvbiB1bnRpbCBzeW5jX3N0YXRlIikgYXBwZWFycyB0byBicmVhayB0aGlz
+IHF1aXJrIHdob2xlc2FsZS4gVGhlCj4gcmVzdWx0IGlzIHRoYXQgUkszNTc2IGRldmljZXMgd2l0
+aCB0aGUgVUZTIGNvbnRyb2xsZXIgZW5hYmxlZCBidXQgdW51c2VkCj4gd2lsbCBmcmVlemUgb25j
+ZSBwbWRvbWFpbiBzaHV0cyBvZmYgdW51c2VkIGRvbWFpbnMuCj4gCj4gUmV2ZXJ0IGl0IHVudGls
+IGEgYmV0dGVyIGZpeCBjYW4gYmUgZm91bmQuCj4gCj4gRml4ZXM6IGRlMTQxYTlhYTUyZCAoInBt
+ZG9tYWluOiBjb3JlOiBMZWF2ZSBwb3dlcmVkLW9uIGdlbnBkcyBvbiB1bnRpbCBzeW5jX3N0YXRl
+IikKPiBTaWduZWQtb2ZmLWJ5OiBOaWNvbGFzIEZyYXR0YXJvbGkgPG5pY29sYXMuZnJhdHRhcm9s
+aUBjb2xsYWJvcmEuY29tPgoKanVzdCBhbiBvYnNlcnZhdGlvbiBpbmRlcGVuZGVudCBvZiB0aGUg
+Y29udmVyc2F0aW9uIGluIHRoZSBvdGhlciB0aHJlYWQuClRoaXMgcGF0Y2gvcmV2ZXJ0IHdoYXRl
+dmVyIGZpeGVzIGFuIGFjdHVhbCBpc3N1ZSBmb3IgbWUuCgpPbiB0aGUgcmszNTg4IHRoZSBOUFUg
+cG93ZXItZG9tYWlucyBhcmUgYSBoaXJhcmNoeSBvZgoKUERfTlBVCglQRF9OUFVUT1AgKGNvcmUw
+KQoJCVBEX05QVTEgKGNvcmUxKQoJCVBEX05QVTIgKGNvcmUyKQoKYW5kIHRoZSBQRF9OUFUgZG9l
+cyBuZWVkIGEgc3VwcGx5IHJlZ3VsYXRvci4KCigxKSBXaXRoICJqdXN0IiB2Ni4xNy1yYyArIHRo
+ZSByb2NrZXQgZHJpdmVyIHByb2JpbmcgYW5kIHRoZW4gaWRsaW5nLCBJIGdldDoKCiMgY2F0IC9z
+eXMva2VybmVsL2RlYnVnL3JlZ3VsYXRvci9yZWd1bGF0b3Jfc3VtbWFyeQogcmVndWxhdG9yICAg
+ICAgICAgICAgICAgICAgICAgIHVzZSBvcGVuIGJ5cGFzcyAgb3Btb2RlIHZvbHRhZ2UgY3VycmVu
+dCAgICAgbWluICAgICBtYXgKLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCiBkY18xMnYg
+ICAgICAgICAgICAgICAgICAgICAgICAgICA0ICAgIDMgICAgICAwIHVua25vd24gMTIwMDBtViAg
+ICAgMG1BIDEyMDAwbVYgMTIwMDBtViAKWy4uLl0KICAgIHZjYzV2MF9iYXNlYm9hcmQgICAgICAg
+ICAgICAgIDIgICAgMSAgICAgIDAgdW5rbm93biAgNTAwMG1WICAgICAwbUEgIDUwMDBtViAgNTAw
+MG1WIAogICAgICAgdmNjNXYwX3N5cyAgICAgICAgICAgICAgICAxOCAgIDE4ICAgICAgMCB1bmtu
+b3duICA1MDAwbVYgICAgIDBtQSAgNTAwMG1WICA1MDAwbVYgClsuLi5dCiAgICAgICAgICB2ZGRf
+bnB1X3MwICAgICAgICAgICAgICAwICAgIDAgICAgICAwICBub3JtYWwgICA4MDBtViAgICAgMG1B
+ICAgNTUwbVYgICA5NTBtViAKICAgICAgICAgIHZjY18xdjJfczMgICAgICAgICAgICAgIDIgICAg
+MSAgICAgIDAgdW5rbm93biAgMTIwMG1WICAgICAwbUEgIDEyMDBtViAgMTIwMG1WIAogICAgICAg
+ICAgICAgZmUxYjAwMDAuZXRoZXJuZXQtcGh5ICAgMSAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgIDBtQSAgICAgMG1WICAgICAwbVYKICAgICAgICAgIHZkZF9ncHVfczAgICAgICAgICAg
+ICAgIDEgICAgMiAgICAgIDAgIG5vcm1hbCAgIDY3NW1WICAgICAwbUEgICA1NTBtViAgIDk1MG1W
+IAogICAgICAgICAgICAgZmIwMDAwMDAuZ3B1LW1hbGkgICAgMSAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgIDBtQSAgIDY3NW1WICAgODUwbVYKICAgICAgICAgICAgIGZkOGQ4MDAwLnBv
+d2VyLW1hbmFnZW1lbnQ6cG93ZXItY29udHJvbGxlci1kb21haW4gICAwICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgMG1BICAgICAwbVYgICAgIDBtVgpbLi4uXQoKIyAgY2F0IC9zeXMv
+a2VybmVsL2RlYnVnL3BtX2dlbnBkL3BtX2dlbnBkX3N1bW1hcnkgCmRvbWFpbiAgICAgICAgICAg
+ICAgICAgICAgICAgICAgc3RhdHVzICAgICAgICAgIGNoaWxkcmVuICAgICAgICBwZXJmb3JtYW5j
+ZQogICAgL2RldmljZSAgICAgICAgICAgICAgICAgICAgICAgICBydW50aW1lIHN0YXR1cyAgICAg
+ICAgICAgICAgICAgIG1hbmFnZWQgYnkKLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tClsuLi5dCmdwdSAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgb2ZmLTAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAwCiAgICBmYjAwMDAwMC5ncHUgICAgICAgICAgICAgICAgICAgIHN1c3BlbmRlZCAgICAgICAg
+ICAgICAgICAgICAwICAgICAgICAgICBTVwpucHUyICAgICAgICAgICAgICAgICAgICAgICAgICAg
+IG9mZi0wICAgICAgICAgICAgICAgICAgICAgICAgICAgMAogICAgZmRhZGEwMDAuaW9tbXUgICAg
+ICAgICAgICAgICAgICBzdXNwZW5kZWQgICAgICAgICAgICAgICAgICAgMCAgICAgICAgICAgU1cK
+ICAgIGZkYWQwMDAwLm5wdSAgICAgICAgICAgICAgICAgICAgc3VzcGVuZGVkICAgICAgICAgICAg
+ICAgICAgIDAgICAgICAgICAgIFNXCm5wdTEgICAgICAgICAgICAgICAgICAgICAgICAgICAgb2Zm
+LTAgICAgICAgICAgICAgICAgICAgICAgICAgICAwCiAgICBmZGFjYTAwMC5pb21tdSAgICAgICAg
+ICAgICAgICAgIHN1c3BlbmRlZCAgICAgICAgICAgICAgICAgICAwICAgICAgICAgICBTVwogICAg
+ZmRhYzAwMDAubnB1ICAgICAgICAgICAgICAgICAgICBzdXNwZW5kZWQgICAgICAgICAgICAgICAg
+ICAgMCAgICAgICAgICAgU1cKbnB1dG9wICAgICAgICAgICAgICAgICAgICAgICAgICBvZmYtMCAg
+ICAgICAgICAgICAgICAgICAgICAgICAgIDAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgbnB1MSwgbnB1MgogICAgZmRhYjkwMDAuaW9tbXUgICAgICAgICAg
+ICAgICAgICBzdXNwZW5kZWQgICAgICAgICAgICAgICAgICAgMCAgICAgICAgICAgU1cKICAgIGZk
+YWIwMDAwLm5wdSAgICAgICAgICAgICAgICAgICAgc3VzcGVuZGVkICAgICAgICAgICAgICAgICAg
+IDAgICAgICAgICAgIFNXCm5wdSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgb24gICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAwCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgIG5wdXRvcAoKT2JzZXJ2ZSB0aGF0IHRoZSBQRF9OUFUgbmV2ZXIgZ290
+IGl0cyByZWd1bGF0b3IgYW5kIHRoZSBkb21haW4gYWxzbwpuZXZlciBhY3R1YWxseSBnZXRzIHR1
+cm5lZCBvZmYuIFdoaWxlIHRoZSBkb21haW5zIGRpcmVjdGx5IGF0dGFjaGVkIHRvCnRoZSBjb3Jl
+cyBnZXQgdHVybmVkIG9mZi4KCgooMikgd2l0aCBOaWNvbGFzJ3MgcGF0Y2ggYXBwbGllZCBvbiB0
+b3AsIEkgZ2V0IHRoZSBjb3JyZWN0IGJlaGF2aW91ciwKdGhhdCB3YXMgYWxzbyBoYXBwZW5pbmcg
+d2l0aCB2Ni4xNiBiZWZvcmUKCiMgY2F0IC9zeXMva2VybmVsL2RlYnVnL3JlZ3VsYXRvci9yZWd1
+bGF0b3Jfc3VtbWFyeQogcmVndWxhdG9yICAgICAgICAgICAgICAgICAgICAgIHVzZSBvcGVuIGJ5
+cGFzcyAgb3Btb2RlIHZvbHRhZ2UgY3VycmVudCAgICAgbWluICAgICBtYXgKLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tCiBkY18xMnYgICAgICAgICAgICAgICAgICAgICAgICAgICA0ICAg
+IDMgICAgICAwIHVua25vd24gMTIwMDBtViAgICAgMG1BIDEyMDAwbVYgMTIwMDBtViAKWy4uLl0K
+ICAgIHZjYzV2MF9iYXNlYm9hcmQgICAgICAgICAgICAgIDIgICAgMSAgICAgIDAgdW5rbm93biAg
+NTAwMG1WICAgICAwbUEgIDUwMDBtViAgNTAwMG1WIAogICAgICAgdmNjNXYwX3N5cyAgICAgICAg
+ICAgICAgICAxOCAgIDE4ICAgICAgMCB1bmtub3duICA1MDAwbVYgICAgIDBtQSAgNTAwMG1WICA1
+MDAwbVYgClsuLi5dCiAgICAgICAgICB2ZGRfbnB1X3MwICAgICAgICAgICAgICAwICAgIDEgICAg
+ICAwICBub3JtYWwgICA4MDBtViAgICAgMG1BICAgNTUwbVYgICA5NTBtViAKICAgICAgICAgICAg
+IGZkOGQ4MDAwLnBvd2VyLW1hbmFnZW1lbnQ6cG93ZXItY29udHJvbGxlci1kb21haW4gICAwICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgMG1BICAgICAwbVYgICAgIDBtVgogICAgICAg
+ICAgdmRkX2NwdV9iaWcxX3MwICAgICAgICAgMiAgICAxICAgICAgMCAgbm9ybWFsICAxMDAwbVYg
+ICAgIDBtQSAgIDU1MG1WICAxMDUwbVYgCiAgICAgICAgICAgICBjcHU2LWNwdSAgICAgICAgICAg
+ICAxICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgMG1BICAxMDAwbVYgIDEwMDBtVgog
+ICAgICAgICAgdmRkX2dwdV9zMCAgICAgICAgICAgICAgMSAgICAyICAgICAgMCAgbm9ybWFsICAg
+Njc1bVYgICAgIDBtQSAgIDU1MG1WICAgOTUwbVYgCiAgICAgICAgICAgICBmYjAwMDAwMC5ncHUt
+bWFsaSAgICAxICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgMG1BICAgNjc1bVYgICA4
+NTBtVgogICAgICAgICAgICAgZmQ4ZDgwMDAucG93ZXItbWFuYWdlbWVudDpwb3dlci1jb250cm9s
+bGVyLWRvbWFpbiAgIDAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAwbUEgICAgIDBt
+ViAgICAgMG1WClsuLi5dCgojIGNhdCAvc3lzL2tlcm5lbC9kZWJ1Zy9wbV9nZW5wZC9wbV9nZW5w
+ZF9zdW1tYXJ5IApkb21haW4gICAgICAgICAgICAgICAgICAgICAgICAgIHN0YXR1cyAgICAgICAg
+ICBjaGlsZHJlbiAgICAgICAgcGVyZm9ybWFuY2UKICAgIC9kZXZpY2UgICAgICAgICAgICAgICAg
+ICAgICAgICAgcnVudGltZSBzdGF0dXMgICAgICAgICAgICAgICAgICBtYW5hZ2VkIGJ5Ci0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLQpbLi4uXQpncHUgICAgICAgICAgICAgICAgICAgICAgICAgICAgIG9m
+Zi0wICAgICAgICAgICAgICAgICAgICAgICAgICAgMAogICAgZmIwMDAwMDAuZ3B1ICAgICAgICAg
+ICAgICAgICAgICBzdXNwZW5kZWQgICAgICAgICAgICAgICAgICAgMCAgICAgICAgICAgU1cKbnB1
+MiAgICAgICAgICAgICAgICAgICAgICAgICAgICBvZmYtMCAgICAgICAgICAgICAgICAgICAgICAg
+ICAgIDAKICAgIGZkYWRhMDAwLmlvbW11ICAgICAgICAgICAgICAgICAgc3VzcGVuZGVkICAgICAg
+ICAgICAgICAgICAgIDAgICAgICAgICAgIFNXCiAgICBmZGFkMDAwMC5ucHUgICAgICAgICAgICAg
+ICAgICAgIHN1c3BlbmRlZCAgICAgICAgICAgICAgICAgICAwICAgICAgICAgICBTVwpucHUxICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgIG9mZi0wICAgICAgICAgICAgICAgICAgICAgICAgICAg
+MAogICAgZmRhY2EwMDAuaW9tbXUgICAgICAgICAgICAgICAgICBzdXNwZW5kZWQgICAgICAgICAg
+ICAgICAgICAgMCAgICAgICAgICAgU1cKICAgIGZkYWMwMDAwLm5wdSAgICAgICAgICAgICAgICAg
+ICAgc3VzcGVuZGVkICAgICAgICAgICAgICAgICAgIDAgICAgICAgICAgIFNXCm5wdXRvcCAgICAg
+ICAgICAgICAgICAgICAgICAgICAgb2ZmLTAgICAgICAgICAgICAgICAgICAgICAgICAgICAwCiAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIG5wdTEsIG5wdTIK
+ICAgIGZkYWI5MDAwLmlvbW11ICAgICAgICAgICAgICAgICAgc3VzcGVuZGVkICAgICAgICAgICAg
+ICAgICAgIDAgICAgICAgICAgIFNXCiAgICBmZGFiMDAwMC5ucHUgICAgICAgICAgICAgICAgICAg
+IHN1c3BlbmRlZCAgICAgICAgICAgICAgICAgICAwICAgICAgICAgICBTVwpucHUgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgIG9mZi0wICAgICAgICAgICAgICAgICAgICAgICAgICAgMAogICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBucHV0b3AKClRoZSBy
+ZWd1bGF0b3IgaGFuZGxpbmcgaXMgd29ya2luZyBjb3JyZWN0bHkgYW5kIGFsc28gdGhlIHBhcmVu
+dCBQRF9OUFUKZG9tYWluIGdldHMgdHVybmVkIG9mZiB3aGVuIGl0cyBjaGlsZHJlbiBhcmUgb2Zm
+LgoKCkhlaWtvCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZy
+YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
+dXgtcm9ja2NoaXAK
