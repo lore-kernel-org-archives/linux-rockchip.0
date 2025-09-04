@@ -4,61 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 047BECA1002
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5C36CA1015
 	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Sep 2025 16:24:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WSxPuWW9jSQvx99dQjW8CoGbNbpGNyCeQ0an19dwhG4=; b=gfEN4FpN1NS1TO
-	cBQKpGV/KacN0to+rnXPTxXgVMrPQOLCfAv7TsePPuQv0AwoJAFvHnlLefbJl51C2PtL2fB5tVQCB
-	SWp9z3r3pbEEKSoSP9vVJQarhmpThY0dRD76xSBQr5ne/sMn/cyEHxWofr/genLbDv43oFwwkOCdw
-	xrDV3/0TFntM10x6M0Rmj7tpjbCKGRZ8LVD0SUEmrmnUZ5UxFMQWFiroGNWl4fvKF9bBgsYHzZ5gn
-	ldwf22TqdYxgRZezqb14IQDlk44HiPZ9wcyJH5E5Wzt40XUOWk257L2k9REMU6iVoY1cRXGBAmxoR
-	mVzgqYB04910w1OXRGhg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:References:Subject:To:From:Message-Id:Date:Mime-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KabFkW9IiLomIkw+MFxijYm8z67oc1UwKpj4S18k/6w=; b=FEtbtaT7zq5LnUitNf6h1m9aI6
+	o/Plb+ZhW2U+Tee498m9s663abYjEw4yzgcn0Xg7xmHGfn6wpeW6RP9q2e2Q9mdAPav/amh+3t/2n
+	IIrOL3kKjgl5E4B1MphhKAMcPSoKGTnvS/iAnDoZkBJsP/id9Rzn7/XOypfAZ4RKDXUH19qYdda01
+	wgFjdWQO32kkoBonm+aqd/IITuCGb8srW23JzpBiFdqTMwcX8SUYikXwuvO7CLzQUx4HBgWRhK4Lg
+	vnfvkmvs8OnuFGbhyrIKDIWoHFHrNx4Kp7pqbrDGeshnIucL2BDG74dJr7Trlmzx/sRMO/PqMgtcN
+	XB6IlBdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uuClY-0000000CqzA-30rz;
-	Thu, 04 Sep 2025 16:24:52 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1uuClT-0000000CqpJ-0Nlf;
+	Thu, 04 Sep 2025 16:24:47 +0000
+Received: from out-174.mta0.migadu.com ([91.218.175.174])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uu9QB-0000000BgE4-0Nqa
+	id 1uu997-0000000Bach-391a
 	for linux-rockchip@lists.infradead.org;
-	Thu, 04 Sep 2025 12:50:36 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1756990220; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=ApDpon0xLNyaqlM3Cvsyqdq4pi6LgWmMeh2zuPJ7//+dYjb51jPdCVxhTPTNpGuxHjkvtgPtrMxyG08KE3wrvPkNp68AzY2GUQAjvqZ6/X71tOabXKR6IbWjSHg4Zeq7Aq0clLCfCh3tT0FcdJs0UB6u9jlSAEC9neJ5bjpk9I8=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1756990220; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=L8qpeRieIsLLxpttaICO063jG7df++yVwdZkcuPBW+8=; 
-	b=dX7J9l9S7Li4rwNvzDM4F6OGWA5vTnVfyOcq6q+CWeD1RkZpXzjJTlJpr2XNMCDW3oXx/0ZdTU5W2Fr6QSnq64mILpUNrkDpwm7+kcbhCImA26XWgpNSpeYcLjyY/j0WfdhREpXezYPeUN69d/qDhIy8Q8oRVsb8PkuJbgUN+5w=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1756990219;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=L8qpeRieIsLLxpttaICO063jG7df++yVwdZkcuPBW+8=;
-	b=k0cugo+ePjqwt9Sc3dwl2rBacAwVd580UQCkechLz/Lx6FKfqpxRSbsOZJryGWWP
-	OF9+LhP+tJ+/l5P903tGx9mtTz45xYYloMacQL7UQ7LqC3Gsbc99fQT8AXlWMp8BRJo
-	INSIwkmInINVjOtI/hl0KqbgVp9OBT++7JzTPIcs=
-Received: by mx.zohomail.com with SMTPS id 1756990217294112.06172142778973;
-	Thu, 4 Sep 2025 05:50:17 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: [PATCH] pmdomian: core: don't unset stay_on during sync_state
-Date: Thu, 04 Sep 2025 14:50:13 +0200
-Message-ID: <3332408.jE0xQCEvom@workhorse>
-In-Reply-To: <CAPDyKFpAOLiBOoAhv+GQcobU_g_AWrB9iyOGmodROLtRmR30JA@mail.gmail.com>
-References: <20250902-rk3576-lockup-regression-v1-1-c4a0c9daeb00@collabora.com>
- <CAPDyKFpAOLiBOoAhv+GQcobU_g_AWrB9iyOGmodROLtRmR30JA@mail.gmail.com>
-MIME-Version: 1.0
+	Thu, 04 Sep 2025 12:33:00 +0000
+Mime-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
+	t=1756989172;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=t2b8f0HG/g1hoFjQFsW6ldfZjYHSPM9qpQZoCdYE2fI=;
+	b=pNDj5LQn02gwPbCkqTgYS6OnB71G069FSFeB8Zv8pa+rN1xBDdPLJF1mFYnXsMdxLyBWVZ
+	fTwNrgjYreSARsOx7PSvZBYeSv1szZqCT7EtKiaOGP3dCRmlLKYCSARrk1IRnIrNCilDl/
+	nxTDX//FzBW34b4q3DQbeKaLOlagL1WhJtKvQVrQ5hqhKoGinRm4xf9or7nQZAaHnInDSo
+	GhiOA3qKdn93hAlejWcD9tsASqkNuoFHd0aQSFXbHO1HnkPn1lCeDDsFupe3nGpr8FJ0p9
+	FTmo/FrDrr4FwN0+GVKaUiXgQEdKQ9Woi0TDiD8tKxTCsLnGiKLxKUqVQcKsPQ==
+Date: Thu, 04 Sep 2025 14:32:31 +0200
+Message-Id: <DCK0O99SYSCF.BMBAEUV24C1G@cknow.org>
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Diederik de Haas" <didi.debian@cknow.org>
+To: "Ulf Hansson" <ulf.hansson@linaro.org>, "Sebin Francis"
+ <sebin.francis@ti.com>, "Saravana Kannan" <saravanak@google.com>
+Subject: Re: [PATCH v3 00/24] pmdomain: Add generic ->sync_state() support
+ to genpd
+References: <20250701114733.636510-1-ulf.hansson@linaro.org>
+ <97231ac9-5cde-49bf-931b-d5baf6d2d2d1@ti.com>
+ <CAPDyKFr8AYuS2aEVs8X2As1NzXnbea4rPLKiF5=fKjq=PAeZgg@mail.gmail.com>
+In-Reply-To: <CAPDyKFr8AYuS2aEVs8X2As1NzXnbea4rPLKiF5=fKjq=PAeZgg@mail.gmail.com>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250904_055035_212985_4EE16844 
-X-CRM114-Status: GOOD (  52.55  )
+X-CRM114-CacheID: sfid-20250904_053258_636732_6112ED10 
+X-CRM114-Status: GOOD (  29.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,206 +66,141 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-pm@vger.kernel.org, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, kernel@collabora.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Michael Grzeschik <m.grzeschik@pengutronix.de>, Maulik Shah <maulik.shah@oss.qualcomm.com>, Peng Fan <peng.fan@oss.nxp.com>, "Rafael J
+ . Wysocki" <rafael@kernel.org>, Stephen Boyd <sboyd@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Bjorn Andersson <andersson@kernel.org>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, Johan Hovold <johan@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>, linux-rockchip@lists.infradead.org, Thierry Reding <thierry.reding@gmail.com>, Geert Uytterhoeven <geert@linux-m68k.org>, Konrad Dybcio <konradybcio@kernel.org>, Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, Abel Vesa <abel.vesa@linaro.org>, Hiago De Franco <hiago.franco@toradex.com>, Michal
+ Simek <michal.simek@amd.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: multipart/mixed; boundary="===============7340088939850453224=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thursday, 4 September 2025 11:17:01 Central European Summer Time Ulf Hansson wrote:
-> On Tue, 2 Sept 2025 at 20:23, Nicolas Frattaroli
-> <nicolas.frattaroli@collabora.com> wrote:
-> >
-> > This reverts commit de141a9aa52d6b2fbeb63f98975c2c72276f0878.
-> 
-> I can't find this commit hash. What tree are you using when testing this?
-> 
-> Are you trying to revert 0e789b491ba04c31de5c71249487593e386baa67 ?
+--===============7340088939850453224==
+Content-Type: multipart/signed;
+ boundary=3849e3abccc41c0afb77643d48c9c411b54c55e1791606530e9b10577404;
+ micalg=pgp-sha512; protocol="application/pgp-signature"
 
-Probably, I did the revert on a rebased branch and then rebased the revert
-onto v6.17-rc4 so it likely is the wrong hash here. I'll fix this in v2 if
-there is a v2 (it might actually become a different patch, see huge text
-below, sorry!)
+--3849e3abccc41c0afb77643d48c9c411b54c55e1791606530e9b10577404
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
 
-> 
-> >
-> > On RK3576, the UFS controller's power domain has a quirk that requires
-> > it to stay enabled, infrastricture for which was added in Commit
-> > cd3fa304ba5c ("pmdomain: core: Introduce dev_pm_genpd_rpm_always_on()").
-> >
-> > Unfortunately, Commit de141a9aa52d ("pmdomain: core: Leave powered-on
-> > genpds on until sync_state") appears to break this quirk wholesale. The
-> > result is that RK3576 devices with the UFS controller enabled but unused
-> > will freeze once pmdomain shuts off unused domains.
-> >
-> > Revert it until a better fix can be found.
-> 
-> This sounds a bit vague to me, can you please clarify and elaborate a
-> bit more so I can try to help.
-> 
-> What does "UFS controller enabled but unused" actually mean? Has the
-> UFS controller driver been probed successfully and thus its
-> corresponding device been attached to its PM domain?
+Hi,
 
-It means the UFS controller driver has probed, but does not find a
-UFS storage chip connected to it, and therefore reports a probe
-failure. This is a possibility on single-board computers like the
-Radxa ROCK 4D, where the UFS storage is a separate module that plugs
-into some headers.
+On Wed Sep 3, 2025 at 12:33 PM CEST, Ulf Hansson wrote:
+> On Wed, 3 Sept 2025 at 09:39, Sebin Francis <sebin.francis@ti.com> wrote:
+>> On 01/07/25 17:17, Ulf Hansson wrote:
+>> >
+>> > If a PM domain (genpd) is powered-on during boot, there is probably a =
+good
+>> > reason for it. Therefore it's known to be a bad idea to allow such gen=
+pd to be
+>> > powered-off before all of its consumer devices have been probed. This =
+series
+>> > intends to fix this problem.
+>> >
+>> > We have been discussing these issues at LKML and at various Linux-conf=
+erences
+>> > in the past. I have therefore tried to include the people I can recall=
+ being
+>> > involved, but I may have forgotten some (my apologies), feel free to l=
+oop them
+>> > in.
+>> >
+>> > Please help review and test!
+>>
+>> During testing on a TI platform, I observed new kernel warnings after
+>> applying this patch series:
+>>
+>> ti_sci_pm_domains 44043000.system-controller:power-controller:
+>> sync_state() pending due to fd00000.gpu
+>>
+>> These warnings occur when a device (in this case, the GPU) has no driver
+>> bound to it. The fw_devlink_dev_sync_state[0] in the core has a check
+>> before printing this warning. It checks whether the device driver has a
+>> sync_state handler OR the device bus has a sync_state handler in the
+>> dev_has_sync_state[1]. If both conditions are false,
+>> fw_devlink_dev_sync_state[0] performs an early return before printing
+>> the warning.
+>>
+>> Before this patch series, both handlers were absent for device driver
+>> ti_sci_pm_domains and the device bus, so both conditions failed and no
+>> warnings were printed.
+>>
+>> This patch series adds a sync_state handler for the bus, which now
+>> satisfies the second condition. So it doesn't do an early return and
+>> proceeds to print the warning.
+>
+> Thanks for the report and testing!
+>
+> Indeed this is the new and expected behaviour. I agree that it's
+> certainly questionable if those prints should be at the warning level.
+>
+> We should probably downgrade those to dev_info(), at least. Let me
+> send a patch to see what Saravana and others are thinking about it!
 
-> Moreover, the behaviour of dev_pm_genpd_rpm_always_on() is orthogonal
-> to what 0e789b491ba0 ("pmdomain: core: Leave powered-on genpds on
-> until sync_state") brings along with its corresponding sync_state
-> series for genpd [1]. Again, more information is needed to understand
-> what goes wrong.
+I want to report that I see similar warnings on Rock64 (rk3328):
 
-The reason why Rockchip's UFS driver needs this function is that once
-the RK3576_PD_USB power domain is turned on on the RK3576 SoC, it should
-not be toggled off again until a whole SoC suspend/resume cycle because
-the off/on operation is seemingly not idempotent. This does not preclude
-turning off the power domain if the device isn't used at all, e.g. the DT
-node is absent. This is why the affected PDs are not marked as always-on
-in the PD init data for the SoC, as the device driver is the best place to
-set this during runtime.
+[   16.868033] rockchip-pm-domain ff100000.syscon:power-controller: sync_st=
+ate() pending due to ff300000.gpu
+[   16.873637] rockchip-pm-domain ff100000.syscon:power-controller: sync_st=
+ate() pending due to ff350000.video-codec
+[   16.896495] rockchip-pm-domain ff100000.syscon:power-controller: sync_st=
+ate() pending due to ff360000.video-codec
 
-The way I got to this commit is through a bisect between the UFS node
-being enabled on the ROCK 4D (commit 00abee2b18342d6c2f6f37225682fa7ca0d33142)
-and v6.17-rc4. The bisect landed on the pmdomain merge commit
-(commit fc8f5028eb0cc5aee0501a99f59a04f748fbff1c) as the first bad commit,
-so I checked out v6.16, cherry-picked the UFS node enablement, made sure it
-works fine with that, and then rebased the 44 pmdomain commits that this
-merge commit merged onto this base. I verified that the tip of that then
-exhibited the faulty behaviour, namely that my ROCK 4D was locking up
-some time after boot, right after the kernel log message
+This is with a 6.17-rc3 kernel with various rkvdec patches and in dmesg
+I later see msgs wrt ff300000.gpu (lima) and ff350000.video-codec
+(hantro-vpu), but not ff360000.video-codec (rkvdec). Full dmesg:
+https://paste.sr.ht/~diederik/951b54ea8422756e5efaa61d6bcefb575cfe28a4
 
-    [   33.756516] vdd_npu_s0: disabling
+But there were also USB issues (not sure why), so I rebooted and then I
+did see msgs wrt rkvdec. Full dmesg:
+https://paste.sr.ht/~diederik/156f65fc6be05d02484568dfd303c46ba76b3a8e
 
-so presumably when unused regulators and domains were being disabled.
-Aside note: setting vdd_npu_s0 to always-on also works to work around
-the issue, and I'm not quite sure why, because this regulator is not
-used for anything right now so this may be some peculiar SoC silicon
-design where VDD_NPU is leaking into the part that the UFS PD actually
-should be gating, preventing the lockup on accident.
+I also have a 6.17-rc4 kernel which is clean upstream, thus without any
+media patches. This time no USB issues (also no USB device plugged in)
+and I see msgs wrt lima and hantro-vpu, but not rkvdec. Full dmesg:
+https://paste.sr.ht/~diederik/4affea034b0c9fb522a8ad5b90e8b59b4bd856ec
 
-Anyway, so I did a bisect between the UFS introduction and the rebased
-tip of the pmdomain branch, and landed on the commit I'm reverting.
+What's possibly relevant is that the 6.17-rc3+unreleased kernel also has
+this patch added, which adds 'power-domain@RK3328_PD_GPU' to rk3328.dtsi
+https://lore.kernel.org/linux-rockchip/20250830115135.3549305-1-christiansh=
+ewitt@gmail.com/
 
-The problem exhibits itself not when the affect PD is first turned off,
-but when the NPU regulator is turned off. How could this be relevant to
-power domains at all? I have no idea.
+I actually found this thread because I too couldn't find the commit ID
+Nicolas referenced in this post:
+https://lore.kernel.org/linux-rockchip/20250902-rk3576-lockup-regression-v1=
+-1-c4a0c9daeb00@collabora.com/
 
-I admit that I don't understand the commit I'm reverting, as it talks of
-keeping powered-on genpds on, but the code sets a member called "stay_on"
-to false.
+I have no idea whether it's related though (I have no rk3576 device).
 
-However, reverting it 100% reproducibly fixes the observed lockup. The
-lockup does not occur if an UFS module is connected to the SBC.
+I haven't tried (yet) whether the sync_state() msg is also present on
+other Rockchip based devices.
 
-It seems `dev_pm_genpd_rpm_always_on` is never run if UFS experiences
-a probe failure, so I'm not entirely sure how this specific commit
-changes the behaviour in a way that makes it unhappy. I agree the
-solution is probably not a revert here. Also, adding an unconditional
-`dev_pm_genpd_rpm_always_on` in the failing UFS probe path doesn't
-work, likely because the driver is unbound. Maybe this is a complete
-red herring and `dev_pm_genpd_rpm_always_on` is unrelated.
+Cheers,
+  Diederik
 
-The only other device that uses RK3576_PD_USB is the usb_drd0_dwc3
-usb controller. This node is not enabled in my rebase-pd-onto-ufs-enable
-branch, so even assuming the problem is that the usb driver is missing
-the same `dev_pm_genpd_rpm_always_on` call, that shouldn't matter
-becuase nothing else is using that power domain. Unless, of course, our
-description of that power domain is incomplete, which is possible.
+--3849e3abccc41c0afb77643d48c9c411b54c55e1791606530e9b10577404
+Content-Type: application/pgp-signature; name="signature.asc"
 
-The problem may be that this was always racey and the genpd changes
-just made the race go wrong more often.
+-----BEGIN PGP SIGNATURE-----
 
-Another observation: my kernel log during afflicted bootups contains
+iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaLmG7AAKCRDXblvOeH7b
+bmNxAP98YqXu31TFsZ7u3hLkIg/dojp3TfbfPSnZQ210fn86QAEA6SRKOyVWiXD5
+4U+jLG4fAp2k3YuPI+j23ijX0Oum7QA=
+=us0u
+-----END PGP SIGNATURE-----
 
-    rockchip-pm-domain 27380000.power-management:power-controller: sync_state() pending due to 2a2d0000.ufshc
-
-A further observation: pd_ignore_unused does not fix it. Looking at
-the revert and experimenting, removing the `stay_on = false` is not
-what actually fixes my problem, but removing the
-`#ifndef CONFIG_PM_GENERIC_DOMAINS_OF`, even without setting
-pd_ignore_unused, fixes my issue.
-
-This is probably a big enough clue to suss out what's going on; that
-I *need* "[    2.868987] PM: genpd: Disabling unused power domains"
-to run quite early before the regulator that feeds VDD_NPU is disabled
-after the bootup completes unless an UFS module is present or the UFS
-controller is disabled makes me think this is another peculiarity of
-the RK3576 power domains hardware, because none of this I just wrote
-sounds like the words of a sane human.
-
-Kind regards,
-Nicolas Frattaroli
-
-> 
-> Kind regards
-> Uffe
-> 
-> [1]
-> https://lore.kernel.org/all/20250701114733.636510-1-ulf.hansson@linaro.org/
-> 
-> >
-> > Fixes: de141a9aa52d ("pmdomain: core: Leave powered-on genpds on until sync_state")
-> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> > ---
-> >  drivers/pmdomain/core.c | 4 ----
-> >  1 file changed, 4 deletions(-)
-> >
-> > diff --git a/drivers/pmdomain/core.c b/drivers/pmdomain/core.c
-> > index 0006ab3d078972cc72a6dd22a2144fb31443e3da..4eba30c7c2fabcb250444fee27d7554473a4d0c2 100644
-> > --- a/drivers/pmdomain/core.c
-> > +++ b/drivers/pmdomain/core.c
-> > @@ -1357,7 +1357,6 @@ static int genpd_runtime_resume(struct device *dev)
-> >         return ret;
-> >  }
-> >
-> > -#ifndef CONFIG_PM_GENERIC_DOMAINS_OF
-> >  static bool pd_ignore_unused;
-> >  static int __init pd_ignore_unused_setup(char *__unused)
-> >  {
-> > @@ -1393,7 +1392,6 @@ static int __init genpd_power_off_unused(void)
-> >         return 0;
-> >  }
-> >  late_initcall_sync(genpd_power_off_unused);
-> > -#endif
-> >
-> >  #ifdef CONFIG_PM_SLEEP
-> >
-> > @@ -3494,7 +3492,6 @@ void of_genpd_sync_state(struct device_node *np)
-> >         list_for_each_entry(genpd, &gpd_list, gpd_list_node) {
-> >                 if (genpd->provider == of_fwnode_handle(np)) {
-> >                         genpd_lock(genpd);
-> > -                       genpd->stay_on = false;
-> >                         genpd_power_off(genpd, false, 0);
-> >                         genpd_unlock(genpd);
-> >                 }
-> > @@ -3522,7 +3519,6 @@ static void genpd_provider_sync_state(struct device *dev)
-> >
-> >         case GENPD_SYNC_STATE_SIMPLE:
-> >                 genpd_lock(genpd);
-> > -               genpd->stay_on = false;
-> >                 genpd_power_off(genpd, false, 0);
-> >                 genpd_unlock(genpd);
-> >                 break;
-> >
-> > ---
-> > base-commit: 5cc61f86dff464a63b6a6e4758f26557fda4d494
-> > change-id: 20250902-rk3576-lockup-regression-5b1f1fb7ff21
-> >
-> > Best regards,
-> > --
-> > Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> >
-> 
+--3849e3abccc41c0afb77643d48c9c411b54c55e1791606530e9b10577404--
 
 
-
-
+--===============7340088939850453224==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============7340088939850453224==--
+
