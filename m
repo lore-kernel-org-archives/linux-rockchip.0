@@ -4,68 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDAC3CA1015
-	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Sep 2025 11:05:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11A04CA1012
+	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Sep 2025 11:07:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=G8hsCluRcbv5Bn/bfGuz3a0Qx1AMHOAHLxZqDmMlH6g=; b=BFUKTMIdlge4hy
-	DYVnc+mWWc1l96w4CUjU+ym/JMJUnABBIe8AkI2sJ2ppS1Xr3e+3RsbcfJzAgKyeSQjf55+berNfa
-	uAqaRhjIqwLEELL8sVe88XLuIIyOFY/9E6G0QoXCBfJRJmB+MMejLgkCfjcOYjYQCikkTkapOOgBJ
-	dmiS5MXF2fPRwXs6SW5R/if9+SoXhciORryuGmo3uUvZxBmHvTxub5S/36DvAPXGhAZwFbaM3XWof
-	Iw1wd4/dTOLZx5hXEYj0Aw3AyHxMokytrkNhny4S5qF6FrCnaSAbGfuGyViczMZ+KbfOrbNo/gRfM
-	X0xl9M0p/Vvq77W0/1SQ==;
+	List-Owner; bh=hXOu41SjxEEinIN0nTbCCxL9tudk/b4pHRpqe7Jsnd8=; b=Uax2UMwR70n/3m
+	ZPYpLlpjZueMAaKYcXMoI+bfu1LGsePm0lMiLwjFd/sa735ue0+t5HSnOsBjpIo5/jvok8Rn0p9ft
+	Az+vi8xQpXv7TCPMGrNsHsNVfcRIOidC7lEfnd1+q5A/Kcz1CzIrTeEiJV5UBexxj9XSd+bNOPNLu
+	Iw6k2kJi2WcWxx+vZLh9g5tB+mnThoPQ7l2S1oMJYjIQhV+TlbVtu2sPvzmlC6DmO6ulaPv0i1mdr
+	0YDMNIugaz5fv6eh21VbKOOKenR31h8PeDOBvl2u9/HdYyMPm0/5sQpate3pnQwHfelKi/cNj4vay
+	LHI+xvsoJxhevu6JojHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uu7m5-0000000B5XS-2Gid;
-	Thu, 04 Sep 2025 11:05:05 +0000
-Received: from layka.disroot.org ([178.21.23.139])
+	id 1uu7on-0000000B6l2-20tC;
+	Thu, 04 Sep 2025 11:07:53 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uu6vc-0000000AmfD-2QwP;
-	Thu, 04 Sep 2025 10:10:54 +0000
-Received: from mail01.disroot.lan (localhost [127.0.0.1])
-	by disroot.org (Postfix) with ESMTP id BCB6C208A0;
-	Thu,  4 Sep 2025 12:10:49 +0200 (CEST)
-X-Virus-Scanned: SPAM Filter at disroot.org
-Received: from layka.disroot.org ([127.0.0.1])
- by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 1UU3Ew3pXPsJ; Thu,  4 Sep 2025 12:10:48 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
-	t=1756980648; bh=q0xjFKgA1oVufeQPUoXAmkmO47WBeoCpahTTRsgkiR4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=XSTBQnftWTw5Waqb0LaFONAC+OOADo9mLP+BlBUs/gbK6ewyZIAB9nFN+f9mpImYk
-	 nL2acTDzMutg2GaKAos6V29QppDeYoVLWeeUFGYKTSA0Ebt6/F3GhbirdVTpStc6Af
-	 lsVX1+ZeBnougiAbxi3Ma33WAUlqaFmZgf/oPsnPJKfTd2K5llFOzRtb8WlGyj6Tc3
-	 Msa0Km1jWvsp8EWTKdyy3GCIJJnnAxe3+7iHW8RIdgBcSGwLa1EaqGk4AjzwTNUii3
-	 wNG57odu38jms6/e2aIdKTZJPkI+nJjkoy5sS3YpDmCYdJ4V1U0tmcicVoxzC6+m+u
-	 4Ni9uzE4n0Q4g==
-Date: Thu, 4 Sep 2025 10:10:01 +0000
-From: Yao Zi <ziyao@disroot.org>
-To: Simon Horman <horms@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	"Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>,
-	Jonas Karlman <jonas@kwiboo.se>, David Wu <david.wu@rock-chips.com>,
-	Chaoyi Chen <chaoyi.chen@rock-chips.com>, netdev@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	id 1uu6yV-0000000AnpH-0hQp;
+	Thu, 04 Sep 2025 10:13:51 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 9414560210;
+	Thu,  4 Sep 2025 10:13:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F3A65C4CEF0;
+	Thu,  4 Sep 2025 10:13:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1756980830;
+	bh=TaCx2xdJ0PkyIQESevtrNgnqTCDtw2YcyYY/Mn7haVg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=HbaN6Yjznr5n3Gogxrsx99hUcU54nZ3/fhnW5jw8827xmZUpTdL0M+x2zcrkKwdSr
+	 trKtFHUXICoR0Xtx3Wbnyr5gw63yTDdUsLaUsHsVCp7HunCjNBGw/MB5D+pb1lpr5G
+	 wMBAHcGyWwaUHK1j8FAbAVsfuDRbUjmc16AiEWPvPSb21XPNUNlCPL+h8f9sV6Joqw
+	 NDiK8o1f1BuiCRt7RsPXBmzmB6YyWWEquxW3QZAMneehJos4WyLbIVxIAgLfcgW8Zy
+	 TSB/mkGN5d2iXf0RkLf7zYyD/C7Z68NpUDPcWEKUrY/jDeyFfWcM59N1y8QeTidVnP
+	 JcmXOFrYFRL2w==
+Date: Thu, 4 Sep 2025 12:13:43 +0200
+From: Niklas Cassel <cassel@kernel.org>
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: Hans Zhang <18255117159@163.com>, lpieralisi@kernel.org,
+	kwilczynski@kernel.org, bhelgaas@google.com, heiko@sntech.de,
+	mani@kernel.org, yue.wang@amlogic.com, pali@kernel.org,
+	neil.armstrong@linaro.org, robh@kernel.org, jingoohan1@gmail.com,
+	khilman@baylibre.com, jbrunet@baylibre.com,
+	martin.blumenstingl@googlemail.com, linux-pci@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-amlogic@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH net] net: stmmac: dwmac-rk: Ensure clk_phy doesn't
- contain invalid address
-Message-ID: <aLlleb271owHNIbt@pie>
-References: <20250904031222.40953-3-ziyao@disroot.org>
- <20250904095457.GE372207@horms.kernel.org>
- <20250904095657.GF372207@horms.kernel.org>
+Subject: Re: [PATCH v5 1/2] PCI: Configure root port MPS during host probing
+Message-ID: <aLlmV8Qiaph1PHFY@ryzen>
+References: <20250620155507.1022099-2-18255117159@163.com>
+ <20250902174828.GA1165373@bhelgaas>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20250904095657.GF372207@horms.kernel.org>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250904_031053_016675_C5FBA709 
-X-CRM114-Status: GOOD (  23.53  )
+In-Reply-To: <20250902174828.GA1165373@bhelgaas>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,51 +76,111 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 04, 2025 at 10:56:57AM +0100, Simon Horman wrote:
-> On Thu, Sep 04, 2025 at 10:54:57AM +0100, Simon Horman wrote:
-> > On Thu, Sep 04, 2025 at 03:12:24AM +0000, Yao Zi wrote:
-> > > We must set the clk_phy pointer to NULL to indicating it isn't available
-> > > if the optional phy clock couldn't be obtained. Otherwise the error code
-> > > returned by of_clk_get() could be wrongly taken as an address, causing
-> > > invalid pointer dereference when later clk_phy is passed to
-> > > clk_prepare_enable().
-> > > 
-> > > Fixes: da114122b831 ("net: ethernet: stmmac: dwmac-rk: Make the clk_phy could be used for external phy")
-> > > Signed-off-by: Yao Zi <ziyao@disroot.org>
-> > 
-> > ...
-> > 
-> > Hi,
-> > 
-> > I this patch doesn't seem to match upstream code.
-> > 
-> > Looking over the upstream code, it seems to me that
-> > going into the code in question .clk_phy should
-> > be NULL, as bsp_priv it is allocated using devm_kzalloc()
-> > over in rk_gmac_setup()
-> > 
-> > While the upstream version of the code your patch modifies
-> > is as follows. And doesn't touch .clk_phy if integrated_phy is not set.
-> > 
-> >         if (plat->phy_node && bsp_priv->integrated_phy) {
-> >                 bsp_priv->clk_phy = of_clk_get(plat->phy_node, 0);
-> >                 ret = PTR_ERR_OR_ZERO(bsp_priv->clk_phy);
-> >                 if (ret)
-> >                         return dev_err_probe(dev, ret, "Cannot get PHY clock\n");
-> >                 clk_set_rate(bsp_priv->clk_phy, 50000000);
-> >         }
-> > 
-> > Am I missing something?
+On Tue, Sep 02, 2025 at 12:48:28PM -0500, Bjorn Helgaas wrote:
+> On Fri, Jun 20, 2025 at 11:55:06PM +0800, Hans Zhang wrote:
+> > Current PCIe initialization logic may leave root ports operating with
+> > non-optimal Maximum Payload Size (MPS) settings. While downstream device
+> > configuration is handled during bus enumeration, root port MPS values
+> > inherited from firmware or hardware defaults ...
 > 
-> Oops, I missed that da114122b831 is present in net-next (but not net).
-> Let me look over this a second time.
+> Apparently Root Port MPS configuration is different from that for
+> downstream devices?
 
-Oops, yes. Though this is a fix patch, it should target net-next instead
-of net since the commit causing problems hasn't landed in net. Sorry for
-the confusion.
+pci_host_probe() will call pci_scan_root_bus_bridge(), which will call
+pci_scan_single_device(), which will call pci_device_add(), which will
+call pci_configure_device(), which will call pci_configure_mps().
 
-Best regards,
-Yao Zi
+This will be done for both bridges and endpoints.
+
+The bridge will be scanned/added first, before devices behind the bridge.
+
+
+While pci_configure_device()/pci_configure_mps() will be called for both
+bridges and endpoints, pci_configure_mps() will do an early return for
+devices where pci_upstream_bridge() returns NULL, i.e. for devices where
+that does not have an upstream bridge, i.e. for the root bridge itself:
+https://github.com/torvalds/linux/blob/v6.17-rc4/drivers/pci/probe.c#L2181-L2182
+
+So MPS will not be touched for root bridges.
+
+This patch ensures that MPS for root bridges gets initialized to MPSS
+(Max supported MPS).
+
+Later, when pci_configure_device()/pci_configure_mps() is called for a
+device behind the bridge, if the MPSS of the device behind the bridge is
+smaller than the MPS of the bridge, the code reduces the MPS of the bridge:
+https://github.com/torvalds/linux/blob/v6.17-rc4/drivers/pci/probe.c#L2205
+
+
+My only question with this patch is if there is a bridge behind a bridge,
+will the bridge behind the bridge still have pci_pcie_type() ==
+PCI_EXP_TYPE_ROOT_PORT ?
+
+If so, perhaps we should modify this patch from:
+
++       if (pci_pcie_type(dev) == PCI_EXP_TYPE_ROOT_PORT &&
++           pcie_bus_config != PCIE_BUS_TUNE_OFF) {
++               pcie_write_mps(dev, 128 << dev->pcie_mpss);
++       }
++
+        if (!bridge || !pci_is_pcie(bridge))
+                return;
+
+
+to:
+
++       if (!bridge && pci_pcie_type(dev) == PCI_EXP_TYPE_ROOT_PORT &&
++           pcie_bus_config != PCIE_BUS_TUNE_OFF) {
++               pcie_write_mps(dev, 128 << dev->pcie_mpss);
++       }
++
+        if (!bridge || !pci_is_pcie(bridge))
+                return;
+
+
+
+> > During host controller probing phase, when PCIe bus tuning is enabled,
+> > the implementation now configures root port MPS settings to their
+> > hardware-supported maximum values. Specifically, when configuring the MPS
+> > for a PCIe device, if the device is a root port and the bus tuning is not
+> > disabled (PCIE_BUS_TUNE_OFF), the MPS is set to 128 << dev->pcie_mpss to
+> > match the Root Port's maximum supported payload size. The Max Read Request
+> > Size (MRRS) is subsequently adjusted through existing companion logic to
+> > maintain compatibility with PCIe specifications.
+> > 
+> > Note that this initial setting of the root port MPS to the maximum might
+> > be reduced later during the enumeration of downstream devices if any of
+> > those devices do not support the maximum MPS of the root port.
+> > 
+> > Explicit initialization at host probing stage ensures consistent PCIe
+> > topology configuration before downstream devices perform their own MPS
+> > negotiations. This proactive approach addresses platform-specific
+> > requirements where controller drivers depend on properly initialized
+> > root port settings, while maintaining backward compatibility through
+> > PCIE_BUS_TUNE_OFF conditional checks. Hardware capabilities are fully
+> > utilized without altering existing device negotiation behaviors.
+> 
+> This last paragraph seems kind of like marketing without any real
+> content.  Is there something important in there?
+> 
+> Nits:
+> s/root port/Root Port/
+> 
+> Reword "implementation now configures" to be clear about whether "now"
+> refers to before this patch or after.
+> 
+> Update the MRRS "to maintain compatibility" part.  I'm dubious about
+> there being a spec compatibility issue with respect to MRRS.  Cite the
+> relevant section if there is an issue.
+
+I'm not sure why the commit message mentions MRRS at all.
+
+Sure, pcie_write_mrrs() might set MRRS to MPS, but that is existing logic
+and not really related to the change in this patch IMO.
+
+
+Kind regards,
+Niklas
 
 _______________________________________________
 Linux-rockchip mailing list
