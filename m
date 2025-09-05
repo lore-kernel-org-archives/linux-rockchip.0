@@ -4,57 +4,114 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EC16CA1010
-	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Sep 2025 14:36:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EE39CA1010
+	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Sep 2025 14:36:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8NmOjKBXxgf2SiDQqbYV0+/2+uVZQ0wl11a03qr6fEI=; b=ez6f0f9eJrPRAn
-	7gIzNQkotQtGBpdbiKbA+mlZ4SvTW3Zl3GbjS0G6dM3jEQwfe9KoucD8GDvfboHh/zxuqLJoXMowl
-	oV/culpeeXkmOSPBgpQsirZFzIz5OQqfoi2RluQkgpJ5uMDX6Y4r9Oov/1KqYFX9pKXRy7ghpC7EI
-	eQnBj1FuNsfy2dLag2sgosW4aSze1XnAkx9cJCsgZYguxXoEJWIr8N55M2M/Zu/qmZzbWo7/47tQl
-	6sF4P+Gu2XpqcqbYSAnKOKA+UrQD4dBg3RyrBtZUqF4U4LmPojPqlVoiVGAXo4+VD9CEt3/J8ZNmZ
-	fe7DJBTxrcQzXuMZUsgg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KVkkVXgP9q2mWX4ljT3LhzpXlQeP2SKm8R5QujngMJE=; b=NdjNoTq95cNECU4HhoqtVOxWPR
+	tO3Le5kMZobkLcDGBpOP9Zr5FnJVDiJ1qgpfjYphFFzZRIMwQiV9BCWqc5oaJFJqjGSJVK10u88LJ
+	BQvB9SzahCPiRe9J/hdz++RSvWs/9Z2KV1PkShTRyEQzwMR1Bqfv3HQcjFnBxQNvg+DLmOrAZpOql
+	KCvnuw5sgwmScfEVS6G8aUqiaSnjUj/Ps9YK+ISg4U+Hza6lK8avjaor1vkdgNPwmoUnwKtd1K86l
+	3cjuzmwYaUzY3crxW1EVCPtIEg7CH1wz3pOcinM31F816DqCIrjo7yNFTVZyF+VJBKReM0wnPt7+6
+	fYXtdLjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uuXYR-00000002OW4-2AJa;
-	Fri, 05 Sep 2025 14:36:43 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1uuXYX-00000002OcS-22cZ;
+	Fri, 05 Sep 2025 14:36:49 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uuTrM-0000000178z-01AJ;
-	Fri, 05 Sep 2025 10:40:01 +0000
-Received: from ideasonboard.com (93-61-96-190.ip145.fastwebnet.it [93.61.96.190])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id CE792F09;
-	Fri,  5 Sep 2025 12:38:44 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1757068725;
-	bh=/SlyzfgVaz5SVbHY0pSaBSJpooFqAIbmo2KGxi6A7lE=;
+	id 1uuTts-0000000183y-3yXo;
+	Fri, 05 Sep 2025 10:42:38 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id BC3D940C45;
+	Fri,  5 Sep 2025 10:42:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 98C01C4CEF1;
+	Fri,  5 Sep 2025 10:42:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1757068955;
+	bh=+I+6Ob8PFYzlZ0UQk3wSgdfHmrOiugnSzIZKb8fhQEk=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=R+mJNJ2WN1VUDWHCViREJhjMRCETKXoNXhNDEpstTFTfyNPtbIRFOpHPs94r7JQuY
-	 jYFarguhGnF56o+0wsg2oMQKIkA+4f5dJtUwNqZYCckCLQ50eJTLsbjfLhFIqWl5q/
-	 Y++NY7IsLJgaow7cQm668/4aaWsPkM8pnInBNF3M=
-Date: Fri, 5 Sep 2025 12:39:50 +0200
-From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-To: Antoine Bouyer <antoine.bouyer@nxp.com>
-Cc: Jacopo Mondi <jacopo.mondi@ideasonboard.com>, 
-	Dafna Hirschfeld <dafna@fastmail.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
-	Keke Li <keke.li@amlogic.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Dan Scally <dan.scally@ideasonboard.com>, 
-	Sakari Ailus <sakari.ailus@linux.intel.com>, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v4 0/8] media: Introduce V4L2 extensible parameters
-Message-ID: <7l6ahcvujnpfqhzqsviwo72oyhenvcqklj4adivx5yv6fmux5o@bzpgpmmtgntc>
-References: <20250820-extensible-parameters-validation-v4-0-30fe5a99cb1f@ideasonboard.com>
- <784dcb9e-4e72-44ca-975e-4eb1b0eed5cf@nxp.com>
+	b=FJb78JN9Aubn7l+hWFWK2KhL4xncFQiznSU1O+VqVeYoJWONHp4RcAOCsvHduuTfN
+	 +nudQ518QxKtrWwCOfBIzTxEEJAGpU/jUCrDlsuwWXRXBBl2j3vBt1Ltw4szB1n87y
+	 h7x6GKYVobYJ3QTWpsrKBMfGZ15EnA7yYfTpXWUhfEXV1WWfuuJ0vS7hs6fM/OGabb
+	 EOWmFuoLcS3oeA8aB09KPBnxvbJrH5hUgrl3aMa2r81N5UzhAZ8Ke81VM3YcHVbnvU
+	 RJi3JEAJOsT+TM9h+WPDYgQX6anuQ91U155dHwC08dgE3WTQvlLfDX33vEVEuA2/m4
+	 2N9AdUNBEKQBA==
+Date: Fri, 5 Sep 2025 11:42:15 +0100
+From: Mark Brown <broonie@kernel.org>
+To: Xichao Zhao <zhao.xichao@vivo.com>
+Cc: Jean Delvare <jdelvare@suse.com>, Guenter Roeck <linux@roeck-us.net>,
+	Jonathan Cameron <jic23@kernel.org>,
+	David Lechner <dlechner@baylibre.com>,
+	Nuno =?iso-8859-1?Q?S=E1?= <nuno.sa@analog.com>,
+	Andy Shevchenko <andy@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Daniel Lezcano <daniel.lezcano@linaro.org>,
+	Zhang Rui <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>,
+	Guillaume La Roque <glaroque@baylibre.com>,
+	Miquel Raynal <miquel.raynal@bootlin.com>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+	Markus Mayer <mmayer@broadcom.com>, Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	zhanghongchen <zhanghongchen@loongson.cn>,
+	Yinbo Zhu <zhuyinbo@loongson.cn>, Amit Kucheria <amitk@kernel.org>,
+	Thara Gopinath <thara.gopinath@gmail.com>,
+	Niklas =?iso-8859-1?Q?S=F6derlund?= <niklas.soderlund@ragnatech.se>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Magnus Damm <magnus.damm@gmail.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Bartlomiej Zolnierkiewicz <bzolnier@gmail.com>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Talel Shenhar <talel@amazon.com>,
+	Eduardo Valentin <edubezval@gmail.com>, Keerthy <j-keerthy@ti.com>,
+	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+	Masami Hiramatsu <mhiramat@kernel.org>,
+	"open list:HARDWARE MONITORING" <linux-hwmon@vger.kernel.org>,
+	open list <linux-kernel@vger.kernel.org>,
+	"open list:IIO SUBSYSTEM AND DRIVERS" <linux-iio@vger.kernel.org>,
+	"moderated list:ARM/Allwinner sunXi SoC support" <linux-arm-kernel@lists.infradead.org>,
+	"open list:ARM/Allwinner sunXi SoC support" <linux-sunxi@lists.linux.dev>,
+	"open list:THERMAL" <linux-pm@vger.kernel.org>,
+	"open list:THERMAL DRIVER FOR AMLOGIC SOCS" <linux-amlogic@lists.infradead.org>,
+	"moderated list:BROADCOM BCM2711/BCM2835 ARM ARCHITECTURE" <linux-rpi-kernel@lists.infradead.org>,
+	"open list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <imx@lists.linux.dev>,
+	"open list:QUALCOMM TSENS THERMAL DRIVER" <linux-arm-msm@vger.kernel.org>,
+	"open list:RENESAS R-CAR THERMAL DRIVERS" <linux-renesas-soc@vger.kernel.org>,
+	"open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>,
+	"open list:SAMSUNG THERMAL DRIVER" <linux-samsung-soc@vger.kernel.org>,
+	"moderated list:ARM/STM32 ARCHITECTURE" <linux-stm32@st-md-mailman.stormreply.com>,
+	"open list:TEGRA ARCHITECTURE SUPPORT" <linux-tegra@vger.kernel.org>,
+	"open list:TI BANDGAP AND THERMAL DRIVER" <linux-omap@vger.kernel.org>
+Subject: Re: [PATCH 04/12] regulator: max8973: Remove redundant error log
+ prints
+Message-ID: <2f060139-7446-4cb1-910d-791918b28f51@sirena.org.uk>
+References: <20250905072423.368123-1-zhao.xichao@vivo.com>
+ <20250905072423.368123-5-zhao.xichao@vivo.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <784dcb9e-4e72-44ca-975e-4eb1b0eed5cf@nxp.com>
+In-Reply-To: <20250905072423.368123-5-zhao.xichao@vivo.com>
+X-Cookie: He who laughs, lasts.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250905_034000_181185_D3EF148E 
-X-CRM114-Status: GOOD (  36.50  )
+X-CRM114-CacheID: sfid-20250905_034237_025246_AC868AC3 
+X-CRM114-Status: GOOD (  10.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,154 +123,55 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============1463557790168354782=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Antoine
 
-On Fri, Sep 05, 2025 at 12:14:39PM +0200, Antoine Bouyer wrote:
-> Hi Jacopo
->
-> On 20/08/2025 14:58, Jacopo Mondi wrote:
-> > Extensible parameters meta formats have been introduced in the Linux
-> > kernel v6.12 initially to support different revision of the RkISP1 ISP
-> > implemented in different SoC. In order to avoid breaking userspace
-> > everytime an ISP configuration block is added or modified in the uAPI
-> > these new formats, which are versionated and extensible by their
-> > definition have been introduced.
-> >
-> > See for reference:
-> > e9d05e9d5db1 ("media: uapi: rkisp1-config: Add extensible params format")
-> > 6c53a7b68c5d ("media: rkisp1: Implement extensible params support")
-> >
-> > The Amlogic C3 ISP driver followed shortly, introducing an extensible
-> > format for the ISP configuration:
-> >
-> > 6d406187ebc0 ("media: uapi: Add stats info and parameters buffer for C3 ISP")
-> >
-> > with a very similar, if not identical, implementation of the routines to
-> > validate and handle the ISP configuration in the ISP driver in the
-> > c3-isp-params.c file.
-> >
-> > fb2e135208f3 ("media: platform: Add C3 ISP driver")
-> >
-> > With the recent upstreaming attempt of the Mali C55 ISP driver from Dan,
-> > a third user of extensible parameters is going to be itroduced in the
-> > kernel, duplicating again in the driver the procedure for validating and
-> > handling the ISP configuration blocks
-> >
-> > https://patchwork.linuxtv.org/project/linux-media/patch/20250624-c55-v10-15-54f3d4196990@ideasonboard.com/
-> >
-> > To avoid duplicating again the validation routines and common types
-> > definition, this series introduces v4l2-params.c/.h for the kAPI
-> > and v4l2-extensible-params.h for the uAPI and re-organize the RkISP1
-> > and Amlogic C3 drivers to use the common types and the helper validation
-> > routines.
-> >
->
-> I'm currently working on another ISP driver: NXP neo, and also use extended
-> params so as RkISP1.
->
+--===============1463557790168354782==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="hSBr52yOin/qCY9V"
+Content-Disposition: inline
 
-Nice to hear!
 
-> Using common types looks like really interesting approach. However, only
-> params are taken into account, while NXP neo also provides statistics. I'm
-> currently testing extended approach for both params AND statistics. But
-> v4l2-params only applies to .. params, as stated in the name.
->
-> Is there any plan to apply the same to statistics ?
->
+--hSBr52yOin/qCY9V
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Not a proper plan at the moment, but I agree it would indeed be
-beneficial to have a similar approach for stats...
+On Fri, Sep 05, 2025 at 03:23:56PM +0800, Xichao Zhao wrote:
+> devm_thermal_of_zone_register() prints error log messages when
+> it fails, so there is no need to print error log messages again.
 
-Are you suggesting we should drop 'params' at least from the file
-names ?
+Acked-by: Mark Brown <broonie@kernel.org>
 
-> > If the here proposed approach is accepted, I propose to rebase the Mali
-> > C55 driver on top of this series, to use the new common types and
-> > helpers.
-> >
-> > I have been able to test this on RkISP1 but not on C3.
->
-> Also tested on NXP neo locally.
+--hSBr52yOin/qCY9V
+Content-Type: application/pgp-signature; name="signature.asc"
 
-Great, could you maybe send a Tested-by tag ?
+-----BEGIN PGP SIGNATURE-----
 
-Also, not sure if you have noticed this series for libcamera
-https://patchwork.libcamera.org/project/libcamera/list/?series=5413
-where I tried to generalize the extensible param helpers.
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmi6vocACgkQJNaLcl1U
+h9A9Ggf8DfcaSZB9QDgKG3CTzMYN6dA03Qdzw6VmLM9o81xSSlRvqsWSYEm0G86q
+z/jyW0esF1zaS9pQ+ni9mgIUQQvCBr6/d1pY2UJpJd3z1xw2eJUWIgNHIfLsaKDk
+ZIixofNJ8unn3ayIaYKW6fWIhZcoMRY+yXMtvdtUD2vxzMFOerQ1dFKakBEsu9Nj
+JTQTup0slsEXR1tzi/4HBQfftUi+24MUDaRkOnfPfOn1D5gmUaZ6c07B1fGp9dmM
+5c73MTNcN3xonK265AHjzWrgi4sJoXEeqfN7SmvHqspnq6df5zHeKUvFD9Jx+lEw
+n/HlWMMkt3wAlpDVMMsmqqlWaSrGcA==
+=sWAM
+-----END PGP SIGNATURE-----
 
-Thanks
-  j
+--hSBr52yOin/qCY9V--
 
->
-> Best regards
-> Antoine
->
-> >
-> > Thanks
-> >    j
-> >
-> > Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-> > ---
-> > Changes in v4:
-> > - Fix the definition of V4L2_PARAMS_FL_PLATFORM_FLAGS
-> > - Add __counted_by() attribute to the data[] flexible-array member of
-> >    v4l2_params_buffer
-> > - Minor style change
-> > - Link to v3: https://lore.kernel.org/r/20250819-extensible-parameters-validation-v3-0-9dc008348b30@ideasonboard.com
-> >
-> > Changes in v3:
-> > - Rebased on latest media-committers/next
-> > - Take in Dan's suggestion in block size validation
-> > - Documentation minor spelling fixes
-> > - Link to v2: https://lore.kernel.org/r/20250710-extensible-parameters-validation-v2-0-7ec8918ec443@ideasonboard.com
-> >
-> > Changes in v2:
-> > - Make v4l2_params_buffer directly usable
-> > - Centralize ENABLE/DISABLE flags definition and validation
-> > - Take in Dan's v4l2_params_buffer_size()
-> > - Allow blocks to only contain the header if they're going to be
-> >    disabled
-> > - Documentation fixes as reported by Nicolas
-> > - Link to v1: https://lore.kernel.org/r/20250708-extensible-parameters-validation-v1-0-9fc27c9c728c@ideasonboard.com
-> >
-> > ---
-> > Jacopo Mondi (8):
-> >        media: uapi: Introduce V4L2 extensible params
-> >        media: uapi: Convert RkISP1 to V4L2 extensible params
-> >        media: uapi: Convert Amlogic C3 to V4L2 extensible params
-> >        media: Documentation: uapi: Add V4L2 extensible parameters
-> >        media: v4l2-core: Introduce v4l2-params.c
-> >        media: rkisp1: Use v4l2-params for validation
-> >        media: amlogic-c3: Use v4l2-params for validation
-> >        media: Documentation: kapi: Add v4l2 extensible parameters
-> >
-> >   Documentation/driver-api/media/v4l2-core.rst       |   1 +
-> >   Documentation/driver-api/media/v4l2-params.rst     |   5 +
-> >   .../media/v4l/extensible-parameters.rst            |  89 ++++++
-> >   .../userspace-api/media/v4l/meta-formats.rst       |   1 +
-> >   MAINTAINERS                                        |  10 +
-> >   .../media/platform/amlogic/c3/isp/c3-isp-params.c  | 263 ++++++----------
-> >   .../media/platform/rockchip/rkisp1/rkisp1-params.c | 349 +++++++++------------
-> >   drivers/media/v4l2-core/Makefile                   |   3 +-
-> >   drivers/media/v4l2-core/v4l2-params.c              | 126 ++++++++
-> >   include/media/v4l2-params.h                        | 164 ++++++++++
-> >   include/uapi/linux/media/amlogic/c3-isp-config.h   |  48 +--
-> >   include/uapi/linux/media/v4l2-extensible-params.h  | 146 +++++++++
-> >   include/uapi/linux/rkisp1-config.h                 |  67 ++--
-> >   13 files changed, 817 insertions(+), 455 deletions(-)
-> > ---
-> > base-commit: a75b8d198c55e9eb5feb6f6e155496305caba2dc
-> > change-id: 20250701-extensible-parameters-validation-c831f7f5cc0b
-> >
-> > Best regards,
+
+--===============1463557790168354782==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============1463557790168354782==--
+
