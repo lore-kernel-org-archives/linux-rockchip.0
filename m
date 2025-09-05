@@ -4,114 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EE39CA1010
-	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Sep 2025 14:36:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F0CDCA1013
+	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Sep 2025 14:38:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KVkkVXgP9q2mWX4ljT3LhzpXlQeP2SKm8R5QujngMJE=; b=NdjNoTq95cNECU4HhoqtVOxWPR
-	tO3Le5kMZobkLcDGBpOP9Zr5FnJVDiJ1qgpfjYphFFzZRIMwQiV9BCWqc5oaJFJqjGSJVK10u88LJ
-	BQvB9SzahCPiRe9J/hdz++RSvWs/9Z2KV1PkShTRyEQzwMR1Bqfv3HQcjFnBxQNvg+DLmOrAZpOql
-	KCvnuw5sgwmScfEVS6G8aUqiaSnjUj/Ps9YK+ISg4U+Hza6lK8avjaor1vkdgNPwmoUnwKtd1K86l
-	3cjuzmwYaUzY3crxW1EVCPtIEg7CH1wz3pOcinM31F816DqCIrjo7yNFTVZyF+VJBKReM0wnPt7+6
-	fYXtdLjA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=KVpUG0WhjXtMyfNP+YaA/j67sqEqbX9LTUvOaqZxcTI=; b=he3T4JxbVr9YIs
+	ZZmcjsqT3x6uAJL0noMBkg5dzH29iV+k8S4JSHxOygy4AC8vGi0w0pF88rIarozUOUwdHyNMP7qkE
+	aA8cOPrNb9fLJj3qPCtNOeC1k55CcpPtEvc8on9jAChLbNFfOLMSHzBNXBUu/4wn9qxTStZCiCvlJ
+	FOK08as1u6j9sju4wGrGtN+j77+i4WjIl8QUHRqVGORY1nX/1MZFm1EcnqV8bUlEtHh5lj7mJhsIz
+	594dptcCXUAPCiIt233rLdRnbC62BN9q/r502bXXup3wCEkPLPu1YPvKqh+w5lyUPV0pRJjCHEENz
+	0rDNew3N2VHNg1RaHSOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uuXYX-00000002OcS-22cZ;
-	Fri, 05 Sep 2025 14:36:49 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1uuXZq-00000002QFM-2oJq;
+	Fri, 05 Sep 2025 14:38:10 +0000
+Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uuTts-0000000183y-3yXo;
-	Fri, 05 Sep 2025 10:42:38 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id BC3D940C45;
-	Fri,  5 Sep 2025 10:42:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 98C01C4CEF1;
-	Fri,  5 Sep 2025 10:42:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1757068955;
-	bh=+I+6Ob8PFYzlZ0UQk3wSgdfHmrOiugnSzIZKb8fhQEk=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=FJb78JN9Aubn7l+hWFWK2KhL4xncFQiznSU1O+VqVeYoJWONHp4RcAOCsvHduuTfN
-	 +nudQ518QxKtrWwCOfBIzTxEEJAGpU/jUCrDlsuwWXRXBBl2j3vBt1Ltw4szB1n87y
-	 h7x6GKYVobYJ3QTWpsrKBMfGZ15EnA7yYfTpXWUhfEXV1WWfuuJ0vS7hs6fM/OGabb
-	 EOWmFuoLcS3oeA8aB09KPBnxvbJrH5hUgrl3aMa2r81N5UzhAZ8Ke81VM3YcHVbnvU
-	 RJi3JEAJOsT+TM9h+WPDYgQX6anuQ91U155dHwC08dgE3WTQvlLfDX33vEVEuA2/m4
-	 2N9AdUNBEKQBA==
-Date: Fri, 5 Sep 2025 11:42:15 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Xichao Zhao <zhao.xichao@vivo.com>
-Cc: Jean Delvare <jdelvare@suse.com>, Guenter Roeck <linux@roeck-us.net>,
-	Jonathan Cameron <jic23@kernel.org>,
-	David Lechner <dlechner@baylibre.com>,
-	Nuno =?iso-8859-1?Q?S=E1?= <nuno.sa@analog.com>,
-	Andy Shevchenko <andy@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Daniel Lezcano <daniel.lezcano@linaro.org>,
-	Zhang Rui <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>,
-	Guillaume La Roque <glaroque@baylibre.com>,
-	Miquel Raynal <miquel.raynal@bootlin.com>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
-	Markus Mayer <mmayer@broadcom.com>, Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	zhanghongchen <zhanghongchen@loongson.cn>,
-	Yinbo Zhu <zhuyinbo@loongson.cn>, Amit Kucheria <amitk@kernel.org>,
-	Thara Gopinath <thara.gopinath@gmail.com>,
-	Niklas =?iso-8859-1?Q?S=F6derlund?= <niklas.soderlund@ragnatech.se>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Magnus Damm <magnus.damm@gmail.com>,
+	id 1uuUba-00000001NVE-0moF;
+	Fri, 05 Sep 2025 11:27:47 +0000
+Received: by mail-pj1-x1032.google.com with SMTP id 98e67ed59e1d1-32b70820360so1604686a91.2;
+        Fri, 05 Sep 2025 04:27:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1757071665; x=1757676465; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=BvNSdgfroz2AQh+V+YdAGx7lMSQySMqfI1R60lc+cXY=;
+        b=BWzWMzOX/H3/rM9qt7yrJ4joshfDJkzVFXRg7PQjOBjqZ8wWHJDSCCwpxCwoV/Qvqj
+         pRyEwiiz4VwQlIx8H1SIBjF1I/Ehli+cfLI3F1As1p+qCp+Jmn1jjDBfEXq1E+lRb2Nk
+         XTZ84YNqJxlmALFqyWCvCxXwyvluN+vNX7Bk3QcgoCUEJMa5jGlLZtOJ45bYP4n/iXlI
+         6GFGclNK4y02O5MUPPP+d7kVotjT0Cdr/rBpg2UmUtZK+wRLHSjRqGueZgwLaLHte4pu
+         k0KxtbRH+DTwWNIXsosBZs06pO3c6LTu7Qg1W4EEsTODbM3bntd/7tB0TuWL9g2YyqsJ
+         T7UA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1757071665; x=1757676465;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=BvNSdgfroz2AQh+V+YdAGx7lMSQySMqfI1R60lc+cXY=;
+        b=rgm7Qg9Z6LtfviWWD7vHtNclm66BmhRG+VcxBBA7HXymS3IVVZ8mj1o2UzRrGzdYZ4
+         /ajkrLMiEt9ILO040ZQL5nL8+DYUigaYIGMcHjaRpvKf27ZrxQaKXRDqS2tmj6KGA98v
+         vNqPI3fpHc4jYMO4rNYeaP1kqLA3P3+pkJ/m5X9KHy5CyB16wb/N8ETMPUpNQI/UwzK1
+         LDR95HLSZ3zTdBKPvxgZHInq7/cvOs19UFtWehKlpkf7vyHbDi3HIcfwwTkDW5dku0EJ
+         InzRxVJnnHTmZw4yVr3Wny/pp+bC80EUFQBJE8Pl+1bUrK5wgKFJzt/GrsYu1fnFSW3y
+         eeEA==
+X-Forwarded-Encrypted: i=1; AJvYcCWrqoUOaMyAqDiaIXIiDqmGWkwiXtqNoj4dQIRLSKCtL9XBlGa9vmLfpunFAMIM5XlKEqbqlEg8+po/Ebc7hZWo@lists.infradead.org, AJvYcCXhhemBhZhqCV5/rPmwwVVFCLGA3RXSa0gPZHQbnSFOhQg3mdLsskqTWSWCUUgzdX5DDiJS+5Dr/UKRZPEvXUo=@lists.infradead.org
+X-Gm-Message-State: AOJu0YwMrRfjaqoU+pRIqIlk9+LxnodT/rKiZT5MOOnx9e5qbqfGywz4
+	+S1jhrUOwECn9eDPVQrLrh/98mk4MrzvwU0f5zc7jXAwQ7mj6DZioXZz
+X-Gm-Gg: ASbGncsIOar2PWOkeSjsiLMlupdTrx5pcA94o3xWXBDep642u31aETVNkiVP64RXfac
+	HC20s/Lb8b4mU7NADUkB4oqtRTh3DlWFt9M80zqRqmgi08MFH+b3QpvB6R5p9ktlW3WrEY5VzEY
+	kks+RGDEMRR+f7jWe87H6ZXASFGHJ1TtaM83M85IyzN16D+GIJ0ptzeHMfR5/FJqMGN7jArlULz
+	FcC1fcqb4RHF221oPeZx1WO3fnKI4/z8nrBC18YUmfU572178LDLg+D8qSSK9JujeG2SU3DztWX
+	4ZQXtFye/YwC/26Az5G0OVPlv89xmoC8xbtMzSgxjj1/xxnsON3z6iG9zDoCxo5MAciIe9oHBWH
+	4kqjb9cZ77WPybUHX/ZpjwiqPWhkTIHI=
+X-Google-Smtp-Source: AGHT+IGvR4zQ0L9DATfW6OC24buFgtcy9qBxyqE0QsalCQFZz8jZdjfaS+y+TmQZ4bZufc0KdMQo+g==
+X-Received: by 2002:a17:90b:3e44:b0:32b:bc1c:8d65 with SMTP id 98e67ed59e1d1-32bbc1c8e51mr3401055a91.30.1757071665181;
+        Fri, 05 Sep 2025 04:27:45 -0700 (PDT)
+Received: from rockpi-5b ([45.112.0.216])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-329e6d6d4b2sm10390179a91.0.2025.09.05.04.27.40
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 05 Sep 2025 04:27:44 -0700 (PDT)
+From: Anand Moon <linux.amoon@gmail.com>
+To: Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>,
 	Heiko Stuebner <heiko@sntech.de>,
-	Bartlomiej Zolnierkiewicz <bzolnier@gmail.com>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Talel Shenhar <talel@amazon.com>,
-	Eduardo Valentin <edubezval@gmail.com>, Keerthy <j-keerthy@ti.com>,
-	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
-	Masami Hiramatsu <mhiramat@kernel.org>,
-	"open list:HARDWARE MONITORING" <linux-hwmon@vger.kernel.org>,
-	open list <linux-kernel@vger.kernel.org>,
-	"open list:IIO SUBSYSTEM AND DRIVERS" <linux-iio@vger.kernel.org>,
-	"moderated list:ARM/Allwinner sunXi SoC support" <linux-arm-kernel@lists.infradead.org>,
-	"open list:ARM/Allwinner sunXi SoC support" <linux-sunxi@lists.linux.dev>,
-	"open list:THERMAL" <linux-pm@vger.kernel.org>,
-	"open list:THERMAL DRIVER FOR AMLOGIC SOCS" <linux-amlogic@lists.infradead.org>,
-	"moderated list:BROADCOM BCM2711/BCM2835 ARM ARCHITECTURE" <linux-rpi-kernel@lists.infradead.org>,
-	"open list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <imx@lists.linux.dev>,
-	"open list:QUALCOMM TSENS THERMAL DRIVER" <linux-arm-msm@vger.kernel.org>,
-	"open list:RENESAS R-CAR THERMAL DRIVERS" <linux-renesas-soc@vger.kernel.org>,
-	"open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>,
-	"open list:SAMSUNG THERMAL DRIVER" <linux-samsung-soc@vger.kernel.org>,
-	"moderated list:ARM/STM32 ARCHITECTURE" <linux-stm32@st-md-mailman.stormreply.com>,
-	"open list:TEGRA ARCHITECTURE SUPPORT" <linux-tegra@vger.kernel.org>,
-	"open list:TI BANDGAP AND THERMAL DRIVER" <linux-omap@vger.kernel.org>
-Subject: Re: [PATCH 04/12] regulator: max8973: Remove redundant error log
- prints
-Message-ID: <2f060139-7446-4cb1-910d-791918b28f51@sirena.org.uk>
-References: <20250905072423.368123-1-zhao.xichao@vivo.com>
- <20250905072423.368123-5-zhao.xichao@vivo.com>
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>,
+	Niklas Cassel <cassel@kernel.org>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Hans Zhang <18255117159@163.com>,
+	Wilfred Mallawa <wilfred.mallawa@wdc.com>,
+	linux-pci@vger.kernel.org (open list:PCI NATIVE HOST BRIDGE AND ENDPOINT DRIVERS),
+	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Rockchip SoC support),
+	linux-rockchip@lists.infradead.org (open list:ARM/Rockchip SoC support),
+	linux-kernel@vger.kernel.org (open list)
+Cc: Anand Moon <linux.amoon@gmail.com>
+Subject: [PATCH v1] PCI: dw-rockchip: Simplify regulator setup with devm_regulator_get_enable_optional()
+Date: Fri,  5 Sep 2025 16:57:25 +0530
+Message-ID: <20250905112736.6401-1-linux.amoon@gmail.com>
+X-Mailer: git-send-email 2.50.1
 MIME-Version: 1.0
-In-Reply-To: <20250905072423.368123-5-zhao.xichao@vivo.com>
-X-Cookie: He who laughs, lasts.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250905_034237_025246_AC868AC3 
-X-CRM114-Status: GOOD (  10.53  )
+X-CRM114-CacheID: sfid-20250905_042746_226071_A0F1A29F 
+X-CRM114-Status: GOOD (  15.40  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,55 +104,80 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1463557790168354782=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Replace manual get/enable logic with devm_regulator_get_enable_optional()
+to reduce boilerplate and improve error handling. This devm helper ensures
+the regulator is enabled during probe and automatically disabled on driver
+removal. Dropping the vpcie3v3 struct member eliminates redundant state
+tracking, resulting in cleaner and more maintainable code.
 
---===============1463557790168354782==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="hSBr52yOin/qCY9V"
-Content-Disposition: inline
+Signed-off-by: Anand Moon <linux.amoon@gmail.com>
+---
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c | 23 +++++--------------
+ 1 file changed, 6 insertions(+), 17 deletions(-)
 
+diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+index b5f5eee5a50e..56baca52c3e9 100644
+--- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
++++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+@@ -76,7 +76,6 @@ struct rockchip_pcie {
+ 	unsigned int clk_cnt;
+ 	struct reset_control *rst;
+ 	struct gpio_desc *rst_gpio;
+-	struct regulator *vpcie3v3;
+ 	struct irq_domain *irq_domain;
+ 	const struct rockchip_pcie_of_data *data;
+ };
+@@ -644,22 +643,15 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+ 		return ret;
+ 
+ 	/* DON'T MOVE ME: must be enable before PHY init */
+-	rockchip->vpcie3v3 = devm_regulator_get_optional(dev, "vpcie3v3");
+-	if (IS_ERR(rockchip->vpcie3v3)) {
+-		if (PTR_ERR(rockchip->vpcie3v3) != -ENODEV)
+-			return dev_err_probe(dev, PTR_ERR(rockchip->vpcie3v3),
+-					"failed to get vpcie3v3 regulator\n");
+-		rockchip->vpcie3v3 = NULL;
+-	} else {
+-		ret = regulator_enable(rockchip->vpcie3v3);
+-		if (ret)
+-			return dev_err_probe(dev, ret,
+-					     "failed to enable vpcie3v3 regulator\n");
+-	}
++	ret = devm_regulator_get_enable_optional(dev, "vpcie3v3");
++	if (ret < 0 && ret != -ENODEV)
++		return dev_err_probe(dev, ret,
++				     "failed to enable vpcie3v3 regulator\n");
+ 
+ 	ret = rockchip_pcie_phy_init(rockchip);
+ 	if (ret)
+-		goto disable_regulator;
++		return dev_err_probe(dev, ret,
++				     "failed to initialize the phy\n");
+ 
+ 	ret = reset_control_deassert(rockchip->rst);
+ 	if (ret)
+@@ -692,9 +684,6 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+ 	clk_bulk_disable_unprepare(rockchip->clk_cnt, rockchip->clks);
+ deinit_phy:
+ 	rockchip_pcie_phy_deinit(rockchip);
+-disable_regulator:
+-	if (rockchip->vpcie3v3)
+-		regulator_disable(rockchip->vpcie3v3);
+ 
+ 	return ret;
+ }
 
---hSBr52yOin/qCY9V
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+base-commit: d69eb204c255c35abd9e8cb621484e8074c75eaa
+-- 
+2.50.1
 
-On Fri, Sep 05, 2025 at 03:23:56PM +0800, Xichao Zhao wrote:
-> devm_thermal_of_zone_register() prints error log messages when
-> it fails, so there is no need to print error log messages again.
-
-Acked-by: Mark Brown <broonie@kernel.org>
-
---hSBr52yOin/qCY9V
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmi6vocACgkQJNaLcl1U
-h9A9Ggf8DfcaSZB9QDgKG3CTzMYN6dA03Qdzw6VmLM9o81xSSlRvqsWSYEm0G86q
-z/jyW0esF1zaS9pQ+ni9mgIUQQvCBr6/d1pY2UJpJd3z1xw2eJUWIgNHIfLsaKDk
-ZIixofNJ8unn3ayIaYKW6fWIhZcoMRY+yXMtvdtUD2vxzMFOerQ1dFKakBEsu9Nj
-JTQTup0slsEXR1tzi/4HBQfftUi+24MUDaRkOnfPfOn1D5gmUaZ6c07B1fGp9dmM
-5c73MTNcN3xonK265AHjzWrgi4sJoXEeqfN7SmvHqspnq6df5zHeKUvFD9Jx+lEw
-n/HlWMMkt3wAlpDVMMsmqqlWaSrGcA==
-=sWAM
------END PGP SIGNATURE-----
-
---hSBr52yOin/qCY9V--
-
-
---===============1463557790168354782==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============1463557790168354782==--
-
