@@ -4,91 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05004CA0FED
-	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Sep 2025 16:42:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1830ACA0FED
+	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Sep 2025 17:05:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KaVMo2rn3Rqoi6nZHhOVob4cVGRapsHqlzXrLD5UJc4=; b=l3np+MA2gJu9oq
-	jNZQ0dJ8IKDEIhPkSfYaECg3B0RmwzMF5z+DzFEhyliFe0nr0wvyyDAXMJRPBAwyRzBGTzZsRquJR
-	15QrcuDk8dU2Dq/WyrJ2WAyMLIXhNlTJscSjVqm+KAhO2kzgL9FC/IW0/0w+uCZhjTMaWPBYuiyGA
-	IVHtaSy432QWbwpVAxOdCclJgDbBByufvycU+NmAHBh29/3+f0GeSAX0D7JJO884/NiCfZLwywqca
-	VC49zkIC11wgKKLsmg+tj/MCgNbZ6innQf3RC5r08APSQue3C14Zamibrs4d1535fex57cG+uHFkK
-	4xyy38FhsVFQbdifMU9Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=53fykguyR66uAluf0kC5RXaPXNMYcRPXInpEbIeHvjs=; b=TskKq352LZKmaY
+	wQ4zL2ADrCGkdaMigidfbU/2ifWVOD+DWdiLMN7Mom3O8P5+2sHjsM00GKKlqIPlDi/xuYNzYuDek
+	MEglNtpCymJ+DnvdYPCvJL1WRB96XAjm6RukM8+ae3MLKEEyYw0yphgzpNUEx9She0TbR4qZBW63l
+	MagGxUIf7oyPEVVDa9w0zy+uAjGLvj14ncmXDewoOPDv0Vgsl+ZLIiShr1u1PVptI+7CnDk9xruCs
+	LnYoUPRws6+KowhIAtUExoRVAXuW7xy5ePh4bDpeg4/4ffY++CEyuhnNHTgQm7oAXDlSZ9TubC/Z8
+	pB/jxOTGX1I6kmH/bNUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uuZVe-00000003BDf-1LwM;
-	Fri, 05 Sep 2025 16:41:58 +0000
+	id 1uuZs9-00000003LH1-3uXO;
+	Fri, 05 Sep 2025 17:05:13 +0000
 Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uuVxr-00000001oTe-3LE2;
-	Fri, 05 Sep 2025 12:54:52 +0000
-Received: by mail-pl1-x631.google.com with SMTP id d9443c01a7336-24b13313b1bso15867495ad.2;
-        Fri, 05 Sep 2025 05:54:51 -0700 (PDT)
+	id 1uuWQz-00000001xMT-3sFE;
+	Fri, 05 Sep 2025 13:24:59 +0000
+Received: by mail-pl1-x631.google.com with SMTP id d9443c01a7336-24c9a399346so17001485ad.0;
+        Fri, 05 Sep 2025 06:24:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1757076891; x=1757681691; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=AuuQ7S4ybXTFvfChB1I/Sfk/dWMuL7wWCdzzVYhLuhg=;
-        b=jw+NER7EbKghgRv08lQIQrq4vVAjojVSNyk+hJQTaPPJzVjQzE48OE1eeyom7/b1r0
-         w8lOgVOAg1VYAv2bKAv6nSeSho/W9Tc9nci9j8LRGP2CjNpvbm8rf/rvT8S1nYcTrPhl
-         fs6UUDdad0m9i5QnAIT7pkO1D4vtytCWYRLef40x5gUkBlHU+t+O3K71u16CwjouSQkp
-         G5DOvUQWKA8Nj1B7aV+Jbj0zuprcX9MiRME9ddesQPS1yVG+A/uQPuZFWk7fKBeJtQFh
-         VMerUjP/W8SuRneNPDrsTEFOKvdWH1b6ZjHVCr3oMUEojogkNB7veny8sq8CB2cP71Tu
-         rQeg==
+        d=gmail.com; s=20230601; t=1757078697; x=1757683497; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=HUZ+q+JJg13FrFHzy6ZfeYtYvRdE7r/MNLwJRgdnPng=;
+        b=LhuPtvaYwI1UFpuAfyr4EfFEzPYthl0ntL9mo4tp345hvyY5lJsweV/1p4/gxm1yrh
+         sTb2BEDQhSYyWItIWwRscZRpr/dbctJfkKcqlysCm92RobJfYnRwoTEo+FzdMNJqz8e+
+         1TsI0QQR/0IvZcn44EBsfegPrsiJCT+N3bZH2mc9r56c9Pr90jFjBqLubiPK+b3XYcwD
+         9AsJtYJMYBXcM4R4W0Q7FA4uOHco1WZY9F8gyEij6YwjxZkZqczYLVdnFI4AySLq82Xe
+         Ea4B2lhUBpQfz+lgspz1P9GmKyeF13I6C+oWMYVfnfy1s94G3fiIg9xqyuXDLUy0wcIf
+         8Y7Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1757076891; x=1757681691;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=AuuQ7S4ybXTFvfChB1I/Sfk/dWMuL7wWCdzzVYhLuhg=;
-        b=SpmO/ljo62+znOeMt3fDp7igpRttCaCQSAxWc6CFF0WNri40izJ1trXlJV7DyEp7il
-         chpzyViBgvPpX8+onRCBMtPYTRqzccExz2l2wWZZqKcNi+qW7mF9daDUPNMLsIFFS/Sg
-         QId43BybQ1eXwNLgsR3HHtl18W+NlMMDFCtAG6RWT1yf1YKv5yq+Jw/y49/dN64aFclG
-         AzOZckdfl1dwS4JWFqPoQv9/Op4eCfLL4pdd1rMRuXZnUGyIWztGHlYCn1zKGq38QM0/
-         ghyNM5m1uwM4lUIZA0psXZupYdKmJ1kWp1cajtje5fzEaPTwSvaHctPgzl377b+DtZ+u
-         mvRg==
-X-Forwarded-Encrypted: i=1; AJvYcCUoFbqA+TprZMNiurhN25Bgk+yHsY8B93jugyd16/Nm/Qr+UM+c2mX+HuImqW9cZj+FQ08MV6yBJPdJkELq4TpW@lists.infradead.org, AJvYcCVKZp1710clzDaDGjqkyKAm2LP6R0g9dNBI4Ru1sTX9RGUor6Fx/edKq7+9OZn29AeG0bHhxQad4mWkkykv+Fc=@lists.infradead.org, AJvYcCWWymMkSb1XFmFHA0GffD+IGPg2u5uHiYAukLkEnnOrdmP0CTxAeI5XqgN0BnwU4lLPbsSjkTAU40+I@lists.infradead.org
-X-Gm-Message-State: AOJu0YwXVi3D/a5vGp0O25Y0A9r3qHEAk4Md6oARbwI3ppuo96A93e7o
-	lodDtpjUCAOX75Ej98XAiK9asQ6I9i2CM1LEZ214MSHicsgzpdS0KPcf2GNXErKsExM+J+sr
-X-Gm-Gg: ASbGncvC9dtTkGqxJDmumigktUnasLc/0YpL4J6xW0gbie4pN0p6EgnRFiA/robMYDE
-	95otvID1QpAWda1whTCp08+mo3pOf3GCsOIyGYusiA0Rn4eocwMF0YDSKsv4NLNHJcKdhhv9SlE
-	xirkMtlhihBOUCfdhvu7n2E6rfyKO88pzb/++myutSg4alWI/Kq0TxJ2dyhtYQK0YJHthqMBYH5
-	oSwKrgoU62u2zCaNcfDnYoLBasiMerfNxOjPQ+Mqq7XbJGCvOm8AStHm7DzmQd0DN/kH3S4wHg/
-	DTGLQH0o35Erw41rruduhaoKaN7k4Kw4Hy4coZRJ+SJXz/5oS0Yy9vEmtPjsTSRMsV/Wp5Nd46+
-	ZvNCxsPPSVKw=
-X-Google-Smtp-Source: AGHT+IEtbVAubtisL0GupY9TFnD4SDR91Dvehih/Ojj5VLnQlx0AokWcZERj3KwO9OcTwoM0fMvPXw==
-X-Received: by 2002:a17:903:1b6e:b0:246:648f:80a3 with SMTP id d9443c01a7336-24944b5734amr277215935ad.50.1757076891018;
-        Fri, 05 Sep 2025 05:54:51 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1757078697; x=1757683497;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=HUZ+q+JJg13FrFHzy6ZfeYtYvRdE7r/MNLwJRgdnPng=;
+        b=TGjzU0yuueM4hQyz4Jee8HkBxrEHvcN/5hizghugCQ1QO4RPCicIdSv2FJ+OBY2GA+
+         uupqEKF6zNPagWq8PDjG21jR2eNSust4tJqfE2++mDO2FBjWQ04uesfLAtKWCmB/DGep
+         UuYe3gmiSObOk3YFajKjf2XlFwfPMJryioh4xECpIdsTx0tsyWtygF9Luj1NckvWxK25
+         Rh364G83MbmjWT+WWzv24nTRGsmJzbz/PqGhjEp6u9mTry3VJiayDVOhOCWu0NkGgW8l
+         4BkDqxWfOfxPl7NIeY3zlr3wxDw529quX+qunQRHcTnRnGMQ0hAbV4f9FTbNB/tahvh4
+         X9zw==
+X-Forwarded-Encrypted: i=1; AJvYcCUMFDE5SVH7+BeKjNWhnmF1mBp2NJuEOmjznfZTHo3g54jVksCNc1tvHHk0vBMPp1TTfu2wQKt7HDPNeN0rbOU7@lists.infradead.org, AJvYcCUkbiglW1tKhiasoTNA0s0UMjl5nX0/EXHSudYT/+HhYiEjDwVmlw8918GqmfTs/q1YAJYYTfLYrxhEfmvnyaI=@lists.infradead.org
+X-Gm-Message-State: AOJu0YxxqLNuzx2pnlMQMhjDrsFQGBuG3iYgvgk8qyoqcrQypIxwEKdp
+	Ev8V57WRHp8X8bgpIngX46u45An24PnICdibfWjYLvU1hRaCQjZ9Wrz/LeOLFAb6x4FfQvJB
+X-Gm-Gg: ASbGncuYOFCE5+7pyNbG6L3+3D5RUvClhaSZ+MN/bDWcpgveizt22slKJP5QepLm8ik
+	GAfuZv2HEm3nZIbFbO5FdDgUnts8uob4Vw9fAbnVu9eSmzdzWekY5/SDO8rcnLxvo2giVsFip+M
+	+YoMlwi068hGy74YUtpIEe8aXpMWKDlIv6WaYfTYCb+t7W+/gXo8D44vEAJbO31o7OeypuqIRZL
+	nwA+i0z3yO1dtjoWlCxwAjemt5j5F9YTIXb1zoBxsMqtKRcY+nLJpQ08F76jZJJI0Ppc1ByjQ2d
+	7AQ2Wtmdyxwy3RswHmBbR5+BGQOT9duO9LwtFd7PmC6CkOZJDEEfLezLf0eOI3erXAZ+tojDovR
+	qdavDhcjl0cHHRbY9JL5CAt8PjCg0ZHfn
+X-Google-Smtp-Source: AGHT+IGUYvJbv28CQfw0PH02I1cEnjbK4o/GeReRVwIEuFF3MpQPaqUM8HGBojCALZS/4ClS+kWakA==
+X-Received: by 2002:a17:903:32c3:b0:24c:8af7:6b06 with SMTP id d9443c01a7336-24c8af77cb4mr147770415ad.21.1757078697048;
+        Fri, 05 Sep 2025 06:24:57 -0700 (PDT)
 Received: from localhost.localdomain ([2401:ce20:10::d4])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-b4fb98f9f6asm4992305a12.8.2025.09.05.05.54.47
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-24c8945d8d4sm76447955ad.127.2025.09.05.06.24.51
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 05 Sep 2025 05:54:50 -0700 (PDT)
+        Fri, 05 Sep 2025 06:24:56 -0700 (PDT)
 From: WeiHao Li <cn.liweihao@gmail.com>
 To: heiko@sntech.de,
 	robh@kernel.org
 Cc: krzk+dt@kernel.org,
 	conor+dt@kernel.org,
-	linux-phy@lists.infradead.org,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
+	linux-clk@vger.kernel.org,
 	WeiHao Li <cn.liweihao@gmail.com>
-Subject: [PATCH v1 4/4] arm64: dts: rockchip: Add phys attribute of USB host node for RK3368
-Date: Fri,  5 Sep 2025 20:53:17 +0800
-Message-ID: <20250905125318.7956-5-cn.liweihao@gmail.com>
+Subject: [PATCH v1 0/4] clk/rockchip: Fix I2S 8CH mclk output for RK3368
+Date: Fri,  5 Sep 2025 21:23:24 +0800
+Message-ID: <20250905132328.9859-1-cn.liweihao@gmail.com>
 X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250905125318.7956-1-cn.liweihao@gmail.com>
-References: <20250905125318.7956-1-cn.liweihao@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250905_055451_836459_71D8B18E 
-X-CRM114-Status: GOOD (  10.72  )
+X-CRM114-CacheID: sfid-20250905_062457_960636_7E4539B0 
+X-CRM114-Status: UNSURE (   8.26  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,51 +103,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RK3368 has a USB host controller and a OTG controller, both of them use
-a extra phy, this add missing ohci node and add phys attribute for them.
+I2S 8CH needs assign correct clock to output frequency wanted, this
+serial fix it.
 
+These changes were tested on a RK3368-based board with es8316 codec [1],
+playback function is good.
+
+[1] https://ieiao.github.io/wiki/embedded-dev/rockchip/rk3368
+
+Tested-by: WeiHao Li <cn.liweihao@gmail.com>
 Signed-off-by: WeiHao Li <cn.liweihao@gmail.com>
----
- arch/arm64/boot/dts/rockchip/rk3368.dtsi | 18 ++++++++++++++++--
- 1 file changed, 16 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368.dtsi b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-index b09e431a64..cdcbc0a944 100644
---- a/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-@@ -503,9 +503,21 @@ gmac: ethernet@ff290000 {
- 
- 	usb_host0_ehci: usb@ff500000 {
- 		compatible = "generic-ehci";
--		reg = <0x0 0xff500000 0x0 0x100>;
-+		reg = <0x0 0xff500000 0x0 0x20000>;
- 		interrupts = <GIC_SPI 24 IRQ_TYPE_LEVEL_HIGH>;
--		clocks = <&cru HCLK_HOST0>;
-+		clocks = <&cru HCLK_HOST0>, <&u2phy>;
-+		phys = <&u2phy_host>;
-+		phy-names = "usb";
-+		status = "disabled";
-+	};
-+
-+	usb_host0_ohci: usb@ff520000 {
-+		compatible = "generic-ohci";
-+		reg = <0x0 0xff520000 0x0 0x20000>;
-+		interrupts = <GIC_SPI 25 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru HCLK_HOST0>, <&u2phy>;
-+		phys = <&u2phy_host>;
-+		phy-names = "usb";
- 		status = "disabled";
- 	};
- 
-@@ -520,6 +532,8 @@ usb_otg: usb@ff580000 {
- 		g-np-tx-fifo-size = <16>;
- 		g-rx-fifo-size = <275>;
- 		g-tx-fifo-size = <256 128 128 64 64 32>;
-+		phys = <&u2phy_otg>;
-+		phy-names = "usb2-phy";
- 		status = "disabled";
- 	};
- 
+WeiHao Li (4):
+  clk: rockchip: rk3368: fix SCLK_I2S_8CH_OUT flags
+  dt-bindings: clock: rk3368: add CLK_I2S_8CH_PRE and CLK_I2S_8CH_FRAC
+  clk: rockchip: rk3368: use clock ids CLK_I2S_8CH_PRE and
+    CLK_I2S_8CH_FRAC
+  arm64: dts: rockchip: Assign I2S 8 channel clock for rk3368
+
+ arch/arm64/boot/dts/rockchip/rk3368.dtsi | 2 ++
+ drivers/clk/rockchip/clk-rk3368.c        | 6 +++---
+ include/dt-bindings/clock/rk3368-cru.h   | 3 +++
+ 3 files changed, 8 insertions(+), 3 deletions(-)
+
 -- 
 2.39.5
 
