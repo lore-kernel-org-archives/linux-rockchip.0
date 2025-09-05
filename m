@@ -4,92 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00934CA1010
-	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Sep 2025 17:22:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 795A2CA0FED
+	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Sep 2025 18:22:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CMQAMg3yg1D3n0hxktjgKW/pzfGeSkKXhS+eznqHU6s=; b=cd9V4/oe1518vx
-	HSiiRndXFm+iHDg8mgkZQIDWUGDOtOo4bKVOz5x7kcC9pHmkqp+H50yj6zvsBcCQnXMUZe48lacBK
-	p2T4DASodJAbkilFs9B+gVQeA3lv9d4ulM2I4LW7+XIv/iTd6lXkpNW3gO/lA7IApjb2BeqT6NopO
-	LmpaB8gpEet0VbJ8VA2Bv0jiXHv+V7OIP9SV74VDxR1XYGpULaSkp1JidRLsep0PKubwkaRH03C8p
-	BcW94RueBYFsA7bM8EeSZV4OVWjoyH5htOWrC6mZ4f2fwvOUdNERaGRv6MBgNpHoGUXYKuF+LLoBb
-	AGhgrMVd2EoS/I3014EA==;
+	List-Owner; bh=1lDPksycab1vidXk9+othVUxMX48TqRwEBX0G45iv9s=; b=S5ha1EMGKpBdjI
+	mqLXtj5D86ph6yYmrGfIiD6GlIUtqyGMdnxIFkgr4D9+M5CX9eCnUJlGScjVJiYT0ZkRuVkva08+u
+	4tp0VnhVSnaIUsnD2Agrscggg9S9UWM2kd4BSdxTRETKwj0G2ykNfBRyeGVO5h9OrgTqxrqJZhyx8
+	SPE8wsVlP+M728aiUaFFBK/FX4I99iLYO492kynFOK80HLgodyxAGEI2Z/eUUbXTFkLk9E4SuBXzD
+	WAvwG1GrmsTFj6We0gLk49wNaozj9meZUk/p9OT/RYivjUfBkBi38zjICXryTfERNJYVZdPWru5Lz
+	EBdpoRye8m/8e37cajDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uua8y-00000003RKT-3OxP;
-	Fri, 05 Sep 2025 17:22:36 +0000
-Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
+	id 1uub4Q-00000003l29-2K5f;
+	Fri, 05 Sep 2025 18:21:58 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uuWRL-00000001xZD-1inK;
-	Fri, 05 Sep 2025 13:25:20 +0000
-Received: by mail-pl1-x631.google.com with SMTP id d9443c01a7336-24cdbeca71eso10145895ad.2;
-        Fri, 05 Sep 2025 06:25:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1757078719; x=1757683519; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=7ixXcdqyuNr1VgQXgWjsF1xkuEAC5opz8oCbKicjrwI=;
-        b=MxbGBREgG/gZ1Z7O5sbE8E9DctcvbSCPOhjLzXVrNYuNd+46W20SmcN9ROa+Ea2NXP
-         zMrY9KVlAhbvwZ6108epY8iQkBgzCrhMfs89Cw/7w9S35eHeo+sMpIzi7uQo+KvMiWpf
-         txOT+fAdpYiEUPuVDKspcMLx2BZF9WSSfGvdEFl25rsfhRdJznoHX5GORUArIxo2XX0r
-         cImlfEujE7ZUt4fazs1A7k10ueek9I/WzdScqitbd+UawoywINOjMedcbUaPeLpibIfW
-         HJJuBT0yF+X2GaxSeJRWTQt2iXe1ij6ZHEkey2We7+B3o8NoBdVgvuq+4UqG8VxtGDUN
-         Uubg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1757078719; x=1757683519;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=7ixXcdqyuNr1VgQXgWjsF1xkuEAC5opz8oCbKicjrwI=;
-        b=gXxfDgKVXmdrQWkMinS5sUMEk6buvUm8CzXgBxs2kPIVQBTz93ckpGn+uhwOsfOHqj
-         R5mVAxN33wWinv1bAEzfE0QI7D6ue2yLoOH05Yh55qNfDry7NoVwNdmKP+ExS46dfVA/
-         sq5yaADcYxpRuxmuBBoz6g0iWcH7yt1OuqOqXUvaOtdgmq07sL+giL83jsrU0NgiNqRw
-         hmYrIGdhceda2AgUWol7aMBgWLlDQzwcfaV/Sypvws0B4RiTTlyT8h34akNLGwjbIYYc
-         0IHv3h0tBjBS8l0ORHAFpoaI+0AKqQU+K1qKQ7s8gRhniifE26DmxHXgTrsp4YDrNCiQ
-         PFsw==
-X-Forwarded-Encrypted: i=1; AJvYcCVP9dVMQa/GFP9gUJFOMYdfih4bxkkqwZsioQBnATSjQ9mEybi6FaSniI5F7Vj1ul0N4ZtBI/TgTf04pvui0ww=@lists.infradead.org, AJvYcCWoTLA8wm4JJtamuddNnZCE5tcrknjIS4qQu8GJGB2por7w2Tbuyz4J817qkQ80J7GFDOwoV0B3gwUNTGil3vKf@lists.infradead.org
-X-Gm-Message-State: AOJu0YxM77LVbooWVzA1O63GdI32OVBwTPO73lUthYLsnXlIUssOE0I7
-	k/tSpqjwulbM6ULRZ71Ir/WAR3k9qZqTdkiv3aAn7zjNYIpJgD4MLZ7KbWffIsc1PV+/qeXu
-X-Gm-Gg: ASbGncv4QRfqLUntKRvew4z4lxJSp98uqlN2WpbYKqlpBuC4elvaP24Q392xHiY8IDx
-	8y8HDhZb1RqqfUyaYihisjeQ0Prw4g7iwnxIO9bZjQBdKAc2EGENfaPtFrvi2skhWcSzLRIf6D9
-	bhgZqEGhznS3qzVfuqrfG0zb3Y51T9kpE96BDel/XIAueOIBOICZOctpJ2Sh/vHdnzux/S2+CHP
-	LuZIvd0QkyqVkgLirBXziIq583Rc0uqjQ8hvOI4Ut1hCGHF4pavu62+Iwj1C4paZGPxgk+WEJHn
-	TK/+Ncs+jpmyFhuzYKuOTniN47RSESM1SFlZzh/Hr7XZX1KWolLGfJKD0C9d0HQCkrvemfgjHck
-	hJUd3QTgzhS+ya721WND0OQ==
-X-Google-Smtp-Source: AGHT+IGL6dl25eU0xEnElNx+LVYolPJfhrDoa8h/iqZ5Qb9Zslkxe75tLPHNBliKx3Sf+xjeHY/XlQ==
-X-Received: by 2002:a17:903:2ac4:b0:24a:d213:9e74 with SMTP id d9443c01a7336-24ad213a1aemr272621245ad.49.1757078718677;
-        Fri, 05 Sep 2025 06:25:18 -0700 (PDT)
-Received: from localhost.localdomain ([2401:ce20:10::d4])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-24c8945d8d4sm76447955ad.127.2025.09.05.06.25.14
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 05 Sep 2025 06:25:18 -0700 (PDT)
-From: WeiHao Li <cn.liweihao@gmail.com>
-To: heiko@sntech.de,
-	robh@kernel.org
-Cc: krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-clk@vger.kernel.org,
-	WeiHao Li <cn.liweihao@gmail.com>
-Subject: [PATCH v1 4/4] arm64: dts: rockchip: Assign I2S 8 channel clock for rk3368
-Date: Fri,  5 Sep 2025 21:23:28 +0800
-Message-ID: <20250905132328.9859-5-cn.liweihao@gmail.com>
-X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250905132328.9859-1-cn.liweihao@gmail.com>
-References: <20250905132328.9859-1-cn.liweihao@gmail.com>
+	id 1uuXCB-00000002DRn-0YEj;
+	Fri, 05 Sep 2025 14:13:43 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 41FEE6027B;
+	Fri,  5 Sep 2025 14:13:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 824DEC4CEF1;
+	Fri,  5 Sep 2025 14:13:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1757081622;
+	bh=5ByBZVvQYtKrh9v0XQD1JR0lk/UjO24AJymTKBHmmBU=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=EDeFXjmtPNAhpqTUALINLmlGCWKWw93MOzcVp3Ti5Hii8F2xSRk/0CfnupzU2IA55
+	 hiBx3leoJQd2cbpaYlnMMIUSHTZO/PtYVtlJ+EGAKxEmmdOVe9SkV/LrGlve4BQxDm
+	 fsIBvPMkIANH/KQglphh9dT9RvKLHhvfyLchm3qcfzcDSeYFrXFQFzhHIsA4NvqBTl
+	 /DTct40r3OB/aQ7czqUo2d1scIs2BvfggJmBIgC6o/2mGE0RLD+sVw+UgnGlrbWCcW
+	 06arWzp16UdeEblJNjOEPFc8qFooPmaRmMQ6eag9pJEjBABTq3qIbmXVK8aUAy0ERb
+	 dy96COkAxBvcw==
+Message-ID: <707aad1d-fcdb-4c66-8d96-41cf1a1b02ce@kernel.org>
+Date: Fri, 5 Sep 2025 16:13:37 +0200
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250905_062519_453570_78991465 
-X-CRM114-Status: UNSURE (   8.82  )
-X-CRM114-Notice: Please train this message.
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1 2/4] dt-bindings: clock: rk3368: add CLK_I2S_8CH_PRE
+ and CLK_I2S_8CH_FRAC
+To: WeiHao Li <cn.liweihao@gmail.com>, heiko@sntech.de, robh@kernel.org
+Cc: krzk+dt@kernel.org, conor+dt@kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org
+References: <20250905132328.9859-1-cn.liweihao@gmail.com>
+ <20250905132328.9859-3-cn.liweihao@gmail.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
+ cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
+ JMp7PSyMPzpUXfU12yfcRYVEMQrmplNZssmYhiTeVicuOOypWugZKVLGNm0IweVCaZ/DJDIH
+ gNbpvVwjcKYrx85m9cBVEBUGaQP6AT7qlVCkrf50v8bofSIyVa2xmubbAwwFA1oxoOusjPIE
+ J3iadrwpFvsZjF5uHAKS+7wHLoW9hVzOnLbX6ajk5Hf8Pb1m+VH/E8bPBNNYKkfTtypTDUCj
+ NYcd27tjnXfG+SDs/EXNUAIRefCyvaRG7oRYF3Ec+2RgQDRnmmjCjoQNbFrJvJkFHlPeHaeS
+ BosGY+XWKydnmsfY7SSnjAzLUGAFhLd/XDVpb1Een2XucPpKvt9ORF+48gy12FA5GduRLhQU
+ vK4tU7ojoem/G23PcowM1CwPurC8sAVsQb9KmwTGh7rVz3ks3w/zfGBy3+WmLg++C2Wct6nM
+ Pd8/6CBVjEWqD06/RjI2AnjIq5fSEH/BIfXXfC68nMp9BZoy3So4ZsbOlBmtAPvMYX6U8VwD
+ TNeBxJu5Ex0Izf1NV9CzC3nNaFUYOY8KfN01X5SExAoVTr09ewARAQABzSVLcnp5c3p0b2Yg
+ S296bG93c2tpIDxrcnprQGtlcm5lbC5vcmc+wsGVBBMBCgA/AhsDBgsJCAcDAgYVCAIJCgsE
+ FgIDAQIeAQIXgBYhBJvQfg4MUfjVlne3VBuTQ307QWKbBQJoF1BKBQkWlnSaAAoJEBuTQ307
+ QWKbHukP/3t4tRp/bvDnxJfmNdNVn0gv9ep3L39IntPalBFwRKytqeQkzAju0whYWg+R/rwp
+ +r2I1Fzwt7+PTjsnMFlh1AZxGDmP5MFkzVsMnfX1lGiXhYSOMP97XL6R1QSXxaWOpGNCDaUl
+ ajorB0lJDcC0q3xAdwzRConxYVhlgmTrRiD8oLlSCD5baEAt5Zw17UTNDnDGmZQKR0fqLpWy
+ 786Lm5OScb7DjEgcA2PRm17st4UQ1kF0rQHokVaotxRM74PPDB8bCsunlghJl1DRK9s1aSuN
+ hL1Pv9VD8b4dFNvCo7b4hfAANPU67W40AaaGZ3UAfmw+1MYyo4QuAZGKzaP2ukbdCD/DYnqi
+ tJy88XqWtyb4UQWKNoQqGKzlYXdKsldYqrLHGoMvj1UN9XcRtXHST/IaLn72o7j7/h/Ac5EL
+ 8lSUVIG4TYn59NyxxAXa07Wi6zjVL1U11fTnFmE29ALYQEXKBI3KUO1A3p4sQWzU7uRmbuxn
+ naUmm8RbpMcOfa9JjlXCLmQ5IP7Rr5tYZUCkZz08LIfF8UMXwH7OOEX87Y++EkAB+pzKZNNd
+ hwoXulTAgjSy+OiaLtuCys9VdXLZ3Zy314azaCU3BoWgaMV0eAW/+gprWMXQM1lrlzvwlD/k
+ whyy9wGf0AEPpLssLVt9VVxNjo6BIkt6d1pMg6mHsUEVzsFNBFVDXDQBEADNkrQYSREUL4D3
+ Gws46JEoZ9HEQOKtkrwjrzlw/tCmqVzERRPvz2Xg8n7+HRCrgqnodIYoUh5WsU84N03KlLue
+ MNsWLJBvBaubYN4JuJIdRr4dS4oyF1/fQAQPHh8Thpiz0SAZFx6iWKB7Qrz3OrGCjTPcW6ei
+ OMheesVS5hxietSmlin+SilmIAPZHx7n242u6kdHOh+/SyLImKn/dh9RzatVpUKbv34eP1wA
+ GldWsRxbf3WP9pFNObSzI/Bo3kA89Xx2rO2roC+Gq4LeHvo7ptzcLcrqaHUAcZ3CgFG88CnA
+ 6z6lBZn0WyewEcPOPdcUB2Q7D/NiUY+HDiV99rAYPJztjeTrBSTnHeSBPb+qn5ZZGQwIdUW9
+ YegxWKvXXHTwB5eMzo/RB6vffwqcnHDoe0q7VgzRRZJwpi6aMIXLfeWZ5Wrwaw2zldFuO4Dt
+ 91pFzBSOIpeMtfgb/Pfe/a1WJ/GgaIRIBE+NUqckM+3zJHGmVPqJP/h2Iwv6nw8U+7Yyl6gU
+ BLHFTg2hYnLFJI4Xjg+AX1hHFVKmvl3VBHIsBv0oDcsQWXqY+NaFahT0lRPjYtrTa1v3tem/
+ JoFzZ4B0p27K+qQCF2R96hVvuEyjzBmdq2esyE6zIqftdo4MOJho8uctOiWbwNNq2U9pPWmu
+ 4vXVFBYIGmpyNPYzRm0QPwARAQABwsF8BBgBCgAmAhsMFiEEm9B+DgxR+NWWd7dUG5NDfTtB
+ YpsFAmgXUF8FCRaWWyoACgkQG5NDfTtBYptO0w//dlXJs5/42hAXKsk+PDg3wyEFb4NpyA1v
+ qmx7SfAzk9Hf6lWwU1O6AbqNMbh6PjEwadKUk1m04S7EjdQLsj/MBSgoQtCT3MDmWUUtHZd5
+ RYIPnPq3WVB47GtuO6/u375tsxhtf7vt95QSYJwCB+ZUgo4T+FV4hquZ4AsRkbgavtIzQisg
+ Dgv76tnEv3YHV8Jn9mi/Bu0FURF+5kpdMfgo1sq6RXNQ//TVf8yFgRtTUdXxW/qHjlYURrm2
+ H4kutobVEIxiyu6m05q3e9eZB/TaMMNVORx+1kM3j7f0rwtEYUFzY1ygQfpcMDPl7pRYoJjB
+ dSsm0ZuzDaCwaxg2t8hqQJBzJCezTOIkjHUsWAK+tEbU4Z4SnNpCyM3fBqsgYdJxjyC/tWVT
+ AQ18NRLtPw7tK1rdcwCl0GFQHwSwk5pDpz1NH40e6lU+NcXSeiqkDDRkHlftKPV/dV+lQXiu
+ jWt87ecuHlpL3uuQ0ZZNWqHgZoQLXoqC2ZV5KrtKWb/jyiFX/sxSrodALf0zf+tfHv0FZWT2
+ zHjUqd0t4njD/UOsuIMOQn4Ig0SdivYPfZukb5cdasKJukG1NOpbW7yRNivaCnfZz6dTawXw
+ XRIV/KDsHQiyVxKvN73bThKhONkcX2LWuD928tAR6XMM2G5ovxLe09vuOzzfTWQDsm++9UKF a/A=
+In-Reply-To: <20250905132328.9859-3-cn.liweihao@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,30 +115,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-I2S 8CH needs assign correct clock to output frequency wanted. This
-patch assign CLK_I2S_8CH_FRAC as CLK_I2S_8CH_PRE parents.
+On 05/09/2025 15:23, WeiHao Li wrote:
+> We need a clock id to assign clock parent when use i2s 8ch as audio
+> device, CLK_I2S_8CH_FRAC should be CLK_I2S_8CH_PRE parent so we can get
+> frequency we want.
+> 
+> Signed-off-by: WeiHao Li <cn.liweihao@gmail.com>
+> ---
+>  include/dt-bindings/clock/rk3368-cru.h | 3 +++
+>  1 file changed, 3 insertions(+)
+> 
+> diff --git a/include/dt-bindings/clock/rk3368-cru.h b/include/dt-bindings/clock/rk3368-cru.h
+> index b951e29069..795e721957 100644
+> --- a/include/dt-bindings/clock/rk3368-cru.h
+> +++ b/include/dt-bindings/clock/rk3368-cru.h
+> @@ -183,6 +183,9 @@
+>  #define HCLK_BUS		477
+>  #define HCLK_PERI		478
+>  
+> +#define CLK_I2S_8CH_PRE		500
 
-Signed-off-by: WeiHao Li <cn.liweihao@gmail.com>
----
- arch/arm64/boot/dts/rockchip/rk3368.dtsi | 2 ++
- 1 file changed, 2 insertions(+)
+479
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368.dtsi b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-index cdcbc0a944..d931b5f5ac 100644
---- a/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-@@ -862,6 +862,8 @@ i2s_8ch: i2s-8ch@ff898000 {
- 		compatible = "rockchip,rk3368-i2s", "rockchip,rk3066-i2s";
- 		reg = <0x0 0xff898000 0x0 0x1000>;
- 		interrupts = <GIC_SPI 53 IRQ_TYPE_LEVEL_HIGH>;
-+		assigned-clocks =  <&cru CLK_I2S_8CH_PRE>;
-+		assigned-clock-parents = <&cru CLK_I2S_8CH_FRAC>;
- 		clock-names = "i2s_clk", "i2s_hclk";
- 		clocks = <&cru SCLK_I2S_8CH>, <&cru HCLK_I2S_8CH>;
- 		dmas = <&dmac_bus 0>, <&dmac_bus 1>;
--- 
-2.39.5
+> +#define CLK_I2S_8CH_FRAC	501
 
+480, no?
+
+
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
