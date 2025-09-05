@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01C33CA1010
-	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Sep 2025 17:08:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80518CA0FED
+	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Sep 2025 17:16:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5mwq4TxIo+QLMxUJ2oyA3h6FlCGWThAdU9r4hp1GswY=; b=kUz5wxOEaQ06iy
-	DPX25+rAzy9JFAGj/t0imlZP5kzUAriSZ8/rKU7GEbtDkccqFYcjYxIJclpxFVqufWW617PoiDIqd
-	fNnvM2iLlCIFFzGLOgTfsbzxMNz4/faWPAOytur2yT1biWq6+CXw+HhhNWhu+ZXWNYbg+2vdTiazq
-	7NEdB+APlOv+c5wAFuaXQlc7TGJbU7xg5HjE2lu0qJ47iVKGUaYZLAv8k2YPfsOA/CvtmE0oARbT1
-	xxPBYcQTLlBfGotysIO7p8mLQt5Df5M3wgzfBjKFdNlHkUuk+7SeNdDsmDF5hlHZkIQWONXJ0dz11
-	qt0CQH0ms3wNW3J+tOhQ==;
+	List-Owner; bh=HYbcNIWrXAXBYGBEHJqFixayNpJLw13dPGXw4txQ+ts=; b=EzHnaGxG75TGde
+	AgY9ReTiI9PihwO/6yf+4cxoNY7jHUEflpG+zw06UZRROXf9gPcFHuEbjik68LLrGko439ULpzC5N
+	A1uPIpqrBlp9X5q0bZgwIAU6/uproodL5OGcdr7UAb1GXJsJwSToDXjTn7fdZWKMXaGfmL5ApEDij
+	sisK/jmtTGEIxFwpScLf5c+1WIm8t0fNi8HmZild5QgYK1Fc2y27L9T93eQaqoDSpyfA16q5JN4ru
+	HKZvHtZ5Uxz05AObKi8L4yJpBMpV/LuKZuXslKtUd+npeMnj7qhBBe3IJ7pHhUA3smlexR7XpShkZ
+	A1EM5tMkySWWaRn/BbqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uuZux-00000003MHw-0Vfq;
-	Fri, 05 Sep 2025 17:08:07 +0000
-Received: from mail-pg1-x530.google.com ([2607:f8b0:4864:20::530])
+	id 1uua3N-00000003PJx-1Wao;
+	Fri, 05 Sep 2025 17:16:49 +0000
+Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uuWR5-00000001xPY-0BUt;
-	Fri, 05 Sep 2025 13:25:04 +0000
-Received: by mail-pg1-x530.google.com with SMTP id 41be03b00d2f7-b47173749dbso1396565a12.1;
-        Fri, 05 Sep 2025 06:25:02 -0700 (PDT)
+	id 1uuWRB-00000001xUw-2eQI;
+	Fri, 05 Sep 2025 13:25:10 +0000
+Received: by mail-pg1-x533.google.com with SMTP id 41be03b00d2f7-b476c67c5easo1431590a12.0;
+        Fri, 05 Sep 2025 06:25:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1757078702; x=1757683502; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1757078709; x=1757683509; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=mzs0fcUa+DxpkLkc7ASzbeG0qA3dcJ9VCs0pVkhY65M=;
-        b=JfP/gPkbjOvK8821uQN1ekifveK1ctZwzB8UuLrqMfCsNbLHH05z1HsI5aVwOjoi0x
-         lW1SHThX3K87F/y6Orz1FR6yHcXLwpKc+4Dh7ZFdugLqCZfQ4QJIP5h6avLhqdIS5aEH
-         CrdiWOjXICDsNp9ZI5b5lXyWVlPjyBSp9PGWzsDe6bJ/jHtJ8qkSGHnFkEJ02up4q6jy
-         lAFyWyd8dOaeL1CyVpO+HJuegH4UZJ7IhGOlMox2Rvc8BnZpO9WOertIbj0rJiGw+uUn
-         JY8jvbl0U+ZydnTw9q5REZCsDZTLmx7Jq6D1v4yErEjT0vDdWygS6pkYQaoHNODLkcPw
-         fapw==
+        bh=PjpCswRNwHm4qDuVXA6p6HddaeayOy1isCVMskpwHjk=;
+        b=Foa5bQkwsomk5HWGXzxJ2jzXZZMckOJ46ThvrI7PH1iZa6JM8XkOIE5Nhk+UOmn+Ed
+         SMGh1BwE7YugQsYbRQgEbVkB3JXUPDkJg6Xpi4W1lAiFn6YYxWJAiPaRFO1CZ86u2vAq
+         51Q7qXhJQXMScitESwWvxTaxy6cf/Naehe4fKK/aSBFD02YUqUvSUp0PR5U2YXcsd9Zt
+         dBe6OQgn2PSnNa5DCMdlhsFnLI21HvB9PWQu3xOiJJ9lFLV6/PRQEwVVqgAIoihU+0st
+         E1OC2zuYjOGRwP657BmnVAvAd6G/gZt8Q0z1d03vR5Ns4GvmgdBG6gxV6sucM4gZySfS
+         AiCg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1757078702; x=1757683502;
+        d=1e100.net; s=20230601; t=1757078709; x=1757683509;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=mzs0fcUa+DxpkLkc7ASzbeG0qA3dcJ9VCs0pVkhY65M=;
-        b=vrKs0gay1ogJG47nGVA5tvWCKPqzi8pSt29RTf8MhW+/AsMWn20dy69c01/pbKn2pQ
-         ztEOvn4wHrXILOwHWgoecZLIaGZF/879NoW0q7IlzCudrskJZyebTDzezdG3lpnseqOK
-         24A65Xx2eSXRHFVzHlZAuVDwsWYh1fV7VwJrZ53XK7AiB9TzcRf83x02iGm7PcbHL7hQ
-         i4GEByU48evGFSZmnvnpsUsH9FYcpfOhvnIqPNrWNsNTCaktIX7G+hjGTc5cz4c4x/9y
-         n19Qe7I0Edv/rYmGfipJeu2V2+qjXCQB6Qv+JD0wkgc3VRCPriaCdtB7qJGV02cqd8L/
-         Q5qA==
-X-Forwarded-Encrypted: i=1; AJvYcCUT7tDOEr5cQP+yl2qYu5EDTkkdKYepn/hNy5F5rnH55cbQWYmaCXqv27zJw7tw/yACjkhn/muXLXy+QlZ1Uus=@lists.infradead.org, AJvYcCWulfp3UzongM2NtfTCJkJXABHevzKLTffNnNv1JzEWy5c/5TwH5P7t3/7CDbbptNKQQRJbujt1FGCLKXiYnKPz@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzhzt5ZUKVvZc6euEEt3Cd5XZyqlBg7M10i/9sLPJi87+EVMtxr
-	fTt4qr2eUc8mZjzvtGbx++aex4XC0qUT7v4VUn0Ll40FVzxRlMjcAxRt
-X-Gm-Gg: ASbGncv9DTqwlTUUnQdLaOFCexNHTeAtmE/1Q2GFselK/fyhPCd8vVdn4M5uiu0cr0n
-	8e27Fe7GyJIgT3a0ZaVr9jpLHFrRh3jMa9B/DQ9Lv2ENOM+IC0blsvymrotxpo7HbEAzsemb98D
-	qqfeouolFyHFEZXvYnUn/n2WrE1w/Mvc/1Q4Si3vTgKsrOmObqT1Tg1loYb9GEt9HJXt+SB86/S
-	zge6myCY3Znp2X7Q2fp0PDPNcGkcnJXx/ehtFTu+YqfLe42efrwlLVsv2RLRZLMd0TB0raPQyop
-	WcjZ5ThIodITeIFN9i/2IWAJ8ljs28p1blYwyVYuWm+KQ8+jy2UE55gseJUsygsrZhFmzLsE2Wi
-	eYyFB8x7cWnUxXcKETOcQFg==
-X-Google-Smtp-Source: AGHT+IH4zx4sI6FblJmB5He7a6nYAWLg6d3RbumYzZWccC7zXGmeUwtWGArXlU0WRJI06Z4GqaIqDQ==
-X-Received: by 2002:a17:902:c40c:b0:24c:b2a4:7089 with SMTP id d9443c01a7336-24cb2a4744fmr134900655ad.31.1757078702100;
-        Fri, 05 Sep 2025 06:25:02 -0700 (PDT)
+        bh=PjpCswRNwHm4qDuVXA6p6HddaeayOy1isCVMskpwHjk=;
+        b=H/imWB/fyKUeB4fXSp0pz3lweIRdtDVy8PSVCJxEd6CnjNVLJHVRTx25PcHUyews9K
+         Md1vpknX7MVEYNxCd7e1qk6W5o4v8eVYo5T3cmBiD6ANcp9QZF74zCm41rPT/vt2vfoL
+         c6X5ASYJN5epbO7Xh4QMD0YjYmNB4Ajpw469WjaA6uAx+Cf/k3LwKbE9VQnvVyD9NSi4
+         KdpShLVCPrcO2LBhs5xQuniUKblqK2tmjE6ImRiJYTalE04u3F5eNv9wAFPrtdQ4WdLY
+         BVRrvwB4RhadSslSBcovI5IHDahDiGR9LpMNBAs3HYb7N+s3/yRq+Y340A7X9ksuqHfN
+         ZpMg==
+X-Forwarded-Encrypted: i=1; AJvYcCU12tugbocgbaTCyaJysw2u+F43A9fotRjSYPQ3BObv03lI8TmAuEwDlIFNWmVSlqJzNfepvY/WVbXeZ/nb4mLl@lists.infradead.org, AJvYcCXz9mOgWnJm1ZVTsfaNXpgOBSLY3lVv+rWZQ9e6GHTSygRK+BM9gDVLkRZuX8+NxZIInSHLuBK/2UHCZS9QSsE=@lists.infradead.org
+X-Gm-Message-State: AOJu0YzG9nCzbaAjnoEoJw5NIiwFNQsx2dId/7iQ0bRoaUa/kO87PwBt
+	hOHLQV1OFMA1hlj5ijCy7iFFWazXkdNWM4dAZnO2YtRvQ7bFnMBxyJxL
+X-Gm-Gg: ASbGnctTrTKWzQ/x9KiCypk6G1dfQELjeXNRDqo1PDyhS6zEQZxx1L55MtFDcYjFOl6
+	WZnEN30RPOmpAkYa2NzREMrk6ZGE/RMbHv0YnDCfLX8YvOMfwQsfzOMnpWW0+QGltg+jmfe/7TS
+	X/CFtcXe0Vl14LBPmedH7wNyEFiv/M0DDScQFU+MOL2O8Y0BMFlN23fx+zc2Gma3HIao/qfnrFH
+	6R8VdDmwFlKb7GqyKlhrDDixvFNCV0iK7U2UTup1/z7IpYJcTZKWwAfx7CstjP5ixYGMsyYMuAn
+	9LAfwqL28XfXIZDa35O3M0HmufFGs2rrzyO60yz6SDYhUOj80elvZr5pwRr5sH98eEPXKFxKhAm
+	YjUcYJaXrxohTP/5wHVh+Cw==
+X-Google-Smtp-Source: AGHT+IGxNwEqchbs6gvhjmUUItnd4HF+uIwOz1yiQdQWl5Efpol8faj87oXSrj9zTsiWjqWAwTJa6g==
+X-Received: by 2002:a17:902:ef43:b0:240:ac96:e054 with SMTP id d9443c01a7336-24cef93811fmr39057815ad.23.1757078708668;
+        Fri, 05 Sep 2025 06:25:08 -0700 (PDT)
 Received: from localhost.localdomain ([2401:ce20:10::d4])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-24c8945d8d4sm76447955ad.127.2025.09.05.06.24.57
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-24c8945d8d4sm76447955ad.127.2025.09.05.06.25.02
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 05 Sep 2025 06:25:01 -0700 (PDT)
+        Fri, 05 Sep 2025 06:25:08 -0700 (PDT)
 From: WeiHao Li <cn.liweihao@gmail.com>
 To: heiko@sntech.de,
 	robh@kernel.org
@@ -79,16 +79,17 @@ Cc: krzk+dt@kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-clk@vger.kernel.org,
 	WeiHao Li <cn.liweihao@gmail.com>
-Subject: [PATCH v1 1/4] clk: rockchip: rk3368: fix SCLK_I2S_8CH_OUT flags
-Date: Fri,  5 Sep 2025 21:23:25 +0800
-Message-ID: <20250905132328.9859-2-cn.liweihao@gmail.com>
+Subject: [PATCH v1 2/4] dt-bindings: clock: rk3368: add CLK_I2S_8CH_PRE and CLK_I2S_8CH_FRAC
+Date: Fri,  5 Sep 2025 21:23:26 +0800
+Message-ID: <20250905132328.9859-3-cn.liweihao@gmail.com>
 X-Mailer: git-send-email 2.47.2
 In-Reply-To: <20250905132328.9859-1-cn.liweihao@gmail.com>
 References: <20250905132328.9859-1-cn.liweihao@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250905_062503_081727_FF036960 
-X-CRM114-Status: GOOD (  11.09  )
+X-CRM114-CacheID: sfid-20250905_062509_704684_7B22C16A 
+X-CRM114-Status: UNSURE (   8.89  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,27 +106,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Clock SCLK_I2S_8CH_OUT has no capability to adjust clock frequency by
-itself, add CLK_SET_RATE_PARENT flag to fix it.
+We need a clock id to assign clock parent when use i2s 8ch as audio
+device, CLK_I2S_8CH_FRAC should be CLK_I2S_8CH_PRE parent so we can get
+frequency we want.
 
 Signed-off-by: WeiHao Li <cn.liweihao@gmail.com>
 ---
- drivers/clk/rockchip/clk-rk3368.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ include/dt-bindings/clock/rk3368-cru.h | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/drivers/clk/rockchip/clk-rk3368.c b/drivers/clk/rockchip/clk-rk3368.c
-index 95e6996adb..8159f643dc 100644
---- a/drivers/clk/rockchip/clk-rk3368.c
-+++ b/drivers/clk/rockchip/clk-rk3368.c
-@@ -371,7 +371,7 @@ static struct rockchip_clk_branch rk3368_clk_branches[] __initdata = {
- 			  RK3368_CLKSEL_CON(28), 0,
- 			  RK3368_CLKGATE_CON(6), 2, GFLAGS,
- 			  &rk3368_i2s_8ch_fracmux),
--	COMPOSITE_NODIV(SCLK_I2S_8CH_OUT, "i2s_8ch_clkout", mux_i2s_8ch_clkout_p, 0,
-+	COMPOSITE_NODIV(SCLK_I2S_8CH_OUT, "i2s_8ch_clkout", mux_i2s_8ch_clkout_p, CLK_SET_RATE_PARENT,
- 			RK3368_CLKSEL_CON(27), 15, 1, MFLAGS,
- 			RK3368_CLKGATE_CON(6), 0, GFLAGS),
- 	GATE(SCLK_I2S_8CH, "sclk_i2s_8ch", "i2s_8ch_pre", CLK_SET_RATE_PARENT,
+diff --git a/include/dt-bindings/clock/rk3368-cru.h b/include/dt-bindings/clock/rk3368-cru.h
+index b951e29069..795e721957 100644
+--- a/include/dt-bindings/clock/rk3368-cru.h
++++ b/include/dt-bindings/clock/rk3368-cru.h
+@@ -183,6 +183,9 @@
+ #define HCLK_BUS		477
+ #define HCLK_PERI		478
+ 
++#define CLK_I2S_8CH_PRE		500
++#define CLK_I2S_8CH_FRAC	501
++
+ /* soft-reset indices */
+ #define SRST_CORE_B0		0
+ #define SRST_CORE_B1		1
 -- 
 2.39.5
 
