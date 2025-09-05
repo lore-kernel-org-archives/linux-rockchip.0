@@ -4,70 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1934ACA1013
-	for <linux-rockchip@archiver.kernel.org>; Sat,  6 Sep 2025 00:12:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC3B9CA0FED
+	for <linux-rockchip@archiver.kernel.org>; Sat,  6 Sep 2025 00:13:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Message-Id:MIME-Version:Subject:Date
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=HXGFRelL5z6bamqpG7POrU2u6EsqFXHPLlvf0kom5qw=; b=XfyJAohwWuPpuj
-	7Y2JYk/fCh4SwZSfLMBCaeCJlOSuo1+A0hvu9t8Z8c8JPALjLf59RIGLW6IOQDBBWPHEY8/Bxf/bb
-	JUl3lJUbQnwVq9XiEPISeTEqROrG9875Qi0OLngp+71q8kqn3qkIADkBCIe1rk+kbD+WZNjvkaMGQ
-	6yBQVcsvdwgtGnK6s9z3Sa47zuD/cFl1lWfD22ttB9RqGCZnvVVwk2puv3RIPBee7Crn3QH1FbaB7
-	Dmjek9VgH4msUuYJZFII61FBT4KSCgwI+rzeWpY2zD8Qu9wpupFabVezKBJSdXvHalex6Zo3jYKYU
-	iRRAOYVTD0iC1QVtfGEg==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Idx38iJ8JKCDSpPFpEj72K7lXJT4ZoT5SgaUoIUIWo8=; b=Ci5aHZM20XCCWv
+	ZcWevJBS8mlXmcGWC2aprGhy+yJchsM+VGQYiamSlPqxJjdCcGXYWj9Pa3lU5N6U0lc0TMBDF75IW
+	sv9xiTs+ZKke8Tb46Ehd4GIRlES93wD5S2ylSk+kCIGZ0JWIJLpXqBMCybseL/jYF2k01hNXRlM4s
+	3mbfuob9wyvCv4b2r7fgJo0nm4DNlUnmNcDxPblOB1lVMoGakXKNKLlSLPUPNqhfaJYkVHuEVMduM
+	qgFgA0JzdPQYv7L1TIYVSnGrMWretyzgR/T3+xHMcqaAbHUbDR+tTAhdvnkuD4zb8VEGyTwgY9zLa
+	wA9E32yhQN9NWlmENizA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uugXg-00000005Vf6-3gQf;
-	Sat, 06 Sep 2025 00:12:32 +0000
-Received: from haruka.juszkiewicz.com.pl ([185.243.53.191])
+	id 1uugYO-00000005Wv6-25Qy;
+	Sat, 06 Sep 2025 00:13:16 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uubhC-00000003zFE-3tQ1;
-	Fri, 05 Sep 2025 19:02:04 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=juszkiewicz.com.pl;
-	s=mail; t=1757098920;
-	bh=OajqByBsH5OPlXRdcq8gSwhpir9mkJFlhq+DtZdjgdI=;
-	h=From:Date:Subject:To:Cc:From;
-	b=7FZXBHoRYSwGBBrBLCOJJADr8bmZs3LwZrIyKHRnc+7sk7nlQPIdl6Y/dF9MKAr7O
-	 7Vsp6FUout0+mrDKRKNtlNGK1YTsaTNUO1K/lJ3lWxB0Lv25OMHQZ9FNYfaervecMq
-	 eWialhNQm7+AeO5PNvijdXMbJ7dzD/fl2vI5E7Av1u90U7ms244lZEtBfogU/lOgvG
-	 Vhk38sDyZOgMO3kUK4h17jigh8t+CGEv5hfKbpCIZBqsqgdrquZCcP8s/5HPXOnraN
-	 f6qcBZ3JTpEC+LHP4qhhW9Z4X2sfvf5es4bgeAaYXFbKyaOyLNAzy8Mfd+i9Ar2qV4
-	 pBfBuO6C5ufUw==
-Received: from utena.juszkiewicz.com.pl (utena.juszkiewicz.com.pl [158.101.208.177])
-	by haruka.juszkiewicz.com.pl (Postfix) with ESMTPSA id 04B481FB29;
-	Fri, 05 Sep 2025 21:02:00 +0200 (CEST)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 7AF3545439;
-	Fri,  5 Sep 2025 21:01:58 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=juszkiewicz.com.pl;
-	s=mail; t=1757098919;
-	h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding; bh=B1gRGSjw2aAAw0vLwu9XQY6YhFjjAP3pnVdOLPu8WI4=;
-	b=EY3Rm5jggcZGpgieNP9yQ8+ZMZ8Hh1diTRhlS961pP4bMMQgbMgIcP6GiDK7O8Esa7Mk9Z
-	924TAdvAKfcMbLUzGnPLwxraSHFmTsHOkiDc2+fdT/i3YHOrfyi+KB+7QJ9w02U9iXelkx
-	QgEgiAMDOzVc0yDUWW6q0SkweWbUIuNlxg4uw9bhRUo0oqe5kHdDfIIgdPzZ0CEtD7FhXT
-	KTh6X2BQMR7F9LJQpSFjZ79nsKUrqFplRWoGglLS3gPXLEWHqkUDSjHzGf9YqOaLgNKJnK
-	pp1CNjAVYdyVFpIh6ipDbGikj1XZF5A+V5NNzoroQeyo9qoeDWE29K2UtDklng==
-From: Marcin Juszkiewicz <marcin@juszkiewicz.com.pl>
-Date: Fri, 05 Sep 2025 21:01:51 +0200
-Subject: [PATCH v2] arm64: dts: rockchip: Add vcc supply for SPI Flash on
- NanoPC-T6
+	id 1uudIw-00000004WdP-0tHG;
+	Fri, 05 Sep 2025 20:45:06 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 92489601AE;
+	Fri,  5 Sep 2025 20:45:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 125DCC4CEF1;
+	Fri,  5 Sep 2025 20:45:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1757105105;
+	bh=4ZLCyJt/jgAVLSyrVPrxlIa5FRBvIVjWg3S+LiVVSqU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=K5kWqd+GaUtF8PvSlPDq6g7W/bImMKVo7Znc7Omtj6NReEt9sFqffksrb8/6ON8/A
+	 OohPm2WgU0IIIjVt3nKGRu5y8bZ5CzchNRmBvJRsyehZYVY2oGnOD0Flnsrp8gpeTk
+	 H8NohGs6+j4Sh7rxGV0/vLelcCR4+wCIpdi40R0hRtINYRYzLbfsPBlKADWwEGQCnM
+	 u9DI7uzOluK2UR6C7RQVadjopsK+N3XzzPeU0JCAf4Z1nmb01G8dbcbB/XM+ZkJNYq
+	 VNsrKlfn2CE0pRqA6vH75ghtEbeGH24rNVOlQCNXm21iEG30wexijhTfSFX5YU/syp
+	 8UQ2UueKpz1Tw==
+Date: Fri, 5 Sep 2025 15:45:04 -0500
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: WeiHao Li <cn.liweihao@gmail.com>
+Cc: andy.yan@rock-chips.com, conor+dt@kernel.org, heiko@sntech.de,
+	krzk+dt@kernel.org, hjc@rock-chips.com,
+	linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-clk@vger.kernel.org
+Subject: Re: [PATCH v2 8/8] dt-bindings: display: rockchip,dw-mipi-dsi:
+ Document RK3368 DSI
+Message-ID: <175710510342.1351910.7954617435326405550.robh@kernel.org>
+References: <20250905025632.222422-1-cn.liweihao@gmail.com>
+ <20250905025632.222422-9-cn.liweihao@gmail.com>
 MIME-Version: 1.0
-Message-Id: <20250905-nanopc-t6-spi-nor-v2-1-098b476d9509@juszkiewicz.com.pl>
-X-B4-Tracking: v=1; b=H4sIAJ4zu2gC/x3MQQqAIBBA0avErBsQIaOuEi3CGWs2o2hEIN49a
- fkW/1conIULrEOFzI8UidphxwH8dejJKNQN1tjJLGZCPTQmj7fDkgQ1ZpwNkSdnwxJm6F3KHOT
- 9n9ve2gciHILRYwAAAA==
-X-Change-ID: 20250905-nanopc-t6-spi-nor-70ddcd62f9f7
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-X-Mailer: b4 0.14.2
-X-Last-TLS-Session-Version: TLSv1.3
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250905_120203_149973_44319866 
-X-CRM114-Status: UNSURE (   9.28  )
-X-CRM114-Notice: Please train this message.
+Content-Disposition: inline
+In-Reply-To: <20250905025632.222422-9-cn.liweihao@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,55 +68,22 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-FriendlyELEC NanoPC-T6 LTS schematics shows VCC_1V8_S3 being used to
-power SPI NOR chip.
 
-This fixes the following kernel message:
+On Fri, 05 Sep 2025 10:56:32 +0800, WeiHao Li wrote:
+> Document the MIPI DSI controller for Rockchip RK3368.
+> 
+> Signed-off-by: WeiHao Li <cn.liweihao@gmail.com>
+> ---
+>  .../bindings/display/rockchip/rockchip,dw-mipi-dsi.yaml         | 2 ++
+>  1 file changed, 2 insertions(+)
+> 
 
-spi-nor spi5.0: supply vcc not found, using dummy regulator
-
-Signed-off-by: Marcin Juszkiewicz <marcin@juszkiewicz.com.pl>
-Message-ID: <1652891b3fd7e1d1a279a3eb0e7a05ac763e48fb.1757097941.git.mjuszkiewicz@redhat.com>
----
-FriendlyELEC NanoPC-T6 LTS schematics shows VCC_1V8_S3 being used to
-power SPI NOR chip.
-
-This fixes the following kernel message:
-
-spi-nor spi5.0: supply vcc not found, using dummy regulator
----
-Changes in v2:
-- fixed format of "vcc-supply" field
----
- arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
-index 3d8b6f0c55418805c0d614a4d65f67b0c660ca0f..69833a0a94d0f18d9ca86005ac22e58f4c036fa8 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
-@@ -731,6 +731,7 @@ flash@0 {
- 		spi-max-frequency = <104000000>;
- 		spi-rx-bus-width = <4>;
- 		spi-tx-bus-width = <1>;
-+		vcc-supply = <&vcc_1v8_s3>;
- 	};
- };
- 
-
----
-base-commit: 4ac65880ebca1b68495bd8704263b26c050ac010
-change-id: 20250905-nanopc-t6-spi-nor-70ddcd62f9f7
-
-Best regards,
--- 
-Marcin Juszkiewicz <marcin@juszkiewicz.com.pl>
+Acked-by: Rob Herring (Arm) <robh@kernel.org>
 
 
 _______________________________________________
