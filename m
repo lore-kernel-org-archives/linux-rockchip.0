@@ -4,69 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DA2BCA1010
-	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Sep 2025 15:41:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F6DBCA0FED
+	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Sep 2025 16:10:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=np5ibFthhttuHxRNnxv/ycKvqleRgPb0oFV4IT8b/Xg=; b=ZxpHQmbawnXH/0
-	VaqzIWgaTl8kWdFeCk7zWrv7s0XhyzfJ41IUDlKh0m8S52nN1YhB+D4U44I5SnWsMyCFI7G2XBZ0N
-	SE7QyorSRc1p1yjTn0kB93tfGrfQfbIFtPlwrDPyAKJ03JxXo/aT1UH/rBqIj4DC5sBRToW+ukZO7
-	NZaQ5gvdd0I2tot40PvGNxVrkVczomnYBcFIzFKwopJmAID/yxmeD9pa46uEgBRuDQTvVwPdMHQOB
-	3fDaqLNpqO6lX6tb8YCukx7kMbx7BZtHH2lU/9vdJnapQUp7OaiMRGmxIp9V8a6po9lwPG0jOmCKE
-	/U0Lnu/sg4vZI+9x91PA==;
+	List-Owner; bh=zvoydFQjkTmefheNxWLIwB80QRyaJfvdf9q1bxCRwsA=; b=HrwdBBbZPCdRtj
+	3vEKZ2joNhSQK37qg8a36OF1t6iRxXgHoRuXMFpoKRiWPJN+Y69oi5XqLLUR3fUFQ8D1oYnDqBhYG
+	gI4Q//BmazLGJXmw/pMLWEpegSLdyY52oIzjePvKRvYOZxuixdfVX5PcA3vYzMy0wE3CD0szmjxs6
+	qDzXgcDLZDeMHMy67iPclQN6ifRkhTxes9tXGkCWaCx0cfSbvVeJ8J79FPlvIjz9SMQ4woU0KsKti
+	kMSlBO/oidS9EHCrwhJrs/wUai4WfNnGodqRPscYAG+bh+vSmdJTfDtLBvbWlE+tY8xMHvubLdBGS
+	VWXzSxSzi2DgaEd2Vcyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uuYYr-00000002pHI-23S3;
-	Fri, 05 Sep 2025 15:41:13 +0000
-Received: from haruka.juszkiewicz.com.pl ([185.243.53.191])
+	id 1uuZ0e-000000030Ei-3NMf;
+	Fri, 05 Sep 2025 16:09:56 +0000
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uuUDJ-00000001F3M-48w6;
-	Fri, 05 Sep 2025 11:02:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=juszkiewicz.com.pl;
-	s=mail; t=1757070160;
-	bh=GDquDPQwE7myiK7wYOqpSjbnjrunWfiKQHBxJv7TDEE=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=0ZU9oZw3bMvBmqIKXiHYHrJUEO+54FZXp8N1uujkk9hqW2PIKwEhsPxTLRMER/kz6
-	 0Gmo0PZh3cSD4LccimY75W1FiYrGdjSt33z1MRtSLqgob9geTJLNHHNFjMAL/a+q/V
-	 PdZCLH29Jl6o4jfTZjn/lFJtz1TQJ+CLImwZQIxMh9D0r0MY8liyYwX0LM+4rdWqaP
-	 kaLTcsnuftOKqFhp0mzzrNO3+8E3nzIy6BnoadufFEx7lOfoSBVqA7i5itFzzC9BwH
-	 sxb4SCGg8KnJMsEa6g137JbYNM7FqkqYWCIgxnwDOzaIc3T+d69om+T0l6U7bNaLPy
-	 l+hzPxiBbRDFw==
-Received: from utena.juszkiewicz.com.pl (utena.juszkiewicz.com.pl [158.101.208.177])
-	by haruka.juszkiewicz.com.pl (Postfix) with ESMTPSA id 99A771FB80;
-	Fri, 05 Sep 2025 13:02:40 +0200 (CEST)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 7D3B845400;
-	Fri,  5 Sep 2025 13:02:39 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=juszkiewicz.com.pl;
-	s=mail; t=1757070159; h=from:subject:date:message-id:to:cc:mime-version:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=bmM37TIebFwc91NhuXnorA0dNpqLiDvcznMp+hRuFu8=;
-	b=jdd8BC/n1OesgTO6l/Axdof0r/fcOuuXchbuYEJZ6G8gLdq5lOl5JNxn4VFsSsKkxgkDLU
-	6QWT/KGNCa4Zjf4jCmVzUX+J3zSwWL9bpar9VjRVhWifpHDfhIAMHJLLZdehDHhRrcvn9k
-	hkMNeMKOarkADE8AXi23V8AcykB1YQsKWOgpwtOxpKrDxTyCmATsGpmsuRa+3PJY74Jt2V
-	EgElnb1q152ttxn5nKHsQqwDAwlv/Eh8XzzyiICvAOPY+2LyQN0VYUdq/2kRuAGh79H4VH
-	CgIeJ+lHoMCx9LFGVynJSePY++PykprfmM0GrHgK2sYrDweqYtzxFxWrctXbUg==
-From: Marcin Juszkiewicz <marcin@juszkiewicz.com.pl>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH 1/1] arm64: dts: rockchip: enable HDMI Receiver on NanoPC T6
-Date: Fri,  5 Sep 2025 13:02:30 +0200
-Message-ID: <579370818ef3b70b57bc5b8846f3b330d091d9a4.1757068166.git.marcin@juszkiewicz.com.pl>
-X-Mailer: git-send-email 2.51.0
-In-Reply-To: <cover.1757068166.git.marcin@juszkiewicz.com.pl>
-References: <cover.1757068166.git.marcin@juszkiewicz.com.pl>
+	id 1uuVX2-00000001gkd-2Oby;
+	Fri, 05 Sep 2025 12:27:09 +0000
+Received: by mail-ed1-x52c.google.com with SMTP id 4fb4d7f45d1cf-620724883e6so2920296a12.2;
+        Fri, 05 Sep 2025 05:27:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1757075227; x=1757680027; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=2ClMPDF0HluOKzI+GNmsNWO4LtH4Zjjqg5QR4CqPXIM=;
+        b=fzZe3AsYb9PrJDmbWyjr+d9hT8cC5/iXFpHM/+QLXl2OO6+koJ9bUJ6N0tS36k1MmX
+         mdNk7EiKNm1ZTErGxCcdA/0IzNHp4/emskX3zTSkEaenBhBDrMPu6LgLPNML/vx4Gptr
+         3fxBzOutwzdV9WI4VQ/z0M5yIEeOMpIVb7340LMZaJJwu906SsWl7ojay7mNz+j2keXj
+         rTnIGg5BsxlOD2PzZVITPryg3+zmgBuQXy0geB0XtlOKmed6KQdkW64loU8rdN89jzh8
+         DCe+n5Kl6WvwRLs2nO+3mgTgekcE85PF4N5BcwnHzjrqNoU+BSh7NB+rpTb3ptpi7AqV
+         yc4w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1757075227; x=1757680027;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=2ClMPDF0HluOKzI+GNmsNWO4LtH4Zjjqg5QR4CqPXIM=;
+        b=B1c0W4L0l4+yCFwDTTjBBSMJZLcyubuo81idKSpjlmuHxkm+7V0Sb2aIaHW5+8C3us
+         P053DtpK0FceK7CBoKWS6tFLjva/aWq5NBh5AZvi/x3ZPk/m2z8xGda937PU04Ej0qBd
+         GeD/H/Bgg/X4tJeYK+7x+UbYJ7aVutIZH9yD3RZFjsXeKoAjoKe7bfPwnHqRekZl7YZy
+         cqztvR0iCJ5WhArQPuXN9qFSLU8EDbWGeelyizNA/w18UHmT30TjWY+uYuCB+zeQJJcT
+         EgscH5Src+AjCTXHgmoLCjHrdXq2lQwZqZthNNyfb4GK6ZJJrbL+3ilyph1/mFkqVOfi
+         qfoQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUcDNy2A/BlOhfojpX5CP3LacfTKpkZO8uNvKgtagTULL4vY3RqXW/o0iBGxFySEhxw/gSFHfwcmFWXZxp51HU=@lists.infradead.org, AJvYcCWhr8KnPNNS5OgJgDBlOT8/tz4uqcdmD33aujxzxuiijGj7YlHic3SXOPObU9bBksCqWIOA5mU+RNFVcxD9S5xq@lists.infradead.org
+X-Gm-Message-State: AOJu0YyX4GOX985zGHfEK0Fs4ZFgelgExEf6n8tLuFFww3MH7niVLnkp
+	aEQT0pE8hm8vqk/IHMH5hjsS2Y3sJQyX75O7Pm8nARgBgnfw3vBWZavkWsSLas99Eu30uM2AO+k
+	kdHjwhcQeIx4e56+sWjZjaw2FqvdlNzo=
+X-Gm-Gg: ASbGncuqK8cJjxKhG8JiZm5u61mRe5Zj18pnE6ggZqjLke5vnGzx5/+xaVou1AOi8ch
+	LBZv/12di+2clY4joXBJ9gMelNj/QxrntyvvSGO0OB2Gv1LtlczMWttiRsJO782XgPtkauQYrIv
+	v1fYFPlFx/qcZyoKG/X/0xZWaBoZUfvah//laJfbu2KesKIPcDu2mxmcxZIq/b/FU1wq6wd5yWt
+	crbXDAXM6DtSgqAlg==
+X-Google-Smtp-Source: AGHT+IEVNnP/U7LUIDN6Mt8LbSIFuDZj1YfEJa6iYw06p0ZNddA0TQZZkmZqSMAeaPrBEuNv6h+hGZaxwhQit2BdnWI=
+X-Received: by 2002:a05:6402:27cf:b0:621:b7ba:ef76 with SMTP id
+ 4fb4d7f45d1cf-621b7baf1e6mr1486424a12.35.1757075226560; Fri, 05 Sep 2025
+ 05:27:06 -0700 (PDT)
 MIME-Version: 1.0
-X-Last-TLS-Session-Version: TLSv1.3
+References: <20250905025632.222422-1-cn.liweihao@gmail.com>
+ <20250905025632.222422-4-cn.liweihao@gmail.com> <2267196.NgBsaNRSFp@diego>
+In-Reply-To: <2267196.NgBsaNRSFp@diego>
+From: =?UTF-8?B?5p2O57u06LGq?= <cn.liweihao@gmail.com>
+Date: Fri, 5 Sep 2025 20:26:54 +0800
+X-Gm-Features: Ac12FXwgzlnAMSQyI-WpHzpeUd7ApymhPLAVoBjM7YjSfL1afRnvVV71jtX5KA8
+Message-ID: <CAPEOAkS4gPiXddXi2=RqY7oJW60ewwA54=OX_Ljf1zpAgUf+_Q@mail.gmail.com>
+Subject: Re: [PATCH v2 3/8] dt-bindings: clock: rk3368: Add SCLK_MIPIDSI_24M
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
+Cc: robh@kernel.org, hjc@rock-chips.com, andy.yan@rock-chips.com, 
+	krzk+dt@kernel.org, conor+dt@kernel.org, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250905_040242_179679_0E6DBD47 
-X-CRM114-Status: UNSURE (   8.73  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250905_052708_606568_4FC8865D 
+X-CRM114-Status: GOOD (  12.73  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,59 +92,32 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Let enable HDMI input port.
-
-Signed-off-by: Marcin Juszkiewicz <marcin@juszkiewicz.com.pl>
----
- .../boot/dts/rockchip/rk3588-nanopc-t6.dtsi     | 17 +++++++++++++++++
- 1 file changed, 17 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
-index e359d74f20885..6fe151d2cdb45 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
-@@ -391,6 +391,17 @@ &hdmi1_sound {
- 	status = "okay";
- };
- 
-+&hdmi_receiver_cma {
-+	status = "okay";
-+};
-+
-+&hdmi_receiver {
-+	hpd-gpios = <&gpio1 RK_PD5 GPIO_ACTIVE_LOW>;
-+	pinctrl-0 = <&hdmim1_rx_cec &hdmim1_rx_hpdin &hdmim1_rx_scl &hdmim1_rx_sda &hdmirx_hpd>;
-+	pinctrl-names = "default";
-+	status = "okay";
-+};
-+
- &hdptxphy0 {
- 	status = "okay";
- };
-@@ -629,6 +640,12 @@ usr_led_pin: usr-led-pin {
- 		};
- 	};
- 
-+	hdmirx {
-+		hdmirx_hpd: hdmirx-5v-detection {
-+			rockchip,pins = <1 RK_PD5 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
- 	headphone {
- 		hp_det: hp-det {
- 			rockchip,pins = <1 RK_PC4 RK_FUNC_GPIO &pcfg_pull_none>;
--- 
-2.51.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGksCgpIZWlrbyBTdMO8Ym5lciA8aGVpa29Ac250ZWNoLmRlPiDkuo4yMDI15bm0OeaciDXml6Xl
+kajkupQgMTM6NTPlhpnpgZPvvJoKPgo+IEhpLAo+Cj4gQW0gRnJlaXRhZywgNS4gU2VwdGVtYmVy
+IDIwMjUsIDA0OjU2OjI3IE1pdHRlbGV1cm9ww6Rpc2NoZSBTb21tZXJ6ZWl0IHNjaHJpZWIgV2Vp
+SGFvIExpOgo+ID4gQWRkIGEgY2xvY2sgaWQgZm9yIG1pcGkgZHNpIHJlZmVyZW5jZSBjbG9jaywg
+bWlwaSBkc2kgbm9kZSB1c2VkIGl0Lgo+ID4KPiA+IFNpZ25lZC1vZmYtYnk6IFdlaUhhbyBMaSA8
+Y24ubGl3ZWloYW9AZ21haWwuY29tPgo+Cj4gYW5vdGhlciBwcm9jZXNzLXJlbGF0ZWQgY29tbWVu
+dCA6LSkgLgo+Cj4gKDEpIFlvdSBhbHJlYWR5IGdvdCBpbiB2MSB0aGUKPiBBY2tlZC1ieTogUm9i
+IEhlcnJpbmcgKEFybSkgPHJvYmhAa2VybmVsLm9yZz4KPgo+IFNvIHdoZW4gc2VuZGluZyBhIHYy
+LCBwbGVhc2UgaW5jbHVkZSBzdWNoIHJlY2VpdmVkIHRhZ3MKPiAoaWYgdGhlcmUgYXJlIG5vIG1h
+am9yIGNoYW5nZXMgdG8gdGhlIHJlbGV2YW50IGNvZGUpCj4KPiBUaGlzIHByZXZlbnRzIHBlb3Bs
+ZSBmcm9tIHJldmlld2luZyB0aGluZ3MgbmVlZGxlc3NseSBtdWx0aXBsZSB0aW1lcy4KPiBTbyBw
+YXRjaCAzIHdvdWxkIGxvb2sgc29tZXRoaW5nIGxpa2U6Cj4KPiAtLS0tLS0tLS0tLS0KPiBBZGQg
+YSBjbG9jayBpZCBmb3IgbWlwaSBkc2kgcmVmZXJlbmNlIGNsb2NrLCBtaXBpIGRzaSBub2RlIHVz
+ZWQgaXQuCj4KPiBBY2tlZC1ieTogUm9iIEhlcnJpbmcgKEFybSkgPHJvYmhAa2VybmVsLm9yZz4K
+PiBTaWduZWQtb2ZmLWJ5OiBXZWlIYW8gTGkgPGNuLmxpd2VpaGFvQGdtYWlsLmNvbT4KPiAtLS0t
+LS0tLS0tLS0KPgo+ICgyKSBBcyBjYW4gYmUgc2VlbiBpbgo+IGh0dHBzOi8vbG9yZS5rZXJuZWwu
+b3JnL2xpbnV4LXJvY2tjaGlwLzE3NTY5MDE5NTAxMy4zNzcxNDg4LjQzNTg3MDc4NjIyNDg3MzI1
+Ny5iNC10eUBzbnRlY2guZGUvCj4KPiBJIGFscmVhZHkgYXBwbGllZCB0aGUgdHdvIGNsb2NrIHBh
+dGNoZXMsIHNvIGluIG5ld2VyIHZlcnNpb25zIGRvbid0Cj4gc2VuZCB0aGVtIGFueW1vcmUuCgpH
+b3QgaXQgYW5kIHRoYW5rcyBmb3IgeW91ciBwYXRpZW50IGV4cGxhaW4uCgpZb3VycywKV2VpaGFv
+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1y
+b2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpo
+dHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlw
+Cg==
