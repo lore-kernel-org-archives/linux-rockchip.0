@@ -4,77 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20F61CA1016
-	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Sep 2025 18:27:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71B39CA0FED
+	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Sep 2025 18:30:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
 	Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NVyUhtqQjt5a3/sozSIKJ7wQd9ZqzI6PYbGvLrAcubc=; b=MlUVvYqaNDLsplwQO3J2zUYRoc
-	saUBxzD8nrIrRaFZTKW+GCir6z9jugLQ2yfIEn1gxUIdu4mViWy+waqGkJk0bEZXGZ5RxPCZjWYFq
-	JfZd1vdAzKi8zOkVPlbYYOwvSQM2whXgdDhTllUJLJw28Mgvwp7g0GF7vcRo4tuBXetUCPxQSWZ+y
-	7kDgfw46qx1UEcPNxRDLwbOPt3YOrI5yRL9huFJx8AyFpwnByvJGuWs+gHzSMl0qvYnq6tG116ovr
-	uWONYVk4ZBv+0Pk8c606k+MD8cp3lsW1xGp79in+k0tpDopqkG1fRF3vMWic8mk4yaTY21NtAD9kc
-	hkXIYjDA==;
+	bh=J6SHlR+jyI769HSRWS6K3BOvnf5W+4baZUjaHyAMmaE=; b=0CSrDijQWO5dratm+iuujjkuIM
+	cj10kUj6OhxOau+BHEKviXwBVfRONiL5Hm8fmrp/wT4719LWxpKe3+BSuk7D6gkK9AIjDwFKeNQKi
+	a/eG2PDdbQ3i9wq0PhPbmZrDNpvA89HgkIkZ9/iReHjtGBTZET33n7+cUFRwsyTq4i96+z3VpHIKK
+	FvMGkXG6m1q8e5wHd8YAgz+mf3/7u7kSLfI3vbHSTnpQ/GVa5uaAemnCuoD8f9zLM8E7sDsFrPFn2
+	Yip44tWzY3TUUMNuZnGkaYlFRnruZXip2LFVIQZ+RPEzr4/lPQLSzg7ZU7rJdz4omt98guX5K7mIM
+	PzoVgWkA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uubA2-00000003mtr-3nyj;
-	Fri, 05 Sep 2025 18:27:46 +0000
-Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
+	id 1uubD3-00000003nsk-0Ggf;
+	Fri, 05 Sep 2025 18:30:53 +0000
+Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uuXQn-00000002Hrn-2sE1;
-	Fri, 05 Sep 2025 14:28:50 +0000
-Received: by mail-pl1-x634.google.com with SMTP id d9443c01a7336-249406d5878so21481485ad.0;
-        Fri, 05 Sep 2025 07:28:49 -0700 (PDT)
+	id 1uuXTV-00000002J5J-3yEY;
+	Fri, 05 Sep 2025 14:31:39 +0000
+Received: by mail-pj1-x102e.google.com with SMTP id 98e67ed59e1d1-32bae4bcd63so901694a91.2;
+        Fri, 05 Sep 2025 07:31:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1757082529; x=1757687329; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1757082697; x=1757687497; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:to:subject:user-agent:mime-version:date
          :message-id:sender:from:to:cc:subject:date:message-id:reply-to;
-        bh=xIBk01NdBuwsWQnnNXVdcn6j5JKGkVjqtQzEraCQviA=;
-        b=NGEeDNG0itE3HHp5Onwu9c0ZZAKRTasBxpw/VUzfZENKDh+eWveNBRHLkYRfgEnit2
-         QLxX7ukf4ZgTk6ArOSGhtHkieOvakB9uXS/04oV4KpSSauAtSMNAku5OTZrPIZcPmIzM
-         UktMNzfuBTUW47p4wUsToOyxNBaCoZ6RcOS1lxPQPK1/We7xuLXcEtfHXUOj+8GUllsF
-         yah5Wodh9QcIcGiHYon+VkzOVt1M7qFzyJ+urkepODXOGTkp33wUDfzXj9jYKu3DLJPP
-         tJcsESsa7VRyQhJO8i1CNeMgnvspUr67wTJ7RdIpJoXeSymCxCSKftYLNJZuCiN7sQ+r
-         13ng==
+        bh=3vIXH9G8eZJ7ix/XNHz4bvSACtWtZGWHKqaN5lng6nE=;
+        b=d+ntNr69fRbDtnyilIuNGE0EyGdBD+6WD0bVkTf4i5m5jTPDCo7y3KdFx3JokwrkkJ
+         keIgrwFMdIpIyYIpKPboCRc9zMTYGE9hIbKw14TEJXC6EYvHhYO2WbgeyZS/zXrTMaEg
+         H8i7d4qOjD3DWJOYL5gaPxlJO5NJje6HfJTSKLSRs9mrNoVYw5/VZI2Oy6DJwCtKMFn7
+         tG/XEo+EBymHEwMT5BPFdYFpy9BHaKo54/mEss/0GHRRGGr1f34UJ4pbo9Q9bwYqSFn6
+         zpTfC94yfYhoBdS77ZUKi7K2GA9hFV1e53JT+Lbl64hnFxd9+dDoiS/tE6w28IIIcWmy
+         6exw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1757082529; x=1757687329;
+        d=1e100.net; s=20230601; t=1757082697; x=1757687497;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:to:subject:user-agent:mime-version:date
          :message-id:sender:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=xIBk01NdBuwsWQnnNXVdcn6j5JKGkVjqtQzEraCQviA=;
-        b=RcQhaZhcUt/+fXlKYMYQiigFtoKUBEikR+HNcixDjKAjOxqtvyoX7yrdlevzn8V080
-         /UKfGMtb62aDL12yziyJN3KidiPJMWbH8eqOm9y8e/G2mF3HFFJF5cgQxh1hoFk+4Qtu
-         W4v3nSxoK34FXY414d8anEezlncZaQwptredBKGCEKL6e+7X3tcKS1xy39L816jped+H
-         2/wsqyjel8TZIyR9btmgvPNqrIVTFZgCICf4WGADN3D4uXmjnCcaHEngfUNBZfVzPk1E
-         +shcmwVDLIOLZp357tnKUGfPmOmNU+v7yY+7Ga7+CqwP61GKDrUFIsoJ+06V003jubKP
-         Iqag==
-X-Forwarded-Encrypted: i=1; AJvYcCUhdr55Vr2YfQBvWAVg7czFt/c6sTGZ6vZNUoG58bRfwibtHGQ6q1rX1C4koHTz68LQL0h7SGQfCEdBWhTDujz+bw==@lists.infradead.org, AJvYcCVM1zQaPrmleAcVtyXaJXoHVWB0eED+9V61ylo+prjErqfVh4LTnbh+mxJrNM7FfFOFXGr317gXeOcxpTGW@lists.infradead.org, AJvYcCWzCDNHyBCV0fHiZq++LJKtRmgIfJ73Inf46shmL+j1FqI2BARtpr8YL6Yw/DzbvuR5jYKvMhs8bLN3JGtAhrTy9w==@lists.infradead.org, AJvYcCXt3j+5Ez8CclK+n4KKwYTFbJSW893ycj/kpBhCgtAumJGEmx2Xgkrt+XJ8SCCyzntku8evwBEx7gHzNpIerAA=@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzli+yoykVx9QriZFbhn9otrcatYHnPf3lToG+HdxEKrfWB92gO
-	YI6dEKTtCyIBsxpCS3YsUl2KsNqNWkIaHq2PTAQFj8kdlBsz2UJsR6KO
-X-Gm-Gg: ASbGnct0n3w3iPzprK0RRcQ3gpg5yS58z6tuDMWvst011CjuqeSfHQnNTm+3kC/GZlw
-	feLahsNa6//djfi3IIE2wzRIj43txUpe16/i16hrRPyIZfp8+5QsPZ9oVMFcb6q93bckuxnj7U7
-	ATnYAEP4lx7XKI2kXAVmQjaZN0HWRpvPJ71kd+APNZILgYu00NWGjmJHIbwMie3QKOX5NGETdu+
-	ahYYJjPYuEwPPf7bTn0LjgLbI5pycd39YOG0G9KfrK1t/ky7V/DStZxfi3DMT+5DYo6lBNoLc7F
-	6ACVM0Zzgd2g5zwrCgiGbOzpygCtvsV3WI2qIq7kJynR5hkm26mvQmNcvJQWxo2JiY/MKNqim79
-	yI5q73/exuySUSdzX4gIvKtdrCYS0XhtriygN03Yep4cC/YZWx97w+scrbrsbWABO1eVmBRk=
-X-Google-Smtp-Source: AGHT+IGmtjyZd11+KjNwJeufcA4YJgYYRhNDfsNkfD6VHk0PEhzxkDj8A/25DdwjoogzCAHLZqAmGA==
-X-Received: by 2002:a17:903:1ac6:b0:240:83af:e2e0 with SMTP id d9443c01a7336-24944ae7beemr297755715ad.47.1757082528461;
-        Fri, 05 Sep 2025 07:28:48 -0700 (PDT)
+        bh=3vIXH9G8eZJ7ix/XNHz4bvSACtWtZGWHKqaN5lng6nE=;
+        b=j3NvJk0oFgslo7D+1nAmncj2XIy/jkh1oImZ9nbbjiPk+pS7SOioYhh8j6sTWY6DNF
+         no5BCS29XoOg1vvB2Gn3ntkU8mv5+3lX6ZW99HserV08B34T2mt0imRGeWKBzU75Oy4o
+         WFpuB84UGTu9b2EiGOA8YMU8EMV3DYIIeZsu56F6xOZJDqGL5YfMZ1FjbUlqCHD3pqTu
+         ZABOYYysWgwyUnlBl5dco+I2NkY/TWoyVp3jSWSFhgIIT6K1a8Sq0A5wvcPDR2JxjXxg
+         tYYQtVQiTYlJUZ6+KwNpkqJThzAP0wKJhYEcvm4t5cG1755rQuVoc6z0JDWeZX+mcT8p
+         IDkg==
+X-Forwarded-Encrypted: i=1; AJvYcCUjpf6mE+tkdVImny5bh95iWfZuOXbBybHMHotizJli5ax9pyD5FQ1n4OoJjz3sTqTGkiAlqEAL79UxZ9LbM0s=@lists.infradead.org, AJvYcCWKzMB8wxGOHeDUbK4tZ1pXGBVx2RAjRKRV5Nv1a8h/JRm4nHkmqBGsNAEHoFAenFp0uGbKWGnLnt4PDD1LDRkvKw==@lists.infradead.org, AJvYcCWRfWPnKjoUXdODeZ7Wt/7QAjmUJSH0emHIQP8P+98lLWICzzAD4HAYah/t9sD0kR+c5hPCzrtcmQGihN1slpTmdA==@lists.infradead.org, AJvYcCX179rWMevFsc0aTdWCt8djU8oPjeKvIwZ2KP/WWTzrDznceU79FJ6DMH04tdaNN8t2aLuzNADLrMsDqNOF@lists.infradead.org
+X-Gm-Message-State: AOJu0YwtGjogepp1KLcVPJeiCXNbfEYGsDZ+424W+t73tWi9m0sPJwoO
+	sbLLFhJNjqUzQVgPnqA0AFhzhQwwlF8KOUMps4T1KhN+Df3LffT6JyNb
+X-Gm-Gg: ASbGncsMb4oVdlgIOWoFbAuno4lYaRBzBLHPbBBIWEHTfBzktvtLCHxTM/SoPB4+IL6
+	R5I6gScxbkqCkPbAuFwuWTLAko4qvbsRbTcRQzB8DhMA1h4M40YdZspysPVzu2KQWZAJaUXW3Jn
+	gHuenscrUFebogNsFFVUb3VOJlE6iEK0ZQJWI4pucWGIy63StIvEGFz8fbIK1YtCbiV7LCrou3t
+	wI5tfl4GwyNui9LAgdU5DTQMa5JpPsgXdT3BCIisG96muCo8+0+zuUku0i6mQwAgK6FJ0rQ5rqh
+	9sjmllUwqf0PC6GjhOtOOHcaNJ+blqROnAH2lXIf4AJ+vMt2phV4iEaGQvrPrYxOkPHEKXQDH/9
+	xREZ7eYYwEIYa1xlOMvo57rSC9UYnDKuN3LrEzf9Rj3WGA1pJbmZw09OFWAHoeniiq9itb5P0q8
+	qfhTPYcw==
+X-Google-Smtp-Source: AGHT+IGsUGu45MQwt+NZPV5mLr8VYLLqfRHTzbjIcd42cuNIOrbj6li3sVxyZFvsqM7RMTuhEoyH4A==
+X-Received: by 2002:a17:90b:4c4b:b0:32b:94a2:b0d6 with SMTP id 98e67ed59e1d1-32b94a2b221mr8959418a91.3.1757082696826;
+        Fri, 05 Sep 2025 07:31:36 -0700 (PDT)
 Received: from ?IPV6:2600:1700:e321:62f0:da43:aeff:fecc:bfd5? ([2600:1700:e321:62f0:da43:aeff:fecc:bfd5])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-7722a4b99fasm22492373b3a.57.2025.09.05.07.28.43
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-77267a225e6sm12382015b3a.94.2025.09.05.07.31.32
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 05 Sep 2025 07:28:47 -0700 (PDT)
-Message-ID: <42b68c7f-8368-470b-a7b7-d1ff075973fa@roeck-us.net>
-Date: Fri, 5 Sep 2025 07:28:42 -0700
+        Fri, 05 Sep 2025 07:31:36 -0700 (PDT)
+Message-ID: <c00a3d00-d5d5-4f2b-8799-d1b8b22f85cb@roeck-us.net>
+Date: Fri, 5 Sep 2025 07:31:31 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 01/12] thermal: of: Add error handling in
- devm_thermal_*_register()
+Subject: Re: [PATCH 02/12] hwmon: Remove redundant error log prints
 To: Xichao Zhao <zhao.xichao@vivo.com>, Jean Delvare <jdelvare@suse.com>,
  Jonathan Cameron <jic23@kernel.org>, David Lechner <dlechner@baylibre.com>,
  =?UTF-8?Q?Nuno_S=C3=A1?= <nuno.sa@analog.com>,
@@ -131,7 +131,7 @@ To: Xichao Zhao <zhao.xichao@vivo.com>, Jean Delvare <jdelvare@suse.com>,
  "open list:TEGRA ARCHITECTURE SUPPORT" <linux-tegra@vger.kernel.org>,
  "open list:TI BANDGAP AND THERMAL DRIVER" <linux-omap@vger.kernel.org>
 References: <20250905072423.368123-1-zhao.xichao@vivo.com>
- <20250905072423.368123-2-zhao.xichao@vivo.com>
+ <20250905072423.368123-3-zhao.xichao@vivo.com>
 Content-Language: en-US
 From: Guenter Roeck <linux@roeck-us.net>
 Autocrypt: addr=linux@roeck-us.net; keydata=
@@ -177,10 +177,10 @@ Autocrypt: addr=linux@roeck-us.net; keydata=
  F0WaMvQMNrk9UAUziVcUkLU52NS9SXqpVg8vgrO0JKx97IXFPcNh0DWsSj/0Y8HO/RDkGXYn
  FDMj7fZSPKyPQPmEHg+W/KzxSSfdgWIHF2QaQ0b2q1wOSec4Rti52ohmNSY+KNIW/zODhugJ
  np3900V20aS7eD9K8GTU0TGC1pyz6IVJwIE=
-In-Reply-To: <20250905072423.368123-2-zhao.xichao@vivo.com>
+In-Reply-To: <20250905072423.368123-3-zhao.xichao@vivo.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250905_072849_731880_03B8B037 
-X-CRM114-Status: GOOD (  18.91  )
+X-CRM114-CacheID: sfid-20250905_073137_993010_4EB698DD 
+X-CRM114-Status: GOOD (  18.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -198,45 +198,36 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 9/5/25 00:23, Xichao Zhao wrote:
-> devm_thermal_of_zone_register() does not print any error message
-> when registering a thermal zone with a device node sensor fails
-> and allocating device resource data fails.
-> 
-> This forces each driver to implement redundant error logging.
-> Additionally, when upper-layer functions propagate these errors
-> without logging, critical debugging information is lost.
-> 
-> Add dev_err_probe() in devm_thermal_of_zone_register() to unify
-> error reporting.
+> devm_thermal_of_zone_register() prints error log messages when
+> it fails, so there is no need to print error log messages again.
 > 
 > Signed-off-by: Xichao Zhao <zhao.xichao@vivo.com>
 > ---
->   drivers/thermal/thermal_of.c | 6 +++++-
->   1 file changed, 5 insertions(+), 1 deletion(-)
+>   drivers/hwmon/hwmon.c | 3 +--
+>   1 file changed, 1 insertion(+), 2 deletions(-)
 > 
-> diff --git a/drivers/thermal/thermal_of.c b/drivers/thermal/thermal_of.c
-> index 1a51a4d240ff..8fe0ad402579 100644
-> --- a/drivers/thermal/thermal_of.c
-> +++ b/drivers/thermal/thermal_of.c
-> @@ -475,11 +475,15 @@ struct thermal_zone_device *devm_thermal_of_zone_register(struct device *dev, in
->   
->   	ptr = devres_alloc(devm_thermal_of_zone_release, sizeof(*ptr),
->   			   GFP_KERNEL);
-> -	if (!ptr)
-> +	if (!ptr) {
-> +		dev_err(dev, "Failed to allocate device resource data\n");
->   		return ERR_PTR(-ENOMEM);
-> +	}
->   
->   	tzd = thermal_of_zone_register(dev->of_node, sensor_id, data, ops);
+> diff --git a/drivers/hwmon/hwmon.c b/drivers/hwmon/hwmon.c
+> index 1688c210888a..0514e4bc5e71 100644
+> --- a/drivers/hwmon/hwmon.c
+> +++ b/drivers/hwmon/hwmon.c
+> @@ -239,8 +239,7 @@ static int hwmon_thermal_add_sensor(struct device *dev, int index)
 >   	if (IS_ERR(tzd)) {
-> +		dev_err_probe(dev, PTR_ERR(tzd),
-> +			      "Failed to register thermal zone sensor[%d]\n", sensor_id);
+>   		if (PTR_ERR(tzd) != -ENODEV)
+>   			return PTR_ERR(tzd);
+> -		dev_info(dev, "temp%d_input not attached to any thermal zone\n",
+> -			 index + 1);
+> +
 
-This will print an error message even if the problem is (for the calling code,
-such as hwmon) only informational.
+This series moves the message from an informational message here to an error message
+in the thermal core, even though it is (for hwmon) not an error. I personally
+think this is a bad idea. Can we get another API that lets me suppress that error
+message ?
 
 Guenter
+
+>   		devm_kfree(dev, tdata);
+>   		return 0;
+>   	}
 
 
 _______________________________________________
