@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67592CA1017
-	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Sep 2025 19:41:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A033ECAC580
+	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Sep 2025 19:41:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2udgwV9nvj8xiqbM/91RI3htbsO5WJaweN/cZRcMZok=; b=mbY8Cq3ISKr85q
-	CRUQhn+h7+zNx5Hiw5UEkpEmXTAMvv7G9h64g/d9UmnoX5TVQ5ek3Yu1SGCiWr6tqNvUgNbF8w/Eb
-	EA/5e3WGt30tOhGTWnve0n0zfBEexT75pjBvp1uOpoHBgoV6Sjb5EaxBxUtgXTbvRqbidcLkpy7dB
-	PizOmeBj8dTtezWrsv1GHm+z2kQbomdsDyDwBEyGaiyE/2akyJDhNBdDisOoTJLIftgZG6eHC/NfJ
-	trXgxWmMBk9+db+5RjD8i2cZ8Jkj7Dp/GnKU/J4L3GpfeGdqgfT5NrsBazWY+KP2ycWEiX2wEzL8a
-	9/pGQumeu/Zg6bKmxY8A==;
+	List-Owner; bh=bzsuH5Sj6NAc2YQghmGpu7dHEmACHRQVk/9EVhJ0sFQ=; b=w4Qr3u/Eca3wF3
+	ibJucPKiUIGHrNwNpF9uGDTVUbMNnrqFflXFpB9/qus86yQ/c4OVkZhuquLDxZL8wWPOEGsizze5z
+	NzR2vFAbRj+hLCvpGo79ietX3aZnHprn3/aHxiy6oDGdnoBe7zjR5SHydqZb8PvLWKUhb5/OhQkiE
+	F46ddCzlQ5s2zgfPjbNZAX7nmdDQHjlwJQ8LxPFM7u8hf9X95apCgVxeNY9HhOW4IMpy1POZE0EGN
+	DstuyuNi8fvGZht6a5WfV5BvBpyTqvoqVp7Dst0ClESPQ8xqc4oMbZzZAyHZOpSJ3Xjt2Gi9LGTsz
+	f6tlnq1OzhVvCSp01XVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uucJF-00000004ECL-1O2D;
+	id 1uucJF-00000004ECZ-2tiY;
 	Fri, 05 Sep 2025 19:41:21 +0000
-Received: from smtp.forwardemail.net ([149.28.215.223])
+Received: from smtp.forwardemail.net ([121.127.44.73])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uuZAr-0000000341R-1tsI
+	id 1uuZAs-0000000341g-1MFe
 	for linux-rockchip@lists.infradead.org;
-	Fri, 05 Sep 2025 16:20:30 +0000
+	Fri, 05 Sep 2025 16:20:31 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
  h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
  Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
- t=1757089228; bh=vPBR/G1y7xyavSQpDAIp0nog4SwQ2XUBPu6qeNurwdE=;
- b=EMdwUvBGlqquSXurotr2f1DmW+x8178y7oB3eCM2yCUQH0I6gug7dfd9UxTNSYHotETINMjKe
- ufAkWkgMYlDIs3zClMipVosL2mJ4UO2i6StkTF6sHDMNPvptn6csNhlEsF9BJlbV9G0Z+GhJltY
- Zky+v9z3Ex9dGhHJ2cqcb1Aobn+HPmtm8baVqwL20AySI8Ybc7ZHI3ebyB14oj1GbgQdZTTJ9mH
- lrg6TaP4NaO3luQNV6o7jVNWh7RtmoVFXP6/szOJaymszbESp+SxVM0mDbifGX8syJZYAoH55WG
- WuMweJQmC8gv0tZNfBh9ESJl2rIPis+/P0PhcIGVmcMA==
-X-Forward-Email-ID: 68bb0dc690d039a4fd84d704
+ t=1757089229; bh=heghjJ1ZyKj3HH53+DkN1wBdADEuuQYiJXxp+teA+vw=;
+ b=u4TiicekGlyc8dbBjz1WG+I8rLZRjM92nRFF0fgws25MBCnifvbdT77TU01lKMbKweAmkuUQ+
+ 8rfTXwDLG8OnPz7R2Y+0juTc/qL+49FMKtd1dbUGofLDnfAYjT5f2kqStMShPg+3o4j/EV5Q2oR
+ zujrrukQLlS955PTGDNsnaZHPBsGN9mNyfjHzyrPSjcr9C3cY4K1UwS+LZT9CBBk1JJ4j4yzFW9
+ 5rFTfWcYzdacdGS9+GxYYFh8JXkozD+CzO0GUoP0gFKzE9KG/kDNTA6pxZLvHw4zIt4AGmg6Gt7
+ tacFlk3jhVJJ7bEIjzKgDGPjwDq5NR4h0XhHvpY2XTdg==
+X-Forward-Email-ID: 68bb0dcb90d039a4fd84d728
 X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 149.28.215.223
+ 121.127.44.73
 X-Forward-Email-Version: 1.2.13
 X-Forward-Email-Website: https://forwardemail.net
 X-Complaints-To: abuse@forwardemail.net
@@ -59,19 +59,17 @@ Cc: Alex Bee <knaerzche@gmail.com>,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Conor Dooley <conor.dooley@microchip.com>
-Subject: [PATCH v3 6/7] media: dt-bindings: rockchip,vdec: Add RK3288 compatible
-Date: Fri,  5 Sep 2025 16:19:24 +0000
-Message-ID: <20250905161942.3759717-7-jonas@kwiboo.se>
+	Jonas Karlman <jonas@kwiboo.se>
+Subject: [PATCH v3 7/7] ARM: dts: rockchip: Add vdec node for RK3288
+Date: Fri,  5 Sep 2025 16:19:25 +0000
+Message-ID: <20250905161942.3759717-8-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.51.0
 In-Reply-To: <20250905161942.3759717-1-jonas@kwiboo.se>
 References: <20250905161942.3759717-1-jonas@kwiboo.se>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250905_092029_528353_6220D7A1 
-X-CRM114-Status: UNSURE (   7.94  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250905_092030_458543_20D675AE 
+X-CRM114-Status: GOOD (  11.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,33 +86,58 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add a RK3288 compatible for a version of the Rockchip VDEC IP that only
-support HEVC decoding.
+From: Alex Bee <knaerzche@gmail.com>
 
+RK3288 contains a Rockchip VDEC block that only support HEVC
+decoding. Add a vdec node for this.
+
+Signed-off-by: Alex Bee <knaerzche@gmail.com>
 Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
 ---
 Changes in v3:
 - No change
 
 Changes in v2:
-- Collect a-b tag
+- No change
 ---
- Documentation/devicetree/bindings/media/rockchip,vdec.yaml | 1 +
- 1 file changed, 1 insertion(+)
+ arch/arm/boot/dts/rockchip/rk3288.dtsi | 17 ++++++++++++++++-
+ 1 file changed, 16 insertions(+), 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml b/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
-index 96b6c8938768..809fda45b3bd 100644
---- a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
-+++ b/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
-@@ -16,6 +16,7 @@ description: |-
- properties:
-   compatible:
-     oneOf:
-+      - const: rockchip,rk3288-vdec
-       - const: rockchip,rk3399-vdec
-       - const: rockchip,rk3576-vdec
-       - const: rockchip,rk3588-vdec
+diff --git a/arch/arm/boot/dts/rockchip/rk3288.dtsi b/arch/arm/boot/dts/rockchip/rk3288.dtsi
+index 42d705b544ec..eab0c9a2d482 100644
+--- a/arch/arm/boot/dts/rockchip/rk3288.dtsi
++++ b/arch/arm/boot/dts/rockchip/rk3288.dtsi
+@@ -1293,6 +1293,21 @@ vpu_mmu: iommu@ff9a0800 {
+ 		power-domains = <&power RK3288_PD_VIDEO>;
+ 	};
+ 
++	hevc: video-codec@ff9c0000 {
++		compatible = "rockchip,rk3288-vdec";
++		reg = <0x0 0xff9c0000 0x0 0x440>;
++		interrupts = <GIC_SPI 12 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru ACLK_HEVC>, <&cru HCLK_HEVC>,
++			 <&cru SCLK_HEVC_CABAC>, <&cru SCLK_HEVC_CORE>;
++		clock-names = "axi", "ahb", "cabac", "core";
++		assigned-clocks = <&cru ACLK_HEVC>, <&cru HCLK_HEVC>,
++				  <&cru SCLK_HEVC_CABAC>, <&cru SCLK_HEVC_CORE>;
++		assigned-clock-rates = <400000000>, <100000000>,
++				       <300000000>, <300000000>;
++		iommus = <&hevc_mmu>;
++		power-domains = <&power RK3288_PD_HEVC>;
++	};
++
+ 	hevc_mmu: iommu@ff9c0440 {
+ 		compatible = "rockchip,iommu";
+ 		reg = <0x0 0xff9c0440 0x0 0x40>, <0x0 0xff9c0480 0x0 0x40>;
+@@ -1300,7 +1315,7 @@ hevc_mmu: iommu@ff9c0440 {
+ 		clocks = <&cru ACLK_HEVC>, <&cru HCLK_HEVC>;
+ 		clock-names = "aclk", "iface";
+ 		#iommu-cells = <0>;
+-		status = "disabled";
++		power-domains = <&power RK3288_PD_HEVC>;
+ 	};
+ 
+ 	gpu: gpu@ffa30000 {
 -- 
 2.51.0
 
