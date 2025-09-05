@@ -4,39 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D921BCA1017
-	for <linux-rockchip@archiver.kernel.org>; Sat,  6 Sep 2025 00:10:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B46F1CAC581
+	for <linux-rockchip@archiver.kernel.org>; Sat,  6 Sep 2025 00:10:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZMylNzZRxjx3psUeQV38Jgyc/ehlB1GmOn1O8aHIzfA=; b=Cf8xAjLie41o0L
-	xjQ+aMHuVYKdwe6XQS1LV9kj15JOYADyX+K0S+d6kgwKniVndEgbwv2ZwUNWQD/NxVvT4A+KdO3OQ
-	p8CQ4fN6O1zi2uRkZKetU8zX8goin3cebYD4s6EQB6quWu0qAUO7R/bZpYhb0PYgwEKl1Hjtu7HxL
-	KCnqFT9/mLRFD/NCUuvPMAduJYkzU68lMkS5LhAWnJZSTsmM3T/loyoJTWl5nrhzlwyorV9rbu9Vs
-	tbWXaCuNr+s+GIJgeZIn5cybD+1NeRyIfBLQ7zvxFDHjs51vqvxDkrJK3Nm8leJ6BwDpQA4GkRYXI
-	l5h8HhV/YELaVpc+qjDg==;
+	List-Owner; bh=RXHZKjdNMLqnnMGNGfm45MLU8HUy3eqZ1jjBzuCWDqg=; b=yBBEX3W6+ThH47
+	E6XUAPc4LXVs4uTYZmvZaVCdLxJmgF3BPvn+453tpRiZOoifYWj6GgDBKRpIoLyoCPVDkd8ixgrIF
+	xp2WkToX2H3Tj1qDGfLBv1J4zTYy/bT4AiYI+/komur/WBrcarlAfrZY5t0HyHU6L37p3g/PmB+5q
+	Bx0k9xcaid5ssD8BwNvwoAaHG8wNcNJDtaW8pMjGsbeRe4KHzdUVn0g3+FfAFN1qP1qpoLXWpUvul
+	/8U9QBOVimaeJs3F8Ez+ZrvAgHIVzKaKT4HjEkNy9BwIOGCuTLPJ7TnaOe5nPkUAA6wQwH2H+Rob4
+	nJgaobB0HXWECcpazTTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uugVI-00000005R0W-0n4Q;
-	Sat, 06 Sep 2025 00:10:04 +0000
+	id 1uugVJ-00000005R1g-0T2F;
+	Sat, 06 Sep 2025 00:10:05 +0000
 Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uuZAX-000000033s3-43SY
+	id 1uuZAb-000000033tO-0sgh
 	for linux-rockchip@lists.infradead.org;
-	Fri, 05 Sep 2025 16:20:11 +0000
+	Fri, 05 Sep 2025 16:20:14 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
  h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
  Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
- t=1757089209; bh=Lm5hPdL8AkGTQal0R2BRZdcHNqMN4Z7U/7PKQLRiGMg=;
- b=yxKZptzCh+WnvJJ13f0PGCkTVGL+2+VxSFvk6wCNGfxfOgqt0ywmteoz/uzYfLv2RjGGPfSjO
- tKcosYDN73aRb7QQCNVR8z62KP1hsNWfcekXYCl4co4cqNFP6Q4UMOFUPhaVC/Lu6Z04EV9vaLi
- bnQO/zXdLCR6Kd2BN3GZUlkBIWB24STDxl3kTMrokYTMAlp/+Eh0R2Tgmt1Td/UJ8TcAK6nH2E5
- 2tL+jc0JbI9wQ05PRrS7QSGDkPacUWzxVyaJlXhdjwkZZ73zwzIXwZhnSmvyNNlGwT5OQLs3/0u
- lDxH9ZfIF8mbPt8ub2KB45cSgoc/T7bD9NYZIBA1U19A==
-X-Forward-Email-ID: 68bb0db490d039a4fd84d5ca
+ t=1757089212; bh=jsQ9JGf1qPemLxXlWU5ctSTecIqZzqL5Gbd4uM4ZRNc=;
+ b=Ub2+QTRthJjD0i0GpLALQeEhI2wofDXFqKyMyZUS6BX72MK+1dfucDIUOP9hn+wKMrG2QTdUm
+ FbxawHx7YLex9cibNGQWtZXGjJrJsXrolZJ66Op+ir637sN6VnfTgnO+hySfX5UDaRcYFnntaYm
+ xbN56MFgIkSalS/IM00GzpVdLucMuf3Q6Uc8wrlIrAooHNGsajCD33M3QsXZD/0cmY06bphxL2B
+ 6FRZtoLttmg2NmETWp/Ou522KlNGqA6ddMj7o8TUo1hpY1AYgySFKuW5e/GzrrCV8HIWI9it8iR
+ iuvX8B0ghcvdJrraqOwI0sPPIYHomxaFbTDm9wji3qDA==
+X-Forward-Email-ID: 68bb0db890d039a4fd84d604
 X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
  149.28.215.223
 X-Forward-Email-Version: 1.2.13
@@ -57,16 +57,16 @@ Cc: Alex Bee <knaerzche@gmail.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH v3 2/7] media: rkvdec: Add variants support
-Date: Fri,  5 Sep 2025 16:19:20 +0000
-Message-ID: <20250905161942.3759717-3-jonas@kwiboo.se>
+Subject: [PATCH v3 3/7] media: rkvdec: Implement capability filtering
+Date: Fri,  5 Sep 2025 16:19:21 +0000
+Message-ID: <20250905161942.3759717-4-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.51.0
 In-Reply-To: <20250905161942.3759717-1-jonas@kwiboo.se>
 References: <20250905161942.3759717-1-jonas@kwiboo.se>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250905_092010_052751_498C712D 
-X-CRM114-Status: GOOD (  17.48  )
+X-CRM114-CacheID: sfid-20250905_092013_293225_734CE5A4 
+X-CRM114-Status: GOOD (  16.79  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,12 +83,7 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Alex Bee <knaerzche@gmail.com>
-
-Different versions of the Rockchip VDEC IP exists and one way they can
-differ is what decoding formats are supported.
-
-Add a variant implementation in order to support flagging different
+Add filtering of coded formats and controls depending on a variant
 capabilities.
 
 Signed-off-by: Alex Bee <knaerzche@gmail.com>
@@ -96,139 +91,158 @@ Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 ---
 Changes in v3:
-- Use a reference to rkvdec_variant
-- Add num_regs field
+- Change to use file_to_rkvdec_ctx()
+- Use capabilities from rkvdec_variant
 - Collect r-b tag
 
 Changes in v2:
-- No change
+- Adjust code style in rkvdec_enum_coded_fmt_desc()
 ---
- .../media/platform/rockchip/rkvdec/rkvdec.c   | 22 ++++++++++++++++++-
- .../media/platform/rockchip/rkvdec/rkvdec.h   | 11 ++++++++++
- 2 files changed, 32 insertions(+), 1 deletion(-)
+ .../media/platform/rockchip/rkvdec/rkvdec.c   | 67 ++++++++++++++-----
+ 1 file changed, 49 insertions(+), 18 deletions(-)
 
 diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.c b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-index c15fc238d6af..daf6d9ab2d1d 100644
+index daf6d9ab2d1d..088ddfadf995 100644
 --- a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
 +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-@@ -14,6 +14,7 @@
- #include <linux/iommu.h>
- #include <linux/module.h>
- #include <linux/of.h>
-+#include <linux/of_device.h>
- #include <linux/platform_device.h>
- #include <linux/pm.h>
- #include <linux/pm_runtime.h>
-@@ -327,6 +328,7 @@ static const struct rkvdec_coded_fmt_desc rkvdec_coded_fmts[] = {
- 		.ops = &rkvdec_hevc_fmt_ops,
- 		.num_decoded_fmts = ARRAY_SIZE(rkvdec_hevc_decoded_fmts),
- 		.decoded_fmts = rkvdec_hevc_decoded_fmts,
-+		.capability = RKVDEC_CAPABILITY_HEVC,
- 	},
- 	{
- 		.fourcc = V4L2_PIX_FMT_H264_SLICE,
-@@ -343,6 +345,7 @@ static const struct rkvdec_coded_fmt_desc rkvdec_coded_fmts[] = {
- 		.num_decoded_fmts = ARRAY_SIZE(rkvdec_h264_decoded_fmts),
- 		.decoded_fmts = rkvdec_h264_decoded_fmts,
- 		.subsystem_flags = VB2_V4L2_FL_SUPPORTS_M2M_HOLD_CAPTURE_BUF,
-+		.capability = RKVDEC_CAPABILITY_H264,
- 	},
- 	{
- 		.fourcc = V4L2_PIX_FMT_VP9_FRAME,
-@@ -358,6 +361,7 @@ static const struct rkvdec_coded_fmt_desc rkvdec_coded_fmts[] = {
- 		.ops = &rkvdec_vp9_fmt_ops,
- 		.num_decoded_fmts = ARRAY_SIZE(rkvdec_vp9_decoded_fmts),
- 		.decoded_fmts = rkvdec_vp9_decoded_fmts,
-+		.capability = RKVDEC_CAPABILITY_VP9,
+@@ -365,13 +365,36 @@ static const struct rkvdec_coded_fmt_desc rkvdec_coded_fmts[] = {
  	}
  };
  
-@@ -1186,8 +1190,18 @@ static void rkvdec_watchdog_func(struct work_struct *work)
- 	}
- }
- 
-+static const struct rkvdec_variant rk3399_rkvdec_variant = {
-+	.num_regs = 78,
-+	.capabilities = RKVDEC_CAPABILITY_HEVC |
-+			RKVDEC_CAPABILITY_H264 |
-+			RKVDEC_CAPABILITY_VP9,
-+};
++static bool rkvdec_is_capable(struct rkvdec_ctx *ctx, unsigned int capability)
++{
++	return (ctx->dev->variant->capabilities & capability) == capability;
++}
 +
- static const struct of_device_id of_rkvdec_match[] = {
--	{ .compatible = "rockchip,rk3399-vdec" },
-+	{
-+		.compatible = "rockchip,rk3399-vdec",
-+		.data = &rk3399_rkvdec_variant,
-+	},
- 	{ /* sentinel */ }
- };
- MODULE_DEVICE_TABLE(of, of_rkvdec_match);
-@@ -1198,16 +1212,22 @@ static const char * const rkvdec_clk_names[] = {
- 
- static int rkvdec_probe(struct platform_device *pdev)
+ static const struct rkvdec_coded_fmt_desc *
+-rkvdec_find_coded_fmt_desc(u32 fourcc)
++rkvdec_enum_coded_fmt_desc(struct rkvdec_ctx *ctx, int index)
  {
-+	const struct rkvdec_variant *variant;
- 	struct rkvdec_dev *rkvdec;
++	int fmt_idx = -1;
  	unsigned int i;
- 	int ret, irq;
  
-+	variant = of_device_get_match_data(&pdev->dev);
-+	if (!variant)
-+		return -EINVAL;
+ 	for (i = 0; i < ARRAY_SIZE(rkvdec_coded_fmts); i++) {
+-		if (rkvdec_coded_fmts[i].fourcc == fourcc)
++		if (!rkvdec_is_capable(ctx, rkvdec_coded_fmts[i].capability))
++			continue;
++		fmt_idx++;
++		if (index == fmt_idx)
++			return &rkvdec_coded_fmts[i];
++	}
 +
- 	rkvdec = devm_kzalloc(&pdev->dev, sizeof(*rkvdec), GFP_KERNEL);
- 	if (!rkvdec)
- 		return -ENOMEM;
- 
- 	platform_set_drvdata(pdev, rkvdec);
- 	rkvdec->dev = &pdev->dev;
-+	rkvdec->variant = variant;
- 	mutex_init(&rkvdec->vdev_lock);
- 	INIT_DELAYED_WORK(&rkvdec->watchdog_work, rkvdec_watchdog_func);
- 
-diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.h b/drivers/media/platform/rockchip/rkvdec/rkvdec.h
-index 209dd79ce9bd..c47457c954e5 100644
---- a/drivers/media/platform/rockchip/rkvdec/rkvdec.h
-+++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.h
-@@ -22,6 +22,10 @@
- #include <media/videobuf2-core.h>
- #include <media/videobuf2-dma-contig.h>
- 
-+#define RKVDEC_CAPABILITY_HEVC		BIT(0)
-+#define RKVDEC_CAPABILITY_H264		BIT(1)
-+#define RKVDEC_CAPABILITY_VP9		BIT(2)
++	return NULL;
++}
 +
- struct rkvdec_ctx;
++static const struct rkvdec_coded_fmt_desc *
++rkvdec_find_coded_fmt_desc(struct rkvdec_ctx *ctx, u32 fourcc)
++{
++	unsigned int i;
++
++	for (i = 0; i < ARRAY_SIZE(rkvdec_coded_fmts); i++) {
++		if (rkvdec_is_capable(ctx, rkvdec_coded_fmts[i].capability) &&
++		    rkvdec_coded_fmts[i].fourcc == fourcc)
+ 			return &rkvdec_coded_fmts[i];
+ 	}
  
- struct rkvdec_ctrl_desc {
-@@ -63,6 +67,11 @@ vb2_to_rkvdec_decoded_buf(struct vb2_buffer *buf)
- 			    base.vb.vb2_buf);
+@@ -382,7 +405,7 @@ static void rkvdec_reset_coded_fmt(struct rkvdec_ctx *ctx)
+ {
+ 	struct v4l2_format *f = &ctx->coded_fmt;
+ 
+-	ctx->coded_fmt_desc = &rkvdec_coded_fmts[0];
++	ctx->coded_fmt_desc = rkvdec_enum_coded_fmt_desc(ctx, 0);
+ 	rkvdec_reset_fmt(ctx, f, ctx->coded_fmt_desc->fourcc);
+ 
+ 	f->type = V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE;
+@@ -396,21 +419,22 @@ static void rkvdec_reset_coded_fmt(struct rkvdec_ctx *ctx)
+ static int rkvdec_enum_framesizes(struct file *file, void *priv,
+ 				  struct v4l2_frmsizeenum *fsize)
+ {
+-	const struct rkvdec_coded_fmt_desc *fmt;
++	struct rkvdec_ctx *ctx = file_to_rkvdec_ctx(file);
++	const struct rkvdec_coded_fmt_desc *desc;
+ 
+ 	if (fsize->index != 0)
+ 		return -EINVAL;
+ 
+-	fmt = rkvdec_find_coded_fmt_desc(fsize->pixel_format);
+-	if (!fmt)
++	desc = rkvdec_find_coded_fmt_desc(ctx, fsize->pixel_format);
++	if (!desc)
+ 		return -EINVAL;
+ 
+ 	fsize->type = V4L2_FRMSIZE_TYPE_CONTINUOUS;
+ 	fsize->stepwise.min_width = 1;
+-	fsize->stepwise.max_width = fmt->frmsize.max_width;
++	fsize->stepwise.max_width = desc->frmsize.max_width;
+ 	fsize->stepwise.step_width = 1;
+ 	fsize->stepwise.min_height = 1;
+-	fsize->stepwise.max_height = fmt->frmsize.max_height;
++	fsize->stepwise.max_height = desc->frmsize.max_height;
+ 	fsize->stepwise.step_height = 1;
+ 
+ 	return 0;
+@@ -470,10 +494,10 @@ static int rkvdec_try_output_fmt(struct file *file, void *priv,
+ 	struct rkvdec_ctx *ctx = file_to_rkvdec_ctx(file);
+ 	const struct rkvdec_coded_fmt_desc *desc;
+ 
+-	desc = rkvdec_find_coded_fmt_desc(pix_mp->pixelformat);
++	desc = rkvdec_find_coded_fmt_desc(ctx, pix_mp->pixelformat);
+ 	if (!desc) {
+-		pix_mp->pixelformat = rkvdec_coded_fmts[0].fourcc;
+-		desc = &rkvdec_coded_fmts[0];
++		desc = rkvdec_enum_coded_fmt_desc(ctx, 0);
++		pix_mp->pixelformat = desc->fourcc;
+ 	}
+ 
+ 	v4l2_apply_frmsize_constraints(&pix_mp->width,
+@@ -550,7 +574,7 @@ static int rkvdec_s_output_fmt(struct file *file, void *priv,
+ 	if (ret)
+ 		return ret;
+ 
+-	desc = rkvdec_find_coded_fmt_desc(f->fmt.pix_mp.pixelformat);
++	desc = rkvdec_find_coded_fmt_desc(ctx, f->fmt.pix_mp.pixelformat);
+ 	if (!desc)
+ 		return -EINVAL;
+ 	ctx->coded_fmt_desc = desc;
+@@ -602,10 +626,14 @@ static int rkvdec_g_capture_fmt(struct file *file, void *priv,
+ static int rkvdec_enum_output_fmt(struct file *file, void *priv,
+ 				  struct v4l2_fmtdesc *f)
+ {
+-	if (f->index >= ARRAY_SIZE(rkvdec_coded_fmts))
++	struct rkvdec_ctx *ctx = file_to_rkvdec_ctx(file);
++	const struct rkvdec_coded_fmt_desc *desc;
++
++	desc = rkvdec_enum_coded_fmt_desc(ctx, f->index);
++	if (!desc)
+ 		return -EINVAL;
+ 
+-	f->pixelformat = rkvdec_coded_fmts[f->index].fourcc;
++	f->pixelformat = desc->fourcc;
+ 	return 0;
  }
  
-+struct rkvdec_variant {
-+	unsigned int num_regs;
-+	unsigned int capabilities;
-+};
-+
- struct rkvdec_coded_fmt_ops {
- 	int (*adjust_fmt)(struct rkvdec_ctx *ctx,
- 			  struct v4l2_format *f);
-@@ -98,6 +107,7 @@ struct rkvdec_coded_fmt_desc {
- 	unsigned int num_decoded_fmts;
- 	const struct rkvdec_decoded_fmt_desc *decoded_fmts;
- 	u32 subsystem_flags;
-+	unsigned int capability;
- };
+@@ -970,14 +998,17 @@ static int rkvdec_init_ctrls(struct rkvdec_ctx *ctx)
+ 	int ret;
  
- struct rkvdec_dev {
-@@ -111,6 +121,7 @@ struct rkvdec_dev {
- 	struct mutex vdev_lock; /* serializes ioctls */
- 	struct delayed_work watchdog_work;
- 	struct iommu_domain *empty_domain;
-+	const struct rkvdec_variant *variant;
- };
+ 	for (i = 0; i < ARRAY_SIZE(rkvdec_coded_fmts); i++)
+-		nctrls += rkvdec_coded_fmts[i].ctrls->num_ctrls;
++		if (rkvdec_is_capable(ctx, rkvdec_coded_fmts[i].capability))
++			nctrls += rkvdec_coded_fmts[i].ctrls->num_ctrls;
  
- struct rkvdec_ctx {
+ 	v4l2_ctrl_handler_init(&ctx->ctrl_hdl, nctrls);
+ 
+ 	for (i = 0; i < ARRAY_SIZE(rkvdec_coded_fmts); i++) {
+-		ret = rkvdec_add_ctrls(ctx, rkvdec_coded_fmts[i].ctrls);
+-		if (ret)
+-			goto err_free_handler;
++		if (rkvdec_is_capable(ctx, rkvdec_coded_fmts[i].capability)) {
++			ret = rkvdec_add_ctrls(ctx, rkvdec_coded_fmts[i].ctrls);
++			if (ret)
++				goto err_free_handler;
++		}
+ 	}
+ 
+ 	ret = v4l2_ctrl_handler_setup(&ctx->ctrl_hdl);
 -- 
 2.51.0
 
