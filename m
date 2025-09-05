@@ -4,39 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B46F1CAC581
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E38BCA1013
 	for <linux-rockchip@archiver.kernel.org>; Sat,  6 Sep 2025 00:10:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RXHZKjdNMLqnnMGNGfm45MLU8HUy3eqZ1jjBzuCWDqg=; b=yBBEX3W6+ThH47
-	E6XUAPc4LXVs4uTYZmvZaVCdLxJmgF3BPvn+453tpRiZOoifYWj6GgDBKRpIoLyoCPVDkd8ixgrIF
-	xp2WkToX2H3Tj1qDGfLBv1J4zTYy/bT4AiYI+/komur/WBrcarlAfrZY5t0HyHU6L37p3g/PmB+5q
-	Bx0k9xcaid5ssD8BwNvwoAaHG8wNcNJDtaW8pMjGsbeRe4KHzdUVn0g3+FfAFN1qP1qpoLXWpUvul
-	/8U9QBOVimaeJs3F8Ez+ZrvAgHIVzKaKT4HjEkNy9BwIOGCuTLPJ7TnaOe5nPkUAA6wQwH2H+Rob4
-	nJgaobB0HXWECcpazTTg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=tj6k1x8VPNRGojMOo6ZymleaBok0FmmdDXbsbwIp8s0=; b=wxg1XCyfRrHsHy
+	j9CPJjFi275TH+81xUs0dDXl9urbHY9195VglFNU6DSOy0NORv6zFV/rUoZE8SnIrYDuwkTcabWwd
+	br+bQvRJ9CHRf3ITU6mmLJ9Zr/3UzqAMAM1khKPfRlyWfQ4SwOaE1/gZ6mHRGF0seJqlRGnr55rIP
+	tJc/btS9oTa9jdGGqZKLXqhc+i/m7oFLnQ1WJxiBzGQlS3m7WjWC1iRyRdLk1Rb7gzZWCD4pekBvS
+	AJ+ortejX+sd/pfB6WaBndY8ym1j1EXN42NWe9DRsocXwEMicZZjN1gbGhZcwm3sHnJL5xJ15npXT
+	HMw2pDw7gN7mX5tgBBpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uugVJ-00000005R1g-0T2F;
-	Sat, 06 Sep 2025 00:10:05 +0000
+	id 1uugVH-00000005R06-1rpF;
+	Sat, 06 Sep 2025 00:10:03 +0000
 Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uuZAb-000000033tO-0sgh
+	id 1uuZAP-000000033nG-3eVb
 	for linux-rockchip@lists.infradead.org;
-	Fri, 05 Sep 2025 16:20:14 +0000
+	Fri, 05 Sep 2025 16:20:04 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
- Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
- t=1757089212; bh=jsQ9JGf1qPemLxXlWU5ctSTecIqZzqL5Gbd4uM4ZRNc=;
- b=Ub2+QTRthJjD0i0GpLALQeEhI2wofDXFqKyMyZUS6BX72MK+1dfucDIUOP9hn+wKMrG2QTdUm
- FbxawHx7YLex9cibNGQWtZXGjJrJsXrolZJ66Op+ir637sN6VnfTgnO+hySfX5UDaRcYFnntaYm
- xbN56MFgIkSalS/IM00GzpVdLucMuf3Q6Uc8wrlIrAooHNGsajCD33M3QsXZD/0cmY06bphxL2B
- 6FRZtoLttmg2NmETWp/Ou522KlNGqA6ddMj7o8TUo1hpY1AYgySFKuW5e/GzrrCV8HIWI9it8iR
- iuvX8B0ghcvdJrraqOwI0sPPIYHomxaFbTDm9wji3qDA==
-X-Forward-Email-ID: 68bb0db890d039a4fd84d604
+ h=Content-Transfer-Encoding: MIME-Version: Message-ID: Date: Subject: Cc:
+ To: From; q=dns/txt; s=fe-e1b5cab7be; t=1757089199;
+ bh=580JK8pBUGUA9xO/XGo6J8Ye4HkJMvAa34FbmQGoQ0M=;
+ b=csXw8+tKyn2CE5b0Jv14q0zNQcy0H2YOCZ6ub9PDZtdoGN8g54698H7jeo/epl9UgbXPgsA4b
+ YBN/DcEkGB1/mduBG8zLHbnjQJ/U8ubkwTX8UZMo6z1r4NS4Hajq9mBdOe7x1EeCFdhm9a8Zv6Q
+ mb2fWxJGlW8KPw2fLPNlOMnplWZyfGl0pYPt4LZ9gWyfXe29cSMhR/FlQY33T45CdUiAmvY5xtX
+ O2/KJ3wRsbLc4/b3/41jmD05mPv7zyz808qHH3SfqruATTORmdiIfTqE8kqwdkLl6xxwxB5JMNP
+ jf03eB30PlXf2kiAvNsOpWbfDlcn8dZTICKG+atvLAog==
+X-Forward-Email-ID: 68bb0da490d039a4fd84d577
 X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
  149.28.215.223
 X-Forward-Email-Version: 1.2.13
@@ -47,8 +47,7 @@ X-Report-Abuse-To: abuse@forwardemail.net
 From: Jonas Karlman <jonas@kwiboo.se>
 To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
 	Detlev Casanova <detlev.casanova@collabora.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>
+	Mauro Carvalho Chehab <mchehab@kernel.org>
 Cc: Alex Bee <knaerzche@gmail.com>,
 	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
 	linux-media@vger.kernel.org,
@@ -57,16 +56,14 @@ Cc: Alex Bee <knaerzche@gmail.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH v3 3/7] media: rkvdec: Implement capability filtering
-Date: Fri,  5 Sep 2025 16:19:21 +0000
-Message-ID: <20250905161942.3759717-4-jonas@kwiboo.se>
+Subject: [PATCH v3 0/7] media: rkvdec: Add HEVC backend
+Date: Fri,  5 Sep 2025 16:19:18 +0000
+Message-ID: <20250905161942.3759717-1-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20250905161942.3759717-1-jonas@kwiboo.se>
-References: <20250905161942.3759717-1-jonas@kwiboo.se>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250905_092013_293225_734CE5A4 
-X-CRM114-Status: GOOD (  16.79  )
+X-CRM114-CacheID: sfid-20250905_092001_950605_6BE8A7F0 
+X-CRM114-Status: GOOD (  17.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,166 +80,122 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add filtering of coded formats and controls depending on a variant
-capabilities.
+This series add a HEVC backend to the Rockchip Video Decoder driver.
 
-Signed-off-by: Alex Bee <knaerzche@gmail.com>
-Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
----
+With the dependent H.264 High 10 and 4:2:2 profile support series
+finally merged there is finally time to send a v2 with minor changes and
+a suggested code style fix of this series. v1 of this series has been
+fully functional up until recent unstaging of the rkvdec driver.
+
+A version of this HEVC backend has been in use by the LibreELEC distro
+for the past 5+ years [1]. It was initially created based on a copy of
+the H264 backend, unstable HEVC uAPI controls and a cabac table + scaling
+matrix functions shamelessly copied 1:1 from the Rockchip mpp library.
+
+It has since then been extended to use the stable HEVC uAPI controls and
+improved opon e.g. to include support for rk3288 and fix decoding issues
+by Alex Bee and Nicolas Dufresne.
+
+The version submitted in this series is based on the code currently used
+by the LibreELEC distro, excluding hard/soft reset, and with cabac table
+and scaling matrix functions picked from Sebastian Fricke prior series
+to add a HEVC backend [2].
+
+Big thanks to Alex Bee, Nicolas Dufresne and Sebastian Fricke for making
+this series possible!
+
+Patch 1 add the new HEVC backend.
+Patch 2-3 add variants support to the driver.
+Patch 4 add support for a rk3288 variant.
+Patch 5 add a rk3328 variant to work around hw quirks.
+Patch 6-7 add device tree node for rk3288.
+
+This was tested on a ROCK Pi 4 (RK3399) and Rock64 (RK3328):
+
+  v4l2-compliance 1.30.1, 64 bits, 64-bit time_t
+  ...
+  Total for rkvdec device /dev/video1: 49, Succeeded: 49, Failed: 0, Warnings: 0
+
+  Running test suite JCT-VC-HEVC_V1 with decoder FFmpeg-H.265-v4l2request
+  ...
+  Ran 137/147 tests successfully
+
+  Running test suite JCT-VC-MV-HEVC with decoder FFmpeg-H.265-v4l2request
+  ...
+  Ran 9/9 tests successfully
+
+And on a TinkerBoard (RK3288):
+
+  v4l2-compliance 1.30.1, 32 bits, 32-bit time_t
+  ...
+  Total for rkvdec device /dev/video3: 49, Succeeded: 49, Failed: 0, Warnings: 0
+
+  Running test suite JCT-VC-HEVC_V1 with decoder FFmpeg-H.265-v4l2request
+  ...
+  Ran 137/147 tests successfully
+
+  Running test suite JCT-VC-MV-HEVC with decoder FFmpeg-H.265-v4l2request
+  ...
+  Ran 9/9 tests successfully
+
+The WPP_x_ericsson tests from test suite JCT-VC-HEVC_V1 has been showing
+a mix of both Success and/or Fail result for FFmpeg-H.265-v4l2request.
+
+Full summary of fluster run can be found at [3].
+
+Please note that there is a known issue with concurrent decoding,
+decoding errors in one decode session may affect a separate session.
+The only known mitigation to this is to pause decoding for some time
+and/or do a full HW reset, something to handle in future series.
+
 Changes in v3:
 - Change to use file_to_rkvdec_ctx()
-- Use capabilities from rkvdec_variant
-- Collect r-b tag
+- Rename assemble_hw_rps to assemble_sw_rps
+- Use a reference to rkvdec_variant instead of copying capabilities and
+  quirks to rkvdec_dev
+- Add num_regs field to rkvdec_variant, currently not used for anything
+- Add and use rkvdec_quirks_disable_qos() helper to apply qos quirk
+- Collect t-b and r-b tags
+Link to v2: https://lore.kernel.org/linux-media/20250810212454.3237486-1-jonas@kwiboo.se
 
 Changes in v2:
+- Rabase after h264 high10/422 merge and unstaging of rkvdec driver
+- Use new_value in transpose_and_flatten_matrices()
+- Add NULL check for ctrl->new_elems in rkvdec_hevc_run_preamble()
+- Set RKVDEC_WR_DDR_ALIGN_EN for RK3328
 - Adjust code style in rkvdec_enum_coded_fmt_desc()
----
- .../media/platform/rockchip/rkvdec/rkvdec.c   | 67 ++++++++++++++-----
- 1 file changed, 49 insertions(+), 18 deletions(-)
+- Collect a-b tag
+- Drop merged vdec node reg size patches
+Link to v1: https://lore.kernel.org/linux-media/20231105233630.3927502-1-jonas@kwiboo.se
 
-diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.c b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-index daf6d9ab2d1d..088ddfadf995 100644
---- a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-+++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-@@ -365,13 +365,36 @@ static const struct rkvdec_coded_fmt_desc rkvdec_coded_fmts[] = {
- 	}
- };
- 
-+static bool rkvdec_is_capable(struct rkvdec_ctx *ctx, unsigned int capability)
-+{
-+	return (ctx->dev->variant->capabilities & capability) == capability;
-+}
-+
- static const struct rkvdec_coded_fmt_desc *
--rkvdec_find_coded_fmt_desc(u32 fourcc)
-+rkvdec_enum_coded_fmt_desc(struct rkvdec_ctx *ctx, int index)
- {
-+	int fmt_idx = -1;
- 	unsigned int i;
- 
- 	for (i = 0; i < ARRAY_SIZE(rkvdec_coded_fmts); i++) {
--		if (rkvdec_coded_fmts[i].fourcc == fourcc)
-+		if (!rkvdec_is_capable(ctx, rkvdec_coded_fmts[i].capability))
-+			continue;
-+		fmt_idx++;
-+		if (index == fmt_idx)
-+			return &rkvdec_coded_fmts[i];
-+	}
-+
-+	return NULL;
-+}
-+
-+static const struct rkvdec_coded_fmt_desc *
-+rkvdec_find_coded_fmt_desc(struct rkvdec_ctx *ctx, u32 fourcc)
-+{
-+	unsigned int i;
-+
-+	for (i = 0; i < ARRAY_SIZE(rkvdec_coded_fmts); i++) {
-+		if (rkvdec_is_capable(ctx, rkvdec_coded_fmts[i].capability) &&
-+		    rkvdec_coded_fmts[i].fourcc == fourcc)
- 			return &rkvdec_coded_fmts[i];
- 	}
- 
-@@ -382,7 +405,7 @@ static void rkvdec_reset_coded_fmt(struct rkvdec_ctx *ctx)
- {
- 	struct v4l2_format *f = &ctx->coded_fmt;
- 
--	ctx->coded_fmt_desc = &rkvdec_coded_fmts[0];
-+	ctx->coded_fmt_desc = rkvdec_enum_coded_fmt_desc(ctx, 0);
- 	rkvdec_reset_fmt(ctx, f, ctx->coded_fmt_desc->fourcc);
- 
- 	f->type = V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE;
-@@ -396,21 +419,22 @@ static void rkvdec_reset_coded_fmt(struct rkvdec_ctx *ctx)
- static int rkvdec_enum_framesizes(struct file *file, void *priv,
- 				  struct v4l2_frmsizeenum *fsize)
- {
--	const struct rkvdec_coded_fmt_desc *fmt;
-+	struct rkvdec_ctx *ctx = file_to_rkvdec_ctx(file);
-+	const struct rkvdec_coded_fmt_desc *desc;
- 
- 	if (fsize->index != 0)
- 		return -EINVAL;
- 
--	fmt = rkvdec_find_coded_fmt_desc(fsize->pixel_format);
--	if (!fmt)
-+	desc = rkvdec_find_coded_fmt_desc(ctx, fsize->pixel_format);
-+	if (!desc)
- 		return -EINVAL;
- 
- 	fsize->type = V4L2_FRMSIZE_TYPE_CONTINUOUS;
- 	fsize->stepwise.min_width = 1;
--	fsize->stepwise.max_width = fmt->frmsize.max_width;
-+	fsize->stepwise.max_width = desc->frmsize.max_width;
- 	fsize->stepwise.step_width = 1;
- 	fsize->stepwise.min_height = 1;
--	fsize->stepwise.max_height = fmt->frmsize.max_height;
-+	fsize->stepwise.max_height = desc->frmsize.max_height;
- 	fsize->stepwise.step_height = 1;
- 
- 	return 0;
-@@ -470,10 +494,10 @@ static int rkvdec_try_output_fmt(struct file *file, void *priv,
- 	struct rkvdec_ctx *ctx = file_to_rkvdec_ctx(file);
- 	const struct rkvdec_coded_fmt_desc *desc;
- 
--	desc = rkvdec_find_coded_fmt_desc(pix_mp->pixelformat);
-+	desc = rkvdec_find_coded_fmt_desc(ctx, pix_mp->pixelformat);
- 	if (!desc) {
--		pix_mp->pixelformat = rkvdec_coded_fmts[0].fourcc;
--		desc = &rkvdec_coded_fmts[0];
-+		desc = rkvdec_enum_coded_fmt_desc(ctx, 0);
-+		pix_mp->pixelformat = desc->fourcc;
- 	}
- 
- 	v4l2_apply_frmsize_constraints(&pix_mp->width,
-@@ -550,7 +574,7 @@ static int rkvdec_s_output_fmt(struct file *file, void *priv,
- 	if (ret)
- 		return ret;
- 
--	desc = rkvdec_find_coded_fmt_desc(f->fmt.pix_mp.pixelformat);
-+	desc = rkvdec_find_coded_fmt_desc(ctx, f->fmt.pix_mp.pixelformat);
- 	if (!desc)
- 		return -EINVAL;
- 	ctx->coded_fmt_desc = desc;
-@@ -602,10 +626,14 @@ static int rkvdec_g_capture_fmt(struct file *file, void *priv,
- static int rkvdec_enum_output_fmt(struct file *file, void *priv,
- 				  struct v4l2_fmtdesc *f)
- {
--	if (f->index >= ARRAY_SIZE(rkvdec_coded_fmts))
-+	struct rkvdec_ctx *ctx = file_to_rkvdec_ctx(file);
-+	const struct rkvdec_coded_fmt_desc *desc;
-+
-+	desc = rkvdec_enum_coded_fmt_desc(ctx, f->index);
-+	if (!desc)
- 		return -EINVAL;
- 
--	f->pixelformat = rkvdec_coded_fmts[f->index].fourcc;
-+	f->pixelformat = desc->fourcc;
- 	return 0;
- }
- 
-@@ -970,14 +998,17 @@ static int rkvdec_init_ctrls(struct rkvdec_ctx *ctx)
- 	int ret;
- 
- 	for (i = 0; i < ARRAY_SIZE(rkvdec_coded_fmts); i++)
--		nctrls += rkvdec_coded_fmts[i].ctrls->num_ctrls;
-+		if (rkvdec_is_capable(ctx, rkvdec_coded_fmts[i].capability))
-+			nctrls += rkvdec_coded_fmts[i].ctrls->num_ctrls;
- 
- 	v4l2_ctrl_handler_init(&ctx->ctrl_hdl, nctrls);
- 
- 	for (i = 0; i < ARRAY_SIZE(rkvdec_coded_fmts); i++) {
--		ret = rkvdec_add_ctrls(ctx, rkvdec_coded_fmts[i].ctrls);
--		if (ret)
--			goto err_free_handler;
-+		if (rkvdec_is_capable(ctx, rkvdec_coded_fmts[i].capability)) {
-+			ret = rkvdec_add_ctrls(ctx, rkvdec_coded_fmts[i].ctrls);
-+			if (ret)
-+				goto err_free_handler;
-+		}
- 	}
- 
- 	ret = v4l2_ctrl_handler_setup(&ctx->ctrl_hdl);
+[1] https://github.com/LibreELEC/LibreELEC.tv/blob/master/projects/Rockchip/patches/linux/default/linux-2000-v4l2-wip-rkvdec-hevc.patch
+[2] https://lore.kernel.org/linux-media/20230101-patch-series-v2-6-2-rc1-v2-0-fa1897efac14@collabora.com/
+[3] https://gist.github.com/Kwiboo/0ea22df1c9c3f3a48479d3f7ec28169d
+
+Alex Bee (4):
+  media: rkvdec: Add variants support
+  media: rkvdec: Add RK3288 variant
+  media: rkvdec: Disable QoS for HEVC and VP9 on RK3328
+  ARM: dts: rockchip: Add vdec node for RK3288
+
+Jonas Karlman (3):
+  media: rkvdec: Add HEVC backend
+  media: rkvdec: Implement capability filtering
+  media: dt-bindings: rockchip,vdec: Add RK3288 compatible
+
+ .../bindings/media/rockchip,vdec.yaml         |    1 +
+ arch/arm/boot/dts/rockchip/rk3288.dtsi        |   17 +-
+ .../media/platform/rockchip/rkvdec/Makefile   |    2 +-
+ .../rockchip/rkvdec/rkvdec-hevc-data.c        | 1848 +++++++++++++++++
+ .../platform/rockchip/rkvdec/rkvdec-hevc.c    |  820 ++++++++
+ .../platform/rockchip/rkvdec/rkvdec-regs.h    |    4 +
+ .../platform/rockchip/rkvdec/rkvdec-vp9.c     |    4 +
+ .../media/platform/rockchip/rkvdec/rkvdec.c   |  198 +-
+ .../media/platform/rockchip/rkvdec/rkvdec.h   |   17 +
+ 9 files changed, 2890 insertions(+), 21 deletions(-)
+ create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-hevc-data.c
+ create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-hevc.c
+
 -- 
 2.51.0
 
