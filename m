@@ -4,65 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31B33CA1012
-	for <linux-rockchip@archiver.kernel.org>; Sat,  6 Sep 2025 14:07:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 773BCCA1002
+	for <linux-rockchip@archiver.kernel.org>; Sat,  6 Sep 2025 14:24:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:References:To:From:Subject:Cc:Message-Id:Date:Mime-Version:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=c4cNuT/hJlWi3JcUtHojQ9SpJBR/ySO5JVnanQk/zP0=; b=ZllWFBV9j7eFerADi6+3Z/6OhQ
-	75Wzb+Qf36j5isJ0zJcG9ZTS8a/zqr4WelMxb4xRbb9AEX1s5un2B0BCH8aS/ZIq3te8bVaOLf9tM
-	rRjwo8AOuYch7jfyUHDZXpQQ1eGFqz0O/+JAbxbxwXNs0jWt2GZJEc1/auPQxsG7gBq0jGlCkUkXb
-	c5NGDPStBTF8WpxrdruvrL8vqBkgBfRHzSHSwUWQAuKmNRCSs+K6b3AhN31xzfMDysyVg+IwO+n7I
-	a0sh2UX2cHfDXWdMEBzI0nG7ZJg8BlLUOicZvoyjcsekiBNv1yhF7pqDBpigpfWTMCTnX+I9U3BJI
-	JA6MI+MA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=k7cdjCPL0kanidYs0zM/BfSNpBgI1sCqJcXqf+F3/fQ=; b=YQfO0eiquQIFyz
+	icM+w0ADncCx32WrDawIUd4K3KNXGVGnF+p4DzFr8CggfIH8pDjE4UTpMyMTQ8oS6PWFfRZ8gT464
+	nW7wej752GqQ0Iwz5Tm4dta70HMAaFFXTD/YrZpKpNmijSU7Ub/AhuW4/sv/Rr4xUbb77q6MOaHZx
+	gm/xQ0uTMmRGI2hWUtUuJHpfYUJIA3a1uewsp/Q4YtpcOY1NX3D8PYNSc0p91OM0aW+u5y9xvKxBw
+	pgfnm4U8SF7BZUkKLJ0f3u2lTD2qNbHPaiunGOTnQWtA/SHrTgUIr4yjwHTTh/HyzVJUJlZv7B6UK
+	0dLxiVtBEHPu3fSH+HDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uutZr-00000007tDU-3rnW;
-	Sat, 06 Sep 2025 14:07:39 +0000
-Received: from out-171.mta1.migadu.com ([2001:41d0:203:375::ab])
+	id 1uutqU-00000007uin-0xwE;
+	Sat, 06 Sep 2025 14:24:50 +0000
+Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uutQo-00000007ruM-2xN1
-	for linux-rockchip@lists.infradead.org;
-	Sat, 06 Sep 2025 13:58:20 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1757167085;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=+XL9HIJO3UGo5wyNjZG9W2dDyTd3zOWpByElnpm1c1Y=;
-	b=F6w2aN5IOUHo91/K1jt/wOXJfr/PMEdWIGwoITPTiw+jwqaCSgnBV9BQs6GyT7xLKcUuI7
-	yZGYXtSNBSFs62GiylNXChPHb6MWLG5KDSTsR6G5iWCfd0X5JGptu9qJ5ped+2wgKTgdZc
-	pysWSw0Nad9+HUTNutrywXHTEZy9MLEkyEsxuPWTxRQyQQUibV5pNyEReqaodtOo2HkOP9
-	1DmU/D8elEgK28LaxIt6XKh8gg8erTYt2Vp9wqXBQxt7CfowyKVjtApaBvwKAS5x4ysJ8v
-	fNupDxM6iHIR3RrCUO4rk6JJMknJfXLU+k4O3fwpJxwiSKxhkNnRs5++6nG1Mw==
-Date: Sat, 06 Sep 2025 15:57:55 +0200
-Message-Id: <DCLRQQH0F49Q.2OUP59P4VV91O@cknow.org>
-Cc: <heiko@sntech.de>, <robh@kernel.org>, <krzk+dt@kernel.org>,
- <conor+dt@kernel.org>, <devicetree@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>,
- <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <linux-clk@vger.kernel.org>
-Subject: Re: [PATCH v1 2/4] dt-bindings: clock: rk3368: add CLK_I2S_8CH_PRE
- and CLK_I2S_8CH_FRAC
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <didi.debian@cknow.org>
-To: =?utf-8?q?=E6=9D=8E=E7=BB=B4=E8=B1=AA?= <cn.liweihao@gmail.com>,
- "Krzysztof Kozlowski" <krzk@kernel.org>
-References: <20250905132328.9859-1-cn.liweihao@gmail.com>
- <20250905132328.9859-3-cn.liweihao@gmail.com>
- <707aad1d-fcdb-4c66-8d96-41cf1a1b02ce@kernel.org>
- <CAPEOAkRTVtKBsmiGTbKOCar0oNS-C3dRXqdpuowroRPH1bFS7g@mail.gmail.com>
- <58b638c8-b27e-49a6-b79e-f078135c575b@kernel.org>
- <CAPEOAkSpEzVtUqyUJQbDmbmPOjORnAfuehhvo1qqZgAAeY=ZVA@mail.gmail.com>
-In-Reply-To: <CAPEOAkSpEzVtUqyUJQbDmbmPOjORnAfuehhvo1qqZgAAeY=ZVA@mail.gmail.com>
-X-Migadu-Flow: FLOW_OUT
+	id 1uutnh-00000007uWU-0P4n;
+	Sat, 06 Sep 2025 14:21:58 +0000
+Received: by mail-pg1-x533.google.com with SMTP id 41be03b00d2f7-b4c6fee41c9so2344597a12.1;
+        Sat, 06 Sep 2025 07:21:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1757168516; x=1757773316; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=BPOBPfaBOIERCGNPLoOShLjN/VoHaXMpNeHByEOlGTM=;
+        b=VBIAZ88cQZ4KMS6lWQPzcm+IyXNwgnUKUm5c6Ixen98XOSQ9/bqbPm7H7XZiCgFh/i
+         IbAO3uaEiPPyjDmaV0sZ8YLA3Q45btjpAwIwqCJjPewyOE3X94pmgmrzhHq1lous8aJ2
+         WXwOQo8ZEv8WbVyi0CNeqce8aKr0NBG1DBYYhbhIjyTnIYzPdiwowrfkqikFagHC6HwY
+         XdaxKeMIXddRnCkrMQEayiQPwIgOyowT7gfiENnv320fZ7fA9rvX3h2MiGTM9a5TzdKR
+         h12ZEI+2dGQ344DT7tbshv45u0o3EstgD51a1tE4+5g5mBW1BdcUy2wccJ31SsqkvONQ
+         4KIg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1757168516; x=1757773316;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=BPOBPfaBOIERCGNPLoOShLjN/VoHaXMpNeHByEOlGTM=;
+        b=YVw7Yv4DefBSfu2YnVsV54hrwXietNHqmwBAfy463POG1tnq4DmA26/kEFV2QzQMev
+         L9OYCE23uHN+kG03n+23XZTjcOw9QpTMlm53SNs4MdQhkudats6e68AFZhDJ1dqHc0dr
+         zxydBBONaDLpXDfK8UekakwY14zlNaTOciFk5IVUKruYWqitdWOw4NrL7TVv1/ewnVww
+         cHVb1vbZZjLHbZB5FxSEkjtMnOPcS4Z9LtTWwGKeO6HVXFeFL6eNqKHmuX8eemz7SRrh
+         fKyQ4hijF4Y/QA/TYZy1kOU4n4Df7VBc07O2qUSC54eT1+2XG0WOIqnXDL86rG/YED2W
+         XD6w==
+X-Forwarded-Encrypted: i=1; AJvYcCUUIV3ghGm/ChBThqr2aasm5wSt461woRQGqT/XSvqbrTCF7BRssRXwTHGVX0PLcDm48WCTtD7gQjthXAqvDQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyjYwrWQXFzdxlJ8w0ZGtWX2QuZqIOMSA5uLaXan3YiIg3H+7ga
+	spdEb1uBDh2CZ/lX/bDesfGWZmUPnZ87werx0F0kx37UZDdL8hds4/zB
+X-Gm-Gg: ASbGncuwY2EmfkNO0jSFCjrJOYV3+IVcT6qh5tsMmbN3VfyPrFUs83tDwMQSVAYEY6G
+	SzLzbsiukIM+ka8xFIQV9x25STFv7dBfwW6CkHjd8lR3n1K5H8bAJ6i/53O9u+4f+Ngn2UL5qRb
+	jKrFc/hConDHxD+F0TluNgJubcHroGYOyz9FMhRb/EFtdcLB+JnDxRfpW6R6IRrva/iW4tlhbO0
+	ugTOfb2RFCYyWn0fQwCnAml+/4lznh8NmEVY9ONJuAEznIoJuKJiv8zcZCjpmJP6rfpsGx5zAYq
+	97/anRX0gf0M784acnVXbpqjiUUfDEN2q8O6DIQfylCpDkhpjaA9z1ZlJ0B2ijDAnfqlJc4muMU
+	tapGjrG4GOxewv5/KphsjmDk9Ue7krluM9LnwTOkPoQ==
+X-Google-Smtp-Source: AGHT+IFkrP5dlF9HUPo7WpPFbiPuovQaEgyUiSeWaBKpepMZeU4dQipBUYLMjANFy1meGzIQ6VRGqQ==
+X-Received: by 2002:a17:902:f70a:b0:248:bae3:ecfb with SMTP id d9443c01a7336-251738cd029mr34257925ad.59.1757168516069;
+        Sat, 06 Sep 2025 07:21:56 -0700 (PDT)
+Received: from localhost.localdomain ([240e:3a6:1c4b:13c0:db95:4539:1490:64d2])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-24b14206426sm128267195ad.17.2025.09.06.07.21.51
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 06 Sep 2025 07:21:55 -0700 (PDT)
+From: WeiHao Li <cn.liweihao@gmail.com>
+To: heiko@sntech.de
+Cc: linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	WeiHao Li <cn.liweihao@gmail.com>
+Subject: [PATCH v1 1/1] soc: rockchip: grf: Set pwm2/xin32k pad default to xin32k for rk3368
+Date: Sat,  6 Sep 2025 22:21:25 +0800
+Message-ID: <20250906142125.7602-1-cn.liweihao@gmail.com>
+X-Mailer: git-send-email 2.47.2
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250906_065818_880511_9B6F72AB 
-X-CRM114-Status: GOOD (  15.01  )
+X-CRM114-CacheID: sfid-20250906_072157_157321_3590FE4B 
+X-CRM114-Status: GOOD (  10.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,105 +92,64 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8978628762834525633=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============8978628762834525633==
-Content-Type: multipart/signed;
- boundary=7bb96b1748a067e53456e99e209bf191ed42469d49852d8d3d12a1592bb7;
- micalg=pgp-sha512; protocol="application/pgp-signature"
+PWM2 and xin32k share the same pad, but some peripheral need to xin32k
+clock to run properly, such as tsadc. I have observed that this pad is
+used as xin32k by default on some existing board [1], so it maybe more
+appropriate to set it to xin32k by default.
 
---7bb96b1748a067e53456e99e209bf191ed42469d49852d8d3d12a1592bb7
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
+I also tested it on another rk3368 based board [2], without this adjust,
+tsadc does not work properly.
 
-On Sat Sep 6, 2025 at 3:34 PM CEST, =E6=9D=8E=E7=BB=B4=E8=B1=AA wrote:
-> Krzysztof Kozlowski <krzk@kernel.org> =E4=BA=8E2025=E5=B9=B49=E6=9C=886=
-=E6=97=A5=E5=91=A8=E5=85=AD 15:21=E5=86=99=E9=81=93=EF=BC=9A
->> On 06/09/2025 03:34, =E6=9D=8E=E7=BB=B4=E8=B1=AA wrote:
->> > Krzysztof Kozlowski <krzk@kernel.org> =E4=BA=8E2025=E5=B9=B49=E6=9C=88=
-5=E6=97=A5=E5=91=A8=E4=BA=94 22:13=E5=86=99=E9=81=93=EF=BC=9A
->> >> On 05/09/2025 15:23, WeiHao Li wrote:
->> >>> We need a clock id to assign clock parent when use i2s 8ch as audio
->> >>> device, CLK_I2S_8CH_FRAC should be CLK_I2S_8CH_PRE parent so we can =
-get
->> >>> frequency we want.
->> >>>
->> >>> Signed-off-by: WeiHao Li <cn.liweihao@gmail.com>
->> >>> ---
->> >>>  include/dt-bindings/clock/rk3368-cru.h | 3 +++
->> >>>  1 file changed, 3 insertions(+)
->> >>>
->> >>> diff --git a/include/dt-bindings/clock/rk3368-cru.h b/include/dt-bin=
-dings/clock/rk3368-cru.h
->> >>> index b951e29069..795e721957 100644
->> >>> --- a/include/dt-bindings/clock/rk3368-cru.h
->> >>> +++ b/include/dt-bindings/clock/rk3368-cru.h
->> >>> @@ -183,6 +183,9 @@
->> >>>  #define HCLK_BUS             477
->> >>>  #define HCLK_PERI            478
->> >>>
->> >>> +#define CLK_I2S_8CH_PRE              500
->> >>
->> >> 479
->> >>
->> >>> +#define CLK_I2S_8CH_FRAC     501
->> >>
->> >> 480, no?
->> >>
->> >
->> > Neither of these clocks belong to the previous grouping in terms of
->> > type, so I chose to start with a new integer id here.
->>
->> I don't know what is "previous grouping" here, but IDs are abstract and
->> are incremented by 1.
->
-> In the current kernel code, the RK3368 clock IDs are categorized by
-> SCLK, ACLK, PCLK, and HCLK.
+[1] https://rockchip.fr/geekbox/Geekbox_V1.23.pdf
+[2] https://ieiao.github.io/wiki/embedded-dev/rockchip/rk3368
 
-Maybe this helps understanding the discrepancy:
+Signed-off-by: WeiHao Li <cn.liweihao@gmail.com>
+---
+ drivers/soc/rockchip/grf.c | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
-Starting with the rk3588 series, clock IDs are in the 'clock' binding
-dir and named "rockchip,rk<SoC-id>-cru.h" and are numbered sequentially
-with no gaps. And the reset IDs are in the 'reset' binding dir with the
-same filename pattern.
+diff --git a/drivers/soc/rockchip/grf.c b/drivers/soc/rockchip/grf.c
+index 344870da76..c0c2ec1296 100644
+--- a/drivers/soc/rockchip/grf.c
++++ b/drivers/soc/rockchip/grf.c
+@@ -98,6 +98,17 @@ static const struct rockchip_grf_info rk3368_grf __initconst = {
+ 	.num_values = ARRAY_SIZE(rk3368_defaults),
+ };
+ 
++#define RK3368_PMUGRF_SOC_CON0		0x100
++
++static const struct rockchip_grf_value rk3368_pmugrf_defaults[] __initconst = {
++	{ "pwm2 select", RK3368_PMUGRF_SOC_CON0, FIELD_PREP_WM16_CONST(BIT(7), 0) },
++};
++
++static const struct rockchip_grf_info rk3368_pmugrf __initconst = {
++	.values = rk3368_pmugrf_defaults,
++	.num_values = ARRAY_SIZE(rk3368_pmugrf_defaults),
++};
++
+ #define RK3399_GRF_SOC_CON7		0xe21c
+ 
+ static const struct rockchip_grf_value rk3399_defaults[] __initconst = {
+@@ -175,6 +186,9 @@ static const struct of_device_id rockchip_grf_dt_match[] __initconst = {
+ 	}, {
+ 		.compatible = "rockchip,rk3368-grf",
+ 		.data = (void *)&rk3368_grf,
++	}, {
++		.compatible = "rockchip,rk3368-pmugrf",
++		.data = (void *)&rk3368_pmugrf,
+ 	}, {
+ 		.compatible = "rockchip,rk3399-grf",
+ 		.data = (void *)&rk3399_grf,
+-- 
+2.47.2
 
-With older SoC series, including rk3568*, both the clock and reset IDs
-are in "clock/rk<SoC-id>-cru.h" where they are NOT sequentially
-numbered and thus jumps in the numbering is not out of place there.
-
-HTH,
-  Diederik
-
-*) I have a local commit which moves the reset IDs to
-"reset/rockchip,rk3568-cru.h", but I don't know how to do/fix the
-numbering, so I never submitted it.
-
---7bb96b1748a067e53456e99e209bf191ed42469d49852d8d3d12a1592bb7
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaLw95gAKCRDXblvOeH7b
-bvNkAP99WIABmRv9YSzmveKgHvYKLFoQLUV0tMVC03ofrDorHQEA2TFlad1NNFB5
-V10lG7EyfJsr5FC/E6J50SW4/JODEQs=
-=GF08
------END PGP SIGNATURE-----
-
---7bb96b1748a067e53456e99e209bf191ed42469d49852d8d3d12a1592bb7--
-
-
---===============8978628762834525633==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============8978628762834525633==--
-
