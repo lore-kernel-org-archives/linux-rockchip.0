@@ -4,90 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72F30CA1012
-	for <linux-rockchip@archiver.kernel.org>; Sat,  6 Sep 2025 11:26:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC703CA1012
+	for <linux-rockchip@archiver.kernel.org>; Sat,  6 Sep 2025 11:37:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ztw7Sg21PmB+3CetDKGX5MewDZSmjW3ZG953k13a8eo=; b=YVLJqyBki5sDuE
-	1rtQ8MYEB+L/+8oVqx6n775FEwhVVHLnMnCeDrX9MQv4VVEps2r1KTbCYIfu9zF80JptvcRJfma0/
-	kkl+m1+zotzqAk1QNnFtB0r6xhyvnC4ZHlwXM+6J/LrQ6ndgKXvMG9vblnO8kJHlxYZuhqF2h77F+
-	Q7cy5+0lHv9PKhJiQEVPll1pnXzzlijCa0wGt/45sQEh8nJKKPn3LEhdjMWmNB5LRA5FjCFKeHBmf
-	uHcXM2OeCAJ9ylJOIe6AmpbbzVHT6ShbXfEiKzMryxyb4ormviU+jV0WCZV4JH3iu1AkCUF5pYfIn
-	2QYwzImKOSjBNNqypteQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:References:To:From:Subject:Cc:Message-Id:Date:Mime-Version:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=I0YGtWRotL8AHKiruFLqjpHZK2yht0EJLO0lJM5NArY=; b=YTiYycsO34w4cj9C0DV6fJVWGU
+	n4JRt2tA/b2ymFpcUw49iCw40bCh/sZucoxFIMYyN/wIDdGTXNgFF0G3cODfF7JH/8NZe28pLg9fL
+	x20QFNGAZ1mCXdz91/GrLuQDIIxY0Iw4Ip1Vtxs8x2bflWZg8FFhlLOexGoMtw0HR53UywM7QPskS
+	cWCbf0FFdAsrxKi4k8cj95MtMF2kyyxaM6dGdEeczVyFhh3LtiGtr6eNuBJaXSZ6X1T/b2dT2VQ4y
+	VTrO4IB1bwT/4jt3DLKA0+ljnSYaoXnynZuqYkHWt02H5hIsYg+IBCF8+GKLJR2arRaGGFe3wX75q
+	gysZii/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uur3o-00000007g68-2XHS;
-	Sat, 06 Sep 2025 11:26:24 +0000
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+	id 1uurE7-00000007hGW-1JjG;
+	Sat, 06 Sep 2025 11:37:03 +0000
+Received: from out-174.mta0.migadu.com ([2001:41d0:1004:224b::ae])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uuqyD-00000007ek9-1dUd;
-	Sat, 06 Sep 2025 11:20:38 +0000
-Received: by mail-wm1-x333.google.com with SMTP id 5b1f17b1804b1-45dddfaeb21so3251825e9.1;
-        Sat, 06 Sep 2025 04:20:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1757157636; x=1757762436; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=sKcui5kqlHLRoGonq2UNIvF4/eUOOrD4c41D8AoISsY=;
-        b=F1TDamLsGmADstCKMqZDzozAuCCozTnplL0c905XxPtv2vmF3KJIRTkCu4h2EvgUiC
-         saNpaj3AGjp+nH2uaFUMTkTbIdknaiNcpUF7d3uQrgwUewoVtpMAL/QkzLWNIwdfO4ef
-         UzbsemC9KY7BE8ZGuJp8SHR9xAUErBTlMuly5tQITzEJv40v3VvinUg2/Y+H8OsJYqe3
-         2cEI4R87cM6Ll+JA3NDYdlLfDtoeb2VjoG6OKzwYiNWk7f6FqSddjmZBuagw8UBwzuWu
-         kVzG74X82cbE9ocrDdLmpgw8ebrBelxhBK85EbsMcBSpz5PkLAoCITyFoIOtT9zWaZn5
-         qr1g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1757157636; x=1757762436;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=sKcui5kqlHLRoGonq2UNIvF4/eUOOrD4c41D8AoISsY=;
-        b=tAsCuuHPtPU9ALGPZ8VfIa8d/r4JMdNCHkKJk5prJpaiFGZt7NmcrA+lF5mBVbqekg
-         PVYirb/wVUYdVDOAwzj0Ed8D1LjcnbCaWIof0opxnFgA6Lm0f2QSdsq8k4C1F7Q+lra+
-         mVXLHG6LqtzAnszEYIZEK0DZ9hbxjiNAMBp+lJZ4IUNpcVaGJEKiYn5B63Wn1Xu1X2i0
-         aYSWurxbtRbJC8v5spf+Q0Zu/EF5CclcGNBiGYVy/+pcPaBXTWLK337/jIcTwUSCR6Yo
-         /On5iLGVjA5YJpkjS2hDIBB8TkA4D77f+jOykqftfaQjmbNtFyPD+UGpX0ZZKZcfKkHu
-         vTFg==
-X-Forwarded-Encrypted: i=1; AJvYcCU21J1RDKfCmTi+4yXxlx+JKWXchs0huJhFiSyRqlaTyBazH5Bfijav00nKnwDlHpExnOVckIIlAoscbSYczBqy@lists.infradead.org, AJvYcCWVk0bykc/ECoEcIbj7R5DTUYjNlsgnFfA9h68f0Rzkz3Mxo2jypd/EZJBRoYxCQTN0fwGbpxcZJQoljueF6lM=@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxxw5pg7n/Wg0U98/mLzQnUPlEEXHDZBfDmqFIJdBChCYzve0/i
-	nS9TYilWd0YsMKgXSP+qnhANhg6FKnChaNLKMoq8jrqSkw6oT8tQmb0AXPI76HAd
-X-Gm-Gg: ASbGncufjofh1S9DBvv3TFJO4RnP+VvB3drbuUVx8h0Lzqs6wJqLQHuRspA6oorMt2r
-	0s4RUn9y5iP1LMIiFpAVlak9JSes3c2JDG9eDZi7YQ0sqUFUyKWqIR0fYDayZFk+k8eQNNM0VjO
-	hN7vIjjIj4yGowhsWKEvwIA8S1w2J6pNIP1qW+5xAttydfvCpz0nnrD68RMo6IiZHCPSZQMAWmW
-	QSS+woC+7IYetEWA5yufvLbVcKvhrCQck6v/A3o962uk/0E4DJlbIdn0rikPf93k8c85vJ1QHa+
-	H3EbbTTspp9OT3kvJsr1f0xWaTQzGFJQrXdEfsD1m+dgrabr2u+0+zQ+rMukmIgdUo9bNIN87Xw
-	XrAW3hsy6EQwQ2c3y6rOOakKYnpVofOelROw8ng==
-X-Google-Smtp-Source: AGHT+IFv8cE90LFD5yJ/sYFcSqb8G8+DIxE6PJiMga9p7H+75K2qsCzvml9epgjQGTdfAnAhHf5Ufg==
-X-Received: by 2002:a05:600c:1c0d:b0:45b:9961:9c01 with SMTP id 5b1f17b1804b1-45ddde832ebmr18317335e9.16.1757157635521;
-        Sat, 06 Sep 2025 04:20:35 -0700 (PDT)
-Received: from toolbox.. ([87.200.95.144])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-45de18f4824sm6646655e9.10.2025.09.06.04.20.33
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 06 Sep 2025 04:20:35 -0700 (PDT)
-From: Christian Hewitt <christianshewitt@gmail.com>
-To: Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Cc: Alex Bee <knaerzche@gmail.com>
-Subject: [PATCH v2 2/2] arm64: dts: rockchip: enable the Mali GPU on RK3328 boards
-Date: Sat,  6 Sep 2025 11:20:30 +0000
-Message-Id: <20250906112030.1829706-2-christianshewitt@gmail.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20250906112030.1829706-1-christianshewitt@gmail.com>
+	id 1uurBO-00000007h0Q-30dA
+	for linux-rockchip@lists.infradead.org;
+	Sat, 06 Sep 2025 11:34:16 +0000
+Mime-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
+	t=1757158442;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=b+Du9TeIxlEbNhvp61SYY8KuLIZkAqncV6TyBj9h6w4=;
+	b=dyFLZBBFQ3+fJrBybmZ30Ba9rVjhUCsCr/fFpHSIuXFcfGEdnYs6CsyuB+nkg/q+SYdDiM
+	awuWCwVrXjZMBp2hNApyssaAvyMC9X67o/GyMrWC1nbqHBkius1OHU/6jEMgBGWLDWCzIF
+	p423/DIc7w/h0l4nBj1SASmAsOeKs7gDdwezyyYloch8+IUpKPDs+P/JodR3ZQULROR1sE
+	uyunYJfcZ0RxF2SJJpV7RRo9xP5LUK9p0FWF8EnAsklMQhPMN0vYzZ0G+63l8ShA+d1gY9
+	no8sG2t+eyxEqYUOPIlroUM64WnMFUw8EuFl9NP5PujRF+RIKATjkEISR7LYGA==
+Date: Sat, 06 Sep 2025 13:33:52 +0200
+Message-Id: <DCLOOFYCU4G3.TRKM9VIKO4BX@cknow.org>
+Cc: "Alex Bee" <knaerzche@gmail.com>
+Subject: Re: [PATCH v2 1/2] arm64: dts: rockchip: add GPU powerdomain, opps,
+ and cooling to rk3328
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Diederik de Haas" <didi.debian@cknow.org>
+To: "Christian Hewitt" <christianshewitt@gmail.com>, "Rob Herring"
+ <robh+dt@kernel.org>, "Krzysztof Kozlowski" <krzk+dt@kernel.org>, "Conor
+ Dooley" <conor+dt@kernel.org>, "Heiko Stuebner" <heiko@sntech.de>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>
 References: <20250906112030.1829706-1-christianshewitt@gmail.com>
-MIME-Version: 1.0
+In-Reply-To: <20250906112030.1829706-1-christianshewitt@gmail.com>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250906_042037_430912_3DAB09C8 
-X-CRM114-Status: GOOD (  11.93  )
+X-CRM114-CacheID: sfid-20250906_043414_897366_1088CC4D 
+X-CRM114-Status: GOOD (  16.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,78 +68,138 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============1362571098618318820=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Alex Bee <knaerzche@gmail.com>
+--===============1362571098618318820==
+Content-Type: multipart/signed;
+ boundary=71e10b725da0bb370e79d95e44ae5bd5e7d2c935e23050771e2938286b81;
+ micalg=pgp-sha512; protocol="application/pgp-signature"
 
-Add a gpu node to the rock64 board to enable the Mali GPU and
-move the existing node from roc-pc to the shared roc dtsi to
-enable it also for the roc-cc board.
+--71e10b725da0bb370e79d95e44ae5bd5e7d2c935e23050771e2938286b81
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
 
-Signed-off-by: Alex Bee <knaerzche@gmail.com>
-Signed-off-by: Christian Hewitt <christianshewitt@gmail.com>
----
-Changes since v1:
-- No changes
+On Sat Sep 6, 2025 at 1:20 PM CEST, Christian Hewitt wrote:
+> From: Alex Bee <knaerzche@gmail.com>
+>
+> Add GPU powerdomain, opp-table, and cooling map nodes for the Mali
+> GPU on the RK3328 SoC. Opp-table frequencies are sourced from the
+> Rockchip Linux v4.4 vendor kernel while voltages have been derived
+> from practical use and support work: keeping voltage above 1075mV
+> and disabling the 500MHz opp-point avoids instability and crashes.
+>
+> Signed-off-by: Alex Bee <knaerzche@gmail.com>
+> Signed-off-by: Christian Hewitt <christianshewitt@gmail.com>
+> ---
+> Changes since v1:
+> - Use opp_table_gpu not gpu_opp_table to fix dtb schema warnings
+>
+>  arch/arm64/boot/dts/rockchip/rk3328.dtsi | 39 +++++++++++++++++++++++-
+>  1 file changed, 38 insertions(+), 1 deletion(-)
+>
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/d=
+ts/rockchip/rk3328.dtsi
+> index 6438c969f9d7..01ed2bfa7ee1 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+> @@ -331,6 +331,11 @@ power: power-controller {
+>  			#address-cells =3D <1>;
+>  			#size-cells =3D <0>;
+> =20
+> +			power-domain@RK3328_PD_GPU {
+> +				reg =3D <RK3328_PD_GPU>;
+> +				clocks =3D <&cru ACLK_GPU>;
+> +				#power-domain-cells =3D <0>;
+> +			};
+>  			power-domain@RK3328_PD_HEVC {
+>  				reg =3D <RK3328_PD_HEVC>;
+>  				clocks =3D <&cru SCLK_VENC_CORE>;
+> @@ -570,9 +575,13 @@ map0 {
+>  							 <&cpu3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+>  					contribution =3D <4096>;
+>  				};
+> +				map1 {
+> +					trip =3D <&target>;
+> +					cooling-device =3D <&gpu THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+> +					contribution =3D <4096>;
+> +				};
+>  			};
+>  		};
+> -
+>  	};
+> =20
+>  	tsadc: tsadc@ff250000 {
+> @@ -651,7 +660,35 @@ gpu: gpu@ff300000 {
+>  				  "ppmmu1";
+>  		clocks =3D <&cru ACLK_GPU>, <&cru ACLK_GPU>;
+>  		clock-names =3D "bus", "core";
+> +		operating-points-v2 =3D <&opp_table_gpu>;
+> +		power-domains =3D <&power RK3328_PD_GPU>;
+>  		resets =3D <&cru SRST_GPU_A>;
+> +		#cooling-cells =3D <2>;
+> +	};
+> +
+> +	opp_table_gpu: opp-table-gpu {
+> +		compatible =3D "operating-points-v2";
+> +		opp-200000000 {
+> +			opp-hz =3D /bits/ 64 <200000000>;
+> +			opp-microvolt =3D <1075000>;
+> +		};
+> +
+> +		opp-300000000 {
+> +			opp-hz =3D /bits/ 64 <300000000>;
+> +			opp-microvolt =3D <1075000>;
+> +		};
+> +
+> +		opp-400000000 {
+> +			opp-hz =3D /bits/ 64 <400000000>;
+> +			opp-microvolt =3D <1075000>;
+> +		};
+> +
+> +		opp-500000000 {
+> +			/* causes stability issues */
+> +			opp-hz =3D /bits/ 64 <500000000>;
+> +			opp-microvolt =3D <1150000>;
+> +			status =3D "disabled";
+> +		};
 
- arch/arm64/boot/dts/rockchip/rk3328-roc-pc.dts | 4 ----
- arch/arm64/boot/dts/rockchip/rk3328-roc.dtsi   | 4 ++++
- arch/arm64/boot/dts/rockchip/rk3328-rock64.dts | 4 ++++
- 3 files changed, 8 insertions(+), 4 deletions(-)
+The opp-table-gpu should be moved downwards, right above the pinctrl
+node. But maybe that can be done by Heiko when committing?
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-roc-pc.dts b/arch/arm64/boot/dts/rockchip/rk3328-roc-pc.dts
-index 329d03172433..c0b7b98ff788 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-roc-pc.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-roc-pc.dts
-@@ -44,10 +44,6 @@ &codec {
- 	mute-gpios = <&grf_gpio 0 GPIO_ACTIVE_LOW>;
- };
- 
--&gpu {
--	mali-supply = <&vdd_logic>;
--};
--
- &pinctrl {
- 	ir {
- 		ir_int: ir-int {
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-roc.dtsi b/arch/arm64/boot/dts/rockchip/rk3328-roc.dtsi
-index b5bd5e7d5748..7eef6f7f108f 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-roc.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-roc.dtsi
-@@ -160,6 +160,10 @@ &gmac2io {
- 	status = "okay";
- };
- 
-+&gpu {
-+	mali-supply = <&vdd_logic>;
-+};
-+
- &hdmi {
- 	status = "okay";
- };
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-index 5367e5fa9232..592fd8ca21df 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-@@ -152,6 +152,10 @@ &gmac2io {
- 	status = "okay";
- };
- 
-+&gpu {
-+	mali-supply = <&vdd_logic>;
-+};
-+
- &hdmi {
- 	avdd-0v9-supply = <&vdd_10>;
- 	avdd-1v8-supply = <&vcc_18>;
--- 
-2.34.1
+Cheers,
+  Diederik
 
+>  	};
+> =20
+>  	h265e_mmu: iommu@ff330200 {
+
+
+--71e10b725da0bb370e79d95e44ae5bd5e7d2c935e23050771e2938286b81
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaLwcIwAKCRDXblvOeH7b
+br56AQCWWWvp8dGJgHCWZPupIEljTv62eHRRlJgagXNls350nAD9EjoJ2samkkdH
+662TWxKU0z5ftvwqQy8+keNZBlbmpgA=
+=SwUq
+-----END PGP SIGNATURE-----
+
+--71e10b725da0bb370e79d95e44ae5bd5e7d2c935e23050771e2938286b81--
+
+
+--===============1362571098618318820==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============1362571098618318820==--
+
