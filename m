@@ -4,68 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B15E9CA0FED
-	for <linux-rockchip@archiver.kernel.org>; Sat,  6 Sep 2025 22:50:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4711BCA101F
+	for <linux-rockchip@archiver.kernel.org>; Sun,  7 Sep 2025 16:13:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=x03vulH0HZnhTuq+BDIS0/LWhE7HW7OkG1WvpqcMl78=; b=KsJ0TolYYJDp9r
-	lcW3cJFvX46yy1Z6s7mNCBDBgFMT6ZlzReYXCHZ8jYM5EgKJBf+drigLt6r54BlRHEzToXnztTKJB
-	ZEtltpyGPrJuVE/Hd2zFLGw7RgPGdksAPqFFc071L7RGuYyFG13SmS1Gp6+XSMRgG+G0TSQ9m2HC2
-	qsIM3TEAaVl9+76y5oZ7UJ8lQOXXEM/MCih45xO6bEXRiCgB6oll/fWN6bi+aHw5lWhPlzJ4FB2VA
-	TRtb7tjbVHtvh+XyAMxbmzfGr0bkOeFl4g0vrJS9URgUQCnNT2ralD+v+bM+Py3fmXcDvPPUG4UTe
-	cnzwuUdRc/+7ohRZ35Ng==;
+	List-Owner; bh=wmtz8xaso5TyEzt/0TEuKwLGXj8Mp4AaNdKBAKlbtCM=; b=PeRst4UEcm+Ey0
+	IlVqviYaDEdeBpxqiTCmZ5xPqTK8ykmfoioopXe0I6ZegmZEfKt//mJCVM1SHVp4K5T7lH3IV+Sj6
+	Uix8b12IoGe81uaD1SaHxqEAAlCzR/u7KRJwi4wkSSpLhfRkAh5D/2YKww6gZd6Ohvy04NMvmsMxz
+	McRNbvw6KDE6owH/pfP/bnBAg58rzupnEp5b+1zyvcUBPKWLt8wtecjHS6urHUmjfElL3ViXFPvHP
+	7Cv6AMpLhj2M+vyNWEqKq9PL+FUzJM/a/RjP7Zys4dMu4SgH5dZ/2PgtlsiX2nOYZcQZJR1+zSiIK
+	+HL9XsFjls8+8nlPakMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uv1ji-00000008c8A-4Bg0;
-	Sat, 06 Sep 2025 22:50:23 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1uvI0z-0000000BqQ5-0KTc;
+	Sun, 07 Sep 2025 16:13:17 +0000
+Received: from mgamail.intel.com ([198.175.65.21])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uv1gv-00000008bG0-2eW3;
-	Sat, 06 Sep 2025 22:47:30 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id C35A4447C3;
-	Sat,  6 Sep 2025 22:47:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A5916C4CEF8;
-	Sat,  6 Sep 2025 22:47:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1757198848;
-	bh=M7YBY+PlDsud3ulKo1KwxdTk5HjWLgupena6NkeHIHw=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=ZdUqjPcCFBZU+8Sntt/qoKCyGcPgXjIZ2nTgx/DSehkzWZ2IwIiXNiCIbXnKUupbc
-	 3mlL4BU8Cwe2G4TRNuVG1Z7DXnsT3XXTY4c1XLiUQ5jRLrHsFOEyLNAgblpxoP+d22
-	 crQuz6CGyFEcVfB3VslIAJ4yN0IlAe1pRjUe+ZLTPSVnc7lM7j0yxoJzpnpV7pk4QN
-	 +7YcDnq0xMqdggvftm7sNM8YX5YbgoZznKbEiubiT4a51Nv2TYAqNLYtSuPxM4D8qZ
-	 YZJ3S3yDLOTghMAKTp2Ezq9kI1ns0tScHi1rYFwB37MwGhwsZaXPlMkkZof3KhGV8r
-	 RR8ja7xVL8+1g==
-Received: by mail-oo1-f46.google.com with SMTP id 006d021491bc7-61e27ee0ae4so431233eaf.0;
-        Sat, 06 Sep 2025 15:47:28 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCU4I6lGNIt513ypNOQ6OydQsz6LltXD6UUSVU/Qrtaa/vLwrZ7A3HmnTqVQe80gA0qUycJ+mfVC58QUM7FTm+4=@lists.infradead.org, AJvYcCXP8A+UbWQ9Ni/dvlA+tyKmzNph3C2WHq178HuuR1GLegMmG3d9ztH0JW1wFnzQZRRbLUXc96BC5NavKcVmJVO+@lists.infradead.org
-X-Gm-Message-State: AOJu0YwcIusoEcmxOe4Lk+TaJWhpeiuPLBLKJesP4g6lauuUf3ew422x
-	en3nEHMAZjV9EG9C9+pMg/uYPMHhhebXR+8K4seDAJDGTT4ONBKsX2Pgk18Uz46ZRA8+27vju1r
-	znUnijKeBXI0WKWqeZZlSTtx03sJFiAM=
-X-Google-Smtp-Source: AGHT+IHBlQQx0DcSn8WrGT4miIP8Bx5UtUX4jRnhfFKte1qQJwWT9s2fgjzoWbt6eQoAFyWjweW4FuIn9+Y2+ALRETo=
-X-Received: by 2002:a05:6820:2222:b0:61e:2938:640f with SMTP id
- 006d021491bc7-62178ab6dd7mr1273240eaf.8.1757198848123; Sat, 06 Sep 2025
- 15:47:28 -0700 (PDT)
+	id 1uvHy6-0000000BpAj-1ZT4;
+	Sun, 07 Sep 2025 16:10:19 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1757261418; x=1788797418;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=3Zl6AVEGt9WisPqSWtg4X6buSc0QYXVLZOjy94tByxw=;
+  b=VpezvTXOwZfHrgdKKP0duzQ+K42ExCN7x3L0Zpet9i/SkCL5GGYp2kxb
+   VZo6gu9IT003yltT3bEiKoZ7hXqugrAmGliFPJ5FS3skx3UyDAemJ+KIO
+   mekgvtUs0536mlDnH7dXCh/VJR+BmMd2m0WMM47rVPOoONfiwXxtaZUgw
+   4e7tys0bkUZAs4oskofm95diYPOcbgwI4sBps16GMVvPEQSiRaQ19M9dY
+   Q6lOT62EkJnBF9vAnzBVYKzBoCKkcmZRfn9MaUMYBnEnkKjxgN0Pc49st
+   P8vgRWwyf5lY80il/BWOUpTDO/SPGoESLot+/VQjtHQ8WbrfUDwtDZ2Aq
+   w==;
+X-CSE-ConnectionGUID: CYuEiBmxQziHoSr1aAN2pg==
+X-CSE-MsgGUID: yeBBlJuxRwuHs+KdUUuIqw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11531"; a="59462262"
+X-IronPort-AV: E=Sophos;i="6.17,312,1747724400"; 
+   d="scan'208";a="59462262"
+Received: from fmviesa008.fm.intel.com ([10.60.135.148])
+  by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Sep 2025 09:10:17 -0700
+X-CSE-ConnectionGUID: Wh9M8o7RQ9iMYMUnx7+mHg==
+X-CSE-MsgGUID: SztYKZBBSQ+peDyIbxLBCQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.18,246,1751266800"; 
+   d="scan'208";a="172951477"
+Received: from lkp-server01.sh.intel.com (HELO 114d98da2b6c) ([10.239.97.150])
+  by fmviesa008.fm.intel.com with ESMTP; 07 Sep 2025 09:10:14 -0700
+Received: from kbuild by 114d98da2b6c with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1uvHy0-0002MN-0C;
+	Sun, 07 Sep 2025 16:10:12 +0000
+Date: Mon, 8 Sep 2025 00:09:25 +0800
+From: kernel test robot <lkp@intel.com>
+To: WeiHao Li <cn.liweihao@gmail.com>, heiko@sntech.de, robh@kernel.org
+Cc: oe-kbuild-all@lists.linux.dev, krzk+dt@kernel.org, conor+dt@kernel.org,
+	linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	WeiHao Li <cn.liweihao@gmail.com>
+Subject: Re: [PATCH v1 1/4] phy: rockchip: inno-usb2: Add usb2 phy support
+ for RK3368
+Message-ID: <202509072227.wBI6dBl4-lkp@intel.com>
+References: <20250905125318.7956-2-cn.liweihao@gmail.com>
 MIME-Version: 1.0
-References: <20250530-rk3588-dfi-improvements-v1-0-6e077c243a95@collabora.com>
- <20250530-rk3588-dfi-improvements-v1-2-6e077c243a95@collabora.com>
- <CAGTfZH1DzC9odJVDfYCYw4+Ph5_1CjmrpqR_NUFh1SsVVVLM0g@mail.gmail.com> <24752023.ouqheUzb2q@diego>
-In-Reply-To: <24752023.ouqheUzb2q@diego>
-From: Chanwoo Choi <chanwoo@kernel.org>
-Date: Sun, 7 Sep 2025 07:46:50 +0900
-X-Gmail-Original-Message-ID: <CAGTfZH3RikS1XRkxjs6vU3yvw4kayRK2u17_zpqodioKJF5mNA@mail.gmail.com>
-X-Gm-Features: Ac12FXxhJBnicQpzbdTVw-Dc0dR90IgnZqqaWnW_MXUfhdwqDh4MQlNQ-InNBH0
-Message-ID: <CAGTfZH3RikS1XRkxjs6vU3yvw4kayRK2u17_zpqodioKJF5mNA@mail.gmail.com>
-Subject: Re: [PATCH 2/2] PM / devfreq: rockchip-dfi: add support for LPDDR5
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
+Content-Disposition: inline
+In-Reply-To: <20250905125318.7956-2-cn.liweihao@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250906_154729_695632_08E701B7 
-X-CRM114-Status: GOOD (  12.88  )
+X-CRM114-CacheID: sfid-20250907_091018_491616_99A0A77D 
+X-CRM114-Status: GOOD (  11.55  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,23 +86,95 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: linux-pm@vger.kernel.org, Sascha Hauer <s.hauer@pengutronix.de>, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-kernel@vger.kernel.org, Chanwoo Choi <cw00.choi@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, MyungJoo Ham <myungjoo.ham@samsung.com>, Jonathan Cameron <Jonathan.Cameron@huawei.com>, linux-rockchip@lists.infradead.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGksCgpPbiBTdW4sIFNlcCA3LCAyMDI1IGF0IDM6MzjigK9BTSBIZWlrbyBTdMO8Ym5lciA8aGVp
-a29Ac250ZWNoLmRlPiB3cm90ZToKPgo+IEhpLAo+Cj4gQW0gU2Ftc3RhZywgNi4gU2VwdGVtYmVy
-IDIwMjUsIDE4OjA5OjUzIE1pdHRlbGV1cm9ww6Rpc2NoZSBTb21tZXJ6ZWl0IHNjaHJpZWIgQ2hh
-bndvbyBDaG9pOgo+ID4gSSdtIHNvcnJ5IGZvciBsYXRlIHJlcGx5Lgo+ID4KPiA+IExvb2tzIGdv
-b2QgdG8gbWUuIEJ1dCwgdGhpcyBwYXRjaCBjb250YWlucyB0aGUgY2hhbmdlIG9mIGZvbGxvd2lu
-ZyBoZWFkZXIuCj4gPiBJZiB0aGVyZSBhcmUgQUNLIGFib3V0IGNoYW5nZSBpbiBpbmNsdWRlL3Nv
-Yy9yb2NrY2hpcCwgSSdsbCBtZXJnZSB0aGlzIHNlcmllcy4KPiA+Cj4gPiBpbmNsdWRlL3NvYy9y
-b2NrY2hpcC9yazM1ODhfZ3JmLmggICAgfCAgOCArKystCj4gPiBpbmNsdWRlL3NvYy9yb2NrY2hp
-cC9yb2NrY2hpcF9ncmYuaCAgfCAgMSArCj4KPiBkb25lIDotKQoKVGhhbmtzLgoKQXBwbGllZCBp
-dC4KCihzbmlwKQoKLS0gCkJlc3QgUmVnYXJkcywKQ2hhbndvbyBDaG9pClNhbXN1bmcgRWxlY3Ry
-b25pY3MKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
-bnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
-b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9j
-a2NoaXAK
+Hi WeiHao,
+
+kernel test robot noticed the following build warnings:
+
+[auto build test WARNING on rockchip/for-next]
+[also build test WARNING on robh/for-next arm/for-next arm/fixes arm64/for-next/core clk/clk-next kvmarm/next shawnguo/for-next soc/for-next linus/master v6.17-rc4 next-20250905]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/WeiHao-Li/phy-rockchip-inno-usb2-Add-usb2-phy-support-for-RK3368/20250905-205804
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git for-next
+patch link:    https://lore.kernel.org/r/20250905125318.7956-2-cn.liweihao%40gmail.com
+patch subject: [PATCH v1 1/4] phy: rockchip: inno-usb2: Add usb2 phy support for RK3368
+config: arc-randconfig-r132-20250907 (https://download.01.org/0day-ci/archive/20250907/202509072227.wBI6dBl4-lkp@intel.com/config)
+compiler: arc-linux-gcc (GCC) 15.1.0
+reproduce: (https://download.01.org/0day-ci/archive/20250907/202509072227.wBI6dBl4-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202509072227.wBI6dBl4-lkp@intel.com/
+
+sparse warnings: (new ones prefixed by >>)
+>> drivers/phy/rockchip/phy-rockchip-inno-usb2.c:1867:34: sparse: sparse: Initializer entry defined twice
+   drivers/phy/rockchip/phy-rockchip-inno-usb2.c:1873:34: sparse:   also defined here
+
+vim +1867 drivers/phy/rockchip/phy-rockchip-inno-usb2.c
+
+  1849	
+  1850	static const struct rockchip_usb2phy_cfg rk3368_phy_cfgs[] = {
+  1851		{
+  1852			.reg = 0x700,
+  1853			.num_ports	= 2,
+  1854			.clkout_ctl	= { 0x0724, 15, 15, 1, 0 },
+  1855			.port_cfgs	= {
+  1856				[USB2PHY_PORT_OTG] = {
+  1857					.phy_sus	= { 0x0700, 8, 0, 0, 0x1d1 },
+  1858					.bvalid_det_en	= { 0x0680, 3, 3, 0, 1 },
+  1859					.bvalid_det_st	= { 0x0690, 3, 3, 0, 1 },
+  1860					.bvalid_det_clr = { 0x06a0, 3, 3, 0, 1 },
+  1861					.idfall_det_en	= { 0x0680, 6, 6, 0, 1 },
+  1862					.idfall_det_st	= { 0x0690, 6, 6, 0, 1 },
+  1863					.idfall_det_clr	= { 0x06a0, 6, 6, 0, 1 },
+  1864					.idrise_det_en	= { 0x0680, 5, 5, 0, 1 },
+  1865					.idrise_det_st	= { 0x0690, 5, 5, 0, 1 },
+  1866					.idrise_det_clr	= { 0x06a0, 5, 5, 0, 1 },
+> 1867					.ls_det_en	= { 0x0680, 2, 2, 0, 1 },
+  1868					.ls_det_st	= { 0x0690, 2, 2, 0, 1 },
+  1869					.ls_det_clr	= { 0x06a0, 2, 2, 0, 1 },
+  1870					.utmi_bvalid	= { 0x04bc, 23, 23, 0, 1 },
+  1871					.utmi_id	= { 0x04bc, 26, 26, 0, 1 },
+  1872					.utmi_ls	= { 0x04bc, 25, 24, 0, 1 },
+  1873					.ls_det_en	= { 0x079c, 15, 15, 1, 0 },
+  1874				},
+  1875				[USB2PHY_PORT_HOST] = {
+  1876					.phy_sus	= { 0x0728, 8, 0, 0, 0x1d1 },
+  1877					.ls_det_en	= { 0x0680, 4, 4, 0, 1 },
+  1878					.ls_det_st	= { 0x0690, 4, 4, 0, 1 },
+  1879					.ls_det_clr	= { 0x06a0, 4, 4, 0, 1 }
+  1880				}
+  1881			},
+  1882			.chg_det = {
+  1883				.opmode		= { 0x0700, 8, 0, 0, 0x1d7 },
+  1884				.cp_det		= { 0x04b8, 30, 30, 0, 1 },
+  1885				.dcp_det	= { 0x04b8, 29, 29, 0, 1 },
+  1886				.dp_det		= { 0x04b8, 31, 31, 0, 1 },
+  1887				.idm_sink_en	= { 0x0718, 8, 8, 0, 1 },
+  1888				.idp_sink_en	= { 0x0718, 7, 7, 0, 1 },
+  1889				.idp_src_en	= { 0x0718, 9, 9, 0, 1 },
+  1890				.rdm_pdwn_en	= { 0x0718, 10, 10, 0, 1 },
+  1891				.vdm_src_en	= { 0x0718, 12, 12, 0, 1 },
+  1892				.vdp_src_en	= { 0x0718, 11, 11, 0, 1 },
+  1893			},
+  1894		},
+  1895		{ /* sentinel */ }
+  1896	};
+  1897	
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
