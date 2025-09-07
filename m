@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9AD0CCA1017
-	for <linux-rockchip@archiver.kernel.org>; Sun,  7 Sep 2025 17:37:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D094CA101F
+	for <linux-rockchip@archiver.kernel.org>; Sun,  7 Sep 2025 17:40:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6Bs+nfMu8p1O3vqizTrXnBJlwk3oz1dxLYa27oWTmPM=; b=qAAMQPDhWlv22x
-	sF/fpmYfsPzh10/1gaj7PY6FnAm0SwySCoZ4Om3koBZDTxQfBrvtsP7XGKEVT9sk2dJ6dts7yMZ27
-	ASiloblJIA4QhDYjAklq3eI1FZuZPqiW+Ircn1oNFWP1IEfLU3xvW37f/DpiU+xlrdgXMho7KyBc5
-	vehHcGE85ZhOjIcePDOGN2ruW7HxKyXxny/M5V+PuXTKeG3zbtetLILSy0YRNuQHaLSOZVSIQVKz1
-	TUcbIUXS2cBiQpowMC0c++B7AL0n0EHeK0w4LlUigvFm9p4N9WUhwyRZslJealPoAav16yKUIseN0
-	sAqcN/i94ZxR11eaOrcg==;
+	List-Owner; bh=SlUN8h4g10S/sSSb+Ycd3zvhjtVx40nr4tC8lnWoIPI=; b=qX/Ndzc4ZoOFGP
+	9IcIeYYPI7Csu3NbuAwLM7AYsEUX7M07gaDRO09BEjJVgxXJVrwyCFxirjSGjfObutJfEOVvWTiAM
+	g5T8WyY3whsCEC+9sfXnjxikYxFr1FtbaZGByIOD/TKq5RJH8uC1ZylBsx3KXaDEDOst4AK7GiRbl
+	LNNh/onYGih9//oOxO4FKxV+ftyx1HnaZckJq8gVlMkQYIS3Fy27Y3M7zo4KQygCtwwBW3QABDXBE
+	zebmGk2+GD4/M0+lSvMKL+i7igjFBFfF9SRj8S/YZP9aymO2UTEE8nJRSb2Pf7GlR2X2c5moUAN0q
+	KpFlVctSrL2wZz+JfaQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvJKi-0000000C7t9-43kh;
-	Sun, 07 Sep 2025 17:37:44 +0000
+	id 1uvJNW-0000000C8QD-0YCT;
+	Sun, 07 Sep 2025 17:40:38 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvJDh-0000000C67p-1POZ;
-	Sun, 07 Sep 2025 17:30:30 +0000
+	id 1uvJDh-0000000C67s-2Vnt;
+	Sun, 07 Sep 2025 17:30:31 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=pi+FScEH8RwdrVr7Oxt2JXPrqf9PvwEaZcz5KpMAXv4=; b=Ncuse2Aq6Ws3pS01vd6bMpmNKO
-	9X1gXYkWHoA2zfZ9sWbIkMm71fQL5byYIFX1Udb2oWF8MEpueSwWeHsZgLylnrdha2XShRR0WdXDA
-	EaaHU2aWrUxAoI+0+4Iny8175g8uJlYIeArkRuFHYuda/Ds4nkpKegPP6TBQeVfTa4s/g8Qx1J1fn
-	dSQIrMcn0UyMH1shBUBL+4UYhNNFouBrkm0VrXSyt0uzXgz9LWwfCQ/mDWGM5D9W8c3u5f1nFmTRG
-	DwuzWvPPfU0z/Wwc8OmDiiHSov4a2A5/6+ixzuViOS2sABiZXeu2wLCDlG4szuEQDkCnWyhdIg5Wz
-	oomgQSsA==;
+	bh=j5qAC84QQZ/QIIjMkOrBJNSXRAH+jqUUh0eQKO1pdy8=; b=CBA1qJ0GfbxgilebHgXux7lmZ7
+	nwcJPJjaROY6R8w5t/mGoF1q2Td9NX9rbZJQoAE5+WP14SfZDQxwabDgYnokyLpXlH+kBsD7FZq8+
+	FUKBnVXM6qnYv6mRVxzDDkliut5mo1fPX931hdaDVA+ePeVWgx49n6xDfLjY+ibsgWu0WDadLhpJS
+	n2VaALtZw+t+jCUQgcYSA3FqNHlMu2ReG4zNeW6uiFu/gkJYDaOuX/vmME1dKfKt0NMZDwD18ZFuq
+	oXQkYDKTCcSZ+tyxxvqCTrhK9sluU9WxBWbHzcI7end+NWMgo97AjnEeqvsjIgWoFpFfFaVW2btso
+	+HRH1KoA==;
 Received: from [61.8.147.163] (helo=localhost.localdomain)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1uvJDc-0004Ii-Hm; Sun, 07 Sep 2025 19:30:24 +0200
+	id 1uvJDd-0004Ii-Be; Sun, 07 Sep 2025 19:30:25 +0200
 From: Heiko Stuebner <heiko@sntech.de>
 To: Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -50,16 +50,16 @@ Cc: Heiko Stuebner <heiko@sntech.de>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 0/1] Enable HDMI Receiver on NanoPC-T6
-Date: Sun,  7 Sep 2025 19:30:11 +0200
-Message-ID: <175726620391.195224.16245258032470336933.b4-ty@sntech.de>
+Subject: Re: [PATCH v2] arm64: dts: rockchip: Add vcc supply for SPI Flash on NanoPC-T6
+Date: Sun,  7 Sep 2025 19:30:12 +0200
+Message-ID: <175726620391.195224.7684283599123514872.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.2
-In-Reply-To: <cover.1757068166.git.marcin@juszkiewicz.com.pl>
-References: <cover.1757068166.git.marcin@juszkiewicz.com.pl>
+In-Reply-To: <20250905-nanopc-t6-spi-nor-v2-1-098b476d9509@juszkiewicz.com.pl>
+References: <20250905-nanopc-t6-spi-nor-v2-1-098b476d9509@juszkiewicz.com.pl>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250907_103029_371024_AAD32D0D 
-X-CRM114-Status: GOOD (  11.44  )
+X-CRM114-CacheID: sfid-20250907_103029_635610_17C4A9D5 
+X-CRM114-Status: GOOD (  10.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,22 +77,20 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Fri, 05 Sep 2025 13:02:29 +0200, Marcin Juszkiewicz wrote:
-> For quite a while I had this patch in my local tree but never made it
-> work. Kernel generates the following messages all the time:
+On Fri, 05 Sep 2025 21:01:51 +0200, Marcin Juszkiewicz wrote:
+> FriendlyELEC NanoPC-T6 LTS schematics shows VCC_1V8_S3 being used to
+> power SPI NOR chip.
 > 
-> fdee0000.hdmi_receiver: hdmirx_wait_signal_lock: signal not lock, tmds_clk_ratio:0
-> fdee0000.hdmi_receiver: hdmirx_wait_signal_lock: mu_st:0x2, scdc_st:0x0, dma_st10:0x10
+> This fixes the following kernel message:
 > 
-> "v4l2-ctrl --all" reports that HDMI In is detected, /dev/video[0-4]
-> exist.
+> spi-nor spi5.0: supply vcc not found, using dummy regulator
 > 
 > [...]
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: enable HDMI Receiver on NanoPC T6
-      commit: fdab01864390db7ef0bea28804c7a3147dc0a386
+[1/1] arm64: dts: rockchip: Add vcc supply for SPI Flash on NanoPC-T6
+      commit: 41194ee115685ec2dbbb80e20d1090cc3a4c64d8
 
 Best regards,
 -- 
