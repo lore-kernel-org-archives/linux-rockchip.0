@@ -4,77 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4711BCA101F
-	for <linux-rockchip@archiver.kernel.org>; Sun,  7 Sep 2025 16:13:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61F2CCA1017
+	for <linux-rockchip@archiver.kernel.org>; Sun,  7 Sep 2025 16:47:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wmtz8xaso5TyEzt/0TEuKwLGXj8Mp4AaNdKBAKlbtCM=; b=PeRst4UEcm+Ey0
-	IlVqviYaDEdeBpxqiTCmZ5xPqTK8ykmfoioopXe0I6ZegmZEfKt//mJCVM1SHVp4K5T7lH3IV+Sj6
-	Uix8b12IoGe81uaD1SaHxqEAAlCzR/u7KRJwi4wkSSpLhfRkAh5D/2YKww6gZd6Ohvy04NMvmsMxz
-	McRNbvw6KDE6owH/pfP/bnBAg58rzupnEp5b+1zyvcUBPKWLt8wtecjHS6urHUmjfElL3ViXFPvHP
-	7Cv6AMpLhj2M+vyNWEqKq9PL+FUzJM/a/RjP7Zys4dMu4SgH5dZ/2PgtlsiX2nOYZcQZJR1+zSiIK
-	+HL9XsFjls8+8nlPakMA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=R7RTapxKGnFq4sVQ+HMxsizzFNMTNdPuFsewnhNC9rM=; b=kSkb3ctigm9i54
+	dAJV0OqPZv//rHV3XI98HhGeR8kcHEHtsSoCqXkWSPPXwT+I6IMtNIr23WhHbLim1QtjpKK4Nye3G
+	bXkpgYECML9EsuIA74idSOunD1IE+Qi0PuChWw8EvLETaBdLoDPn2nTbK6M9GyfbO5gjosnSvm+8Y
+	y7Nj6PdtCRP5sf6JOfFAR4l9S7F+iV8Q3kmvonkbXgu0PLq1GtLoFQj+Vq6endXvIO5wdQ1V/FCh7
+	E5yCLMK15xSc+s1/IpjParhpmYvjsk3qeBYyGd52TLL7bMVQ4O7H686ubYl9vEsZKo90Ejp9rJQNk
+	fojaIinHwowjbEnZpdbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvI0z-0000000BqQ5-0KTc;
-	Sun, 07 Sep 2025 16:13:17 +0000
-Received: from mgamail.intel.com ([198.175.65.21])
+	id 1uvIY7-0000000Bx2J-1cZh;
+	Sun, 07 Sep 2025 16:47:31 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvHy6-0000000BpAj-1ZT4;
-	Sun, 07 Sep 2025 16:10:19 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1757261418; x=1788797418;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=3Zl6AVEGt9WisPqSWtg4X6buSc0QYXVLZOjy94tByxw=;
-  b=VpezvTXOwZfHrgdKKP0duzQ+K42ExCN7x3L0Zpet9i/SkCL5GGYp2kxb
-   VZo6gu9IT003yltT3bEiKoZ7hXqugrAmGliFPJ5FS3skx3UyDAemJ+KIO
-   mekgvtUs0536mlDnH7dXCh/VJR+BmMd2m0WMM47rVPOoONfiwXxtaZUgw
-   4e7tys0bkUZAs4oskofm95diYPOcbgwI4sBps16GMVvPEQSiRaQ19M9dY
-   Q6lOT62EkJnBF9vAnzBVYKzBoCKkcmZRfn9MaUMYBnEnkKjxgN0Pc49st
-   P8vgRWwyf5lY80il/BWOUpTDO/SPGoESLot+/VQjtHQ8WbrfUDwtDZ2Aq
-   w==;
-X-CSE-ConnectionGUID: CYuEiBmxQziHoSr1aAN2pg==
-X-CSE-MsgGUID: yeBBlJuxRwuHs+KdUUuIqw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11531"; a="59462262"
-X-IronPort-AV: E=Sophos;i="6.17,312,1747724400"; 
-   d="scan'208";a="59462262"
-Received: from fmviesa008.fm.intel.com ([10.60.135.148])
-  by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Sep 2025 09:10:17 -0700
-X-CSE-ConnectionGUID: Wh9M8o7RQ9iMYMUnx7+mHg==
-X-CSE-MsgGUID: SztYKZBBSQ+peDyIbxLBCQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.18,246,1751266800"; 
-   d="scan'208";a="172951477"
-Received: from lkp-server01.sh.intel.com (HELO 114d98da2b6c) ([10.239.97.150])
-  by fmviesa008.fm.intel.com with ESMTP; 07 Sep 2025 09:10:14 -0700
-Received: from kbuild by 114d98da2b6c with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1uvHy0-0002MN-0C;
-	Sun, 07 Sep 2025 16:10:12 +0000
-Date: Mon, 8 Sep 2025 00:09:25 +0800
-From: kernel test robot <lkp@intel.com>
-To: WeiHao Li <cn.liweihao@gmail.com>, heiko@sntech.de, robh@kernel.org
-Cc: oe-kbuild-all@lists.linux.dev, krzk+dt@kernel.org, conor+dt@kernel.org,
-	linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	WeiHao Li <cn.liweihao@gmail.com>
-Subject: Re: [PATCH v1 1/4] phy: rockchip: inno-usb2: Add usb2 phy support
- for RK3368
-Message-ID: <202509072227.wBI6dBl4-lkp@intel.com>
-References: <20250905125318.7956-2-cn.liweihao@gmail.com>
+	id 1uvIY4-0000000Bx0B-2M6C;
+	Sun, 07 Sep 2025 16:47:29 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:In-Reply-To:References;
+	bh=DxYdsQTsC+LiqXQrtNDt0Q7rxh0PmUohJegAYm8Teqs=; b=WHvMZsv+++xTLcr73nh/txzRb3
+	uAzZXC2Eqc9UsJQSlJ86DgttW0ULEQrLoXSPQskPSqahECon8+KWnNd43DeSqj1OpJDgwbni2TIdy
+	mvixihM9/XBfz6TCixsm+tqJS3zs1N6VL/rKFSoaTHYWZmEzNb/D1G80sSk3d7LXrRyAC3wXDqxuI
+	uZHdQcQF628UtwMfUBN6Ep87TeE/Zy3CtQIunFubfbPMD2rEZYoehFuQp1tyi9N5HViu6/LgENtYC
+	DWt17oVYGTNiQMK1pXbtFEEnRFUuodRzM8C5VPzlNj0brTwrzpQZAALOejIwjEmV6a7r63CYsc1t7
+	nWKz8Emw==;
+Received: from [61.8.147.163] (helo=phil.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1uvIY1-00049V-43; Sun, 07 Sep 2025 18:47:25 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: arm@kernel.org
+Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+Subject: [GIT PULL] Rockchip dts64 changes for 6.18 #1
+Date: Sun, 07 Sep 2025 18:47:23 +0200
+Message-ID: <5241735.C4sosBPzcN@phil>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250905125318.7956-2-cn.liweihao@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250907_091018_491616_99A0A77D 
-X-CRM114-Status: GOOD (  11.55  )
+X-CRM114-CacheID: sfid-20250907_094728_925539_F691A10A 
+X-CRM114-Status: GOOD (  17.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,88 +67,168 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi WeiHao,
+Hi soc maintainers,
 
-kernel test robot noticed the following build warnings:
+please find below and in the next mail Rockchip changes for for 6.18 .
 
-[auto build test WARNING on rockchip/for-next]
-[also build test WARNING on robh/for-next arm/for-next arm/fixes arm64/for-next/core clk/clk-next kvmarm/next shawnguo/for-next soc/for-next linus/master v6.17-rc4 next-20250905]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-url:    https://github.com/intel-lab-lkp/linux/commits/WeiHao-Li/phy-rockchip-inno-usb2-Add-usb2-phy-support-for-RK3368/20250905-205804
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git for-next
-patch link:    https://lore.kernel.org/r/20250905125318.7956-2-cn.liweihao%40gmail.com
-patch subject: [PATCH v1 1/4] phy: rockchip: inno-usb2: Add usb2 phy support for RK3368
-config: arc-randconfig-r132-20250907 (https://download.01.org/0day-ci/archive/20250907/202509072227.wBI6dBl4-lkp@intel.com/config)
-compiler: arc-linux-gcc (GCC) 15.1.0
-reproduce: (https://download.01.org/0day-ci/archive/20250907/202509072227.wBI6dBl4-lkp@intel.com/reproduce)
+Please pull.
+Thanks
+Heiko
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202509072227.wBI6dBl4-lkp@intel.com/
 
-sparse warnings: (new ones prefixed by >>)
->> drivers/phy/rockchip/phy-rockchip-inno-usb2.c:1867:34: sparse: sparse: Initializer entry defined twice
-   drivers/phy/rockchip/phy-rockchip-inno-usb2.c:1873:34: sparse:   also defined here
+The following changes since commit 8f5ae30d69d7543eee0d70083daf4de8fe15d585:
 
-vim +1867 drivers/phy/rockchip/phy-rockchip-inno-usb2.c
+  Linux 6.17-rc1 (2025-08-10 19:41:16 +0300)
 
-  1849	
-  1850	static const struct rockchip_usb2phy_cfg rk3368_phy_cfgs[] = {
-  1851		{
-  1852			.reg = 0x700,
-  1853			.num_ports	= 2,
-  1854			.clkout_ctl	= { 0x0724, 15, 15, 1, 0 },
-  1855			.port_cfgs	= {
-  1856				[USB2PHY_PORT_OTG] = {
-  1857					.phy_sus	= { 0x0700, 8, 0, 0, 0x1d1 },
-  1858					.bvalid_det_en	= { 0x0680, 3, 3, 0, 1 },
-  1859					.bvalid_det_st	= { 0x0690, 3, 3, 0, 1 },
-  1860					.bvalid_det_clr = { 0x06a0, 3, 3, 0, 1 },
-  1861					.idfall_det_en	= { 0x0680, 6, 6, 0, 1 },
-  1862					.idfall_det_st	= { 0x0690, 6, 6, 0, 1 },
-  1863					.idfall_det_clr	= { 0x06a0, 6, 6, 0, 1 },
-  1864					.idrise_det_en	= { 0x0680, 5, 5, 0, 1 },
-  1865					.idrise_det_st	= { 0x0690, 5, 5, 0, 1 },
-  1866					.idrise_det_clr	= { 0x06a0, 5, 5, 0, 1 },
-> 1867					.ls_det_en	= { 0x0680, 2, 2, 0, 1 },
-  1868					.ls_det_st	= { 0x0690, 2, 2, 0, 1 },
-  1869					.ls_det_clr	= { 0x06a0, 2, 2, 0, 1 },
-  1870					.utmi_bvalid	= { 0x04bc, 23, 23, 0, 1 },
-  1871					.utmi_id	= { 0x04bc, 26, 26, 0, 1 },
-  1872					.utmi_ls	= { 0x04bc, 25, 24, 0, 1 },
-  1873					.ls_det_en	= { 0x079c, 15, 15, 1, 0 },
-  1874				},
-  1875				[USB2PHY_PORT_HOST] = {
-  1876					.phy_sus	= { 0x0728, 8, 0, 0, 0x1d1 },
-  1877					.ls_det_en	= { 0x0680, 4, 4, 0, 1 },
-  1878					.ls_det_st	= { 0x0690, 4, 4, 0, 1 },
-  1879					.ls_det_clr	= { 0x06a0, 4, 4, 0, 1 }
-  1880				}
-  1881			},
-  1882			.chg_det = {
-  1883				.opmode		= { 0x0700, 8, 0, 0, 0x1d7 },
-  1884				.cp_det		= { 0x04b8, 30, 30, 0, 1 },
-  1885				.dcp_det	= { 0x04b8, 29, 29, 0, 1 },
-  1886				.dp_det		= { 0x04b8, 31, 31, 0, 1 },
-  1887				.idm_sink_en	= { 0x0718, 8, 8, 0, 1 },
-  1888				.idp_sink_en	= { 0x0718, 7, 7, 0, 1 },
-  1889				.idp_src_en	= { 0x0718, 9, 9, 0, 1 },
-  1890				.rdm_pdwn_en	= { 0x0718, 10, 10, 0, 1 },
-  1891				.vdm_src_en	= { 0x0718, 12, 12, 0, 1 },
-  1892				.vdp_src_en	= { 0x0718, 11, 11, 0, 1 },
-  1893			},
-  1894		},
-  1895		{ /* sentinel */ }
-  1896	};
-  1897	
+are available in the Git repository at:
 
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v6.18-rockchip-dts64-1
+
+for you to fetch changes up to 07c53a9e970712b1a479dd0ec4adfe184482c22f:
+
+  arm64: dts: rockchip: Enable DP2HDMI for ROCK 5 ITX (2025-09-02 08:32:26 +0200)
+
+----------------------------------------------------------------
+New boards: FriendlyElec NanoPi Zero2, ArmSoM Sige1, Radxa ROCK 2A/2F,
+HINLINK H66K / H68K .
+
+Interesting new peripherals: I guess the most interesting one is likely
+the NPU on RK3588. The rocket driver has been merged into both the DRM
+tree as well as mainline Mesa.
+Other stll interesting ones are DW-Displayport on RK3588, DSI on RK3576
+(missing soc pwm-support to be useful on most boards), thermal support
+and watchdog on RK3576.
+
+The rest peripheral additions on a number of boards (Beelink A1,
+Pine{phone,book}, rk3576-evb1-v10, Rock 5*, ...)
+
+----------------------------------------------------------------
+Alex Bee (3):
+      arm64: dts: rockchip: add IR receiver to rk3328-roc
+      arm64: dts: rockchip: add SPDIF audio to Beelink A1
+      arm64: dts: rockchip: add USB3 on Beelink A1
+
+Alexey Charkov (3):
+      arm64: dts: rockchip: Add RTC on rk3576-evb1-v10
+      arm64: dts: rockchip: Add WiFi on rk3576-evb1-v10
+      arm64: dts: rockchip: Add Bluetooth on rk3576-evb1-v10
+
+Andy Yan (4):
+      arm64: dts: rockchip: Add DP0 for rk3588
+      arm64: dts: rockchip: Add DP1 for rk3588
+      arm64: dts: rockchip: Enable DisplayPort for rk3588s Cool Pi 4B
+      arm64: dts: rockchip: Enable DP2HDMI for ROCK 5 ITX
+
+Anton Kirilov (2):
+      arm64: dts: rockchip: Enable HDMI audio output for NanoPi R6C/R6S
+      arm64: dts: rockchip: Enable the NPU on NanoPi R6C/R6S
+
+Chaoyi Chen (1):
+      arm64: dts: rockchip: Enable eMMC on rk3576-evb1-v10
+
+Chukun Pan (5):
+      arm64: dts: rockchip: set LAN LEDs to default-off on Radxa E52C
+      dt-bindings: vendor-prefixes: Add HINLINK
+      dt-bindings: arm: rockchip: Add HINLINK H66K / H68K
+      arm64: dts: rockchip: Add HINLINK H68K
+      arm64: dts: rockchip: Add HINLINK H66K
+
+Heiko Stuebner (6):
+      arm64: dts: rockchip: convert rk3528 power-domains to dt-binding constants
+      dt-bindings: soc: rockchip: add rk3576 mipi dcphy syscon
+      arm64: dts: rockchip: add mipi-dcphy to rk3576
+      arm64: dts: rockchip: add the dsi controller to rk3576
+      arm64: dts: rockchip: add vcc3v3-lcd-s0 regulator to roc-rk3576-pc
+      dt-bindings: soc: rockchip: add missing clock reference for rk3576-dcphy syscon
+
+Jimmy Hon (1):
+      arm64: dts: rockchip: enable NPU on OPI5/5B
+
+Jonas Karlman (7):
+      arm64: dts: rockchip: Enable more power domains for RK3528
+      dt-bindings: arm: rockchip: Add Radxa ROCK 2A/2F
+      arm64: dts: rockchip: Add Radxa ROCK 2A/2F
+      dt-bindings: arm: rockchip: Add ArmSoM Sige1
+      arm64: dts: rockchip: Add ArmSoM Sige1
+      dt-bindings: arm: rockchip: Add FriendlyElec NanoPi Zero2
+      arm64: dts: rockchip: Add FriendlyElec NanoPi Zero2
+
+Kyle Petryszak (1):
+      arm64: dts: rockchip: Add green power LED to rk3588s-rock-5a
+
+Maud Spierings (2):
+      arm64: dts: rockchip: Enable HDMI receiver on orangepi 5 plus
+      arm64: dts: rockchip: Enable the NPU on the orangepi 5 boards
+
+Nicolas Frattaroli (4):
+      arm64: dts: rockchip: Add thermal nodes to RK3576
+      arm64: dts: rockchip: Add thermal trim OTP and tsadc nodes
+      arm64: dts: rockchip: add pd_npu label for RK3588 power domains
+      arm64: dts: rockchip: enable NPU on ROCK 5B
+
+Peter Robinson (2):
+      arm64: dts: rockchip: Further describe the WiFi for the Pinebook Pro
+      arm64: dts: rockchip: Further describe the WiFi for the Pinephone Pro
+
+Sebastian Reichel (2):
+      arm64: dts: rockchip: add USB-C support for ROCK 5B/5B+/5T
+      arm64: dts: rockchip: Enable RK3576 watchdog
+
+Tomeu Vizoso (2):
+      arm64: dts: rockchip: Add nodes for NPU and its MMU to rk3588-base
+      arm64: dts: rockchip: Enable the NPU on quartzpro64
+
+Yao Zi (1):
+      arm64: dts: rockchip: Add naneng-combphy for RK3528
+
+ .../devicetree/bindings/arm/rockchip.yaml          |  24 +
+ .../devicetree/bindings/soc/rockchip/grf.yaml      |   2 +
+ .../devicetree/bindings/vendor-prefixes.yaml       |   2 +
+ arch/arm64/boot/dts/rockchip/Makefile              |   6 +
+ arch/arm64/boot/dts/rockchip/rk3328-a1.dts         |  28 +
+ arch/arm64/boot/dts/rockchip/rk3328-roc.dtsi       |  13 +
+ .../boot/dts/rockchip/rk3399-pinebook-pro.dts      |  18 +
+ .../boot/dts/rockchip/rk3399-pinephone-pro.dts     |  18 +
+ .../boot/dts/rockchip/rk3528-armsom-sige1.dts      | 464 ++++++++++++++
+ .../boot/dts/rockchip/rk3528-nanopi-zero2.dts      | 340 +++++++++++
+ arch/arm64/boot/dts/rockchip/rk3528-rock-2.dtsi    | 293 +++++++++
+ arch/arm64/boot/dts/rockchip/rk3528-rock-2a.dts    |  82 +++
+ arch/arm64/boot/dts/rockchip/rk3528-rock-2f.dts    |  10 +
+ arch/arm64/boot/dts/rockchip/rk3528.dtsi           |  77 ++-
+ .../boot/dts/rockchip/rk3568-hinlink-h66k.dts      |  10 +
+ .../boot/dts/rockchip/rk3568-hinlink-h68k.dts      |  83 +++
+ .../boot/dts/rockchip/rk3568-hinlink-opc.dtsi      | 666 +++++++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts   | 127 ++++
+ arch/arm64/boot/dts/rockchip/rk3576-roc-pc.dts     |  16 +
+ arch/arm64/boot/dts/rockchip/rk3576.dtsi           | 272 ++++++++-
+ arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dts |   4 +-
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi      | 123 +++-
+ arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi     |  30 +
+ .../boot/dts/rockchip/rk3588-orangepi-5-plus.dts   |  17 +
+ .../arm64/boot/dts/rockchip/rk3588-orangepi-5.dtsi |  56 ++
+ .../arm64/boot/dts/rockchip/rk3588-quartzpro64.dts |  30 +
+ arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts |  61 ++
+ .../boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi   | 190 ++++++
+ .../boot/dts/rockchip/rk3588-rock-5b-plus.dts      |  12 +
+ arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts    |  12 +
+ arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts    |  14 +
+ arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts |  37 ++
+ .../arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi |  42 ++
+ .../boot/dts/rockchip/rk3588s-orangepi-5.dtsi      |  34 ++
+ arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts   |   7 +
+ 35 files changed, 3200 insertions(+), 20 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-armsom-sige1.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-nanopi-zero2.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-rock-2.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-rock-2a.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-rock-2f.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-hinlink-h66k.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-hinlink-h68k.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-hinlink-opc.dtsi
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
