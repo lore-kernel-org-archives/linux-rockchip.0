@@ -4,64 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F411CA101F
-	for <linux-rockchip@archiver.kernel.org>; Sun,  7 Sep 2025 17:43:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FDFACA1017
+	for <linux-rockchip@archiver.kernel.org>; Sun,  7 Sep 2025 18:55:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4es4bW93WpqgbPmCdVoQceaz2JW+W3OusvXP8D1ArTA=; b=mK0kjoPaLo36Qk
-	9UeDcmaYXVI3dX83wBoXFDYUU1VgXVnpFx1sDWKlyFthxniKMsUKwgO70MIVzu/dcjvGam1XfwSqW
-	WEC90VJW7KTFYuMybi/d0WnE+PmUHEHJDerNsjoukAksDI6mJTaDKu7uaUlkyRXJWIBhSN1WWdLgO
-	3IzZaZ9FlcBSJIEgrlkFnrSFcuK0RZZds8QGB7PgiCd2W+kzsJbG+NL/5McH8ApjeHiLqT3DHRL4Z
-	SZGkTA3xUn8n6TY1EBwX1BPwsoyMUCb0UoxYpbNAqLhSnluZheEEeOBfT4OhmjQL2s73PdXf/qxlB
-	WKnX9XcSCqjUhEVTQmpA==;
+	List-Owner; bh=vooyMVEgbLdkEPIAGyQnjm2yxm+I/zlrVVshvFDqv+c=; b=065v5lTGd32K7+
+	mA3Ao8JbepjWQtugqpziK2aJHz729p+lJ0bt/c60DIFZ2OFlx4O6+4N2swt2uoFb4ZPl/4Ym2fCK8
+	mttuT2LBItaP0Atz5D21+qLIDbYlIksugP6VZyxVnhB8S6SaTVYn0QoJc1PrEAtvXOczXqkvbaPw9
+	iuqTmBNvyXeiC78DhUlZL3eQ0vI4l6lKxDT+VFd/vpISbSq29kLBZO0HKOKyGBDV15wEYX9a9TNNG
+	Zk7WjnYRFq/kfA7CH2r+pBiCPvTeDY4e0lHgysAnITw2ehhq5tc+bjHqh28Qnfmb+SAcDqz3C1HiX
+	M3CiF7SpA7fKDmVWcgtQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvJQL-0000000C9DM-1GzM;
-	Sun, 07 Sep 2025 17:43:33 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1uvKXO-0000000COes-0Afd;
+	Sun, 07 Sep 2025 18:54:54 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvJDj-0000000C69D-0gXd;
-	Sun, 07 Sep 2025 17:30:32 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=VFuG/8nZb4eVJ5UiKdHvsABqzXbNy5nmmF5KkQCHiw0=; b=m9KSs/W2ZV6YVhiXV1ECPX2vKD
-	+o2h8UUPBOWVMzKw2GAnPbEBfcduwFTekGW1MigwFNoLfpCVWSYS50tJEDGcD3VyJbEnmSYaPX/vq
-	pH4IgmXZ+DvmN/7+iyG/oYOvunyxtxONYXABQ8tBCOO2b3YxI6frJvBkyRn761u3LBUsKCpviyoMb
-	L7xoMdCbhOgSOsX4bQFfnIlVPozUaRDxOKXrQs7dGsmWg6HODDw2mQr3TYw9PWPaAbAny4r9+8FrV
-	DoRIcZYrp4K7yB7pOwGQCcKDpy0L3X7CYzVZO6MsNszer68gFbp9ja7PEhMNowPPNNHlEtKDq4xkV
-	EVyr/V7Q==;
-Received: from [61.8.147.163] (helo=localhost.localdomain)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1uvJDa-0004Ii-UM; Sun, 07 Sep 2025 19:30:23 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: Chukun Pan <amadeus@jmu.edu.cn>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	Yao Zi <ziyao@disroot.org>,
-	Rob Herring <robh@kernel.org>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org
-Subject: Re: [PATCH v3 0/1] arm64: dts: rockchip: rk3528: Add CPU frequency scaling support
-Date: Sun,  7 Sep 2025 19:30:09 +0200
-Message-ID: <175726620393.195224.5931454450160072348.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250801080025.558935-1-amadeus@jmu.edu.cn>
-References: <20250801080025.558935-1-amadeus@jmu.edu.cn>
+	id 1uvKUW-0000000CO63-1Xgg;
+	Sun, 07 Sep 2025 18:51:58 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1757271105; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=LVWD3SHQtC7SoFVKBuDY1aLxv8HKkg0+CDoXD4XUC871+2/7VKD2LmFHPpaqSCIf/WyCxy1NGFdIvcoWP2+SD78RgWIp0kJ2Nd+EKYDx7bRBPBkQ7Ut9vTmURoZDfRgWDaT39IvQ5iyvJqxPqp8elP1U1J963ErE8MgFSxlG6Dw=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1757271105; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=72zMzp9EQsVogTu/OAl9/EdJSst3NLpKe0M5q7uE32E=; 
+	b=PuMd8rXbS8zSUtqHwxMTyAsTwByeOGoqvHa5YcSoh8/GQUqYR0wrzkYWNwF6pyfZH7gv0HKE5f9l0HhR6IjO5cKO1FwmJerR/MUxVXv9B0pdBZsrSykDKd/G6Ueodjs9e9AVJ0++ClYYwonNJ/+3T0IETObJNj7ijvQr5ZhIYJ8=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=dmitry.osipenko@collabora.com;
+	dmarc=pass header.from=<dmitry.osipenko@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1757271105;
+	s=zohomail; d=collabora.com; i=dmitry.osipenko@collabora.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=72zMzp9EQsVogTu/OAl9/EdJSst3NLpKe0M5q7uE32E=;
+	b=MixN8WjiNrR9K4gGzWj3HwYdmrd1jvqQnRBQVeQbgDtl40BqhCv4myWoJb2rCLnQ
+	48ZoKFPQWXO49DDELuCEtRMnc4+1WMWLWPL/623dv5bP93mwyqid+sYTqJQH+fiYNx/
+	S8ta4TgRapiWvdwhI7vucEgyQJMIhRLpFZns1NNU=
+Received: by mx.zohomail.com with SMTPS id 1757271103703981.538669071521;
+	Sun, 7 Sep 2025 11:51:43 -0700 (PDT)
+Message-ID: <c9136f3e-464a-48c8-92d5-c014dd4e9958@collabora.com>
+Date: Sun, 7 Sep 2025 21:51:39 +0300
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 0/1] Enable HDMI Receiver on NanoPC-T6
+To: Marcin Juszkiewicz <marcin@juszkiewicz.com.pl>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+References: <cover.1757068166.git.marcin@juszkiewicz.com.pl>
+Content-Language: en-US
+From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+In-Reply-To: <cover.1757068166.git.marcin@juszkiewicz.com.pl>
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250907_103031_204498_C4444B77 
-X-CRM114-Status: GOOD (  11.90  )
+X-CRM114-CacheID: sfid-20250907_115156_487719_9834924C 
+X-CRM114-Status: GOOD (  12.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,25 +80,50 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-On Fri, 01 Aug 2025 16:00:24 +0800, Chukun Pan wrote:
-> By default, the CPUs on RK3528 operates at 1.5GHz. Add CPU frequency and
-> voltage mapping to the device tree to enable dynamic scaling via cpufreq.
+On 9/5/25 14:02, Marcin Juszkiewicz wrote:
+> For quite a while I had this patch in my local tree but never made it
+> work. Kernel generates the following messages all the time:
 > 
-> The OPP values come from downstream 5.10 kernel, using a voltage close to
-> the actual frequency. Frequencies below 1200MHz have been removed as they
-> currently use the same voltage.
+> fdee0000.hdmi_receiver: hdmirx_wait_signal_lock: signal not lock, tmds_clk_ratio:0
+> fdee0000.hdmi_receiver: hdmirx_wait_signal_lock: mu_st:0x2, scdc_st:0x0, dma_st10:0x10
 > 
-> [...]
+> "v4l2-ctrl --all" reports that HDMI In is detected, /dev/video[0-4]
+> exist.
+> 
+> I tried two signal sources:
+> - AMD Radeon WX2100 (via passive DisplayPort -> HDMI adapter)
+> - AMD Radeon RX6700XT (HDMI port)
+> 
+> Same situation with both - kernel messages as above on RK3588 system, no
+> connected monitor on host side.
+> 
+> Usually I used MPlayer or MPV to check v4l2 devices but here it fails
+> too:
+> 
+> $ mpv av://v4l2:/dev/video3
+> [ffmpeg/demuxer] video4linux2,v4l2: Not a video capture device.
+> [lavf] avformat_open_input() failed
+> Failed to recognize file format.
+> Exiting... (Errors when loading file)
+> 
+> 
+> Checked SBC schematics again and HDMIIRX_DET_L line is GPIO1_D5 like it
+> my patch.
+> 
+> What I go wrong?
 
-Applied, thanks!
+Hi, your trouble with HDMI capture sounds very similar to [1]. Make sure
+you're using opensource ATF and check whether capture works using
+v4l2-ctl tool, see replies to [1]. Post a full kernel driver log if
+problem will persist.
 
-[1/1] arm64: dts: rockchip: rk3528: Add CPU frequency scaling support
-      commit: 42bbc32c7e9e974ae4eb830ae1381cb016133e5c
+[1]
+https://lore.kernel.org/linux-media/c71a3f79-71f3-4fd2-a509-c42b24636a2f@timsurber.de/
 
-Best regards,
 -- 
-Heiko Stuebner <heiko@sntech.de>
+Best regards,
+Dmitry
+
 
 _______________________________________________
 Linux-rockchip mailing list
