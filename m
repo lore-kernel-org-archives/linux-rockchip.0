@@ -4,81 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1777CAC589
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5CA1CAC585
 	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Sep 2025 18:21:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Eci8MauqiIvH1cnSkpAFGXq4biIlbkmorO7FMR5uYvg=; b=0pqllCn79vUh0q
-	gv9EO8hSdTVc0kDBHw9lfMYa/Y8dfSqvzc8wxXLqunfG22DzxjQ536X/bstIE235evVhZiy9csUYH
-	Ho+2Bh79CzB0LB3C4XHX6b7b3THTJ4IwtHvjE2n34eLi1UvVEH+d0QxEtThnZmBRUXLispLyyvKyK
-	ImaJT+VWCndrGmpeYSQepxspXvzOioLHEaq49qOx9mrR1ca5fLPTZ2cUuVfldvBdEn/hMHlkVVfvX
-	ifCu32je0dZsc1gu/dHw9ZiP7cnuh8fhmKRE8fW68Bos4MT1k3sr08dUe2Fiq7UILxmD4+ATFCEZY
-	k3sMjfgy9SGCB5XggnkA==;
+	List-Owner; bh=5y1u9PirvtGvR/Rnx0HOAI0B52cVaS/vDQ6urb5w9Go=; b=D1kcMchCtAFvpT
+	+Zs3AEWMZ80lOjxOLJPkHnF6Qc0AKe3qELngo7yl+uk9+zOoHIhVLBeBIsM/JluHZjkzd/x7qW6+K
+	RQ7MYqufVmJbvy/4CdJX3bmsm9oROl8PFy/sqql7MzjBrDIp7Qv6WkKSTdat9SlvnbuKY88cXLtu0
+	G1kAjBMn5z4LWbRNJuYsmxlChWqAmoozuElhMKhLTBVTNp9MYATCA1ARZJXIlGH3hgcBuKgWPRU3r
+	tsAJYvlEF2dvRIi5brsJ6781agifPjjs2QYsPPdnb3CKTEVf/MKWSR8bF7mmpP0b+ik2lgIXRixLu
+	YwW22G5iEkzOptGSHF6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvgUW-00000001Uxt-3qfW;
-	Mon, 08 Sep 2025 18:21:24 +0000
-Received: from mail-lj1-x233.google.com ([2a00:1450:4864:20::233])
+	id 1uvgUa-00000001V2A-0sXJ;
+	Mon, 08 Sep 2025 18:21:28 +0000
+Received: from sender4-op-o15.zoho.com ([136.143.188.15])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvbT5-0000000HDG7-0wHk
+	id 1uvbhq-0000000HJHF-0IlN
 	for linux-rockchip@lists.infradead.org;
-	Mon, 08 Sep 2025 12:59:36 +0000
-Received: by mail-lj1-x233.google.com with SMTP id 38308e7fff4ca-336cee72f40so37939391fa.2
-        for <linux-rockchip@lists.infradead.org>; Mon, 08 Sep 2025 05:59:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1757336373; x=1757941173; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=J5BpttAHpJbHjU5zlElKTAX1nmzmhusdG1v06go3DFc=;
-        b=g3XRc5r2mUa+/fwBX+fXeFjvj+Ygr9TI8xgNgYZ6ZVbgzdlkL3CjjLHpLEOZ4NuMO+
-         sTB40aO0poX1IUSGAnow+r2t6H0U8KJ42ASHCZc3CSzqTzO7TyHmMQv3rTmALHbM2Gt+
-         zRNkaK+M6TFFewe8tt5u+RA5CO07DfSbvFrVXSvleGI0a+ghINpuIC0ZRS5hefHBomNT
-         WEDvtYLoBH/HYPOBl5LXFqkISMU1TJZlyX2IHqY0b58wvsQ4G5LeTsbCCWQ8W1zeOUd2
-         pZ7vRDAzZz6dc+7A55PJ2lChg6Ow4AVh/kkRu7xYBCIAQmWmhN4Kg6Vz1jukM58t1bxD
-         5PzQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1757336373; x=1757941173;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=J5BpttAHpJbHjU5zlElKTAX1nmzmhusdG1v06go3DFc=;
-        b=Vc+PH1g71vqrQO6Zn1sZOEMZXL5lGiZw5hlBTSriHDXDA/q1DJ2aH6vBqeyBff29Bm
-         x5OggLRRxEqJRSInjhKtMEku7j2989d/7T8gGDNlb936SzxVy0uK11WRUX1jDaGpZdmr
-         oT/53jJb6JCrRfAoZhM56+o4+EOEZALW0kiN6eAngDnjn66CNqP2taj42UYBwvKFP1V2
-         NTFz3CtOE5eN1WeRw6IYPtjb+niIprHyVpoGK8VqTSEZq6l7B00mbSSsXGmPaQaUMW7c
-         krxgsIJ3EMKdE+CO+JQGpswR0t0/qm/3KxcS5hTreUUbT8uRzLtym8hrmYAqcW/dyhrp
-         wRHg==
-X-Forwarded-Encrypted: i=1; AJvYcCUs0N4gamuTr9Oo827lKgkmpFWz4nVvOAR4DgnL+w0PXRqmewUpNcKk+FVKFq02j3vzkhF+/o6aaK+eFRF0Zg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Ywxs+3OQVSxQplR0qzza0FWcCB2bvdaS4bHzKE3xIe1Bu8G/9KZ
-	Wxa7FltDgPJ8ZzHbfN7ChmDcfIYJo50gzVOTSpLVYKbdFZ8rZegHo9+ZhbtEuvSU9J+/c4f8+ti
-	i9RZLBTtxYq6ABu7b8kFadg3eZhyyp+ktBSzVyUf8Cg==
-X-Gm-Gg: ASbGncvRRy13gY0wZwKTlrCawdknwDhzkk+FNLfHDLQpMFr3Reorrgl2g25UQ3oy6m+
-	gYwpmdIaZ4MotfBp7suOWPPxb/ckkCGqpP9fJeqwRsCLraBMkHdYdd50RSIC9ZhthHtaQu9llKb
-	bJ5T6IXmbEd5HnjJBm+tAa5qrwwUjBElfpYzLypX2rjUbqd4ZM8Jk7juBmKadjHK2j4F1vx4lio
-	/COHlG0XhPDeSWsM+F5aWIvUE9n
-X-Google-Smtp-Source: AGHT+IHxkO5Trw9x8IQx8FMGDMwnUY1eThHnZXuMivELDVJEriHgjq/E/h355l8gaJCNCLOfPlh87yQTWfxAaUQ+yRQ=
-X-Received: by 2002:a05:651c:542:b0:337:f84a:6ded with SMTP id
- 38308e7fff4ca-33b5fe33199mr21312101fa.40.1757336372950; Mon, 08 Sep 2025
- 05:59:32 -0700 (PDT)
+	Mon, 08 Sep 2025 13:14:51 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1757337274; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=DNh13hbFAmkcsVoMBOYEI2azWoZts5Tloe+7VNBo6Kal0Rt8Ft0HNkSbk+CD6RugngB3pmFnR/A3s5jP8Ff/8QZS9GBzd/PSIb41LOFGp0AKolLTuT825FL9ELSftJivQtC+sNxkCGij9Vc2GaoiuteOJxyiwS2w2EP3S+adB7Y=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1757337274; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=pk0pPbbGzqsDwAb5KOUGSpgEXegsNBH0oucyp1ouJvs=; 
+	b=bnADyuBiUpkfLxyDVSannBNIBHWRhcNPBgAaPrZgquGkCJfXdgJijdGOrVsQ8UamL8oWb1SKPa8HuQ5qmC5EzvIft/w6aMgLWZs2nfHJId3DH7lLZKFoRuPlhuCpnwt0sModYCw7v8aa9ymnkHSzUrU78+lhUiEMExIhwf7aIcU=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1757337274;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=pk0pPbbGzqsDwAb5KOUGSpgEXegsNBH0oucyp1ouJvs=;
+	b=FQHB5ZAO3t8mFRAWbT4PhhvTQL8TZAZVnBRS5+l6VHAcG2epE5UTsZTH6Q0rHEE+
+	7DXx+udKmcgHmrx1ExjnEJB4aVF4pFktKBdYHTgw87gYZzXJMMfIi2bZs2QQZ6YGXhZ
+	gVgyeJR2nMC4d8y6mDUlaYCauRsNl39VXnVbqEi8=
+Received: by mx.zohomail.com with SMTPS id 1757337272979795.5615319676068;
+	Mon, 8 Sep 2025 06:14:32 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH] pmdomian: core: don't unset stay_on during sync_state
+Date: Mon, 08 Sep 2025 15:14:28 +0200
+Message-ID: <1953725.CQOukoFCf9@workhorse>
+In-Reply-To: <CAPDyKFpSY+FeKh7ocjQ_nGNZA5+3tWAL8e7ZNKXKNFP-yoiu_g@mail.gmail.com>
+References: <20250902-rk3576-lockup-regression-v1-1-c4a0c9daeb00@collabora.com>
+ <3556261.BddDVKsqQX@workhorse>
+ <CAPDyKFpSY+FeKh7ocjQ_nGNZA5+3tWAL8e7ZNKXKNFP-yoiu_g@mail.gmail.com>
 MIME-Version: 1.0
-References: <179c9e8c-8760-41e6-aad7-7a128df60984@omp.ru>
-In-Reply-To: <179c9e8c-8760-41e6-aad7-7a128df60984@omp.ru>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Mon, 8 Sep 2025 14:59:21 +0200
-X-Gm-Features: Ac12FXwB3hkNayk_jKlRJHBwnE7MZt7LhknFIIwvxH7yn6EzRdVpugXhQZOilew
-Message-ID: <CACRpkdbzEmZN=-FPvax4z_iq7u6pHyHGJ213QtpxqFL98-Ou5Q@mail.gmail.com>
-Subject: Re: [PATCH] pinctrl: rockchip: fix NULL ptr deref in rockchip_pinctrl_parse_groups()
-To: Sergey Shtylyov <s.shtylyov@omp.ru>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-gpio@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250908_055935_262176_AB08DB36 
-X-CRM114-Status: GOOD (  15.07  )
+X-CRM114-CacheID: sfid-20250908_061450_173477_220582EE 
+X-CRM114-Status: GOOD (  47.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,27 +71,138 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Heiko Stuebner <heiko@sntech.de>, linux-pm@vger.kernel.org, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, kernel@collabora.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkLCBTZXAgMywgMjAyNSBhdCA5OjQ54oCvUE0gU2VyZ2V5IFNodHlseW92IDxzLnNodHls
-eW92QG9tcC5ydT4gd3JvdGU6Cgo+IEluIHRoZSBSb2NrY2hpcCBkcml2ZXIsIHJvY2tjaGlwX3Bp
-bmN0cmxfcGFyc2VfZ3JvdXBzKCkgYXNzdW1lcyB0aGF0IHRoZQo+ICJyb2NrY2hpcCxwaW5zIiBw
-cm9wZXJ0eSB3aWxsIGFsd2F5cyBiZSBwcmVzZW50IGluIHRoZSBEVCBub2RlIGl0IHBhcnNlcwo+
-IGFuZCBzbyBkb2Vzbid0IGNoZWNrIHRoZSByZXN1bHQgb2Ygb2ZfZ2V0X3Byb3BlcnR5KCkgZm9y
-IE5VTEwuIElmIHRoZSBEVAo+IHBhc3NlZCB0byB0aGUga2VybmVsIGhhcHBlbnMgdG8gaGF2ZSBz
-dWNoIHByb3BlcnR5IG1pc3NpbmcsIHRoZW4gd2Ugd2lsbAo+IGdldCBhIGtlcm5lbCBvb3BzIHdo
-ZW4gdGhlIHBvaW50ZXIgaXMgZGVyZWZlcmVuY2VkIGluIHRoZSAqZm9yKiBsb29wIGp1c3QKPiBh
-IGZldyBsaW5lcyBhZnRlciB0aGUgY2FsbC4gIEkgdGhpbmsgaXQncyBiZXR0ZXIgdG8gcGxheSBz
-YWZlIGJ5IGNoZWNraW5nCj4gdGhlIGxpc3QgdmFyaWFibGUgZm9yIE5VTEwgKGFuZCByZXBvcnRp
-bmcgZXJyb3IgaWYgc28pLCBsaWtlIHdlIGNoZWNrIHRoZQo+IHNpemUgdmFyaWFibGUgZm9yIHZh
-bGlkaXR5IGZ1cnRoZXIgZG93bi4uLgo+Cj4gRm91bmQgYnkgTGludXggVmVyaWZpY2F0aW9uIENl
-bnRlciAobGludXh0ZXN0aW5nLm9yZykgd2l0aCB0aGUgU3ZhY2Ugc3RhdGljCj4gYW5hbHlzaXMg
-dG9vbC4KPgo+IEZpeGVzOiBkM2U1MTE2MTE5YmQgKCJwaW5jdHJsOiBhZGQgcGluY3RybCBkcml2
-ZXIgZm9yIFJvY2tjaGlwIFNvQ3MiKQo+IFNpZ25lZC1vZmYtYnk6IFNlcmdleSBTaHR5bHlvdiA8
-cy5zaHR5bHlvdkBvbXAucnU+CgpQYXRjaCBhcHBsaWVkIQoKWW91cnMsCkxpbnVzIFdhbGxlaWoK
-Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJv
-Y2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0
-dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+On Friday, 5 September 2025 16:27:27 Central European Summer Time Ulf Hansson wrote:
+> [...]
+> 
+> >
+> > Okay so I believe I have found the root cause of the regression. UFS is
+> > innocent, disabling UFS just happens to avoid it due to how the timing of
+> > things works out.
+> >
+> > The real issue is that the NPU power domains on the RK3576, which are
+> > currently unused, have an undeclared dependency on vdd_npu_s0.
+> >
+> > Declaring this dependency with a `domain-supply` and adding the
+> > necessary flag in the rockchip PD controller to use it does not solve
+> > he problem. This is because the rockchip PD controller cannot acquire
+> > those supplies during probe, as they're not available yet and their
+> > availability depends on the PD controller finishing probe.
+> >
+> > That's why it acquires them in the PD enable callback, but the NPU
+> > PDs are never enabled because they're unused.
+> >
+> > This worked fine when unused PDs were still turned off quite early, as
+> > this meant they were turned off before regulators. Now the unused
+> > regulators are turned off before turning off the unused PDs happens.
+> 
+> I see, thanks for sharing these details. What a mess.
+> 
+
+Agreed :(
+
+> >
+> > I don't really see an easy way to fix this with a patch that's fit for
+> > an rc cycle. We can't request the regulator early or even just add a
+> > device link, as the regulator is not around yet.
+> 
+> Right, I will work on a patch or two that allows rockchip
+> power-domains to opt-out from genpds new behavior and to keep using
+> the old one.
+> 
+> I think we prefer to do it like this (should be quite a limited amount
+> of code and okay for an rc), rather than reverting for everyone.
+
+That sounds good to me.
+
+> 
+> >
+> > Marking vdd_npu_s0 as always-on would be abusing DT to work around a
+> > Linux kernel shortcoming, which is a no-no.
+> >
+> > What we need is either a way to register with pmdomain core that
+> > certain PDs need a late init for additional supplies, which is then
+> > called before any of the unused regulator power off functionality is
+> > invoked by the regulator core.
+> >
+> > Any ideas?
+> 
+> Yes :-)
+> 
+> I would suggest implementing an auxiliary driver, along with the
+> rockchip_pm_domain_driver. The main job for the auxiliary driver would
+> be to get the regulator in its ->probe() - and if it fails because the
+> regulator isn't available yet, it should keep trying by returning
+> -EPROBE_DEFER. See more about the auxiliary bus/device/driver in
+> include/linux/auxiliary_bus.h and module_auxiliary_driver().
+> 
+> Moreover, when the rockchip_pm_domain_driver probes, it becomes
+> responsible for pre-parsing the OF nodes for the domain-supply DT
+> property, for each of the specified power-domains. If it finds a
+> domain-supply, it should register an auxiliary device that corresponds
+> to that particular power-domain. This can be done by using
+> platform-data that is shared with the auxiliary device/driver. See
+> devm_auxiliary_device_create().
+> 
+> Furthermore we would need some kind of synchronization mechanism
+> between the rockchip_pm_domain_driver and the auxiliary driver, to
+> manage the regulator get/enable/disable. I think that should be rather
+> easy to work out.
+> 
+> Do you think this can work?
+
+This sounds similar to something Heiko suggested to me, and I agree
+it could work. It does seem like a pretty painful solution though,
+in terms of needed additional code and complexity to basically just
+tell Linux "hey you can't get this regulator yet but please try
+again later without our involvement".
+
+To that end, I've tried working out a regulator-based solution to
+it, where the rockchip_pm_domain driver registers a "proxy"
+regulator for each power domain that wants a regulator, with its
+supply set to the name of the real `domain-supply` regulator.
+
+The logic behind this was that the regulator core runs a check
+for whether every supply is resolved before it turns off unused
+regulators. The hope was that if we register a proxy regulator
+and enable it immediately in the pm_domain probe, then regulator
+core will handle the actual dependency at precisely the right
+time, namely before it checks to see whether any are unused and
+can be turned off.
+
+As I discovered though, this can't really work. The regulator
+core will in this case just set the supply regulator to a dummy
+regulator when it's enabled in our probe function, and later
+supply resolving passes are then content that this supply is
+resolved even though it is a dummy supply. There does not appear
+to be any way to opt out of getting this dummy supply.
+
+So knowing that this doesn't work, I have another idea, but I
+feel like both the regulator subsystem and the pm-domains
+subsystem will hate this: explicitly create an order between
+the pmdomain idle check and the regulator idle check to make
+sure that the pmdomains idle check runs first.
+
+This would set in stone how the kernel worked previously for
+kernel users that relied on this, but is a conceptually
+unpleasant cross-subsystem dependency.
+
+> 
+> Kind regards
+> Uffe
+> 
+
+Kind regards,
+Nicolas Frattaroli
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
