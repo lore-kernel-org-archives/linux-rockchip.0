@@ -4,59 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D10CCA1016
-	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Sep 2025 19:30:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC443CA1016
+	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Sep 2025 20:20:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=b6AA6F5Z8HRr9YBULk50VGKIJMaoIb+TK4Ah26mmHc4=; b=00MDRZiYGNfdlH
-	eR7nQFsr7bm24KUwtD8+nLCXE/pd+da2DwO1UsgQUQcgvLS2gBhrQVqhAUsCviTTUqphGJbyRPvba
-	5/9lNvpHtQku58/+hsNLA/PuTHJc7lVa0cMHqbX0YrNNld4eQiNCIxE3YDy9M06l/uEbm7yTNnuYD
-	OB2Oxsq0vBSq07hmir23ZcjQDxIbTks/a3rpQdLReAO5rOWThxgNfwNnHa3sXfN3nOD1zLxUEuxBC
-	eeq8m/qZp/0Llv8R6qsuHxeoDjQd6AzCz0vENgQg8YHsyiWxRR4lcjjtMsS4lLs4J3m1CZt7bXmgy
-	nFQe1f1V0iu1gGuX7cqQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=nPM36DFcL7WxAJv6jVDzmRL9dBfOLa9h19R8VJqgZh0=; b=XGSHFeh5VjS/B5
+	dco6Mune/3oAjoLQ6w4iEkovuZDieJemUfCIcqYqYcRRuqClDt2PfBfU37tW9MOMrAinP0DyvMNVN
+	a3qbqv5a8d4twV5m3HrqsmDE1Nf/qf5p8xlwDIcPRBYCqpjqlf+ZHEv6LiGNAXbeHD10eJ7hxiRng
+	rxJPGQ1YImO5KgH/7diRQmwNDeuvenNe9Mvzs9j/6CtXjQpGiWhjM3suZpRfRwdOWteuSBdaqZVqZ
+	Wuecqys4nvPrIKXMYDzNoO0UGPwl/zGYwh10EhyASIjyMDzfMwdFRPQKfiWF4XCyMw/Dj4BdPu+9N
+	hnvmSbXlnXhyLyGRPVyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvhYv-00000001tVN-0hiV;
-	Mon, 08 Sep 2025 19:30:01 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1uviLP-000000029MH-3hB6;
+	Mon, 08 Sep 2025 20:20:07 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvef6-00000000jGs-0x2J
-	for linux-rockchip@lists.infradead.org;
-	Mon, 08 Sep 2025 16:24:13 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 6D41443893;
-	Mon,  8 Sep 2025 16:24:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3E829C4CEF1;
-	Mon,  8 Sep 2025 16:24:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1757348651;
-	bh=blZMEeaiSL5AXGGTZofoGD2fELHc3g2+uixUbXRJ9bk=;
-	h=From:To:Cc:Subject:Date:From;
-	b=PSYaYHjwLNv4rQ3H9eHApPvFiajP0oyiEjARCbQkvrZGZ2nIgbY5+BvaDE1tKgZSZ
-	 HcqVw3TdC6tPa2amkrar7p6N66z3oEJBqhmoJ/GReXNjmuchuW7u6Z7Qh0I35MrJp3
-	 8kela1wISgTD9QGbPtI00DeLufp+T3dxhczXI1u1a4M3AJotsbSX/4Z+T3+4HI+0A4
-	 /Uf81ey80+kyt0v+q1NkfN0wje+dDyVi+0Et94Xj5YEYmc3qjMixo+OtUMIQouSZSP
-	 v8svHEqDW8B465XU2XgZHKsr6xkNlhurDQ0aayKx6nEt0y16nLIzB1Cx5yy0vOHEZe
-	 s/du6ZvBt0Xdw==
-From: Niklas Cassel <cassel@kernel.org>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org,
-	Niklas Cassel <cassel@kernel.org>,
-	Frank Li <Frank.Li@nxp.com>
-Subject: [PATCH] arm64: dts: rockchip: rk3588: add msi-map for pcie3x4_ep
-Date: Mon,  8 Sep 2025 18:24:01 +0200
-Message-ID: <20250908162400.535441-2-cassel@kernel.org>
-X-Mailer: git-send-email 2.51.0
+	id 1uverP-00000000nPO-3P5x;
+	Mon, 08 Sep 2025 16:36:57 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=tIo+HgFDBSGjk+ryK4PE8d8TpiiCG+5aEmtrJp8mr2Y=; b=W8XWzjn0JY78XM1rjlNQr5OpUY
+	dXHyf6I+qj/yv6fEtIh9ljgEs0tYlnNlsu1SvcJJ8I83bEcJYaeJZRYsMjy7K6SlgnS9ba9ghfGfC
+	akZnwBMaDbsPGXKjbbs6qDtvRfDJxQgfdXCWXDWbymYozZsfUKUTwC8Kbzdk7wW6MOH0=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1uver6-007gmH-9h; Mon, 08 Sep 2025 18:36:36 +0200
+Date: Mon, 8 Sep 2025 18:36:36 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Kaison Deng <dkx@t-chip.com.cn>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, Wayne Chou <zxf@t-chip.com.cn>,
+	Quentin Schulz <quentin.schulz@cherry.de>,
+	Dragan Simic <dsimic@manjaro.org>, Jonas Karlman <jonas@kwiboo.se>,
+	FUKAUMI Naoki <naoki@radxa.com>,
+	Peter Robinson <pbrobinson@gmail.com>, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] arm64: dts: rockchip: Add devicetree for the
+ ROC-RK3588-RT
+Message-ID: <153e5099-ee64-4ce9-b70e-feb24d8731cb@lunn.ch>
+References: <20250905090115.718622-1-dkx@t-chip.com.cn>
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1719; i=cassel@kernel.org; h=from:subject; bh=blZMEeaiSL5AXGGTZofoGD2fELHc3g2+uixUbXRJ9bk=; b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGDL2Myv8vF2q66H76WzIj7eK4dqBunlbj988buZjWln+b dMfvTLTjlIWBjEuBlkxRRbfHy77i7vdpxxXvGMDM4eVCWQIAxenAExkzxeG//VP5yuWvMphCtBr f2SVO3fx2jsrVSICXSfZuZ68PG91Dg/D/9S0yVqem700XmjcNapvd+FtsAn72PwxJ0R39pFXc36 eYwcA
-X-Developer-Key: i=cassel@kernel.org; a=openpgp; fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
+Content-Disposition: inline
+In-Reply-To: <20250905090115.718622-1-dkx@t-chip.com.cn>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250908_092412_284109_64408742 
-X-CRM114-Status: UNSURE (   9.31  )
+X-CRM114-CacheID: sfid-20250908_093655_854553_64DC2403 
+X-CRM114-Status: UNSURE (   8.19  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -74,52 +76,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Support for msi-map in the pci-ep device tree binding was added in
-commit a6aed6b9c79e ("dt-bindings: PCI: pci-ep: Add support for iommu-map
-and msi-map").
+> +&gmac0 {
+> +	clock_in_out = "output";
+> +	phy-handle = <&rgmii_phy0>;
+> +	phy-mode = "rgmii-rxid";
 
-The PCI endpoint doorbell feature was added in commit 1c3b002c6bf6 ("PCI:
-endpoint: Add RC-to-EP doorbell support using platform MSI controller").
+The usual problem with rockchip boards. rgmii-rxid is probably wrong,
+unless you have a very odd PCB.
 
-The PCI endpoint doorbell feature requires:
--An interrupt controller that implements GIC interrupt translation
- services (ITS).
--msi-map being defined in the pcie endpoint device tree node.
--CONFIG_PCI_ENDPOINT_MSI_DOORBELL being enabled.
+https://elixir.bootlin.com/linux/v6.15/source/Documentation/devicetree/bindings/net/ethernet-controller.yaml#L287
 
-Add msi-map to the pcie3x4_ep device tree node.
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&gmac0_miim
+> +		     &gmac0_tx_bus2
+> +		     &gmac0_rx_bus2
+> +		     &gmac0_rgmii_clk
+> +		     &gmac0_rgmii_bus>;
+> +	tx_delay = <0x47>;
 
-With this, the pci endpoint kselftest doorbell test case passes:
- # pci_endpoint_test -r pcie_ep_doorbell.DOORBELL_TEST
- TAP version 13
- 1..1
- # Starting 1 tests from 1 test cases.
- #  RUN           pcie_ep_doorbell.DOORBELL_TEST ...
- #            OK  pcie_ep_doorbell.DOORBELL_TEST
- ok 1 pcie_ep_doorbell.DOORBELL_TEST
- # PASSED: 1 / 1 tests passed.
+Please try rgmii-id, and small values here.
 
-Cc: Frank Li <Frank.Li@nxp.com>
-Signed-off-by: Niklas Cassel <cassel@kernel.org>
----
- arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi | 1 +
- 1 file changed, 1 insertion(+)
+> +	clock_in_out = "output";
+> +	phy-handle = <&rgmii_phy1>;
+> +	phy-mode = "rgmii-rxid";
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&gmac1_miim
+> +		     &gmac1_tx_bus2
+> +		     &gmac1_rx_bus2
+> +		     &gmac1_rgmii_clk
+> +		     &gmac1_rgmii_bus>;
+> +	tx_delay = <0x42>;
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
-index 90414486e466f..c0121aea791d7 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
-@@ -389,6 +389,7 @@ pcie3x4_ep: pcie-ep@fe150000 {
- 		interrupt-names = "sys", "pmc", "msg", "legacy", "err",
- 				  "dma0", "dma1", "dma2", "dma3";
- 		max-link-speed = <3>;
-+		msi-map = <0x0000 &its1 0x0000 0x1000>;
- 		num-lanes = <4>;
- 		phys = <&pcie30phy>;
- 		phy-names = "pcie-phy";
--- 
-2.51.0
+Same here.
 
+	Andrew
 
 _______________________________________________
 Linux-rockchip mailing list
