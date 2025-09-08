@@ -4,107 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A653CA1016
-	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Sep 2025 20:50:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B043ECAC582
+	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Sep 2025 02:28:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=za+wDQ53YW7InEP01XGmKWKCNk0IActd3UOGvE7M5p0=; b=JeRXyNJ5hQWm/U
-	CY8doUaZKIvJoxK1tGP1X0ywJcmsSdciXtAQq+joO+0quTUHLJr1xSQfjfAKFUX14Zlx6NyWoQhzo
-	a6OrP+pC+1ojYFgJpm+Ikgoa2LPx8inu/zzRFCqwWy8gQ0gB18DI1On4ARVJPwUBQFpnvjtZUBojm
-	g1SpLiRAmJfPwpKBqcQlncELVYVwHiKU84mh3BlDx69equi1oK1zwa7zlbZxfe9NYRMOW/C/puWoJ
-	kT0qTSWbvJV7Zf/4lq6zTRomRhF/Smf7YWNr2hiuIoATIEj55AGNLCNl8AAkEwnikJGrU5cwGS/0b
-	lMWmMu66lKW17OKoFLZg==;
+	List-Owner; bh=+ww9meewYxZpnuRGT4azXjY3kV526yX65R6GI9jHVew=; b=poYlRoxvgTXlho
+	oPiIzvoft4HvzaRd24OpZSISw3venQvy4zwf2iDUNLif1msrUnLOzZJ7N9HzRHPWxC0IJmwrqVbaY
+	ma8/YfPq4k1TBi4dFPW1VBctqrAVRSqhIQP/79KcpRCTSVRM5CHRUPc6z6OKEoiKeP9d59TQ4zD2x
+	LECfnfjxgZRI6TkM7Xb2XISzkkav3OzKiAB6M0bryO7T1rU8eHR26isc3QAG/r+ztB/qZwZoXDMS9
+	8FnjPW72ov+7A7q3WvGXMQ7k+EjPXkQPMmIiHrvVkjKqgPv/2tIVu3tg0OiBbPoDe6bsrDVGHZqTb
+	sDIVbgZV7a61eQiMC6UQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvip8-00000002IWZ-3Mni;
-	Mon, 08 Sep 2025 20:50:50 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1uvo5r-00000003h0P-3Bug;
+	Tue, 09 Sep 2025 02:28:27 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvfQu-000000018DN-0hR5
-	for linux-rockchip@lists.infradead.org;
-	Mon, 08 Sep 2025 17:13:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1757351615;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=f5u862f+33I0ToIg9z8vAxXZhZpYtuEC4meBODLVdsg=;
-	b=TfJQxYHB7l7KDDURxBPpIH30XGO4ymo6MB3/92HdIeoAoZEtg4U/I2UWM6lwrP4l2BTnK2
-	wcOBRjMSQwp2hKut/wNjnyWUR9dtKzgBF2EwHMouImHATmOHilKmJZkOxo4p5nQr3BcWx0
-	YBKoI83gPpamAmV2iwvyI6JspTs1Jew=
-Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
- [209.85.222.197]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-208--2bgQGFWPPmAujspvWaoSA-1; Mon, 08 Sep 2025 13:13:33 -0400
-X-MC-Unique: -2bgQGFWPPmAujspvWaoSA-1
-X-Mimecast-MFC-AGG-ID: -2bgQGFWPPmAujspvWaoSA_1757351613
-Received: by mail-qk1-f197.google.com with SMTP id af79cd13be357-7e870623cdaso1165943785a.2
-        for <linux-rockchip@lists.infradead.org>; Mon, 08 Sep 2025 10:13:33 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1757351613; x=1757956413;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=f5u862f+33I0ToIg9z8vAxXZhZpYtuEC4meBODLVdsg=;
-        b=M64VdPbZv+G0x/opR2NHxyPVrcOga5kGPMLNIrR9kCvy4KLHPRQpBWLikcMWv//E8v
-         EkzsLQENWFdwvTwX5eEqO4LmvpxJ6GD3XD+7eS5FUT3YIj+ExeTC+WZMjCaJUqiny2fj
-         OE1TSlhSg9aX7xsn/wgOUGeZj0QFAKK6mb7DBhnWgdvv/BOzI4RVx95MB6je1s8u/IO4
-         Z7esqjanC+vqw07qRHkxUGo7AhLHxpS2e3fUDpWrVd3lCoqTP+RYM/Ryjsvnd9A7WpWq
-         99UtKVXt/YXMxYCTEUVgEWYNfzrWNofiXYm7GftXXJi1W8qSKZkMHPJAIsDmfciyj4T2
-         LVLQ==
-X-Forwarded-Encrypted: i=1; AJvYcCW/z0WIlaGjEpl3BgF4m/4GQVaw1qhgivFiAn1DgosppllbGOLFzaCSL1ZSmgdwo1e3lByDrSDo8nzHQuou4w==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwzwYHeZTgJqExziXaVU6csQctR5eBrGCNCGf+dN3c+uUrIIa/o
-	PHjs0eD0H6WiUiPAx0s9IwOQP/DZDwU4wwup9jVENpMFkFm+LPaNpjwI6ES8RtDE0zWM1xlPxse
-	IEVUODxOSu43yHTCnJWprofdW3f9OhcUhh7VUg+DSLsiXU856xtJ02GvXQoiEdzuiyMaCUcZqNw
-	==
-X-Gm-Gg: ASbGncu6U8X6qrFo93RUvctgL+rkxIpI3H1ev4ZVmTHYLB0FiH1JJi0sIkUQ8Hl4nMx
-	Rgb4Vj7II2rtyChPbwTf7Y6GaPH/+3DhrW/yPAK9rutaAhFWKbiHHeB5LwAeyJdc3KVJ7Ypl3sI
-	hmow510TYG7VoNjajCguI9PlDW09H5IpICk56Befb5J8XVCcqQnP6oIIGZC6as39lpKkVxVPalG
-	kGq0HKP4wCf1ZzP6YY09wohbHStn6Ac+SA+3QXTOXU5qVVgqFZwh3DpqbKFigStoC1elWo9OBWZ
-	wSEciB+wjJTOYo1bW/eisi3BFKpabE6wNKZQSv2KwTGgESPNP6CEKOzyI1k=
-X-Received: by 2002:a05:620a:4589:b0:7e8:1d4b:b00e with SMTP id af79cd13be357-813c31ef062mr818166585a.30.1757351613085;
-        Mon, 08 Sep 2025 10:13:33 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHjCX6nGjgyfHMIgtZhE/2SgJwH/cNIdfnPyghhVtQtsXFicJtDPEijNhBgIwhV/6KVPSFsmg==
-X-Received: by 2002:a05:620a:4589:b0:7e8:1d4b:b00e with SMTP id af79cd13be357-813c31ef062mr818162785a.30.1757351612499;
-        Mon, 08 Sep 2025 10:13:32 -0700 (PDT)
-Received: from x1 ([2600:382:8507:870e:b6f8:ee72:4f09:a16a])
-        by smtp.gmail.com with ESMTPSA id af79cd13be357-80aabf586c5sm1108360485a.60.2025.09.08.10.13.30
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 08 Sep 2025 10:13:31 -0700 (PDT)
-Date: Mon, 8 Sep 2025 13:13:29 -0400
-From: Brian Masney <bmasney@redhat.com>
-To: Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>, Vladimir Zapolskiy <vz@mleia.com>,
-	Piotr Wojtaszczyk <piotr.wojtaszczyk@timesys.com>,
-	Chen Wang <unicorn_wang@outlook.com>,
-	Inochi Amaoto <inochiama@gmail.com>,
-	Michal Simek <michal.simek@amd.com>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Andrea della Porta <andrea.porta@suse.com>,
-	Maxime Ripard <mripard@kernel.org>
-Cc: linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org, sophgo@lists.linux.dev,
-	linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
-Subject: Re: [PATCH 0/8] clk: convert drivers from deprecated round_rate() to
- determine_rate()
-Message-ID: <aL8OuWjlswr95xcB@x1>
-References: <20250828-clk-round-rate-v2-v1-0-b97ec8ba6cc4@redhat.com>
+	id 1uvgfl-00000001a8M-1T0w;
+	Mon, 08 Sep 2025 18:33:02 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1757356371; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=mP1gqjkdiUExNbEz/+ZLOQQRp/VIvy2jg6mCgwuNQvpld/C57PjRbvmWiRJhWc0OyzbbB65Ymt4tCkSYA9iTx0hgW3c/zRMmuSUC8zl97O1/jjklh4OHqQJDJoHNK0R4ACGeg0kxbnkIhx2Ma0ccXKkD73BObWmkSZFEX9n5L0g=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1757356371; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=6ltzTi+I6kPPm3F0lLcLlkqmygrdjRSVDeW/ROJ50BY=; 
+	b=nEU6mm47QxW+KIhbYWdgDGNME8hkZ19fI0B+ngC/O/wyYyU6MvQ6q8A5rSx+wdNH7x7gCh1pnpcl9yY5tshNPPawa23W+z7SELy+UOrDk/G6efLfRRUpodfHJjrxVXAeQ06p6gXjZKl5wvWqmx6ZPos7dCZh4RPSv1mo6ah+cjE=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
+	dmarc=pass header.from=<detlev.casanova@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1757356371;
+	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=6ltzTi+I6kPPm3F0lLcLlkqmygrdjRSVDeW/ROJ50BY=;
+	b=gmdHZEpjqx+Qs0N9zbN7Mgz3VYtN9gkYEaDT2OQegj86gUyG0C+igfYzxfo69760
+	P6q8Y0ULhZPp/AskthsyD20oYxulxBHfDGLyTvGcNu83D/XLEiWWVN98eEW489zYcYs
+	uLSd90pCQs2vD5VVk7y3fPyi/DeL9IgdV7qMC430=
+Received: by mx.zohomail.com with SMTPS id 1757356367793396.9789493803712;
+	Mon, 8 Sep 2025 11:32:47 -0700 (PDT)
+Message-ID: <c05ea992-b0d8-4ea4-8a11-660b9cae4820@collabora.com>
+Date: Mon, 8 Sep 2025 14:32:45 -0400
 MIME-Version: 1.0
-In-Reply-To: <20250828-clk-round-rate-v2-v1-0-b97ec8ba6cc4@redhat.com>
-User-Agent: Mutt/2.2.14 (2025-02-20)
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: XoBkMSStiihynmgkawldvzaVDGgbm054Jw7er64NTZY_1757351613
-X-Mimecast-Originator: redhat.com
-Content-Disposition: inline
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 2/7] media: rkvdec: Add variants support
+To: Jonas Karlman <jonas@kwiboo.se>,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: Alex Bee <knaerzche@gmail.com>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20250905161942.3759717-1-jonas@kwiboo.se>
+ <20250905161942.3759717-3-jonas@kwiboo.se>
+Content-Language: en-US, fr-CA
+From: Detlev Casanova <detlev.casanova@collabora.com>
+In-Reply-To: <20250905161942.3759717-3-jonas@kwiboo.se>
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250908_101336_274173_A7161A45 
-X-CRM114-Status: GOOD (  14.43  )
+X-CRM114-CacheID: sfid-20250908_113301_456734_986B3B5E 
+X-CRM114-Status: GOOD (  25.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,25 +79,173 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Aug 28, 2025 at 08:38:19PM -0400, Brian Masney wrote:
-> Here's a minor v2 to my larger 114 patch series at
-> https://lore.kernel.org/linux-clk/20250811-clk-for-stephen-round-rate-v1-0-b3bf97b038dc@redhat.com/
-> that only includes 8 patches where a v2 was needed. To reduce the noise
-> in everyone's mailboxes I'm not including the other 106 patches that are
-> still valid. I will supply a 'b4 am --cherry-pick xxx' command on the
-> other cover letter to exclude the patches in this series.
-> 
-> This series has no dependencies and can be applied in any order.
+Hi Jonas,
 
-I included a subset of these patches in this pull request to Stephen:
-https://lore.kernel.org/linux-clk/aL8MXYrR5uoBa4cB@x1/T/#u
+On 9/5/25 12:19, Jonas Karlman wrote:
+> From: Alex Bee <knaerzche@gmail.com>
+>
+> Different versions of the Rockchip VDEC IP exists and one way they can
+> differ is what decoding formats are supported.
+>
+> Add a variant implementation in order to support flagging different
+> capabilities.
+>
+> Signed-off-by: Alex Bee <knaerzche@gmail.com>
+> Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+> ---
+> Changes in v3:
+> - Use a reference to rkvdec_variant
+> - Add num_regs field
 
-Brian
+Why are you adding this field ? I don't see it being used in a later patch.
+
+Would that be useful for writing the right amount of registers later 
+when switching to structs and memcpy ?
+
+I haven't checked how different the register maps are between those 
+different variants.
+
+> - Collect r-b tag
+>
+> Changes in v2:
+> - No change
+> ---
+>   .../media/platform/rockchip/rkvdec/rkvdec.c   | 22 ++++++++++++++++++-
+>   .../media/platform/rockchip/rkvdec/rkvdec.h   | 11 ++++++++++
+>   2 files changed, 32 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.c b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
+> index c15fc238d6af..daf6d9ab2d1d 100644
+> --- a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
+> +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
+> @@ -14,6 +14,7 @@
+>   #include <linux/iommu.h>
+>   #include <linux/module.h>
+>   #include <linux/of.h>
+> +#include <linux/of_device.h>
+>   #include <linux/platform_device.h>
+>   #include <linux/pm.h>
+>   #include <linux/pm_runtime.h>
+> @@ -327,6 +328,7 @@ static const struct rkvdec_coded_fmt_desc rkvdec_coded_fmts[] = {
+>   		.ops = &rkvdec_hevc_fmt_ops,
+>   		.num_decoded_fmts = ARRAY_SIZE(rkvdec_hevc_decoded_fmts),
+>   		.decoded_fmts = rkvdec_hevc_decoded_fmts,
+> +		.capability = RKVDEC_CAPABILITY_HEVC,
+>   	},
+>   	{
+>   		.fourcc = V4L2_PIX_FMT_H264_SLICE,
+> @@ -343,6 +345,7 @@ static const struct rkvdec_coded_fmt_desc rkvdec_coded_fmts[] = {
+>   		.num_decoded_fmts = ARRAY_SIZE(rkvdec_h264_decoded_fmts),
+>   		.decoded_fmts = rkvdec_h264_decoded_fmts,
+>   		.subsystem_flags = VB2_V4L2_FL_SUPPORTS_M2M_HOLD_CAPTURE_BUF,
+> +		.capability = RKVDEC_CAPABILITY_H264,
+>   	},
+>   	{
+>   		.fourcc = V4L2_PIX_FMT_VP9_FRAME,
+> @@ -358,6 +361,7 @@ static const struct rkvdec_coded_fmt_desc rkvdec_coded_fmts[] = {
+>   		.ops = &rkvdec_vp9_fmt_ops,
+>   		.num_decoded_fmts = ARRAY_SIZE(rkvdec_vp9_decoded_fmts),
+>   		.decoded_fmts = rkvdec_vp9_decoded_fmts,
+> +		.capability = RKVDEC_CAPABILITY_VP9,
+>   	}
+>   };
+>   
+> @@ -1186,8 +1190,18 @@ static void rkvdec_watchdog_func(struct work_struct *work)
+>   	}
+>   }
+>   
+> +static const struct rkvdec_variant rk3399_rkvdec_variant = {
+> +	.num_regs = 78,
+> +	.capabilities = RKVDEC_CAPABILITY_HEVC |
+> +			RKVDEC_CAPABILITY_H264 |
+> +			RKVDEC_CAPABILITY_VP9,
+> +};
+> +
+>   static const struct of_device_id of_rkvdec_match[] = {
+> -	{ .compatible = "rockchip,rk3399-vdec" },
+> +	{
+> +		.compatible = "rockchip,rk3399-vdec",
+> +		.data = &rk3399_rkvdec_variant,
+> +	},
+>   	{ /* sentinel */ }
+>   };
+>   MODULE_DEVICE_TABLE(of, of_rkvdec_match);
+> @@ -1198,16 +1212,22 @@ static const char * const rkvdec_clk_names[] = {
+>   
+>   static int rkvdec_probe(struct platform_device *pdev)
+>   {
+> +	const struct rkvdec_variant *variant;
+>   	struct rkvdec_dev *rkvdec;
+>   	unsigned int i;
+>   	int ret, irq;
+>   
+> +	variant = of_device_get_match_data(&pdev->dev);
+> +	if (!variant)
+> +		return -EINVAL;
+> +
+>   	rkvdec = devm_kzalloc(&pdev->dev, sizeof(*rkvdec), GFP_KERNEL);
+>   	if (!rkvdec)
+>   		return -ENOMEM;
+>   
+>   	platform_set_drvdata(pdev, rkvdec);
+>   	rkvdec->dev = &pdev->dev;
+> +	rkvdec->variant = variant;
+>   	mutex_init(&rkvdec->vdev_lock);
+>   	INIT_DELAYED_WORK(&rkvdec->watchdog_work, rkvdec_watchdog_func);
+>   
+> diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.h b/drivers/media/platform/rockchip/rkvdec/rkvdec.h
+> index 209dd79ce9bd..c47457c954e5 100644
+> --- a/drivers/media/platform/rockchip/rkvdec/rkvdec.h
+> +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.h
+> @@ -22,6 +22,10 @@
+>   #include <media/videobuf2-core.h>
+>   #include <media/videobuf2-dma-contig.h>
+>   
+> +#define RKVDEC_CAPABILITY_HEVC		BIT(0)
+> +#define RKVDEC_CAPABILITY_H264		BIT(1)
+> +#define RKVDEC_CAPABILITY_VP9		BIT(2)
+> +
+>   struct rkvdec_ctx;
+>   
+>   struct rkvdec_ctrl_desc {
+> @@ -63,6 +67,11 @@ vb2_to_rkvdec_decoded_buf(struct vb2_buffer *buf)
+>   			    base.vb.vb2_buf);
+>   }
+>   
+> +struct rkvdec_variant {
+> +	unsigned int num_regs;
+> +	unsigned int capabilities;
+> +};
+> +
+>   struct rkvdec_coded_fmt_ops {
+>   	int (*adjust_fmt)(struct rkvdec_ctx *ctx,
+>   			  struct v4l2_format *f);
+> @@ -98,6 +107,7 @@ struct rkvdec_coded_fmt_desc {
+>   	unsigned int num_decoded_fmts;
+>   	const struct rkvdec_decoded_fmt_desc *decoded_fmts;
+>   	u32 subsystem_flags;
+> +	unsigned int capability;
+>   };
+>   
+>   struct rkvdec_dev {
+> @@ -111,6 +121,7 @@ struct rkvdec_dev {
+>   	struct mutex vdev_lock; /* serializes ioctls */
+>   	struct delayed_work watchdog_work;
+>   	struct iommu_domain *empty_domain;
+> +	const struct rkvdec_variant *variant;
+>   };
+>   
+>   struct rkvdec_ctx {
+
+Regards,
+
+Detlev
 
 
 _______________________________________________
