@@ -4,90 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FF7CCAC581
-	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Sep 2025 17:20:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1777CAC589
+	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Sep 2025 18:21:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:CC:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6VKdZ3xLJvQOGf4vpsaAc3ziNvr2TJGmJE6EDcHRfxA=; b=gaoOl3jHccIGTL
-	J8oeXJE+j4nkyKjFJf4o0OPiq38a7RFr1OYj9K6uBaFWYwpEJMnVsfNsiys/o1MC+68Ii063b6IWT
-	6DoU7MNucFyscmEv/GTEKF4bjgw+gNe+ADEpxWxMRdrsmPR1gwvumRNdB0b7bucznmGD8neXjN2Ov
-	B7gtSKCbXjPqJEPAQPCy+A2Vf7d1VDeb8Xo/O1x4Hv0BQNugk9FS7jSj2JZyyC8ly40n9PyESoaBl
-	UPx5VgTr/mZOdI94k1sniPzOrVdxwbVwYMLqpIg5r6DZqfi3gr3w01N70qmgxI6ydg9eV3Ypa0FEt
-	GY8ioRxydB8sz86uEdnw==;
+	List-Owner; bh=Eci8MauqiIvH1cnSkpAFGXq4biIlbkmorO7FMR5uYvg=; b=0pqllCn79vUh0q
+	gv9EO8hSdTVc0kDBHw9lfMYa/Y8dfSqvzc8wxXLqunfG22DzxjQ536X/bstIE235evVhZiy9csUYH
+	Ho+2Bh79CzB0LB3C4XHX6b7b3THTJ4IwtHvjE2n34eLi1UvVEH+d0QxEtThnZmBRUXLispLyyvKyK
+	ImaJT+VWCndrGmpeYSQepxspXvzOioLHEaq49qOx9mrR1ca5fLPTZ2cUuVfldvBdEn/hMHlkVVfvX
+	ifCu32je0dZsc1gu/dHw9ZiP7cnuh8fhmKRE8fW68Bos4MT1k3sr08dUe2Fiq7UILxmD4+ATFCEZY
+	k3sMjfgy9SGCB5XggnkA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvfXf-00000001AQa-3yu7;
-	Mon, 08 Sep 2025 17:20:35 +0000
-Received: from [90.154.21.10] (helo=mx01.omp.ru)
+	id 1uvgUW-00000001Uxt-3qfW;
+	Mon, 08 Sep 2025 18:21:24 +0000
+Received: from mail-lj1-x233.google.com ([2a00:1450:4864:20::233])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvcys-000000009Rp-1imH;
-	Mon, 08 Sep 2025 14:36:32 +0000
-Received: from [192.168.2.102] (213.87.154.55) by msexch01.omp.ru
- (10.188.4.12) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.1258.12; Mon, 8 Sep
- 2025 17:36:13 +0300
-Message-ID: <6cb84280-9290-4cf1-91cf-ccece1a0bb27@omp.ru>
-Date: Mon, 8 Sep 2025 17:36:12 +0300
+	id 1uvbT5-0000000HDG7-0wHk
+	for linux-rockchip@lists.infradead.org;
+	Mon, 08 Sep 2025 12:59:36 +0000
+Received: by mail-lj1-x233.google.com with SMTP id 38308e7fff4ca-336cee72f40so37939391fa.2
+        for <linux-rockchip@lists.infradead.org>; Mon, 08 Sep 2025 05:59:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1757336373; x=1757941173; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=J5BpttAHpJbHjU5zlElKTAX1nmzmhusdG1v06go3DFc=;
+        b=g3XRc5r2mUa+/fwBX+fXeFjvj+Ygr9TI8xgNgYZ6ZVbgzdlkL3CjjLHpLEOZ4NuMO+
+         sTB40aO0poX1IUSGAnow+r2t6H0U8KJ42ASHCZc3CSzqTzO7TyHmMQv3rTmALHbM2Gt+
+         zRNkaK+M6TFFewe8tt5u+RA5CO07DfSbvFrVXSvleGI0a+ghINpuIC0ZRS5hefHBomNT
+         WEDvtYLoBH/HYPOBl5LXFqkISMU1TJZlyX2IHqY0b58wvsQ4G5LeTsbCCWQ8W1zeOUd2
+         pZ7vRDAzZz6dc+7A55PJ2lChg6Ow4AVh/kkRu7xYBCIAQmWmhN4Kg6Vz1jukM58t1bxD
+         5PzQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1757336373; x=1757941173;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=J5BpttAHpJbHjU5zlElKTAX1nmzmhusdG1v06go3DFc=;
+        b=Vc+PH1g71vqrQO6Zn1sZOEMZXL5lGiZw5hlBTSriHDXDA/q1DJ2aH6vBqeyBff29Bm
+         x5OggLRRxEqJRSInjhKtMEku7j2989d/7T8gGDNlb936SzxVy0uK11WRUX1jDaGpZdmr
+         oT/53jJb6JCrRfAoZhM56+o4+EOEZALW0kiN6eAngDnjn66CNqP2taj42UYBwvKFP1V2
+         NTFz3CtOE5eN1WeRw6IYPtjb+niIprHyVpoGK8VqTSEZq6l7B00mbSSsXGmPaQaUMW7c
+         krxgsIJ3EMKdE+CO+JQGpswR0t0/qm/3KxcS5hTreUUbT8uRzLtym8hrmYAqcW/dyhrp
+         wRHg==
+X-Forwarded-Encrypted: i=1; AJvYcCUs0N4gamuTr9Oo827lKgkmpFWz4nVvOAR4DgnL+w0PXRqmewUpNcKk+FVKFq02j3vzkhF+/o6aaK+eFRF0Zg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywxs+3OQVSxQplR0qzza0FWcCB2bvdaS4bHzKE3xIe1Bu8G/9KZ
+	Wxa7FltDgPJ8ZzHbfN7ChmDcfIYJo50gzVOTSpLVYKbdFZ8rZegHo9+ZhbtEuvSU9J+/c4f8+ti
+	i9RZLBTtxYq6ABu7b8kFadg3eZhyyp+ktBSzVyUf8Cg==
+X-Gm-Gg: ASbGncvRRy13gY0wZwKTlrCawdknwDhzkk+FNLfHDLQpMFr3Reorrgl2g25UQ3oy6m+
+	gYwpmdIaZ4MotfBp7suOWPPxb/ckkCGqpP9fJeqwRsCLraBMkHdYdd50RSIC9ZhthHtaQu9llKb
+	bJ5T6IXmbEd5HnjJBm+tAa5qrwwUjBElfpYzLypX2rjUbqd4ZM8Jk7juBmKadjHK2j4F1vx4lio
+	/COHlG0XhPDeSWsM+F5aWIvUE9n
+X-Google-Smtp-Source: AGHT+IHxkO5Trw9x8IQx8FMGDMwnUY1eThHnZXuMivELDVJEriHgjq/E/h355l8gaJCNCLOfPlh87yQTWfxAaUQ+yRQ=
+X-Received: by 2002:a05:651c:542:b0:337:f84a:6ded with SMTP id
+ 38308e7fff4ca-33b5fe33199mr21312101fa.40.1757336372950; Mon, 08 Sep 2025
+ 05:59:32 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] pinctrl: rockchip: fix NULL ptr deref in
- rockchip_pinctrl_parse_groups()
-To: <wens@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-CC: Linus Walleij <linus.walleij@linaro.org>, <linux-gpio@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-rockchip@lists.infradead.org>
 References: <179c9e8c-8760-41e6-aad7-7a128df60984@omp.ru>
- <6789547.RUnXabflUD@phil>
- <CAGb2v67ihFehEwSc-rX=U-KJdvao_588G8iVEoSXuJ_-gnd50w@mail.gmail.com>
-Content-Language: en-US
-From: Sergey Shtylyov <s.shtylyov@omp.ru>
-Organization: Open Mobile Platform
-In-Reply-To: <CAGb2v67ihFehEwSc-rX=U-KJdvao_588G8iVEoSXuJ_-gnd50w@mail.gmail.com>
-X-Originating-IP: [213.87.154.55]
-X-ClientProxiedBy: msexch01.omp.ru (10.188.4.12) To msexch01.omp.ru
- (10.188.4.12)
-X-KSE-ServerInfo: msexch01.omp.ru, 9
-X-KSE-AntiSpam-Interceptor-Info: scan successful
-X-KSE-AntiSpam-Version: 6.1.1, Database issued on: 09/08/2025 14:22:47
-X-KSE-AntiSpam-Status: KAS_STATUS_NOT_DETECTED
-X-KSE-AntiSpam-Method: none
-X-KSE-AntiSpam-Rate: 19
-X-KSE-AntiSpam-Info: Lua profiles 196099 [Sep 08 2025]
-X-KSE-AntiSpam-Info: Version: 6.1.1.11
-X-KSE-AntiSpam-Info: Envelope from: s.shtylyov@omp.ru
-X-KSE-AntiSpam-Info: LuaCore: 66 0.3.66
- fc5dda3b6b70d34b3701db39319eece2aeb510fb
-X-KSE-AntiSpam-Info: {rep_avail}
-X-KSE-AntiSpam-Info: {Tracking_uf_ne_domains}
-X-KSE-AntiSpam-Info: {Tracking_from_domain_doesnt_match_to}
-X-KSE-AntiSpam-Info: {SMTP from is not routable}
-X-KSE-AntiSpam-Info: {Found in DNSBL: 213.87.154.55 in (user)
- b.barracudacentral.org}
-X-KSE-AntiSpam-Info: omp.ru:7.1.1;d41d8cd98f00b204e9800998ecf8427e.com:7.1.1;127.0.0.199:7.1.2
-X-KSE-AntiSpam-Info: {Tracking_ip_hunter}
-X-KSE-AntiSpam-Info: FromAlignment: s
-X-KSE-AntiSpam-Info: ApMailHostAddress: 213.87.154.55
-X-KSE-AntiSpam-Info: {DNS response errors}
-X-KSE-AntiSpam-Info: Rate: 19
-X-KSE-AntiSpam-Info: Status: not_detected
-X-KSE-AntiSpam-Info: Method: none
-X-KSE-AntiSpam-Info: Auth:dmarc=temperror header.from=omp.ru;spf=temperror
- smtp.mailfrom=omp.ru;dkim=none
-X-KSE-Antiphishing-Info: Clean
-X-KSE-Antiphishing-ScanningType: Heuristic
-X-KSE-Antiphishing-Method: None
-X-KSE-Antiphishing-Bases: 09/08/2025 14:26:00
-X-KSE-Antivirus-Interceptor-Info: scan successful
-X-KSE-Antivirus-Info: Clean, bases: 9/8/2025 12:29:00 PM
-X-KSE-Attachment-Filter-Triggered-Rules: Clean
-X-KSE-Attachment-Filter-Triggered-Filters: Clean
-X-KSE-BulkMessagesFiltering-Scan-Result: InTheLimit
+In-Reply-To: <179c9e8c-8760-41e6-aad7-7a128df60984@omp.ru>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Mon, 8 Sep 2025 14:59:21 +0200
+X-Gm-Features: Ac12FXwB3hkNayk_jKlRJHBwnE7MZt7LhknFIIwvxH7yn6EzRdVpugXhQZOilew
+Message-ID: <CACRpkdbzEmZN=-FPvax4z_iq7u6pHyHGJ213QtpxqFL98-Ou5Q@mail.gmail.com>
+Subject: Re: [PATCH] pinctrl: rockchip: fix NULL ptr deref in rockchip_pinctrl_parse_groups()
+To: Sergey Shtylyov <s.shtylyov@omp.ru>
+Cc: Heiko Stuebner <heiko@sntech.de>, linux-gpio@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250908_073630_455204_D5FE26E4 
-X-CRM114-Status: GOOD (  10.52  )
+X-CRM114-CacheID: sfid-20250908_055935_262176_AB08DB36 
+X-CRM114-Status: GOOD (  15.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,30 +95,22 @@ Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gOS84LzI1IDg6NTMgQU0sIENoZW4tWXUgVHNhaSB3cm90ZToKWy4uLl0KCj4+IEFtIE1pdHR3
-b2NoLCAzLiBTZXB0ZW1iZXIgMjAyNSwgMjE6NDg6NTQgTWl0dGVsZXVyb3DDpGlzY2hlIFNvbW1l
-cnplaXQgc2NocmllYiBTZXJnZXkgU2h0eWx5b3Y6Cj4+PiBJbiB0aGUgUm9ja2NoaXAgZHJpdmVy
-LCByb2NrY2hpcF9waW5jdHJsX3BhcnNlX2dyb3VwcygpIGFzc3VtZXMgdGhhdCB0aGUKPj4+ICJy
-b2NrY2hpcCxwaW5zIiBwcm9wZXJ0eSB3aWxsIGFsd2F5cyBiZSBwcmVzZW50IGluIHRoZSBEVCBu
-b2RlIGl0IHBhcnNlcwo+Pj4gYW5kIHNvIGRvZXNuJ3QgY2hlY2sgdGhlIHJlc3VsdCBvZiBvZl9n
-ZXRfcHJvcGVydHkoKSBmb3IgTlVMTC4gSWYgdGhlIERUCj4+PiBwYXNzZWQgdG8gdGhlIGtlcm5l
-bCBoYXBwZW5zIHRvIGhhdmUgc3VjaCBwcm9wZXJ0eSBtaXNzaW5nLCB0aGVuIHdlIHdpbGwKPj4+
-IGdldCBhIGtlcm5lbCBvb3BzIHdoZW4gdGhlIHBvaW50ZXIgaXMgZGVyZWZlcmVuY2VkIGluIHRo
-ZSAqZm9yKiBsb29wIGp1c3QKPj4+IGEgZmV3IGxpbmVzIGFmdGVyIHRoZSBjYWxsLiAgSSB0aGlu
-ayBpdCdzIGJldHRlciB0byBwbGF5IHNhZmUgYnkgY2hlY2tpbmcKPj4+IHRoZSBsaXN0IHZhcmlh
-YmxlIGZvciBOVUxMIChhbmQgcmVwb3J0aW5nIGVycm9yIGlmIHNvKSwgbGlrZSB3ZSBjaGVjayB0
-aGUKPj4+IHNpemUgdmFyaWFibGUgZm9yIHZhbGlkaXR5IGZ1cnRoZXIgZG93bi4uLgo+Pj4KPj4+
-IEZvdW5kIGJ5IExpbnV4IFZlcmlmaWNhdGlvbiBDZW50ZXIgKGxpbnV4dGVzdGluZy5vcmcpIHdp
-dGggdGhlIFN2YWNlIHN0YXRpYwo+Pj4gYW5hbHlzaXMgdG9vbC4KPj4+Cj4+PiBGaXhlczogZDNl
-NTExNjExOWJkICgicGluY3RybDogYWRkIHBpbmN0cmwgZHJpdmVyIGZvciBSb2NrY2hpcCBTb0Nz
-IikKPj4+IFNpZ25lZC1vZmYtYnk6IFNlcmdleSBTaHR5bHlvdiA8cy5zaHR5bHlvdkBvbXAucnU+
-Cj4+Cj4+IEFzc3VtaW5nIHRoYXQgdGhlIERUIGlzIG91ciBmcmllbmQsIHJlYWxseSBpcyBhIGJh
-ZCBhc3N1bXB0aW9uIDotKSAuCj4gCj4gSWYgdGhpcyBpcyBpbnZhbGlkLCBwZXJoYXBzIHlvdSBz
-aG91bGQgbWFrZSB0aGUgInJvY2tjaGlwLHBpbnMiIHByb3BlcnR5Cj4gcmVxdWlyZWQgaW4gdGhl
-IGJpbmRpbmc/CgogICBMb29raW5nIGF0IERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5n
-cy9waW5jdHJsL3JvY2tjaGlwLHBpbmN0cmwudHh0CmluIDUuMTAueSwgaXQgd2FzIG1hcmtlZCBh
-cyByZXF1aXJlZC4gVGhlIG1vZGVybiBZQU1MIGJpbmRpbmdzIGRvbid0IHNlZW0gdG8Kc2F5IHRo
-YXQsIGF0IGxlYXN0IGV4cGxpY2l0bHkuLi4KClsuLi5dCgpNQlIsIFNlcmdleQoKCl9fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1h
-aWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0
-cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+T24gV2VkLCBTZXAgMywgMjAyNSBhdCA5OjQ54oCvUE0gU2VyZ2V5IFNodHlseW92IDxzLnNodHls
+eW92QG9tcC5ydT4gd3JvdGU6Cgo+IEluIHRoZSBSb2NrY2hpcCBkcml2ZXIsIHJvY2tjaGlwX3Bp
+bmN0cmxfcGFyc2VfZ3JvdXBzKCkgYXNzdW1lcyB0aGF0IHRoZQo+ICJyb2NrY2hpcCxwaW5zIiBw
+cm9wZXJ0eSB3aWxsIGFsd2F5cyBiZSBwcmVzZW50IGluIHRoZSBEVCBub2RlIGl0IHBhcnNlcwo+
+IGFuZCBzbyBkb2Vzbid0IGNoZWNrIHRoZSByZXN1bHQgb2Ygb2ZfZ2V0X3Byb3BlcnR5KCkgZm9y
+IE5VTEwuIElmIHRoZSBEVAo+IHBhc3NlZCB0byB0aGUga2VybmVsIGhhcHBlbnMgdG8gaGF2ZSBz
+dWNoIHByb3BlcnR5IG1pc3NpbmcsIHRoZW4gd2Ugd2lsbAo+IGdldCBhIGtlcm5lbCBvb3BzIHdo
+ZW4gdGhlIHBvaW50ZXIgaXMgZGVyZWZlcmVuY2VkIGluIHRoZSAqZm9yKiBsb29wIGp1c3QKPiBh
+IGZldyBsaW5lcyBhZnRlciB0aGUgY2FsbC4gIEkgdGhpbmsgaXQncyBiZXR0ZXIgdG8gcGxheSBz
+YWZlIGJ5IGNoZWNraW5nCj4gdGhlIGxpc3QgdmFyaWFibGUgZm9yIE5VTEwgKGFuZCByZXBvcnRp
+bmcgZXJyb3IgaWYgc28pLCBsaWtlIHdlIGNoZWNrIHRoZQo+IHNpemUgdmFyaWFibGUgZm9yIHZh
+bGlkaXR5IGZ1cnRoZXIgZG93bi4uLgo+Cj4gRm91bmQgYnkgTGludXggVmVyaWZpY2F0aW9uIENl
+bnRlciAobGludXh0ZXN0aW5nLm9yZykgd2l0aCB0aGUgU3ZhY2Ugc3RhdGljCj4gYW5hbHlzaXMg
+dG9vbC4KPgo+IEZpeGVzOiBkM2U1MTE2MTE5YmQgKCJwaW5jdHJsOiBhZGQgcGluY3RybCBkcml2
+ZXIgZm9yIFJvY2tjaGlwIFNvQ3MiKQo+IFNpZ25lZC1vZmYtYnk6IFNlcmdleSBTaHR5bHlvdiA8
+cy5zaHR5bHlvdkBvbXAucnU+CgpQYXRjaCBhcHBsaWVkIQoKWW91cnMsCkxpbnVzIFdhbGxlaWoK
+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJv
+Y2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0
+dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
