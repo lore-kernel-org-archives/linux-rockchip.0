@@ -4,68 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EAEDECAC582
-	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Sep 2025 19:37:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05058CA0FED
+	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Sep 2025 23:52:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uiFDaTH2YZPpUeMrF47wVyUvCSruqRMIMNjfPMgow18=; b=LOE0EiGH2iZxvf
-	Q+jWq3ciHQ21tno8KO/oUOpSjs9mq9rj1bOhKagnipcwFe0qRyJHndfICyojGJIo06bsJT1HA/WcB
-	3f30bjNt6D/hSk3Ldqn+aomnrktGsRxupqcw8W28IqlhidduCKIe/plqp7GhUIoDHE5w+46F2DNzP
-	1v95y4nfcSnNxiyeXYoHLLhtIc8Hygf1SrCbVumb+bQVVsAN40bw6wJRn09Kp1e8FgKEr49Yy3F3K
-	U3Ri+3XF9+j+IPKv27KRSB4PnH6ALrAxnhc6cf7E+bpjpOMfozjIa57tbNoljQK86LoukB1N63vsZ
-	xpvoXjbUWDZCxTWH131Q==;
+	List-Owner; bh=Kcke20VwRIn/oA2Ka/sUBlzf/HSJbVlqW8Kr7zLOJhI=; b=PEVHlvftC9KaIA
+	azrE1U1XKrVM1EmB5YjuDDNwqOmIz8CQLOPxtKvoElpxg9Pg+FMpPpR7ktCJQihZHiwVqHiveAR+q
+	gmiRhJHHUSwj9G96fRKxFeZ6nvE7hDlUmNek5n6TFydZJ5Bo138xV9EX/4EsvaKU0FfUOu6bDthDU
+	wIG/OxclxUeHn7v6fk5I/Hr0Ait6zokV5rAYlI5lvtV+xpaUM8ljM79ZJhxVmB4e/5EGYZz6+heR2
+	g+tZ9rcSFpemCmWKwdK/blSN6OnjaUY8zOBmqHCXbJdLGI9XU7ub1BIFB4kmm8k1yoA+MJR2GfoHP
+	Rw2cGIReKgwCsXh5WJVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uw499-00000009kOh-0nKg;
-	Tue, 09 Sep 2025 19:36:55 +0000
-Received: from smtp.forwardemail.net ([121.127.44.73])
+	id 1uw88d-0000000B0Cd-2Sbq;
+	Tue, 09 Sep 2025 23:52:39 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uw495-00000009kNw-17X4
-	for linux-rockchip@lists.infradead.org;
-	Tue, 09 Sep 2025 19:36:53 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1757446609;
- bh=rwqoGtXjB1J++h8Zyy8TQBXX6o5DAsVUE4Q8MuslRI0=;
- b=OFfmGFf+DSTaRnQtHRgyhcVPO+nRMO7nfBbG+pII6Sw0EaIkfgIAKrI0FB01Wbx+LL+bn3C90
- 7efzAcM30OwFoH2pRh8qzMeYmvdk8go9Qw7jCK2G4DS/NlAYpniiuv5TJRVnsQfo3BFsd3Ow6gN
- XxxJSm4tn60nbrExecYzl7KL7bdV0WNL7abTXCC3yvZd+x9enZxOY5L+lw4MqdgBfqGx5Vzg+pB
- YGsZ8KuRN+LHsiMI3fBoOq51WKOlTpBlZiRWuRuD1MG5VyWvJD9XnKaGR+OCuzixHWEQra94HwW
- h/1B6mMaouwM6ezXF80QN414zHsu7ARVJNJj5BrDWYfg==
-X-Forward-Email-ID: 68c081cdd4f0dc47f6d79244
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 121.127.44.73
-X-Forward-Email-Version: 1.2.14
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <a443fca9-e660-4a7a-b637-ec840ac8ed1e@kwiboo.se>
-Date: Tue, 9 Sep 2025 21:36:39 +0200
+	id 1uw88a-0000000B0BP-1FKT;
+	Tue, 09 Sep 2025 23:52:38 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1757461939; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=XG9o0VLGNJfUWI+6pEk36Bc8hw4exL79D4RsD2GisQ9/SrD8gWHRRSSFD3GNBE+x/GskFMGZ6aeSylumWUn/u/7hDU9IQhtREu7OXqIwCw7oYW9gh0rlhFA7+C+9WjLY8PqmSa9jgr3EpP+wNId651CtSCYz6Uyb8g/D7yUmkn4=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1757461939; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=MRosrKVQq7sn22Es6+VF8OMf7pwPJJ2RSe2u88w3Gr4=; 
+	b=BIad/jg0ogPaNYBam7CZq0O1RQPh40DoJSFI89lvlgVsk96NmZfgG9kmAFcnkvAvGs6z1vDLYMTIocOSU2IvDjv/xxdV5yo1vHifyUXCQe4Sv0Oq5m4sFVrUdpZ96aScM2CoE2HBajI+BLfIlRIBwHQyPVO+Tuf1Pt3zgyvrYK0=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1757461939;
+	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
+	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
+	bh=MRosrKVQq7sn22Es6+VF8OMf7pwPJJ2RSe2u88w3Gr4=;
+	b=JGoQv4PPa1GJOklEFDrtKWlq5uNnrhnjp8ZV50+7u9/R0qTCWZlE2liNFeCr+2YU
+	FKbzH+jcvuQshgrJUr4AaLqJSN6mSTL9zh2hbdQdGpXAX3tjKZVd+l7j57Xh9sxVNy8
+	4PNTyM2ycox2LM7a5xfw2BSZgO1fLx7LLY0uAgfI=
+Received: by mx.zohomail.com with SMTPS id 1757461937134492.1287969959642;
+	Tue, 9 Sep 2025 16:52:17 -0700 (PDT)
+Received: by venus (Postfix, from userid 1000)
+	id 4D0E418031F; Wed, 10 Sep 2025 01:52:12 +0200 (CEST)
+Date: Wed, 10 Sep 2025 01:52:12 +0200
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+Cc: Vinod Koul <vkoul@kernel.org>, 
+	Kishon Vijay Abraham I <kishon@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Frank Wang <frank.wang@rock-chips.com>, 
+	Zhang Yubing <yubing.zhang@rock-chips.com>, Andy Yan <andyshrk@163.com>, 
+	Maud Spierings <maud_spierings@hotmail.com>, linux-phy@lists.infradead.org, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH RFC 1/2] dt-bindings: phy: rockchip-usbdp: add improved
+ ports scheme
+Message-ID: <xyya5zy52mx4o76s6rr5h7lrfkhbri6bvmp7a5mn7cifpbpqlc@ca3zhclu6u3y>
+References: <20250904-rock5b-dp-alt-mode-v1-0-23df726b31ce@collabora.com>
+ <20250904-rock5b-dp-alt-mode-v1-1-23df726b31ce@collabora.com>
+ <aLyKhngeksG2SKdq@umbar.lan>
+ <jzooq6qg3y7nee2nz6lujustdf4z7vtn6t2slikw43dann5sbk@2telraae26tl>
+ <aLyo4N59o4CIYm-6@umbar.lan>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/3] arm64: dts: rockchip: Add Radxa E24C
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
- FUKAUMI Naoki <naoki@radxa.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Yao Zi <ziyao@disroot.org>,
- Chukun Pan <amadeus@jmu.edu.cn>, devicetree@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20250727144409.327740-1-jonas@kwiboo.se>
- <B055BC95C67D129C+d7a2ff39-8367-48cf-8697-f12fd9f885a4@radxa.com>
- <7d3c3b29-f89f-4801-8fd7-d6d0645095af@kwiboo.se> <17232684.geO5KgaWL5@diego>
-Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <17232684.geO5KgaWL5@diego>
+Content-Disposition: inline
+In-Reply-To: <aLyo4N59o4CIYm-6@umbar.lan>
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250909_123651_706054_C2C1D4B9 
-X-CRM114-Status: GOOD (  15.01  )
+X-CRM114-CacheID: sfid-20250909_165236_387244_CA0D1FFA 
+X-CRM114-Status: GOOD (  49.86  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,83 +84,145 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gOS85LzIwMjUgNTozOSBQTSwgSGVpa28gU3TDvGJuZXIgd3JvdGU6Cj4gQW0gRGllbnN0YWcs
-IDkuIFNlcHRlbWJlciAyMDI1LCAxNjo0ODoyNSBNaXR0ZWxldXJvcMOkaXNjaGUgU29tbWVyemVp
-dCBzY2hyaWViIEpvbmFzIEthcmxtYW46Cj4+IE9uIDkvOS8yMDI1IDI6MjggUE0sIEZVS0FVTUkg
-TmFva2kgd3JvdGU6Cj4+PiBIaSBKb25hcywKPj4+Cj4+PiBPbiA3LzI3LzI1IDIzOjQ0LCBKb25h
-cyBLYXJsbWFuIHdyb3RlOgo+Pj4+IFRoZSBSYWR4YSBFMjRDIGlzIGEgY29tcGFjdCwgaGlnaC1w
-ZXJmb3JtYW5jZSBuZXR3b3JrIGNvbXB1dGVyCj4+Pj4gZGV2ZWxvcGVkIGJ5IFJhZHhhLCBiYXNl
-ZCBvbiB0aGUgUm9ja2NoaXAgUkszNTI4QSBTb0MuCj4+Pj4KPj4+PiBBZGQgaW5pdGlhbCBkZXZp
-Y2UgdHJlZSBmb3IgdGhlIFJhZHhhIEUyNEMuCj4+Pj4KPj4+PiBTaWduZWQtb2ZmLWJ5OiBKb25h
-cyBLYXJsbWFuIDxqb25hc0Brd2lib28uc2U+Cj4+Pj4gUmV2aWV3ZWQtYnk6IEFuZHJldyBMdW5u
-IDxhbmRyZXdAbHVubi5jaD4KPj4+PiAtLS0KPj4+PiBTY2hlbWF0aWNzOiBodHRwczovL2RsLnJh
-ZHhhLmNvbS9lL2UyNGMvZG9jcy9yYWR4YV9lMjRjX3YxMjAwX3NjaGVtYXRpYy5wZGYKPj4+PiAt
-LS0KPj4+PiAgIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvTWFrZWZpbGUgICAgICAgICB8
-ICAgMSArCj4+Pj4gICAuLi4vYm9vdC9kdHMvcm9ja2NoaXAvcmszNTI4LXJhZHhhLWUyNGMuZHRz
-ICAgfCA1MTkgKysrKysrKysrKysrKysrKysrCj4+Pj4gICAyIGZpbGVzIGNoYW5nZWQsIDUyMCBp
-bnNlcnRpb25zKCspCj4+Pj4gICBjcmVhdGUgbW9kZSAxMDA2NDQgYXJjaC9hcm02NC9ib290L2R0
-cy9yb2NrY2hpcC9yazM1MjgtcmFkeGEtZTI0Yy5kdHMKPj4+Pgo+Pj4+IGRpZmYgLS1naXQgYS9h
-cmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL01ha2VmaWxlIGIvYXJjaC9hcm02NC9ib290L2R0
-cy9yb2NrY2hpcC9NYWtlZmlsZQo+Pj4+IGluZGV4IDA2NjJmY2YwMDYyOC4uZGM2MmZkNTMwNWJl
-IDEwMDY0NAo+Pj4+IC0tLSBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvTWFrZWZpbGUK
-Pj4+PiArKysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL01ha2VmaWxlCj4+Pj4gQEAg
-LTkyLDYgKzkyLDcgQEAgZHRiLSQoQ09ORklHX0FSQ0hfUk9DS0NISVApICs9IHJrMzM5OXByby1y
-b2NrLXBpLW4xMC5kdGIKPj4+PiAgIGR0Yi0kKENPTkZJR19BUkNIX1JPQ0tDSElQKSArPSByazM1
-MjgtYXJtc29tLXNpZ2UxLmR0Ygo+Pj4+ICAgZHRiLSQoQ09ORklHX0FSQ0hfUk9DS0NISVApICs9
-IHJrMzUyOC1uYW5vcGktemVybzIuZHRiCj4+Pj4gICBkdGItJChDT05GSUdfQVJDSF9ST0NLQ0hJ
-UCkgKz0gcmszNTI4LXJhZHhhLWUyMGMuZHRiCj4+Pj4gK2R0Yi0kKENPTkZJR19BUkNIX1JPQ0tD
-SElQKSArPSByazM1MjgtcmFkeGEtZTI0Yy5kdGIKPj4+PiAgIGR0Yi0kKENPTkZJR19BUkNIX1JP
-Q0tDSElQKSArPSByazM1Mjgtcm9jay0yYS5kdGIKPj4+PiAgIGR0Yi0kKENPTkZJR19BUkNIX1JP
-Q0tDSElQKSArPSByazM1Mjgtcm9jay0yZi5kdGIKPj4+PiAgIGR0Yi0kKENPTkZJR19BUkNIX1JP
-Q0tDSElQKSArPSByazM1NjItZXZiMi12MTAuZHRiCj4+Pj4gZGlmZiAtLWdpdCBhL2FyY2gvYXJt
-NjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTI4LXJhZHhhLWUyNGMuZHRzIGIvYXJjaC9hcm02NC9i
-b290L2R0cy9yb2NrY2hpcC9yazM1MjgtcmFkeGEtZTI0Yy5kdHMKPj4+PiBuZXcgZmlsZSBtb2Rl
-IDEwMDY0NAo+Pj4+IGluZGV4IDAwMDAwMDAwMDAwMC4uMjI1ZjJiMGM1MzM5Cj4+Pj4gLS0tIC9k
-ZXYvbnVsbAo+Pj4+ICsrKyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTI4LXJh
-ZHhhLWUyNGMuZHRzCj4+Pj4gQEAgLTAsMCArMSw1MTkgQEAKPj4+PiArLy8gU1BEWC1MaWNlbnNl
-LUlkZW50aWZpZXI6IChHUEwtMi4wKyBPUiBNSVQpCj4+Pj4gKwo+Pj4+ICsvZHRzLXYxLzsKPj4+
-PiArCj4+Pj4gKyNpbmNsdWRlIDxkdC1iaW5kaW5ncy9pbnB1dC9pbnB1dC5oPgo+Pj4+ICsjaW5j
-bHVkZSA8ZHQtYmluZGluZ3MvbGVkcy9jb21tb24uaD4KPj4+PiArI2luY2x1ZGUgInJrMzUyOC5k
-dHNpIgo+Pj4+ICsKPj4+PiArLyB7Cj4+Pj4gKwltb2RlbCA9ICJSYWR4YSBFMjRDIjsKPj4+PiAr
-CWNvbXBhdGlibGUgPSAicmFkeGEsZTI0YyIsICJyb2NrY2hpcCxyazM1MjgiOwo+Pj4+ICsKPj4+
-PiArCWFsaWFzZXMgewo+Pj4+ICsJCWV0aGVybmV0MCA9ICZnbWFjMTsKPj4+PiArCQlpMmMwID0g
-JmkyYzA7Cj4+Pj4gKwkJaTJjMSA9ICZpMmMxOwo+Pj4+ICsJCWkyYzUgPSAmaTJjNTsKPj4+PiAr
-CQltbWMwID0gJnNkaGNpOwo+Pj4+ICsJCW1tYzEgPSAmc2RtbWM7Cj4+Pj4gKwkJcnRjMCA9ICZo
-eW04NTYzOwo+Pj4+ICsJCXJ0YzEgPSAmcms4MDU7Cj4+Pj4gKwkJc2VyaWFsMCA9ICZ1YXJ0MDsK
-Pj4+PiArCX07Cj4+Pj4gKwo+Pj4+ICsJY2hvc2VuIHsKPj4+PiArCQlzdGRvdXQtcGF0aCA9ICJz
-ZXJpYWwwOjE1MDAwMDBuOCI7Cj4+Pj4gKwl9Owo+Pj4+ICsKPj4+PiArCWFkYy1rZXlzIHsKPj4+
-PiArCQljb21wYXRpYmxlID0gImFkYy1rZXlzIjsKPj4+PiArCQlpby1jaGFubmVscyA9IDwmc2Fy
-YWRjIDA+Owo+Pj4+ICsJCWlvLWNoYW5uZWwtbmFtZXMgPSAiYnV0dG9ucyI7Cj4+Pj4gKwkJa2V5
-dXAtdGhyZXNob2xkLW1pY3Jvdm9sdCA9IDwxODAwMDAwPjsKPj4+PiArCQlwb2xsLWludGVydmFs
-ID0gPDEwMD47Cj4+Pj4gKwo+Pj4+ICsJCWJ1dHRvbi1tYXNrcm9tIHsKPj4+PiArCQkJbGFiZWwg
-PSAiTUFTS1JPTSI7Cj4+Pj4gKwkJCWxpbnV4LGNvZGUgPSA8S0VZX1NFVFVQPjsKPj4+PiArCQkJ
-cHJlc3MtdGhyZXNob2xkLW1pY3Jvdm9sdCA9IDwwPjsKPj4+PiArCQl9Owo+Pj4+ICsJfTsKPj4+
-PiArCj4+Pj4gKwlncGlvLWtleXMgewo+Pj4+ICsJCWNvbXBhdGlibGUgPSAiZ3Bpby1rZXlzIjsK
-Pj4+PiArCQlwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOwo+Pj4+ICsJCXBpbmN0cmwtMCA9IDwm
-Z3BpbzBfYTBfdXNlcj47Cj4+Pj4gKwo+Pj4+ICsJCWJ1dHRvbi11c2VyIHsKPj4+PiArCQkJZ3Bp
-b3MgPSA8JmdwaW8wIFJLX1BBMCBHUElPX0FDVElWRV9MT1c+Owo+Pj4+ICsJCQlsYWJlbCA9ICJV
-U0VSIjsKPj4+PiArCQkJbGludXgsY29kZSA9IDxCVE5fMT47Cj4+Pgo+Pj4gSSBwcmVmZXIgdG8g
-YXNzaWduIEJUTl8wIHRvIHRoZSAxc3QgYnV0dG9uIDopCj4+Cj4+IFRoZSBFMjBDIChhbmQgb3Ro
-ZXIgUksgYm9hcmRzKSBhbHJlYWR5IHVzZSBCVE5fMSBmb3IgdXNlciBidXR0b24sIGl0Cj4+IG9u
-bHkgc2VlbSB0byBiZSB0aGUgcmVjZW50bHkgYWRkZWQgRTU0QyB0aGF0IGlzIHVzaW5nIEJUTl8w
-Lgo+Pgo+PiBGb3IgY29uc2lzdGVuY3kgSSBzdWdnZXN0IHdlIGtlZXAgdXNpbmcgQlROXzEgZm9y
-IHRoaXMgdXNlciBidXR0b24gYW5kCj4+IHBvc3NpYmxlIGZpeHVwIEU1NEMsIGlmIHlvdSB3YW50
-IHRvIHVzZSBzYW1lIGJ1dHRvbiBmb3IgYWxsIHZhcmlhbnRzLgo+IAo+IFllcCwgdGhhdCB3b3Vs
-ZCBhbHNvIGtlZXAgdGhlIGFtb3VudCBvZiB1c2Vyc3BhY2UtZmFjaW5nIGNoYW5nZXMKPiBtaW5p
-bWFsLgoKSSBtaXhlZCB1cCBlNTRjIGFuZCBlNTJjIHNvIG15IHN0YXRlbWVudCB3YXMgbm90IGZ1
-bGx5IGNvcnJlY3QgYWJvdmUsCmhvd2V2ZXIgdGhlcmUgaXMgYSBtaXhlZCB1c2Ugb2YgQlROXzEg
-YW5kIEJUTl8wIGZvciB1c2VyIGJ1dHRvbjoKCi0gcmszNTg4cy1uYW5vcGktcjZjL3I2cyB1c2Vz
-IEJUTl8xLCBhZGRlZCBpbiB2Ni45LXJjMQotIHJrMzU4OC1mcmllbmRseWVsZWMtY20zNTg4LW5h
-cyB1c2VzIEJUTl8xLCBhZGRlZCBpbiB2Ni4xMS1yYzEKLSByazM1ODItcmFkeGEtZTUyYyB1c2Vz
-IEJUTl8wLCBhZGRlZCBpbiB2Ni4xNC1yYzEKLSByazM1MjgtcmFkeGEtZTIwYyB1c2VzIEJUTl8x
-LCBhZGRlZCBpbiB2Ni4xNS1yYzEKLSByazM1NzYtbmFub3BpLW01IHVzZXMgQlROXzEsIGFkZGVk
-IGluIHY2LjE3LXJjMQoKTWFqb3JpdHkgc2VlbSB0byBiZSB1c2luZyBCVE5fMSBmb3IgYSB1c2Vy
-IGJ1dHRvbi4KClJlZ2FyZHMsCkpvbmFzCgo+IAo+IEhlaWtvCj4gCj4gCj4gCgoKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFp
-bGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
-LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Hi,
+
+On Sun, Sep 07, 2025 at 12:34:24AM +0300, Dmitry Baryshkov wrote:
+> On Sat, Sep 06, 2025 at 10:42:22PM +0200, Sebastian Reichel wrote:
+> > On Sat, Sep 06, 2025 at 10:24:54PM +0300, Dmitry Baryshkov wrote:
+> > > On Thu, Sep 04, 2025 at 08:26:02PM +0200, Sebastian Reichel wrote:
+> > > > Currently the Rockchip USBDP PHY as a very simply port scheme: It just
+> > > > offers a single port, which is supposed to point towards the connector.
+> > > > Usually with 2 endpoints, one for the USB-C superspeed port and one for
+> > > > the USB-C SBU port.
+> > > > 
+> > > > This scheme is not good enough to properly handle DP AltMode, so add
+> > > > a new scheme, which has separate ports for everything. This has been
+> > > > modelled after the Qualcomm QMP USB4-USB3-DP PHY controller binding
+> > > > with a slight difference that there is an additional port for the
+> > > > USB-C SBU port as the Rockchip USB-DP PHY also contains the mux.
+> > > > 
+> > > > Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> > > > ---
+> > > >  .../bindings/phy/phy-rockchip-usbdp.yaml           | 23 ++++++++++++++++++++++
+> > > >  1 file changed, 23 insertions(+)
+> > > > 
+> > > > diff --git a/Documentation/devicetree/bindings/phy/phy-rockchip-usbdp.yaml b/Documentation/devicetree/bindings/phy/phy-rockchip-usbdp.yaml
+> > > > index 8b7059d5b1826fdec5170cf78d6e27f2bd6766bb..f728acf057e4046a4d254ee687af3451f17bcd01 100644
+> > > > --- a/Documentation/devicetree/bindings/phy/phy-rockchip-usbdp.yaml
+> > > > +++ b/Documentation/devicetree/bindings/phy/phy-rockchip-usbdp.yaml
+> > > > @@ -114,6 +114,29 @@ properties:
+> > > >        A port node to link the PHY to a TypeC controller for the purpose of
+> > > >        handling orientation switching.
+> > > >  
+> > > > +  ports:
+> > > > +    $ref: /schemas/graph.yaml#/properties/ports
+> > > > +    properties:
+> > > > +      port@0:
+> > > > +        $ref: /schemas/graph.yaml#/properties/port
+> > > > +        description:
+> > > > +          Output endpoint of the PHY for USB (or DP when configured into 4 lane
+> > > > +          mode), which should point to the superspeed port of a USB connector.
+> > > 
+> > > What abourt USB+DP mode, where each one gets 2 lanes?
+> > 
+> > Right, I guess we would need one port more and have one port for
+> > lane 0 + 1 and one port for 1 + 2. For USB-C both ports are
+> > connected to the USB-C superspeed port. For DP 4-lane mode the
+> > same is done for the input port of the connector. Last but not
+> > least for 2 lanes USB + 2 lanes DP, one port can be connected
+> > to the USB connector and one port can be connected to the DP
+> > connector.
+> 
+> Hmm. I'm not sure what do you mean here. Basically, it should be:
+> 
+> - Normal USB-C case with DP AltMode:
+>   + port@0 routed to connector's port@1 (through mux or retimer if any)
+>   + port@4 routed to connector's port@2 (through mux or retimer if any)
+> 
+> - Actual DP or mini-DP connector:
+>   + port@0 routed to connector's sole port (most likely direcrly)
+>   + port@4 most likely unconnected (at least for now, dp-connector
+>     doesn't have AUX lines described)
+> 
+> - Weird mode of having both USB-A or -C and actual DisplayPort
+>   + port@0 should get two endpoints, each having data-lines properties,
+>     one endpoint being connected to the USB port, another endpoint being
+>     connected to DP connector.
+>   + port@4 unconnected (yep, we should extend DP properties, maybe I'll
+>     send a patch)
+
+That's a bit different from what I described, but sounds more
+sensible. Effectively the Rockchip USBDP PHY binding would need
+to deprecate rockchip,dp-lane-mux and switch to using data-lines
+on the endpoint instead, just like it is currently proposed for
+Qualcomm (I follow the T14S HDMI thread).
+
+AFAIK the Rockchip PHY hardware does not support 1-lane DP, so the
+binding will have to forbid that. Shouldn't be a problem, though :)
+
+> I'd say, the first two options are the most important ones. Unless you
+> have actual hardware that uses the USB + separate DP, I'd say, we can
+> ignore that part.
+
+The RK3588 evaluation board routes the first two lanes to a USB-A
+connector and the second two lanes + AUX to a RTD2166 bridge, which
+converts it to VGA and then terminates on a VGA connector. I have
+that on my desk and can do some tests. But I don't have enough time
+for preparing patches right now - especially since the RTD2166 is
+not yet supported upstream.
+
+Greetings,
+
+-- Sebastian
+
+> > > > +      port@1:
+> > > > +        $ref: /schemas/graph.yaml#/properties/port
+> > > > +        description: Incoming endpoint from the USB controller
+> > > > +
+> > > > +      port@2:
+> > > > +        $ref: /schemas/graph.yaml#/properties/port
+> > > > +        description: Incoming endpoint from the DisplayPort controller
+> > > > +
+> > > > +      port@3:
+> > > > +        $ref: /schemas/graph.yaml#/properties/port
+> > > > +        description:
+> > > > +          Output endpoint of the PHY for DP, which should either point to the
+> > > > +          SBU port of a USB-C connector or a DisplayPort connector input port.
+> > > 
+> > > I would suggest describing this port as 'DisplayPort AUX signals to be
+> > > connected to the SBU port of a USB-C connector (maybe through the
+> > > additinal mux, switch or retimer)'. It should not be confused with the
+> > > actual DisplayPort signals (as those go through the port@0).
+> > > 
+> > > In the Qualcomm world we currently do not describe this link from the
+> > > PHY to the gpio-mux or retimer, but I think we will have to do that
+> > > soon.
+> > 
+> > It does looks like no upstream platform does a proper description of
+> > USB-C setups :(
+> > 
+> > Thanks for having a look,
+> > 
+> > -- Sebastian
+> 
+> 
+> 
+> > _______________________________________________
+> > Linux-rockchip mailing list
+> > Linux-rockchip@lists.infradead.org
+> > http://lists.infradead.org/mailman/listinfo/linux-rockchip
+> 
+> 
+> -- 
+> With best wishes
+> Dmitry
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
