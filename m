@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83F14CAC583
-	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Sep 2025 16:02:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C232CAC58C
+	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Sep 2025 16:02:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6D8NtP1Qtnp+vPmZC8De9yQfm5YPozvbJLgDkq/ZvA0=; b=OAMahlElT5g7WX
-	lssx7yMV3CVHbUMebKR7vCJY9nC38mbN2RYRFSogkoLPL4Z7Jf1rQftUltl7I/LMUL+TBtZLvGhYa
-	kqdGHQ2QdfpYT4RON7ls9jDWRGyEhs1DQXWsjfODZz/zKfhif7i5NtshR14q8mdj0KpWvEFveNBAm
-	Uv9zfCqbhlSX3qGFyAVapY7DE0yi289Nqi1L3coJsT878WUG4bqK+6HhRxXY5b7cn7sy56zce3qJG
-	6Z7ptaQVdfIK1judFTeyORccev31H6Q5T8CZABeLo61zx4FprsJVHOrJSaVS7k7mIl3cbdsLkgO31
-	pJdy8Qgvzfhyz/G5oTHg==;
+	List-Owner; bh=OmhW1tCR+T4qbxg57WuUMYpzRSfkq0a/gCUrq+pGhL4=; b=zgJIl6oHYKiIdW
+	JbsZmsQhc2s2u7y6bVh6pEOwZ5rFX+Q+4VnopMID43ZznUKSbe1BbpzcplrSVB4U7zVohxCjSunGM
+	dNs+swChtHVF4kkAt1MgF3CDDXKHTneZKaM5QzQidg99Eo8a94eMsxQwpkAMX5HMcfRu83s5+iwNY
+	9wNLcGakxgIhRcB/EG5MlHYs7rsQU6jKAbP8KMroSFmEUWm7u22OMi2iMb5SyWJ3AhytWMugirCDH
+	t2v85+t3+AUf+edrC8wse4/jNIyQNoSSo4HypO2M0sWOC/EfU4mbX2jYehOfh/SDRedvV6t8Khigl
+	liwtpELoiEpcsIByUMtA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uw0nm-00000008O4j-3riW;
-	Tue, 09 Sep 2025 16:02:38 +0000
-Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
+	id 1uw0nn-00000008O6R-3VrN;
+	Tue, 09 Sep 2025 16:02:39 +0000
+Received: from mail-pg1-x529.google.com ([2607:f8b0:4864:20::529])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvyRI-00000007OtO-2wwH;
-	Tue, 09 Sep 2025 13:31:17 +0000
-Received: by mail-pf1-x432.google.com with SMTP id d2e1a72fcca58-77238a3101fso3992568b3a.0;
-        Tue, 09 Sep 2025 06:31:16 -0700 (PDT)
+	id 1uvyRQ-00000007Ovi-28lj;
+	Tue, 09 Sep 2025 13:31:25 +0000
+Received: by mail-pg1-x529.google.com with SMTP id 41be03b00d2f7-b522fbe3088so1530644a12.1;
+        Tue, 09 Sep 2025 06:31:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1757424676; x=1758029476; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1757424684; x=1758029484; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=KdyjQVerHnCtQC9pVNT1b72KD6sF3r9Hbrbb+1r/mbI=;
-        b=g6Qjzb81qEr40TZyN2I7XpvXlWTjJN43zaWG1g/MX5PvdYkO2Hak3qWzhH4gsqGzLo
-         cdjEVehmArAGyeWcZcqE3dzPnt4rMtDzwXvBgXm/tAE7DAqj4iNcv9XK/fzseXY4JTbr
-         8vqJ4MKpOovXeuOTmvqukQgkXLiHvtuiIO6ZgQ+NWzW/CCu6wcvCuvfPdtWm5r4+86Yt
-         vntNSGJOQ9P+2eyqNwsFvBUQVYV4e68iJhzmvAWq7FEdV2vh9HRaCNXu8W15ZZfTewnI
-         977lKN2fDNmXCx7zRM949In4Yyxf0Jem4mKiTQ44xWMscEGo0k79DJdMEcQO70cKmtNH
-         swrQ==
+        bh=dgSML/DthZavsnlbDnrmGiAVx3wcugzJPKg3K/xvLk0=;
+        b=ge/+R9IUZivPlIZCVeXZYKIAJsZOpjG8rltjdOqDXoeOG0VHem4DVhZ0pEBXqX/QM2
+         C65Dv+umAWEwqf2OLXuaf6bVY+5NvbyXLJnOHdTrJvsxC8LhBZ9xdHXowpZOhiJBc55N
+         vpmao0gTF/GuAnlfMbNG9YKdHIOr98a/kz2p1ydiuwm38kFxJO8YxWn9IFBQbaX3zKHP
+         HJny76QMhhUqWvBaDGxvg9+e/red2M5W60vJM1MLsd6pJBK611F+wncK1GFBXfJQUJeJ
+         g3gpEWQ9hFzLi/pwVvY/S9uQDco560w8lGRJR9oiIL3xVW1K0WaERyorforTmPEkTB4o
+         lpgA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1757424676; x=1758029476;
+        d=1e100.net; s=20230601; t=1757424684; x=1758029484;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=KdyjQVerHnCtQC9pVNT1b72KD6sF3r9Hbrbb+1r/mbI=;
-        b=J2Kkdql5Q4WWBKEZXHC3OoJsZL2Q0u7zcQKmyoiaQz1CPwppCcENHkh5RLeiLHzT4G
-         lt6MHYnjxcKOuoC4GMbWywxZqVWr09j0v4wC8gEajnmBnL0WZdBLnUxaENCANnpPQ/15
-         EOUvjrEP7w3yEYL+1+oC/shJu1W9vebVjG/D6sANXDQagWzQH3sjoLpjXXm7HFILqxbE
-         n7I5rAiUxEScOfNSjO/f3Wz/y/cmmXkJx4Cq6mnWrE2Dg64NDbbnxD06Dk05+VHDTE8u
-         6owv4AT/uAqSto8M67f8n/nqRr6wwRllDZXGbrk8psg6CxGx4SuVDEo8EinA3lp+kwf/
-         MWSQ==
-X-Forwarded-Encrypted: i=1; AJvYcCV67ebb7rSSzL9MjPHk4G+nplm58GXZQFp87DrtIMUbScfa12CS2tU6/2MPNOkcs3OyiakQdb3X7V4F@lists.infradead.org, AJvYcCW2ZyUD2JeqipDNH4aIIvjtZNsbChPaYnPIPQ9RxQWwXhoa4Jqn588e2dn6rWCOw5OFAdqsFdCWGsTdbP0KxaAG@lists.infradead.org, AJvYcCWlAPWCrNvArwMzD7IXqyOkfZAuceLxLIlYwDcw0wv3CYbyBvhNBWoWvDoC7PAf2u0eYVXi//680WFfrWXcyU0=@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxt4FLOciyWyGiDiaMZv82ZtsGK1hT7eAt97OndfwEsTU/nHaZa
-	6sc/SGZa7E8af9mxab/vTf2h2wj2+R8gqZjgDBLtKJiOk79GxIaD4QCu
-X-Gm-Gg: ASbGnctDP/wjWBWub5McNgfGIvNO3/apil6FmIGMxwzDO4E+6ZQsi4Gl8btwsL2mCDo
-	zde50WquOCpQ5ot1ekrFx2Nv7TUjr5MFqdExPevko514Wi7rIsyg2M2mx7rx48Nrn/ucuPIBsaK
-	DSNno1tjwQ1LnTp1m3uMhalICjm7s41SzI8jyklcNevNKwHpUag5pZda28gu4Kr4mrSv1Xr9Yak
-	7FTz+TCyrZQKBM5XJxbl0k+bPYS55k4JgS0rQ73xpt2H4Hta/A/HUG+6pvOiQDMn54eFIi2jVuw
-	58h9QHgZt6CQt0dcfk74keMpEXxUZPwVtXlishzS7641s1idW4qko6ewBLLHopPGkcUP3krJ6XF
-	Cbmeb6wZtkEXG+qPy7tEG7EV5ZqId4ZLkuHYTen+i
-X-Google-Smtp-Source: AGHT+IHwBbZsks9DdQ6XHABej9H6sI60c64zySW2Wkkud1SiiDf3inSmEJ4jwNop9RIJz+LR1AwSRQ==
-X-Received: by 2002:a05:6a20:734a:b0:24c:1f78:1811 with SMTP id adf61e73a8af0-25343c5f206mr15647342637.37.1757424675720;
-        Tue, 09 Sep 2025 06:31:15 -0700 (PDT)
+        bh=dgSML/DthZavsnlbDnrmGiAVx3wcugzJPKg3K/xvLk0=;
+        b=rVRxDP0dpyBduwDJPqqkOWZStjteEz9BgMQ/OE68xdpsApKJCD+UOwMuoeoHztgGLk
+         1JDTuVO4l3KpS0sUqWyCzvKc9PbSe4UHAyizUA3UJA/9PTfHVHP5NxImDcmi0s8CRyNv
+         rWPF23NS5CmDlovU9Uv8Uo5b676VBHvovkSTpKry7lic5vhvu+LmGNo/bO8GW37Ev8zQ
+         cJgXk6abSotP4LBdSzWQwfm0S/FymTzyd7dR/1uHfnP2A2Nv3wCxhMZ0/rxVFZ444+Yc
+         pKDJmyHf/rZe77/mZTcv7zD37YtB5jRc7Zc9PGADNd67jWV0gXJext+CpsLcVIALbQud
+         w22A==
+X-Forwarded-Encrypted: i=1; AJvYcCUYRwjiX4OPneKRtdbvPpY0+ueNbdc4MPEtu/WO3kvZ5AAoBzqCPhEuLJ0hjnkPJJpo7bubKM107y32unwl6KKN@lists.infradead.org, AJvYcCVcPrvzc9/1ta29WUv8TGicI6syYU3CNfUfKDwZ2AMSTg4RnQP9FVkUarEG6m4SKMTizCEw8XXiVd5+LN8Rtmc=@lists.infradead.org, AJvYcCWGnbwefCBGDL9n2rfJkby/sV39tDuPNOFBm6Q/dfJcF43YWFy/gwwDKPnOUAIsELAtEBNPllfKbs/i@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy2crnMqVjNbIHRxjqLUsu5VHRg8Yw1naI1Kvw8ErOBWB4WDobX
+	EW6or1ytqtfVWZ4JKm0JzADKK4Pn1dlUL9KcGV9j4RaCMLMTqixpm8lG
+X-Gm-Gg: ASbGnctmSpS7pyTm9msJ6OfVX3JmP/lG4P4wriRrCUSkmlIozyosKwVhxaPItZ9UiIz
+	C6PCzGqcsjQH/6iVoszupsnE9RsDEImLs7cedeQ3hJ0RSTt8cHvt5LyP+jeDQJ9nr3rdqvjV361
+	aMWkyobzXCS17EbawsYYHxKHQV2Ilg9qjIVlVNl1aC92GtNZMAUnSNOW00qRI0AjK7Bp0RYwY3h
+	kQzj20XPF1xlL7/jS2STjvj3kHVB9EBS+bTcwOUzIxAKFHhCFDKj6iUXFIwtQEhfWvnafxRZcBx
+	FxZAZCLenOVHYKm4wsp2eJYIgyjvGyX55PdGvxOjWDKuhRH+wkXS+g+BwQpAcH3VUUYO39WyeyB
+	EpHrMY6HoHOnUPKmafZMeULh+wm2Z0e4wUcH3N1CkznFB7eiPi+4=
+X-Google-Smtp-Source: AGHT+IFh0492S5Vla97I5jRBRsyJDDPnjkq7JJGcXNqhS9uUo8pi3cIay9te3rObVGyihMKVHOaRpA==
+X-Received: by 2002:a17:902:da88:b0:24b:1b5f:1c0a with SMTP id d9443c01a7336-24cef93b49cmr202420885ad.21.1757424683650;
+        Tue, 09 Sep 2025 06:31:23 -0700 (PDT)
 Received: from localhost.localdomain ([240e:3a6:1c4b:13c0:db95:4539:1490:64d2])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-32dab173060sm810778a91.5.2025.09.09.06.31.08
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-32dab173060sm810778a91.5.2025.09.09.06.31.16
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 09 Sep 2025 06:31:15 -0700 (PDT)
+        Tue, 09 Sep 2025 06:31:22 -0700 (PDT)
 From: WeiHao Li <cn.liweihao@gmail.com>
 To: heiko@sntech.de,
 	robh@kernel.org
@@ -78,17 +78,19 @@ Cc: krzk+dt@kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	WeiHao Li <cn.liweihao@gmail.com>
-Subject: [PATCH v2 2/4] arm64: dts: rockchip: Add USB2.0 PHY for RK3368
-Date: Tue,  9 Sep 2025 21:29:56 +0800
-Message-ID: <20250909132958.26423-3-cn.liweihao@gmail.com>
+	WeiHao Li <cn.liweihao@gmail.com>,
+	Conor Dooley <conor.dooley@microchip.com>
+Subject: [PATCH v2 3/4] dt-bindings: phy: rockchip,inno-usb2phy: Document rk3368 usb phy
+Date: Tue,  9 Sep 2025 21:29:57 +0800
+Message-ID: <20250909132958.26423-4-cn.liweihao@gmail.com>
 X-Mailer: git-send-email 2.47.2
 In-Reply-To: <20250909132958.26423-1-cn.liweihao@gmail.com>
 References: <20250909132958.26423-1-cn.liweihao@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250909_063116_746149_41E5C390 
-X-CRM114-Status: GOOD (  10.14  )
+X-CRM114-CacheID: sfid-20250909_063124_548891_DC3D281E 
+X-CRM114-Status: UNSURE (   8.55  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,59 +107,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RK3368 has one USB2.0 PHY with two ports, This adds device tree node for
-it.
+Add compatible for the USB2 phy in the Rockchip RK3368 SoC.
 
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
 Signed-off-by: WeiHao Li <cn.liweihao@gmail.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3368.dtsi | 29 ++++++++++++++++++++++++
- 1 file changed, 29 insertions(+)
+ .../devicetree/bindings/phy/rockchip,inno-usb2phy.yaml          | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368.dtsi b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-index 1b21787269..b09e431a64 100644
---- a/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-@@ -766,11 +766,40 @@ cru: clock-controller@ff760000 {
- 	grf: syscon@ff770000 {
- 		compatible = "rockchip,rk3368-grf", "syscon", "simple-mfd";
- 		reg = <0x0 0xff770000 0x0 0x1000>;
-+		#address-cells = <1>;
-+		#size-cells = <1>;
- 
- 		io_domains: io-domains {
- 			compatible = "rockchip,rk3368-io-voltage-domain";
- 			status = "disabled";
- 		};
-+
-+		u2phy: usb2-phy@700 {
-+			compatible = "rockchip,rk3368-usb2phy";
-+			reg = <0x700 0x2c>;
-+			clocks = <&cru SCLK_OTGPHY0>;
-+			clock-names = "phyclk";
-+			clock-output-names = "usb480m_phy";
-+			#clock-cells = <0>;
-+			status = "disabled";
-+
-+			u2phy_otg: otg-port {
-+				interrupts = <GIC_SPI 94 IRQ_TYPE_LEVEL_HIGH>,
-+					     <GIC_SPI 93 IRQ_TYPE_LEVEL_HIGH>,
-+					     <GIC_SPI 95 IRQ_TYPE_LEVEL_HIGH>;
-+				interrupt-names = "otg-bvalid", "otg-id",
-+						  "linestate";
-+				#phy-cells = <0>;
-+				status = "disabled";
-+			};
-+
-+			u2phy_host: host-port {
-+				interrupts = <GIC_SPI 96 IRQ_TYPE_LEVEL_HIGH>;
-+				interrupt-names = "linestate";
-+				#phy-cells = <0>;
-+				status = "disabled";
-+			};
-+		};
- 	};
- 
- 	wdt: watchdog@ff800000 {
+diff --git a/Documentation/devicetree/bindings/phy/rockchip,inno-usb2phy.yaml b/Documentation/devicetree/bindings/phy/rockchip,inno-usb2phy.yaml
+index 58e735b5dd..6e3197c168 100644
+--- a/Documentation/devicetree/bindings/phy/rockchip,inno-usb2phy.yaml
++++ b/Documentation/devicetree/bindings/phy/rockchip,inno-usb2phy.yaml
+@@ -19,6 +19,7 @@ properties:
+       - rockchip,rk3308-usb2phy
+       - rockchip,rk3328-usb2phy
+       - rockchip,rk3366-usb2phy
++      - rockchip,rk3368-usb2phy
+       - rockchip,rk3399-usb2phy
+       - rockchip,rk3562-usb2phy
+       - rockchip,rk3568-usb2phy
+@@ -192,6 +193,7 @@ allOf:
+               - rockchip,rk3308-usb2phy
+               - rockchip,rk3328-usb2phy
+               - rockchip,rk3366-usb2phy
++              - rockchip,rk3368-usb2phy
+               - rockchip,rk3399-usb2phy
+               - rockchip,rk3562-usb2phy
+               - rockchip,rk3568-usb2phy
 -- 
 2.47.2
 
