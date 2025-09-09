@@ -4,61 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3FE4CAC587
-	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Sep 2025 16:02:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E95F3CAC583
+	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Sep 2025 16:02:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KutMC1gv2GpWyLzk/a/fDq5peGj4cGSx/tMr/08rEno=; b=r2IJuUxC/D92YQ
-	g4MOk/UuyLPIc/eptRb19mlmEUArRfjPWaYKDMdSsdmCip+0NTsXpkKt5WbhLCs/UeWK9hXFgQhF2
-	Nj6gTT+Dz/jRglT9ywn9XeO00tET6M8qLnwfTxaeg3KJ73GrE+DZUWqgNFCZYe7Ma2tJbRb2n+BCP
-	2jUjeOS7+CABivNcChHV8liMUAlEO7s79AB9bSPvtwCU69mF9x07x7UoRMeOQnoJ0OLxuIZ/MrC8M
-	PMBquTWK7S7RPX5cXQvff+E1Mv4vdDX2mgX5PQIpgSWZrwvU6D1ncFK/oyMJXgXslBA6tUO4Cln+c
-	K/ikBg+26JXBf6u5VUJg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=wQilrQBVk8DekpX3o99RybVfKmeAI/pt1ELK1qXt7Ik=; b=BhhWqKnV7Xdi1i
+	w2I1uku+W+pTQP2Y5sUflmC7M/QIaY14DDegxqSruEo+ot9RZ1Pc9GLR0CeXiM+yPGcSKND9gJ1j6
+	Oi8CHLePqrPjP0Df8MYYz0LdRD/8GpTqZXik/nb47kYMzNiShDMFrMp1wFD+/TLhFRH/CF37wML7r
+	kIiwRhdBphn8ms4yj8A2UqQJrf8oMU+nTd5z1es4qFIZRAcJwF4FICC9EgQ+7EeygoRP59Vg7HXyB
+	Qh27GwDJKFIPLZXEqFDRgFqG8e1cWub6vAOOcJCtBQ/rF3SsXpPTUii5rGKdPOt5lWlTxwxcKxjCt
+	0yrdAUVqIgPkz/jjvD8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uw0nX-00000008Ned-2Cgz;
-	Tue, 09 Sep 2025 16:02:23 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1uw0nj-00000008NyS-38F0;
+	Tue, 09 Sep 2025 16:02:35 +0000
+Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvy8q-00000007IW6-3rZM;
-	Tue, 09 Sep 2025 13:12:12 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id AC12260226;
-	Tue,  9 Sep 2025 13:12:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B97C5C4CEF4;
-	Tue,  9 Sep 2025 13:12:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1757423530;
-	bh=gKJA5qVK6epw+rflk+7KDWhPkkSQ8HIBUNn4mxtldCw=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Gp3d7ddsviq3ErlSBbi033LuArTUBYaS5C0afFD1U0Ug2gkTLVzeFPAq/3+Rfke1I
-	 K3jxfcIT0zTgDuNhNuGNhqIororwgN/HQwNLPXP7xVnOPa/PCaQgM6XEJuifEkB3y3
-	 g+D63JOCvT0mJKpyaC5h7szDkdty0dTk5IwhJ/+BUy+z6VteCzJb8JVncXCim/mCuE
-	 L4gjtRR3QyrbH4D+yDjeKPRreF9PIgBHCiTjRMpkkO4Pd4/frN55hEoktz1JXl17Ue
-	 aChOQ6lwu/X7poekW/TNKNK7mijz6JpMnrSRlZj6U3ZRdViK9XmueE7UjbAmnpIL3H
-	 3hDg1Zy85VDEA==
-Date: Tue, 9 Sep 2025 14:12:03 +0100
-From: Will Deacon <will@kernel.org>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Cc: joro@8bytes.org, robin.murphy@arm.com, robh@kernel.org,
-	krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de,
-	nicolas.dufresne@collabora.com, jgg@ziepe.ca,
-	p.zabel@pengutronix.de, mchehab@kernel.org, iommu@lists.linux.dev,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	id 1uvyR5-00000007Oo2-0DyZ;
+	Tue, 09 Sep 2025 13:31:05 +0000
+Received: by mail-pj1-x102d.google.com with SMTP id 98e67ed59e1d1-32d6c194134so3642087a91.0;
+        Tue, 09 Sep 2025 06:31:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1757424662; x=1758029462; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=dG6XF2PIOMDeR4MOZBWi65Kf7chBzQecby0CPXw5mi8=;
+        b=CAaQiHbMSnc3TCbXZ49Ym1f4J+UHBdWhQptMwyx/dSYOxRQrl0oR2zSnscKd8dqoXF
+         z6tjq9FEfkqfr2MslVFBdleqIHe8yA0MADD89uyleL7U2FD1mbPYW1WiPtrVi0V+lMCX
+         YGItp5knJWFSjhr6jDBKCODyz09/0gqINKYY2GKFdnFyooEGs4Vv4tB7HVeOgZYa7KO9
+         2mso8YLnG14pIwoap8/t97LK38TjRPyQUOr0STHOLYFvruyLg85MmcFskcpgy+KVWHfe
+         VkeZrNBlo9qN30GItm5TrqmU3XsI53oEEYPBteh2QTQqwZqO7Ls98Lw2ouiH50k+dT7/
+         7r4g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1757424662; x=1758029462;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=dG6XF2PIOMDeR4MOZBWi65Kf7chBzQecby0CPXw5mi8=;
+        b=PXkYwom4z5LucpEv2k/13zJKdTZ3vxdFDODRIXn0S1dqv10TJtKgR/2Br+lyjte5Pb
+         Vfp62g319MjCWsHL1oSQTLBwGt7PETed22UFJy3tVW9HFtjN7m9v6v6y8Kcu2qLc8GtF
+         DImEfYvXcWNwvkjgU4FxSxQZa2+gPBUlQix/mBge2uUr0HbEHy1sBTIcW2FbQwffn/8a
+         whTQJS0aASuJfu9eQeLKjfE6bfI9WBD09NgJTORIxORmLtO7+OkRpu7aXvKGxFM45jEE
+         bypj0fSlbYEksDRG7khLhoCYApsQTv3SHlXlYk2ROFVIxgfmqyQEeHgu3KFywnLQA3ST
+         s8dg==
+X-Forwarded-Encrypted: i=1; AJvYcCVNIm0Za2zqWJXmNKCvh9iHBbF4BLw2yZOZg3kqJxNj/1GZ8vYOBnloe/ug8vtNGjsDtqgPido1jFmz@lists.infradead.org, AJvYcCVxOzb/zfnn9uW404CbCR+gHvl18AQMW7IhbwxvcHJu68iTiOB2hAk35eCt12EI0dIzBGONBpYpCskDh08YYyE=@lists.infradead.org, AJvYcCW26aN8Ufk6ZSFFeVLu/ycW8924aTXP/KvqJVdvDZpWtomXMzwITjBhxybIgdMkgG/X4qjnYGL6B6G/SO58ig3H@lists.infradead.org
+X-Gm-Message-State: AOJu0YyzzCzDqulQ2oEpb49UXOnDfKd9xNO8Pa/KaoMBEn0OZ4QX/syu
+	dBDy17A1TNzCYfHfQdwK8IPGnjiUZMHSVuBEjExfNq0m1DJqQ+SgiPDwvc9lljAeQ30=
+X-Gm-Gg: ASbGncunORUz1qkwIjvZmo/LtFcfr6LHOte0bnFXq+rOlxWCGJ4yruUWUCfdscaJA7V
+	1TICiMKZ/uBGelRJiWDs4ejiihffEDTvI28eHN1JGG7wmMX3IcUlcAr6nkN0l8de3g3OXw3phE7
+	w7tWqPLXxWyMaDz7TQySYtJtdpIyUKScDKd3Ns5zmJ9o0VPDlYstj3nlk4FM015ExWidHmER4ZX
+	EMcb02qhytSgjdfpslbsPLqnuPprutFSrReX3uFy8tFm0NhReHh1FjHc00qQClLLfZR8GLRutFd
+	68ECu9TBZXeuJj3die068Tubsvfe88SPGliQfLdF7wF1enR+mrpHF+v2QIG99DV7iVun5hq1Xb5
+	ngIfOvPPb+wkWy39Js/WYVTfxsBsP0kpvtjM+amIV
+X-Google-Smtp-Source: AGHT+IFvzCSi3Jx1813Qml8IRiQpzQZCTcshHHIDJ588+57HfZOE6WtTLDZVN3MrY4AiWuNHBrHx4Q==
+X-Received: by 2002:a17:90b:5584:b0:32b:cb05:849a with SMTP id 98e67ed59e1d1-32d43f936fbmr14109516a91.29.1757424661526;
+        Tue, 09 Sep 2025 06:31:01 -0700 (PDT)
+Received: from localhost.localdomain ([240e:3a6:1c4b:13c0:db95:4539:1490:64d2])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-32dab173060sm810778a91.5.2025.09.09.06.30.55
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 09 Sep 2025 06:31:00 -0700 (PDT)
+From: WeiHao Li <cn.liweihao@gmail.com>
+To: heiko@sntech.de,
+	robh@kernel.org
+Cc: krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	linux-phy@lists.infradead.org,
+	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, kernel@collabora.com,
-	linux-media@vger.kernel.org
-Subject: Re: [PATCH v8 3/7] iommu: Add verisilicon IOMMU driver
-Message-ID: <aMAno-DkDJumcAtj@willie-the-truck>
-References: <20250827090809.34555-1-benjamin.gaignard@collabora.com>
- <20250827090809.34555-4-benjamin.gaignard@collabora.com>
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	WeiHao Li <cn.liweihao@gmail.com>
+Subject: [PATCH v2 0/4] Fix USB controller support for RK3368
+Date: Tue,  9 Sep 2025 21:29:54 +0800
+Message-ID: <20250909132958.26423-1-cn.liweihao@gmail.com>
+X-Mailer: git-send-email 2.47.2
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250827090809.34555-4-benjamin.gaignard@collabora.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250909_063103_089317_F08CC045 
+X-CRM114-Status: GOOD (  10.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,35 +102,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Aug 27, 2025 at 11:07:59AM +0200, Benjamin Gaignard wrote:
-> The Verisilicon IOMMU hardware block can be found in combination
-> with Verisilicon hardware video codecs (encoders or decoders) on
-> different SoCs.
-> Enable it will allow us to use non contiguous memory allocators
-> for Verisilicon video codecs.
-> 
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> ---
-> changes in version 8:
-> - Add API to restore VSI iommu context from decoder driver
-> - Fix reported checkpatch issues: add comment in pinlock_t declaration
->   and remove blank line.
-> 
->  drivers/iommu/Kconfig     |  11 +
->  drivers/iommu/Makefile    |   1 +
->  drivers/iommu/vsi-iommu.c | 810 ++++++++++++++++++++++++++++++++++++++
->  include/linux/vsi-iommu.h |  21 +
->  4 files changed, 843 insertions(+)
->  create mode 100644 drivers/iommu/vsi-iommu.c
->  create mode 100644 include/linux/vsi-iommu.h
+This series fixs USB controller support for the Rockchip RK3368 SoC.
 
-I still object to the duplication with the rockchip driver:
+Key changes:
+ - Update phy-rockchip-inno-usb2 driver to preperly handle RK3368 usb
+   phy initialization and configuration.
+ - Add usb PHY node to rk3368.dtsi with correct clocks and register
+   mapping.
+ - Add missing OHCI node, add missing attribute for usb host node.
+ - Add dt-bindings document.
 
-https://lore.kernel.org/all/aH5yR9CkYSJ4PaZV@willie-the-truck/
+The following changes since v1:
+ - Remove the duplicate structure member I accidentally added.
 
-at least drop me from cc if you're going to ignore my comments, please.
+These changes were tested on a RK3368-based board [1]. Both of USB ports
+can emumerate device (HID and mass storage).
 
-Will
+Main code changes come from the rockchip downstream source [2].
+
+[1] https://ieiao.github.io/wiki/embedded-dev/rockchip/rk3368
+[2] https://github.com/rockchip-linux/kernel
+
+Tested-by: WeiHao Li <cn.liweihao@gmail.com>
+Signed-off-by: WeiHao Li <cn.liweihao@gmail.com>
+
+WeiHao Li (4):
+  phy: rockchip: inno-usb2: Add usb2 phy support for RK3368
+  arm64: dts: rockchip: Add USB2.0 PHY for RK3368
+  dt-bindings: phy: rockchip,inno-usb2phy: Document rk3368 usb phy
+  arm64: dts: rockchip: Add phys attribute of USB host node for RK3368
+
+ .../bindings/phy/rockchip,inno-usb2phy.yaml   |  2 +
+ arch/arm64/boot/dts/rockchip/rk3368.dtsi      | 47 +++++++++++++++++-
+ drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 48 +++++++++++++++++++
+ 3 files changed, 95 insertions(+), 2 deletions(-)
+
+-- 
+2.47.2
+
 
 _______________________________________________
 Linux-rockchip mailing list
