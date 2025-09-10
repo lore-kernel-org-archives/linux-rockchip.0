@@ -4,83 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 467DBCAC58E
-	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Sep 2025 21:55:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECCC6CA0FED
+	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Sep 2025 21:55:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CBFEuUnw/qc3nxMVjQjsgi7pAIjhY8Bi+U6jgKKCPA0=; b=u4NiX//oYlROsw
-	sN6fWvELNoitNrMvuMZ4ZglUUMz1dcNYPsMrHdfF8zzAmjYZVruYyk79vO6V5gGy6GYZ8O9lVH/Uj
-	jLt8Ptyn4V8v1UBdoiz10j1PP89azDwFE6iW6+Woh5RTcRUHtm7AWCxN21R6MXutLuDmHBLThAUM3
-	Nbt9htuX2ntWFgVcV5Fld7obuqPMTxKJisuSfMyeYE+fRrQhQkFKgJlMi5gxFEc3Pms60+NWUOvNf
-	J98ZOosdv288JbG6yUwubkoHElnSQ77zpWC1yE+u1qmdsfBvhX3JbbmnJL5ofAfFLpWFHksUtDNd+
-	r7FJYP5e3fpasvrJ5YaQ==;
+	List-Owner; bh=UcsAwDFH0AMrul53S/LPU78vhdiVetA28C+VVEtjqWM=; b=AZJIvddUptbkbP
+	9qqxCKhW5f+smYjWw3uRB+iLIbk7P2iw512qEBqixXxcoYSqmFjyDoYNRsQv7SeV4DpJJ5aJ9l9gC
+	vZhiv4aQ8IB+2/YxnA93/feMcoGOFuWWKM7/W0ykRyXMLPRorYUxr7+deE9Rre0wYQr7hRqM5G447
+	XR/CFRKZLKDIE5RBXxwtBihhYn3IciMAqITSfscfxCWsDmt5XpEGYlbKXniUXP9HKImf/pbhP0pcJ
+	8b4OCnImN00j3I3oWb+b1Z7xH3vvGq/0VTndiNuq7S9voOAkkAL9uC0cuDFX3dcY7YxFF75RH1ruy
+	pvIO1sT/Cv+pDrj7E7LA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwSma-0000000Gxze-0blu;
-	Wed, 10 Sep 2025 21:55:16 +0000
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
+	id 1uwSmd-0000000Gy32-0y5m;
+	Wed, 10 Sep 2025 21:55:19 +0000
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwSmX-0000000GxxG-2ZrM
+	id 1uwSma-0000000Gxz9-1NUn
 	for linux-rockchip@lists.infradead.org;
-	Wed, 10 Sep 2025 21:55:14 +0000
-Received: by mail-ej1-x633.google.com with SMTP id a640c23a62f3a-b0418f6fc27so7647266b.3
-        for <linux-rockchip@lists.infradead.org>; Wed, 10 Sep 2025 14:55:13 -0700 (PDT)
+	Wed, 10 Sep 2025 21:55:17 +0000
+Received: by mail-ej1-x631.google.com with SMTP id a640c23a62f3a-afeec747e60so13681866b.0
+        for <linux-rockchip@lists.infradead.org>; Wed, 10 Sep 2025 14:55:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1757541311; x=1758146111; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1757541314; x=1758146114; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=WZJ6ySHHCRO2i8bugxvlcllCxVvLcZQKzmQs79wjff0=;
-        b=jZKLmALe5zfQW1lfZ5sTnkS4LdhTG6k8woYgzAeHJ3leWOcT60uaUCMVo5bhyA9y29
-         xPjx1kVRsnLtBF1Z0/98bh/GN9imaFsRDO4rNW9ckXVAcf9Wwcnvo4Grm4QgBpVt13H2
-         M7VC0h/Zzn7GsqjKugk3fR2aBYjhLyECLSR0tFf+xMLqwUA4yu22pHgIVCl9/urRjW2I
-         FKKO0Jf6kDli284zmg/oYAL0TvOgo63huD7naLykQVOtspYsGkj2+1vtSR0V3Gxg2rZs
-         P/gwZMFVrSyn8a+eyGlKkgdLmYuoWDokN+cX9KYjbMNoRwRg0gxem5MGaSDTyZ4CJ4cv
-         jasQ==
+        bh=brnJ/h1FGFFdupNnfST8jmi91q7sJYn3zbbtUxHEmjM=;
+        b=ZtSZBYGo2/T4Rh2fj8i/K1uAFh68A6KF9QSjYEsmRzGSKP4wMfWx2YdC94XGXupePh
+         yHc2z63UJ6/TtS2BpvwQatZ6YIfxN2ldfRYmVD+cAkCpB8TzLGSzMZLOKYoUof8i1R2N
+         NBv9XbSCLndZNDjyU1+Ju3ezruMeO937waNUk5NMWYAYfmzP0iMCmcECmuCLNRqsi80T
+         SPNF+hXTpODrvGcsHBsnb+QQC84n295fUl0ZY/Eiu2WeUtz/UNM8uYxJXgtCpmcJybg3
+         rQE6epCxI4awUCeRCDZ2Pa/OTpVb+8tOYI5yEUk0vXzSc0xVkKIboIx+CENH5BIA2OJl
+         bJBQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1757541311; x=1758146111;
+        d=1e100.net; s=20230601; t=1757541314; x=1758146114;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=WZJ6ySHHCRO2i8bugxvlcllCxVvLcZQKzmQs79wjff0=;
-        b=QVw+IHqbTX/byRlwylZ9B4qzyPP32G9fdwdHv+kW+nskgwnjM2QXVYfwWxLlUPMrnN
-         P9B11Yr4icKttgLe5fvToGnHhPJpfm5T+17omwkA1PpvIfqIWc6Vf5yYd/ZdHsXoqWwp
-         sEzkXb7C67+loCzu7uP5P4myVb0R9rKZ1NphfAj/bjm6ttxzlHdrh0Og022MYJ1bFaP8
-         gtMUTo6kzeW92Ri35UeAaRw46LzqyHfrp7vFmyZJIPZMsjOJwccRGHG1Ci6p8J9GLgzc
-         FwzOd3RVpjeQv2T7hhVEZNcMrFTZ2mB/EJrto/VvmAkKHqbYSMayEZ8Cukd6YVH9zukW
-         qotg==
-X-Gm-Message-State: AOJu0YwXfVid4JRVqy4oPJ9t901nljGs8TVLzq12vzuSRiU8TU53bWtT
-	vEZoWuHHqD20y/POSmGXmLePIqes/P5D1tGgNdxNBbqZ16SZfJTN7Y5NgMrIQ4sJ
-X-Gm-Gg: ASbGncvakB01SQaYU9rfBG+SUqzYy1Lmukmk31dfbKDrH1lk3wD3uTgeovvoETotJjz
-	J2gRhIc6oJZUg+fsXnSqDSfeeGmLUFu5JqaRuQJ++oUP/U/U3APgmYAMZQNWa/91ry07Dq0yG8S
-	QA7SRRx9foQbXy9C8WqLj5mmZ6teYP+2eDv7hJmy84PcqZ9PiP6j+UzceuCvfr3ObBXdJzaoBUM
-	KmZIY2eBcquNmz7orO/3Pw6W9N+H3lUjv6uPGKLqKRRTJe80qWEQRYAbnWjn+v4xQams/YQXL0a
-	C5TZzVUd4y1OPFYGv1TNfiYPu9qP3v0Db0YIji5qwbQmR87d/bbWbNl3ivlReaf52UVfqCcBIaQ
-	Fglw42iNQqKvd8vQ5mEVGtEArjs7S/mp07eJZRgzmZAi+QJTd7gVOHcH3/w==
-X-Google-Smtp-Source: AGHT+IH4N0RyLu0ma8U45fXIeHPchQTZgWd9YRyqf9UWVglJb8uEJSZ7pTdk0RS8QFODUxyGB+5a6Q==
-X-Received: by 2002:a17:907:3f21:b0:afc:cc64:86da with SMTP id a640c23a62f3a-b04b14f5015mr1639597966b.26.1757541311277;
-        Wed, 10 Sep 2025 14:55:11 -0700 (PDT)
+        bh=brnJ/h1FGFFdupNnfST8jmi91q7sJYn3zbbtUxHEmjM=;
+        b=CvV00ZxstCYLiSG2Hm+ma66KAMWrD5Nlh2dElfRkHhgvDLp3NsvMA8+qFocV2d/PvF
+         RtIqBetAMnsqNHeFnFtxTwT2rh4IB4Re3Ke7Wkos3WsFehEYVb6FIuo4DQRuBOaqy4Wm
+         m3VGSagG74jChsjEeuF8znSEg4LhZ/Bm/TkcZSwMnt3/YsaavyTtllzot0BeXB+t7IAU
+         s0CcN9A++Qh6wHZgLHBUOS6jP6MxG0w3AxmWKfBQHhvcye0s2YrQM1ib58+ysbMiC54m
+         TUHnyz36rxT9s0U64yNM4t7pJXE5SrI9ROWwH44NnA5qi73WUzJDisBuh8ysJQFDBfS9
+         N/XQ==
+X-Gm-Message-State: AOJu0YwJNqeobcvbIZUjr+/ZjgGhPo2woEPU+icaekeCFn3318tFadD7
+	AUTlPMZ6ouJm2Mx0FmFnMxi+C2SDh2bvpTtMLhSx5cLoWVSkczLTzdwG/BYMXccB
+X-Gm-Gg: ASbGnctuyj5hASYBTSCqTRb/QHknClkQi5hWjxgGwdxIBSW6xkuRe3/UmlAtwLVn35q
+	ikIzAm3iA1WgohPYR2xTKP4e7h1I49/VXv5GFdb3D5ZQVDZdtEdl3Q5DJWcTt/zWJZ/wF+qW+5X
+	LXtIl9ZyOrbrsYn1DUlOjITBVO3sBiIfiiu2MnOMyT3+OIF0jZJZIbune+1c2EyE/BUAozyiJjT
+	UHqh/1iu+iaUy+y8OyNHarFPF5udHrOkYHxR6ENgos08ajElJa4bliGzu0TPJiIbGksVvaG3Rkt
+	sB1Nq1f0fDQein1M5qy7SGwkY5aVFB84mT3UU1Yr8JgTLoM3s1a6lq1GNp4H0XvjlxkIqTD1bQg
+	BKMuupJRN91bknt4kIi36BbGFdX/yzII1ZaOCfITDVv81xV9ea9vUHc/NIg==
+X-Google-Smtp-Source: AGHT+IH3eYcgEkuUN6CaU0rg0ntICXtZhL7w12kgiVx2lH6MIvIAWAX3lsYPrNw1bbk96WM4Fk463g==
+X-Received: by 2002:a17:907:6d05:b0:b04:9ad9:5b29 with SMTP id a640c23a62f3a-b04b16ca72emr1765226366b.54.1757541314167;
+        Wed, 10 Sep 2025 14:55:14 -0700 (PDT)
 Received: from HomePC (89-67-214-154.dynamic.play.pl. [89.67.214.154])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-b07830ac2b6sm240517166b.27.2025.09.10.14.55.10
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-b07830ac2b6sm240517166b.27.2025.09.10.14.55.13
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 10 Sep 2025 14:55:10 -0700 (PDT)
+        Wed, 10 Sep 2025 14:55:13 -0700 (PDT)
 From: Andrey Leonchikov <andreil499@gmail.com>
 To: linux-rockchip@lists.infradead.org
 Cc: Andrey Leonchikov <andreil499@gmail.com>
-Subject: [v2,PATCH 2/5] RK3566 BTT Pi2 - Fix GMAC default delays.
-Date: Wed, 10 Sep 2025 23:54:44 +0200
-Message-ID: <20250910215451.2244192-3-andreil499@gmail.com>
+Subject: [v2,PATCH 5/5] RK356x - Add OTP description.
+Date: Wed, 10 Sep 2025 23:54:47 +0200
+Message-ID: <20250910215451.2244192-6-andreil499@gmail.com>
 X-Mailer: git-send-email 2.51.0
 In-Reply-To: <20250910215451.2244192-1-andreil499@gmail.com>
 References: <20250910215451.2244192-1-andreil499@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250910_145513_658785_F0320141 
-X-CRM114-Status: UNSURE (   5.44  )
+X-CRM114-CacheID: sfid-20250910_145516_385191_73487055 
+X-CRM114-Status: UNSURE (   6.32  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -98,23 +98,125 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Simple patch to avoid a warning on GMAC driver initialization.
-Default values same to a manufacturer DTS.
+OTP mapping, based on RK3568 datasheet and BIQU DTS.
 Signed-off-by: Andrey Leonchikov <andreil499@gmail.com>
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-cb2.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-cb2.dtsi
-index fdf7d00edf4d..d31b9bd54162 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-cb2.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-cb2.dtsi
-@@ -265,6 +265,8 @@ &gmac1m0_rx_bus2
- 			&gmac1m0_rgmii_clk
- 			&gmac1m0_clkinout
- 			&gmac1m0_rgmii_bus>;
-+	tx_delay = <0x19>;
-+	rx_delay = <0x05>;
- 	status = "okay";
- };
+diff --git a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
+index fd2214b6fad4..f9ab60750465 100644
+--- a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
+@@ -1057,6 +1058,111 @@ rng: rng@fe388000 {
+ 		status = "disabled";
+ 	};
  
++	otp: otp@fe38c000 {
++		compatible = "rockchip,rk3568-otp";
++		reg = <0x00 0xfe38c000 0x00 0x4000>;
++		#address-cells = <1>;
++		#size-cells = <1>;
++		clocks = <&cru CLK_OTPC_NS_USR>,
++			<&cru CLK_OTPC_NS_SBPI>,
++			<&cru PCLK_OTPC_NS>,
++			<&cru PCLK_OTPPHY>;
++		clock-names = "usr", "sbpi", "apb", "phy";
++		resets = <&cru SRST_OTPPHY>;
++		reset-names = "otp_phy";
++
++		cpu_code: cpu-code@2 {
++			reg = <0x02 0x02>;
++		};
++
++		specification_serial_number: specification-serial-number@7 {
++			reg = <0x07 0x01>;
++			bits = <0x00 0x05>;
++		};
++
++		otp_cpu_version: cpu-version@8 {
++			reg = <0x08 0x01>;
++			bits = <0x03 0x03>;
++		};
++
++		mbist_vmin: mbist-vmin@9 {
++			reg = <0x09 0x01>;
++			bits = <0x00 0x04>;
++		};
++
++		otp_id: id@a {
++			reg = <0x0a 0x10>;
++		};
++
++		cpu_leakage: cpu-leakage@1a {
++			reg = <0x1a 0x01>;
++		};
++
++		log_leakage: log-leakage@1b {
++			reg = <0x1b 0x01>;
++		};
++
++		npu_leakage: npu-leakage@1c {
++			reg = <0x1c 0x01>;
++		};
++
++		gpu_leakage: gpu-leakage@1d {
++			reg = <0x1d 0x01>;
++		};
++
++		core_pvtm: core-pvtm@2a {
++			reg = <0x2a 0x02>;
++		};
++
++		cpu_tsadc_trim_l: cpu-tsadc-trim-l@2e {
++			reg = <0x2e 0x01>;
++		};
++
++		cpu_tsadc_trim_h: cpu-tsadc-trim-h@2f {
++			reg = <0x2f 0x01>;
++			bits = <0x00 0x04>;
++		};
++
++		gpu_tsadc_trim_l: npu-tsadc-trim-l@30 {
++			reg = <0x30 0x01>;
++		};
++
++		gpu_tsadc_trim_h: npu-tsadc-trim-h@31 {
++			reg = <0x31 0x01>;
++			bits = <0x00 0x04>;
++		};
++
++		tsadc_trim_base_frac: tsadc-trim-base-frac@31 {
++			reg = <0x31 0x01>;
++			bits = <0x04 0x04>;
++		};
++
++		tsadc_trim_base: tsadc-trim-base@32 {
++			reg = <0x32 0x01>;
++		};
++
++		cpu_opp_info: cpu-opp-info@36 {
++			reg = <0x36 0x06>;
++		};
++
++		gpu_opp_info: gpu-opp-info@3c {
++			reg = <0x3c 0x06>;
++		};
++
++		npu_opp_info: npu-opp-info@42 {
++			reg = <0x42 0x06>;
++		};
++
++		dmc_opp_info: dmc-opp-info@48 {
++			reg = <0x48 0x06>;
++		};
++
++		remark_spec_serial_number: remark-spec-serial-number@56 {
++			reg = <0x56 1>;
++			bits = <0 5>;
++		};
++	};
++
+ 	i2s0_8ch: i2s@fe400000 {
+ 		compatible = "rockchip,rk3568-i2s-tdm";
+ 		reg = <0x0 0xfe400000 0x0 0x1000>;
 -- 
 2.51.0
 
