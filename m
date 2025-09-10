@@ -4,152 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 611F7CA101F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Sep 2025 09:55:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9BEACA0FED
+	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Sep 2025 11:03:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RN8fnKDXYZsC+guJC6c0Vxkw/e3j6aUuMeRuIwF77B0=; b=GR4NMfuhels3/B
-	niAGT8GmzGx+ZCGHN71YebK3fHyDBpA0cFxDkdMRos1tjdJ43/OdIAmT2jdsAyDsZc37Sud4ZfMVl
-	9uF2PtrMJO2kuuQxYh3SUE9BxC2UEoo+EL3a8TV0j6Wajk14LXXrELpMAPMwvRpiyI4ufRowcvZQt
-	jtQHyWxpaIm8kheFt3k0stVb5mydOy7n+L+ofkc/q0cIAD4VutB01PdmsrhOGa9I4GUSgilcxuVpP
-	3EkUqelTw66hYeXFfyedMphDP3dKLyxa1kT8n3EgQi1mFuXElYAFmAnzZjRrAOjkYy+BoGzACXkP2
-	JRglav3aPJfSffgc92nw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=28Ow12EHwvLPWvjeQoXht9fjm6UODGOCYsWbYYVrBGA=; b=PT7YkxFfxSO1SKYFvHlzxnz9Ex
+	yRAlYcbScm98Q1Gxr1g6DH6fM0iLyBuLws9IkL0bm4zM6/haUpYfNDhKOovuV92RO+ANb2KQsHF71
+	npOZU2YtlKuNGu6BI5u8YOoT/Jvw+rPnKqua8jmJxsZu5yQVWfa88srAMuR6iXE90BRmGlIsPBZWt
+	gurORb/c41qRJCNTL1oWDPWKX6RUeEx2ejqYBZ/cL14sWaH1RnV4bytFoLsh9clHRiYQJH6vegnDp
+	njry8PWtdcClqUjt4Bs9/r/PUgLoNnJD6KPktKJt/VhuniLJfRweD5JsUFcGH+SjnjyeBroBr4MiR
+	5PDLt1Ow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwHYJ-0000000DNbb-0yhS;
-	Wed, 10 Sep 2025 09:55:47 +0000
-Received: from mail-centralindiaazlp170110003.outbound.protection.outlook.com ([2a01:111:f403:c408::3] helo=PNZPR01CU001.outbound.protection.outlook.com)
+	id 1uwIcC-0000000Dged-3fGO;
+	Wed, 10 Sep 2025 11:03:52 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwHYG-0000000DNZ2-41KH;
-	Wed, 10 Sep 2025 09:55:46 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=cVb/e8Z9Vi8kouUz9rylN3o0pZPoaFI9/YZ7qUK1lyDbri/SfQSr48zAYC/Vv3AKQhE/eAfnC1Ic8b+/t4oRCJpBFhkNUV0GTsRcN+zpdr3/101iYf1epsyba/ngJICGFoFMXIl8gZdSpEmbPa6YyxXXBwMrB+sYKPzci2D44WqLIH/dEd7V5Nq0Y0Et1WWHHaQj7hK9ES11qhicK7+povVZCxBkyFZ9YKc2sbHYXYyt6p1h0W3xDcjVP2sS7HFXlEzy+yyhTwUtq5u9bJ5W8hWEjKkxteQy4EFNiRJSSZP6IytmC0c1yqusQFBh1yGQcJHfDrvrox61RviFyBeBEQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=GMSWRQf3YWHibD8zJhlbUOtkeQuHFh2ujAiPA+sYIkI=;
- b=mm/hbbmpF0adaLfXxnSIBViBiTmbYkAu+EZ0LkujIU2WJrTfspfTnnT6SzK4VmhXoiD3ut9WXSCe5xibohPZbX5qkq/Cei9JCxGUjpoKGhx9zOFjYynoBkLguNUGfaDYuZIdCMRK52Uk7b7RSs420ri7bEihc5NXPSDFDSGCWxAacRjde1aZydru3Pwz/eZNbLqLdK8YLfXvFLtbFMG9PgK6R02/6g0GHH2GwDvJKdfGUOCCev1AhPlDQlg7GPKcwlfAXCwHWvESsuuCzBSqaddvFjFnVHs90989TNn/7gNaZ7PeWexGqqUYmTxKZp0Vf3ejIHrAxyqPlPbdgB/IqQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=siliconsignals.io; dmarc=pass action=none
- header.from=siliconsignals.io; dkim=pass header.d=siliconsignals.io; arc=none
-Received: from PN3P287MB1829.INDP287.PROD.OUTLOOK.COM (2603:1096:c01:199::7)
- by MAUP287MB5057.INDP287.PROD.OUTLOOK.COM (2603:1096:a01:1c0::6) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9094.22; Wed, 10 Sep
- 2025 09:55:30 +0000
-Received: from PN3P287MB1829.INDP287.PROD.OUTLOOK.COM
- ([fe80::58ec:81a0:9454:689f]) by PN3P287MB1829.INDP287.PROD.OUTLOOK.COM
- ([fe80::58ec:81a0:9454:689f%4]) with mapi id 15.20.9094.021; Wed, 10 Sep 2025
- 09:55:30 +0000
-From: Tarang Raval <tarang.raval@siliconsignals.io>
-To: "laurent.pinchart@ideasonboard.com" <laurent.pinchart@ideasonboard.com>
-CC: Dafna Hirschfeld <dafna@fastmail.com>, Mauro Carvalho Chehab
-	<mchehab@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
-	"linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
-	"linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org"
-	<linux-kernel@vger.kernel.org>
-Subject: Re: [PATCH] media: rkisp1: Fix enum_framesizes accepting invalid
- pixel formats
-Thread-Topic: [PATCH] media: rkisp1: Fix enum_framesizes accepting invalid
- pixel formats
-Thread-Index: AQHcGM29WMPsfr2GPEm67fUHmC8L7bSMPp6l
-Date: Wed, 10 Sep 2025 09:55:30 +0000
-Message-ID: <PN3P287MB1829144172D3779F960206278B0EA@PN3P287MB1829.INDP287.PROD.OUTLOOK.COM>
-References: <20250829101425.95442-1-tarang.raval@siliconsignals.io>
-In-Reply-To: <20250829101425.95442-1-tarang.raval@siliconsignals.io>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-msip_labels: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=siliconsignals.io;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: PN3P287MB1829:EE_|MAUP287MB5057:EE_
-x-ms-office365-filtering-correlation-id: 6c783e9b-c2a8-4045-e113-08ddf0502d29
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;ARA:13230040|366016|1800799024|376014|38070700021;
-x-microsoft-antispam-message-info: =?iso-8859-1?Q?8iDABL9ZJVQJNtY5yZSC09lLCRvIMSHWx782gScUX1qRmSGqBBjoC3ERw3?=
- =?iso-8859-1?Q?BSNenRX4IyKu6BoZ/hFgvT9iWiIK+yeASn1AjmaIvdXMCrWMKaNL32IEOf?=
- =?iso-8859-1?Q?7ssM+mK4Lwyysz0UgZUm8VFyNZNyzNR51fcG5BmpRFPc7KZmBYJGxKhv3w?=
- =?iso-8859-1?Q?GQS3x8poK1VB1a6npQ7xEQzBwt9G+vL9gx2vjx3z3ixTtTFKLBVbAYvGMN?=
- =?iso-8859-1?Q?RToNzZSodtMZJGVMt3np8oab3IunSVm+Yc5orgb+6FwhD8VkGRiBeeAtuC?=
- =?iso-8859-1?Q?cdX0tbzs6LlAGa3pD5w3Elmb7TosS4fLp++iPZc3DSgDZNJ++8y1Rs16Zm?=
- =?iso-8859-1?Q?aUwEt9Eg31Dk8hV8nKeS9V4TXJ32W/mMTaVUqhcAr3BcGq/SUXqPLgbwmm?=
- =?iso-8859-1?Q?XJmVDziH/yMz2mPrM72KQELnq4oQHJM4RpmYW7MzBW4NaeI6DmW7CFRUwI?=
- =?iso-8859-1?Q?ZE+7AdIctUuoM1FFP1owP1i2q2eq15B4HEEPzwGqJRUOocW+T5tPpf6eZV?=
- =?iso-8859-1?Q?5kpc41n3fwAvq9PTKRtVn/QqHYXDe11Sq5LlUCRQR8KavLazNWiaPMy17L?=
- =?iso-8859-1?Q?eDmEyKqURD0sEt907B1klb5HrKHlhgJ8rZ9UEPTrgofG0W8wx8g7QyW0/J?=
- =?iso-8859-1?Q?+G7EaBv3Q61PL4Mn50rOt17+Rik7ZiXwjD76woUYnCYMKuF6CsmcNn7kr8?=
- =?iso-8859-1?Q?hI1YlFQgSA3dSkPl2WWIPeoT0IzDqbKkdgTZYQ1fc9GOcG8YS98TspY7jW?=
- =?iso-8859-1?Q?DNeJPtLKL+lCOG+XUYBGOFRoGOClGNZL6icjBbN/kF21F/nuF+OilGKVfJ?=
- =?iso-8859-1?Q?n2pRTVIrDBv7383Xl3O6x0BLhRZyw/69dn3hUG8NCn3AIdZwywmmrvkici?=
- =?iso-8859-1?Q?ZIu7hTqLkqg57R7EL3qHwWgG2fH5bMJhMCnumnaJIBo5wt+ilp/kYf3oLG?=
- =?iso-8859-1?Q?EeD+m4wYUJQfpOIBELVl+q890J/WxI7AY+BsXMYXPdPpJ6+QUEKd8+GHgX?=
- =?iso-8859-1?Q?L3U80/1UyUur14f/lkVURvl68OFnbyEkjQynDwP4Fo4Xa/mzB84sw1o5ne?=
- =?iso-8859-1?Q?8htOmhdBCfVYEUSnqCrqYxYn6Aq+2YE8jpuKhUKjaNpPlxbBKdVApr4HnI?=
- =?iso-8859-1?Q?JMAAui2uR2hvHnXfSqSodC1ne0kszH9tjTJcUT2t+Ez3EHl0h1v8k24mZu?=
- =?iso-8859-1?Q?ibp4IwushZgIety9j/W5kq0LANpfHfU8pkeNxZv0JNj428X3sQkpwF8Y6K?=
- =?iso-8859-1?Q?1qrT6yCSp0oW2tlqP9ekA3+mZrKLRTg0IgdAr7q9gJ+d/LXU1vZGtH7+IR?=
- =?iso-8859-1?Q?iPvRIUJajuNhn8dIERJEhNYvnBlSsdM2UPEsZzhOmEIepfn45aB3GBepJt?=
- =?iso-8859-1?Q?o2xZ58s/lMUy13kVD2+97sYySGld1dBl8DKFwOTDxoWSPOEUQA11H72SNm?=
- =?iso-8859-1?Q?QjX8T8yHokkkniV1YNes561B6pIZQ4vR2G/pzQosp7BM3JjEbAfSZUnyqG?=
- =?iso-8859-1?Q?hPJ2jFhha0/SBDz8lWx463ZY4X2C2bQWGl49p2QGDSmOgf3YGmmQCZMIfv?=
- =?iso-8859-1?Q?CimbQZ4=3D?=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PN3P287MB1829.INDP287.PROD.OUTLOOK.COM;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(376014)(38070700021);DIR:OUT;SFP:1102;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?Lz43i9oc15Fr8SshQJLJL2sicb/bclMApKpehbOTZWvZfLFGq1CkPblPAJ?=
- =?iso-8859-1?Q?zbhWRkSYYzFCZ9wq7gjzQA4AHTdqiS8BF5rBLDl6RzxZ7tF2Ln74T0PSkT?=
- =?iso-8859-1?Q?YwLxhHV5O30YDr9Jg3GH0rUr2YIA3cmE6FtWVROE5RPn2YpzsC+46CwFM2?=
- =?iso-8859-1?Q?BS2wzMhNNVz8RisoFvFIEgMkJoQGCCWDyTeZxE3tvYnXvZ7qhZGBRj2yi0?=
- =?iso-8859-1?Q?2dX5VZdovc3tBoQbc9mh1up0u95LPrG+WD1hJTC6rnn8egMkZ1WVvLdaoc?=
- =?iso-8859-1?Q?LCOkhlL7jSUnYI2dfRV3+0GS9Hn75bn6DGNQCwoRfSJHA3Ko6LpCgiyF3m?=
- =?iso-8859-1?Q?mFcWLzrcwNXGwP4HD2bpDpYQxsQuoLNs0M843VBsZWvRx8G08IsXrs1lC2?=
- =?iso-8859-1?Q?idubp+jVGnt5Hv4Cm/OYoHoSbZa31cEqQoeDCu5JjpLZ27pvmk+gyHcV/4?=
- =?iso-8859-1?Q?3I13WNkQXLB4V6PwubfJZudCOM3edIv/KszJfNFuoB8A9apPGdL1qDhqih?=
- =?iso-8859-1?Q?9oNLV74peRqB+DfPah1QpDLqcdY5B+UFXHQXhxcKY9V/H5/rbE6hfJqoZg?=
- =?iso-8859-1?Q?HaxDGfdtRps/L07pZ2c6qNVCy1OTwZRGBNVtS63WlaGGQDCwQwH5LnBx7Q?=
- =?iso-8859-1?Q?bYRGVe3XuXnhMeukXfMPUBtlT8W65uNBj08hE84aLBQfg8qYvfkRK7o1he?=
- =?iso-8859-1?Q?j65DkdfcBA70a2Y/4yOdzsuCiYx/N+z1767tmH8OBOyLeaw+WQ2T9RBP2W?=
- =?iso-8859-1?Q?GooK6ttzA+gQoNvC5zRnU1yiGn587tgK7w6GyrzjOi2w7ewCNEF4Y6JF8L?=
- =?iso-8859-1?Q?Zmnq17ma/gfbA9/EYdpG3uG6zMxkImaSu422JrWOcK/4qvqfJB8iSejhNl?=
- =?iso-8859-1?Q?N7LUEFKg6oAHLUlIb0uUy5TcjZcNhlrioFBnpbvOcIak+2jweatYEeOSz0?=
- =?iso-8859-1?Q?3Bqv/td8MuE4WsciydkCHNbTfwI+waWlBq26U5r4dHxp3ktpNV5k4Q3gkN?=
- =?iso-8859-1?Q?N6VOfyXuYZDcSZjpu7mW3yY/F3IyGM+qOVP+EnztVVnsOJMzwob2h6kwK8?=
- =?iso-8859-1?Q?C/xOwlFMdzetQRkihsLUv/wt3GUUich6Pkc7zP2oQ+EL14iO2Cyui28rAH?=
- =?iso-8859-1?Q?riLZD8UkiN1UFMT6ekx2XGKdRbYzpiBCgBASulzKtRStJmDxs6uLq+1cdP?=
- =?iso-8859-1?Q?SBhMnT3ZKuIsVi/3e8Cobi1aXhReZyuyiJ2misllMdIXU08R8vaD2+Fi7b?=
- =?iso-8859-1?Q?bhPEg8ItRvlRhjEpE7EVaayb5XA6OXqSR/ZPOohcHRvmxNUsK+mROAlsZD?=
- =?iso-8859-1?Q?JLAl4me+9CJdR2qI4wDecmK8D7NFDfgW67/1pO1jkbxuRR/iMF2HgBZgK5?=
- =?iso-8859-1?Q?naf016HJkuiLol852g1JEGqJI4DCGbdjlOb11hPR4bvrciuuorv3Ys+csm?=
- =?iso-8859-1?Q?Z1kg9MQNKZ5zh3jVG1oEPNZ5R1zfAyqxHC14Z0yGjOCMYE/acb9jSFfcRR?=
- =?iso-8859-1?Q?aUHNhIi4BTFPX3MPCmACcA93xTQj+6Z6Y6BTFNKEMsu3tA5odNfGg4tEYm?=
- =?iso-8859-1?Q?eLLYmT6Dlzqo9q/rKjOn6pppHWytDBZiXHx5In4YxUNqHLhOwo/PbptB+A?=
- =?iso-8859-1?Q?l2K09Z4cXJCShQT20jZtu7QglEwY6+iscaatkEMl5Cnu8igP3lwWCRWQ?=
- =?iso-8859-1?Q?=3D=3D?=
+	id 1uwIcB-0000000Dgdc-2cKz;
+	Wed, 10 Sep 2025 11:03:51 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id D5200601A8;
+	Wed, 10 Sep 2025 11:03:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F0E7DC4CEF0;
+	Wed, 10 Sep 2025 11:03:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1757502230;
+	bh=UYWjKMF523Ekw7Bw98UkIXft7Kwx3TmgLpB7L6tfh5o=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=m63mlDWZ7UyN+YkBriu39v3Ml8OZYHJ3sS5ToGI1uYGEV0tY8Mw311B0m7uz4rSAz
+	 Mutosf2rsQjrnV5ZDOBgQIUu+tfNhSiBPAB+Q7vvxX4ETm3mdqOoQHSepfpTgIN2h8
+	 zt+OLeR1dqvb/3HJUVjycOW1w3CtW88+vYJxpqvqlFhtr5LO08O71IdfjaF7lylFyb
+	 BQsEeUwWcx11sL74qqXz85TbRe/47Qz2+SFz+UVY7RZ9fO2+vjbFXaGP44XfJVZM1n
+	 EXkppE0EdiRuuC7kXQv6rxvJVAh2sd31GMdGiMm2lPL3Ee1+B1IH44xysygemd65Rr
+	 eyHLSSxTHEr7Q==
+Date: Wed, 10 Sep 2025 13:03:47 +0200
+From: Maxime Ripard <mripard@kernel.org>
+To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+	Simona Vetter <simona@ffwll.ch>, Sandy Huang <hjc@rock-chips.com>, 
+	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, Chen-Yu Tsai <wens@csie.org>, 
+	Samuel Holland <samuel@sholland.org>, Dave Stevenson <dave.stevenson@raspberrypi.com>, 
+	=?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, 
+	Liu Ying <victor.liu@nxp.com>, Rob Clark <robin.clark@oss.qualcomm.com>, 
+	Dmitry Baryshkov <lumag@kernel.org>, Abhinav Kumar <abhinav.kumar@linux.dev>, 
+	Jessica Zhang <jessica.zhang@oss.qualcomm.com>, Sean Paul <sean@poorly.run>, 
+	Marijn Suijten <marijn.suijten@somainline.org>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, 
+	linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org, 
+	Daniel Stone <daniels@collabora.com>
+Subject: Re: [PATCH v4 01/10] drm/connector: let drivers declare infoframes
+ as unsupported
+Message-ID: <20250910-furry-singing-axolotl-9aceac@houat>
+References: <20250909-drm-limit-infoframes-v4-0-53fd0a65a4a2@oss.qualcomm.com>
+ <20250909-drm-limit-infoframes-v4-1-53fd0a65a4a2@oss.qualcomm.com>
 MIME-Version: 1.0
-X-OriginatorOrg: siliconsignals.io
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: PN3P287MB1829.INDP287.PROD.OUTLOOK.COM
-X-MS-Exchange-CrossTenant-Network-Message-Id: 6c783e9b-c2a8-4045-e113-08ddf0502d29
-X-MS-Exchange-CrossTenant-originalarrivaltime: 10 Sep 2025 09:55:30.2216
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 7ec5089e-a433-4bd1-a638-82ee62e21d37
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: oLEi5LW/So7ifHgsDKTXPtoe3Qqu3r+KsJozLqJpNNKuhPZKcoyXuqDuEQFcO3xIhe65PVSF2A+eUUbVTlHSyLBEJCJ+aOkPMKpccEy0OxI=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MAUP287MB5057
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250910_025544_996041_C575B892 
-X-CRM114-Status: UNSURE (   6.23  )
-X-CRM114-Notice: Please train this message.
+In-Reply-To: <20250909-drm-limit-infoframes-v4-1-53fd0a65a4a2@oss.qualcomm.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -161,31 +78,78 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: multipart/mixed; boundary="===============5888766896642793525=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Laurent,
-=A0
-> Reject unsupported pixel formats in rkisp1_enum_framesizes() to
-> fix v4l2-compliance failure.
->=A0
-> v4l2-compliance test failure:
->=A0
-> fail: ../utils/v4l2-compliance/v4l2-test-formats.cpp(403): Accepted frame=
-size for invalid format
-> test VIDIOC_ENUM_FMT/FRAMESIZES/FRAMEINTERVALS: FAIL
->=A0
-> Tested on: Debix i.MX8MP Model A
-> Kernel version: v6.17-rc3
-> v4l2-compliance: 1.31.0-5387
 
-Could you please consider picking this for v6.18?
+--===============5888766896642793525==
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="3kg3zivfcuv2t4hc"
+Content-Disposition: inline
 
-Best Regards,
-Tarang
+
+--3kg3zivfcuv2t4hc
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v4 01/10] drm/connector: let drivers declare infoframes
+ as unsupported
+MIME-Version: 1.0
+
+On Tue, Sep 09, 2025 at 05:51:59PM +0300, Dmitry Baryshkov wrote:
+> Currently DRM framework expects that the HDMI connector driver supports
+> all infoframe types: it generates the data as required and calls into
+> the driver to program all of them, letting the driver to soft-fail if
+> the infoframe is unsupported. This has a major drawback on userspace
+> API: the framework also registers debugfs files for all Infoframe types,
+> possibly surprising the users when infoframe is visible in the debugfs
+> file, but it is not visible on the wire. Drivers are also expected to
+> return success even for unsuppoted InfoFrame types.
+>=20
+> Let drivers declare that they support only a subset of infoframes,
+> creating a more consistent interface. Make the affected drivers return
+> -EOPNOTSUPP if they are asked to program (or clear) InfoFrames which are
+> not supported.
+>=20
+> Acked-by: Liu Ying <victor.liu@nxp.com>
+> Acked-by: Daniel Stone <daniels@collabora.com>
+> Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+
+Again, I still believe that it's a bad idea, goes against what the spec
+states, and the framework was meant to be.
+
+So, no, sorry. That's still a no for me. Please stop sending that patch
+unless we have a discussion about it and you convince me that it's
+actually something that we'd need.
+
+Maxime
+
+--3kg3zivfcuv2t4hc
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCaMFbEwAKCRAnX84Zoj2+
+dkRzAYCzQpQA/Ir3LWPQqxuIKthe+HVoEPQaMUjRgX+Ula46AjgZs5sQpXIzARWP
+HvEZaiABfRY0fHLOQ/3ITnlioCgiECUTHWtXvwzwkeZPy/td6Zv8anX5A/E13TVJ
+iH3N5Vfh4A==
+=wXjx
+-----END PGP SIGNATURE-----
+
+--3kg3zivfcuv2t4hc--
+
+
+--===============5888766896642793525==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============5888766896642793525==--
+
