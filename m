@@ -4,72 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BA42CA101F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Sep 2025 11:08:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B5BCCA0FED
+	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Sep 2025 12:16:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NUVPXP69NquJcnndXPq7BryqMITFY+NbNFOC6Ct69kc=; b=ca2iR+9UKATgZHpgG3MGDkEGxo
-	MKL/FJ536oZboMJ/sJHIWPibOw4SPK5Hz7YNjmEIKyEpSBRwXbh9LbnSJThvK02myRB4R3FKO47hV
-	AQ7l0DGcS35EZ1pWuMq6HAhHQdSASBbTXaZgxwNa6UY1J4g8sbK2hHZbkc5x26furq6+OHHdJIEMe
-	0TlJaTJDFOjs49mm4BIIvtCm6HaTfMj39k26wlDczT8xH3/9+pgyJFxcUObPprOdMbVgDFdCwgF+q
-	fv9Mv+1bUurohn17Qq6Kw+D6oditAOlna+HzFPmn4VDfENEtW399DDMiBfqGcwk9vELRaDZwa85IT
-	K8AIcTDA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=srq6A5rX4eqb0UDLoLHjh/9Cml9tuJ5di6Ow4H6hM4A=; b=oP8aKq8Bk6w88/
+	sR3e8i8Os1vqCKbfNqeFT1oKoTfOkaCn2HVqu4Et1I1J9P7qeMC1kaDobwGjd/KAre7H6FlxcT0Mo
+	6B7UKcyRxVUPICL6ZGu1xm27xAOhk11PDPzZqx/D4ezxgacxOHtIj9CL234D/1UUy2fqfvj3SuefB
+	HyV35bEeQ4lrBQ3csK8AVWIFqN5k8phC7bTYaZUYydWONT4d8YbOi8J7UhivKDeFG3sD2JW8xBkCV
+	gEw6UK6UnQEbXgu/qPYqf10QtYIcLPG9x1xRT+jpkwOX1axeKnLFTKn30QX3GAphj/+jBC1DhtswG
+	kLJUFy5F13JFHM+LpFhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwIgm-0000000DiKQ-2OcA;
-	Wed, 10 Sep 2025 11:08:36 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1uwJjv-0000000E34C-2epG;
+	Wed, 10 Sep 2025 12:15:55 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwIgj-0000000DiHs-2HBP;
-	Wed, 10 Sep 2025 11:08:34 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 37C4B43E04;
-	Wed, 10 Sep 2025 11:08:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8D442C4CEF8;
-	Wed, 10 Sep 2025 11:08:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1757502513;
-	bh=eT+fM0/l96U9E80CByHY3UpL1VMyoPh2jRe5J041drA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=GZg4a9PzOThwfZJWjmmg1do+BJcK6fKqRVNE1sq+YdWBDlnHaURSjrRlxZ7+9DH4N
-	 Db+CuYerpenQhklpoGj+sHRilAxDRpInKvZJFpf3X1NCOLLQCBlcF189fa3pyP4fw4
-	 ufx5Lufwft1vqYQ0u4pu16D0r5dE6FepR8/Y2m7Bl1iWB50ud8cl9nr4fE/W1LSLys
-	 FYy4EKSZ0zBJNrEh6t7tmcyrIUrM+yDEihmZQ6+XVKFqbhMuCNH5+DEntCodxdQULf
-	 ZowH6/I7RWxU+6aGkzICbmkk9ffdQk6E6ckIxF6EdRydu3MVPbheSr9BgPt07IhG8H
-	 9PwdxdvRijCMA==
-Date: Wed, 10 Sep 2025 13:08:30 +0200
-From: Maxime Ripard <mripard@kernel.org>
-To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
-	Simona Vetter <simona@ffwll.ch>, Sandy Huang <hjc@rock-chips.com>, 
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, Chen-Yu Tsai <wens@csie.org>, 
-	Samuel Holland <samuel@sholland.org>, Dave Stevenson <dave.stevenson@raspberrypi.com>, 
-	=?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, 
-	Liu Ying <victor.liu@nxp.com>, Rob Clark <robin.clark@oss.qualcomm.com>, 
-	Dmitry Baryshkov <lumag@kernel.org>, Abhinav Kumar <abhinav.kumar@linux.dev>, 
-	Jessica Zhang <jessica.zhang@oss.qualcomm.com>, Sean Paul <sean@poorly.run>, 
-	Marijn Suijten <marijn.suijten@somainline.org>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, 
-	linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org, 
-	Daniel Stone <daniels@collabora.com>
-Subject: Re: [PATCH v4 09/10] drm/connector: verify that HDMI connectors
- support necessary InfoFrames
-Message-ID: <20250910-courageous-warthog-of-refinement-aced6f@houat>
-References: <20250909-drm-limit-infoframes-v4-0-53fd0a65a4a2@oss.qualcomm.com>
- <20250909-drm-limit-infoframes-v4-9-53fd0a65a4a2@oss.qualcomm.com>
+	id 1uwJjs-0000000E31h-3da6;
+	Wed, 10 Sep 2025 12:15:54 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=0DyqbbA1ZUCcjEgFCs3V8UYrQ/Dy0tn2WnKs8noBz34=; b=ZTbMEACNtDoGeX4I1SHmnsNMrg
+	iEm2zkz90efE9oFDeUhbiIsb5hdpZBnsmCw5qWDN+4pIp92zVImepYnA3diWOoYcqv6VnFTxUzxQN
+	x771697TzZ/BCD2nZWvEzBoxS5fhuIqiYU/YjUsdePp4WM5GpGbe/RI/iZ0dWJh0nQb8=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1uwJjZ-007w5t-QA; Wed, 10 Sep 2025 14:15:33 +0200
+Date: Wed, 10 Sep 2025 14:15:33 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Kaison <dkx@t-chip.com.cn>
+Cc: Rob Herring <robh@kernel.org>, Jimmy Hon <honyuenkwun@gmail.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, Wayne Chou <zxf@t-chip.com.cn>,
+	Quentin Schulz <quentin.schulz@cherry.de>,
+	Dragan Simic <dsimic@manjaro.org>, Jonas Karlman <jonas@kwiboo.se>,
+	FUKAUMI Naoki <naoki@radxa.com>,
+	Peter Robinson <pbrobinson@gmail.com>, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 2/2] arm64: dts: rockchip: Add devicetree for the
+ ROC-RK3588-RT
+Message-ID: <ec8a3649-3f8f-40b7-a534-041b3523efe4@lunn.ch>
+References: <cover.1757322046.git.dkx@t-chip.com.cn>
+ <42ae6d16ed9162582e7b03cbad661a7950c0db55.1757322046.git.dkx@t-chip.com.cn>
+ <307a76a6-cc92-44a1-9ac0-97005bf51b4b@lunn.ch>
+ <76B19AD42CA555FC+fff44db30522cf270802ec31912a9c19d29b2d39.camel@t-chip.com.cn>
 MIME-Version: 1.0
-In-Reply-To: <20250909-drm-limit-infoframes-v4-9-53fd0a65a4a2@oss.qualcomm.com>
+Content-Disposition: inline
+In-Reply-To: <76B19AD42CA555FC+fff44db30522cf270802ec31912a9c19d29b2d39.camel@t-chip.com.cn>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250910_040833_874645_6633E21A 
-X-CRM114-Status: GOOD (  19.49  )
+X-CRM114-CacheID: sfid-20250910_051552_903995_6D035D51 
+X-CRM114-Status: GOOD (  21.76  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,88 +74,64 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6392473960264309365=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Wed, Sep 10, 2025 at 10:55:22AM +0800, Kaison wrote:
+> hi,
+> I'm very sorry. Due to the default configuration of my email, I didn't
+> receive your email normally. I have fixed this issue.
+> 
+> On Tue, 2025-09-09 at 14:31 +0200, Andrew Lunn wrote:
+> > > - 2x Gigabit Ethernet, 1x 2.5G Ethernet
+> > 
+> > I actually only see the 2x 1G. Is the 2.5G not supported yet?
+> The 2.5G Ethernet is based on the Realtek RTL8125 network controller of
+> PCIe 2.0x1.
 
---===============6392473960264309365==
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="xkhodzl7phtwfggk"
-Content-Disposition: inline
+Ah, O.K. Maybe add a comment, because i was looking for something
+integrated into the SoC, not a PCIe device.
 
+> > > +&gmac0 {
+> > > +	clock_in_out = "output";
+> > > +	phy-handle = <&rgmii_phy0>;
+> > > +	phy-mode = "rgmii-rxid";
+> > > +	pinctrl-names = "default";
+> > > +	pinctrl-0 = <&gmac0_miim
+> > > +		     &gmac0_tx_bus2
+> > > +		     &gmac0_rx_bus2
+> > > +		     &gmac0_rgmii_clk
+> > > +		     &gmac0_rgmii_bus>;
+> > > +	tx_delay = <0x47>;
+> > 
+> > What happened about my comment that "rgmii-rxid" is probably wrong?
+> > 
+> > If you think it is correct, you should reply with a
+> > justification. Maybe PCB is very odd? In which case, a comment would
+> > be good to explain who it is odd.
+> The Ethernet part of the board is designed with reference to the
+> rockchip evb1 board. 
+> 
+> link: 
+> https://github.com/Firefly-rk-linux/docs/blob/rk3588/firefly-public/en/Common/GMAC/Rockchip_Developer_Guide_Linux_GMAC_RGMII_Delayline_EN.pdf
+> 
+> 
+> The document describes the usage of the rgmii-rxid mode:
+> 
+> When the hardware enables the RX delay of the PHY. Need to turn off the
+> RX delay of the GMAC, and the dts configuration mode becomes "rgmii-
+> rxid".
 
---xkhodzl7phtwfggk
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v4 09/10] drm/connector: verify that HDMI connectors
- support necessary InfoFrames
-MIME-Version: 1.0
+Vendors get this wrong as well, and give you bad advice. Please look
+at:
 
-On Tue, Sep 09, 2025 at 05:52:07PM +0300, Dmitry Baryshkov wrote:
-> Check that connector initialized by drmm_connector_hdmi_init() supports
-> AVI InfoFrames and warn if it doesn't support Vendor-Specific
-> InfofRames (HDMI InfoFrames are more or less required).
->=20
-> Suggested-by: Maxime Ripard <mripard@kernel.org>
-> Acked-by: Daniel Stone <daniels@collabora.com>
-> Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-> ---
->  drivers/gpu/drm/drm_connector.c | 7 +++++++
->  1 file changed, 7 insertions(+)
->=20
-> diff --git a/drivers/gpu/drm/drm_connector.c b/drivers/gpu/drm/drm_connec=
-tor.c
-> index 92a75684a0f7375d3a94e8c666cb71064ecc8035..222a0ef66d9fdbdb56108ceeb=
-40e7f369d810350 100644
-> --- a/drivers/gpu/drm/drm_connector.c
-> +++ b/drivers/gpu/drm/drm_connector.c
-> @@ -602,6 +602,13 @@ int drmm_connector_hdmi_init(struct drm_device *dev,
->  	if (!(max_bpc =3D=3D 8 || max_bpc =3D=3D 10 || max_bpc =3D=3D 12))
->  		return -EINVAL;
-> =20
-> +	/* AVI is required */
-> +	if (!(supported_infoframes & DRM_CONNECTOR_INFOFRAME_AVI))
-> +		return -EINVAL;
-> +
-> +	if (!(supported_infoframes & DRM_CONNECTOR_INFOFRAME_VENDOR))
-> +		drm_info(dev, "HDMI connector with no support for Vendor-Specific Info=
-Frame\n");
-> +
+https://elixir.bootlin.com/linux/v6.16.5/source/Documentation/devicetree/bindings/net/ethernet-controller.yaml#L264
 
-Same remark than on patch 10. It's not something we can check at init
-time, and we should check (and document!) that if we expect an infoframe
-to be written but the write_infoframe hook doesn't support it, it's an
-error.
-
-Maxime
-
---xkhodzl7phtwfggk
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCaMFcLgAKCRAnX84Zoj2+
-do1pAXoDY9Dzn6G/ClMn6Qt9h6baw0nSCc1SPEDOnOlKYoD9BSE05V70x5Sqi0rR
-wJwIv2ABgME+k6f+wI13qd1Ah1huLB0li8xpIpRZTte9l8GEmuSdXIv2pGQJKmjF
-/tLAINKY3g==
-=JQzw
------END PGP SIGNATURE-----
-
---xkhodzl7phtwfggk--
-
-
---===============6392473960264309365==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+	Andrew
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============6392473960264309365==--
-
