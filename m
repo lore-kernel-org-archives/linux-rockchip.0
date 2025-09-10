@@ -4,72 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2923CA101F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Sep 2025 21:29:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 806D8CA101F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Sep 2025 21:41:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CoSpijldW+h3MPF1faGOXZ/Dkh5pByoKXUX4xu9aOqg=; b=VG6e8JQNu1qbkh
-	iT2dkNdMNEjpnqosoCscwpPc9itZrMVf0iVJel6I2eLuwpw41bi3sH7C5KWDQLfCiKKyYk1/inPHo
-	2TpLULkD7OYvrxh6HyVF3HGkJyFI2vEIPS8FF7pqiDlsqHWqIB8wLAe/52L/Rvnxfyh1pbrCR7hnS
-	G5P7pEdUe2scCm3mjdlVuHPslbad1qG4IaEwZN5ITQzMZOkF9H53UBy0p2aEkB6JpFz+PSbwnjci3
-	TkRl+ndfouUC/HvJj2ZZAh0ezVc5HmsFJ/iNhAP/E5dTQRYuOoTilGvC+1hFJlPsbsmZc6CyxKru4
-	j/8NJcijh5gj0oYv8aCw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=FsbMAaxirrBybOE5WYSJxdJEOt0OJAdzJ58h4mZSPOk=; b=BEJV38IzEYIRUq
+	snyCi49AgicZJwsqkQyzcQNyMpnOJswkGA7Sqp/hEMIZlhiiz/R+s6VjNE10Z2gM2eCis6/Y4SQXO
+	D0JNWqdR98kSdR7xl32kvje96x+V5Km7e/97X0oG1ZBOi04JUSQcJ11Zy3QQR17rXTtJMOYvNLj8t
+	GTT6wX9nr4b+Y/vkTMYEgquRNOIzdVp348bmFS73iNObRG+91AMol9wBiYvNcIKljY0ArJt9Sze15
+	cSuAJ+0sVrGujw5vqLvGlVsKGhxTjiB9DA+b0hOZ7mGgzdzVFk8nEBlwCr4jquzX1don12cs2087M
+	WL0HdAp544rukZB5pVQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwSNc-0000000GrQ3-10mP;
-	Wed, 10 Sep 2025 21:29:28 +0000
-Received: from smtp.forwardemail.net ([149.28.215.223])
+	id 1uwSZ8-0000000GucA-2Gtg;
+	Wed, 10 Sep 2025 21:41:22 +0000
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwSNZ-0000000GrOW-2vwb
+	id 1uwSZ6-0000000Gub3-1EaI
 	for linux-rockchip@lists.infradead.org;
-	Wed, 10 Sep 2025 21:29:27 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1757539764;
- bh=Z1MeHN/FAuAOkxz9iJEKMCLiQPrMJjTHwVbwSN9mvp8=;
- b=o+v+9vTsSJ9aMMmOrCyG5RWU68YRTMoKUKXfYIVOBn2suwaXhUzMZ7Odyle05F8+KD5AnV/dm
- m8zPx9QCm0YK5FT79OXONDrGvCt/LB8xkHkHiXJ4hL52E+pIRc2hOt0CdEEZd9K9LFiP0JbSmv/
- rMvEzz6cNYD1cMjYrIejTE1AD67xS2BtDMGILt837bPqmUhPT2UX9LtlJiIjZeM48K2yNJDgaeY
- v+9t3Wx1M1E36rZcul+iJkMbHMcOGCWzJNYqCNiDD8wXMO/bu0k4Sc/SXhS4aZuaXRyCKNfdu54
- WwdB59hSAR+HuE2/ITdeaBqAf8SSrAryDXkXRlss0JMA==
-X-Forward-Email-ID: 68c1eda3343e597491a9aa4c
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 149.28.215.223
-X-Forward-Email-Version: 1.2.14
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <38e80b6d-1dc9-47a8-8b23-e875c2848e6e@kwiboo.se>
-Date: Wed, 10 Sep 2025 23:29:00 +0200
+	Wed, 10 Sep 2025 21:41:21 +0000
+Received: by mail-ed1-x530.google.com with SMTP id 4fb4d7f45d1cf-62bec18abe6so39678a12.3
+        for <linux-rockchip@lists.infradead.org>; Wed, 10 Sep 2025 14:41:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1757540478; x=1758145278; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=SgBJun68GT4t+Q+ZqI1trDwNO9m1ngITxMaI8EXqUuo=;
+        b=DbCRXmQxgvgGbZ3jYp5upHv/xMCYE2FR33y4jshW9RcLe2duoSEgi2XHsb0j+jvHLT
+         AUUDB3j3GylrPeh6kKIHi6DrYJMiSepoCvtTVxttXL/Rw99MzE2PZkQrTvJpmaFdAXMZ
+         eeXUsMObT3O09xqZ1wNUyDycrpMB8/upIKt90LgycEpGCeaP5HM4mVTgCWHCbMF7AqSk
+         zP9eKsXChFAJu9ADiAtFWTRBmq37aqo7ofqmQYQxHIDBxSkSGX6vDAQk2Xw5rMsIQczQ
+         MtJv6j9LXMUVUmCKcVrxCOudUNAPN94i06w4ZdarkTOVR8vs0xwpQjaWFOOCc3vOrmTC
+         +UdA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1757540478; x=1758145278;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=SgBJun68GT4t+Q+ZqI1trDwNO9m1ngITxMaI8EXqUuo=;
+        b=AswzSL5iz3XMt8gGQA6g7t9GnQrMcedUlCWPftJcxdNm42Yl2ODANCcKn7hSeR+ynS
+         hWYndWWZIcczRvGaLQIacLUa4N6fAPclAJcGYgfEnfsxEQ8CzE+Qy4rgAV3fT+V1ZeqJ
+         ZaFfO39sWlf+0LoCalX4TUMk5XzGLUHyhe1ofcBbggdnsp4lm96VplEm5PHQg49XfJpg
+         Vs07/t4QqTfiaaFe1kM80bH6l/nqMg+VpvUJYKEcCgmBw5Y+Rjc4wgBIbQ/q48E9BGRv
+         hIVdC+xH6+A6RB6oU9kn5skzxgjwT4uOGdlHS7DCa/rY14TZlURdnkzgbcVA826DGzk9
+         MtKw==
+X-Gm-Message-State: AOJu0YxTmyYi0iP5lC4RW7yWJbIPEGKqWcEzSgEv+sjJqw3kz0FpCxPj
+	GeBM/3rU08voV9Hjev6AgCIYro/yiQkN8LREiuNdEhW9eiTX3UpJAs7ZYUg7BeK9
+X-Gm-Gg: ASbGnctqsrXs851zLhiHahblCQx+HhEgd93VuTVq6bqcKdNej1sKyEJW83It0JCn6Bc
+	exKgJs3r8GQ84vzUnoitPQHowfT8mQz+MU9pzx0FZKbxdwV8UROBsrUf7iIihXaosxIbciD+KJH
+	UtqMP0ZNlQLv8/WfhvnygxvoA8L4HiZswInuj4sZkXkBAeBy3ISQFpqDGiGKya1j02rsQramSt0
+	CCgNjl31W1JEVO5dirlBzq/KNxgKJ4+MpKvmJdsbKUMl5UieBzZtr6YX92JskuUawS41h/6Z7nV
+	lFnpc86AySNG9HLHASmyNBtvMinKybXebI7wLoXjyRHHy3sEzZ/BVyRnWhID9ZQf+WGH7yF5Zr+
+	G7A33Un33lelWNapZyiLvlUm0y3+vsgir8WrdIDjz/d1NkrwjyUI1ipylJQ==
+X-Google-Smtp-Source: AGHT+IFTwg4LZE/26YtNSR0mUwe3NkMeWWuPgAjZl3Iklo0r5y+ONEfEkji7nIycu2Doh4G9tZ7DkQ==
+X-Received: by 2002:a05:6402:3495:b0:62d:36e0:265f with SMTP id 4fb4d7f45d1cf-62d36e02753mr3803329a12.19.1757540477897;
+        Wed, 10 Sep 2025 14:41:17 -0700 (PDT)
+Received: from HomePC (89-67-214-154.dynamic.play.pl. [89.67.214.154])
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-62ebfdf211asm51005a12.4.2025.09.10.14.41.17
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 10 Sep 2025 14:41:17 -0700 (PDT)
+From: Andrey Leonchikov <andreil499@gmail.com>
+To: linux-rockchip@lists.infradead.org
+Cc: Andrei Leonchikov <andreil499@gmail.com>
+Subject: [v2,PATCH 0/5] RK3566 BigtreeTech Pi2 fixes
+Date: Wed, 10 Sep 2025 23:41:05 +0200
+Message-ID: <20250910214107.2243427-1-andreil499@gmail.com>
+X-Mailer: git-send-email 2.51.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/3] arm64: dts: rockchip: Add PCIe Gen2x1 controller for
- RK3528
-To: Yao Zi <ziyao@disroot.org>
-Cc: Bjorn Helgaas <bhelgaas@google.com>,
- Lorenzo Pieralisi <lpieralisi@kernel.org>,
- =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
- Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Shawn Lin <shawn.lin@rock-chips.com>, Simon Xue <xxm@rock-chips.com>,
- linux-pci@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, Chukun Pan <amadeus@jmu.edu.cn>
-References: <20250906135246.19398-1-ziyao@disroot.org>
- <20250906135246.19398-3-ziyao@disroot.org>
-Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <20250906135246.19398-3-ziyao@disroot.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250910_142926_089379_FC4316C5 
-X-CRM114-Status: GOOD (  15.67  )
+X-CRM114-CacheID: sfid-20250910_144120_341888_A08589CB 
+X-CRM114-Status: UNSURE (   6.85  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,125 +95,22 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Yao Zi,
+From: Andrei Leonchikov <andreil499@gmail.com>
 
-On 9/6/2025 3:52 PM, Yao Zi wrote:
-> Describes the PCIe Gen2x1 controller integrated in RK3528 SoC. The SoC
-> doesn't provide a separate MSI controller, thus the one integrated in
-> designware PCIe IP must be used.
-> 
-> Signed-off-by: Yao Zi <ziyao@disroot.org>
-> ---
->  arch/arm64/boot/dts/rockchip/rk3528.dtsi | 56 +++++++++++++++++++++++-
->  1 file changed, 55 insertions(+), 1 deletion(-)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3528.dtsi b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-> index db5dbcac7756..2d2af467e5ab 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-> @@ -7,6 +7,7 @@
->  #include <dt-bindings/gpio/gpio.h>
->  #include <dt-bindings/interrupt-controller/arm-gic.h>
->  #include <dt-bindings/interrupt-controller/irq.h>
-> +#include <dt-bindings/phy/phy.h>
->  #include <dt-bindings/pinctrl/rockchip.h>
->  #include <dt-bindings/clock/rockchip,rk3528-cru.h>
->  #include <dt-bindings/power/rockchip,rk3528-power.h>
-> @@ -239,7 +240,7 @@ gmac0_clk: clock-gmac50m {
->  
->  	soc {
->  		compatible = "simple-bus";
-> -		ranges = <0x0 0xfe000000 0x0 0xfe000000 0x0 0x2000000>;
-> +		ranges = <0x0 0xfc000000 0x0 0xfc000000 0x0 0x44400000>;
+Some fixes for a DTS to a valid support all features.
+Two fixes affect6 to a normal work, two for supress
+a some warnings and one to future use.
+Signed-off-by: Andrey Leonchikov <andreil499@gmail.com>
 
-We should use the dbi reg area in the 32-bit address space, please use:
+ arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-cb2.dtsi  |    2 +-
+ arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-cb2.dtsi  |    2 ++
+ arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-cb2.dtsi  |    1 +
+ arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-pi2.dts   |    9 +++++++++
+ arch/arm64/boot/dts/rockchip/rk356x-base.dtsi             |  105 +++++++++++++++++++++++++
+ 2 file changed, 118 insertion(+), 1 deletion(-)
 
-  ranges = <0x0 0xfc000000 0x0 0xfc000000 0x0 0x4000000>;
-
->  		#address-cells = <2>;
->  		#size-cells = <2>;
->  
-> @@ -1133,6 +1134,59 @@ combphy: phy@ffdc0000 {
->  			rockchip,pipe-phy-grf = <&pipe_phy_grf>;
->  			status = "disabled";
->  		};
-> +
-> +		pcie: pcie@fe4f0000 {
-
-With the dbi reg area changed below, please update the node name and
-move this node to top of the soc node.
-
-  pcie@fe000000
-
-> +			compatible = "rockchip,rk3528-pcie",
-> +				     "rockchip,rk3568-pcie";
-> +			reg = <0x1 0x40000000 0x0 0x400000>,
-
-We should use the dbi reg area in the 32-bit address space, please use:
-
-  reg = <0x0 0xfe000000 0x0 0x400000>,
-
-> +			      <0x0 0xfe4f0000 0x0 0x10000>,
-> +			      <0x0 0xfc000000 0x0 0x100000>;
-> +			reg-names = "dbi", "apb", "config";
-> +			bus-range = <0x0 0xff>;
-> +			clocks = <&cru ACLK_PCIE>, <&cru HCLK_PCIE_SLV>,
-> +				 <&cru HCLK_PCIE_DBI>, <&cru PCLK_PCIE>,
-> +				 <&cru CLK_PCIE_AUX>, <&cru PCLK_PCIE_PHY>;
-> +			clock-names = "aclk_mst", "aclk_slv",
-> +				      "aclk_dbi", "pclk",
-> +				      "aux", "pipe";
-
-In my U-Boot test I did not have the pipe/phy clock here, do we need it?
-
-With above fixed this more or less matches my U-Boot testing, and is:
-
-Reviewed-by: Jonas Karlman <jonas@kwiboo.se>
-
-Regards,
-Jonas
-
-> +			device_type = "pci";
-> +			interrupts = <GIC_SPI 156 IRQ_TYPE_LEVEL_HIGH>,
-> +				     <GIC_SPI 157 IRQ_TYPE_LEVEL_HIGH>,
-> +				     <GIC_SPI 154 IRQ_TYPE_LEVEL_HIGH>,
-> +				     <GIC_SPI 155 IRQ_TYPE_LEVEL_HIGH>,
-> +				     <GIC_SPI 153 IRQ_TYPE_LEVEL_HIGH>,
-> +				     <GIC_SPI 158 IRQ_TYPE_LEVEL_HIGH>;
-> +			interrupt-names = "sys", "pmc", "msg", "legacy", "err",
-> +					  "msi";
-> +			#interrupt-cells = <1>;
-> +			interrupt-map-mask = <0 0 0 7>;
-> +			interrupt-map = <0 0 0 1 &pcie_intc 0>,
-> +					<0 0 0 2 &pcie_intc 1>,
-> +					<0 0 0 3 &pcie_intc 2>,
-> +					<0 0 0 4 &pcie_intc 3>;
-> +			linux,pci-domain = <0>;
-> +			max-link-speed = <2>;
-> +			num-lanes = <1>;
-> +			phys = <&combphy PHY_TYPE_PCIE>;
-> +			phy-names = "pcie-phy";
-> +			power-domains = <&power RK3528_PD_VPU>;
-> +			ranges = <0x01000000 0x0 0xfc100000 0x0 0xfc100000 0x0 0x100000>,
-> +				 <0x02000000 0x0 0xfc200000 0x0 0xfc200000 0x0 0x1e00000>,
-> +				 <0x03000000 0x1 0x00000000 0x1 0x00000000 0x0 0x40000000>;
-> +			resets = <&cru SRST_PCIE_POWER_UP>, <&cru SRST_P_PCIE>;
-> +			reset-names = "pwr", "pipe";
-> +			#address-cells = <3>;
-> +			#size-cells = <2>;
-> +			status = "disabled";
-> +
-> +			pcie_intc: legacy-interrupt-controller {
-> +				interrupt-controller;
-> +				interrupt-parent = <&gic>;
-> +				interrupts = <GIC_SPI 155 IRQ_TYPE_EDGE_RISING>;
-> +				#address-cells = <0>;
-> +				#interrupt-cells = <1>;
-> +			};
-> +		};
->  	};
->  };
->  
+-- 
+2.51.0
 
 
 _______________________________________________
