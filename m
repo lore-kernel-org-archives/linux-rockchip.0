@@ -4,110 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B33ACAC58E
-	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Sep 2025 15:16:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB53ECAC587
+	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Sep 2025 15:51:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hbqEm4/JSO31hNFWKpebkwtyCdhLstIoIubpqAomK4I=; b=wAn2rIIvl0TOtn
-	OIy0hc3Eaurg5KaEUW32oO3lmXI25fH/ogWoBjzRBP1NBO3UHbltCmHUQh4459UIZKSUma2IXzxCt
-	u6wXHjFzsbXt2nlnNNFwFgXpVrhLMFPxZW4yF9UIUryfRjSE5kiExcy8dx8erQc57FrprV85b/OVk
-	SEvUHd7gS620sRJxyNUZ4DLwrjhnqTOOHyKbfnnTrV02somiquFAthr/OZJ90GS7J9ZHlBob7WaKf
-	LXtP2JId/7bMi+C8fxrjX3ftKMfdcn6c/lsj+53eEqbRL9oPMsBMYvNuVnPXtJVfHpjZkEI4MCDAR
-	gXcLRnGAjCRpMhzMvbfA==;
+	List-Owner; bh=9n3x8T2NYNyg5N3rx67sIpcydomcQ6BCwBYshN1/H4o=; b=D+EBsuPwyfC3kn
+	KQqTyHa3Mgs0vH+lF8WVPSlLF1aOBwg0hsSv8xjJ81hNokk7tN3dZiGM8/4YvwWYtfIPPJIUz9sEU
+	uLuxImmvGfcB04+ePA/JnVu8T5kQGQakYQB5iC5gt4jCprbxhHK3DsGtxDCLU5Yw321+NyO757AIx
+	66+ogUbrK5YHGoBTOd43b0k8PzUTXHaLGdM1BZ8qwAgFFvAviaaynd0GhYhF5goWnoURvR9jcJ8wj
+	DFZIHawpCUK1yrIEak8QPnkxlpvD/eIynyl7DEH3q7zeZc3xteIm+cYY4uNKn7kdB3g6K8OXJYSkD
+	AnEzA/rM5Ep+epruaJ0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwj1j-00000003on6-3ghf;
-	Thu, 11 Sep 2025 15:15:59 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1uwjZl-000000040Hi-46E1;
+	Thu, 11 Sep 2025 15:51:09 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwj1g-00000003okC-2vek;
-	Thu, 11 Sep 2025 15:15:57 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1757603713; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=XdFivKCZ1zSV2DL8A2apCZSVhyGEctH5ibbsN5jnFp92ih8VPPHUt1cYWhfClmon7J3wdT8XMj835fnw3QSHdTqDIxOx9aCzGLYJA3MrC1PM35mhAw9g4XRSaMvjWn0Ebda4XdnOLXWLtITXwA+ZSUO3MG9s0cd845vDoG9CAYo=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1757603713; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=5GbnEMgGDcefdIhwqbOGABlaP4C+kCbcjuGMBFPW0FU=; 
-	b=AJrDS76FnZIW0jLOYXGptiWpzTsBY+npeA8L7BwDefMBU9NbrNHLq5zshxQ6M9UrIsvXqA9LyHtkTCul0qwIFQh2RuSjtHZnC0VBqs5hohXvNancIOHVZC2uroKOXNJxEcmbfsCm1bodh69SN+uOvAnD+aTfYV6zKMe8pJ4GNiI=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=ariel.dalessandro@collabora.com;
-	dmarc=pass header.from=<ariel.dalessandro@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1757603713;
-	s=zohomail; d=collabora.com; i=ariel.dalessandro@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=5GbnEMgGDcefdIhwqbOGABlaP4C+kCbcjuGMBFPW0FU=;
-	b=H9jOcS9Sf+b45wYgJY5wui9mLzHAFv/8dEF8qzkXIwmkNeLdBo+3737VQFbvZ329
-	cmuyy3V5VCxxklt+8rkDs/4GE0lvqHaocm3GFfgriUVQNIxO+SuJiePrxoKtuMAXu3C
-	ptx0CFAAXKTJtBC4k5JxeWR+Itv5KV3s+U4F5ous=
-Received: by mx.zohomail.com with SMTPS id 1757603711035627.8749849505076;
-	Thu, 11 Sep 2025 08:15:11 -0700 (PDT)
-From: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
-To: airlied@gmail.com,
-	amergnat@baylibre.com,
-	andrew+netdev@lunn.ch,
-	andrew-ct.chen@mediatek.com,
-	angelogioacchino.delregno@collabora.com,
-	ariel.dalessandro@collabora.com,
-	broonie@kernel.org,
-	chunkuang.hu@kernel.org,
-	conor+dt@kernel.org,
-	davem@davemloft.net,
-	dmitry.torokhov@gmail.com,
-	edumazet@google.com,
-	flora.fu@mediatek.com,
-	heiko@sntech.de,
-	houlong.wei@mediatek.com,
-	jeesw@melfas.com,
-	kernel@collabora.com,
-	krzk+dt@kernel.org,
-	kuba@kernel.org,
-	lgirdwood@gmail.com,
-	linus.walleij@linaro.org,
-	louisalexis.eyraud@collabora.com,
-	luiz.dentz@gmail.com,
-	maarten.lankhorst@linux.intel.com,
-	marcel@holtmann.org,
-	matthias.bgg@gmail.com,
-	mchehab@kernel.org,
-	minghsiu.tsai@mediatek.com,
-	mripard@kernel.org,
-	p.zabel@pengutronix.de,
-	pabeni@redhat.com,
-	robh@kernel.org,
-	sean.wang@kernel.org,
-	simona@ffwll.ch,
-	support.opensource@diasemi.com,
-	tiffany.lin@mediatek.com,
-	tzimmermann@suse.de,
-	yunfei.dong@mediatek.com
-Cc: devicetree@vger.kernel.org,
-	dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-bluetooth@vger.kernel.org,
-	linux-gpio@vger.kernel.org,
-	linux-input@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-media@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-sound@vger.kernel.org,
-	netdev@vger.kernel.org
-Subject: [PATCH v2 12/12] dt-bindings: input: Convert MELFAS MIP4 Touchscreen to DT schema
-Date: Thu, 11 Sep 2025 12:10:01 -0300
-Message-ID: <20250911151001.108744-13-ariel.dalessandro@collabora.com>
-X-Mailer: git-send-email 2.50.1
-In-Reply-To: <20250911151001.108744-1-ariel.dalessandro@collabora.com>
-References: <20250911151001.108744-1-ariel.dalessandro@collabora.com>
+	id 1uwjZj-000000040GN-3u6K
+	for linux-rockchip@lists.infradead.org;
+	Thu, 11 Sep 2025 15:51:07 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 5D67160234;
+	Thu, 11 Sep 2025 15:51:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A446CC4CEF0;
+	Thu, 11 Sep 2025 15:51:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1757605867;
+	bh=D+Kiy6o94m1pRNW35/OkOm3daFa7P2zcK4Au4ZPzqxM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=AFnDgDquTQ4yMZNrF/l3efaw61XvagSaqRTcqUNm2kYVUlgPqlHzMggjyZWecy8mr
+	 yqf7yie6CvD2Un7SKUu5Axyk47npfDJfDfPp7/LrAOhnshXgGnes96Vzn9ALEbAQEF
+	 KTt4O7sXRZWjYjik02lYyltg9Qiasu/Z5h1Bd5gJxhqRZ6JoNu0WkAzQGQqzsWGXAR
+	 lOcwjAouDJM7lGgaMcT9dW/XFFnOosZIRye+xBqYwjTAVGer1Ypc5otdezY4T96QRs
+	 eQbm9/yNKZqkN+KYSI/1vFFm2wR3YIIjx188IXYk2UyRkQtE/z3rTgDIt9gumGvNjJ
+	 cqj5lkn5Rn4Hg==
+Date: Thu, 11 Sep 2025 16:51:01 +0100
+From: Lee Jones <lee@kernel.org>
+To: Chris Morgan <macroalpha82@gmail.com>
+Cc: linux-rockchip@lists.infradead.org, linux-pm@vger.kernel.org,
+	devicetree@vger.kernel.org, broonie@kernel.org, lgirdwood@gmail.com,
+	sre@kernel.org, heiko@sntech.de, conor+dt@kernel.org,
+	krzk+dt@kernel.org, robh@kernel.org,
+	Chris Morgan <macromorgan@hotmail.com>
+Subject: [GIT PULL] Immutable branch between MFD, Power and Regulator due for
+ the v6.18 merge window
+Message-ID: <20250911155101.GA1637058@google.com>
+References: <20250904160530.66178-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
-X-ZohoMailClient: External
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250911_081556_790052_6E8F1B9A 
-X-CRM114-Status: GOOD (  13.59  )
+Content-Disposition: inline
+In-Reply-To: <20250904160530.66178-1-macroalpha82@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,116 +68,45 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Convert the existing text-based DT bindings for MELFAS MIP4 Touchscreen
-controller to a DT schema.
-
-Signed-off-by: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
----
- .../input/touchscreen/melfas,mip4_ts.yaml     | 56 +++++++++++++++++++
- .../input/touchscreen/melfas_mip4.txt         | 20 -------
- 2 files changed, 56 insertions(+), 20 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/input/touchscreen/melfas,mip4_ts.yaml
- delete mode 100644 Documentation/devicetree/bindings/input/touchscreen/melfas_mip4.txt
-
-diff --git a/Documentation/devicetree/bindings/input/touchscreen/melfas,mip4_ts.yaml b/Documentation/devicetree/bindings/input/touchscreen/melfas,mip4_ts.yaml
-new file mode 100644
-index 0000000000000..314be65c56caa
---- /dev/null
-+++ b/Documentation/devicetree/bindings/input/touchscreen/melfas,mip4_ts.yaml
-@@ -0,0 +1,56 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/input/touchscreen/melfas,mip4_ts.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: MELFAS MIP4 Touchscreen
-+
-+maintainers:
-+  - Ariel D'Alessandro <ariel.dalessandro@collabora.com>
-+
-+properties:
-+  compatible:
-+    const: melfas,mip4_ts
-+
-+  reg:
-+    description: I2C address of the chip (0x48 or 0x34)
-+    maxItems: 1
-+
-+  interrupts:
-+    maxItems: 1
-+
-+  ce-gpios:
-+    description:
-+      GPIO connected to the CE (chip enable) pin of the chip (active high)
-+    maxItems: 1
-+
-+required:
-+  - compatible
-+  - reg
-+  - interrupts
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/gpio/gpio.h>
-+    #include <dt-bindings/interrupt-controller/irq.h>
-+
-+    i2c {
-+        #address-cells = <1>;
-+        #size-cells = <0>;
-+
-+        touchscreen@34 {
-+            compatible = "melfas,mip4_ts";
-+            reg = <0x34>;
-+
-+            interrupts-extended = <&tlmm 13 IRQ_TYPE_EDGE_FALLING>;
-+            ce-gpios = <&tlmm 12 GPIO_ACTIVE_HIGH>;
-+
-+            pinctrl-0 = <&touchscreen_default>;
-+            pinctrl-names = "default";
-+        };
-+    };
-+
-+...
-diff --git a/Documentation/devicetree/bindings/input/touchscreen/melfas_mip4.txt b/Documentation/devicetree/bindings/input/touchscreen/melfas_mip4.txt
-deleted file mode 100644
-index b2ab5498e5190..0000000000000
---- a/Documentation/devicetree/bindings/input/touchscreen/melfas_mip4.txt
-+++ /dev/null
-@@ -1,20 +0,0 @@
--* MELFAS MIP4 Touchscreen
--
--Required properties:
--- compatible: must be "melfas,mip4_ts"
--- reg: I2C slave address of the chip (0x48 or 0x34)
--- interrupts: interrupt to which the chip is connected
--
--Optional properties:
--- ce-gpios: GPIO connected to the CE (chip enable) pin of the chip
--
--Example:
--	i2c@00000000 {
--		touchscreen: melfas_mip4@48 {
--			compatible = "melfas,mip4_ts";
--			reg = <0x48>;
--			interrupt-parent = <&gpio>;
--			interrupts = <0 IRQ_TYPE_EDGE_FALLING>;
--			ce-gpios = <&gpio 0 GPIO_ACTIVE_HIGH>;
--		};
--	};
--- 
-2.50.1
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+RW5qb3khCgpUaGUgZm9sbG93aW5nIGNoYW5nZXMgc2luY2UgY29tbWl0IDhmNWFlMzBkNjlkNzU0
+M2VlZTBkNzAwODNkYWY0ZGU4ZmUxNWQ1ODU6CgogIExpbnV4IDYuMTctcmMxICgyMDI1LTA4LTEw
+IDE5OjQxOjE2ICswMzAwKQoKYXJlIGF2YWlsYWJsZSBpbiB0aGUgR2l0IHJlcG9zaXRvcnkgYXQ6
+CgogIGdpdDovL2dpdC5rZXJuZWwub3JnL3B1Yi9zY20vbGludXgva2VybmVsL2dpdC9sZWUvbWZk
+LmdpdCB0YWdzL2liLW1mZC1wb3dlci1yZWd1bGF0b3ItdjYuMTgKCmZvciB5b3UgdG8gZmV0Y2gg
+Y2hhbmdlcyB1cCB0byA5ODFkZDE2MmI2MzU3OGFlZTM0YjVjNjg3OTVlMjQ2NzM0Yjc2ZDcwOgoK
+ICByZWd1bGF0b3I6IGJxMjU3eHg6IEFkZCBicTI1N3h4IGJvb3N0IHJlZ3VsYXRvciBkcml2ZXIg
+KDIwMjUtMDktMTEgMTU6NTU6NDEgKzAxMDApCgotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCkltbXV0YWJsZSBicmFuY2ggYmV0
+d2VlbiBNRkQsIFBvd2VyIGFuZCBSZWd1bGF0b3IgZHVlIGZvciB0aGUgdjYuMTggbWVyZ2Ugd2lu
+ZG93CgotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tCkNocmlzIE1vcmdhbiAoNCk6CiAgICAgIGR0LWJpbmRpbmdzOiBtZmQ6IHRp
+LGJxMjU3MDNhOiBBZGQgVEkgQlEyNTcwM0EgQ2hhcmdlcgogICAgICBtZmQ6IGJxMjU3eHg6IEFk
+ZCBzdXBwb3J0IGZvciBCUTI1NzAzQSBjb3JlIGRyaXZlcgogICAgICBwb3dlcjogc3VwcGx5OiBi
+cTI1N3h4OiBBZGQgc3VwcG9ydCBmb3IgQlEyNTdYWCBjaGFyZ2VyCiAgICAgIHJlZ3VsYXRvcjog
+YnEyNTd4eDogQWRkIGJxMjU3eHggYm9vc3QgcmVndWxhdG9yIGRyaXZlcgoKIC4uLi9kZXZpY2V0
+cmVlL2JpbmRpbmdzL21mZC90aSxicTI1NzAzYS55YW1sICAgICAgIHwgMTE3ICsrKysKIGRyaXZl
+cnMvbWZkL0tjb25maWcgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgIDExICsKIGRy
+aXZlcnMvbWZkL01ha2VmaWxlICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAxICsK
+IGRyaXZlcnMvbWZkL2JxMjU3eHguYyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgIDk5
+ICsrKwogZHJpdmVycy9wb3dlci9zdXBwbHkvS2NvbmZpZyAgICAgICAgICAgICAgICAgICAgICAg
+fCAgIDcgKwogZHJpdmVycy9wb3dlci9zdXBwbHkvTWFrZWZpbGUgICAgICAgICAgICAgICAgICAg
+ICAgfCAgIDEgKwogZHJpdmVycy9wb3dlci9zdXBwbHkvYnEyNTd4eF9jaGFyZ2VyLmMgICAgICAg
+ICAgICAgfCA3NTUgKysrKysrKysrKysrKysrKysrKysrCiBkcml2ZXJzL3JlZ3VsYXRvci9LY29u
+ZmlnICAgICAgICAgICAgICAgICAgICAgICAgICB8ICAgOCArCiBkcml2ZXJzL3JlZ3VsYXRvci9N
+YWtlZmlsZSAgICAgICAgICAgICAgICAgICAgICAgICB8ICAgMSArCiBkcml2ZXJzL3JlZ3VsYXRv
+ci9icTI1N3h4LXJlZ3VsYXRvci5jICAgICAgICAgICAgICB8IDE4NiArKysrKwogaW5jbHVkZS9s
+aW51eC9tZmQvYnEyNTd4eC5oICAgICAgICAgICAgICAgICAgICAgICAgfCAxMDQgKysrCiAxMSBm
+aWxlcyBjaGFuZ2VkLCAxMjkwIGluc2VydGlvbnMoKykKIGNyZWF0ZSBtb2RlIDEwMDY0NCBEb2N1
+bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbWZkL3RpLGJxMjU3MDNhLnlhbWwKIGNyZWF0
+ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL21mZC9icTI1N3h4LmMKIGNyZWF0ZSBtb2RlIDEwMDY0NCBk
+cml2ZXJzL3Bvd2VyL3N1cHBseS9icTI1N3h4X2NoYXJnZXIuYwogY3JlYXRlIG1vZGUgMTAwNjQ0
+IGRyaXZlcnMvcmVndWxhdG9yL2JxMjU3eHgtcmVndWxhdG9yLmMKIGNyZWF0ZSBtb2RlIDEwMDY0
+NCBpbmNsdWRlL2xpbnV4L21mZC9icTI1N3h4LmgKCi0tIApMZWUgSm9uZXMgW+adjueQvOaWr10K
+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJv
+Y2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0
+dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
