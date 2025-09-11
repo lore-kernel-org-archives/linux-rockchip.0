@@ -4,62 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27074CAC58E
-	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Sep 2025 14:59:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DA34CAC587
+	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Sep 2025 15:13:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JsIoOo33OZHt+woYzGhJT0gJdgTObegeaZEJckTm0JQ=; b=XmfHxYWZxDvg8g
-	T4FOKU4trr4MQoLaoxy570ztAgkZ1y+mH+IMxpZfudQtlGUkrTcYZ/huxsDZAnXEBPjPh1WYhUFwb
-	8xe6A8AeZj9zN3cvWC2g9L1EB785UTNvONQK6PKHrk+BQ/3v6zKQKiH7FCT5VW5iS/NWpYxmonSFy
-	9V3JVbI7MRNq+3TH8WfrWf4MHV0MFebNKjYVqGluF3n2je60buM/e9ur87a5P8ja+7rJ+WobEb6yM
-	j7w3KBEkSH3CewtnqC/i24Ww721mT4Cw/LXhHesRSxZZ4R/eTBk0bj4kOdVMW00DeS4Gb8I82ofn/
-	f9xRJ604ZmFVv4qXJhUw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ZkffyLReXyUsrcSjNh2tLgx4D78NF23IYis+YZeEFFE=; b=g3n1lIm1/KdhiI
+	jAW6Ys2m6ecfFp4Gj2UPLJd+y/D/9u64uJ3cupLaqBac8kjJFGnmoMlLMQRcChp4O9+bt3hqpwcG+
+	pHjE9EZjhNp7acdGqn7RzHY3MF4bIkx11rjqWZ0GYMEX+WlFlA5vStFEUUgqQMu0XzhUL56+hO4z/
+	8/BTUx5JKFo116SmGHd5DjJGVavw5R8Oow0ikwM5P9CzN1JUx/LmHghO1ngExUMFVf9TO1lmoHUgv
+	X2Sb421m2XUzIP+7JZsm42tL+Zy5LW4yC1PcFZ5IbLaSnl/dwHACfdQvUULiWU4lnXRBuz6/5B2kT
+	HyxjlIQ9E7Cuf6bfnF4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwilz-00000003j9H-1xkb;
-	Thu, 11 Sep 2025 14:59:43 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1uwiyr-00000003nBh-3gcS;
+	Thu, 11 Sep 2025 15:13:01 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwilw-00000003j7V-3HQI
-	for linux-rockchip@lists.infradead.org;
-	Thu, 11 Sep 2025 14:59:41 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 1B72A404B5;
-	Thu, 11 Sep 2025 14:59:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 92A27C4CEF0;
-	Thu, 11 Sep 2025 14:59:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1757602780;
-	bh=dwdaLEAjnH3HKkai+U9OrOZJ12DWW8piJIVwD4P+moM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Du6b4hpMRlqI1aCbon+AQJ+1kBXG0polcPvf4DE/LsKzWpmcSXdseI3XjfkKCa8Rd
-	 z1ecYtkdWJImyg23H5zjxAdgId3n2wTRhGLvkva5WZ4vhWE/IieiCA23J/o7GOPAya
-	 RwYCWFQhKuibfsYsz3Ia4bEEKFP0071HQx8CGachXhLqNnYcz+WvbREieI/6/pbOaI
-	 SPe4qX+U5g658QNOPA6/VODmEcFBHbOVakJlO+dw2CikuFAYl4TKq6cnr+gpUD9yec
-	 SgO44/dFz+vSnUKDQ1nPBJ54eWK+s/j6SNGkVYSCio0JnPoJjBVVpS0kFPYuzOXQly
-	 kOBcatU2NbGgQ==
-Date: Thu, 11 Sep 2025 15:59:34 +0100
-From: Lee Jones <lee@kernel.org>
-To: linux-rockchip@lists.infradead.org,
-	Chris Morgan <macroalpha82@gmail.com>
-Cc: linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
-	broonie@kernel.org, lgirdwood@gmail.com, sre@kernel.org,
-	heiko@sntech.de, conor+dt@kernel.org, krzk+dt@kernel.org,
-	robh@kernel.org, Chris Morgan <macromorgan@hotmail.com>
-Subject: Re: (subset) [PATCH v8 0/5] Add Texas Instruments BQ25703A Charger
-Message-ID: <20250911145934.GP9224@google.com>
-References: <20250904160530.66178-1-macroalpha82@gmail.com>
- <175760259503.1582479.14013409824773713781.b4-ty@kernel.org>
+	id 1uwiyo-00000003nAD-2fCI;
+	Thu, 11 Sep 2025 15:13:00 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1757603532; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=B9IGFw7LplNPOkZEq5rg//uOHf2EjeiJHVJse7seMUTzZIMxYd1TVrOZN0zUbq5Xq33L+9q9+TqFilkErBnjfaa/NpughWfaUjECxVa+0PaEb+YDKAdGNrY++tuNVVIv/wj8tJU+KqRR3v9zzmvdP6gOS405s9ICJ1bawZoNf0E=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1757603532; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=4E1gkCV3bUB24+jEbYd5O83SC/ksIpy9YseSb1Bd3iA=; 
+	b=OYspCStGN7dInL2eQAJ59H16VwPLP5z4wWe5Nr6htKYI4pPJuPUYGIV4faEbAdxSfzVEwkFgj+ZF3SmcHreJc8qUT/uzUAHUdyXtnkWOokhqUalCV4rW9dIvNsZfNzhRjZLbbMNHmz9gEQaCCxIvVLYhrFc0Y2lAOG7iIOnvWyc=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=ariel.dalessandro@collabora.com;
+	dmarc=pass header.from=<ariel.dalessandro@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1757603532;
+	s=zohomail; d=collabora.com; i=ariel.dalessandro@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:MIME-Version:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=4E1gkCV3bUB24+jEbYd5O83SC/ksIpy9YseSb1Bd3iA=;
+	b=Tp0xnrD2zRi58CffU5G3TaTiLbJcAER4BZDZ/9WPboVLvTu6uzg9VYi/ZTt2X5qw
+	PMD8pJ8vo2CnYFCkcKqSC4Ganw2/UNoxh4q3T1CUWsieDlvzRf8LKJqusv5Qlx+IBze
+	ExFMJOuw5cTRX/uVEXriSe7jqmq8yEDKe+84VPaw=
+Received: by mx.zohomail.com with SMTPS id 1757603530466436.8737694403886;
+	Thu, 11 Sep 2025 08:12:10 -0700 (PDT)
+From: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
+To: airlied@gmail.com,
+	amergnat@baylibre.com,
+	andrew+netdev@lunn.ch,
+	andrew-ct.chen@mediatek.com,
+	angelogioacchino.delregno@collabora.com,
+	ariel.dalessandro@collabora.com,
+	broonie@kernel.org,
+	chunkuang.hu@kernel.org,
+	conor+dt@kernel.org,
+	davem@davemloft.net,
+	dmitry.torokhov@gmail.com,
+	edumazet@google.com,
+	flora.fu@mediatek.com,
+	heiko@sntech.de,
+	houlong.wei@mediatek.com,
+	jeesw@melfas.com,
+	kernel@collabora.com,
+	krzk+dt@kernel.org,
+	kuba@kernel.org,
+	lgirdwood@gmail.com,
+	linus.walleij@linaro.org,
+	louisalexis.eyraud@collabora.com,
+	luiz.dentz@gmail.com,
+	maarten.lankhorst@linux.intel.com,
+	marcel@holtmann.org,
+	matthias.bgg@gmail.com,
+	mchehab@kernel.org,
+	minghsiu.tsai@mediatek.com,
+	mripard@kernel.org,
+	p.zabel@pengutronix.de,
+	pabeni@redhat.com,
+	robh@kernel.org,
+	sean.wang@kernel.org,
+	simona@ffwll.ch,
+	support.opensource@diasemi.com,
+	tiffany.lin@mediatek.com,
+	tzimmermann@suse.de,
+	yunfei.dong@mediatek.com
+Cc: devicetree@vger.kernel.org,
+	dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-bluetooth@vger.kernel.org,
+	linux-gpio@vger.kernel.org,
+	linux-input@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-media@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-sound@vger.kernel.org,
+	netdev@vger.kernel.org
+Subject: [PATCH v2 00/12] MediaTek dt-bindings sanitization (MT8173)
+Date: Thu, 11 Sep 2025 12:09:49 -0300
+Message-ID: <20250911151001.108744-1-ariel.dalessandro@collabora.com>
+X-Mailer: git-send-email 2.50.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <175760259503.1582479.14013409824773713781.b4-ty@kernel.org>
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250911_075940_840027_681CC398 
-X-CRM114-Status: GOOD (  12.02  )
+X-CRM114-CacheID: sfid-20250911_081258_698039_69071A49 
+X-CRM114-Status: GOOD (  10.73  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,33 +117,104 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCAxMSBTZXAgMjAyNSwgTGVlIEpvbmVzIHdyb3RlOgoKPiBPbiBUaHUsIDA0IFNlcCAy
-MDI1IDExOjA1OjI1IC0wNTAwLCBDaHJpcyBNb3JnYW4gd3JvdGU6Cj4gPiBGcm9tOiBDaHJpcyBN
-b3JnYW4gPG1hY3JvbW9yZ2FuQGhvdG1haWwuY29tPgo+ID4gCj4gPiBBZGQgc3VwcG9ydCBmb3Ig
-dGhlIFRleGFzIEluc3RydW1lbnRzIEJRMjU3MDNBIGNoYXJnZXIgbWFuYWdlci4gVGhlCj4gPiBk
-ZXZpY2UgaW50ZWdyYXRlcyBhIGJvb3N0IGNvbnZlcnRlciB3aXRoIHRoZSBjaGFyZ2VyIG1hbmFn
-ZXIuIFRoaXMKPiA+IHNlcmllcyBhZGRzIHRoZSBkZXZpY2UgYXMgYW4gTUZEIHdpdGggc2VwYXJh
-dGUgcmVndWxhdG9yIGFuZCBwb3dlcgo+ID4gc3VwcGx5IGRyaXZlcnMuIFRoaXMgYWxsb3dzIHVz
-IHRvIG1hbmFnZSBhIGNpcmN1bGFyIGRlcGVuZGVuY3kgd2l0aAo+ID4gYSB0eXBlLWMgcG9ydCBt
-YW5hZ2VyIHdoaWNoIGRlcGVuZHMgb24gdGhlIHJlZ3VsYXRvciBmb3IgdXNiLW90Zwo+ID4gYnV0
-IHN1cHBsaWVzIHBvd2VyIHRvIHRoZSBCUTI1NzAzQSBjaGFyZ2VyLgo+ID4gCj4gPiBbLi4uXQo+
-IAo+IEFwcGxpZWQsIHRoYW5rcyEKPiAKPiBbMS81XSBkdC1iaW5kaW5nczogbWZkOiB0aSxicTI1
-NzAzYTogQWRkIFRJIEJRMjU3MDNBIENoYXJnZXIKPiAgICAgICBjb21taXQ6IDc2YmMyMjAzYTQ2
-ZWY3MDRhNGNkODAwMzk4NmY2YmQ3NDEzOWEzNjcKPiBbMi81XSBtZmQ6IGJxMjU3eHg6IEFkZCBz
-dXBwb3J0IGZvciBCUTI1NzAzQSBjb3JlIGRyaXZlcgo+ICAgICAgIGNvbW1pdDogM2IxYmJmYjVm
-Y2UzY2E5ZmZmYzkyYWMxYjA1M2IwY2ZiYjFmMzIyYgo+IFszLzVdIHBvd2VyOiBzdXBwbHk6IGJx
-MjU3eHg6IEFkZCBzdXBwb3J0IGZvciBCUTI1N1hYIGNoYXJnZXIKPiAgICAgICBjb21taXQ6IDFj
-YzAxN2I3ZjljN2I3Y2Q4NmZkZGE0YWVlMzZiOTJkOTFjYzJhZDIKPiBbNC81XSByZWd1bGF0b3I6
-IGJxMjU3eHg6IEFkZCBicTI1N3h4IGJvb3N0IHJlZ3VsYXRvciBkcml2ZXIKPiAgICAgICBjb21t
-aXQ6IDk4MWRkMTYyYjYzNTc4YWVlMzRiNWM2ODc5NWUyNDY3MzRiNzZkNzAKClNlbmQgZm9yIGJ1
-aWxkIHRlc3RpbmcuICBJZiBzdWNjZXNzZnVsLCBJJ2xsIHBpbmcgb3V0IGEgUFIgc2hvcnRseS4K
-Ck5vdGUgdG8gc2VsZjogaWItbWZkLXBvd2VyLXJlZ3VsYXRvci02LjE4CgotLSAKTGVlIEpvbmVz
-IFvmnY7nkLzmlq9dCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5m
-cmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
-bnV4LXJvY2tjaGlwCg==
+This patch series continues the effort to address Device Tree validation
+warnings for MediaTek platforms, with a focus on MT8173. It follows the
+initial cleanup series by Angelo [0].
+
+Similarly to the ongoing MT8183 work done by Julien Massot, this patchset
+eliminates several of the remaining warnings by improving or converting DT
+bindings to YAML, adding missing properties, and updating device tree files
+accordingly.
+
+[0] https://www.spinics.net/lists/kernel/msg5780177.html
+
+Changes in v2:
+* Wrapped commit messages to 75 columns line wrap.
+* Replaced "YAML" by "DT schema" in patches subject and content.
+* mt8173-mdp: Fixed properties: compatible, clocks, iommus and
+  mediatek,vpu.
+* mt8173-vpu: Fixed line wrap. Dropped memory-region property description.
+* mediatek,mmsys: Dropped patch as it's not a binding issue.
+* mediatek,od: Rewrote commit log with details on DT schema users missing
+  the related property. Rewrote mediatek,gce-client-reg property.
+* mediatek,ufoe: Rewrote commit log with details on DT schema users missing
+  the related property. Rewrote mediatek,gce-client-reg property.
+* marvell,sd8897-bt: Moved to net/bluetooth/. Added missing ref to
+  bluetooth-controller.yaml. Dropped example. Updated reference in another
+  file. Minor fixes in properties.
+* mediatek,mt8173-rt5650: Dropped unnecessary quotes and unused label.
+* dlg,da9211: Dropped enable-gpios description. Rewrote generic example
+  node names. Minor fixes in properties.
+* melfas,mip4_ts: Dropped unnecessary quotes. Added "active high" to
+  ce-gpios property description.
+* mediatek,jpeg: Dropped patch as it doesn't apply.
+
+Signed-off-by: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
+
+Ariel D'Alessandro (12):
+  dt-bindings: media: Convert MediaTek mt8173-mdp bindings to DT schema
+  dt-bindings: media: Convert MediaTek mt8173-vpu bindings to DT schema
+  dt-bindings: net: Convert Marvell 8897/8997 bindings to DT schema
+  dt-bindings: ASoC: Convert MediaTek RT5650 codecs bindings to DT
+    schema
+  dt-bindings: display: mediatek,od: Add mediatek,gce-client-reg
+    property
+  dt-bindings: display: mediatek,ufoe: Add mediatek,gce-client-reg
+    property
+  arm64: dts: mediatek: mt8173: Fix mt8173-pinctrl node names
+  dt-bindings: pinctrl: mt65xx: Allow gpio-line-names
+  dt-bindings: regulator: Convert Dialog DA9211 Regulators to DT schema
+  arm64: dts: mediatek: mt8173-elm: Drop unused bank supply
+  dt-bindings: soc: mediatek: pwrap: Add power-domains property
+  dt-bindings: input: Convert MELFAS MIP4 Touchscreen to DT schema
+
+ .../display/mediatek/mediatek,od.yaml         |  14 ++
+ .../display/mediatek/mediatek,ufoe.yaml       |  15 ++
+ .../input/touchscreen/melfas,mip4_ts.yaml     |  56 +++++
+ .../input/touchscreen/melfas_mip4.txt         |  20 --
+ .../bindings/media/mediatek,mt8173-mdp.yaml   | 169 +++++++++++++++
+ .../bindings/media/mediatek,mt8173-vpu.yaml   |  74 +++++++
+ .../bindings/media/mediatek-mdp.txt           |  95 --------
+ .../bindings/media/mediatek-vpu.txt           |  31 ---
+ .../net/bluetooth/marvell,sd8897-bt.yaml      |  79 +++++++
+ .../devicetree/bindings/net/btusb.txt         |   2 +-
+ .../bindings/net/marvell-bt-8xxx.txt          |  83 -------
+ .../pinctrl/mediatek,mt65xx-pinctrl.yaml      |   2 +
+ .../devicetree/bindings/regulator/da9211.txt  | 205 ------------------
+ .../bindings/regulator/dlg,da9211.yaml        | 104 +++++++++
+ .../bindings/soc/mediatek/mediatek,pwrap.yaml |  15 ++
+ .../sound/mediatek,mt8173-rt5650.yaml         |  73 +++++++
+ .../bindings/sound/mt8173-rt5650.txt          |  31 ---
+ .../dts/rockchip/rk3288-veyron-fievel.dts     |   2 +-
+ .../boot/dts/rockchip/rk3288-veyron-jaq.dts   |   2 +-
+ .../boot/dts/mediatek/mt8173-elm-hana.dtsi    |   2 +-
+ arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi  |  33 ++-
+ arch/arm64/boot/dts/mediatek/mt8173-evb.dts   |  14 +-
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi      |  14 +-
+ 23 files changed, 633 insertions(+), 502 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/input/touchscreen/melfas,mip4_ts.yaml
+ delete mode 100644 Documentation/devicetree/bindings/input/touchscreen/melfas_mip4.txt
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,mt8173-mdp.yaml
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,mt8173-vpu.yaml
+ delete mode 100644 Documentation/devicetree/bindings/media/mediatek-mdp.txt
+ delete mode 100644 Documentation/devicetree/bindings/media/mediatek-vpu.txt
+ create mode 100644 Documentation/devicetree/bindings/net/bluetooth/marvell,sd8897-bt.yaml
+ delete mode 100644 Documentation/devicetree/bindings/net/marvell-bt-8xxx.txt
+ delete mode 100644 Documentation/devicetree/bindings/regulator/da9211.txt
+ create mode 100644 Documentation/devicetree/bindings/regulator/dlg,da9211.yaml
+ create mode 100644 Documentation/devicetree/bindings/sound/mediatek,mt8173-rt5650.yaml
+ delete mode 100644 Documentation/devicetree/bindings/sound/mt8173-rt5650.txt
+
+-- 
+2.50.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
