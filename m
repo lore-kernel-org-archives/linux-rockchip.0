@@ -4,56 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2375CAC58D
-	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Sep 2025 08:26:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADD69CAC58D
+	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Sep 2025 08:44:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:References:To:From:Subject:Message-Id:Date:Mime-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+VuQkmYpVeCpjiqpuN42jpwbtN5lTD/dBLrKHYx7v8Y=; b=ntXA6RP9oqyRfSC5wPO0MDlIDh
-	EXJLXChBvA7jFPN+QB2NtGLETspuByd+ARw017gVKd5MdvVgEvOrx4BrRHiZ9cD7+O0eBczZRHk5n
-	MC6FIuaGgthNyI8GUmXpHAuWaNS8f2o/e3yupn/Ove+7jhd982aWWXZ/GiItno3EIrLjmmhP9N2d2
-	G/aiuAQBx0UE9mwR38p8OxbbOvQqVFdHt2uyV5Y0JwHVYvKLFIH2VxvQvpGwbKEths5uqsBBHqM58
-	pDL+vRRTh9hk5uL1ZkWZGRUZhjk6ZVMnL7MxRtK+kUzsxZUSaYcD2TEGD0J2ykjshFOxZ5JQMDJiV
-	/1aiTPEg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=b/NEBvsRfXUgg6BoMZyQf7NFWSLMQZpJknoP2cBK0kM=; b=grQIlMo3Z+G/Zo
+	QsMss53HHkiMv6HcJQf/eOiOvSySSLxo2WFfLcR1sGN4j5i68hbD6DRIt5KCA09wcC51k5up4zkEc
+	jOyjODDds3lcdYUG/MqF8GOIqQYIDkoqGB4zVyxP+6XTq6CEXCbObmsoybzF2xVStK+uJ4ZxVl8hl
+	I/biKf+bn1QcBGpPjgE+2SSpyku75tXH+Xk8iqpYyXJ3mBOj0Km44OOH2mKfZ69uGwkaA7oSsajfs
+	7ZX/YX5O52VzFzbLOmjsPRzAEnkx8acwHf3604KSV6bR5sGdcU19+siePWWc3SX/1kGPjTgxR6e6q
+	vvzUyWF+CCXDb03mDvTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwcdL-00000001oER-3TVU;
-	Thu, 11 Sep 2025 08:26:23 +0000
-Received: from out-176.mta1.migadu.com ([95.215.58.176])
+	id 1uwcv1-00000001tZR-3gS4;
+	Thu, 11 Sep 2025 08:44:39 +0000
+Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwcdI-00000001oDa-3VG3
+	id 1uwcuy-00000001tWW-2yQm
 	for linux-rockchip@lists.infradead.org;
-	Thu, 11 Sep 2025 08:26:22 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1757579176;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=E0lBJocEKP3lSk1wr86/mwJVJDEiyUS7mBzgQ49GMVs=;
-	b=UvYXYB38THPhssZVA2dz5yQ7+FZptseAx24L6CpmC6aXfLG+i0gREKXUGr1xLnswZ8BFK3
-	9qg9d9RV//SzyO141pSwtZgScqbmc7WjBjxO7XnI5SeIM3yVgvcdIFtj/tf7L9Vpp25go/
-	ZS/NM/lk6h/aF250h9ERX+LRkFGSU05LOoJRp6BLWKhLszqWGMqSvVT+h7zTfEAkrAGTwa
-	6l0BnycrBvwtpak1skf2bPZijXAMlDdPUp8ZK+/LNzDdHbnxGcvjHsAY+D1EN8sPrccYE2
-	G6H8mURCIog9lY4PcjcXYBenx9rg91c0A626gPvm98UM+QISf/KvEorWpUma2A==
-Date: Thu, 11 Sep 2025 10:26:03 +0200
-Message-Id: <DCPTTD0NKOE6.1HKQ87ESFOT6D@cknow.org>
-Subject: Re: [PATCH 0/5] pmdomain: Restore behaviour for disabling unused PM
- domains
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <didi.debian@cknow.org>
-To: "Geert Uytterhoeven" <geert@linux-m68k.org>
-References: <20250909111130.132976-1-ulf.hansson@linaro.org>
- <DCPDDIZ3S1CM.3DJYY5U4T6V4U@cknow.org>
- <CAMuHMdVxjOLZsas4+nmAkZjbJsQjxdkZvZ8tTY9pq2zz3gvFNQ@mail.gmail.com>
-In-Reply-To: <CAMuHMdVxjOLZsas4+nmAkZjbJsQjxdkZvZ8tTY9pq2zz3gvFNQ@mail.gmail.com>
-X-Migadu-Flow: FLOW_OUT
+	Thu, 11 Sep 2025 08:44:38 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
+ Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
+ s=fe-e1b5cab7be; t=1757580276;
+ bh=71L95gSKTmlkjoVh2fs/9dex/A1y0fWYRyHyjXcBq4g=;
+ b=G4Fs0xF/OzW3gRg2dz/jBTNpIV962sQvofl8FXG5P69dzXTu1wi9EUn34gQE8InYNeZXVL3GT
+ WZ7yXkUMrVvLX6YdsBwEf1p/DbjBNpsu0go5uQiieu9xcDxTAzlRhbok/vg7ZbGVRvU3C8ge+aS
+ jdPNrcYbsPlDaB6UHUEmUwr+vGa/WfhMvftCqOkzSb3C4b2mNxoM37Zh3oqImH3KhaR9WrWwcC+
+ lerSRk8aIWyQqWnyhHWU46wP52EeXYFzqR5ZR1t5Zc6Mc0FFu/be3AUx02xadC7Q7/DIPsZkxMI
+ UfF8Qr0tA9ED5M0io4cgfK3Ap8dMsWea5CIGPcfR6tAQ==
+X-Forward-Email-ID: 68c28be303561882c9813720
+X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 149.28.215.223
+X-Forward-Email-Version: 1.2.14
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+Message-ID: <59cff81f-4be2-45e7-bc41-60fb52bfc6ca@kwiboo.se>
+Date: Thu, 11 Sep 2025 10:44:11 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/3] arm64: dts: rockchip: Add PCIe Gen2x1 controller for
+ RK3528
+To: Yao Zi <ziyao@disroot.org>
+Cc: Bjorn Helgaas <bhelgaas@google.com>,
+ Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+ Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Shawn Lin <shawn.lin@rock-chips.com>, Simon Xue <xxm@rock-chips.com>,
+ linux-pci@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Chukun Pan <amadeus@jmu.edu.cn>
+References: <20250906135246.19398-1-ziyao@disroot.org>
+ <20250906135246.19398-3-ziyao@disroot.org>
+ <38e80b6d-1dc9-47a8-8b23-e875c2848e6e@kwiboo.se> <aMKAvCglcaC6-00k@pie>
+Content-Language: en-US
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <aMKAvCglcaC6-00k@pie>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250911_012621_317365_63FED499 
-X-CRM114-Status: GOOD (  23.05  )
+X-CRM114-CacheID: sfid-20250911_014437_089249_87F8CDE6 
+X-CRM114-Status: GOOD (  22.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,126 +82,121 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>, Heiko Stuebner <heiko@sntech.de>, "Rafael J . Wysocki" <rafael@kernel.org>, Tomi
- Valkeinen <tomi.valkeinen@ideasonboard.com>, Thierry Reding <thierry.reding@gmail.com>, Saravana Kannan <saravanak@google.com>, Sebastian Reichel <sebastian.reichel@collabora.com>, Jonathan Hunter <jonathanh@nvidia.com>, linux-rockchip@lists.infradead.org, Konrad
- Dybcio <konradybcio@kernel.org>, Peng Fan <peng.fan@oss.nxp.com>, linux-pm@vger.kernel.org, Johan Hovold <johan@kernel.org>, Sebin
- Francis <sebin.francis@ti.com>, Michal Simek <michal.simek@amd.com>, linux-arm-kernel@lists.infradead.org, Maulik Shah <maulik.shah@oss.qualcomm.com>, Stephen Boyd <sboyd@kernel.org>, Bjorn
- Andersson <andersson@kernel.org>, Christian Hewitt <christianshewitt@gmail.com>, linux-kernel@vger.kernel.org, Abel Vesa <abel.vesa@linaro.org>
-Content-Type: multipart/mixed; boundary="===============1256971815544803344=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============1256971815544803344==
-Content-Type: multipart/signed;
- boundary=c4d98de91abd6d1006b609cb4621827d77940c66045ae6e96f5d64cd32ef;
- micalg=pgp-sha512; protocol="application/pgp-signature"
-
---c4d98de91abd6d1006b609cb4621827d77940c66045ae6e96f5d64cd32ef
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
-
-Hi Geert,
-
-On Thu Sep 11, 2025 at 9:18 AM CEST, Geert Uytterhoeven wrote:
-> On Wed, 10 Sept 2025 at 21:33, Diederik de Haas <didi.debian@cknow.org> w=
-rote:
->> On Tue Sep 9, 2025 at 1:11 PM CEST, Ulf Hansson wrote:
->> > Recent changes to genpd prevents those PM domains being powered-on dur=
-ing
->> > initialization from being powered-off during the boot sequence. Based =
-upon
->> > whether CONFIG_PM_CONFIG_PM_GENERIC_DOMAINS_OF is set of not, genpd re=
-lies
->> > on the sync_state mechanism or the genpd_power_off_unused() (which is =
-a
->> > late_initcall_sync), to understand when it's okay to allow these PM do=
-mains
->> > to be powered-off.
->> >
->> > This new behaviour in genpd has lead to problems on different platform=
-s [1].
->> >
->> > In this series, I am therefore suggesting to restore the behavior of
->> > genpd_power_off_unused() along with introducing a new genpd config fla=
-g,
->> > GENPD_FLAG_NO_STAY_ON, to allow genpd OF providers to opt-out from the=
- new
->> > behaviour.
+On 9/11/2025 9:56 AM, Yao Zi wrote:
+> On Wed, Sep 10, 2025 at 11:29:00PM +0200, Jonas Karlman wrote:
+>> Hi Yao Zi,
 >>
->> Is it expected that I'm still seeing this on a Rock64 (rk3328), just
->> like before [1]?
+>> On 9/6/2025 3:52 PM, Yao Zi wrote:
+>>> Describes the PCIe Gen2x1 controller integrated in RK3528 SoC. The SoC
+>>> doesn't provide a separate MSI controller, thus the one integrated in
+>>> designware PCIe IP must be used.
+>>>
+>>> Signed-off-by: Yao Zi <ziyao@disroot.org>
+>>> ---
+>>>  arch/arm64/boot/dts/rockchip/rk3528.dtsi | 56 +++++++++++++++++++++++-
+>>>  1 file changed, 55 insertions(+), 1 deletion(-)
+>>>
+>>> diff --git a/arch/arm64/boot/dts/rockchip/rk3528.dtsi b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
+>>> index db5dbcac7756..2d2af467e5ab 100644
+>>> --- a/arch/arm64/boot/dts/rockchip/rk3528.dtsi
+>>> +++ b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
+>>> @@ -7,6 +7,7 @@
+>>>  #include <dt-bindings/gpio/gpio.h>
+>>>  #include <dt-bindings/interrupt-controller/arm-gic.h>
+>>>  #include <dt-bindings/interrupt-controller/irq.h>
+>>> +#include <dt-bindings/phy/phy.h>
+>>>  #include <dt-bindings/pinctrl/rockchip.h>
+>>>  #include <dt-bindings/clock/rockchip,rk3528-cru.h>
+>>>  #include <dt-bindings/power/rockchip,rk3528-power.h>
+>>> @@ -239,7 +240,7 @@ gmac0_clk: clock-gmac50m {
+>>>  
+>>>  	soc {
+>>>  		compatible = "simple-bus";
+>>> -		ranges = <0x0 0xfe000000 0x0 0xfe000000 0x0 0x2000000>;
+>>> +		ranges = <0x0 0xfc000000 0x0 0xfc000000 0x0 0x44400000>;
 >>
->>   [   17.124202] rockchip-pm-domain ff100000.syscon:power-controller: sy=
-nc_state() pending due to ff300000.gpu
->>   [   17.129799] rockchip-pm-domain ff100000.syscon:power-controller: sy=
-nc_state() pending due to ff350000.video-codec
->>   [   17.140003] rockchip-pm-domain ff100000.syscon:power-controller: sy=
-nc_state() pending due to ff360000.video-codec
->
-> Yes, as the sync state is still blocked on them.
-> Disabling unused PM Domains is done independently of sync state.
->
->> This is with a 6.17-rc5 kernel with this patch set applied.
->> And it also has this patch from Christian Hewitt added, now in v3:
->> https://lore.kernel.org/linux-rockchip/20250906120810.1833016-1-christia=
-nshewitt@gmail.com/
+>> We should use the dbi reg area in the 32-bit address space, please use:
 >>
->> When I boot into a 6.17-rc5 kernel without any patches applied, I do get
->> the 2 for ff350000.video-codec and ff360000.video-codec, but not the
->> ff300000.gpu one.
+>>   ranges = <0x0 0xfc000000 0x0 0xfc000000 0x0 0x4000000>;
+> 
+> This seems strange to me. I read through TRMs for RK3562 and RK3576, and
+> found it's common for Rockchip SoCs to map DBI regions of PCIe
+> controllers to two separate MMIO regions, but am still not sure why it's
+> necessary to use the mapping in the 32-bit address space.
+
+I prefer the use of the 32-bit address range to ensure better
+compatibility with bootloaders and possible other OS that may have
+issues with regs in 64-bit address range.
+
+E.g. U-Boot have had issues with accessing >32-bit addressable range in
+the past, use of the 32-bit dbi range ensure we can use pcie in
+U-Boot without having to possible patch DT in a <soc>-u-boot.dtsi file.
+
+Regards,
+Jonas
+
+> 
+> However, I'm willing to follow the vendor's decision here in order to
+> avoid unexpected problems. Will adapt this in v2.
+> 
+>>>  		#address-cells = <2>;
+>>>  		#size-cells = <2>;
+>>>  
+>>> @@ -1133,6 +1134,59 @@ combphy: phy@ffdc0000 {
+>>>  			rockchip,pipe-phy-grf = <&pipe_phy_grf>;
+>>>  			status = "disabled";
+>>>  		};
+>>> +
+>>> +		pcie: pcie@fe4f0000 {
 >>
->> Interestingly:
->> ff300000.gpu -> power-domains =3D <&power RK3328_PD_GPU>;
->> ff350000.video-codec -> power-domains =3D <&power RK3328_PD_VPU>;
->> ff360000.video-codec -> power-domains =3D <&power RK3328_PD_VIDEO>;
+>> With the dbi reg area changed below, please update the node name and
+>> move this node to top of the soc node.
 >>
->> I would be surprised if that was a coincidence.
->
-> Fw_devlinks ignores the index cell (RK3328_PD_*), hence all links are
-> created pointing to the pmdomain controller (in case it has a platform
-> driver) or the first pmdomain (in case it has not). thus blocking the
-> sync state call and power-down for _all_ pmdomains managed by the
-> controller.
+>>   pcie@fe000000
+>>
+>>> +			compatible = "rockchip,rk3528-pcie",
+>>> +				     "rockchip,rk3568-pcie";
+>>> +			reg = <0x1 0x40000000 0x0 0x400000>,
+>>
+>> We should use the dbi reg area in the 32-bit address space, please use:
+>>
+>>   reg = <0x0 0xfe000000 0x0 0x400000>,
+>>
+>>> +			      <0x0 0xfe4f0000 0x0 0x10000>,
+>>> +			      <0x0 0xfc000000 0x0 0x100000>;
+>>> +			reg-names = "dbi", "apb", "config";
+>>> +			bus-range = <0x0 0xff>;
+>>> +			clocks = <&cru ACLK_PCIE>, <&cru HCLK_PCIE_SLV>,
+>>> +				 <&cru HCLK_PCIE_DBI>, <&cru PCLK_PCIE>,
+>>> +				 <&cru CLK_PCIE_AUX>, <&cru PCLK_PCIE_PHY>;
+>>> +			clock-names = "aclk_mst", "aclk_slv",
+>>> +				      "aclk_dbi", "pclk",
+>>> +				      "aux", "pipe";
+>>
+>> In my U-Boot test I did not have the pipe/phy clock here, do we need it?
+> 
+> Just as mentioned by Chukun, the clock should indeed be managed by phy
+> instead of the PCIe controller. Will fix it as well.
+> 
+>> With above fixed this more or less matches my U-Boot testing, and is:
+>>
+>> Reviewed-by: Jonas Karlman <jonas@kwiboo.se>
+> 
+> Much thanks.
+> 
+>> Regards,
+>> Jonas
+> 
+> Best regards,
+> Yao Zi
 
-I don't think I fully understand this (not your problem due to lack of
-knowledge on my part), but you mentioning 'fw_devlink' rang a bell.
-
-Some time ago Nicolas Frattaroli and I worked on an image for PINE64's
-*Quartz* devices and that added ``fw_devlink=3Doff`` to cmdline.
-I've been using it on all my Rockchip based devices, without
-understanding that parameter ... but (apparently) on my 'rock64-test'
-device, where I tested it with, I had removed that parameter.
-Putting that parameter back ... and those warnings are gone!
-
-Thanks a LOT for that hint!
-
-Groetjes,
-  Diederik
-
---c4d98de91abd6d1006b609cb4621827d77940c66045ae6e96f5d64cd32ef
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaMKHoQAKCRDXblvOeH7b
-bo6/AQDBs8RXL9MZybJJhHinLOCxYw9QduO4Nxl/I3V6lRVjfgD/cp0KvoFONOMG
-zBh0Hr6do6+m3BaFnV2rsF15IgfvlAg=
-=3jJl
------END PGP SIGNATURE-----
-
---c4d98de91abd6d1006b609cb4621827d77940c66045ae6e96f5d64cd32ef--
-
-
---===============1256971815544803344==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============1256971815544803344==--
-
