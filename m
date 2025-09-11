@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DA34CAC587
-	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Sep 2025 15:13:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59470CAC58E
+	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Sep 2025 15:13:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ZkffyLReXyUsrcSjNh2tLgx4D78NF23IYis+YZeEFFE=; b=g3n1lIm1/KdhiI
-	jAW6Ys2m6ecfFp4Gj2UPLJd+y/D/9u64uJ3cupLaqBac8kjJFGnmoMlLMQRcChp4O9+bt3hqpwcG+
-	pHjE9EZjhNp7acdGqn7RzHY3MF4bIkx11rjqWZ0GYMEX+WlFlA5vStFEUUgqQMu0XzhUL56+hO4z/
-	8/BTUx5JKFo116SmGHd5DjJGVavw5R8Oow0ikwM5P9CzN1JUx/LmHghO1ngExUMFVf9TO1lmoHUgv
-	X2Sb421m2XUzIP+7JZsm42tL+Zy5LW4yC1PcFZ5IbLaSnl/dwHACfdQvUULiWU4lnXRBuz6/5B2kT
-	HyxjlIQ9E7Cuf6bfnF4Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=CjmHC8JUrg5W2jDYY2hBxc7G4+mqWiVV8q+YabT1Q5M=; b=Kf81Z1HZyRt9lJ
+	gVyesTy1KaM0w8rwlEK8kl4a/QD5tvZdfQW51vf+Uy7nEGDllNQVAorwUR1xY0sjBi/iRwzO2BEkS
+	8qmpsDXKH2H6nQ+KTc9nA88ILZWZm4swF0pUQJ3NXIjKaeph1NsS8rXVwAFyqC7koO4SrhsjpBOmF
+	cu5MIgZeVI9i0DErmcn9rnUujrD/M93BI1Xyo1hwWoyKjNyvBZ9OZfPBH8FBFXEaaU5OP2Mbq71F+
+	9315HnmkuANmUDeuIOPszquiyJ1Kh6sTbdOy52Mapcvudjc3G3WBOoET0TSlOPc9FZLhUfTSHQXaQ
+	diwod3gehOUhUAwuy9hw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwiyr-00000003nBh-3gcS;
-	Thu, 11 Sep 2025 15:13:01 +0000
+	id 1uwiz6-00000003nJu-0KX3;
+	Thu, 11 Sep 2025 15:13:16 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwiyo-00000003nAD-2fCI;
-	Thu, 11 Sep 2025 15:13:00 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1757603532; cv=none; 
+	id 1uwiz3-00000003nHa-0h6C;
+	Thu, 11 Sep 2025 15:13:14 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1757603548; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=B9IGFw7LplNPOkZEq5rg//uOHf2EjeiJHVJse7seMUTzZIMxYd1TVrOZN0zUbq5Xq33L+9q9+TqFilkErBnjfaa/NpughWfaUjECxVa+0PaEb+YDKAdGNrY++tuNVVIv/wj8tJU+KqRR3v9zzmvdP6gOS405s9ICJ1bawZoNf0E=
+	b=HZXjUsl6RCzKSQhCAC2rdvqx8z8T5LWBxS9w27VF5gt5auBn2/WHxKZtDAtQlFLP43HB/keDUUSnKdT+TH6O/EXtIgYBj3gF+FgKSMCF0Ka64ppHSuLkayKieyxJjmLETihyaSaSDVSyss88bxHSrkhmP/qA65atHX6stLn7YDs=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1757603532; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=4E1gkCV3bUB24+jEbYd5O83SC/ksIpy9YseSb1Bd3iA=; 
-	b=OYspCStGN7dInL2eQAJ59H16VwPLP5z4wWe5Nr6htKYI4pPJuPUYGIV4faEbAdxSfzVEwkFgj+ZF3SmcHreJc8qUT/uzUAHUdyXtnkWOokhqUalCV4rW9dIvNsZfNzhRjZLbbMNHmz9gEQaCCxIvVLYhrFc0Y2lAOG7iIOnvWyc=
+	t=1757603548; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=ydXwggZHxXaTCbCHF0na9t5QomnvBbOHMqSdcU5kNDY=; 
+	b=OfIQlL7xKrjlrI+erAadsb8Du1XGPLr2xSfu7/LadyHHF3HEtX3r7ATuBTC8gvyz7SlHZQHXDz8wkxvY+8aZ9HAAa3sU3Zbvan+ChtBhpzuqDsNVmmm7srQzf+zy+8hmQJCg6gBCZ7fx3Lk6dUPZGwQOcaFGFFJIbvHj5ZndMks=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=ariel.dalessandro@collabora.com;
 	dmarc=pass header.from=<ariel.dalessandro@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1757603532;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1757603548;
 	s=zohomail; d=collabora.com; i=ariel.dalessandro@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:MIME-Version:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=4E1gkCV3bUB24+jEbYd5O83SC/ksIpy9YseSb1Bd3iA=;
-	b=Tp0xnrD2zRi58CffU5G3TaTiLbJcAER4BZDZ/9WPboVLvTu6uzg9VYi/ZTt2X5qw
-	PMD8pJ8vo2CnYFCkcKqSC4Ganw2/UNoxh4q3T1CUWsieDlvzRf8LKJqusv5Qlx+IBze
-	ExFMJOuw5cTRX/uVEXriSe7jqmq8yEDKe+84VPaw=
-Received: by mx.zohomail.com with SMTPS id 1757603530466436.8737694403886;
-	Thu, 11 Sep 2025 08:12:10 -0700 (PDT)
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=ydXwggZHxXaTCbCHF0na9t5QomnvBbOHMqSdcU5kNDY=;
+	b=RzqZktX4WzGLlLNI5eNhIzox8JmhnTi5T0hgu+8yDa5waZTB+8QmMjWd5zGeAyEr
+	H6G3B4Ebi5xmARtVRwcWzR9Lir7p0xv/sJuxYQ3UZ4/ds/qDuWMRvf1iotBg15Q/3r7
+	EWj1Xd5UcaORWijhghEAZAYGFbXWEvzSSF/2edc4=
+Received: by mx.zohomail.com with SMTPS id 175760354633671.37448946947097;
+	Thu, 11 Sep 2025 08:12:26 -0700 (PDT)
 From: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
 To: airlied@gmail.com,
 	amergnat@baylibre.com,
@@ -97,15 +97,17 @@ Cc: devicetree@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-sound@vger.kernel.org,
 	netdev@vger.kernel.org
-Subject: [PATCH v2 00/12] MediaTek dt-bindings sanitization (MT8173)
-Date: Thu, 11 Sep 2025 12:09:49 -0300
-Message-ID: <20250911151001.108744-1-ariel.dalessandro@collabora.com>
+Subject: [PATCH v2 01/12] dt-bindings: media: Convert MediaTek mt8173-mdp bindings to DT schema
+Date: Thu, 11 Sep 2025 12:09:50 -0300
+Message-ID: <20250911151001.108744-2-ariel.dalessandro@collabora.com>
 X-Mailer: git-send-email 2.50.1
+In-Reply-To: <20250911151001.108744-1-ariel.dalessandro@collabora.com>
+References: <20250911151001.108744-1-ariel.dalessandro@collabora.com>
 MIME-Version: 1.0
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250911_081258_698039_69071A49 
-X-CRM114-Status: GOOD (  10.73  )
+X-CRM114-CacheID: sfid-20250911_081313_255674_58912F75 
+X-CRM114-Status: GOOD (  14.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,94 +124,293 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This patch series continues the effort to address Device Tree validation
-warnings for MediaTek platforms, with a focus on MT8173. It follows the
-initial cleanup series by Angelo [0].
-
-Similarly to the ongoing MT8183 work done by Julien Massot, this patchset
-eliminates several of the remaining warnings by improving or converting DT
-bindings to YAML, adding missing properties, and updating device tree files
-accordingly.
-
-[0] https://www.spinics.net/lists/kernel/msg5780177.html
-
-Changes in v2:
-* Wrapped commit messages to 75 columns line wrap.
-* Replaced "YAML" by "DT schema" in patches subject and content.
-* mt8173-mdp: Fixed properties: compatible, clocks, iommus and
-  mediatek,vpu.
-* mt8173-vpu: Fixed line wrap. Dropped memory-region property description.
-* mediatek,mmsys: Dropped patch as it's not a binding issue.
-* mediatek,od: Rewrote commit log with details on DT schema users missing
-  the related property. Rewrote mediatek,gce-client-reg property.
-* mediatek,ufoe: Rewrote commit log with details on DT schema users missing
-  the related property. Rewrote mediatek,gce-client-reg property.
-* marvell,sd8897-bt: Moved to net/bluetooth/. Added missing ref to
-  bluetooth-controller.yaml. Dropped example. Updated reference in another
-  file. Minor fixes in properties.
-* mediatek,mt8173-rt5650: Dropped unnecessary quotes and unused label.
-* dlg,da9211: Dropped enable-gpios description. Rewrote generic example
-  node names. Minor fixes in properties.
-* melfas,mip4_ts: Dropped unnecessary quotes. Added "active high" to
-  ce-gpios property description.
-* mediatek,jpeg: Dropped patch as it doesn't apply.
+Convert the existing text-based DT bindings for MediaTek MT8173 Media Data
+Path to a DT schema.
 
 Signed-off-by: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
-
-Ariel D'Alessandro (12):
-  dt-bindings: media: Convert MediaTek mt8173-mdp bindings to DT schema
-  dt-bindings: media: Convert MediaTek mt8173-vpu bindings to DT schema
-  dt-bindings: net: Convert Marvell 8897/8997 bindings to DT schema
-  dt-bindings: ASoC: Convert MediaTek RT5650 codecs bindings to DT
-    schema
-  dt-bindings: display: mediatek,od: Add mediatek,gce-client-reg
-    property
-  dt-bindings: display: mediatek,ufoe: Add mediatek,gce-client-reg
-    property
-  arm64: dts: mediatek: mt8173: Fix mt8173-pinctrl node names
-  dt-bindings: pinctrl: mt65xx: Allow gpio-line-names
-  dt-bindings: regulator: Convert Dialog DA9211 Regulators to DT schema
-  arm64: dts: mediatek: mt8173-elm: Drop unused bank supply
-  dt-bindings: soc: mediatek: pwrap: Add power-domains property
-  dt-bindings: input: Convert MELFAS MIP4 Touchscreen to DT schema
-
- .../display/mediatek/mediatek,od.yaml         |  14 ++
- .../display/mediatek/mediatek,ufoe.yaml       |  15 ++
- .../input/touchscreen/melfas,mip4_ts.yaml     |  56 +++++
- .../input/touchscreen/melfas_mip4.txt         |  20 --
- .../bindings/media/mediatek,mt8173-mdp.yaml   | 169 +++++++++++++++
- .../bindings/media/mediatek,mt8173-vpu.yaml   |  74 +++++++
- .../bindings/media/mediatek-mdp.txt           |  95 --------
- .../bindings/media/mediatek-vpu.txt           |  31 ---
- .../net/bluetooth/marvell,sd8897-bt.yaml      |  79 +++++++
- .../devicetree/bindings/net/btusb.txt         |   2 +-
- .../bindings/net/marvell-bt-8xxx.txt          |  83 -------
- .../pinctrl/mediatek,mt65xx-pinctrl.yaml      |   2 +
- .../devicetree/bindings/regulator/da9211.txt  | 205 ------------------
- .../bindings/regulator/dlg,da9211.yaml        | 104 +++++++++
- .../bindings/soc/mediatek/mediatek,pwrap.yaml |  15 ++
- .../sound/mediatek,mt8173-rt5650.yaml         |  73 +++++++
- .../bindings/sound/mt8173-rt5650.txt          |  31 ---
- .../dts/rockchip/rk3288-veyron-fievel.dts     |   2 +-
- .../boot/dts/rockchip/rk3288-veyron-jaq.dts   |   2 +-
- .../boot/dts/mediatek/mt8173-elm-hana.dtsi    |   2 +-
- arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi  |  33 ++-
- arch/arm64/boot/dts/mediatek/mt8173-evb.dts   |  14 +-
- arch/arm64/boot/dts/mediatek/mt8173.dtsi      |  14 +-
- 23 files changed, 633 insertions(+), 502 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/input/touchscreen/melfas,mip4_ts.yaml
- delete mode 100644 Documentation/devicetree/bindings/input/touchscreen/melfas_mip4.txt
+---
+ .../bindings/media/mediatek,mt8173-mdp.yaml   | 169 ++++++++++++++++++
+ .../bindings/media/mediatek-mdp.txt           |  95 ----------
+ 2 files changed, 169 insertions(+), 95 deletions(-)
  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mt8173-mdp.yaml
- create mode 100644 Documentation/devicetree/bindings/media/mediatek,mt8173-vpu.yaml
  delete mode 100644 Documentation/devicetree/bindings/media/mediatek-mdp.txt
- delete mode 100644 Documentation/devicetree/bindings/media/mediatek-vpu.txt
- create mode 100644 Documentation/devicetree/bindings/net/bluetooth/marvell,sd8897-bt.yaml
- delete mode 100644 Documentation/devicetree/bindings/net/marvell-bt-8xxx.txt
- delete mode 100644 Documentation/devicetree/bindings/regulator/da9211.txt
- create mode 100644 Documentation/devicetree/bindings/regulator/dlg,da9211.yaml
- create mode 100644 Documentation/devicetree/bindings/sound/mediatek,mt8173-rt5650.yaml
- delete mode 100644 Documentation/devicetree/bindings/sound/mt8173-rt5650.txt
 
+diff --git a/Documentation/devicetree/bindings/media/mediatek,mt8173-mdp.yaml b/Documentation/devicetree/bindings/media/mediatek,mt8173-mdp.yaml
+new file mode 100644
+index 0000000000000..8ca33a733c478
+--- /dev/null
++++ b/Documentation/devicetree/bindings/media/mediatek,mt8173-mdp.yaml
+@@ -0,0 +1,169 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/media/mediatek,mt8173-mdp.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek MT8173 Media Data Path
++
++maintainers:
++  - Ariel D'Alessandro <ariel.dalessandro@collabora.com>
++
++description:
++  Media Data Path is used for scaling and color space conversion.
++
++properties:
++  compatible:
++    oneOf:
++      - enum:
++          - mediatek,mt8173-mdp-rdma
++          - mediatek,mt8173-mdp-rsz
++          - mediatek,mt8173-mdp-wdma
++          - mediatek,mt8173-mdp-wrot
++      - items:
++          - const: mediatek,mt8173-mdp-rdma
++          - const: mediatek,mt8173-mdp
++
++  reg:
++    maxItems: 1
++
++  clocks:
++    minItems: 1
++    maxItems: 2
++
++  power-domains:
++    maxItems: 1
++
++  iommus:
++    maxItems: 1
++
++  mediatek,vpu:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description:
++      phandle to Mediatek Video Processor Unit for HW Codec encode/decode and
++      image processing.
++
++required:
++  - compatible
++  - reg
++  - clocks
++  - power-domains
++
++allOf:
++  - if:
++      properties:
++        compatible:
++          contains:
++            const: mediatek,mt8173-mdp-rdma
++    then:
++      properties:
++        clocks:
++          items:
++            - description: Main clock
++            - description: Mutex clock
++    else:
++      properties:
++        clocks:
++          items:
++            - description: Main clock
++
++  - if:
++      properties:
++        compatible:
++          contains:
++            enum:
++              - mediatek,mt8173-mdp-rdma
++              - mediatek,mt8173-mdp-wdma
++              - mediatek,mt8173-mdp-wrot
++    then:
++      required:
++        - iommus
++
++  - if:
++      properties:
++        compatible:
++          contains:
++            const: mediatek,mt8173-mdp
++    then:
++      required:
++        - mediatek,vpu
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/mt8173-clk.h>
++    #include <dt-bindings/memory/mt8173-larb-port.h>
++    #include <dt-bindings/power/mt8173-power.h>
++
++    soc {
++        #address-cells = <2>;
++        #size-cells = <2>;
++
++        mdp_rdma0: rdma@14001000 {
++            compatible = "mediatek,mt8173-mdp-rdma",
++                         "mediatek,mt8173-mdp";
++            reg = <0 0x14001000 0 0x1000>;
++            clocks = <&mmsys CLK_MM_MDP_RDMA0>,
++                     <&mmsys CLK_MM_MUTEX_32K>;
++            power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
++            iommus = <&iommu M4U_PORT_MDP_RDMA0>;
++            mediatek,vpu = <&vpu>;
++        };
++
++        mdp_rdma1: rdma@14002000 {
++            compatible = "mediatek,mt8173-mdp-rdma";
++            reg = <0 0x14002000 0 0x1000>;
++            clocks = <&mmsys CLK_MM_MDP_RDMA1>,
++                     <&mmsys CLK_MM_MUTEX_32K>;
++            power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
++            iommus = <&iommu M4U_PORT_MDP_RDMA1>;
++        };
++
++        mdp_rsz0: rsz@14003000 {
++            compatible = "mediatek,mt8173-mdp-rsz";
++            reg = <0 0x14003000 0 0x1000>;
++            clocks = <&mmsys CLK_MM_MDP_RSZ0>;
++            power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
++        };
++
++        mdp_rsz1: rsz@14004000 {
++            compatible = "mediatek,mt8173-mdp-rsz";
++            reg = <0 0x14004000 0 0x1000>;
++            clocks = <&mmsys CLK_MM_MDP_RSZ1>;
++            power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
++        };
++
++        mdp_rsz2: rsz@14005000 {
++            compatible = "mediatek,mt8173-mdp-rsz";
++            reg = <0 0x14005000 0 0x1000>;
++            clocks = <&mmsys CLK_MM_MDP_RSZ2>;
++            power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
++        };
++
++        mdp_wdma0: wdma@14006000 {
++            compatible = "mediatek,mt8173-mdp-wdma";
++            reg = <0 0x14006000 0 0x1000>;
++            clocks = <&mmsys CLK_MM_MDP_WDMA>;
++            power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
++            iommus = <&iommu M4U_PORT_MDP_WDMA>;
++        };
++
++        mdp_wrot0: wrot@14007000 {
++            compatible = "mediatek,mt8173-mdp-wrot";
++            reg = <0 0x14007000 0 0x1000>;
++            clocks = <&mmsys CLK_MM_MDP_WROT0>;
++            power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
++            iommus = <&iommu M4U_PORT_MDP_WROT0>;
++        };
++
++        mdp_wrot1: wrot@14008000 {
++            compatible = "mediatek,mt8173-mdp-wrot";
++            reg = <0 0x14008000 0 0x1000>;
++            clocks = <&mmsys CLK_MM_MDP_WROT1>;
++            power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
++            iommus = <&iommu M4U_PORT_MDP_WROT1>;
++        };
++    };
++
++...
+diff --git a/Documentation/devicetree/bindings/media/mediatek-mdp.txt b/Documentation/devicetree/bindings/media/mediatek-mdp.txt
+deleted file mode 100644
+index 53ef26e2c8570..0000000000000
+--- a/Documentation/devicetree/bindings/media/mediatek-mdp.txt
++++ /dev/null
+@@ -1,95 +0,0 @@
+-* Mediatek Media Data Path
+-
+-Media Data Path is used for scaling and color space conversion.
+-
+-Required properties (controller node):
+-- compatible: "mediatek,mt8173-mdp"
+-- mediatek,vpu: the node of video processor unit, see
+-  Documentation/devicetree/bindings/media/mediatek-vpu.txt for details.
+-
+-Required properties (all function blocks, child node):
+-- compatible: Should be one of
+-        "mediatek,mt8173-mdp-rdma"  - read DMA
+-        "mediatek,mt8173-mdp-rsz"   - resizer
+-        "mediatek,mt8173-mdp-wdma"  - write DMA
+-        "mediatek,mt8173-mdp-wrot"  - write DMA with rotation
+-- reg: Physical base address and length of the function block register space
+-- clocks: device clocks, see
+-  Documentation/devicetree/bindings/clock/clock-bindings.txt for details.
+-- power-domains: a phandle to the power domain, see
+-  Documentation/devicetree/bindings/power/power_domain.txt for details.
+-
+-Required properties (DMA function blocks, child node):
+-- compatible: Should be one of
+-        "mediatek,mt8173-mdp-rdma"
+-        "mediatek,mt8173-mdp-wdma"
+-        "mediatek,mt8173-mdp-wrot"
+-- iommus: should point to the respective IOMMU block with master port as
+-  argument, see Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
+-  for details.
+-
+-Example:
+-	mdp_rdma0: rdma@14001000 {
+-		compatible = "mediatek,mt8173-mdp-rdma";
+-			     "mediatek,mt8173-mdp";
+-		reg = <0 0x14001000 0 0x1000>;
+-		clocks = <&mmsys CLK_MM_MDP_RDMA0>,
+-			 <&mmsys CLK_MM_MUTEX_32K>;
+-		power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+-		iommus = <&iommu M4U_PORT_MDP_RDMA0>;
+-		mediatek,vpu = <&vpu>;
+-	};
+-
+-	mdp_rdma1: rdma@14002000 {
+-		compatible = "mediatek,mt8173-mdp-rdma";
+-		reg = <0 0x14002000 0 0x1000>;
+-		clocks = <&mmsys CLK_MM_MDP_RDMA1>,
+-			 <&mmsys CLK_MM_MUTEX_32K>;
+-		power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+-		iommus = <&iommu M4U_PORT_MDP_RDMA1>;
+-	};
+-
+-	mdp_rsz0: rsz@14003000 {
+-		compatible = "mediatek,mt8173-mdp-rsz";
+-		reg = <0 0x14003000 0 0x1000>;
+-		clocks = <&mmsys CLK_MM_MDP_RSZ0>;
+-		power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+-	};
+-
+-	mdp_rsz1: rsz@14004000 {
+-		compatible = "mediatek,mt8173-mdp-rsz";
+-		reg = <0 0x14004000 0 0x1000>;
+-		clocks = <&mmsys CLK_MM_MDP_RSZ1>;
+-		power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+-	};
+-
+-	mdp_rsz2: rsz@14005000 {
+-		compatible = "mediatek,mt8173-mdp-rsz";
+-		reg = <0 0x14005000 0 0x1000>;
+-		clocks = <&mmsys CLK_MM_MDP_RSZ2>;
+-		power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+-	};
+-
+-	mdp_wdma0: wdma@14006000 {
+-		compatible = "mediatek,mt8173-mdp-wdma";
+-		reg = <0 0x14006000 0 0x1000>;
+-		clocks = <&mmsys CLK_MM_MDP_WDMA>;
+-		power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+-		iommus = <&iommu M4U_PORT_MDP_WDMA>;
+-	};
+-
+-	mdp_wrot0: wrot@14007000 {
+-		compatible = "mediatek,mt8173-mdp-wrot";
+-		reg = <0 0x14007000 0 0x1000>;
+-		clocks = <&mmsys CLK_MM_MDP_WROT0>;
+-		power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+-		iommus = <&iommu M4U_PORT_MDP_WROT0>;
+-	};
+-
+-	mdp_wrot1: wrot@14008000 {
+-		compatible = "mediatek,mt8173-mdp-wrot";
+-		reg = <0 0x14008000 0 0x1000>;
+-		clocks = <&mmsys CLK_MM_MDP_WROT1>;
+-		power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+-		iommus = <&iommu M4U_PORT_MDP_WROT1>;
+-	};
 -- 
 2.50.1
 
