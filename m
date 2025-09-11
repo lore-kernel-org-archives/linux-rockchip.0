@@ -4,74 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6281CAC58D
-	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Sep 2025 09:06:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27074CAC58E
+	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Sep 2025 14:59:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Qyck9d6DdR0+/MyMHZW9a86X6g0J2Esug2zVFGkmGNA=; b=hfVqKBR6xHK+VC
-	XtP9TfEPpEZjqZfder8zlN4eBHGD9OJRA5z6R79RKNdVeYfo8uDUNd1Z/gf1n4WHzcD3fgpD5nhXG
-	UhTYDEhtEmQ8zqSdI98NIdzsxQ77PibauphkiVZviyTYjkO80ZRHuDsXm1t7yHqKTCqZ6wtczbZEs
-	mCoEw76bn8Ppp7b651XNHtqqWUpKPFL9+qwlsxT50rTnsm+ePpambgk27JM4VJUMyVyCvhERos0iC
-	5MeTfy5xncaodTzMYyCjDRj5s+xa0J8vZMBI0QZTNr41gAhfUbiincOdVf+ZZ3vKFu09crJMBaAFj
-	W7IZXrwSt49shnvuXWcw==;
+	List-Owner; bh=JsIoOo33OZHt+woYzGhJT0gJdgTObegeaZEJckTm0JQ=; b=XmfHxYWZxDvg8g
+	T4FOKU4trr4MQoLaoxy570ztAgkZ1y+mH+IMxpZfudQtlGUkrTcYZ/huxsDZAnXEBPjPh1WYhUFwb
+	8xe6A8AeZj9zN3cvWC2g9L1EB785UTNvONQK6PKHrk+BQ/3v6zKQKiH7FCT5VW5iS/NWpYxmonSFy
+	9V3JVbI7MRNq+3TH8WfrWf4MHV0MFebNKjYVqGluF3n2je60buM/e9ur87a5P8ja+7rJ+WobEb6yM
+	j7w3KBEkSH3CewtnqC/i24Ww721mT4Cw/LXhHesRSxZZ4R/eTBk0bj4kOdVMW00DeS4Gb8I82ofn/
+	f9xRJ604ZmFVv4qXJhUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwdFr-000000020Cz-3440;
-	Thu, 11 Sep 2025 09:06:11 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1uwilz-00000003j9H-1xkb;
+	Thu, 11 Sep 2025 14:59:43 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwdFp-0000000209x-0MgM;
-	Thu, 11 Sep 2025 09:06:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=K0km93K0aEijBUWbpPd5UCCfJKPcIzvJxr0PWIyYCV8=; b=f/dE23N60ADgK8SxUUU7fYKFfa
-	+wXbwRQoRv2MyKN8CRUydcne/ZBrP+PRhWcxTEakiAYBmAGXvmkU7qXh2a28144dfoCRn+sE2gtVi
-	lZdSStcL1CQLukgoqKmW75+1dbZvkmM0gd0I3B9h7FhOnHfPv2ckhq53XDyD54FvhziozSw7TzcqU
-	LVqSXEtXSsh7M8bm+BOnYWfVnSk21daLQqQVSLEaROzo07X2x96itgUaRf6PU8umqL5KTTwwxRo7o
-	orI35NSlmXti4xLyE8jxPvfFk8g+fUKpmZzgTS9Guwcm/2TS/vCWzO8ZiST8bM6cmRoe62Tql+K7e
-	Csj34lEg==;
-Received: from i53875b0e.versanet.de ([83.135.91.14] helo=localhost.localdomain)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1uwdFb-00005b-5A; Thu, 11 Sep 2025 11:05:55 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Kever Yang <kever.yang@rock-chips.com>,
-	Jagan Teki <jagan@amarulasolutions.com>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Diederik de Haas <didi.debian@cknow.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Collabora Kernel Team <kernel@collabora.com>,
-	Michael Riesch <michael.riesch@collabora.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-phy@lists.infradead.org,
-	stable@kernel.org,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: Re: (subset) [PATCH v4 0/7] phy: rockchip: phy-rockchip-inno-csidphy: add support for rk3588 variant
-Date: Thu, 11 Sep 2025 11:05:43 +0200
-Message-ID: <175758154013.610665.15945900188702007855.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250616-rk3588-csi-dphy-v4-0-a4f340a7f0cf@collabora.com>
-References: <20250616-rk3588-csi-dphy-v4-0-a4f340a7f0cf@collabora.com>
+	id 1uwilw-00000003j7V-3HQI
+	for linux-rockchip@lists.infradead.org;
+	Thu, 11 Sep 2025 14:59:41 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 1B72A404B5;
+	Thu, 11 Sep 2025 14:59:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 92A27C4CEF0;
+	Thu, 11 Sep 2025 14:59:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1757602780;
+	bh=dwdaLEAjnH3HKkai+U9OrOZJ12DWW8piJIVwD4P+moM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Du6b4hpMRlqI1aCbon+AQJ+1kBXG0polcPvf4DE/LsKzWpmcSXdseI3XjfkKCa8Rd
+	 z1ecYtkdWJImyg23H5zjxAdgId3n2wTRhGLvkva5WZ4vhWE/IieiCA23J/o7GOPAya
+	 RwYCWFQhKuibfsYsz3Ia4bEEKFP0071HQx8CGachXhLqNnYcz+WvbREieI/6/pbOaI
+	 SPe4qX+U5g658QNOPA6/VODmEcFBHbOVakJlO+dw2CikuFAYl4TKq6cnr+gpUD9yec
+	 SgO44/dFz+vSnUKDQ1nPBJ54eWK+s/j6SNGkVYSCio0JnPoJjBVVpS0kFPYuzOXQly
+	 kOBcatU2NbGgQ==
+Date: Thu, 11 Sep 2025 15:59:34 +0100
+From: Lee Jones <lee@kernel.org>
+To: linux-rockchip@lists.infradead.org,
+	Chris Morgan <macroalpha82@gmail.com>
+Cc: linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
+	broonie@kernel.org, lgirdwood@gmail.com, sre@kernel.org,
+	heiko@sntech.de, conor+dt@kernel.org, krzk+dt@kernel.org,
+	robh@kernel.org, Chris Morgan <macromorgan@hotmail.com>
+Subject: Re: (subset) [PATCH v8 0/5] Add Texas Instruments BQ25703A Charger
+Message-ID: <20250911145934.GP9224@google.com>
+References: <20250904160530.66178-1-macroalpha82@gmail.com>
+ <175760259503.1582479.14013409824773713781.b4-ty@kernel.org>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <175760259503.1582479.14013409824773713781.b4-ty@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250911_020609_125917_ED8A3563 
-X-CRM114-Status: GOOD (  12.72  )
+X-CRM114-CacheID: sfid-20250911_075940_840027_681CC398 
+X-CRM114-Status: GOOD (  12.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,37 +71,33 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-On Wed, 03 Sep 2025 19:04:48 +0200, Michael Riesch wrote:
-> Habidere,
-> 
-> The Rockchip RK3588 features two MIPI CSI-2 DPHYs (not to be confused with
-> the two combo MIPI DSI/CSI CPHY/DPHY blocks). The CSI-2 DPHYs can be
-> supported using the existing phy-rockchip-inno-csidphy driver, the notable
-> differences being
->  - the control bits in the GRF
->  - the additional reset line
-> This patch series adds support for this variant.
-> 
-> [...]
-
-Applied, thanks!
-
-[1/7] dt-bindings: soc: rockchip: add rk3588 csidphy grf syscon
-      commit: 92f96706947e902fd9156cdcdd61c9a44b4b186c
-[7/7] arm64: dts: rockchip: add mipi csi-2 dphy nodes to rk3588
-      commit: 871b0391ccf3feb831e233ba3e972663c057b946
-
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gVGh1LCAxMSBTZXAgMjAyNSwgTGVlIEpvbmVzIHdyb3RlOgoKPiBPbiBUaHUsIDA0IFNlcCAy
+MDI1IDExOjA1OjI1IC0wNTAwLCBDaHJpcyBNb3JnYW4gd3JvdGU6Cj4gPiBGcm9tOiBDaHJpcyBN
+b3JnYW4gPG1hY3JvbW9yZ2FuQGhvdG1haWwuY29tPgo+ID4gCj4gPiBBZGQgc3VwcG9ydCBmb3Ig
+dGhlIFRleGFzIEluc3RydW1lbnRzIEJRMjU3MDNBIGNoYXJnZXIgbWFuYWdlci4gVGhlCj4gPiBk
+ZXZpY2UgaW50ZWdyYXRlcyBhIGJvb3N0IGNvbnZlcnRlciB3aXRoIHRoZSBjaGFyZ2VyIG1hbmFn
+ZXIuIFRoaXMKPiA+IHNlcmllcyBhZGRzIHRoZSBkZXZpY2UgYXMgYW4gTUZEIHdpdGggc2VwYXJh
+dGUgcmVndWxhdG9yIGFuZCBwb3dlcgo+ID4gc3VwcGx5IGRyaXZlcnMuIFRoaXMgYWxsb3dzIHVz
+IHRvIG1hbmFnZSBhIGNpcmN1bGFyIGRlcGVuZGVuY3kgd2l0aAo+ID4gYSB0eXBlLWMgcG9ydCBt
+YW5hZ2VyIHdoaWNoIGRlcGVuZHMgb24gdGhlIHJlZ3VsYXRvciBmb3IgdXNiLW90Zwo+ID4gYnV0
+IHN1cHBsaWVzIHBvd2VyIHRvIHRoZSBCUTI1NzAzQSBjaGFyZ2VyLgo+ID4gCj4gPiBbLi4uXQo+
+IAo+IEFwcGxpZWQsIHRoYW5rcyEKPiAKPiBbMS81XSBkdC1iaW5kaW5nczogbWZkOiB0aSxicTI1
+NzAzYTogQWRkIFRJIEJRMjU3MDNBIENoYXJnZXIKPiAgICAgICBjb21taXQ6IDc2YmMyMjAzYTQ2
+ZWY3MDRhNGNkODAwMzk4NmY2YmQ3NDEzOWEzNjcKPiBbMi81XSBtZmQ6IGJxMjU3eHg6IEFkZCBz
+dXBwb3J0IGZvciBCUTI1NzAzQSBjb3JlIGRyaXZlcgo+ICAgICAgIGNvbW1pdDogM2IxYmJmYjVm
+Y2UzY2E5ZmZmYzkyYWMxYjA1M2IwY2ZiYjFmMzIyYgo+IFszLzVdIHBvd2VyOiBzdXBwbHk6IGJx
+MjU3eHg6IEFkZCBzdXBwb3J0IGZvciBCUTI1N1hYIGNoYXJnZXIKPiAgICAgICBjb21taXQ6IDFj
+YzAxN2I3ZjljN2I3Y2Q4NmZkZGE0YWVlMzZiOTJkOTFjYzJhZDIKPiBbNC81XSByZWd1bGF0b3I6
+IGJxMjU3eHg6IEFkZCBicTI1N3h4IGJvb3N0IHJlZ3VsYXRvciBkcml2ZXIKPiAgICAgICBjb21t
+aXQ6IDk4MWRkMTYyYjYzNTc4YWVlMzRiNWM2ODc5NWUyNDY3MzRiNzZkNzAKClNlbmQgZm9yIGJ1
+aWxkIHRlc3RpbmcuICBJZiBzdWNjZXNzZnVsLCBJJ2xsIHBpbmcgb3V0IGEgUFIgc2hvcnRseS4K
+Ck5vdGUgdG8gc2VsZjogaWItbWZkLXBvd2VyLXJlZ3VsYXRvci02LjE4CgotLSAKTGVlIEpvbmVz
+IFvmnY7nkLzmlq9dCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5m
+cmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
+bnV4LXJvY2tjaGlwCg==
