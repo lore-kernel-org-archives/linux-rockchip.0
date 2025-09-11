@@ -4,59 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB53ECAC587
-	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Sep 2025 15:51:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46180CAC58E
+	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Sep 2025 15:57:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9n3x8T2NYNyg5N3rx67sIpcydomcQ6BCwBYshN1/H4o=; b=D+EBsuPwyfC3kn
-	KQqTyHa3Mgs0vH+lF8WVPSlLF1aOBwg0hsSv8xjJ81hNokk7tN3dZiGM8/4YvwWYtfIPPJIUz9sEU
-	uLuxImmvGfcB04+ePA/JnVu8T5kQGQakYQB5iC5gt4jCprbxhHK3DsGtxDCLU5Yw321+NyO757AIx
-	66+ogUbrK5YHGoBTOd43b0k8PzUTXHaLGdM1BZ8qwAgFFvAviaaynd0GhYhF5goWnoURvR9jcJ8wj
-	DFZIHawpCUK1yrIEak8QPnkxlpvD/eIynyl7DEH3q7zeZc3xteIm+cYY4uNKn7kdB3g6K8OXJYSkD
-	AnEzA/rM5Ep+epruaJ0Q==;
+	List-Owner; bh=fXjPrVkRkxOIH4XHEsG3UZI4rAVKHe+ADE1GCzIwiMk=; b=y/FsedtTfnhPtu
+	gxZ8L67DPvIwMzQt+GO8InTDealPcz8EQe/JpTuTNjv5UbZi3TSRbMuMVLakj1wfrFONuB+pyIVUA
+	QA5l8d6hmmRQSWVfuSFcVtLDj5Gb8ib4uyTviUWoB7Y93236WCAoVsUEgVTdTt2oHW/7sbr+1EE1H
+	kiNBH2Vrq1lu4RbqRtair3wx37TfWpbhTUOhdiR57Bvk2vDJUJU7NLtmdF85BCcH5NGqt8OFvtieh
+	tK0vwIcn1gPWuHW/PgpT0WpjsQVT4+EYe3YqPkEsWEt5rN6ai26Y94VJt4K+qUUjQ9u/vhDl9CF4R
+	myi+PuujUTqui9zFVBUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwjZl-000000040Hi-46E1;
-	Thu, 11 Sep 2025 15:51:09 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1uwjfy-000000042EZ-0hlw;
+	Thu, 11 Sep 2025 15:57:34 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwjZj-000000040GN-3u6K
-	for linux-rockchip@lists.infradead.org;
-	Thu, 11 Sep 2025 15:51:07 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 5D67160234;
-	Thu, 11 Sep 2025 15:51:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A446CC4CEF0;
-	Thu, 11 Sep 2025 15:51:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1757605867;
-	bh=D+Kiy6o94m1pRNW35/OkOm3daFa7P2zcK4Au4ZPzqxM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=AFnDgDquTQ4yMZNrF/l3efaw61XvagSaqRTcqUNm2kYVUlgPqlHzMggjyZWecy8mr
-	 yqf7yie6CvD2Un7SKUu5Axyk47npfDJfDfPp7/LrAOhnshXgGnes96Vzn9ALEbAQEF
-	 KTt4O7sXRZWjYjik02lYyltg9Qiasu/Z5h1Bd5gJxhqRZ6JoNu0WkAzQGQqzsWGXAR
-	 lOcwjAouDJM7lGgaMcT9dW/XFFnOosZIRye+xBqYwjTAVGer1Ypc5otdezY4T96QRs
-	 eQbm9/yNKZqkN+KYSI/1vFFm2wR3YIIjx188IXYk2UyRkQtE/z3rTgDIt9gumGvNjJ
-	 cqj5lkn5Rn4Hg==
-Date: Thu, 11 Sep 2025 16:51:01 +0100
-From: Lee Jones <lee@kernel.org>
-To: Chris Morgan <macroalpha82@gmail.com>
-Cc: linux-rockchip@lists.infradead.org, linux-pm@vger.kernel.org,
-	devicetree@vger.kernel.org, broonie@kernel.org, lgirdwood@gmail.com,
-	sre@kernel.org, heiko@sntech.de, conor+dt@kernel.org,
-	krzk+dt@kernel.org, robh@kernel.org,
-	Chris Morgan <macromorgan@hotmail.com>
-Subject: [GIT PULL] Immutable branch between MFD, Power and Regulator due for
- the v6.18 merge window
-Message-ID: <20250911155101.GA1637058@google.com>
-References: <20250904160530.66178-1-macroalpha82@gmail.com>
+	id 1uwjft-0000000429D-2oJr;
+	Thu, 11 Sep 2025 15:57:32 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1757606247;
+	bh=LMd/HnzJP0wRzEJcI4/mU30dNm9tR2JbINi9Suua6pM=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=XYgs1OQhFnmqD55dC6slv547XBxsnGI02l9rlrokZ4iBtC+ggsAoxS7qvIbIuZg/y
+	 +Zgqa11thKuvNqXNDKZCCLpRXFYl4QABE37E84O8IlvbXgAYoUVxOvV7vWZ/GpZf4P
+	 L55k5UHAq03zbkLckSXMDDGQyQpXapq9Ivx21m9DLe/TRPqkVdvUY8mL6r/Br3rTEQ
+	 Bv1x1LaC/sJlyBHUeibvFmVLyyN4CBLFmMn3ksD+oEhFLdLvzMT36mBQHiFOjLQXCe
+	 DFuyHTXF557Goy+r5aZzKcGTH9wMNoQ+PhRv2kvuIODYBybk+MLJu1IcKZgWLkXC0e
+	 uSB6bueIfVR6w==
+Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:36e5:357f:56a7:54dd])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: benjamin.gaignard)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B225817E0DD7;
+	Thu, 11 Sep 2025 17:57:26 +0200 (CEST)
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: joro@8bytes.org,
+	robin.murphy@arm.com,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	heiko@sntech.de,
+	nicolas.dufresne@collabora.com,
+	jgg@ziepe.ca,
+	p.zabel@pengutronix.de,
+	mchehab@kernel.org
+Cc: iommu@lists.linux.dev,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	kernel@collabora.com,
+	linux-media@vger.kernel.org,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+	Conor Dooley <conor.dooley@microchip.com>
+Subject: [PATCH v9 1/7] dt-bindings: vendor-prefixes: Add Verisilicon
+Date: Thu, 11 Sep 2025 17:57:11 +0200
+Message-ID: <20250911155720.180465-2-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250911155720.180465-1-benjamin.gaignard@collabora.com>
+References: <20250911155720.180465-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250904160530.66178-1-macroalpha82@gmail.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250911_085729_858699_4E95A906 
+X-CRM114-Status: UNSURE (   8.30  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,45 +85,42 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RW5qb3khCgpUaGUgZm9sbG93aW5nIGNoYW5nZXMgc2luY2UgY29tbWl0IDhmNWFlMzBkNjlkNzU0
-M2VlZTBkNzAwODNkYWY0ZGU4ZmUxNWQ1ODU6CgogIExpbnV4IDYuMTctcmMxICgyMDI1LTA4LTEw
-IDE5OjQxOjE2ICswMzAwKQoKYXJlIGF2YWlsYWJsZSBpbiB0aGUgR2l0IHJlcG9zaXRvcnkgYXQ6
-CgogIGdpdDovL2dpdC5rZXJuZWwub3JnL3B1Yi9zY20vbGludXgva2VybmVsL2dpdC9sZWUvbWZk
-LmdpdCB0YWdzL2liLW1mZC1wb3dlci1yZWd1bGF0b3ItdjYuMTgKCmZvciB5b3UgdG8gZmV0Y2gg
-Y2hhbmdlcyB1cCB0byA5ODFkZDE2MmI2MzU3OGFlZTM0YjVjNjg3OTVlMjQ2NzM0Yjc2ZDcwOgoK
-ICByZWd1bGF0b3I6IGJxMjU3eHg6IEFkZCBicTI1N3h4IGJvb3N0IHJlZ3VsYXRvciBkcml2ZXIg
-KDIwMjUtMDktMTEgMTU6NTU6NDEgKzAxMDApCgotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCkltbXV0YWJsZSBicmFuY2ggYmV0
-d2VlbiBNRkQsIFBvd2VyIGFuZCBSZWd1bGF0b3IgZHVlIGZvciB0aGUgdjYuMTggbWVyZ2Ugd2lu
-ZG93CgotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tCkNocmlzIE1vcmdhbiAoNCk6CiAgICAgIGR0LWJpbmRpbmdzOiBtZmQ6IHRp
-LGJxMjU3MDNhOiBBZGQgVEkgQlEyNTcwM0EgQ2hhcmdlcgogICAgICBtZmQ6IGJxMjU3eHg6IEFk
-ZCBzdXBwb3J0IGZvciBCUTI1NzAzQSBjb3JlIGRyaXZlcgogICAgICBwb3dlcjogc3VwcGx5OiBi
-cTI1N3h4OiBBZGQgc3VwcG9ydCBmb3IgQlEyNTdYWCBjaGFyZ2VyCiAgICAgIHJlZ3VsYXRvcjog
-YnEyNTd4eDogQWRkIGJxMjU3eHggYm9vc3QgcmVndWxhdG9yIGRyaXZlcgoKIC4uLi9kZXZpY2V0
-cmVlL2JpbmRpbmdzL21mZC90aSxicTI1NzAzYS55YW1sICAgICAgIHwgMTE3ICsrKysKIGRyaXZl
-cnMvbWZkL0tjb25maWcgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgIDExICsKIGRy
-aXZlcnMvbWZkL01ha2VmaWxlICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAxICsK
-IGRyaXZlcnMvbWZkL2JxMjU3eHguYyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgIDk5
-ICsrKwogZHJpdmVycy9wb3dlci9zdXBwbHkvS2NvbmZpZyAgICAgICAgICAgICAgICAgICAgICAg
-fCAgIDcgKwogZHJpdmVycy9wb3dlci9zdXBwbHkvTWFrZWZpbGUgICAgICAgICAgICAgICAgICAg
-ICAgfCAgIDEgKwogZHJpdmVycy9wb3dlci9zdXBwbHkvYnEyNTd4eF9jaGFyZ2VyLmMgICAgICAg
-ICAgICAgfCA3NTUgKysrKysrKysrKysrKysrKysrKysrCiBkcml2ZXJzL3JlZ3VsYXRvci9LY29u
-ZmlnICAgICAgICAgICAgICAgICAgICAgICAgICB8ICAgOCArCiBkcml2ZXJzL3JlZ3VsYXRvci9N
-YWtlZmlsZSAgICAgICAgICAgICAgICAgICAgICAgICB8ICAgMSArCiBkcml2ZXJzL3JlZ3VsYXRv
-ci9icTI1N3h4LXJlZ3VsYXRvci5jICAgICAgICAgICAgICB8IDE4NiArKysrKwogaW5jbHVkZS9s
-aW51eC9tZmQvYnEyNTd4eC5oICAgICAgICAgICAgICAgICAgICAgICAgfCAxMDQgKysrCiAxMSBm
-aWxlcyBjaGFuZ2VkLCAxMjkwIGluc2VydGlvbnMoKykKIGNyZWF0ZSBtb2RlIDEwMDY0NCBEb2N1
-bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbWZkL3RpLGJxMjU3MDNhLnlhbWwKIGNyZWF0
-ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL21mZC9icTI1N3h4LmMKIGNyZWF0ZSBtb2RlIDEwMDY0NCBk
-cml2ZXJzL3Bvd2VyL3N1cHBseS9icTI1N3h4X2NoYXJnZXIuYwogY3JlYXRlIG1vZGUgMTAwNjQ0
-IGRyaXZlcnMvcmVndWxhdG9yL2JxMjU3eHgtcmVndWxhdG9yLmMKIGNyZWF0ZSBtb2RlIDEwMDY0
-NCBpbmNsdWRlL2xpbnV4L21mZC9icTI1N3h4LmgKCi0tIApMZWUgSm9uZXMgW+adjueQvOaWr10K
-Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJv
-Y2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0
-dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Verisilicon Microelectronics is a company based in Shanghai, China,
+developping hardware blocks for SoC.
+
+https://verisilicon.com/
+
+Add their name to the list of vendors.
+
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
+---
+ Documentation/devicetree/bindings/vendor-prefixes.yaml | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/Documentation/devicetree/bindings/vendor-prefixes.yaml b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+index 9ec8947dfcad..52b3495ff4db 100644
+--- a/Documentation/devicetree/bindings/vendor-prefixes.yaml
++++ b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+@@ -1656,6 +1656,8 @@ patternProperties:
+     description: Variscite Ltd.
+   "^vdl,.*":
+     description: Van der Laan b.v.
++  "^verisilicon,.*":
++    description: VeriSilicon Microelectronics
+   "^vertexcom,.*":
+     description: Vertexcom Technologies, Inc.
+   "^via,.*":
+-- 
+2.43.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
