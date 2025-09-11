@@ -4,73 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADD69CAC58D
-	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Sep 2025 08:44:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60B48CAC592
+	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Sep 2025 08:54:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=b/NEBvsRfXUgg6BoMZyQf7NFWSLMQZpJknoP2cBK0kM=; b=grQIlMo3Z+G/Zo
-	QsMss53HHkiMv6HcJQf/eOiOvSySSLxo2WFfLcR1sGN4j5i68hbD6DRIt5KCA09wcC51k5up4zkEc
-	jOyjODDds3lcdYUG/MqF8GOIqQYIDkoqGB4zVyxP+6XTq6CEXCbObmsoybzF2xVStK+uJ4ZxVl8hl
-	I/biKf+bn1QcBGpPjgE+2SSpyku75tXH+Xk8iqpYyXJ3mBOj0Km44OOH2mKfZ69uGwkaA7oSsajfs
-	7ZX/YX5O52VzFzbLOmjsPRzAEnkx8acwHf3604KSV6bR5sGdcU19+siePWWc3SX/1kGPjTgxR6e6q
-	vvzUyWF+CCXDb03mDvTQ==;
+	List-Owner; bh=Z/ti0qOFRmltFMJszYTIIAJH4dvxFiAAux4T84VcaMw=; b=G336ij8CVzGQKd
+	vgt54ePoBLop45tkTsAITWPraaL3dpOYfh5d6pxX83RbgJ3Y7eB6q1OBnq3U5DeGE9A7Q986lvK/2
+	/H27rGs3P+faPwt4khVS527NRXVLEpVHShfkmRCSqypiF6Va5oN3EvqeCB5SzGkQL1mwJetoXsGbI
+	5FBeW+uc80+P/Rzr/9Ys+QAe8/LoAYnem/SwLvekf6/92RtAhaUBCBGQIyla0LOFBoBP79q5F42zO
+	x1KF8OdgNdz98iPW5VPD4bhR5T/ucfYOzgwM85gyu36nsckrQjbLtgZpRMvR+ZiH/0XKcgvrw9vu5
+	VZzTKFv2AiughBG7TGuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwcv1-00000001tZR-3gS4;
-	Thu, 11 Sep 2025 08:44:39 +0000
-Received: from smtp.forwardemail.net ([149.28.215.223])
+	id 1uwd41-00000001wJ3-2tCD;
+	Thu, 11 Sep 2025 08:53:57 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwcuy-00000001tWW-2yQm
-	for linux-rockchip@lists.infradead.org;
-	Thu, 11 Sep 2025 08:44:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1757580276;
- bh=71L95gSKTmlkjoVh2fs/9dex/A1y0fWYRyHyjXcBq4g=;
- b=G4Fs0xF/OzW3gRg2dz/jBTNpIV962sQvofl8FXG5P69dzXTu1wi9EUn34gQE8InYNeZXVL3GT
- WZ7yXkUMrVvLX6YdsBwEf1p/DbjBNpsu0go5uQiieu9xcDxTAzlRhbok/vg7ZbGVRvU3C8ge+aS
- jdPNrcYbsPlDaB6UHUEmUwr+vGa/WfhMvftCqOkzSb3C4b2mNxoM37Zh3oqImH3KhaR9WrWwcC+
- lerSRk8aIWyQqWnyhHWU46wP52EeXYFzqR5ZR1t5Zc6Mc0FFu/be3AUx02xadC7Q7/DIPsZkxMI
- UfF8Qr0tA9ED5M0io4cgfK3Ap8dMsWea5CIGPcfR6tAQ==
-X-Forward-Email-ID: 68c28be303561882c9813720
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 149.28.215.223
-X-Forward-Email-Version: 1.2.14
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <59cff81f-4be2-45e7-bc41-60fb52bfc6ca@kwiboo.se>
-Date: Thu, 11 Sep 2025 10:44:11 +0200
+	id 1uwd3y-00000001wHs-40fM;
+	Thu, 11 Sep 2025 08:53:56 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=Tl6Jwlc9AxjchgDlRh4CRf/NRIAGYGgRWiI8ZY2gw9o=; b=pv/seA9eRbpdxC7p23L9VRWhdL
+	u5DtZgQmzomEuRO/J9hUg/UKrH8+q/wl+qJi7rSu4KnvylqXhb/oNpgg3lfmgT7D5z0GP4RHn0wih
+	+Kmbqsem1WNCMVS1dokFZzxMmMCA+svar841ctLhZdqPO7+sgtH3Cu+emU+p4/zffXYHK6Zq3eEbb
+	nrG7ehQJWEXCHkg49uSfPq0mKXWIRjKNgoIUnhqldMZICMb7OwyI7tQQ86jdQyiVHF999UWXFBYM6
+	r329uLhJkv7JoNB4yGqTPQ0k1ORsTPS8avMCoKB9ElFdz0xuJ2bku1jyhycN+w4dI0szw416Hw/Uc
+	3Vf3VL3g==;
+Received: from i53875b0e.versanet.de ([83.135.91.14] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1uwd3w-0008RY-R8; Thu, 11 Sep 2025 10:53:52 +0200
+From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
+To: robh@kernel.org, WeiHao Li <cn.liweihao@gmail.com>
+Cc: krzk+dt@kernel.org, conor+dt@kernel.org, linux-phy@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ WeiHao Li <cn.liweihao@gmail.com>
+Subject: Re: [PATCH v2 1/4] phy: rockchip: inno-usb2: Add usb2 phy support for RK3368
+Date: Thu, 11 Sep 2025 10:53:52 +0200
+Message-ID: <4407919.mogB4TqSGs@diego>
+In-Reply-To: <20250909132958.26423-2-cn.liweihao@gmail.com>
+References: <20250909132958.26423-1-cn.liweihao@gmail.com>
+ <20250909132958.26423-2-cn.liweihao@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/3] arm64: dts: rockchip: Add PCIe Gen2x1 controller for
- RK3528
-To: Yao Zi <ziyao@disroot.org>
-Cc: Bjorn Helgaas <bhelgaas@google.com>,
- Lorenzo Pieralisi <lpieralisi@kernel.org>,
- =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
- Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Shawn Lin <shawn.lin@rock-chips.com>, Simon Xue <xxm@rock-chips.com>,
- linux-pci@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, Chukun Pan <amadeus@jmu.edu.cn>
-References: <20250906135246.19398-1-ziyao@disroot.org>
- <20250906135246.19398-3-ziyao@disroot.org>
- <38e80b6d-1dc9-47a8-8b23-e875c2848e6e@kwiboo.se> <aMKAvCglcaC6-00k@pie>
-Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <aMKAvCglcaC6-00k@pie>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250911_014437_089249_87F8CDE6 
-X-CRM114-Status: GOOD (  22.74  )
+X-CRM114-CacheID: sfid-20250911_015354_994000_1A6D6176 
+X-CRM114-Status: GOOD (  15.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,121 +67,71 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 9/11/2025 9:56 AM, Yao Zi wrote:
-> On Wed, Sep 10, 2025 at 11:29:00PM +0200, Jonas Karlman wrote:
->> Hi Yao Zi,
->>
->> On 9/6/2025 3:52 PM, Yao Zi wrote:
->>> Describes the PCIe Gen2x1 controller integrated in RK3528 SoC. The SoC
->>> doesn't provide a separate MSI controller, thus the one integrated in
->>> designware PCIe IP must be used.
->>>
->>> Signed-off-by: Yao Zi <ziyao@disroot.org>
->>> ---
->>>  arch/arm64/boot/dts/rockchip/rk3528.dtsi | 56 +++++++++++++++++++++++-
->>>  1 file changed, 55 insertions(+), 1 deletion(-)
->>>
->>> diff --git a/arch/arm64/boot/dts/rockchip/rk3528.dtsi b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
->>> index db5dbcac7756..2d2af467e5ab 100644
->>> --- a/arch/arm64/boot/dts/rockchip/rk3528.dtsi
->>> +++ b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
->>> @@ -7,6 +7,7 @@
->>>  #include <dt-bindings/gpio/gpio.h>
->>>  #include <dt-bindings/interrupt-controller/arm-gic.h>
->>>  #include <dt-bindings/interrupt-controller/irq.h>
->>> +#include <dt-bindings/phy/phy.h>
->>>  #include <dt-bindings/pinctrl/rockchip.h>
->>>  #include <dt-bindings/clock/rockchip,rk3528-cru.h>
->>>  #include <dt-bindings/power/rockchip,rk3528-power.h>
->>> @@ -239,7 +240,7 @@ gmac0_clk: clock-gmac50m {
->>>  
->>>  	soc {
->>>  		compatible = "simple-bus";
->>> -		ranges = <0x0 0xfe000000 0x0 0xfe000000 0x0 0x2000000>;
->>> +		ranges = <0x0 0xfc000000 0x0 0xfc000000 0x0 0x44400000>;
->>
->> We should use the dbi reg area in the 32-bit address space, please use:
->>
->>   ranges = <0x0 0xfc000000 0x0 0xfc000000 0x0 0x4000000>;
-> 
-> This seems strange to me. I read through TRMs for RK3562 and RK3576, and
-> found it's common for Rockchip SoCs to map DBI regions of PCIe
-> controllers to two separate MMIO regions, but am still not sure why it's
-> necessary to use the mapping in the 32-bit address space.
-
-I prefer the use of the 32-bit address range to ensure better
-compatibility with bootloaders and possible other OS that may have
-issues with regs in 64-bit address range.
-
-E.g. U-Boot have had issues with accessing >32-bit addressable range in
-the past, use of the 32-bit dbi range ensure we can use pcie in
-U-Boot without having to possible patch DT in a <soc>-u-boot.dtsi file.
-
-Regards,
-Jonas
-
-> 
-> However, I'm willing to follow the vendor's decision here in order to
-> avoid unexpected problems. Will adapt this in v2.
-> 
->>>  		#address-cells = <2>;
->>>  		#size-cells = <2>;
->>>  
->>> @@ -1133,6 +1134,59 @@ combphy: phy@ffdc0000 {
->>>  			rockchip,pipe-phy-grf = <&pipe_phy_grf>;
->>>  			status = "disabled";
->>>  		};
->>> +
->>> +		pcie: pcie@fe4f0000 {
->>
->> With the dbi reg area changed below, please update the node name and
->> move this node to top of the soc node.
->>
->>   pcie@fe000000
->>
->>> +			compatible = "rockchip,rk3528-pcie",
->>> +				     "rockchip,rk3568-pcie";
->>> +			reg = <0x1 0x40000000 0x0 0x400000>,
->>
->> We should use the dbi reg area in the 32-bit address space, please use:
->>
->>   reg = <0x0 0xfe000000 0x0 0x400000>,
->>
->>> +			      <0x0 0xfe4f0000 0x0 0x10000>,
->>> +			      <0x0 0xfc000000 0x0 0x100000>;
->>> +			reg-names = "dbi", "apb", "config";
->>> +			bus-range = <0x0 0xff>;
->>> +			clocks = <&cru ACLK_PCIE>, <&cru HCLK_PCIE_SLV>,
->>> +				 <&cru HCLK_PCIE_DBI>, <&cru PCLK_PCIE>,
->>> +				 <&cru CLK_PCIE_AUX>, <&cru PCLK_PCIE_PHY>;
->>> +			clock-names = "aclk_mst", "aclk_slv",
->>> +				      "aclk_dbi", "pclk",
->>> +				      "aux", "pipe";
->>
->> In my U-Boot test I did not have the pipe/phy clock here, do we need it?
-> 
-> Just as mentioned by Chukun, the clock should indeed be managed by phy
-> instead of the PCIe controller. Will fix it as well.
-> 
->> With above fixed this more or less matches my U-Boot testing, and is:
->>
->> Reviewed-by: Jonas Karlman <jonas@kwiboo.se>
-> 
-> Much thanks.
-> 
->> Regards,
->> Jonas
-> 
-> Best regards,
-> Yao Zi
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+QW0gRGllbnN0YWcsIDkuIFNlcHRlbWJlciAyMDI1LCAxNToyOTo1NSBNaXR0ZWxldXJvcMOkaXNj
+aGUgU29tbWVyemVpdCBzY2hyaWViIFdlaUhhbyBMaToKPiBSSzMzNjggaGFzIG9uZSBVU0IyLjAg
+UEhZIHdpdGggdHdvIHBvcnRzLiBUaGlzIGFkZHMgZGV2aWNlIHNwZWNpZmljIGRhdGEKPiBmb3Ig
+aXQuIERldmljZSBzcGVjaWZpYyBkYXRhIGdldCBmb3JtIHJvY2tjaGlwIGRvd25zdHJlYW0gc291
+cmNlIFsxXS4KPiAKPiBbMV0gaHR0cHM6Ly9naXRodWIuY29tL3JvY2tjaGlwLWxpbnV4L2tlcm5l
+bC9ibG9iL2RldmVsb3AtNC40L2RyaXZlcnMvcGh5L3JvY2tjaGlwL3BoeS1yb2NrY2hpcC1pbm5v
+LXVzYjIuYyNMMjgwNQo+IAo+IFNpZ25lZC1vZmYtYnk6IFdlaUhhbyBMaSA8Y24ubGl3ZWloYW9A
+Z21haWwuY29tPgoKY29tcGFyZWQgdGhlIHJlZ2lzdGVyIHZhbHVlcyB0byB0aGUgVFJNCgpSZXZp
+ZXdlZC1ieTogSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4KCj4gLS0tCj4gIGRyaXZl
+cnMvcGh5L3JvY2tjaGlwL3BoeS1yb2NrY2hpcC1pbm5vLXVzYjIuYyB8IDQ4ICsrKysrKysrKysr
+KysrKysrKysKPiAgMSBmaWxlIGNoYW5nZWQsIDQ4IGluc2VydGlvbnMoKykKPiAKPiBkaWZmIC0t
+Z2l0IGEvZHJpdmVycy9waHkvcm9ja2NoaXAvcGh5LXJvY2tjaGlwLWlubm8tdXNiMi5jIGIvZHJp
+dmVycy9waHkvcm9ja2NoaXAvcGh5LXJvY2tjaGlwLWlubm8tdXNiMi5jCj4gaW5kZXggYjBmMjM2
+OTBlYy4uZGY1NzQzMzdkNCAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL3BoeS9yb2NrY2hpcC9waHkt
+cm9ja2NoaXAtaW5uby11c2IyLmMKPiArKysgYi9kcml2ZXJzL3BoeS9yb2NrY2hpcC9waHktcm9j
+a2NoaXAtaW5uby11c2IyLmMKPiBAQCAtMTg0Nyw2ICsxODQ3LDUzIEBAIHN0YXRpYyBjb25zdCBz
+dHJ1Y3Qgcm9ja2NoaXBfdXNiMnBoeV9jZmcgcmszMzY2X3BoeV9jZmdzW10gPSB7Cj4gIAl7IC8q
+IHNlbnRpbmVsICovIH0KPiAgfTsKPiAgCj4gK3N0YXRpYyBjb25zdCBzdHJ1Y3Qgcm9ja2NoaXBf
+dXNiMnBoeV9jZmcgcmszMzY4X3BoeV9jZmdzW10gPSB7Cj4gKwl7Cj4gKwkJLnJlZyA9IDB4NzAw
+LAo+ICsJCS5udW1fcG9ydHMJPSAyLAo+ICsJCS5jbGtvdXRfY3RsCT0geyAweDA3MjQsIDE1LCAx
+NSwgMSwgMCB9LAo+ICsJCS5wb3J0X2NmZ3MJPSB7Cj4gKwkJCVtVU0IyUEhZX1BPUlRfT1RHXSA9
+IHsKPiArCQkJCS5waHlfc3VzCT0geyAweDA3MDAsIDgsIDAsIDAsIDB4MWQxIH0sCj4gKwkJCQku
+YnZhbGlkX2RldF9lbgk9IHsgMHgwNjgwLCAzLCAzLCAwLCAxIH0sCj4gKwkJCQkuYnZhbGlkX2Rl
+dF9zdAk9IHsgMHgwNjkwLCAzLCAzLCAwLCAxIH0sCj4gKwkJCQkuYnZhbGlkX2RldF9jbHIgPSB7
+IDB4MDZhMCwgMywgMywgMCwgMSB9LAo+ICsJCQkJLmlkZmFsbF9kZXRfZW4JPSB7IDB4MDY4MCwg
+NiwgNiwgMCwgMSB9LAo+ICsJCQkJLmlkZmFsbF9kZXRfc3QJPSB7IDB4MDY5MCwgNiwgNiwgMCwg
+MSB9LAo+ICsJCQkJLmlkZmFsbF9kZXRfY2xyCT0geyAweDA2YTAsIDYsIDYsIDAsIDEgfSwKPiAr
+CQkJCS5pZHJpc2VfZGV0X2VuCT0geyAweDA2ODAsIDUsIDUsIDAsIDEgfSwKPiArCQkJCS5pZHJp
+c2VfZGV0X3N0CT0geyAweDA2OTAsIDUsIDUsIDAsIDEgfSwKPiArCQkJCS5pZHJpc2VfZGV0X2Ns
+cgk9IHsgMHgwNmEwLCA1LCA1LCAwLCAxIH0sCj4gKwkJCQkubHNfZGV0X2VuCT0geyAweDA2ODAs
+IDIsIDIsIDAsIDEgfSwKPiArCQkJCS5sc19kZXRfc3QJPSB7IDB4MDY5MCwgMiwgMiwgMCwgMSB9
+LAo+ICsJCQkJLmxzX2RldF9jbHIJPSB7IDB4MDZhMCwgMiwgMiwgMCwgMSB9LAo+ICsJCQkJLnV0
+bWlfYnZhbGlkCT0geyAweDA0YmMsIDIzLCAyMywgMCwgMSB9LAo+ICsJCQkJLnV0bWlfaWQJPSB7
+IDB4MDRiYywgMjYsIDI2LCAwLCAxIH0sCj4gKwkJCQkudXRtaV9scwk9IHsgMHgwNGJjLCAyNSwg
+MjQsIDAsIDEgfSwKPiArCQkJfSwKPiArCQkJW1VTQjJQSFlfUE9SVF9IT1NUXSA9IHsKPiArCQkJ
+CS5waHlfc3VzCT0geyAweDA3MjgsIDgsIDAsIDAsIDB4MWQxIH0sCj4gKwkJCQkubHNfZGV0X2Vu
+CT0geyAweDA2ODAsIDQsIDQsIDAsIDEgfSwKPiArCQkJCS5sc19kZXRfc3QJPSB7IDB4MDY5MCwg
+NCwgNCwgMCwgMSB9LAo+ICsJCQkJLmxzX2RldF9jbHIJPSB7IDB4MDZhMCwgNCwgNCwgMCwgMSB9
+Cj4gKwkJCX0KPiArCQl9LAo+ICsJCS5jaGdfZGV0ID0gewo+ICsJCQkub3Btb2RlCQk9IHsgMHgw
+NzAwLCA4LCAwLCAwLCAweDFkNyB9LAo+ICsJCQkuY3BfZGV0CQk9IHsgMHgwNGI4LCAzMCwgMzAs
+IDAsIDEgfSwKPiArCQkJLmRjcF9kZXQJPSB7IDB4MDRiOCwgMjksIDI5LCAwLCAxIH0sCj4gKwkJ
+CS5kcF9kZXQJCT0geyAweDA0YjgsIDMxLCAzMSwgMCwgMSB9LAo+ICsJCQkuaWRtX3NpbmtfZW4J
+PSB7IDB4MDcxOCwgOCwgOCwgMCwgMSB9LAo+ICsJCQkuaWRwX3NpbmtfZW4JPSB7IDB4MDcxOCwg
+NywgNywgMCwgMSB9LAo+ICsJCQkuaWRwX3NyY19lbgk9IHsgMHgwNzE4LCA5LCA5LCAwLCAxIH0s
+Cj4gKwkJCS5yZG1fcGR3bl9lbgk9IHsgMHgwNzE4LCAxMCwgMTAsIDAsIDEgfSwKPiArCQkJLnZk
+bV9zcmNfZW4JPSB7IDB4MDcxOCwgMTIsIDEyLCAwLCAxIH0sCj4gKwkJCS52ZHBfc3JjX2VuCT0g
+eyAweDA3MTgsIDExLCAxMSwgMCwgMSB9LAo+ICsJCX0sCj4gKwl9LAo+ICsJeyAvKiBzZW50aW5l
+bCAqLyB9Cj4gK307Cj4gKwo+ICBzdGF0aWMgY29uc3Qgc3RydWN0IHJvY2tjaGlwX3VzYjJwaHlf
+Y2ZnIHJrMzM5OV9waHlfY2Znc1tdID0gewo+ICAJewo+ICAJCS5yZWcJCT0gMHhlNDUwLAo+IEBA
+IC0yMjg5LDYgKzIzMzYsNyBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IG9mX2RldmljZV9pZCByb2Nr
+Y2hpcF91c2IycGh5X2R0X21hdGNoW10gPSB7Cj4gIAl7IC5jb21wYXRpYmxlID0gInJvY2tjaGlw
+LHJrMzMwOC11c2IycGh5IiwgLmRhdGEgPSAmcmszMzA4X3BoeV9jZmdzIH0sCj4gIAl7IC5jb21w
+YXRpYmxlID0gInJvY2tjaGlwLHJrMzMyOC11c2IycGh5IiwgLmRhdGEgPSAmcmszMzI4X3BoeV9j
+ZmdzIH0sCj4gIAl7IC5jb21wYXRpYmxlID0gInJvY2tjaGlwLHJrMzM2Ni11c2IycGh5IiwgLmRh
+dGEgPSAmcmszMzY2X3BoeV9jZmdzIH0sCj4gKwl7IC5jb21wYXRpYmxlID0gInJvY2tjaGlwLHJr
+MzM2OC11c2IycGh5IiwgLmRhdGEgPSAmcmszMzY4X3BoeV9jZmdzIH0sCj4gIAl7IC5jb21wYXRp
+YmxlID0gInJvY2tjaGlwLHJrMzM5OS11c2IycGh5IiwgLmRhdGEgPSAmcmszMzk5X3BoeV9jZmdz
+IH0sCj4gIAl7IC5jb21wYXRpYmxlID0gInJvY2tjaGlwLHJrMzU2Mi11c2IycGh5IiwgLmRhdGEg
+PSAmcmszNTYyX3BoeV9jZmdzIH0sCj4gIAl7IC5jb21wYXRpYmxlID0gInJvY2tjaGlwLHJrMzU2
+OC11c2IycGh5IiwgLmRhdGEgPSAmcmszNTY4X3BoeV9jZmdzIH0sCj4gCgoKCgoKX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFp
+bGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
+LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
