@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88EC8CAC582
-	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Sep 2025 08:15:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC6A9CAC593
+	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Sep 2025 08:16:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pKpgMErCvvOPwmQqhGOsWeAPLWg5JwbZuRq9Bie2Bv8=; b=v21CTNYUDBqIad
-	XmnVaZq1G+lonPlxlU+A4iHz9U8cgREh+V91cyCdz3QNeP9GpFKPTvgIuXp/P3RYayHEGtD/b+VOW
-	uOAc7RdOzw9LvcVTJIcK692mVA573ZMHWTlg45sWvrOYOq6B9zDXoOWj+0iW6Ly1vWPs5c6TOF+Ml
-	pBowjvkV0hz/8KaGkDNux08zwrz4wCWW/FfAA9ADYFHPHIhxZsI4w7um2Krwt7FsqJWGx65agc0u3
-	C1fHLNQd56extVSRmmn+2hyi3F6wsQ/hsLsOGCVVQm3AC9dO87ejHouln3bzJFq5XAp5ppmzec1j6
-	/HVVzRsOy17Lk1x4wj/w==;
+	List-Owner; bh=uUQvKGvfEXyrvwEr0MPEsEbzF23idzQR1B5Nz6abKPE=; b=oZHj1HAvOQD844
+	5hMmHWHq2Yc3VOP088YJthCBKcucRrCTa8Y4L6LgaA4Qrl64SjBrixGsJc54LF83iGzxCFTUA6cxi
+	lCngIlj7SlYh3QuXM2URq0Fgjp4efYoOQjQpZCaMqmQw8OYiWEL3/3kqAOhROceLmueC+W919HJeD
+	8SWjro+0Eo0fSNSOnjzrQDLkX97TzrMvBlsBi3lNFcLyx6To7v7ZZnCR2LViAEldc0hvJ9B1flB86
+	O3OH9yrcdFzi2iNzUi3Dwk6+RFe6zp6MkbbA6uUXoJdAP9Gu5dm3111ZaNZsi64F1ZTyRaY3kP3F4
+	KqUSfjVuFp3+JDgvsBDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwywa-00000007rKb-1obN;
-	Fri, 12 Sep 2025 08:15:44 +0000
+	id 1uwyxN-00000007rhu-2I1b;
+	Fri, 12 Sep 2025 08:16:33 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwywW-00000007pWb-3WUM;
-	Fri, 12 Sep 2025 08:15:43 +0000
+	id 1uwyxK-00000007pWg-1Qys;
+	Fri, 12 Sep 2025 08:16:31 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1757664691;
-	bh=CzesZ0+83XgeIbXL6u4EnFLvcQwKX0MimNmWx+DMUmA=;
+	s=mail; t=1757664696;
+	bh=KjG8Shhom3ptheFneHi2DOtT3R4n7iwULOcuxa4vRfA=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=mjESWjIKXRwZVDydET4lIeaI2BUyFqWGWT6Asttm4aF5IV7TCbY64i3KVe3SFvp1m
-	 zJ2cF6z0RJm5hhJh8/m+NdT/F3od9v7fDRXhyW/+eq5viQpRdCV5HSQnbLjZ/xc9n+
-	 tvutCB33fYeaQQ/sjE2gmmlRRwCzOyenC5oVYCY3CEChAf5dclzUyWDHVn+100ldl4
-	 A+mk2crY1sSjswYOvdhQNAcif4ADPpaTOSLdWeUrv621E2NCndrFeRavnqVmjqL0RK
-	 Ky9ikvwGpz9bZk6zS58reSv5qz2R6PZGO0RuYuoG3BDkIfGuSmLun0R/aRpvUx0eoB
-	 PNZFWtzaQjM6A==
+	b=eeE5f399qEpPII2CaBiyLBTsmDdK8fMjj7NBb/wZVK6Rn/kzLJjGKmiuv/7M4/LXI
+	 jdNMN+rKbS3YlpfLTBFWksZDVTRSTlF/dt/KjlexFAIYJklY1HHWoGK90O5RB7Vfde
+	 DTgs2pih+PtyWTEMIwxoAgCgddkS2lGtd4+2+1Z0w7g/X9dFls1Dbwp+2wOWI1sumr
+	 qTOE77ZANhMVf7aUL92O4mJP2F57yIUzFH7zERPc/PhlORaWpsd0dcrfneSp0jMKaO
+	 7Dbh5o9Dos2L83yhzIHLu2MyNGCYr3fRzKVLHN8c2joFDPLA54h9wctXFkvdOheZRa
+	 hC8Q8vBryFVeA==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8B03017E0100;
-	Fri, 12 Sep 2025 10:11:29 +0200 (CEST)
-Message-ID: <f44a0f08-1b00-49b4-82e6-17135138c55e@collabora.com>
-Date: Fri, 12 Sep 2025 10:11:28 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id F296D17E12AE;
+	Fri, 12 Sep 2025 10:11:33 +0200 (CEST)
+Message-ID: <008524f2-9411-4229-80bc-a6b56ecca123@collabora.com>
+Date: Fri, 12 Sep 2025 10:11:33 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 02/12] dt-bindings: media: Convert MediaTek mt8173-vpu
- bindings to DT schema
+Subject: Re: [PATCH v2 07/12] arm64: dts: mediatek: mt8173: Fix mt8173-pinctrl
+ node names
 To: Ariel D'Alessandro <ariel.dalessandro@collabora.com>, airlied@gmail.com,
  amergnat@baylibre.com, andrew+netdev@lunn.ch, andrew-ct.chen@mediatek.com,
  broonie@kernel.org, chunkuang.hu@kernel.org, conor+dt@kernel.org,
@@ -70,13 +70,14 @@ Cc: devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org,
  linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-sound@vger.kernel.org, netdev@vger.kernel.org
 References: <20250911151001.108744-1-ariel.dalessandro@collabora.com>
- <20250911151001.108744-3-ariel.dalessandro@collabora.com>
+ <20250911151001.108744-8-ariel.dalessandro@collabora.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20250911151001.108744-3-ariel.dalessandro@collabora.com>
+In-Reply-To: <20250911151001.108744-8-ariel.dalessandro@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250912_011541_185846_F76DFA5D 
-X-CRM114-Status: GOOD (  13.75  )
+X-CRM114-CacheID: sfid-20250912_011630_685479_3D64896B 
+X-CRM114-Status: UNSURE (   5.92  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,100 +95,16 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 Il 11/09/25 17:09, Ariel D'Alessandro ha scritto:
-> Convert the existing text-based DT bindings for Mediatek MT8173 Video
-> Processor Unit to a DT schema.
+> According to the mediatek,mt8173-pinctrl device tree binding schema, the
+> pinctrl node names should match pattern 'pins$'. Fix this.
 > 
 > Signed-off-by: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
+> Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
+> Acked-by: Rob Herring (Arm) <robh@kernel.org>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-> ---
->   .../bindings/media/mediatek,mt8173-vpu.yaml   | 74 +++++++++++++++++++
->   .../bindings/media/mediatek-vpu.txt           | 31 --------
->   2 files changed, 74 insertions(+), 31 deletions(-)
->   create mode 100644 Documentation/devicetree/bindings/media/mediatek,mt8173-vpu.yaml
->   delete mode 100644 Documentation/devicetree/bindings/media/mediatek-vpu.txt
-> 
-> diff --git a/Documentation/devicetree/bindings/media/mediatek,mt8173-vpu.yaml b/Documentation/devicetree/bindings/media/mediatek,mt8173-vpu.yaml
-> new file mode 100644
-> index 0000000000000..8a47761f1e6b5
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/media/mediatek,mt8173-vpu.yaml
-> @@ -0,0 +1,74 @@
-> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/media/mediatek,mt8173-vpu.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Mediatek MT8173 Video Processor Unit
-> +
-> +maintainers:
-> +  - Ariel D'Alessandro <ariel.dalessandro@collabora.com>
-> +
-> +description:
-> +  Video Processor Unit is a HW video controller. It controls HW Codec including
-> +  H.264/VP8/VP9 Decode, H.264/VP8 Encode and Image Processor (scale/rotate/color
-> +  convert).
-> +
-> +properties:
-> +  compatible:
-> +    const: mediatek,mt8173-vpu
-> +
-> +  reg:
-> +    maxItems: 2
-> +
-> +  reg-names:
-> +    items:
-> +      - const: tcm
-> +      - const: cfg_reg
-> +
-> +  interrupts:
-> +    maxItems: 1
-> +
-> +  clocks:
-> +    maxItems: 1
-> +
-> +  clock-names:
-> +    items:
-> +      - const: main
-> +
-> +  memory-region:
-> +    maxItems: 1
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - reg-names
-> +  - interrupts
-> +  - clocks
-> +  - clock-names
-> +  - memory-region
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/clock/mt8173-clk.h>
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +
-> +    soc {
-> +        #address-cells = <2>;
-> +        #size-cells = <2>;
-> +
-> +        vpu: vpu@10020000 {
-> +            compatible = "mediatek,mt8173-vpu";
-> +            reg = <0 0x10020000 0 0x30000>,
-> +                  <0 0x10050000 0 0x100>;
-> +            reg-names = "tcm", "cfg_reg";
-> +            interrupts = <GIC_SPI 166 IRQ_TYPE_LEVEL_HIGH>;
-> +            clocks = <&topckgen CLK_TOP_SCP_SEL>;
-> +            clock-names = "main";
-> +            memory-region = <&vpu_dma_reserved>;
-> +        };
-> +    };
-> +
-> +...
+
 
 _______________________________________________
 Linux-rockchip mailing list
