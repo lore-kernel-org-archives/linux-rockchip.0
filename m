@@ -4,70 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95664CAC593
-	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Sep 2025 06:19:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 554E9CAC582
+	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Sep 2025 07:37:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=l42LT5THgJLuSVWt0EZaydi+Qvi7y5ztwiQOJbxzdDU=; b=1poDc/QSVf+xNw
-	PlRljGNT4kpkgSvPvfiLL0x4uzDuOeF4ZEglNQDVNifwBbzFP4DZey75Q7Yc7m9Qj3PaFRk2KtWEQ
-	Lv5EeAM+FHEEWYZ+5i5qQBTUc/2tj/NLO590GmoyqSI4cixXgE4yjNxnkEFl/Ai2XbvMtQ8Hix/sq
-	wZSgBlgPk/3j53huBm4SyiGR1rkAayxr49WRbCezyU263gsFoYCSc2upJtvJcwf5NEOpkVFvvQe4b
-	lN9bzJrufesnnPo6OcKwYU8cRsD6bB14anQS6DKTifLk9Q//B2zPFrhCgIyIZXM3SJn6X4nvezzhP
-	KzwA24fR16+3eld5PGPQ==;
+	List-Owner; bh=+n7SkwzZ3fR0G37j78SsV7QzWYzHMnz8XFMtM+sCj7I=; b=i/DJavHS77q5/g
+	Cj32C5EwUWRgiXLpsGNCiO7QI/v6glGiexp3UY9cnJvXci7+eM7E4OUYEnL/7NdItGOkjBH5bCgiZ
+	wN4pXQ+ydb+I9B6vWlgK3Ymy53u729F9K9WSuhoodp5m3X3rB60SiGW8UOyvsJWyAx2prlIw93X0n
+	RfUS52b6fALvZeSQuDjO1GOAqhUd+IiCGw1a2enzKRGcNzFf6KFZ7GSMt20LpY2MpUjDso5TEMmx5
+	Mkxxi+gnnTg0FFZU6Y4UhkgbK/+DVjf8IZ3XVKOSGghOrBpP3XP2U2burFXVeuCxWFn9z1LpMTQHa
+	qerGtfnJd/x4s8fftxIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwx8D-00000007MGR-1qCG;
-	Fri, 12 Sep 2025 06:19:37 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1uwyKw-00000007gdb-1vn6;
+	Fri, 12 Sep 2025 07:36:50 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwx8B-00000007MFS-2sIR;
-	Fri, 12 Sep 2025 06:19:35 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id D99B0601AE;
-	Fri, 12 Sep 2025 06:19:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F1432C4CEF4;
-	Fri, 12 Sep 2025 06:19:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1757657974;
-	bh=o8hk3zQNATXcYNezfLWUb6kcglAXSeb1kRjCzbDhJIw=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=TAfBsjASg0j47G0aj71WpPiHwEzVjLh8frxE9MTlUre9o4kgdD0AT9C2l8NxGKnp8
-	 7IFEcYbPKl8ue4IGOaLDKbEJWbquIJXUUac3GR9E8dEo3Jh7cz5KyP8qh3mPDlVArz
-	 meCJadPxluLfi2gaQmclFasUpdycrQpAxtv6mRtBuVlbMKoWoMt6LIpZ7jlivjF0dg
-	 SBAPM4eomEn87Qqye6+Q6x4eBzcUHZ4H1iHg9AmOB6gpsAuvBFvm28piizL42FE7pD
-	 /GR042vD8YIz4ZS/9nvYqbhp9jXT7LOUgXCQDvL0U4FZWriZxiFMJkIGihya5dMtB1
-	 KwwnUs4bBEHfQ==
-Date: Fri, 12 Sep 2025 08:19:32 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
-Cc: airlied@gmail.com, amergnat@baylibre.com, andrew+netdev@lunn.ch, 
-	andrew-ct.chen@mediatek.com, angelogioacchino.delregno@collabora.com, broonie@kernel.org, 
-	chunkuang.hu@kernel.org, conor+dt@kernel.org, davem@davemloft.net, 
-	dmitry.torokhov@gmail.com, edumazet@google.com, flora.fu@mediatek.com, heiko@sntech.de, 
-	houlong.wei@mediatek.com, jeesw@melfas.com, kernel@collabora.com, krzk+dt@kernel.org, 
-	kuba@kernel.org, lgirdwood@gmail.com, linus.walleij@linaro.org, 
-	louisalexis.eyraud@collabora.com, luiz.dentz@gmail.com, maarten.lankhorst@linux.intel.com, 
-	marcel@holtmann.org, matthias.bgg@gmail.com, mchehab@kernel.org, 
-	minghsiu.tsai@mediatek.com, mripard@kernel.org, p.zabel@pengutronix.de, pabeni@redhat.com, 
-	robh@kernel.org, sean.wang@kernel.org, simona@ffwll.ch, 
-	support.opensource@diasemi.com, tiffany.lin@mediatek.com, tzimmermann@suse.de, 
-	yunfei.dong@mediatek.com, devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org, 
-	linux-arm-kernel@lists.infradead.org, linux-bluetooth@vger.kernel.org, linux-gpio@vger.kernel.org, 
-	linux-input@vger.kernel.org, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-sound@vger.kernel.org, 
-	netdev@vger.kernel.org
-Subject: Re: [PATCH v2 06/12] dt-bindings: display: mediatek,ufoe: Add
- mediatek,gce-client-reg property
-Message-ID: <20250912-innocent-polite-cricket-05dbd8@kuoka>
-References: <20250911151001.108744-1-ariel.dalessandro@collabora.com>
- <20250911151001.108744-7-ariel.dalessandro@collabora.com>
+	id 1uwyKu-00000007gcO-3nCk
+	for linux-rockchip@lists.infradead.org;
+	Fri, 12 Sep 2025 07:36:50 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=iQePpiySKBUe3OfKkAmoPumu7+44E19hPRb0KlPpFxY=; b=t0BOt3Qy+23zPozlFwGCraLr/E
+	FK80ST+EDMKRX47D1X8qtqiWYZK9unYaxhxMy2WzG38G2o6LBNfw2xsg5iWA+DCSdF+Z4xkrT6K8L
+	7qxtZVz0+7fidgX+xbQeDCEciaegFFMCpqTnnLSvBGhi5y4I7KSjNOsn2vAMbhdAuvtpffvrISGyV
+	9G2+OoYOhxlee5FNCZ1hLO55TpPzdnYc4bBX07xL6sDOIdh/Ag9NnrYwoY1tJzwEr0JHmRAl8IQO1
+	8yC7/CJiNmCcx5CjBgPpJtMCx8nSruu4j1RVuxE104S7dyJW3J4Hv6o2K5+n9o2BgBSQ+dHi1J6ku
+	DmCipxhg==;
+Received: from i53875a48.versanet.de ([83.135.90.72] helo=localhost.localdomain)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1uwyKr-00085j-5d; Fri, 12 Sep 2025 09:36:45 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: linux-rockchip@lists.infradead.org,
+	Chris Morgan <macroalpha82@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	linux-pm@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	broonie@kernel.org,
+	lee@kernel.org,
+	lgirdwood@gmail.com,
+	sre@kernel.org,
+	conor+dt@kernel.org,
+	krzk+dt@kernel.org,
+	robh@kernel.org,
+	Chris Morgan <macromorgan@hotmail.com>
+Subject: Re: (subset) [PATCH v8 0/5] Add Texas Instruments BQ25703A Charger
+Date: Fri, 12 Sep 2025 09:36:30 +0200
+Message-ID: <175766258325.683160.13363723166042765380.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.47.2
+In-Reply-To: <20250904160530.66178-1-macroalpha82@gmail.com>
+References: <20250904160530.66178-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250911151001.108744-7-ariel.dalessandro@collabora.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250912_003648_969364_C7426E49 
+X-CRM114-Status: GOOD (  10.29  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,38 +81,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 11, 2025 at 12:09:55PM -0300, Ariel D'Alessandro wrote:
-> Currently, users of Mediatek UFOe (Unified Frame Optimization engine) DT
-> bindings set mediatek,gce-client-reg node property, which is missing from
-> the DT schema.
+
+On Thu, 04 Sep 2025 11:05:25 -0500, Chris Morgan wrote:
+> Add support for the Texas Instruments BQ25703A charger manager. The
+> device integrates a boost converter with the charger manager. This
+> series adds the device as an MFD with separate regulator and power
+> supply drivers. This allows us to manage a circular dependency with
+> a type-c port manager which depends on the regulator for usb-otg
+> but supplies power to the BQ25703A charger.
 > 
-> For example, device tree arch/arm64/boot/dts/mediatek/mt8173.dtsi is
-> causing the following dtb check error:
-> 
-> ```
-> $ make CHECK_DTBS=y mediatek/mt8173-elm.dtb
->    SCHEMA  Documentation/devicetree/bindings/processed-schema.json
->    DTC [C] arch/arm64/boot/dts/mediatek/mt8173-elm.dtb
 > [...]
 
-You can drop above 4 lines, they are obvious. Your "dtbs_check error"
-message already defined that.
+Applied, thanks!
 
-> arch/arm64/boot/dts/mediatek/mt8173-elm.dtb: ufoe@1401a000
-> (mediatek,mt8173-disp-ufoe): 'mediatek,gce-client-reg' does not match
-> any of the regexes: '^pinctrl-[0-9]+$'
-
-The warning message should not be wrapped, so this should be two lines.
-Maybe entire warning should be in one line, at least that's what I would
-do, after dropping "arch/arm64/boot/dts/".
-
-Anyway, no need to resend just for these. Thanks for the update.
-
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+[5/5] arm64: dts: rockchip: Add USB and charger to Gameforce Ace
+      commit: 36d05f21da4d1879f7e81f18eae85f34e9c64aa5
 
 Best regards,
-Krzysztof
-
+-- 
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
