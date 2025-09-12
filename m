@@ -4,86 +4,124 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43B04CA101F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Sep 2025 12:50:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 263D2CAC582
+	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Sep 2025 13:25:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+z4AHAp1esJZ7WzUsY9FPqtFCB/CyKcT2v3PfmMMHfA=; b=WhE0OkH/g3VHNi
-	wiT5lEEo5GjnBRtj0R2+E0GvvdnRZQbN0bl8vOIs2WvJLIcgILGSEKbZ9yZBFVxRvSmanf36mP19q
-	+vubRThhQPqPImTe/TMlz8UUnzRLD+j7oUZgcBph92cp/hX+ooswcq03QvmXSFTDHegcGSl/Y39F/
-	7g/LNBkZGQEozCVvj9vmld7yjHHvdpg+S0iqUL1mhWx1NdGgrO+babgz8PBHrAwq+upzo/bywNPfP
-	rnjl6ONY23qPH73p5BQ1zsqotaJZAb5os7OPEESN4mq2eVV9DtyAmsQtb6aTB7gP7ZRIDvB+fJDVS
-	+Ksohv7k6RNFfv7BAl5Q==;
+	List-Owner; bh=yEGOAvXh3hQkM5N5z7qWq71nJuLNoFpmdmCS7Bh3oDA=; b=VT053yT38r1aND
+	W7Naf+giCkG412k/UHOkcuUGTZrKVCy4UGJ/ot1oaJVrX5VM9A9+iAmMNSzzAnbV/FmedZ21kqf3i
+	c820DpSkJh20nsIdxIVzaf58uUGaFsAaczZ2YFvJ847w0L274uSCbtRAgO2kNRNDnvrGJYBK+EneG
+	rE58V9lftlRajMksb4pHC+G+ta/mi7TPgh24AejGglhn6GTtvQL0tQi3dGafHoMPt4WsFqDt07Ozo
+	IBog3tnH1fBi2smGgr44nr6HBoy/Q5q010IC8paOmz3mZkgt9Yv+nQEZcu4vGzXHg52XWD6TIp57L
+	6c7p6IGOPEJGumDieknA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ux3EN-00000009MI3-00UI;
-	Fri, 12 Sep 2025 12:50:23 +0000
-Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
+	id 1ux3mR-00000009Y1x-1V88;
+	Fri, 12 Sep 2025 13:25:35 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ux3EK-00000009MGU-3XuV
-	for linux-rockchip@lists.infradead.org;
-	Fri, 12 Sep 2025 12:50:21 +0000
-Received: by mail-ed1-x52d.google.com with SMTP id 4fb4d7f45d1cf-61cd6089262so2825681a12.3
-        for <linux-rockchip@lists.infradead.org>; Fri, 12 Sep 2025 05:50:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1757681419; x=1758286219; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=GGeDXGIJl1AOftNs9qk+rBPk1E1YgE9B/9Oqy1+dUbQ=;
-        b=CNm6kklyRcLB8dzYATLt0x2YHSgHCA57V8roZ3XYUCx25tW0Fhp1DLfnuCzn83x08h
-         I4v6Uhp69k5ryuIyeO5PoHtZyI8x7TnkHJaiO9tUqMKRUbeCu5vVnlwS94a35Kus6HdJ
-         lDzDtJy/nC8flESLqvQ/1kp6KwopV6frj7pLurQJsRZvIrzJth9/goiFgRsnIHwb00aJ
-         cChEvRxNQkN3tRpERdo4y0T5sSIAHRK7qEKtzykZWJ7rtp2ZCHFa53uW/tc8yQYKX9Dw
-         Ozp37/2bAg+1TvnlZTSir8EvMV1ntddBvlTjbxn7dZFbZadRwrozy5ByOqSw73mljil2
-         8Liw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1757681419; x=1758286219;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=GGeDXGIJl1AOftNs9qk+rBPk1E1YgE9B/9Oqy1+dUbQ=;
-        b=rGKTHEsw+fhsFplGSTQZFWq5L0qIwhZxnAFPmZHw9m+3HKSr/btlKCLk4QRisZkEs/
-         gwyMltiFrmSv3nfcipacAtvqRJjs4iyaZd+hCcuwQMCsP7Mt2qA7DosNo58QAQlfdegy
-         GBF8Q48FLcfGqjmhczOFLOs2R76Ke59WTJTKMXcjgmguzcAOpNn+TjzO9pMVzk2r3Ety
-         PmO1Ss8wCebalD5P6HWbqfuFuKElW0c8umFJFjM7WFzXloy1YV/cq10aQ9K/ul4MHl7z
-         Ep5PAXolvr3W4C4xuVcOLh7E5TfwHZ9Ss33RkeCVAhru6uMKkb2TVDt6AQdbxPzpB5wJ
-         5Ycg==
-X-Forwarded-Encrypted: i=1; AJvYcCWpJagwb8dLEFfl8h8Rkk4bt1rxxhdNbiDIWlQAltAULMmfsBqzWHDn87RGf2ZqOY1mYBHTqRQSBT0Yly3yig==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwGH2nyHHCodxul0B6kSW5X/AYLZBU8q381FahhWfY7DuJ/m+x9
-	O+aniHOO4bISKzOZ6wlWEwYe5BUM0f/DehXocXHvFGBry/kXPxvmlz8L
-X-Gm-Gg: ASbGnctn8Hgms8O4B+SrcXzvul9bukF/nWjFpnQbDdLU0jwSl73/liDkttz/ZqDytlg
-	nU7cgMcTWf122IzxCLyscjDdR3WQBNVKvwJmRMFRZ7nQcFlkYVXnHKmp90gRODiHOIxssikNYNO
-	G3tWOMfTNjdI7+EON2G//1XNT86lsOiNORdMicTZk0RrzqUNUAsqrR2J0XNVbaj4WSXBPsIrbb5
-	DFFJQB6EJOh0zOwDQ6Kxv7eCFBPW8YC7C6viertR0Zps68hHyKbp9S0jsxDvO+VVeOOypmmXR7i
-	A2m8HZZTTUZkB+p9TrYlBsbz6ThlRfjP4kdeHfzcK3FowGbio9IS5goF2kXWY0HlR5pZQ0Eo4q6
-	tSr++M/nzCXqCqmXna5dt+xc1T0jEhVX25ng86yf5SDfbTwut1dPG8q/0+A==
-X-Google-Smtp-Source: AGHT+IHF80AxGV50REF1qrKV8qN7l1064i99Pa3a89AdrsuZUgZAJugEI2eCwcp39sykCy77HRlw/w==
-X-Received: by 2002:a17:906:f58f:b0:afe:cded:bf96 with SMTP id a640c23a62f3a-b07c347f8abmr240925366b.6.1757681418427;
-        Fri, 12 Sep 2025 05:50:18 -0700 (PDT)
-Received: from HomePC (89-67-214-154.dynamic.play.pl. [89.67.214.154])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-b07b32dd3efsm363446666b.55.2025.09.12.05.50.17
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 12 Sep 2025 05:50:17 -0700 (PDT)
-From: Andrey Leonchikov <andreil499@gmail.com>
-To: dsimic@manjaro.org
-Cc: Andrey Leonchikov <andreil499@gmail.com>,
-	linux-rockchip@lists.infradead.org
-Subject: [v2,PATCH 5/5] RK356x - Add OTP description.
-Date: Fri, 12 Sep 2025 14:49:42 +0200
-Message-ID: <20250912124945.2300498-1-andreil499@gmail.com>
-X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20250910215451.2244192-6-andreil499@gmail.com>
-References: <20250910215451.2244192-6-andreil499@gmail.com>
+	id 1ux3mN-00000009XzM-42Mw;
+	Fri, 12 Sep 2025 13:25:33 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 97AC340547;
+	Fri, 12 Sep 2025 13:25:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F3059C4CEF1;
+	Fri, 12 Sep 2025 13:25:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1757683531;
+	bh=1Zm2iA1SB8GWLNScSpRQxUq0UzkNRCiIepB0sNuFx9c=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=bIe2JqmVPWIT7obUy1SUAhW38eyOok5HPLQ+/4LEGiuLz/ht0tY1zJp2rl9bx+18B
+	 5imW1Gcg8bKvley0iMw/sgyMNZQuNlXfmJSYdtvSwE6yrl/Y5hgZwLXn2Y3Wedx6/q
+	 OZvaUQdQjwhDTn3CRTHY8RnIwjTIiqN/nZnolaxMW97eDNQ4LRBlsGoSQOCOx08YZd
+	 p6ZWN/UguNuoLtaaqTucnez2kvZoXcB7HTFgoJdjB+bT7QbdvrwcE9PSLoOPWFSQTt
+	 eoYV8wbzKYP1BxiFMuk3msPyEfABLfW95Jho6xEYEa0nSK0Mi0j8Gs1au7+ToDFAE3
+	 DsQQCmup3eMRA==
+Message-ID: <969842f0-5113-40c1-b80d-d46bd239936a@kernel.org>
+Date: Fri, 12 Sep 2025 15:25:18 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 01/12] dt-bindings: media: Convert MediaTek mt8173-mdp
+ bindings to DT schema
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Ariel D'Alessandro <ariel.dalessandro@collabora.com>, airlied@gmail.com,
+ amergnat@baylibre.com, andrew+netdev@lunn.ch, andrew-ct.chen@mediatek.com,
+ angelogioacchino.delregno@collabora.com, broonie@kernel.org,
+ chunkuang.hu@kernel.org, conor+dt@kernel.org, davem@davemloft.net,
+ dmitry.torokhov@gmail.com, edumazet@google.com, flora.fu@mediatek.com,
+ heiko@sntech.de, houlong.wei@mediatek.com, jeesw@melfas.com,
+ kernel@collabora.com, krzk+dt@kernel.org, kuba@kernel.org,
+ lgirdwood@gmail.com, linus.walleij@linaro.org,
+ louisalexis.eyraud@collabora.com, luiz.dentz@gmail.com,
+ maarten.lankhorst@linux.intel.com, marcel@holtmann.org,
+ matthias.bgg@gmail.com, mchehab@kernel.org, minghsiu.tsai@mediatek.com,
+ mripard@kernel.org, p.zabel@pengutronix.de, pabeni@redhat.com,
+ robh@kernel.org, sean.wang@kernel.org, simona@ffwll.ch,
+ support.opensource@diasemi.com, tiffany.lin@mediatek.com,
+ tzimmermann@suse.de, yunfei.dong@mediatek.com, devicetree@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-bluetooth@vger.kernel.org, linux-gpio@vger.kernel.org,
+ linux-input@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-sound@vger.kernel.org,
+ netdev@vger.kernel.org
+References: <20250911151001.108744-1-ariel.dalessandro@collabora.com>
+ <20250911151001.108744-2-ariel.dalessandro@collabora.com>
+ <20250912-alluring-turaco-of-conversion-dca193@kuoka>
+ <CAGXv+5GovP7NuG042AwfmtC-sPJMGuFAm6iZ0iqNZgU0VE+qmQ@mail.gmail.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <CAGXv+5GovP7NuG042AwfmtC-sPJMGuFAm6iZ0iqNZgU0VE+qmQ@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250912_055020_887361_2DB22DCB 
-X-CRM114-Status: UNSURE (   5.42  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250912_062532_041311_BB9B52BB 
+X-CRM114-Status: GOOD (  14.90  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,14 +138,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi, Drang.
-Ok, I will work on this patches a more and send a v3 soon.
-About v1 - I immediatelly archive it - this messages don't have any
-descriptions.
+On 12/09/2025 10:27, Chen-Yu Tsai wrote:
+>>> +properties:
+>>> +  compatible:
+>>> +    oneOf:
+>>> +      - enum:
+>>> +          - mediatek,mt8173-mdp-rdma
+>>> +          - mediatek,mt8173-mdp-rsz
+>>> +          - mediatek,mt8173-mdp-wdma
+>>> +          - mediatek,mt8173-mdp-wrot
+>>
+>> Why there is no mediatek,mt8173-mdp here? What does this compatible
+>> represent?
+>>
+>>> +      - items:
+>>> +          - const: mediatek,mt8173-mdp-rdma
+>>
+>> Still suspicious. Device cannot be simulatanously: compatible and not
+>> compatible. This is not a well known cat that has superposition of two
+>> states, whenenver you look the other way.
+>>
+>> Maybe the old binding was incorrect, maybe the in-tree DTS is incorrect.
+>> Whichever the reason, this must be investigated and documented, because
+>> by standard rules this is wrong. Each wrong code needs very clear
+>> explanations (and "someone did it" is not a good enough explanation).
+> 
+> My guess is that "mediatek,mt8173-mdp" is meant to serve as a single
+> entry point for the implementation to bind the driver to. The MDP is
 
--- 
-2.51.0
+I am speaking about hardware. What piece of hardware it implements and
+why sometimes it is RDMA MDP and sometimes it is not RDMA MDP, but only MDP.
 
+> a Data Pipeline and there could be multiple instances of the same
+> IP block, as seen in the original example.
+> 
+> The datasheet I have doesn't cover the "RDMA" block specifically, so
+> I can't say whether there is an actual difference between the two RDMA
+> blocks.
+> 
+> 
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
