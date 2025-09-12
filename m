@@ -4,62 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F3DECA101F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Sep 2025 15:06:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2896CCA101F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Sep 2025 17:37:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Cc:From:References:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=I+VmN6Gn+14mposRc1xx/W8m6ANkQhZP2Y3D1hs/cD8=; b=qo33zmm8EYhhF7
-	+9OtVmobCEyeOQ5e1+DDa7z6DfSb3MFZ2Lps7WZUmOA9jAM90gs9FHH+qte2r7srhXcF0VoICWtyc
-	Id75XRAnFcSHkawTIA3oWxD39ko/4rPQe/6ykTeTgjy7+Xx8zc9QTXgGx58Fx2PeT19VqsvWtIn/L
-	Dcp7/eOBJJUAZBpL/SkScAk2SOdqVfUFa5QFW8OU9W7ODiwXRxocbsrv9YetgCOFxzDy/csEeAF3H
-	A0HPQYTrkB+dsKQ92yztX3FUxZBv36ISFC4IrvZsmf7Ph5XPzxISxRe+p5pJtc/SgT26ExNo7T7s2
-	UPCmvxc2xCGQ1iV1cduA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WduIR7UcIOHgYH3Rqx7kIJwDU7ZqGo4A/G2mbz7Paug=; b=Nv7zJ+csbTzjuoQ9uCID2fOvrx
+	xRR87x+V/ZYvip4XG8s1DbPsmPkWFrRCpXA67QYQQQmOsVBKbYZnTw4bLZOnk3j/cHHSk4p0EeQLu
+	ZLsUdb7Bw3A1bVz7omdCInspRoFGVRqsibStiyd1nf5SGgbTR8fXiqk3JJsc4WZaSQlMeFSpcKJ4k
+	D1IEmah20YQ2aRuuj9LApBtf2MVxU8gZgqNbKTeEDHDI45oZpzGNb7WQQ1BF3SUk7CdrJ7yC9Kx6N
+	2Aj5426fGk7xdfRmr6iNjA2UwH1+H9si5PiDTD6MylDknOy/ScQgoJ0JkNI3F/KzKd7iGOTBOtQTh
+	zZ3GgjoQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ux5Lv-0000000A6ok-2aDo;
-	Fri, 12 Sep 2025 15:06:19 +0000
-Received: from smtp.forwardemail.net ([149.28.215.223])
+	id 1ux7i6-0000000Angw-03Ta;
+	Fri, 12 Sep 2025 17:37:22 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ux5Ls-0000000A6nb-3pxk
-	for linux-rockchip@lists.infradead.org;
-	Fri, 12 Sep 2025 15:06:18 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: Cc: From:
- References: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1757689574;
- bh=uob8b5KLOUrQDVTi7km+VRqS3YkUkDwBT/GyAbmxxlU=;
- b=MuLDl00Nif8EVkH9sT3lOo3N2Gxnajxg83zwvO9I7CwwS28Egujc0LdTNuqrO9KbMtD16dBRS
- mnQCz1nacoAIRuJZTlJ7b7KK/B7x7rOHkrUdE2rxv1BbDqZ2ppL91OheSyHF0I5SklP3yp55Sq2
- ItWMXueM1ItPojaZZ1ZgWXgVPYlHiQhUjyej0OwBOE5Xmx51Pc2hKJz+AkiPuQpudm2KEfY19xk
- DZklJ3iCmOuUkR3j+e+PHkW4fpY95ewiJ6xxKA9YUEz3cfMn2+Z+RL+bPgBGBVP6Np1saY/Yl4d
- gVxci1Acwiod9us7lXykIx3Ew/KJa8YRNzx/KeEAlYWA==
-X-Forward-Email-ID: 68c436e32be672a3b8e33f5d
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 149.28.215.223
-X-Forward-Email-Version: 1.2.14
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <0e852400-7cfc-437c-a3f4-ad2093c5b1e0@kwiboo.se>
-Date: Fri, 12 Sep 2025 17:06:08 +0200
+	id 1ux7i2-0000000AnfE-2ym6;
+	Fri, 12 Sep 2025 17:37:20 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1757698635;
+	bh=tjcSWmW/FLtaPaOYE0AhF4l+cmvCOfsmYIv1Yl4wLeY=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=hLnKdCg9IdpFTqd2bFHEW1X+2Bhorp0+ygrq5pomVadKqxKOeX67keW1iyRbRUHvm
+	 OCJ+5huJFG2c5OjbHw2ZZiy8NkABepAwBwSg8ljvWXSbmzIGMaqrNIJ+T3BVqKfH21
+	 B7TX9T0SZRTBGro1QN5d+ljCGvunDtV/yW3ww+mLWU+CCPovlXL09Sg3KLSEleZGJ9
+	 ix+Vv+GWB0xpz4KH8GTtxt5BgieAiaGmsdv+ol6uBkBSxbQxUP22zhppspVR70z/fp
+	 QAAVgjhRzwdXgMcRlGlpdNTU0KdsnUFP1PGvt4FcdrXjLtCpEGviBA7Iu2jBOpEM9m
+	 jmrs69oNcJb0w==
+Received: from [IPv6:2606:6d00:10:aee0::c41] (unknown [IPv6:2606:6d00:10:aee0::c41])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3052217E0F88;
+	Fri, 12 Sep 2025 19:37:14 +0200 (CEST)
+Message-ID: <694b9ba15cd67f41a38f4a65a3811f035cf8e99d.camel@collabora.com>
+Subject: Re: [PATCH v9 3/7] iommu: Add verisilicon IOMMU driver
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: =?ISO-8859-1?Q?J=F6rg_R=F6del?= <joro@8bytes.org>, Benjamin Gaignard
+	 <benjamin.gaignard@collabora.com>
+Cc: robin.murphy@arm.com, robh@kernel.org, krzk+dt@kernel.org, 
+	conor+dt@kernel.org, heiko@sntech.de, jgg@ziepe.ca, p.zabel@pengutronix.de,
+ 	mchehab@kernel.org, iommu@lists.linux.dev, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, kernel@collabora.com, 
+	linux-media@vger.kernel.org
+Date: Fri, 12 Sep 2025 13:37:11 -0400
+In-Reply-To: <vrngq76nnms3jyl5hnxqnkimjc6kil66o6fdyqn5vm3fpovmja@cfynipjw7ktp>
+References: <20250911155720.180465-1-benjamin.gaignard@collabora.com>
+	 <20250911155720.180465-4-benjamin.gaignard@collabora.com>
+	 <vrngq76nnms3jyl5hnxqnkimjc6kil66o6fdyqn5vm3fpovmja@cfynipjw7ktp>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+Organization: Collabora Canada
+User-Agent: Evolution 3.56.2 (3.56.2-1.fc42) 
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [v2,PATCH 2/5] RK3566 BTT Pi2 - Fix GMAC default delays.
-To: Andrey Leonchikov <andreil499@gmail.com>
-References: <20250910215451.2244192-1-andreil499@gmail.com>
- <20250910215451.2244192-3-andreil499@gmail.com>
-Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-Cc: linux-rockchip@lists.infradead.org
-In-Reply-To: <20250910215451.2244192-3-andreil499@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250912_080616_994763_7885FC58 
-X-CRM114-Status: GOOD (  11.66  )
+X-CRM114-CacheID: sfid-20250912_103718_921590_A3AC2F7C 
+X-CRM114-Status: GOOD (  20.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,50 +89,93 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============2350292065465364168=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Andrey,
 
-On 9/10/2025 11:54 PM, Andrey Leonchikov wrote:
-> Simple patch to avoid a warning on GMAC driver initialization.
-> Default values same to a manufacturer DTS.
-> Signed-off-by: Andrey Leonchikov <andreil499@gmail.com>
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-cb2.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-cb2.dtsi
-> index fdf7d00edf4d..d31b9bd54162 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-cb2.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-cb2.dtsi
-> @@ -265,6 +265,8 @@ &gmac1m0_rx_bus2
->  			&gmac1m0_rgmii_clk
->  			&gmac1m0_clkinout
->  			&gmac1m0_rgmii_bus>;
-> +	tx_delay = <0x19>;
-> +	rx_delay = <0x05>;
+--===============2350292065465364168==
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-kb9W2TmWeCI0uNYqiKHV"
 
-This is using phy-mode = rgmii-id, so tx/rx_delay should not be needed.
 
-Please do not add these just to avoid a warning by the driver, the
-driver should more likely be fixed not to warn about missing props.
+--=-kb9W2TmWeCI0uNYqiKHV
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Currently the driver wont apply these delays due to use of rgmii-id,
-however in future the driver may be changed to be able to use these
-props to apply a small delay on top of the PHY applied delay. I have
-patches for these in my local tree that is on my todo to send out.
+Hi,
 
-Please drop this patch to avoid new issues in the future.
+Le vendredi 12 septembre 2025 =C3=A0 13:47 +0200, J=C3=B6rg R=C3=B6del a =
+=C3=A9crit=C2=A0:
+> On Thu, Sep 11, 2025 at 05:57:13PM +0200, Benjamin Gaignard wrote:
+> > The Verisilicon IOMMU hardware block can be found in combination
+> > with Verisilicon hardware video codecs (encoders or decoders) on
+> > different SoCs.
+> > Enable it will allow us to use non contiguous memory allocators
+> > for Verisilicon video codecs.
+> >=20
+> > Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> > ---
+> > =C2=A0drivers/iommu/Kconfig=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0 11 +
+> > =C2=A0drivers/iommu/Makefile=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0 1 +
+> > =C2=A0drivers/iommu/vsi-iommu.c | 808 +++++++++++++++++++++++++++++++++=
++++++
+> > =C2=A0include/linux/vsi-iommu.h |=C2=A0 21 +
+> > =C2=A04 files changed, 841 insertions(+)
+> > =C2=A0create mode 100644 drivers/iommu/vsi-iommu.c
+> > =C2=A0create mode 100644 include/linux/vsi-iommu.h
+>=20
+> This will not go in before Will Deacons comment about code duplication wi=
+th the
+> Rockchip driver is addressed.
 
-Regards,
-Jonas
+So you'd like a new layer of ops to abstract the common parts of two driver=
+s ? I
+mean, I can see this happening for VSI/RK, but it seems rather pointless if=
+ in a
+year from now Jason get his new framework ready. Re-doing the ops if they c=
+ause
+too much duplicate seems like a better direction.
 
->  	status = "okay";
->  };
->  
+Benjamin already stated he'd be happy to port once there is enough example =
+and
+acceptability of the new code to do so. Why do mainline users have to suffe=
+r
+this ?
 
+To me this rejection isn't about Benjamin's driver, all iommu seems to look
+alike, so anyone else that would have sent new driver would have face the s=
+ame
+issue.
+
+Nicolas
+
+--=-kb9W2TmWeCI0uNYqiKHV
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaMRaSAAKCRDZQZRRKWBy
+9EjcAP9YQJHmhlXLbfNRAJNUDL3s+p3W5755kVTPrP+lUWAdDwD9GcfJeicvbrcm
+s0c4dwtEZdUQ2fXV0uGPXMCOR+CRWQ4=
+=RKhK
+-----END PGP SIGNATURE-----
+
+--=-kb9W2TmWeCI0uNYqiKHV--
+
+
+--===============2350292065465364168==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============2350292065465364168==--
+
