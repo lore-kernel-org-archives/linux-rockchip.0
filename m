@@ -4,65 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 443BACAC582
-	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Sep 2025 03:38:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95899CA101F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Sep 2025 06:06:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=6/yfEVmPw0D11MC9iOsaf1819HNAFeJx3vLwZGR/ekw=; b=qUkruwZAPE/BOF
-	pQggmBJfhCiXxvKeyhzsFLZYvalTRMp5j7C2skKWCxWAQs6f2DKGv3S3zDlHVdyh/tn/3vv0F6Dy3
-	NDdEK4/XtnuSDdGe87PwmGCtmKYhS6KBlXErdG0aglUosp/TqssGzb7dsZ/fHobnpj3qgfQkOVP39
-	WsrFj7enRlda7kXqdaBVhX616STG3eQrMWmzUw0zdm0/r18ouHUSEBfapxdwPuksulRWgUsl2jvfB
-	kPBt3tR0pAmYsgQ2JJNPpyW8/YWqelgGVi0blAnvU6Wb1els7yVHnBLAhJCNK/trZH7iI8A1Y0yDA
-	rMwk6DIjLmX4oIQBSx3A==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=pH+pVnCutr039E/QdXbG4gjWzXd6j+OyCq1480+Q0j4=; b=qw7IhkXb9wgJdH
+	wkBQwhT/ImWiWdQh9ElE7wJ2+Al4XGAtFXHjViL8b+rlJQKqO+UfTnoIharwVjwwHykXxrDlyJFLw
+	2Yx47OJrDe1mJ5NE/eaGBotKxGs1rD86zrtmtgvD1gqeL9z69CcHZwJQ26+bImdwjlQPItG6EzHyN
+	HHczhmLBR0C9ovECphmcJwD7SmdCrzV79lY6yxTnWP+FM78rbuxLNOVqq7TG+c4ExvhJIGHxeUpeV
+	kIFaM5hVZ1RYCaQI76/Cuwqx8A7xkWnCNNIqDIh9U0/68/qBu+eiQDbhVmmYX6iczHcGISc+lylcr
+	kNKAna9CAI2FvRGoH+OA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwubu-00000006nYd-1F3C;
-	Fri, 12 Sep 2025 03:38:06 +0000
-Received: from mail-m25477.xmail.ntesmail.com ([103.129.254.77])
+	id 1uwwvl-00000007IlO-39j9;
+	Fri, 12 Sep 2025 06:06:45 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwubq-00000006nVG-2AG1;
-	Fri, 12 Sep 2025 03:38:04 +0000
-Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 228cf42bf;
-	Fri, 12 Sep 2025 11:37:50 +0800 (GMT+08:00)
-From: Damon Ding <damon.ding@rock-chips.com>
-To: heiko@sntech.de,
-	andy.yan@rock-chips.com,
-	hjc@rock-chips.com
-Cc: maarten.lankhorst@linux.intel.com,
-	mripard@kernel.org,
-	tzimmermann@suse.de,
-	airlied@gmail.com,
-	simona@ffwll.ch,
-	dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Damon Ding <damon.ding@rock-chips.com>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>
-Subject: [PATCH v3] drm/rockchip: analogix_dp: Apply devm_clk_get_optional() for &rockchip_dp_device.grfclk
-Date: Fri, 12 Sep 2025 11:37:25 +0800
-Message-Id: <20250912033725.4054304-1-damon.ding@rock-chips.com>
-X-Mailer: git-send-email 2.34.1
+	id 1uwwvj-00000007Iks-3xPi;
+	Fri, 12 Sep 2025 06:06:44 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id C9573601AE;
+	Fri, 12 Sep 2025 06:06:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AA2BBC4CEF4;
+	Fri, 12 Sep 2025 06:06:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1757657202;
+	bh=nF4lItlwYcOfTnssRbtSp09OmwNC56e9ezNLiwIkcKE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=EJFK7rGzhfob+IekXtskHBj9H3/tlwfA5r6OsrA5/XqgADcxCkFG+wxRo3MQJ6Hj+
+	 e/nziZ9YO9zrEXEVmQwbi4lLgZH+TF9EK7O+x4jucMkwIMQWkaCZ8HpJy4f2jGu+dx
+	 GS7rYRGpg1nUATgMZlpUSlxYRolA2Gy41lBuh64hjod/AW9zpbR5J+RHwbCpLg3UOi
+	 6osILbswgGibrPTlCzKfqtVQlaQkt2/YHx8TWlkhdpizWmi89w9OMb3VSD4DxrVVZK
+	 ptWCx0Yw3lHjI8ztpwlRCRfDvNiunmUZCKtdQrmz0KV+KNxpim8XEq3dgfzQ8jSwrM
+	 1klI6eVNRA0gA==
+Date: Fri, 12 Sep 2025 08:06:39 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
+Cc: airlied@gmail.com, amergnat@baylibre.com, andrew+netdev@lunn.ch, 
+	andrew-ct.chen@mediatek.com, angelogioacchino.delregno@collabora.com, broonie@kernel.org, 
+	chunkuang.hu@kernel.org, conor+dt@kernel.org, davem@davemloft.net, 
+	dmitry.torokhov@gmail.com, edumazet@google.com, flora.fu@mediatek.com, heiko@sntech.de, 
+	houlong.wei@mediatek.com, jeesw@melfas.com, kernel@collabora.com, krzk+dt@kernel.org, 
+	kuba@kernel.org, lgirdwood@gmail.com, linus.walleij@linaro.org, 
+	louisalexis.eyraud@collabora.com, luiz.dentz@gmail.com, maarten.lankhorst@linux.intel.com, 
+	marcel@holtmann.org, matthias.bgg@gmail.com, mchehab@kernel.org, 
+	minghsiu.tsai@mediatek.com, mripard@kernel.org, p.zabel@pengutronix.de, pabeni@redhat.com, 
+	robh@kernel.org, sean.wang@kernel.org, simona@ffwll.ch, 
+	support.opensource@diasemi.com, tiffany.lin@mediatek.com, tzimmermann@suse.de, 
+	yunfei.dong@mediatek.com, devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org, 
+	linux-arm-kernel@lists.infradead.org, linux-bluetooth@vger.kernel.org, linux-gpio@vger.kernel.org, 
+	linux-input@vger.kernel.org, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-sound@vger.kernel.org, 
+	netdev@vger.kernel.org
+Subject: Re: [PATCH v2 01/12] dt-bindings: media: Convert MediaTek mt8173-mdp
+ bindings to DT schema
+Message-ID: <20250912-alluring-turaco-of-conversion-dca193@kuoka>
+References: <20250911151001.108744-1-ariel.dalessandro@collabora.com>
+ <20250911151001.108744-2-ariel.dalessandro@collabora.com>
 MIME-Version: 1.0
-X-HM-Tid: 0a993c0034cc03a3kunm74a946b99d0374
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGUgfQ1ZOSE9KTkoYHx9CHx1WFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=T6HBA5xoEntcxaxL1UxN5gxv62xuBDnFoO4RPii/PwIzDb4I4xGBN26QdOMZCfoDyG8kt+BKR7SdhdDsXfyU+A8GTsYSXLE4GNIGdJngnC8Yt8L7VBSVO2VXMlMxG6EERgJp9C1MMtnn6Scw5UmIfjYmXdpFgmosYrpio+6oEV8=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=0W+y5K8NTQvQx4kvJHari7pfRGCnr5lxmaUJ+MriK1E=;
-	h=date:mime-version:subject:message-id:from;
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250911_203803_077131_F48C07B4 
-X-CRM114-Status: UNSURE (   8.97  )
-X-CRM114-Notice: Please train this message.
+Content-Disposition: inline
+In-Reply-To: <20250911151001.108744-2-ariel.dalessandro@collabora.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,53 +84,166 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The "grf" clock is optional for Rockchip eDP controller(RK3399 needs
-while RK3288 and RK3588 do not).
+On Thu, Sep 11, 2025 at 12:09:50PM -0300, Ariel D'Alessandro wrote:
+> Convert the existing text-based DT bindings for MediaTek MT8173 Media Data
+> Path to a DT schema.
+> 
+> Signed-off-by: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
+> ---
+>  .../bindings/media/mediatek,mt8173-mdp.yaml   | 169 ++++++++++++++++++
+>  .../bindings/media/mediatek-mdp.txt           |  95 ----------
+>  2 files changed, 169 insertions(+), 95 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mt8173-mdp.yaml
+>  delete mode 100644 Documentation/devicetree/bindings/media/mediatek-mdp.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/media/mediatek,mt8173-mdp.yaml b/Documentation/devicetree/bindings/media/mediatek,mt8173-mdp.yaml
+> new file mode 100644
+> index 0000000000000..8ca33a733c478
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/media/mediatek,mt8173-mdp.yaml
+> @@ -0,0 +1,169 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/media/mediatek,mt8173-mdp.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek MT8173 Media Data Path
+> +
+> +maintainers:
+> +  - Ariel D'Alessandro <ariel.dalessandro@collabora.com>
+> +
+> +description:
+> +  Media Data Path is used for scaling and color space conversion.
+> +
+> +properties:
+> +  compatible:
+> +    oneOf:
+> +      - enum:
+> +          - mediatek,mt8173-mdp-rdma
+> +          - mediatek,mt8173-mdp-rsz
+> +          - mediatek,mt8173-mdp-wdma
+> +          - mediatek,mt8173-mdp-wrot
 
-It can make the code more consice to use devm_clk_get_optional()
-instead of devm_clk_get() with extra checks.
+Why there is no mediatek,mt8173-mdp here? What does this compatible
+represent?
 
-In addtion, DRM_DEV_ERROR() is replaced by dev_err_probe().
+> +      - items:
+> +          - const: mediatek,mt8173-mdp-rdma
 
-Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
-Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+Still suspicious. Device cannot be simulatanously: compatible and not
+compatible. This is not a well known cat that has superposition of two
+states, whenenver you look the other way.
 
-------
+Maybe the old binding was incorrect, maybe the in-tree DTS is incorrect.
+Whichever the reason, this must be investigated and documented, because
+by standard rules this is wrong. Each wrong code needs very clear
+explanations (and "someone did it" is not a good enough explanation).
 
-Changes in v2:
-- Replace DRM_DEV_ERROR() with dev_err_probe().
+> +          - const: mediatek,mt8173-mdp
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  clocks:
+> +    minItems: 1
+> +    maxItems: 2
+> +
+> +  power-domains:
+> +    maxItems: 1
+> +
+> +  iommus:
+> +    maxItems: 1
+> +
+> +  mediatek,vpu:
+> +    $ref: /schemas/types.yaml#/definitions/phandle
+> +    description:
+> +      phandle to Mediatek Video Processor Unit for HW Codec encode/decode and
+> +      image processing.
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - clocks
+> +  - power-domains
+> +
+> +allOf:
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            const: mediatek,mt8173-mdp-rdma
+> +    then:
+> +      properties:
+> +        clocks:
+> +          items:
+> +            - description: Main clock
+> +            - description: Mutex clock
+> +    else:
+> +      properties:
+> +        clocks:
+> +          items:
+> +            - description: Main clock
+> +
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            enum:
+> +              - mediatek,mt8173-mdp-rdma
+> +              - mediatek,mt8173-mdp-wdma
+> +              - mediatek,mt8173-mdp-wrot
+> +    then:
+> +      required:
+> +        - iommus
+> +
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            const: mediatek,mt8173-mdp
+> +    then:
+> +      required:
+> +        - mediatek,vpu
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/clock/mt8173-clk.h>
+> +    #include <dt-bindings/memory/mt8173-larb-port.h>
+> +    #include <dt-bindings/power/mt8173-power.h>
+> +
+> +    soc {
+> +        #address-cells = <2>;
+> +        #size-cells = <2>;
+> +
+> +        mdp_rdma0: rdma@14001000 {
+> +            compatible = "mediatek,mt8173-mdp-rdma",
+> +                         "mediatek,mt8173-mdp";
+> +            reg = <0 0x14001000 0 0x1000>;
+> +            clocks = <&mmsys CLK_MM_MDP_RDMA0>,
+> +                     <&mmsys CLK_MM_MUTEX_32K>;
+> +            power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+> +            iommus = <&iommu M4U_PORT_MDP_RDMA0>;
+> +            mediatek,vpu = <&vpu>;
+> +        };
+> +
+> +        mdp_rdma1: rdma@14002000 {
+> +            compatible = "mediatek,mt8173-mdp-rdma";
+> +            reg = <0 0x14002000 0 0x1000>;
+> +            clocks = <&mmsys CLK_MM_MDP_RDMA1>,
+> +                     <&mmsys CLK_MM_MUTEX_32K>;
+> +            power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+> +            iommus = <&iommu M4U_PORT_MDP_RDMA1>;
+> +        };
 
-Changes in v3:
-- Update Reviewed-by tag.
----
- drivers/gpu/drm/rockchip/analogix_dp-rockchip.c | 12 +++---------
- 1 file changed, 3 insertions(+), 9 deletions(-)
+My previous comment applies.
 
-diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-index d30f0983a53a..937f83cf42fc 100644
---- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-@@ -335,15 +335,9 @@ static int rockchip_dp_of_probe(struct rockchip_dp_device *dp)
- 		return PTR_ERR(dp->grf);
- 	}
- 
--	dp->grfclk = devm_clk_get(dev, "grf");
--	if (PTR_ERR(dp->grfclk) == -ENOENT) {
--		dp->grfclk = NULL;
--	} else if (PTR_ERR(dp->grfclk) == -EPROBE_DEFER) {
--		return -EPROBE_DEFER;
--	} else if (IS_ERR(dp->grfclk)) {
--		DRM_DEV_ERROR(dev, "failed to get grf clock\n");
--		return PTR_ERR(dp->grfclk);
--	}
-+	dp->grfclk = devm_clk_get_optional(dev, "grf");
-+	if (IS_ERR(dp->grfclk))
-+		return dev_err_probe(dev, PTR_ERR(dp->grfclk), "failed to get grf clock\n");
- 
- 	dp->pclk = devm_clk_get(dev, "pclk");
- 	if (IS_ERR(dp->pclk)) {
--- 
-2.34.1
+Keep one or two examples.
+
+Best regards,
+Krzysztof
 
 
 _______________________________________________
