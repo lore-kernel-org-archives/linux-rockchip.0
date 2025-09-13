@@ -4,79 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84B68CAC582
-	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Sep 2025 22:38:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD90DCAC592
+	for <linux-rockchip@archiver.kernel.org>; Sat, 13 Sep 2025 04:27:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OeJM9/Khh+nXRL+oHwEajdqxeV2IjFIPZ94vA0a8Ip4=; b=Zeo09VaS8ss9KR
-	NctvTuyIH1tTLmi6O+nZIWXIyTA359+OmnBf3cJB+ujbak4cRdb6IvcMjTgutYT0RENDbOJN3YHl2
-	EL8Gxor1iNxDxvAo0W2gsfubDUrOgw8X48ekloVDqcktglSxJmfu23tAfBPH1Vu5d7cBqo07iIJwu
-	aS9yRHlyuY3f1u1O6S6NnPvg8MTZuH4rIHN3g0xo0hODos/op5BU+JsXjiaI1l0hnLCKQlVCrRLWG
-	CIR2H7YTlLTOCX82j/aeSrhuhKpi8vYg9rgXaRuN1I1cLWsMoifOjTe7sexoWmMDLP64yi3unDjBs
-	zcKi0H4a5BwGxefiFMaQ==;
+	List-Owner; bh=f96s76EKrvh4E/PUXFf/YablMOBILbw8diRZmGgq+e0=; b=d71HPewr3/D33O
+	qdNWD+ikLXVEALSleZYDTF4DcYjrgUOHBPcm8508GHumk8c7dIk4moU4yELbZwC300re+WEtKUdt6
+	BNxXHYMwKhgzCk2prQv80tNE5X2CDXf2raGp8QpXi1VHaQDaMSkICxHeftFPtrW9fv5ILKC56WI7c
+	2ijv3beikG6kmlftsRkd2QNNt1pp8+B+S7lu5EINmouIp6UMJnxeqzCaNfDrdFSgkhP7VX7mHyyBR
+	67qIxiU0QZuKx91Tkyt16qoro1c5qiBvzLRs4EewLATxTraOLl5s+O0waNTzIbAoQMVnPt3H6HbzJ
+	GZLioOxI08F2m8vQsp9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uxCOz-0000000BtAa-3fz0;
-	Fri, 12 Sep 2025 22:37:57 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1uxHqZ-0000000D9AT-45Co;
+	Sat, 13 Sep 2025 04:26:47 +0000
+Received: from abb.hmeau.com ([180.181.231.80])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uxCOw-0000000Bt9G-0nOB;
-	Fri, 12 Sep 2025 22:37:55 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 6B716423C5;
-	Fri, 12 Sep 2025 22:37:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2214AC4CEF1;
-	Fri, 12 Sep 2025 22:37:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1757716673;
-	bh=B9UWbZGKGjcmdpBpJTHq4Bvu86HEtGMURBUQlAh+wng=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=TrVcwliJdziWcvEcLi0TVBaYRU0cqz+P0LkYP18PS4V8it1ba7cZ92zsa5Y3dzWLc
-	 YrEuOyNwShq0RR+1+3s/CzKz/FvAj8Dg2ILyM9zKHc+GxAcTbJRbF9zrHAxYtHAtWS
-	 nowrg87C3Mhu7Ma9MVTSiKPANaSzfmKeaaI+jiwqqKI/eFzfgCVIsx0GyGgRpB5mC/
-	 E1FV/bHUfiM/xWBXFUvAkeBLYpdn5iD18PAOpqzc3WdYh8uHA0QJpTs+ikEAG/Jg8A
-	 LroectmFESH23Jvjk8Jl5nAs0sIu7GliX4k4LL9XE6Kb1IBSFNtgZdkeRG9oO5IQJw
-	 v2hGeBjsKFJvA==
-Date: Fri, 12 Sep 2025 17:37:52 -0500
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
-Cc: luiz.dentz@gmail.com, kuba@kernel.org, airlied@gmail.com,
-	mripard@kernel.org, angelogioacchino.delregno@collabora.com,
-	linux-arm-kernel@lists.infradead.org,
-	maarten.lankhorst@linux.intel.com, tiffany.lin@mediatek.com,
-	houlong.wei@mediatek.com, minghsiu.tsai@mediatek.com,
-	lgirdwood@gmail.com, louisalexis.eyraud@collabora.com,
-	linus.walleij@linaro.org, devicetree@vger.kernel.org,
-	linux-input@vger.kernel.org, yunfei.dong@mediatek.com,
-	edumazet@google.com, linux-bluetooth@vger.kernel.org,
-	tzimmermann@suse.de, broonie@kernel.org, andrew+netdev@lunn.ch,
-	kernel@collabora.com, chunkuang.hu@kernel.org,
-	amergnat@baylibre.com, conor+dt@kernel.org, matthias.bgg@gmail.com,
-	support.opensource@diasemi.com, linux-rockchip@lists.infradead.org,
-	davem@davemloft.net, andrew-ct.chen@mediatek.com,
-	krzk+dt@kernel.org, p.zabel@pengutronix.de, sean.wang@kernel.org,
-	linux-kernel@vger.kernel.org, simona@ffwll.ch,
-	linux-mediatek@lists.infradead.org, marcel@holtmann.org,
-	dmitry.torokhov@gmail.com, dri-devel@lists.freedesktop.org,
-	pabeni@redhat.com, jeesw@melfas.com, mchehab@kernel.org,
-	linux-media@vger.kernel.org, flora.fu@mediatek.com,
-	linux-gpio@vger.kernel.org, heiko@sntech.de,
-	linux-sound@vger.kernel.org, netdev@vger.kernel.org
-Subject: Re: [PATCH v2 05/12] dt-bindings: display: mediatek,od: Add
- mediatek,gce-client-reg property
-Message-ID: <175771595983.1528737.3645378655142592974.robh@kernel.org>
-References: <20250911151001.108744-1-ariel.dalessandro@collabora.com>
- <20250911151001.108744-6-ariel.dalessandro@collabora.com>
+	id 1uxHqW-0000000D98q-1y4z;
+	Sat, 13 Sep 2025 04:26:45 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=hmeau.com;
+	s=formenos; h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+	List-Post:List-Owner:List-Archive;
+	bh=pMobyi7CHCAtrZXUZ+2PHke7JPIPiUB151O5SnfBnDY=; b=LGB7ip08oATk4jJqJ6nd/Rangi
+	PARRVwJTKrt9yL0xGwqYkE/mv351unpn+EQAoS2jJ5skaKm+WvXkmfAfqnleHyBylI16cQdc1okCz
+	Mnbr+9wJCoyKBA8dLh7iSZd6IFn06RGfvFH7AJCsy94lTnJ9kwdu3SODGn0SXSp5lwg55/P5mQz92
+	JVCmg3L1JlrLKmZtGYIrJlJHnGeZIWKz7eI01xG4VwYaw+5Pvn0SKbPGhrcpD5p8TG5MIj7ITIXFq
+	9RujF66I+8MUoynFdvSmy9pCaX4KGgIYhje5BVz3+JpORmhaW66sTyu3omRferKDBezm5NdOTRu4v
+	1pOq7BRg==;
+Received: from loth.rohan.me.apana.org.au ([192.168.167.2])
+	by formenos.hmeau.com with smtp (Exim 4.96 #2 (Debian))
+	id 1uxHat-0053nS-2d;
+	Sat, 13 Sep 2025 12:26:33 +0800
+Received: by loth.rohan.me.apana.org.au (sSMTP sendmail emulation); Sat, 13 Sep 2025 12:26:32 +0800
+Date: Sat, 13 Sep 2025 12:26:32 +0800
+From: Herbert Xu <herbert@gondor.apana.org.au>
+To: Thomas Fourier <fourier.thomas@gmail.com>
+Cc: stable@vger.kernel.org, Corentin Labbe <clabbe@baylibre.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Heiko Stuebner <heiko@sntech.de>, John Keeping <john@keeping.me.uk>,
+	linux-crypto@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] crypto: rockchip - Fix dma_unmap_sg() nents value
+Message-ID: <aMTyeGTWPgsFglQ-@gondor.apana.org.au>
+References: <20250903080648.614539-2-fourier.thomas@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20250911151001.108744-6-ariel.dalessandro@collabora.com>
+In-Reply-To: <20250903080648.614539-2-fourier.thomas@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250912_153754_252713_90961C24 
-X-CRM114-Status: GOOD (  12.48  )
+X-CRM114-CacheID: sfid-20250912_212644_509408_BBA28A1D 
+X-CRM114-Status: GOOD (  12.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,37 +76,22 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-On Thu, 11 Sep 2025 12:09:54 -0300, Ariel D'Alessandro wrote:
-> Currently, users of Mediatek OD (display overdrive) DT bindings set
-> mediatek,gce-client-reg node property, which is missing from the DT schema.
+On Wed, Sep 03, 2025 at 10:06:46AM +0200, Thomas Fourier wrote:
+> The dma_unmap_sg() functions should be called with the same nents as the
+> dma_map_sg(), not the value the map function returned.
 > 
-> For example, device tree arch/arm64/boot/dts/mediatek/mt8173.dtsi is
-> causing the following dtb check error:
-> 
-> ```
-> $ make CHECK_DTBS=y mediatek/mt8173-elm.dtb
->    SCHEMA  Documentation/devicetree/bindings/processed-schema.json
->    DTC [C] arch/arm64/boot/dts/mediatek/mt8173-elm.dtb
-> [...]
-> arch/arm64/boot/dts/mediatek/mt8173-elm.dtb: od@14023000
-> (mediatek,mt8173-disp-od): 'mediatek,gce-client-reg' does not match
-> any of the regexes: '^pinctrl-[0-9]+$'
-> ```
-> 
-> This commit adds the missing node property in the DT schema and updates the
-> example as well.
-> 
-> Signed-off-by: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
+> Fixes: 57d67c6e8219 ("crypto: rockchip - rework by using crypto_engine")
+> Cc: <stable@vger.kernel.org>
+> Signed-off-by: Thomas Fourier <fourier.thomas@gmail.com>
 > ---
->  .../bindings/display/mediatek/mediatek,od.yaml     | 14 ++++++++++++++
->  1 file changed, 14 insertions(+)
-> 
+>  drivers/crypto/rockchip/rk3288_crypto_ahash.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
-I fixed up the commit msg with Krzysztof's comments and applied both 
-display patches. Thanks!
-
-Rob
+Patch applied.  Thanks.
+-- 
+Email: Herbert Xu <herbert@gondor.apana.org.au>
+Home Page: http://gondor.apana.org.au/~herbert/
+PGP Key: http://gondor.apana.org.au/~herbert/pubkey.txt
 
 _______________________________________________
 Linux-rockchip mailing list
