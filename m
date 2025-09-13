@@ -4,66 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE306CAC58E
-	for <linux-rockchip@archiver.kernel.org>; Sat, 13 Sep 2025 05:58:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C715CAC587
+	for <linux-rockchip@archiver.kernel.org>; Sat, 13 Sep 2025 14:52:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hXNy7ucD+SGJClsg3YlApU8ON5vOOp/yykS3HfqEPAM=; b=g+tXJycZJe9Gko
-	1Z0mIQkn+sdajlNTrn2NssZeWPo2VbuXXwwBNRI57AAUTZIL30jIvkOsXkSvee0/wsEWYuVZ1i7Un
-	jP7Z7aBjzge5t8c12VxdJdrWABv2JLpOSRMLSxsjiA/inWiOk9rfkxi/CgWu15AQWpWhrHce9MEtM
-	EO8FnGBx7E5qJeKoR9qAJ41p1/kHN6qrg7ldlBa+QL2i7ksb9tWRq+uDCsabtI8nFsEty+kvdm8d3
-	Yok1uwZwz/cNMhFAUTUkFsVSl2IhVyMrBTYk4lJqrSryUDaNpbZhdMVN6V4ujTnNZ0Kwdad62qAAd
-	BL/i/aiZ/GvcGzu15iBg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:References:To:From:Subject:Cc:Message-Id:Date:Mime-Version:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=oxry1aH+a7pCUo0lKTWd0c2o0AX/atCon54HbSM3vq4=; b=lvito3+/HG6vjTz6DGNirI5yQY
+	OesdSpLXbF4kGOldEQ02pKsbJFQ+YYQjOMCUiU37pJePmYw1vvvJSgdqen7m3whjEd6dZFSwWb/Qa
+	VAwpVjnU62A2iXHU9qd2C6RgPev48JgIxRdKPvuppT4fpIzT4I29rCwRv40vMnkUA/T0w1max8Od5
+	H7yPAN/XfjkEOFj/qDgRqExztN7AuDk27JNepubw/mzq1LghDwnh6VzxJ8wunuMHO62BjY0zF+B2V
+	UVoNF+sD+DF+K94IXI+X0RMn1Q+KGjaGC5Alysy9/9iARB0FReHD8dhq95VFi1M9BN3/8hRH4jn+L
+	6PrSC7ag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uxJH3-0000000DQk9-3RW8;
-	Sat, 13 Sep 2025 05:58:13 +0000
-Received: from mail.8bytes.org ([2a01:238:42d9:3f00:e505:6202:4f0c:f051])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uxJH0-0000000DQix-37WS;
-	Sat, 13 Sep 2025 05:58:12 +0000
-Received: from 8bytes.org (p54921b16.dip0.t-ipconnect.de [84.146.27.22])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mail.8bytes.org (Postfix) with ESMTPSA id 20DBB4FD40;
-	Sat, 13 Sep 2025 07:58:06 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=8bytes.org;
-	s=default; t=1757743086;
-	bh=TdTQRlOgkFFp121tWctGOE7zJMN8424tRrjVZduIikg=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=XqK1+UPuImxMQZCxA6SMPJbtwsVcWCAEAh20urbbjeTj7wMT+Sv/Pfi6Luy1xLiJB
-	 K4wYK1jOR9pgBY4L/Z+Hifkxw4YopSYDUrHwlrgPTBeytduGK1/BEJG1rVUjO46x/m
-	 It4hn6eb/zBK1bX/ddQEjFCD0xWQqbohk+ZnuCQgdtSsZyaEGznKDVbS2Nv3uVqLls
-	 6T3cqm32KoGrl6CT1weUyJ2Gl1KkhRgNGuJd0gERBjHseLnsxapr/baWqBostSLSxR
-	 G45QWT5TqIuGRW/J7eTwrH0PUeDSj+ENwVNo36DdZK7uHzSx4Xrkh1XJdLQwC5xlqD
-	 T0WyvAhR7p0WQ==
-Date: Sat, 13 Sep 2025 07:58:04 +0200
-From: =?utf-8?B?SsO2cmcgUsO2ZGVs?= <joro@8bytes.org>
-To: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Cc: Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
-	robin.murphy@arm.com, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
-	heiko@sntech.de, jgg@ziepe.ca, p.zabel@pengutronix.de, mchehab@kernel.org, 
-	iommu@lists.linux.dev, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, kernel@collabora.com, 
-	linux-media@vger.kernel.org, Will Deacon <will@kernel.org>
-Subject: Re: [PATCH v9 3/7] iommu: Add verisilicon IOMMU driver
-Message-ID: <rt6nvgazcl6mvyy4iuut3n7irf72t7rex2iwabbkuxp7cdvez5@2nanenqgxjdy>
-References: <20250911155720.180465-1-benjamin.gaignard@collabora.com>
- <20250911155720.180465-4-benjamin.gaignard@collabora.com>
- <vrngq76nnms3jyl5hnxqnkimjc6kil66o6fdyqn5vm3fpovmja@cfynipjw7ktp>
- <694b9ba15cd67f41a38f4a65a3811f035cf8e99d.camel@collabora.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <694b9ba15cd67f41a38f4a65a3811f035cf8e99d.camel@collabora.com>
+	id 1uxRc3-0000000F8iA-0PVU;
+	Sat, 13 Sep 2025 14:52:27 +0000
+Received: from out-183.mta0.migadu.com ([2001:41d0:1004:224b::b7])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uxRbz-0000000F8fW-1n7P
+	for linux-rockchip@lists.infradead.org;
+	Sat, 13 Sep 2025 14:52:24 +0000
+Mime-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
+	t=1757775131;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=u9ePjJ+3Yd0yus3dXLpNzr9sgV/Y9hlh3yRlAMIYJAI=;
+	b=xGd16U1/xe2ZbKz1tU1pFxVGBXvR7c1+zH1KwDgLwKzjXW4090gcDxzsrDfeKvh2fSNFB9
+	/d3VU98n6oNWbo8B/ueJEGsiZqiH05SGJV92h0IkHSKnhg8YRUlXO+lj1Tq2tfn2aurNTI
+	14QFTVRJ2sphVtlrVcBPRQwor1jQ5x4qjY4wOXI+UnzdY4gG1UnJSe4GIowqu8liNW2tSW
+	1YwWBNHuD6t9WGsIVfWcR52pA/xKXCfDt4Csoc3jsQX2uZD+KVdHPzQjnUgBsy/Nsvz6fq
+	Q6x5vyTzTFNaCy5P6kLHhumTVyyef+vNurKFpqoxWwylj8lbBFeukue0TFhdUQ==
+Date: Sat, 13 Sep 2025 16:51:59 +0200
+Message-Id: <DCRR9XY9MT2L.3JSK4SYGMT57R@cknow.org>
+Cc: "Alex Bee" <knaerzche@gmail.com>, "Nicolas Dufresne"
+ <nicolas.dufresne@collabora.com>, <linux-media@vger.kernel.org>,
+ <linux-rockchip@lists.infradead.org>, <devicetree@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ "Christian Hewitt" <christianshewitt@gmail.com>
+Subject: Re: [PATCH v3 0/7] media: rkvdec: Add HEVC backend
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Diederik de Haas" <didi.debian@cknow.org>
+To: "Jonas Karlman" <jonas@kwiboo.se>, "Ezequiel Garcia"
+ <ezequiel@vanguardiasur.com.ar>, "Detlev Casanova"
+ <detlev.casanova@collabora.com>, "Mauro Carvalho Chehab"
+ <mchehab@kernel.org>
+References: <20250905161942.3759717-1-jonas@kwiboo.se>
+In-Reply-To: <20250905161942.3759717-1-jonas@kwiboo.se>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250912_225810_997722_171DEC91 
-X-CRM114-Status: UNSURE (   7.51  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250913_075223_739657_46305A40 
+X-CRM114-Status: GOOD (  19.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,28 +70,140 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============0918383191594247144=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-[Adding Will back to Cc]
+--===============0918383191594247144==
+Content-Type: multipart/signed;
+ boundary=1977ff6ca28b4e071a2b6e2b88836eddf7e93d59c95b5f0edf7cdc5cadb9;
+ micalg=pgp-sha512; protocol="application/pgp-signature"
 
-On Fri, Sep 12, 2025 at 01:37:11PM -0400, Nicolas Dufresne wrote:
-> To me this rejection isn't about Benjamin's driver, all iommu seems to look
-> alike, so anyone else that would have sent new driver would have face the same
-> issue.
+--1977ff6ca28b4e071a2b6e2b88836eddf7e93d59c95b5f0edf7cdc5cadb9
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
 
-This is about ignoring comments from one of the IOMMU maintainers. I am not
-going to merge a driver with open comments/objections[1] from Will (and a few
-others), so resolve this with him and get his Ack.
+On Fri Sep 5, 2025 at 6:19 PM CEST, Jonas Karlman wrote:
+> This series add a HEVC backend to the Rockchip Video Decoder driver.
+
+I did some testing and the TL;DR version is:
+
+Tested-by: Diederik de Haas <didi.debian@cknow.org>  # Rock64, RockPro64, Q=
+uartz64-B, NanoPi R5S
+
+Now for the long version ;-P
+
+I built a 5.17-rc5 kernel with this patch set [1], which was based upon
+linuxtv's next branch, so I just took all their commits on 2025-09-07.
+Then rebased Detlev's rkvdec patch set on top of that.
+As I have quite a few rk356x based devices and there wasn't a DT patch
+to enable rkvdec2, I 'assembled' my own one. (And some more patches)
+
+I have a patched ffmpeg [2] and with its -dev libraries built a patched
+mpv [3]. Installed that onto (mostly) Debian Forky systems with mesa
+25.2.2 and sway 1.11. I have a number of test files which are provided
+via NFS so storage device wouldn't matter and it's also what I use with
+LibreELEC (both 12.2 as 12.90.1 provided by 'chewitt').
+And then I went on to perform the same tests on these devices:
+
+1) Pine64 Rock64 (rk3328)
+2) Pine64 RockPro64 (rk3399)
+3) Pine64 Quartz64 Model B (rk3566) *
+4) FriendlyELEC NanoPi R5S (rk3568) *
+
+*) I blacklisted the hantro driver
+
+My testing showed that the 'classical' Big Buck Bunny video worked the
+best for testing ... meaning it caused the most 'problems'.
+I used the 'Standard 2D' 'Full HD (1920x1080)' '60 fps' version which
+you can download from [4]. That'll give you an 8-bit encoded x264
+version of that video. I have converted that video to x265 with a script
+I wrote (quite) a while ago [5]; instructions near the end of that
+script (no hdr no resize 'branch' about $TENBIT_PARAMS).
+That resulted in 2 test files:
+a) bbb_sunflower_1080p_60fps_normal.x265.cf24.slow.8bit.mp4
+b) bbb_sunflower_1080p_60fps_normal.x265.cf24.medium.10bit.mp4
+
+Testing went as follows:
+I logged into the device, started sway and opened a 'foot' terminal and
+navigated to my NFS share with the test files. Then I used
+
+  mpv --hwdec=3Dv4l2request <video-file> [--fullscreen=3Dyes]
+
+Without the 'fullscreen' param it shows the video in the right part of
+the screen (1080p monitor), while the left part shows mpv's output.
+This made it easy to see 'dropped frames' and any audio delay.
+I played each file twice, one using half the screen and one fullscreen.
+
+This had less of an effect then I expected; only in a few cases it
+'pushed it over the edge' and the only real effect was with Rock64 ...
+which being the least powerful is (kinda) expected.
+
+The results of the 10-bit x265 files was uniform: only a blue screen was
+visible and OSD (with 'I' or 'O' in mpv) didn't work. Interestingly it
+also had no frame drops ... except when doing 'I' (with no visible
+effect), then it dropped a couple of frames (one time quite a few).
+Mpv showed this error message each time:
+[vo/gpu] Initializing texture for hardware decoding failed
+
+For the 8-bit x265 file, the results were more varied:
+- On Rock64 HW accel worked, but the videos had a red 'glare' over them.
+  None of the other devices had that, so maybe related to 'lima'?
+  On LE it did NOT have the red glare. It did seem to have quite a bit
+  of trouble starting it
+- On Rock64 it dropped 970 frames in 60 secs and 2480 in fullscreen.
+  This resulted in quite a shockery display and noticeable artifacts.
+  That was not (or at least a whole lot less) the case with LE.
+- On the other devices there was not much difference in dropped frames
+  when it came to windowed vs full-screen, but the frame drops were
+  quite high ~2000 when HW accelerated and up to ~3000 when not
+  I got the impression that ~3Mbps bitrate was a tipping point.
+- The original BBB file (thus x264) had a similar high frame drop rate,
+  so the problem seems unrelated to this patch set
+- Audio delay was sometimes huge (>60 secs after 60 secs :-O), and HW
+  acceleration fixed that (due to free 'CPU' capacity?)
+
+The 'scores' for my other test files were actually quite good \o/
+All my video were HW accelerated; 8-bit with nv12 worked good while
+10-bit with nv15 was very blue. But all were corrected detected.
+
+So IMO this is a massive improvement! Thanks a LOT :-D
+
+Cheers,
+  Diederik
+
+[1] https://salsa.debian.org/diederik/linux/-/tree/cknow/media-next
+(Salsa CI fails as it can't deal with the ~ in 6.17~rc5)
+[2] https://salsa.debian.org/diederik/ffmpeg/-/tree/v4l2request-2025-v3-rkv=
+dec-n7.1
+[3] https://salsa.debian.org/diederik/mpv/-/tree/v4l2request-support
+[4] http://bbb3d.renderfarming.net/download.html
+[5] https://paste.sr.ht/~diederik/52b81ebc4c14b5146eb9b687bb1e8c1d62787991
+
+--1977ff6ca28b4e071a2b6e2b88836eddf7e93d59c95b5f0edf7cdc5cadb9
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaMWFEwAKCRDXblvOeH7b
+bgaMAQDSV7WBRzhLckmCR13bF/J2ijaueIDTC+eBIfrBN6GE+gD9G+PoK+5Pfngy
+Vo3RPYc+L8VodVWniGaQmL1sOUOZuwo=
+=A6/3
+-----END PGP SIGNATURE-----
+
+--1977ff6ca28b4e071a2b6e2b88836eddf7e93d59c95b5f0edf7cdc5cadb9--
 
 
-	Joerg
-
-[1] https://lore.kernel.org/all/aMAno-DkDJumcAtj@willie-the-truck/
+--===============0918383191594247144==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============0918383191594247144==--
+
