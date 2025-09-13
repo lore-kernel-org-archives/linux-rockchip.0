@@ -4,62 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD90DCAC592
-	for <linux-rockchip@archiver.kernel.org>; Sat, 13 Sep 2025 04:27:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE306CAC58E
+	for <linux-rockchip@archiver.kernel.org>; Sat, 13 Sep 2025 05:58:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=f96s76EKrvh4E/PUXFf/YablMOBILbw8diRZmGgq+e0=; b=d71HPewr3/D33O
-	qdNWD+ikLXVEALSleZYDTF4DcYjrgUOHBPcm8508GHumk8c7dIk4moU4yELbZwC300re+WEtKUdt6
-	BNxXHYMwKhgzCk2prQv80tNE5X2CDXf2raGp8QpXi1VHaQDaMSkICxHeftFPtrW9fv5ILKC56WI7c
-	2ijv3beikG6kmlftsRkd2QNNt1pp8+B+S7lu5EINmouIp6UMJnxeqzCaNfDrdFSgkhP7VX7mHyyBR
-	67qIxiU0QZuKx91Tkyt16qoro1c5qiBvzLRs4EewLATxTraOLl5s+O0waNTzIbAoQMVnPt3H6HbzJ
-	GZLioOxI08F2m8vQsp9Q==;
+	List-Owner; bh=hXNy7ucD+SGJClsg3YlApU8ON5vOOp/yykS3HfqEPAM=; b=g+tXJycZJe9Gko
+	1Z0mIQkn+sdajlNTrn2NssZeWPo2VbuXXwwBNRI57AAUTZIL30jIvkOsXkSvee0/wsEWYuVZ1i7Un
+	jP7Z7aBjzge5t8c12VxdJdrWABv2JLpOSRMLSxsjiA/inWiOk9rfkxi/CgWu15AQWpWhrHce9MEtM
+	EO8FnGBx7E5qJeKoR9qAJ41p1/kHN6qrg7ldlBa+QL2i7ksb9tWRq+uDCsabtI8nFsEty+kvdm8d3
+	Yok1uwZwz/cNMhFAUTUkFsVSl2IhVyMrBTYk4lJqrSryUDaNpbZhdMVN6V4ujTnNZ0Kwdad62qAAd
+	BL/i/aiZ/GvcGzu15iBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uxHqZ-0000000D9AT-45Co;
-	Sat, 13 Sep 2025 04:26:47 +0000
-Received: from abb.hmeau.com ([180.181.231.80])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uxHqW-0000000D98q-1y4z;
-	Sat, 13 Sep 2025 04:26:45 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=hmeau.com;
-	s=formenos; h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
-	List-Post:List-Owner:List-Archive;
-	bh=pMobyi7CHCAtrZXUZ+2PHke7JPIPiUB151O5SnfBnDY=; b=LGB7ip08oATk4jJqJ6nd/Rangi
-	PARRVwJTKrt9yL0xGwqYkE/mv351unpn+EQAoS2jJ5skaKm+WvXkmfAfqnleHyBylI16cQdc1okCz
-	Mnbr+9wJCoyKBA8dLh7iSZd6IFn06RGfvFH7AJCsy94lTnJ9kwdu3SODGn0SXSp5lwg55/P5mQz92
-	JVCmg3L1JlrLKmZtGYIrJlJHnGeZIWKz7eI01xG4VwYaw+5Pvn0SKbPGhrcpD5p8TG5MIj7ITIXFq
-	9RujF66I+8MUoynFdvSmy9pCaX4KGgIYhje5BVz3+JpORmhaW66sTyu3omRferKDBezm5NdOTRu4v
-	1pOq7BRg==;
-Received: from loth.rohan.me.apana.org.au ([192.168.167.2])
-	by formenos.hmeau.com with smtp (Exim 4.96 #2 (Debian))
-	id 1uxHat-0053nS-2d;
-	Sat, 13 Sep 2025 12:26:33 +0800
-Received: by loth.rohan.me.apana.org.au (sSMTP sendmail emulation); Sat, 13 Sep 2025 12:26:32 +0800
-Date: Sat, 13 Sep 2025 12:26:32 +0800
-From: Herbert Xu <herbert@gondor.apana.org.au>
-To: Thomas Fourier <fourier.thomas@gmail.com>
-Cc: stable@vger.kernel.org, Corentin Labbe <clabbe@baylibre.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Heiko Stuebner <heiko@sntech.de>, John Keeping <john@keeping.me.uk>,
-	linux-crypto@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] crypto: rockchip - Fix dma_unmap_sg() nents value
-Message-ID: <aMTyeGTWPgsFglQ-@gondor.apana.org.au>
-References: <20250903080648.614539-2-fourier.thomas@gmail.com>
+	id 1uxJH3-0000000DQk9-3RW8;
+	Sat, 13 Sep 2025 05:58:13 +0000
+Received: from mail.8bytes.org ([2a01:238:42d9:3f00:e505:6202:4f0c:f051])
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uxJH0-0000000DQix-37WS;
+	Sat, 13 Sep 2025 05:58:12 +0000
+Received: from 8bytes.org (p54921b16.dip0.t-ipconnect.de [84.146.27.22])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mail.8bytes.org (Postfix) with ESMTPSA id 20DBB4FD40;
+	Sat, 13 Sep 2025 07:58:06 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=8bytes.org;
+	s=default; t=1757743086;
+	bh=TdTQRlOgkFFp121tWctGOE7zJMN8424tRrjVZduIikg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=XqK1+UPuImxMQZCxA6SMPJbtwsVcWCAEAh20urbbjeTj7wMT+Sv/Pfi6Luy1xLiJB
+	 K4wYK1jOR9pgBY4L/Z+Hifkxw4YopSYDUrHwlrgPTBeytduGK1/BEJG1rVUjO46x/m
+	 It4hn6eb/zBK1bX/ddQEjFCD0xWQqbohk+ZnuCQgdtSsZyaEGznKDVbS2Nv3uVqLls
+	 6T3cqm32KoGrl6CT1weUyJ2Gl1KkhRgNGuJd0gERBjHseLnsxapr/baWqBostSLSxR
+	 G45QWT5TqIuGRW/J7eTwrH0PUeDSj+ENwVNo36DdZK7uHzSx4Xrkh1XJdLQwC5xlqD
+	 T0WyvAhR7p0WQ==
+Date: Sat, 13 Sep 2025 07:58:04 +0200
+From: =?utf-8?B?SsO2cmcgUsO2ZGVs?= <joro@8bytes.org>
+To: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Cc: Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
+	robin.murphy@arm.com, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
+	heiko@sntech.de, jgg@ziepe.ca, p.zabel@pengutronix.de, mchehab@kernel.org, 
+	iommu@lists.linux.dev, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, kernel@collabora.com, 
+	linux-media@vger.kernel.org, Will Deacon <will@kernel.org>
+Subject: Re: [PATCH v9 3/7] iommu: Add verisilicon IOMMU driver
+Message-ID: <rt6nvgazcl6mvyy4iuut3n7irf72t7rex2iwabbkuxp7cdvez5@2nanenqgxjdy>
+References: <20250911155720.180465-1-benjamin.gaignard@collabora.com>
+ <20250911155720.180465-4-benjamin.gaignard@collabora.com>
+ <vrngq76nnms3jyl5hnxqnkimjc6kil66o6fdyqn5vm3fpovmja@cfynipjw7ktp>
+ <694b9ba15cd67f41a38f4a65a3811f035cf8e99d.camel@collabora.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20250903080648.614539-2-fourier.thomas@gmail.com>
+In-Reply-To: <694b9ba15cd67f41a38f4a65a3811f035cf8e99d.camel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250912_212644_509408_BBA28A1D 
-X-CRM114-Status: GOOD (  12.16  )
+X-CRM114-CacheID: sfid-20250912_225810_997722_171DEC91 
+X-CRM114-Status: UNSURE (   7.51  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,22 +80,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 03, 2025 at 10:06:46AM +0200, Thomas Fourier wrote:
-> The dma_unmap_sg() functions should be called with the same nents as the
-> dma_map_sg(), not the value the map function returned.
-> 
-> Fixes: 57d67c6e8219 ("crypto: rockchip - rework by using crypto_engine")
-> Cc: <stable@vger.kernel.org>
-> Signed-off-by: Thomas Fourier <fourier.thomas@gmail.com>
-> ---
->  drivers/crypto/rockchip/rk3288_crypto_ahash.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+[Adding Will back to Cc]
 
-Patch applied.  Thanks.
--- 
-Email: Herbert Xu <herbert@gondor.apana.org.au>
-Home Page: http://gondor.apana.org.au/~herbert/
-PGP Key: http://gondor.apana.org.au/~herbert/pubkey.txt
+On Fri, Sep 12, 2025 at 01:37:11PM -0400, Nicolas Dufresne wrote:
+> To me this rejection isn't about Benjamin's driver, all iommu seems to look
+> alike, so anyone else that would have sent new driver would have face the same
+> issue.
+
+This is about ignoring comments from one of the IOMMU maintainers. I am not
+going to merge a driver with open comments/objections[1] from Will (and a few
+others), so resolve this with him and get his Ack.
+
+
+	Joerg
+
+[1] https://lore.kernel.org/all/aMAno-DkDJumcAtj@willie-the-truck/
 
 _______________________________________________
 Linux-rockchip mailing list
