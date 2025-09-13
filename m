@@ -4,61 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C715CAC587
-	for <linux-rockchip@archiver.kernel.org>; Sat, 13 Sep 2025 14:52:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EE92CAC58E
+	for <linux-rockchip@archiver.kernel.org>; Sat, 13 Sep 2025 14:59:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:References:To:From:Subject:Cc:Message-Id:Date:Mime-Version:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oxry1aH+a7pCUo0lKTWd0c2o0AX/atCon54HbSM3vq4=; b=lvito3+/HG6vjTz6DGNirI5yQY
-	OesdSpLXbF4kGOldEQ02pKsbJFQ+YYQjOMCUiU37pJePmYw1vvvJSgdqen7m3whjEd6dZFSwWb/Qa
-	VAwpVjnU62A2iXHU9qd2C6RgPev48JgIxRdKPvuppT4fpIzT4I29rCwRv40vMnkUA/T0w1max8Od5
-	H7yPAN/XfjkEOFj/qDgRqExztN7AuDk27JNepubw/mzq1LghDwnh6VzxJ8wunuMHO62BjY0zF+B2V
-	UVoNF+sD+DF+K94IXI+X0RMn1Q+KGjaGC5Alysy9/9iARB0FReHD8dhq95VFi1M9BN3/8hRH4jn+L
-	6PrSC7ag==;
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rnuqTSNL99HuwugYWHQ5/b8aDlc2oYKCsKuUnoDtM/4=; b=R06vXV8ROVoLwb8KZ25U9xN3Dn
+	8kpGmc+aKM5IxrqkEFcWd8E1GTLvUnVFoKhx4SsKMujjYjYB6pBHiRZM7Q51puSNZ6FfQgFUwDzgI
+	Cz0ykHyjOM8qq6kmBdjT2XSBd2c63Utf+B8Vh6wWFF5Vb/3KsZ7yLj9j/LHFPkIBZvHo1G/G9X3vj
+	iCPCjwDJ8ZnTlS4yMuuKOxOvEEkpchwjRP7dmIlkZJhZvpH8J83SruFyod/Kq/bj/f/pP76nwxAnQ
+	jN3c7tagSiH9T7S+2OwT2iR4fMSHhYEA9VfpWCs63XmJzWxgV3pStuzOUW8tZ4Q3uJgZihW/XmvUJ
+	mIJy+vjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uxRc3-0000000F8iA-0PVU;
-	Sat, 13 Sep 2025 14:52:27 +0000
-Received: from out-183.mta0.migadu.com ([2001:41d0:1004:224b::b7])
+	id 1uxRiN-0000000F9wF-3dzY;
+	Sat, 13 Sep 2025 14:58:59 +0000
+Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uxRbz-0000000F8fW-1n7P
+	id 1uxRiL-0000000F9vb-0H5P
 	for linux-rockchip@lists.infradead.org;
-	Sat, 13 Sep 2025 14:52:24 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1757775131;
+	Sat, 13 Sep 2025 14:58:58 +0000
+MIME-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1757775533;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=u9ePjJ+3Yd0yus3dXLpNzr9sgV/Y9hlh3yRlAMIYJAI=;
-	b=xGd16U1/xe2ZbKz1tU1pFxVGBXvR7c1+zH1KwDgLwKzjXW4090gcDxzsrDfeKvh2fSNFB9
-	/d3VU98n6oNWbo8B/ueJEGsiZqiH05SGJV92h0IkHSKnhg8YRUlXO+lj1Tq2tfn2aurNTI
-	14QFTVRJ2sphVtlrVcBPRQwor1jQ5x4qjY4wOXI+UnzdY4gG1UnJSe4GIowqu8liNW2tSW
-	1YwWBNHuD6t9WGsIVfWcR52pA/xKXCfDt4Csoc3jsQX2uZD+KVdHPzQjnUgBsy/Nsvz6fq
-	Q6x5vyTzTFNaCy5P6kLHhumTVyyef+vNurKFpqoxWwylj8lbBFeukue0TFhdUQ==
-Date: Sat, 13 Sep 2025 16:51:59 +0200
-Message-Id: <DCRR9XY9MT2L.3JSK4SYGMT57R@cknow.org>
-Cc: "Alex Bee" <knaerzche@gmail.com>, "Nicolas Dufresne"
- <nicolas.dufresne@collabora.com>, <linux-media@vger.kernel.org>,
- <linux-rockchip@lists.infradead.org>, <devicetree@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- "Christian Hewitt" <christianshewitt@gmail.com>
-Subject: Re: [PATCH v3 0/7] media: rkvdec: Add HEVC backend
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <didi.debian@cknow.org>
-To: "Jonas Karlman" <jonas@kwiboo.se>, "Ezequiel Garcia"
- <ezequiel@vanguardiasur.com.ar>, "Detlev Casanova"
- <detlev.casanova@collabora.com>, "Mauro Carvalho Chehab"
- <mchehab@kernel.org>
-References: <20250905161942.3759717-1-jonas@kwiboo.se>
-In-Reply-To: <20250905161942.3759717-1-jonas@kwiboo.se>
-X-Migadu-Flow: FLOW_OUT
+	bh=+5jwSKeeVhbyxCeZDjneeFIe3fHalvS3K5R1Gi0JYkE=;
+	b=vtGDzGIHWoL0W1ocEKrmPntnGS1MpZBrd/8cU5FUGqFIO9yR0W2oaOW/koFh+aDdCAF1sU
+	57JYHCmQjXoIRI+zrj5f7MpiP27jBlRJ/pbYz91PHm3mGGmQlAfITfAcomhVcJJOrzQxKl
+	I1bqRH4qDnUjwxqBhfoOr6VMNLxPTlh1Y7vwg2PorwyZv4pRA45HLZ8WqPGoIpRxFx4JY0
+	gKwz3Xb0I5GkaO3f1uXcYKCtFLx9EH1JpdueyfV6/olwCepof6Mpy0xqNwPp8zV3oPQxXe
+	xmoVeLfMBA7do/U+U85UELoGSqzk+sAEjfeAMFlvnA6I5BRZRxDkLEJz6ftRCg==
+Date: Sat, 13 Sep 2025 16:58:52 +0200
+From: Dragan Simic <dsimic@manjaro.org>
+To: Andrey Leonchikov <andreil499@gmail.com>
+Cc: linux-rockchip@lists.infradead.org
+Subject: Re: [v2,PATCH 5/5] RK356x - Add OTP description.
+In-Reply-To: <20250912124945.2300498-1-andreil499@gmail.com>
+References: <20250910215451.2244192-6-andreil499@gmail.com>
+ <20250912124945.2300498-1-andreil499@gmail.com>
+Message-ID: <36fbeabf43ffab99255061512073f70e@manjaro.org>
+X-Sender: dsimic@manjaro.org
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250913_075223_739657_46305A40 
-X-CRM114-Status: GOOD (  19.10  )
+X-CRM114-CacheID: sfid-20250913_075857_339431_B1209E31 
+X-CRM114-Status: UNSURE (   7.00  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,140 +67,26 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0918383191594247144=="
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============0918383191594247144==
-Content-Type: multipart/signed;
- boundary=1977ff6ca28b4e071a2b6e2b88836eddf7e93d59c95b5f0edf7cdc5cadb9;
- micalg=pgp-sha512; protocol="application/pgp-signature"
+Hello Andrey,
 
---1977ff6ca28b4e071a2b6e2b88836eddf7e93d59c95b5f0edf7cdc5cadb9
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
+On 2025-09-12 14:49, Andrey Leonchikov wrote:
+> Ok, I will work on this patches a more and send a v3 soon.
+> About v1 - I immediatelly archive it - this messages don't have any
+> descriptions.
 
-On Fri Sep 5, 2025 at 6:19 PM CEST, Jonas Karlman wrote:
-> This series add a HEVC backend to the Rockchip Video Decoder driver.
+I'm sorry, but that's not the way the patch versioning works.
+When you send patches to mailing lists, the version numbers refer
+to the versions sent to the mailing list, instead of referring
+to your internal patch versions.
 
-I did some testing and the TL;DR version is:
-
-Tested-by: Diederik de Haas <didi.debian@cknow.org>  # Rock64, RockPro64, Q=
-uartz64-B, NanoPi R5S
-
-Now for the long version ;-P
-
-I built a 5.17-rc5 kernel with this patch set [1], which was based upon
-linuxtv's next branch, so I just took all their commits on 2025-09-07.
-Then rebased Detlev's rkvdec patch set on top of that.
-As I have quite a few rk356x based devices and there wasn't a DT patch
-to enable rkvdec2, I 'assembled' my own one. (And some more patches)
-
-I have a patched ffmpeg [2] and with its -dev libraries built a patched
-mpv [3]. Installed that onto (mostly) Debian Forky systems with mesa
-25.2.2 and sway 1.11. I have a number of test files which are provided
-via NFS so storage device wouldn't matter and it's also what I use with
-LibreELEC (both 12.2 as 12.90.1 provided by 'chewitt').
-And then I went on to perform the same tests on these devices:
-
-1) Pine64 Rock64 (rk3328)
-2) Pine64 RockPro64 (rk3399)
-3) Pine64 Quartz64 Model B (rk3566) *
-4) FriendlyELEC NanoPi R5S (rk3568) *
-
-*) I blacklisted the hantro driver
-
-My testing showed that the 'classical' Big Buck Bunny video worked the
-best for testing ... meaning it caused the most 'problems'.
-I used the 'Standard 2D' 'Full HD (1920x1080)' '60 fps' version which
-you can download from [4]. That'll give you an 8-bit encoded x264
-version of that video. I have converted that video to x265 with a script
-I wrote (quite) a while ago [5]; instructions near the end of that
-script (no hdr no resize 'branch' about $TENBIT_PARAMS).
-That resulted in 2 test files:
-a) bbb_sunflower_1080p_60fps_normal.x265.cf24.slow.8bit.mp4
-b) bbb_sunflower_1080p_60fps_normal.x265.cf24.medium.10bit.mp4
-
-Testing went as follows:
-I logged into the device, started sway and opened a 'foot' terminal and
-navigated to my NFS share with the test files. Then I used
-
-  mpv --hwdec=3Dv4l2request <video-file> [--fullscreen=3Dyes]
-
-Without the 'fullscreen' param it shows the video in the right part of
-the screen (1080p monitor), while the left part shows mpv's output.
-This made it easy to see 'dropped frames' and any audio delay.
-I played each file twice, one using half the screen and one fullscreen.
-
-This had less of an effect then I expected; only in a few cases it
-'pushed it over the edge' and the only real effect was with Rock64 ...
-which being the least powerful is (kinda) expected.
-
-The results of the 10-bit x265 files was uniform: only a blue screen was
-visible and OSD (with 'I' or 'O' in mpv) didn't work. Interestingly it
-also had no frame drops ... except when doing 'I' (with no visible
-effect), then it dropped a couple of frames (one time quite a few).
-Mpv showed this error message each time:
-[vo/gpu] Initializing texture for hardware decoding failed
-
-For the 8-bit x265 file, the results were more varied:
-- On Rock64 HW accel worked, but the videos had a red 'glare' over them.
-  None of the other devices had that, so maybe related to 'lima'?
-  On LE it did NOT have the red glare. It did seem to have quite a bit
-  of trouble starting it
-- On Rock64 it dropped 970 frames in 60 secs and 2480 in fullscreen.
-  This resulted in quite a shockery display and noticeable artifacts.
-  That was not (or at least a whole lot less) the case with LE.
-- On the other devices there was not much difference in dropped frames
-  when it came to windowed vs full-screen, but the frame drops were
-  quite high ~2000 when HW accelerated and up to ~3000 when not
-  I got the impression that ~3Mbps bitrate was a tipping point.
-- The original BBB file (thus x264) had a similar high frame drop rate,
-  so the problem seems unrelated to this patch set
-- Audio delay was sometimes huge (>60 secs after 60 secs :-O), and HW
-  acceleration fixed that (due to free 'CPU' capacity?)
-
-The 'scores' for my other test files were actually quite good \o/
-All my video were HW accelerated; 8-bit with nv12 worked good while
-10-bit with nv15 was very blue. But all were corrected detected.
-
-So IMO this is a massive improvement! Thanks a LOT :-D
-
-Cheers,
-  Diederik
-
-[1] https://salsa.debian.org/diederik/linux/-/tree/cknow/media-next
-(Salsa CI fails as it can't deal with the ~ in 6.17~rc5)
-[2] https://salsa.debian.org/diederik/ffmpeg/-/tree/v4l2request-2025-v3-rkv=
-dec-n7.1
-[3] https://salsa.debian.org/diederik/mpv/-/tree/v4l2request-support
-[4] http://bbb3d.renderfarming.net/download.html
-[5] https://paste.sr.ht/~diederik/52b81ebc4c14b5146eb9b687bb1e8c1d62787991
-
---1977ff6ca28b4e071a2b6e2b88836eddf7e93d59c95b5f0edf7cdc5cadb9
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaMWFEwAKCRDXblvOeH7b
-bgaMAQDSV7WBRzhLckmCR13bF/J2ijaueIDTC+eBIfrBN6GE+gD9G+PoK+5Pfngy
-Vo3RPYc+L8VodVWniGaQmL1sOUOZuwo=
-=A6/3
------END PGP SIGNATURE-----
-
---1977ff6ca28b4e071a2b6e2b88836eddf7e93d59c95b5f0edf7cdc5cadb9--
-
-
---===============0918383191594247144==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Thus, the first version sent to a mailing list cannot be v2.
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============0918383191594247144==--
-
