@@ -4,199 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27F1ACAC597
-	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Sep 2025 12:54:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4366ECAC59A
+	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Sep 2025 13:32:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=otLyg9ZjE3YT+Esc69fIigIau8jYXEKYoE9l0fhh0AA=; b=ECBPAAYDt/ywJM
-	98tRZIvSl05TfRBo2yWYuMqZLgSWLwbegVNuFkRX7mzob8og5RnGsiIK+Die0ixSl0WLOTkBeUQJu
-	uJzqyK9q98tuqmjE9fBD8655iZ1aNVB04ZYXPfdmZW/3ByTMZrAioVK/2yuHUna3Wqs+DtF4yjnzQ
-	FrrhQWPbjTdqwsuHsd71TZjAVOO6BA93E8wxJC37y9fF0z9gexDOyk6rOFZ6LWckHZquzu/3izVII
-	cilwqhzlDSRcVKw27N52nxL733n7F7NQ5XEsFy22oAuP0v5lCq/tAFfhXVtVu2th0ykY2uigIw4v7
-	0VLstV8lAIFFMIai4z4A==;
+	List-Owner; bh=/zLPqrGqWIt9MGxFsRGGLD76cDMHIvhzchWR0UNlXFA=; b=jXxHaD4f9A2bWT
+	5ZMStL7uDShkkOgr/ebOlRYhs+tyCW7gF5WQTC/A+lL2EKq5MhXLhVRyLdcYmhOdF+sReCXWYRraQ
+	ixSUujd0GBT+8VX3FetDt5CQdfQBrQ29S9Ag16Prv7FbzgZ7rfs6uKzC49nwKY27pEm/SQFYKTOCc
+	nmAgdd6wcgiM91vuq8gcFFqUT5lpoDVbG6oHCWTh5BrNg2xom9THBw9k5PsHSxJciKIHaheRWXqrS
+	+B6o0hvQ8oKpGd9IYMtkpmOxg+UO2zGzZlV5xnjmITWYt7ozB66BolD+6jfmY/7papUT/fApKwsvF
+	AjdVzpV/XMRhpvWQGx/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uy8io-00000004DQc-0XbE;
-	Mon, 15 Sep 2025 12:54:18 +0000
-Received: from mail-westusazlp170120002.outbound.protection.outlook.com ([2a01:111:f403:c001::2] helo=SJ2PR03CU001.outbound.protection.outlook.com)
+	id 1uy9JT-00000004KfU-1RUq;
+	Mon, 15 Sep 2025 13:32:11 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uy8ik-00000004DOC-1LnF;
-	Mon, 15 Sep 2025 12:54:15 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=K0N1jETXxQ2hDUCsG5X04R9iIjH/0Odf5ygqf6qVZxAGHqMojO2v1CRF7eLC4523QAFnp+1rFjct7nH+N4ApnAg/nlkMlFKTSWPe3fq2uxb54861peIzT7wXTylN88tcM9AoXTKCSwDEfnZA6DR9Oavwr4H6I0VqhszEJqZTfUFNcx4SAeI3vWqt+5a3UGTVlFxUOVRtzxSAMq2HJpdGazT1CzFA0D71lZZyZVju74FB/CwhXRnAGQ78iYyuJuDIV+Jb2tHvBsmcOg1QSwYoOLyDkNfPB6vXuOu0B15qrvx2MfZBirTZr3KinTk2yHwHAtuseoUnkXEBiqERhOgsmw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=VJLrZIdADYAkPAeo0mCjntcnT0DyDjK4qMg0FeNUBtI=;
- b=Cwou92zt7uyhzSfxGVw4i/sej3qPFhamvru16DFKkUfVrYAqiBBfBNfGQjcdjJO3IPrUYcb5LbrG6yLKUs1V6e9wYjP5qLZGX6QpMJsE/Jtjlg5dC2GhnuUdSKmITbFKTGAGSW9WkK8sgz6ytwRknw3K+06yUcP1mwzXKw5Na1WVUWr5wxhortxcHLIrniFy7y9QPPpRobpzJIYtP49YDKrxQVfuVckcntolTZ0sZrmPxLl57vJGoqiNCqDlEdSKKLHLZbsQvt1ysP6waTdagpQsacHbAWne3ruM9iIiaL+/Oa5hJNueo6tiXAedZwsUmINDGKni9LKzScRyLj5MqA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=VJLrZIdADYAkPAeo0mCjntcnT0DyDjK4qMg0FeNUBtI=;
- b=ttNzcs599CW8Gc2+2NDNjhyHropkgKOFYkzjct8NvxdCFAJh13FdGV5BMKU23PKtkpoUyRYMVShDrhSsnGWkezxqPf6M1uxVSHJ2uju8jdd7/YXPDur/ATdxLsSNHzjvFtG/erJiy40hZZLp1q1ZEdp+6JM4CgnzdEWK00Kj3jQXqAuXaZgrUD3jJrtbLh5ae3JHWfSkElCOMcQB1uZhxXognhS3IlwD9JYCZ/vy2qMW2FttlzvXttJ+XxLqgfIRhGTMVirNR1dSVR43o/2vL2pjqlNizJKoYXWPgCNm4q1Ia/a8EIS9VcsWcXoMlZ/8SS5VYrrWno8hkqdwZGUVoQ==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from PH7PR12MB5757.namprd12.prod.outlook.com (2603:10b6:510:1d0::13)
- by SN7PR12MB7346.namprd12.prod.outlook.com (2603:10b6:806:299::16) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9094.22; Mon, 15 Sep
- 2025 12:53:59 +0000
-Received: from PH7PR12MB5757.namprd12.prod.outlook.com
- ([fe80::f012:300c:6bf4:7632]) by PH7PR12MB5757.namprd12.prod.outlook.com
- ([fe80::f012:300c:6bf4:7632%2]) with mapi id 15.20.9115.020; Mon, 15 Sep 2025
- 12:53:59 +0000
-Date: Mon, 15 Sep 2025 09:53:57 -0300
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: "Tian, Kevin" <kevin.tian@intel.com>
-Cc: Nicolin Chen <nicolinc@nvidia.com>, "joro@8bytes.org" <joro@8bytes.org>,
-	"bhelgaas@google.com" <bhelgaas@google.com>,
-	"suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
-	"will@kernel.org" <will@kernel.org>,
-	"robin.murphy@arm.com" <robin.murphy@arm.com>,
-	"sven@kernel.org" <sven@kernel.org>, "j@jannau.net" <j@jannau.net>,
-	"alyssa@rosenzweig.io" <alyssa@rosenzweig.io>,
-	"neal@gompa.dev" <neal@gompa.dev>,
-	"robin.clark@oss.qualcomm.com" <robin.clark@oss.qualcomm.com>,
-	"m.szyprowski@samsung.com" <m.szyprowski@samsung.com>,
-	"krzk@kernel.org" <krzk@kernel.org>,
-	"alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
-	"dwmw2@infradead.org" <dwmw2@infradead.org>,
-	"baolu.lu@linux.intel.com" <baolu.lu@linux.intel.com>,
-	"yong.wu@mediatek.com" <yong.wu@mediatek.com>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>,
-	"tjeznach@rivosinc.com" <tjeznach@rivosinc.com>,
-	"paul.walmsley@sifive.com" <paul.walmsley@sifive.com>,
-	"palmer@dabbelt.com" <palmer@dabbelt.com>,
-	"aou@eecs.berkeley.edu" <aou@eecs.berkeley.edu>,
-	"alex@ghiti.fr" <alex@ghiti.fr>,
-	"heiko@sntech.de" <heiko@sntech.de>,
-	"schnelle@linux.ibm.com" <schnelle@linux.ibm.com>,
-	"mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
-	"gerald.schaefer@linux.ibm.com" <gerald.schaefer@linux.ibm.com>,
-	"orsonzhai@gmail.com" <orsonzhai@gmail.com>,
-	"baolin.wang@linux.alibaba.com" <baolin.wang@linux.alibaba.com>,
-	"zhang.lyra@gmail.com" <zhang.lyra@gmail.com>,
-	"wens@csie.org" <wens@csie.org>,
-	"jernej.skrabec@gmail.com" <jernej.skrabec@gmail.com>,
-	"samuel@sholland.org" <samuel@sholland.org>,
-	"jean-philippe@linaro.org" <jean-philippe@linaro.org>,
-	"rafael@kernel.org" <rafael@kernel.org>,
-	"lenb@kernel.org" <lenb@kernel.org>,
-	"Liu, Yi L" <yi.l.liu@intel.com>,
-	"cwabbott0@gmail.com" <cwabbott0@gmail.com>,
-	"quic_pbrahma@quicinc.com" <quic_pbrahma@quicinc.com>,
-	"iommu@lists.linux.dev" <iommu@lists.linux.dev>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"asahi@lists.linux.dev" <asahi@lists.linux.dev>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>,
-	"linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
-	"linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
-	"linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
-	"linux-sunxi@lists.linux.dev" <linux-sunxi@lists.linux.dev>,
-	"linux-tegra@vger.kernel.org" <linux-tegra@vger.kernel.org>,
-	"virtualization@lists.linux.dev" <virtualization@lists.linux.dev>,
-	"linux-acpi@vger.kernel.org" <linux-acpi@vger.kernel.org>,
-	"linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>,
-	"patches@lists.linux.dev" <patches@lists.linux.dev>,
-	"Sethi, Vikram" <vsethi@nvidia.com>,
-	"helgaas@kernel.org" <helgaas@kernel.org>,
-	"etzhao1900@gmail.com" <etzhao1900@gmail.com>
-Subject: Re: [PATCH v4 6/7] iommu: Introduce iommu_dev_reset_prepare() and
- iommu_dev_reset_done()
-Message-ID: <20250915125357.GH1024672@nvidia.com>
-References: <cover.1756682135.git.nicolinc@nvidia.com>
- <0f6021b500c74db33af8118210dd7a2b2fd31b3c.1756682135.git.nicolinc@nvidia.com>
- <BL1PR11MB5271BE949150D4C2B5EC589A8C08A@BL1PR11MB5271.namprd11.prod.outlook.com>
-Content-Disposition: inline
-In-Reply-To: <BL1PR11MB5271BE949150D4C2B5EC589A8C08A@BL1PR11MB5271.namprd11.prod.outlook.com>
-X-ClientProxiedBy: YTBP288CA0019.CANP288.PROD.OUTLOOK.COM
- (2603:10b6:b01:14::32) To PH7PR12MB5757.namprd12.prod.outlook.com
- (2603:10b6:510:1d0::13)
+	id 1uy9JQ-00000004KdY-1idG;
+	Mon, 15 Sep 2025 13:32:09 +0000
+Received: from ideasonboard.com (mob-5-90-56-182.net.vodafone.it [5.90.56.182])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id A5F748D4;
+	Mon, 15 Sep 2025 15:30:47 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1757943049;
+	bh=k7APw+7V8PNd8IB0fAO6nOf+PeE0WSb2I+w3OW89x10=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=iP/hQB7Zutz0NwyinWcdTqovZFAdiTd98hd3Zh9P3IRrC7xx8nwYCjOdI8bmEneG+
+	 6cd5+8mHWijpos30s62l1cJr9B+bTxhWdsZmfGHSTKZnQl0aSat3+tzpdr4u+BxcIr
+	 utZhbyITMiYF7QCZRBecgNc27yhL+/kzxzzJtZd4=
+Date: Mon, 15 Sep 2025 15:31:58 +0200
+From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+To: kernel test robot <lkp@intel.com>
+Cc: Jacopo Mondi <jacopo.mondi@ideasonboard.com>, 
+	Dafna Hirschfeld <dafna@fastmail.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+	Keke Li <keke.li@amlogic.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Dan Scally <dan.scally@ideasonboard.com>, 
+	Sakari Ailus <sakari.ailus@linux.intel.com>, oe-kbuild-all@lists.linux.dev, linux-media@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v4 5/8] media: v4l2-core: Introduce v4l2-params.c
+Message-ID: <jhynzoppwi22vnrdzrvqixsbvntsli7sj2vtsxrevtmxluveps@q6yzgvlqmxxb>
+References: <20250820-extensible-parameters-validation-v4-5-30fe5a99cb1f@ideasonboard.com>
+ <202508240704.AZwGXBaw-lkp@intel.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PH7PR12MB5757:EE_|SN7PR12MB7346:EE_
-X-MS-Office365-Filtering-Correlation-Id: 6d01b779-94e1-4514-31ba-08ddf456f017
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|366016|7416014|376014;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?pvJs3ZsEG/4gI4E0Fm9q13EAi+c+FQkDeBrdqb3EFM9pOFheqcgH9617rkM0?=
- =?us-ascii?Q?YkZ3laHuXyaQ3csIwSIMJWMPuKOclHoJQwKqp3bMnI4AgUtBtVaAUNfMoac3?=
- =?us-ascii?Q?Vkz1OOEq86GPtKjIJBuHiFtEgbQtwg+FkndPXi7Ccogd0o4feTySoYIvj/nP?=
- =?us-ascii?Q?PhPAb3jB3YEXabdvzJluVAwcUAaYL6D7TXnHe/b3yRHWVvy2P9cSx8b4Lyep?=
- =?us-ascii?Q?/a6sgAfCHhHUdWkYn2J359RqjX5+T/YgIHXQxcyXHWVux3noJFYQVabqBNPn?=
- =?us-ascii?Q?agGf0ev8ofBU165igJXC8unKxUCXo6T9BvNrDqWVNIkQ2hfiKOWoiN5ceJ05?=
- =?us-ascii?Q?Z2puSJupQOhppbIV7Y9vZC9uEc3NhE50e+Z76Ez11RYh9PmlKMQxGAIPGERP?=
- =?us-ascii?Q?kZhDdyK6u5v7fm89dmqowN+F3meSztuqWwlyNVUer58G0SsDq5LexTHBa/97?=
- =?us-ascii?Q?zjd/FSjoHWTdO19HSgZYiyAABGzouzi3ZbrYTLN0QxaC/eqX0O9eqYauYobT?=
- =?us-ascii?Q?waMtYr/azAODfcXXeRtocBP4w1sYGwCyBROvPWVNulYGiUf7UTsoeZxETb41?=
- =?us-ascii?Q?bAxhzfjOnoOWPUQFCaiX7OL/7duNzj6EHfvzGHpxqEZzYWPaRNFGIT0PjnR/?=
- =?us-ascii?Q?c/yGZwoqcoOpsAN2x8gzfIr2700Mg1lzz7fwnkAl8rU5yPz32aNcX7QeGxcb?=
- =?us-ascii?Q?PYJqG3unFB+0MU7XSfKmMatRLiaCys4xmfDroPylVb69gkOWmmC2SUfqrfPU?=
- =?us-ascii?Q?IG9DEjuQ/EUdWX2ggFi0jXXNF+GattCehqmm1N7LHgBYTabsk3PKxWRo016h?=
- =?us-ascii?Q?WUqP5+LGfgZvXi5IKw8aaHn4m7N4e8pHf0ABmWndfJ8kDANjjOGkQxmNCg6m?=
- =?us-ascii?Q?op4tPtT6DeJieF6nmek/Z3kNETL0v7oLl8+24BJTUqK3asYWlEezIb43P6pA?=
- =?us-ascii?Q?Iv21Qj+paL/+XJfBwxbSRZSwFohsq8Gqlf9L7XkkXIbNYBTOradswP0ylte9?=
- =?us-ascii?Q?4Cnn2QIqDqtY3TWtBjlSN1WkWm3eQo62kAMMtfy9KNSnOsAXNfmjjjsdnSMa?=
- =?us-ascii?Q?GYBdiEVz3Eirn7mxJZ5fmYZ7xGgXtuuyJxsXSB6Rd+AxM4QUAtG2KWBnDnvl?=
- =?us-ascii?Q?qISgOmMXvDqK5Tmj+PKCNW1RaBuR3To6d0YWERSm6p90Ho8XTvbIkKIgr91X?=
- =?us-ascii?Q?1HZIB6IRZ+qNrJuvTQqbHCn8IMtRjaS6qc9WolT5z8ZzfilzkrvTkRt/xOgP?=
- =?us-ascii?Q?RD6lsp3l8OnlMM0krCtIgLrmkm9lWUwfj0kbCVLC8r5VutIz1oryO9sLmDnV?=
- =?us-ascii?Q?gfi9w8U4gOF4f66bdjFkplTYaN9wiLo/PLQCXw9SZXeEpLKWknazM9g/WFC7?=
- =?us-ascii?Q?PdcwnH6kkIF0s19OrBVKVebbfQmbx6G1LGJ3HC9r4BULDrq7Tg=3D=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PH7PR12MB5757.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(366016)(7416014)(376014);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?SIzLxcoMZS6WwUlmyB+R1Fn37YD0nGa7gRfqt97TobFgLpS4bWDOR2me6YIg?=
- =?us-ascii?Q?AiUMrUYp5ypLrlu31Kk5aqmPinhBiecDSPJvwjQEEuM/MRPpEHFudcMV9ORt?=
- =?us-ascii?Q?RRNnmHhE3k0nFi8BWcwYafO2vbulOpLTArMPx2O1r/imcfB2vVMtNJUZ6wAh?=
- =?us-ascii?Q?N0HLgk3oZULJh7Ir0Nvm9HZlczWA0zzhQUdwW0tg/HxmSMtAT8berLrakyqH?=
- =?us-ascii?Q?OYryZTleHt4PMGSowNQVaYwPxIRc481XJV35da1FAZBKYGgu1FqUaMM+peZp?=
- =?us-ascii?Q?3rxibqUbdVhNvY/aKzurifye7k8QFIpkq0upUOzqC5jctdgEKRRhuIA+RMGD?=
- =?us-ascii?Q?YKBsokFY81pMqCm/LY6EreIWumYpvcFerb0Z2g1RjzVltfG2s7IcceS4GHLs?=
- =?us-ascii?Q?eEchZkpf6eu1e8Mu49Ey/dDLQoPSzGTnG6G3tWZOszh5CoCeYwt9oB32S/GZ?=
- =?us-ascii?Q?rF2YG5FonwZmzEua3rtZa5/8RnkdpmLaN8yihVN2NudBJrTq4TW3CLS3gORn?=
- =?us-ascii?Q?pFe6vESkv6tqF61Kw1HKRZtkiT5f7rys8P6Cc7Wo9+xoCTW2PBQqHvUd2ue6?=
- =?us-ascii?Q?V7DIN8WIj7W84Z0V6mSTe60bnLHtX8wGWEPOYOO0KAMfqB7wp0ELGMhEZSNR?=
- =?us-ascii?Q?u3B9jF/YBEAdj8BUJC0R/0goG/N4c/onxFag4aeq1ixd6CyUNQeqapczW+Oy?=
- =?us-ascii?Q?hYinEaYiEUa200MD+PyPtQkYZjIkd9HhAq0P6RLCly9bYbTle+tSPH0xUjyy?=
- =?us-ascii?Q?uOPSQHVvVsx19T1RFiXQc3MHGu4Jw1LknCrAiOjubQi5m963yYTCfrqoI2q2?=
- =?us-ascii?Q?ShkT+MhS4HZbMkkbirxNvptcZrzSuw+bflMJbxNrGdLolhC6u6T4SEI+lvUZ?=
- =?us-ascii?Q?ezbopFtqP/c+Wa/fgRjXYGkSmqfQvnzC2uDZgoDVlYg+HwuFSfRvTCDeIKDl?=
- =?us-ascii?Q?YKbXlEdFuMAuFLMn72asytqjXt7CgB6sE48Yjaa6MoIRKu2uBziFEej4lVpF?=
- =?us-ascii?Q?nuWE0YygNjNzXStxsPCkkAO1g8vGNvTBCyTQGHDZp12GBPlbQyFZhh4vv8ar?=
- =?us-ascii?Q?Y71z/pJbuq+6uMyvs8afOwRZlohLCO4wm0F4E7Gckcg30wnYEGkeoBRZJHil?=
- =?us-ascii?Q?tr0iO+7h3ZliT9etL4+IWIPjGTKT1MDOmauyPAJn6vkYAnK4dSRfopxd7wyn?=
- =?us-ascii?Q?e71WWXxEmyPliZKO+ZlTU2Mm7LX4XzBzgru5fJsaERSvcT5e+J5D9PvJXd8R?=
- =?us-ascii?Q?kD0UiZ/si6Opbq8jNuYlYRtvpqVAy5DpwMcEvpwvw987gLiW14A7WxoSTDaU?=
- =?us-ascii?Q?Se+Rqzq4GlnxNxLBjhLrvLj2b4GG6wvHkrknjLhRolTU4Zfe3uqQ5rQtF6jg?=
- =?us-ascii?Q?hjeOpoislXMd/NYtDFqgNb9Q3sErPkeQzDWwoHrUBJ5iuEKIqjgCzNverNf9?=
- =?us-ascii?Q?Pznd2NVd6h5dbnSGytQW/vD8k4ltbNxmxvFLVBlrtDPPfaB+tH8cn9sdIqeT?=
- =?us-ascii?Q?vHQqT/6rueJIjxK++DbubgZNWpMPt0RhOP+xkVpCibWb9XGdaUN9ep6MLrZE?=
- =?us-ascii?Q?VZvVxn8bN8bR317yDwA=3D?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 6d01b779-94e1-4514-31ba-08ddf456f017
-X-MS-Exchange-CrossTenant-AuthSource: PH7PR12MB5757.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Sep 2025 12:53:59.2168
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: L/e3Z82iHxMU6YMiwYeyxkyq5iCH0VT7YVc0GX21OwYq/IpZ3oIe/3IBPu5BkVE3
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN7PR12MB7346
+Content-Disposition: inline
+In-Reply-To: <202508240704.AZwGXBaw-lkp@intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250915_055414_356059_B6F7D5DC 
-X-CRM114-Status: GOOD (  13.96  )
+X-CRM114-CacheID: sfid-20250915_063208_587669_2D98378C 
+X-CRM114-Status: GOOD (  16.51  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -213,30 +72,53 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Sep 12, 2025 at 09:49:13AM +0000, Tian, Kevin wrote:
-> > There are two corner cases that won't work:
-> > 1. Alias devices that share the same RID
-> >    Blocking one device also blocks the other alias devices that might not
-> >    want a reset. Given that it's very rare for an alias device to support
-> >    ATS, simply skip the blocking routine.
-> 
-> it also applies to the devices in the same iommu group. While one device
-> is being reset, all other devices in the group cannot change the domain. 
-> This needs to be documented in the attach uAPI.
+Question for media maintainers...
 
-I think we should just exclude multi-device groups for the first
-version of this.
+I'm not sure how I should better handle this one
 
-We really need to fixup multi-device groups to distinguish between
-cases where the group is there for aliases and we must have consistent
-domains across the whole group and cases where the group is there just
-for representing isolation and different domains are fine.
+On Sun, Aug 24, 2025 at 07:16:21AM +0800, kernel test robot wrote:
+> Hi Jacopo,
+>
+> kernel test robot noticed the following build errors:
+>
+> [auto build test ERROR on a75b8d198c55e9eb5feb6f6e155496305caba2dc]
+>
+> url:    https://github.com/intel-lab-lkp/linux/commits/Jacopo-Mondi/media-uapi-Introduce-V4L2-extensible-params/20250820-210503
+> base:   a75b8d198c55e9eb5feb6f6e155496305caba2dc
+> patch link:    https://lore.kernel.org/r/20250820-extensible-parameters-validation-v4-5-30fe5a99cb1f%40ideasonboard.com
+> patch subject: [PATCH v4 5/8] media: v4l2-core: Introduce v4l2-params.c
+> config: nios2-randconfig-002-20250824 (https://download.01.org/0day-ci/archive/20250824/202508240704.AZwGXBaw-lkp@intel.com/config)
+> compiler: nios2-linux-gcc (GCC) 9.5.0
+> reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250824/202508240704.AZwGXBaw-lkp@intel.com/reproduce)
+>
+> If you fix the issue in a separate patch/commit (i.e. not just a new version of
+> the same patch/commit), kindly add following tags
+> | Reported-by: kernel test robot <lkp@intel.com>
+> | Closes: https://lore.kernel.org/oe-kbuild-all/202508240704.AZwGXBaw-lkp@intel.com/
+>
+> All errors (new ones prefixed by >>):
+>
+>    nios2-linux-ld: drivers/media/v4l2-core/v4l2-params.o: in function `v4l2_params_buffer_validate':
+>    v4l2-params.c:(.text+0x124): undefined reference to `vb2_plane_vaddr'
+> >> v4l2-params.c:(.text+0x124): relocation truncated to fit: R_NIOS2_CALL26 against `vb2_plane_vaddr'
+>
 
-We are now having workloads where this difference matters, ATS reset
-is one case, but I'm interesting in seeing iommufd able to control
-domains per-device within a group. We have some HW that wants this.
+Clearly v4l2-params.c (now v4l2-isp.c) depends on VIDEOBUF2_CORE
 
-Jason
+Right now v4l2-params.c gets compiled in as part of the
+videodev-objs Makefile target. IOW is not gated by a KConfig option.
+
+To select (or better, depend) on VIDEOBUF2_CORE I should guard
+v4l2-params.c with a KConfig option so that I can 'depend on
+VIDEOBUF2_CORE'. Drivers that use the v4l2-params.c helper would then
+have to 'select V4L2_PARAMS` (or similar).
+
+Is this the best approach or are there alternatives I might be missing ?
+
+> --
+> 0-DAY CI Kernel Test Service
+> https://github.com/intel/lkp-tests/wiki
+>
 
 _______________________________________________
 Linux-rockchip mailing list
