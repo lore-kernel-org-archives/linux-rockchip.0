@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 162DDCAC597
-	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Sep 2025 08:33:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 398EACAC599
+	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Sep 2025 08:33:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lIh/HawPq5cWxzwyse9ESCNzOMFtC6DpsbutUF+32gk=; b=TuY0pFoIuMbv3h
-	gW0ozGYmq5cGTXmudJZASvewJTDEe+EdWIKZ6Jrr8s0SieJKZY903Na0hrin1MzTwvl6Jj61GB4Xo
-	BDWlQEOWrkTLmpfYEBYzDFxbuX8z1UFrtGhe0j53nNwY+srU29qnbsUIYZMKXifJz/JyxRV8Pxzgf
-	IbtU2VNUUwfhVdfQbhcLRtDpewcO7FHOM3wg2DtgEIvc2XOSGpF91UHxHxyV7P0ylDYyO5vkUWZgl
-	atKbTM3gXhwBkNSh4nQZpKRN84hgRCf2+n2qnnwgR5jrMVbkySKNnyFwc2pc7DwZBl8NhuaGbwgvm
-	jsKCBv06Kl+riW7GQZDQ==;
+	List-Owner; bh=GWZDOgpT/ho+2ygnJorCTYoio+CA5t8EyF5NVpQp8g8=; b=tKC9FtDOOQm1Dl
+	63oZuDQY3zzz2tDRlFU8op7SXIw3dfNA+Ldtz74/eu8wZQn/B5kYbkC+vwDlgIfTmnFYs2utPI4P1
+	YBggID3pzunV68UNCpYTWRtQ57ym8JhZH+fsorxJnEfePVN7icMddWP9mTDi2B++8jzbsnURQ8N1L
+	+QcvmOr184v9lNb4GOQRZhmuMKigRlfE8CQ82lE8jQM4JqMQ3T4RgvzHWnx7zgF23jaV1pMXGoY+h
+	IUmleMZCzh0ppZw+0KlrpOALleBW6jF5qW1Q7tGOjtGa8Nps54MgCwNaXzzf4SyZwYjZnkh3/6KPS
+	NIvOv/9sTIdnlm3RFqjg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uy4ef-00000003EB5-3RoP;
-	Mon, 15 Sep 2025 08:33:45 +0000
-Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
+	id 1uy4ek-00000003EFy-1ipA;
+	Mon, 15 Sep 2025 08:33:50 +0000
+Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uy4ec-00000003E64-1keG
+	id 1uy4ed-00000003E7n-40qy
 	for linux-rockchip@lists.infradead.org;
-	Mon, 15 Sep 2025 08:33:43 +0000
-Received: by mail-lf1-x12f.google.com with SMTP id 2adb3069b0e04-5679dbcf9d8so3398709e87.0
-        for <linux-rockchip@lists.infradead.org>; Mon, 15 Sep 2025 01:33:41 -0700 (PDT)
+	Mon, 15 Sep 2025 08:33:45 +0000
+Received: by mail-lf1-x135.google.com with SMTP id 2adb3069b0e04-5607c2f1598so4412722e87.3
+        for <linux-rockchip@lists.infradead.org>; Mon, 15 Sep 2025 01:33:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1757925220; x=1758530020; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1757925222; x=1758530022; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=r0bQRlmnKfDqgMf8snk80FkB/8ickhLw4rD40tCbpRQ=;
-        b=dPhC1rTnfMwjMg++P+XAoA5boru25x0Ac+JKCwxNHrfB8IAR3R5vPPqcP/TTUg1Pcy
-         fHigAKFWlB6Q3AQq6T6YB7RxgoLuoUxs5nqvM0hzB7SDVSguNzCt3ee4TPnGqiZrxiR6
-         JEWzhMDXovZUJZJ15lgR6puAG5nL8Po/liirzLucimYguzRAlFLnAvL8YRYQjnRaLHoS
-         g3cmDtgpyeuMajSQ7jjmD4E+vIcZVFUbu3y7inMELx9S6NJF5gtjVg4wbvfkiJrVitH1
-         elsTkFD8yFCaCQsNp0R2JXiMDmydVztr447rIc6QfFXnBaUSYBmrstaY42NaAzh0C0B6
-         CTng==
+        bh=9SAepVheBc2VKd/HWr2jgYD1wCXMnZhybbLdY99EVCQ=;
+        b=kk8NF3zDARxygVg9PL42glyPHUsidL+gYREwjVlg8mZP4CL43JfUiAHLHQN3Yh5pgL
+         bjEYFbJVyXt6r2PwLEecOTkaxEtFsHs999Engt7K9DlPOYef16FkeuuzVvwO0qAdOB1/
+         ZrDz7RdEpC0vkzAVtTMElvfJ70RHNTrIo95wn4llXTx3W+FmxRASPaTtx6Xd0IlRpFWE
+         jGJW8qjUfSKYjABHPAZFBtZ3F5yI8y7OQh4hyP8cxcMhhFB4j9UGEC3kd7iEYtWfKxUI
+         uu0DaKJUiC+kCxtmsyRSANvxwnrn4TFt2UsUsoaWbE4RW1BqSfI1osplL7eFmM9XoGCs
+         6nzg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1757925220; x=1758530020;
+        d=1e100.net; s=20230601; t=1757925222; x=1758530022;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=r0bQRlmnKfDqgMf8snk80FkB/8ickhLw4rD40tCbpRQ=;
-        b=KArGApi5EnMjhje1U/qOTHN5qnpwqcvk478BaD8aZ9MGYn2+h9lSFLLkxNwfPrnWMS
-         cIw25pnT3z7f8fEpMN+AVYQ4lDxqDt5RBf8w+pEo0Xnj8AlviWJj8diWWT368cPxCmn1
-         KpMNr/Ao+01AjlFhEP7tLeN6wPv0fnFzHLdMwNI09gKnFfc2omluan6Th4pHIMVyOP7o
-         sqz9wp4Jrq6aypD8cNT6e9OC8HAHueIiJcsnFkuOsITW/PZTIjK792EbWJhpV2jUhefF
-         IOEgi1WOGp+qOevA4C78+m2/6hMJKLq4LmU99cXQjlWsgKBcTfZYu8XHUWDaqqbUzYaZ
-         ZpjA==
-X-Forwarded-Encrypted: i=1; AJvYcCXmVGK7nApPNdccORkfT9SGff6M0TsGMNu2kJRN/EzOuzC9O9R07J1cR+8PZIbVtlRuEAaag70AxhczhPZO3w==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy4u+bXsucLagaVFaIVnVTwhliu37uKS89GgKiu7hkViIhojH+c
-	aOP3y1O2IKxFEr9ZO87Ebg166hKkbCSOO3x8ueVA4gGBZBQwvwfvPvjiYOZAVHeOaFY=
-X-Gm-Gg: ASbGncuW/LQkSTv0jufou09HuoTDS67vRi1L+93MuuuWxmRShDFJHGFqCA9oFOZwPlL
-	uQOnP0nhBmaesr5RVvj9pIl3dSFDSLq1xJtt/a1AEepao8Vl1umLU2bpmWAi3vqmJbul+vmmLbp
-	3Azj+PgjXjGfwtOSbmmVF3esroySSOrEBeuHQcdFGiUhdI1JAk/XLGfAWzB1LllLt9jQm3mOdWd
-	tOam91gLQBXgRFHhgBxGSj5fuENvH7fFgRdSKPc5Cwkkjm28BxSUpvHlMwAcHgi7uMjl8CUPVmt
-	OqmOwXkZSPWJVsOoB8LDkj9uKuQ6KvKjQDmYeGvkgTffasXdp9UpWSMr82HT/YiDEoJluidODyZ
-	GfinBPyzUUa9LvATtYNLcsG77+AUKzYoX7Kpc2NNKp595Rfc9uUMCnfw=
-X-Google-Smtp-Source: AGHT+IGPhTuEG2m4SiCDqh898kzAlhbg8Uvlnka6m56w2D7gJmLC1nJiufAqd/hfn5WD27cwWn5ytA==
-X-Received: by 2002:ac2:4cb1:0:b0:55f:6d28:bcee with SMTP id 2adb3069b0e04-5704f1cf24amr2705611e87.34.1757925220270;
-        Mon, 15 Sep 2025 01:33:40 -0700 (PDT)
+        bh=9SAepVheBc2VKd/HWr2jgYD1wCXMnZhybbLdY99EVCQ=;
+        b=MDXYLX1PFLPLK5Rk9EUEQb2vbRV6Y2rJJPzMttD1+EnRzLzC47ZsUNy5xdg5Ua4mBI
+         m3Nv+19lUZxGs0Qj9LppTbcXv30zxzepFVEWI815X7ox8IrXKXHoqhbl7SxXHtGUXZwi
+         EEEzGwcJgQsqYqZBJ7Eh5E0vwDhk2JtTpYbrRhHYsr2pQx3OAIFnduYIoN0Bn2W196tJ
+         yktLxjOBlcAQC+WawvxmadvnA1IrcF22cJp6uLDHma0tf+8y2OuR9XQDzlbNeLcvwf4T
+         fmjQqR8H93YgU8HFT+yq8WtZddm17eB54i+aE6pbnTDOY7TAlJa2U1N50z7G23LCBmCk
+         KCTw==
+X-Forwarded-Encrypted: i=1; AJvYcCXYmiCkIgqwd2RGTR+V1FxNFqN/NNK65RJP1OnnAr642wcyuN0VlB9JLny82V++YXhwGtoEYeesav85OtOc4A==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxvQU/XQEBIN6N+jMwLgeHS+LRS7rtprCGLnUewzBhQ5DR8RSPs
+	+e9W9Oj7YyR1sP+CzEaikExSYpR18N9tj+PGsfNKPn6Xqok0R8W6DGl4mPuXeEzAOBY=
+X-Gm-Gg: ASbGncsB3Q/Q2ehVZ5OkOLAP+cDdhPUJKWAmvH71GjktdM15CT64QjxhXdq631QDL+q
+	6Q1imvvoGKYDppNgycIpstvGKEZcmLWupPxf4xNQZHI8oIjfFDHN2bqgQYZuDAGY8UJNYhQyHGY
+	MlWPsag7YotexGWwNx8A2IhvB4Lq1auTHnRYbRDj0fzmTjbM+nqg/B5f0S42RwyznA0jEVn5Hn1
+	m6CPEjo60jjNh2KS6Go9KsClmaasMrjpfc7OSD8SN2xT+zcsy6UUHul6MLdLRAhQoZ4NHih6/oN
+	pVupV2Qp+9SHW3P9Hk566AfPtA4tbRrHNkWIy0X8GWh/fUjpTf1zq1PL7JikALSNDPwkD6aCPOr
+	eFwDpquN2M+PAcHapvm7hHCYuPsL+Z27GXYn+OEGPvhsfzjNrhJGUkFg=
+X-Google-Smtp-Source: AGHT+IFijRhuu9NRr2ZBM2GuQ4gfxZbDSURIOqckSOM/gNBlLBKx7V4oU2eD/51Fe4veRTnL+2Myuw==
+X-Received: by 2002:a05:6512:4024:b0:55f:3d7c:3880 with SMTP id 2adb3069b0e04-57050fe1dd2mr3397083e87.48.1757925221761;
+        Mon, 15 Sep 2025 01:33:41 -0700 (PDT)
 Received: from nuoska (87-100-249-247.bb.dnainternet.fi. [87.100.249.247])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-571a6a33ba8sm2335142e87.46.2025.09.15.01.33.39
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-571a6a33ba8sm2335142e87.46.2025.09.15.01.33.41
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 15 Sep 2025 01:33:39 -0700 (PDT)
+        Mon, 15 Sep 2025 01:33:41 -0700 (PDT)
 From: Mikko Rapeli <mikko.rapeli@linaro.org>
 To: linux-pm@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
@@ -77,17 +77,19 @@ To: linux-pm@vger.kernel.org,
 	linux-mmc@vger.kernel.org
 Cc: Ulf Hansson <ulf.hansson@linaro.org>,
 	Mikko Rapeli <mikko.rapeli@linaro.org>,
-	Arnd Bergmann <arnd@arndb.de>
-Subject: [PATCH v4 2/4] mmc: add COMPILE_TEST to multiple drivers
-Date: Mon, 15 Sep 2025 11:33:15 +0300
-Message-ID: <20250915083317.2885761-3-mikko.rapeli@linaro.org>
+	Arnd Bergmann <arnd@arndb.de>,
+	Binbin Zhou <zhoubinbin@loongson.cn>
+Subject: [PATCH v4 3/4] mmc: select REGMAP_MMIO with MMC_LOONGSON2
+Date: Mon, 15 Sep 2025 11:33:16 +0300
+Message-ID: <20250915083317.2885761-4-mikko.rapeli@linaro.org>
 X-Mailer: git-send-email 2.50.0
 In-Reply-To: <20250915083317.2885761-1-mikko.rapeli@linaro.org>
 References: <20250915083317.2885761-1-mikko.rapeli@linaro.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250915_013342_489959_D22F9FE0 
-X-CRM114-Status: GOOD (  10.45  )
+X-CRM114-CacheID: sfid-20250915_013344_020962_27381DB4 
+X-CRM114-Status: UNSURE (   8.65  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,55 +106,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-These compile on x86_64 with =y and =m.
+COMPILE_TEST with MMC_LOONGSON2 failed to link due to
+undeclared dependency:
 
-Acked-by: Arnd Bergmann <arnd@arndb.de>
+ERROR: modpost: "__devm_regmap_init_mmio_clk"
+[drivers/mmc/host/loongson2-mmc.ko] undefined!
+
+Fixes: 2115772014bd ("mmc: loongson2: Add Loongson-2K SD/SDIO controller driver")
+
+Suggested-by: Arnd Bergmann <arnd@arndb.de>
+Suggested-by: Binbin Zhou <zhoubinbin@loongson.cn>
 Signed-off-by: Mikko Rapeli <mikko.rapeli@linaro.org>
 ---
- drivers/mmc/host/Kconfig | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
+ drivers/mmc/host/Kconfig | 1 +
+ 1 file changed, 1 insertion(+)
 
 diff --git a/drivers/mmc/host/Kconfig b/drivers/mmc/host/Kconfig
-index 7232de1c06887..b14daa045eff9 100644
+index b14daa045eff9..394724dcee8f8 100644
 --- a/drivers/mmc/host/Kconfig
 +++ b/drivers/mmc/host/Kconfig
-@@ -56,7 +56,7 @@ config MMC_STM32_SDMMC
- 
- config MMC_PXA
- 	tristate "Intel PXA25x/26x/27x Multimedia Card Interface support"
--	depends on ARCH_PXA
-+	depends on ARCH_PXA || COMPILE_TEST
+@@ -1116,6 +1116,7 @@ config MMC_LOONGSON2
+ 	tristate "Loongson-2K SD/SDIO/eMMC Host Interface support"
+ 	depends on LOONGARCH || COMPILE_TEST
+ 	depends on HAS_DMA
++	select REGMAP_MMIO
  	help
- 	  This selects the Intel(R) PXA(R) Multimedia card Interface.
- 	  If you have a PXA(R) platform with a Multimedia Card slot,
-@@ -608,7 +608,7 @@ config MMC_SDHCI_MSM
- 
- config MMC_MXC
- 	tristate "Freescale i.MX21/27/31 or MPC512x Multimedia Card support"
--	depends on ARCH_MXC || PPC_MPC512x
-+	depends on ARCH_MXC || PPC_MPC512x || COMPILE_TEST
- 	help
- 	  This selects the Freescale i.MX21, i.MX27, i.MX31 or MPC512x
- 	  Multimedia Card Interface. If you have an i.MX or MPC512x platform
-@@ -866,7 +866,8 @@ config MMC_DW_PCI
- 
- config MMC_DW_ROCKCHIP
- 	tristate "Rockchip specific extensions for Synopsys DW Memory Card Interface"
--	depends on MMC_DW && ARCH_ROCKCHIP
-+	depends on MMC_DW
-+	depends on ARCH_ROCKCHIP || COMPILE_TEST
- 	select MMC_DW_PLTFM
- 	help
- 	  This selects support for Rockchip SoC specific extensions to the
-@@ -948,7 +949,7 @@ config MMC_USHC
- 
- config MMC_WMT
- 	tristate "Wondermedia SD/MMC Host Controller support"
--	depends on ARCH_VT8500
-+	depends on ARCH_VT8500 || COMPILE_TEST
- 	default y
- 	help
- 	  This selects support for the SD/MMC Host Controller on
+ 	  This selects support for the SD/SDIO/eMMC Host Controller on
+ 	  Loongson-2K series CPUs.
 -- 
 2.34.1
 
