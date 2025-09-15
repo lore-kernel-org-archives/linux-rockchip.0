@@ -4,59 +4,152 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8ED1ACAC59B
-	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Sep 2025 09:00:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A527FCAC597
+	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Sep 2025 10:35:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Vc8gBwgcIa/QjC1Y9+jJ9KtbTcmNd1Dbpfnue/X//Uw=; b=4FhEibd25qzFEm
-	c1CgkDhjSE1MRaX9btogt+D+LVi6N/E8MoH03oqUsHOaAtxQAVE3LEtzU51DbVeeJ5O5mgIf9v5go
-	dO7FeborPgOOUZFJXNthYdkmZ/Z7NMTbt6yVHW6G+LZGPG8mInRdyKQq615fUIFjpglEi4MiTjFEl
-	UnjaWVxNpk0AOsSyRJFhOLrZw+N2nvLc5rlwkYDKfPWywXXQvMxulzmDgGmwitq0a6fqF0F2vhK86
-	SJAr9BX7Se1+1Cp5TbsWzLxKGwMT3c1MCHY8Lc9ilrZabknrVeBM1Zd1H5PzJpd6YoFVCG9VKtUx3
-	lQISW7MtO/dSM4U005xg==;
+	List-Owner; bh=lgnL8PPNJtlDDu4aaJmr38uVgV3ZlYrPquPehoVY/yQ=; b=ftJckP2ojKKP9q
+	p8qGCkgafGBK+uortL6wodq4jn0SNLIlHtiZtLgem+HKWjjqEixbNnn42UBZVPJljcNJGpqC97Fwn
+	5GaE48oLmMZCB/LHriJI03XzO/XveNJxucUylVqvWAKiS1G5M/CUBcqy2dS/1WsKcuSxK35KMZbSh
+	VclFwBO8fS+ZVx3Ok0/6rsdHpaWJWBmCcNjodTEaXqJLtWpRDWo2rwPOUHTuOpbtj5wiCCfsjujVA
+	XOeZhlWZ4BWoKu6vSGCd/dtqyjbX+rwjTsDfBBOSjNiqZ/Lw2RwV1qmp7L/IJdWIg8JoRSczh8i1h
+	W69tDoT8t+7DLS9ia2fg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uy542-00000003LHb-40mT;
-	Mon, 15 Sep 2025 08:59:58 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1uy6YQ-00000003hMI-1Hy2;
+	Mon, 15 Sep 2025 10:35:26 +0000
+Received: from smtp-out1.suse.de ([195.135.223.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uy540-00000003LG6-22QR;
-	Mon, 15 Sep 2025 08:59:57 +0000
-Received: from ideasonboard.com (mob-5-90-56-182.net.vodafone.it [5.90.56.182])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 7B1C7346;
-	Mon, 15 Sep 2025 10:58:35 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1757926715;
-	bh=1bv81qgssRPmX7JSSJSzYcQkRHnSBXBj0QjCUvFlfoM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=bkienoBvij7Or3RoRcArKeF7h12b/srQR/TQmVP7M6WgptcGySgxVuj8y42p1Sjm6
-	 P41l2TjyiVuVQEHVIgkntdeC0E3lHs4qkhd06mkF6O4MaUUzsGWFwQkZtTyrcDRe5p
-	 3r6a7YfsH7c7dshF3mUn1vRyV0Jdzuk2oO42dGFk=
-Date: Mon, 15 Sep 2025 10:59:49 +0200
-From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: Jacopo Mondi <jacopo.mondi@ideasonboard.com>, 
-	Dafna Hirschfeld <dafna@fastmail.com>, Keke Li <keke.li@amlogic.com>, 
-	Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
-	Dan Scally <dan.scally@ideasonboard.com>, Sakari Ailus <sakari.ailus@linux.intel.com>, 
-	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v4 2/8] media: uapi: Convert RkISP1 to V4L2 extensible
- params
-Message-ID: <ffudipv64bfs2od7b6x7sfquqwqzr3n6a6zmbr4bu6ehd3rz25@3k7ycmqape2e>
-References: <20250820-extensible-parameters-validation-v4-0-30fe5a99cb1f@ideasonboard.com>
- <20250820-extensible-parameters-validation-v4-2-30fe5a99cb1f@ideasonboard.com>
- <20250908073949.GE4105@pendragon.ideasonboard.com>
+	id 1uy6YF-00000003h2O-1CoQ
+	for linux-rockchip@lists.infradead.org;
+	Mon, 15 Sep 2025 10:35:18 +0000
+Received: from imap1.dmz-prg2.suse.org (unknown [10.150.64.97])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id 70A1633722;
+	Mon, 15 Sep 2025 10:35:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1757932511; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=wyZ7R1j8ekVpPVWOeGovOVmplGZx5PoOUHolz+8mQ9A=;
+	b=FPGp+DWnjZ8cpc2VUqQoiyB/9LNHZYKvuORtYnVfZ/XHaMFtXUVkqBJcO7rAv1RFBFx8Wt
+	WO9vXmdo3ndVCRkwybC/JRSx7vg7aRbraBqaSL3pYejnsPSAS3V9zbavON3zPYoiuoyHq6
+	t30gZa8OHDAhmOgPfFIgs/KdUCYtpH0=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1757932511;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=wyZ7R1j8ekVpPVWOeGovOVmplGZx5PoOUHolz+8mQ9A=;
+	b=jve2A0736Y5pKNdzRyUDlpuD78LkpAU4DSyrxIJjrTFvm/CDnns1c+0qAhYAGzGZhQpsjD
+	q17urp8vFAEgnsDA==
+Authentication-Results: smtp-out1.suse.de;
+	none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1757932511; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=wyZ7R1j8ekVpPVWOeGovOVmplGZx5PoOUHolz+8mQ9A=;
+	b=FPGp+DWnjZ8cpc2VUqQoiyB/9LNHZYKvuORtYnVfZ/XHaMFtXUVkqBJcO7rAv1RFBFx8Wt
+	WO9vXmdo3ndVCRkwybC/JRSx7vg7aRbraBqaSL3pYejnsPSAS3V9zbavON3zPYoiuoyHq6
+	t30gZa8OHDAhmOgPfFIgs/KdUCYtpH0=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1757932511;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=wyZ7R1j8ekVpPVWOeGovOVmplGZx5PoOUHolz+8mQ9A=;
+	b=jve2A0736Y5pKNdzRyUDlpuD78LkpAU4DSyrxIJjrTFvm/CDnns1c+0qAhYAGzGZhQpsjD
+	q17urp8vFAEgnsDA==
+Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id D535D1368D;
+	Mon, 15 Sep 2025 10:35:10 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
+	by imap1.dmz-prg2.suse.org with ESMTPSA
+	id WO5lMt7rx2hmEwAAD6G6ig
+	(envelope-from <tzimmermann@suse.de>); Mon, 15 Sep 2025 10:35:10 +0000
+Message-ID: <331c5105-481f-4776-943f-376b21ccc430@suse.de>
+Date: Mon, 15 Sep 2025 12:35:10 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250908073949.GE4105@pendragon.ideasonboard.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6 00/25] drm/dumb-buffers: Fix and improve buffer-size
+ calculation
+To: simona@ffwll.ch, airlied@gmail.com, mripard@kernel.org,
+ maarten.lankhorst@linux.intel.com, geert@linux-m68k.org,
+ tomi.valkeinen@ideasonboard.com
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ freedreno@lists.freedesktop.org, linux-arm-msm@vger.kernel.org,
+ imx@lists.linux.dev, linux-samsung-soc@vger.kernel.org,
+ nouveau@lists.freedesktop.org, virtualization@lists.linux.dev,
+ spice-devel@lists.freedesktop.org, linux-renesas-soc@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org,
+ intel-xe@lists.freedesktop.org, xen-devel@lists.xenproject.org
+References: <20250821081918.79786-1-tzimmermann@suse.de>
+Content-Language: en-US
+From: Thomas Zimmermann <tzimmermann@suse.de>
+Autocrypt: addr=tzimmermann@suse.de; keydata=
+ xsBNBFs50uABCADEHPidWt974CaxBVbrIBwqcq/WURinJ3+2WlIrKWspiP83vfZKaXhFYsdg
+ XH47fDVbPPj+d6tQrw5lPQCyqjwrCPYnq3WlIBnGPJ4/jreTL6V+qfKRDlGLWFjZcsrPJGE0
+ BeB5BbqP5erN1qylK9i3gPoQjXGhpBpQYwRrEyQyjuvk+Ev0K1Jc5tVDeJAuau3TGNgah4Yc
+ hdHm3bkPjz9EErV85RwvImQ1dptvx6s7xzwXTgGAsaYZsL8WCwDaTuqFa1d1jjlaxg6+tZsB
+ 9GluwvIhSezPgnEmimZDkGnZRRSFiGP8yjqTjjWuf0bSj5rUnTGiyLyRZRNGcXmu6hjlABEB
+ AAHNJ1Rob21hcyBaaW1tZXJtYW5uIDx0emltbWVybWFubkBzdXNlLmRlPsLAjgQTAQgAOAIb
+ AwULCQgHAgYVCgkICwIEFgIDAQIeAQIXgBYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJftODH
+ AAoJEGgNwR1TC3ojx1wH/0hKGWugiqDgLNXLRD/4TfHBEKmxIrmfu9Z5t7vwUKfwhFL6hqvo
+ lXPJJKQpQ2z8+X2vZm/slsLn7J1yjrOsoJhKABDi+3QWWSGkaGwRJAdPVVyJMfJRNNNIKwVb
+ U6B1BkX2XDKDGffF4TxlOpSQzdtNI/9gleOoUA8+jy8knnDYzjBNOZqLG2FuTdicBXblz0Mf
+ vg41gd9kCwYXDnD91rJU8tzylXv03E75NCaTxTM+FBXPmsAVYQ4GYhhgFt8S2UWMoaaABLDe
+ 7l5FdnLdDEcbmd8uLU2CaG4W2cLrUaI4jz2XbkcPQkqTQ3EB67hYkjiEE6Zy3ggOitiQGcqp
+ j//OwE0EWznS4AEIAMYmP4M/V+T5RY5at/g7rUdNsLhWv1APYrh9RQefODYHrNRHUE9eosYb
+ T6XMryR9hT8XlGOYRwKWwiQBoWSDiTMo/Xi29jUnn4BXfI2px2DTXwc22LKtLAgTRjP+qbU6
+ 3Y0xnQN29UGDbYgyyK51DW3H0If2a3JNsheAAK+Xc9baj0LGIc8T9uiEWHBnCH+RdhgATnWW
+ GKdDegUR5BkDfDg5O/FISymJBHx2Dyoklv5g4BzkgqTqwmaYzsl8UxZKvbaxq0zbehDda8lv
+ hFXodNFMAgTLJlLuDYOGLK2AwbrS3Sp0AEbkpdJBb44qVlGm5bApZouHeJ/+n+7r12+lqdsA
+ EQEAAcLAdgQYAQgAIAIbDBYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJftOH6AAoJEGgNwR1T
+ C3ojVSkIALpAPkIJPQoURPb1VWjh34l0HlglmYHvZszJWTXYwavHR8+k6Baa6H7ufXNQtThR
+ yIxJrQLW6rV5lm7TjhffEhxVCn37+cg0zZ3j7zIsSS0rx/aMwi6VhFJA5hfn3T0TtrijKP4A
+ SAQO9xD1Zk9/61JWk8OysuIh7MXkl0fxbRKWE93XeQBhIJHQfnc+YBLprdnxR446Sh8Wn/2D
+ Ya8cavuWf2zrB6cZurs048xe0UbSW5AOSo4V9M0jzYI4nZqTmPxYyXbm30Kvmz0rYVRaitYJ
+ 4kyYYMhuULvrJDMjZRvaNe52tkKAvMevcGdt38H4KSVXAylqyQOW5zvPc4/sq9c=
+In-Reply-To: <20250821081918.79786-1-tzimmermann@suse.de>
+X-Spamd-Result: default: False [-2.80 / 50.00];
+	BAYES_HAM(-3.00)[100.00%];
+	SUSPICIOUS_RECIPS(1.50)[];
+	NEURAL_HAM_LONG(-1.00)[-1.000];
+	NEURAL_HAM_SHORT(-0.20)[-1.000];
+	MIME_GOOD(-0.10)[text/plain];
+	TO_MATCH_ENVRCPT_ALL(0.00)[];
+	DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+	FREEMAIL_TO(0.00)[ffwll.ch,gmail.com,kernel.org,linux.intel.com,linux-m68k.org,ideasonboard.com];
+	ARC_NA(0.00)[];
+	FUZZY_RATELIMITED(0.00)[rspamd.com];
+	MIME_TRACE(0.00)[0:+];
+	FREEMAIL_ENVRCPT(0.00)[gmail.com];
+	RCVD_TLS_ALL(0.00)[];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
+	FROM_EQ_ENVFROM(0.00)[];
+	FROM_HAS_DN(0.00)[];
+	RCPT_COUNT_TWELVE(0.00)[20];
+	RCVD_COUNT_TWO(0.00)[2];
+	MID_RHS_MATCH_FROM(0.00)[];
+	TO_DN_NONE(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[imap1.dmz-prg2.suse.org:helo,suse.de:mid]
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250915_015956_720346_78AE23E9 
-X-CRM114-Status: GOOD (  48.67  )
+X-CRM114-CacheID: sfid-20250915_033515_845788_E5C0AF57 
+X-CRM114-Status: GOOD (  17.46  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,216 +161,122 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Laurent
+FYI, I significant number of these patches got a review already. I 
+intent to merge these and then send out the others for each driver 
+individually.
 
-On Mon, Sep 08, 2025 at 09:39:49AM +0200, Laurent Pinchart wrote:
-> On Wed, Aug 20, 2025 at 02:58:10PM +0200, Jacopo Mondi wrote:
-> > With the introduction of common types for extensible parameters
-> > format, convert the rkisp1-config.h header to use the new types.
-> >
-> > Factor-out the documentation that is now part of the common header
-> > and only keep the driver-specific on in place.
-> >
-> > The conversion to use common types doesn't impact userspace as the
-> > new types are either identical to the ones already existing in the
-> > RkISP1 uAPI or are 1-to-1 type convertible.
-> >
-> > Reviewed-by: Daniel Scally <dan.scally@ideasonboard.com>
-> > Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-> > ---
-> >  include/uapi/linux/rkisp1-config.h | 67 +++++++++++++-------------------------
-> >  1 file changed, 23 insertions(+), 44 deletions(-)
-> >
-> > diff --git a/include/uapi/linux/rkisp1-config.h b/include/uapi/linux/rkisp1-config.h
-> > index 3b060ea6eed71b87d79abc8401eae4e9c9f5323a..fc040c7fb13cf18eaf8d9067e7be38bff120e6f6 100644
-> > --- a/include/uapi/linux/rkisp1-config.h
-> > +++ b/include/uapi/linux/rkisp1-config.h
-> > @@ -7,8 +7,13 @@
-> >  #ifndef _UAPI_RKISP1_CONFIG_H
-> >  #define _UAPI_RKISP1_CONFIG_H
-> >
-> > +#ifdef __KERNEL__
-> > +#include <linux/build_bug.h>
-> > +#endif /* __KERNEL__ */
-> >  #include <linux/types.h>
-> >
-> > +#include <linux/media/v4l2-extensible-params.h>
-> > +
-> >  /* Defect Pixel Cluster Detection */
-> >  #define RKISP1_CIF_ISP_MODULE_DPCC		(1U << 0)
-> >  /* Black Level Subtraction */
-> > @@ -1158,26 +1163,21 @@ enum rkisp1_ext_params_block_type {
-> >  	RKISP1_EXT_PARAMS_BLOCK_TYPE_WDR,
-> >  };
-> >
+Am 21.08.25 um 10:17 schrieb Thomas Zimmermann:
+> Dumb-buffer pitch and size is specified by width, height, bits-per-pixel
+> plus various hardware-specific alignments. The calculation of these
+> values is inconsistent and duplicated among drivers. The results for
+> formats with bpp < 8 are sometimes incorrect.
 >
-> /* For backward compatibility */
+> This series fixes this for most drivers. Default scanline pitch and
+> buffer size are now calculated with the existing 4CC helpers. There is
+> a new helper drm_mode_size_dumb() that calculates scanline pitch and
+> buffer size according to driver requirements.
 >
-> > -#define RKISP1_EXT_PARAMS_FL_BLOCK_DISABLE	(1U << 0)
-> > -#define RKISP1_EXT_PARAMS_FL_BLOCK_ENABLE	(1U << 1)
-> > +#define RKISP1_EXT_PARAMS_FL_BLOCK_DISABLE	V4L2_PARAMS_FL_BLOCK_DISABLE
-> > +#define RKISP1_EXT_PARAMS_FL_BLOCK_ENABLE	V4L2_PARAMS_FL_BLOCK_ENABLE
-> >
-> >  /* A bitmask of parameters blocks supported on the current hardware. */
-> >  #define RKISP1_CID_SUPPORTED_PARAMS_BLOCKS	(V4L2_CID_USER_RKISP1_BASE + 0x01)
-> >
-> >  /**
-> > - * struct rkisp1_ext_params_block_header - RkISP1 extensible parameters block
-> > - *					   header
-> > + * rkisp1_ext_params_block_header - RkISP1 extensible parameters block header
-> >   *
-> >   * This structure represents the common part of all the ISP configuration
-> > - * blocks. Each parameters block shall embed an instance of this structure type
-> > - * as its first member, followed by the block-specific configuration data. The
-> > - * driver inspects this common header to discern the block type and its size and
-> > - * properly handle the block content by casting it to the correct block-specific
-> > - * type.
-> > + * blocks and is identical to :c:type:`v4l2_params_block_header`.
-> >   *
-> > - * The @type field is one of the values enumerated by
-> > + * The type field is one of the values enumerated by
-> >   * :c:type:`rkisp1_ext_params_block_type` and specifies how the data should be
-> > - * interpreted by the driver. The @size field specifies the size of the
-> > + * interpreted by the driver. The size field specifies the size of the
-> >   * parameters block and is used by the driver for validation purposes.
-> >   *
-> >   * The @flags field is a bitmask of per-block flags RKISP1_EXT_PARAMS_FL_*.
+> The series fixes the common GEM implementations for DMA, SHMEM and
+> VRAM. It further changes most implementations of dumb_create to use
+> the new helper. A small number of drivers has more complicated
+> calculations and will be updated by a later patches.
 >
-> @flags leftover.
+> v6:
+> - extend TODO item (Tomi)
+> - fix typos in documentation (Tomi)
+> v5:
+> - use check_mul_overflow() for overflow test (Tomi)
+> - imx: fix intermediate code (Tomi)
+> - rz-du: include dumb-buffers header
+> v4:
+> - improve UAPI documentation
+> - document bpp special cases
+> - use drm_warn_once()
+> - add TODO lists
+> - armada: fix pitch alignment
+> v3:
+> - document UAPI semantics
+> - fall back to bpp-based allocation for unknown color modes
+> - cleanups
+> v2:
+> - rewrite series
+> - convert many individual drivers besides the shared GEM helpers
 >
-> > @@ -1193,14 +1193,14 @@ enum rkisp1_ext_params_block_type {
-> >   * If a new configuration of an ISP block has to be applied userspace shall
-> >   * fully populate the ISP block configuration and omit setting the
-> >   * RKISP1_EXT_PARAMS_FL_BLOCK_ENABLE and RKISP1_EXT_PARAMS_FL_BLOCK_DISABLE bits
-> > - * in the @flags field.
-> > + * in the flags field.
-> >   *
-> >   * Setting both the RKISP1_EXT_PARAMS_FL_BLOCK_ENABLE and
-> > - * RKISP1_EXT_PARAMS_FL_BLOCK_DISABLE bits in the @flags field is not allowed
-> > + * RKISP1_EXT_PARAMS_FL_BLOCK_DISABLE bits in the flags field is not allowed
-> >   * and not accepted by the driver.
-> >   *
-> >   * Userspace is responsible for correctly populating the parameters block header
-> > - * fields (@type, @flags and @size) and the block-specific parameters.
-> > + * fields (type, flags and size) and the block-specific parameters.
+> Thomas Zimmermann (25):
+>    drm/dumb-buffers: Sanitize output on errors
+>    drm/dumb-buffers: Provide helper to set pitch and size
+>    drm/gem-dma: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/gem-shmem: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/gem-vram: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/armada: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/exynos: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/gma500: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/hibmc: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/imx/ipuv3: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/loongson: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/mediatek: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/msm: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/nouveau: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/omapdrm: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/qxl: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/renesas/rcar-du: Compute dumb-buffer sizes with
+>      drm_mode_size_dumb()
+>    drm/renesas/rz-du: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/rockchip: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/tegra: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/virtio: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/vmwgfx: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/xe: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/xen: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/xlnx: Compute dumb-buffer sizes with drm_mode_size_dumb()
 >
-> Shouldn't you drop the parts of the documentation the duplicate
-> v4l2_params_block_header ? Same below.
-
-I don't think this part is duplicated. How driver handles
-ENABLE/DISABLE is still platform specific at the moment. Specifying
-that
-
- * When userspace simply wants to disable an ISP block the
- * RKISP1_EXT_PARAMS_FL_BLOCK_DISABLE bit should be set in @flags field. The
- * driver ignores the rest of the block configuration structure in this case.
-
-documents a driver-specific behaviour as well as:
-
-
- * If a new configuration of an ISP block has to be applied userspace shall
- * fully populate the ISP block configuration and omit setting the
- * RKISP1_EXT_PARAMS_FL_BLOCK_ENABLE and RKISP1_EXT_PARAMS_FL_BLOCK_DISABLE bits
- * in the flags field.
-
-and
-
- * Setting both the RKISP1_EXT_PARAMS_FL_BLOCK_ENABLE and
- * RKISP1_EXT_PARAMS_FL_BLOCK_DISABLE bits in the flags field is not allowed
- * and not accepted by the driver.
-
-
-However, wWith the introduction of the generic validators in this
-series, all drivers using generic parameters implement the three above
-conditions, so I would rather move this part of documentation to
-v4l2_params_block_header ?
-
-
+>   Documentation/gpu/todo.rst                    |  37 ++++
+>   drivers/gpu/drm/armada/armada_gem.c           |  16 +-
+>   drivers/gpu/drm/drm_dumb_buffers.c            | 170 ++++++++++++++++--
+>   drivers/gpu/drm/drm_gem_dma_helper.c          |   7 +-
+>   drivers/gpu/drm/drm_gem_shmem_helper.c        |  16 +-
+>   drivers/gpu/drm/drm_gem_vram_helper.c         |  89 +++------
+>   drivers/gpu/drm/exynos/exynos_drm_gem.c       |   8 +-
+>   drivers/gpu/drm/gma500/gem.c                  |  21 +--
+>   .../gpu/drm/hisilicon/hibmc/hibmc_drm_drv.c   |  25 ++-
+>   drivers/gpu/drm/imx/ipuv3/imx-drm-core.c      |  29 ++-
+>   drivers/gpu/drm/loongson/lsdc_gem.c           |  29 +--
+>   drivers/gpu/drm/mediatek/mtk_gem.c            |  13 +-
+>   drivers/gpu/drm/msm/msm_gem.c                 |  27 ++-
+>   drivers/gpu/drm/nouveau/nouveau_display.c     |   7 +-
+>   drivers/gpu/drm/omapdrm/omap_gem.c            |  15 +-
+>   drivers/gpu/drm/qxl/qxl_dumb.c                |  17 +-
+>   drivers/gpu/drm/renesas/rcar-du/rcar_du_kms.c |   7 +-
+>   drivers/gpu/drm/renesas/rz-du/rzg2l_du_kms.c  |   8 +-
+>   drivers/gpu/drm/rockchip/rockchip_drm_gem.c   |  12 +-
+>   drivers/gpu/drm/tegra/gem.c                   |   8 +-
+>   drivers/gpu/drm/virtio/virtgpu_gem.c          |  11 +-
+>   drivers/gpu/drm/vmwgfx/vmwgfx_surface.c       |  21 +--
+>   drivers/gpu/drm/xe/xe_bo.c                    |   8 +-
+>   drivers/gpu/drm/xen/xen_drm_front.c           |   7 +-
+>   drivers/gpu/drm/xlnx/zynqmp_kms.c             |   7 +-
+>   include/drm/drm_dumb_buffers.h                |  14 ++
+>   include/drm/drm_gem_vram_helper.h             |   6 -
+>   include/uapi/drm/drm_mode.h                   |  50 +++++-
+>   28 files changed, 457 insertions(+), 228 deletions(-)
+>   create mode 100644 include/drm/drm_dumb_buffers.h
 >
-> >   *
-> >   * For example:
-> >   *
-> > @@ -1220,17 +1220,8 @@ enum rkisp1_ext_params_block_type {
-> >   *		bls->config.fixed_val.gb = blackLevelGreenB_;
-> >   *		bls->config.fixed_val.b = blackLevelBlue_;
-> >   *	}
-> > - *
-> > - * @type: The parameters block type, see
-> > - *	  :c:type:`rkisp1_ext_params_block_type`
-> > - * @flags: A bitmask of block flags
-> > - * @size: Size (in bytes) of the parameters block, including this header
-> >   */
-> > -struct rkisp1_ext_params_block_header {
-> > -	__u16 type;
-> > -	__u16 flags;
-> > -	__u32 size;
-> > -};
-> > +#define rkisp1_ext_params_block_header v4l2_params_block_header
-> >
-> >  /**
-> >   * struct rkisp1_ext_params_bls_config - RkISP1 extensible params BLS config
-> > @@ -1594,21 +1585,7 @@ enum rksip1_ext_param_buffer_version {
-> >  /**
-> >   * struct rkisp1_ext_params_cfg - RkISP1 extensible parameters configuration
-> >   *
-> > - * This struct contains the configuration parameters of the RkISP1 ISP
-> > - * algorithms, serialized by userspace into a data buffer. Each configuration
-> > - * parameter block is represented by a block-specific structure which contains a
-> > - * :c:type:`rkisp1_ext_params_block_header` entry as first member. Userspace
-> > - * populates the @data buffer with configuration parameters for the blocks that
-> > - * it intends to configure. As a consequence, the data buffer effective size
-> > - * changes according to the number of ISP blocks that userspace intends to
-> > - * configure and is set by userspace in the @data_size field.
-> > - *
-> > - * The parameters buffer is versioned by the @version field to allow modifying
-> > - * and extending its definition. Userspace shall populate the @version field to
-> > - * inform the driver about the version it intends to use. The driver will parse
-> > - * and handle the @data buffer according to the data layout specific to the
-> > - * indicated version and return an error if the desired version is not
-> > - * supported.
-> > + * This is the driver-specific implementation of :c:type:`v4l2_params_buffer`.
-> >   *
-> >   * Currently the single RKISP1_EXT_PARAM_BUFFER_V1 version is supported.
-> >   * When a new format version will be added, a mechanism for userspace to query
-> > @@ -1624,11 +1601,6 @@ enum rksip1_ext_param_buffer_version {
-> >   * the maximum value represents the blocks supported by the kernel driver,
-> >   * independently of the device instance.
-> >   *
-> > - * For each ISP block that userspace wants to configure, a block-specific
-> > - * structure is appended to the @data buffer, one after the other without gaps
-> > - * in between nor overlaps. Userspace shall populate the @data_size field with
-> > - * the effective size, in bytes, of the @data buffer.
-> > - *
-> >   * The expected memory layout of the parameters buffer is::
-> >   *
-> >   *	+-------------------- struct rkisp1_ext_params_cfg -------------------+
-> > @@ -1678,4 +1650,11 @@ struct rkisp1_ext_params_cfg {
-> >  	__u8 data[RKISP1_EXT_PARAMS_MAX_SIZE];
-> >  };
-> >
-> > +#ifdef __KERNEL__
-> > +/* Make sure the header is type-convertible to the generic v4l2 params one */
-> > +static_assert((sizeof(struct rkisp1_ext_params_cfg) -
-> > +	      RKISP1_EXT_PARAMS_MAX_SIZE) ==
-> > +	      sizeof(struct v4l2_params_buffer));
-> > +#endif /* __KERNEL__ */
-> > +
-> >  #endif /* _UAPI_RKISP1_CONFIG_H */
-> >
-> > --
-> > 2.50.1
-> >
->
-> --
-> Regards,
->
-> Laurent Pinchart
->
+
+-- 
+--
+Thomas Zimmermann
+Graphics Driver Developer
+SUSE Software Solutions Germany GmbH
+Frankenstrasse 146, 90461 Nuernberg, Germany
+GF: Ivo Totev, Andrew Myers, Andrew McDonald, Boudien Moerman
+HRB 36809 (AG Nuernberg)
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
