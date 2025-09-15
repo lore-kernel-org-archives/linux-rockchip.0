@@ -4,87 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FCD0CAC587
-	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Sep 2025 02:24:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1780CCAC587
+	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Sep 2025 03:02:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7CVJ3+IdwPQHVMAy1AfesCShjVZLP5JA4UtvDHLmVxo=; b=xvDKTpiDj4kZLY
-	MRyYV4pZdxlbv19KY8Dj1V/4TjfFymL714En3UAsh57e3/Ci6VTIIsbQAmeYurXEfsjnurAXn9E3g
-	+yUV4SVJFZ9C5F3lblS/4Dor2Zt2jhvpOm3Xsc7VW6tYu6IWhgpA0TzUbScqqLaE7tliQmF4Drs9O
-	XDPVIbCMqYwsXlJQABVzHTD9xz27oGWNB7j+tZacN2MkLlrleU94nhDQKwYA/gPZvxJsBMItB42gi
-	M404qIeXdZfxP8wwEmmZzzbXBipdtscnFIkNLU2wX/sAPj8F8XtNOn/R0YUFzzUn2f97tYocdjp2y
-	xwVWdcUrqeZkqVcRIkXA==;
+	List-Owner; bh=HMi3pa5/Sa65tbmIM6YcHwiFh7qgLfTLV6YoK3Ak23k=; b=bH4ukOh12llUlS
+	sZ46DhNMX/BTB5ssoZoiHPt5PPNGjmSnO+GPjSrcgM7KUzZaNOXRWA3i9onOWbtMVDEk5MnN27k+c
+	66w40ONR0SatgJF0wd8pPC1/odMFifgcyTRoDSedQvxPwxl8Zl6ax3nrUvdW4i9aKV+6taPuplL6i
+	U5KKBHMDrhmu6uqGDv0qqlJv11R0OJ8GXfSPgJEiGal/Dpy+rgKPgHBqJqE1Ej/wRT93UDLAI5gAV
+	u4/NGcq8+3ue2XsGLUCFyX6yuq6Nb/zdCLoVtqPHdppT8V5w7XUCSF2wKc6Nk3aRE5dlqRzKE+08V
+	O0PPWh8So4Kj6f9EizxQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uxytb-00000002ZIX-0STg;
-	Mon, 15 Sep 2025 02:24:47 +0000
-Received: from smtpbgjp3.qq.com ([54.92.39.34])
+	id 1uxzTw-00000002bpM-0s36;
+	Mon, 15 Sep 2025 03:02:20 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uxytX-00000002Z3Y-2oI7;
-	Mon, 15 Sep 2025 02:24:45 +0000
-X-QQ-mid: zesmtpsz9t1757902965tcee76ace
-X-QQ-Originating-IP: 8SygWpMkLfN+wjomF1uQCBSYsTX1NhwX4hZX4glgh2A=
-Received: from localhost.localdomain ( [183.51.120.121])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Mon, 15 Sep 2025 10:22:37 +0800 (CST)
-X-QQ-SSF: 0000000000000000000000000000000
-X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 254777178612388058
-EX-QQ-RecipientCnt: 17
-From: Kaison Deng <dkx@t-chip.com.cn>
-To: Rob Herring <robh@kernel.org>,
-	Jimmy Hon <honyuenkwun@gmail.com>,
+	id 1uxzTt-00000002bor-2i70;
+	Mon, 15 Sep 2025 03:02:18 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=wpUJEfkdBkKRAwczqeGRWOLvBP7B0LPXqOrz9cHTX7w=; b=q1fQlkgbxn2h+zFqDxFnTbyhD7
+	rNIAbOO3pCYQXhkvXYW4ax5gA+6IUg2NwHuu55ahmvHrx55T1rHkc8mt3Fb5jb78ocCAFmPo3mUdp
+	yC1YLINp1ayfCPzuEMtqQ7TZq/WS0gzKB1/pq5KBPHyHQcgbvQ4B5N3iquvgEyz/OZFI=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1uxzTY-008OGE-Tm; Mon, 15 Sep 2025 05:01:56 +0200
+Date: Mon, 15 Sep 2025 05:01:56 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Kaison Deng <dkx@t-chip.com.cn>
+Cc: Rob Herring <robh@kernel.org>, Jimmy Hon <honyuenkwun@gmail.com>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Andrew Lunn <andrew@lunn.ch>
-Cc: Wayne Chou <zxf@t-chip.com.cn>,
+	Heiko Stuebner <heiko@sntech.de>, Wayne Chou <zxf@t-chip.com.cn>,
 	Quentin Schulz <quentin.schulz@cherry.de>,
-	Dragan Simic <dsimic@manjaro.org>,
-	Jonas Karlman <jonas@kwiboo.se>,
+	Dragan Simic <dsimic@manjaro.org>, Jonas Karlman <jonas@kwiboo.se>,
 	FUKAUMI Naoki <naoki@radxa.com>,
-	Peter Robinson <pbrobinson@gmail.com>,
-	devicetree@vger.kernel.org,
+	Peter Robinson <pbrobinson@gmail.com>, devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Kaison Deng <dkx@t-chip.com.cn>
-Subject: [PATCH v3 1/2] dt-bindings: arm: rockchip: Add Firefly ROC-RK3588-RT
-Date: Mon, 15 Sep 2025 10:22:04 +0800
-Message-Id: <27b2ce7950fdbf28c6c8404c3f8be3c1c35d6b3c.1757902513.git.dkx@t-chip.com.cn>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <cover.1757902513.git.dkx@t-chip.com.cn>
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v3 2/2] arm64: dts: rockchip: Add devicetree for the
+ ROC-RK3588-RT
+Message-ID: <83b50c2a-bcbc-45cc-935b-af3bc910853c@lunn.ch>
 References: <cover.1757902513.git.dkx@t-chip.com.cn>
+ <349c4226824efa52ceb14e3d8518c8bb5c7465fc.1757902513.git.dkx@t-chip.com.cn>
 MIME-Version: 1.0
-X-QQ-SENDSIZE: 520
-Feedback-ID: zesmtpsz:t-chip.com.cn:qybglogicsvrsz:qybglogicsvrsz4a-0
-X-QQ-XMAILINFO: MbLl0hvuz6wXSB4rYr6xyW00PodqRBasf3yaMgtvdodk8D4xWFumbGAJ
-	b2oJ8EYIU4gDebh6TvqNBidn2CsVcGjC2T9f5+Ks23PXq+p3mF8R9SogFZwKOWUWYmr8Dhf
-	OeSPPvsPYsyo2fb2/DtSPO7NlmM7J4de+MU5trX2JgnpqbNHZsWDlO5yrzUulkpMPbgQmZE
-	Q5OreHXK7ICpm+DavL2bKF5bPST7OpfM3nvfyBFczbldA6BzLpE7btLCkg7maSGD+AS9lkS
-	lWpz/mYmXNbM1RuD6Ebw4vro6X2VOeX7bT9F0D9XCBs6T5Inw8/DF3/pxlcMQlN8NunLE5h
-	lSJxa1aBAhmIU2SfNRajL1494x56dXtS+zaH3D6TAXBsZRDoFQq5TffpyZgWtQiyAFV1Ji/
-	vtO2Xxtg4RlJPxJfTe2wM3wXwpN0tZxBkdOps8mNIF1i/F1etFZju385Toh1+ahGRvuVklO
-	vBcOT4LgER/ynf/46TUGLN7t0ZuaaRxwplTxSvYdKuBu3Y/AHhcQtihGZGAhoLhozYHkEOW
-	gG845+IrZwaTMZ7rqVeGFPb0oVIY89oWrWFAwCIz7g3xHMH6Fg3DExI6dJ17jShWR9Dz4xH
-	D/D3yudclZgT5qjS5nLmYqh6vtWK9Uh7t107iZ+IAR4do7Wr6wXohzj9sMvdCIWHISC6Gt4
-	+TzHEp4yyRAAwqXhwJmDsrBWaiMHR2XyuhXCaNK9JYHGytK4DKVsfY83oI8+3G47YhrxCVK
-	a80jg666/XGFbyqb39N19H2yWhMX+g47d24i3Z/5zcxXIZ7g8y68xku0oOAMBRedJVP+1lj
-	GDPWLsvinHX+edelnArYJEFbmTLyZl97NvgXHuwHqgExZ2Vlw9LNUdP3kN0mc1pvBvRdYn2
-	SII49SSiIm21tbW5GskdMjbxox0T7gZXh1gRGh2Ifodvs2TQ6AHZJ+gLHEXgQuzTYwG+LmV
-	jEPgjqjc46bCScL59mHPDhWq5YPMnEtlD6numP28PE3aqjfBskZ9fdwUs5vuQUy+/vAZEEn
-	xeQmQ59bYcA98neAI+lxso4wV9v250SR2HMh1XtzW1LRhGdxlbRCYKoBtVf1bUTFEBGPSYI
-	nMS0C4Z3P2T6J4RUPGyybHyv3FaH8R72r+WYTrQblLKx7ytl1xzniKEqpPY2bFtX4G9CQdd
-	yFH1g9pFZvAUDWVJj1fk+sr9dmfW4r5eiQZwJjhKTtDuQO4=
-X-QQ-XMRINFO: NS+P29fieYNw95Bth2bWPxk=
-X-QQ-RECHKSPAM: 0
+Content-Disposition: inline
+In-Reply-To: <349c4226824efa52ceb14e3d8518c8bb5c7465fc.1757902513.git.dkx@t-chip.com.cn>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250914_192443_987342_F0BFC64B 
-X-CRM114-Status: UNSURE (   7.90  )
+X-CRM114-CacheID: sfid-20250914_200217_687946_5F9EDD5B 
+X-CRM114-Status: UNSURE (   7.11  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -102,34 +78,61 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This documents Firefly ROC-RK3588-RT which is a SBC based on RK3588 SoC.
+> +&gmac0 {
+> +	clock_in_out = "output";
+> +	phy-handle = <&rgmii_phy0>;
+> +	phy-mode = "rgmii-id";
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&gmac0_miim
+> +		     &gmac0_tx_bus2
+> +		     &gmac0_rx_bus2
+> +		     &gmac0_rgmii_clk
+> +		     &gmac0_rgmii_bus>;
+> +	status = "okay";
+> +};
+> +
+> +&gmac1 {
+> +	clock_in_out = "output";
+> +	phy-handle = <&rgmii_phy1>;
+> +	phy-mode = "rgmii-id";
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&gmac1_miim
+> +		     &gmac1_tx_bus2
+> +		     &gmac1_rx_bus2
+> +		     &gmac1_rgmii_clk
+> +		     &gmac1_rgmii_bus>;
+> +	status = "okay";
+> +};
 
-Link: https://en.t-firefly.com/product/industry/rocrk3588rt
+> +&mdio0 {
+> +	rgmii_phy0: ethernet-phy@1 {
+> +		compatible = "ethernet-phy-id001c.c916";
+> +		reg = <0x1>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&rtl8211f_0_rst>;
+> +		reset-assert-us = <20000>;
+> +		reset-deassert-us = <100000>;
+> +		reset-gpios = <&gpio3 RK_PC0 GPIO_ACTIVE_LOW>;
+> +	};
+> +};
+> +
+> +&mdio1 {
+> +	rgmii_phy1: ethernet-phy@1 {
+> +		compatible = "ethernet-phy-id001c.c916";
+> +		reg = <0x1>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&rtl8211f_1_rst>;
+> +		reset-assert-us = <20000>;
+> +		reset-deassert-us = <100000>;
+> +		reset-gpios = <&gpio3 RK_PB7 GPIO_ACTIVE_LOW>;
+> +	};
+> +};
 
-Signed-off-by: Kaison Deng <dkx@t-chip.com.cn>
----
- Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
- 1 file changed, 5 insertions(+)
+For these nodes only:
 
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-index f9ee77f17ad7..6aceaa8acbb2 100644
---- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-+++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-@@ -258,6 +258,11 @@ properties:
-           - const: firefly,roc-rk3576-pc
-           - const: rockchip,rk3576
- 
-+      - description: Firefly ROC-RK3588-RT
-+        items:
-+          - const: firefly,roc-rk3588-rt
-+          - const: rockchip,rk3588
-+
-       - description: Firefly Station M2
-         items:
-           - const: firefly,rk3566-roc-pc
--- 
-2.25.1
+Reviewed-by: Andrew Lunn <andrew@lunn.ch>
 
+    Andrew
 
 _______________________________________________
 Linux-rockchip mailing list
