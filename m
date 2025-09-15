@@ -4,68 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EB7DCAC58E
-	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Sep 2025 03:38:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2296CAC598
+	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Sep 2025 08:31:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=o4YBr2BXx4mXyqHLqj7KhkN5Qf4l8QG1yNqUc8FKJQk=; b=vGm5ozwkqod7oC
-	s1mgESSJVXRik4IxTi4rOBxqZDuZJO4mS40ejg1HB4dSuQl9jY2vn6pJpbD6TfS3J3rENWRU2Ezf4
-	I7e6Jvb01JrkZrPAk9KlyMW+QyHJtN1158u4Mz3DGDpZ6RlOgsWpzaxwGUVupiNWkphfpGwY5fn/A
-	OHcR5T53N+MamPqDjLH9rIrdhxnq7PCnNDJdmvgEVkAV5VbYwYM171IFU1ezeeiyJHaTqYl2jCAZg
-	9TydkReFYPZ2jpMiFOclKcT+ic7oaSYv0JbjL1GDfZW1ijHtarjhXJ+WGVA08zjGJhCq2vTNIEyrw
-	Q5rpDfD/ruqHua8OT6Sg==;
+	List-Owner; bh=VoTOv+OXYunNvzjsWQwaStPdmW9DUsHVHbMg9iMKhZ4=; b=fSr6MOSojtuA0y
+	olkjokhhBGNhlSswlFeLLNst9YCQX7mWG7mWQf8t5uec+t2RAkCmvAc47SwIXwZkbEYOm7/CsaizC
+	vD33VgkjsBuFNHF8V9fTE8Yk1MDWRlQUa6fu+/TQ2QhK+gG2hIj6dK3qUv00hRnGcwuC+D3dggC4v
+	5DckYZYcrjbKxlYs2MC6SNFXqN61VLs7PswoBCi2yMkYzs7h7PPU5sLkMJxP6QQCv6bcg0uPOVFCX
+	o3mijwUcWGGITEe400fbl0yN2d5t5Xls6i4fgagoDyRaX1BkkCVdouU4r8VrwQwC8cw2rSL4wRkLR
+	uGNFUWEhQNHKQ+X6T7cA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uy02q-00000002gVV-0p0T;
-	Mon, 15 Sep 2025 03:38:24 +0000
-Received: from mail-m15588.qiye.163.com ([101.71.155.88])
+	id 1uy4cV-00000003Db1-2OH0;
+	Mon, 15 Sep 2025 08:31:31 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uy02n-00000002gUv-0OnA;
-	Mon, 15 Sep 2025 03:38:23 +0000
-Received: from [172.16.12.153] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 22c8b5b47;
-	Mon, 15 Sep 2025 11:38:12 +0800 (GMT+08:00)
-Message-ID: <bda5453b-5cc8-4d31-9143-3e23b5d914d2@rock-chips.com>
-Date: Mon, 15 Sep 2025 11:38:10 +0800
+	id 1uy4cQ-00000003DV4-0cfL;
+	Mon, 15 Sep 2025 08:31:29 +0000
+Received: from ideasonboard.com (mob-5-90-56-182.net.vodafone.it [5.90.56.182])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id F159E19E5;
+	Mon, 15 Sep 2025 10:30:01 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1757925002;
+	bh=cBpTVNqPicaQ2318y2FR5BI1VBvytrRzeoBNsCGZJeQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=n6ubdRhqEemjt7wZ/oCRovFq5wMyGe4T0jMUMJz1O4H8XzVXw3+C0ZiN6ZGfe2KMN
+	 8Q4OykSLzs2IoB5vo0lnFbMLSXtWgk2kYVE3NwN/LorCeC3IVY5KgnP2Swh763j3Gg
+	 sypj+7v6b6+9Mt+3TyX0nej8R+pI/jfQ/i6WlLY8=
+Date: Mon, 15 Sep 2025 10:31:14 +0200
+From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: Jacopo Mondi <jacopo.mondi@ideasonboard.com>, 
+	Dafna Hirschfeld <dafna@fastmail.com>, Keke Li <keke.li@amlogic.com>, 
+	Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+	Dan Scally <dan.scally@ideasonboard.com>, Sakari Ailus <sakari.ailus@linux.intel.com>, 
+	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v4 1/8] media: uapi: Introduce V4L2 extensible params
+Message-ID: <pmvm3rzynu6s6zaayg3gnjkdphcobuhwb6jwk3hpwpvkvl6e7a@l2ixrpgvatdx>
+References: <20250820-extensible-parameters-validation-v4-0-30fe5a99cb1f@ideasonboard.com>
+ <20250820-extensible-parameters-validation-v4-1-30fe5a99cb1f@ideasonboard.com>
+ <20250908073534.GD4105@pendragon.ideasonboard.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net] net: stmmac: dwmac-rk: Ensure clk_phy doesn't contain
- invalid address
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Yao Zi <ziyao@disroot.org>, "Russell King (Oracle)"
- <linux@armlinux.org.uk>, Andrew Lunn <andrew+netdev@lunn.ch>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Jonas Karlman <jonas@kwiboo.se>, David Wu <david.wu@rock-chips.com>,
- netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
-References: <20250904031222.40953-3-ziyao@disroot.org>
- <aLlwv3v8ACha8b-3@shell.armlinux.org.uk>
- <b5fbeb3f-9962-444d-85b3-3b8a11f69266@rock-chips.com>
- <aLlyb6WvoBiBfUx3@shell.armlinux.org.uk>
- <aLly7lJ05xQjqCWn@shell.armlinux.org.uk> <aLvIbPfWWNa6TwNv@pie>
- <5d691f5b-460e-46cb-9658-9c391058342f@rock-chips.com>
- <wgau7accvif4pcblnkpppyve4isstvmxyljlojt2yu4cwnyqvf@od4zasgpwdjr>
-Content-Language: en-US
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-In-Reply-To: <wgau7accvif4pcblnkpppyve4isstvmxyljlojt2yu4cwnyqvf@od4zasgpwdjr>
-X-HM-Tid: 0a994b739fc103abkunm50451f02ab88b3
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGUtISFZPSUsZTkxLTk5NGklWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=Lvl5S8pN8u8JQeTy99+juZGGQlsIspYWMdGRWMc49pPXE9TcJEuPh0U3r5oetVv7l+BEpCygircNrUnlXK5O4vBw3XrB3GkE+xRXa7yy5F+QYIbAQjQQbTjW7dtHcyVBOOfmhyRJEsBS5mokBDNKjJChhqvhpMuacvImDYZckvQ=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=Mq67zs+U1255nllj+V7rSH0ZUO6DNosUCaee26uoN3Y=;
-	h=date:mime-version:subject:message-id:from;
+Content-Disposition: inline
+In-Reply-To: <20250908073534.GD4105@pendragon.ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250914_203821_681588_81DAEFCD 
-X-CRM114-Status: GOOD (  25.71  )
+X-CRM114-CacheID: sfid-20250915_013126_368060_C1ED651A 
+X-CRM114-Status: GOOD (  61.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,81 +67,289 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Sebastian,
+Hi Laurent
 
-On 9/7/2025 4:25 AM, Sebastian Reichel wrote:
-> Hi,
+On Mon, Sep 08, 2025 at 09:35:34AM +0200, Laurent Pinchart wrote:
+> Hi Jacopo,
 >
-> On Sat, Sep 06, 2025 at 02:26:31PM +0800, Chaoyi Chen wrote:
->> On 9/6/2025 1:36 PM, Yao Zi wrote:
->>
->>> On Thu, Sep 04, 2025 at 12:07:26PM +0100, Russell King (Oracle) wrote:
->>>> On Thu, Sep 04, 2025 at 12:05:19PM +0100, Russell King (Oracle) wrote:
->>>>> On Thu, Sep 04, 2025 at 07:03:10PM +0800, Chaoyi Chen wrote:
->>>>>> On 9/4/2025 6:58 PM, Russell King (Oracle) wrote:
->>>>>>> On Thu, Sep 04, 2025 at 03:12:24AM +0000, Yao Zi wrote:
->>>>>>>>     	if (plat->phy_node) {
->>>>>>>>     		bsp_priv->clk_phy = of_clk_get(plat->phy_node, 0);
->>>>>>>>     		ret = PTR_ERR_OR_ZERO(bsp_priv->clk_phy);
->>>>>>>> -		/* If it is not integrated_phy, clk_phy is optional */
->>>>>>>> +		/*
->>>>>>>> +		 * If it is not integrated_phy, clk_phy is optional. But we must
->>>>>>>> +		 * set bsp_priv->clk_phy to NULL if clk_phy isn't proivded, or
->>>>>>>> +		 * the error code could be wrongly taken as an invalid pointer.
->>>>>>>> +		 */
->>>>>>> I'm concerned by this. This code is getting the first clock from the DT
->>>>>>> description of the PHY. We don't know what type of PHY it is, or what
->>>>>>> the DT description of that PHY might suggest that the first clock would
->>>>>>> be.
->>>>>>>
->>>>>>> However, we're geting it and setting it to 50MHz. What if the clock is
->>>>>>> not what we think it is?
->>>>>> We only set integrated_phy to 50M, which are all known targets. For external PHYs, we do not perform frequency settings.
->>>>> Same question concerning enabling and disabling another device's clock
->>>>> that the other device should be handling.
->>>> Let me be absolutely clear: I consider *everything* that is going on
->>>> with clk_phy here to be a dirty hack.
->>>>
->>>> Resources used by a device that has its own driver should be managed
->>>> by _that_ driver alone, not by some other random driver.
->>> Agree on this. Should we drop the patch, or fix it up for now to at
->>> least prevent the oops? Chaoyi, I guess there's no user of the feature
->>> for now, is it?
->> This at least needs fixing. Sorry, I have no idea how to implement
->> this in the PHY.
-> I think the proper fix is to revert da114122b8314 ("net: ethernet:
-> stmmac: dwmac-rk: Make the clk_phy could be used for external phy"),
-> which has only recently been merged. External PHYs should reference
-> their clocks themself instead of the MAC doing it.
+> Thank you for the patch.
 >
-> Chaoyi Chen: Have a look at the ROCK 4D devicetree:
+> On Wed, Aug 20, 2025 at 02:58:09PM +0200, Jacopo Mondi wrote:
+> > Introduce v4l2-extensible-params.h in the Linux kernel uAPI.
 >
-> &mdio0 {
-> 	rgmii_phy0: ethernet-phy@1 {
-> 		compatible = "ethernet-phy-id001c.c916";
-> 		reg = <0x1>;
-> 		clocks = <&cru REFCLKO25M_GMAC0_OUT>;
-> 		assigned-clocks = <&cru REFCLKO25M_GMAC0_OUT>;
-> 		assigned-clock-rates = <25000000>;
->          ...
->      };
-> };
+> I expect more ISP-related helpers, such as extensible statistics
+> formats, and more. How about already moving this to v4l2-isp.h ?
 >
-> The clock is enabled by the RTL8211F PHY driver (check for
-> devm_clk_get_optional_enabled in drivers/net/phy/realtek/realtek_main.c),
-> as the PHY is the one needing the clock and not the Rockchip MAC. For
-> this to work it is important to set the right compatible string, so
-> that the kernel can probe the right driver without needing to read the
-> identification registers (as that would require the clock to be already
-> configured before the driver is being probed).
+> > The header defines two types that all drivers that use the extensible
+> > parameters format for ISP configuration shall use to build their own
+> > format versions.
+> >
+> > The newly introduce type v4l2_params_block represent the
+>
+> "The v4l2_params_block structure represents the"
+>
+> except the structure name is v4l2_params_block_header.
+>
+> > header to be prepend to each ISP configuration block and the
+> > v4l2_params_buffer type represent the base type for the configuration
+> > parameters buffer.
+> >
+> > The v4l2_params_buffer represents the container for the ISP
+> > configuration data block. The generic type is defined with a 0-sized
+> > data block that specific ISP implementation shall properly size
+> > according to their capabilities.
+> >
+> > [Add v4l2_params_buffer_size()]
+> > Signed-off-by: Daniel Scally <dan.scally@ideasonboard.com>
+> > Reviewed-by: Daniel Scally <dan.scally@ideasonboard.com>
+> > Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+> > ---
+> >  MAINTAINERS                                       |   6 +
+> >  include/uapi/linux/media/v4l2-extensible-params.h | 146 ++++++++++++++++++++++
+> >  2 files changed, 152 insertions(+)
+> >
+> > diff --git a/MAINTAINERS b/MAINTAINERS
+> > index fe168477caa45799dfe07de2f54de6d6a1ce0615..67216d1e92d7ac81617bb3c4329e4096aa205706 100644
+> > --- a/MAINTAINERS
+> > +++ b/MAINTAINERS
+> > @@ -26380,6 +26380,12 @@ F:	drivers/media/i2c/vd55g1.c
+> >  F:	drivers/media/i2c/vd56g3.c
+> >  F:	drivers/media/i2c/vgxy61.c
+> >
+> > +V4L2 EXTENSIBLE PARAMETERS FORMAT
+> > +M:	Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+> > +L:	linux-media@vger.kernel.org
+> > +S:	Maintained
+> > +F:	include/uapi/linux/media/v4l2-extensible-params.h
+> > +
+> >  VF610 NAND DRIVER
+> >  M:	Stefan Agner <stefan@agner.ch>
+> >  L:	linux-mtd@lists.infradead.org
+> > diff --git a/include/uapi/linux/media/v4l2-extensible-params.h b/include/uapi/linux/media/v4l2-extensible-params.h
+> > new file mode 100644
+> > index 0000000000000000000000000000000000000000..aca643f505f2705eeca7337f0dd182bcfd1ea60d
+> > --- /dev/null
+> > +++ b/include/uapi/linux/media/v4l2-extensible-params.h
+> > @@ -0,0 +1,146 @@
+> > +/* SPDX-License-Identifier: ((GPL-2.0+ WITH Linux-syscall-note) OR MIT) */
+>
+> Why the MIT license ? And why GPL-2.0+ instead of GPL-2.0 ?
+>
 
-Yes, what you said is correct. This is also the issue we encountered earlier on RK3576 board :)
+Blindly copied from the rkisp1 header. I'll use GPL-2.0
 
+> > +/*
+> > + * Video4Linux2 extensible configuration parameters base types
+> > + *
+> > + * Copyright (C) 2025 Ideas On Board Oy
+> > + * Author: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+> > + */
+> > +
+> > +#ifndef _UAPI_V4L2_PARAMS_H_
+> > +#define _UAPI_V4L2_PARAMS_H_
+> > +
+> > +#include <linux/stddef.h>
+> > +#include <linux/types.h>
+> > +
+> > +#define V4L2_PARAMS_FL_BLOCK_DISABLE	(1U << 0)
+> > +#define V4L2_PARAMS_FL_BLOCK_ENABLE	(1U << 1)
+> > +
+> > +/*
+> > + * Reserve the first 8 bits for V4L2_PARAMS_FL_* flag.
+> > + *
+> > + * Platform-specific flags should be defined as:
+> > + * #define PLATFORM_SPECIFIC_FLAG0     ((1U << V4L2_PARAMS_FL_PLATFORM_FLAGS(0))
+> > + * #define PLATFORM_SPECIFIC_FLAG1     ((1U << V4L2_PARAMS_FL_PLATFORM_FLAGS(1))
+> > + */
+> > +#define V4L2_PARAMS_FL_PLATFORM_FLAGS(n)       ((n) + 8)
+>
+> s/PLATFORM/DRIVER/
+>
+> > +
+> > +/**
+> > + * struct v4l2_params_block_header - V4L2 extensible parameters block header
+> > + *
+> > + * This structure represents the common part of all the ISP configuration
+> > + * blocks. Each parameters block shall embed an instance of this structure type
+> > + * as its first member, followed by the block-specific configuration data. The
+> > + * driver inspects this common header to discern the block type and its size and
+> > + * properly handle the block content by casting it to the correct block-specific
+> > + * type.
+>
+> The last sentence is not relevant for the userspace API.
+>
+> > + *
+> > + * The @type field is one of the values enumerated by each platform-specific ISP
+> > + * block types which specifies how the data should be interpreted by the driver.
+> > + * The @size field specifies the size of the parameters block and is used by the
+> > + * driver for validation purposes.
+>
+>  * The @type field is an ISP driver-specific value that identifies the block type.
+>  * The @size field specifies the size of the parameters block.
+>
+> but that seems to duplicate the documentation of the fields below. I'd
+> move the field documentation up, and then only add additional paragraphs
+> when they contain extra information.
+>
+> > + *
+> > + * The @flags field is a bitmask of per-block flags V4L2_PARAMS_FL_* and
+> > + * platform-specific flags specified by the platform-specific header.
+>
+> It's not platform-specific but ISP driver-specific (or you could just
+> write driver-specific).
+>
+> > + *
+> > + * Documentation of the platform-specific flags handling is specified by the
+> > + * platform-specific block header type:
+> > + *
+> > + * - Rockchip RkISP1: :c:type:`rkisp1_ext_params_block_type`
+> > + * - Amlogic C3: :c:type:`c3_isp_params_block_type`
+>
+> I wouldn't mention specific platforms here, that won't really scale.
+>
+> > + *
+> > + * Userspace is responsible for correctly populating the parameters block header
+> > + * fields (@type, @flags and @size) and the block-specific parameters.
+>
+> This is the kind of information I think I would expect in
+> Documentation/userspace-api/media/v4l/extensible-parameters.rst more
+> than here. We usually keep documentation minimal in header files for the
+> userspace API, and document the behaviour in .rst files. This being
+> said, if you think having more documentation in the headers is better,
+> that could work too.
+>
+
+No worries, I wasn't sure how much documentation is the right amount
+of documentation. I'm fine reducing it.
+
+> > + *
+> > + * @type: The parameters block type (platform-specific)
+> > + * @flags: A bitmask of block flags (platform-specific)
+> > + * @size: Size (in bytes) of the parameters block, including this header
+> > + */
+> > +struct v4l2_params_block_header {
+> > +	__u16 type;
+> > +	__u16 flags;
+> > +	__u32 size;
+> > +} __attribute__((aligned(8)));
+> > +
+> > +/**
+> > + * v4l2_params_buffer_size - Calculate size of v4l2_params_buffer for a platform
+> > + *
+> > + * Users of the v4l2 extensible parameters will have differing sized data arrays
+> > + * depending on their specific parameter buffers. Drivers and userspace will
+> > + * need to be able to calculate the appropriate size of the struct to
+> > + * accommodate all ISP configuration blocks provided by the platform.
+> > + * This macro provides a convenient tool for the calculation.
+> > + *
+> > + * Each driver shall provide a definition of their extensible parameters
+> > + * implementation data buffer size. As an example:
+> > + *
+> > + * #define PLATFORM_BLOCKS_MAX_SIZE		\
+> > + *	sizeof(platform_block_0)	+	\
+> > + *	sizeof(platform_block_1)
+> > + *
+> > + * #define PLATFORM_BUFFER_SIZE			\
+> > + *	v4l2_params_buffer_size(PLATFORM_BLOCKS_MAX_SIZE)
+> > + *
+> > + * Drivers are then responsible for allocating buffers of the proper size
+> > + * by assigning PLATFORM_BUFFER_SIZE to the per-plane size of the videobuf2
+> > + * .queue_setup() operation and userspace shall use PLATFORM_BUFFER_SIZE
+> > + * when populating the ISP configuration data buffer.
+>
+> Most if not all of this also seems to be information for drivers, not
+> for userspace. I doesn't belong in the UAPI documentation.
+>
+> > + *
+> > + * @max_params_size: The total size of the ISP configuration blocks
+> > + */
+> > +#define v4l2_params_buffer_size(max_params_size) \
+> > +	(offsetof(struct v4l2_params_buffer, data) + (max_params_size))
+> > +
+> > +/**
+> > + * struct v4l2_params_buffer - V4L2 extensible parameters configuration
+> > + *
+> > + * This struct contains the configuration parameters of the ISP algorithms,
+> > + * serialized by userspace into a data buffer. Each configuration parameter
+> > + * block is represented by a block-specific structure which contains a
+> > + * :c:type:`v4l2_params_block_header` entry as first member. Userspace populates
+> > + * the @data buffer with configuration parameters for the blocks that it intends
+> > + * to configure. As a consequence, the data buffer effective size changes
+> > + * according to the number of ISP blocks that userspace intends to configure and
+> > + * is set by userspace in the @data_size field.
+> > + *
+> > + * The parameters buffer is versioned by the @version field to allow modifying
+> > + * and extending its definition. Userspace shall populate the @version field to
+> > + * inform the driver about the version it intends to use. The driver will parse
+> > + * and handle the @data buffer according to the data layout specific to the
+> > + * indicated version and return an error if the desired version is not
+> > + * supported.
+>
+> How does userspace know which versions are supported ?
+>
+
+Good question. There are no negotiation/discoverability uAPI at the
+moment.
+
+> > + *
+> > + * For each ISP block that userspace wants to configure, a block-specific
+> > + * structure is appended to the @data buffer, one after the other without gaps
+> > + * in between nor overlaps. Userspace shall populate the @data_size field with
+> > + * the effective size, in bytes, of the @data buffer.
+> > + *
+> > + * Drivers shall take care of properly sizing of the extensible parameters
+> > + * buffer @data array. The v4l2_params_buffer type is defined with a
+> > + * flexible-array-member at the end, which resolves to a size of 0 bytes when
+> > + * inspected with sizeof(struct v4l2_params_buffer). This of course is not
+> > + * suitable for neither buffer allocation in the kernel driver nor for proper
+> > + * handling in userspace of the @data buffer it has to populate.
+> > + *
+> > + * Drivers using this type in their userspace API definition are responsible
+> > + * for providing the exact definition of the @data buffer size using the
+> > + * v4l2_params_buffer_size() macro. The size shall be used
+> > + * by the driver for buffers allocation and by userspace for populating the
+> > + * @data buffer before queueing it to the driver
+>
+> Most of those two paragraphs are driver documentation too.
+>
+> > + *
+> > + * Drivers that were already using extensible-parameters before the introduction
+> > + * of this file define their own type-convertible implementation of this
+> > + * type, see:
+> > + * - Rockchip RkISP1: :c:type:`rkisp1_ext_params_cfg`
+> > + * - Amlogic C3: :c:type:`c3_isp_params_cfg`
+>
+> Drop this too.
+>
+
+Ack.
+
+Thanks
+   j
+
+> > + *
+> > + * @version: The parameters buffer version (platform-specific)
+> > + * @data_size: The configuration data effective size, excluding this header
+> > + * @data: The configuration data
+> > + */
+> > +struct v4l2_params_buffer {
+> > +	__u32 version;
+> > +	__u32 data_size;
+> > +	__u8 data[] __counted_by(data_size);
+> > +};
+> > +
+> > +#endif /* _UAPI_V4L2_PARAMS_H_ */
+>
+> --
+> Regards,
+>
+> Laurent Pinchart
+>
 
 _______________________________________________
 Linux-rockchip mailing list
