@@ -4,56 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C724CAC592
-	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Sep 2025 16:56:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48724CAC597
+	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Sep 2025 17:18:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CYJfalACndKvCfE8+w8sqGxyD6QmD+9pjGmyCiU8wSI=; b=GMGULUAtphVXsW
-	CJ9eAHlOWZmFiSrBVCuDpQmKp+J+QGY2YNelgxzhtA99p9Xy0FnDryvHKSfoIvteurWIjzctf+2HY
-	1Vvm+cOPOvpM4iovO7E7EIbA58GWfnyFBtGhtnklyH4wpHh45qnHjT8LIoObB7kS7LLN8/pJR1w+V
-	LbAMy5pCVQKpGtv8AXKlaWAypplQ+/GmqeinrytpeZeKEVL/7AVaoE43H8fKVtnSzW+pGYg7Oe/dt
-	dxCaabR2U5P+qPHzlsJUIGUhNFQp/qZR9qcU5essOzlubrZxECKYmk2iTTK7Di0bgPLjc5uqncTOS
-	RhBYFE3xc0NtV26TASrA==;
+	List-Owner; bh=eyZoZ6oKpB7UhPSth9bsjykizcS2dd546dfnz6vywPQ=; b=wjYrEmqx7f5prG
+	Cb1CpFCZ2bCqpo2E+FdFTfk3N1MicAYQYDhr5Zs4Yhpv1Mlfbo98khhQYvEM8f+SmM5znDN4VyodZ
+	BQL1cFAP/OC966wHyn0lykbGbhiFrh5UHNdXFkpwsv2obf/5FQ+NKmz2Sc8CA1VYx/UELI8Yf2NJT
+	taPn33OHa1p3V+HcoEo0lZrbzzvGaWSOtwsis6r/3RPn+UuvxKKWgDFa0/+ZKSMJp+XCNFkdsHsG4
+	IWX/DUtS7XT0AVOqP0DGa8zyrmnsj8YS2lRw9SoryiBPLd5jAF/TUmKK+J3UC6KKBcE/EsNh/uPKx
+	IEqu4ij/0ZPJ2d4tvu6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uyCUf-00000005Bjq-1W8e;
-	Mon, 15 Sep 2025 16:55:57 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1uyCqc-00000005FMZ-3q3i;
+	Mon, 15 Sep 2025 17:18:38 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uyCUc-00000005Bj9-25rt;
-	Mon, 15 Sep 2025 16:55:55 +0000
-Received: from ideasonboard.com (mob-5-90-56-182.net.vodafone.it [5.90.56.182])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 82062B0B;
-	Mon, 15 Sep 2025 18:54:32 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1757955272;
-	bh=ScHNo7xeAxbc9qs152ZJaY9kt3AjpGFgAP5bYGwbDhM=;
+	id 1uyCqZ-00000005FKO-1Vd5;
+	Mon, 15 Sep 2025 17:18:37 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id A415243833;
+	Mon, 15 Sep 2025 17:18:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5060DC4CEF1;
+	Mon, 15 Sep 2025 17:18:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1757956714;
+	bh=UudavyaBPyKCvnlpRZjR/WL6Gz4dsHuj/kJzrYrD31k=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=c70sDKW0Y91oM30vf++vp2z4pVbkNOEdGBxrMH87+iYEavirzIxXtUCKhgFzwH/KH
-	 ivQOwVUa5MFYJGAYc2gUP6A0ScAbeK8jx6ft6jvJouGoxqtvgUx+q/8AkW3LX4d1VE
-	 TQ8R7eqIgg2YgosbNbUJkyuF4YlP8QN+qRW6CNj8=
-Date: Mon, 15 Sep 2025 18:55:44 +0200
-From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-To: Stefan Klug <stefan.klug@ideasonboard.com>
-Cc: linux-media@vger.kernel.org, 
-	Jacopo Mondi <jacopo.mondi@ideasonboard.com>, Dafna Hirschfeld <dafna@fastmail.com>, 
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] media: rkisp1: Improve frame sequence correctness on
- stats and params buffers
-Message-ID: <rthpkuipbpbp2lv2ddmruwb7fmpkmtlsnx3q6kk7gaskzpdaar@5bk3r44f2mpo>
-References: <20250908094200.48002-1-stefan.klug@ideasonboard.com>
+	b=F/JbTlRdHf2wuMS7PAQDX+cMcUt0Tl2t0XWZyhzi1eOyiISPk7RjJcnsIS0GIpi9V
+	 7SbXrx0cZaL37tKdyg/vcUqZJzqSXLzgTtNoPXknib9uGaINZ14kqTyI7w27Jd9lfE
+	 6D3ifCwLIr5z4r+BgcNvocGfn8dNx4/n/EYCi8Mze70UyAizPmCLXaCHML3w4Or7VH
+	 FunnWjeDz28vusWXMx/XEhCwqYuB21S/9Q0HK2V/W6cRl8dDYJpjZR2DN8/L5UEREY
+	 wgMm1OoRpOaQJd0B0pyOH+m2tJXI1okpo7J4dXt2uk7aqpPPk7lAJ+PaV8RA0gVQkg
+	 wtCjSaz/a2p3A==
+Date: Mon, 15 Sep 2025 12:18:33 -0500
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
+Cc: angelogioacchino.delregno@collabora.com, netdev@vger.kernel.org,
+	broonie@kernel.org, flora.fu@mediatek.com, p.zabel@pengutronix.de,
+	linux-input@vger.kernel.org, devicetree@vger.kernel.org,
+	support.opensource@diasemi.com, edumazet@google.com,
+	krzk+dt@kernel.org, louisalexis.eyraud@collabora.com,
+	mchehab@kernel.org, matthias.bgg@gmail.com,
+	tiffany.lin@mediatek.com, linux-media@vger.kernel.org,
+	maarten.lankhorst@linux.intel.com, mripard@kernel.org,
+	chunkuang.hu@kernel.org, linux-gpio@vger.kernel.org,
+	linux-kernel@vger.kernel.org, airlied@gmail.com,
+	linus.walleij@linaro.org, pabeni@redhat.com, lgirdwood@gmail.com,
+	kuba@kernel.org, linux-sound@vger.kernel.org, tzimmermann@suse.de,
+	amergnat@baylibre.com, linux-rockchip@lists.infradead.org,
+	dri-devel@lists.freedesktop.org, andrew+netdev@lunn.ch,
+	conor+dt@kernel.org, dmitry.torokhov@gmail.com,
+	yunfei.dong@mediatek.com, linux-bluetooth@vger.kernel.org,
+	davem@davemloft.net, jeesw@melfas.com, heiko@sntech.de,
+	linux-arm-kernel@lists.infradead.org, minghsiu.tsai@mediatek.com,
+	sean.wang@kernel.org, houlong.wei@mediatek.com,
+	luiz.dentz@gmail.com, kernel@collabora.com,
+	linux-mediatek@lists.infradead.org, simona@ffwll.ch,
+	marcel@holtmann.org, andrew-ct.chen@mediatek.com
+Subject: Re: [PATCH v2 04/12] dt-bindings: ASoC: Convert MediaTek RT5650
+ codecs bindings to DT schema
+Message-ID: <175795671272.2949182.4347956532845839846.robh@kernel.org>
+References: <20250911151001.108744-1-ariel.dalessandro@collabora.com>
+ <20250911151001.108744-5-ariel.dalessandro@collabora.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20250908094200.48002-1-stefan.klug@ideasonboard.com>
+In-Reply-To: <20250911151001.108744-5-ariel.dalessandro@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250915_095554_678250_BF0F67ED 
-X-CRM114-Status: GOOD (  33.67  )
+X-CRM114-CacheID: sfid-20250915_101835_410929_15E3D040 
+X-CRM114-Status: UNSURE (   8.80  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,150 +94,22 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Stefan
 
-On Mon, Sep 08, 2025 at 11:41:48AM +0200, Stefan Klug wrote:
-> On the rkisp1 (in my case on a NXP i.MX8 M Plus) the ISP interrupt
-> handler is sometimes called with RKISP1_CIF_ISP_V_START (start of frame)
-> and RKISP1_CIF_ISP_FRAME (end of frame) being set at the same time. In
-> commit 8524fa22fd2f ("media: staging: rkisp1: isp: add a warning and
-> debugfs var for irq delay") a warning was added for that. There are two
-> cases where this condition can occur:
->
-> 1. The v-sync and the frame-end belong to the same frame. This means,
->    the irq was heavily delayed and the warning is likely appropriate.
->
-> 2. The v-sync belongs to the next frame. This can happen if the vertical
->    blanking between two frames is very short.
->
-> The current code always handles case 1 although case 2 is in my
-> experience the more common case and happens in regular usage. This leads
-
-I would rather argue that 8524fa22fd2f is possibily wrong, and case 1)
-would imply the interrupt has been delayed for the whole frame
-duration (+ blanking), which seems unlikely to me ?
-
-True we handle stats collection and parameters programming in irq
-context, which is less than ideal and could take time (I wonder if we
-should use a threaded irq, but that's a different problem)
-
-If that's the case and we only should care about 2) would simply
-handling RKISP1_CIF_ISP_FRAME before RKISP1_CIF_ISP_V_START be enough ?
-
-> to incorrect sequence numbers on stats and params buffers which in turn
-> breaks the regulation in user space. Fix that by adding a frame_active
-> flag to distinguish between these cases and handle the start of frame
-> either at the beginning or at the end of the rkisp1_isp_isr().
->
-> Signed-off-by: Stefan Klug <stefan.klug@ideasonboard.com>
+On Thu, 11 Sep 2025 12:09:53 -0300, Ariel D'Alessandro wrote:
+> Convert the existing text-based DT bindings for Mediatek MT8173 RT5650
+> codecs to a DT schema.
+> 
+> Signed-off-by: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
 > ---
->  .../platform/rockchip/rkisp1/rkisp1-common.h    |  1 +
->  .../media/platform/rockchip/rkisp1/rkisp1-isp.c | 17 +++++++++++++----
->  2 files changed, 14 insertions(+), 4 deletions(-)
->
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> index ca952fd0829b..adf23416de9a 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> @@ -222,6 +222,7 @@ struct rkisp1_isp {
->  	struct media_pad pads[RKISP1_ISP_PAD_MAX];
->  	const struct rkisp1_mbus_info *sink_fmt;
->  	__u32 frame_sequence;
-> +	bool frame_active;
->  };
->
->  /*
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-> index 8c29a1c9309a..1469075b2d45 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-> @@ -965,6 +965,7 @@ static int rkisp1_isp_s_stream(struct v4l2_subdev *sd, int enable)
->  	}
->
->  	isp->frame_sequence = -1;
-> +	isp->frame_active = false;
->
->  	sd_state = v4l2_subdev_lock_and_get_active_state(sd);
->
-> @@ -1086,12 +1087,15 @@ void rkisp1_isp_unregister(struct rkisp1_device *rkisp1)
->   * Interrupt handlers
->   */
->
-> -static void rkisp1_isp_queue_event_sof(struct rkisp1_isp *isp)
-> +static void rkisp1_isp_sof(struct rkisp1_isp *isp)
->  {
->  	struct v4l2_event event = {
->  		.type = V4L2_EVENT_FRAME_SYNC,
->  	};
->
-> +	isp->frame_sequence++;
-> +	isp->frame_active = true;
-> +
->  	event.u.frame_sync.frame_sequence = isp->frame_sequence;
->  	v4l2_event_queue(isp->sd.devnode, &event);
->  }
-> @@ -1112,14 +1116,15 @@ irqreturn_t rkisp1_isp_isr(int irq, void *ctx)
->  	rkisp1_write(rkisp1, RKISP1_CIF_ISP_ICR, status);
->
->  	/* Vertical sync signal, starting generating new frame */
-> -	if (status & RKISP1_CIF_ISP_V_START) {
-> -		rkisp1->isp.frame_sequence++;
-> -		rkisp1_isp_queue_event_sof(&rkisp1->isp);
-> +	if (status & RKISP1_CIF_ISP_V_START && !rkisp1->isp.frame_active) {
-> +		status &= ~RKISP1_CIF_ISP_V_START;
-> +		rkisp1_isp_sof(&rkisp1->isp);
->  		if (status & RKISP1_CIF_ISP_FRAME) {
->  			WARN_ONCE(1, "irq delay is too long, buffers might not be in sync\n");
->  			rkisp1->debug.irq_delay++;
->  		}
->  	}
-> +
->  	if (status & RKISP1_CIF_ISP_PIC_SIZE_ERROR) {
->  		/* Clear pic_size_error */
->  		isp_err = rkisp1_read(rkisp1, RKISP1_CIF_ISP_ERR);
-> @@ -1138,6 +1143,7 @@ irqreturn_t rkisp1_isp_isr(int irq, void *ctx)
->  	if (status & RKISP1_CIF_ISP_FRAME) {
->  		u32 isp_ris;
->
-> +		rkisp1->isp.frame_active = false;
->  		rkisp1->debug.complete_frames++;
->
->  		/* New frame from the sensor received */
-> @@ -1152,5 +1158,8 @@ irqreturn_t rkisp1_isp_isr(int irq, void *ctx)
->  		rkisp1_params_isr(rkisp1);
->  	}
->
-> +	if (status & RKISP1_CIF_ISP_V_START && !rkisp1->isp.frame_active)
+>  .../sound/mediatek,mt8173-rt5650.yaml         | 73 +++++++++++++++++++
+>  .../bindings/sound/mt8173-rt5650.txt          | 31 --------
+>  2 files changed, 73 insertions(+), 31 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/sound/mediatek,mt8173-rt5650.yaml
+>  delete mode 100644 Documentation/devicetree/bindings/sound/mt8173-rt5650.txt
+> 
 
-I think you can drop the  && !rkisp1->isp.frame_active because if you
-get here and 'status & RKISP1_CIF_ISP_V_START' it means that:
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 
-1) frame_active was false and you have entered the above
-
-        if (status & RKISP1_CIF_ISP_V_START && !rkisp1->isp.frame_active) {
-
-   and now the RKISP1_CIF_ISP_V_START bit in 'status' has been cleared
-   so you don't need to handle VSYNC here
-
-2) frame_active was true and you delayed handling V_START till here.
-   If also ISP_FRAME was set, frame_start has been set to false here
-   above. If ISP_FRAME was not set then it has been delivered by a
-   previous interrupt and then frame_start is false.
-
-So I guess it's enough to check if at this point RKISP1_CIF_ISP_V_START
-is still set in 'status' ?
-
-However, as said, it's seems unlikely to that your above 1) can
-happen. Have you ever hit a WARN() again with this patch applied ?
-
-> +		rkisp1_isp_sof(&rkisp1->isp);
-> +
->  	return IRQ_HANDLED;
->  }
-> --
-> 2.48.1
->
->
 
 _______________________________________________
 Linux-rockchip mailing list
