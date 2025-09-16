@@ -4,81 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E136CAC599
-	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Sep 2025 03:30:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A08F2CAC599
+	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Sep 2025 07:34:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3A5fQy9IxPvXC/0zvAMFv31q+/5T7Qej7u+f8s7GDYU=; b=YHqhoZ+8ezjDdP
-	3MG6Ped/Da1pH9FVKFpz9+w/TFPRNP2HNl7TaxtvIrFQntJdlAYxrvNaKUwJTRSbRQtrnQuKZ17MP
-	iAG8TYOLoM3COmfj6dsURZrxcCnznwVQf90xGOJv2WHnA7uDpIjZ1PzGWo+IQ2kp0fy9Qai608b11
-	0FsGhr689dYBrYR0aC5JInvaZVoN1Occs+8drOcH2PKFoV9WFsT7ZEWgQdGeiz6urEiM42bW10jhO
-	dxf0N5lcL9RrLo75ynoGyquPTJXMfV1BcLcpbyKMQu3T/veGwi2KKp1+iw1/+TEYL7iupb7kUn/2y
-	sv/OKviliFkL/GIIOOpw==;
+	List-Owner; bh=U1y3E+KuYOZatMtm/n5dkxCNJkrXy6s3BM3KQUwG7jI=; b=Y3poLoXyTWgtL/
+	fz452NBoz1aHwXSs+oCKgcQZyPxd9msTKnV1V9rQKV9fHJXq8xoxm3dbqgcbJNbpZfbePp/5E4VFn
+	O40m/9s3GpFw52jNdoKnBKrGtU3FSQutgMf9rdMprN3611wZEWWF5YRrfNPT0H8s3jPBKB4mDgXjs
+	j9Gy2R8Ul9AGl2X6QcpjtHNjAV7n0BqJfUDRLeM5I1CoY9qcBB15R4lza0hafqEm0u80BnbrNljWX
+	e47KFXH99ZT6jOEKIeOu1nPtP3/+LrON7E84CzB9L/G1jjVj/1VkMuJZy/jhH7wVX3h3RWNdA4Ry5
+	aZhPb7ngAX7fh51yOEVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uyMOC-00000006aqI-0ajE;
-	Tue, 16 Sep 2025 03:29:56 +0000
-Received: from smtpbgsg2.qq.com ([54.254.200.128])
+	id 1uyQDB-0000000725O-3Mw4;
+	Tue, 16 Sep 2025 07:34:49 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uyMO7-00000006anc-3DMQ;
-	Tue, 16 Sep 2025 03:29:54 +0000
-X-QQ-mid: esmtpgz11t1757993315t735adbf3
-X-QQ-Originating-IP: bCdIXwVAGF6MwENTPw+HEEysn9sINOX+5ML4W6MDpzk=
-Received: from dkx-H410M-H-V2 ( [183.51.122.206])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Tue, 16 Sep 2025 11:28:33 +0800 (CST)
-X-QQ-SSF: 0000000000000000000000000000000
-X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 14883937900501578486
-EX-QQ-RecipientCnt: 17
-Message-ID: <EEABCC59F39E8FC5+04995f9826d047eeb5f4bada25c3dd93e50983b0.camel@t-chip.com.cn>
-Subject: Re: [PATCH v3 1/2] dt-bindings: arm: rockchip: Add Firefly
- ROC-RK3588-RT
-From: Kaison Deng <dkx@t-chip.com.cn>
-To: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>, Peter Robinson
- <pbrobinson@gmail.com>, Jimmy Hon <honyuenkwun@gmail.com>, 
- linux-kernel@vger.kernel.org, Quentin Schulz <quentin.schulz@cherry.de>, 
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Jonas
- Karlman <jonas@kwiboo.se>, linux-rockchip@lists.infradead.org, Andrew Lunn
- <andrew@lunn.ch>, Dragan Simic <dsimic@manjaro.org>, Wayne Chou
- <zxf@t-chip.com.cn>, Kaison Deng <dkx@t-chip.com.cn>, FUKAUMI Naoki
- <naoki@radxa.com>, Heiko Stuebner <heiko@sntech.de>, Conor Dooley
- <conor+dt@kernel.org>
-Date: Tue, 16 Sep 2025 11:28:33 +0800
-In-Reply-To: <175794446144.2732898.9504412064423841025.robh@kernel.org>
+	id 1uyQD9-0000000723y-0GSJ;
+	Tue, 16 Sep 2025 07:34:48 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=/d8NPHHoHLLLmfSMKxDnV22O73BappyZrrJ8bU33Oq4=; b=nWPVUPfN5V9OJZVJkYajiP2J7z
+	n7rLQ8eY3R8jFRO4V8BbRorqcFQMSOjp3y0hBD+AvTBcS4x2NfEuIQ/j8o9E+mGiWhPMOXGDCBt6F
+	vuPV42fW4SRZv+r1VTBNfZgFcPJkKbyJbK5mVqmay2y3o12STWu82wMw/5KNZLuhLYcRPq6ts2gDs
+	OO8KT2QOU9lgVcisSBM6Tq4b/VV1WQUBWtzcWgTyribLGpUXFRi0v7bXv8brcjYSfG2pinDj2IfCA
+	2uCV5clSNof+eLiy+B2GK0zuFSd0cQoMF8HPrfZIrPIaD6FnpZ/6sDFnWO/VbZbbeF8GhtiMMLMV6
+	8Lf289rg==;
+Received: from i53875bfd.versanet.de ([83.135.91.253] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1uyQCw-00066R-7K; Tue, 16 Sep 2025 09:34:34 +0200
+From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
+To: "Rob Herring (Arm)" <robh@kernel.org>, Kaison Deng <dkx@t-chip.com.cn>
+Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Peter Robinson <pbrobinson@gmail.com>, Jimmy Hon <honyuenkwun@gmail.com>,
+ linux-kernel@vger.kernel.org, Quentin Schulz <quentin.schulz@cherry.de>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ Jonas Karlman <jonas@kwiboo.se>, linux-rockchip@lists.infradead.org,
+ Andrew Lunn <andrew@lunn.ch>, Dragan Simic <dsimic@manjaro.org>,
+ Wayne Chou <zxf@t-chip.com.cn>, Kaison Deng <dkx@t-chip.com.cn>,
+ FUKAUMI Naoki <naoki@radxa.com>, Conor Dooley <conor+dt@kernel.org>
+Subject: Re: [PATCH v3 1/2] dt-bindings: arm: rockchip: Add Firefly ROC-RK3588-RT
+Date: Tue, 16 Sep 2025 09:34:32 +0200
+Message-ID: <3034003.o0KrE1Onz3@diego>
+In-Reply-To: <EEABCC59F39E8FC5+04995f9826d047eeb5f4bada25c3dd93e50983b0.camel@t-chip.com.cn>
 References: <cover.1757902513.git.dkx@t-chip.com.cn>
-	 <27b2ce7950fdbf28c6c8404c3f8be3c1c35d6b3c.1757902513.git.dkx@t-chip.com.cn>
-	 <175794446144.2732898.9504412064423841025.robh@kernel.org>
-User-Agent: Evolution 3.36.5-0ubuntu1 
+ <175794446144.2732898.9504412064423841025.robh@kernel.org>
+ <EEABCC59F39E8FC5+04995f9826d047eeb5f4bada25c3dd93e50983b0.camel@t-chip.com.cn>
 MIME-Version: 1.0
-X-QQ-SENDSIZE: 520
-Feedback-ID: esmtpgz:t-chip.com.cn:qybglogicsvrsz:qybglogicsvrsz4a-0
-X-QQ-XMAILINFO: MXE8fio8Dejk8AUu/Aqvn7gY26XHjU32xF0F+vEcnzxjI2i5enOzEo6u
-	B+Dh6kz80uah8B8wUaswfzDCl99idnuFMqxfqBmD0+Ozp1sdWfDcwP+omq8ENC20yjP/RPv
-	sR3xDVUXXXsKQm0eoJCp51cc0OTFTG6g2omqHKYDPWy9IrGrpNbvj5APrDb4Y0SZi22En3y
-	spzi1xIJjOgOdtkprq+niRa135qZMS/dheINQIHfKMc3aC+mhvWt+9oCtHxRyACbUKMh4S3
-	zVvxDSykETpXHoObUGt09y+dhaGorYk1CC2ih+d6eKc+lNMedI0qPaUabqB0Qg8QRO9RmrW
-	xhryliCL+TufmiSVO7yYQ8Puh2bGAs74td43hoEkNBIh34ks7eGfJsTAzeYHlO/jVvw8L5Z
-	aSzDPiWoqD7BjY8yqD7pwN/IJl0MErhI+RLTeehgAsU66aqS0ZKu4yCJKvt96J7aUOOYe5g
-	HltZQAr89sq7tbcOlQzBQ3ZCTmPUUX/bOvCY23ptl0oTOltYRHyqqT87ey4fWKlRxJ/eoLB
-	7Mw1ay3A3qTJXxZ0hqNSmEIsZ42nExMzvc6aOrUPBXLMuU4fpCQ1AdXbgzp08zlfwUpXZtA
-	Z4u/htrpaxMF6n3rgEEFhNLw2BnmmNZoMJVduT3C0+g2MpdHu6ZjBx+Xr+gR/KRRWZ2wmPx
-	zFJoZcv/wQKaBKdudUUoiBtz2ibMrYLbxCAYYWj6zKFqQnaWLix1tDtz4wzuNkHIYEVQO3L
-	jAV1peDbst0RDjfc2FJol4FKi8Lsn0lX547hpJ6Gsf88XAgZ71CE/XzAUclfDLITIGJ8E0z
-	7V0EOeVvsvDIx544wcZiRj4U2u1T2FboByeh52UqYuephd1BwtfXXHy0B9QfGxkk4ZF3fm0
-	JcfhmDYIm+Xig8tryg2jDRD/gSxC9GFYLqPCX32hs3nq5h3BtlGrYI43Cd/Iq6gmvjqb5xo
-	5SJPcLaKNJJKYyxgGXpM9b8aBqC8Wqo8vD5tCoRtZFQ7JUm4lh5l8ha8jYq4xJR+k3/a0Mo
-	mte8wVBFwqnZp/spPEfRFyDyhGKaDkvuLZlVCfWJKRXaz3QiJC
-X-QQ-XMRINFO: Mp0Kj//9VHAxr69bL5MkOOs=
-X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250915_202952_164548_F04C45C7 
-X-CRM114-Status: GOOD (  15.98  )
+X-CRM114-CacheID: sfid-20250916_003447_295717_63A4A5ED 
+X-CRM114-Status: GOOD (  19.70  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,45 +72,31 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2025-09-15 at 08:54 -0500, Rob Herring (Arm) wrote:
-> On Mon, 15 Sep 2025 10:22:04 +0800, Kaison Deng wrote:
-> > This documents Firefly ROC-RK3588-RT which is a SBC based on RK3588
-> > SoC.
-> > 
-> > Link: https://en.t-firefly.com/product/industry/rocrk3588rt
-> > 
-> > Signed-off-by: Kaison Deng <dkx@t-chip.com.cn>
-> > ---
-> >  Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
-> >  1 file changed, 5 insertions(+)
-> > 
-> 
-> Please add Acked-by/Reviewed-by tags when posting new versions.
-> However,
-> there's no need to repost patches *only* to add the tags. The
-> upstream
-> maintainer will do that for acks received on the version they apply.
-> 
-> If a tag was not added on purpose, please state why and what changed.
-> 
-> Missing tags:
-> 
-> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> 
-> 
-
-Ok. Do I need to resend the next version for the missed tags?
-
-Kaison
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGksCgpBbSBEaWVuc3RhZywgMTYuIFNlcHRlbWJlciAyMDI1LCAwNToyODozMyBNaXR0ZWxldXJv
+cMOkaXNjaGUgU29tbWVyemVpdCBzY2hyaWViIEthaXNvbiBEZW5nOgo+IE9uIE1vbiwgMjAyNS0w
+OS0xNSBhdCAwODo1NCAtMDUwMCwgUm9iIEhlcnJpbmcgKEFybSkgd3JvdGU6Cj4gPiBPbiBNb24s
+IDE1IFNlcCAyMDI1IDEwOjIyOjA0ICswODAwLCBLYWlzb24gRGVuZyB3cm90ZToKPiA+ID4gVGhp
+cyBkb2N1bWVudHMgRmlyZWZseSBST0MtUkszNTg4LVJUIHdoaWNoIGlzIGEgU0JDIGJhc2VkIG9u
+IFJLMzU4OAo+ID4gPiBTb0MuCj4gPiA+IAo+ID4gPiBMaW5rOiBodHRwczovL2VuLnQtZmlyZWZs
+eS5jb20vcHJvZHVjdC9pbmR1c3RyeS9yb2NyazM1ODhydAo+ID4gPiAKPiA+ID4gU2lnbmVkLW9m
+Zi1ieTogS2Fpc29uIERlbmcgPGRreEB0LWNoaXAuY29tLmNuPgo+ID4gPiAtLS0KPiA+ID4gIERv
+Y3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9hcm0vcm9ja2NoaXAueWFtbCB8IDUgKysr
+KysKPiA+ID4gIDEgZmlsZSBjaGFuZ2VkLCA1IGluc2VydGlvbnMoKykKPiA+ID4gCj4gPiAKPiA+
+IFBsZWFzZSBhZGQgQWNrZWQtYnkvUmV2aWV3ZWQtYnkgdGFncyB3aGVuIHBvc3RpbmcgbmV3IHZl
+cnNpb25zLgo+ID4gSG93ZXZlciwKPiA+IHRoZXJlJ3Mgbm8gbmVlZCB0byByZXBvc3QgcGF0Y2hl
+cyAqb25seSogdG8gYWRkIHRoZSB0YWdzLiBUaGUKPiA+IHVwc3RyZWFtCj4gPiBtYWludGFpbmVy
+IHdpbGwgZG8gdGhhdCBmb3IgYWNrcyByZWNlaXZlZCBvbiB0aGUgdmVyc2lvbiB0aGV5IGFwcGx5
+Lgo+ID4gCj4gPiBJZiBhIHRhZyB3YXMgbm90IGFkZGVkIG9uIHB1cnBvc2UsIHBsZWFzZSBzdGF0
+ZSB3aHkgYW5kIHdoYXQgY2hhbmdlZC4KPiA+IAo+ID4gTWlzc2luZyB0YWdzOgo+ID4gCj4gPiBB
+Y2tlZC1ieTogS3J6eXN6dG9mIEtvemxvd3NraSA8a3J6eXN6dG9mLmtvemxvd3NraUBsaW5hcm8u
+b3JnPgo+ID4gCj4gPiAKPiAKPiBPay4gRG8gSSBuZWVkIHRvIHJlc2VuZCB0aGUgbmV4dCB2ZXJz
+aW9uIGZvciB0aGUgbWlzc2VkIHRhZ3M/Cgpub3BlLCB0aGF0IGlzIG5vdCBuZWNlc3NhcnksIEkg
+Y2FuIHBpY2sgdXAgdGhlIG9uZSBmcm9tIHYyLgoKSGVpa28KCgoKX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0
+CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVh
+ZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
