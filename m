@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2D07CCD193
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 12:04:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8DF1CCD199
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 12:04:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
 	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=jsyADvwZQ3hDmfk9D/TAZauloLf89GjZPP+VtAwUr6o=; b=ujxRDLFbTUYbph
-	kFQ3+YmGuUHpm+akob+1IvWocNHK01CaShk3Fpj2vOqsHJXgRkkXvQFRO2p4wRpmPCtbK1lu/KN5m
-	rozB/nGW9QJTs36Ou7vGg4hFSyEyI6zV2wX9eFSehexrFBbpv8iwUpQrgIfTU4YpH6rHAsfszBfJs
-	caqzo+zwg+/nR4lECKFzDMCbURtZMZtfVrbwHdbHbck5w9Oa23CxdlP5XyOL4V5SKwwoLT1KXqcau
-	S3jyfyBx04Jk3wnkG65Twm8YLxjxnXtMXnc+M9WwmOyE4nVaa8Kf9lHkazBIYW9z7/Fxqd7jpkpF9
-	UYm5Qgc7kv5kh4S8B1fA==;
+	List-Owner; bh=GNLInC26rC7uqgXA0ALryLQx71xruVIPFxcIt1RNYgc=; b=aNXQhWcVZkhAht
+	U6Z6YHoVYro8ZEJjDS/GTbhy0o7Bw18MeIzgZZlP3HabGbOUomxrKU4bQgBva2fAez+XV47DwRnza
+	xkgsTNsylf6jwkJtR7nbA10VNHmKiw6IZqMK3aEzWphPlVCIK1itZoTRrGFuM6NPy6p2xBqeqB8f1
+	kmYX8nUBebB2OiIPp9azj2oLXRgCia0EKQrihVAxoaRvFxENIaJyH1NfkpQtvOPGbTougnsMPqCus
+	G4iXN8v3ISnbaBNnA1BfPOnF3QFnnBlGrReOCzfw1MQuY9mK0E+5KU1LTLnoz6na6w1lpGnAONtv9
+	W9b4G4xgPcgUCL4ykgNQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAocF-0000000DHRu-0FwG;
-	Mon, 20 Oct 2025 12:03:57 +0000
+	id 1vAocK-0000000DHXH-2w4y;
+	Mon, 20 Oct 2025 12:04:00 +0000
 Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uvwVr-00000006jHx-3nit;
-	Tue, 09 Sep 2025 11:27:52 +0000
+	id 1uytQC-0000000CMGs-3ZQA;
+	Wed, 17 Sep 2025 14:46:12 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id DF4D0601E2;
-	Tue,  9 Sep 2025 11:27:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 078C7C4CEF4;
-	Tue,  9 Sep 2025 11:27:50 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id B860560227;
+	Wed, 17 Sep 2025 14:46:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DC381C4CEF0;
+	Wed, 17 Sep 2025 14:46:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1757417270;
-	bh=Q7MJ6HuoxZjlAYgfu4R8+11tXMfLB78JEQFVmnR4+ik=;
+	s=k20201202; t=1758120371;
+	bh=QiXOszuUJaheRV8S9Arrs3CKQDXneHf83M7ZXth8QR4=;
 	h=From:Subject:Date:To:Cc:From;
-	b=UUri/ZJqN0tlREK57LEBuZpte2YMcLywloUf9mMFp/XBfZhxBFIEgLWvWkA/nYHoG
-	 jctP+YuzvBP3Stew5Hg/jalr+ET5txVQ/IVSDT9DHq7aDnv9rdKGQGjqinjvUCqKSh
-	 t5I4lVgQs7pbv4go67N1QPjDhh+sKOaKFsU/dt0QqQEQ2sGxbDXe4tWiH5F37sqEYU
-	 CEJAQ5UUjfadRZG4U04S2hmn8S9Wzdd+kh+pq1/Zhj4ndOE9aULqnFGkxhgAaQLhBS
-	 jbY+ulJE875PN4v3bqL4OGsfA+gjvU+/BXpPN6SfThNGEvtb6ZYW5No3+oOhZZh4pG
-	 PBSie+cSr8u9w==
+	b=MIwa8x9gHctSBJzz9zwPFWbclfLYWnLFUCKoJnI+49+anpgrnykmOdyUjTTvAbLkZ
+	 82mnCK4D4uDWlw4RIpC+5ERBSM1P5SR4ciJanNbxduEky/QciqERoB1qq1NED9XiSn
+	 66gB6tkJyjfAZDQrfQPzBle3VfJkdjxsSS4F24ej1n2WfyFEDXrDtnYMz1BhYgvAdE
+	 6O7kyVki6zaIYpXNAPRNVkX6gb9dEBPhchv6lIWzdkQjoqjXmsB015AvkbAdSVuJ0y
+	 aCJsawhoW8KjCtbxUdJx5ZTtm6WpZb6XyJBaNjU+g23ptMjyxWCIj1Z9Ci9qorSl8d
+	 Fy0HzdBvAOIKA==
 From: Maxime Ripard <mripard@kernel.org>
-Subject: [PATCH v3 00/39] drm/atomic: Get rid of existing states (not
+Subject: [PATCH v4 00/39] drm/atomic: Get rid of existing states (not
  really)
-Date: Tue, 09 Sep 2025 13:27:19 +0200
-Message-Id: <20250909-drm-no-more-existing-state-v3-0-1c7a7d960c33@kernel.org>
+Date: Wed, 17 Sep 2025 16:45:41 +0200
+Message-Id: <20250917-drm-no-more-existing-state-v4-0-5d4b9889c3c8@kernel.org>
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIABcPwGgC/43NQQ7CIBCF4as0rB1Dh9AUV97DuGhhaIkKBhpS0
- /Tu0m6MG+Pyf5l8s7BE0VFip2phkbJLLvgS4lAxPXZ+IHCmNEOOkrcowcQH+ACPEAlodmlyfoA
- 0dROB6gVK1HUnRM8K8Ixk3bzjl2vpsVyH+Np/5Xpb/2JzDRwsb7U2yrZSq/ONoqf7McSBbW7Gj
- 6U4/rSwWIZUa7W0jWmaL2td1zcXtIcXEQEAAA==
+X-B4-Tracking: v=1; b=H4sIAJXJymgC/43NQQ6CMBCF4auQrh1TWgvUlfcwLqCdQqO2piUEQ
+ 7i7hY0aE+Lyf5l8M5GIwWIkx2wiAQcbrXcpDruMqK52LYLVqQmjTNCKCdDhDs7D3QcEHG3srWs
+ h9nWPIBvOBFN5zXlDEvAIaOy44udL6i5d+/Bcfw35sv7FDjlQMLRSSktTCSVPVwwOb3sfWrK4A
+ 3tbkrJNiyVLo6yMEqbQRfFj8U9Lblo8Wbkq61LLgirOv6x5nl/BcxAsXQEAAA==
 X-Change-ID: 20250825-drm-no-more-existing-state-9b3252c1a33b
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
  Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
@@ -108,12 +108,12 @@ Cc: dri-devel@lists.freedesktop.org, Maxime Ripard <mripard@kernel.org>,
  =?utf-8?q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>, 
  Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=5731; i=mripard@kernel.org;
- h=from:subject:message-id; bh=Q7MJ6HuoxZjlAYgfu4R8+11tXMfLB78JEQFVmnR4+ik=;
- b=owGbwMvMwCmsHn9OcpHtvjLG02pJDBkH+GUuXKh5EtKUyyzoVj+da9081x9WWi3PNgkkCzesW
- pBzZRdLx1QWBmFOBlkxRZYnMmGnl7cvrnKwX/kDZg4rE8gQBi5OAZiIuj1jnWI4n8bX5IMaIR59
- rg1225SSX4otdE16oid2/X3OFIs0savVqT9rPkdcflqnPMUrYNMlxloRqYV2c/mLDs9e66AS4a2
- yl/2L9OFTi17/nnT0/AqvJmbG49Oyi8QPpP73kpb/0nRnWysA
+X-Developer-Signature: v=1; a=openpgp-sha256; l=5910; i=mripard@kernel.org;
+ h=from:subject:message-id; bh=QiXOszuUJaheRV8S9Arrs3CKQDXneHf83M7ZXth8QR4=;
+ b=owGbwMvMwCmsHn9OcpHtvjLG02pJDBmnTs7nOfS799mbr9bv3QWVn5ovvPrUukglLeninLOyA
+ R/m/WFW65jKwiDMySArpsjyRCbs9PL2xVUO9it/wMxhZQIZwsDFKQATMeJlbHgVHJux/5lLmPAb
+ rsdT1NM0Dn/JDXOK3CIpESl7v+b+5x1ai+viVEpeF7X81Wy2KQtqZWyYybN97q7MiwaiXzYWJTp
+ ZHKzc3xN17e/JKRb7Pqd0/KjmNtjwSJFdl1GqyGg2q73RpDcA
 X-Developer-Key: i=mripard@kernel.org; a=openpgp;
  fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-Mailman-Approved-At: Mon, 20 Oct 2025 04:56:18 -0700
@@ -157,6 +157,11 @@ Maxime
 
 Signed-off-by: Maxime Ripard <mripard@kernel.org>
 ---
+Changes in v4:
+- Fix ingenic
+- Rebased on latest drm-misc-next tag
+- Link to v3: https://lore.kernel.org/r/20250909-drm-no-more-existing-state-v3-0-1c7a7d960c33@kernel.org
+
 Changes in v3:
 - Added an armada rework patch
 - Added an ingenic fix
@@ -212,7 +217,7 @@ Maxime Ripard (39):
       drm/atomic: Document __drm_private_objs_state state pointer
 
  drivers/gpu/drm/arm/malidp_planes.c             |   2 +-
- drivers/gpu/drm/armada/armada_plane.c           |   9 +-
+ drivers/gpu/drm/armada/armada_plane.c           |   7 +-
  drivers/gpu/drm/atmel-hlcdc/atmel_hlcdc_plane.c |   2 +-
  drivers/gpu/drm/drm_atomic.c                    |  21 ++--
  drivers/gpu/drm/drm_framebuffer.c               |   2 +-
@@ -220,7 +225,7 @@ Maxime Ripard (39):
  drivers/gpu/drm/imx/dc/dc-plane.c               |   2 +-
  drivers/gpu/drm/imx/dcss/dcss-plane.c           |   4 +-
  drivers/gpu/drm/imx/ipuv3/ipuv3-plane.c         |   3 +-
- drivers/gpu/drm/ingenic/ingenic-drm-drv.c       |   5 +-
+ drivers/gpu/drm/ingenic/ingenic-drm-drv.c       |  13 ++-
  drivers/gpu/drm/ingenic/ingenic-ipu.c           |   4 +-
  drivers/gpu/drm/kmb/kmb_plane.c                 |   3 +-
  drivers/gpu/drm/logicvc/logicvc_layer.c         |   4 +-
@@ -239,9 +244,9 @@ Maxime Ripard (39):
  drivers/gpu/drm/vc4/vc4_plane.c                 |   6 +-
  drivers/gpu/drm/vkms/vkms_crtc.c                |   4 +-
  include/drm/drm_atomic.h                        | 144 ++++++++++++------------
- 28 files changed, 126 insertions(+), 141 deletions(-)
+ 28 files changed, 132 insertions(+), 141 deletions(-)
 ---
-base-commit: 2a1eea8fd601db4c52f0d14f8871663b7b052c91
+base-commit: 91494dee1091a14d91da6bcb39e12a907765c793
 change-id: 20250825-drm-no-more-existing-state-9b3252c1a33b
 
 Best regards,
