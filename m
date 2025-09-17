@@ -4,52 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43B14CAC599
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Sep 2025 15:00:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F194ECAC5A5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Sep 2025 15:39:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
-	In-Reply-To:To:From:MIME-Version:Date:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DjbO6udMHS8UbRN4phmTf/7fZlPPfcjHmSON8PMSnew=; b=Qo+7xc2eMFSu9S
-	y4jA45Pb1Pv7vObjAwzx0K+uqQfjLYe7IlRiN9F2iXwRAgNVa3V2kMvS4MGFJLdFhI+j4+YLoZB3t
-	MmjC5u/VrqI3dtgLPD3Vn/ww7itczKQH0FeVsmFfVrG3OcER5xLXrBMRljOQ1gWZ9YvyD520l3tq/
-	qKtt0OHBKKHcHEG0v/H70rZJO6nQNiHi64pMECsCIXWE713HEL9DF1JK/qoaJH88p5900FrByPxv1
-	GNVElDnMMOA5TrbR6oAy5dYAUVKJBM/y+SNoiUNi6YtQyMllhUiknnBsIrbgegH70Seg0UHW0RzD1
-	+xR5nk9g1Y9qsNf5ZWHA==;
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
+	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=fQ5Yy0NUTbs1/Q4BB33rtQTu4op8uPFi5WVJJWmZIi4=; b=LyLth/OIGuCoMc
+	oQpEinJNH4Dx0Vyqio57Tu8nw+569flIo6CieaTEgA8EBgFAP3E9IE2CHuVpp8u/HkogW6wg2y32H
+	zeL2P7YDDofNhsraQyK1GMNZeZd3RmJkQUjKeh2YUHil9g2BBiy44zAK9hRiut1Tbt4b1W1tESTqt
+	9J1yF9FtGw0FrSInM88g+a6EuAOFnmc5yexhVP8gej1mJIRHEQSiKvCclon8TfEP39daeJ1GVE26h
+	5gT2YxNZhiHbTmgAAAomxwUrhs3ZpnBkg/0dULI2VzRFIx5ZqApHrgUnPGyyv84EyMumXpLU2tAAR
+	G5UEHKHv+23zVd10nfoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uyteA-0000000CUqL-3Ooo;
-	Wed, 17 Sep 2025 15:00:38 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1uyuFE-0000000CmMC-0RYT;
+	Wed, 17 Sep 2025 15:38:56 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uyte9-0000000CUpJ-0m6d;
-	Wed, 17 Sep 2025 15:00:37 +0000
+	id 1uyuFC-0000000CmKF-0Ovx;
+	Wed, 17 Sep 2025 15:38:54 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 3406C601ED;
-	Wed, 17 Sep 2025 15:00:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 78850C4CEF5;
-	Wed, 17 Sep 2025 15:00:35 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 1BD2160239;
+	Wed, 17 Sep 2025 15:38:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id A6A2AC4CEF5;
+	Wed, 17 Sep 2025 15:38:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1758121235;
-	bh=HDiQWb20Rtx+E1H2UYAaRAIpBHG5/mnMO3quayCJMb8=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=kxMhbcJaCqlaesBAyz9ojQ5gfElOWK6fTHmyiSiuEcBm6WaKozjkyVJ5H7yzSBzM4
-	 g9fV9aZ6h7kKG6tewZw5FxRV32BwoxJ1vea2SnKK7jrm3euzAAaOikKCaMllXeDDvz
-	 rjL5bXi3jwKnQEYXVqHvgE5OFUo+CMWmQm8nUd2zfLQIn+0eg84FndzMwXsqbnhcPO
-	 wEuE7ia+whWx3768oewU75PUQxQZyn/L0pPj73bR44EMcxhpt2hE6tDafjD2VqmEd3
-	 Vy7DTOjjpS37zxbQo7axGtZObUvwwOyEorcPQFHMKNiFtEmvYToo1NNmz6WVviz8pQ
-	 mq6LFmcvoX0fA==
-Date: Wed, 17 Sep 2025 10:00:34 -0500
+	s=k20201202; t=1758123532;
+	bh=dvCa/wf1v2052Op0afoeFDkDpmqF6NOXoVScRmcaSO4=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
+	b=Mi0LiFWPqC++8T3q4WN9EQENO0OLxnJsVMyqG8OpJNNZIz1KK12o2WQ4VU/5ZWVK7
+	 v8sUCO9KB3w5wecVc1IHmGHi2eQ1xgRbbO93V2583zDcjyPQgQAlshSwGuJqRUIxWs
+	 xVMPY8TVWFPUGzQZ5OR14pI90C17eLGCCFKIV8c4KBb9pQmGWUFl1sYTyScJzXCcY/
+	 LwF8SWzQEYl8lKyFxcGC4Etxrvz3n72WFuizerwj09X4AdRKZKK6g1XQqeXIoMStxD
+	 Mrd6qtQp6sOz3iJEpffVNU3MAvWMYhUPteSwCiBhmwW4FawnSGixnTTLDaHYhaUjY4
+	 US5f64p77mr3w==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 91B5ACAC599;
+	Wed, 17 Sep 2025 15:38:52 +0000 (UTC)
+From: Michael Riesch via B4 Relay <devnull+michael.riesch.collabora.com@kernel.org>
+Date: Wed, 17 Sep 2025 17:38:41 +0200
+Subject: [PATCH v11 01/17] Documentation: admin-guide: media: add rockchip
+ camera interface
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Chaoyi Chen <kernel@airkyi.com>
-In-Reply-To: <20250916080802.125-1-kernel@airkyi.com>
-References: <20250916080802.125-1-kernel@airkyi.com>
-Message-Id: <175812100320.2051529.8331047555950941186.robh@kernel.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: Enable DisplayPort for
- rk3588-evb2
+Message-Id: <20240220-rk3568-vicap-v11-1-af0eada54e5d@collabora.com>
+References: <20240220-rk3568-vicap-v11-0-af0eada54e5d@collabora.com>
+In-Reply-To: <20240220-rk3568-vicap-v11-0-af0eada54e5d@collabora.com>
+To: Mehdi Djait <mehdi.djait@linux.intel.com>, 
+ Maxime Chevallier <maxime.chevallier@bootlin.com>, 
+ =?utf-8?q?Th=C3=A9o_Lebrun?= <theo.lebrun@bootlin.com>, 
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
+ Gerald Loacker <gerald.loacker@wolfvision.net>, 
+ Bryan O'Donoghue <bryan.odonoghue@linaro.org>, 
+ Markus Elfring <Markus.Elfring@web.de>, 
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Kever Yang <kever.yang@rock-chips.com>, 
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>, 
+ Collabora Kernel Team <kernel@collabora.com>, 
+ Paul Kocialkowski <paulk@sys-base.io>, 
+ Alexander Shiyan <eagle.alexander923@gmail.com>, 
+ Val Packett <val@packett.cool>, Rob Herring <robh@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Sakari Ailus <sakari.ailus@linux.intel.com>
+Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, 
+ Michael Riesch <michael.riesch@collabora.com>, 
+ Michael Riesch <michael.riesch@collabora.com>
+X-Mailer: b4 0.12.0
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1758123529; l=7244;
+ i=michael.riesch@collabora.com; s=20250410; h=from:subject:message-id;
+ bh=V80ukGfKBYIS6sJMMUc3DC+BSXqJ9FDIBO1EG13WzHU=;
+ b=udndohAIPC0jUuzYtPpZjCK8wD+JebMIRjW+AazXdzDisWe4NA9nuFuQNxIP8nPsbubtHeQV8
+ eHbqI1bazDpCUctg2R+01S4VK3uLFQI26HnIHMksBjgtb1A7JotucKP
+X-Developer-Key: i=michael.riesch@collabora.com; a=ed25519;
+ pk=+MWX1fffLFZtTPG/I6XdYm/+OSvpRE8D9evQaWbiN04=
+X-Endpoint-Received: by B4 Relay for michael.riesch@collabora.com/20250410
+ with auth_id=371
+X-Original-From: Michael Riesch <michael.riesch@collabora.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -61,54 +99,177 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Geert Uytterhoeven <geert+renesas@glider.be>, Jonas Karlman <jonas@kwiboo.se>, Quentin Schulz <quentin.schulz@cherry.de>, linux-kernel@vger.kernel.org, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-rockchip@lists.infradead.org, FUKAUMI Naoki <naoki@radxa.com>, Peter Robinson <pbrobinson@gmail.com>, Andy Yan <andy.yan@rock-chips.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Chaoyi Chen <chaoyi.chen@rock-chips.com>, Dragan Simic <dsimic@manjaro.org>, linux-arm-kernel@lists.infradead.org
+Reply-To: michael.riesch@collabora.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+From: Michael Riesch <michael.riesch@collabora.com>
 
-On Tue, 16 Sep 2025 16:08:02 +0800, Chaoyi Chen wrote:
-> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-> 
-> The rk3588 evb2 board has a full size DisplayPort connector, enable
-> for it.
-> 
-> Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-> ---
->  .../boot/dts/rockchip/rk3588-evb2-v10.dts     | 39 +++++++++++++++++++
->  1 file changed, 39 insertions(+)
-> 
+Add a document that describes the different variants of the Rockchip
+Camera Interface (CIF), their hardware layout, as well as their
+representation in the media controller centric rkcif device driver,
+which is located under drivers/media/platform/rockchip/rkcif.
 
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
+---
+ .../admin-guide/media/rkcif-rk3568-vicap.dot       | 21 ++++++
+ Documentation/admin-guide/media/rkcif.rst          | 83 ++++++++++++++++++++++
+ Documentation/admin-guide/media/v4l-drivers.rst    |  1 +
+ MAINTAINERS                                        |  7 ++
+ 4 files changed, 112 insertions(+)
 
-My bot found new DTB warnings on the .dts files added or changed in this
-series.
+diff --git a/Documentation/admin-guide/media/rkcif-rk3568-vicap.dot b/Documentation/admin-guide/media/rkcif-rk3568-vicap.dot
+new file mode 100644
+index 000000000000..02340135a2ac
+--- /dev/null
++++ b/Documentation/admin-guide/media/rkcif-rk3568-vicap.dot
+@@ -0,0 +1,21 @@
++digraph board {
++        rankdir=TB
++        n00000001 [label="{{<port0> 0} | rkcif-dvp0\n/dev/v4l-subdev0 | {<port1> 1}}", shape=Mrecord, style=filled, fillcolor=green]
++        n00000001:port1 -> n00000004
++        n00000004 [label="rkcif-dvp0-id0\n/dev/video0", shape=box, style=filled, fillcolor=yellow]
++        n0000000a [label="{{<port0> 0} | rkcif-mipi0\n/dev/v4l-subdev1 | {<port1> 1}}", shape=Mrecord, style=filled, fillcolor=green]
++        n0000000a:port1 -> n0000000d
++        n0000000a:port1 -> n00000013 [style=dashed]
++        n0000000a:port1 -> n00000019 [style=dashed]
++        n0000000a:port1 -> n0000001f [style=dashed]
++        n0000000d [label="rkcif-mipi0-id0\n/dev/video1", shape=box, style=filled, fillcolor=yellow]
++        n00000013 [label="rkcif-mipi0-id1\n/dev/video2", shape=box, style=filled, fillcolor=yellow]
++        n00000019 [label="rkcif-mipi0-id2\n/dev/video3", shape=box, style=filled, fillcolor=yellow]
++        n0000001f [label="rkcif-mipi0-id3\n/dev/video4", shape=box, style=filled, fillcolor=yellow]
++        n00000025 [label="{{} | it6801 2-0048\n/dev/v4l-subdev2 | {<port0> 0}}", shape=Mrecord, style=filled, fillcolor=green]
++        n00000025:port0 -> n00000001:port0
++        n00000029 [label="{{<port0> 0} | rockchip-mipi-csi fdfb0000.csi\n/dev/v4l-subdev3 | {<port1> 1}}", shape=Mrecord, style=filled, fillcolor=green]
++        n00000029:port1 -> n0000000a:port0
++        n0000002e [label="{{} | imx415 4-001a\n/dev/v4l-subdev4 | {<port0> 0}}", shape=Mrecord, style=filled, fillcolor=green]
++        n0000002e:port0 -> n00000029:port0
++}
+diff --git a/Documentation/admin-guide/media/rkcif.rst b/Documentation/admin-guide/media/rkcif.rst
+new file mode 100644
+index 000000000000..f35f644a54a0
+--- /dev/null
++++ b/Documentation/admin-guide/media/rkcif.rst
+@@ -0,0 +1,83 @@
++.. SPDX-License-Identifier: GPL-2.0
++
++=========================================
++Rockchip Camera Interface (CIF)
++=========================================
++
++Introduction
++============
++
++The Rockchip Camera Interface (CIF) is featured in many Rockchip SoCs in
++different variants.
++The different variants are combinations of common building blocks, such as
++
++* INTERFACE blocks of different types, namely
++
++  * the Digital Video Port (DVP, a parallel data interface)
++  * the interface block for the MIPI CSI-2 receiver
++
++* CROP units
++
++* MIPI CSI-2 receiver (not available on all variants): This unit is referred
++  to as MIPI CSI HOST in the Rockchip documentation.
++  Technically, it is a separate hardware block, but it is strongly coupled to
++  the CIF and therefore included here.
++
++* MUX units (not available on all variants) that pass the video data to an
++  image signal processor (ISP)
++
++* SCALE units (not available on all variants)
++
++* DMA engines that transfer video data into system memory using a
++  double-buffering mechanism called ping-pong mode
++
++* Support for four streams per INTERFACE block (not available on all
++  variants), e.g., for MIPI CSI-2 Virtual Channels (VCs)
++
++This document describes the different variants of the CIF, their hardware
++layout, as well as their representation in the media controller centric rkcif
++device driver, which is located under drivers/media/platform/rockchip/rkcif.
++
++Variants
++========
++
++Rockchip PX30 Video Input Processor (VIP)
++-----------------------------------------
++
++The PX30 Video Input Processor (VIP) features a digital video port that accepts
++parallel video data or BT.656.
++Since these protocols do not feature multiple streams, the VIP has one DMA
++engine that transfers the input video data into system memory.
++
++The rkcif driver represents this hardware variant by exposing one V4L2 subdevice
++(the DVP INTERFACE/CROP block) and one V4L2 device (the DVP DMA engine).
++
++Rockchip RK3568 Video Capture (VICAP)
++-------------------------------------
++
++The RK3568 Video Capture (VICAP) unit features a digital video port and a MIPI
++CSI-2 receiver that can receive video data independently.
++The DVP accepts parallel video data, BT.656 and BT.1120.
++Since the BT.1120 protocol may feature more than one stream, the RK3568 VICAP
++DVP features four DMA engines that can capture different streams.
++Similarly, the RK3568 VICAP MIPI CSI-2 receiver features four DMA engines to
++handle different Virtual Channels (VCs).
++
++The rkcif driver represents this hardware variant by exposing up to three V4L2
++subdevices:
++
++* rkcif-dvp0: INTERFACE/CROP block for the DVP
++* rockchip-mipi-csi fdfb0000.csi: MIPI CSI-2 receiver
++* rkcif-mipi0: INTERFACE/CROP block for the MIPI CSI-2 receiver
++
++and up to five V4L2 devices:
++
++* rkcif-dvp0-id0: The support for multiple streams on the DVP is not yet
++  implemented, as it is hard to find test hardware. Thus, this video device
++  represents the first DMA engine of the RK3568 DVP.
++* rkcif-mipi0-id[0...3]: The four DMA engines of the RK3568 MIPI CSI-2
++  receiver. Each DMA engine can capture a certain MIPI CSI-2 Virtual Channel.
++
++.. kernel-figure:: rkcif-rk3568-vicap.dot
++    :alt:   Topology of the RK3568 Video Capture (VICAP) unit
++    :align: center
+diff --git a/Documentation/admin-guide/media/v4l-drivers.rst b/Documentation/admin-guide/media/v4l-drivers.rst
+index 3bac5165b134..694fad685ff5 100644
+--- a/Documentation/admin-guide/media/v4l-drivers.rst
++++ b/Documentation/admin-guide/media/v4l-drivers.rst
+@@ -25,6 +25,7 @@ Video4Linux (V4L) driver-specific documentation
+ 	qcom_camss
+ 	raspberrypi-pisp-be
+ 	rcar-fdp1
++	rkcif
+ 	rkisp1
+ 	raspberrypi-rp1-cfe
+ 	saa7134
+diff --git a/MAINTAINERS b/MAINTAINERS
+index fe168477caa4..0d2adf483426 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -21762,6 +21762,13 @@ S:	Maintained
+ F:	Documentation/devicetree/bindings/net/can/rockchip,rk3568v2-canfd.yaml
+ F:	drivers/net/can/rockchip/
+ 
++ROCKCHIP CAMERA INTERFACE (RKCIF) DRIVER
++M:	Mehdi Djait <mehdi.djait@linux.intel.com>
++M:	Michael Riesch <michael.riesch@collabora.com>
++L:	linux-media@vger.kernel.org
++S:	Maintained
++F:	Documentation/admin-guide/media/rkcif*
++
+ ROCKCHIP CRYPTO DRIVERS
+ M:	Corentin Labbe <clabbe@baylibre.com>
+ L:	linux-crypto@vger.kernel.org
 
-Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
-are fixed by another series. Ultimately, it is up to the platform
-maintainer whether these warnings are acceptable or not. No need to reply
-unless the platform maintainer has comments.
-
-If you already ran DT checks and didn't see these error(s), then
-make sure dt-schema is up to date:
-
-  pip3 install dtschema --upgrade
-
-
-This patch series was applied (using b4) to base:
- Base: attempting to guess base-commit...
- Base: tags/next-20250915 (exact match)
-
-If this is not the correct base, please add 'base-commit' tag
-(or use b4 which does this automatically)
-
-New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/rockchip/' for 20250916080802.125-1-kernel@airkyi.com:
-
-arch/arm64/boot/dts/rockchip/rk3588-evb2-v10.dtb: dp-con (dp-connector): type:0: 'full size' is not one of ['full-size', 'mini']
-	from schema $id: http://devicetree.org/schemas/display/connector/dp-connector.yaml#
-
-
-
+-- 
+2.39.5
 
 
 
