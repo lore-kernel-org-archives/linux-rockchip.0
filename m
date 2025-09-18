@@ -4,60 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 103DCCAC59A
-	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Sep 2025 17:31:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16E39CA1013
+	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Sep 2025 21:09:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BLzOT9UU/3vGqXxiBRMMJ6DtrqGqbIXML/udGRWOcFQ=; b=Sk7fxUwHutdSro
-	2CZpAZww024fUbYkCcbqpw+e44RICDhkNLG+bEjiz9AMjRbhwo1sUbmYpky56+hFBVeIxP4UqmI7a
-	c6vONAbovvyWNhSrrDh5oApQJO2j1hrOsWkV8n++jJbxgoeRYZ3QAjLepjc8c256fX089hfGXHPnB
-	JM1Zi6hZNBB24vRsHhqnoH18enqQyzeVTdCVsegMYWVyWgTNba1BSWr14DETCJA6WEcPtGEs1XKhK
-	HOaDnX+i8N4xxQ42a0we3wiQY5vUNfuzx5IYdvV0skbIP2rYMXzP69z8R55xCNfMkswm726FoCR+G
-	ubI1ZJRvAH3sdtHU7qEA==;
+	List-Owner; bh=UcMea9LydHAU6QA+8XDbHiw0APhYjqEiJIr6eXM4104=; b=c+1vL42RRIk2xE
+	IE36EG7BoL4ykhkXHsDkrcjsmketDqKf2BzwvQlk5DPQeMezGz0rZ5kmf8+bRTkE8FyU0duAMRbip
+	LU6rOBwe4qXTdCcrciT7cIgt7JhcCaEqJbeiof+pqXb7Hp7eyL23bjqL0xB8AinNaBx52nDopExz9
+	9iSvVv46xDUdj/to4afvUOgvKftAnsLtBrJSugoneDZAvIPU7rkQgMSgyUImMjY3Uk06qZKUxjt5H
+	ByY2v9ngLuDZWMuxQkzDeM9pXOU3k8ti4j0gGbaQIJ2r6CVwAx3prTV2LDjKfgrEwstXD8pojn6yV
+	I1svyzCBN4kKB3j8rseQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzITW-00000000lD9-1Hab;
-	Thu, 18 Sep 2025 17:31:18 +0000
+	id 1uzLsp-00000001AW0-1s3c;
+	Thu, 18 Sep 2025 21:09:39 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzITT-00000000lC6-0YwX;
-	Thu, 18 Sep 2025 17:31:16 +0000
+	id 1uzLsm-00000001AVN-0cHo;
+	Thu, 18 Sep 2025 21:09:37 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=yReL3BW5cNgeOoU+ct6Z0+QfxkhYi0zLxLWspzmRmBU=; b=eO6eaCxDj6t7fnCop9QAYLYJgH
-	59X7aMuS9JsaTAGxG7jM2PogXRFDOxYTBU0EHDKvoxfG31wmQDx/aTI2pKuqulDdPEgJthfghaKeb
-	oDk9ZUzmBfJYRnAZ2iuE9+OyJnJHuYDS+SpstpkdeDwvln/C++hD6c3udYOu9/aWsagBPM0eotUl/
-	sTVL4naZ5rlJdwaRQEixAQe5kFO9OuK/NLeKJIlOaDAxs3XV6HpgalP3DAoHVuLQpVEAxG/howhYn
-	QH8jxLp+Etb+s3/d8+ccO+yTWQ1aXZrxGFmwFBznxC8TWo4wQPQBmTbsIuYMomj7Dxirrmpn9tOCY
-	HYolQ8hg==;
-Received: from i53875b0a.versanet.de ([83.135.91.10] helo=diego.localnet)
+	bh=IhRFq4UtJ1FWApnkqY6mEgaYN11X3Y0mXj4sL73koYk=; b=mqdAqbuMhaX05+AVwIxaxZi0TB
+	htLdqDt30MiAqnjBZnHKqLauhIC1vFJ+3unudCP6cWxJr9zFi2uNnUxSjVHjRiReiT3/TK7EHOdZb
+	f0z5+XPJNg2kx3+N0nPkjjpB5UyoQYVk57Vsznj70YGQ8zUghwV9+k4KhQKblO/RtbXoEKg82aDRD
+	LhmYH4cqRM7qXCOwP6ce+fFgjd/Czsns7wf5zWvyw2eLT+PvRwVjbtb3Hb4goFS+ia5d+0WNrJgjC
+	saPGLtXUnj7S098virm7a0VhHbtt5BYjO+E4uEbZZr4EI3hHfE8zY8rQhQn93hP+/9h38SEy5elCX
+	mUaTg40g==;
+Received: from i53875b0a.versanet.de ([83.135.91.10] helo=localhost.localdomain)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1uzITJ-0002Pr-Qb; Thu, 18 Sep 2025 19:31:05 +0200
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: Chukun Pan <amadeus@jmu.edu.cn>
-Cc: Chukun Pan <amadeus@jmu.edu.cn>, FUKAUMI Naoki <naoki@radxa.com>,
- Conor Dooley <conor+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Rob Herring <robh@kernel.org>, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org
-Subject: Re: [PATCH v3 1/3] arm64: dts: rockchip: disable display subsystem for Radxa
- E52C
-Date: Thu, 18 Sep 2025 19:31:05 +0200
-Message-ID: <10594621.0AQdONaE2F@diego>
-In-Reply-To: <20250901100027.164594-2-amadeus@jmu.edu.cn>
-References: <20250901100027.164594-1-amadeus@jmu.edu.cn>
- <20250901100027.164594-2-amadeus@jmu.edu.cn>
+	id 1uzLsk-0003SC-3D; Thu, 18 Sep 2025 23:09:34 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: linux-pm@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-mmc@vger.kernel.org,
+	Mikko Rapeli <mikko.rapeli@linaro.org>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: (subset) [PATCH v4 0/4] enable ROCKCHIP_PM_DOMAINS
+Date: Thu, 18 Sep 2025 23:09:22 +0200
+Message-ID: <175822973681.1568500.10556154418854538683.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.47.2
+In-Reply-To: <20250915083317.2885761-1-mikko.rapeli@linaro.org>
+References: <20250915083317.2885761-1-mikko.rapeli@linaro.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250918_103115_196578_AA89FA6A 
-X-CRM114-Status: GOOD (  16.53  )
+X-CRM114-CacheID: sfid-20250918_140936_212260_A0215DE8 
+X-CRM114-Status: UNSURE (   8.21  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,33 +71,32 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-QW0gTW9udGFnLCAxLiBTZXB0ZW1iZXIgMjAyNSwgMTI6MDA6MjUgTWl0dGVsZXVyb3DDpGlzY2hl
-IFNvbW1lcnplaXQgc2NocmllYiBDaHVrdW4gUGFuOgo+IFRoZSBSYWR4YSBFNTJDIFNCQyBkbyBu
-b3QgaGF2ZSBIRE1JIG91dHB1dCwgc28gZGlzYWJsZQo+IHRoZSBkaXNwbGF5IHN1YnN5c3RlbSB0
-byBhdm9pZCB0aGUgZm9sbG93aW5nIGVycm9yIGxvZzoKPiAKPiAqRVJST1IqIE5vIGF2YWlsYWJs
-ZSB2b3AgZm91bmQgZm9yIGRpc3BsYXktc3Vic3lzdGVtLgo+IAo+IEZpeGVzOiA5YmU0MTcxMjE5
-YjYgKCJhcm02NDogZHRzOiByb2NrY2hpcDogQWRkIFJhZHhhIEU1MkMiKQo+IFNpZ25lZC1vZmYt
-Ynk6IENodWt1biBQYW4gPGFtYWRldXNAam11LmVkdS5jbj4KCkknbSB0b3JuIG9uIHRoZSBhcHBy
-b2FjaCB2cy4ganVzdCByZW1vdmluZyB0aGUgZXJyb3IgbGluZSBpbiB0aGUgZHJpdmVyLgoKUmV0
-dXJuaW5nIC1FTk9ERVYgZnJvbSByb2NrY2hpcF9kcm1fcGxhdGZvcm1fb2ZfcHJvYmUoKSBpcyBj
-b3JyZWN0LApidXQgdGhlIGVycm9yIGxvZyBjb3VsZCBqdXN0IGJlIGEgZGVidWcgb25lIGluc3Rl
-YWQuCgpCZWNhdXNlIHJ1bm5pbmcgYSBzeXN0ZW0gd2l0aG91dCBhY3RpdmUgdm9wcyBpcyBvYnZp
-b3VzbHkgZmluZS4KCgpIZWlrbwoKPiAtLS0KPiAgYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hp
-cC9yazM1ODItcmFkeGEtZTUyYy5kdHMgfCA0ICsrKysKPiAgMSBmaWxlIGNoYW5nZWQsIDQgaW5z
-ZXJ0aW9ucygrKQo+IAo+IGRpZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlw
-L3JrMzU4Mi1yYWR4YS1lNTJjLmR0cyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmsz
-NTgyLXJhZHhhLWU1MmMuZHRzCj4gaW5kZXggNDhkZGM0M2UyYWI1Li4xODgzYmQxODMzOTYgMTAw
-NjQ0Cj4gLS0tIGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODItcmFkeGEtZTUy
-Yy5kdHMKPiArKysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4Mi1yYWR4YS1l
-NTJjLmR0cwo+IEBAIC0yMDcsNiArMjA3LDEwIEBAICZjcHVfbDMgewo+ICAJY3B1LXN1cHBseSA9
-IDwmdmRkX2NwdV9saXRfczA+Owo+ICB9Owo+ICAKPiArJmRpc3BsYXlfc3Vic3lzdGVtIHsKPiAr
-CXN0YXR1cyA9ICJkaXNhYmxlZCI7Cj4gK307Cj4gKwo+ICAmaTJjMCB7Cj4gIAlwaW5jdHJsLW5h
-bWVzID0gImRlZmF1bHQiOwo+ICAJcGluY3RybC0wID0gPCZpMmMwbTJfeGZlcj47Cj4gCgoKCgoK
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9j
-a2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0
-cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+
+On Mon, 15 Sep 2025 11:33:13 +0300, Mikko Rapeli wrote:
+> MMC_DW_ROCKCHIP needs ROCKCHIP_PM_DOMAINS before MMC is detected
+> on Rockchip rk3399 rockpi4b and similar devices. Make this dependency
+> more visible, or the default with ARCH_ROCKCHIP if possible.
+> 
+> v4: fixed Kconfig whitespace, added select REGMAP_MMIO to MMC_LOONGSON2
+>     instead of disabling COMPILE_TEST
+> 
+> [...]
+
+Applied, thanks!
+
+[4/4] ARM: rockchip: remove REGULATOR conditional to PM
+      commit: a1b20e062245571c128ec521c4df56ad1bff9bd0
+
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
