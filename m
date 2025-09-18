@@ -4,45 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 528EDCAC59A
-	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Sep 2025 09:33:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09C89CAC5A9
+	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Sep 2025 09:33:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=B2hQ6089AUOaUdztVLgkINdazWxNxx8PZzZQGheF6Ic=; b=lvAlSS1eAijOyp
-	3H1PLVjHOqPad3I/jGbKe/aC4/rN8tIwokRGZaB2by0x2UAYdT/Ofcr2fAMMY47oOvhS0XflDMXtd
-	Bn/tHpVkzSAPNq4URuAj4jqRNa+x/I5zNrM3eGz8tZjl6Se19hd4c8AOEDfib7N17TPLvmqZKahtp
-	/uDpE0aqLSRDrpeHSZWcz1gSl8z/3DiDivP/xuV/wboqKSDCi2T2u0HXh4Xbx5TnZdI7LD1hgVjvr
-	/RyK7OH9TnjTncDkXU1DPZ/c4JLzYK8nMl/qVUOH2EEfM1aAfKv4vq6ej54S/jhIqwwn3KvElGcX3
-	z2nnxv9wD4bnbkNXXJyQ==;
+	List-Owner; bh=jR+8kTpqYt7GFDPjs9FQgg0sQCdXnvO5wBUB2UoPjzM=; b=Gl/JBDGNfEhcx3
+	rWS/7rtX37DlWTUixxZUp5xV8Ow/lCygjBSqfCSMvnPyHSmjylrP10JuYf4Sot6OFskP1YS9LBgo5
+	lBWXONAAKdSTkjWkakTEiH/PtovsmIzrhtW7gDZ9bUiquyu08nOFIdDNj6V0kvbVUnm2IsRa/oTp8
+	2sQgRpkr+ExGi27eUPY/jk88bevH7pV4LTOtLRjkYIUZoJdwFiJ6Pg5a4iHidCFJuyvNMN84LK1Ex
+	PKQ3vxR4pYxH4dZoH7Zn3ZVHN7ZldBxlu1B92g8LrckhWOES9E62dd+Q42XY6l3QpYJ89cDXKg8zo
+	98IUdVhZYQl6sbrbfyzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzB0g-0000000GtAM-3pqE;
-	Thu, 18 Sep 2025 09:33:02 +0000
-Received: from mail1.nippynetworks.com ([91.220.24.129])
+	id 1uzB0m-0000000GtFN-3bPz;
+	Thu, 18 Sep 2025 09:33:08 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzB0d-0000000Gt8Y-3ohq;
-	Thu, 18 Sep 2025 09:33:01 +0000
+	id 1uzB0k-0000000GtD0-2qne;
+	Thu, 18 Sep 2025 09:33:06 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-ID:Date:Subject:To:From:Sender:Reply-To:Cc:
+	Content-Type:Content-ID:Content-Description;
+	bh=FlAhNQnQgMFhDX0TaNHAvXo7GKBKzvZkP4Sin8ddCUI=; b=SFfWN6/pHaaVkxJykabBN1H/ZK
+	Nr7nFQyKxTO4rBUDbrgSgz5nacn76x0Ci1WbZkiJD7nhkE5KMnOpcJD2X27oe4ww88JPjO0q7P1Nr
+	9So6cRGhn+8FFdcD2ej6mNWkptU17nLne0+osQxZHMVtFrUaixBAcKBu6EjXI8JWBx2I4PpgKdQ3q
+	LdYG6aNIT8NSQDOE8bcelyzuAV8zsWnkN/m1lKrOa6l8phG3zJDipWXXmj9dLA4OQKbdpo7+Px+2G
+	54cBKytKycn3a5Ul3FFSVFAsDjCwzJ5Bot/kY5TPWhAyjXf4OLG7q7V0UzST5CqSN+lc6Lom6i3Xk
+	iR35EUSw==;
+Received: from mail1.nippynetworks.com ([91.220.24.129])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uzB0h-00000007aGb-18LN;
+	Thu, 18 Sep 2025 09:33:05 +0000
 Received: from grunt.nippynetworks.lan (unknown [94.228.36.46])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (P-256) server-signature ECDSA (P-256) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: lists@wildgooses.com)
-	by mail1.nippynetworks.com (Postfix) with ESMTPSA id 4cS9RF14Z1zkd2v;
-	Thu, 18 Sep 2025 10:32:57 +0100 (BST)
+	by mail1.nippynetworks.com (Postfix) with ESMTPSA id 4cS9RH2cB5zkd2w;
+	Thu, 18 Sep 2025 10:32:59 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wildgooses.com;
-	s=dkim; t=1758187977;
+	s=dkim; t=1758187979;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=6tc1vqbLWYKdxdC2HbYUBoMGCTCbsrF5FMeM/L5RcKc=;
-	b=Ic5GZJM5984XdM2DRZFc3j9G/IxFWtBsnoLYqs89Tak9cL/KN1MavtLM3A9vSSdokNn2bc
-	EhocY5Yr/iwhY3hyHSu7h4qUjuN1l5WiLHkvLbPEhs9OaB3+u1gpLLdgwIwr/8iqElCciR
-	bJlmqVCvzqPYiVtgI0m+wVqQ1BbU8GU=
+	bh=FlAhNQnQgMFhDX0TaNHAvXo7GKBKzvZkP4Sin8ddCUI=;
+	b=fHfF/VohcPLZ9ODrckry6N2rM/r2IHJ6cGVfD34oD6Syoa+QZJ1xJxAABjH/JIwaAPVU9a
+	lVLIIbGtLJQlT0Aj2xF8ZkHosc0Xx1lBldvIn6MTVbPgy5FkJbsim2tekDvqlK8er7oIlt
+	i1PzL9L/zgckS6kzI11Q/vzG/QxynsM=
 From: Ed Wildgoose <lists@wildgooses.com>
 To: Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -53,16 +67,17 @@ To: Rob Herring <robh@kernel.org>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH 0/2] arm64: dts: rockchip: fix dma and pinctrl defs v2
-Date: Thu, 18 Sep 2025 09:32:44 +0000
-Message-ID: <20250918093246.15623-1-lists@wildgooses.com>
+Subject: [PATCH 1/2] arm64: dts: rockchip: correct uart mux for Radxa ZERO 3
+Date: Thu, 18 Sep 2025 09:32:45 +0000
+Message-ID: <20250918093246.15623-2-lists@wildgooses.com>
 X-Mailer: git-send-email 2.49.0
-In-Reply-To: <20250917114932.25994-1-lists@wildgooses.com>
+In-Reply-To: <20250918093246.15623-1-lists@wildgooses.com>
 References: <20250917114932.25994-1-lists@wildgooses.com>
+ <20250918093246.15623-1-lists@wildgooses.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250918_023300_145145_2DD8C38C 
-X-CRM114-Status: GOOD (  12.12  )
+X-CRM114-CacheID: sfid-20250918_103303_673021_CE95453E 
+X-CRM114-Status: GOOD (  10.21  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,33 +94,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Based on feedback, I reworked these patches. I've re-presented both as
-I realise that one had invalid formatting (spaces vs tabs) and I've
-moved the dma-names definition into the same board level dtsi. At this
-point it seems reasonable to also squash the two patches, but feedback
-appreciated?
+The rk3566 has multiplexed pins and the uarts can be moved to a choice
+of 2 pin groups. The default rk356x-base.dtsi appears to default to mux0
+for all uarts, however, specific hardware might choose to implement
+alternatives
 
-The default pinctrl definitions for the Radxa Zero 3W don't match the
-datasheet. Possibly few people enable extra UARTs and hence it wasn't
-noticed? I needed all 5 UARTs for a project and the first patch corrects
-the pinctrl defs. Without this patch, enabling the extra UARTs causes
-issues such as the MMC devices disappearing, due to collisions.
+The Radxa zero 3 shows that is uses M1 for uarts:
+- uart4
+- uart5
+- uart9
 
-Second patch adds a dma-names property, which appears to be a
-pre-requisite for enabling DMA on the UARTs. I've applied this to the
-board level dts as feedback suggested there could be unintended problems
-if enabled across the complete rockchip dtsi.
+These aren't normally enabled, but we should at least correct the
+default pinctrl definitions. Without these changes there will be
+conflicts with mmc0/mmc1, leading to the SD or eMMC going missing.
 
-It's tested on my Zero 3W board and appears to function correctly and
-DMA is reported as enabled.
+Signed-off-by: Ed Wildgoose <lists@wildgooses.com>
+---
+ .../boot/dts/rockchip/rk3566-radxa-zero-3.dtsi    | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
 
-Ed Wildgoose (2):
-  arm64: dts: rockchip: correct uart mux for Radxa ZERO 3
-  rockchip: dts: Enable UART DMA by adding default dma-names property
-
- .../dts/rockchip/rk3566-radxa-zero-3.dtsi     | 23 +++++++++++++++++++
- 1 file changed, 23 insertions(+)
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3.dtsi
+index 1ee5d96a4..e644bfc9c 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3.dtsi
+@@ -492,6 +492,21 @@ &uart2 {
+ 	status = "okay";
+ };
+ 
++&uart4{
++	pinctrl-names = "default";
++	pinctrl-0 = <&uart4m1_xfer>;
++};
++
++&uart5 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&uart5m1_xfer>;
++};
++
++&uart9 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&uart9m1_xfer>;
++};
++
+ &usb_host0_xhci {
+ 	status = "okay";
+ };
 -- 
 2.49.0
 
