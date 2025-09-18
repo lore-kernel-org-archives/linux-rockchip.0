@@ -4,58 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 438D8CAC59A
-	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Sep 2025 11:29:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2697CAC5A0
+	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Sep 2025 12:59:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
-	Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yVt/fPmR14GNZvTB/xihCx5UjeyYNZ2M6cvPJg4ffmw=; b=aA2DS4BgzPnb91fm4Zy1EEBxTR
-	t1Kr8xtwuMq+hcvIpCbUc+ESIvJen0XVTM743a2Zu5mNEaZCLNRQrBTmgcpcNPpVD8hHol8do3oPT
-	IpasB9KW42pZah9hfr44OGm1GSMEaeLl1EP93fZTx5tES4tavccP3+9GeNdAbUJZHgnCmi4OuUU0r
-	OxAlieJhRMP8X/dCVExZKy/xR5V6+5suYxBjkQwdTgvIA4oxQ+qPmPZiS/8W9qS6su/elr3nt6Xpl
-	Uvn3xliDWp4KFafv+MVx78tnF0aB4oIy76dy6JgyY83b6WPOoktByy+QTDd8t8qbZcUmU9W4afXj+
-	/Pvg1hPA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=3bn6x45MiNRpeSJed1FxviRJJ0kN4ZYuruk5Af7e1P0=; b=x5at1r0eA6HTtI
+	uf3mlgfA63FQKiy9PSc4j2emCAZsYlB9VCKy0VQdBgTBjSG5CzSv6TwpT/1ro3chmdknit5oAiTJz
+	eOpevyyzaS0lmiLa+DDwv44ydE0Wp7OLkK3S0dN8ItaVHMHbyg1Kjc4WLNmu9bUBrrTObG5DpSkF1
+	FS+d3+xRPRMXjhogL+xVNa8dmwY72CHHccLZ0RBpcg/39P8b5xD3V20Ri+47xqgrq1UxxdwMie/xj
+	QZvyfgPUb2N6AtO/O7E07Bihd7Ectx4lxueWGMIA9qX1de3qSt4ZCGD4cag75yTeDEqWCrVzCHhyj
+	2yr3g+rHNHfBBTgfgP3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzCp0-0000000HDmI-27Mk;
-	Thu, 18 Sep 2025 11:29:06 +0000
-Received: from mail-m1973196.qiye.163.com ([220.197.31.96])
+	id 1uzEDr-0000000HTir-110j;
+	Thu, 18 Sep 2025 12:58:51 +0000
+Received: from mail-ej1-x643.google.com ([2a00:1450:4864:20::643])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzCox-0000000HDkD-15Nd;
-	Thu, 18 Sep 2025 11:29:05 +0000
-Received: from [172.16.12.153] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 23446c063;
-	Thu, 18 Sep 2025 19:28:53 +0800 (GMT+08:00)
-Message-ID: <404b35bb-e32b-4830-8d34-d0cfd0a262ff@rock-chips.com>
-Date: Thu, 18 Sep 2025 19:28:52 +0800
+	id 1uzEDn-0000000HThT-3OeR
+	for linux-rockchip@lists.infradead.org;
+	Thu, 18 Sep 2025 12:58:49 +0000
+Received: by mail-ej1-x643.google.com with SMTP id a640c23a62f3a-b07e3a77b72so291994366b.0
+        for <linux-rockchip@lists.infradead.org>; Thu, 18 Sep 2025 05:58:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1758200325; x=1758805125; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:mime-version:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=lvcQGE6zMqa3RPKmZjZH5zBkLah9vgbD3X7rCwM3Uvs=;
+        b=G0P8h5kEOm2wIewAJx0ogEyL3BoVtz8/1xsEhUUdxjZbrDD9esVbqqg/Lmt6DCZRx2
+         eqnN+NgB8WT34xHh1rCs4JbQDph7Hang1hW1ANpyONQ2eXgu2M1X8UUuiT9mRFVTqgyQ
+         ttUj6yfB6GH5vFfHkZMOtop1QlTxzQ9OcVypTTpoQ2kE/2i3x0/Vnk8g4f4DDiUXUOtG
+         oJMtluJIco6NF4NRC6TSCPwxHrJSejvRy7QZfkBM6nB5Ve59ZUmUklZslAi7kSGz6sJc
+         AwOpTtnmjR9226XKJlB+ejhoRTEM1JVp8lMlAVMVHnzRFYAhnLw5CBUwQAD1dwYnWUGI
+         De+A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1758200325; x=1758805125;
+        h=cc:to:subject:message-id:date:from:mime-version:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=lvcQGE6zMqa3RPKmZjZH5zBkLah9vgbD3X7rCwM3Uvs=;
+        b=olNYogTKKAlpE4GdVJmKCytrALwX+WC+cnQOfXGi/fe0beflZvRScnirZduNN25H08
+         fGt48eMDHPCK7s+RdnZgnj4C5Dc1ygZ1bBFH3T5lgD8n8KJVdc1fCv5W/oQkLD4jRcv7
+         HgAakYx2d0i9DrTfZtcLA3tnsjh4FJi/OMpY+lO1/xoKSRgreDKRBGcOw5rcV0WbXrxG
+         DCol9czlfi4tnE8lBntqZgFHpN7l1MU7MrNZohKjOmSbpfwUkg/vI4dB98NI2tuzBYlg
+         COldt4Rx8L6SEt8Xjhfr3ZoaYABJL+SlXe1wvD62B6lbK+fmKLQ4nClH72ZAi3GiTyp3
+         DO+A==
+X-Forwarded-Encrypted: i=1; AJvYcCUU+5OzbfnZgs8eH06sStlVErusaP3CGqNfiZkwrjtkaGRpRI9rYpZcuVP2/gNc0q4NkV0uNgc4W5NBOsxwIw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywc7KzQ6s7eQQlR9LCgL/oyIygvx++/m80C6Cj6mWEYud7Nbhyg
+	veVo00rq/n1QuojqhtY/aNiSjtEOHwJGXv3rCn6HRHv9QlAG/OHcfIPrDgWWaMmQNItfT1dYhQt
+	JYM21HdZtiBguFLO66Ap16y9b5uv4pi8=
+X-Gm-Gg: ASbGnctmiBmwgTVnEnsXkf/VoW3aqdzl1kEf7pbEaSIxlio1fT6445G8ejRmcQzjpfA
+	4azVCXFDkq3ExzaTsOIGaCIhV6rqXstKHTQ50YU+rhmAz+YkCbOV3rvac8QDHV4Zzm16S86aRI9
+	rRy6n6vBu9xGrNxr3adKNsmfiJs812OAy2fDfb8eg0JlbXvgFI3jP7RWbMJ0FsGkrBKmngUTKtw
+	AYtl7GLZxJTvLYPAXsfrF/o1A==
+X-Google-Smtp-Source: AGHT+IHG8sk3bcUaHQwBrZoLncnJChfwaJcuvBt6nfYyVTZWygm5etjUbCmo0srSUZFjiTWBAdZCH1hJ4cgs9M5FLD4=
+X-Received: by 2002:a17:907:6d06:b0:b0d:400:9182 with SMTP id
+ a640c23a62f3a-b1fac4e0b80mr343825666b.22.1758200324771; Thu, 18 Sep 2025
+ 05:58:44 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] arm64: dts: rockchip: Enable DisplayPort for
- rk3588-evb2
-To: Quentin Schulz <quentin.schulz@cherry.de>, Chaoyi Chen
- <kernel@airkyi.com>, Heiko Stuebner <heiko@sntech.de>,
- Andy Yan <andy.yan@rock-chips.com>
-References: <20250918062825.194-1-kernel@airkyi.com>
- <ecc96b5a-2062-43f4-9959-b4e2b126d9f3@cherry.de>
-Content-Language: en-US
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-In-Reply-To: <ecc96b5a-2062-43f4-9959-b4e2b126d9f3@cherry.de>
-X-HM-Tid: 0a995c959e2a03abkunmced0bb073b07de
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQ0kYTlYZTUNCSE9DTktNShhWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=elkMJm4McaadIkkxl9fxLZoKq6Ze48UUrVlEjcI3WVLV40memdMgXm0I6AlCiX9ppEReD/3c/Nm7xJFq6PpWmPM2GkBysoDpOXA7mmd0Zi3S9um4ewP5ED4b9LA5oLOuzjAq6qC//pV6KmZVkqUt5oA+K/XdNzWO1RJv+q3qbuo=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=oRwpANH20f3O41DZeZFj63uF99IcxizRzfbRD2S6WOw=;
-	h=date:mime-version:subject:message-id:from;
+From: Andrea Daoud <andreadaoud6@gmail.com>
+Date: Thu, 18 Sep 2025 20:58:33 +0800
+X-Gm-Features: AS18NWCEXBGAyDTuAdYfLyOIr8P8xtqgcUaqAsI0KK0ysqpeO0oKN9Ycaxuqg4o
+Message-ID: <CAOprWosSvBmORh9NKk-uxoWZpD6zdnF=dODS-uxVnTDjmofL6g@mail.gmail.com>
+Subject: Possible race condition of the rockchip_canfd driver
+To: Marc Kleine-Budde <mkl@pengutronix.de>
+Cc: Heiko Stuebner <heiko@sntech.de>, Elaine Zhang <zhangqing@rock-chips.com>, kernel@pengutronix.de, 
+	linux-can@vger.kernel.org, netdev@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250918_042903_786458_5994182E 
-X-CRM114-Status: GOOD (  17.24  )
+X-CRM114-CacheID: sfid-20250918_055847_852916_F2BAA033 
+X-CRM114-Status: UNSURE (   9.81  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,68 +89,38 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Geert Uytterhoeven <geert+renesas@glider.be>, Jonas Karlman <jonas@kwiboo.se>, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, FUKAUMI Naoki <naoki@radxa.com>, Peter Robinson <pbrobinson@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Dragan Simic <dsimic@manjaro.org>, linux-arm-kernel@lists.infradead.org
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgUXVlbnRpbiwKCk9uIDkvMTgvMjAyNSA2OjM5IFBNLCBRdWVudGluIFNjaHVseiB3cm90ZToK
-PiBIaSBDaGFveWkgQ2hlbiwKPgo+IE9uIDkvMTgvMjUgODoyOCBBTSwgQ2hhb3lpIENoZW4gd3Jv
-dGU6Cj4+IEZyb206IENoYW95aSBDaGVuIDxjaGFveWkuY2hlbkByb2NrLWNoaXBzLmNvbT4KPj4K
-Pj4gVGhlIHJrMzU4OCBldmIyIGJvYXJkIGhhcyBhIGZ1bGwgc2l6ZSBEaXNwbGF5UG9ydCBjb25u
-ZWN0b3IsIGVuYWJsZQo+PiBmb3IgaXQuCj4+Cj4+IFNpZ25lZC1vZmYtYnk6IENoYW95aSBDaGVu
-IDxjaGFveWkuY2hlbkByb2NrLWNoaXBzLmNvbT4KPj4gLS0tCj4+Cj4+IENoYW5nZXMgaW4gdjI6
-Cj4+Cj4+IC0gTGluayB0byBWMTogaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvYWxsLzIwMjUwOTE2
-MDgwODAyLjEyNS0xLWtlcm5lbEBhaXJreWkuY29tLwo+PiAtIEZpeCBpbnZhbGlkIERQIGNvbm5l
-Y3RvciB0eXBlCj4+IC0gQWRkIG1vcmUgY29tbWVudCBhYm91dCBkY2xrX3ZwMiBwYXJlbnQgY2xv
-Y2sKPj4KPj4gwqAgLi4uL2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OC1ldmIyLXYxMC5kdHPCoMKg
-wqDCoCB8IDQ4ICsrKysrKysrKysrKysrKysrKysKPj4gwqAgMSBmaWxlIGNoYW5nZWQsIDQ4IGlu
-c2VydGlvbnMoKykKPj4KPj4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2No
-aXAvcmszNTg4LWV2YjItdjEwLmR0cyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmsz
-NTg4LWV2YjItdjEwLmR0cwo+PiBpbmRleCA5MWZlODEwZDM4ZDguLjYwYmE2YWM1NWIyMyAxMDA2
-NDQKPj4gLS0tIGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODgtZXZiMi12MTAu
-ZHRzCj4+ICsrKyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4LWV2YjItdjEw
-LmR0cwo+PiBAQCAtMjUsNiArMjUsMTggQEAgY2hvc2VuIHsKPj4gwqDCoMKgwqDCoMKgwqDCoMKg
-IHN0ZG91dC1wYXRoID0gInNlcmlhbDI6MTUwMDAwMG44IjsKPj4gwqDCoMKgwqDCoCB9Owo+PiDC
-oCArwqDCoMKgIGRwLWNvbiB7Cj4+ICvCoMKgwqDCoMKgwqDCoCBjb21wYXRpYmxlID0gImRwLWNv
-bm5lY3RvciI7Cj4+ICvCoMKgwqDCoMKgwqDCoCBsYWJlbCA9ICJEUCBPVVQiOwo+PiArwqDCoMKg
-wqDCoMKgwqAgdHlwZSA9ICJmdWxsLXNpemUiOwo+PiArCj4+ICvCoMKgwqDCoMKgwqDCoCBwb3J0
-IHsKPj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqAgZHBfY29uX2luOiBlbmRwb2ludCB7Cj4+ICvC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgcmVtb3RlLWVuZHBvaW50ID0gPCZkcDBfb3V0
-X2Nvbj47Cj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIH07Cj4+ICvCoMKgwqDCoMKgwqDCoCB9
-Owo+PiArwqDCoMKgIH07Cj4+ICsKPj4gwqDCoMKgwqDCoCBoZG1pLWNvbiB7Cj4+IMKgwqDCoMKg
-wqDCoMKgwqDCoCBjb21wYXRpYmxlID0gImhkbWktY29ubmVjdG9yIjsKPj4gwqDCoMKgwqDCoMKg
-wqDCoMKgIHR5cGUgPSAiYSI7Cj4+IEBAIC0xMDYsNiArMTE4LDI0IEBAIHZjYzV2MF91c2JkY2lu
-OiByZWd1bGF0b3ItdmNjNXYwLXVzYmRjaW4gewo+PiDCoMKgwqDCoMKgIH07Cj4+IMKgIH07Cj4+
-IMKgICsmZHAwIHsKPj4gK8KgwqDCoCBwaW5jdHJsLTAgPSA8JmRwMG0wX3BpbnM+Owo+PiArwqDC
-oMKgIHBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7Cj4+ICvCoMKgwqAgc3RhdHVzID0gIm9rYXki
-Owo+PiArfTsKPj4gKwo+PiArJmRwMF9pbiB7Cj4+ICvCoMKgwqAgZHAwX2luX3ZwMjogZW5kcG9p
-bnQgewo+PiArwqDCoMKgwqDCoMKgwqAgcmVtb3RlLWVuZHBvaW50ID0gPCZ2cDJfb3V0X2RwMD47
-Cj4+ICvCoMKgwqAgfTsKPj4gK307Cj4+ICsKPj4gKyZkcDBfb3V0IHsKPj4gK8KgwqDCoCBkcDBf
-b3V0X2NvbjogZW5kcG9pbnQgewo+PiArwqDCoMKgwqDCoMKgwqAgcmVtb3RlLWVuZHBvaW50ID0g
-PCZkcF9jb25faW4+Owo+PiArwqDCoMKgIH07Cj4+ICt9Owo+PiArCj4+IMKgICZncHUgewo+PiDC
-oMKgwqDCoMKgIG1hbGktc3VwcGx5ID0gPCZ2ZGRfZ3B1X3MwPjsKPj4gwqDCoMKgwqDCoCBzcmFt
-LXN1cHBseSA9IDwmdmRkX2dwdV9tZW1fczA+Owo+PiBAQCAtOTE2LDYgKzk0NiwxNyBAQCAmdXNi
-X2hvc3QxX3hoY2kgewo+PiDCoCB9Owo+PiDCoCDCoCAmdm9wIHsKPj4gK8KgwqDCoCAvKgo+PiAr
-wqDCoMKgwqAgKiBJZiBubyBkZWRpY2F0ZWQgUExMIHdhcyBzcGVjaWZpZWQsIHRoZSBHUExMIHdv
-dWxkIGJlIGF1dG9tYXRpY2FsbHkKPj4gK8KgwqDCoMKgICogYXNzaWduZWQgYXMgdGhlIFBMTCBz
-b3VyY2UgZm9yIGRjbGtfdm9wMi4gQXMgdGhlIGZyZXF1ZW5jeSBvZiBHUExMCj4+ICvCoMKgwqDC
-oCAqIGlzIDExODggTUh6LCB3ZSBjYW4gb25seSBnZXQgdHlwaWNhbCBjbG9jayBmcmVxdWVuY2ll
-cyBzdWNoIGFzCj4+ICvCoMKgwqDCoCAqIDc0LjI1TUh6LCAxNDguNU1IeiwgMjk3TUh6LCA1OTRN
-SHouCj4+ICvCoMKgwqDCoCAqCj4+ICvCoMKgwqDCoCAqIFNvIGhlcmUgd2Ugc2V0IHRoZSBwYXJl
-bnQgY2xvY2sgb2YgVlAyIHRvIFYwUExMIHNvIHRoYXQgd2UgY2FuIGdldAo+PiArwqDCoMKgwqAg
-KiBhbnkgZnJlcXVlbmN5Lgo+PiArwqDCoMKgwqAgKi8KPj4gK8KgwqDCoCBhc3NpZ25lZC1jbG9j
-a3MgPSA8JmNydSBEQ0xLX1ZPUDJfU1JDPjsKPj4gK8KgwqDCoCBhc3NpZ25lZC1jbG9jay1wYXJl
-bnRzID0gPCZjcnUgUExMX1YwUExMPjsKPgo+IEFyZSB0aG9zZSBib2FyZC1zcGVjaWZpYz8gQ29u
-c2lkZXJpbmcgdGhlIFZPUCBhbmQgRFAvSERNSS8uLi4gY29udHJvbGxlcnMvUEhZcyBhcmUgYWxs
-IGludGVybmFsIHRvIHRoZSBTb0MsIHdvdWxkIGl0IG1ha2Ugc2Vuc2UgdG8gaGF2ZSB0aG9zZSBz
-cGVjaWZpZWQgaW4gdGhlIFNvQyBEVFNJPyBJJ20gbm90IGZhbWlsaWFyIHdpdGggdGhlIHZpZGVv
-IG91dHB1dCBzdGFjayBzbyBtYXliZSBpdCBkb2Vzbid0IGFwcGx5IGhlcmUgb3IgaXMgYSBiYWQg
-aWRlYSwgc28gSSdtIG5vdCBhY3R1YWxseSBhc2tpbmcgZm9yIGEgY2hhbmdlIGhlcmUsIGp1c3Qg
-YXNraW5nIGEgcXVlc3Rpb24gOikKClllcCwgdGhleSBhcmUgYm9hcmQtc3BlY2lmaWMuIEJlY2F1
-c2UgdGhlIFYwUExMIG1heSBiZSB1c2VkIGZvciBub24tZGlzcGxheSBhcHBsaWNhdGlvbnMuCgoK
-Cj4KPiBDaGVlcnMsCj4gUXVlbnRpbgo+Cj4KLS0gCkJlc3QsCkNoYW95aQoKCl9fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxp
-bmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5p
-bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Hi Marc,
+
+I'm using the rockchip_canfd driver on an RK3568. When under high bus
+load, I get
+the following logs [1] in rkcanfd_tx_tail_is_eff, and the CAN bus is unable to
+communicate properly under this condition. The exact cause is currently not
+entirely clear, and it's not reliably reproducible.
+
+In the logs we can spot some strange points:
+
+1. Line 24, tx_head == tx_tail. This should have been rejected by the if
+(!rkcanfd_get_tx_pending) clause.
+
+2. Line 26, the last bit of priv->tx_tail (0x0185dbb3) is 1. This means that the
+tx_tail should be 1, because rkcanfd_get_tx_tail is essentially mod the
+priv->tx_tail by two. But the printed tx_tail is 0.
+
+I believe these problems could mean that the code is suffering from some race
+condition. It seems that, in the whole IRQ processing chain of the driver,
+there's no lock protection. Maybe some IRQ happens within the execution of
+rkcanfd_tx_tail_is_eff, and touches the state of the tx_head and tx_tail?
+
+Could you please have a look at the code, and check if some locking is needed?
+
+[1]: https://pastebin.com/R7uuEKEz
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
