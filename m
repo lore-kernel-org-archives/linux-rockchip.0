@@ -4,70 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02E73CA1013
-	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Sep 2025 21:10:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4D90CAC597
+	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Sep 2025 22:37:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dQNZDwQi8OBvEAF63PUqwG7BdobhKIChGJrJMZ3EBhc=; b=NcOUrpSoER6wVQ
-	msOG3Q6HIa/nLjIcb7svjoZFLvOetmoq/aCedk2zQz4gyFe6HOSqmPBaAlwuOjkB6DWbTCcBqBZWe
-	NikOVuP4D6RD6hJconsVHiA+J/W3SK+YXUg/70OpP66BhceIcFZKuTdvk5RiiDQ8XpY7FFlOxF6Dz
-	5lVgZeGzv9dPgha+F8AOxzCWxoKFnS6qeTDumkqxGZI40npRk40nycl+u3sxKgZSSIxQwliv1bfIE
-	3fb/3t3svo6qqv/uyQTDAhBLxI+eKSNWJ18RXoADmUjBP3AbTDvFgb8GVzor+WBDtQp2NJjbiD8fd
-	x/DkIei7NGOtFompN8hw==;
+	List-Owner; bh=jGjNzQaO5kbZRYEhe8tXhh4vQxC0ZzkMbAHpwGAsfxs=; b=rik6M9VoOShSLC
+	DJh4vNBCdfPXT2LFUyC7juw9SpJlw3lyitt9qa7X8D/PvWes/XZgdgnIvk8zQXe7iecG5CMXD/tXn
+	gcN3/KmHlm81NimSJf9Pe23RsOy4t48FqzWt0FxIygUOks2RHjcVI7Azgcpllcx6LvJfyF5nvyTwN
+	z2dHECBX4uidcWDeoplR91V7cyHm99kR4EUVXDSYXoMjTls+Jol4Lt6iMtaD7QNphAkGo2AiiC36R
+	84f8zuxzuZpYXfZAvvvVaqrg1pUC6xI6rPeciioGzCB1AgxNjVJTTCd1JuXCjf9CV150cnYxlzOC4
+	lA7veAnRwt2hTYhWCOxg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzLtC-00000001Aju-0vEi;
-	Thu, 18 Sep 2025 21:10:02 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1uzNFs-00000001LSZ-2ypD;
+	Thu, 18 Sep 2025 22:37:32 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzLsx-00000001AZa-3Qzp;
-	Thu, 18 Sep 2025 21:09:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=vAMRs3EbyF1XGGaTsvBP13Ccnhqr+M87FnxfkVVVsrA=; b=QLhSWJje2q9bkKWYMbzv52HhN/
-	HzUnlzdWtIoi9KQ029azp70hbVLwXAAWVJU/uZrJjzWubno8jmUIWtkwFoBPVi1it05SAXye3V+sn
-	yk8nvO6Jm4bA2/FZaKZ1wCfo4t4EcDkprstmO41PNmplxUMJsODEP4CqGcXSSWn964HpzSsDRrtTm
-	W/sJQM+Ga864a09zmETnkFZFAsNG4ShZnSNy5eaP879sKfo8odepzClivCapClBmjpdU585Bdh1lk
-	jtNJj5Lm1suw0vBtVueLDTcWDFQxdZSHnj4pqw9GBzzTJZn6sh5BCK5AVkn0oEcUKYo2VpUHyMMuk
-	m/d6GhFQ==;
-Received: from i53875b0a.versanet.de ([83.135.91.10] helo=localhost.localdomain)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1uzLsj-0003SC-5k; Thu, 18 Sep 2025 23:09:33 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: Rob Herring <robh@kernel.org>,
-	Jimmy Hon <honyuenkwun@gmail.com>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Kaison Deng <dkx@t-chip.com.cn>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	Wayne Chou <zxf@t-chip.com.cn>,
-	Quentin Schulz <quentin.schulz@cherry.de>,
-	Dragan Simic <dsimic@manjaro.org>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	FUKAUMI Naoki <naoki@radxa.com>,
-	Peter Robinson <pbrobinson@gmail.com>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3 0/2] Add support for Firefly ROC-RK3588-RT
-Date: Thu, 18 Sep 2025 23:09:20 +0200
-Message-ID: <175822973680.1568500.8881843891628390459.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.47.2
-In-Reply-To: <cover.1757902513.git.dkx@t-chip.com.cn>
-References: <cover.1757902513.git.dkx@t-chip.com.cn>
+	id 1uzNFp-00000001LRd-1Ld8;
+	Thu, 18 Sep 2025 22:37:30 +0000
+Received: from pendragon.ideasonboard.com (81-175-209-231.bb.dnainternet.fi [81.175.209.231])
+	by perceval.ideasonboard.com (Postfix) with UTF8SMTPSA id 29C489FC;
+	Fri, 19 Sep 2025 00:36:05 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1758234965;
+	bh=CFNp1DwRSlhPzDlZBacPlISS3GavBgP3D8OWPHMrqTk=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=kX1MgsHuiTMdxlMpsJTLrcl6+bZIagVC1+hcH0yPq7yg8lrFDS6Iegjqt7RvxoKYl
+	 7354xr0R6tcDIqcMpuyzHU6C7JxWl6p9VZB1yUtji1Ob7TaGx+e/3qqDikhOTAtIwc
+	 TUTaExBonINK7j2HJizJC+7v4cELXPqJejvsG0dI=
+Date: Fri, 19 Sep 2025 01:36:55 +0300
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Kieran Bingham <kieran.bingham@ideasonboard.com>
+Cc: Dafna Hirschfeld <dafna@fastmail.com>, Heiko Stuebner <heiko@sntech.de>,
+	Jacopo Mondi <jacopo.mondi@ideasonboard.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Stefan Klug <stefan.klug@ideasonboard.com>,
+	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2] media: rkisp1: Improve frame sequence correctness on
+ stats and params buffers
+Message-ID: <20250918223655.GA10985@pendragon.ideasonboard.com>
+References: <20250918145504.111428-2-stefan.klug@ideasonboard.com>
+ <175820896821.1246375.16035780810428204673@ping.linuxembedded.co.uk>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <175820896821.1246375.16035780810428204673@ping.linuxembedded.co.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250918_140947_907081_C9D23839 
-X-CRM114-Status: GOOD (  13.13  )
+X-CRM114-CacheID: sfid-20250918_153729_505909_4BAD7986 
+X-CRM114-Status: GOOD (  45.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,28 +72,173 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-On Mon, 15 Sep 2025 10:22:03 +0800, Kaison Deng wrote:
-> This series add support for Firefly ROC-RK3588-RT.
+On Thu, Sep 18, 2025 at 04:22:48PM +0100, Kieran Bingham wrote:
+> Quoting Stefan Klug (2025-09-18 15:54:33)
+> > On the rkisp1 (in my case on a NXP i.MX8 M Plus) the ISP interrupt
+> > handler is sometimes called with RKISP1_CIF_ISP_V_START (start of frame)
+> > and RKISP1_CIF_ISP_FRAME (end of frame) being set at the same time. In
+> > commit 8524fa22fd2f ("media: staging: rkisp1: isp: add a warning and
+> > debugfs var for irq delay") a warning was added for that. There are two
+> > cases where this condition can occur:
+> > 
+> > 1. The v-sync and the frame-end belong to the same frame. This means,
+> >    the irq was heavily delayed and the warning is likely appropriate.
+> > 
+> > 2. The v-sync belongs to the next frame. This can happen if the vertical
+> >    blanking between two frames is very short.
+> > 
+> > The current code always handles case 1 although case 2 is in my
+> > experience the more common case and happens in regular usage. This leads
+> > to incorrect sequence numbers on stats and params buffers which in turn
+> > breaks the regulation in user space. Fix that by adding a frame_active
+> > flag to distinguish between these cases and handle the start of frame
+> > either at the beginning or at the end of the rkisp1_isp_isr().
+> > 
+> > Signed-off-by: Stefan Klug <stefan.klug@ideasonboard.com>
+> > 
+> > ---
+> > 
+> > Hi all,
+> > 
+> > Here is an updated version of the patch with some fixes from the review.
+> > 
+> > Changes in v2:
+> > - Removed test for !frame_active in second v_start handler
+> > - Improved comments
+> > 
+> > Best regards,
+> > Stefan
+> > 
+> > ---
+> >  .../platform/rockchip/rkisp1/rkisp1-common.h  |  1 +
+> >  .../platform/rockchip/rkisp1/rkisp1-isp.c     | 27 +++++++++++++++----
+> >  2 files changed, 23 insertions(+), 5 deletions(-)
+> > 
+> > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+> > index ca952fd0829b..adf23416de9a 100644
+> > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+> > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+> > @@ -222,6 +222,7 @@ struct rkisp1_isp {
+> >         struct media_pad pads[RKISP1_ISP_PAD_MAX];
+> >         const struct rkisp1_mbus_info *sink_fmt;
+> >         __u32 frame_sequence;
+> > +       bool frame_active;
+> >  };
+> >  
+> >  /*
+> > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+> > index 8c29a1c9309a..2e49764d6262 100644
+> > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+> > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+> > @@ -965,6 +965,7 @@ static int rkisp1_isp_s_stream(struct v4l2_subdev *sd, int enable)
+> >         }
+> >  
+> >         isp->frame_sequence = -1;
+> > +       isp->frame_active = false;
+> >  
+> >         sd_state = v4l2_subdev_lock_and_get_active_state(sd);
+> >  
+> > @@ -1086,12 +1087,15 @@ void rkisp1_isp_unregister(struct rkisp1_device *rkisp1)
+> >   * Interrupt handlers
+> >   */
+> >  
+> > -static void rkisp1_isp_queue_event_sof(struct rkisp1_isp *isp)
+> > +static void rkisp1_isp_sof(struct rkisp1_isp *isp)
+> >  {
+> >         struct v4l2_event event = {
+> >                 .type = V4L2_EVENT_FRAME_SYNC,
+> >         };
+> >  
+> > +       isp->frame_sequence++;
+> > +       isp->frame_active = true;
+> > +
+> >         event.u.frame_sync.frame_sequence = isp->frame_sequence;
+> >         v4l2_event_queue(isp->sd.devnode, &event);
+> >  }
+> > @@ -1111,15 +1115,20 @@ irqreturn_t rkisp1_isp_isr(int irq, void *ctx)
+> >  
+> >         rkisp1_write(rkisp1, RKISP1_CIF_ISP_ICR, status);
+> >  
+> > -       /* Vertical sync signal, starting generating new frame */
+> > -       if (status & RKISP1_CIF_ISP_V_START) {
+> > -               rkisp1->isp.frame_sequence++;
+> > -               rkisp1_isp_queue_event_sof(&rkisp1->isp);
+> > +       /*
+> > +        * Vertical sync signal, starting new frame. Defer handling of vsync
+> > +        * after RKISP1_CIF_ISP_FRAME if the previous frame was not completed
+> > +        * yet.
+> > +        */
+> > +       if (status & RKISP1_CIF_ISP_V_START && !rkisp1->isp.frame_active) {
+> > +               status &= ~RKISP1_CIF_ISP_V_START;
+> > +               rkisp1_isp_sof(&rkisp1->isp);
+> >                 if (status & RKISP1_CIF_ISP_FRAME) {
+> >                         WARN_ONCE(1, "irq delay is too long, buffers might not be in sync\n");
 > 
-> Info of device can be found at:
-> https://en.t-firefly.com/product/industry/rocrk3588rt
+> Now I've read below - I see how in here we've had both a frame start and
+> a frame end without processing an IRQ at all.
 > 
-> Changes in v3:
-> - Change rgmii-rxid phy-mode to rgmii-id
+> I'm trying to figure out if the ISR should always just process frame end
+> events before frame starts ... but then i think we wouldn't catch this
+> case so I suspect this is fine keeping it how things are now.
 > 
-> [...]
+> 
+> >                         rkisp1->debug.irq_delay++;
+> >                 }
+> >         }
+> > +
+> >         if (status & RKISP1_CIF_ISP_PIC_SIZE_ERROR) {
+> >                 /* Clear pic_size_error */
+> >                 isp_err = rkisp1_read(rkisp1, RKISP1_CIF_ISP_ERR);
+> > @@ -1138,6 +1147,7 @@ irqreturn_t rkisp1_isp_isr(int irq, void *ctx)
+> >         if (status & RKISP1_CIF_ISP_FRAME) {
+> >                 u32 isp_ris;
+> >  
+> > +               rkisp1->isp.frame_active = false;
+> >                 rkisp1->debug.complete_frames++;
+> >  
+> >                 /* New frame from the sensor received */
+> > @@ -1152,5 +1162,12 @@ irqreturn_t rkisp1_isp_isr(int irq, void *ctx)
+> >                 rkisp1_params_isr(rkisp1);
+> >         }
+> >  
+> > +       /*
+> > +        * Deferred handling of vsync if RKISP1_CIF_ISP_V_START and
+> > +        * RKISP1_CIF_ISP_FRAME occurrend in the same irq.
+> 
+> s/occurend/occured/
+> 
+> > +        */
+> > +       if (status & RKISP1_CIF_ISP_V_START)
+> > +               rkisp1_isp_sof(&rkisp1->isp);
+> 
+> Aha I see - so this makes sure we /complete/ the frame before we start
+> another one.
+> 
+> That definitely sounds like a very good thing.
 
-Applied, thanks!
+Yes, this seems to be a good improvement.
 
-[1/2] dt-bindings: arm: rockchip: Add Firefly ROC-RK3588-RT
-      commit: 0bb8d67611b59740f47ad57658a8d2986c43f8c1
-[2/2] arm64: dts: rockchip: Add devicetree for the ROC-RK3588-RT
-      commit: 93781211e9ad9578787355147c2f28b7289a8ec6
+Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 
-Best regards,
+There may still be room for improvement, we could measure the time
+between IRQs to estimate the number of lost interrupts. That won't be
+easy to develop, and may be best handled in userspace. If we investigate
+that, it should probably be implemented with generic helpers.
+
+> I'd be curuious to add a counter for how often we process a frame start
+> and frame end in the same ISR too. That likely still means we've got
+> some undesirable delays?
+
+There's a counter already, and it's already exported through debugfs :-)
+
+> > +
+> >         return IRQ_HANDLED;
+> >  }
+
 -- 
-Heiko Stuebner <heiko@sntech.de>
+Regards,
+
+Laurent Pinchart
 
 _______________________________________________
 Linux-rockchip mailing list
