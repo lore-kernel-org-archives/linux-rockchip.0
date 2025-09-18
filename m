@@ -4,80 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2697CAC5A0
-	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Sep 2025 12:59:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED2E6CAC59A
+	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Sep 2025 13:31:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=3bn6x45MiNRpeSJed1FxviRJJ0kN4ZYuruk5Af7e1P0=; b=x5at1r0eA6HTtI
-	uf3mlgfA63FQKiy9PSc4j2emCAZsYlB9VCKy0VQdBgTBjSG5CzSv6TwpT/1ro3chmdknit5oAiTJz
-	eOpevyyzaS0lmiLa+DDwv44ydE0Wp7OLkK3S0dN8ItaVHMHbyg1Kjc4WLNmu9bUBrrTObG5DpSkF1
-	FS+d3+xRPRMXjhogL+xVNa8dmwY72CHHccLZ0RBpcg/39P8b5xD3V20Ri+47xqgrq1UxxdwMie/xj
-	QZvyfgPUb2N6AtO/O7E07Bihd7Ectx4lxueWGMIA9qX1de3qSt4ZCGD4cag75yTeDEqWCrVzCHhyj
-	2yr3g+rHNHfBBTgfgP3g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/QW7OQTS0zNWusPQ/yBn01Qsc5PybGjNwtSqDZebaVM=; b=QsqN4cX5bS/xY01c8ppxfnKauf
+	YqucFwx5579IHCfTpXNTtPHPQnsjnccxHKHzTFZIUAgDEw8k2kV5zdr6xP2FO67poT129qc5qYEZw
+	phDSTTqZFVD2A7p7j5O7O3NgroieUvT+YlVK0djIBpgNWctkv5w/2p7lOMz0dDAQAZxVNEr474w1G
+	PN74S4L9A7xX3bNrCsU5Tme4Gp2C7g8CiU2Hf9wGX+4hsPbCL1rw0IsCJ1dRe7RfOjH3OvURw8XHh
+	fGl3INZwNBQigrKAUTru8lcmA9+X4T6w+D5+HLpyXl5waemHmZING/xgt/2FyOe2AVgxE7zHO6qkf
+	K1Rvnx0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzEDr-0000000HTir-110j;
-	Thu, 18 Sep 2025 12:58:51 +0000
-Received: from mail-ej1-x643.google.com ([2a00:1450:4864:20::643])
+	id 1uzEja-0000000HYJ1-3UaZ;
+	Thu, 18 Sep 2025 13:31:38 +0000
+Received: from mail-qk1-x731.google.com ([2607:f8b0:4864:20::731])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzEDn-0000000HThT-3OeR
+	id 1uzEjX-0000000HYGb-0RQD
 	for linux-rockchip@lists.infradead.org;
-	Thu, 18 Sep 2025 12:58:49 +0000
-Received: by mail-ej1-x643.google.com with SMTP id a640c23a62f3a-b07e3a77b72so291994366b.0
-        for <linux-rockchip@lists.infradead.org>; Thu, 18 Sep 2025 05:58:46 -0700 (PDT)
+	Thu, 18 Sep 2025 13:31:37 +0000
+Received: by mail-qk1-x731.google.com with SMTP id af79cd13be357-80e33b9e2d3so95604485a.2
+        for <linux-rockchip@lists.infradead.org>; Thu, 18 Sep 2025 06:31:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1758200325; x=1758805125; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:mime-version:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=lvcQGE6zMqa3RPKmZjZH5zBkLah9vgbD3X7rCwM3Uvs=;
-        b=G0P8h5kEOm2wIewAJx0ogEyL3BoVtz8/1xsEhUUdxjZbrDD9esVbqqg/Lmt6DCZRx2
-         eqnN+NgB8WT34xHh1rCs4JbQDph7Hang1hW1ANpyONQ2eXgu2M1X8UUuiT9mRFVTqgyQ
-         ttUj6yfB6GH5vFfHkZMOtop1QlTxzQ9OcVypTTpoQ2kE/2i3x0/Vnk8g4f4DDiUXUOtG
-         oJMtluJIco6NF4NRC6TSCPwxHrJSejvRy7QZfkBM6nB5Ve59ZUmUklZslAi7kSGz6sJc
-         AwOpTtnmjR9226XKJlB+ejhoRTEM1JVp8lMlAVMVHnzRFYAhnLw5CBUwQAD1dwYnWUGI
-         De+A==
+        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1758202293; x=1758807093; darn=lists.infradead.org;
+        h=mime-version:user-agent:references:in-reply-to:date:cc:to:from
+         :subject:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=qPYv2m3jnaBv4/l/HZ0iG3MFsl4uuoIjun6WjOr6o18=;
+        b=auKBp4A2or9GQdWJj+v6QeES3DIfAhU9IjQj4/6LsNx2Akqa21EXcQ5nqAG68vpAOm
+         Gj4BQCw/FbAMmBQB3YTIjkGqD04O/9pA9qSrd2jHZJCvipjf16615ta+tbnGGlKYQDLU
+         x69+7A488z8t0SjWPE51fFqUEJ6ZGE7tcipsBPbtbEgdwVXpn4sE9s+GzwTl9hm7Ci/l
+         h9aFcYJyRKBCaYgyzpmN1oxWxTAhVphpQ8UXSjLAS+gzy3xHTno9OP56o79hYONxqvU5
+         V6sFndP72RouKjv1I7D5xQDH1egXOKdU+qGxZe8V2ylrQXX3oGtABr5UU/hwCFPl00Rs
+         vrxQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1758200325; x=1758805125;
-        h=cc:to:subject:message-id:date:from:mime-version:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=lvcQGE6zMqa3RPKmZjZH5zBkLah9vgbD3X7rCwM3Uvs=;
-        b=olNYogTKKAlpE4GdVJmKCytrALwX+WC+cnQOfXGi/fe0beflZvRScnirZduNN25H08
-         fGt48eMDHPCK7s+RdnZgnj4C5Dc1ygZ1bBFH3T5lgD8n8KJVdc1fCv5W/oQkLD4jRcv7
-         HgAakYx2d0i9DrTfZtcLA3tnsjh4FJi/OMpY+lO1/xoKSRgreDKRBGcOw5rcV0WbXrxG
-         DCol9czlfi4tnE8lBntqZgFHpN7l1MU7MrNZohKjOmSbpfwUkg/vI4dB98NI2tuzBYlg
-         COldt4Rx8L6SEt8Xjhfr3ZoaYABJL+SlXe1wvD62B6lbK+fmKLQ4nClH72ZAi3GiTyp3
-         DO+A==
-X-Forwarded-Encrypted: i=1; AJvYcCUU+5OzbfnZgs8eH06sStlVErusaP3CGqNfiZkwrjtkaGRpRI9rYpZcuVP2/gNc0q4NkV0uNgc4W5NBOsxwIw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Ywc7KzQ6s7eQQlR9LCgL/oyIygvx++/m80C6Cj6mWEYud7Nbhyg
-	veVo00rq/n1QuojqhtY/aNiSjtEOHwJGXv3rCn6HRHv9QlAG/OHcfIPrDgWWaMmQNItfT1dYhQt
-	JYM21HdZtiBguFLO66Ap16y9b5uv4pi8=
-X-Gm-Gg: ASbGnctmiBmwgTVnEnsXkf/VoW3aqdzl1kEf7pbEaSIxlio1fT6445G8ejRmcQzjpfA
-	4azVCXFDkq3ExzaTsOIGaCIhV6rqXstKHTQ50YU+rhmAz+YkCbOV3rvac8QDHV4Zzm16S86aRI9
-	rRy6n6vBu9xGrNxr3adKNsmfiJs812OAy2fDfb8eg0JlbXvgFI3jP7RWbMJ0FsGkrBKmngUTKtw
-	AYtl7GLZxJTvLYPAXsfrF/o1A==
-X-Google-Smtp-Source: AGHT+IHG8sk3bcUaHQwBrZoLncnJChfwaJcuvBt6nfYyVTZWygm5etjUbCmo0srSUZFjiTWBAdZCH1hJ4cgs9M5FLD4=
-X-Received: by 2002:a17:907:6d06:b0:b0d:400:9182 with SMTP id
- a640c23a62f3a-b1fac4e0b80mr343825666b.22.1758200324771; Thu, 18 Sep 2025
- 05:58:44 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1758202293; x=1758807093;
+        h=mime-version:user-agent:references:in-reply-to:date:cc:to:from
+         :subject:message-id:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=qPYv2m3jnaBv4/l/HZ0iG3MFsl4uuoIjun6WjOr6o18=;
+        b=LvPeLHg6h8Vren370cO7hyUnueoGLAwxysgupDkNTm2RZUv89s/pHDdyCgm1Et2MV/
+         bK6XuopBpzF5e5ZQtafKniSLwmZ0P6oZCQdK2XdTE/3zuGF21a/G7KTkom8GmjxEUkbS
+         DAc2lGIouX4GfKe/i10UTqI03zeDsRY982hYbaihfLXqNk5A62+QAeWPT4asDv0NUGor
+         h977BSPBJdA+Th/5Y52V2CsmrRjS0lQthHtijdtBfzMmhVvATls15Se22zQty2YZbypI
+         QlDk0XPFjldY1sA3+0V2DSP0PIywa3YOmgAbuyOkx8Zal4MYHLTRaGniAoTOior2fUgS
+         jefQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUb/wHH7wR15YAFx1SOT0DGdd8F+q+p5br2qOdMz+lrfsYLDR6kB+zFZAt30sUUhZL/5BhI+QHBYav3/FtbtA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw9lxUk9HFCRwzDq3KpKIH/0nvtxdPpXJO/tR+khpnVHbDEqb2n
+	D7ouMNzaQ8QQElMcJIvI6rBResNUq+XtXfD3dG+P7cB7wksfEXdS8ZhpnhJOi/DWPu8=
+X-Gm-Gg: ASbGncuPemdrJV5yDhPMA8pc+z7tvtJG5OdfI06+OrGelXHjS9/Sqx+y+yNm1heTnjR
+	82rhxTEOyns046yfF+CMXO4hfJqDgx6yJ5TPKCdsSeCcfGHBkL8Q9sR88uYf3eZUJ0PbxYYQxCK
+	dqa/fxQ36JgRQ5OvzC8Ri5LOH+vDaQw6RX5VauaGM6C+Ygiu5uJ81TuvM9V3s06pGtE96WoZ1TH
+	Vf4gmUOCvG5UmFA/kFXzKzOGcBvraLJaK6hTCeKzUMiI653vu8/c2UBNxHqM/oPs8WXh3DaqT3b
+	dybhMDOpWYxNY58TUj+BlT67IMmvjtuTJil8yfaVbTpc8PuqeKeF3BIJrZmFjbYS9qywXiiej62
+	nEkz9IakoiojHAKzSFARQgCE6U2XMVMTI0D/XXBQvqMkHsoG0MxTwoj8Z2Q==
+X-Google-Smtp-Source: AGHT+IEZMrFSL2BRRPxtTOKjAWDW7xdTVpOSqOm+sRqPhEGgZKYSOVPXEdh1+K0ZhOlHemb5x0jKfg==
+X-Received: by 2002:a05:620a:170f:b0:812:afec:d5b8 with SMTP id af79cd13be357-8311186d1f5mr581762485a.52.1758202292862;
+        Thu, 18 Sep 2025 06:31:32 -0700 (PDT)
+Received: from ?IPv6:2606:6d00:10:aee0::5ac? ([2606:6d00:10:aee0::5ac])
+        by smtp.gmail.com with ESMTPSA id d75a77b69052e-4bda8998eafsm14022101cf.31.2025.09.18.06.31.31
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 18 Sep 2025 06:31:32 -0700 (PDT)
+Message-ID: <3a9f613bfcc560281d7287ca2e411dadcac745b6.camel@ndufresne.ca>
+Subject: Re: [PATCH v2 00/12] media: rkvdec: Add support for VDPU381 and
+ VDPU383
+From: Nicolas Dufresne <nicolas@ndufresne.ca>
+To: Diederik de Haas <didi.debian@cknow.org>, Detlev Casanova
+	 <detlev.casanova@collabora.com>, linux-kernel@vger.kernel.org
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner
+ <heiko@sntech.de>, 	linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, 	linux-arm-kernel@lists.infradead.org,
+ kernel@collabora.com
+Date: Thu, 18 Sep 2025 09:31:30 -0400
+In-Reply-To: <DCV98UFRGHAS.2DGZOEOVN9WNX@cknow.org>
+References: <20250808200340.156393-1-detlev.casanova@collabora.com>
+	 <DCV98UFRGHAS.2DGZOEOVN9WNX@cknow.org>
+User-Agent: Evolution 3.56.2 (3.56.2-2.fc42) 
 MIME-Version: 1.0
-From: Andrea Daoud <andreadaoud6@gmail.com>
-Date: Thu, 18 Sep 2025 20:58:33 +0800
-X-Gm-Features: AS18NWCEXBGAyDTuAdYfLyOIr8P8xtqgcUaqAsI0KK0ysqpeO0oKN9Ycaxuqg4o
-Message-ID: <CAOprWosSvBmORh9NKk-uxoWZpD6zdnF=dODS-uxVnTDjmofL6g@mail.gmail.com>
-Subject: Possible race condition of the rockchip_canfd driver
-To: Marc Kleine-Budde <mkl@pengutronix.de>
-Cc: Heiko Stuebner <heiko@sntech.de>, Elaine Zhang <zhangqing@rock-chips.com>, kernel@pengutronix.de, 
-	linux-can@vger.kernel.org, netdev@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250918_055847_852916_F2BAA033 
-X-CRM114-Status: UNSURE (   9.81  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250918_063135_371571_94A2C1C3 
+X-CRM114-Status: GOOD (  24.60  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,38 +98,105 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============7639121304984396569=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Marc,
 
-I'm using the rockchip_canfd driver on an RK3568. When under high bus
-load, I get
-the following logs [1] in rkcanfd_tx_tail_is_eff, and the CAN bus is unable to
-communicate properly under this condition. The exact cause is currently not
-entirely clear, and it's not reliably reproducible.
+--===============7639121304984396569==
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-ka8JQHJLRBiB88+7XTFU"
 
-In the logs we can spot some strange points:
 
-1. Line 24, tx_head == tx_tail. This should have been rejected by the if
-(!rkcanfd_get_tx_pending) clause.
+--=-ka8JQHJLRBiB88+7XTFU
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-2. Line 26, the last bit of priv->tx_tail (0x0185dbb3) is 1. This means that the
-tx_tail should be 1, because rkcanfd_get_tx_tail is essentially mod the
-priv->tx_tail by two. But the printed tx_tail is 0.
+Hi,
 
-I believe these problems could mean that the code is suffering from some race
-condition. It seems that, in the whole IRQ processing chain of the driver,
-there's no lock protection. Maybe some IRQ happens within the execution of
-rkcanfd_tx_tail_is_eff, and touches the state of the tx_head and tx_tail?
+Le mercredi 17 septembre 2025 =C3=A0 19:34 +0200, Diederik de Haas a =C3=A9=
+crit=C2=A0:
+> Hi Detlev,
+>=20
+> On Fri Aug 8, 2025 at 10:03 PM CEST, Detlev Casanova wrote:
+> > These variants are found respectively in the RK3588 and RK3576 SoCs.
+> > This patch only adds support for H264 and H265 in both variants.
+>=20
+> I tested this on my Rock 5B (rk3588) with (ffmpeg and) mpv on Debian
+> Forky with sway and I was quite impressed with the results :-)
+>=20
+> In my earlier testing I found that the classic BBB video made for a
+> really good test video and it played REALLY well. The 1080p version in
+> both x264 and 8-bit x265 played without frame drops, although when
+> pressing 'I' to show video info over the video it dropped some frames.
+> But that never resulted in any visible artifacts.
+> On the 2160p version I did see quite a number of dropped frames, but
+> didn't notice any visual artifacts. Maybe that it got displayed on a
+> 1080p monitor had something to do with it?
 
-Could you please have a look at the code, and check if some locking is needed?
+Sounds like we have "correctness" with ok performance, so that is enough fo=
+r me
+to consider the patches. There is few things that are not implemented that =
+could
+explain lower performance compare to the downstream stuff, such as the lack=
+ of
+AFBC. It will hopefully come later, giving nice boost when doing GPU stream=
+ing.
 
-[1]: https://pastebin.com/R7uuEKEz
+>=20
+> 10-bit encoded x265 files (still) resulted in a completely blue output,
+> but I have strong reasons to believe that's due to 'missing pieces' (ie
+> NV15 support) in the rest of the display pipeline.
+
+Its still quite early days for NV15 (and its derivatives) upstream of
+everything, so I would not block on that. It passes the tests when we read =
+back
+the pixels from CPU I believe.
+
+>=20
+> The displayed video seemed sharper and better then in my other tests.
+> I thought I did see an artifact around 5:50 when a big rock almost fell
+> on the little animal. Looking further, it appears to be an artifact in
+> the original video :-O (I saw it also on my AMD GPU on my amd64 system
+> and also when using software decoding).
+> The fact I only noticed it when testing this patch set is saying a lot
+> ... in a positive way! So I'm happy to provide my
+
+That's it, your video watching experience is now ruined for the rest of you=
+r
+life :-D
+
+>=20
+> Tested-by: Diederik de Haas <didi.debian@cknow.org>=C2=A0 # Rock 5B
+
+thanks a lot for testing,
+Nicolas
+
+--=-ka8JQHJLRBiB88+7XTFU
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaMwJsgAKCRDZQZRRKWBy
+9IXzAQDaymJ1abHUHsMNbl/WYGVN2REm08PxhqTaHUsWwxU6ywEAy2qLFg4QWHSc
+KidAMEhUNpEK1hwZcicsIl92zBbgPgY=
+=H3qI
+-----END PGP SIGNATURE-----
+
+--=-ka8JQHJLRBiB88+7XTFU--
+
+
+--===============7639121304984396569==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============7639121304984396569==--
+
