@@ -4,67 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB7F0CAC59A
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Sep 2025 22:30:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C99DBCAC59A
+	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Sep 2025 04:54:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Date:
-	Message-Id:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NksLySLI68tO3rmCgwlxKa1PzVAbj9deN6U13XGDs2g=; b=b2uJWPV+ls0Ivl
-	LvHY06BUT9SgPvpqFsQegwbUZD8+1S0sxENFf5Ek1bn2nQ0ef04l9XkoXJGd0yJBaZ7pBpBvH9iub
-	kcSor7q/tmN+ySqn2RI+4Wq0sTsBUUeu9x89I/tjPwOhJiYdtxgqVgpk38UAbis4OfZf3MUrcfnSM
-	7dEc8EX69eUPA4Q0RxRxFo8+oWTwyzHNpJzHqH3BXoFq/M2XhNLxsRDlHh190VMS05DPnO0guf44K
-	xt8ODBhE81HPikYMBZIxxmnDMbpgT1c3gMHLgJghZ7nbK1u5vPK8SZFN6Vh4YarRhzXYWRzZLSdgf
-	++Kuj6kECz/tiKuHekqA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
+	Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=x2Z9+Pa9J5VIxXITWcorNrjE+1ENIeceSMhc5ZE30vo=; b=q6ZSA/CUcVvOkhNWuruX7b5KLX
+	f/62IfQj0AINVJQrSnJlfg5yPD7urd/CcGaSj6ZSrRq09/qzZwrZ1vAbwUa2NYsAmAS6ojn3Ab8s5
+	CtnJ9Zuz8SNAwnFUdEtzEd3Q25UcXxz4ZgoimbQki1/kxBVTD2Lbi1kC60f1VPwUEx7mvqN0NopIx
+	1DQcBFyq47vTov6Xv/4XoJUq8eyphu+jmCaOK4UP2kCKusfmmghAOW+gRHRgZMOEnepvkysDM6ZvA
+	5VNMmddIqLumbNXU38Z8dcE/LLBkt+xsa7MGtr12XIVhA+MYw8Gn0stG+W2BlG7Ev22bLYHP2FU+r
+	IHX8ATJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uz0fC-0000000FGKn-0tGr;
-	Wed, 17 Sep 2025 22:30:10 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1uz6en-0000000GFKp-3fev;
+	Thu, 18 Sep 2025 04:54:09 +0000
+Received: from smtpbg154.qq.com ([15.184.224.54])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uz0f9-0000000FGIo-178S;
-	Wed, 17 Sep 2025 22:30:08 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id E04374050A;
-	Wed, 17 Sep 2025 22:30:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BE635C4CEE7;
-	Wed, 17 Sep 2025 22:30:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1758148206;
-	bh=s76GbDrYFwwZwSum2VWjLTNSOLDqXR0ee9PKdLqdIN4=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=XTF+07cY9h6ulIkYEmSAadUHSirIAkCR8PdSvFN1oItDmlNlxKzY+kznsK77kbpFE
-	 BN1YJFtQ6eGSftAWvNzyYAEnBRlE0bEMhx91x/tm5D6MfP72y7vPB0B/M49qZrgSmX
-	 XOVTqEYu5g7KbyvgnV1JbFjn2WVl8IqNrgIAqYSuN6Firz9MpGdPKhwbB42bik2GTM
-	 jsch48DbkuV4HnJeV4OtZuIE2LgVxFI+D7+HI0olM7xXbyjkGeQst1hhMqTvs9LCH7
-	 kGlq57ypU2AErDcAWg2ta4F74R6tI1v8bSCS050Vne2FjYx8PXe9LeTETfj8iU6WUA
-	 DqpLpcLGV++kg==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 70CCB39D0C28;
-	Wed, 17 Sep 2025 22:30:08 +0000 (UTC)
+	id 1uz6ej-0000000GFJ9-3erC;
+	Thu, 18 Sep 2025 04:54:07 +0000
+X-QQ-mid: zesmtpip2t1758171201td36bd396
+X-QQ-Originating-IP: ldqFtcIMZ+EgBaSl1BCRznrhOpJNPLuubIRCzJEENoI=
+Received: from [IPV6:240f:10b:7440:1:d0ed:66b8 ( [localhost])
+	by bizesmtp.qq.com (ESMTP) with 
+	id ; Thu, 18 Sep 2025 12:53:16 +0800 (CST)
+X-QQ-SSF: 0000000000000000000000000000000
+X-QQ-GoodBg: 0
+X-BIZMAIL-ID: 16889541168818514109
+Message-ID: <FBB5B30DE8FEABD7+59ee6f48-2ad1-45dd-8cf1-8b58a03513a9@radxa.com>
+Date: Thu, 18 Sep 2025 13:53:15 +0900
 MIME-Version: 1.0
-Subject: Re: [PATCH net-next] Revert "net: ethernet: stmmac: dwmac-rk: Make
- the
- clk_phy could be used for external phy"
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <175814820725.2170568.16324588910347581106.git-patchwork-notify@kernel.org>
-Date: Wed, 17 Sep 2025 22:30:07 +0000
-References: <0A3F1D1604FEE424+20250916012628.1819-1-kernel@airkyi.com>
-In-Reply-To: <0A3F1D1604FEE424+20250916012628.1819-1-kernel@airkyi.com>
-To: Chaoyi Chen <kernel@airkyi.com>
-Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, mcoquelin.stm32@gmail.com,
- alexandre.torgue@foss.st.com, rmk+kernel@armlinux.org.uk, jonas@kwiboo.se,
- david.wu@rock-chips.com, sebastian.reichel@collabora.com, ziyao@disroot.org,
- netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, chaoyi.chen@rock-chips.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/2] arm64: dts: rockchip: correct uart mux for Radxa ZERO
+ 3
+To: Ed Wildgoose <lists@wildgooses.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20250917114932.25994-1-lists@wildgooses.com>
+ <20250917114932.25994-2-lists@wildgooses.com>
+Content-Language: en-US
+From: FUKAUMI Naoki <naoki@radxa.com>
+In-Reply-To: <20250917114932.25994-2-lists@wildgooses.com>
+X-QQ-SENDSIZE: 520
+Feedback-ID: zesmtpip:radxa.com:qybglogicsvrgz:qybglogicsvrgz8a-1
+X-QQ-XMAILINFO: OfaQ+Y0DiXSPHOPAZx8dtXZUGvx+pCqiXxJh/52cnVVTQVTaU5vvBQHe
+	TPSwle0VT3U0z1kOOqGviMfl0yEVBpkH5P6RFvZxalcal+KCxia6mF7MTxaooFymIF+iz04
+	/6JZYbthd2d0B6b4phnoGD5frNUreKsKGXoZfPdx9wRWg+mCDqL0U06uK4DxXbDBgWLL15k
+	FBXh2qgEqZXXEXkvsJvh2IkfzQGDYUIQcnZPFm7xsTWep9Eg8A90IiTd6GK8giA2FKE7gkx
+	AAeYd20mJ5GCVjcrcts6YuQJ2oxcyoI0xf6I2obxCFl9g0pFq//IA9+aHLybDQackWVbYOB
+	QTQT0SxUiNJ4oyPpncqN4fwhX1gLTflwTqjGhD2reaxFlZCBM1Ox7/oaIetpAOiZufT/ecE
+	D0fKxm4QrUqu4LyH93ttGX2b4cjun2+q1l6mYwMNFN+iH9rVoRoSAQFSgJV3w0Ivp3Oyi8L
+	DmpI95qLa1Dp8dNPeChwiwmJiiENCAczav2It3LEDw8Y93GGMQDAyeGtR5+u27MrhcFIqNR
+	v0moO0nw5YJbZxepfT7qs4Txop90FhsW2mGxLflSSVaX59WrMj0qDlPiL65IvTSXnP34EY3
+	W4mI+moudhoo7jabiIPCQm96rAdqxgzlI/29y1QSWokPMwuHwZp8UPAr4m/SqlnBCPA/4xm
+	nHkmCY+PqJiS+D9tMFSc6o+Zw/TQ8+QBA/Wta3G4XVi6MHqDW2VSjzc8HbApu8gEPQW/NIW
+	+ykdvrQ7ZJ71qIdRaJzht1hks2f+pd6cgJn15bw0JWKYKvZUXjXR/LYZCnA+pM3si6Gz5aZ
+	oRJc5wW9q54SGtvzzhRmvk7giQdXgrfEASo7STHFrtVEqeftbeyjei9fEt7qcI11LYN2Xyj
+	IkHG10wr1oVqYN9tP7HMWoBQ+WGsfjKsB1F0AM8fAph1rNyNJ7lQ8nhbQG+YjQhzizSgWHT
+	n2Mq/TLhooILZ3ebF1RJ/6R/x4UqgEOGC0N0NSHQNHGAu65Uxm/TYOhzvKUJGdk/zgxSyof
+	dZ6gX47GXjDyf/7RPKesSmAu65Q20=
+X-QQ-XMRINFO: Mp0Kj//9VHAxr69bL5MkOOs=
+X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250917_153007_326766_CAA00AE9 
-X-CRM114-Status: UNSURE (   9.06  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250917_215406_609759_B4487AD7 
+X-CRM114-Status: GOOD (  17.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,35 +84,81 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello:
+Hi Ed,
 
-This patch was applied to netdev/net-next.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
+Thank you very much for your work.
 
-On Tue, 16 Sep 2025 09:26:28 +0800 you wrote:
-> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+On 9/17/25 20:49, Ed Wildgoose wrote:
+> The rk3566 has multiplexed pins and the uarts can be moved to a choice
+> of 2 pin groups. The default rk356x-base.dtsi appears to default to mux0
+> for all uarts, however, specific hardware might choose to implement
+> alternatives
 > 
-> This reverts commit da114122b83149d1f1db0586b1d67947b651aa20.
+> The Radxa zero 3 shows that is uses M1 for uarts:
+> - uart4
+> - uart5
+> - uart9
 > 
-> As discussed, the PHY clock should be managed by PHY driver instead
-> of other driver like dwmac-rk.
+> These aren't normally enabled, but we should at least correct the
+> default pinctrl definitions. Without these changes there will be
+> conflicts with mmc0/mmc1, leading to the SD or eMMC going missing.
+
+Sorry, but why do we need these definitions for disabled nodes?
+
+Or why don't we do similar definitions for nodes other than uart?
+For example, PWM12, I2S3, and SPI3 also use M1. Are they not related to 
+SD/eMMC and therefore don't need to be defined?
+
+If users want to use UARTs on pin headers, they will refer to the 
+correct documentation[1] to determine which pins are UARTs and will of 
+course write the correct pinctrl definition.
+
+[1] 
+https://docs.radxa.com/en/zero/zero3/hardware-design/hardware-interface#gpio-interface
+
+Best regards,
+
+--
+FUKAUMI Naoki
+Radxa Computer (Shenzhen) Co., Ltd.
+
 > 
-> [...]
-
-Here is the summary with links:
-  - [net-next] Revert "net: ethernet: stmmac: dwmac-rk: Make the clk_phy could be used for external phy"
-    https://git.kernel.org/netdev/net-next/c/a09655dde754
-
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+> Signed-off-by: Ed Wildgoose <lists@wildgooses.com>
+> ---
+>   .../boot/dts/rockchip/rk3566-radxa-zero-3.dtsi    | 15 +++++++++++++++
+>   1 file changed, 15 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3.dtsi
+> index 1ee5d96a4..41b3c4403 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3.dtsi
+> @@ -492,6 +492,21 @@ &uart2 {
+>   	status = "okay";
+>   };
+>   
+> +&uart4{
+> +    pinctrl-names = "default";
+> +    pinctrl-0 = <&uart4m1_xfer>;
+> +};
+> +
+> +&uart5 {
+> +    pinctrl-names = "default";
+> +    pinctrl-0 = <&uart5m1_xfer>;
+> +};
+> +
+> +&uart9 {
+> +    pinctrl-names = "default";
+> +    pinctrl-0 = <&uart9m1_xfer>;
+> +};
+> +
+>   &usb_host0_xhci {
+>   	status = "okay";
+>   };
 
 
 _______________________________________________
