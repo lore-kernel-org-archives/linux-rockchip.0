@@ -4,58 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6845CCAC59A
-	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Sep 2025 07:00:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 528EDCAC59A
+	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Sep 2025 09:33:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ek5tO1TGawGk4urZihgVm7unmGnmrpu27xm9xH3IXlI=; b=SDECnT8OgS2PMG
-	KHcQAUlDTjNRigiaonl+8/Z9GelPSwdvyiPiPWqi4ncRy+BCNmRcIS0vbFGGRgVtGUN3TyoYmAiBO
-	Kt+wrTFqDwpbDI4FTMACoH6put1I1z99JlUZRgxD92cimjiP+L1JZrzb+XjfxrHVRmcyYyOEAmUsP
-	fIilBdAvOlRsSKIj1WgMzM6yetvEIUg4EKajq1ai+b9ADHhimpivBxFSRE+KJdSX8aOJR8dG0Vlym
-	mVXHl4b5cUzzHTH8WWO9odPBZQumOFYxHsU6OWFh0DcVa2NtXrK55LFpcJBCL/cpn38RHioDVeo7F
-	Vg49DiQ3WDntMP+ELygQ==;
+	List-Owner; bh=B2hQ6089AUOaUdztVLgkINdazWxNxx8PZzZQGheF6Ic=; b=lvAlSS1eAijOyp
+	3H1PLVjHOqPad3I/jGbKe/aC4/rN8tIwokRGZaB2by0x2UAYdT/Ofcr2fAMMY47oOvhS0XflDMXtd
+	Bn/tHpVkzSAPNq4URuAj4jqRNa+x/I5zNrM3eGz8tZjl6Se19hd4c8AOEDfib7N17TPLvmqZKahtp
+	/uDpE0aqLSRDrpeHSZWcz1gSl8z/3DiDivP/xuV/wboqKSDCi2T2u0HXh4Xbx5TnZdI7LD1hgVjvr
+	/RyK7OH9TnjTncDkXU1DPZ/c4JLzYK8nMl/qVUOH2EEfM1aAfKv4vq6ej54S/jhIqwwn3KvElGcX3
+	z2nnxv9wD4bnbkNXXJyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uz8d0-0000000GULx-0gwF;
-	Thu, 18 Sep 2025 07:00:26 +0000
-Received: from mail-m155101.qiye.163.com ([101.71.155.101])
+	id 1uzB0g-0000000GtAM-3pqE;
+	Thu, 18 Sep 2025 09:33:02 +0000
+Received: from mail1.nippynetworks.com ([91.220.24.129])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uz8cx-0000000GUJp-1m0F;
-	Thu, 18 Sep 2025 07:00:24 +0000
-Received: from localhost.localdomain (unknown [119.122.213.2])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 233a88c2c;
-	Thu, 18 Sep 2025 15:00:19 +0800 (GMT+08:00)
-From: Chukun Pan <amadeus@jmu.edu.cn>
-To: amadeus@jmu.edu.cn
-Cc: conor+dt@kernel.org,
+	id 1uzB0d-0000000Gt8Y-3ohq;
+	Thu, 18 Sep 2025 09:33:01 +0000
+Received: from grunt.nippynetworks.lan (unknown [94.228.36.46])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature ECDSA (P-256) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: lists@wildgooses.com)
+	by mail1.nippynetworks.com (Postfix) with ESMTPSA id 4cS9RF14Z1zkd2v;
+	Thu, 18 Sep 2025 10:32:57 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wildgooses.com;
+	s=dkim; t=1758187977;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=6tc1vqbLWYKdxdC2HbYUBoMGCTCbsrF5FMeM/L5RcKc=;
+	b=Ic5GZJM5984XdM2DRZFc3j9G/IxFWtBsnoLYqs89Tak9cL/KN1MavtLM3A9vSSdokNn2bc
+	EhocY5Yr/iwhY3hyHSu7h4qUjuN1l5WiLHkvLbPEhs9OaB3+u1gpLLdgwIwr/8iqElCciR
+	bJlmqVCvzqPYiVtgI0m+wVqQ1BbU8GU=
+From: Ed Wildgoose <lists@wildgooses.com>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Ed Wildgoose <lists@wildgooses.com>,
 	devicetree@vger.kernel.org,
-	heiko@sntech.de,
-	krzk+dt@kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	naoki@radxa.com
-Subject: Re: [PATCH v3 0/3] arm64: dts: rockchip: Update Radxa E52C support
-Date: Thu, 18 Sep 2025 15:00:05 +0800
-Message-Id: <20250918070005.478674-1-amadeus@jmu.edu.cn>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20250901100027.164594-1-amadeus@jmu.edu.cn>
-References: <20250901100027.164594-1-amadeus@jmu.edu.cn>
+	linux-kernel@vger.kernel.org
+Subject: [PATCH 0/2] arm64: dts: rockchip: fix dma and pinctrl defs v2
+Date: Thu, 18 Sep 2025 09:32:44 +0000
+Message-ID: <20250918093246.15623-1-lists@wildgooses.com>
+X-Mailer: git-send-email 2.49.0
+In-Reply-To: <20250917114932.25994-1-lists@wildgooses.com>
+References: <20250917114932.25994-1-lists@wildgooses.com>
 MIME-Version: 1.0
-X-HM-Tid: 0a995b9fbf2003a2kunm899a37c674489
-X-HM-MType: 10
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkaSxpNVh4eGEJMThpMTktNHlYeHw5VEwETFhoSFy
-	QUDg9ZV1kYEgtZQVlKSkJVSklJVUlKSFVJWVdZFhoPEhUdFFlBWU9LSFVKS0lPT09LVUpLS1VLWQ
-	Y+
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250918_000023_625938_F471550A 
-X-CRM114-Status: UNSURE (   5.00  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250918_023300_145145_2DD8C38C 
+X-CRM114-Status: GOOD (  12.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,15 +79,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Based on feedback, I reworked these patches. I've re-presented both as
+I realise that one had invalid formatting (spaces vs tabs) and I've
+moved the dma-names definition into the same board level dtsi. At this
+point it seems reasonable to also squash the two patches, but feedback
+appreciated?
 
-> Changed from v3:
->   Add vcc_3v3_pmu label to vcc_3v3_s3
+The default pinctrl definitions for the Radxa Zero 3W don't match the
+datasheet. Possibly few people enable extra UARTs and hence it wasn't
+noticed? I needed all 5 UARTs for a project and the first patch corrects
+the pinctrl defs. Without this patch, enabling the extra UARTs causes
+issues such as the MMC devices disappearing, due to collisions.
 
-Are there any issues with this series of patches?
+Second patch adds a dma-names property, which appears to be a
+pre-requisite for enabling DMA on the UARTs. I've applied this to the
+board level dts as feedback suggested there could be unintended problems
+if enabled across the complete rockchip dtsi.
 
-Thanks,
-Chukun
+It's tested on my Zero 3W board and appears to function correctly and
+DMA is reported as enabled.
+
+Ed Wildgoose (2):
+  arm64: dts: rockchip: correct uart mux for Radxa ZERO 3
+  rockchip: dts: Enable UART DMA by adding default dma-names property
+
+ .../dts/rockchip/rk3566-radxa-zero-3.dtsi     | 23 +++++++++++++++++++
+ 1 file changed, 23 insertions(+)
+
+-- 
+2.49.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
