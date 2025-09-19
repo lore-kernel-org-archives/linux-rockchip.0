@@ -4,60 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D555ACAC592
-	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Sep 2025 10:05:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6589CAC59A
+	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Sep 2025 10:17:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BMmJ+dwqrhLrxeJcL0gUstddUrOP/lzpsjittYGi/1k=; b=QYrSBbDQdvi8eq
-	g8ASqZH9PPXJEpMa29sZ/nG7wh5eRsP8ueg/qXirAF6Kbex+JoXroS1QagPrZNIvWgW4yB34yeujZ
-	Fvi+x1bUz+1r/9wvIZixsFZczj7d6QbkBpyim+hVKq6GQbbM82/D1epwtXDqvfEGeNnF6UdD2z9PJ
-	HGSkiMdcX153S7wKkmiJNYJogZ4oc1jfoQy/+NXdfsIkTChgH57g5rWTYzv8i32rJNwwoml0ZUO0N
-	6g8xTLHRsC3GlLLGpXNyP7J7GxNC86Hmae1HwqSfi8sMvYB69sGcPhSK3u3SmYNZR2JN5THCc9jbu
-	Mq4uZkoAS/p+Lzg1TiaQ==;
+	List-Owner; bh=XKcVbp36Fp+IDjgnoGZF4H9kuMwwDzjPWdegCiU60XU=; b=FGiE9+nubgR7WL
+	FN6E9UQag6NL8yRtraaleWgOt5v/FnyOSR8hFASC4ENUj+1CJrcjFnG9osCJCMRgjVIjFHXpRqdmI
+	NX1j/7N93Mxq2L2nB/ndqECZ+RWAhHobZwkWLmcfpivAdPkqcMgs1Kn92QE6Ev6/sRwwzLlooyJXt
+	8qYB3nHCrhSWhLmf8aA0poGh1f7A8lWPwGaw/r84iwilSLkr38JMnR8/B3k7UWfqqEW+FYf9thH1G
+	4Suc3/z6UFBz92bhossYFSbndCX4B55yim18Y2cF6qmtgZkr8uNljXSVSZbGFr+nYdpnS6NErCNzB
+	koScmx9+3DNpcQhFdI4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzXzW-00000002UnA-2TMw;
-	Fri, 19 Sep 2025 10:05:22 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1uzYBM-00000002WOY-1kVw;
+	Fri, 19 Sep 2025 10:17:36 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzXzT-00000002UmZ-3qEn;
-	Fri, 19 Sep 2025 10:05:21 +0000
-Received: from mail.ideasonboard.com (unknown [IPv6:2401:4900:1c30:4816:952:3054:81b6:1a3a])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 7DFC3819;
-	Fri, 19 Sep 2025 11:56:39 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1758275800;
-	bh=tjf6dvEjoK7+zf/xaHgIHnkhI9DeWptIzUTAWkRt7Js=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=KRRekGJa4k9DMQrl4b304TD1YmxTii5tuyEEDP1mo71neQ5VvEAwEXvOaRVg82ro4
-	 MpgLfeAg5nYPaKJyLgjVS0g/p0gbu6fYC75ijkULzPBXZXvmCrkv5W8imNjrx3thZr
-	 XDiw9/trLAOQ83kKM9SHPTNyGlj2XMwemI/8KATA=
-From: Jai Luthra <jai.luthra@ideasonboard.com>
-Date: Fri, 19 Sep 2025 15:26:02 +0530
-Subject: [PATCH v2 10/10] media: rkisp1: Calculate format information on
- demand
+	id 1uzYBJ-00000002WNm-2ob5;
+	Fri, 19 Sep 2025 10:17:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:To:From:Reply-To:Cc;
+	bh=AaMJMX/umNULrcGEgKJlRZR7C4PD7YTrpkq40L4KBHc=; b=m97FghaklI6Mh+XLjeYg/ACj+Y
+	59uf6lQkpa4JFaU5j+EH/ZzQjNRhgbdhVreCHInAydmdAgSlJJfW4kKoRNHVYOpbp5FcNigPqgTfA
+	pCI/hl18DgxzPsWSlB3JUmD3PbKulXmf3dAMX/xHCUS+RryKRAhoSqjx+QH3ff/m9o8VwvuGUP+YH
+	nJUNBn2H0lkhvtS74t31UFhEaC0yV4bX36LO9x9qGeyvZBPNpRXTXYA/9+p22GGdbcQJo6b8nIs+Y
+	ADYHuy5ccq4UckYxaBuQCjxDGCm49OzOzGTU6NIqvxIcWEy4AuZYKrI6hjlVkQqsNWSb7hr3JRpd9
+	ZeV8SDlw==;
+Received: from i53875b0f.versanet.de ([83.135.91.15] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1uzYBG-0007nN-9m; Fri, 19 Sep 2025 12:17:30 +0200
+From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Ed W <lists@wildgooses.com>,
+ FUKAUMI Naoki <naoki@radxa.com>
+Subject: Re: [PATCH 1/2] arm64: dts: rockchip: correct uart mux for Radxa ZERO3
+Date: Fri, 19 Sep 2025 12:17:29 +0200
+Message-ID: <1971910.g5d078U9FE@diego>
+In-Reply-To: <0DB47BC84E90B0E6+694b1274-4826-4ec1-9aa2-ca8aa790f61a@radxa.com>
+References: <20250917114932.25994-1-lists@wildgooses.com> <2325560.3ZeAukHxDK@diego>
+ <0DB47BC84E90B0E6+694b1274-4826-4ec1-9aa2-ca8aa790f61a@radxa.com>
 MIME-Version: 1.0
-Message-Id: <20250919-vdev-state-v2-10-b2c42426965c@ideasonboard.com>
-References: <20250919-vdev-state-v2-0-b2c42426965c@ideasonboard.com>
-In-Reply-To: <20250919-vdev-state-v2-0-b2c42426965c@ideasonboard.com>
-To: Hans Verkuil <hverkuil@kernel.org>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Sakari Ailus <sakari.ailus@linux.intel.com>, 
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
- Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, 
- Jacopo Mondi <jacopo.mondi@ideasonboard.com>, linux-media@vger.kernel.org
-Cc: Jai Luthra <jai.luthra@ideasonboard.com>, 
- Dafna Hirschfeld <dafna@fastmail.com>, Heiko Stuebner <heiko@sntech.de>, 
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- linux-kernel@vger.kernel.org
-X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250919_030520_234065_0EB84C56 
-X-CRM114-Status: GOOD (  26.58  )
+X-CRM114-CacheID: sfid-20250919_031733_739782_4DA703D0 
+X-CRM114-Status: GOOD (  32.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,422 +67,62 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Instead of storing format configuration and information as explicit
-state in the driver structure, calculate it on demand when needed using
-the format stored in the active video device state.
-
-This change removes the pix member from rkisp1_capture structure and
-refactors the code to look up format configuration and v4l2_format_info
-at the point of use.
-
-Additionally, grey format handling is moved from the next buffer setup
-path (which may be called in interrupt context) to the buffer
-initialization phase for simplicity.
-
-Signed-off-by: Jai Luthra <jai.luthra@ideasonboard.com>
----
-Cc: Dafna Hirschfeld <dafna@fastmail.com>
-Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>
-Cc: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-media@vger.kernel.org
-Cc: linux-rockchip@lists.infradead.org
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org
----
- .../platform/rockchip/rkisp1/rkisp1-capture.c      | 170 ++++++++++-----------
- .../media/platform/rockchip/rkisp1/rkisp1-common.h |   6 -
- 2 files changed, 84 insertions(+), 92 deletions(-)
-
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-index 81bf4ed8bccdb0873c910fa49b22ef72eab295eb..2399fecc94dc4bf3a82fd1ae7fe8c746d015cdd8 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-@@ -63,9 +63,12 @@ struct rkisp1_capture_fmt_cfg {
- };
- 
- struct rkisp1_capture_ops {
--	void (*config)(struct rkisp1_capture *cap);
-+	void (*config)(struct rkisp1_capture *cap,
-+		       const struct rkisp1_capture_fmt_cfg *cfg,
-+		       const struct v4l2_format_info *info);
- 	void (*stop)(struct rkisp1_capture *cap);
--	void (*enable)(struct rkisp1_capture *cap);
-+	void (*enable)(struct rkisp1_capture *cap,
-+		       const struct v4l2_format_info *info);
- 	void (*disable)(struct rkisp1_capture *cap);
- 	void (*set_data_path)(struct rkisp1_capture *cap);
- 	bool (*is_stopped)(struct rkisp1_capture *cap);
-@@ -480,12 +483,30 @@ static void rkisp1_irq_frame_end_enable(struct rkisp1_capture *cap)
- 	rkisp1_write(cap->rkisp1, RKISP1_CIF_MI_IMSC, mi_imsc);
- }
- 
--static void rkisp1_mp_config(struct rkisp1_capture *cap)
-+static const struct rkisp1_capture_fmt_cfg *
-+rkisp1_find_fmt_cfg(const struct rkisp1_capture *cap, const u32 pixelfmt)
-+{
-+	bool yc_swap_support = rkisp1_has_feature(cap->rkisp1, MAIN_STRIDE);
-+	unsigned int i;
-+
-+	for (i = 0; i < cap->config->fmt_size; i++) {
-+		const struct rkisp1_capture_fmt_cfg *fmt = &cap->config->fmts[i];
-+
-+		if (fmt->fourcc == pixelfmt &&
-+		    (!fmt->yc_swap || yc_swap_support))
-+			return &cap->config->fmts[i];
-+	}
-+	return NULL;
-+}
-+
-+static void rkisp1_mp_config(struct rkisp1_capture *cap,
-+			     const struct rkisp1_capture_fmt_cfg *cfg,
-+			     const struct v4l2_format_info *info)
- {
- 	const struct v4l2_format *format =
- 		video_device_state_get_fmt(cap->vnode.vdev.state);
- 	const struct v4l2_pix_format_mplane *pixm = &format->fmt.pix_mp;
--	u32 stride = pixm->plane_fmt[0].bytesperline / cap->pix.info->bpp[0];
-+	u32 stride = pixm->plane_fmt[0].bytesperline / info->bpp[0];
- 	struct rkisp1_device *rkisp1 = cap->rkisp1;
- 	u32 reg;
- 
-@@ -507,9 +528,9 @@ static void rkisp1_mp_config(struct rkisp1_capture *cap)
- 	rkisp1_irq_frame_end_enable(cap);
- 
- 	/* set uv swapping for semiplanar formats */
--	if (cap->pix.info->comp_planes == 2) {
-+	if (info->comp_planes == 2) {
- 		reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
--		if (cap->pix.cfg->uv_swap)
-+		if (cfg->uv_swap)
- 			reg |= RKISP1_CIF_MI_XTD_FMT_CTRL_MP_CB_CR_SWAP;
- 		else
- 			reg &= ~RKISP1_CIF_MI_XTD_FMT_CTRL_MP_CB_CR_SWAP;
-@@ -523,7 +544,7 @@ static void rkisp1_mp_config(struct rkisp1_capture *cap)
- 	 */
- 	if (rkisp1_has_feature(rkisp1, MAIN_STRIDE)) {
- 		reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_OUTPUT_ALIGN_FORMAT);
--		if (cap->pix.cfg->yc_swap || cap->pix.cfg->byte_swap)
-+		if (cfg->yc_swap || cfg->byte_swap)
- 			reg |= RKISP1_CIF_OUTPUT_ALIGN_FORMAT_MP_BYTE_SWAP_BYTES;
- 		else
- 			reg &= ~RKISP1_CIF_OUTPUT_ALIGN_FORMAT_MP_BYTE_SWAP_BYTES;
-@@ -531,15 +552,14 @@ static void rkisp1_mp_config(struct rkisp1_capture *cap)
- 		reg |= RKISP1_CIF_OUTPUT_ALIGN_FORMAT_MP_LSB_ALIGNMENT;
- 		rkisp1_write(rkisp1, RKISP1_CIF_MI_OUTPUT_ALIGN_FORMAT, reg);
- 
--		rkisp1_write(rkisp1, RKISP1_CIF_MI_INIT,
--			     cap->pix.cfg->output_format);
-+		rkisp1_write(rkisp1, RKISP1_CIF_MI_INIT, cfg->output_format);
- 	}
- 
- 	rkisp1_mi_config_ctrl(cap);
- 
- 	reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_CTRL);
- 	reg &= ~RKISP1_MI_CTRL_MP_FMT_MASK;
--	reg |= cap->pix.cfg->write_format;
-+	reg |= cfg->write_format;
- 	rkisp1_write(rkisp1, RKISP1_CIF_MI_CTRL, reg);
- 
- 	reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_CTRL);
-@@ -547,12 +567,14 @@ static void rkisp1_mp_config(struct rkisp1_capture *cap)
- 	rkisp1_write(rkisp1, RKISP1_CIF_MI_CTRL, reg);
- }
- 
--static void rkisp1_sp_config(struct rkisp1_capture *cap)
-+static void rkisp1_sp_config(struct rkisp1_capture *cap,
-+			     const struct rkisp1_capture_fmt_cfg *cfg,
-+			     const struct v4l2_format_info *info)
- {
- 	const struct v4l2_format *format =
- 		video_device_state_get_fmt(cap->vnode.vdev.state);
- 	const struct v4l2_pix_format_mplane *pixm = &format->fmt.pix_mp;
--	u32 stride = pixm->plane_fmt[0].bytesperline / cap->pix.info->bpp[0];
-+	u32 stride = pixm->plane_fmt[0].bytesperline / info->bpp[0];
- 	struct rkisp1_device *rkisp1 = cap->rkisp1;
- 	u32 mi_ctrl, reg;
- 
-@@ -572,9 +594,9 @@ static void rkisp1_sp_config(struct rkisp1_capture *cap)
- 	rkisp1_irq_frame_end_enable(cap);
- 
- 	/* set uv swapping for semiplanar formats */
--	if (cap->pix.info->comp_planes == 2) {
-+	if (info->comp_planes == 2) {
- 		reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
--		if (cap->pix.cfg->uv_swap)
-+		if (cfg->uv_swap)
- 			reg |= RKISP1_CIF_MI_XTD_FMT_CTRL_SP_CB_CR_SWAP;
- 		else
- 			reg &= ~RKISP1_CIF_MI_XTD_FMT_CTRL_SP_CB_CR_SWAP;
-@@ -588,7 +610,7 @@ static void rkisp1_sp_config(struct rkisp1_capture *cap)
- 	 */
- 	if (rkisp1_has_feature(rkisp1, MAIN_STRIDE)) {
- 		reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_OUTPUT_ALIGN_FORMAT);
--		if (cap->pix.cfg->yc_swap)
-+		if (cfg->yc_swap)
- 			reg |= RKISP1_CIF_OUTPUT_ALIGN_FORMAT_SP_BYTE_SWAP_BYTES;
- 		else
- 			reg &= ~RKISP1_CIF_OUTPUT_ALIGN_FORMAT_SP_BYTE_SWAP_BYTES;
-@@ -599,10 +621,8 @@ static void rkisp1_sp_config(struct rkisp1_capture *cap)
- 
- 	mi_ctrl = rkisp1_read(rkisp1, RKISP1_CIF_MI_CTRL);
- 	mi_ctrl &= ~RKISP1_MI_CTRL_SP_FMT_MASK;
--	mi_ctrl |= cap->pix.cfg->write_format |
--		   RKISP1_MI_CTRL_SP_INPUT_YUV422 |
--		   cap->pix.cfg->output_format |
--		   RKISP1_CIF_MI_SP_AUTOUPDATE_ENABLE;
-+	mi_ctrl |= cfg->write_format | RKISP1_MI_CTRL_SP_INPUT_YUV422 |
-+		   cfg->output_format | RKISP1_CIF_MI_SP_AUTOUPDATE_ENABLE;
- 	rkisp1_write(rkisp1, RKISP1_CIF_MI_CTRL, mi_ctrl);
- }
- 
-@@ -623,14 +643,15 @@ static void rkisp1_sp_disable(struct rkisp1_capture *cap)
- 	rkisp1_write(cap->rkisp1, RKISP1_CIF_MI_CTRL, mi_ctrl);
- }
- 
--static void rkisp1_mp_enable(struct rkisp1_capture *cap)
-+static void rkisp1_mp_enable(struct rkisp1_capture *cap,
-+			     const struct v4l2_format_info *info)
- {
- 	u32 mi_ctrl;
- 
- 	rkisp1_mp_disable(cap);
- 
- 	mi_ctrl = rkisp1_read(cap->rkisp1, RKISP1_CIF_MI_CTRL);
--	if (v4l2_is_format_bayer(cap->pix.info))
-+	if (v4l2_is_format_bayer(info))
- 		mi_ctrl |= RKISP1_CIF_MI_CTRL_RAW_ENABLE;
- 	/* YUV */
- 	else
-@@ -639,7 +660,8 @@ static void rkisp1_mp_enable(struct rkisp1_capture *cap)
- 	rkisp1_write(cap->rkisp1, RKISP1_CIF_MI_CTRL, mi_ctrl);
- }
- 
--static void rkisp1_sp_enable(struct rkisp1_capture *cap)
-+static void rkisp1_sp_enable(struct rkisp1_capture *cap,
-+			     const struct v4l2_format_info *info)
- {
- 	u32 mi_ctrl = rkisp1_read(cap->rkisp1, RKISP1_CIF_MI_CTRL);
- 
-@@ -755,26 +777,12 @@ static void rkisp1_set_next_buf(struct rkisp1_capture *cap)
- 
- 		rkisp1_write(cap->rkisp1, cap->config->mi.y_base_ad_init,
- 			     buff_addr[RKISP1_PLANE_Y] >> shift);
--		/*
--		 * In order to support grey format we capture
--		 * YUV422 planar format from the camera and
--		 * set the U and V planes to the dummy buffer
--		 */
--		if (cap->pix.cfg->fourcc == V4L2_PIX_FMT_GREY) {
--			rkisp1_write(cap->rkisp1,
--				     cap->config->mi.cb_base_ad_init,
--				     cap->buf.dummy.dma_addr >> shift);
--			rkisp1_write(cap->rkisp1,
--				     cap->config->mi.cr_base_ad_init,
--				     cap->buf.dummy.dma_addr >> shift);
--		} else {
--			rkisp1_write(cap->rkisp1,
--				     cap->config->mi.cb_base_ad_init,
--				     buff_addr[RKISP1_PLANE_CB] >> shift);
--			rkisp1_write(cap->rkisp1,
--				     cap->config->mi.cr_base_ad_init,
--				     buff_addr[RKISP1_PLANE_CR] >> shift);
--		}
-+		rkisp1_write(cap->rkisp1,
-+			     cap->config->mi.cb_base_ad_init,
-+			     buff_addr[RKISP1_PLANE_CB] >> shift);
-+		rkisp1_write(cap->rkisp1,
-+			     cap->config->mi.cr_base_ad_init,
-+			     buff_addr[RKISP1_PLANE_CR] >> shift);
- 	} else {
- 		/*
- 		 * Use the dummy space allocated by dma_alloc_coherent to
-@@ -907,6 +915,10 @@ static int rkisp1_vb2_buf_init(struct vb2_buffer *vb)
- 	const struct v4l2_format *format =
- 		video_device_state_get_fmt(cap->vnode.vdev.state);
- 	const struct v4l2_pix_format_mplane *pixm = &format->fmt.pix_mp;
-+	const struct rkisp1_capture_fmt_cfg *cfg =
-+		rkisp1_find_fmt_cfg(cap, pixm->pixelformat);
-+	const struct v4l2_format_info *info =
-+		v4l2_format_info(pixm->pixelformat);
- 	unsigned int i;
- 
- 	memset(ispbuf->buff_addr, 0, sizeof(ispbuf->buff_addr));
-@@ -927,9 +939,19 @@ static int rkisp1_vb2_buf_init(struct vb2_buffer *vb)
- 	 * uv swap can be supported for planar formats by switching
- 	 * the address of cb and cr
- 	 */
--	if (cap->pix.info->comp_planes == 3 && cap->pix.cfg->uv_swap)
-+	if (info->comp_planes == 3 && cfg->uv_swap)
- 		swap(ispbuf->buff_addr[RKISP1_PLANE_CR],
- 		     ispbuf->buff_addr[RKISP1_PLANE_CB]);
-+
-+	/*
-+	 * grey format can be supported by using dummy buffer for
-+	 * the cb and cr planes
-+	 */
-+	if (cfg->fourcc == V4L2_PIX_FMT_GREY) {
-+		ispbuf->buff_addr[RKISP1_PLANE_CB] = cap->buf.dummy.dma_addr;
-+		ispbuf->buff_addr[RKISP1_PLANE_CR] = cap->buf.dummy.dma_addr;
-+	}
-+
- 	return 0;
- }
- 
-@@ -1001,15 +1023,22 @@ static void rkisp1_cap_stream_enable(struct rkisp1_capture *cap)
- {
- 	struct rkisp1_device *rkisp1 = cap->rkisp1;
- 	struct rkisp1_capture *other = &rkisp1->capture_devs[cap->id ^ 1];
-+	const struct v4l2_format *format =
-+		video_device_state_get_fmt(cap->vnode.vdev.state);
-+	const struct v4l2_pix_format_mplane *pixm = &format->fmt.pix_mp;
-+	const struct rkisp1_capture_fmt_cfg *cfg =
-+		rkisp1_find_fmt_cfg(cap, pixm->pixelformat);
-+	const struct v4l2_format_info *info =
-+		v4l2_format_info(pixm->pixelformat);
- 	bool has_self_path = rkisp1_has_feature(rkisp1, SELF_PATH);
- 
- 	cap->ops->set_data_path(cap);
--	cap->ops->config(cap);
-+	cap->ops->config(cap, cfg, info);
- 
- 	/* Setup a buffer for the next frame */
- 	spin_lock_irq(&cap->buf.lock);
- 	rkisp1_set_next_buf(cap);
--	cap->ops->enable(cap);
-+	cap->ops->enable(cap, info);
- 
- 	/*
- 	 * It's safe to configure ACTIVE and SHADOW registers for the first
-@@ -1224,9 +1253,8 @@ static const struct vb2_ops rkisp1_vb2_ops = {
-  * IOCTLs operations
-  */
- 
--static const struct v4l2_format_info *
--rkisp1_fill_pixfmt(const struct rkisp1_capture *cap,
--		   struct v4l2_pix_format_mplane *pixm)
-+static void rkisp1_fill_pixfmt(const struct rkisp1_capture *cap,
-+			       struct v4l2_pix_format_mplane *pixm)
- {
- 	struct v4l2_plane_pix_format *plane_y = &pixm->plane_fmt[0];
- 	const struct v4l2_format_info *info;
-@@ -1273,34 +1301,13 @@ rkisp1_fill_pixfmt(const struct rkisp1_capture *cap,
- 	if (info->mem_planes == 1)
- 		for (i = 1; i < info->comp_planes; i++)
- 			plane_y->sizeimage += pixm->plane_fmt[i].sizeimage;
--
--	return info;
--}
--
--static const struct rkisp1_capture_fmt_cfg *
--rkisp1_find_fmt_cfg(const struct rkisp1_capture *cap, const u32 pixelfmt)
--{
--	bool yc_swap_support = rkisp1_has_feature(cap->rkisp1, MAIN_STRIDE);
--	unsigned int i;
--
--	for (i = 0; i < cap->config->fmt_size; i++) {
--		const struct rkisp1_capture_fmt_cfg *fmt = &cap->config->fmts[i];
--
--		if (fmt->fourcc == pixelfmt &&
--		    (!fmt->yc_swap || yc_swap_support))
--			return &cap->config->fmts[i];
--	}
--	return NULL;
- }
- 
- static void rkisp1_adj_fmt(const struct rkisp1_capture *cap,
--			   struct v4l2_pix_format_mplane *pixm,
--			   const struct rkisp1_capture_fmt_cfg **fmt_cfg,
--			   const struct v4l2_format_info **fmt_info)
-+			   struct v4l2_pix_format_mplane *pixm)
- {
- 	const struct rkisp1_capture_config *config = cap->config;
- 	const struct rkisp1_capture_fmt_cfg *fmt;
--	const struct v4l2_format_info *info;
- 	static const unsigned int max_widths[] = {
- 		RKISP1_RSZ_MP_SRC_MAX_WIDTH, RKISP1_RSZ_SP_SRC_MAX_WIDTH
- 	};
-@@ -1324,12 +1331,7 @@ static void rkisp1_adj_fmt(const struct rkisp1_capture *cap,
- 	pixm->ycbcr_enc = V4L2_YCBCR_ENC_DEFAULT;
- 	pixm->quantization = V4L2_QUANTIZATION_DEFAULT;
- 
--	info = rkisp1_fill_pixfmt(cap, pixm);
--
--	if (fmt_cfg)
--		*fmt_cfg = fmt;
--	if (fmt_info)
--		*fmt_info = info;
-+	rkisp1_fill_pixfmt(cap, pixm);
- }
- 
- static int rkisp1_adj_fmt_vid_cap_mplane(struct file *file,
-@@ -1338,17 +1340,13 @@ static int rkisp1_adj_fmt_vid_cap_mplane(struct file *file,
- {
- 	struct rkisp1_capture *cap = video_drvdata(file);
- 
--	if (state->which == VIDEO_DEVICE_STATE_ACTIVE) {
--		if (vb2_is_busy(cap->vnode.vdev.queue))
--			return -EBUSY;
--
--		rkisp1_adj_fmt(cap, &f->fmt.pix_mp, &cap->pix.cfg,
--			       &cap->pix.info);
--	} else {
--		rkisp1_adj_fmt(cap, &f->fmt.pix_mp, NULL, NULL);
--	}
-+	if (state->which == VIDEO_DEVICE_STATE_ACTIVE &&
-+	    vb2_is_busy(cap->vnode.vdev.queue))
-+		return -EBUSY;
- 
-+	rkisp1_adj_fmt(cap, &f->fmt.pix_mp);
- 	state->fmt = *f;
-+
- 	return 0;
- }
- 
-@@ -1458,7 +1456,7 @@ static int rkisp1_vdev_init_state(struct video_device_state *state)
- 	pixm->width = RKISP1_DEFAULT_WIDTH;
- 	pixm->height = RKISP1_DEFAULT_HEIGHT;
- 
--	rkisp1_adj_fmt(cap, pixm, &cap->pix.cfg, &cap->pix.info);
-+	rkisp1_adj_fmt(cap, pixm);
- 
- 	return 0;
- }
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-index 5731c4b368f8832c2b0748338cd0da2d0edf0a93..daea11c55c9937d08f06efa2fddb307a8b5d767a 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-@@ -316,8 +316,6 @@ struct rkisp1_device;
-  * rkisp1 uses shadow registers, so it needs two buffers at a time
-  * @buf.curr:	  the buffer used for current frame
-  * @buf.next:	  the buffer used for next frame
-- * @pix.cfg:	  pixel configuration
-- * @pix.info:	  a pointer to the v4l2_format_info of the pixel format
-  */
- struct rkisp1_capture {
- 	struct rkisp1_vdev_node vnode;
-@@ -336,10 +334,6 @@ struct rkisp1_capture {
- 		struct rkisp1_buffer *curr;
- 		struct rkisp1_buffer *next;
- 	} buf;
--	struct {
--		const struct rkisp1_capture_fmt_cfg *cfg;
--		const struct v4l2_format_info *info;
--	} pix;
- };
- 
- struct rkisp1_stats;
-
--- 
-2.51.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+QW0gRnJlaXRhZywgMTkuIFNlcHRlbWJlciAyMDI1LCAwMTo1Nzo1NyBNaXR0ZWxldXJvcMOkaXNj
+aGUgU29tbWVyemVpdCBzY2hyaWViIEZVS0FVTUkgTmFva2k6Cj4gSGkgSGVpa28sIEVkLAo+IAo+
+IE9uIDkvMTkvMjUgMDE6MTgsIEhlaWtvIFN0w7xibmVyIHdyb3RlOgo+ID4gQW0gRG9ubmVyc3Rh
+ZywgMTguIFNlcHRlbWJlciAyMDI1LCAxNzoyMzowNCBNaXR0ZWxldXJvcMOkaXNjaGUgU29tbWVy
+emVpdCBzY2hyaWViIEVkIFc6Cj4gPj4gT24gMTgvMDkvMjAyNSAwNTo1MywgRlVLQVVNSSBOYW9r
+aSB3cm90ZToKPiA+Pj4gSGkgRWQsCj4gPj4+Cj4gPj4+IFRoYW5rIHlvdSB2ZXJ5IG11Y2ggZm9y
+IHlvdXIgd29yay4KPiA+Pj4KPiA+Pj4gT24gOS8xNy8yNSAyMDo0OSwgRWQgV2lsZGdvb3NlIHdy
+b3RlOgo+ID4+Pj4gVGhlIHJrMzU2NiBoYXMgbXVsdGlwbGV4ZWQgcGlucyBhbmQgdGhlIHVhcnRz
+IGNhbiBiZSBtb3ZlZCB0byBhIGNob2ljZQo+ID4+Pj4gb2YgMiBwaW4gZ3JvdXBzLiBUaGUgZGVm
+YXVsdCByazM1NngtYmFzZS5kdHNpIGFwcGVhcnMgdG8gZGVmYXVsdCB0byBtdXgwCj4gPj4+PiBm
+b3IgYWxsIHVhcnRzLCBob3dldmVyLCBzcGVjaWZpYyBoYXJkd2FyZSBtaWdodCBjaG9vc2UgdG8g
+aW1wbGVtZW50Cj4gPj4+PiBhbHRlcm5hdGl2ZXMKPiA+Pj4+Cj4gPj4+PiBUaGUgUmFkeGEgemVy
+byAzIHNob3dzIHRoYXQgaXMgdXNlcyBNMSBmb3IgdWFydHM6Cj4gPj4+PiAtIHVhcnQ0Cj4gPj4+
+PiAtIHVhcnQ1Cj4gPj4+PiAtIHVhcnQ5Cj4gPj4+Pgo+ID4+Pj4gVGhlc2UgYXJlbid0IG5vcm1h
+bGx5IGVuYWJsZWQsIGJ1dCB3ZSBzaG91bGQgYXQgbGVhc3QgY29ycmVjdCB0aGUKPiA+Pj4+IGRl
+ZmF1bHQgcGluY3RybCBkZWZpbml0aW9ucy4gV2l0aG91dCB0aGVzZSBjaGFuZ2VzIHRoZXJlIHdp
+bGwgYmUKPiA+Pj4+IGNvbmZsaWN0cyB3aXRoIG1tYzAvbW1jMSwgbGVhZGluZyB0byB0aGUgU0Qg
+b3IgZU1NQyBnb2luZyBtaXNzaW5nLgo+ID4+Pgo+ID4+PiBTb3JyeSwgYnV0IHdoeSBkbyB3ZSBu
+ZWVkIHRoZXNlIGRlZmluaXRpb25zIGZvciBkaXNhYmxlZCBub2Rlcz8KPiA+Pj4KPiA+Pj4gT3Ig
+d2h5IGRvbid0IHdlIGRvIHNpbWlsYXIgZGVmaW5pdGlvbnMgZm9yIG5vZGVzIG90aGVyIHRoYW4g
+dWFydD8KPiA+Pj4gRm9yIGV4YW1wbGUsIFBXTTEyLCBJMlMzLCBhbmQgU1BJMyBhbHNvIHVzZSBN
+MS4gQXJlIHRoZXkgbm90IHJlbGF0ZWQgdG8gU0QvZU1NQyBhbmQgdGhlcmVmb3JlCj4gPj4+IGRv
+bid0IG5lZWQgdG8gYmUgZGVmaW5lZD8KPiA+Pj4KPiA+Pj4gSWYgdXNlcnMgd2FudCB0byB1c2Ug
+VUFSVHMgb24gcGluIGhlYWRlcnMsIHRoZXkgd2lsbCByZWZlciB0byB0aGUgY29ycmVjdCBkb2N1
+bWVudGF0aW9uWzFdIHRvCj4gPj4+IGRldGVybWluZSB3aGljaCBwaW5zIGFyZSBVQVJUcyBhbmQg
+d2lsbCBvZiBjb3Vyc2Ugd3JpdGUgdGhlIGNvcnJlY3QgcGluY3RybCBkZWZpbml0aW9uLgo+ID4+
+Pgo+ID4+PiBbMV0gaHR0cHM6Ly9kb2NzLnJhZHhhLmNvbS9lbi96ZXJvL3plcm8zL2hhcmR3YXJl
+LWRlc2lnbi9oYXJkd2FyZS1pbnRlcmZhY2UjZ3Bpby1pbnRlcmZhY2UKPiA+Pj4KPiA+Pj4gQmVz
+dCByZWdhcmRzLAo+ID4+Pgo+ID4+Cj4gPj4KPiA+PiBQZXJzb25hbGx5LCBhbmQgSSdtIHNheWlu
+ZyB0aGlzIGFzIGEgdXNlciB3aG8gaXMgdGVjaG5pY2FsIGVub3VnaCB0byBmaXggdGhlIGRlZmlu
+aXRpb25zLCBpdCB0b29rIG1lCj4gPj4gcXVpdGUgYSBmZXcgZGF5cyB0byBmaWd1cmUgb3V0IHdo
+YXQgd2FzIHdyb25nIHdpdGggdGhlIGRlZmluaXRpb25zIGFuZCB1bmRlcnN0YW5kIHRoZSBpbnRy
+aWNhdGUgdHJlZQo+ID4+IG9mIGR0c2kgaW5jbHVkZXMsIHRvIGZpbmFsbHkgZmlndXJlIG91dCB3
+aHkgSSBjb3VsZG4ndCBqdXN0IGRvIGEgInN0YXR1cyA9ICJva2F5IjsiIHRvIGVuYWJsZSB0aGUK
+PiA+PiBVQVJUcy4uLiAod2hpY2ggaXMgcm91Z2hseSB3aGF0IGlzIHNob3duIGluIHNldmVyYWwg
+cmFkeGEgc3VwcGxpZWQgb3ZlcmxheXMgdG8gZW5hYmxlIHVhcnRzIG9uCj4gPj4gdmFyaW91cyBi
+b2FyZHMpCj4gPj4KPiA+PiBTbyBteSB2b3RlIHdvdWxkIGJlIHRvIGNvcnJlY3RseSBkZWZpbmUg
+YWxsIHRoZSBoYXJkd2FyZSBmb3IgYSBnaXZlbiBib2FyZC4gVGhlbiB1c2VycyBjYW4gc2ltcGx5
+IGRvCj4gPj4gYSBzdGF0dXM9Im9rYXkiIHRvIGVuYWJsZSBhbmQgb2ZmIHRoZXkgZ28uCj4gPiAK
+PiA+IEFuZCBJJ2QgYWdyZWUgd2l0aCB0aGF0IGFyZ3VtZW50LiBTZXR0aW5nIHVwIHRoZSBuZWVk
+ZWQgcGluY3RybCBzZXR0aW5ncwo+ID4gZm9yIHRoZSBwZXJpcGhlcmFscyBkZXNjcmliZWQgaW4g
+dGhlIGRldmljZSBkb2N1bWVudGF0aW9uCj4gPiAoIGh0dHBzOi8vZG9jcy5yYWR4YS5jb20vZW4v
+emVyby96ZXJvMy9oYXJkd2FyZS1kZXNpZ24vaGFyZHdhcmUtaW50ZXJmYWNlI2dwaW8taW50ZXJm
+YWNlICkKPiA+IAo+ID4gaXMgdGhlIHNlbnNpYmxlIHRoaW5nIHRvIGRvLiBXaGlsZSBrZWVwaW5n
+IHRoZSBwZXJpcGhlcmFscyBpdHNlbGYgZGlzYWJsZWQKPiA+IGFuZCBmb3IgdGhlIHVzZXIgdG8g
+ZGVjaWRlIHdoaWNoIHBlcmlwaGVyYWwgdG8gZW5hYmxlLgo+IAo+IEknbSBub3Qgc3Ryb25nbHkg
+b3Bwb3NlZCB0byB0aGlzIHBvbGljeSwgYnV0IEkgdGhvdWdodCBpZiB5b3UncmUgZ29pbmcgCj4g
+dG8gZG8gdGhpcywgeW91IHNob3VsZCBkbyBpdCBmb3IgZXZlcnl0aGluZywgbm90IGp1c3QgVUFS
+VHMuCgp5ZXMsIGV4YWN0bHkKU28gcGF0Y2hlcyBmb3IgdGhlIG90aGVyIGhlYWRlciBwZXJpcGhl
+cmFscyB3ZWxjb21lIDotKSAuCgpCdXQgc3RpbGwgaXQncyBuaWNlIHRvIGRvIGl0IGluIHN0ZXBz
+IGxpa2UgdGhpcyBvbmUsIGFzIGl0IG1ha2VzIHJldmlld2luZyBlYXNpZXIuCgoKSGVpa28KCgoK
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9j
+a2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0
+cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
