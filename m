@@ -4,76 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D154CAC5A8
-	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Sep 2025 18:35:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA656CAC59A
+	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Sep 2025 19:04:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KPYtPIk+kRHcx2pLJmYrWmaSnUBLAzlSZoCRYuAuRuI=; b=OSTg196pluwENHwxfKC3trmLqk
-	uk7dsS2AeWlV1AObITmZqvUaGv9NNk1zpk7iG1ozzWbv7bPJ87/jCAtRL1L8XpBqyXVmROfGFpk/Z
-	xwW7LcHhrPhTt9pfc3mCp0lxk5KZVgzg/cOXiZqIajhvULs4DN0UpdonFMdsnpZYbxfEcX/fhtM3p
-	eeU+r3usTCsL6DmTlVkQpEbQSHLxNXT8stqUkuU9hdf8/emsqQw2kokAW8amiF2Gl2UNyXb+SAbbs
-	qlRSfqxINnrNHmlmS2LcHRAeMsHQSZ364lhml68bLpIX3TNzShqi0EtLQ9L80/pFm+BXs8ApsMYbH
-	Hyyglttg==;
+	bh=0NtcVe2EeoKBF73IRGF+x8MD3PzlnbrC5pkGZDngWUM=; b=3m4C4M9oplI2xZc6hXhAWsBF5f
+	2BqERh+oVlcOJSmdQ3+6IdRMgJ14yaD2dW1/6S9dK1DvJFnY9GSK1rj2qdAUB5cElHZbMI6HNDUL5
+	GEZt70SMhzB83euxNCzopgNQ+NifWNHZIiout6dtYMdQeW/v4SsxqBqwS5xWR6+ku4Rm7QSB5Dtfx
+	qt5tC1hxpNgscGyQ1bK4+rh2udR+TBV46MOVbWRkxgoE6cwxt1lZIzukcPxs7dxL608wql3uqsiFN
+	/SrIwX9UL6xSWMsDtvwUrhTaOteyrU8tpRGugh0DJ7k+lbLI0zXR51WEhl8z0Vo2YK6Ubsa1gjuwH
+	dF6sgv8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzfxL-00000003mCA-1gNL;
-	Fri, 19 Sep 2025 18:35:39 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1uzgOu-00000003rBc-3LZ9;
+	Fri, 19 Sep 2025 19:04:08 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzfxI-00000003mBA-3QSA;
-	Fri, 19 Sep 2025 18:35:37 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1758306920; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=htG9dmLjIm0MG2EAmEP+UrylffFxxizBi0dVjBCvRmBURsoNR8MsxJEFhYRutXp0Fysgs5mJKW7LfTA5S/FAV2whT6yUFacOAcZlhHvoYl+10VZS/sx90FewlnYaoq68DudIs3X+V2TBk685Gg5Ygd4AqsgFdxZuC8fbBbvziQ4=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1758306920; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=dYelWx50Z6ZFoqvuH3SnrsBA9SoBu2/C8F6gLHongwI=; 
-	b=KoRWFVnAJBHxlBFqLIUDk52BG3W7aMbzso37/jhmFISHK4UId+Rl0cj8jZ5+jJNzepmRHLWRnFzFDVyzzp+/MKuPSovrns7RNliKv6pjUAIB5kNchHQm28Etg6gP92ZPsXeD4Hu2i4bo5ErBFpvAYAVwKzvqxIAorGctH1UX47Y=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
-	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1758306920;
-	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
-	bh=dYelWx50Z6ZFoqvuH3SnrsBA9SoBu2/C8F6gLHongwI=;
-	b=YV9ytXFotHoYhZPB6OmOKBkk7wp37V53wLcLRgPnQ7jQ5ctaacXRy15U7vNqy6Rx
-	2tYGRW4dTr3xn1cHgAvvUGPovYReGbHaciguqaBHCJnXyrdSjYm3sJvVl+V9vZp6yik
-	s2lEVJE5pOef9f3Q4VKNXQg1quHIJA9IltV8iLrg=
-Received: by mx.zohomail.com with SMTPS id 1758306917364249.0348507446621;
-	Fri, 19 Sep 2025 11:35:17 -0700 (PDT)
-Received: by venus (Postfix, from userid 1000)
-	id 1DCFD1805C8; Fri, 19 Sep 2025 20:35:12 +0200 (CEST)
-Date: Fri, 19 Sep 2025 20:35:12 +0200
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Conor Dooley <conor@kernel.org>
-Cc: "Rafael J. Wysocki" <rafael@kernel.org>, 
-	Daniel Lezcano <daniel.lezcano@linaro.org>, Zhang Rui <rui.zhang@intel.com>, 
-	Lukasz Luba <lukasz.luba@arm.com>, Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Robin Murphy <robin.murphy@arm.com>, Diederik de Haas <didi.debian@cknow.org>, 
-	linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, 
-	kernel@collabora.com
-Subject: Re: [PATCH v2 3/3] dt-bindings: thermal: rockchip: tighten grf
- requirements
-Message-ID: <wtwdpqi4tk3ixzmrvdyv2aguf6pjlmnz6q5gvhlajl2hk6mdys@fmkugriedhqe>
-References: <20250820-thermal-rockchip-grf-warning-v2-0-c7e2d35017b8@kernel.org>
- <20250820-thermal-rockchip-grf-warning-v2-3-c7e2d35017b8@kernel.org>
- <20250820-await-chomp-9812902c0f74@spud>
+	id 1uzgOr-00000003r9t-2Z4D
+	for linux-rockchip@lists.infradead.org;
+	Fri, 19 Sep 2025 19:04:06 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <mkl@pengutronix.de>)
+	id 1uzgOp-00026Z-CN; Fri, 19 Sep 2025 21:04:03 +0200
+Received: from moin.white.stw.pengutronix.de ([2a0a:edc0:0:b01:1d::7b] helo=bjornoya.blackshift.org)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <mkl@pengutronix.de>)
+	id 1uzgOn-0029YZ-1s;
+	Fri, 19 Sep 2025 21:04:01 +0200
+Received: from pengutronix.de (ip-185-104-138-125.ptr.icomera.net [185.104.138.125])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(Client did not present a certificate)
+	(Authenticated sender: mkl-all@blackshift.org)
+	by smtp.blackshift.org (Postfix) with ESMTPSA id A27B74751DB;
+	Fri, 19 Sep 2025 19:04:00 +0000 (UTC)
+Date: Fri, 19 Sep 2025 21:03:59 +0200
+From: Marc Kleine-Budde <mkl@pengutronix.de>
+To: Andrea Daoud <andreadaoud6@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, 
+	Elaine Zhang <zhangqing@rock-chips.com>, kernel@pengutronix.de, linux-can@vger.kernel.org, 
+	netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: Possible race condition of the rockchip_canfd driver
+Message-ID: <20250919-lurking-agama-of-genius-96b832-mkl@pengutronix.de>
+References: <CAOprWosSvBmORh9NKk-uxoWZpD6zdnF=dODS-uxVnTDjmofL6g@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20250820-await-chomp-9812902c0f74@spud>
-X-Zoho-Virus-Status: 1
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-1.4.3/258.269.22
-X-ZohoMailClient: External
+In-Reply-To: <CAOprWosSvBmORh9NKk-uxoWZpD6zdnF=dODS-uxVnTDjmofL6g@mail.gmail.com>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: mkl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250919_113536_894189_C8498240 
-X-CRM114-Status: GOOD (  23.23  )
+X-CRM114-CacheID: sfid-20250919_120405_642903_8815528F 
+X-CRM114-Status: GOOD (  20.38  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,117 +75,89 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============5840060148399266937=="
+Content-Type: multipart/mixed; boundary="===============8655820571882576945=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============5840060148399266937==
+--===============8655820571882576945==
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="z6crpzxibzcnj3de"
+	protocol="application/pgp-signature"; boundary="gge37mtwq6wtzjdu"
 Content-Disposition: inline
 
 
---z6crpzxibzcnj3de
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+--gge37mtwq6wtzjdu
+Content-Type: text/plain; protected-headers=v1; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v2 3/3] dt-bindings: thermal: rockchip: tighten grf
- requirements
+Subject: Re: Possible race condition of the rockchip_canfd driver
 MIME-Version: 1.0
 
-Hi,
+Hello,
 
-On Wed, Aug 20, 2025 at 08:48:23PM +0100, Conor Dooley wrote:
-> On Wed, Aug 20, 2025 at 07:40:49PM +0200, Sebastian Reichel wrote:
-> > Instead of having an optional rockchip,grf property, forbid using it on
-> > platforms without registers in a GRF being needed for thermal monitoring
-> > and make it mandatory on the platforms actually needing it.
+On 18.09.2025 20:58:33, Andrea Daoud wrote:
+> I'm using the rockchip_canfd driver on an RK3568. When under high bus
+> load, I get
+> the following logs [1] in rkcanfd_tx_tail_is_eff, and the CAN bus is unab=
+le to
+> communicate properly under this condition. The exact cause is currently n=
+ot
+> entirely clear, and it's not reliably reproducible.
+
+Our customer is using a v3 silicon revision of the chip, which doesn't
+this workaround.
+
+> In the logs we can spot some strange points:
 >=20
-> I am assuming that "needing it" means that it was actually mandatory but
-> the binding was just missing the required required entry. If so
-> Acked-by: Conor Dooley <conor.dooley@microchip.com>
-
-I just noticed, that I never replied: The GRF configuration is
-required for proper functionality as far as I can tell. Technically
-it might be skipped, if the bootloader already configured the
-registers correctly. but I don't think this is something anyone wants
-to rely on and with the same argument we could describe almost any
-resource as optional :) The upstream kernel DT always had the GRF
-specified for these platforms (and thus most likely has never been
-tested without it).
-
-Greetings,
-
--- Sebastian
-
+> 1. Line 24, tx_head =3D=3D tx_tail. This should have been rejected by the=
+ if
+> (!rkcanfd_get_tx_pending) clause.
 >=20
-> >=20
-> > Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> > ---
-> >  .../devicetree/bindings/thermal/rockchip-thermal.yaml     | 15 +++++++=
-++++++++
-> >  1 file changed, 15 insertions(+)
-> >=20
-> > diff --git a/Documentation/devicetree/bindings/thermal/rockchip-thermal=
-=2Eyaml b/Documentation/devicetree/bindings/thermal/rockchip-thermal.yaml
-> > index 573f447cc26ed7100638277598b0e745d436fd01..9fa5c4c49d76e3a689f3179=
-7875124e7fb30d3df 100644
-> > --- a/Documentation/devicetree/bindings/thermal/rockchip-thermal.yaml
-> > +++ b/Documentation/devicetree/bindings/thermal/rockchip-thermal.yaml
-> > @@ -119,6 +119,21 @@ required:
-> >    - resets
-> > =20
-> >  allOf:
-> > +  - if:
-> > +      properties:
-> > +        compatible:
-> > +          contains:
-> > +            enum:
-> > +              - rockchip,px30-tsadc
-> > +              - rockchip,rk3366-tsadc
-> > +              - rockchip,rk3399-tsadc
-> > +              - rockchip,rk3568-tsadc
-> > +    then:
-> > +      required:
-> > +        - rockchip,grf
-> > +    else:
-> > +      properties:
-> > +        rockchip,grf: false
-> >    - if:
-> >        not:
-> >          properties:
-> >=20
-> > --=20
-> > 2.50.1
-> >=20
+> 2. Line 26, the last bit of priv->tx_tail (0x0185dbb3) is 1. This means t=
+hat the
+> tx_tail should be 1, because rkcanfd_get_tx_tail is essentially mod the
+> priv->tx_tail by two. But the printed tx_tail is 0.
+>=20
+> I believe these problems could mean that the code is suffering from some =
+race
+> condition. It seems that, in the whole IRQ processing chain of the driver,
+> there's no lock protection. Maybe some IRQ happens within the execution of
+> rkcanfd_tx_tail_is_eff, and touches the state of the tx_head and tx_tail?
+>=20
+> Could you please have a look at the code, and check if some locking is ne=
+eded?
 
+My time for community support is currently a bit limited. I think this
+has to wait a bit, apologies :/
 
+regards,
+Marc=20
 
---z6crpzxibzcnj3de
+--=20
+Pengutronix e.K.                 | Marc Kleine-Budde          |
+Embedded Linux                   | https://www.pengutronix.de |
+Vertretung N=C3=BCrnberg              | Phone: +49-5121-206917-129 |
+Amtsgericht Hildesheim, HRA 2686 | Fax:   +49-5121-206917-9   |
+
+--gge37mtwq6wtzjdu
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmjNolcACgkQ2O7X88g7
-+prySQ/+Plmvb6VuG/3iqahgjq/5DSN+60ggmi/i0BADm5v2odvaNmggYliwfw6+
-xjNfvblePAiRBF5bIfp8PYoBDmoOR1l56cVxPmtg90/UOA6Q8ZbGoPZGLoMWmANx
-3WoqzlXwRG6yXus0PTlKarXalAbSShc5wXkN+KgscOGdIxx5XXhGwjUSWVdiuy8q
-L0q5fBR1uYU6QHNUGNzM/H6GEPylQHbApFj2UEkQm4cb1QvSEq9I2HJ8bV+yOfhv
-0WmIk0fzyVn5FREYCVT+DQmd7Z3VRcWHtwgtXIzonxJIRLmJJWwl2iLTSPBulWYN
-EKAIHiqq4ak6FI/COHHid8czjM0/Tk7oMlDPkk8gJT9SgPzwvwR+xeLrOI+Nyk2f
-aBqBUTL7Y+LfrOe3I4TA2ljQtD7qL2oDixqqf/cTIR7Mk9R83A5Zem3R4qdyGvOt
-FoFbQ4mcmhqYeXxglKyDExMuxUC5vxcAL/fq2KFl+aNWX2Adzue3Kkjow0NMeQA+
-3880RR6Pn+tU2RikQvBhwk5WG6CTcPjgH5PgzzBZ4N8zhUARf8/J1bctqaCMYBiV
-XSWG1x+3Rtsxq0DHZVR640Ly89r9BWMTQxH5UKNhbrGmXum0V1RUerIT132ew7M8
-5afmV/udl4nk7VNzgkip02aBFKkpaLCGAk03LWDs0U0rPgksp4s=
-=9GvR
+iQEzBAABCgAdFiEEn/sM2K9nqF/8FWzzDHRl3/mQkZwFAmjNqRoACgkQDHRl3/mQ
+kZyo+Qf/T3m3vtjMMPeAzZSo9sBY5Ua+T7LYK3oU4OfY2FXjMwtwj7KG1YlMzZfB
+EnKx8YEiYzxOsDhgPPMATwByRfx4MDXOTmpP/VkU6+bQJsNbJ5uox/LR56/Ss8wU
+kiB1pcPpvnqaxLiVGStJ1Hy/LyKACHaKsXsFiBiUDCCovrz6Ogk1NTp9s5sa5HZC
+piCOg4cdZqaNlC7P2tBa1hU9HrkdUn/bP+VYqdzzk85Z0DFsCi3WpdMkN/Dhymf+
+eOoJ7pRSoKbUAiO+OMoGtxYgjtNKHW1GYhg3Q6BuLn+OFoNhigDhoeF62IJpGofO
+lJKKMXeaO9WXM4ryfvXl6ra4MYxvSg==
+=R78M
 -----END PGP SIGNATURE-----
 
---z6crpzxibzcnj3de--
+--gge37mtwq6wtzjdu--
 
 
---===============5840060148399266937==
+--===============8655820571882576945==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -206,5 +168,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============5840060148399266937==--
+--===============8655820571882576945==--
 
