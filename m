@@ -4,84 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8F17CAC5A0
-	for <linux-rockchip@archiver.kernel.org>; Sat, 20 Sep 2025 10:08:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02500CAC5A7
+	for <linux-rockchip@archiver.kernel.org>; Sat, 20 Sep 2025 15:00:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4wUb0vVOrdijNaQKsfacCSCvdnytQF+DQfFVk33scPE=; b=ShZTqC9d0QW08f
-	XhFTxyhck5TIQMBbcHW/4Zs5X7wTKbpXAEyGWKwPv6Wb/TEcP5sMuOtdqLcbZKyC7ywW8fmqa0gRG
-	TyS6hSEIGy5wp+Fy+CZnd2RK5Sx04FOr8CMQFCc9jN08p6MRw7qVaoR0wBCtTClGtIS8xkUYk46na
-	3zqqEETfI6fBnjf6UZBaCMaX9271pxuysgL6QUgD3UFlNFu725nHQLiUTeLhVWBzPc/J2gZrHGmLA
-	YlIKywyKtxQll3ARwoBe++LacSkeqFStmTF0UMvVLElnY2GbVdoZam5bJhorPFd8QRZBnR27SW6SQ
-	pVH+DjPiZYSUJY+PrDOA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:References:To:From:Subject:Cc:Message-Id:Date:Mime-Version:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=mqvSoYokVPJfg/G/Rp3jRn87EPin2FCMrlUrMFTbOrk=; b=1Se6bG3xRab3VuiovcoQtt5zFb
+	lbpUfRvFwxssv7POKr+PR6LSntGWDmFVjQVG9semqb6mbv/4bP7TMecv6vttomm5H5fdZan1FB1JO
+	zQPbZiphuQiiM11ztfzOC4C1L1dmVEzRL9zCTjDf5q/8Xecz13VyqFc29munnUBK1zl8LhQVf6tCL
+	tcBBXTL05blxt9fpRp0pkjt47zyEKSa5qEJPLLxsxX+/lIwHZ7dmVN652HCHiKvTP8mDxAMBE4HWc
+	3Pr9cqRbb6wuHpgg7bEchhViWEMMJxQxwsJjuO+3gh0ktkZie+PbBMXjAceT+3Vvg8UkoO5vIVklB
+	xEvivHpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzuVw-00000005AId-3OfB;
-	Sat, 20 Sep 2025 10:08:20 +0000
-Received: from mail-ej1-x641.google.com ([2a00:1450:4864:20::641])
+	id 1uzz4r-00000005VAs-1UOK;
+	Sat, 20 Sep 2025 15:00:41 +0000
+Received: from out-170.mta1.migadu.com ([2001:41d0:203:375::aa])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uzuVs-00000005AHm-3TMk
+	id 1uzz4o-00000005V9z-2Amv
 	for linux-rockchip@lists.infradead.org;
-	Sat, 20 Sep 2025 10:08:18 +0000
-Received: by mail-ej1-x641.google.com with SMTP id a640c23a62f3a-b0787fa12e2so422014466b.2
-        for <linux-rockchip@lists.infradead.org>; Sat, 20 Sep 2025 03:08:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1758362894; x=1758967694; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=xe0lcClCPEcf8hl+EDrEGGNTrCD25PEwuESOT223Ua8=;
-        b=Q7NdWT9fVoJprJDeut7Wu3+qMRH5k7HEmI+gnoekVUly4Ym6AVuVANQGnuRgcMBaoe
-         7gWkqkTg5MI98Z0mSvpD9xT/8oBq3BITfAbdRKI5l2JnUjghJ2ktymZO4h8HHqMEEttl
-         pAsVlFByAQh9OxzWUpapW1PSNjQY0p3pgrgO6p5GEVcbXrQiMPVW+oIpM20OELMm7SVv
-         3tC2cUfaenbEk8A6gnwP5wvqf8+jnlQzaPxHtk7Wos9iNKLWXlnSEadTA30pJ7TADCyq
-         JRURSlJRh4HhtQfhWj0R2Sdg/7ox9x84lLZ+y7Y2HGdoWZO9K/FhCjqlYwGP39gvWf/z
-         imCg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1758362894; x=1758967694;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=xe0lcClCPEcf8hl+EDrEGGNTrCD25PEwuESOT223Ua8=;
-        b=iH3O23dR/oMplZWB/qK1Zg+Pe+2iZLlkwnEZJCxgUY5vnwHjMIKm6PIr4WtvSDtsvP
-         QykIvW/reK2usoC2ldTgpzU7ZEAY2UYi3f/mb281ez0dZHd3EmNtTJX3sg4I1EIRYGus
-         w2TP7VTE/IJVu2hKYzAzYIrQHe28BTxW5cHDQiM6PjpspTwqyLyq+PwtYsM7HK+0ko/i
-         A6OtQ1mfkXCHSxMAwsD93b54LZRkdLXZP7800Rvl9u5nrgEk3nVxd3JmG9oKS37qYD2t
-         VryE121dVqbCrVpGJwFOOaWi/8I3Qs214WVqO15xTJtpdPaHSeOWIKaHM0RsQ9XxrWkX
-         aHXg==
-X-Forwarded-Encrypted: i=1; AJvYcCWi6MzMzVgR014xmzeTNKaQQcVVLDuMVKcPD8ifryz8nOMB10qm7JWT9WyocKFcvDJGcYNMrwCVwiuVqoJ71g==@lists.infradead.org
-X-Gm-Message-State: AOJu0Ywz4x+Ldj9UMncIBZ/RVac4ezNdkQCbdJ5l4n6VYPeY1BVcqSVI
-	zFynsSyHXU3yW0LQtAwV8xxcy1eOmgI+3wxZmPi8yVNoW3XP5kPNyX7q1Te1wjAZVoJduVTnpEv
-	ITRDZap6hjsr4g8p2KcarMHXmnQmPnOU=
-X-Gm-Gg: ASbGncvv4Ict99KpOUhKlNB+25v2tSmNitfpJRc1X6p95Wf0DIcGsAimfkj3h02CkRp
-	UMVGwnkuurqirGzEYU1taTTB9oHwnA6wwSrXfzHbZknqkkf8DMfL9XzcSCXzb5YvVDG/kUDE9dO
-	OXOfSsp9HdUrlKZbi8+rZ4d7CXR6thXfGu81f0Rni1eaUIUOinkml4B8COyq68VKp2whh3mVgeA
-	f0TFEo=
-X-Google-Smtp-Source: AGHT+IEWE29T6cV4r5UuETqqGeQnjCtI+yhJUtdEO1Ev8BuF7jZN0enwt/bBX1nmZpGKZUqSfijRG8c7SGSTF9FDuo8=
-X-Received: by 2002:a17:907:972a:b0:b04:4046:db6b with SMTP id
- a640c23a62f3a-b24f567c816mr645963466b.45.1758362894355; Sat, 20 Sep 2025
- 03:08:14 -0700 (PDT)
-MIME-Version: 1.0
-References: <CAOprWosSvBmORh9NKk-uxoWZpD6zdnF=dODS-uxVnTDjmofL6g@mail.gmail.com>
- <20250919-lurking-agama-of-genius-96b832-mkl@pengutronix.de>
-In-Reply-To: <20250919-lurking-agama-of-genius-96b832-mkl@pengutronix.de>
-From: Andrea Daoud <andreadaoud6@gmail.com>
-Date: Sat, 20 Sep 2025 18:08:03 +0800
-X-Gm-Features: AS18NWCh31p-viGL3PfP7OcvBtJwzsD-69eILq-7ZVP3bQSbKG7MfpPrWXV11mM
-Message-ID: <CAOprWott046xznChj7JBNmVw3Z65uOC1_bqTbVB=LA+YBw7TTQ@mail.gmail.com>
-Subject: Re: Possible race condition of the rockchip_canfd driver
-To: Marc Kleine-Budde <mkl@pengutronix.de>
-Cc: Heiko Stuebner <heiko@sntech.de>, Elaine Zhang <zhangqing@rock-chips.com>, kernel@pengutronix.de, 
-	linux-can@vger.kernel.org, netdev@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
+	Sat, 20 Sep 2025 15:00:39 +0000
+Mime-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
+	t=1758380426;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=ijOJzmdzRDKd9dcL3XghcGraqozcSVhpfrfjEqKGU1w=;
+	b=zCtmgdrmEsYTM0cuSGcVI8mxDkJGlqh6Eh2X0sslv5WLy3al2Hb4vbc8LGnpC4Ej4QJnfh
+	Z+lNaoIYxcqQ/9JxPcYszt+Vz22qeimwbPGlIWZ9KfvRGuxSh9h4qvH/3eM3dHNUOa6ubZ
+	DSzlm5c+ZkclAcyfrIhU1QKUXPReeGyjKvBugGR/ZXYXt4YP1uSljgXgtcPtL4sJP5iWsq
+	pYCwGwegCV8rCD/kFVivcGHw7zRhVx2hjFpWg3uWC45T9jVl0beRYiahFU4jQSYfOAO8Lw
+	O0ztuybJecCAz12ByrbxNjeqE93PDMKHuv1YazmpBQHxBy8uN5Ha3n11KjAM0Q==
+Date: Sat, 20 Sep 2025 17:00:07 +0200
+Message-Id: <DCXPTZRNNTDY.1773L2181HWF@cknow.org>
+Cc: "Mauro Carvalho Chehab" <mchehab@kernel.org>, "Heiko Stuebner"
+ <heiko@sntech.de>, <linux-media@vger.kernel.org>,
+ <linux-rockchip@lists.infradead.org>,
+ <linux-arm-kernel@lists.infradead.org>, <kernel@collabora.com>
+Subject: Re: [PATCH v2 09/12] media: rkvdec: Add H264 support for the
+ VDPU381 variant
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Diederik de Haas" <didi.debian@cknow.org>
+To: "Detlev Casanova" <detlev.casanova@collabora.com>,
+ <linux-kernel@vger.kernel.org>
+References: <20250808200340.156393-1-detlev.casanova@collabora.com>
+ <20250808200340.156393-10-detlev.casanova@collabora.com>
+In-Reply-To: <20250808200340.156393-10-detlev.casanova@collabora.com>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250920_030816_890917_53F385CB 
-X-CRM114-Status: GOOD (  24.09  )
+X-CRM114-CacheID: sfid-20250920_080038_693598_0A7A8A42 
+X-CRM114-Status: GOOD (  32.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,46 +69,255 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============3498998030432403148=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gU2F0LCBTZXAgMjAsIDIwMjUgYXQgMzowNOKAr0FNIE1hcmMgS2xlaW5lLUJ1ZGRlIDxta2xA
-cGVuZ3V0cm9uaXguZGU+IHdyb3RlOgo+Cj4gSGVsbG8sCgpUaGFua3MgZm9yIHlvdXIgcmVwbHkh
-Cgo+Cj4gT24gMTguMDkuMjAyNSAyMDo1ODozMywgQW5kcmVhIERhb3VkIHdyb3RlOgo+ID4gSSdt
-IHVzaW5nIHRoZSByb2NrY2hpcF9jYW5mZCBkcml2ZXIgb24gYW4gUkszNTY4LiBXaGVuIHVuZGVy
-IGhpZ2ggYnVzCj4gPiBsb2FkLCBJIGdldAo+ID4gdGhlIGZvbGxvd2luZyBsb2dzIFsxXSBpbiBy
-a2NhbmZkX3R4X3RhaWxfaXNfZWZmLCBhbmQgdGhlIENBTiBidXMgaXMgdW5hYmxlIHRvCj4gPiBj
-b21tdW5pY2F0ZSBwcm9wZXJseSB1bmRlciB0aGlzIGNvbmRpdGlvbi4gVGhlIGV4YWN0IGNhdXNl
-IGlzIGN1cnJlbnRseSBub3QKPiA+IGVudGlyZWx5IGNsZWFyLCBhbmQgaXQncyBub3QgcmVsaWFi
-bHkgcmVwcm9kdWNpYmxlLgo+Cj4gT3VyIGN1c3RvbWVyIGlzIHVzaW5nIGEgdjMgc2lsaWNvbiBy
-ZXZpc2lvbiBvZiB0aGUgY2hpcCwgd2hpY2ggZG9lc24ndAo+IHRoaXMgd29ya2Fyb3VuZC4KCkNv
-dWxkIHlvdSBwbGVhc2UgbGV0IG1lIGtub3cgaG93IHRvIGNoZWNrIHdoZXRoZXIgbXkgUkszNTY4
-IGlzIHYyIG9yIHYzPwoKPgo+ID4gSW4gdGhlIGxvZ3Mgd2UgY2FuIHNwb3Qgc29tZSBzdHJhbmdl
-IHBvaW50czoKPiA+Cj4gPiAxLiBMaW5lIDI0LCB0eF9oZWFkID09IHR4X3RhaWwuIFRoaXMgc2hv
-dWxkIGhhdmUgYmVlbiByZWplY3RlZCBieSB0aGUgaWYKPiA+ICghcmtjYW5mZF9nZXRfdHhfcGVu
-ZGluZykgY2xhdXNlLgo+ID4KPiA+IDIuIExpbmUgMjYsIHRoZSBsYXN0IGJpdCBvZiBwcml2LT50
-eF90YWlsICgweDAxODVkYmIzKSBpcyAxLiBUaGlzIG1lYW5zIHRoYXQgdGhlCj4gPiB0eF90YWls
-IHNob3VsZCBiZSAxLCBiZWNhdXNlIHJrY2FuZmRfZ2V0X3R4X3RhaWwgaXMgZXNzZW50aWFsbHkg
-bW9kIHRoZQo+ID4gcHJpdi0+dHhfdGFpbCBieSB0d28uIEJ1dCB0aGUgcHJpbnRlZCB0eF90YWls
-IGlzIDAuCj4gPgo+ID4gSSBiZWxpZXZlIHRoZXNlIHByb2JsZW1zIGNvdWxkIG1lYW4gdGhhdCB0
-aGUgY29kZSBpcyBzdWZmZXJpbmcgZnJvbSBzb21lIHJhY2UKPiA+IGNvbmRpdGlvbi4gSXQgc2Vl
-bXMgdGhhdCwgaW4gdGhlIHdob2xlIElSUSBwcm9jZXNzaW5nIGNoYWluIG9mIHRoZSBkcml2ZXIs
-Cj4gPiB0aGVyZSdzIG5vIGxvY2sgcHJvdGVjdGlvbi4gTWF5YmUgc29tZSBJUlEgaGFwcGVucyB3
-aXRoaW4gdGhlIGV4ZWN1dGlvbiBvZgo+ID4gcmtjYW5mZF90eF90YWlsX2lzX2VmZiwgYW5kIHRv
-dWNoZXMgdGhlIHN0YXRlIG9mIHRoZSB0eF9oZWFkIGFuZCB0eF90YWlsPwo+ID4KPiA+IENvdWxk
-IHlvdSBwbGVhc2UgaGF2ZSBhIGxvb2sgYXQgdGhlIGNvZGUsIGFuZCBjaGVjayBpZiBzb21lIGxv
-Y2tpbmcgaXMgbmVlZGVkPwo+Cj4gTXkgdGltZSBmb3IgY29tbXVuaXR5IHN1cHBvcnQgaXMgY3Vy
-cmVudGx5IGEgYml0IGxpbWl0ZWQuIEkgdGhpbmsgdGhpcwo+IGhhcyB0byB3YWl0IGEgYml0LCBh
-cG9sb2dpZXMgOi8KCk5vIHdvcnJpZXMsIEkgd2lsbCBkZWJ1ZyBteXNlbGYsIGFuZCBob3BlZnVs
-bHkgc2VuZCBhIFBSIGlmIEkgZm91bmQKc29tZXRoaW5nIG91dC4KCj4KPiByZWdhcmRzLAo+IE1h
-cmMKPgo+IC0tCj4gUGVuZ3V0cm9uaXggZS5LLiAgICAgICAgICAgICAgICAgfCBNYXJjIEtsZWlu
-ZS1CdWRkZSAgICAgICAgICB8Cj4gRW1iZWRkZWQgTGludXggICAgICAgICAgICAgICAgICAgfCBo
-dHRwczovL3d3dy5wZW5ndXRyb25peC5kZSB8Cj4gVmVydHJldHVuZyBOw7xybmJlcmcgICAgICAg
-ICAgICAgIHwgUGhvbmU6ICs0OS01MTIxLTIwNjkxNy0xMjkgfAo+IEFtdHNnZXJpY2h0IEhpbGRl
-c2hlaW0sIEhSQSAyNjg2IHwgRmF4OiAgICs0OS01MTIxLTIwNjkxNy05ICAgfAoKUmVnYXJkcywK
-QW5kcmVhCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpM
-aW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFk
-Lm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJv
-Y2tjaGlwCg==
+--===============3498998030432403148==
+Content-Type: multipart/signed;
+ boundary=b9fa74363659b670e23c1dce98bffde2f9949cfa8c820d422a3b42c86d81;
+ micalg=pgp-sha512; protocol="application/pgp-signature"
+
+--b9fa74363659b670e23c1dce98bffde2f9949cfa8c820d422a3b42c86d81
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+
+Hi Detlev,
+
+Thanks a LOT for this patch set!
+As already reported the results were quite impressive :-D
+
+To figure out how to make VDPU346 for rk3568 work, I had a close look at
+the TRM and compared that to rk3588's TRM and compared it to your code.
+I think I may have found a few potential issue, but I may also not
+understand things correctly.
+
+On Fri Aug 8, 2025 at 10:03 PM CEST, Detlev Casanova wrote:
+> This decoder variant is found in Rockchip RK3588 SoC family.
+>
+> Like for rkvdec on rk3399, it supports the NV12, NV15, NV16 and NV20
+> output formats and level up to 5.1.
+>
+> The maximum width and height have been significantly increased
+> supporting up to 65520 pixels for both.
+>
+> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+> ---
+>  .../media/platform/rockchip/rkvdec/Makefile   |   1 +
+>  .../rockchip/rkvdec/rkvdec-h264-common.h      |   2 +
+>  .../platform/rockchip/rkvdec/rkvdec-h264.c    |  36 --
+>  .../rockchip/rkvdec/rkvdec-vdpu381-h264.c     | 469 ++++++++++++++++++
+>  .../rockchip/rkvdec/rkvdec-vdpu381-regs.h     | 427 ++++++++++++++++
+>  .../media/platform/rockchip/rkvdec/rkvdec.c   | 164 +++++-
+>  .../media/platform/rockchip/rkvdec/rkvdec.h   |   6 +
+>  7 files changed, 1067 insertions(+), 38 deletions(-)
+>  create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381=
+-h264.c
+>  create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381=
+-regs.h
+>
+> ...
+>
+> diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-regs.h=
+ b/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-regs.h
+> new file mode 100644
+> index 0000000000000..11b545e9ee7ea
+> --- /dev/null
+> +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-regs.h
+> @@ -0,0 +1,427 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+> +/*
+> + * Rockchip VDPU381 Video Decoder driver registers description
+> + *
+> + * Copyright (C) 2024 Collabora, Ltd.
+> + *  Detlev Casanova <detlev.casanova@collabora.com>
+> + */
+> +
+> +#include <linux/types.h>
+> +
+> +#ifndef _RKVDEC_REGS_H_
+> +#define _RKVDEC_REGS_H_
+> +
+> +#define OFFSET_COMMON_REGS		(8 * sizeof(u32))
+> +#define OFFSET_CODEC_PARAMS_REGS	(64 * sizeof(u32))
+> +#define OFFSET_COMMON_ADDR_REGS		(128 * sizeof(u32))
+> +#define OFFSET_CODEC_ADDR_REGS		(160 * sizeof(u32))
+> +#define OFFSET_POC_HIGHBIT_REGS		(200 * sizeof(u32))
+> +
+> +#define VDPU381_MODE_HEVC	0
+> +#define VDPU381_MODE_H264	1
+> +#define VDPU381_MODE_VP9	2
+> +#define VDPU381_MODE_AVS2	3
+> +
+> +#define MAX_SLICE_NUMBER	0x3fff
+> +
+> +#define RKVDEC_1080P_PIXELS		(1920 * 1080)
+> +#define RKVDEC_4K_PIXELS		(4096 * 2304)
+> +#define RKVDEC_8K_PIXELS		(7680 * 4320)
+
+In the RK3588 TRM Part 1 paragraph 5.4.3 I can find the values for 4K
+and 8K, but the 1080P resolution seems to be 1920x1088 (not 1080).
+
+> +#define RKVDEC_TIMEOUT_1080p		(0xefffff)
+> +#define RKVDEC_TIMEOUT_4K		(0x2cfffff)
+> +#define RKVDEC_TIMEOUT_8K		(0x4ffffff)
+> +#define RKVDEC_TIMEOUT_MAX		(0xffffffff)
+> +
+> +#define VDPU381_REG_DEC_E		0x028
+> +#define VDPU381_DEC_E_BIT		1
+> +
+> +#define VDPU381_REG_IMPORTANT_EN	0x02c
+> +#define VDPU381_DEC_IRQ_DISABLE	BIT(4)
+> +
+> +#define VDPU381_REG_STA_INT		0x380
+> +#define VDPU381_STA_INT_DEC_RDY_STA	BIT(2)
+> +#define VDPU381_STA_INT_ERROR		BIT(4)
+> +#define VDPU381_STA_INT_TIMEOUT		BIT(5)
+> +#define VDPU381_STA_INT_SOFTRESET_RDY	BIT(9)
+> +
+> +/* base: OFFSET_COMMON_REGS */
+>
+> ...
+>
+> diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.c b/drivers/me=
+dia/platform/rockchip/rkvdec/rkvdec.c
+> index 0ccf1ba81958a..1b55fe4ff2baf 100644
+> --- a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
+> +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
+> @@ -28,6 +28,7 @@
+> =20
+>  #include "rkvdec.h"
+>  #include "rkvdec-regs.h"
+> +#include "rkvdec-vdpu381-regs.h"
+>  #include "rkvdec-rcb.h"
+> =20
+>  static bool rkvdec_image_fmt_match(enum rkvdec_image_fmt fmt1,
+> @@ -84,11 +85,50 @@ static bool rkvdec_is_valid_fmt(struct rkvdec_ctx *ct=
+x, u32 fourcc,
+>  	return false;
+>  }
+> =20
+> +#define VDPU38X_STRIDE_ALIGN	16
+> +
+> +/**
+> + * The default v4l2_fill_pixfmt_mp() function doesn't allow for specific=
+ alignment values.
+> + * As the VDPU381 and VDPU383 need lines to be aligned on 16, use our ow=
+n implementation here.
+> + */
+> +static int vdpu38x_fill_pixfmt_mp(struct v4l2_pix_format_mplane *pix_mp,=
+ u32 pixelformat,
+> +				  u32 width, u32 height)
+> +{
+> +	const struct v4l2_format_info *info =3D v4l2_format_info(pix_mp->pixelf=
+ormat);
+> +	struct v4l2_plane_pix_format *plane =3D &pix_mp->plane_fmt[0];
+> +
+> +	if (!info)
+> +		return -EINVAL;
+> +
+> +	pix_mp->num_planes =3D 1;
+> +
+> +	memset(plane, 0, sizeof(*plane));
+> +
+> +	plane->bytesperline =3D pix_mp->width * info->bpp[0] / info->bpp_div[0]=
+;
+> +	plane->bytesperline =3D ALIGN(plane->bytesperline, VDPU38X_STRIDE_ALIGN=
+);
+> +
+> +	for (int i =3D 0; i < info->comp_planes; i++) {
+> +		unsigned int vdiv =3D i ? info->vdiv : 1;
+> +		unsigned int hdiv =3D i ? info->hdiv : 1;
+> +		unsigned int stride =3D DIV_ROUND_UP(pix_mp->width, hdiv)
+> +				    * info->bpp[i] / info->bpp_div[i];
+> +		unsigned int height =3D DIV_ROUND_UP(pix_mp->height, vdiv);
+> +
+> +		plane->sizeimage +=3D ALIGN(stride, VDPU38X_STRIDE_ALIGN) * height;
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+>  static void rkvdec_fill_decoded_pixfmt(struct rkvdec_ctx *ctx,
+>  				       struct v4l2_pix_format_mplane *pix_mp)
+>  {
+> -	v4l2_fill_pixfmt_mp(pix_mp, pix_mp->pixelformat,
+> -			    pix_mp->width, pix_mp->height);
+> +	struct rkvdec_config *cfg =3D ctx->dev->config;
+> +
+> +	cfg->fill_pixfmt_mp(pix_mp, pix_mp->pixelformat, pix_mp->width, pix_mp-=
+>height);
+> +
+> +	ctx->colmv_offset =3D pix_mp->plane_fmt[0].sizeimage;
+> +
+>  	pix_mp->plane_fmt[0].sizeimage +=3D 128 *
+>  		DIV_ROUND_UP(pix_mp->width, 16) *
+>  		DIV_ROUND_UP(pix_mp->height, 16);
+> @@ -287,6 +327,25 @@ static const struct rkvdec_coded_fmt_desc rkvdec_cod=
+ed_fmts[] =3D {
+>  	}
+>  };
+> =20
+> +static const struct rkvdec_coded_fmt_desc vdpu381_coded_fmts[] =3D {
+> +	{
+> +		.fourcc =3D V4L2_PIX_FMT_H264_SLICE,
+> +		.frmsize =3D {
+> +			.min_width =3D 64,
+> +			.max_width =3D  65520,
+> +			.step_width =3D 64,
+> +			.min_height =3D 16,
+> +			.max_height =3D  65520,
+> +			.step_height =3D 16,
+> +		},
+
+Also in the RK3588 TRM Part 1 paragraph 5.4.3, I see "Supported image size"=
+ :
+16x16 to 65520x65520; step size 16 pixels
+
+I interpret that that .min_width and .step_width should both be 16.
+(.min_height and .step_height are correct at 16; if I read the TRM right)
+
+> +		.ctrls =3D &rkvdec_h264_ctrls,
+> +		.ops =3D &rkvdec_vdpu381_h264_fmt_ops,
+> +		.num_decoded_fmts =3D ARRAY_SIZE(rkvdec_h264_decoded_fmts),
+> +		.decoded_fmts =3D rkvdec_h264_decoded_fmts,
+> +		.subsystem_flags =3D VB2_V4L2_FL_SUPPORTS_M2M_HOLD_CAPTURE_BUF,
+> +	},
+> +};
+> +
+>  static const struct rkvdec_coded_fmt_desc *
+>  rkvdec_find_coded_fmt_desc(struct rkvdec_ctx *ctx, u32 fourcc)
+>  {
+> @@ -1125,6 +1184,35 @@ static irqreturn_t rk3399_irq_handler(struct rkvde=
+c_ctx *ctx)
+
+Cheers,
+  Diederik
+
+--b9fa74363659b670e23c1dce98bffde2f9949cfa8c820d422a3b42c86d81
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCaM7BggAKCRDXblvOeH7b
+bpgmAQCFDGMgDVQ1jCwy/pQMoyeJggzfPDXfxF075j1Mf44bpQD6A3aEPqu/IG3M
+dq8uGQQ/2TiBUsOPasKNSUPOOQwsdAc=
+=Wwg0
+-----END PGP SIGNATURE-----
+
+--b9fa74363659b670e23c1dce98bffde2f9949cfa8c820d422a3b42c86d81--
+
+
+--===============3498998030432403148==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============3498998030432403148==--
+
