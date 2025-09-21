@@ -4,54 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83DF1CAC59A
-	for <linux-rockchip@archiver.kernel.org>; Sun, 21 Sep 2025 21:00:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 522D6CAC59A
+	for <linux-rockchip@archiver.kernel.org>; Sun, 21 Sep 2025 21:01:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ow6eDwf0Q7M2ln9Ow445yXFIUrnmO0djh8QmhLUKGvY=; b=HjKv1JQw2mTc/m
-	FM+ZDxoQhv5kORrx/Ej0FWyywXi7L5TWHBIBWBJV2iqQCjPy6bGv4mFZFe4grMO+Qb3ZkUe9eBij0
-	nqeM3cgjDMY9pe36k5e00VVPjHofrwGVb9oo8v7R8MDxPngHvBh+hFnzjPWPxXGgtZrBQoJIDb0vo
-	t3XXD2Z6qrNr6LeInxuNJevfUjkHYysSy2NMgtlLQGOH8XNdsSchu1q5gGyLqu6s376cZCVBRpwnd
-	aqxLXnYyO98mjk73rsGaQv858WDaueyDL2JnjTvuJokFWP1cTrtsIsaAEOnRHEVx9QdceysDJqS6R
-	Wg3a/WJAC4VeCZQVLdww==;
+	List-Owner; bh=xouzgaLO3w6YgQjOGK1dxhtiCrJyX3jFHPzGx+aQLzg=; b=K6xEhmckXz9EPY
+	/TBBE1dkdGkWfxIoEfeB/2vrrohjS/wUTUY7NYK7eDphSOEf3RbyMje0kFDePEN3Iv++H34C5zOAj
+	aZcEopmY9/H8yAb8gaPX/Qc5Ay3j0kZEjocwpWrNzL9T6LkJwawCgOmkkt8IJKVJnIUjN8cLBCEKu
+	GsMkyw1KTMeYVqMq+D/pzw6kMD9GB/z+TbO3kGLy626m3lI2p9Ls/AcIU92vninS6Rjka2lJRjKzg
+	XOQd8qql7duFQ8n+BWI4RVWOVyYfjRt3tYuaQIp5Cej19hHBH7Vw7jSx5I35X6abYAnCyxUFIKGi9
+	SZIAgTI2mRdWqug91RHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0RA5-00000008CFw-1EkM;
-	Sun, 21 Sep 2025 20:59:57 +0000
+	id 1v0RBF-00000008CPr-2h2i;
+	Sun, 21 Sep 2025 21:01:09 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0RA1-00000008CDk-0vl1
-	for linux-rockchip@lists.infradead.org;
-	Sun, 21 Sep 2025 20:59:55 +0000
+	id 1v0RBA-00000008CPL-3nFG;
+	Sun, 21 Sep 2025 21:01:08 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:In-Reply-To:References;
-	bh=huK5CpmxMXb5T6on4tR9EKj5JuGqYpWil2JrKF2Fx2A=; b=frSDbpY4vrmuUjIGC2pDcq0oTK
-	5+lohheHj+xjTrPzZG3C8hXHMhouRCyqWG+xW/MVZF87K1daPf56OAZIiKcWVed7klzV15RVyM4ck
-	dRk5zZxsMQnRflP9zLtU4FYRLdAsiG4sBEFGZtLib1PfILfWTsEnVpFJCIUuqJIjbHtVSVdVh6k/4
-	IYJYbj7xbYTjpRgZZrZBGEQQ5YYOVk/8zKINzdy384zAEEkbzStPQyUs8GJFg+MiamxOwl6PiRtm2
-	XBVaj6QI7jvKAgBpSQU04DmqdwRCuhoxoohr135l4/fndu394SsRq/K1R+vf8SlXW7G9LoCbGIqld
-	EcEvJ6QQ==;
+	bh=nA7SF2fzw7JbesVTWtaZYM0KNv+9N0bkcTooj4MuXe8=; b=CUR9LEIGOG5od/Ii444xVrA7u0
+	f5lSMkYd3dXrhiznr8uzinPBWt0ke7O1cY0AK9gRC/sbruo36Zrg+F3zyYcvqg8QqeQtUH0esrgzT
+	hFG8Jt3b8kOUEDCYI5ZR8gZsrBkw8dXsmrSucpJJYWL7vtlx+zk8YsCIBR0nSHv60VbdNh8vO59nu
+	ZDM3Jfpje+8zdEx2refJdcKO0G+QY9Z53o5vaCZESb8Q4yQ8IoNj5Dlz6I7E/9w5kut1kUzrOvwjD
+	toEQOEgQ5avYGiFelmL2tsklgXV4fMIFPctBAYSlA9v7L2U+qoUL5B16z6eT3HnADM1emq7GVRxbr
+	ypLznwHw==;
 Received: from i53875add.versanet.de ([83.135.90.221] helo=diego.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1v0R9o-0007cj-Vy; Sun, 21 Sep 2025 22:59:41 +0200
+	id 1v0RB9-0007dH-7u; Sun, 21 Sep 2025 23:01:03 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: mturquette@baylibre.com, Stephen Boyd <sboyd@kernel.org>
-Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
-Subject: [GIT PULL] Rockchip clock changes for 6.18 #1
-Date: Sun, 21 Sep 2025 22:59:39 +0200
-Message-ID: <1897877.QZUTf85G27@diego>
+To: arm@kernel.org
+Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+Subject: [GIT PULL] Rockchip dts64 changes for 6.18 #2
+Date: Sun, 21 Sep 2025 23:01:02 +0200
+Message-ID: <2079092.kXSN5OTJKJ@diego>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250921_135953_287381_C72442F1 
-X-CRM114-Status: UNSURE (   9.68  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250921_140104_950032_9700E099 
+X-CRM114-Status: GOOD (  11.93  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,42 +67,81 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Mike, Stephen,
+Hi soc maintainers,
 
-please find below a pull-request with Rockchip clock change for 6.18
-Just a single newly exported clock for an older SoC.
+please find below some more Rockchip 64bit dt changes for for 6.18 .
+To go on top of the first set.
 
 
 Please pull.
-
 Thanks
 Heiko
 
 
-The following changes since commit 8f5ae30d69d7543eee0d70083daf4de8fe15d585:
+The following changes since commit 07c53a9e970712b1a479dd0ec4adfe184482c22f:
 
-  Linux 6.17-rc1 (2025-08-10 19:41:16 +0300)
+  arm64: dts: rockchip: Enable DP2HDMI for ROCK 5 ITX (2025-09-02 08:32:26 +0200)
 
 are available in the Git repository at:
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v6.18-rockchip-clk1
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v6.18-rockchip-dts64-2
 
-for you to fetch changes up to 77111b2c22ef5b368da5c833175b6f7806b39ccb:
+for you to fetch changes up to 93781211e9ad9578787355147c2f28b7289a8ec6:
 
-  clk: rockchip: rk3368: use clock ids for SCLK_MIPIDSI_24M (2025-09-03 14:17:54 +0200)
-
-----------------------------------------------------------------
-Export the dsi-24MHz clock on the RK3368, which seems to get some
-attention to enable DSI support there.
+  arm64: dts: rockchip: Add devicetree for the ROC-RK3588-RT (2025-09-18 20:59:59 +0200)
 
 ----------------------------------------------------------------
-WeiHao Li (2):
-      dt-bindings: clock: rk3368: Add SCLK_MIPIDSI_24M
-      clk: rockchip: rk3368: use clock ids for SCLK_MIPIDSI_24M
+One new board the ROC-RK3588-RT, gpu improvements for RK3328, frequency
+scaling for the RK3528 and the very first small steps for camera
+support on the RK3588 - with the CSI-DPHY support, with more hopefully
+to come soon'ish :-) .
 
- drivers/clk/rockchip/clk-rk3368.c      | 2 +-
- include/dt-bindings/clock/rk3368-cru.h | 1 +
- 2 files changed, 2 insertions(+), 1 deletion(-)
+And apart from those bigger points, some more individual peripheral work
+on some boards.
+
+----------------------------------------------------------------
+Alex Bee (2):
+      arm64: dts: rockchip: add GPU powerdomain, opps, and cooling to rk3328
+      arm64: dts: rockchip: enable the Mali GPU on RK3328 boards
+
+Chris Morgan (1):
+      arm64: dts: rockchip: Add USB and charger to Gameforce Ace
+
+Chukun Pan (3):
+      arm64: dts: rockchip: Add rk3528 CPU frequency scaling support
+      arm64: dts: rockchip: remove vcc_3v3_pmu regulator for Radxa E52C
+      arm64: dts: rockchip: update pinctrl names for Radxa E52C
+
+Kaison Deng (2):
+      dt-bindings: arm: rockchip: Add Firefly ROC-RK3588-RT
+      arm64: dts: rockchip: Add devicetree for the ROC-RK3588-RT
+
+Marcin Juszkiewicz (1):
+      arm64: dts: rockchip: enable HDMI Receiver on NanoPC T6
+
+Michael Riesch (2):
+      dt-bindings: soc: rockchip: add rk3588 csidphy grf syscon
+      arm64: dts: rockchip: add mipi csi-2 dphy nodes to rk3588
+
+Sebastian Reichel (1):
+      arm64: dts: rockchip: Fix network on rk3576 evb1 board
+
+ .../devicetree/bindings/arm/rockchip.yaml          |    5 +
+ .../devicetree/bindings/soc/rockchip/grf.yaml      |    1 +
+ arch/arm64/boot/dts/rockchip/Makefile              |    1 +
+ arch/arm64/boot/dts/rockchip/rk3328-roc-pc.dts     |    4 -
+ arch/arm64/boot/dts/rockchip/rk3328-roc.dtsi       |    4 +
+ arch/arm64/boot/dts/rockchip/rk3328-rock64.dts     |    4 +
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi           |   40 +-
+ arch/arm64/boot/dts/rockchip/rk3528.dtsi           |   39 +
+ arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts   |   38 +-
+ arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dts |   26 +-
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi      |   34 +
+ arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi |   17 +
+ arch/arm64/boot/dts/rockchip/rk3588-roc-rt.dts     | 1132 ++++++++++++++++++++
+ .../boot/dts/rockchip/rk3588s-gameforce-ace.dts    |  122 +++
+ 14 files changed, 1434 insertions(+), 33 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-roc-rt.dts
 
 
 
