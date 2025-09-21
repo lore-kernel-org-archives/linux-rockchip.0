@@ -4,54 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1E4CCAC5A7
-	for <linux-rockchip@archiver.kernel.org>; Sun, 21 Sep 2025 21:02:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABF70CAC59A
+	for <linux-rockchip@archiver.kernel.org>; Sun, 21 Sep 2025 21:06:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id
+	:Date:Subject:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=qTLWEzoz6Ua2zuqfl7yWcD9EEeOW3yobn0/OyDz6+VM=; b=kga1fl7hQjy/WA
-	r2XGpG9P6ckKf9O8GAVIthU4I0DMXMonF4KTREyBbJgkv3NBiy3nmG+go4G4Ua0CPYw+C+XjzyXqg
-	T3dVxLvX7twNLqnIIrZoDLNOTcrgVbcOWreDXiU6iH2tq209aT2bAZwzwkyd6nHgrUg4vzRt8VZ/f
-	e+xHJ7hxf1UD1uC9btvrpwSyoV97CeDNWGVcBxkngNmXH+OV1MFvoXkW/YX+ixYIMZyU5S8e17cYr
-	hP5qdyrk/zwfnwiLTAqpPs1t2J5gllOfsXqvOHc25kqvlkO2wDy61P1EMcoClTfIByrvsY3Fazb1Y
-	F9PmvClCsMRFTrtkoXiA==;
+	List-Owner; bh=FBzpsRmTi2qXOkjvA01upCuzRbGrOt+BAfJjytSa3m8=; b=IuIueT1OLCSdID
+	y56j9n3i1Yg5nR/AO78rvEI4o8Wo6auJfG42m2P1afGB/MAy/xTyQTXPCxMSX80qO6PqsQfQGUSdv
+	IMwjWGHR/vcAxE2VtpLSAb0WBgucWHNZDSRr4GaRj2LUpVvy+Io6zZ0RmNYtsjloRg/uk8nD4E8Ah
+	nbUUTNAUJAeBFHCxTXBvHC+Y7ZNTMpbOvhFDHfEehPd07Pi8U4LqPd7ncOxVpVNSkYOvi3idkmTAg
+	y2+wop6uMTw7iFUY6HyWJkOE9Skz/oO6mWqkC9RCQ/z2Xdd6Qv2f/cSMig27STv1JEf8kNtv/Wi5n
+	HipaIAx5yjtD84Cqr7hg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0RCH-00000008CXm-16HL;
-	Sun, 21 Sep 2025 21:02:13 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1v0RG0-00000008DDX-0spK;
+	Sun, 21 Sep 2025 21:06:04 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0RCE-00000008CX4-0iGD;
-	Sun, 21 Sep 2025 21:02:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:In-Reply-To:References;
-	bh=gp/wZE0fDakAICLTarIzJLK2I+Hr8K7LrcHSpG0GvCA=; b=yeMChb36K7dkO4z2vnZJtQClrS
-	hGJYFGSy9y2EgFQWXC8jsN1QTAOIIh40d7dK9kj4mdTqOy3aG7s3QrMzUX0MWd6z/tPYCKdtVjCHr
-	lLQ+GwMMoth49XBHM9ORoFnAPquOXEcInzpK/9kPPRUGuQGcDA1qa3dnO2R7Vg1+YbA7T3cmzk6HX
-	3f3hVUBdo8GV5S2SHeT49yuhuOlYw7tPSJVrFPVZyGKT7BrycNoId065KpH2vyXKWNdsBapdbQy0l
-	GUdi+GHO1REIFU9UiSfAXzKSgEE91V0GGQXQietNje7eaC5Mwes0YY6jMv8dqgdKnNKXLwg4Lm+XU
-	29eq05OQ==;
-Received: from i53875add.versanet.de ([83.135.90.221] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1v0RCC-0007dq-GS; Sun, 21 Sep 2025 23:02:08 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: arm@kernel.org
-Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
-Subject: [GIT PULL] Rockchip soc32 changes for 6.18 #1
-Date: Sun, 21 Sep 2025 23:02:07 +0200
-Message-ID: <6025175.zQ0Gbyo6oJ@diego>
+	id 1v0RFy-00000008DC1-3LRl;
+	Sun, 21 Sep 2025 21:06:02 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id CC92D601D8;
+	Sun, 21 Sep 2025 21:06:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 767C2C4CEE7;
+	Sun, 21 Sep 2025 21:06:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1758488761;
+	bh=p36wcFyPQqlAAPFV8kif2hBbqmR6V3mP2tc/m/CbJ/4=;
+	h=From:Subject:Date:To:Cc:Reply-To:From;
+	b=BFm6zQpP+meGakJqNg2ZDtXbgZR00zlC5XxK3+S/NLiIUjb3J3gzVr9l4GZ+VShHJ
+	 VkjuYNZmEiUPELtAZmV9BVufjY2hu3Ku+wnJ2XfaQB577FRzj1sakLGN4PQpurl0l3
+	 zZolOgngMgUKfmWNQXsCGZC1sk6xESHdKWpbLLuSWa2vPncgLndhEWmBFsEwfh5Sr2
+	 S8gzk1iDYvwXmRBcXTRl3iBhHyF7fTtj8jtLlXkViyg8vlTo2jypxqwFtureDMD8P4
+	 qDynJWzIrc6AbdogAvmGwDKCgtO0aGujliDnYbc83Zx/H4m4ZSFP4fIckoJ3K3nDqC
+	 Crc4IWKtdPEPw==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 66B64CAC5A8;
+	Sun, 21 Sep 2025 21:06:01 +0000 (UTC)
+From: Rudraksha Gupta via B4 Relay <devnull+guptarud.gmail.com@kernel.org>
+Subject: [PATCH v3 0/5] Upstreaming Pinephone Pro Patches
+Date: Sun, 21 Sep 2025 14:05:53 -0700
+Message-Id: <20250921-ppp_light_accel_mag_vol-down-v3-0-7af6651f77e4@gmail.com>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250921_140210_218581_56271E66 
-X-CRM114-Status: UNSURE (   9.35  )
-X-CRM114-Notice: Please train this message.
+X-B4-Tracking: v=1; b=H4sIALFo0GgC/43NQQ6CMBCF4auQrq0pBaG68h7GkDIdyiSFEiBVQ
+ 7i7hRU7Xf5v8b2FTTgSTuyWLGzEQBP5PkZ2Shi0urfIycRmUsiLuErBh2GoHNl2rjQAuqrTtgr
+ eceNfPVdpCSpvjEZlWCSGERt67/zjGbulafbjZ38L6bb+CYeUCw6qrsFkKPGa322nyZ3Bd2yDg
+ zxi6Q9MRgyLGqAAXeYaj9i6rl8CYUdAFQEAAA==
+X-Change-ID: 20250920-ppp_light_accel_mag_vol-down-817c84fdae8d
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Rudraksha Gupta <guptarud@gmail.com>, Ondrej Jirman <megi@xff.cz>, 
+ "Leonardo G. Trombetta" <lgtrombetta@gmx.com>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1758488760; l=2092;
+ i=guptarud@gmail.com; s=20240916; h=from:subject:message-id;
+ bh=p36wcFyPQqlAAPFV8kif2hBbqmR6V3mP2tc/m/CbJ/4=;
+ b=khC8t4v1Xu2EYfXP+DQY1VBR1+l0j/G7ns8n+3Uvymukxh1d3LQBBOqQmCJhHs7Fu9juXzzqq
+ YjcenQ0Ge0WDV1e1PLp2Plg2a/OL903KHrvnQARvu9wQ3uhqCRbw8r8
+X-Developer-Key: i=guptarud@gmail.com; a=ed25519;
+ pk=ETrudRugWAtOpr0OhRiheQ1lXM4Kk4KGFnBySlKDi2I=
+X-Endpoint-Received: by B4 Relay for guptarud@gmail.com/20240916 with
+ auth_id=211
+X-Original-From: Rudraksha Gupta <guptarud@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,38 +82,59 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Reply-To: guptarud@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The following changes since commit 8f5ae30d69d7543eee0d70083daf4de8fe15d585:
+Throughout the years, many have contributed to the Pinephone Pro (ppp)
+development. Unfortunately, these patches are scattered around various
+repositories in different states.
 
-  Linux 6.17-rc1 (2025-08-10 19:41:16 +0300)
+I will be attempting to upstream these patches. I will start off with the
+following small series:
+- Add light/proximity sensor support
+  - https://codeberg.org/megi/linux/commit/f171bc7013bc7ad3de9af817bfbcbfa548ebe01c
+- Add accelerometer sensor support
+  - https://codeberg.org/megi/linux/commit/b0bb7633e073a6760fa213b8c4a78ea2e73c7bf1
+- Add magnetometer sensor support
+  - https://codeberg.org/megi/linux/commit/2f7e67f451f16eaf15b81aa1dbdf126d54927d35
+- Add mount-matrix for magnetometer
+  - https://codeberg.org/megi/linux/commit/d7cd2eab931e32fa94408a96d73b4e6c0616107a
+- Fix voltage threshold for volume down key
+  - https://codeberg.org/megi/linux/commit/7c496a5cc27ed4e38b740f36c2d8b2c62f80ae54
 
-are available in the Git repository at:
+Signed-off-by: Rudraksha Gupta <guptarud@gmail.com>
+---
+Changes in v3:
+- change magnetometer mount matrix
+- update volume button threshold
+- Link to v2: https://lore.kernel.org/r/20250921-ppp_light_accel_mag_vol-down-v2-0-e6bcc6ca74ae@gmail.com
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v6.18-rockchip-arm32-1
+Changes in v2:
+- remove usb-typec node in dts from light/proximity sensor patch
+- Link to v1: https://lore.kernel.org/r/20250920-ppp_light_accel_mag_vol-down-v1-0-c8bbcd3e2e94@gmail.com
 
-for you to fetch changes up to a1b20e062245571c128ec521c4df56ad1bff9bd0:
+---
+Leonardo G. Trombetta (1):
+      arm64: dts: rk3399-pinephone-pro: Add mount-matrix for magnetometer
 
-  ARM: rockchip: remove REGULATOR conditional to PM (2025-09-18 21:05:39 +0200)
+Ondrej Jirman (4):
+      arm64: dts: rk3399-pinephone-pro: Add light/proximity sensor support
+      arm64: dts: rk3399-pinephone-pro: Add accelerometer sensor support
+      arm64: dts: rk3399-pinephone-pro: Add magnetometer sensor support
+      arm64: dts: rk3399-pinephone-pro: Fix voltage threshold for volume keys
 
-----------------------------------------------------------------
-Commit d1bef995f61a ("ARM: rockchip: force built-in regulator support for PM")
-introduced the REGULATOR if PM dependency for the suspend code, while
-commit d1558dfd9f22 ("ARM: rockchip: Force CONFIG_PM on Rockchip systems")
-later always enabled PM.
+ .../boot/dts/rockchip/rk3399-pinephone-pro.dts     | 42 ++++++++++++++++++++--
+ 1 file changed, 40 insertions(+), 2 deletions(-)
+---
+base-commit: f83ec76bf285bea5727f478a68b894f5543ca76e
+change-id: 20250920-ppp_light_accel_mag_vol-down-817c84fdae8d
 
-So we can simplify the REGULATOR dependency by dropping the if PM.
-
-----------------------------------------------------------------
-Mikko Rapeli (1):
-      ARM: rockchip: remove REGULATOR conditional to PM
-
- arch/arm/mach-rockchip/Kconfig | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
+Best regards,
+-- 
+Rudraksha Gupta <guptarud@gmail.com>
 
 
 
