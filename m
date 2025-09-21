@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FFABCAC5B1
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 432C8CAC5A8
 	for <linux-rockchip@archiver.kernel.org>; Sun, 21 Sep 2025 08:04:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,44 +12,44 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oc05HWPqsxxVKniAZa6SiGoIvj9P73qeEpQQ/aGY5xk=; b=wILa7oUyEsR6Cc
-	76IaOuVpvUbrOSkybdoOs3Pn889vDRsnaD5HAnO+NF91+OjUaDLw/WeIWBc2iHk1gvM+i6wODw+Ep
-	siGC+LUG57BpdmFZgKuADJtheJbNbRCU6Q2Nv+mdo0jTYV3zccZhya27poOTP7TpW4aUdgb2i44eq
-	FGndePQx0RzXN0+GQRb5Kst987FpqsQ3LOKmdJ55OqW8b6pMRJL506VdeevBTwM4b+sVSuZ/HV/0H
-	28ZjQIstaKrLi/ymEaVVRJqEV2h0Mz3D+HZNQdzjiKsw+21ZpYBQWOi/IGXQjA+sEUr+1njLDDK79
-	7TsqbW5tnfopw0WjNBFA==;
+	List-Owner; bh=sw7udMv6ndKVJ/yZk8uwQ+KkRbNaHK6yD7MN9gbgtJM=; b=G+ChBkvFd8PFE+
+	rj21r1xcOGnSiTtotJKiimEPQRXThPkhKzloyBl046XZDRg6fu9DygY75BmobZx8v6l9woKl11116
+	38RgfQj3EBbI8BYI41YCcq2+1WfDYLeaakRs/7YLXTNhIoPwgLrkK8hSGKKI6ZGgcxOa00SCf7KZB
+	wnGurFjI3Wnsmm4hXma6zI1qvftB+GPoxLiIwEqVn3WvBsj/kHCK94I1XkYeslgiBn/Dut6gJ0n7M
+	ze9/erK7BPs/q1qGTS4ix3+I2O2qzuaxh0x7QRk0Ssj9COm4zyCBZaNEizucFQBJV2kJupKWK9lI0
+	4DS++HalD4i45tKW6HAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0F3i-000000071pb-0WcL;
-	Sun, 21 Sep 2025 08:04:34 +0000
+	id 1v0F3h-000000071nu-0YeQ;
+	Sun, 21 Sep 2025 08:04:33 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0F3V-000000071fW-1GbK;
-	Sun, 21 Sep 2025 08:04:24 +0000
+	id 1v0F3V-000000071fU-1GZm;
+	Sun, 21 Sep 2025 08:04:23 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id C368B44D3E;
+	by sea.source.kernel.org (Postfix) with ESMTP id 9B48A4034C;
 	Sun, 21 Sep 2025 08:04:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 82BE7C4AF09;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 61073C116B1;
 	Sun, 21 Sep 2025 08:04:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1758441860;
-	bh=UybcLaOkymoniVqkOhi1dIJsOwx69s4glA8eqYum1Fs=;
+	bh=dANZ/yuM6waYGQYmdVXqTPNlVvALmVGnbkrSGvC8deE=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=VIICuYqwYaVCkYyTmNhJ7edOlO5w94DxLr3U3N9hjnO5Li6KWAb4jYnaFiEv12Ng5
-	 rm+tiKNZUE2o/TvRaG/TPozeCNfdur4MKzzUJPL7B9VFmFv4ndY/EN//H/EPgKjn2Z
-	 OI4CMaJ2xssrgwqW5GdizrW2Xp40h4jl4DMjft2xl9oOzSUtF5qlwxBcGmyR1LBnxU
-	 FsXbLtdMLppg8Skd/3m9URMdy37gP5F1E1rIx2YVQCfmCbL4r264R6qdH06/8L3Jyi
-	 tc0ZfO9TEbWw7mB8xgLDvB/eTL2+Y6nujrOI3D01nS11Oh93WcQRXgCxUQhdExn1EW
-	 zLCcFq1S38cAA==
+	b=EBIMznq0xw0ydGyfCLGv0To5LHKyv1jWcTTSxOhIeXONqVCbRf14rqEAbpI1WPMXD
+	 iYy5M2B29yuUJdfH/mduYmqqB8MkrFvYfUqeYdFlU+JH/weDwwaLdE3PHdkf1Pz0pZ
+	 Yoj1TsjJhgOX3fV/M0XpoMlZaSgCQKFTb/h5ghaw9W6/QWptGSQZQcArvD2acPGaUu
+	 A8EzT/j69KhNWlVxdiSQXr8RazmCK3ATtUh+rwDuslHzzkZSa8XHNuLr9tKbIkAYdT
+	 XNjIa4URjeHgmn2LJfJD4d/G1W2G6NEOJ9GLPJuhud2B5nfkgCvkmVosqNGJCbYEvV
+	 8b3dwNienerVA==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 75947CAC5AC;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4FE86CAC59A;
 	Sun, 21 Sep 2025 08:04:20 +0000 (UTC)
 From: Rudraksha Gupta via B4 Relay <devnull+guptarud.gmail.com@kernel.org>
-Date: Sun, 21 Sep 2025 01:04:21 -0700
-Subject: [PATCH v2 3/5] arm64: dts: rk3399-pinephone-pro: Add magnetometer
- sensor support
+Date: Sun, 21 Sep 2025 01:04:19 -0700
+Subject: [PATCH v2 1/5] arm64: dts: rk3399-pinephone-pro: Add
+ light/proximity sensor support
 MIME-Version: 1.0
-Message-Id: <20250921-ppp_light_accel_mag_vol-down-v2-3-e6bcc6ca74ae@gmail.com>
+Message-Id: <20250921-ppp_light_accel_mag_vol-down-v2-1-e6bcc6ca74ae@gmail.com>
 References: <20250921-ppp_light_accel_mag_vol-down-v2-0-e6bcc6ca74ae@gmail.com>
 In-Reply-To: <20250921-ppp_light_accel_mag_vol-down-v2-0-e6bcc6ca74ae@gmail.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -58,19 +58,19 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
  Rudraksha Gupta <guptarud@gmail.com>, Ondrej Jirman <megi@xff.cz>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1758441859; l=951;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1758441859; l=1340;
  i=guptarud@gmail.com; s=20240916; h=from:subject:message-id;
- bh=kj5gC9w53IltD4i1gA/bywfiCknL042/7ef/++JJoRY=;
- b=UqzF3/MQI2OHSbCUkIhxdxODJaVOYLczY3yCnHaOrlzoA+p185xGGbKpbJxtaHe4CidZlX3ST
- a+xMF3P46+7BLY+bMX4kAY9XmManFa8pmzA3ZJLUOsvmULgcsgfJ98R
+ bh=hhqVOo3Ifd3acg7mEDnoZwYQLjaVIlSiKU2AQ4pfc+I=;
+ b=UrgSS7vdcFXLI0RXR1tdG25kUnXIyw2IlIePrzpv0P1vtHhUYI1IP5lBSe64iJMyZ6/8/7gdv
+ QLo/qVo8+lrCDgqChZB/yIWE9aOv5UK5Bt8cofhlRs4YvzbVrHOHgD2
 X-Developer-Key: i=guptarud@gmail.com; a=ed25519;
  pk=ETrudRugWAtOpr0OhRiheQ1lXM4Kk4KGFnBySlKDi2I=
 X-Endpoint-Received: by B4 Relay for guptarud@gmail.com/20240916 with
  auth_id=211
 X-Original-From: Rudraksha Gupta <guptarud@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250921_010421_393657_B48FFD00 
-X-CRM114-Status: UNSURE (   8.85  )
+X-CRM114-CacheID: sfid-20250921_010421_372222_6D25092A 
+X-CRM114-Status: UNSURE (   8.99  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -91,35 +91,49 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Ondrej Jirman <megi@xff.cz>
 
-Pinephone Pro uses AF8133J.
+Pinephone Pro uses STK3311
 
 Signed-off-by: Ondrej Jirman <megi@xff.cz>
 Signed-off-by: Rudraksha Gupta <guptarud@gmail.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-index 21ff12ac5f6e52041f485c9f2702f5a15ee831f9..266a08540dd0fe099319ec703bb0828c8c5c2c25 100644
+index 6f97e57f36f5599f4027a0f3db98bcbc69cef5e5..65ee0b805034a4357a766d4f1f9efa2d4a843d77 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-@@ -554,6 +554,16 @@ mpu6500@68 {
+@@ -520,6 +520,17 @@ touchscreen@14 {
+ 		touchscreen-size-x = <720>;
+ 		touchscreen-size-y = <1440>;
  	};
++
++	light-sensor@48 {
++		compatible = "sensortek,stk3311";
++		reg = <0x48>;
++		interrupt-parent = <&gpio4>;
++		interrupts = <RK_PD3 IRQ_TYPE_EDGE_FALLING>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&stk3311_int>;
++		vdd-supply = <&vcc_3v0>;
++		leda-supply = <&vcc_3v0>;
++	};
  };
  
-+&i2c4 {
-+	af8133j: compass@1c {
-+		compatible = "voltafield,af8133j";
-+		reg = <0x1c>;
-+		reset-gpios = <&gpio1 RK_PA1 GPIO_ACTIVE_LOW>;
-+		avdd-supply = <&vcc_3v0>;
-+		dvdd-supply = <&vcc_1v8>;
+ &i2c4 {
+@@ -689,6 +700,12 @@ vcc1v8_codec_en: vcc1v8-codec-en {
+ 		};
+ 	};
+ 
++	stk3311 {
++		stk3311_int: stk3311-int {
++			rockchip,pins = <4 RK_PD3 RK_FUNC_GPIO &pcfg_input_pull_up>;
++		};
 +	};
-+};
 +
- &io_domains {
- 	bt656-supply = <&vcc1v8_dvp>;
- 	audio-supply = <&vcca1v8_codec>;
+ 	wireless-bluetooth {
+ 		bt_wake_pin: bt-wake-pin {
+ 			rockchip,pins = <2 RK_PD2 RK_FUNC_GPIO &pcfg_pull_none>;
 
 -- 
 2.51.0
