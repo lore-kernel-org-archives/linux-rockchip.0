@@ -4,113 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48C17CAC5A7
-	for <linux-rockchip@archiver.kernel.org>; Sun, 21 Sep 2025 17:20:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CEADCAC59A
+	for <linux-rockchip@archiver.kernel.org>; Sun, 21 Sep 2025 20:04:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Subject:Cc:To:From:Message-ID:Date:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:From:Subject:
+	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RYCzSvLU8tbAQ9LGT4NJdBBgJvqpf6BEuKknQZhZhKQ=; b=equY3FHtXsiLIf
-	vM8eGX08tdqtv+5ewhj8HH0cTjQ6zvKvR7YyRPS9H/pAzAFTB7L+jNQ3krsrpNKoNE2vZrmXogck3
-	pHtCrVA1cUJIwo7Gx+qGp/MpXPengQfWgx9b8Yi2Xt0v7ynGfJlzoQ4IBPnv6XNSli3fwmeEborqM
-	3cHV6QpQl54H7HMGKHlworvfTkwWI37+5cSIxfknlNC6WesSDQfmuutuXhGY6h9eDawd4lJHUYpZl
-	YGp7uCZGipm193w8OkBEIMXOL82sgSoKuPZIpZtg+UVYKXgMCeIICbxVz1MeGjf/fHFXK1ohhBe6c
-	8GaiK0Z4EGCk9LmcDXPg==;
+	List-Owner; bh=zRA3VYKfoJ3wJKhVYR/7D6LO8e/YEIXnixINYcgMHAw=; b=WHJUF0Zbl4aeNQ
+	i63LroJRFlAfZQ0RJgVeu0NcEpToQnYjY1kgapd1IZlYP0xofHBcsvaowTS3v5Lm3CoRSh0GJ2gkd
+	7rADtYyuaaoq00tGLHVjrthNeWjOAugYFX5+uDeD0IR1LVxc+Wufpdpwzzq01GtiM+ce5Nndf/2Yn
+	cJDrbWM23xEPugC4oEJksW9VrSuJQsck8bgpLcUmxRhqy+HHmzFIVt8BOulxvvyUAlSQyN7kOeCwT
+	gco8jq9iEEbpX66TxaVW0ZfeK6u2v62ibFsS0j+PVbny6E5W/zQ3flnTOtJD3KZ2Ro6m7Zlwr4En3
+	zcDgOKnVPwEnDqeGBLtg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0Njd-00000007v3M-1KQ5;
-	Sun, 21 Sep 2025 17:20:25 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1v0QIM-000000087zd-0PuT;
+	Sun, 21 Sep 2025 20:04:26 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0Nja-00000007v1E-2tqt;
-	Sun, 21 Sep 2025 17:20:22 +0000
+	id 1v0QIK-000000087yT-0lqY;
+	Sun, 21 Sep 2025 20:04:24 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 49631600AE;
-	Sun, 21 Sep 2025 17:19:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E58E4C4CEE7;
-	Sun, 21 Sep 2025 17:19:49 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id D4FE5600AE;
+	Sun, 21 Sep 2025 20:04:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5A835C4CEE7;
+	Sun, 21 Sep 2025 20:04:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1758475190;
-	bh=rxiF7+0X+E1DwELu2yV6ORqUEuJ5BQYtLtP8zWsIpaI=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=M4/7Svp6AnZCeOKbjsm5eSg8NQKXGqzgGhzt1oHC2Jaw2wkJqRR/Lx77QBE/qh7c3
-	 tlWvTiszBm2dAbpbNBuNdlAfPf2ZVOZQCyQ9wrFCjom3tnv6mBVuf+aPHZoZ6VRVBw
-	 IPXwvAe0UIYT0VfxkFlwDh02s9o7A2R+BZXlB9ogV4yC4FsiZ7vmS0F9SRSTupxy8v
-	 eUmTvjfRQhom1jH1wSFN6j49GD2osRCotFGsMjNLAGJPeh0/XJPS1ehi8N5cotcwUj
-	 awvcjovcHP77qzG9dNH8B/L6svBqwaP++ul63wxVNEud6cw6+I0No9ua9nzQTKg9m6
-	 k+b0AK3XAZn1Q==
-Received: from sofa.misterjones.org ([185.219.108.64] helo=lobster-girl.misterjones.org)
-	by disco-boy.misterjones.org with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.98.2)
-	(envelope-from <maz@kernel.org>)
-	id 1v0Nj1-00000008Ctq-0grY;
-	Sun, 21 Sep 2025 17:19:47 +0000
-Date: Sun, 21 Sep 2025 18:19:46 +0100
-Message-ID: <87ms6nyb7x.wl-maz@kernel.org>
-From: Marc Zyngier <maz@kernel.org>
-To: Alok Tiwari <alok.a.tiwari@oracle.com>
-Cc: thomas.petazzoni@bootlin.com,
-	pali@kernel.org,
-	lpieralisi@kernel.org,
-	kwilczynski@kernel.org,
-	mani@kernel.org,
-	robh@kernel.org,
-	bhelgaas@google.com,
-	joyce.ooi@intel.com,
-	alyssa@rosenzweig.io,
-	jim2101024@gmail.com,
-	florian.fainelli@broadcom.com,
-	bcm-kernel-feedback-list@broadcom.com,
-	rjui@broadcom.com,
-	sbranden@broadcom.com,
-	ryder.lee@mediatek.com,
-	jianjun.wang@mediatek.com,
-	sergio.paracuellos@gmail.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	marek.vasut+renesas@gmail.com,
-	yoshihiro.shimoda.uh@renesas.com,
-	geert+renesas@glider.be,
-	magnus.damm@gmail.com,
-	shawn.lin@rock-chips.com,
-	heiko@sntech.de,
-	michal.simek@amd.com,
-	bharat.kumar.gogada@amd.com,
-	will@kernel.org,
-	kys@microsoft.com,
-	haiyangz@microsoft.com,
-	wei.liu@kernel.org,
-	decui@microsoft.com,
-	linus.walleij@linaro.org,
-	thierry.reding@gmail.com,
-	jonathanh@nvidia.com,
-	rric@kernel.org,
-	nirmal.patel@linux.intel.com,
-	toan@os.amperecomputing.com,
-	jonathan.derrick@linux.dev,
-	linux-pci@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rpi-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-hyperv@vger.kernel.org,
-	linux-tegra@vger.kernel.org
-Subject: Re: [PATCH RFC] PCI: Convert devm_pci_alloc_host_bridge() users to error-pointer returns
-In-Reply-To: <20250921161434.1561770-1-alok.a.tiwari@oracle.com>
-References: <20250921161434.1561770-1-alok.a.tiwari@oracle.com>
-User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
- FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/30.1
- (aarch64-unknown-linux-gnu) MULE/6.0 (HANACHIRUSATO)
-MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
-X-SA-Exim-Connect-IP: 185.219.108.64
-X-SA-Exim-Rcpt-To: alok.a.tiwari@oracle.com, thomas.petazzoni@bootlin.com, pali@kernel.org, lpieralisi@kernel.org, kwilczynski@kernel.org, mani@kernel.org, robh@kernel.org, bhelgaas@google.com, joyce.ooi@intel.com, alyssa@rosenzweig.io, jim2101024@gmail.com, florian.fainelli@broadcom.com, bcm-kernel-feedback-list@broadcom.com, rjui@broadcom.com, sbranden@broadcom.com, ryder.lee@mediatek.com, jianjun.wang@mediatek.com, sergio.paracuellos@gmail.com, matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, marek.vasut+renesas@gmail.com, yoshihiro.shimoda.uh@renesas.com, geert+renesas@glider.be, magnus.damm@gmail.com, shawn.lin@rock-chips.com, heiko@sntech.de, michal.simek@amd.com, bharat.kumar.gogada@amd.com, will@kernel.org, kys@microsoft.com, haiyangz@microsoft.com, wei.liu@kernel.org, decui@microsoft.com, linus.walleij@linaro.org, thierry.reding@gmail.com, jonathanh@nvidia.com, rric@kernel.org, nirmal.patel@linux.intel.com, toan@os.amperecomputing.com, jonathan.derrick@linux.
- dev, linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rpi-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-hyperv@vger.kernel.org, linux-tegra@vger.kernel.org
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org); SAEximRunCond expanded to false
+	s=k20201202; t=1758485061;
+	bh=oK6PNMhjBQuguBf6ZyCDvGmGsPBZFWxojb6mTU595d4=;
+	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+	b=iCTBvx1ycWtFaxbFJjKnE8lmTRV6YKBljeoNPWr3O0f9KOI2wK+gY/chvSLppb2iw
+	 nKDM1jLs/kX3EvgUACM5BKR1e32v5rVmusbFg6REu8gh8nHtL4KnpR4cztPIEWYsyn
+	 85sV5ZWf8I2axh1P00A55pSPIoljTkKeShL0Yo6iD75KN1B4tcxd0MZkgqGmYUT1mQ
+	 IpOfY2l2pbjRNsgwxsBcIB9YfzgZxcgmX2t0tM84PDIkYUJsgjzu0i/zQZHS16n4gv
+	 WrApdIyoKSa91FOKnNUjwHaVFh7bF8WfL1saxL8xffSMJav7UkpqNUB9WhDh8//gHr
+	 V8yFvFNiMSeTQ==
+MIME-Version: 1.0
+In-Reply-To: <20250623-byeword-update-v2-19-cf1fc08a2e1f@collabora.com>
+References: <20250623-byeword-update-v2-0-cf1fc08a2e1f@collabora.com> <20250623-byeword-update-v2-19-cf1fc08a2e1f@collabora.com>
+Subject: Re: [PATCH v2 19/20] clk: sp7021: switch to FIELD_PREP_WM16 macro
+From: Stephen Boyd <sboyd@kernel.org>
+To: Alexandre Torgue <alexandre.torgue@foss.st.com>, Andrew Lunn <andrew+netdev@lunn.ch>, Andy Yan <andy.yan@rock-chips.com>, Bill Wendling <morbo@google.com>, Bjorn Helgaas <bhelgaas@google.com>, Chanwoo Choi <cw00.choi@samsung.com>, David Airlie <airlied@gmail.com>, David S. Miller <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Heiko Stuebner <heiko@sntech.de>, Jaehoon Chung <jh80.chung@samsung.com>, Jakub Kicinski <kuba@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Justin Stitt <justinstitt@google.com>, Kishon Vijay Abraham I <kishon@kernel.org>, Krzysztof =?utf-8?q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>, Kyungmin Park <kyungmin.park@samsung.com>, Liam Girdwood <lgirdwood@gmail.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Manivannan Sadhasivam <mani@kernel.org>, Mark Brown <broonie@kernel.org>, Mauro Carvalho Chehab <mchehab@kernel.org>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Maxime Ripard <mripard@k
+ ernel.org>, Michael Turquette <mturquette@baylibre.com>, MyungJoo Ham <myungjoo.ham@samsung.com>, Nathan Chancellor <nathan@kernel.org>, Nick Desaulniers <nick.desaulniers+lkml@gmail.com>, Nicolas Frattaroli <frattaroli.nicolas@gmail.com>, Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, Paolo Abeni <pabeni@redhat.com>, Qin Jian <qinjian@cqplus1.com>, Rasmus Villemoes <linux@rasmusvillemoes.dk>, Rob Herring <robh@kernel.org>, Sandy Huang <hjc@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>, Shreeya Patel <shreeya.patel@collabora.com>, Simona Vetter <simona@ffwll.ch>, Takashi Iwai <tiwai@suse.com>, Thomas Zimmermann <tzimmermann@suse.de>, Ulf Hansson <ulf.hansson@linaro.org>, Vinod Koul <vkoul@kernel.org>, Yury Norov <yury.norov@gmail.com>
+Date: Sun, 21 Sep 2025 13:04:19 -0700
+Message-ID: <175848505982.4354.2243738737036950081@lazor>
+User-Agent: alot/0.11
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,121 +62,29 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: linux-pm@vger.kernel.org, netdev@vger.kernel.org, llvm@lists.linux.dev, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-sound@vger.kernel.org, linux-pci@vger.kernel.org, linux-phy@lists.infradead.org, kernel@collabora.com, linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sun, 21 Sep 2025 17:14:07 +0100,
-Alok Tiwari <alok.a.tiwari@oracle.com> wrote:
+Quoting Nicolas Frattaroli (2025-06-23 09:05:47)
+> The sp7021 clock driver has its own shifted high word mask macro,
+> similar to the ones many Rockchip drivers have.
 > 
-> devm_pci_alloc_host_bridge() and pci_alloc_host_bridge() previously
-> returned NULL on failure, forcing callers to special-case NULL handling
-> and often hardcode -ENOMEM as the error.
+> Remove it, and replace instances of it with hw_bitfield.h's
+> FIELD_PREP_WM16 macro, which does the same thing except in a common
+> macro that also does compile-time error checking.
 > 
-> This series updates devm_pci_alloc_host_bridge() to consistently return
-> error pointers (ERR_PTR) with the actual error code, instead of NULL.
-> All callers across PCI host controller drivers are updated to use
-> IS_ERR_OR_NULL()/PTR_ERR() instead of NULL checks and hardcoded -ENOMEM.
+> This was compile-tested with 32-bit ARM with Clang, no runtime tests
+> were performed as I lack the hardware. However, I verified that fix
+> commit 5c667d5a5a3e ("clk: sp7021: Adjust width of _m in HWM_FIELD_PREP()")
+> is not regressed. No warning is produced.
 > 
-> Benefits:
->   - Standardizes error handling with Linux kernel ERR_PTR()/PTR_ERR()
->     conventions.
->   - Ensures that the actual error code from lower-level helpers is
->     propagated back to the caller.
->   - Removes ambiguity between NULL and error pointer returns.
->
-> Touched drivers include:
->  cadence (J721E, cadence-plat)
->  dwc (designware, qcom)
->  mobiveil (layerscape-gen4, mobiveil-plat)
->  aardvark, ftpci100, ixp4xx, loongson, mvebu, rcar, tegra, v3-semi,
->  versatile, xgene, altera, brcmstb, iproc, mediatek, mt7621, xilinx,
->  plda, and others
-> 
-> This patch updates error handling across these host controller drivers
->  so that callers consistently receive ERR_PTR() instead of NULL.
+> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> ---
 
-Not quite.
-
-> diff --git a/arch/mips/pci/pci-xtalk-bridge.c b/arch/mips/pci/pci-xtalk-bridge.c
-> index e00c38620d14..c2c8ed8ecac1 100644
-> --- a/arch/mips/pci/pci-xtalk-bridge.c
-> +++ b/arch/mips/pci/pci-xtalk-bridge.c
-> @@ -636,8 +636,8 @@ static int bridge_probe(struct platform_device *pdev)
->  	pci_set_flags(PCI_PROBE_ONLY);
->  
->  	host = devm_pci_alloc_host_bridge(dev, sizeof(*bc));
-> -	if (!host) {
-> -		err = -ENOMEM;
-> +	if (IS_ERR_OR_NULL(host)) {
-> +		err = PTR_ERR(host);
-
-Under which circumstances can NULL still be returned? Because applying
-PTR_ERR() to a NULL pointer looks like a pretty bad idea.
-
->  		goto err_remove_domain;
->  	}
->  
-
-[...]
-
-> diff --git a/drivers/pci/probe.c b/drivers/pci/probe.c
-> index f41128f91ca7..e627f36b7683 100644
-> --- a/drivers/pci/probe.c
-> +++ b/drivers/pci/probe.c
-> @@ -686,18 +686,18 @@ struct pci_host_bridge *devm_pci_alloc_host_bridge(struct device *dev,
->  
->  	bridge = pci_alloc_host_bridge(priv);
->  	if (!bridge)
-> -		return NULL;
-> +		return ERR_PTR(-ENOMEM);
->  
->  	bridge->dev.parent = dev;
->  
->  	ret = devm_add_action_or_reset(dev, devm_pci_alloc_host_bridge_release,
->  				       bridge);
->  	if (ret)
-> -		return NULL;
-> +		return ERR_PTR(ret);
->  
->  	ret = devm_of_pci_bridge_init(dev, bridge);
->  	if (ret)
-> -		return NULL;
-> +		return ERR_PTR(ret);
->  
->  	return bridge;
->  }
-> @@ -3198,7 +3198,7 @@ struct pci_bus *pci_create_root_bus(struct device *parent, int bus,
->  
->  	bridge = pci_alloc_host_bridge(0);
->  	if (!bridge)
-> -		return NULL;
-> +		return ERR_PTR(-ENOMEM);
->  
->  	bridge->dev.parent = parent;
->  
-
-And what about the code that comes after that if we fail to register
-the bus? The remaining "return NULL", which will then be interpreted
-as 0 in any user of this function, leading to a worse situation than
-what we have now.
-
-Also, things like pci_scan_root_bus() have the following pattern:
-
-	b = pci_create_root_bus(parent, bus, ops, sysdata, resources);
-	if (!b)
-		return NULL;
-
-which will end with prejudice given what you have introduced.
-
-If you are going to touch this sort of things, at least make it
-consistent, analyse *all* code paths, and provide documentation.
-
-	M.
-
--- 
-Jazz isn't dead. It just smells funny.
+Acked-by: Stephen Boyd <sboyd@kernel.org>
 
 _______________________________________________
 Linux-rockchip mailing list
