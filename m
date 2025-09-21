@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C317CAC5A7
-	for <linux-rockchip@archiver.kernel.org>; Sun, 21 Sep 2025 11:20:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9168ACAC5AA
+	for <linux-rockchip@archiver.kernel.org>; Sun, 21 Sep 2025 13:11:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0Ge+nVy+DFCvUS1ZJ58cuVFXCHpNA5Zqel7ksNpVVaM=; b=BHgq2uSOUul7oA
-	f4jhxqIk38YzJJuVN4a2VZlI1GiNbuNr5FR72QmIROSuCvk1JG3TxJ+79it+cHCo2ajQIOXia1nEr
-	qmt08CExlUn/vopigw4XMq9TICvAXxjnxs+Xgaj0a/gujlhbCREm6Bsjy4LQVbE6I1ZuHVaonJD8z
-	PqgvMVHyprxtarkCMzC97wu0QDv0voEFNgyDT9Z2ik0WzFuDj8c/51R5i8pbKMvXVG2LyeRyKI92V
-	Mp1E+wynxfbeOVZENRzj0AmBL2BL5NBdCjYEJCC5Vup5+hX19yat0MKjdeuYbM5bhoHFfO24WeNzb
-	/bjuQhYt9gM5+mdfZpoA==;
+	List-Owner; bh=poWmerVE4sOe+snGEiwhKTixEK6DXg8coBnvRotpc/A=; b=hT6M7MVmp+LLsN
+	rRCSdBRarSz71xlKjRJs2U5Rdl1QZZs52aPaBc2tPlRjjZiOw28rANcUgD9tbOA9Uw5qha80zISxd
+	J9HHY61pnNX5uuhxpodKAL8YO7snHTeqL6s3xhNEPYjlnJMpL9tz10CtZ49ivLd3lUQYqfY63cNqJ
+	W5n1R7MTZia/0CrJ7FgvW1bIqAPXCnTW3OdPrw8Dlqxe43eNZbccZToU5W0EUazAcl0e68aVBTXcn
+	UDl0GedkQGZ8bsZghuGX0cza66CUouxFzyVxsQT7Z4hHH2kSbZJSXf4t5XdAUhu6B7rRh9vhi+D4R
+	DEai5+vsoHRUaoRdJ6lw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0I72-00000007Ng8-2VGO;
-	Sun, 21 Sep 2025 11:20:12 +0000
+	id 1v0JqD-00000007VFD-2mtW;
+	Sun, 21 Sep 2025 13:10:57 +0000
 Received: from vps.xff.cz ([195.181.215.36])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0I6z-00000007Ner-17wY;
-	Sun, 21 Sep 2025 11:20:11 +0000
+	id 1v0Jq9-00000007VES-2CQo;
+	Sun, 21 Sep 2025 13:10:55 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=xff.cz; s=mail;
-	t=1758453604; bh=uj7IBPcVgr5j3kXfBUzjwNgz92gThuVhXKzbjYk8hmA=;
+	t=1758460250; bh=DYZxgRurBduAgF9lRk9kGZIRbd3bIwXZL3ok4oNlfF4=;
 	h=Date:From:To:Cc:Subject:X-My-GPG-KeyId:References:From;
-	b=vdj922gU4Bwxp0+IEbQJ62HSf7JICixDFHtqgq7RMoDfAroKG5WAHcjE2dXxGcP6t
-	 Vty3YA30lc1iIbjr1Q4qoLbo4uZpc7uyJQQ9RObMoQzpgzkIUl2DztucV0Fi2SjBM6
-	 MELH9wXs6Y5GWO7GgJRMfxLpzSJrJiXfynhUf4t8=
-Date: Sun, 21 Sep 2025 13:20:03 +0200
+	b=ixZor4FhlbeesOOfPKrhXATito9HFzwpNtFWiEgo1XUfaBVokaylzJe5YPMb4uhXH
+	 HONi/KiM4yrlFjhr0mjt51RQevFLRE0GxuSEWTrTJxEbWcJbu0TJ6+sefRsGJwwHr9
+	 o55PbPJJPaIeD2ytgAibzOcv95SFR0qfYl6AIl2w=
+Date: Sun, 21 Sep 2025 15:10:49 +0200
 From: =?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>
 To: guptarud@gmail.com
 Cc: Rob Herring <robh@kernel.org>, 
 	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
 	Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
 	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 5/5] arm64: dts: rk3399-pinephone-pro: Fix voltage
- threshold for volume down key
-Message-ID: <addgrqhxanzrjdhb7y7y2qrqu4odpoclbwlswuua4yqinrzh2l@wcdtuquzuqvr>
+Subject: Re: [PATCH v2 2/5] arm64: dts: rk3399-pinephone-pro: Add
+ accelerometer sensor support
+Message-ID: <5b6ijumsm6bgqymsfc25frqzjlpiryq7iupuk2pokcb6d4bz56@yqrz6j3oj5ga>
 Mail-Followup-To: =?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>, 
 	guptarud@gmail.com, Rob Herring <robh@kernel.org>, 
 	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
@@ -50,13 +50,13 @@ Mail-Followup-To: =?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>,
 X-My-GPG-KeyId: EBFBDDE11FB918D44D1F56C1F9F0A873BE9777ED
  <https://xff.cz/key.txt>
 References: <20250921-ppp_light_accel_mag_vol-down-v2-0-e6bcc6ca74ae@gmail.com>
- <20250921-ppp_light_accel_mag_vol-down-v2-5-e6bcc6ca74ae@gmail.com>
+ <20250921-ppp_light_accel_mag_vol-down-v2-2-e6bcc6ca74ae@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20250921-ppp_light_accel_mag_vol-down-v2-5-e6bcc6ca74ae@gmail.com>
+In-Reply-To: <20250921-ppp_light_accel_mag_vol-down-v2-2-e6bcc6ca74ae@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250921_042009_775017_289899DD 
-X-CRM114-Status: GOOD (  22.50  )
+X-CRM114-CacheID: sfid-20250921_061054_165972_1D00564E 
+X-CRM114-Status: GOOD (  21.49  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,102 +75,180 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Hi,
 
-On Sun, Sep 21, 2025 at 01:04:23AM -0700, Rudraksha Gupta via B4 Relay wrote:
+On Sun, Sep 21, 2025 at 01:04:20AM -0700, Rudraksha Gupta via B4 Relay wrote:
 > From: Ondrej Jirman <megi@xff.cz>
 > 
-> U-Boot and Linux use different algorithms for determining voltage ranges
-> for comparison. Pick value that will work with both.
+> Pinephone Pro uses mpu6500.
 > 
 > Signed-off-by: Ondrej Jirman <megi@xff.cz>
 > Signed-off-by: Rudraksha Gupta <guptarud@gmail.com>
 > ---
->  arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts | 6 ++++++
+>  1 file changed, 6 insertions(+)
 > 
 > diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-> index 0a4121b05d36c5a7e05eddbd3514a11ae4f7d3eb..4e6df664d780ed4798015db6b2fe79bf7c4e4c00 100644
+> index 65ee0b805034a4357a766d4f1f9efa2d4a843d77..21ff12ac5f6e52041f485c9f2702f5a15ee831f9 100644
 > --- a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
 > +++ b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-> @@ -46,7 +46,7 @@ button-up {
->  		button-down {
->  			label = "Volume Down";
->  			linux,code = <KEY_VOLUMEDOWN>;
-> -			press-threshold-microvolt = <600000>;
-> +			press-threshold-microvolt = <400000>;
+> @@ -544,7 +544,13 @@ mpu6500@68 {
+>  		reg = <0x68>;
+>  		interrupt-parent = <&gpio1>;
+>  		interrupts = <RK_PC6 IRQ_TYPE_LEVEL_LOW>;
+> +		vdd-supply = <&vcc_1v8>;
+>  		vddio-supply = <&vcc_1v8>;
+> +
+> +		mount-matrix =
+> +			"1", "0", "0",
+> +			"0", "-1", "0",
+> +			"0", "0", "1";
 
-This is fixes the issue accidentally...
+I'm not sure where you got this patch, but it's not from me (I know for sure
+I never did any mount-matrix testing/DT patches) and should not have my
+Signed-of-by.
 
-According to the schematic the actual threshold is 1.8V*(2/12) = 0.3V :)
+I have this in my tree https://codeberg.org/megi/linux/commit/d7cd2eab931e32fa94408a96d73b4e6c0616107a
 
-  https://xff.cz/dl/tmp/f1410ee03fac4c5b.png
+Which is:
 
-Linux adc-keys driver uses the "closest to the threshold voltage key wins"
-algorithm.
+  Signed-of-by: Leonardo G. Trombetta <lgtrombetta@gmx.com>
 
-  https://elixir.bootlin.com/linux/v6.16.8/source/drivers/input/keyboard/adc-keys.c#L32
+And has different values on top of that and much more explanation. :)
 
-U-Boot uses the same algorithm implemented differently:
+		mount-matrix =
+			"0", "1", "0",
+			"-1", "0", "0",
+			"0", "0", "1";
 
-  https://elixir.bootlin.com/u-boot/v2025.10-rc4/source/drivers/button/button-adc.c#L97
+So I guess you'd need to provide a bit more information about how you
+tested/verified these values, or where you've got them from.
 
-So my description in the commit message is wrong.
+See: https://github.com/torvalds/linux/blob/master/Documentation/devicetree/bindings/iio/mount-matrix.txt#L93
 
-For the current volume up/down key voltage DT "thresholds" the actual threshold
-used by the driver to determine which key will be detected will be:
+Looking at where the magnetometer is mounted, it's mounted on the bottom side of
+the PCB (U29 chip):
 
-  (100 + (600 - 100)/2) = 350 mV
+  https://xff.cz/dl/tmp/a0a36024d1ce9b15.png
+  https://xff.cz/dl/tmp/8f9dce63f3a7f3f4.png
 
-So unless you press the key very lightly, a lot of the time adc voltage will be
-below 350 mV for the Volume Down key and will be misdetected as Volume Up key
-press.
+Which means it would face from the PCB in the direction of the display and up
+towards the user who is looking at the display, due to the way PCB is mounted.
 
-Here a few volume down key presses on my PPP:
+From the datasheet: https://xff.cz/dl/tmp/6b163fbe4335e58e.png the relationship
+of the chip orientation to measured XYZ values.
 
-[   32.567143] volkey val 1791
-[   32.671337] volkey val 1791
-[   32.775266] volkey val 1791
-[   32.879208] volkey val 1791
-[   32.983109] volkey val 1791
-[   33.086836] volkey val 1791
-[   33.191116] volkey val 300
-[   33.295158] volkey val 298 <-----
-[   33.399351] volkey val 1791
-[   33.503339] volkey val 1792
-[   33.607128] volkey val 1792
-[   33.711296] volkey val 1791
-[   33.815307] volkey val 1791
-[   33.919333] volkey val 1791
-[   34.023392] volkey val 311
-[   34.127329] volkey val 305
-[   34.231124] volkey val 1791
-[   34.335390] volkey val 1791
-[   34.439303] volkey val 1791
-[   34.543256] volkey val 1791
+Putting it together https://xff.cz/dl/tmp/a17eec1488ea7705.png
 
-On my other Pinephone Pro it goes down even to 293 mV when the button is pressed harder.
 
-It doesn't help that the Volume Up button threshold in DT is set incorrectly, too.
-It should be 2mV and not 100mV.
+- Z increases downwards away from user looking at the phone display
+- Y increases to the left
+- X increases to the bottom of the display (towards USB-C connector)
 
-So the correct fix here is to change both button thresholds to:
 
-  Volume Down
+DT bindings state:
 
-    press-threshold-microvolt = <300000>;
+- Magnetometers (compasses) have their world frame of reference relative to the
+  geomagnetic field. The system orientation vis-a-vis the world is defined with
+  respect to the local earth geomagnetic reference frame where (y) is in the
+  ground plane and positive towards magnetic North, (x) is in the ground plane,
+  perpendicular to the North axis and positive towards the East and (z) is
+  perpendicular to the ground plane and positive upwards.
 
-  Volume Up
+     ^^^ North: y > 0
 
-    press-threshold-microvolt = <2000>;
+     (---------)
+     !         !
+     !         !
+     !         !
+     !         !  >
+     !         !  > North: x > 0
+     ! 1  2  3 !  >
+     ! 4  5  6 !
+     ! 7  8  9 !
+     ! *  0  # !
+     (---------)
 
-To match the schematic. Then the threshold/decision voltage will become ~150mV,
-which works fine according to my tests.
+Mount matrix in your patch just flips Y axis and leaves the rest as is, so that
+doesn't seem to match what bindings ask for at all.
+
+Just based on the PCB component placement and datasheets we should have:
+(small letters = DT bindings, big letters output from magnetometer)
+
+  x = -Y
+  y = -X
+  z = -Z
+
+So that gives:
+
+		mount-matrix =
+			"0", "-1", "0",
+			"-1", "0", "0",
+			"0", "0", "-1";
+
+I did a quick test (rotating the phone on the table with display
+facing up):
+
+- Y is highest when right edge of the phone faces north:
+
+  in_magn_x_raw: -3074
+  in_magn_y_raw: -690
+  in_magn_z_raw: -1622
+
+  and lowest when pointing south
+
+  in_magn_x_raw: -3569
+  in_magn_y_raw: -2052
+  in_magn_z_raw: -1824
+ 
+  (X is roughly the same)
+
+  so that matches x = Y
+
+
+- X is highest when top edge of the phone faces north:
+
+  in_magn_x_raw: -3990
+  in_magn_y_raw: -1287
+  in_magn_z_raw: -1677
+
+  and lowest when facing south
+
+  in_magn_x_raw: -2553
+  in_magn_y_raw: -1314
+  in_magn_z_raw: -1624
+
+  (Y is roughly the same)
+
+  y = X
+
+- Z is lower when display faces up
+
+  in_magn_x_raw: -4083
+  in_magn_y_raw: -1179
+  in_magn_z_raw: -2436
+
+  and higher with display facing down
+
+  in_magn_x_raw: -3999
+  in_magn_y_raw: -1584
+  in_magn_z_raw: 393
+
+  z = -Z
+
+So based on that mount-matrix should be:
+
+		mount-matrix =
+			"0", "1", "0",
+			"1", "0", "0",
+			"0", "0", "-1";
+
+Go figure. :-D
 
 Best regards,
 	o.
 
 
->  		};
 >  	};
+>  };
 >  
 > 
 > -- 
