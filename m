@@ -4,59 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F30D2CAC59A
-	for <linux-rockchip@archiver.kernel.org>; Sun, 21 Sep 2025 13:23:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 348EACAC5A7
+	for <linux-rockchip@archiver.kernel.org>; Sun, 21 Sep 2025 16:15:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hYZnvR6fwC6zQnOKUZXp+tKqNJfjHhVP24tx+l2P6P4=; b=X9Vq0n0ecYkgTE
-	dZqFxhjnrSjA3CUARKBTmAIcw7yfv/PQUEUSiNMB4gpEgF5sIr8ifokYIbm5y5b6D06b3dc8MmEIn
-	6iPTc1eqKhDotlvuIjQz6FKZuvPgGeSLx8lcABDpSoY7LJg5HOxV9QSd36NXSPRlnQCAKcaHbNvyI
-	70lVpJkBWwF09lYrnU9szQ7j42+CK+pjgUZApM+7w+hJOyaKqhC29YLgxjk3OnzQhMpKFEs0ljiv/
-	gbVjqzbSQT0Val55AZEFrK5IUSuyaoKQVxSjzjoPVHSlcMYl1tKLehjI3GXpUqJkFK59zSqoDaMCR
-	hrcbwcrwy2YS/aby/NGQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=5UyfeTmFINM2sz4Hkn9Dl0E0DSPBustN/SHvOsvYDyY=; b=sLDcoAVF4ga6nd
+	G6obRGpRZwtzaRvOphnM7eTWlgP0l+3xvF1V+3yxvK9Hg1QOol61XDB5bH4p0UH46i7iSZl/HW3Tj
+	y0kGk36HsSIHHqvIxP/d0HV/qDGDNaw2Bb8z2F52fXUkN8qO2UUT+FUDys42AtWMlOpWSG3MevvxA
+	Sy/Z+pSQ0RyJRDVQoCUtsGrgQUwAf13qpehGOv0dDY2xUd1QShu/WsueOyb+Dpc4NaGEeOoi3tpRs
+	60FCdmVh5KjKriMDpY4WDJHIDoZo1n/GAXwETFKoHKBkUQ0zn5HMdm5cQBITPhFHSTXzCGu8Ki+48
+	vlNTenpwCAbTNMTlrlnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0K26-00000007WLy-2mht;
-	Sun, 21 Sep 2025 13:23:14 +0000
-Received: from vps.xff.cz ([195.181.215.36])
+	id 1v0Mik-00000007kYt-2JUn;
+	Sun, 21 Sep 2025 16:15:26 +0000
+Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0K23-00000007WLA-0GUL;
-	Sun, 21 Sep 2025 13:23:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=xff.cz; s=mail;
-	t=1758460989; bh=SRA4VBUtcuw09nBBzonK77RoRZxUOwd+J5vOix+abk8=;
-	h=Date:From:To:Subject:X-My-GPG-KeyId:References:From;
-	b=fKcTKEZEiWXGW92rHD4rITlvmMZy1K6jdwQxOptmdxCJuGMFa3tkFUuZlfV+S5Zx6
-	 A+lRVpg6u3Wve/xVEFTxoSZdKYyrYTbeDg2PMAWb8mB4Z4MHrz8FbjhcxIs73/tUDP
-	 lF3WhBhLjSUkipvlz9GEROwrPKXWTvFlv32MCBeQ=
-Date: Sun, 21 Sep 2025 15:23:08 +0200
-From: =?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>
-To: guptarud@gmail.com, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 2/5] arm64: dts: rk3399-pinephone-pro: Add
- accelerometer sensor support
-Message-ID: <q2am2ffsvb5ajyzmns3gr5xns43mlpkfbj2ohvltml6tedhzre@d2h2jvp73ctv>
-Mail-Followup-To: =?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>, 
-	guptarud@gmail.com, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-X-My-GPG-KeyId: EBFBDDE11FB918D44D1F56C1F9F0A873BE9777ED
- <https://xff.cz/key.txt>
-References: <20250921-ppp_light_accel_mag_vol-down-v2-0-e6bcc6ca74ae@gmail.com>
- <20250921-ppp_light_accel_mag_vol-down-v2-2-e6bcc6ca74ae@gmail.com>
- <5b6ijumsm6bgqymsfc25frqzjlpiryq7iupuk2pokcb6d4bz56@yqrz6j3oj5ga>
+	id 1v0Mig-00000007kY0-3gT7;
+	Sun, 21 Sep 2025 16:15:25 +0000
+Received: from pps.filterd (m0246632.ppops.net [127.0.0.1])
+	by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 58LFmQqb016374;
+	Sun, 21 Sep 2025 16:14:41 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
+	:content-transfer-encoding:date:from:message-id:mime-version
+	:subject:to; s=corp-2025-04-25; bh=X6MABP9tiU0aFptJdMUuo2CJNl4k0
+	E947uMCZ27uwQs=; b=Y+fkZzDM25py2WOpoDa1x9Lv/6+9mqDK/eAZX3rTvqiZJ
+	NXkw0/wkOeJpQAJmJxYTz9mrsIY05hy1m7GRwN1EOIhjWUzui0vdezMDgLCUh9jJ
+	YkINAmjHCECDl+sTNERoh/47uJMqpiqEGE9VaxDPJUfEx/MSmKArTiALXbevUFTL
+	zcoZJP+NH1wM3zQmpCFyUAa7Ow3Kn3SFCK+giXBwlLyhoWqHGeYpYAEvinfiZrf7
+	kGb706xFLJQpzvpmDuLbqImwNZlqVnZR+EmuXt7MZykSpFBxI2yA5Wi4Gh6H/22s
+	smAWZFYIK4q6wd0yFcOPHzPGV9dNFOiGGGFFX+Ysg==
+Received: from phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (phxpaimrmta01.appoci.oracle.com [138.1.114.2])
+	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 499kvts4bj-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Sun, 21 Sep 2025 16:14:41 +0000 (GMT)
+Received: from pps.filterd (phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
+	by phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (8.18.1.2/8.18.1.2) with ESMTP id 58LEYP5r002154;
+	Sun, 21 Sep 2025 16:14:40 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+	by phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id 499jq5y2fw-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Sun, 21 Sep 2025 16:14:40 +0000
+Received: from phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 58LGEdIX003470;
+	Sun, 21 Sep 2025 16:14:39 GMT
+Received: from ca-dev112.us.oracle.com (ca-dev112.us.oracle.com [10.129.136.47])
+	by phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTP id 499jq5y2fc-1;
+	Sun, 21 Sep 2025 16:14:39 +0000
+From: Alok Tiwari <alok.a.tiwari@oracle.com>
+To: thomas.petazzoni@bootlin.com, pali@kernel.org, lpieralisi@kernel.org,
+        kwilczynski@kernel.org, mani@kernel.org, robh@kernel.org,
+        bhelgaas@google.com, joyce.ooi@intel.com, alyssa@rosenzweig.io,
+        maz@kernel.org, jim2101024@gmail.com, florian.fainelli@broadcom.com,
+        bcm-kernel-feedback-list@broadcom.com, rjui@broadcom.com,
+        sbranden@broadcom.com, ryder.lee@mediatek.com,
+        jianjun.wang@mediatek.com, sergio.paracuellos@gmail.com,
+        matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+        marek.vasut+renesas@gmail.com, yoshihiro.shimoda.uh@renesas.com,
+        geert+renesas@glider.be, magnus.damm@gmail.com,
+        shawn.lin@rock-chips.com, heiko@sntech.de, michal.simek@amd.com,
+        bharat.kumar.gogada@amd.com, will@kernel.org, kys@microsoft.com,
+        haiyangz@microsoft.com, wei.liu@kernel.org, decui@microsoft.com,
+        linus.walleij@linaro.org, thierry.reding@gmail.com,
+        jonathanh@nvidia.com, rric@kernel.org, nirmal.patel@linux.intel.com,
+        toan@os.amperecomputing.com, jonathan.derrick@linux.dev,
+        linux-pci@vger.kernel.org
+Cc: alok.a.tiwari@oracle.com, linux-arm-kernel@lists.infradead.org,
+        linux-kernel@vger.kernel.org, linux-rpi-kernel@lists.infradead.org,
+        linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org,
+        linux-rockchip@lists.infradead.org, linux-hyperv@vger.kernel.org,
+        linux-tegra@vger.kernel.org
+Subject: [PATCH RFC] PCI: Convert devm_pci_alloc_host_bridge() users to error-pointer returns
+Date: Sun, 21 Sep 2025 09:14:07 -0700
+Message-ID: <20250921161434.1561770-1-alok.a.tiwari@oracle.com>
+X-Mailer: git-send-email 2.50.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <5b6ijumsm6bgqymsfc25frqzjlpiryq7iupuk2pokcb6d4bz56@yqrz6j3oj5ga>
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1117,Hydra:6.1.9,FMLib:17.12.80.40
+ definitions=2025-09-21_04,2025-09-19_01,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0 phishscore=0 bulkscore=0
+ spamscore=0 mlxlogscore=999 mlxscore=0 suspectscore=0 malwarescore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2508110000
+ definitions=main-2509210167
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwOTIwMDAyNSBTYWx0ZWRfXzlPYwnoKCGVY
+ wXTxp4g9DKp1B6/Qn/FmIu692T4MTNh8Q/XcBP0jS6VkmnypNDCobfp1wRAzlEH0MNHHMy+FkkJ
+ ippEn4viHCC/n4yo80jYs/l/3WJIbxgoX1HvUBgsCIua/R71016woVSCjPoazuec+49tJd9QOjf
+ Gek4xSfdkgBD+8r/xE06K5gvDIPtYHrHoVBgD8ciQ1xtdE4xZpOrn8/Pm0ng0b41k1IW0Qi2B05
+ G2O9abfXgLTNSgqSpg9wfhr8wu+fCeFFmo8qHZA8XvWGLn2In4s00FNm2lB+C3UabL+QVcRK/z8
+ zV9w4LnkSDz9RlqzIEh8FO+DdwjMD5cF3SxVEtA9cB4tTtZq7EqZ5VvyOJnVO2y66W7UtPjOtJO
+ Hm7izmtB
+X-Authority-Analysis: v=2.4 cv=UPPdHDfy c=1 sm=1 tr=0 ts=68d02471 cx=c_pps
+ a=XiAAW1AwiKB2Y8Wsi+sD2Q==:117 a=XiAAW1AwiKB2Y8Wsi+sD2Q==:17
+ a=yJojWOMRYYMA:10 a=yPCof4ZbAAAA:8 a=zziB279VngeVmd15e9YA:9
+X-Proofpoint-GUID: uKjH41pSl18bL479v-94jj5_JFtLEnSg
+X-Proofpoint-ORIG-GUID: uKjH41pSl18bL479v-94jj5_JFtLEnSg
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250921_062311_402543_B346F369 
-X-CRM114-Status: GOOD (  36.91  )
+X-CRM114-CacheID: sfid-20250921_091523_461146_B64A98F8 
+X-CRM114-Status: GOOD (  16.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,197 +121,604 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sun, Sep 21, 2025 at 03:10:50PM +0200, megi xff wrote:
-> Hi,
-> 
-> On Sun, Sep 21, 2025 at 01:04:20AM -0700, Rudraksha Gupta via B4 Relay wrote:
-> > From: Ondrej Jirman <megi@xff.cz>
-> > 
-> > Pinephone Pro uses mpu6500.
-> > 
-> > Signed-off-by: Ondrej Jirman <megi@xff.cz>
-> > Signed-off-by: Rudraksha Gupta <guptarud@gmail.com>
-> > ---
-> >  arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts | 6 ++++++
-> >  1 file changed, 6 insertions(+)
-> > 
-> > diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-> > index 65ee0b805034a4357a766d4f1f9efa2d4a843d77..21ff12ac5f6e52041f485c9f2702f5a15ee831f9 100644
-> > --- a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-> > +++ b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-> > @@ -544,7 +544,13 @@ mpu6500@68 {
-> >  		reg = <0x68>;
-> >  		interrupt-parent = <&gpio1>;
-> >  		interrupts = <RK_PC6 IRQ_TYPE_LEVEL_LOW>;
-> > +		vdd-supply = <&vcc_1v8>;
-> >  		vddio-supply = <&vcc_1v8>;
-> > +
-> > +		mount-matrix =
-> > +			"1", "0", "0",
-> > +			"0", "-1", "0",
-> > +			"0", "0", "1";
-> 
-> I'm not sure where you got this patch, but it's not from me (I know for sure
-> I never did any mount-matrix testing/DT patches) and should not have my
-> Signed-of-by.
+devm_pci_alloc_host_bridge() and pci_alloc_host_bridge() previously
+returned NULL on failure, forcing callers to special-case NULL handling
+and often hardcode -ENOMEM as the error.
 
-Oh well, this is about the accelerometer. :) Anyway, this review should still be
-useful for the other patch in your series adding magnetometer support. You
-should add mount-matrix to that, too, since it's not an identity matrix
-apparently, which is the default without specifying mount-matrix in DT.
+This series updates devm_pci_alloc_host_bridge() to consistently return
+error pointers (ERR_PTR) with the actual error code, instead of NULL.
+All callers across PCI host controller drivers are updated to use
+IS_ERR_OR_NULL()/PTR_ERR() instead of NULL checks and hardcoded -ENOMEM.
 
-Regards,
-	o.
+Benefits:
+  - Standardizes error handling with Linux kernel ERR_PTR()/PTR_ERR()
+    conventions.
+  - Ensures that the actual error code from lower-level helpers is
+    propagated back to the caller.
+  - Removes ambiguity between NULL and error pointer returns.
 
-> I have this in my tree https://codeberg.org/megi/linux/commit/d7cd2eab931e32fa94408a96d73b4e6c0616107a
+Touched drivers include:
+ cadence (J721E, cadence-plat)
+ dwc (designware, qcom)
+ mobiveil (layerscape-gen4, mobiveil-plat)
+ aardvark, ftpci100, ixp4xx, loongson, mvebu, rcar, tegra, v3-semi,
+ versatile, xgene, altera, brcmstb, iproc, mediatek, mt7621, xilinx,
+ plda, and others
 
-> Which is:
-> 
->   Signed-of-by: Leonardo G. Trombetta <lgtrombetta@gmx.com>
-> 
-> And has different values on top of that and much more explanation. :)
-> 
-> 		mount-matrix =
-> 			"0", "1", "0",
-> 			"-1", "0", "0",
-> 			"0", "0", "1";
-> 
-> So I guess you'd need to provide a bit more information about how you
-> tested/verified these values, or where you've got them from.
-> 
-> See: https://github.com/torvalds/linux/blob/master/Documentation/devicetree/bindings/iio/mount-matrix.txt#L93
-> 
-> Looking at where the magnetometer is mounted, it's mounted on the bottom side of
-> the PCB (U29 chip):
-> 
->   https://xff.cz/dl/tmp/a0a36024d1ce9b15.png
->   https://xff.cz/dl/tmp/8f9dce63f3a7f3f4.png
-> 
-> Which means it would face from the PCB in the direction of the display and up
-> towards the user who is looking at the display, due to the way PCB is mounted.
-> 
-> From the datasheet: https://xff.cz/dl/tmp/6b163fbe4335e58e.png the relationship
-> of the chip orientation to measured XYZ values.
-> 
-> Putting it together https://xff.cz/dl/tmp/a17eec1488ea7705.png
-> 
-> 
-> - Z increases downwards away from user looking at the phone display
-> - Y increases to the left
-> - X increases to the bottom of the display (towards USB-C connector)
-> 
-> 
-> DT bindings state:
-> 
-> - Magnetometers (compasses) have their world frame of reference relative to the
->   geomagnetic field. The system orientation vis-a-vis the world is defined with
->   respect to the local earth geomagnetic reference frame where (y) is in the
->   ground plane and positive towards magnetic North, (x) is in the ground plane,
->   perpendicular to the North axis and positive towards the East and (z) is
->   perpendicular to the ground plane and positive upwards.
-> 
->      ^^^ North: y > 0
-> 
->      (---------)
->      !         !
->      !         !
->      !         !
->      !         !  >
->      !         !  > North: x > 0
->      ! 1  2  3 !  >
->      ! 4  5  6 !
->      ! 7  8  9 !
->      ! *  0  # !
->      (---------)
-> 
-> Mount matrix in your patch just flips Y axis and leaves the rest as is, so that
-> doesn't seem to match what bindings ask for at all.
-> 
-> Just based on the PCB component placement and datasheets we should have:
-> (small letters = DT bindings, big letters output from magnetometer)
-> 
->   x = -Y
->   y = -X
->   z = -Z
-> 
-> So that gives:
-> 
-> 		mount-matrix =
-> 			"0", "-1", "0",
-> 			"-1", "0", "0",
-> 			"0", "0", "-1";
-> 
-> I did a quick test (rotating the phone on the table with display
-> facing up):
-> 
-> - Y is highest when right edge of the phone faces north:
-> 
->   in_magn_x_raw: -3074
->   in_magn_y_raw: -690
->   in_magn_z_raw: -1622
-> 
->   and lowest when pointing south
-> 
->   in_magn_x_raw: -3569
->   in_magn_y_raw: -2052
->   in_magn_z_raw: -1824
->  
->   (X is roughly the same)
-> 
->   so that matches x = Y
-> 
-> 
-> - X is highest when top edge of the phone faces north:
-> 
->   in_magn_x_raw: -3990
->   in_magn_y_raw: -1287
->   in_magn_z_raw: -1677
-> 
->   and lowest when facing south
-> 
->   in_magn_x_raw: -2553
->   in_magn_y_raw: -1314
->   in_magn_z_raw: -1624
-> 
->   (Y is roughly the same)
-> 
->   y = X
-> 
-> - Z is lower when display faces up
-> 
->   in_magn_x_raw: -4083
->   in_magn_y_raw: -1179
->   in_magn_z_raw: -2436
-> 
->   and higher with display facing down
-> 
->   in_magn_x_raw: -3999
->   in_magn_y_raw: -1584
->   in_magn_z_raw: 393
-> 
->   z = -Z
-> 
-> So based on that mount-matrix should be:
-> 
-> 		mount-matrix =
-> 			"0", "1", "0",
-> 			"1", "0", "0",
-> 			"0", "0", "-1";
-> 
-> Go figure. :-D
-> 
-> Best regards,
-> 	o.
-> 
-> 
-> >  	};
-> >  };
-> >  
-> > 
-> > -- 
-> > 2.51.0
-> > 
-> > 
+This patch updates error handling across these host controller drivers
+ so that callers consistently receive ERR_PTR() instead of NULL.
+
+Signed-off-by: Alok Tiwari <alok.a.tiwari@oracle.com>
+---
+ arch/mips/pci/pci-xtalk-bridge.c                       | 4 ++--
+ drivers/pci/controller/cadence/pci-j721e.c             | 4 ++--
+ drivers/pci/controller/cadence/pcie-cadence-plat.c     | 4 ++--
+ drivers/pci/controller/dwc/pcie-designware-host.c      | 4 ++--
+ drivers/pci/controller/dwc/pcie-qcom.c                 | 4 ++--
+ drivers/pci/controller/mobiveil/pcie-layerscape-gen4.c | 4 ++--
+ drivers/pci/controller/mobiveil/pcie-mobiveil-plat.c   | 4 ++--
+ drivers/pci/controller/pci-aardvark.c                  | 4 ++--
+ drivers/pci/controller/pci-ftpci100.c                  | 4 ++--
+ drivers/pci/controller/pci-host-common.c               | 4 ++--
+ drivers/pci/controller/pci-hyperv.c                    | 4 ++--
+ drivers/pci/controller/pci-ixp4xx.c                    | 4 ++--
+ drivers/pci/controller/pci-loongson.c                  | 4 ++--
+ drivers/pci/controller/pci-mvebu.c                     | 4 ++--
+ drivers/pci/controller/pci-rcar-gen2.c                 | 4 ++--
+ drivers/pci/controller/pci-tegra.c                     | 4 ++--
+ drivers/pci/controller/pci-v3-semi.c                   | 4 ++--
+ drivers/pci/controller/pci-versatile.c                 | 4 ++--
+ drivers/pci/controller/pci-xgene.c                     | 4 ++--
+ drivers/pci/controller/pcie-altera.c                   | 4 ++--
+ drivers/pci/controller/pcie-brcmstb.c                  | 4 ++--
+ drivers/pci/controller/pcie-iproc-bcma.c               | 4 ++--
+ drivers/pci/controller/pcie-iproc-platform.c           | 4 ++--
+ drivers/pci/controller/pcie-mediatek-gen3.c            | 4 ++--
+ drivers/pci/controller/pcie-mediatek.c                 | 4 ++--
+ drivers/pci/controller/pcie-mt7621.c                   | 4 ++--
+ drivers/pci/controller/pcie-rcar-host.c                | 4 ++--
+ drivers/pci/controller/pcie-rockchip-host.c            | 4 ++--
+ drivers/pci/controller/pcie-xilinx-cpm.c               | 4 ++--
+ drivers/pci/controller/pcie-xilinx-dma-pl.c            | 4 ++--
+ drivers/pci/controller/pcie-xilinx-nwl.c               | 4 ++--
+ drivers/pci/controller/pcie-xilinx.c                   | 4 ++--
+ drivers/pci/controller/plda/pcie-plda-host.c           | 4 ++--
+ drivers/pci/probe.c                                    | 8 ++++----
+ 34 files changed, 70 insertions(+), 70 deletions(-)
+
+diff --git a/arch/mips/pci/pci-xtalk-bridge.c b/arch/mips/pci/pci-xtalk-bridge.c
+index e00c38620d14..c2c8ed8ecac1 100644
+--- a/arch/mips/pci/pci-xtalk-bridge.c
++++ b/arch/mips/pci/pci-xtalk-bridge.c
+@@ -636,8 +636,8 @@ static int bridge_probe(struct platform_device *pdev)
+ 	pci_set_flags(PCI_PROBE_ONLY);
+ 
+ 	host = devm_pci_alloc_host_bridge(dev, sizeof(*bc));
+-	if (!host) {
+-		err = -ENOMEM;
++	if (IS_ERR_OR_NULL(host)) {
++		err = PTR_ERR(host);
+ 		goto err_remove_domain;
+ 	}
+ 
+diff --git a/drivers/pci/controller/cadence/pci-j721e.c b/drivers/pci/controller/cadence/pci-j721e.c
+index 6c93f39d0288..3b8afaef21a6 100644
+--- a/drivers/pci/controller/cadence/pci-j721e.c
++++ b/drivers/pci/controller/cadence/pci-j721e.c
+@@ -475,8 +475,8 @@ static int j721e_pcie_probe(struct platform_device *pdev)
+ 			return -ENODEV;
+ 
+ 		bridge = devm_pci_alloc_host_bridge(dev, sizeof(*rc));
+-		if (!bridge)
+-			return -ENOMEM;
++		if (IS_ERR_OR_NULL(bridge))
++			return PTR_ERR(bridge);
+ 
+ 		if (!data->byte_access_allowed)
+ 			bridge->ops = &cdns_ti_pcie_host_ops;
+diff --git a/drivers/pci/controller/cadence/pcie-cadence-plat.c b/drivers/pci/controller/cadence/pcie-cadence-plat.c
+index 0456845dabb9..7570cb5998f6 100644
+--- a/drivers/pci/controller/cadence/pcie-cadence-plat.c
++++ b/drivers/pci/controller/cadence/pcie-cadence-plat.c
+@@ -66,8 +66,8 @@ static int cdns_plat_pcie_probe(struct platform_device *pdev)
+ 			return -ENODEV;
+ 
+ 		bridge = devm_pci_alloc_host_bridge(dev, sizeof(*rc));
+-		if (!bridge)
+-			return -ENOMEM;
++		if (IS_ERR_OR_NULL(bridge))
++			return PTR_ERR(bridge);
+ 
+ 		rc = pci_host_bridge_priv(bridge);
+ 		rc->pcie.dev = dev;
+diff --git a/drivers/pci/controller/dwc/pcie-designware-host.c b/drivers/pci/controller/dwc/pcie-designware-host.c
+index 952f8594b501..b2b99f275c19 100644
+--- a/drivers/pci/controller/dwc/pcie-designware-host.c
++++ b/drivers/pci/controller/dwc/pcie-designware-host.c
+@@ -467,8 +467,8 @@ int dw_pcie_host_init(struct dw_pcie_rp *pp)
+ 	raw_spin_lock_init(&pp->lock);
+ 
+ 	bridge = devm_pci_alloc_host_bridge(dev, 0);
+-	if (!bridge)
+-		return -ENOMEM;
++	if (IS_ERR_OR_NULL(bridge))
++		return PTR_ERR(bridge);
+ 
+ 	pp->bridge = bridge;
+ 
+diff --git a/drivers/pci/controller/dwc/pcie-qcom.c b/drivers/pci/controller/dwc/pcie-qcom.c
+index 294babe1816e..34d35c925c62 100644
+--- a/drivers/pci/controller/dwc/pcie-qcom.c
++++ b/drivers/pci/controller/dwc/pcie-qcom.c
+@@ -1809,8 +1809,8 @@ static int qcom_pcie_probe(struct platform_device *pdev)
+ 		struct pci_config_window *cfg;
+ 
+ 		bridge = devm_pci_alloc_host_bridge(dev, 0);
+-		if (!bridge) {
+-			ret = -ENOMEM;
++		if (IS_ERR_OR_NULL(bridge)) {
++			ret = PTR_ERR(bridge);
+ 			goto err_pm_runtime_put;
+ 		}
+ 
+diff --git a/drivers/pci/controller/mobiveil/pcie-layerscape-gen4.c b/drivers/pci/controller/mobiveil/pcie-layerscape-gen4.c
+index 4919b27eaf44..f9ebefc71be3 100644
+--- a/drivers/pci/controller/mobiveil/pcie-layerscape-gen4.c
++++ b/drivers/pci/controller/mobiveil/pcie-layerscape-gen4.c
+@@ -207,8 +207,8 @@ static int __init ls_g4_pcie_probe(struct platform_device *pdev)
+ 	}
+ 
+ 	bridge = devm_pci_alloc_host_bridge(dev, sizeof(*pcie));
+-	if (!bridge)
+-		return -ENOMEM;
++	if (IS_ERR_OR_NULL(bridge))
++		return PTR_ERR(bridge);
+ 
+ 	pcie = pci_host_bridge_priv(bridge);
+ 	mv_pci = &pcie->pci;
+diff --git a/drivers/pci/controller/mobiveil/pcie-mobiveil-plat.c b/drivers/pci/controller/mobiveil/pcie-mobiveil-plat.c
+index c5bb87ff6d9a..9d2e3b0bc866 100644
+--- a/drivers/pci/controller/mobiveil/pcie-mobiveil-plat.c
++++ b/drivers/pci/controller/mobiveil/pcie-mobiveil-plat.c
+@@ -27,8 +27,8 @@ static int mobiveil_pcie_probe(struct platform_device *pdev)
+ 
+ 	/* allocate the PCIe port */
+ 	bridge = devm_pci_alloc_host_bridge(dev, sizeof(*pcie));
+-	if (!bridge)
+-		return -ENOMEM;
++	if (IS_ERR_OR_NULL(bridge))
++		return PTR_ERR(bridge);
+ 
+ 	pcie = pci_host_bridge_priv(bridge);
+ 	pcie->rp.bridge = bridge;
+diff --git a/drivers/pci/controller/pci-aardvark.c b/drivers/pci/controller/pci-aardvark.c
+index e34bea1ff0ac..4b75a451efe4 100644
+--- a/drivers/pci/controller/pci-aardvark.c
++++ b/drivers/pci/controller/pci-aardvark.c
+@@ -1740,8 +1740,8 @@ static int advk_pcie_probe(struct platform_device *pdev)
+ 	int ret, irq;
+ 
+ 	bridge = devm_pci_alloc_host_bridge(dev, sizeof(struct advk_pcie));
+-	if (!bridge)
+-		return -ENOMEM;
++	if (IS_ERR_OR_NULL(bridge))
++		return PTR_ERR(bridge);
+ 
+ 	pcie = pci_host_bridge_priv(bridge);
+ 	pcie->pdev = pdev;
+diff --git a/drivers/pci/controller/pci-ftpci100.c b/drivers/pci/controller/pci-ftpci100.c
+index 28e43831c0f1..0618d70fbdda 100644
+--- a/drivers/pci/controller/pci-ftpci100.c
++++ b/drivers/pci/controller/pci-ftpci100.c
+@@ -419,8 +419,8 @@ static int faraday_pci_probe(struct platform_device *pdev)
+ 	u32 val;
+ 
+ 	host = devm_pci_alloc_host_bridge(dev, sizeof(*p));
+-	if (!host)
+-		return -ENOMEM;
++	if (IS_ERR_OR_NULL(bridge))
++		return PTR_ERR(bridge);
+ 
+ 	host->ops = &faraday_pci_ops;
+ 	p = pci_host_bridge_priv(host);
+diff --git a/drivers/pci/controller/pci-host-common.c b/drivers/pci/controller/pci-host-common.c
+index 810d1c8de24e..28c5d55062ed 100644
+--- a/drivers/pci/controller/pci-host-common.c
++++ b/drivers/pci/controller/pci-host-common.c
+@@ -60,8 +60,8 @@ int pci_host_common_init(struct platform_device *pdev,
+ 	struct pci_config_window *cfg;
+ 
+ 	bridge = devm_pci_alloc_host_bridge(dev, 0);
+-	if (!bridge)
+-		return -ENOMEM;
++	if (IS_ERR_OR_NULL(bridge))
++		return PTR_ERR(bridge);
+ 
+ 	of_pci_check_probe_only();
+ 
+diff --git a/drivers/pci/controller/pci-hyperv.c b/drivers/pci/controller/pci-hyperv.c
+index d2b7e8ea710b..0b88e396c323 100644
+--- a/drivers/pci/controller/pci-hyperv.c
++++ b/drivers/pci/controller/pci-hyperv.c
+@@ -3759,8 +3759,8 @@ static int hv_pci_probe(struct hv_device *hdev,
+ 	int ret;
+ 
+ 	bridge = devm_pci_alloc_host_bridge(&hdev->device, 0);
+-	if (!bridge)
+-		return -ENOMEM;
++	if (IS_ERR_OR_NULL(bridge))
++		return PTR_ERR(bridge);
+ 
+ 	hbus = kzalloc(sizeof(*hbus), GFP_KERNEL);
+ 	if (!hbus)
+diff --git a/drivers/pci/controller/pci-ixp4xx.c b/drivers/pci/controller/pci-ixp4xx.c
+index acb85e0d5675..422ec30757ee 100644
+--- a/drivers/pci/controller/pci-ixp4xx.c
++++ b/drivers/pci/controller/pci-ixp4xx.c
+@@ -528,8 +528,8 @@ static int __init ixp4xx_pci_probe(struct platform_device *pdev)
+ 	int i;
+ 
+ 	host = devm_pci_alloc_host_bridge(dev, sizeof(*p));
+-	if (!host)
+-		return -ENOMEM;
++	if (IS_ERR_OR_NULL(bridge))
++		return PTR_ERR(bridge);
+ 
+ 	host->ops = &ixp4xx_pci_ops;
+ 	p = pci_host_bridge_priv(host);
+diff --git a/drivers/pci/controller/pci-loongson.c b/drivers/pci/controller/pci-loongson.c
+index bc630ab8a283..b832d79faf52 100644
+--- a/drivers/pci/controller/pci-loongson.c
++++ b/drivers/pci/controller/pci-loongson.c
+@@ -326,8 +326,8 @@ static int loongson_pci_probe(struct platform_device *pdev)
+ 		return -ENODEV;
+ 
+ 	bridge = devm_pci_alloc_host_bridge(dev, sizeof(*priv));
+-	if (!bridge)
+-		return -ENODEV;
++	if (IS_ERR_OR_NULL(bridge))
++		return PTR_ERR(bridge);
+ 
+ 	priv = pci_host_bridge_priv(bridge);
+ 	priv->pdev = pdev;
+diff --git a/drivers/pci/controller/pci-mvebu.c b/drivers/pci/controller/pci-mvebu.c
+index a72aa57591c0..c0fd8efaf540 100644
+--- a/drivers/pci/controller/pci-mvebu.c
++++ b/drivers/pci/controller/pci-mvebu.c
+@@ -1456,8 +1456,8 @@ static int mvebu_pcie_probe(struct platform_device *pdev)
+ 	int num, i, ret;
+ 
+ 	bridge = devm_pci_alloc_host_bridge(dev, sizeof(struct mvebu_pcie));
+-	if (!bridge)
+-		return -ENOMEM;
++	if (IS_ERR_OR_NULL(bridge))
++		return PTR_ERR(bridge);
+ 
+ 	pcie = pci_host_bridge_priv(bridge);
+ 	pcie->pdev = pdev;
+diff --git a/drivers/pci/controller/pci-rcar-gen2.c b/drivers/pci/controller/pci-rcar-gen2.c
+index d29866485361..845347e0317e 100644
+--- a/drivers/pci/controller/pci-rcar-gen2.c
++++ b/drivers/pci/controller/pci-rcar-gen2.c
+@@ -284,8 +284,8 @@ static int rcar_pci_probe(struct platform_device *pdev)
+ 	void __iomem *reg;
+ 
+ 	bridge = devm_pci_alloc_host_bridge(dev, sizeof(*priv));
+-	if (!bridge)
+-		return -ENOMEM;
++	if (IS_ERR_OR_NULL(bridge))
++		return PTR_ERR(bridge);
+ 
+ 	priv = pci_host_bridge_priv(bridge);
+ 	bridge->sysdata = priv;
+diff --git a/drivers/pci/controller/pci-tegra.c b/drivers/pci/controller/pci-tegra.c
+index 467ddc701adc..dc45692e9906 100644
+--- a/drivers/pci/controller/pci-tegra.c
++++ b/drivers/pci/controller/pci-tegra.c
+@@ -2568,8 +2568,8 @@ static int tegra_pcie_probe(struct platform_device *pdev)
+ 	int err;
+ 
+ 	host = devm_pci_alloc_host_bridge(dev, sizeof(*pcie));
+-	if (!host)
+-		return -ENOMEM;
++	if (IS_ERR_OR_NULL(bridge))
++		return PTR_ERR(bridge);
+ 
+ 	pcie = pci_host_bridge_priv(host);
+ 	host->sysdata = pcie;
+diff --git a/drivers/pci/controller/pci-v3-semi.c b/drivers/pci/controller/pci-v3-semi.c
+index 460a825325dd..6f1f82e4228d 100644
+--- a/drivers/pci/controller/pci-v3-semi.c
++++ b/drivers/pci/controller/pci-v3-semi.c
+@@ -715,8 +715,8 @@ static int v3_pci_probe(struct platform_device *pdev)
+ 	int ret;
+ 
+ 	host = devm_pci_alloc_host_bridge(dev, sizeof(*v3));
+-	if (!host)
+-		return -ENOMEM;
++	if (IS_ERR_OR_NULL(bridge))
++		return PTR_ERR(bridge);
+ 
+ 	host->ops = &v3_pci_ops;
+ 	v3 = pci_host_bridge_priv(host);
+diff --git a/drivers/pci/controller/pci-versatile.c b/drivers/pci/controller/pci-versatile.c
+index e9a6758fe2c1..b367c17db667 100644
+--- a/drivers/pci/controller/pci-versatile.c
++++ b/drivers/pci/controller/pci-versatile.c
+@@ -72,8 +72,8 @@ static int versatile_pci_probe(struct platform_device *pdev)
+ 	struct pci_host_bridge *bridge;
+ 
+ 	bridge = devm_pci_alloc_host_bridge(dev, 0);
+-	if (!bridge)
+-		return -ENOMEM;
++	if (IS_ERR_OR_NULL(bridge))
++		return PTR_ERR(bridge);
+ 
+ 	versatile_pci_base = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(versatile_pci_base))
+diff --git a/drivers/pci/controller/pci-xgene.c b/drivers/pci/controller/pci-xgene.c
+index b95afa35201d..3b3a6e08d17b 100644
+--- a/drivers/pci/controller/pci-xgene.c
++++ b/drivers/pci/controller/pci-xgene.c
+@@ -622,8 +622,8 @@ static int xgene_pcie_probe(struct platform_device *pdev)
+ 				     "MSI driver not ready\n");
+ 
+ 	bridge = devm_pci_alloc_host_bridge(dev, sizeof(*port));
+-	if (!bridge)
+-		return -ENOMEM;
++	if (IS_ERR_OR_NULL(bridge))
++		return PTR_ERR(bridge);
+ 
+ 	port = pci_host_bridge_priv(bridge);
+ 
+diff --git a/drivers/pci/controller/pcie-altera.c b/drivers/pci/controller/pcie-altera.c
+index 3dbb7adc421c..92f976bea8ef 100644
+--- a/drivers/pci/controller/pcie-altera.c
++++ b/drivers/pci/controller/pcie-altera.c
+@@ -995,8 +995,8 @@ static int altera_pcie_probe(struct platform_device *pdev)
+ 	const struct altera_pcie_data *data;
+ 
+ 	bridge = devm_pci_alloc_host_bridge(dev, sizeof(*pcie));
+-	if (!bridge)
+-		return -ENOMEM;
++	if (IS_ERR_OR_NULL(bridge))
++		return PTR_ERR(bridge);
+ 
+ 	pcie = pci_host_bridge_priv(bridge);
+ 	pcie->pdev = pdev;
+diff --git a/drivers/pci/controller/pcie-brcmstb.c b/drivers/pci/controller/pcie-brcmstb.c
+index 9afbd02ded35..c683418c176c 100644
+--- a/drivers/pci/controller/pcie-brcmstb.c
++++ b/drivers/pci/controller/pcie-brcmstb.c
+@@ -1874,8 +1874,8 @@ static int brcm_pcie_probe(struct platform_device *pdev)
+ 	int ret;
+ 
+ 	bridge = devm_pci_alloc_host_bridge(&pdev->dev, sizeof(*pcie));
+-	if (!bridge)
+-		return -ENOMEM;
++	if (IS_ERR_OR_NULL(bridge))
++		return PTR_ERR(bridge);
+ 
+ 	data = of_device_get_match_data(&pdev->dev);
+ 	if (!data) {
+diff --git a/drivers/pci/controller/pcie-iproc-bcma.c b/drivers/pci/controller/pcie-iproc-bcma.c
+index 99a99900444d..d2adc4162a6c 100644
+--- a/drivers/pci/controller/pcie-iproc-bcma.c
++++ b/drivers/pci/controller/pcie-iproc-bcma.c
+@@ -39,8 +39,8 @@ static int iproc_bcma_pcie_probe(struct bcma_device *bdev)
+ 	int ret;
+ 
+ 	bridge = devm_pci_alloc_host_bridge(dev, sizeof(*pcie));
+-	if (!bridge)
+-		return -ENOMEM;
++	if (IS_ERR_OR_NULL(bridge))
++		return PTR_ERR(bridge);
+ 
+ 	pcie = pci_host_bridge_priv(bridge);
+ 
+diff --git a/drivers/pci/controller/pcie-iproc-platform.c b/drivers/pci/controller/pcie-iproc-platform.c
+index 0cb78c583c7e..8f6843ce573e 100644
+--- a/drivers/pci/controller/pcie-iproc-platform.c
++++ b/drivers/pci/controller/pcie-iproc-platform.c
+@@ -46,8 +46,8 @@ static int iproc_pltfm_pcie_probe(struct platform_device *pdev)
+ 	int ret;
+ 
+ 	bridge = devm_pci_alloc_host_bridge(dev, sizeof(*pcie));
+-	if (!bridge)
+-		return -ENOMEM;
++	if (IS_ERR_OR_NULL(bridge))
++		return PTR_ERR(bridge);
+ 
+ 	pcie = pci_host_bridge_priv(bridge);
+ 
+diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
+index 97147f43e41c..e3e908236238 100644
+--- a/drivers/pci/controller/pcie-mediatek-gen3.c
++++ b/drivers/pci/controller/pcie-mediatek-gen3.c
+@@ -1175,8 +1175,8 @@ static int mtk_pcie_probe(struct platform_device *pdev)
+ 	int err;
+ 
+ 	host = devm_pci_alloc_host_bridge(dev, sizeof(*pcie));
+-	if (!host)
+-		return -ENOMEM;
++	if (IS_ERR_OR_NULL(bridge))
++		return PTR_ERR(bridge);
+ 
+ 	pcie = pci_host_bridge_priv(host);
+ 
+diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+index 24cc30a2ab6c..7a2c74996ace 100644
+--- a/drivers/pci/controller/pcie-mediatek.c
++++ b/drivers/pci/controller/pcie-mediatek.c
+@@ -1083,8 +1083,8 @@ static int mtk_pcie_probe(struct platform_device *pdev)
+ 	int err;
+ 
+ 	host = devm_pci_alloc_host_bridge(dev, sizeof(*pcie));
+-	if (!host)
+-		return -ENOMEM;
++	if (IS_ERR_OR_NULL(bridge))
++		return PTR_ERR(bridge);
+ 
+ 	pcie = pci_host_bridge_priv(host);
+ 
+diff --git a/drivers/pci/controller/pcie-mt7621.c b/drivers/pci/controller/pcie-mt7621.c
+index 01ead2f92e87..9dfa5075b980 100644
+--- a/drivers/pci/controller/pcie-mt7621.c
++++ b/drivers/pci/controller/pcie-mt7621.c
+@@ -480,8 +480,8 @@ static int mt7621_pcie_probe(struct platform_device *pdev)
+ 		return -ENODEV;
+ 
+ 	bridge = devm_pci_alloc_host_bridge(dev, sizeof(*pcie));
+-	if (!bridge)
+-		return -ENOMEM;
++	if (IS_ERR_OR_NULL(bridge))
++		return PTR_ERR(bridge);
+ 
+ 	pcie = pci_host_bridge_priv(bridge);
+ 	pcie->dev = dev;
+diff --git a/drivers/pci/controller/pcie-rcar-host.c b/drivers/pci/controller/pcie-rcar-host.c
+index fe288fd770c4..47500ed59608 100644
+--- a/drivers/pci/controller/pcie-rcar-host.c
++++ b/drivers/pci/controller/pcie-rcar-host.c
+@@ -952,8 +952,8 @@ static int rcar_pcie_probe(struct platform_device *pdev)
+ 	int err;
+ 
+ 	bridge = devm_pci_alloc_host_bridge(dev, sizeof(*host));
+-	if (!bridge)
+-		return -ENOMEM;
++	if (IS_ERR_OR_NULL(bridge))
++		return PTR_ERR(bridge);
+ 
+ 	host = pci_host_bridge_priv(bridge);
+ 	pcie = &host->pcie;
+diff --git a/drivers/pci/controller/pcie-rockchip-host.c b/drivers/pci/controller/pcie-rockchip-host.c
+index ee1822ca01db..225a5200f7a6 100644
+--- a/drivers/pci/controller/pcie-rockchip-host.c
++++ b/drivers/pci/controller/pcie-rockchip-host.c
+@@ -934,8 +934,8 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+ 		return -ENODEV;
+ 
+ 	bridge = devm_pci_alloc_host_bridge(dev, sizeof(*rockchip));
+-	if (!bridge)
+-		return -ENOMEM;
++	if (IS_ERR_OR_NULL(bridge))
++		return PTR_ERR(bridge);
+ 
+ 	rockchip = pci_host_bridge_priv(bridge);
+ 
+diff --git a/drivers/pci/controller/pcie-xilinx-cpm.c b/drivers/pci/controller/pcie-xilinx-cpm.c
+index d38f27e20761..1c14c5328ae0 100644
+--- a/drivers/pci/controller/pcie-xilinx-cpm.c
++++ b/drivers/pci/controller/pcie-xilinx-cpm.c
+@@ -574,8 +574,8 @@ static int xilinx_cpm_pcie_probe(struct platform_device *pdev)
+ 	int err;
+ 
+ 	bridge = devm_pci_alloc_host_bridge(dev, sizeof(*port));
+-	if (!bridge)
+-		return -ENODEV;
++	if (IS_ERR_OR_NULL(bridge))
++		return PTR_ERR(bridge);
+ 
+ 	port = pci_host_bridge_priv(bridge);
+ 
+diff --git a/drivers/pci/controller/pcie-xilinx-dma-pl.c b/drivers/pci/controller/pcie-xilinx-dma-pl.c
+index b037c8f315e4..0e68026671b8 100644
+--- a/drivers/pci/controller/pcie-xilinx-dma-pl.c
++++ b/drivers/pci/controller/pcie-xilinx-dma-pl.c
+@@ -771,8 +771,8 @@ static int xilinx_pl_dma_pcie_probe(struct platform_device *pdev)
+ 	int err;
+ 
+ 	bridge = devm_pci_alloc_host_bridge(dev, sizeof(*port));
+-	if (!bridge)
+-		return -ENODEV;
++	if (IS_ERR_OR_NULL(bridge))
++		return PTR_ERR(bridge);
+ 
+ 	port = pci_host_bridge_priv(bridge);
+ 
+diff --git a/drivers/pci/controller/pcie-xilinx-nwl.c b/drivers/pci/controller/pcie-xilinx-nwl.c
+index 05b8c205493c..a23f5e677c17 100644
+--- a/drivers/pci/controller/pcie-xilinx-nwl.c
++++ b/drivers/pci/controller/pcie-xilinx-nwl.c
+@@ -834,8 +834,8 @@ static int nwl_pcie_probe(struct platform_device *pdev)
+ 	int err;
+ 
+ 	bridge = devm_pci_alloc_host_bridge(dev, sizeof(*pcie));
+-	if (!bridge)
+-		return -ENODEV;
++	if (IS_ERR_OR_NULL(bridge))
++		return PTR_ERR(bridge);
+ 
+ 	pcie = pci_host_bridge_priv(bridge);
+ 	platform_set_drvdata(pdev, pcie);
+diff --git a/drivers/pci/controller/pcie-xilinx.c b/drivers/pci/controller/pcie-xilinx.c
+index 937ea6ae1ac4..7631af1ef6af 100644
+--- a/drivers/pci/controller/pcie-xilinx.c
++++ b/drivers/pci/controller/pcie-xilinx.c
+@@ -574,8 +574,8 @@ static int xilinx_pcie_probe(struct platform_device *pdev)
+ 		return -ENODEV;
+ 
+ 	bridge = devm_pci_alloc_host_bridge(dev, sizeof(*pcie));
+-	if (!bridge)
+-		return -ENODEV;
++	if (IS_ERR_OR_NULL(bridge))
++		return PTR_ERR(bridge);
+ 
+ 	pcie = pci_host_bridge_priv(bridge);
+ 	mutex_init(&pcie->map_lock);
+diff --git a/drivers/pci/controller/plda/pcie-plda-host.c b/drivers/pci/controller/plda/pcie-plda-host.c
+index 8e2db2e5b64b..28d638067adc 100644
+--- a/drivers/pci/controller/plda/pcie-plda-host.c
++++ b/drivers/pci/controller/plda/pcie-plda-host.c
+@@ -598,8 +598,8 @@ int plda_pcie_host_init(struct plda_pcie_rp *port, struct pci_ops *ops,
+ 				     "failed to map config memory\n");
+ 
+ 	bridge = devm_pci_alloc_host_bridge(dev, 0);
+-	if (!bridge)
+-		return dev_err_probe(dev, -ENOMEM,
++	if (IS_ERR_OR_NULL(bridge))
++		return dev_err_probe(dev, PTR_ERR(bridge),
+ 				     "failed to alloc bridge\n");
+ 
+ 	if (port->host_ops && port->host_ops->host_init) {
+diff --git a/drivers/pci/probe.c b/drivers/pci/probe.c
+index f41128f91ca7..e627f36b7683 100644
+--- a/drivers/pci/probe.c
++++ b/drivers/pci/probe.c
+@@ -686,18 +686,18 @@ struct pci_host_bridge *devm_pci_alloc_host_bridge(struct device *dev,
+ 
+ 	bridge = pci_alloc_host_bridge(priv);
+ 	if (!bridge)
+-		return NULL;
++		return ERR_PTR(-ENOMEM);
+ 
+ 	bridge->dev.parent = dev;
+ 
+ 	ret = devm_add_action_or_reset(dev, devm_pci_alloc_host_bridge_release,
+ 				       bridge);
+ 	if (ret)
+-		return NULL;
++		return ERR_PTR(ret);
+ 
+ 	ret = devm_of_pci_bridge_init(dev, bridge);
+ 	if (ret)
+-		return NULL;
++		return ERR_PTR(ret);
+ 
+ 	return bridge;
+ }
+@@ -3198,7 +3198,7 @@ struct pci_bus *pci_create_root_bus(struct device *parent, int bus,
+ 
+ 	bridge = pci_alloc_host_bridge(0);
+ 	if (!bridge)
+-		return NULL;
++		return ERR_PTR(-ENOMEM);
+ 
+ 	bridge->dev.parent = parent;
+ 
+-- 
+2.50.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
