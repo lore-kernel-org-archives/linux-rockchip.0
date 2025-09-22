@@ -4,84 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20F04CAC592
-	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Sep 2025 13:13:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1930CAC5A8
+	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Sep 2025 13:19:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KMx3G98yVZpfDNBW7SCelOng7ikMsbiVDBC5PI4uJtY=; b=xRJ3cNnDXEM8eEZhPrmUvUdzjs
-	uSVgsQfMEiNMZAOa41OVfdPiM/Zm37CF3nUmNSp62cAO7zhby4j1/HFE2Q56kYNyBPhPTlA3+oqSO
-	xb1QX05iFni5uV5WBHOF6xXhXdt38xrkHoSsHdx5UaGAMGclBedRA5kUbsvPSTJN8ET4wKl4fsN12
-	1vGlIfnAs4o/rNqhulcZf5NY9yVC/1Ncp2MEYP616arGXXIIVizC6OGCJV8p52CtJNNMjoqRhqTkB
-	4kr255JI00FYI7QZDT/2kynGFZosvCA3pLhg+45oK9sS8F9pQ11JRCrSJf6oR9lh1KzEST1jnIg58
-	jIv1Ru+g==;
+	bh=bIswXHAfM+E/Q5s1n6IJL9U4tB2f1QCrPD2qAMOSWWU=; b=xWshUWQwRMaXhjnqjM3a8HIRzy
+	19+iP7UdnvUmgPBHu/4ntwI2QnyE+LaSgQw6jIJiQa8P91+KbMOLBt5OnsgnP8xvoPSAhSLDL1Fay
+	kB5H/O8ATn3RjzeX4WMtx3arEKZGAVRUBv70/C59Jf2sjl+uZcdIsAN44RwtNmpWwfY/P745IDGyb
+	KXOslT9CZQ7G4yOjKTGJ9o9sS3zWMpe68K4HtryADpvQ0J5YwusmfIMrryna0VFNbGeiU6zmJifuz
+	P1pSxNOMarNEUdfTNbhdJABbrSyuVA6SZNhULcHUFJ3sH15U2UtehnRMyAkbXkWmc/37Ex4dtZBSq
+	lPDImcIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0gLh-0000000ARAH-1wru;
-	Mon, 22 Sep 2025 13:12:57 +0000
+	id 1v0gRa-0000000ATq7-23h7;
+	Mon, 22 Sep 2025 13:19:02 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0gLg-0000000AR8w-1271
+	id 1v0gRZ-0000000ATpS-1uEd
 	for linux-rockchip@bombadil.infradead.org;
-	Mon, 22 Sep 2025 13:12:56 +0000
+	Mon, 22 Sep 2025 13:19:01 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
 	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=q7pqyN+Z24wldmlTOpFZF0TNsqoEvnNHZvrjYMilkQ4=; b=Qj2rxdd1fRb6T6XP/TL4qevXcQ
-	vzrmfjTsYqS6pujUTTPSGegeLAM96vXTglOJHVuvSqpusG8cBybYeIkvUWjeyrRZjnNnGgP4+zmKn
-	6VSX4chdZ88/2CFQ9E7TsnBJ1gfIzK4gMey5PsT1Hm5aslosNZSRzGo0iNlN3cROwMWj4q5QwpWcU
-	b7CPSO3O3wm4wTI89t1SyiqTmmc1SjGvtxuPetMo71F33n3J/MdUhGYLjICnB4ZQc4eLPnZokP6px
-	VfRvOA20T/YUUU57CTVA+zxz7ILNGXtiC5dCoZ8ccd/hmW7EPFXxzB9lIdKyRsNZQyLAWqQ6rKr5A
-	e0owKFXw==;
+	bh=70oUrtBybT9pvgsdRucJAcKaeUTQt17KWLpCLJnAsc0=; b=MgrAvkoZieTRfYf4uZB7v/tvmu
+	rcuWLN1tmgYTrb15RLPATU+zs2dkiPM50pE1EAdKwThA+7BugK/szNhvOAt2hxOpDXC7CbfbjQwtT
+	hqGcyeniT0GKrtG0WNLYWnqN06mTAjA8K3bSq+zkCV3eBIoFbCtmOaQ18H5Ijnv8FXqT4X+YFbtCY
+	OcvS0T9iUnwLgwojdv8Txtpq22GKc7pI+KWpwAeoH6cJng++LDAla27k+Jo01iGWJyGotEL/gwLzb
+	ILoHOKcBKMYWBWEyZHTGwPOpXYc6xAoqT6cLqLLb5MCRYyUqnDWbWhisGRrmQbdvNJ+/QsD8M2jKp
+	9oCFiIuw==;
 Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0gLc-00000008I78-37Zp
+	id 1v0gRW-00000008ITm-11Zi
 	for linux-rockchip@lists.infradead.org;
-	Mon, 22 Sep 2025 13:12:54 +0000
+	Mon, 22 Sep 2025 13:19:00 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
 	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
 	(envelope-from <mkl@pengutronix.de>)
-	id 1v0gLU-0003pc-1P; Mon, 22 Sep 2025 15:12:44 +0200
+	id 1v0gRQ-0005EN-QE; Mon, 22 Sep 2025 15:18:52 +0200
 Received: from moin.white.stw.pengutronix.de ([2a0a:edc0:0:b01:1d::7b] helo=bjornoya.blackshift.org)
 	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.96)
 	(envelope-from <mkl@pengutronix.de>)
-	id 1v0gLS-002bMp-1J;
-	Mon, 22 Sep 2025 15:12:42 +0200
+	id 1v0gRQ-002bNX-1U;
+	Mon, 22 Sep 2025 15:18:52 +0200
 Received: from pengutronix.de (p54b152ce.dip0.t-ipconnect.de [84.177.82.206])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(Client did not present a certificate)
 	(Authenticated sender: mkl-all@blackshift.org)
-	by smtp.blackshift.org (Postfix) with ESMTPSA id 06C7C477022;
-	Mon, 22 Sep 2025 13:12:42 +0000 (UTC)
-Date: Mon, 22 Sep 2025 15:12:40 +0200
+	by smtp.blackshift.org (Postfix) with ESMTPSA id 12606477046;
+	Mon, 22 Sep 2025 13:18:52 +0000 (UTC)
+Date: Mon, 22 Sep 2025 15:18:51 +0200
 From: Marc Kleine-Budde <mkl@pengutronix.de>
 To: Elaine Zhang <zhangqing@rock-chips.com>
 Cc: kernel@pengutronix.de, mailhol.vincent@wanadoo.fr, robh@kernel.org, 
 	krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de, cl@rock-chips.com, 
 	kever.yang@rock-chips.com, linux-can@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
 	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
-Subject: Re: [PATCH v7 1/4] dt-bindings: can: rockchip_canfd: add rk3576
- CAN-FD controller
-Message-ID: <20250922-secret-visionary-macaque-4f52a7-mkl@pengutronix.de>
+Subject: Re: [PATCH v7 2/4] net: can: rockchip: Refactor the
+ rkcanfd_devtype_data structure
+Message-ID: <20250922-hopeful-mysterious-mole-bccfa3-mkl@pengutronix.de>
 References: <20250922071543.73923-1-zhangqing@rock-chips.com>
- <20250922071543.73923-2-zhangqing@rock-chips.com>
+ <20250922071543.73923-3-zhangqing@rock-chips.com>
 MIME-Version: 1.0
-In-Reply-To: <20250922071543.73923-2-zhangqing@rock-chips.com>
+In-Reply-To: <20250922071543.73923-3-zhangqing@rock-chips.com>
 X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
 X-SA-Exim-Mail-From: mkl@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250922_141253_029561_0F52962C 
-X-CRM114-Status: UNSURE (   9.91  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250922_141858_590641_AAAC1734 
+X-CRM114-Status: GOOD (  15.44  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,30 +92,57 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============2006568629704617246=="
+Content-Type: multipart/mixed; boundary="===============6314436733215975048=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============2006568629704617246==
+--===============6314436733215975048==
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="ta3ykn3sqrxc7f3w"
+	protocol="application/pgp-signature"; boundary="pxk6t45566eu5aco"
 Content-Disposition: inline
 
 
---ta3ykn3sqrxc7f3w
+--pxk6t45566eu5aco
 Content-Type: text/plain; protected-headers=v1; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v7 1/4] dt-bindings: can: rockchip_canfd: add rk3576
- CAN-FD controller
+Subject: Re: [PATCH v7 2/4] net: can: rockchip: Refactor the
+ rkcanfd_devtype_data structure
 MIME-Version: 1.0
 
-On 22.09.2025 15:15:40, Elaine Zhang wrote:
-> Add documentation for the rockchip rk3576 CAN-FD controller.
+On 22.09.2025 15:15:41, Elaine Zhang wrote:
+> Add new function pointer:
+> Encapsulate some hardware operation functions into
+> rkcanfd_devtype_data to provide differentiated implementations for
+> different models (such as RK3568v2/v3).
+>=20
+> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
 
-Please make DMA optional, I'm not convinced that it brings any benefit
-for the system.
+[...]
+
+> diff --git a/drivers/net/can/rockchip/rockchip_canfd.h b/drivers/net/can/=
+rockchip/rockchip_canfd.h
+> index 93131c7d7f54..bcd26d23062b 100644
+> --- a/drivers/net/can/rockchip/rockchip_canfd.h
+> +++ b/drivers/net/can/rockchip/rockchip_canfd.h
+> @@ -436,9 +436,20 @@ enum rkcanfd_model {
+>  	RKCANFD_MODEL_RK3568V3 =3D 0x35683,
+>  };
+> =20
+> +struct rkcanfd_priv;
+> +
+>  struct rkcanfd_devtype_data {
+>  	enum rkcanfd_model model;
+>  	u32 quirks;
+> +	void (*get_berr_counter)(struct rkcanfd_priv *priv, struct can_berr_cou=
+nter *bec);
+> +	void (*interrupts_enable)(const struct rkcanfd_priv *priv);
+> +	void (*interrupts_disable)(const struct rkcanfd_priv *priv);
+> +	void (*fifo_setup)(struct rkcanfd_priv *priv);
+
+Why do you make fifo setup a function pointer if it's only called from
+chip_start, which you make a function pointer, too?
 
 Marc
 
@@ -126,25 +152,25 @@ Embedded Linux                   | https://www.pengutronix.de |
 Vertretung N=C3=BCrnberg              | Phone: +49-5121-206917-129 |
 Amtsgericht Hildesheim, HRA 2686 | Fax:   +49-5121-206917-9   |
 
---ta3ykn3sqrxc7f3w
+--pxk6t45566eu5aco
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCgAdFiEEn/sM2K9nqF/8FWzzDHRl3/mQkZwFAmjRS0QACgkQDHRl3/mQ
-kZzmYgf/XGDJsCLS4h1r22LbETIcTtzkKskRIg8uS4VtJ6+B3fpEpeSdiurlbgLJ
-H2Uk60UC2qwtfCGX34k3W/KUZAcMiWUF0uSwIey54+V/47Z57T7tyF+qlLXavAJg
-EvMzEqQBXo/HF7qKjn5zwGt/cfJzkaZ0gQurGnuGcVfQCtVh6yyjRK7zA3az9tso
-9aeJjgqJxCR2Eu41e1X5ch1iFULgtRXPhzeUi1ApANoiqWy10XR1GpCRvOlMYxQo
-d4Ss493hcO5HefbgwTXnJ12waxg3YZSOSfV9iRdiZoSdgeGZyYKd+Ffeyps8Ep34
-DZMvjmPilwpExGCnFVr7LJBfrco1Ww==
-=/ET9
+iQEzBAABCgAdFiEEn/sM2K9nqF/8FWzzDHRl3/mQkZwFAmjRTLgACgkQDHRl3/mQ
+kZzvyQgApVlHcsn6vij4HUY70eO04wqsBAOXG0klOf3yy/PakkXYgqsz7mKlryRg
+HX+dlpOa6RESuRjCLA/REQo4whMrVTysanahmydgd8CqEvV+id+/0qKB6PvWKEhm
+3JejSO5O16PGRXKDA/GBpFaDzDdav77p/3TgVtNKUioOL5/18ca4dNgM9o+/NUZH
++Ak/UKtR6VnV2DvyR3hWR+eznMl0my/zXmf0X1hrm8bUnikJtQqEGaGrWfJqHXiw
+tr9sijYa+akL4b2+x4R61dcfmKFo9hNzizx+Vhf8L8Ip8FiF2y7wj9kdgQlBMhFd
+6Gh9dnZ0gTk8Rbb2PJb5oCZQ7jLyOA==
+=sxoi
 -----END PGP SIGNATURE-----
 
---ta3ykn3sqrxc7f3w--
+--pxk6t45566eu5aco--
 
 
---===============2006568629704617246==
+--===============6314436733215975048==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -155,5 +181,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============2006568629704617246==--
+--===============6314436733215975048==--
 
