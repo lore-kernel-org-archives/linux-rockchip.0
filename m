@@ -4,73 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55A1BCAC592
-	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Sep 2025 17:28:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECE55CAC592
+	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Sep 2025 18:22:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
-	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=x+GFmL20LWCDTIfx77kSneS3GXlVeTNKEgpqhjlYMdg=; b=q7euiL/OF8o1JnTCtP2ggxt/Se
-	HxTls0hl8X9ngIOChDtGlvsPi0G9N8NRBhEteqggdfpOWEo0A4NgJwNR3a1HM7kFrj5ldYbgVZLrH
-	njlGNnoOIRIPRDSTZcfh+Mx+cHTw+Q9/A+Kifxtq0GDJ2uLpD8SE706TUd2sYqJblDh0nASiAbBWK
-	T4rd9NkNu5UJwXV5vBLbmQZtvXQFRnPPMKQTwMNTiR1awPPKZoWw+EE0QxU0o/LqUfecECSu/810g
-	zsTNEaDp1v4Z36lUkrL1+VKkcyCQix/bCVcGCo4YZDQCKrVBccwjk1XKcXx9KaZ0CNIf7tQ2s2aGA
-	8/pQKXPw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=hGa2PUJTlpr/z4ypVSLPxgYUKBrBLAeZOjLZqTq/xnU=; b=DfAjOGk+6s5J4u
+	dCTY9ek9bzrABcijGx8s2PW0c6p5jj3nfLAOWVIU+btkwUXZViGeY6838IQ+5bcjRmlx722P7m3GI
+	xXuwkNBr6v60fNq0DL23+MprXM9VLjLPn2S2tKPWGjddKExv2uQZCQxQRcQAw1wksCsBwdBxPDd10
+	gwyLxfF9D+Z5sKDdfbRPQDw7xhhxXANzW06l8NjfKWxuaR+ywHqtNIB712TYznahNEPNl6x6kvqSM
+	PZWUdJsddJgC0DWhlJGorsQYCgMUvAofM7Qs0sdOH2Mwu1uzjk5a9BI3KzSpCkyiX89Kbdp2uGmy4
+	jGInB79sn+uVBZRkfYfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0kKU-0000000B7LF-0aap;
-	Mon, 22 Sep 2025 17:27:58 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1v0lBP-0000000BEqT-2eCo;
+	Mon, 22 Sep 2025 18:22:39 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0kKN-0000000B7F6-0cd6;
-	Mon, 22 Sep 2025 17:27:51 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 8EA7B60218;
-	Mon, 22 Sep 2025 17:27:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E9950C4CEF0;
-	Mon, 22 Sep 2025 17:27:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1758562070;
-	bh=yKJaAmyEUj6hfg2Wi/c+GfF4r+OUMiAWTtRJ4AOyhsY=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=d9jsUu8ISkmgl9vuYDCPazTMv9KseEzUkLR1u6Huuav+aVAYr6rWRocAaqM/nFw39
-	 Wf2hwBQJXfUzSgY9M0V3scvPCXJieS7culoGJ6zIp9VTKYCf4AuGju8oshgiidPu0g
-	 wiYvbX/FS/w93EcnX4kvIy1Zlb0Na6Qrzufxlsyl2iO3XCqGWgtUFcBpZq1v7a8Kie
-	 uboN+g+QriCO8KkwwtDYMrf7/UypAEVk27Ipb52xEaj7ndxx2Ivmi8Vu/tgZoNFx+/
-	 kKqGdz5g63E6tdWAVERyP6bKUWrmTp2Esti7If4qDg2CvuJNmEOQNME6EgVGFSXsFJ
-	 JE3e74QN36E2A==
-Date: Mon, 22 Sep 2025 12:27:44 -0500
+	id 1v0lBL-0000000BEpl-34Zr;
+	Mon, 22 Sep 2025 18:22:37 +0000
+Received: from ideasonboard.com (unknown [IPv6:2a00:6020:448c:6c00:2e97:e92:3fbf:8dbb])
+	by perceval.ideasonboard.com (Postfix) with UTF8SMTPSA id 508A46DC;
+	Mon, 22 Sep 2025 20:21:07 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1758565267;
+	bh=b5FgkqgcRpAPhJwM4wWi1BVoVHnT8H6KCuQiV5V1p+U=;
+	h=From:To:Cc:Subject:Date:From;
+	b=L/8FBKlTGlVV3ey/JGNvHo6MtrVf+y5bke3Xlf8bg+YOU2PXd0Dz7FhpkV1Ox6haE
+	 K9QeVFFRVUZCbBWVJcL3x+AroTBlA/Z8PC98dlyj68cDMiATGWCncSn5JhV1SIzO1a
+	 B7f/eCGy1HGbgsLo8veDdlTavU5elt8ACigglgM4=
+From: Stefan Klug <stefan.klug@ideasonboard.com>
+To: linux-media@vger.kernel.org,
+	Dafna Hirschfeld <dafna@fastmail.com>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Jacopo Mondi <jacopo.mondi@ideasonboard.com>,
+	Kieran Bingham <kieran.bingham@ideasonboard.com>
+Cc: Stefan Klug <stefan.klug@ideasonboard.com>,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v3] media: rkisp1: Improve frame sequence correctness on stats and params buffers
+Date: Mon, 22 Sep 2025 20:19:57 +0200
+Message-ID: <20250922182003.3712101-2-stefan.klug@ideasonboard.com>
+X-Mailer: git-send-email 2.48.1
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: Diederik de Haas <didi.debian@cknow.org>, 
- Heikki Krogerus <heikki.krogerus@linux.intel.com>, 
- Kishon Vijay Abraham I <kishon@kernel.org>, 
- Dragan Simic <dsimic@manjaro.org>, dri-devel@lists.freedesktop.org, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- David Airlie <airlied@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Peter Robinson <pbrobinson@gmail.com>, 
- Thomas Zimmermann <tzimmermann@suse.de>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Amit Sunil Dhamne <amitsd@google.com>, Maxime Ripard <mripard@kernel.org>, 
- Andy Yan <andy.yan@rock-chips.com>, linux-phy@lists.infradead.org, 
- linux-usb@vger.kernel.org, Frank Wang <frank.wang@rock-chips.com>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Yubing Zhang <yubing.zhang@rock-chips.com>, 
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
- Heiko Stuebner <heiko@sntech.de>, Johan Jonker <jbx6244@gmail.com>, 
- linux-arm-kernel@lists.infradead.org, 
- Chaoyi Chen <chaoyi.chen@rock-chips.com>, Vinod Koul <vkoul@kernel.org>, 
- Simona Vetter <simona@ffwll.ch>, Sandy Huang <hjc@rock-chips.com>, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- devicetree@vger.kernel.org
-To: Chaoyi Chen <kernel@airkyi.com>
-In-Reply-To: <20250922012039.323-1-kernel@airkyi.com>
-References: <20250922012039.323-1-kernel@airkyi.com>
-Message-Id: <175856183997.499955.3596561052820030372.robh@kernel.org>
-Subject: Re: [PATCH v4 0/7] Add Type-C DP support for RK3399 EVB IND board
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250922_112236_237360_7594E7CD 
+X-CRM114-Status: GOOD (  22.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,168 +72,141 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On the rkisp1 (in my case on a NXP i.MX8 M Plus) the ISP interrupt
+handler is sometimes called with RKISP1_CIF_ISP_V_START (start of frame)
+and RKISP1_CIF_ISP_FRAME (end of frame) being set at the same time. In
+commit 8524fa22fd2f ("media: staging: rkisp1: isp: add a warning and
+debugfs var for irq delay") a warning was added for that. There are two
+cases where this condition can occur:
 
-On Mon, 22 Sep 2025 09:20:32 +0800, Chaoyi Chen wrote:
-> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-> 
-> This series focuses on adding Type-C DP support for USBDP PHY and DP
-> driver. The USBDP PHY and DP will perceive the changes in cable status
-> based on the USB PD and Type-C state machines provided by TCPM. Before
-> this, the USBDP PHY and DP controller of RK3399 sensed cable state
-> changes through extcon, and devices such as the RK3399 Gru-Chromebook
-> rely on them. This series should not break them.
-> 
-> ====
-> 1. DisplayPort HPD status notify
-> 
-> Before v4, I implemented a variety of DP HPD status notify. However,
-> they all had various problems and it was difficult to become a common
-> solution.
-> 
-> Under Dmitry's guidance, I try to add default DRM AUX HPD device when
-> register DisplayPort altmode in patch 1. That makes it redundant for
-> each Type-C chip driver to implement a similar registration process
-> in embedded scenarios.
-> 
-> I'm not certain if the current implementation is appropriate.
-> Please let me know if there's a better way.
-> 
-> ====
-> 2. Altmode switching and orientation switching for USBDP PHY
-> 
-> For USB Type-C interfaces, an external Type-C controller chip assists
-> by detecting cable attachment, determining plug orientation, and
-> reporting USB PD message. The USB/DP combo PHY supports software
-> configurable pin mapping and DisplayPort lane assignment. Based on
-> these message, the combo PHY can perform both altmode switching and
-> orientation switching via software.
-> 
-> The RK3399 EVB IND board has a Type-C interface DisplayPort. It use
-> fusb302 chip as Type-C controller. The connection diagram is shown below:
-> 
-> fusb302 chip +---> USB2.0 PHY ----> DWC3 USB controller
->              |
->              +---> USB/DP PHY0 +--> CDN-DP controller
->                                |
->                                +--> DWC3 USB controller
-> 
-> ====
-> 3. Multiple bridge model for RK3399 CDN-DP
-> 
-> The RK3399 has two USB/DP combo PHY and one CDN-DP controller. And
-> the CDN-DP can be switched to output to one of the PHYs.
-> 
-> USB/DP PHY0 ---+
->                | <----> CDN-DP controller
-> USB/DP PHY1 ---+
-> 
-> In previous versions, if both PHY ports were connected to DP,
-> the CDN-DP driver would select the first PHY port for output.
-> 
-> On Dmitry's suggestion, we introduced a multi-bridge model to support
-> flexible selection of the output PHY port. For each PHY port, a
-> separate encoder and bridge are registered.
-> 
-> The change is based on the DRM AUX HPD bridge, rather than the
-> extcon approach. This requires the DT to correctly describe the
-> connections between the PHY, USB connector, and DP controller.
-> And cdn_dp_parse_hpd_bridge_dt() will parses it and determines
-> whether to register one or two bridges.
-> 
-> ====
-> Patch1 add default HPD device when register Displayport altmode.
-> Patch2 add new Type-C mode switch for RK3399 USBDP phy binding.
-> Patch3 add typec_mux and typec_switch for RK3399 USBDP PHY.
-> Patch4 drops CDN-DP's extcon dependency when Type-C is present.
-> Patch5 add multiple bridges to support PHY port selection.
-> Patch6 add missing dp_out port for RK3399 CDN-DP.
-> Patch7 add Type-C DP support for RK3399 EVB IND board.
-> 
-> Changes in v4:
-> - Link to V3: https://lore.kernel.org/all/20250729090032.97-1-kernel@airkyi.com/
-> - Add default HPD device for DisplayPort altmode.
-> - Introduce multiple bridges for CDN-DP.
-> - ...
-> 
-> Changes in v3:
-> - Link to V2: https://lore.kernel.org/all/20250718062619.99-1-kernel@airkyi.com/
-> - Add more descriptions to clarify the role of the PHY in switching.
-> - Fix wrong vdo value.
-> - Fix port node in usb-c-connector.
-> 
-> Changes in v2:
-> - Link to V1: https://lore.kernel.org/all/20250715112456.101-1-kernel@airkyi.com/
-> - Reuse dp-port/usb3-port in rk3399-typec-phy binding.
-> - Fix compile error when CONFIG_TYPEC is not enabled.
-> - Notify DP HPD state by USB/DP PHY.
-> - Ignore duplicate HPD events.
-> - Add endpoint to link DP PHY and DP controller.
-> - Fix devicetree coding style.
-> 
-> Chaoyi Chen (7):
->   usb: typec: Add default HPD device when register DisplayPort altmode
->   dt-bindings: phy: rockchip: rk3399-typec-phy: Support mode-switch
->   phy: rockchip: phy-rockchip-typec: Add typec_mux/typec_switch support
->   drm/rockchip: cdn-dp: Support handle lane info without extcon
->   drm/rockchip: cdn-dp: Add multiple bridges to support PHY port
->     selection
->   arm64: dts: rockchip: Add missing dp_out port for RK3399 CDN-DP
->   arm64: dts: rockchip: rk3399-evb-ind: Add support for DisplayPort
-> 
->  .../phy/rockchip,rk3399-typec-phy.yaml        |   6 +
->  arch/arm64/boot/dts/rockchip/rk3399-base.dtsi |  10 +-
->  .../boot/dts/rockchip/rk3399-evb-ind.dts      | 146 ++++++
->  drivers/gpu/drm/rockchip/Kconfig              |   1 +
->  drivers/gpu/drm/rockchip/cdn-dp-core.c        | 423 +++++++++++++++---
->  drivers/gpu/drm/rockchip/cdn-dp-core.h        |  23 +-
->  drivers/phy/rockchip/phy-rockchip-typec.c     | 365 ++++++++++++++-
->  drivers/usb/typec/altmodes/displayport.c      |  27 ++
->  drivers/usb/typec/altmodes/displayport.h      |   2 +
->  drivers/usb/typec/class.c                     |   8 +
->  include/linux/usb/typec_altmode.h             |   2 +
->  11 files changed, 932 insertions(+), 81 deletions(-)
-> 
-> --
-> 2.49.0
-> 
-> 
-> 
+1. The v-sync and the frame-end belong to the same frame. This means,
+   the irq was heavily delayed and the warning is likely appropriate.
 
+2. The v-sync belongs to the next frame. This can happen if the vertical
+   blanking between two frames is very short.
 
-My bot found new DTB warnings on the .dts files added or changed in this
-series.
+The current code always handles case 1 although case 2 is in my
+experience the more common case and happens in regular usage. This leads
+to incorrect sequence numbers on stats and params buffers which in turn
+breaks the regulation in user space. Fix that by adding a frame_active
+flag to distinguish between these cases and handle the start of frame
+either at the beginning or at the end of the rkisp1_isp_isr().
 
-Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
-are fixed by another series. Ultimately, it is up to the platform
-maintainer whether these warnings are acceptable or not. No need to reply
-unless the platform maintainer has comments.
+Signed-off-by: Stefan Klug <stefan.klug@ideasonboard.com>
+Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 
-If you already ran DT checks and didn't see these error(s), then
-make sure dt-schema is up to date:
+---
 
-  pip3 install dtschema --upgrade
+Hi all,
 
+Here is an updated version of the patch with a fix for a typo that was
+spotted in the last review.
 
-This patch series was applied (using b4) to base:
- Base: attempting to guess base-commit...
- Base: tags/next-20250922 (best guess, 10/11 blobs matched)
+Changes in v3:
+- Fixed typo in comment
+- Collected r-by tag
 
-If this is not the correct base, please add 'base-commit' tag
-(or use b4 which does this automatically)
+Changes in v2:
+- Removed test for !frame_active in second v_start handler
+- Improved comments
 
-New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/rockchip/' for 20250922012039.323-1-kernel@airkyi.com:
+Best regards,
+Stefan
 
-arch/arm64/boot/dts/rockchip/rk3399-evb-ind.dtb: syscon@ff770000 (rockchip,rk3399-grf): usb2phy@e450: 'port' does not match any of the regexes: '^pinctrl-[0-9]+$'
-	from schema $id: http://devicetree.org/schemas/soc/rockchip/grf.yaml#
-arch/arm64/boot/dts/rockchip/rk3399-evb-ind.dtb: syscon@ff770000 (rockchip,rk3399-grf): usb2phy@e450: Unevaluated properties are not allowed ('port' was unexpected)
-	from schema $id: http://devicetree.org/schemas/soc/rockchip/grf.yaml#
-arch/arm64/boot/dts/rockchip/rk3399-evb-ind.dtb: usb2phy@e450 (rockchip,rk3399-usb2phy): 'port' does not match any of the regexes: '^pinctrl-[0-9]+$'
-	from schema $id: http://devicetree.org/schemas/phy/rockchip,inno-usb2phy.yaml#
-arch/arm64/boot/dts/rockchip/rk3399-evb-ind.dtb: /sound: failed to match any schema with compatible: ['rockchip,rk3399-gru-sound']
+---
+ .../platform/rockchip/rkisp1/rkisp1-common.h  |  1 +
+ .../platform/rockchip/rkisp1/rkisp1-isp.c     | 27 +++++++++++++++----
+ 2 files changed, 23 insertions(+), 5 deletions(-)
 
-
-
-
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+index ca952fd0829b..adf23416de9a 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+@@ -222,6 +222,7 @@ struct rkisp1_isp {
+ 	struct media_pad pads[RKISP1_ISP_PAD_MAX];
+ 	const struct rkisp1_mbus_info *sink_fmt;
+ 	__u32 frame_sequence;
++	bool frame_active;
+ };
+ 
+ /*
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+index 8c29a1c9309a..660c1fd7efcc 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+@@ -965,6 +965,7 @@ static int rkisp1_isp_s_stream(struct v4l2_subdev *sd, int enable)
+ 	}
+ 
+ 	isp->frame_sequence = -1;
++	isp->frame_active = false;
+ 
+ 	sd_state = v4l2_subdev_lock_and_get_active_state(sd);
+ 
+@@ -1086,12 +1087,15 @@ void rkisp1_isp_unregister(struct rkisp1_device *rkisp1)
+  * Interrupt handlers
+  */
+ 
+-static void rkisp1_isp_queue_event_sof(struct rkisp1_isp *isp)
++static void rkisp1_isp_sof(struct rkisp1_isp *isp)
+ {
+ 	struct v4l2_event event = {
+ 		.type = V4L2_EVENT_FRAME_SYNC,
+ 	};
+ 
++	isp->frame_sequence++;
++	isp->frame_active = true;
++
+ 	event.u.frame_sync.frame_sequence = isp->frame_sequence;
+ 	v4l2_event_queue(isp->sd.devnode, &event);
+ }
+@@ -1111,15 +1115,20 @@ irqreturn_t rkisp1_isp_isr(int irq, void *ctx)
+ 
+ 	rkisp1_write(rkisp1, RKISP1_CIF_ISP_ICR, status);
+ 
+-	/* Vertical sync signal, starting generating new frame */
+-	if (status & RKISP1_CIF_ISP_V_START) {
+-		rkisp1->isp.frame_sequence++;
+-		rkisp1_isp_queue_event_sof(&rkisp1->isp);
++	/*
++	 * Vertical sync signal, starting new frame. Defer handling of vsync
++	 * after RKISP1_CIF_ISP_FRAME if the previous frame was not completed
++	 * yet.
++	 */
++	if (status & RKISP1_CIF_ISP_V_START && !rkisp1->isp.frame_active) {
++		status &= ~RKISP1_CIF_ISP_V_START;
++		rkisp1_isp_sof(&rkisp1->isp);
+ 		if (status & RKISP1_CIF_ISP_FRAME) {
+ 			WARN_ONCE(1, "irq delay is too long, buffers might not be in sync\n");
+ 			rkisp1->debug.irq_delay++;
+ 		}
+ 	}
++
+ 	if (status & RKISP1_CIF_ISP_PIC_SIZE_ERROR) {
+ 		/* Clear pic_size_error */
+ 		isp_err = rkisp1_read(rkisp1, RKISP1_CIF_ISP_ERR);
+@@ -1138,6 +1147,7 @@ irqreturn_t rkisp1_isp_isr(int irq, void *ctx)
+ 	if (status & RKISP1_CIF_ISP_FRAME) {
+ 		u32 isp_ris;
+ 
++		rkisp1->isp.frame_active = false;
+ 		rkisp1->debug.complete_frames++;
+ 
+ 		/* New frame from the sensor received */
+@@ -1152,5 +1162,12 @@ irqreturn_t rkisp1_isp_isr(int irq, void *ctx)
+ 		rkisp1_params_isr(rkisp1);
+ 	}
+ 
++	/*
++	 * Deferred handling of vsync if RKISP1_CIF_ISP_V_START and
++	 * RKISP1_CIF_ISP_FRAME occurred in the same irq.
++	 */
++	if (status & RKISP1_CIF_ISP_V_START)
++		rkisp1_isp_sof(&rkisp1->isp);
++
+ 	return IRQ_HANDLED;
+ }
+-- 
+2.48.1
 
 
 _______________________________________________
