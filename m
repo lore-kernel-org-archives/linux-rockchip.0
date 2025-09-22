@@ -4,79 +4,183 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C62E2CAC592
-	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Sep 2025 18:44:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7DA2CA100F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Sep 2025 19:40:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EDfe+lrmb97ZvTMtSz0sjvaRaK1KRSp3qzSQE9mUD1o=; b=aXjFsHTRj2yrhP
-	ipxDKf+6cwsyHjtZTEJZkd7hW9uA47bp2gvfa/Bofx+V43YzznhsJepm35v6aZm6nVViEwUja6Vsl
-	7LGi05AvghVMXWiaYDxWamAuk0PYV1RaqeUdViLUQwFiI0vSBupB5Yu9RLBlDD1i6LIKZ2/AYoGeb
-	6v/rzRC7CpD5KCmdLXKqU+L/dvxr8rEdtGkX3CADTLT4Fd+tdq3nuKxoL5OPu60P0RR9pJy8WVF90
-	A9/oZV+8Yj1etcqHZ2KLuu9SYmFKUdd2MIHxQs3w23BYtqYK5zjlbbc/63qPM32mBydwMGFJam2ua
-	wnzBRbX7cE7kXNCcwZtA==;
+	List-Owner; bh=uQlcfpFIibZPCatWttEUyGXvReFLADb0J3RFpGtf5gk=; b=0alZRCDjDQp7Bu
+	QwVl/PXH6DndvIATBUXF6gxfVjaMviog8SYzd6laa6mRs0IOBuPyuwVxrvNOyBTe3kYLdgs4gyY8n
+	6plfLSg6pJRkbp4cQaOjpq9TpcASjNDj35jrFs2bsX5G49JIoMNfD+hkWHandah3R5wG8ZoDYT8LR
+	VfhFtGOWf4pMns4Zevf0BQTm0q5WYddENiY2lFfjRWrv1/qeH5gNBT8x1C4lLNVqx49afpcOc0aWe
+	uJjuPBszaKNYw4kc/jPIgQbMdaqAtXZ0XfxLc4v8AvsdsIAWjcRI7KdPRsh7LzVYChT1MdcImbzc6
+	zLzodBCKmEiQc2ZIIeTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0lWI-0000000BGuL-2307;
-	Mon, 22 Sep 2025 18:44:14 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1v0mOY-0000000BMZx-282s;
+	Mon, 22 Sep 2025 19:40:18 +0000
+Received: from mail-eastus2azlp170100001.outbound.protection.outlook.com ([2a01:111:f403:c110::1] helo=BN1PR04CU002.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0lWB-0000000BGmL-1889;
-	Mon, 22 Sep 2025 18:44:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1758566645;
-	bh=sTnEo8a89YeLQ0QILBM5s2kMq3O8N71U7hkiJcsqCZg=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=DySr3DoZpHH4XDhdcTxBiMuyetPL9COmvIP78xAwWu4lMYndljlgYXAaKbBuNSbV+
-	 3XswuKbYgiwjSRhhZlMpucZXPN4xDJfomkJnZSz9OSc1nXokG/1y6ki6kiXMasiIIM
-	 EzViAapn9iW/2Da1mag3aP9SyWCaa1jOIc+vNFCOizNcMD6Q2/wUsdihNSXpU7AxJQ
-	 ziZ79CILio+r5n2jc/yhjAqCq6eH0r2WeqEz1ov9dzvKHg4PSk/HDrLMbJjRUGc0Ci
-	 9tWQ0m5BhNHUT7Aa6JE/LX7QTEmgleYZjNvIv9R6P0iSfj84w4NvFqTd+MSA+heclv
-	 dynTV+NBtFxyQ==
-Received: from [192.168.13.179] (unknown [IPv6:2606:6d00:10:aee0::5ac])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 115A417E12DF;
-	Mon, 22 Sep 2025 20:44:02 +0200 (CEST)
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Date: Mon, 22 Sep 2025 14:43:38 -0400
-Subject: [PATCH 1/2] media: verisilicon: Fix CPU stalls on G2 bus error
+	id 1v0mOV-0000000BMYQ-1Reu;
+	Mon, 22 Sep 2025 19:40:16 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=DJOyPGA4k7qzjV975jSTFBFhE0aKyhv3mg6r+GSxGtUEeK8iSgIsBWi4Q0cVmD/UPrhnB+RfwByAHNuC5v2+tlMzq/dmW+vzkWUyEbZhW0e2Q5uqejZLIqC/zv2CLK3LTDQu68JumUdNlx6lJ2R5GptoYyUOPlZDRHrfeTeiJ8+BSpco5KKqm5Vg0YSKq75No0Vw5SHW7VgWJr53PAgKecCdctgjv/wYHlmrpW9QhcAGN+lTJqH+BjG0aABlLPrGaDdq9dU3U3i/ouPw7Tyy+C/owV9KQy1p5h8phznedYIRCLjy3+WBhVmvEMf0CkbktuNy5gzqfRIS75+DYT9tAQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=ZwQdfVHoQ89g9jRugMa62uAOoXRlQr6J3u4Shgt6m2o=;
+ b=jJz3ULD05pjnBb4+MA9jexQ0M0TFLCiWfr4/ePNT5jV2+/MvkmxZnfSh0mIasHbqGr2QnWVjfCdMB9/XbiDhO7PWARtYgDWbb0kWt3nuVLANrAxPdNAAOT6QvUtqt/GohE0+ncUlvPfLmVeQ0JFKFfj0fpjLtiFJGb/ouZpnPRRdALW4I/XwZwk84/g+A/zW9+JOZurog7NkeeRatC0wyVAYbr+oD/WrnyinjPZmqexRDbxQynzr6W/vgnT0LW7jHmK6O9dW9lFE0000e9RJzk0iMKD6+wIHo+Hxun075Xu6fr+fcUq7XP3OdVcdH6Df1tn38KLHJmRMUn0pjjgTpw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.117.160) smtp.rcpttodomain=intel.com smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=ZwQdfVHoQ89g9jRugMa62uAOoXRlQr6J3u4Shgt6m2o=;
+ b=dfdSDLIERJOCwLMqFjprl9MK4s9+ekXInt71a8NXZ5GAddHO58ybnVGLXH0CujGvlCs3xFeqhNEOI4bomDr9KVSPr+LWh8EWOylRIKk44yec6F0asLI/HWB+YhJHGQoZodzuCV4RDdadcHTFENy/UoVuSi3i3w9vXczCY78Eb7NnuSJxptsBR3iGY6L3wpfo5m3zGaoHjWt3sYtIR2/kCAxLpobxIBCr5P88CT35UbAv2IRex4tVjTwf8BSvkOBYBd3UD2vXJzWSkwX6axf9tj8EkXS5VXXzOEUbeVVm5o1x2djnd8qamM0l8ay0UAWl0+woWcVB9VFN01KjmU9ybQ==
+Received: from PH8PR05CA0003.namprd05.prod.outlook.com (2603:10b6:510:2cc::24)
+ by CH1PPF4C9628624.namprd12.prod.outlook.com (2603:10b6:61f:fc00::60d) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9137.13; Mon, 22 Sep
+ 2025 19:40:07 +0000
+Received: from SN1PEPF0002529F.namprd05.prod.outlook.com
+ (2603:10b6:510:2cc:cafe::1e) by PH8PR05CA0003.outlook.office365.com
+ (2603:10b6:510:2cc::24) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9137.20 via Frontend Transport; Mon,
+ 22 Sep 2025 19:40:01 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.160)
+ smtp.mailfrom=nvidia.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.117.160 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.117.160; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.117.160) by
+ SN1PEPF0002529F.mail.protection.outlook.com (10.167.242.6) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.9137.12 via Frontend Transport; Mon, 22 Sep 2025 19:40:05 +0000
+Received: from rnnvmail202.nvidia.com (10.129.68.7) by mail.nvidia.com
+ (10.129.200.66) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.34; Mon, 22 Sep
+ 2025 12:39:48 -0700
+Received: from rnnvmail201.nvidia.com (10.129.68.8) by rnnvmail202.nvidia.com
+ (10.129.68.7) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Mon, 22 Sep
+ 2025 12:39:47 -0700
+Received: from Asurada-Nvidia (10.127.8.11) by mail.nvidia.com (10.129.68.8)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.34 via Frontend
+ Transport; Mon, 22 Sep 2025 12:39:44 -0700
+Date: Mon, 22 Sep 2025 12:39:42 -0700
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: "Tian, Kevin" <kevin.tian@intel.com>
+CC: "joro@8bytes.org" <joro@8bytes.org>, "jgg@nvidia.com" <jgg@nvidia.com>,
+	"bhelgaas@google.com" <bhelgaas@google.com>, "suravee.suthikulpanit@amd.com"
+	<suravee.suthikulpanit@amd.com>, "will@kernel.org" <will@kernel.org>,
+	"robin.murphy@arm.com" <robin.murphy@arm.com>, "sven@kernel.org"
+	<sven@kernel.org>, "j@jannau.net" <j@jannau.net>, "alyssa@rosenzweig.io"
+	<alyssa@rosenzweig.io>, "neal@gompa.dev" <neal@gompa.dev>,
+	"robin.clark@oss.qualcomm.com" <robin.clark@oss.qualcomm.com>,
+	"m.szyprowski@samsung.com" <m.szyprowski@samsung.com>, "krzk@kernel.org"
+	<krzk@kernel.org>, "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
+	"dwmw2@infradead.org" <dwmw2@infradead.org>, "baolu.lu@linux.intel.com"
+	<baolu.lu@linux.intel.com>, "yong.wu@mediatek.com" <yong.wu@mediatek.com>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	"angelogioacchino.delregno@collabora.com"
+	<angelogioacchino.delregno@collabora.com>, "tjeznach@rivosinc.com"
+	<tjeznach@rivosinc.com>, "paul.walmsley@sifive.com"
+	<paul.walmsley@sifive.com>, "palmer@dabbelt.com" <palmer@dabbelt.com>,
+	"aou@eecs.berkeley.edu" <aou@eecs.berkeley.edu>, "alex@ghiti.fr"
+	<alex@ghiti.fr>, "heiko@sntech.de" <heiko@sntech.de>,
+	"schnelle@linux.ibm.com" <schnelle@linux.ibm.com>, "mjrosato@linux.ibm.com"
+	<mjrosato@linux.ibm.com>, "gerald.schaefer@linux.ibm.com"
+	<gerald.schaefer@linux.ibm.com>, "orsonzhai@gmail.com" <orsonzhai@gmail.com>,
+	"baolin.wang@linux.alibaba.com" <baolin.wang@linux.alibaba.com>,
+	"zhang.lyra@gmail.com" <zhang.lyra@gmail.com>, "wens@csie.org"
+	<wens@csie.org>, "jernej.skrabec@gmail.com" <jernej.skrabec@gmail.com>,
+	"samuel@sholland.org" <samuel@sholland.org>, "jean-philippe@linaro.org"
+	<jean-philippe@linaro.org>, "rafael@kernel.org" <rafael@kernel.org>,
+	"lenb@kernel.org" <lenb@kernel.org>, "Liu, Yi L" <yi.l.liu@intel.com>,
+	"cwabbott0@gmail.com" <cwabbott0@gmail.com>, "quic_pbrahma@quicinc.com"
+	<quic_pbrahma@quicinc.com>, "iommu@lists.linux.dev" <iommu@lists.linux.dev>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"asahi@lists.linux.dev" <asahi@lists.linux.dev>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "linux-arm-msm@vger.kernel.org"
+	<linux-arm-msm@vger.kernel.org>, "linux-samsung-soc@vger.kernel.org"
+	<linux-samsung-soc@vger.kernel.org>, "linux-mediatek@lists.infradead.org"
+	<linux-mediatek@lists.infradead.org>, "linux-riscv@lists.infradead.org"
+	<linux-riscv@lists.infradead.org>, "linux-rockchip@lists.infradead.org"
+	<linux-rockchip@lists.infradead.org>, "linux-s390@vger.kernel.org"
+	<linux-s390@vger.kernel.org>, "linux-sunxi@lists.linux.dev"
+	<linux-sunxi@lists.linux.dev>, "linux-tegra@vger.kernel.org"
+	<linux-tegra@vger.kernel.org>, "virtualization@lists.linux.dev"
+	<virtualization@lists.linux.dev>, "linux-acpi@vger.kernel.org"
+	<linux-acpi@vger.kernel.org>, "linux-pci@vger.kernel.org"
+	<linux-pci@vger.kernel.org>, "patches@lists.linux.dev"
+	<patches@lists.linux.dev>, "Sethi, Vikram" <vsethi@nvidia.com>,
+	"helgaas@kernel.org" <helgaas@kernel.org>, "etzhao1900@gmail.com"
+	<etzhao1900@gmail.com>
+Subject: Re: [PATCH v4 6/7] iommu: Introduce iommu_dev_reset_prepare() and
+ iommu_dev_reset_done()
+Message-ID: <aNGl/pos6os95dHh@Asurada-Nvidia>
+References: <cover.1756682135.git.nicolinc@nvidia.com>
+ <0f6021b500c74db33af8118210dd7a2b2fd31b3c.1756682135.git.nicolinc@nvidia.com>
+ <BL1PR11MB5271BE949150D4C2B5EC589A8C08A@BL1PR11MB5271.namprd11.prod.outlook.com>
 MIME-Version: 1.0
-Message-Id: <20250922-imx8mq-hantro-g2-hang-v1-1-67d00eb6a548@collabora.com>
-References: <20250922-imx8mq-hantro-g2-hang-v1-0-67d00eb6a548@collabora.com>
-In-Reply-To: <20250922-imx8mq-hantro-g2-hang-v1-0-67d00eb6a548@collabora.com>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>, Shawn Guo <shawnguo@kernel.org>, 
- Sascha Hauer <s.hauer@pengutronix.de>, 
- Pengutronix Kernel Team <kernel@pengutronix.de>, 
- Fabio Estevam <festevam@gmail.com>, 
- Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Hans Verkuil <hverkuil@kernel.org>, 
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, 
- linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, imx@lists.linux.dev, 
- linux-arm-kernel@lists.infradead.org, kernel@collabora.com, 
- Stable@vger.kernel.org, Nicolas Dufresne <nicolas.dufresne@collabora.com>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=9194;
- i=nicolas.dufresne@collabora.com; h=from:subject:message-id;
- bh=sTnEo8a89YeLQ0QILBM5s2kMq3O8N71U7hkiJcsqCZg=;
- b=owGbwMvMwCV203FKoGZC0RfG02pJDBkXZ3zoET94zsjkNc/v++cXv+AXZpm0UHzzxCVnBX9PO
- 7PQ7c3Uxx2lLAxiXAyyYoos73mDGkWPHD4kxZIvBDOHlQlkCAMXpwBMpKuW4X956U/mOUukXRN3
- x2wTSOTqZnsjNuOmwj+jW+kKeetlb/Ay/Hf5tG6DVGyn7KvE8JY4yZ0e5hxMvPtTHwVvuSP855v
- CPz4A
-X-Developer-Key: i=nicolas.dufresne@collabora.com; a=openpgp;
- fpr=EF0D528115C4C3C21A046F12D9419451296072F4
+Content-Disposition: inline
+In-Reply-To: <BL1PR11MB5271BE949150D4C2B5EC589A8C08A@BL1PR11MB5271.namprd11.prod.outlook.com>
+X-NV-OnPremToCloud: ExternallySecured
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SN1PEPF0002529F:EE_|CH1PPF4C9628624:EE_
+X-MS-Office365-Filtering-Correlation-Id: 9ea5e492-fda6-4cfb-fe5c-08ddfa0fd47a
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|7416014|376014|82310400026|36860700013|1800799024;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?ZBp2iPgKLaVqUipOWDYd/uahSr20F34zUA18MxEmr8eKFUh0whf0exxHuuw0?=
+ =?us-ascii?Q?M9Zvu0/ivVeydZG+wgKL8XBgbqCZWrptldEMJKyTIP3aRxqfTfVpKinRiOfz?=
+ =?us-ascii?Q?XIoPVOtKf/YW3LkAui0MNiksK0Jp5ztvX6J+JJwKnvyvGFntwEWIytJj6VFd?=
+ =?us-ascii?Q?+r7v1KEujJcxWPD2P+W/4Z09CyDvjaNiHBQTL+dd/m8qlfKPBcxHObTBLjCZ?=
+ =?us-ascii?Q?wQXkTzyDS53cbgbVN2N6HBr+PVGcChq6FqQm6qTFJjZaEah/uv0q/JbGBaAa?=
+ =?us-ascii?Q?0JsWocnu8C17uscswJab7SusPdhZ0O6jdCZT8KqEwGIHnxpimxjX0JtRoCmt?=
+ =?us-ascii?Q?PtrcZDqOoNqXecC30uBButoO5ZOswrhNGrl/Cp7ad8pe9VLnOWxIKdiEhi7p?=
+ =?us-ascii?Q?YtWXONkzan19oWeiS+kekqelrykik7zyWkKMFp1pmm/+7fGoBzooSJ48/6qH?=
+ =?us-ascii?Q?CYiqM7yuXhz5kJe6MTjIh7jE1Ue2Wb1rLtybp8F/vjQUK4Fob/92YqcLqWyF?=
+ =?us-ascii?Q?Xmae/D8NxoCHfek1aowhj3QcqtLtYDIBubIHzDZEUm0N8VvS8Lm+Ca+t+LZe?=
+ =?us-ascii?Q?bf75kaDTjwzVtz8evUYIp9ClMgCOlZ/XO+2ZAxala+P/7KV9HYx7gMxFNei/?=
+ =?us-ascii?Q?BT9Lcp+bNXx8Hx2NFM05cYREZHnc7pDxlXQ0i39tbjPwLVtZgzUgHjmeMCjp?=
+ =?us-ascii?Q?xL79I8PhY0EA2Q1gdggqRtfiILI/uaVknAiqsk2tz6KSRhqduMBgNbz8f5VZ?=
+ =?us-ascii?Q?VWgQtw3OwIPoJgs31qXjGvcShVtB43GvfAme4oeUF6ySV8Ttn4BrDdZ3jB4H?=
+ =?us-ascii?Q?+sQ3VAANPcmO8VO5BjtNhn5K9Qb5mFb6iDf/LhQuwBac7ty9LX9cXTEpdGhW?=
+ =?us-ascii?Q?mISMfJ2MulVIv6pXM5oIWlY5eFZmPa2muyeHToryjD3QPjOVtIY6CQTJnD4l?=
+ =?us-ascii?Q?jzxvN8eX0m7BS5Uxz69C21FNyXnTWKIge86snSfz9spLUrUh9vyybaIC/AlD?=
+ =?us-ascii?Q?zslj0ouRoYXj0RXVLj3K5/JzSQbZ7alNsFdc+nW7IYlEeXxvTBOSrfYI9Nbe?=
+ =?us-ascii?Q?OmTV4l4TE6JSJFhYZU5SB/ql8yr9uk2SCWm6qbRCMCByBxvlFD7/fncoyr84?=
+ =?us-ascii?Q?mQ/+gHaF9Kqf4RzvWzH5rPIelNu8ZMAlyZj1JP2QDFBYv3ebwZSOHsfVP2DV?=
+ =?us-ascii?Q?05Um3v9bsUBcy+GP+xpViLq1atdCspH2ArfJRK/u54qb5xKpi6iN8xbn5psa?=
+ =?us-ascii?Q?ZzJAOEf/TfyUgWtxqWK8/unq1JjThTbJUdbXbUtD9hoQ5ZXmHPwLrSsxuZbx?=
+ =?us-ascii?Q?FNUrkX1qjMM/U7FDMvxrE3cqDeeHNLzHONm+9KaLVZ5Ux1U3JKyIUas4BSMT?=
+ =?us-ascii?Q?ZQYtJi+qXxYFi/e5NwQ6jOm2YFewhSYTKI4jJtEQ2EgYH3sFAUJ4rh8/qtWW?=
+ =?us-ascii?Q?Tg1IhKw+QmXLoGSqicfx2HT6h7/GS5hlvDPTPrMRjxLkrXGZb5kr3BRHpdCm?=
+ =?us-ascii?Q?s575dz/ejljm4wg4WkZzIA1tGoGoKtMUcU+G?=
+X-Forefront-Antispam-Report: CIP:216.228.117.160;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:dc6edge1.nvidia.com;CAT:NONE;SFS:(13230040)(7416014)(376014)(82310400026)(36860700013)(1800799024);DIR:OUT;SFP:1101;
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Sep 2025 19:40:05.1641
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 9ea5e492-fda6-4cfb-fe5c-08ddfa0fd47a
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[216.228.117.160];Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: SN1PEPF0002529F.namprd05.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH1PPF4C9628624
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250922_114407_499378_2E43D6FF 
-X-CRM114-Status: GOOD (  21.71  )
+X-CRM114-CacheID: sfid-20250922_124015_381927_EF621B06 
+X-CRM114-Status: GOOD (  14.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,246 +197,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-In some seek stress tests, we are getting IRQ from the G2 decoder where
-the dec_bus_int and the dec_e bits are high, meaning the decoder is
-still running despite the error.
+On Fri, Sep 12, 2025 at 09:49:13AM +0000, Tian, Kevin wrote:
+> given it impacts uAPI:
+> 
+>   - now attach/replace can be done anytime
+>   - with this series attach/replace is rejected when a device is being reset
+>   - later with compat testing ops attach/replace can be done again at
+>     any time
+> 
+> we should be cautious here, especially if this series goes into 6.18 (likely
+> the next LTS version) the interim behavior change may last long. yes
+> we discussed that no know usage would want to do attach/replace
+> while a device is being reset, but I wonder whether we should instead 
+> wait for a full solution to avoid unnecessary uAPI change back-and-forth...
 
-Fix this by reworking the IRQ handler to only finish the job once we
-have reached completion and move the software reset to when our software
-watchdog triggers.
+That's a very fair point. To keep the uAPI consistent:
 
-This way, we let the hardware continue on errors when it did not self
-reset and in worse case scenario the hardware timeout will
-automatically stop it. The actual error will be fixed in a follow up
-patch.
+I will split the series, making a smaller preparatory one, as a
+part-1 for release_domain and old_domain.
 
-Fixes: 3385c514ecc5a ("media: hantro: Convert imx8m_vpu_g2_irq to helper")
-Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
----
- drivers/media/platform/verisilicon/hantro_g2.c     | 88 +++++++++++++++++-----
- .../platform/verisilicon/hantro_g2_hevc_dec.c      |  2 -
- .../media/platform/verisilicon/hantro_g2_regs.h    | 13 ++++
- .../media/platform/verisilicon/hantro_g2_vp9_dec.c |  2 -
- drivers/media/platform/verisilicon/hantro_hw.h     |  1 +
- drivers/media/platform/verisilicon/imx8m_vpu_hw.c  |  2 +
- 6 files changed, 85 insertions(+), 23 deletions(-)
+Part-2 will roll out a can_attach op across drivers. And part-3
+should have the final reset patches.
 
-diff --git a/drivers/media/platform/verisilicon/hantro_g2.c b/drivers/media/platform/verisilicon/hantro_g2.c
-index aae0b562fabb1732b08bcd88b9007749a7849ba6..318673b66da884b89f31777dd8e69a934080cebf 100644
---- a/drivers/media/platform/verisilicon/hantro_g2.c
-+++ b/drivers/media/platform/verisilicon/hantro_g2.c
-@@ -5,43 +5,93 @@
-  * Copyright (C) 2021 Collabora Ltd, Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-  */
- 
-+#include <linux/delay.h>
- #include "hantro_hw.h"
- #include "hantro_g2_regs.h"
- 
- #define G2_ALIGN	16
- 
--void hantro_g2_check_idle(struct hantro_dev *vpu)
-+static bool hantro_g2_active(struct hantro_ctx *ctx)
- {
--	int i;
--
--	for (i = 0; i < 3; i++) {
--		u32 status;
--
--		/* Make sure the VPU is idle */
--		status = vdpu_read(vpu, G2_REG_INTERRUPT);
--		if (status & G2_REG_INTERRUPT_DEC_E) {
--			dev_warn(vpu->dev, "device still running, aborting");
--			status |= G2_REG_INTERRUPT_DEC_ABORT_E | G2_REG_INTERRUPT_DEC_IRQ_DIS;
--			vdpu_write(vpu, status, G2_REG_INTERRUPT);
--		}
-+	struct hantro_dev *vpu = ctx->dev;
-+	u32 status;
-+
-+	status = vdpu_read(vpu, G2_REG_INTERRUPT);
-+
-+	return (status & G2_REG_INTERRUPT_DEC_E);
-+}
-+
-+/**
-+ * hantro_g2_reset:
-+ * @ctx: the hantro context
-+ *
-+ * Emulates a reset using Hantro abort function. Failing this procedure would
-+ * results in programming a running IP which leads to CPU hang.
-+ *
-+ * Using a hard reset procedure instead is prefferred.
-+ */
-+void hantro_g2_reset(struct hantro_ctx *ctx)
-+{
-+	struct hantro_dev *vpu = ctx->dev;
-+	u32 status;
-+
-+	status = vdpu_read(vpu, G2_REG_INTERRUPT);
-+	if (status & G2_REG_INTERRUPT_DEC_E) {
-+		dev_warn_ratelimited(vpu->dev, "device still running, aborting");
-+		status |= G2_REG_INTERRUPT_DEC_ABORT_E | G2_REG_INTERRUPT_DEC_IRQ_DIS;
-+		vdpu_write(vpu, status, G2_REG_INTERRUPT);
-+
-+		do {
-+			mdelay(1);
-+		} while (hantro_g2_active(ctx));
- 	}
- }
- 
- irqreturn_t hantro_g2_irq(int irq, void *dev_id)
- {
- 	struct hantro_dev *vpu = dev_id;
--	enum vb2_buffer_state state;
- 	u32 status;
- 
- 	status = vdpu_read(vpu, G2_REG_INTERRUPT);
--	state = (status & G2_REG_INTERRUPT_DEC_RDY_INT) ?
--		 VB2_BUF_STATE_DONE : VB2_BUF_STATE_ERROR;
- 
--	vdpu_write(vpu, 0, G2_REG_INTERRUPT);
--	vdpu_write(vpu, G2_REG_CONFIG_DEC_CLK_GATE_E, G2_REG_CONFIG);
-+	if (!(status & G2_REG_INTERRUPT_DEC_IRQ))
-+		return IRQ_NONE;
-+
-+	hantro_reg_write(vpu, &g2_dec_irq, 0);
-+	hantro_reg_write(vpu, &g2_dec_int_stat, 0);
-+	hantro_reg_write(vpu, &g2_clk_gate_e, 1);
-+
-+	if (status & G2_REG_INTERRUPT_DEC_RDY_INT) {
-+		hantro_irq_done(vpu, VB2_BUF_STATE_DONE);
-+		return IRQ_HANDLED;
-+	}
-+
-+	if (status & G2_REG_INTERRUPT_DEC_ABORT_INT) {
-+		/* disabled on abort, though lets be safe and handle it */
-+		dev_warn_ratelimited(vpu->dev, "decode operation aborted.");
-+		return IRQ_HANDLED;
-+	}
-+
-+	if (status & G2_REG_INTERRUPT_DEC_LAST_SLICE_INT)
-+		dev_warn_ratelimited(vpu->dev, "not all macroblocks were decoded.");
-+
-+	if (status & G2_REG_INTERRUPT_DEC_BUS_INT)
-+		dev_warn_ratelimited(vpu->dev, "bus error detected.");
-+
-+	if (status & G2_REG_INTERRUPT_DEC_ERROR_INT)
-+		dev_warn_ratelimited(vpu->dev, "decode error detected.");
-+
-+	if (status & G2_REG_INTERRUPT_DEC_TIMEOUT)
-+		dev_warn_ratelimited(vpu->dev, "frame decode timed out.");
- 
--	hantro_irq_done(vpu, state);
-+	/**
-+	 * If the decoding haven't stopped, let it continue. The hardware timeout
-+	 * will trigger if it is trully stuck.
-+	 */
-+	if (status & G2_REG_INTERRUPT_DEC_E)
-+		return IRQ_HANDLED;
- 
-+	hantro_irq_done(vpu, VB2_BUF_STATE_ERROR);
- 	return IRQ_HANDLED;
- }
- 
-diff --git a/drivers/media/platform/verisilicon/hantro_g2_hevc_dec.c b/drivers/media/platform/verisilicon/hantro_g2_hevc_dec.c
-index 0e212198dd65b1cc27770ca93b14aa96e2772ac4..f066636e56f98560d9b1c5036691e3c34dd13b1f 100644
---- a/drivers/media/platform/verisilicon/hantro_g2_hevc_dec.c
-+++ b/drivers/media/platform/verisilicon/hantro_g2_hevc_dec.c
-@@ -582,8 +582,6 @@ int hantro_g2_hevc_dec_run(struct hantro_ctx *ctx)
- 	struct hantro_dev *vpu = ctx->dev;
- 	int ret;
- 
--	hantro_g2_check_idle(vpu);
--
- 	/* Prepare HEVC decoder context. */
- 	ret = hantro_hevc_dec_prepare_run(ctx);
- 	if (ret)
-diff --git a/drivers/media/platform/verisilicon/hantro_g2_regs.h b/drivers/media/platform/verisilicon/hantro_g2_regs.h
-index b943b1816db7fd11eee063ecd7b082a5ed6c6f90..c614951121c79cf5c3bd4d086e596f60fba12459 100644
---- a/drivers/media/platform/verisilicon/hantro_g2_regs.h
-+++ b/drivers/media/platform/verisilicon/hantro_g2_regs.h
-@@ -22,7 +22,14 @@
- #define G2_REG_VERSION			G2_SWREG(0)
- 
- #define G2_REG_INTERRUPT		G2_SWREG(1)
-+#define G2_REG_INTERRUPT_DEC_LAST_SLICE_INT	BIT(19)
-+#define G2_REG_INTERRUPT_DEC_TIMEOUT	BIT(18)
-+#define G2_REG_INTERRUPT_DEC_ERROR_INT	BIT(16)
-+#define G2_REG_INTERRUPT_DEC_BUF_INT	BIT(14)
-+#define G2_REG_INTERRUPT_DEC_BUS_INT	BIT(13)
- #define G2_REG_INTERRUPT_DEC_RDY_INT	BIT(12)
-+#define G2_REG_INTERRUPT_DEC_ABORT_INT	BIT(11)
-+#define G2_REG_INTERRUPT_DEC_IRQ	BIT(8)
- #define G2_REG_INTERRUPT_DEC_ABORT_E	BIT(5)
- #define G2_REG_INTERRUPT_DEC_IRQ_DIS	BIT(4)
- #define G2_REG_INTERRUPT_DEC_E		BIT(0)
-@@ -35,6 +42,9 @@
- #define BUS_WIDTH_128			2
- #define BUS_WIDTH_256			3
- 
-+#define g2_dec_int_stat		G2_DEC_REG(1, 11, 0xf)
-+#define g2_dec_irq		G2_DEC_REG(1, 8, 0x1)
-+
- #define g2_strm_swap		G2_DEC_REG(2, 28, 0xf)
- #define g2_strm_swap_old	G2_DEC_REG(2, 27, 0x1f)
- #define g2_pic_swap		G2_DEC_REG(2, 22, 0x1f)
-@@ -225,6 +235,9 @@
- #define vp9_filt_level_seg5	G2_DEC_REG(19,  8, 0x3f)
- #define vp9_quant_seg5		G2_DEC_REG(19,  0, 0xff)
- 
-+#define g2_timemout_override_e	G2_DEC_REG(45, 31, 0x1)
-+#define g2_timemout_cycles	G2_DEC_REG(45, 0, 0x7fffffff)
-+
- #define hevc_cur_poc_00		G2_DEC_REG(46, 24, 0xff)
- #define hevc_cur_poc_01		G2_DEC_REG(46, 16, 0xff)
- #define hevc_cur_poc_02		G2_DEC_REG(46, 8,  0xff)
-diff --git a/drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c b/drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c
-index 82a478ac645e1daf730bf7aa53f825508556d3b2..56c79e339030e8076c386d7c48d976e102971d6d 100644
---- a/drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c
-+++ b/drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c
-@@ -893,8 +893,6 @@ int hantro_g2_vp9_dec_run(struct hantro_ctx *ctx)
- 	struct vb2_v4l2_buffer *dst;
- 	int ret;
- 
--	hantro_g2_check_idle(ctx->dev);
--
- 	ret = start_prepare_run(ctx, &decode_params);
- 	if (ret) {
- 		hantro_end_prepare_run(ctx);
-diff --git a/drivers/media/platform/verisilicon/hantro_hw.h b/drivers/media/platform/verisilicon/hantro_hw.h
-index c9b6556f8b2b78b94e11c6f1374b395ca02f16ff..5f2011529f02dc6f8260f10a579bf1cd4e6c2edf 100644
---- a/drivers/media/platform/verisilicon/hantro_hw.h
-+++ b/drivers/media/platform/verisilicon/hantro_hw.h
-@@ -583,6 +583,7 @@ void hantro_g2_vp9_dec_done(struct hantro_ctx *ctx);
- int hantro_vp9_dec_init(struct hantro_ctx *ctx);
- void hantro_vp9_dec_exit(struct hantro_ctx *ctx);
- void hantro_g2_check_idle(struct hantro_dev *vpu);
-+void hantro_g2_reset(struct hantro_ctx *ctx);
- irqreturn_t hantro_g2_irq(int irq, void *dev_id);
- 
- #endif /* HANTRO_HW_H_ */
-diff --git a/drivers/media/platform/verisilicon/imx8m_vpu_hw.c b/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
-index f9f276385c11786c4fda9f02f71ec699f57b84f5..5be0e2e76882f1e21359d3e7cf7f6213ee728ea5 100644
---- a/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
-+++ b/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
-@@ -294,11 +294,13 @@ static const struct hantro_codec_ops imx8mq_vpu_g1_codec_ops[] = {
- static const struct hantro_codec_ops imx8mq_vpu_g2_codec_ops[] = {
- 	[HANTRO_MODE_HEVC_DEC] = {
- 		.run = hantro_g2_hevc_dec_run,
-+		.reset = hantro_g2_reset,
- 		.init = hantro_hevc_dec_init,
- 		.exit = hantro_hevc_dec_exit,
- 	},
- 	[HANTRO_MODE_VP9_DEC] = {
- 		.run = hantro_g2_vp9_dec_run,
-+		.reset = hantro_g2_reset,
- 		.done = hantro_g2_vp9_dec_done,
- 		.init = hantro_vp9_dec_init,
- 		.exit = hantro_vp9_dec_exit,
-
--- 
-2.51.0
-
+Thanks
+Nicolin
 
 _______________________________________________
 Linux-rockchip mailing list
