@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8486DCAC592
-	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Sep 2025 20:55:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 191A1CAC5AA
+	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Sep 2025 20:56:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uWJUia/FwRPa9Bj5yw0OV7mNH7lHlyEXula+rQSqPSU=; b=ZhDKCajp84Dw6X
-	nKJU6utysV03PPn6r2UgDAtckiJYkx3IQSHpLWBvlB4ZcgdWY8+ye++LSQIvlqwx8z5qjHNxu5kNn
-	NigGC/WBUwiGy2idjSQW3gv0UNExvrkCZHPYEkdDtVAR/8katq8wg4S0OdPxH0bq71oif3lGEDlAG
-	KtUuU2eAO1eFWfLnFxAC7Z/v+lLI7T3W3x09/3EcaPE/2+oojG4w73DfgC4167tIv/YXLG20fOKH+
-	6CBlbEjvAxxpAt9UqrBuya4kF6/t+YHBstJmMmYXo3aLz7myn6+F7ck6QgPFncpctp4CGXwlZZ3UE
-	pwq/RD9u2M+Jc5I8n9SQ==;
+	List-Owner; bh=c0DApJkQFSjwwlpI883Dqoo0Yj7x/0R+OKixIMiLH40=; b=FlYFyvg4y4yOWX
+	bta2RBqKdsR2PF1L0V9NLLD2vOin2VQ3yUS6PIh5rw8QI22mTqTm+b/H9NkuBcpsDwN1hZAZQgJTi
+	QPq0a0BNak40+x4oqyTiVuEPClABsj1Xbm/85ewZfL0c6TThJHB9j09oWz45C/Tk50OS6o/PJe8O5
+	GiVpIh36lwzZKz5J1dHaAVeFB5iYFPAS4VsxkXPD0i6b6PGlweUM6ScggrLtYYcpo6MxqCwy3CBJ2
+	FCk41+Di0f884bWYigpvlCVAYzZ2mFlOK+jJhVuE4wW4bjk1qsBTbnggBON337++5Dv/5Ml4UUWoR
+	FnWrQdlf8L8pd4mjFYKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0nZG-0000000BUyl-3KSQ;
-	Mon, 22 Sep 2025 20:55:26 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1v0nZz-0000000BVGg-0Req;
+	Mon, 22 Sep 2025 20:56:11 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0nZF-0000000BUyY-3f30;
-	Mon, 22 Sep 2025 20:55:25 +0000
+	id 1v0nZx-0000000BVFB-2h2a;
+	Mon, 22 Sep 2025 20:56:09 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id E961A60241;
-	Mon, 22 Sep 2025 20:55:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E5211C4CEF0;
-	Mon, 22 Sep 2025 20:55:23 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id F333B60243;
+	Mon, 22 Sep 2025 20:56:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5B59EC116C6;
+	Mon, 22 Sep 2025 20:56:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1758574524;
-	bh=tYpOjofHpW9mWp+Pr+zwn20aiOFBJXMUD80BxBDT1OE=;
+	s=k20201202; t=1758574568;
+	bh=lA0I4opGxZhQyjvHJkWoV1rrN874cWsCfYAyg+K+GmY=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=btMCe4pJzrjEFcSIlChfqpHzRKX9nmREvFuQo1txXzAfXiMm7dqUgVYz/Yg24jZfh
-	 oEC0lhquRT3S7V6O3w4AhmbeOIoeL8PEjKvTuf9hYNW3DLFeoNTjSxSkZvta8koKyN
-	 LXm5t6Kbm0VC1PdnmcRy/++FJf3w3qG5pOJYGUGf2wr2YowDAUyHurGLKeI6XZ6PwB
-	 Qttw6vo5oui+LCk5cciNBbSNLP8Z/+yvxIQGRQ8bdkk9ytAxiuFaZRQtIXHpkPh1sN
-	 HvoJimqkW8ltIgE5weKxlHGjBkju03NhQdRKOJ71ZfuCQERW+3wBIu9gPl3p041Bxy
-	 XvQr5ridOkuaw==
-Date: Mon, 22 Sep 2025 15:55:21 -0500
-From: Rob Herring <robh@kernel.org>
-To: Elaine Zhang <zhangqing@rock-chips.com>
-Cc: mkl@pengutronix.de, kernel@pengutronix.de, mailhol.vincent@wanadoo.fr,
-	krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de,
-	cl@rock-chips.com, kever.yang@rock-chips.com,
-	linux-can@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org
-Subject: Re: [PATCH v7 1/4] dt-bindings: can: rockchip_canfd: add rk3576
- CAN-FD controller
-Message-ID: <20250922205521.GA1307111-robh@kernel.org>
-References: <20250922071543.73923-1-zhangqing@rock-chips.com>
- <20250922071543.73923-2-zhangqing@rock-chips.com>
+	b=Le7ez/gbtNl0rwXZOciHgorHo1T/mjXDa7Sqb5DGeFMvXPlU1fXY7fFL2EXP4MATJ
+	 k4JMAcimAtW56q5h4mEmqv+lZ7CZZgAfTMJPq4aENh/BvRSFtwSmovxi4P8pPlTQuk
+	 Uo39ZFhQv7ro1ce9AbxBovRAWMH/wfbZOoqsUozJgkGTwVCv7uasDxxOF/3mzKnTjb
+	 wdaO43fS/kAsageKBUaOl9+vxC7Xby2vxT+TqWKiWvTqSfmMTlG1g2BPm4KSMUpM9y
+	 dU2JSUWyjRb/o8hIhp8fsaBlxgADVXWQyHTpLwAEe9WsK0J2CKHrbLhz3fVHIF7Hm4
+	 P8tbpW1uO6SuQ==
+Date: Mon, 22 Sep 2025 15:56:06 -0500
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Tianling Shen <cnsztl@gmail.com>
+Cc: Jonas Karlman <jonas@kwiboo.se>, linux-arm-kernel@lists.infradead.org,
+	Dragan Simic <dsimic@manjaro.org>,
+	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+	Heiko Stuebner <heiko@sntech.de>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 1/2] dt-bindings: arm: rockchip: Add FriendlyElec NanoPi
+ R76S
+Message-ID: <175857456614.1309030.10386435757239530357.robh@kernel.org>
+References: <20250922091509.2695565-1-cnsztl@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20250922071543.73923-2-zhangqing@rock-chips.com>
+In-Reply-To: <20250922091509.2695565-1-cnsztl@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,93 +74,22 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Sep 22, 2025 at 03:15:40PM +0800, Elaine Zhang wrote:
-> Add documentation for the rockchip rk3576 CAN-FD controller.
+
+On Mon, 22 Sep 2025 17:15:08 +0800, Tianling Shen wrote:
+> The NanoPi R76S (as "R76S") is an open-sourced mini IoT gateway
+> device with two 2.5G, designed and developed by FriendlyElec.
 > 
-> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+> Add devicetree binding documentation for the FriendlyElec NanoPi R76S
+> board.
+> 
+> Signed-off-by: Tianling Shen <cnsztl@gmail.com>
 > ---
->  .../net/can/rockchip,rk3568v2-canfd.yaml      | 47 +++++++++++++++++--
->  1 file changed, 44 insertions(+), 3 deletions(-)
+>  Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
+>  1 file changed, 5 insertions(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/net/can/rockchip,rk3568v2-canfd.yaml b/Documentation/devicetree/bindings/net/can/rockchip,rk3568v2-canfd.yaml
-> index a077c0330013..74b1a502f0b7 100644
-> --- a/Documentation/devicetree/bindings/net/can/rockchip,rk3568v2-canfd.yaml
-> +++ b/Documentation/devicetree/bindings/net/can/rockchip,rk3568v2-canfd.yaml
-> @@ -10,13 +10,11 @@ title:
->  maintainers:
->    - Marc Kleine-Budde <mkl@pengutronix.de>
->  
-> -allOf:
-> -  - $ref: can-controller.yaml#
-> -
->  properties:
->    compatible:
->      oneOf:
->        - const: rockchip,rk3568v2-canfd
-> +      - const: rockchip,rk3576-canfd
 
-Combine these 2 into an enum.
+Acked-by: Rob Herring (Arm) <robh@kernel.org>
 
->        - items:
->            - const: rockchip,rk3568v3-canfd
->            - const: rockchip,rk3568v2-canfd
-> @@ -43,6 +41,31 @@ properties:
->        - const: core
->        - const: apb
->  
-> +  dmas:
-> +    maxItems: 1
-> +
-> +  dma-names:
-> +    items:
-> +      - const: rx
-> +
-> +allOf:
-> +  - $ref: can-controller.yaml#
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            const: rockchip,rk3576-canfd
-> +      required:
-> +        - compatible
-> +    then:
-> +      required:
-> +        - dmas
-> +        - dma-names
-> +    else:
-> +      properties:
-> +        dmas: false
-> +        dma-names: false
-> +
->  required:
->    - compatible
->    - reg
-> @@ -72,3 +95,21 @@ examples:
->              reset-names = "core", "apb";
->          };
->      };
-> +
-> +  - |
-> +    soc {
-> +        #address-cells = <2>;
-> +        #size-cells = <2>;
-> +
-> +        can@2ac00000 {
-> +            compatible = "rockchip,rk3576-canfd";
-> +            reg = <0x0 0x2ac00000 0x0 0x1000>;
-> +            interrupts = <GIC_SPI 121 IRQ_TYPE_LEVEL_HIGH>;
-> +            clocks = <&cru CLK_CAN0>, <&cru PCLK_CAN0>;
-> +            clock-names = "baud", "pclk";
-> +            resets = <&cru SRST_CAN0>, <&cru SRST_P_CAN0>;
-> +            reset-names = "core", "apb";
-> +            dmas = <&dmac0 20>;
-> +            dma-names = "rx";
-> +        };
-> +    };
-> -- 
-> 2.34.1
-> 
 
 _______________________________________________
 Linux-rockchip mailing list
