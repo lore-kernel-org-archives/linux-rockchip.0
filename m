@@ -4,104 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37275CAC5AA
-	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Sep 2025 01:22:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5176CAC5AC
+	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Sep 2025 07:16:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LBJHvSSGcus+gBkK+VgooIcdNLrkMvMz2IPEFIIPxmM=; b=xHHkpZYj1vkUM/
-	3J9qXPY46TMbO5xANqdLIESt++LcMkogw1Bv485agJsd5aoS/aWBQrHadp2SrrzuuVA7b2oAb0JQR
-	2zAz0ro2b1ZNRvCmAxJNIQtucp7eD3hFx3T73qDMXqxYgIenxCPxUwzLV42LpQ+pu38KqW7Cb7fXm
-	qPMwiGGZMhB1nENnZv1UwPh4jZ6lPjxoRaJXuQkRQGmiM5/90TsrVm972XFoGlremWHBht51EQo7D
-	rrQVqWKEydrnwgKot2GCTyubTpml0RvhQn+8+Mh6qLc56bkSASNcLapIATn/te09c4nqW77ZUOPki
-	Im+1pUgMf+wcGQIZp+rQ==;
+	List-Owner; bh=gbZzanQi11pPfxFGJ7Y6W39xUqT31Kno4+rCxaWM540=; b=ksqywc/jylRQ2Y
+	20COZs3oT0LTlwhzbiOq0duV3hVrwJxAVg7tzggKDOcNqzd+2rsypjfMqoS3QVNeG05eYanDe4g/z
+	Z6fDe4IcA1Ok1G8ya2IDB6aaYxPENttcEMkXXvXAcWCw2OD0T86lm1awjh86V84Ulo2X8LzGJmC9K
+	jv3+NC2FJ+YW4iQeh1bYCwKWGIC1KuW0XDi3cXadhNzxxhUTIPcXJlNCFyJcV+Ax0rntjh9rr2OH4
+	9AvyM8QiapcJFgH5fMyYGNr9kmJDS2zYlB9lsiy1y/brlKmKR325HbWHyMVDy8Ll7lTyNX4oY7nQR
+	jfq1nFhgaiYrGs9gImnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0VG9-00000008V3B-2mzL;
-	Mon, 22 Sep 2025 01:22:29 +0000
-Received: from smtpbgau2.qq.com ([54.206.34.216])
+	id 1v0amH-00000009B0S-1sbx;
+	Mon, 22 Sep 2025 07:16:01 +0000
+Received: from mail-m15590.qiye.163.com ([101.71.155.90])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0VFq-00000008UVC-06Nu;
-	Mon, 22 Sep 2025 01:22:14 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
-	s=altu2504; t=1758504072;
-	bh=FQiFCRapN/3mwb02ZP+dTFVgTrcEVb7y08IjRSvyuIY=;
-	h=From:To:Subject:Date:Message-Id;
-	b=u0yxSLlSwOATLLm30XMbWjPLBFDpyvoP2neidc+XQMfGEYWq3H5x1vzW5cWOAhydC
-	 Nn9CL4SK5uOmvEoLdZ8Vh9+U5MnkyToL6w/ufUa+aU32ptKsuIwg6fpf0dtreQteFF
-	 A/Dw9SfKJaM2iYtBkkivy6Yw4G5K5xxO+QXNkjCI=
-X-QQ-mid: zesmtpgz1t1758504070tb08ab248
-X-QQ-Originating-IP: irFhF1T+2Su/4ccgz1o9QWkx8RvanKgMn5pFCBUgAAg=
-Received: from DESKTOP-8BT1A2O.localdomain ( [58.22.7.114])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Mon, 22 Sep 2025 09:21:08 +0800 (CST)
-X-QQ-SSF: 0000000000000000000000000000000
-X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 16934661695937755636
-From: Chaoyi Chen <kernel@airkyi.com>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Sandy Huang <hjc@rock-chips.com>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Yubing Zhang <yubing.zhang@rock-chips.com>,
-	Frank Wang <frank.wang@rock-chips.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
-	Amit Sunil Dhamne <amitsd@google.com>,
-	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Chaoyi Chen <chaoyi.chen@rock-chips.com>,
-	Dragan Simic <dsimic@manjaro.org>,
-	Johan Jonker <jbx6244@gmail.com>,
-	Diederik de Haas <didi.debian@cknow.org>,
-	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
-	Peter Robinson <pbrobinson@gmail.com>
-Cc: linux-usb@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-phy@lists.infradead.org,
+	id 1v0amC-00000009ApD-3Fc2;
+	Mon, 22 Sep 2025 07:15:58 +0000
+Received: from rockchip.. (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 239b62aa5;
+	Mon, 22 Sep 2025 15:15:47 +0800 (GMT+08:00)
+From: Elaine Zhang <zhangqing@rock-chips.com>
+To: zhangqing@rock-chips.com,
+	mkl@pengutronix.de,
+	kernel@pengutronix.de,
+	mailhol.vincent@wanadoo.fr,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	heiko@sntech.de,
+	cl@rock-chips.com,
+	kever.yang@rock-chips.com
+Cc: linux-can@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	dri-devel@lists.freedesktop.org
-Subject: [PATCH v4 6/7] arm64: dts: rockchip: Add missing dp_out port for RK3399 CDN-DP
-Date: Mon, 22 Sep 2025 09:20:38 +0800
-Message-Id: <20250922012039.323-7-kernel@airkyi.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20250922012039.323-1-kernel@airkyi.com>
-References: <20250922012039.323-1-kernel@airkyi.com>
-X-QQ-SENDSIZE: 520
-Feedback-ID: zesmtpgz:airkyi.com:qybglogicsvrsz:qybglogicsvrsz4a-0
-X-QQ-XMAILINFO: NafziRg7Bx69wZmNWpnyeNSCX5aQ2zp2rCi5Mn2t95JOtwkVnw2RyUrk
-	9EY36yPs97/o3uIS8Rev5/D4N57O5jdh6CvE2RAyRUuvsEjqUBUEQjvSi+yhfEETbHBQ7GC
-	JA1IcMA/Rb6ro++E8lUaA3XEeL6lS6+qDoA7bg4N4CD2Yl4K9WXrscWfNc+qBH5FjzEHrtc
-	FMl3zRm/riQEt75uYJKlGk7nA5VxbCZlJG+hJ+bM5hkjbv+syt0sgcJuigs1Yop4ypCQ6ns
-	Df2FOfiOC/iIKJYdmowqHCfY8VZd20DMl3J52RvQIVhBpoD99AfIGkcds2VzBsbSjjPlK3J
-	yHScEaZgXdYbkoBvMVsgkmSI7ofRUcOsB2JwKcX65Y/+g3VV6FXoJWstr/pzKltTlv3zOhO
-	2ouWJ/Bl//dKMsY4hkFyh4KXS/ZnOPxIlZiO6YwLO5c4i9DZRae2a21O4rKl3K8I/ub887G
-	5VykFVAp6dFN/vd7QlHvS+NhxA+/VI31nIIZw44oFklkV8DknzcNPPZ8huKQ+P1yYTp6cqL
-	eiQ81dL5tlImSSo8Qzl2wIrH3yfWzRneHC1Z3dEuYnXKeLT0NBaF02G4N8G0h2q1aOH9BDQ
-	qq3h86STYI/yqqCOXGDti3ZbxEHjF6QLQQu7Mlhvl8LuWHnl6D9MX+xJtdzY3CVafdQ3XgR
-	Umt6eYtf/fDM2fX5KNI/pugP0rRWyRk45EzDM+QNUMRC2loYP/sgl3R1ogIprE6yCkK4mJL
-	BKKyyDlTOi/7sYUQgGcDmx4Dy3FOY62gGy94R/6SbvR+Xk5fUivKukFFZzo9Rp+VZUnfD0s
-	e2cMLfRSroTI1Sb7I12dDnUr8li1Z7h57CBlFqll9ZQXkhZoJCHc+g1wyjaf2ggXpo4pel6
-	efBEqFpmwq2/jVTN4aFijLYgr5RWDHYSXGWnii3iQA+oKrjR7g3f6UPyDQnTWAa2B/RFqKt
-	kZhPVh1E9r/Jbvn/W+2ilghMQp9XLtTyNbUIOxslTTvOzzB95AaC2ojrRcpL0ozcjiDDrm1
-	Y8mUcrnHvf4ZP9ediN
-X-QQ-XMRINFO: Nq+8W0+stu50PRdwbJxPCL0=
-X-QQ-RECHKSPAM: 0
+	linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org
+Subject: [PATCH v7 1/4] dt-bindings: can: rockchip_canfd: add rk3576 CAN-FD controller
+Date: Mon, 22 Sep 2025 15:15:40 +0800
+Message-Id: <20250922071543.73923-2-zhangqing@rock-chips.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20250922071543.73923-1-zhangqing@rock-chips.com>
+References: <20250922071543.73923-1-zhangqing@rock-chips.com>
+MIME-Version: 1.0
+X-HM-Tid: 0a997047556f03a3kunm864fae2f2315ff
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGh1MTFZCTx5PSUJDHUpPTRhWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=ewCs27otX8URC1SDS3RTg7l/ZHere0KXrM6WD9oDEfChlLnGgVLPFXUPELIHbcn0p62ZEK/tYr5AoQEqt1P44edR6HYnNMRDpVt2/+enHLsEbshS1fQn5+7RajI3HEEfzZ5cHPZCZ/QAfsbofLZ9I1zXMDK9ygPJMIimX0COx9A=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=i75mDsCkq/jbT8+fOGxrW7Oxw4N8ldNFYTgOUYb4dDk=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250921_182210_481659_CC270D83 
-X-CRM114-Status: GOOD (  10.82  )
+X-CRM114-CacheID: sfid-20250922_001557_017859_066E5362 
+X-CRM114-Status: UNSURE (   8.27  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,58 +77,93 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+Add documentation for the rockchip rk3576 CAN-FD controller.
 
-Let's make the ports nodes of cdn_dp in the same style as the other
-display interface, and match the style of ports's yaml.
-
-Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
 ---
+ .../net/can/rockchip,rk3568v2-canfd.yaml      | 47 +++++++++++++++++--
+ 1 file changed, 44 insertions(+), 3 deletions(-)
 
-Changes in v4:
-- Remove unnecessary #address/#size-cells
-
-(no changes since v1)
-
- arch/arm64/boot/dts/rockchip/rk3399-base.dtsi | 10 +++++++++-
- 1 file changed, 9 insertions(+), 1 deletion(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-base.dtsi
-index 4dcceb9136b7..93b42820998f 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-base.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-base.dtsi
-@@ -618,7 +618,11 @@ cdn_dp: dp@fec00000 {
- 		status = "disabled";
+diff --git a/Documentation/devicetree/bindings/net/can/rockchip,rk3568v2-canfd.yaml b/Documentation/devicetree/bindings/net/can/rockchip,rk3568v2-canfd.yaml
+index a077c0330013..74b1a502f0b7 100644
+--- a/Documentation/devicetree/bindings/net/can/rockchip,rk3568v2-canfd.yaml
++++ b/Documentation/devicetree/bindings/net/can/rockchip,rk3568v2-canfd.yaml
+@@ -10,13 +10,11 @@ title:
+ maintainers:
+   - Marc Kleine-Budde <mkl@pengutronix.de>
  
- 		ports {
--			dp_in: port {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
+-allOf:
+-  - $ref: can-controller.yaml#
+-
+ properties:
+   compatible:
+     oneOf:
+       - const: rockchip,rk3568v2-canfd
++      - const: rockchip,rk3576-canfd
+       - items:
+           - const: rockchip,rk3568v3-canfd
+           - const: rockchip,rk3568v2-canfd
+@@ -43,6 +41,31 @@ properties:
+       - const: core
+       - const: apb
+ 
++  dmas:
++    maxItems: 1
 +
-+			dp_in: port@0 {
-+				reg = <0>;
- 				#address-cells = <1>;
- 				#size-cells = <0>;
- 
-@@ -632,6 +636,10 @@ dp_in_vopl: endpoint@1 {
- 					remote-endpoint = <&vopl_out_dp>;
- 				};
- 			};
++  dma-names:
++    items:
++      - const: rx
 +
-+			dp_out: port@1 {
-+				reg = <1>;
-+			};
- 		};
- 	};
- 
++allOf:
++  - $ref: can-controller.yaml#
++  - if:
++      properties:
++        compatible:
++          contains:
++            const: rockchip,rk3576-canfd
++      required:
++        - compatible
++    then:
++      required:
++        - dmas
++        - dma-names
++    else:
++      properties:
++        dmas: false
++        dma-names: false
++
+ required:
+   - compatible
+   - reg
+@@ -72,3 +95,21 @@ examples:
+             reset-names = "core", "apb";
+         };
+     };
++
++  - |
++    soc {
++        #address-cells = <2>;
++        #size-cells = <2>;
++
++        can@2ac00000 {
++            compatible = "rockchip,rk3576-canfd";
++            reg = <0x0 0x2ac00000 0x0 0x1000>;
++            interrupts = <GIC_SPI 121 IRQ_TYPE_LEVEL_HIGH>;
++            clocks = <&cru CLK_CAN0>, <&cru PCLK_CAN0>;
++            clock-names = "baud", "pclk";
++            resets = <&cru SRST_CAN0>, <&cru SRST_P_CAN0>;
++            reset-names = "core", "apb";
++            dmas = <&dmac0 20>;
++            dma-names = "rx";
++        };
++    };
 -- 
-2.49.0
+2.34.1
 
 
 _______________________________________________
