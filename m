@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72433CAC5A7
-	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Sep 2025 07:57:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DC64CAC5A7
+	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Sep 2025 08:50:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KBtgElSogarasS15um/Cp/IkaGLIm3Q0KqD1jRIV+L0=; b=GN3fRHKMnj0WRA
-	EGx9dqrp8FoeG1/2WUGXsJVvIKnp67zRQuKW1Yr4M//DmSVXavYbQk1dILHaOClKZfvC7uk/YgPlx
-	yaZxP5FdEAXalDW46NGD+CH/aKw0clBJuCWcsuNxWXkWesxiFTGFnvJ1V9obGdLOX3J60rL1RAhAu
-	h2i1JCVUL/3s6modeKT0N/8r4HCo8EWSzwsEI76RPfbLkCxGqJymKvB3oxJ/CA9fZ/UGBsP1Q//E5
-	Znag8sLycrFLUHINdeT6MFOLAyZomiCaB94ba20M0bVgv/TmgLYslkCpJvC9JoZf6WT/hMpEN+9yN
-	l4Ml3pYpTkjwgxkhuYeQ==;
+	List-Owner; bh=/7/4sE2CEPKXIg92fzKeFjBd5aMYMlkvmX7xIXYps1k=; b=Z9oqRYpS4IQQTM
+	oW+8W0kIdcyKrPMFKjOkgrM5LHz9KyVWz8U3cRdPR3EwG84DIjUB12mLa7yJKSO1DN5rEW6hboeXi
+	POZA3L2R63ly3FZGlfDBDS4+6SgLNGQkbon+HAGR2OTWF4tSxAcPpWVFJAiQ394sXjuX4b0oPKCiH
+	q896DzYrDySo8zUY6TvE3LxGrSou70DX8TGMuZl70tZnA0B3s8Zl/KuArW1isciCy9Y8psvFf9kPt
+	1Cq/BnND/4yozk0VeQ3xiuVmhloQOIwAAZ6KBi3xzAp+j50eHT0SVutM493/e0kjoEZBdqBsYqfLJ
+	KBup31OQTVyV3nentgog==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0bQZ-00000009ZBP-1fwS;
-	Mon, 22 Sep 2025 07:57:39 +0000
-Received: from mgamail.intel.com ([192.198.163.15])
+	id 1v0cFT-00000009nuF-3SDC;
+	Mon, 22 Sep 2025 08:50:15 +0000
+Received: from mgamail.intel.com ([192.198.163.16])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0bQV-00000009Z9e-2JOH;
-	Mon, 22 Sep 2025 07:57:36 +0000
+	id 1v0cFQ-00000009ntG-0tRQ;
+	Mon, 22 Sep 2025 08:50:13 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1758527856; x=1790063856;
+  t=1758531012; x=1790067012;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=8yVDHTkeERDKqGU8/+5de0a01zz7l/9JjTsXpfwJEqU=;
-  b=e7o+rY4T1VHqE26mQcKa2x12Q6FzgHU4JDyM74EmQQoqL2CDvx1YoqMm
-   wJeZ2safDzYNp2Azydf/5f8e8I214GAuPeVKZDIPdlJ9TX3JpCQ5nBHPy
-   uc0gA/TPXDVyfl+vF6xxAHfpMOb3qtPzSkkrP2EssP/3mmVP5jkqWgeb1
-   A8JF5IauBY8sM7AbuMlrCZhp15xqyMQgX+6UvZJ1xij2yz1mQTX1iIQ/p
-   o48ozUpRn3t/3DA4HTHXXExwKhZ/eR02m818S1I6MbCvLOiD+lpZ2NP9A
-   RVaDYMJKXgsadoIJjIrzYQsrYDymWAOW4lCMBZ0lk79GZmranwZd2+Afe
-   A==;
-X-CSE-ConnectionGUID: 1VtRRdsfTWGLr6QC7g/YVw==
-X-CSE-MsgGUID: LvucopA3Tq+8PaT63dJ37A==
-X-IronPort-AV: E=McAfee;i="6800,10657,11560"; a="60901914"
+  bh=EIwX2Gv25NRIdufRlFKCm9KTmV1tzjcTIKEMfhqFOjs=;
+  b=UiEkSYfFx4DtPUl35Tq/as+vXxhO52ktCNZhqBBl1kzQyKSkC3Su7iGn
+   7iOIvSoB3FBar1N0ZkYA7ixCji9A/swiz8diiRx8IDeDN/bBK5rsot51j
+   6CImqtcwt+MSKPIgENG/8vSGLoXd5AKZeWw4npg4kREBABlHJs7wkIytE
+   EkJr2v65wWZOLaATWhBVHUl7w506dTop/l8xTTd0zoxUAX5V9tcKrdbty
+   Hftjiw2GdjtckD9W908hSwf+b8mB6jma6Epyb5F+Gb4Nd7Y7wS5j3HKg7
+   /YMTG1vB6IY8luUke0umOVYtO4tglI1B8I4GgcBUoSDOgcCnBblV5Af9a
+   w==;
+X-CSE-ConnectionGUID: SWyaYeq8SFGO0v5t32Mf8A==
+X-CSE-MsgGUID: AVk19TlDSjaCc7Fb5kJ5iA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11560"; a="48364751"
 X-IronPort-AV: E=Sophos;i="6.18,284,1751266800"; 
-   d="scan'208";a="60901914"
-Received: from orviesa004.jf.intel.com ([10.64.159.144])
-  by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Sep 2025 00:57:31 -0700
-X-CSE-ConnectionGUID: A37dvFYzS3yKNurn/d60PA==
-X-CSE-MsgGUID: JVijE6a3RaepPTic1nShNw==
+   d="scan'208";a="48364751"
+Received: from fmviesa007.fm.intel.com ([10.60.135.147])
+  by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Sep 2025 01:50:10 -0700
+X-CSE-ConnectionGUID: H465Suv1SMms04Tugxlnaw==
+X-CSE-MsgGUID: 2epaaLTjT7uCtIJLozB0OQ==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.18,284,1751266800"; 
-   d="scan'208";a="180675538"
+   d="scan'208";a="176033714"
 Received: from lkp-server02.sh.intel.com (HELO 84c55410ccf6) ([10.239.97.151])
-  by orviesa004.jf.intel.com with ESMTP; 22 Sep 2025 00:57:24 -0700
+  by fmviesa007.fm.intel.com with ESMTP; 22 Sep 2025 01:50:03 -0700
 Received: from kbuild by 84c55410ccf6 with local (Exim 4.96)
 	(envelope-from <lkp@intel.com>)
-	id 1v0bQH-0001R3-1T;
-	Mon, 22 Sep 2025 07:57:21 +0000
-Date: Mon, 22 Sep 2025 15:56:35 +0800
+	id 1v0cFF-0001UX-07;
+	Mon, 22 Sep 2025 08:50:01 +0000
+Date: Mon, 22 Sep 2025 16:49:18 +0800
 From: kernel test robot <lkp@intel.com>
 To: Chaoyi Chen <kernel@airkyi.com>, Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk@kernel.org>,
@@ -79,20 +79,21 @@ To: Chaoyi Chen <kernel@airkyi.com>, Rob Herring <robh@kernel.org>,
 	Diederik de Haas <didi.debian@cknow.org>,
 	Dmitry Baryshkov <lumag@kernel.org>,
 	Peter Robinson <pbrobinson@gmail.com>
-Cc: oe-kbuild-all@lists.linux.dev, linux-usb@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+	linux-usb@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
 Subject: Re: [PATCH v4 1/7] usb: typec: Add default HPD device when register
  DisplayPort altmode
-Message-ID: <202509221516.1umvcXG6-lkp@intel.com>
+Message-ID: <202509221607.rWZ3wNqm-lkp@intel.com>
 References: <20250922012039.323-2-kernel@airkyi.com>
 MIME-Version: 1.0
 Content-Disposition: inline
 In-Reply-To: <20250922012039.323-2-kernel@airkyi.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250922_005735_602753_79307AE9 
-X-CRM114-Status: GOOD (  13.64  )
+X-CRM114-CacheID: sfid-20250922_015012_308829_20105580 
+X-CRM114-Status: GOOD (  12.31  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,10 +112,10 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Hi Chaoyi,
 
-kernel test robot noticed the following build warnings:
+kernel test robot noticed the following build errors:
 
-[auto build test WARNING on usb/usb-testing]
-[also build test WARNING on usb/usb-next usb/usb-linus robh/for-next linus/master v6.17-rc7 next-20250919]
+[auto build test ERROR on usb/usb-testing]
+[also build test ERROR on usb/usb-next usb/usb-linus robh/for-next linus/master v6.17-rc7 next-20250919]
 [cannot apply to rockchip/for-next]
 [If your patch is applied to the wrong git tree, kindly drop us a note.
 And when submitting patch, we suggest to use '--base' as documented in
@@ -124,34 +125,20 @@ url:    https://github.com/intel-lab-lkp/linux/commits/Chaoyi-Chen/usb-typec-Add
 base:   https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/usb.git usb-testing
 patch link:    https://lore.kernel.org/r/20250922012039.323-2-kernel%40airkyi.com
 patch subject: [PATCH v4 1/7] usb: typec: Add default HPD device when register DisplayPort altmode
-config: i386-buildonly-randconfig-003-20250922 (https://download.01.org/0day-ci/archive/20250922/202509221516.1umvcXG6-lkp@intel.com/config)
-compiler: gcc-14 (Debian 14.2.0-19) 14.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250922/202509221516.1umvcXG6-lkp@intel.com/reproduce)
+config: arm-randconfig-001-20250922 (https://download.01.org/0day-ci/archive/20250922/202509221607.rWZ3wNqm-lkp@intel.com/config)
+compiler: clang version 22.0.0git (https://github.com/llvm/llvm-project cafc064fc7a96b3979a023ddae1da2b499d6c954)
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250922/202509221607.rWZ3wNqm-lkp@intel.com/reproduce)
 
 If you fix the issue in a separate patch/commit (i.e. not just a new version of
 the same patch/commit), kindly add following tags
 | Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202509221516.1umvcXG6-lkp@intel.com/
+| Closes: https://lore.kernel.org/oe-kbuild-all/202509221607.rWZ3wNqm-lkp@intel.com/
 
-All warnings (new ones prefixed by >>):
+All errors (new ones prefixed by >>):
 
-   In file included from drivers/usb/typec/class.c:18:
->> drivers/usb/typec/altmodes/displayport.h:7:5: warning: no previous prototype for 'dp_altmode_probe' [-Wmissing-prototypes]
-       7 | int dp_altmode_probe(struct typec_altmode *alt) { return -ENOTSUPP; }
-         |     ^~~~~~~~~~~~~~~~
->> drivers/usb/typec/altmodes/displayport.h:8:6: warning: no previous prototype for 'dp_altmode_remove' [-Wmissing-prototypes]
-       8 | void dp_altmode_remove(struct typec_altmode *alt) { }
-         |      ^~~~~~~~~~~~~~~~~
->> drivers/usb/typec/altmodes/displayport.h:9:6: warning: no previous prototype for 'dp_altmode_hpd_device_register' [-Wmissing-prototypes]
-       9 | void dp_altmode_hpd_device_register(struct typec_altmode *alt) { }
-         |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-vim +/dp_altmode_probe +7 drivers/usb/typec/altmodes/displayport.h
-
-d266e96820cc36 Ajay Gupta  2019-04-23 @7  int dp_altmode_probe(struct typec_altmode *alt) { return -ENOTSUPP; }
-d266e96820cc36 Ajay Gupta  2019-04-23 @8  void dp_altmode_remove(struct typec_altmode *alt) { }
-50d2edccce6bf3 Chaoyi Chen 2025-09-22 @9  void dp_altmode_hpd_device_register(struct typec_altmode *alt) { }
+>> ld.lld: error: undefined symbol: dp_altmode_hpd_device_register
+   >>> referenced by class.c:609 (drivers/usb/typec/class.c:609)
+   >>>               drivers/usb/typec/class.o:(typec_register_altmode) in archive vmlinux.a
 
 -- 
 0-DAY CI Kernel Test Service
