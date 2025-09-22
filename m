@@ -4,59 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C5AACAC592
-	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Sep 2025 17:07:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BD3BCA100F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Sep 2025 17:11:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gzxG5BWgpeKm81UKpPWdghIoce3G7l5m2sWqW/AC0Lc=; b=eAQPEwG7rmrTlUpKtjmjZ9CUX4
-	S8q9tmq1TbmTPUz0ORRhJCypKJAhxPnq0tNkrrk6kh4OvzLnoJlqIaSgqrI48gASTbB0jiuidj/vt
-	LCDEkVqNElitj+zLT5mPuDJ+VHM6n/3iK+n/ayIUlgbBvu6HMjtXdB0zXoibzLWN1c87gBGJG9/hG
-	rfxWbGveqTAGwzPP0eMztOtbFTnCsVTDLVuiKmrTnHZcEbNi88u7KlS9PuR0DMbm4s23ZawdCNMlg
-	l1d3JOG6sP1jsfxBRjR4oC28x8CnsDEeVeNqFdKJeaVqb8Fz/Lo8bi7uKvbUeC/0QKUWp9eM9X1yy
-	xOXbSU3A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=N+zhEq/1KvO8RWhu+6Y0rU2aVsqCtl7t+8g4n7e+DAc=; b=GvvFLEyIkaFgQb
+	4Ke2R3FLbbkYPgVR1kQzCXBppmeobcmAZaL2d4sXGYi5NrkxJwHQl4qA+rtREqtM0d8uD+lTJsZwi
+	XZQ3Hk3MgpSog1MMPYl3ytkt7WaE9JQk7Qy41yynI1Xq/NHfz01B/4CPv0zqpT+03+D1eAxCvAHID
+	W77bx9PH3e7C2CeqX82Qy1aiTxLLTFCmR/ZzOpK6gTqyrCWYLLIDBGTmKd+MkCmXbWwDJR3xYrx/8
+	nDOvwM7rqWsxxKU/FUeMig0ISWvuQj1IoaFRyreFLPTbYNO+IRDu4abaw5ZDQQOhzpBBq7behsoiJ
+	h5GMNQVUysGDR6Na3SHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0k0F-0000000B3qS-0RCv;
-	Mon, 22 Sep 2025 17:07:03 +0000
-Received: from mail.manjaro.org ([116.203.91.91])
+	id 1v0k4Z-0000000B4bf-3HF1;
+	Mon, 22 Sep 2025 17:11:31 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v0k0B-0000000B3nH-3hdu;
-	Mon, 22 Sep 2025 17:07:01 +0000
+	id 1v0k4W-0000000B4aU-3L0k;
+	Mon, 22 Sep 2025 17:11:30 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 1041C44390;
+	Mon, 22 Sep 2025 17:11:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BD1D2C4CEF0;
+	Mon, 22 Sep 2025 17:11:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1758561087;
+	bh=bkrPLPzrm50ZFvPyvUr+rRE9QdrzUX2GlPLdWhgO5e0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=FE3mFOqUGfy67eZHcQhnavXPi3/2dG8CNj1tgOSxuZ97CpKreeWOJ5ZbrY7VTvgpb
+	 NNID9ISM8lVMxAhQZHkjEzBkQuraUA6Pziu6wipkcxycimPRRzbKtksTzgsnqZem8s
+	 Ksw6LNlNhxB3xPTYIv3laKK/fhJ7ZRi1Likdd8F3K92Cce8IJEMVw3HqJ0aAs+hYQa
+	 fCU48b2AneunAhJpC4t2GxwkYf1WJz1KqaT27bUi4FODvrvMaB33R59sV9wyJvMSnu
+	 /Qllvjmp/7NwPewSdPk3rwuuae1YivBD1ltZdAazwrH6UQ/g5qVPyOnRNLndI1+C++
+	 vYiGtaMDKb8rw==
+Date: Mon, 22 Sep 2025 12:11:26 -0500
+From: Rob Herring <robh@kernel.org>
+To: Michael Riesch <michael.riesch@collabora.com>
+Cc: Mehdi Djait <mehdi.djait@linux.intel.com>,
+	Maxime Chevallier <maxime.chevallier@bootlin.com>,
+	=?iso-8859-1?Q?Th=E9o?= Lebrun <theo.lebrun@bootlin.com>,
+	Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+	Gerald Loacker <gerald.loacker@wolfvision.net>,
+	Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
+	Markus Elfring <Markus.Elfring@web.de>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Kever Yang <kever.yang@rock-chips.com>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Collabora Kernel Team <kernel@collabora.com>,
+	Paul Kocialkowski <paulk@sys-base.io>,
+	Alexander Shiyan <eagle.alexander923@gmail.com>,
+	Val Packett <val@packett.cool>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	Bryan O'Donoghue <bod@kernel.org>
+Subject: Re: [PATCH v11 05/17] media: dt-bindings: add rockchip rk3568 mipi
+ csi-2 receiver
+Message-ID: <20250922171126.GA480461-robh@kernel.org>
+References: <20240220-rk3568-vicap-v11-0-af0eada54e5d@collabora.com>
+ <20240220-rk3568-vicap-v11-5-af0eada54e5d@collabora.com>
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1758560815;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Czn2vrlolGeYQImejpAr7KFt5Sj149E/ZMwKdYUmdVs=;
-	b=ojmwYfqUYRslwx9vrc6Vkc9cUh/s/av1mcLNGO7ucF+zTT6OESF9DAe4ez6x51V0FNbB8g
-	rb6oZyjIhxCHPiwYlPVGDXkkGQepwQkUvB97umvVL6TEstsXVV8fzAy1Ort9Kw66MF8gsS
-	PGua7faiaSFvowWcas8HN9eRAZKd96TpBXV+qyzcJ7N8ovITJESRy7PFG4q4i5y5TiGhJa
-	13W4iqoAwtNTah8wRhtOGhUUgBlraXiOKiF9rQPECYD64Zk8WzpIpnLQ1+LmS2Jm4eCUMq
-	4p4IMsgCeGHzGV0WUcRSVv2ObP7f+VG8rpXqhAq7wPTkRqAx9cE5dtPMONmhnQ==
-Date: Mon, 22 Sep 2025 19:06:55 +0200
-From: Dragan Simic <dsimic@manjaro.org>
-To: guptarud@gmail.com
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Ondrej
- Jirman <megi@xff.cz>, "Leonardo G. Trombetta" <lgtrombetta@gmx.com>
-Subject: Re: [PATCH v3 0/5] Upstreaming Pinephone Pro Patches
-In-Reply-To: <20250921-ppp_light_accel_mag_vol-down-v3-0-7af6651f77e4@gmail.com>
-References: <20250921-ppp_light_accel_mag_vol-down-v3-0-7af6651f77e4@gmail.com>
-Message-ID: <53eabe34a310ea9c74315fa09a604e4a@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
+Content-Disposition: inline
+In-Reply-To: <20240220-rk3568-vicap-v11-5-af0eada54e5d@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250922_100700_282060_37401B63 
-X-CRM114-Status: GOOD (  13.37  )
+X-CRM114-CacheID: sfid-20250922_101128_869303_0AD4BAF8 
+X-CRM114-Status: GOOD (  19.73  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,79 +91,198 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Rudraksha,
-
-On 2025-09-21 23:05, Rudraksha Gupta via B4 Relay wrote:
-> Throughout the years, many have contributed to the Pinephone Pro (ppp)
-> development. Unfortunately, these patches are scattered around various
-> repositories in different states.
-
-Thanks for submitting these patches.  However, please expand the patch
-descriptions, because their current forms are too terse and, as such,
-simply not acceptable.  This applies to all patches in this series.
-
-I'm also under impression that you're submitting these patches upstream
-blindly and without researching the rules that apply well enough, which
-may not be the best possible approach.
-
-Finally, please refrain yourself from sending multiple versions of the
-same patch series in the same day.  Doing so makes reviewing the patches
-unnecessarily hard.
-
-> I will be attempting to upstream these patches. I will start off with 
-> the
-> following small series:
-> - Add light/proximity sensor support
->   - 
-> https://codeberg.org/megi/linux/commit/f171bc7013bc7ad3de9af817bfbcbfa548ebe01c
-> - Add accelerometer sensor support
->   - 
-> https://codeberg.org/megi/linux/commit/b0bb7633e073a6760fa213b8c4a78ea2e73c7bf1
-> - Add magnetometer sensor support
->   - 
-> https://codeberg.org/megi/linux/commit/2f7e67f451f16eaf15b81aa1dbdf126d54927d35
-> - Add mount-matrix for magnetometer
->   - 
-> https://codeberg.org/megi/linux/commit/d7cd2eab931e32fa94408a96d73b4e6c0616107a
-> - Fix voltage threshold for volume down key
->   - 
-> https://codeberg.org/megi/linux/commit/7c496a5cc27ed4e38b740f36c2d8b2c62f80ae54
+On Wed, Sep 17, 2025 at 05:38:45PM +0200, Michael Riesch wrote:
+> Add documentation for the Rockchip RK3568 MIPI CSI-2 Receiver.
 > 
-> Signed-off-by: Rudraksha Gupta <guptarud@gmail.com>
+> Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
+> Reviewed-by: Bryan O'Donoghue <bod@kernel.org>
+> Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
 > ---
-> Changes in v3:
-> - change magnetometer mount matrix
-> - update volume button threshold
-> - Link to v2:
-> https://lore.kernel.org/r/20250921-ppp_light_accel_mag_vol-down-v2-0-e6bcc6ca74ae@gmail.com
+>  .../bindings/media/rockchip,rk3568-mipi-csi.yaml   | 144 +++++++++++++++++++++
+>  MAINTAINERS                                        |   6 +
+>  2 files changed, 150 insertions(+)
 > 
-> Changes in v2:
-> - remove usb-typec node in dts from light/proximity sensor patch
-> - Link to v1:
-> https://lore.kernel.org/r/20250920-ppp_light_accel_mag_vol-down-v1-0-c8bbcd3e2e94@gmail.com
+> diff --git a/Documentation/devicetree/bindings/media/rockchip,rk3568-mipi-csi.yaml b/Documentation/devicetree/bindings/media/rockchip,rk3568-mipi-csi.yaml
+> new file mode 100644
+> index 000000000000..8cbab93b4b85
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/media/rockchip,rk3568-mipi-csi.yaml
+> @@ -0,0 +1,144 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/media/rockchip,rk3568-mipi-csi.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Rockchip RK3568 MIPI CSI-2 Receiver
+> +
+> +maintainers:
+> +  - Michael Riesch <michael.riesch@collabora.com>
+> +
+> +description:
+> +  The Rockchip RK3568 MIPI CSI-2 Receiver is a CSI-2 bridge with one input port
+> +  and one output port. It receives the data with the help of an external
+> +  MIPI PHY (C-PHY or D-PHY) and passes it to the Rockchip RK3568 Video Capture
+> +  (VICAP) block.
+> +
+> +properties:
+> +  compatible:
+> +    oneOf:
+> +      - items:
+> +          - enum:
+> +              - rockchip,rk3588-mipi-csi
+> +          - const: rockchip,rk3568-mipi-csi
+> +      - const: rockchip,rk3568-mipi-csi
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  interrupts:
+> +    items:
+> +      - description: Interrupt that signals changes in CSI2HOST_ERR1.
+> +      - description: Interrupt that signals changes in CSI2HOST_ERR2.
+> +
+> +  interrupt-names:
+> +    items:
+> +      - const: irq1
+> +      - const: irq2
+
+Names that are just the index are not useful. Drop. With that,
+
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+
+> +
+> +  clocks:
+> +    maxItems: 1
+> +
+> +  phys:
+> +    maxItems: 1
+> +    description: MIPI C-PHY or D-PHY.
+> +
+> +  ports:
+> +    $ref: /schemas/graph.yaml#/properties/ports
+> +
+> +    properties:
+> +      port@0:
+> +        $ref: /schemas/graph.yaml#/$defs/port-base
+> +        unevaluatedProperties: false
+> +        description: Input port node. Connect to e.g., a MIPI CSI-2 image sensor.
+> +
+> +        properties:
+> +          endpoint:
+> +            $ref: video-interfaces.yaml#
+> +            unevaluatedProperties: false
+> +
+> +            properties:
+> +              bus-type:
+> +                enum: [1, 4]
+> +
+> +              data-lanes:
+> +                minItems: 1
+> +                maxItems: 4
+> +
+> +            required:
+> +              - bus-type
+> +              - data-lanes
+> +
+> +      port@1:
+> +        $ref: /schemas/graph.yaml#/properties/port
+> +        description: Output port connected to a RK3568 VICAP port.
+> +
+> +    required:
+> +      - port@0
+> +      - port@1
+> +
+> +  power-domains:
+> +    maxItems: 1
+> +
+> +  resets:
+> +    maxItems: 1
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - clocks
+> +  - phys
+> +  - ports
+> +  - power-domains
+> +  - resets
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/clock/rk3568-cru.h>
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +    #include <dt-bindings/media/video-interfaces.h>
+> +    #include <dt-bindings/power/rk3568-power.h>
+> +
+> +    soc {
+> +        interrupt-parent = <&gic>;
+> +        #address-cells = <2>;
+> +        #size-cells = <2>;
+> +
+> +        csi: csi@fdfb0000 {
+> +            compatible = "rockchip,rk3568-mipi-csi";
+> +            reg = <0x0 0xfdfb0000 0x0 0x10000>;
+> +            interrupts = <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>,
+> +                         <GIC_SPI 9 IRQ_TYPE_LEVEL_HIGH>;
+> +            interrupt-names = "irq1", "irq2";
+> +            clocks = <&cru PCLK_CSI2HOST1>;
+> +            phys = <&csi_dphy>;
+> +            power-domains = <&power RK3568_PD_VI>;
+> +            resets = <&cru SRST_P_CSI2HOST1>;
+> +
+> +            ports {
+> +                #address-cells = <1>;
+> +                #size-cells = <0>;
+> +
+> +                csi_in: port@0 {
+> +                    reg = <0>;
+> +
+> +                    csi_input: endpoint {
+> +                        bus-type = <MEDIA_BUS_TYPE_CSI2_DPHY>;
+> +                        data-lanes = <1 2 3 4>;
+> +                        remote-endpoint = <&imx415_output>;
+> +                    };
+> +                };
+> +
+> +                csi_out: port@1 {
+> +                    reg = <1>;
+> +
+> +                    csi_output: endpoint {
+> +                        remote-endpoint = <&vicap_mipi_input>;
+> +                    };
+> +                };
+> +            };
+> +        };
+> +    };
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 4c39b9fd80bb..2ac4b7a5b255 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -21797,6 +21797,12 @@ F:	Documentation/userspace-api/media/v4l/metafmt-rkisp1.rst
+>  F:	drivers/media/platform/rockchip/rkisp1
+>  F:	include/uapi/linux/rkisp1-config.h
+>  
+> +ROCKCHIP MIPI CSI-2 RECEIVER DRIVER
+> +M:	Michael Riesch <michael.riesch@collabora.com>
+> +L:	linux-media@vger.kernel.org
+> +S:	Maintained
+> +F:	Documentation/devicetree/bindings/media/rockchip,rk3568-mipi-csi.yaml
+> +
+>  ROCKCHIP RK3568 RANDOM NUMBER GENERATOR SUPPORT
+>  M:	Daniel Golle <daniel@makrotopia.org>
+>  M:	Aurelien Jarno <aurelien@aurel32.net>
 > 
-> ---
-> Leonardo G. Trombetta (1):
->       arm64: dts: rk3399-pinephone-pro: Add mount-matrix for 
-> magnetometer
+> -- 
+> 2.39.5
 > 
-> Ondrej Jirman (4):
->       arm64: dts: rk3399-pinephone-pro: Add light/proximity sensor 
-> support
->       arm64: dts: rk3399-pinephone-pro: Add accelerometer sensor 
-> support
->       arm64: dts: rk3399-pinephone-pro: Add magnetometer sensor support
->       arm64: dts: rk3399-pinephone-pro: Fix voltage threshold for 
-> volume keys
-> 
->  .../boot/dts/rockchip/rk3399-pinephone-pro.dts     | 42 
-> ++++++++++++++++++++--
->  1 file changed, 40 insertions(+), 2 deletions(-)
 
 _______________________________________________
 Linux-rockchip mailing list
