@@ -4,62 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FDB1CAC5B3
-	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Sep 2025 17:11:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59809CAC5B9
+	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Sep 2025 18:09:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=E7W7BrJLnSHcGZPpU4GS5REuvdzvyxs0sQ+Z0eKri5s=; b=Ajl3E7+CHFv6OP
-	ciP0Fjyx03JD5cXehiiHKqI+RXgwL89uhfj3wdYR1bSVays+buCeZGkCTLkz1zA4igCBLShYDHkAi
-	pH5tHDLrLvg9ZQ3FS30tnJNE9Jsq4JJK9RjvyR4WhWIIN1cKwpcEJlQ1hU3hhjdzujyqjnZOBGtN6
-	q/Ahwv7Yu4ziyedSbAqiBQPh4rxo9LoclPZEfV7MnzQOY6cooPlMf10vtLI+rCczQMWcKGQNiEoJc
-	/TS2+kipGyNGePG4vGFKoIybetwZUaIFfGCB5+LdUltOIxWtw1rxJoJBAhDIrzTO8vUrxVURyM+id
-	/MoD7kqwn/P/kfQJYq9Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Subject:To:From:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=yR5qFsW14QX6+F1nF67BCIjteUSYThoyyQBIbZiTjag=; b=I8OlIuOiC0Sb4C
+	roOdrkzpM484LweiFXTKJCf9bETHDZn6xNvGyE5C5IbJdDFoq88tod2bsdUgxvId8tNRiH0lLFVI2
+	CZ96DyrihP/WzkkeIWWlShC/waUMeY1kDy6Dfz81dISboRVxvtMnE44gRgPuic1wWzaxHXyPflw1n
+	tmxfZzR50njWC76fjwkz6fk0gmD14OLevnNU4EvKdm5wbflrw1KPCEc3fZnEFOt6VOxbDmWmCsDMm
+	ZVwqZv6KswaxkCjDgxgopk4NROCLTHWdN/ybMksDkYAdhjdY5VqXpheyTCeumwqbJ8IvTGyNma0T/
+	naFPISewvKrABCdHB/7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1pVR-0000000BPwi-05h6;
-	Thu, 25 Sep 2025 17:11:45 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1v1qPI-0000000Bo8f-35k7;
+	Thu, 25 Sep 2025 18:09:28 +0000
+Received: from mail-oa1-x43.google.com ([2001:4860:4864:20::43])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1pVN-0000000BPvE-2PSm;
-	Thu, 25 Sep 2025 17:11:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=l2KQXK0QxwhIywdI52yxYsSm5g6v5vjP57GLurR9+TM=; b=4ah210tlcMTfmpCOwPnIBcnn11
-	xM/z+chDbvSpKyoMvOO7U+Z6/kJjuGIC8fMr8KD0WNt2Xed/v3PrTcngYIyb+UrYinR1eVDl5oogZ
-	t29Jek3QJh5s5Ia79aOpBKyu8xesBe1OPjV60IrTSAgJcWu7NgTY8UVgwgCSSc1ey8IA=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1v1pVB-009US2-6Q; Thu, 25 Sep 2025 19:11:29 +0200
-Date: Thu, 25 Sep 2025 19:11:29 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Jonas Karlman <jonas@kwiboo.se>
-Cc: Heiko Stuebner <heiko@sntech.de>, "robh@kernel.org" <robh@kernel.org>,
-	"krzk+dt@kernel.org" <krzk+dt@kernel.org>,
-	"conor+dt@kernel.org" <conor+dt@kernel.org>,
-	"ukleinek@debian.org" <ukleinek@debian.org>,
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>
-Subject: Re: [PATCH 2/6] arm64: dts: rockchip: Fix the 1Ghz ethernet on Qnap
- TS433
-Message-ID: <e4d3127b-c879-4931-9ea0-de7449bc508c@lunn.ch>
-References: <20250925092923.2184187-1-heiko@sntech.de>
- <20250925092923.2184187-3-heiko@sntech.de>
- <da752790-da17-4d26-b9b2-8240b38b3276@kwiboo.se>
+	id 1v1qPG-0000000Bo74-0uZu
+	for linux-rockchip@lists.infradead.org;
+	Thu, 25 Sep 2025 18:09:27 +0000
+Received: by mail-oa1-x43.google.com with SMTP id 586e51a60fabf-3197f534179so1105674fac.2
+        for <linux-rockchip@lists.infradead.org>; Thu, 25 Sep 2025 11:09:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=patriotwinner-com.20230601.gappssmtp.com; s=20230601; t=1758823765; x=1759428565; darn=lists.infradead.org;
+        h=list-id:list-unsubscribe-post:list-unsubscribe
+         :content-transfer-encoding:mime-version:date:subject:to:from
+         :message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=eip7MxeVWZc1MHLMv0fayXbPEQLe7BJJWTHVrXrrQM8=;
+        b=raehMFKKinkJp3dsb/6mj9Pt9lecWnZQtUSJJgIBwqKjMwQcUtxLtq/47lfpa4lDy/
+         prAjd/oD259h2Grf/ZAHYi8NipTUQ4BQOFR/Won1aLNRsDe0m5PI9b6QH/2jpChUErmE
+         Ot1tRLrQsPwPMvtoZo54SIifknYG5x64DBGtfejE8wxiExpLwznOJryK8HoNiSej3j+M
+         JZjEefUD9PrvvKvalksp6kRr51Al1P/e8wefRCxdsvHVeUbybaETP8vDKkewzUBSTYg6
+         ULtwtDwb/RCgArvJthMoDi98K5dxE6HyKuS0gNIBZPOuuY6eppAjL7RJtUzgwvQg+Z3D
+         xgBA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1758823765; x=1759428565;
+        h=list-id:list-unsubscribe-post:list-unsubscribe
+         :content-transfer-encoding:mime-version:date:subject:to:from
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=eip7MxeVWZc1MHLMv0fayXbPEQLe7BJJWTHVrXrrQM8=;
+        b=YTahZeW9/3RGFLtx+HNz4derRMJjFkYyywqoV3o+SbiE0tdorD6eWV8I/BPSWCqal7
+         FdGy2i/TT9IVgUBQAZxlF/bDnQKxSfhXmuOtEt+eYjL/kjh8DYcGIJ6w/Y8Q1lAuNjh7
+         i3q1Dki+c8aixzSyhbg20pItlHEEy5tmZuc8V+Ju5n1TT4npJXQag23iR4u5b0Ow5zPN
+         BlcXOVpoYJ0RxYJKKXJjhksJOoEXUgqPo8/QPFE2iwyeWZ2Je9ZpIsUzujcwmxByWTT2
+         gMtpMO2gwI5bpHcT8IKqo/qw+IcOgtWYNlrkoW0TEc3EBJuA5yvjB4J5qWM3q1GYJiBe
+         Evow==
+X-Gm-Message-State: AOJu0YzYY3ym9m1U9YhVGkbWcAmmEYiiwsStSydjLrK1r787X2BV7C+D
+	0pdV7gavESNhCjelqpGdlnq3hb7KaEEqtGhsyzYt/NlZYRGlAwXoVe75kbAlsPPcIQfpZA1VJ/f
+	f0DUdMw0MeIwOquAF
+X-Gm-Gg: ASbGncvDonYOVvzRBNw3GWqBE8RKwsXlqKmsCKhdla914KczZC8FB9aM4u/zCSPjwcs
+	i6if3K//k0BihOlTaGA6xQDmKL1IUEhVPnR0KzPN2iVHvn9kxXZSV/rWM0SwUj+htquukeXaB9d
+	rotpmcrNoNnshvBVdsJRcQ8902toD2etorHhhIgJCs2t5MnrSa0Tv7jqxcXQWaGD4lEG8j1mDff
+	9h9OdPLlpbwbVBmTtlxisNnW4yFpkQZAJuxoHulwQVqkfoHxdpflOTRNKcRTJXr3Ff6S04tDbhP
+	0ZGeRB1Uj2mk+MarA7Z/lYmmu8cFOYwicwgo+tY+qwnpTZDB0k0tfNWwnPN2M8wg20w8p2guMMF
+	y+ETUhnmjFBYGOvyqD7cXvUIsayYxy8TFeZuHGjJAM08eSRoA1vJ4+vh1tSF6P6suXJPPVoo1g6
+	S2cQ==
+X-Google-Smtp-Source: AGHT+IGbrSRd8wB3/ElDJs3YnzD1VZw09CNzyp+y1XWjTyYnxx7pvVHrpL2yU7BusOYXUpPbl3Yrwg==
+X-Received: by 2002:a05:6a20:548d:b0:263:52cb:bc49 with SMTP id adf61e73a8af0-2cfe8990fb0mr5428309637.35.1758660611786;
+        Tue, 23 Sep 2025 13:50:11 -0700 (PDT)
+Received: from zqnrbfi.de (wsip-70-174-246-160.sd.sd.cox.net. [70.174.246.160])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-b5541f0374csm7692109a12.49.2025.09.23.13.50.10
+        for <linux-rockchip@lists.infradead.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 23 Sep 2025 13:50:11 -0700 (PDT)
+Message-ID: <68d30803.630a0220.3159f.c82e@mx.google.com>
+From: =?utf-8?B?44GU6YCa55+l?= <noreply642@patriotwinner.com>
+To: "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>
+Subject: =?utf-8?B?44CQ44Oe44ON44OD44Kv44K56Ki85Yi444CR6YWN5b2T6YeR?=
+	=?utf-8?B?5YWl6YeR44Gu44GU6YCj57Wh77yI44GU56K66KqN44Gu44GK6aGY44GE?=
+	=?utf-8?B?77yJ?=
+Date: Wed, 24 Sep 2025 04:49:56 +0800
+X-Priority: 3
+X-Mailer: Coremail Copyright Tebie
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <da752790-da17-4d26-b9b2-8240b38b3276@kwiboo.se>
+X-Yahoo-Newman-Property: optinmailpf
+X-Yahoo-Newman-Id: 22d2c0cb-63f4-4463-858a-d3a55acf426d
+X-yahoo-newman-expires: 1757516400
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+X-Z-SRV: Company=%E6%A5%BD%E5%A4%A9%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97;surl=https://corp.rakuten.co.jp;comp_siu=https://s.yimg.jp/images/mail/companymark/rakuten/;
+Received: from mu-deliverer-felix-release (unknown [100.117.67.182])by mpoppo2107z.prod.jp.local (Rakuten MTA) with ESMTP
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250925_101141_701495_087ED3C7 
-X-CRM114-Status: GOOD (  34.34  )
+X-CRM114-CacheID: sfid-20250925_110926_410827_F30D70EF 
+X-CRM114-Status: UNSURE (   2.61  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,96 +103,35 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 25, 2025 at 06:58:06PM +0200, Jonas Karlman wrote:
-> Hi Heiko,
-> 
-> On 9/25/2025 11:29 AM, Heiko Stuebner wrote:
-> > While I want to remember that the dwmac on the TS433 was working at some
-> > point, it seems I had my network always connected to the 2.5G nic after
-> > that "point". And testing now revealed that the gmac does not actually
-> > manages to transfer data.
-> > 
-> > Currently the gmac is set to rgmii-id with no rx-/tx-delay values set
-> > which makes the driver use default values. Setting the delays to 0
-> > also does not provide a working interface.
-> > 
-> > The vendor kernel is running with phy-mode set to rgmii and delays of
-> >     tx_delay = 0x3c, rx_delay = 0x2f
-> > 
-> > As Andrew points out often, those delay values "are magic" and rgmii-id
-> > should definitly be used "with small values" for delays, if really needed.
-> > 
-> > The Rockchip vendor-kernel actually contains additional code in the dwmac
-> > driver to use the loopback function of a phy to find a window of usable
-> > delay values. Code can be found for example on [0] and the process is
-> > described in a document called "Rockchip GMAC RGMII Delayline Guide"
-> > which has made its way onto the internet in a lot of places [1].
-> > 
-> > So I used this process, with the interface set to rgmii-id to get values
-> > for this mode, which are in face lower than the ones for rgmii with
-> >     tx_delay = 0x21, rx_delay = 0x15
-> > and results in a working interface on the dwmac.
-> > 
-> > [0] https://github.com/armbian/linux-rockchip/blob/rk-6.1-rkr6.1/drivers/net/ethernet/stmicro/stmmac/dwmac-rk-tool.c
-> > [1] https://gitlab.com/firefly-linux/docs/-/blob/rk356x/firefly/Common/GMAC/Rockchip_Developer_Guide_Linux_GMAC_RGMII_Delayline_EN.pdf
-> > 
-> > Cc: Andrew Lunn <andrew@lunn.ch>
-> > Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-> > ---
-> >  arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts | 2 ++
-> >  1 file changed, 2 insertions(+)
-> > 
-> > diff --git a/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts b/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts
-> > index 5656554ca284..e8af92a011d6 100644
-> > --- a/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts
-> > +++ b/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts
-> > @@ -257,6 +257,8 @@ &gmac0_tx_bus2
-> >  		     &gmac0_rx_bus2
-> >  		     &gmac0_rgmii_clk
-> >  		     &gmac0_rgmii_bus>;
-> > +	rx_delay = <0x15>;
-> > +	tx_delay = <0x21>;
-> 
-> I do not understand why defining rx/tx_delay would change anything.
-
-I was also wondering why these two properties are added but no change
-to phy-mode.
-
-> 
-> Setting these should currently not have any effect on the driver code
-> when phy-mode=rgmii-id is used, see below (next-20250924, dwmac-rk.c):
-> 
-> 
-> 	switch (bsp_priv->phy_iface) {
-> 	case PHY_INTERFACE_MODE_RGMII:
-> 		dev_info(dev, "init for RGMII\n");
-> 		bsp_priv->ops->set_to_rgmii(bsp_priv, bsp_priv->tx_delay,
-> 					    bsp_priv->rx_delay);
-> 		break;
-> 	case PHY_INTERFACE_MODE_RGMII_ID:
-> 		dev_info(dev, "init for RGMII_ID\n");
-> 		bsp_priv->ops->set_to_rgmii(bsp_priv, 0, 0);
-> 		break;
-
-And this explains it, thanks.
-
-> I have played around with a few patches that changes this and apply the
-> rx/tx_delay for rgmii-id modes (both Linux and U-Boot), see top of [2]
-> for Linux patches. Will try to get them on ML in a few days.
-
-We should not really be expanding the use of rx_delay and
-tx_delay. The standardized properties {tx|rx}-internal-delay-ps should
-be used.
-
-	Andrew
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+5bmz57Sg44KI44KK44Oe44ON44OD44Kv44K56Ki85Yi444KS44GU5Yip55So44GE44Gf44Gg44GN
+44CB6Kqg44Gr44GC44KK44GM44Go44GG44GU44GW44GE44G+44GZ44CCDQoNCuOBk+OBruOBn+OB
+s+OAgeOBiuWuouanmOOBruiovOWIuOWPo+W6p+OBq+mFjeW9k+mHkeOBruWFpemHkeOBjOeiuuiq
+jeOBleOCjOOBvuOBl+OBn+OBruOBp+OBlOahiOWGheeUs+OBl+S4iuOBkuOBvuOBmeOAguOBiuaJ
+i+aVsOOBp+OBmeOBjOOAgeS4i+iomOOBruaJi+mghuOBq+OBpuODreOCsOOCpOODs+OBhOOBn+OB
+oOOBjeOAgeOAjOOBiuWPluW8leWxpeattOOAjeOBq+OBpuips+e0sOOCkuOBlOeiuuiqjeOBj+OB
+oOOBleOBhOOAgg0KDQrilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDi
+lIDilIDilIDilIDilIDilIDilIDilIANCuKWoCDjg63jgrDjgqTjg7PvvIjjg57jg43jg4Pjgq/j
+grnlhazlvI/vvIkNCmh0dHBzOi8vbW9lbml4Lmtpb25nbWFuLmNvbS9kaXZpZGVuZHMNCg0K4pag
+IOOBlOazqOaEj+S6i+mghQ0K44O76YWN5b2T6YeR44Gu6YeR6aGN44O75pSv5omV5pel44O75a++
+6LGh6YqY5p+E562J44Gv44CM44GK5Y+W5byV5bGl5q2044CN44Gr44Gm44GU56K66KqN44GP44Gg
+44GV44GE44CCDQrjg7vlj43mmKDjgb7jgafjgavjgr/jgqTjg6Djg6njgrDjgYznlJ/jgZjjgovl
+oLTlkIjjgYzjgZTjgZbjgYTjgb7jgZnjgILjgYLjgonjgYvjgZjjgoHjgZTkuobmib/jgY/jgaDj
+gZXjgYTjgIINCg0K4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA
+4pSA4pSA4pSA4pSA4pSA4pSA4pSADQrnmbrooYzvvJrjg57jg43jg4Pjgq/jgrnoqLzliLjmoKrl
+vI/kvJrnpL4NCumHkeiejeWVhuWTgeWPluW8lealreiAheOAgOmWouadseiyoeWLmeWxgOmVt++8
+iOmHkeWVhu+8ieesrDE2NeWPtw0K5Yqg5YWl5Y2U5Lya77ya5pel5pys6Ki85Yi45qWt5Y2U5Lya
+44CB6YeR6J6N5YWI54mp5Y+W5byV5qWt5Y2U5LyaIOetiQ0K4pSA4pSA4pSA4pSA4pSA4pSA4pSA
+4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSADQoNCuKAu+acrOOD
+oeODvOODq+OBr+mFjeS/oeWwgueUqOOBp+OBmeOAguOBlOi/lOS/oeOBhOOBn+OBoOOBhOOBpuOC
+guWvvuW/nOOBhOOBn+OBl+OBi+OBreOBvuOBmeOBruOBp+OAgeOBlOS6huaJv+OBj+OBoOOBleOB
+hOOAgg0KDQrku4rlvozjgajjgoLjgIHjg57jg43jg4Pjgq/jgrnoqLzliLjjgpLjgZTliKnnlKjo
+s5zjgorjgb7jgZnjgojjgYbjgIHjgojjgo3jgZfjgY/jgYrpoZjjgYTnlLPjgZfkuIrjgZLjgb7j
+gZnjgIIKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpM
+aW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFk
+Lm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJv
+Y2tjaGlwCg==
