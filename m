@@ -4,162 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42146CAC5A5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Sep 2025 20:03:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F27E2CAC5A5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Sep 2025 20:38:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=e11jeBanmh8JudfnRctSnCzYUMycZX6qLEf355NduUg=; b=ZkSw2yfJkruj2+
-	7A+0cl+QhO7OHDbIC/txYItGPpvYMcJSXa4ULt6tUxWniZnKYEB9+ND9urKxOL4/KGsHsQujdvGvO
-	vbNzLDfL2mGZYazfSa6Y8bw6TO11TjC3z1eLYQjpryukl7lE8kw9cvlmMgguuM69yHt7xdRENAeHa
-	tbt9XWBI086OUeSxZQbx+nfI7tKus3PW1856YuzHu9zEMEQ7q+iv2C/MiODKgAWjj/n60t3GCJso5
-	/cvGJ51NCc+AjbXlo8+tzDsjslW/gTJveWqGH5CgE3q8xD3Jp1X5n6+tHDRIamIKhlVe1XpgqxUQH
-	Vdc7dRIIcN6FoWt/Mp5Q==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
+	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=6zLzYuxI2jHr7+1V8b6uyDyOX0eDBHept/YJavIpY3A=; b=TGRpgsfPsHLteQ
+	1xrXJW7P4BEsd2lHHncR+/SvBvK0bVSXUo+nLF6l454pbkEhRKiAG19UORHMRoL1ZeZil5SPEJ09g
+	Fg1maavM5yI7LDHav3na+G9ZrlEQHWGJoZNB1J9dATlPyXUO0H2kcpnxr18aE6N7zpb8Imzx17tKm
+	eaTe92NIJWotYQaCTIi0CVig/sjxTtEUHknOOQVX9kYp4P0KvIcjn8wn9VvHIt7EUWh+jD6vyJBZo
+	uH9zg0lZw5wIIDnfNa4GseHfw8VxV7kacEhwqxZWuSsvENuiGPx6oYjeTqrJz+8K3/dky5FfXMFeb
+	07xPfaT3H5cQ6VtEc3RA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1ViP-00000003IjV-1mpt;
-	Wed, 24 Sep 2025 20:03:49 +0000
-Received: from mail-westus2azlp170120002.outbound.protection.outlook.com ([2a01:111:f403:c007::2] helo=MW6PR02CU001.outbound.protection.outlook.com)
+	id 1v1WG1-00000003Ztq-37QO;
+	Wed, 24 Sep 2025 20:38:33 +0000
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1ViM-00000003Iic-1ifj;
-	Wed, 24 Sep 2025 20:03:47 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=JMFmCTq4P2nAzaESWg5Uhjean1/uQMAXZnmc2d+s0HmLAqY+42LfEYu/PNm16Q//55J8lncvbHPJGvKkA9JXAvtDA3AQle7KKGxQkPnV2jMHw7ZkCAedabeTIJdB42ImjP+JR4hQkpBIv73/7xlzNOK0i/YQOMwvSurWGXvUEpmd9atFdIIWhHTMJAtAWV9PljuW+8EuX9oqs8hYVBDyCL23pWyT7i+WUjN6YfZUtsjmUAHGZgAGIKGdl/titOCA8N9h6Zs2IVUjZHJ1pFSVNeryL+d0dFG4XNCpq4kXp4mBD6/MwR8WwV26X7j1Ak2RJeB1+ocAtJSUqjOjFi6tFQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=zR+BrAxFQqT400X38afdiL7uX4G6s1XjWRQM6wKJsLA=;
- b=sWFzwG311e+k1y8Rfm0ySrLJNpZnLSnlHUiYiK+m2s2M7yErpbbbxmSBXZFqsO92IInh2ntXfTjGpGXVP4+CVI/aIjr96ded4NfLsJKE2OZ5Ht/7RNHz5GttCh80BVUjE+UGlAaLE23HwR761kM8XCAwAagaUp6w1o2tiDjZotV19DYb6ZHhvOyG12RCqBSpqz9JFo27ErzwgZyKoI2rPL5qzah9f300XAo+6OdFCfG+4RByzmOGn1ER7ylLZZ60Yy7M3n9Qbd6OMKb8aWXD3b9iDQFcgNFDWNXq4+lI7a6DXyaYx8HD6Z19elUeIVid7+Ok2saYnAR/56lvAYBjcg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.118.233) smtp.rcpttodomain=csie.org smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=zR+BrAxFQqT400X38afdiL7uX4G6s1XjWRQM6wKJsLA=;
- b=MSc8Drj8xU2vPvZHpn9SM4qBeaW8Lfcq/z4PFNc3T7E6+Vedrj57Y8MRtMcP8BE//Jaa8q041DJVFTUBrTuCCq/zal1WRIzZNEtcKs3iJywNPtEpZ/QlCv3wkO15PBJGL6yC/xeK07HGUjlIo38Xwk92b+FrEoMFiUbysbRLXq+er+9DM1TO05oU5vdyhAqMICfRAmK0xCb0Xe0tr8Gdkfj/QYioPmNe9xKrlnvnrNiaq9i95eEmaCV9CyUgwcHIi8ezAxY0SoTxFv+mSQs0nCyEly1JWJggIAjK69lu0hpwB/TXp3B5LO4+U7/hq3fcJYvhd+wOnb/i/VyuCXhUXQ==
-Received: from BYAPR08CA0015.namprd08.prod.outlook.com (2603:10b6:a03:100::28)
- by MN0PR12MB5810.namprd12.prod.outlook.com (2603:10b6:208:376::6) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9137.20; Wed, 24 Sep
- 2025 20:03:10 +0000
-Received: from BY1PEPF0001AE1B.namprd04.prod.outlook.com
- (2603:10b6:a03:100:cafe::1d) by BYAPR08CA0015.outlook.office365.com
- (2603:10b6:a03:100::28) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.9137.21 via Frontend Transport; Wed,
- 24 Sep 2025 20:03:09 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.118.233)
- smtp.mailfrom=nvidia.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.118.233 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.118.233; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.118.233) by
- BY1PEPF0001AE1B.mail.protection.outlook.com (10.167.242.103) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.9160.9 via Frontend Transport; Wed, 24 Sep 2025 20:03:09 +0000
-Received: from drhqmail201.nvidia.com (10.126.190.180) by mail.nvidia.com
- (10.127.129.6) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Wed, 24 Sep
- 2025 13:02:59 -0700
-Received: from drhqmail203.nvidia.com (10.126.190.182) by
- drhqmail201.nvidia.com (10.126.190.180) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.20; Wed, 24 Sep 2025 13:02:58 -0700
-Received: from Asurada-Nvidia (10.127.8.11) by mail.nvidia.com
- (10.126.190.182) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20 via Frontend
- Transport; Wed, 24 Sep 2025 13:02:56 -0700
-Date: Wed, 24 Sep 2025 13:02:54 -0700
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: Jason Gunthorpe <jgg@nvidia.com>
-CC: <joro@8bytes.org>, <bhelgaas@google.com>, <suravee.suthikulpanit@amd.com>,
-	<will@kernel.org>, <robin.murphy@arm.com>, <sven@kernel.org>, <j@jannau.net>,
-	<alyssa@rosenzweig.io>, <neal@gompa.dev>, <robin.clark@oss.qualcomm.com>,
-	<m.szyprowski@samsung.com>, <krzk@kernel.org>, <alim.akhtar@samsung.com>,
-	<dwmw2@infradead.org>, <baolu.lu@linux.intel.com>, <kevin.tian@intel.com>,
-	<yong.wu@mediatek.com>, <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>, <tjeznach@rivosinc.com>,
-	<paul.walmsley@sifive.com>, <palmer@dabbelt.com>, <aou@eecs.berkeley.edu>,
-	<alex@ghiti.fr>, <heiko@sntech.de>, <schnelle@linux.ibm.com>,
-	<mjrosato@linux.ibm.com>, <gerald.schaefer@linux.ibm.com>,
-	<orsonzhai@gmail.com>, <baolin.wang@linux.alibaba.com>,
-	<zhang.lyra@gmail.com>, <wens@csie.org>, <jernej.skrabec@gmail.com>,
-	<samuel@sholland.org>, <jean-philippe@linaro.org>, <rafael@kernel.org>,
-	<lenb@kernel.org>, <yi.l.liu@intel.com>, <cwabbott0@gmail.com>,
-	<quic_pbrahma@quicinc.com>, <iommu@lists.linux.dev>,
-	<linux-kernel@vger.kernel.org>, <asahi@lists.linux.dev>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-arm-msm@vger.kernel.org>,
-	<linux-samsung-soc@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-riscv@lists.infradead.org>, <linux-rockchip@lists.infradead.org>,
-	<linux-s390@vger.kernel.org>, <linux-sunxi@lists.linux.dev>,
-	<linux-tegra@vger.kernel.org>, <virtualization@lists.linux.dev>,
-	<linux-acpi@vger.kernel.org>, <linux-pci@vger.kernel.org>,
-	<patches@lists.linux.dev>, <vsethi@nvidia.com>, <helgaas@kernel.org>,
-	<etzhao1900@gmail.com>
-Subject: Re: [PATCH v4 5/7] iommu: Add iommu_get_domain_for_dev_locked()
- helper
-Message-ID: <aNRObmtcUkYTworw@Asurada-Nvidia>
-References: <cover.1756682135.git.nicolinc@nvidia.com>
- <c9daeafb9046bed9e915fdafe20fe28a8c427d29.1756682135.git.nicolinc@nvidia.com>
- <20250924191055.GJ2617119@nvidia.com>
- <aNRLOsomtHNumaSY@Asurada-Nvidia>
- <20250924195254.GL2617119@nvidia.com>
+	id 1v1WFy-00000003ZpO-3EBm
+	for linux-rockchip@lists.infradead.org;
+	Wed, 24 Sep 2025 20:38:32 +0000
+Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-45b4d89217aso1116995e9.2
+        for <linux-rockchip@lists.infradead.org>; Wed, 24 Sep 2025 13:38:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1758746308; x=1759351108; darn=lists.infradead.org;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=PgAWQCFoo98/Z9ljCaTiQGL2NXe+X8U3ZUEI4e+iLi4=;
+        b=Qx/2WcRM0FTThNhdGymIpEcLexLZ2XWTvQF0eX3sF/9KyeYI20v/IQ3poH7U13sY78
+         1TeY6YELkc1vMyzT8DOBlNXFZzMNNyfDIY+wtn1kJYpiruL+p36FZMb89K6N0WCUq6KK
+         36YsrLWDs+ji7NcaQot1lvERhoNjeOE/1kgYiAxplO9q6ZoYG3ow8o/yObgC7EQd3/Jq
+         45cTMRtOs1gFRMEw1Tavdta3sGST+U7IsTONyIq+i/Uy8w55aaWGH6CDBvgvF2/44MVp
+         VJlRihvvk5YJ/761joE9Tdupccavcf2rx1sph18KBwEpp8t5GajLHKujR/8e3HxM9WJ/
+         igDg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1758746308; x=1759351108;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=PgAWQCFoo98/Z9ljCaTiQGL2NXe+X8U3ZUEI4e+iLi4=;
+        b=M5uUL8Qra1K4omIZTVDKCHSwA6RdyPbFWiaWRL/Nteox0FSAmk8e+A7Nbw1B8TXSNv
+         GaSlEtYx5NFZ1G1378omwQqC33dyrkc/rNIKYq03BVrIymUC8Bcm73VmwYQHUb26XoDR
+         G7JqJ7lWYtEYflxaIwRSqkgjxdWoPB+ZKM74PfH0sIQePkvGfZdY2FLohodgSVGo2iX7
+         r0rJIjio+ZxUSirbnIt0qwM5FGfrzhz0RzRWuyJ6HOm7l+954d1oigxuE710P/bFnyek
+         vVfkExjPZbwZPHgYLz4Fv64KCClGHM3cKEMNID98Ve5IKKRQiL/N2BSc8h/rZcpCwfCo
+         dekA==
+X-Forwarded-Encrypted: i=1; AJvYcCVL+tMtsMg6sSqkUQEzYhG7k/PEGOVgw+YEaXb36/gzaOZR6mq88hsBnv/lC/yzReyiprEi26iQ2cVVXLO2Qg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy0u8AMrNWBoY8rNPdyBZVTfA81b72AsG0k99l+4CdyHQw11wxA
+	IVcsNby0T3ioZeKEO0IvKl55BEpmM1SfCWQNrqi4DeCci+bn+7mKduQC
+X-Gm-Gg: ASbGncsKWpyio0CFMGB4oIf2i4BUKZkoU1tapIuN3COyQhXJ78yjNc49Str3ptsl2nw
+	lX8h6tgdRNfKIYtHis965sfQW2+RQbzxmNNJ8Edz3yk0JharH2onnGRuR5ypSma2xsfqgbuQGqw
+	rildOnMMkssQff8Om0R6nXlZcj3L8OcjdmIJvi+mApr7/AG1iXepwp2RX5KzPsCeGP0Wr8q63iz
+	oftdTeKwhUX+TkKs7wKPEcbvSii4ZdrejjAMTLAwH3O+KE2d8tR4ma3IjbZH+eKDoDJ0sMO2oKE
+	XX9eVQ1jUzusxoPZfh8olfUtETjyQVSbWqjx7cNSnKlP4buDUbSiYGNeJneikuylRRPpKDqc9jw
+	TQ9LYlLN7ryyNoBC9bdqOfKqe53s/EynhZcBanY+Jp8EJxjzn
+X-Google-Smtp-Source: AGHT+IGDxHR9zD3T2Jojj5V63amKQHEZ4Y5ouX0SIG7pqFz8i6fnWZlg4urHE+jXQ/8JQVeDmH/9Kg==
+X-Received: by 2002:a05:600c:1695:b0:45b:7e86:7378 with SMTP id 5b1f17b1804b1-46e32a1987cmr6748555e9.34.1758746308296;
+        Wed, 24 Sep 2025 13:38:28 -0700 (PDT)
+Received: from alchark-surface.localdomain ([5.194.95.234])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-46e33b9e8aesm2663465e9.4.2025.09.24.13.38.26
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 24 Sep 2025 13:38:27 -0700 (PDT)
+From: Alexey Charkov <alchark@gmail.com>
+Date: Thu, 25 Sep 2025 00:38:13 +0400
+Subject: [PATCH] arm64: dts: rockchip: Add DSI LCD display on rk3576-evb1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250924195254.GL2617119@nvidia.com>
-X-NV-OnPremToCloud: ExternallySecured
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BY1PEPF0001AE1B:EE_|MN0PR12MB5810:EE_
-X-MS-Office365-Filtering-Correlation-Id: 5153b8ce-63fc-4122-5443-08ddfba56259
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|82310400026|7416014|376014|36860700013|1800799024;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?d0VmmuWWEgFqCknLNqMPD6I2UkGIGTK80hMjjM5Lpgpo9VEOpLQM+6MQuZrC?=
- =?us-ascii?Q?7U7Tb9IN8Wai+h1wu4FZ9efH4dg5krNQfpg4h/Hlw1kdI763rPNYjaQk52O9?=
- =?us-ascii?Q?OZyA33srousTNfNIHfqA3DyWzYRT0vAgQyUkZ28rYxKFawn1IiV0PSulcfHg?=
- =?us-ascii?Q?+/wvOSqV75rTDzvGS+dLuHe6J6LkGRTLzLArjXaqk9AXh9kT/EKrAde5YdHg?=
- =?us-ascii?Q?QAiNafIeXEwzzjW/NqbYBnXle2tdf1TatT3/6cP3JXNZhfmyz/ZYO/ezZAUB?=
- =?us-ascii?Q?5tKJwKqaZ+Pe72sa64ORCySmElFpkEQtW6fqmky359Zpf2xI47dTcVfs24m8?=
- =?us-ascii?Q?OZ/VMdssZvhrbeFtJd5aRHWHs/1izC6hHA06Uw1gZgmxPxiy48UCY1191LsT?=
- =?us-ascii?Q?6GQFNovQSUmULxpaGvkgsyXJBsUXNsj3oeTaZd/smk61vBDjh0XAeNDhnHCi?=
- =?us-ascii?Q?dO7xWYb9R0GpniAVnirpMHWRedqrLVrh4cyUw1SYOBlxDth1YS3ZcnbGckPE?=
- =?us-ascii?Q?4c3tRDaRP1ZvPYhoJAb/wNqcPlltIYwQEDXCLQ5trAiLDnE4NWwbtH1HtjSl?=
- =?us-ascii?Q?5vIsYcbo+LSj5IqbZrmcVvU0jZbSlHDH46MT1AmjgzJtp6fE7bwMBOavTadL?=
- =?us-ascii?Q?gPULiNinATMFWQCq5oC60EsedtKIFDR/uh6QGCyRudiYMgntu3qRhZQ6nF9V?=
- =?us-ascii?Q?cZbxeol/gVCdpswHYgR56BHH4R785eGThmSNWTgF+peSaioJaU/8pB3VpkLa?=
- =?us-ascii?Q?L8qQ70d9Lhkgefu/F0n3p0vtUOcxQGjmYuHfqYCcEVlsJrcMh5LwpPGV+LZf?=
- =?us-ascii?Q?TpNqlA69JGAQU7tQNqgHAXbSE8o4W1ReycDzRzg3Dv4/E4KyIOwPSHhGtWG3?=
- =?us-ascii?Q?IU4h/pynaVEN0OVLZ38NHt6aqIROBBbIjHLySgM/14jxuvQk40p9qMzkj/Ts?=
- =?us-ascii?Q?oho1h4acB7u9Zi8AhGdAZSZL1+CPXtuKhBnLJ4voV2VXFmm+vdXNsPrSZbq3?=
- =?us-ascii?Q?a5cM1Z9QSDs4eWS896bLiHJ2PXTK8FzD8ULtAxTe2ZyEiypiN0qjbg8/MgXn?=
- =?us-ascii?Q?krtcc6QK6v0DBWt4mXWCbm3eLV7YiFQKKSAoY5rJ/aQOITHZWQTX7olQX5iY?=
- =?us-ascii?Q?3deHGW1/g1bw1fn/Yu28G7Hs3Qw4XGrALLqtgVN+JI3YWC8W1aoYxr4O5K0t?=
- =?us-ascii?Q?4ZfaE+4DDzFVMwsReRnmurAzsIXA6vDc0ENAQ5jPy40gYisHcZHdvyV/WipD?=
- =?us-ascii?Q?SQpnRgIKIuxf8ZLDTb805WQngUuYTyEIGHbKKNyTR1WJnQCGyPl4G65CBPUd?=
- =?us-ascii?Q?fSKYYyVw6BKe9qNkLBpZ0S1AqoiAchUjsDa7jP5XzEYUcez3wepIalP4IvCI?=
- =?us-ascii?Q?E6WhLtmg0rfNK12Oavz7aLURK5i3YERcmrV/JjzpAnvHPagp2XcXLcSipI+/?=
- =?us-ascii?Q?OTvsGjYYEopMbcXMSQ/hLVr6EwMVAzqtAQTNXlUy++zQox+7CAuOvNaUzQw3?=
- =?us-ascii?Q?UTnfnkunVTfNyryqbOIMcHm+bag8s6Y2NICJ?=
-X-Forefront-Antispam-Report: CIP:216.228.118.233;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:dc7edge2.nvidia.com;CAT:NONE;SFS:(13230040)(82310400026)(7416014)(376014)(36860700013)(1800799024);DIR:OUT;SFP:1101;
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Sep 2025 20:03:09.4241
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 5153b8ce-63fc-4122-5443-08ddfba56259
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[216.228.118.233];Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: BY1PEPF0001AE1B.namprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN0PR12MB5810
+Message-Id: <20250925-rk3576-evb1-dsi-v1-1-c76fc3740abc@gmail.com>
+X-B4-Tracking: v=1; b=H4sIALRW1GgC/x3MSQqAMAxA0atI1gZsU8eriAuHVIOg0kIRSu9uc
+ fkW/0fw7IQ9DEUEx0G83FeGKgtYj/naGWXLBl3puuq1QXdS3TbIYVG4eUGm3pLpiBbbQK4ex1b
+ e/zhOKX3yEkZhYQAAAA==
+X-Change-ID: 20250924-rk3576-evb1-dsi-e39f34833bf6
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Alexey Charkov <alchark@gmail.com>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3993; i=alchark@gmail.com;
+ h=from:subject:message-id; bh=/7E6ceDbDhZ4pxug1DrrfRHk0oYerFsLd6y+cKd/Fmc=;
+ b=owGbwMvMwCW2adGNfoHIK0sZT6slMWRcCTss8+Uow9wVd7om3ggIPPxuqbaVReHufeeOKO8ui
+ DqxLvCgXUcpC4MYF4OsmCLL3G9LbKca8c3a5eHxFWYOKxPIEAYuTgGYiNxbRoafxwXXszilzNvD
+ v3ou95Mb/R6Ju83fpOisd/+6dteaZbd2MPwPfxPzSlRMSOXbG8XWJufMCcLu6zfOeeo/SUhQjlt
+ YYSsDAA==
+X-Developer-Key: i=alchark@gmail.com; a=openpgp;
+ fpr=9DF6A43D95320E9ABA4848F5B2A2D88F1059D4A5
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250924_130346_450149_AB2C6CC6 
-X-CRM114-Status: GOOD (  16.31  )
+X-CRM114-CacheID: sfid-20250924_133830_837790_BB214FA1 
+X-CRM114-Status: GOOD (  12.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -176,26 +110,166 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 24, 2025 at 04:52:54PM -0300, Jason Gunthorpe wrote:
-> On Wed, Sep 24, 2025 at 12:49:14PM -0700, Nicolin Chen wrote:
-> > > I really wanted to say this should just always return the
-> > > default_domain, but it looks like host1x_client_iommu_detach() is the
-> > > only place outside the iommu drivers that would be unhappy with that.
-> > 
-> > I suppose any external user that allocates/attaches a domain has a
-> > risk of potentially using this helper, in which case group->domain
-> > may not be default_domain?
-> 
-> Yes, host1x seemed to be the only place that had that intersection.
+Add support for the Rockchip W552793DBA-V10 LCD+touchscreen assembly which
+comes physically attached to Rockchip RK3576 EVB1 boards.
 
-I meant, we cannot prevent others from calling it like host1x does?
+The display part is driven by the on-chip MIPI DSI controller, and the
+touchscreen is connected over I2C.
 
-Even if we have those replacement APIs that we discussed last time,
-such a driver might still want its own domain v.s. default_domain,
-for pgsize or other use?
+Signed-off-by: Alexey Charkov <alchark@gmail.com>
+---
+Note that backlight support is left out for now, as it depends on PWM
+support [0] which has not yet been merged.
 
-Thanks
-Nicolin
+A workaround is simply `gpioset -c 0 13=1` to set the respective GPIO
+pin high and thus to light up the display unconditionally.
+
+[0] https://lore.kernel.org/lkml/20250602-rk3576-pwm-v2-0-a6434b0ce60c@collabora.com/
+---
+ arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts | 89 ++++++++++++++++++++++++
+ 1 file changed, 89 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts b/arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts
+index db8fef7a4f1b9570cb517ccc9a857d1c93c9d2db..f20cd6f2c079e0a5bd79acc9ebcd56b499e0f72f 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts
+@@ -125,6 +125,8 @@ vcc3v3_lcd_n: regulator-vcc3v3-lcd0-n {
+ 		regulator-boot-on;
+ 		enable-active-high;
+ 		gpio = <&gpio0 RK_PC6 GPIO_ACTIVE_HIGH>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&vcc3v3_lcd_s0_en>;
+ 		vin-supply = <&vcc_3v3_s0>;
+ 	};
+ 
+@@ -264,6 +266,43 @@ &combphy1_psu {
+ 	status = "okay";
+ };
+ 
++&dsi {
++	#address-cells = <1>;
++	#size-cells = <0>;
++	pinctrl-0 = <&mipim1_pins>;
++	pinctrl-names = "default";
++	status = "okay";
++
++	panel@0 {
++		compatible = "wanchanglong,w552793baa", "raydium,rm67200";
++		reg = <0>;
++
++		iovcc-supply = <&vcc3v3_lcd_n>;
++		reset-gpios = <&gpio3 RK_PB5 GPIO_ACTIVE_LOW>;
++		vdd-supply = <&vcc3v3_lcd_n>;
++		vsn-supply = <&vcc5v0_device>;
++		vsp-supply = <&vcc5v0_device>;
++
++		port {
++			mipi_panel_in: endpoint {
++				remote-endpoint = <&dsi_out_panel>;
++			};
++		};
++	};
++};
++
++&dsi_in {
++	dsi_in_vp1: endpoint {
++		remote-endpoint = <&vp1_out_dsi>;
++	};
++};
++
++&dsi_out {
++	dsi_out_panel: endpoint {
++		remote-endpoint = <&mipi_panel_in>;
++	};
++};
++
+ &gmac0 {
+ 	clock_in_out = "output";
+ 	phy-mode = "rgmii-rxid";
+@@ -319,6 +358,28 @@ &hdptxphy {
+ 	status = "okay";
+ };
+ 
++&i2c0 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&i2c0m1_xfer>;
++	#address-cells = <1>;
++	#size-cells = <0>;
++	status = "okay";
++
++	touchscreen@14 {
++		compatible = "goodix,gt1158";
++		reg = <0x14>;
++		interrupt-parent = <&gpio0>;
++		interrupts = <RK_PC5 IRQ_TYPE_LEVEL_LOW>;
++		irq-gpios = <&gpio0 RK_PC5 GPIO_ACTIVE_HIGH>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&tp_int>, <&tp_rst>;
++		reset-gpios = <&gpio0 RK_PD0 GPIO_ACTIVE_HIGH>;
++		touchscreen-size-x = <720>;
++		touchscreen-size-y = <1280>;
++		VDDIO-supply = <&vcc3v3_lcd_n>;
++	};
++};
++
+ &i2c1 {
+ 	status = "okay";
+ 
+@@ -738,6 +799,10 @@ rgmii_phy1: ethernet-phy@1 {
+ 	};
+ };
+ 
++&mipidcphy {
++	status = "okay";
++};
++
+ &pcie0 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&pcie0_rst>;
+@@ -788,6 +853,20 @@ host_wake_bt: host-wake-bt {
+ 		};
+ 	};
+ 
++	display {
++		vcc3v3_lcd_s0_en: vcc3v3-lcd-s0-en {
++			rockchip,pins = <0 RK_PC6 0 &pcfg_pull_none>;
++		};
++
++		tp_int: tp-int {
++			rockchip,pins = <0 RK_PC5 0 &pcfg_pull_none>;
++		};
++
++		tp_rst: tp-rst {
++			rockchip,pins = <0 RK_PD0 0 &pcfg_pull_none>;
++		};
++	};
++
+ 	hym8563 {
+ 		rtc_int: rtc-int {
+ 			rockchip,pins = <0 RK_PA0 RK_FUNC_GPIO &pcfg_pull_up>;
+@@ -941,3 +1020,13 @@ vp0_out_hdmi: endpoint@ROCKCHIP_VOP2_EP_HDMI0 {
+ 		remote-endpoint = <&hdmi_in_vp0>;
+ 	};
+ };
++
++&vp1 {
++	#address-cells = <1>;
++	#size-cells = <0>;
++
++	vp1_out_dsi: endpoint@ROCKCHIP_VOP2_EP_MIPI0 {
++		reg = <ROCKCHIP_VOP2_EP_MIPI0>;
++		remote-endpoint = <&dsi_in_vp1>;
++	};
++};
+
+---
+base-commit: ce7f1a983b074f6cf8609068088ca3182c569ee4
+change-id: 20250924-rk3576-evb1-dsi-e39f34833bf6
+
+Best regards,
+-- 
+Alexey Charkov <alchark@gmail.com>
+
 
 _______________________________________________
 Linux-rockchip mailing list
