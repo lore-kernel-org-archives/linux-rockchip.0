@@ -4,68 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66DCDCAC5B2
-	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Sep 2025 09:15:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A19CCAC5A5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Sep 2025 09:55:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vA168zT/jJWR+uPqYwEwTAPRDMC2DIo5ksnnkp2MP/I=; b=hiMDIfFFaCcS0O
-	M0BjmLTLND2YnL0DbvDz0YINAKB0smTx7Gv9LqLkp8mUvruegGnie6JkWG41VjYDY0+uUAqEVIAom
-	y10QR9VdUYoEpIYXfU8zjPNDsj5WxRB4+VgBAeMpd3GkL8+T6KfvMRcZFqURCDFL3GXdJkcuwMWuM
-	8ord+0wHl964kPCQQnPQ85HMKEArzPv8nrnJ/Iq+UV6rcsvlwlTVh7E+JhfDCTmgslTRHUG1+h9+M
-	QIgbAhsPA2rErbV6L/PkpHNjwopP7Z/9iRg+PMXkbBKZsLfUKYC7KkwPQxXQdSPbYmmWHN2d3YH2a
-	ey1G3QRQlsELAqJzvzJg==;
+	List-Owner; bh=1lGImwdbjgjKVR53VYNR7PSEtnNm/v4sZOTtAfFCOtM=; b=z1rw/rVYX+JoxW
+	RRbBESZnr+2odRfu++p3vTpBhs0KpArOUR24zlKusdMInL+nxNPU2uR8Mk07jWSzmW7fVfZffOwCV
+	IZQ1Hfo21IB26fuLS1ZoQdjYYMK0OGRqqRrf2EXTJm9R8EThr9JnfbAgh5IJENqzgoQv/yFIv7o0i
+	El9yzgSmO86/254XCDa6l4vxHBUOVKp39+kQFlJs6tuE9+IMa2dXW1OX8Hdw9HJElDcRHT4n71CWn
+	ZMgOnEY+bmV4D2S8P1f35z0RaAoyVGFs/2oT5gHuZN7nvswh1cHJE/ovU+e6CPRpVd0gLf5UcCO0W
+	9IxnejhDE0efyg13XXgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1Lac-0000000G0rS-3j9S;
-	Wed, 24 Sep 2025 09:15:06 +0000
-Received: from mail-m49228.qiye.163.com ([45.254.49.228])
+	id 1v1ME3-0000000GFFS-1gdq;
+	Wed, 24 Sep 2025 09:55:51 +0000
+Received: from mail-m4920.qiye.163.com ([45.254.49.20])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1LaZ-0000000G0qj-2YSR;
-	Wed, 24 Sep 2025 09:15:06 +0000
-Received: from [172.16.12.26] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 23e6e465e;
-	Wed, 24 Sep 2025 17:14:58 +0800 (GMT+08:00)
-Message-ID: <2870c278-3c65-4d8f-ace3-1fd5b03af2b4@rock-chips.com>
-Date: Wed, 24 Sep 2025 17:14:57 +0800
+	id 1v1MDz-0000000GFCa-3zKA;
+	Wed, 24 Sep 2025 09:55:49 +0000
+Received: from [172.16.12.153] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 23e8469d7;
+	Wed, 24 Sep 2025 17:55:40 +0800 (GMT+08:00)
+Message-ID: <86753f21-1996-4b93-acca-575a193a5bb8@rock-chips.com>
+Date: Wed, 24 Sep 2025 17:55:39 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 10/17] drm/bridge: analogix_dp: Apply
- drm_bridge_connector helper
+Subject: Re: [PATCH v4 1/7] usb: typec: Add default HPD device when register
+ DisplayPort altmode
 To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-Cc: andrzej.hajda@intel.com, neil.armstrong@linaro.org, rfoss@kernel.org,
- Laurent.pinchart@ideasonboard.com, jonas@kwiboo.se,
- jernej.skrabec@gmail.com, maarten.lankhorst@linux.intel.com,
- mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch,
- jingoohan1@gmail.com, inki.dae@samsung.com, sw0312.kim@samsung.com,
- kyungmin.park@samsung.com, krzk@kernel.org, alim.akhtar@samsung.com,
- hjc@rock-chips.com, heiko@sntech.de, andy.yan@rock-chips.com,
- dianders@chromium.org, m.szyprowski@samsung.com, luca.ceresoli@bootlin.com,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
- linux-rockchip@lists.infradead.org
-References: <20250912085846.7349-1-damon.ding@rock-chips.com>
- <20250912085846.7349-11-damon.ding@rock-chips.com>
- <tsgfxlkxty653crmzmwsr7p6slf27pxf6n6to5p7zvi6wsl444@525tz5uhbj44>
+Cc: Chaoyi Chen <kernel@airkyi.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
+ Kishon Vijay Abraham I <kishon@kernel.org>, Heiko Stuebner
+ <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>,
+ Andy Yan <andy.yan@rock-chips.com>,
+ Yubing Zhang <yubing.zhang@rock-chips.com>,
+ Frank Wang <frank.wang@rock-chips.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Amit Sunil Dhamne <amitsd@google.com>,
+ Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Dragan Simic <dsimic@manjaro.org>, Johan Jonker <jbx6244@gmail.com>,
+ Diederik de Haas <didi.debian@cknow.org>,
+ Peter Robinson <pbrobinson@gmail.com>, linux-usb@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
+References: <20250922012039.323-1-kernel@airkyi.com>
+ <20250922012039.323-2-kernel@airkyi.com>
+ <mygbqhiom6pkwsadzz2bqf5bth3ogsbd6iku5a7r5swxrakein@fjhz7udnkcks>
+ <e9cf0aa8-ed32-4ffb-a755-150742455808@rock-chips.com>
+ <sgvrzhbhkzxbuybmws44kyenhfyppm3blijkarypcin4fiscvx@mnajrlmicyxi>
+ <18f55fe7-7c68-4982-916d-11752325c667@rock-chips.com>
+ <bh73nttewwhom2pqccfnapnfkrys3zljkykgqmh4hsdalqgyzi@gbl5oejxsp3z>
 Content-Language: en-US
-From: Damon Ding <damon.ding@rock-chips.com>
-In-Reply-To: <tsgfxlkxty653crmzmwsr7p6slf27pxf6n6to5p7zvi6wsl444@525tz5uhbj44>
-X-HM-Tid: 0a997b012a9d03a3kunma77a41314d83e6
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+In-Reply-To: <bh73nttewwhom2pqccfnapnfkrys3zljkykgqmh4hsdalqgyzi@gbl5oejxsp3z>
+X-HM-Tid: 0a997b266d6203abkunm01a8f59e308014
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQ0lLGFYYThlNHRoYTExIGE9WFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGU0aQ1YeGB4eGh4eQ0xDSU1WFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpPSE
+	xVSktLVUpCS0tZBg++
 DKIM-Signature: a=rsa-sha256;
-	b=SIIVKC0KCUfR3nN+GwLw5v1/d4nod3YY7POL/H/Aej0LixL+qxLVD844b2/VCZfclXxzPPwO/oNBO9jDa42GjKd43wjkFDTNJjfqKY+ZY0iN6DlVPuSUDboyvbLbvDuf+zmcSY2ijFYoVv1s0+P3csBiG0zXa77c3DWq97j2i3s=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=r5/iUgL09RJK6WKifG6s6DOa6jDb3+QyMuclggS9aU0=;
+	b=Y1KCTSO4JB2Doz2nmVMLfKoz+r0EQxAq+gYoHGZXqvPXCT0mGRZDywZEZRoz9311tm43dTuZoGPmpZjkh2jazaj46gvMoh7juipwzZ2A8MY5Xj1mu7G0oCk2vrCsLZaW5K1yYMFNQT3KLOdDEpcrpdoC/5TwZRDqAq6RE9DQtMQ=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=yJbQmL+TOmkpM0cLVkYWJb1/IVWYDpFb9n/hCp+37zE=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250924_021504_202478_6A9E7901 
-X-CRM114-Status: GOOD (  30.32  )
+X-CRM114-CacheID: sfid-20250924_025548_174862_6484647F 
+X-CRM114-Status: GOOD (  39.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,341 +90,163 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Dmitry,
-
-On 9/12/2025 7:03 PM, Dmitry Baryshkov wrote:
-> On Fri, Sep 12, 2025 at 04:58:39PM +0800, Damon Ding wrote:
->> Apply drm_bridge_connector helper for Analogix DP driver.
->>
->> The following changes have been made:
->> - Apply drm_bridge_connector helper to get rid of &drm_connector_funcs
->>    and &drm_connector_helper_funcs.
->> - Remove unnecessary parameter struct drm_connector* for callback
->>    &analogix_dp_plat_data.attach.
->> - Remove &analogix_dp_device.connector.
->> - Convert analogix_dp_atomic_check()/analogix_dp_detect() to
->>    &drm_bridge_funcs.atomic_check()/&drm_bridge_funcs.detect().
->> - Split analogix_dp_get_modes() into &drm_bridge_funcs.get_modes() and
->>    &drm_bridge_funcs.edid_read().
->>
->> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
->>
->> ------
->>
->> Changes in v2:
->> - For &drm_bridge.ops, remove DRM_BRIDGE_OP_HPD and add
->>    DRM_BRIDGE_OP_EDID.
->> - Add analogix_dp_bridge_edid_read().
->> - Move &analogix_dp_plat_data.skip_connector deletion to the previous
->>    patches.
->>
->> Changes in v3:
->> - Rebase with the new devm_drm_bridge_alloc() related commit
->>    48f05c3b4b70 ("drm/bridge: analogix_dp: Use devm_drm_bridge_alloc()
->>    API").
->> - Expand the commit message.
->> - Call drm_bridge_get_modes() in analogix_dp_bridge_get_modes() if the
->>    bridge is available.
->> - Remove unnecessary parameter struct drm_connector* for callback
->>    &analogix_dp_plat_data.attach.
->> - In order to decouple the connector driver and the bridge driver, move
->>    the bridge connector initilization to the Rockchip and Exynos sides.
->>
->> Changes in v4:
->> - Expand analogix_dp_bridge_detect() parameters to &drm_bridge and
->>    &drm_connector.
->> - Rename the &analogix_dp_plat_data.bridge to
->>    &analogix_dp_plat_data.next_bridge.
->>
->> Changes in v5:
->> - Set the flag fo drm_bridge_attach() to DRM_BRIDGE_ATTACH_NO_CONNECTOR
->>    for next bridge attachment of Exynos side.
->> - Distinguish the &drm_bridge->ops of Analogix bridge based on whether
->>    the downstream device is a panel, a bridge or neither.
->> - Remove the calls to &analogix_dp_plat_data.get_modes().
->> ---
->>   .../drm/bridge/analogix/analogix_dp_core.c    | 151 ++++++++----------
->>   .../drm/bridge/analogix/analogix_dp_core.h    |   1 -
->>   drivers/gpu/drm/exynos/exynos_dp.c            |  25 +--
->>   .../gpu/drm/rockchip/analogix_dp-rockchip.c   |  11 +-
->>   include/drm/bridge/analogix_dp.h              |   3 +-
->>   5 files changed, 95 insertions(+), 96 deletions(-)
->>
->> diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
->> index 9bf91d7595d6..156114170c4d 100644
->> --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
->> +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
->> @@ -856,44 +856,38 @@ static int analogix_dp_disable_psr(struct analogix_dp_device *dp)
->>   	return analogix_dp_send_psr_spd(dp, &psr_vsc, true);
->>   }
->>   
->> -static int analogix_dp_get_modes(struct drm_connector *connector)
->> +static int analogix_dp_bridge_get_modes(struct drm_bridge *bridge, struct drm_connector *connector)
->>   {
->> -	struct analogix_dp_device *dp = to_dp(connector);
->> -	const struct drm_edid *drm_edid;
->> +	struct analogix_dp_device *dp = to_dp(bridge);
->>   	int num_modes = 0;
->>   
->> -	if (dp->plat_data->panel) {
->> +	if (dp->plat_data->panel)
->>   		num_modes += drm_panel_get_modes(dp->plat_data->panel, connector);
->> -	} else {
->> -		drm_edid = drm_edid_read_ddc(connector, &dp->aux.ddc);
->>   
->> -		drm_edid_connector_update(&dp->connector, drm_edid);
->> -
->> -		if (drm_edid) {
->> -			num_modes += drm_edid_connector_add_modes(&dp->connector);
->> -			drm_edid_free(drm_edid);
->> -		}
->> -	}
->> +	if (dp->plat_data->next_bridge)
->> +		num_modes += drm_bridge_get_modes(dp->plat_data->next_bridge, connector);
-> 
-> This will be already handled by drm_bridge_connector, it will use the
-> last bridge in chain which implements OP_EDID or OP_MODES (with OP_EDID
-> having higher priority).
-> 
-
-Indeed, I will keep the drm_panel_get_modes() and remove 
-drm_bridge_get_modes() in this commit.
-
->>   
->>   	return num_modes;
->>   }
->>   
->> -static struct drm_encoder *
->> -analogix_dp_best_encoder(struct drm_connector *connector)
->> +static const struct drm_edid *analogix_dp_bridge_edid_read(struct drm_bridge *bridge,
->> +							   struct drm_connector *connector)
->>   {
->> -	struct analogix_dp_device *dp = to_dp(connector);
->> +	struct analogix_dp_device *dp = to_dp(bridge);
->> +	const struct drm_edid *drm_edid = NULL;
->>   
->> -	return dp->encoder;
->> -}
->> +	drm_edid = drm_edid_read_ddc(connector, &dp->aux.ddc);
-> 
-> return drm_edid_read_ddc(...);
-> 
-
-Will do in v6.
-
->>   
->> +	return drm_edid;
->> +}
->>   
->> -static int analogix_dp_atomic_check(struct drm_connector *connector,
->> -				    struct drm_atomic_state *state)
->> +static int analogix_dp_bridge_atomic_check(struct drm_bridge *bridge,
->> +					   struct drm_bridge_state *bridge_state,
->> +					   struct drm_crtc_state *crtc_state,
->> +					   struct drm_connector_state *conn_state)
->>   {
->> -	struct analogix_dp_device *dp = to_dp(connector);
->> -	struct drm_display_info *di = &connector->display_info;
->> -	struct drm_connector_state *conn_state;
->> -	struct drm_crtc_state *crtc_state;
->> +	struct analogix_dp_device *dp = to_dp(bridge);
->> +	struct drm_display_info *di = &conn_state->connector->display_info;
->>   	u32 mask = DRM_COLOR_FORMAT_YCBCR444 | DRM_COLOR_FORMAT_YCBCR422;
->>   
->>   	if (is_rockchip(dp->plat_data->dev_type)) {
->> @@ -905,35 +899,18 @@ static int analogix_dp_atomic_check(struct drm_connector *connector,
->>   		}
->>   	}
->>   
->> -	conn_state = drm_atomic_get_new_connector_state(state, connector);
->> -	if (WARN_ON(!conn_state))
->> -		return -ENODEV;
->> -
->>   	conn_state->self_refresh_aware = true;
->>   
->> -	if (!conn_state->crtc)
->> -		return 0;
->> -
->> -	crtc_state = drm_atomic_get_new_crtc_state(state, conn_state->crtc);
->> -	if (!crtc_state)
->> -		return 0;
->> -
->>   	if (crtc_state->self_refresh_active && !dp->psr_supported)
->>   		return -EINVAL;
->>   
->>   	return 0;
->>   }
->>   
->> -static const struct drm_connector_helper_funcs analogix_dp_connector_helper_funcs = {
->> -	.get_modes = analogix_dp_get_modes,
->> -	.best_encoder = analogix_dp_best_encoder,
->> -	.atomic_check = analogix_dp_atomic_check,
->> -};
->> -
->>   static enum drm_connector_status
->> -analogix_dp_detect(struct drm_connector *connector, bool force)
->> +analogix_dp_bridge_detect(struct drm_bridge *bridge, struct drm_connector *connector)
->>   {
->> -	struct analogix_dp_device *dp = to_dp(connector);
->> +	struct analogix_dp_device *dp = to_dp(bridge);
->>   	enum drm_connector_status status = connector_status_disconnected;
->>   
->>   	if (dp->plat_data->panel)
->> @@ -945,21 +922,11 @@ analogix_dp_detect(struct drm_connector *connector, bool force)
->>   	return status;
->>   }
->>   
->> -static const struct drm_connector_funcs analogix_dp_connector_funcs = {
->> -	.fill_modes = drm_helper_probe_single_connector_modes,
->> -	.detect = analogix_dp_detect,
->> -	.destroy = drm_connector_cleanup,
->> -	.reset = drm_atomic_helper_connector_reset,
->> -	.atomic_duplicate_state = drm_atomic_helper_connector_duplicate_state,
->> -	.atomic_destroy_state = drm_atomic_helper_connector_destroy_state,
->> -};
->> -
->>   static int analogix_dp_bridge_attach(struct drm_bridge *bridge,
->>   				     struct drm_encoder *encoder,
->>   				     enum drm_bridge_attach_flags flags)
->>   {
->>   	struct analogix_dp_device *dp = to_dp(bridge);
->> -	struct drm_connector *connector = NULL;
->>   	int ret = 0;
->>   
->>   	if (flags & DRM_BRIDGE_ATTACH_NO_CONNECTOR) {
->> @@ -967,31 +934,8 @@ static int analogix_dp_bridge_attach(struct drm_bridge *bridge,
->>   		return -EINVAL;
->>   	}
->>   
->> -	if (!dp->plat_data->next_bridge) {
->> -		connector = &dp->connector;
->> -		connector->polled = DRM_CONNECTOR_POLL_HPD;
->> -
->> -		ret = drm_connector_init(dp->drm_dev, connector,
->> -					 &analogix_dp_connector_funcs,
->> -					 DRM_MODE_CONNECTOR_eDP);
->> -		if (ret) {
->> -			DRM_ERROR("Failed to initialize connector with drm\n");
->> -			return ret;
->> -		}
->> -
->> -		drm_connector_helper_add(connector,
->> -					 &analogix_dp_connector_helper_funcs);
->> -		drm_connector_attach_encoder(connector, encoder);
->> -	}
->> -
->> -	/*
->> -	 * NOTE: the connector registration is implemented in analogix
->> -	 * platform driver, that to say connector would be exist after
->> -	 * plat_data->attch return, that's why we record the connector
->> -	 * point after plat attached.
->> -	 */
->>   	if (dp->plat_data->attach) {
->> -		ret = dp->plat_data->attach(dp->plat_data, bridge, connector);
->> +		ret = dp->plat_data->attach(dp->plat_data, bridge);
->>   		if (ret) {
->>   			DRM_ERROR("Failed at platform attach func\n");
->>   			return ret;
->> @@ -1095,14 +1039,21 @@ static int analogix_dp_set_bridge(struct analogix_dp_device *dp)
->>   }
->>   
->>   static void analogix_dp_bridge_mode_set(struct drm_bridge *bridge,
->> +					struct drm_atomic_state *state,
->>   					const struct drm_display_mode *mode)
->>   {
->>   	struct analogix_dp_device *dp = to_dp(bridge);
->> -	struct drm_display_info *display_info = &dp->connector.display_info;
->>   	struct video_info *video = &dp->video_info;
->>   	struct device_node *dp_node = dp->dev->of_node;
->> +	struct drm_connector *connector;
->> +	struct drm_display_info *display_info;
->>   	int vic;
->>   
->> +	connector = drm_atomic_get_new_connector_for_encoder(state, bridge->encoder);
->> +	if (!connector)
->> +		return;
->> +	display_info = &connector->display_info;
->> +
->>   	/* Input video interlaces & hsync pol & vsync pol */
->>   	video->interlaced = !!(mode->flags & DRM_MODE_FLAG_INTERLACE);
->>   	video->v_sync_polarity = !!(mode->flags & DRM_MODE_FLAG_NVSYNC);
->> @@ -1186,7 +1137,7 @@ static void analogix_dp_bridge_atomic_enable(struct drm_bridge *bridge,
->>   	new_crtc_state = drm_atomic_get_new_crtc_state(old_state, crtc);
->>   	if (!new_crtc_state)
->>   		return;
->> -	analogix_dp_bridge_mode_set(bridge, &new_crtc_state->adjusted_mode);
->> +	analogix_dp_bridge_mode_set(bridge, old_state, &new_crtc_state->adjusted_mode);
->>   
->>   	old_crtc_state = drm_atomic_get_old_crtc_state(old_state, crtc);
->>   	/* Not a full enable, just disable PSR and continue */
->> @@ -1302,7 +1253,11 @@ static const struct drm_bridge_funcs analogix_dp_bridge_funcs = {
->>   	.atomic_enable = analogix_dp_bridge_atomic_enable,
->>   	.atomic_disable = analogix_dp_bridge_atomic_disable,
->>   	.atomic_post_disable = analogix_dp_bridge_atomic_post_disable,
->> +	.atomic_check = analogix_dp_bridge_atomic_check,
->>   	.attach = analogix_dp_bridge_attach,
->> +	.get_modes = analogix_dp_bridge_get_modes,
->> +	.edid_read = analogix_dp_bridge_edid_read,
->> +	.detect = analogix_dp_bridge_detect,
->>   };
->>   
->>   static int analogix_dp_dt_parse_pdata(struct analogix_dp_device *dp)
->> @@ -1532,6 +1487,7 @@ EXPORT_SYMBOL_GPL(analogix_dp_resume);
->>   
->>   int analogix_dp_bind(struct analogix_dp_device *dp, struct drm_device *drm_dev)
->>   {
->> +	struct drm_bridge *bridge = &dp->bridge;
->>   	int ret;
->>   
->>   	dp->drm_dev = drm_dev;
->> @@ -1545,7 +1501,23 @@ int analogix_dp_bind(struct analogix_dp_device *dp, struct drm_device *drm_dev)
->>   		return ret;
->>   	}
->>   
->> -	ret = drm_bridge_attach(dp->encoder, &dp->bridge, NULL, 0);
->> +	if (dp->plat_data->panel)
->> +		/* If the next is a panel, the EDID parsing is checked by the panel driver */
->> +		bridge->ops = DRM_BRIDGE_OP_MODES | DRM_BRIDGE_OP_DETECT;
->> +	else if (dp->plat_data->next_bridge)
->> +		/* If the next is a bridge, the supported operations depend on the next bridge */
->> +		bridge->ops = 0;
-> 
-> And what if the next bridge is dp_connector without a separate HPD pin?
-
-This case was indeed not taken into account.
-
-If the next is a bridge, it should be better to set DRM_BRIDGE_OP_DETECT 
-and return connector_status_connected in analogix_dp_bridge_detect(). 
-This ensures the connection status remains connected for both the 
-dp-connector and the bridges without DRM_BRIDGE_OP_DETECT.
-
-> 
->> +	else
->> +		/* In DP mode, the EDID parsing and HPD detection should be supported */
->> +		bridge->ops = DRM_BRIDGE_OP_EDID | DRM_BRIDGE_OP_DETECT;
->> +
->> +	bridge->of_node = dp->dev->of_node;
->> +	bridge->type = DRM_MODE_CONNECTOR_eDP;
->> +	ret = devm_drm_bridge_add(dp->dev, &dp->bridge);
->> +	if (ret)
->> +		goto err_unregister_aux;
->> +
->> +	ret = drm_bridge_attach(dp->encoder, bridge, NULL, 0);
->>   	if (ret) {
->>   		DRM_ERROR("failed to create bridge (%d)\n", ret);
->>   		goto err_unregister_aux;
-> 
-
-Best regards,
-Damon
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gOS8yMy8yMDI1IDY6NDAgUE0sIERtaXRyeSBCYXJ5c2hrb3Ygd3JvdGU6Cgo+IE9uIFR1ZSwg
+U2VwIDIzLCAyMDI1IGF0IDA1OjA3OjI1UE0gKzA4MDAsIENoYW95aSBDaGVuIHdyb3RlOgo+PiBP
+biA5LzIzLzIwMjUgMTE6MTEgQU0sIERtaXRyeSBCYXJ5c2hrb3Ygd3JvdGU6Cj4+Cj4+PiBPbiBU
+dWUsIFNlcCAyMywgMjAyNSBhdCAwOTozNDozOUFNICswODAwLCBDaGFveWkgQ2hlbiB3cm90ZToK
+Pj4+PiBPbiA5LzIzLzIwMjUgOToxMCBBTSwgRG1pdHJ5IEJhcnlzaGtvdiB3cm90ZToKPj4+Pgo+
+Pj4+PiBPbiBNb24sIFNlcCAyMiwgMjAyNSBhdCAwOToyMDozM0FNICswODAwLCBDaGFveWkgQ2hl
+biB3cm90ZToKPj4+Pj4+IEZyb206IENoYW95aSBDaGVuIDxjaGFveWkuY2hlbkByb2NrLWNoaXBz
+LmNvbT4KPj4+Pj4+Cj4+Pj4+PiBBZGQgZGVmYXVsdCBEUk0gQVVYIEhQRCBicmlkZ2UgZGV2aWNl
+IHdoZW4gcmVnaXN0ZXIgRGlzcGxheVBvcnQKPj4+Pj4+IGFsdG1vZGUuIFRoYXQgbWFrZXMgaXQg
+cmVkdW5kYW50IGZvciBlYWNoIFR5cGUtQyBkcml2ZXIgdG8gaW1wbGVtZW50Cj4+Pj4+PiBhIHNp
+bWlsYXIgcmVnaXN0cmF0aW9uIHByb2Nlc3MgaW4gZW1iZWRkZWQgc2NlbmFyaW9zLgo+Pj4+Pj4K
+Pj4+Pj4+IFNpZ25lZC1vZmYtYnk6IENoYW95aSBDaGVuIDxjaGFveWkuY2hlbkByb2NrLWNoaXBz
+LmNvbT4KPj4+Pj4+IC0tLQo+Pj4+Pj4gICAgIGRyaXZlcnMvdXNiL3R5cGVjL2FsdG1vZGVzL2Rp
+c3BsYXlwb3J0LmMgfCAyNyArKysrKysrKysrKysrKysrKysrKysrKysKPj4+Pj4+ICAgICBkcml2
+ZXJzL3VzYi90eXBlYy9hbHRtb2Rlcy9kaXNwbGF5cG9ydC5oIHwgIDIgKysKPj4+Pj4+ICAgICBk
+cml2ZXJzL3VzYi90eXBlYy9jbGFzcy5jICAgICAgICAgICAgICAgIHwgIDggKysrKysrKwo+Pj4+
+Pj4gICAgIGluY2x1ZGUvbGludXgvdXNiL3R5cGVjX2FsdG1vZGUuaCAgICAgICAgfCAgMiArKwo+
+Pj4+Pj4gICAgIDQgZmlsZXMgY2hhbmdlZCwgMzkgaW5zZXJ0aW9ucygrKQo+Pj4+Pj4KPj4+Pj4+
+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3VzYi90eXBlYy9hbHRtb2Rlcy9kaXNwbGF5cG9ydC5jIGIv
+ZHJpdmVycy91c2IvdHlwZWMvYWx0bW9kZXMvZGlzcGxheXBvcnQuYwo+Pj4+Pj4gaW5kZXggMWRj
+Yjc3ZmFmODVkLi5lMDI2ZGM2ZTU0MzAgMTAwNjQ0Cj4+Pj4+PiAtLS0gYS9kcml2ZXJzL3VzYi90
+eXBlYy9hbHRtb2Rlcy9kaXNwbGF5cG9ydC5jCj4+Pj4+PiArKysgYi9kcml2ZXJzL3VzYi90eXBl
+Yy9hbHRtb2Rlcy9kaXNwbGF5cG9ydC5jCj4+Pj4+PiBAQCAtMTQsNiArMTQsNyBAQAo+Pj4+Pj4g
+ICAgICNpbmNsdWRlIDxsaW51eC9wcm9wZXJ0eS5oPgo+Pj4+Pj4gICAgICNpbmNsdWRlIDxsaW51
+eC91c2IvcGRfdmRvLmg+Cj4+Pj4+PiAgICAgI2luY2x1ZGUgPGxpbnV4L3VzYi90eXBlY19kcC5o
+Pgo+Pj4+Pj4gKyNpbmNsdWRlIDxkcm0vYnJpZGdlL2F1eC1icmlkZ2UuaD4KPj4+Pj4+ICAgICAj
+aW5jbHVkZSA8ZHJtL2RybV9jb25uZWN0b3IuaD4KPj4+Pj4+ICAgICAjaW5jbHVkZSAiZGlzcGxh
+eXBvcnQuaCIKPj4+Pj4+IEBAIC0xODIsNiArMTgzLDEwIEBAIHN0YXRpYyBpbnQgZHBfYWx0bW9k
+ZV9zdGF0dXNfdXBkYXRlKHN0cnVjdCBkcF9hbHRtb2RlICpkcCkKPj4+Pj4+ICAgICAJCQkJZHAt
+PnBlbmRpbmdfaXJxX2hwZCA9IHRydWU7Cj4+Pj4+PiAgICAgCQl9Cj4+Pj4+PiAgICAgCX0gZWxz
+ZSB7Cj4+Pj4+PiArCQlpZiAoZHAtPnBvcnQtPmhwZF9kZXYpCj4+Pj4+PiArCQkJZHJtX2F1eF9o
+cGRfYnJpZGdlX25vdGlmeShkcC0+cG9ydC0+aHBkX2RldiwKPj4+Pj4+ICsJCQkJCQkgIGhwZCA/
+IGNvbm5lY3Rvcl9zdGF0dXNfY29ubmVjdGVkIDoKPj4+Pj4+ICsJCQkJCQkJY29ubmVjdG9yX3N0
+YXR1c19kaXNjb25uZWN0ZWQpOwo+Pj4+PiBUaGVyZSBzaG91bGQgYmUgbm8gbmVlZCBmb3IgdGhl
+c2UgY2FsbHMuIE9uY2UgdGhlIEhQRCBicmlkZ2UgaXMgYWRkZWQgdG8KPj4+Pj4gYSBjb3JyZWN0
+IGZ3bm9kZSwgdGhlIGRybV9jb25uZWN0b3Jfb29iX2hvdHBsdWdfZXZlbnQoKSBjYWxscyBzaG91
+bGQKPj4+Pj4gZGVsaXZlciB0aGUgc2lnbmFsIGFzIGV4cGVjdGVkLgo+Pj4+IEl0IHNlZW1zIHRo
+YXQgb25seSBkcm1fYnJpZGdlX2Nvbm5lY3RvciBjYW4gZG8gdGhpcy4gSSdtIG5vdCBzdXJlIGlm
+IEkgcmVtZW1iZXIgY29ycmVjdGx5LiBJJ2xsIGdpdmUgaXQgYSB0cnkuCj4+PiBPdGhlciBjb25u
+ZWN0b3JzIGNhbiBpbXBsZW1lbnQgdGhlIC5vb2JfaG90cGx1Z19ldmVudCBjYWxsLiBDYWxsaW5n
+Cj4+PiBkcm1fYnJpZGdlX2hwZF9ub3RpZnkoKSBhbHNvIGRlcGVuZHMgb24gdGhlIGNvbm5lY3Rv
+ciBzZXR0aW5nIHRoZQo+Pj4gY2FsbGJhY2tzIHZpYSBkcm1fYnJpZGdlX2hwZF9lbmFibGUoKSwg
+YSBzdGVwIHdoaWNoIGlzIGRvbmUgYnkgb25seSBhCj4+PiBmZXcgZHJpdmVycy4KPj4gSG1tLCBs
+ZXQncyBnbyBvdmVyIHRoaXMgYWdhaW4uIEZpcnN0LCBkcm1fY29ubmVjdG9yX29vYl9ob3RwbHVn
+X2V2ZW50KCkgcmVxdWlyZXMgYSBjb25uZWN0b3IgZndub2RlLgo+Pgo+PiBPbiB0aGUgUXVhbGNv
+bW0gcGxhdGZvcm1zLCB0aGUgZndub2RlIGNvcnJlc3BvbmRzIHRvIHRoZSBVU0ItQyBjb250cm9s
+bGVyIGRldmljZSBub2RlLCBzbwo+Pgo+PiBkcm1fY29ubmVjdG9yX29vYl9ob3RwbHVnX2V2ZW50
+KGRwLT5jb25uZWN0b3JfZndub2RlLCAuLikgY2FuIGhhbmRsZSB0aGVtIGRpcmVjdGx5Lgo+Pgo+
+PiBCdXQgb3VyIHBsYXRmb3JtIGRvZXNuJ3QgdXNlIHRoZSBVU0ItQyBjb250cm9sbGVyIGRldmlj
+ZSBub2RlIGFzIGRybSBjb25uZWN0b3IgZndub2RlIDooCj4gVGhpcyBzb3VuZHMgbGlrZSBhbiBp
+c3N1ZSB0byBiZSBmaXhlZC4gQWx0ZXJuYXRpdmUgb3B0aW9uIHdvdWxkIGJlIG1ha2UKPiB0aGUg
+QWx0TW9kZSBjb2RlIGZpbmQgeW91ciBmd25vZGUgYW5kIHJlcG9ydCBPT0IgZXZlbnRzIGFnYWlu
+c3QgaXQuCj4gQnV0Li4uIEkgcmVhbGxseSB0aGluayB0aGF0IHVzaW5nIGNvbm5lY3RvcidzIGZ3
+bm9kZSBpcyB0aGUgY2xlYW5lc3QKPiBzb2x1dGlvbi4gSW4gdGhlIGVuZCwgeW91ciBmaW5hbCAn
+ZGlzcGxheScgY29ubmVjdG9yIGlzIHRoZSBVU0ItQwo+IGNvbm5lY3RvciBwcmVzZW50IG9uIHRo
+ZSBib2FyZC4gSWYgeW91ciBkaXNwbGF5IGhhcyBhIFVTQi1DIGNvbm5lY3RvciwKPiB0aGF0IHdp
+bGwgYmUgdGhlIHNvY2tldCB0aGF0IGdldHMgdGhlIGNhYmxlIGZyb20gdGhlIGRpc3BsYXksIGV0
+Yy4KPgo+PiBTbyBJIHVzZSBkcm1fZHBfaHBkX2JyaWRnZV9yZWdpc3RlcigpIGFuZCBkcm1fYXV4
+X2hwZF9icmlkZ2Vfbm90aWZ5KCkgaGVyZSwgSSB0aGluayBpdCBqdXN0IGNyZWF0ZSBhIHNpbXBs
+ZSBocGQgYnJpZGdlIHRvIGJyaWRnZV9saXN0Lgo+Pgo+PiBCdXQgZHJtX2Nvbm5lY3Rvcl9vb2Jf
+aG90cGx1Z19ldmVudCgpIHVzZSBjb25uZWN0b3JfbGlzdCBpbnN0ZWFkIG9mIGJyaWRnZV9saXN0
+Lgo+IFRoZSBPT0IgaW50ZXJmYWNlIHdhcyBjcmVhdGVkIGJ5IHg4NiBwZW9wbGUsIGJ1dCB3ZSBz
+dWNjZXNzZnVsbHkgcmV1c2VkCj4gaXQuIEkgdGhpbmsgdGhhdCBhZGRpZ24gZHJtX2JyaWRnZV9o
+cGRfbm90aWZ5KCkgY2FsbHMganVzdCBkdXBsaWNhdGVzCj4gdGhlIGVmZm9ydCB1bm5lY2Vzc2Fy
+aWx5LgoKWWVzLCB0aGF0IGNvbW1pdCBjb21tZW50IHNhaWQswqAgIkl0IHdhcyBwcm9wb3NlZCB0
+byBhZGQgdGhlIGRpc3BsYXlwb3J0IE9GIHByb3BlcnR5IHRvIHRoZSBEVCBiaW5kaW5ncywgYnV0
+IGl0IHdhcyByZWplY3RlZCBpbiBmYXZvciBvZiBwcm9wZXJseSBkZXNjcmliaW5nIHRoZSBlbGVj
+dHJpY2FsIHNpZ25hbCBwYXRoIHVzaW5nIG9mX2dyYXBoLiIKCkJ1dCBpbiB0aGUgZW1iZWRkZWQg
+Y2FzZSwgd2UgZG9uJ3Qgc2VlbSB0byBoYXZlIHRoZSBvcHBvcnR1bml0eSB0byBkZXNjcmliZSB0
+aGlzIGtpbmQgb2Ygb2ZfZ3JhcGggcmVsYXRpb25zaGlwIGJldHdlZW4gZHJtIGNvbm5lY3RvciBh
+bmQgdXNiIGNvbm5lY3RvciBpbiB1c2ItY29ubmVjdG9yLnlhbWwuIE9uIHRoZSBRdWFsY29tbSBw
+bGF0Zm9ybSwgdGhlIERSTSBjb25uZWN0b3IgZndub2RlIHRvIGNvcnJlc3BvbmQgdG8gdGhlIFVT
+Qi1DIGNvbnRyb2xsZXIsIHdoaWNoIGlzIGEgY2xlYW4gc29sdXRpb24uCgpIb3dldmVyLCBvbiBv
+dXIgcGxhdGZvcm0gd2UgYXJlIHVzaW5nIGV4dGVybmFsIFVTQi1DIGNvbnRyb2xsZXJzLiBJbiB2
+NCBhbmQgdGhlIHByZXZpb3VzIHZlcnNpb25zLCBJIGZvY3VzZWQgb24gZGlyZWN0bHkgbGlua2lu
+ZyB0aGUgVVNCLUMgY29udHJvbGxlciB3aXRoIHRoZSBEUCBjb250cm9sbGVyLiBSZWZlcnJpbmcg
+dG8geW91ciBzdWdnZXN0IGluIFswXSwgSSB0aGluayBtYXliZSB0aGlzIGNhbiBiZSBhY2hpZXZl
+ZCB3aXRoIHRoZSBoZWxwIG9mIHRoZSBkcm0gYnJpZGdlIGNoYWluLiBBc3N1bWluZyB0aGUgYnJp
+ZGdlIGNoYWluIGlzIGxpa2UgdGhpczoKCgpPdGhlciBiaXJkZ2VzIC4uLiAtPlBIWSBkcm0gYXV4
+IGhwZCBicmlkZ2UgLT4gQ0ROLURQIGJyaWRnZSAtPiBEUCB0byBIRE1JIGJyaWRnZSBvciBvdGhl
+ciBicmlkZ2Ugb3Igbm90aGluZy4uLgoKCldlIGNhbiB1c2UgZHJtX2JyaWRnZV9jaGFpbl9nZXRf
+Zmlyc3RfYnJpZGdlKCkgdG8gZ2V0IGZpcnN0IGJyaWRnZS4gSW4gdGhpcyBjYXNlLCB0aGF0IGlz
+IGRybSBhdXggaHBkIGJyaWRnZSBmcm9tIFVTQi1DIGNvbnRyb2xsZXIgZGV2aWNlLiBOZXh0LCB3
+ZSBjYW4gb2J0YWluIHRoZSBmd25vZGUgY29ycmVzcG9uZGluZyB0byB0aGlzIGJyaWRnZSwgYW5k
+IG9uY2Ugd2UgaGF2ZSBpdCwgd2UgY2FuIHNldCB0aGUgY29ubmVjdG9yJ3MgZndub2RlIHRvIGl0
+LiBJbiB0aGlzIHdheSwgZHJtX2Nvbm5lY3Rvcl9vb2JfaG90cGx1Z19ldmVudCgpIGNhbiB0YWtl
+IGVmZmVjdC4KCgpXb3VsZCB0aGlzIGJlIGEgZ29vZCBpZGVhPyBUaGFua3MuCgoKWzBdIGh0dHBz
+Oi8vbG9yZS5rZXJuZWwub3JnL2FsbC9wM2tncW4zZXV1bWh5c2NraDR5eXFhdnF2NXk2YW55NXpj
+cmdrcmNnM2o1YTd6N2N5d0BsZnBrbGE1cDNwdXQvCgoKPgo+Pgo+Pgo+Pj4+Pj4gICAgIAkJZHJt
+X2Nvbm5lY3Rvcl9vb2JfaG90cGx1Z19ldmVudChkcC0+Y29ubmVjdG9yX2Z3bm9kZSwKPj4+Pj4+
+ICAgICAJCQkJCQlocGQgPyBjb25uZWN0b3Jfc3RhdHVzX2Nvbm5lY3RlZCA6Cj4+Pj4+PiAgICAg
+CQkJCQkJICAgICAgY29ubmVjdG9yX3N0YXR1c19kaXNjb25uZWN0ZWQpOwo+Pj4+Pj4gQEAgLTIw
+Niw2ICsyMTEsOSBAQCBzdGF0aWMgaW50IGRwX2FsdG1vZGVfY29uZmlndXJlZChzdHJ1Y3QgZHBf
+YWx0bW9kZSAqZHApCj4+Pj4+PiAgICAgCSAqIGNvbmZpZ3VyYXRpb24gaXMgY29tcGxldGUgdG8g
+c2lnbmFsIEhQRC4KPj4+Pj4+ICAgICAJICovCj4+Pj4+PiAgICAgCWlmIChkcC0+cGVuZGluZ19o
+cGQpIHsKPj4+Pj4+ICsJCWlmIChkcC0+cG9ydC0+aHBkX2RldikKPj4+Pj4+ICsJCQlkcm1fYXV4
+X2hwZF9icmlkZ2Vfbm90aWZ5KGRwLT5wb3J0LT5ocGRfZGV2LAo+Pj4+Pj4gKwkJCQkJCSAgY29u
+bmVjdG9yX3N0YXR1c19jb25uZWN0ZWQpOwo+Pj4+Pj4gICAgIAkJZHJtX2Nvbm5lY3Rvcl9vb2Jf
+aG90cGx1Z19ldmVudChkcC0+Y29ubmVjdG9yX2Z3bm9kZSwKPj4+Pj4+ICAgICAJCQkJCQljb25u
+ZWN0b3Jfc3RhdHVzX2Nvbm5lY3RlZCk7Cj4+Pj4+PiAgICAgCQlzeXNmc19ub3RpZnkoJmRwLT5h
+bHQtPmRldi5rb2JqLCAiZGlzcGxheXBvcnQiLCAiaHBkIik7Cj4+Pj4+PiBAQCAtMzkxLDYgKzM5
+OSw5IEBAIHN0YXRpYyBpbnQgZHBfYWx0bW9kZV92ZG0oc3RydWN0IHR5cGVjX2FsdG1vZGUgKmFs
+dCwKPj4+Pj4+ICAgICAJCQlkcC0+ZGF0YS5zdGF0dXMgPSAwOwo+Pj4+Pj4gICAgIAkJCWRwLT5k
+YXRhLmNvbmYgPSAwOwo+Pj4+Pj4gICAgIAkJCWlmIChkcC0+aHBkKSB7Cj4+Pj4+PiArCQkJCWlm
+IChkcC0+cG9ydC0+aHBkX2RldikKPj4+Pj4+ICsJCQkJCWRybV9hdXhfaHBkX2JyaWRnZV9ub3Rp
+ZnkoZHAtPnBvcnQtPmhwZF9kZXYsCj4+Pj4+PiArCQkJCQkJCQkgIGNvbm5lY3Rvcl9zdGF0dXNf
+ZGlzY29ubmVjdGVkKTsKPj4+Pj4+ICAgICAJCQkJZHJtX2Nvbm5lY3Rvcl9vb2JfaG90cGx1Z19l
+dmVudChkcC0+Y29ubmVjdG9yX2Z3bm9kZSwKPj4+Pj4+ICAgICAJCQkJCQkJCWNvbm5lY3Rvcl9z
+dGF0dXNfZGlzY29ubmVjdGVkKTsKPj4+Pj4+ICAgICAJCQkJZHAtPmhwZCA9IGZhbHNlOwo+Pj4+
+Pj4gQEAgLTc1MSw2ICs3NjIsMTggQEAgc3RhdGljIGNvbnN0IHN0cnVjdCBhdHRyaWJ1dGVfZ3Jv
+dXAgKmRpc3BsYXlwb3J0X2dyb3Vwc1tdID0gewo+Pj4+Pj4gICAgIAlOVUxMLAo+Pj4+Pj4gICAg
+IH07Cj4+Pj4+PiArdm9pZCBkcF9hbHRtb2RlX2hwZF9kZXZpY2VfcmVnaXN0ZXIoc3RydWN0IHR5
+cGVjX2FsdG1vZGUgKmFsdCkKPj4+Pj4+ICt7Cj4+Pj4+PiArCWlmIChhbHQtPnN2aWQgIT0gVVNC
+X1RZUEVDX0RQX1NJRCkKPj4+Pj4+ICsJCXJldHVybjsKPj4+Pj4+ICsKPj4+Pj4+ICsJYWx0LT5o
+cGRfZGV2ID0gZHJtX2RwX2hwZF9icmlkZ2VfcmVnaXN0ZXIoYWx0LT5kZXYucGFyZW50LT5wYXJl
+bnQsCj4+Pj4+PiArCQkJCQkJICBkZXZfb2Zfbm9kZShhbHQtPmRldi5wYXJlbnQtPnBhcmVudCkp
+Owo+Pj4+PiBUaGlzIG5lZWRzIGF0IGxlYXN0IGEgY29tbWVudCwgd2hhdCBpcyBkZXYucGFyZW50
+LT5wYXJlbnQuIEFsc28sIHRoZQo+Pj4+PiBvZl9ub2RlIGlzIG5vdCBjb3JyZWN0IGhlcmUuIEl0
+IHNob3VsZCBiZSBhIG5vZGUgb2YgdGhlIGNvbm5lY3RvciwKPj4+Pj4gcmF0aGVyIHRoYW4gdGhl
+IGRldmljZSBpdHNlbGYuIENvbnNpZGVyIFVTQi1DIGNvbnRyb2xsZXJzIHdoaWNoIGhhbmRsZQo+
+Pj4+PiBzZXZlcmFsIFVTQi1DIGNvbm5lY3RvcnMgKGUuZy4gVUNTSSkuIFRoZSBEUk0gY29yZSB3
+b24ndCBiZSBhYmxlIHRvCj4+Pj4+IGlkZW50aWZ5IHRoZSBjb3JyZWN0IGJyaWRnZS4KPj4+PiBJ
+IHRoaW5rwqAgYWx0LmRldi0+cGFyZW50LT5wYXJlbnQgaXMgdGhlIGNvbm5lY3RvciBkZXZpY2Uu
+IEFtIEkgbWlzc2luZyBzb21ldGhpbmc/Cj4+PiBBcyBJIHdyb3RlLCBpdCBuZWVkcyBhIGNvbW1l
+bnQgKGluIHRoZSBzb3VyY2UgZmlsZSkuIE5vLCBpdCdzIG5vdCBhCj4+PiBjb25uZWN0b3IgZGV2
+aWNlLCBpdCdzIGEgVVNCLUMgY29udHJvbGxlciBkZXZpY2UuIFRoZXJlIGlzIG5vIGd1YXJhbnRl
+ZQo+Pj4gdGhhdCB0aGVyZSBpcyBhIHNlcGFyYXRlIHN0cnVjdCBkZXZpY2UgZm9yIHRoZSBVU0It
+QyBjb25uZWN0b3IuIE9uCj4+PiBRdWFsY29tbSBwbGF0Zm9ybXMsIHRoZSBkZXZpY2Ugd2lsbCBw
+b2ludCB0byB0aGUgVVNCLUMgY29udHJvbGxlciAoVENQTQo+Pj4gb3IgVUNTSSksIHdoaWNoIGNv
+bnRhaW4gdXNiLWMtY29ubmVjdG9yKHMpIGFzIGNoaWxkIG5vZGUocykgaW4gRFQuCj4+IFRoYW5r
+cyBmb3IgdGhlIGNsYXJpZmljYXRpb24uCj4gSSB0aGluayBpdCBzaG91bGQgYmUgZmluZSB0byBw
+YXNzIHRoZSBmd25vZGUgb2YgdGhlIHVzYi1jIGNvbm5lY3RvciB0aGF0Cj4gaXMgb3V0c2lkZSBv
+ZiB0aGUgVVNCLUMgY29udHJvbGxlciBkZXZpY2UgKGlmIHRoYXQncyB3aGF0IHlvdXIgcGxhdGZv
+cm0KPiB1c2VzKS4gQnV0IEkgdGhpbmsgdGhpcyBzaG91bGQgYmU6Cj4gLSB0aGUgdXNiLWMtY29u
+bmVjdG9yIG5vZGUKPiAtIGl0IHNob3VsZCBiZSBjb21pbmcgZnJvbSB0aGUgVHlwZS1DIGNvbnRy
+b2xsZXIgZHJpdmVyLCB5b3UgY2FuJ3QgZ3Vlc3MKPiAgICBpdCBoZXJlLgo+Cj4+Cj4+Cj4+Pj4K
+Pj4+Pj4+ICsJaWYgKElTX0VSUihhbHQtPmhwZF9kZXYpKQo+Pj4+Pj4gKwkJYWx0LT5ocGRfZGV2
+ID0gTlVMTDsKPj4+Pj4+ICt9Cj4+Pj4+PiArRVhQT1JUX1NZTUJPTF9HUEwoZHBfYWx0bW9kZV9o
+cGRfZGV2aWNlX3JlZ2lzdGVyKTsKPj4+Pj4gSGF2aW5nIHRoZSBmdW5jdGlvbiBoZXJlIHdpbGwg
+YnJpbmcgYSB0eXBlYyAtPiBkaXNwbGF5cG9ydCBkZXBlbmRlbmN5Cj4+Pj4+IGJldHdlZW4gZHJp
+dmVycyAod2hpY2ggeW91IGRpZG4ndCBkb2N1bWVudCkuIEl0IG1lYW5zIGl0IHdvbid0IGJlCj4+
+Pj4+IHBvc3NpYmxlIHRvIGJ1aWxkIHR5cGVjIGNvcmUgaW50byB0aGUga2VybmVsLCBoYXZpbmcg
+dGhlIERQIEFsdE1vZGUKPj4+Pj4gZHJpdmVyIGluIHRoZSBtb2R1bGUgKHdoaWNoIGFsc28gZG9l
+c24ndCBzb3VuZCBsaWtlIGEgZ29vZCBpZGVhKS4KPj4+PiBJdCBtYWtlIHNlbnNlLiBQZXJoYXBz
+IG1vdmluZyBpdCBpbnRvIGNsYXNzLmMgd291bGQgYmUgYSBnb29kIGlkZWEuCj4+Pj4KPj4+Pgo+
+Pj4+Pj4gKwo+Pj4+Pj4gICAgIGludCBkcF9hbHRtb2RlX3Byb2JlKHN0cnVjdCB0eXBlY19hbHRt
+b2RlICphbHQpCj4+Pj4+PiAgICAgewo+Pj4+Pj4gICAgIAljb25zdCBzdHJ1Y3QgdHlwZWNfYWx0
+bW9kZSAqcG9ydCA9IHR5cGVjX2FsdG1vZGVfZ2V0X3BhcnRuZXIoYWx0KTsKPj4+PiAtLSAKPj4+
+PiBCZXN0LAo+Pj4+IENoYW95aQo+Pj4+Cj4+Pj4KPj4+PiAtLSAKPj4+PiBsaW51eC1waHkgbWFp
+bGluZyBsaXN0Cj4+Pj4gbGludXgtcGh5QGxpc3RzLmluZnJhZGVhZC5vcmcKPj4+PiBodHRwczov
+L2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1waHkKPj4gLS0gCj4+
+IEJlc3QsCj4+IENoYW95aQo+PgotLSAKQmVzdCwKQ2hhb3lpCgoKX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0
+CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVh
+ZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
