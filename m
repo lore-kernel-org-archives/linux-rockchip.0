@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C79CCAC5AE
-	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Sep 2025 02:12:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBC84CAC5AE
+	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Sep 2025 02:19:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LnvTnRk+jwxgXzTaOmd8boyCXwfLvladBaNu+Rw/8yk=; b=NYtCLw9N3g0xed
-	GzSX96L4TIY8eJqQ5TOGcmnpry3Vryoll0Xdp18FnQMolCFYqYskwlRfesDa71NhXOlHvw067wSNo
-	n7gi/CeXu3GbaOzL4VcKZCwVxE46JD+uWbVKP030/xYbR2NogjnXgxT0mLEXoXRHbvYE2nDp5Y+J0
-	8y/bH1QxNtP/XOTNJtf3pP9+Jc60DoeKaaSi5Ld3LipwjrqdPtPLWXStNRMK8WDTFnjpAiOBaSyEw
-	LqHcEYnKREMAZ8AmzniQF0HDRO+GImyBly/s1pUpFY27FT18ZlNARIs8S0YOOKDpbfCDugOTC+CnM
-	AOFG82nSv7zmyoGTQ8hw==;
+	List-Owner; bh=EUFHdHlKJ1R4gindl+pXhCMmQJRdvCBVq49HLiNEERE=; b=McD2iCcv80bh2e
+	u3bNNl0ZZJ1AwFyhfCAMbyNctHRjh33BAzheyed4hV0p1E5CayFL1JvegqIFic4TTOdB5KW45weWV
+	yQISgd+aK0W+Mde8z7+gIgrWSRTdB6DLXlBbNJQrR4l37jJJNnk/6xBYumk+r8YRCuDIYfwjS/4Yt
+	NAvYmfAnPMlX0NROaHjsFPS4GxYd+87jyS6ab8PhEAYIzSf+DAsrTpga/GSB6GPwjK1UfL6yNaw6Y
+	8BwqgDWysYozZgdG1GuIFLBfzOx+xcmiZNX2xeIB5h1llE6UyYt0cN9qvf1ktQr1fVpguucXT19pA
+	CqPTadU3URUhy0uWAG8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1bSj-00000005GdQ-2KjM;
-	Thu, 25 Sep 2025 02:12:01 +0000
-Received: from mail-m49220.qiye.163.com ([45.254.49.220])
+	id 1v1ba2-00000005Hqf-0DBE;
+	Thu, 25 Sep 2025 02:19:34 +0000
+Received: from mail-m10104.netease.com ([154.81.10.104])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1bSh-00000005Gc1-1DUZ;
-	Thu, 25 Sep 2025 02:12:01 +0000
+	id 1v1bZz-00000005Hof-3XpN;
+	Thu, 25 Sep 2025 02:19:33 +0000
 Received: from [172.16.12.26] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 23f942a34;
-	Thu, 25 Sep 2025 10:11:53 +0800 (GMT+08:00)
-Message-ID: <7cf14078-5d4f-4ced-bdcf-182371d0fd35@rock-chips.com>
-Date: Thu, 25 Sep 2025 10:11:53 +0800
+	by smtp.qiye.163.com (Hmail) with ESMTP id 23f99a352;
+	Thu, 25 Sep 2025 10:19:27 +0800 (GMT+08:00)
+Message-ID: <be24f371-3afa-47ce-a5e8-26f3fac9b6ba@rock-chips.com>
+Date: Thu, 25 Sep 2025 10:19:26 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 13/17] drm/rockchip: analogix_dp: Apply
- &analogix_dp_plat_data.attach() to attach next bridge
+Subject: Re: [PATCH v5 15/17] drm/bridge: analogix_dp: Remove panel disabling
+ and enabling in analogix_dp_set_bridge()
 To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
 Cc: andrzej.hajda@intel.com, neil.armstrong@linaro.org, rfoss@kernel.org,
  Laurent.pinchart@ideasonboard.com, jonas@kwiboo.se,
@@ -48,24 +48,24 @@ Cc: andrzej.hajda@intel.com, neil.armstrong@linaro.org, rfoss@kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
  linux-rockchip@lists.infradead.org
 References: <20250912085846.7349-1-damon.ding@rock-chips.com>
- <20250912085846.7349-14-damon.ding@rock-chips.com>
- <2cu3ge6kjeibfznvt6c52xn2rp5zb3wk3pkb7gly34qrjlueem@7wqyowascpn5>
+ <20250912085846.7349-16-damon.ding@rock-chips.com>
+ <tywxkfjhulxsgdphngtfs24whslbkmnza7yx2sb7c4ulea6val@46pi6e2sjs6c>
 Content-Language: en-US
 From: Damon Ding <damon.ding@rock-chips.com>
-In-Reply-To: <2cu3ge6kjeibfznvt6c52xn2rp5zb3wk3pkb7gly34qrjlueem@7wqyowascpn5>
-X-HM-Tid: 0a997ea4309303a3kunm542c945b85b02
+In-Reply-To: <tywxkfjhulxsgdphngtfs24whslbkmnza7yx2sb7c4ulea6val@46pi6e2sjs6c>
+X-HM-Tid: 0a997eab1b8503a3kunm2418fa8d88dbd
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGR5LT1ZIGh1PTEMdGUpDSx5WFRQJFh
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGksfSFZLQ0NNT0tPSB1JGhhWFRQJFh
 	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
 	hVSktLVUpCS0tZBg++
 DKIM-Signature: a=rsa-sha256;
-	b=iVKD7f62uqeDZeWknCM50t4q+F59fTE4NNT58Y0093B07tMOfWOMy8AZVe6YOCr802f8Pf+EvfpvFbJEg2wVUjJcIBAH3suMh+XfmN4d3KXJXFGIQ0VcjzG3rZuDDk/5Md8wIwVl5DruEmeVZoWpbNKEhRNxy82ULkMok5Cfsmg=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=Ljhn8bif18aFps1rRdBClCGFFynJpfAeepmIW2TXY3A=;
+	b=GsGZ+ILQSnhzfvkwCAq4Z5+SIR0C9MOYar77DGQSbSeGev+Jr7L0Oq+AJf75d65bd6zyRrxMuhWK8gclELJ4evu+yYA7/9XQBUMFnRBep9EUwls+dIUpkvslnvd0hq55ReRjD8rAi0041WcrraaNBRTCVlfzPkJmY1YFlPIkZ8k=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=RPN3KyxMz8emyUFUk3HlxuaTyBLn7qeeJmHvt/BIWwI=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250924_191159_856347_B1D634E0 
-X-CRM114-Status: GOOD (  16.36  )
+X-CRM114-CacheID: sfid-20250924_191932_101344_68D41C7D 
+X-CRM114-Status: GOOD (  17.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,63 +84,63 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Hi Dmitry,
 
-On 9/12/2025 7:05 PM, Dmitry Baryshkov wrote:
-> On Fri, Sep 12, 2025 at 04:58:42PM +0800, Damon Ding wrote:
->> There may be the panel or bridge after &analogix_dp_device.bridge.
->> Add rockchip_dp_attach() to support the next bridge attachment for
->> the Rockchip side.
+On 9/12/2025 7:09 PM, Dmitry Baryshkov wrote:
+> On Fri, Sep 12, 2025 at 04:58:44PM +0800, Damon Ding wrote:
+>> The &drm_panel_funcs.enable() and &drm_panel_funcs.disable() mainly
+>> help turn on/off the backlight to make the image visible, and the
+>> backlight operations are even needless if drm_panel_of_backlight() or
+>> drm_panel_dp_aux_backlight() is applied, in which case the enabling
+>> and disabling process just add necessary delays.
+> 
+> Not necessary, it can actually be turning the panel off and on. Maybe
+> it's worth squashing this patch into the panel_bridge conversion as it
+> will point out that these functions are still being called at a correct
+> times by the DRM bridge framework.
+> 
+
+Will do in v6.
+
+>>
+>> Therefore, it should make sense to remove panel disabling and move
+>> panel enabling after analogix_dp_set_bridge() finished.
 >>
 >> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
 >> ---
->>   .../gpu/drm/rockchip/analogix_dp-rockchip.c   | 19 +++++++++++++++++++
->>   1 file changed, 19 insertions(+)
+>>   drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 7 +------
+>>   1 file changed, 1 insertion(+), 6 deletions(-)
 >>
->> diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
->> index 0784f19a2ed9..39f1ed293c75 100644
->> --- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
->> +++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
->> @@ -164,6 +164,24 @@ static int rockchip_dp_powerdown(struct analogix_dp_plat_data *plat_data)
->>   	return 0;
->>   }
+>> diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+>> index 66d0cca1f268..c98058e9c917 100644
+>> --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+>> +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+>> @@ -749,9 +749,6 @@ static int analogix_dp_commit(struct analogix_dp_device *dp)
+>>   {
+>>   	int ret;
 >>   
->> +static int rockchip_dp_attach(struct analogix_dp_plat_data *plat_data,
->> +				     struct drm_bridge *bridge)
->> +{
->> +	struct rockchip_dp_device *dp = pdata_encoder_to_dp(plat_data);
->> +	int ret;
->> +
->> +	if (plat_data->next_bridge) {
->> +		ret = drm_bridge_attach(&dp->encoder.encoder, plat_data->next_bridge, bridge,
->> +					DRM_BRIDGE_ATTACH_NO_CONNECTOR);
-> 
-> Can this be handled inside analogix_dp_bridge's attach callback?
-
-I found that the &analogix_dp_plat_data.attach() callbacks of Rockchip 
-and Exynos sides are the same. It should be nice to handle the next 
-bridge attachment in analogix_dp_bridge_attach(), which would allow us 
-to remove the &analogix_dp_bridge_attach().
-
-> 
->> +		if (ret) {
->> +			dev_err(dp->dev, "failed to attach following panel or bridge (%d)\n", ret);
->> +			return ret;
->> +		}
->> +	}
->> +
->> +	return 0;
->> +}
->> +
->>   static bool
->>   rockchip_dp_drm_encoder_mode_fixup(struct drm_encoder *encoder,
->>   				   const struct drm_display_mode *mode,
->> @@ -452,6 +470,7 @@ static int rockchip_dp_probe(struct platform_device *pdev)
->>   	dp->plat_data.dev_type = dp->data->chip_type;
->>   	dp->plat_data.power_on = rockchip_dp_poweron;
->>   	dp->plat_data.power_off = rockchip_dp_powerdown;
->> +	dp->plat_data.attach = rockchip_dp_attach;
->>   	dp->plat_data.ops = &rockchip_dp_component_ops;
+>> -	/* Keep the panel disabled while we configure video */
+>> -	drm_panel_disable(dp->plat_data->panel);
+>> -
+>>   	ret = analogix_dp_train_link(dp);
+>>   	if (ret) {
+>>   		dev_err(dp->dev, "unable to do link train, ret=%d\n", ret);
+>> @@ -771,9 +768,6 @@ static int analogix_dp_commit(struct analogix_dp_device *dp)
+>>   		return ret;
+>>   	}
 >>   
->>   	ret = rockchip_dp_of_probe(dp);
+>> -	/* Safe to enable the panel now */
+>> -	drm_panel_enable(dp->plat_data->panel);
+>> -
+>>   	/* Check whether panel supports fast training */
+>>   	ret = analogix_dp_fast_link_train_detection(dp);
+>>   	if (ret)
+>> @@ -1156,6 +1150,7 @@ static void analogix_dp_bridge_atomic_enable(struct drm_bridge *bridge,
+>>   	while (timeout_loop < MAX_PLL_LOCK_LOOP) {
+>>   		if (analogix_dp_set_bridge(dp) == 0) {
+>>   			dp->dpms_mode = DRM_MODE_DPMS_ON;
+>> +			drm_panel_enable(dp->plat_data->panel);
+>>   			return;
+>>   		}
+>>   		dev_err(dp->dev, "failed to set bridge, retry: %d\n",
 >> -- 
 >> 2.34.1
 >>
