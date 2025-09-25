@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FD28CAC5A7
-	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Sep 2025 09:31:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14631CAC5B5
+	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Sep 2025 09:31:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=z2neTEvGJHE09Am9b5HJPtlV3OYyA0YH7f1Q9fqKqTQ=; b=MDXectaBuyPAIA
-	nfp8wl5XEUYY8CUpqMZ3EVXJwqbsNOcY2wIrXuPVR5W3LaXqGjl8M7QExTLZHJNfccgkOgGKnSt3Z
-	W77JxTYv4ZXGgnoK3lwk7ydlQzvn+Lk+6DCopI6iyRbHI3b2xnhdKDHTqlOObnLCd4/jVPzVEr3TW
-	2TELqXO3WUTKRcSY2rfWsJhc36RnnmqU6BhUU2PMb/DOngdSXsHmjmSPLt23BGre6QmF3ABczgSmd
-	WISA0EmzhLak9NSa8VC6HPf4L+mWNbjYxcrBCTftzJ4yU/X+6IRpKBQ7bVUZDHMOv1OVIHbT9vmcJ
-	bTq1q9C32FcdwYoKTkFw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=43jenOoEvj2EzuRaDDd/WKHzpaQ/0tGtrXr0SgiqaU0=; b=z7RB4QUkNL4BRu
+	Qvqpef7XzoQdGcoXVpJb7pDmib1fV5tWfnCsJbiiHT4V2SYg6idNl21PWD95aTMneEq2v56/wZPBR
+	jPr3OrIAVJGM7+LwzztimcwC3FuRjkidxqhNlTEu3z9Mr1FzFLqIAFyj2DwnE6q7JOhLYvd27yEiY
+	irlNi0vRfe4VnjptwnCLvUyKfv0BubIOo+kzMhZxFtWrKjhx5xv501jB/omxUJp70qRC6Ug6mjOPO
+	f1EcoS1pJgTmNa09dzZIe5dY0RKpsWZ9rpDxbBsxB/PykXkdMYJgEzSrgy1baJo9QjW/KKp4pSAdK
+	fmVmecAzFnXWWBjTJKSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1iJf-00000007df9-0wok;
-	Thu, 25 Sep 2025 09:31:07 +0000
+	id 1v1iJh-00000007dio-0Uf2;
+	Thu, 25 Sep 2025 09:31:09 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1iJN-00000007dIU-0qpr;
-	Thu, 25 Sep 2025 09:30:50 +0000
+	id 1v1iJO-00000007dJM-05Xn;
+	Thu, 25 Sep 2025 09:30:51 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:
-	Subject:Cc:To:From:Reply-To:Content-Type:In-Reply-To:References;
-	bh=0EZWjrAJ2CRU7AyqHp2SXperS3Fl2HqgdU2yfdqsymw=; b=cbz8x5lybjSxmkU/605g3Qhewj
-	OHcUgsnwbO2GfKZJSAs9Imw5ZFficCLTTKeewIGhhht+INv2j4DDXGWCQ1bJsRuKle1vZ7DTV3qYq
-	peGbi8unU9YziTBgTdBB7bTfvCrqsYg2A5/CbIuvtYHI6WGeX3Km1LWJ4h/SJrG/nUCFGnatLIpET
-	MxBl4cAy3njoe7E+3XD0BAuC5yey3dX1qKAHlH3vLGFN8t9Dugulqa8RkuUCZ7z0DjD6s17Zbb2oD
-	1Cf3+58dsS5SKc60B/hD8tFOpDlateQSK1wY0Om13ppwiSv8P1B7JqGSQQTO+aq0mGAEvNLh5f+Nv
-	no3zZwAA==;
+	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
+	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type;
+	bh=OH1cdcIwLbHj9b9TDgmclt0bqqFEVSxJAiUw7x5ysn8=; b=ix/XOx4rI2biibVmlkMEOu85O+
+	hKapOfb+vKHXGsI04LNS7n3EBLcPBBH1tu8jLqaD3n55JdVcqBJ6XUic/+xz+cnC8as/t0YEDcQm5
+	uvbjZKKicCgtpUr2xmH0xbL1F4hq/4ZKLNpldvGMDEXU0akJCSvpskOjBVyXqyuIxGX5qGoCuYlyH
+	Kv2Jd3W60KSIUwmRIy+UmjM4ETEDcjuhv8rEHgFzGq7+N7eoYxlOYamnqIUglI7AjMXPxKOCoP8KM
+	T3a72YUXq5nLOPB8/vY63jhDZyU5cGxaB1DgjLrN8K4pY68eAlGH2brkiO7fQyLEY3mzQ+oC53Rzs
+	X31W0Iog==;
 Received: from i53875a54.versanet.de ([83.135.90.84] helo=localhost.localdomain)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1v1iJE-0001Nz-Fk; Thu, 25 Sep 2025 11:30:40 +0200
+	id 1v1iJF-0001Nz-NF; Thu, 25 Sep 2025 11:30:41 +0200
 From: Heiko Stuebner <heiko@sntech.de>
 To: heiko@sntech.de
 Cc: robh@kernel.org,
@@ -50,14 +50,16 @@ Cc: robh@kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH 0/6] Some cleanups and addition of another Qnap TSx33 device
-Date: Thu, 25 Sep 2025 11:29:17 +0200
-Message-ID: <20250925092923.2184187-1-heiko@sntech.de>
+Subject: [PATCH 1/6] arm64: dts: rockchip: move cpu_thermal node to the correct position
+Date: Thu, 25 Sep 2025 11:29:18 +0200
+Message-ID: <20250925092923.2184187-2-heiko@sntech.de>
 X-Mailer: git-send-email 2.47.2
+In-Reply-To: <20250925092923.2184187-1-heiko@sntech.de>
+References: <20250925092923.2184187-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250925_023049_259061_D097EA3E 
-X-CRM114-Status: GOOD (  12.35  )
+X-CRM114-CacheID: sfid-20250925_023050_108680_409F29B1 
+X-CRM114-Status: GOOD (  16.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,27 +76,128 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This fixes the 2nd network adapter on the TS433 and adds the TS233
-a 2-bay device being otherwise similar to the TS433.
+The &cpu_thermal node was added at the wrong position, move it to
+the correctly sorted one.
 
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+---
+ .../boot/dts/rockchip/rk3568-qnap-ts433.dts   | 96 +++++++++----------
+ 1 file changed, 48 insertions(+), 48 deletions(-)
 
-Heiko Stuebner (6):
-  arm64: dts: rockchip: move cpu_thermal node to the correct position
-  arm64: dts: rockchip: Fix the 1Ghz ethernet on Qnap TS433
-  arm64: dts: rockchip: describe mcu eeprom cells on rk3568-ts433
-  arm64: dts: rockchip: move common qnap tsx33 parts to dtsi
-  dt-bindings: arm: rockchip: add TS233 to RK3568-based QNAP NAS devices
-  arm64: dts: rockchip: add QNAP TS233 devicetree
-
- .../devicetree/bindings/arm/rockchip.yaml     |   6 +-
- arch/arm64/boot/dts/rockchip/Makefile         |   1 +
- .../boot/dts/rockchip/rk3568-qnap-ts233.dts   | 133 ++++
- .../boot/dts/rockchip/rk3568-qnap-ts433.dts   | 606 ++---------------
- .../boot/dts/rockchip/rk3568-qnap-tsx33.dtsi  | 608 ++++++++++++++++++
- 5 files changed, 785 insertions(+), 569 deletions(-)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-qnap-ts233.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-qnap-tsx33.dtsi
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts b/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts
+index 6ae4316761c4..5656554ca284 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts
+@@ -196,6 +196,54 @@ &cpu3 {
+ 	cpu-supply = <&vdd_cpu>;
+ };
+ 
++/*
++ * The MCU can provide system temperature too, but only by polling and of
++ * course also cannot set trip points. So attach to the cpu thermal-zone
++ * instead to control the fan.
++ */
++&cpu_thermal {
++	trips {
++		case_fan0: case-fan0 {
++			hysteresis = <2000>;
++			temperature = <35000>;
++			type = "active";
++		};
++
++		case_fan1: case-fan1 {
++			hysteresis = <2000>;
++			temperature = <45000>;
++			type = "active";
++		};
++
++		case_fan2: case-fan2 {
++			hysteresis = <2000>;
++			temperature = <65000>;
++			type = "active";
++		};
++	};
++
++	cooling-maps {
++		/*
++		 * Always provide some air movement, due to small case
++		 * full of harddrives.
++		 */
++		map1 {
++			cooling-device = <&fan THERMAL_NO_LIMIT 1>;
++			trip = <&case_fan0>;
++		};
++
++		map2 {
++			cooling-device = <&fan 2 3>;
++			trip = <&case_fan1>;
++		};
++
++		map3 {
++			cooling-device = <&fan 4 THERMAL_NO_LIMIT>;
++			trip = <&case_fan2>;
++		};
++	};
++};
++
+ &gmac0 {
+ 	assigned-clocks = <&cru SCLK_GMAC0_RX_TX>, <&cru SCLK_GMAC0>;
+ 	assigned-clock-parents = <&cru SCLK_GMAC0_RGMII_SPEED>, <&cru CLK_MAC0_2TOP>;
+@@ -492,54 +540,6 @@ rgmii_phy0: ethernet-phy@3 {
+ 	};
+ };
+ 
+-/*
+- * The MCU can provide system temperature too, but only by polling and of
+- * course also cannot set trip points. So attach to the cpu thermal-zone
+- * instead to control the fan.
+- */
+-&cpu_thermal {
+-	trips {
+-		case_fan0: case-fan0 {
+-			hysteresis = <2000>;
+-			temperature = <35000>;
+-			type = "active";
+-		};
+-
+-		case_fan1: case-fan1 {
+-			hysteresis = <2000>;
+-			temperature = <45000>;
+-			type = "active";
+-		};
+-
+-		case_fan2: case-fan2 {
+-			hysteresis = <2000>;
+-			temperature = <65000>;
+-			type = "active";
+-		};
+-	};
+-
+-	cooling-maps {
+-		/*
+-		 * Always provide some air movement, due to small case
+-		 * full of harddrives.
+-		 */
+-		map1 {
+-			cooling-device = <&fan THERMAL_NO_LIMIT 1>;
+-			trip = <&case_fan0>;
+-		};
+-
+-		map2 {
+-			cooling-device = <&fan 2 3>;
+-			trip = <&case_fan1>;
+-		};
+-
+-		map3 {
+-			cooling-device = <&fan 4 THERMAL_NO_LIMIT>;
+-			trip = <&case_fan2>;
+-		};
+-	};
+-};
+-
+ &pcie30phy {
+ 	data-lanes = <1 2>;
+ 	status = "okay";
 -- 
 2.47.2
 
