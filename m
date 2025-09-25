@@ -4,70 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A2B1CAC5B1
-	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Sep 2025 07:33:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D9D7CAC5A5
+	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Sep 2025 09:21:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xiV2gTderRv6m4ueaJerCaQVekF9fp+WwBU5Qytjrpg=; b=oJ03FzGDfHmJen
-	6lryBYuHzsxMGuTToxrR4QCgA8Srk/C7UY5L5VWG7i2J1OhgHG0BKziTJCKbAv5T538xNrPTKBjoP
-	ozg8YBpkOzgdbVqQmRayRkREsrdQ75BAlmIgEK6NQjrbKoi94CvImmnwyex2C+FNB7D1cnBzfFV7H
-	XxYPOpv+jgR6KJDYZUU0ltA4iQWGf2jtjKWaCwaFff+QfzDPTjZleN5Amo7TOvrroYGzRQXVwAHhi
-	uhwjTlvwggeLs8oofZttRqx9sXb7tnDGrs/Agb5HUEqDGflHn/N/XRg1R5YXqYgEMI3piEY2irNy4
-	5DzT9VytfEb7oC1bWuUA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Cp7XV681jDyAeMvS6rX5C1N7WROVQdA0xf2HBzrebRQ=; b=0sObBYM4BP51ty
+	um3ZifbJhnJ85Yyr6G/s73HPj9Hs4SNCtbeqBXOMMkfYLnLqkbOW5ibxYE6qbVBlWB59EGhAM4Q/u
+	IfcLnO+nmH7LXzKlGpL3S8ka7YH+ZaMkIR5XupUzWWepdMnlA9SUiBF++csCVuBA3V2lnV6WOKqac
+	gSl5DkrR3aHJpy4d8Z40c0ZnaGAM12MS3qkNazcvfgT0ey0TT0t+dz8bXrghkNl/kdj7qbhv7C5cs
+	/8sI0Zvr/PoeggfJuMjbtvsycNknwDQFDCyTdyolA4xYNYJwr6Jn/3RnTpMbi8ABlJF2Vhi+UPfBt
+	MUVwZe51770EuI4hWN+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1gUD-00000006kn8-0asf;
-	Thu, 25 Sep 2025 07:33:53 +0000
-Received: from mail-m49200.qiye.163.com ([45.254.49.200])
+	id 1v1iAG-00000007XXP-27H1;
+	Thu, 25 Sep 2025 09:21:24 +0000
+Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1gUA-00000006kki-1uLB;
-	Thu, 25 Sep 2025 07:33:52 +0000
-Received: from [172.16.12.26] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 2404c7a9b;
-	Thu, 25 Sep 2025 15:33:45 +0800 (GMT+08:00)
-Message-ID: <7babd32a-6b20-4e4b-9c40-594520a183bb@rock-chips.com>
-Date: Thu, 25 Sep 2025 15:33:45 +0800
+	id 1v1iAD-00000007XV3-3buc
+	for linux-rockchip@lists.infradead.org;
+	Thu, 25 Sep 2025 09:21:23 +0000
+Received: by mail-pf1-x436.google.com with SMTP id d2e1a72fcca58-77f7da24397so819062b3a.2
+        for <linux-rockchip@lists.infradead.org>; Thu, 25 Sep 2025 02:21:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1758792081; x=1759396881; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=jUgn42r5a8mNNBXp0C9lNyB4hr+HTa+eeMoWV7f//J8=;
+        b=CMGG+RpOKmHunINqUcsb65dxv2qSfysDewW2rVtyHu9aKqA37d56Cmcs+q5CdddAUa
+         8XYLVaKfNb5NSJKCEIZi+NeaOXJT8Aw4twRImF5LJ/17bU9E3ctUf+Ykt0IzIIFyMRAO
+         OL+3vwnxnyTICzUN41EihrJRrnMNNDVDtx/dIicMKbhyQm3kZNPeVC/pc9yoOU+hx5YQ
+         5M4Zup+eo8Frwo7AfMVrZc8xV3qdiWtdmg8PJ2d3Cs5q6aaqoidrzWaPniWX/OpTZg5Y
+         QkK2F2FoPRJRCLki/uL6Dzuk9nFGbUYoDy8CEN7TDgworBRlaB9qt3rqlYXcOj5KUzXJ
+         s30g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1758792081; x=1759396881;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=jUgn42r5a8mNNBXp0C9lNyB4hr+HTa+eeMoWV7f//J8=;
+        b=JXqn+bvFtGnuvCdZkOFFs2N//9R71pUWqZ8NVUUFWPuMz0HCM1yeX2bTD0o7x0jU62
+         elY6CfLXvePdcL6n1juIURMwPPM1iR/oTIJjOGIQWV2alcFlfhZb7XA/waqlsQQsvb3t
+         iWSlu5hGBLGPnIY0PmLiapyNl0NkUKvsh33oEbXg5sBNU6LkW1EuU7b+2aSB9ZOX+cvY
+         Hu13c51W1GSlP9fzvYKGSHfv6IuNreLQLs1vO4Alk8VmjrZczn1WQW0J591hHVzt/Ahy
+         ryNCEUxG5dSc5EHk0pEdH9yzBcU9z/wTP0d/DmpHJlbNbpPsUdFiDzryJx7n1VIgcMMg
+         wsdg==
+X-Forwarded-Encrypted: i=1; AJvYcCXN70a7iC6a6renp9xW2zagYhhJ053vA/juuyh7gySltiXAtLVyFW6REtDcT9Zo3JE5I3HHxMGUijRCA38rYg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyfxNb6sMocqaYw9Oh9A3D+RkccpAaC916FuA8g6/CF5ZekJn2c
+	Xmd5bJz5x2nNu6Z5jc296C4Imfp6OOH0y6++StWStLAMhGWF7x22g2ML
+X-Gm-Gg: ASbGncuDJCj6XbIYEz7cA7nnfewMW/oCQu1sj5qWjBGzQ2SWvAGByEo2icLLmW9GGIN
+	Q+n5MEH+951IIQADN5FwKGKjHkubADzPw38SKkLD/Pyb7qfEVZ2R2nTMikF9FAjXZOyRl9dzaAm
+	Tmpp7FgUWnMbwDd24lpm7Z7UZmZeLD9e1qycSNr8y4RIx0IXGybHwzEW5Yv6eXUp8DZ5d//22ui
+	c0ZYGL1oVEWWKqq0WJN5QllqN2/30BDrQN00cX/HI2uA6znXbVZgmMHUumkVMC86auYzEKOU+HF
+	mi5m4rbUEt7x2iZhOWnZhLC6z5hiSloWG1+M3SitjUNBq0A8r1RkmRPQv57nqZEMVLMglT1uNG7
+	L8rPAnbKLX/4sweWYpLGpJrHxF7yg29URAZAZmFdKBA==
+X-Google-Smtp-Source: AGHT+IFnE3x/HOJtgYIO/KfGDkE6OL9Yv5CTm7GbsosRRNTd2+C/2E/tc4yHiROdLQZc06HYbTLMNQ==
+X-Received: by 2002:a17:903:384b:b0:260:df70:f753 with SMTP id d9443c01a7336-27ed4a7eadamr32620015ad.38.1758792081013;
+        Thu, 25 Sep 2025 02:21:21 -0700 (PDT)
+Received: from localhost.localdomain ([120.229.16.62])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-27ed66cdfafsm18251855ad.30.2025.09.25.02.21.16
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Thu, 25 Sep 2025 02:21:20 -0700 (PDT)
+From: Liangbin Lian <jjm2473@gmail.com>
+To: robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	heiko@sntech.de,
+	quentin.schulz@cherry.de,
+	kever.yang@rock-chips.com,
+	naoki@radxa.com,
+	honyuenkwun@gmail.com,
+	inindev@gmail.com,
+	ivan8215145640@gmail.com,
+	neil.armstrong@linaro.org,
+	mani@kernel.org,
+	dsimic@manjaro.org,
+	pbrobinson@gmail.com,
+	alchark@gmail.com,
+	didi.debian@cknow.org,
+	jjm2473@gmail.com,
+	jbx6244@gmail.com
+Cc: devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v2 0/3] arm64: dts: rockchip: introduce LinkEase EasePi R1
+Date: Thu, 25 Sep 2025 17:20:34 +0800
+Message-ID: <20250925092037.13582-1-jjm2473@gmail.com>
+X-Mailer: git-send-email 2.51.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 10/17] drm/bridge: analogix_dp: Apply
- drm_bridge_connector helper
-To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-Cc: andrzej.hajda@intel.com, neil.armstrong@linaro.org, rfoss@kernel.org,
- Laurent.pinchart@ideasonboard.com, jonas@kwiboo.se,
- jernej.skrabec@gmail.com, maarten.lankhorst@linux.intel.com,
- mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch,
- jingoohan1@gmail.com, inki.dae@samsung.com, sw0312.kim@samsung.com,
- kyungmin.park@samsung.com, krzk@kernel.org, alim.akhtar@samsung.com,
- hjc@rock-chips.com, heiko@sntech.de, andy.yan@rock-chips.com,
- dianders@chromium.org, m.szyprowski@samsung.com, luca.ceresoli@bootlin.com,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
- linux-rockchip@lists.infradead.org
-References: <20250912085846.7349-1-damon.ding@rock-chips.com>
- <20250912085846.7349-11-damon.ding@rock-chips.com>
- <tsgfxlkxty653crmzmwsr7p6slf27pxf6n6to5p7zvi6wsl444@525tz5uhbj44>
- <2870c278-3c65-4d8f-ace3-1fd5b03af2b4@rock-chips.com>
- <ykj7xrnpagbtftr7wt2vkyc4d4u4k5nmxsir433jzz7lhc3oq3@gaq4kicsrlpr>
-Content-Language: en-US
-From: Damon Ding <damon.ding@rock-chips.com>
-In-Reply-To: <ykj7xrnpagbtftr7wt2vkyc4d4u4k5nmxsir433jzz7lhc3oq3@gaq4kicsrlpr>
-X-HM-Tid: 0a997fcadceb03a3kunmf428ea61f44a4
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGR5MHlZDTEhJGE5IQ04dTRpWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=RMeFRgwK/u9gvsfKikZ6QJa4SgufBJayFB0NijJ2dZPIYudWTPVknCf/RSzoR9Eb42n56CnuehVerhBm3oRxFYvPPN3Lie/WVYt7wWFD0QMNUuCgPHo9Rn+IUxAofGpqUs0SnaLkyd7qtyJfB3cCp7JWz3XnclQfDza1rydM3V4=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=IQqtJyNfbYnJRIw/BGD/cND3AGmHGHL0thx41Mcmirc=;
-	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250925_003351_060040_F6E12D8A 
-X-CRM114-Status: GOOD (  22.94  )
+X-CRM114-CacheID: sfid-20250925_022121_900568_94C1A79E 
+X-CRM114-Status: UNSURE (   5.69  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,148 +111,36 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Dmitry,
+LinkEase EasePi R1 [1] is a high-performance mini router.
 
-On 9/25/2025 11:37 AM, Dmitry Baryshkov wrote:
-> On Wed, Sep 24, 2025 at 05:14:57PM +0800, Damon Ding wrote:
->> Hi Dmitry,
->>
->> On 9/12/2025 7:03 PM, Dmitry Baryshkov wrote:
->>> On Fri, Sep 12, 2025 at 04:58:39PM +0800, Damon Ding wrote:
->>>> Apply drm_bridge_connector helper for Analogix DP driver.
->>>>
->>>> The following changes have been made:
->>>> - Apply drm_bridge_connector helper to get rid of &drm_connector_funcs
->>>>     and &drm_connector_helper_funcs.
->>>> - Remove unnecessary parameter struct drm_connector* for callback
->>>>     &analogix_dp_plat_data.attach.
->>>> - Remove &analogix_dp_device.connector.
->>>> - Convert analogix_dp_atomic_check()/analogix_dp_detect() to
->>>>     &drm_bridge_funcs.atomic_check()/&drm_bridge_funcs.detect().
->>>> - Split analogix_dp_get_modes() into &drm_bridge_funcs.get_modes() and
->>>>     &drm_bridge_funcs.edid_read().
->>>>
->>>> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
->>>>
->>>> ------
->>>>
->>>> Changes in v2:
->>>> - For &drm_bridge.ops, remove DRM_BRIDGE_OP_HPD and add
->>>>     DRM_BRIDGE_OP_EDID.
->>>> - Add analogix_dp_bridge_edid_read().
->>>> - Move &analogix_dp_plat_data.skip_connector deletion to the previous
->>>>     patches.
->>>>
->>>> Changes in v3:
->>>> - Rebase with the new devm_drm_bridge_alloc() related commit
->>>>     48f05c3b4b70 ("drm/bridge: analogix_dp: Use devm_drm_bridge_alloc()
->>>>     API").
->>>> - Expand the commit message.
->>>> - Call drm_bridge_get_modes() in analogix_dp_bridge_get_modes() if the
->>>>     bridge is available.
->>>> - Remove unnecessary parameter struct drm_connector* for callback
->>>>     &analogix_dp_plat_data.attach.
->>>> - In order to decouple the connector driver and the bridge driver, move
->>>>     the bridge connector initilization to the Rockchip and Exynos sides.
->>>>
->>>> Changes in v4:
->>>> - Expand analogix_dp_bridge_detect() parameters to &drm_bridge and
->>>>     &drm_connector.
->>>> - Rename the &analogix_dp_plat_data.bridge to
->>>>     &analogix_dp_plat_data.next_bridge.
->>>>
->>>> Changes in v5:
->>>> - Set the flag fo drm_bridge_attach() to DRM_BRIDGE_ATTACH_NO_CONNECTOR
->>>>     for next bridge attachment of Exynos side.
->>>> - Distinguish the &drm_bridge->ops of Analogix bridge based on whether
->>>>     the downstream device is a panel, a bridge or neither.
->>>> - Remove the calls to &analogix_dp_plat_data.get_modes().
->>>> ---
->>>>    .../drm/bridge/analogix/analogix_dp_core.c    | 151 ++++++++----------
->>>>    .../drm/bridge/analogix/analogix_dp_core.h    |   1 -
->>>>    drivers/gpu/drm/exynos/exynos_dp.c            |  25 +--
->>>>    .../gpu/drm/rockchip/analogix_dp-rockchip.c   |  11 +-
->>>>    include/drm/bridge/analogix_dp.h              |   3 +-
->>>>    5 files changed, 95 insertions(+), 96 deletions(-)
->>>>
->>>> @@ -1532,6 +1487,7 @@ EXPORT_SYMBOL_GPL(analogix_dp_resume);
->>>>    int analogix_dp_bind(struct analogix_dp_device *dp, struct drm_device *drm_dev)
->>>>    {
->>>> +	struct drm_bridge *bridge = &dp->bridge;
->>>>    	int ret;
->>>>    	dp->drm_dev = drm_dev;
->>>> @@ -1545,7 +1501,23 @@ int analogix_dp_bind(struct analogix_dp_device *dp, struct drm_device *drm_dev)
->>>>    		return ret;
->>>>    	}
->>>> -	ret = drm_bridge_attach(dp->encoder, &dp->bridge, NULL, 0);
->>>> +	if (dp->plat_data->panel)
->>>> +		/* If the next is a panel, the EDID parsing is checked by the panel driver */
->>>> +		bridge->ops = DRM_BRIDGE_OP_MODES | DRM_BRIDGE_OP_DETECT;
->>>> +	else if (dp->plat_data->next_bridge)
->>>> +		/* If the next is a bridge, the supported operations depend on the next bridge */
->>>> +		bridge->ops = 0;
->>>
->>> And what if the next bridge is dp_connector without a separate HPD pin?
->>
->> This case was indeed not taken into account.
->>
->> If the next is a bridge, it should be better to set DRM_BRIDGE_OP_DETECT and
->> return connector_status_connected in analogix_dp_bridge_detect(). This
->> ensures the connection status remains connected for both the dp-connector
->> and the bridges without DRM_BRIDGE_OP_DETECT.
-> 
-> Maybe OP_EDID | OP_DETECT? I think, we need to fix drm_bridge_connector
-> to stop preferring OP_EDID bridges over OP_MODES if the latter one is
-> enountered later in the chain. In other words inside
-> drm_bridge_connector_init() clear bridge_edid if OP_MODES is encountered
-> and vice versa. This way you can always declare OP_EDID here (after
-> converting to panel bridge) and then letting panel's OP_MODES take over
-> mode declaration. Would you please include such a patch in the next
-> iteration?
-> 
+Specification:
+- Rockchip RK3568
+- 2GB/4GB LPDDR4 RAM
+- 16GB on-board eMMC
+- 1x M.2 key for 2280 NVMe (PCIe 3.0)
+- 1x USB 3.0 Type-A
+- 1x USB 2.0 Type-C (for USB flashing)
+- 2x 1000 Base-T (native, RTL8211F)
+- 2x 2500 Base-T (PCIe, RTL8125B)
+- 1x HDMI 2.0 Output
+- 12v DC Jack
+- 1x Power key connected to PMIC
+- 2x LEDs (one static power supplied, one GPIO controlled)
 
-I see. Following your suggestions, the logic will be:
+[1] https://doc.linkease.com/zh/guide/easepi-r1/hardware.html
 
-1.If the later bridge declares OP_MODES and 
-&drm_bridge_connector.bridge_edid already exists, the 
-&drm_bridge_connector.bridge_edid should be set to NULL.
-2.If the later bridge declares OP_EDID and 
-&drm_bridge_connector.bridge_modes already exists, the 
-&drm_bridge_connector.bridge_modes should be set to NULL.
-3.If the later bridge declares both OP_EDID and OP_MODES, set 
-&drm_bridge_connector.bridge_modes and &drm_bridge_connector.bridge_edid 
-to it(preserving the existing behavior).
+Signed-off-by: Liangbin Lian <jjm2473@gmail.com>
+---
+Changes in v2:
+- Change deprecated "rockchip,system-power-controller" to "system-power-controller"
+- Link to v1: https://lore.kernel.org/r/20250925055906.83375-1-jjm2473@gmail.com/
 
-I will add a new commit with necessary code comments to implement this 
-in v6.
-
->>
->>>
->>>> +	else
->>>> +		/* In DP mode, the EDID parsing and HPD detection should be supported */
->>>> +		bridge->ops = DRM_BRIDGE_OP_EDID | DRM_BRIDGE_OP_DETECT;
->>>> +
->>>> +	bridge->of_node = dp->dev->of_node;
->>>> +	bridge->type = DRM_MODE_CONNECTOR_eDP;
->>>> +	ret = devm_drm_bridge_add(dp->dev, &dp->bridge);
->>>> +	if (ret)
->>>> +		goto err_unregister_aux;
->>>> +
->>>> +	ret = drm_bridge_attach(dp->encoder, bridge, NULL, 0);
->>>>    	if (ret) {
->>>>    		DRM_ERROR("failed to create bridge (%d)\n", ret);
->>>>    		goto err_unregister_aux;
->>>
->>
-
-Best regards,
-Damon
-
+---
 
 _______________________________________________
 Linux-rockchip mailing list
