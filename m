@@ -4,56 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6507FCAC5AA
-	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Sep 2025 07:29:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A2B1CAC5B1
+	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Sep 2025 07:33:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aCf8U/QPZGI1675hLXLMVbZrsYRJSeH5z0H1LOawcMU=; b=h+uQ4w3YPlB8mJ
-	sg9rSBzUQ/QraqvHkOqBum54+SfxXzfgiSg8C4j5QlJbEDyJ0V6mbZnk2t/OAMPz9b8cNUSvP4mFL
-	2DmkwxtLoiuVMxqiaV/dNxv7QTXOpcfPaYr9We5O9PlM9HZRJ+ToBWLmcOyMnxveogYzjzH5fUWpM
-	xiuGTUsjsm1ZZ+vspWmmEtObDAlbXwoMU+kzSwU5WRs6aeL7znPFr0O66bBtCampyTv6zYSp/JLsR
-	gEak2V++JF2FVt7MzeZ9L+g6qLydCuGx7RMeZMOdzffltLtN+5N09kjUAOD+TDfFTX53WQa6RmuHS
-	kK4ry1CwPV7+J+dL4hGA==;
+	List-Owner; bh=xiV2gTderRv6m4ueaJerCaQVekF9fp+WwBU5Qytjrpg=; b=oJ03FzGDfHmJen
+	6lryBYuHzsxMGuTToxrR4QCgA8Srk/C7UY5L5VWG7i2J1OhgHG0BKziTJCKbAv5T538xNrPTKBjoP
+	ozg8YBpkOzgdbVqQmRayRkREsrdQ75BAlmIgEK6NQjrbKoi94CvImmnwyex2C+FNB7D1cnBzfFV7H
+	XxYPOpv+jgR6KJDYZUU0ltA4iQWGf2jtjKWaCwaFff+QfzDPTjZleN5Amo7TOvrroYGzRQXVwAHhi
+	uhwjTlvwggeLs8oofZttRqx9sXb7tnDGrs/Agb5HUEqDGflHn/N/XRg1R5YXqYgEMI3piEY2irNy4
+	5DzT9VytfEb7oC1bWuUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1gPg-00000006iXq-37xx;
-	Thu, 25 Sep 2025 07:29:12 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1v1gUD-00000006kn8-0asf;
+	Thu, 25 Sep 2025 07:33:53 +0000
+Received: from mail-m49200.qiye.163.com ([45.254.49.200])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1gPV-00000006iLE-1SS3;
-	Thu, 25 Sep 2025 07:29:02 +0000
-Received: from ideasonboard.com (unknown [IPv6:2001:b07:6462:5de2:520d:d7a3:63ca:99e8])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id B35FBE91;
-	Thu, 25 Sep 2025 09:27:31 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1758785251;
-	bh=z21Xp4TuXHyCW4xtMz/OOCsZSb7Kaf5SWHB7K7mD714=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=YrW/A+e9Va5WN1aYaEF5voDen7kynHSJvb+tW2ovoWaqiLOi+xSAs0R+GwOweyOig
-	 MB4oMsacYfWEsVxFZo3m6wEEi0odSNTqlAQS9kiDMXJXpKOosA//i9sVj60gOtB5CH
-	 CTsWJgx/wFZrvnZK4ydTqXG4mF8RItwEVkzGCipM=
-Date: Thu, 25 Sep 2025 09:28:52 +0200
-From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-To: Stefan Klug <stefan.klug@ideasonboard.com>
-Cc: linux-media@vger.kernel.org, Dafna Hirschfeld <dafna@fastmail.com>, 
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Jacopo Mondi <jacopo.mondi@ideasonboard.com>, 
-	Kieran Bingham <kieran.bingham@ideasonboard.com>, linux-rockchip@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3] media: rkisp1: Improve frame sequence correctness on
- stats and params buffers
-Message-ID: <xxj3awe4ezdf242bpiktov4tb2xb3r6l6c5rtmrywubniwlbik@bubb5l6psz6i>
-References: <20250922182003.3712101-2-stefan.klug@ideasonboard.com>
+	id 1v1gUA-00000006kki-1uLB;
+	Thu, 25 Sep 2025 07:33:52 +0000
+Received: from [172.16.12.26] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 2404c7a9b;
+	Thu, 25 Sep 2025 15:33:45 +0800 (GMT+08:00)
+Message-ID: <7babd32a-6b20-4e4b-9c40-594520a183bb@rock-chips.com>
+Date: Thu, 25 Sep 2025 15:33:45 +0800
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250922182003.3712101-2-stefan.klug@ideasonboard.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 10/17] drm/bridge: analogix_dp: Apply
+ drm_bridge_connector helper
+To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+Cc: andrzej.hajda@intel.com, neil.armstrong@linaro.org, rfoss@kernel.org,
+ Laurent.pinchart@ideasonboard.com, jonas@kwiboo.se,
+ jernej.skrabec@gmail.com, maarten.lankhorst@linux.intel.com,
+ mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch,
+ jingoohan1@gmail.com, inki.dae@samsung.com, sw0312.kim@samsung.com,
+ kyungmin.park@samsung.com, krzk@kernel.org, alim.akhtar@samsung.com,
+ hjc@rock-chips.com, heiko@sntech.de, andy.yan@rock-chips.com,
+ dianders@chromium.org, m.szyprowski@samsung.com, luca.ceresoli@bootlin.com,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
+ linux-rockchip@lists.infradead.org
+References: <20250912085846.7349-1-damon.ding@rock-chips.com>
+ <20250912085846.7349-11-damon.ding@rock-chips.com>
+ <tsgfxlkxty653crmzmwsr7p6slf27pxf6n6to5p7zvi6wsl444@525tz5uhbj44>
+ <2870c278-3c65-4d8f-ace3-1fd5b03af2b4@rock-chips.com>
+ <ykj7xrnpagbtftr7wt2vkyc4d4u4k5nmxsir433jzz7lhc3oq3@gaq4kicsrlpr>
+Content-Language: en-US
+From: Damon Ding <damon.ding@rock-chips.com>
+In-Reply-To: <ykj7xrnpagbtftr7wt2vkyc4d4u4k5nmxsir433jzz7lhc3oq3@gaq4kicsrlpr>
+X-HM-Tid: 0a997fcadceb03a3kunmf428ea61f44a4
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGR5MHlZDTEhJGE5IQ04dTRpWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=RMeFRgwK/u9gvsfKikZ6QJa4SgufBJayFB0NijJ2dZPIYudWTPVknCf/RSzoR9Eb42n56CnuehVerhBm3oRxFYvPPN3Lie/WVYt7wWFD0QMNUuCgPHo9Rn+IUxAofGpqUs0SnaLkyd7qtyJfB3cCp7JWz3XnclQfDza1rydM3V4=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=IQqtJyNfbYnJRIw/BGD/cND3AGmHGHL0thx41Mcmirc=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250925_002901_528877_D7B90533 
-X-CRM114-Status: GOOD (  35.94  )
+X-CRM114-CacheID: sfid-20250925_003351_060040_F6E12D8A 
+X-CRM114-Status: GOOD (  22.94  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,154 +79,148 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Stefan
+Hi Dmitry,
 
-On Mon, Sep 22, 2025 at 08:19:57PM +0200, Stefan Klug wrote:
-> On the rkisp1 (in my case on a NXP i.MX8 M Plus) the ISP interrupt
-> handler is sometimes called with RKISP1_CIF_ISP_V_START (start of frame)
-> and RKISP1_CIF_ISP_FRAME (end of frame) being set at the same time. In
-> commit 8524fa22fd2f ("media: staging: rkisp1: isp: add a warning and
-> debugfs var for irq delay") a warning was added for that. There are two
-> cases where this condition can occur:
->
-> 1. The v-sync and the frame-end belong to the same frame. This means,
->    the irq was heavily delayed and the warning is likely appropriate.
->
-> 2. The v-sync belongs to the next frame. This can happen if the vertical
->    blanking between two frames is very short.
->
-> The current code always handles case 1 although case 2 is in my
-> experience the more common case and happens in regular usage. This leads
-> to incorrect sequence numbers on stats and params buffers which in turn
-> breaks the regulation in user space. Fix that by adding a frame_active
-> flag to distinguish between these cases and handle the start of frame
-> either at the beginning or at the end of the rkisp1_isp_isr().
->
-> Signed-off-by: Stefan Klug <stefan.klug@ideasonboard.com>
-> Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
->
-> ---
->
-> Hi all,
->
-> Here is an updated version of the patch with a fix for a typo that was
-> spotted in the last review.
->
-> Changes in v3:
-> - Fixed typo in comment
-> - Collected r-by tag
->
-> Changes in v2:
-> - Removed test for !frame_active in second v_start handler
-> - Improved comments
+On 9/25/2025 11:37 AM, Dmitry Baryshkov wrote:
+> On Wed, Sep 24, 2025 at 05:14:57PM +0800, Damon Ding wrote:
+>> Hi Dmitry,
+>>
+>> On 9/12/2025 7:03 PM, Dmitry Baryshkov wrote:
+>>> On Fri, Sep 12, 2025 at 04:58:39PM +0800, Damon Ding wrote:
+>>>> Apply drm_bridge_connector helper for Analogix DP driver.
+>>>>
+>>>> The following changes have been made:
+>>>> - Apply drm_bridge_connector helper to get rid of &drm_connector_funcs
+>>>>     and &drm_connector_helper_funcs.
+>>>> - Remove unnecessary parameter struct drm_connector* for callback
+>>>>     &analogix_dp_plat_data.attach.
+>>>> - Remove &analogix_dp_device.connector.
+>>>> - Convert analogix_dp_atomic_check()/analogix_dp_detect() to
+>>>>     &drm_bridge_funcs.atomic_check()/&drm_bridge_funcs.detect().
+>>>> - Split analogix_dp_get_modes() into &drm_bridge_funcs.get_modes() and
+>>>>     &drm_bridge_funcs.edid_read().
+>>>>
+>>>> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
+>>>>
+>>>> ------
+>>>>
+>>>> Changes in v2:
+>>>> - For &drm_bridge.ops, remove DRM_BRIDGE_OP_HPD and add
+>>>>     DRM_BRIDGE_OP_EDID.
+>>>> - Add analogix_dp_bridge_edid_read().
+>>>> - Move &analogix_dp_plat_data.skip_connector deletion to the previous
+>>>>     patches.
+>>>>
+>>>> Changes in v3:
+>>>> - Rebase with the new devm_drm_bridge_alloc() related commit
+>>>>     48f05c3b4b70 ("drm/bridge: analogix_dp: Use devm_drm_bridge_alloc()
+>>>>     API").
+>>>> - Expand the commit message.
+>>>> - Call drm_bridge_get_modes() in analogix_dp_bridge_get_modes() if the
+>>>>     bridge is available.
+>>>> - Remove unnecessary parameter struct drm_connector* for callback
+>>>>     &analogix_dp_plat_data.attach.
+>>>> - In order to decouple the connector driver and the bridge driver, move
+>>>>     the bridge connector initilization to the Rockchip and Exynos sides.
+>>>>
+>>>> Changes in v4:
+>>>> - Expand analogix_dp_bridge_detect() parameters to &drm_bridge and
+>>>>     &drm_connector.
+>>>> - Rename the &analogix_dp_plat_data.bridge to
+>>>>     &analogix_dp_plat_data.next_bridge.
+>>>>
+>>>> Changes in v5:
+>>>> - Set the flag fo drm_bridge_attach() to DRM_BRIDGE_ATTACH_NO_CONNECTOR
+>>>>     for next bridge attachment of Exynos side.
+>>>> - Distinguish the &drm_bridge->ops of Analogix bridge based on whether
+>>>>     the downstream device is a panel, a bridge or neither.
+>>>> - Remove the calls to &analogix_dp_plat_data.get_modes().
+>>>> ---
+>>>>    .../drm/bridge/analogix/analogix_dp_core.c    | 151 ++++++++----------
+>>>>    .../drm/bridge/analogix/analogix_dp_core.h    |   1 -
+>>>>    drivers/gpu/drm/exynos/exynos_dp.c            |  25 +--
+>>>>    .../gpu/drm/rockchip/analogix_dp-rockchip.c   |  11 +-
+>>>>    include/drm/bridge/analogix_dp.h              |   3 +-
+>>>>    5 files changed, 95 insertions(+), 96 deletions(-)
+>>>>
+>>>> @@ -1532,6 +1487,7 @@ EXPORT_SYMBOL_GPL(analogix_dp_resume);
+>>>>    int analogix_dp_bind(struct analogix_dp_device *dp, struct drm_device *drm_dev)
+>>>>    {
+>>>> +	struct drm_bridge *bridge = &dp->bridge;
+>>>>    	int ret;
+>>>>    	dp->drm_dev = drm_dev;
+>>>> @@ -1545,7 +1501,23 @@ int analogix_dp_bind(struct analogix_dp_device *dp, struct drm_device *drm_dev)
+>>>>    		return ret;
+>>>>    	}
+>>>> -	ret = drm_bridge_attach(dp->encoder, &dp->bridge, NULL, 0);
+>>>> +	if (dp->plat_data->panel)
+>>>> +		/* If the next is a panel, the EDID parsing is checked by the panel driver */
+>>>> +		bridge->ops = DRM_BRIDGE_OP_MODES | DRM_BRIDGE_OP_DETECT;
+>>>> +	else if (dp->plat_data->next_bridge)
+>>>> +		/* If the next is a bridge, the supported operations depend on the next bridge */
+>>>> +		bridge->ops = 0;
+>>>
+>>> And what if the next bridge is dp_connector without a separate HPD pin?
+>>
+>> This case was indeed not taken into account.
+>>
+>> If the next is a bridge, it should be better to set DRM_BRIDGE_OP_DETECT and
+>> return connector_status_connected in analogix_dp_bridge_detect(). This
+>> ensures the connection status remains connected for both the dp-connector
+>> and the bridges without DRM_BRIDGE_OP_DETECT.
+> 
+> Maybe OP_EDID | OP_DETECT? I think, we need to fix drm_bridge_connector
+> to stop preferring OP_EDID bridges over OP_MODES if the latter one is
+> enountered later in the chain. In other words inside
+> drm_bridge_connector_init() clear bridge_edid if OP_MODES is encountered
+> and vice versa. This way you can always declare OP_EDID here (after
+> converting to panel bridge) and then letting panel's OP_MODES take over
+> mode declaration. Would you please include such a patch in the next
+> iteration?
+> 
 
-Thanks for addressing these
-Reviewed-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+I see. Following your suggestions, the logic will be:
 
->
-> Best regards,
-> Stefan
->
-> ---
->  .../platform/rockchip/rkisp1/rkisp1-common.h  |  1 +
->  .../platform/rockchip/rkisp1/rkisp1-isp.c     | 27 +++++++++++++++----
->  2 files changed, 23 insertions(+), 5 deletions(-)
->
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> index ca952fd0829b..adf23416de9a 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> @@ -222,6 +222,7 @@ struct rkisp1_isp {
->  	struct media_pad pads[RKISP1_ISP_PAD_MAX];
->  	const struct rkisp1_mbus_info *sink_fmt;
->  	__u32 frame_sequence;
-> +	bool frame_active;
->  };
->
->  /*
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-> index 8c29a1c9309a..660c1fd7efcc 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-> @@ -965,6 +965,7 @@ static int rkisp1_isp_s_stream(struct v4l2_subdev *sd, int enable)
->  	}
->
->  	isp->frame_sequence = -1;
-> +	isp->frame_active = false;
->
->  	sd_state = v4l2_subdev_lock_and_get_active_state(sd);
->
-> @@ -1086,12 +1087,15 @@ void rkisp1_isp_unregister(struct rkisp1_device *rkisp1)
->   * Interrupt handlers
->   */
->
-> -static void rkisp1_isp_queue_event_sof(struct rkisp1_isp *isp)
-> +static void rkisp1_isp_sof(struct rkisp1_isp *isp)
->  {
->  	struct v4l2_event event = {
->  		.type = V4L2_EVENT_FRAME_SYNC,
->  	};
->
-> +	isp->frame_sequence++;
-> +	isp->frame_active = true;
-> +
->  	event.u.frame_sync.frame_sequence = isp->frame_sequence;
->  	v4l2_event_queue(isp->sd.devnode, &event);
->  }
-> @@ -1111,15 +1115,20 @@ irqreturn_t rkisp1_isp_isr(int irq, void *ctx)
->
->  	rkisp1_write(rkisp1, RKISP1_CIF_ISP_ICR, status);
->
-> -	/* Vertical sync signal, starting generating new frame */
-> -	if (status & RKISP1_CIF_ISP_V_START) {
-> -		rkisp1->isp.frame_sequence++;
-> -		rkisp1_isp_queue_event_sof(&rkisp1->isp);
-> +	/*
-> +	 * Vertical sync signal, starting new frame. Defer handling of vsync
-> +	 * after RKISP1_CIF_ISP_FRAME if the previous frame was not completed
-> +	 * yet.
-> +	 */
-> +	if (status & RKISP1_CIF_ISP_V_START && !rkisp1->isp.frame_active) {
-> +		status &= ~RKISP1_CIF_ISP_V_START;
-> +		rkisp1_isp_sof(&rkisp1->isp);
->  		if (status & RKISP1_CIF_ISP_FRAME) {
->  			WARN_ONCE(1, "irq delay is too long, buffers might not be in sync\n");
->  			rkisp1->debug.irq_delay++;
->  		}
->  	}
-> +
->  	if (status & RKISP1_CIF_ISP_PIC_SIZE_ERROR) {
->  		/* Clear pic_size_error */
->  		isp_err = rkisp1_read(rkisp1, RKISP1_CIF_ISP_ERR);
-> @@ -1138,6 +1147,7 @@ irqreturn_t rkisp1_isp_isr(int irq, void *ctx)
->  	if (status & RKISP1_CIF_ISP_FRAME) {
->  		u32 isp_ris;
->
-> +		rkisp1->isp.frame_active = false;
->  		rkisp1->debug.complete_frames++;
->
->  		/* New frame from the sensor received */
-> @@ -1152,5 +1162,12 @@ irqreturn_t rkisp1_isp_isr(int irq, void *ctx)
->  		rkisp1_params_isr(rkisp1);
->  	}
->
-> +	/*
-> +	 * Deferred handling of vsync if RKISP1_CIF_ISP_V_START and
-> +	 * RKISP1_CIF_ISP_FRAME occurred in the same irq.
-> +	 */
-> +	if (status & RKISP1_CIF_ISP_V_START)
-> +		rkisp1_isp_sof(&rkisp1->isp);
-> +
->  	return IRQ_HANDLED;
->  }
-> --
-> 2.48.1
->
+1.If the later bridge declares OP_MODES and 
+&drm_bridge_connector.bridge_edid already exists, the 
+&drm_bridge_connector.bridge_edid should be set to NULL.
+2.If the later bridge declares OP_EDID and 
+&drm_bridge_connector.bridge_modes already exists, the 
+&drm_bridge_connector.bridge_modes should be set to NULL.
+3.If the later bridge declares both OP_EDID and OP_MODES, set 
+&drm_bridge_connector.bridge_modes and &drm_bridge_connector.bridge_edid 
+to it(preserving the existing behavior).
+
+I will add a new commit with necessary code comments to implement this 
+in v6.
+
+>>
+>>>
+>>>> +	else
+>>>> +		/* In DP mode, the EDID parsing and HPD detection should be supported */
+>>>> +		bridge->ops = DRM_BRIDGE_OP_EDID | DRM_BRIDGE_OP_DETECT;
+>>>> +
+>>>> +	bridge->of_node = dp->dev->of_node;
+>>>> +	bridge->type = DRM_MODE_CONNECTOR_eDP;
+>>>> +	ret = devm_drm_bridge_add(dp->dev, &dp->bridge);
+>>>> +	if (ret)
+>>>> +		goto err_unregister_aux;
+>>>> +
+>>>> +	ret = drm_bridge_attach(dp->encoder, bridge, NULL, 0);
+>>>>    	if (ret) {
+>>>>    		DRM_ERROR("failed to create bridge (%d)\n", ret);
+>>>>    		goto err_unregister_aux;
+>>>
+>>
+
+Best regards,
+Damon
+
 
 _______________________________________________
 Linux-rockchip mailing list
