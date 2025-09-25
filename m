@@ -4,62 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD113CAC5A7
-	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Sep 2025 09:31:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C34CCAC5A7
+	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Sep 2025 12:37:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Dq5G/NHEOx+1bVpuEa3qPK8tV3w6EIsmvV7zvGn1rW8=; b=qg/kkhg7C6m3eX
-	d7DCzBHjFxAoI61h9WUM0mre0eijYV5sKgDLHUr/MRCHVfoNC+exfmOXXzOChvr6SBeIzs2BF8eXk
-	9aWgNV6MblOI5H7Joc1pSc07Q35l7ZvDCiFEpXtRZcv61dxIy4U7gRYjrZzkjxKLUiaTHzT9dJB+0
-	4F2DVc6GjkuLIuBGt7R4+qLOQklk5NXWjcOK5QP4PYlRIX/bpRdzGmff0ODjbWHLTkbzj3s7YV+uH
-	1ZIwPzc36JF5ONpbWZldNFQ54hrUyx2DOVHo/GAbQCs8tbjEBD4asUpFOG38HQenEtIeLPDOpeCMK
-	Hh8N9tS+GUtNjkPYsc7g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=IOUrh3Qiay/o624GYdwlNM5P8xDytw9XvG2y/lvLNSE=; b=G1jjSc1CyQYRYkxEQzqnQ++Q10
+	+1vtscEJRraBxPgyEJFzCrKoe8xlWbhebjun1I9uVCiFCcbvev2cstrlHtjFZcIj69R4bobcfAK6Q
+	CUAfj7x7o89/orEAhGbUi1OIfpqZXySwY8Yf5FXfEbm3VU4sRHk1J2XONAuJMVipV8ETQS5mW3POG
+	kIn4FfdfBYfBRWYYqY0RrlOvtNN1z4vBU/AhgDT5VxD2aluzBFekZOWLhLI4B4ejKd9Bj6FtGDs5O
+	ZcPp/DYJoOo9ipswZutWlz7olakOsfUoAkQGZy+rzGQP1xrFbn5apFlI9svFC2YCHFIv7RW7oMuR0
+	d0Q9Dpag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1iJh-00000007dkb-3eS7;
-	Thu, 25 Sep 2025 09:31:09 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1v1lDR-00000009244-40i6;
+	Thu, 25 Sep 2025 12:36:53 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v1iJM-00000007dIF-3uzC;
-	Thu, 25 Sep 2025 09:30:51 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
-	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type;
-	bh=0nNWqmiqLHoF+hXaqhqo3pDlt6E6UGpw+EIgW0KfcMw=; b=kubZJSE8GNVx6fGAlrNTEb7IYo
-	+ImqazZZaonWdyfPEPQyfqhhd3ju3BwfRRFBxU6/F4PhszSQgrTioDNHPK90W3m0GJNi93TUuSjc+
-	0vXTNUeVNQnNKX4sGnfS3bNNWjKxqLCQ4/6tiFM1OuiAbcYPndDpupiUmyzKOLl3W1+67M8bYgeXk
-	rDrjt4ojHNfMHGs+JDNz5ijZB9OPOu2UrkZW03u9gnzcZBIebb814a4FWaqrB/QPAI1AeyjwObSIr
-	detPt2uyO5exmn1YGcRtXuU405cBTnQ8of4Qon9eSKHRrgqlkJ92ZHnzRfKRjKxG+5KAT/0w3BKGm
-	2R2u1aLQ==;
-Received: from i53875a54.versanet.de ([83.135.90.84] helo=localhost.localdomain)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1v1iJG-0001Nz-U9; Thu, 25 Sep 2025 11:30:43 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: heiko@sntech.de
-Cc: robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	ukleinek@debian.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH 4/6] arm64: dts: rockchip: move common qnap tsx33 parts to dtsi
-Date: Thu, 25 Sep 2025 11:29:21 +0200
-Message-ID: <20250925092923.2184187-5-heiko@sntech.de>
-X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250925092923.2184187-1-heiko@sntech.de>
-References: <20250925092923.2184187-1-heiko@sntech.de>
+	id 1v1lDQ-0000000922g-0Lhd;
+	Thu, 25 Sep 2025 12:36:52 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 60A8C6013A;
+	Thu, 25 Sep 2025 12:36:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 054A8C4CEF0;
+	Thu, 25 Sep 2025 12:36:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1758803811;
+	bh=IBUAnul7b8BQqt3zLS4cohInRJ5Mx15MT7PNd8Nz5R4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=XkvQ1go55VUCHLla+6DHun6ac9iHj597k6xHzW2ehbWZf1qu17advzm0DOfLaJdX2
+	 CFK1pTszoqCLJrUFasnXEbhaA+1f/RSAgXuAlCqIPBFAunLcZSLWGiS/DqtgPo1lAz
+	 vd59DiKljlaDbik78b3p69oUNn/NqxQnsAOZKEj9miVMPRGtAD7JdxnTW3ZYETd/id
+	 3l8YdBfhuJ0+fEQ/tfJEwaZ73jeDNCtDBWibnzrzLBuVvq+35kOG7RWoaJ9NZ0Zvhk
+	 QMPN3eI4qbedD4PN9VBWseCLjfv6KabHrHPVkDmVcJZq2VK9elqC28msll8ZwXvERx
+	 rJPYbUQBQg33g==
+Date: Thu, 25 Sep 2025 14:36:46 +0200
+From: Maxime Ripard <mripard@kernel.org>
+To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+	Simona Vetter <simona@ffwll.ch>, Sandy Huang <hjc@rock-chips.com>, 
+	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, Chen-Yu Tsai <wens@csie.org>, 
+	Samuel Holland <samuel@sholland.org>, Dave Stevenson <dave.stevenson@raspberrypi.com>, 
+	=?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, 
+	Liu Ying <victor.liu@nxp.com>, Rob Clark <robin.clark@oss.qualcomm.com>, 
+	Dmitry Baryshkov <lumag@kernel.org>, Abhinav Kumar <abhinav.kumar@linux.dev>, 
+	Jessica Zhang <jessica.zhang@oss.qualcomm.com>, Sean Paul <sean@poorly.run>, 
+	Marijn Suijten <marijn.suijten@somainline.org>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, 
+	linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org, 
+	Daniel Stone <daniels@collabora.com>
+Subject: Re: [PATCH v4 01/10] drm/connector: let drivers declare infoframes
+ as unsupported
+Message-ID: <20250925-didactic-spiked-lobster-fefabe@penduick>
+References: <20250909-drm-limit-infoframes-v4-0-53fd0a65a4a2@oss.qualcomm.com>
+ <20250909-drm-limit-infoframes-v4-1-53fd0a65a4a2@oss.qualcomm.com>
+ <20250910-furry-singing-axolotl-9aceac@houat>
+ <z333ysst5ifakomo35jtbpydj44epqwwn4da76rcnsq4are62m@32gsmgx2pcdi>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250925_023049_282748_25D5D361 
-X-CRM114-Status: GOOD (  17.50  )
+In-Reply-To: <z333ysst5ifakomo35jtbpydj44epqwwn4da76rcnsq4are62m@32gsmgx2pcdi>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,1386 +80,199 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============7303361236891608375=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The NAS series based around the rk3568 contains a number of models with
-1-4 drives, that reuse most of the board structure.
 
-Therefore move the shared parts to a dtsi, to be included by the devices.
+--===============7303361236891608375==
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="5gspsh2yhbs7pucv"
+Content-Disposition: inline
 
-As the smallest device is the 1-bay TS133, keep everything > slot1 in
-the individual devicetree.
 
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
----
- .../boot/dts/rockchip/rk3568-qnap-ts433.dts   | 666 +-----------------
- .../boot/dts/rockchip/rk3568-qnap-tsx33.dtsi  | 608 ++++++++++++++++
- 2 files changed, 645 insertions(+), 629 deletions(-)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-qnap-tsx33.dtsi
+--5gspsh2yhbs7pucv
+Content-Type: text/plain; protected-headers=v1; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v4 01/10] drm/connector: let drivers declare infoframes
+ as unsupported
+MIME-Version: 1.0
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts b/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts
-index 3fe9a7fce73e..c7443748b2dc 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts
-@@ -6,10 +6,7 @@
- 
- /dts-v1/;
- 
--#include <dt-bindings/input/input.h>
--#include <dt-bindings/leds/common.h>
--#include <dt-bindings/gpio/gpio.h>
--#include "rk3568.dtsi"
-+#include "rk3568-qnap-tsx33.dtsi"
- 
- / {
- 	model = "Qnap TS-433-4G NAS System 4-Bay";
-@@ -17,83 +14,6 @@ / {
- 
- 	aliases {
- 		ethernet0 = &gmac0;
--		mmc0 = &sdhci;
--		rtc0 = &rtc_rv8263;
--	};
--
--	chosen {
--		stdout-path = "serial2:115200n8";
--	};
--
--	keys {
--		compatible = "gpio-keys";
--		pinctrl-0 = <&copy_button_pin>, <&reset_button_pin>;
--		pinctrl-names = "default";
--
--		key-copy {
--			label = "copy";
--			gpios = <&gpio0 RK_PB6 GPIO_ACTIVE_LOW>;
--			linux,code = <KEY_COPY>;
--		};
--
--		key-reset {
--			label = "reset";
--			gpios = <&gpio0 RK_PB5 GPIO_ACTIVE_LOW>;
--			linux,code = <KEY_RESTART>;
--		};
--	};
--
--	leds {
--		compatible = "gpio-leds";
--
--		led-0 {
--			color = <LED_COLOR_ID_GREEN>;
--			function = LED_FUNCTION_DISK;
--			gpios = <&gpio1 RK_PD5 GPIO_ACTIVE_LOW>;
--			label = "hdd1:green:disk";
--			linux,default-trigger = "disk-activity";
--			pinctrl-names = "default";
--			pinctrl-0 = <&hdd1_led_pin>;
--		};
--
--		led-1 {
--			color = <LED_COLOR_ID_GREEN>;
--			function = LED_FUNCTION_DISK;
--			gpios = <&gpio1 RK_PD6 GPIO_ACTIVE_LOW>;
--			label = "hdd2:green:disk";
--			linux,default-trigger = "disk-activity";
--			pinctrl-names = "default";
--			pinctrl-0 = <&hdd2_led_pin>;
--		};
--
--		led-2 {
--			color = <LED_COLOR_ID_GREEN>;
--			function = LED_FUNCTION_DISK;
--			gpios = <&gpio1 RK_PD7 GPIO_ACTIVE_LOW>;
--			label = "hdd3:green:disk";
--			linux,default-trigger = "disk-activity";
--			pinctrl-names = "default";
--			pinctrl-0 = <&hdd3_led_pin>;
--		};
--
--		led-3 {
--			color = <LED_COLOR_ID_GREEN>;
--			function = LED_FUNCTION_DISK;
--			gpios = <&gpio2 RK_PA0 GPIO_ACTIVE_LOW>;
--			label = "hdd4:green:disk";
--			linux,default-trigger = "disk-activity";
--			pinctrl-names = "default";
--			pinctrl-0 = <&hdd4_led_pin>;
--		};
--	};
--
--	dc_12v: regulator-dc-12v {
--		compatible = "regulator-fixed";
--		regulator-name = "dc_12v";
--		regulator-always-on;
--		regulator-boot-on;
--		regulator-min-microvolt = <12000000>;
--		regulator-max-microvolt = <12000000>;
- 	};
- 
- 	vcc3v3_pcie: regulator-vcc3v3-pcie {
-@@ -105,74 +25,6 @@ vcc3v3_pcie: regulator-vcc3v3-pcie {
- 		gpios = <&gpio0 RK_PD4 GPIO_ACTIVE_HIGH>;
- 		vin-supply = <&dc_12v>;
- 	};
--
--	vcc3v3_sys: regulator-vcc3v3-sys {
--		compatible = "regulator-fixed";
--		regulator-name = "vcc3v3_sys";
--		regulator-always-on;
--		regulator-boot-on;
--		regulator-min-microvolt = <3300000>;
--		regulator-max-microvolt = <3300000>;
--		vin-supply = <&dc_12v>;
--	};
--
--	vcc5v0_host: regulator-vcc5v0-host {
--		compatible = "regulator-fixed";
--		enable-active-high;
--		pinctrl-names = "default";
--		pinctrl-0 = <&vcc5v0_host_en>;
--		gpio = <&gpio0 RK_PA6 GPIO_ACTIVE_HIGH>;
--		regulator-name = "vcc5v0_host";
--		regulator-always-on;
--		regulator-boot-on;
--		regulator-min-microvolt = <5000000>;
--		regulator-max-microvolt = <5000000>;
--		vin-supply = <&vcc5v0_usb>;
--	};
--
--	vcc5v0_otg: regulator-vcc5v0-otg {
--		compatible = "regulator-fixed";
--		enable-active-high;
--		gpio = <&gpio0 RK_PA5 GPIO_ACTIVE_HIGH>;
--		pinctrl-names = "default";
--		pinctrl-0 = <&vcc5v0_otg_en>;
--		regulator-name = "vcc5v0_otg";
--		regulator-always-on;
--		regulator-boot-on;
--		regulator-min-microvolt = <5000000>;
--		regulator-max-microvolt = <5000000>;
--		vin-supply = <&vcc5v0_usb>;
--	};
--
--	vcc5v0_sys: regulator-vcc5v0-sys {
--		compatible = "regulator-fixed";
--		regulator-name = "vcc5v0_sys";
--		regulator-always-on;
--		regulator-boot-on;
--		regulator-min-microvolt = <5000000>;
--		regulator-max-microvolt = <5000000>;
--		vin-supply = <&dc_12v>;
--	};
--
--	vcc5v0_usb: regulator-vcc5v0-usb {
--		compatible = "regulator-fixed";
--		regulator-name = "vcc5v0_usb";
--		regulator-always-on;
--		regulator-boot-on;
--		regulator-min-microvolt = <5000000>;
--		regulator-max-microvolt = <5000000>;
--		vin-supply = <&dc_12v>;
--	};
--};
--
--/* connected to usb_host0_xhci */
--&combphy0 {
--	status = "okay";
--};
--
--/* connected to sata1 */
--&combphy1 {
--	status = "okay";
- };
- 
- /* connected to sata2 */
-@@ -180,70 +32,6 @@ &combphy2 {
- 	status = "okay";
- };
- 
--&cpu0 {
--	cpu-supply = <&vdd_cpu>;
--};
--
--&cpu1 {
--	cpu-supply = <&vdd_cpu>;
--};
--
--&cpu2 {
--	cpu-supply = <&vdd_cpu>;
--};
--
--&cpu3 {
--	cpu-supply = <&vdd_cpu>;
--};
--
--/*
-- * The MCU can provide system temperature too, but only by polling and of
-- * course also cannot set trip points. So attach to the cpu thermal-zone
-- * instead to control the fan.
-- */
--&cpu_thermal {
--	trips {
--		case_fan0: case-fan0 {
--			hysteresis = <2000>;
--			temperature = <35000>;
--			type = "active";
--		};
--
--		case_fan1: case-fan1 {
--			hysteresis = <2000>;
--			temperature = <45000>;
--			type = "active";
--		};
--
--		case_fan2: case-fan2 {
--			hysteresis = <2000>;
--			temperature = <65000>;
--			type = "active";
--		};
--	};
--
--	cooling-maps {
--		/*
--		 * Always provide some air movement, due to small case
--		 * full of harddrives.
--		 */
--		map1 {
--			cooling-device = <&fan THERMAL_NO_LIMIT 1>;
--			trip = <&case_fan0>;
--		};
--
--		map2 {
--			cooling-device = <&fan 2 3>;
--			trip = <&case_fan1>;
--		};
--
--		map3 {
--			cooling-device = <&fan 4 THERMAL_NO_LIMIT>;
--			trip = <&case_fan2>;
--		};
--	};
--};
--
- &gmac0 {
- 	assigned-clocks = <&cru SCLK_GMAC0_RX_TX>, <&cru SCLK_GMAC0>;
- 	assigned-clock-parents = <&cru SCLK_GMAC0_RGMII_SPEED>, <&cru CLK_MAC0_2TOP>;
-@@ -262,263 +50,7 @@ &gmac0_rgmii_clk
- 	status = "okay";
- };
- 
--&gpu {
--	mali-supply = <&vdd_gpu>;
--	status = "okay";
--};
--
--&i2c0 {
--	status = "okay";
--
--	pmic@20 {
--		compatible = "rockchip,rk809";
--		reg = <0x20>;
--		interrupt-parent = <&gpio0>;
--		interrupts = <RK_PA3 IRQ_TYPE_LEVEL_LOW>;
--		#clock-cells = <1>;
--		pinctrl-names = "default";
--		pinctrl-0 = <&pmic_int_l>;
--		system-power-controller;
--		vcc1-supply = <&vcc3v3_sys>;
--		vcc2-supply = <&vcc3v3_sys>;
--		vcc3-supply = <&vcc3v3_sys>;
--		vcc4-supply = <&vcc3v3_sys>;
--		vcc5-supply = <&vcc3v3_sys>;
--		vcc6-supply = <&vcc3v3_sys>;
--		vcc7-supply = <&vcc3v3_sys>;
--		vcc8-supply = <&vcc3v3_sys>;
--		vcc9-supply = <&vcc3v3_sys>;
--		wakeup-source;
--
--		regulators {
--			vdd_logic: DCDC_REG1 {
--				regulator-name = "vdd_logic";
--				regulator-always-on;
--				regulator-boot-on;
--				regulator-initial-mode = <0x2>;
--				regulator-min-microvolt = <500000>;
--				regulator-max-microvolt = <1350000>;
--				regulator-ramp-delay = <6001>;
--
--				regulator-state-mem {
--					regulator-off-in-suspend;
--				};
--			};
--
--			vdd_gpu: DCDC_REG2 {
--				regulator-name = "vdd_gpu";
--				regulator-always-on;
--				regulator-initial-mode = <0x2>;
--				regulator-min-microvolt = <500000>;
--				regulator-max-microvolt = <1350000>;
--				regulator-ramp-delay = <6001>;
--
--				regulator-state-mem {
--					regulator-off-in-suspend;
--				};
--			};
--
--			vcc_ddr: DCDC_REG3 {
--				regulator-name = "vcc_ddr";
--				regulator-always-on;
--				regulator-boot-on;
--				regulator-initial-mode = <0x2>;
--
--				regulator-state-mem {
--					regulator-on-in-suspend;
--				};
--			};
--
--			vdd_npu: DCDC_REG4 {
--				regulator-name = "vdd_npu";
--				regulator-initial-mode = <0x2>;
--				regulator-min-microvolt = <500000>;
--				regulator-max-microvolt = <1350000>;
--				regulator-ramp-delay = <6001>;
--
--				regulator-state-mem {
--					regulator-off-in-suspend;
--				};
--			};
--
--			vcc_1v8: DCDC_REG5 {
--				regulator-name = "vcc_1v8";
--				regulator-always-on;
--				regulator-boot-on;
--				regulator-min-microvolt = <1800000>;
--				regulator-max-microvolt = <1800000>;
--
--				regulator-state-mem {
--					regulator-off-in-suspend;
--				};
--			};
--
--			vdda0v9_image: LDO_REG1 {
--				regulator-name = "vdda0v9_image";
--				regulator-always-on;
--				regulator-min-microvolt = <900000>;
--				regulator-max-microvolt = <900000>;
--
--				regulator-state-mem {
--					regulator-off-in-suspend;
--				};
--			};
--
--			vdda_0v9: LDO_REG2 {
--				regulator-name = "vdda_0v9";
--				regulator-always-on;
--				regulator-boot-on;
--				regulator-min-microvolt = <900000>;
--				regulator-max-microvolt = <900000>;
--
--				regulator-state-mem {
--					regulator-off-in-suspend;
--				};
--			};
--
--			vdda0v9_pmu: LDO_REG3 {
--				regulator-name = "vdda0v9_pmu";
--				regulator-always-on;
--				regulator-boot-on;
--				regulator-min-microvolt = <900000>;
--				regulator-max-microvolt = <900000>;
--
--				regulator-state-mem {
--					regulator-on-in-suspend;
--					regulator-suspend-microvolt = <900000>;
--				};
--			};
--
--			vccio_acodec: LDO_REG4 {
--				regulator-name = "vccio_acodec";
--				regulator-always-on;
--				regulator-boot-on;
--				regulator-min-microvolt = <3300000>;
--				regulator-max-microvolt = <3300000>;
--
--				regulator-state-mem {
--					regulator-off-in-suspend;
--				};
--			};
--
--			vccio_sd: LDO_REG5 {
--				regulator-name = "vccio_sd";
--				regulator-min-microvolt = <1800000>;
--				regulator-max-microvolt = <3300000>;
--
--				regulator-state-mem {
--					regulator-off-in-suspend;
--				};
--			};
--
--			vcc3v3_pmu: LDO_REG6 {
--				regulator-name = "vcc3v3_pmu";
--				regulator-always-on;
--				regulator-boot-on;
--				regulator-min-microvolt = <3300000>;
--				regulator-max-microvolt = <3300000>;
--
--				regulator-state-mem {
--					regulator-on-in-suspend;
--					regulator-suspend-microvolt = <3300000>;
--				};
--			};
--
--			vcca_1v8: LDO_REG7 {
--				regulator-name = "vcca_1v8";
--				regulator-always-on;
--				regulator-boot-on;
--				regulator-min-microvolt = <1800000>;
--				regulator-max-microvolt = <1800000>;
--
--				regulator-state-mem {
--					regulator-off-in-suspend;
--				};
--			};
--
--			vcca1v8_pmu: LDO_REG8 {
--				regulator-name = "vcca1v8_pmu";
--				regulator-always-on;
--				regulator-boot-on;
--				regulator-min-microvolt = <1800000>;
--				regulator-max-microvolt = <1800000>;
--
--				regulator-state-mem {
--					regulator-on-in-suspend;
--					regulator-suspend-microvolt = <1800000>;
--				};
--			};
--
--			vcca1v8_image: LDO_REG9 {
--				regulator-name = "vcca1v8_image";
--				regulator-always-on;
--				regulator-min-microvolt = <1800000>;
--				regulator-max-microvolt = <1800000>;
--
--				regulator-state-mem {
--					regulator-off-in-suspend;
--				};
--			};
--
--			vcc_3v3: SWITCH_REG1 {
--				regulator-name = "vcc_3v3";
--				regulator-always-on;
--				regulator-boot-on;
--
--				regulator-state-mem {
--					regulator-off-in-suspend;
--				};
--			};
--
--			vcc3v3_sd: SWITCH_REG2 {
--				regulator-name = "vcc3v3_sd";
--				/*
--				 * turning this off, breaks access to both
--				 * PCIe controllers, refclk generator perhaps
--				 */
--				regulator-always-on;
--				regulator-boot-on;
--
--				regulator-state-mem {
--					regulator-off-in-suspend;
--				};
--			};
--		};
--	};
--
--	vdd_cpu: regulator@40 {
--		compatible = "silergy,syr827";
--		reg = <0x40>;
--		fcs,suspend-voltage-selector = <1>;
--		regulator-name = "vdd_cpu";
--		regulator-always-on;
--		regulator-boot-on;
--		regulator-min-microvolt = <712500>;
--		regulator-max-microvolt = <1390000>;
--		regulator-ramp-delay = <2300>;
--		vin-supply = <&vcc5v0_sys>;
--	};
--};
--
- &i2c1 {
--	status = "okay";
--
--	rtc_rv8263: rtc@51 {
--		compatible = "microcrystal,rv8263";
--		reg = <0x51>;
--		wakeup-source;
--	};
--
--	/* eeprom for vital-product-data on the mainboard */
--	eeprom@54 {
--		compatible = "giantec,gt24c04a", "atmel,24c04";
--		reg = <0x54>;
--		label = "VPD_MB";
--		num-addresses = <2>;
--		pagesize = <16>;
--		read-only;
--	};
--
- 	/* eeprom for vital-product-data on the backplane */
- 	eeprom@56 {
- 		compatible = "giantec,gt24c04a", "atmel,24c04";
-@@ -530,6 +62,42 @@ eeprom@56 {
- 	};
- };
- 
-+&leds {
-+	led-1 {
-+		color = <LED_COLOR_ID_GREEN>;
-+		function = LED_FUNCTION_DISK;
-+		gpios = <&gpio1 RK_PD6 GPIO_ACTIVE_LOW>;
-+		label = "hdd2:green:disk";
-+		linux,default-trigger = "disk-activity";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&hdd2_led_pin>;
-+	};
-+
-+	led-2 {
-+		color = <LED_COLOR_ID_GREEN>;
-+		function = LED_FUNCTION_DISK;
-+		gpios = <&gpio1 RK_PD7 GPIO_ACTIVE_LOW>;
-+		label = "hdd3:green:disk";
-+		linux,default-trigger = "disk-activity";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&hdd3_led_pin>;
-+	};
-+
-+	led-3 {
-+		color = <LED_COLOR_ID_GREEN>;
-+		function = LED_FUNCTION_DISK;
-+		gpios = <&gpio2 RK_PA0 GPIO_ACTIVE_LOW>;
-+		label = "hdd4:green:disk";
-+		linux,default-trigger = "disk-activity";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&hdd4_led_pin>;
-+	};
-+};
-+
-+&mcu {
-+	compatible = "qnap,ts433-mcu";
-+};
-+
- &mdio0 {
- 	rgmii_phy0: ethernet-phy@3 {
- 		/* Motorcomm YT8521 phy */
-@@ -569,21 +137,7 @@ eth_phy0_reset_pin: eth-phy0-reset-pin {
- 		};
- 	};
- 
--	keys {
--		copy_button_pin: copy-button-pin {
--			rockchip,pins = <0 RK_PB6 RK_FUNC_GPIO &pcfg_pull_up>;
--		};
--
--		reset_button_pin: reset-button-pin {
--			rockchip,pins = <0 RK_PB5 RK_FUNC_GPIO &pcfg_pull_up>;
--		};
--	};
--
- 	leds {
--		hdd1_led_pin: hdd1-led-pin {
--			rockchip,pins = <1 RK_PD5 RK_FUNC_GPIO &pcfg_pull_up>;
--		};
--
- 		hdd2_led_pin: hdd2-led-pin {
- 			rockchip,pins = <1 RK_PD6 RK_FUNC_GPIO &pcfg_pull_up>;
- 		};
-@@ -596,152 +150,12 @@ hdd4_led_pin: hdd4_led-pin {
- 			rockchip,pins = <2 RK_PA0 RK_FUNC_GPIO &pcfg_pull_up>;
- 		};
- 	};
--
--	pmic {
--		pmic_int_l: pmic-int-l {
--			rockchip,pins = <0 RK_PA3 RK_FUNC_GPIO &pcfg_pull_up>;
--		};
--	};
--
--	usb {
--		vcc5v0_host_en: vcc5v0-host-en {
--			rockchip,pins = <0 RK_PA6 RK_FUNC_GPIO &pcfg_pull_none>;
--		};
--
--		vcc5v0_otg_en: vcc5v0-otg-en {
--			rockchip,pins = <0 RK_PA5 RK_FUNC_GPIO &pcfg_pull_none>;
--		};
--	};
--};
--
--&pmu_io_domains {
--	vccio4-supply = <&vcc_1v8>;
--	vccio6-supply = <&vcc_1v8>;
--	status = "okay";
--};
--
--&sata1 {
--	status = "okay";
- };
- 
- &sata2 {
- 	status = "okay";
- };
- 
--&sdhci {
--	bus-width = <8>;
--	max-frequency = <200000000>;
--	non-removable;
--	pinctrl-names = "default";
--	pinctrl-0 = <&emmc_bus8 &emmc_clk &emmc_cmd &emmc_datastrobe>;
--	status = "okay";
--};
--
--&tsadc {
--	rockchip,hw-tshut-mode = <1>;
--	rockchip,hw-tshut-polarity = <0>;
--	status = "okay";
--};
--
--/*
-- * Connected to an MCU, that provides access to more LEDs,
-- * buzzer, fan control and more.
-- */
--&uart0 {
--	status = "okay";
--
--	mcu {
--		compatible = "qnap,ts433-mcu";
--
--		fan: fan-0 {
--			#cooling-cells = <2>;
--			cooling-levels = <0 64 89 128 166 204 221 238>;
--		};
--
--		nvmem-layout {
--			compatible = "fixed-layout";
--			#address-cells = <1>;
--			#size-cells = <1>;
--
--			serial-number@0 {
--				reg = <0x0 0x13>;
--			};
--
--			ext-port@22 {
--				reg = <0x22 0x2>;
--			};
--
--			mac0: mac@24 {
--				compatible = "mac-base";
--				reg = <0x24 0x11>;
--				#nvmem-cell-cells = <1>;
--			};
--
--			mac1: mac@35 {
--				compatible = "mac-base";
--				reg = <0x35 0x11>;
--				#nvmem-cell-cells = <1>;
--			};
--
--			mac2: mac@46 {
--				compatible = "mac-base";
--				reg = <0x46 0x11>;
--				#nvmem-cell-cells = <1>;
--			};
--
--			mac3: mac@57 {
--				compatible = "mac-base";
--				reg = <0x57 0x11>;
--				#nvmem-cell-cells = <1>;
--			};
--
--			mac4: mac@68 {
--				compatible = "mac-base";
--				reg = <0x68 0x11>;
--				#nvmem-cell-cells = <1>;
--			};
--
--			mac5: mac@79 {
--				compatible = "mac-base";
--				reg = <0x79 0x11>;
--				#nvmem-cell-cells = <1>;
--			};
--
--			mac6: mac@8a {
--				compatible = "mac-base";
--				reg = <0x8a 0x11>;
--				#nvmem-cell-cells = <1>;
--			};
--
--			mac7: mac@9b {
--				compatible = "mac-base";
--				reg = <0x9b 0x11>;
--				#nvmem-cell-cells = <1>;
--			};
--		};
--	};
--};
--
--/*
-- * Pins available on CN3 connector at TTL voltage level (3V3).
-- * ,_  _.
-- * |1234|  1=TX 2=VCC
-- * `----'  3=RX 4=GND
-- */
--&uart2 {
--	status = "okay";
--};
--
--&usb2phy0 {
--	status = "okay";
--};
--
--/* connected to usb_host0_xhci */
--&usb2phy0_otg {
--	phy-supply = <&vcc5v0_otg>;
--	status = "okay";
--};
--
- &usb2phy1 {
- 	status = "okay";
- };
-@@ -767,12 +181,6 @@ &usb_host0_ohci {
- 	status = "okay";
- };
- 
--/* front port */
--&usb_host0_xhci {
--	dr_mode = "host";
--	status = "okay";
--};
--
- /* left port backside */
- &usb_host1_ehci {
- 	status = "okay";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568-qnap-tsx33.dtsi b/arch/arm64/boot/dts/rockchip/rk3568-qnap-tsx33.dtsi
-new file mode 100644
-index 000000000000..f009275c72c8
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3568-qnap-tsx33.dtsi
-@@ -0,0 +1,608 @@
-+#include <dt-bindings/input/input.h>
-+#include <dt-bindings/leds/common.h>
-+#include <dt-bindings/gpio/gpio.h>
-+#include "rk3568.dtsi"
-+
-+/ {
-+	aliases {
-+		mmc0 = &sdhci;
-+		rtc0 = &rtc_rv8263;
-+	};
-+
-+	chosen {
-+		stdout-path = "serial2:115200n8";
-+	};
-+
-+	keys {
-+		compatible = "gpio-keys";
-+		pinctrl-0 = <&copy_button_pin>, <&reset_button_pin>;
-+		pinctrl-names = "default";
-+
-+		key-copy {
-+			label = "copy";
-+			gpios = <&gpio0 RK_PB6 GPIO_ACTIVE_LOW>;
-+			linux,code = <KEY_COPY>;
-+		};
-+
-+		key-reset {
-+			label = "reset";
-+			gpios = <&gpio0 RK_PB5 GPIO_ACTIVE_LOW>;
-+			linux,code = <KEY_RESTART>;
-+		};
-+	};
-+
-+	leds: leds {
-+		compatible = "gpio-leds";
-+
-+		led-0 {
-+			color = <LED_COLOR_ID_GREEN>;
-+			function = LED_FUNCTION_DISK;
-+			gpios = <&gpio1 RK_PD5 GPIO_ACTIVE_LOW>;
-+			label = "hdd1:green:disk";
-+			linux,default-trigger = "disk-activity";
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&hdd1_led_pin>;
-+		};
-+	};
-+
-+	dc_12v: regulator-dc-12v {
-+		compatible = "regulator-fixed";
-+		regulator-name = "dc_12v";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <12000000>;
-+		regulator-max-microvolt = <12000000>;
-+	};
-+
-+	vcc3v3_sys: regulator-vcc3v3-sys {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc3v3_sys";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		vin-supply = <&dc_12v>;
-+	};
-+
-+	vcc5v0_host: regulator-vcc5v0-host {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&vcc5v0_host_en>;
-+		gpio = <&gpio0 RK_PA6 GPIO_ACTIVE_HIGH>;
-+		regulator-name = "vcc5v0_host";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		vin-supply = <&vcc5v0_usb>;
-+	};
-+
-+	vcc5v0_otg: regulator-vcc5v0-otg {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpio = <&gpio0 RK_PA5 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&vcc5v0_otg_en>;
-+		regulator-name = "vcc5v0_otg";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		vin-supply = <&vcc5v0_usb>;
-+	};
-+
-+	vcc5v0_sys: regulator-vcc5v0-sys {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc5v0_sys";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		vin-supply = <&dc_12v>;
-+	};
-+
-+	vcc5v0_usb: regulator-vcc5v0-usb {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc5v0_usb";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		vin-supply = <&dc_12v>;
-+	};
-+};
-+
-+/* connected to usb_host0_xhci */
-+&combphy0 {
-+	status = "okay";
-+};
-+
-+/* connected to sata1 */
-+&combphy1 {
-+	status = "okay";
-+};
-+
-+&cpu0 {
-+	cpu-supply = <&vdd_cpu>;
-+};
-+
-+&cpu1 {
-+	cpu-supply = <&vdd_cpu>;
-+};
-+
-+&cpu2 {
-+	cpu-supply = <&vdd_cpu>;
-+};
-+
-+&cpu3 {
-+	cpu-supply = <&vdd_cpu>;
-+};
-+
-+/*
-+ * The MCU can provide system temperature too, but only by polling and of
-+ * course also cannot set trip points. So attach to the cpu thermal-zone
-+ * instead to control the fan.
-+ */
-+&cpu_thermal {
-+	trips {
-+		case_fan0: case-fan0 {
-+			hysteresis = <2000>;
-+			temperature = <35000>;
-+			type = "active";
-+		};
-+
-+		case_fan1: case-fan1 {
-+			hysteresis = <2000>;
-+			temperature = <45000>;
-+			type = "active";
-+		};
-+
-+		case_fan2: case-fan2 {
-+			hysteresis = <2000>;
-+			temperature = <65000>;
-+			type = "active";
-+		};
-+	};
-+
-+	cooling-maps {
-+		/*
-+		 * Always provide some air movement, due to small case
-+		 * full of harddrives.
-+		 */
-+		map1 {
-+			cooling-device = <&fan THERMAL_NO_LIMIT 1>;
-+			trip = <&case_fan0>;
-+		};
-+
-+		map2 {
-+			cooling-device = <&fan 2 3>;
-+			trip = <&case_fan1>;
-+		};
-+
-+		map3 {
-+			cooling-device = <&fan 4 THERMAL_NO_LIMIT>;
-+			trip = <&case_fan2>;
-+		};
-+	};
-+};
-+
-+&gpu {
-+	mali-supply = <&vdd_gpu>;
-+	status = "okay";
-+};
-+
-+&i2c0 {
-+	status = "okay";
-+
-+	pmic@20 {
-+		compatible = "rockchip,rk809";
-+		reg = <0x20>;
-+		interrupt-parent = <&gpio0>;
-+		interrupts = <RK_PA3 IRQ_TYPE_LEVEL_LOW>;
-+		#clock-cells = <1>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&pmic_int_l>;
-+		system-power-controller;
-+		vcc1-supply = <&vcc3v3_sys>;
-+		vcc2-supply = <&vcc3v3_sys>;
-+		vcc3-supply = <&vcc3v3_sys>;
-+		vcc4-supply = <&vcc3v3_sys>;
-+		vcc5-supply = <&vcc3v3_sys>;
-+		vcc6-supply = <&vcc3v3_sys>;
-+		vcc7-supply = <&vcc3v3_sys>;
-+		vcc8-supply = <&vcc3v3_sys>;
-+		vcc9-supply = <&vcc3v3_sys>;
-+		wakeup-source;
-+
-+		regulators {
-+			vdd_logic: DCDC_REG1 {
-+				regulator-name = "vdd_logic";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-initial-mode = <0x2>;
-+				regulator-min-microvolt = <500000>;
-+				regulator-max-microvolt = <1350000>;
-+				regulator-ramp-delay = <6001>;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vdd_gpu: DCDC_REG2 {
-+				regulator-name = "vdd_gpu";
-+				regulator-always-on;
-+				regulator-initial-mode = <0x2>;
-+				regulator-min-microvolt = <500000>;
-+				regulator-max-microvolt = <1350000>;
-+				regulator-ramp-delay = <6001>;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vcc_ddr: DCDC_REG3 {
-+				regulator-name = "vcc_ddr";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-initial-mode = <0x2>;
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+				};
-+			};
-+
-+			vdd_npu: DCDC_REG4 {
-+				regulator-name = "vdd_npu";
-+				regulator-initial-mode = <0x2>;
-+				regulator-min-microvolt = <500000>;
-+				regulator-max-microvolt = <1350000>;
-+				regulator-ramp-delay = <6001>;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vcc_1v8: DCDC_REG5 {
-+				regulator-name = "vcc_1v8";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vdda0v9_image: LDO_REG1 {
-+				regulator-name = "vdda0v9_image";
-+				regulator-always-on;
-+				regulator-min-microvolt = <900000>;
-+				regulator-max-microvolt = <900000>;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vdda_0v9: LDO_REG2 {
-+				regulator-name = "vdda_0v9";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <900000>;
-+				regulator-max-microvolt = <900000>;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vdda0v9_pmu: LDO_REG3 {
-+				regulator-name = "vdda0v9_pmu";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <900000>;
-+				regulator-max-microvolt = <900000>;
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <900000>;
-+				};
-+			};
-+
-+			vccio_acodec: LDO_REG4 {
-+				regulator-name = "vccio_acodec";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <3300000>;
-+				regulator-max-microvolt = <3300000>;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vccio_sd: LDO_REG5 {
-+				regulator-name = "vccio_sd";
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <3300000>;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vcc3v3_pmu: LDO_REG6 {
-+				regulator-name = "vcc3v3_pmu";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <3300000>;
-+				regulator-max-microvolt = <3300000>;
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <3300000>;
-+				};
-+			};
-+
-+			vcca_1v8: LDO_REG7 {
-+				regulator-name = "vcca_1v8";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vcca1v8_pmu: LDO_REG8 {
-+				regulator-name = "vcca1v8_pmu";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1800000>;
-+				};
-+			};
-+
-+			vcca1v8_image: LDO_REG9 {
-+				regulator-name = "vcca1v8_image";
-+				regulator-always-on;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vcc_3v3: SWITCH_REG1 {
-+				regulator-name = "vcc_3v3";
-+				regulator-always-on;
-+				regulator-boot-on;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vcc3v3_sd: SWITCH_REG2 {
-+				regulator-name = "vcc3v3_sd";
-+				/*
-+				 * turning this off, breaks access to both
-+				 * PCIe controllers, refclk generator perhaps
-+				 */
-+				regulator-always-on;
-+				regulator-boot-on;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+		};
-+	};
-+
-+	vdd_cpu: regulator@40 {
-+		compatible = "silergy,syr827";
-+		reg = <0x40>;
-+		fcs,suspend-voltage-selector = <1>;
-+		regulator-name = "vdd_cpu";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <712500>;
-+		regulator-max-microvolt = <1390000>;
-+		regulator-ramp-delay = <2300>;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+};
-+
-+&i2c1 {
-+	status = "okay";
-+
-+	rtc_rv8263: rtc@51 {
-+		compatible = "microcrystal,rv8263";
-+		reg = <0x51>;
-+		wakeup-source;
-+	};
-+
-+	/* eeprom for vital-product-data on the mainboard */
-+	eeprom@54 {
-+		compatible = "giantec,gt24c04a", "atmel,24c04";
-+		reg = <0x54>;
-+		label = "VPD_MB";
-+		num-addresses = <2>;
-+		pagesize = <16>;
-+		read-only;
-+	};
-+};
-+
-+&pinctrl {
-+	keys {
-+		copy_button_pin: copy-button-pin {
-+			rockchip,pins = <0 RK_PB6 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+
-+		reset_button_pin: reset-button-pin {
-+			rockchip,pins = <0 RK_PB5 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+
-+	leds {
-+		hdd1_led_pin: hdd1-led-pin {
-+			rockchip,pins = <1 RK_PD5 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+
-+	pmic {
-+		pmic_int_l: pmic-int-l {
-+			rockchip,pins = <0 RK_PA3 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+
-+	usb {
-+		vcc5v0_host_en: vcc5v0-host-en {
-+			rockchip,pins = <0 RK_PA6 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		vcc5v0_otg_en: vcc5v0-otg-en {
-+			rockchip,pins = <0 RK_PA5 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+};
-+
-+&pmu_io_domains {
-+	vccio4-supply = <&vcc_1v8>;
-+	vccio6-supply = <&vcc_1v8>;
-+	status = "okay";
-+};
-+
-+&sata1 {
-+	status = "okay";
-+};
-+
-+&sdhci {
-+	bus-width = <8>;
-+	max-frequency = <200000000>;
-+	non-removable;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&emmc_bus8 &emmc_clk &emmc_cmd &emmc_datastrobe>;
-+	status = "okay";
-+};
-+
-+&tsadc {
-+	rockchip,hw-tshut-mode = <1>;
-+	rockchip,hw-tshut-polarity = <0>;
-+	status = "okay";
-+};
-+
-+/*
-+ * Connected to an MCU, that provides access to more LEDs,
-+ * buzzer, fan control and more.
-+ */
-+&uart0 {
-+	status = "okay";
-+
-+	mcu: mcu {
-+		fan: fan-0 {
-+			#cooling-cells = <2>;
-+			cooling-levels = <0 64 89 128 166 204 221 238>;
-+		};
-+
-+		nvmem-layout {
-+			compatible = "fixed-layout";
-+			#address-cells = <1>;
-+			#size-cells = <1>;
-+
-+			serial-number@0 {
-+				reg = <0x0 0x13>;
-+			};
-+
-+			ext-port@22 {
-+				reg = <0x22 0x2>;
-+			};
-+
-+			mac0: mac@24 {
-+				compatible = "mac-base";
-+				reg = <0x24 0x11>;
-+				#nvmem-cell-cells = <1>;
-+			};
-+
-+			mac1: mac@35 {
-+				compatible = "mac-base";
-+				reg = <0x35 0x11>;
-+				#nvmem-cell-cells = <1>;
-+			};
-+
-+			mac2: mac@46 {
-+				compatible = "mac-base";
-+				reg = <0x46 0x11>;
-+				#nvmem-cell-cells = <1>;
-+			};
-+
-+			mac3: mac@57 {
-+				compatible = "mac-base";
-+				reg = <0x57 0x11>;
-+				#nvmem-cell-cells = <1>;
-+			};
-+
-+			mac4: mac@68 {
-+				compatible = "mac-base";
-+				reg = <0x68 0x11>;
-+				#nvmem-cell-cells = <1>;
-+			};
-+
-+			mac5: mac@79 {
-+				compatible = "mac-base";
-+				reg = <0x79 0x11>;
-+				#nvmem-cell-cells = <1>;
-+			};
-+
-+			mac6: mac@8a {
-+				compatible = "mac-base";
-+				reg = <0x8a 0x11>;
-+				#nvmem-cell-cells = <1>;
-+			};
-+
-+			mac7: mac@9b {
-+				compatible = "mac-base";
-+				reg = <0x9b 0x11>;
-+				#nvmem-cell-cells = <1>;
-+			};
-+		};
-+	};
-+};
-+
-+/*
-+ * Pins available on CN3 connector at TTL voltage level (3V3).
-+ * ,_  _.
-+ * |1234|  1=TX 2=VCC
-+ * `----'  3=RX 4=GND
-+ */
-+&uart2 {
-+	status = "okay";
-+};
-+
-+&usb2phy0 {
-+	status = "okay";
-+};
-+
-+/* connected to usb_host0_xhci */
-+&usb2phy0_otg {
-+	phy-supply = <&vcc5v0_otg>;
-+	status = "okay";
-+};
-+
-+/* front port */
-+&usb_host0_xhci {
-+	dr_mode = "host";
-+	status = "okay";
-+};
--- 
-2.47.2
+On Wed, Sep 10, 2025 at 06:16:25PM +0300, Dmitry Baryshkov wrote:
+> On Wed, Sep 10, 2025 at 01:03:47PM +0200, Maxime Ripard wrote:
+> > On Tue, Sep 09, 2025 at 05:51:59PM +0300, Dmitry Baryshkov wrote:
+> > > Currently DRM framework expects that the HDMI connector driver suppor=
+ts
+> > > all infoframe types: it generates the data as required and calls into
+> > > the driver to program all of them, letting the driver to soft-fail if
+> > > the infoframe is unsupported. This has a major drawback on userspace
+> > > API: the framework also registers debugfs files for all Infoframe typ=
+es,
+> > > possibly surprising the users when infoframe is visible in the debugfs
+> > > file, but it is not visible on the wire. Drivers are also expected to
+> > > return success even for unsuppoted InfoFrame types.
+> > >=20
+> > > Let drivers declare that they support only a subset of infoframes,
+> > > creating a more consistent interface. Make the affected drivers return
+> > > -EOPNOTSUPP if they are asked to program (or clear) InfoFrames which =
+are
+> > > not supported.
+> > >=20
+> > > Acked-by: Liu Ying <victor.liu@nxp.com>
+> > > Acked-by: Daniel Stone <daniels@collabora.com>
+> > > Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+> >=20
+> > Again, I still believe that it's a bad idea, goes against what the spec
+> > states, and the framework was meant to be.
+>=20
+> Please correct me if I'm wrong. The specs (HDMI & CEA) define several
+> infoframes and whether we should be sending them. If I'm reading it
+> correctrly, CEA spec explicitly says 'If the Source supports the
+> transmission of [foo] InfoFrame..." (6.4 - AVI, 6.6 - Audio, 6.7 MPEG,
+> 6.9 - DRM). For other InfoFrames (6.5 SPD, 6.8 NTSC VBI) it just defines
+> that sending those frames is optional.
 
+SPD is indeed optional, but the HDMI spec, (HDMI 1.4b, Section 8.2.1 -
+Auxiliary Video information (AVI) InfoFrame) states that:
+
+  A Source shall always transmit an AVI InfoFrame at least once per two
+  Video Fields if the Source:
+
+   * is ever capable of transmitting an AVI InfoFrame or,
+   * is ever capable of transmitting YCBCR pixel encoding or,
+   * is ever capable of transmitting any colorimetry other than the
+     transmitted video format=E2=80=99s default colorimetry or,
+   * is ever capable of transmitting any xvYCC or future enhanced
+     colorimetry or,
+   * is ever capable of transmitting any Gamut Metadata packet or,
+   * is ever capable of transmitting any video format with multiple
+     allowed pixel repetitions or,
+   * is ever capable of transmitting Content Type other than =E2=80=9Cno da=
+ta=E2=80=9D or,
+   * is ever capable of transmitting YCC Quantization Range.
+
+  The AVI InfoFrame shall be transmitted even while such a Source is
+  transmitting RGB and non-pixel-repeated video. When a Source is not
+  explicitly required to transmit AVI InfoFrames, it is recommended that
+  the Source transmit AVI InfoFrames.
+
+So it's recommended in every case, and the list kind of makes it
+mandatory for how Linux uses HDMI.
+
+Also, did we ever encounter some hardware that couldn't send AVI?
+
+Audio is mandatory when streaming audio, DRM when using HDR, and we
+don't support the others yet.
+
+So the only we support but don't have to send is SPD.
+
+> We can't even infer support for InfoFrames from the Source features.
+> E.g. CEA 6.6.1 defines a case when digital audio is allowed to be sent,
+> without sending Audio InfoFrame.
+
+HDMI 1.4 section 8.2.2 - Audio Infoframe states that:
+
+  Whenever an active audio stream is being transmitted, an accurate
+  Audio InfoFrame shall be transmitted at least once per two Video
+  Fields.
+
+I'd say it takes precedence over CTA-861.
+
+> As we will be getting more and more features, some of the InfoFrames
+> or data packets will be 'good to have, but not required'.
+
+And drivers would be free to ignore those.
+
+> > So, no, sorry. That's still a no for me. Please stop sending that patch
+>=20
+> Oops :-)
+>=20
+> > unless we have a discussion about it and you convince me that it's
+> > actually something that we'd need.
+>=20
+> My main concern is that the drivers should not opt-out of the features.
+> E.g. if we start supporting ISRC packets or MPEG or NTSC VBI InfoFrames
+> (yes, stupid examples), it should not be required to go through all the
+> drivers, making sure that they disable those. Instead the DRM framework
+> should be able to make decisions like:
+>=20
+> - The driver supports SPD and the VSDB defines SPD, enable this
+>   InfoFrame (BTW, this needs to be done anyway, we should not be sending
+>   SPD if it's not defined in VSDB, if I read it correctly).
+>=20
+> - The driver hints that the pixel data has only 10 meaninful bits of
+>   data per component (e.g. out of 12 for DeepColor 36), the Sink has
+>   HF-VSDB, send HF-VSIF.
+>=20
+> - The driver has enabled 3D stereo mode, but it doesn't declare support
+>   for HF-VSIF. Send only H14b-VSIF.
+>=20
+> Similarly (no, I don't have these on my TODO list, these are just
+> examples):
+> - The driver defines support for NTSC VBI, register a VBI device.
+>=20
+> - The driver defines support for ISRC packets, register ISRC-related
+>   properties.
+>=20
+> - The driver defines support for MPEG Source InfoFrame, provide a way
+>   for media players to report frame type and bit rate.
+>=20
+> - The driver provides limited support for Extended HDR DM InfoFrames,
+>   select the correct frame type according to driver capabilities.
+>=20
+> Without the 'supported' information we should change atomic_check()
+> functions to set infoframe->set to false for all unsupported InfoFrames
+> _and_ go through all the drivers again each time we add support for a
+> feature (e.g. after adding HF-VSIF support).
+
+=46rom what you described here, I think we share a similar goal and have
+somewhat similar concerns (thanks, btw, it wasn't obvious to me before),
+we just disagree on the trade-offs and ideal solution :)
+
+I agree that we need to sanity check the drivers, and I don't want to go
+back to the situation we had before where drivers could just ignore
+infoframes and take the easy way out.
+
+It should be hard, and easy to catch during review.
+
+I don't think bitflag are a solution because, to me, it kind of fails
+both.
+
+What if, just like the debugfs discussion, we split write_infoframe into
+write_avi_infoframe (mandatory), write_spd_infoframe (optional),
+write_audio_infoframe (checked by drm_connector_hdmi_audio_init?) and
+write_hdr_infoframe (checked in drmm_connector_hdmi_init if max_bpc > 8)
+
+How does that sound?
+
+Maxime
+
+--5gspsh2yhbs7pucv
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCaNU3XQAKCRAnX84Zoj2+
+duiWAYCEQHaNpq1acegbRGgnWK7idyco+oNyb5OKUdG2mSrF8iG51+HcmQ30rpWH
+OmNB+HsBf3AD+4uAstcClyYSies8sQ9MYWjuxdp67l9l23iryEuQM410hwJTA3iL
+XSaP3z9ISQ==
+=35Cr
+-----END PGP SIGNATURE-----
+
+--5gspsh2yhbs7pucv--
+
+
+--===============7303361236891608375==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============7303361236891608375==--
+
