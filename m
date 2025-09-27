@@ -4,97 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9AD36CAC5B8
-	for <linux-rockchip@archiver.kernel.org>; Sat, 27 Sep 2025 12:49:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68E15CAC5B8
+	for <linux-rockchip@archiver.kernel.org>; Sat, 27 Sep 2025 13:47:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dGMmz167sDJT8JnNAQV7kbrUIWpiuJyxdUQEkpunlWg=; b=xqdz8opzdUXjNn
-	ZE9v6h4DmrhiqB7tGwdHGytL90yvm1JkBA6q82rlXEcKwneJlnOur3j1ioY8u6GeuuNkJssA3TlDk
-	xxHy5tjwtRddXsa17xAJuTn/T1appwba50/pPShD+IYAyg5v6CB4GWu845/aN82AjqxfP2AOnG0lN
-	c63qlY+Xa57UQKNI6cHfE/Uwh4Y0AAIMILNcpsjc2q+wrY/Dgwj3czYi7PJvnK8LeEJ2OPzTlJW6O
-	+OpSPoNP2QflJfoOIXNhsJ4Um27PtYt3jCSuUhi2BIdceAwbsC/jiDWv89wiuRoYZYWMq7JWI4rBJ
-	EsIo9YN8FFxyMIDnjgZA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=5pBG/MLrFz99fphQJxU+orayF4XYMkF+c5iRAGHkPqk=; b=0jujnGnDE5pqqwhl9yVC6umY3b
+	iD6vXN9LUU/Jiu2OaepvEZWBmJJmL/wf94LkCO00QVHXbNBmKoxDWrfEXD4X4+pExtZFjnSjFoKIy
+	fS+3yb/RRuOWrHIcjNDG5i4LTOa145uM3DG+/Yknx00TM6LUZS6qGx4G/mtCyg4Fucxb5X5I5vozk
+	QX0ulKYnolfuvaVzzWoHK5RPIf+yRM3ZbGCybC0wqrRzTUgUcrvC12YFEMpyL285ImY0Zw+sJAN42
+	Io24iLgMZDk0VSwHouHbW4xX+XfA4f+40VE+FuhBaP0Uxe0uOtupbacn13MueC//nc7q+oZgEvMcg
+	k4MHK+bw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v2UM5-00000009mcQ-21HQ;
-	Sat, 27 Sep 2025 12:48:49 +0000
-Received: from mgamail.intel.com ([192.198.163.7])
+	id 1v2VH6-0000000A6Q9-0lfU;
+	Sat, 27 Sep 2025 13:47:44 +0000
+Received: from mail.manjaro.org ([116.203.91.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v2UM3-00000009mbB-1bUp;
-	Sat, 27 Sep 2025 12:48:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1758977327; x=1790513327;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=0W45DesrwvOL7dwAbK4Wk7k7PmMheNSI1z8Zd+4XNIw=;
-  b=MILHCeOzXJ2wuvHHzEi4M7vNrEv6fqI3D7w3cb25fvmIwkkcjuKOmEgS
-   5IXkOklmy28bB2yxhHYkAMqLDOiCkE0w86ispFEbKrT+cCjygymj53Mh4
-   dR9Z8OBhjBBHhdJRYf48nBHT4VC0Olt6Qu6e7t3kXYWZdupO0Xppt38+j
-   Bj3dMlxuqTVhM1Ruyuw5RGpirodfJ+BiSpJwp1FqgBIjJNv3F/pG42VQJ
-   l9nD/gF5gFRE/VlMs52746UBWnEmCG6/Ujqp6q79w4Ej8ILKDFa6WHl2x
-   04CW5HjG3410bErfNDzN6zzJRM5pMDtHalJXjk86C6g4v7NYn9bNTzZiB
-   A==;
-X-CSE-ConnectionGUID: IchtO2O4QXaZY+e6pg8d+w==
-X-CSE-MsgGUID: Idcy6ueJTLG2FYN1F2oTKw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11565"; a="86734725"
-X-IronPort-AV: E=Sophos;i="6.18,297,1751266800"; 
-   d="scan'208";a="86734725"
-Received: from orviesa002.jf.intel.com ([10.64.159.142])
-  by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 Sep 2025 05:48:45 -0700
-X-CSE-ConnectionGUID: EtxiiekZTFm3ZEexcFIrlg==
-X-CSE-MsgGUID: PAlpPQWsRdGdV4Lp7P0oNQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.18,297,1751266800"; 
-   d="scan'208";a="208568713"
-Received: from lkp-server02.sh.intel.com (HELO 84c55410ccf6) ([10.239.97.151])
-  by orviesa002.jf.intel.com with ESMTP; 27 Sep 2025 05:48:38 -0700
-Received: from kbuild by 84c55410ccf6 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1v2ULr-00073X-2Y;
-	Sat, 27 Sep 2025 12:48:35 +0000
-Date: Sat, 27 Sep 2025 20:48:05 +0800
-From: kernel test robot <lkp@intel.com>
-To: Dmitry Baryshkov <lumag@kernel.org>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-	Liu Ying <victor.liu@nxp.com>,
-	Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Rob Clark <robin.clark@oss.qualcomm.com>,
-	Abhinav Kumar <abhinav.kumar@linux.dev>,
-	Jessica Zhang <jessica.zhang@oss.qualcomm.com>,
-	Sean Paul <sean@poorly.run>,
-	Marijn Suijten <marijn.suijten@somainline.org>,
-	Sandy Huang <hjc@rock-chips.com>,
-	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
-	Andy Yan <andy.yan@rock-chips.com>, Chen-Yu Tsai <wens@csie.org>,
-	Samuel Holland <samuel@sholland.org>
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
-	linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev
-Subject: Re: [PATCH 1/9] drm/display: hdmi-state-helpers: warn on unsupported
- InfoFrame types
-Message-ID: <202509272013.GAc17rsa-lkp@intel.com>
-References: <20250927-limit-infoframes-2-v1-1-697511bd050b@oss.qualcomm.com>
+	id 1v2VH2-0000000A6MA-41Ki;
+	Sat, 27 Sep 2025 13:47:42 +0000
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250927-limit-infoframes-2-v1-1-697511bd050b@oss.qualcomm.com>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1758980856;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=viO8D+Qu2R6riMUQBJZA4lci0O87eiHC/lld0s2EB4A=;
+	b=k1TkaTrKrNDGCaTdjNAzJ54xvUbwa6oLdyeabtuQche1UzsO4we+X1IcKp6h0zBbBkwPKs
+	lri59Pl1DSM0NoDtpcluC29zfICKCZ8lSyFHfOPSamPaUJuROwZ/uGt1nhG3J7J2NOe9Nb
+	O/KIgDxmBszhbBzxLZb6JZoBLW48y1WlSML5W0dDdw/K553F4HosjgBSnujXaFdEKlx1fZ
+	HJFlk5RI4+khI/ZU0gzIf9FbSwPulObZIkJ/MX7RHhJn3TtSOB7KTxYKH8SJ/hDqtFCi2g
+	XriAwvbvt71g5BRuVo2C5ryf4QkHuTqP9tV+zbGNOYzYF2NvKczLJTNBblVimw==
+Date: Sat, 27 Sep 2025 15:47:35 +0200
+From: Dragan Simic <dsimic@manjaro.org>
+To: Diederik de Haas <didi.debian@cknow.org>
+Cc: Tianling Shen <cnsztl@gmail.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Jonas Karlman
+ <jonas@kwiboo.se>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Add devicetree for the
+ FriendlyElec NanoPi R76S
+In-Reply-To: <DD3EST9Y5UHF.12FJMDJUSZNYL@cknow.org>
+References: <20250922091509.2695565-1-cnsztl@gmail.com>
+ <20250922091509.2695565-2-cnsztl@gmail.com>
+ <DD2V17FJ29MV.3YDX1VUWGKEH@cknow.org>
+ <1bb00ad6-ffe1-4783-909b-032dfb984180@gmail.com>
+ <DD3EST9Y5UHF.12FJMDJUSZNYL@cknow.org>
+Message-ID: <d0a3d5d4480eac12ba5e2b15bcbc578f@manjaro.org>
+X-Sender: dsimic@manjaro.org
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250927_054847_437244_58D937D1 
-X-CRM114-Status: GOOD (  10.22  )
+X-CRM114-CacheID: sfid-20250927_064741_222084_7C4AA4E3 
+X-CRM114-Status: GOOD (  13.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,65 +74,42 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Dmitry,
+Hello Diederik and Tianling,
 
-kernel test robot noticed the following build errors:
+On 2025-09-27 09:37, Diederik de Haas wrote:
+> On Sat Sep 27, 2025 at 3:19 AM CEST, Tianling Shen wrote:
+>> On 2025/9/27 0:07, Diederik de Haas wrote:
+>>> It is recommended to use the labels in the schematics to define the
+>>> pinctl nodes (and thus their references). In quite a lot of cases 
+>>> that's
+>>> indeed the case, but not for gpio-keys (USER_BUT) or these gpio-leds
+>>> pinctls.
+>> 
+>> I cannot find any specific naming rules from the gpio-keys[1] and
+>> gpio-leds[2] bindings, did I miss any update?
+>> 
+>> I think this naming matches the current practice at least in 
+>> rockchip's
+>> dt tree.
+> 
+> There is an unofficial rule/aim:
+> https://lore.kernel.org/linux-rockchip/5360173.ktpJ11cQ8Q@diego/
+> But granted, there is 'some' inconsistency.
+> 
+> And used in f.e.
+> https://lore.kernel.org/linux-rockchip/20250727144409.327740-4-jonas@kwiboo.se/
+> 
+> Where you can just copy the pinctrl labels from the dts[i] and paste
+> that in the schematic document and you're instantly at the right place.
+> Which is the exact purpose of that rule/aim.
 
-[auto build test ERROR on bf2602a3cb2381fb1a04bf1c39a290518d2538d1]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/Dmitry-Baryshkov/drm-display-hdmi-state-helpers-warn-on-unsupported-InfoFrame-types/20250927-090630
-base:   bf2602a3cb2381fb1a04bf1c39a290518d2538d1
-patch link:    https://lore.kernel.org/r/20250927-limit-infoframes-2-v1-1-697511bd050b%40oss.qualcomm.com
-patch subject: [PATCH 1/9] drm/display: hdmi-state-helpers: warn on unsupported InfoFrame types
-config: x86_64-buildonly-randconfig-002-20250927 (https://download.01.org/0day-ci/archive/20250927/202509272013.GAc17rsa-lkp@intel.com/config)
-compiler: clang version 20.1.8 (https://github.com/llvm/llvm-project 87f0227cb60147a26a1eeb4fb06e3b505e9c7261)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250927/202509272013.GAc17rsa-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202509272013.GAc17rsa-lkp@intel.com/
-
-All errors (new ones prefixed by >>):
-
->> drivers/gpu/drm/display/drm_hdmi_state_helper.c:924:17: error: use of undeclared identifier 'it'
-     924 |                 dev_warn_once(it->dev, "unsupported HDMI infoframe 0x%x\n", frame->any.type);
-         |                               ^
->> drivers/gpu/drm/display/drm_hdmi_state_helper.c:924:63: error: use of undeclared identifier 'frame'
-     924 |                 dev_warn_once(it->dev, "unsupported HDMI infoframe 0x%x\n", frame->any.type);
-         |                                                                             ^
-   drivers/gpu/drm/display/drm_hdmi_state_helper.c:953:17: error: use of undeclared identifier 'it'
-     953 |                 dev_warn_once(it->dev, "unsupported HDMI infoframe 0x%x\n", frame->any.type);
-         |                               ^
-   3 errors generated.
-
-
-vim +/it +924 drivers/gpu/drm/display/drm_hdmi_state_helper.c
-
-   916	
-   917	static int clear_infoframe(struct drm_connector *connector,
-   918				   struct drm_connector_hdmi_infoframe *old_frame)
-   919	{
-   920		int ret;
-   921	
-   922		ret = clear_device_infoframe(connector, old_frame->data.any.type);
-   923		if (ret == -EOPNOTSUPP)
- > 924			dev_warn_once(it->dev, "unsupported HDMI infoframe 0x%x\n", frame->any.type);
-   925		if (ret)
-   926			return ret;
-   927	
-   928		return 0;
-   929	}
-   930	
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Is the schematic actually publicly available?  I tried searching for
+it, but found nothing, unfortunately.
 
 _______________________________________________
 Linux-rockchip mailing list
