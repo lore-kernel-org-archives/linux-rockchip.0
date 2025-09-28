@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 243EACAC5BC
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85881CAC5B5
 	for <linux-rockchip@archiver.kernel.org>; Sun, 28 Sep 2025 08:25:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,78 +12,77 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=er2pJbz2uVko7moLE9DtAXzm5W9Ij65dVeuvyfr9zaM=; b=eiDr12FpyN6XtP
-	5PH8gGeqgr7nFu3DFzmlxWX/WlrCzbkYvdVTXEeaFdfaHAoJD5QMP/rfQd4qdBBoGHCiMwvPtOXFz
-	e6T2LGCPheN3mwHLnwV6ISYSW1VyxXUGdRLjnXp4nu2FfcDeRNG01FlmT/U7ItM/VhEfJ0pJWHFl0
-	W8BmH6ogKg70dvh842pkJUnf203EsId4MTUYvDMrwe8GNPVJO+MNXphI/y7m02CKxHCg0Ee0KcNXJ
-	OF6ejJqDcVE8e38QfN18BoKuMBEYW16sRKuOxo8lUSVxldecXrxbpk/xu23HvDfxmDeU14Fkgg7Kk
-	Ag0pS4GHiIm0A84LYOYA==;
+	List-Owner; bh=PTNJ/i5GsKlxAlpTlR3yzyvQGEs5bsYEn4cWmZflBOo=; b=HvZCfoQ5rI5YX6
+	W0pBkNVD1xml0mqvMI7l4tbqtGcO4HDHYDf4l3XXm94SaaQgaH8AQwr8w2HwasRqFmSw1BoFMTGzl
+	BBaNBYsgixoiVhP2NMveGZQwSZZZC2fZ3fl/yuOkjbHBPjb5cW1mr0yqA2i06rOmzM0I8yrWE5f3G
+	TPphmJktXQo81dep8eybsGsegbZvnp9gXAIlOCwzVwWDEylB0f7zlVu/VivLPs9cEoY8SUD6CRSRv
+	3OEHFqtf6xEoL7MWjcJf9H/XMX5VE/+wunDxpnZmPNxqQxbfGv83C7N4tLHQ+cZN0zBvElbBJpaOe
+	EakQSm2cE1bqicwrOcng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v2miv-0000000EJq0-3cDp;
-	Sun, 28 Sep 2025 08:25:37 +0000
+	id 1v2miw-0000000EJqY-1FIV;
+	Sun, 28 Sep 2025 08:25:38 +0000
 Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v2mig-0000000EJV8-3aoJ
+	id 1v2mij-0000000EJZ4-0KjK
 	for linux-rockchip@lists.infradead.org;
-	Sun, 28 Sep 2025 08:25:24 +0000
-Received: from pps.filterd (m0279868.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 58S4wYZs018292
-	for <linux-rockchip@lists.infradead.org>; Sun, 28 Sep 2025 08:25:21 GMT
+	Sun, 28 Sep 2025 08:25:26 +0000
+Received: from pps.filterd (m0279873.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 58S0jJR1006556
+	for <linux-rockchip@lists.infradead.org>; Sun, 28 Sep 2025 08:25:24 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
 	cc:content-transfer-encoding:content-type:date:from:in-reply-to
 	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	pDGCMgEwnjTnK4X9AKh+cUPiYlJXGC7VErq2j1leXiI=; b=CQwlpWSPQTUYPWV9
-	T++W2n23NdFXAGo1Oz5z8OuzR4V3TeLUenpqXGIpk6WYUxPrjn49tZT0hSwqL55g
-	J5Xt+JQu5RonBzt814SibeYMkhy+zbJZZjccY4PQJ594iadgVRvoihEd+7fZNr7r
-	jaqGQqHzycvMp1fdvVD3NTjQXQHTPU7+KhjxYZSKu5yOctkUnqfRvpMI1gY9t3/I
-	/kzRaY/Rr/vhFjLdw8XekRdt6WOqYUc0aV5TRNu5KmkaEF4+OFrUsAAYq02hvrKj
-	Zrp/WG2XXIb8D5RIo9Mw0GlfIN0a/GOto/OqkHMWqsE9piZYG1kBl8Me8sGetgjn
-	XX6KrA==
-Received: from mail-qt1-f197.google.com (mail-qt1-f197.google.com [209.85.160.197])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 49e78ftfkx-1
+	z7oVTmK4jTegfS2LDYKFs2TDqZVMBs8llu7PGEMrxt8=; b=cxLU/nZVz5UWUibq
+	ZG6VxhOTPNQsP2gAAYed3eAS3hPx2zdPmA6z+TP6CLhhgfpJcHe+qqgkbqAF/nF3
+	GwyISE9aK7iqgyqPUeY5UTYNjsJlJF8BexHyQuGXwza/gNhtEwA4ub+t5dXwbb2K
+	gWvAQhohtLv8z3vJ3XP2x+rk6DpUgEXK/b+XEVrzMycX/9iaahbZ8o2D69HB4vpK
+	Y07PU4GSBFOXfMNkp+0W6zS5GkL3afys9aF//BG7eZp15nT/oTluCwaKbtBkqH63
+	JPrAg2rMw+NcKCx8GgF+B5Xru08K/QkuwMVwfiL/h/wnt/8QE8FgFgh3afcSxOVL
+	/FPurQ==
+Received: from mail-qt1-f199.google.com (mail-qt1-f199.google.com [209.85.160.199])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 49e59mtre1-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
-	for <linux-rockchip@lists.infradead.org>; Sun, 28 Sep 2025 08:25:21 +0000 (GMT)
-Received: by mail-qt1-f197.google.com with SMTP id d75a77b69052e-4d91b91b6f8so63254611cf.3
-        for <linux-rockchip@lists.infradead.org>; Sun, 28 Sep 2025 01:25:21 -0700 (PDT)
+	for <linux-rockchip@lists.infradead.org>; Sun, 28 Sep 2025 08:25:24 +0000 (GMT)
+Received: by mail-qt1-f199.google.com with SMTP id d75a77b69052e-4de53348322so78516221cf.0
+        for <linux-rockchip@lists.infradead.org>; Sun, 28 Sep 2025 01:25:24 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1759047921; x=1759652721;
+        d=1e100.net; s=20230601; t=1759047923; x=1759652723;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=pDGCMgEwnjTnK4X9AKh+cUPiYlJXGC7VErq2j1leXiI=;
-        b=RixcHBkeTKsrU/yuFTy6j/6xEEGzx4W84uj3g8kKbtLDrpC6GwAjpfwPY4dYVXWYu2
-         8hyjX4xm9zwJI1BD87z0iu34XxRNKLuxTPDGGfBB8IXUA9D0P1QqjBZ9h1Gl5eKj4DLN
-         tM1QaPuOenDCnUMZr0ETY6FmZkpeqUcHXyZomGmsVXYYKyvU0PRHZfpHhcwvz2IiUtGT
-         w5sNmRqvcGhAmu72xeUrrOkVyzzvaBppqSI+7Niu+7fXx7uZ/G3DvMNwjUMqy8PziLp2
-         aHaZf8MyorgHCGr0Bmq/UG75bkG1z4ifQ4rb87lNL7qfPIlLIgRLSjCz0Wtcyp/zb8N3
-         4FmA==
-X-Forwarded-Encrypted: i=1; AJvYcCX6nIq9xDD+6PCArLuCLoxXgLFvkjLXA4yj9rF7HoJTdZL6mCONSo3dkQ7dm92XcyfMZ78KYWv+0jSb+a9FPg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz1hLkpRO+SEdh+zUOg+gMU8Vku+t1x7dG5J4hzUlFDIqItqRJA
-	3p3ILPHioWOCWm5tnTfnr0NCnlyGqjtzMBCSYoYaAfnlgyTNn+yUDTOXJRKIpkcE2lGp49RYL74
-	RtoDXAIadAB+/IUXGw6sdRD+VYKhzR3gP8OWO55CTpG6cR6UcdJQBFG35WGpqo0tQDA2eutq3Oo
-	U=
-X-Gm-Gg: ASbGncsKKue0/qqnRkn5ViR310OEgMwlixEAbja6ijjVN3qZbvcfQuQmc8GSHmbSrxy
-	ZCfSYKsF4qr21OWNhZ1rNDeNk0GoxwZdjri/ZzSYeJVmwG0q82l2n8mOJScfMEdpI5SFTqaptXz
-	wHL21mrBwnAmJ1GzC+Fx71vFpwij9dgwDYesxI5wGnC1g0rAhr0HV6WCAdFOgWOqachwid3zvQy
-	a33gX5Xiou5DCMvuvbc4mKKIG0YucgMFT3ehoD5buVa3mJ5QBgbRtUjfJHecqOBQIUhrBPrtD8E
-	vFzMb9O4wMrb437rFGNSOmVZ7Ge3l52nBPadr5yNG6BSpgVxsuALjoRxlpvN1GhBqWCnLvN8KLN
-	DKMwILXuhZRAo7cNoBl7R7DyfDhEd9lEFlUJJ3r3luLfcTiB/JEKv
-X-Received: by 2002:ac8:7d8e:0:b0:4cf:6b60:8814 with SMTP id d75a77b69052e-4da4c39d551mr157223521cf.70.1759047920635;
-        Sun, 28 Sep 2025 01:25:20 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEs63wvjlOp3xMxlD61SlugRb128ix3vSdkzbHU2oqtBagfbingC8Ut4nFepJQEg0y1xF3nfQ==
-X-Received: by 2002:ac8:7d8e:0:b0:4cf:6b60:8814 with SMTP id d75a77b69052e-4da4c39d551mr157223271cf.70.1759047920172;
-        Sun, 28 Sep 2025 01:25:20 -0700 (PDT)
+        bh=z7oVTmK4jTegfS2LDYKFs2TDqZVMBs8llu7PGEMrxt8=;
+        b=Pphtyxt/N8HxjKkfM22410qY5RT9oC5DP1R/lqqeb/hpevDS67sBSo77p3tYTQlBqg
+         DQb1qRA9h7tThMMB/317LLj4WrlPP2dFOTClBMMxnAoTy3J9JMpOYwMScmiBGIq43kbS
+         ohipfgs1xpbjTokV6kTuUAuu3WDlvjAKx0dQ1CJ0fH73dG9WN6l7P3bQOyz5nlLegTqr
+         0ZhMyALzg8C6ADToWPVT+wThQ7ndSaYY3DFSwzO+Nh9wN5qIAcbcPCklzu6nnP7RQKjd
+         E+FUuEF/IthZRo27WrlCkZL7s+QT+sCVpOBuzfRViEMDh96M6rAGuIcG8PpBk5t8AzSB
+         WtIA==
+X-Forwarded-Encrypted: i=1; AJvYcCWXCdanIz3J3Lx4uiSln9BbmohrIzxRyFsQXqZy6QGVF0fuIvJ1wrkluN0ySJuqUtBBeSLCD4gVTBV0wLL/ng==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxeLNBRz/noV6ZilUSmmaF3vSZtXMnUqd/gS/qIJ0bqprIxfvLX
+	HIKtOHpe1+DsOD1k8u+rGd6E9hB9LewenPTx2SrATA6yoQqjQ6mY4aUk1UPkMBKB9mVUmy/Wp6H
+	nhIDmMOQteAh01cnndnqgYH4d0mqRBIeA4oSkQ/kEsXB3Rcxb4Fi1vm9QunwDqMvuDUfkanVBdN
+	Y=
+X-Gm-Gg: ASbGncsWwb8aQylG4atowU9cLTjZJnGyovHWlx68SqWz7noxALlIzh9BpqDUZJLOOqp
+	MgnvRvR71juEADm+akhVzZQRbgNoAYubZshMYYXENHcE3YnZIcGUpXbOmaqw5ckvj+VXNycgZR3
+	YWUoZS+kdhHDaAhrR7x5qqBCZnratt7i8Hrg3mP0lcISjX5NlSkBKamz5MSF0VQqrQiNvIxI7gT
+	bq4lo5h57d8gCRJHW6TRNVAchtMK4ZM/b7xJkuwgrZteu4c9in2A8G/t9gu8jtTeCGvN0/bplOF
+	HkTlIrgi9W1i4TMNw6e8MQoBbKRuf4c/xR3jPSOTqCaNoHo5yri29yNi1daSVnFheJS2XKLeX4P
+	5ZNAwlcVbOmsXXqdoUxzHPAfxDBN0AzIU8+6eBxUQ7dv6Nsc+xnku
+X-Received: by 2002:a05:622a:1451:b0:4dd:e207:fe2 with SMTP id d75a77b69052e-4dde2165a57mr93280791cf.41.1759047923210;
+        Sun, 28 Sep 2025 01:25:23 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEESn7rJMVdvgKDwuqV4pofk8SCks7ZTpp/nKrxlhNer6Wcz1kuf5zkj5btieQDBdmwJ29uJQ==
+X-Received: by 2002:a05:622a:1451:b0:4dd:e207:fe2 with SMTP id d75a77b69052e-4dde2165a57mr93280551cf.41.1759047922745;
+        Sun, 28 Sep 2025 01:25:22 -0700 (PDT)
 Received: from umbar.lan (2001-14ba-a0c3-3a00-264b-feff-fe8b-be8a.rev.dnainternet.fi. [2001:14ba:a0c3:3a00:264b:feff:fe8b:be8a])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-583166561c0sm3244298e87.81.2025.09.28.01.25.17
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-583166561c0sm3244298e87.81.2025.09.28.01.25.20
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 28 Sep 2025 01:25:18 -0700 (PDT)
+        Sun, 28 Sep 2025 01:25:21 -0700 (PDT)
 From: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-Date: Sun, 28 Sep 2025 11:24:53 +0300
-Subject: [PATCH v2 8/9] drm/rockchip: inno-hdmi: handle unsupported
- InfoFrames
+Date: Sun, 28 Sep 2025 11:24:54 +0300
+Subject: [PATCH v2 9/9] drm/sun4i: hdmi: handle unsupported InfoFrames
 MIME-Version: 1.0
-Message-Id: <20250928-limit-infoframes-2-v2-8-6f8f5fd04214@oss.qualcomm.com>
+Message-Id: <20250928-limit-infoframes-2-v2-9-6f8f5fd04214@oss.qualcomm.com>
 References: <20250928-limit-infoframes-2-v2-0-6f8f5fd04214@oss.qualcomm.com>
 In-Reply-To: <20250928-limit-infoframes-2-v2-0-6f8f5fd04214@oss.qualcomm.com>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
@@ -111,43 +110,42 @@ Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
         linux-arm-kernel@lists.infradead.org,
         linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3208;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3167;
  i=dmitry.baryshkov@oss.qualcomm.com; h=from:subject:message-id;
- bh=L5F+9hmws1ws8sHBg3j3OZgk+hUi3reLwHH9RQ7UEnU=;
- b=owEBbQGS/pANAwAKAYs8ij4CKSjVAcsmYgBo2PDU9uR0Y3DH7A3+x8geiLghZLN7tPC7B3SOj
- e6zCefBhf6JATMEAAEKAB0WIQRMcISVXLJjVvC4lX+LPIo+Aiko1QUCaNjw1AAKCRCLPIo+Aiko
- 1Ru6B/9PE+eUbg3q9YXlFXZd6EPBBkP5lZgICQEKOE0FuYIcvp6aqj8KRAYaSBf3nOEsYkh6Cmv
- izDSG7gqnOYbJtZa1DBmYqSXwcIYU9x3PqJtOca9yASpRyYkvVH8b9c8vz/LfL2SFkM0iWK3/HE
- oPq0/r5tSjjrJ9u5/+s1evNujBe86ROuzIpMMbVVTj5U9sJ0LQhBHpdBVmwkbN9cfVxuaUmhUo4
- +hHRrX+QqJ0qvxolviQQVzyaLLE7VuP4ZbG/H5NauVJRDGd6YUABlNx7xw9adhsUxwugFv2UAs5
- CL2oRovfS/3sNkx1Xb25MSdesvX4wPFuG9Dy5chHmg0qOIxr
+ bh=SNmzbnw2SRpSDuHUMU89vGrNBx2CzM0VUWkNV9VkozY=;
+ b=owEBbQGS/pANAwAKAYs8ij4CKSjVAcsmYgBo2PDUVHPts4iT9DO40TpNVuDbiJgKbp9tiaTF5
+ 1h5ic+PbuaJATMEAAEKAB0WIQRMcISVXLJjVvC4lX+LPIo+Aiko1QUCaNjw1AAKCRCLPIo+Aiko
+ 1X1PB/94ehTdKMPnfDOQqb5MoKaN8Ah7FgUWp1xokcVcE+txfW6tC2jaIjwYYAAMg3MJu5MKqOd
+ 4PWONxLpvDmWFuvW0awSN19CswKo4/ryi42gY9MMgRQVUs1fvs0lmIjNQQmMh/GtJGpWRmGFZ1Z
+ pFUgZysdcpoJqNHMmpRuPnDgdLsPdkrHk1iSNAdtKMHFHrPWMg4EQBxyTtppsBsV+NDtUojhffi
+ xOI8LZwI15c1n9YOqXYsq8iXY8BHtBBCR74y/paTdp5/44jEoUPkdBhMZsbD2jB5l/oT7LqHFXS
+ sXRyBWKd0da84pm5V/dCUkLlQgTe+nmOwJ0AI1Mec36mivUm
 X-Developer-Key: i=dmitry.baryshkov@oss.qualcomm.com; a=openpgp;
  fpr=8F88381DD5C873E4AE487DA5199BF1243632046A
-X-Authority-Analysis: v=2.4 cv=DZAaa/tW c=1 sm=1 tr=0 ts=68d8f0f1 cx=c_pps
- a=EVbN6Ke/fEF3bsl7X48z0g==:117 a=xqWC_Br6kY4A:10 a=IkcTkHD0fZMA:10
+X-Proofpoint-GUID: gTmPfldenywPM87OIL6oBQ4F_6lrGB13
+X-Authority-Analysis: v=2.4 cv=O4g0fR9W c=1 sm=1 tr=0 ts=68d8f0f4 cx=c_pps
+ a=WeENfcodrlLV9YRTxbY/uA==:117 a=xqWC_Br6kY4A:10 a=IkcTkHD0fZMA:10
  a=yJojWOMRYYMA:10 a=EUspDBNiAAAA:8 a=Uj443JZPoyhSIAxeSSAA:9 a=QEXdDO2ut3YA:10
- a=a_PwQJl-kcHnX1M80qC6:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwOTI3MDAyMiBTYWx0ZWRfX2rfdiJmzKr+g
- HBcx9k4unoqkuCySYEV2Vqa/mM6/9kW5yRmLvTwP7Z+YPyvDk7L7rzgiSAZXDqs/MU+dTs3Y6+8
- WqiXHL1cBULAP//19UzacKtVB4NUsGd08wV87iHJIImh0KjcsbpWws+f+ToSdzSnz9aaO6oosVY
- GiIkE28fTruSANmrdr4PwtBL9kFkhB7GRfShVJMLmPHMXmHKs222G3IvMGc9Jtm7h2sTAN2Vn8u
- rHegNjYrSE5OrbWnyofvz2hNPSjEsSjB3CvqMu3zjU+0dfhd2JiL+1jjJ/dfhRu4+NqJVKHVPEp
- IIrw0zAMxNg0Plry2H6XUyIqcKu7OFZvOGqQmBb1nn0Hu8AxEfy7lHFR4/P79/cKYS9WN+6H/b6
- 6ziu3krLFZ8GshiwZG37ixIje1CB4g==
-X-Proofpoint-GUID: VbawO_bczsY5luGwO3AaHn1-DJqUMQIX
-X-Proofpoint-ORIG-GUID: VbawO_bczsY5luGwO3AaHn1-DJqUMQIX
+ a=kacYvNCVWA4VmyqE58fU:22
+X-Proofpoint-ORIG-GUID: gTmPfldenywPM87OIL6oBQ4F_6lrGB13
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwOTI3MDAwMSBTYWx0ZWRfX5btvstbE1go8
+ oFAXzHRbtI7iNsJYRmkG9qui5UNp/Uek348JYa5W8Jn2yDpYaCpI9yDIO8fmUT3v0lbOet1F8mo
+ EZIivrQ2gTbi5Efxl72TtYUVTQfVKj4cFCh7+wcenhxh0tqEWKsBKG71ZcxLBmjILAD7o80S/f6
+ dI6eHwhhLuVGNsDhajNUHAIwrxplsLtw5Wi2eHZglI7tn0MNqYZIsDuNsqliSV96idbDPc+QNm3
+ LdGaMPvShCLae5dAt2yNS5mVmvLBC1jVq7Jcl+A33yRsWmnsuFkFW6o9FIySPeNgVGq9U2ZCxOG
+ OBcFnCzNKbUrSf0q0X55FGIATiwiDXwUdXJu+iKwO0m56KTjOkvyn/3sMQXdY/FjGgOcrsFgg+8
+ 3ow4nvPpGjkDDMcLqzmeFfg7HmVsOw==
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1117,Hydra:6.1.9,FMLib:17.12.80.40
  definitions=2025-09-28_04,2025-09-26_01,2025-03-28_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- phishscore=0 malwarescore=0 bulkscore=0 clxscore=1015 adultscore=0
- impostorscore=0 priorityscore=1501 lowpriorityscore=0 suspectscore=0
- spamscore=0 classifier=typeunknown authscore=0 authtc= authcc= route=outbound
- adjust=0 reason=mlx scancount=1 engine=8.19.0-2509150000
- definitions=main-2509270022
+ adultscore=0 phishscore=0 clxscore=1015 priorityscore=1501 lowpriorityscore=0
+ spamscore=0 impostorscore=0 bulkscore=0 suspectscore=0 malwarescore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.19.0-2509150000 definitions=main-2509270001
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250928_012523_076763_B3802225 
-X-CRM114-Status: GOOD (  17.14  )
+X-CRM114-CacheID: sfid-20250928_012525_261742_88D8F24C 
+X-CRM114-Status: GOOD (  17.52  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -171,16 +169,16 @@ enabled.
 
 Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
 ---
- drivers/gpu/drm/rockchip/inno_hdmi.c | 47 +++++++++++++++++++++++++++---------
- 1 file changed, 36 insertions(+), 11 deletions(-)
+ drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c | 51 ++++++++++++++++++++++++++++++----
+ 1 file changed, 45 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/inno_hdmi.c b/drivers/gpu/drm/rockchip/inno_hdmi.c
-index f24827dc1421cf5e0c1be63a80da23d645cf3f24..733294c6807da4663285ebd482181589c37f960a 100644
---- a/drivers/gpu/drm/rockchip/inno_hdmi.c
-+++ b/drivers/gpu/drm/rockchip/inno_hdmi.c
-@@ -641,13 +641,11 @@ static int inno_hdmi_disable_frame(struct drm_connector *connector,
- {
- 	struct inno_hdmi *hdmi = connector_to_inno_hdmi(connector);
+diff --git a/drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c b/drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c
+index ab0938ba61f7d75dd0bec473807a04a20e1cffbd..6d41207548386c0ae14ba0a9b7553fe0d3bd001c 100644
+--- a/drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c
++++ b/drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c
+@@ -47,11 +47,8 @@ static int sun4i_hdmi_write_infoframe(struct drm_connector *connector,
+ 	struct sun4i_hdmi *hdmi = drm_connector_to_sun4i_hdmi(connector);
+ 	int i;
  
 -	if (type != HDMI_INFOFRAME_TYPE_AVI) {
 -		drm_err(connector->dev,
@@ -190,31 +188,25 @@ index f24827dc1421cf5e0c1be63a80da23d645cf3f24..733294c6807da4663285ebd482181589
 +	if (type != HDMI_INFOFRAME_TYPE_AVI)
 +		return -EOPNOTSUPP;
  
- 	hdmi_writeb(hdmi, HDMI_CONTROL_PACKET_BUF_INDEX, INFOFRAME_AVI);
-+	// XXX: this doesn't seem to actually disable the infoframe.
+ 	for (i = 0; i < len; i++)
+ 		writeb(buffer[i], hdmi->base + SUN4I_HDMI_AVI_INFOFRAME_REG(i));
+@@ -60,6 +57,47 @@ static int sun4i_hdmi_write_infoframe(struct drm_connector *connector,
  
- 	return 0;
  }
-@@ -659,11 +657,8 @@ static int inno_hdmi_upload_frame(struct drm_connector *connector,
- 	struct inno_hdmi *hdmi = connector_to_inno_hdmi(connector);
- 	ssize_t i;
  
--	if (type != HDMI_INFOFRAME_TYPE_AVI) {
--		drm_err(connector->dev,
--			"Unsupported infoframe type: %u\n", type);
--		return 0;
--	}
++static int sun4i_hdmi_clear_infoframe(struct drm_connector *connector,
++				      enum hdmi_infoframe_type type)
++{
 +	if (type != HDMI_INFOFRAME_TYPE_AVI)
 +		return -EOPNOTSUPP;
- 
- 	inno_hdmi_disable_frame(connector, type);
- 
-@@ -673,6 +668,36 @@ static int inno_hdmi_upload_frame(struct drm_connector *connector,
- 	return 0;
- }
- 
-+static int inno_hdmi_connector_atomic_check(struct drm_connector *connector,
-+					    struct drm_atomic_state *state)
++
++	// XXX: is there a way to actually disable the infoframe?
++
++	return 0;
++}
++
++static int sun4i_hdmi_atomic_check(struct drm_connector *connector,
++				   struct drm_atomic_state *state)
 +{
 +	struct drm_connector_state *conn_state =
 +		drm_atomic_get_new_connector_state(state, connector);
@@ -243,17 +235,21 @@ index f24827dc1421cf5e0c1be63a80da23d645cf3f24..733294c6807da4663285ebd482181589
 +	return 0;
 +}
 +
- static const struct drm_connector_hdmi_funcs inno_hdmi_hdmi_connector_funcs = {
- 	.clear_infoframe	= inno_hdmi_disable_frame,
- 	.write_infoframe	= inno_hdmi_upload_frame,
-@@ -1029,7 +1054,7 @@ static const struct drm_connector_funcs inno_hdmi_connector_funcs = {
+ static void sun4i_hdmi_disable(struct drm_encoder *encoder,
+ 			       struct drm_atomic_state *state)
+ {
+@@ -237,10 +275,11 @@ static struct i2c_adapter *sun4i_hdmi_get_ddc(struct device *dev)
+ static const struct drm_connector_hdmi_funcs sun4i_hdmi_hdmi_connector_funcs = {
+ 	.tmds_char_rate_valid	= sun4i_hdmi_connector_clock_valid,
+ 	.write_infoframe	= sun4i_hdmi_write_infoframe,
++	.clear_infoframe	= sun4i_hdmi_clear_infoframe,
  };
  
- static struct drm_connector_helper_funcs inno_hdmi_connector_helper_funcs = {
--	.atomic_check = drm_atomic_helper_connector_hdmi_check,
-+	.atomic_check = inno_hdmi_connector_atomic_check,
- 	.get_modes = inno_hdmi_connector_get_modes,
- 	.mode_valid = inno_hdmi_connector_mode_valid,
+ static const struct drm_connector_helper_funcs sun4i_hdmi_connector_helper_funcs = {
+-	.atomic_check	= drm_atomic_helper_connector_hdmi_check,
++	.atomic_check	= sun4i_hdmi_atomic_check,
+ 	.mode_valid	= drm_hdmi_connector_mode_valid,
+ 	.get_modes	= sun4i_hdmi_get_modes,
  };
 
 -- 
