@@ -4,72 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4147CCA470
-	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Sep 2025 07:35:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9706ECAC5B0
+	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Sep 2025 07:36:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
-	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XMPun7LcuI5xR/Hskg12aa85WRb5kNgnyCMZn3Adulg=; b=vcSlXfTI8/Frgq
-	U98CNvLY0L7phWtYYRV0g/eSvHTW5jc6eO9w6uT5/XTQvbg9rwT8mQvxOTRjG9SMOndjBRmUoF0XS
-	UJ5zFa3IrdEkJKw+VVmNzVLuC2MivBc4tU+O+YgCfsOhgnKz7MGU85S4MYHJ6FHDV4FvNGlrjMz8g
-	D2r5TV4im+qN/6x88HsRBdIJmdOYMZk20u1nIz9AvFfzNvjUWWU2JBl4rEhX2Cc/WE0/kgrTFYb0s
-	aCOnGlWMTf17FWvqdhYmJT2ELL4nBC4slEvXndW0g4p9/ThOUHYTtyfcFdQJU4DN8ic38vmEqJ3Q5
-	VxvhN/H5iLShVJ4Pf0RQ==;
+	List-Owner; bh=nvWRvTyPJgXc5c1KtXqPQpLv/AZopJE7kd12wbKp/vo=; b=DUmqCXpXKeIeVw
+	ZlSnlqbCqIGSDE2QE/C1PgP3RmSxMy25aDL60J82L8DVWLViK7+dHC6VqtqP0lLK4x1f/SrkmeU7H
+	h/YghxLX5B3j+8+RcIHIa5NedV2hdFtHGsNXGjhqeLYTK63r6RWcRuG3AbZIfOwhQh2KA3BMfJSmJ
+	7IdAbLcx4a6n41YLZySzjfpGIPZ6iqd9FdjHTWdbfhjXkH311Bhsmw2MGD5XEC4wOfR+JjeBpfQp4
+	iIBie6fNyaMn+VbyLwNPxefxx+67cL7GDwUevCb0EcBfS6gtDuSO6fhBFZG9YBnb/vfAF8vlPvL4D
+	9dur2aClznXENkQzILng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v38Pu-00000001cg2-1FHU;
-	Mon, 29 Sep 2025 07:35:26 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1v38Ql-00000001dGR-0HSS;
+	Mon, 29 Sep 2025 07:36:19 +0000
+Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v38Pn-00000001cag-2RDU;
-	Mon, 29 Sep 2025 07:35:19 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 1998E62319;
-	Mon, 29 Sep 2025 07:35:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 8DFE7C4AF0B;
-	Mon, 29 Sep 2025 07:35:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1759131313;
-	bh=Bay7gvRD8WEKKONQKFBF0O+fwmVm+YlEq+tKHT0KRKA=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=CaAg0DaBk5igaM4TpFf1Au1liTovydHaKRSmeHMjrQndyPaQw//SrhK55m5PfGPFT
-	 Y75bhR+ulDCix/+e3cjFIVBgyA2kbATTNzy3Y88lLyyHBzU1KzM0HAVhmH2DiLRj1+
-	 rKIcE+yKlSGYg5K8mEYBKrqrRboZ2XsALfrL9mEzDn4omnmMNRjWiLbt/2YcFxn2bf
-	 PuNUTZodimMQ/ssoCXIg/K+5+ruIhXOFR8qVHdx/oycZZ6aXiYpFxv4jtJFFG741pS
-	 D6IqXKMDKTXjlvHPiW67gabuuZlBmV063n7LPTQ3ZhUzxx8ihDWb/3czQQvdch8VZt
-	 SOkrtRiPAFoyg==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7A8A4CAC5B5;
-	Mon, 29 Sep 2025 07:35:13 +0000 (UTC)
-From: Rudraksha Gupta via B4 Relay <devnull+guptarud.gmail.com@kernel.org>
-Date: Mon, 29 Sep 2025 00:35:13 -0700
-Subject: [PATCH v4 2/4] arm64: dts: rk3399-pinephone-pro: Add accelerometer
- sensor support
+	id 1v38Qh-00000001dDz-3Rr7
+	for linux-rockchip@lists.infradead.org;
+	Mon, 29 Sep 2025 07:36:17 +0000
+Received: by mail-pg1-x533.google.com with SMTP id 41be03b00d2f7-b523fb676efso4193865a12.3
+        for <linux-rockchip@lists.infradead.org>; Mon, 29 Sep 2025 00:36:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1759131375; x=1759736175; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=WtpldhRDbRzoGsO+8pMp+y65v40hHUOFZZcRghWlbXo=;
+        b=GngNaX0fsdvqgVb9P342j+P+erCZE1tNCRguv7GpdbF5HtDpg0yflwCg3Bhw52h3Fk
+         sLaximbG5qsD5gTuv7eM0syS8RQS+vOfolyHbOtXpOoKcHeO0WoujGwBvlab5TKsLYda
+         MKzdx9w+I7Dk6Q8JF+vZfhI159riB8EcrcxTGrKGx1hTwOSOl5c56rw7EYTkVUsgR6zd
+         8lvsOnl5B1cYLxcgat3ouTRhWgXEXHRoSM0FeI4Drer/O4CLLFpNiLEmm3sRYakeDkGS
+         +4y4WVC6ANPCDsYLnfC1zEK0l2iqDsSCq2QBdb9BJeyibNBLbExW3Jx735yq2xtsC7+x
+         T2HA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1759131375; x=1759736175;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=WtpldhRDbRzoGsO+8pMp+y65v40hHUOFZZcRghWlbXo=;
+        b=RqQvBhE5ZmF9ZUB5ik1QN7qu1P5srFpqO9dTSu/cMYAl8hnkrHAEOusK1vQuyX1YKS
+         +Owls0iUoMzNIj2WfHYowmfwp/J1BQvZk0vw0MEGfsUuVqtxKY/c2JzoEBhTT7lbsR42
+         KJnZW2MtrP8cMZQSMbgP4lfbIoh7vbZFA/5VFhR2e4PaTUy2HS3bnm+Pt/+1NHFcgzto
+         wakuo44Z/fRZ1o7AYoj9MyOjNmkGnl9EINfUsl2mot76tIxW3TuTUQL0yc6oU/wMFZhS
+         HT9OXV1a6AQ3uELL/hjUxPqg0C9/I3HOQSIpcl69BjIoMAp5LBugNv1gW3E5QZdrT9F6
+         eRPg==
+X-Forwarded-Encrypted: i=1; AJvYcCWCvdfZr01mABZ4nx8kTon8mPmlPKbDbKxCMzyxKdej3U6gJDXcczWwIUleAbMNEBqc4laAp7QMfPFV22VLZQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyqjOllJfeizHk/wv5xjfV8CJ3sYZWPpekARde4HMkTmksJCroq
+	fIVECOWW22vs/ConmrNyQALEf+WjTLRv5VoyTlreps6sytix5+QMPfIU
+X-Gm-Gg: ASbGncvcPA0PZlDl7hxbnDIvONBBh4170aVO7C3HJd+dAJlRBWBQhBGM/jxyg6+jLxV
+	YlA0LjCkRdePAZMbbkTeouma6oC+patmSlrYgIdqpFhXvTxcfxriBgJ6GMjKbT0Q4XsX/L8NQcx
+	sNo+OJfRv/YOsF4UvWnZNYfZfpKhIhl4imOU0vlyTIQC5KPWgDRRy62BY0Hm8k1bSagRFX596Cz
+	9wBGTW+XInYY2YDhHeDZuoK5N33b9FKIqXTY97JqPc44zGnWOTXwOJ+Ft4/BH27kIg7KoZmhj6m
+	j+2sn2RtgCG2KCjGt1RYnNgT45Pm9lNCsZKBPqtcwAsrzpQlBwJTRJw4VPDMyQGf+wOI3jzm7zR
+	VwBszHPqOz6xNZbTT/4rfnx7/LinpJMxk4nHkDA7hZgg18ToulxgshUayNO9/Z2PHdA8g6mmBXc
+	Um
+X-Google-Smtp-Source: AGHT+IEWeCcdaLlQLuxHrfc5zv7vJMgw2RSY5WHEZHUZu8lif8TvLDvdNna1pOwRzpAobj4aitc+pg==
+X-Received: by 2002:a17:903:110e:b0:266:64b7:6e38 with SMTP id d9443c01a7336-27ed4a47150mr170404685ad.46.1759131374689;
+        Mon, 29 Sep 2025 00:36:14 -0700 (PDT)
+Received: from [192.168.68.63] (104-12-136-65.lightspeed.irvnca.sbcglobal.net. [104.12.136.65])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-27eec33b775sm92844965ad.12.2025.09.29.00.36.13
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 29 Sep 2025 00:36:14 -0700 (PDT)
+Message-ID: <5658a127-617c-464a-9651-5ab114161f84@gmail.com>
+Date: Mon, 29 Sep 2025 00:36:13 -0700
 MIME-Version: 1.0
-Message-Id: <20250929-ppp_light_accel_mag_vol-down-v4-2-6598f22d3451@gmail.com>
-References: <20250929-ppp_light_accel_mag_vol-down-v4-0-6598f22d3451@gmail.com>
-In-Reply-To: <20250929-ppp_light_accel_mag_vol-down-v4-0-6598f22d3451@gmail.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Rudraksha Gupta <guptarud@gmail.com>, Ondrej Jirman <megi@xff.cz>, 
- Martijn Braam <martijn@brixit.nl>, 
- =?utf-8?q?Kamil_Trzci=C5=84ski?= <ayufan@ayufan.eu>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1759131312; l=1864;
- i=guptarud@gmail.com; s=20240916; h=from:subject:message-id;
- bh=BRZsP1UdL6OFWqM2mRykWAS8dysAco3k6Kyv3eBDv+E=;
- b=qUkXHOgkg9QDIAccXCuh9iCn8uQ3DvTVFAEX5pjOxmDyP/Lb8YzSzOTQ9g1e2KPPpd/59qbKB
- g0enuB+eYi2Cnr3VE6toJhAopuGqneFWjEEu9KY9/XFj1TSugfTHMNz
-X-Developer-Key: i=guptarud@gmail.com; a=ed25519;
- pk=ETrudRugWAtOpr0OhRiheQ1lXM4Kk4KGFnBySlKDi2I=
-X-Endpoint-Received: by B4 Relay for guptarud@gmail.com/20240916 with
- auth_id=211
-X-Original-From: Rudraksha Gupta <guptarud@gmail.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 0/5] Upstreaming Pinephone Pro Patches
+To: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ Heiko Stuebner <heiko@sntech.de>, "Leonardo G. Trombetta"
+ <lgtrombetta@gmx.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ linux-kernel@vger.kernel.org, Ondrej Jirman <megi@xff.cz>
+References: <20250921-ppp_light_accel_mag_vol-down-v3-0-7af6651f77e4@gmail.com>
+ <175856183851.499898.2147562889507523573.robh@kernel.org>
+Content-Language: en-US
+From: Rudraksha Gupta <guptarud@gmail.com>
+In-Reply-To: <175856183851.499898.2147562889507523573.robh@kernel.org>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250929_003615_865527_765A54B3 
+X-CRM114-Status: GOOD (  14.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,45 +100,46 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: guptarud@gmail.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RnJvbTogT25kcmVqIEppcm1hbiA8bWVnaUB4ZmYuY3o+CgpQaW5lcGhvbmUgUHJvIHVzZXMgbXB1
-NjUwMCBhY2NvcmRpbmcgdG8gdGhlIHNjaGVtYXRpYy4KClRlc3RzOgovLyBTZXR1cDogVGhpcyB3
-YXRjaGVzIHRoZSByYXcgdmFsdWVzIGZyb20gdGhlIGRldmljZS4gVGhlIHZhcmlhYmxlIHdpdGgK
-Ly8gdGhlIGJpZ2dlc3QgbWFnbml0dWRlIGFuZCBpdHMgc2lnbiB3aWxsIGJlIHJlY29yZGVkCiQg
-c3VkbyBzeXN0ZW1jdGwgc3RvcCBpaW8tc2Vuc29yLXByb3h5CiQgY2F0IC9zeXMvYnVzL2lpby9k
-ZXZpY2VzL2lpbzpkZXZpY2UzL2luX2FjY2VsX3t4LHksen1fcmF3CgovLyBMZXQncyBzdGFydCB3
-aXRoIHBob25lIHNjcmVlbiBmYWNpbmcgdXAgdG8gdGhlIHNreSBhbmQgdGhlIGNoYXJnZXIKLy8g
-cG9ydCBjbG9zZXIgdG8geW91IHRoYW4gdGhlIGZyb250IGNhbWVyYS4KejogLTE2MDAwCgovLyBU
-aWx0IHRoZSBwaG9uZSBvbnRvIGl0J3MgbGVmdCBlZGdlCng6IC0xNjAwMAoKLy8gVGlsdCB0aGUg
-cGhvbmUgb250byBpdCdzIHJpZ2h0IGVkZ2UKeDogMTYwMDAKCi8vIFRpbHQgdGhlIHBob25lIHNv
-IHRoYXQgdGhlIGNoYXJnZXIgcG9ydCBpcyBwb2ludGluZyBzdHJhaWdodCB1cCB0bwovLyB0aGUg
-c2t5Cnk6IC0xNjAwMAoKLy8gVGlsdCB0aGUgcGhvbmUgc28gdGhhdCB0aGUgdG9wIG9mIHRoZSBw
-aG9uZSBpcyBwb2ludGluZyBzdHJhaWdodCB1cAovLyB0byB0aGUgc2t5Cnk6IDE2MDAwCgovLyBQ
-dXQgdGhlIHBob25lIGZhY2UgZG93biBzbyB0aGUgc2NyZWVuIGlzIHRvdWNoaW5nIHRoZSB0YWJs
-ZQp6OiAxNjAwMAoKQ28tZGV2ZWxvcGVkLWJ5OiBNYXJ0aWpuIEJyYWFtIDxtYXJ0aWpuQGJyaXhp
-dC5ubD4KU2lnbmVkLW9mZi1ieTogTWFydGlqbiBCcmFhbSA8bWFydGlqbkBicml4aXQubmw+CkNv
-LWRldmVsb3BlZC1ieTogS2FtaWwgVHJ6Y2nFhHNraSA8YXl1ZmFuQGF5dWZhbi5ldT4KU2lnbmVk
-LW9mZi1ieTogS2FtaWwgVHJ6Y2nFhHNraSA8YXl1ZmFuQGF5dWZhbi5ldT4KU2lnbmVkLW9mZi1i
-eTogT25kcmVqIEppcm1hbiA8bWVnaUB4ZmYuY3o+ClNpZ25lZC1vZmYtYnk6IFJ1ZHJha3NoYSBH
-dXB0YSA8Z3VwdGFydWRAZ21haWwuY29tPgotLS0KIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2No
-aXAvcmszMzk5LXBpbmVwaG9uZS1wcm8uZHRzIHwgNiArKysrKysKIDEgZmlsZSBjaGFuZ2VkLCA2
-IGluc2VydGlvbnMoKykKCmRpZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlw
-L3JrMzM5OS1waW5lcGhvbmUtcHJvLmR0cyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAv
-cmszMzk5LXBpbmVwaG9uZS1wcm8uZHRzCmluZGV4IDcxZDMyYzRiYWUwZDAzMzZhYzBjOTEyMDQz
-NjE4ZmM5Yjk0OTE5ZWYuLmQ5ZjE4YTgwMDVmMTVmM2VjMjZlMDg2ZTViNDUxYmYxYmJkYzIxYzAg
-MTAwNjQ0Ci0tLSBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LXBpbmVwaG9u
-ZS1wcm8uZHRzCisrKyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LXBpbmVw
-aG9uZS1wcm8uZHRzCkBAIC01NDIsNyArNTQyLDEzIEBAIG1wdTY1MDBANjggewogCQlyZWcgPSA8
-MHg2OD47CiAJCWludGVycnVwdC1wYXJlbnQgPSA8JmdwaW8xPjsKIAkJaW50ZXJydXB0cyA9IDxS
-S19QQzYgSVJRX1RZUEVfTEVWRUxfTE9XPjsKKwkJdmRkLXN1cHBseSA9IDwmdmNjXzF2OD47CiAJ
-CXZkZGlvLXN1cHBseSA9IDwmdmNjXzF2OD47CisKKwkJbW91bnQtbWF0cml4ID0KKwkJCSIxIiwg
-IjAiLCAiMCIsCisJCQkiMCIsICIxIiwgIjAiLAorCQkJIjAiLCAiMCIsICItMSI7CiAJfTsKIH07
-CiAKCi0tIAoyLjUxLjAKCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3Rz
-LmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5m
-by9saW51eC1yb2NrY2hpcAo=
+Hi,
+
+
+> My bot found new DTB warnings on the .dts files added or changed in this
+> series.
+>
+> Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
+> are fixed by another series. Ultimately, it is up to the platform
+> maintainer whether these warnings are acceptable or not. No need to reply
+> unless the platform maintainer has comments.
+>
+> If you already ran DT checks and didn't see these error(s), then
+> make sure dt-schema is up to date:
+>
+>    pip3 install dtschema --upgrade
+>
+>
+> This patch series was applied (using b4) to base:
+>   Base: using specified base-commit f83ec76bf285bea5727f478a68b894f5543ca76e
+>
+> If this is not the correct base, please add 'base-commit' tag
+> (or use b4 which does this automatically)
+>
+> New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/rockchip/' for 20250921-ppp_light_accel_mag_vol-down-v3-0-7af6651f77e4@gmail.com:
+>
+> arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dtb: light-sensor@48 (sensortek,stk3311): 'leda-supply', 'vdd-supply' do not match any of the regexes: '^pinctrl-[0-9]+$'
+> 	from schema $id: http://devicetree.org/schemas/iio/light/stk33xx.yaml#
+
+Thanks, addressed in v4!
+
+
+Rudraksha
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
