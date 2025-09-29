@@ -4,61 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E540CAC5B5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Sep 2025 08:20:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD711CAC5B0
+	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Sep 2025 08:22:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TNyCEKBCAXjGlcxjUjmNWhDS7K7GF4XufYzepw9FSIo=; b=AcUkktnRayhm4+TCXuBa8cKm0t
-	itMym1B/ynxf0uG3xg45LVUh7LknPrH4vid+xOZeuF/cIIHQZbeOb7lhaZkDgd6ER6JCiEi1nL449
-	b6wUUgq1Nmp1efXiRprmjI0VlsGtQk2dZChae+W4aTH8u7hA02P68GmZsNLKuNvOQpKeoHc990Ej1
-	5EKvuHF+IeH+bTdRsscUMBlMbxRoMllnUpTP13NYCd4iVmueqWcwlVA0syURFB94tFHQJBDJfM4SC
-	505yQI58k19fyDQebMJtpCrXXqEz3gy2EctdUBpS4csXGuxktpRa3O3JeZtreEoJreh5rwnjA07p1
-	2knYyP/Q==;
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=vc6OBUIHmTXHJuPPG2LOCFETtQjTCwEtvTB3L5LQ8C4=; b=wMcCq4U1qwwOFGbtYyna9lCDz4
+	6PBekGD12yFoI7xuPIjfxkTDpw7OT5V4PFR/1didOHT1LKUnFnGrWJEZ96Snd9HCV2sf0bt1m4znK
+	IEULSiXm28VBMB97aKTERONSZIZyUHShVHpHuQLp/skdMZ1iSxnvIgIDNeZuFGVTITk2hWg3NAalV
+	dR4CdpBrLoE8RsC3eH3vJXUhQLgVwni+3Dly66G/mSqdC1raAf2aKQo3OsiXN+phsym4nGPI32zQg
+	HfOTjYXQKNagwD/5Tooa1dijnMlOfSasPxkU480SbYjDyH17c2R2o5bemB/jjJdVIyxAfFn6stSLL
+	sp82aIeg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v397I-00000001lsl-40jN;
-	Mon, 29 Sep 2025 08:20:16 +0000
-Received: from mail.manjaro.org ([116.203.91.91])
+	id 1v399N-00000001mDP-0bUx;
+	Mon, 29 Sep 2025 08:22:25 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v397F-00000001lsC-464J;
-	Mon, 29 Sep 2025 08:20:15 +0000
+	id 1v399K-00000001mC5-1n7L
+	for linux-rockchip@lists.infradead.org;
+	Mon, 29 Sep 2025 08:22:24 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <mkl@pengutronix.de>)
+	id 1v399G-0005Da-TJ; Mon, 29 Sep 2025 10:22:18 +0200
+Received: from moin.white.stw.pengutronix.de ([2a0a:edc0:0:b01:1d::7b] helo=bjornoya.blackshift.org)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <mkl@pengutronix.de>)
+	id 1v399E-0012s9-1s;
+	Mon, 29 Sep 2025 10:22:16 +0200
+Received: from pengutronix.de (p54b152ce.dip0.t-ipconnect.de [84.177.82.206])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(Client did not present a certificate)
+	(Authenticated sender: mkl-all@blackshift.org)
+	by smtp.blackshift.org (Postfix) with ESMTPSA id 3786047C36C;
+	Mon, 29 Sep 2025 08:22:16 +0000 (UTC)
+Date: Mon, 29 Sep 2025 10:22:15 +0200
+From: Marc Kleine-Budde <mkl@pengutronix.de>
+To: Andrea Daoud <andreadaoud6@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, 
+	Elaine Zhang <zhangqing@rock-chips.com>, kernel@pengutronix.de, linux-can@vger.kernel.org, 
+	netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	Alexander Shiyan <eagle.alexander923@gmail.com>
+Subject: Re: Possible race condition of the rockchip_canfd driver
+Message-ID: <20250929-curvy-cicada-of-sufficiency-a7f464-mkl@pengutronix.de>
+References: <CAOprWosSvBmORh9NKk-uxoWZpD6zdnF=dODS-uxVnTDjmofL6g@mail.gmail.com>
+ <20250919-lurking-agama-of-genius-96b832-mkl@pengutronix.de>
+ <CAOprWott046xznChj7JBNmVw3Z65uOC1_bqTbVB=LA+YBw7TTQ@mail.gmail.com>
+ <20250922-eccentric-rustling-gorilla-d2606f-mkl@pengutronix.de>
+ <CAOprWoucfBm_BZOwU+qzo3YrpDE+f-x4YKNDS6phtOD2hvjsGg@mail.gmail.com>
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1759134009;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=8oK+T6aZibp3zhTv/GFM9GWZmrGwuRk6vAxJAm8TV4s=;
-	b=flc3dMm+P5PsO95Okxw565JshEKi7HR7mV9UIcwtd3ug/gnEuAInUznF+Usr5YaEtqgBbH
-	Mx/60trvF0rlUiIOsmWVDrkwCjF275k0aXYDvUMjbTdNXQuD6LMXkM0cgNo9y4jOTVvRTT
-	Eul+yDHIUPtuKuvVQEzvGRprKXbN23o5AOMMJHBr5CbOi2RQZRqcZm2XYjF6qpEsMDJKZ3
-	s3njOrU34zvhxJjjrQBqLFEHNQYYf32uY1PuF1hA4lxzmVO/SSPnFYXQCUBqwjVASYiTB9
-	1dkBS32XzwpBCdUZ5d2F6bnWEJ0u0bJZLQxAj90QOx+9eJBsiG7sO6WxKq9PyQ==
-Date: Mon, 29 Sep 2025 10:20:08 +0200
-From: Dragan Simic <dsimic@manjaro.org>
-To: Rudraksha Gupta <guptarud@gmail.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Ondrej
- Jirman <megi@xff.cz>, "Leonardo G. Trombetta" <lgtrombetta@gmx.com>
-Subject: Re: [PATCH v3 0/5] Upstreaming Pinephone Pro Patches
-In-Reply-To: <b01ed528-8b29-4a6a-bdff-88f2e3b5dd2e@gmail.com>
-References: <20250921-ppp_light_accel_mag_vol-down-v3-0-7af6651f77e4@gmail.com>
- <53eabe34a310ea9c74315fa09a604e4a@manjaro.org>
- <b01ed528-8b29-4a6a-bdff-88f2e3b5dd2e@gmail.com>
-Message-ID: <115da845d9161e6ecfa67cf189b84aa8@manjaro.org>
-X-Sender: dsimic@manjaro.org
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
+In-Reply-To: <CAOprWoucfBm_BZOwU+qzo3YrpDE+f-x4YKNDS6phtOD2hvjsGg@mail.gmail.com>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: mkl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250929_012014_373632_3B61CC72 
-X-CRM114-Status: GOOD (  26.09  )
+X-CRM114-CacheID: sfid-20250929_012222_465513_4EC084DD 
+X-CRM114-Status: GOOD (  15.97  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,65 +80,77 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: multipart/mixed; boundary="===============4068569445242033015=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGVsbG8gUnVkcmFrc2hhLAoKT24gMjAyNS0wOS0yOSAwOTo0NCwgUnVkcmFrc2hhIEd1cHRhIHdy
-b3RlOgo+PiBUaGFua3MgZm9yIHN1Ym1pdHRpbmcgdGhlc2UgcGF0Y2hlcy7CoCBIb3dldmVyLCBw
-bGVhc2UgZXhwYW5kIHRoZSBwYXRjaAo+PiBkZXNjcmlwdGlvbnMsIGJlY2F1c2UgdGhlaXIgY3Vy
-cmVudCBmb3JtcyBhcmUgdG9vIHRlcnNlIGFuZCwgYXMgc3VjaCwKPj4gc2ltcGx5IG5vdCBhY2Nl
-cHRhYmxlLsKgIFRoaXMgYXBwbGllcyB0byBhbGwgcGF0Y2hlcyBpbiB0aGlzIHNlcmllcy4KPiAK
-PiBHb3RjaGEsIHdpbGwgZG8hIEkndmUgYWRkZWQgdGhlIHRlc3RpbmcgdGhhdCBJIGRpZC4gRnJv
-bQo+IGh0dHBzOi8vZG9jcy5rZXJuZWwub3JnL3Byb2Nlc3Mvc3VibWl0dGluZy1wYXRjaGVzLmh0
-bWwKPiAKPj4gVGhlIHRleHQgc2hvdWxkIGJlIHdyaXR0ZW4gaW4gc3VjaCBkZXRhaWwgc28gdGhh
-dCB3aGVuIHJlYWQgd2Vla3MsCj4+IG1vbnRocyBvciBldmVuIHllYXJzIGxhdGVyLCBpdCBjYW4g
-Z2l2ZSB0aGUgcmVhZGVyIHRoZSBuZWVkZWQgZGV0YWlscwo+PiB0byBncmFzcCB0aGUgcmVhc29u
-aW5nIGZvciB3aHkgdGhlIHBhdGNoIHdhcyBjcmVhdGVkLgo+IAo+IEl0IGZlbHQgbGlrZSBzYXlp
-bmcgbW9yZSB0aGFuICJhZGRpbmcgeCBzZW5zb3IiIHNlZW1lZCBsaWtlIGFkZGluZwo+IGZsdWZm
-IHRvIG1lLCBzbyB0aGF0IGlzIHdoeSBJIGtlcHQgaXQgc2hvcnQuIExldCBtZSBrbm93IGlmIHRo
-ZXJlIGlzCj4gc29tZXRoaW5nIGVsc2UgSSBzaG91bGQgYWRkIGJlc2lkZSB0aGUgdGVzdHMgSSBo
-YXZlIGRvbmUuCgpUaGFua3MgZm9yIGltcHJvdmluZyB0aGUgcGF0Y2ggZGVzY3JpcHRpb25zIGlu
-IHRoZSB2NCBvZiB0aGlzIHNlcmllcy4KSSBqdXN0IHdlbnQgcXVpY2tseSB0aHJvdWdoIHRoZSB2
-NCBhbmQgaXQgbG9va3MgbXVjaCBiZXR0ZXIuCgpJdCBjb3VsZCBiZSBzYWlkIHRoYXQgdGhlIG5l
-dyBwYXRjaCBkZXNjcmlwdGlvbnMgYXJlIG5vdyBhIGJpdCB0b28KdmVyYm9zZSwgaW4gdGhlIHNl
-bnNlIHRoYXQgdGhlIHRlc3QgcHJvY2VkdXJlcyBhbmQgdGhlaXIgcmVzdWx0cyBjb3VsZApiZSBz
-dW1tZWQgdXAgYSBiaXQgYmV0dGVyIGluIHByb3NlLCBpbnN0ZWFkIG9mIHByb3ZpZGluZyB0aGUg
-InJhdyIKaW5wdXRzIGFuZCBvdXRwdXRzLiAgSG93ZXZlciwgaXQncyBzdGlsbCBiZXR0ZXIgdG8g
-aGF2ZSB0aG9zZSwgdGhhbgpub3QgdG8gaGF2ZSBhbnl0aGluZy4gIFdyaXRpbmcgZ29vZCBwcm9z
-ZSBpcyBhIHNraWxsIHRoYXQgdXN1YWxseQpyZXF1aXJlcyBsZWFybmluZyBhbmQgcHJhY3RpY2Uu
-Cgo+PiBJJ20gYWxzbyB1bmRlciBpbXByZXNzaW9uIHRoYXQgeW91J3JlIHN1Ym1pdHRpbmcgdGhl
-c2UgcGF0Y2hlcyAKPj4gdXBzdHJlYW0KPj4gYmxpbmRseSBhbmQgd2l0aG91dCByZXNlYXJjaGlu
-ZyB0aGUgcnVsZXMgdGhhdCBhcHBseSB3ZWxsIGVub3VnaCwgCj4+IHdoaWNoCj4+IG1heSBub3Qg
-YmUgdGhlIGJlc3QgcG9zc2libGUgYXBwcm9hY2guCj4gCj4gU29ycnkhIEkndmUgcmVhZAo+IGh0
-dHBzOi8vZG9jcy5rZXJuZWwub3JnL3Byb2Nlc3Mvc3VibWl0dGluZy1wYXRjaGVzLmh0bWwgYSBi
-dW5jaCBvZgo+IHRpbWVzIGR1cmluZyB0aGUgeWVhcnMgSSBoYXZlIGNvbnRyaWJ1dGVkIHRvIHRo
-ZSBMaW51eCBrZXJuZWwgYW5kCj4gaW5ldml0YWJseSBmb3JnZXQgc29tZXRoaW5nLiBQbGVhc2Ug
-ZmVlbCBmcmVlIHRvIHRlbGwgbWUgd2hhdCBJJ3ZlCj4gZG9uZSB3cm9uZyEgSSd2ZSBjb3JyZWN0
-ZWQgbXkgbWlzdGFrZXMgaW4gdjQgKGFuZCB1bmRvdWJ0ZWRseSBwcm9iYWJseQo+IGludHJvZHVj
-ZWQgbW9yZSwgYnV0IGZlZWwgZnJlZSB0byB0ZWxsIG1lIHRoYXQgOykgKQoKWW91IGhhdmVuJ3Qg
-ZG9uZSBhbnl0aGluZyB0ZWNobmljYWxseSB3cm9uZywgYnV0IHRoZSB3YXkgeW91IHN1Ym1pdHRl
-ZAp0aGUgdjIgYW5kIHYzIG1hZGUgdGhlbSBmZWVsIGEgYml0IGxpa2UgeW91IHBpY2tlZCB0aG9z
-ZSBwYXRjaGVzIGZyb20Kc29tZSByYW5kb20gcGxhY2UgYW5kIHN1Ym1pdHRlZCB0aGVtIHRvIHRo
-ZSBtYWlsaW5nIGxpc3Qgd2l0aG91dCByZWFsbHkKdW5kZXJzdGFuZGluZyB0aGUgc3ViamVjdCBt
-YXR0ZXIuICBJbiBvdGhlciB3b3JkcywgaXQncyB0aGUgCmNvbnRyaWJ1dG9yJ3MKam9iIHRvIGNv
-bnZpbmNlIGV2ZXJ5b25lIGVsc2UgdGhhdCB0aGUgc3VibWl0dGVkIHBhdGNoZXMgYXJlIGZpbmUg
-dG8KYmVjb21lIGFjY2VwdGVkLCBhbmQgdGhlIHYyIGFuZCB2MyBzaW1wbHkgbGFja2VkIHRoYXQu
-Cgo+PiBGaW5hbGx5LCBwbGVhc2UgcmVmcmFpbiB5b3Vyc2VsZiBmcm9tIHNlbmRpbmcgbXVsdGlw
-bGUgdmVyc2lvbnMgb2YgdGhlCj4+IHNhbWUgcGF0Y2ggc2VyaWVzIGluIHRoZSBzYW1lIGRheS7C
-oCBEb2luZyBzbyBtYWtlcyByZXZpZXdpbmcgdGhlIAo+PiBwYXRjaGVzCj4+IHVubmVjZXNzYXJp
-bHkgaGFyZC4KPiAKPiBTb3JyeSBhYm91dCB0aGF0IG9uY2UgYWdhaW4hIEknbSBtb3N0bHkgYSBo
-b2JieWlzdCB0aGF0IGxvdmVzIHdvcmtpbmcKPiBvbiBMaW51eCBvdmVyIHRoZSB3ZWVrZW5kLiBJ
-IHdhbnRlZCB0byBnZXQgY29ycmVjdCBteSBtaXN0YWtlcyBzbyB0aGF0Cj4gSSBjYW4gZ2V0IHJl
-dmlld3Mgb3ZlciB0aGUgd2Vlay4gSSB3aXNoIGxrbWwgdXNlZCBhIGZvcmdlLCBzbyBJIGRpZG4n
-dAo+IGhhdmUgdG8gc3BhbSB5b3UsIGJ1dCBJIGRpZ3Jlc3MuIEkgd2lsbCBrZWVwIHRoaXMgaW4g
-bWluZCBtb3ZpbmcKPiBmb3J3YXJkLgoKSSB3b25kZXIgaG93IHdvdWxkIHNvbWUgZm9yZ2UgcHJl
-dmVudCAic3BhbW1pbmciPyAgSXQgaXNuJ3QgYWJvdXQgdGhlCnBvc3NpYmxlICJzcGFtbWluZyIs
-IGJ1dCBhYm91dCB0aGUgYWN0IG9mIHN1Ym1pdHRpbmcgZGlmZmVyZW50IHZlcnNpb25zLAp3aGlj
-aCB3b3VsZCBiZSBwcmVzZW50IHJlZ2FyZGxlc3Mgb2YgdGhlIHdheSB0aGV5J2QgYmUgc3VibWl0
-dGVkLCBhbmQKdGhlIHJldmlld2VycyB3b3VsZCBuZWVkIHRvIGJlIGF3YXJlIChpLmUuICJzcGFt
-bWVkIikgb2YgdGhlbSBhbnl3YXkuCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBA
-bGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+
+--===============4068569445242033015==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="kcxxquzapiv75lfm"
+Content-Disposition: inline
+
+
+--kcxxquzapiv75lfm
+Content-Type: text/plain; protected-headers=v1; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: Possible race condition of the rockchip_canfd driver
+MIME-Version: 1.0
+
+On 28.09.2025 00:26:59, Andrea Daoud wrote:
+> > Alexander Shiyan (Cc'ed) reads the information from an nvmem cell:
+> >
+> > | https://github.com/MacroGroup/barebox/blob/macro/arch/arm/boards/dias=
+om-rk3568/board.c#L239-L257
+> >
+> > The idea is to fixup the device tree in the bootloader depending on the
+> > SoC revision, so that the CAN driver uses only the needed workarounds.
+>=20
+> Thanks, it is not easy to correlate this because I am currently not using
+> barebox. I'll try this later.
+
+The most important information in this code is where the SoC revision is
+located: there is a separate nvmem cell for this. You can read out the
+information once manually and change your device tree accordingly.
+
+regards,
+Marc
+
+--=20
+Pengutronix e.K.                 | Marc Kleine-Budde          |
+Embedded Linux                   | https://www.pengutronix.de |
+Vertretung N=C3=BCrnberg              | Phone: +49-5121-206917-129 |
+Amtsgericht Hildesheim, HRA 2686 | Fax:   +49-5121-206917-9   |
+
+--kcxxquzapiv75lfm
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEn/sM2K9nqF/8FWzzDHRl3/mQkZwFAmjaQbQACgkQDHRl3/mQ
+kZzG/QgAket73QctCSBYEFyXMkmAapZL5ozqRJ4nTbFGZ2D4bxX6sYSf72hYfyk7
+irJ+U0i4XYPuRkFvswbR5TLLqnz+Miz2yB1TbhRiD0h8ChLKgZEKZtnrEXm8Inxn
+QzEg3x5x6tYQytolcXFHKzIM9FBXGnZB+pSQxXXoLPo+O6E9wmHc6l1BJe1fhJNi
+vn1G7zQsFQXxU2e3Mm4j9mi8iCG9k++0f6I1t+hVEg11egn/i3hgs2jpIbKW1uv4
+z76o7HAvN7Rdehs+E4VZu91g95TcNfVBJrvFb9HrDST0JG8I0w0GdQtc0ixKkl/5
+lXTDJ7pB+WBJmn4iGNmH3CXFgbx2TA==
+=CV6U
+-----END PGP SIGNATURE-----
+
+--kcxxquzapiv75lfm--
+
+
+--===============4068569445242033015==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============4068569445242033015==--
+
