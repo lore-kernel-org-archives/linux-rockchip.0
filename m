@@ -4,62 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC1BBCAC5B0
-	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Sep 2025 12:28:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9503CCAC5B5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Sep 2025 12:47:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KumqifzVeYf4DElwvergtjvXt0oKGktJDLYALVozriw=; b=iABf3R+7YuLDpC
-	a8fZoE7BW5MaMNbaIeG/ajO01u0t4iMXTA22mzRtksHyCl8PJqzCL5ZVLtTbgDfYH6469muksAeRr
-	cY/zZkmZuSiz+2jnSwhzNLscC64b6ZI982dZhV8t06mny0lWSv608ws/u7mt1NL/4nnzUqYF7Obdz
-	OWD5139AkHlN9N8F28SCjFQaJmL2fidN8iGG0XGkRL6h7vjY39bCSEhLHIz71XcbEQRLdnytvdmAt
-	LRgmQQ5mxvn0RPCWztPAzYkKvw27C8ReLWn/fuH6aGhKHz4ViYwyQnDEF/+Oqqog3cHAdw1LHOG2O
-	JrAnFD1Ex55ZovHnRfwg==;
+	List-Owner; bh=yjBAoFkZbkKmT8GI32TU4TMFXHope+Yq2Wm+HPnQ5wA=; b=Xydjt94eU/ZvyD
+	DB2aAQfqIn+1bGLn6aXLq7lnqMKFKz0rYyR6d89EfScoxsIKeY2AWgoPmj85gfqVGrI3ppxVHJySX
+	mnp38jVj+DfawKB2nfI9TldaSij7xCoeeaepOwSBuxHhzsW7zo6q6C7r4DIXO7+l3xuQhm8cA8BBi
+	//cUYlo0yb7SS9pSpVySz3fSwWE1gyTnWVh3JiZTvqq6jVv5HzqOOKhAUwqeNH5lfqhxEuR0OPekU
+	lll+YOr6TzlD/n6uOfFE59WgVNjv8fqOYNSpBwJ6MpTHDP8GF3cH0Ydy+oP7ywwbI9+9AIB7x5tG9
+	hyUPVEl70RUzZxdFL53w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v3CzX-00000002THv-2DXF;
-	Mon, 29 Sep 2025 12:28:31 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1v3DI8-00000002Ugs-2PtH;
+	Mon, 29 Sep 2025 12:47:44 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v3CzU-00000002TGy-1Gv9;
-	Mon, 29 Sep 2025 12:28:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=B8HxvMsbOZxtQTKCjlW7Kh23DmVfi7q+asxmvEAD1C4=; b=YnZatRgIPhzKJONzIVGCaHMQQY
-	1nrYsVtq/K941C5fGf/uwNRKN5rpgyYTJxcdEqv01pa3i/io1qTiUIeD2E13IysRIRmGuq7WVnolv
-	0PH8/3iDNtsHv0GA8H5JZVDb8tYU7K25jONEw7wcLq0smzrOVKJTdYJggftRdF7iBGjjCuzyLeLz8
-	CESZJ13RqBC3+UmFqITlg0lh/cGlu96DLslx6zJFrh0+0dC3FLKc2Z8fBZVms31Al+8ilqiE7/kJV
-	/SpF8mDF6ZqnhzquOzCIPes56n9bUSSGnGA/b7XYgIUXIo98F4Eg5bZ+qWSH1SXpr6eB04jWUJrmJ
-	7AKnu1VQ==;
-Received: from e227-076.eduroam.tuwien.ac.at ([128.130.227.76] helo=phil.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1v3CzL-00072s-3M; Mon, 29 Sep 2025 14:28:19 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- quentin.schulz@cherry.de, kever.yang@rock-chips.com, naoki@radxa.com,
- honyuenkwun@gmail.com, inindev@gmail.com, ivan8215145640@gmail.com,
- neil.armstrong@linaro.org, mani@kernel.org, dsimic@manjaro.org,
- pbrobinson@gmail.com, alchark@gmail.com, didi.debian@cknow.org,
- jjm2473@gmail.com, jbx6244@gmail.com, Liangbin Lian <jjm2473@gmail.com>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3 2/3] dt-bindings: arm: rockchip: Add LinkEase EasePi R1
-Date: Mon, 29 Sep 2025 14:28:17 +0200
-Message-ID: <5700676.tIAgqjz4sF@phil>
-In-Reply-To: <20250929065714.27741-3-jjm2473@gmail.com>
-References: <20250929065714.27741-1-jjm2473@gmail.com>
- <20250929065714.27741-3-jjm2473@gmail.com>
+	id 1v3DI5-00000002Ug8-2DGP;
+	Mon, 29 Sep 2025 12:47:43 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1759150047; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=n/vEwH+icZvAJ+wPzCv3oMoOoJXMpjE6uyaRXrEdinYA5mUpUfd1RSxQHi1WRgkfBb3kfGtw8C+IEiliFF45xYRimVF48MHqSD2JUeUgdcQ+Qr2ldFocfgtRMpEEqim0kV0bHtWnsDVXZQLaGMhI1QFbHpf5tuz6+3SUSDnJbGc=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1759150047; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=eM9Sb17d2wXHQmFbrZTrBs7g3dLHXZeM4mN9jnHjrl0=; 
+	b=Vmv/WoItTpQS0hRkpFSlxbfmbmZ/B3aYli3H6mgY9rqjcLZyIYCPxRXcciSvwPHVkPlBVVAB8TQ7dD1rXRVavmNSRRa25u9eMfYRJ1xbIG0ha8h0lU8/Hkmkml/6jIWS58/z2tdzHq0p8TwjKM4AsiyzTPhys2AiE3UpGyFPfjQ=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
+	dmarc=pass header.from=<detlev.casanova@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1759150047;
+	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=eM9Sb17d2wXHQmFbrZTrBs7g3dLHXZeM4mN9jnHjrl0=;
+	b=il1zHjhaaXVDFOdcexPGAxw/XiOtxreugDTpWq4k8JnCRu8KWgdyfr0agmmzKv/H
+	EXZW4UdY7Mt/Eb4LxlZflVvqlBR/o6GzU8xepxcJ4Q2nueSKZZTVhwcXL76MJ8F2192
+	gpiWbG6d/gdCP/Aq6ihti5lycHI6eQ2xrInKzagg=
+Received: by mx.zohomail.com with SMTPS id 1759150044812903.0717172368667;
+	Mon, 29 Sep 2025 05:47:24 -0700 (PDT)
+Message-ID: <969d4f9d-457e-4188-8741-8d88dda59dc9@collabora.com>
+Date: Mon, 29 Sep 2025 08:47:22 -0400
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 11/12] media: rkvdec: Add HEVC support for the VDPU381
+ variant
+To: Diederik de Haas <didi.debian@cknow.org>, linux-kernel@vger.kernel.org
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Heiko Stuebner <heiko@sntech.de>, linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ kernel@collabora.com
+References: <20250808200340.156393-1-detlev.casanova@collabora.com>
+ <20250808200340.156393-12-detlev.casanova@collabora.com>
+ <DCXPZ9JSN7H2.3B76IQI8N4O6H@cknow.org>
+Content-Language: en-US
+From: Detlev Casanova <detlev.casanova@collabora.com>
+In-Reply-To: <DCXPZ9JSN7H2.3B76IQI8N4O6H@cknow.org>
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250929_052828_339549_F92C9BC1 
-X-CRM114-Status: UNSURE (   7.46  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250929_054741_603973_F4126AC9 
+X-CRM114-Status: GOOD (  20.45  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,17 +78,190 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-QW0gTW9udGFnLCAyOS4gU2VwdGVtYmVyIDIwMjUsIDA4OjU3OjEzIE1pdHRlbGV1cm9ww6Rpc2No
-ZSBTb21tZXJ6ZWl0IHNjaHJpZWIgTGlhbmdiaW4gTGlhbjoKPiBMaW5rRWFzZSBFYXNlUGkgUjEg
-aXMgYSBoaWdoLXBlcmZvcm1hbmNlIG1pbmkgcm91dGVyIGJhc2VkIG9uIFJLMzU2OC4KPiAKPiBT
-aWduZWQtb2ZmLWJ5OiBMaWFuZ2JpbiBMaWFuIDxqam0yNDczQGdtYWlsLmNvbT4KCkluIHYxIHRo
-aXMgcGF0Y2ggcmVjZWl2ZWQgYW4KQWNrZWQtYnk6IENvbm9yIERvb2xleSA8Y29ub3IuZG9vbGV5
-QG1pY3JvY2hpcC5jb20+CgoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlz
-dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
-bmZvL2xpbnV4LXJvY2tjaGlwCg==
+Hi Diederik
+
+Thanks for spotting that ! I'll change it in the next patch set :)
+
+Detlev.
+
+On 9/20/25 11:07, Diederik de Haas wrote:
+> Hi again,
+>
+> I think I've found a similar issue here as I did for H264.
+>
+> On Fri Aug 8, 2025 at 10:03 PM CEST, Detlev Casanova wrote:
+>> The VDPU381 supports HEVC decoding up to 7680x4320@30fps.
+>> It could double that when using both decoder cores.
+>>
+>> It support YUV420 (8 and 10 bits) as well as AFBC (not implemented
+>> here)
+>>
+>> The fluster score is 146/147 for JCT-VC-HEVC_V1, tested on ROCK 5B.
+>> None of the other test suites works.
+>>
+>> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+>> ---
+>>   .../media/platform/rockchip/rkvdec/Kconfig    |    1 +
+>>   .../media/platform/rockchip/rkvdec/Makefile   |    2 +
+>>   .../platform/rockchip/rkvdec/rkvdec-cabac.c   | 3435 +++++++++++++++++
+>>   .../rockchip/rkvdec/rkvdec-hevc-common.c      |  546 +++
+>>   .../rockchip/rkvdec/rkvdec-hevc-common.h      |  101 +
+>>   .../rockchip/rkvdec/rkvdec-vdpu381-hevc.c     |  596 +++
+>>   .../media/platform/rockchip/rkvdec/rkvdec.c   |   81 +
+>>   .../media/platform/rockchip/rkvdec/rkvdec.h   |    1 +
+>>   8 files changed, 4763 insertions(+)
+>>   create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-hevc-common.c
+>>   create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-hevc-common.h
+>>   create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-hevc.c
+>>
+>> diff --git a/drivers/media/platform/rockchip/rkvdec/Kconfig b/drivers/media/platform/rockchip/rkvdec/Kconfig
+>> index 5f3bdd848a2cf..3303b0ce32809 100644
+>> --- a/drivers/media/platform/rockchip/rkvdec/Kconfig
+>> +++ b/drivers/media/platform/rockchip/rkvdec/Kconfig
+>> @@ -8,6 +8,7 @@ config VIDEO_ROCKCHIP_VDEC
+>>   	select VIDEOBUF2_VMALLOC
+>>   	select V4L2_MEM2MEM_DEV
+>>   	select V4L2_H264
+>> +	select V4L2_HEVC
+>>   	select V4L2_VP9
+>>   	help
+>>   	  Support for the Rockchip Video Decoder IP present on Rockchip SoCs,
+>>
+>> ...
+>>
+>> diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.c b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
+>> index dab34a2322c95..cd01f1e41beb5 100644
+>> --- a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
+>> +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
+>> @@ -257,6 +257,60 @@ static const struct rkvdec_ctrls rkvdec_h264_ctrls = {
+>>   	.num_ctrls = ARRAY_SIZE(rkvdec_h264_ctrl_descs),
+>>   };
+>>   
+>> +static const struct rkvdec_ctrl_desc rkvdec_hevc_ctrl_descs[] = {
+>> +	{
+>> +		.cfg.id = V4L2_CID_STATELESS_HEVC_DECODE_PARAMS,
+>> +	},
+>> +	{
+>> +		.cfg.id = V4L2_CID_STATELESS_HEVC_SPS,
+>> +		.cfg.ops = &rkvdec_ctrl_ops,
+>> +	},
+>> +	{
+>> +		.cfg.id = V4L2_CID_STATELESS_HEVC_PPS,
+>> +	},
+>> +	{
+>> +		.cfg.id = V4L2_CID_STATELESS_HEVC_SCALING_MATRIX,
+>> +	},
+>> +	{
+>> +		.cfg.id = V4L2_CID_STATELESS_HEVC_DECODE_MODE,
+>> +		.cfg.min = V4L2_STATELESS_HEVC_DECODE_MODE_FRAME_BASED,
+>> +		.cfg.max = V4L2_STATELESS_HEVC_DECODE_MODE_FRAME_BASED,
+>> +		.cfg.def = V4L2_STATELESS_HEVC_DECODE_MODE_FRAME_BASED,
+>> +	},
+>> +	{
+>> +		.cfg.id = V4L2_CID_STATELESS_HEVC_START_CODE,
+>> +		.cfg.min = V4L2_STATELESS_HEVC_START_CODE_ANNEX_B,
+>> +		.cfg.def = V4L2_STATELESS_HEVC_START_CODE_ANNEX_B,
+>> +		.cfg.max = V4L2_STATELESS_HEVC_START_CODE_ANNEX_B,
+>> +	},
+>> +	{
+>> +		.cfg.id = V4L2_CID_MPEG_VIDEO_HEVC_PROFILE,
+>> +		.cfg.min = V4L2_MPEG_VIDEO_HEVC_PROFILE_MAIN,
+>> +		.cfg.max = V4L2_MPEG_VIDEO_HEVC_PROFILE_MAIN_10,
+>> +		.cfg.menu_skip_mask =
+>> +			BIT(V4L2_MPEG_VIDEO_HEVC_PROFILE_MAIN_STILL_PICTURE),
+>> +		.cfg.def = V4L2_MPEG_VIDEO_HEVC_PROFILE_MAIN,
+>> +	},
+>> +	{
+>> +		.cfg.id = V4L2_CID_MPEG_VIDEO_HEVC_LEVEL,
+>> +		.cfg.min = V4L2_MPEG_VIDEO_HEVC_LEVEL_1,
+>> +		.cfg.max = V4L2_MPEG_VIDEO_HEVC_LEVEL_6_1,
+>> +	},
+>> +	{
+>> +		.cfg.id = V4L2_CID_STATELESS_HEVC_EXT_SPS_ST_RPS,
+>> +		.cfg.dims = { 65 },
+>> +	},
+>> +	{
+>> +		.cfg.id = V4L2_CID_STATELESS_HEVC_EXT_SPS_LT_RPS,
+>> +		.cfg.dims = { 65 },
+>> +	},
+>> +};
+>> +
+>> +static const struct rkvdec_ctrls rkvdec_hevc_ctrls = {
+>> +	.ctrls = rkvdec_hevc_ctrl_descs,
+>> +	.num_ctrls = ARRAY_SIZE(rkvdec_hevc_ctrl_descs),
+>> +};
+>> +
+>>   static const struct rkvdec_decoded_fmt_desc rkvdec_h264_decoded_fmts[] = {
+>>   	{
+>>   		.fourcc = V4L2_PIX_FMT_NV12,
+>> @@ -276,6 +330,17 @@ static const struct rkvdec_decoded_fmt_desc rkvdec_h264_decoded_fmts[] = {
+>>   	},
+>>   };
+>>   
+>> +static const struct rkvdec_decoded_fmt_desc rkvdec_hevc_decoded_fmts[] = {
+>> +	{
+>> +		.fourcc = V4L2_PIX_FMT_NV12,
+>> +		.image_fmt = RKVDEC_IMG_FMT_420_8BIT,
+>> +	},
+>> +	{
+>> +		.fourcc = V4L2_PIX_FMT_NV15,
+>> +		.image_fmt = RKVDEC_IMG_FMT_420_10BIT,
+>> +	},
+>> +};
+>> +
+>>   static const struct rkvdec_ctrl_desc rkvdec_vp9_ctrl_descs[] = {
+>>   	{
+>>   		.cfg.id = V4L2_CID_STATELESS_VP9_FRAME,
+>> @@ -354,6 +419,22 @@ static const struct rkvdec_coded_fmt_desc vdpu381_coded_fmts[] = {
+>>   		.decoded_fmts = rkvdec_h264_decoded_fmts,
+>>   		.subsystem_flags = VB2_V4L2_FL_SUPPORTS_M2M_HOLD_CAPTURE_BUF,
+>>   	},
+>> +	{
+>> +		.fourcc = V4L2_PIX_FMT_HEVC_SLICE,
+>> +		.frmsize = {
+>> +			.min_width = 16,
+>> +			.max_width = 65472,
+>> +			.step_width = 16,
+>> +			.min_height = 16,
+>> +			.max_height = 65472,
+>> +			.step_height = 16,
+>> +		},
+> In the RK3588 TRM Part 1 paragraph 5.4.3, I see "Supported image size" :
+> 64x64 to 65472x65472; step size 16 pixels
+>
+> So I think .min_width and .min_height should be 64, not 16.
+>
+> Cheers,
+>    Diederik
+>
+>> +		.ctrls = &rkvdec_hevc_ctrls,
+>> +		.ops = &rkvdec_vdpu381_hevc_fmt_ops,
+>> +		.num_decoded_fmts = ARRAY_SIZE(rkvdec_hevc_decoded_fmts),
+>> +		.decoded_fmts = rkvdec_hevc_decoded_fmts,
+>> +		.subsystem_flags = VB2_V4L2_FL_SUPPORTS_M2M_HOLD_CAPTURE_BUF,
+>> +	},
+>>   };
+>>   
+>>   static const struct rkvdec_coded_fmt_desc vdpu383_coded_fmts[] = {
+>> diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.h b/drivers/media/platform/rockchip/rkvdec/rkvdec.h
+>> index acb9d72b130bb..df56bc0516ac9 100644
+>> --- a/drivers/media/platform/rockchip/rkvdec/rkvdec.h
+>> +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.h
+>> @@ -173,6 +173,7 @@ extern const struct rkvdec_coded_fmt_ops rkvdec_vp9_fmt_ops;
+>>   
+>>   /* VDPU381 ops */
+>>   extern const struct rkvdec_coded_fmt_ops rkvdec_vdpu381_h264_fmt_ops;
+>> +extern const struct rkvdec_coded_fmt_ops rkvdec_vdpu381_hevc_fmt_ops;
+>>   
+>>   /* VDPU383 ops */
+>>   extern const struct rkvdec_coded_fmt_ops rkvdec_vdpu383_h264_fmt_ops;
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
