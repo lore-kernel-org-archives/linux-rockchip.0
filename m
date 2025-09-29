@@ -4,69 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9503CCAC5B5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Sep 2025 12:47:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC47CCAC5B5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Sep 2025 13:00:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yjBAoFkZbkKmT8GI32TU4TMFXHope+Yq2Wm+HPnQ5wA=; b=Xydjt94eU/ZvyD
-	DB2aAQfqIn+1bGLn6aXLq7lnqMKFKz0rYyR6d89EfScoxsIKeY2AWgoPmj85gfqVGrI3ppxVHJySX
-	mnp38jVj+DfawKB2nfI9TldaSij7xCoeeaepOwSBuxHhzsW7zo6q6C7r4DIXO7+l3xuQhm8cA8BBi
-	//cUYlo0yb7SS9pSpVySz3fSwWE1gyTnWVh3JiZTvqq6jVv5HzqOOKhAUwqeNH5lfqhxEuR0OPekU
-	lll+YOr6TzlD/n6uOfFE59WgVNjv8fqOYNSpBwJ6MpTHDP8GF3cH0Ydy+oP7ywwbI9+9AIB7x5tG9
-	hyUPVEl70RUzZxdFL53w==;
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ty89OLK1Z1Ci+CZvL3Pl+SWtm80Jrf4iCH2MqTrJUL8=; b=pQi3BcSUsA6vKFNomyvEG/5916
+	7pqzqG0ccgxiXGa7gcqETb3XRkI1BCscXdSKf0aT/KW2P6HGhLCKjfPqNfXTjqXvmXBrkSHYDM/Cw
+	zAI+9iP9z7FK8gmDTXODWvLvjK4oLeizaBwHgfw4D9S0qRcZfS3PT+Go8L9NnTNP9k4tV0xRJq7AF
+	YcbO+NUja/cRQAxhYRNiSENyfYMNI3z145d/jTDhmdkPEWA+mzW294T2KNFKYtKipy6GmnGCaNe+t
+	MffxMljUgRBBkAeFzN8mAYwhnqSPFJTKcmiu7wtuWKHTx5Tq9ay73vdl6czIOlkOddJelAJujc4zc
+	pwenngLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v3DI8-00000002Ugs-2PtH;
-	Mon, 29 Sep 2025 12:47:44 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1v3DUD-00000002Vqo-0IjF;
+	Mon, 29 Sep 2025 13:00:13 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v3DI5-00000002Ug8-2DGP;
-	Mon, 29 Sep 2025 12:47:43 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1759150047; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=n/vEwH+icZvAJ+wPzCv3oMoOoJXMpjE6uyaRXrEdinYA5mUpUfd1RSxQHi1WRgkfBb3kfGtw8C+IEiliFF45xYRimVF48MHqSD2JUeUgdcQ+Qr2ldFocfgtRMpEEqim0kV0bHtWnsDVXZQLaGMhI1QFbHpf5tuz6+3SUSDnJbGc=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1759150047; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=eM9Sb17d2wXHQmFbrZTrBs7g3dLHXZeM4mN9jnHjrl0=; 
-	b=Vmv/WoItTpQS0hRkpFSlxbfmbmZ/B3aYli3H6mgY9rqjcLZyIYCPxRXcciSvwPHVkPlBVVAB8TQ7dD1rXRVavmNSRRa25u9eMfYRJ1xbIG0ha8h0lU8/Hkmkml/6jIWS58/z2tdzHq0p8TwjKM4AsiyzTPhys2AiE3UpGyFPfjQ=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
-	dmarc=pass header.from=<detlev.casanova@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1759150047;
-	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=eM9Sb17d2wXHQmFbrZTrBs7g3dLHXZeM4mN9jnHjrl0=;
-	b=il1zHjhaaXVDFOdcexPGAxw/XiOtxreugDTpWq4k8JnCRu8KWgdyfr0agmmzKv/H
-	EXZW4UdY7Mt/Eb4LxlZflVvqlBR/o6GzU8xepxcJ4Q2nueSKZZTVhwcXL76MJ8F2192
-	gpiWbG6d/gdCP/Aq6ihti5lycHI6eQ2xrInKzagg=
-Received: by mx.zohomail.com with SMTPS id 1759150044812903.0717172368667;
-	Mon, 29 Sep 2025 05:47:24 -0700 (PDT)
-Message-ID: <969d4f9d-457e-4188-8741-8d88dda59dc9@collabora.com>
-Date: Mon, 29 Sep 2025 08:47:22 -0400
+	id 1v3DUA-00000002Vpi-0dDw;
+	Mon, 29 Sep 2025 13:00:11 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id D323340AE1;
+	Mon, 29 Sep 2025 13:00:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3639AC4CEF4;
+	Mon, 29 Sep 2025 13:00:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1759150806;
+	bh=v14ZqLeXTqvnBbKfvaWvZF9NSLmuvJRKsZQBeOmW5Wk=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=jz8wwdhF/Yk6MGtZ5Kdn5W8KFDTZFtIhNpHLM8je6/OG7jVFn/717TBkjRnVxmSPy
+	 VI1Dku+c1ztJrRasrV2hmU/nNli7IsX8XRIGI5PCB9xbYnmwPj4pjsb4xFcXXvCftj
+	 IGkGfw9u6XLg7PdBvq/L4qevkPuOrYAAbXa0HjFMi/gj/RUXV860hs6msyfOP2l43H
+	 3kPkDzyiPpaIwploKLOSx8yoBoCD4+9f+UNSRUcMaLxTKBhC7hKg4vrrlS/TvSomde
+	 e7XsEjO2ZImnkX2A/V6Ub3iFY0snOBM3YLzqDbLzkbboJAY2kJkoai/xENtnwBglub
+	 +WuX5P/Ynzd+w==
+Date: Mon, 29 Sep 2025 15:00:04 +0200
+From: Maxime Ripard <mripard@kernel.org>
+To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+Cc: Daniel Stone <daniel@fooishbar.org>, 
+	Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
+	Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann <tzimmermann@suse.de>, 
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+	Sandy Huang <hjc@rock-chips.com>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, 
+	Andy Yan <andy.yan@rock-chips.com>, Chen-Yu Tsai <wens@csie.org>, 
+	Samuel Holland <samuel@sholland.org>, Dave Stevenson <dave.stevenson@raspberrypi.com>, 
+	=?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, 
+	Liu Ying <victor.liu@nxp.com>, Rob Clark <robin.clark@oss.qualcomm.com>, 
+	Dmitry Baryshkov <lumag@kernel.org>, Abhinav Kumar <abhinav.kumar@linux.dev>, 
+	Jessica Zhang <jessica.zhang@oss.qualcomm.com>, Sean Paul <sean@poorly.run>, 
+	Marijn Suijten <marijn.suijten@somainline.org>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, 
+	linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org
+Subject: Re: [PATCH v3 00/11] drm/connector: hdmi: limit infoframes per
+ driver capabilities
+Message-ID: <20250929-gregarious-worm-of-memory-c5354d@houat>
+References: <CAPj87rNDtfEYV88Ue0bFXJwQop-zy++Ty7uQ9XfrQ2TbAijeRg@mail.gmail.com>
+ <57ekub6uba7iee34sviadareqxv234zbmkr7avqofxes4mqnru@vgkppexnj6cb>
+ <20250901-voracious-classy-hedgehog-ee28ef@houat>
+ <voknqdv3zte2jzue5yxmysdiixxkogvpblvrccp5gu55x5ycca@srrcscly4ch4>
+ <st6wob5hden6ypxt2emzokfhl3ezpbuypv2kdtf5zdrdhlyjfw@l2neflb4uupo>
+ <pe6g2fanw65p67kfy5blbtiytngxmr6nkbazymojs4a66yvpl3@7j4ccnsvc6az>
+ <20250910-didactic-honored-chachalaca-f233b2@houat>
+ <x562ueky2z5deqqmhl222moyrbylfwi35u4hb34dpl3z52ra4c@dyw4iayrewnz>
+ <20250925-fervent-merry-beagle-2baba3@penduick>
+ <qx5ashx62pufott6hnsfna3qntnoyvxwxze4rihhuxcsdxi37s@bbdvc3sfsgne>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 11/12] media: rkvdec: Add HEVC support for the VDPU381
- variant
-To: Diederik de Haas <didi.debian@cknow.org>, linux-kernel@vger.kernel.org
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
- Heiko Stuebner <heiko@sntech.de>, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- kernel@collabora.com
-References: <20250808200340.156393-1-detlev.casanova@collabora.com>
- <20250808200340.156393-12-detlev.casanova@collabora.com>
- <DCXPZ9JSN7H2.3B76IQI8N4O6H@cknow.org>
-Content-Language: en-US
-From: Detlev Casanova <detlev.casanova@collabora.com>
-In-Reply-To: <DCXPZ9JSN7H2.3B76IQI8N4O6H@cknow.org>
-X-ZohoMailClient: External
+In-Reply-To: <qx5ashx62pufott6hnsfna3qntnoyvxwxze4rihhuxcsdxi37s@bbdvc3sfsgne>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250929_054741_603973_F4126AC9 
-X-CRM114-Status: GOOD (  20.45  )
+X-CRM114-CacheID: sfid-20250929_060010_237835_94F6893A 
+X-CRM114-Status: GOOD (  74.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,190 +89,265 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: multipart/mixed; boundary="===============6860260282369960481=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Diederik
 
-Thanks for spotting that ! I'll change it in the next patch set :)
+--===============6860260282369960481==
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="5omahayljejanoli"
+Content-Disposition: inline
 
-Detlev.
 
-On 9/20/25 11:07, Diederik de Haas wrote:
-> Hi again,
->
-> I think I've found a similar issue here as I did for H264.
->
-> On Fri Aug 8, 2025 at 10:03 PM CEST, Detlev Casanova wrote:
->> The VDPU381 supports HEVC decoding up to 7680x4320@30fps.
->> It could double that when using both decoder cores.
->>
->> It support YUV420 (8 and 10 bits) as well as AFBC (not implemented
->> here)
->>
->> The fluster score is 146/147 for JCT-VC-HEVC_V1, tested on ROCK 5B.
->> None of the other test suites works.
->>
->> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
->> ---
->>   .../media/platform/rockchip/rkvdec/Kconfig    |    1 +
->>   .../media/platform/rockchip/rkvdec/Makefile   |    2 +
->>   .../platform/rockchip/rkvdec/rkvdec-cabac.c   | 3435 +++++++++++++++++
->>   .../rockchip/rkvdec/rkvdec-hevc-common.c      |  546 +++
->>   .../rockchip/rkvdec/rkvdec-hevc-common.h      |  101 +
->>   .../rockchip/rkvdec/rkvdec-vdpu381-hevc.c     |  596 +++
->>   .../media/platform/rockchip/rkvdec/rkvdec.c   |   81 +
->>   .../media/platform/rockchip/rkvdec/rkvdec.h   |    1 +
->>   8 files changed, 4763 insertions(+)
->>   create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-hevc-common.c
->>   create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-hevc-common.h
->>   create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-hevc.c
->>
->> diff --git a/drivers/media/platform/rockchip/rkvdec/Kconfig b/drivers/media/platform/rockchip/rkvdec/Kconfig
->> index 5f3bdd848a2cf..3303b0ce32809 100644
->> --- a/drivers/media/platform/rockchip/rkvdec/Kconfig
->> +++ b/drivers/media/platform/rockchip/rkvdec/Kconfig
->> @@ -8,6 +8,7 @@ config VIDEO_ROCKCHIP_VDEC
->>   	select VIDEOBUF2_VMALLOC
->>   	select V4L2_MEM2MEM_DEV
->>   	select V4L2_H264
->> +	select V4L2_HEVC
->>   	select V4L2_VP9
->>   	help
->>   	  Support for the Rockchip Video Decoder IP present on Rockchip SoCs,
->>
->> ...
->>
->> diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.c b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
->> index dab34a2322c95..cd01f1e41beb5 100644
->> --- a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
->> +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
->> @@ -257,6 +257,60 @@ static const struct rkvdec_ctrls rkvdec_h264_ctrls = {
->>   	.num_ctrls = ARRAY_SIZE(rkvdec_h264_ctrl_descs),
->>   };
->>   
->> +static const struct rkvdec_ctrl_desc rkvdec_hevc_ctrl_descs[] = {
->> +	{
->> +		.cfg.id = V4L2_CID_STATELESS_HEVC_DECODE_PARAMS,
->> +	},
->> +	{
->> +		.cfg.id = V4L2_CID_STATELESS_HEVC_SPS,
->> +		.cfg.ops = &rkvdec_ctrl_ops,
->> +	},
->> +	{
->> +		.cfg.id = V4L2_CID_STATELESS_HEVC_PPS,
->> +	},
->> +	{
->> +		.cfg.id = V4L2_CID_STATELESS_HEVC_SCALING_MATRIX,
->> +	},
->> +	{
->> +		.cfg.id = V4L2_CID_STATELESS_HEVC_DECODE_MODE,
->> +		.cfg.min = V4L2_STATELESS_HEVC_DECODE_MODE_FRAME_BASED,
->> +		.cfg.max = V4L2_STATELESS_HEVC_DECODE_MODE_FRAME_BASED,
->> +		.cfg.def = V4L2_STATELESS_HEVC_DECODE_MODE_FRAME_BASED,
->> +	},
->> +	{
->> +		.cfg.id = V4L2_CID_STATELESS_HEVC_START_CODE,
->> +		.cfg.min = V4L2_STATELESS_HEVC_START_CODE_ANNEX_B,
->> +		.cfg.def = V4L2_STATELESS_HEVC_START_CODE_ANNEX_B,
->> +		.cfg.max = V4L2_STATELESS_HEVC_START_CODE_ANNEX_B,
->> +	},
->> +	{
->> +		.cfg.id = V4L2_CID_MPEG_VIDEO_HEVC_PROFILE,
->> +		.cfg.min = V4L2_MPEG_VIDEO_HEVC_PROFILE_MAIN,
->> +		.cfg.max = V4L2_MPEG_VIDEO_HEVC_PROFILE_MAIN_10,
->> +		.cfg.menu_skip_mask =
->> +			BIT(V4L2_MPEG_VIDEO_HEVC_PROFILE_MAIN_STILL_PICTURE),
->> +		.cfg.def = V4L2_MPEG_VIDEO_HEVC_PROFILE_MAIN,
->> +	},
->> +	{
->> +		.cfg.id = V4L2_CID_MPEG_VIDEO_HEVC_LEVEL,
->> +		.cfg.min = V4L2_MPEG_VIDEO_HEVC_LEVEL_1,
->> +		.cfg.max = V4L2_MPEG_VIDEO_HEVC_LEVEL_6_1,
->> +	},
->> +	{
->> +		.cfg.id = V4L2_CID_STATELESS_HEVC_EXT_SPS_ST_RPS,
->> +		.cfg.dims = { 65 },
->> +	},
->> +	{
->> +		.cfg.id = V4L2_CID_STATELESS_HEVC_EXT_SPS_LT_RPS,
->> +		.cfg.dims = { 65 },
->> +	},
->> +};
->> +
->> +static const struct rkvdec_ctrls rkvdec_hevc_ctrls = {
->> +	.ctrls = rkvdec_hevc_ctrl_descs,
->> +	.num_ctrls = ARRAY_SIZE(rkvdec_hevc_ctrl_descs),
->> +};
->> +
->>   static const struct rkvdec_decoded_fmt_desc rkvdec_h264_decoded_fmts[] = {
->>   	{
->>   		.fourcc = V4L2_PIX_FMT_NV12,
->> @@ -276,6 +330,17 @@ static const struct rkvdec_decoded_fmt_desc rkvdec_h264_decoded_fmts[] = {
->>   	},
->>   };
->>   
->> +static const struct rkvdec_decoded_fmt_desc rkvdec_hevc_decoded_fmts[] = {
->> +	{
->> +		.fourcc = V4L2_PIX_FMT_NV12,
->> +		.image_fmt = RKVDEC_IMG_FMT_420_8BIT,
->> +	},
->> +	{
->> +		.fourcc = V4L2_PIX_FMT_NV15,
->> +		.image_fmt = RKVDEC_IMG_FMT_420_10BIT,
->> +	},
->> +};
->> +
->>   static const struct rkvdec_ctrl_desc rkvdec_vp9_ctrl_descs[] = {
->>   	{
->>   		.cfg.id = V4L2_CID_STATELESS_VP9_FRAME,
->> @@ -354,6 +419,22 @@ static const struct rkvdec_coded_fmt_desc vdpu381_coded_fmts[] = {
->>   		.decoded_fmts = rkvdec_h264_decoded_fmts,
->>   		.subsystem_flags = VB2_V4L2_FL_SUPPORTS_M2M_HOLD_CAPTURE_BUF,
->>   	},
->> +	{
->> +		.fourcc = V4L2_PIX_FMT_HEVC_SLICE,
->> +		.frmsize = {
->> +			.min_width = 16,
->> +			.max_width = 65472,
->> +			.step_width = 16,
->> +			.min_height = 16,
->> +			.max_height = 65472,
->> +			.step_height = 16,
->> +		},
-> In the RK3588 TRM Part 1 paragraph 5.4.3, I see "Supported image size" :
-> 64x64 to 65472x65472; step size 16 pixels
->
-> So I think .min_width and .min_height should be 64, not 16.
->
-> Cheers,
->    Diederik
->
->> +		.ctrls = &rkvdec_hevc_ctrls,
->> +		.ops = &rkvdec_vdpu381_hevc_fmt_ops,
->> +		.num_decoded_fmts = ARRAY_SIZE(rkvdec_hevc_decoded_fmts),
->> +		.decoded_fmts = rkvdec_hevc_decoded_fmts,
->> +		.subsystem_flags = VB2_V4L2_FL_SUPPORTS_M2M_HOLD_CAPTURE_BUF,
->> +	},
->>   };
->>   
->>   static const struct rkvdec_coded_fmt_desc vdpu383_coded_fmts[] = {
->> diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.h b/drivers/media/platform/rockchip/rkvdec/rkvdec.h
->> index acb9d72b130bb..df56bc0516ac9 100644
->> --- a/drivers/media/platform/rockchip/rkvdec/rkvdec.h
->> +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.h
->> @@ -173,6 +173,7 @@ extern const struct rkvdec_coded_fmt_ops rkvdec_vp9_fmt_ops;
->>   
->>   /* VDPU381 ops */
->>   extern const struct rkvdec_coded_fmt_ops rkvdec_vdpu381_h264_fmt_ops;
->> +extern const struct rkvdec_coded_fmt_ops rkvdec_vdpu381_hevc_fmt_ops;
->>   
->>   /* VDPU383 ops */
->>   extern const struct rkvdec_coded_fmt_ops rkvdec_vdpu383_h264_fmt_ops;
+--5omahayljejanoli
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v3 00/11] drm/connector: hdmi: limit infoframes per
+ driver capabilities
+MIME-Version: 1.0
+
+On Thu, Sep 25, 2025 at 05:16:07PM +0300, Dmitry Baryshkov wrote:
+> On Thu, Sep 25, 2025 at 03:13:47PM +0200, Maxime Ripard wrote:
+> > On Wed, Sep 10, 2025 at 06:26:56PM +0300, Dmitry Baryshkov wrote:
+> > > On Wed, Sep 10, 2025 at 09:30:19AM +0200, Maxime Ripard wrote:
+> > > > On Wed, Sep 03, 2025 at 03:03:43AM +0300, Dmitry Baryshkov wrote:
+> > > > > On Tue, Sep 02, 2025 at 08:06:54PM +0200, Maxime Ripard wrote:
+> > > > > > On Tue, Sep 02, 2025 at 06:45:44AM +0300, Dmitry Baryshkov wrot=
+e:
+> > > > > > > On Mon, Sep 01, 2025 at 09:07:02AM +0200, Maxime Ripard wrote:
+> > > > > > > > On Sun, Aug 31, 2025 at 01:29:13AM +0300, Dmitry Baryshkov =
+wrote:
+> > > > > > > > > On Sat, Aug 30, 2025 at 09:30:01AM +0200, Daniel Stone wr=
+ote:
+> > > > > > > > > > Hi Dmitry,
+> > > > > > > > > >=20
+> > > > > > > > > > On Sat, 30 Aug 2025 at 02:23, Dmitry Baryshkov
+> > > > > > > > > > <dmitry.baryshkov@oss.qualcomm.com> wrote:
+> > > > > > > > > > > It's not uncommon for the particular device to suppor=
+t only a subset of
+> > > > > > > > > > > HDMI InfoFrames. It's not a big problem for the kerne=
+l, since we adopted
+> > > > > > > > > > > a model of ignoring the unsupported Infoframes, but i=
+t's a bigger
+> > > > > > > > > > > problem for the userspace: we end up having files in =
+debugfs which do
+> > > > > > > > > > > mot match what is being sent on the wire.
+> > > > > > > > > > >
+> > > > > > > > > > > Sort that out, making sure that all interfaces are co=
+nsistent.
+> > > > > > > > > >=20
+> > > > > > > > > > Thanks for the series, it's a really good cleanup.
+> > > > > > > > > >=20
+> > > > > > > > > > I know that dw-hdmi-qp can support _any_ infoframe, by =
+manually
+> > > > > > > > > > packing it into the two GHDMI banks. So the supported s=
+et there is
+> > > > > > > > > > 'all of the currently well-known ones, plus any two oth=
+ers, but only
+> > > > > > > > > > two and not more'. I wonder if that has any effect on t=
+he interface
+> > > > > > > > > > you were thinking about for userspace?
+> > > > > > > > >=20
+> > > > > > > > > I was mostly concerned with the existing debugfs interfac=
+e (as it is
+> > > > > > > > > also used e.g. for edid-decode, etc).
+> > > > > > > > >=20
+> > > > > > > > > It seems "everything + 2 spare" is more or less common (A=
+DV7511, MSM
+> > > > > > > > > HDMI also have those. I don't have at hand the proper dat=
+asheet for
+> > > > > > > > > LT9611 (non-UXC one), but I think its InfoFrames are also=
+ more or less
+> > > > > > > > > generic).  Maybe we should change debugfs integration to =
+register the
+> > > > > > > > > file when the frame is being enabled and removing it when=
+ it gets unset.
+> > > > > > > >=20
+> > > > > > > > But, like, for what benefit?
+> > > > > > > >=20
+> > > > > > > > It's a debugfs interface for userspace to consume. The curr=
+ent setup
+> > > > > > > > works fine with edid-decode already. Why should we complica=
+te the design
+> > > > > > > > that much and create fun races like "I'm running edid-decod=
+e in parallel
+> > > > > > > > to a modeset that would remove the file I just opened, what=
+ is the file
+> > > > > > > > now?".
+> > > > > > >=20
+> > > > > > > Aren't we trading that with the 'I'm running edid-decode in p=
+aralle with
+> > > > > > > to a modeset and the file suddenly becomes empty'?
+> > > > > >=20
+> > > > > > In that case, you know what the file is going to be: empty. And=
+ you went
+> > > > > > from a racy, straightforward, design to a racy, complicated, de=
+sign.
+> > > > > >=20
+> > > > > > It was my question before, but I still don't really see what be=
+nefits it
+> > > > > > would have, and why we need to care about it in the core, when =
+it could
+> > > > > > be dealt with in the drivers just fine on a case by case basis.
+> > > > >=20
+> > > > > Actually it can not: debugfs files are registered from the core, =
+not
+> > > > > from the drivers. That's why I needed all the supported_infoframes
+> > > > > (which later became software_infoframes).
+> > > >=20
+> > > > That's one thing we can change then.
+> > > >=20
+> > > > > Anyway, I'm fine with having empty files there.
+> > > > >=20
+> > > > > > > > > Then in the long run we can add 'slots' and allocate some=
+ of the frames
+> > > > > > > > > to the slots. E.g. ADV7511 would get 'software AVI', 'sof=
+tware SPD',
+> > > > > > > > > 'auto AUDIO' + 2 generic slots (and MPEG InfoFrame which =
+can probably be
+> > > > > > > > > salvaged as another generic one)). MSM HDMI would get 'so=
+ftware AVI',
+> > > > > > > > > 'software AUDIO' + 2 generic slots (+MPEG + obsucre HDMI =
+which I don't
+> > > > > > > > > want to use). Then the framework might be able to priorit=
+ize whether to
+> > > > > > > > > use generic slots for important data (as DRM HDR, HDMI) o=
+r less important
+> > > > > > > > > (SPD).
+> > > > > > > >=20
+> > > > > > > > Why is it something for the framework to deal with? If you =
+want to have
+> > > > > > > > extra infoframes in there, just go ahead and create additio=
+nal debugfs
+> > > > > > > > files in your driver.
+> > > > > > > >=20
+> > > > > > > > If you want to have the slot mechanism, check in your atomi=
+c_check that
+> > > > > > > > only $NUM_SLOT at most infoframes are set.
+> > > > > > >=20
+> > > > > > > The driver can only decide that 'we have VSI, SPD and DRM Inf=
+oFrames
+> > > > > > > which is -ETOOMUCH for 2 generic slots'. The framework should=
+ be able to
+> > > > > > > decide 'the device has 2 generic slots, we have HDR data, use=
+ VSI and
+> > > > > > > DRM InfoFrames and disable SPD for now'.
+> > > > > >=20
+> > > > > > I mean... the spec does? The spec says when a particular feature
+> > > > > > requires to send a particular infoframe. If your device cannot =
+support
+> > > > > > to have more than two "features" enabled at the same time, so b=
+e it. It
+> > > > > > something that should be checked in that driver atomic_check.
+> > > > >=20
+> > > > > Sounds good to me. Let's have those checks in the drivers until we
+> > > > > actually have seveal drivers performing generic frame allocation.
+> > > > >=20
+> > > > > > Or just don't register the SPD debugfs file, ignore it, put a c=
+omment
+> > > > > > there, and we're done too.
+> > > > >=20
+> > > > > It's generic code.
+> > > > >=20
+> > > > > > > But... We are not there yet and I don't have clear usecase (w=
+e support
+> > > > > > > HDR neither on ADV7511 nor on MSM HDMI, after carefully readi=
+ng the
+> > > > > > > guide I realised that ADV7511 has normal audio infoframes). M=
+aybe I
+> > > > > > > should drop all the 'auto' features, simplifying this series =
+and land
+> > > > > > > [1] for LT9611UXC as I wanted origianlly.
+> > > > > > >=20
+> > > > > > > [1] https://lore.kernel.org/dri-devel/20250803-lt9611uxc-hdmi=
+-v1-2-cb9ce1793acf@oss.qualcomm.com/
+> > > > > >=20
+> > > > > > Looking back at that series, I think it still has value to rely=
+ on the
+> > > > > > HDMI infrastructure at the very least for the atomic_check sani=
+tization.
+> > > > > >=20
+> > > > > > But since you wouldn't use the generated infoframes, just skip =
+the
+> > > > > > debugfs files registration. You're not lying to userspace anymo=
+re, and
+> > > > > > you get the benefits of the HDMI framework.
+> > > > >=20
+> > > > > We create all infoframe files for all HDMI connectors.
+> > > >=20
+> > > > Then we can provide a debugfs_init helper to register all of them, =
+or
+> > > > only some of them, and let the drivers figure it out.
+> > > >=20
+> > > > Worst case scenario, debugfs files will not get created, which is a=
+ much
+> > > > better outcome than having to put boilerplate in every driver that =
+will
+> > > > get inconsistent over time.
+> > >=20
+> > > debugfs_init() for each infoframe or taking some kind of bitmask?
+> >=20
+> > I meant turning hdmi_debugfs_add and create_hdmi_*_infoframe_file into
+> > public helpers. That way, drivers that don't care can use the (renamed)
+> > hdmi_debugfs_add, and drivers with different constraints can register
+> > the relevant infoframes directly.
+>=20
+> Doesn't that mean more boilerplate?
+
+I don't think it would? In the general case, it wouldn't change
+anything, and in special cases, then it's probably going to be different
+=66rom one driver to the next so there's not much we can do.
+
+> In the end, LT9611UXC is a special case, for which I'm totally fine
+> not to use HDMI helpers at this point: we don't control infoframes
+> (hopefully that can change), we don't care about the TMDS clock, no
+> CEC, etc.
+
+Not using the helpers sound pretty reasonable here too.
+
+> For all other usecases I'm fine with having atomic_check() unset all
+> unsupported infoframes and having empty files in debugfs. Then we can
+> evolve over the time, once we see a pattern. We had several drivers
+> which had very limited infoframes support, but I think this now gets
+> sorted over the time.
+
+I never talked about atomic_check()? You were initially concerned that
+the framework would expose data in debugfs that it's not using. Not
+registering anything in debugfs solves that, but I'm not sure we need to
+special case atomic_check.
+
+Worst case scenario, we're going to generate infoframes the driver will
+ignore.
+
+Maxime
+
+--5omahayljejanoli
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCaNqC0wAKCRAnX84Zoj2+
+diX/AYD7tGMpz//OLeUzSg3QYHAZkitZyXT00YfJmgxYpCUMSnb6h8ucgQ8Om8Vk
+gbiiQX0Bf2U6KVN7HpvEuga5AMtIOqqgCE/fQHox7oXRJiC3nuzlZW5e70PMzD7l
+uQgN/qqEkQ==
+=aZZH
+-----END PGP SIGNATURE-----
+
+--5omahayljejanoli--
+
+
+--===============6860260282369960481==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============6860260282369960481==--
+
