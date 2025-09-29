@@ -4,71 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD711CAC5B0
-	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Sep 2025 08:22:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78ED0CAC5B5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Sep 2025 08:33:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vc6OBUIHmTXHJuPPG2LOCFETtQjTCwEtvTB3L5LQ8C4=; b=wMcCq4U1qwwOFGbtYyna9lCDz4
-	6PBekGD12yFoI7xuPIjfxkTDpw7OT5V4PFR/1didOHT1LKUnFnGrWJEZ96Snd9HCV2sf0bt1m4znK
-	IEULSiXm28VBMB97aKTERONSZIZyUHShVHpHuQLp/skdMZ1iSxnvIgIDNeZuFGVTITk2hWg3NAalV
-	dR4CdpBrLoE8RsC3eH3vJXUhQLgVwni+3Dly66G/mSqdC1raAf2aKQo3OsiXN+phsym4nGPI32zQg
-	HfOTjYXQKNagwD/5Tooa1dijnMlOfSasPxkU480SbYjDyH17c2R2o5bemB/jjJdVIyxAfFn6stSLL
-	sp82aIeg==;
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=wA9bprUeTg2V7aN0pTATeeh1kbLr3bL+F/51q64SvXY=; b=LxiidKPLiSUSjD5YIMLUgTtQWf
+	X5MA6lJPwYHvOY3ZCtm9A6taRwn8Dn+kh4tKoJpQWqdE5x0FWboICiYqNsBh19Sysd1NzF7G3jPf6
+	fdKPRAnJ7Ab4qjKSWEiiWhiygwJerWVwazZuM3wexcsQ9RMny+Sd0vusaV18nUz0AxrWRlsf7nsR0
+	ZSkrQPnGiMeU7hZqYUWz9jBSuBRSjrOAQv5mWcyWigiBDb4vWR8WRqq5r6jDpcDsKqVIepVPHtDK1
+	EwppNwInRftcjA7UUbmECKVNrjGhk48NqTHYcUGJpuY66Ti+UDqkMQbTda9I4G6DJ7l9mymZG4XGK
+	jz4QKUGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v399N-00000001mDP-0bUx;
-	Mon, 29 Sep 2025 08:22:25 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1v39Jg-00000001nSh-1v2F;
+	Mon, 29 Sep 2025 08:33:04 +0000
+Received: from mail.manjaro.org ([116.203.91.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v399K-00000001mC5-1n7L
-	for linux-rockchip@lists.infradead.org;
-	Mon, 29 Sep 2025 08:22:24 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <mkl@pengutronix.de>)
-	id 1v399G-0005Da-TJ; Mon, 29 Sep 2025 10:22:18 +0200
-Received: from moin.white.stw.pengutronix.de ([2a0a:edc0:0:b01:1d::7b] helo=bjornoya.blackshift.org)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <mkl@pengutronix.de>)
-	id 1v399E-0012s9-1s;
-	Mon, 29 Sep 2025 10:22:16 +0200
-Received: from pengutronix.de (p54b152ce.dip0.t-ipconnect.de [84.177.82.206])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(Client did not present a certificate)
-	(Authenticated sender: mkl-all@blackshift.org)
-	by smtp.blackshift.org (Postfix) with ESMTPSA id 3786047C36C;
-	Mon, 29 Sep 2025 08:22:16 +0000 (UTC)
-Date: Mon, 29 Sep 2025 10:22:15 +0200
-From: Marc Kleine-Budde <mkl@pengutronix.de>
-To: Andrea Daoud <andreadaoud6@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, 
-	Elaine Zhang <zhangqing@rock-chips.com>, kernel@pengutronix.de, linux-can@vger.kernel.org, 
-	netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	Alexander Shiyan <eagle.alexander923@gmail.com>
-Subject: Re: Possible race condition of the rockchip_canfd driver
-Message-ID: <20250929-curvy-cicada-of-sufficiency-a7f464-mkl@pengutronix.de>
-References: <CAOprWosSvBmORh9NKk-uxoWZpD6zdnF=dODS-uxVnTDjmofL6g@mail.gmail.com>
- <20250919-lurking-agama-of-genius-96b832-mkl@pengutronix.de>
- <CAOprWott046xznChj7JBNmVw3Z65uOC1_bqTbVB=LA+YBw7TTQ@mail.gmail.com>
- <20250922-eccentric-rustling-gorilla-d2606f-mkl@pengutronix.de>
- <CAOprWoucfBm_BZOwU+qzo3YrpDE+f-x4YKNDS6phtOD2hvjsGg@mail.gmail.com>
+	id 1v39Je-00000001nS0-1TxE;
+	Mon, 29 Sep 2025 08:33:03 +0000
 MIME-Version: 1.0
-In-Reply-To: <CAOprWoucfBm_BZOwU+qzo3YrpDE+f-x4YKNDS6phtOD2hvjsGg@mail.gmail.com>
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: mkl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1759134780;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=n6IgvnJf+TwuohwKNDrr1f+Fnh1ZrNwh++ABQ4h5jac=;
+	b=r2V41+vfGVhb91wQwN19qdC63ckj2jVdjphymcYJTu5Jx2T4hXThp+0oY3ErPz+RH7rTEt
+	+93F1HDZZ9LX6LeLJMssOs2NZ5ZtHCCgMh/+vNumqvhI7E0jd6PT9/5NHEvmJ3sYOKOZid
+	LXu+fHBDfCRweYj/Ne/22L20BtGfy1Jzl+gWO9zZ0wuV92UF/F53dZ0sVJoZFRfHBFhRs3
+	xWos+OQPdycV/ExXd2xwUPY68QE3ImwziUwhzEDpLqz0HY3QAGJBdhGkcYj/VI8kFXrslU
+	TN5iTmXXB1ipMxjVRP8czyQjyl7gaPlZ3JxxQgEDNyVFOI4v1d5hBc20sRG9FA==
+Date: Mon, 29 Sep 2025 10:32:59 +0200
+From: Dragan Simic <dsimic@manjaro.org>
+To: guptarud@gmail.com
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Ondrej
+ Jirman <megi@xff.cz>, Martijn Braam <martijn@brixit.nl>, =?UTF-8?Q?Kam?=
+ =?UTF-8?Q?il_Trzci=C5=84ski?= <ayufan@ayufan.eu>, "Leonardo G. Trombetta"
+ <lgtrombetta@gmx.com>
+Subject: Re: [PATCH v4 0/4] Upstreaming Pinephone Pro Patches
+In-Reply-To: <20250929-ppp_light_accel_mag_vol-down-v4-0-6598f22d3451@gmail.com>
+References: <20250929-ppp_light_accel_mag_vol-down-v4-0-6598f22d3451@gmail.com>
+Message-ID: <49dafe9afc5962d8fec10e6135c9b84d@manjaro.org>
+X-Sender: dsimic@manjaro.org
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250929_012222_465513_4EC084DD 
-X-CRM114-Status: GOOD (  15.97  )
+X-CRM114-CacheID: sfid-20250929_013302_576298_EA38373A 
+X-CRM114-Status: UNSURE (   8.33  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,77 +71,32 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============4068569445242033015=="
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hello Rudraksha,
 
---===============4068569445242033015==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="kcxxquzapiv75lfm"
-Content-Disposition: inline
+On 2025-09-29 09:35, Rudraksha Gupta via B4 Relay wrote:
+>       arm64: dts: rk3399-pinephone-pro: Add light/proximity sensor 
+> support
+>       arm64: dts: rk3399-pinephone-pro: Add accelerometer sensor 
+> support
+>       arm64: dts: rk3399-pinephone-pro: Add magnetometer sensor support
+>       arm64: dts: rk3399-pinephone-pro: Fix voltage threshold for 
+> volume keys
 
+Please note that the patch summaries/subjects are still a bit
+wrong in the v4 of this series, because there should be no
+"rk3399-pinephone-pro:" prefixes in them.
 
---kcxxquzapiv75lfm
-Content-Type: text/plain; protected-headers=v1; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: Possible race condition of the rockchip_canfd driver
-MIME-Version: 1.0
-
-On 28.09.2025 00:26:59, Andrea Daoud wrote:
-> > Alexander Shiyan (Cc'ed) reads the information from an nvmem cell:
-> >
-> > | https://github.com/MacroGroup/barebox/blob/macro/arch/arm/boards/dias=
-om-rk3568/board.c#L239-L257
-> >
-> > The idea is to fixup the device tree in the bootloader depending on the
-> > SoC revision, so that the CAN driver uses only the needed workarounds.
->=20
-> Thanks, it is not easy to correlate this because I am currently not using
-> barebox. I'll try this later.
-
-The most important information in this code is where the SoC revision is
-located: there is a separate nvmem cell for this. You can read out the
-information once manually and change your device tree accordingly.
-
-regards,
-Marc
-
---=20
-Pengutronix e.K.                 | Marc Kleine-Budde          |
-Embedded Linux                   | https://www.pengutronix.de |
-Vertretung N=C3=BCrnberg              | Phone: +49-5121-206917-129 |
-Amtsgericht Hildesheim, HRA 2686 | Fax:   +49-5121-206917-9   |
-
---kcxxquzapiv75lfm
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEn/sM2K9nqF/8FWzzDHRl3/mQkZwFAmjaQbQACgkQDHRl3/mQ
-kZzG/QgAket73QctCSBYEFyXMkmAapZL5ozqRJ4nTbFGZ2D4bxX6sYSf72hYfyk7
-irJ+U0i4XYPuRkFvswbR5TLLqnz+Miz2yB1TbhRiD0h8ChLKgZEKZtnrEXm8Inxn
-QzEg3x5x6tYQytolcXFHKzIM9FBXGnZB+pSQxXXoLPo+O6E9wmHc6l1BJe1fhJNi
-vn1G7zQsFQXxU2e3Mm4j9mi8iCG9k++0f6I1t+hVEg11egn/i3hgs2jpIbKW1uv4
-z76o7HAvN7Rdehs+E4VZu91g95TcNfVBJrvFb9HrDST0JG8I0w0GdQtc0ixKkl/5
-lXTDJ7pB+WBJmn4iGNmH3CXFgbx2TA==
-=CV6U
------END PGP SIGNATURE-----
-
---kcxxquzapiv75lfm--
-
-
---===============4068569445242033015==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+You can always check the commit history for the file you're
+editing, to see what's the expected format of the patch summary.
+It differs a bit between the subsystems and architectures, so
+it should always be checked.
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============4068569445242033015==--
-
