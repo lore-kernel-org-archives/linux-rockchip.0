@@ -4,77 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BDADCAC5B9
-	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Sep 2025 00:17:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 353E6CAC5BD
+	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Sep 2025 00:20:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cYTU0tsJ6mMl5WhorD2CmXAcz7Pw6BqoOWUyPfX/1LA=; b=OTUy57bNplZsSr
-	/3Xwrj0tr4MHWWuw5wrmYS6VVJ2ipR7zVuIZc12dUJzwivEwqvEYwfncRCHHCAuAHYJt4BQCzQAgE
-	v9OkOFUQ4GF08dsma5Nh6AOLBdiivQMjbzPrR5uS3jA43LmbOGq2P/o450AJRyDq4qBu4DRtQlKdc
-	eIF3js5nNPfS8sBsN38ODGd52/GiAhs199QuJRpU89iLBvZ3mJpnLNIBb+F2fQGAalTzcdO1Ryb7T
-	k2Aa8jXKDgn+hBkH1eYKeuXaDjsaRqcJTmYaw8UVhSw5/LiGoYG7+rV6neZ4H5sroKdAqILgcchgs
-	coMSsc2o0qXMJAb9576Q==;
+	List-Owner; bh=qqbGoskSiW5dQn2DRa3gio+zQhNhhCiFdcdx4DOLfVg=; b=ADVbDE0tNWHWhG
+	T3dFXl7Sk/igt20tzKwK8zUq+ItlfEFxxrEOKDhH+07FxfaOWkHYvx/arPI9zoOv3FDrHGMLDUX9m
+	ud1OM9WjUYAM7WsM/t+PL03gfwZvyqsI7BsoLA/r5Zj85UXtAuOlnp23ngXaBiNN2y0Sd/a+6aNcN
+	YMewWJ2rWvhl8gexl7mfDstMPfRAoxF9KbM6Kk1cl+0wQ1tZ16737VqvcLL/+uFzDd1ty20N6Z3Dc
+	QAzQ6Bx9M88AexJyNIX7Zyb/ODIHyr99dRmkjXYeIMa20PwhRLvwRkvuuDDGEfZaD/0owcydeHvuE
+	8jCmALANw5ff+gPTwxOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v3O3b-00000003fS3-1GHW;
-	Tue, 30 Sep 2025 00:17:27 +0000
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+	id 1v3O6I-00000003fm8-3R9R;
+	Tue, 30 Sep 2025 00:20:14 +0000
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v3O3X-00000003fRB-3Bjm
+	id 1v3O6F-00000003fkm-1ys8
 	for linux-rockchip@lists.infradead.org;
-	Tue, 30 Sep 2025 00:17:25 +0000
-Received: by mail-wm1-x331.google.com with SMTP id 5b1f17b1804b1-46e2e363118so51074385e9.0
-        for <linux-rockchip@lists.infradead.org>; Mon, 29 Sep 2025 17:17:22 -0700 (PDT)
+	Tue, 30 Sep 2025 00:20:13 +0000
+Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-46e3af7889fso29331735e9.2
+        for <linux-rockchip@lists.infradead.org>; Mon, 29 Sep 2025 17:20:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1759191441; x=1759796241; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1759191610; x=1759796410; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:content-language:from
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=XdEC/q6le7nfUpMwS8QD1mrWIXjjaEQSmDLATI0QjFQ=;
-        b=Mp0PCrgGNE6dMWm9p3Xmy4jl9RfRUN7ahNQDExVUYbzubD2nox1FB3lQ6RSD04rVxg
-         mZ5FlYV37czSZg1FpZ+Pi+W+UL2lhNHByTmc05CbU0Ks4JRC0/LxVr4MM/m7OhhM4jj4
-         zT6PdJLu1S8vt5pmlRPhKDa+5yLGmZj2G27skAdqz1gt7khAcg70a+OzdfW3n9Bo+cJZ
-         DU3s0Ui9kSD6Tk1fuF3vGaYPNrwrzSLokFDV0Xeq7XKZgbDJBfeEaXL5+fVXq0eJb9cU
-         kv1EdQbqfiGc30MKH/5tt20a+nbaapvheVPl+fl62HtWTw0AJ7wGZuOMcg+aQKBBUox6
-         S4+g==
+        bh=d2aCUV6OLkXwTtwNzSY66MPjJRvAozma0kNGW9LaNrE=;
+        b=LeNNbn2igfpVvRFGiG/tJgZ/2MM6tMFmdFko2f/01EJGKV8x/bAe/YdThtvoUUCrcf
+         nQPVHmmjU3jK5bRVkOt9A1H+zSGs8RGKztVn+9fuGNlYLH1P9S2VHZcLVj9rlWRMy7cW
+         un6nwTtn5e8TiKmwBmHKH2kk7GXDAoOswgV7e2aB2uIfMdhWHiSdqEqix9MMuYMo33Vf
+         C7TsNssrrTLZ+RgU8uJXiJzXVfenCTDiXOFl460P9bbPjGtWM2ZfHFu2giRO+Sh9+fpX
+         lGpC6U2KmLQb/UBkphMVezlr2bFU1lxSR8c3ttNQOzgOJAmWLFxRQZDBAUS6au62X1HY
+         XuIw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1759191441; x=1759796241;
+        d=1e100.net; s=20230601; t=1759191610; x=1759796410;
         h=content-transfer-encoding:in-reply-to:content-language:from
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=XdEC/q6le7nfUpMwS8QD1mrWIXjjaEQSmDLATI0QjFQ=;
-        b=TuKyJx3p37JZRptk/fPzGYJzuwxls/lZp9p9dtgcq9YOIKv7lq6gEd7BpDON+Cs9vT
-         0CU3Cq2Es+lt7nNKY3uzms25QXaqYWruvuk8iikuRKhbtGCtpYK8VbuNEXXUOygKo3ln
-         q7YPSC6BVTbesNaumVHI1Nk0lEBrl+WCSR2IWL0gLaIYa1ViB+VWrPUFVg8euYFGoBLb
-         mslO5MXGZAASnW9jwyEwa7Tatf2isMzf2v+JEc+ee2QoEPb1ndYGGcuSXlHyI1518nV3
-         TzVYaBuY9FPy8Ws+VPAoeH2hAAuHHBWqyoTiD201X2pMDG/0v5pkOP8TRCflaDunQbre
-         80bQ==
-X-Forwarded-Encrypted: i=1; AJvYcCX6WETyJv+7f0dyv2My2rYChcE8wTSWqn0uCuNEhsJbXLokOATSv/Owl/byPKP9Ys9cv1Nb1oWbaTi3fD8pxg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzrCHKuk1twhq7OUUKdSXktoi5bkFmivLfyHqc9pQUUwHdf4Y7m
-	uAoMoUTtcyv8xbJJApehJM04sctIMFUQjr9Pm2qKGFqdQgh28VmkevlW6x0QHrLxkb4=
-X-Gm-Gg: ASbGnctKVS0k8UlDgSfDR4UkB0Eqj2krvvhXbSzxAKzUdDwIOJbTtKr6hRYLMo44pfO
-	1tKKYSKzH0TbkMRozY8FsEEz1gRrUkmfO1xvUAe6gT4VOLdukSda4LuotxfT2yXZNgQyUTDUp+j
-	S7nfPxhiteoNibTVx0+hn+1Lzy94pQg6y2sRVJmgsrVSnrbzoztOYZBLLcZe9mzuRypSCNCoF2q
-	JB+YaRLGi2wMmqvCTTi8r5If50fZRo9ytPLm5OUxVcxOSiQ4iB9QDLGN+IEaTdAcrk5NbQKr8TP
-	xOps0ZB4Lo5PuFqJqwqh8k+VwsUkB80UrzQidEiE6shimkKk99V8UOjovMKOOq2ZkVynZ52q8Jr
-	2Iu1rHKcHvPUvStduB5HTMO7kGy/OROjXRbiRvFlmgg5w0EYAhmKKJRPc4QHZ8/6Uh4cW1Kw9PI
-	AAwIWw9Z3I2UiwHeLFShbeLRXABYoj93U=
-X-Google-Smtp-Source: AGHT+IF1NvJ6A8YUVxkdRJkfeGyVldxLeh1qdvb50sqvC4KYOgmP95PhemeRL1E+WA4Xb6qkHy3wsw==
-X-Received: by 2002:a05:600c:1d06:b0:45b:9912:9f30 with SMTP id 5b1f17b1804b1-46e329a0d0amr156323085e9.6.1759191439753;
-        Mon, 29 Sep 2025 17:17:19 -0700 (PDT)
+        bh=d2aCUV6OLkXwTtwNzSY66MPjJRvAozma0kNGW9LaNrE=;
+        b=E3UT2dL7N8QdNFv1vPx8jzL1erA/rhJrYU2WDnxMmZklCYRkqBV8RHiAVbwhFeE3XM
+         thy11cuSN2cxtxPQRIccTBAWBN+lwekRNprmdIJdW4LXVcHchI0Mq85oqh8xHEMcUuVK
+         VpCcRPi1NwgkoAGSSxcbhxJB+pYagZkZtl7vF/Mwg0d4lUb11JQ49ZzctXeunqwaSjOZ
+         kXq+PkcX/DA/koyKFSZS/y486T3+HN+VfcggmdHBZPjUivGg8rQnD96JXMme6m47jNJj
+         YWZQWFanv2C42Dah0AvLcmZgOierPCe5U4sCMLtEk373f4+wcY+dNpiiEmi61M0wm2Mo
+         PwDg==
+X-Forwarded-Encrypted: i=1; AJvYcCVYZHztgxPFz05twaaygTfgFqlPGtMBTgHbvDa64I3rDK4rM487MGC/iqRIxdYVCOH36XWy9xP/ZQDXun07BQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwXW1u4ec9HGUKuDf2kcSYLGcLYDGhVLM+mQWtdu8uGDfbX1mU8
+	o3VYUhG3y4sioS9FuwuixODC3KxjPvJBNTpdIvN+KzoPFQZPTNEnXmcrgXIG7nmXdxg=
+X-Gm-Gg: ASbGnct1lv2RYaP2FHat7nYe5a/eJDIwTBTHscZBbwzsnOwx+WNnnxqyLBA6077DpcU
+	Q7FXLHixrxvBxnMGcafQ/p7RtxqLi9ffq4SRFAsQ2ETlkjvkeNZTjPXW6izCgUDSlqk+8ZFshlR
+	93S1HikBwlJ2KqH6Q6mo8pXufckx+T6OkcbuDF6SVmbrOrAMjGDw/diDMXrRyPBvwv/NWgJp9b5
+	meKRXdsnIccHP082f6bdDRUSzOFibyAVeRvy/z6aLEx7cVpgQNbX5Sz1+jwOEIRiiWz6pD4Q9xA
+	ca0bU8z2+NZOdSrzFRDlbsgEJFF6gajEu1VCu/FTBeistJrYKww83O6Q/9trgtOXhIUZKft/OZC
+	bzB0o/SUPwnH2LnaBd9IfLypfegnLrCZZ25OzoAxpKAWHrNNGr9gM2/nbTrYMumruHwVyIXARaG
+	AwsEZ/MRfcdM3pNHiOIomi1Cps605eYBk=
+X-Google-Smtp-Source: AGHT+IHXl9KNUIAY5LT7IQhdhWGKaz6kpmbHg2ltlnlV5LX2piwjkJPMXt7gP1unlCKB0JI7t/YWLA==
+X-Received: by 2002:a05:600c:8b65:b0:46e:36f8:1eb7 with SMTP id 5b1f17b1804b1-46e36f81fbamr160812465e9.10.1759191609420;
+        Mon, 29 Sep 2025 17:20:09 -0700 (PDT)
 Received: from [192.168.0.19] (188-141-3-146.dynamic.upc.ie. [188.141.3.146])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-46e2a996e2fsm266744585e9.2.2025.09.29.17.17.17
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-46e56f3dcacsm33715495e9.2.2025.09.29.17.20.07
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 29 Sep 2025 17:17:19 -0700 (PDT)
-Message-ID: <3594bbc8-b063-4472-a294-117582f063dd@linaro.org>
-Date: Tue, 30 Sep 2025 01:17:17 +0100
+        Mon, 29 Sep 2025 17:20:08 -0700 (PDT)
+Message-ID: <1ccec2cd-0290-4804-b274-b3dcb481449e@linaro.org>
+Date: Tue, 30 Sep 2025 01:20:07 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v11 03/17] media: dt-bindings: add rockchip px30 vip
+Subject: Re: [PATCH v11 04/17] media: dt-bindings: add rockchip rk3568 vicap
 To: michael.riesch@collabora.com, Mehdi Djait <mehdi.djait@linux.intel.com>,
  Maxime Chevallier <maxime.chevallier@bootlin.com>,
  =?UTF-8?Q?Th=C3=A9o_Lebrun?= <theo.lebrun@bootlin.com>,
@@ -96,16 +96,16 @@ To: michael.riesch@collabora.com, Mehdi Djait <mehdi.djait@linux.intel.com>,
  Sakari Ailus <sakari.ailus@linux.intel.com>
 Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, Mehdi Djait <mehdi.djait@bootlin.com>
+ linux-rockchip@lists.infradead.org,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 References: <20240220-rk3568-vicap-v11-0-af0eada54e5d@collabora.com>
- <20240220-rk3568-vicap-v11-3-af0eada54e5d@collabora.com>
+ <20240220-rk3568-vicap-v11-4-af0eada54e5d@collabora.com>
 From: Bryan O'Donoghue <bryan.odonoghue@linaro.org>
 Content-Language: en-US
-In-Reply-To: <20240220-rk3568-vicap-v11-3-af0eada54e5d@collabora.com>
+In-Reply-To: <20240220-rk3568-vicap-v11-4-af0eada54e5d@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250929_171724_008838_6C4F18DD 
-X-CRM114-Status: UNSURE (   6.41  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250929_172011_553831_6B5E323B 
+X-CRM114-Status: GOOD (  15.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,17 +123,112 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 17/09/2025 16:38, Michael Riesch via B4 Relay wrote:
+> From: Michael Riesch <michael.riesch@collabora.com>
+> 
+> Add documentation for the Rockchip RK3568 Video Capture (VICAP) unit.
+> 
+> Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
+> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
+> ---
+>   .../bindings/media/rockchip,rk3568-vicap.yaml      | 170 +++++++++++++++++++++
+>   MAINTAINERS                                        |   1 +
+>   2 files changed, 171 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/media/rockchip,rk3568-vicap.yaml b/Documentation/devicetree/bindings/media/rockchip,rk3568-vicap.yaml
+> new file mode 100644
+> index 000000000000..99861d236f5e
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/media/rockchip,rk3568-vicap.yaml
+> @@ -0,0 +1,170 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/media/rockchip,rk3568-vicap.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Rockchip RK3568 Video Capture (VICAP)
+> +
+> +maintainers:
+> +  - Michael Riesch <michael.riesch@collabora.com>
+> +
+> +description:
+> +  The Rockchip RK3568 Video Capture (VICAP) block features a digital video
+> +  port (DVP, a parallel video interface) and a MIPI CSI-2 port. It receives
+> +  the data from camera sensors, video decoders, or other companion ICs and
+> +  transfers it into system main memory by AXI bus.
+> +
+> +properties:
+> +  compatible:
+> +    const: rockchip,rk3568-vicap
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  clocks:
+> +    items:
+> +      - description: ACLK
+> +      - description: HCLK
+> +      - description: DCLK
+> +      - description: ICLK
+> +
+> +  clock-names:
+> +    items:
+> +      - const: aclk
+> +      - const: hclk
+> +      - const: dclk
+> +      - const: iclk
+> +
+> +  iommus:
+> +    maxItems: 1
+> +
+> +  resets:
+> +    items:
+> +      - description: ARST
+> +      - description: HRST
+> +      - description: DRST
+> +      - description: PRST
+> +      - description: IRST
+> +
+> +  reset-names:
+> +    items:
+> +      - const: arst
+> +      - const: hrst
+> +      - const: drst
+> +      - const: prst
+> +      - const: irst
+> +
+> +  rockchip,grf:
+> +    $ref: /schemas/types.yaml#/definitions/phandle
+> +    description: Phandle to general register file used for video input block control.
+> +
+> +  power-domains:
+> +    maxItems: 1
+> +
+> +  ports:
+> +    $ref: /schemas/graph.yaml#/properties/ports
+> +
+> +    properties:
+> +      port@0:
+> +        $ref: /schemas/graph.yaml#/$defs/port-base
+> +        unevaluatedProperties: false
+> +        description: The digital video port (DVP, a parallel video interface).
+> +
+> +        properties:
+> +          endpoint:
+> +            $ref: video-interfaces.yaml#
+> +            unevaluatedProperties: false
+> +
+> +            properties:
+> +              bus-type:
 > +                enum: [5, 6]
 
-Not required but nice to have is a comment like:
+I meant to add my nit-pick comment here as I added my RB.
 
-enum:
-   - 5 # MEDIA_BUS_TYPE_PARALLEL
-   - 6 # MEDIA_BUS_TYPE_BT656
-
-Just for the sake of a reviewer.
-
-Either way
+Its not important though.
 
 Reviewed-by: Bryan O'Donoghue <bryan.odonoghue@linaro.org>
 
