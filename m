@@ -4,104 +4,151 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BAFAECAC5BE
-	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Sep 2025 05:51:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC560CAC5B8
+	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Sep 2025 07:02:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lEwXlN7D7yJm01eCo/d/yebTWUZhwsSQZ+td6cO8ku4=; b=XG8mH1slLoJd+V
-	ZIQEda0i7RBuA2SxFyevv3JDxRCsN4Pd3Vg/0k9L9y31tNzP2O/sAWem4sfhLbQ/c3F+CBfuAso5x
-	3luhSmMTw5UuKVEMcWgox6MU1FjXfxSfTpKsTxDrLwky/6+RJy4A6fryQrl31OJr4UqDvRMi2nxBN
-	f+wbnV3UYLwPJ7n843cam8wuYLbxNfkTpNGVURKbUKMQk60fmckTckpLad6M78AIfjEhkryh0Fncz
-	ABOjLNrc8MgeE3nMfivKphAvQRU4jQ7ZZ5zANShBx29xE+dGxP+0ZCL7tK3RqueB1n/qWAKbUK2Si
-	RohCecIy2wdCTILhelqg==;
+	List-Owner; bh=hkimEPr6oJncCBM6roV7GU9+ZSVzCJh71G9o6JJa4WU=; b=STIHT/4bmlfjYO
+	xhgmb0nXzlTDQ90FAR8fIXqqklnpQ2yl+Xg66BlIQFMXdRPs5oPlAScp5naE++SYPIvgjwACtAtvn
+	ONHV9U/GEfgQ5F3hEhNvKHAluZQxlmje7pbrwlkh684R/CrHnlGveeGgWw+FLOfm2XhTkQbep+dqQ
+	gJVQOWuzuhnEg+AvgE2X6vJfupapiJld/lOUlGLHdn7bLmDbLfoYbJ2eLD4syb86iT5bXNRvGXEIQ
+	/37ZvIqFhUWrDEcRaVBOxjbXhcD/mgCPzd6BS7dovPuZoDFP+TtPwSySMy5gSOB7J+l7WMdyosSmz
+	aVdgegSUKc1QTwsHP83A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v3TGd-00000004I4V-2euZ;
-	Tue, 30 Sep 2025 05:51:15 +0000
-Received: from mail-qk1-x731.google.com ([2607:f8b0:4864:20::731])
+	id 1v3UNh-00000004Q7L-08I8;
+	Tue, 30 Sep 2025 07:02:37 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v3TGF-00000004Hoq-2CWV
+	id 1v3UNe-00000004Q6b-1PKQ
 	for linux-rockchip@lists.infradead.org;
-	Tue, 30 Sep 2025 05:51:05 +0000
-Received: by mail-qk1-x731.google.com with SMTP id af79cd13be357-85ed0a1b35dso423404685a.2
-        for <linux-rockchip@lists.infradead.org>; Mon, 29 Sep 2025 22:50:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1759211450; x=1759816250; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=QVazE73VbRqYor6BfpMCCi39sn3mMzE033vE9K5d72Q=;
-        b=WxUp3vhT/pcIm0C9nyIUb0+b25Orj5rVVXexPbhK1L+vuZvWKRONbUtp46F3bzokY6
-         GtJZT4J53nIW6sbsD39YONBN0rWFsH5cY0NeLQj53ELBKxC6rrM2dSN8CGxU+fBnUJHH
-         oeZZ0Ehaa5uOO8l7dMBPcx2EhDhB0HGW1LUCXZ+SiGqpayZ3GMWIWxrh3rzrnJsDrEdl
-         0uuqTfQwbWfV5BVzOg8f8OQpZaPQifIF3Rj3KduDMC2hovuArbXKoCBOZGVGPTj3JFbp
-         4kgf4Su0tGw2nl0Q1SwkIu4JZaM5z4jtE/QC65+W4GOudPMUXkpTDmQNlHWSgzbQodVK
-         E4XQ==
+	Tue, 30 Sep 2025 07:02:35 +0000
+Received: from pps.filterd (m0279871.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 58U4Hepk001100
+	for <linux-rockchip@lists.infradead.org>; Tue, 30 Sep 2025 07:02:33 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-type:date:from:in-reply-to:message-id:mime-version
+	:references:subject:to; s=qcppdkim1; bh=BwBI3m+DtpPGWJNxcZ6VSGsW
+	WmE70r279i000rgGn2k=; b=o7Xqqqz2GLaelM8l2vQshCq8vS/qA1wR01DCw3uP
+	j2PZ84IbkXZlrRyd8iXTJqcQBZndcIk42+2Es9iSpH+YdA+qAwrByWPLno/XNpB1
+	ttyM4E3jp+zZ8AWWI+B8jWLgrYdbK953e84z47WlyiMjGIjsiONj4OKZ0iMo1VxP
+	eg25OSyn55u6/nOvfNRHN9pYEf+Oa1SpXmTYBNkQmnnpT2wc7R2HpjuaFKSyDano
+	WH/zLNf4kAB0X+ww7/DzsiXmuZx8pNWFzq66R2zB1eExJDs7izrv5YUxPiFk81+1
+	D6re9C++FaZ+qn9q5EfEScHxAK6NDROfoQdFzIm5JEwacA==
+Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com [209.85.160.200])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 49fppr3f1w-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
+	for <linux-rockchip@lists.infradead.org>; Tue, 30 Sep 2025 07:02:33 +0000 (GMT)
+Received: by mail-qt1-f200.google.com with SMTP id d75a77b69052e-4deb67c61caso84453751cf.2
+        for <linux-rockchip@lists.infradead.org>; Tue, 30 Sep 2025 00:02:32 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1759211450; x=1759816250;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=QVazE73VbRqYor6BfpMCCi39sn3mMzE033vE9K5d72Q=;
-        b=i8Sii0SS0tzYWPdp6rxBRVXUYgGS5tkg4xedV6GJY3sxEv41MRas4u0p2Ckh0xBZvx
-         zGiF2cBQgdMVTJavjzaOvAQeTDrFUaAdEInWPCQlVXDc8f8F2EUGaTPP5CKvDXRwDlRC
-         fmOH6+iQylN0x9AZ5NCU/vVs9ThAQMRy5Ov+nFovSVrT+jWKnQQEwiIAM4hFQg2ZAHZj
-         9qOU6xnWb5uDc2cU/xFeB/yhiNlKwLoChr001aOPWY0DkEcsXbvVxtXePXmHCYEYGsYw
-         sv/dTIVWfO5qiR1K41ibSDOQq7C/niP14utJ5BCBn1vMkc4VPx110c5sth38CmkLMF5N
-         EGuw==
-X-Forwarded-Encrypted: i=1; AJvYcCXZ1zpKLgq9pvxkL4gwINGO71a3Nf+E4eoLT6xszZim1sEtfDyExEUrRGeA1LGr8jD1MTLhKROXdx/++ihMTA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzaoDW+TMGlj6JnzA8dpyf86x7fUde2wtkRpt/9it7qwosTieJB
-	/0gUD5yerabZS3LByl5gxYcUthDOxV4kBDSUb7cKtYtlq/cgaJg0hAC+
-X-Gm-Gg: ASbGncvRnRLPRgrwJ85HeN5hqde13Bop/Fw2asFtVrUwSJSIcBVZCjTuNrrB8ZVOZoa
-	7uhumAi8Hcm1mEsBV+0dGA39uDs+qVlSNwlH/M1HiIcj3GqBMJ67ck1I3qLP2vcuzwe4sNRH5FK
-	t/Rj/RvZPOwD6nVOUmT2keT52PxpsMP9qDMLom4uPTc78T72xezaFpZ1i+XxF6FkCfg10eE8K1c
-	P6Y40ibxsLdakuEB9xgUWP1V7ot7zvLdr6cSu2YxRypK4HbBOiJCR7DxIh6V+EO2+3bOGtMBZNF
-	mocwuAdXVIAo2a39DFnDP/FmJglFhmvTXUqX1GKIKzZi0I+54GXHc10l96jGqB2KnizQ5xiBIEW
-	8rdDW/16H/1l0ybKoS7+rQgzsF4HwsrGKMrkdSA3rAx+Mz+8TQ22Fwe8=
-X-Google-Smtp-Source: AGHT+IEHP2nuVRWzUsvMORK3IWUpjmosDt/eXajwkeP8Kd0ilWmY4UTAQtF/Qcu64yvQX0+XiPIt+A==
-X-Received: by 2002:a05:620a:1a28:b0:813:31ad:bf3d with SMTP id af79cd13be357-85adee2b821mr2465715985a.12.1759211450194;
-        Mon, 29 Sep 2025 22:50:50 -0700 (PDT)
-Received: from localhost.localdomain ([2a09:bac5:3981:263c::3cf:53])
-        by smtp.gmail.com with ESMTPSA id af79cd13be357-85c306b5f64sm971990985a.32.2025.09.29.22.50.43
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Mon, 29 Sep 2025 22:50:49 -0700 (PDT)
-From: Liangbin Lian <jjm2473@gmail.com>
-To: robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	heiko@sntech.de,
-	quentin.schulz@cherry.de,
-	kever.yang@rock-chips.com,
-	naoki@radxa.com,
-	honyuenkwun@gmail.com,
-	inindev@gmail.com,
-	ivan8215145640@gmail.com,
-	neil.armstrong@linaro.org,
-	mani@kernel.org,
-	dsimic@manjaro.org,
-	pbrobinson@gmail.com,
-	alchark@gmail.com,
-	didi.debian@cknow.org,
-	jjm2473@gmail.com,
-	jbx6244@gmail.com
-Cc: devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v4 3/3] arm64: dts: rockchip: add LinkEase EasePi R1
-Date: Tue, 30 Sep 2025 13:50:17 +0800
-Message-ID: <20250930055017.67610-4-jjm2473@gmail.com>
-X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20250930055017.67610-1-jjm2473@gmail.com>
-References: <20250930055017.67610-1-jjm2473@gmail.com>
+        d=1e100.net; s=20230601; t=1759215752; x=1759820552;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=BwBI3m+DtpPGWJNxcZ6VSGsWWmE70r279i000rgGn2k=;
+        b=n18VD5ziG/aZwcvxaKqySBsgsiMjdv5R8ldKtHX2kjIaJirDOBUGTAUOCJnOnG8jhx
+         OpVhVlP2NIH6bytrmoIVNFAl19g4ZMfR11du/8wa5J897xD8hlly9CuNYbuWhLEJ9R9u
+         NqnVtGjIFZNl3hhqUo4piPO6ff1C+fM9f8L06GnKJs0h5xOskzbnYCKJx1SdFsQA1Y6m
+         uxCSUW8+8fFYEuD0jzEf5VpD6rGzqoXlnSt+25K3u0L/x2ojyMZxS+iEJuMhqv/5ClBm
+         Fgxr1Kx0DwmcxrEj/VzL/JyMM2lc8Hc2K8IW2EHB3ic3XfPjhzRmUCKv3mUko/kuwIwh
+         jpRw==
+X-Forwarded-Encrypted: i=1; AJvYcCXWfoJJRarKa8HMMzg1uwLGyJ5RuTGwkZ9O4tHHDFVhawg1+eA5BXSjrhZRZBPBhhrUhsXr5BEdUM9H1IyCLg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzAo6YdclrcprX16MHSZew9Pbmyaz9bIIZQOFMVLf1y0Roa8RBj
+	Jbs0RvFk3IP9Z/BLfCCHBTVe7qzB5omb6byCDvHWT2pjO5P0qieaS1E0aV/542qN+ZSjOH8sAgG
+	C7g5jdSuC2R1t4Mo0JwtbCvFro390tKLC1j7FMWD0+VkWe/dXTdOVEZ7ZQkaHbJ5fdbfOf/kQAh
+	E=
+X-Gm-Gg: ASbGncsPD2zA+is5URItcFRbV6bo8Ckk8zZy1QS0weUWD6LTGUpcYc8WwAQakuZz7JA
+	U/a/NEVnSHD1d6XqHbq6MRWpMCDJ/cPwo3xSEOVXYPb6LmsclT6+b5RdSCjcH0QUPWtrUjazqMH
+	bpxSZs2FqzpNxURYQTaP6IxTRiAgtiTQrA3Y3JD9p4jWReDWiAdtrmo2p0c+GFl+zJpjpy6W4et
+	LnjT0fDFbSmp4NDcQsO9dgIp9WWiiQr922EyuUd67dDypETC2UBbFp/2RbAxF+To1K0F9iGoQYg
+	VgE1S0Mq7rkqvdPRNR4UFdUF4Azlb9ZEd0cH8v79hRmetTWWxb9Vtj4f1WF8/nNw9f68L5a+v+C
+	p6756kYgwM8Ht+JPyvqh1b6cCwJt2886L5Bt5JswntrU/zTlk1GA1LiFUCw==
+X-Received: by 2002:ac8:5a56:0:b0:4dd:e207:fce with SMTP id d75a77b69052e-4dde21659bdmr170058641cf.70.1759215751893;
+        Tue, 30 Sep 2025 00:02:31 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFb84HLLa9QgF4zWxDQfkP47jlJjmQ47Nd1Kw/rc0PP2nrv91KOwbaW913oaMecip8Zy003Zg==
+X-Received: by 2002:ac8:5a56:0:b0:4dd:e207:fce with SMTP id d75a77b69052e-4dde21659bdmr170058171cf.70.1759215751316;
+        Tue, 30 Sep 2025 00:02:31 -0700 (PDT)
+Received: from umbar.lan (2001-14ba-a0c3-3a00-264b-feff-fe8b-be8a.rev.dnainternet.fi. [2001:14ba:a0c3:3a00:264b:feff:fe8b:be8a])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-588be5416c7sm900404e87.140.2025.09.30.00.02.29
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 30 Sep 2025 00:02:30 -0700 (PDT)
+Date: Tue, 30 Sep 2025 10:02:28 +0300
+From: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+To: Maxime Ripard <mripard@kernel.org>
+Cc: Daniel Stone <daniel@fooishbar.org>,
+        Andrzej Hajda <andrzej.hajda@intel.com>,
+        Neil Armstrong <neil.armstrong@linaro.org>,
+        Robert Foss <rfoss@kernel.org>,
+        Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+        Jonas Karlman <jonas@kwiboo.se>,
+        Jernej Skrabec <jernej.skrabec@gmail.com>,
+        Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+        Thomas Zimmermann <tzimmermann@suse.de>,
+        David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+        Sandy Huang <hjc@rock-chips.com>,
+        Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>,
+        Andy Yan <andy.yan@rock-chips.com>, Chen-Yu Tsai <wens@csie.org>,
+        Samuel Holland <samuel@sholland.org>,
+        Dave Stevenson <dave.stevenson@raspberrypi.com>,
+        =?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>,
+        Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
+        Liu Ying <victor.liu@nxp.com>,
+        Rob Clark <robin.clark@oss.qualcomm.com>,
+        Dmitry Baryshkov <lumag@kernel.org>,
+        Abhinav Kumar <abhinav.kumar@linux.dev>,
+        Jessica Zhang <jessica.zhang@oss.qualcomm.com>,
+        Sean Paul <sean@poorly.run>,
+        Marijn Suijten <marijn.suijten@somainline.org>,
+        dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+        linux-arm-kernel@lists.infradead.org,
+        linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev,
+        linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org
+Subject: Re: [PATCH v3 00/11] drm/connector: hdmi: limit infoframes per
+ driver capabilities
+Message-ID: <itgffxygopi7etkt7xhvmyuvyl5ad3k43nsxvjzw3ubtwiikn7@ocugfdaigtu7>
+References: <57ekub6uba7iee34sviadareqxv234zbmkr7avqofxes4mqnru@vgkppexnj6cb>
+ <20250901-voracious-classy-hedgehog-ee28ef@houat>
+ <voknqdv3zte2jzue5yxmysdiixxkogvpblvrccp5gu55x5ycca@srrcscly4ch4>
+ <st6wob5hden6ypxt2emzokfhl3ezpbuypv2kdtf5zdrdhlyjfw@l2neflb4uupo>
+ <pe6g2fanw65p67kfy5blbtiytngxmr6nkbazymojs4a66yvpl3@7j4ccnsvc6az>
+ <20250910-didactic-honored-chachalaca-f233b2@houat>
+ <x562ueky2z5deqqmhl222moyrbylfwi35u4hb34dpl3z52ra4c@dyw4iayrewnz>
+ <20250925-fervent-merry-beagle-2baba3@penduick>
+ <qx5ashx62pufott6hnsfna3qntnoyvxwxze4rihhuxcsdxi37s@bbdvc3sfsgne>
+ <20250929-gregarious-worm-of-memory-c5354d@houat>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20250929-gregarious-worm-of-memory-c5354d@houat>
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwOTI5MDA4MiBTYWx0ZWRfXxW0YuRWpeU73
+ Ql8Zo/mnmcB+qDciFBhsBZc8D+9OFswmufrHjhyiB2PBkOUgJvBycq8+J0NYlm50ThUvxEohQIP
+ z3ZONjWQDWezPbYnKZByzJZx0uAf9/x34Y3AKBzBqBFLTKBFLstMGaOElrxONysATILY1jWoJut
+ 3LiIKqnQjXAiZ20XbRZYD2BHopyJeETIY2LPqNb60pLfJNAjLFEwWhuTlCJEqlqBjZmaoDENnhh
+ Hdk01aQp0x45vN6gxC7TrhJPjQjjyDaAnYaCObahYnon8jVdcm0hpgEYJ9WuCSX39/Y7Ufm6AW3
+ VGjVLS8Ztz5rTFMPdYCAj2wRQnbTJq5ZEw+fTKUkJGFgcLYYCCV5WGFC92/5yUvYPe2PrUTVPhp
+ YC9vXRyqO0+dLs4RO72AYneNUlly7w==
+X-Proofpoint-ORIG-GUID: syLLcQjDVHS2A2OjwNL498m11QVKJ_oC
+X-Authority-Analysis: v=2.4 cv=GLoF0+NK c=1 sm=1 tr=0 ts=68db8089 cx=c_pps
+ a=JbAStetqSzwMeJznSMzCyw==:117 a=xqWC_Br6kY4A:10 a=kj9zAlcOel0A:10
+ a=yJojWOMRYYMA:10 a=VwQbUJbxAAAA:8 a=EUspDBNiAAAA:8 a=2KZmwtpIuq5mfTj36lQA:9
+ a=CjuIK1q_8ugA:10 a=uxP6HrT_eTzRwkO_Te1X:22
+X-Proofpoint-GUID: syLLcQjDVHS2A2OjwNL498m11QVKJ_oC
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1117,Hydra:6.1.9,FMLib:17.12.80.40
+ definitions=2025-09-30_01,2025-09-29_04,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501 lowpriorityscore=0 adultscore=0 suspectscore=0
+ impostorscore=0 spamscore=0 bulkscore=0 clxscore=1015 phishscore=0
+ malwarescore=0 classifier=typeunknown authscore=0 authtc= authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.19.0-2509150000
+ definitions=main-2509290082
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250929_225051_839542_9805EE01 
-X-CRM114-Status: GOOD (  13.72  )
+X-CRM114-CacheID: sfid-20250930_000234_492029_14F471BD 
+X-CRM114-Status: GOOD (  74.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,744 +165,176 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-LinkEase EasePi R1 [1] is a high-performance mini router.
+On Mon, Sep 29, 2025 at 03:00:04PM +0200, Maxime Ripard wrote:
+> On Thu, Sep 25, 2025 at 05:16:07PM +0300, Dmitry Baryshkov wrote:
+> > On Thu, Sep 25, 2025 at 03:13:47PM +0200, Maxime Ripard wrote:
+> > > On Wed, Sep 10, 2025 at 06:26:56PM +0300, Dmitry Baryshkov wrote:
+> > > > On Wed, Sep 10, 2025 at 09:30:19AM +0200, Maxime Ripard wrote:
+> > > > > On Wed, Sep 03, 2025 at 03:03:43AM +0300, Dmitry Baryshkov wrote:
+> > > > > > On Tue, Sep 02, 2025 at 08:06:54PM +0200, Maxime Ripard wrote:
+> > > > > > > On Tue, Sep 02, 2025 at 06:45:44AM +0300, Dmitry Baryshkov wrote:
+> > > > > > > > On Mon, Sep 01, 2025 at 09:07:02AM +0200, Maxime Ripard wrote:
+> > > > > > > > > On Sun, Aug 31, 2025 at 01:29:13AM +0300, Dmitry Baryshkov wrote:
+> > > > > > > > > > On Sat, Aug 30, 2025 at 09:30:01AM +0200, Daniel Stone wrote:
+> > > > > > > > > > > Hi Dmitry,
+> > > > > > > > > > > 
+> > > > > > > > > > > On Sat, 30 Aug 2025 at 02:23, Dmitry Baryshkov
+> > > > > > > > > > > <dmitry.baryshkov@oss.qualcomm.com> wrote:
+> > > > > > > > > > > > It's not uncommon for the particular device to support only a subset of
+> > > > > > > > > > > > HDMI InfoFrames. It's not a big problem for the kernel, since we adopted
+> > > > > > > > > > > > a model of ignoring the unsupported Infoframes, but it's a bigger
+> > > > > > > > > > > > problem for the userspace: we end up having files in debugfs which do
+> > > > > > > > > > > > mot match what is being sent on the wire.
+> > > > > > > > > > > >
+> > > > > > > > > > > > Sort that out, making sure that all interfaces are consistent.
+> > > > > > > > > > > 
+> > > > > > > > > > > Thanks for the series, it's a really good cleanup.
+> > > > > > > > > > > 
+> > > > > > > > > > > I know that dw-hdmi-qp can support _any_ infoframe, by manually
+> > > > > > > > > > > packing it into the two GHDMI banks. So the supported set there is
+> > > > > > > > > > > 'all of the currently well-known ones, plus any two others, but only
+> > > > > > > > > > > two and not more'. I wonder if that has any effect on the interface
+> > > > > > > > > > > you were thinking about for userspace?
+> > > > > > > > > > 
+> > > > > > > > > > I was mostly concerned with the existing debugfs interface (as it is
+> > > > > > > > > > also used e.g. for edid-decode, etc).
+> > > > > > > > > > 
+> > > > > > > > > > It seems "everything + 2 spare" is more or less common (ADV7511, MSM
+> > > > > > > > > > HDMI also have those. I don't have at hand the proper datasheet for
+> > > > > > > > > > LT9611 (non-UXC one), but I think its InfoFrames are also more or less
+> > > > > > > > > > generic).  Maybe we should change debugfs integration to register the
+> > > > > > > > > > file when the frame is being enabled and removing it when it gets unset.
+> > > > > > > > > 
+> > > > > > > > > But, like, for what benefit?
+> > > > > > > > > 
+> > > > > > > > > It's a debugfs interface for userspace to consume. The current setup
+> > > > > > > > > works fine with edid-decode already. Why should we complicate the design
+> > > > > > > > > that much and create fun races like "I'm running edid-decode in parallel
+> > > > > > > > > to a modeset that would remove the file I just opened, what is the file
+> > > > > > > > > now?".
+> > > > > > > > 
+> > > > > > > > Aren't we trading that with the 'I'm running edid-decode in paralle with
+> > > > > > > > to a modeset and the file suddenly becomes empty'?
+> > > > > > > 
+> > > > > > > In that case, you know what the file is going to be: empty. And you went
+> > > > > > > from a racy, straightforward, design to a racy, complicated, design.
+> > > > > > > 
+> > > > > > > It was my question before, but I still don't really see what benefits it
+> > > > > > > would have, and why we need to care about it in the core, when it could
+> > > > > > > be dealt with in the drivers just fine on a case by case basis.
+> > > > > > 
+> > > > > > Actually it can not: debugfs files are registered from the core, not
+> > > > > > from the drivers. That's why I needed all the supported_infoframes
+> > > > > > (which later became software_infoframes).
+> > > > > 
+> > > > > That's one thing we can change then.
+> > > > > 
+> > > > > > Anyway, I'm fine with having empty files there.
+> > > > > > 
+> > > > > > > > > > Then in the long run we can add 'slots' and allocate some of the frames
+> > > > > > > > > > to the slots. E.g. ADV7511 would get 'software AVI', 'software SPD',
+> > > > > > > > > > 'auto AUDIO' + 2 generic slots (and MPEG InfoFrame which can probably be
+> > > > > > > > > > salvaged as another generic one)). MSM HDMI would get 'software AVI',
+> > > > > > > > > > 'software AUDIO' + 2 generic slots (+MPEG + obsucre HDMI which I don't
+> > > > > > > > > > want to use). Then the framework might be able to prioritize whether to
+> > > > > > > > > > use generic slots for important data (as DRM HDR, HDMI) or less important
+> > > > > > > > > > (SPD).
+> > > > > > > > > 
+> > > > > > > > > Why is it something for the framework to deal with? If you want to have
+> > > > > > > > > extra infoframes in there, just go ahead and create additional debugfs
+> > > > > > > > > files in your driver.
+> > > > > > > > > 
+> > > > > > > > > If you want to have the slot mechanism, check in your atomic_check that
+> > > > > > > > > only $NUM_SLOT at most infoframes are set.
+> > > > > > > > 
+> > > > > > > > The driver can only decide that 'we have VSI, SPD and DRM InfoFrames
+> > > > > > > > which is -ETOOMUCH for 2 generic slots'. The framework should be able to
+> > > > > > > > decide 'the device has 2 generic slots, we have HDR data, use VSI and
+> > > > > > > > DRM InfoFrames and disable SPD for now'.
+> > > > > > > 
+> > > > > > > I mean... the spec does? The spec says when a particular feature
+> > > > > > > requires to send a particular infoframe. If your device cannot support
+> > > > > > > to have more than two "features" enabled at the same time, so be it. It
+> > > > > > > something that should be checked in that driver atomic_check.
+> > > > > > 
+> > > > > > Sounds good to me. Let's have those checks in the drivers until we
+> > > > > > actually have seveal drivers performing generic frame allocation.
+> > > > > > 
+> > > > > > > Or just don't register the SPD debugfs file, ignore it, put a comment
+> > > > > > > there, and we're done too.
+> > > > > > 
+> > > > > > It's generic code.
+> > > > > > 
+> > > > > > > > But... We are not there yet and I don't have clear usecase (we support
+> > > > > > > > HDR neither on ADV7511 nor on MSM HDMI, after carefully reading the
+> > > > > > > > guide I realised that ADV7511 has normal audio infoframes). Maybe I
+> > > > > > > > should drop all the 'auto' features, simplifying this series and land
+> > > > > > > > [1] for LT9611UXC as I wanted origianlly.
+> > > > > > > > 
+> > > > > > > > [1] https://lore.kernel.org/dri-devel/20250803-lt9611uxc-hdmi-v1-2-cb9ce1793acf@oss.qualcomm.com/
+> > > > > > > 
+> > > > > > > Looking back at that series, I think it still has value to rely on the
+> > > > > > > HDMI infrastructure at the very least for the atomic_check sanitization.
+> > > > > > > 
+> > > > > > > But since you wouldn't use the generated infoframes, just skip the
+> > > > > > > debugfs files registration. You're not lying to userspace anymore, and
+> > > > > > > you get the benefits of the HDMI framework.
+> > > > > > 
+> > > > > > We create all infoframe files for all HDMI connectors.
+> > > > > 
+> > > > > Then we can provide a debugfs_init helper to register all of them, or
+> > > > > only some of them, and let the drivers figure it out.
+> > > > > 
+> > > > > Worst case scenario, debugfs files will not get created, which is a much
+> > > > > better outcome than having to put boilerplate in every driver that will
+> > > > > get inconsistent over time.
+> > > > 
+> > > > debugfs_init() for each infoframe or taking some kind of bitmask?
+> > > 
+> > > I meant turning hdmi_debugfs_add and create_hdmi_*_infoframe_file into
+> > > public helpers. That way, drivers that don't care can use the (renamed)
+> > > hdmi_debugfs_add, and drivers with different constraints can register
+> > > the relevant infoframes directly.
+> > 
+> > Doesn't that mean more boilerplate?
+> 
+> I don't think it would? In the general case, it wouldn't change
+> anything, and in special cases, then it's probably going to be different
+> from one driver to the next so there's not much we can do.
+> 
+> > In the end, LT9611UXC is a special case, for which I'm totally fine
+> > not to use HDMI helpers at this point: we don't control infoframes
+> > (hopefully that can change), we don't care about the TMDS clock, no
+> > CEC, etc.
+> 
+> Not using the helpers sound pretty reasonable here too.
+> 
+> > For all other usecases I'm fine with having atomic_check() unset all
+> > unsupported infoframes and having empty files in debugfs. Then we can
+> > evolve over the time, once we see a pattern. We had several drivers
+> > which had very limited infoframes support, but I think this now gets
+> > sorted over the time.
+> 
+> I never talked about atomic_check()? You were initially concerned that
+> the framework would expose data in debugfs that it's not using. Not
+> registering anything in debugfs solves that, but I'm not sure we need to
+> special case atomic_check.
 
-Specification:
-- Rockchip RK3568
-- 2GB/4GB LPDDR4 RAM
-- 16GB on-board eMMC
-- 1x M.2 key for 2280 NVMe (PCIe 3.0)
-- 1x USB 3.0 Type-A
-- 1x USB 2.0 Type-C (for USB flashing)
-- 2x 1000 Base-T (native, RTL8211F)
-- 2x 2500 Base-T (PCIe, RTL8125B)
-- 1x HDMI 2.0 Output
-- 12v DC Jack
-- 1x Power key connected to PMIC
-- 2x LEDs (one static power supplied, one GPIO controlled)
+Well... I ended up with [1], handling infoframes in the atomic_check()
+rather than registering fewer infoframe debugfs files. This way device
+state is consistent, we don't have enabled instances, etc. However it
+results in repetetive code in atomic_check().
 
-[1] https://doc.linkease.com/zh/guide/easepi-r1/hardware.html
+[1] https://lore.kernel.org/dri-devel/20250928-limit-infoframes-2-v2-0-6f8f5fd04214@oss.qualcomm.com/
 
-Signed-off-by: Liangbin Lian <jjm2473@gmail.com>
----
- arch/arm64/boot/dts/rockchip/Makefile         |   1 +
- .../boot/dts/rockchip/rk3568-easepi-r1.dts    | 692 ++++++++++++++++++
- 2 files changed, 693 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-easepi-r1.dts
+> Worst case scenario, we're going to generate infoframes the driver will
+> ignore.
 
-diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index 099520962ffb..7646ffd7f309 100644
---- a/arch/arm64/boot/dts/rockchip/Makefile
-+++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -127,6 +127,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-nanopi-r3s.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-bigtreetech-cb2-manta.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-bigtreetech-pi2.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-bpi-r2-pro.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-easepi-r1.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-evb1-v10.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-fastrhino-r66s.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-fastrhino-r68s.dtb
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568-easepi-r1.dts b/arch/arm64/boot/dts/rockchip/rk3568-easepi-r1.dts
-new file mode 100644
-index 000000000000..2bc8675efa12
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3568-easepi-r1.dts
-@@ -0,0 +1,692 @@
-+// SPDX-License-Identifier: GPL-2.0-or-later OR MIT
-+
-+/dts-v1/;
-+
-+#include <dt-bindings/gpio/gpio.h>
-+#include <dt-bindings/input/input.h>
-+#include <dt-bindings/leds/common.h>
-+#include <dt-bindings/pinctrl/rockchip.h>
-+#include <dt-bindings/soc/rockchip,vop2.h>
-+#include "rk3568.dtsi"
-+
-+/ {
-+	model = "LinkEase EasePi R1";
-+	compatible = "linkease,easepi-r1", "rockchip,rk3568";
-+
-+	aliases {
-+		mmc0 = &sdmmc0;
-+		mmc1 = &sdhci;
-+		mmc2 = &sdmmc2;
-+
-+		ethernet0 = &gmac0;
-+		ethernet1 = &gmac1;
-+	};
-+
-+	chosen: chosen {
-+		stdout-path = "serial2:1500000n8";
-+	};
-+
-+	adc-keys {
-+		compatible = "adc-keys";
-+		io-channels = <&saradc 0>;
-+		io-channel-names = "buttons";
-+		keyup-threshold-microvolt = <1800000>;
-+
-+		button-recovery {
-+			label = "Recovery";
-+			linux,code = <KEY_VENDOR>;
-+			press-threshold-microvolt = <1750>;
-+		};
-+	};
-+
-+	dc_12v: regulator-dc-12v {
-+		compatible = "regulator-fixed";
-+		regulator-name = "dc_12v";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <12000000>;
-+		regulator-max-microvolt = <12000000>;
-+	};
-+
-+	vcc5v0_sys: regulator-vcc5v0-sys {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc5v0_sys";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		vin-supply = <&dc_12v>;
-+	};
-+
-+	vcc3v3_sys: regulator-vcc3v3-sys {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc3v3_sys";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		vin-supply = <&dc_12v>;
-+	};
-+
-+	pcie30_avdd0v9: regulator-pcie30-avdd0v9 {
-+		compatible = "regulator-fixed";
-+		regulator-name = "pcie30_avdd0v9";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <900000>;
-+		regulator-max-microvolt = <900000>;
-+		vin-supply = <&vcc3v3_sys>;
-+	};
-+
-+	pcie30_avdd1v8: regulator-pcie30-avdd1v8 {
-+		compatible = "regulator-fixed";
-+		regulator-name = "pcie30_avdd1v8";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <1800000>;
-+		regulator-max-microvolt = <1800000>;
-+		vin-supply = <&vcc3v3_sys>;
-+	};
-+
-+	regulator-vdd0v95-25glan {
-+		compatible = "regulator-fixed";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&pwr_25g_pin>;
-+		enable-active-high;
-+		gpio = <&gpio3 RK_PB1 GPIO_ACTIVE_HIGH>;
-+		regulator-name = "vdd0v95_25glan";
-+		regulator-min-microvolt = <950000>;
-+		regulator-max-microvolt = <950000>;
-+		regulator-boot-on;
-+		regulator-always-on;
-+		vin-supply = <&vcc3v3_sys>;
-+	};
-+
-+	vcc3v3_nvme: regulator-vcc3v3-nvme {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc3v3_nvme";
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		enable-active-high;
-+		gpio = <&gpio0 RK_PA5 GPIO_ACTIVE_HIGH>;
-+		vin-supply = <&dc_12v>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&vcc3v3_nvme_en>;
-+	};
-+
-+	sdio_pwrseq: sdio-pwrseq {
-+		compatible = "mmc-pwrseq-simple";
-+		clocks = <&rk809 1>;
-+		clock-names = "ext_clock";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&wifi_enable_h>;
-+		post-power-on-delay-ms = <200>;
-+		reset-gpios = <&gpio3 RK_PD5 GPIO_ACTIVE_LOW>;
-+	};
-+
-+	hdmi-con {
-+		compatible = "hdmi-connector";
-+		type = "a";
-+
-+		port {
-+			hdmi_con_in: endpoint {
-+				remote-endpoint = <&hdmi_out_con>;
-+			};
-+		};
-+	};
-+
-+	gpio-leds {
-+		compatible = "gpio-leds";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&status_led_pin>;
-+
-+		status_led: led-status {
-+			gpios = <&gpio2 RK_PD7 GPIO_ACTIVE_HIGH>;
-+			color = <LED_COLOR_ID_GREEN>;
-+			function = LED_FUNCTION_STATUS;
-+			label = "green:status";
-+			linux,default-trigger = "heartbeat";
-+		};
-+	};
-+
-+};
-+
-+&gmac0 {
-+	phy-mode = "rgmii";
-+	clock_in_out = "input";
-+
-+	assigned-clocks = <&cru SCLK_GMAC0_RX_TX>, <&cru SCLK_GMAC0>;
-+	assigned-clock-parents = <&cru SCLK_GMAC0_RGMII_SPEED>;
-+	assigned-clock-rates = <0>, <125000000>;
-+	phy-handle = <&rgmii_phy0>;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&gmac0_miim
-+		     &gmac0_tx_bus2
-+		     &gmac0_rx_bus2
-+		     &gmac0_rgmii_clk
-+		     &gmac0_rgmii_bus>;
-+
-+	tx_delay = <0x3c>;
-+	rx_delay = <0x2f>;
-+
-+	status = "okay";
-+};
-+
-+&gmac1 {
-+	phy-mode = "rgmii";
-+	clock_in_out = "input";
-+
-+	assigned-clocks = <&cru SCLK_GMAC1_RX_TX>, <&cru SCLK_GMAC1>;
-+	assigned-clock-parents = <&cru SCLK_GMAC1_RGMII_SPEED>;
-+	assigned-clock-rates = <0>, <125000000>;
-+	phy-handle = <&rgmii_phy1>;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&gmac1m1_miim
-+		     &gmac1m1_tx_bus2
-+		     &gmac1m1_rx_bus2
-+		     &gmac1m1_rgmii_clk
-+		     &gmac1m1_rgmii_bus>;
-+
-+	tx_delay = <0x4f>;
-+	rx_delay = <0x26>;
-+
-+	status = "okay";
-+};
-+
-+&mdio0 {
-+	rgmii_phy0: ethernet-phy@1 {
-+		compatible = "ethernet-phy-ieee802.3-c22";
-+		reg = <0x1>;
-+		pinctrl-0 = <&eth_phy0_reset_pin>;
-+		pinctrl-names = "default";
-+		reset-assert-us = <20000>;
-+		reset-deassert-us = <100000>;
-+		reset-gpios = <&gpio2 RK_PD3 GPIO_ACTIVE_LOW>;
-+	};
-+};
-+
-+&mdio1 {
-+	rgmii_phy1: ethernet-phy@1 {
-+		compatible = "ethernet-phy-ieee802.3-c22";
-+		reg = <0x1>;
-+		pinctrl-0 = <&eth_phy1_reset_pin>;
-+		pinctrl-names = "default";
-+		reset-assert-us = <20000>;
-+		reset-deassert-us = <100000>;
-+		reset-gpios = <&gpio2 RK_PD1 GPIO_ACTIVE_LOW>;
-+	};
-+};
-+
-+&combphy0 {
-+	status = "okay";
-+};
-+
-+&combphy1 {
-+	status = "okay";
-+};
-+
-+&combphy2 {
-+	status = "okay";
-+};
-+
-+&cpu0 {
-+	cpu-supply = <&vdd_cpu>;
-+};
-+
-+&cpu1 {
-+	cpu-supply = <&vdd_cpu>;
-+};
-+
-+&cpu2 {
-+	cpu-supply = <&vdd_cpu>;
-+};
-+
-+&cpu3 {
-+	cpu-supply = <&vdd_cpu>;
-+};
-+
-+&gpu {
-+	mali-supply = <&vdd_gpu>;
-+	status = "okay";
-+};
-+
-+&hdmi {
-+	avdd-0v9-supply = <&vdda0v9_image>;
-+	avdd-1v8-supply = <&vcca1v8_image>;
-+	status = "okay";
-+};
-+
-+&hdmi_in {
-+	hdmi_in_vp0: endpoint {
-+		remote-endpoint = <&vp0_out_hdmi>;
-+	};
-+};
-+
-+&hdmi_out {
-+	hdmi_out_con: endpoint {
-+		remote-endpoint = <&hdmi_con_in>;
-+	};
-+};
-+
-+&hdmi_sound {
-+	status = "okay";
-+};
-+
-+&i2c0 {
-+	status = "okay";
-+
-+	vdd_cpu: regulator@1c {
-+		compatible = "tcs,tcs4525";
-+		reg = <0x1c>;
-+		fcs,suspend-voltage-selector = <1>;
-+		regulator-name = "vdd_cpu";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <800000>;
-+		regulator-max-microvolt = <1150000>;
-+		regulator-ramp-delay = <2300>;
-+		vin-supply = <&vcc5v0_sys>;
-+
-+		regulator-state-mem {
-+			regulator-off-in-suspend;
-+		};
-+	};
-+
-+	rk809: pmic@20 {
-+		compatible = "rockchip,rk809";
-+		reg = <0x20>;
-+		interrupt-parent = <&gpio0>;
-+		interrupts = <RK_PA3 IRQ_TYPE_LEVEL_LOW>;
-+		#clock-cells = <1>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&pmic_int>;
-+		system-power-controller;
-+		vcc1-supply = <&vcc3v3_sys>;
-+		vcc2-supply = <&vcc3v3_sys>;
-+		vcc3-supply = <&vcc3v3_sys>;
-+		vcc4-supply = <&vcc3v3_sys>;
-+		vcc5-supply = <&vcc3v3_sys>;
-+		vcc6-supply = <&vcc3v3_sys>;
-+		vcc7-supply = <&vcc3v3_sys>;
-+		vcc8-supply = <&vcc3v3_sys>;
-+		vcc9-supply = <&vcc3v3_sys>;
-+		wakeup-source;
-+
-+		regulators {
-+			vdd_logic: DCDC_REG1 {
-+				regulator-name = "vdd_logic";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-initial-mode = <0x2>;
-+				regulator-min-microvolt = <500000>;
-+				regulator-max-microvolt = <1350000>;
-+				regulator-ramp-delay = <6001>;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vdd_gpu: DCDC_REG2 {
-+				regulator-name = "vdd_gpu";
-+				regulator-always-on;
-+				regulator-initial-mode = <0x2>;
-+				regulator-min-microvolt = <500000>;
-+				regulator-max-microvolt = <1350000>;
-+				regulator-ramp-delay = <6001>;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vcc_ddr: DCDC_REG3 {
-+				regulator-name = "vcc_ddr";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-initial-mode = <0x2>;
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+				};
-+			};
-+
-+			vdd_npu: DCDC_REG4 {
-+				regulator-name = "vdd_npu";
-+				regulator-initial-mode = <0x2>;
-+				regulator-min-microvolt = <500000>;
-+				regulator-max-microvolt = <1350000>;
-+				regulator-ramp-delay = <6001>;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vcc_1v8: DCDC_REG5 {
-+				regulator-name = "vcc_1v8";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vdda0v9_image: LDO_REG1 {
-+				regulator-name = "vdda0v9_image";
-+				regulator-min-microvolt = <950000>;
-+				regulator-max-microvolt = <950000>;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vdda_0v9: LDO_REG2 {
-+				regulator-name = "vdda_0v9";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <900000>;
-+				regulator-max-microvolt = <900000>;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vdda0v9_pmu: LDO_REG3 {
-+				regulator-name = "vdda0v9_pmu";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <900000>;
-+				regulator-max-microvolt = <900000>;
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <900000>;
-+				};
-+			};
-+
-+			vccio_acodec: LDO_REG4 {
-+				regulator-name = "vccio_acodec";
-+				regulator-min-microvolt = <3300000>;
-+				regulator-max-microvolt = <3300000>;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vccio_sd: LDO_REG5 {
-+				regulator-name = "vccio_sd";
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <3300000>;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vcc3v3_pmu: LDO_REG6 {
-+				regulator-name = "vcc3v3_pmu";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <3300000>;
-+				regulator-max-microvolt = <3300000>;
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <3300000>;
-+				};
-+			};
-+
-+			vcca_1v8: LDO_REG7 {
-+				regulator-name = "vcca_1v8";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vcca1v8_pmu: LDO_REG8 {
-+				regulator-name = "vcca1v8_pmu";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1800000>;
-+				};
-+			};
-+
-+			vcca1v8_image: LDO_REG9 {
-+				regulator-name = "vcca1v8_image";
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vcc_3v3: SWITCH_REG1 {
-+				regulator-name = "vcc_3v3";
-+				regulator-always-on;
-+				regulator-boot-on;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vcc3v3_sd: SWITCH_REG2 {
-+				regulator-name = "vcc3v3_sd";
-+				regulator-always-on;
-+				regulator-boot-on;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+		};
-+
-+	};
-+};
-+
-+&i2s0_8ch {
-+	status = "okay";
-+};
-+
-+/* ETH3 */
-+&pcie2x1 {
-+	reset-gpios = <&gpio3 RK_PA4 GPIO_ACTIVE_HIGH>;
-+	status = "okay";
-+};
-+
-+&pcie30phy {
-+	data-lanes = <1 2>;
-+	status = "okay";
-+};
-+
-+/* ETH2 */
-+&pcie3x1 {
-+	num-lanes = <1>;
-+	reset-gpios = <&gpio3 RK_PA3 GPIO_ACTIVE_HIGH>;
-+	status = "okay";
-+};
-+
-+/* M.2 Key for 2280 NVMe */
-+&pcie3x2 {
-+	num-lanes = <1>;
-+	reset-gpios = <&gpio2 RK_PD6 GPIO_ACTIVE_HIGH>;
-+	vpcie3v3-supply = <&vcc3v3_nvme>;
-+	status = "okay";
-+};
-+
-+&pinctrl {
-+	gmac0 {
-+		eth_phy0_reset_pin: eth-phy0-reset-pin {
-+			rockchip,pins = <2 RK_PD3 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+	gmac1 {
-+		eth_phy1_reset_pin: eth-phy1-reset-pin {
-+			rockchip,pins = <2 RK_PD1 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+
-+	gpio-leds {
-+		status_led_pin: status-led-pin {
-+			rockchip,pins =
-+				<2 RK_PD7 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	pmic {
-+		pmic_int: pmic-int {
-+			rockchip,pins = <0 RK_PA3 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+
-+	pcie-nic {
-+		pwr_25g_pin: pwr-25g-pin {
-+			rockchip,pins = <3 RK_PB1 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	nvme {
-+		vcc3v3_nvme_en: vcc3v3-nvme-en {
-+			rockchip,pins = <0 RK_PA5 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	sdio-pwrseq {
-+		wifi_enable_h: wifi-enable-h {
-+			rockchip,pins = <3 RK_PD5 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+};
-+
-+&pmu_io_domains {
-+	pmuio1-supply = <&vcc3v3_pmu>;
-+	pmuio2-supply = <&vcc3v3_pmu>;
-+	vccio1-supply = <&vccio_acodec>;
-+	vccio3-supply = <&vccio_sd>;
-+	vccio4-supply = <&vcc_1v8>;
-+	vccio5-supply = <&vcc_3v3>;
-+	vccio6-supply = <&vcc_1v8>;
-+	vccio7-supply = <&vcc_3v3>;
-+	status = "okay";
-+};
-+
-+&saradc {
-+	vref-supply = <&vcca_1v8>;
-+	status = "okay";
-+};
-+
-+&sdhci {
-+	bus-width = <8>;
-+	max-frequency = <200000000>;
-+	non-removable;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&emmc_bus8 &emmc_clk &emmc_cmd &emmc_datastrobe>;
-+	status = "okay";
-+};
-+
-+/* Micro SD card slot is not mounted */
-+&sdmmc0 {
-+	max-frequency = <150000000>;
-+	no-sdio;
-+	no-mmc;
-+	bus-width = <4>;
-+	cap-mmc-highspeed;
-+	cap-sd-highspeed;
-+	disable-wp;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&sdmmc0_bus4 &sdmmc0_clk &sdmmc0_cmd &sdmmc0_det>;
-+	vmmc-supply = <&vcc3v3_sd>;
-+	vqmmc-supply = <&vccio_sd>;
-+	status = "disabled";
-+};
-+
-+/* Wifi module is not mounted */
-+&sdmmc2 {
-+	max-frequency = <150000000>;
-+	bus-width = <4>;
-+	disable-wp;
-+	cap-sd-highspeed;
-+	cap-sdio-irq;
-+	keep-power-in-suspend;
-+	mmc-pwrseq = <&sdio_pwrseq>;
-+	non-removable;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&sdmmc2m0_bus4 &sdmmc2m0_cmd &sdmmc2m0_clk>;
-+	sd-uhs-sdr104;
-+	vmmc-supply = <&vcc3v3_sys>;
-+	vqmmc-supply = <&vcc_1v8>;
-+	status = "disabled";
-+};
-+
-+&tsadc {
-+	rockchip,hw-tshut-mode = <1>;
-+	rockchip,hw-tshut-polarity = <0>;
-+	status = "okay";
-+};
-+
-+&uart2 {
-+	status = "okay";
-+};
-+
-+/* OTG Only USB2.0, Only device mode */
-+&usb_host0_xhci {
-+	phys = <&usb2phy0_otg>;
-+	phy-names = "usb2-phy";
-+	extcon = <&usb2phy0>;
-+	maximum-speed = "high-speed";
-+	dr_mode = "peripheral";
-+	status = "okay";
-+};
-+
-+&usb_host1_xhci {
-+	status = "okay";
-+};
-+
-+&usb2phy0 {
-+	status = "okay";
-+};
-+
-+&usb2phy0_host {
-+	phy-supply = <&vcc5v0_sys>;
-+	status = "okay";
-+};
-+
-+&usb2phy0_otg {
-+	status = "okay";
-+};
-+
-+&vop {
-+	assigned-clocks = <&cru DCLK_VOP0>, <&cru DCLK_VOP1>;
-+	assigned-clock-parents = <&pmucru PLL_HPLL>, <&cru PLL_VPLL>;
-+	status = "okay";
-+};
-+
-+&vop_mmu {
-+	status = "okay";
-+};
-+
-+&vp0 {
-+	vp0_out_hdmi: endpoint@ROCKCHIP_VOP2_EP_HDMI0 {
-+		reg = <ROCKCHIP_VOP2_EP_HDMI0>;
-+		remote-endpoint = <&hdmi_in_vp0>;
-+	};
-+};
+Yes.
+
 -- 
-2.51.0
-
+With best wishes
+Dmitry
 
 _______________________________________________
 Linux-rockchip mailing list
