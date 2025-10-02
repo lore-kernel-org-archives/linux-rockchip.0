@@ -4,70 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15B78CAC5B8
-	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Oct 2025 13:19:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1936DCAC5B8
+	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Oct 2025 13:36:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iEqn54CABEG1vvxBUHt735VrtuCWl5r3T2OpqlV94K8=; b=a1LSCZkL33eDiW1l9RZuwWDLhh
-	UKi8UBwdt+lYTgmF5SAkXouktPM6MzI5+Km7JKV/qGQtg4JsNoUKW90cGYvNgQdgaJAWKX0i6Ez29
-	DBbKcOUKlSBFLzb17uUKuZxQMzBzvLxWDzz5ghXje1jyDmB/oMCASI/anaqPherGYgaG8VpCkFHXI
-	ljWuxBq9Y3b43pV3HXu7JopsNfZBfKng0Up4GhKEacL9GnflIOFJpCO7KODHoOIc5hvh291odapb/
-	DN4x2/a1XRWDfseD/3JaE5doWvqz1ENiA3T1ORTESMCuEV3nz1167dkPpt+YMG2xYDw0ebYr32R3P
-	ke71CbCw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=xrIClobYifuYQnKEPmzoypowm80agEDoTUF+4U154dw=; b=K8vmzy4nnsK6GE
+	bIH22STyEw0nPNUeaoL3Nax0Be6B2hT6j6EjubWyQeZNd+Ewc4sKd5aRp3spPXLhte9/25Wpqri8k
+	rLUqJqcHRpP193t/JI4gEwuxJDYcHOQmYaJHQR7C0yj+9ny5byAAIeg0hOpyMjxl3wQ3lx8cY2U3z
+	X5rIKywX78zHpdccU+4ZVdEETwDod7//7qpjJiKasObjYif1P50VObMU5M8AACg8BxJTFl8itjTIc
+	fFd2/g37JN9BDG/GsQChzjHtAEs4e0ecKbZAYvHn7W3OcrbbOS4qF/qEG/iFSsnZMzoY+NlGe18Fm
+	68qo7e78oKPt2fyRwvPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v4JD5-0000000AWGt-0XdQ;
-	Thu, 02 Oct 2025 13:19:03 +0000
+	id 1v4JTr-0000000AXzo-339m;
+	Thu, 02 Oct 2025 13:36:23 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v4JD2-0000000AWGC-34n1
+	id 1v4JTo-0000000AXzV-49aJ
 	for linux-rockchip@lists.infradead.org;
-	Thu, 02 Oct 2025 13:19:01 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1759411127; cv=none; 
+	Thu, 02 Oct 2025 13:36:22 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1759412170; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=YJgScdIEFOvtA2GkAzOXaIhzvg2blpR58HQHojl2TmiT47Gx069KQyjYZJE/DqpxHIxIE0DDI1XNij9lvq8VvYioXgnUp/M0yD55ipv3m8rRnHlyKhLOGFJmuoVDzhP5ThzoqF2rKPo4sowncRNt0XhVMPqV6uLJmlQowm6a1Ak=
+	b=kqUIds6O1TiQ+WdAH9jvW7Z64Jr2CMZV/pido18x7cmJSd5Zm5552ediXflMgRoySHIoIFz7YRLb2yfD1QUWZ989nhTKFNZuk8+u/sCtGFvxTTrPm8ikKnT99U5Fq6bCIpwhFBUzTaurQ50sft0plSGf3vlwx4tzefu+XSmrs9E=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1759411127; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=W6BSTdVZnFTxPyRB6ZqS8dnVm1Cj7O4bo/Y5zLmoSVM=; 
-	b=L4MXO4/tLN+vn2j8JD/C+u3Bo0CK3GrLOQ8OUx6ZcuKnH8oBdtMwbhkjzxTIomJ5mo3aDXdbPMXhsmfTF7uZygCmqBTwnQ7gGMKNtPK/SicS8SjahKBVse8PGnTERnpNEif6jqB6KNqKaePyjjIEHfZ1PxDKhuAltrw3ypKifIk=
+	t=1759412170; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=dtSH7DMz3FFMPjGi9FtB/ixalkTfGUEAj0h124xRoog=; 
+	b=SzB44dS1gjxhZmpYJ4t+HTI6leH/9Z77F4ZLH8V7N8lsDMcwsArR7PohkJ6o4pRj307dl6A/CyoFFEGcu8YcruFIhRs9mgoUfhzvDMcGjhkOBezHNcZS8lVyycldLUf8djHgZHSrugdmLRTIG0hwcppGuogHKwsEL8+/tnwBEbI=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
-	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1759411127;
-	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
-	bh=W6BSTdVZnFTxPyRB6ZqS8dnVm1Cj7O4bo/Y5zLmoSVM=;
-	b=A3CtyCiuea4cdi3Y8LPB6IgL+h5FK7Le492q6ANQL++vsn6AFrClNFo9itzl+Wth
-	6K/j40nCV+pj+am9lrbRfTMLzVNpSUogy1jQ0RTVS9tkO5UuaIq8hlHJ9f6TwxBtIIO
-	0T1QhiPg+w0TLyxRpBMq/SD+RSVEIgNG/npaf6Ao=
-Received: by mx.zohomail.com with SMTPS id 1759411125401535.0475115871203;
-	Thu, 2 Oct 2025 06:18:45 -0700 (PDT)
-Received: by venus (Postfix, from userid 1000)
-	id 4FB6218077C; Thu, 02 Oct 2025 15:18:41 +0200 (CEST)
-Date: Thu, 2 Oct 2025 15:18:41 +0200
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, 
-	Hans Verkuil <hverkuil@xs4all.nl>, jose.abreu@synopsys.com, nelson.costa@synopsys.com, 
-	shawn.wen@rock-chips.com, nicolas.dufresne@collabora.com, kernel@collabora.com, 
-	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v1] media: synopsys: hdmirx: Detect broken interrupt
-Message-ID: <do3p4ncc6issxwqam3oeo54xtoi6jvw7maeprdbfkdn3b3aabr@ilwktxqyf4ap>
-References: <20251001175044.502393-1-dmitry.osipenko@collabora.com>
+	spf=pass  smtp.mailfrom=dmitry.osipenko@collabora.com;
+	dmarc=pass header.from=<dmitry.osipenko@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1759412170;
+	s=zohomail; d=collabora.com; i=dmitry.osipenko@collabora.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=dtSH7DMz3FFMPjGi9FtB/ixalkTfGUEAj0h124xRoog=;
+	b=Eq3CemXEpZVjh8awik3RWGFgcivKMwIT7ghfdMMVIiiR7JeKYPfwQKVflZXET/X3
+	xNckTwiwvc0Oj+LSPN678eKF+qkDFCKn91hA55ugIKJ21E7okQJHgIHV1exRC1k2UMK
+	2CbVS4P9eSmRyrADSB+K25GQNx8PnNutCoyrQ9Sw=
+Received: by mx.zohomail.com with SMTPS id 1759412168085227.19275215267555;
+	Thu, 2 Oct 2025 06:36:08 -0700 (PDT)
+Message-ID: <bb66bc81-2b20-48bb-87bd-6c34b35f4cd8@collabora.com>
+Date: Thu, 2 Oct 2025 16:36:02 +0300
 MIME-Version: 1.0
-In-Reply-To: <20251001175044.502393-1-dmitry.osipenko@collabora.com>
-X-Zoho-Virus-Status: 1
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-1.4.3/259.363.73
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1] media: synopsys: hdmirx: Detect broken interrupt
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Hans Verkuil <hverkuil@xs4all.nl>, jose.abreu@synopsys.com,
+ nelson.costa@synopsys.com, shawn.wen@rock-chips.com,
+ nicolas.dufresne@collabora.com, kernel@collabora.com,
+ linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org
+References: <20251001175044.502393-1-dmitry.osipenko@collabora.com>
+ <do3p4ncc6issxwqam3oeo54xtoi6jvw7maeprdbfkdn3b3aabr@ilwktxqyf4ap>
+From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+Content-Language: en-US
+In-Reply-To: <do3p4ncc6issxwqam3oeo54xtoi6jvw7maeprdbfkdn3b3aabr@ilwktxqyf4ap>
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251002_061900_842238_41F91F26 
-X-CRM114-Status: GOOD (  33.09  )
+X-CRM114-CacheID: sfid-20251002_063621_108308_EEE90D0B 
+X-CRM114-Status: UNSURE (   9.70  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,259 +80,33 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8683067676125066737=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi,
 
---===============8683067676125066737==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="mhs7pk4kudawg6xk"
-Content-Disposition: inline
+On 10/2/25 16:18, Sebastian Reichel wrote:
+>> +	*val = status & PHYCREG_CR_PARA_RD_DATA_MASK;
+>> +
+>> +	return 0;
+>> +}
+> Do you expect this to be used in other places in the driver? In that
+> case there should probably be some locking, since the hardware interface
+> obviously cannot handle concurrency. Otherwise maybe add a comment,
+> that the function may not be called if concurrency is possible?
 
+Don't expect this function to be used in other places and haven't added
+locking on purpose to keep the code cleaner. Will add the comment.
 
---mhs7pk4kudawg6xk
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v1] media: synopsys: hdmirx: Detect broken interrupt
-MIME-Version: 1.0
+Thanks for all suggestions.
 
-Hello Dmitry,
-
-On Wed, Oct 01, 2025 at 08:50:44PM +0300, Dmitry Osipenko wrote:
-> Downstream version of RK3588 U-Boot uses customized TF-A that remaps
-> HDMIRX hardware interrupt, routing it via firmware that isn't supported
-> by upstream driver.
->=20
-> Detect broken interrupt and print a clarifying error message about a need
-> to use open-source TF-A with this driver.
->=20
-> Signed-off-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-> ---
->  .../platform/synopsys/hdmirx/snps_hdmirx.c    | 85 ++++++++++++++++++-
->  .../platform/synopsys/hdmirx/snps_hdmirx.h    |  2 +
->  2 files changed, 85 insertions(+), 2 deletions(-)
->=20
-> diff --git a/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c b/drive=
-rs/media/platform/synopsys/hdmirx/snps_hdmirx.c
-> index b7d278b3889f..faca601d72a4 100644
-> --- a/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c
-> +++ b/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c
-> @@ -138,6 +138,7 @@ struct snps_hdmirx_dev {
->  	struct clk_bulk_data *clks;
->  	struct regmap *grf;
->  	struct regmap *vo1_grf;
-> +	struct completion cr_read_done;
->  	struct completion cr_write_done;
->  	struct completion timer_base_lock;
->  	struct completion avi_pkt_rcv;
-> @@ -796,6 +797,41 @@ static int wait_reg_bit_status(struct snps_hdmirx_de=
-v *hdmirx_dev, u32 reg,
->  	return 0;
->  }
-> =20
-> +static int hdmirx_phy_register_read(struct snps_hdmirx_dev *hdmirx_dev,
-> +				    u32 phy_reg, u32 *val)
-> +{
-> +	struct device *dev =3D hdmirx_dev->dev;
-> +	u32 status;
-> +
-> +	reinit_completion(&hdmirx_dev->cr_read_done);
-> +	/* clear irq status */
-> +	hdmirx_clear_interrupt(hdmirx_dev, MAINUNIT_2_INT_CLEAR, 0xffffffff);
-> +	/* en irq */
-> +	hdmirx_update_bits(hdmirx_dev, MAINUNIT_2_INT_MASK_N,
-> +			   PHYCREG_CR_READ_DONE, PHYCREG_CR_READ_DONE);
-> +	/* write phy reg addr */
-> +	hdmirx_writel(hdmirx_dev, PHYCREG_CONFIG1, phy_reg);
-> +	/* config read enable */
-> +	hdmirx_writel(hdmirx_dev, PHYCREG_CONTROL, PHYCREG_CR_PARA_READ_P);
-> +
-> +	if (!wait_for_completion_timeout(&hdmirx_dev->cr_read_done,
-> +					 msecs_to_jiffies(20))) {
-> +		dev_err(dev, "%s wait cr read done failed\n", __func__);
-> +		return -ETIMEDOUT;
-> +	}
-> +
-> +	/* read phy reg value */
-> +	status =3D hdmirx_readl(hdmirx_dev, PHYCREG_STATUS);
-> +	if (!(status & PHYCREG_CR_PARA_DATAVALID)) {
-> +		dev_err(dev, "%s cr read failed\n", __func__);
-> +		return -EINVAL;
-> +	}
-> +
-> +	*val =3D status & PHYCREG_CR_PARA_RD_DATA_MASK;
-> +
-> +	return 0;
-> +}
-
-Do you expect this to be used in other places in the driver? In that
-case there should probably be some locking, since the hardware interface
-obviously cannot handle concurrency. Otherwise maybe add a comment,
-that the function may not be called if concurrency is possible?
-
->  static int hdmirx_phy_register_write(struct snps_hdmirx_dev *hdmirx_dev,
->  				     u32 phy_reg, u32 val)
->  {
-> @@ -1814,6 +1850,13 @@ static void mainunit_2_int_handler(struct snps_hdm=
-irx_dev *hdmirx_dev,
->  		*handled =3D true;
->  	}
-> =20
-> +	if (status & PHYCREG_CR_READ_DONE) {
-> +		hdmirx_update_bits(hdmirx_dev, MAINUNIT_2_INT_MASK_N,
-> +				   PHYCREG_CR_READ_DONE, 0);
-> +		complete(&hdmirx_dev->cr_read_done);
-> +		*handled =3D true;
-> +	}
-> +
->  	if (status & TMDSVALID_STABLE_CHG) {
->  		process_signal_change(hdmirx_dev);
->  		v4l2_dbg(2, debug, v4l2_dev, "%s: TMDSVALID_STABLE_CHG\n", __func__);
-> @@ -2313,18 +2356,52 @@ static void hdmirx_disable_all_interrupts(struct =
-snps_hdmirx_dev *hdmirx_dev)
->  	hdmirx_clear_interrupt(hdmirx_dev, CEC_INT_CLEAR, 0xffffffff);
->  }
-> =20
-> -static void hdmirx_init(struct snps_hdmirx_dev *hdmirx_dev)
-> +static int hdmirx_detect_broken_interrupt(struct snps_hdmirx_dev *hdmirx=
-_dev)
-> +{
-> +	int err;
-> +	u32 val;
-> +
-> +	enable_irq(hdmirx_dev->hdmi_irq);
-> +
-> +	hdmirx_writel(hdmirx_dev, PHYCREG_CONFIG0, 0x3);
-> +
-> +	err =3D hdmirx_phy_register_read(hdmirx_dev,
-> +				       HDMIPCS_DIG_CTRL_PATH_MAIN_FSM_FSM_CONFIG,
-> +				       &val);
-> +
-> +	disable_irq(hdmirx_dev->hdmi_irq);
-> +
-> +	if (err)
-> +		return dev_err_probe(hdmirx_dev->dev, err,
-> +				     "interrupt not functioning, open-source TF-A is required by thi=
-s driver\n");
-> +
-> +	return 0;
-
-I think it's better to just return err here (without dev_err_probe) [...]
-
-> +}
-> +
-> +static int hdmirx_init(struct snps_hdmirx_dev *hdmirx_dev)
->  {
-> +	int ret;
-> +
->  	hdmirx_update_bits(hdmirx_dev, PHY_CONFIG, PHY_RESET | PHY_PDDQ, 0);
-> =20
->  	regmap_write(hdmirx_dev->vo1_grf, VO1_GRF_VO1_CON2,
->  		     (HDMIRX_SDAIN_MSK | HDMIRX_SCLIN_MSK) |
->  		     ((HDMIRX_SDAIN_MSK | HDMIRX_SCLIN_MSK) << 16));
-> +
-> +	/*
-> +	 * RK3588 downstream version of TF-A remaps HDMIRX interrupt and
-> +	 * requires use of a vendor-specific FW API by the driver that we
-> +	 * don't support in this driver.
-> +	 */
-> +	ret =3D hdmirx_detect_broken_interrupt(hdmirx_dev);
-
-[...] and have the dev_err_probe() moved to this place, so that the
-comment about the Rockchip vendor TF-A is directly in front of the
-error message.
-
-Otherwise LGTM.
-
-Greetings,
-
--- Sebastian
-
->  	/*
->  	 * Some interrupts are enabled by default, so we disable
->  	 * all interrupts and clear interrupts status first.
->  	 */
->  	hdmirx_disable_all_interrupts(hdmirx_dev);
-> +
-> +	return ret;
->  }
-> =20
->  /* hdmi-4k-300mhz EDID produced by v4l2-ctl tool */
-> @@ -2610,6 +2687,7 @@ static int hdmirx_probe(struct platform_device *pde=
-v)
->  	mutex_init(&hdmirx_dev->work_lock);
->  	spin_lock_init(&hdmirx_dev->rst_lock);
-> =20
-> +	init_completion(&hdmirx_dev->cr_read_done);
->  	init_completion(&hdmirx_dev->cr_write_done);
->  	init_completion(&hdmirx_dev->timer_base_lock);
->  	init_completion(&hdmirx_dev->avi_pkt_rcv);
-> @@ -2623,7 +2701,10 @@ static int hdmirx_probe(struct platform_device *pd=
-ev)
->  	hdmirx_dev->timings =3D cea640x480;
-> =20
->  	hdmirx_enable(dev);
-> -	hdmirx_init(hdmirx_dev);
-> +
-> +	ret =3D hdmirx_init(hdmirx_dev);
-> +	if (ret)
-> +		goto err_pm;
-> =20
->  	v4l2_dev =3D &hdmirx_dev->v4l2_dev;
->  	strscpy(v4l2_dev->name, dev_name(dev), sizeof(v4l2_dev->name));
-> diff --git a/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.h b/drive=
-rs/media/platform/synopsys/hdmirx/snps_hdmirx.h
-> index 220ab99ca611..a719439d3ca0 100644
-> --- a/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.h
-> +++ b/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.h
-> @@ -114,6 +114,8 @@
->  #define PHYCREG_CR_PARA_WRITE_P			BIT(1)
->  #define PHYCREG_CR_PARA_READ_P			BIT(0)
->  #define PHYCREG_STATUS				0x00f4
-> +#define PHYCREG_CR_PARA_DATAVALID		BIT(24)
-> +#define PHYCREG_CR_PARA_RD_DATA_MASK		GENMASK(15, 0)
-> =20
->  #define MAINUNIT_STATUS				0x0150
->  #define TMDSVALID_STABLE_ST			BIT(1)
-> --=20
-> 2.51.0
->=20
-
---mhs7pk4kudawg6xk
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmjee60ACgkQ2O7X88g7
-+poPkg/9EfkO3SmSc5rQCPAJwS7QVrzKEc9Q6r3LgcDP+DMn/4yriaBuZ3J5YNQi
-tzwc9tK1u2ye+AOUGyFZ7s28B/AwIWpRVkTWguZ5ElfAbfsq8HvzGyjTjila16jT
-d9Idp9xgCjv6ees1ZatWyEWx2lQ+moT1j3pKT2+XYln94R3/fBcZ2eaI67CJubPb
-Wn9tPYFG4aVaImrptutHSfGjlDJe6vX7UFYLNEvxCF8bo2NfEIXvGwHeI5/Y4Pmh
-pZEAvrwKt1dPS8cBWrVlq3WCCVEEvZONZzCd7UWc1JSTwf/+jdiXhhA44xoaJhQ5
-UjP3fGT06s7LqbJuiCLHyBrC4Gy1hPnjGFFxRfDVy/0InyXxdstAjvCGRv3LJPAy
-vMajzZPmP9FvmbfR0W0FXcRd+K+wGpekLrb49HZlilerxjIPfOU0C2+fapwb2QPf
-V7jBOur4a/jfg4GQOpqleIAQAy0yozLZ76Rj5Aos7rJWZ22xUfI+K5V49cP9eruP
-oMqBmvQijqJbmehY4CzR2LSrGol+ZRagdUwipCy4MP8w4MZ8YOKtOroAHJR+06Xc
-Q9eELIl3jI55GwdkPkUBX8uxiCzx3VO2g1IX10Q4Z0iDqYSvVf4ffwL5sEFWEtAq
-BNUJd7vHgm9125kXtjmIL+nSrPSvBCbe2DqaGFQAO/28wBN7oEc=
-=2pPB
------END PGP SIGNATURE-----
-
---mhs7pk4kudawg6xk--
-
-
---===============8683067676125066737==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+-- 
+Best regards,
+Dmitry
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============8683067676125066737==--
-
