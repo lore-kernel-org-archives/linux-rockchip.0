@@ -4,70 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3EAF1CAC5B0
-	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Oct 2025 15:51:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EC2DCAC5B8
+	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Oct 2025 18:30:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SUjuPF7yhIKbHQ5l+XwBnZWhnK5iGPFCyCYPizzMZPs=; b=s36P9M1uxbYi2g
-	68mWho8/giSj+QOHoFtiWkMDhi5wS3ti8ZELBjGTUxdtN+AgI/7sZFlXVkaNWcQ5m8f+PQcEdrLtA
-	YTwPch/8L9WYhBOitXIhtdV3fVx4AOw2rzQs8uPcZgbHZBQ+u3fse28QkGhdO42zLK5RSo0VnW+fM
-	2I0CjuqORwFs5FpuOY9Iudt4FkqS8g/a0n16kF7KfRtMhDZ+R9htikUjjEGH3nVW9BNhcsG2509B+
-	INZf51ZtbPs9w5ZwoWfxpX8+E23YX4wSgo8kSX4PuVIXAjpmnVOLIt4zbf6+WQwvndD6TJi4w1QKD
-	YOXPOkXJog5bg4LpTlFA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=L+EOcEB3Mm9i2eGRYjkVCMiUGyDzSQTaHLT0msOUkM8=; b=PWOJWE2lqxg+hkDQnOJpj9HsX+
+	dDzC/Xijz2w1bzqWd5u65JXPyAcCMEBPIV7Qedd4thEjzQOqZINi3V9kFtBkF+VYkDOVJr9y2CdZa
+	RBWTeYzhySBrykWcmkJBJxLkFv7gpHpM1rul1r5Eszdco5dT0Hn+yOTxotSKj3rd2AkHtdKhsw+hV
+	LYVwa5RWejI1TJPl8c0wMn5Uxig9fXHbMWsCPom63qsI416u4UHNrqS+PYGOSIx1uR8o1/t0mlTAe
+	oIzWunTi65HBIXhVoRoskY3ukFYMChrlxy3E2WEP52gxd3dUDWXubQlgqy/qioIWihuGbR7gFhLQX
+	8vKJzucw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v4LaA-0000000Al8N-45db;
-	Thu, 02 Oct 2025 15:51:02 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1v4O4Q-0000000B1zW-2zsf;
+	Thu, 02 Oct 2025 18:30:26 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v4La8-0000000Al81-2gCO
-	for linux-rockchip@lists.infradead.org;
-	Thu, 02 Oct 2025 15:51:01 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1759420250; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=BBmF9prk/9z+d/PIko3gG5IAT2wZMeU/HJGNEXDhsL79OLHLgbEgpOeLVoJnl5DXS+DoGGzkwff1tTDsHOfd3jUXPP16XMT87Ubd3PkGDGUxxUeKgqJ3NsNiOQylMZPMMAzWQDHw1XD81wPAWyemhcLgQku0QejlYuAXimBPizA=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1759420250; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=cjZk9P3mPo8vEXyNeg2cfL82WiNZDB6NKkkVZEOqqe4=; 
-	b=hA43kO52+tz+ehJfz9xv7c/voKNs3CmoZ91Fc96JxIZxLf09+kvn0qCnRzSimdIPYQSV/2f6MtRz1b4KQOtk5lb3lLTYhxKFtRoTacky7A8T9ddjd/RbDLuqKcg0q8yv1+jOkdpqNvq/jjxywTLBTV9Aa/hlevSZtWHsdYuMTbo=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=dmitry.osipenko@collabora.com;
-	dmarc=pass header.from=<dmitry.osipenko@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1759420250;
-	s=zohomail; d=collabora.com; i=dmitry.osipenko@collabora.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=cjZk9P3mPo8vEXyNeg2cfL82WiNZDB6NKkkVZEOqqe4=;
-	b=Jk0maqcUR5RFGMo9gQtZKBtwo79YQjWnsCWrWNDjB4GcjyI7SexYYl2RnOZnmPUW
-	dfEJJiUN46+9ElIDZbIA4k63oloHRyOx4q/De1OcfrkybweMzm0oJ7Ng3Gybr7h94aq
-	HCnHbf6vXLEfoeLA9DKLx1mieVPuvtOsGIB7RolM=
-Received: by mx.zohomail.com with SMTPS id 1759420248615533.0821852004965;
-	Thu, 2 Oct 2025 08:50:48 -0700 (PDT)
-Message-ID: <169cf964-85a7-4f96-9a0c-0f06c7bfa012@collabora.com>
-Date: Thu, 2 Oct 2025 18:50:41 +0300
+	id 1v4O4O-0000000B1z5-2ef4;
+	Thu, 02 Oct 2025 18:30:25 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 874AB43824;
+	Thu,  2 Oct 2025 18:30:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 19E92C4CEF4;
+	Thu,  2 Oct 2025 18:30:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1759429823;
+	bh=UmwaTQ9w3UMKmPx7igtoLu/6KZ/KNI/anI2nuK5fsks=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=bDlPuov+ZH60K2M+tPgkCIIu5Tn7T2svAnnp0xBAfvsll9JVwgE6yk2YoRJ0jRVua
+	 qt7lrdQV+Au25av/tXqM4k7uG5OYOziz7S/mreVukaQNrcNqS8411W/xXkrEgQgCAn
+	 MGDBogFHOLCJaTjx6L5MkEYBtoFyKXswxf8IRsZyZFzSQ4Kyh6p4SRka+KD7Lk3YrY
+	 Wf028C32OXMUC3HAi/wxSnV75oTvR8R6xeRp/Ar1fDQegW+kTKP+DmLLdc1oGJlrnX
+	 HqlNpEiMf0AzYciFhfoDOSj6tr9hK8KxpKTHARo7kEldHoOqoOm9j6B3rW3W8kR7Oo
+	 AI3jvJRUX9+pQ==
+Date: Thu, 2 Oct 2025 19:30:17 +0100
+From: Conor Dooley <conor@kernel.org>
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Subject: Re: [PATCH 2/3] dt-bindings: display: rk3588-dw-hdmi-qp: Document
+ enable-gpios property
+Message-ID: <20251002-kissing-boxing-c8b567d08e2a@spud>
+References: <20251002034708.19248-1-laurent.pinchart@ideasonboard.com>
+ <20251002034708.19248-3-laurent.pinchart@ideasonboard.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] media: synopsys: hdmirx: Detect broken interrupt
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
- Hans Verkuil <hverkuil@xs4all.nl>, jose.abreu@synopsys.com,
- nelson.costa@synopsys.com, shawn.wen@rock-chips.com,
- nicolas.dufresne@collabora.com, kernel@collabora.com,
- linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org
-References: <20251002140750.579059-1-dmitry.osipenko@collabora.com>
- <wrzkhnslrwnpsv7gbdcvxobahun7l6foftftk676hxinfeqwjr@v3di5okva7co>
-From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-Content-Language: en-US
-In-Reply-To: <wrzkhnslrwnpsv7gbdcvxobahun7l6foftftk676hxinfeqwjr@v3di5okva7co>
-X-ZohoMailClient: External
+In-Reply-To: <20251002034708.19248-3-laurent.pinchart@ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251002_085100_756079_7CEDB9C2 
-X-CRM114-Status: GOOD (  11.94  )
+X-CRM114-CacheID: sfid-20251002_113024_689795_0CA8EA87 
+X-CRM114-Status: UNSURE (   6.84  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,54 +66,48 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Cenk Uluisik <cenk.uluisik@googlemail.com>, Muhammed Efe Cetin <efectn@6tel.net>, Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>, Jimmy Hon <honyuenkwun@gmail.com>, Kever Yang <kever.yang@rock-chips.com>, Maxime Ripard <mripard@kernel.org>, Sandy Huang <hjc@rock-chips.com>, linux-rockchip@lists.infradead.org, Algea Cao <algea.cao@rock-chips.com>, Ondrej Jirman <megi@xff.cz>, Andy Yan <andy.yan@rock-chips.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
+Content-Type: multipart/mixed; boundary="===============0210404073933382121=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 10/2/25 18:33, Sebastian Reichel wrote:
-> Hello Dmitry,
-> 
-> On Thu, Oct 02, 2025 at 05:07:50PM +0300, Dmitry Osipenko wrote:
->> Downstream version of RK3588 U-Boot uses customized TF-A that remaps
->> HDMIRX hardware interrupt, routing it via firmware that isn't supported
->> by upstream driver.
->>
->> Detect broken interrupt and print a clarifying error message about a need
->> to use open-source TF-A with this driver.
->>
->> Signed-off-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
->> ---
->> Changelog:
->>
->> v2: - Added PHY r/w lock and moved the clarifying error message as
->>       was suggested by Sebastian Reichel.
->>
->>  .../platform/synopsys/hdmirx/snps_hdmirx.c    | 90 ++++++++++++++++++-
->>  .../platform/synopsys/hdmirx/snps_hdmirx.h    |  2 +
->>  2 files changed, 90 insertions(+), 2 deletions(-)
->>
->> diff --git a/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c b/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c
->> index b7d278b3889f..e6456352dfa5 100644
->> --- a/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c
->> +++ b/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c
-> 
-> #include <linux/cleanup.h>
-> 
-> Otherwise LGTM and hopefully helps people to figure out the root
-> cause of their problems:
-> 
-> Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 
-Thanks for the review. The cleanup.h always included by mutex/spinlock
-headers, there is no need to include it explicitly.
+--===============0210404073933382121==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="7A3hshEiPf8Kpjpw"
+Content-Disposition: inline
 
 
--- 
-Best regards,
-Dmitry
+--7A3hshEiPf8Kpjpw
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
+
+--7A3hshEiPf8Kpjpw
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaN7EtgAKCRB4tDGHoIJi
+0m7hAQCDPTelKmX1m36VmufkE/l93pQBPg4VvrPAQUIIInNz/gEA8xs1KgKuKykX
+0HWiWE9u5+7Er0wOlLhFeUXbu1nkBgQ=
+=IADe
+-----END PGP SIGNATURE-----
+
+--7A3hshEiPf8Kpjpw--
+
+
+--===============0210404073933382121==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============0210404073933382121==--
+
