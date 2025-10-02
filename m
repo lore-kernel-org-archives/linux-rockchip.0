@@ -4,70 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35EDBCCA470
-	for <linux-rockchip@archiver.kernel.org>; Wed,  1 Oct 2025 17:52:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31ED7CAC5B0
+	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Oct 2025 03:47:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=/UL326LFg8VXytmkqrCuu8pNqcjmJDahHrOPfh6UUeY=; b=zA2DmjYlWeL6FB
-	ZHdIHW9tZLGwkx/RE7IaqIMz768j2c9x3/VHf5Lwxta41GXz+UxKCNLw4KHIj7GifbE1pZreCsU9C
-	9zfv0n2D9lEMuOUUyC2sZaPD69UnEybtSLe/Iv9HIcU1cmnvgHVGvjD4XVEII7xdxFfU2LIV02jCc
-	vydVwasnE4hTwanUcztF8w4vkhNmwNUgyGsj01cgo2j92o6FmzcplYfzr6HDvuOSXxncfK60cMZsW
-	8jVovJHmshFxRn1Yf/a3BzSp7XS93VwV3FId2CJA/W7K6g2Wdd+S36DkAv+XrRz0QDZgVLcuFQAjV
-	Vjm/IcbQxFp89lrtFqWQ==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=hFgWUW6WiStR8P8BV1Gq78yMfv85vMxMzYYLxKxRfq4=; b=vyoHMhlZbMNMih
+	mFIR4i4gJgT4jAxmBMLnT/n/UO6ZF4rJll6jr2HQJU1DhXjdFuHrkuMrl3TJlyxaGQYcJEi8T3d1M
+	y/BQgkaXglTP0fz5wjTpU8yvQgsgqGVCmBucUtbJrajtxfVzI5vgFTnuz+3n+Ib9MpirETLWnZy5t
+	zckp2RT4tNFNShODxbkU2XSdjdpHJ3qSrv+zVp0wk0a+/gaLoviIJGDE5v3yajUq2zOuwM1hydRTy
+	hSJe6DhjBcQYw3L/X7/RzgmDkLRifNqvDBYP+dsKJZOdcaNPr4gMyEOXcHeJjLcBGBfjphExy/2oZ
+	Hb4fRttHdwPEEhwFeJ4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v40zz-00000008gQi-3moG;
-	Wed, 01 Oct 2025 17:52:19 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1v4AHo-00000009YPi-3Sop;
+	Thu, 02 Oct 2025 03:47:20 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v40zx-00000008gQL-1BrA
-	for linux-rockchip@lists.infradead.org;
-	Wed, 01 Oct 2025 17:52:18 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1759341127; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=Ck+rPz2XUSi84WOgWvBdV2X/aQUZgJYJ5AIfR5m99q2KSZbqYF0qL/QPxlObRgndTyhwudFDNqQC8Ex6EcrnN+qe2YHPS93eslm3NRKwW8vczqIcmFTXBVupOZqDcM4obon/9NaTcXtGa5TievJ02WlXE60z0nwEdzUANr1U9iI=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1759341127; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=fdCxgnJ3+FOn985raWo13CIC3v9SS+cHaaV3MidDI4M=; 
-	b=kvxIVzV3PERnYkE46MnKCQhgdlLfbPVnp2XMn3AMbaFriiRIwzsEEAS2FiK4mZJ4EqiEicFk2Whujc6/YUib2GEBdUnR5A3izsTwhjEG79glsxeEJ6Okm/tz6TUTOddQkP99wKHqzF9pa6lakmMCBcdQXVBNa/8pZETQ0Y0ugZM=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=dmitry.osipenko@collabora.com;
-	dmarc=pass header.from=<dmitry.osipenko@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1759341126;
-	s=zohomail; d=collabora.com; i=dmitry.osipenko@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:MIME-Version:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=fdCxgnJ3+FOn985raWo13CIC3v9SS+cHaaV3MidDI4M=;
-	b=G8eiBKxmQZaUtY12CA7x5yBZx06hjcdOF2hT/v4Du73xeJyWMptJQW44EGdVBZvP
-	JcK1DXkTXHIn16ND/ZKc9AGG6hyl42kpc3W30aChhOTt6tP77Duxz14FOrNg0IS8I8s
-	O8S0YESZm8iBK33YAh48HkQQGqipb3YNssXrqCnE=
-Received: by mx.zohomail.com with SMTPS id 1759341124809857.8932182744314;
-	Wed, 1 Oct 2025 10:52:04 -0700 (PDT)
-From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Hans Verkuil <hverkuil@xs4all.nl>,
-	jose.abreu@synopsys.com,
-	nelson.costa@synopsys.com,
-	shawn.wen@rock-chips.com,
-	nicolas.dufresne@collabora.com,
-	Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: kernel@collabora.com,
-	linux-media@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
+	id 1v4AHl-00000009YNi-3eKx;
+	Thu, 02 Oct 2025 03:47:19 +0000
+Received: from pendragon.ideasonboard.com (81-175-209-231.bb.dnainternet.fi [81.175.209.231])
+	by perceval.ideasonboard.com (Postfix) with UTF8SMTPSA id 9AA3E19DC;
+	Thu,  2 Oct 2025 05:45:46 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1759376746;
+	bh=KcG/zkmiKNvl/P8os4q/rlZ6PsGXzEwTQ9fM/OULnkQ=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=sVoxwEYuj/ela5ZxaI+O+pQLNMIXncIZlADpNxoIKohZAe7cKsRVqA3/vaMuEisqf
+	 ZY74kqDaEqRfU41NfTq8XgkMp26jtPE06qvOaZgIbgeX1FzE1fpOHhjfoIqifTCS+M
+	 QShfU8f+uQeBVrn+dgNKMC27UatS+hvTKsTWq3/g=
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH v1] media: synopsys: hdmirx: Detect broken interrupt
-Date: Wed,  1 Oct 2025 20:50:44 +0300
-Message-ID: <20251001175044.502393-1-dmitry.osipenko@collabora.com>
-X-Mailer: git-send-email 2.51.0
+Subject: [PATCH 1/3] dt-bindings: arm: rockchip: Add Orange Pi CM5 Base
+Date: Thu,  2 Oct 2025 06:47:06 +0300
+Message-ID: <20251002034708.19248-2-laurent.pinchart@ideasonboard.com>
+X-Mailer: git-send-email 2.49.1
+In-Reply-To: <20251002034708.19248-1-laurent.pinchart@ideasonboard.com>
+References: <20251002034708.19248-1-laurent.pinchart@ideasonboard.com>
 MIME-Version: 1.0
-X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251001_105217_387273_B7B860C1 
-X-CRM114-Status: GOOD (  16.63  )
+X-CRM114-CacheID: sfid-20251001_204718_053111_40D2495D 
+X-CRM114-Status: UNSURE (   6.81  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,181 +62,42 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Cenk Uluisik <cenk.uluisik@googlemail.com>, Heiko Stuebner <heiko@sntech.de>, Jimmy Hon <honyuenkwun@gmail.com>, Kever Yang <kever.yang@rock-chips.com>, Maxime Ripard <mripard@kernel.org>, Sandy Huang <hjc@rock-chips.com>, Muhammed Efe Cetin <efectn@6tel.net>, Algea Cao <algea.cao@rock-chips.com>, Ondrej Jirman <megi@xff.cz>, Andy Yan <andy.yan@rock-chips.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Downstream version of RK3588 U-Boot uses customized TF-A that remaps
-HDMIRX hardware interrupt, routing it via firmware that isn't supported
-by upstream driver.
+The Orange Pi CM5 Base board is a carrier board for the Orange Pi CM5
+compute module. It has 3 ethernet ports, 2 USB ports, one HDMI output
+and 4 CSI-2 inputs.
 
-Detect broken interrupt and print a clarifying error message about a need
-to use open-source TF-A with this driver.
-
-Signed-off-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 ---
- .../platform/synopsys/hdmirx/snps_hdmirx.c    | 85 ++++++++++++++++++-
- .../platform/synopsys/hdmirx/snps_hdmirx.h    |  2 +
- 2 files changed, 85 insertions(+), 2 deletions(-)
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c b/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c
-index b7d278b3889f..faca601d72a4 100644
---- a/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c
-+++ b/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c
-@@ -138,6 +138,7 @@ struct snps_hdmirx_dev {
- 	struct clk_bulk_data *clks;
- 	struct regmap *grf;
- 	struct regmap *vo1_grf;
-+	struct completion cr_read_done;
- 	struct completion cr_write_done;
- 	struct completion timer_base_lock;
- 	struct completion avi_pkt_rcv;
-@@ -796,6 +797,41 @@ static int wait_reg_bit_status(struct snps_hdmirx_dev *hdmirx_dev, u32 reg,
- 	return 0;
- }
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index 28db6bd6aa5b..8b08a57f96ce 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -1243,6 +1243,12 @@ properties:
+               - xunlong,orangepi-5b
+           - const: rockchip,rk3588s
  
-+static int hdmirx_phy_register_read(struct snps_hdmirx_dev *hdmirx_dev,
-+				    u32 phy_reg, u32 *val)
-+{
-+	struct device *dev = hdmirx_dev->dev;
-+	u32 status;
++      - description: Xunlong Orange Pi CM5
++        items:
++          - const: xunlong,orangepi-cm5-base
++          - const: xunlong,orangepi-cm5
++          - const: rockchip,rk3588s
 +
-+	reinit_completion(&hdmirx_dev->cr_read_done);
-+	/* clear irq status */
-+	hdmirx_clear_interrupt(hdmirx_dev, MAINUNIT_2_INT_CLEAR, 0xffffffff);
-+	/* en irq */
-+	hdmirx_update_bits(hdmirx_dev, MAINUNIT_2_INT_MASK_N,
-+			   PHYCREG_CR_READ_DONE, PHYCREG_CR_READ_DONE);
-+	/* write phy reg addr */
-+	hdmirx_writel(hdmirx_dev, PHYCREG_CONFIG1, phy_reg);
-+	/* config read enable */
-+	hdmirx_writel(hdmirx_dev, PHYCREG_CONTROL, PHYCREG_CR_PARA_READ_P);
-+
-+	if (!wait_for_completion_timeout(&hdmirx_dev->cr_read_done,
-+					 msecs_to_jiffies(20))) {
-+		dev_err(dev, "%s wait cr read done failed\n", __func__);
-+		return -ETIMEDOUT;
-+	}
-+
-+	/* read phy reg value */
-+	status = hdmirx_readl(hdmirx_dev, PHYCREG_STATUS);
-+	if (!(status & PHYCREG_CR_PARA_DATAVALID)) {
-+		dev_err(dev, "%s cr read failed\n", __func__);
-+		return -EINVAL;
-+	}
-+
-+	*val = status & PHYCREG_CR_PARA_RD_DATA_MASK;
-+
-+	return 0;
-+}
-+
- static int hdmirx_phy_register_write(struct snps_hdmirx_dev *hdmirx_dev,
- 				     u32 phy_reg, u32 val)
- {
-@@ -1814,6 +1850,13 @@ static void mainunit_2_int_handler(struct snps_hdmirx_dev *hdmirx_dev,
- 		*handled = true;
- 	}
- 
-+	if (status & PHYCREG_CR_READ_DONE) {
-+		hdmirx_update_bits(hdmirx_dev, MAINUNIT_2_INT_MASK_N,
-+				   PHYCREG_CR_READ_DONE, 0);
-+		complete(&hdmirx_dev->cr_read_done);
-+		*handled = true;
-+	}
-+
- 	if (status & TMDSVALID_STABLE_CHG) {
- 		process_signal_change(hdmirx_dev);
- 		v4l2_dbg(2, debug, v4l2_dev, "%s: TMDSVALID_STABLE_CHG\n", __func__);
-@@ -2313,18 +2356,52 @@ static void hdmirx_disable_all_interrupts(struct snps_hdmirx_dev *hdmirx_dev)
- 	hdmirx_clear_interrupt(hdmirx_dev, CEC_INT_CLEAR, 0xffffffff);
- }
- 
--static void hdmirx_init(struct snps_hdmirx_dev *hdmirx_dev)
-+static int hdmirx_detect_broken_interrupt(struct snps_hdmirx_dev *hdmirx_dev)
-+{
-+	int err;
-+	u32 val;
-+
-+	enable_irq(hdmirx_dev->hdmi_irq);
-+
-+	hdmirx_writel(hdmirx_dev, PHYCREG_CONFIG0, 0x3);
-+
-+	err = hdmirx_phy_register_read(hdmirx_dev,
-+				       HDMIPCS_DIG_CTRL_PATH_MAIN_FSM_FSM_CONFIG,
-+				       &val);
-+
-+	disable_irq(hdmirx_dev->hdmi_irq);
-+
-+	if (err)
-+		return dev_err_probe(hdmirx_dev->dev, err,
-+				     "interrupt not functioning, open-source TF-A is required by this driver\n");
-+
-+	return 0;
-+}
-+
-+static int hdmirx_init(struct snps_hdmirx_dev *hdmirx_dev)
- {
-+	int ret;
-+
- 	hdmirx_update_bits(hdmirx_dev, PHY_CONFIG, PHY_RESET | PHY_PDDQ, 0);
- 
- 	regmap_write(hdmirx_dev->vo1_grf, VO1_GRF_VO1_CON2,
- 		     (HDMIRX_SDAIN_MSK | HDMIRX_SCLIN_MSK) |
- 		     ((HDMIRX_SDAIN_MSK | HDMIRX_SCLIN_MSK) << 16));
-+
-+	/*
-+	 * RK3588 downstream version of TF-A remaps HDMIRX interrupt and
-+	 * requires use of a vendor-specific FW API by the driver that we
-+	 * don't support in this driver.
-+	 */
-+	ret = hdmirx_detect_broken_interrupt(hdmirx_dev);
-+
- 	/*
- 	 * Some interrupts are enabled by default, so we disable
- 	 * all interrupts and clear interrupts status first.
- 	 */
- 	hdmirx_disable_all_interrupts(hdmirx_dev);
-+
-+	return ret;
- }
- 
- /* hdmi-4k-300mhz EDID produced by v4l2-ctl tool */
-@@ -2610,6 +2687,7 @@ static int hdmirx_probe(struct platform_device *pdev)
- 	mutex_init(&hdmirx_dev->work_lock);
- 	spin_lock_init(&hdmirx_dev->rst_lock);
- 
-+	init_completion(&hdmirx_dev->cr_read_done);
- 	init_completion(&hdmirx_dev->cr_write_done);
- 	init_completion(&hdmirx_dev->timer_base_lock);
- 	init_completion(&hdmirx_dev->avi_pkt_rcv);
-@@ -2623,7 +2701,10 @@ static int hdmirx_probe(struct platform_device *pdev)
- 	hdmirx_dev->timings = cea640x480;
- 
- 	hdmirx_enable(dev);
--	hdmirx_init(hdmirx_dev);
-+
-+	ret = hdmirx_init(hdmirx_dev);
-+	if (ret)
-+		goto err_pm;
- 
- 	v4l2_dev = &hdmirx_dev->v4l2_dev;
- 	strscpy(v4l2_dev->name, dev_name(dev), sizeof(v4l2_dev->name));
-diff --git a/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.h b/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.h
-index 220ab99ca611..a719439d3ca0 100644
---- a/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.h
-+++ b/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.h
-@@ -114,6 +114,8 @@
- #define PHYCREG_CR_PARA_WRITE_P			BIT(1)
- #define PHYCREG_CR_PARA_READ_P			BIT(0)
- #define PHYCREG_STATUS				0x00f4
-+#define PHYCREG_CR_PARA_DATAVALID		BIT(24)
-+#define PHYCREG_CR_PARA_RD_DATA_MASK		GENMASK(15, 0)
- 
- #define MAINUNIT_STATUS				0x0150
- #define TMDSVALID_STABLE_ST			BIT(1)
+       - description: Zkmagic A95X Z2
+         items:
+           - const: zkmagic,a95x-z2
 -- 
-2.51.0
+Regards,
+
+Laurent Pinchart
 
 
 _______________________________________________
