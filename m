@@ -4,56 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 497BACAC5B0
-	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Oct 2025 18:30:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E757CAC5B8
+	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Oct 2025 19:25:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=J2pXhjSZt3IRykJXriznmJqMSI9K+LKIoO4G0i3PvoY=; b=0PSPCbSZ5l6PdstjsCPDzc5225
-	0wemtuD39DJmA0fJJ9EHO6YVAptNkalt9+chRHoAxLrJBcGMePxsiN2RM8bAhSqaYrHTvOrzAqe4q
-	hiuTCkjoU7uOle25kkRSZgBlPg6mW8k9Gv6Q1F7fMkIgeVj+W/QxmtArhWgwYZY9ThkP+gqJYUFvX
-	QSSR5Y9H/Yl7MGH/DeNOexHeNK/pFtOTgwdI+rBviPM0+HfE7PdRrKWD5tpIsNGMlrVyxQvDOvW/j
-	WVpWd4PRe+1u/frFkfDJ9NlIhfBOlAJ0LsxWVk8zhOCml4WIhZnv1vVpL2kNpFulFsXQ3sdRvouMH
-	0j2k6Ixw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=c2rbi6HvpjnSUVB4gjJF0HO4Rl18EQokvHaCQWaUTgs=; b=nJkWU3MAF7JfSP
+	9/sbXiSvBmiGOQ+3LHxCZIRkDTsOcj2U1AhV2G0AubYZuqlUa2VrLiSzuseVLTy+rbnPpEOhp64pe
+	XMpeHP0wRpHW8hyRBoB/nPjExYp6T7HHl2kAedbniAUqU5ByfC4kD3nFx38KtXmBscfSUExR9DK9+
+	gfab/9YKTjVyF1MzG3V3A/1GXo3pquBwkqlK2Q6K4eotgGMD5jqwRMhIKSPdgjle6yLnfEK+aWGO+
+	zjfJxxvg5nSb8cBNdwZ/ASWQaLuOSRuC0vvYdKMtkzKVbII/4Ut9wiZv4AcRFSn1guiaOFguB2xO+
+	QPhZfc8J6R06JJKZbJNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v4O4i-0000000B23y-1WGJ;
-	Thu, 02 Oct 2025 18:30:44 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1v4OvM-0000000B6ML-1d5M;
+	Thu, 02 Oct 2025 19:25:08 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v4O4f-0000000B22j-1vXM;
-	Thu, 02 Oct 2025 18:30:42 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 948F54059F;
-	Thu,  2 Oct 2025 18:30:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2D973C4CEF4;
-	Thu,  2 Oct 2025 18:30:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1759429840;
-	bh=0mh2PXI4RPCLiX+zU35do9JgkruwIWIRKLm0Jl8yX3c=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=DzqgycZjsrI4nqyDFEZYHQ+O4VSOxNCY4BKkDQuaCkSw1cgyc/TgUjAlBRStFoquY
-	 Sjy7dkyUIh7e6DCP3TqL/vnw7Lfouyuh6DUbLzabR6kXHHBmJ/dochZzkQBRyhMQKV
-	 ppTI+AeHLe7/YgdnMWWflFVSRjRoFrIx+wzh4ONkjTog/a/VQIfYn2Y7AfJrCLrB7P
-	 tQuCUvbn0db/w/JGMUnWKDMPxN+8ve0SDhv2X0Vj3/lRvE7MrTM9lu3qjxaMk79FnQ
-	 u2Geab/qL/JlrujgLOZZXpBDQCw8M33oo5l6xKJn5lHnN8xaMsWwbpTaFt8s1MwG5z
-	 RRK1tmRZBbiAw==
-Date: Thu, 2 Oct 2025 19:30:34 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Subject: Re: [PATCH 1/3] dt-bindings: arm: rockchip: Add Orange Pi CM5 Base
-Message-ID: <20251002-rehab-ripcord-043788a3c6f4@spud>
-References: <20251002034708.19248-1-laurent.pinchart@ideasonboard.com>
- <20251002034708.19248-2-laurent.pinchart@ideasonboard.com>
+	id 1v4OvJ-0000000B6LR-1nkt;
+	Thu, 02 Oct 2025 19:25:07 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1759433101;
+	bh=7dyLoe6PQosf1e6cw6Y05vwLtzGzEVNzwP6YK46yvf8=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=NUJDuyj2mc5Lq9RKXPVNApVDUt4W4sJzsni6xixG0psfHI0M8XftkNGrY4GrYUEpE
+	 9rVm4AMTWxUAAuKWgpi90y1Ge5dzxPWRDF7C1JESNNqhPyKDyuTCDtuFOL9i66DKHA
+	 qlxo5Nh/NWrIb/rYiZ9aJT/w8m0X9gMmDYkQHSLIGoyt/EUSa2R6y/xhNZYyUK+Bli
+	 yQwZMIkznz/877t7sr/9m6o3cWPL30msnJJlSqpRYMMdmXuiqroSJfxwTZin9C8Ahg
+	 pV5BW95IimcwdnEuuuMz2h2JY7tSVYUbP/KN0wH4b8BD3FeWkoX5AihXDKBgh2Rgx5
+	 Uy+pVuEci+p7Q==
+Received: from [192.168.1.90] (unknown [82.79.138.145])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 729B217E12BB;
+	Thu,  2 Oct 2025 21:25:00 +0200 (CEST)
+Message-ID: <1964913f-8323-4714-a061-5fa09ce0983c@collabora.com>
+Date: Thu, 2 Oct 2025 22:24:59 +0300
 MIME-Version: 1.0
-In-Reply-To: <20251002034708.19248-2-laurent.pinchart@ideasonboard.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 0/3] arm64: dts: rockchip: Add device tree for the Orange
+ Pi CM5 Base board
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org
+Cc: Algea Cao <algea.cao@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>,
+ Cenk Uluisik <cenk.uluisik@googlemail.com>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Jimmy Hon <honyuenkwun@gmail.com>, Kever Yang <kever.yang@rock-chips.com>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Maxime Ripard
+ <mripard@kernel.org>, Muhammed Efe Cetin <efectn@6tel.net>,
+ Ondrej Jirman <megi@xff.cz>, Rob Herring <robh@kernel.org>,
+ Sandy Huang <hjc@rock-chips.com>
+References: <20251002034708.19248-1-laurent.pinchart@ideasonboard.com>
+Content-Language: en-US
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+In-Reply-To: <20251002034708.19248-1-laurent.pinchart@ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251002_113041_511142_7A1B2530 
-X-CRM114-Status: UNSURE (   7.54  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251002_122505_658483_D71FF793 
+X-CRM114-Status: GOOD (  20.09  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,48 +78,53 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Cenk Uluisik <cenk.uluisik@googlemail.com>, Muhammed Efe Cetin <efectn@6tel.net>, Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>, Jimmy Hon <honyuenkwun@gmail.com>, Kever Yang <kever.yang@rock-chips.com>, Maxime Ripard <mripard@kernel.org>, Sandy Huang <hjc@rock-chips.com>, linux-rockchip@lists.infradead.org, Algea Cao <algea.cao@rock-chips.com>, Ondrej Jirman <megi@xff.cz>, Andy Yan <andy.yan@rock-chips.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
-Content-Type: multipart/mixed; boundary="===============9120665117327126854=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Laurent,
 
---===============9120665117327126854==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="ntsgCHwA2iMj9xet"
-Content-Disposition: inline
+On 10/2/25 6:47 AM, Laurent Pinchart wrote:
+> Hello,
+> 
+> This patch series adds a device tree for the Orange Pi CM5 Base board
+> from Xunlong. This is a combination of a compute module and a carrier
+> board, so the device tree is split in two files.
+> 
+> The work is based on a combination of upstream device trees for other
+> RK3588-based Orange Pi boards and the downstream device tree, all
+> checked against the available schematics for the carrier board. The
+> compute module schematics is unfortunately not available.
+> 
+> The series starts by adding a new compatible for the board to
+> arm/rockchip.yaml. The next patch documents a missing property in the
+> rk3588-dw-hdmi-qp bindings that the device tree needs. Finally, the last
+> patch adds the device tree.
+> 
+> Patch 2/3 may be slightly controversial as the new DT property could be
+> better named. 
 
+Indeed :-). As a matter of fact I've already planned to introduce it as
+"tmds-enable-gpios" [1], during my recent FRL related work.
 
---ntsgCHwA2iMj9xet
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+> It has been supported in the driver for a year now, so
+> there could be users in the wild. I have therefore decided to keep the
+> current name. I am open to alternative solutions.
 
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
+As mentioned in [2], this was "inherited" from downstream and hasn't been
+really in use so far.  I intended to do some more testing before attempting
+to send those patches upstream, as for now I couldn't notice any (obvious)
+change in behavior when switching between TMDS and FRL, with or without
+making use of it in DT.
 
---ntsgCHwA2iMj9xet
-Content-Type: application/pgp-signature; name="signature.asc"
+Regards,
+Cristian
 
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaN7EygAKCRB4tDGHoIJi
-0i8HAP9YE/REwXXRgakNjtjNxjA84B7owoCO2nbe0IWr959JlwD5AUKlhJChjLP5
-u8llwVBhX+ZbpzsLfMHeNR8tC5vk1Ak=
-=/5jM
------END PGP SIGNATURE-----
-
---ntsgCHwA2iMj9xet--
-
-
---===============9120665117327126854==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+[1] https://gitlab.collabora.com/hardware-enablement/rockchip-3588/linux/-/commit/5a32a84ee3e801daaeb974f967f6e213983feeb4
+[2] https://gitlab.collabora.com/hardware-enablement/rockchip-3588/linux/-/commit/df4d94fdb94463dd4175338bf7044b40c5e559e4
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============9120665117327126854==--
-
