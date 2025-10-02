@@ -4,81 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8B83CAC5B0
-	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Oct 2025 08:17:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E4E9CAC5B0
+	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Oct 2025 09:49:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:Cc:From:Subject:
+	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HmT45g5taNXYPJEHvYsrDvwygBLc8skDw/hh50ppL1I=; b=rlKpYGLoilbXMT
-	fMwgoG16hwSmtjsK6WzQzFcC3TqsBvH9poxwoRm/8P7srWprIQD5MhTzfKj7WfoPBFt4wdhMRG7fN
-	gjzATsjiCMUY2Nz4iRdQpDBBOtTogcw0ODbQQlCcY7i4IgJVXEoAtwOoxL76Z/VHK/EB2F+QMVZRw
-	MIzlS6akdDJDFoBPX25h/5GKBaHIF9ti6v1eTEgKYeWOjf/en9CuLlRJnD+ZzYG5h4Fa5lB/IEPOT
-	8LTmM+541oqxkmWa35ELeeT1h25JOJmBJlTbvsdpIMNLvY1Xdwpv8MejK8EndoB47uz7es4nhfezx
-	qXZgabV4plCEIaWhbVvg==;
+	List-Owner; bh=AapgCbpjNMGwiuGMO5CFAnqPfpiViC+dJ0l7ApiVy+s=; b=crXF1ai5UZkQ1q
+	KpojfB6SOR3aeM7HwIzXhD01FvANhRf4qqCZor4QJXWq41VO7bYUVlBSLeNcQksYkZNNeW8ExHIDD
+	85B3Q1qO/si3r372R4GgWJ2QsTfjraU6RxiNJps2BcZypz5DhYJGKhN2WJJ4A59599fHDc94owK+p
+	CMWDbIsA/APjbIaUIxNdGyahmFO502bARyw9fM/YjG0Tu+xuBSr7NcH57l1UKmc9Xv5Gpt+H1CdOn
+	fGe1oT/3nl5r/q3b17Z4O9QxlCx8fQR3U5jmoyVFq4zCigoA5MTbGiJAxYfhr2qt9pZ7Cdd7kwxHw
+	TIaLoKpODni9lSOiJkaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v4EV0-00000009uGo-0fW6;
-	Thu, 02 Oct 2025 08:17:14 +0000
-Received: from mgamail.intel.com ([192.198.163.16])
+	id 1v4Fw8-0000000ABGv-1HB8;
+	Thu, 02 Oct 2025 09:49:20 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v4EUx-00000009uEk-27q4;
-	Thu, 02 Oct 2025 08:17:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1759393031; x=1790929031;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=qhPCv+hvtTaEhLSvWRtO8cEw6fW/dZWLWErQIn5N/xI=;
-  b=HFqu5hpRXwkAPS/BtvoBpMDHAQcwrZwgg/MhcysyXa6+Ksc25hBaNKOw
-   VBjrRpfmxaDlNC7EjcCHGRvATC6B/gIRRgK+UHqbd7wHn0DqwaNSbmLTR
-   OXHIbMkUvOogQjSEn7Fd8N230MbyuglOLH+gCk1D7m9Y+wTTBCAYfsLcj
-   qZC34R1+Jzr95BaZFVqyEaB0+VxAdhNIaCNaVidcHXlNC+U1f6KN6Quug
-   wDHAVdNSrEOHx2C+q+8Wg5YHlbBQoo4GnLOzVwOKqbP36d5Ul4Dk8Uq82
-   czPwFZUHSucjdBjfts2FbNy7EzpacY2qIn7D00/5lsbI050DkXYDcEa0n
-   A==;
-X-CSE-ConnectionGUID: J6LqYt4JQbKhk2PDDWxJzA==
-X-CSE-MsgGUID: NYxBYIckRlaM3dEnjdwxaw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11569"; a="49230499"
-X-IronPort-AV: E=Sophos;i="6.18,309,1751266800"; 
-   d="scan'208";a="49230499"
-Received: from orviesa007.jf.intel.com ([10.64.159.147])
-  by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 02 Oct 2025 01:17:09 -0700
-X-CSE-ConnectionGUID: 6YX8BcraQ+aqUY/Jr4ihHw==
-X-CSE-MsgGUID: BdxfyJimRBuNrjmbXHg0HA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.18,309,1751266800"; 
-   d="scan'208";a="178797283"
-Received: from bergbenj-mobl1.ger.corp.intel.com (HELO kekkonen.fi.intel.com) ([10.245.245.175])
-  by orviesa007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 02 Oct 2025 01:17:07 -0700
-Received: from kekkonen.localdomain (localhost [IPv6:::1])
-	by kekkonen.fi.intel.com (Postfix) with SMTP id 7333A121EC3;
-	Thu, 02 Oct 2025 11:17:03 +0300 (EEST)
-Date: Thu, 2 Oct 2025 11:17:03 +0300
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6 krs, Bertel Jungin Aukio 5, 02600 Espoo
-From: Sakari Ailus <sakari.ailus@linux.intel.com>
-To: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-Cc: Dafna Hirschfeld <dafna@fastmail.com>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Keke Li <keke.li@amlogic.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Dan Scally <dan.scally@ideasonboard.com>,
-	Antoine Bouyer <antoine.bouyer@nxp.com>,
-	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v5 0/8] media: Introduce V4L2 generic ISP support
-Message-ID: <aN40_78P5TaUuglA@kekkonen.localdomain>
-References: <20250915-extensible-parameters-validation-v5-0-e6db94468af3@ideasonboard.com>
+	id 1v4Fw4-0000000ABFY-2MhU;
+	Thu, 02 Oct 2025 09:49:17 +0000
+Received: from pendragon.ideasonboard.com (cpc89244-aztw30-2-0-cust6594.18-1.cable.virginm.net [86.31.185.195])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 44743E01;
+	Thu,  2 Oct 2025 11:47:42 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1759398462;
+	bh=urh5kp0x/YFcknpUceSmZyOaEH/EFuWGuuYrA2S4jRE=;
+	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+	b=U4bzYZ9Z3SbXpQSvLGCYyVZC/pVpZ3RO8MFcDVbRiyo9kDclCPY3lCsdv92tvnpsJ
+	 TVXYOQSh5WV8uUE942jQYK+RlYUw8gYOExfpKiMhZ+2Cd56vmEJV6ybrwI8IKx1xVN
+	 jmYZROsgFWgZY7K9gSfhX3Zis5oKNhbgcPAndBao=
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250915-extensible-parameters-validation-v5-0-e6db94468af3@ideasonboard.com>
+In-Reply-To: <20250918223655.GA10985@pendragon.ideasonboard.com>
+References: <20250918145504.111428-2-stefan.klug@ideasonboard.com> <175820896821.1246375.16035780810428204673@ping.linuxembedded.co.uk> <20250918223655.GA10985@pendragon.ideasonboard.com>
+Subject: Re: [PATCH v2] media: rkisp1: Improve frame sequence correctness on stats and params buffers
+From: Kieran Bingham <kieran.bingham@ideasonboard.com>
+Cc: Dafna Hirschfeld <dafna@fastmail.com>, Heiko Stuebner <heiko@sntech.de>, Jacopo Mondi <jacopo.mondi@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Stefan Klug <stefan.klug@ideasonboard.com>, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Date: Thu, 02 Oct 2025 10:49:08 +0100
+Message-ID: <175939854884.1246375.7790101626684068201@ping.linuxembedded.co.uk>
+User-Agent: alot/0.9.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251002_011711_561836_F069C7D6 
-X-CRM114-Status: GOOD (  20.80  )
+X-CRM114-CacheID: sfid-20251002_024916_746983_DC03A912 
+X-CRM114-Status: GOOD (  47.89  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,60 +65,178 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Jacopo,
+Quoting Laurent Pinchart (2025-09-18 23:36:55)
+> On Thu, Sep 18, 2025 at 04:22:48PM +0100, Kieran Bingham wrote:
+> > Quoting Stefan Klug (2025-09-18 15:54:33)
+> > > On the rkisp1 (in my case on a NXP i.MX8 M Plus) the ISP interrupt
+> > > handler is sometimes called with RKISP1_CIF_ISP_V_START (start of frame)
+> > > and RKISP1_CIF_ISP_FRAME (end of frame) being set at the same time. In
+> > > commit 8524fa22fd2f ("media: staging: rkisp1: isp: add a warning and
+> > > debugfs var for irq delay") a warning was added for that. There are two
+> > > cases where this condition can occur:
+> > > 
+> > > 1. The v-sync and the frame-end belong to the same frame. This means,
+> > >    the irq was heavily delayed and the warning is likely appropriate.
+> > > 
+> > > 2. The v-sync belongs to the next frame. This can happen if the vertical
+> > >    blanking between two frames is very short.
+> > > 
+> > > The current code always handles case 1 although case 2 is in my
+> > > experience the more common case and happens in regular usage. This leads
+> > > to incorrect sequence numbers on stats and params buffers which in turn
+> > > breaks the regulation in user space. Fix that by adding a frame_active
+> > > flag to distinguish between these cases and handle the start of frame
+> > > either at the beginning or at the end of the rkisp1_isp_isr().
+> > > 
+> > > Signed-off-by: Stefan Klug <stefan.klug@ideasonboard.com>
+> > > 
+> > > ---
+> > > 
+> > > Hi all,
+> > > 
+> > > Here is an updated version of the patch with some fixes from the review.
+> > > 
+> > > Changes in v2:
+> > > - Removed test for !frame_active in second v_start handler
+> > > - Improved comments
+> > > 
+> > > Best regards,
+> > > Stefan
+> > > 
+> > > ---
+> > >  .../platform/rockchip/rkisp1/rkisp1-common.h  |  1 +
+> > >  .../platform/rockchip/rkisp1/rkisp1-isp.c     | 27 +++++++++++++++----
+> > >  2 files changed, 23 insertions(+), 5 deletions(-)
+> > > 
+> > > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+> > > index ca952fd0829b..adf23416de9a 100644
+> > > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+> > > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+> > > @@ -222,6 +222,7 @@ struct rkisp1_isp {
+> > >         struct media_pad pads[RKISP1_ISP_PAD_MAX];
+> > >         const struct rkisp1_mbus_info *sink_fmt;
+> > >         __u32 frame_sequence;
+> > > +       bool frame_active;
+> > >  };
+> > >  
+> > >  /*
+> > > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+> > > index 8c29a1c9309a..2e49764d6262 100644
+> > > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+> > > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+> > > @@ -965,6 +965,7 @@ static int rkisp1_isp_s_stream(struct v4l2_subdev *sd, int enable)
+> > >         }
+> > >  
+> > >         isp->frame_sequence = -1;
+> > > +       isp->frame_active = false;
+> > >  
+> > >         sd_state = v4l2_subdev_lock_and_get_active_state(sd);
+> > >  
+> > > @@ -1086,12 +1087,15 @@ void rkisp1_isp_unregister(struct rkisp1_device *rkisp1)
+> > >   * Interrupt handlers
+> > >   */
+> > >  
+> > > -static void rkisp1_isp_queue_event_sof(struct rkisp1_isp *isp)
+> > > +static void rkisp1_isp_sof(struct rkisp1_isp *isp)
+> > >  {
+> > >         struct v4l2_event event = {
+> > >                 .type = V4L2_EVENT_FRAME_SYNC,
+> > >         };
+> > >  
+> > > +       isp->frame_sequence++;
+> > > +       isp->frame_active = true;
+> > > +
+> > >         event.u.frame_sync.frame_sequence = isp->frame_sequence;
+> > >         v4l2_event_queue(isp->sd.devnode, &event);
+> > >  }
+> > > @@ -1111,15 +1115,20 @@ irqreturn_t rkisp1_isp_isr(int irq, void *ctx)
+> > >  
+> > >         rkisp1_write(rkisp1, RKISP1_CIF_ISP_ICR, status);
+> > >  
+> > > -       /* Vertical sync signal, starting generating new frame */
+> > > -       if (status & RKISP1_CIF_ISP_V_START) {
+> > > -               rkisp1->isp.frame_sequence++;
+> > > -               rkisp1_isp_queue_event_sof(&rkisp1->isp);
+> > > +       /*
+> > > +        * Vertical sync signal, starting new frame. Defer handling of vsync
+> > > +        * after RKISP1_CIF_ISP_FRAME if the previous frame was not completed
+> > > +        * yet.
+> > > +        */
+> > > +       if (status & RKISP1_CIF_ISP_V_START && !rkisp1->isp.frame_active) {
+> > > +               status &= ~RKISP1_CIF_ISP_V_START;
+> > > +               rkisp1_isp_sof(&rkisp1->isp);
+> > >                 if (status & RKISP1_CIF_ISP_FRAME) {
+> > >                         WARN_ONCE(1, "irq delay is too long, buffers might not be in sync\n");
+> > 
+> > Now I've read below - I see how in here we've had both a frame start and
+> > a frame end without processing an IRQ at all.
+> > 
+> > I'm trying to figure out if the ISR should always just process frame end
+> > events before frame starts ... but then i think we wouldn't catch this
+> > case so I suspect this is fine keeping it how things are now.
+> > 
+> > 
+> > >                         rkisp1->debug.irq_delay++;
+> > >                 }
+> > >         }
+> > > +
+> > >         if (status & RKISP1_CIF_ISP_PIC_SIZE_ERROR) {
+> > >                 /* Clear pic_size_error */
+> > >                 isp_err = rkisp1_read(rkisp1, RKISP1_CIF_ISP_ERR);
+> > > @@ -1138,6 +1147,7 @@ irqreturn_t rkisp1_isp_isr(int irq, void *ctx)
+> > >         if (status & RKISP1_CIF_ISP_FRAME) {
+> > >                 u32 isp_ris;
+> > >  
+> > > +               rkisp1->isp.frame_active = false;
+> > >                 rkisp1->debug.complete_frames++;
+> > >  
+> > >                 /* New frame from the sensor received */
+> > > @@ -1152,5 +1162,12 @@ irqreturn_t rkisp1_isp_isr(int irq, void *ctx)
+> > >                 rkisp1_params_isr(rkisp1);
+> > >         }
+> > >  
+> > > +       /*
+> > > +        * Deferred handling of vsync if RKISP1_CIF_ISP_V_START and
+> > > +        * RKISP1_CIF_ISP_FRAME occurrend in the same irq.
+> > 
+> > s/occurend/occured/
+> > 
+> > > +        */
+> > > +       if (status & RKISP1_CIF_ISP_V_START)
+> > > +               rkisp1_isp_sof(&rkisp1->isp);
+> > 
+> > Aha I see - so this makes sure we /complete/ the frame before we start
+> > another one.
+> > 
+> > That definitely sounds like a very good thing.
+> 
+> Yes, this seems to be a good improvement.
+> 
+> Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> 
+> There may still be room for improvement, we could measure the time
+> between IRQs to estimate the number of lost interrupts. That won't be
+> easy to develop, and may be best handled in userspace. If we investigate
+> that, it should probably be implemented with generic helpers.
+> 
+> > I'd be curuious to add a counter for how often we process a frame start
+> > and frame end in the same ISR too. That likely still means we've got
+> > some undesirable delays?
+> 
+> There's a counter already, and it's already exported through debugfs :-)
 
-On Mon, Sep 15, 2025 at 07:18:09PM +0200, Jacopo Mondi wrote:
-> Extensible parameters meta formats have been introduced in the Linux
-> kernel v6.12 initially to support different revision of the RkISP1 ISP
-> implemented in different SoC. In order to avoid breaking userspace
-> everytime an ISP configuration block is added or modified in the uAPI
-> these new formats, which are versionated and extensible by their
-> definition have been introduced.
-> 
-> See for reference:
-> e9d05e9d5db1 ("media: uapi: rkisp1-config: Add extensible params format")
-> 6c53a7b68c5d ("media: rkisp1: Implement extensible params support")
-> 
-> The Amlogic C3 ISP driver followed shortly, introducing an extensible
-> format for the ISP configuration:
-> 
-> 6d406187ebc0 ("media: uapi: Add stats info and parameters buffer for C3 ISP")
-> 
-> with a very similar, if not identical, implementation of the routines to
-> validate and handle the ISP configuration in the ISP driver in the
-> c3-isp-params.c file.
-> 
-> fb2e135208f3 ("media: platform: Add C3 ISP driver")
-> 
-> With the recent upstreaming attempt of the Mali C55 ISP driver from Dan,
-> a third user of extensible parameters is going to be itroduced in the
-> kernel, duplicating again in the driver the procedure for validating and
-> handling the ISP configuration blocks
-> 
-> https://patchwork.linuxtv.org/project/linux-media/patch/20250624-c55-v10-15-54f3d4196990@ideasonboard.com/
-> 
-> To avoid duplicating again the validation routines and common types
-> definition, this series introduces v4l2-isp.c/.h for the kAPI
-> and v4l2-isp.h for the uAPI and re-organize the RkISP1
-> and Amlogic C3 drivers to use the common types and the helper validation
-> routines.
-> 
-> The v4l2-isp abstraction will be augmented to support statistcs as well.
-> 
-> If the here proposed approach is accepted, I propose to rebase the Mali
-> C55 driver on top of this series, to use the new common types and
-> helpers.
-> 
-> I have been able to test this on RkISP1 but not on C3.
+Ok - so I have nothing to stop me also saying this then ;-)
 
-Thank you for working on this.
+Reviewed-by: Kieran Bingham <kieran.bingham@ideasonboard.com>
 
-Acked-by: Sakari Ailus <sakari.ailus@linux.intel.com>
-
--- 
-Kind regards,
-
-Sakari Ailus
+> > > +
+> > >         return IRQ_HANDLED;
+> > >  }
+> 
+> -- 
+> Regards,
+> 
+> Laurent Pinchart
 
 _______________________________________________
 Linux-rockchip mailing list
