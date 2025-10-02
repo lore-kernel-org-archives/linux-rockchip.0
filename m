@@ -4,51 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06F80CAC5B8
-	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Oct 2025 21:44:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BB79CAC5B0
+	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Oct 2025 21:57:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:Cc:From:Subject:
-	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BwbZjD3jnUCI5P/kFqMpa4QmWCHVDP8tCoUPcAhV/z8=; b=hMMgtEbVmIiutC
-	f7kcP5ZBSVRTuHBgCsUcaaasvuKEsg+1fl1wRR3E3+iHJY3ZTyk4z66vxNpZZBdx0SRv917oCYSA+
-	y/i83jc188PLA4X/MYAWejhokgM3xvb8EnTZdk3cjBv576jCOa8SzNaMhKiqD4rjw66YMWX08851C
-	o3ui7KNpJ4pSSfd06lrZqk0LSm/QXNnB7v9RgEhLZCh3nCDl9XNK+JGq0phUKRsDHUoyhXLQRlsOw
-	nXOIrHVmacCTYoaQQVcX6KKwOgIuI2oIM3j0FXqgNIktDZhhVLABPUju7Eq29BF9is8rjS/vQ6KAY
-	wjZG/H32thI6ejSZzdiQ==;
+	List-Owner; bh=VpuzIwkCoFaElRLzD9x16+Q7Z2DWg0JtaQKARtwlmmo=; b=hUqDzSKxUUdcmu
+	VNdJB0+FtmH6BFCMxcG9UcT43RJ7Ugh3BfzUd1mnmGjLGvKovkrdBeyidBDkPh8NtfrahEp2Kxn3a
+	1J1IptsYcIKMmk77611AiiWyS6pgbE5NefoTvHPmu9jZGC7lETG/3RtmFwNdxrUwmyx9/ZO3kjk1B
+	7Dc5Q4E7UwWMzc7HGh2GGXASKFy04YP+159C6cbbjwF1rQRo1/alScgjdUf2D2O9UJ3IvLd0eRlsS
+	vT9ffjPyeSdre+6b8j/zXz+d11KR+6CuY37w7RxZputUHetR1ux6hWi0D5pU5UIZw681CLi2Ytr6A
+	rz59voqS4GZRQz34zxYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v4R6B-0000000BK2P-22oZ;
-	Thu, 02 Oct 2025 21:44:27 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1v4RIB-0000000BKdH-11xG;
+	Thu, 02 Oct 2025 21:56:51 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v4R68-0000000BK1v-0lQy;
-	Thu, 02 Oct 2025 21:44:25 +0000
-Received: from pendragon.ideasonboard.com (cpc89244-aztw30-2-0-cust6594.18-1.cable.virginm.net [86.31.185.195])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 1ACBCF06;
-	Thu,  2 Oct 2025 23:42:52 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1759441372;
-	bh=vdCdPdFwsJMMeXs4fFvCyFSm56dK+WwqeX0uDW72egY=;
-	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
-	b=qCGBi/4NLGhL50yZ8HswAtm5fhy64XVceEcH4gsVFTSHUKvmADZfZ3Dve0fwSCUhq
-	 hoWMRD0zCeOlw+Fhl9lg6CoeM0QW/cMGYDCIXJtsNrCxb0srjXwz+9lU0H1Oxn8CZa
-	 EOHKzcHZJdLieWgc/DjpTLGf0/usnithmHeTiuL0=
+	id 1v4RI7-0000000BKck-3r7w;
+	Thu, 02 Oct 2025 21:56:49 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1759442205;
+	bh=ShPhllfzrcEjHAglwp5h9FU1kRG9OTc0vV3QUF6vOPw=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=LMJuhrHkNJWgvMTKAZu7VN98y+ZmDJ1zCVAqZ0jWvpy0Q2gKRL3xvaTuP1T6O0BrR
+	 c8e5svsZ8rG0uzmGXeJJ4UP5sXxQnK1PGjNAgGZidLwG8Sr6WRWlmDNfTug43KWxHK
+	 TKkXvTa65m4D1ZGLYL9tGJ5muPS8R8X9xQ+KAn9aCgA68DDI+kP1DUOCtZg9UP9qEp
+	 LA0/FFG408O8oM3jNZuwI6yfv8j4oBPSQ8YIjWkyr2Y7vBcLoscF2Z+poMK8KYeAMH
+	 o7cxY5d12wVik/lxnHDGJr8Jl1rESTuDvdGGMrOZu7+wl+ifhN5pPM8GyIT36tO+4/
+	 YkXTfBG+VBDvg==
+Received: from [192.168.1.90] (unknown [82.79.138.145])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6EEFD17E12C0;
+	Thu,  2 Oct 2025 23:56:44 +0200 (CEST)
+Message-ID: <31187dc6-69ec-400e-9f01-2f3062092d26@collabora.com>
+Date: Fri, 3 Oct 2025 00:56:43 +0300
 MIME-Version: 1.0
-In-Reply-To: <20250922182003.3712101-2-stefan.klug@ideasonboard.com>
-References: <20250922182003.3712101-2-stefan.klug@ideasonboard.com>
-Subject: Re: [PATCH v3] media: rkisp1: Improve frame sequence correctness on stats and params buffers
-From: Kieran Bingham <kieran.bingham@ideasonboard.com>
-Cc: Stefan Klug <stefan.klug@ideasonboard.com>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-To: Dafna Hirschfeld <dafna@fastmail.com>, Heiko Stuebner <heiko@sntech.de>, Jacopo Mondi <jacopo.mondi@ideasonboard.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Stefan Klug <stefan.klug@ideasonboard.com>, linux-media@vger.kernel.org
-Date: Thu, 02 Oct 2025 22:44:19 +0100
-Message-ID: <175944145933.3917877.5417697383444150190@ping.linuxembedded.co.uk>
-User-Agent: alot/0.9.1
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 0/3] arm64: dts: rockchip: Add device tree for the Orange
+ Pi CM5 Base board
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, Algea Cao <algea.cao@rock-chips.com>,
+ Andy Yan <andy.yan@rock-chips.com>,
+ Cenk Uluisik <cenk.uluisik@googlemail.com>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Jimmy Hon <honyuenkwun@gmail.com>, Kever Yang <kever.yang@rock-chips.com>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Maxime Ripard
+ <mripard@kernel.org>, Muhammed Efe Cetin <efectn@6tel.net>,
+ Ondrej Jirman <megi@xff.cz>, Rob Herring <robh@kernel.org>,
+ Sandy Huang <hjc@rock-chips.com>
+References: <20251002034708.19248-1-laurent.pinchart@ideasonboard.com>
+ <1964913f-8323-4714-a061-5fa09ce0983c@collabora.com>
+ <20251002205240.GF16185@pendragon.ideasonboard.com>
+Content-Language: en-US
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+In-Reply-To: <20251002205240.GF16185@pendragon.ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251002_144424_501395_41A2CAD4 
-X-CRM114-Status: GOOD (  31.99  )
+X-CRM114-CacheID: sfid-20251002_145648_139021_B769DD2E 
+X-CRM114-Status: GOOD (  23.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,148 +85,59 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Quoting Stefan Klug (2025-09-22 19:19:57)
-> On the rkisp1 (in my case on a NXP i.MX8 M Plus) the ISP interrupt
-> handler is sometimes called with RKISP1_CIF_ISP_V_START (start of frame)
-> and RKISP1_CIF_ISP_FRAME (end of frame) being set at the same time. In
-> commit 8524fa22fd2f ("media: staging: rkisp1: isp: add a warning and
-> debugfs var for irq delay") a warning was added for that. There are two
-> cases where this condition can occur:
+On 10/2/25 11:52 PM, Laurent Pinchart wrote:
+> Hi Cristian,
 > 
-> 1. The v-sync and the frame-end belong to the same frame. This means,
->    the irq was heavily delayed and the warning is likely appropriate.
+> On Thu, Oct 02, 2025 at 10:24:59PM +0300, Cristian Ciocaltea wrote:
+>> On 10/2/25 6:47 AM, Laurent Pinchart wrote:
+>>> Hello,
+>>>
+>>> This patch series adds a device tree for the Orange Pi CM5 Base board
+>>> from Xunlong. This is a combination of a compute module and a carrier
+>>> board, so the device tree is split in two files.
+>>>
+>>> The work is based on a combination of upstream device trees for other
+>>> RK3588-based Orange Pi boards and the downstream device tree, all
+>>> checked against the available schematics for the carrier board. The
+>>> compute module schematics is unfortunately not available.
+>>>
+>>> The series starts by adding a new compatible for the board to
+>>> arm/rockchip.yaml. The next patch documents a missing property in the
+>>> rk3588-dw-hdmi-qp bindings that the device tree needs. Finally, the last
+>>> patch adds the device tree.
+>>>
+>>> Patch 2/3 may be slightly controversial as the new DT property could be
+>>> better named. 
+>>
+>> Indeed :-). As a matter of fact I've already planned to introduce it as
+>> "tmds-enable-gpios" [1], during my recent FRL related work.
+>>
+>>> It has been supported in the driver for a year now, so
+>>> there could be users in the wild. I have therefore decided to keep the
+>>> current name. I am open to alternative solutions.
+>>
+>> As mentioned in [2], this was "inherited" from downstream and hasn't been
+>> really in use so far.  I intended to do some more testing before attempting
+>> to send those patches upstream, as for now I couldn't notice any (obvious)
+>> change in behavior when switching between TMDS and FRL, with or without
+>> making use of it in DT.
 > 
-> 2. The v-sync belongs to the next frame. This can happen if the vertical
->    blanking between two frames is very short.
-> 
-> The current code always handles case 1 although case 2 is in my
-> experience the more common case and happens in regular usage. This leads
-> to incorrect sequence numbers on stats and params buffers which in turn
-> breaks the regulation in user space. Fix that by adding a frame_active
-> flag to distinguish between these cases and handle the start of frame
-> either at the beginning or at the end of the rkisp1_isp_isr().
-> 
-> Signed-off-by: Stefan Klug <stefan.klug@ideasonboard.com>
-> Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> Thanks for the links. The new property name is better. We may need to
+> preserve backward compatibility though, how confident are you that the
+> enabled-gpios property isn't used in the wild ?
 
-Ooops I replied to a previous version. Isn't email review fun.
+I think we should be fine, also considering this doesn't seem to have a
+negative impact on the functionality provided so far.
 
-Reviewed-by: Kieran Bingham <kieran.bingham@ideasonboard.com>
+> I'd like to get the device tree for the Orange Pi CM5 merged sooner than
+> later. Would you post those two patches, or should I take them in the v2
+> of my series ?
 
-> 
-> ---
-> 
-> Hi all,
-> 
-> Here is an updated version of the patch with a fix for a typo that was
-> spotted in the last review.
-> 
-> Changes in v3:
-> - Fixed typo in comment
-> - Collected r-by tag
-> 
-> Changes in v2:
-> - Removed test for !frame_active in second v_start handler
-> - Improved comments
-> 
-> Best regards,
-> Stefan
-> 
-> ---
->  .../platform/rockchip/rkisp1/rkisp1-common.h  |  1 +
->  .../platform/rockchip/rkisp1/rkisp1-isp.c     | 27 +++++++++++++++----
->  2 files changed, 23 insertions(+), 5 deletions(-)
-> 
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> index ca952fd0829b..adf23416de9a 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> @@ -222,6 +222,7 @@ struct rkisp1_isp {
->         struct media_pad pads[RKISP1_ISP_PAD_MAX];
->         const struct rkisp1_mbus_info *sink_fmt;
->         __u32 frame_sequence;
-> +       bool frame_active;
->  };
->  
->  /*
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-> index 8c29a1c9309a..660c1fd7efcc 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-> @@ -965,6 +965,7 @@ static int rkisp1_isp_s_stream(struct v4l2_subdev *sd, int enable)
->         }
->  
->         isp->frame_sequence = -1;
-> +       isp->frame_active = false;
->  
->         sd_state = v4l2_subdev_lock_and_get_active_state(sd);
->  
-> @@ -1086,12 +1087,15 @@ void rkisp1_isp_unregister(struct rkisp1_device *rkisp1)
->   * Interrupt handlers
->   */
->  
-> -static void rkisp1_isp_queue_event_sof(struct rkisp1_isp *isp)
-> +static void rkisp1_isp_sof(struct rkisp1_isp *isp)
->  {
->         struct v4l2_event event = {
->                 .type = V4L2_EVENT_FRAME_SYNC,
->         };
->  
-> +       isp->frame_sequence++;
-> +       isp->frame_active = true;
-> +
->         event.u.frame_sync.frame_sequence = isp->frame_sequence;
->         v4l2_event_queue(isp->sd.devnode, &event);
->  }
-> @@ -1111,15 +1115,20 @@ irqreturn_t rkisp1_isp_isr(int irq, void *ctx)
->  
->         rkisp1_write(rkisp1, RKISP1_CIF_ISP_ICR, status);
->  
-> -       /* Vertical sync signal, starting generating new frame */
-> -       if (status & RKISP1_CIF_ISP_V_START) {
-> -               rkisp1->isp.frame_sequence++;
-> -               rkisp1_isp_queue_event_sof(&rkisp1->isp);
-> +       /*
-> +        * Vertical sync signal, starting new frame. Defer handling of vsync
-> +        * after RKISP1_CIF_ISP_FRAME if the previous frame was not completed
-> +        * yet.
-> +        */
-> +       if (status & RKISP1_CIF_ISP_V_START && !rkisp1->isp.frame_active) {
-> +               status &= ~RKISP1_CIF_ISP_V_START;
-> +               rkisp1_isp_sof(&rkisp1->isp);
->                 if (status & RKISP1_CIF_ISP_FRAME) {
->                         WARN_ONCE(1, "irq delay is too long, buffers might not be in sync\n");
->                         rkisp1->debug.irq_delay++;
->                 }
->         }
-> +
->         if (status & RKISP1_CIF_ISP_PIC_SIZE_ERROR) {
->                 /* Clear pic_size_error */
->                 isp_err = rkisp1_read(rkisp1, RKISP1_CIF_ISP_ERR);
-> @@ -1138,6 +1147,7 @@ irqreturn_t rkisp1_isp_isr(int irq, void *ctx)
->         if (status & RKISP1_CIF_ISP_FRAME) {
->                 u32 isp_ris;
->  
-> +               rkisp1->isp.frame_active = false;
->                 rkisp1->debug.complete_frames++;
->  
->                 /* New frame from the sensor received */
-> @@ -1152,5 +1162,12 @@ irqreturn_t rkisp1_isp_isr(int irq, void *ctx)
->                 rkisp1_params_isr(rkisp1);
->         }
->  
-> +       /*
-> +        * Deferred handling of vsync if RKISP1_CIF_ISP_V_START and
-> +        * RKISP1_CIF_ISP_FRAME occurred in the same irq.
-> +        */
-> +       if (status & RKISP1_CIF_ISP_V_START)
-> +               rkisp1_isp_sof(&rkisp1->isp);
-> +
->         return IRQ_HANDLED;
->  }
-> -- 
-> 2.48.1
->
+Sure, feel free to take them if you wish to speed things up a bit.
+
+>> [1] https://gitlab.collabora.com/hardware-enablement/rockchip-3588/linux/-/commit/5a32a84ee3e801daaeb974f967f6e213983feeb4
+>> [2] https://gitlab.collabora.com/hardware-enablement/rockchip-3588/linux/-/commit/df4d94fdb94463dd4175338bf7044b40c5e559e4
+
 
 _______________________________________________
 Linux-rockchip mailing list
