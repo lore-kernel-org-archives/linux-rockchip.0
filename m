@@ -4,150 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C60FCAC5B0
-	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Oct 2025 15:55:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B228CAC5B0
+	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Oct 2025 17:18:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NglP8hJgINhUvBGAOk9GzD5uqYZ+e0yviSBxM4PXj+k=; b=dgEMyb/tehXXAI
-	WwIHUEx4Gm24kOs82rM2pjBTQjub6ZRtI/3vTAQ0xEehQiGFtbeV5jAKAyI55AldlXrgpmkieM7SJ
-	hG27ZZtdVGqQPR3WLu8XeKbTE8PchP555sk0awKAUzc0CWSfmNxJF/x+cun4yQeM/0ZXha2v5wyMO
-	yJ0k7PkMBlpiaUWGIiwJ9ZjfBFFu7FciPNRYZAeNwGC8+/sHctzVETpLRnBSzCnFglAQ1wqFh/kp6
-	BhxXFR6+/Z/h+7uKHZXcoejzUJYrGQd8XZWkuwugbn+wq7qiYrl06cIHh+0sRJBhhXA/4GyhksRGl
-	rEMcV9s2PdL3e0SXIkBg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+WPDZkyq9VGoHJPkAnKm2+BVN0ZwilV7fosqwwBxpKo=; b=h/eGfL6EwMCNjt0k7UAaZa/zEe
+	6YxZENa9kTXMKD/VlULL52D0qj/qEy8K+L5olNrhML3fQNyTtb4ZW7tnXVp+ZPzDqxoAvCjoYc+Wt
+	a3h0E6aGEsKGX2YVRHEGidw48CSv4juLWf8GKRJqcpgOMzwlERjGowb0H4sHK/jQuGGkSYGkRF0tb
+	dcOVcuaBjE6i7AKJE3onTZlYqhGR3B9FXZBTPLLSvsfWPTxhhPrlfK+nh5aOmUjoplKik8dOPUNiE
+	HkJE20+MupSIMnfbyChuUn7OKd4NUAOplwOgrZ2I6RgFj3UDgpjltqm5T3gai39awCbjnmC9wBYPW
+	ykc8O/Zw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v4i7T-0000000CgeT-27he;
-	Fri, 03 Oct 2025 15:54:55 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1v4jQ3-0000000Cofl-3SRB;
+	Fri, 03 Oct 2025 17:18:11 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v4i7Q-0000000CgdD-3qKl
+	id 1v4jQ0-0000000CofL-3jIm
 	for linux-rockchip@lists.infradead.org;
-	Fri, 03 Oct 2025 15:54:54 +0000
-Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 593CFnAh013731
-	for <linux-rockchip@lists.infradead.org>; Fri, 3 Oct 2025 15:54:52 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-type:date:from:in-reply-to:message-id:mime-version
-	:references:subject:to; s=qcppdkim1; bh=6KNmotElFnlaj5LbQkx7LCcL
-	T9YxgWwze47fan2qU6Q=; b=grXP93xpW11dgCxLDjmOijvaojGVu4+ZO8kDr2ZY
-	nb2dn3STWacTJtk+Gi9BWRUs924uCERadwCWr1SqBmsi0Eod9GIK8BFOBnYvBBjp
-	Z55aQJ5qhK//20XenVldygejYoe8MLTU6WvmulnjqLR3lxoFAfwivMwxZn6XCr1b
-	alWKkUGi9QeCbP1EjXZPRql8diuj16SIGnQuEuRKSwvtOvvKnMA6PyAPyvtOPeTr
-	ZZRcJCJE0WiKXNHEYcU6kgYTbYXfsek9qd/A2f58OPvESW2uXO5Y6FbRt/i0cDCB
-	JOPe1mOJvFKdDTemm7z/Aa3kc2DpdpgvIY6KgvyyySPjrA==
-Received: from mail-qt1-f197.google.com (mail-qt1-f197.google.com [209.85.160.197])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 49jeb7ggx2-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
-	for <linux-rockchip@lists.infradead.org>; Fri, 03 Oct 2025 15:54:52 +0000 (GMT)
-Received: by mail-qt1-f197.google.com with SMTP id d75a77b69052e-4e002f413e4so26227901cf.2
-        for <linux-rockchip@lists.infradead.org>; Fri, 03 Oct 2025 08:54:52 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1759506891; x=1760111691;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=6KNmotElFnlaj5LbQkx7LCcLT9YxgWwze47fan2qU6Q=;
-        b=h32eCwIvW+jeYM62cdhySQIJdf8lPS0GDnr4/2y9a2+T1YOEtoFOMO2z1HCzr8Y7dX
-         z74ajfCso5k8nJuu3aMHtYoR7svF545Loi9MTRLQWg9l86SrbnRYt2dVQxYb2LR2+Uvq
-         vpr9oud4QwkP1wsvRRBKI/8SlYdHXtk1oW6XxlCuhZdWjjF0Z6rJ+zwfUjJ4dvc6XavI
-         Sfkr832dIJf4Zjf413Iv9Z2siAi9rJaSEaHOOtDbjaQnsMzp2p3ZjF0yYVNNOyxMyYpi
-         O2za7RrrGRB8ciFk8l2a7KBukE06Abc2riMyRzzq/NCD8XPUBSG1PdYPcdWII0LdYpI5
-         HTzQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXGuEoG/o7LPIlDqWdnHLJ2CbouRgBaQp4+X7MjUd5aXaFwnacKydB37DvS2zTdo3HEp1HhiZvVGLBwV2QjuA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzbI4Cw0sejCF8jv2kMJVJv+pCicw690j3lfh0bZ5mvDoJBErNd
-	Ijjxg1KNaJyvC5xaGgj1MYY79meNFOA9gA4FLH2HkOqTRXhN0Ru9vVn+7iEud19Buy7swcyKA6o
-	qpK3MXAmjkDW+yTlt9foAWbOyet8qzvEca4DFCYvsCsL/Z8ZPcE71ewfopMSna7wAh6d6hyUXjc
-	o=
-X-Gm-Gg: ASbGnctDv1WiuSMZTu/HtX5UwHdI3rywDS4GftdjeI8C82kgX+132kk5k4A+jHsupI7
-	PZ6lXtoPrxyYw6MjPevsFSez/NmpLhk0qV+4SohtFz8YQI2ESqiV0dqYYkhuSvY22wLPZR8MGEw
-	os34GBBUXS9Gsla8l6mnLlJX6dIy2560HLut/IY3cQbK5uYbmDBueRVtSAqeWosCryYavIuFRE+
-	gchEB/KbioUV0+JujHWBM76K/MDXPAvncBAH8iWtOwoQ7EII//sWwveKTdcZmoSMtdXq+LduAeV
-	2EB0zjSHBl87IFCE8bYPNiHWAEDi+/gH9zsxly6uv2VHKe/tI+2E24ozbmZMJkZSCwuhG+jUn4g
-	yZJdHRrCEsWL9APEFhXklfgPLctaasizR83iLXkB0DZ3IKbVGvDC7U1rwvA==
-X-Received: by 2002:a05:622a:4890:b0:4e5:c50:54ba with SMTP id d75a77b69052e-4e576ad9fb2mr46550221cf.48.1759506890846;
-        Fri, 03 Oct 2025 08:54:50 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IE1CNpaMEs7/vWvVTmbmetBw7TGt0gaQ/lM1VTgpEfmE9UVsvdaYYBah1HSlhK4uFyguS43LA==
-X-Received: by 2002:a05:622a:4890:b0:4e5:c50:54ba with SMTP id d75a77b69052e-4e576ad9fb2mr46549581cf.48.1759506890193;
-        Fri, 03 Oct 2025 08:54:50 -0700 (PDT)
-Received: from umbar.lan (2001-14ba-a0c3-3a00-264b-feff-fe8b-be8a.rev.dnainternet.fi. [2001:14ba:a0c3:3a00:264b:feff:fe8b:be8a])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-58b0113f1b4sm1955473e87.47.2025.10.03.08.54.48
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 03 Oct 2025 08:54:49 -0700 (PDT)
-Date: Fri, 3 Oct 2025 18:54:47 +0300
-From: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-To: Maxime Ripard <mripard@kernel.org>
-Cc: Daniel Stone <daniel@fooishbar.org>,
-        Andrzej Hajda <andrzej.hajda@intel.com>,
-        Neil Armstrong <neil.armstrong@linaro.org>,
-        Robert Foss <rfoss@kernel.org>,
-        Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-        Jonas Karlman <jonas@kwiboo.se>,
-        Jernej Skrabec <jernej.skrabec@gmail.com>,
-        Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-        Thomas Zimmermann <tzimmermann@suse.de>,
-        David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-        Sandy Huang <hjc@rock-chips.com>,
-        Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>,
-        Andy Yan <andy.yan@rock-chips.com>, Chen-Yu Tsai <wens@csie.org>,
-        Samuel Holland <samuel@sholland.org>,
-        Dave Stevenson <dave.stevenson@raspberrypi.com>,
-        =?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>,
-        Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
-        Liu Ying <victor.liu@nxp.com>,
-        Rob Clark <robin.clark@oss.qualcomm.com>,
-        Dmitry Baryshkov <lumag@kernel.org>,
-        Abhinav Kumar <abhinav.kumar@linux.dev>,
-        Jessica Zhang <jessica.zhang@oss.qualcomm.com>,
-        Sean Paul <sean@poorly.run>,
-        Marijn Suijten <marijn.suijten@somainline.org>,
-        dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
-        linux-arm-kernel@lists.infradead.org,
-        linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev,
-        linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org
-Subject: Re: [PATCH v3 00/11] drm/connector: hdmi: limit infoframes per
- driver capabilities
-Message-ID: <zpygq4kapil3swsmhhqkdwny4ry2dznnzixsw5rkza5p2kqnvp@abvf2vxlbwif>
-References: <voknqdv3zte2jzue5yxmysdiixxkogvpblvrccp5gu55x5ycca@srrcscly4ch4>
- <st6wob5hden6ypxt2emzokfhl3ezpbuypv2kdtf5zdrdhlyjfw@l2neflb4uupo>
- <pe6g2fanw65p67kfy5blbtiytngxmr6nkbazymojs4a66yvpl3@7j4ccnsvc6az>
- <20250910-didactic-honored-chachalaca-f233b2@houat>
- <x562ueky2z5deqqmhl222moyrbylfwi35u4hb34dpl3z52ra4c@dyw4iayrewnz>
- <20250925-fervent-merry-beagle-2baba3@penduick>
- <qx5ashx62pufott6hnsfna3qntnoyvxwxze4rihhuxcsdxi37s@bbdvc3sfsgne>
- <20250929-gregarious-worm-of-memory-c5354d@houat>
- <itgffxygopi7etkt7xhvmyuvyl5ad3k43nsxvjzw3ubtwiikn7@ocugfdaigtu7>
- <20251003-uptight-echidna-of-stamina-815305@houat>
+	Fri, 03 Oct 2025 17:18:10 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1759511871; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=TnERqNCTy/54XPivpX1/MlX1/RgWkwvCDol/EMkcbrSBf4tf7B4ISjWGcmGliEUxZjfi207TGWDA2mmSrPXhejb4JOo3qk16m5H311r5ACv+J+JGSnIp3IR8eq46dD8bMoJC5kOoNgq5ZLp0jqnNUrKoZ0CaAxO9wUYrMMDDywo=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1759511871; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=iTtxPATi9X+XvuAEmT4uh9oE4J1XaPTtXNeO2l6zmTk=; 
+	b=nh0o74xoKD5iq1r7PHSpJDKS2V7KfUhAqKrDl64Mq8JgLTMa1tO3MS/8KFi+pobYvzLlTFJAr2wv10ODVaK7ghPTdE8+TPJ0fVbhOvgDavHx5x1wJ7xNB6kxLVaolwnZ40E/PWMhaLALjjV1cuKBeGndF18dWEueZAgHn5mKsXs=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1759511871;
+	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
+	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
+	bh=iTtxPATi9X+XvuAEmT4uh9oE4J1XaPTtXNeO2l6zmTk=;
+	b=a97iW0EtYorh7sTweebXdr8abJ84fFCEKrgWVsvyY4v9UDvmft93auNR7IfxK3Uz
+	NnJiQfmFHM5AzH7xh4byMZpMk0VELgMniAL/OPWD+kK69tDLUBl+cmlgS9DtA0sOdJs
+	nIUingt5sOG19xNetBkX6gL21D+Enf+00uIMO1gg=
+Received: by mx.zohomail.com with SMTPS id 1759511869830463.50099136809615;
+	Fri, 3 Oct 2025 10:17:49 -0700 (PDT)
+Received: by venus (Postfix, from userid 1000)
+	id 366A8181992; Fri, 03 Oct 2025 19:17:46 +0200 (CEST)
+Date: Fri, 3 Oct 2025 19:17:46 +0200
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Ming Lei <ming.lei@redhat.com>
+Cc: Jens Axboe <axboe@kernel.dk>, linux-block@vger.kernel.org, 
+	Hannes Reinecke <hare@suse.de>, Yu Kuai <yukuai3@huawei.com>, kernel@collabora.com, 
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH V2 5/5] blk-mq: Replace tags->lock with SRCU for tag
+ iterators - Rockchip UFS regression
+Message-ID: <pnezafputodmqlpumwfbn644ohjybouveehcjhz2hmhtcf2rka@sdhoiivync4y>
+References: <20250830021825.2859325-1-ming.lei@redhat.com>
+ <20250830021825.2859325-6-ming.lei@redhat.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20251003-uptight-echidna-of-stamina-815305@houat>
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMDAzMDA5OSBTYWx0ZWRfX828d1Q2HpIIa
- 168sESzTVErDbgT26abhp1epmtommB6sVkILMhd3N3WEgHMAjuXhAoaiCO5vvEi42RNGXyfe2Z/
- gU6qj6WSxZ32it9/suIuJp9Nq1ppNM6KB6zqO14xeVi5CDeXq2oxkmHXHjkY2YbPhFUtiJRsShr
- fMKDdK5l7lJXAl7m94K/ajtJVCfSM0yInJz1xjixDdmNnT6wNBHDa9uPWQTVYavipB7y1a1YmxG
- LCDnd48dJSCcOFuKQZWZAlzOLwNv7meozMjU+s37ojnKZIoS+vLZoUKEeHJ9V/X1ZKszC+bUcKc
- S8mLund9z21W5pKJd3/NjBhg0Jc/WBqopQFOXNkpr2r6iRiMcbdC9fvvqrnhscnXksA5yLbHyjk
- eCXcSOsXOQ+NQNMJ3c5UuxLBOiOieA==
-X-Proofpoint-GUID: 4EZShPCfFZUFqG5-ieCAa-pzvbsx40OZ
-X-Proofpoint-ORIG-GUID: 4EZShPCfFZUFqG5-ieCAa-pzvbsx40OZ
-X-Authority-Analysis: v=2.4 cv=YrwChoYX c=1 sm=1 tr=0 ts=68dff1cc cx=c_pps
- a=EVbN6Ke/fEF3bsl7X48z0g==:117 a=xqWC_Br6kY4A:10 a=kj9zAlcOel0A:10
- a=x6icFKpwvdMA:10 a=VwQbUJbxAAAA:8 a=EUspDBNiAAAA:8 a=jTLGwdB_erlPdahj2OIA:9
- a=CjuIK1q_8ugA:10 a=a_PwQJl-kcHnX1M80qC6:22
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1117,Hydra:6.1.9,FMLib:17.12.80.40
- definitions=2025-10-03_05,2025-10-02_03,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- malwarescore=0 impostorscore=0 phishscore=0 clxscore=1015 priorityscore=1501
- bulkscore=0 lowpriorityscore=0 spamscore=0 adultscore=0 suspectscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.19.0-2509150000 definitions=main-2510030099
+In-Reply-To: <20250830021825.2859325-6-ming.lei@redhat.com>
+X-Zoho-Virus-Status: 1
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-1.4.3/259.478.93
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251003_085452_961862_9A19B9F1 
-X-CRM114-Status: GOOD (  70.89  )
+X-CRM114-CacheID: sfid-20251003_101808_993146_E4BF4D0F 
+X-CRM114-Status: GOOD (  15.80  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -159,191 +80,144 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============0523566104775476530=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Oct 03, 2025 at 03:22:23PM +0200, Maxime Ripard wrote:
-> On Tue, Sep 30, 2025 at 10:02:28AM +0300, Dmitry Baryshkov wrote:
-> > On Mon, Sep 29, 2025 at 03:00:04PM +0200, Maxime Ripard wrote:
-> > > On Thu, Sep 25, 2025 at 05:16:07PM +0300, Dmitry Baryshkov wrote:
-> > > > On Thu, Sep 25, 2025 at 03:13:47PM +0200, Maxime Ripard wrote:
-> > > > > On Wed, Sep 10, 2025 at 06:26:56PM +0300, Dmitry Baryshkov wrote:
-> > > > > > On Wed, Sep 10, 2025 at 09:30:19AM +0200, Maxime Ripard wrote:
-> > > > > > > On Wed, Sep 03, 2025 at 03:03:43AM +0300, Dmitry Baryshkov wrote:
-> > > > > > > > On Tue, Sep 02, 2025 at 08:06:54PM +0200, Maxime Ripard wrote:
-> > > > > > > > > On Tue, Sep 02, 2025 at 06:45:44AM +0300, Dmitry Baryshkov wrote:
-> > > > > > > > > > On Mon, Sep 01, 2025 at 09:07:02AM +0200, Maxime Ripard wrote:
-> > > > > > > > > > > On Sun, Aug 31, 2025 at 01:29:13AM +0300, Dmitry Baryshkov wrote:
-> > > > > > > > > > > > On Sat, Aug 30, 2025 at 09:30:01AM +0200, Daniel Stone wrote:
-> > > > > > > > > > > > > Hi Dmitry,
-> > > > > > > > > > > > > 
-> > > > > > > > > > > > > On Sat, 30 Aug 2025 at 02:23, Dmitry Baryshkov
-> > > > > > > > > > > > > <dmitry.baryshkov@oss.qualcomm.com> wrote:
-> > > > > > > > > > > > > > It's not uncommon for the particular device to support only a subset of
-> > > > > > > > > > > > > > HDMI InfoFrames. It's not a big problem for the kernel, since we adopted
-> > > > > > > > > > > > > > a model of ignoring the unsupported Infoframes, but it's a bigger
-> > > > > > > > > > > > > > problem for the userspace: we end up having files in debugfs which do
-> > > > > > > > > > > > > > mot match what is being sent on the wire.
-> > > > > > > > > > > > > >
-> > > > > > > > > > > > > > Sort that out, making sure that all interfaces are consistent.
-> > > > > > > > > > > > > 
-> > > > > > > > > > > > > Thanks for the series, it's a really good cleanup.
-> > > > > > > > > > > > > 
-> > > > > > > > > > > > > I know that dw-hdmi-qp can support _any_ infoframe, by manually
-> > > > > > > > > > > > > packing it into the two GHDMI banks. So the supported set there is
-> > > > > > > > > > > > > 'all of the currently well-known ones, plus any two others, but only
-> > > > > > > > > > > > > two and not more'. I wonder if that has any effect on the interface
-> > > > > > > > > > > > > you were thinking about for userspace?
-> > > > > > > > > > > > 
-> > > > > > > > > > > > I was mostly concerned with the existing debugfs interface (as it is
-> > > > > > > > > > > > also used e.g. for edid-decode, etc).
-> > > > > > > > > > > > 
-> > > > > > > > > > > > It seems "everything + 2 spare" is more or less common (ADV7511, MSM
-> > > > > > > > > > > > HDMI also have those. I don't have at hand the proper datasheet for
-> > > > > > > > > > > > LT9611 (non-UXC one), but I think its InfoFrames are also more or less
-> > > > > > > > > > > > generic).  Maybe we should change debugfs integration to register the
-> > > > > > > > > > > > file when the frame is being enabled and removing it when it gets unset.
-> > > > > > > > > > > 
-> > > > > > > > > > > But, like, for what benefit?
-> > > > > > > > > > > 
-> > > > > > > > > > > It's a debugfs interface for userspace to consume. The current setup
-> > > > > > > > > > > works fine with edid-decode already. Why should we complicate the design
-> > > > > > > > > > > that much and create fun races like "I'm running edid-decode in parallel
-> > > > > > > > > > > to a modeset that would remove the file I just opened, what is the file
-> > > > > > > > > > > now?".
-> > > > > > > > > > 
-> > > > > > > > > > Aren't we trading that with the 'I'm running edid-decode in paralle with
-> > > > > > > > > > to a modeset and the file suddenly becomes empty'?
-> > > > > > > > > 
-> > > > > > > > > In that case, you know what the file is going to be: empty. And you went
-> > > > > > > > > from a racy, straightforward, design to a racy, complicated, design.
-> > > > > > > > > 
-> > > > > > > > > It was my question before, but I still don't really see what benefits it
-> > > > > > > > > would have, and why we need to care about it in the core, when it could
-> > > > > > > > > be dealt with in the drivers just fine on a case by case basis.
-> > > > > > > > 
-> > > > > > > > Actually it can not: debugfs files are registered from the core, not
-> > > > > > > > from the drivers. That's why I needed all the supported_infoframes
-> > > > > > > > (which later became software_infoframes).
-> > > > > > > 
-> > > > > > > That's one thing we can change then.
-> > > > > > > 
-> > > > > > > > Anyway, I'm fine with having empty files there.
-> > > > > > > > 
-> > > > > > > > > > > > Then in the long run we can add 'slots' and allocate some of the frames
-> > > > > > > > > > > > to the slots. E.g. ADV7511 would get 'software AVI', 'software SPD',
-> > > > > > > > > > > > 'auto AUDIO' + 2 generic slots (and MPEG InfoFrame which can probably be
-> > > > > > > > > > > > salvaged as another generic one)). MSM HDMI would get 'software AVI',
-> > > > > > > > > > > > 'software AUDIO' + 2 generic slots (+MPEG + obsucre HDMI which I don't
-> > > > > > > > > > > > want to use). Then the framework might be able to prioritize whether to
-> > > > > > > > > > > > use generic slots for important data (as DRM HDR, HDMI) or less important
-> > > > > > > > > > > > (SPD).
-> > > > > > > > > > > 
-> > > > > > > > > > > Why is it something for the framework to deal with? If you want to have
-> > > > > > > > > > > extra infoframes in there, just go ahead and create additional debugfs
-> > > > > > > > > > > files in your driver.
-> > > > > > > > > > > 
-> > > > > > > > > > > If you want to have the slot mechanism, check in your atomic_check that
-> > > > > > > > > > > only $NUM_SLOT at most infoframes are set.
-> > > > > > > > > > 
-> > > > > > > > > > The driver can only decide that 'we have VSI, SPD and DRM InfoFrames
-> > > > > > > > > > which is -ETOOMUCH for 2 generic slots'. The framework should be able to
-> > > > > > > > > > decide 'the device has 2 generic slots, we have HDR data, use VSI and
-> > > > > > > > > > DRM InfoFrames and disable SPD for now'.
-> > > > > > > > > 
-> > > > > > > > > I mean... the spec does? The spec says when a particular feature
-> > > > > > > > > requires to send a particular infoframe. If your device cannot support
-> > > > > > > > > to have more than two "features" enabled at the same time, so be it. It
-> > > > > > > > > something that should be checked in that driver atomic_check.
-> > > > > > > > 
-> > > > > > > > Sounds good to me. Let's have those checks in the drivers until we
-> > > > > > > > actually have seveal drivers performing generic frame allocation.
-> > > > > > > > 
-> > > > > > > > > Or just don't register the SPD debugfs file, ignore it, put a comment
-> > > > > > > > > there, and we're done too.
-> > > > > > > > 
-> > > > > > > > It's generic code.
-> > > > > > > > 
-> > > > > > > > > > But... We are not there yet and I don't have clear usecase (we support
-> > > > > > > > > > HDR neither on ADV7511 nor on MSM HDMI, after carefully reading the
-> > > > > > > > > > guide I realised that ADV7511 has normal audio infoframes). Maybe I
-> > > > > > > > > > should drop all the 'auto' features, simplifying this series and land
-> > > > > > > > > > [1] for LT9611UXC as I wanted origianlly.
-> > > > > > > > > > 
-> > > > > > > > > > [1] https://lore.kernel.org/dri-devel/20250803-lt9611uxc-hdmi-v1-2-cb9ce1793acf@oss.qualcomm.com/
-> > > > > > > > > 
-> > > > > > > > > Looking back at that series, I think it still has value to rely on the
-> > > > > > > > > HDMI infrastructure at the very least for the atomic_check sanitization.
-> > > > > > > > > 
-> > > > > > > > > But since you wouldn't use the generated infoframes, just skip the
-> > > > > > > > > debugfs files registration. You're not lying to userspace anymore, and
-> > > > > > > > > you get the benefits of the HDMI framework.
-> > > > > > > > 
-> > > > > > > > We create all infoframe files for all HDMI connectors.
-> > > > > > > 
-> > > > > > > Then we can provide a debugfs_init helper to register all of them, or
-> > > > > > > only some of them, and let the drivers figure it out.
-> > > > > > > 
-> > > > > > > Worst case scenario, debugfs files will not get created, which is a much
-> > > > > > > better outcome than having to put boilerplate in every driver that will
-> > > > > > > get inconsistent over time.
-> > > > > > 
-> > > > > > debugfs_init() for each infoframe or taking some kind of bitmask?
-> > > > > 
-> > > > > I meant turning hdmi_debugfs_add and create_hdmi_*_infoframe_file into
-> > > > > public helpers. That way, drivers that don't care can use the (renamed)
-> > > > > hdmi_debugfs_add, and drivers with different constraints can register
-> > > > > the relevant infoframes directly.
-> > > > 
-> > > > Doesn't that mean more boilerplate?
-> > > 
-> > > I don't think it would? In the general case, it wouldn't change
-> > > anything, and in special cases, then it's probably going to be different
-> > > from one driver to the next so there's not much we can do.
-> > > 
-> > > > In the end, LT9611UXC is a special case, for which I'm totally fine
-> > > > not to use HDMI helpers at this point: we don't control infoframes
-> > > > (hopefully that can change), we don't care about the TMDS clock, no
-> > > > CEC, etc.
-> > > 
-> > > Not using the helpers sound pretty reasonable here too.
-> > > 
-> > > > For all other usecases I'm fine with having atomic_check() unset all
-> > > > unsupported infoframes and having empty files in debugfs. Then we can
-> > > > evolve over the time, once we see a pattern. We had several drivers
-> > > > which had very limited infoframes support, but I think this now gets
-> > > > sorted over the time.
-> > > 
-> > > I never talked about atomic_check()? You were initially concerned that
-> > > the framework would expose data in debugfs that it's not using. Not
-> > > registering anything in debugfs solves that, but I'm not sure we need to
-> > > special case atomic_check.
-> > 
-> > Well... I ended up with [1], handling infoframes in the atomic_check()
-> > rather than registering fewer infoframe debugfs files. This way device
-> > state is consistent, we don't have enabled instances, etc. However it
-> > results in repetetive code in atomic_check().
-> > 
-> > [1] https://lore.kernel.org/dri-devel/20250928-limit-infoframes-2-v2-0-6f8f5fd04214@oss.qualcomm.com/
-> 
-> I guess we can continue the discussion there, but I'm not sure we want
-> to have more boilerplate in drivers, and especially in the atomic_check
-> part. If drivers are inconsistent or wrong in the debugfs path, there's
-> no major issue. If they are wrong in the atomic_check path, it will lead
-> to regressions, possibly in paths that are pretty hard to test.
 
-You've responded there and I can drop the extra handling for HDR DRM and
-audio infoframes in the atomic_check(). What is your opinion about the
-atomic_check() unsetting the infoframe->set for SPD and HDMI infoframes?
+--===============0523566104775476530==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="2wwem7qjsaiw637q"
+Content-Disposition: inline
 
 
--- 
-With best wishes
-Dmitry
+--2wwem7qjsaiw637q
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH V2 5/5] blk-mq: Replace tags->lock with SRCU for tag
+ iterators - Rockchip UFS regression
+MIME-Version: 1.0
+
+Hi,
+
+On Sat, Aug 30, 2025 at 10:18:23AM +0800, Ming Lei wrote:
+> Replace the spinlock in blk_mq_find_and_get_req() with an SRCU read lock
+> around the tag iterators.
+>=20
+> This is done by:
+>=20
+> - Holding the SRCU read lock in blk_mq_queue_tag_busy_iter(),
+> blk_mq_tagset_busy_iter(), and blk_mq_hctx_has_requests().
+>=20
+> - Removing the now-redundant tags->lock from blk_mq_find_and_get_req().
+>=20
+> This change fixes lockup issue in scsi_host_busy() in case of shost->host=
+_blocked.
+>=20
+> Also avoids big tags->lock when reading disk sysfs attribute `inflight`.
+>=20
+> Reviewed-by: Hannes Reinecke <hare@suse.de>
+> Signed-off-by: Ming Lei <ming.lei@redhat.com>
+> ---
+
+This patch landed in the last few hours and I now see the following
+fatal error on the Radxa ROCK 4D (most likely Rockchip UFS in
+general). After reverting this patch the error is gone and things
+are working as expected:
+
+[    2.713204] CPU: 7 UID: 0 PID: 1 Comm: swapper/0 Not tainted 6.17.0-g472=
+ea195cdf3 #1 PREEMPT
+[    2.713956] Hardware name: Radxa ROCK 4D (DT)
+[    2.714342] pstate: 60000005 (nZCv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=
+=3D--)
+[    2.714955] pc : __srcu_read_lock+0x30/0x80
+[    2.715341] lr : blk_mq_tagset_busy_iter+0x44/0x300
+[    2.715779] sp : ffff80008005b8b0
+[    2.716073] x29: ffff80008005b8b0 x28: 0000000000000000 x27: 00000000000=
+00000
+[    2.716711] x26: ffff0000ca718898 x25: ffff0000c1595410 x24: ffff0000ca7=
+180e0
+[    2.717348] x23: ffffa77abec3f8e0 x22: ffffa77abf5dce68 x21: ffff0000c15=
+95410
+[    2.717984] x20: 0000000000000000 x19: 0000000000000000 x18: 00000000000=
+0000a
+[    2.718620] x17: 000000040044ffff x16: 00500074b5503510 x15: 00000000000=
+00000
+[    2.719256] x14: 0000000000000000 x13: 303d657461747320 x12: 74736f48205=
+34655
+[    2.719892] x11: 0000000000000058 x10: 0000000000000018 x9 : ffffa77abf0=
+96cd0
+[    2.720529] x8 : 0000000000057fa8 x7 : 000000000000010a x6 : ffffa77abf0=
+eecd0
+[    2.721165] x5 : 0000000000000000 x4 : 0000000000000001 x3 : ffff58893ef=
+c6000
+[    2.721800] x2 : ffff0000c0268000 x1 : ffff58893efc6000 x0 : ffff0000ca7=
+18188
+[    2.722437] Call trace:
+[    2.722658]  __srcu_read_lock+0x30/0x80 (P)
+[    2.723037]  blk_mq_tagset_busy_iter+0x44/0x300
+[    2.723442]  scsi_host_busy+0x38/0x70
+[    2.723774]  ufshcd_print_host_state+0x34/0x1bc
+[    2.724178]  ufshcd_link_startup.constprop.0+0xe4/0x2e0
+[    2.724644]  ufshcd_init+0x944/0xf80
+[    2.724967]  ufshcd_pltfrm_init+0x504/0x820
+[    2.725344]  ufs_rockchip_probe+0x2c/0x88
+[    2.725706]  platform_probe+0x5c/0xa4
+[    2.726039]  really_probe+0xc0/0x38c
+[    2.726360]  __driver_probe_device+0x7c/0x150
+[    2.726749]  driver_probe_device+0x40/0x120
+[    2.727122]  __driver_attach+0xc8/0x1e0
+[    2.727466]  bus_for_each_dev+0x7c/0xdc
+[    2.727808]  driver_attach+0x24/0x30
+[    2.728128]  bus_add_driver+0x110/0x230
+[    2.728471]  driver_register+0x68/0x130
+[    2.728815]  __platform_driver_register+0x20/0x2c
+[    2.729236]  ufs_rockchip_pltform_init+0x1c/0x28
+[    2.729654]  do_one_initcall+0x60/0x1e0
+[    2.729999]  kernel_init_freeable+0x248/0x2c4
+[    2.730394]  kernel_init+0x20/0x140
+[    2.730712]  ret_from_fork+0x10/0x20
+[    2.731038] Code: d2800024 aa0503e1 d538d083 8b030021 (c85f7c27)
+[    2.731574] ---[ end trace 0000000000000000 ]---
+
+Greetings,
+
+-- Sebastian
+
+--2wwem7qjsaiw637q
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmjgBTUACgkQ2O7X88g7
++pqUGA/+PcQ72uh1GqNF+Bk3QvZxnVVh4F7iuJQm5TgSHYstW3fKOyugprPnZSex
+dF4sOWOGP6VDsaIXx6t8L01oz9pv2GEgxwsWvnsZW5zF8CTY3oYDs4nP9qNMtB1z
+PbscQdNHJluIfzMfB3n4Yjffci8sIi3WbshZXg79BBXmauxVkUtWNpFoZskulIvr
+NAUpAWat2wn0YCXKYZNW73/g011yGlE58F3ayA2YstDBbqUhAWZHFICT2Gugcdo7
+xQLHmt9ahZpusNJ7+ngTIlAITOFdbuz5mMCg9+/Yv2KrX0a4x6NDk+8Ie4Edb5xa
+5stx76S8rkLJtDHSNly+uK9F9xCC6pUNzsV/4TSnBsrdbYySCbyLumvs+08ci8+9
+Hkosc6r6I05gDpkb060XPM6up24snDiCDc0TvCb+PFXKWF5bCDUSDGrX/RpYg5ON
+dbKC9yAABj5Le9ky3hpLhUgWsnhQA4nVIEVuZEvp0rUGi+7D0FGKnKa2E40/l1cG
+VXXRIvJvLCtsdaARSeQtomMk9o395zCX6IRkNKfQmO1ymjq5kKXIqtAKR6OQM1xQ
+AKpk3iTydbU48nVCavssKoEShzeZOmPB6uTxWSK6IJzbetDNG66oEBdcX4yNWt6o
+POdZsTNAAYctjwDRb3evwgzOmHMmT3+3c6VTou9CmT7bppMgZlQ=
+=UztC
+-----END PGP SIGNATURE-----
+
+--2wwem7qjsaiw637q--
+
+
+--===============0523566104775476530==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============0523566104775476530==--
+
