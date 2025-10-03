@@ -4,77 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06251CCA470
-	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Oct 2025 07:35:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD879CCA476
+	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Oct 2025 09:56:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ANGZFzbi5OU4V8Ay0zuLkL1UVa/ulVWDonETVwsZK5Y=; b=UYOigYaj0Z+l2y
-	7krWR4+bFozqrtZCYam9a8eFDvTu18KD8zd2T/KTB3NdwfUD/TNBhcTFaFzWzwLcOWe3jYKaQUZxQ
-	ZFY8HuBaxmfp+vzLTJg7BiyuCucuxZxN3L1Ju8bHkPppFNFkR/96QNHPGwasoqCXtGMpr8iBiIQLK
-	iCH/rrHEnDYQ8eNDmvIWSG/kQF9+jroea+idrzdbyZcenR3JrZAJQ10KsbhqFpDU2G4iB8NRQVj7E
-	ygWPjmywd4jPBnQoz4vn+SszfHWQn91/BFzHJSvxasXp0/uM0oVoq8QjRi0dM8uNE41Ab3dFe8Cz3
-	CqWVq4slTG0QDVyhocyg==;
+	List-Owner; bh=itvozdMBhaJ9JMLR45hbS4tUGvj3Y2W0ZElRNlPybt4=; b=NTeAGMUxRzca3k
+	xfW+/eUHlsyQSbkOc2vqFEtGfG/DmXR0WK4f2nlXnCfLGz//Cg03iPgG5SUaynYQKvl6+momsgsjd
+	8iEpjvlG5pUCkx52gW8q/deEAsrZ/c+1HiHnMYTfifngyCIZ7u2mHqzQpxuoqzz+id+xZHd6jY/tO
+	K8g9dNRk8GOf6nDuQQofD5vclULbCo32vQGAKFP/j0Oa6PKISNF6zhfB+UBc3aN9MAiBYpAoajoZQ
+	BYVrQ0dG9ltKS+fRwa+Rt1zyGjlhhT9V0UlnsaxxzBt82kCwxHXbAVppknHuvoA4mV+ZvPPxflCGs
+	5mpa/GLThWFaIx5s/T/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v4aJq-0000000Bp6K-3ksX;
-	Fri, 03 Oct 2025 07:35:10 +0000
-Received: from smtpout-02.galae.net ([185.246.84.56])
+	id 1v4cWO-0000000BzsI-1urM;
+	Fri, 03 Oct 2025 09:56:16 +0000
+Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v4aJn-0000000Bp4f-3W9r
+	id 1v4cWL-0000000BzrL-3f1G
 	for linux-rockchip@lists.infradead.org;
-	Fri, 03 Oct 2025 07:35:09 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-02.galae.net (Postfix) with ESMTPS id B72491A10C5;
-	Fri,  3 Oct 2025 07:35:02 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 865FF60683;
-	Fri,  3 Oct 2025 07:35:02 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 5B157102F1C25;
-	Fri,  3 Oct 2025 09:34:36 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1759476901; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=DniS63K40mZp/zefKvHAEKMgyEYOkDSoRUV3MskhVNs=;
-	b=UOuzOIjMWBTMrpGD/VHIltalTbABDWzlzm/0eWOj7r4d7cathtY0DLrjIYc2gZmOnWxme2
-	u68J4G+CKIlcGLbDAXifRgxNS2/9+l/ZuO9baNqTeNaLPa6Xb0Q4tQ7RMVEEJmybvzK9DR
-	weJ6wE9ndD7E/6zeWFMVOigjQqZCx9cG6gkt6eh9ziaE6SZ+UNuHEtazk56voORfirupVx
-	4zVOLDxqDX9mhs7kTn4iu3Mly2bdrECTlw3OinNdGmNg2kGi3wz56AuDyih1hktbTkDWpG
-	48ahzOit15uRdHOgWYOWfUsSFhd0yVupBDWZgv5FTrpVvfCnZR6Q3tf9EJfLEw==
-Date: Fri, 3 Oct 2025 09:34:35 +0200
-From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-To: Damon Ding <damon.ding@rock-chips.com>
-Cc: andrzej.hajda@intel.com, neil.armstrong@linaro.org, rfoss@kernel.org,
- Laurent.pinchart@ideasonboard.com, jonas@kwiboo.se,
- jernej.skrabec@gmail.com, maarten.lankhorst@linux.intel.com,
- mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com,
- simona@ffwll.ch, shawnguo@kernel.org, s.hauer@pengutronix.de,
- kernel@pengutronix.de, festevam@gmail.com, inki.dae@samsung.com,
- sw0312.kim@samsung.com, kyungmin.park@samsung.com, krzk@kernel.org,
- alim.akhtar@samsung.com, jingoohan1@gmail.com, p.zabel@pengutronix.de,
- hjc@rock-chips.com, heiko@sntech.de, andy.yan@rock-chips.com,
- dmitry.baryshkov@oss.qualcomm.com, dianders@chromium.org,
- m.szyprowski@samsung.com, jani.nikula@intel.com,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
- linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v6 11/18] drm/display: bridge_connector: Ensure last
- bridge determines EDID/modes detection capabilities
-Message-ID: <20251003093435.415866c7@booty>
-In-Reply-To: <20251001180922.6bbe42ac@booty>
-References: <20250930090920.131094-1-damon.ding@rock-chips.com>
-	<20250930090920.131094-12-damon.ding@rock-chips.com>
-	<20251001180922.6bbe42ac@booty>
-Organization: Bootlin
-X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-redhat-linux-gnu)
+	Fri, 03 Oct 2025 09:56:14 +0000
+Received: by mail-pf1-x42d.google.com with SMTP id d2e1a72fcca58-7811a02316bso1533226b3a.3
+        for <linux-rockchip@lists.infradead.org>; Fri, 03 Oct 2025 02:56:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1759485372; x=1760090172; darn=lists.infradead.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=HjkSzcHQCRHxGjAdHJ76YWjL7H9j4QRw11Hc/S45qjM=;
+        b=bY5fkK2jT6oUBnw681NaqZxjINsxZIQiGl5DHVXyEABFXSZhwR4aNX/EhxrSbDQTGm
+         Quef08MzmLDvTweCnoGzEbObJiGnYFZSSg3GDSPGs0T1vYjV2XHH6U3G8LYEvUheuvWL
+         Eg5MAljYVq5BG37k7opprOcRlKXOn/RRYy6P4ikXIRniAwMwRjGk/QFZ3h/Gjj3Lchar
+         kC9gfN/x1xZvZ7SXXdX0WSZndOGSMGdjDx91IuQPdZXfDafvxiQWvCJRQODmzMl6QMar
+         3GlKDk3Fp7HaUtP25hujws7W2UrHDqtQsVWjtoVUsi/3yN8fuaitIGZakwtQPHzU0n8K
+         tARw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1759485372; x=1760090172;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=HjkSzcHQCRHxGjAdHJ76YWjL7H9j4QRw11Hc/S45qjM=;
+        b=uj8xJrHEUcBtZW87BxOKL0JhVYNMrM0VmL+RQuF5Mum12p+WuGUY/1QKbQV/N11mhW
+         2CB0AsnLpHAsov/okCdcldeB6uyauWAHIVz7ZgFUAmlqkRoxpyJ4S7nwGkWAb2BPpmN0
+         JqzGGcT6rgoSZ9ZAFLxLut5kAn3v3qvd6+U2eefkrKdQC00bcmFsBewR87SOf/DLe7nP
+         lgY+g72Y0d0lemaWRndfN8FSwWDeP6cV/mzy/U6wE27i5i1YIBjkZ7s/2CJMOf3G2KXu
+         Ta65kF7bxazxNfWXIZp4n6QFd0NF6KSHnBDtRfbHXsJeLFmpg9UkA7ok2w4SHpUCk3yg
+         oXeQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWCrOQExMUHOOoxAWDsWa2FoTpB29cRrYkiz9586rKFG6dnVQO8u8ZN8/4H7WN+gEOPrYNQmz0vQHwlw7ixfA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx6mPZxl8bEb6TcBfE089QzR5lD1je/Aa9sSjdKpYyQDty/fI53
+	A/hJd60gV+9AH/M6C11QnuxarJP786BCsJ6+a/aTtCm/WLx/4NIqRNas
+X-Gm-Gg: ASbGnctlYS2fXqATOPAptmWCzLwWumtRtgRiGoQz+03V0iE5VsveASpwg3daKkMQ/Nq
+	gsPnngvQng/U8AGWSacSzL6b0XdL+j0RDYersK+h1cZAtLUXtxbrjYU/BjFZl2Yv0aoFT9oczRp
+	aoraP9Y/rdUoJPCkeyUwWvIVCMJR5qsC/G0LJZKvOtd5tFYeF8EKyZ5/LH1Y/1uZMW2UOp1mZUx
+	piwmq8IU+Iir8T9z88TbUZZ9CfdKepLcNFOvVlZSLtKJcWBHuzi3Unz8v2XaKOOPSN2cytpRW9B
+	jJUoQZReXOC3Xj6mxP/o00ZKNt4QMu1GCZ0pjL3zhCWf/ghBhT/cXAkTNv6qDdch8MO5B2xk4j9
+	8GSVTvJob31/Ayij/aU8znyqxaxYLWRPaKw==
+X-Google-Smtp-Source: AGHT+IFgG1sDmJWIInobrT6MYZozHk7ObDc757Ax6SKK+T4qAyB9z8lgZO3RUGk1fZnpjVO1SGBv+Q==
+X-Received: by 2002:a05:6a20:6a1a:b0:250:429b:9e6d with SMTP id adf61e73a8af0-32b620db8bcmr3216562637.44.1759485372467;
+        Fri, 03 Oct 2025 02:56:12 -0700 (PDT)
+Received: from geday ([2804:7f2:800b:2c45::dead:c001])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-78b01fb1a9fsm4407283b3a.20.2025.10.03.02.56.09
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 03 Oct 2025 02:56:11 -0700 (PDT)
+Date: Fri, 3 Oct 2025 06:56:04 -0300
+From: Geraldo Nascimento <geraldogabriel@gmail.com>
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [RFC PATCH v3 2/3] PCI: rockchip-host: Retry link training on
+ failure without PERST#
+Message-ID: <aN-dtHxYTspw3rvQ@geday>
+References: <cover.1749582046.git.geraldogabriel@gmail.com>
+ <b7c09279b4a7dbdba92543db9b9af169776bd90c.1749582046.git.geraldogabriel@gmail.com>
+ <ac48d142-7aec-4fdd-92a4-6f9bc10a7928@rock-chips.com>
+ <aHnAcbXuFqcMXy_5@geday>
+ <067e1833-8527-4c66-90f5-d284f7d2ca5c@rock-chips.com>
 MIME-Version: 1.0
-X-Last-TLS-Session-Version: TLSv1.3
+Content-Disposition: inline
+In-Reply-To: <067e1833-8527-4c66-90f5-d284f7d2ca5c@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251003_003508_019203_DED75987 
-X-CRM114-Status: GOOD (  10.04  )
+X-CRM114-CacheID: sfid-20251003_025613_915478_FA7F5E66 
+X-CRM114-Status: GOOD (  15.44  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,38 +104,26 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Damon,
-
-On Wed, 1 Oct 2025 18:09:22 +0200
-Luca Ceresoli <luca.ceresoli@bootlin.com> wrote:
-
-> Another thing to note is that this patch conflicts with [0], which I
-> plan to apply in the next few days. The two patches are orthogonal but
-> they insist on the same lines (those assigning
-> bridge_connector->bridge_* = bridge). Not a big deal, whichever patch
-> comes later will be easily adapted. Just wanted to ensure you are aware.
-> 
-> [0] https://lore.kernel.org/all/20250926-drm-bridge-alloc-getput-bridge-connector-v2-1-138b4bb70576@bootlin.com/
-
-The patch I mentioned is now merged on drm-misc-next [1], so you'll
-need to rebase yours on top adapting the changes. I expect it to be
-simple enough, but don't hesitate to ask here in case it's not.
-
-[1] https://gitlab.freedesktop.org/drm/misc/kernel/-/commit/2be300f9a0b6f6b0ae2a90be97e558ec0535be54
-
-Luca
-
--- 
-Luca Ceresoli, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gRnJpLCBKdWwgMTgsIDIwMjUgYXQgMTE6NDY6MzNBTSArMDgwMCwgU2hhd24gTGluIHdyb3Rl
+Ogo+IOWcqCAyMDI1LzA3LzE4IOaYn+acn+S6lCAxMTozMywgR2VyYWxkbyBOYXNjaW1lbnRvIOWG
+memBkzoKPiA+IAo+ID4gQWxzbywgc2luY2UgeW91J3JlIGFza2luZyBtZSB0byB0ZXN0IHNvbWUg
+Y29kZSwgSSB0aGluayBpdCBpcyBvbmx5IGZhaXIKPiA+IGlmIEkgYXNrIHlvdSB0byB0ZXN0IG15
+IGNvZGUsIHRvby4gSXQgc2hvdWxkbid0IGJlIHRvbyBoYXJkIGZvciB5b3UgdG8KPiA+IGZpbmQg
+YSBvdGhlcndpc2Ugd29ya2luZyBOVk1lIFNTRCB0aGF0IHJlZnVzZXMgdG8gY29tcGxldGUgbGlu
+ayB0cmFpbmluZwo+ID4gd2l0aCBjdXJyZW50IGNvZGUuIENvbm5lY3QgdGhpcyBTU0QgcGxlYXNl
+IHRvIGEgUkszMzk5IGJvYXJkIGFuZCBsZXQgdXMKPiA+IGtub3cgaWYgbXkgcHJvcG9zZWQgY29k
+ZSBjaGFuZ2UgZG9lcyBhbnl0aGluZyB0byBhbWVsaW9yYXRlIHRoZQo+ID4gbG9uZy1zdGFuZGlu
+ZyBpc3N1ZSBvZiBTU0QgdGhhdCByZWZ1c2VzIHRvIGNvb3BlcmF0ZS4KPiAKPiBTdXJlLCBJIGRv
+bid0IGhhdmUgU2Ftc3VuZyBQTTk4MWEgU1NEIG5vdywgYnV0IEkgY291bGQgdHJ5IHRvIHRlc3Qg
+YWxsCj4gbXkgU1NEcyB0byBmaW5kIGlmIEkgY291bGQgcGljayB1cCBvbmUgdGhhdCB3b24ndCB3
+b3JrLgo+CgpIaSBTaGF3biwKCkhhdmVuJ3QgaGVhcmQgYmFjayBmcm9tIHlvdSBzbyBJIGFzc3Vt
+ZSB5b3UgdGVzdGVkIHdpdGggU1NEIHRoYXQgc2hvdWxkCndvcmsgYnV0IGRvZXMgbm90IGFuZCB0
+aGF0IHRoZSB0ZXN0IGZhaWxlZD8KClRoYW5rcywKR2VyYWxkbyBOYXNjaW1lbnRvCgpfX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBt
+YWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlz
+dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
