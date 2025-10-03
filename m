@@ -4,66 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2C29CCD182
-	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Oct 2025 13:06:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 570C3CCD183
+	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Oct 2025 13:17:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pa/QEyb2+H8oBogIhh5rNGWDRaprOIRrbpuyAJhmMPY=; b=2rMrnKIvlykNF9Hn0x8M9HgQWT
-	w++dA7Cowb06bbc3AZnxlC+soCyoQmIsTUihQJdQeztazm8C9fhiUuQrwHCug13A0beMR46Jqh8GE
-	hJIa21rY64TwnFduqIP0qPuwiTCSc7cp9xsoDPXfbw9uLoEWHJ6NvJXU5QQ+gb4XplJMjy2hBAhVg
-	hMT8IG95XWmi7ykfp1/tIZeWOtSP7wpf7hN86oz1Hb8rEQ3vNPdmHTKaAGO+NIwpqdVuUvyyeXn8m
-	Hbt+kMHqUGp87rS1S+z/XjajTKRQCJXOspjpm4K2KQ3zWkHE17FRLYUH1NcQGqtRw+sGcKJs1Eq5s
-	ljrv+xug==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ulRCLzLFxhTe3TUy7Wp6S2CJMJMc6Dkn2MCedp2ajUI=; b=iU772nWbw5ih24
+	CAYjVwy99eE5R1r8wjGQ4249VIubZxj/AO+VvuEodMcFuzJDeOHDn1e1xQo6BOC9N3VfJ1/wc5qoY
+	nOCwnMKDpQHmmAJiHBidwYXipbc5TmrU4icFmYjjdtDWN6Fr6tWRQj2Ta22nPNB9vKTSX3kQpcRVx
+	lNNo7arL4BmxkdkLcGg7X7y+MTkoKuB5Cx7XGuXuB8q9DwnSCMxfPKGrHR4BJsROQ7hzxkol367Ex
+	tNWZ7joNBzNrJae+AxqkzcpkZzXoJDXK1VHgOuihW85oZvNOiOrSmYms+H/AMhnt5TsZDtb4Muuhx
+	0h9niB6U+mK3uraT8iFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v4fUA-0000000CKwh-0B2Q;
-	Fri, 03 Oct 2025 13:06:10 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1v4ff0-0000000CNB4-1AUU;
+	Fri, 03 Oct 2025 13:17:22 +0000
+Received: from mail-qt1-x831.google.com ([2607:f8b0:4864:20::831])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v4fU8-0000000CKwS-19qn;
-	Fri, 03 Oct 2025 13:06:08 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id A517E6212B;
-	Fri,  3 Oct 2025 13:06:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CEFE9C4CEF5;
-	Fri,  3 Oct 2025 13:06:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1759496767;
-	bh=eNt1Gcmgl05avc3eJ3PssbmGBA5Ku1mD4+vRG6E3X5E=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=TlgeRQrw/M/6sxS4v8nGdyP6hV7p3O70yJjDCJGZFC+inkUh9Ps0AhfTa/nxa4X4s
-	 c5mIsJuUAJ1SM0H9oXjZxh7YGRM0fyCx0t+3LKBkziJfXMEhm7gLUhLcGaJTjWaoNN
-	 Mlv1UYzSydNzNCvXwtLHYaRJyf05IPnqemhWLsaqD3trgPH0KR96fz8GQ3D5/umi1j
-	 cv975MVhvL4sCQuSvzk44+FKxYfrbhoC7/4kCt4eFd06r7NZnvcehFAifZTGNmodWS
-	 RJBegdKK+9SK9eeGQVJcqhRkIKG0fRflr4hVRrx9fdmEjr4EGLHB1xtUD6tcxikWl4
-	 D1iOe0AW6IoWA==
-Date: Fri, 3 Oct 2025 15:06:04 +0200
-From: Maxime Ripard <mripard@kernel.org>
-To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
-	Simona Vetter <simona@ffwll.ch>, Liu Ying <victor.liu@nxp.com>, 
-	Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
-	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Rob Clark <robin.clark@oss.qualcomm.com>, Dmitry Baryshkov <lumag@kernel.org>, 
-	Abhinav Kumar <abhinav.kumar@linux.dev>, Jessica Zhang <jessica.zhang@oss.qualcomm.com>, 
-	Sean Paul <sean@poorly.run>, Marijn Suijten <marijn.suijten@somainline.org>, 
-	Sandy Huang <hjc@rock-chips.com>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, 
-	Andy Yan <andy.yan@rock-chips.com>, Samuel Holland <samuel@sholland.org>, 
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org, 
-	freedreno@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev
-Subject: Re: [PATCH v2 2/9] drm/bridge: adv7511: handle unsupported InfoFrames
-Message-ID: <20251003-crystal-monkey-of-fantasy-ea4a1a@houat>
-References: <20250928-limit-infoframes-2-v2-0-6f8f5fd04214@oss.qualcomm.com>
- <20250928-limit-infoframes-2-v2-2-6f8f5fd04214@oss.qualcomm.com>
+	id 1v4fex-0000000CN9T-0Og8
+	for linux-rockchip@lists.infradead.org;
+	Fri, 03 Oct 2025 13:17:20 +0000
+Received: by mail-qt1-x831.google.com with SMTP id d75a77b69052e-4de66881569so421791cf.0
+        for <linux-rockchip@lists.infradead.org>; Fri, 03 Oct 2025 06:17:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20230601; t=1759497437; x=1760102237; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=MHKBwm7NMk1wAiAxUu9pldFnkwOOCl4Cy9AyP1TphGA=;
+        b=cYTu5WzRV66nRbVoZkIWHZ2vvGPIZm8Y+r5K0bgwIyaW3AEEP2P+HSPm70Zi9wscjo
+         dbiDNh6czP0P0eib47uPBcJWCBlhIe3YGJDULVy/p75kokxXepnAY+7WbMLmVpCWrmd6
+         PYqAw2UliQogYROfXMtsySQhdclAMbWOjnPvcUmCE9tZ69Olu1P7mT/qAl6VZdaNuQGi
+         FNevDgHFtJbWOIRlSyJz0rQDD+iudUkKPhzRGgduFscnIMWucjNQn3DaJHCP04yLdsmu
+         UMTzMWx7itKxJEnfD89uqY1swuLRvUc6s889i0zb6DghXVgRqPDlfN6V3vr/nGEEvUfW
+         hYUQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1759497437; x=1760102237;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=MHKBwm7NMk1wAiAxUu9pldFnkwOOCl4Cy9AyP1TphGA=;
+        b=BoCBlxZakmbgEhS3fQH4YDwERTE08JI5CTwu7gvnKK6grdkf+Aej0GsKu0BH/zOT7h
+         5IxlWzo68WClnAhmjxFcSccNJr6n9hB3zVCaHdH9cFeim+jOFilDkEJQkzVd0k+1vHfJ
+         KU0WMl07Ow9IcC6iVS0/1EUAiuCZ1BZ6wHyovKxkAQ42X33ygpS4xVw/mpP+d1/uyaQW
+         4LSUAdp9VsSpaCXcEB080hFnQ2Lfqhly9PiC1yT+GUabQvh5ASj2GheZJIiE4o6i+PxT
+         2Ok/Gyxne/w69VQFC39NSTOHbXkh4UIHzsNNCpnlcALLC+A9DT4cfdmW9R4dp3kh8swm
+         L0RQ==
+X-Forwarded-Encrypted: i=1; AJvYcCX3pIOTQcxmOlfrC7GLfMmi+PQf3G1gJob2/jJBU3qp73CS+QI9Yf8M0ABXrQK3l1OurEyT4U+3NNlmq/VlYg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx8DycWnwFNzzBukC6jNKNoQSweVKFhZWNOXiJSip1KmFE5qK8y
+	abjzVcmotFcOtC/ZQ9SASR5I3sJ0YOb/YA7JP0hMc3wMBB44mbYsJ7jcw7A6ykz4x3UTgDB9BYv
+	YXVO9v8TcxE/y1++71r5a64UripbvXmxcajo+Us8wEZKinA+hQPZPhVr+
+X-Gm-Gg: ASbGncsVK97Q5CnetlLh6V7M8EH2AvqX7tfYqJlpPLKJrAAsdbfSEb4jNsdAlDHA61e
+	SEMAWO237hQBI4yQhDozjrWRFvdtiLO3pOBSwkzosHaOkR3LvxY4PxuZ1c3iBBgjud0+nyNVY2/
+	8p2qEXZ2Wc89NxaU0ukkbCJkZO1m6BFKpSLGBzSzVaCqjnI60kXP3f8oMWkFVXvDqmjDeJ26c6F
+	1nJKyyWMjMPAMT+1eUFWjW3LjePHEHH+YZ9wmJpkH7fx5280NmwZqf52lG4po7LGILvWe0zTWDT
+X-Google-Smtp-Source: AGHT+IGE7+IByknaVWxiVR31VKxGd14F277kivObfOi7gJMj93c83sqsD1zVicMJpTqN29wJP8C6PN1mQCF/t55gEto=
+X-Received: by 2002:a05:622a:2cd:b0:4b3:1d1:fddd with SMTP id
+ d75a77b69052e-4e576ac8af5mr5570341cf.18.1759497436448; Fri, 03 Oct 2025
+ 06:17:16 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20250928-limit-infoframes-2-v2-2-6f8f5fd04214@oss.qualcomm.com>
+References: <CAFgf54oYjUEg9KkQUzneYTZH1Z8cX56va5M0853eWPFaYT+Z2A@mail.gmail.com>
+ <638b9565b90714f56caa9535b7b9b96cd86100d6.camel@collabora.com> <aNaq72xKS4QaNjwx@google.com>
+In-Reply-To: <aNaq72xKS4QaNjwx@google.com>
+From: Mostafa Saleh <smostafa@google.com>
+Date: Fri, 3 Oct 2025 14:17:05 +0100
+X-Gm-Features: AS18NWAzGDKh7rPw80AiVMNesJmz-wqevOZz6iqXp8GuPpGGv1cVAqCeWYGrVWI
+Message-ID: <CAFgf54r=0T=AbSm4BVOf6+8mHRxOPje+zSbfZbwb8d6u46HPyw@mail.gmail.com>
+Subject: Re: Support for Rock PI-4b
+To: Sjoerd Simons <sjoerd@collabora.com>
+Cc: devicetree@vger.kernel.org, 
+	"moderated list:ARM SMMU DRIVERS" <linux-arm-kernel@lists.infradead.org>, linux-rockchip@lists.infradead.org, 
+	open list <linux-kernel@vger.kernel.org>, Rob Herring <robh@kernel.org>, krzk+dt@kernel.org, 
+	conor+dt@kernel.org, Heiko Stuebner <heiko@sntech.de>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251003_061719_136587_368EC8FF 
+X-CRM114-Status: GOOD (  33.01  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,116 +93,55 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3993003723357018952=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
---===============3993003723357018952==
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="54ncbnvuigfo4z2w"
-Content-Disposition: inline
-
-
---54ncbnvuigfo4z2w
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v2 2/9] drm/bridge: adv7511: handle unsupported InfoFrames
-MIME-Version: 1.0
-
-Hi,
-
-On Sun, Sep 28, 2025 at 11:24:47AM +0300, Dmitry Baryshkov wrote:
-> Make hdmi_write_hdmi_infoframe() and hdmi_clear_infoframe() callbacks
-> return -EOPNOTSUPP for unsupported InfoFrames and make sure that
-> atomic_check() callback doesn't allow unsupported InfoFrames to be
-> enabled.
->=20
-> Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-> ---
->  drivers/gpu/drm/bridge/adv7511/adv7511_drv.c | 20 ++++++++++++++++----
->  1 file changed, 16 insertions(+), 4 deletions(-)
->=20
-> diff --git a/drivers/gpu/drm/bridge/adv7511/adv7511_drv.c b/drivers/gpu/d=
-rm/bridge/adv7511/adv7511_drv.c
-> index b9be8654130758e69ac7ccbc73a82cc25d731a5c..241f02143f59322a814b4b277=
-082637d59be7d5f 100644
-> --- a/drivers/gpu/drm/bridge/adv7511/adv7511_drv.c
-> +++ b/drivers/gpu/drm/bridge/adv7511/adv7511_drv.c
-> @@ -906,8 +906,7 @@ static int adv7511_bridge_hdmi_clear_infoframe(struct=
- drm_bridge *bridge,
->  		adv7511_packet_disable(adv7511, ADV7511_PACKET_ENABLE_SPARE1);
->  		break;
->  	default:
-> -		drm_dbg_driver(adv7511->bridge.dev, "Unsupported HDMI InfoFrame %x\n",=
- type);
-> -		break;
-> +		return -EOPNOTSUPP;
->  	}
-> =20
->  	return 0;
-> @@ -966,19 +965,32 @@ static int adv7511_bridge_hdmi_write_infoframe(stru=
-ct drm_bridge *bridge,
->  		adv7511_packet_enable(adv7511, ADV7511_PACKET_ENABLE_SPARE1);
->  		break;
->  	default:
-> -		drm_dbg_driver(adv7511->bridge.dev, "Unsupported HDMI InfoFrame %x\n",=
- type);
-> -		break;
-> +		return -EOPNOTSUPP;
->  	}
-
-I'm completely fine with that part.
-
->  	return 0;
->  }
-> =20
-> +static int adv7511_bridge_atomic_check(struct drm_bridge *bridge,
-> +				       struct drm_bridge_state *bridge_state,
-> +				       struct drm_crtc_state *crtc_state,
-> +				       struct drm_connector_state *conn_state)
-> +{
-> +	/* should not happen, HDR support not enabled */
-> +	if (drm_WARN_ON_ONCE(bridge->encoder->dev,
-> +			     conn_state->hdmi.infoframes.hdr_drm.set))
-> +		return -EOPNOTSUPP;
-> +
-> +	return 0;
-> +}
-> +
-
-However, I'm not sure we need that boilerplate in any driver. I'd rather
-expand the kunit test suite to make sure it never happens rather than
-adding it to every driver.
-
-Maxime
-
---54ncbnvuigfo4z2w
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCaN/KMwAKCRAnX84Zoj2+
-dnyuAX42GfxKCL/3093it2n3uUpzK4IH9zfQ3SHTXOJGmhKXFE5M88bQKfBUgIh/
-+g4R80YBf2MDvgokTCDsxDGAEu7jkpWUmqQgAkHrI1IDGnk4vLKev6hUVpls0k2z
-ag0XePnvhw==
-=iLh5
------END PGP SIGNATURE-----
-
---54ncbnvuigfo4z2w--
-
-
---===============3993003723357018952==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============3993003723357018952==--
-
+T24gRnJpLCBTZXAgMjYsIDIwMjUgYXQgNDowMuKAr1BNIE1vc3RhZmEgU2FsZWggPHNtb3N0YWZh
+QGdvb2dsZS5jb20+IHdyb3RlOgo+Cj4gT24gRnJpLCBTZXAgMjYsIDIwMjUgYXQgMDQ6Mjg6NDhQ
+TSArMDIwMCwgU2pvZXJkIFNpbW9ucyB3cm90ZToKPiA+IE9uIEZyaSwgMjAyNS0wOS0yNiBhdCAx
+NTowNyArMDEwMCwgTW9zdGFmYSBTYWxlaCB3cm90ZToKPiA+ID4gSGksCj4gPiA+Cj4gPiA+IEkg
+YW0gdHJ5aW5nIHRvIHJ1biBMaW51eFsxXSBvbiBteSBSb2NrIFBJLTRiLCB3aGljaCBJIHNlZSBp
+cyBzdXBwb3J0ZWQgaW4KPiA+ID4gdGhlIGtlcm5lbCBpbiDigJxyazMzOTktcm9jay1waS00Yi5k
+dHPigJ0uCj4gPiA+Cj4gPiA+IEhvd2V2ZXIsIGNvbXBpbGluZyDigJxkZWZjb25maWfigJ0gKEFS
+TTY0KSBhbmQgZmxhc2hpbmcgbXkgSW1hZ2UgZG9lc27igJl0Cj4gPiA+IHdvcmssCj4gPiA+IEl0
+IGp1c3QgaGFuZ3MgYmVmb3JlIGFueSBjb25zb2xlIChldmVuIHdpdGggZWFybHljb24pLCBJIHRy
+aWVkIHRvIGFsc28gdXNlCj4gPiA+IHNvbWUgb2YgdGhlIHZlbmRvciBjb25maWdzIHdpdGggbm8g
+bHVjay4KPiA+ID4gSSBkaWQgc29tZSByZXNlYXJjaCBhbmQgZm91bmQgdGhhdCBbMl0sIHdoaWNo
+IGluZGljYXRlcyB0aGF0IHRoZSB1cHN0cmVhbQo+ID4gPiBzdXBwb3J0IGhhcyBiZWVuIGJyb2tl
+biBmb3Igc29tZSB5ZWFycz8KPiA+Cj4gPiBXZSd2ZSBnb3QgdGhlIFJvY2sgNGIgaW4gb3VyIGF1
+dG9tYXRlZCB0ZXN0aW5nIGxhYiBhcyBwYXJ0IG9mIGtlcm5lbGNpIGFuZCBvdGhlcgo+ID4gZWZm
+b3J0cy4gVXBzdHJlYW0gd29ya3MganVzdCBmaW5lIG9uIHRob3NlIGJvYXJkcywgc28gaXQncyBs
+aWtlbHkgYW4gaXNzdWUgaW4KPiA+IHlvdXIgc2V0dXAuCj4gPgo+ID4gU2VlIGUuZyBodHRwczov
+L2xhdmEuY29sbGFib3JhLmRldi9zY2hlZHVsZXIvam9iLzE5OTc4NTU4I0w1MjUgZm9yIGEgcmVj
+ZW50Cj4gPiB1cHN0cmVhbSBrZXJuZWwgYm9vdC4KPgo+IFRoYW5rcyBhIGxvdCBmb3IgdGhlIHF1
+aWNrIHJlc3BvbnNlIQo+Cj4gSSBjYW4gc2VlIHNvbWUgZGlmZmVyZW5jZXMgYmV0d2VlbiB0aGlz
+IGxvZyBhbmQgbXkgc2V0dXAuCj4KPiAxLSBNeSB1Ym9vdCBzZWVtcyBhbmNpZW50Cj4gICAgVS1C
+b290IDIwMTcuMDktMDAwMjYtZzI0MzFmYTM0Njc4IENvbXBhcmVkIHRvIFUtQm9vdCAyMDI0LjA3
+LXJjNAo+Cj4gMi0gVGhlIGJvYXJkIG1vZGVsIGluIHRoaXMgbG9nIGlzIG5vdCA0YiBhcyBtaW5l
+Cj4gICAgTW9kZWw6IFJhZHhhIFJPQ0sgUGkgNEEgd2hpbGUgbWluZSBzaG93cyBNb2RlbDogUmFk
+eGEgUk9DSyBQaSA0Qgo+Cj4gMy0gSSBhbSB1c2luZyBMTFZNIG5vdCBHQ0MgKEkgZG9uJ3QgdGhp
+bmsgdGhhdCBtYXR0ZXJzIHRob3VnaCkKPgo+IDQtIEkgYW0gdXNpbmcgTU1DIHRvIGJvb3QgYW5k
+IG5vdCBURlRQCj4KPiBJIHdpbGwgdHJ5IHRvIGxvb2sgbW9yZSBpbnRvIHRoZSBkaWZmZXJlbmNl
+cywgYW5kIHVwZGF0ZSB0aGlzIHRocmVhZCBpbgo+IGNhc2UgSSB3YXMgc3VjY2Vzc2Z1bC4KPgoK
+VXBkYXRlIG9uIHRoaXMsIGluIGNhc2Ugc29tZW9uZSBoYXZlIHRoZSBzYW1lIGlzc3VlLgoKQWZ0
+ZXIgdXBkYXRpbmcgdS1ib290IHRoZSBzYW1lIGlzc3VlIHBlcnNpc3RlZC4KSG93ZXZlciwgSSB3
+YXMgYWJsZSB0byBib290IHdpdGggZU1NQyBpbnN0ZWFkIG9mIGFuIFNEIGNhcmQuCldoaWNoIGlz
+IHN0cmFuZ2UsIGFzIEkgY291bGQgYm9vdCBhbiBvbGRlciBrZXJuZWwgb24gYW4gU0QgY2FyZCB3
+aXRoIG5vIHByb2JsZW0uCgpUaGFua3MsCk1vc3RhZmEKCj4gVGhhbmtzLAo+IE1vc3RhZmEKPgo+
+ID4KPiA+IFJlZ2FyZHMsCj4gPiAgIFNqb2VyZAo+ID4KPiA+Cj4gPiA+Cj4gPiA+IEhhcyBhbnlv
+bmUgdHJpZWQgdG8gZmxhc2ggYSByZWNlbnQga2VybmVsIHN1Y2Nlc3NmdWxseSBvbiBpdD8gb3Ig
+YW55Cj4gPiA+IHRpcHMgYXJlIGdyZWF0bHkgYXBwcmVjaWF0ZWQuCj4gPiA+IE90aGVyd2lzZSwg
+bWF5YmUgaXQgY2FuIGJlIHJlbW92ZWQgdG8gYXZvaWQgbWlzbGVhZGluZyBvdGhlciBkZXZlbG9w
+ZXJzCj4gPiA+IChJIGdvdCB0aGlzIGJvYXJkIHRvIGRvIHNvbWUgdXBzdHJlYW0ga2VybmVsIGRl
+dmVsb3BtZW50IG9uKQo+ID4gPgo+ID4gPiBbMV0gYmFzZTogNGZmNzFhZjAyMGFlNTlhZTJkODNi
+MTc0NjQ2ZmMyYWQ5ZmNkNGRjNAo+ID4gPiBbMl0gaHR0cHM6Ly93aWtpLnJhZHhhLmNvbS9Sb2Nr
+cGk0L2Rldi9rZXJuZWwtbWFpbmxpbmUKPiA+ID4KPiA+ID4gVGhhbmtzLAo+ID4gPiBNb3N0YWZh
+Cj4gPiA+Cj4gPiA+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fCj4gPiA+IExpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdAo+ID4gPiBMaW51eC1yb2NrY2hp
+cEBsaXN0cy5pbmZyYWRlYWQub3JnCj4gPiA+IGh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
+aWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1y
+b2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
+aWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
