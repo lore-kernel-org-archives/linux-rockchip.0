@@ -4,77 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 185E7CAC5B0
-	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Oct 2025 13:22:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F4BECAC5B0
+	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Oct 2025 13:33:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=F/tuJspUXjIJ9Cu+hV/5ei6MbpSWWoEPPFCCHlzUB04=; b=vrWAOtRG1UBvhNrxmMZb5vd/bG
-	L+JYwWY8ZusnSJlR3F3hFJq6DR76FoZWtu2+awPY8ed9/K9bfmivL5aAPK2ZXP1nTFBHuGkGpiWR0
-	TScDh9badAHSdJwvJlQVc6VNhKYCL8kJUQE3JxxSBFx1CcsrGNhHhK/K66pkNQHmQUDBdTC67S5Fx
-	m13aq7Ut8Qyh/267dYb3snFPaSigGQ442uvBIpQkyrT50dPj9DG8qqLmn4IN+sFDFMBAjQiLS8IdB
-	DO6GmInEqssI4ZVEgh3L6DA1O1MbWu4jwGkhHJfUmiccDhcwo8UMxJ5viYUBS5vy/MTn6cha1fpPm
-	CWfW1QXQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=CM5CerFiOmCLg0QIWWVhRcbfs7MvlRb91FIEhNb+Cpg=; b=YK03egVuY998kW
+	SL0JwXvhpG1Mb1xJVcjOlhnETZ/ZR/Duc9pTcvB6JTF6J+DvEnhH3LL5T2cSDDkiazY6gEsicFZdF
+	1jYya8SeGPR8fS71GTx5uKMoO5tl+WIdia9AB+ZNm+pP6FkXUns/jSWExO+A9eopgTYIiA9bXBujh
+	iMkQx3/CjEMM1r47GSE19ykyTIgYxMvYNmBhPgbzElNA839QOB3qEgLLhd0+OJ4H8cOnpb8zLu9TC
+	KyQQvG3o9EKsZa+AOyhWnzy+7LrjVbl7jVb5E5LZYeXIU6SdBFYNcX1nxfT9hUq3urfX5iNWFCKio
+	9O7ugHI1zMdag92ljl0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v4fjx-0000000CNrX-0Ftl;
-	Fri, 03 Oct 2025 13:22:29 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1v4fuP-0000000CPGe-1QJv;
+	Fri, 03 Oct 2025 13:33:17 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v4fjv-0000000CNqr-0H2b;
-	Fri, 03 Oct 2025 13:22:27 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 496B162157;
-	Fri,  3 Oct 2025 13:22:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 71FC1C4CEF5;
-	Fri,  3 Oct 2025 13:22:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1759497746;
-	bh=A2hluD0l8IO1DxEiF9nEW3SijizW71b1ccI60ZVifUE=;
+	id 1v4fuL-0000000CPEZ-3uta;
+	Fri, 03 Oct 2025 13:33:15 +0000
+Received: from pendragon.ideasonboard.com (81-175-209-231.bb.dnainternet.fi [81.175.209.231])
+	by perceval.ideasonboard.com (Postfix) with UTF8SMTPSA id CB8F9C7A;
+	Fri,  3 Oct 2025 15:31:39 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1759498300;
+	bh=Irk3t8nFf/aTjQgzWVzYN3awPzS0XCH6TsYfkakhoLQ=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=m1VoQoyZK+0q8O3HvyAtIGUuFnCbPyZhX1ioKmnkL3JAloHKE/f9yDYHV6zLFevmp
-	 xc05F6I9ufNwo20ENoPxDODObtxc3ePYLGeU8vWXoR/sq2wxJ36pc/j2q8tqW0L1nE
-	 C5kyoEcs5+6jD5rehK4U8rW2PXT4gNsLFbKHKPAOrp+Tgxzn0XL8VcDa10gYaWwuzL
-	 SmP+VPZBOK/p9PIZdQebasidslquTK2Zj7vHryqCeUV+xDH4c6l1351xGFwdkZKGpd
-	 beDZpivcGmRZr0qas8V9KKGrVKRX4iT2mV8JwdCoVric1qQfSB8GuVqlwBPJlJ4Pjv
-	 5v/wEfmefXb1w==
-Date: Fri, 3 Oct 2025 15:22:23 +0200
-From: Maxime Ripard <mripard@kernel.org>
-To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-Cc: Daniel Stone <daniel@fooishbar.org>, 
-	Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
-	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Sandy Huang <hjc@rock-chips.com>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, 
-	Andy Yan <andy.yan@rock-chips.com>, Chen-Yu Tsai <wens@csie.org>, 
-	Samuel Holland <samuel@sholland.org>, Dave Stevenson <dave.stevenson@raspberrypi.com>, 
-	=?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, 
-	Liu Ying <victor.liu@nxp.com>, Rob Clark <robin.clark@oss.qualcomm.com>, 
-	Dmitry Baryshkov <lumag@kernel.org>, Abhinav Kumar <abhinav.kumar@linux.dev>, 
-	Jessica Zhang <jessica.zhang@oss.qualcomm.com>, Sean Paul <sean@poorly.run>, 
-	Marijn Suijten <marijn.suijten@somainline.org>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, 
-	linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org
-Subject: Re: [PATCH v3 00/11] drm/connector: hdmi: limit infoframes per
- driver capabilities
-Message-ID: <20251003-uptight-echidna-of-stamina-815305@houat>
-References: <20250901-voracious-classy-hedgehog-ee28ef@houat>
- <voknqdv3zte2jzue5yxmysdiixxkogvpblvrccp5gu55x5ycca@srrcscly4ch4>
- <st6wob5hden6ypxt2emzokfhl3ezpbuypv2kdtf5zdrdhlyjfw@l2neflb4uupo>
- <pe6g2fanw65p67kfy5blbtiytngxmr6nkbazymojs4a66yvpl3@7j4ccnsvc6az>
- <20250910-didactic-honored-chachalaca-f233b2@houat>
- <x562ueky2z5deqqmhl222moyrbylfwi35u4hb34dpl3z52ra4c@dyw4iayrewnz>
- <20250925-fervent-merry-beagle-2baba3@penduick>
- <qx5ashx62pufott6hnsfna3qntnoyvxwxze4rihhuxcsdxi37s@bbdvc3sfsgne>
- <20250929-gregarious-worm-of-memory-c5354d@houat>
- <itgffxygopi7etkt7xhvmyuvyl5ad3k43nsxvjzw3ubtwiikn7@ocugfdaigtu7>
+	b=Ua+yTS4T0diRNc63DUkdB+LhCgfV2OdWzdxJF0mw/3otgBNiyn7ImWxMVwpEL+0jk
+	 kK/DvPkw27Sb2GR9R9qaDagCbn9ls8b4noWH8JPhjuiZypsf2lwGVTqTkSXt+s8rms
+	 du6BDxr/KKuBQCSVtZ5G8vMpcXhao8Ca2ZU+DcAc=
+Date: Fri, 3 Oct 2025 16:33:04 +0300
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Alexey Charkov <alchark@gmail.com>
+Cc: Dragan Simic <dsimic@manjaro.org>,
+	Alexander Shiyan <eagle.alexander923@gmail.com>,
+	Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	stable@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH] arm64: dts: rockchip: Fix broken tsadc pinctrl binding
+ for rk3588
+Message-ID: <20251003133304.GA21023@pendragon.ideasonboard.com>
+References: <20250124052611.3705-1-eagle.alexander923@gmail.com>
+ <CABjd4YwA8P9LVuDviO6xydkHpuuOY7XT0pk1oa+FDqOo=uZN4A@mail.gmail.com>
+ <a76f315f023a3f8f5435e0681119b4eb@manjaro.org>
+ <CABjd4Ywh_AkbXHonx-8vL-hNY5LMLJge5e4oqxvUG+qe6OF-Og@mail.gmail.com>
+ <61b494b209d7360d0f36adbf6d5443a4@manjaro.org>
+ <CABjd4Yx0p0B=e00MjCpDDq8Z=0FtM0s9EN86WdvRimt-_+kh2w@mail.gmail.com>
+ <CABjd4Yy14bpjzvFyc8et-=pmds5uwzfxNqcs7L=+XRXBogZEsQ@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <itgffxygopi7etkt7xhvmyuvyl5ad3k43nsxvjzw3ubtwiikn7@ocugfdaigtu7>
+Content-Disposition: inline
+In-Reply-To: <CABjd4Yy14bpjzvFyc8et-=pmds5uwzfxNqcs7L=+XRXBogZEsQ@mail.gmail.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251003_063314_134697_A8F94AD4 
+X-CRM114-Status: GOOD (  52.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,289 +75,119 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6663427984144663855=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
---===============6663427984144663855==
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="xp6eesrwl3hc4z5s"
-Content-Disposition: inline
-
-
---xp6eesrwl3hc4z5s
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v3 00/11] drm/connector: hdmi: limit infoframes per
- driver capabilities
-MIME-Version: 1.0
-
-On Tue, Sep 30, 2025 at 10:02:28AM +0300, Dmitry Baryshkov wrote:
-> On Mon, Sep 29, 2025 at 03:00:04PM +0200, Maxime Ripard wrote:
-> > On Thu, Sep 25, 2025 at 05:16:07PM +0300, Dmitry Baryshkov wrote:
-> > > On Thu, Sep 25, 2025 at 03:13:47PM +0200, Maxime Ripard wrote:
-> > > > On Wed, Sep 10, 2025 at 06:26:56PM +0300, Dmitry Baryshkov wrote:
-> > > > > On Wed, Sep 10, 2025 at 09:30:19AM +0200, Maxime Ripard wrote:
-> > > > > > On Wed, Sep 03, 2025 at 03:03:43AM +0300, Dmitry Baryshkov wrot=
-e:
-> > > > > > > On Tue, Sep 02, 2025 at 08:06:54PM +0200, Maxime Ripard wrote:
-> > > > > > > > On Tue, Sep 02, 2025 at 06:45:44AM +0300, Dmitry Baryshkov =
-wrote:
-> > > > > > > > > On Mon, Sep 01, 2025 at 09:07:02AM +0200, Maxime Ripard w=
-rote:
-> > > > > > > > > > On Sun, Aug 31, 2025 at 01:29:13AM +0300, Dmitry Barysh=
-kov wrote:
-> > > > > > > > > > > On Sat, Aug 30, 2025 at 09:30:01AM +0200, Daniel Ston=
-e wrote:
-> > > > > > > > > > > > Hi Dmitry,
-> > > > > > > > > > > >=20
-> > > > > > > > > > > > On Sat, 30 Aug 2025 at 02:23, Dmitry Baryshkov
-> > > > > > > > > > > > <dmitry.baryshkov@oss.qualcomm.com> wrote:
-> > > > > > > > > > > > > It's not uncommon for the particular device to su=
-pport only a subset of
-> > > > > > > > > > > > > HDMI InfoFrames. It's not a big problem for the k=
-ernel, since we adopted
-> > > > > > > > > > > > > a model of ignoring the unsupported Infoframes, b=
-ut it's a bigger
-> > > > > > > > > > > > > problem for the userspace: we end up having files=
- in debugfs which do
-> > > > > > > > > > > > > mot match what is being sent on the wire.
-> > > > > > > > > > > > >
-> > > > > > > > > > > > > Sort that out, making sure that all interfaces ar=
-e consistent.
-> > > > > > > > > > > >=20
-> > > > > > > > > > > > Thanks for the series, it's a really good cleanup.
-> > > > > > > > > > > >=20
-> > > > > > > > > > > > I know that dw-hdmi-qp can support _any_ infoframe,=
- by manually
-> > > > > > > > > > > > packing it into the two GHDMI banks. So the support=
-ed set there is
-> > > > > > > > > > > > 'all of the currently well-known ones, plus any two=
- others, but only
-> > > > > > > > > > > > two and not more'. I wonder if that has any effect =
-on the interface
-> > > > > > > > > > > > you were thinking about for userspace?
-> > > > > > > > > > >=20
-> > > > > > > > > > > I was mostly concerned with the existing debugfs inte=
-rface (as it is
-> > > > > > > > > > > also used e.g. for edid-decode, etc).
-> > > > > > > > > > >=20
-> > > > > > > > > > > It seems "everything + 2 spare" is more or less commo=
-n (ADV7511, MSM
-> > > > > > > > > > > HDMI also have those. I don't have at hand the proper=
- datasheet for
-> > > > > > > > > > > LT9611 (non-UXC one), but I think its InfoFrames are =
-also more or less
-> > > > > > > > > > > generic).  Maybe we should change debugfs integration=
- to register the
-> > > > > > > > > > > file when the frame is being enabled and removing it =
-when it gets unset.
-> > > > > > > > > >=20
-> > > > > > > > > > But, like, for what benefit?
-> > > > > > > > > >=20
-> > > > > > > > > > It's a debugfs interface for userspace to consume. The =
-current setup
-> > > > > > > > > > works fine with edid-decode already. Why should we comp=
-licate the design
-> > > > > > > > > > that much and create fun races like "I'm running edid-d=
-ecode in parallel
-> > > > > > > > > > to a modeset that would remove the file I just opened, =
-what is the file
-> > > > > > > > > > now?".
-> > > > > > > > >=20
-> > > > > > > > > Aren't we trading that with the 'I'm running edid-decode =
-in paralle with
-> > > > > > > > > to a modeset and the file suddenly becomes empty'?
-> > > > > > > >=20
-> > > > > > > > In that case, you know what the file is going to be: empty.=
- And you went
-> > > > > > > > from a racy, straightforward, design to a racy, complicated=
-, design.
-> > > > > > > >=20
-> > > > > > > > It was my question before, but I still don't really see wha=
-t benefits it
-> > > > > > > > would have, and why we need to care about it in the core, w=
-hen it could
-> > > > > > > > be dealt with in the drivers just fine on a case by case ba=
-sis.
-> > > > > > >=20
-> > > > > > > Actually it can not: debugfs files are registered from the co=
-re, not
-> > > > > > > from the drivers. That's why I needed all the supported_infof=
-rames
-> > > > > > > (which later became software_infoframes).
-> > > > > >=20
-> > > > > > That's one thing we can change then.
-> > > > > >=20
-> > > > > > > Anyway, I'm fine with having empty files there.
-> > > > > > >=20
-> > > > > > > > > > > Then in the long run we can add 'slots' and allocate =
-some of the frames
-> > > > > > > > > > > to the slots. E.g. ADV7511 would get 'software AVI', =
-'software SPD',
-> > > > > > > > > > > 'auto AUDIO' + 2 generic slots (and MPEG InfoFrame wh=
-ich can probably be
-> > > > > > > > > > > salvaged as another generic one)). MSM HDMI would get=
- 'software AVI',
-> > > > > > > > > > > 'software AUDIO' + 2 generic slots (+MPEG + obsucre H=
-DMI which I don't
-> > > > > > > > > > > want to use). Then the framework might be able to pri=
-oritize whether to
-> > > > > > > > > > > use generic slots for important data (as DRM HDR, HDM=
-I) or less important
-> > > > > > > > > > > (SPD).
-> > > > > > > > > >=20
-> > > > > > > > > > Why is it something for the framework to deal with? If =
-you want to have
-> > > > > > > > > > extra infoframes in there, just go ahead and create add=
-itional debugfs
-> > > > > > > > > > files in your driver.
-> > > > > > > > > >=20
-> > > > > > > > > > If you want to have the slot mechanism, check in your a=
-tomic_check that
-> > > > > > > > > > only $NUM_SLOT at most infoframes are set.
-> > > > > > > > >=20
-> > > > > > > > > The driver can only decide that 'we have VSI, SPD and DRM=
- InfoFrames
-> > > > > > > > > which is -ETOOMUCH for 2 generic slots'. The framework sh=
-ould be able to
-> > > > > > > > > decide 'the device has 2 generic slots, we have HDR data,=
- use VSI and
-> > > > > > > > > DRM InfoFrames and disable SPD for now'.
-> > > > > > > >=20
-> > > > > > > > I mean... the spec does? The spec says when a particular fe=
-ature
-> > > > > > > > requires to send a particular infoframe. If your device can=
-not support
-> > > > > > > > to have more than two "features" enabled at the same time, =
-so be it. It
-> > > > > > > > something that should be checked in that driver atomic_chec=
-k.
-> > > > > > >=20
-> > > > > > > Sounds good to me. Let's have those checks in the drivers unt=
-il we
-> > > > > > > actually have seveal drivers performing generic frame allocat=
-ion.
-> > > > > > >=20
-> > > > > > > > Or just don't register the SPD debugfs file, ignore it, put=
- a comment
-> > > > > > > > there, and we're done too.
-> > > > > > >=20
-> > > > > > > It's generic code.
-> > > > > > >=20
-> > > > > > > > > But... We are not there yet and I don't have clear usecas=
-e (we support
-> > > > > > > > > HDR neither on ADV7511 nor on MSM HDMI, after carefully r=
-eading the
-> > > > > > > > > guide I realised that ADV7511 has normal audio infoframes=
-). Maybe I
-> > > > > > > > > should drop all the 'auto' features, simplifying this ser=
-ies and land
-> > > > > > > > > [1] for LT9611UXC as I wanted origianlly.
-> > > > > > > > >=20
-> > > > > > > > > [1] https://lore.kernel.org/dri-devel/20250803-lt9611uxc-=
-hdmi-v1-2-cb9ce1793acf@oss.qualcomm.com/
-> > > > > > > >=20
-> > > > > > > > Looking back at that series, I think it still has value to =
-rely on the
-> > > > > > > > HDMI infrastructure at the very least for the atomic_check =
-sanitization.
-> > > > > > > >=20
-> > > > > > > > But since you wouldn't use the generated infoframes, just s=
-kip the
-> > > > > > > > debugfs files registration. You're not lying to userspace a=
-nymore, and
-> > > > > > > > you get the benefits of the HDMI framework.
-> > > > > > >=20
-> > > > > > > We create all infoframe files for all HDMI connectors.
-> > > > > >=20
-> > > > > > Then we can provide a debugfs_init helper to register all of th=
-em, or
-> > > > > > only some of them, and let the drivers figure it out.
-> > > > > >=20
-> > > > > > Worst case scenario, debugfs files will not get created, which =
-is a much
-> > > > > > better outcome than having to put boilerplate in every driver t=
-hat will
-> > > > > > get inconsistent over time.
-> > > > >=20
-> > > > > debugfs_init() for each infoframe or taking some kind of bitmask?
-> > > >=20
-> > > > I meant turning hdmi_debugfs_add and create_hdmi_*_infoframe_file i=
-nto
-> > > > public helpers. That way, drivers that don't care can use the (rena=
-med)
-> > > > hdmi_debugfs_add, and drivers with different constraints can regist=
-er
-> > > > the relevant infoframes directly.
-> > >=20
-> > > Doesn't that mean more boilerplate?
-> >=20
-> > I don't think it would? In the general case, it wouldn't change
-> > anything, and in special cases, then it's probably going to be different
-> > from one driver to the next so there's not much we can do.
-> >=20
-> > > In the end, LT9611UXC is a special case, for which I'm totally fine
-> > > not to use HDMI helpers at this point: we don't control infoframes
-> > > (hopefully that can change), we don't care about the TMDS clock, no
-> > > CEC, etc.
-> >=20
-> > Not using the helpers sound pretty reasonable here too.
-> >=20
-> > > For all other usecases I'm fine with having atomic_check() unset all
-> > > unsupported infoframes and having empty files in debugfs. Then we can
-> > > evolve over the time, once we see a pattern. We had several drivers
-> > > which had very limited infoframes support, but I think this now gets
-> > > sorted over the time.
-> >=20
-> > I never talked about atomic_check()? You were initially concerned that
-> > the framework would expose data in debugfs that it's not using. Not
-> > registering anything in debugfs solves that, but I'm not sure we need to
-> > special case atomic_check.
->=20
-> Well... I ended up with [1], handling infoframes in the atomic_check()
-> rather than registering fewer infoframe debugfs files. This way device
-> state is consistent, we don't have enabled instances, etc. However it
-> results in repetetive code in atomic_check().
->=20
-> [1] https://lore.kernel.org/dri-devel/20250928-limit-infoframes-2-v2-0-6f=
-8f5fd04214@oss.qualcomm.com/
-
-I guess we can continue the discussion there, but I'm not sure we want
-to have more boilerplate in drivers, and especially in the atomic_check
-part. If drivers are inconsistent or wrong in the debugfs path, there's
-no major issue. If they are wrong in the atomic_check path, it will lead
-to regressions, possibly in paths that are pretty hard to test.
-
-Maxime
-
---xp6eesrwl3hc4z5s
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCaN/ODwAKCRAnX84Zoj2+
-diGqAYCVf6AMoXhcU3VIb8z9xIngvdSuylZqphD9JtE/rS3QR8jtXs1A5G3e9kDf
-b9g7FbABf0JcEMqoNM9n9pzN92QZ1DiCn8U+tdtLbXL6iPX0Iagrzdcxx1bfDwJN
-nZSidYIWcw==
-=Qw5/
------END PGP SIGNATURE-----
-
---xp6eesrwl3hc4z5s--
-
-
---===============6663427984144663855==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============6663427984144663855==--
-
+T24gRnJpLCBKYW4gMjQsIDIwMjUgYXQgMTE6NDQ6MzRQTSArMDQwMCwgQWxleGV5IENoYXJrb3Yg
+d3JvdGU6Cj4gT24gRnJpLCBKYW4gMjQsIDIwMjUgYXQgOToyM+KAr1BNIEFsZXhleSBDaGFya292
+IDxhbGNoYXJrQGdtYWlsLmNvbT4gd3JvdGU6Cj4gPiBPbiBGcmksIEphbiAyNCwgMjAyNSBhdCAy
+OjM34oCvUE0gRHJhZ2FuIFNpbWljIDxkc2ltaWNAbWFuamFyby5vcmc+IHdyb3RlOgo+ID4gPiBP
+biAyMDI1LTAxLTI0IDExOjI1LCBBbGV4ZXkgQ2hhcmtvdiB3cm90ZToKPiA+ID4gPiBPbiBGcmks
+IEphbiAyNCwgMjAyNSBhdCAyOjA24oCvUE0gRHJhZ2FuIFNpbWljIDxkc2ltaWNAbWFuamFyby5v
+cmc+Cj4gPiA+ID4gd3JvdGU6Cj4gPiA+ID4+IE9uIDIwMjUtMDEtMjQgMDk6MzMsIEFsZXhleSBD
+aGFya292IHdyb3RlOgo+ID4gPiA+PiA+IE9uIEZyaSwgSmFuIDI0LCAyMDI1IGF0IDk6MjbigK9B
+TSBBbGV4YW5kZXIgU2hpeWFuCj4gPiA+ID4+ID4gPGVhZ2xlLmFsZXhhbmRlcjkyM0BnbWFpbC5j
+b20+IHdyb3RlOgo+ID4gPiA+PiA+Pgo+ID4gPiA+PiA+PiBUaGVyZSBpcyBubyBwaW5jdHJsICJn
+cGlvIiBhbmQgIm90cG91dCIgKHByb2JhYmx5IGRlc2lnbmVkIGFzCj4gPiA+ID4+ID4+ICJvdXRw
+dXQiKQo+ID4gPiA+PiA+PiBoYW5kbGluZyBpbiB0aGUgdHNhZGMgZHJpdmVyLgo+ID4gPiA+PiA+
+PiBMZXQncyB1c2UgcHJvcGVyIGJpbmRpbmcgImRlZmF1bHQiIGFuZCAic2xlZXAiLgo+ID4gPiA+
+PiA+Cj4gPiA+ID4+ID4gVGhpcyBsb29rcyByZWFzb25hYmxlLCBob3dldmVyIEkndmUgdHJpZWQg
+aXQgb24gbXkgUmFkeGEgUm9jayA1QyBhbmQKPiA+ID4gPj4gPiB0aGUgZHJpdmVyIHN0aWxsIGRv
+ZXNuJ3QgY2xhaW0gR1BJTzAgUktfUEExIGV2ZW4gd2l0aCB0aGlzIGNoYW5nZS4gQXMKPiA+ID4g
+Pj4gPiBhIHJlc3VsdCwgYSBzaW11bGF0ZWQgdGhlcm1hbCBydW5hd2F5IGNvbmRpdGlvbiAoSSd2
+ZSBjaGFuZ2VkIHRoZQo+ID4gPiA+PiA+IHRzaHV0IHRlbXBlcmF0dXJlIHRvIDY1MDAwIGFuZCB0
+c2h1dCBtb2RlIHRvIDEpIGRvZXNuJ3QgdHJpZ2dlciBhIFBNSUMKPiA+ID4gPj4gPiByZXNldCwg
+ZXZlbiB0aG91Z2ggYSBkaXJlY3QgYGdwaW9zZXQgMCAxPTBgIGRvZXMuCj4gPiA+ID4+ID4KPiA+
+ID4gPj4gPiBBcmUgYW55IGFkZGl0aW9uYWwgY2hhbmdlcyBuZWVkZWQgdG8gdGhlIGRyaXZlciBp
+dHNlbGY/Cj4gPiA+ID4+Cj4gPiA+ID4+IEkndmUgYmVlbiBkaWdnaW5nIHRocm91Z2ggdGhpcyBw
+YXRjaCB0aGUgd2hvbGUgVFNBREMvT1RQIHRoaW5nIGluIHRoZQo+ID4gPiA+PiBsYXN0IGNvdXBs
+ZSBvZiBob3VycywgYW5kIEFGQUlLIHNvbWUgcGFydHMgb2YgdGhlIHVwc3RyZWFtIGRyaXZlciBh
+cmUKPiA+ID4gPj4gc3RpbGwgbWlzc2luZywgaW4gY29tcGFyaXNvbiB3aXRoIHRoZSBkb3duc3Ry
+ZWFtIGRyaXZlci4KPiA+ID4gPj4KPiA+ID4gPj4gSSd2ZSBnb3Qgc29tZSBzbWFsbCBzdWdnZXN0
+aW9ucyBmb3IgdGhlIHBhdGNoIGl0c2VsZiwgYnV0IHRoZSBpc3N1ZQo+ID4gPiA+PiB5b3Ugb2Jz
+ZXJ2ZWQgaXMgb2J2aW91c2x5IG9mIGhpZ2hlciBwcmlvcml0eSwgYW5kIEkndmUgc2luZ2xlZCBp
+dCBvdXQKPiA+ID4gPj4gYXMgd2VsbCB3aGlsZSBkaWdnaW5nIHRocm91Z2ggdGhlIGNvZGUuCj4g
+PiA+ID4+Cj4gPiA+ID4+IENvdWxkIHlvdSwgcGxlYXNlLCB0cnkgdGhlIHBhdGNoIGJlbG93IHF1
+aWNrbHksIHRvIHNlZSBpcyBpdCBnb2luZyB0bwo+ID4gPiA+PiBmaXggdGhlIGlzc3VlIHlvdSBv
+YnNlcnZlZD8gIEkndmUgZ290IHNvbWUgIklSTCBzdHVmZiIgdG8gdGFrZSBjYXJlIG9mCj4gPiA+
+ID4+IHRvZGF5LCBzbyBJIGNhbid0IHRlc3QgaXQgbXlzZWxmLCBhbmQgaXQgd291bGQgYmUgZ3Jl
+YXQgdG8ga25vdyBpcyBpdAo+ID4gPiA+PiB0aGUgcmlnaHQgcGF0aCB0byB0aGUgcHJvcGVyIGZp
+eC4KPiA+ID4gPj4KPiA+ID4gPj4gZGlmZiAtLWdpdCBpL2RyaXZlcnMvdGhlcm1hbC9yb2NrY2hp
+cF90aGVybWFsLmMKPiA+ID4gPj4gdy9kcml2ZXJzL3RoZXJtYWwvcm9ja2NoaXBfdGhlcm1hbC5j
+Cj4gPiA+ID4+IGluZGV4IGY1NTFkZjQ4ZWVmOS4uNjJmMGUxNGE4ZDk4IDEwMDY0NAo+ID4gPiA+
+PiAtLS0gaS9kcml2ZXJzL3RoZXJtYWwvcm9ja2NoaXBfdGhlcm1hbC5jCj4gPiA+ID4+ICsrKyB3
+L2RyaXZlcnMvdGhlcm1hbC9yb2NrY2hpcF90aGVybWFsLmMKPiA+ID4gPj4gQEAgLTE1NjgsNiAr
+MTU2OCwxMSBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX3RoZXJtYWxfcHJvYmUoc3RydWN0Cj4gPiA+
+ID4+IHBsYXRmb3JtX2RldmljZSAqcGRldikKPiA+ID4gPj4gICAgICAgICAgdGhlcm1hbC0+Y2hp
+cC0+aW5pdGlhbGl6ZSh0aGVybWFsLT5ncmYsIHRoZXJtYWwtPnJlZ3MsCj4gPiA+ID4+ICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdGhlcm1hbC0+dHNodXRfcG9sYXJpdHkpOwo+
+ID4gPiA+Pgo+ID4gPiA+PiArICAgICAgIGlmICh0aGVybWFsLT50c2h1dF9tb2RlID09IFRTSFVU
+X01PREVfR1BJTykKPiA+ID4gPj4gKyAgICAgICAgICAgICAgIHBpbmN0cmxfc2VsZWN0X2RlZmF1
+bHRfc3RhdGUoZGV2KTsKPiA+ID4gPj4gKyAgICAgICBlbHNlCj4gPiA+ID4+ICsgICAgICAgICAg
+ICAgICBwaW5jdHJsX3NlbGVjdF9zbGVlcF9zdGF0ZShkZXYpOwo+ID4gPiA+Cj4gPiA+ID4gSSBi
+ZWxpZXZlIG5vICdlbHNlJyBibG9jayBpcyBuZWVkZWQgaGVyZSwgYmVjYXVzZSBpZiB0c2h1dF9t
+b2RlIGlzIG5vdAo+ID4gPiA+IFRTSFVUX01PREVfR1BJTyB0aGVuIHRoZSBUU0FEQyBkb2Vzbid0
+IHVzZSB0aGlzIHBpbiBhdCBhbGwsIHNvIHRoZXJlJ3MKPiA+ID4gPiBubyByZWFzb24gZm9yIHRo
+ZSBkcml2ZXIgdG8gbWVzcyB3aXRoIGl0cyBwaW5jdHJsIHN0YXRlLiBJJ2QgcmF0aGVyCj4gPiA+
+ID4gcHV0IGEgbWlycm9yaW5nIGJsb2NrIHRvIHB1dCB0aGUgcGluIGJhY2sgdG8gaXRzICdzbGVl
+cCcgc3RhdGUgaW4gdGhlCj4gPiA+ID4gcmVtb3ZhbCBmdW5jdGlvbiBmb3IgdGhlIFRTSFVUX01P
+REVfR1BJTyBjYXNlLgo+ID4gPgo+ID4gPiBZb3UncmUgcmlnaHQsIGJ1dCB0aGUgImVsc2UgYmxv
+Y2siIGlzIHdoYXQgdGhlIGRvd25zdHJlYW0gZHJpdmVyIGRvZXMsCj4gPgo+ID4gRG9lcyBpdCB0
+aG91Z2g/IEl0IG9ubHkgaGFuZGxlcyB0aGUgVFNIVVRfTU9ERV9HUElPIGNhc2UgYXMgZmFyIGFz
+IEkKPiA+IGNhbiB0ZWxsIChvciBUU0hVVF9NT0RFX09UUCBpbiBkb3duc3RyZWFtIGRyaXZlciBs
+aW5nbykgWzFdCj4gPgo+ID4gWzFdIGh0dHBzOi8vZ2l0aHViLmNvbS9yYWR4YS9rZXJuZWwvYmxv
+Yi9lZGIzZWVlYWE0NjQzZWNhYzZmNDE4NWQ2ZDM5MWM1NzQ3MzVmY2ExL2RyaXZlcnMvdGhlcm1h
+bC9yb2NrY2hpcF90aGVybWFsLmMjTDI1NjQKPiA+Cj4gPiA+IHNvIEkgdGhpbmsgaXQncyBiZXR0
+ZXIgdG8gc2ltcGx5IHN0YXkgb24gdGhlIHNhZmUgc2lkZSBhbmQgZm9sbG93IHRoYXQKPiA+ID4g
+bG9naWMgaW4gdGhlIHVwc3RyZWFtIGRyaXZlci4gIElzIGl0IHJlYWxseSBuZWVkZWQ/ICBQZXJo
+YXBzIG5vdCwgYnV0Cj4gPiA+IGl0IGFsc28gc2hvdWxkbid0IGh1cnQuCj4gPiA+Cj4gPiA+ID4g
+V2lsbCB0cnkgYW5kIHJldmVydC4KPiA+ID4KPiA+ID4gQXdlc29tZSwgdGhhbmtzIQo+ID4gPgo+
+ID4gPiA+IFAuUy4gSnVzdCBsb29rZWQgYXQgdGhlIGRvd25zdHJlYW0gZHJpdmVyLCBhbmQgaXQg
+YWN0dWFsbHkgY2FsbHMKPiA+ID4gPiBUU0hVVF9NT0RFX0dQSU8gVFNIVVRfTU9ERV9PVFAgaW5z
+dGVhZCwgc28gaXQgc2VlbXMgdGhhdCAib3Rwb3V0IiB3YXMKPiA+ID4gPiBub3QgYSB0eXBvIGlu
+IHRoZSBmaXJzdCBwbGFjZS4gU28gbWF5YmUgdGhlIHJpZ2h0IGFwcHJvYWNoIGhlcmUgaXMgbm90
+Cj4gPiA+ID4gdG8gY2hhbmdlIHRoZSBkZXZpY2UgdHJlZSBidXQgcmF0aGVyIGZpeCB0aGUgImdw
+aW8iIC8gIm90cG91dCIgcGluY3RybAo+ID4gPiA+IHN0YXRlIGhhbmRsaW5nIGluIHRoZSBkcml2
+ZXIuCj4gPiA+Cj4gPiA+IEluZGVlZCwgIm90cG91dCIgd2Fzbid0IGEgdHlwbywgYW5kIEkndmUg
+YWxyZWFkeSBhZGRyZXNzZWQgdGhhdCBpbiBteQo+ID4gPiBjb21tZW50cyB0byBBbGV4YW5kZXIn
+cyBwYXRjaC4gIFdpbGwgc2VuZCB0aGF0IHJlc3BvbnNlIGEgYml0IGxhdGVyLgo+ID4gPgo+ID4g
+PiBJIHRoaW5rIGl0J3MgYWN0dWFsbHkgYmV0dGVyIHRvIGFjY2VwdCB0aGUgYXBwcm9hY2ggaW4g
+QWxleGFuZGVyJ3MKPiA+ID4gcGF0Y2gsIGJlY2F1c2UgdGhlIHdob2xlIHRoaW5nIGFwcGxpZXMg
+dG8gb3RoZXIgUm9ja2NoaXAgU29DcyBhcyB3ZWxsLAo+ID4gPiBub3QganVzdCB0byB0aGUgUksz
+NTg4KFMpLgo+ID4KPiA+IEFueXdheSwgSSd2ZSBqdXN0IHRyaWVkIGl0IGFmdGVyIGluY2x1ZGlu
+ZyB0aGUgY2hhbmdlcyBiZWxvdywgYW5kCj4gPiB3aGlsZSAvc3lzL2tlcm5lbC9kZWJ1Zy9waW5j
+dHJsL3BpbmN0cmwtaGFuZGxlcyBzaG93cyB0aGUgZXhwZWN0ZWQKPiA+IHBpbmN0cmxzIHVuZGVy
+IHRzYWRjLCB0aGUgZHJpdmVyIHN0aWxsIGRvZXNuJ3Qgc2VlbSB0byBiZSB0cmlnZ2VyaW5nIGEK
+PiA+IFBNSUMgcmVzZXQuIFdlaXJkLiBBbnkgdGhvdWdodHMgd2VsY29tZS4KPiAKPiBJIGZvdW5k
+IHRoZSBjdWxwcml0LiAib3Rwb3V0IiAob3IgImRlZmF1bHQiIGlmIHdlIGZvbGxvdyBBbGV4YW5k
+ZXIncwo+IHN1Z2dlc3RlZCBhcHByb2FjaCkgcGluY3RybCBzdGF0ZSBzaG91bGQgcmVmZXIgdG8g
+dGhlICZ0c2FkY19zaHV0X29yZwo+IGNvbmZpZyBpbnN0ZWFkIG9mICZ0c2FkY19zaHV0IC0gdGhl
+biB0aGUgUE1JQyByZXNldCB3b3Jrcy4KCkkndmUgcmVjZW50bHkgYnJvdWdodCB1cCBhbiBSSzM1
+ODhTLWJhc2VkIE9yYW5nZSBQaSBDTTUgQmFzZSBib2FyZCwgbWFkZQpvZiBhIGNvbXB1dGUgbW9k
+dWxlIChDTTUsIHNlZSBbMV0pIGFuZCBhIGNhcnJpZXIgYm9hcmQgKEJhc2UsIHNlZSBbMl0pLgpU
+aGUgY2FycmllciBib2FyZCBoYXMgYSByZXNldCBidXR0b24gd2hpY2ggcHVsbHMgdGhlIFBNSUNf
+UkVTRVRfTCBzaWduYWwKb2YgdGhlIENNNSB0byBHTkQgKHNlZSBwYWdlIDMgb2YgdGhlIHNjaGVt
+YXRpY3MgaW4gWzNdKS4KCldpdGggJnRzYWRjX3NodXRfb3JnIHRoZSByZXNldCBidXR0b24gaGFz
+IGFic29sdXRlbHkgbm8gZWZmZWN0LiBXaXRoCiZ0c2FkY19zaHV0IGl0IHJlc2V0cyB0aGUgYm9h
+cmQgYXMgZXhwZWN0ZWQuCgpVbmZvcnR1bmF0ZWx5IHRoZSBzY2hlbWF0aWNzIG9mIHRoZSBDTTUg
+aXMgbm90IGF2YWlsYWJsZSBzbyBpdCdzIG5vdAppbW1lZGlhdGVseSBjbGVhciB3aGF0IHRoZSBy
+ZXNldCBidXR0b24gaXMgY29ubmVjdGVkIGV4YWN0bHkuIFRoZSBzYW1lCm1hbnVmYWN0dXJlciBz
+ZWxscyBhbm90aGVyIGJvYXJkIGJhc2VkIG9uIHRoZSBzYW1lIFNvQywgdGhlIE9yYW5nZSBQaSA1
+QgooWzRdKSB3aG9zZSBmdWxsIHNjaGVtYXRpY3MgaXMgYXZhaWxhYmxlIChbNV0pLiBUaGUgYm9h
+cmQgYWxzbyBoYXMgYQpyZXNldCBidXR0b24gcHVsbGluZyBhIFBNSUNfUkVTRVRfTCBzaWduYWwg
+dG8gR05ELiBUaGUgc2lnbmFsIGlzIHB1bGxlZAp1cCB0byBWQ0NfMVY4X1MzIGFuZCBjb25uZWN0
+ZWQgdG8KCi0gUkVTRVRCIG9uIHRoZSBQTUlDCi0gTlBPUiBvbiB0aGUgUkszNTg4UwotIFRTQURD
+X1NIVVQgKEdQSU8wX0ExKSBvbiB0aGUgUkszNTg4UwoKWzFdIGh0dHA6Ly93d3cub3JhbmdlcGku
+b3JnL2h0bWwvaGFyZFdhcmUvY29tcHV0ZXJBbmRNaWNyb2NvbnRyb2xsZXJzL2RldGFpbHMvT3Jh
+bmdlLVBpLUNNNS5odG1sClsyXSBodHRwOi8vd3d3Lm9yYW5nZXBpLm9yZy9odG1sL2hhcmRXYXJl
+L2NvbXB1dGVyQW5kTWljcm9jb250cm9sbGVycy9kZXRhaWxzL09yYW5nZS1QaS1DTTUtQm9hcmQu
+aHRtbApbM10gaHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2ZpbGUvZC8xdDRXbVhHV2VkOE5uUzBt
+MlBXRTdwNVlMaVIxZGJudlAvdmlldwpbNF0gaHR0cDovL3d3dy5vcmFuZ2VwaS5vcmcvaHRtbC9o
+YXJkV2FyZS9jb21wdXRlckFuZE1pY3JvY29udHJvbGxlcnMvZGV0YWlscy9PcmFuZ2UtUGktNUIu
+aHRtbApbNV0gaHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2ZpbGUvZC8xOWlQZHBBWGhBMXZGa1ZP
+Z0c1U3o3TDZjVjhCQjYwMDQvdmlldwoKLS0gClJlZ2FyZHMsCgpMYXVyZW50IFBpbmNoYXJ0Cgpf
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2Nr
+Y2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRw
+Oi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
