@@ -4,63 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7AA93CCA471
-	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Oct 2025 13:03:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2C29CCD182
+	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Oct 2025 13:06:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:References:In-Reply-To:
-	Subject:To:From:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=htEel19IpYfupGCm7PSeB0LBCFJuEGrEhiXo87OxGEw=; b=d+pR2cMtOacXK3
-	6AxwVcrbx88xnsPf/t9u6isP7ce8d5hnsyqwDgMONJXsleayeyC/qlk1uo9kgWDpBkOQrwNgbUiEb
-	6e/Mrzwjb21RPRQTjlPgBQUzAaPOK2FNVNmXdMemw6ZbWSO3RU+G80n4aSo06ZejvkZrYrhtpQ+9T
-	bvneRHe0Pch5cY7UiqZ/ZkCHhkwRvuMBZqnx7qNRELLB9vzn+qA7NArkDcFEmGJipx2wIFj/AG2gy
-	GNNPES7Qn5Ey3DUjjBa+nPwmyT19BXoxebty79DiG3NLCWIjmAxo16QgbZ1hxq15GVS2GvcIrvI31
-	QaXCAF8leeJ9GmdMdDvA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=pa/QEyb2+H8oBogIhh5rNGWDRaprOIRrbpuyAJhmMPY=; b=2rMrnKIvlykNF9Hn0x8M9HgQWT
+	w++dA7Cowb06bbc3AZnxlC+soCyoQmIsTUihQJdQeztazm8C9fhiUuQrwHCug13A0beMR46Jqh8GE
+	hJIa21rY64TwnFduqIP0qPuwiTCSc7cp9xsoDPXfbw9uLoEWHJ6NvJXU5QQ+gb4XplJMjy2hBAhVg
+	hMT8IG95XWmi7ykfp1/tIZeWOtSP7wpf7hN86oz1Hb8rEQ3vNPdmHTKaAGO+NIwpqdVuUvyyeXn8m
+	Hbt+kMHqUGp87rS1S+z/XjajTKRQCJXOspjpm4K2KQ3zWkHE17FRLYUH1NcQGqtRw+sGcKJs1Eq5s
+	ljrv+xug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v4fRY-0000000CKH5-0XoW;
-	Fri, 03 Oct 2025 13:03:28 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1v4fUA-0000000CKwh-0B2Q;
+	Fri, 03 Oct 2025 13:06:10 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v4fRW-0000000CKGs-2MLC;
-	Fri, 03 Oct 2025 13:03:26 +0000
+	id 1v4fU8-0000000CKwS-19qn;
+	Fri, 03 Oct 2025 13:06:08 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id EC11962127;
-	Fri,  3 Oct 2025 13:03:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 21C28C4CEFB;
-	Fri,  3 Oct 2025 13:03:25 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id A517E6212B;
+	Fri,  3 Oct 2025 13:06:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CEFE9C4CEF5;
+	Fri,  3 Oct 2025 13:06:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1759496605;
-	bh=Gd7Oq5ZU+13w8PNpzBPg8aE98Rba9qJgv1pDoDLal7Q=;
-	h=Date:From:To:Subject:In-Reply-To:References:Cc:From;
-	b=tfbXoc6iH2ebCBIYmywEqOfOL/br7+yO0pTJ1zHz+lzYWI4OM+43mHTAer5bdl6eg
-	 343HXDFp8oVnTSn8W9v8ePX8PQuPAVggFPOOjvqRHK8W1/a5+tX5Z99Z8NtRsS0kmz
-	 0rPGKsA0kInxjb1wqWndhnavSx5EzOMBYz2157XwoNY11ApGGHNWOfdsI5pxfqT6si
-	 bfiokh0TN7SjphfFMa9UP3cx5TsWqeAtHZZuuLnY6j0b5bKV8GnrrMk7LDMbhHnwfj
-	 Gr1hossT+lKhqL09Zkl7sCKn3mvSr4Oc1TuqCYPItKtmSstLQM2bhWrZ+ihVaTNDfp
-	 2sbvGsJMbhn8g==
-Message-ID: <795f1dc6b340cc75c40c957ef8d38b0d@kernel.org>
-Date: Fri, 03 Oct 2025 13:03:22 +0000
-From: "Maxime Ripard" <mripard@kernel.org>
-To: "Dmitry Baryshkov" <dmitry.baryshkov@oss.qualcomm.com>
-Subject: Re: [PATCH v2 1/9] drm/display: hdmi-state-helpers: warn on
- unsupported InfoFrame types
-In-Reply-To: <20250928-limit-infoframes-2-v2-1-6f8f5fd04214@oss.qualcomm.com>
-References: <20250928-limit-infoframes-2-v2-1-6f8f5fd04214@oss.qualcomm.com>
-Cc: dri-devel@lists.freedesktop.org, freedreno@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, "Abhinav
- Kumar" <abhinav.kumar@linux.dev>, "Andrzej Hajda" <andrzej.hajda@intel.com>, "Andy
- Yan" <andy.yan@rock-chips.com>, "David Airlie" <airlied@gmail.com>, "Dmitry
- Baryshkov" <lumag@kernel.org>, =?utf-8?b?SGVpa28gU3TDvGJuZXI=?= <heiko@sntech.de>, "Jernej
- Skrabec" <jernej.skrabec@gmail.com>, "Jessica Zhang" <jessica.zhang@oss.qualcomm.com>, "Jonas
- Karlman" <jonas@kwiboo.se>, "Laurent Pinchart" <Laurent.pinchart@ideasonboard.com>, "Liu
- Ying" <victor.liu@nxp.com>, "Maarten Lankhorst" <maarten.lankhorst@linux.intel.com>, "Marijn
- Suijten" <marijn.suijten@somainline.org>, "Maxime Ripard" <mripard@kernel.org>, "Neil
- Armstrong" <neil.armstrong@linaro.org>, "Rob Clark" <robin.clark@oss.qualcomm.com>, "Robert
- Foss" <rfoss@kernel.org>, "Samuel Holland" <samuel@sholland.org>, "Sandy
- Huang" <hjc@rock-chips.com>, "Sean Paul" <sean@poorly.run>, "Simona Vetter" <simona@ffwll.ch>, "Thomas
- Zimmermann" <tzimmermann@suse.de>
+	s=k20201202; t=1759496767;
+	bh=eNt1Gcmgl05avc3eJ3PssbmGBA5Ku1mD4+vRG6E3X5E=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=TlgeRQrw/M/6sxS4v8nGdyP6hV7p3O70yJjDCJGZFC+inkUh9Ps0AhfTa/nxa4X4s
+	 c5mIsJuUAJ1SM0H9oXjZxh7YGRM0fyCx0t+3LKBkziJfXMEhm7gLUhLcGaJTjWaoNN
+	 Mlv1UYzSydNzNCvXwtLHYaRJyf05IPnqemhWLsaqD3trgPH0KR96fz8GQ3D5/umi1j
+	 cv975MVhvL4sCQuSvzk44+FKxYfrbhoC7/4kCt4eFd06r7NZnvcehFAifZTGNmodWS
+	 RJBegdKK+9SK9eeGQVJcqhRkIKG0fRflr4hVRrx9fdmEjr4EGLHB1xtUD6tcxikWl4
+	 D1iOe0AW6IoWA==
+Date: Fri, 3 Oct 2025 15:06:04 +0200
+From: Maxime Ripard <mripard@kernel.org>
+To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+	Simona Vetter <simona@ffwll.ch>, Liu Ying <victor.liu@nxp.com>, 
+	Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
+	Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	Rob Clark <robin.clark@oss.qualcomm.com>, Dmitry Baryshkov <lumag@kernel.org>, 
+	Abhinav Kumar <abhinav.kumar@linux.dev>, Jessica Zhang <jessica.zhang@oss.qualcomm.com>, 
+	Sean Paul <sean@poorly.run>, Marijn Suijten <marijn.suijten@somainline.org>, 
+	Sandy Huang <hjc@rock-chips.com>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, 
+	Andy Yan <andy.yan@rock-chips.com>, Samuel Holland <samuel@sholland.org>, 
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org, 
+	freedreno@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev
+Subject: Re: [PATCH v2 2/9] drm/bridge: adv7511: handle unsupported InfoFrames
+Message-ID: <20251003-crystal-monkey-of-fantasy-ea4a1a@houat>
+References: <20250928-limit-infoframes-2-v2-0-6f8f5fd04214@oss.qualcomm.com>
+ <20250928-limit-infoframes-2-v2-2-6f8f5fd04214@oss.qualcomm.com>
+MIME-Version: 1.0
+In-Reply-To: <20250928-limit-infoframes-2-v2-2-6f8f5fd04214@oss.qualcomm.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,27 +75,116 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============3993003723357018952=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sun, 28 Sep 2025 11:24:46 +0300, Dmitry Baryshkov wrote:
-> In preparation to tightening driver control over generated InfoFrames,
-> make sure to warn the user if the driver rejects the InfoFrames on the
-> grounds of it being unsupported.
-> 
+
+--===============3993003723357018952==
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="54ncbnvuigfo4z2w"
+Content-Disposition: inline
+
+
+--54ncbnvuigfo4z2w
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v2 2/9] drm/bridge: adv7511: handle unsupported InfoFrames
+MIME-Version: 1.0
+
+Hi,
+
+On Sun, Sep 28, 2025 at 11:24:47AM +0300, Dmitry Baryshkov wrote:
+> Make hdmi_write_hdmi_infoframe() and hdmi_clear_infoframe() callbacks
+> return -EOPNOTSUPP for unsupported InfoFrames and make sure that
+> atomic_check() callback doesn't allow unsupported InfoFrames to be
+> enabled.
+>=20
 > Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-> 
-> [ ... ]
+> ---
+>  drivers/gpu/drm/bridge/adv7511/adv7511_drv.c | 20 ++++++++++++++++----
+>  1 file changed, 16 insertions(+), 4 deletions(-)
+>=20
+> diff --git a/drivers/gpu/drm/bridge/adv7511/adv7511_drv.c b/drivers/gpu/d=
+rm/bridge/adv7511/adv7511_drv.c
+> index b9be8654130758e69ac7ccbc73a82cc25d731a5c..241f02143f59322a814b4b277=
+082637d59be7d5f 100644
+> --- a/drivers/gpu/drm/bridge/adv7511/adv7511_drv.c
+> +++ b/drivers/gpu/drm/bridge/adv7511/adv7511_drv.c
+> @@ -906,8 +906,7 @@ static int adv7511_bridge_hdmi_clear_infoframe(struct=
+ drm_bridge *bridge,
+>  		adv7511_packet_disable(adv7511, ADV7511_PACKET_ENABLE_SPARE1);
+>  		break;
+>  	default:
+> -		drm_dbg_driver(adv7511->bridge.dev, "Unsupported HDMI InfoFrame %x\n",=
+ type);
+> -		break;
+> +		return -EOPNOTSUPP;
+>  	}
+> =20
+>  	return 0;
+> @@ -966,19 +965,32 @@ static int adv7511_bridge_hdmi_write_infoframe(stru=
+ct drm_bridge *bridge,
+>  		adv7511_packet_enable(adv7511, ADV7511_PACKET_ENABLE_SPARE1);
+>  		break;
+>  	default:
+> -		drm_dbg_driver(adv7511->bridge.dev, "Unsupported HDMI InfoFrame %x\n",=
+ type);
+> -		break;
+> +		return -EOPNOTSUPP;
+>  	}
 
-Reviewed-by: Maxime Ripard <mripard@kernel.org>
+I'm completely fine with that part.
 
-Thanks!
+>  	return 0;
+>  }
+> =20
+> +static int adv7511_bridge_atomic_check(struct drm_bridge *bridge,
+> +				       struct drm_bridge_state *bridge_state,
+> +				       struct drm_crtc_state *crtc_state,
+> +				       struct drm_connector_state *conn_state)
+> +{
+> +	/* should not happen, HDR support not enabled */
+> +	if (drm_WARN_ON_ONCE(bridge->encoder->dev,
+> +			     conn_state->hdmi.infoframes.hdr_drm.set))
+> +		return -EOPNOTSUPP;
+> +
+> +	return 0;
+> +}
+> +
+
+However, I'm not sure we need that boilerplate in any driver. I'd rather
+expand the kunit test suite to make sure it never happens rather than
+adding it to every driver.
+
 Maxime
+
+--54ncbnvuigfo4z2w
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCaN/KMwAKCRAnX84Zoj2+
+dnyuAX42GfxKCL/3093it2n3uUpzK4IH9zfQ3SHTXOJGmhKXFE5M88bQKfBUgIh/
++g4R80YBf2MDvgokTCDsxDGAEu7jkpWUmqQgAkHrI1IDGnk4vLKev6hUVpls0k2z
+ag0XePnvhw==
+=iLh5
+-----END PGP SIGNATURE-----
+
+--54ncbnvuigfo4z2w--
+
+
+--===============3993003723357018952==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============3993003723357018952==--
+
