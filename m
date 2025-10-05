@@ -4,54 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40D12CCA470
-	for <linux-rockchip@archiver.kernel.org>; Sun,  5 Oct 2025 23:56:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CF99CCD187
+	for <linux-rockchip@archiver.kernel.org>; Sun,  5 Oct 2025 23:56:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uicFbwwlgNT51ikkKh7m0nsIzZbRLSiirWLGOTf/yH0=; b=ix4vBeY60lL6g8
-	SXGFLCM9dRCbKwhsMGtYyopywrbdOjF9UHyFlXFWI25Q+bNDCoJ+eCBDd828EbNnKh9n0HRyllZ2w
-	GRGb1MV7QVxE0GdHtVxTBXksPpP7zRiA8kP9K/6nnjr+rnPczpMFazRF3cqgnLVtiqtFdfz2GzDMY
-	zzKYj7K/l2Qd1aOh+oQIWWoKWB/1jbfvnE1nOs9sCTKNyfGB65fAH/R8Ma7Xx1agoys4zJ8Aa4Guh
-	QxPMvf0aagRLrsy3zRwceWqdBmkazvTCLhTMAwaw3Sez2pweUjsrqVh6sl59K0GAL79PL6IDnAj3H
-	eP+NXnwSGbKvMi+VN8kg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=8FNJ4+EQNhRpMIl+408xJ0X/2hCU8GrNPX+2+3PA8uU=; b=jE1Ka14sqbg4Kt
+	66/ft8ZvIufk5AnUUXgFt4Hsx5OwTbzfvG+7w4tnQMMxnJVxE840Llzn56FzCvMDkL5RwZL9sONDM
+	RNji+1xAIdQB34RFWTX9AYUjnwu40pMKKpaIe6R7hx5hwUze0+Hk1VAUnSqg2EvPYZxL4Wjr1NnJ3
+	EbPLGa8qg6YQaEB5zLZ+hDOASUalw4PnV+hDhZJFfHWKphzeqrbCb3pdJJGlxXSv+/mEsgqrGKPzU
+	ZTK+sboEzO8e2B+5W3pZ7R/NgDZ+QWqe6o1xEg/9QUWRiFosOTxRZNy+9rn9x2jBOerCJjbFIMoF3
+	s9TeiGFwZYOoEbyRfvIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v5Ya9-0000000GkcO-1qYx;
-	Sun, 05 Oct 2025 23:56:01 +0000
+	id 1v5Ya7-0000000Gkar-0qCF;
+	Sun, 05 Oct 2025 23:55:59 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v5Ya5-0000000GkWj-27Pi;
-	Sun, 05 Oct 2025 23:55:58 +0000
+	id 1v5Ya3-0000000GkW1-3r9Z;
+	Sun, 05 Oct 2025 23:55:57 +0000
 Received: from pendragon.ideasonboard.com (81-175-209-231.bb.dnainternet.fi [81.175.209.231])
-	by perceval.ideasonboard.com (Postfix) with UTF8SMTPSA id D12E6EA0;
-	Mon,  6 Oct 2025 01:54:18 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with UTF8SMTPSA id 9FAAC11AE;
+	Mon,  6 Oct 2025 01:54:16 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1759708459;
-	bh=BlwipHq8gUoEhQ1Vm5JfEinzCONZGPrIIa0pM4kISPY=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=RsmoodVCKh5oNCE1nWXifMs4SFBrFLD90OgoxzP53DqrjXUm0Z/ceJsE62dRiBo1S
-	 xjAAmjBfuX0eByn48tlfWk26pAEQ/UFLIye5Uwe00LtdB7AhYFGIs0wxUR4Jo/bHwn
-	 LHdqrFDWgDFhlqzFiAGGi0w+dM+zkgopTd//SaAY=
+	s=mail; t=1759708456;
+	bh=H6DUy7gUUFzf7L9G58j7/brWtZ1vdQDbJMU7TIx2b+s=;
+	h=From:To:Cc:Subject:Date:From;
+	b=dNmIR7tdjJz+LYW1VSS0Y7dcW6TLI9FViOmnzeC7yViytgHDpSdGEyPvjxxFapuUk
+	 /7SrVAUPeep41iQdUU0CO2lK/t60W+xSkisdTPazs+fjlf4VOx7zUpZkyO2Smt6BZg
+	 4PKwXuHeKlgX/7HSFG41gdaqodKY/AakpMeTU2bw=
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 To: devicetree@vger.kernel.org,
 	dri-devel@lists.freedesktop.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH v2 1/5] dt-bindings: display: rk3588-dw-hdmi-qp: Add tmds-enable-gpios property
-Date: Mon,  6 Oct 2025 02:55:37 +0300
-Message-ID: <20251005235542.1017-2-laurent.pinchart@ideasonboard.com>
+Subject: [PATCH v2 0/5] arm64: dts: rockchip: Add device tree for the Orange Pi CM5 Base board
+Date: Mon,  6 Oct 2025 02:55:36 +0300
+Message-ID: <20251005235542.1017-1-laurent.pinchart@ideasonboard.com>
 X-Mailer: git-send-email 2.49.1
-In-Reply-To: <20251005235542.1017-1-laurent.pinchart@ideasonboard.com>
-References: <20251005235542.1017-1-laurent.pinchart@ideasonboard.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251005_165557_708252_CC5C53EA 
-X-CRM114-Status: UNSURE (   9.83  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251005_165556_090974_27A767BB 
+X-CRM114-Status: GOOD (  13.97  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,57 +66,55 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Hello,
 
-Add an optional property to RK3588 HDMI TX Controller binding describing
-a GPIO line to be asserted when operating in HDMI 1.4/2.0 TMDS mode and
-deasserted for HDMI 2.1 FRL.
+This patch series adds a device tree for the Orange Pi CM5 Base board
+from Xunlong. This is a combination of a compute module and a carrier
+board, so the device tree is split in two files.
 
-This is used to control an external level shifter for HDMI data lines.
+The work is based on a combination of upstream device trees for other
+RK3588-based Orange Pi boards and the downstream device tree, all
+checked against the available schematics for the carrier board. The
+compute module schematics is unfortunately not available.
 
-Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
----
- .../display/rockchip/rockchip,rk3588-dw-hdmi-qp.yaml   | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+The series starts with three patches that add a new tmds-enable-gpios
+property to the rk3588-dw-hdmi-qp DT binding (1/5) and update the driver
+accordingly (2/5 and 3/5). Those patches have been authored by Cristian
+Ciocaltea as part of a larger series, I have incorporated them here
+as-is.
 
-diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3588-dw-hdmi-qp.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3588-dw-hdmi-qp.yaml
-index 96b4b088eebe..eec0d40c91ea 100644
---- a/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3588-dw-hdmi-qp.yaml
-+++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3588-dw-hdmi-qp.yaml
-@@ -113,6 +113,13 @@ properties:
-     description:
-       Additional HDMI QP related data is accessed through VO GRF regs.
- 
-+  tmds-enable-gpios:
-+    description:
-+      Optional GPIO line to be asserted when operating in HDMI 1.4/2.0
-+      TMDS mode and deasserted for HDMI 2.1 FRL. It can be used to control
-+      an external level shifter for HDMI data lines.
-+    maxItems: 1
-+
- required:
-   - compatible
-   - reg
-@@ -132,8 +139,10 @@ unevaluatedProperties: false
- examples:
-   - |
-     #include <dt-bindings/clock/rockchip,rk3588-cru.h>
-+    #include <dt-bindings/gpio/gpio.h>
-     #include <dt-bindings/interrupt-controller/arm-gic.h>
-     #include <dt-bindings/interrupt-controller/irq.h>
-+    #include <dt-bindings/pinctrl/rockchip.h>
-     #include <dt-bindings/power/rk3588-power.h>
-     #include <dt-bindings/reset/rockchip,rk3588-cru.h>
- 
-@@ -164,6 +173,7 @@ examples:
-         rockchip,grf = <&sys_grf>;
-         rockchip,vo-grf = <&vo1_grf>;
-         #sound-dai-cells = <0>;
-+        tmds-enable-gpios = <&gpio4 RK_PB1 GPIO_ACTIVE_HIGH>;
- 
-         ports {
-           #address-cells = <1>;
+Patch 4/5 then add a new compatible for the board to arm/rockchip.yaml.
+The last patch (5/5) adds the device tree for the board.
+
+Patches 2/5 and 3/5 could be merged separately through the DRM tree,
+but patch 1/5 needs to be merged with the device tree in 5/5 to avoid
+introducing DT validation warnings. I'd appreciate advice from the DT
+maintainers regarding how to handle this, as I have been told before
+that DT bindings and DT sources can't be merged through the same tree.
+
+Cristian Ciocaltea (3):
+  dt-bindings: display: rk3588-dw-hdmi-qp: Add tmds-enable-gpios
+    property
+  drm/rockchip: dw_hdmi_qp: Improve error handling with dev_err_probe()
+  drm/rockchip: dw_hdmi_qp: Fixup usage of enable_gpio member in main
+    struct
+
+Laurent Pinchart (2):
+  dt-bindings: arm: rockchip: Add Orange Pi CM5 Base
+  arm64: dts: rockchip: Add rk3588s-orangepi-cm5-base device tree
+
+ .../devicetree/bindings/arm/rockchip.yaml     |   6 +
+ .../rockchip/rockchip,rk3588-dw-hdmi-qp.yaml  |  10 +
+ arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+ .../rockchip/rk3588s-orangepi-cm5-base.dts    | 346 +++++++++++++
+ .../dts/rockchip/rk3588s-orangepi-cm5.dtsi    | 473 ++++++++++++++++++
+ .../gpu/drm/rockchip/dw_hdmi_qp-rockchip.c    |  70 ++-
+ 6 files changed, 864 insertions(+), 42 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-orangepi-cm5-base.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-orangepi-cm5.dtsi
+
+
+base-commit: e5f0a698b34ed76002dc5cff3804a61c80233a7a
 -- 
 Regards,
 
