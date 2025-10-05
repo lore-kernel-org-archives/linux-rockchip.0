@@ -4,61 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C99BFCAC5BB
-	for <linux-rockchip@archiver.kernel.org>; Sun,  5 Oct 2025 00:25:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0482BCAC5B8
+	for <linux-rockchip@archiver.kernel.org>; Sun,  5 Oct 2025 04:55:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=og5B3QcaTSnnXIEWlgq/sf4VC7AbhkY1i/IaThvvQIU=; b=4vK98/K7AVIVkM
-	JgWtogm6iQzglsUJsS/2U9M+PPjDjjN4/9OX2XAQQkPVWo8N2O3RbFXe2m5dHDhgLMIccK3p8nIxi
-	IiqO26YR3DhYvJK1EoHjiwdH7tABerQNRwgBVj0RQONZ5OZlxFJXLm+3GjJm7SBcwWpXJIXIIDowW
-	cpKvzTXw+E6r4UJEgWuha9h6F/mhari00wS7r5e3b2MHj05aapz1mGUoYhJzETQlxF8DF0YARlkaS
-	f0tlgouK+5wFpU2jbZ6ol8tyFEhox8BMEBtv/AENnLTdDcQIzQgG57gdFKfl90DhwFb3KMPf/uLYk
-	k2HgyDqDyM599KvAbz8w==;
+	List-Owner; bh=aizqtQcWKxi5RzqW9w5N3vbotSLwJs6KDjdV0h6y6lw=; b=Zt+7MkQ6bfyDcX
+	DRNGDXgu1itqxEEEqpmCwFfaEbkQM5jnCX24Risy2hlItbO8YxvgEeBvldCBQmZC0bjVfYJxq57Yi
+	Hg1xfQmBmxk50518na3zAae2fC6idTt7oGQWUVk++IKChF1f/Ixl9oZMXCBGl1IS7rmW4Q/oDVLnA
+	zn1wFrtaO9Mw5wOo3lU7h0/Pgc+8vi5vOuSO9gxHBVzRWVgIq6O3L8DoQCo8DyKNbKOcOT/SXPqdx
+	7hnP6ROc/1xV4FhZ8CBtZegEASNHSuGiSagLzw/c+2EWF1Ooq8+7CDqqwqRQeO25UV+prBxIV2bLd
+	0LNh3dhiINXdeIWD9nXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v5CYj-0000000E8h0-1nJI;
-	Sun, 05 Oct 2025 00:25:05 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1v5GmL-0000000EERf-03YS;
+	Sun, 05 Oct 2025 04:55:25 +0000
+Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v5CYf-0000000E8gQ-3ydC;
-	Sun, 05 Oct 2025 00:25:03 +0000
-Received: from pendragon.ideasonboard.com (81-175-209-231.bb.dnainternet.fi [81.175.209.231])
-	by perceval.ideasonboard.com (Postfix) with UTF8SMTPSA id 9808BC6E;
-	Sun,  5 Oct 2025 02:23:28 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1759623808;
-	bh=gQv8rVt3G5Sp/h+9pCG5bWX/kK8RHwN2ZheTAD4EXIk=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=l2peJZjuAyJ81txRk4qoY/Ur0O6bFvvsDsyhwMyer/VKPa5qPb8elcdgidPiibbcX
-	 yIqG3zibNUlNupGh5IBzWNANJUxVkcsZmGoQjnn6bruWJpEAry30K2tuUtTNLfKBW/
-	 MS99wot2Qevcz3QM/7zLiwV6b2wjw4JBjrzp+hi4=
-Date: Sun, 5 Oct 2025 03:24:53 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-Cc: Dafna Hirschfeld <dafna@fastmail.com>, Keke Li <keke.li@amlogic.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Dan Scally <dan.scally@ideasonboard.com>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	Antoine Bouyer <antoine.bouyer@nxp.com>,
-	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v5 3/8] media: uapi: Convert Amlogic C3 to V4L2
- extensible params
-Message-ID: <20251005002453.GC13055@pendragon.ideasonboard.com>
-References: <20250915-extensible-parameters-validation-v5-0-e6db94468af3@ideasonboard.com>
- <20250915-extensible-parameters-validation-v5-3-e6db94468af3@ideasonboard.com>
+	id 1v5GmI-0000000EEQx-2pWf
+	for linux-rockchip@lists.infradead.org;
+	Sun, 05 Oct 2025 04:55:23 +0000
+Received: by mail-pf1-x429.google.com with SMTP id d2e1a72fcca58-781ea2cee3fso3559457b3a.0
+        for <linux-rockchip@lists.infradead.org>; Sat, 04 Oct 2025 21:55:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1759640121; x=1760244921; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=l9ES7sgSCHDlhobwO0ZrFKVNTVshI11voBNNIhtfWjA=;
+        b=XCHP2SqdG9gc0BPKPfRlqU2lc2loiR8yWWsDq3AAfGr3e9ldOypB/X1TUhc979l/TS
+         PTthhGDyr/9ZUj100g+ZZaTGKJ7qRLZUSkAA1dxrI264Mn8hnKh61we3fiMKQzTHb01q
+         5C1P8dATm4WeAUOnjVebx62s6DEAJPCySBABas0yQN0ID3eoLwwlyc9p5EAbzk+81J5d
+         tR04+K3rl4yK2htvyvMgkrCa2mfFr0aYK/hvIjW7q3NoCqgu4ZlqFqb55xp9zERN+Xkv
+         IayByTK1X7KY8cmCf1vYXaZRNxIumIGOBX4eRcJSa9IO0v3SQoggUeaJczo+1hfPseiG
+         qYTQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1759640121; x=1760244921;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=l9ES7sgSCHDlhobwO0ZrFKVNTVshI11voBNNIhtfWjA=;
+        b=YX56eVDS2BRJIZR7ncNOIgznFCo6PrvRcp6uX+IISJATbfieya6Gabk2Iu5AzCpRuF
+         TZrL5GaCc5ZdSPpOOdLjn+QQPpX9p3HabKflG0LpwswTUOy6odQj0JMyaH3l2FaIf+pU
+         X+uhIB3AwhoH9E+NYXmL7pvz0pegWpCC6kXJK4aDgsqXhKE0k818LoKKD03eCIKrnIZ7
+         RXEaWMfCSFMydjmP/Ue1mzisTMBJb6SO56dLp75ysRRVblRa7Saz+RkgEyos+z5IsvAk
+         He4oJhDs1reQOp8nvGHHvHkGzZtsGXuulF6ZpUD1AT3nygcQrnkDvN5/cfPCRJhJO1gI
+         Nabw==
+X-Forwarded-Encrypted: i=1; AJvYcCWJpOJkKCajNy0LhU43PoVvQcAx9EZNO/LcllBmRuWcCY6V6ILSkMoNVLxvUhPfW4msC5+7RcP7uEpeL0QKSA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzrlD/Fxx94J4IAzipKVD/glLifcaZMI24snBt2Uipcn1Y2yciM
+	Lr9BYjVc3730qeTEWkfrFbPCVAwuGVEW7r6WyMKVQqn8BvtBJkxzmi8IAJwQ4+CxHIo=
+X-Gm-Gg: ASbGnct4ncztJhMpC6rF6jCPfXSVUkFJuP3BAoisBKrNsDm2AQe0HhoEP/6OAA2K5kb
+	jGT/0a/SdLGITmYMkgZtzVSrgrCH8+CkSOsywcLDemhRdq78jRE2denEe7z6fH+zyeOYWwyNc2D
+	2y6Vh2Qs2d3fvW/ewORcVj5mCtwoswgq2hjh7o56clyFrtrQZALwKX0rt/SL+0HLJ56Krgz83Vp
+	woi5SdqnH/xp8ciCvGiYzlZODOnylG2SYRgzx0yiliUsRHPKySnmEPRWCYbx7eFXdLe8rNAptYZ
+	SCbxOpqCy+KBTKTsP8wycx+9RafUstXkszaJUp6HFEXJ6hplSLFzrEjRPxjiEOGPmdDOceWXp8J
+	Ea7OK4AMApjpxaKFSqbf2ynhie11gnKO2977NVR7RlfrsUEh6tnhN5FXZyvhObWZLdENFt5k0n5
+	yZNScl9Wpob8PzN8l+nffZmlNDFR4W6zxZGBA=
+X-Google-Smtp-Source: AGHT+IHrXDCzsLNximokCsFX8BTq6/xEQSVOcieVuoemZgV4yRTvna8trHt71DcqUkLSfovmVG7MFg==
+X-Received: by 2002:a05:6a21:999d:b0:2f6:cabe:a7a8 with SMTP id adf61e73a8af0-32b6209626amr10163253637.32.1759640121168;
+        Sat, 04 Oct 2025 21:55:21 -0700 (PDT)
+Received: from [192.168.68.61] (104-12-136-65.lightspeed.irvnca.sbcglobal.net. [104.12.136.65])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-b6099d4cfbesm8686558a12.28.2025.10.04.21.55.20
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 04 Oct 2025 21:55:20 -0700 (PDT)
+Message-ID: <37f2603e-8c51-4f92-a7af-0e60cd577004@gmail.com>
+Date: Sat, 4 Oct 2025 21:55:19 -0700
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250915-extensible-parameters-validation-v5-3-e6db94468af3@ideasonboard.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 0/5] Upstreaming Pinephone Pro Patches
+To: Dragan Simic <dsimic@manjaro.org>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Ondrej Jirman <megi@xff.cz>, "Leonardo G. Trombetta" <lgtrombetta@gmx.com>
+References: <20250921-ppp_light_accel_mag_vol-down-v3-0-7af6651f77e4@gmail.com>
+ <53eabe34a310ea9c74315fa09a604e4a@manjaro.org>
+ <b01ed528-8b29-4a6a-bdff-88f2e3b5dd2e@gmail.com>
+ <115da845d9161e6ecfa67cf189b84aa8@manjaro.org>
+Content-Language: en-US
+From: Rudraksha Gupta <guptarud@gmail.com>
+In-Reply-To: <115da845d9161e6ecfa67cf189b84aa8@manjaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251004_172502_135774_A83B8E7C 
-X-CRM114-Status: GOOD (  40.31  )
+X-CRM114-CacheID: sfid-20251004_215522_741982_11635D8C 
+X-CRM114-Status: GOOD (  29.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,183 +102,76 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Jacopo,
-
-Thank you for the patch.
-
-On Mon, Sep 15, 2025 at 07:18:12PM +0200, Jacopo Mondi wrote:
-> With the introduction of common types for extensible parameters
-> format, convert the c3-isp-config.h header to use the new types.
-> 
-> Factor-out the documentation that is now part of the common header
-> and only keep the driver-specific on in place.
-> 
-> The conversion to use common types doesn't impact userspace as the
-> new types are either identical to the ones already existing in the
-> C3 ISP uAPI or are 1-to-1 type convertible.
-
-You can reflow the commit message.
-
-> Reviewed-by: Daniel Scally <dan.scally@ideasonboard.com>
-> Reviewed-by: Keke Li <keke.li@amlogic.com>
-> Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-> ---
->  include/uapi/linux/media/amlogic/c3-isp-config.h | 86 ++++++------------------
->  1 file changed, 20 insertions(+), 66 deletions(-)
-> 
-> diff --git a/include/uapi/linux/media/amlogic/c3-isp-config.h b/include/uapi/linux/media/amlogic/c3-isp-config.h
-> index ed085ea62a574932c7ad8d59d34b2c5c74a597d8..bf6de55b27a7d4d15effcca5525865650d9070fb 100644
-> --- a/include/uapi/linux/media/amlogic/c3-isp-config.h
-> +++ b/include/uapi/linux/media/amlogic/c3-isp-config.h
-> @@ -6,8 +6,13 @@
->  #ifndef _UAPI_C3_ISP_CONFIG_H_
->  #define _UAPI_C3_ISP_CONFIG_H_
->  
-> +#ifdef __KERNEL__
-> +#include <linux/build_bug.h>
-> +#endif /* __KERNEL__ */
->  #include <linux/types.h>
->  
-> +#include <linux/media/v4l2-isp.h>
-> +
->  /*
->   * Frames are split into zones of almost equal width and height - a zone is a
->   * rectangular tile of a frame. The metering blocks within the ISP collect
-> @@ -176,62 +181,22 @@ enum c3_isp_params_block_type {
->  	C3_ISP_PARAMS_BLOCK_SENTINEL
->  };
->  
-> -#define C3_ISP_PARAMS_BLOCK_FL_DISABLE (1U << 0)
-> -#define C3_ISP_PARAMS_BLOCK_FL_ENABLE (1U << 1)
-> +/* For backward compatibility */
-> +#define C3_ISP_PARAMS_BLOCK_FL_DISABLE	V4L2_PARAMS_FL_BLOCK_DISABLE
-> +#define C3_ISP_PARAMS_BLOCK_FL_ENABLE	V4L2_PARAMS_FL_BLOCK_ENABLE
->  
->  /**
->   * struct c3_isp_params_block_header - C3 ISP parameter block header
->   *
->   * This structure represents the common part of all the ISP configuration
-> - * blocks. Each parameters block shall embed an instance of this structure type
-> - * as its first member, followed by the block-specific configuration data. The
-> - * driver inspects this common header to discern the block type and its size and
-> - * properly handle the block content by casting it to the correct block-specific
-> - * type.
-
-+ * blocks and is identical to :c:type:`v4l2_params_block_header`.
-
->   *
->   * The @type field is one of the values enumerated by
-
-s/@type/type/
-
-Please compile the documentation for the next version. I expect the
-'struct c3_isp_params_block_header' above to not be appreciated by
-sphinx as there's no corresponding structure.
-
-Reviewed-by: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>
-
->   * :c:type:`c3_isp_params_block_type` and specifies how the data should be
-> - * interpreted by the driver. The @size field specifies the size of the
-> - * parameters block and is used by the driver for validation purposes. The
-> - * @flags field is a bitmask of per-block flags C3_ISP_PARAMS_FL*.
-> - *
-> - * When userspace wants to disable an ISP block the
-> - * C3_ISP_PARAMS_BLOCK_FL_DISABLED bit should be set in the @flags field. In
-> - * this case userspace may optionally omit the remainder of the configuration
-> - * block, which will be ignored by the driver.
-> - *
-> - * When a new configuration of an ISP block needs to be applied userspace
-> - * shall fully populate the ISP block and omit setting the
-> - * C3_ISP_PARAMS_BLOCK_FL_DISABLED bit in the @flags field.
-> - *
-> - * Userspace is responsible for correctly populating the parameters block header
-> - * fields (@type, @flags and @size) and the block-specific parameters.
-> - *
-> - * For example:
-> - *
-> - * .. code-block:: c
-> + * interpreted by the driver.
->   *
-> - *	void populate_pst_gamma(struct c3_isp_params_block_header *block) {
-> - *		struct c3_isp_params_pst_gamma *gamma =
-> - *			(struct c3_isp_params_pst_gamma *)block;
-> - *
-> - *		gamma->header.type = C3_ISP_PARAMS_BLOCK_PST_GAMMA;
-> - *		gamma->header.flags = C3_ISP_PARAMS_BLOCK_FL_ENABLE;
-> - *		gamma->header.size = sizeof(*gamma);
-> - *
-> - *		for (unsigned int i = 0; i < 129; i++)
-> - *			gamma->pst_gamma_lut[i] = i;
-> - *	}
-> - *
-> - * @type: The parameters block type from :c:type:`c3_isp_params_block_type`
-> - * @flags: A bitmask of block flags
-> - * @size: Size (in bytes) of the parameters block, including this header
-> + * The flags field is a bitmask of per-block flags C3_ISP_PARAMS_FL_*.
->   */
-> -struct c3_isp_params_block_header {
-> -	__u16 type;
-> -	__u16 flags;
-> -	__u32 size;
-> -};
-> +#define c3_isp_params_block_header v4l2_params_block_header
->  
->  /**
->   * struct c3_isp_params_awb_gains - Gains for auto-white balance
-> @@ -498,26 +463,9 @@ struct c3_isp_params_blc {
->  /**
->   * struct c3_isp_params_cfg - C3 ISP configuration parameters
->   *
-> - * This struct contains the configuration parameters of the C3 ISP
-> - * algorithms, serialized by userspace into an opaque data buffer. Each
-> - * configuration parameter block is represented by a block-specific structure
-> - * which contains a :c:type:`c3_isp_param_block_header` entry as first
-> - * member. Userspace populates the @data buffer with configuration parameters
-> - * for the blocks that it intends to configure. As a consequence, the data
-> - * buffer effective size changes according to the number of ISP blocks that
-> - * userspace intends to configure.
-> - *
-> - * The parameters buffer is versioned by the @version field to allow modifying
-> - * and extending its definition. Userspace should populate the @version field to
-> - * inform the driver about the version it intends to use. The driver will parse
-> - * and handle the @data buffer according to the data layout specific to the
-> - * indicated revision and return an error if the desired revision is not
-> - * supported.
-> - *
-> - * For each ISP block that userspace wants to configure, a block-specific
-> - * structure is appended to the @data buffer, one after the other without gaps
-> - * in between nor overlaps. Userspace shall populate the @total_size field with
-> - * the effective size, in bytes, of the @data buffer.
-> + * This is the driver-specific implementation of :c:type:`v4l2_params_buffer`.
-> + *
-> + * Currently only C3_ISP_PARAM_BUFFER_V0 is supported.
->   *
->   * The expected memory layout of the parameters buffer is::
->   *
-> @@ -561,4 +509,10 @@ struct c3_isp_params_cfg {
->  	__u8 data[C3_ISP_PARAMS_MAX_SIZE];
->  };
->  
-> +#ifdef __KERNEL__
-> +/* Make sure the header is type-convertible to the generic v4l2 params one */
-> +static_assert((sizeof(struct c3_isp_params_cfg) - C3_ISP_PARAMS_MAX_SIZE) ==
-> +	      sizeof(struct v4l2_params_buffer));
-> +#endif /* __KERNEL__ */
-> +
->  #endif
-> 
-
--- 
-Regards,
-
-Laurent Pinchart
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGVsbG8gRHJhZ2FuLAoKCj4gVGhhbmtzIGZvciBpbXByb3ZpbmcgdGhlIHBhdGNoIGRlc2NyaXB0
+aW9ucyBpbiB0aGUgdjQgb2YgdGhpcyBzZXJpZXMuCj4gSSBqdXN0IHdlbnQgcXVpY2tseSB0aHJv
+dWdoIHRoZSB2NCBhbmQgaXQgbG9va3MgbXVjaCBiZXR0ZXIuCj4KPiBJdCBjb3VsZCBiZSBzYWlk
+IHRoYXQgdGhlIG5ldyBwYXRjaCBkZXNjcmlwdGlvbnMgYXJlIG5vdyBhIGJpdCB0b28KPiB2ZXJi
+b3NlLCBpbiB0aGUgc2Vuc2UgdGhhdCB0aGUgdGVzdCBwcm9jZWR1cmVzIGFuZCB0aGVpciByZXN1
+bHRzIGNvdWxkCj4gYmUgc3VtbWVkIHVwIGEgYml0IGJldHRlciBpbiBwcm9zZSwgaW5zdGVhZCBv
+ZiBwcm92aWRpbmcgdGhlICJyYXciCj4gaW5wdXRzIGFuZCBvdXRwdXRzLsKgIEhvd2V2ZXIsIGl0
+J3Mgc3RpbGwgYmV0dGVyIHRvIGhhdmUgdGhvc2UsIHRoYW4KPiBub3QgdG8gaGF2ZSBhbnl0aGlu
+Zy7CoCBXcml0aW5nIGdvb2QgcHJvc2UgaXMgYSBza2lsbCB0aGF0IHVzdWFsbHkKPiByZXF1aXJl
+cyBsZWFybmluZyBhbmQgcHJhY3RpY2UuCgpBd2Vzb21lISBJIHdhcyBob3BpbmcgdGhhdCBvdGhl
+cnMgd291bGQgY29tbWVudCBvbiB0aGUgdGVzdGluZyBJJ3ZlIGRvbmUgCihlc3BlY2lhbGx5IGZv
+ciB0aGUgYWNjZWxlcm9tZXRlciBhbmQgbWFnbmV0b21ldGVyIHBhdGNoZXMpIGFzIEkgY2FuJ3Qg
+CnRlbGwgaWYgdXNlcnNwYWNlIGlzIHdyb25nIG9yIGlmIG15IHRlc3RpbmcvY29uY2x1c2lvbiBp
+cyB3cm9uZy4gTW9iaWxlIApMaW51eCBpcyB2ZXJ5IGVhcmx5IHN0YWdlcyBhdCB0aGUgbW9tZW50
+LCBhbmQgSSBzdXNwZWN0IHRoZSBQaW5lcGhvbmUgCmFuZCBQaW5lcGhvbmUgUHJvIHdlcmUgdXNl
+ZCBhcyByZWZlcmVuY2UgZGV2aWNlcyB3aXRoIE1lZ2kncyBkb3duc3RyZWFtIAprZXJuZWwuIFdy
+b25nIG1vdW50IG1hdHJpY2VzIGluIHRoZSBkb3duc3RyZWFtIGtlcm5lbCBtaWdodCBiZSBhZmZl
+Y3RpbmcgCnVzZXJzcGFjZS4gVGhpcyBtZWFucyB0aGF0IHdpdGggdGhlIGNvcnJlY3RlZCBtb3Vu
+dCBtYXRyaWNlcyBpbiB0aGlzIApwYXRjaCBzZXJpZXMsIHVzZXJzcGFjZSBpcyBzbGlnaHRseSBi
+cm9rZW4gKGVnLiBzaW5jZSBJIGZpeGVkIHRoZSAKYWNjZWxlcm9tZXRlciwgdGhlIHNjcmVlbiBp
+biBQaG9zaCBhbmQgS0RFIFBsYXNtYSBhcmUgdXBzaWRlIGRvd24uIEkgCnN1c3BlY3QgS0RFJ3Mg
+S29tcGFzcyBhbmQgTGVvbmFyZG8ncyBjb21wYXNzIGFwcCBtaWdodCBiZSB0aGUgc2FtZSBpZiAK
+SSdtIGNoYW5naW5nIHRoZSBtb3VudCBtYXRyaXggZm9yIHRoZSBtYWduZXRvbWV0ZXIpLiBUaGlz
+IGlzIHdoeSBJIApkZWNpZGVkIHRvIHNob3djYXNlIHRoZSByYXcgdmFsdWVzIGluIG15IHRlc3Rp
+bmcuIElmIG15IHRlc3RpbmcgaXMgCmluY29ycmVjdCwgcGxlYXNlIGZlZWwgZnJlZSB0byBsZXQg
+bWUga25vdy4KCkkgdGhpbmsgSSB3aWxsIGxlYXZlIG15IHRlc3RpbmcgaW4gdGhlIGNvbW1pdHMg
+aXRzZWxmIHRoaXMgdGltZS4gSWYgdGhlIAptb3VudCBtYXRyaWNlcyBhcmUgY29ycmVjdCBiYXNl
+ZCBvbiBteSB0ZXN0aW5nLCBpdCB3aWxsIHByb2JhYmx5IGJlIApoZWxwZnVsIGluIHRoZSBmdXR1
+cmUgaW4gaWRlbnRpZnlpbmcgd2h5IGRvd25zdHJlYW0gaXMgc2xpZ2h0bHkgYnJva2VuLgoKCj4g
+WW91IGhhdmVuJ3QgZG9uZSBhbnl0aGluZyB0ZWNobmljYWxseSB3cm9uZywgYnV0IHRoZSB3YXkg
+eW91IHN1Ym1pdHRlZAo+IHRoZSB2MiBhbmQgdjMgbWFkZSB0aGVtIGZlZWwgYSBiaXQgbGlrZSB5
+b3UgcGlja2VkIHRob3NlIHBhdGNoZXMgZnJvbQo+IHNvbWUgcmFuZG9tIHBsYWNlIGFuZCBzdWJt
+aXR0ZWQgdGhlbSB0byB0aGUgbWFpbGluZyBsaXN0IHdpdGhvdXQgcmVhbGx5Cj4gdW5kZXJzdGFu
+ZGluZyB0aGUgc3ViamVjdCBtYXR0ZXIuwqAgSW4gb3RoZXIgd29yZHMsIGl0J3MgdGhlIGNvbnRy
+aWJ1dG9yJ3MKPiBqb2IgdG8gY29udmluY2UgZXZlcnlvbmUgZWxzZSB0aGF0IHRoZSBzdWJtaXR0
+ZWQgcGF0Y2hlcyBhcmUgZmluZSB0bwo+IGJlY29tZSBhY2NlcHRlZCwgYW5kIHRoZSB2MiBhbmQg
+djMgc2ltcGx5IGxhY2tlZCB0aGF0LgoKVGhhdCdzIGZhaXIuIEkgd2FzIHVuZGVyIHRoZSBhc3N1
+bXB0aW9uIEkgaGFkIHRvIGtlZXAgdGhlIHBhdGNoZXMgbW9zdGx5IAppbiBpdHMgb3JpZ2luYWwg
+Zm9ybS4KCgo+IEkgd29uZGVyIGhvdyB3b3VsZCBzb21lIGZvcmdlIHByZXZlbnQgInNwYW1taW5n
+Ij/CoCBJdCBpc24ndCBhYm91dCB0aGUKPiBwb3NzaWJsZSAic3BhbW1pbmciLCBidXQgYWJvdXQg
+dGhlIGFjdCBvZiBzdWJtaXR0aW5nIGRpZmZlcmVudCB2ZXJzaW9ucywKPiB3aGljaCB3b3VsZCBi
+ZSBwcmVzZW50IHJlZ2FyZGxlc3Mgb2YgdGhlIHdheSB0aGV5J2QgYmUgc3VibWl0dGVkLCBhbmQK
+PiB0aGUgcmV2aWV3ZXJzIHdvdWxkIG5lZWQgdG8gYmUgYXdhcmUgKGkuZS4gInNwYW1tZWQiKSBv
+ZiB0aGVtIGFueXdheS4KCkF0IGxlYXN0IHdpdGggR2l0bGFiICYgQ29kZWJlcmcsIGEgbG90IG9m
+IHRoZSBub3RpZmljYXRpb25zIGNhbiBiZSBtdXRlZCAKKEkgYmVsaWV2ZSB1cGRhdGVzIHRvIHB1
+bGwgcmVxdWVzdHMgaXMgb25lIG9mIHRoZW0pIGFuZCBwaXBlbGluZXMgY2FuIGJlIApjcmVhdGVk
+IHRvIGVuc3VyZSB0aGF0IGZvcm1hdHRpbmcgaXMgY29ycmVjdCBhbmQgdGhhdCB0aGUgcHJvcGVy
+IHN1YiAKbWFpbnRhaW5lcnMgYXJlIG5vdGlmaWVkIGF1dG9tYWdpY2FsbHkuIEluIG15IG9waW5p
+b24sIGI0IGp1c3QgYnJpbmdzIApzb21lIG9mIHRoZSBmb3JnZSdzIGZ1bmN0aW9uYWxpdGllcyBp
+bnRvIGFuIGVtYWlsIGJhc2VkIHdvcmtmbG93LCBidXQgCndpbGwgaGF2ZSB0byBmaWdodCBpdCdz
+IG93biBwcm9ibGVtcyBzdWNoIGFzOiAKaHR0cHM6Ly9zb2NpYWwua2VybmVsLm9yZy9ub3RpY2Uv
+QXlwdmRUV3lBczVrbTBHYzNrLiBJIGRvbid0IG1lYW4gdG8gCmRldHJhY3QgZnJvbSBpdDsgaXQg
+aXMgdmVyeSBjb21tZW5kYWJsZSB3aGF0IEtvbnN0YW50aW4gUnlhYml0c2V2IGlzIGRvaW5nLgoK
+SWYgdGhlcmUgYXJlIGNvbmNlcm5zIGFib3V0IGNlbnRyYWxpemF0aW9uLCB0aGVyZSBhcmUgYWx0
+ZXJuYXRpdmVzIGxpa2UgClJhZGljYWwuIEkgaGVhcmQgdGhhdCBDb2RlYmVyZyBpcyBsb29raW5n
+IHRvIGFsc28gZGVjZW50cmFsaXplIGluIHRoZSAKZnV0dXJlIGFzIHdlbGwgKE1heWJlIHVzaW5n
+IFJhZGljYWwncyBwcm90b2NvbD8gTm90IHN1cmUpLiBJZiB0aGVyZSBpcyBhIApjYWxsIHRvIGFj
+dGlvbiBmcm9tIHRoZSBMaW51eCBtYWludGFpbmVycyBhYm91dCBsb29raW5nIGludG8gCmRlY2Vu
+dHJhbGl6ZWQgZm9yZ2VzLCBJIGJldCB0aGVyZSB3b3VsZCBiZSBtYW55IHByb2plY3RzIGV4Y2l0
+ZWQgdG8gYmUgCnVzZWQgYnkgdGhlIExpbnV4IGtlcm5lbC4gSXQgd2lsbCBhbHNvIGhlbHAgZ2V0
+IG5ldyBwZW9wbGUgZXhjaXRlZCB0byBiZSAKaW52b2x2ZWQgaW4gdGhlIExpbnV4IGtlcm5lbCBh
+bmQgcG90ZW50aWFsbHkgYmVjb21lIGtlcm5lbCBtYWludGFpbmVycyAKaW4gdGhlIGZ1dHVyZQoK
+SSB0aGluayBJIHdpbGwgbGVhdmUgaXQgYXQgdGhhdCwgYXMgSSBkb24ndCB3YW50IHRvIGZ1cnRo
+ZXIgZGVyYWlsIHRoZSAKY29udmVyc2F0aW9uIGZyb20gdGhlIHBwcCBzZXJpZXMuCgoKUnVkcmFr
+c2hhCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGlu
+dXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5v
+cmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2Nr
+Y2hpcAo=
