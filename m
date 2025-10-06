@@ -4,53 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 550D5CAC5B8
-	for <linux-rockchip@archiver.kernel.org>; Mon,  6 Oct 2025 16:24:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32046CAC5B8
+	for <linux-rockchip@archiver.kernel.org>; Mon,  6 Oct 2025 16:25:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5n7yXsonHNnAHaocUFhnBG75p4/bF93EMUKdv0vqMtk=; b=gVlDU04CT08vI5
-	TuS5LF8gMy/2+Xu/82O/X5gXu9246yhAQyVtK1HMqo9w3jRUcqh6ET64SEwXMpj7LOo+Ks4Z6FFZr
-	gApUeff0HxLvmNEu8uBOyRoVhdJmg53IKtqtogMXcxe6DthUQwcsviRXzqfGTJABBIGoDayq5evQr
-	leSTOhJ2KDlr8fsqtHdDC7VYKapH1eO80tVPfLxDqTEu3y/BNva1A/ZENNxeMl7pxA94JcKhr+ydC
-	eliNdztv8aVOY/xXP0Iogpc4bTVlgfZQzyeGks73ObvrrX1qRjvPsMAT05q5XdLBiBH/n5RMX5VK+
-	aaDVQ6dZMU8665pB+dXQ==;
+	List-Owner; bh=rumjcm4eh891sV/bytK5KoAbOnhQBmGFwoaOcj7lEvU=; b=BenVWxQ9dH7e8S
+	0g/paYtsqabiLMJdJl69NT9EJQ1keqI34QaoNLFyluBFrU+6qdlFXSIkhuYyLx9UVIuEiexbdC8vS
+	RXcpuxaXPw9TQjhqSWsKrfYDyMhCwZ86YGgiRbAmsKA0U9MRUmHaecUv46b+pwNqjoVVKxfFgcZ3o
+	V/16D0g8arbU8MXmPTZdb8dY+nDEhsWMeFLcHsFoGSxUo5ejCJuVEKG9tcnyZIfpmmd8IxOHaSSb4
+	xnxPtneXeWZoXgH7L2Hz7bllQ9jEHg+5Y8dTCgTtQikLk2jICU4gyFNMJ0gVOiC/zNPb/D7qSV448
+	3M9e2OFmCpHnD1mV0N8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v5o0m-00000000OFn-3yvM;
-	Mon, 06 Oct 2025 16:24:32 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1v5o1j-00000000OSU-3Loa;
+	Mon, 06 Oct 2025 16:25:31 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v5o0k-00000000OEu-2AmL;
-	Mon, 06 Oct 2025 16:24:31 +0000
+	id 1v5o1i-00000000ORj-2qFY;
+	Mon, 06 Oct 2025 16:25:30 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=FoFQMBlYipwDFvaTsOBn4UdYJMc+0URlt9FIb23R7fg=; b=EgomTFyCnZkNRRuJAoUl5Nui1x
+	z9SUFAn2dlYKhdB58I72766Q848PkOKnK9bwIEa575e3mYXmHkFT4iWGgt1w4/b8hLkE0Bs5IDD5T
+	Zu90MMP2QsPhxm+pDloLIm8Pu/XILIrPZDnDAMAhspKEmq1mlgc7aHnqRpLcFRmK8i1OTNZ6xep69
+	5FXYD4p3J7MhkayN/BHzilo1xDMfx+EYHwr9nx75ty24hE+5VpQ+VrAWzoXWW/McMmjFUVZ++K+c6
+	Sn5cwbFcHLzRhJQcb0gE7EMH8c5ElKilzfjsvRIBOC1OEJWtz63qq2uCip76xVvEMsTDVQtaGjC8g
+	4KIEWl0Q==;
+Received: from perceval.ideasonboard.com ([213.167.242.64])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1v5o1f-0000000H2RM-36WV;
+	Mon, 06 Oct 2025 16:25:29 +0000
 Received: from pendragon.ideasonboard.com (81-175-209-231.bb.dnainternet.fi [81.175.209.231])
-	by perceval.ideasonboard.com (Postfix) with UTF8SMTPSA id 2FB52B0B;
-	Mon,  6 Oct 2025 18:22:55 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with UTF8SMTPSA id D3D1FB0B;
+	Mon,  6 Oct 2025 18:23:52 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1759767775;
-	bh=q4y+WjKg8QKovIhfsz5mhoBisvqugua5xV6TPvamwY4=;
+	s=mail; t=1759767833;
+	bh=t96uReInL8jGo3Qf+o1CqcdutAZiZPvLUIz8oEspw+Q=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Fh057Ycs0+XNzsIJ6pHqE414nAvgR66G3qCWmS7EA7zhO40hZJEuFaLo5c0Rr4BfH
-	 U9RKela09E/rAZQHcrHEkaVsA61YVFYOw+BvAiB1vd78vCxJGt83ZO+ASRLhJy8/dT
-	 n0tQUMjOVNc0lBsvNC2sB51BKvrxEBXhBaVpNEBY=
-Date: Mon, 6 Oct 2025 19:24:20 +0300
+	b=pz3OrF77gW3c1hVlJxiEGrX3qW1NwAm1e/KKNUZkcI0cwuC4WaFkUJ+W6d29CselO
+	 CMFni65/6k+eTAXCg08FqkbzNhBYSluunBjHTl5hCVW8YWmnWhxnT4DHRbhzyQ4WPA
+	 It+n/FyPIP4KHasiFIhHTUkDL/U87iZkeBVZ5X4k=
+Date: Mon, 6 Oct 2025 19:25:18 +0300
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Andrew Lunn <andrew@lunn.ch>
-Subject: Re: [PATCH 3/3] arm64: dts: rockchip: Add rk3588s-orangepi-cm5-base
- device tree
-Message-ID: <20251006162420.GI5944@pendragon.ideasonboard.com>
-References: <20251002034708.19248-1-laurent.pinchart@ideasonboard.com>
- <20251002034708.19248-4-laurent.pinchart@ideasonboard.com>
- <4d337915-e3a9-46b7-a30b-ccb47ad33556@lunn.ch>
+To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+Subject: Re: [PATCH v2 1/5] dt-bindings: display: rk3588-dw-hdmi-qp: Add
+ tmds-enable-gpios property
+Message-ID: <20251006162518.GJ5944@pendragon.ideasonboard.com>
+References: <20251005235542.1017-1-laurent.pinchart@ideasonboard.com>
+ <20251005235542.1017-2-laurent.pinchart@ideasonboard.com>
+ <c5kwmvu3j72evbgdmjn6qn5nqx7ywbiwpzhnpeh6hjjhbz5vwo@jpe3onblwhmy>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <4d337915-e3a9-46b7-a30b-ccb47ad33556@lunn.ch>
+In-Reply-To: <c5kwmvu3j72evbgdmjn6qn5nqx7ywbiwpzhnpeh6hjjhbz5vwo@jpe3onblwhmy>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251006_092430_696393_A84C3AA5 
-X-CRM114-Status: GOOD (  13.20  )
+X-CRM114-CacheID: sfid-20251006_172527_960018_24F37652 
+X-CRM114-Status: GOOD (  16.99  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -62,39 +76,52 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Cenk Uluisik <cenk.uluisik@googlemail.com>, Muhammed Efe Cetin <efectn@6tel.net>, Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>, Jimmy Hon <honyuenkwun@gmail.com>, Kever Yang <kever.yang@rock-chips.com>, Maxime Ripard <mripard@kernel.org>, Sandy Huang <hjc@rock-chips.com>, linux-rockchip@lists.infradead.org, Algea Cao <algea.cao@rock-chips.com>, Ondrej Jirman <megi@xff.cz>, Andy Yan <andy.yan@rock-chips.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
+Cc: devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Algea Cao <algea.cao@rock-chips.com>, Muhammed Efe Cetin <efectn@6tel.net>, Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>, Jimmy Hon <honyuenkwun@gmail.com>, Ondrej Jirman <megi@xff.cz>, Kever Yang <kever.yang@rock-chips.com>, dri-devel@lists.freedesktop.org, Sandy Huang <hjc@rock-chips.com>, linux-rockchip@lists.infradead.org, Cenk Uluisik <cenk.uluisik@googlemail.com>, Alexey Charkov <alchark@gmail.com>, Maxime Ripard <mripard@kernel.org>, Andy Yan <andy.yan@rock-chips.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Oct 06, 2025 at 06:06:21PM +0200, Andrew Lunn wrote:
-> > +&gmac1 {
-> > +	clock_in_out = "output";
-> > +	phy-handle = <&rgmii_phy>;
-> > +	phy-mode = "rgmii-id";
-> > +	phy-supply = <&vcc_3v3>;
-> > +	pinctrl-names = "default";
-> > +	pinctrl-0 = <&gmac1_miim
-> > +		     &gmac1_rx_bus2
-> > +		     &gmac1_tx_bus2
-> > +		     &gmac1_rgmii_clk
-> > +		     &gmac1_rgmii_bus>;
-> > +	tx_delay = <0x42>;
+On Mon, Oct 06, 2025 at 02:19:24PM +0300, Dmitry Baryshkov wrote:
+> On Mon, Oct 06, 2025 at 02:55:37AM +0300, Laurent Pinchart wrote:
+> > From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+> > 
+> > Add an optional property to RK3588 HDMI TX Controller binding describing
+> > a GPIO line to be asserted when operating in HDMI 1.4/2.0 TMDS mode and
+> > deasserted for HDMI 2.1 FRL.
+> > 
+> > This is used to control an external level shifter for HDMI data lines.
+> > 
+> > Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+> > Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> > ---
+> >  .../display/rockchip/rockchip,rk3588-dw-hdmi-qp.yaml   | 10 ++++++++++
+> >  1 file changed, 10 insertions(+)
+> > 
+> > diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3588-dw-hdmi-qp.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3588-dw-hdmi-qp.yaml
+> > index 96b4b088eebe..eec0d40c91ea 100644
+> > --- a/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3588-dw-hdmi-qp.yaml
+> > +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3588-dw-hdmi-qp.yaml
+> > @@ -113,6 +113,13 @@ properties:
+> >      description:
+> >        Additional HDMI QP related data is accessed through VO GRF regs.
+> >  
+> > +  tmds-enable-gpios:
+> > +    description:
+> > +      Optional GPIO line to be asserted when operating in HDMI 1.4/2.0
+> > +      TMDS mode and deasserted for HDMI 2.1 FRL. It can be used to control
+> > +      an external level shifter for HDMI data lines.
+> > +    maxItems: 1
 > 
-> Nice to see phy-mode 'rgmii-id', but 0x42 is pretty high in comparison
-> to other boards correctly using 'rgmii-id', and is asymmetric with no
-> rx_delay value.
-> 
-> I cannot say this is wrong, it is just odd, not what i would expect.
+> Just my 2c: since TMDS is assumed to be a default mode, shouldn't this
+> be a frl-enable-gpios instead?
 
-I copied it blindly from the BSP. Dropping the property, I can still
-ping the board, so I removed it in v2. There's more that will need to be
-investigated there, as clock_in_out should likely be "input", but I
-couldn't get that to work. I'd like to leave this to someone else as I'm
-lacking time to fix it (and ethernet is also not my strongest
-expertise). I could drop the gmac1 completely, but I think the starting
-point is valuable.
+I don't mind either way. Cristian, any opinion ?
+
+> > +
+> >  required:
+> >    - compatible
+> >    - reg
 
 -- 
 Regards,
