@@ -4,69 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62808CCA471
-	for <linux-rockchip@archiver.kernel.org>; Mon,  6 Oct 2025 16:26:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A336BCAC5B8
+	for <linux-rockchip@archiver.kernel.org>; Mon,  6 Oct 2025 16:43:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ueo7LMvjiTatR2nsWooaXVQ4iov7sUXhShrZ/8U40nw=; b=yRkqgtV7lu8ml4
-	oBmbyQ8yhtGxMA2XtKE6VEujR3iG96oyoyf+eK5Zl1ObAmsS9jxM3j12Q8iaUFcXArtldXfI/4JSL
-	Sp69qPyo9UW1aOA+ArpND2q+uw04+zKwBYmvbKybUnxfw2RhJVNQZihfx/BlgONN4us9Wv0NOup1X
-	u2el9uEa73X3nJGInxnjeW+hsbh27X4s2bQwvlP91Cn+pDBAfbEH5udqqtlNznusle1PqltQjPBap
-	IrSz2HkNGnvo6VAnaB/rGeUPYOZfOXJcC0vOgr1wh7uenEzGbz/RFbOc3eo9mfvj39Gjt5n6G63Ud
-	0TS67WZ0qKpZf3dySpxA==;
+	List-Owner; bh=ECGgcUeK1h7X2D5YS9UtbWVgs4Zg2SYdWNfWMzrmH4E=; b=IV5xzxsb2fhKfx
+	qojg+2pYYgEuUWJbMLdhXJKwgz7GlsG4kk9yElSdbqDLvJPauLOexNdNey8AzAnizPSUAjqtQbvsr
+	O68D6PiyZEv+XaSotqfv7Uk3wwKHZZl6sxNeNVI2d+AIA5q/4ZoVet8W68AqcAhwf14uHo8jV+IV1
+	nZZGHxQ6c1lEeLZh1o53BkWWftGFz1HanV22ab3jd5ktY68dhS6YUGAmRHF4FfirFer15G1+7gtT/
+	bryE9fezppjj37qIg3YqtmZldkDM3+FzzZ5haFYWKVYr0RTGnDI4AeSwgqENuW/QAFFKPJaegTQmu
+	TMKDsJ8WCU4HQ/JCEMWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v5o2t-00000000OeU-3Dvu;
-	Mon, 06 Oct 2025 16:26:43 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1v5oIh-00000000QMw-1LGK;
+	Mon, 06 Oct 2025 16:43:03 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v5o2q-00000000OdK-1lmF;
-	Mon, 06 Oct 2025 16:26:41 +0000
-Received: from pendragon.ideasonboard.com (81-175-209-231.bb.dnainternet.fi [81.175.209.231])
-	by perceval.ideasonboard.com (Postfix) with UTF8SMTPSA id 1464CB7D;
-	Mon,  6 Oct 2025 18:25:06 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1759767906;
-	bh=urAPi5PtnmEjVyblteohOkDho6JfrnjSMqTu5Ai3YXk=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=H/eQo43qbQUcC3DL3yzFPzCSmJbqB7E//sIkVmKsAfpQ8l39r7q7ZfkDderkgM5eo
-	 433Zf89qFnNQVhH/crzs8biSG5JaIZtKzdkXHe+BDNI7JZTjYs3R09QELaITQ3aOVa
-	 MGov8SwXecILaVDWMRZFWVY/hu3mn7sTLXADweLk=
-Date: Mon, 6 Oct 2025 19:26:31 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
-	devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	Alexey Charkov <alchark@gmail.com>,
-	Algea Cao <algea.cao@rock-chips.com>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Cenk Uluisik <cenk.uluisik@googlemail.com>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, Jimmy Hon <honyuenkwun@gmail.com>,
-	Kever Yang <kever.yang@rock-chips.com>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Maxime Ripard <mripard@kernel.org>,
-	Muhammed Efe Cetin <efectn@6tel.net>, Ondrej Jirman <megi@xff.cz>,
-	Rob Herring <robh@kernel.org>, Sandy Huang <hjc@rock-chips.com>
-Subject: Re: [PATCH v2 2/5] drm/rockchip: dw_hdmi_qp: Improve error handling
- with dev_err_probe()
-Message-ID: <20251006162631.GK5944@pendragon.ideasonboard.com>
-References: <20251005235542.1017-1-laurent.pinchart@ideasonboard.com>
- <20251005235542.1017-3-laurent.pinchart@ideasonboard.com>
- <gai5hfvu6xbbqpk4mu3i6nejolijeokjy3mkzca5xwzb4xwic7@jmee36svmwnb>
- <8706f168-5598-4f91-9ad0-fdbd04b410b7@collabora.com>
+	id 1v5oIe-00000000QM3-2nMb;
+	Mon, 06 Oct 2025 16:43:02 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1759768977;
+	bh=MJpXLH2WyUVVbdTuWfHINRtUwiFCM4iGx0TBERf8ldA=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=p1YtwLrUcTQd2vh/f18Hp0b/5gML91x22BaAvA3JhDCTTN6r+8UcPX3jjHgp0cZyz
+	 OXYa5bWkAcjehab+PZFYKN065fcf2xEbL8v9/4EzN1PYwfwmzp6iyuhJVNlW34XH37
+	 qG0mKLuW5kZI6dtMxFcQp91koW7cuH0afLLviwqW8Uvtqof26ZUcZIThOMfTrLyszV
+	 G4ykG9jZUMaNq25VKnEgSONSmgpco4bKZMPn9bkMwleMd/Qn2gV3KSwg/KpPSNlpXk
+	 ahVYebKW6tc9D1rig9xVgrJ0DwiCfLapaLUkWqmi/1idLR9JyD/AlOIyshKSetrVqy
+	 VhA7WZ0qxdxUw==
+Received: from [192.168.1.90] (unknown [82.79.138.145])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id A51F517E02B0;
+	Mon,  6 Oct 2025 18:42:56 +0200 (CEST)
+Message-ID: <d423560e-dcd4-45d8-a1e4-5a8b2a21ef86@collabora.com>
+Date: Mon, 6 Oct 2025 19:42:56 +0300
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <8706f168-5598-4f91-9ad0-fdbd04b410b7@collabora.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 1/5] dt-bindings: display: rk3588-dw-hdmi-qp: Add
+ tmds-enable-gpios property
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+Cc: devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ Alexey Charkov <alchark@gmail.com>, Algea Cao <algea.cao@rock-chips.com>,
+ Andy Yan <andy.yan@rock-chips.com>,
+ Cenk Uluisik <cenk.uluisik@googlemail.com>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Jimmy Hon <honyuenkwun@gmail.com>, Kever Yang <kever.yang@rock-chips.com>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Maxime Ripard
+ <mripard@kernel.org>, Muhammed Efe Cetin <efectn@6tel.net>,
+ Ondrej Jirman <megi@xff.cz>, Rob Herring <robh@kernel.org>,
+ Sandy Huang <hjc@rock-chips.com>
+References: <20251005235542.1017-1-laurent.pinchart@ideasonboard.com>
+ <20251005235542.1017-2-laurent.pinchart@ideasonboard.com>
+ <c5kwmvu3j72evbgdmjn6qn5nqx7ywbiwpzhnpeh6hjjhbz5vwo@jpe3onblwhmy>
+ <20251006162518.GJ5944@pendragon.ideasonboard.com>
+Content-Language: en-US
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+In-Reply-To: <20251006162518.GJ5944@pendragon.ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251006_092640_599614_6F986F08 
-X-CRM114-Status: GOOD (  21.03  )
+X-CRM114-CacheID: sfid-20251006_094301_041518_ACC320D2 
+X-CRM114-Status: GOOD (  12.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,53 +88,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Oct 06, 2025 at 05:37:23PM +0300, Cristian Ciocaltea wrote:
-> On 10/6/25 3:02 PM, Dmitry Baryshkov wrote:
-> > On Mon, Oct 06, 2025 at 02:55:38AM +0300, Laurent Pinchart wrote:
-> >> From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-> >>
-> >> The error handling in dw_hdmi_qp_rockchip_bind() is quite inconsistent,
-> >> i.e. in some cases the error code is not included in the message, while
-> >> in some other cases there is no check for -EPROBE_DEFER.
-> >>
-> >> Since this is part of the probe path, address the aforementioned issues
-> >> by switching to dev_err_probe(), which also reduces the code a bit.
-> >>
-> >> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-> >> Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> >> ---
-> >>  .../gpu/drm/rockchip/dw_hdmi_qp-rockchip.c    | 62 +++++++------------
-> >>  1 file changed, 24 insertions(+), 38 deletions(-)
-> >>
-> >> diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-> >> index 7d531b6f4c09..4e7794aa2dde 100644
-> >> --- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-> >> +++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-> >> @@ -457,10 +457,8 @@ static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
-> >>  		return -ENODEV;
-> >>  
-> >>  	if (!cfg->ctrl_ops || !cfg->ctrl_ops->io_init ||
-> >> -	    !cfg->ctrl_ops->irq_callback || !cfg->ctrl_ops->hardirq_callback) {
-> >> -		dev_err(dev, "Missing platform ctrl ops\n");
-> >> -		return -ENODEV;
-> >> -	}
-> >> +	    !cfg->ctrl_ops->irq_callback || !cfg->ctrl_ops->hardirq_callback)
-> >> +		return dev_err_probe(dev, -ENODEV, "Missing platform ctrl ops\n");
-> > 
-> > This only makes sense for the purpose of unification.
+On 10/6/25 7:25 PM, Laurent Pinchart wrote:
+> On Mon, Oct 06, 2025 at 02:19:24PM +0300, Dmitry Baryshkov wrote:
+>> On Mon, Oct 06, 2025 at 02:55:37AM +0300, Laurent Pinchart wrote:
+>>> From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+>>>
+>>> Add an optional property to RK3588 HDMI TX Controller binding describing
+>>> a GPIO line to be asserted when operating in HDMI 1.4/2.0 TMDS mode and
+>>> deasserted for HDMI 2.1 FRL.
+>>>
+>>> This is used to control an external level shifter for HDMI data lines.
+>>>
+>>> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+>>> Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+>>> ---
+>>>  .../display/rockchip/rockchip,rk3588-dw-hdmi-qp.yaml   | 10 ++++++++++
+>>>  1 file changed, 10 insertions(+)
+>>>
+>>> diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3588-dw-hdmi-qp.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3588-dw-hdmi-qp.yaml
+>>> index 96b4b088eebe..eec0d40c91ea 100644
+>>> --- a/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3588-dw-hdmi-qp.yaml
+>>> +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3588-dw-hdmi-qp.yaml
+>>> @@ -113,6 +113,13 @@ properties:
+>>>      description:
+>>>        Additional HDMI QP related data is accessed through VO GRF regs.
+>>>  
+>>> +  tmds-enable-gpios:
+>>> +    description:
+>>> +      Optional GPIO line to be asserted when operating in HDMI 1.4/2.0
+>>> +      TMDS mode and deasserted for HDMI 2.1 FRL. It can be used to control
+>>> +      an external level shifter for HDMI data lines.
+>>> +    maxItems: 1
+>>
+>> Just my 2c: since TMDS is assumed to be a default mode, shouldn't this
+>> be a frl-enable-gpios instead?
 > 
-> Right, as mentioned in the commit description, the intention was to ensure
-> consistent error handling across the probe path rather than limiting the scope
-> to -EPROBE_DEFER exclusively.
+> I don't mind either way. Cristian, any opinion ?
 
-Should I revert this change in v3 or keep it ? I see value in
-unification, but I don't mind either way. Dmitry, what's your preference
-?
+No strong opinion either; we could go for Dmitry's suggestion.
 
--- 
-Regards,
+>>> +
+>>>  required:
+>>>    - compatible
+>>>    - reg
+> 
 
-Laurent Pinchart
 
 _______________________________________________
 Linux-rockchip mailing list
