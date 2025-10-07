@@ -4,76 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17A22CCA476
-	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Oct 2025 18:49:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 608DCCCA470
+	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Oct 2025 18:54:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dbBMJgOyC0WmdZ5B264BX/+0PqN240fu7WlqlnIQft8=; b=LFkxqjzYrlxGCv
-	/l7WHyaH2rn8g430pjecMqWMOiC7CNP4c6CtT5AseWoM3VVtzQxtpq6dcLpTZYkML88crmo4BrRMW
-	hbTR15I+T1z2uUxGAz+mivBxnkhKm8nouIOp5hX2uhmd6GIqKBv5/gz9vElrPWxL2jWec6+hmE5vN
-	Xz8g7vvKJpShq6jnWaevIOxC58JQ9KzOR4F8uFcOngOpoP0GbFXGCKevlStC6BoO4mgYLb/tTxiFK
-	tw2ZsnZ0KUvIr8s94tl0PWKg3R8kfik2qlIlCVnmmdtdX5sWvKPveBGvilb5pYjvsTkOz2gQej4Qc
-	LUjbxCj/li1TLO5Ranxg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=V7q1jj+hgwtWj7vVqDR9LRs9447Zw/SVT5gsZYZKs/s=; b=nkSW3GCwcki3L0qXydY39Ha0Kt
+	F/L7AkIG7v0Vg0Q21ZjnqjoD5FaMGbbe30hcMqQTJvNzFmD2f20TSpSQRlEfO8tw2Qez6BQpeZ4dc
+	+YKgMGpVPfAkLk7tSPos/3qnEmBZalioCZatiLd6l0xlqUck3RgNJaCGXBkfLunlJHLG34CR2rqGI
+	BcKszbYQGYLr2H6CERXLmZxV52Fkh89UXFgFSME3Hg3SEapFCdI57r/7iitYkXntHFjYJQ5Y4LWj3
+	hbOjnhhFp9WQB5pvmBguigiE8sPksI0MGLcxWTwT1xwGYMdnbq80FND47Edcxk008+lwAjZBe01t2
+	pceQ8e0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v6CkU-00000002caT-01eO;
-	Tue, 07 Oct 2025 18:49:22 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1v6CpS-00000002d2k-14v1;
+	Tue, 07 Oct 2025 18:54:30 +0000
+Received: from mail-qv1-xf2c.google.com ([2607:f8b0:4864:20::f2c])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v6CkR-00000002cZo-1puZ;
-	Tue, 07 Oct 2025 18:49:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=HECpRpZSpa+f0H4gV1fc3tmnVQkPn2s2nhW1AKTcDnI=; b=bx6o5vSn01IQbjGoB8XJhuNYeh
-	IoVN1U0YYCP/YYrMiR8MQHu6/bIEACcfqW98kmcVigwJE127t2FLo8TTeDd7bwz4k0Pa7le/dLhL1
-	gIppZ+XPiraOqpksZirTfMKUY2SI7zm3TrqqDDzH477Sdcbcsacuz1dDmBGn5Ar57o6WntFnSM4Z+
-	rLvC552t2JKy16XZWZv5eIa/qFjuSlIveu8BSK8wUyS/qdU6m53seBcEirsB7Pojn8qQZFM57Z2nn
-	DjI+ghdar0HWgdFbV4WasE4O4+ZWaNQrWocXBR/80mgLr6bqsYrEfXwv17kI/VAXcqQFRpo/DalZ7
-	OZQcLyGg==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:58056)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.98.2)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1v6Cjz-000000005Ro-1dgJ;
-	Tue, 07 Oct 2025 19:48:51 +0100
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.98.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1v6Cjq-0000000038S-0fQf;
-	Tue, 07 Oct 2025 19:48:42 +0100
-Date: Tue, 7 Oct 2025 19:48:41 +0100
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: jjm2473 <jjm2473@gmail.com>
-Cc: Andrew Lunn <andrew@lunn.ch>, robh@kernel.org, krzk+dt@kernel.org,
-	conor+dt@kernel.org, heiko@sntech.de, quentin.schulz@cherry.de,
-	kever.yang@rock-chips.com, naoki@radxa.com, honyuenkwun@gmail.com,
-	inindev@gmail.com, ivan8215145640@gmail.com,
-	neil.armstrong@linaro.org, mani@kernel.org, dsimic@manjaro.org,
-	pbrobinson@gmail.com, alchark@gmail.com, didi.debian@cknow.org,
-	jbx6244@gmail.com, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3 3/3] arm64: dts: rockchip: add LinkEase EasePi R1
-Message-ID: <aOVgid5q0_AhPXFB@shell.armlinux.org.uk>
-References: <20250929065714.27741-1-jjm2473@gmail.com>
- <20250929065714.27741-4-jjm2473@gmail.com>
- <d8ad476c-d0c7-4e97-9e76-540a539ffb52@lunn.ch>
- <CAP_9mL4ofig-X-w9wx1A5D_eVXROo6AVFBSwp4mh=kj7webpPA@mail.gmail.com>
- <7e219aef-88a0-4184-9553-30dcbc8dbd79@lunn.ch>
- <CAP_9mL6utQjN_2EZ4vs3K8jzcxHxvKWNTNEXZ9fAx4HuA=DNXA@mail.gmail.com>
+	id 1v6CpP-00000002d25-34vG
+	for linux-rockchip@lists.infradead.org;
+	Tue, 07 Oct 2025 18:54:28 +0000
+Received: by mail-qv1-xf2c.google.com with SMTP id 6a1803df08f44-79a7d439efbso60626066d6.0
+        for <linux-rockchip@lists.infradead.org>; Tue, 07 Oct 2025 11:54:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1759863266; x=1760468066; darn=lists.infradead.org;
+        h=mime-version:user-agent:references:in-reply-to:date:cc:to:from
+         :subject:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=fyqYBk39edhoU3hvwcDq4RniKRvu8ih3vY+jGbKyhzg=;
+        b=kSYs1Dnd9r0N7pVfYEk9l8YgccXb8XWaK4L7+zOJXG6pN2qCinqy7q4K47+YXcpDuW
+         gIAaWlUMFvUSkTgMn6moRN+ecGrjizGK/hH0tQ+aZYDkyVlFD5dVy8huG8zB4tbA4rQI
+         pI0+h06pZvffmnfmUO0yk/Bk68GU3aJtxsi9PakOxBGoLjJaNGr9W2PuqSRukCYVd4is
+         d4ejt/ayART3Ir3aso01O/qTp3gR3rsPGeGEfZ/annEp5Sbbla6UQrZovFy3BM4aw9WE
+         qcwR5fVhVkc6thMquaYLuAgcRZ+DXaPyOJqwLYBsB+BYsXv6+CWgCd24rYG1DRfwPo6h
+         gHeg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1759863266; x=1760468066;
+        h=mime-version:user-agent:references:in-reply-to:date:cc:to:from
+         :subject:message-id:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=fyqYBk39edhoU3hvwcDq4RniKRvu8ih3vY+jGbKyhzg=;
+        b=hRNkve1wFo3UwIheAiNxGoAXP2BkIqtvURFnlZT8eF/Kkr0hBYMgsrXDBUd6Hj6HoO
+         3jG+smwl2Db068Zw1082V/LnZ2eCH+Vt0gAaAe9flaptsHsznqWZEFJR6yQYUMLSQpDH
+         aU9LtrzC0QnOZ61X5fYPDJSrc5mdojuJJiFkL8DiC2D0kS7cdd84Jwb7RfidfrBm8DwU
+         0n7M9qfsssb1024/KPsAv4ClPQxHm/7nbjKGdmBxtgexgB81DmITx7eIF3VHfy/iLGhq
+         yS+Z5HEncqHkRNj+L/l7iZVhIxnLvsO9Zt0L+wiZoR/uqnesogdbjJJxnDyJtATumt58
+         54uA==
+X-Forwarded-Encrypted: i=1; AJvYcCUYXAK4NSdRkulpCE51ixFSBD6OUdz/z5POakR/w8WdtW7HT1tZjkrXGC+EohhrC2mZCt3WGW45HSjOqY1VSQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzmVDBWPuXwehBcFdUWGxHiQPivnpvTtjhDVmfDGA/OLOYVitf7
+	kvQdRKaetCP35vchFwf6QUO5qR95Vu1T1TYjlc1222b8BPriV0sUXfGQplP2WH1WMIQ=
+X-Gm-Gg: ASbGncsKuyLyaohCFjWdWwMtOKOtVbQCfourxC5X0XBfdQvsb3BYm0fHhv1Ox5o2+Gh
+	jayeOTjq3v1RZ91L6kuZhT03caSSxxscpg3DVNKGCAnyLSVEHMpMiEiBvsGqwKdOFn8iEvfwPe4
+	BVjr7Qxs+wkDMMd2DBhocs4sSZryuTboJ5ZRy2YUfje28gzGZRGqP9zdF/Cfy/sl2jzWCKtrENn
+	OCPpzt7TDPWWL7nGFMwqD6BJUD9SXJenCai6ZkbRFr8dSH4B3rZnKqEDd8c9+OAeUkfiwj8NL88
+	9VJ/BaUFYAF2mBKOROboiDnPotoyznnlihAywenSs7mJB6yufJ6zzlZNUDqCKO4FhxjXZcUlYNJ
+	UGbIHZisxo5gSdn1PFre+tJsbVgPIjJRM3jtTLTj0QO7fl4py8oDN
+X-Google-Smtp-Source: AGHT+IEixUIOgl0MCHeaJ3U9YoVpppcjNIJi8FhlBiYJXzIZViLBMX0i5qQwH5C+bK/YoahAmV9Giw==
+X-Received: by 2002:a05:6214:5012:b0:879:db53:df0 with SMTP id 6a1803df08f44-87b2efe7106mr6252686d6.46.1759863266399;
+        Tue, 07 Oct 2025 11:54:26 -0700 (PDT)
+Received: from ?IPv6:2606:6d00:17:ebd3::c41? ([2606:6d00:17:ebd3::c41])
+        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-878be61f6bcsm146805896d6.65.2025.10.07.11.54.24
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 07 Oct 2025 11:54:25 -0700 (PDT)
+Message-ID: <46a1915e81b027d1c344eed0477683dd3a68d810.camel@ndufresne.ca>
+Subject: Re: [PATCH 16/16] media: rockchip: rga: add rga3 support
+From: Nicolas Dufresne <nicolas@ndufresne.ca>
+To: Krzysztof Kozlowski <krzk@kernel.org>, Sven =?ISO-8859-1?Q?P=FCschel?=	
+ <s.pueschel@pengutronix.de>, Jacob Chen <jacob-chen@iotwrt.com>, Ezequiel
+ Garcia <ezequiel@vanguardiasur.com.ar>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Rob Herring
+ <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,  Conor Dooley
+ <conor+dt@kernel.org>
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	devicetree@vger.kernel.org, kernel@pengutronix.de
+Date: Tue, 07 Oct 2025 14:54:24 -0400
+In-Reply-To: <bf989d9f-9e8e-4acc-b502-1674ce215318@kernel.org>
+References: <20251007-spu-rga3-v1-0-36ad85570402@pengutronix.de>
+	 <20251007-spu-rga3-v1-16-36ad85570402@pengutronix.de>
+	 <bf989d9f-9e8e-4acc-b502-1674ce215318@kernel.org>
+User-Agent: Evolution 3.56.2 (3.56.2-2.fc42) 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAP_9mL6utQjN_2EZ4vs3K8jzcxHxvKWNTNEXZ9fAx4HuA=DNXA@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251007_114919_478721_4302B9FB 
-X-CRM114-Status: GOOD (  10.82  )
+X-CRM114-CacheID: sfid-20251007_115427_780025_097468CB 
+X-CRM114-Status: GOOD (  20.91  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,32 +101,89 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============4861448851722267446=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Oct 08, 2025 at 01:29:57AM +0800, jjm2473 wrote:
-> > Vendors get things wrong, including this. 'rgmii' means the PCB adds
-> > the 2ns delay. Nearly every Rockchip board follows Rockchip broken
-> > vendor recommendations, and then i come along, point out how it is
-> > wrong, and ask for it to be fixed, before being merged to Mainline.
-> 
-> I will try `rgmii-id` and rescan {tx|rx}_delay, just like
-> https://lore.kernel.org/all/20250925092923.2184187-3-heiko@sntech.de/
 
-The current situation is...
+--===============4861448851722267446==
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-I9QXmLgSnsRRCh9PPEnb"
 
-https://lore.kernel.org/r/20240304084612.711678-2-ukleinek@debian.org
 
-Notice that the tx_delay and rx_delay are removed - because with
-"rgmii-id" the stmmac glue driver ignores the delay values.
+--=-I9QXmLgSnsRRCh9PPEnb
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+Hi Krzysztof,
+
+Le mardi 07 octobre 2025 =C3=A0 17:39 +0900, Krzysztof Kozlowski a =C3=A9cr=
+it=C2=A0:
+> On 07/10/2025 17:32, Sven P=C3=BCschel wrote:
+> > Add support for the RGA3 unit contained in the RK3588.
+> >=20
+> > Only a basic feature set consisting of scaling and color conversion is
+> > implemented. Advanced features like rotation and cropping will just be
+> > ignored. Also the BT601F color space conversion is currently hard coded=
+.
+> >=20
+> > The register address defines were copied from the
+> > vendor Rockchip kernel sources and slightly adjusted to not start at 0
+> > again for the cmd registers.
+> >=20
+> > Signed-off-by: Sven P=C3=BCschel <s.pueschel@pengutronix.de>
+> > ---
+> > =C2=A0drivers/media/platform/rockchip/rga/Makefile=C2=A0 |=C2=A0=C2=A0 =
+2 +-
+> > =C2=A0drivers/media/platform/rockchip/rga/rga.c=C2=A0=C2=A0=C2=A0=C2=A0=
+ |=C2=A0=C2=A0 4 +
+> > =C2=A0drivers/media/platform/rockchip/rga/rga.h=C2=A0=C2=A0=C2=A0=C2=A0=
+ |=C2=A0=C2=A0 2 +-
+> > =C2=A0drivers/media/platform/rockchip/rga/rga3-hw.c | 490
+> > ++++++++++++++++++++++++++
+> > =C2=A0drivers/media/platform/rockchip/rga/rga3-hw.h | 186 ++++++++++
+> > =C2=A05 files changed, 682 insertions(+), 2 deletions(-)
+>=20
+> Your order of patches is a mess. DTS cannot be in the middle. In fact,
+> DTS should not be even in this patchset, because you are targeting media.
+
+Indeed, order is broken, though I do appreciate having the DTS as part of t=
+he
+submission, this way I don't have to chase for them when testing. That bein=
+g
+said, a link or message ID in the cover later would be as good.
+
+Nicolas
+
+>=20
+> Best regards,
+> Krzysztof
+
+--=-I9QXmLgSnsRRCh9PPEnb
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaOVh4AAKCRDZQZRRKWBy
+9O1JAQCgbiRyx2yEWIDJARh2LE+kwcz/R5TwyiD48kcAsBRc3gEAj9DcD7rTLpzu
+68L0DpQYyIRrsE94HVozLhgCExOv9gk=
+=P0io
+-----END PGP SIGNATURE-----
+
+--=-I9QXmLgSnsRRCh9PPEnb--
+
+
+--===============4861448851722267446==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============4861448851722267446==--
+
