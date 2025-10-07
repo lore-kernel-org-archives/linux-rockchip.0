@@ -4,75 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95313CCA470
-	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Oct 2025 18:12:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F77ECCA476
+	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Oct 2025 18:13:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3BTIaPTtUIwS7Hb+8NBqVwvADgYUzUIv3oDW5gNFt3U=; b=WnPXsQnYx1q3ov
-	1uVnPIk2+mBmOJuX/jeNEYPi164s/+Ov6pDX8UNXyoEX52CZ83gBD85+2Uiqm83/kX7mMh3P7SWAI
-	sSA8FyqdQNDU9IC4riQPnAlxqYNZBiLKwm/XKDn2D8j2lcwh5XbVo6ieo5aqy3PL8vRyL+HaX+b48
-	2VUiMsA/8W2gCYK3n1bwT9OGrBvZnQImrhos/Cyu4SPzl3sPvBo63X+ThBsXHDVD3Yjjn90D+DQ0T
-	qLlo3q1eSCPHH78572qiGq0p5HfNjym7vTdAGB+0GWWX7F6/ptazyDv78HNu2PVb1BLqtTmOe9iiG
-	46XbXjXAnC/HRh6/JKkA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=b/bWMUtzmQIbpuc+/5hSnOdklV8bOKP9fo+9PdQeY2Y=; b=Y66HYXqVL9/lRgyGTUYbylr47+
+	MLbNLEK3IBD78UfkzlzhLnLqkM8AeJnbiN8eQ8hl0XdxLv63aZ3TLBRiu3IhqF9PiGWPg0SNezVSG
+	6F1NmDLbsp1O96kwaI6cUSfl1cJfSeRe2N6X6oa2Dj9Rf9mmRY6W6/KPmfwj0zjr4xJODjiZnfX7n
+	kwoaF579V0nmFFOm2yytXCQwShvIrlMa5PqDoW9QZYAcrYlkxVrr/fz4ME0NXTIklypuX71sjFCo7
+	02mc15AXHFm+ibTp5LP5/iQysIu4r8mIZHsf+MP/LNM3GNrYmGS60oga0W7JHPymSmVL9O7Vbc1K3
+	qlizeswQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v6CB3-00000002YDs-111C;
-	Tue, 07 Oct 2025 18:12:45 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1v6CBF-00000002YXh-1kG8;
+	Tue, 07 Oct 2025 18:12:57 +0000
+Received: from mail-qk1-x736.google.com ([2607:f8b0:4864:20::736])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v6CAt-00000002Xvl-3ZTS;
-	Tue, 07 Oct 2025 18:12:37 +0000
-Received: from [192.168.1.102] (93-61-96-190.ip145.fastwebnet.it [93.61.96.190])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 488F51122;
-	Tue,  7 Oct 2025 20:10:57 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1759860657;
-	bh=jIJYy3RpHeSZ4gcjU37lge3RwOH4+fCoxiq+QmxKE0s=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=U6Ft1OgsJAfOI6mEHDL7XEqFwSGFxtR6ytJlz9FcVofXVvGGwphBStXTvAk8Eri1S
-	 ocNIktFf+HJttTXcWQ/Rq2OaZDl9X/90qtTgJoTB1bQ8+DSvNPgQjaaHesHrefU7Pu
-	 LFcd5SMz05ZeHFyDDOH9TMYD2yDi3eRW0zV07PcQ=
-From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-Date: Tue, 07 Oct 2025 20:12:16 +0200
-Subject: [PATCH v6 7/8] media: amlogic-c3: Use v4l2-isp for validation
+	id 1v6CBA-00000002YOb-0COs
+	for linux-rockchip@lists.infradead.org;
+	Tue, 07 Oct 2025 18:12:55 +0000
+Received: by mail-qk1-x736.google.com with SMTP id af79cd13be357-87808473c3bso849369585a.1
+        for <linux-rockchip@lists.infradead.org>; Tue, 07 Oct 2025 11:12:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1759860770; x=1760465570; darn=lists.infradead.org;
+        h=mime-version:user-agent:references:in-reply-to:date:cc:to:from
+         :subject:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=8SHmDoHdQmKTfiI5PMccAlbyA1V46slp40pEW9LImx8=;
+        b=lkVfnqXHyX5PPXgSWaE3luVGYHYx/zEWR0Os2DIKritXG9ppgBPb9Rnc5M/lAClA2I
+         TjinoBni0SgwCRDcFTq7+lvrtlcWp6yoGSI11kZWCf916wUKjJ4Q3R8AyuFhPTlNT2s+
+         uF79n5HCKMy3Awfoh4y96vcmFbyAZ2bVlX8pWT+AYdOdL3dlvZzDZ3UtuvnPgmRPIFpO
+         oHQH9kjDyA8XDxxTw4kCJ62IYq+C10D2LlMk4Ye9UcUg7yp/X+gqn3kWzTyX1Z7pm5tH
+         QAJ9iEKFtK7HppIut83m/OhNCiptPz97tSZGZ0xG8dvtQyNEqQrLbJD1G923SxxynEN4
+         tccg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1759860770; x=1760465570;
+        h=mime-version:user-agent:references:in-reply-to:date:cc:to:from
+         :subject:message-id:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=8SHmDoHdQmKTfiI5PMccAlbyA1V46slp40pEW9LImx8=;
+        b=gXn/5KgpEUjVOedWYLdq9Zm+PLIyY7gkoiqdHG2+vaPyvdayiQyUk4YwUbEr/vIYTJ
+         vHCBkkrSF5j4KAZD+G1dxIDv0UrVxlzuzLTNBZWn1naoz3+vmD0EmuOZtQ8cHnj9aCBv
+         kHp9zbRBKYd/Ly0h6yD5iIDnnynRe6Ok1P/SPMbuF042XC3jOQF+d1Qd0NDdk5XSHxlP
+         KJo6+oy9hI9GoyokC0m+OMITYkj3qmnv/Fy8QeBg8sKx2wiptbbTKUbqNd4HgL9U6mRg
+         PZx9iCJAxEkRxbMT1cP+OUymfTdiet/Vif/G0H2+iUBR6ulatwvPHseWvVMjQItYJo4G
+         SaRQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVkbOKs5DChuZ7Eir8UaK8fUCqJ42h/F75A2+pcV56Z7oVYZr7oLSKo9GZ1JPmEhyXLhMisUU0kAPwyzAKMTg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx1W4WUZnmyu28SmsMlmDaEhCNMraPxznyj46egUIyHUfUwYBjE
+	vPOa0M6FAij8GrBV0rFCaj9flqnbdCXCsia19n3eDi+ihykHNHRvBUp2z3LbvvJqhTw=
+X-Gm-Gg: ASbGncsfxiMT4U8muWCJZgL/UyZPS2h7nw4uovaWvooshYX1hqTsKCbiqy8XTreuQaR
+	QWOGgYWB+vJxDv0TsCzjJJwa02CzSRkRue1ZbpQevIeoYm7Ur0jM5/mDqW6jjQzzn9MaeOZb+SY
+	26ba4mAmG0rHKnzvm79+74FgVUDz29pBqH/WtvecR+rJNw/z4vFlAKWREMJQJ67F6bBfqBCZgQT
+	PdAJhUVBt3LfKT+RsIReBAPyY9U26YSY+wbwRzgHd0jfG4U4dPlHlsxnM0nV2mZdDdaD3dTB1Gu
+	xhFQ3pgZcruL3BejrXbWwcn1iHKcE2Jwd47uaqY7T2vanCobGHal2Bp3CWck+uz/185yFvAE5Jh
+	ZyJZloagSSbm88kmYsZTIKk2fSthNpw+p92zFsO6z8PgZpEAZr4ed
+X-Google-Smtp-Source: AGHT+IFJwiFyqdn6vHfsVW5AqTzfPU59JdPTe9jsCTVyjegINt2FetoGEQEhtGUGJnu4FO7lY33Vsw==
+X-Received: by 2002:a05:620a:1a8e:b0:878:671f:7395 with SMTP id af79cd13be357-8835410ff67mr108686985a.69.1759860770343;
+        Tue, 07 Oct 2025 11:12:50 -0700 (PDT)
+Received: from ?IPv6:2606:6d00:17:ebd3::c41? ([2606:6d00:17:ebd3::c41])
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-877794b8c0esm1649064985a.45.2025.10.07.11.12.48
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 07 Oct 2025 11:12:49 -0700 (PDT)
+Message-ID: <dd5f934f222116a29ef5ec19a52a9b3ae7433de9.camel@ndufresne.ca>
+Subject: Re: [PATCH 13/16] media: dt-bindings: media: rockchip-rga: add
+ rockchip,rk3588-rga3
+From: Nicolas Dufresne <nicolas@ndufresne.ca>
+To: Krzysztof Kozlowski <krzk@kernel.org>, Sven =?ISO-8859-1?Q?P=FCschel?=	
+ <s.pueschel@pengutronix.de>, Jacob Chen <jacob-chen@iotwrt.com>, Ezequiel
+ Garcia <ezequiel@vanguardiasur.com.ar>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Rob Herring
+ <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,  Conor Dooley
+ <conor+dt@kernel.org>
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	devicetree@vger.kernel.org, kernel@pengutronix.de
+Date: Tue, 07 Oct 2025 14:12:48 -0400
+In-Reply-To: <c4b0f1d0-cebd-4381-b2c0-20c177c0732c@kernel.org>
+References: <20251007-spu-rga3-v1-0-36ad85570402@pengutronix.de>
+	 <20251007-spu-rga3-v1-13-36ad85570402@pengutronix.de>
+	 <c4b0f1d0-cebd-4381-b2c0-20c177c0732c@kernel.org>
+User-Agent: Evolution 3.56.2 (3.56.2-2.fc42) 
 MIME-Version: 1.0
-Message-Id: <20251007-extensible-parameters-validation-v6-7-5f719d9f39e5@ideasonboard.com>
-References: <20251007-extensible-parameters-validation-v6-0-5f719d9f39e5@ideasonboard.com>
-In-Reply-To: <20251007-extensible-parameters-validation-v6-0-5f719d9f39e5@ideasonboard.com>
-To: Dafna Hirschfeld <dafna@fastmail.com>, 
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
- Keke Li <keke.li@amlogic.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Heiko Stuebner <heiko@sntech.de>, Dan Scally <dan.scally@ideasonboard.com>, 
- Sakari Ailus <sakari.ailus@linux.intel.com>, 
- Antoine Bouyer <antoine.bouyer@nxp.com>
-Cc: linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=8312;
- i=jacopo.mondi@ideasonboard.com; h=from:subject:message-id;
- bh=jIJYy3RpHeSZ4gcjU37lge3RwOH4+fCoxiq+QmxKE0s=;
- b=owEBbQKS/ZANAwAKAXI0Bo8WoVY8AcsmYgBo5VgH8uf8WBJb9o4fwEmUn5Wh09PLkgoKfKeaW
- HpTgXW7CXaJAjMEAAEKAB0WIQS1xD1IgJogio9YOMByNAaPFqFWPAUCaOVYBwAKCRByNAaPFqFW
- PGQOD/9DMnT53okXZYfpatc2q/ixPhhiPwUbPzM8nWAzkMP4CVREHoA11ZHyzRGtdcv0mxrwUoB
- YSuB8Km3e7bqvJlnjWqwxt6G1OVJ5JucCQybMrH944MBCUXQ/PB9F1+R1fN8lqFRYMu/iSJcNAc
- +2e3YB8+IdSIlnvVCTJQ7FTAJSgpPtXoc5LX7FyyaXFsYbGsryWqMAj9p0XeDn3Hlpct9Auu8Ny
- wr+ToXBfBPFnNXyj7TDkw4BRk319Wnd6VsOsYCIfUZ7WRT1ISGYpQxvFSChZkaAmhn5zM6x53KE
- 4d7Wa5LOaZ2rpz3Nq0RhIam+OBnA9p04KOX4oCrnDhwwSkYpSUEaXSV2VkYjLYVPUcThxe33lm4
- /nSAL6uNkpriPl2kQ/q7dAQpEToaDkUQQa8nR4ScnKfokymZe/KRZILOC5c8iGvZL9E5A9ttdzw
- iln0oxiNUQP7TI6N3ncPs7oawSioUXeD1h9/c12RKiRLllQO6L3PVGA1++lr2SWZ5DeeLQoSK0d
- SCSyEnif55NfZuMlTODShh4CvAVbz1UrN219DuhD99bpXcIjaIjhfN7N2IQ2gqXdaXQ4G6GqbwU
- jd8i3sB4W+zrRGviO640FMNhz46k78//ylDMY43uT5OBSoB6p7Jb24TAMi/SUm9Hsre4N2KnqiZ
- MRIS6/KKVxX/BrA==
-X-Developer-Key: i=jacopo.mondi@ideasonboard.com; a=openpgp;
- fpr=72392EDC88144A65C701EA9BA5826A2587AD026B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251007_111236_079312_E57B511A 
-X-CRM114-Status: GOOD (  18.04  )
+X-CRM114-CacheID: sfid-20251007_111252_165377_85C5325C 
+X-CRM114-Status: GOOD (  18.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,245 +102,98 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============2498506396634061254=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Convert c3-isp-params.c to use the helpers defined in v4l2-isp.h
-to perform validation of a ISP parameters buffer.
 
-Reviewed-by: Keke Li <keke.li@amlogic.com>
-Reviewed-by: Daniel Scally <dan.scally@ideasonboard.com>
-Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
----
- drivers/media/platform/amlogic/c3/isp/Kconfig      |   1 +
- .../media/platform/amlogic/c3/isp/c3-isp-params.c  | 125 +++++----------------
- 2 files changed, 31 insertions(+), 95 deletions(-)
+--===============2498506396634061254==
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-7gUIbCmFrGsfnm1LXQ2d"
 
-diff --git a/drivers/media/platform/amlogic/c3/isp/Kconfig b/drivers/media/platform/amlogic/c3/isp/Kconfig
-index 02c62a50a5e88eac665e27abf163e5d654faed3f..809208cd7e3aa7ca0821cb07366ec73a47edb278 100644
---- a/drivers/media/platform/amlogic/c3/isp/Kconfig
-+++ b/drivers/media/platform/amlogic/c3/isp/Kconfig
-@@ -10,6 +10,7 @@ config VIDEO_C3_ISP
- 	select VIDEO_V4L2_SUBDEV_API
- 	select VIDEOBUF2_DMA_CONTIG
- 	select VIDEOBUF2_VMALLOC
-+	select V4L2_ISP
- 	help
- 	  Video4Linux2 driver for Amlogic C3 ISP pipeline.
- 	  The C3 ISP is used for processing raw images and
-diff --git a/drivers/media/platform/amlogic/c3/isp/c3-isp-params.c b/drivers/media/platform/amlogic/c3/isp/c3-isp-params.c
-index c80667dd766210d2b2e1ee60c8254a5814b9d81b..408a7b0137cf889d6a7e027b1fc23402fad52df4 100644
---- a/drivers/media/platform/amlogic/c3/isp/c3-isp-params.c
-+++ b/drivers/media/platform/amlogic/c3/isp/c3-isp-params.c
-@@ -8,6 +8,7 @@
- #include <linux/pm_runtime.h>
- 
- #include <media/v4l2-ioctl.h>
-+#include <media/v4l2-isp.h>
- #include <media/v4l2-mc.h>
- #include <media/videobuf2-vmalloc.h>
- 
-@@ -51,11 +52,6 @@ union c3_isp_params_block {
- typedef void (*c3_isp_block_handler)(struct c3_isp_device *isp,
- 				     const union c3_isp_params_block *block);
- 
--struct c3_isp_params_handler {
--	size_t size;
--	c3_isp_block_handler handler;
--};
--
- #define to_c3_isp_params_buffer(vbuf) \
- 	container_of(vbuf, struct c3_isp_params_buffer, vb)
- 
-@@ -523,38 +519,41 @@ static void c3_isp_params_cfg_blc(struct c3_isp_device *isp,
- 				   ISP_TOP_BEO_CTRL_BLC_EN);
- }
- 
--static const struct c3_isp_params_handler c3_isp_params_handlers[] = {
-+static const c3_isp_block_handler c3_isp_params_handlers[] = {
-+	[C3_ISP_PARAMS_BLOCK_AWB_GAINS] = c3_isp_params_cfg_awb_gains,
-+	[C3_ISP_PARAMS_BLOCK_AWB_CONFIG] = c3_isp_params_cfg_awb_config,
-+	[C3_ISP_PARAMS_BLOCK_AE_CONFIG] = c3_isp_params_cfg_ae_config,
-+	[C3_ISP_PARAMS_BLOCK_AF_CONFIG] = c3_isp_params_cfg_af_config,
-+	[C3_ISP_PARAMS_BLOCK_PST_GAMMA] = c3_isp_params_cfg_pst_gamma,
-+	[C3_ISP_PARAMS_BLOCK_CCM] = c3_isp_params_cfg_ccm,
-+	[C3_ISP_PARAMS_BLOCK_CSC] = c3_isp_params_cfg_csc,
-+	[C3_ISP_PARAMS_BLOCK_BLC] = c3_isp_params_cfg_blc,
-+};
-+
-+static const struct v4l2_isp_params_block_info c3_isp_params_blocks_info[] = {
- 	[C3_ISP_PARAMS_BLOCK_AWB_GAINS] = {
- 		.size = sizeof(struct c3_isp_params_awb_gains),
--		.handler = c3_isp_params_cfg_awb_gains,
- 	},
- 	[C3_ISP_PARAMS_BLOCK_AWB_CONFIG] = {
- 		.size = sizeof(struct c3_isp_params_awb_config),
--		.handler = c3_isp_params_cfg_awb_config,
- 	},
- 	[C3_ISP_PARAMS_BLOCK_AE_CONFIG] = {
- 		.size = sizeof(struct c3_isp_params_ae_config),
--		.handler = c3_isp_params_cfg_ae_config,
- 	},
- 	[C3_ISP_PARAMS_BLOCK_AF_CONFIG] = {
- 		.size = sizeof(struct c3_isp_params_af_config),
--		.handler = c3_isp_params_cfg_af_config,
- 	},
- 	[C3_ISP_PARAMS_BLOCK_PST_GAMMA] = {
- 		.size = sizeof(struct c3_isp_params_pst_gamma),
--		.handler = c3_isp_params_cfg_pst_gamma,
- 	},
- 	[C3_ISP_PARAMS_BLOCK_CCM] = {
- 		.size = sizeof(struct c3_isp_params_ccm),
--		.handler = c3_isp_params_cfg_ccm,
- 	},
- 	[C3_ISP_PARAMS_BLOCK_CSC] = {
- 		.size = sizeof(struct c3_isp_params_csc),
--		.handler = c3_isp_params_cfg_csc,
- 	},
- 	[C3_ISP_PARAMS_BLOCK_BLC] = {
- 		.size = sizeof(struct c3_isp_params_blc),
--		.handler = c3_isp_params_cfg_blc,
- 	},
- };
- 
-@@ -568,14 +567,14 @@ static void c3_isp_params_cfg_blocks(struct c3_isp_params *params)
- 
- 	/* Walk the list of parameter blocks and process them */
- 	while (block_offset < config->data_size) {
--		const struct c3_isp_params_handler *block_handler;
- 		const union c3_isp_params_block *block;
-+		c3_isp_block_handler block_handler;
- 
- 		block = (const union c3_isp_params_block *)
- 			 &config->data[block_offset];
- 
--		block_handler = &c3_isp_params_handlers[block->header.type];
--		block_handler->handler(params->isp, block);
-+		block_handler = c3_isp_params_handlers[block->header.type];
-+		block_handler(params->isp, block);
- 
- 		block_offset += block->header.size;
- 	}
-@@ -771,26 +770,22 @@ static int c3_isp_params_vb2_buf_prepare(struct vb2_buffer *vb)
- 	struct vb2_v4l2_buffer *vbuf = to_vb2_v4l2_buffer(vb);
- 	struct c3_isp_params_buffer *buf = to_c3_isp_params_buffer(vbuf);
- 	struct c3_isp_params *params = vb2_get_drv_priv(vb->vb2_queue);
--	struct c3_isp_params_cfg *cfg = buf->cfg;
- 	struct c3_isp_params_cfg *usr_cfg = vb2_plane_vaddr(vb, 0);
- 	size_t payload_size = vb2_get_plane_payload(vb, 0);
--	size_t header_size = offsetof(struct c3_isp_params_cfg, data);
--	size_t block_offset = 0;
--	size_t cfg_size;
-+	struct c3_isp_params_cfg *cfg = buf->cfg;
-+	int ret;
- 
--	/* Payload size can't be greater than the destination buffer size */
--	if (payload_size > params->vfmt.fmt.meta.buffersize) {
--		dev_dbg(params->isp->dev,
--			"Payload size is too large: %zu\n", payload_size);
-+	/* Only v0 is supported at the moment */
-+	if (usr_cfg->version != C3_ISP_PARAMS_BUFFER_V0) {
-+		dev_dbg(params->isp->dev, "Invalid params buffer version: %u\n",
-+			usr_cfg->version);
- 		return -EINVAL;
- 	}
- 
--	/* Payload size can't be smaller than the header size */
--	if (payload_size < header_size) {
--		dev_dbg(params->isp->dev,
--			"Payload size is too small: %zu\n", payload_size);
--		return -EINVAL;
--	}
-+	ret = v4l2_isp_params_validate_buffer_size(params->isp->dev, vb,
-+						   params->vfmt.fmt.meta.buffersize);
-+	if (ret)
-+		return ret;
- 
- 	/*
- 	 * Use the internal scratch buffer to avoid userspace modifying
-@@ -798,70 +793,10 @@ static int c3_isp_params_vb2_buf_prepare(struct vb2_buffer *vb)
- 	 */
- 	memcpy(cfg, usr_cfg, payload_size);
- 
--	/* Only v0 is supported at the moment */
--	if (cfg->version != C3_ISP_PARAMS_BUFFER_V0) {
--		dev_dbg(params->isp->dev,
--			"Invalid params buffer version: %u\n", cfg->version);
--		return -EINVAL;
--	}
--
--	/* Validate the size reported in the parameter buffer header */
--	cfg_size = header_size + cfg->data_size;
--	if (cfg_size != payload_size) {
--		dev_dbg(params->isp->dev,
--			"Data size %zu and payload size %zu are different\n",
--			cfg_size, payload_size);
--		return -EINVAL;
--	}
--
--	/* Walk the list of parameter blocks and validate them */
--	cfg_size = cfg->data_size;
--	while (cfg_size >= sizeof(struct c3_isp_params_block_header)) {
--		const struct c3_isp_params_block_header *block;
--		const struct c3_isp_params_handler *handler;
--
--		block = (struct c3_isp_params_block_header *)
--			&cfg->data[block_offset];
--
--		if (block->type >= ARRAY_SIZE(c3_isp_params_handlers)) {
--			dev_dbg(params->isp->dev,
--				"Invalid params block type\n");
--			return -EINVAL;
--		}
--
--		if (block->size > cfg_size) {
--			dev_dbg(params->isp->dev,
--				"Block size is greater than cfg size\n");
--			return -EINVAL;
--		}
--
--		if ((block->flags & (C3_ISP_PARAMS_BLOCK_FL_ENABLE |
--				     C3_ISP_PARAMS_BLOCK_FL_DISABLE)) ==
--		    (C3_ISP_PARAMS_BLOCK_FL_ENABLE |
--		     C3_ISP_PARAMS_BLOCK_FL_DISABLE)) {
--			dev_dbg(params->isp->dev,
--				"Invalid parameters block flags\n");
--			return -EINVAL;
--		}
--
--		handler = &c3_isp_params_handlers[block->type];
--		if (block->size != handler->size) {
--			dev_dbg(params->isp->dev,
--				"Invalid params block size\n");
--			return -EINVAL;
--		}
--
--		block_offset += block->size;
--		cfg_size -= block->size;
--	}
--
--	if (cfg_size) {
--		dev_dbg(params->isp->dev,
--			"Unexpected data after the params buffer end\n");
--		return -EINVAL;
--	}
--
--	return 0;
-+	return v4l2_isp_params_validate_buffer(params->isp->dev, vb,
-+					(struct v4l2_isp_params_buffer *)cfg,
-+					c3_isp_params_blocks_info,
-+					ARRAY_SIZE(c3_isp_params_blocks_info));
- }
- 
- static int c3_isp_params_vb2_buf_init(struct vb2_buffer *vb)
 
--- 
-2.51.0
+--=-7gUIbCmFrGsfnm1LXQ2d
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
+Hi,
+
+Le mardi 07 octobre 2025 =C3=A0 17:38 +0900, Krzysztof Kozlowski a =C3=A9cr=
+it=C2=A0:
+> On 07/10/2025 17:32, Sven P=C3=BCschel wrote:
+> > Add a new compatible for the rk3588 Rockchip SoC, which features an
+> > RGA3, which is described in the TRM Part2.
+
+Please write something here. You can't explain why RK did this, but at leas=
+t
+explain what are the differences and additional feature. It should also be =
+super
+clear through your patchset everything you didn't support, since when readi=
+ng
+your set, it really have nothing extra implemented.
+
+> >=20
+> > Signed-off-by: Sven P=C3=BCschel <s.pueschel@pengutronix.de>
+> > ---
+> > =C2=A0Documentation/devicetree/bindings/media/rockchip-rga.yaml | 1 +
+> > =C2=A01 file changed, 1 insertion(+)
+> >=20
+> > diff --git a/Documentation/devicetree/bindings/media/rockchip-rga.yaml
+> > b/Documentation/devicetree/bindings/media/rockchip-rga.yaml
+> > index
+> > ac17cda65191be047fc61d0c806f806c6af07c7b..11e86333c56aab55d9358dc88e45e=
+7c1eb
+> > faae9e 100644
+> > --- a/Documentation/devicetree/bindings/media/rockchip-rga.yaml
+> > +++ b/Documentation/devicetree/bindings/media/rockchip-rga.yaml
+> > @@ -20,6 +20,7 @@ properties:
+> > =C2=A0=C2=A0=C2=A0=C2=A0 oneOf:
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: rockchip,rk3288-rga
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: rockchip,rk3399-rga
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: rockchip,rk3588-rga3
+>=20
+> There is already rk3588-rga, so please explain in commit msg
+> differences, including compatibility or lack thereof. I am confused why
+> there are two completely different 2D accelerators simultaneously on
+> that SoC.
+
+It is quite strange hardware design, but this is really how the hardware is=
+. I
+personally don't expect an explanation from a third party. Its a mirror of =
+the
+VOP2 planes really.
+
+Nicolas
+
+>=20
+> Best regards,
+> Krzysztof
+
+--=-7gUIbCmFrGsfnm1LXQ2d
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaOVYIAAKCRDZQZRRKWBy
+9Go6AP9e4y2IiSL2I+67c8y9Mn1TNSV8ucapX8SFj5r6BqkeaAD/ebUK9jFL041m
+do23vyGkPpDC61NKSkX4f+0FGc9xDwc=
+=HOjH
+-----END PGP SIGNATURE-----
+
+--=-7gUIbCmFrGsfnm1LXQ2d--
+
+
+--===============2498506396634061254==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============2498506396634061254==--
+
