@@ -4,89 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A36A1CCA470
-	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Oct 2025 17:30:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3783CCA476
+	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Oct 2025 18:06:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dsQ+OadUqO7X2GRUT8HHXsp6Ylpj6i3GYc3BJoxZ9ps=; b=N0pI/wDCd2Dyhg
-	37N4RHrQ4o1h1xHcl9cMj6Ix2xS81h30oAaYvTTaYS+bdAwXQtDJsvg5FRwwBJeRsFTfWBJxAMrSL
-	+HQ/naIz+piCdfAnzZ0ApBdxa3bP/D1xkuRDRzhJ9pdcscbg03eVnXwkRxs9LD0En7tO6XQPqjHMQ
-	bdy8mtJz2bosSPcylloi2kM7UFrNlUOyW8vE6+sxQl5ydO4yqocUjZ2Zbbxxy/f994ZI33/YM9g9N
-	mWDB2W5NXZJMTB8vg4yaJ+md0BF3juvEx582hkqT23HX4f3VV+ipXLlq+frK5nUzrViRwKAkDbbFW
-	Dgjauql63s0qdNC7BYhw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=JTUf7DF2snkCtwnDFkXVswsHLINslY60/zSAJigtUks=; b=spX0QDXbZVz244DO4QmC9RaQLu
+	QqsNxUnZXEOrJ3YeG6POQ9mPI2eUluP1gr1uDpcyJGhFJ943mHKVLKFxn8Za+xikd0tlGlgVIAQCp
+	IcqO99DXAt41Yn/csLFHLBqabmwjMSd3ao4bNV73T8QPqhrQ49Bzzp9A7MQohIggtvb3BfIh7icnh
+	n0QuZc3k+koL6R0SoYC4GBvILI8sVs3IboO/BRH3IEaLzhAWNDYuoKCB2Cjtsd81DmqNf1w8o85np
+	mtnguI68Bot1hEnFnPDBuwP4GcLDhC3/p0rIOH8Vj6UTMSrYf8wKEd3fgTiTldqtihHZ28ti3hjQi
+	H37Z8uug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v6BVv-00000002U4L-0onh;
-	Tue, 07 Oct 2025 17:30:15 +0000
-Received: from mail-qt1-x834.google.com ([2607:f8b0:4864:20::834])
+	id 1v6C4m-00000002Wuk-1PwL;
+	Tue, 07 Oct 2025 18:06:16 +0000
+Received: from mail-qk1-x72b.google.com ([2607:f8b0:4864:20::72b])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v6BVs-00000002U3g-2FjY
+	id 1v6C4h-00000002WtC-0Q0f
 	for linux-rockchip@lists.infradead.org;
-	Tue, 07 Oct 2025 17:30:13 +0000
-Received: by mail-qt1-x834.google.com with SMTP id d75a77b69052e-4e4b340f99bso54280351cf.1
-        for <linux-rockchip@lists.infradead.org>; Tue, 07 Oct 2025 10:30:12 -0700 (PDT)
+	Tue, 07 Oct 2025 18:06:15 +0000
+Received: by mail-qk1-x72b.google.com with SMTP id af79cd13be357-854fcb187b2so757995485a.2
+        for <linux-rockchip@lists.infradead.org>; Tue, 07 Oct 2025 11:06:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1759858211; x=1760463011; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=sMAj+aiM1byyV8qUW2iRSeox1tE1lo5J3rRUTQoSTSc=;
-        b=YovAWcwo2Vbe4B+Wq7RpxuSX8vGoX0yW8UwRyUiGviaJyh74EBWqr1ci1OC2Nsg1b2
-         +fenFX/xB9NDdELBgFdDpUS6a8qzBC37XNDul/XhhW2yQ79xKDmA3qxLuxdAuN3WNer1
-         yxmsw1qv4mEYO5jBoefj5zgd23Q9K70Q9MhFvnts6JQwJO8jZ12zu89DcDT/3XWJuMYt
-         xl91dcGjgkgtZm4dYg8lzRtdwHOGmGk3LQD8aPpz/Zjw2FDAdfBISHSfPkQhev4iAHtu
-         9Bi6l1eI0Tt+ObtKwAo/7zU+8XVXxGi5fpFDpECkDPgrXjYwyB3K3wPC78n9UrUp3iU+
-         Z0IA==
+        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1759860369; x=1760465169; darn=lists.infradead.org;
+        h=mime-version:user-agent:references:in-reply-to:date:cc:to:from
+         :subject:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=ch7TyWwa1EZJeBseqB4xaWFqVYs5eXriLyyqsfuTad8=;
+        b=E+9VOS3kfA02hqOAmJfeuppKm8mBII3fasDyr2o4AnbpfprfY46RqM4XWNZNfI2BHz
+         3tJSLXVM3AtlvLb9HuKjmdmTEraT6YvowXqkOo8VD9ito16ec1/ywrzyJd3yJZxzs7+q
+         Cd6CJrba51Z4TLAQely6rcOsE3Ne2YS0zT/6tW8iQnLJCXHJaeLsZu1sn8pgHH9Fvc3u
+         /Vw5z6IKYliV/UoSEgcvkxLBGO4Xll2Uf0Mi7M/7wQOATyGXa/CxZX/YNfcp7jS2+wpz
+         22kf6VTP6ghBpWBMNad8gx+U7Ddh3bw4VZ6FJyHDQPZctBuySGg2Pn8sG2c6o/OrgWoV
+         00kw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1759858211; x=1760463011;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=sMAj+aiM1byyV8qUW2iRSeox1tE1lo5J3rRUTQoSTSc=;
-        b=YRLfUApHrJ0hPLEfQjTu7btbqhn7rYy5nrtZyhZa140NK3VRROAaQsfRqcafDdvZIs
-         3UyekHGEJLl0/VAmgOnJuRoxF1hJWJ4/N3u2NeAm/pKzP6KM6qiEfw0pVCAMVlpj+EtM
-         V7X8UfI62hFl4TLIW+j0fehhXEpcFH0Yxp8eLecJFLK1D2V4+pScFjCUd3pFGzofr89q
-         UxucGvpsBQlDQLPiM/ackftcel0l2bYcWsZIl3YSGih/ghkOvR7/ncyqbR74RZvzmC0X
-         QHMY3Gi4a2BmjERta4waMsT0K6q8uY286lhURDL7g0PBzVA1/jg1CJO2zAnkZZvfQPF4
-         VE4g==
-X-Forwarded-Encrypted: i=1; AJvYcCXUjwGv3FpiB0G0xNo/z5ME5EZFWoDmKThi889n2i+i/Y6NND/H7kFw0t27EndWRiK17Y/DEJDuzrE/RiYGbw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxr3ZFvIMY1ua6wADFvu+IYexEVWPXoN06tJnvGRmKvF+hcKZV5
-	91H0aPLvrvVd1uxwPgdr39KilrckviXS6F0qV6emRRkaUS5qoRFA20sCX/TLaIlkcDEB7w9zsUC
-	/vQKfV7XYye5W24dO22uIvSpNFj7Qcvs=
-X-Gm-Gg: ASbGncuHjkaKm9LKLB2pgMG9J6and36cd2OhOkOy+WtAi63elJcsg9CsHxmDKnk10f+
-	6/SB+1Qfbts3fKf5EF1Wnb6NTKlh562v9pB/C5wIU+noiU5imjBYUU2tVm1TmEIz5ITUP3LAynz
-	dQ70pfXtQad7AylipVeu199CEab2QO/kV7IvJA6dgqpEEOgkop/8wJJWrRmHoxKd6gln6qv6lSg
-	ZnF0XNYX2gSHlzraAHWxpwV/9m8pzYS
-X-Google-Smtp-Source: AGHT+IGJRfUjE/oeQKG0hRpMB1UxYS7CMPbyUsEgb4VJAH4jITPPVIHBmZKNXDNSbvw+FOss5T4/jom7TqKt2zeh/lw=
-X-Received: by 2002:a05:622a:28b:b0:4df:504:ef88 with SMTP id
- d75a77b69052e-4e6eacd88a2mr6233551cf.23.1759858210804; Tue, 07 Oct 2025
- 10:30:10 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1759860369; x=1760465169;
+        h=mime-version:user-agent:references:in-reply-to:date:cc:to:from
+         :subject:message-id:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=ch7TyWwa1EZJeBseqB4xaWFqVYs5eXriLyyqsfuTad8=;
+        b=HRme2RhFkQqz3xqQE2sYsj4I2nJfqB8ss0J6CXiSissZ3x/bXFuSwJlh2s6JPp8xWP
+         7h1JgdnPhkA0e2VJ8vBwEpwsdZT8mzyapWp93B55rCCTcJczgMIlK3htbhqsKg1/cLMp
+         Ex5OTM9W9wgMLwBnvqJS6+fQMDGt+qpusMJeoFZPtVdEcTP1VdZh1pfwALD/fr5BUrbu
+         QaTwyNOPfsrI0f6TjPsEjnPYmZgQ9ADb+MuOWSCQ4xTwsYjLFz+c4ui024O3QBVcByOP
+         ilWYIZMVsbLmESR3AHdJTe4Yy0kVvPTkVv9q7bDcGaPRF8/Xp/z2RSiHdy2I68u4wClw
+         pV6Q==
+X-Forwarded-Encrypted: i=1; AJvYcCVq1FguPbXVhTwT0hGGAlAbeigYvI8CDdlfFAjzb3IzgCG6LcO7EbYYWeyumpEPLFKdrdA+FAD5auyf71u43Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxixZ3q9afZ7+6WUUk+xIIMr6TOGFhQ8HtsnJKuEmSTDhbUhU00
+	erycKRHJM0SKaQN5ZkZ81/RFEu5v3NAlbiyzCr4gZSgymtuM9ak6nPOf2PRj78nm20o=
+X-Gm-Gg: ASbGncs0SAxctArNVk2PEUNRzGLKM0rpaSKbkOEO3G7cKkI855goHkXQbglLkq+d0yA
+	3udr03cTIeV9IN5ALfFIqUjCe9YDKA87XjU32ssx8dYeCwqYvmpc3rNHs2rQuF5k9YhnBGhjDu7
+	0waUzsFlg44Dv+UbtgC+qpFeT0mPhNr+F0aNuHarAIR+M5/Ei5YsTODXG6P7bet8jx1b0lVAV6O
+	T8bOF2uUVKc9hUw24PPEH6jGYQR6EWOP/kND2Tr/3IohZ7K7MCYZayPk87PGTl9LBN5XgpI9aH/
+	8UXPk3JEPmZNoceGDfzpYyx1eiRdq93wmtTIzuZIEszLQMiJkxhVeRneghGSEakwS69pz5dMB7Y
+	cqPIHLO4Q86HWiAwyNVgRRhe8egBu4zOyExxoO9tOPtCnK6sDKTtoTlLISehsv44=
+X-Google-Smtp-Source: AGHT+IEd8+PaBlkFCf4TWlgW17RetR7onOYSu6eacanLHMSo1S6DckxwyV/Bqe+3v64BuZQrTcO0Vg==
+X-Received: by 2002:a05:620a:4891:b0:860:a923:c114 with SMTP id af79cd13be357-8835088d4e8mr120315085a.26.1759860369140;
+        Tue, 07 Oct 2025 11:06:09 -0700 (PDT)
+Received: from ?IPv6:2606:6d00:17:ebd3::c41? ([2606:6d00:17:ebd3::c41])
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-877796a1de6sm1488995285a.49.2025.10.07.11.06.07
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 07 Oct 2025 11:06:08 -0700 (PDT)
+Message-ID: <3c62e3c837d534ef5bc21a95ec1dc408c38cb8a0.camel@ndufresne.ca>
+Subject: Re: [PATCH 00/16] media: platform: rga: Add RGA3 support
+From: Nicolas Dufresne <nicolas@ndufresne.ca>
+To: Sven =?ISO-8859-1?Q?P=FCschel?= <s.pueschel@pengutronix.de>, Jacob Chen
+	 <jacob-chen@iotwrt.com>, Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
+ Mauro Carvalho Chehab
+	 <mchehab@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Rob Herring
+	 <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+	 <conor+dt@kernel.org>
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	devicetree@vger.kernel.org, kernel@pengutronix.de
+Date: Tue, 07 Oct 2025 14:06:06 -0400
+In-Reply-To: <20251007-spu-rga3-v1-0-36ad85570402@pengutronix.de>
+References: <20251007-spu-rga3-v1-0-36ad85570402@pengutronix.de>
+User-Agent: Evolution 3.56.2 (3.56.2-2.fc42) 
 MIME-Version: 1.0
-References: <20250929065714.27741-1-jjm2473@gmail.com> <20250929065714.27741-4-jjm2473@gmail.com>
- <d8ad476c-d0c7-4e97-9e76-540a539ffb52@lunn.ch> <CAP_9mL4ofig-X-w9wx1A5D_eVXROo6AVFBSwp4mh=kj7webpPA@mail.gmail.com>
- <7e219aef-88a0-4184-9553-30dcbc8dbd79@lunn.ch>
-In-Reply-To: <7e219aef-88a0-4184-9553-30dcbc8dbd79@lunn.ch>
-From: jjm2473 <jjm2473@gmail.com>
-Date: Wed, 8 Oct 2025 01:29:57 +0800
-X-Gm-Features: AS18NWBZUMXa0jkDLOJvcTfIew6vRsl83_rLRSuXeQfl3Nd8OcKbfEdsvkWXLgw
-Message-ID: <CAP_9mL6utQjN_2EZ4vs3K8jzcxHxvKWNTNEXZ9fAx4HuA=DNXA@mail.gmail.com>
-Subject: Re: [PATCH v3 3/3] arm64: dts: rockchip: add LinkEase EasePi R1
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de, 
-	quentin.schulz@cherry.de, kever.yang@rock-chips.com, naoki@radxa.com, 
-	honyuenkwun@gmail.com, inindev@gmail.com, ivan8215145640@gmail.com, 
-	neil.armstrong@linaro.org, mani@kernel.org, dsimic@manjaro.org, 
-	pbrobinson@gmail.com, alchark@gmail.com, didi.debian@cknow.org, 
-	jbx6244@gmail.com, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251007_103012_601456_77643E80 
-X-CRM114-Status: GOOD (  32.62  )
+X-CRM114-CacheID: sfid-20251007_110611_410195_C671D61B 
+X-CRM114-Status: GOOD (  27.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,137 +99,217 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============0205093747201866463=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-QW5kcmV3IEx1bm4gPGFuZHJld0BsdW5uLmNoPiDkuo4yMDI15bm0MTDmnIg35pel5ZGo5LqMIDIy
-OjU35YaZ6YGT77yaCj4KPiBPbiBUdWUsIE9jdCAwNywgMjAyNSBhdCAxMDozMjoyNlBNICswODAw
-LCBqam0yNDczIHdyb3RlOgo+ID4gQW5kcmV3IEx1bm4gPGFuZHJld0BsdW5uLmNoPiDkuo4yMDI1
-5bm0MTDmnIg25pel5ZGo5LiAIDIzOjUx5YaZ6YGT77yaCj4gPiA+Cj4gPiA+ID4gKyZnbWFjMCB7
-Cj4gPiA+ID4gKyAgICAgcGh5LW1vZGUgPSAicmdtaWkiOwo+ID4gPgo+ID4gPiBEaWQgaSByZWFs
-bHkgbWlzcyB0aGlzIHBhdGNoIHNlcmllcyBpbiBpdHMgZWFybGllciB2ZXJzaW9uLCBvciBkaWQg
-eW91Cj4gPiA+IGlnbm9yZSBtZT8KPiA+ID4KPiA+ID4gaHR0cHM6Ly9lbGl4aXIuYm9vdGxpbi5j
-b20vbGludXgvdjYuMTUvc291cmNlL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9u
-ZXQvZXRoZXJuZXQtY29udHJvbGxlci55YW1sI0wyODcKPiA+ID4KPiA+ID4gPiArICAgICB0eF9k
-ZWxheSA9IDwweDNjPjsKPiA+ID4gPiArICAgICByeF9kZWxheSA9IDwweDJmPjsKPiA+ID4KPiA+
-ID4gUGxlYXNlIGNoYW5nZSBpdCB0byByZ21paS1pZCwgYW5kIHNtYWxsZXIgdHgvcnhfZGVsYXkg
-dmFsdWVzLiBPciBzaG93Cj4gPiA+IHVzIHRoZSBzY2hlbWF0aWNzIHdoaWNoIGNsZWFybHkgc2hv
-dyBleHRyYSBsb25nIGNsb2NrIGxpbmVzLgo+ID4gPgo+ID4gPiA+ICsvKiBNaWNybyBTRCBjYXJk
-IHNsb3QgaXMgbm90IG1vdW50ZWQgKi8KPiA+ID4gPiArJnNkbW1jMCB7Cj4gPiA+ID4gKyAgICAg
-bWF4LWZyZXF1ZW5jeSA9IDwxNTAwMDAwMDA+Owo+ID4gPiA+ICsgICAgIG5vLXNkaW87Cj4gPiA+
-ID4gKyAgICAgbm8tbW1jOwo+ID4gPiA+ICsgICAgIGJ1cy13aWR0aCA9IDw0PjsKPiA+ID4gPiAr
-ICAgICBjYXAtbW1jLWhpZ2hzcGVlZDsKPiA+ID4gPiArICAgICBjYXAtc2QtaGlnaHNwZWVkOwo+
-ID4gPiA+ICsgICAgIGRpc2FibGUtd3A7Cj4gPiA+ID4gKyAgICAgcGluY3RybC1uYW1lcyA9ICJk
-ZWZhdWx0IjsKPiA+ID4gPiArICAgICBwaW5jdHJsLTAgPSA8JnNkbW1jMF9idXM0ICZzZG1tYzBf
-Y2xrICZzZG1tYzBfY21kICZzZG1tYzBfZGV0PjsKPiA+ID4gPiArICAgICB2bW1jLXN1cHBseSA9
-IDwmdmNjM3YzX3NkPjsKPiA+ID4gPiArICAgICB2cW1tYy1zdXBwbHkgPSA8JnZjY2lvX3NkPjsK
-PiA+ID4gPiArICAgICBzdGF0dXMgPSAiZGlzYWJsZWQiOwo+ID4gPiA+ICt9Owo+ID4gPiA+ICsK
-PiA+ID4gPiArLyogV2lmaSBtb2R1bGUgaXMgbm90IG1vdW50ZWQgKi8KPiA+ID4gPiArJnNkbW1j
-MiB7Cj4gPiA+Cj4gPiA+IFdoYXQgZG8geW91IG1lYW4gYnkgIm5vdCBtb3VudGVkIj8KPiA+ID4K
-PiA+ID4gT2Z0ZW4geW91IHdvdWxkIHNheSAibm90IHBvcHVsYXRlZCIsIHRvIGluZGljYXRlIHRo
-ZSBQQ0IgaGFzIGFsbCB0aGUKPiA+ID4gdHJhY2tzIGluIHBsYWNlLCBidXQgdGhlIGNoaXAgaGFz
-IHNpbXBseSBub3QgYmVlbiBzb2xkZXJlZCBpbiBwbGFjZS4KPiA+ID4KPiA+ID4gT3IgaXMgdGhl
-cmUgYSBjb25uZWN0b3IgaGVyZSwgYW5kIG5vdGhpbmcgcGx1Z2dlZCBpbnRvIHRoZSBjb25uZWN0
-b3I/Cj4gPiA+Cj4gPiA+ICAgIEFuZHJldwo+ID4KPiA+IEFuZHJldzoKPiA+ICBIZWxsbyEgSSBy
-YW4gYC4vc2NyaXB0cy9nZXRfbWFpbnRhaW5lci5wbAo+ID4gcGF0Y2hlcy12NC92NC0wMDAzLWFy
-bTY0LWR0cy1yb2NrY2hpcC1hZGQtTGlua0Vhc2UtRWFzZVBpLVIxLnBhdGNoYAo+ID4gdG8gZ2V0
-IG1haW50YWluZXIgbGlzdCwgYW5kIGdvdDoKPiA+IGBgYAo+ID4gUm9iIEhlcnJpbmcgPHJvYmhA
-a2VybmVsLm9yZz4gKG1haW50YWluZXI6T1BFTiBGSVJNV0FSRSBBTkQgRkxBVFRFTkVECj4gPiBE
-RVZJQ0UgVFJFRSBCSU5ESU5HUykKPiA+IEtyenlzenRvZiBLb3psb3dza2kgPGtyemsrZHRAa2Vy
-bmVsLm9yZz4gKG1haW50YWluZXI6T1BFTiBGSVJNV0FSRSBBTkQKPiA+IEZMQVRURU5FRCBERVZJ
-Q0UgVFJFRSBCSU5ESU5HUyxjb21taXRfc2lnbmVyOjMvNDE9NyUpCj4gPiBDb25vciBEb29sZXkg
-PGNvbm9yK2R0QGtlcm5lbC5vcmc+IChtYWludGFpbmVyOk9QRU4gRklSTVdBUkUgQU5ECj4gPiBG
-TEFUVEVORUQgREVWSUNFIFRSRUUgQklORElOR1MpCj4gPiBIZWlrbyBTdHVlYm5lciA8aGVpa29A
-c250ZWNoLmRlPiAobWFpbnRhaW5lcjpBUk0vUm9ja2NoaXAgU29DCj4gPiBzdXBwb3J0LGNvbW1p
-dF9zaWduZXI6NDMvNDE9MTAwJSxhdXRob3JlZDo0LzQxPTEwJSxhZGRlZF9saW5lczoxMi8xMTc9
-MTAlLGNvbW1pdF9zaWduZXI6NS82PTgzJSkKPiA+IFF1ZW50aW4gU2NodWx6IDxxdWVudGluLnNj
-aHVsekBjaGVycnkuZGU+Cj4gPiAoY29tbWl0X3NpZ25lcjoxMC80MT0yNCUsYXV0aG9yZWQ6OC80
-MT0yMCUsYWRkZWRfbGluZXM6NjMvMTE3PTU0JSkKPiA+IERyYWdhbiBTaW1pYyA8ZHNpbWljQG1h
-bmphcm8ub3JnPiAoY29tbWl0X3NpZ25lcjo1LzQxPTEyJSxjb21taXRfc2lnbmVyOjEvNj0xNyUp
-Cj4gPiBGVUtBVU1JIE5hb2tpIDxuYW9raUByYWR4YS5jb20+Cj4gPiAoY29tbWl0X3NpZ25lcjoz
-LzQxPTclLGF1dGhvcmVkOjMvNDE9NyUscmVtb3ZlZF9saW5lczoxLzE9MTAwJSkKPiA+IFBldGVy
-IFJvYmluc29uIDxwYnJvYmluc29uQGdtYWlsLmNvbT4KPiA+IChhZGRlZF9saW5lczo5LzExNz04
-JSxjb21taXRfc2lnbmVyOjEvNj0xNyUsYXV0aG9yZWQ6MS82PTE3JSkKPiA+IEFsZXhleSBDaGFy
-a292IDxhbGNoYXJrQGdtYWlsLmNvbT4gKGFkZGVkX2xpbmVzOjYvMTE3PTUlKQo+ID4gRGllZGVy
-aWsgZGUgSGFhcyA8ZGlkaS5kZWJpYW5AY2tub3cub3JnPgo+ID4gKGNvbW1pdF9zaWduZXI6NC82
-PTY3JSxhdXRob3JlZDozLzY9NTAlKQo+ID4gTGlhbmdiaW4gTGlhbiA8amptMjQ3M0BnbWFpbC5j
-b20+IChjb21taXRfc2lnbmVyOjEvNj0xNyUsYXV0aG9yZWQ6MS82PTE3JSkKPiA+IEpvaGFuIEpv
-bmtlciA8amJ4NjI0NEBnbWFpbC5jb20+IChhdXRob3JlZDoxLzY9MTclKQo+ID4gZGV2aWNldHJl
-ZUB2Z2VyLmtlcm5lbC5vcmcgKG9wZW4gbGlzdDpPUEVOIEZJUk1XQVJFIEFORCBGTEFUVEVORUQK
-PiA+IERFVklDRSBUUkVFIEJJTkRJTkdTKQo+ID4gbGludXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZy
-YWRlYWQub3JnIChtb2RlcmF0ZWQgbGlzdDpBUk0vUm9ja2NoaXAgU29DIHN1cHBvcnQpCj4gPiBs
-aW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnIChvcGVuIGxpc3Q6QVJNL1JvY2tjaGlw
-IFNvQyBzdXBwb3J0KQo+ID4gbGludXgta2VybmVsQHZnZXIua2VybmVsLm9yZyAob3BlbiBsaXN0
-KQo+ID4gYGBgCj4gPiB5b3VyIGVtYWlsIGFkZHJlc3MgaXMgbm90IGxpc3RlZCBhYm92ZS4KPgo+
-IFdoYXQgaSBldmVudHVhbGx5IGZvdW5kIGlzIHRoYXQgeW91IHBvc3RlZCB2MyBzZXBhcmF0ZWx5
-LCBhbmQgdGhlbgo+IHRocmVhZGVkIHY0IHRvIHYyLCB3aGljaCBtYWtlcyBubyBzZW5zZS4KPgo+
-IFBsZWFzZSBhbHdheXMgc3RhcnQgYSBuZXcgdGhyZWFkIGZvciBlYWNoIHBhdGNoc2V0Lgo+Cj4g
-PiA+IFdoYXQgZG8geW91IG1lYW4gYnkgIm5vdCBtb3VudGVkIj8KPiA+ID4KPiA+ID4gT2Z0ZW4g
-eW91IHdvdWxkIHNheSAibm90IHBvcHVsYXRlZCIsIHRvIGluZGljYXRlIHRoZSBQQ0IgaGFzIGFs
-bCB0aGUKPiA+ID4gdHJhY2tzIGluIHBsYWNlLCBidXQgdGhlIGNoaXAgaGFzIHNpbXBseSBub3Qg
-YmVlbiBzb2xkZXJlZCBpbiBwbGFjZS4KPiA+ID4KPiA+ID4gT3IgaXMgdGhlcmUgYSBjb25uZWN0
-b3IgaGVyZSwgYW5kIG5vdGhpbmcgcGx1Z2dlZCBpbnRvIHRoZSBjb25uZWN0b3I/Cj4gPgo+ID4g
-VGhlIGNoaXAvc2xvdCBoYXMgbm90IGJlZW4gc29sZGVyZWQuIFNvIGhlcmUgc2hvdWxkIGJlICJu
-b3QKPiA+IHBvcHVsYXRlZCIsIGZvcmdpdmUgbXkgcG9vciBFbmdsaXNoLgo+Cj4gVGhhbmtzIGZv
-ciB0aGUgY2xhcmlmaWNhdGlvbi4gSSdtIG5vdCBzdXJlIGl0IGlzIHdvcnRoIGFkZGluZyB0aGVz
-ZSBEVAo+IHByb3BlcnRpZXMuIFdoZW4gYSBuZXcgYm9hcmQgaXMgcHJvZHVjZWQgd2hpY2ggZG9l
-cyBwb3B1bGF0ZSB0aGVzZQo+IGRldmljZXMsIHlvdSBhcmUgZ29pbmcgdG8gbmVlZCBhIG5ldyAu
-ZHRzIGZpbGUuIFNvIHlvdSBjYW4gcHV0IHRoZQo+IHByb3BlcnRpZXMgaW50byB0aGF0IG5ldyBm
-aWxlLgo+Cj4gPgo+ID4gPiBQbGVhc2UgY2hhbmdlIGl0IHRvIHJnbWlpLWlkLCBhbmQgc21hbGxl
-ciB0eC9yeF9kZWxheSB2YWx1ZXMuIE9yIHNob3cKPiA+ID4gdXMgdGhlIHNjaGVtYXRpY3Mgd2hp
-Y2ggY2xlYXJseSBzaG93IGV4dHJhIGxvbmcgY2xvY2sgbGluZXMuCj4gPgo+ID4gSW4gZmFjdCwg
-dGhlIFJUTDgyMTFGJ3MgUlhETFkgYW5kIFRYRExZIHNpZ25hbHMgYXJlIGJvdGggcHVsbGVkIGxv
-dywKPiA+IGp1c3QgbGlrZSB0aGUgQmFuYW5hIFBpIEJQSS1SMiBQcm8sIHNvIHRoZSBjb25maWd1
-cmF0aW9uIGlzIGFsc28gcmVmZXJlbmNlZDoKPiA+IGh0dHBzOi8vZWxpeGlyLmJvb3RsaW4uY29t
-L2xpbnV4L3Y2LjE1L3NvdXJjZS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU2OC1i
-cGktcjItcHJvLmR0cyNMMjM3Cj4KPiBQdWxsIGxvdyBtYWtlcyBubyBkaWZmZXJlbmNlIHRvIHRo
-ZSAybnMgUkdNSUkgZGVsYXlzLgo+Cj4gPiBUaGUgdHhfZGVsYXkgYW5kIHJ4X2RlbGF5IHZhbHVl
-cyB3ZXJlIG9idGFpbmVkIHVzaW5nIFJvY2tjaGlwJ3MKPiA+IGF1dG9tYXRpYyBzY2FubmluZyB0
-b29sOgo+ID4gaHR0cHM6Ly9naXRodWIuY29tL2lzdG9yZW9zL2lzdG9yZW9zL2Jsb2IvNTQ3NDZk
-ZmRiNWJkMzRkMWYyODFjZjQxZDFkMTYyMGQwYzNlZTY4Ni90YXJnZXQvbGludXgvcm9ja2NoaXAv
-ZmlsZXMvZHJpdmVycy9uZXQvZXRoZXJuZXQvc3RtaWNyby9zdG1tYWMvZHdtYWMtcmstdG9vbC5j
-Cj4gPiBodHRwczovL2dpdGxhYi5jb20vZmlyZWZseS1saW51eC9kb2NzLy0vYmxvYi9yazM1Nngv
-ZmlyZWZseS9Db21tb24vR01BQy9Sb2NrY2hpcF9EZXZlbG9wZXJfR3VpZGVfTGludXhfR01BQ19S
-R01JSV9EZWxheWxpbmVfRU4ucGRmCj4gPiBodHRwczovL2dpdGh1Yi5jb20vYXhscm9zZS9ya2Rv
-Y3MvYmxvYi9tYWluL0NvbW1vbi9HTUFDL1JvY2tjaGlwX0RldmVsb3Blcl9HdWlkZV9MaW51eF9H
-TUFDX1JHTUlJX0RlbGF5bGluZV9FTi5wZGYKPgo+IFZlbmRvcnMgZ2V0IHRoaW5ncyB3cm9uZywg
-aW5jbHVkaW5nIHRoaXMuICdyZ21paScgbWVhbnMgdGhlIFBDQiBhZGRzCj4gdGhlIDJucyBkZWxh
-eS4gTmVhcmx5IGV2ZXJ5IFJvY2tjaGlwIGJvYXJkIGZvbGxvd3MgUm9ja2NoaXAgYnJva2VuCj4g
-dmVuZG9yIHJlY29tbWVuZGF0aW9ucywgYW5kIHRoZW4gaSBjb21lIGFsb25nLCBwb2ludCBvdXQg
-aG93IGl0IGlzCj4gd3JvbmcsIGFuZCBhc2sgZm9yIGl0IHRvIGJlIGZpeGVkLCBiZWZvcmUgYmVp
-bmcgbWVyZ2VkIHRvIE1haW5saW5lLgo+Cj4gICAgICAgICBBbmRyZXcKCkFuZHJldzoKIEhlbGxv
-IQoKPgo+IFdoYXQgaSBldmVudHVhbGx5IGZvdW5kIGlzIHRoYXQgeW91IHBvc3RlZCB2MyBzZXBh
-cmF0ZWx5LCBhbmQgdGhlbgo+IHRocmVhZGVkIHY0IHRvIHYyLCB3aGljaCBtYWtlcyBubyBzZW5z
-ZS4KPgoKVGhpcyBpcyB2MiBsaW5rCmh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2FsbC8yMDI1MDky
-NTA5MjAzNy4xMzU4Mi0xLWpqbTI0NzNAZ21haWwuY29tLwouCkkgZG9uJ3Qgc2VlICd2NCcgaW4g
-dGhlcmUuIEkgaGF2ZSBubyBpZGVhIHdoeSB5b3Ugc2VlICd2NCcsIGNhbiB5b3UKcGxlYXNlIHNo
-YXJlIGEgbGluaz8KClRoaXMgaXMgdjMgbGluawpodHRwczovL2xvcmUua2VybmVsLm9yZy9hbGwv
-MjAyNTA5MjkwNjU3MTQuMjc3NDEtMS1qam0yNDczQGdtYWlsLmNvbS8KLgpJIGRvbid0IHNlZSB0
-aHJlYWRpbmcgaXNzdWUuCkkgdXNlIGBnaXQgc2VuZC1lbWFpbCAtLXRvICcqKionIC0tY2MgJyoq
-KicgcGF0Y2hlcy12M2AgdG8gc2VuZCBlbWFpbCwKc2hvdWxkIGJlIE9LLgooYHBhdGNoZXMtdjNg
-IGlzIGEgZm9sZGVyIGNvbnRhaW5zIHBhdGNoZXMgZ2VuZXJhdGVyYXRlZCBieSBgZ2l0CmZvcm1h
-dC1wYXRjaCAtLWJhc2U9bWFzdGVyIC0tY292ZXItbGV0dGVyIC12MyBIRUFEIC0zIC1vIHBhdGNo
-ZXMtdjNgKS4KCj4gV2hlbiBhIG5ldyBib2FyZCBpcyBwcm9kdWNlZCB3aGljaCBkb2VzIHBvcHVs
-YXRlIHRoZXNlCj4gZGV2aWNlcywgeW91IGFyZSBnb2luZyB0byBuZWVkIGEgbmV3IC5kdHMgZmls
-ZS4gU28geW91IGNhbiBwdXQgdGhlCj4gcHJvcGVydGllcyBpbnRvIHRoYXQgbmV3IGZpbGUuCgpU
-aGVzZSB0d28gbm9kZXMganVzdCBkZXNjcmliZSB0aGUgZ3BpbyBhbmQgcmVndWxhdG9yIGZvdW5k
-IGluIHRoZSBzY2hlbWF0aWMuCklmIHNvbWUgdXNlcnMgc29sZGVyIHRoZXNlIGNvbm5lY3RvcnMg
-b3IgbW9kdWxlcyB0aGVtc2VsdmVzLAp0aGV5IG9ubHkgbmVlZCB0byBjaGFuZ2UgdGhlIHN0YXR1
-cyB0byBvayBhbmQgdGhleSBjYW4gdXNlIHRoZW0uCklmIHRoaXMgd2lsbCBjYXVzZSBjb25mdXNp
-b24sIEkgY2FuIGRlbGV0ZSB0aGVzZSB0d28gbm9kZXMuCgo+IFZlbmRvcnMgZ2V0IHRoaW5ncyB3
-cm9uZywgaW5jbHVkaW5nIHRoaXMuICdyZ21paScgbWVhbnMgdGhlIFBDQiBhZGRzCj4gdGhlIDJu
-cyBkZWxheS4gTmVhcmx5IGV2ZXJ5IFJvY2tjaGlwIGJvYXJkIGZvbGxvd3MgUm9ja2NoaXAgYnJv
-a2VuCj4gdmVuZG9yIHJlY29tbWVuZGF0aW9ucywgYW5kIHRoZW4gaSBjb21lIGFsb25nLCBwb2lu
-dCBvdXQgaG93IGl0IGlzCj4gd3JvbmcsIGFuZCBhc2sgZm9yIGl0IHRvIGJlIGZpeGVkLCBiZWZv
-cmUgYmVpbmcgbWVyZ2VkIHRvIE1haW5saW5lLgoKSSB3aWxsIHRyeSBgcmdtaWktaWRgIGFuZCBy
-ZXNjYW4ge3R4fHJ4fV9kZWxheSwganVzdCBsaWtlCmh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2Fs
-bC8yMDI1MDkyNTA5MjkyMy4yMTg0MTg3LTMtaGVpa29Ac250ZWNoLmRlLwoKSSBhbHNvIG5vdGlj
-ZSB0aGF0IHlvdSBzdWdnZXN0IHVzZSB7dHh8cnh9LWludGVybmFsLWRlbGF5LXBzIGluc3RlYWQK
-b2YgIHt0eHxyeH1fZGVsYXkgaW4KaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvYWxsL2U0ZDMxMjdi
-LWM4NzktNDkzMS05ZWEwLWRlNzQ0OWJjNTA4Y0BsdW5uLmNoLyAsCmJ1dCBJIHRoaW5rIHRoaXMg
-ZGVwZW5kcyBvbiBzdG1tYWMgZHJpdmVyLgoKICBMaWFuZ2JpbiBMaWFuCgpfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5n
-IGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
-cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+
+--===============0205093747201866463==
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-IcsCjmyMK96ZjT/TchVY"
+
+
+--=-IcsCjmyMK96ZjT/TchVY
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hi,
+
+Le mardi 07 octobre 2025 =C3=A0 10:31 +0200, Sven P=C3=BCschel a =C3=A9crit=
+=C2=A0:
+> This series adds support for the Raster Graphic Acceleration 3 (RGA3)
+> peripheral, which is included in the RK3588 SoC. Unlike the RGA2 it
+> can use the existing rockchip-iommu-v2 driver to handle iommu mappings.
+> Also the RK3588 contains two independent RGA3 cores.
+
+Thanks for working on this.
+
+>=20
+> Only scaling and format conversions between common 8bit RGB/YUV formats
+> are implemented. Also the color space conversion is fixed to BT601F.
+> This already allows a practical usage of the RGA3.
+
+This seems quite limiting, can we expect an update on this, can't be that h=
+ard
+to fully implement.
+
+>=20
+> This was tested on a Radxa Rock 5T. With the increased clock speeds in
+> the devicetree around 160 fps were measured when scaling and converting
+
+This is quite vague, I've checked the patch and you didn't extend either th=
+ere.
+Is that an overclock or was it miss-configured ? Does RK implement a devfre=
+q ?
+Should that be moved with a voltage adjustement ? Is there any thermal near=
+by we
+should monitor ?
+
+> from RGBA 480x360 to NV12 3840x2160. Without the clock speed scaling a
+> default clock division factor of 2 is used and only around 80 fps are
+> reached with one core. The v4l2-compliance tests only complain about
+> the already failing colorspace propagation:
+
+
+Did you do any more format testing to validation all supported combinations=
+ ?
+This is a tool [0] you can use to test this using GStreamer and how to use =
+it
+[1].
+
+
+[0] https://gitlab.collabora.com/mediatek/aiot/lava-test-definitions/-/tree=
+/main/avvideocompare?ref_type=3Dheads
+[1] https://gitlab.collabora.com/mediatek/aiot/linux/-/blob/mediatek-next/.=
+gitlab-ci.yml?ref_type=3Dheads#L282
+>=20
+> =C2=A0 v4l2-compliance 1.28.1, 64 bits, 64-bit time_t
+> =C2=A0 ...
+> =C2=A0=C2=A0		fail: v4l2-test-formats.cpp(923): fmt_cap.g_colorspace() !=
+=3D
+> col
+> =C2=A0=C2=A0	test VIDIOC_S_FMT: FAIL
+> =C2=A0 ...
+> =C2=A0 Total for rockchip-rga device /dev/video0: 47, Succeeded: 46, Fail=
+ed: 1,
+> Warnings: 0
+>=20
+> =C2=A0 v4l2-compliance 1.28.1, 64 bits, 64-bit time_t
+> =C2=A0 ...
+> =C2=A0=C2=A0		fail: v4l2-test-formats.cpp(923): fmt_cap.g_colorspace() !=
+=3D
+> col
+> =C2=A0=C2=A0	test VIDIOC_S_FMT: FAIL
+> =C2=A0 ...
+> =C2=A0 Total for rockchip-rga device /dev/video1: 47, Succeeded: 46, Fail=
+ed: 1,
+> Warnings: 0
+>=20
+> =C2=A0 v4l2-compliance 1.28.1, 64 bits, 64-bit time_t
+> =C2=A0 ...
+> =C2=A0=C2=A0		fail: v4l2-test-formats.cpp(923): fmt_cap.g_colorspace() !=
+=3D
+> col
+> =C2=A0=C2=A0	test VIDIOC_S_FMT: FAIL
+> =C2=A0 ...
+> =C2=A0 Total for rockchip-rga device /dev/video2: 47, Succeeded: 46, Fail=
+ed: 1,
+> Warnings: 0
+>=20
+> Each RGA core is a separate /dev/video device. To distinguish the RGA2
+> core from the RGA3 cores the Card type is set accordingly. Combining all
+> cores into a single device and scheduling tasks to the best core might
+> be a future improvement, if it is desired by upstream to handle the
+> scheduling and selection in kernel space.
+
+It took me some time to understand why you spoke about multicore here. You
+forgot to say here that you add RGA3 into RGA2 driver. Some information on =
+why
+you went that path instead of a separate driver.
+
+=46rom high level view, I don't think its a good idea to multi-plex over
+heterogeneous core. They may not even produce the exact same pixels for the=
+ same
+operation. They also don't share the same MMU, and at first glance, the use=
+ of
+rkiommu in RGA3 means it can no longer handle CPU cache (though I don't kno=
+w if
+this is implemented/supported in upstream RGA2 driver).
+
+>=20
+> Patch 1-2 are general cleanups
+> Patch 3-12 prepare the rga driver for the RGA3
+> Patch 13 documments the RGA3 compatible value
+> Patch 14 adds the RGA3 cores to the rk3588 dtsi
+> Patch 15 increases the RGA3 core clock speeds
+> Patch 16 adds RGA3 support to the rga driver
+>=20
+> Signed-off-by: Sven P=C3=BCschel <s.pueschel@pengutronix.de>
+> ---
+> Sven P=C3=BCschel (16):
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 media: rockchip: rga: use clk_bulk api
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 media: rockchip: rga: use stride for offse=
+t calculation
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 media: rockchip: rga: align stride to 16 b=
+ytes
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 media: rockchip: rga: move hw specific par=
+ts to a dedicated struct
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 media: rockchip: rga: use card type to spe=
+cify rga type
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 media: rockchip: rga: change offset to dma=
+_addresses
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 media: rockchip: rga: support external iom=
+mus
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 media: rockchip: rga: remove size from rga=
+_frame
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 media: rockchip: rga: remove stride from r=
+ga_frame
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 media: rockchip: rga: move rga_fmt to rga-=
+hw.h
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 media: rockchip: rga: add iommu restore fu=
+nction
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 media: rockchip: rga: handle error interru=
+pt
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 media: dt-bindings: media: rockchip-rga: a=
+dd rockchip,rk3588-rga3
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 arm64: dts: rockchip: add rga3 dt nodes
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 arm64: dts: rockchip: increase rga3 clock =
+speed
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 media: rockchip: rga: add rga3 support
+>=20
+> =C2=A0.../devicetree/bindings/media/rockchip-rga.yaml=C2=A0=C2=A0=C2=A0 |=
+=C2=A0=C2=A0 1 +
+> =C2=A0arch/arm64/boot/dts/rockchip/rk3588-base.dtsi=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0 |=C2=A0 50 +++
+> =C2=A0drivers/media/platform/rockchip/rga/Makefile=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0 |=C2=A0=C2=A0 2 +-
+> =C2=A0drivers/media/platform/rockchip/rga/rga-buf.c=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0 |=C2=A0 78 ++--
+> =C2=A0drivers/media/platform/rockchip/rga/rga-hw.c=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0 | 356 ++++++++++++---
+> =C2=A0drivers/media/platform/rockchip/rga/rga-hw.h=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0 |=C2=A0 15 +-
+> =C2=A0drivers/media/platform/rockchip/rga/rga.c=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 | 404 ++++++-----------
+> =C2=A0drivers/media/platform/rockchip/rga/rga.h=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0 74 ++--
+> =C2=A0drivers/media/platform/rockchip/rga/rga3-hw.c=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0 | 490
+> +++++++++++++++++++++
+> =C2=A0drivers/media/platform/rockchip/rga/rga3-hw.h=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0 | 186 ++++++++
+> =C2=A010 files changed, 1246 insertions(+), 410 deletions(-)
+> ---
+> base-commit: afb100a5ea7a13d7e6937dcd3b36b19dc6cc9328
+> change-id: 20251001-spu-rga3-8a00e018b120
+>=20
+> Best regards,
+
+--=-IcsCjmyMK96ZjT/TchVY
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaOVWjgAKCRDZQZRRKWBy
+9MYwAQDAFCIsXy2vnCz1b/y+9mKp3XI/R9oRTPcTXia35pLGywD/SLpU/azQOYuj
+Eq4VTAEBMAbKxVFBtmRPL+5Gb/F4cAg=
+=pSPZ
+-----END PGP SIGNATURE-----
+
+--=-IcsCjmyMK96ZjT/TchVY--
+
+
+--===============0205093747201866463==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============0205093747201866463==--
+
