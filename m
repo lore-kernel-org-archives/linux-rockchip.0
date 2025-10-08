@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2337BCCA470
-	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Oct 2025 08:22:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19DE6CCA472
+	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Oct 2025 13:32:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=e7uAr0mij2tkUWiI6PO0W7CAGbuyeRUbjUemqMPndw8=; b=EiF6BNdbejIacj
-	nG12bjnxpV5KC4L9zAwDkEanlhklLqtqzy8HR07De0siz8EgneVFL58d3OEoVRnRGi/DTBk+E34YS
-	jS+VYkgmNQwdWVNJYNn2Ym1TCVdkmoanbakVjzpuZEdG2GULQHMnZtv4xKXibwKzTZSoawVgu9KLU
-	VNaTlSVrdrn535KHnv1xgOFIDVOWncRnA7u3ddT7tqGkqqmRxoc2p3zlai8XEdxrRpiNwWdt/+BQk
-	85QnvDb3YaLS6kBRnXom9TUvTi8Q+ftTa8gF1m1ZSJGWtW4dIAd5hQ+N0RMJN+2KQRqUZv8feU9vR
-	n7qzHpU2FPT0N4HewG/w==;
+	List-Owner; bh=kksrkFwGP+Sr+BU6/xefLggIy2s+XHIvVl72Dj/AfAk=; b=Ec0INX+p8PPYp9
+	pXxNgMpqcBhnCZ7E6QChcOMJvZuO1sbVISM6eVfP+U+AIsYYxs3H1+a15VZd7lr13mV2KI7Zbx3gF
+	D8xM6jD6e7tdUR/mGvWdbl9L4yda5we+hqFWqPXAGJKdz0/4fnSkTj0EIntDsBF7fzoS49OXyQlkK
+	MDR9ruY6r6FDwPWWrzGScYnIEyn/zbA5zSI/AG2uSpzmrgI5SDTHYJOs1094a09QI3ePiTL+YX7ux
+	9F9PRvzwxOkZ+N8g4EY7fvLMymd3PdetlsdbwkRan1SUc+ecyeTNWzbzNhgcKa8+SRBj4P0fCREdy
+	438YEztSWQsNRfvJD5mw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v6PR7-00000003SQA-0JLd;
-	Wed, 08 Oct 2025 08:22:13 +0000
-Received: from out-180.mta1.migadu.com ([95.215.58.180])
+	id 1v6UHA-00000003wpP-3m7Z;
+	Wed, 08 Oct 2025 13:32:16 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v6PR5-00000003SP0-2895
-	for linux-rockchip@lists.infradead.org;
-	Wed, 08 Oct 2025 08:22:12 +0000
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow.org; s=key1;
-	t=1759911719;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=H8SPZkt6+sp/5jeMGqBWc/VCT7Uionl7zaKARBI8kLs=;
-	b=mQCC8b7qJVTJ2Gh3LAMFqp3KGOlG7jriSk0cpd84DiSOlgRAkKL+A3k30friRJSM/2L7JZ
-	5YKRrU4J1Q/GLnkw4b88ld7CyL2IVWbJjKuaeBpaO5UX8+c2DNJ7zB/Dl+TgzKLO0I6gXi
-	YNsJggxr4usXcSfziAd+Cxy3GrEGN/a9uj3Un0hCYseiQkoAVkJmTf+bo61XsHXZfiVrjm
-	mDjkeZFbKRIJlNkvmlFrct/H/CtWHml4fRGuXKM24/7WjMid3iXSPP5wLtaEuDz81Wr0NW
-	FIcFAi35WN4gZ4et/POS89hqSWQuydEmZJRQS0auvEq7p3GMy9zcCxhEwhRMow==
-From: Diederik de Haas <didi.debian@cknow.org>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: devicetree@vger.kernel.org,
+	id 1v6UH7-00000003woQ-3nIv;
+	Wed, 08 Oct 2025 13:32:15 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:
+	Subject:Cc:To:From:Reply-To:Content-Type:In-Reply-To:References;
+	bh=NOYL0uD62hKk28WG4gpRQ/Og2WNGiOzJLp810Y1iXv0=; b=QUlT0w9nR/T9hYkLxnW0QicOxh
+	gjEb+c/9oV8pUlTT0b6Wyf+ooTwWWZZZg32QDTbMDXNhjW88OJoZxCcaJkP2fEqNw9t5TjXNCKGnQ
+	TFBoeebPG9qGqDLWIPvpyyrt/FHAW91+Dzs3iTD1O7kIypK4p8Bvz6itB5iMpeQuZwecR8TKM9P/E
+	9gh/trrYJpJNEkKXP+e8JhDYHPa7CM0sMJyTUs/OfRvcDLSnJbG0KFSjKb4XG7SKIapNbwzSz+ICA
+	xurFyZPzPSOesXSOpCNzcVDFJj97I8GMljL0qDUeA+nA20GFimqQYSjiQq59z34ukRzmoj22WnVZj
+	JpGdSUUQ==;
+Received: from i53875a0d.versanet.de ([83.135.90.13] helo=localhost.localdomain)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1v6UGt-0002uq-S4; Wed, 08 Oct 2025 15:31:59 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: heiko@sntech.de
+Cc: mturquette@baylibre.com,
+	sboyd@kernel.org,
+	zhangqing@rock-chips.com,
+	sebastian.reichel@collabora.com,
+	linux-clk@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	Johan Jonker <jbx6244@gmail.com>,
-	Alex Bee <knaerzche@gmail.com>,
-	Diederik de Haas <didi.debian@cknow.org>
-Subject: [PATCH] arm64: dts: rockchip: Drop 'rockchip,grf' prop from tsadc on rk3328
-Date: Wed,  8 Oct 2025 10:21:22 +0200
-Message-ID: <20251008082143.242270-1-didi.debian@cknow.org>
+	quentin.schulz@cherry.de,
+	stable@vger.kernel.org
+Subject: [PATCH] clk: rockchip: rk3588: Don't change PLL rates when setting dclk_vop2_src
+Date: Wed,  8 Oct 2025 15:31:35 +0200
+Message-ID: <20251008133135.3745785-1-heiko@sntech.de>
+X-Mailer: git-send-email 2.47.2
 MIME-Version: 1.0
-X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251008_012211_710600_EAD0D1BB 
-X-CRM114-Status: UNSURE (   8.28  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251008_063213_962776_5F048F31 
+X-CRM114-Status: GOOD (  15.51  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,33 +76,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The 'rockchip,grf' property for tsadc in rk3328 wasn't actually used in
-the driver and is no longer allowed in the DT since commit
-e881662aa06a ("dt-bindings: thermal: rockchip: Tighten grf requirements")
+dclk_vop2_src currently has CLK_SET_RATE_PARENT | CLK_SET_RATE_NO_REPARENT
+flags set, which is vastly different than dclk_vop0_src or dclk_vop1_src,
+which have none of those.
 
-So remove that property which fixes the following DT validation issue
+With these flags in dclk_vop2_src, actually setting the clock then results
+in a lot of other peripherals breaking, because setting the rate results
+in the PLL source getting changed:
 
-  tsadc@ff250000 (rockchip,rk3328-tsadc): rockchip,grf: False schema does not allow [[58]]
+[   14.898718] clk_core_set_rate_nolock: setting rate for dclk_vop2 to 152840000
+[   15.155017] clk_change_rate: setting rate for pll_gpll to 1680000000
+[ clk adjusting every gpll user ]
 
-Signed-off-by: Diederik de Haas <didi.debian@cknow.org>
+This includes possibly the other vops, i2s, spdif and even the uarts.
+Among other possible things, this breaks the uart console on a board
+I use. Sometimes it recovers later on, but there will be a big block
+of garbled output for a while at least.
+
+Shared PLLs should not be changed by individual users, so drop these
+flags from dclk_vop2_src and make the flags the same as on dclk_vop0
+and dclk_vop1.
+
+Fixes: f1c506d152ff ("clk: rockchip: add clock controller for the RK3588")
+Cc: stable@vger.kernel.org
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 ---
- arch/arm64/boot/dts/rockchip/rk3328.dtsi | 1 -
- 1 file changed, 1 deletion(-)
+ drivers/clk/rockchip/clk-rk3588.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-index 283d9cbc4368..03b7c4313750 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-@@ -598,7 +598,6 @@ tsadc: tsadc@ff250000 {
- 		pinctrl-2 = <&otp_pin>;
- 		resets = <&cru SRST_TSADC>;
- 		reset-names = "tsadc-apb";
--		rockchip,grf = <&grf>;
- 		rockchip,hw-tshut-temp = <100000>;
- 		#thermal-sensor-cells = <1>;
- 		status = "disabled";
+diff --git a/drivers/clk/rockchip/clk-rk3588.c b/drivers/clk/rockchip/clk-rk3588.c
+index 1694223f4f84..cf83242d1726 100644
+--- a/drivers/clk/rockchip/clk-rk3588.c
++++ b/drivers/clk/rockchip/clk-rk3588.c
+@@ -2094,7 +2094,7 @@ static struct rockchip_clk_branch rk3588_early_clk_branches[] __initdata = {
+ 	COMPOSITE(DCLK_VOP1_SRC, "dclk_vop1_src", gpll_cpll_v0pll_aupll_p, 0,
+ 			RK3588_CLKSEL_CON(111), 14, 2, MFLAGS, 9, 5, DFLAGS,
+ 			RK3588_CLKGATE_CON(52), 11, GFLAGS),
+-	COMPOSITE(DCLK_VOP2_SRC, "dclk_vop2_src", gpll_cpll_v0pll_aupll_p, CLK_SET_RATE_PARENT | CLK_SET_RATE_NO_REPARENT,
++	COMPOSITE(DCLK_VOP2_SRC, "dclk_vop2_src", gpll_cpll_v0pll_aupll_p, 0,
+ 			RK3588_CLKSEL_CON(112), 5, 2, MFLAGS, 0, 5, DFLAGS,
+ 			RK3588_CLKGATE_CON(52), 12, GFLAGS),
+ 	COMPOSITE_NODIV(DCLK_VOP0, "dclk_vop0", dclk_vop0_p,
 -- 
-2.51.0
+2.47.2
 
 
 _______________________________________________
