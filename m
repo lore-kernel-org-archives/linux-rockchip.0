@@ -4,104 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B57B8CCD184
-	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Oct 2025 17:51:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E1DBCCA470
+	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Oct 2025 17:51:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=WGAJVNrWcEa7BDZ4IGmP9/HsJzkueVY1IaGu+8zyz0o=; b=tsQ5IgHk8uQU/7
-	nKvUbSUXscLDfVX19enukTj7Jocvpdl4cUpXmbXIOU57wMf7o4euiPHVyf8yaUy1jjGjjHTkCs08J
-	c/hN1ylxlnhzL6eV9j1jB3fbSIgxTDXXzpLCi+VeSThMCEVhOGKX//sDXGj1A3UY8qHTqzExoDt9Z
-	iOYjo9Pyb8WyWy9qesJ8ETw+NH253h0aDhweb7+EuKmDtJXdr49o5rVHTPHLXTpOKrPmpJmVP5K6b
-	HntXg7lk6OVxAYWsDmRZ38JciE9636oJGkXoQx5T1WDPs9QR0i+Pwdx9ftsCFGSGzIfy0h05bH1Wa
-	NHYTjwcDLge0IRFEenyA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=7VrVjdNl/giL9pWS72tjy0Gg79ZwTM3g3VI0ua97kkc=; b=zf7ty//9jsbNko
+	p1qdQYrOyvO0R6pqoXJvPJzv+hGfCkPj92a5bdxnp5gx7hBATOrJ0Rv//X3aO8kOvvI5OV/CzYaHu
+	0B8jT/m7T3Fo+SDNgVyAqU2e1ox9Y86Xv8Kh9op46GIcpymGRNsOpaoGAk1nTwmKEDmDS73ORDLK1
+	7q9UxCa3+EDhQJaO22qXlexj14n2xO9SKA+Mews+9tUro0RMJL83/IaAoLW8YJSGsGxbJ3o4JWtsX
+	Nmbbiv41tVAQh5P5yAZRi1i+wSPOwWgjecb98z8G6YlNq1L+nR/auQJ+LqjZI5kFMPsTI/BFSU8tq
+	7BdbiSCA7OhXyimoSxMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v6YJe-00000004P9z-24wQ;
-	Wed, 08 Oct 2025 17:51:06 +0000
+	id 1v6YK9-00000004Pcn-232k;
+	Wed, 08 Oct 2025 17:51:37 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v6YJb-00000004P8p-1gy1;
-	Wed, 08 Oct 2025 17:51:04 +0000
+	id 1v6YK5-00000004PXa-2KGE;
+	Wed, 08 Oct 2025 17:51:35 +0000
 Received: from pendragon.ideasonboard.com (82-203-166-19.bb.dnainternet.fi [82.203.166.19])
-	by perceval.ideasonboard.com (Postfix) with UTF8SMTPSA id E0410EFE;
-	Wed,  8 Oct 2025 19:49:24 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with UTF8SMTPSA id CB9DF1E45;
+	Wed,  8 Oct 2025 19:49:57 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1759945765;
-	bh=5QPb7bYF1JsxERE0FuwEAunttFsnfMgYjjBTINS4yIQ=;
-	h=From:To:Cc:Subject:Date:From;
-	b=YPkQFe7m4tlSrmAl9ZBjyv+eI/JWf/k7WF+658nQWBrZIzV+uPNz37s0qBigB9HvU
-	 0b3YUzqxgqPxJB7+h8Qo5W0EGYR8x5T9nk5cynRX7S09Q60Zndi6x/TV/AEdKol4kX
-	 yrBnirUeTD4FdNnixpQ6jbt3LG5QWFlFQynrDDXA=
+	s=mail; t=1759945798;
+	bh=tQsikKNPuxlTDZUFn8qypyiY9ILHvGdiLuivDEV8nc0=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=haI7BWakdjxisAizqTmJ6ZgCVUB7y0Xf3adWLpzOlwjkcK5sny4kE84eJzySIsn3d
+	 zmHOWRRBsOtsaGfjlqkLjc4WCQs3eSlPkAnw+4SbhO4epjjGvkOhqGyqo3u+95X8jR
+	 BKk+l7yiHvttw59I5IplQshWeHE63iJBfg9aet+Q=
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 To: linux-media@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	imx@lists.linux.dev,
-	linux-amlogic@lists.infradead.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com,
 	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org
+	linux-arm-kernel@lists.infradead.org
 Cc: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Matthew Majewski <mattwmajewski@gmail.com>,
-	Mirela Rabulea <mirela.rabulea@nxp.com>,
-	Jacek Anaszewski <jacek.anaszewski@gmail.com>,
-	Michael Tretter <m.tretter@pengutronix.de>,
-	Devarsh Thakkar <devarsht@ti.com>,
-	=?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Arnd Bergmann <arnd@arndb.de>,
-	Sylwester Nawrocki <s.nawrocki@samsung.com>,
-	Ming Qian <ming.qian@nxp.com>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
-	Nathan Chancellor <nathan@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Hans Verkuil <hverkuil@kernel.org>,
-	Mikhail Ulyanov <mikhail.ulyanov@cogentembedded.com>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Xavier Roumegue <xavier.roumegue@oss.nxp.com>,
-	Shuah Khan <skhan@linuxfoundation.org>,
-	Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>,
-	Tiffany Lin <tiffany.lin@mediatek.com>,
-	Zhou Peng <eagle.zhou@nxp.com>,
-	Dikshita Agarwal <quic_dikshita@quicinc.com>,
-	Vikash Garodia <quic_vgarodia@quicinc.com>,
-	Yunfei Dong <yunfei.dong@mediatek.com>,
-	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Jiasheng Jiang <jiashengjiangcool@gmail.com>,
-	Shawn Guo <shawnguo@kernel.org>,
-	=?UTF-8?q?=C5=81ukasz=20Stelmach?= <l.stelmach@samsung.com>,
-	Abhinav Kumar <abhinav.kumar@linux.dev>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Benoit Parrot <bparrot@ti.com>,
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Magnus Damm <magnus.damm@gmail.com>,
-	Sebastian Fricke <sebastian.fricke@collabora.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
 	Jacob Chen <jacob-chen@iotwrt.com>,
-	Bin Liu <bin.liu@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Fabio Estevam <festevam@gmail.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	"Bryan O'Donoghue" <bryan.odonoghue@linaro.org>
-Subject: [PATCH 00/25] media: v4l2-mem2mem: Reduce cargo-cult
-Date: Wed,  8 Oct 2025 20:50:27 +0300
-Message-ID: <20251008175052.19925-1-laurent.pinchart@ideasonboard.com>
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Heiko Stuebner <heiko@sntech.de>
+Subject: [PATCH 19/25] media: platform: rga: Drop unneeded v4l2_m2m_get_vq() NULL check
+Date: Wed,  8 Oct 2025 20:50:46 +0300
+Message-ID: <20251008175052.19925-20-laurent.pinchart@ideasonboard.com>
 X-Mailer: git-send-email 2.49.1
+In-Reply-To: <20251008175052.19925-1-laurent.pinchart@ideasonboard.com>
+References: <20251008175052.19925-1-laurent.pinchart@ideasonboard.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251008_105103_583334_A1F2DBFA 
-X-CRM114-Status: GOOD (  12.94  )
+X-CRM114-CacheID: sfid-20251008_105133_738435_2D8D23DF 
+X-CRM114-Status: GOOD (  11.58  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,102 +70,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello,
+The v4l2_m2m_get_vq() function never returns NULL. The check was
+probably intended to catch invalid format types, but that's not needed
+as the V4L2 core picks the appropriate VIDIOC_G_FMT ioctl handler based
+on the format type, so the type can't be incorrect. Drop the unneeded
+return value check and, as the return value is not used for other
+purposes and the function has no side effect, the function call as well.
 
-The v4l2_m2m_get_vq() function never returns NULL, but many mem2mem
-drivers still check its return value and consider NULL as an error. This
-may have originated a long time ago from valid checks when
-v4l2_m2m_get_vq() could return NULL, with drivers then just copying the
-checks. This series attempts to stop the cargo-cult behaviour.
+Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+---
+ drivers/media/platform/rockchip/rga/rga.c | 4 ----
+ 1 file changed, 4 deletions(-)
 
-Patch 01/25 starts by explicitly stating in kerneldoc that the
-v4l2_m2m_get_vq() function never returns NULL. All the other patches
-drop NULL checks from drivers.
-
-I have carefully checked all patched locations in all drivers. They fall
-in 3 categories:
-
-- Checks in the VIDIOC_G_FMT, VIDIOC_TRY_FMT and VIDIOC_S_FMT handlers:
-  Those may have been added to ensure that the format type has a valid
-  value, but that is ensured by the V4L2 ioctl core before calling the
-  handlers. The checks can be dropped without a need to replace them
-  with proper type checks.
-
-- Checks in the VIDIOC_S_SELECTION handler: The only location where this
-  is performed has an explicit type check, so the NULL check can also be
-  dropped.
-
-- Checks in other locations where the type parameter to the
-  v4l2_m2m_get_vq() function is hardcoded: The hardcoded type is valid,
-  so the NULL check can't have been meant to check the type. It can also
-  be removed.
-
-There's no dependency between any of those patches so they can be merged
-in any order.
-
-Laurent Pinchart (25):
-  media: v4l2-mem2mem: Document that v4l2_m2m_get_vq() never returns
-    NULL
-  media: allgro-dvt: Drop unneeded v4l2_m2m_get_vq() NULL check
-  media: meson-g2d: Drop unneeded v4l2_m2m_get_vq() NULL check
-  media: amphion: Drop unneeded v4l2_m2m_get_vq() NULL check
-  media: coda: Drop unneeded v4l2_m2m_get_vq() NULL check
-  media: imagination: e5010: Drop unneeded v4l2_m2m_get_vq() NULL check
-  media: m2m-deinterlace: Drop unneeded v4l2_m2m_get_vq() NULL check
-  media: mediatek: jpeg: Drop unneeded v4l2_m2m_get_vq() NULL check
-  media: mediatek: vcodec: Drop unneeded v4l2_m2m_get_vq() NULL check
-  media: dw100: Drop unneeded v4l2_m2m_get_vq() NULL check
-  media: imx-jpeg: Drop unneeded v4l2_m2m_get_vq() NULL check
-  media: imx-pxp: Drop unneeded v4l2_m2m_get_vq() NULL check
-  media: nxp: imx8-isi: Drop unneeded v4l2_m2m_get_vq() NULL check
-  media: mx2_emmaprp: Drop unneeded v4l2_m2m_get_vq() NULL check
-  media: qcom: iris: Drop unneeded v4l2_m2m_get_vq() NULL check
-  media: qcom: venus: Drop unneeded v4l2_m2m_get_vq() NULL check
-  media: renesas: fdp1: Drop unneeded v4l2_m2m_get_vq() NULL check
-  media: rcar_jpu: Drop unneeded v4l2_m2m_get_vq() NULL check
-  media: platform: rga: Drop unneeded v4l2_m2m_get_vq() NULL check
-  media: samsung: s5p-g2d: Drop unneeded v4l2_m2m_get_vq() NULL check
-  media: samsung: s5p-jpeg: Drop unneeded v4l2_m2m_get_vq() NULL check
-  media: stm32: dma2d: Drop unneeded v4l2_m2m_get_vq() NULL check
-  media: ti: vpe: Drop unneeded v4l2_m2m_get_vq() NULL check
-  media: vicodec: Drop unneeded v4l2_m2m_get_vq() NULL check
-  media: vim2m: Drop unneeded v4l2_m2m_get_vq() NULL check
-
- drivers/media/platform/allegro-dvt/allegro-core.c    |  2 --
- drivers/media/platform/amlogic/meson-ge2d/ge2d.c     |  5 -----
- drivers/media/platform/amphion/vdec.c                |  2 --
- drivers/media/platform/amphion/venc.c                |  2 --
- .../media/platform/chips-media/coda/coda-common.c    |  4 ----
- drivers/media/platform/imagination/e5010-jpeg-enc.c  |  4 ----
- drivers/media/platform/m2m-deinterlace.c             |  7 -------
- drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c |  7 -------
- .../mediatek/vcodec/decoder/mtk_vcodec_dec.c         |  7 -------
- .../vcodec/decoder/vdec/vdec_av1_req_lat_if.c        |  2 --
- .../vcodec/decoder/vdec/vdec_vp9_req_lat_if.c        |  2 --
- .../mediatek/vcodec/encoder/mtk_vcodec_enc.c         |  8 --------
- drivers/media/platform/nxp/dw100/dw100.c             |  7 -------
- drivers/media/platform/nxp/imx-jpeg/mxc-jpeg.c       |  4 ----
- drivers/media/platform/nxp/imx-pxp.c                 |  7 -------
- drivers/media/platform/nxp/imx8-isi/imx8-isi-m2m.c   |  2 --
- drivers/media/platform/nxp/mx2_emmaprp.c             |  7 -------
- drivers/media/platform/qcom/iris/iris_vdec.c         |  2 --
- drivers/media/platform/qcom/venus/vdec.c             |  2 --
- drivers/media/platform/qcom/venus/venc.c             |  2 --
- drivers/media/platform/renesas/rcar_fdp1.c           |  3 ---
- drivers/media/platform/renesas/rcar_jpu.c            |  8 --------
- drivers/media/platform/rockchip/rga/rga.c            |  4 ----
- drivers/media/platform/samsung/s5p-g2d/g2d.c         |  4 ----
- drivers/media/platform/samsung/s5p-jpeg/jpeg-core.c  |  7 -------
- drivers/media/platform/st/stm32/dma2d/dma2d.c        |  5 -----
- drivers/media/platform/ti/vpe/vpe.c                  |  7 -------
- drivers/media/test-drivers/vicodec/vicodec-core.c    |  7 -------
- drivers/media/test-drivers/vim2m.c                   | 12 ------------
- drivers/media/v4l2-core/v4l2-mem2mem.c               | 12 +-----------
- include/media/v4l2-mem2mem.h                         |  3 +++
- 31 files changed, 4 insertions(+), 153 deletions(-)
-
-
-base-commit: e5f0a698b34ed76002dc5cff3804a61c80233a7a
+diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
+index 3dccab5fa4a1..48b88da59da0 100644
+--- a/drivers/media/platform/rockchip/rga/rga.c
++++ b/drivers/media/platform/rockchip/rga/rga.c
+@@ -465,12 +465,8 @@ static int vidioc_g_fmt(struct file *file, void *prv, struct v4l2_format *f)
+ {
+ 	struct v4l2_pix_format_mplane *pix_fmt = &f->fmt.pix_mp;
+ 	struct rga_ctx *ctx = prv;
+-	struct vb2_queue *vq;
+ 	struct rga_frame *frm;
+ 
+-	vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, f->type);
+-	if (!vq)
+-		return -EINVAL;
+ 	frm = rga_get_frame(ctx, f->type);
+ 	if (IS_ERR(frm))
+ 		return PTR_ERR(frm);
 -- 
 Regards,
 
