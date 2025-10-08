@@ -4,56 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E1DBCCA470
-	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Oct 2025 17:51:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD1B5CCA470
+	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Oct 2025 18:05:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7VrVjdNl/giL9pWS72tjy0Gg79ZwTM3g3VI0ua97kkc=; b=zf7ty//9jsbNko
-	p1qdQYrOyvO0R6pqoXJvPJzv+hGfCkPj92a5bdxnp5gx7hBATOrJ0Rv//X3aO8kOvvI5OV/CzYaHu
-	0B8jT/m7T3Fo+SDNgVyAqU2e1ox9Y86Xv8Kh9op46GIcpymGRNsOpaoGAk1nTwmKEDmDS73ORDLK1
-	7q9UxCa3+EDhQJaO22qXlexj14n2xO9SKA+Mews+9tUro0RMJL83/IaAoLW8YJSGsGxbJ3o4JWtsX
-	Nmbbiv41tVAQh5P5yAZRi1i+wSPOwWgjecb98z8G6YlNq1L+nR/auQJ+LqjZI5kFMPsTI/BFSU8tq
-	7BdbiSCA7OhXyimoSxMA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=J3fs3e5+sPKxftU9/xc0Q+nmFgU2HRxlExud1tNC0Sk=; b=va11h/B5u4IlTKcl7rtCrDhK7i
+	LxAzQARItxUdAewiHZ+K9jb1Pr4QTd4jpoSoYOM4/M9G8MsfE/IbLRi9Su8nuoHw3/9Bj22AMK3hJ
+	pwIUJ9jsMS6TMSqUUk5t2cezHtp3kncIYEFLZxLTzRBs4hUQuwxjO7pP6eGhB2xo+P0xfSe8z06P2
+	SzLuHtZAI6vtUlw4ZHxs9N9JpPjfQYRFbeK0SynOtd65L2ii3kSqdQlAR2VqRJ8d2FF8gJCCY2+AS
+	zUhjKNfZkIc9q0bmsAj2oksS+SpKH0KPnaXqQuETY8Cm57kcL8el9XmknSAa7kSJlYCx/biFL7b5r
+	I7E9qlRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v6YK9-00000004Pcn-232k;
-	Wed, 08 Oct 2025 17:51:37 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1v6YXq-00000004RhP-1cKs;
+	Wed, 08 Oct 2025 18:05:46 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v6YK5-00000004PXa-2KGE;
-	Wed, 08 Oct 2025 17:51:35 +0000
-Received: from pendragon.ideasonboard.com (82-203-166-19.bb.dnainternet.fi [82.203.166.19])
-	by perceval.ideasonboard.com (Postfix) with UTF8SMTPSA id CB9DF1E45;
-	Wed,  8 Oct 2025 19:49:57 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1759945798;
-	bh=tQsikKNPuxlTDZUFn8qypyiY9ILHvGdiLuivDEV8nc0=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=haI7BWakdjxisAizqTmJ6ZgCVUB7y0Xf3adWLpzOlwjkcK5sny4kE84eJzySIsn3d
-	 zmHOWRRBsOtsaGfjlqkLjc4WCQs3eSlPkAnw+4SbhO4epjjGvkOhqGyqo3u+95X8jR
-	 BKk+l7yiHvttw59I5IplQshWeHE63iJBfg9aet+Q=
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Cc: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Jacob Chen <jacob-chen@iotwrt.com>,
-	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH 19/25] media: platform: rga: Drop unneeded v4l2_m2m_get_vq() NULL check
-Date: Wed,  8 Oct 2025 20:50:46 +0300
-Message-ID: <20251008175052.19925-20-laurent.pinchart@ideasonboard.com>
-X-Mailer: git-send-email 2.49.1
-In-Reply-To: <20251008175052.19925-1-laurent.pinchart@ideasonboard.com>
-References: <20251008175052.19925-1-laurent.pinchart@ideasonboard.com>
+	id 1v6YXn-00000004Rgj-0HrP
+	for linux-rockchip@lists.infradead.org;
+	Wed, 08 Oct 2025 18:05:44 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <mkl@pengutronix.de>)
+	id 1v6YX8-0006Uf-Ob; Wed, 08 Oct 2025 20:05:02 +0200
+Received: from moin.white.stw.pengutronix.de ([2a0a:edc0:0:b01:1d::7b] helo=bjornoya.blackshift.org)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <mkl@pengutronix.de>)
+	id 1v6YX2-002bby-2j;
+	Wed, 08 Oct 2025 20:04:56 +0200
+Received: from pengutronix.de (p54b152ce.dip0.t-ipconnect.de [84.177.82.206])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(Client did not present a certificate)
+	(Authenticated sender: mkl-all@blackshift.org)
+	by smtp.blackshift.org (Postfix) with ESMTPSA id 508514821AD;
+	Wed, 08 Oct 2025 18:04:56 +0000 (UTC)
+Date: Wed, 8 Oct 2025 20:04:55 +0200
+From: Marc Kleine-Budde <mkl@pengutronix.de>
+To: Vincent Mailhol <mailhol@kernel.org>
+Cc: Oliver Hartkopp <socketcan@hartkopp.net>, 
+	Nicolas Ferre <nicolas.ferre@microchip.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, 
+	Claudiu Beznea <claudiu.beznea@tuxon.dev>, Dario Binacchi <dario.binacchi@amarulasolutions.com>, 
+	Max Staudt <max@enpas.org>, Pavel Pisa <pisa@cmp.felk.cvut.cz>, 
+	Ondrej Ille <ondrej.ille@gmail.com>, Stefan =?utf-8?B?TcOkdGpl?= <stefan.maetje@esd.eu>, 
+	socketcan@esd.eu, Chandrasekar Ramakrishnan <rcsekar@samsung.com>, 
+	Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, kernel@pengutronix.de, 
+	Heiko Stuebner <heiko@sntech.de>, Manivannan Sadhasivam <mani@kernel.org>, 
+	Thomas Kopp <thomas.kopp@microchip.com>, Chen-Yu Tsai <wens@csie.org>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, 
+	Frank Jungclaus <frank.jungclaus@esd.eu>, "Ji-Ze Hong (Peter Hong)" <peter_hong@fintek.com.tw>, 
+	Yasushi SHOJI <yashi@spacecubics.com>, Ming Yu <tmyu0@nuvoton.com>, 
+	Appana Durga Kedareswara rao <appana.durga.rao@xilinx.com>, Michal Simek <michal.simek@amd.com>, linux-can@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev
+Subject: Re: [PATCH] can: treewide: remove can_change_mtu()
+Message-ID: <20251008-hallowed-zebu-of-wonder-638a63-mkl@pengutronix.de>
+References: <20251003-remove-can_change_mtu-v1-1-337f8bc21181@kernel.org>
 MIME-Version: 1.0
+In-Reply-To: <20251003-remove-can_change_mtu-v1-1-337f8bc21181@kernel.org>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: mkl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251008_105133_738435_2D8D23DF 
-X-CRM114-Status: GOOD (  11.58  )
+X-CRM114-CacheID: sfid-20251008_110543_112071_1F03E686 
+X-CRM114-Status: GOOD (  18.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,47 +86,86 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============2649568384783336465=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The v4l2_m2m_get_vq() function never returns NULL. The check was
-probably intended to catch invalid format types, but that's not needed
-as the V4L2 core picks the appropriate VIDIOC_G_FMT ioctl handler based
-on the format type, so the type can't be incorrect. Drop the unneeded
-return value check and, as the return value is not used for other
-purposes and the function has no side effect, the function call as well.
 
-Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
----
- drivers/media/platform/rockchip/rga/rga.c | 4 ----
- 1 file changed, 4 deletions(-)
+--===============2649568384783336465==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="7ys7jjoslh254pce"
+Content-Disposition: inline
 
-diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
-index 3dccab5fa4a1..48b88da59da0 100644
---- a/drivers/media/platform/rockchip/rga/rga.c
-+++ b/drivers/media/platform/rockchip/rga/rga.c
-@@ -465,12 +465,8 @@ static int vidioc_g_fmt(struct file *file, void *prv, struct v4l2_format *f)
- {
- 	struct v4l2_pix_format_mplane *pix_fmt = &f->fmt.pix_mp;
- 	struct rga_ctx *ctx = prv;
--	struct vb2_queue *vq;
- 	struct rga_frame *frm;
- 
--	vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, f->type);
--	if (!vq)
--		return -EINVAL;
- 	frm = rga_get_frame(ctx, f->type);
- 	if (IS_ERR(frm))
- 		return PTR_ERR(frm);
--- 
-Regards,
 
-Laurent Pinchart
+--7ys7jjoslh254pce
+Content-Type: text/plain; protected-headers=v1; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH] can: treewide: remove can_change_mtu()
+MIME-Version: 1.0
 
+On 03.10.2025 12:16:38, Vincent Mailhol wrote:
+> can_change_mtu() became obsolete by commit 23049938605b ("can:
+> populate the minimum and maximum MTU values"). Now that
+> net_device->min_mtu and net_device->max_mtu are populated, all the
+> checks are already done by dev_validate_mtu() in net/core/dev.c.
+>=20
+> Remove the net_device_ops->ndo_change_mtu() callback of all the
+> physical interfaces, then remove can_change_mtu(). Only keep the
+> vcan_change_mtu() and vxcan_change_mtu() because the virtual
+> interfaces use their own different MTU logic.
+>=20
+> The only functional change this patch introduces is that now the user
+> will be able to change the MTU even if the interface is up. This does
+> not matter for Classical CAN and CAN FD because their MTU range is
+> composed of only one value, respectively CAN_MTU and CANFD_MTU. For
+> the upcoming CAN XL, the MTU will be configurable within the
+> CANXL_MIN_MTU to CANXL_MAX_MTU range at any time, even if the
+> interface is up. This is consistent with the other net protocols and
+> does not contradict ISO 11898-1:2024 as having a modifiable MTU is a
+> kernel extension.
+>=20
+> Signed-off-by: Vincent Mailhol <mailhol@kernel.org>
+
+Applied to linux-can-next.
+
+Thanks,
+Marc
+
+--=20
+Pengutronix e.K.                 | Marc Kleine-Budde          |
+Embedded Linux                   | https://www.pengutronix.de |
+Vertretung N=C3=BCrnberg              | Phone: +49-5121-206917-129 |
+Amtsgericht Hildesheim, HRA 2686 | Fax:   +49-5121-206917-9   |
+
+--7ys7jjoslh254pce
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEn/sM2K9nqF/8FWzzDHRl3/mQkZwFAmjmp8QACgkQDHRl3/mQ
+kZylYQf/emcrn4U+wDMRPg3cnnX/DTOwyFGlC0GbTPxJZkzn4E0NT1qsY7z/YVhX
+7MRCmOjXQ+hVuG2hc8RUN1ynUPZj5j+MdkL82hJuFw5qwAG7USc4wWOWaCXxDuhx
+EtlF3EExo+k1BC5OObcREtNlshvVgELeNDLtuTb2HymwGKRkvHgwAmG4i/fhtCFp
+UeU1WDDstTpSC+miqpW5XxnWD0iIeQkWaWKw1PJgOkcS9i49Uv1LWkM0qdconmCz
+Xw1gHx2l1LR87jxFlFtiHfSH2SQ/yVnYlX3fTT4lvsjMV6swaJyROxlwvOofrCYT
+3f3ZZsstGkn+vB61p9pnuXiuTh3vaA==
+=c2yg
+-----END PGP SIGNATURE-----
+
+--7ys7jjoslh254pce--
+
+
+--===============2649568384783336465==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============2649568384783336465==--
+
