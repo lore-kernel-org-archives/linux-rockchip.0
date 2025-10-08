@@ -4,62 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19DE6CCA472
-	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Oct 2025 13:32:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83281CCA470
+	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Oct 2025 15:15:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=kksrkFwGP+Sr+BU6/xefLggIy2s+XHIvVl72Dj/AfAk=; b=Ec0INX+p8PPYp9
-	pXxNgMpqcBhnCZ7E6QChcOMJvZuO1sbVISM6eVfP+U+AIsYYxs3H1+a15VZd7lr13mV2KI7Zbx3gF
-	D8xM6jD6e7tdUR/mGvWdbl9L4yda5we+hqFWqPXAGJKdz0/4fnSkTj0EIntDsBF7fzoS49OXyQlkK
-	MDR9ruY6r6FDwPWWrzGScYnIEyn/zbA5zSI/AG2uSpzmrgI5SDTHYJOs1094a09QI3ePiTL+YX7ux
-	9F9PRvzwxOkZ+N8g4EY7fvLMymd3PdetlsdbwkRan1SUc+ecyeTNWzbzNhgcKa8+SRBj4P0fCREdy
-	438YEztSWQsNRfvJD5mw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=YxV/74TDFXPjk3ebO1fCQPAOf01yrGDmL7XA96hV1P0=; b=tQ0rinzJmxPjpw
+	u5IQ3BjcMKMwQ/VjmdgGDvnjfNkpgAvnrCMM2Q4LbtniLvhRWwrYl1KUvEC862mD4lC7MvCF9HQ9X
+	zhbLI2Bn4NHsqE5+jQvovy7zFk/gLDswW27T8Qp49xYj1RbQ6RH1lIm3hxK1jDz0jofb16NCVaL6k
+	xFPUcGD4VS8jGxc9NxneLieqJnLUv04JspeQw/53KmjRrmoVI3UJJ5wMWJVjLDA07cwLDSzhznKxS
+	6XkHXLGcWm7zO5gH+eZ/p7Jt1mIQ7fRjekD1nD5pzYnhRjYHVU8vcbxgAja/VrchRjwxJF4pjRQf1
+	Dhyt9nJf5jsol/BwuxHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v6UHA-00000003wpP-3m7Z;
-	Wed, 08 Oct 2025 13:32:16 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1v6Vst-000000046bH-2Tu3;
+	Wed, 08 Oct 2025 15:15:19 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v6UH7-00000003woQ-3nIv;
-	Wed, 08 Oct 2025 13:32:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:
-	Subject:Cc:To:From:Reply-To:Content-Type:In-Reply-To:References;
-	bh=NOYL0uD62hKk28WG4gpRQ/Og2WNGiOzJLp810Y1iXv0=; b=QUlT0w9nR/T9hYkLxnW0QicOxh
-	gjEb+c/9oV8pUlTT0b6Wyf+ooTwWWZZZg32QDTbMDXNhjW88OJoZxCcaJkP2fEqNw9t5TjXNCKGnQ
-	TFBoeebPG9qGqDLWIPvpyyrt/FHAW91+Dzs3iTD1O7kIypK4p8Bvz6itB5iMpeQuZwecR8TKM9P/E
-	9gh/trrYJpJNEkKXP+e8JhDYHPa7CM0sMJyTUs/OfRvcDLSnJbG0KFSjKb4XG7SKIapNbwzSz+ICA
-	xurFyZPzPSOesXSOpCNzcVDFJj97I8GMljL0qDUeA+nA20GFimqQYSjiQq59z34ukRzmoj22WnVZj
-	JpGdSUUQ==;
-Received: from i53875a0d.versanet.de ([83.135.90.13] helo=localhost.localdomain)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1v6UGt-0002uq-S4; Wed, 08 Oct 2025 15:31:59 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: heiko@sntech.de
-Cc: mturquette@baylibre.com,
-	sboyd@kernel.org,
-	zhangqing@rock-chips.com,
-	sebastian.reichel@collabora.com,
-	linux-clk@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	quentin.schulz@cherry.de,
-	stable@vger.kernel.org
-Subject: [PATCH] clk: rockchip: rk3588: Don't change PLL rates when setting dclk_vop2_src
-Date: Wed,  8 Oct 2025 15:31:35 +0200
-Message-ID: <20251008133135.3745785-1-heiko@sntech.de>
-X-Mailer: git-send-email 2.47.2
+	id 1v6Vsq-000000046ZP-0ImW;
+	Wed, 08 Oct 2025 15:15:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1759936512;
+	bh=VdzRbghzx9tKG45gmYan50SlLliMvfwAY1/jwnx03WQ=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=GCRBxZ6gEVeXI5Y4D5QXlQ1dTLzCttbxT8c6CUN0Bmux0aCaFpQhS04l3ergWCr9Y
+	 PzieyrQymwBIP/zGk9GRt+u4UeRxj+BS4YBb5d3IL6Z8E6p0TWV9gWgBAj0wxeWu+Y
+	 au9ujWJr7qyAjLTj8gvnrgxwcRu4PTXbny+L+lYOGy8V8E/+q0mWxFlVCyOUgdmknr
+	 bXssCD00QO9a2NHHzamwOzwBHSZxbulmVCzQ9lrdGIczYiKW16eHCy8G8rUYW+pNzy
+	 TSxVIs5Lz7SIPt0piguMyO6JufsHWZzqonvFJSBBWV6MKbmGKbeEdLvFopcrNpMoZE
+	 ye+3RO44AhAHw==
+Received: from [10.40.0.100] (185-67-175-126.lampert.tv [185.67.175.126])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: mriesch)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 41EB317E0DB7;
+	Wed,  8 Oct 2025 17:15:11 +0200 (CEST)
+Message-ID: <1c064a20-15bc-4e7d-ab76-bdbcc2a2465c@collabora.com>
+Date: Wed, 8 Oct 2025 17:15:10 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v10 08/13] media: rockchip: rkcif: add support for mipi
+ csi-2 capture
+To: Mehdi Djait <mehdi.djait@linux.intel.com>
+Cc: Maxime Chevallier <maxime.chevallier@bootlin.com>,
+ =?UTF-8?Q?Th=C3=A9o_Lebrun?= <theo.lebrun@bootlin.com>,
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+ Gerald Loacker <gerald.loacker@wolfvision.net>,
+ Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
+ Markus Elfring <Markus.Elfring@web.de>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Kever Yang <kever.yang@rock-chips.com>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Collabora Kernel Team <kernel@collabora.com>,
+ Paul Kocialkowski <paulk@sys-base.io>,
+ Alexander Shiyan <eagle.alexander923@gmail.com>,
+ Val Packett <val@packett.cool>, Rob Herring <robh@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+References: <20240220-rk3568-vicap-v10-0-62d8a7b209b4@collabora.com>
+ <20240220-rk3568-vicap-v10-8-62d8a7b209b4@collabora.com>
+ <rpaa2jspgmw3do5y367kq4pvvtpboeu7gjd4chmh6pgztmj6ar@ckh7jxvfuhlg>
+Content-Language: en-US
+From: Michael Riesch <michael.riesch@collabora.com>
+In-Reply-To: <rpaa2jspgmw3do5y367kq4pvvtpboeu7gjd4chmh6pgztmj6ar@ckh7jxvfuhlg>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251008_063213_962776_5F048F31 
-X-CRM114-Status: GOOD (  15.51  )
+X-CRM114-CacheID: sfid-20251008_081516_625747_D6AB60C4 
+X-CRM114-Status: GOOD (  33.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,49 +96,135 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-dclk_vop2_src currently has CLK_SET_RATE_PARENT | CLK_SET_RATE_NO_REPARENT
-flags set, which is vastly different than dclk_vop0_src or dclk_vop1_src,
-which have none of those.
+Hi Mehdi,
 
-With these flags in dclk_vop2_src, actually setting the clock then results
-in a lot of other peripherals breaking, because setting the rate results
-in the PLL source getting changed:
+On 8/19/25 18:46, Mehdi Djait wrote:
+> Hi Michael,
+> 
+> I am seeing IOMMU page faults: See below.
 
-[   14.898718] clk_core_set_rate_nolock: setting rate for dclk_vop2 to 152840000
-[   15.155017] clk_change_rate: setting rate for pll_gpll to 1680000000
-[ clk adjusting every gpll user ]
+Sorry for the late reply. I had to get a similar setup first. Now I have
+a Radxa ROCK 3A and a Radxa Camera 8M (with the Sony IMX219 sensor,
+should be 100% compatible to the RasPi Cam v2.1) on my table.
 
-This includes possibly the other vops, i2s, spdif and even the uarts.
-Among other possible things, this breaks the uart console on a board
-I use. Sometimes it recovers later on, but there will be a big block
-of garbled output for a while at least.
+> On Tue, Aug 19, 2025 at 01:26:00AM +0200, Michael Riesch via B4 Relay wrote:
+>> From: Michael Riesch <michael.riesch@collabora.com>
+>>
+>> The RK3568 Video Capture (VICAP) unit features a MIPI CSI-2 capture
+>> interface that can receive video data and write it into system memory
+>> using the ping-pong scheme. Add support for it.
+>>
+>> Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
+>> Reviewed-by: Bryan O'Donoghue <bryan.odonoghue@linaro.org>
+>> Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
+> 
+> [..]
+> 
+>>  irqreturn_t rkcif_mipi_isr(int irq, void *ctx)
+>>  {
+>> +	struct device *dev = ctx;
+>> +	struct rkcif_device *rkcif = dev_get_drvdata(dev);
+>>  	irqreturn_t ret = IRQ_NONE;
+>> +	u32 intstat;
+>> +
+>> +	for (unsigned int i = 0; i < rkcif->match_data->mipi->mipi_num; i++) {
+>> +		enum rkcif_interface_index index = RKCIF_MIPI_BASE + i;
+>> +		struct rkcif_interface *interface = &rkcif->interfaces[index];
+>> +
+>> +		intstat = rkcif_mipi_read(interface, RKCIF_MIPI_INTSTAT);
+>> +		rkcif_mipi_write(interface, RKCIF_MIPI_INTSTAT, intstat);
+>> +
+>> +		for (unsigned int j = 0; j < interface->streams_num; j++) {
+>> +			struct rkcif_stream *stream = &interface->streams[j];
+> 
+> In the TRM you can see in the MIPI_INTSTAT interrupts to detect
+> overflows: why not activate them ?
+> 
+> something like this:
+> 
+> #define RKCIF_MIPI_INT_Y_OVERFLOW(id)          BIT(16)
+> #define RKCIF_MIPI_INT_UV_OVERFLOW(id)         BIT(17)
+> #define RKCIF_MIPI_INT_FIFO_OVERFLOW(id)       BIT(18)
+> #define RKCIF_MIPI_INT_CSI2RX_FIFO_OVERFLOW(id)        BIT(20)
+> 
+> and then OR them with the int_mask in rkcif_mipi_start_streaming()
+> 
+> and then you can log the err if something happened ?
 
-Shared PLLs should not be changed by individual users, so drop these
-flags from dclk_vop2_src and make the flags the same as on dclk_vop0
-and dclk_vop1.
+I have not needed these interrupts yet. They can be added any time
+whenever they are required. (Patches welcome :-))
 
-Fixes: f1c506d152ff ("clk: rockchip: add clock controller for the RK3588")
-Cc: stable@vger.kernel.org
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
----
- drivers/clk/rockchip/clk-rk3588.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+>> +
+>> +			if (intstat & RKCIF_MIPI_INT_FRAME0_END(stream->id) ||
+>> +			    intstat & RKCIF_MIPI_INT_FRAME1_END(stream->id)) {
+>> +				ret = IRQ_HANDLED;
+>> +
+>> +				if (stream->stopping) {
+>> +					rkcif_mipi_stop_streaming(stream);
+>> +					wake_up(&stream->wq_stopped);
+>> +					continue;
+>> +				}
+>> +
+>> +				rkcif_stream_pingpong(stream);
+>> +			}
+>> +		}
+>> +	}
+>>  
+>>  	return ret;
+>>  }
+> 
+> Now to the IOMMU page faults:
+> 
+> Camera Sensor: IMX219
+> Frame Size: 1920x1080
+> Format: SRGGB10P
+> 
+> Packed SRGGB10
+> --> Every four consecutive samples are packed into 5 bytes
+> --> Stride = 2400 bytes (1920 * 5/4)
+> 
+> So the imagesize = 1080 * 2400 = 2 592 000
+> 
+> in __vb2_buf_mem_alloc() the size of the buf will be PAGE_ALIGNED in:
+> PAGE_ALIGN(vb->planes[plane].length);
+> 
+> So we allocate a buffer with the size: 2 592 768 -> hex = 0x297000
+> 
+> In rkcif_mipi_queue_buffer():
+> We will queue a total of two buffers to the HW (2 because of pingpong)
+> The first buffer will have the address: 0x00000000ffc00000
+> 
+> We start to capture and then this happens:
+> 
+> rk_iommu fdfe0800.iommu: Page fault at 0x00000000ffe79000 of type write
+> rk_iommu fdfe0800.iommu: iova = 0x00000000ffe79000: dte_index: 0x3ff pte_index: 0x279 page_offset: 0x0
+> rk_iommu fdfe0800.iommu: mmu_dte_addr: 0x0000000012cc8000 dte@0x0000000012cc8ffc: 0x11a0d001 valid: 1 pte@0x0000000011a0d9e4: 0x31b79006 valid: 0 page@0x0000000000000000 flags: 0x0
+> 
+> With:
+> 0xffe79000 = 0xffc00000 (buffer address) + 0x297000 (buffersize)
+> 
+> --> So the VICAP is overflowing the buffer even though everything was
+> correctly configured ?! (If I understood everything correctly ofc.)
 
-diff --git a/drivers/clk/rockchip/clk-rk3588.c b/drivers/clk/rockchip/clk-rk3588.c
-index 1694223f4f84..cf83242d1726 100644
---- a/drivers/clk/rockchip/clk-rk3588.c
-+++ b/drivers/clk/rockchip/clk-rk3588.c
-@@ -2094,7 +2094,7 @@ static struct rockchip_clk_branch rk3588_early_clk_branches[] __initdata = {
- 	COMPOSITE(DCLK_VOP1_SRC, "dclk_vop1_src", gpll_cpll_v0pll_aupll_p, 0,
- 			RK3588_CLKSEL_CON(111), 14, 2, MFLAGS, 9, 5, DFLAGS,
- 			RK3588_CLKGATE_CON(52), 11, GFLAGS),
--	COMPOSITE(DCLK_VOP2_SRC, "dclk_vop2_src", gpll_cpll_v0pll_aupll_p, CLK_SET_RATE_PARENT | CLK_SET_RATE_NO_REPARENT,
-+	COMPOSITE(DCLK_VOP2_SRC, "dclk_vop2_src", gpll_cpll_v0pll_aupll_p, 0,
- 			RK3588_CLKSEL_CON(112), 5, 2, MFLAGS, 0, 5, DFLAGS,
- 			RK3588_CLKGATE_CON(52), 12, GFLAGS),
- 	COMPOSITE_NODIV(DCLK_VOP0, "dclk_vop0", dclk_vop0_p,
--- 
-2.47.2
+I could reproduce this behavior and found that the (hardcoded) virtual
+line width needs to be adjusted accordingly. It was set to width * 2,
+and it needs to be set to width * 10 / 8.
+
+> I also see the same problem with the SRGGB8 format. It also happens in
+> the downstream Radxa/Rockchip Kernel.
+
+Strange that the downstream kernel has issues with that. Anyway, this
+shouldn't be the issue here...
+
+> Do you see the same problem ?
+
+... but I could reproduce this behavior as well and trace it back to the
+same root cause. Here, we need width * 1, of course.
+
+I'll integrate the fix in v12, please stay tuned!
+
+Best regards,
+Michael
 
 
 _______________________________________________
