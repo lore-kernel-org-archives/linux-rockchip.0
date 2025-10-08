@@ -4,110 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23315CCD184
-	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Oct 2025 01:56:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97F99CAC5BB
+	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Oct 2025 08:15:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=O9g3naxSe2t2pBMYeZz/1mTvl9BQdIFgyUGSTam22YI=; b=otShZvCiK9CcxX
-	7CRrdIL9/OTBJYOo7VBqxxOaQYHOKKBRH5mS3w6stjraLGlZuLpiFmu4AGSjSuG+xy7PRiKervoJ0
-	MxWe/234yEIPzhvRk2haw1nZOzOZaonOwm++eYA6Lug2cZOd4t4XMEZmOG/ihiR/H1mjzlh7jyVQk
-	JvJwpOb+v6RHQLWmCb7artXBde+MuVLiEnZ087rfyOqOSJB62s/VmLO283+2DvHZB4pY7uIpJt+ng
-	98Z24iTi5BSh9T07LE/XGMh93Tc8xUcR9Jo09nkNdCoPbFYYPXc49U3wsdwgc7H33FLMgT7fBKVzq
-	MM1QfARibrjq3K6XCZxw==;
+	List-Owner; bh=yEeNwtcahzQD6uMC49OEI5qR0xnE3hhooiOasWzcsAg=; b=kAjrlhQ/xhVsAp
+	hLs3wOvYGvgJhFuao8qSmtfRUN4dAeqgnGdg132Ia56AwkAEwxBwl7H6H7YzrIUhLqNFmrEH9VWLd
+	UMxRTIC/301ujUPLX4kU0oo4hysjIB7hXb56/LBrBFKG+UGqnqFHHT2LDekf96hsf0HtW5sy4NISP
+	mQWatQ867p5eY471540PhhKLf4DIP7YcssjQ3JzpBY5o8YRWYFyyp6O25fpQT/kRu9B2kdHKbOxOm
+	45Vbf1BsjP1WZhgIO0VvjW6rDj9S3ZEsSjJq0jCBJvE8D/xhxaFXuUmyOHEyvaUcvSjEdNCm+QPg4
+	fKE3NvbJefFRve51pQJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v6JPI-000000033RP-1abh;
-	Wed, 08 Oct 2025 01:55:56 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1v6PKL-00000003QOh-0uNp;
+	Wed, 08 Oct 2025 08:15:13 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v6JPF-000000033Qo-3dxT;
-	Wed, 08 Oct 2025 01:55:54 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 752BC45398;
-	Wed,  8 Oct 2025 01:55:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B0537C4CEF1;
-	Wed,  8 Oct 2025 01:55:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1759888551;
-	bh=zUFhCE55gFIo0YuR9SI3nbI7zUYaY9J9ttmKAuups78=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=WSjlpz5RmjXK8xcAe2HmxNq3T/d+qmhcJMygkYX/KOXOChRgXirnYRWFFWjrlUiGi
-	 u7E3UjgyWozkSJxNLXbyBmxavxlDwXEgtGp2d2o9oydfW4gDoKSVC8pKcjS18ufcz/
-	 ozAPILk8zMlev7+Nz10kRdduj7+eK0oDjW0I0+wLfikSxCn2YAHUzxV/3YVSPRmldO
-	 OAE2NnM9CBpPHtY6r7HBJQcjixYcyiUw1XjGMgWOkzqeJrUxKB8uyJUkO3ezvj5MFM
-	 /p7jPsxlJHeaB3zw0P+uPSg4Qfu8k5RSZpmX1KFBvTtd7OTmm2SvdZ1HMEoOkykOaI
-	 H4Vs/4eOPToug==
-Message-ID: <0ac39a3e-d1a2-40d8-a3d1-b422acc720cc@kernel.org>
-Date: Wed, 8 Oct 2025 10:55:40 +0900
+	id 1v6PKI-00000003QMw-0auf;
+	Wed, 08 Oct 2025 08:15:11 +0000
+Received: from pendragon.ideasonboard.com (82-203-166-19.bb.dnainternet.fi [82.203.166.19])
+	by perceval.ideasonboard.com (Postfix) with UTF8SMTPSA id ECADF191B;
+	Wed,  8 Oct 2025 10:13:31 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1759911212;
+	bh=tsaypD/DbPUWMTuZH0R026MpaDXXQ9sm7bRAfALfNJg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=jAfJD4JJX4a9In7LufZltWn8J6npzIvGlDXb8HmftJmNA76CuiIxrgz/njxp20d8K
+	 GNr2kd4pjRvwTA/siGW+bAV5KVcHpZKiTYDg7SfoG/iSj3uAws7iQp1vlhdlysevgg
+	 e2WMrb9xIBgf3L3Z6hSJW0ivjPCz6Nz17WipET/Q=
+Date: Wed, 8 Oct 2025 11:14:59 +0300
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+	devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	Alexey Charkov <alchark@gmail.com>,
+	Algea Cao <algea.cao@rock-chips.com>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Cenk Uluisik <cenk.uluisik@googlemail.com>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, Jimmy Hon <honyuenkwun@gmail.com>,
+	Kever Yang <kever.yang@rock-chips.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Maxime Ripard <mripard@kernel.org>,
+	Muhammed Efe Cetin <efectn@6tel.net>, Ondrej Jirman <megi@xff.cz>,
+	Rob Herring <robh@kernel.org>, Sandy Huang <hjc@rock-chips.com>
+Subject: Re: [PATCH v2 1/5] dt-bindings: display: rk3588-dw-hdmi-qp: Add
+ tmds-enable-gpios property
+Message-ID: <20251008081459.GF16422@pendragon.ideasonboard.com>
+References: <20251005235542.1017-1-laurent.pinchart@ideasonboard.com>
+ <20251005235542.1017-2-laurent.pinchart@ideasonboard.com>
+ <c5kwmvu3j72evbgdmjn6qn5nqx7ywbiwpzhnpeh6hjjhbz5vwo@jpe3onblwhmy>
+ <20251006162518.GJ5944@pendragon.ideasonboard.com>
+ <d423560e-dcd4-45d8-a1e4-5a8b2a21ef86@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 16/16] media: rockchip: rga: add rga3 support
-To: =?UTF-8?Q?Sven_P=C3=BCschel?= <s.pueschel@pengutronix.de>,
- Jacob Chen <jacob-chen@iotwrt.com>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner
- <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, kernel@pengutronix.de
-References: <20251007-spu-rga3-v1-0-36ad85570402@pengutronix.de>
- <20251007-spu-rga3-v1-16-36ad85570402@pengutronix.de>
- <bf989d9f-9e8e-4acc-b502-1674ce215318@kernel.org>
- <947409d8-9a92-46f2-a6e7-49f3aa44d74f@pengutronix.de>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <947409d8-9a92-46f2-a6e7-49f3aa44d74f@pengutronix.de>
+Content-Disposition: inline
+In-Reply-To: <d423560e-dcd4-45d8-a1e4-5a8b2a21ef86@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251007_185553_950040_4CFD0751 
-X-CRM114-Status: GOOD (  15.23  )
+X-CRM114-CacheID: sfid-20251008_011510_347960_C126E265 
+X-CRM114-Status: GOOD (  16.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,41 +79,64 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMDgvMTAvMjAyNSAwMTowNSwgU3ZlbiBQw7xzY2hlbCB3cm90ZToKPiBIacKgS3J6eXN6dG9m
-LAo+IAo+IE9uIDEwLzcvMjUgMTA6MzkgQU0sIEtyenlzenRvZiBLb3psb3dza2kgd3JvdGU6Cj4+
-IE9uIDA3LzEwLzIwMjUgMTc6MzIsIFN2ZW4gUMO8c2NoZWwgd3JvdGU6Cj4+PiBBZGQgc3VwcG9y
-dCBmb3IgdGhlIFJHQTMgdW5pdCBjb250YWluZWQgaW4gdGhlIFJLMzU4OC4KPj4+Cj4+PiBPbmx5
-IGEgYmFzaWMgZmVhdHVyZSBzZXQgY29uc2lzdGluZyBvZiBzY2FsaW5nIGFuZCBjb2xvciBjb252
-ZXJzaW9uIGlzCj4+PiBpbXBsZW1lbnRlZC4gQWR2YW5jZWQgZmVhdHVyZXMgbGlrZSByb3RhdGlv
-biBhbmQgY3JvcHBpbmcgd2lsbCBqdXN0IGJlCj4+PiBpZ25vcmVkLiBBbHNvIHRoZSBCVDYwMUYg
-Y29sb3Igc3BhY2UgY29udmVyc2lvbiBpcyBjdXJyZW50bHkgaGFyZCBjb2RlZC4KPj4+Cj4+PiBU
-aGUgcmVnaXN0ZXIgYWRkcmVzcyBkZWZpbmVzIHdlcmUgY29waWVkIGZyb20gdGhlCj4+PiB2ZW5k
-b3IgUm9ja2NoaXAga2VybmVsIHNvdXJjZXMgYW5kIHNsaWdodGx5IGFkanVzdGVkIHRvIG5vdCBz
-dGFydCBhdCAwCj4+PiBhZ2FpbiBmb3IgdGhlIGNtZCByZWdpc3RlcnMuCj4+Pgo+Pj4gU2lnbmVk
-LW9mZi1ieTogU3ZlbiBQw7xzY2hlbCA8cy5wdWVzY2hlbEBwZW5ndXRyb25peC5kZT4KPj4+IC0t
-LQo+Pj4gICBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL3JvY2tjaGlwL3JnYS9NYWtlZmlsZSAgfCAg
-IDIgKy0KPj4+ICAgZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9yZ2EvcmdhLmMgICAg
-IHwgICA0ICsKPj4+ICAgZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9yZ2EvcmdhLmgg
-ICAgIHwgICAyICstCj4+PiAgIGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vcm9ja2NoaXAvcmdhL3Jn
-YTMtaHcuYyB8IDQ5MCArKysrKysrKysrKysrKysrKysrKysrKysrKwo+Pj4gICBkcml2ZXJzL21l
-ZGlhL3BsYXRmb3JtL3JvY2tjaGlwL3JnYS9yZ2EzLWh3LmggfCAxODYgKysrKysrKysrKwo+Pj4g
-ICA1IGZpbGVzIGNoYW5nZWQsIDY4MiBpbnNlcnRpb25zKCspLCAyIGRlbGV0aW9ucygtKQo+PiBZ
-b3VyIG9yZGVyIG9mIHBhdGNoZXMgaXMgYSBtZXNzLiBEVFMgY2Fubm90IGJlIGluIHRoZSBtaWRk
-bGUuIEluIGZhY3QsCj4+IERUUyBzaG91bGQgbm90IGJlIGV2ZW4gaW4gdGhpcyBwYXRjaHNldCwg
-YmVjYXVzZSB5b3UgYXJlIHRhcmdldGluZyBtZWRpYS4KPiAKPiBzb3JyeSB0byBib3RoZXIgeW91
-LCBidXQgY291bGQgeW91IGdvIGludG8gYSBiaXQgbW9yZSBkZXRhaWwgb24gaG93IGl0IAo+IHNo
-b3VsZCBiZSBkb25lIGNvcnJlY3RseT8KCkRUUyBjYW5ub3QgYmUgYmVmb3JlIGRyaXZlcnMsIGJl
-Y2F1c2UgdGhpcyBzdWdnZXN0cyB0aGF0IGRyaXZlcnMgZGVwZW5kcwpvbiBEVFMsIHdoaWNoIHdv
-dWxkIGJlIGEgTkFLLiBTZWUgYWxzbyBtYWludGFpbmVyIHNvYyBwcm9maWxlLiBUbyBhdm9pZApo
-YXZpbmcgc3VjaCBpbXByZXNzaW9uIG9mIGZha2UgZGVwZW5kZW5jeSwgRFRTIG11c3QgYmUgcGxh
-Y2VkIGF0IHRoZSBlbmQKb2YgcGF0Y2hzZXQgKGV4Y2VwdCB0aGUgb2J2aW91cyBwYXJ0OiBub3Ro
-aW5nIGluIHlvdXIgY29kZSBjYW4gZGVwZW5kIG9uCml0KS4KCkJlc3QgcmVnYXJkcywKS3J6eXN6
-dG9mCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51
-eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9y
-ZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tj
-aGlwCg==
+On Mon, Oct 06, 2025 at 07:42:56PM +0300, Cristian Ciocaltea wrote:
+> On 10/6/25 7:25 PM, Laurent Pinchart wrote:
+> > On Mon, Oct 06, 2025 at 02:19:24PM +0300, Dmitry Baryshkov wrote:
+> >> On Mon, Oct 06, 2025 at 02:55:37AM +0300, Laurent Pinchart wrote:
+> >>> From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+> >>>
+> >>> Add an optional property to RK3588 HDMI TX Controller binding describing
+> >>> a GPIO line to be asserted when operating in HDMI 1.4/2.0 TMDS mode and
+> >>> deasserted for HDMI 2.1 FRL.
+> >>>
+> >>> This is used to control an external level shifter for HDMI data lines.
+> >>>
+> >>> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+> >>> Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> >>> ---
+> >>>  .../display/rockchip/rockchip,rk3588-dw-hdmi-qp.yaml   | 10 ++++++++++
+> >>>  1 file changed, 10 insertions(+)
+> >>>
+> >>> diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3588-dw-hdmi-qp.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3588-dw-hdmi-qp.yaml
+> >>> index 96b4b088eebe..eec0d40c91ea 100644
+> >>> --- a/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3588-dw-hdmi-qp.yaml
+> >>> +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3588-dw-hdmi-qp.yaml
+> >>> @@ -113,6 +113,13 @@ properties:
+> >>>      description:
+> >>>        Additional HDMI QP related data is accessed through VO GRF regs.
+> >>>  
+> >>> +  tmds-enable-gpios:
+> >>> +    description:
+> >>> +      Optional GPIO line to be asserted when operating in HDMI 1.4/2.0
+> >>> +      TMDS mode and deasserted for HDMI 2.1 FRL. It can be used to control
+> >>> +      an external level shifter for HDMI data lines.
+> >>> +    maxItems: 1
+> >>
+> >> Just my 2c: since TMDS is assumed to be a default mode, shouldn't this
+> >> be a frl-enable-gpios instead?
+> > 
+> > I don't mind either way. Cristian, any opinion ?
+> 
+> No strong opinion either; we could go for Dmitry's suggestion.
+
+OK, I'll flip it.
+
+> >>> +
+> >>>  required:
+> >>>    - compatible
+> >>>    - reg
+
+-- 
+Regards,
+
+Laurent Pinchart
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
