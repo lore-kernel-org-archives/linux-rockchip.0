@@ -4,82 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83281CCA470
-	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Oct 2025 15:15:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B57B8CCD184
+	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Oct 2025 17:51:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YxV/74TDFXPjk3ebO1fCQPAOf01yrGDmL7XA96hV1P0=; b=tQ0rinzJmxPjpw
-	u5IQ3BjcMKMwQ/VjmdgGDvnjfNkpgAvnrCMM2Q4LbtniLvhRWwrYl1KUvEC862mD4lC7MvCF9HQ9X
-	zhbLI2Bn4NHsqE5+jQvovy7zFk/gLDswW27T8Qp49xYj1RbQ6RH1lIm3hxK1jDz0jofb16NCVaL6k
-	xFPUcGD4VS8jGxc9NxneLieqJnLUv04JspeQw/53KmjRrmoVI3UJJ5wMWJVjLDA07cwLDSzhznKxS
-	6XkHXLGcWm7zO5gH+eZ/p7Jt1mIQ7fRjekD1nD5pzYnhRjYHVU8vcbxgAja/VrchRjwxJF4pjRQf1
-	Dhyt9nJf5jsol/BwuxHQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=WGAJVNrWcEa7BDZ4IGmP9/HsJzkueVY1IaGu+8zyz0o=; b=tsQ5IgHk8uQU/7
+	nKvUbSUXscLDfVX19enukTj7Jocvpdl4cUpXmbXIOU57wMf7o4euiPHVyf8yaUy1jjGjjHTkCs08J
+	c/hN1ylxlnhzL6eV9j1jB3fbSIgxTDXXzpLCi+VeSThMCEVhOGKX//sDXGj1A3UY8qHTqzExoDt9Z
+	iOYjo9Pyb8WyWy9qesJ8ETw+NH253h0aDhweb7+EuKmDtJXdr49o5rVHTPHLXTpOKrPmpJmVP5K6b
+	HntXg7lk6OVxAYWsDmRZ38JciE9636oJGkXoQx5T1WDPs9QR0i+Pwdx9ftsCFGSGzIfy0h05bH1Wa
+	NHYTjwcDLge0IRFEenyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v6Vst-000000046bH-2Tu3;
-	Wed, 08 Oct 2025 15:15:19 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1v6YJe-00000004P9z-24wQ;
+	Wed, 08 Oct 2025 17:51:06 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v6Vsq-000000046ZP-0ImW;
-	Wed, 08 Oct 2025 15:15:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1759936512;
-	bh=VdzRbghzx9tKG45gmYan50SlLliMvfwAY1/jwnx03WQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=GCRBxZ6gEVeXI5Y4D5QXlQ1dTLzCttbxT8c6CUN0Bmux0aCaFpQhS04l3ergWCr9Y
-	 PzieyrQymwBIP/zGk9GRt+u4UeRxj+BS4YBb5d3IL6Z8E6p0TWV9gWgBAj0wxeWu+Y
-	 au9ujWJr7qyAjLTj8gvnrgxwcRu4PTXbny+L+lYOGy8V8E/+q0mWxFlVCyOUgdmknr
-	 bXssCD00QO9a2NHHzamwOzwBHSZxbulmVCzQ9lrdGIczYiKW16eHCy8G8rUYW+pNzy
-	 TSxVIs5Lz7SIPt0piguMyO6JufsHWZzqonvFJSBBWV6MKbmGKbeEdLvFopcrNpMoZE
-	 ye+3RO44AhAHw==
-Received: from [10.40.0.100] (185-67-175-126.lampert.tv [185.67.175.126])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: mriesch)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 41EB317E0DB7;
-	Wed,  8 Oct 2025 17:15:11 +0200 (CEST)
-Message-ID: <1c064a20-15bc-4e7d-ab76-bdbcc2a2465c@collabora.com>
-Date: Wed, 8 Oct 2025 17:15:10 +0200
+	id 1v6YJb-00000004P8p-1gy1;
+	Wed, 08 Oct 2025 17:51:04 +0000
+Received: from pendragon.ideasonboard.com (82-203-166-19.bb.dnainternet.fi [82.203.166.19])
+	by perceval.ideasonboard.com (Postfix) with UTF8SMTPSA id E0410EFE;
+	Wed,  8 Oct 2025 19:49:24 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1759945765;
+	bh=5QPb7bYF1JsxERE0FuwEAunttFsnfMgYjjBTINS4yIQ=;
+	h=From:To:Cc:Subject:Date:From;
+	b=YPkQFe7m4tlSrmAl9ZBjyv+eI/JWf/k7WF+658nQWBrZIzV+uPNz37s0qBigB9HvU
+	 0b3YUzqxgqPxJB7+h8Qo5W0EGYR8x5T9nk5cynRX7S09Q60Zndi6x/TV/AEdKol4kX
+	 yrBnirUeTD4FdNnixpQ6jbt3LG5QWFlFQynrDDXA=
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: linux-media@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	imx@lists.linux.dev,
+	linux-amlogic@lists.infradead.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org
+Cc: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Matthew Majewski <mattwmajewski@gmail.com>,
+	Mirela Rabulea <mirela.rabulea@nxp.com>,
+	Jacek Anaszewski <jacek.anaszewski@gmail.com>,
+	Michael Tretter <m.tretter@pengutronix.de>,
+	Devarsh Thakkar <devarsht@ti.com>,
+	=?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Arnd Bergmann <arnd@arndb.de>,
+	Sylwester Nawrocki <s.nawrocki@samsung.com>,
+	Ming Qian <ming.qian@nxp.com>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
+	Nathan Chancellor <nathan@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Hans Verkuil <hverkuil@kernel.org>,
+	Mikhail Ulyanov <mikhail.ulyanov@cogentembedded.com>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Xavier Roumegue <xavier.roumegue@oss.nxp.com>,
+	Shuah Khan <skhan@linuxfoundation.org>,
+	Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>,
+	Tiffany Lin <tiffany.lin@mediatek.com>,
+	Zhou Peng <eagle.zhou@nxp.com>,
+	Dikshita Agarwal <quic_dikshita@quicinc.com>,
+	Vikash Garodia <quic_vgarodia@quicinc.com>,
+	Yunfei Dong <yunfei.dong@mediatek.com>,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Jiasheng Jiang <jiashengjiangcool@gmail.com>,
+	Shawn Guo <shawnguo@kernel.org>,
+	=?UTF-8?q?=C5=81ukasz=20Stelmach?= <l.stelmach@samsung.com>,
+	Abhinav Kumar <abhinav.kumar@linux.dev>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Benoit Parrot <bparrot@ti.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Magnus Damm <magnus.damm@gmail.com>,
+	Sebastian Fricke <sebastian.fricke@collabora.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Jacob Chen <jacob-chen@iotwrt.com>,
+	Bin Liu <bin.liu@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Fabio Estevam <festevam@gmail.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	"Bryan O'Donoghue" <bryan.odonoghue@linaro.org>
+Subject: [PATCH 00/25] media: v4l2-mem2mem: Reduce cargo-cult
+Date: Wed,  8 Oct 2025 20:50:27 +0300
+Message-ID: <20251008175052.19925-1-laurent.pinchart@ideasonboard.com>
+X-Mailer: git-send-email 2.49.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v10 08/13] media: rockchip: rkcif: add support for mipi
- csi-2 capture
-To: Mehdi Djait <mehdi.djait@linux.intel.com>
-Cc: Maxime Chevallier <maxime.chevallier@bootlin.com>,
- =?UTF-8?Q?Th=C3=A9o_Lebrun?= <theo.lebrun@bootlin.com>,
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- Gerald Loacker <gerald.loacker@wolfvision.net>,
- Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
- Markus Elfring <Markus.Elfring@web.de>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Kever Yang <kever.yang@rock-chips.com>,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
- Collabora Kernel Team <kernel@collabora.com>,
- Paul Kocialkowski <paulk@sys-base.io>,
- Alexander Shiyan <eagle.alexander923@gmail.com>,
- Val Packett <val@packett.cool>, Rob Herring <robh@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Sakari Ailus <sakari.ailus@linux.intel.com>, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-References: <20240220-rk3568-vicap-v10-0-62d8a7b209b4@collabora.com>
- <20240220-rk3568-vicap-v10-8-62d8a7b209b4@collabora.com>
- <rpaa2jspgmw3do5y367kq4pvvtpboeu7gjd4chmh6pgztmj6ar@ckh7jxvfuhlg>
-Content-Language: en-US
-From: Michael Riesch <michael.riesch@collabora.com>
-In-Reply-To: <rpaa2jspgmw3do5y367kq4pvvtpboeu7gjd4chmh6pgztmj6ar@ckh7jxvfuhlg>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251008_081516_625747_D6AB60C4 
-X-CRM114-Status: GOOD (  33.20  )
+X-CRM114-CacheID: sfid-20251008_105103_583334_A1F2DBFA 
+X-CRM114-Status: GOOD (  12.94  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,135 +118,106 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Mehdi,
+Hello,
 
-On 8/19/25 18:46, Mehdi Djait wrote:
-> Hi Michael,
-> 
-> I am seeing IOMMU page faults: See below.
+The v4l2_m2m_get_vq() function never returns NULL, but many mem2mem
+drivers still check its return value and consider NULL as an error. This
+may have originated a long time ago from valid checks when
+v4l2_m2m_get_vq() could return NULL, with drivers then just copying the
+checks. This series attempts to stop the cargo-cult behaviour.
 
-Sorry for the late reply. I had to get a similar setup first. Now I have
-a Radxa ROCK 3A and a Radxa Camera 8M (with the Sony IMX219 sensor,
-should be 100% compatible to the RasPi Cam v2.1) on my table.
+Patch 01/25 starts by explicitly stating in kerneldoc that the
+v4l2_m2m_get_vq() function never returns NULL. All the other patches
+drop NULL checks from drivers.
 
-> On Tue, Aug 19, 2025 at 01:26:00AM +0200, Michael Riesch via B4 Relay wrote:
->> From: Michael Riesch <michael.riesch@collabora.com>
->>
->> The RK3568 Video Capture (VICAP) unit features a MIPI CSI-2 capture
->> interface that can receive video data and write it into system memory
->> using the ping-pong scheme. Add support for it.
->>
->> Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
->> Reviewed-by: Bryan O'Donoghue <bryan.odonoghue@linaro.org>
->> Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
-> 
-> [..]
-> 
->>  irqreturn_t rkcif_mipi_isr(int irq, void *ctx)
->>  {
->> +	struct device *dev = ctx;
->> +	struct rkcif_device *rkcif = dev_get_drvdata(dev);
->>  	irqreturn_t ret = IRQ_NONE;
->> +	u32 intstat;
->> +
->> +	for (unsigned int i = 0; i < rkcif->match_data->mipi->mipi_num; i++) {
->> +		enum rkcif_interface_index index = RKCIF_MIPI_BASE + i;
->> +		struct rkcif_interface *interface = &rkcif->interfaces[index];
->> +
->> +		intstat = rkcif_mipi_read(interface, RKCIF_MIPI_INTSTAT);
->> +		rkcif_mipi_write(interface, RKCIF_MIPI_INTSTAT, intstat);
->> +
->> +		for (unsigned int j = 0; j < interface->streams_num; j++) {
->> +			struct rkcif_stream *stream = &interface->streams[j];
-> 
-> In the TRM you can see in the MIPI_INTSTAT interrupts to detect
-> overflows: why not activate them ?
-> 
-> something like this:
-> 
-> #define RKCIF_MIPI_INT_Y_OVERFLOW(id)          BIT(16)
-> #define RKCIF_MIPI_INT_UV_OVERFLOW(id)         BIT(17)
-> #define RKCIF_MIPI_INT_FIFO_OVERFLOW(id)       BIT(18)
-> #define RKCIF_MIPI_INT_CSI2RX_FIFO_OVERFLOW(id)        BIT(20)
-> 
-> and then OR them with the int_mask in rkcif_mipi_start_streaming()
-> 
-> and then you can log the err if something happened ?
+I have carefully checked all patched locations in all drivers. They fall
+in 3 categories:
 
-I have not needed these interrupts yet. They can be added any time
-whenever they are required. (Patches welcome :-))
+- Checks in the VIDIOC_G_FMT, VIDIOC_TRY_FMT and VIDIOC_S_FMT handlers:
+  Those may have been added to ensure that the format type has a valid
+  value, but that is ensured by the V4L2 ioctl core before calling the
+  handlers. The checks can be dropped without a need to replace them
+  with proper type checks.
 
->> +
->> +			if (intstat & RKCIF_MIPI_INT_FRAME0_END(stream->id) ||
->> +			    intstat & RKCIF_MIPI_INT_FRAME1_END(stream->id)) {
->> +				ret = IRQ_HANDLED;
->> +
->> +				if (stream->stopping) {
->> +					rkcif_mipi_stop_streaming(stream);
->> +					wake_up(&stream->wq_stopped);
->> +					continue;
->> +				}
->> +
->> +				rkcif_stream_pingpong(stream);
->> +			}
->> +		}
->> +	}
->>  
->>  	return ret;
->>  }
-> 
-> Now to the IOMMU page faults:
-> 
-> Camera Sensor: IMX219
-> Frame Size: 1920x1080
-> Format: SRGGB10P
-> 
-> Packed SRGGB10
-> --> Every four consecutive samples are packed into 5 bytes
-> --> Stride = 2400 bytes (1920 * 5/4)
-> 
-> So the imagesize = 1080 * 2400 = 2 592 000
-> 
-> in __vb2_buf_mem_alloc() the size of the buf will be PAGE_ALIGNED in:
-> PAGE_ALIGN(vb->planes[plane].length);
-> 
-> So we allocate a buffer with the size: 2 592 768 -> hex = 0x297000
-> 
-> In rkcif_mipi_queue_buffer():
-> We will queue a total of two buffers to the HW (2 because of pingpong)
-> The first buffer will have the address: 0x00000000ffc00000
-> 
-> We start to capture and then this happens:
-> 
-> rk_iommu fdfe0800.iommu: Page fault at 0x00000000ffe79000 of type write
-> rk_iommu fdfe0800.iommu: iova = 0x00000000ffe79000: dte_index: 0x3ff pte_index: 0x279 page_offset: 0x0
-> rk_iommu fdfe0800.iommu: mmu_dte_addr: 0x0000000012cc8000 dte@0x0000000012cc8ffc: 0x11a0d001 valid: 1 pte@0x0000000011a0d9e4: 0x31b79006 valid: 0 page@0x0000000000000000 flags: 0x0
-> 
-> With:
-> 0xffe79000 = 0xffc00000 (buffer address) + 0x297000 (buffersize)
-> 
-> --> So the VICAP is overflowing the buffer even though everything was
-> correctly configured ?! (If I understood everything correctly ofc.)
+- Checks in the VIDIOC_S_SELECTION handler: The only location where this
+  is performed has an explicit type check, so the NULL check can also be
+  dropped.
 
-I could reproduce this behavior and found that the (hardcoded) virtual
-line width needs to be adjusted accordingly. It was set to width * 2,
-and it needs to be set to width * 10 / 8.
+- Checks in other locations where the type parameter to the
+  v4l2_m2m_get_vq() function is hardcoded: The hardcoded type is valid,
+  so the NULL check can't have been meant to check the type. It can also
+  be removed.
 
-> I also see the same problem with the SRGGB8 format. It also happens in
-> the downstream Radxa/Rockchip Kernel.
+There's no dependency between any of those patches so they can be merged
+in any order.
 
-Strange that the downstream kernel has issues with that. Anyway, this
-shouldn't be the issue here...
+Laurent Pinchart (25):
+  media: v4l2-mem2mem: Document that v4l2_m2m_get_vq() never returns
+    NULL
+  media: allgro-dvt: Drop unneeded v4l2_m2m_get_vq() NULL check
+  media: meson-g2d: Drop unneeded v4l2_m2m_get_vq() NULL check
+  media: amphion: Drop unneeded v4l2_m2m_get_vq() NULL check
+  media: coda: Drop unneeded v4l2_m2m_get_vq() NULL check
+  media: imagination: e5010: Drop unneeded v4l2_m2m_get_vq() NULL check
+  media: m2m-deinterlace: Drop unneeded v4l2_m2m_get_vq() NULL check
+  media: mediatek: jpeg: Drop unneeded v4l2_m2m_get_vq() NULL check
+  media: mediatek: vcodec: Drop unneeded v4l2_m2m_get_vq() NULL check
+  media: dw100: Drop unneeded v4l2_m2m_get_vq() NULL check
+  media: imx-jpeg: Drop unneeded v4l2_m2m_get_vq() NULL check
+  media: imx-pxp: Drop unneeded v4l2_m2m_get_vq() NULL check
+  media: nxp: imx8-isi: Drop unneeded v4l2_m2m_get_vq() NULL check
+  media: mx2_emmaprp: Drop unneeded v4l2_m2m_get_vq() NULL check
+  media: qcom: iris: Drop unneeded v4l2_m2m_get_vq() NULL check
+  media: qcom: venus: Drop unneeded v4l2_m2m_get_vq() NULL check
+  media: renesas: fdp1: Drop unneeded v4l2_m2m_get_vq() NULL check
+  media: rcar_jpu: Drop unneeded v4l2_m2m_get_vq() NULL check
+  media: platform: rga: Drop unneeded v4l2_m2m_get_vq() NULL check
+  media: samsung: s5p-g2d: Drop unneeded v4l2_m2m_get_vq() NULL check
+  media: samsung: s5p-jpeg: Drop unneeded v4l2_m2m_get_vq() NULL check
+  media: stm32: dma2d: Drop unneeded v4l2_m2m_get_vq() NULL check
+  media: ti: vpe: Drop unneeded v4l2_m2m_get_vq() NULL check
+  media: vicodec: Drop unneeded v4l2_m2m_get_vq() NULL check
+  media: vim2m: Drop unneeded v4l2_m2m_get_vq() NULL check
 
-> Do you see the same problem ?
+ drivers/media/platform/allegro-dvt/allegro-core.c    |  2 --
+ drivers/media/platform/amlogic/meson-ge2d/ge2d.c     |  5 -----
+ drivers/media/platform/amphion/vdec.c                |  2 --
+ drivers/media/platform/amphion/venc.c                |  2 --
+ .../media/platform/chips-media/coda/coda-common.c    |  4 ----
+ drivers/media/platform/imagination/e5010-jpeg-enc.c  |  4 ----
+ drivers/media/platform/m2m-deinterlace.c             |  7 -------
+ drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c |  7 -------
+ .../mediatek/vcodec/decoder/mtk_vcodec_dec.c         |  7 -------
+ .../vcodec/decoder/vdec/vdec_av1_req_lat_if.c        |  2 --
+ .../vcodec/decoder/vdec/vdec_vp9_req_lat_if.c        |  2 --
+ .../mediatek/vcodec/encoder/mtk_vcodec_enc.c         |  8 --------
+ drivers/media/platform/nxp/dw100/dw100.c             |  7 -------
+ drivers/media/platform/nxp/imx-jpeg/mxc-jpeg.c       |  4 ----
+ drivers/media/platform/nxp/imx-pxp.c                 |  7 -------
+ drivers/media/platform/nxp/imx8-isi/imx8-isi-m2m.c   |  2 --
+ drivers/media/platform/nxp/mx2_emmaprp.c             |  7 -------
+ drivers/media/platform/qcom/iris/iris_vdec.c         |  2 --
+ drivers/media/platform/qcom/venus/vdec.c             |  2 --
+ drivers/media/platform/qcom/venus/venc.c             |  2 --
+ drivers/media/platform/renesas/rcar_fdp1.c           |  3 ---
+ drivers/media/platform/renesas/rcar_jpu.c            |  8 --------
+ drivers/media/platform/rockchip/rga/rga.c            |  4 ----
+ drivers/media/platform/samsung/s5p-g2d/g2d.c         |  4 ----
+ drivers/media/platform/samsung/s5p-jpeg/jpeg-core.c  |  7 -------
+ drivers/media/platform/st/stm32/dma2d/dma2d.c        |  5 -----
+ drivers/media/platform/ti/vpe/vpe.c                  |  7 -------
+ drivers/media/test-drivers/vicodec/vicodec-core.c    |  7 -------
+ drivers/media/test-drivers/vim2m.c                   | 12 ------------
+ drivers/media/v4l2-core/v4l2-mem2mem.c               | 12 +-----------
+ include/media/v4l2-mem2mem.h                         |  3 +++
+ 31 files changed, 4 insertions(+), 153 deletions(-)
 
-... but I could reproduce this behavior as well and trace it back to the
-same root cause. Here, we need width * 1, of course.
 
-I'll integrate the fix in v12, please stay tuned!
+base-commit: e5f0a698b34ed76002dc5cff3804a61c80233a7a
+-- 
+Regards,
 
-Best regards,
-Michael
+Laurent Pinchart
 
 
 _______________________________________________
