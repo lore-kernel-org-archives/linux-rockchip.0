@@ -4,82 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF3C6CCA470
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Oct 2025 08:26:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D2C6CCD183
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Oct 2025 08:45:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gyOF5yxYyhuUQHzadgg+4aX/aAuho67H0af3IPC1v7w=; b=PyIJCmcRqoiiFB
-	zKRL00tBsyE7X+BLrTqo1AGNcTsBe9TRwo4NwPSSKl4U6lRNhMMzrNuhtOFcPNkKWEswNeRpbg/BJ
-	lnM/s4RakRYNgHIRWc2g1fsd5av5eutxvltvrUWlfP2KZgqF6kkpRl8K7TwhW8FmgvpSR4UuyTTBb
-	Gk+InLDM5pmy84InazykxqGwza20aJgfLcGQw6dOs1sW20gkh9ebddA4Q3U+U7Q7gWX1ZII0dryDR
-	RV1K1F4lFjC0oDwfqAxfZSedWPRhpY9B8XcV/jXq8WV3jH/wjccV57tDVsJijQHCvlPB9MCrOJ+pE
-	I1rXxuWFvLhszq+2SuqA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=J5vAkZ1Moms6kDFmXYQUQG/5JkEPqySktB2XMbv+NB8=; b=xORaI2/QJnY6RX
+	LZ6Xd4zAKLWu2zDIFuO2bn49RY7QrpEoxkk8h8elBC87QX6E9qBqvJWpIWULI8PPQIpn6ZWMvGPSL
+	3HUIWWC+1/YDR0tXNuDkGaFjLmCn/eSevJKKygPi+msC/5LqhnSceJHiSj6pkQqhf+kBbHHz7xaW6
+	YlmJg0MFqsM4comA/33Mc02PKhdgFHcqBZK5+dXigzPp2gwUL5xa1l405V2QcvE4fnTGQ93/gCp/o
+	+9VWOi0p6Two19I9cFodkpZsFodKBrqIUk3R49MA/oThMFSVYxn+17zfy6iGCj8tZtsT98PtUU38r
+	HzLITrJwyXr/pDn7GNaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v6lyT-00000005WK5-2tF3;
-	Thu, 09 Oct 2025 08:26:09 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1v6mHV-00000005YDe-3psJ;
+	Thu, 09 Oct 2025 08:45:49 +0000
+Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v6lyQ-00000005WJU-1TEO;
-	Thu, 09 Oct 2025 08:26:07 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1759998364;
-	bh=wSWyJi0/TAO8GU/SWsIP6i2YbWjUCFhoiqvW6k3QEso=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=dxxWF89a8zWRFH2gqgMnQGPculxLXFfzfHKak7sxhi81EWQh1toN1aJFOVF4g49MD
-	 ktYlB5mOK10wkFBcTFE4XmBdPIVT4TQbZzK/L83/d2dGEpUdkmJOA0nBvc8FsnSgqo
-	 rGnTc5nk2bb3U3q7GyqnmA9bGhSK2dmkdqAizPVzBTGa/zv3fMpub7ulV684L2AClp
-	 BozDZ8XSoxEyiFY6ZSQhBeR5ST7lAn6syDT4C5asgfzDPBwP50fq7TemyfRKEN4ZNe
-	 9rIxvTJLQVivzOQps6YOZHt3RhkacMQ0uERdFYtkmcUicuDHH30wsXSCoYYQ6pubBs
-	 iRPjr1FwSfdHQ==
-Received: from [10.40.0.100] (185-67-175-126.lampert.tv [185.67.175.126])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: mriesch)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 152ED17E12DA;
-	Thu,  9 Oct 2025 10:26:03 +0200 (CEST)
-Message-ID: <c8cf6ce8-87e9-41ef-875f-e1f8f103ac78@collabora.com>
-Date: Thu, 9 Oct 2025 10:26:02 +0200
+	id 1v6mHS-00000005YCn-3Org
+	for linux-rockchip@lists.infradead.org;
+	Thu, 09 Oct 2025 08:45:48 +0000
+Received: by mail-pf1-x42d.google.com with SMTP id d2e1a72fcca58-7930132f59aso1004821b3a.0
+        for <linux-rockchip@lists.infradead.org>; Thu, 09 Oct 2025 01:45:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1759999546; x=1760604346; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=UFxKPtmjjPmsPSDnSGoXW+doirX8MuPaFEG2TG4+iXU=;
+        b=N5AdUMdk40J3BuA36HdIKLbBHgV9+f09JJvhAIVnJcvNa1vEN0je2vjyzMJY70qCwy
+         Jd+j7Iff6pD7qUfZp5bLcTU/5xWqaKlUia+fKLW4sCs+OOMLDGlYHMvFERRgfZHU3nNl
+         ZLtSrSrhXOdUufXN+Sf0MAgQIYRNjSPrApTNtHeFf3k2Hyr3ZcWUItAr5Hm8lwiE1CW9
+         jYIs6H/Jk45Mkf6DsLse7+Mo+pHjGXeVuXFqx8h9g6NjlQmib+TOnXi5Pppi4xkKIy4C
+         S+fH0wNi3m6iREx9QD9XkwexbAeZeKVRyd16qJrJXtFEpy3XDYuZFLrabTHuvIZe5ZsJ
+         WfGg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1759999546; x=1760604346;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=UFxKPtmjjPmsPSDnSGoXW+doirX8MuPaFEG2TG4+iXU=;
+        b=Xhv72YDWL642wH4A4DbNKEreqcl74LsCw6mhjhOEMTTwpur19q77fDQK160i+BqfN3
+         F0XTtGz/T3WqjzbfI58lepqq961H7mjlEIU3YRRjxeD66SWGmGqE+/IJHUE6Z3uSjUli
+         TOnZ7ksoONAiVlzmB/fV/Via5Ypz1Nf/JnK/KNUqV76j70Mh6AbpNKlPsb0Tx6L6rq4V
+         /wK8vTVpo0M39g37p5xx5DzYffsgWkEosF3KP1CFkaWuLvKuDJj9Tz3xC1Oo6oTNHk32
+         aYGx0bg7XUaQOoShoCjFXmjyUwjsUv0sbLUBt+Ue8cBSulgRVDQhmyW2QCR+nPHsY3x9
+         XnPA==
+X-Forwarded-Encrypted: i=1; AJvYcCVrxn/rYyNtEozh2D106fBgK08576aie2qQdqLISE6xtz0zgBIDb/Sy//h1RBqJ6NwimefauuN/kO7DsxYTkg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YygUcTbdTfod4XnUEVOWZjbO09zZ17jZmQrG5vMGTcAHqmyJfVV
+	61b357Ra2wTcocNQAQrrmbNikLCSFMGTHQg0A8oumv2O0REykEEXqeZd
+X-Gm-Gg: ASbGnctR2EJrJtiMJqT2XEe+LI74WOrbb9TXEbSk7uBHJ3keauApN6s/lu2RfPJnHcu
+	6y/d7pebIKMcKAkB+pdce95gV77OuypCT734OfpoojFB2x/tp2bNf4Wm2nhKYFA9HUhVEUyAtV1
+	jTiqItyZoF86dLZEdNrogUyAb3dq6nR/nv18BkyDUtzQ9fZ3azIi8vAmtuJv3k/HLPEoxAM3vaJ
+	rpKnlRXjdHRVi9KNVYWP63boB1cBB4lsDeKdHZi8OE3hC3bmcCfXqBG62CPmfBHlaYwg/AneyDh
+	86rs+8plmEvzeI2Ek3RLmVnQ4QvJ9EyW7/X5sj8xNmDcn8FNgPy+vra4mNtsQ7Hyn0cfDlA88Vt
+	JX1an59xdqa9YhiyCRgicC+oVpZvRDBtGr3fEoa32BWFg40zk8BvZ6QmWu5sgJ7ql+w==
+X-Google-Smtp-Source: AGHT+IEVp0sgA10BvrRwBHxoUMhCzRyjJK1eNd6qK3tx+tcCEvpD74MNSsa4zglDlT5r0XodRH8KuQ==
+X-Received: by 2002:a05:6a00:2443:b0:781:4f6:a409 with SMTP id d2e1a72fcca58-793858fb715mr7279720b3a.11.1759999545797;
+        Thu, 09 Oct 2025 01:45:45 -0700 (PDT)
+Received: from localhost.localdomain ([223.74.108.47])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-794e1bf7604sm2130924b3a.55.2025.10.09.01.45.40
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Thu, 09 Oct 2025 01:45:45 -0700 (PDT)
+From: Liangbin Lian <jjm2473@gmail.com>
+To: robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	heiko@sntech.de,
+	quentin.schulz@cherry.de,
+	kever.yang@rock-chips.com,
+	naoki@radxa.com,
+	honyuenkwun@gmail.com,
+	inindev@gmail.com,
+	ivan8215145640@gmail.com,
+	neil.armstrong@linaro.org,
+	mani@kernel.org,
+	dsimic@manjaro.org,
+	pbrobinson@gmail.com,
+	alchark@gmail.com,
+	didi.debian@cknow.org,
+	jjm2473@gmail.com,
+	jbx6244@gmail.com,
+	andrew@lunn.ch
+Cc: devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v5 0/3] arm64: dts: rockchip: introduce LinkEase EasePi R1
+Date: Thu,  9 Oct 2025 16:44:13 +0800
+Message-ID: <20251009084416.45542-1-jjm2473@gmail.com>
+X-Mailer: git-send-email 2.51.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v11 10/17] media: rockchip: rkcif: add support for px30
- vip dvp capture
-To: Sakari Ailus <sakari.ailus@linux.intel.com>
-Cc: Mehdi Djait <mehdi.djait@linux.intel.com>,
- Maxime Chevallier <maxime.chevallier@bootlin.com>,
- =?UTF-8?Q?Th=C3=A9o_Lebrun?= <theo.lebrun@bootlin.com>,
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- Gerald Loacker <gerald.loacker@wolfvision.net>,
- Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
- Markus Elfring <Markus.Elfring@web.de>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Kever Yang <kever.yang@rock-chips.com>,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
- Collabora Kernel Team <kernel@collabora.com>,
- Paul Kocialkowski <paulk@sys-base.io>,
- Alexander Shiyan <eagle.alexander923@gmail.com>,
- Val Packett <val@packett.cool>, Rob Herring <robh@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-References: <20240220-rk3568-vicap-v11-0-af0eada54e5d@collabora.com>
- <20240220-rk3568-vicap-v11-10-af0eada54e5d@collabora.com>
- <aOV0SrQWlVUTx1-R@kekkonen.localdomain>
-Content-Language: en-US
-From: Michael Riesch <michael.riesch@collabora.com>
-In-Reply-To: <aOV0SrQWlVUTx1-R@kekkonen.localdomain>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251009_012606_575370_BE520E7E 
-X-CRM114-Status: GOOD (  20.50  )
+X-CRM114-CacheID: sfid-20251009_014546_851149_F8E3131B 
+X-CRM114-Status: UNSURE (   8.44  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,215 +117,62 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Sakari,
+LinkEase EasePi R1 [1] is a high-performance mini router.
 
-Thanks for the review.
+Specification:
+- Rockchip RK3568
+- 2GB/4GB LPDDR4 RAM
+- 16GB on-board eMMC
+- 1x M.2 key for 2280 NVMe (PCIe 3.0)
+- 1x USB 3.0 Type-A
+- 1x USB 2.0 Type-C (for USB flashing)
+- 2x 1000 Base-T (native, RTL8211F)
+- 2x 2500 Base-T (PCIe, RTL8125B)
+- 1x HDMI 2.0 Output
+- 12v DC Jack
+- 1x Power key connected to PMIC
+- 2x LEDs (one static power supplied, one GPIO controlled)
 
-On 10/7/25 22:12, Sakari Ailus wrote:
-> [...]
->>  
->>  static const char *const rk3568_vicap_clks[] = {
->> @@ -62,11 +64,21 @@ MODULE_DEVICE_TABLE(of, rkcif_plat_of_match);
->>  
->>  static int rkcif_register(struct rkcif_device *rkcif)
->>  {
->> +	int ret;
->> +
->> +	ret = rkcif_dvp_register(rkcif);
->> +	if (ret && ret != -ENODEV)
->> +		goto err;
-> 
-> 	return ret == -ENODEV ? 0 : ret;
+[1] https://doc.linkease.com/zh/guide/easepi-r1/hardware.html
 
-This is written in that way so that the patch 12/17 does not need to
-modify recently added lines and simply needs to add new lines. OK with that?
+Signed-off-by: Liangbin Lian <jjm2473@gmail.com>
+---
 
-> 
->> +
->>  	return 0;
->> +
->> +err:
->> +	return ret;
->>  }
->>  
->>  static void rkcif_unregister(struct rkcif_device *rkcif)
->>  {
->> +	rkcif_dvp_unregister(rkcif);
->>  }
->>  
->>  static int rkcif_notifier_bound(struct v4l2_async_notifier *notifier,
->> @@ -111,6 +123,9 @@ static irqreturn_t rkcif_isr(int irq, void *ctx)
->>  {
->>  	irqreturn_t ret = IRQ_NONE;
->>  
->> +	if (rkcif_dvp_isr(irq, ctx) == IRQ_HANDLED)
->> +		ret = IRQ_HANDLED;
->> +
->>  	return ret;
->>  }
->>  
->> diff --git a/drivers/media/platform/rockchip/rkcif/rkcif-regs.h b/drivers/media/platform/rockchip/rkcif/rkcif-regs.h
->> new file mode 100644
->> index 000000000000..d50b6e14b5af
->> --- /dev/null
->> +++ b/drivers/media/platform/rockchip/rkcif/rkcif-regs.h
->> @@ -0,0 +1,131 @@
->> +/* SPDX-License-Identifier: GPL-2.0 */
->> +/*
->> + * Rockchip Camera Interface (CIF) Driver
->> + *
->> + * Copyright (C) 2018 Rockchip Electronics Co., Ltd.
->> + * Copyright (C) 2023 Mehdi Djait <mehdi.djait@bootlin.com>
->> + * Copyright (C) 2025 Michael Riesch <michael.riesch@wolfvision.net>
->> + */
->> +
->> +#ifndef _RKCIF_REGS_H
->> +#define _RKCIF_REGS_H
->> +
->> +#define RKCIF_REGISTER_NOTSUPPORTED	      0x420000
->> +#define RKCIF_FETCH_Y(VAL)		      ((VAL) & 0x1fff)
->> +#define RKCIF_XY_COORD(x, y)		       (((y) << 16) | (x))
-> 
-> Why the use of spaces for alignment to a column not divisible by 8? For a
-> new header that doesn't seem to make sense.
+Changes in v2:
+- Change deprecated "rockchip,system-power-controller" to "system-power-controller"
+- Link to v1: https://lore.kernel.org/r/20250925055906.83375-1-jjm2473@gmail.com/
 
-Hm. I use clang-format to format my code and apparently it looks for the
-longest define name (RKCIF_FORMAT_BT1120_CLOCK_DOUBLE_EDGES ex aequo
-with others) and adds a space there. The other defines are aligned to
-that one. I don't think this behavior of clang-format can be adjusted
-(only option would be not to align anything, i.e.,
+Changes in v3:
+- Fix typo ('status = "disable"' -> 'status = "disabled"') found by kernel test robot https://lore.kernel.org/all/202509261328.Grjhp029-lkp@intel.com/
+- Link to v2: https://lore.kernel.org/r/20250925092037.13582-1-jjm2473@gmail.com/
 
-#define RKCIF_REGISTER_NOTSUPPORTED 0x420000
-#define RKCIF_FETCH_Y(VAL) ((VAL) & 0x1fff)
-#define RKCIF_XY_COORD(x, y) (((y) << 16) | (x))
-...
+Changes in v4:
+- Fix missing "Acked-by" message in patch 1/3 and 2/3
+- Link to v3: https://lore.kernel.org/r/20250929065714.27741-1-jjm2473@gmail.com/
 
-If you don't find what clang-format produces appropriate, I'll change it
-manually. Is there any strict rule? What should it look like in the end?
-Align with tabs only to something divisible by 8?
+Changes in v5:
+- Change gmac phy-mode to 'rgmii-id' and remove {tx|rx}_delay as suggested by Andrew Lunn <andrew@lunn.ch>
+- Fix comments ('not mounted' -> 'not populated') for unpopulated devices as suggested by Andrew Lunn <andrew@lunn.ch>
+- Link to v4: https://lore.kernel.org/r/20250930055017.67610-1-jjm2473@gmail.com/
 
-Best regards,
-Michael
+---
 
-> 
->> +
->> +/* DVP register contents */
->> +#define RKCIF_CTRL_ENABLE_CAPTURE	       BIT(0)
->> +#define RKCIF_CTRL_MODE_PINGPONG	       BIT(1)
->> +#define RKCIF_CTRL_MODE_LINELOOP	       BIT(2)
->> +#define RKCIF_CTRL_AXI_BURST_16		       (0xf << 12)
->> +
->> +#define RKCIF_INTEN_FRAME_END_EN	       BIT(0)
->> +#define RKCIF_INTEN_LINE_ERR_EN		       BIT(2)
->> +#define RKCIF_INTEN_BUS_ERR_EN		       BIT(6)
->> +#define RKCIF_INTEN_SCL_ERR_EN		       BIT(7)
->> +#define RKCIF_INTEN_PST_INF_FRAME_END_EN       BIT(9)
->> +
->> +#define RKCIF_INTSTAT_CLS		       0x3ff
->> +#define RKCIF_INTSTAT_FRAME_END		       BIT(0)
->> +#define RKCIF_INTSTAT_LINE_END		       BIT(1)
->> +#define RKCIF_INTSTAT_LINE_ERR		       BIT(2)
->> +#define RKCIF_INTSTAT_PIX_ERR		       BIT(3)
->> +#define RKCIF_INTSTAT_DFIFO_OF		       BIT(5)
->> +#define RKCIF_INTSTAT_BUS_ERR		       BIT(6)
->> +#define RKCIF_INTSTAT_PRE_INF_FRAME_END	       BIT(8)
->> +#define RKCIF_INTSTAT_PST_INF_FRAME_END	       BIT(9)
->> +#define RKCIF_INTSTAT_FRAME_END_CLR	       BIT(0)
->> +#define RKCIF_INTSTAT_LINE_END_CLR	       BIT(1)
->> +#define RKCIF_INTSTAT_LINE_ERR_CLR	       BIT(2)
->> +#define RKCIF_INTSTAT_PST_INF_FRAME_END_CLR    BIT(9)
->> +#define RKCIF_INTSTAT_ERR		       0xfc
->> +
->> +#define RKCIF_FRAME_STAT_CLS		       0x00
->> +#define RKCIF_FRAME_FRM0_STAT_CLS	       0x20
->> +
->> +#define RKCIF_FORMAT_VSY_HIGH_ACTIVE	       BIT(0)
->> +#define RKCIF_FORMAT_HSY_LOW_ACTIVE	       BIT(1)
->> +
->> +#define RKCIF_FORMAT_INPUT_MODE_YUV	       (0x00 << 2)
->> +#define RKCIF_FORMAT_INPUT_MODE_PAL	       (0x02 << 2)
->> +#define RKCIF_FORMAT_INPUT_MODE_NTSC	       (0x03 << 2)
->> +#define RKCIF_FORMAT_INPUT_MODE_BT1120	       (0x07 << 2)
->> +#define RKCIF_FORMAT_INPUT_MODE_RAW	       (0x04 << 2)
->> +#define RKCIF_FORMAT_INPUT_MODE_JPEG	       (0x05 << 2)
->> +#define RKCIF_FORMAT_INPUT_MODE_MIPI	       (0x06 << 2)
->> +
->> +#define RKCIF_FORMAT_YUV_INPUT_ORDER_UYVY      (0x00 << 5)
->> +#define RKCIF_FORMAT_YUV_INPUT_ORDER_YVYU      (0x01 << 5)
->> +#define RKCIF_FORMAT_YUV_INPUT_ORDER_VYUY      (0x02 << 5)
->> +#define RKCIF_FORMAT_YUV_INPUT_ORDER_YUYV      (0x03 << 5)
->> +#define RKCIF_FORMAT_YUV_INPUT_422	       (0x00 << 7)
->> +#define RKCIF_FORMAT_YUV_INPUT_420	       BIT(7)
->> +
->> +#define RKCIF_FORMAT_INPUT_420_ORDER_ODD       BIT(8)
->> +
->> +#define RKCIF_FORMAT_CCIR_INPUT_ORDER_EVEN     BIT(9)
->> +
->> +#define RKCIF_FORMAT_RAW_DATA_WIDTH_8	       (0x00 << 11)
->> +#define RKCIF_FORMAT_RAW_DATA_WIDTH_10	       (0x01 << 11)
->> +#define RKCIF_FORMAT_RAW_DATA_WIDTH_12	       (0x02 << 11)
->> +
->> +#define RKCIF_FORMAT_YUV_OUTPUT_422	       (0x00 << 16)
->> +#define RKCIF_FORMAT_YUV_OUTPUT_420	       BIT(16)
->> +
->> +#define RKCIF_FORMAT_OUTPUT_420_ORDER_EVEN     (0x00 << 17)
->> +#define RKCIF_FORMAT_OUTPUT_420_ORDER_ODD      BIT(17)
->> +
->> +#define RKCIF_FORMAT_RAWD_DATA_LITTLE_ENDIAN   (0x00 << 18)
->> +#define RKCIF_FORMAT_RAWD_DATA_BIG_ENDIAN      BIT(18)
->> +
->> +#define RKCIF_FORMAT_UV_STORAGE_ORDER_UVUV     (0x00 << 19)
->> +#define RKCIF_FORMAT_UV_STORAGE_ORDER_VUVU     BIT(19)
->> +
->> +#define RKCIF_FORMAT_BT1120_CLOCK_SINGLE_EDGES (0x00 << 24)
->> +#define RKCIF_FORMAT_BT1120_CLOCK_DOUBLE_EDGES BIT(24)
->> +#define RKCIF_FORMAT_BT1120_TRANSMIT_INTERFACE (0x00 << 25)
->> +#define RKCIF_FORMAT_BT1120_TRANSMIT_PROGRESS  BIT(25)
->> +#define RKCIF_FORMAT_BT1120_YC_SWAP	       BIT(26)
->> +
->> +#define RKCIF_SCL_CTRL_ENABLE_SCL_DOWN	       BIT(0)
->> +#define RKCIF_SCL_CTRL_ENABLE_SCL_UP	       BIT(1)
->> +#define RKCIF_SCL_CTRL_ENABLE_YUV_16BIT_BYPASS BIT(4)
->> +#define RKCIF_SCL_CTRL_ENABLE_RAW_16BIT_BYPASS BIT(5)
->> +#define RKCIF_SCL_CTRL_ENABLE_32BIT_BYPASS     BIT(6)
->> +#define RKCIF_SCL_CTRL_DISABLE_32BIT_BYPASS    (0x00 << 6)
->> +
->> +#define RKCIF_INTSTAT_F0_READY		       BIT(0)
->> +#define RKCIF_INTSTAT_F1_READY		       BIT(1)
->> +
->> +/* GRF register offsets and contents */
->> +#define RK3568_GRF_VI_CON0		       0x340
->> +#define RK3568_GRF_VI_CON1		       0x344
->> +#define RK3568_GRF_VI_STATUS0		       0x348
->> +
->> +#define RK3568_GRF_VI_CON1_CIF_DATAPATH	       BIT(9)
->> +#define RK3568_GRF_VI_CON1_CIF_CLK_DELAYNUM    GENMASK(6, 0)
->> +
->> +#define RK3568_GRF_WRITE_ENABLE(x)	       ((x) << 16)
->> +
->> +enum rkcif_dvp_register_index {
->> +	RKCIF_DVP_CTRL,
->> +	RKCIF_DVP_INTEN,
->> +	RKCIF_DVP_INTSTAT,
->> +	RKCIF_DVP_FOR,
->> +	RKCIF_DVP_LINE_NUM_ADDR,
->> +	RKCIF_DVP_FRM0_ADDR_Y,
->> +	RKCIF_DVP_FRM0_ADDR_UV,
->> +	RKCIF_DVP_FRM1_ADDR_Y,
->> +	RKCIF_DVP_FRM1_ADDR_UV,
->> +	RKCIF_DVP_VIR_LINE_WIDTH,
->> +	RKCIF_DVP_SET_SIZE,
->> +	RKCIF_DVP_SCL_CTRL,
->> +	RKCIF_DVP_CROP,
->> +	RKCIF_DVP_FRAME_STATUS,
->> +	RKCIF_DVP_LAST_LINE,
->> +	RKCIF_DVP_LAST_PIX,
->> +	RKCIF_DVP_REGISTER_MAX
->> +};
->> +
->> +#endif
->>
-> 
+Liangbin Lian (3):
+  dt-bindings: vendor-prefixes: Document LinkEase
+  dt-bindings: arm: rockchip: Add LinkEase EasePi R1
+  arm64: dts: rockchip: add LinkEase EasePi R1
+
+ .../devicetree/bindings/arm/rockchip.yaml     |   5 +
+ .../devicetree/bindings/vendor-prefixes.yaml  |   2 +
+ arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+ .../boot/dts/rockchip/rk3568-easepi-r1.dts    | 686 ++++++++++++++++++
+ 4 files changed, 694 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-easepi-r1.dts
+
+
+base-commit: 30d4efb2f5a515a60fe6b0ca85362cbebea21e2f
+-- 
+2.51.0
 
 
 _______________________________________________
