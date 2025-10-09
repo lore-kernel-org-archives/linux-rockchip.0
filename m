@@ -4,90 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A8DCCCA470
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Oct 2025 05:16:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4220CCD187
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Oct 2025 07:24:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qJ9IzeyDpQGwLWIvSBNrK4UeQGC838B2sjMd0aTAj4Y=; b=y05MqvATCwE6k0
-	X2mVPg5YYAMlChcW2ITGKiEzJ3CE6nAcNYGVwlf0tTVb+CO9vtwWQR0v55/RH8yLiNMDSZy6zrg8B
-	L/ohlenR3i8BAc3nBzR0PqmUlDDpsYBwJEu/OD2hcUbRRWzcCludf6cGr0i1zq62kY1EvvxnG6u7Y
-	c2Pa5x+/dzqGn0+SPgkOFLhrrdZFpwjMVbu1pITNm8UKIHiX3OYkc81JwT6pHI18fBvdGD6zxVd3c
-	DXSW1WQoBieXHcFYu8dGh2S7BNvL/baf/ZIztcLhKmeAHOEBB6b5GXoW5ksAjYXXZXX+cMYRuw3uL
-	rtJkUS8lXdYU7yR/1SKA==;
+	List-Owner; bh=qgrYpDvynTMEi017tUe8KLuDMqzQv70z6Gr611NQmsE=; b=VdV1omIFJJHJav
+	F7RbZBMvvwNy4Rwfq+fvb69qC0kmnHJi8F3bPJ1m0qTZ1oezLIeVytjirbPPihJqmwkJUXQK2LLkk
+	tpeOl5IstAPli5G8z8CD0buZi9ZCq9BIUnjZdYzFvfcvs4KLMQ85qNKyiK2qjIiKTjfIXOng0GcV4
+	j3O840lrB4mZQxQkFqPx8VIKChyyRgRoFUpdiGv1TO4c+Yi8inGL7sDaFvpqmg4qtoI8tYXHhC3n+
+	+t5L9TTW2/+8AQzx0UEzIH6IXKCIQCTeZdRjKdNDVseRL5lB8FHbxm6BVL61xInLBCflrefZHQmLe
+	n2dwt9bpGuOAOLmphzSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v6j1C-00000005CXO-2bO4;
-	Thu, 09 Oct 2025 05:16:46 +0000
-Received: from mail-qk1-x72f.google.com ([2607:f8b0:4864:20::72f])
+	id 1v6l0p-00000005Mgs-1cG5;
+	Thu, 09 Oct 2025 07:24:31 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v6j1A-00000005CWc-1JN6
-	for linux-rockchip@lists.infradead.org;
-	Thu, 09 Oct 2025 05:16:45 +0000
-Received: by mail-qk1-x72f.google.com with SMTP id af79cd13be357-87a0801ba1aso67221085a.2
-        for <linux-rockchip@lists.infradead.org>; Wed, 08 Oct 2025 22:16:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1759987003; x=1760591803; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=tyqb1CztMqi3UzPCCUo4PJPR7YENee+9JSUveio1sPI=;
-        b=AQGJtaQm7W1Ps4XuApeaEvalV1zLZLcpiPDicegiWd4GUHeUHp9P/nioxl6yFyrPMq
-         uI0SZOEMTFS9IMG97mkn1v1e/+/4VCrbnH8UHihoHGsYgM5QnheowRzTmYg/ejKAhTZ7
-         PpqfBwiOw51d1ktvJHIXFjcti6Q2r07drC3/iPjv0u/XGoiuEl7/2s61F5HEtoedN0qC
-         39enPxV+jI/Vyh9Hv7Jj2DhkEPzviLWJozR9QOKTD+CudnkVlWREiCgKY8K8H277ChAV
-         LEfdJJMyPzg6rX3YZBKwC4pJn4uoiE56vd3CLrb+MzQht6BmSwXc6K56dBLodVks+6go
-         uUcg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1759987003; x=1760591803;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=tyqb1CztMqi3UzPCCUo4PJPR7YENee+9JSUveio1sPI=;
-        b=TcCBlN8ws3jD5kJ/tLdnTbwIKusl7zNk4Oqa2/l9TBl3pgJZE6Y/vnQS0hvpX5usrw
-         tb1FerLLgH6xsJ4+w7j73yUH6ugUV+s/UNfxLJNBOi+q07sHlgq36RqJXzjEpkSyLjQN
-         irIWP4QFXiPX0fEAw+HSyo1ytH1S3LBr98es+mXUB1J2O9okmuRbVbUQyrd3nQbYiCFH
-         fIMM5F1zBL7DM8GEa9ojemqtGXNnGuQWItbHEA7DFQQ/njJki+Ug6qeTsyKbzM/Fmeue
-         ipFynHARI475puIj4spQDI1baErtc2uMkse0Jri5CpUAPfPdgSU9ISr+iTAwESRtd2hJ
-         rBYg==
-X-Forwarded-Encrypted: i=1; AJvYcCW7KWQdM47HdG8YejIenisSJ5hqYEGDz6H2RN8orESEi8Qh3l5VwZHJEQKIreVPOATJb59NPTTYClRSdmzr1Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz3URcW8tb93pscZgwXyp4Tf8ZVCKRksRVWCji183nrTeaa49lv
-	D7tGXmeHm6llMHrZHd+wcHCS/Etga8wbGFtLUSmBCmqlR4XrQqAHtoMcXTC1fAHywC2kymnLynA
-	U60hwYmi6J4BxrOGEfMyNRQV6auQBLdw=
-X-Gm-Gg: ASbGncs0vRAspZnkXUZ3EDbmGAAX/+wX5+f3D0CyjeGuF822zT+V6j5zQYoi1qLnf3l
-	mG/KLo2pM+qki6qCeIfckTmNg0zO7DRLJ8uS9Ry10v+bBa+b+3k+L8rJEA9M0/IdpabB1mYQJLm
-	2XgEjrs908K3EcCxC7zWw1kYLJHqUf1q8SxO9TMt4NMKKkY8c1JxpINlOHwBn87uXBugg4HdhdC
-	fU8eMMx0Y5GezsNwnmqTxlFmj1yP4TscIIRug8x4aw=
-X-Google-Smtp-Source: AGHT+IH7cynlxmysIGXABGaRxHRjaSOMuEx+1JjoUFV9WJpw/MAcUpWK0V9ARSZ1SYD2oraMIpI9j58hrMErsazHIU0=
-X-Received: by 2002:a05:6214:2601:b0:80a:7bd3:e61d with SMTP id
- 6a1803df08f44-87b2ef6325amr77155716d6.34.1759987002596; Wed, 08 Oct 2025
- 22:16:42 -0700 (PDT)
+	id 1v6l0m-00000005Mg8-3RwD;
+	Thu, 09 Oct 2025 07:24:30 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1759994666;
+	bh=SZTeonF4D7wa7CnlmXUx/9cIUWtW40SMGZWYRcsw+qU=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=UQf22LZE6wT8E8eisCIK4JaZSOmu+V/vPG5Y0I6YS5BgLJzvV7v6HTVsmUgpk3T50
+	 pzj6kPYViehSf/BaQtWYQ5s9qMgq2LrQqZzlcjTVS8V0IQhlhgiSIhaBJcIsQE3QVL
+	 PKsLlXRFdMl5vlC/VgTCOhVze9tyYhf/maGVOtdtUscvLdQZivjSJoNedFRpmEP/QL
+	 iChhvyA21+FGs2vuM4uDi8QLwby2xaDyGMuhiTI2xNzl7svpIicnR/wzKwzhtud4Ff
+	 Cq/iLWkSvaWZKVgks5vnr9col8ZoNGqnuiNVFZx0hnjnQS1QWMv3Ly4q5x7xcit/cF
+	 PAI7HGKqQ93uQ==
+Received: from [192.168.1.90] (unknown [82.79.138.145])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6F98117E1256;
+	Thu,  9 Oct 2025 09:24:25 +0200 (CEST)
+Message-ID: <bfb68ced-e6ec-4636-816e-9b8fe8aa10b4@collabora.com>
+Date: Thu, 9 Oct 2025 10:24:25 +0300
 MIME-Version: 1.0
-References: <20250929065714.27741-1-jjm2473@gmail.com> <20250929065714.27741-4-jjm2473@gmail.com>
- <d8ad476c-d0c7-4e97-9e76-540a539ffb52@lunn.ch> <CAP_9mL4ofig-X-w9wx1A5D_eVXROo6AVFBSwp4mh=kj7webpPA@mail.gmail.com>
- <7e219aef-88a0-4184-9553-30dcbc8dbd79@lunn.ch> <CAP_9mL6utQjN_2EZ4vs3K8jzcxHxvKWNTNEXZ9fAx4HuA=DNXA@mail.gmail.com>
- <aOVgid5q0_AhPXFB@shell.armlinux.org.uk>
-In-Reply-To: <aOVgid5q0_AhPXFB@shell.armlinux.org.uk>
-From: jjm2473 <jjm2473@gmail.com>
-Date: Thu, 9 Oct 2025 13:16:31 +0800
-X-Gm-Features: AS18NWCLtV0rRwWtVTBZ2YLKRiIGf1OTLHzIEDkTF7un8JPPGbserUWPiMMjbPw
-Message-ID: <CAP_9mL5UbWH_hn0AHm=OGZ1_X7yY-W-XXxx3hXC7iPNzHH+q+w@mail.gmail.com>
-Subject: Re: [PATCH v3 3/3] arm64: dts: rockchip: add LinkEase EasePi R1
-To: "Russell King (Oracle)" <linux@armlinux.org.uk>
-Cc: Andrew Lunn <andrew@lunn.ch>, robh@kernel.org, krzk+dt@kernel.org, 
-	conor+dt@kernel.org, heiko@sntech.de, quentin.schulz@cherry.de, 
-	kever.yang@rock-chips.com, naoki@radxa.com, honyuenkwun@gmail.com, 
-	inindev@gmail.com, ivan8215145640@gmail.com, neil.armstrong@linaro.org, 
-	mani@kernel.org, dsimic@manjaro.org, pbrobinson@gmail.com, alchark@gmail.com, 
-	didi.debian@cknow.org, jbx6244@gmail.com, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 2/5] drm/rockchip: dw_hdmi_qp: Improve error handling
+ with dev_err_probe()
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+ devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ Alexey Charkov <alchark@gmail.com>, Algea Cao <algea.cao@rock-chips.com>,
+ Andy Yan <andy.yan@rock-chips.com>,
+ Cenk Uluisik <cenk.uluisik@googlemail.com>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Jimmy Hon <honyuenkwun@gmail.com>, Kever Yang <kever.yang@rock-chips.com>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Maxime Ripard
+ <mripard@kernel.org>, Muhammed Efe Cetin <efectn@6tel.net>,
+ Ondrej Jirman <megi@xff.cz>, Rob Herring <robh@kernel.org>,
+ Sandy Huang <hjc@rock-chips.com>
+References: <20251005235542.1017-1-laurent.pinchart@ideasonboard.com>
+ <20251005235542.1017-3-laurent.pinchart@ideasonboard.com>
+ <gai5hfvu6xbbqpk4mu3i6nejolijeokjy3mkzca5xwzb4xwic7@jmee36svmwnb>
+ <8706f168-5598-4f91-9ad0-fdbd04b410b7@collabora.com>
+ <20251006162631.GK5944@pendragon.ideasonboard.com>
+Content-Language: en-US
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+In-Reply-To: <20251006162631.GK5944@pendragon.ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251008_221644_358549_80A751D4 
-X-CRM114-Status: GOOD (  13.23  )
+X-CRM114-CacheID: sfid-20251009_002429_040237_6053216E 
+X-CRM114-Status: GOOD (  18.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,31 +84,68 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-UnVzc2VsbCBLaW5nIChPcmFjbGUpIDxsaW51eEBhcm1saW51eC5vcmcudWs+IOS6jjIwMjXlubQx
-MOaciDjml6XlkajkuIkgMDI6NDjlhpnpgZPvvJoKPgo+IE9uIFdlZCwgT2N0IDA4LCAyMDI1IGF0
-IDAxOjI5OjU3QU0gKzA4MDAsIGpqbTI0NzMgd3JvdGU6Cj4gPiA+IFZlbmRvcnMgZ2V0IHRoaW5n
-cyB3cm9uZywgaW5jbHVkaW5nIHRoaXMuICdyZ21paScgbWVhbnMgdGhlIFBDQiBhZGRzCj4gPiA+
-IHRoZSAybnMgZGVsYXkuIE5lYXJseSBldmVyeSBSb2NrY2hpcCBib2FyZCBmb2xsb3dzIFJvY2tj
-aGlwIGJyb2tlbgo+ID4gPiB2ZW5kb3IgcmVjb21tZW5kYXRpb25zLCBhbmQgdGhlbiBpIGNvbWUg
-YWxvbmcsIHBvaW50IG91dCBob3cgaXQgaXMKPiA+ID4gd3JvbmcsIGFuZCBhc2sgZm9yIGl0IHRv
-IGJlIGZpeGVkLCBiZWZvcmUgYmVpbmcgbWVyZ2VkIHRvIE1haW5saW5lLgo+ID4KPiA+IEkgd2ls
-bCB0cnkgYHJnbWlpLWlkYCBhbmQgcmVzY2FuIHt0eHxyeH1fZGVsYXksIGp1c3QgbGlrZQo+ID4g
-aHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvYWxsLzIwMjUwOTI1MDkyOTIzLjIxODQxODctMy1oZWlr
-b0BzbnRlY2guZGUvCj4KPiBUaGUgY3VycmVudCBzaXR1YXRpb24gaXMuLi4KPgo+IGh0dHBzOi8v
-bG9yZS5rZXJuZWwub3JnL3IvMjAyNDAzMDQwODQ2MTIuNzExNjc4LTItdWtsZWluZWtAZGViaWFu
-Lm9yZwo+Cj4gTm90aWNlIHRoYXQgdGhlIHR4X2RlbGF5IGFuZCByeF9kZWxheSBhcmUgcmVtb3Zl
-ZCAtIGJlY2F1c2Ugd2l0aAo+ICJyZ21paS1pZCIgdGhlIHN0bW1hYyBnbHVlIGRyaXZlciBpZ25v
-cmVzIHRoZSBkZWxheSB2YWx1ZXMuCj4KPiAtLQo+IFJNSydzIFBhdGNoIHN5c3RlbTogaHR0cHM6
-Ly93d3cuYXJtbGludXgub3JnLnVrL2RldmVsb3Blci9wYXRjaGVzLwo+IEZUVFAgaXMgaGVyZSEg
-ODBNYnBzIGRvd24gMTBNYnBzIHVwLiBEZWNlbnQgY29ubmVjdGl2aXR5IGF0IGxhc3QhCgpJICBj
-aGFuZ2UgcGh5LW1vZGUgdG8gInJnbWlpLWlkIiwgYW5kIHJlbW92ZSB7dHh8cnh9X2RlbGF5LCBp
-dCB3b3JrcyBmaW5lIQpXaWxsIGFwcGx5IHRoYXQgdG8gdGhlIG5leHQgdmVyc2lvbi4KClRoYW5r
-cyEKCiAgTGlhbmdiaW4gTGlhbgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxp
-c3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9saW51eC1yb2NrY2hpcAo=
+On 10/6/25 7:26 PM, Laurent Pinchart wrote:
+> On Mon, Oct 06, 2025 at 05:37:23PM +0300, Cristian Ciocaltea wrote:
+>> On 10/6/25 3:02 PM, Dmitry Baryshkov wrote:
+>>> On Mon, Oct 06, 2025 at 02:55:38AM +0300, Laurent Pinchart wrote:
+>>>> From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+>>>>
+>>>> The error handling in dw_hdmi_qp_rockchip_bind() is quite inconsistent,
+>>>> i.e. in some cases the error code is not included in the message, while
+>>>> in some other cases there is no check for -EPROBE_DEFER.
+>>>>
+>>>> Since this is part of the probe path, address the aforementioned issues
+>>>> by switching to dev_err_probe(), which also reduces the code a bit.
+>>>>
+>>>> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+>>>> Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+>>>> ---
+>>>>  .../gpu/drm/rockchip/dw_hdmi_qp-rockchip.c    | 62 +++++++------------
+>>>>  1 file changed, 24 insertions(+), 38 deletions(-)
+>>>>
+>>>> diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
+>>>> index 7d531b6f4c09..4e7794aa2dde 100644
+>>>> --- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
+>>>> +++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
+>>>> @@ -457,10 +457,8 @@ static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
+>>>>  		return -ENODEV;
+>>>>  
+>>>>  	if (!cfg->ctrl_ops || !cfg->ctrl_ops->io_init ||
+>>>> -	    !cfg->ctrl_ops->irq_callback || !cfg->ctrl_ops->hardirq_callback) {
+>>>> -		dev_err(dev, "Missing platform ctrl ops\n");
+>>>> -		return -ENODEV;
+>>>> -	}
+>>>> +	    !cfg->ctrl_ops->irq_callback || !cfg->ctrl_ops->hardirq_callback)
+>>>> +		return dev_err_probe(dev, -ENODEV, "Missing platform ctrl ops\n");
+>>>
+>>> This only makes sense for the purpose of unification.
+>>
+>> Right, as mentioned in the commit description, the intention was to ensure
+>> consistent error handling across the probe path rather than limiting the scope
+>> to -EPROBE_DEFER exclusively.
+> 
+> Should I revert this change in v3 or keep it ? I see value in
+> unification, but I don't mind either way. Dmitry, what's your preference
+> ?
+
+I missed to point out this patch has been also sent a while ago as part of
+another series [1] which should be ready for merging.  It'd be great if there's
+no need to revert any changes, otherwise we need to keep those in sync.
+
+Regardless, I'll let you know if that gets applied first, allowing us to drop
+this one after rebasing.
+
+[1] https://lore.kernel.org/all/20250903-rk3588-hdmi-cec-v4-3-fa25163c4b08@collabora.com/
+
+Regards,
+Cristian
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
