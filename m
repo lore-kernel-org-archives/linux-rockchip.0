@@ -4,70 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D2C6CCD183
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Oct 2025 08:45:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82A3FCCD187
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Oct 2025 08:45:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=J5vAkZ1Moms6kDFmXYQUQG/5JkEPqySktB2XMbv+NB8=; b=xORaI2/QJnY6RX
-	LZ6Xd4zAKLWu2zDIFuO2bn49RY7QrpEoxkk8h8elBC87QX6E9qBqvJWpIWULI8PPQIpn6ZWMvGPSL
-	3HUIWWC+1/YDR0tXNuDkGaFjLmCn/eSevJKKygPi+msC/5LqhnSceJHiSj6pkQqhf+kBbHHz7xaW6
-	YlmJg0MFqsM4comA/33Mc02PKhdgFHcqBZK5+dXigzPp2gwUL5xa1l405V2QcvE4fnTGQ93/gCp/o
-	+9VWOi0p6Two19I9cFodkpZsFodKBrqIUk3R49MA/oThMFSVYxn+17zfy6iGCj8tZtsT98PtUU38r
-	HzLITrJwyXr/pDn7GNaQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=NqApvPR3X4O4xaRcd/mJeIbXdmcLKoL90PVKLvv7pSg=; b=YOT9sLGAoa5uhq
+	Mj+6I8Ow2z4YtPh1QTSV4r6FWL4fLZGI+isUOJ+b3a8wUglBd3Tn7Y1n1Ran/CkH0kLnTrIqoaahW
+	5ojW690wZjP3xIRDFuwd+0Mf+AlzG95gQukA5Zk7m6tFLEc1LFvUz7GG7ykoR10UlNFknixUXAuBy
+	Sy0LuzzyUrpLW7aOTa4oi1a6M8TGhDfwnXggO29Y2kJ6HLfDN+hyZlozZ7PyfU7D0JPjebodf2HOY
+	5kNIH13d+fNGRUCTEJb/4GMAaV3AkcYcEQw+Igh6z4hHAdd7xOB2vTJuAWjvbrP06iscPZeek7jrJ
+	TM0ZzpfOUa00Rn0kfZkw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v6mHV-00000005YDe-3psJ;
-	Thu, 09 Oct 2025 08:45:49 +0000
-Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
+	id 1v6mHb-00000005YGb-02SZ;
+	Thu, 09 Oct 2025 08:45:55 +0000
+Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v6mHS-00000005YCn-3Org
+	id 1v6mHX-00000005YEY-44pC
 	for linux-rockchip@lists.infradead.org;
-	Thu, 09 Oct 2025 08:45:48 +0000
-Received: by mail-pf1-x42d.google.com with SMTP id d2e1a72fcca58-7930132f59aso1004821b3a.0
-        for <linux-rockchip@lists.infradead.org>; Thu, 09 Oct 2025 01:45:46 -0700 (PDT)
+	Thu, 09 Oct 2025 08:45:53 +0000
+Received: by mail-pf1-x42b.google.com with SMTP id d2e1a72fcca58-78af3fe5b17so545197b3a.2
+        for <linux-rockchip@lists.infradead.org>; Thu, 09 Oct 2025 01:45:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1759999546; x=1760604346; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=UFxKPtmjjPmsPSDnSGoXW+doirX8MuPaFEG2TG4+iXU=;
-        b=N5AdUMdk40J3BuA36HdIKLbBHgV9+f09JJvhAIVnJcvNa1vEN0je2vjyzMJY70qCwy
-         Jd+j7Iff6pD7qUfZp5bLcTU/5xWqaKlUia+fKLW4sCs+OOMLDGlYHMvFERRgfZHU3nNl
-         ZLtSrSrhXOdUufXN+Sf0MAgQIYRNjSPrApTNtHeFf3k2Hyr3ZcWUItAr5Hm8lwiE1CW9
-         jYIs6H/Jk45Mkf6DsLse7+Mo+pHjGXeVuXFqx8h9g6NjlQmib+TOnXi5Pppi4xkKIy4C
-         S+fH0wNi3m6iREx9QD9XkwexbAeZeKVRyd16qJrJXtFEpy3XDYuZFLrabTHuvIZe5ZsJ
-         WfGg==
+        d=gmail.com; s=20230601; t=1759999551; x=1760604351; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=r8OhPkz1QMasSzFJcM2SsPKD0i5kQ3GIw9/NmjM3cWc=;
+        b=hux7a+c1FAwoYHxoPIUIhmiWUyanIpS9KtofpGVVxHR4F0hzUXxSfzmoe/cKcbVDmr
+         zsl6zB8yE4xJuCe9vajd7fjvdgjTK89sy65BpQlFf82k+UwOVEEnxoS+7Q4CemwypUF2
+         zw+JCj+AU4dnulEiCKAh59N7boHDGMKd2fT/6N9NesarKf50nhbI4wRQ5VfJiJKhF701
+         hqRCj1jfmFXQ4GOgh88yjObV5kWqYYLkiCLFqRkuJ2LqBX20mjMVpAr6bTSpLcbv8NFx
+         pX79nDcxWJqckFqtiON8fubHPGTIoQlUD2H1wFkrof0gzHdl0FLZQqZ9FvYW94O7241d
+         ubog==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1759999546; x=1760604346;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=UFxKPtmjjPmsPSDnSGoXW+doirX8MuPaFEG2TG4+iXU=;
-        b=Xhv72YDWL642wH4A4DbNKEreqcl74LsCw6mhjhOEMTTwpur19q77fDQK160i+BqfN3
-         F0XTtGz/T3WqjzbfI58lepqq961H7mjlEIU3YRRjxeD66SWGmGqE+/IJHUE6Z3uSjUli
-         TOnZ7ksoONAiVlzmB/fV/Via5Ypz1Nf/JnK/KNUqV76j70Mh6AbpNKlPsb0Tx6L6rq4V
-         /wK8vTVpo0M39g37p5xx5DzYffsgWkEosF3KP1CFkaWuLvKuDJj9Tz3xC1Oo6oTNHk32
-         aYGx0bg7XUaQOoShoCjFXmjyUwjsUv0sbLUBt+Ue8cBSulgRVDQhmyW2QCR+nPHsY3x9
-         XnPA==
-X-Forwarded-Encrypted: i=1; AJvYcCVrxn/rYyNtEozh2D106fBgK08576aie2qQdqLISE6xtz0zgBIDb/Sy//h1RBqJ6NwimefauuN/kO7DsxYTkg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YygUcTbdTfod4XnUEVOWZjbO09zZ17jZmQrG5vMGTcAHqmyJfVV
-	61b357Ra2wTcocNQAQrrmbNikLCSFMGTHQg0A8oumv2O0REykEEXqeZd
-X-Gm-Gg: ASbGnctR2EJrJtiMJqT2XEe+LI74WOrbb9TXEbSk7uBHJ3keauApN6s/lu2RfPJnHcu
-	6y/d7pebIKMcKAkB+pdce95gV77OuypCT734OfpoojFB2x/tp2bNf4Wm2nhKYFA9HUhVEUyAtV1
-	jTiqItyZoF86dLZEdNrogUyAb3dq6nR/nv18BkyDUtzQ9fZ3azIi8vAmtuJv3k/HLPEoxAM3vaJ
-	rpKnlRXjdHRVi9KNVYWP63boB1cBB4lsDeKdHZi8OE3hC3bmcCfXqBG62CPmfBHlaYwg/AneyDh
-	86rs+8plmEvzeI2Ek3RLmVnQ4QvJ9EyW7/X5sj8xNmDcn8FNgPy+vra4mNtsQ7Hyn0cfDlA88Vt
-	JX1an59xdqa9YhiyCRgicC+oVpZvRDBtGr3fEoa32BWFg40zk8BvZ6QmWu5sgJ7ql+w==
-X-Google-Smtp-Source: AGHT+IEVp0sgA10BvrRwBHxoUMhCzRyjJK1eNd6qK3tx+tcCEvpD74MNSsa4zglDlT5r0XodRH8KuQ==
-X-Received: by 2002:a05:6a00:2443:b0:781:4f6:a409 with SMTP id d2e1a72fcca58-793858fb715mr7279720b3a.11.1759999545797;
-        Thu, 09 Oct 2025 01:45:45 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1759999551; x=1760604351;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=r8OhPkz1QMasSzFJcM2SsPKD0i5kQ3GIw9/NmjM3cWc=;
+        b=vuFvIvbQCzzFFMKE5iepxXA/N3Lb5Fl46ZP2qqWMfmAasVrFMHaQlUBq3vnWPr28wW
+         tnCSlxUUIDVmh63Pz/p6DJWlhCDhGDixCLs1m4za8dlGE5MgfoXGbAPcU1K1ELs+linO
+         GDR19tqAesE13iPAbAyPuE6UHOtJ6+X0Qg5TD0J059OcFIaplcUwPmuT+MO7lgwMxo1c
+         jqK3fTJAWOf43vjCahzylSeJq5p7/R0WDUoh6Vg6N26yR+NhjMqPQjD3gyQAXPnwGWmJ
+         qWlomYOjFPlLj1BXw/CCPf2bM8lVQNqLs2TaR7P/UhxiVUvm3onmcMl3MAAxegkz/FKu
+         zxxg==
+X-Forwarded-Encrypted: i=1; AJvYcCXGF/mOZVcNDvGs+SX/WKXqugyNWY7IBfbINaLxUm2Jff9V+q04xT3ifLb+WohPWtOc4fvQF6jP639lTiq56Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyvTBxn6evPY8Zviz5Ux7I8IrY4IsT5Y/dBq6j+nQqCfDouPmV/
+	uY1LfxQAbVzseySyfE89qgIWN0oandjvsXlaaOugSu5BeJALIYp6G9Bj
+X-Gm-Gg: ASbGncvnZrYlhzL7BnAHHF6zeKKwnAkJKNLcS98vgEBi/9zo9JTlx24ugiS9bszzAyx
+	RGzBI3GuJlKR2osa91+mOK7t+x8qcwA+QLD+bGGSO1qjcUL1T9yqD2UC4z+khVFCM9c7Q3vfq55
+	1HMxTgQshBkZ3ixjHLHwz08m3Is1xukT39w++78JUgiTOfqGz1lzym2NNLa6CsD89loN+xCzB+w
+	buZxwg9zjcOdoQDTaZq/ueC8Mhg1no5bfo57t1GLuEnZ4ggqTfl7sfwScFYy7dnGBMG4nmNbO5F
+	f+11ElV3cSZAC6/V4ZzxVxtd7thMvtL/Pzt5FO+lI05K4t/OXZie/t8DpUfTaYGFv/5VGulxdya
+	0nWIXO6E/oCsuhkRp2dzCK1DFa9osEHE6V5K7lKQNntdJ4fHdNx+ogZEEQcg75AhuFXPyLKC3P3
+	b2
+X-Google-Smtp-Source: AGHT+IFsUYI+Uzlw6afQAv8v8QE4Z1XIw1leKiEaEKz3k8e65BDwjgKJwZ8Au7x32eU9NmkOPg5Kxg==
+X-Received: by 2002:a05:6a00:3cce:b0:782:ec0f:d279 with SMTP id d2e1a72fcca58-79385ed579dmr7200904b3a.10.1759999551109;
+        Thu, 09 Oct 2025 01:45:51 -0700 (PDT)
 Received: from localhost.localdomain ([223.74.108.47])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-794e1bf7604sm2130924b3a.55.2025.10.09.01.45.40
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-794e1bf7604sm2130924b3a.55.2025.10.09.01.45.46
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Thu, 09 Oct 2025 01:45:45 -0700 (PDT)
+        Thu, 09 Oct 2025 01:45:50 -0700 (PDT)
 From: Liangbin Lian <jjm2473@gmail.com>
 To: robh@kernel.org,
 	krzk+dt@kernel.org,
@@ -91,15 +93,18 @@ To: robh@kernel.org,
 Cc: devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v5 0/3] arm64: dts: rockchip: introduce LinkEase EasePi R1
-Date: Thu,  9 Oct 2025 16:44:13 +0800
-Message-ID: <20251009084416.45542-1-jjm2473@gmail.com>
+	linux-kernel@vger.kernel.org,
+	Conor Dooley <conor.dooley@microchip.com>
+Subject: [PATCH v5 1/3] dt-bindings: vendor-prefixes: Document LinkEase
+Date: Thu,  9 Oct 2025 16:44:14 +0800
+Message-ID: <20251009084416.45542-2-jjm2473@gmail.com>
 X-Mailer: git-send-email 2.51.0
+In-Reply-To: <20251009084416.45542-1-jjm2473@gmail.com>
+References: <20251009084416.45542-1-jjm2473@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251009_014546_851149_F8E3131B 
-X-CRM114-Status: UNSURE (   8.44  )
+X-CRM114-CacheID: sfid-20251009_014552_026464_39536B0D 
+X-CRM114-Status: UNSURE (   7.53  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -117,60 +122,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-LinkEase EasePi R1 [1] is a high-performance mini router.
+LinkEase is a company focusing on the research and development of
+network equipment and related software and hardware from Shenzhen.
 
-Specification:
-- Rockchip RK3568
-- 2GB/4GB LPDDR4 RAM
-- 16GB on-board eMMC
-- 1x M.2 key for 2280 NVMe (PCIe 3.0)
-- 1x USB 3.0 Type-A
-- 1x USB 2.0 Type-C (for USB flashing)
-- 2x 1000 Base-T (native, RTL8211F)
-- 2x 2500 Base-T (PCIe, RTL8125B)
-- 1x HDMI 2.0 Output
-- 12v DC Jack
-- 1x Power key connected to PMIC
-- 2x LEDs (one static power supplied, one GPIO controlled)
+Add vendor prefix for it.
 
-[1] https://doc.linkease.com/zh/guide/easepi-r1/hardware.html
-
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
 Signed-off-by: Liangbin Lian <jjm2473@gmail.com>
 ---
+ Documentation/devicetree/bindings/vendor-prefixes.yaml | 2 ++
+ 1 file changed, 2 insertions(+)
 
-Changes in v2:
-- Change deprecated "rockchip,system-power-controller" to "system-power-controller"
-- Link to v1: https://lore.kernel.org/r/20250925055906.83375-1-jjm2473@gmail.com/
-
-Changes in v3:
-- Fix typo ('status = "disable"' -> 'status = "disabled"') found by kernel test robot https://lore.kernel.org/all/202509261328.Grjhp029-lkp@intel.com/
-- Link to v2: https://lore.kernel.org/r/20250925092037.13582-1-jjm2473@gmail.com/
-
-Changes in v4:
-- Fix missing "Acked-by" message in patch 1/3 and 2/3
-- Link to v3: https://lore.kernel.org/r/20250929065714.27741-1-jjm2473@gmail.com/
-
-Changes in v5:
-- Change gmac phy-mode to 'rgmii-id' and remove {tx|rx}_delay as suggested by Andrew Lunn <andrew@lunn.ch>
-- Fix comments ('not mounted' -> 'not populated') for unpopulated devices as suggested by Andrew Lunn <andrew@lunn.ch>
-- Link to v4: https://lore.kernel.org/r/20250930055017.67610-1-jjm2473@gmail.com/
-
----
-
-Liangbin Lian (3):
-  dt-bindings: vendor-prefixes: Document LinkEase
-  dt-bindings: arm: rockchip: Add LinkEase EasePi R1
-  arm64: dts: rockchip: add LinkEase EasePi R1
-
- .../devicetree/bindings/arm/rockchip.yaml     |   5 +
- .../devicetree/bindings/vendor-prefixes.yaml  |   2 +
- arch/arm64/boot/dts/rockchip/Makefile         |   1 +
- .../boot/dts/rockchip/rk3568-easepi-r1.dts    | 686 ++++++++++++++++++
- 4 files changed, 694 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-easepi-r1.dts
-
-
-base-commit: 30d4efb2f5a515a60fe6b0ca85362cbebea21e2f
+diff --git a/Documentation/devicetree/bindings/vendor-prefixes.yaml b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+index 9ec8947dfcad..db496416b250 100644
+--- a/Documentation/devicetree/bindings/vendor-prefixes.yaml
++++ b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+@@ -873,6 +873,8 @@ patternProperties:
+     description: Lincoln Technology Solutions
+   "^lineartechnology,.*":
+     description: Linear Technology
++  "^linkease,.*":
++    description: Shenzhen LinkEase Network Technology Co., Ltd.
+   "^linksprite,.*":
+     description: LinkSprite Technologies, Inc.
+   "^linksys,.*":
 -- 
 2.51.0
 
