@@ -4,85 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 916B2CCD187
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Oct 2025 11:21:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 512D7CCD184
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Oct 2025 12:34:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
+	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=RCBB8/3YLTQ19Iq6G08ucRbK7dh8OoC4UR/X0PAJMKg=; b=ySIYPwkGABz/vr
-	XzCfyHNt8on83dk4chxtAXLLYEwx6Qznt9I+aaYZPUht7vcEHHgxsCyN+RVBWgsitppPohPgOCIy2
-	Kyo5WSlXdY2G3HvD2SbPnncicJ2zyvEV0TUjO3IxWZC3uEGAVoP9w8pdc39+tj+kfp+vxSue26+3j
-	UdrB43optqNKJFbdv432Btr/60ouAV8NKiI1cdSEOCpu2YKzVCE6ouRXyWKBd7KP1q64xyAg+ZzxY
-	TK+naDdM+wFgRf6+Hm0rLoKLZPDNc4052O7xuulEOZ6ySAByIbF0fH90Qw2SCy+IpkaYCe8A2U6GS
-	6n8a8EULLZbB302jqmKA==;
+	List-Owner; bh=IUOOHmOcfANJX+IPiaoSzjLOjyaoxNQylORnRasGz6M=; b=PfykcljPg8F00F
+	uQYvZhFlimdUVurBGNWLHydVVWcno5YO/uYYGNJBL3UXkqBA1uJxQSTrcCCkQ2st+50UR7257nbGn
+	I0vMo9r2aFuzrjmakd/K6AbDBgE4S4DBgGULUKssyf9LrQk3zbz91hqyLe+bCjlkL7hw253+ufO5+
+	F5k/m3HmcuQxGgaw2EsWQ3w5nHMt6A6LJK6XAVCXNEotU626pUs67eyB5OutB60PPBps/fokmZpDr
+	1iMRJmbuh9RuwPdolYpwjvGD5cWHLPI+4udPoo/ZZpcmNl9P4kYji+XFlgFZcq5kklx2GEvt5lpPE
+	ANDIHwHiMrJWuvJr/jGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v6ohZ-00000005wwP-09AQ;
-	Thu, 09 Oct 2025 11:20:53 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1v6pqx-000000066eG-3Ic2;
+	Thu, 09 Oct 2025 12:34:39 +0000
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v6ohW-00000005wuV-2xsk;
-	Thu, 09 Oct 2025 11:20:50 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=DNvdPN6IIKGJd2BqpWlF0EUaZa2SqUpjxSA02g2Kr8c=; b=CzeB7d87242xvyDRofiybWnB8L
-	+rqDiCHQvfChgXUMr21ru5XYr6tCM4+16EqBJKRm3JBo0BOigwxEmwo8HQqNv+fnY6yhlyBma0Dae
-	QZV5ebYBeoL4fMr+GguZMDYKI+2oyxPu7J0TVHaz2zeNNlGidUiIya5F9avqAD81JO87Qcj0CFis4
-	1l3zy9hW8pVWdh++bDQDfRkoNMpXS7uL7sjWr0+exH9xVlNTBnIg93c7MV2NySnSLAJfAepR0ppGp
-	xeIu46XAwWmZOEoIfS7pWu7PM8fIjqavPdM0FzZQT1FJSeJdD1JW7mVCQG62RuywmNudqw7dkMYPl
-	cbq7YA4g==;
-Received: from perceval.ideasonboard.com ([213.167.242.64])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v6ohT-00000001PLJ-24Wk;
-	Thu, 09 Oct 2025 11:20:49 +0000
-Received: from pendragon.ideasonboard.com (82-203-166-19.bb.dnainternet.fi [82.203.166.19])
-	by perceval.ideasonboard.com (Postfix) with UTF8SMTPSA id 84018965;
-	Thu,  9 Oct 2025 13:10:15 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1760008215;
-	bh=hHz8YdtHioPSOVwHRJYVN90dGjplXI5Vmj7Mglb6IE8=;
-	h=From:To:Cc:Subject:Date:From;
-	b=Pyv/kJxz95Ui53C0pDU9sxoFjf0lXr36X+jpVrdRnVmSfnPYQ8mf0E0TIyJV+asyy
-	 ViTKOlbKiqc6JELvOZGMspBZH6b9tDA6c1El3DncWGcXlFPkxa74Wtl7fIGKjfUI2r
-	 G8W3cga/15Td3/GqHNkAkIF7JVNtktCe9D7DMPcU=
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: linux-media@vger.kernel.org,
-	imx@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-staging@lists.linux.dev,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-sunxi@lists.linux.dev
-Cc: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>,
-	Bin Liu <bin.liu@mediatek.com>,
-	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	Hans Verkuil <hverkuil@kernel.org>,
-	Jacob Chen <jacob-chen@iotwrt.com>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Jiasheng Jiang <jiashengjiangcool@gmail.com>,
-	Matthew Majewski <mattwmajewski@gmail.com>,
-	Mirela Rabulea <mirela.rabulea@nxp.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Shuah Khan <skhan@linuxfoundation.org>,
-	Steve Longerbeam <slongerbeam@gmail.com>,
-	=?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>,
-	Xavier Roumegue <xavier.roumegue@oss.nxp.com>
-Subject: [PATCH] media: v4l2-mem2mem: Don't copy frame flags for frame-based devices
-Date: Thu,  9 Oct 2025 14:11:43 +0300
-Message-ID: <20251009111143.9137-1-laurent.pinchart@ideasonboard.com>
-X-Mailer: git-send-email 2.49.1
+	id 1v6pqu-000000066cq-2ewx
+	for linux-rockchip@lists.infradead.org;
+	Thu, 09 Oct 2025 12:34:37 +0000
+Received: by mail-ej1-x634.google.com with SMTP id a640c23a62f3a-b3d196b7eeeso144319466b.0
+        for <linux-rockchip@lists.infradead.org>; Thu, 09 Oct 2025 05:34:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1760013274; x=1760618074; darn=lists.infradead.org;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=nyerg8bw/pkBgKExI4csMFP+hBYhO0IhRcEHv3iMtPw=;
+        b=l4IvsRLznKNZWcZZq+hCp96a5G+WdaQ2+uKA5iOEQGwK1CKlo7aIgS5nK8M8SI6nEX
+         wC/SFouppOdEA9HUcg45gJCN2pDQH5QGHly/iPBa2jX1p96Dpxl6CneOCKaHexEGof1x
+         brbYcs8+rts03hJ0BTAlofTXMxaXktvjVSFiCU7JJn/utUyLoQhRaCGjsonxYTZ2IWt8
+         DaQWVocBrH9/N2x2kX3/fOA27ki2e8+7lHFeomqSVJ8medZQX8CPQ50/TaNb6PeH83/X
+         y0aRhTCQo08LjCiJSkaKBgDgh/cJbLdE5iwHYBxFxJ/igdMtJJJPwFrE4mz13Dut2Pei
+         le/A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1760013274; x=1760618074;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=nyerg8bw/pkBgKExI4csMFP+hBYhO0IhRcEHv3iMtPw=;
+        b=v0hsvdoG/6Hz+7GIjpmJSGMgxzRkQWNsqZ0D+ISMuhqXKAlDpPxS7dwnG+9rg4lGe3
+         RQXo3v1P10OFBovZTJXpUEPSqBhmn1SCYuh5pXYsNewDyjBdelBul5Qpwqqpk4h9Fyht
+         GVd5buvbhk+6vJjX6S5rn7tGp4my1rle7tHK0Pdfk58tBkzeCBP8xLcBFzTjsx+uHe1m
+         BxoZQJe4ohvZhIYzoc1U+T26WPyCAUjukhL1dyuSUCL/yOgIHHZBdWKbRYzrlnFstmRB
+         bVcp7zhNkF0tw/224+7t5+ChYiwlDNAIyIzrYyBhsaXHxfAGOhNjnDMlR7pKm1KbW7ea
+         YNYA==
+X-Forwarded-Encrypted: i=1; AJvYcCWNofla1xHiWFuCcVQfIi2OeiQlilZ5m37CO00f8VaQQKahJ12VLNL8rpF7Gan4mEInsnnn66qtjmm/zgPNDg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwbUcLMCZ6w1OuCl+e//V2UPOC9gdgtcFCU3LIbaPcw3obvoHSN
+	ky81s70a/CqCnP+jpopa5ABoxlS6bnjwsC4OSc7Ii2I/kLXtUPPQCP7bxMpf7+H6LTqDGEp6
+X-Gm-Gg: ASbGncsO4iZgXatKK8y70P+NlQuo/LlBCuk1cFIpTTmZQhnhcCVeCS8N5Wh+g0v3kTN
+	7M2EUoEttfie3xuS0PEeagCqlawynxT/bbFKiXP0DECT0D+1m7dez3Fp3HGYpuFnnZWaY+lskrV
+	Sihmn7lBRH8Y7IP5oL570X1Th42tmzl7c+j/9enx3BWHR4+RzAvotk2ro6oa5W+DsmyrJjt0jRW
+	bUrrI5XqIH4SI125z7nMQ4CyZV+Nt2bjWDHy39FpweqvnHd/yReXy8GxGsdNBk4bDNH4ccOulIW
+	xi7AuACxv3aKV+R2xcc2OdShu/EbcCxhFuEWuMtYqIaVw3HEjFv3VhBvl5cGnfoWQHKzL5SW16P
+	lM1Gz4NjvdMdUQCEIv5ZSMYMC/mELyMfe13bfiReOgbR7A1Q3q8+q2+smXyF1aMpe
+X-Google-Smtp-Source: AGHT+IG5+niC5l+3hZxoFmTdeEk+aq9D5d4xuawADwnDB5QSeo27pDH2M5zv9nhRFISRnH+oe0SscQ==
+X-Received: by 2002:a17:906:abc4:b0:b46:1db9:cb76 with SMTP id a640c23a62f3a-b50aba9f7aemr661934966b.39.1760013273388;
+        Thu, 09 Oct 2025 05:34:33 -0700 (PDT)
+Received: from alchark-surface.localdomain ([185.209.196.169])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-b4865f741f1sm1897957766b.39.2025.10.09.05.34.29
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 09 Oct 2025 05:34:32 -0700 (PDT)
+From: Alexey Charkov <alchark@gmail.com>
+Date: Thu, 09 Oct 2025 16:34:01 +0400
+Subject: [PATCH] arm64: dts: rockchip: Remove non-functioning CPU OPPs from
+ RK3576
 MIME-Version: 1.0
+Message-Id: <20251009-rk3576_opp-v1-1-67f073a7323f@gmail.com>
+X-B4-Tracking: v=1; b=H4sIALir52gC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
+ vPSU3UzU4B8JSMDI1NDAwNL3aJsY1Nzs/j8ggJd86TEtOTElNQ0CyMDJaCGgqLUtMwKsGHRsbW
+ 1ADNSMK9cAAAA
+X-Change-ID: 20251009-rk3576_opp-7bafcadef820
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Yifeng Zhao <yifeng.zhao@rock-chips.com>, 
+ Finley Xiao <finley.xiao@rock-chips.com>, 
+ Detlev Casanova <detlev.casanova@collabora.com>, 
+ Elaine Zhang <zhangqing@rock-chips.com>, Liang Chen <cl@rock-chips.com>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ stable@vger.kernel.org, Alexey Charkov <alchark@gmail.com>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2003; i=alchark@gmail.com;
+ h=from:subject:message-id; bh=a4GlgwvcqPDJxB9eGC77cLnTgj/F4o2Kt+bX3hdWo68=;
+ b=owGbwMvMwCW2adGNfoHIK0sZT6slMWQ8X30+rrirJKPy35cLE6vzVzz96aV/79ybX/OypNb8F
+ OO4e5xFsqOUhUGMi0FWTJFl7rcltlON+Gbt8vD4CjOHlQlkCAMXpwBMJOgHwx+Odob8xd+tJv0V
+ WjN1YuJaEdNUwe7spqTeh035uhb/HzEx/BX76hJQJrf02J/iedG3gh7xfOm3EHRcvUljvnRcb8E
+ 6aVYA
+X-Developer-Key: i=alchark@gmail.com; a=openpgp;
+ fpr=9DF6A43D95320E9ABA4848F5B2A2D88F1059D4A5
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251009_122047_904200_6D4F9D95 
-X-CRM114-Status: GOOD (  12.27  )
+X-CRM114-CacheID: sfid-20251009_053436_690910_8D69FA37 
+X-CRM114-Status: GOOD (  10.64  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,222 +115,62 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The v4l2_m2m_buf_copy_metadata() function takes a boolean
-copy_frame_flags argument. When true, it causes the function to copy the
-V4L2_BUF_FLAG_KEYFRAME, V4L2_BUF_FLAG_BFRAME and V4L2_BUF_FLAG_PFRAME
-flags from the output buffer to the capture buffer.
+Drop the top-frequency OPPs from both the LITTLE and big CPU clusters on
+RK3576, as neither the opensource TF-A [1] nor the recent (after v1.08)
+binary BL31 images provided by Rockchip expose those.
 
-Many frame-based M2M drivers (e.g. for JPEG encoders, scalers,
-dewarpers, 2D blenders, ...) set the argument to true, while the frame
-flags are not applicable to those drivers as they have no concept of
-key, B or P frames. Set the argument to false to avoid further
-cargo-cult mistakes.
+This fixes the problem [2] when the cpufreq governor tries to jump
+directly to the highest-frequency OPP, which results in a failed SCMI call
+leaving the system stuck at the previous OPP before the attempted change.
 
-Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+[1] https://github.com/ARM-software/arm-trusted-firmware/blob/master/plat/rockchip/rk3576/scmi/rk3576_clk.c#L264-L304
+[2] https://lore.kernel.org/linux-rockchip/CABjd4Yz4NbqzZH4Qsed3ias56gcga9K6CmYA+BLDBxtbG915Ag@mail.gmail.com/
+
+Fixes: 57b1ce903966 ("arm64: dts: rockchip: Add rk3576 SoC base DT")
+Cc: stable@vger.kernel.org
+Signed-off-by: Alexey Charkov <alchark@gmail.com>
 ---
- drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c     | 4 ++--
- drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c   | 4 ++--
- drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c   | 4 ++--
- drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.c      | 2 +-
- drivers/media/platform/nxp/dw100/dw100.c                 | 2 +-
- drivers/media/platform/nxp/imx-jpeg/mxc-jpeg.c           | 2 +-
- drivers/media/platform/rockchip/rga/rga.c                | 2 +-
- drivers/media/platform/st/stm32/dma2d/dma2d.c            | 2 +-
- drivers/media/platform/sunxi/sun8i-di/sun8i-di.c         | 2 +-
- drivers/media/platform/sunxi/sun8i-rotate/sun8i_rotate.c | 2 +-
- drivers/media/test-drivers/vim2m.c                       | 2 +-
- drivers/staging/media/imx/imx-media-csc-scaler.c         | 2 +-
- 12 files changed, 15 insertions(+), 15 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3576.dtsi | 12 ------------
+ 1 file changed, 12 deletions(-)
 
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-index 35c70ec3ad2c..6bd5036430dc 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-@@ -1619,7 +1619,7 @@ static void mtk_jpegenc_worker(struct work_struct *work)
- 	if (!dst_buf)
- 		goto getbuf_fail;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+index fc4e9e07f1cf35fb57f132c6d82c48c62bd6265d..f0c3ab00a7f3447a1dbf7874c7bf758e82e04f25 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+@@ -276,12 +276,6 @@ opp-2016000000 {
+ 			opp-microvolt = <900000 900000 950000>;
+ 			clock-latency-ns = <40000>;
+ 		};
+-
+-		opp-2208000000 {
+-			opp-hz = /bits/ 64 <2208000000>;
+-			opp-microvolt = <950000 950000 950000>;
+-			clock-latency-ns = <40000>;
+-		};
+ 	};
  
--	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, true);
-+	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, false);
+ 	cluster1_opp_table: opp-table-cluster1 {
+@@ -348,12 +342,6 @@ opp-2208000000 {
+ 			opp-microvolt = <925000 925000 950000>;
+ 			clock-latency-ns = <40000>;
+ 		};
+-
+-		opp-2304000000 {
+-			opp-hz = /bits/ 64 <2304000000>;
+-			opp-microvolt = <950000 950000 950000>;
+-			clock-latency-ns = <40000>;
+-		};
+ 	};
  
- 	mtk_jpegenc_set_hw_param(ctx, hw_id, src_buf, dst_buf);
- 	ret = pm_runtime_get_sync(comp_jpeg[hw_id]->dev);
-@@ -1715,7 +1715,7 @@ static void mtk_jpegdec_worker(struct work_struct *work)
- 	if (!dst_buf)
- 		goto getbuf_fail;
- 
--	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, true);
-+	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, false);
- 	jpeg_src_buf = mtk_jpeg_vb2_to_srcbuf(&src_buf->vb2_buf);
- 	jpeg_dst_buf = mtk_jpeg_vb2_to_srcbuf(&dst_buf->vb2_buf);
- 
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
-index e78e1d11093c..556865100872 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
-@@ -530,7 +530,7 @@ static void mtk_jpegdec_timeout_work(struct work_struct *work)
- 
- 	src_buf = cjpeg->hw_param.src_buffer;
- 	dst_buf = cjpeg->hw_param.dst_buffer;
--	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, true);
-+	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, false);
- 
- 	mtk_jpeg_dec_reset(cjpeg->reg_base);
- 	clk_disable_unprepare(cjpeg->jdec_clk.clks->clk);
-@@ -560,7 +560,7 @@ static irqreturn_t mtk_jpegdec_hw_irq_handler(int irq, void *priv)
- 	ctx = jpeg->hw_param.curr_ctx;
- 	src_buf = jpeg->hw_param.src_buffer;
- 	dst_buf = jpeg->hw_param.dst_buffer;
--	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, true);
-+	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, false);
- 
- 	irq_status = mtk_jpeg_dec_get_int_status(jpeg->reg_base);
- 	dec_irq_ret = mtk_jpeg_dec_enum_result(irq_status);
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
-index 9ab27aee302a..4c8427b3c384 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
-@@ -261,7 +261,7 @@ static void mtk_jpegenc_timeout_work(struct work_struct *work)
- 
- 	src_buf = cjpeg->hw_param.src_buffer;
- 	dst_buf = cjpeg->hw_param.dst_buffer;
--	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, true);
-+	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, false);
- 
- 	mtk_jpeg_enc_reset(cjpeg->reg_base);
- 	clk_disable_unprepare(cjpeg->venc_clk.clks->clk);
-@@ -289,7 +289,7 @@ static irqreturn_t mtk_jpegenc_hw_irq_handler(int irq, void *priv)
- 	ctx = jpeg->hw_param.curr_ctx;
- 	src_buf = jpeg->hw_param.src_buffer;
- 	dst_buf = jpeg->hw_param.dst_buffer;
--	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, true);
-+	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, false);
- 
- 	irq_status = readl(jpeg->reg_base + JPEG_ENC_INT_STS) &
- 		JPEG_ENC_INT_STATUS_MASK_ALLIRQ;
-diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.c
-index 59ce5cce0698..dba46a69c6be 100644
---- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.c
-+++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.c
-@@ -51,7 +51,7 @@ static void mdp_m2m_process_done(void *priv, int vb_state)
- 	ctx->curr_param.frame_no = ctx->frame_count[MDP_M2M_SRC];
- 	src_vbuf->sequence = ctx->frame_count[MDP_M2M_SRC]++;
- 	dst_vbuf->sequence = ctx->frame_count[MDP_M2M_DST]++;
--	v4l2_m2m_buf_copy_metadata(src_vbuf, dst_vbuf, true);
-+	v4l2_m2m_buf_copy_metadata(src_vbuf, dst_vbuf, false);
- 
- 	v4l2_m2m_buf_done(src_vbuf, vb_state);
- 	v4l2_m2m_buf_done(dst_vbuf, vb_state);
-diff --git a/drivers/media/platform/nxp/dw100/dw100.c b/drivers/media/platform/nxp/dw100/dw100.c
-index 7a0ee44d9e1f..b73302d54635 100644
---- a/drivers/media/platform/nxp/dw100/dw100.c
-+++ b/drivers/media/platform/nxp/dw100/dw100.c
-@@ -1483,7 +1483,7 @@ static void dw100_start(struct dw100_ctx *ctx, struct vb2_v4l2_buffer *in_vb,
- 				V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE),
- 		in_vb->sequence, out_vb->sequence);
- 
--	v4l2_m2m_buf_copy_metadata(in_vb, out_vb, true);
-+	v4l2_m2m_buf_copy_metadata(in_vb, out_vb, false);
- 
- 	/* Now, let's deal with hardware ... */
- 	dw100_hw_master_bus_disable(dw_dev);
-diff --git a/drivers/media/platform/nxp/imx-jpeg/mxc-jpeg.c b/drivers/media/platform/nxp/imx-jpeg/mxc-jpeg.c
-index 37e0670f98c5..e1dda1e834e4 100644
---- a/drivers/media/platform/nxp/imx-jpeg/mxc-jpeg.c
-+++ b/drivers/media/platform/nxp/imx-jpeg/mxc-jpeg.c
-@@ -1537,7 +1537,7 @@ static void mxc_jpeg_device_run(void *priv)
- 	src_buf->sequence = q_data_out->sequence++;
- 	dst_buf->sequence = q_data_cap->sequence++;
- 
--	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, true);
-+	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, false);
- 
- 	jpeg_src_buf = vb2_to_mxc_buf(&src_buf->vb2_buf);
- 	if (q_data_cap->fmt->mem_planes != dst_buf->vb2_buf.num_planes) {
-diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
-index 48b88da59da0..075b684fb178 100644
---- a/drivers/media/platform/rockchip/rga/rga.c
-+++ b/drivers/media/platform/rockchip/rga/rga.c
-@@ -75,7 +75,7 @@ static irqreturn_t rga_isr(int irq, void *prv)
- 		WARN_ON(!src);
- 		WARN_ON(!dst);
- 
--		v4l2_m2m_buf_copy_metadata(src, dst, true);
-+		v4l2_m2m_buf_copy_metadata(src, dst, false);
- 
- 		dst->sequence = ctx->csequence++;
- 
-diff --git a/drivers/media/platform/st/stm32/dma2d/dma2d.c b/drivers/media/platform/st/stm32/dma2d/dma2d.c
-index 643913adc1f3..4184bdb96e6d 100644
---- a/drivers/media/platform/st/stm32/dma2d/dma2d.c
-+++ b/drivers/media/platform/st/stm32/dma2d/dma2d.c
-@@ -483,7 +483,7 @@ static void device_run(void *prv)
- 
- 	src->sequence = frm_out->sequence++;
- 	dst->sequence = frm_cap->sequence++;
--	v4l2_m2m_buf_copy_metadata(src, dst, true);
-+	v4l2_m2m_buf_copy_metadata(src, dst, false);
- 
- 	if (clk_enable(dev->gate))
- 		goto end;
-diff --git a/drivers/media/platform/sunxi/sun8i-di/sun8i-di.c b/drivers/media/platform/sunxi/sun8i-di/sun8i-di.c
-index 3e7f2df70408..11a6c7f5212e 100644
---- a/drivers/media/platform/sunxi/sun8i-di/sun8i-di.c
-+++ b/drivers/media/platform/sunxi/sun8i-di/sun8i-di.c
-@@ -71,7 +71,7 @@ static void deinterlace_device_run(void *priv)
- 	src = v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
- 	dst = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
- 
--	v4l2_m2m_buf_copy_metadata(src, dst, true);
-+	v4l2_m2m_buf_copy_metadata(src, dst, false);
- 
- 	deinterlace_write(dev, DEINTERLACE_MOD_ENABLE,
- 			  DEINTERLACE_MOD_ENABLE_EN);
-diff --git a/drivers/media/platform/sunxi/sun8i-rotate/sun8i_rotate.c b/drivers/media/platform/sunxi/sun8i-rotate/sun8i_rotate.c
-index abd10b218aa1..f6e2f11a20dd 100644
---- a/drivers/media/platform/sunxi/sun8i-rotate/sun8i_rotate.c
-+++ b/drivers/media/platform/sunxi/sun8i-rotate/sun8i_rotate.c
-@@ -70,7 +70,7 @@ static void rotate_device_run(void *priv)
- 	src = v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
- 	dst = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
- 
--	v4l2_m2m_buf_copy_metadata(src, dst, true);
-+	v4l2_m2m_buf_copy_metadata(src, dst, false);
- 
- 	val = ROTATE_GLB_CTL_MODE(ROTATE_MODE_COPY_ROTATE);
- 	if (ctx->hflip)
-diff --git a/drivers/media/test-drivers/vim2m.c b/drivers/media/test-drivers/vim2m.c
-index dc82830a35a5..3e8476165721 100644
---- a/drivers/media/test-drivers/vim2m.c
-+++ b/drivers/media/test-drivers/vim2m.c
-@@ -482,7 +482,7 @@ static int device_process(struct vim2m_ctx *ctx,
- 
- 	out_vb->sequence = q_data_out->sequence++;
- 	in_vb->sequence = q_data_in->sequence++;
--	v4l2_m2m_buf_copy_metadata(in_vb, out_vb, true);
-+	v4l2_m2m_buf_copy_metadata(in_vb, out_vb, false);
- 
- 	if (ctx->mode & MEM2MEM_VFLIP) {
- 		start = height - 1;
-diff --git a/drivers/staging/media/imx/imx-media-csc-scaler.c b/drivers/staging/media/imx/imx-media-csc-scaler.c
-index 19fd31cb9bb0..770ba3fbaba2 100644
---- a/drivers/staging/media/imx/imx-media-csc-scaler.c
-+++ b/drivers/staging/media/imx/imx-media-csc-scaler.c
-@@ -96,7 +96,7 @@ static void ipu_ic_pp_complete(struct ipu_image_convert_run *run, void *_ctx)
- 	src_buf = v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
- 	dst_buf = v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
- 
--	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, true);
-+	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, false);
- 
- 	src_buf->sequence = ctx->sequence++;
- 	dst_buf->sequence = src_buf->sequence;
+ 	gpu_opp_table: opp-table-gpu {
 
-base-commit: e5f0a698b34ed76002dc5cff3804a61c80233a7a
+---
+base-commit: ec714e371f22f716a04e6ecb2a24988c92b26911
+change-id: 20251009-rk3576_opp-7bafcadef820
+
+Best regards,
 -- 
-Regards,
-
-Laurent Pinchart
+Alexey Charkov <alchark@gmail.com>
 
 
 _______________________________________________
