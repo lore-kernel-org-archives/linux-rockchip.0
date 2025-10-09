@@ -4,100 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE2DCCCD184
-	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Oct 2025 19:22:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64294CCA470
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Oct 2025 01:30:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:From:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=v3McB47V9x8nVT2zAg1uW5eGZ1qQjeV5VsRdfOl14UQ=; b=0FPBJtQ0Negvg4
-	FIkslTBfe4l81N6Jx4HawvAyWSl6fLpX/2yEJmTHkWWyMBkZRf/PDu8tOkiK++uD6dbFClq3GL+Fl
-	2Dozf56rJyukKFGlx8QK9QWsU0/tNuZDlbabRZn2SBUI43XzIvJgdTbJWXZByJ6SH8zy4HFclgblm
-	RaA2/8G7ekMAh8x0a5E40adInZhErH9beZ/pINYc7SFS5bGetcOf6p+FrdAq7EXbG2nzs9ZCKiwTy
-	0z5MIvrGHvv7wl4i1cVVDbWY911YmvOUe2axW3SRSW9+2/yVEdVb7IBmVSeLIfwjT8CfZxsPaTt8O
-	c11Tg1xQIjxgXCy0haJg==;
+	List-Owner; bh=DnMxQ+87dbmyDwihI7gs7RCu7OXf0L8lyPYlj6a5ud0=; b=w1sPsGIZOmenzU
+	Uj2iPlqSAU9NA8Ov6LlzSi+bd/vEVHe5I0QJ4B2zr7MI4p6pG9htXq02COy+Z0jQRaGPirdFQseML
+	DYz0UrYUKzXKLAOlFYM+efUS6P3/B6PKWl+QR/1B3E/SHtbahLGGIuTU3c0102LZarYCKmBjjOWm7
+	ojoO8oLQdt/PgNFc4Zp7h8tQDPpBTdaxq5mVAqo/r8piT3Nn3xVx+XdGyxIVKgpuI86b1OgOWACOM
+	9qpRCTiyW2P0ze7TvZ26w5h1IyYhSbT75AJ5Ryistw+tlIhgvR+r25kNdxOlUJab8eseW9ocnGhMA
+	J0zSLS5qtmEea+xskIhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v6ZjO-00000004YQ5-0KMb;
-	Wed, 08 Oct 2025 19:21:46 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1v6fTg-00000004xWO-1lk9;
+	Thu, 09 Oct 2025 01:29:56 +0000
+Received: from mail-m4920.qiye.163.com ([45.254.49.20])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v6ZjK-00000004YPQ-3Wv6;
-	Wed, 08 Oct 2025 19:21:44 +0000
-Received: from pendragon.ideasonboard.com (82-203-166-19.bb.dnainternet.fi [82.203.166.19])
-	by perceval.ideasonboard.com (Postfix) with UTF8SMTPSA id B22C11831;
-	Wed,  8 Oct 2025 21:20:02 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1759951203;
-	bh=qQokYW/VARCWCLgR7Bc7K4ey6RBNxLIsdA5nrZ46+tE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=FgmJk2/YEEqMsNrw8ePmdPns4OKSKs5GD97J2cZONy3e6nKAXD2s7B1NWuN9t9aEJ
-	 P1cM18SZxCqMqCZ+LDBut9PSYPfkFAj0820hagqXrnFHxBZGbus9d46BgECqHzGByr
-	 a+qPEkuWAbR3FMswmhzzaCoEv0Bi2mnxSGDI6U9I=
-Date: Wed, 8 Oct 2025 22:21:29 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Cc: linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	imx@lists.linux.dev, linux-amlogic@lists.infradead.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	Matthew Majewski <mattwmajewski@gmail.com>,
-	Mirela Rabulea <mirela.rabulea@nxp.com>,
-	Jacek Anaszewski <jacek.anaszewski@gmail.com>,
-	Michael Tretter <m.tretter@pengutronix.de>,
-	Devarsh Thakkar <devarsht@ti.com>,
-	Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Arnd Bergmann <arnd@arndb.de>,
-	Sylwester Nawrocki <s.nawrocki@samsung.com>,
-	Ming Qian <ming.qian@nxp.com>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
-	Nathan Chancellor <nathan@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Hans Verkuil <hverkuil@kernel.org>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Xavier Roumegue <xavier.roumegue@oss.nxp.com>,
-	Shuah Khan <skhan@linuxfoundation.org>,
-	Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>,
-	Tiffany Lin <tiffany.lin@mediatek.com>,
-	Zhou Peng <eagle.zhou@nxp.com>,
-	Dikshita Agarwal <quic_dikshita@quicinc.com>,
-	Vikash Garodia <quic_vgarodia@quicinc.com>,
-	Yunfei Dong <yunfei.dong@mediatek.com>,
-	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Jiasheng Jiang <jiashengjiangcool@gmail.com>,
-	Shawn Guo <shawnguo@kernel.org>,
-	=?utf-8?Q?=C5=81ukasz?= Stelmach <l.stelmach@samsung.com>,
-	Abhinav Kumar <abhinav.kumar@linux.dev>,
-	Heiko Stuebner <heiko@sntech.de>, Benoit Parrot <bparrot@ti.com>,
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Magnus Damm <magnus.damm@gmail.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Jacob Chen <jacob-chen@iotwrt.com>, Bin Liu <bin.liu@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Fabio Estevam <festevam@gmail.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Bryan O'Donoghue <bryan.odonoghue@linaro.org>
-Subject: Re: [PATCH 00/25] media: v4l2-mem2mem: Reduce cargo-cult
-Message-ID: <20251008192129.GG16422@pendragon.ideasonboard.com>
-References: <20251008175052.19925-1-laurent.pinchart@ideasonboard.com>
- <205478244873d09cad5b77bd887f6a836c31c7ec.camel@collabora.com>
+	id 1v6fTd-00000004xTM-1N6F;
+	Thu, 09 Oct 2025 01:29:54 +0000
+Received: from [172.16.12.26] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 253c93889;
+	Thu, 9 Oct 2025 09:29:43 +0800 (GMT+08:00)
+Message-ID: <642ee0da-5179-4790-ace3-c3035032c6d7@rock-chips.com>
+Date: Thu, 9 Oct 2025 09:29:44 +0800
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <205478244873d09cad5b77bd887f6a836c31c7ec.camel@collabora.com>
+User-Agent: Mozilla Thunderbird
+From: Damon Ding <damon.ding@rock-chips.com>
+Subject: Re: [PATCH v6 00/18] Apply drm_bridge_connector and panel_bridge
+ helper for the Analogix DP driver
+To: Marek Szyprowski <m.szyprowski@samsung.com>, andrzej.hajda@intel.com,
+ neil.armstrong@linaro.org, rfoss@kernel.org
+Cc: Laurent.pinchart@ideasonboard.com, jonas@kwiboo.se,
+ jernej.skrabec@gmail.com, maarten.lankhorst@linux.intel.com,
+ mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch,
+ shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de,
+ festevam@gmail.com, inki.dae@samsung.com, sw0312.kim@samsung.com,
+ kyungmin.park@samsung.com, krzk@kernel.org, alim.akhtar@samsung.com,
+ jingoohan1@gmail.com, p.zabel@pengutronix.de, hjc@rock-chips.com,
+ heiko@sntech.de, andy.yan@rock-chips.com, dmitry.baryshkov@oss.qualcomm.com,
+ dianders@chromium.org, luca.ceresoli@bootlin.com, jani.nikula@intel.com,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
+ linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
+References: <CGME20250930091415eucas1p1f82ef0c96cbe0c7c673d975d502629e2@eucas1p1.samsung.com>
+ <20250930090920.131094-1-damon.ding@rock-chips.com>
+ <41c2a141-a72e-4780-ab32-f22f3a2e0179@samsung.com>
+Content-Language: en-US
+In-Reply-To: <41c2a141-a72e-4780-ab32-f22f3a2e0179@samsung.com>
+X-HM-Tid: 0a99c6969bbf03a3kunmdb30cebaa2e219
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGU5OHlZLT0wdTR9OH0keGEJWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpKQk
+	1VSktLVUpCWQY+
+DKIM-Signature: a=rsa-sha256;
+	b=PAzJtPogGAtKNZF9kobys+S/AKxHrq4GQv8D4Z+zLodxNHH4JYCTujogAXm9fgicqrAw7SJ1Ed/1y5ar44pfmhXbF3urj0ZGNVm3tQFTiqOHhYi0FRcJvpHZzCZZTol5n2XzaUvwtgW2y0xff7e202M52ezasiZAj3cQv8oueNU=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=kHQXpJLhL6Zuw3ZLmpn+nIKZ+QG/Z5d2ERurV4FyGmc=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251008_122143_044211_9AECF264 
-X-CRM114-Status: GOOD (  27.03  )
+X-CRM114-CacheID: sfid-20251008_182953_549360_80DDE345 
+X-CRM114-Status: GOOD (  18.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,124 +79,158 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkLCBPY3QgMDgsIDIwMjUgYXQgMDI6MjQ6MzBQTSAtMDQwMCwgTmljb2xhcyBEdWZyZXNu
-ZSB3cm90ZToKPiBIaSwKPiAKPiBMZSBtZXJjcmVkaSAwOCBvY3RvYnJlIDIwMjUgw6AgMjA6NTAg
-KzAzMDAsIExhdXJlbnQgUGluY2hhcnQgYSDDqWNyaXTCoDoKPiA+IEhlbGxvLAo+ID4gCj4gPiBU
-aGUgdjRsMl9tMm1fZ2V0X3ZxKCkgZnVuY3Rpb24gbmV2ZXIgcmV0dXJucyBOVUxMLCBidXQgbWFu
-eSBtZW0ybWVtCj4gPiBkcml2ZXJzIHN0aWxsIGNoZWNrIGl0cyByZXR1cm4gdmFsdWUgYW5kIGNv
-bnNpZGVyIE5VTEwgYXMgYW4gZXJyb3IuIFRoaXMKPiA+IG1heSBoYXZlIG9yaWdpbmF0ZWQgYSBs
-b25nIHRpbWUgYWdvIGZyb20gdmFsaWQgY2hlY2tzIHdoZW4KPiA+IHY0bDJfbTJtX2dldF92cSgp
-IGNvdWxkIHJldHVybiBOVUxMLCB3aXRoIGRyaXZlcnMgdGhlbiBqdXN0IGNvcHlpbmcgdGhlCj4g
-PiBjaGVja3MuIFRoaXMgc2VyaWVzIGF0dGVtcHRzIHRvIHN0b3AgdGhlIGNhcmdvLWN1bHQgYmVo
-YXZpb3VyLgo+ID4gCj4gPiBQYXRjaCAwMS8yNSBzdGFydHMgYnkgZXhwbGljaXRseSBzdGF0aW5n
-IGluIGtlcm5lbGRvYyB0aGF0IHRoZQo+ID4gdjRsMl9tMm1fZ2V0X3ZxKCkgZnVuY3Rpb24gbmV2
-ZXIgcmV0dXJucyBOVUxMLiBBbGwgdGhlIG90aGVyIHBhdGNoZXMKPiA+IGRyb3AgTlVMTCBjaGVj
-a3MgZnJvbSBkcml2ZXJzLgo+ID4gCj4gPiBJIGhhdmUgY2FyZWZ1bGx5IGNoZWNrZWQgYWxsIHBh
-dGNoZWQgbG9jYXRpb25zIGluIGFsbCBkcml2ZXJzLiBUaGV5IGZhbGwKPiA+IGluIDMgY2F0ZWdv
-cmllczoKPiA+IAo+ID4gLSBDaGVja3MgaW4gdGhlIFZJRElPQ19HX0ZNVCwgVklESU9DX1RSWV9G
-TVQgYW5kIFZJRElPQ19TX0ZNVCBoYW5kbGVyczoKPiA+IMKgIFRob3NlIG1heSBoYXZlIGJlZW4g
-YWRkZWQgdG8gZW5zdXJlIHRoYXQgdGhlIGZvcm1hdCB0eXBlIGhhcyBhIHZhbGlkCj4gPiDCoCB2
-YWx1ZSwgYnV0IHRoYXQgaXMgZW5zdXJlZCBieSB0aGUgVjRMMiBpb2N0bCBjb3JlIGJlZm9yZSBj
-YWxsaW5nIHRoZQo+ID4gwqAgaGFuZGxlcnMuIFRoZSBjaGVja3MgY2FuIGJlIGRyb3BwZWQgd2l0
-aG91dCBhIG5lZWQgdG8gcmVwbGFjZSB0aGVtCj4gPiDCoCB3aXRoIHByb3BlciB0eXBlIGNoZWNr
-cy4KPiA+IAo+ID4gLSBDaGVja3MgaW4gdGhlIFZJRElPQ19TX1NFTEVDVElPTiBoYW5kbGVyOiBU
-aGUgb25seSBsb2NhdGlvbiB3aGVyZSB0aGlzCj4gPiDCoCBpcyBwZXJmb3JtZWQgaGFzIGFuIGV4
-cGxpY2l0IHR5cGUgY2hlY2ssIHNvIHRoZSBOVUxMIGNoZWNrIGNhbiBhbHNvIGJlCj4gPiDCoCBk
-cm9wcGVkLgo+ID4gCj4gPiAtIENoZWNrcyBpbiBvdGhlciBsb2NhdGlvbnMgd2hlcmUgdGhlIHR5
-cGUgcGFyYW1ldGVyIHRvIHRoZQo+ID4gwqAgdjRsMl9tMm1fZ2V0X3ZxKCkgZnVuY3Rpb24gaXMg
-aGFyZGNvZGVkOiBUaGUgaGFyZGNvZGVkIHR5cGUgaXMgdmFsaWQsCj4gPiDCoCBzbyB0aGUgTlVM
-TCBjaGVjayBjYW4ndCBoYXZlIGJlZW4gbWVhbnQgdG8gY2hlY2sgdGhlIHR5cGUuIEl0IGNhbiBh
-bHNvCj4gPiDCoCBiZSByZW1vdmVkLgo+ID4gCj4gPiBUaGVyZSdzIG5vIGRlcGVuZGVuY3kgYmV0
-d2VlbiBhbnkgb2YgdGhvc2UgcGF0Y2hlcyBzbyB0aGV5IGNhbiBiZSBtZXJnZWQKPiA+IGluIGFu
-eSBvcmRlci4KPiA+IAo+ID4gTGF1cmVudCBQaW5jaGFydCAoMjUpOgo+ID4gwqAgbWVkaWE6IHY0
-bDItbWVtMm1lbTogRG9jdW1lbnQgdGhhdCB2NGwyX20ybV9nZXRfdnEoKSBuZXZlciByZXR1cm5z
-Cj4gPiDCoMKgwqAgTlVMTAo+ID4gwqAgbWVkaWE6IGFsbGdyby1kdnQ6IERyb3AgdW5uZWVkZWQg
-djRsMl9tMm1fZ2V0X3ZxKCkgTlVMTCBjaGVjawo+ID4gwqAgbWVkaWE6IG1lc29uLWcyZDogRHJv
-cCB1bm5lZWRlZCB2NGwyX20ybV9nZXRfdnEoKSBOVUxMIGNoZWNrCj4gPiDCoCBtZWRpYTogYW1w
-aGlvbjogRHJvcCB1bm5lZWRlZCB2NGwyX20ybV9nZXRfdnEoKSBOVUxMIGNoZWNrCj4gPiDCoCBt
-ZWRpYTogY29kYTogRHJvcCB1bm5lZWRlZCB2NGwyX20ybV9nZXRfdnEoKSBOVUxMIGNoZWNrCj4g
-PiDCoCBtZWRpYTogaW1hZ2luYXRpb246IGU1MDEwOiBEcm9wIHVubmVlZGVkIHY0bDJfbTJtX2dl
-dF92cSgpIE5VTEwgY2hlY2sKPiA+IMKgIG1lZGlhOiBtMm0tZGVpbnRlcmxhY2U6IERyb3AgdW5u
-ZWVkZWQgdjRsMl9tMm1fZ2V0X3ZxKCkgTlVMTCBjaGVjawo+ID4gwqAgbWVkaWE6IG1lZGlhdGVr
-OiBqcGVnOiBEcm9wIHVubmVlZGVkIHY0bDJfbTJtX2dldF92cSgpIE5VTEwgY2hlY2sKPiA+IMKg
-IG1lZGlhOiBtZWRpYXRlazogdmNvZGVjOiBEcm9wIHVubmVlZGVkIHY0bDJfbTJtX2dldF92cSgp
-IE5VTEwgY2hlY2sKPiA+IMKgIG1lZGlhOiBkdzEwMDogRHJvcCB1bm5lZWRlZCB2NGwyX20ybV9n
-ZXRfdnEoKSBOVUxMIGNoZWNrCj4gPiDCoCBtZWRpYTogaW14LWpwZWc6IERyb3AgdW5uZWVkZWQg
-djRsMl9tMm1fZ2V0X3ZxKCkgTlVMTCBjaGVjawo+ID4gwqAgbWVkaWE6IGlteC1weHA6IERyb3Ag
-dW5uZWVkZWQgdjRsMl9tMm1fZ2V0X3ZxKCkgTlVMTCBjaGVjawo+ID4gwqAgbWVkaWE6IG54cDog
-aW14OC1pc2k6IERyb3AgdW5uZWVkZWQgdjRsMl9tMm1fZ2V0X3ZxKCkgTlVMTCBjaGVjawo+ID4g
-wqAgbWVkaWE6IG14Ml9lbW1hcHJwOiBEcm9wIHVubmVlZGVkIHY0bDJfbTJtX2dldF92cSgpIE5V
-TEwgY2hlY2sKPiA+IMKgIG1lZGlhOiBxY29tOiBpcmlzOiBEcm9wIHVubmVlZGVkIHY0bDJfbTJt
-X2dldF92cSgpIE5VTEwgY2hlY2sKPiA+IMKgIG1lZGlhOiBxY29tOiB2ZW51czogRHJvcCB1bm5l
-ZWRlZCB2NGwyX20ybV9nZXRfdnEoKSBOVUxMIGNoZWNrCj4gPiDCoCBtZWRpYTogcmVuZXNhczog
-ZmRwMTogRHJvcCB1bm5lZWRlZCB2NGwyX20ybV9nZXRfdnEoKSBOVUxMIGNoZWNrCj4gPiDCoCBt
-ZWRpYTogcmNhcl9qcHU6IERyb3AgdW5uZWVkZWQgdjRsMl9tMm1fZ2V0X3ZxKCkgTlVMTCBjaGVj
-awo+IAo+IFdoeSBub3QgInJlbmVzYXM6IGpwdSIgdG8gbWF0Y2ggdGhlIGZkcDEgcGF0Y2ggbmFt
-aW5nID8KCkkgdHJpZWQgdG8gZ28gd2l0aCB0aGUgbW9zdCBjb21tb24gcHJlZml4IGFzIHJlcG9y
-dGVkIGJ5IGdpdCBsb2cuIEkKZG9uJ3QgbWluZCBjaGFuZ2luZyB0aGlzLCBJJ2xsIHdhaXQgZm9y
-IG1vcmUgcmV2aWV3cyB0byBzZWUgaWYgYSB2MiBpcwpuZWVkZWQsIG90aGVyd2lzZSB0aGlzIGNh
-biBiZSB1cGRhdGVkIHdoZW4gYXBwbHlpbmcgaWYgZGVzaXJlZC4KCj4gPiDCoCBtZWRpYTogcGxh
-dGZvcm06IHJnYTogRHJvcCB1bm5lZWRlZCB2NGwyX20ybV9nZXRfdnEoKSBOVUxMIGNoZWNrCj4g
-PiDCoCBtZWRpYTogc2Ftc3VuZzogczVwLWcyZDogRHJvcCB1bm5lZWRlZCB2NGwyX20ybV9nZXRf
-dnEoKSBOVUxMIGNoZWNrCj4gPiDCoCBtZWRpYTogc2Ftc3VuZzogczVwLWpwZWc6IERyb3AgdW5u
-ZWVkZWQgdjRsMl9tMm1fZ2V0X3ZxKCkgTlVMTCBjaGVjawo+ID4gwqAgbWVkaWE6IHN0bTMyOiBk
-bWEyZDogRHJvcCB1bm5lZWRlZCB2NGwyX20ybV9nZXRfdnEoKSBOVUxMIGNoZWNrCj4gPiDCoCBt
-ZWRpYTogdGk6IHZwZTogRHJvcCB1bm5lZWRlZCB2NGwyX20ybV9nZXRfdnEoKSBOVUxMIGNoZWNr
-Cj4gPiDCoCBtZWRpYTogdmljb2RlYzogRHJvcCB1bm5lZWRlZCB2NGwyX20ybV9nZXRfdnEoKSBO
-VUxMIGNoZWNrCj4gPiDCoCBtZWRpYTogdmltMm06IERyb3AgdW5uZWVkZWQgdjRsMl9tMm1fZ2V0
-X3ZxKCkgTlVMTCBjaGVjawo+IAo+IEkgcmV2aWV3ZWQgdGhlIGxpc3QgYW5kIGl0IHNlZW1zIGNv
-bXBsZXRlIHRvIG1lLgoKVGhhbmsgeW91LgoKPiA+IMKgZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9h
-bGxlZ3JvLWR2dC9hbGxlZ3JvLWNvcmUuY8KgwqDCoCB8wqAgMiAtLQo+ID4gwqBkcml2ZXJzL21l
-ZGlhL3BsYXRmb3JtL2FtbG9naWMvbWVzb24tZ2UyZC9nZTJkLmPCoMKgwqDCoCB8wqAgNSAtLS0t
-LQo+ID4gwqBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL2FtcGhpb24vdmRlYy5jwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgIHzCoCAyIC0tCj4gPiDCoGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0v
-YW1waGlvbi92ZW5jLmPCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfMKgIDIgLS0KPiA+
-IMKgLi4uL21lZGlhL3BsYXRmb3JtL2NoaXBzLW1lZGlhL2NvZGEvY29kYS1jb21tb24uY8KgwqDC
-oCB8wqAgNCAtLS0tCj4gPiDCoGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vaW1hZ2luYXRpb24vZTUw
-MTAtanBlZy1lbmMuY8KgIHzCoCA0IC0tLS0KPiA+IMKgZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9t
-Mm0tZGVpbnRlcmxhY2UuY8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8wqAgNyAtLS0tLS0tCj4g
-PiDCoGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbWVkaWF0ZWsvanBlZy9tdGtfanBlZ19jb3JlLmMg
-fMKgIDcgLS0tLS0tLQo+ID4gwqAuLi4vbWVkaWF0ZWsvdmNvZGVjL2RlY29kZXIvbXRrX3Zjb2Rl
-Y19kZWMuY8KgwqDCoMKgwqDCoMKgwqAgfMKgIDcgLS0tLS0tLQo+ID4gwqAuLi4vdmNvZGVjL2Rl
-Y29kZXIvdmRlYy92ZGVjX2F2MV9yZXFfbGF0X2lmLmPCoMKgwqDCoMKgwqDCoCB8wqAgMiAtLQo+
-ID4gwqAuLi4vdmNvZGVjL2RlY29kZXIvdmRlYy92ZGVjX3ZwOV9yZXFfbGF0X2lmLmPCoMKgwqDC
-oMKgwqDCoCB8wqAgMiAtLQo+ID4gwqAuLi4vbWVkaWF0ZWsvdmNvZGVjL2VuY29kZXIvbXRrX3Zj
-b2RlY19lbmMuY8KgwqDCoMKgwqDCoMKgwqAgfMKgIDggLS0tLS0tLS0KPiA+IMKgZHJpdmVycy9t
-ZWRpYS9wbGF0Zm9ybS9ueHAvZHcxMDAvZHcxMDAuY8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8
-wqAgNyAtLS0tLS0tCj4gPiDCoGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbnhwL2lteC1qcGVnL214
-Yy1qcGVnLmPCoMKgwqDCoMKgwqAgfMKgIDQgLS0tLQo+ID4gwqBkcml2ZXJzL21lZGlhL3BsYXRm
-b3JtL254cC9pbXgtcHhwLmPCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8wqAgNyAt
-LS0tLS0tCj4gPiDCoGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbnhwL2lteDgtaXNpL2lteDgtaXNp
-LW0ybS5jwqDCoCB8wqAgMiAtLQo+ID4gwqBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL254cC9teDJf
-ZW1tYXBycC5jwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHzCoCA3IC0tLS0tLS0KPiA+IMKgZHJp
-dmVycy9tZWRpYS9wbGF0Zm9ybS9xY29tL2lyaXMvaXJpc192ZGVjLmPCoMKgwqDCoMKgwqDCoMKg
-IHzCoCAyIC0tCj4gPiDCoGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vcWNvbS92ZW51cy92ZGVjLmPC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfMKgIDIgLS0KPiA+IMKgZHJpdmVycy9tZWRpYS9wbGF0
-Zm9ybS9xY29tL3ZlbnVzL3ZlbmMuY8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8wqAgMiAtLQo+
-ID4gwqBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL3JlbmVzYXMvcmNhcl9mZHAxLmPCoMKgwqDCoMKg
-wqDCoMKgwqDCoCB8wqAgMyAtLS0KPiA+IMKgZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9yZW5lc2Fz
-L3JjYXJfanB1LmPCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHzCoCA4IC0tLS0tLS0tCj4gPiDCoGRy
-aXZlcnMvbWVkaWEvcGxhdGZvcm0vcm9ja2NoaXAvcmdhL3JnYS5jwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoCB8wqAgNCAtLS0tCj4gPiDCoGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vc2Ftc3VuZy9zNXAt
-ZzJkL2cyZC5jwqDCoMKgwqDCoMKgwqDCoCB8wqAgNCAtLS0tCj4gPiDCoGRyaXZlcnMvbWVkaWEv
-cGxhdGZvcm0vc2Ftc3VuZy9zNXAtanBlZy9qcGVnLWNvcmUuY8KgIHzCoCA3IC0tLS0tLS0KPiA+
-IMKgZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9zdC9zdG0zMi9kbWEyZC9kbWEyZC5jwqDCoMKgwqDC
-oMKgwqAgfMKgIDUgLS0tLS0KPiA+IMKgZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS90aS92cGUvdnBl
-LmPCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHzCoCA3IC0tLS0tLS0KPiA+IMKg
-ZHJpdmVycy9tZWRpYS90ZXN0LWRyaXZlcnMvdmljb2RlYy92aWNvZGVjLWNvcmUuY8KgwqDCoCB8
-wqAgNyAtLS0tLS0tCj4gPiDCoGRyaXZlcnMvbWVkaWEvdGVzdC1kcml2ZXJzL3ZpbTJtLmPCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfCAxMiAtLS0tLS0tLS0tLS0KPiA+IMKg
-ZHJpdmVycy9tZWRpYS92NGwyLWNvcmUvdjRsMi1tZW0ybWVtLmPCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgIHwgMTIgKy0tLS0tLS0tLS0tCj4gPiDCoGluY2x1ZGUvbWVkaWEvdjRsMi1tZW0y
-bWVtLmjCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfMKg
-IDMgKysrCj4gPiDCoDMxIGZpbGVzIGNoYW5nZWQsIDQgaW5zZXJ0aW9ucygrKSwgMTUzIGRlbGV0
-aW9ucygtKQo+ID4gCj4gPiAKPiA+IGJhc2UtY29tbWl0OiBlNWYwYTY5OGIzNGVkNzYwMDJkYzVj
-ZmYzODA0YTYxYzgwMjMzYTdhCgotLSAKUmVnYXJkcywKCkxhdXJlbnQgUGluY2hhcnQKCl9fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlw
-IG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9s
-aXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Hi Marek,
+
+On 9/30/2025 6:17 PM, Marek Szyprowski wrote:
+> On 30.09.2025 11:09, Damon Ding wrote:
+>> PATCH 1 is a small format optimization for struct analogid_dp_device.
+>> PATCH 2 is to perform mode setting in &drm_bridge_funcs.atomic_enable.
+>> PATCH 3 is to add a new parameter to store the point of next bridge.
+>> PATCH 4 is to make legacy bridge driver more universal.
+>> PATCH 5-10 are preparations for apply drm_bridge_connector helper.
+>> PATCH 11 is to ensure last bridge determines OP_EDID/OP_MODES capabilities.
+>> PATCH 12 is to apply the drm_bridge_connector helper.
+>> PATCH 13-15 are to move the panel/bridge parsing to the Analogix side.
+>> PATCH 16 is to attach the next bridge on Analogix side uniformly.
+>> PATCH 17-18 are to apply the panel_bridge helper.
+> 
+> Works fine on my Exynos based test boards with (e)DP displays. Thanks!
+> 
+> Feel free to update tags if needed:
+> 
+> Tested-by: Marek Szyprowski <m.szyprowski@samsung.com>
+> 
+
+Thanks a lot for the testing and the tag!
+
+Apologies for the delayed reply as I was on vacation. ;-)
+
+> 
+>> Damon Ding (18):
+>>     drm/bridge: analogix_dp: Formalize the struct analogix_dp_device
+>>     drm/bridge: analogix_dp: Move &drm_bridge_funcs.mode_set to
+>>       &drm_bridge_funcs.atomic_enable
+>>     drm/bridge: analogix_dp: Add &analogix_dp_plat_data.next_bridge
+>>     drm/bridge: Move legacy bridge driver out of imx directory for
+>>       multi-platform use
+>>     drm/exynos: exynos_dp: Remove &exynos_dp_device.ptn_bridge
+>>     drm/exynos: exynos_dp: Remove unused &exynos_dp_device.connector
+>>     drm/exynos: exynos_dp: Apply legacy bridge to parse the
+>>       display-timings node
+>>     drm/bridge: analogix_dp: Remove redundant
+>>       &analogix_dp_plat_data.skip_connector
+>>     drm/bridge: analogix_dp: Move the color format check to
+>>       .atomic_check() for Rockchip platforms
+>>     drm/bridge: analogix_dp: Remove unused
+>>       &analogix_dp_plat_data.get_modes()
+>>     drm/display: bridge_connector: Ensure last bridge determines
+>>       EDID/modes detection capabilities
+>>     drm/bridge: analogix_dp: Apply drm_bridge_connector helper
+>>     drm/bridge: analogix_dp: Add new API analogix_dp_finish_probe()
+>>     drm/rockchip: analogix_dp: Apply analogix_dp_finish_probe()
+>>     drm/exynos: exynos_dp: Apply analogix_dp_finish_probe()
+>>     drm/bridge: analogix_dp: Attach the next bridge in
+>>       analogix_dp_bridge_attach()
+>>     drm/bridge: analogix_dp: Remove bridge disabing and panel unpreparing
+>>       in analogix_dp_unbind()
+>>     drm/bridge: analogix_dp: Apply panel_bridge helper
+>>
+>>    drivers/gpu/drm/bridge/Kconfig                |  10 +
+>>    drivers/gpu/drm/bridge/Makefile               |   1 +
+>>    drivers/gpu/drm/bridge/analogix/Kconfig       |   1 +
+>>    .../drm/bridge/analogix/analogix_dp_core.c    | 395 +++++++++---------
+>>    .../drm/bridge/analogix/analogix_dp_core.h    |   5 +-
+>>    drivers/gpu/drm/bridge/imx/Kconfig            |  10 -
+>>    drivers/gpu/drm/bridge/imx/Makefile           |   1 -
+>>    .../gpu/drm/bridge/imx/imx-legacy-bridge.c    |  91 ----
+>>    drivers/gpu/drm/bridge/legacy-bridge.c        |  99 +++++
+>>    .../gpu/drm/display/drm_bridge_connector.c    |  42 ++
+>>    drivers/gpu/drm/exynos/Kconfig                |   2 +
+>>    drivers/gpu/drm/exynos/exynos_dp.c            | 117 ++----
+>>    drivers/gpu/drm/imx/ipuv3/Kconfig             |   4 +-
+>>    drivers/gpu/drm/imx/ipuv3/imx-ldb.c           |   6 +-
+>>    drivers/gpu/drm/imx/ipuv3/parallel-display.c  |   4 +-
+>>    drivers/gpu/drm/rockchip/Kconfig              |   1 +
+>>    .../gpu/drm/rockchip/analogix_dp-rockchip.c   |  67 +--
+>>    include/drm/bridge/analogix_dp.h              |   8 +-
+>>    include/drm/bridge/imx.h                      |  17 -
+>>    include/drm/bridge/legacy-bridge.h            |  18 +
+>>    20 files changed, 433 insertions(+), 466 deletions(-)
+>>    delete mode 100644 drivers/gpu/drm/bridge/imx/imx-legacy-bridge.c
+>>    create mode 100644 drivers/gpu/drm/bridge/legacy-bridge.c
+>>    delete mode 100644 include/drm/bridge/imx.h
+>>    create mode 100644 include/drm/bridge/legacy-bridge.h
+>>
+>> ---
+>>
+>> Changes in v2:
+>> - Update Exynos DP driver synchronously.
+>> - Move the panel/bridge parsing to the Analogix side.
+>>
+>> Changes in v3:
+>> - Rebase for the existing devm_drm_bridge_alloc() applying commit.
+>> - Fix the typographical error of panel/bridge check in exynos_dp_bind().
+>> - Squash all commits related to skip_connector deletion in both Exynos and
+>>     Analogix code into one.
+>> - Apply panel_bridge helper to make the codes more concise.
+>> - Fix the handing of bridge in analogix_dp_bridge_get_modes().
+>> - Remove unnecessary parameter struct drm_connector* for callback
+>>     &analogix_dp_plat_data.attach().
+>> - In order to decouple the connector driver and the bridge driver, move
+>>     the bridge connector initilization to the Rockchip and Exynos sides.
+>>
+>> Changes in v4:
+>> - Rebase for the applied &drm_bridge_funcs.detect() modification commit.
+>> - Rename analogix_dp_find_panel_or_bridge() to analogix_dp_finish_probe().
+>> - Drop the drmm_encoder_init() modification commit.
+>> - Rename the &analogix_dp_plat_data.bridge to
+>>     &analogix_dp_plat_data.next_bridge.
+>>
+>> Changes in v5:
+>> - Add legacy bridge to parse the display-timings node under the dp node
+>>     for Exynos side.
+>> - Move color format check to &drm_connector_helper_funcs.atomic_check()
+>>     in order to get rid of &analogix_dp_plat_data.get_modes().
+>> - Remove unused callback &analogix_dp_plat_data.get_modes().
+>> - Distinguish the &drm_bridge->ops of Analogix bridge based on whether
+>>     the downstream device is a panel, a bridge or neither.
+>> - Select DRM_DISPLAY_DP_AUX_BUS for DRM_ANALOGIX_DP, and remove it for
+>>     ROCKCHIP_ANALOGIX_DP.
+>> - Apply rockchip_dp_attach() to support the next bridge attachment for
+>>     the Rockchip side.
+>> - Move next_bridge attachment from Analogix side to Rockchip/Exynos sides.
+>>
+>> Changes in v6:
+>> - Move legacy bridge driver out of imx directory for multi-platform use.
+>> - Apply DRM legacy bridge to parse display timings intead of implementing
+>>     the same codes only for Exynos DP.
+>> - Ensure last bridge determines EDID/modes detection capabilities in DRM
+>>     bridge_connector driver.
+>> - Remove unnecessary drm_bridge_get_modes() in
+>>     analogix_dp_bridge_get_modes().
+>> - Simplify analogix_dp_bridge_edid_read().
+>> - If the next is a bridge, set DRM_BRIDGE_OP_DETECT and return
+>>     connector_status_connected in analogix_dp_bridge_detect().
+>> - Set flag DRM_BRIDGE_ATTACH_NO_CONNECTOR for bridge attachment while
+>>     binding. Meanwhile, make DRM_BRIDGE_ATTACH_NO_CONNECTOR unsuppported
+>>     in analogix_dp_bridge_attach().
+>> - Move the next bridge attachment to the Analogix side rather than
+>>     scattered on Rockchip and Exynos sides.
+>> - Remove the unnecessary analogix_dp_bridge_get_modes().
+>> - Squash [PATCH v5 15/17] into [PATCH v5 17/17].
+>> - Fix the &drm_bridge->ops to DRM_BRIDGE_OP_EDID | DRM_BRIDGE_OP_DETECT.
+>>
+
+Best regards,
+Damon
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
