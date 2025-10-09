@@ -4,63 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A28CDCCD184
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Oct 2025 12:47:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98038CCD184
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Oct 2025 13:04:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NQVNgIOl37mgT+y9HHqYIZt1hC+dioqMiDbZeXAh0ds=; b=2GHy8H/Ruu+U8c
-	v3Pu5ZA7GXVSOZo7jjeD+8IBv08OWg+1bKCopbALrGryrkSNcImeyWDFqUs7tEQuv2sAWrinUN1Pb
-	4sLnHD/f/t9MO6/dCyc9YeO9mRpPKv/7g9pZXQEL6bDtZ20caCQskQrUrpLSpw2IuWsiTmVS2gnqf
-	/DzyJLce3I7GxKbZh369zWeZb4q0PSa/jGNWzxk47bljlHXYPLVirNOP/HvX9fD9BX6tJpGK4REz5
-	Yms+tPDBEeJ8xOXuiowsFQeJNuDEctOG2EmeJfgsnrh+612+O8JSiv+XAJLTysqI2OGBCjo31Oglv
-	8WC7foxxyAEALFZl4Z5g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=t65Ymj9qlSCTuH9hZK/yc6pxpv7T4Ej+xGMNmtMdcPQ=; b=tfa1q+7SdSOnNQFDjn+ZphYPAG
+	Jp8h5dIZTkpDmnci+KvWGRpo04HKhiX6x2n2aPi9WsTSiYs4ifwWOIj7gBBrfvCN0ShfJJhjUqMpD
+	Y+QLP2ddi4e7mK8187/JHRxLq2udBCEOI/RmslPJ0bbQ4lJFuPqQEoh2heRRkMrb2HdGWhgFNICqW
+	HYO7mpm3SvcXde0DkSSADnhUG+mVp2Fg+14Je3/8HnflQXeNf6i4nc/aTS/SHJcbmHTLz5jVtec5R
+	ynm20meKFTP21diMxWA9EUYn4wq6/g5Q7NZYx5iUlML4CWQN2gxEcz3ArNLIZs1EcX0UI21b527KP
+	kuLSzqzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v6q3U-000000068kB-3vSp;
-	Thu, 09 Oct 2025 12:47:36 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1v6qJh-00000006Aq6-3Xwa;
+	Thu, 09 Oct 2025 13:04:21 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v6q3T-000000068jf-0Ypn
-	for linux-rockchip@lists.infradead.org;
-	Thu, 09 Oct 2025 12:47:36 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id A90B6401F5;
-	Thu,  9 Oct 2025 12:47:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 37F0CC4CEE7;
-	Thu,  9 Oct 2025 12:47:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1760014054;
-	bh=zvGRayVs38LUDv89UOLvEh9Jzl8OZV1NLB1WntmzPks=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=SThG6o1uhMovzEU+6i569x2lBcSday6XW0GeNuM6ICvVT84NJkrdDRfSoGg+P3nT1
-	 BnaLNNEYrsfOsqF82aTWrqSoy4CPqe33yYkJHRpmrV1jcdPqKoVfvvrfYhawtV7H3e
-	 l06FJsba6uFHfFbiW0vYpc/jw+EIc8L3lrMmqU6y3LQ6KtlTS8fW3w3O31VtOd4qkK
-	 NN+zXcazFCJG2iUna2Xm4VC5bS11z7bahoPpcLL9fR5njeuJeegGPJtHm8mg5tqesF
-	 RAd1e03Z9lTy08Iy7QlVxy6QXqsv+CqUNltxi0CinpwbBi0+HvkSssQpbdgdXpCcc8
-	 mR/UB9MzKr7uw==
-Date: Thu, 9 Oct 2025 13:47:29 +0100
-From: Lee Jones <lee@kernel.org>
-To: Rob Herring <robh@kernel.org>
-Cc: linux-rockchip@lists.infradead.org,
-	Chris Morgan <macroalpha82@gmail.com>, linux-pm@vger.kernel.org,
-	devicetree@vger.kernel.org, broonie@kernel.org, lgirdwood@gmail.com,
-	sre@kernel.org, heiko@sntech.de, conor+dt@kernel.org,
-	krzk+dt@kernel.org, Chris Morgan <macromorgan@hotmail.com>
-Subject: Re: (subset) [PATCH v8 0/5] Add Texas Instruments BQ25703A Charger
-Message-ID: <20251009124729.GD2796410@google.com>
-References: <20250904160530.66178-1-macroalpha82@gmail.com>
- <175760259503.1582479.14013409824773713781.b4-ty@kernel.org>
- <CAL_JsqJy9XwNrcwgk4Dhf40ajn8WwD47v2YqZ3iYZz+CjEdv5g@mail.gmail.com>
+	id 1v6qJd-00000006AoO-3Xst;
+	Thu, 09 Oct 2025 13:04:19 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1760015055;
+	bh=Vi3WR5gKQzv2fYaTOI1FAD/djzA3JL52VKUAId1dIEI=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=Zt9Rjd+Ww3Rbob5FxLF6Jm1/UshbBx6TVkCktGtRyevhT/y7vbRE0huApqf/hp4SI
+	 OeNfiFN53Bc1JUaSkVjbUpdf3ynmWTru/LqUkfygHre8RIY8/KW8csXSLJCS/CmEJf
+	 FjQIPslKZxcGGvpVSQYjFh+NH0WO/MDyUXFn+dng7YSidGqIUbk7tx02/WYv243HOt
+	 PP0ZNthKQcNMh3rM9iIbk09kJMjFXeBHo8nKUA4Padz1TWomFeJOKvn9pGT97deLY8
+	 nb/yDlVTahFv+V8klkUEQKhhxeNYiNfr5sbTVA7ilaJ5m10eyF0cOwFfN4zYojYDpa
+	 iifctZlsPSfgg==
+Received: from [IPv6:2606:6d00:17:ebd3::c41] (unknown [IPv6:2606:6d00:17:ebd3::c41])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id AA95F17E12DA;
+	Thu,  9 Oct 2025 15:04:12 +0200 (CEST)
+Message-ID: <45a3e39fb87fc4e32626dfaa277a314bce5f4f68.camel@collabora.com>
+Subject: Re: [PATCH] media: v4l2-mem2mem: Don't copy frame flags for
+ frame-based devices
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+	linux-media@vger.kernel.org, imx@lists.linux.dev, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev, 
+	linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev
+Cc: Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>, Bin Liu	
+ <bin.liu@mediatek.com>, Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
+ Hans Verkuil <hverkuil@kernel.org>, Jacob Chen <jacob-chen@iotwrt.com>,
+ Jernej Skrabec	 <jernej.skrabec@gmail.com>, Jiasheng Jiang
+ <jiashengjiangcool@gmail.com>,  Matthew Majewski <mattwmajewski@gmail.com>,
+ Mirela Rabulea <mirela.rabulea@nxp.com>, Neil Armstrong	
+ <neil.armstrong@linaro.org>, Philipp Zabel <p.zabel@pengutronix.de>, Shuah
+ Khan	 <skhan@linuxfoundation.org>, Steve Longerbeam
+ <slongerbeam@gmail.com>, Uwe =?ISO-8859-1?Q?Kleine-K=F6nig?=	
+ <u.kleine-koenig@baylibre.com>, Xavier Roumegue
+ <xavier.roumegue@oss.nxp.com>
+Date: Thu, 09 Oct 2025 09:04:10 -0400
+In-Reply-To: <20251009111143.9137-1-laurent.pinchart@ideasonboard.com>
+References: <20251009111143.9137-1-laurent.pinchart@ideasonboard.com>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+Organization: Collabora Canada
+User-Agent: Evolution 3.56.2 (3.56.2-2.fc42) 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAL_JsqJy9XwNrcwgk4Dhf40ajn8WwD47v2YqZ3iYZz+CjEdv5g@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251009_054735_193438_6EA99ABF 
-X-CRM114-Status: GOOD (  15.76  )
+X-CRM114-CacheID: sfid-20251009_060418_192505_49C09A74 
+X-CRM114-Status: GOOD (  18.72  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,34 +96,332 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============4504359056494858474=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gTW9uLCAyOSBTZXAgMjAyNSwgUm9iIEhlcnJpbmcgd3JvdGU6Cgo+IE9uIFRodSwgU2VwIDEx
-LCAyMDI1IGF0IDk6NTbigK9BTSBMZWUgSm9uZXMgPGxlZUBrZXJuZWwub3JnPiB3cm90ZToKPiA+
-Cj4gPiBPbiBUaHUsIDA0IFNlcCAyMDI1IDExOjA1OjI1IC0wNTAwLCBDaHJpcyBNb3JnYW4gd3Jv
-dGU6Cj4gPiA+IEZyb206IENocmlzIE1vcmdhbiA8bWFjcm9tb3JnYW5AaG90bWFpbC5jb20+Cj4g
-PiA+Cj4gPiA+IEFkZCBzdXBwb3J0IGZvciB0aGUgVGV4YXMgSW5zdHJ1bWVudHMgQlEyNTcwM0Eg
-Y2hhcmdlciBtYW5hZ2VyLiBUaGUKPiA+ID4gZGV2aWNlIGludGVncmF0ZXMgYSBib29zdCBjb252
-ZXJ0ZXIgd2l0aCB0aGUgY2hhcmdlciBtYW5hZ2VyLiBUaGlzCj4gPiA+IHNlcmllcyBhZGRzIHRo
-ZSBkZXZpY2UgYXMgYW4gTUZEIHdpdGggc2VwYXJhdGUgcmVndWxhdG9yIGFuZCBwb3dlcgo+ID4g
-PiBzdXBwbHkgZHJpdmVycy4gVGhpcyBhbGxvd3MgdXMgdG8gbWFuYWdlIGEgY2lyY3VsYXIgZGVw
-ZW5kZW5jeSB3aXRoCj4gPiA+IGEgdHlwZS1jIHBvcnQgbWFuYWdlciB3aGljaCBkZXBlbmRzIG9u
-IHRoZSByZWd1bGF0b3IgZm9yIHVzYi1vdGcKPiA+ID4gYnV0IHN1cHBsaWVzIHBvd2VyIHRvIHRo
-ZSBCUTI1NzAzQSBjaGFyZ2VyLgo+ID4gPgo+ID4gPiBbLi4uXQo+ID4KPiA+IEFwcGxpZWQsIHRo
-YW5rcyEKPiA+Cj4gPiBbMS81XSBkdC1iaW5kaW5nczogbWZkOiB0aSxicTI1NzAzYTogQWRkIFRJ
-IEJRMjU3MDNBIENoYXJnZXIKPiA+ICAgICAgIGNvbW1pdDogNzZiYzIyMDNhNDZlZjcwNGE0Y2Q4
-MDAzOTg2ZjZiZDc0MTM5YTM2Nwo+IAo+IEl0IHNlZW1zIHRoaXMgaXMgc3RpbGwgbm90IGluIGxp
-bnV4LW5leHQ/Cj4gCj4gPiBbMi81XSBtZmQ6IGJxMjU3eHg6IEFkZCBzdXBwb3J0IGZvciBCUTI1
-NzAzQSBjb3JlIGRyaXZlcgo+ID4gICAgICAgY29tbWl0OiAzYjFiYmZiNWZjZTNjYTlmZmZjOTJh
-YzFiMDUzYjBjZmJiMWYzMjJiCj4gPiBbMy81XSBwb3dlcjogc3VwcGx5OiBicTI1N3h4OiBBZGQg
-c3VwcG9ydCBmb3IgQlEyNTdYWCBjaGFyZ2VyCj4gPiAgICAgICBjb21taXQ6IDFjYzAxN2I3Zjlj
-N2I3Y2Q4NmZkZGE0YWVlMzZiOTJkOTFjYzJhZDIKPiA+IFs0LzVdIHJlZ3VsYXRvcjogYnEyNTd4
-eDogQWRkIGJxMjU3eHggYm9vc3QgcmVndWxhdG9yIGRyaXZlcgo+ID4gICAgICAgY29tbWl0OiA5
-ODFkZDE2MmI2MzU3OGFlZTM0YjVjNjg3OTVlMjQ2NzM0Yjc2ZDcwCgpBbGwgb2YgdGhlc2UgYXJl
-IG5vdyBpbiBtYWlubGluZS4KCi0tIApMZWUgSm9uZXMgW+adjueQvOaWr10KCl9fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxp
-bmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5p
-bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+
+--===============4504359056494858474==
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-EQAjgLvtRVqsmS5rugFY"
+
+
+--=-EQAjgLvtRVqsmS5rugFY
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hi,
+
+Le jeudi 09 octobre 2025 =C3=A0 14:11 +0300, Laurent Pinchart a =C3=A9crit=
+=C2=A0:
+> The v4l2_m2m_buf_copy_metadata() function takes a boolean
+> copy_frame_flags argument. When true, it causes the function to copy the
+> V4L2_BUF_FLAG_KEYFRAME, V4L2_BUF_FLAG_BFRAME and V4L2_BUF_FLAG_PFRAME
+> flags from the output buffer to the capture buffer.
+>=20
+> Many frame-based M2M drivers (e.g. for JPEG encoders, scalers,
+> dewarpers, 2D blenders, ...) set the argument to true, while the frame
+> flags are not applicable to those drivers as they have no concept of
+> key, B or P frames. Set the argument to false to avoid further
+> cargo-cult mistakes.
+
+There is no use cases in any upstream driver for copying them over (even in
+Tegra 20 decoder driver). KEY/P/B are properties of bitstream buffer in som=
+e
+formats. Once decoded, this is no longer a property of the video frame and
+should be discarded. So even decoder supporting that feature should not cop=
+y
+them over.
+
+I'd remove the boolean completely to be fair, this is always inappropriate =
+to
+set this to true. I'd be fine doing it in two steps, but then the list shou=
+ld be
+completed, see below:
+
+>=20
+> Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> ---
+> =C2=A0drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c=C2=A0=C2=A0=C2=
+=A0=C2=A0 | 4 ++--
+> =C2=A0drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c=C2=A0=C2=A0 =
+| 4 ++--
+> =C2=A0drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c=C2=A0=C2=A0 =
+| 4 ++--
+> =C2=A0drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.c=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0 | 2 +-
+> =C2=A0drivers/media/platform/nxp/dw100/dw100.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 | 2 +=
+-
+> =C2=A0drivers/media/platform/nxp/imx-jpeg/mxc-jpeg.c=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 | 2 +-
+> =C2=A0drivers/media/platform/rockchip/rga/rga.c=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 | 2 +-
+> =C2=A0drivers/media/platform/st/stm32/dma2d/dma2d.c=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 | 2 +-
+> =C2=A0drivers/media/platform/sunxi/sun8i-di/sun8i-di.c=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 | 2 +-
+> =C2=A0drivers/media/platform/sunxi/sun8i-rotate/sun8i_rotate.c | 2 +-
+> =C2=A0drivers/media/test-drivers/vim2m.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0 | 2 +-
+> =C2=A0drivers/staging/media/imx/imx-media-csc-scaler.c=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 | 2 +-
+
+Missing:
+
+- drivers/media/platform/amphion/vdec.c
+- drivers/media/platform/mediatek/vcodec/decoder/vdec/*
+- drivers/media/platform/nvidia/tegra-vde/h264.c
+- drivers/media/platform/rockchip/rkvdec/rkvdec.c
+- drivers/media/platform/verisilicon/hantro_drv.c
+- drivers/staging/media/sunxi/cedrus/cedrus_dec.c
+
+cheers,
+Nicolas
+
+> =C2=A012 files changed, 15 insertions(+), 15 deletions(-)
+>=20
+> diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> index 35c70ec3ad2c..6bd5036430dc 100644
+> --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> @@ -1619,7 +1619,7 @@ static void mtk_jpegenc_worker(struct work_struct *=
+work)
+> =C2=A0	if (!dst_buf)
+> =C2=A0		goto getbuf_fail;
+> =C2=A0
+> -	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, true);
+> +	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, false);
+> =C2=A0
+> =C2=A0	mtk_jpegenc_set_hw_param(ctx, hw_id, src_buf, dst_buf);
+> =C2=A0	ret =3D pm_runtime_get_sync(comp_jpeg[hw_id]->dev);
+> @@ -1715,7 +1715,7 @@ static void mtk_jpegdec_worker(struct work_struct *=
+work)
+> =C2=A0	if (!dst_buf)
+> =C2=A0		goto getbuf_fail;
+> =C2=A0
+> -	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, true);
+> +	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, false);
+> =C2=A0	jpeg_src_buf =3D mtk_jpeg_vb2_to_srcbuf(&src_buf->vb2_buf);
+> =C2=A0	jpeg_dst_buf =3D mtk_jpeg_vb2_to_srcbuf(&dst_buf->vb2_buf);
+> =C2=A0
+> diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
+> b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
+> index e78e1d11093c..556865100872 100644
+> --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
+> +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
+> @@ -530,7 +530,7 @@ static void mtk_jpegdec_timeout_work(struct work_stru=
+ct
+> *work)
+> =C2=A0
+> =C2=A0	src_buf =3D cjpeg->hw_param.src_buffer;
+> =C2=A0	dst_buf =3D cjpeg->hw_param.dst_buffer;
+> -	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, true);
+> +	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, false);
+> =C2=A0
+> =C2=A0	mtk_jpeg_dec_reset(cjpeg->reg_base);
+> =C2=A0	clk_disable_unprepare(cjpeg->jdec_clk.clks->clk);
+> @@ -560,7 +560,7 @@ static irqreturn_t mtk_jpegdec_hw_irq_handler(int irq=
+,
+> void *priv)
+> =C2=A0	ctx =3D jpeg->hw_param.curr_ctx;
+> =C2=A0	src_buf =3D jpeg->hw_param.src_buffer;
+> =C2=A0	dst_buf =3D jpeg->hw_param.dst_buffer;
+> -	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, true);
+> +	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, false);
+> =C2=A0
+> =C2=A0	irq_status =3D mtk_jpeg_dec_get_int_status(jpeg->reg_base);
+> =C2=A0	dec_irq_ret =3D mtk_jpeg_dec_enum_result(irq_status);
+> diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
+> b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
+> index 9ab27aee302a..4c8427b3c384 100644
+> --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
+> +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
+> @@ -261,7 +261,7 @@ static void mtk_jpegenc_timeout_work(struct work_stru=
+ct
+> *work)
+> =C2=A0
+> =C2=A0	src_buf =3D cjpeg->hw_param.src_buffer;
+> =C2=A0	dst_buf =3D cjpeg->hw_param.dst_buffer;
+> -	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, true);
+> +	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, false);
+> =C2=A0
+> =C2=A0	mtk_jpeg_enc_reset(cjpeg->reg_base);
+> =C2=A0	clk_disable_unprepare(cjpeg->venc_clk.clks->clk);
+> @@ -289,7 +289,7 @@ static irqreturn_t mtk_jpegenc_hw_irq_handler(int irq=
+,
+> void *priv)
+> =C2=A0	ctx =3D jpeg->hw_param.curr_ctx;
+> =C2=A0	src_buf =3D jpeg->hw_param.src_buffer;
+> =C2=A0	dst_buf =3D jpeg->hw_param.dst_buffer;
+> -	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, true);
+> +	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, false);
+> =C2=A0
+> =C2=A0	irq_status =3D readl(jpeg->reg_base + JPEG_ENC_INT_STS) &
+> =C2=A0		JPEG_ENC_INT_STATUS_MASK_ALLIRQ;
+> diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.c
+> b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.c
+> index 59ce5cce0698..dba46a69c6be 100644
+> --- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.c
+> +++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.c
+> @@ -51,7 +51,7 @@ static void mdp_m2m_process_done(void *priv, int vb_sta=
+te)
+> =C2=A0	ctx->curr_param.frame_no =3D ctx->frame_count[MDP_M2M_SRC];
+> =C2=A0	src_vbuf->sequence =3D ctx->frame_count[MDP_M2M_SRC]++;
+> =C2=A0	dst_vbuf->sequence =3D ctx->frame_count[MDP_M2M_DST]++;
+> -	v4l2_m2m_buf_copy_metadata(src_vbuf, dst_vbuf, true);
+> +	v4l2_m2m_buf_copy_metadata(src_vbuf, dst_vbuf, false);
+> =C2=A0
+> =C2=A0	v4l2_m2m_buf_done(src_vbuf, vb_state);
+> =C2=A0	v4l2_m2m_buf_done(dst_vbuf, vb_state);
+> diff --git a/drivers/media/platform/nxp/dw100/dw100.c
+> b/drivers/media/platform/nxp/dw100/dw100.c
+> index 7a0ee44d9e1f..b73302d54635 100644
+> --- a/drivers/media/platform/nxp/dw100/dw100.c
+> +++ b/drivers/media/platform/nxp/dw100/dw100.c
+> @@ -1483,7 +1483,7 @@ static void dw100_start(struct dw100_ctx *ctx, stru=
+ct
+> vb2_v4l2_buffer *in_vb,
+> =C2=A0				V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE),
+> =C2=A0		in_vb->sequence, out_vb->sequence);
+> =C2=A0
+> -	v4l2_m2m_buf_copy_metadata(in_vb, out_vb, true);
+> +	v4l2_m2m_buf_copy_metadata(in_vb, out_vb, false);
+> =C2=A0
+> =C2=A0	/* Now, let's deal with hardware ... */
+> =C2=A0	dw100_hw_master_bus_disable(dw_dev);
+> diff --git a/drivers/media/platform/nxp/imx-jpeg/mxc-jpeg.c
+> b/drivers/media/platform/nxp/imx-jpeg/mxc-jpeg.c
+> index 37e0670f98c5..e1dda1e834e4 100644
+> --- a/drivers/media/platform/nxp/imx-jpeg/mxc-jpeg.c
+> +++ b/drivers/media/platform/nxp/imx-jpeg/mxc-jpeg.c
+> @@ -1537,7 +1537,7 @@ static void mxc_jpeg_device_run(void *priv)
+> =C2=A0	src_buf->sequence =3D q_data_out->sequence++;
+> =C2=A0	dst_buf->sequence =3D q_data_cap->sequence++;
+> =C2=A0
+> -	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, true);
+> +	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, false);
+> =C2=A0
+> =C2=A0	jpeg_src_buf =3D vb2_to_mxc_buf(&src_buf->vb2_buf);
+> =C2=A0	if (q_data_cap->fmt->mem_planes !=3D dst_buf->vb2_buf.num_planes) =
+{
+> diff --git a/drivers/media/platform/rockchip/rga/rga.c
+> b/drivers/media/platform/rockchip/rga/rga.c
+> index 48b88da59da0..075b684fb178 100644
+> --- a/drivers/media/platform/rockchip/rga/rga.c
+> +++ b/drivers/media/platform/rockchip/rga/rga.c
+> @@ -75,7 +75,7 @@ static irqreturn_t rga_isr(int irq, void *prv)
+> =C2=A0		WARN_ON(!src);
+> =C2=A0		WARN_ON(!dst);
+> =C2=A0
+> -		v4l2_m2m_buf_copy_metadata(src, dst, true);
+> +		v4l2_m2m_buf_copy_metadata(src, dst, false);
+> =C2=A0
+> =C2=A0		dst->sequence =3D ctx->csequence++;
+> =C2=A0
+> diff --git a/drivers/media/platform/st/stm32/dma2d/dma2d.c
+> b/drivers/media/platform/st/stm32/dma2d/dma2d.c
+> index 643913adc1f3..4184bdb96e6d 100644
+> --- a/drivers/media/platform/st/stm32/dma2d/dma2d.c
+> +++ b/drivers/media/platform/st/stm32/dma2d/dma2d.c
+> @@ -483,7 +483,7 @@ static void device_run(void *prv)
+> =C2=A0
+> =C2=A0	src->sequence =3D frm_out->sequence++;
+> =C2=A0	dst->sequence =3D frm_cap->sequence++;
+> -	v4l2_m2m_buf_copy_metadata(src, dst, true);
+> +	v4l2_m2m_buf_copy_metadata(src, dst, false);
+> =C2=A0
+> =C2=A0	if (clk_enable(dev->gate))
+> =C2=A0		goto end;
+> diff --git a/drivers/media/platform/sunxi/sun8i-di/sun8i-di.c
+> b/drivers/media/platform/sunxi/sun8i-di/sun8i-di.c
+> index 3e7f2df70408..11a6c7f5212e 100644
+> --- a/drivers/media/platform/sunxi/sun8i-di/sun8i-di.c
+> +++ b/drivers/media/platform/sunxi/sun8i-di/sun8i-di.c
+> @@ -71,7 +71,7 @@ static void deinterlace_device_run(void *priv)
+> =C2=A0	src =3D v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
+> =C2=A0	dst =3D v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
+> =C2=A0
+> -	v4l2_m2m_buf_copy_metadata(src, dst, true);
+> +	v4l2_m2m_buf_copy_metadata(src, dst, false);
+> =C2=A0
+> =C2=A0	deinterlace_write(dev, DEINTERLACE_MOD_ENABLE,
+> =C2=A0			=C2=A0 DEINTERLACE_MOD_ENABLE_EN);
+> diff --git a/drivers/media/platform/sunxi/sun8i-rotate/sun8i_rotate.c
+> b/drivers/media/platform/sunxi/sun8i-rotate/sun8i_rotate.c
+> index abd10b218aa1..f6e2f11a20dd 100644
+> --- a/drivers/media/platform/sunxi/sun8i-rotate/sun8i_rotate.c
+> +++ b/drivers/media/platform/sunxi/sun8i-rotate/sun8i_rotate.c
+> @@ -70,7 +70,7 @@ static void rotate_device_run(void *priv)
+> =C2=A0	src =3D v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
+> =C2=A0	dst =3D v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
+> =C2=A0
+> -	v4l2_m2m_buf_copy_metadata(src, dst, true);
+> +	v4l2_m2m_buf_copy_metadata(src, dst, false);
+> =C2=A0
+> =C2=A0	val =3D ROTATE_GLB_CTL_MODE(ROTATE_MODE_COPY_ROTATE);
+> =C2=A0	if (ctx->hflip)
+> diff --git a/drivers/media/test-drivers/vim2m.c b/drivers/media/test-
+> drivers/vim2m.c
+> index dc82830a35a5..3e8476165721 100644
+> --- a/drivers/media/test-drivers/vim2m.c
+> +++ b/drivers/media/test-drivers/vim2m.c
+> @@ -482,7 +482,7 @@ static int device_process(struct vim2m_ctx *ctx,
+> =C2=A0
+> =C2=A0	out_vb->sequence =3D q_data_out->sequence++;
+> =C2=A0	in_vb->sequence =3D q_data_in->sequence++;
+> -	v4l2_m2m_buf_copy_metadata(in_vb, out_vb, true);
+> +	v4l2_m2m_buf_copy_metadata(in_vb, out_vb, false);
+> =C2=A0
+> =C2=A0	if (ctx->mode & MEM2MEM_VFLIP) {
+> =C2=A0		start =3D height - 1;
+> diff --git a/drivers/staging/media/imx/imx-media-csc-scaler.c
+> b/drivers/staging/media/imx/imx-media-csc-scaler.c
+> index 19fd31cb9bb0..770ba3fbaba2 100644
+> --- a/drivers/staging/media/imx/imx-media-csc-scaler.c
+> +++ b/drivers/staging/media/imx/imx-media-csc-scaler.c
+> @@ -96,7 +96,7 @@ static void ipu_ic_pp_complete(struct ipu_image_convert=
+_run
+> *run, void *_ctx)
+> =C2=A0	src_buf =3D v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
+> =C2=A0	dst_buf =3D v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
+> =C2=A0
+> -	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, true);
+> +	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, false);
+> =C2=A0
+> =C2=A0	src_buf->sequence =3D ctx->sequence++;
+> =C2=A0	dst_buf->sequence =3D src_buf->sequence;
+>=20
+> base-commit: e5f0a698b34ed76002dc5cff3804a61c80233a7a
+
+--=-EQAjgLvtRVqsmS5rugFY
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaOeyygAKCRDZQZRRKWBy
+9IbiAQDT+EcdhGBuv/4QUbUY6P38kMHJbFh6c1qSDIlig80ebgD+IcmT6Q7Pfmzf
+EBEYrYY1qr1wWBAXTVBIAWGsXuVregk=
+=uUwO
+-----END PGP SIGNATURE-----
+
+--=-EQAjgLvtRVqsmS5rugFY--
+
+
+--===============4504359056494858474==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============4504359056494858474==--
+
