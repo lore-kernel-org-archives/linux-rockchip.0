@@ -4,38 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64549CAC5BB
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Oct 2025 03:15:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A2A3CCA470
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Oct 2025 04:11:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nC/dGM9mq6pdnAhMqA1fg1jM/uHd1n/24C61ZDAOy2s=; b=s15rfcLrM/d1Ju
-	tRd7OE4LS2K6LgPSrIaGo3+VsussTK16CrN1mpYUZ/dnvRd/KiWLk+NawPaPf8z98P53ewTm/8/i8
-	rBedLAXf0cGmWfKcRYccl8UhjFL5o8bLHFs5PYFUXlmVJluKKQFIwiB2TsfdMgGJPUgu3jOr3pCqV
-	3NUZVb9qMUH7EtNbMDjB2ijyjQV1mUXjasjj4wCYk2WWCQ0D+7eTd0JCT6OVEquI8fEkRmmil2NLH
-	IoM3iOaYRZt9SPPQ3uno66mNe9j/CcLsJHYGwmg0S3KUTk018qcf9IwnZxXlxky6FwvtTH8Obxors
-	wh/a6xWlRe6ypMsfVa1w==;
+	List-Owner; bh=pmdTvrrFLheqbnpo5Fzs/jPXx7lwTrdJNT+Tj7YfGYM=; b=y3bmp57/RPmV2k
+	vT83gxlHjsT6rUILAw2QH6f9mqwriy840nuggxIzWjBdj7U/PmuhxWCfs2hI2TvHk6qoG7zqFidVv
+	fIQ5srGXrFjIDzMKxs2dixjhJrz/+5tAW5sm7hk6hlNECNuBtchB2HeuxuwueiYCOPEINt1u+3IBK
+	eK1jp2sukg2TVbnI653Rx5Q9M8LCdvtzH0N45dVee7J/DV13gHBd0EMM51xAMa+g6RJEuZgDK0k8Y
+	D6YVG6t1c3/R9gVVb5Xnn5huMiugXxw/TPSFYviMYEUYDHrs3pjPxCH/K2OnWRoXs3fTltEMyhHiZ
+	15RQQTOVcgFNuKI5Lzvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v6h7h-000000055HD-3cTY;
-	Thu, 09 Oct 2025 03:15:21 +0000
-Received: from mail-m32108.qiye.163.com ([220.197.32.108])
+	id 1v6hzQ-000000058wI-0186;
+	Thu, 09 Oct 2025 04:10:52 +0000
+Received: from mail-m19731115.qiye.163.com ([220.197.31.115])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v6h7e-000000055Gl-26hz;
-	Thu, 09 Oct 2025 03:15:21 +0000
+	id 1v6hzM-000000058va-0sJ8;
+	Thu, 09 Oct 2025 04:10:50 +0000
 Received: from [172.16.12.26] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 2540f1755;
-	Thu, 9 Oct 2025 11:15:12 +0800 (GMT+08:00)
-Message-ID: <600da5e2-da28-429b-ba7a-6ddabeeb044d@rock-chips.com>
-Date: Thu, 9 Oct 2025 11:15:13 +0800
+	by smtp.qiye.163.com (Hmail) with ESMTP id 2543142d9;
+	Thu, 9 Oct 2025 12:10:40 +0800 (GMT+08:00)
+Message-ID: <a42ebdca-1cbc-498c-b859-336557823f26@rock-chips.com>
+Date: Thu, 9 Oct 2025 12:10:42 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v6 11/18] drm/display: bridge_connector: Ensure last
  bridge determines EDID/modes detection capabilities
-To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+To: Luca Ceresoli <luca.ceresoli@bootlin.com>,
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
 Cc: andrzej.hajda@intel.com, neil.armstrong@linaro.org, rfoss@kernel.org,
  Laurent.pinchart@ideasonboard.com, jonas@kwiboo.se,
  jernej.skrabec@gmail.com, maarten.lankhorst@linux.intel.com,
@@ -45,29 +46,29 @@ Cc: andrzej.hajda@intel.com, neil.armstrong@linaro.org, rfoss@kernel.org,
  kyungmin.park@samsung.com, krzk@kernel.org, alim.akhtar@samsung.com,
  jingoohan1@gmail.com, p.zabel@pengutronix.de, hjc@rock-chips.com,
  heiko@sntech.de, andy.yan@rock-chips.com, dianders@chromium.org,
- m.szyprowski@samsung.com, luca.ceresoli@bootlin.com, jani.nikula@intel.com,
+ m.szyprowski@samsung.com, jani.nikula@intel.com,
  linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
  imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
  linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
 References: <20250930090920.131094-1-damon.ding@rock-chips.com>
  <20250930090920.131094-12-damon.ding@rock-chips.com>
- <4r25h5uaamfkprrmvrtdqfjlcgcnkfyca2o5q53hteta7rlrbq@xqlrjxhi7z2u>
+ <20251001180922.6bbe42ac@booty>
 Content-Language: en-US
 From: Damon Ding <damon.ding@rock-chips.com>
-In-Reply-To: <4r25h5uaamfkprrmvrtdqfjlcgcnkfyca2o5q53hteta7rlrbq@xqlrjxhi7z2u>
-X-HM-Tid: 0a99c6f72dc603a3kunmfe4252c4a5c7bd
+In-Reply-To: <20251001180922.6bbe42ac@booty>
+X-HM-Tid: 0a99c729f83903a3kunm16370414a6fa98
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGhgfT1ZMGkxMTE1KSUtCTB5WFRQJFh
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGRhISlZKSRgYQkhITx4fSEtWFRQJFh
 	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpKQk
 	1VSktLVUpCWQY+
 DKIM-Signature: a=rsa-sha256;
-	b=iQs0T/oMZ2uhdZcdybDbf32wCENpnpEDgP3/4nIpyZchoiqx101XIqUFLuYnQ8IcKx4Znl6ZyzkvOgsZ4UWhvqaSNB33nuRn9W/w1YboaMZpZdr5IObRzog7tr1A8nYt2b/3iKtdXeVXmfBjPuu7pX24s1jtIDZnRMVvEGAEOEc=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=iABHohkXXscty3ygSSBQiwpr5DtvMO/CY8j782HEq18=;
+	b=CRpZqVpXED0SBtQWsNn3unDFg6hHUsSbzj0hQuFlxkwW+RHOgdqWJ+gRlo060O6EvTD8QiK/bJkRJC7jl8p3TKWpa+RYxJFZxheUO49caZ0+LEO/SzLEqHTLZz4OpdNo5ABc75WLQf70YZcuBwLuXIDCpICPiK4KZ7G+gX4C7Gg=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=qQ2zeMeYDfoWTQYJ4xG+nhpK+0ZJUttKUUEWrzWjUSw=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251008_201519_779193_E3E8AA2F 
-X-CRM114-Status: GOOD (  12.57  )
+X-CRM114-CacheID: sfid-20251008_211048_778446_58CB818C 
+X-CRM114-Status: GOOD (  31.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,10 +85,14 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Dmitry,
+Hi Luca,
 
-On 10/1/2025 4:21 AM, Dmitry Baryshkov wrote:
-> On Tue, Sep 30, 2025 at 05:09:13PM +0800, Damon Ding wrote:
+On 10/2/2025 12:09 AM, Luca Ceresoli wrote:
+> Hello Damon,
+> 
+> On Tue, 30 Sep 2025 17:09:13 +0800
+> Damon Ding <damon.ding@rock-chips.com> wrote:
+> 
 >> When multiple bridges are present, EDID detection capability
 >> (DRM_BRIDGE_OP_EDID) takes precedence over modes detection
 >> (DRM_BRIDGE_OP_MODES). To ensure the above two capabilities are
@@ -111,21 +116,136 @@ On 10/1/2025 4:21 AM, Dmitry Baryshkov wrote:
 >>   - Assign later bridge as &drm_bridge_connector.bridge_edid and
 >>     and &drm_bridge_connector.bridge_modes to this bridge.
 >>   - Just leave transfer of these two capabilities as before.
->>
->> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
->> Suggested-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
->> ---
->>   .../gpu/drm/display/drm_bridge_connector.c    | 42 +++++++++++++++++++
->>   1 file changed, 42 insertions(+)
->>
 > 
-> Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+> I think the whole explanation can be more concisely rewritten as:
 > 
-> But I'd suggest pulling this to a top of the series to let others also
-> take a look at it.
+> If the later bridge declares OP_EDID, OP_MODES or both, then both
+> .bridge_modes and .bridge_edid should be set to NULL (if any was set
+> from a previous bridge), and then .bridge_modes and/or .bridge_edid be
+> set to the later bridge as is done already.
+> 
+> Does this look correct (i.e. does it convey the same meaning)?
+> 
+>> --- a/drivers/gpu/drm/display/drm_bridge_connector.c
+>> +++ b/drivers/gpu/drm/display/drm_bridge_connector.c
+>> @@ -640,6 +640,7 @@ struct drm_connector *drm_bridge_connector_init(struct drm_device *drm,
+>>   	struct drm_connector *connector;
+>>   	struct i2c_adapter *ddc = NULL;
+>>   	struct drm_bridge *bridge, *panel_bridge = NULL;
+>> +	struct drm_bridge *pre_bridge_edid, *pre_bridge_modes;
+>>   	unsigned int supported_formats = BIT(HDMI_COLORSPACE_RGB);
+>>   	unsigned int max_bpc = 8;
+>>   	bool support_hdcp = false;
+>> @@ -668,6 +669,9 @@ struct drm_connector *drm_bridge_connector_init(struct drm_device *drm,
+>>   	 */
+>>   	connector_type = DRM_MODE_CONNECTOR_Unknown;
+>>   	drm_for_each_bridge_in_chain(encoder, bridge) {
+>> +		pre_bridge_edid = bridge_connector->bridge_edid;
+>> +		pre_bridge_modes = bridge_connector->bridge_modes;
+>> +
+>>   		if (!bridge->interlace_allowed)
+>>   			connector->interlace_allowed = false;
+>>   		if (!bridge->ycbcr_420_allowed)
+>> @@ -681,6 +685,44 @@ struct drm_connector *drm_bridge_connector_init(struct drm_device *drm,
+>>   			bridge_connector->bridge_detect = bridge;
+>>   		if (bridge->ops & DRM_BRIDGE_OP_MODES)
+>>   			bridge_connector->bridge_modes = bridge;
+>> +
+>> +		/*
+>> +		 * When multiple bridges are present, EDID detection capability
+>> +		 * (DRM_BRIDGE_OP_EDID) takes precedence over modes detection
+>> +		 * (DRM_BRIDGE_OP_MODES). To ensure the above two capabilities
+>> +		 * are determined by the last bridge in the chain, we handle
+>> +		 * three cases:
+>> +		 *
+>> +		 * Case 1: The later bridge declares only DRM_BRIDGE_OP_MODES
+>> +		 *  - If the previous bridge declares DRM_BRIDGE_OP_EDID, set
+>> +		 *    &drm_bridge_connector.bridge_edid to NULL and set
+>> +		 *    &drm_bridge_connector.bridge_modes to the later bridge.
+>> +		 *  - Ensure modes detection capability of the later bridge
+>> +		 *    will not be ignored.
+>> +		 *
+>> +		 * Case 2: The later bridge declares only DRM_BRIDGE_OP_EDID
+>> +		 *  - If the previous bridge declares DRM_BRIDGE_OP_MODES, set
+>> +		 *    &drm_bridge_connector.bridge_modes to NULL and set
+>> +		 *    &drm_bridge_connector.bridge_edid to the later bridge.
+>> +		 *  - Although EDID detection capability has higher priority,
+>> +		 *    this operation is for balance and makes sense.
+>> +		 *
+>> +		 * Case 3: the later bridge declares both of them
+>> +		 *  - Assign later bridge as &drm_bridge_connector.bridge_edid
+>> +		 *    and &drm_bridge_connector.bridge_modes to this bridge.
+>> +		 *  - Just leave transfer of these two capabilities as before.
+>> +		 */
+>> +		if (bridge->ops & DRM_BRIDGE_OP_EDID &&
+>> +		    !(bridge->ops & DRM_BRIDGE_OP_MODES)) {
+>> +			if (pre_bridge_modes)
+>> +				bridge_connector->bridge_modes = NULL;
+>> +		}
+>> +		if (bridge->ops & DRM_BRIDGE_OP_MODES &&
+>> +		    !(bridge->ops & DRM_BRIDGE_OP_EDID)) {
+>> +			if (pre_bridge_edid)
+>> +				bridge_connector->bridge_edid = NULL;
+>> +		}
+>> +
+> 
+> If the above rewrite is correct, then I think this patch can be
+> rewritten in a simple way (build tested only):
+> 
+> diff --git a/drivers/gpu/drm/display/drm_bridge_connector.c b/drivers/gpu/drm/display/drm_bridge_connector.c
+> index a5bdd6c10643..bd5dbafe88bc 100644
+> --- a/drivers/gpu/drm/display/drm_bridge_connector.c
+> +++ b/drivers/gpu/drm/display/drm_bridge_connector.c
+> @@ -672,14 +672,18 @@ struct drm_connector *drm_bridge_connector_init(struct drm_device *drm,
+>                  if (!bridge->ycbcr_420_allowed)
+>                          connector->ycbcr_420_allowed = false;
+>   
+> -               if (bridge->ops & DRM_BRIDGE_OP_EDID)
+> -                       bridge_connector->bridge_edid = bridge;
+> +               if (bridge->ops & DRM_BRIDGE_OP_EDID || bridge->ops & DRM_BRIDGE_OP_MODES) {
+> +                       bridge_connector->bridge_edid = NULL;
+> +                       bridge_connector->bridge_modes = NULL;
+> +                       if (bridge->ops & DRM_BRIDGE_OP_EDID)
+> +                               bridge_connector->bridge_edid = bridge;
+> +                       if (bridge->ops & DRM_BRIDGE_OP_MODES)
+> +                               bridge_connector->bridge_modes = bridge;
+> +               }
+>                  if (bridge->ops & DRM_BRIDGE_OP_HPD)
+>                          bridge_connector->bridge_hpd = bridge;
+>                  if (bridge->ops & DRM_BRIDGE_OP_DETECT)
+>                          bridge_connector->bridge_detect = bridge;
+> -               if (bridge->ops & DRM_BRIDGE_OP_MODES)
+> -                       bridge_connector->bridge_modes = bridge;
+>                  if (bridge->ops & DRM_BRIDGE_OP_HDMI) {
+>                          if (bridge_connector->bridge_hdmi)
+>                                  return ERR_PTR(-EBUSY);
 > 
 
-Will do in v7.
+Yes, this is correct and maintains functional equivalence with the 
+previous implementation.
+
+I previously attempted to implement this feature by modifying the logic 
+in this section. However, that approach would obscure the explicit 
+propagation semantics of the bridge chain flags 
+(OP_EDID/OP_HPD/OP_DETECT/OP_MODES). Therefore, I finally decided to 
+implemented it as a specific check after this code block.
+
+Dmitry, what's your take on this?
+
+> Another thing to note is that this patch conflicts with [0], which I
+> plan to apply in the next few days. The two patches are orthogonal but
+> they insist on the same lines (those assigning
+> bridge_connector->bridge_* = bridge). Not a big deal, whichever patch
+> comes later will be easily adapted. Just wanted to ensure you are aware.
+> 
+> [0] https://lore.kernel.org/all/20250926-drm-bridge-alloc-getput-bridge-connector-v2-1-138b4bb70576@bootlin.com/
+> 
+
+This is indeed a clever approach to the managing bridge resource cleanup 
+in drm_bridge_connector. Thanks a lot for the heads-up! I'll resolve 
+this conflict and rebase the patch series.
+
+Apologies for the delayed reply as I was on vacation. ;-)
 
 Best regards,
 Damon
