@@ -4,82 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F83FCCD183
-	for <linux-rockchip@archiver.kernel.org>; Sat, 11 Oct 2025 05:33:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E86E7CCA476
+	for <linux-rockchip@archiver.kernel.org>; Sat, 11 Oct 2025 13:05:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UrFoxxqIBmbJKaSRsildffZODRRVkv5dbdWbV5ErBv0=; b=YfqKiYGF3u7OkC
-	KxqEdfUC1OR6zm/yxNbzi/XVOdRqNMvuavkq45PkCbMIExsQ810kVhQzf5cOWLwFe+B6OdDD/sO5n
-	4KUl2yHhOzL7hUemShqxfLcoI7L1FAj0uvyfyApojaNFePTvMa4zYRzZLowyUgiA0Ta0P7RbVWWZM
-	O+WX67PPiJGd4MLeSmlhz97c/ugcS1L++NeLPlQmLmUIBDOnEIcbler1pijKpjTb2qgelImDOPek3
-	BZGuxndFaldsuwZSyQW0kDcrCz7LeF+vdK1iO3cA/uojzaUdJa077erZRta5bAKL+a61JGWZdSxeb
-	V0DwVRAKS5fHNj4AtYYQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=R5XZaQTDpfCcRlLnaIUPCSazfAuxn39S3vhFI6UNoH0=; b=1M9fPDkIVh2gKj
+	oyc/WuaMH8VqAX9WSv0hgZidhhQZtfD/q5sBscExwK4uYByYnrovzw0x43fES2g3+t4fUSA5hXhaX
+	e5fFsC3by9AZmNxytw13hd3nSEPOVSDT/k4iZko1H8E3iL/TvirLKOu8JGr8hfelXlq8lEpgEbtgn
+	bRJ5EQzioTs+qErG1mSnypY9EILKPjKNH6iqluY2XKAi6cTZYMzKhBDHsJnSyopuKZ0k4uOEk6iWD
+	nNQHTM8KYqvc5p9pSPnzFGw39za5SDU3Xs2Gl4pO+/5KGAujU3ce/a0OM1uFGBdgFbj8aBgtGS4UT
+	K18Lal5RSCSmdSYWAa3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v7SER-00000009pLr-1Pyo;
-	Sat, 11 Oct 2025 05:33:27 +0000
-Received: from mgamail.intel.com ([198.175.65.18])
+	id 1v7ZHY-0000000ABoJ-3e4n;
+	Sat, 11 Oct 2025 13:05:08 +0000
+Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v7SEO-00000009pL5-23vG;
-	Sat, 11 Oct 2025 05:33:25 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1760160804; x=1791696804;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=tICeZKtlPTGn6MN+AocuuzSNU12FNBC7lzLtzqfGuwQ=;
-  b=TT73WF16fQqlWROEeFiairc8y9kzFwqelWIgF9kqS9ZwUkWQZUrc2L41
-   b6POVeXg4Gkkue2PZ9esRFvrv1DcL/WjQTri/VSqxt8hbsrta1edhRufv
-   NpAvabHXe/tahwZshdKCNWJhXas4IOBOYdeLPhFRdh8sb+TxfRfxNkNSb
-   SeqRrsi2JD45OWxR5Fq2Nz2SbY3rgBfiYsnqrvMNrMTprt+KvCOq8FzWL
-   TpUqWDbXtll75sHymeX+HIt3kIZbsq6GD1g2EO/rHeTa0ErsvR9yt20le
-   qUzxXCIt+wGP65OO4Iiuy5rrYuZnMP2RyqxrLHCTpph8IT98tf4gOZdWL
-   A==;
-X-CSE-ConnectionGUID: J/DErsATTTSIspSnju4TKw==
-X-CSE-MsgGUID: a8gGCFbNTUe5pyQJuYnLYg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11578"; a="62416211"
-X-IronPort-AV: E=Sophos;i="6.19,220,1754982000"; 
-   d="scan'208";a="62416211"
-Received: from fmviesa001.fm.intel.com ([10.60.135.141])
-  by orvoesa110.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Oct 2025 22:33:20 -0700
-X-CSE-ConnectionGUID: IPZXp56TS/iOLDMQYGX7lQ==
-X-CSE-MsgGUID: C0av3SMDRfSz2cMTpx53hg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.19,220,1754982000"; 
-   d="scan'208";a="212094623"
-Received: from lkp-server01.sh.intel.com (HELO 6a630e8620ab) ([10.239.97.150])
-  by fmviesa001.fm.intel.com with ESMTP; 10 Oct 2025 22:33:16 -0700
-Received: from kbuild by 6a630e8620ab with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1v7SEE-0003Xj-04;
-	Sat, 11 Oct 2025 05:33:14 +0000
-Date: Sat, 11 Oct 2025 13:32:51 +0800
-From: kernel test robot <lkp@intel.com>
-To: Sven =?iso-8859-1?Q?P=FCschel?= <s.pueschel@pengutronix.de>,
-	Jacob Chen <jacob-chen@iotwrt.com>,
-	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org, kernel@pengutronix.de,
-	Sven =?iso-8859-1?Q?P=FCschel?= <s.pueschel@pengutronix.de>
-Subject: Re: [PATCH 16/16] media: rockchip: rga: add rga3 support
-Message-ID: <202510111354.QeqIltfU-lkp@intel.com>
-References: <20251007-spu-rga3-v1-16-36ad85570402@pengutronix.de>
+	id 1v7ZHW-0000000ABnv-1k5Y;
+	Sat, 11 Oct 2025 13:05:08 +0000
+Received: from pps.filterd (m0333520.ppops.net [127.0.0.1])
+	by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 59B3kw0U030406;
+	Sat, 11 Oct 2025 13:04:55 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
+	:content-transfer-encoding:date:from:message-id:mime-version
+	:subject:to; s=corp-2025-04-25; bh=4ILSXxPgSbTbyXrKlDHpDiWu08cup
+	di2POfaElEq2Oc=; b=Sp3bGEsTzRST4ZDhSMgv8AiXTrs99fzpxugaegkCnFgaM
+	x/RzeSxAPkPDaE+1bQd4kfV0TGRKQEvHmPZVMhegOzDKI6XORy0Lw2/YZTUkeZtq
+	dESCXxA9Mi29/REP2fKtVbi+sN0ipl6xEMSXLfDynE6mWysnbwJin6Hsd7IJnKIT
+	hOpw59jxXQSaxnyNac0LeSIO2iTyK22wBKvnuk6QP+HkeMe6aCyBboVoGeYjofYf
+	xw+6T2DK9oWWu7sOez9HiGEk0NT0qjEWVX9XLyGZqPyIncU6gmLUxVbWz9Chksgh
+	nmIv2ckZJyb77vkEpRCwqcUwaSh5aRT698WVYi4Iw==
+Received: from phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (phxpaimrmta01.appoci.oracle.com [138.1.114.2])
+	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 49qf9brap4-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Sat, 11 Oct 2025 13:04:54 +0000 (GMT)
+Received: from pps.filterd (phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
+	by phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (8.18.1.2/8.18.1.2) with ESMTP id 59BD2X8J018503;
+	Sat, 11 Oct 2025 13:04:54 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+	by phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id 49qdp5t74s-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Sat, 11 Oct 2025 13:04:53 +0000
+Received: from phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 59BD4rBf012612;
+	Sat, 11 Oct 2025 13:04:53 GMT
+Received: from ca-dev112.us.oracle.com (ca-dev112.us.oracle.com [10.129.136.47])
+	by phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTP id 49qdp5t74h-1;
+	Sat, 11 Oct 2025 13:04:53 +0000
+From: Alok Tiwari <alok.a.tiwari@oracle.com>
+To: michael.riesch@wolfvision.net, robh@kernel.org, s.hauer@pengutronix.de,
+        dri-devel@lists.freedesktop.org, simona@ffwll.ch, airlied@gmail.com,
+        tzimmermann@suse.de, mripard@kernel.org, hjc@rock-chips.com,
+        heiko@sntech.de, andy.yan@rock-chips.com,
+        maarten.lankhorst@linux.intel.com
+Cc: alok.a.tiwari@oracle.com, linux-arm-kernel@lists.infradead.org,
+        linux-rockchip@lists.infradead.org
+Subject: [PATCH] drm/rockchip: vop2: use correct destination rectangle height check
+Date: Sat, 11 Oct 2025 06:04:45 -0700
+Message-ID: <20251011130450.123444-1-alok.a.tiwari@oracle.com>
+X-Mailer: git-send-email 2.50.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20251007-spu-rga3-v1-16-36ad85570402@pengutronix.de>
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1117,Hydra:6.1.9,FMLib:17.12.80.40
+ definitions=2025-10-11_03,2025-10-06_01,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0 suspectscore=0
+ mlxlogscore=997 adultscore=0 bulkscore=0 spamscore=0 phishscore=0
+ malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2510020000 definitions=main-2510110072
+X-Proofpoint-GUID: UZENe1S85OUJrcpJijjnIW3oWlAL5XVV
+X-Proofpoint-ORIG-GUID: UZENe1S85OUJrcpJijjnIW3oWlAL5XVV
+X-Authority-Analysis: v=2.4 cv=QfNrf8bv c=1 sm=1 tr=0 ts=68ea55f7 cx=c_pps
+ a=XiAAW1AwiKB2Y8Wsi+sD2Q==:117 a=XiAAW1AwiKB2Y8Wsi+sD2Q==:17
+ a=x6icFKpwvdMA:10 a=yPCof4ZbAAAA:8 a=hxm_DrHGMFVl4YJQ088A:9
+ a=cPQSjfK2_nFv0Q5t_7PE:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMDExMDAxNyBTYWx0ZWRfXwx6QUBKiUut1
+ C7IhZbgv7IT5kkCUgx0Qj4vApFJVxbLa0+HUroxp9dnHkUviJe3mvEnyOGU21mrs27tZsKQwEbe
+ MmqL1L9WbaegOoe8/kmVOC6CTGndxE+VYRcrseGO51Ar9AvERPFzRstHvGPXmJV3j+3BeRPni5G
+ TL+RPZTcKkRhBSkd+18FhWdp10Izh6xK92O4ZrUGVjQk0fFImmRwbsgUNpzDXwTQ4zBTwLWMHRL
+ 4sKDgilmTO10yWkcHmP2T7WWrbJYnB1jn8pTrbZCKwirzObKb9DLRjWph3yhdWE/DKwn0NjF16A
+ rffMv6PzMQ6cL/L0y6A2kR2EkJKn9vNNSVBbm09cxgE8Ow8ZGSMFEn/Bn8kRKDBGxdvRcBeqbop
+ eV0GWZfFLC9ICx+0lyoR4+2tR6z80Q==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251010_223324_599295_5CF3133F 
-X-CRM114-Status: GOOD (  10.60  )
+X-CRM114-CacheID: sfid-20251011_060507_036688_41F6E961 
+X-CRM114-Status: GOOD (  11.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,85 +107,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Sven,
+The vop2_plane_atomic_check() function incorrectly checks
+drm_rect_width(dest) twice instead of verifying both width and height.
+Fix the second condition to use drm_rect_height(dest) so that invalid
+destination rectangles with height < 4 are correctly rejected.
 
-kernel test robot noticed the following build warnings:
+Fixes: 604be85547ce ("drm/rockchip: Add VOP2 driver")
+Signed-off-by: Alok Tiwari <alok.a.tiwari@oracle.com>
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-[auto build test WARNING on afb100a5ea7a13d7e6937dcd3b36b19dc6cc9328]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/Sven-P-schel/media-rockchip-rga-use-clk_bulk-api/20251010-104411
-base:   afb100a5ea7a13d7e6937dcd3b36b19dc6cc9328
-patch link:    https://lore.kernel.org/r/20251007-spu-rga3-v1-16-36ad85570402%40pengutronix.de
-patch subject: [PATCH 16/16] media: rockchip: rga: add rga3 support
-config: riscv-randconfig-002-20251011 (https://download.01.org/0day-ci/archive/20251011/202510111354.QeqIltfU-lkp@intel.com/config)
-compiler: clang version 22.0.0git (https://github.com/llvm/llvm-project 39f292ffa13d7ca0d1edff27ac8fd55024bb4d19)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20251011/202510111354.QeqIltfU-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202510111354.QeqIltfU-lkp@intel.com/
-
-All warnings (new ones prefixed by >>):
-
->> drivers/media/platform/rockchip/rga/rga3-hw.c:144:15: warning: variable 'src_h' set but not used [-Wunused-but-set-variable]
-     144 |         unsigned int src_h, src_w, dst_h, dst_w;
-         |                      ^
->> drivers/media/platform/rockchip/rga/rga3-hw.c:144:22: warning: variable 'src_w' set but not used [-Wunused-but-set-variable]
-     144 |         unsigned int src_h, src_w, dst_h, dst_w;
-         |                             ^
->> drivers/media/platform/rockchip/rga/rga3-hw.c:144:29: warning: variable 'dst_h' set but not used [-Wunused-but-set-variable]
-     144 |         unsigned int src_h, src_w, dst_h, dst_w;
-         |                                    ^
->> drivers/media/platform/rockchip/rga/rga3-hw.c:144:36: warning: variable 'dst_w' set but not used [-Wunused-but-set-variable]
-     144 |         unsigned int src_h, src_w, dst_h, dst_w;
-         |                                           ^
-   4 warnings generated.
-
-
-vim +/src_h +144 drivers/media/platform/rockchip/rga/rga3-hw.c
-
-   137	
-   138	static void rga3_cmd_set_win0_format(struct rga_ctx *ctx)
-   139	{
-   140		u32 *cmd = ctx->rga->cmdbuf_virt;
-   141		const struct rga3_fmt *in = ctx->in.fmt;
-   142		const struct rga3_fmt *out = ctx->out.fmt;
-   143		const struct v4l2_format_info *in_fmt, *out_fmt;
- > 144		unsigned int src_h, src_w, dst_h, dst_w;
-   145		bool r2y, y2r;
-   146		u8 rd_format;
-   147		unsigned int reg;
-   148	
-   149		src_h = ctx->in.crop.height;
-   150		src_w = ctx->in.crop.width;
-   151		dst_h = ctx->out.crop.height;
-   152		dst_w = ctx->out.crop.width;
-   153	
-   154		in_fmt = v4l2_format_info(in->fourcc);
-   155		out_fmt = v4l2_format_info(out->fourcc);
-   156		r2y = v4l2_is_format_rgb(in_fmt) && v4l2_is_format_yuv(out_fmt);
-   157		y2r = v4l2_is_format_yuv(in_fmt) && v4l2_is_format_rgb(out_fmt);
-   158	
-   159		if (in->semi_planar)
-   160			rd_format = RGA3_RDWR_FORMAT_SEMI_PLANAR;
-   161		else
-   162			rd_format = RGA3_RDWR_FORMAT_INTERLEAVED;
-   163	
-   164		reg = RGA3_WIN0_RD_CTRL - RGA3_FIRST_CMD_REG;
-   165		cmd[reg >> 2] |= FIELD_PREP(RGA3_WIN_PIC_FORMAT, in->hw_format)
-   166			      |  FIELD_PREP(RGA3_WIN_YC_SWAP, in->yc_swap)
-   167			      |  FIELD_PREP(RGA3_WIN_RBUV_SWAP, in->rbuv_swap)
-   168			      |  FIELD_PREP(RGA3_WIN_RD_FORMAT, rd_format)
-   169			      |  FIELD_PREP(RGA3_WIN_R2Y, r2y)
-   170			      |  FIELD_PREP(RGA3_WIN_Y2R, y2r)
-   171			      |  FIELD_PREP(RGA3_WIN_CSC_MODE, RGA3_WIN_CSC_MODE_BT601_F);
-   172	}
-   173	
-
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+index b50927a824b4..697f54777a32 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+@@ -1031,7 +1031,7 @@ static int vop2_plane_atomic_check(struct drm_plane *plane,
+ 		return format;
+ 
+ 	if (drm_rect_width(src) >> 16 < 4 || drm_rect_height(src) >> 16 < 4 ||
+-	    drm_rect_width(dest) < 4 || drm_rect_width(dest) < 4) {
++	    drm_rect_width(dest) < 4 || drm_rect_heigh(dest) < 4) {
+ 		drm_err(vop2->drm, "Invalid size: %dx%d->%dx%d, min size is 4x4\n",
+ 			drm_rect_width(src) >> 16, drm_rect_height(src) >> 16,
+ 			drm_rect_width(dest), drm_rect_height(dest));
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+2.50.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
