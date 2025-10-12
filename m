@@ -4,89 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4115CCD184
-	for <linux-rockchip@archiver.kernel.org>; Sun, 12 Oct 2025 12:34:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E94ECCD18D
+	for <linux-rockchip@archiver.kernel.org>; Sun, 12 Oct 2025 14:20:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=wrV5ynsyE64rupBYNikZyX+SJjpnE+UlLrkIxk81wMQ=; b=L5E3ywvj1AlhAN
-	5GBogHnuEPzLx9GWRoUm2S8c7aASDwSLnNQVW8pQAam8eNmZIpKjdz43XOeZEZCl5FiJ3qfQWBYAX
-	+d+eEvlVD3hUca72jwrXMkjCrg/e+HHVRCs6abMr5kRK4WWViVEHd9jKyyvQWnlFK3eDHsrxIzX/u
-	29BtWa7ESGnH6/n//yyuRNQtk0sE68Yk1NrrpmmHmd/bE4GzT7dlJlYKLfyEUQqT7AEj40gn/z4ka
-	V3bG8Izx8HzpjxfyJ+gonYKPT0dGnBMV1pgI4ld4KeB/sBIWeCkBEFZh67Flcd7BuVER23hhB08mF
-	9qPO1xxl3ZOImf28C/tA==;
+	List-Owner; bh=FFYvs1QpNWRy7OUD39wUAtcdmK9mAAO0/mQjaxPX+r8=; b=CG1N8SE7as13Ye
+	0RBk9VcUxJ2XkGoIJ66J1akIDWZOMj42d0I+b2aU2MERtOiMkhQTd0M7EpClMy9zKo70oMBNfUqzR
+	r0j2W0kxWhDlurPoPyUXR9PUY4Nbm9YFmSFM2lcLYVTiYKs3VNsKIG2XOFbI671OH1eLsEZ7koM1h
+	dt6vonrPkAnrctE4OBSGg2/cF1H08x231eGAWm8MZttVJIOeQFSKkXc+OUdpQ/5244LUWPt7Oe007
+	1tni87oWc6yL1IZoDomAf5bd6yuRUOo1ocwSOHDANcA/1GNyVU4h4JsHxJI9aSOW+Gm7o0Ow7K/7L
+	W7XXT1HEEzdxTrtwDRDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v7vGk-0000000BLGj-0KFO;
-	Sun, 12 Oct 2025 12:33:46 +0000
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+	id 1v7wvy-0000000BPdW-47Gq;
+	Sun, 12 Oct 2025 14:20:26 +0000
+Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v7vGh-0000000BLFy-3abX
-	for linux-rockchip@lists.infradead.org;
-	Sun, 12 Oct 2025 12:33:44 +0000
-Received: by mail-ej1-x629.google.com with SMTP id a640c23a62f3a-b3d5088259eso495850666b.1
-        for <linux-rockchip@lists.infradead.org>; Sun, 12 Oct 2025 05:33:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1760272422; x=1760877222; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=pFLLYdbkRgAZWnhHmXH7fo0GfkcQe5REoGIKDLet53o=;
-        b=SEQnLyaotrcdkH5RNe5v6W+D+ASEdbxs8zAxjSNla9d2DVmhdbmluYomHR8ZmGxp2e
-         p7zA54BwXlfhsOPPzzMcyjcr1RhPyK44wP1SiqApg3quYgiT/YtalR611y9jw3fEcMHa
-         aJsGuDsPg7H7e3w9QL0ybV+WSj3ScnZvi1YKxUgfARPUt2mE3PutN6/9PDM2J1bMaCWP
-         UVOsPeY9FTiK+qmaHDajkS/17R4ZJ9y2SC23dep5S4ieT+Kb8TAHNKWj+Oqdp5R9Cm++
-         KF2wFIIQFxbFevVX8qm3tWZCsUlUEv98Fs+ud2MNPtlN1m8CA5ekpvwAGvYLEGJYg27a
-         OX9A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1760272422; x=1760877222;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=pFLLYdbkRgAZWnhHmXH7fo0GfkcQe5REoGIKDLet53o=;
-        b=v2axg0sWfboxV+VJ/i83YPt2oVqi5XCPXEqy/4RZbUV/3wpXGaFG9TSyny8kdJCDZ0
-         KcbKOxKWDJctyw84xpHRKctG0WChNxbIJZ1o0M1jbT6w2R01hMiHgu8R4aD6O/mtsWMQ
-         2fmtgFyM+OV8fX3YQLLh62m3xiU+0DLZYFHK8RQY3T2x1yy338lAscydY/WMvFoyzoQs
-         UDhhf9ipuFp6HMZynaaaUoooHVKRouN2fSS4hIEV9UEkiM4R00ociHN1CKhsSyZnS7Vy
-         nNhfg6NRIYcp7MDpnDEyAL9ZOf2R74YZUuAdZG5JyI68iuHxFd+/depNJpR4m5VLkdBl
-         WZiA==
-X-Forwarded-Encrypted: i=1; AJvYcCVSQx5cPZK09TiamEum0iOj6+3/46iQdJotNKUrqP1fkfhxdMhumDZxuWIWUhh/tfsOvGvxhUKK0v4oAsS5fw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwnPVHTO6UjKFNwFs0ToBOEAMfE7uPKU7nCjEsAQsBfGl/lA0yp
-	2J6mmQUJ9FBECm9/Nx2RxIekaAOyHjgMQ6g6cDdLH7ba63X+iQmBGY0F
-X-Gm-Gg: ASbGncvwxCbvej+7ho7gdFQR1mKzDB3hU7N4qzIX3RD2gReW4zQomr7f59Hyqt/UYpo
-	yi4jLfUr+WWLnn/yOgKyQovqufltUakA1HsYLacjjMHEex1nvjPusHw0SfHZckzc3w9mtUBJgma
-	1P8lAtz1LN8IsZRLh0Ej8CzyUQ7ZDH7wE3yhj3NUHYjIl+P0IW4qGy4cLDJrlkmXYf9kUfQu2QQ
-	wFWcf2kk4SCTeql8HojfIbInPJBIH5+6TELnIrQELwhdU6KkOGup0RBxSvNg76AYO4DOnqU5kpI
-	BJqySYEGeaBdGggvgRuq2KVoyS/8S5/l+fG+EoTDHF1gZosfreRzuZveQMSH7bGzI4p63JJ/NR0
-	D9VYgR1SJ2MJSmz9Zuh869rMRFFQBeJOs/QIS9eTGjUIQDHGkAARtqYDUOKF9u03JzDAgDZ0vcE
-	NG
-X-Google-Smtp-Source: AGHT+IFAjyDvaV3oWT4PWZK+4NQ4+mKhqPinNjTBXV2nObp2QaUZEx9ZFWF36Ui7VatYnmT32IIKmg==
-X-Received: by 2002:a17:906:f989:b0:b57:1f86:b30f with SMTP id a640c23a62f3a-b571f86b72amr448630366b.24.1760272421798;
-        Sun, 12 Oct 2025 05:33:41 -0700 (PDT)
-Received: from HomePC (89-67-214-154.dynamic.play.pl. [89.67.214.154])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-b55d8c12a8esm708449266b.42.2025.10.12.05.33.40
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 12 Oct 2025 05:33:41 -0700 (PDT)
-From: Andrey Leonchikov <andreil499@gmail.com>
-To: devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Cc: Andrey Leonchikov <andreil499@gmail.com>,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	heiko@sntech.de
-Subject: [PATCH v2] arm64: dts: rockchip: Fix PCIe power enable pin for BTT CB2 and Pi2
-Date: Sun, 12 Oct 2025 14:33:36 +0200
-Message-ID: <20251012123338.344271-1-andreil499@gmail.com>
-X-Mailer: git-send-email 2.51.0
+	id 1v7wvv-0000000BPco-0BdA;
+	Sun, 12 Oct 2025 14:20:24 +0000
+Received: from pps.filterd (m0246629.ppops.net [127.0.0.1])
+	by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 59CCCoxY026585;
+	Sun, 12 Oct 2025 14:20:11 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
+	:content-transfer-encoding:date:from:message-id:mime-version
+	:subject:to; s=corp-2025-04-25; bh=dSKG4SyNo0gaYpGXItd1jsVLKWrJl
+	F0G3L0At3p9re0=; b=MLlkMCT9mtxxtFKPjjnZP0zUiAs21SfeI25eSPp+p7GNq
+	D5olZSP795qsvqtH8cvmARqIQmrfY4eBNo70NcHwlor0kvalVXfh4Ht4OhLmZiCr
+	vrER6ko6wqev6Le4lq5Olru9m/I+Piybim0l5BMTNbd3yfjCQAx4NL6USXj3yVVo
+	+1/5QDMSOSVUUlZgTfUN90UUN5Rpa0D39OLF2gcHyLdMM53y1hzVqZhj/xk4C2Fp
+	me2k5DNytG8nYW9hjk2TyeOiGF7f2qVOiWuElSOR+FvCJq28mPQ01i4Sg6368Fkj
+	T+sml1GTwEwBFkZp4xhKfKQkpz2DA6U3Q73qSz/qA==
+Received: from iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta01.appoci.oracle.com [130.35.100.223])
+	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 49qf47h13d-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Sun, 12 Oct 2025 14:20:11 +0000 (GMT)
+Received: from pps.filterd (iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+	by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (8.18.1.2/8.18.1.2) with ESMTP id 59CCCYWT038325;
+	Sun, 12 Oct 2025 14:20:10 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+	by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id 49qdpcpm6y-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Sun, 12 Oct 2025 14:20:10 +0000
+Received: from iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 59CEK9ot017983;
+	Sun, 12 Oct 2025 14:20:09 GMT
+Received: from ca-dev112.us.oracle.com (ca-dev112.us.oracle.com [10.129.136.47])
+	by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTP id 49qdpcpm67-1;
+	Sun, 12 Oct 2025 14:20:09 +0000
+From: Alok Tiwari <alok.a.tiwari@oracle.com>
+To: christianshewitt@gmail.com, michael.riesch@wolfvision.net, robh@kernel.org,
+        s.hauer@pengutronix.de, dri-devel@lists.freedesktop.org,
+        simona@ffwll.ch, airlied@gmail.com, tzimmermann@suse.de,
+        mripard@kernel.org, hjc@rock-chips.com, heiko@sntech.de,
+        andy.yan@rock-chips.com, maarten.lankhorst@linux.intel.com
+Cc: alok.a.tiwari@oracle.com, linux-arm-kernel@lists.infradead.org,
+        linux-rockchip@lists.infradead.org
+Subject: [PATCH v2] drm/rockchip: vop2: use correct destination rectangle height check
+Date: Sun, 12 Oct 2025 07:20:01 -0700
+Message-ID: <20251012142005.660727-1-alok.a.tiwari@oracle.com>
+X-Mailer: git-send-email 2.50.1
 MIME-Version: 1.0
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1117,Hydra:6.1.9,FMLib:17.12.80.40
+ definitions=2025-10-12_05,2025-10-06_01,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0 mlxlogscore=999
+ malwarescore=0 mlxscore=0 spamscore=0 suspectscore=0 phishscore=0
+ bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2510020000 definitions=main-2510120075
+X-Authority-Analysis: v=2.4 cv=SK9PlevH c=1 sm=1 tr=0 ts=68ebb91b b=1 cx=c_pps
+ a=zPCbziy225d3KhSqZt3L1A==:117 a=zPCbziy225d3KhSqZt3L1A==:17
+ a=x6icFKpwvdMA:10 a=yPCof4ZbAAAA:8 a=hxm_DrHGMFVl4YJQ088A:9 cc=ntf
+ awl=host:12091
+X-Proofpoint-GUID: StkRRQBnFKGXHAixh64KUh0QRVi1Lxh0
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMDExMDAxNiBTYWx0ZWRfX0cxlfedsE8qn
+ 1AOf75wrgH900ULgKQwNoCLGi0D0VJ4FLcyXg3AFAhVqsdI/NwYmpcq1QqsR0HxF6Wy+a3mS6Dc
+ h3xMPCUjzBKKB2/JZFPRsweoj226hnM4xordj5G9KZScNca9hgmc0f/LBF7udk+bsw15kj4iClV
+ Ptw6IBrzkAksZQpyQNRlsa+TdsnH+ywLBS51U1My9IMhJjEgy5sNrDDfS4pTJz9GP+sXY09fDVf
+ v210AJAaMo/qRXWileO2hRgZA//sP9unehQE+Eb3bBCICRgByx8wT7IsPISlo8FG0Fm7jf6QPIS
+ GpVnA60grTOlTgwDbTcTDq0+cYAgUa/YpeTseMq/vHwXlds1pyL6ieFZCoMHwNeDNIzJ39ecTsx
+ 23kUFR41qMNGhfvABo17GOKIZn+PiZ1C4fxRAR9ZpC++QU6SO8w=
+X-Proofpoint-ORIG-GUID: StkRRQBnFKGXHAixh64KUh0QRVi1Lxh0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251012_053343_899827_9A3E4823 
-X-CRM114-Status: UNSURE (   9.49  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251012_072023_518725_D6C498B6 
+X-CRM114-Status: GOOD (  11.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,31 +107,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Fix typo into regulator GPIO definition. With current
- definition - PCIe don't up. Valid definition have on
- "pinctrl" section, "pcie_drv" (gpio4, RK_PB1).
+The vop2_plane_atomic_check() function incorrectly checks
+drm_rect_width(dest) twice instead of verifying both width and height.
+Fix the second condition to use drm_rect_height(dest) so that invalid
+destination rectangles with height < 4 are correctly rejected.
 
-Fixes: bfbc663d2733a ("arm64: dts: rockchip: Add BigTreeTech CB2 and Pi2")
-Signed-off-by: Andrey Leonchikov <andreil499@gmail.com>
+Fixes: 604be85547ce ("drm/rockchip: Add VOP2 driver")
+Signed-off-by: Alok Tiwari <alok.a.tiwari@oracle.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-cb2.dtsi | 2 +-
+v1 -> v2
+fix typo drm_rect_heigh -> drm_rect_height
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-cb2.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-cb2.dtsi
-index 7f578c50b4ad..f74590af7e33 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-cb2.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-cb2.dtsi
-@@ -120,7 +120,7 @@ vcc3v3_pcie: regulator-vcc3v3-pcie {
- 		compatible = "regulator-fixed";
- 		regulator-name = "vcc3v3_pcie";
- 		enable-active-high;
--		gpios = <&gpio0 RK_PB1 GPIO_ACTIVE_HIGH>;
-+		gpios = <&gpio4 RK_PB1 GPIO_ACTIVE_HIGH>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pcie_drv>;
- 		regulator-always-on;
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+index b50927a824b4..7ec7bea5e38e 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+@@ -1031,7 +1031,7 @@ static int vop2_plane_atomic_check(struct drm_plane *plane,
+ 		return format;
+ 
+ 	if (drm_rect_width(src) >> 16 < 4 || drm_rect_height(src) >> 16 < 4 ||
+-	    drm_rect_width(dest) < 4 || drm_rect_width(dest) < 4) {
++	    drm_rect_width(dest) < 4 || drm_rect_height(dest) < 4) {
+ 		drm_err(vop2->drm, "Invalid size: %dx%d->%dx%d, min size is 4x4\n",
+ 			drm_rect_width(src) >> 16, drm_rect_height(src) >> 16,
+ 			drm_rect_width(dest), drm_rect_height(dest));
 -- 
-2.51.0
+2.50.1
 
 
 _______________________________________________
