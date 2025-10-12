@@ -4,80 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7AB0CCD184
-	for <linux-rockchip@archiver.kernel.org>; Sun, 12 Oct 2025 03:13:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1AACCCD187
+	for <linux-rockchip@archiver.kernel.org>; Sun, 12 Oct 2025 09:32:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8HHChM2scUyIfouhD1yQIq8236QwJskG/F1qSKWFEJ0=; b=tXosiyKOSiHYcZ
-	5jj02Yh5i6HeruWXjn9pSLG2wsQTUpVEttwk3Nf45FNYEmV/jmttMFJjqBFXQkhgLb+Ww/PsLT/qQ
-	/Q3gYxypTBEg4qni4D1XxSHV0XAdfqXtfLqYCnpBUMe0EHKTHyw8voIZR3Zl/viemdYHqiQG+LEfG
-	POZM1RqkV5VsWzMtmi/yKQtisyfqNo0oDMUn7xE7+VP1txZMYg5onaK4td/h0C+ArpYp+Fp1nw3cN
-	IjVSCnEjbmi7V5thgaqiW8qSwbXEQsnap/bmuw/xNevsay4GonfdC7ntPjRF2T/7R+e0tEOSks1rL
-	aiPdyCeAoOgEHPIggUdQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=jxz5GzJSbolftZi4VxbruthJi4n55ftFWqor36zTqUg=; b=Uv8UXi5SRYuS3r
+	hob1R7qEa1NIr2eNCkw469skxAUdPb8x9cDeUbw5iQW6kn7lBgSadVSW4i9IlpUettoctZ0BK2B6r
+	YZA4zPSuAcvXrFQtt/+57Nk1qJ4MXnX8KFPQgpHtFOS2CBjjK0Mzr7RQGUNrQgtT68PA9g5FnMGQR
+	a7nCNvZliVDcc6shZ51Esz45Kekhn/ojGVh5tISsOrpwxuFmgI2vyNXlZ+QB6Zpj3e1HbWYP1GHjW
+	qu1hYnueHpMtolfOTD0jyrWLAYFLOdLdGTD9ww4uq8oXxVGTtxgOx8VjtTOxwjhNXqqMu89cOBikn
+	Haa0nZufpYU2TaRa5udA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v7mWJ-0000000B2U4-468D;
-	Sun, 12 Oct 2025 03:13:15 +0000
-Received: from mgamail.intel.com ([192.198.163.15])
+	id 1v7sR1-0000000BDYJ-2sGD;
+	Sun, 12 Oct 2025 09:32:11 +0000
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v7mWG-0000000B2So-0ySc;
-	Sun, 12 Oct 2025 03:13:13 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1760238792; x=1791774792;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=LgCBazIKENUMWDtTVXVJ1949c/UQTOe/HuPTUIj7gzU=;
-  b=XtinH/6xvJMopCAPbf1nxuSqsU8n9o9XQWFRhXPMrCH2ipvIiciRxSkL
-   Zb2cyAEdrMkiw219lAHDF7LvIKml2uxrNNPydR9j6m0892FJjpJeX2Jwv
-   ni3NflNCy6LCMvN+wfPJaaoRZyFoMulZCssBb8+5OrScFe/7BeiFldJ4D
-   vqcCLxq/N0jDNnPjVEjFDXZPFDtmgOtUjo5OGm7MPbLA83MT5YPcXo1IX
-   AYv7d6N8bficlzN60gkya64Bnj4JdU9xBS0GfIycVsSY+hDB2PIh4WpIT
-   RqnCzQ9744/b0sZ9ZGuOfsqxPQd1iOmrrRDrUQd+rsx7B+m6wdSGt+O8i
-   g==;
-X-CSE-ConnectionGUID: s2S250s2SqOfEor0rtdR4w==
-X-CSE-MsgGUID: pFrEeBeXTp+oMCgAWylF2w==
-X-IronPort-AV: E=McAfee;i="6800,10657,11579"; a="62510338"
-X-IronPort-AV: E=Sophos;i="6.19,222,1754982000"; 
-   d="scan'208";a="62510338"
-Received: from fmviesa004.fm.intel.com ([10.60.135.144])
-  by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Oct 2025 20:13:07 -0700
-X-CSE-ConnectionGUID: QdHrMtJ9SPmASB0zARVHzA==
-X-CSE-MsgGUID: mgmTFntXSbm6mXD79aJaQg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.19,222,1754982000"; 
-   d="scan'208";a="186583057"
-Received: from lkp-server01.sh.intel.com (HELO 6a630e8620ab) ([10.239.97.150])
-  by fmviesa004.fm.intel.com with ESMTP; 11 Oct 2025 20:13:03 -0700
-Received: from kbuild by 6a630e8620ab with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1v7mW5-0004AR-0j;
-	Sun, 12 Oct 2025 03:13:01 +0000
-Date: Sun, 12 Oct 2025 11:12:23 +0800
-From: kernel test robot <lkp@intel.com>
-To: Alok Tiwari <alok.a.tiwari@oracle.com>, michael.riesch@wolfvision.net,
-	robh@kernel.org, s.hauer@pengutronix.de,
-	dri-devel@lists.freedesktop.org, simona@ffwll.ch, airlied@gmail.com,
-	tzimmermann@suse.de, mripard@kernel.org, hjc@rock-chips.com,
-	heiko@sntech.de, andy.yan@rock-chips.com,
-	maarten.lankhorst@linux.intel.com
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	alok.a.tiwari@oracle.com, linux-arm-kernel@lists.infradead.org,
+	id 1v7sQz-0000000BDXf-0nC6
+	for linux-rockchip@lists.infradead.org;
+	Sun, 12 Oct 2025 09:32:10 +0000
+Received: by mail-ed1-x531.google.com with SMTP id 4fb4d7f45d1cf-6318855a83fso7433428a12.2
+        for <linux-rockchip@lists.infradead.org>; Sun, 12 Oct 2025 02:32:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1760261527; x=1760866327; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=2mWiXoQDcNyCG/Y7xyEyX/kKrmiQYrpx8gb/fQ9TCTQ=;
+        b=lezAkIR3gnMr4e+tf44kp/e2txAtRhrNq//N0lDolfEc+bXWuH6mUaoY9+2EVrcg45
+         wBGCsY7EyEt4qowTUZ0jhhTDR7uZEwuArOEI6wwZnVOhllG2f97TDUilSJGH6IjAcpFD
+         WHpy8IpVBRKWCz231Rm6T5DkYwLVh/yz6NV+63FHNI6CjjuoOjA43pkbfeqkrQKJDQS5
+         NHinVrOoXdQ06rv7tFkeAUczXZLeahaGBw1KJBbgM0VNbW06MOOQFh08xOSyd9PE11Z1
+         aLaqBqQPmlPcTNzHYVT8VG7ImL4TrrhZ2FyxLCPul/eSPH6uawGWdyyahJXIHxT2ZoA5
+         H9vQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1760261527; x=1760866327;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=2mWiXoQDcNyCG/Y7xyEyX/kKrmiQYrpx8gb/fQ9TCTQ=;
+        b=IZMGI1HlLrHfHK5VvpqfIyckm1fW8NKXQhT+O6l+01eaFoPP1Lx1cOTYk8Zd3M35wU
+         gPtRARvV2ZxUeuR2jV1TLkIY/2GLjs68ngQnuQJifTdf/5BVt2IVAhl6nxPYyUKOSu3Z
+         QvkNJjncs4n8o0GOBhQQs+nTmvekH4qyYYfDmno8m5niGWWeAnrHaXwIHE5SGMfEE1Ls
+         3PQbYRsOjacVm3VN42RbEFOgz2BO+0jjH4/cGJXkbpO/E8tBTzNEB2omoIZH+pqOHbvL
+         0Hq8Lwc7MFqF2Ury5Dnq9kh12MCiU/bUQP3mVx84sEOG6Hm0/b47ZDB+6bkiwg/799Zd
+         x1ew==
+X-Forwarded-Encrypted: i=1; AJvYcCUtNSsQ8x/yJx0rTdr8obvE/mEIQfeZJsjE4QIuLXP6uibKkneLBXZthWZzBU5cijGIHkvmWddJO6DqFQVtGg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz+qBWWl0OLHZkjSz2SSjCAzzm+yCnIcFLm6v9fCzp4QfejvuSz
+	M22sOuleTsRD506ZN93VtC+ZNamivvDCsBVl72dcgFR7vj1fRyDPrfQ0
+X-Gm-Gg: ASbGncutQ0CgkdpxSyy2oYKC34sO63GsVYWkBTsrl1cZoHIZNzRQONlmhGhjPVOEhWj
+	AFEjTrSS49loRwxLv9eAIkC1o2JERe1MRkNwsjD7QKg+Bmal/p2fl5PdG7/Yqug9FAYVmwHqJC5
+	Zw6HiN36oEFcoe2sosfkYplOSO7NqBIq/EFeJ/hT025YFeQi8wF5/HqrO4Tc01p1DrvNy/Pb/FR
+	cpy/XSIzN7BUbFJNnH6dFkaN/Jjuer702mw1xv2m5uriifAxMtW/SnXn35eezYFn2Oo0zq9sOlB
+	p7VcsA00dz3R8Jw8M1n4v07pvbeKKJqSLYozZECP1qHkNPqFvcmmISPMK4I5ZHhi75UlxR6Kfaa
+	Hfzd0Pn570CCBGX+D+8vRS7uTRz4KkfEnImr6kqmAsIlypOTa/Eg8o/EhGff3WMLAatNc4RsdNW
+	NN
+X-Google-Smtp-Source: AGHT+IHAMPc4GhHxYPiu7DN/dGgE3XL8AkmpYnNc4zzqqyTd0Vqq0XFfmmQ8/O+jhhO8SpuritDGUg==
+X-Received: by 2002:a05:6402:27cd:b0:63a:35c:6ec4 with SMTP id 4fb4d7f45d1cf-63a035c73cemr10344738a12.21.1760261526877;
+        Sun, 12 Oct 2025 02:32:06 -0700 (PDT)
+Received: from HomePC (89-67-214-154.dynamic.play.pl. [89.67.214.154])
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-63a5c323423sm6331597a12.42.2025.10.12.02.32.04
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 12 Oct 2025 02:32:06 -0700 (PDT)
+From: Andrey Leonchikov <andreil499@gmail.com>
+To: devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH] drm/rockchip: vop2: use correct destination rectangle
- height check
-Message-ID: <202510121013.tqU2DAEC-lkp@intel.com>
-References: <20251011130450.123444-1-alok.a.tiwari@oracle.com>
+Cc: Andrey Leonchikov <andreil499@gmail.com>,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	heiko@sntech.de
+Subject: [PATCH] dt-bindings: arm: rockchip: Fix PCIe power enable pin for BTT CB2 and Pi2
+Date: Sun, 12 Oct 2025 11:31:26 +0200
+Message-ID: <20251012093135.80395-1-andreil499@gmail.com>
+X-Mailer: git-send-email 2.51.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20251011130450.123444-1-alok.a.tiwari@oracle.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251011_201312_339880_53AD25E4 
-X-CRM114-Status: GOOD (  13.57  )
+X-CRM114-CacheID: sfid-20251012_023209_236324_4F513E3A 
+X-CRM114-Status: UNSURE (   8.80  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,120 +103,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Alok,
+Fix typo into regulator GPIO definition. With current
+definition - PCIe don't up. Valid definition have on
+"pinctrl" section, "pcie_drv" (gpio4, RK_PB1).
 
-kernel test robot noticed the following build errors:
+Signed-off-by: Andrey Leonchikov <andreil499@gmail.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-cb2.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-[auto build test ERROR on rockchip/for-next]
-[also build test ERROR on linus/master v6.17 next-20251010]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/Alok-Tiwari/drm-rockchip-vop2-use-correct-destination-rectangle-height-check/20251011-210653
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git for-next
-patch link:    https://lore.kernel.org/r/20251011130450.123444-1-alok.a.tiwari%40oracle.com
-patch subject: [PATCH] drm/rockchip: vop2: use correct destination rectangle height check
-config: sparc64-randconfig-001-20251012 (https://download.01.org/0day-ci/archive/20251012/202510121013.tqU2DAEC-lkp@intel.com/config)
-compiler: clang version 20.1.8 (https://github.com/llvm/llvm-project 87f0227cb60147a26a1eeb4fb06e3b505e9c7261)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20251012/202510121013.tqU2DAEC-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202510121013.tqU2DAEC-lkp@intel.com/
-
-All errors (new ones prefixed by >>):
-
->> drivers/gpu/drm/rockchip/rockchip_drm_vop2.c:1034:34: error: call to undeclared function 'drm_rect_heigh'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-    1034 |             drm_rect_width(dest) < 4 || drm_rect_heigh(dest) < 4) {
-         |                                         ^
-   drivers/gpu/drm/rockchip/rockchip_drm_vop2.c:1034:34: note: did you mean 'drm_rect_height'?
-   include/drm/drm_rect.h:196:19: note: 'drm_rect_height' declared here
-     196 | static inline int drm_rect_height(const struct drm_rect *r)
-         |                   ^
-   1 error generated.
-
-
-vim +/drm_rect_heigh +1034 drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-
-   991	
-   992	static int vop2_plane_atomic_check(struct drm_plane *plane,
-   993					   struct drm_atomic_state *astate)
-   994	{
-   995		struct drm_plane_state *pstate = drm_atomic_get_new_plane_state(astate, plane);
-   996		struct drm_framebuffer *fb = pstate->fb;
-   997		struct drm_crtc *crtc = pstate->crtc;
-   998		struct drm_crtc_state *cstate;
-   999		struct vop2_video_port *vp;
-  1000		struct vop2 *vop2;
-  1001		const struct vop2_data *vop2_data;
-  1002		struct drm_rect *dest = &pstate->dst;
-  1003		struct drm_rect *src = &pstate->src;
-  1004		int min_scale = FRAC_16_16(1, 8);
-  1005		int max_scale = FRAC_16_16(8, 1);
-  1006		int format;
-  1007		int ret;
-  1008	
-  1009		if (!crtc)
-  1010			return 0;
-  1011	
-  1012		vp = to_vop2_video_port(crtc);
-  1013		vop2 = vp->vop2;
-  1014		vop2_data = vop2->data;
-  1015	
-  1016		cstate = drm_atomic_get_existing_crtc_state(pstate->state, crtc);
-  1017		if (WARN_ON(!cstate))
-  1018			return -EINVAL;
-  1019	
-  1020		ret = drm_atomic_helper_check_plane_state(pstate, cstate,
-  1021							  min_scale, max_scale,
-  1022							  true, true);
-  1023		if (ret)
-  1024			return ret;
-  1025	
-  1026		if (!pstate->visible)
-  1027			return 0;
-  1028	
-  1029		format = vop2_convert_format(fb->format->format);
-  1030		if (format < 0)
-  1031			return format;
-  1032	
-  1033		if (drm_rect_width(src) >> 16 < 4 || drm_rect_height(src) >> 16 < 4 ||
-> 1034		    drm_rect_width(dest) < 4 || drm_rect_heigh(dest) < 4) {
-  1035			drm_err(vop2->drm, "Invalid size: %dx%d->%dx%d, min size is 4x4\n",
-  1036				drm_rect_width(src) >> 16, drm_rect_height(src) >> 16,
-  1037				drm_rect_width(dest), drm_rect_height(dest));
-  1038			pstate->visible = false;
-  1039			return 0;
-  1040		}
-  1041	
-  1042		if (drm_rect_width(src) >> 16 > vop2_data->max_input.width ||
-  1043		    drm_rect_height(src) >> 16 > vop2_data->max_input.height) {
-  1044			drm_err(vop2->drm, "Invalid source: %dx%d. max input: %dx%d\n",
-  1045				drm_rect_width(src) >> 16,
-  1046				drm_rect_height(src) >> 16,
-  1047				vop2_data->max_input.width,
-  1048				vop2_data->max_input.height);
-  1049			return -EINVAL;
-  1050		}
-  1051	
-  1052		/*
-  1053		 * Src.x1 can be odd when do clip, but yuv plane start point
-  1054		 * need align with 2 pixel.
-  1055		 */
-  1056		if (fb->format->is_yuv && ((pstate->src.x1 >> 16) % 2)) {
-  1057			drm_err(vop2->drm, "Invalid Source: Yuv format not support odd xpos\n");
-  1058			return -EINVAL;
-  1059		}
-  1060	
-  1061		return 0;
-  1062	}
-  1063	
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-cb2.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-cb2.dtsi
+index 7f578c50b4ad..f74590af7e33 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-cb2.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-cb2.dtsi
+@@ -120,7 +120,7 @@ vcc3v3_pcie: regulator-vcc3v3-pcie {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "vcc3v3_pcie";
+ 		enable-active-high;
+-		gpios = <&gpio0 RK_PB1 GPIO_ACTIVE_HIGH>;
++		gpios = <&gpio4 RK_PB1 GPIO_ACTIVE_HIGH>;
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&pcie_drv>;
+ 		regulator-always-on;
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+2.51.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
