@@ -4,74 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E3A6CCD183
-	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Oct 2025 14:15:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81147CCD190
+	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Oct 2025 14:15:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OJoz1EdZFMNTFED+dDwHggns4ulA6Bvc+7E6F/uacQQ=; b=E1RjEt+fd+s9Bg
-	ncceOJ+usqhDdopJJis3gfjjwCfl4q4ja/DRXsBBN2GJDQPyVcMNnINFbtEXCUnvmxFFurpStnsku
-	UP9iCEJF72QN7wIMrF74etp3prSuQkoTahiDRAmld4jkEZMI5CDA9/kGLnOP0av9vTGxXTTnLNEnO
-	/te+AHISuDFoZCtKxyfYUxJMm+eQIAWKW0ROTkCqBhy8FM8IrJk1vfmq6fa7vAubKnu6dpevNLfA0
-	ya5L3DOxX72p1E91jX8xSeSBJDRV7hjwAWVxW0VhN2rGmQxrRBI3/iJXLjAsxQsqGpNC95l2THxVz
-	dlDdmlk9zpllM+/THqfA==;
+	List-Owner; bh=bPabUamlRigNODYEKk77YZZ+Mi/y4gXSmJhhUAMcKfQ=; b=GOTi41f1zft6cG
+	steUUVPvCjDH/rKSwaEo+hR/TIhchU4lTyhvxQoK2J9MbY0pQ1IuQL5RCDiir83VaMVyQF9D2BbjN
+	EKIV2aJqWK+sBs9efn2gb60NGEZOQtnVrxetnqebZzV0Q6oetLcLwc+dOFndtU5Mi6wQkf6Kl756Q
+	ZDppvIaDuL3Im1qBTI3AkeWXa0ZF0JsydFeFBLfmyTlGvpLcSXfCndWtdoQeP2C6UOVQy6gZCz5VF
+	Gee62X3qPD3NyjklXHc68ydeQs6/w7UO1kPukeX92QSwSKXZoxk2pfbv7lhCX9BAU8Vx9+MtdH5aD
+	Lh0PRgF8fqMFKmAeFFng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8JKO-0000000DKvo-1Sdo;
-	Mon, 13 Oct 2025 14:15:08 +0000
-Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
+	id 1v8JKP-0000000DKyJ-0y84;
+	Mon, 13 Oct 2025 14:15:09 +0000
+Received: from mail-lf1-f44.google.com ([209.85.167.44])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8JKA-0000000DKVB-11l8
+	id 1v8JKB-0000000DKXw-3qnX
 	for linux-rockchip@lists.infradead.org;
 	Mon, 13 Oct 2025 14:14:58 +0000
-Received: by mail-lf1-x12e.google.com with SMTP id 2adb3069b0e04-57ea78e0618so4953151e87.0
-        for <linux-rockchip@lists.infradead.org>; Mon, 13 Oct 2025 07:14:53 -0700 (PDT)
+Received: by mail-lf1-f44.google.com with SMTP id 2adb3069b0e04-57ea78e0618so4953187e87.0
+        for <linux-rockchip@lists.infradead.org>; Mon, 13 Oct 2025 07:14:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1760364892; x=1760969692; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1760364893; x=1760969693; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=oDkvCYuJbKI5HTEwyE65VkdYWfgRYyc1U+blXUUQVgU=;
-        b=IehhBZeBYpcrKc7UGyBtpAVescvpvrJOW0pHOP2cGBMFgFTd96vxbEjLRL1iKoIKRD
-         uGzuBv8iVz80e4tYbUrJG/ZlnB3mPqi0YPWUg5nLy8pEc5J+lJY+8Lci4XiwW67ziAXA
-         gMPWlPLCudLNtOpDFbem6Rulmu166WFDgibBs=
+        bh=9T8mO4GmxU6Sp5lObaHqxq0/smUXIq4FXIudPa6OeB0=;
+        b=e47GQCNzQGzMpsKjju9KuHYyKdXoaRy5QNo6vpVuoYND6/28WFvjZE+o3pJTyXJgHM
+         S9kCBIhYNNhZx+CT9aKWsVeIV4ohEEToLxUOSC0xz96BNNwU58/5fxQU51XMumcO44AF
+         neZLYoWhjgVK6HP5t3wmptSDt4eI7lsqK3TGQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1760364892; x=1760969692;
+        d=1e100.net; s=20230601; t=1760364893; x=1760969693;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=oDkvCYuJbKI5HTEwyE65VkdYWfgRYyc1U+blXUUQVgU=;
-        b=t8pmKizHmUFHUi+dJH9GD2YirdL7JUEiOIJrE9XGfcjORuTzmgjN+1TNY1SxqWfVNS
-         A5f5Nm+N2yIb1yihZDe3+9MMTZxh78UD9MnpXaO7ujVlrQWNQMmk1tfg6ls7lbpQFO+8
-         EHqfV2C5wRPbqCT8c3aIwBz3EHhLcslG/1ozUczilKFklYxppEiSCNy6EO5n+dFnLj3l
-         n+JxjOm24Jdxf/TUmfUVZQCPoXl6uoiP+iIodWwucTR0OlNThk0ygWT1YC592doBGIlT
-         /IljByf9N5ZRTDipZtMAeVeIutbVckL0esgwJicHb8Vq+/GoW4EF7X7ps1guT72i9LUl
-         qHKA==
-X-Forwarded-Encrypted: i=1; AJvYcCXSPOohYXSdPPm7JvmJNweCgkGbgEYFTBcfF3u9R1Lr+v/d9M4FgbGVFBESsciZ/N7/8y5fQp3mZSNuPWzWmQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyR/noY2ajKv/AnivbxB9XxdQwxAj57NQH0Hq94FVtseMIirXlJ
-	cdMwrWiAg4AB6a4+iGoGjkLhKYDNZQxKPrXNePBJTzjp1G66BIw3qj5dK2EbuAV3NQ==
-X-Gm-Gg: ASbGnct7+aASSmo5qnVol/RS4IcKM5FC+pa2N13RUvKBdJAbrCAtir+cu/QX00V+ayz
-	DwzPyBwglYa91rAknzkgBCv5Zer+P0oxej7jLY0rZhVXWqPmmMkTYFH62QRKbcD31YQVUBqJCJ7
-	T0b9+xmntko6uJiZNpGS7MW4cd4+b76P7A7RgLYFzL0oOoesSIkXYsel4rzn2cBk9+h6r2Jsaqc
-	DmWLTA2YmJ5QX7gHMfifKh5CRJnmTS3zGmigS6aL1/JBjug8iaB5nsL/uPlX9T1zXDEEsXPe9YU
-	rETdWFPiqsfTxM1iJGWAeJ9e/baG/k7qEvPashB0czSmOK7N3MvnKIvB8JQXrTZesP+qCc285pP
-	jOK+bR1P6cBFDwE0ROzJxkeEXKtR8exIZmKuC2IgqO5F2AEQJnEApACExGXoviXMUuMNWZgs3KF
-	hIJlgf5ui+zbZp7vOoLA==
-X-Google-Smtp-Source: AGHT+IERp0UGzsms3m0FKqLtDNsdKrYzy/yeu64vwUTfcVOJBQFfqT4aKP9avdaubkT+3l9KavisJQ==
-X-Received: by 2002:a05:6512:6192:b0:579:f4b3:bc3c with SMTP id 2adb3069b0e04-5906de86e2fmr5500248e87.55.1760364892337;
-        Mon, 13 Oct 2025 07:14:52 -0700 (PDT)
+        bh=9T8mO4GmxU6Sp5lObaHqxq0/smUXIq4FXIudPa6OeB0=;
+        b=YWmngSKANRg/rqw1080qNrUBGuwuDEu7Pc/sOClHxq5yeqsdPw0FqVxiTfkmjC2kD5
+         GiNmqwcddMN3RKV9GMZCv/oRAhRfrRNr18rs9YF/20qD9nlFtGPDEd2xz5Cj94xaYrpy
+         yoVwDXtX6O2iiAAjhWh1kgoZPL/JKawvFqtwfMMhumo5t630+WjYputtYOJGRWBUAIni
+         aVUYCQs9EUwzDWDwbXXCW4oxAZ84SpH8zBJNxKN1Y4hWJe0GnZ+kqBQKD57etYmIsATI
+         qOx3nxcr0oE+ZHFqevdWS4pEipvBYu6IdIm8R1VZXfrU8DhBhNlTNuPyNUBWcJo+CZ0j
+         x0zw==
+X-Forwarded-Encrypted: i=1; AJvYcCWWwG8tC3Ty4frIUfOmkTTK8k5cqbm964lT12Q5xJz1JCqz46SH+8i2m67akoP8Ud3l+QaqVePerg/z5wG6NA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwWrexAAR6GkVQYDbvvXHAA7jgrg7QEYovnEnILppLu4W4p41i+
+	FykRAAzoWYh04MObRwo50fTYHdK89Pkp1+qg+yAf9YP9XMOsM87T2zTY7aGqV9i+Zw==
+X-Gm-Gg: ASbGncsqCmobuENEOvpe9ThIP4YdUdGEaCwfTuRBXkhkNO+0THKunTmJ+E4Gw5rs1iN
+	Yv55/XUo2VKd043lUVfZP5LinDZ0qRIcVMMU3sWuSIHG9lRrYD1im2wvdtsD8kldD+cMFjJxVvg
+	lhOuRDOpFu99i+j0WrWOQi2fvevIMI4fsHNXy/03Oz8GTVe1yTNX2KdI9M5D8sljsvLWRzqWzG2
+	SicKmugdPzMA0Pl1UGtvAummq3uSlObm6H3qwMreXYwTtHwv13tPEUs3jN322eiRnMdB3Hjy/Os
+	gtNkzTm2vYqcq0ps5q0OP+udctbKo9LlsXRUFIAD9yvJVFywu99zNxNA58oLyWK2LGIb5bUWDac
+	Iy4x7kJ6bMVPJs9rhh9YqO4RIFEC7MPtXJiXONDfiQRrmdjdrNsl0A34LN27Syw7hY+UifnTvbM
+	0S+hf70koEV1gDhAIcyKe1cDtqSVZ5
+X-Google-Smtp-Source: AGHT+IF29XnVuKewIk2Zn4qpOdHSO/Y/bSkdxJ/SAd2VXfC5cMU7PSQseV2CsRuBBvo11GHLWuTn2Q==
+X-Received: by 2002:a05:6512:3d14:b0:55f:4633:7b2 with SMTP id 2adb3069b0e04-5906dd73db3mr5724883e87.46.1760364893403;
+        Mon, 13 Oct 2025 07:14:53 -0700 (PDT)
 Received: from ribalda.c.googlers.com (56.213.88.34.bc.googleusercontent.com. [34.88.213.56])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-590881e4e58sm4165256e87.25.2025.10.13.07.14.51
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-590881e4e58sm4165256e87.25.2025.10.13.07.14.53
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 13 Oct 2025 07:14:52 -0700 (PDT)
+        Mon, 13 Oct 2025 07:14:53 -0700 (PDT)
 From: Ricardo Ribalda <ribalda@chromium.org>
-Date: Mon, 13 Oct 2025 14:14:44 +0000
-Subject: [PATCH 04/32] media: adv7842: Use %pe format specifier
+Date: Mon, 13 Oct 2025 14:14:46 +0000
+Subject: [PATCH 06/32] media: ccs: Use %pe format specifier
 MIME-Version: 1.0
-Message-Id: <20251013-ptr_err-v1-4-2c5efbd82952@chromium.org>
+Message-Id: <20251013-ptr_err-v1-6-2c5efbd82952@chromium.org>
 References: <20251013-ptr_err-v1-0-2c5efbd82952@chromium.org>
 In-Reply-To: <20251013-ptr_err-v1-0-2c5efbd82952@chromium.org>
 To: Linus Walleij <linus.walleij@linaro.org>, 
@@ -119,8 +119,8 @@ Cc: linux-input@vger.kernel.org, linux-kernel@vger.kernel.org,
  Ricardo Ribalda <ribalda@chromium.org>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251013_071454_349146_5B63CEF9 
-X-CRM114-Status: GOOD (  12.74  )
+X-CRM114-CacheID: sfid-20251013_071456_025931_D808DE37 
+X-CRM114-Status: GOOD (  11.93  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -142,26 +142,38 @@ a symbolic error name (eg. -EINVAL) and it makes the code simpler by
 omitting PTR_ERR()
 
 This patch fixes this cocci report:
-./i2c/adv7842.c:3470:16-23: WARNING: Consider using %pe to print PTR_ERR()
+./i2c/ccs/ccs-core.c:3241:3-10: WARNING: Consider using %pe to print PTR_ERR()
+./i2c/ccs/ccs-core.c:3298:3-10: WARNING: Consider using %pe to print PTR_ERR()
 
 Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 ---
- drivers/media/i2c/adv7842.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/media/i2c/ccs/ccs-core.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/media/i2c/adv7842.c b/drivers/media/i2c/adv7842.c
-index 9780082db8415a3d65860666d0dce8399f57e4e3..a35077178a0950090369e17b4aaf9904da041a00 100644
---- a/drivers/media/i2c/adv7842.c
-+++ b/drivers/media/i2c/adv7842.c
-@@ -3466,8 +3466,8 @@ static struct i2c_client *adv7842_dummy_client(struct v4l2_subdev *sd, const cha
+diff --git a/drivers/media/i2c/ccs/ccs-core.c b/drivers/media/i2c/ccs/ccs-core.c
+index 1c889c878abd3aeb1b7a887cff29b5eb864ab057..f8523140784c7120eaf018ffa9e3b43ea12ef72f 100644
+--- a/drivers/media/i2c/ccs/ccs-core.c
++++ b/drivers/media/i2c/ccs/ccs-core.c
+@@ -3237,8 +3237,8 @@ static int ccs_probe(struct i2c_client *client)
+ 		dev_info(&client->dev, "no clock defined, continuing...\n");
+ 		sensor->ext_clk = NULL;
+ 	} else if (IS_ERR(sensor->ext_clk)) {
+-		dev_err(&client->dev, "could not get clock (%ld)\n",
+-			PTR_ERR(sensor->ext_clk));
++		dev_err(&client->dev, "could not get clock (%pe)\n",
++			sensor->ext_clk);
+ 		return -EPROBE_DEFER;
+ 	}
  
- 	cp = i2c_new_dummy_device(client->adapter, io_read(sd, io_reg) >> 1);
- 	if (IS_ERR(cp)) {
--		v4l2_err(sd, "register %s on i2c addr 0x%x failed with %ld\n",
--			 desc, addr, PTR_ERR(cp));
-+		v4l2_err(sd, "register %s on i2c addr 0x%x failed with %pe\n",
-+			 desc, addr, cp);
- 		cp = NULL;
+@@ -3294,8 +3294,8 @@ static int ccs_probe(struct i2c_client *client)
+ 
+ 	sensor->regmap = devm_cci_regmap_init_i2c(client, 16);
+ 	if (IS_ERR(sensor->regmap)) {
+-		dev_err(&client->dev, "can't initialise CCI (%ld)\n",
+-			PTR_ERR(sensor->regmap));
++		dev_err(&client->dev, "can't initialise CCI (%pe)\n",
++			sensor->regmap);
+ 		return PTR_ERR(sensor->regmap);
  	}
  
 
