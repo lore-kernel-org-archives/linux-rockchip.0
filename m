@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 821C1CCD194
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 635C0CCD18E
 	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Oct 2025 14:15:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,66 +12,66 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fzk71xtHdb2VXmwWKXzN/N7ME6xzYE5XnjkE9qrT7Do=; b=yZPTWQPGmTqK5R
-	n8yDTk5F8+QKKc9fLFKMgWZTR8kIs0QOI+NeZ48GIVUFQhsdoAodUU8+OpKcrzdJV2BNESFWs6/wv
-	p82KsHbGomgxlcnjHHl3ODUEiLv9F8A5rmXA3a7p2ufvDu/4QB0wvOBctQrV2lD52339cyGFbMQqW
-	uS0nIU2waJTrDPY1cy7Z9qRnKtdjtGoViFw2stl6DbdW438OCKOGY59ixVv4iga3GBUryWqyXWWGO
-	GOH0rOizKZ18lzi6HMngDtEjdP3UBRJIOX5hnDU99nGC7u4RYzMYkeFeDV4t7/XM2/girc2OgSNMm
-	F2hOfOUvk1mjWSg2nmOA==;
+	List-Owner; bh=91+dYAu2MNxONB2upGCXIGD77H2wHqcGx7Q9bPGMjTw=; b=O2ffVQPIr3vGd2
+	pWFQ2E62he2PP8YxakJXMhP9JX1hUPRDA73RZJFkI0bttbr0nr5ub/XbPsprP8XYVM10LIGxYfK/B
+	RvykSDw19hYMynzcXWuPZ4JBfREROAxcriFKLsGBEvI97kNxlJ66WZfgiZyRYnWg3DakuvOkEe/dH
+	Oh6oehKdcsbYrKYHv9eYgJk9WDXZn615m+AhTNHk//UeY4BON3E00XgwHthI12mcfk5wj6tVfm/BQ
+	92hUlX5MoMuVUGhDRYmmT/c1G9Pb6N9caw21RWJiGmxYB0kz7d6HyPfJNKpUeiltyuEvaBoe7k0jI
+	knPc9aEzJFHp9JVyJ7RA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8JKz-0000000DM2B-1nbe;
-	Mon, 13 Oct 2025 14:15:45 +0000
-Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
+	id 1v8JKy-0000000DLzS-1L5C;
+	Mon, 13 Oct 2025 14:15:44 +0000
+Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8JKO-0000000DKtw-3pGZ
+	id 1v8JKO-0000000DKtD-1nWf
 	for linux-rockchip@lists.infradead.org;
 	Mon, 13 Oct 2025 14:15:10 +0000
-Received: by mail-lf1-x135.google.com with SMTP id 2adb3069b0e04-57a292a3a4bso5390505e87.3
-        for <linux-rockchip@lists.infradead.org>; Mon, 13 Oct 2025 07:15:08 -0700 (PDT)
+Received: by mail-lf1-x130.google.com with SMTP id 2adb3069b0e04-58d29830058so5245543e87.0
+        for <linux-rockchip@lists.infradead.org>; Mon, 13 Oct 2025 07:15:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1760364907; x=1760969707; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1760364906; x=1760969706; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=Smwvmk+cDkyGjYaS177QmxkSssvQt/cgmiOzwIecscI=;
-        b=E/SfB3MaibsPg3F5ga8mVRZcZz0EdQXvrLZYQze0a9g1FHFJ5iby32fbl2RRsS88yj
-         2wjsJK6pM6davn+gsXIecyfm2BvgPNTiT2ussYRNby26zEn5I14yheU1rCGHeleezMOc
-         gqsTp0Zo70+LiKJIIrK9KHV2VcHjJHk++zGfw=
+        bh=7VLNzWiaaayGbLPJ+CR/kQopGEdhcg7BnTJUn+bNJDA=;
+        b=EZrrk8Egtio1/eNZItOEff5C5q59fO0WGrXg6jBQnypES2MT8HO03afXEY4V4TIgbn
+         L3ucvqtalpV0N3Of8KdQ7BBLCwY+JsfJNctjDf39sBAeK/jUOL7HvEtBo/JZNFi5bANd
+         SA8b8KRlsOZGeM2q+6pa4TJ9eSgsPhQqbGO2w=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1760364907; x=1760969707;
+        d=1e100.net; s=20230601; t=1760364906; x=1760969706;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=Smwvmk+cDkyGjYaS177QmxkSssvQt/cgmiOzwIecscI=;
-        b=EPFQ1kNXftkBrA3YXKhHF2xNtOMo/GqptsUXe1sBi4G7xf0zRN6cAKBmglNsRTPqYW
-         YoIzGnzkZ9W8Wgbl4556sWH6VJUSrZteay9RzcrUDMsTe+D5f0NkMrNuquF9gVJDFhUf
-         8BORGMgesnYYoB4Y8x4jd66IWlH4dQ+gBu5tXusGItfAp0Qn8SBitrQxezVp43jpmpYb
-         FD0oH0tVvqvXgq4tpaZn1cc+JOcDyiDH+25Bi1UMEaZAC3CyaqYyYlTUg50V8x0HELPH
-         CpMuqt6C827LWdzMLXn81Ol3lljZ1OComg9u44AqxYfNxflQf9Set0cwLu29LtQmm2lo
-         3iog==
-X-Forwarded-Encrypted: i=1; AJvYcCVKb7c5suqqnSNfxhnCKd9YVqPILpxmJupS2pTGHohdPBq6NH7sSTs2C3wmSjWejlf+3EoEXfqTfOy0z6aSCA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxR5q+3oSbWg8e3AlcXZvGqbNeH4fYeSuDGJJhAA+73oyvEvZjm
-	4FYDoYa0TgvhEhye9sfxwSOXooiWD3UE7tc6YlabWjhy1Kvpx9agFbvThN0O941Acw==
-X-Gm-Gg: ASbGncvpao0hCrNteHj1jbBg++s/wthb6TRhrvcJVTY3jW2FOrOPsoYGOtS/hCyFn6p
-	Ej+94i8fz14vk/QuYy7RrDjI2aQ5TjTF/VxfT3bx9Ad55TIOFYQnvnt/e/m7rRJK8m63lrjfI0I
-	H7Rd2LDtvgrvbvYZc4UqOFOJRDwjyb7GZ2iIn3xsdEdHZH9hQP36yGkZZW2J6l5Ol4fOLCKiIDT
-	81chZN5hz7B98FHXF/ruP/7VEslxSr6XbQotpTlEFXi0nECcWEpoBku975Yh+B/aVUlw+7u6nOI
-	bT/TdUqxYEU3xz86r8tLip1OZ4wCuM6mGqNV165OgPOWV3d/bbZ7QvONMfzfotPTDPeRTzZ3Fca
-	sgCeIVrlZ/4YMq9MDQm9iyXZAnJKDbfGbx0m1TtA+611Bbvne3zHRvuHovHnForomzm0AEzYsJW
-	KiBQgdWaMHZ0i/jetCQA==
-X-Google-Smtp-Source: AGHT+IG0XyykaxSpAJZEJBiMkxB//rHuKsliNYYIqdi4qrxeJQYdIviCb9iwNXvzzJnUAUziWI3Chw==
-X-Received: by 2002:a05:6512:ea9:b0:585:bc5e:237c with SMTP id 2adb3069b0e04-5906dafca4dmr5906081e87.49.1760364906745;
+        bh=7VLNzWiaaayGbLPJ+CR/kQopGEdhcg7BnTJUn+bNJDA=;
+        b=dU/KDIA8/kWAYSPloBmyYhU6JHx6y9Yha53F1PreuN3o9LprIT1D9V4AZ06+eru3KD
+         FGtBA8jwhbC+Jkcb6EXbzPpoB2cDFv94Udbq8yxOmpJeFPuVZxLOYC3bOZj7mWdWBW+T
+         oDKzLU8+gwcZkvOfIztf2rDbfYNaYyaw2Nmp/J/AnN1wf8xCRdxLfdy1zoP9CAgWP3SN
+         JOweURrmZbwd3foQ0oO7hwUiSjtspCmqzReT3LYqcTSiKK4veIufnalx+qsmPAm1DlLL
+         hbKWCL0wQuVdBalsN+278f/Hodwitmqbx/A/oCsq4cHQzq6dCKKYHGaiT6ep4FwnUMDz
+         hcxg==
+X-Forwarded-Encrypted: i=1; AJvYcCUF6TpFrUsoXrr5oB9WOOdsGzj3XbVxq/46tYXMC7F1iMMSgKYkS4SI0B44SrznYU/+FdwdK9bIfzOxhkxvPA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxVwCLfBTICEk/x0VembEBa2dvBa786iRS2IHq/MkPh6CvcG/N7
+	80HcFMrqkEFbVh5pEWrwWCEXBYRK+RVEk56J5y9/wRXEossXoRP6xb2gWNkydp3faw==
+X-Gm-Gg: ASbGncuqrSBUnwodKsahwMUwJ2mXWjQz2l7aqCik5VkcmXrRt40a538bWM2W/eM7g9w
+	41RD2of5D6R8MhU4jCmie2jhIGgxQuCLUTbpeJ4Y64GJcHCQsqTR7je9T+2XlW9uP6HW3/3irce
+	hQoG+fU09uqiGPErys6jCH6dWGjoEu43D6bMhjyqgpRlUDikh3328L04TTktv1qVpwe0jt/ubCM
+	KlvqMi5uI0Ph5Fw6WuvyzGUe9Zsn5apoLr3jHNuH2Ym/v74W12NE9f/Kte6KApcdMT5geuEippN
+	0dEArZKRFxXb2LE8qhR5cj9rVXuxE4jk9r3P0ErNnVjI9Q3K0QSQxAvWQ/kwv8PWz3447DQ8w8M
+	fWfNDGu++C2RWNYdO1ZTE7uxBLQOZWUThS5j1o38gREET/khCRNHByGuOersn6bGMiYkHDEFy08
+	+L2Gvi45kcUPSvkJaa4g==
+X-Google-Smtp-Source: AGHT+IHgQ/WMhPa6rwn8Aka868vYVRu77lc4adXi44XLWG27weltH/9eVYPP+kQHy8I85fd7fOXyWw==
+X-Received: by 2002:a05:6512:3c87:b0:58b:23e:5ec with SMTP id 2adb3069b0e04-5906d8e5b43mr6011775e87.26.1760364906103;
         Mon, 13 Oct 2025 07:15:06 -0700 (PDT)
 Received: from ribalda.c.googlers.com (56.213.88.34.bc.googleusercontent.com. [34.88.213.56])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-590881e4e58sm4165256e87.25.2025.10.13.07.15.06
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-590881e4e58sm4165256e87.25.2025.10.13.07.15.05
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 13 Oct 2025 07:15:06 -0700 (PDT)
+        Mon, 13 Oct 2025 07:15:05 -0700 (PDT)
 From: Ricardo Ribalda <ribalda@chromium.org>
-Date: Mon, 13 Oct 2025 14:15:09 +0000
-Subject: [PATCH 29/32] media: samsung: exynos4-is: Use %pe format specifier
+Date: Mon, 13 Oct 2025 14:15:08 +0000
+Subject: [PATCH 28/32] media: rkisp1: Use %pe format specifier
 MIME-Version: 1.0
-Message-Id: <20251013-ptr_err-v1-29-2c5efbd82952@chromium.org>
+Message-Id: <20251013-ptr_err-v1-28-2c5efbd82952@chromium.org>
 References: <20251013-ptr_err-v1-0-2c5efbd82952@chromium.org>
 In-Reply-To: <20251013-ptr_err-v1-0-2c5efbd82952@chromium.org>
 To: Linus Walleij <linus.walleij@linaro.org>, 
@@ -119,8 +119,8 @@ Cc: linux-input@vger.kernel.org, linux-kernel@vger.kernel.org,
  Ricardo Ribalda <ribalda@chromium.org>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251013_071509_031158_4F7AD861 
-X-CRM114-Status: GOOD (  12.70  )
+X-CRM114-CacheID: sfid-20251013_071508_550046_31C36169 
+X-CRM114-Status: GOOD (  12.97  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -142,28 +142,45 @@ a symbolic error name (eg. -EINVAL) and it makes the code simpler by
 omitting PTR_ERR().
 
 This patch fixes this cocci report:
-./platform/samsung/exynos4-is/media-dev.c:1337:16-23: WARNING: Consider using %pe to print PTR_ERR()
+./platform/rockchip/rkisp1/rkisp1-isp.c:940:3-10: WARNING: Consider using %pe to print PTR_ERR()
+./platform/rockchip/rkisp1/rkisp1-csi.c:372:3-10: WARNING: Consider using %pe to print PTR_ERR()
 
 Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 ---
- drivers/media/platform/samsung/exynos4-is/media-dev.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c | 4 ++--
+ drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/media/platform/samsung/exynos4-is/media-dev.c b/drivers/media/platform/samsung/exynos4-is/media-dev.c
-index c781853586fd21996105c050e587bf8079cfc095..d6f7601de597e3d3517ef9195d728deb578e74f1 100644
---- a/drivers/media/platform/samsung/exynos4-is/media-dev.c
-+++ b/drivers/media/platform/samsung/exynos4-is/media-dev.c
-@@ -1333,8 +1333,8 @@ static int fimc_md_register_clk_provider(struct fimc_md *fmd)
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
+index 841e58c20f7fcb484643138627413425a049d1fa..ddc6182f3e4bdacdd1962c86f6259334b16aa505 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
+@@ -368,8 +368,8 @@ static int rkisp1_csi_s_stream(struct v4l2_subdev *sd, int enable)
  
- 		cp->clks[i] = clk_register(NULL, &camclk->hw);
- 		if (IS_ERR(cp->clks[i])) {
--			dev_err(dev, "failed to register clock: %s (%ld)\n",
--					init.name, PTR_ERR(cp->clks[i]));
-+			dev_err(dev, "failed to register clock: %s (%pe)\n",
-+				init.name, cp->clks[i]);
- 			ret = PTR_ERR(cp->clks[i]);
- 			goto err;
- 		}
+ 	source_pad = media_entity_remote_source_pad_unique(&sd->entity);
+ 	if (IS_ERR(source_pad)) {
+-		dev_dbg(rkisp1->dev, "Failed to get source for CSI: %ld\n",
+-			PTR_ERR(source_pad));
++		dev_dbg(rkisp1->dev, "Failed to get source for CSI: %pe\n",
++			source_pad);
+ 		return -EPIPE;
+ 	}
+ 
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+index 8c29a1c9309a846152d212dcb50b7bf991d4f422..147d33eb6ee0d975b257c5df2997b811ba3a62e1 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+@@ -936,8 +936,8 @@ static int rkisp1_isp_s_stream(struct v4l2_subdev *sd, int enable)
+ 	sink_pad = &isp->pads[RKISP1_ISP_PAD_SINK_VIDEO];
+ 	source_pad = media_pad_remote_pad_unique(sink_pad);
+ 	if (IS_ERR(source_pad)) {
+-		dev_dbg(rkisp1->dev, "Failed to get source for ISP: %ld\n",
+-			PTR_ERR(source_pad));
++		dev_dbg(rkisp1->dev, "Failed to get source for ISP: %pe\n",
++			source_pad);
+ 		return -EPIPE;
+ 	}
+ 
 
 -- 
 2.51.0.760.g7b8bcc2412-goog
