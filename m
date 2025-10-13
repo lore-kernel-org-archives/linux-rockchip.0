@@ -4,68 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB731CCD183
-	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Oct 2025 09:11:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2406CCD183
+	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Oct 2025 09:41:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=GMwaMaW64y/YXCIzNA4z3LTxYtr5zvbB3tPfAD3uDpc=; b=ORRdOWIZA6HBxh
-	JQDfYsTzotLF4eOVxe+u9bq2qMnnU0xYjnaftIY+oseO9sCAbQgi0BFBTdkrsvutJj94Y2gCoLJOw
-	PMjhsHEA0avVK6yEeY8OJGLxUvQrs8gM9MSoM7YyLKGtFnMyaotb+2Ry4m4IjwRaeawPhVaNee45F
-	68vZ7jzNHES87/V9vftaoeiGdYtSh+I+Z3OtrONoqyv3QdVLMLyFAtQc0KMXCcf7DdGOnFzVOWfi/
-	wbg/D0tu131rRrNiHHQ+3zNytESRoyWjzFd2dC6js+xVoV3sr6NYFFzdvcBGVsdQ0ajLDyQbjMzk5
-	uwVx59FzCTTne6yRqeZA==;
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
+	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=hymddhaSsxuIuXKEws5m9mounztquPke0kJ/qKvJEzY=; b=uwLMyk4ovZbOFX
+	JLmrwWyJVvnYMeI0xA1o9cVzHDshCG2Aa6BjbMpxySj1tSqz/VzFAorrW9AbwkaPuFpVImD6kyukf
+	znwLgYsnZJoKVNNxf/urkhvGm/WLy8MSQ/d/DZplVpOmUqiCDmwGt7sQaQ8WI9uR3WFM5dw3uaZv1
+	dToQRZSwogI7qNJ43g26zWFUbeNbDBF5eJrk29l9SEI5AxuysR3IwaWJTDxXiyoMe9S/sITFN1EGd
+	wmORsfw9nk3NEMIaDZhn9L9ItIhLGtmR0UoMXHZHb4M8RFSCTYjj1DxuWBOUjXIbUWtIpdmikPBNG
+	2/Qhj2jZHwNsCQYLX08Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8Ea1-0000000Ch2v-1QBV;
-	Mon, 13 Oct 2025 09:10:57 +0000
-Received: from m16.mail.163.com ([220.197.31.5])
+	id 1v8F3f-0000000Clv1-1EBA;
+	Mon, 13 Oct 2025 09:41:35 +0000
+Received: from m16.mail.163.com ([220.197.31.4])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8EZx-0000000Ch2L-3abA
-	for linux-rockchip@lists.infradead.org;
-	Mon, 13 Oct 2025 09:10:55 +0000
+	id 1v8F3c-0000000Clsz-26bu;
+	Mon, 13 Oct 2025 09:41:34 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version; bh=Nk
-	OZgNctD2RJ7iTrrRVTZr3l7fIBVXhtVsEHtUv3270=; b=OQQ8sqAwsjX4bVfv36
-	KCEuSAPOOlTET+V6dAqJHdAatGVu+DHqj4FY5nYjcjgOx3towd9aokNkCiOi03Pe
-	LVPL2NO9tPZc0uQWqXgb6TCoWZ85W4Y0HW/lytkgZxU+EDAruHLx6uRcG34GqYOI
-	u8L3s3UFu/BgBqR/f8EdM0N1s=
-Received: from ProDesk.. (unknown [])
-	by gzsmtp3 (Coremail) with SMTP id PigvCgAHwhHlwexoZeqRCA--.36811S2;
-	Mon, 13 Oct 2025 17:10:01 +0800 (CST)
-From: Andy Yan <andyshrk@163.com>
-To: heiko@sntech.de
-Cc: arnd@arndb.de,
-	bjorn.andersson@oss.qualcomm.com,
-	ebiggers@kernel.org,
-	geert+renesas@glider.be,
-	krzysztof.kozlowski@linaro.org,
-	kuninori.morimoto.gx@renesas.com,
-	prabhakar.mahadev-lad.rj@bp.renesas.com,
-	nm@ti.com,
-	nfraprado@collabora.com,
-	quic_tdas@quicinc.com,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Andy Yan <andyshrk@163.com>
-Subject: [PATCH] arm64: defconfig: Enable Rockchip extensions for Synopsys DW DP
-Date: Mon, 13 Oct 2025 17:09:33 +0800
-Message-ID: <20251013090955.48832-1-andyshrk@163.com>
-X-Mailer: git-send-email 2.43.0
-MIME-Version: 1.0
-X-CM-TRANSID: PigvCgAHwhHlwexoZeqRCA--.36811S2
-X-Coremail-Antispam: 1Uf129KBjvdXoWrZF4fKF17JF13ZFyrtr4xZwb_yoWfJFg_Jr
-	n7Ww1kur4xCF9I93WF9a1rG34jk3WDW3WfGr17XFyDXF4Igr4Fv34kCFyUGw15Ca1jkayI
-	vFZ5AasrCr1jyjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
-	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7sRiXTm7UUUUU==
+	s=s110527; h=Date:From:To:Subject:Content-Type:MIME-Version:
+	Message-ID; bh=pcgHvE1PPdiU60oqO5RbSLUrkn7atFzgPmVfupKJGWM=; b=U
+	DSWPiCMsQBDEkRpvHyoPlLHqeQEXIH0UI9ZXYyHs2R4e6R2NQ0sb+6drNlxxAoz0
+	gclqcVPob1Z5MkKic4Mx3o0wA3vddRh6utmd6KsfcLZ4gynKbv9fPysFIL5AIZwx
+	hc1Ew5TfXf9GMMz+jzBt9tt79iGY4UnJZcKdGscCCo=
+Received: from andyshrk$163.com ( [58.22.7.114] ) by
+ ajax-webmail-wmsvr-40-112 (Coremail) ; Mon, 13 Oct 2025 17:41:01 +0800
+ (CST)
 X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbBEBblXmjswVMWJAAAsZ
+Date: Mon, 13 Oct 2025 17:41:01 +0800 (CST)
+From: "Andy Yan" <andyshrk@163.com>
+To: "Alok Tiwari" <alok.a.tiwari@oracle.com>
+Cc: christianshewitt@gmail.com, michael.riesch@wolfvision.net,
+	robh@kernel.org, s.hauer@pengutronix.de,
+	dri-devel@lists.freedesktop.org, simona@ffwll.ch, airlied@gmail.com,
+	tzimmermann@suse.de, mripard@kernel.org, hjc@rock-chips.com,
+	heiko@sntech.de, andy.yan@rock-chips.com,
+	maarten.lankhorst@linux.intel.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re:[PATCH v2] drm/rockchip: vop2: use correct destination rectangle
+ height check
+X-Priority: 3
+X-Mailer: Coremail Webmail Server Version 2023.4-cmXT build
+ 20250723(a044bf12) Copyright (c) 2002-2025 www.mailtech.cn 163com
+In-Reply-To: <20251012142005.660727-1-alok.a.tiwari@oracle.com>
+References: <20251012142005.660727-1-alok.a.tiwari@oracle.com>
+X-NTES-SC: AL_Qu2dAv+ft0wt5ymYYekfmUgWjuw/WsG1v/Ul1YBSP556jDnp+y4RVEN/P1zO1NitFwGRszyZSx5T+O5fb6heZKg0lmlFzx7boLxpAl8GkdlbTA==
+MIME-Version: 1.0
+Message-ID: <2d7505ee.990d.199dcf1db5a.Coremail.andyshrk@163.com>
+X-Coremail-Locale: zh_CN
+X-CM-TRANSID: cCgvCgD3vy4tyexo_NYJAA--.2689W
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbB0hvlXmjsw4q41wABsR
+X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251013_021054_294047_C92ED550 
-X-CRM114-Status: UNSURE (   6.06  )
+X-CRM114-CacheID: sfid-20251013_024132_989781_03C7E217 
+X-CRM114-Status: UNSURE (   6.15  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -78,41 +76,37 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Enable Rockchip specific extensions for Synopsys DesignWare DisplayPort
-driver. This is used to provide DisplayPort output support for many boards
-based on RK3588 SoC.
-
-Signed-off-by: Andy Yan <andyshrk@163.com>
----
-
- arch/arm64/configs/defconfig | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
-index e3a2d37bd104..ddb148a987e3 100644
---- a/arch/arm64/configs/defconfig
-+++ b/arch/arm64/configs/defconfig
-@@ -913,6 +913,7 @@ CONFIG_DRM_ROCKCHIP=m
- CONFIG_ROCKCHIP_VOP2=y
- CONFIG_ROCKCHIP_ANALOGIX_DP=y
- CONFIG_ROCKCHIP_CDN_DP=y
-+CONFIG_ROCKCHIP_DW_DP=y
- CONFIG_ROCKCHIP_DW_HDMI=y
- CONFIG_ROCKCHIP_DW_HDMI_QP=y
- CONFIG_ROCKCHIP_DW_MIPI_DSI=y
--- 
-2.43.0
-
-base-commit: 2a82ce98ea069c84665caf5097e340b9c65d9e9f
-branch: master
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+CkhlbGxv77yMCgpBdCAyMDI1LTEwLTEyIDIyOjIwOjAxLCAiQWxvayBUaXdhcmkiIDxhbG9rLmEu
+dGl3YXJpQG9yYWNsZS5jb20+IHdyb3RlOgo+VGhlIHZvcDJfcGxhbmVfYXRvbWljX2NoZWNrKCkg
+ZnVuY3Rpb24gaW5jb3JyZWN0bHkgY2hlY2tzCj5kcm1fcmVjdF93aWR0aChkZXN0KSB0d2ljZSBp
+bnN0ZWFkIG9mIHZlcmlmeWluZyBib3RoIHdpZHRoIGFuZCBoZWlnaHQuCj5GaXggdGhlIHNlY29u
+ZCBjb25kaXRpb24gdG8gdXNlIGRybV9yZWN0X2hlaWdodChkZXN0KSBzbyB0aGF0IGludmFsaWQK
+PmRlc3RpbmF0aW9uIHJlY3RhbmdsZXMgd2l0aCBoZWlnaHQgPCA0IGFyZSBjb3JyZWN0bHkgcmVq
+ZWN0ZWQuCj4KPkZpeGVzOiA2MDRiZTg1NTQ3Y2UgKCJkcm0vcm9ja2NoaXA6IEFkZCBWT1AyIGRy
+aXZlciIpCj5TaWduZWQtb2ZmLWJ5OiBBbG9rIFRpd2FyaSA8YWxvay5hLnRpd2FyaUBvcmFjbGUu
+Y29tPgo+LS0tCj52MSAtPiB2Mgo+Zml4IHR5cG8gZHJtX3JlY3RfaGVpZ2ggLT4gZHJtX3JlY3Rf
+aGVpZ2h0Cj4tLS0KPiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcDIu
+YyB8IDIgKy0KPiAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKyksIDEgZGVsZXRpb24oLSkK
+Pgo+ZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9w
+Mi5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AyLmMKPmluZGV4
+IGI1MDkyN2E4MjRiNC4uN2VjN2JlYTVlMzhlIDEwMDY0NAo+LS0tIGEvZHJpdmVycy9ncHUvZHJt
+L3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AyLmMKPisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
+Y2hpcC9yb2NrY2hpcF9kcm1fdm9wMi5jCj5AQCAtMTAzMSw3ICsxMDMxLDcgQEAgc3RhdGljIGlu
+dCB2b3AyX3BsYW5lX2F0b21pY19jaGVjayhzdHJ1Y3QgZHJtX3BsYW5lICpwbGFuZSwKPiAJCXJl
+dHVybiBmb3JtYXQ7Cj4gCj4gCWlmIChkcm1fcmVjdF93aWR0aChzcmMpID4+IDE2IDwgNCB8fCBk
+cm1fcmVjdF9oZWlnaHQoc3JjKSA+PiAxNiA8IDQgfHwKPi0JICAgIGRybV9yZWN0X3dpZHRoKGRl
+c3QpIDwgNCB8fCBkcm1fcmVjdF93aWR0aChkZXN0KSA8IDQpIHsKPisJICAgIGRybV9yZWN0X3dp
+ZHRoKGRlc3QpIDwgNCB8fCBkcm1fcmVjdF9oZWlnaHQoZGVzdCkgPCA0KSB7Cj4gCQlkcm1fZXJy
+KHZvcDItPmRybSwgIkludmFsaWQgc2l6ZTogJWR4JWQtPiVkeCVkLCBtaW4gc2l6ZSBpcyA0eDRc
+biIsCj4gCQkJZHJtX3JlY3Rfd2lkdGgoc3JjKSA+PiAxNiwgZHJtX3JlY3RfaGVpZ2h0KHNyYykg
+Pj4gMTYsCj4gCQkJZHJtX3JlY3Rfd2lkdGgoZGVzdCksIGRybV9yZWN0X2hlaWdodChkZXN0KSk7
+Cj4tLSAKClJldmlld2VkLWJ5OiBBbmR5IFlhbiA8YW5keS55YW5Acm9jay1jaGlwcy5jb20+CgpU
+aGFua3MuCj4yLjUwLjEKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmlu
+ZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9s
+aW51eC1yb2NrY2hpcAo=
