@@ -4,163 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A836DCCD184
-	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Oct 2025 00:08:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89BD9CCD184
+	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Oct 2025 01:15:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RzTEtQ97WTcBnr1pmqGriMsKz8aJHM+XApOt6zyz3PA=; b=Y4QZCR12UGs2n+
-	ZBVCRN4bIFME7wzdp1qk2/AoIN5LLa6BxoR+mF79KtZ3cOgr3HAmK5rynL+OzP4eqevInlV6M8W+m
-	Y1GfIJZwKbRRp3L3kiSzmwcUm/nzfJiWWEmOaL9coVQTU3CN5bkxdPUB2WLLf8T7BKG/oqWvPysWf
-	s7Johr5y5IKbguc9chXFOiSg/57Wja/3vwRdQKiLvdn0EtW/bF0iPNv5mLQk5K0/mxktqg0VgvRK3
-	uT7Vh5LhclIG/1Md8HHA58pTe4cDTItsUim2xb6E4q/RVc3bH7a+OZ+Pm7GnmW9wBSN+tqVxthTuh
-	jy0vLYbTFnkdBRwk+MaA==;
+	List-Owner; bh=w9vkhwOtiZyTbIp8PUfnLHEHvIN1evNVICnosSDMR1Y=; b=OQaUfddikBgBvN
+	7pyttS6hsQ6dtpjqexStzpq4UNJPhW/KjmDmfeLf7ri9ik1u1gJAjtvGOJNr+9pAf9WnQ7AzAhKYY
+	Cjp7SW+W6gOkJVwtkpWM0DfetmNzog6zZ7NXnhhWFjiyljvJRCtk710juIkkqaz0QZtNF1MC+iwjZ
+	ifDwxYlu5F+K/oxJwTHLLaq0WIIQHHIoun+l+EJ2EMyc2Mm5722s6vuv9kQ6JR6Z0mi0EBAX+dRPL
+	bpq/nbC/PCyZxZBhgvSjyirx3/wQdU6lXtDs/sgj6L6mFGFHXQ/rWj3mgEHipoGjlJw/clHmmr2qj
+	UM/Q6CKkDUO0LnGMkWlg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8670-0000000BwvS-02hF;
-	Mon, 13 Oct 2025 00:08:26 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1v879w-0000000C2cf-47lU;
+	Mon, 13 Oct 2025 01:15:32 +0000
+Received: from mail-m49205.qiye.163.com ([45.254.49.205])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v865O-0000000Bu8W-3dkL;
-	Mon, 13 Oct 2025 00:06:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
-	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=somBreEhVUn4sAV7/mZH07SvT1J2wmy49TlDh/N3xME=; b=CA7+8ASoQcoZqpeQX8N/nHrl9u
-	u8ekTMKQIdMMVcbdeeEShBlHNOOZ2nwj+nZOhawnpfKDDYIVvnpy1GbtW35FPiKZZ7uZVRGtvkibQ
-	medZ5DlNhCuohSlj4sR39eIbut7+vzkU93IW/ukCtCD0MWl1/MIhYrpG9Mkbk/2Sy2rfkkaIbcn5Z
-	GWGylSxadCn6LWNQX/X9AD4TwP5k5Fa9govXcuBysST0H/sY4Bg+bUGTKUzz7ew6QCCRi24t4X5xP
-	G1uHzF4bNCBdb/bTJsiGsC7Zm1tG5hwHmIBRW9cI8V7euoxPSjb4J6fG3ioOomMENqsYzEQHOb0Xb
-	1Dh/s1ng==;
-Received: from mail-westus2azlp170120002.outbound.protection.outlook.com ([2a01:111:f403:c007::2] helo=MW6PR02CU001.outbound.protection.outlook.com)
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v865F-00000003vbf-3pVV;
-	Mon, 13 Oct 2025 00:06:42 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=jmJpZ+pdGV8/djbNOLfd9UFQbP/9F8ZBMRXsYbKgAUrOpRY9uqPVDcyE8vdDWjRRpi2ysBNc2DC7AZ5gPxrC4Agji6pkZOxHB7HnQ3J/5qWV2c90JjcTDep4MCaztxp8vhjw24rBcHCSOrPjgx/kSc7d9+RC8vdui2CSWsrWHl+c4NgsEc9R/vXX2se9So8c76mVFTALwqYXqw2xtWC91pUy2JNKjtSt9TICiLurylh6sdNb9l2yZtpaqQ6Woa6mRlvD1irpqXxJzJYH8BTf3ighRjluhAdFkvfGUGWXFEjQ8K4NEKFQamKqLMZY4SlmYbGTBGnKPrMOtRqZoPgAIQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=somBreEhVUn4sAV7/mZH07SvT1J2wmy49TlDh/N3xME=;
- b=XtwvNpXimTWxr/Qayaw29eZwxk5fqfH18gTS91XzE9vDkYFKXcU6gI+tQXu+j2xLCHySNysh7TxGoP05ttzJZXLbIoSCqazpmJMIAtTmbcPioJkpbLjylmzVWmEEeIh+kjD36Jc4R+ejAWztcyYHxd5v4O/QSllCItaotWxUJN4Fe6V306bbUdxd8a/pknpXfPDQAswDIrHINGo1ea4+ImFg92yBXqzz5DUHwks0LvFVihRgGpDJq+fo+LBcMwSw5ISt7E893JDfaTBkLwzY4ns4GhU3lTU0HF2rnRrfcaHvtvZbI6/9aFqk5iDKdkQmJnYAw/wdszVDRPdypsHDwQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.117.161) smtp.rcpttodomain=8bytes.org smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=somBreEhVUn4sAV7/mZH07SvT1J2wmy49TlDh/N3xME=;
- b=IqVF5KlTnAxHs5AaTUzhKEr+UloOou4FaU5OR+Z8HbFIeHLUJ9obyKTGiJauSI1zjpt8rcRu4KdimauK6vaWf0esbGv7ZZ4lfbWJVqZI+u9U3cs/MVJ0nJT3aVySiQO8YOqZWFtouKN3E5An/qQ+JX8PlKzqRnY4EpY9VauCD4+8wFMEfOcU7Nkh0HGS7oMIotd8uxWD8hgZuwVRF3w9U/99TLrCcRIHK8Jof7G0C2YApC4ytaghtf5+IdmiPvjqxmN3AYQ3oBYnoNkRLVZiJKGQ43+mxEYAzP+7DjJfuQBmfZPPj6DxOqQ631F7gr5aZKnSlYFMD6GqKIfF8R3zhw==
-Received: from BN0PR04CA0016.namprd04.prod.outlook.com (2603:10b6:408:ee::21)
- by CY3PR12MB9703.namprd12.prod.outlook.com (2603:10b6:930:102::5) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9203.12; Mon, 13 Oct
- 2025 00:06:28 +0000
-Received: from BL02EPF00021F69.namprd02.prod.outlook.com
- (2603:10b6:408:ee:cafe::9e) by BN0PR04CA0016.outlook.office365.com
- (2603:10b6:408:ee::21) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.9203.12 via Frontend Transport; Mon,
- 13 Oct 2025 00:06:28 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.161)
- smtp.mailfrom=nvidia.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.117.161 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.117.161; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.117.161) by
- BL02EPF00021F69.mail.protection.outlook.com (10.167.249.5) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.9228.7 via Frontend Transport; Mon, 13 Oct 2025 00:06:28 +0000
-Received: from rnnvmail203.nvidia.com (10.129.68.9) by mail.nvidia.com
- (10.129.200.67) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Sun, 12 Oct
- 2025 17:06:19 -0700
-Received: from rnnvmail202.nvidia.com (10.129.68.7) by rnnvmail203.nvidia.com
- (10.129.68.9) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Sun, 12 Oct
- 2025 17:06:19 -0700
-Received: from Asurada-Nvidia.nvidia.com (10.127.8.12) by mail.nvidia.com
- (10.129.68.7) with Microsoft SMTP Server id 15.2.2562.20 via Frontend
- Transport; Sun, 12 Oct 2025 17:06:16 -0700
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: <joro@8bytes.org>, <jgg@nvidia.com>, <kevin.tian@intel.com>
-CC: <suravee.suthikulpanit@amd.com>, <will@kernel.org>,
-	<robin.murphy@arm.com>, <sven@kernel.org>, <j@jannau.net>,
-	<jean-philippe@linaro.org>, <robin.clark@oss.qualcomm.com>,
-	<dwmw2@infradead.org>, <baolu.lu@linux.intel.com>, <yong.wu@mediatek.com>,
-	<matthias.bgg@gmail.com>, <angelogioacchino.delregno@collabora.com>,
-	<tjeznach@rivosinc.com>, <pjw@kernel.org>, <palmer@dabbelt.com>,
-	<aou@eecs.berkeley.edu>, <heiko@sntech.de>, <schnelle@linux.ibm.com>,
-	<mjrosato@linux.ibm.com>, <wens@csie.org>, <jernej.skrabec@gmail.com>,
-	<samuel@sholland.org>, <thierry.reding@gmail.com>, <jonathanh@nvidia.com>,
-	<iommu@lists.linux.dev>, <linux-kernel@vger.kernel.org>,
-	<asahi@lists.linux.dev>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-arm-msm@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-riscv@lists.infradead.org>, <linux-rockchip@lists.infradead.org>,
-	<linux-s390@vger.kernel.org>, <linux-sunxi@lists.linux.dev>,
-	<linux-tegra@vger.kernel.org>, <virtualization@lists.linux.dev>,
-	<patches@lists.linux.dev>
-Subject: [PATCH v1 19/20] iommu/virtio-iommu: Implement viommu_domain_test_dev
-Date: Sun, 12 Oct 2025 17:05:16 -0700
-Message-ID: <562f5a6c9f55066dd50f95210e5669e256852d36.1760312725.git.nicolinc@nvidia.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <cover.1760312725.git.nicolinc@nvidia.com>
-References: <cover.1760312725.git.nicolinc@nvidia.com>
+	id 1v879t-0000000C2bb-3jhj;
+	Mon, 13 Oct 2025 01:15:31 +0000
+Received: from [127.0.0.1] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 25a39ad8a;
+	Mon, 13 Oct 2025 09:15:19 +0800 (GMT+08:00)
+Message-ID: <83281501-8957-4ca1-8e0e-0b72ddd74b43@rock-chips.com>
+Date: Mon, 13 Oct 2025 09:15:13 +0800
 MIME-Version: 1.0
-X-NV-OnPremToCloud: ExternallySecured
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BL02EPF00021F69:EE_|CY3PR12MB9703:EE_
-X-MS-Office365-Filtering-Correlation-Id: b2ff0e49-a48a-4535-974a-08de09ec5b89
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|82310400026|7416014|376014|1800799024|36860700013;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?tIsNpha0J/T8syGzcUg54ECBkPWdm8IaqKY6Av+DtEGBJIQWPXP0+PSlnv2p?=
- =?us-ascii?Q?2t+UN+dtXd0e+dxefSepkTA4r2/goYJrNOBeMldldk4rgmeOWW25CCTNeODM?=
- =?us-ascii?Q?5i6iiM/Qi2tOkqV3iZQbAWMucaOG8pxJg+5S4CgsRksEfi7syUfY1mwcVJbX?=
- =?us-ascii?Q?vEESY/dK0SAW0mtsVwNkrXr0S0Zp6tMF3uOCzTGuQZgMKq1ws9pTuxQDzGuL?=
- =?us-ascii?Q?+WL1hqkNyRvf2gG7hWAte8zTow4lUkK8Vlh4qp7GWtlp0X8P8uElr25dSeZE?=
- =?us-ascii?Q?FUMGMkll4rHR8dSGRYGcSXPijwLR1RIx/SX2hLXOr//ze+aiSRN7jhFhQ/Cl?=
- =?us-ascii?Q?S6yc8Lac+VDkseExJWW0eWpuKBPsPj0u836HXoBjGFmjTpZAgV6ylqGfxNWA?=
- =?us-ascii?Q?sC4WlKahPvvTFbb+xw3y4Nj34d9GcQX0MJUIQtswiYpshP+LxnrkMWmKEInP?=
- =?us-ascii?Q?J9lat7h54KKPxS0PQ4YX5TMe9N7QMMDEdngZFvPZPyuSr6H2MbTqQcdTupS7?=
- =?us-ascii?Q?CS1jPD7q5EJrrjMeBiMkVOXH7Cv+5dI+GhXsclGdVS9eZn7yEZxqHlyVr7qo?=
- =?us-ascii?Q?xvHjr6/Vts3CeaghlPneput/w0y2bED0Cj/XoSd6wsVt90Kfk1OuS/1djnoT?=
- =?us-ascii?Q?fdxykVcSh0ILWyPbBTuQO3JcrOj5TntZ5mkASTTqsikfK7IBE/JPVuOC00EV?=
- =?us-ascii?Q?jLWKTpRd2TyZuCQlyklVTj6MwlS8MwBDHGDz8VJtgM5ujZXyQUBn4EvYBneb?=
- =?us-ascii?Q?w8o7jm4pCvmYP7fCN4W/9Kox9Fr267MXf54tr/3i2KozLZb+iCoNccMdyrjh?=
- =?us-ascii?Q?GM3UMW6N9p6w7mqpD8kcq2SoJF2xZqZAmTtUuX9dv7vLUuSCUed33f6W06nQ?=
- =?us-ascii?Q?i9+rIj+abmVsPKnq9/07QfFsyYCTFUrLFG6kg7M2vuUuwUZs22+3Jo/g+6m3?=
- =?us-ascii?Q?7m62g62/nYDHYfVuG/xw9xdU5ipZZVSuSMKYflKl6ePXImkGoGKHs7pHcGJY?=
- =?us-ascii?Q?tPI79nQJW9euP86Vr/OdxoTjLI/CK4AklLEVMuZq0EdoCq/gL7MYGVA3xd/J?=
- =?us-ascii?Q?zveVnOfyR2l7Xf4gxFGEFgJA9iV6FJz7UtxKJLNeFajyceCx7xs+w8sFDsrS?=
- =?us-ascii?Q?QNZp5RhXNxGDDgEzrzZG1qIxUdeBjERrZ2S8J32Dj9yCQ4iM1Vt6eYdSL66y?=
- =?us-ascii?Q?av8UDnYNaWODdK/yDUC/uqF/2AXoM2oXUqDMfOzqzgcqw2JjIfKKvlmrBLtk?=
- =?us-ascii?Q?deGnH3ZlqvnxwWF5fmLgwl4hMfDB5HA+sZ4gCnOe/b2KeLQ4ppamPo3yS9uP?=
- =?us-ascii?Q?+A4j5gc9zsykbDfeiUug+JP3HO3jzNMmQxEAUxq/8c2qfG8graFc9V8VYo3j?=
- =?us-ascii?Q?aosS8nzuFqwVczYT/9ljdrRot5U9LuLrEeZ+bWemEbLRom5d0z8cD0hBomO4?=
- =?us-ascii?Q?jYUOdhmprlrdTkGC0Hu9bYu7ROiapAzlq/c6hSVAMkg5sUNau7yeQDXuBKD6?=
- =?us-ascii?Q?yLBBBRuDytnYA02xWMS0WWHGW0xlztLv8rqqyNDQ35ZaNyPOLfuLoDkp9zgf?=
- =?us-ascii?Q?1FQU5+FBXvTq7hipu7U=3D?=
-X-Forefront-Antispam-Report: CIP:216.228.117.161;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:dc6edge2.nvidia.com;CAT:NONE;SFS:(13230040)(82310400026)(7416014)(376014)(1800799024)(36860700013);DIR:OUT;SFP:1101;
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Oct 2025 00:06:28.4377
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: b2ff0e49-a48a-4535-974a-08de09ec5b89
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[216.228.117.161];Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: BL02EPF00021F69.namprd02.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY3PR12MB9703
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 3/8] phy: rockchip: phy-rockchip-typec: Add
+ typec_mux/typec_switch support
+To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+ Chaoyi Chen <kernel@airkyi.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
+ Kishon Vijay Abraham I <kishon@kernel.org>, Heiko Stuebner
+ <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>,
+ Andy Yan <andy.yan@rock-chips.com>,
+ Yubing Zhang <yubing.zhang@rock-chips.com>,
+ Frank Wang <frank.wang@rock-chips.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Amit Sunil Dhamne <amitsd@google.com>,
+ Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Dragan Simic <dsimic@manjaro.org>, Johan Jonker <jbx6244@gmail.com>,
+ Diederik de Haas <didi.debian@cknow.org>,
+ Peter Robinson <pbrobinson@gmail.com>, linux-usb@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
+References: <20251011033233.97-1-kernel@airkyi.com>
+ <20251011033233.97-4-kernel@airkyi.com>
+ <xbblw4jfte7re2pyroanvzqv4ddwhxbgcui5ubpnw7rwuo4s4d@gkph7jqzf33o>
+Content-Language: en-US
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+In-Reply-To: <xbblw4jfte7re2pyroanvzqv4ddwhxbgcui5ubpnw7rwuo4s4d@gkph7jqzf33o>
+X-HM-Tid: 0a99db22dcf303abkunm0713f548f8facb
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGU0dQ1YaGklOTEIaHR4YH0xWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpPSE
+	xVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=Bxg8VLDz1S1QU32Fy2HDcfvislNrJJ0uqNay+meHZQFma6Tad3Sto7NFGOCh3TqmeUBj54gnStcWhE8/KozzYBg4GvmPcV4rMFPnEgs/h30WSTTKCT8WXZx4iN3GJGmO7W3qhPHRjXv3jiF2QOrzKOBxLX8bcko/TH9ZA5Yh5p8=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=cvq/ACMwX3OnpD71UH1+PwfyZlhDdznUFw1/2vndRWE=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251013_010639_289785_0A4B75ED 
-X-CRM114-Status: GOOD (  12.98  )
+X-CRM114-CacheID: sfid-20251012_181530_476638_94380E3D 
+X-CRM114-Status: GOOD (  21.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -172,63 +86,135 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Move sanity and compatibility tests from the attach_dev callback to the
-new test_dev callback function. The IOMMU core makes sure an attach_dev
-call must be invoked after a successful test_dev call.
+On 10/12/2025 12:57 AM, Dmitry Baryshkov wrote:
 
-Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
----
- drivers/iommu/virtio-iommu.c | 16 +++++++++++++---
- 1 file changed, 13 insertions(+), 3 deletions(-)
+> On Sat, Oct 11, 2025 at 11:32:28AM +0800, Chaoyi Chen wrote:
+>> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+>>
+>> This patch add support for Type-C Port Controller Manager. Each PHY
+>> will register typec_mux and typec_switch when external Type-C
+>> controller is present. Type-C events are handled by TCPM without
+>> extcon.
+>>
+>> The extcon device should still be supported.
+>>
+>> Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+>> ---
+>>
+>> (no changes since v5)
+>>
+>> Changes in v4:
+>> - Remove notify DP HPD state by USB/DP PHY.
+>>
+>> (no changes since v3)
+>>
+>> Changes in v2:
+>> - Fix compile error when CONFIG_TYPEC is not enabled.
+>> - Notify DP HPD state by USB/DP PHY.
+>>
+>>   drivers/phy/rockchip/phy-rockchip-typec.c | 365 +++++++++++++++++++++-
+>>   1 file changed, 349 insertions(+), 16 deletions(-)
+>>
+>> @@ -850,6 +998,72 @@ static int tcphy_get_mode(struct rockchip_typec_phy *tcphy)
+>>   	return mode;
+>>   }
+>>   
+>> +#if IS_ENABLED(CONFIG_TYPEC)
+>> +static int tcphy_orien_sw_set(struct typec_switch_dev *sw,
+>> +			      enum typec_orientation orien)
+>> +{
+>> +	struct rockchip_typec_phy *tcphy = typec_switch_get_drvdata(sw);
+>> +
+>> +	mutex_lock(&tcphy->lock);
+>> +
+>> +	if (orien == TYPEC_ORIENTATION_NONE) {
+>> +		tcphy->new_mode = MODE_DISCONNECT;
+>> +		goto unlock_ret;
+>> +	}
+>> +
+>> +	tcphy->flip = (orien == TYPEC_ORIENTATION_REVERSE) ? true : false;
+>> +	tcphy->new_mode = MODE_DFP_USB;
+> Carrying over unanswered(!) comment from the previous series:
+>
+> I don't think it is correct. Orientation defines only the cable (plug)
+> orientation. You should be getting the mux events for the mode
+> selection.
 
-diff --git a/drivers/iommu/virtio-iommu.c b/drivers/iommu/virtio-iommu.c
-index d314fa5cd8476..766dded8fc8a6 100644
---- a/drivers/iommu/virtio-iommu.c
-+++ b/drivers/iommu/virtio-iommu.c
-@@ -730,6 +730,18 @@ static struct iommu_domain *viommu_domain_alloc_identity(struct device *dev)
- 	return domain;
- }
- 
-+static int viommu_domain_test_dev(struct iommu_domain *domain,
-+				  struct device *dev, ioasid_t pasid,
-+				  struct iommu_domain *old)
-+{
-+	struct viommu_endpoint *vdev = dev_iommu_priv_get(dev);
-+	struct viommu_domain *vdomain = to_viommu_domain(domain);
-+
-+	if (vdomain->viommu != vdev->viommu)
-+		return -EINVAL;
-+	return 0;
-+}
-+
- static int viommu_attach_dev(struct iommu_domain *domain, struct device *dev,
- 			     struct iommu_domain *old)
- {
-@@ -738,9 +750,6 @@ static int viommu_attach_dev(struct iommu_domain *domain, struct device *dev,
- 	struct viommu_endpoint *vdev = dev_iommu_priv_get(dev);
- 	struct viommu_domain *vdomain = to_viommu_domain(domain);
- 
--	if (vdomain->viommu != vdev->viommu)
--		return -EINVAL;
--
- 	/*
- 	 * In the virtio-iommu device, when attaching the endpoint to a new
- 	 * domain, it is detached from the old one and, if as a result the
-@@ -1099,6 +1108,7 @@ static const struct iommu_ops viommu_ops = {
- 	.of_xlate		= viommu_of_xlate,
- 	.owner			= THIS_MODULE,
- 	.default_domain_ops = &(const struct iommu_domain_ops) {
-+		.test_dev		= viommu_domain_test_dev,
- 		.attach_dev		= viommu_attach_dev,
- 		.map_pages		= viommu_map_pages,
- 		.unmap_pages		= viommu_unmap_pages,
+Sorry for that, I forgot to modify this part. Will fix in v6.
+
+
+>
+>> +
+>> +unlock_ret:
+>> +	mutex_unlock(&tcphy->lock);
+>> +	return 0;
+>> +}
+>> +
+>> +static void udphy_orien_switch_unregister(void *data)
+>> +{
+>> +	struct rockchip_typec_phy *tcphy = data;
+>> +
+>> +	typec_switch_unregister(tcphy->sw);
+>> +}
+>> +
+>> @@ -1037,6 +1251,89 @@ static const struct phy_ops rockchip_dp_phy_ops = {
+>>   	.owner		= THIS_MODULE,
+>>   };
+>>   
+>> +#if IS_ENABLED(CONFIG_TYPEC)
+>> +static int tcphy_typec_mux_set(struct typec_mux_dev *mux, struct typec_mux_state *state)
+>> +{
+>> +	struct rockchip_typec_phy *tcphy = typec_mux_get_drvdata(mux);
+>> +	struct typec_displayport_data *data;
+>> +	int hpd = 0;
+>> +
+>> +	mutex_lock(&tcphy->lock);
+>> +
+>> +	switch (state->mode) {
+>> +	case TYPEC_STATE_SAFE:
+>> +		fallthrough;
+>> +	case TYPEC_STATE_USB:
+>> +		tcphy->new_mode = MODE_DFP_USB;
+>> +		phy_set_bus_width(tcphy->phys[TYPEC_PHY_DP], 0);
+>> +		break;
+>> +	case TYPEC_DP_STATE_C:
+>> +	case TYPEC_DP_STATE_E:
+> You need to check that altmode->svid is DP before checking for these
+> modes.
+
+Okay, will fix in v6.
+
+
+>
+>> +		tcphy->new_mode = MODE_DFP_DP;
+>> +		data = state->data;
+>> +		hpd = !!(data->status & DP_STATUS_HPD_STATE);
+>> +		phy_set_bus_width(tcphy->phys[TYPEC_PHY_DP], hpd ? 4 : 0);
+>> +		break;
+>> +	case TYPEC_DP_STATE_D:
+>> +		tcphy->new_mode = MODE_DFP_DP | MODE_DFP_USB;
+>> +		data = state->data;
+>> +		hpd = !!(data->status & DP_STATUS_HPD_STATE);
+>> +		phy_set_bus_width(tcphy->phys[TYPEC_PHY_DP], hpd ? 2 : 0);
+>> +		break;
+>> +	default:
+>> +		break;
+>> +	}
+>> +
+>> +	mutex_unlock(&tcphy->lock);
+>> +
+>> +	return 0;
+>> +}
+>> +
+
 -- 
-2.43.0
+Best,
+Chaoyi
 
 
 _______________________________________________
