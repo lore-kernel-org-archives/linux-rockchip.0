@@ -4,69 +4,124 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7620CCCD192
-	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Oct 2025 18:27:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31AE6CCD183
+	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Oct 2025 20:56:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
-	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=h2da520q4CiaGHpu0ma0ctofEXAJQsyoIA0M6C6ERsU=; b=qQ99qty0UUv67y
-	5TULDKPPxD2riuJQSSbMIOVQmcD03wkmucqoY/MOG6nD6LGzLiqG5fJD9VHk8Qbc0REIYq6Ugf9gp
-	o4JQkn5zYm4biThuhuocE2Vrg62CLQ04NB3n480XHcUM8vBgZiLg8GEjnbyEM8m/CN+45IgwScjJd
-	6eF0PpynjOPkNznj1ZaHM5n3Dm5fYLsDAOeDtWRgEpadliVDtSUAi7elmJwdPyAaio61dss5bluld
-	gp0pMmkIvI9foiQgpmQahEvPc3wqVCXkLpQUHmuJbVwPjBX/9Ibu/B8iFeWfeWKgWJvRLe2o7t+e4
-	ST5zo8S/QdbkFNO8U5MA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=P3sWus6o1kprfvWfbZKfv4NU6bVrkf1UGBXifAYxPyo=; b=qehgKpK77kMnNM
+	IVIfY2d+I419dXg4EtshXoN7MlPulDPUc4/0TK7sPJ/d9NxTYZVWW8U0OjGO3kIXgDUVITLjMHLCp
+	LUWl0ZLQiXKnoueJEzxO/vAIlrDVeKk2ogSFtk14cwLJXaZSNsOfh1MjGxvvrRSFU5lto2OSUGWiw
+	19uqh9gJGHrfmyyLhJpX/hE3EJ8unMpptWM0QV7U+z4TJbNDsrmdlSbSVEVGjl5+llC692OJojsav
+	POzGNZiyGYd/ReOTZFBjHaKDAKsoV5bgE+tnx8vBHVeqc8Swew9bPVpG45aDLmUxEa/WXBqAGICqw
+	u1X/b78cUWjrkilMIWPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8NGl-0000000E9PK-21Wj;
-	Mon, 13 Oct 2025 18:27:39 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1v8Pa7-0000000EVOi-25An;
+	Mon, 13 Oct 2025 20:55:47 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8NGh-0000000E9Mn-3Fta;
-	Mon, 13 Oct 2025 18:27:37 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1760380053;
-	bh=BIcA4osUmV/1VbMUUXeGDi2zOdw1yTeJ2CK9wzGmF+4=;
-	h=From:Subject:Date:To:Cc:From;
-	b=cveAs0diTCznavmi+DTpudynnyzFIosDn4AGMJvnJPUPqziS0Uy2rgoK1if1yZekL
-	 34HcPgvmF25JDHLM2rLf8msrZyJ5tH9Hl1k/93AnPEKflr/aIkM+6RVQOfW/mzr+cN
-	 63OWEQNlInMr0dcpV6yc5/rkMPXrPXSH2Ochb1RZFuVW7uTGqhNdvcuWOsyDZXaXo/
-	 Lj1y1WotdICF9Qh9vdnfhyjmfP0vYzOGliZUq4+Gp8tUPWnViOOMuqlaxN5hILMfbI
-	 jyRups+UT8H06V54a+wupmKLxHd7dvHRIhCWzV2bEWETXkySlt1Ugz/vdejz7oTQWl
-	 BOYyHDU294pkw==
-Received: from localhost (unknown [82.79.138.145])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with UTF8SMTPSA id CBBC317E124A;
-	Mon, 13 Oct 2025 20:27:32 +0200 (CEST)
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Subject: [PATCH v2 0/2] Introduce BACKGROUND_COLOR DRM CRTC property
-Date: Mon, 13 Oct 2025 21:27:17 +0300
-Message-Id: <20251013-rk3588-bgcolor-v2-0-25cc3810ba8c@collabora.com>
+	id 1v8Pa4-0000000EVN8-2der
+	for linux-rockchip@lists.infradead.org;
+	Mon, 13 Oct 2025 20:55:46 +0000
+Received: from pps.filterd (m0279868.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 59DHD85J005568
+	for <linux-rockchip@lists.infradead.org>; Mon, 13 Oct 2025 20:55:43 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-type:date:from:in-reply-to:message-id:mime-version
+	:references:subject:to; s=qcppdkim1; bh=h8b2DwudIexdSRYipqQ13kew
+	J4gE/3CuV6C5IduoJwc=; b=IXcIkoB5lrzUNaD+HgdJcATWOkoQEcKeijyYxvoD
+	CpeyXaCk6w8+tWGSjAMZkwZPw21qV3u1O1ltWg3VKydAx41BIaj7yET94j763QQv
+	8I/Z2cRYqYJmZn5/9eQ44X518qWYT5ZOFYKy3uNI51mU8RGIcH5aJXPaF6WalADn
+	CQvvpW+LgmFNa3+Kd6KgxOEkAEfo7BF8PvuLAhkdz7sjsigzp91+nUOOWeZRs5Ur
+	hTq6JnBjke4ZYvn2gSX73qtSxdXDOyfUBOxqavidkmAIGZY60iZgEHSDfa3UaFJw
+	+67xrf28nPjY7xEv2qBa52P21z2FZ4jz6ZD12F4OiNNcoA==
+Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com [209.85.222.199])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 49qfa865fa-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
+	for <linux-rockchip@lists.infradead.org>; Mon, 13 Oct 2025 20:55:43 +0000 (GMT)
+Received: by mail-qk1-f199.google.com with SMTP id af79cd13be357-87561645c1cso2591667385a.1
+        for <linux-rockchip@lists.infradead.org>; Mon, 13 Oct 2025 13:55:43 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1760388943; x=1760993743;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=h8b2DwudIexdSRYipqQ13kewJ4gE/3CuV6C5IduoJwc=;
+        b=ZQLuIt4Evye2t/xIkhqtzbgLWk/f/R86bLkz+czWhmO/ziCsgxA02/xxK5yHZZd52i
+         mlp5dIfe0YPX4qvxieGXUjYCXMzxJA4uOz8NqSjaabAFPo/lFkCG4SjuKWZORNdbUHiZ
+         J/XFuoloMzvS9JI2JlFdYgO5yF2s6jDLdAYfS2iN6o+I6X7G9O++Dyb/Nk0kVbYKe/n7
+         37NQ5jsACgdEo1RXcKXtbh2OIapl0bqw09NTV0i/f+PFShE+o6+/tC+OVgQwpO1NXWPx
+         8CSeI9uBGc6HV1bEwAoZOEmmqAC0tO4trAqee7Od9DAKW2bMwWKeH4zO76oUIRM9ZHWV
+         ts2g==
+X-Forwarded-Encrypted: i=1; AJvYcCUaMHP4IZevK3JgAwxM31OuMvrWryJToWsRpEi7HJInKSAVM2a5TYxoxJD6ylAR1/gmoXS4ggRMWhlYbYuyfQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzHrGY5/N1GDSxNqtfnsMZGb/vkxRfkh3OvkUtL4MFI08yZk+vW
+	IrRdIY4W8eUuwX8HQmIEOBsk1kFSFa65Xm/P9cdZoa1s1TuE2EsRdh60gdI9yKieoqewnRTXVJi
+	mjauo/ZI9/sLiKftB/czYRnSKjvBMBimHdK/TnBMh+Vd/gAH+8e35NYzmrr59kTgXIVv/rO0cbX
+	M=
+X-Gm-Gg: ASbGnctIamaoHYYXLSPi/F+Ixy2kU+FdlSbbKWNj3NUgZdA2f/AiRCGyPvFNkmiaa7g
+	89rbx2n742UesTC3R7l2tr/hRHXWA6wyacojmfY9hayFm9PafM+xnYiRJ1jAZq6upCdfEKfK2Tc
+	YnwFsGJsoh3Mv6ZPn4T8C41oQ0ppZ/FOI/HeclAn/WdBzA0uqdF/mcFSbFgk3Rg3L1KiH59QMm7
+	J8eSeE7b1a4XzRI8Ut3xfAPoYA4xdmNRUcj492v8CxdmZTlolJtFHjw4mVfSBNMlGCZ2fa52Dgt
+	FZqeystdR7FpOk7awQsz4jj/hwhGazTX745LyM14QLLe9bzmnZQyJZhwQoLiyr8/rtWxZGM+LHO
+	RhBaWDUScJORNJ/AlAxD9XKHaA+rs4lCmQRC4PL//7AoSVCuJjzAE
+X-Received: by 2002:a05:620a:40ca:b0:850:95d4:db01 with SMTP id af79cd13be357-88352f83c1cmr2928836785a.21.1760388942668;
+        Mon, 13 Oct 2025 13:55:42 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEp6cEaL5p5bxM9BKec5c/+vKMAwKsA7FMuN565mKfxMvwbeeumVcMSCt/OjDjFwBqiUk+E3g==
+X-Received: by 2002:a05:620a:40ca:b0:850:95d4:db01 with SMTP id af79cd13be357-88352f83c1cmr2928833585a.21.1760388942214;
+        Mon, 13 Oct 2025 13:55:42 -0700 (PDT)
+Received: from umbar.lan (2001-14ba-a0c3-3a00-264b-feff-fe8b-be8a.rev.dnainternet.fi. [2001:14ba:a0c3:3a00:264b:feff:fe8b:be8a])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-590881f8c6csm4493487e87.28.2025.10.13.13.55.41
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 13 Oct 2025 13:55:41 -0700 (PDT)
+Date: Mon, 13 Oct 2025 23:55:39 +0300
+From: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+        Maxime Ripard <mripard@kernel.org>,
+        Thomas Zimmermann <tzimmermann@suse.de>,
+        David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+        Sandy Huang <hjc@rock-chips.com>,
+        Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>,
+        Andy Yan <andy.yan@rock-chips.com>,
+        Robert Mader <robert.mader@collabora.com>, kernel@collabora.com,
+        dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+        linux-arm-kernel@lists.infradead.org,
+        linux-rockchip@lists.infradead.org,
+        Matt Roper <matthew.d.roper@intel.com>
+Subject: Re: [PATCH v2 0/2] Introduce BACKGROUND_COLOR DRM CRTC property
+Message-ID: <x33zabb5un2boben6r4qp3vvrgca5s37gmseespdwwbajumdxx@mcxe6or5p63m>
+References: <20251013-rk3588-bgcolor-v2-0-25cc3810ba8c@collabora.com>
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAIVE7WgC/13MSw7CIBSF4a00dywGMARw5D5MBzxbYi3mYoimY
- e9inTn8T3K+DUrAFAqchw0w1FRSXnvwwwBuNusUSPK9gVMuqOKa4O0klCJ2cnnJSBwz0mojqLQ
- O+umBIabXDl7H3nMqz4zv3a/su/4oTfk/VRmhJHotfdTMKx0vfV+MzWiOLt9hbK19AL42yM2wA
- AAA
-X-Change-ID: 20250829-rk3588-bgcolor-c1a7b9a507bc
-To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Andy Yan <andy.yan@rock-chips.com>
-Cc: Robert Mader <robert.mader@collabora.com>, kernel@collabora.com, 
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- Matt Roper <matthew.d.roper@intel.com>
-X-Mailer: b4 0.14.3
+Content-Disposition: inline
+In-Reply-To: <20251013-rk3588-bgcolor-v2-0-25cc3810ba8c@collabora.com>
+X-Proofpoint-GUID: 6vJRGd0l4yrwzu3IZPdPufAvmIVHRz7N
+X-Proofpoint-ORIG-GUID: 6vJRGd0l4yrwzu3IZPdPufAvmIVHRz7N
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMDExMDAxNyBTYWx0ZWRfX1iY6zajnPzOt
+ FdD5o+AZJ8106q+n1D/D7uM8D56n/u+Hdr+BtFAVUPgzhMvORJkYrQJGcn+lmoJVj3eQSMuxode
+ OGsAOlOJm2YdX990m+4Uqj2r8QUDHnarCW9MheJWmVAKVmr8awHt1cyanKI+kIMo0kyexAObHJC
+ akZiNvDjhgS03R4vWAxKyeSVn0urGv9tRMV6sJStjxtJ0Jy01aiByIpMnsRWQ8GuP3bDSvcNRNO
+ 9B2PejUaGH3T9c3+8l/52ethPR132Lw4ToDFxRpZL1zcvKzT8ZD4HhbrOTUQVIqDLJ1AEvqTPdd
+ bB97I6tzmdr3gTaVQlfRuNs85DZpqwmph0FtpLluHXJGnlxbojcHzX7vhz7JO73UxOExeAnM0Ud
+ OCcZdc3/kpgnmZIHaw/CIp/x4/fp6Q==
+X-Authority-Analysis: v=2.4 cv=JLw2csKb c=1 sm=1 tr=0 ts=68ed674f cx=c_pps
+ a=HLyN3IcIa5EE8TELMZ618Q==:117 a=xqWC_Br6kY4A:10 a=kj9zAlcOel0A:10
+ a=x6icFKpwvdMA:10 a=VwQbUJbxAAAA:8 a=COk6AnOGAAAA:8 a=6rgqHx4lmTWDBTbEgdMA:9
+ a=CjuIK1q_8ugA:10 a=bTQJ7kPSJx9SKPbeHEYW:22 a=TjNXssC_j7lpFel5tvFf:22
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1117,Hydra:6.1.9,FMLib:17.12.80.40
+ definitions=2025-10-13_07,2025-10-13_01,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ lowpriorityscore=0 phishscore=0 adultscore=0 bulkscore=0 priorityscore=1501
+ impostorscore=0 suspectscore=0 malwarescore=0 spamscore=0 clxscore=1015
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.19.0-2510020000 definitions=main-2510110017
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251013_112735_975097_EF11BC8C 
-X-CRM114-Status: GOOD (  16.37  )
+X-CRM114-CacheID: sfid-20251013_135544_775114_B834565F 
+X-CRM114-Status: GOOD (  15.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,174 +138,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Some display controllers can be hardware-configured to present non-black
-colors for pixels which are not covered by any plane (or are exposed
-through transparent regions of higher planes).
+On Mon, Oct 13, 2025 at 09:27:17PM +0300, Cristian Ciocaltea wrote:
+> Some display controllers can be hardware-configured to present non-black
+> colors for pixels which are not covered by any plane (or are exposed
+> through transparent regions of higher planes).
+> 
+> The first patch of the series introduces the BACKGROUND_COLOR DRM
+> property that can be attached to a CRTC via a dedicated helper function.
+> A 64-bit ARGB color value format is also defined and can be manipulated
+> with the help of a few utility macros.
 
-The first patch of the series introduces the BACKGROUND_COLOR DRM
-property that can be attached to a CRTC via a dedicated helper function.
-A 64-bit ARGB color value format is also defined and can be manipulated
-with the help of a few utility macros.
 
-Note this is a reworked version of the patch [1] submitted (many) years
-ago by Matt Roper.  The main changes are:
+Please provide IGT tests. I'd at least check that using the
+BACKGROUND_COLOR results in the same CRC as then one when there is a
+plane covering the whole screen.
 
-* Renamed DRM_ARGB_<COMP>() to DRM_ARGB64_GET<C>_BPC() while providing
-  convenience wrappers to extract all 16 bits of a specific color via
-  DRM_ARGB64_GET<C>()
-* Replaced drm_argb() function with DRM_ARGB64_PREP_BPC() macro, to
-  improve uAPI consistency and readability; additionally fixed a bug in
-  case of using bpc < 16: the unused least-significant bits of a given
-  component in the output value would contain the unused
-  most-significant bits of the following component in the input value,
-  instead of being set to 0
-* Replaced GENMASK_ULL(63, 0) with U64_MAX when calling
-  drm_property_create_range() to create the BACKGROUND_COLOR property
-* Moved crtc_state->bgcolor initialization from
-  __drm_atomic_helper_crtc_reset() to
-  __drm_atomic_helper_crtc_state_reset()
-* Replaced '*bgcolor*' occurrences to '*background_color*' for
-  consistency with the actual property name in both storage field and
-  helper functions names
+Additional note. I see a value in having the CRTC property for the
+background colour. However it might be more flexible to reuse old
+proposal for solid fill planes ([1]) and instead implement the lowest
+Z-order plane supporting only solid fill colour as an image source.
 
-The second patch adds background color support to the VOP2 display
-controller used in the RK3568, RK3576, and RK3588 Rockchip SoC families.
+[1] https://lore.kernel.org/dri-devel/20231027-solid-fill-v7-0-780188bfa7b2@quicinc.com/
 
-Initially this has been validated using a modetest wrapper script [2],
-which is able to execute several tests - see an example of a generated
-report at the end.
-
-In the meantime, the implementation on Weston side has been finalized,
-providing support for the BACKGROUND_COLOR CRTC property to the DRM
-backend via the merge request [3].  It relies on the already existing
-background-color setting in weston.ini:
-
-  [shell]
-  background-color=0xAARRGGBB
-
-All tests were performed on the Radxa boards listed below.  Please note
-that as of next-20250901, there are a few known regressions; for each
-case, I mentioned the actual problem and its related fix/workaround
-accordingly:
-
-* ROCK 3A (RK3568)
- - issue: broken networking
- - fix: revert commit da114122b831 ("net: ethernet: stmmac: dwmac-rk: Make
-   the clk_phy could be used for external phy")
-
-* ROCK 4D (RK3576)
- - issue: random freezes right after booting
- - fix: add regulator_ignore_unused to kernel cmdline
-
-* ROCK 5B (RK3588)
- - issue: broken networking
- - fix: apply patch [4]
-
-[1] https://lore.kernel.org/all/20190930224707.14904-2-matthew.d.roper@intel.com/
-[2] https://gitlab.collabora.com/cristicc/linux-next/-/commits/drm-vop2-bgcolor-test
-[3] https://gitlab.freedesktop.org/wayland/weston/-/merge_requests/1845
-[4] https://lore.kernel.org/all/20250827230943.17829-1-inochiama@gmail.com/
-
-Validation report on ROCK 5B
-============================
-
-$ tools/testing/rk-bgcol-test.sh
-
----------------------------------------------------------------
- Available Rockchip display connectors
----------------------------------------------------------------
-id	type	status	crtc_id	plane_id
-85	11	2	0	34
-88	11	1	83	40
-
-Selected connector: id=88 crtc=83 plane=40
-
----------------------------------------------------------------
- Check initial state
----------------------------------------------------------------
-Read BACKGROUND_COLOR prop (ARGB64): 0xffff000000000000
-    Connector: HDMI-A-2
-	background color (10bpc): r=0x0 g=0x0 b=0x0
-
----------------------------------------------------------------
- Set/get DRM property
----------------------------------------------------------------
-Changing prop value to: 0xffff00000000ffff
-opened device `RockChip Soc DRM` on driver `rockchip` (version 1.0.0 at 0)
-Read BACKGROUND_COLOR prop (ARGB64): 0xffff00000000ffff
-    Connector: HDMI-A-2
-	background color (10bpc): r=0x0 g=0x0 b=0x3ff
-
----------------------------------------------------------------
- Plane display test 40@83:960x540+480+270
----------------------------------------------------------------
-
-Changing prop value to 0xffffffff00000000
-Press ENTER to continue..
-opened device `RockChip Soc DRM` on driver `rockchip` (version 1.0.0 at 0)
-testing 960x540@XR24 overlay plane 40
-
-Read BACKGROUND_COLOR prop (ARGB64): 0xffffffff00000000
-    Connector: HDMI-A-2
-	background color (10bpc): r=0x3ff g=0x0 b=0x0
-
-Changing prop value to 0xffff0000ffff0000
-Press ENTER to continue..
-opened device `RockChip Soc DRM` on driver `rockchip` (version 1.0.0 at 0)
-testing 960x540@XR24 overlay plane 40
-
-Read BACKGROUND_COLOR prop (ARGB64): 0xffff0000ffff0000
-    Connector: HDMI-A-2
-	background color (10bpc): r=0x0 g=0x3ff b=0x0
-
-Changing prop value to 0xffff00000000ffff
-Press ENTER to continue..
-opened device `RockChip Soc DRM` on driver `rockchip` (version 1.0.0 at 0)
-testing 960x540@XR24 overlay plane 40
-
-Read BACKGROUND_COLOR prop (ARGB64): 0xffff00000000ffff
-    Connector: HDMI-A-2
-	background color (10bpc): r=0x0 g=0x0 b=0x3ff
-
----------------------------------------------------------------
- Restoring state
----------------------------------------------------------------
-Changing prop value to: 0xffff000000000000
-opened device `RockChip Soc DRM` on driver `rockchip` (version 1.0.0 at 0)
-Read BACKGROUND_COLOR prop (ARGB64): 0xffff000000000000
-    Connector: HDMI-A-2
-	background color (10bpc): r=0x0 g=0x0 b=0x0
-
-Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
----
-Changes in v2:
-- Improved uAPI consistency and readability by introducing
-  DRM_ARGB64_PREP*() and DRM_ARGB64_GET*() helper macros
-- Updated several code comment sections
-- Referenced the counterpart Weston support in the cover letter
-- Rebased series onto v6.18-rc1
-- Link to v1: https://lore.kernel.org/r/20250902-rk3588-bgcolor-v1-0-fd97df91d89f@collabora.com
-
----
-Cristian Ciocaltea (2):
-      drm: Add CRTC background color property
-      drm/rockchip: vop2: Support setting custom background color
-
- drivers/gpu/drm/drm_atomic_state_helper.c    |  1 +
- drivers/gpu/drm/drm_atomic_uapi.c            |  4 +++
- drivers/gpu/drm/drm_blend.c                  | 39 +++++++++++++++++++++++++---
- drivers/gpu/drm/drm_mode_config.c            |  6 +++++
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 13 +++++++++-
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.h |  4 +++
- include/drm/drm_blend.h                      |  4 ++-
- include/drm/drm_crtc.h                       | 12 +++++++++
- include/drm/drm_mode_config.h                |  5 ++++
- include/uapi/drm/drm_mode.h                  | 36 +++++++++++++++++++++++++
- 10 files changed, 118 insertions(+), 6 deletions(-)
----
-base-commit: 3a8660878839faadb4f1a6dd72c3179c1df56787
-change-id: 20250829-rk3588-bgcolor-c1a7b9a507bc
-
+-- 
+With best wishes
+Dmitry
 
 _______________________________________________
 Linux-rockchip mailing list
