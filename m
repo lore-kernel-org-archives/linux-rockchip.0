@@ -4,82 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19C23CCA476
-	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Oct 2025 08:51:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC2C2CCD183
+	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Oct 2025 08:52:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:From:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5Buuk7CdSCPNfBeYnv93wdFNkHWghzsf6fum8imfEf0=; b=v83PtRy8g42YMa
-	2xD77j3E46w0KeOFnTIo35EHqK5chc2jm17OhRMKPoKPnl9SvQw59vJzPiAvOPormDx9rVTIK0ZKW
-	1uN+aiCu81RTu9PUyhZr+K8Ez65HoNp8RtpO5buVHsiJ3cei4jbC6IOtj2e3tCP3UnXITi2jN8Gdf
-	Mq5Tr/CnIfLqqI5OffN3xNkADFZuDM8kzQ/Qvwvqn/mNjD2vTIJLArbeIzphBtKJ3q1gVgTngC3xl
-	0tKgdJ3Ako7mpFvjSsNXTHhulNxVRyw4rWjIrXD+Y5PMu7GaeQXCFYWMU2VPP+oUMY2MFf4KGUyRa
-	jxcQ5BuzLQLWDOl4Ic2Q==;
+	List-Owner; bh=K2m6Bt7Jqgsd8/Ze3aXxdr0G9wJvM5FXDGXAGghxIDY=; b=YRo8fvJJe+QpVC
+	Yk5Dc2m6axkZWfLAIx5fh/UfJqhvmoszN9g++zpK/XEvLAvEBM2UfbLGEAu6L2cOIcnfSy+Q9rmgX
+	k+PGtTAb4IdZI7sQxAM+c7oIOFjf/7hyKPX6ooOXiHkLsTv6kaO2cljcW3RffAZFAlcP/pO0Ze/05
+	OtcawaHnKNwRwVPbjULQAH/XqR5PB/V4ojsrJNaJFLgneoNc53yyNs6WqjVbDQG1LJE+hwfEHmhyQ
+	AXpQ5CzZpiezDLNPnRQlC+BAdWLa8V/BwOJtoF7LJVEe4fCTMzDm4LTDoaU+zsrJzcGx0SsR6Wuwy
+	HSXKFQPKqgFbRdu7wcVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8EHG-0000000Cejb-0ojS;
-	Mon, 13 Oct 2025 08:51:34 +0000
-Received: from mail-qv1-xf2f.google.com ([2607:f8b0:4864:20::f2f])
+	id 1v8EHn-0000000CesO-1X1W;
+	Mon, 13 Oct 2025 08:52:07 +0000
+Received: from mailout2.w1.samsung.com ([210.118.77.12])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8EHD-0000000CeiZ-1jKJ
-	for linux-rockchip@lists.infradead.org;
-	Mon, 13 Oct 2025 08:51:32 +0000
-Received: by mail-qv1-xf2f.google.com with SMTP id 6a1803df08f44-79ad9aa2d95so69548126d6.1
-        for <linux-rockchip@lists.infradead.org>; Mon, 13 Oct 2025 01:51:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1760345490; x=1760950290; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Qjn80fxqTnWd47bRID7zagiFWJvRCbz/QkHXqwtfnJI=;
-        b=fgj/hNU251P+oh1BAcvhocVSKfAMvL3ST+0jz8qIBwByk8/CBwineZ7KoBlyQNzAY5
-         ZJs0BZCFZIhVHmKDTwBenDbbEi6HbDTl0DtnRGKI2gD7ZIpqcnpVcO0UHdeO0m/Uxa/p
-         nvK+6GzU0MDzVoka4Ajo2SXMR2K2G/j+Yp8MIP84+UI5qhTZ6Ma6PVC36zBzW55Ny6Yu
-         bTHZIGR+VJmPplatPFPym2xpcjU1mj6MktZ/pnmd9g5tzsbZ0+3x2grfacxPtOqwGWmg
-         qAyS/rjpmPm0fCtRkrus7DmZyF25bI1ZT0HNqAKsdHCkRhJpSYt4DQ/Cy7/iHnel+PnN
-         Mpxw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1760345490; x=1760950290;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Qjn80fxqTnWd47bRID7zagiFWJvRCbz/QkHXqwtfnJI=;
-        b=h2cIwUlcCkfY9trcG88Jpo76t3HLXCtGBwl9vEOZtb5e4wyfplqMiEBQm/U1Yplgqz
-         fga3+XDYKeW8dS/BMII/FMHmbu6yOovNO1wVOKYT3tjD+WXuzNhNFWA3t4h16C6TXs4d
-         N20jMez12OQxQWUYH4BML49/yWyfbKDJFutC8Xo6nBaiiZpC4LC8rYOYsjqxvK0L/M0o
-         1yTePQGRQAzhRFX+avaPrzaPhn2cV6WouRoICbEt+sVAer5oGauan9BBwRTSebo/RQc5
-         tZpfGWu2/+cAB9fb6JjGzGdWTCMeEBEyudLBPFAzU2cZheXg/sfY/ZohpjJIBZN5U2yv
-         r2/g==
-X-Forwarded-Encrypted: i=1; AJvYcCWrGg1DxsON9eORnDahbHxhnfxiY0EZclRZBNSNPmef9WSuUc7+ESzCRt0S9eL1nG1XKExeBindXe8x42ym/w==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwCF6ZYEI9Lrg9eoBTlQP5mZGvfIJf5PkN7fVPwAcOV7bkpLhKA
-	stiW9ukJ1LHNYx2HJrKKBVUY3X+4pCBheJ970ohGbg13Tdc/xgXiK4gR4qX/Kdyr9UYsC7ZjLwH
-	Zj0fHA1tzcRbFqujCT0pL/jD91MYXs4k=
-X-Gm-Gg: ASbGncuPU952r3ozm+sWg+nrqp/Nz7cHlSn6rEPeTzdIiBuYdHogA/Y5kbxaD1nAaRC
-	2FzxUqRFnJX3yJVHaUm4J+IVebK99mOEp2OHT1Xn/7ZQRg7/wXHGuojUMNqSgvgEaZDRQc0ARvH
-	ZcSAXqH/BsXgyNLMuRJZH5YJJuq8ERlWnhTO18mZz2xGqDTeO0kOrnOwSOR9YHY+SJknTG+Gj4N
-	EfuPZCDYbsHGjvKaIhNrF5DFQBzoE5A18q19Q==
-X-Google-Smtp-Source: AGHT+IH0ySB3maj/sC8FUBTcxwFiIagWYmPDEWGIQC6hjlTOe05KTYNWC9uE9sG+FKiibmlzh++7qDDMrC8I5v1tVfE=
-X-Received: by 2002:a05:6214:2264:b0:78d:4b1a:5ac5 with SMTP id
- 6a1803df08f44-87b2ef37479mr282594966d6.48.1760345489748; Mon, 13 Oct 2025
- 01:51:29 -0700 (PDT)
+	id 1v8EHj-0000000CeqT-3VOu;
+	Mon, 13 Oct 2025 08:52:05 +0000
+Received: from eucas1p2.samsung.com (unknown [182.198.249.207])
+	by mailout2.w1.samsung.com (KnoxPortal) with ESMTP id 20251013085200euoutp0266e34edf90c863a4c01eb72fc5c48eb3~uAOyYTX0q1874618746euoutp02G;
+	Mon, 13 Oct 2025 08:52:00 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.w1.samsung.com 20251013085200euoutp0266e34edf90c863a4c01eb72fc5c48eb3~uAOyYTX0q1874618746euoutp02G
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+	s=mail20170921; t=1760345520;
+	bh=JyDd/uFH2Am1LZ5SPDN+k8UExukF9D/xq2Z7HY8ZnFU=;
+	h=Date:Subject:To:Cc:From:In-Reply-To:References:From;
+	b=BQoGMpilRJCUe8Y44BcqjJWkeRiS+JPfur3kcgk/2YoTAS+ViVlUzaRYX89zuEjDq
+	 wkZ//2bWyV40qfk9fRhKG5W52cbl/HFo0RcqE6+fae76UZ4N7VyDdV6dd9ILg/D8OP
+	 faJI0JVLj/Gc3HQk8b0emDKXb80ilcDcD66u6PCM=
+Received: from eusmtip2.samsung.com (unknown [203.254.199.222]) by
+	eucas1p2.samsung.com (KnoxPortal) with ESMTPA id
+	20251013085200eucas1p2f4ded79121c5a222f59ecf4ddda0816c~uAOx-fHcX0880708807eucas1p26;
+	Mon, 13 Oct 2025 08:52:00 +0000 (GMT)
+Received: from [106.210.134.192] (unknown [106.210.134.192]) by
+	eusmtip2.samsung.com (KnoxPortal) with ESMTPA id
+	20251013085157eusmtip27fccd916a2ad4442a7f4d1fa1f91c70b~uAOvsyZiW2933229332eusmtip2d;
+	Mon, 13 Oct 2025 08:51:57 +0000 (GMT)
+Message-ID: <e1d3661d-26ba-49ae-a124-dc5233c9107d@samsung.com>
+Date: Mon, 13 Oct 2025 10:51:57 +0200
 MIME-Version: 1.0
-References: <20251009084416.45542-4-jjm2473@gmail.com> <20251013070036.66901-1-amadeus@jmu.edu.cn>
-In-Reply-To: <20251013070036.66901-1-amadeus@jmu.edu.cn>
-From: Liangbin Lian <jjm2473@gmail.com>
-Date: Mon, 13 Oct 2025 16:51:16 +0800
-X-Gm-Features: AS18NWBHP3UXJATnpuEz0GehP1fSNqq1qliSBomIm1t4FH_TTzg2ldtvn1AzLb4
-Message-ID: <CAP_9mL5=GmtJF3nSbfX6gRzPc=fAMrTOfMuOLyWFwq5D4OYUFw@mail.gmail.com>
-Subject: Re: [PATCH v5 3/3] arm64: dts: rockchip: add LinkEase EasePi R1
-To: Chukun Pan <amadeus@jmu.edu.cn>
-Cc: conor+dt@kernel.org, devicetree@vger.kernel.org, heiko@sntech.de, 
-	krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+User-Agent: Betterbird (Windows)
+Subject: Re: [PATCH v1 3/6] iommu/exynos-iommu: Set release_domain to
+ exynos_identity_domain
+To: Nicolin Chen <nicolinc@nvidia.com>, joro@8bytes.org, jgg@nvidia.com,
+	kevin.tian@intel.com
+Cc: suravee.suthikulpanit@amd.com, will@kernel.org, robin.murphy@arm.com,
+	sven@kernel.org, j@jannau.net, robin.clark@oss.qualcomm.com,
+	krzk@kernel.org, dwmw2@infradead.org, baolu.lu@linux.intel.com,
+	yong.wu@mediatek.com, matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com, tjeznach@rivosinc.com,
+	pjw@kernel.org, palmer@dabbelt.com, aou@eecs.berkeley.edu, heiko@sntech.de,
+	schnelle@linux.ibm.com, mjrosato@linux.ibm.com, orsonzhai@gmail.com,
+	baolin.wang@linux.alibaba.com, wens@csie.org, jernej.skrabec@gmail.com,
+	samuel@sholland.org, thierry.reding@gmail.com, jonathanh@nvidia.com,
+	jean-philippe@linaro.org, iommu@lists.linux.dev,
+	linux-kernel@vger.kernel.org, asahi@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-riscv@lists.infradead.org, linux-rockchip@lists.infradead.org,
+	linux-s390@vger.kernel.org, linux-sunxi@lists.linux.dev,
+	linux-tegra@vger.kernel.org, virtualization@lists.linux.dev,
+	patches@lists.linux.dev
+Content-Language: en-US
+From: Marek Szyprowski <m.szyprowski@samsung.com>
+In-Reply-To: <56175bec385d24af9eb2a38632e1d6ce889025e3.1760312540.git.nicolinc@nvidia.com>
+X-CMS-MailID: 20251013085200eucas1p2f4ded79121c5a222f59ecf4ddda0816c
+X-Msg-Generator: CA
+X-RootMTR: 20251012235812eucas1p1209a75bffb5a4784955781d437746731
+X-EPHeader: CA
+X-CMS-RootMailID: 20251012235812eucas1p1209a75bffb5a4784955781d437746731
+References: <cover.1760312540.git.nicolinc@nvidia.com>
+	<CGME20251012235812eucas1p1209a75bffb5a4784955781d437746731@eucas1p1.samsung.com>
+	<56175bec385d24af9eb2a38632e1d6ce889025e3.1760312540.git.nicolinc@nvidia.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251013_015131_456784_78E73663 
-X-CRM114-Status: GOOD (  13.15  )
+X-CRM114-CacheID: sfid-20251013_015204_150832_25B77126 
+X-CRM114-Status: GOOD (  15.45  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,63 +95,54 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Q2h1a3VuIFBhbiA8YW1hZGV1c0BqbXUuZWR1LmNuPiDkuo4yMDI15bm0MTDmnIgxM+aXpeWRqOS4
-gCAxNTowMeWGmemBk++8mgo+Cj4gSGksCj4KPiA+ICsgICAgIHJlZ3VsYXRvci12ZGQwdjk1LTI1
-Z2xhbiB7Cj4gPiArICAgICAgICAgICAgIGNvbXBhdGlibGUgPSAicmVndWxhdG9yLWZpeGVkIjsK
-PiA+ICsgICAgICAgICAgICAgcGluY3RybC1uYW1lcyA9ICJkZWZhdWx0IjsKPiA+ICsgICAgICAg
-ICAgICAgcGluY3RybC0wID0gPCZwd3JfMjVnX3Bpbj47Cj4gPiArICAgICAgICAgICAgIGVuYWJs
-ZS1hY3RpdmUtaGlnaDsKPiA+ICsgICAgICAgICAgICAgZ3BpbyA9IDwmZ3BpbzMgUktfUEIxIEdQ
-SU9fQUNUSVZFX0hJR0g+Owo+ID4gKyAgICAgICAgICAgICByZWd1bGF0b3ItbmFtZSA9ICJ2ZGQw
-djk1XzI1Z2xhbiI7Cj4gPiArICAgICAgICAgICAgIHJlZ3VsYXRvci1taW4tbWljcm92b2x0ID0g
-PDk1MDAwMD47Cj4gPiArICAgICAgICAgICAgIHJlZ3VsYXRvci1tYXgtbWljcm92b2x0ID0gPDk1
-MDAwMD47Cj4gPiArICAgICAgICAgICAgIHJlZ3VsYXRvci1ib290LW9uOwo+ID4gKyAgICAgICAg
-ICAgICByZWd1bGF0b3ItYWx3YXlzLW9uOwo+Cj4gVGhlIHByb3BlcnR5IG9yZGVyIHNob3VsZCBi
-ZSBjb25zaXN0ZW50IHdpdGggb3RoZXIgbm9kZXMuCj4KPiA+ICsgICAgICAgICAgICAgdmluLXN1
-cHBseSA9IDwmdmNjM3YzX3N5cz47Cj4gPiArICAgICB9Owo+ID4gKwo+ID4gKyAgICAgdmNjM3Yz
-X252bWU6IHJlZ3VsYXRvci12Y2MzdjMtbnZtZSB7Cj4gPiArICAgICAgICAgICAgIGNvbXBhdGli
-bGUgPSAicmVndWxhdG9yLWZpeGVkIjsKPiA+ICsgICAgICAgICAgICAgcmVndWxhdG9yLW5hbWUg
-PSAidmNjM3YzX252bWUiOwo+ID4gKyAgICAgICAgICAgICByZWd1bGF0b3ItbWluLW1pY3Jvdm9s
-dCA9IDwzMzAwMDAwPjsKPiA+ICsgICAgICAgICAgICAgcmVndWxhdG9yLW1heC1taWNyb3ZvbHQg
-PSA8MzMwMDAwMD47Cj4gPiArICAgICAgICAgICAgIGVuYWJsZS1hY3RpdmUtaGlnaDsKPiA+ICsg
-ICAgICAgICAgICAgZ3BpbyA9IDwmZ3BpbzAgUktfUEE1IEdQSU9fQUNUSVZFX0hJR0g+Owo+ID4g
-KyAgICAgICAgICAgICB2aW4tc3VwcGx5ID0gPCZkY18xMnY+Owo+Cj4gU2FtZSBoZXJlLCBrZWVw
-IGFscGhhYmV0aWNhbCBvcmRlci4KPgo+ID4gKyAgICAgICAgICAgICBwaW5jdHJsLW5hbWVzID0g
-ImRlZmF1bHQiOwo+ID4gKyAgICAgICAgICAgICBwaW5jdHJsLTAgPSA8JnZjYzN2M19udm1lX2Vu
-PjsKPiA+ICsgICAgIH07Cj4KPiA+ICsgICAgICAgICAgICAgc3RhdHVzX2xlZDogbGVkLXN0YXR1
-cyB7Cj4gPiArICAgICAgICAgICAgICAgICAgICAgZ3Bpb3MgPSA8JmdwaW8yIFJLX1BENyBHUElP
-X0FDVElWRV9ISUdIPjsKPiA+ICsgICAgICAgICAgICAgICAgICAgICBjb2xvciA9IDxMRURfQ09M
-T1JfSURfR1JFRU4+Owo+ID4gKyAgICAgICAgICAgICAgICAgICAgIGZ1bmN0aW9uID0gTEVEX0ZV
-TkNUSU9OX1NUQVRVUzsKPiA+ICsgICAgICAgICAgICAgICAgICAgICBsYWJlbCA9ICJncmVlbjpz
-dGF0dXMiOwo+Cj4gVGhlICJsYWJlbCIgcHJvcGVydHkgaXMgZGVwcmVjYXRlZC4KPgo+ID4gKyZw
-Y2llMngxIHsKPiA+ICsgICAgIHJlc2V0LWdwaW9zID0gPCZncGlvMyBSS19QQTQgR1BJT19BQ1RJ
-VkVfSElHSD47Cj4KPiB2cGNpZTN2My1zdXBwbHkgaXMgbWlzc2luZy4KPgo+ID4gKyAgICAgc3Rh
-dHVzID0gIm9rYXkiOwo+ID4gK307Cj4KPiA+ICsmcGNpZTN4MSB7Cj4gPiArICAgICBudW0tbGFu
-ZXMgPSA8MT47Cj4gPiArICAgICByZXNldC1ncGlvcyA9IDwmZ3BpbzMgUktfUEEzIEdQSU9fQUNU
-SVZFX0hJR0g+Owo+Cj4gdnBjaWUzdjMtc3VwcGx5IGlzIG1pc3NpbmcuCj4KPiA+ICsgICAgIHN0
-YXR1cyA9ICJva2F5IjsKPiA+ICt9Owo+Cj4gPiArJnNkbW1jMCB7Cj4gPiArICAgICBtYXgtZnJl
-cXVlbmN5ID0gPDE1MDAwMDAwMD47Cj4KPiBtYXgtZnJlcXVlbmN5IGhhcyBiZWVuIGRlZmluZWQg
-aW4gcmszNTZ4LWJhc2UuZHRzaQo+Cj4gPiArICAgICBuby1zZGlvOwo+ID4gKyAgICAgbm8tbW1j
-Owo+Cj4gbm8tbW1jIGFuZCBjYXAtbW1jLWhpZ2hzcGVlZCBhcmUgbXV0dWFsbHkgZXhjbHVzaXZl
-Lgo+Cj4gPiArICAgICBidXMtd2lkdGggPSA8ND47Cj4gPiArICAgICBjYXAtbW1jLWhpZ2hzcGVl
-ZDsKPgo+ID4gKy8qIE1pY3JvIFNEIGNhcmQgc2xvdCBpcyBub3QgcG9wdWxhdGVkICovCj4gPiAr
-LyogV2lmaSBtb2R1bGUgaXMgbm90IHBvcHVsYXRlZCAqLwo+Cj4gV2h5IHdvdWxkIHlvdSBkZWZp
-bmUgdGhlbSBpZiB0aGV5IGFyZW4ndCBvbiB0aGUgYm9hcmQ/Cj4KPiA+ICsmc2RtbWMyIHsKPiA+
-ICsgICAgIG1heC1mcmVxdWVuY3kgPSA8MTUwMDAwMDAwPjsKPgo+IG1heC1mcmVxdWVuY3kgaGFz
-IGJlZW4gZGVmaW5lZCBpbiByazM1NngtYmFzZS5kdHNpCj4KPiA+ICsgICAgIGJ1cy13aWR0aCA9
-IDw0PjsKPiA+ICsgICAgIGRpc2FibGUtd3A7Cj4KPiBkaXNhYmxlLXdwIGRvZXMgbm90IHdvcmsg
-d2l0aCBzZGlvCj4KPiA+ICsmdXNiMnBoeTBfb3RnIHsKPgo+IHBoeS1zdXBwbHkgaXMgbWlzc2lu
-Zy4KPgo+ID4gKyAgICAgc3RhdHVzID0gIm9rYXkiOwo+ID4gK307CgpDaHVrdW4gUGFuOgogSGVs
-bG8hCgpBbGwgZXhjZXB0IHVzYjJwaHkwX290ZyB3aWxsIGJlIGZpeGVkLgoKPiA+ICsmdXNiMnBo
-eTBfb3RnIHsKPgo+IHBoeS1zdXBwbHkgaXMgbWlzc2luZy4KPgo+ID4gKyAgICAgc3RhdHVzID0g
-Im9rYXkiOwo+ID4gK307CgpWQlVTIG9uIHVzYjJwaHkwX290ZyBpcyBmbG9hdGluZywgdGhpcyBV
-U0IgcG9ydCBvbmx5IHdvcmtzIG9uCmRldmljZShwZXJpcGhlcmFsKSBtb2RlLgpwaHktc3VwcGx5
-IGlzIG9wdGlvbmFsLCBzbyB0aGlzIHNob3VsZCBiZSBmaW5lLCByaWdodD8KCgogIExpYW5nYmlu
-IExpYW4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
-bnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
-b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9j
-a2NoaXAK
+On 13.10.2025 01:57, Nicolin Chen wrote:
+> Following a coming core change to pass in the old domain pointer into the
+> attach_dev op and its callbacks, exynos_iommu_identity_attach() will need
+> this new argument too, which the release_device op doesn't provide.
+>
+> Instead, the core provides a release_domain to attach to the device prior
+> to invoking the release_device callback. Thus, simply use that.
+>
+> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
+Acked-by: Marek Szyprowski <m.szyprowski@samsung.com>
+> ---
+>   drivers/iommu/exynos-iommu.c | 3 +--
+>   1 file changed, 1 insertion(+), 2 deletions(-)
+>
+> diff --git a/drivers/iommu/exynos-iommu.c b/drivers/iommu/exynos-iommu.c
+> index b6edd178fe25e..0857519ca7188 100644
+> --- a/drivers/iommu/exynos-iommu.c
+> +++ b/drivers/iommu/exynos-iommu.c
+> @@ -1429,8 +1429,6 @@ static void exynos_iommu_release_device(struct device *dev)
+>   	struct exynos_iommu_owner *owner = dev_iommu_priv_get(dev);
+>   	struct sysmmu_drvdata *data;
+>   
+> -	WARN_ON(exynos_iommu_identity_attach(&exynos_identity_domain, dev));
+> -
+>   	list_for_each_entry(data, &owner->controllers, owner_node)
+>   		device_link_del(data->link);
+>   }
+> @@ -1476,6 +1474,7 @@ static int exynos_iommu_of_xlate(struct device *dev,
+>   
+>   static const struct iommu_ops exynos_iommu_ops = {
+>   	.identity_domain = &exynos_identity_domain,
+> +	.release_domain = &exynos_identity_domain,
+>   	.domain_alloc_paging = exynos_iommu_domain_alloc_paging,
+>   	.device_group = generic_device_group,
+>   	.probe_device = exynos_iommu_probe_device,
+
+Best regards
+-- 
+Marek Szyprowski, PhD
+Samsung R&D Institute Poland
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
