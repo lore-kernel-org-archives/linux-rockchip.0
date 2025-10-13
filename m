@@ -4,89 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9240CCD193
-	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Oct 2025 14:15:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5352CCCD18E
+	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Oct 2025 14:15:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tPE/yavcc7Kg2PSaOvi0WCtcDU3yRYOOwc4WeHz+y6o=; b=Gf4i59qPVwxoo0
-	zMgAUZpiDn38+B685GgyFffZXaRDjocl5BW0FkZVtN4+xEyKPXbsjczNvK9UikXp3lQj6n7adGeof
-	OdAO92eA2fGpzM9t4Wz3g5VjIxFD9t0UVGSbesTgDKW3sQg6sLovx8IsNZXIzwUZifRXTkEREPW4n
-	Vzr5QCNBkdJWFhuTXiQoBrMD47RvZCeWfCj3TAiGo5FNE0ElcGbBaFyjS9+B6xq3pfFJD7uzblMJP
-	Ef59O4FYJgGQE3fwepvoqmfGCGSjEDNSEFdqxEaWn3q3LCnYceucDuOLvkBL1i1wr+/hCrBGP4PJq
-	IwoZHUwVCvmMaYigi1+Q==;
+	List-Owner; bh=ftq0mnML9B0C2K6mAx8itrC83uInKI81ABOB50ibAvM=; b=XlCrAXCXdQjLJX
+	kA0e61azF2OqtjhyQX2vsr5xHMSofvvUUNh01hCdDV4TRnk5Gba3X4JjyzFWTH0CCEdCVCsRHQoid
+	2juwvjUCl5x3vnhYGRirOiczfdwKQcCpwrJU4z5VTqYz8qwISCVC4Qraq2GLTieOPhugPKHCVYmeX
+	yqDPtUombUBmPdBqGkgRbgUZInNEfzNrmOWyviymRb/sgW7NbD7XGAUw7hHv8wF1nwMVUuXwBWHNO
+	v4mPWCHxLNAxNHZQ/ZpySfsp0VmHzCDZ5xfjERniAFUBjj69PhaRUlBYcXzm41pb8iuL6vdAvvy8O
+	tAqp+xA3aVTxFLGleHUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8JL1-0000000DM8K-3Dh9;
-	Mon, 13 Oct 2025 14:15:47 +0000
+	id 1v8JL3-0000000DMCM-3qPL;
+	Mon, 13 Oct 2025 14:15:49 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8JKU-0000000DL6Z-281J
+	id 1v8JKU-0000000DL6V-4ARz
 	for linux-rockchip@bombadil.infradead.org;
-	Mon, 13 Oct 2025 14:15:14 +0000
+	Mon, 13 Oct 2025 14:15:15 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
 	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=5P2qDb2fF8LDzF+Q7SobVA0m4pVGtYbfI8YlHA3qkzo=; b=ibt7skLO/s6wudzJv0/sL47mT2
-	p0s3CdJxMuwAZjurH/VFq2Bf0W3YFEcc9dXjEk8MaGFMDpPn1jknaYJ78VO1tdAkV5AOJUBvASFsE
-	jZ3xE+SJcXXQIB3IAx8IGsHNHf/Vtsdl62nVBuchfwVeTYoSe6VEerLVBPRlNqZOKZokOWzMFRKCQ
-	+oB3xnSnCj/tfNvCGyym/xPTt9Kv3Gz3DwB6jphaMiFLtqMiogNgnH/k3MnQZpN1Ab9UXPttp0NIm
-	e5FhS5wBjFpqnqfyhcSb5vCTtSSkNOaro3WUIr/RkLgd9KuKCUgyt8jjiIDoe5x45fN+OEVTJJW9X
-	0dbzds9A==;
-Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
+	bh=gUxX/9XhZ4PnNBB1T7MELmfGG4IHXE3ZwCx+Au9dRPU=; b=enBntXaOe8nSF4ZtN6GpZSsaKT
+	FgA8d4slW1UvAL1vwMq79r0N2sDwLJJxZQwdj14jIY8kDUFuMW0iJ1Ls3AFq/3L+J3O8R0BEdadwV
+	AtOdvjyNz8hyy+kA6xGKOnzwH8YEPuJpf5hj4+MgoJL7FebQX9TwaFtewmHRtQRL+0CH5kM5D/oQn
+	kOYENo+CHGH07OaffXxyg2z+A+phs8oEWWFUSzyTx3g4rmAYlqdgw+j/H2BRtKtqb9Hh3oiEpecvx
+	auMEjjqpK4xCAXixLZaGK+1DkzmgAbYkzTcVml+QVSI13rJyhhWtsfsnHx9jz0igZMe8pAqPOC2/P
+	j+PqEmkA==;
+Received: from mail-lf1-f54.google.com ([209.85.167.54])
 	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8JKP-00000004ND7-0SeR
+	id 1v8JKM-00000004NBO-0rSI
 	for linux-rockchip@lists.infradead.org;
 	Mon, 13 Oct 2025 14:15:11 +0000
-Received: by mail-lf1-x131.google.com with SMTP id 2adb3069b0e04-578ecc56235so3649857e87.0
-        for <linux-rockchip@lists.infradead.org>; Mon, 13 Oct 2025 07:15:08 -0700 (PDT)
+Received: by mail-lf1-f54.google.com with SMTP id 2adb3069b0e04-5818de29d15so5335695e87.2
+        for <linux-rockchip@lists.infradead.org>; Mon, 13 Oct 2025 07:15:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1760364907; x=1760969707; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1760364904; x=1760969704; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=5P2qDb2fF8LDzF+Q7SobVA0m4pVGtYbfI8YlHA3qkzo=;
-        b=dIp2SxUrGvOnT1Evx1oRg/P2EWlT/gTOzrhep6Kh1DsPdgwJsVmf6cC/tqC7ZvJFeA
-         +4kG31DsJkVolqm2MAG9Uo07gIOhbdKtoTKeH9QOdwld8aaQwvzME5DMGsI9/JFipN4g
-         E1U65ggxmFFLhYa5X2kVm804d7w2Bvy7mlMHM=
+        bh=gUxX/9XhZ4PnNBB1T7MELmfGG4IHXE3ZwCx+Au9dRPU=;
+        b=IVPNnoKQf2dVwKhj2tf5LwYWqA5tsyoBQ0c9bC9gnGheutPqLt5kHK6lUvP9rlr4tX
+         dFtBiCAUsEj11Z0Wccmykqz+JR5EO126XP7mzBaa/1giV0oLVRUZTroqddrztAC3PBTq
+         hLWPAcxAEKyM4qcbZEM1/BDCK4BBvnhQwAOUI=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1760364907; x=1760969707;
+        d=1e100.net; s=20230601; t=1760364904; x=1760969704;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=5P2qDb2fF8LDzF+Q7SobVA0m4pVGtYbfI8YlHA3qkzo=;
-        b=AIUGwku9la7bQqjSW/9kfdq2LbP88HTUICl+sqQB6MowEbxcQADz4vKQKT5IZTBgQe
-         D9oU3QgM7sY7mziVeq6GomqS7RRMf7axFWb1Auk+A95uTgcWWeoeJuL9poP1fB7ayxEF
-         Qhn/lbhzhmTk6+E4RWBeeQ5QLx+Gnp+iIG2eSMyI3Jq3y05Tfuukjwy0Wc5wzpJay2Mb
-         H+gpGg8pJakrZXJB6vbmljW+9JvDMhJtPUymWYEydebQAmVgM4Kz8jVqJX4h3d7OlXfc
-         MVZFGaSsOMXa2V9mOodzRRDignRyBoSeXMMR2E+3UuvpFXAzjhpso13cjF/d5nOoatnk
-         VNDw==
-X-Forwarded-Encrypted: i=1; AJvYcCXlC7fpeQ8O4dCIZ7apTp7GhXXVGNiMneuJGEpjdEcd9aX/WsEoFxya+hkmk170KROrFCn599RhgYNtQrMumg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwhryQ5GTpUpWBaMRN3uaW4+BSiSlOtPDbPSGql3WxNdUKJEbJk
-	gHDVtZ83N64F3kbw3mtBMkuZH+8Q3mLeO3sAUSnRBePeOWAWjTd5SZxzqcP/8LC+eA==
-X-Gm-Gg: ASbGnctavDAkzddRICQQMzOwmI2LiJ3ioIWk8tAvcN7C0tJF6b1aYOwwm1rNyv3uio6
-	SxqYVBsNwahKLBWhpm07TldOR8M6sldSJ2odu+g8f1B4oTGRzEExGSuSKC6Hb52/TkeRC+vMI4J
-	+ZfVuUQSDRI2XlHruADBWuwhy0uUt4aJWRthiqAzCvcA4f/ND4WM+igWX5zacIr7R5M2XrlAIw+
-	HKwmmrMn1t6mrL8ReerDmKyHreiSpyG3aGWXvfRNpM6diBJao7X8VbNQkkfUKYwprgJwa8HXm0v
-	+S8QXPQ087WB5KNplvl6AW65jXvg+UTO0gKseBX1kLfGrLXM1SZYPuEm+n97X024G6AhVsh2yi7
-	nc0zwd7LoWRfgCz0OPgMViuKftv1vJHBXe5uZoJedJSXuUs9bxtdpvJeNqn49VxLuC8cbRvEVW1
-	Rzt81xzWpL+NnWOS9jOg==
-X-Google-Smtp-Source: AGHT+IEQsTtyBvH7wA40gxhWBW3oPtbImGl+YQPk0oKm5qusk9oOE9kCkc6erWew+lMrb0jYwU0vow==
-X-Received: by 2002:a05:6512:b19:b0:579:8bbb:d61b with SMTP id 2adb3069b0e04-5906dae8e6amr5727710e87.46.1760364907237;
-        Mon, 13 Oct 2025 07:15:07 -0700 (PDT)
+        bh=gUxX/9XhZ4PnNBB1T7MELmfGG4IHXE3ZwCx+Au9dRPU=;
+        b=t0CXFkVF/wmejG6hQAal+/QBtkodHOTrhmoqsecJuDzwu3cp0RY2nEkcFEz7OhsJUX
+         ieCC9d9vHxQVltHka6GN18WH6+NxkvXr3H9uMLdne0sbM+vpGJ3jbsxZin5An/cLafly
+         8kP5PT9Ck3mHz8hbt7zoBcZOKRDBUxWSMcusiTXR2EuLG5qiF8F/QCtFpFnn/fU4fo/2
+         ro3vVwyqqcGGlMNlTi/PxZ/0zYnKlX+el5dcPM3XRIH0FCKeGrWup9YufXCnP4PS8aY6
+         j8txSDMVKVvfZSkTq2bc9rcQxL/N4BgDJ6sFXdhlIrkFXELWuIiaxgzOieFCQcYogM5z
+         nz4w==
+X-Forwarded-Encrypted: i=1; AJvYcCVGiCLY7AI5c8GnR95GvKtJ8ydMD4LDIaYqWS11G6/jMAljWV846T5MCmC6w3mTTKADACaEs6Up6fYx9vk0FA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwM+ebICnF4elDir4hWWVGC6Iq9FayLRB3VbB8tIcbrx/282j/y
+	dU20+O674PVoRay9svMTfxNjVcvjep5YN5ZlUzHKpxy4XaR+uSwsHc9Sxrqd2Wqb+Q==
+X-Gm-Gg: ASbGnctq2PsJmzQF+p3BktgfJmuqKi+i+DVb6GmxnMZ5hIwXRsF0+0dQQXXz/H2Fhqe
+	ijLWp6A4ozZkW0T0HJnMr2MslArQdfnXR3ozAJJUtwXePoL1G288V2n3pMeIymsmV4u926k8Gpb
+	2gMqgY3pafRIv4UZ/ilatDpGGylWKvlHLTAoiTQzGg46qgKcBa53iQDxdisbFIBokyIcKLkL/9K
+	z7tb7kBrUNGzmkYg2oZe7Et1CYeqQ6EW4BAyUWpHd/7cpiagwUlSNH96pzm2Q/s5q4BGYgayLBV
+	SWlZyGEB1Da5vK+pW7EbggMuMi3SzkIbZqnMZjs72bjH7JDjFxc6+iJENDBfpDb9sBi3VlOFlDH
+	YfF4T8lof8Yy/Lj/WpklDvVNKaXrLIWNQR685DMGxIfpjn2SK6dZMV6hIfdbfFLnrTFrlaeJNyH
+	Rp70Hcv/E4TX/Sc59mVg==
+X-Google-Smtp-Source: AGHT+IFTTHLDJWS3Dn9Gd32yhET2ji8RYegzhadBkm4NFBADg/24WPxUjewhK5Qa14H7toVcPkN+hQ==
+X-Received: by 2002:a05:6512:3f28:b0:590:656c:d11f with SMTP id 2adb3069b0e04-5906de88e60mr5677489e87.44.1760364904333;
+        Mon, 13 Oct 2025 07:15:04 -0700 (PDT)
 Received: from ribalda.c.googlers.com (56.213.88.34.bc.googleusercontent.com. [34.88.213.56])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-590881e4e58sm4165256e87.25.2025.10.13.07.15.06
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-590881e4e58sm4165256e87.25.2025.10.13.07.15.03
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 13 Oct 2025 07:15:06 -0700 (PDT)
+        Mon, 13 Oct 2025 07:15:03 -0700 (PDT)
 From: Ricardo Ribalda <ribalda@chromium.org>
-Date: Mon, 13 Oct 2025 14:15:10 +0000
-Subject: [PATCH 30/32] media: ti: cal Use %pe format specifier
+Date: Mon, 13 Oct 2025 14:15:05 +0000
+Subject: [PATCH 25/32] media: imx8mq-mipi-csi2: Use %pe format specifier
 MIME-Version: 1.0
-Message-Id: <20251013-ptr_err-v1-30-2c5efbd82952@chromium.org>
+Message-Id: <20251013-ptr_err-v1-25-2c5efbd82952@chromium.org>
 References: <20251013-ptr_err-v1-0-2c5efbd82952@chromium.org>
 In-Reply-To: <20251013-ptr_err-v1-0-2c5efbd82952@chromium.org>
 To: Linus Walleij <linus.walleij@linaro.org>, 
@@ -134,8 +134,8 @@ Cc: linux-input@vger.kernel.org, linux-kernel@vger.kernel.org,
  Ricardo Ribalda <ribalda@chromium.org>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251013_151509_363245_8ED179D1 
-X-CRM114-Status: GOOD (  12.52  )
+X-CRM114-CacheID: sfid-20251013_151507_067724_07E76C76 
+X-CRM114-Status: GOOD (  12.38  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -157,27 +157,28 @@ a symbolic error name (eg. -EINVAL) and it makes the code simpler by
 omitting PTR_ERR().
 
 This patch fixes this cocci report:
-./platform/ti/cal/cal.c:1111:3-10: WARNING: Consider using %pe to print PTR_ERR()
+./platform/nxp/imx8mq-mipi-csi2.c:422:23-30: WARNING: Consider using %pe to print PTR_ERR()
 
 Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 ---
- drivers/media/platform/ti/cal/cal.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ drivers/media/platform/nxp/imx8mq-mipi-csi2.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/media/platform/ti/cal/cal.c b/drivers/media/platform/ti/cal/cal.c
-index b644ed890412104887ce3ec32b5024a02a9676c8..3e25ce0c3c3bdce3434d19c416481bd8d8b838f5 100644
---- a/drivers/media/platform/ti/cal/cal.c
-+++ b/drivers/media/platform/ti/cal/cal.c
-@@ -1107,8 +1107,7 @@ static int cal_init_camerarx_regmap(struct cal_dev *cal)
- 		return 0;
+diff --git a/drivers/media/platform/nxp/imx8mq-mipi-csi2.c b/drivers/media/platform/nxp/imx8mq-mipi-csi2.c
+index 3a4645f59a44028fdca82a4d8393e1a0a6ba88f0..d333ff43539f061b8b9cf88af2cda8c44b3ec2a9 100644
+--- a/drivers/media/platform/nxp/imx8mq-mipi-csi2.c
++++ b/drivers/media/platform/nxp/imx8mq-mipi-csi2.c
+@@ -418,8 +418,8 @@ static int imx8mq_mipi_csi_calc_hs_settle(struct csi_state *state,
+ 
+ 	src_pad = media_entity_remote_source_pad_unique(&sd_state->sd->entity);
+ 	if (IS_ERR(src_pad)) {
+-		dev_err(state->dev, "can't get source pad of %s (%ld)\n",
+-			sd_state->sd->name, PTR_ERR(src_pad));
++		dev_err(state->dev, "can't get source pad of %s (%pe)\n",
++			sd_state->sd->name, src_pad);
+ 		return PTR_ERR(src_pad);
  	}
  
--	dev_warn(cal->dev, "failed to get ti,camerrx-control: %ld\n",
--		 PTR_ERR(syscon));
-+	dev_warn(cal->dev, "failed to get ti,camerrx-control: %pe\n", syscon);
- 
- 	/*
- 	 * Backward DTS compatibility. If syscon entry is not present then
 
 -- 
 2.51.0.760.g7b8bcc2412-goog
