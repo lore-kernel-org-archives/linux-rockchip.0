@@ -4,69 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED997CCD185
-	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Oct 2025 07:34:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19C23CCA476
+	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Oct 2025 08:51:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
-	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ZsdG0iwmvlYUkRSHWrO3DCFBYoOMnbFbtODkOUQNl5U=; b=KNWCTKNevk7LEr
-	Y11EDanMooq3YJ7BAlwUxmS/1/cD1LtMREVG3Pkzs2E+Io1HHIbQc6Svc/JE5xQ7tGyWmIAVYZvR7
-	KAgVKgNGiw3hmKhWKIhAn8dJmVMF/+WR2d2oFfFQkK+DFs8iDqdwL1YhWRMxYZMfe+n7EiMmJKrmY
-	RnLIOAmnrgrYfemRZ0fT67vucH81FMr3IOqpO4G5C5TR2hFU+nHo9E0BjcY/IfaxGVIVpdyeYO75l
-	EyvoIE0+aWt09sfAXhg3iVQ9DGwv/d7jnk+Y0qQfci6k0TJ/Lu8jdtdQtR6BMzjXgk+zQbwj0oC8r
-	6nBV3It2Lz3s06N88FCg==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=5Buuk7CdSCPNfBeYnv93wdFNkHWghzsf6fum8imfEf0=; b=v83PtRy8g42YMa
+	2xD77j3E46w0KeOFnTIo35EHqK5chc2jm17OhRMKPoKPnl9SvQw59vJzPiAvOPormDx9rVTIK0ZKW
+	1uN+aiCu81RTu9PUyhZr+K8Ez65HoNp8RtpO5buVHsiJ3cei4jbC6IOtj2e3tCP3UnXITi2jN8Gdf
+	Mq5Tr/CnIfLqqI5OffN3xNkADFZuDM8kzQ/Qvwvqn/mNjD2vTIJLArbeIzphBtKJ3q1gVgTngC3xl
+	0tKgdJ3Ako7mpFvjSsNXTHhulNxVRyw4rWjIrXD+Y5PMu7GaeQXCFYWMU2VPP+oUMY2MFf4KGUyRa
+	jxcQ5BuzLQLWDOl4Ic2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8D4q-0000000CVH2-2mLj;
-	Mon, 13 Oct 2025 07:34:40 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1v8EHG-0000000Cejb-0ojS;
+	Mon, 13 Oct 2025 08:51:34 +0000
+Received: from mail-qv1-xf2f.google.com ([2607:f8b0:4864:20::f2f])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8D4n-0000000CVGS-0gSf;
-	Mon, 13 Oct 2025 07:34:38 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1760340856; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=SjXvJu+0aw4xckUH7lck7ICJqmaQGmv80hZYTOYLzaknZ/8xvlq40ClTC57fIcoHd8npb86VG9Y8lEFYP8CWAJEvMZFdWwfz9Q4n5JKT2SGvqV8rfh+cCdhe+5JVurMrcqsK60NYFDSgDxX3niuml8J5RovrZIniTi9GqQJuqoc=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1760340856; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=5W/p2P/EoHtENGM2zw+O/fNV3kIkZkb90QJ9eHXBW54=; 
-	b=gE5whtZRfMU5IMkCVkgFMHEhfjktbPhtMbgGr4vQdbe8mWOdNRIRzegLrH7jsL145/7aGuxFzlzzwcAZ5dgCi9udaiFhlT+esw0IxjaHCWUFvIi9OTEgBeLDqxyIJovNDWB6ERCTrLU+0dJit5IOKLN2k8ILkmO7rCrfvbnl9Ec=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1760340856;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:To:To:Cc:Cc:Reply-To;
-	bh=5W/p2P/EoHtENGM2zw+O/fNV3kIkZkb90QJ9eHXBW54=;
-	b=AyQkphUp6sUYT5/8R3SRYFj/3pk43NQrIK4FuMU8/rbecKhdT1duMmIYYbA5MWbd
-	SN1oQaQk9FDra61sc+sC5xzMQzrrkY705gZaEYDtDjYy86oVaZwSQ2IflTsDYOZubCV
-	nqESgaDlUGDIofIb0f2bW7So6LUxQQbbRZIucH1g=
-Received: by mx.zohomail.com with SMTPS id 1760340853910318.69177918268304;
-	Mon, 13 Oct 2025 00:34:13 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Mon, 13 Oct 2025 09:34:04 +0200
-Subject: [PATCH] PM / devfreq: rockchip-dfi: switch to FIELD_PREP_WM16
- macro
+	id 1v8EHD-0000000CeiZ-1jKJ
+	for linux-rockchip@lists.infradead.org;
+	Mon, 13 Oct 2025 08:51:32 +0000
+Received: by mail-qv1-xf2f.google.com with SMTP id 6a1803df08f44-79ad9aa2d95so69548126d6.1
+        for <linux-rockchip@lists.infradead.org>; Mon, 13 Oct 2025 01:51:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1760345490; x=1760950290; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Qjn80fxqTnWd47bRID7zagiFWJvRCbz/QkHXqwtfnJI=;
+        b=fgj/hNU251P+oh1BAcvhocVSKfAMvL3ST+0jz8qIBwByk8/CBwineZ7KoBlyQNzAY5
+         ZJs0BZCFZIhVHmKDTwBenDbbEi6HbDTl0DtnRGKI2gD7ZIpqcnpVcO0UHdeO0m/Uxa/p
+         nvK+6GzU0MDzVoka4Ajo2SXMR2K2G/j+Yp8MIP84+UI5qhTZ6Ma6PVC36zBzW55Ny6Yu
+         bTHZIGR+VJmPplatPFPym2xpcjU1mj6MktZ/pnmd9g5tzsbZ0+3x2grfacxPtOqwGWmg
+         qAyS/rjpmPm0fCtRkrus7DmZyF25bI1ZT0HNqAKsdHCkRhJpSYt4DQ/Cy7/iHnel+PnN
+         Mpxw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1760345490; x=1760950290;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=Qjn80fxqTnWd47bRID7zagiFWJvRCbz/QkHXqwtfnJI=;
+        b=h2cIwUlcCkfY9trcG88Jpo76t3HLXCtGBwl9vEOZtb5e4wyfplqMiEBQm/U1Yplgqz
+         fga3+XDYKeW8dS/BMII/FMHmbu6yOovNO1wVOKYT3tjD+WXuzNhNFWA3t4h16C6TXs4d
+         N20jMez12OQxQWUYH4BML49/yWyfbKDJFutC8Xo6nBaiiZpC4LC8rYOYsjqxvK0L/M0o
+         1yTePQGRQAzhRFX+avaPrzaPhn2cV6WouRoICbEt+sVAer5oGauan9BBwRTSebo/RQc5
+         tZpfGWu2/+cAB9fb6JjGzGdWTCMeEBEyudLBPFAzU2cZheXg/sfY/ZohpjJIBZN5U2yv
+         r2/g==
+X-Forwarded-Encrypted: i=1; AJvYcCWrGg1DxsON9eORnDahbHxhnfxiY0EZclRZBNSNPmef9WSuUc7+ESzCRt0S9eL1nG1XKExeBindXe8x42ym/w==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwCF6ZYEI9Lrg9eoBTlQP5mZGvfIJf5PkN7fVPwAcOV7bkpLhKA
+	stiW9ukJ1LHNYx2HJrKKBVUY3X+4pCBheJ970ohGbg13Tdc/xgXiK4gR4qX/Kdyr9UYsC7ZjLwH
+	Zj0fHA1tzcRbFqujCT0pL/jD91MYXs4k=
+X-Gm-Gg: ASbGncuPU952r3ozm+sWg+nrqp/Nz7cHlSn6rEPeTzdIiBuYdHogA/Y5kbxaD1nAaRC
+	2FzxUqRFnJX3yJVHaUm4J+IVebK99mOEp2OHT1Xn/7ZQRg7/wXHGuojUMNqSgvgEaZDRQc0ARvH
+	ZcSAXqH/BsXgyNLMuRJZH5YJJuq8ERlWnhTO18mZz2xGqDTeO0kOrnOwSOR9YHY+SJknTG+Gj4N
+	EfuPZCDYbsHGjvKaIhNrF5DFQBzoE5A18q19Q==
+X-Google-Smtp-Source: AGHT+IH0ySB3maj/sC8FUBTcxwFiIagWYmPDEWGIQC6hjlTOe05KTYNWC9uE9sG+FKiibmlzh++7qDDMrC8I5v1tVfE=
+X-Received: by 2002:a05:6214:2264:b0:78d:4b1a:5ac5 with SMTP id
+ 6a1803df08f44-87b2ef37479mr282594966d6.48.1760345489748; Mon, 13 Oct 2025
+ 01:51:29 -0700 (PDT)
 MIME-Version: 1.0
-Message-Id: <20251013-hiword-rockchip-dfi-v1-1-4f2a63098553@collabora.com>
-X-B4-Tracking: v=1; b=H4sIAGur7GgC/yXMQQrCMBCF4auEWTuSxBpKryJd1GRiBmlTJ7UKp
- Xc32OX34P0bFBKmAp3aQGjlwnmqMCcFPg3Tg5BDNVhtr0abCyb+ZAko2T994hlDZGyMdjo617R
- WQ33OQpG//+qtPyz0etf4coxwHwqhz+PIS6dWdzYtijfQ7/sPfxY7wJIAAAA=
-X-Change-ID: 20251013-hiword-rockchip-dfi-41060f664820
-To: Yury Norov <yury.norov@gmail.com>, Chanwoo Choi <cw00.choi@samsung.com>, 
- MyungJoo Ham <myungjoo.ham@samsung.com>, 
- Kyungmin Park <kyungmin.park@samsung.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: kernel@collabora.com, linux-pm@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, 
- Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-X-Mailer: b4 0.14.3
+References: <20251009084416.45542-4-jjm2473@gmail.com> <20251013070036.66901-1-amadeus@jmu.edu.cn>
+In-Reply-To: <20251013070036.66901-1-amadeus@jmu.edu.cn>
+From: Liangbin Lian <jjm2473@gmail.com>
+Date: Mon, 13 Oct 2025 16:51:16 +0800
+X-Gm-Features: AS18NWBHP3UXJATnpuEz0GehP1fSNqq1qliSBomIm1t4FH_TTzg2ldtvn1AzLb4
+Message-ID: <CAP_9mL5=GmtJF3nSbfX6gRzPc=fAMrTOfMuOLyWFwq5D4OYUFw@mail.gmail.com>
+Subject: Re: [PATCH v5 3/3] arm64: dts: rockchip: add LinkEase EasePi R1
+To: Chukun Pan <amadeus@jmu.edu.cn>
+Cc: conor+dt@kernel.org, devicetree@vger.kernel.org, heiko@sntech.de, 
+	krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251013_003437_416479_7A1FB293 
-X-CRM114-Status: GOOD (  17.05  )
+X-CRM114-CacheID: sfid-20251013_015131_456784_78E73663 
+X-CRM114-Status: GOOD (  13.15  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,179 +91,63 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The era of hand-rolled HIWORD_UPDATE macros is over, at least for those
-drivers that use constant masks.
-
-Like many other Rockchip drivers, rockchip-dfi brings with it its own
-HIWORD_UPDATE macro. This variant doesn't shift the value (and like the
-others, doesn't do any checking).
-
-Remove it, and replace instances of it with hw_bitfield.h's
-FIELD_PREP_WM16.  Since FIELD_PREP_WM16 requires contiguous masks and
-shifts the value for us, some reshuffling of definitions needs to
-happen.
-
-This gives us better compile-time error checking, and in my opinion,
-nicer code.
-
-Tested on an RK3568 ODROID-M1 board (LPDDR4X at 1560 MHz, an RK3588
-Radxa ROCK 5B board (LPDDR4X at 2112 MHz) and an RK3588 Radxa ROCK 5T
-board (LPDDR5 at 2400 MHz). perf measurements were consistent with the
-measurements of stress-ng --stream in all cases.
-
-Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
----
-Hi Yury,
-
-as promised[1], here's the follow-up patch to move rockchip-dfi to the
-new FIELD_PREP_WM16 macro after the LPDDR5 changes, which caused a
-conflict during the last merge window.
-
-I've re-tested it on three boards, as outlined in the commit message.
-
-Link: https://lore.kernel.org/all/14358105.O9o76ZdvQC@workhorse/t/#m6b5b01cb30a04745ea3167a660b4794c608f387b [1]
----
- drivers/devfreq/event/rockchip-dfi.c | 45 ++++++++++++++++++------------------
- 1 file changed, 22 insertions(+), 23 deletions(-)
-
-diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event/rockchip-dfi.c
-index 5a2c9badcc64..5e6e7e900bda 100644
---- a/drivers/devfreq/event/rockchip-dfi.c
-+++ b/drivers/devfreq/event/rockchip-dfi.c
-@@ -20,6 +20,7 @@
- #include <linux/of.h>
- #include <linux/of_device.h>
- #include <linux/bitfield.h>
-+#include <linux/hw_bitfield.h>
- #include <linux/bits.h>
- #include <linux/perf_event.h>
- 
-@@ -30,8 +31,6 @@
- 
- #define DMC_MAX_CHANNELS	4
- 
--#define HIWORD_UPDATE(val, mask)	((val) | (mask) << 16)
--
- /* DDRMON_CTRL */
- #define DDRMON_CTRL	0x04
- #define DDRMON_CTRL_LPDDR5		BIT(6)
-@@ -41,10 +40,6 @@
- #define DDRMON_CTRL_LPDDR23		BIT(2)
- #define DDRMON_CTRL_SOFTWARE_EN		BIT(1)
- #define DDRMON_CTRL_TIMER_CNT_EN	BIT(0)
--#define DDRMON_CTRL_DDR_TYPE_MASK	(DDRMON_CTRL_LPDDR5 | \
--					 DDRMON_CTRL_DDR4 | \
--					 DDRMON_CTRL_LPDDR4 | \
--					 DDRMON_CTRL_LPDDR23)
- #define DDRMON_CTRL_LP5_BANK_MODE_MASK	GENMASK(8, 7)
- 
- #define DDRMON_CH0_WR_NUM		0x20
-@@ -124,27 +119,31 @@ struct rockchip_dfi {
- 	unsigned int count_multiplier;	/* number of data clocks per count */
- };
- 
--static int rockchip_dfi_ddrtype_to_ctrl(struct rockchip_dfi *dfi, u32 *ctrl,
--					u32 *mask)
-+static int rockchip_dfi_ddrtype_to_ctrl(struct rockchip_dfi *dfi, u32 *ctrl)
- {
- 	u32 ddrmon_ver;
- 
--	*mask = DDRMON_CTRL_DDR_TYPE_MASK;
--
- 	switch (dfi->ddr_type) {
- 	case ROCKCHIP_DDRTYPE_LPDDR2:
- 	case ROCKCHIP_DDRTYPE_LPDDR3:
--		*ctrl = DDRMON_CTRL_LPDDR23;
-+		*ctrl = FIELD_PREP_WM16(DDRMON_CTRL_LPDDR23, 1) |
-+			FIELD_PREP_WM16(DDRMON_CTRL_LPDDR4, 0) |
-+			FIELD_PREP_WM16(DDRMON_CTRL_LPDDR5, 0);
- 		break;
- 	case ROCKCHIP_DDRTYPE_LPDDR4:
- 	case ROCKCHIP_DDRTYPE_LPDDR4X:
--		*ctrl = DDRMON_CTRL_LPDDR4;
-+		*ctrl = FIELD_PREP_WM16(DDRMON_CTRL_LPDDR23, 0) |
-+			FIELD_PREP_WM16(DDRMON_CTRL_LPDDR4, 1) |
-+			FIELD_PREP_WM16(DDRMON_CTRL_LPDDR5, 0);
- 		break;
- 	case ROCKCHIP_DDRTYPE_LPDDR5:
- 		ddrmon_ver = readl_relaxed(dfi->regs);
- 		if (ddrmon_ver < 0x40) {
--			*ctrl = DDRMON_CTRL_LPDDR5 | dfi->lp5_bank_mode;
--			*mask |= DDRMON_CTRL_LP5_BANK_MODE_MASK;
-+			*ctrl = FIELD_PREP_WM16(DDRMON_CTRL_LPDDR23, 0) |
-+				FIELD_PREP_WM16(DDRMON_CTRL_LPDDR4, 0) |
-+				FIELD_PREP_WM16(DDRMON_CTRL_LPDDR5, 1) |
-+				FIELD_PREP_WM16(DDRMON_CTRL_LP5_BANK_MODE_MASK,
-+						dfi->lp5_bank_mode);
- 			break;
- 		}
- 
-@@ -172,7 +171,6 @@ static int rockchip_dfi_enable(struct rockchip_dfi *dfi)
- 	void __iomem *dfi_regs = dfi->regs;
- 	int i, ret = 0;
- 	u32 ctrl;
--	u32 ctrl_mask;
- 
- 	mutex_lock(&dfi->mutex);
- 
-@@ -186,7 +184,7 @@ static int rockchip_dfi_enable(struct rockchip_dfi *dfi)
- 		goto out;
- 	}
- 
--	ret = rockchip_dfi_ddrtype_to_ctrl(dfi, &ctrl, &ctrl_mask);
-+	ret = rockchip_dfi_ddrtype_to_ctrl(dfi, &ctrl);
- 	if (ret)
- 		goto out;
- 
-@@ -196,15 +194,16 @@ static int rockchip_dfi_enable(struct rockchip_dfi *dfi)
- 			continue;
- 
- 		/* clear DDRMON_CTRL setting */
--		writel_relaxed(HIWORD_UPDATE(0, DDRMON_CTRL_TIMER_CNT_EN |
--			       DDRMON_CTRL_SOFTWARE_EN | DDRMON_CTRL_HARDWARE_EN),
-+		writel_relaxed(FIELD_PREP_WM16(DDRMON_CTRL_TIMER_CNT_EN, 0) |
-+			       FIELD_PREP_WM16(DDRMON_CTRL_SOFTWARE_EN, 0) |
-+			       FIELD_PREP_WM16(DDRMON_CTRL_HARDWARE_EN, 0),
- 			       dfi_regs + i * dfi->ddrmon_stride + DDRMON_CTRL);
- 
--		writel_relaxed(HIWORD_UPDATE(ctrl, ctrl_mask),
--			       dfi_regs + i * dfi->ddrmon_stride + DDRMON_CTRL);
-+		writel_relaxed(ctrl, dfi_regs + i * dfi->ddrmon_stride +
-+			       DDRMON_CTRL);
- 
- 		/* enable count, use software mode */
--		writel_relaxed(HIWORD_UPDATE(DDRMON_CTRL_SOFTWARE_EN, DDRMON_CTRL_SOFTWARE_EN),
-+		writel_relaxed(FIELD_PREP_WM16(DDRMON_CTRL_SOFTWARE_EN, 1),
- 			       dfi_regs + i * dfi->ddrmon_stride + DDRMON_CTRL);
- 
- 		if (dfi->ddrmon_ctrl_single)
-@@ -234,8 +233,8 @@ static void rockchip_dfi_disable(struct rockchip_dfi *dfi)
- 		if (!(dfi->channel_mask & BIT(i)))
- 			continue;
- 
--		writel_relaxed(HIWORD_UPDATE(0, DDRMON_CTRL_SOFTWARE_EN),
--			      dfi_regs + i * dfi->ddrmon_stride + DDRMON_CTRL);
-+		writel_relaxed(FIELD_PREP_WM16(DDRMON_CTRL_SOFTWARE_EN, 0),
-+			       dfi_regs + i * dfi->ddrmon_stride + DDRMON_CTRL);
- 
- 		if (dfi->ddrmon_ctrl_single)
- 			break;
-
----
-base-commit: cb6649f6217c0331b885cf787f1d175963e2a1d2
-change-id: 20251013-hiword-rockchip-dfi-41060f664820
-
-Best regards,
--- 
-Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+Q2h1a3VuIFBhbiA8YW1hZGV1c0BqbXUuZWR1LmNuPiDkuo4yMDI15bm0MTDmnIgxM+aXpeWRqOS4
+gCAxNTowMeWGmemBk++8mgo+Cj4gSGksCj4KPiA+ICsgICAgIHJlZ3VsYXRvci12ZGQwdjk1LTI1
+Z2xhbiB7Cj4gPiArICAgICAgICAgICAgIGNvbXBhdGlibGUgPSAicmVndWxhdG9yLWZpeGVkIjsK
+PiA+ICsgICAgICAgICAgICAgcGluY3RybC1uYW1lcyA9ICJkZWZhdWx0IjsKPiA+ICsgICAgICAg
+ICAgICAgcGluY3RybC0wID0gPCZwd3JfMjVnX3Bpbj47Cj4gPiArICAgICAgICAgICAgIGVuYWJs
+ZS1hY3RpdmUtaGlnaDsKPiA+ICsgICAgICAgICAgICAgZ3BpbyA9IDwmZ3BpbzMgUktfUEIxIEdQ
+SU9fQUNUSVZFX0hJR0g+Owo+ID4gKyAgICAgICAgICAgICByZWd1bGF0b3ItbmFtZSA9ICJ2ZGQw
+djk1XzI1Z2xhbiI7Cj4gPiArICAgICAgICAgICAgIHJlZ3VsYXRvci1taW4tbWljcm92b2x0ID0g
+PDk1MDAwMD47Cj4gPiArICAgICAgICAgICAgIHJlZ3VsYXRvci1tYXgtbWljcm92b2x0ID0gPDk1
+MDAwMD47Cj4gPiArICAgICAgICAgICAgIHJlZ3VsYXRvci1ib290LW9uOwo+ID4gKyAgICAgICAg
+ICAgICByZWd1bGF0b3ItYWx3YXlzLW9uOwo+Cj4gVGhlIHByb3BlcnR5IG9yZGVyIHNob3VsZCBi
+ZSBjb25zaXN0ZW50IHdpdGggb3RoZXIgbm9kZXMuCj4KPiA+ICsgICAgICAgICAgICAgdmluLXN1
+cHBseSA9IDwmdmNjM3YzX3N5cz47Cj4gPiArICAgICB9Owo+ID4gKwo+ID4gKyAgICAgdmNjM3Yz
+X252bWU6IHJlZ3VsYXRvci12Y2MzdjMtbnZtZSB7Cj4gPiArICAgICAgICAgICAgIGNvbXBhdGli
+bGUgPSAicmVndWxhdG9yLWZpeGVkIjsKPiA+ICsgICAgICAgICAgICAgcmVndWxhdG9yLW5hbWUg
+PSAidmNjM3YzX252bWUiOwo+ID4gKyAgICAgICAgICAgICByZWd1bGF0b3ItbWluLW1pY3Jvdm9s
+dCA9IDwzMzAwMDAwPjsKPiA+ICsgICAgICAgICAgICAgcmVndWxhdG9yLW1heC1taWNyb3ZvbHQg
+PSA8MzMwMDAwMD47Cj4gPiArICAgICAgICAgICAgIGVuYWJsZS1hY3RpdmUtaGlnaDsKPiA+ICsg
+ICAgICAgICAgICAgZ3BpbyA9IDwmZ3BpbzAgUktfUEE1IEdQSU9fQUNUSVZFX0hJR0g+Owo+ID4g
+KyAgICAgICAgICAgICB2aW4tc3VwcGx5ID0gPCZkY18xMnY+Owo+Cj4gU2FtZSBoZXJlLCBrZWVw
+IGFscGhhYmV0aWNhbCBvcmRlci4KPgo+ID4gKyAgICAgICAgICAgICBwaW5jdHJsLW5hbWVzID0g
+ImRlZmF1bHQiOwo+ID4gKyAgICAgICAgICAgICBwaW5jdHJsLTAgPSA8JnZjYzN2M19udm1lX2Vu
+PjsKPiA+ICsgICAgIH07Cj4KPiA+ICsgICAgICAgICAgICAgc3RhdHVzX2xlZDogbGVkLXN0YXR1
+cyB7Cj4gPiArICAgICAgICAgICAgICAgICAgICAgZ3Bpb3MgPSA8JmdwaW8yIFJLX1BENyBHUElP
+X0FDVElWRV9ISUdIPjsKPiA+ICsgICAgICAgICAgICAgICAgICAgICBjb2xvciA9IDxMRURfQ09M
+T1JfSURfR1JFRU4+Owo+ID4gKyAgICAgICAgICAgICAgICAgICAgIGZ1bmN0aW9uID0gTEVEX0ZV
+TkNUSU9OX1NUQVRVUzsKPiA+ICsgICAgICAgICAgICAgICAgICAgICBsYWJlbCA9ICJncmVlbjpz
+dGF0dXMiOwo+Cj4gVGhlICJsYWJlbCIgcHJvcGVydHkgaXMgZGVwcmVjYXRlZC4KPgo+ID4gKyZw
+Y2llMngxIHsKPiA+ICsgICAgIHJlc2V0LWdwaW9zID0gPCZncGlvMyBSS19QQTQgR1BJT19BQ1RJ
+VkVfSElHSD47Cj4KPiB2cGNpZTN2My1zdXBwbHkgaXMgbWlzc2luZy4KPgo+ID4gKyAgICAgc3Rh
+dHVzID0gIm9rYXkiOwo+ID4gK307Cj4KPiA+ICsmcGNpZTN4MSB7Cj4gPiArICAgICBudW0tbGFu
+ZXMgPSA8MT47Cj4gPiArICAgICByZXNldC1ncGlvcyA9IDwmZ3BpbzMgUktfUEEzIEdQSU9fQUNU
+SVZFX0hJR0g+Owo+Cj4gdnBjaWUzdjMtc3VwcGx5IGlzIG1pc3NpbmcuCj4KPiA+ICsgICAgIHN0
+YXR1cyA9ICJva2F5IjsKPiA+ICt9Owo+Cj4gPiArJnNkbW1jMCB7Cj4gPiArICAgICBtYXgtZnJl
+cXVlbmN5ID0gPDE1MDAwMDAwMD47Cj4KPiBtYXgtZnJlcXVlbmN5IGhhcyBiZWVuIGRlZmluZWQg
+aW4gcmszNTZ4LWJhc2UuZHRzaQo+Cj4gPiArICAgICBuby1zZGlvOwo+ID4gKyAgICAgbm8tbW1j
+Owo+Cj4gbm8tbW1jIGFuZCBjYXAtbW1jLWhpZ2hzcGVlZCBhcmUgbXV0dWFsbHkgZXhjbHVzaXZl
+Lgo+Cj4gPiArICAgICBidXMtd2lkdGggPSA8ND47Cj4gPiArICAgICBjYXAtbW1jLWhpZ2hzcGVl
+ZDsKPgo+ID4gKy8qIE1pY3JvIFNEIGNhcmQgc2xvdCBpcyBub3QgcG9wdWxhdGVkICovCj4gPiAr
+LyogV2lmaSBtb2R1bGUgaXMgbm90IHBvcHVsYXRlZCAqLwo+Cj4gV2h5IHdvdWxkIHlvdSBkZWZp
+bmUgdGhlbSBpZiB0aGV5IGFyZW4ndCBvbiB0aGUgYm9hcmQ/Cj4KPiA+ICsmc2RtbWMyIHsKPiA+
+ICsgICAgIG1heC1mcmVxdWVuY3kgPSA8MTUwMDAwMDAwPjsKPgo+IG1heC1mcmVxdWVuY3kgaGFz
+IGJlZW4gZGVmaW5lZCBpbiByazM1NngtYmFzZS5kdHNpCj4KPiA+ICsgICAgIGJ1cy13aWR0aCA9
+IDw0PjsKPiA+ICsgICAgIGRpc2FibGUtd3A7Cj4KPiBkaXNhYmxlLXdwIGRvZXMgbm90IHdvcmsg
+d2l0aCBzZGlvCj4KPiA+ICsmdXNiMnBoeTBfb3RnIHsKPgo+IHBoeS1zdXBwbHkgaXMgbWlzc2lu
+Zy4KPgo+ID4gKyAgICAgc3RhdHVzID0gIm9rYXkiOwo+ID4gK307CgpDaHVrdW4gUGFuOgogSGVs
+bG8hCgpBbGwgZXhjZXB0IHVzYjJwaHkwX290ZyB3aWxsIGJlIGZpeGVkLgoKPiA+ICsmdXNiMnBo
+eTBfb3RnIHsKPgo+IHBoeS1zdXBwbHkgaXMgbWlzc2luZy4KPgo+ID4gKyAgICAgc3RhdHVzID0g
+Im9rYXkiOwo+ID4gK307CgpWQlVTIG9uIHVzYjJwaHkwX290ZyBpcyBmbG9hdGluZywgdGhpcyBV
+U0IgcG9ydCBvbmx5IHdvcmtzIG9uCmRldmljZShwZXJpcGhlcmFsKSBtb2RlLgpwaHktc3VwcGx5
+IGlzIG9wdGlvbmFsLCBzbyB0aGlzIHNob3VsZCBiZSBmaW5lLCByaWdodD8KCgogIExpYW5nYmlu
+IExpYW4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
+bnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
+b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9j
+a2NoaXAK
