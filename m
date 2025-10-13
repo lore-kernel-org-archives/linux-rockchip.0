@@ -4,89 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12D3DCCD18D
-	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Oct 2025 14:15:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3449BCCD190
+	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Oct 2025 14:15:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4csIbgI9IhxfKdtm/InHqYEf/sNJvT+nWP21ENVcgHQ=; b=ckjtZ0GZkwVCii
-	EwI9XbKFuc87ipPbUFH2VBUKjpx0QTMVXjxOrg/1m/BU27DvRyNnb6xLdzS37CebrYx59BHmQys5z
-	jF1XRMmGdFVWGGR7fjaAorAGijY0KZMWLMkqxxkG3G1lg5Faao5qTSJF3XcRycMc0UDP3DTauOKUB
-	WPAMxC9Mk0QfPqfgAVEPWZEMZsTzyapGjOuhdJ0uOsEQSIuxS9PHWpOCzcVAYitH1OpnF+B8d9qcV
-	55XxLTYpccmidQiNveahJk14Km+FlEDOzTeKaqCS3L9sZEHXhki9TQovWGsl6govhP5jGJJeCs61W
-	PE33JBpojiv9NY8Q4eFg==;
+	List-Owner; bh=/Mu9qm9RT7cNJbD/NE/XXmrvhNP7xIEDtdwGl/UnGbg=; b=dWBtwRPFhb2bOS
+	1BBIon+8vp/HU6oYUZj7+oBQ74hVdNglqytu1KvPMPuvPkZiJJs+FifH52QTL/x0KMBJhhLa5Q6ae
+	8YEudXI8/SX/vIdjbZiUybEpQm7mmNC0aKL0XeMOZSqZKXkb1Fl2bUpvG+63vxUxw4/PSAwbUdZN1
+	7s9tw51dk5JxJz3ZmXrSyMYyZL1hRzYNM0MR8NSQ+LjDxcHvKIRzO6TtnOfj6lL2zmTifZVuXDRJw
+	gjHFkyVOFAgbRSJhmaflhC2HJnDHwGng/G16locm0muNvb/KY1TyGpb/h1hwr2QvNDrfF7zSFb5wf
+	DWTrFZ4oC8WAWNcbMPxQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8JKf-0000000DLPD-2zBr;
-	Mon, 13 Oct 2025 14:15:25 +0000
+	id 1v8JKj-0000000DLVH-0viS;
+	Mon, 13 Oct 2025 14:15:29 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8JKJ-0000000DKl5-2ulg
+	id 1v8JKL-0000000DKpM-1lxu
 	for linux-rockchip@bombadil.infradead.org;
-	Mon, 13 Oct 2025 14:15:03 +0000
+	Mon, 13 Oct 2025 14:15:05 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
 	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=h/KkfbsbDFUpgpWR/Q+1n2e+SsZd/m2BbfBCG6Meudo=; b=obF0VfkXWQ+4pOebNYpxoN8p/C
-	muQzgcUJx8Qk1tms14W/B6OzJ2drx3AMatJIr1leCQMNLOMCH9zJ5n18d+tw8pvCbvVwvJQM2/9R2
-	k0BoOhhb+7eeuEWNX1v+nmJatfwJO8zJIUpAEQe5zhDoFssHK7kTuLWBacwHLVaCL3kzl2IbGmkAq
-	xniUWfB0zA6U4I5TN26BZtTTGru9uOA1RuLwsIrdyJ3jMoyr2vKytS0aEWNPqrS9IY0kAhUmx0q6p
-	EMWTv1YJMXqSbmEvNmL45NBI0RUY7gCNBpdutyylx6JMDtzwj6WSArW9mW7FocytqeiWG6gvL7gEY
-	uUN4WjSA==;
-Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
+	bh=U+HlSqes1yCsLkQoWVAYYhek4ZxMIKlt6Lo2LEEYk1o=; b=LPkKZOhPZHwJZZ/mnLqXphqgyZ
+	6LGNZMlbKLCPzdSkS7jYyMlJWvgSgnTqepwcVillbfrXJ9DI9YJ7ssf3mtwXus1DgzMf3ND8U1/OU
+	OJuEUdsX+fzYLhMsTMtH4FUgcDckdrfgQl+LJiJjX9opIMtEMrxYZf6U13jze2cyHbGl2kinCPI7i
+	ZmQ7K5V1RnCOqzCFv5/bTveuWeR4DJUohkY6poGhmlR5e3XJRhPclOvnxz9ByaP6X97mZRiJoWUrG
+	kGIhOwmBFgWPf3Lvcm4NrL51gxny9uWEexyH6vx1RcPzCkh5CtlBfT3/ELZSKzfL3yQfMoLOhFMP5
+	m9ZXwA6Q==;
+Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
 	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8JKF-00000004N4a-1LIP
+	id 1v8JKF-00000004N4y-3eGd
 	for linux-rockchip@lists.infradead.org;
-	Mon, 13 Oct 2025 14:15:02 +0000
-Received: by mail-lf1-x131.google.com with SMTP id 2adb3069b0e04-57bb7ee3142so4896087e87.0
+	Mon, 13 Oct 2025 14:15:04 +0000
+Received: by mail-lf1-x12f.google.com with SMTP id 2adb3069b0e04-5797c8612b4so5253068e87.2
         for <linux-rockchip@lists.infradead.org>; Mon, 13 Oct 2025 07:14:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=chromium.org; s=google; t=1760364898; x=1760969698; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=h/KkfbsbDFUpgpWR/Q+1n2e+SsZd/m2BbfBCG6Meudo=;
-        b=TICadt2oWZCctfjIVpFklv8dN/0YsPp8l/sxdfICLj3ZYAv7/dfoG+l8YFST8EMA23
-         HLAjqkJCEIP7WAd/oUE6xwqegwmdLPzhfiY8c0LKqhQLRBoOyw+qt0eEj5ZqWl/Akuye
-         2uO1spjCAvdeMD80QDHSg1a3M/si7D92A55fw=
+        bh=U+HlSqes1yCsLkQoWVAYYhek4ZxMIKlt6Lo2LEEYk1o=;
+        b=hsNrwhW50gAldxmMQTJVlIKHdMSIeAFgNQmbWXDRPmBlCTvlWFnphfuVR0eR1T3Iu9
+         qf7HSYcWwe517aegEEyn3zl/zoVzsjV2VR4T63puvyjwa/P8IjgSEO2RBCs8INCjuwo3
+         VFx0xj4oivZvREiWcTtj4IBocyWo7B4YnyqK0=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20230601; t=1760364898; x=1760969698;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=h/KkfbsbDFUpgpWR/Q+1n2e+SsZd/m2BbfBCG6Meudo=;
-        b=UWR+velwWXTw++mfF0DdCaT7fKrUosPZ5+bqWMLeYyPO6SdKCnFETsag9H4I9HP45s
-         3StwvnnykaMtSeyBGYaOr6YMKqiw3RkTRy+141pvzYK4AhlZe+7QY6lBSziiRhAFbPyg
-         JU6vi/EYhHDB4jtZUGz6t3FNwmi2ybrA4QW+fnQiuc4g6Qk90pkTSCToK1U8Z0fVBDM1
-         /WPH8KERAkSTl3aedM1eOEzWqaCsSF3vYuUlk76Fxw/RvLn5s+l38yu0uuF8LDonUgZI
-         fHOEJkiDkPZXZvGYRltAa7PF92ad+kUlZZlHmMAX89tm0nwKcKewkez+PqjMxyLBICeP
-         IBbQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVq9iM+WVDcOO1q5ASQjkjx0fVgyKrHX9jB7HiKAAXi9vjSTePFYxpcOmWVUtN6yXCpZnfE62iOblmEExZ42g==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxIdDjlhTgRguSsZO5hlsB5abRoXlqNvgyKRyadU5D73N9dP53/
-	qqgGD/RDvTmYIjTIeUWr9SmeCoTYP01uEA6O6Q+4T/cD/Rv0OKLkcEduIZSodWE9Qw==
-X-Gm-Gg: ASbGncuSC/0glYR8utwzYDmgysSMTSfzg+h/5xpHVGOsjrnTVWbfcQB1XSwB9H0TsB3
-	yrlXBsmqvK481+UEUMH5+bFRy4PTtBzIxvONU0XK2euDgLZ1rCWeqKHBTc9qAYlwe/irbJyWwuS
-	MJGuxzXykqmhTf8hR7+HwZxAuyuqTvtUFjtXftQqMTDDSZINsPDo1nICN11jb01a4oLnbSJqaME
-	SJvBRdqZWVjgVAE8Xy/ymRftTyHIQPSy9x/ltrUhrzg0Qe/DuX5djV9tFFcDmNgrBB+PZfyU7d1
-	sxN+N9OBBMxDvLgpdtkYYV1YJzoY3XgKBd2RPEWBlU0B7AhC2SVTKL2yFRU9I4AJzETyn+pbSxM
-	iagy9nYPWtV98YYa/SzCuaFvZkZE77AE1kVFzooR64OLffxTfFtOxkYdeUCQiR7b7UkvOspD9FD
-	Xxr89ElR9veo7p4EQ8ZDMI2q4BDjZw
-X-Google-Smtp-Source: AGHT+IHydw0CVPv6HxiK0rxt7/F7rhhFXqFXXsY7vFrPuGUIbADwLidmgxRKInXX5MSWX37dI8vbkg==
-X-Received: by 2002:a05:6512:3d17:b0:57d:9f0b:fd4b with SMTP id 2adb3069b0e04-5906db0ccd1mr6079921e87.6.1760364897595;
-        Mon, 13 Oct 2025 07:14:57 -0700 (PDT)
+        bh=U+HlSqes1yCsLkQoWVAYYhek4ZxMIKlt6Lo2LEEYk1o=;
+        b=FcSuVRA2wx3D69WAFPKzklgVkXUWTrQ1cvgUd8pCIKM9Vows3ygsf6RMWwqrgcn5X1
+         9c26bmdmNlWp0bVHhK2uYtpAJDYu8dUMd2iM/RR8aj7v084tCbO7UJi4c+SUn2l23ODK
+         g659MYBS+jcaFQwqX1WPuawOH8j5EoZH+7uHuvcAhBFMCNjOvtsc7zxbS25kCoj/drcP
+         CKgnnCy/emYmqD2kKX1BqqeCVo2N/mNE0uZuYrutavUZnPkOeOhUNzQmyQjr8J5exc3o
+         KcDUYWNIjOnqBpAj55Ehh5V1BtST0QIu/kc7k6c/KGCi+uSD8fkMuWyXErQQZD5ysB5X
+         EreQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVBBlArBByYQO5hvlAQwoDV6qkBsa2vqHcsOOg0hOFeTTZhwb5YM5t0bO/5zwRfaxoo6WazidTu0WiqsnzZZw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzxVRvzA+nYn2yHKprY1K0WjJRKfCP8vTuwHCvlGWMDL2c5QoHy
+	K14mFaucLuU4lCpVGtCoSM8qBV5W5dNOtu+5yBGsfv/OC2siIace5NAjwOcPE0CL4A==
+X-Gm-Gg: ASbGncsow4v0RsNVkw9fGlKewpC6idIjO/0YrwMtNtN4hC32WE+nq0vj4P+lCSPfTjV
+	EpYVo5X1XIQ1+qzPL31PL0fMu0YgoZVbtNab0zhyet5BjrKoCWBWWyw2OqKUBn7p+rCRsesH1ZT
+	cmHJJ21cstx4veYJT7li47p8/aI3kRuMrLvPAbr6Vaurh/jYb3reZqQKAu4MuFl41KM/2SwezR6
+	jOFymwbJ1j8mLWSIJBuRW7NJIhokd/aoxtfO2764x11oFtqQuAZou/7ZFXsjiRgkXsC1hnBRxG8
+	BHHQuja1YHPz6EIJkSKdIalKjWy+kKGxLGRCRjV3XuMpsRMiUmDcU+qcrqEX44ZHCYHStgdAx5E
+	7A4ZKPEfpM08A4pFS6tFHLF8NI0FjtpoeYv5B0etyNfhGXKJ4HDd9gDsB/UzI8ftjhd6cRR0FOX
+	wLQWsc6KgeDOgiNQq+Gg==
+X-Google-Smtp-Source: AGHT+IH27CfYjloqEXA5bxWZfYaU4LA1SVwbUAxn03k9AIO/MXhXvYZJr7Cls4Tsp0u6mygHRedkXg==
+X-Received: by 2002:a05:6512:3d94:b0:579:d89:20c7 with SMTP id 2adb3069b0e04-5906d896e12mr6073927e87.9.1760364898078;
+        Mon, 13 Oct 2025 07:14:58 -0700 (PDT)
 Received: from ribalda.c.googlers.com (56.213.88.34.bc.googleusercontent.com. [34.88.213.56])
         by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-590881e4e58sm4165256e87.25.2025.10.13.07.14.57
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Mon, 13 Oct 2025 07:14:57 -0700 (PDT)
 From: Ricardo Ribalda <ribalda@chromium.org>
-Date: Mon, 13 Oct 2025 14:14:53 +0000
-Subject: [PATCH 13/32] media: i2c: max96717: Use %pe format specifier
+Date: Mon, 13 Oct 2025 14:14:54 +0000
+Subject: [PATCH 14/32] media: i2c: mt9m111: Use %pe format specifier
 MIME-Version: 1.0
-Message-Id: <20251013-ptr_err-v1-13-2c5efbd82952@chromium.org>
+Message-Id: <20251013-ptr_err-v1-14-2c5efbd82952@chromium.org>
 References: <20251013-ptr_err-v1-0-2c5efbd82952@chromium.org>
 In-Reply-To: <20251013-ptr_err-v1-0-2c5efbd82952@chromium.org>
 To: Linus Walleij <linus.walleij@linaro.org>, 
@@ -134,8 +134,8 @@ Cc: linux-input@vger.kernel.org, linux-kernel@vger.kernel.org,
  Ricardo Ribalda <ribalda@chromium.org>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251013_151459_599678_1D71F4C0 
-X-CRM114-Status: GOOD (  12.79  )
+X-CRM114-CacheID: sfid-20251013_151500_046657_47CA51B1 
+X-CRM114-Status: GOOD (  12.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -157,26 +157,28 @@ a symbolic error name (eg. -EINVAL) and it makes the code simpler by
 omitting PTR_ERR().
 
 This patch fixes this cocci report:
-./i2c/max96717.c:653:44-51: WARNING: Consider using %pe to print PTR_ERR()
+./i2c/mt9m111.c:1290:3-10: WARNING: Consider using %pe to print PTR_ERR()
 
 Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 ---
- drivers/media/i2c/max96717.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/media/i2c/mt9m111.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/media/i2c/max96717.c b/drivers/media/i2c/max96717.c
-index c8ae7890d9fa87a78084df1f3be631004acbf57b..71ec4fdb8e3d96dddc23ab090a63b23b1d093fd4 100644
---- a/drivers/media/i2c/max96717.c
-+++ b/drivers/media/i2c/max96717.c
-@@ -650,7 +650,7 @@ static int max96717_v4l2_notifier_register(struct max96717_priv *priv)
- 	fwnode_handle_put(ep_fwnode);
+diff --git a/drivers/media/i2c/mt9m111.c b/drivers/media/i2c/mt9m111.c
+index 05dcf37c6f013b1cefb5d85f893af08f4533c7b4..3532c7c38becc21df88957f8f323c77033026a81 100644
+--- a/drivers/media/i2c/mt9m111.c
++++ b/drivers/media/i2c/mt9m111.c
+@@ -1286,8 +1286,8 @@ static int mt9m111_probe(struct i2c_client *client)
  
- 	if (IS_ERR(asd)) {
--		dev_err(dev, "Failed to add subdev: %ld", PTR_ERR(asd));
-+		dev_err(dev, "Failed to add subdev: %pe", asd);
- 		v4l2_async_nf_cleanup(&priv->notifier);
- 		return PTR_ERR(asd);
+ 	mt9m111->regulator = devm_regulator_get(&client->dev, "vdd");
+ 	if (IS_ERR(mt9m111->regulator)) {
+-		dev_err(&client->dev, "regulator not found: %ld\n",
+-			PTR_ERR(mt9m111->regulator));
++		dev_err(&client->dev, "regulator not found: %pe\n",
++			mt9m111->regulator);
+ 		return PTR_ERR(mt9m111->regulator);
  	}
+ 
 
 -- 
 2.51.0.760.g7b8bcc2412-goog
