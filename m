@@ -4,58 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFE3BCCD18A
-	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Oct 2025 07:01:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED997CCD185
+	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Oct 2025 07:34:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sfxwkuCzSsyprBq2svzj4pQ3/HURHAunLUFIuTjrBsU=; b=yqoX2euL3z3u+a
-	gGO/Taz1P5oRMf87pWXh8Xw0OipQaFcPiNS6L+uGL2yLGk5iI5ojKHr4jG0rh1fg+OjVj+sWqivtn
-	S9PS4+0G1z7lGBTY8TrmNrDLjwynnw6CinI3U6DA63o9ZjZYwXmzK5rD+TmcUgQnRB1oa/ps51M8B
-	lXYbUnAXJG1fXt+MvET7Uv7eg4TSV89V4tkxAYodyHBzTG8nrhe+gQJ98Gclltiil2ZiwIXg1HlBj
-	LiZCPNLXL0JBzLgYfxeRm0P6GiEPI+RwAzycZ7l5ResVesJ9mi62emuVjiNJrVQz/HN5Ktkd9C2Fy
-	jBJmUX4fb7cnb3LrhM8w==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
+	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ZsdG0iwmvlYUkRSHWrO3DCFBYoOMnbFbtODkOUQNl5U=; b=KNWCTKNevk7LEr
+	Y11EDanMooq3YJ7BAlwUxmS/1/cD1LtMREVG3Pkzs2E+Io1HHIbQc6Svc/JE5xQ7tGyWmIAVYZvR7
+	KAgVKgNGiw3hmKhWKIhAn8dJmVMF/+WR2d2oFfFQkK+DFs8iDqdwL1YhWRMxYZMfe+n7EiMmJKrmY
+	RnLIOAmnrgrYfemRZ0fT67vucH81FMr3IOqpO4G5C5TR2hFU+nHo9E0BjcY/IfaxGVIVpdyeYO75l
+	EyvoIE0+aWt09sfAXhg3iVQ9DGwv/d7jnk+Y0qQfci6k0TJ/Lu8jdtdQtR6BMzjXgk+zQbwj0oC8r
+	6nBV3It2Lz3s06N88FCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8CYd-0000000CRv6-12Ua;
-	Mon, 13 Oct 2025 07:01:23 +0000
-Received: from mail-m155101.qiye.163.com ([101.71.155.101])
+	id 1v8D4q-0000000CVH2-2mLj;
+	Mon, 13 Oct 2025 07:34:40 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8CYZ-0000000CRpx-1yn0;
-	Mon, 13 Oct 2025 07:01:22 +0000
-Received: from localhost.localdomain (unknown [116.25.94.88])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 25b01d132;
-	Mon, 13 Oct 2025 15:01:11 +0800 (GMT+08:00)
-From: Chukun Pan <amadeus@jmu.edu.cn>
-To: jjm2473@gmail.com
-Cc: conor+dt@kernel.org,
-	devicetree@vger.kernel.org,
-	heiko@sntech.de,
-	krzk+dt@kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Chukun Pan <amadeus@jmu.edu.cn>
-Subject: Re: [PATCH v5 3/3] arm64: dts: rockchip: add LinkEase EasePi R1
-Date: Mon, 13 Oct 2025 15:00:36 +0800
-Message-Id: <20251013070036.66901-1-amadeus@jmu.edu.cn>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20251009084416.45542-4-jjm2473@gmail.com>
-References: <20251009084416.45542-4-jjm2473@gmail.com>
+	id 1v8D4n-0000000CVGS-0gSf;
+	Mon, 13 Oct 2025 07:34:38 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1760340856; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=SjXvJu+0aw4xckUH7lck7ICJqmaQGmv80hZYTOYLzaknZ/8xvlq40ClTC57fIcoHd8npb86VG9Y8lEFYP8CWAJEvMZFdWwfz9Q4n5JKT2SGvqV8rfh+cCdhe+5JVurMrcqsK60NYFDSgDxX3niuml8J5RovrZIniTi9GqQJuqoc=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1760340856; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=5W/p2P/EoHtENGM2zw+O/fNV3kIkZkb90QJ9eHXBW54=; 
+	b=gE5whtZRfMU5IMkCVkgFMHEhfjktbPhtMbgGr4vQdbe8mWOdNRIRzegLrH7jsL145/7aGuxFzlzzwcAZ5dgCi9udaiFhlT+esw0IxjaHCWUFvIi9OTEgBeLDqxyIJovNDWB6ERCTrLU+0dJit5IOKLN2k8ILkmO7rCrfvbnl9Ec=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1760340856;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:To:To:Cc:Cc:Reply-To;
+	bh=5W/p2P/EoHtENGM2zw+O/fNV3kIkZkb90QJ9eHXBW54=;
+	b=AyQkphUp6sUYT5/8R3SRYFj/3pk43NQrIK4FuMU8/rbecKhdT1duMmIYYbA5MWbd
+	SN1oQaQk9FDra61sc+sC5xzMQzrrkY705gZaEYDtDjYy86oVaZwSQ2IflTsDYOZubCV
+	nqESgaDlUGDIofIb0f2bW7So6LUxQQbbRZIucH1g=
+Received: by mx.zohomail.com with SMTPS id 1760340853910318.69177918268304;
+	Mon, 13 Oct 2025 00:34:13 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Date: Mon, 13 Oct 2025 09:34:04 +0200
+Subject: [PATCH] PM / devfreq: rockchip-dfi: switch to FIELD_PREP_WM16
+ macro
 MIME-Version: 1.0
-X-HM-Tid: 0a99dc5f845b03a2kunm65153ab079944d
-X-HM-MType: 10
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkaGE5IVhpJSkJNS0JITE4dH1YeHw5VEwETFhoSFy
-	QUDg9ZV1kYEgtZQVlKSk1VSU5VQk9VQ0NZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0tVSktLVUtZBg
-	++
+Message-Id: <20251013-hiword-rockchip-dfi-v1-1-4f2a63098553@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAGur7GgC/yXMQQrCMBCF4auEWTuSxBpKryJd1GRiBmlTJ7UKp
+ Xc32OX34P0bFBKmAp3aQGjlwnmqMCcFPg3Tg5BDNVhtr0abCyb+ZAko2T994hlDZGyMdjo617R
+ WQ33OQpG//+qtPyz0etf4coxwHwqhz+PIS6dWdzYtijfQ7/sPfxY7wJIAAAA=
+X-Change-ID: 20251013-hiword-rockchip-dfi-41060f664820
+To: Yury Norov <yury.norov@gmail.com>, Chanwoo Choi <cw00.choi@samsung.com>, 
+ MyungJoo Ham <myungjoo.ham@samsung.com>, 
+ Kyungmin Park <kyungmin.park@samsung.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: kernel@collabora.com, linux-pm@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, 
+ Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251013_000119_708093_54977154 
-X-CRM114-Status: UNSURE (   8.16  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251013_003437_416479_7A1FB293 
+X-CRM114-Status: GOOD (  17.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,99 +83,172 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+The era of hand-rolled HIWORD_UPDATE macros is over, at least for those
+drivers that use constant masks.
 
-> +	regulator-vdd0v95-25glan {
-> +		compatible = "regulator-fixed";
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&pwr_25g_pin>;
-> +		enable-active-high;
-> +		gpio = <&gpio3 RK_PB1 GPIO_ACTIVE_HIGH>;
-> +		regulator-name = "vdd0v95_25glan";
-> +		regulator-min-microvolt = <950000>;
-> +		regulator-max-microvolt = <950000>;
-> +		regulator-boot-on;
-> +		regulator-always-on;
+Like many other Rockchip drivers, rockchip-dfi brings with it its own
+HIWORD_UPDATE macro. This variant doesn't shift the value (and like the
+others, doesn't do any checking).
 
-The property order should be consistent with other nodes.
+Remove it, and replace instances of it with hw_bitfield.h's
+FIELD_PREP_WM16.  Since FIELD_PREP_WM16 requires contiguous masks and
+shifts the value for us, some reshuffling of definitions needs to
+happen.
 
-> +		vin-supply = <&vcc3v3_sys>;
-> +	};
-> +
-> +	vcc3v3_nvme: regulator-vcc3v3-nvme {
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "vcc3v3_nvme";
-> +		regulator-min-microvolt = <3300000>;
-> +		regulator-max-microvolt = <3300000>;
-> +		enable-active-high;
-> +		gpio = <&gpio0 RK_PA5 GPIO_ACTIVE_HIGH>;
-> +		vin-supply = <&dc_12v>;
+This gives us better compile-time error checking, and in my opinion,
+nicer code.
 
-Same here, keep alphabetical order.
+Tested on an RK3568 ODROID-M1 board (LPDDR4X at 1560 MHz, an RK3588
+Radxa ROCK 5B board (LPDDR4X at 2112 MHz) and an RK3588 Radxa ROCK 5T
+board (LPDDR5 at 2400 MHz). perf measurements were consistent with the
+measurements of stress-ng --stream in all cases.
 
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&vcc3v3_nvme_en>;
-> +	};
+Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+---
+Hi Yury,
 
-> +		status_led: led-status {
-> +			gpios = <&gpio2 RK_PD7 GPIO_ACTIVE_HIGH>;
-> +			color = <LED_COLOR_ID_GREEN>;
-> +			function = LED_FUNCTION_STATUS;
-> +			label = "green:status";
+as promised[1], here's the follow-up patch to move rockchip-dfi to the
+new FIELD_PREP_WM16 macro after the LPDDR5 changes, which caused a
+conflict during the last merge window.
 
-The "label" property is deprecated.
+I've re-tested it on three boards, as outlined in the commit message.
 
-> +&pcie2x1 {
-> +	reset-gpios = <&gpio3 RK_PA4 GPIO_ACTIVE_HIGH>;
+Link: https://lore.kernel.org/all/14358105.O9o76ZdvQC@workhorse/t/#m6b5b01cb30a04745ea3167a660b4794c608f387b [1]
+---
+ drivers/devfreq/event/rockchip-dfi.c | 45 ++++++++++++++++++------------------
+ 1 file changed, 22 insertions(+), 23 deletions(-)
 
-vpcie3v3-supply is missing.
+diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event/rockchip-dfi.c
+index 5a2c9badcc64..5e6e7e900bda 100644
+--- a/drivers/devfreq/event/rockchip-dfi.c
++++ b/drivers/devfreq/event/rockchip-dfi.c
+@@ -20,6 +20,7 @@
+ #include <linux/of.h>
+ #include <linux/of_device.h>
+ #include <linux/bitfield.h>
++#include <linux/hw_bitfield.h>
+ #include <linux/bits.h>
+ #include <linux/perf_event.h>
+ 
+@@ -30,8 +31,6 @@
+ 
+ #define DMC_MAX_CHANNELS	4
+ 
+-#define HIWORD_UPDATE(val, mask)	((val) | (mask) << 16)
+-
+ /* DDRMON_CTRL */
+ #define DDRMON_CTRL	0x04
+ #define DDRMON_CTRL_LPDDR5		BIT(6)
+@@ -41,10 +40,6 @@
+ #define DDRMON_CTRL_LPDDR23		BIT(2)
+ #define DDRMON_CTRL_SOFTWARE_EN		BIT(1)
+ #define DDRMON_CTRL_TIMER_CNT_EN	BIT(0)
+-#define DDRMON_CTRL_DDR_TYPE_MASK	(DDRMON_CTRL_LPDDR5 | \
+-					 DDRMON_CTRL_DDR4 | \
+-					 DDRMON_CTRL_LPDDR4 | \
+-					 DDRMON_CTRL_LPDDR23)
+ #define DDRMON_CTRL_LP5_BANK_MODE_MASK	GENMASK(8, 7)
+ 
+ #define DDRMON_CH0_WR_NUM		0x20
+@@ -124,27 +119,31 @@ struct rockchip_dfi {
+ 	unsigned int count_multiplier;	/* number of data clocks per count */
+ };
+ 
+-static int rockchip_dfi_ddrtype_to_ctrl(struct rockchip_dfi *dfi, u32 *ctrl,
+-					u32 *mask)
++static int rockchip_dfi_ddrtype_to_ctrl(struct rockchip_dfi *dfi, u32 *ctrl)
+ {
+ 	u32 ddrmon_ver;
+ 
+-	*mask = DDRMON_CTRL_DDR_TYPE_MASK;
+-
+ 	switch (dfi->ddr_type) {
+ 	case ROCKCHIP_DDRTYPE_LPDDR2:
+ 	case ROCKCHIP_DDRTYPE_LPDDR3:
+-		*ctrl = DDRMON_CTRL_LPDDR23;
++		*ctrl = FIELD_PREP_WM16(DDRMON_CTRL_LPDDR23, 1) |
++			FIELD_PREP_WM16(DDRMON_CTRL_LPDDR4, 0) |
++			FIELD_PREP_WM16(DDRMON_CTRL_LPDDR5, 0);
+ 		break;
+ 	case ROCKCHIP_DDRTYPE_LPDDR4:
+ 	case ROCKCHIP_DDRTYPE_LPDDR4X:
+-		*ctrl = DDRMON_CTRL_LPDDR4;
++		*ctrl = FIELD_PREP_WM16(DDRMON_CTRL_LPDDR23, 0) |
++			FIELD_PREP_WM16(DDRMON_CTRL_LPDDR4, 1) |
++			FIELD_PREP_WM16(DDRMON_CTRL_LPDDR5, 0);
+ 		break;
+ 	case ROCKCHIP_DDRTYPE_LPDDR5:
+ 		ddrmon_ver = readl_relaxed(dfi->regs);
+ 		if (ddrmon_ver < 0x40) {
+-			*ctrl = DDRMON_CTRL_LPDDR5 | dfi->lp5_bank_mode;
+-			*mask |= DDRMON_CTRL_LP5_BANK_MODE_MASK;
++			*ctrl = FIELD_PREP_WM16(DDRMON_CTRL_LPDDR23, 0) |
++				FIELD_PREP_WM16(DDRMON_CTRL_LPDDR4, 0) |
++				FIELD_PREP_WM16(DDRMON_CTRL_LPDDR5, 1) |
++				FIELD_PREP_WM16(DDRMON_CTRL_LP5_BANK_MODE_MASK,
++						dfi->lp5_bank_mode);
+ 			break;
+ 		}
+ 
+@@ -172,7 +171,6 @@ static int rockchip_dfi_enable(struct rockchip_dfi *dfi)
+ 	void __iomem *dfi_regs = dfi->regs;
+ 	int i, ret = 0;
+ 	u32 ctrl;
+-	u32 ctrl_mask;
+ 
+ 	mutex_lock(&dfi->mutex);
+ 
+@@ -186,7 +184,7 @@ static int rockchip_dfi_enable(struct rockchip_dfi *dfi)
+ 		goto out;
+ 	}
+ 
+-	ret = rockchip_dfi_ddrtype_to_ctrl(dfi, &ctrl, &ctrl_mask);
++	ret = rockchip_dfi_ddrtype_to_ctrl(dfi, &ctrl);
+ 	if (ret)
+ 		goto out;
+ 
+@@ -196,15 +194,16 @@ static int rockchip_dfi_enable(struct rockchip_dfi *dfi)
+ 			continue;
+ 
+ 		/* clear DDRMON_CTRL setting */
+-		writel_relaxed(HIWORD_UPDATE(0, DDRMON_CTRL_TIMER_CNT_EN |
+-			       DDRMON_CTRL_SOFTWARE_EN | DDRMON_CTRL_HARDWARE_EN),
++		writel_relaxed(FIELD_PREP_WM16(DDRMON_CTRL_TIMER_CNT_EN, 0) |
++			       FIELD_PREP_WM16(DDRMON_CTRL_SOFTWARE_EN, 0) |
++			       FIELD_PREP_WM16(DDRMON_CTRL_HARDWARE_EN, 0),
+ 			       dfi_regs + i * dfi->ddrmon_stride + DDRMON_CTRL);
+ 
+-		writel_relaxed(HIWORD_UPDATE(ctrl, ctrl_mask),
+-			       dfi_regs + i * dfi->ddrmon_stride + DDRMON_CTRL);
++		writel_relaxed(ctrl, dfi_regs + i * dfi->ddrmon_stride +
++			       DDRMON_CTRL);
+ 
+ 		/* enable count, use software mode */
+-		writel_relaxed(HIWORD_UPDATE(DDRMON_CTRL_SOFTWARE_EN, DDRMON_CTRL_SOFTWARE_EN),
++		writel_relaxed(FIELD_PREP_WM16(DDRMON_CTRL_SOFTWARE_EN, 1),
+ 			       dfi_regs + i * dfi->ddrmon_stride + DDRMON_CTRL);
+ 
+ 		if (dfi->ddrmon_ctrl_single)
+@@ -234,8 +233,8 @@ static void rockchip_dfi_disable(struct rockchip_dfi *dfi)
+ 		if (!(dfi->channel_mask & BIT(i)))
+ 			continue;
+ 
+-		writel_relaxed(HIWORD_UPDATE(0, DDRMON_CTRL_SOFTWARE_EN),
+-			      dfi_regs + i * dfi->ddrmon_stride + DDRMON_CTRL);
++		writel_relaxed(FIELD_PREP_WM16(DDRMON_CTRL_SOFTWARE_EN, 0),
++			       dfi_regs + i * dfi->ddrmon_stride + DDRMON_CTRL);
+ 
+ 		if (dfi->ddrmon_ctrl_single)
+ 			break;
 
-> +	status = "okay";
-> +};
+---
+base-commit: cb6649f6217c0331b885cf787f1d175963e2a1d2
+change-id: 20251013-hiword-rockchip-dfi-41060f664820
 
-> +&pcie3x1 {
-> +	num-lanes = <1>;
-> +	reset-gpios = <&gpio3 RK_PA3 GPIO_ACTIVE_HIGH>;
+Best regards,
+-- 
+Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
-vpcie3v3-supply is missing.
-
-> +	status = "okay";
-> +};
-
-> +&sdmmc0 {
-> +	max-frequency = <150000000>;
-
-max-frequency has been defined in rk356x-base.dtsi
-
-> +	no-sdio;
-> +	no-mmc;
-
-no-mmc and cap-mmc-highspeed are mutually exclusive.
-
-> +	bus-width = <4>;
-> +	cap-mmc-highspeed;
-
-> +/* Micro SD card slot is not populated */
-> +/* Wifi module is not populated */
-
-Why would you define them if they aren't on the board?
-
-> +&sdmmc2 {
-> +	max-frequency = <150000000>;
-
-max-frequency has been defined in rk356x-base.dtsi
-
-> +	bus-width = <4>;
-> +	disable-wp;
-
-disable-wp does not work with sdio
-
-> +&usb2phy0_otg {
-
-phy-supply is missing.
-
-> +	status = "okay";
-> +};
 
 _______________________________________________
 Linux-rockchip mailing list
