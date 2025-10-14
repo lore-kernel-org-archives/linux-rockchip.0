@@ -4,55 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B311CCD193
-	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Oct 2025 18:07:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CBE6CCD184
+	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Oct 2025 18:07:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zk0ZCSUV+RYfOFjQxoLCMT36v4zzouT7OkhKFNquqcQ=; b=Dyl7Hs9ghFhkf1
-	gYFObfUhLBiTMyLBFGJPeYhHRuj5G19c7M1nhcWVjGobZOESnvmEZCSV9KSG9SaweAy0Tsoj/Jys5
-	YkPWqL0hU4MmK/mw+BcIrCOMRe6M+GOsHvXn1NEUQcHVA39r1rMccE3rXjfGnH1Q/BnQfy8XjB/qg
-	gMMTyhd90Z46HiDqhpy+g/aQpaMTSK676Rzp+qs9P76TRnR3mVhZilPvjOgvLOjpBr/O4f2aq7qQI
-	ayxwQ+MCCF09sVv+E5X9tG+/MS7QPsDvFIeV879455HzyYMAWrxSarTlRwvEoC2S1K7XpqBZ0xEql
-	fagq6STQjsqPF1rgzqhg==;
+	List-Owner; bh=pcyO28qK7tSkQRkTADvHGcJhChjkEhRFCp1b/okZu8U=; b=Wzvvz4T7JtmCcp
+	xElYuc70va2mnuCZwzHNXR/04/i1F8x6VYpvCpx0UYeYekzlnSKRPYiBLpapzd5RntGdXgeZMbiVI
+	OMFJCXgUAyuXo+HWNbf/GcaXsgLFERT1MTKnVJNO2CbbrZSVaWyiPbbGD+/6Z1VhSCSgqxwxtSnM8
+	OG2i+PQ5RBooVE/aqXBFCRq4/B0rGKhiArsOd139KZaGOmqkCqEOkkT1Hyl456chCB/7x4KegHOyB
+	UMV6hz6K0glEnLHBU+xS1EcOQYVzJEb1xQH6Nb/e9UNdb7ikgF/mfhJmmsmGu9vwqIYqTn/X2B7YZ
+	oTporSqtOOFylr4jv/cw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8jQi-0000000H9OL-01Eh;
+	id 1v8jQi-0000000H9PB-28od;
 	Tue, 14 Oct 2025 18:07:24 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8jQR-0000000H91s-39Yv;
-	Tue, 14 Oct 2025 18:07:09 +0000
+	id 1v8jQT-0000000H93g-0wSA
+	for linux-rockchip@lists.infradead.org;
+	Tue, 14 Oct 2025 18:07:11 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=rIEDzwv7QdB31GWJ+XTDLBa3gIoDkaeLOaqFwxH7huU=; b=oWce2nmHWPWWoNXeYgtzvmVX/+
-	hA0OkoEPV9FKtQomxOXwECRZ1fIRfyBUXTVILAz9OyIqcsolM26xiEC9LcZvtSQtEETvN2s5jNiUM
-	VekHnoxEnHGurZGh5AfbgA8s+SVbjWZaBPsqQWoNX7BSwl0XLeo91KiVqruss+Xu6QC+M0MvUf8qC
-	8St4tVG84On1cTrJtoKvmmiSfX1dQAhqHuOBHOss0ZOuOS2vhX3u0VVy81WXCKQi//XerfUsLlKYC
-	EG+xrbzWwBDMNm2nJppzEw1Z25fwWUbSw3bYKNwX03xfsKuCV6FJKcQvcnl5CJ4g38TQDBOldDlqy
-	nuyMJYSQ==;
+	bh=DgS+NBRZ5meprDicmbCbMq8Y1cdxTX/xG2+nCSlVa7Q=; b=S0qvk2R2u1KZkuHrcvuzi4k3N7
+	hOi/qvW4YSP6FTZrfLLPexxOvNW6npYimuZ0gXjzaCzXvzdhKc1/yP9DS9KkVodHIIdMzvvzmmmWx
+	SHMhRrguSkM28KL1bLp/BXCx1PabyLlcaJ4KoAiHMUvi3TE7D1+cjBHv5PR+1AAFlFLvLVGAiIFTu
+	uuABaFUhh9dGXzM+5lzaUbl38mSCbBgmmD0BMPoqpoBpkfUX3NL7rdCV133WjwEJQ7tf7rXMJqUdU
+	1itUs1sWZxxgZtHFaFghwM/13uwwXfGbJhNXWa8VhMlYzJ++Jh3dSyIL3SPuapIMqhTlbEFv2Zjmp
+	mt/uUS2w==;
 Received: from i53875b75.versanet.de ([83.135.91.117] helo=localhost.localdomain)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1v8jQC-0001Gj-A8; Tue, 14 Oct 2025 20:06:52 +0200
+	id 1v8jQ9-0001Gj-BO; Tue, 14 Oct 2025 20:06:49 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: Andy Yan <andy.yan@rock-chips.com>,
-	Chaoyi Chen <kernel@airkyi.com>
-Subject: Re: [PATCH v2] arm64: dts: rockchip: Enable DisplayPort for rk3588-evb2
-Date: Tue, 14 Oct 2025 20:06:37 +0200
-Message-ID: <176046473179.1662867.6131209694998628350.b4-ty@sntech.de>
+To: Andy Yan <andyshrk@163.com>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	arnd@arndb.de,
+	bjorn.andersson@oss.qualcomm.com,
+	ebiggers@kernel.org,
+	geert+renesas@glider.be,
+	krzysztof.kozlowski@linaro.org,
+	kuninori.morimoto.gx@renesas.com,
+	prabhakar.mahadev-lad.rj@bp.renesas.com,
+	nm@ti.com,
+	nfraprado@collabora.com,
+	quic_tdas@quicinc.com,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH] arm64: defconfig: Enable Rockchip extensions for Synopsys DW DP
+Date: Tue, 14 Oct 2025 20:06:32 +0200
+Message-ID: <176046473171.1662867.17938708004609069998.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250918062825.194-1-kernel@airkyi.com>
-References: <20250918062825.194-1-kernel@airkyi.com>
+In-Reply-To: <20251013090955.48832-1-andyshrk@163.com>
+References: <20251013090955.48832-1-andyshrk@163.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251014_110707_825713_92EF3223 
-X-CRM114-Status: UNSURE (   9.47  )
+X-CRM114-CacheID: sfid-20251014_110709_316725_A5DF8CA4 
+X-CRM114-Status: UNSURE (   9.09  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -65,23 +78,23 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, Geert Uytterhoeven <geert+renesas@glider.be>, Jonas Karlman <jonas@kwiboo.se>, Quentin Schulz <quentin.schulz@cherry.de>, Sebastian Reichel <sebastian.reichel@collabora.com>, Chaoyi Chen <chaoyi.chen@rock-chips.com>, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, FUKAUMI Naoki <naoki@radxa.com>, Peter Robinson <pbrobinson@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Dragan Simic <dsimic@manjaro.org>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Thu, 18 Sep 2025 14:28:25 +0800, Chaoyi Chen wrote:
-> The rk3588 evb2 board has a full size DisplayPort connector, enable
-> for it.
+On Mon, 13 Oct 2025 17:09:33 +0800, Andy Yan wrote:
+> Enable Rockchip specific extensions for Synopsys DesignWare DisplayPort
+> driver. This is used to provide DisplayPort output support for many boards
+> based on RK3588 SoC.
 > 
 > 
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: Enable DisplayPort for rk3588-evb2
-      commit: 134fae98cfbabb7e90b1b2d957fb374408061034
+[1/1] arm64: defconfig: Enable Rockchip extensions for Synopsys DW DP
+      commit: 642f2879816801ce3e9b00e90c5ee8ec6265c0a2
 
 Best regards,
 -- 
