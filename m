@@ -4,69 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CBE6CCD184
-	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Oct 2025 18:07:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF1AACCD190
+	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Oct 2025 18:49:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pcyO28qK7tSkQRkTADvHGcJhChjkEhRFCp1b/okZu8U=; b=Wzvvz4T7JtmCcp
-	xElYuc70va2mnuCZwzHNXR/04/i1F8x6VYpvCpx0UYeYekzlnSKRPYiBLpapzd5RntGdXgeZMbiVI
-	OMFJCXgUAyuXo+HWNbf/GcaXsgLFERT1MTKnVJNO2CbbrZSVaWyiPbbGD+/6Z1VhSCSgqxwxtSnM8
-	OG2i+PQ5RBooVE/aqXBFCRq4/B0rGKhiArsOd139KZaGOmqkCqEOkkT1Hyl456chCB/7x4KegHOyB
-	UMV6hz6K0glEnLHBU+xS1EcOQYVzJEb1xQH6Nb/e9UNdb7ikgF/mfhJmmsmGu9vwqIYqTn/X2B7YZ
-	oTporSqtOOFylr4jv/cw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=jwTU0QqTGmA1OegzcyzsCVDg9mPLKzLu5kvEhWEuBgM=; b=PUtVRtgmeRfHUb
+	aTnv4DbrVWyN/y70fGPG5yvQOPWfXyPQ2GUoPIJFe/J82RumZsp7UXKKOFcn1qgcnkRplT44i0sra
+	hFCz0xCyF4OkOwTS7BlqGlnV0SzhW2zgaRogHxzsuTc4wtUBXZla+4mKvSoeaEVt+WE0UeSt9rLBg
+	lVGpAhFhKiBlyOVL+GFr/xrlev38CH8GyOLDUCCs9R98ZYH6hc2UKmASWYJ9KGl5+jIcSHua71R8W
+	xMzkbLrMRDz4lQ4AiHoCWL1sBA87P1JWQju0TedzGzGH+VjteUqgnyCm4bPCI5IDFLOOSvie60NHm
+	+ismshooPdltumfADHpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8jQi-0000000H9PB-28od;
-	Tue, 14 Oct 2025 18:07:24 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1v8k58-0000000HCjt-3XsO;
+	Tue, 14 Oct 2025 18:49:10 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8jQT-0000000H93g-0wSA
+	id 1v8k56-0000000HCjG-0uJS
 	for linux-rockchip@lists.infradead.org;
-	Tue, 14 Oct 2025 18:07:11 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=DgS+NBRZ5meprDicmbCbMq8Y1cdxTX/xG2+nCSlVa7Q=; b=S0qvk2R2u1KZkuHrcvuzi4k3N7
-	hOi/qvW4YSP6FTZrfLLPexxOvNW6npYimuZ0gXjzaCzXvzdhKc1/yP9DS9KkVodHIIdMzvvzmmmWx
-	SHMhRrguSkM28KL1bLp/BXCx1PabyLlcaJ4KoAiHMUvi3TE7D1+cjBHv5PR+1AAFlFLvLVGAiIFTu
-	uuABaFUhh9dGXzM+5lzaUbl38mSCbBgmmD0BMPoqpoBpkfUX3NL7rdCV133WjwEJQ7tf7rXMJqUdU
-	1itUs1sWZxxgZtHFaFghwM/13uwwXfGbJhNXWa8VhMlYzJ++Jh3dSyIL3SPuapIMqhTlbEFv2Zjmp
-	mt/uUS2w==;
-Received: from i53875b75.versanet.de ([83.135.91.117] helo=localhost.localdomain)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1v8jQ9-0001Gj-BO; Tue, 14 Oct 2025 20:06:49 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: Andy Yan <andyshrk@163.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	arnd@arndb.de,
-	bjorn.andersson@oss.qualcomm.com,
-	ebiggers@kernel.org,
-	geert+renesas@glider.be,
-	krzysztof.kozlowski@linaro.org,
-	kuninori.morimoto.gx@renesas.com,
-	prabhakar.mahadev-lad.rj@bp.renesas.com,
-	nm@ti.com,
-	nfraprado@collabora.com,
-	quic_tdas@quicinc.com,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH] arm64: defconfig: Enable Rockchip extensions for Synopsys DW DP
-Date: Tue, 14 Oct 2025 20:06:32 +0200
-Message-ID: <176046473171.1662867.17938708004609069998.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20251013090955.48832-1-andyshrk@163.com>
-References: <20251013090955.48832-1-andyshrk@163.com>
+	Tue, 14 Oct 2025 18:49:09 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id E6F74408B4;
+	Tue, 14 Oct 2025 18:49:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9B580C4CEE7;
+	Tue, 14 Oct 2025 18:49:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1760467746;
+	bh=xIe/RVY9JgGbZFMDn5+9AZKmOczVweO4u+DJfrtCq4o=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=HCa/9J9vBr5NheEAR9F1ZYa+nWbJS/qtndiJkrgqWh3gSLIApRChkPowX81HrXX7o
+	 ztxEA+yZV//7VaBQwgTMGfzpSnODn6GsPU1uzJWyBFP7i5IR7hF8HzBpqU80DFbyLr
+	 VNylT48Tcie55n4N8dAH7AEcjIxnPbSUPjVEgyuqZnScVcCMUCGrOotQKBA4o2jo5R
+	 XWR7nV/v63Xxl0xbits5Tg531kAxsNDNbB5yeWU6HrCz541Ohxpp23EdMkpowf53is
+	 yM17bi+NADLhQyKU+iJ5uS2ZwUq4b8TZTA6t8P1QJ8yFZmYoiXEbosyMMVeqcQQyHP
+	 I4xqIz6pb0AOw==
+Date: Tue, 14 Oct 2025 13:49:05 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: FUKAUMI Naoki <naoki@radxa.com>
+Cc: manivannan.sadhasivam@oss.qualcomm.com,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Rob Herring <robh@kernel.org>, linux-pci@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+	"David E. Box" <david.e.box@linux.intel.com>,
+	Kai-Heng Feng <kai.heng.feng@canonical.com>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Chia-Lin Kao <acelan.kao@canonical.com>,
+	Dragan Simic <dsimic@manjaro.org>,
+	linux-rockchip@lists.infradead.org, regressions@lists.linux.dev
+Subject: Re: [PATCH v2 1/2] PCI/ASPM: Override the ASPM and Clock PM states
+ set by BIOS for devicetree platforms
+Message-ID: <20251014184905.GA896847@bhelgaas>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <22594781424C5C98+22cb5d61-19b1-4353-9818-3bb2b311da0b@radxa.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251014_110709_316725_A5DF8CA4 
-X-CRM114-Status: UNSURE (   9.09  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251014_114908_321497_0D7A2FE7 
+X-CRM114-Status: GOOD (  44.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,22 +84,196 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+[+cc regressions]
 
-On Mon, 13 Oct 2025 17:09:33 +0800, Andy Yan wrote:
-> Enable Rockchip specific extensions for Synopsys DesignWare DisplayPort
-> driver. This is used to provide DisplayPort output support for many boards
-> based on RK3588 SoC.
+On Wed, Oct 15, 2025 at 01:30:16AM +0900, FUKAUMI Naoki wrote:
+> Hi Manivannan Sadhasivam,
+> 
+> I've noticed an issue on Radxa ROCK 5A/5B boards, which are based on the
+> Rockchip RK3588(S) SoC.
+> 
+> When running Linux v6.18-rc1 or linux-next since 20250924, the kernel either
+> freezes or fails to probe M.2 Wi-Fi modules. This happens with several
+> different modules I've tested, including the Realtek RTL8852BE, MediaTek
+> MT7921E, and Intel AX210.
+> 
+> I've found that reverting the following commit (i.e., the patch I'm replying
+> to) resolves the problem:
+> commit f3ac2ff14834a0aa056ee3ae0e4b8c641c579961
+
+Thanks for the report, and sorry for the regression.
+
+Since this affects several devices from different manufacturers and (I
+assume) different drivers, it seems likely that there's some issue
+with the Rockchip end, since ASPM probably works on these devices in
+other systems.  So we should figure out if there's something wrong
+with the way we configure ASPM, which we could potentially fix, or if
+there's a hardware issue and we need some king of quirk to prevent
+usage of ASPM on the affected platforms.
+
+Can you collect a complete dmesg log when booting with
+
+  ignore_loglevel pci=earlydump dyndbg="file drivers/pci/* +p"
+
+and the output of "sudo lspci -vv"?
+
+When the kernel freezes, can you give us any information about where,
+e.g., a log or screenshot?
+
+Do you know if any platforms other than Radxa ROCK 5A/5B have this
+problem?
+
+#regzbot introduced: f3ac2ff14834 ("PCI/ASPM: Enable all ClockPM and ASPM states for devicetree platforms")
+#regzbot dup-of: https://github.com/chzigotzky/kernels/issues/17
+
+> On 9/23/25 01:16, Manivannan Sadhasivam via B4 Relay wrote:
+> > From: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
+> > 
+> > So far, the PCI subsystem has honored the ASPM and Clock PM states set by
+> > the BIOS (through LNKCTL) during device initialization, if it relies on the
+> > default state selected using:
+> > 
+> > * Kconfig: CONFIG_PCIEASPM_DEFAULT=y, or
+> > * cmdline: "pcie_aspm=off", or
+> > * FADT: ACPI_FADT_NO_ASPM
+> > 
+> > This was done conservatively to avoid issues with the buggy devices that
+> > advertise ASPM capabilities, but behave erratically if the ASPM states are
+> > enabled. So the PCI subsystem ended up trusting the BIOS to enable only the
+> > ASPM states that were known to work for the devices.
+> > 
+> > But this turned out to be a problem for devicetree platforms, especially
+> > the ARM based devicetree platforms powering Embedded and *some* Compute
+> > devices as they tend to run without any standard BIOS. So the ASPM states
+> > on these platforms were left disabled during boot and the PCI subsystem
+> > never bothered to enable them, unless the user has forcefully enabled the
+> > ASPM states through Kconfig, cmdline, and sysfs or the device drivers
+> > themselves, enabling the ASPM states through pci_enable_link_state() APIs.
+> > 
+> > This caused runtime power issues on those platforms. So a couple of
+> > approaches were tried to mitigate this BIOS dependency without user
+> > intervention by enabling the ASPM states in the PCI controller drivers
+> > after device enumeration, and overriding the ASPM/Clock PM states
+> > by the PCI controller drivers through an API before enumeration.
+> > 
+> > But it has been concluded that none of these mitigations should really be
+> > required and the PCI subsystem should enable the ASPM states advertised by
+> > the devices without relying on BIOS or the PCI controller drivers. If any
+> > device is found to be misbehaving after enabling ASPM states that they
+> > advertised, then those devices should be quirked to disable the problematic
+> > ASPM/Clock PM states.
+> > 
+> > In an effort to do so, start by overriding the ASPM and Clock PM states set
+> > by the BIOS for devicetree platforms first. Separate helper functions are
+> > introduced to override the BIOS set states by enabling all of them if
+> > of_have_populated_dt() returns true. To aid debugging, print the overridden
+> > ASPM and Clock PM states as well.
+> > 
+> > In the future, these helpers could be extended to allow other platforms
+> > like VMD, newer ACPI systems with a cutoff year etc... to follow the path.
+> > 
+> > Link: https://lore.kernel.org/linux-pci/20250828204345.GA958461@bhelgaas
+> > Suggested-by: Bjorn Helgaas <helgaas@kernel.org>
+> > Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
+> > Link: https://patch.msgid.link/20250916-pci-dt-aspm-v1-1-778fe907c9ad@oss.qualcomm.com
+> > ---
+> >   drivers/pci/pcie/aspm.c | 42 ++++++++++++++++++++++++++++++++++++++++--
+> >   1 file changed, 40 insertions(+), 2 deletions(-)
+> > 
+> > diff --git a/drivers/pci/pcie/aspm.c b/drivers/pci/pcie/aspm.c
+> > index 919a05b9764791c3cc469c9ada62ba5b2c405118..cda31150aec1b67b6a48b60569222ea3d1c3d41f 100644
+> > --- a/drivers/pci/pcie/aspm.c
+> > +++ b/drivers/pci/pcie/aspm.c
+> > @@ -15,6 +15,7 @@
+> >   #include <linux/math.h>
+> >   #include <linux/module.h>
+> >   #include <linux/moduleparam.h>
+> > +#include <linux/of.h>
+> >   #include <linux/pci.h>
+> >   #include <linux/pci_regs.h>
+> >   #include <linux/errno.h>
+> > @@ -235,13 +236,15 @@ struct pcie_link_state {
+> >   	u32 aspm_support:7;		/* Supported ASPM state */
+> >   	u32 aspm_enabled:7;		/* Enabled ASPM state */
+> >   	u32 aspm_capable:7;		/* Capable ASPM state with latency */
+> > -	u32 aspm_default:7;		/* Default ASPM state by BIOS */
+> > +	u32 aspm_default:7;		/* Default ASPM state by BIOS or
+> > +					   override */
+> >   	u32 aspm_disable:7;		/* Disabled ASPM state */
+> >   	/* Clock PM state */
+> >   	u32 clkpm_capable:1;		/* Clock PM capable? */
+> >   	u32 clkpm_enabled:1;		/* Current Clock PM state */
+> > -	u32 clkpm_default:1;		/* Default Clock PM state by BIOS */
+> > +	u32 clkpm_default:1;		/* Default Clock PM state by BIOS or
+> > +					   override */
+> >   	u32 clkpm_disable:1;		/* Clock PM disabled */
+> >   };
+> > @@ -373,6 +376,18 @@ static void pcie_set_clkpm(struct pcie_link_state *link, int enable)
+> >   	pcie_set_clkpm_nocheck(link, enable);
+> >   }
+> > +static void pcie_clkpm_override_default_link_state(struct pcie_link_state *link,
+> > +						   int enabled)
+> > +{
+> > +	struct pci_dev *pdev = link->downstream;
+> > +
+> > +	/* Override the BIOS disabled Clock PM state for devicetree platforms */
+> > +	if (of_have_populated_dt() && !enabled) {
+> > +		link->clkpm_default = 1;
+> > +		pci_info(pdev, "Clock PM state overridden: ClockPM+\n");
+> > +	}
+> > +}
+> > +
+> >   static void pcie_clkpm_cap_init(struct pcie_link_state *link, int blacklist)
+> >   {
+> >   	int capable = 1, enabled = 1;
+> > @@ -395,6 +410,7 @@ static void pcie_clkpm_cap_init(struct pcie_link_state *link, int blacklist)
+> >   	}
+> >   	link->clkpm_enabled = enabled;
+> >   	link->clkpm_default = enabled;
+> > +	pcie_clkpm_override_default_link_state(link, enabled);
+> >   	link->clkpm_capable = capable;
+> >   	link->clkpm_disable = blacklist ? 1 : 0;
+> >   }
+> > @@ -788,6 +804,26 @@ static void aspm_l1ss_init(struct pcie_link_state *link)
+> >   		aspm_calc_l12_info(link, parent_l1ss_cap, child_l1ss_cap);
+> >   }
+> > +static void pcie_aspm_override_default_link_state(struct pcie_link_state *link)
+> > +{
+> > +	struct pci_dev *pdev = link->downstream;
+> > +	u32 override;
+> > +
+> > +	/* Override the BIOS disabled ASPM states for devicetree platforms */
+> > +	if (of_have_populated_dt()) {
+> > +		link->aspm_default = PCIE_LINK_STATE_ASPM_ALL;
+> > +		override = link->aspm_default & ~link->aspm_enabled;
+> > +		if (override)
+> > +			pci_info(pdev, "ASPM states overridden: %s%s%s%s%s%s\n",
+> > +				 (override & PCIE_LINK_STATE_L0S) ? "L0s+, " : "",
+> > +				 (override & PCIE_LINK_STATE_L1) ? "L1+, " : "",
+> > +				 (override & PCIE_LINK_STATE_L1_1) ? "L1.1+, " : "",
+> > +				 (override & PCIE_LINK_STATE_L1_2) ? "L1.2+, " : "",
+> > +				 (override & PCIE_LINK_STATE_L1_1_PCIPM) ? "L1.1 PCI-PM+, " : "",
+> > +				 (override & PCIE_LINK_STATE_L1_2_PCIPM) ? "L1.2 PCI-PM+" : "");
+> > +	}
+> > +}
+> > +
+> >   static void pcie_aspm_cap_init(struct pcie_link_state *link, int blacklist)
+> >   {
+> >   	struct pci_dev *child = link->downstream, *parent = link->pdev;
+> > @@ -868,6 +904,8 @@ static void pcie_aspm_cap_init(struct pcie_link_state *link, int blacklist)
+> >   	/* Save default state */
+> >   	link->aspm_default = link->aspm_enabled;
+> > +	pcie_aspm_override_default_link_state(link);
+> > +
+> >   	/* Setup initial capable state. Will be updated later */
+> >   	link->aspm_capable = link->aspm_support;
+> > 
 > 
 > 
-
-Applied, thanks!
-
-[1/1] arm64: defconfig: Enable Rockchip extensions for Synopsys DW DP
-      commit: 642f2879816801ce3e9b00e90c5ee8ec6265c0a2
-
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
 _______________________________________________
 Linux-rockchip mailing list
