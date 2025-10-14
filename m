@@ -4,77 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63819CCD184
-	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Oct 2025 16:35:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6626ACCD193
+	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Oct 2025 18:07:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
-	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=N2pUyq0kdDPWmSETe6szXELxlCCcXBr7IBck/LcflvE=; b=dUTLiGtnNpjKlxJm/1PJKwHftC
-	/RB4BtvrdbSjUF+zzdHkrS0CBehtz7TA7pl4m/Ie7Ww+EMRsQT4emdi6ZHqLkhNoMfPSHY/E+M2KO
-	NcFPAb+r06Zu+h5buu0N1eWVeidmEYThKfdo50UywSe80njF0o7GXF7lTtuFMbagtG3ePDi4Q7Wxk
-	uNlwJz0FwTzr3TUQ3YMAmlA1pLO8e8k6rl20RVjB8TYsFPg9XvFh5/AuNt6SW6JJ9OJTWzJeBCp1P
-	e9NWTObafyLpU8RVMSnV7KGY/DvklkhyizyGeM8VfjxNHttkFsRYwudc91jmzQF2BiJKJldZSfHr1
-	VLEb3qHQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=yJssLYF9BtGibNHJ5werXLAnevnd8nZozm/RuIqQtgw=; b=XxfTVUc9+yX5xT
+	UQFfHFMIYB1R0EhkHScEHjcQ8zRwLxniaNWfyBlOb8V/ibsGHOxTQ8MQYRPvBUX+tL2wdL+vtYwKJ
+	DRGyg141RJBwQXV4pmB242E3IIwnHByuOIsJNyr4QIVRHlC8aaayoTgYI6QF0VsgwlzDv7VE3MgUC
+	PX8eVbT5J3+rE03Z3DLJOYKuiCgbUNAnsQeegZ7ZD3Q/zuxti7J2FIOLhik9PztSFAhsv8S0fgorL
+	JXc2vBPFHkvmMZZSr/rJNhiGTf71un8gPF9CIoCX7RM1NCgdsDwlOXd0emq/oKzufWx5Ijy/EXvXS
+	V+BEolVHOrG9XXTM3V/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8hzg-0000000H04q-0HqS;
-	Tue, 14 Oct 2025 16:35:24 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1v8jQE-0000000H8sO-3P1L;
+	Tue, 14 Oct 2025 18:06:54 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8hzd-0000000H04G-3Pcj;
-	Tue, 14 Oct 2025 16:35:21 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id EF91462363;
-	Tue, 14 Oct 2025 16:35:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 70A6EC116D0;
-	Tue, 14 Oct 2025 16:35:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1760459719;
-	bh=V3BQixyVjuCVkkOX9feEiagJYME1UtbGBfo11YpVI/0=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=ojsQW/wsHQ8jynUNzpnd2dKZgcAMGpab2GTVTWiEdNnE3tCNaOCznQ0ByVLG6yLDZ
-	 ChBBU5oEzfvFBaocmngkn3Q1IOtgVjmt75SNrMpU2/dGbBKNKi9PILsj3gR02d+T2b
-	 mgn22uychOKORC3/yDleOSCYKFj1qQ6P1QGjq9oj5gBe0X1V9+JycL8em+nkQhMf2b
-	 K3ZdqIDAO6k9VxdecdTB8mC+7dkNlDd+1NXid2gS99Zvyj+qzdxZgp5gE65C6GVg9F
-	 /2rmXbQ7+88nse4PHnSdBGnXyNA6mGVbmfWm4u02lm0BU6O8RUadZSqGQeEpZHxoPZ
-	 YmMxhGczgsNkw==
-Date: Tue, 14 Oct 2025 11:35:18 -0500
+	id 1v8jQA-0000000H8rW-343l;
+	Tue, 14 Oct 2025 18:06:52 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=JZQaTp5dpiFS59beowRGw1f34kfsMqratSv3mdigDF0=; b=VwNm4AZdtwfNiYMqLVaEFrqfz6
+	1i9VJITIVHw7aQLbS456E/MRnf4dWGQAvFgfNFAPyOAQ/shrojPOBqI7jZyzQC9UsHGcl+GOCpkKV
+	831QxOOMcJ8Ki1wHlyF3BlL05KBlDm2gW3XivlLEnSy+U259HpDFh0poDpnLk2zNKk/lSnf8LTrEG
+	aeijyFY+w8HI7SCa8r4tsj4Oi0jlP+Py02DY13DSHq0KUYMPYN4XOWJW5yr1CSmijI7eTRBZ//EVd
+	8smZWQrAPGchWrMrtOJryHBgJtvLPc0mPjVHHybE6X+PK2DleXt2zZ1DaaD3jTOkJ+xRjG7DCEtGf
+	+2Usih0A==;
+Received: from i53875b75.versanet.de ([83.135.91.117] helo=localhost.localdomain)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1v8jQ8-0001Gj-Oi; Tue, 14 Oct 2025 20:06:48 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	Andrey Leonchikov <andreil499@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org
+Subject: Re: [PATCH v2] arm64: dts: rockchip: Fix PCIe power enable pin for BTT CB2 and Pi2
+Date: Tue, 14 Oct 2025 20:06:31 +0200
+Message-ID: <176046473172.1662867.5782306342643102691.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.47.2
+In-Reply-To: <20251012123338.344271-1-andreil499@gmail.com>
+References: <20251012123338.344271-1-andreil499@gmail.com>
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: Sakari Ailus <sakari.ailus@linux.intel.com>, 
- Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, 
- Kever Yang <kever.yang@rock-chips.com>, 
- linux-arm-kernel@lists.infradead.org, 
- Sebastian Reichel <sebastian.reichel@collabora.com>, 
- Alexander Shiyan <eagle.alexander923@gmail.com>, 
- Mehdi Djait <mehdi.djait@linux.intel.com>, Rob Herring <robh+dt@kernel.org>, 
- Collabora Kernel Team <kernel@collabora.com>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Markus Elfring <Markus.Elfring@web.de>, linux-media@vger.kernel.org, 
- linux-rockchip@lists.infradead.org, 
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
- Val Packett <val@packett.cool>, linux-kernel@vger.kernel.org, 
- Bryan O'Donoghue <bryan.odonoghue@linaro.org>, 
- Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
- =?utf-8?q?Th=C3=A9o_Lebrun?= <theo.lebrun@bootlin.com>, 
- Paul Kocialkowski <paulk@sys-base.io>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Gerald Loacker <gerald.loacker@wolfvision.net>, 
- Bryan O'Donoghue <bod@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
- Maxime Chevallier <maxime.chevallier@bootlin.com>, 
- Philipp Zabel <p.zabel@pengutronix.de>
-To: Michael Riesch <michael.riesch@collabora.com>
-In-Reply-To: <20240220-rk3568-vicap-v12-5-c6dbece6bb98@collabora.com>
-References: <20240220-rk3568-vicap-v12-0-c6dbece6bb98@collabora.com>
- <20240220-rk3568-vicap-v12-5-c6dbece6bb98@collabora.com>
-Message-Id: <176045970552.4162088.13140212466799720724.robh@kernel.org>
-Subject: Re: [PATCH v12 05/18] media: dt-bindings: add rockchip rk3568 mipi
- csi-2 receiver
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251014_110651_170792_32B3CB6D 
+X-CRM114-Status: UNSURE (   7.81  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,54 +77,21 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Tue, 14 Oct 2025 15:01:51 +0200, Michael Riesch wrote:
-> Add documentation for the Rockchip RK3568 MIPI CSI-2 Receiver.
+On Sun, 12 Oct 2025 14:33:36 +0200, Andrey Leonchikov wrote:
+> Fix typo into regulator GPIO definition. With current
+>  definition - PCIe don't up. Valid definition have on
+>  "pinctrl" section, "pcie_drv" (gpio4, RK_PB1).
 > 
-> Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
-> Reviewed-by: Bryan O'Donoghue <bod@kernel.org>
-> Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
-> Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
-> ---
->  .../bindings/media/rockchip,rk3568-mipi-csi.yaml   | 146 +++++++++++++++++++++
->  MAINTAINERS                                        |   6 +
->  2 files changed, 152 insertions(+)
 > 
 
-My bot found errors running 'make dt_binding_check' on your patch:
+Applied, thanks!
 
-yamllint warnings/errors:
+[1/1] arm64: dts: rockchip: Fix PCIe power enable pin for BTT CB2 and Pi2
+      commit: e179de737d13ad99bd19ea0fafab759d4074a425
 
-dtschema/dtc warnings/errors:
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/slimbus/slimbus.example.dtb: slim@28080000 (qcom,slim-ngd-v1.5.0): 'audio-codec@1,0' does not match any of the regexes: '^pinctrl-[0-9]+$', '^slim@[0-9a-f]+$'
-	from schema $id: http://devicetree.org/schemas/slimbus/qcom,slim-ngd.yaml#
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/slimbus/slimbus.example.dtb: slim@28080000 (qcom,slim-ngd-v1.5.0): #address-cells: 1 was expected
-	from schema $id: http://devicetree.org/schemas/slimbus/qcom,slim-ngd.yaml#
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/slimbus/slimbus.example.dtb: slim@28080000 (qcom,slim-ngd-v1.5.0): 'dmas' is a required property
-	from schema $id: http://devicetree.org/schemas/slimbus/qcom,slim-ngd.yaml#
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/slimbus/slimbus.example.dtb: slim@28080000 (qcom,slim-ngd-v1.5.0): 'dma-names' is a required property
-	from schema $id: http://devicetree.org/schemas/slimbus/qcom,slim-ngd.yaml#
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/media/rockchip,rk3568-mipi-csi.example.dtb: csi@fdfb0000 (rockchip,rk3568-mipi-csi): interrupt-names:0: 'err1' was expected
-	from schema $id: http://devicetree.org/schemas/media/rockchip,rk3568-mipi-csi.yaml#
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/media/rockchip,rk3568-mipi-csi.example.dtb: csi@fdfb0000 (rockchip,rk3568-mipi-csi): interrupt-names:1: 'err2' was expected
-	from schema $id: http://devicetree.org/schemas/media/rockchip,rk3568-mipi-csi.yaml#
-
-doc reference errors (make refcheckdocs):
-
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20240220-rk3568-vicap-v12-5-c6dbece6bb98@collabora.com
-
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
-
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
