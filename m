@@ -4,88 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1501DCCD184
-	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Oct 2025 15:49:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C89DFCCD192
+	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Oct 2025 16:01:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
-	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:Message-Id:MIME-Version:Subject:Date
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ois3GaUugVKsuM/1YMFKZ8Ewc9F9HuQtU4lw4fO7VJY=; b=m9vLU2BZEXG/Dm
-	qYioXJtsbYkJEpDw2mSDS0E8OfMgJjrHT0yCOGM1kQaig1UPfFxH/rP4IBVJpiSfVCQiTLN75o/f5
-	Lh4nFE3QQNoEDZ5wE6/e+YG9NyhzV99pRlQhJuC8coz3mhvN1ZKgb+QVBDyQS1RrntONo5Oehw60P
-	gIb/GSgvQ+34cT0CERz+hWmfrGemzhDwp2kuo54QYBEU64Q6Pz0rWEWxG2IkkYoXt9Zdz+GGLiDoh
-	61S/rGaRnRpXsr3AENowCRzA/TKz3iByyLxsXIaQD6LI3abgwOYsJRhY8fGsp8AN2q1hoA/hd/UB5
-	A9/VMw+tUEELc6zalBxA==;
+	List-Owner; bh=Ec/mXF3e39MUt9tML3b0RHGP+jSlOhK79drgdU0ZBDc=; b=1gQ0ZYppwayp64
+	GYkTbZl/8veoWuH8XARl8iO1K2Fh0saOk7XqVVCVZOomuHJOhSfESZ3zgl+gLI62JJNilCQ3EEr4m
+	1S63ajUGodRnyqv/J1A+1MeYzkLp1E7uzg7Zg4u/tHywZU4lp2mDYgTZgqRMerv2/OQ/kPTaV/1ow
+	6RntxLj4wzxqa46xr8IeZmxbOXAFLfesYsEnf6Mlz9gRTr/mK4SOhmsQIyGXe56YGQzJ6Rzp++vNk
+	8EtEZuQaJHwQm8KgoddMYwLGGX+Cxr0lSDD6MA69kL1i6fXTI1jZcKtu20uwdj3wYZl/BM0MxiJ4h
+	b9kOkgCcJDXqw+aLYP/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8hHb-0000000GuL8-2RkI;
-	Tue, 14 Oct 2025 15:49:51 +0000
+	id 1v8hSW-0000000GwCX-33fp;
+	Tue, 14 Oct 2025 16:01:11 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8hHZ-0000000GuKK-0pmo
+	id 1v8hSR-0000000GwAS-0RYk
 	for linux-rockchip@lists.infradead.org;
-	Tue, 14 Oct 2025 15:49:50 +0000
+	Tue, 14 Oct 2025 16:01:06 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1760456987;
-	bh=O2OnOz5scUDSd+QFrf/tvNMYuICl3jWPJOhwXXYif2c=;
+	s=mail; t=1760457660;
+	bh=SH3ubszV9t3xT3AKN16sYqXa9F/SlbYXKCXLU/2GQbY=;
 	h=From:Date:Subject:To:Cc:From;
-	b=GX+yctSwy6m7W9I4+JzKb3R4HW7aDUAyt/mwtGFQlJEWqFbA3pyAC/lsNAcMdaJEg
-	 ytEZeHKXOE8nVkaeMSpoym697Y3LMcOJq48f52J/rDwtVCh4K31E3d9lvzb52FX+Fq
-	 baqnVCBJzPLwoFV/QYHl2+p1DtAD4RDbocqA3mvmE0xGEq6YIHlajUSsESS46DyoTs
-	 DITm5FqB2WbwuTvcSZgETgzwECjyeYZKjMNX4K0HbymnvM6uOU5iRGuSh3+GFXP4ls
-	 NapHKToYf+lwlI4MRl65y/v4h10GefoDlhelFcJi0H5jYUZAOwjkCdu9Q/eKoFmjNo
-	 ra45orkWevLkg==
+	b=E2sAXLoZbNIl6fzji+xHJSCE0dQXz54GHG/gRHFDnBkJIdZVV8IbpLp3TYIfU2iy2
+	 qyYYsh2pZDUrc6dvdk+NPJ08KrflvHfABOuXWY3pMNZkl6xv6v31CTY6ySUmo0u02K
+	 DNsDnfot3f+I7ev5W5Muj7KKta6GE5utlgbo0AzUOZvaF04MwN/NNB1QBm7f7ineYg
+	 NNESokqMRE6f+r0rXB7K0PepC119t25enETxLqA0neG4nlSvMB2TJmlK2xZiGrkPap
+	 xZ2V1Ea3U2Z+XHgV9sTk++DjdrNnxqM2D9+juIWuplyii5CiYw0Q/j0po3vIHsrHnT
+	 QqMupbPWezaFw==
 Received: from jupiter.universe (dyndsl-091-248-212-042.ewe-ip-backbone.de [91.248.212.42])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 10E6F17E0FC2;
-	Tue, 14 Oct 2025 17:49:47 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id A31BB17E0456;
+	Tue, 14 Oct 2025 18:01:00 +0200 (CEST)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id C7D4B480044; Tue, 14 Oct 2025 17:49:46 +0200 (CEST)
+	id 5980F480044; Tue, 14 Oct 2025 18:01:00 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Tue, 14 Oct 2025 17:49:34 +0200
-Subject: [PATCH net] net: stmmac: dwmac-rk: Fix disabling
- set_clock_selection
+Date: Tue, 14 Oct 2025 18:00:57 +0200
+Subject: [PATCH] drm/bridge: dw-hdmi-qp: Fix spurious IRQ on resume
 MIME-Version: 1.0
-Message-Id: <20251014-rockchip-network-clock-fix-v1-1-c257b4afdf75@collabora.com>
-X-B4-Tracking: v=1; b=H4sIAA1x7mgC/x2M0QqDMAwAf0XybKAt2jF/RXzQmM3gaCWVTRD/3
- bDHO447obAKF+iqE5S/UiQnA19XQMuY3owyG0NwofXON6iZVlpkw8T7L+uK9DGDLzkw0MPF5xi
- nyAQ22JRN/+c9WA7Ddd10TxPpcQAAAA==
-X-Change-ID: 20251014-rockchip-network-clock-fix-2c7069a6b6ec
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
- Alexandre Torgue <alexandre.torgue@foss.st.com>, 
- David Wu <david.wu@rock-chips.com>
-Cc: netdev@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, kernel@collabora.com, stable@vger.kernel.org, 
- Sebastian Reichel <sebastian.reichel@collabora.com>
+Message-Id: <20251014-rockchip-hdmi-suspend-fix-v1-1-983fcbf44839@collabora.com>
+X-B4-Tracking: v=1; b=H4sIALhz7mgC/x2MUQqFIBAArxL73UKWgq+rRB+lWy7xTFyKILp70
+ ucMzNwglJkE+uqGTCcL77GAqitwYYorIfvC0DatUY3SmHe3ucAJg/8zyiGJoseFL6Tf7LU11mr
+ TQelTpqK/9zA+zwvCuh4tawAAAA==
+X-Change-ID: 20251014-rockchip-hdmi-suspend-fix-e9bd48588453
+To: Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1840;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4328;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=O2OnOz5scUDSd+QFrf/tvNMYuICl3jWPJOhwXXYif2c=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGjucRo2uFWL3tpG3umZXtieNofXO4nAVctBy
- 5GLiCh0M1e+rYkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJo7nEaAAoJENju1/PI
- O/qaMRgP/iHJbV5a//GQfdq66WDDNHayu81bXQstYRXDdc/7YdmVEcv0rb8N0XNFrKluxH9R0bR
- sQ4PWok9aNKOApOWZ08lrrbr4IgNP0oMfR4CRiIEn6p28TI+jjKkq9/639UPolu+/iPapqnkSF6
- rE2ooV/kOppR6SQrB9+wLisBqnT3QShTnaq7HWhn6jJPWT9u+el0CbscGum+IYuJ/K3iUw2QTJM
- KgpF4PnJyNCb6V3Et6gOhT67VIU7CFWi/8sAMy0Q3nQrl5wJl1UxFjeHf6KmVxq6Mgs5Q6vpRJf
- MSvEtO86J9cBNFmgcrcVOasDrgnvvX9ZRbJbfbg4yzOG8C2MBUZ3ZmzOazQTAVqMoIybmZlPvoR
- nj0khD6HikFTzc9vWa536n1ZuuJH0IIzbX9qZtSvp202bu5nJ7I6k5dvaAfDlHHwPQTMIbKdx4J
- rzBYGfRYUNusTavH45VWs+4pJed1PIvGJAJ2cm5iVTh0kup4eUS7iPTzDO6uyKVXDrGmLJQmRFC
- mSY3nIlCJpvo02UCAncaD3OLR7165ubeG+pD1p3pLDQhyQO91xgydGwpXYj1aq6xT04jdgJH5V/
- B8aO3l2FIdl2KMrX8GYf0ji7K5J9qoiJ0l+R05gQ4rt1GK+BfBsZitLWjW47/3KpUAAQ58gCARc
- t70WWOTk/R/hbaOtx56g2KQ==
+ bh=SH3ubszV9t3xT3AKN16sYqXa9F/SlbYXKCXLU/2GQbY=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGjuc7xrHv7VsBmKzjHwXZWZqIGufGeBe0Vjr
+ Tw99cuY8eW0KokCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJo7nO8AAoJENju1/PI
+ O/qan+0P/0IXHkUnlGGCLnmv7grUsUJmKxll2pwfKghKUPGoPcYaIYPOqA2RRNxRfLOq+qHe8Hw
+ 3JMpw4XyTQjSJxcMJtAUSWUO4j5nAtD+Xbl0AbDGLO66slgvMjWAuy2UB7mkP3U9p4a+AQYiUpR
+ Z/K0fOhpBnwUE/JweHTiJkPBa5zO6bwDeDwPE9hzdXBq2m+3eYR1ZkzZlNY88Anet1JcJ/FdlBg
+ gEzEDQmgOzpOdsD+ZxH2Emn1wslMU+R5vcJ6gtB+ygwbMOTE+gwrYT52uW6/3+hp/iIHgkJLOvb
+ ivLj1MdRNPDt0DS1m4/ocByIQrBtszISThMGM9cX2M8tVRaCye6y1fYF8wVQEStBlo+zf1rc02s
+ dky44tyaC/F3seTt27jBOiXjH1hRYS2LmduDL1N20CiF1Hsef65iGES8PGCLkAvq2aT8jZMj4zO
+ kAa34NC58uDriAXQUL4rtifnwiExzJWgQoiyPiu7erUDCkvEFHT0DITjgaFSvaDQaSoRs09wtF6
+ ryPJcCYjTYVKNbFC9Gwh8pq5YD/aEyjAD4/uaONqkyKV4nuCbNkA6yx6E38I52fCkCuwU+xOrHd
+ 4m8qn4KgE+PuO0dFKRagy/Th7ZA/+BPGLZNn2sEsNEJnhT9IHejcJZyNZvhtO8JB1/8sDTNsdcC
+ iyV2ZPGOX8wXfX02Qp98nnQ==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251014_084949_413314_773A9048 
-X-CRM114-Status: GOOD (  12.35  )
+X-CRM114-CacheID: sfid-20251014_090103_493028_7620AF28 
+X-CRM114-Status: GOOD (  15.90  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,55 +94,120 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-rockchip@lists.infradead.org, kernel@collabora.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On all platforms set_clock_selection() writes to a GRF register. This
-requires certain clocks running and thus should happen before the
-clocks are disabled.
+After resume from suspend to RAM, the following splash is generated if
+the HDMI driver is probed (independent of a connected cable):
 
-This has been noticed on RK3576 Sige5, which hangs during system suspend
-when trying to suspend the second network interface. Note, that
-suspending the first interface works, because the second device ensures
-that the necessary clocks for the GRF are enabled.
+[ 1194.484052] irq 80: nobody cared (try booting with the "irqpoll" option)
+[ 1194.484074] CPU: 0 UID: 0 PID: 627 Comm: rtcwake Not tainted 6.17.0-rc7-g96f1a11414b3 #1 PREEMPT
+[ 1194.484082] Hardware name: Rockchip RK3576 EVB V10 Board (DT)
+[ 1194.484085] Call trace:
+[ 1194.484087]  ... (stripped)
+[ 1194.484283] handlers:
+[ 1194.484285] [<00000000bc363dcb>] dw_hdmi_qp_main_hardirq [dw_hdmi_qp]
+[ 1194.484302] Disabling IRQ #80
 
-Cc: stable@vger.kernel.org
-Fixes: 2f2b60a0ec28 ("net: ethernet: stmmac: dwmac-rk: Add gmac support for rk3588")
+Apparently the HDMI IP is losing part of its state while the system
+is suspended and generates spurious interrupts during resume. The
+bug has not yet been noticed, as system suspend does not yet work
+properly on upstream kernel with either the Rockchip RK3588 or RK3576
+platform.
+
+Fixes: 128a9bf8ace2 ("drm/rockchip: Add basic RK3588 HDMI output support")
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c   |  9 +++++++++
+ drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 12 +++++++++++-
+ include/drm/bridge/dw_hdmi_qp.h                |  1 +
+ 3 files changed, 21 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-index 51ea0caf16c1..0786816e05f0 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-@@ -1446,14 +1446,15 @@ static int gmac_clk_enable(struct rk_priv_data *bsp_priv, bool enable)
- 		}
- 	} else {
- 		if (bsp_priv->clk_enabled) {
-+			if (bsp_priv->ops && bsp_priv->ops->set_clock_selection) {
-+				bsp_priv->ops->set_clock_selection(bsp_priv,
-+					      bsp_priv->clock_input, false);
-+			}
-+
- 			clk_bulk_disable_unprepare(bsp_priv->num_clks,
- 						   bsp_priv->clks);
- 			clk_disable_unprepare(bsp_priv->clk_phy);
+diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
+index 39332c57f2c5..c85eb340e5a3 100644
+--- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
++++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
+@@ -143,6 +143,7 @@ struct dw_hdmi_qp {
+ 	} phy;
  
--			if (bsp_priv->ops && bsp_priv->ops->set_clock_selection)
--				bsp_priv->ops->set_clock_selection(bsp_priv,
--					      bsp_priv->clock_input, false);
--
- 			bsp_priv->clk_enabled = false;
- 		}
- 	}
+ 	struct regmap *regm;
++	int main_irq;
+ 
+ 	unsigned long tmds_char_rate;
+ };
+@@ -1068,6 +1069,7 @@ struct dw_hdmi_qp *dw_hdmi_qp_bind(struct platform_device *pdev,
+ 
+ 	dw_hdmi_qp_init_hw(hdmi);
+ 
++	hdmi->main_irq = plat_data->main_irq;
+ 	ret = devm_request_threaded_irq(dev, plat_data->main_irq,
+ 					dw_hdmi_qp_main_hardirq, NULL,
+ 					IRQF_SHARED, dev_name(dev), hdmi);
+@@ -1106,9 +1108,16 @@ struct dw_hdmi_qp *dw_hdmi_qp_bind(struct platform_device *pdev,
+ }
+ EXPORT_SYMBOL_GPL(dw_hdmi_qp_bind);
+ 
++void dw_hdmi_qp_suspend(struct device *dev, struct dw_hdmi_qp *hdmi)
++{
++	disable_irq(hdmi->main_irq);
++}
++EXPORT_SYMBOL_GPL(dw_hdmi_qp_suspend);
++
+ void dw_hdmi_qp_resume(struct device *dev, struct dw_hdmi_qp *hdmi)
+ {
+ 	dw_hdmi_qp_init_hw(hdmi);
++	enable_irq(hdmi->main_irq);
+ }
+ EXPORT_SYMBOL_GPL(dw_hdmi_qp_resume);
+ 
+diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
+index ed6e8f036f4b..9ac45e7bc987 100644
+--- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
+@@ -597,6 +597,15 @@ static void dw_hdmi_qp_rockchip_remove(struct platform_device *pdev)
+ 	component_del(&pdev->dev, &dw_hdmi_qp_rockchip_ops);
+ }
+ 
++static int __maybe_unused dw_hdmi_qp_rockchip_suspend(struct device *dev)
++{
++	struct rockchip_hdmi_qp *hdmi = dev_get_drvdata(dev);
++
++	dw_hdmi_qp_suspend(dev, hdmi->hdmi);
++
++	return 0;
++}
++
+ static int __maybe_unused dw_hdmi_qp_rockchip_resume(struct device *dev)
+ {
+ 	struct rockchip_hdmi_qp *hdmi = dev_get_drvdata(dev);
+@@ -612,7 +621,8 @@ static int __maybe_unused dw_hdmi_qp_rockchip_resume(struct device *dev)
+ }
+ 
+ static const struct dev_pm_ops dw_hdmi_qp_rockchip_pm = {
+-	SET_SYSTEM_SLEEP_PM_OPS(NULL, dw_hdmi_qp_rockchip_resume)
++	SET_SYSTEM_SLEEP_PM_OPS(dw_hdmi_qp_rockchip_suspend,
++				dw_hdmi_qp_rockchip_resume)
+ };
+ 
+ struct platform_driver dw_hdmi_qp_rockchip_pltfm_driver = {
+diff --git a/include/drm/bridge/dw_hdmi_qp.h b/include/drm/bridge/dw_hdmi_qp.h
+index e9be6d507ad9..8955450663e5 100644
+--- a/include/drm/bridge/dw_hdmi_qp.h
++++ b/include/drm/bridge/dw_hdmi_qp.h
+@@ -28,5 +28,6 @@ struct dw_hdmi_qp_plat_data {
+ struct dw_hdmi_qp *dw_hdmi_qp_bind(struct platform_device *pdev,
+ 				   struct drm_encoder *encoder,
+ 				   const struct dw_hdmi_qp_plat_data *plat_data);
++void dw_hdmi_qp_suspend(struct device *dev, struct dw_hdmi_qp *hdmi);
+ void dw_hdmi_qp_resume(struct device *dev, struct dw_hdmi_qp *hdmi);
+ #endif /* __DW_HDMI_QP__ */
 
 ---
 base-commit: 3a8660878839faadb4f1a6dd72c3179c1df56787
-change-id: 20251014-rockchip-network-clock-fix-2c7069a6b6ec
+change-id: 20251014-rockchip-hdmi-suspend-fix-e9bd48588453
 
 Best regards,
 -- 
