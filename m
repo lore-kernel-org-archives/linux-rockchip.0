@@ -4,107 +4,129 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E67F4CCD194
-	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Oct 2025 13:03:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C56AACCD184
+	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Oct 2025 14:21:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
-	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6sLCAcLsyRFd8kUO6NiZRzth6jiw3uL67uPtoSlT8zo=; b=H3JOKZlmdeWlEC
-	9VFFTXSWpAzYa4LJGmHfkeVqrZb5iD9T3mVBbjfkSFPF58Q0Oto+kszfU4G6qf3ymyzNCkya3cFjt
-	igrzJVJUPjSM+nMPJv1VR+c5ZgfZlqD2ljK9AMVu4nfbWviN/RVJZjkfMgN1Rw4VMpibY1MoN3xhc
-	GdowJutk5Q4BcxHM3du35464TlBalmwu20ltcwd5BtGq1tbIGwuu03VL4CgjaUns8Tnw8wDNZUKjT
-	qAgudRadlkeWuD0qEfFDHtIQyl6qF7GJr1dr8jIHpIw+4OPAbHXcRQBzO2hQmkv9z2KwoH1I+lMkY
-	LZibQ+qE/MghJ+GVEspw==;
+	List-Owner; bh=+Az+qnKNP6sqE1naA5qF4kw8w68Zst0TFukufODjFQU=; b=FpSDVXWdG66FX1
+	BSwhMl5haB1a1lKoY2C03Lr5LZ/g14bkl+x/sI78Vb1a+OknElDEPvgD3h51OhFZnfaEN3SVgVGxH
+	yn8rKRoSsocbm1iY8WinLFqq/dS0mXCbgnRp3drD1KaiY4004PFZ/zB5eIuRetta3PeEqkNHeqfsJ
+	RucoDhnoiFo+GBYvS9xmYBLHvO0wXRu5TDpc8yM1p6EXnJzvQRKsAMhfPT1h4FLxE3VC9FMZUUG9g
+	stjSyA1c+KCKra4taxov5EirGnOESmS8fDxoyKGKte+3w6dBPSFUGrFrUnkbbzy74e5j9RzroYw/V
+	7m+hpcwA8hpldjdkJBfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8egy-0000000GMvd-2SBZ;
-	Tue, 14 Oct 2025 13:03:52 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1v8fu9-0000000Gbn1-284F;
+	Tue, 14 Oct 2025 14:21:33 +0000
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8egE-0000000GLon-1EDv;
-	Tue, 14 Oct 2025 13:03:06 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Reply-To:Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Content-ID:Content-Description;
-	bh=N2oS7iRCPgCRJ0leVQb2E2knaplGRoXiwUzuOWTrZ+E=; b=IWFKTo0AAAJlgPFk8F5RfbbPZT
-	Ic78xPv2FePvke8gJwV+HC+uLL7CMzh01VtSLws0aM8q+rhzmiMrG97J7O7k9URsBCaM3JfmnONCH
-	yVBr0mpC5JF0zERYjWVX5pZKVwxFqvLQfxG5V+puV94RjpQqCyMK7fb2/0wnQ4qbh2bN8azQpEQ0y
-	IbCq7YW5Edviu0gzJxe8M4sGWGhGcLZUk7dWGggbYneu+Zp/CqdFmOBCD4NCoQO6XwZ17kwV+SaxE
-	7kQSBBvZLf6oX/5SR5drIv8LvHSRRJh56U0w7tZD/8x5dmU2WnSApT7gGI+x476eobyD0japVFNez
-	PLeSaJfQ==;
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8eg7-00000005AHz-3VML;
-	Tue, 14 Oct 2025 13:03:04 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 5B15B4A048;
-	Tue, 14 Oct 2025 13:02:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 32485C19425;
-	Tue, 14 Oct 2025 13:02:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1760446966;
-	bh=bpeukM6F3/qr1w2L8nnKD3KfZTPG4NC5WXS0eY1qREc=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=ueGgkvey4KXp/iVyDXSbuji6CBW1dniTnM9PtTD2v/GgZ6a0tMFWt5fC/cqkzSZON
-	 pyP7VV5UclMyFzyiDJFgxgD8AQeZUbY8SkSkkTnrULR1VyVWyigTZa9OY0/Q3+EwIJ
-	 iUxhhkwANSGl5Flh9fcl73M7RB81o1Ps7PyBlVDYf+sIaa0eVW5LVP7w1PkaPe3yyB
-	 YGWtMiPNxCrw72wtEvOVymdxruAB8qF7GHOUNrK+VEmRulLWD0GHlKzaSj9pV8yKuM
-	 HxIJ3leFHvW+N2TazEdiU/egbEDuwrAHSBPOdnYfLUU3S+bmmnIxDHCWm9Ja3G1fo7
-	 nKnUPDAuKMhJg==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 280B1CCD194;
-	Tue, 14 Oct 2025 13:02:46 +0000 (UTC)
-From: Michael Riesch via B4 Relay <devnull+michael.riesch.collabora.com@kernel.org>
-Date: Tue, 14 Oct 2025 15:01:53 +0200
-Subject: [PATCH v12 07/18] media: rockchip: add driver for the rockchip
- camera interface
+	id 1v8fu3-0000000GbkS-0G4h;
+	Tue, 14 Oct 2025 14:21:28 +0000
+Received: from pps.filterd (m0353725.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 59EB7WPm015294;
+	Tue, 14 Oct 2025 14:20:54 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
+	:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=pp1; bh=2EBKHt
+	oFBxc6VeU5knOorwmqOfQ2r5EFkZDTHtXao5E=; b=e+iErGsKOcPSWwqu9PWl+V
+	fkDZNS6kdV7P2KCoLq1fa7FBu0rykqEZgBU+rOfEoQHCPSO4ZzAP8Zz900qrEQps
+	tkOQzIVN5/KI1gfTqOdHd3M2zoH1vf7mXU8vpYmq1iaemnW78g7AlLmcp9GTlyYc
+	yjqv1WmnHnxmQClIlgK/XYpB4D5H0y/juE2t8gq1crr96GS8HgmbyhykU7ddEoNs
+	9+ut4mXXV7h37EzEaFNYEEBARSVYr7Gd9axEWeJR2Uike+Qdu91Qg8SHfxKri2/f
+	UVY8jSF0EEcuOm4sdu5HQv4d2f6DYvu97LE3nnPTj2P0qWuoSD7EUBq4btwwdsmg
+	==
+Received: from pps.reinject (localhost [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 49qdnperrq-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 14 Oct 2025 14:20:54 +0000 (GMT)
+Received: from m0353725.ppops.net (m0353725.ppops.net [127.0.0.1])
+	by pps.reinject (8.18.1.12/8.18.0.8) with ESMTP id 59EDwQXc002823;
+	Tue, 14 Oct 2025 14:20:53 GMT
+Received: from ppma13.dal12v.mail.ibm.com (dd.9e.1632.ip4.static.sl-reverse.com [50.22.158.221])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 49qdnperrk-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 14 Oct 2025 14:20:53 +0000 (GMT)
+Received: from pps.filterd (ppma13.dal12v.mail.ibm.com [127.0.0.1])
+	by ppma13.dal12v.mail.ibm.com (8.18.1.2/8.18.1.2) with ESMTP id 59ECK0J5015016;
+	Tue, 14 Oct 2025 14:20:52 GMT
+Received: from smtprelay02.dal12v.mail.ibm.com ([172.16.1.4])
+	by ppma13.dal12v.mail.ibm.com (PPS) with ESMTPS id 49r3sjb467-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 14 Oct 2025 14:20:52 +0000
+Received: from smtpav04.wdc07v.mail.ibm.com (smtpav04.wdc07v.mail.ibm.com [10.39.53.231])
+	by smtprelay02.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 59EEKput32637650
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Tue, 14 Oct 2025 14:20:52 GMT
+Received: from smtpav04.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id CD13F58045;
+	Tue, 14 Oct 2025 14:20:51 +0000 (GMT)
+Received: from smtpav04.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 8B33958050;
+	Tue, 14 Oct 2025 14:20:45 +0000 (GMT)
+Received: from [9.152.212.179] (unknown [9.152.212.179])
+	by smtpav04.wdc07v.mail.ibm.com (Postfix) with ESMTP;
+	Tue, 14 Oct 2025 14:20:45 +0000 (GMT)
+Message-ID: <21f4afb4069489729cf90469abf2d1321ed17bec.camel@linux.ibm.com>
+Subject: Re: [PATCH v1 02/20] iommu: Introduce a test_dev domain op and an
+ internal helper
+From: Niklas Schnelle <schnelle@linux.ibm.com>
+To: Nicolin Chen <nicolinc@nvidia.com>
+Cc: joro@8bytes.org, jgg@nvidia.com, kevin.tian@intel.com,
+        suravee.suthikulpanit@amd.com, will@kernel.org, robin.murphy@arm.com,
+        sven@kernel.org, j@jannau.net, jean-philippe@linaro.org,
+        robin.clark@oss.qualcomm.com, dwmw2@infradead.org,
+        baolu.lu@linux.intel.com, yong.wu@mediatek.com, matthias.bgg@gmail.com,
+        angelogioacchino.delregno@collabora.com, tjeznach@rivosinc.com,
+        pjw@kernel.org, palmer@dabbelt.com, aou@eecs.berkeley.edu,
+        heiko@sntech.de, mjrosato@linux.ibm.com, wens@csie.org,
+        jernej.skrabec@gmail.com, samuel@sholland.org,
+        thierry.reding@gmail.com, jonathanh@nvidia.com, iommu@lists.linux.dev,
+        linux-kernel@vger.kernel.org, asahi@lists.linux.dev,
+        linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+        linux-mediatek@lists.infradead.org, linux-riscv@lists.infradead.org,
+        linux-rockchip@lists.infradead.org, linux-s390@vger.kernel.org,
+        linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
+        virtualization@lists.linux.dev, patches@lists.linux.dev
+Date: Tue, 14 Oct 2025 16:20:44 +0200
+In-Reply-To: <aO01TkkA7ZLDgqXg@Asurada-Nvidia>
+References: <cover.1760312725.git.nicolinc@nvidia.com>
+	 <32ce256a2ece5d63e99d5858f953586859818ffc.1760312725.git.nicolinc@nvidia.com>
+	 <5165448792268e184e508a9c76fa0ce382a4a389.camel@linux.ibm.com>
+	 <aO01TkkA7ZLDgqXg@Asurada-Nvidia>
+Autocrypt: addr=schnelle@linux.ibm.com; prefer-encrypt=mutual; keydata=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
+User-Agent: Evolution 3.56.2 (3.56.2-2.fc42) 
 MIME-Version: 1.0
-Message-Id: <20240220-rk3568-vicap-v12-7-c6dbece6bb98@collabora.com>
-References: <20240220-rk3568-vicap-v12-0-c6dbece6bb98@collabora.com>
-In-Reply-To: <20240220-rk3568-vicap-v12-0-c6dbece6bb98@collabora.com>
-To: Mehdi Djait <mehdi.djait@linux.intel.com>, 
- Maxime Chevallier <maxime.chevallier@bootlin.com>, 
- =?utf-8?q?Th=C3=A9o_Lebrun?= <theo.lebrun@bootlin.com>, 
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
- Gerald Loacker <gerald.loacker@wolfvision.net>, 
- Bryan O'Donoghue <bryan.odonoghue@linaro.org>, 
- Markus Elfring <Markus.Elfring@web.de>, 
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Kever Yang <kever.yang@rock-chips.com>, 
- Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
- Sebastian Reichel <sebastian.reichel@collabora.com>, 
- Collabora Kernel Team <kernel@collabora.com>, 
- Paul Kocialkowski <paulk@sys-base.io>, 
- Alexander Shiyan <eagle.alexander923@gmail.com>, 
- Val Packett <val@packett.cool>, Rob Herring <robh@kernel.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Sakari Ailus <sakari.ailus@linux.intel.com>
-Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, 
- Michael Riesch <michael.riesch@collabora.com>, 
- Michael Riesch <michael.riesch@collabora.com>
-X-Mailer: b4 0.12.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1760446963; l=12630;
- i=michael.riesch@collabora.com; s=20250410; h=from:subject:message-id;
- bh=csW3n7iK5pO/YqD1B7lyuaSrdeR2/MYUdGytCiBEQJM=;
- b=gW26flGal6j20qKh6rqnB1rTguuth9IrX9dB1ryc/ZVr2dSnwCpSK6eydjKf66/JopZzBU3Sa
- DDcKxpszre3CJdb3m4yuZyaAGvVN4/P5Hm7lx15uJKqQHFi1EoUPNSP
-X-Developer-Key: i=michael.riesch@collabora.com; a=ed25519;
- pk=+MWX1fffLFZtTPG/I6XdYm/+OSvpRE8D9evQaWbiN04=
-X-Endpoint-Received: by B4 Relay for michael.riesch@collabora.com/20250410
- with auth_id=371
-X-Original-From: Michael Riesch <michael.riesch@collabora.com>
+X-TM-AS-GCONF: 00
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMDExMDAwNSBTYWx0ZWRfXyPWIZGa5NMw1
+ 5v70l2Ww8AWvh621mUnLUAYE/ED96Pe5OBNjx+T+yOpOYZKOVbv5c+zNL4MaaidGUUewI4h+RPc
+ g0E1F3gK1wLubbLBdsog5mLrvfjitsIwvDRw75KLemF9SeNqT+G/Nuaa8d/vXw6iSbw2kh17CRZ
+ 8lLEmCLHmxUaCudFgXf/K/0irflo7WFbZpZ1QUigJlnLverbUXD5o/E7tnTxrPgEkC6C4OywGtj
+ PQuPcCwTBFc+7x9EPB4tqKNkif80ZpbnF//ZeD1HHYGjalO0z/Y1T7BbNR53Vqzy3t2rP0aEixa
+ DKgQERlLbCZoUhlBsi6Ruc63AXeG3F/UsYACHqqLTA9xlaPB1vkKXEQtm6PhTC8grABEzCx0x+p
+ Z81k8ypovNnBaN/uwtOLeHGJBdtXyQ==
+X-Proofpoint-ORIG-GUID: 8Tn8OuynM52x8dQ7re618PDx0uY-TkIk
+X-Proofpoint-GUID: r6fD6B6EQarBaIKpq995teTAJbSfnKM6
+X-Authority-Analysis: v=2.4 cv=MoxfKmae c=1 sm=1 tr=0 ts=68ee5c46 cx=c_pps
+ a=AfN7/Ok6k8XGzOShvHwTGQ==:117 a=AfN7/Ok6k8XGzOShvHwTGQ==:17
+ a=IkcTkHD0fZMA:10 a=x6icFKpwvdMA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=cyMajOFANgF3YnkSg8AA:9 a=QEXdDO2ut3YA:10 a=DXsff8QfwkrTrK3sU8N1:22
+ a=Z5ABNNGmrOfJ6cZ5bIyy:22 a=bWyr8ysk75zN3GCy5bjg:22
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.80.40
+ definitions=2025-10-14_02,2025-10-13_01,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ impostorscore=0 spamscore=0 lowpriorityscore=0 suspectscore=0 phishscore=0
+ bulkscore=0 priorityscore=1501 malwarescore=0 clxscore=1015 adultscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.19.0-2510020000 definitions=main-2510110005
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251014_140301_207162_13845EC4 
-X-CRM114-Status: GOOD (  27.60  )
+X-CRM114-CacheID: sfid-20251014_072127_232861_56A3D92F 
+X-CRM114-Status: GOOD (  25.27  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,438 +138,54 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: michael.riesch@collabora.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Michael Riesch <michael.riesch@collabora.com>
-
-Add the skeleton for a media controller centric V4L2 driver for the
-Rockchip Camera Interface (CIF).
-The skeleton features support for the PX30 Video Input Processor (VIP)
-and the RK3568 Video Capture (VICAP) unit.
-
-Tested-by: Gerald Loacker <gerald.loacker@wolfvision.net>
-Reviewed-by: Gerald Loacker <gerald.loacker@wolfvision.net>
-Reviewed-by: Bryan O'Donoghue <bryan.odonoghue@linaro.org>
-Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
----
- MAINTAINERS                                        |   1 +
- drivers/media/platform/rockchip/Kconfig            |   1 +
- drivers/media/platform/rockchip/Makefile           |   1 +
- drivers/media/platform/rockchip/rkcif/Kconfig      |  18 ++
- drivers/media/platform/rockchip/rkcif/Makefile     |   4 +
- .../media/platform/rockchip/rkcif/rkcif-common.h   |  55 +++++
- drivers/media/platform/rockchip/rkcif/rkcif-dev.c  | 262 +++++++++++++++++++++
- 7 files changed, 342 insertions(+)
-
-diff --git a/MAINTAINERS b/MAINTAINERS
-index d7c3f5ad50ad..2ff7dc228572 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -22218,6 +22218,7 @@ S:	Maintained
- F:	Documentation/admin-guide/media/rkcif*
- F:	Documentation/devicetree/bindings/media/rockchip,px30-vip.yaml
- F:	Documentation/devicetree/bindings/media/rockchip,rk3568-vicap.yaml
-+F:	drivers/media/platform/rockchip/rkcif/
- 
- ROCKCHIP CRYPTO DRIVERS
- M:	Corentin Labbe <clabbe@baylibre.com>
-diff --git a/drivers/media/platform/rockchip/Kconfig b/drivers/media/platform/rockchip/Kconfig
-index 2f6f77afecfc..54b698c4cd2c 100644
---- a/drivers/media/platform/rockchip/Kconfig
-+++ b/drivers/media/platform/rockchip/Kconfig
-@@ -3,6 +3,7 @@
- comment "Rockchip media platform drivers"
- 
- source "drivers/media/platform/rockchip/rga/Kconfig"
-+source "drivers/media/platform/rockchip/rkcif/Kconfig"
- source "drivers/media/platform/rockchip/rkcsi/Kconfig"
- source "drivers/media/platform/rockchip/rkisp1/Kconfig"
- source "drivers/media/platform/rockchip/rkvdec/Kconfig"
-diff --git a/drivers/media/platform/rockchip/Makefile b/drivers/media/platform/rockchip/Makefile
-index 33e24b47735c..522a7d3e30b0 100644
---- a/drivers/media/platform/rockchip/Makefile
-+++ b/drivers/media/platform/rockchip/Makefile
-@@ -1,5 +1,6 @@
- # SPDX-License-Identifier: GPL-2.0-only
- obj-y += rga/
-+obj-y += rkcif/
- obj-y += rkcsi/
- obj-y += rkisp1/
- obj-y += rkvdec/
-diff --git a/drivers/media/platform/rockchip/rkcif/Kconfig b/drivers/media/platform/rockchip/rkcif/Kconfig
-new file mode 100644
-index 000000000000..efd82ac35bd8
---- /dev/null
-+++ b/drivers/media/platform/rockchip/rkcif/Kconfig
-@@ -0,0 +1,18 @@
-+config VIDEO_ROCKCHIP_CIF
-+	tristate "Rockchip Camera Interface (CIF)"
-+	depends on VIDEO_DEV
-+	depends on ARCH_ROCKCHIP || COMPILE_TEST
-+	depends on V4L_PLATFORM_DRIVERS
-+	depends on PM && COMMON_CLK
-+	select MEDIA_CONTROLLER
-+	select VIDEOBUF2_DMA_CONTIG
-+	select V4L2_FWNODE
-+	select VIDEO_V4L2_SUBDEV_API
-+	help
-+	  This is a driver for Rockchip Camera Interface (CIF). It is featured
-+	  in many Rockchips SoCs in different variations, such as the PX30
-+	  Video Input Processor (VIP, one Digital Video Port (DVP)) or the
-+	  RK3568 Video Capture (VICAP, one DVP, one MIPI CSI-2 receiver) unit.
-+
-+	  To compile this driver as a module, choose M here: the module
-+	  will be called rockchip-cif.
-diff --git a/drivers/media/platform/rockchip/rkcif/Makefile b/drivers/media/platform/rockchip/rkcif/Makefile
-new file mode 100644
-index 000000000000..c6837ed2f65c
---- /dev/null
-+++ b/drivers/media/platform/rockchip/rkcif/Makefile
-@@ -0,0 +1,4 @@
-+# SPDX-License-Identifier: GPL-2.0
-+obj-$(CONFIG_VIDEO_ROCKCHIP_CIF) += rockchip-cif.o
-+
-+rockchip-cif-objs += rkcif-dev.o
-diff --git a/drivers/media/platform/rockchip/rkcif/rkcif-common.h b/drivers/media/platform/rockchip/rkcif/rkcif-common.h
-new file mode 100644
-index 000000000000..b456a56b5ac4
---- /dev/null
-+++ b/drivers/media/platform/rockchip/rkcif/rkcif-common.h
-@@ -0,0 +1,55 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+/*
-+ * Rockchip Camera Interface (CIF) Driver
-+ *
-+ * Copyright (C) 2018 Rockchip Electronics Co., Ltd.
-+ * Copyright (C) 2023 Mehdi Djait <mehdi.djait@bootlin.com>
-+ * Copyright (C) 2025 Michael Riesch <michael.riesch@wolfvision.net>
-+ * Copyright (C) 2025 Collabora, Ltd.
-+ */
-+
-+#ifndef _RKCIF_COMMON_H
-+#define _RKCIF_COMMON_H
-+
-+#include <linux/clk.h>
-+#include <linux/mutex.h>
-+#include <linux/regmap.h>
-+
-+#include <media/media-device.h>
-+#include <media/media-entity.h>
-+#include <media/v4l2-common.h>
-+#include <media/v4l2-device.h>
-+#include <media/v4l2-fwnode.h>
-+#include <media/v4l2-mc.h>
-+#include <media/v4l2-subdev.h>
-+#include <media/videobuf2-v4l2.h>
-+
-+#define RKCIF_DRIVER_NAME "rockchip-cif"
-+#define RKCIF_CLK_MAX	  4
-+
-+struct rkcif_remote {
-+	struct v4l2_async_connection async_conn;
-+	struct v4l2_subdev *sd;
-+};
-+
-+struct rkcif_match_data {
-+	const char *const *clks;
-+	unsigned int clks_num;
-+};
-+
-+struct rkcif_device {
-+	struct device *dev;
-+
-+	const struct rkcif_match_data *match_data;
-+	struct clk_bulk_data clks[RKCIF_CLK_MAX];
-+	unsigned int clks_num;
-+	struct regmap *grf;
-+	struct reset_control *reset;
-+	void __iomem *base_addr;
-+
-+	struct media_device media_dev;
-+	struct v4l2_device v4l2_dev;
-+	struct v4l2_async_notifier notifier;
-+};
-+
-+#endif
-diff --git a/drivers/media/platform/rockchip/rkcif/rkcif-dev.c b/drivers/media/platform/rockchip/rkcif/rkcif-dev.c
-new file mode 100644
-index 000000000000..9215dbe90353
---- /dev/null
-+++ b/drivers/media/platform/rockchip/rkcif/rkcif-dev.c
-@@ -0,0 +1,262 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Rockchip Camera Interface (CIF) Driver
-+ *
-+ * Copyright (C) 2018 Rockchip Electronics Co., Ltd.
-+ * Copyright (C) 2020 Maxime Chevallier <maxime.chevallier@bootlin.com>
-+ * Copyright (C) 2023 Mehdi Djait <mehdi.djait@bootlin.com>
-+ * Copyright (C) 2025 Michael Riesch <michael.riesch@wolfvision.net>
-+ * Copyright (C) 2025 Collabora, Ltd.
-+ */
-+
-+#include <linux/clk.h>
-+#include <linux/delay.h>
-+#include <linux/interrupt.h>
-+#include <linux/mfd/syscon.h>
-+#include <linux/module.h>
-+#include <linux/of.h>
-+#include <linux/of_graph.h>
-+#include <linux/of_platform.h>
-+#include <linux/pm_runtime.h>
-+#include <linux/reset.h>
-+
-+#include <media/v4l2-fwnode.h>
-+#include <media/v4l2-mc.h>
-+
-+#include "rkcif-common.h"
-+
-+static const char *const px30_vip_clks[] = {
-+	"aclk",
-+	"hclk",
-+	"pclk",
-+};
-+
-+static const struct rkcif_match_data px30_vip_match_data = {
-+	.clks = px30_vip_clks,
-+	.clks_num = ARRAY_SIZE(px30_vip_clks),
-+};
-+
-+static const char *const rk3568_vicap_clks[] = {
-+	"aclk",
-+	"hclk",
-+	"dclk",
-+	"iclk",
-+};
-+
-+static const struct rkcif_match_data rk3568_vicap_match_data = {
-+	.clks = rk3568_vicap_clks,
-+	.clks_num = ARRAY_SIZE(rk3568_vicap_clks),
-+};
-+
-+static const struct of_device_id rkcif_plat_of_match[] = {
-+	{
-+		.compatible = "rockchip,px30-vip",
-+		.data = &px30_vip_match_data,
-+	},
-+	{
-+		.compatible = "rockchip,rk3568-vicap",
-+		.data = &rk3568_vicap_match_data,
-+	},
-+	{}
-+};
-+MODULE_DEVICE_TABLE(of, rkcif_plat_of_match);
-+
-+static int rkcif_register(struct rkcif_device *rkcif)
-+{
-+	return 0;
-+}
-+
-+static void rkcif_unregister(struct rkcif_device *rkcif)
-+{
-+}
-+
-+static int rkcif_notifier_bound(struct v4l2_async_notifier *notifier,
-+				struct v4l2_subdev *sd,
-+				struct v4l2_async_connection *asd)
-+{
-+	struct rkcif_remote *remote =
-+		container_of(asd, struct rkcif_remote, async_conn);
-+
-+	remote->sd = sd;
-+
-+	return 0;
-+}
-+
-+static int rkcif_notifier_complete(struct v4l2_async_notifier *notifier)
-+{
-+	struct rkcif_device *rkcif =
-+		container_of(notifier, struct rkcif_device, notifier);
-+
-+	return v4l2_device_register_subdev_nodes(&rkcif->v4l2_dev);
-+}
-+
-+static const struct v4l2_async_notifier_operations rkcif_notifier_ops = {
-+	.bound = rkcif_notifier_bound,
-+	.complete = rkcif_notifier_complete,
-+};
-+
-+static irqreturn_t rkcif_isr(int irq, void *ctx)
-+{
-+	irqreturn_t ret = IRQ_NONE;
-+
-+	return ret;
-+}
-+
-+static int rkcif_probe(struct platform_device *pdev)
-+{
-+	struct device *dev = &pdev->dev;
-+	struct rkcif_device *rkcif;
-+	int ret, irq;
-+
-+	rkcif = devm_kzalloc(dev, sizeof(*rkcif), GFP_KERNEL);
-+	if (!rkcif)
-+		return -ENOMEM;
-+
-+	rkcif->match_data = of_device_get_match_data(dev);
-+	if (!rkcif->match_data)
-+		return -ENODEV;
-+
-+	dev_set_drvdata(dev, rkcif);
-+	rkcif->dev = dev;
-+
-+	rkcif->base_addr = devm_platform_ioremap_resource(pdev, 0);
-+	if (IS_ERR(rkcif->base_addr))
-+		return PTR_ERR(rkcif->base_addr);
-+
-+	irq = platform_get_irq(pdev, 0);
-+	if (irq < 0)
-+		return irq;
-+
-+	ret = devm_request_irq(dev, irq, rkcif_isr, IRQF_SHARED,
-+			       dev_driver_string(dev), dev);
-+	if (ret)
-+		return dev_err_probe(dev, ret, "failed to request irq\n");
-+
-+	if (rkcif->match_data->clks_num > RKCIF_CLK_MAX)
-+		return dev_err_probe(dev, -EINVAL, "invalid number of clocks\n");
-+
-+	rkcif->clks_num = rkcif->match_data->clks_num;
-+	for (unsigned int i = 0; i < rkcif->clks_num; i++)
-+		rkcif->clks[i].id = rkcif->match_data->clks[i];
-+	ret = devm_clk_bulk_get(dev, rkcif->clks_num, rkcif->clks);
-+	if (ret)
-+		return dev_err_probe(dev, ret, "failed to get clocks\n");
-+
-+	rkcif->reset = devm_reset_control_array_get_exclusive(dev);
-+	if (IS_ERR(rkcif->reset))
-+		return PTR_ERR(rkcif->reset);
-+
-+	rkcif->grf = syscon_regmap_lookup_by_phandle(dev->of_node,
-+						     "rockchip,grf");
-+	if (IS_ERR(rkcif->grf))
-+		rkcif->grf = NULL;
-+
-+	pm_runtime_enable(&pdev->dev);
-+
-+	rkcif->media_dev.dev = dev;
-+	strscpy(rkcif->media_dev.model, RKCIF_DRIVER_NAME,
-+		sizeof(rkcif->media_dev.model));
-+	media_device_init(&rkcif->media_dev);
-+
-+	rkcif->v4l2_dev.mdev = &rkcif->media_dev;
-+	ret = v4l2_device_register(dev, &rkcif->v4l2_dev);
-+	if (ret)
-+		goto err_media_dev_cleanup;
-+
-+	ret = media_device_register(&rkcif->media_dev);
-+	if (ret < 0) {
-+		dev_err(dev, "failed to register media device: %d\n", ret);
-+		goto err_v4l2_dev_unregister;
-+	}
-+
-+	v4l2_async_nf_init(&rkcif->notifier, &rkcif->v4l2_dev);
-+	rkcif->notifier.ops = &rkcif_notifier_ops;
-+
-+	ret = rkcif_register(rkcif);
-+	if (ret) {
-+		dev_err(dev, "failed to register media entities: %d\n", ret);
-+		goto err_notifier_cleanup;
-+	}
-+
-+	ret = v4l2_async_nf_register(&rkcif->notifier);
-+	if (ret)
-+		goto err_rkcif_unregister;
-+
-+	return 0;
-+
-+err_rkcif_unregister:
-+	rkcif_unregister(rkcif);
-+err_notifier_cleanup:
-+	v4l2_async_nf_cleanup(&rkcif->notifier);
-+	media_device_unregister(&rkcif->media_dev);
-+err_v4l2_dev_unregister:
-+	v4l2_device_unregister(&rkcif->v4l2_dev);
-+err_media_dev_cleanup:
-+	media_device_cleanup(&rkcif->media_dev);
-+	pm_runtime_disable(&pdev->dev);
-+	return ret;
-+}
-+
-+static void rkcif_remove(struct platform_device *pdev)
-+{
-+	struct rkcif_device *rkcif = platform_get_drvdata(pdev);
-+
-+	v4l2_async_nf_unregister(&rkcif->notifier);
-+	rkcif_unregister(rkcif);
-+	v4l2_async_nf_cleanup(&rkcif->notifier);
-+	media_device_unregister(&rkcif->media_dev);
-+	v4l2_device_unregister(&rkcif->v4l2_dev);
-+	media_device_cleanup(&rkcif->media_dev);
-+	pm_runtime_disable(&pdev->dev);
-+}
-+
-+static int rkcif_runtime_suspend(struct device *dev)
-+{
-+	struct rkcif_device *rkcif = dev_get_drvdata(dev);
-+
-+	/*
-+	 * Reset CIF (CRU, DMA, FIFOs) to allow a clean resume.
-+	 * Since this resets the IOMMU too, we cannot issue this reset when
-+	 * resuming.
-+	 */
-+	reset_control_assert(rkcif->reset);
-+	udelay(5);
-+	reset_control_deassert(rkcif->reset);
-+
-+	clk_bulk_disable_unprepare(rkcif->clks_num, rkcif->clks);
-+
-+	return 0;
-+}
-+
-+static int rkcif_runtime_resume(struct device *dev)
-+{
-+	struct rkcif_device *rkcif = dev_get_drvdata(dev);
-+	int ret;
-+
-+	ret = clk_bulk_prepare_enable(rkcif->clks_num, rkcif->clks);
-+	if (ret) {
-+		dev_err(dev, "failed to enable clocks\n");
-+		return ret;
-+	}
-+
-+	return 0;
-+}
-+
-+static const struct dev_pm_ops rkcif_plat_pm_ops = {
-+	.runtime_suspend = rkcif_runtime_suspend,
-+	.runtime_resume = rkcif_runtime_resume,
-+};
-+
-+static struct platform_driver rkcif_plat_drv = {
-+	.driver = {
-+		   .name = RKCIF_DRIVER_NAME,
-+		   .of_match_table = rkcif_plat_of_match,
-+		   .pm = &rkcif_plat_pm_ops,
-+	},
-+	.probe = rkcif_probe,
-+	.remove = rkcif_remove,
-+};
-+module_platform_driver(rkcif_plat_drv);
-+
-+MODULE_DESCRIPTION("Rockchip Camera Interface (CIF) platform driver");
-+MODULE_LICENSE("GPL");
-
--- 
-2.39.5
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gTW9uLCAyMDI1LTEwLTEzIGF0IDEwOjIyIC0wNzAwLCBOaWNvbGluIENoZW4gd3JvdGU6Cj4g
+SGkgTmlrbGFzLAo+IAo+IE9uIE1vbiwgT2N0IDEzLCAyMDI1IGF0IDExOjUzOjU1QU0gKzAyMDAs
+IE5pa2xhcyBTY2huZWxsZSB3cm90ZToKPiA+IE9uIFN1biwgMjAyNS0xMC0xMiBhdCAxNzowNCAt
+MDcwMCwgTmljb2xpbiBDaGVuIHdyb3RlOgo+ID4gPiBBZGQgYSBuZXcgdGVzdF9kZXYgZG9tYWlu
+IG9wIGZvciBkcml2ZXIgdG8gdGVzdCB0aGUgY29tcGF0aWJpbGl0eSBiZXR3ZWVuCj4gPiA+IGEg
+ZG9tYWluIGFuZCBhIGRldmljZSBhdCB0aGUgZHJpdmVyIGxldmVsLCBiZWZvcmUgY2FsbGluZyBp
+bnRvIHRoZSBhY3R1YWwKPiA+ID4gYXR0YWNobWVudC9yZXBsYWNlbWVudCBvZiBhIGRvbWFpbi4g
+U3VwcG9ydCBwYXNpZCBmb3Igc2V0X2Rldl9wYXNpZCBjYWxsLgo+ID4gPiAKPiA+ID4gTW92ZSBl
+eGlzdGluZyBjb3JlLWxldmVsIGNvbXBhdGliaWxpdHkgdGVzdHMgdG8gYSBoZWxwZXIgZnVuY3Rp
+b24uIEludm9rZQo+ID4gPiBpdCBwcmlvciB0bzoKPiA+ID4gICogX19pb21tdV9hdHRhY2hfZGV2
+aWNlKCkgb3IgaXRzIHdyYXBwZXIgX19pb21tdV9kZXZpY2Vfc2V0X2RvbWFpbigpCj4gPiA+ICAq
+IF9faW9tbXVfc2V0X2dyb3VwX3Bhc2lkKCkKPiA+IAo+ID4gU2hvdWxkIHRoaXMgbGlzdCBhbHNv
+IGluY2x1ZGUgaW9tbXVfZGVmZXJyZWRfYXR0YWNoKCk/IFRoZSBjb2RlIGRvZXMKPiA+IGluY2x1
+ZGUgaXQuCj4gCj4gaW9tbXVfZGVmZXJyZWRfYXR0YWNoKCkgaW52b2tlcyBfX2lvbW11X2F0dGFj
+aF9kZXZpY2UoKSwgc28gaXQgaXMKPiBhbHJlYWR5IGluY2x1ZGVkIGluIHRoZSBsaXN0IDopCgpP
+ayBtYWtlcyBzZW5zZSwgdGhvdWdoIGl0IGRvZXMgbGlzdCBfX2lvbW11X2RldmljZV9zZXRfZG9t
+YWluKCkKc2VwYXJhdGVseS4gRWl0aGVyIHdheSBpcyBmaW5lIGZvciBtZS4KCj4gCj4gPiA+ICAv
+KioKPiA+ID4gICAqIHN0cnVjdCBpb21tdV9kb21haW5fb3BzIC0gZG9tYWluIHNwZWNpZmljIG9w
+ZXJhdGlvbnMKPiA+ID4gLSAqIEBhdHRhY2hfZGV2OiBhdHRhY2ggYW4gaW9tbXUgZG9tYWluIHRv
+IGEgZGV2aWNlCj4gPiA+ICsgKiBAdGVzdF9kZXY6IFRlc3QgY29tcGF0aWJpbGl0eSBwcmlvciB0
+byBhbiBAYXR0YWNoX2RldiBvciBAc2V0X2Rldl9wYXNpZCBjYWxsLgo+ID4gPiArICogICAgICAg
+ICAgICBBIGRyaXZlci1sZXZlbCBjYWxsYmFjayBvZiB0aGlzIG9wIHNob3VsZCBkbyBhIHRob3Jv
+dWdoIHNhbml0eSwgdG8KPiA+IAo+ID4gWW91J3JlIG1pc3NpbmcgdGhlIHdvcmQgImNoZWNrIiBh
+Ym92ZS4KPiAKPiBBY2suCj4gCj4gPiA+ICsgKiAgICAgICAgICAgIG1ha2Ugc3VyZSBhIGRldmlj
+ZSBpcyBjb21wYXRpYmxlIHdpdGggdGhlIGRvbWFpbi4gU28gdGhlIGZvbGxvd2luZwo+ID4gPiAr
+ICogICAgICAgICAgICBAYXR0YWNoX2RldiBhbmQgQHNldF9kZXZfcGFzaWQgZnVuY3Rpb25zIHdv
+dWxkIGxpa2VseSBzdWNjZWVkIHdpdGgKPiA+ID4gKyAqICAgICAgICAgICAgb25seSBvbmUgZXhj
+ZXB0aW9uIGR1ZSB0byBhIHRlbXBvcmFyeSBmYWlsdXJlIGxpa2Ugb3V0IG9mIG1lbW9yeS4KPiA+
+IAo+ID4gTml0OiAi4oCmIG9ubHkgb25lIGV4Y2VwdGlvbiDigKYiIC8gIuKApiBsaWtlIG91dCBv
+ZiBtZW1vcnkg4oCmIiB0aGlzIHNvdW5kcyBhCj4gPiBiaXQgb2RkIHRvIG1lIGJlY2F1c2Ugb24g
+dGhlIG9uZSBoYW5kIGl0J3Mgb25lIGV4Y2VwdGlvbiBidXQgdGhlbiBhbHNvCj4gPiBhIGdyb3Vw
+ICh0ZW1wb3JhcnkgZmFpbHVyZXMpLgo+ID4gCj4gPiBNYXliZSBiZXR0ZXI6Cj4gPiAi4oCmIHdv
+dWxkIGxpa2VseSBzdWNjZWVkIHdpdGggb25seSB0aGUgZXhjZXB0aW9uIG9mIHRlbXBvcmFyeSBm
+YWlsdXJlcwo+ID4gbGlrZSBvdXQgb2YgbWVtb3J5LiI/Cj4gCj4gU3VyZS4gSSBjYW4gZG8gdGhh
+dC4gRml4aW5nIGJvdGggcGFydHMsIGl0IHdvdWxkIGJlOgo+IAo+ICAqIEB0ZXN0X2RldjogVGVz
+dCBjb21wYXRpYmlsaXR5IHByaW9yIHRvIGFuIEBhdHRhY2hfZGV2IG9yIEBzZXRfZGV2X3Bhc2lk
+IGNhbGwuCj4gICogICAgICAgICAgICBBIGRyaXZlciBjYWxsYmFjayBvZiB0aGlzIG9wIHNob3Vs
+ZCBkbyBhIHRob3JvdWdoIHNhbml0eSBjaGVjaywgdG8KPiAgKiAgICAgICAgICAgIG1ha2Ugc3Vy
+ZSBhIGRldmljZSBpcyBjb21wYXRpYmxlIHdpdGggdGhlIGRvbWFpbiwgc28gdGhlIGZvbGxvd2lu
+Zwo+ICAqICAgICAgICAgICAgQGF0dGFjaF9kZXYgYW5kIEBzZXRfZGV2X3Bhc2lkIGZ1bmN0aW9u
+cyB3b3VsZCBsaWtlbHkgc3VjY2VlZCB3aXRoCj4gICogICAgICAgICAgICBvbmx5IHRoZSBleGNl
+cHRpb24gb2YgdGVtcG9yYXJ5IGZhaWx1cmVzIGxpa2Ugb3V0IG9mIG1lbW9yeS4KPiAKClNvdW5k
+cyBnb29kLCB0aGFua3MhCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMu
+aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
+L2xpbnV4LXJvY2tjaGlwCg==
