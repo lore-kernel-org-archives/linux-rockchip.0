@@ -4,75 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2545DCCD192
-	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Oct 2025 15:15:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C069CCD184
+	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Oct 2025 15:41:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uiQ0T4QNpJFnpXFpCH2vo0hMvLSDaqIvZCDuLqNTDe8=; b=HrPX4r5tNulH/y
-	gI6UTL0aGacY61dn43tZGQDXhlAQQabI6RLUx18oKJnYuLTKeX4M7uwALHGcstebkAY+7V0V3rQJF
-	ntsNUkr9Fh0yNSqPcAJNKff3MXR4ozcTRO8v46BHSS65ieQbLbBLyL0C5UKR/40bGcrK0olueBrSi
-	jLfAbi7K6bwuOwYKEERJ1krXOZV1Jf7Kz/RtbPaykbdrmDIiyEEKUZHcvDPC81rDMWIlYjNn4QcJz
-	+cWfK8g3JoDOo5C/novCdmhu0YI1Q/8A/c6YVEgn8ydRWzY3g9saMc99uHgXnk+JC7vOBDeQ8Pxop
-	QAzJMxydUvXQhLHLcAbQ==;
+	List-Owner; bh=qoDqbrUimaUlT5TogFqUCDCpDGF8poJrzVT0YzbKExE=; b=Dv4jrthHI2vpfg
+	b7NAekXZPvTFvSJHmbapz7raCd7iWX5cxf5AmHeTDBXaX7aIioFlu5Kn+FbIHkBzTaWCsYk3vzDJM
+	R81Xjxz1IfqoWJk9TjOMiTeKdRLyqK8whfPs8tC7+krvmEw4CTMyrRfsA1Uoy+U2CC/3cYFQfj/zj
+	ptPVvhWNUkU+zJEBthfJCLm+3ru6rE/ED33pispJlf5/peY3tLeQzjvglJQ6YUODTG3XYT9oLIutz
+	LrPEG2ONEMV5eqiB3Sj7KGlRuRPwEHuFB+qA32LgIXgx/kiRsMYhG7U5JlNk3IuYMEUIpK0i2TX6R
+	LrhBwIOs4wVwz6JsAVUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8gkQ-0000000Gmzq-3AH7;
-	Tue, 14 Oct 2025 15:15:37 +0000
+	id 1v8h9g-0000000GstC-1l1Z;
+	Tue, 14 Oct 2025 15:41:40 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8gkG-0000000Gmwk-49b7;
-	Tue, 14 Oct 2025 15:15:33 +0000
+	id 1v8h9e-0000000GsoC-0ilt
+	for linux-rockchip@lists.infradead.org;
+	Tue, 14 Oct 2025 15:41:39 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1760454922;
-	bh=Gc9gPNIGe4cVGaM7/VR1c6hckG2H84TGLOzGhxUKmtc=;
-	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
-	b=HvPyWdV1wxFBvZyKYK3CZn8nC/VkI2tIysn96BCFz5XzMqZhqLF+EJYt7bYehfEYF
-	 yoK6MX1lb1DKoZuGGqne34tIlvIzbxtWvWg7ZgmL/EjLEDMr4uH4ByWdnp1fG6D+kL
-	 SkqJl7/hrQVERBOne8VnHDTO/rJ60WLoqN4s4xRmW9GKRS6lDrlEPTt2R3VOFhi7RT
-	 /MjiGfjUPQcPqxuiAE2GaL1wMQdU/7Q12PEJO2+BKIQCrbyHKgcv18UOk8cYCNgWK1
-	 OC0djV0mm7rNaUwhdSSmq+Ucvrwkyl9b42aA0bjK8m1zowDBSVA/WzCVsmqbORV0Fo
-	 F+pDy1WCE3STg==
-Received: from [192.168.1.90] (unknown [82.79.138.145])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	s=mail; t=1760456490;
+	bh=xNKlc7tVib9id/nLaOFp5eRTygy8Ayi18VAnakCYDc0=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=oGJg/GqHiVZWLfWPIaxJXTYIBFB5CgcY94GaIgiBTcLf53Rk4jAWxkmmIn7hxo4TJ
+	 ZajrbmKC/5tvCDCptfuPWAuBvodSOFMSr7djye7xLFCcM/wU3NrWGHRhhynzEsOFMw
+	 T6zZHlGF+8DnVvPx+ffw95KtGHM6/mxOkqeqK/n1pEjwPLD1M4EAarr+7T+fQ9b4oX
+	 Rz2t3uwNBiYZqQGRBbQs6YayItMefWkrIXGv6pSvNGdxEBAbMKlit1qh6CW7QOp6VP
+	 p3YDYnVP62PK0wDM4y6UHY03jHrhtNaF20OJvq+dyuFxrhOPPerDub6TRfV1FZIHZZ
+	 pqlXOrrpzykjQ==
+Received: from jupiter.universe (dyndsl-091-248-212-042.ewe-ip-backbone.de [91.248.212.42])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C878F17E1292;
-	Tue, 14 Oct 2025 17:15:21 +0200 (CEST)
-Message-ID: <37c99206-4bd2-40e5-95f6-71c109bd031c@collabora.com>
-Date: Tue, 14 Oct 2025 18:15:21 +0300
+	(Authenticated sender: sre)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5483217E0456;
+	Tue, 14 Oct 2025 17:41:30 +0200 (CEST)
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id 0D102480048; Tue, 14 Oct 2025 17:41:30 +0200 (CEST)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+Date: Tue, 14 Oct 2025 17:41:19 +0200
+Subject: [PATCH 2/2] arm64: dts: rockchip: add eMMC CQE support for rk3588
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 0/6] Add HDMI CEC support to Rockchip RK3588/RK3576
- SoCs
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-To: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>
-Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, Algea Cao <algea.cao@rock-chips.com>,
- Derek Foreman <derek.foreman@collabora.com>,
- Daniel Stone <daniels@collabora.com>
-References: <20250903-rk3588-hdmi-cec-v4-0-fa25163c4b08@collabora.com>
- <e030bed8-58d5-4a19-b81c-45193cb900d8@collabora.com>
-Content-Language: en-US
-In-Reply-To: <e030bed8-58d5-4a19-b81c-45193cb900d8@collabora.com>
+Message-Id: <20251014-rockchip-emmc-cqe-support-v1-2-918f03de0cb1@collabora.com>
+References: <20251014-rockchip-emmc-cqe-support-v1-0-918f03de0cb1@collabora.com>
+In-Reply-To: <20251014-rockchip-emmc-cqe-support-v1-0-918f03de0cb1@collabora.com>
+To: Adrian Hunter <adrian.hunter@intel.com>, 
+ Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+ kernel@collabora.com, Sebastian Reichel <sebastian.reichel@collabora.com>
+X-Mailer: b4 0.14.3
+X-Developer-Signature: v=1; a=openpgp-sha256; l=732;
+ i=sebastian.reichel@collabora.com; h=from:subject:message-id;
+ bh=xNKlc7tVib9id/nLaOFp5eRTygy8Ayi18VAnakCYDc0=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGjubykcoRNXcE0GU0VpegldgNb3Ig4vh05iC
+ vBVf7wreWlZYYkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJo7m8pAAoJENju1/PI
+ O/qajtAP/RU0L3fz1nD0qCD+UPrQAnYHY557abZNfwu/60lf2NSbIte+p83O4Tx/T2f+doxmhpn
+ 2J18skhpiM/S/FWJlgsswyKMDX4wQVzje9dWhRoJqxH53twIavz0XhhH7K6HQFdtGHeQF+1IcGW
+ bkWrij5IH/iu4ADQYAPCjedg1wYGeGDTTjql8X0Bc858FSwRQ5xIcHTMAzMngI7Hiyps2IBkt7H
+ ZLipTyXVyCQSE8vRflXsd1pawzibprRsVr2EI8zGrctIWH+dJ4qHbLFY8rGsvBTt/4gzkx8LTCX
+ 5ELln1wRoIY7ngpejMq0ZGx0bOB2coAuwuEwFfcCzkagzBOGTNDcqGPCxM6MgWSKcOJS+4N7qe+
+ wc6gwcnTyIZ69IJby2gO9maaBbVzFZ0oPyIEkR+2wk8NlmmsZcb9VAVM+hFSWKEWteUdUCxLpUX
+ DXrB3yjyGoltZ3OFVWZrt/FFndI/z4WsyFiqxOm2aFZwxFWKX2jyOv1dhjNYXf4rZ/+t4NLmFxi
+ g9IdspwYBlEv630JhrcqL3Tyz9v4DNwszM+Yb7d0JGSlvf7BYo7gQ4EtA+PeZYmuEXMKi3amz+Q
+ oXOM3gfpYD1ua+D1KuLMRjReoKIaqggYuXEqZK8jPQhrpohmkbE9NnILpgvclnjRcqe3GLkb0Kr
+ sXPD5A2vBGqekks1GKJonlg==
+X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
+ fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251014_081532_212939_8A307256 
-X-CRM114-Status: GOOD (  24.30  )
+X-CRM114-CacheID: sfid-20251014_084138_361174_6DA3BCEE 
+X-CRM114-Status: UNSURE (   9.72  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,67 +98,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+The RK3588 eMMC controller supports CQE, so add the missing
+DT flag.
 
-On 9/3/25 10:52 PM, Cristian Ciocaltea wrote:
-> Hello Heiko,
-> 
-> On 9/3/25 9:50 PM, Cristian Ciocaltea wrote:
->> The first patch in the series implements the CEC capability of the
->> Synopsys DesignWare HDMI QP TX controller found in RK3588 & RK3576 Socs.
->> This is based on the downstream code, but rewritten on top of the CEC
->> helpers added recently to the DRM HDMI connector framework.
->>
->> The second patch is needed for RK3576 in order to fixup the timer base
->> setup according to the actual reference clock rate, which differs
->> slightly from RK3588.
->>
->> The following three patches setup platform data with the new information
->> expected by the HDMI QP transmitter library, while improving the error
->> handling in the probe path.
->>
->> Please note the CEC helpers were affected by a resource deallocation
->> issue which could crash the kernel and freeze the system under certain
->> test conditions.  This has been already fixed in v6.17-rc1 via commit
->> 19920ab98e17 ("drm/display: hdmi-cec-helper: Fix adapter
->> unregistration").
->>
->> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
->> ---
->> Changes in v4:
->> - Fixed the bisect-related issues reported by Daniel by implementing
->>   the following operations in dw_hdmi_qp_bind():
->>   * Disable CEC support when the related IRQ is not available
->>   * Set ref_clk_rate to vendor default in case it was not provided by
->>     the platform driver
->>   * In both scenarios, also print a warning message to highlight the
->>     need for fixing the platform driver
->> - Simplified dw_hdmi_qp_cec_init() a bit
->>   * Removed the now obsolete cec->irq validation test
->>   * Removed the superfluous error checking and logging around
->>     devm_request_threaded_irq() call (it already handles all that)
->> - Collected R-b tags from Daniel
->> - Rebased series onto next-20250903
-> 
-> I forgot to mention that luckily there are no conflicts with the patches
-> introducing the hw-specific bitfield operations in next-20250903, which this
-> revision is based on.
-> 
-> I verified the series still applies cleanly onto drm-misc-next, while commit
-> ad24f6e10a5f ("drm/rockchip: dw_hdmi_qp: switch to FIELD_PREP_WM16 macro")
-> responsible for the macro conversion can be further cherry-picked without
-> issues on top of all that.  The resulting file content of
-> drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c is identical to what's
-> expected after applying this patch set onto next-20250903.
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 1 +
+ 1 file changed, 1 insertion(+)
 
-Could we get this merged, please? This would unblock some other patchsets
-conflicting with it.
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
+index e2500e31c434..2a7921793020 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
+@@ -2181,6 +2181,7 @@ sdhci: mmc@fe2e0000 {
+ 			 <&cru SRST_A_EMMC>, <&cru SRST_B_EMMC>,
+ 			 <&cru SRST_T_EMMC>;
+ 		reset-names = "core", "bus", "axi", "block", "timer";
++		supports-cqe;
+ 		status = "disabled";
+ 	};
+ 
 
-I've just checked and it applies cleanly on top of v6.18-rc1. Also seems to work
-fine, at least I haven't noticed any regressions so far.
-
-Thanks,
-Cristian
+-- 
+2.51.0
 
 
 _______________________________________________
