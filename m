@@ -4,65 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0E71CCD194
-	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Oct 2025 18:07:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E5B9CCD193
+	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Oct 2025 18:07:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wRSOcs3Dmempab/ehDveM8bmiFTClqYHByIof8Zm27g=; b=kMCMiGHYFGP8ih
-	tc2Q6CzXte7d7jGJsPycOuxWGbGLZR1MmgETknVPAUXtWBQAAx+5jUe+gHbXxqclMz45b4CMt+4Gy
-	J42fWixbQnKQTsxTlszH09Opx8K15m1XH4yYm76jucx0asTmcSIj+88sw4yO5ngKzUELhdtFasEM8
-	kPdiis3UzyYY7WyZRzeh6px+6arfJ/oXGzRnkJpWe900JWGl5DinZSKu6A/nsvGJGCvAon58fCvqN
-	F8BzpfulnHzWM5GKn5c0zfIQ+C+Txp8VZOPuJZKRn5jReg76r3Q5wKQkuisjs4mAFCsuADH044TuK
-	Lv06xfgzRZdFpUUcnBLA==;
+	List-Owner; bh=/8w6dU+4b68WzPmKUW76/FsA75N3sMviw22ughXVPo8=; b=exTGWumeYZfXuJ
+	L8ko4dll4z13I0/FenxGBUV1RhSVxBG9hKOG4xxblCdMslxNfUs8eSfqWDiuHOqrLHBsaB7nhnmnq
+	sDiGdJ/Qf9B+zo5JKKZacv5KQUE0dZXauOY8SKsh9o49TCHL8LkxcaWvB04KQhi2xHkBDlXTPcRAN
+	tJG1gBtPNIhRd8/8M7UtQMhnn/5v0NxY0o4RKpW5MxX8xb8OrxzWPyYsbf1rvnK25sYVXE8xdNO66
+	ddrkoAwG/s689cjPogIC7wFt8HAE/x9t9alRjYhfX+YOiFWkvTkzXYu8eDU3uqhwxsvzGH6GUCNg1
+	4gEPhBOOA0NfR/HHzaAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8jQP-0000000H91D-1SZJ;
-	Tue, 14 Oct 2025 18:07:05 +0000
+	id 1v8jQT-0000000H969-3evn;
+	Tue, 14 Oct 2025 18:07:09 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8jQF-0000000H8sN-49ak;
-	Tue, 14 Oct 2025 18:06:57 +0000
+	id 1v8jQG-0000000H8sa-1v3W;
+	Tue, 14 Oct 2025 18:06:59 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=TOZSAhMRoAi3ivFm/RUgbGXpjIfGUXs3ICM+R1IZIJE=; b=Z9OoWeecwoNEZkO2ZI1cvN3ctl
-	AHOBscQGHPybThXJQ1AGvFyJSuYIRJtkxV9QWlhGNG82J2GsJSf2uidys1gK/9oYsIDpDGu4cQv/p
-	N2spY0NZZcZSXEsx9IbkVbuCjZqvxb1mgq6PO91TT5J7KsKCUVNyKWd/cZw5ODK22KaQs8VxOaS75
-	Jb8Oez7VGFEadXfI1xn4sTxqYARkJa29vtwhHE1R8a7UZZPsuoFVyvq80nZhyiD8x1YcynwueslpC
-	jYjHB15kOW3sDEGkPrf6cfpoH+LQL1s+NoqjvLxHMs9R5Et9yCUSCHYeZbp8Qk+1TKR6eQUoS63rr
-	wV2xiR9A==;
+	bh=XiHv/yOnY6WMqqBbAcq4r+gLICsRKMAlOgwF00S/n44=; b=xz+L5VWQ/4abOx3kcyXefrbnf4
+	ktFF/bDAFfxrlD+4dSTkjIDX4YQoYxfcNEiizSh2rEJKxjcWnpnMfPWNlah9LqG0QWbMN1wY7/shh
+	tUETy5O6cleDIZHXf9WvLeISNChFn2Blg+U1sHVEsfGEuXkzNYTLiCTcpnO4UHGREKXWCKIqudVl7
+	SwoYb/DJ62SX54uQ7SM6L2+BbwHNLkqZMQbsooaUoei7NPeq+Vdewg14yo/lRnzLI0UjodANxYcwp
+	wKUvRR2Xi5RFeLeJycmKkfBJzXY/Q1JcaSmhlprKRjtqOa84BvsmT8jMKht1ZyQEAMzuHbvGDy/pu
+	Xl3H8bVg==;
 Received: from i53875b75.versanet.de ([83.135.91.117] helo=localhost.localdomain)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1v8jQ9-0001Gj-RG; Tue, 14 Oct 2025 20:06:49 +0200
+	id 1v8jQB-0001Gj-J3; Tue, 14 Oct 2025 20:06:51 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: robh@kernel.org,
-	WeiHao Li <cn.liweihao@gmail.com>
+To: linux-rockchip@lists.infradead.org,
+	Dragan Simic <dsimic@manjaro.org>
 Cc: Heiko Stuebner <heiko@sntech.de>,
-	hjc@rock-chips.com,
-	andy.yan@rock-chips.com,
+	robh@kernel.org,
 	krzk+dt@kernel.org,
 	conor+dt@kernel.org,
-	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-clk@vger.kernel.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: (subset) [PATCH v2 0/8] drm/rockchip: Add MIPI DSI support for RK3368
-Date: Tue, 14 Oct 2025 20:06:33 +0200
-Message-ID: <176046473165.1662867.3389597341632636891.b4-ty@sntech.de>
+	linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org
+Subject: Re: [PATCH] arm64: dts: rockchip: Make RK3588 GPU OPP table naming uniform
+Date: Tue, 14 Oct 2025 20:06:36 +0200
+Message-ID: <176046473180.1662867.16010204377467165654.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250905025632.222422-1-cn.liweihao@gmail.com>
-References: <20250905025632.222422-1-cn.liweihao@gmail.com>
+In-Reply-To: <355c16ab070688fc6285e0d4419eb54a3f699eee.1757152740.git.dsimic@manjaro.org>
+References: <355c16ab070688fc6285e0d4419eb54a3f699eee.1757152740.git.dsimic@manjaro.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251014_110656_045007_BEC2D947 
-X-CRM114-Status: GOOD (  12.43  )
+X-CRM114-CacheID: sfid-20251014_110656_550953_6C5B9BAA 
+X-CRM114-Status: UNSURE (   8.91  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,32 +78,17 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Fri, 05 Sep 2025 10:56:24 +0800, WeiHao Li wrote:
-> This series adds MIPI DSI support for the Rockchip RK3368 SoC, enabling
-> native display connectivity through the MIPI DSI host controller and
-> PHY. The changes span multiple subsystems, including clock control,
-> DRM/VOP integration, DSI controller binding.
+On Sat, 06 Sep 2025 12:01:22 +0200, Dragan Simic wrote:
+> Unify the naming of the existing GPU OPP table nodes found in the RK3588
+> and RK3588J SoC dtsi files with the other SoC's GPU OPP nodes, following
+> the more "modern" node naming scheme.
 > 
-> Key changes:
->  - Update dw-mipi-dsi-rockchip driver to preperly handle RK3368 dsi
->    initialization.
->  - Add missing lut_size of vop_data for RK3368.
->  - Add missing clock ID SCLK_MIPIDSI_24M to the RK3368 CRU driver,
->    which is required for enabling the 24MHz reference clock.
->  - Add MIPI DSI node to rk3368.dtsi with correct clocks, resets,
->    and register mappings.
->  - Add dt-bindings document.
 > 
-> [...]
 
 Applied, thanks!
 
-[5/8] arm64: dts: rockchip: Add display subsystem for RK3368
-      commit: ef06b5ddee1e1288e51e8d961947d1b16156db0c
-[6/8] arm64: dts: rockchip: Add D-PHY for RK3368
-      commit: d62e2ad29b815509291b6a07787ed51b52e2b4d5
-[7/8] arm64: dts: rockchip: Add DSI for RK3368
-      commit: 5023d0cd61831acd6e88496f5f7867a18a217a74
+[1/1] arm64: dts: rockchip: Make RK3588 GPU OPP table naming uniform
+      commit: b3fd04e23f6e4496f5a2279466a33fbdc83500f0
 
 Best regards,
 -- 
