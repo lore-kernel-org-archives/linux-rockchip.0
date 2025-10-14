@@ -4,41 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D94ACCCD183
-	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Oct 2025 02:18:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10B56CCD193
+	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Oct 2025 02:18:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3CZ41jwXf97hj/7ZVhngWauDTYYNAOVugiyDVdJuT/E=; b=hBvrH4RK443k4H
-	t5hdG2pZgVqM6oFDW+dxOH1NND6T3IGf4VDrXYBdEWP/JQvuIkct4KJeth3AVnSDN3zlNLDxW/yD7
-	Q9V0btuHYxlSoSykJIZscMA5U5WiMYizltQ1/cEYKkrnmxU/9NbOu8lKim1XZECOZtbXYioipFndV
-	ouhsWnIoJgWYObK0XLAIAQJ/k/QtTd20yZUrlKJCAAr4EFcIFI9JelpAQh/VzTEXVlPD7OMs/I6QU
-	ApgUNC3eaHP6EAQDHLhI0MsgYorz0GmpgMV3LuHcfWkEisWI9gHCOugY1KjfOxa36xHlAk7HA8MgD
-	yz8ht+twvrBwz7P6UU2w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=snf2F79H9KRS5+QDohf1U6LmoCJYuYiH0wp2awkp/58=; b=Tfyck6CYQcKFzO
+	NN5QsylG5fgwGXxxNvQyT2oWzgQ8MEkl2XEDqZ+eGD07LI12sGngk5F7DBJGQy5Ebvv+i0NTdDL0J
+	swrkv2XE3/HEz/QlHhtuMLMUXiswNKqm6CLF8N+fmTwaxk6LFyJDhGthwYYEZOQ3o5TKnNlDR0v9K
+	7e5GQF8wPcQTAAQQkPR5O4UBxhQP5sXUzbf1vIvEBVxSDfdjinEznE002IwvV0JBbuOvuU10GCJWJ
+	JcmA+NayOLHjZVjN7NZvq7VD3Yik9gVW07Qug3QwuxIfm2+sBTHdT9/L45eneaJxcebFDjTicvPzt
+	xmTXe2ZH64PRFnvGVtjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8Ubr-0000000ExeW-1ztr;
+	id 1v8Ubr-0000000ExeS-0vy1;
 	Tue, 14 Oct 2025 02:17:55 +0000
-Received: from smtpbguseast1.qq.com ([54.204.34.129])
+Received: from smtpbguseast2.qq.com ([54.204.34.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8Ubn-0000000Exch-1SvD;
+	id 1v8Ubn-0000000Excj-1yH7;
 	Tue, 14 Oct 2025 02:17:53 +0000
-X-QQ-mid: zesmtpip2t1760408193tcc19e30d
-X-QQ-Originating-IP: L97C2AOZ3ljzEh0zDfCvPHB+yq3dBgEQHwUDQ8nWgfY=
+X-QQ-mid: zesmtpip2t1760408189ta749c9fe
+X-QQ-Originating-IP: GM/C8VTwsjaS1Wi9rzAmIB6frejU/WcqC/QEBzy6m6k=
 Received: from chainsx-ubuntu-server.lan ( [localhost])
 	by bizesmtp.qq.com (ESMTP) with 
-	id ; Tue, 14 Oct 2025 10:16:31 +0800 (CST)
+	id ; Tue, 14 Oct 2025 10:16:26 +0800 (CST)
 X-QQ-SSF: 0000000000000000000000000000000
 X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 2101948375338814732
-EX-QQ-RecipientCnt: 12
+X-BIZMAIL-ID: 4392001371169270697
+EX-QQ-RecipientCnt: 11
 From: Hsun Lai <i@chainsx.cn>
 To: Fred Bloggs <f.blogs@napier.co.nz>
 Cc: Hsun Lai <i@chainsx.cn>,
-	Conor Dooley <conor.dooley@microchip.com>,
 	Conor Dooley <conor+dt@kernel.org>,
 	Heiko Stuebner <heiko@sntech.de>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -48,37 +47,34 @@ Cc: Hsun Lai <i@chainsx.cn>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH v4 1/2] dt-bindings: arm: rockchip: Add 100ASK DShanPi A1
-Date: Tue, 14 Oct 2025 10:16:13 +0800
-Message-ID: <0601AB836AE5F348+20251014021623.286121-2-i@chainsx.cn>
+Subject: [PATCH v4 0/2] Add support for 100ASK DShanPi A1
+Date: Tue, 14 Oct 2025 10:16:12 +0800
+Message-ID: <3559F82126DCDA36+20251014021623.286121-1-i@chainsx.cn>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20251014021623.286121-1-i@chainsx.cn>
-References: <20251014021623.286121-1-i@chainsx.cn>
 MIME-Version: 1.0
 X-QQ-SENDSIZE: 520
 Feedback-ID: zesmtpip:chainsx.cn:qybglogicsvrsz:qybglogicsvrsz3a-0
-X-QQ-XMAILINFO: M1hhAs3UGlS86sv8CdrYj0h/ny7cm5gN8rXdwXDvtP6ZVfWfin03ngNb
-	2EUxQAybovToVYSsIIq6hFhMAl5+ErjeXkfwaBI4OT43zSJFJ0UJOGKhgvFdtGY3pLr8p1g
-	OlbXvcLf5QiuF0yGHrrT+4gHxLL+TWHHgretT1iOSpaNvB9Xi0FJzc2ftWnMXK8fNkARRRr
-	vOGdm5/F/Nkl0MZG7yygTDeqglyJnVEKpytGfSWfrSV8X21+xlvt2hVgQd+WDzKjbWnPvwA
-	3oW+s8NWVKu82kf/YQbifxgG5anxIknEbF7PbvmAOqibxuc9UqIeEeZmPAVOs7+yJjg9FSo
-	d+tA5FQfDdf91GDRPXEmSLdgIqTFwEmzd3kqrzlfA2o0tqJDUzi2ITFyWxphS+z8xx2emjr
-	gzR9U7yVcrn3V2gIHNtYKi8n/wtJk2M1xks71HBzgh0dLgA7R7/nPvZvj722+Q3XiL7Pfl+
-	weWTZmM/rUUUcOH1nP/YTfu+2JRh//4jwHQpMuWKJI2vtK9I/ZeHBXRfljXX2UPG2h28SuR
-	/ECxN6dsb+vy8VQYsk00bLjkERFEj6SxAI13Fnf2hUeTsHdwiYfzZyPNmiafAoxF3xidgkc
-	oFQSsOE7bJfjZJFvxWWu58LUEetEhGtL8qBlYL/QEg7d7np0KelGTIhojDcHg7HsNOF0Ypm
-	w767jRBZsF6gYrQX7P8HBMpr63pXjzBS69RtqxSIYbdiB7epW7Aq6EAvpXrYSb+PPdaSoF8
-	uX5amHU6frV57GdOS/dOap0IPqrZ87EqfWtoXr6hkwlaXlJSeRALQNQQWL0lTZwA1dHlgxx
-	jzXH74pBzmvTU0Xyg17PGhh5safTGJPzRxmCTMMfQnHrK0qaJwqG0GFfsAcQD2GudW6vyea
-	x/hqSoYrSomjTFDz4wHhiGaKr7j1Z7KG54lgUAnBKPqW971IU3BCHx1ILzB0ZR9Vb5NkxeE
-	O/2b0meIZuIjNXOa8wq2mNQhpLs1dQw0rO5gK/S1nODCXpQWfIi+1IrZLsmFmzRwuvS6fa5
-	AtMnlh5pLutEysR1+k/3S/AwrYeM2ZwunRtmx9R7V6HPKxCOnU
-X-QQ-XMRINFO: NI4Ajvh11aEj8Xl/2s1/T8w=
+X-QQ-XMAILINFO: N7k3iE00JiuZFQe0rE85YjVL1V8x5yUhmtOb5CTUfbt0zIcVN5K2nF5F
+	A90PsrPZ6rjBnebmgxG/fXSlapyCG3Itcw2HEE3qC40nEfI6t8fHiQnWccVqTwYrLm5TNhO
+	E+0sObvfCGlCOog1fVKD+1HHmVcNDLtpt6grl8qBgTJO5a4jCAPjy65Yc2zhzp60HTM9kbm
+	kSd9InAMM042lEIwi6PeutRW/spJRgfDS/5aVnLxS2HAe0IcK1Qp5nONTugtzuVvEbTGugp
+	pIf+O5WBzDbrUm68ls1UHE+FzRDAwY33gUhOkyNhc2gyzmM6LuVVxLKOETq3NAjAW1x0ZKi
+	i7XVrr+yKlYBXOTsjBVCKsQc6cysu5SEHw/Fa/wp41gOEGtL6Z4M5U8Q5Fpih5767KbTXJ1
+	ecEDuECWG+mJ5aUHiv82rrjB0lhykKeE3hcdNB7zeaQfsCSr6VYSFfk7CtGEnBUOZm6fl1T
+	49a5bdemslsORi5CwuaQ25+nDNU7j6fW9UrjLVqpO6214P8XUO2w/BRKto6sgjUsBKTL4yZ
+	YIYr1OMdPDg7I6IP0nFp8kY0W3BckAR/YIsa5wKf1tNvilK3dJumV9hHaXzXQplXO4poZaJ
+	qluLUINffrw9rHdHbELR+NNWRA/c7WObZ+36s+iEZNkm27funLEGmoJVYXFYABHmwPYI3n1
+	IKA1pwIKj8gWozy5NLNeoZU+yj4MgokwLFL/m8xQWFh+bHcSVEl+E2QTgw1xGAsCfrojXUZ
+	eDwrNME99NNCubx+K2yRJBat6h/p0wY1UmNghnDvXBKqB1ybUSY5lfyRXZD2o75QHXh3nPp
+	gOoouFmG5S6sUj2gblS7tkxKaZaQG62QwpLjbr7zBXu0cUTm1KIWrnxAg8mdfMsfsSaCR2r
+	DYNKmQWW6pbyuNew4+LQS/sVBKt4M2b1xsFS0ugn6S+5Qguh8Go9l94rNIL160Aa39sTvLS
+	umDz0g4YIECuqD9wPgE0o8rtpG6N903PebydLBfOmgz7U5I6jWzE5r6/6eE6jfLjpRz7dDF
+	XIRuzlZS4KI3tL8vMoUi78IXAfcnI=
+X-QQ-XMRINFO: OD9hHCdaPRBwq3WW+NvGbIU=
 X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251013_191751_936382_3FC8CCAC 
-X-CRM114-Status: UNSURE (   8.01  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251013_191751_999403_3A892621 
+X-CRM114-Status: GOOD (  10.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,38 +91,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This documents 100ASK DShanPi A1 which is a SBC based on RK3576 SoC.
+This series add support for 100ASK DShanPi A1.
 
-Link: https://wiki.dshanpi.org/en/docs/DshanPi-A1/intro/
+Info of device can be found at:
+https://wiki.dshanpi.org/en/docs/DshanPi-A1/intro/
 
-Signed-off-by: Hsun Lai <i@chainsx.cn>
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
----
+Changes in v4:
+- Fix PCIE
 
-(no changes since v1)
+Changes in v3:
+- Update the name of vcc_in regulator (Chukun Pan, v2)
+- Fix PCIE (Chukun Pan, v2)
+- Update the name of typec5v_pwren_h pinctrl (Chukun Pan, v2)
+- Fix USB3 (Chukun Pan, v2)
+- Remove i2c2 node, unsupported RTC model rs4c1338 (Chukun Pan, v2)
 
- Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
- 1 file changed, 5 insertions(+)
+Changes in v2:
+- Delete the pwm include file (Chukun Pan, v1)
+- Fix vcc3v3_pcie gpios (Chukun Pan, v1)
+- Adjust the order of some nodes (Chukun Pan, v1)
+- Fix sdmmc (Chukun Pan, v1)
+- Add phy-supply for u2phy0_otg (Chukun Pan, v1)
 
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-index 28db6bd6a..033730861 100644
---- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-+++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-@@ -15,6 +15,11 @@ properties:
-   compatible:
-     oneOf:
- 
-+      - description: 100ASK DshanPi A1 board
-+        items:
-+          - const: 100ask,dshanpi-a1
-+          - const: rockchip,rk3576
-+
-       - description: 96boards RK3399 Ficus (ROCK960 Enterprise Edition)
-         items:
-           - const: vamrs,ficus
+Changes in v1:
+- Add support for 100ASK DShanPi A1
+
+Hsun Lai (2):
+  dt-bindings: arm: rockchip: Add 100ASK DShanPi A1
+  arm64: dts: rockchip: add DTs for 100ASK DShanPi A1
+
+ .../devicetree/bindings/arm/rockchip.yaml     |   5 +
+ arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+ .../dts/rockchip/rk3576-100ask-dshanpi-a1.dts | 795 ++++++++++++++++++
+ 3 files changed, 801 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3576-100ask-dshanpi-a1.dts
+
 -- 
 2.43.0
 
+base-commit: 7fa4d8dc380fbd81a9d702a855c50690c9c6442c
+branch: master
 
 _______________________________________________
 Linux-rockchip mailing list
