@@ -4,91 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38A13CCD187
-	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Oct 2025 07:07:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C20FCCD18E
+	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Oct 2025 08:01:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ox5dWkBpDwlbJJ26djXwVxELBe8W+t/CgxZT0mwftzs=; b=2stey0bmbpOLHb
-	BXSd01sdTryG/Mv5oy2OxC8P4QTF180NsM3RZGZqAj3Ds+yREKxHSW9fWT9k400Elb1MU8q+ZOllG
-	fHOjWbjaiFubUrK7lASvPZMoq0I7SZrFEsSekdTaBfLdaJAmwWVmtdo5coh5YC2gBymF/AqHAoqt8
-	Bt6LoBmbJFll7a+pJDMGD2cn/TRJDPB6S3bprUJAClEgRxtCGXundvBlCLZ9US8CTBEh7dTi7Il4+
-	Z2fu3nfUU6cuqJScMk9KIr7/B47lWIikZvgvyck24nSu/VHb9TIMpz3auSJoiafcpOVC1TCighiJy
-	q5MFiswtT6RQrW1CtMEg==;
+	List-Owner; bh=FvE2zUJATb6GugWt9c6xRFvKJwkzVoha0H1pjm24I8g=; b=UbSSOVbqpltBna
+	rjWNXJ1NKEp3xzH6fm60zaJRhI3MyNfWIUQSfaVqHrx4kgZOPXXEeI3lFrU+fKarOi1RmWVGMXKFt
+	ns6rxNfra+RziTyR7fmJf2esmJNks/fGOXhGDLAXnSs7J+YVaZYZuUJDcnQ+eGXkW8/lTscM94dtg
+	TAd2T6bCQJ3+2meKlCHPounjX8uRDAm/YHw/31neQ7/wnM9X9aktMkppkN922/izqElEI36bLD54h
+	YY255O9C7RvoYce0lmca7PkMTLqdVKnSEA5bHjxZKryL7wAixReOd5KZ5BLU8q1Cw6P3lwKmI8Mk6
+	SDLO5RktGAMVZAj+v7JA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8Z7q-0000000FOzd-0pOe;
-	Tue, 14 Oct 2025 07:07:14 +0000
-Received: from mout01.posteo.de ([185.67.36.65])
+	id 1v8ZyG-0000000FWsz-0iTM;
+	Tue, 14 Oct 2025 08:01:24 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8Z7o-0000000FOyj-0XKt
-	for linux-rockchip@lists.infradead.org;
-	Tue, 14 Oct 2025 07:07:13 +0000
-Received: from submission (posteo.de [185.67.36.169]) 
-	by mout01.posteo.de (Postfix) with ESMTPS id 015BB240027
-	for <linux-rockchip@lists.infradead.org>; Tue, 14 Oct 2025 09:07:07 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=posteo.de; s=2017;
-	t=1760425628; bh=m2ao7yOlmXtTR+gAWOXEYdjwi7rdtHCkxzZCJ5XFR9E=;
-	h=Message-ID:Subject:From:To:Cc:Date:Content-Type:
-	 Content-Transfer-Encoding:MIME-Version:From;
-	b=iGohrgTaUHe7PR+MwDgFxlKm8I4ZxkhKy/OBhk6ZDQCWh2Gq+zlxsMgB6o2QUEA/D
-	 1ioE1BodqUpgNdKVrXwgNOs93gp2baHiGE0L16sW5bOw5lm2QID/oZz6PZD2jsKWeG
-	 oHTNW6ycLVCJutGFVexQ6lQhRXmUbtV39VuDkyzMN/fKe/dHHiiIr7wCmi/jOjQ4BD
-	 1r9SF7vdLrbW8T3JPizwKZrUV/HyfWbtbagly7DN+2HTsVuH8yXIjO3he2G4KF/MeQ
-	 sW0RI/+mT5ZP+3m6bhuZuqR9x1XSbNpfFcvKg3QCFASKeCdtN0wQnRCvor5A9j6Xn7
-	 HBDts5WcqeKjw==
-Received: from customer (localhost [127.0.0.1])
-	by submission (posteo.de) with ESMTPSA id 4cm4yp6z2Tz9rxR;
-	Tue, 14 Oct 2025 09:06:58 +0200 (CEST)
-Message-ID: <f30b137685be9148e69f18065d811d011bfe3409.camel@posteo.de>
-Subject: Re: [PATCH 25/32] media: imx8mq-mipi-csi2: Use %pe format specifier
-From: Martin Kepplinger-Novakovic <martink@posteo.de>
-To: Ricardo Ribalda <ribalda@chromium.org>, Linus Walleij	
- <linus.walleij@linaro.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, 
- Mauro Carvalho Chehab	 <mchehab@kernel.org>, Hans Verkuil
- <hverkuil@kernel.org>, Sakari Ailus	 <sakari.ailus@linux.intel.com>,
- Krzysztof =?UTF-8?Q?Ha=C5=82asa?=	 <khalasa@piap.pl>, Tomi Valkeinen
- <tomi.valkeinen@ideasonboard.com>, Leon Luo	 <leonl@leopardimaging.com>,
- Kieran Bingham <kieran.bingham@ideasonboard.com>,  Jacopo Mondi
- <jacopo+renesas@jmondi.org>, Kieran Bingham
- <kieran.bingham+renesas@ideasonboard.com>,  Laurent Pinchart
- <laurent.pinchart+renesas@ideasonboard.com>, Niklas
- =?ISO-8859-1?Q?S=F6derlund?=	 <niklas.soderlund+renesas@ragnatech.se>,
- Julien Massot	 <julien.massot@collabora.com>, Jacopo Mondi
- <jacopo@jmondi.org>, Daniel Scally	 <djrscally@gmail.com>, Dave Stevenson
- <dave.stevenson@raspberrypi.com>,  Benjamin Mugnier
- <benjamin.mugnier@foss.st.com>, Sylvain Petinot
- <sylvain.petinot@foss.st.com>, Yong Zhi	 <yong.zhi@intel.com>, Bingbu Cao
- <bingbu.cao@intel.com>, Tianshu Qiu	 <tian.shu.qiu@intel.com>, Tiffany Lin
- <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno	
- <angelogioacchino.delregno@collabora.com>, Rui Miguel Silva
- <rmfrfs@gmail.com>,  Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Purism Kernel Team <kernel@puri.sm>, Shawn Guo	 <shawnguo@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team
- <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, Dafna
- Hirschfeld	 <dafna@fastmail.com>, Heiko Stuebner <heiko@sntech.de>,
- Sylwester Nawrocki	 <s.nawrocki@samsung.com>, Krzysztof Kozlowski
- <krzk@kernel.org>, Alim Akhtar	 <alim.akhtar@samsung.com>, Yemike Abhilash
- Chandra <y-abhilashchandra@ti.com>,  Greg Kroah-Hartman
- <gregkh@linuxfoundation.org>
-Cc: linux-input@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, imx@lists.linux.dev, 
-	linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-samsung-soc@vger.kernel.org, linux-staging@lists.linux.dev
-Date: Tue, 14 Oct 2025 07:07:05 +0000
-In-Reply-To: <20251013-ptr_err-v1-25-2c5efbd82952@chromium.org>
-References: <20251013-ptr_err-v1-0-2c5efbd82952@chromium.org>
-	 <20251013-ptr_err-v1-25-2c5efbd82952@chromium.org>
+	id 1v8Zy8-0000000FWoH-4BNT;
+	Tue, 14 Oct 2025 08:01:20 +0000
+Received: from [192.168.1.182] (93-46-82-201.ip106.fastwebnet.it [93.46.82.201])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id ABB60DF3;
+	Tue, 14 Oct 2025 09:59:34 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1760428775;
+	bh=7ktxgAwKbkDVxOZvf+O7nZBZCn134GgJkCvMxSvF7XU=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=A/12oMO03XN1PbJQcbmOmva1Ciy/G5ZGQg/obYMIVER1wB4uT0UunJCoJFWjtoHxK
+	 cUzZ5kb0ZI7itfRpIvuxPBsos1k1XlHGTCZZN0qbALIZ2NAU//2z4zeuoBXLlqR0Kj
+	 v1mNaJbeOB+enwBAjdOTtpiVE61tLMVjuiXm7Rko=
+From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+Date: Tue, 14 Oct 2025 10:00:54 +0200
+Subject: [PATCH v7 2/8] media: uapi: Convert RkISP1 to V4L2 extensible
+ params
 MIME-Version: 1.0
+Message-Id: <20251014-extensible-parameters-validation-v7-2-6628bed5ca98@ideasonboard.com>
+References: <20251014-extensible-parameters-validation-v7-0-6628bed5ca98@ideasonboard.com>
+In-Reply-To: <20251014-extensible-parameters-validation-v7-0-6628bed5ca98@ideasonboard.com>
+To: Dafna Hirschfeld <dafna@fastmail.com>, 
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+ Keke Li <keke.li@amlogic.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Heiko Stuebner <heiko@sntech.de>, Dan Scally <dan.scally@ideasonboard.com>, 
+ Sakari Ailus <sakari.ailus@linux.intel.com>, 
+ Antoine Bouyer <antoine.bouyer@nxp.com>
+Cc: linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+ Jacopo Mondi <jacopo.mondi@ideasonboard.com>, 
+ Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=8022;
+ i=jacopo.mondi@ideasonboard.com; h=from:subject:message-id;
+ bh=7ktxgAwKbkDVxOZvf+O7nZBZCn134GgJkCvMxSvF7XU=;
+ b=owEBbQKS/ZANAwAKAXI0Bo8WoVY8AcsmYgBo7gNGOhiD7mqa+MQRLm6Fy0fjuwAqXRoMl8Vdi
+ +U7sbG7xHGJAjMEAAEKAB0WIQS1xD1IgJogio9YOMByNAaPFqFWPAUCaO4DRgAKCRByNAaPFqFW
+ PPaMD/0SPNK6wtpw7BqxFLw6KDkcP6V6q2CqcIiIlspjXeXjAH9h18NGQZGw8zfd9Pjw2kxNkWD
+ 00NHnk7b+0BCm/6QKKd7UDFTXK7STVr9mCvHxxCWnV/ogYayoQFu0T3CCDxvlfecTdrKVvY5Rf2
+ EHYzZ72DUSA04sx44dEZP+b/NYti6Mb8E5+dZHnKYoOdMIg1CtLAxsksXrOZk2uwpHo2FV04Hvi
+ g6wHIUo39MceVfaiprI/4cmxE5AlFztOOZo8TOIvbYS0fI4zNKHxJTqJSEvuzRC/LsESxXx+ybc
+ RGAKp4264YTBOgCeD+n+y3NLIdzd+Qa4OqIaVHEvwOWxlY86ZAnX1LSWut4kymHSE0f1k4Sd6dH
+ sNN83AMIh+KVwNLd/VI5hZ1WrA+kHl8k6oe0pIj4tDBqKGSFVhgQCSrh/L2cT+6jOxZLo/2bPuy
+ Pqh6Y/2bfqfFazY5OsAhtEuGlDKdPIX9BnGQscPQxMdzj+TAnVF62iIMASbfVHZTB4Hvd3R5xlx
+ 7JwQmh7b3G2m7bJ2UatYRhsnl2ybD7bOujHt3j8sWDR91AMyaF2esflbA5q3170+bR1fIBr4nCf
+ 2WEtjMrmJ+mX9GxRKmwJx9rGmAkqpbR35ZFMUHsPr4dMXVlsjIF9yAnbcBzbC9b8FjXx9XIZGMl
+ qrz7t/4MC08gpyw==
+X-Developer-Key: i=jacopo.mondi@ideasonboard.com; a=openpgp;
+ fpr=72392EDC88144A65C701EA9BA5826A2587AD026B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251014_000712_484882_3FB1389B 
-X-CRM114-Status: GOOD (  12.90  )
+X-CRM114-CacheID: sfid-20251014_010117_179425_360F5F0A 
+X-CRM114-Status: GOOD (  28.97  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,37 +86,196 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-QW0gTW9udGFnLCBkZW0gMTMuMTAuMjAyNSB1bSAxNDoxNSArMDAwMCBzY2hyaWViIFJpY2FyZG8g
-UmliYWxkYToKPiBUaGUgJXBlIGZvcm1hdCBzcGVjaWZpZXIgaXMgZGVzaWduZWQgdG8gcHJpbnQg
-ZXJyb3IgcG9pbnRlcnMuIEl0Cj4gcHJpbnRzCj4gYSBzeW1ib2xpYyBlcnJvciBuYW1lIChlZy4g
-LUVJTlZBTCkgYW5kIGl0IG1ha2VzIHRoZSBjb2RlIHNpbXBsZXIgYnkKPiBvbWl0dGluZyBQVFJf
-RVJSKCkuCj4gCj4gVGhpcyBwYXRjaCBmaXhlcyB0aGlzIGNvY2NpIHJlcG9ydDoKPiAuL3BsYXRm
-b3JtL254cC9pbXg4bXEtbWlwaS1jc2kyLmM6NDIyOjIzLTMwOiBXQVJOSU5HOiBDb25zaWRlciB1
-c2luZwo+ICVwZSB0byBwcmludCBQVFJfRVJSKCkKPiAKPiBTaWduZWQtb2ZmLWJ5OiBSaWNhcmRv
-IFJpYmFsZGEgPHJpYmFsZGFAY2hyb21pdW0ub3JnPgo+IC0tLQo+IMKgZHJpdmVycy9tZWRpYS9w
-bGF0Zm9ybS9ueHAvaW14OG1xLW1pcGktY3NpMi5jIHwgNCArKy0tCj4gwqAxIGZpbGUgY2hhbmdl
-ZCwgMiBpbnNlcnRpb25zKCspLCAyIGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2
-ZXJzL21lZGlhL3BsYXRmb3JtL254cC9pbXg4bXEtbWlwaS1jc2kyLmMKPiBiL2RyaXZlcnMvbWVk
-aWEvcGxhdGZvcm0vbnhwL2lteDhtcS1taXBpLWNzaTIuYwo+IGluZGV4Cj4gM2E0NjQ1ZjU5YTQ0
-MDI4ZmRjYTgyYTRkODM5M2UxYTBhNmJhODhmMC4uZDMzM2ZmNDM1MzlmMDYxYjhiOWNmODhhZjJj
-Cj4gZGE4YzQ0YjNlYzJhOSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL254
-cC9pbXg4bXEtbWlwaS1jc2kyLmMKPiArKysgYi9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL254cC9p
-bXg4bXEtbWlwaS1jc2kyLmMKPiBAQCAtNDE4LDggKzQxOCw4IEBAIHN0YXRpYyBpbnQgaW14OG1x
-X21pcGlfY3NpX2NhbGNfaHNfc2V0dGxlKHN0cnVjdAo+IGNzaV9zdGF0ZSAqc3RhdGUsCj4gwqAK
-PiDCoAlzcmNfcGFkID0gbWVkaWFfZW50aXR5X3JlbW90ZV9zb3VyY2VfcGFkX3VuaXF1ZSgmc2Rf
-c3RhdGUtCj4gPnNkLT5lbnRpdHkpOwo+IMKgCWlmIChJU19FUlIoc3JjX3BhZCkpIHsKPiAtCQlk
-ZXZfZXJyKHN0YXRlLT5kZXYsICJjYW4ndCBnZXQgc291cmNlIHBhZCBvZiAlcwo+ICglbGQpXG4i
-LAo+IC0JCQlzZF9zdGF0ZS0+c2QtPm5hbWUsIFBUUl9FUlIoc3JjX3BhZCkpOwo+ICsJCWRldl9l
-cnIoc3RhdGUtPmRldiwgImNhbid0IGdldCBzb3VyY2UgcGFkIG9mICVzCj4gKCVwZSlcbiIsCj4g
-KwkJCXNkX3N0YXRlLT5zZC0+bmFtZSwgc3JjX3BhZCk7Cj4gwqAJCXJldHVybiBQVFJfRVJSKHNy
-Y19wYWQpOwo+IMKgCX0KPiDCoAoKUmV2aWV3ZWQtYnk6IE1hcnRpbiBLZXBwbGluZ2VyLU5vdmFr
-b3ZpYyA8bWFydGlua0Bwb3N0ZW8uZGU+Cgp0aGFua3MgeW91LAoKICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICBtYXJ0aW4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0
-cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGlu
-Zm8vbGludXgtcm9ja2NoaXAK
+With the introduction of common types for extensible parameters
+format, convert the rkisp1-config.h header to use the new types.
+
+Factor-out the documentation that is now part of the common header
+and only keep the driver-specific on in place.
+
+The conversion to use common types doesn't impact userspace as the
+new types are either identical to the ones already existing in the
+RkISP1 uAPI or are 1-to-1 type convertible.
+
+Reviewed-by: Daniel Scally <dan.scally@ideasonboard.com>
+Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+Reviewed-by: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>
+---
+ include/uapi/linux/rkisp1-config.h | 107 +++++++++----------------------------
+ 1 file changed, 24 insertions(+), 83 deletions(-)
+
+diff --git a/include/uapi/linux/rkisp1-config.h b/include/uapi/linux/rkisp1-config.h
+index 3b060ea6eed71b87d79abc8401eae4e9c9f5323a..b2d2a71f7baff3833b20519264b58db7f168af90 100644
+--- a/include/uapi/linux/rkisp1-config.h
++++ b/include/uapi/linux/rkisp1-config.h
+@@ -7,8 +7,13 @@
+ #ifndef _UAPI_RKISP1_CONFIG_H
+ #define _UAPI_RKISP1_CONFIG_H
+ 
++#ifdef __KERNEL__
++#include <linux/build_bug.h>
++#endif /* __KERNEL__ */
+ #include <linux/types.h>
+ 
++#include <linux/media/v4l2-isp.h>
++
+ /* Defect Pixel Cluster Detection */
+ #define RKISP1_CIF_ISP_MODULE_DPCC		(1U << 0)
+ /* Black Level Subtraction */
+@@ -1158,79 +1163,26 @@ enum rkisp1_ext_params_block_type {
+ 	RKISP1_EXT_PARAMS_BLOCK_TYPE_WDR,
+ };
+ 
+-#define RKISP1_EXT_PARAMS_FL_BLOCK_DISABLE	(1U << 0)
+-#define RKISP1_EXT_PARAMS_FL_BLOCK_ENABLE	(1U << 1)
++/* For backward compatibility */
++#define RKISP1_EXT_PARAMS_FL_BLOCK_DISABLE	V4L2_ISP_PARAMS_FL_BLOCK_DISABLE
++#define RKISP1_EXT_PARAMS_FL_BLOCK_ENABLE	V4L2_ISP_PARAMS_FL_BLOCK_ENABLE
+ 
+ /* A bitmask of parameters blocks supported on the current hardware. */
+ #define RKISP1_CID_SUPPORTED_PARAMS_BLOCKS	(V4L2_CID_USER_RKISP1_BASE + 0x01)
+ 
+ /**
+- * struct rkisp1_ext_params_block_header - RkISP1 extensible parameters block
+- *					   header
++ * rkisp1_ext_params_block_header - RkISP1 extensible parameters block header
+  *
+  * This structure represents the common part of all the ISP configuration
+- * blocks. Each parameters block shall embed an instance of this structure type
+- * as its first member, followed by the block-specific configuration data. The
+- * driver inspects this common header to discern the block type and its size and
+- * properly handle the block content by casting it to the correct block-specific
+- * type.
++ * blocks and is identical to :c:type:`v4l2_isp_params_block_header`.
+  *
+- * The @type field is one of the values enumerated by
++ * The type field is one of the values enumerated by
+  * :c:type:`rkisp1_ext_params_block_type` and specifies how the data should be
+- * interpreted by the driver. The @size field specifies the size of the
+- * parameters block and is used by the driver for validation purposes.
+- *
+- * The @flags field is a bitmask of per-block flags RKISP1_EXT_PARAMS_FL_*.
+- *
+- * When userspace wants to configure and enable an ISP block it shall fully
+- * populate the block configuration and set the
+- * RKISP1_EXT_PARAMS_FL_BLOCK_ENABLE bit in the @flags field.
+- *
+- * When userspace simply wants to disable an ISP block the
+- * RKISP1_EXT_PARAMS_FL_BLOCK_DISABLE bit should be set in @flags field. The
+- * driver ignores the rest of the block configuration structure in this case.
+- *
+- * If a new configuration of an ISP block has to be applied userspace shall
+- * fully populate the ISP block configuration and omit setting the
+- * RKISP1_EXT_PARAMS_FL_BLOCK_ENABLE and RKISP1_EXT_PARAMS_FL_BLOCK_DISABLE bits
+- * in the @flags field.
+- *
+- * Setting both the RKISP1_EXT_PARAMS_FL_BLOCK_ENABLE and
+- * RKISP1_EXT_PARAMS_FL_BLOCK_DISABLE bits in the @flags field is not allowed
+- * and not accepted by the driver.
+- *
+- * Userspace is responsible for correctly populating the parameters block header
+- * fields (@type, @flags and @size) and the block-specific parameters.
+- *
+- * For example:
++ * interpreted by the driver.
+  *
+- * .. code-block:: c
+- *
+- *	void populate_bls(struct rkisp1_ext_params_block_header *block) {
+- *		struct rkisp1_ext_params_bls_config *bls =
+- *			(struct rkisp1_ext_params_bls_config *)block;
+- *
+- *		bls->header.type = RKISP1_EXT_PARAMS_BLOCK_ID_BLS;
+- *		bls->header.flags = RKISP1_EXT_PARAMS_FL_BLOCK_ENABLE;
+- *		bls->header.size = sizeof(*bls);
+- *
+- *		bls->config.enable_auto = 0;
+- *		bls->config.fixed_val.r = blackLevelRed_;
+- *		bls->config.fixed_val.gr = blackLevelGreenR_;
+- *		bls->config.fixed_val.gb = blackLevelGreenB_;
+- *		bls->config.fixed_val.b = blackLevelBlue_;
+- *	}
+- *
+- * @type: The parameters block type, see
+- *	  :c:type:`rkisp1_ext_params_block_type`
+- * @flags: A bitmask of block flags
+- * @size: Size (in bytes) of the parameters block, including this header
++ * The flags field is a bitmask of per-block flags RKISP1_EXT_PARAMS_FL_*.
+  */
+-struct rkisp1_ext_params_block_header {
+-	__u16 type;
+-	__u16 flags;
+-	__u32 size;
+-};
++#define rkisp1_ext_params_block_header v4l2_isp_params_block_header
+ 
+ /**
+  * struct rkisp1_ext_params_bls_config - RkISP1 extensible params BLS config
+@@ -1588,27 +1540,14 @@ struct rkisp1_ext_params_wdr_config {
+  * @RKISP1_EXT_PARAM_BUFFER_V1: First version of RkISP1 extensible parameters
+  */
+ enum rksip1_ext_param_buffer_version {
+-	RKISP1_EXT_PARAM_BUFFER_V1 = 1,
++	RKISP1_EXT_PARAM_BUFFER_V1 = V4L2_ISP_PARAMS_VERSION_V1,
+ };
+ 
+ /**
+  * struct rkisp1_ext_params_cfg - RkISP1 extensible parameters configuration
+  *
+- * This struct contains the configuration parameters of the RkISP1 ISP
+- * algorithms, serialized by userspace into a data buffer. Each configuration
+- * parameter block is represented by a block-specific structure which contains a
+- * :c:type:`rkisp1_ext_params_block_header` entry as first member. Userspace
+- * populates the @data buffer with configuration parameters for the blocks that
+- * it intends to configure. As a consequence, the data buffer effective size
+- * changes according to the number of ISP blocks that userspace intends to
+- * configure and is set by userspace in the @data_size field.
+- *
+- * The parameters buffer is versioned by the @version field to allow modifying
+- * and extending its definition. Userspace shall populate the @version field to
+- * inform the driver about the version it intends to use. The driver will parse
+- * and handle the @data buffer according to the data layout specific to the
+- * indicated version and return an error if the desired version is not
+- * supported.
++ * This is the driver-specific implementation of
++ * :c:type:`v4l2_isp_params_buffer`.
+  *
+  * Currently the single RKISP1_EXT_PARAM_BUFFER_V1 version is supported.
+  * When a new format version will be added, a mechanism for userspace to query
+@@ -1624,11 +1563,6 @@ enum rksip1_ext_param_buffer_version {
+  * the maximum value represents the blocks supported by the kernel driver,
+  * independently of the device instance.
+  *
+- * For each ISP block that userspace wants to configure, a block-specific
+- * structure is appended to the @data buffer, one after the other without gaps
+- * in between nor overlaps. Userspace shall populate the @data_size field with
+- * the effective size, in bytes, of the @data buffer.
+- *
+  * The expected memory layout of the parameters buffer is::
+  *
+  *	+-------------------- struct rkisp1_ext_params_cfg -------------------+
+@@ -1678,4 +1612,11 @@ struct rkisp1_ext_params_cfg {
+ 	__u8 data[RKISP1_EXT_PARAMS_MAX_SIZE];
+ };
+ 
++#ifdef __KERNEL__
++/* Make sure the header is type-convertible to the generic v4l2 params one */
++static_assert((sizeof(struct rkisp1_ext_params_cfg) -
++	      RKISP1_EXT_PARAMS_MAX_SIZE) ==
++	      sizeof(struct v4l2_isp_params_buffer));
++#endif /* __KERNEL__ */
++
+ #endif /* _UAPI_RKISP1_CONFIG_H */
+
+-- 
+2.51.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
