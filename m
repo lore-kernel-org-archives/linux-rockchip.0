@@ -4,77 +4,153 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45997CCD193
-	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Oct 2025 21:15:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67D7ACCD185
+	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Oct 2025 22:03:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yZ3GvftZ4M/htcAcoshGEcztT5gLhBGG0q9UXpHD4kA=; b=M616PznuaorWsC
-	PFiUdWSYYZMFQ7O8vxNE2ry4inK9dJNSp9vTHLxpKfwKVgiK2p6IUjBJM7ct6aeg8AkYY1gxOLPxv
-	vG/+9sHlwfLyJjVKj+IwB5/m5CxTcPVdlmDo5t0H/QG1leO9SDv63r/Vxw7O2TEPDR5q2Qq4vztG2
-	XL64z3D9/fIIbujFKv20pxsNclsRG8sJpp/VSFaGzKLfdGjl0Xkn2lmx9ddubXyb2yQFlQhdeioQy
-	4z2wiBtdwiJufBONErY1BNWpgthbZOXC/KLWOujnWF63hNQ0+UnESBdGV9QZ9PtlMUPg4hR1OIjlH
-	azsAMPP1ikhuxyArkKDg==;
+	List-Owner; bh=uM0MyTxwhgb5RSGTIFD7i6lOBKWtFTFWG6jVgES8RmA=; b=jjvBwhmDGCyAU5
+	nD9Ff25xsU3BaSfnLPrdulEPLuBaiR7GdZ7dfPVMeiXkIcEXSVuXHG1I3hHIv5nDTuGy5ahDBI7nT
+	kMKCvA0OqWHbs9BPDHOX+Lhof1HVybwRVPynApuKMETYt3WKO+XCi0/ARSjty6aE+9CtEI/m67Nng
+	elV1kMMOZHjy4AyLI1Hoo3PrmlBuohPlXRvd6e9mdKMabaf/fcC4ThMh0COYWf0XE05WUkoz/50LR
+	9Fy9SkaE8x964zn7baKWzcmOzIkFj1RZ503p1PPt2iqchEI/8Ck0CVrImfqUwkhe6mT6ubM1E2d7a
+	EgLLqKm0qRPqhrva7CLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v98pk-00000002vUi-0pCZ;
-	Wed, 15 Oct 2025 21:14:56 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1v99aO-00000002zLU-1Kxl;
+	Wed, 15 Oct 2025 22:03:08 +0000
+Received: from mail-eastusazlp17011000f.outbound.protection.outlook.com ([2a01:111:f403:c100::f] helo=BL2PR02CU003.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v98pg-00000002vTf-0SBQ;
-	Wed, 15 Oct 2025 21:14:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1760562889;
-	bh=zkiZ/eu7Z3CIagnnUlT7M5TqSPRcECMp5fP+Gx2/JQE=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=b2Ch8KFLcmftV8KVxf+RsBh1T07gUeCuDfHhfGziTiou/8qQJzuywtp5ci19XMY7e
-	 mm2l/g2dSbm4KmjqefXCgHiH5GoP5ppi3v/uE5nG3ir067Qkkp7hUPlXcodE50P8hk
-	 hJGv4K2ae94mp9gJcHrRMqG7hFsW47KkBccDptbwn+EAT4bCTXWNtnzVF/Zd4ddyyY
-	 /w1F99eRyl6V/En+nGBOVwt6y+m6oqDLswdsq1Ginl0viQEBPtub2ggyjckI4EZHEp
-	 EE1lJm7Lbd5kYi3VNgeENqQLms0VRydmhciC35ukRIokH6qF+78CxyBZbpuO0s84Eg
-	 EReE78b2R9IUA==
-Received: from [192.168.1.90] (unknown [82.79.138.145])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0B62517E12C8;
-	Wed, 15 Oct 2025 23:14:49 +0200 (CEST)
-Message-ID: <ea6a38dc-65e1-4ac7-ad3a-813633fdff96@collabora.com>
-Date: Thu, 16 Oct 2025 00:14:48 +0300
+	id 1v99aJ-00000002zIG-3MCM;
+	Wed, 15 Oct 2025 22:03:06 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=mGsr+VdtLSjMMNDEgCEkujsMAfyuGbFWZ0oT5z7QJ0pq8KpR5gs23fmcWbq5awqQQjUp7oLfQ3WcxejVbFf0M3UXx1ChRA6kU5SXUmKU9hQ6U2twNNJN63y4luN8zQ26wB02bPBtBvZDln5NPdk0VNjCKH1BkLMovNfOJBNR/ExCOUimSnM5chKEVzRjlECrEoyAuMz1IbbrG/E9fjmBtBAnxgYDkzkKjS/mx10Qi/aErAlxEf+dciKh/alaRGGIkMPJUKotFW4K9CUTtBoIbJ3J/qe0/1r+yr9LfgKLSB0/ynah20sQrXT0f1FeJA4WIllu2RqjEddpae5rTnajBg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=7SGRrPS3HdagIo/c2OYsBv+ocTyBUS7cJdVp/ApU4Ww=;
+ b=itv+XtdYBgxoeQBwLYfTsLMX6A5Kmr7PE6m06cSF/XPwPEDSVUQ1eALkgRMH2eIyddZoMIVyXdU5elWqqKvQO7TWeshd/3zmj9KuI2h64O7VjV67PJXK+4HNryP1/NBbElP6aoF/thCEy1/WDzqdJR5hA6GQMVae5QzZhv5W2ySr3sRJqwk0vY2eXyNYfk8Q1Ywr2f/ZQaajQpKr0nH5kDFbjr/RtMGFXKObshU3zSXQ9Q3+2lUNjwV+J19j/cYGB4S+hLjNjrNzoutPgSYIm/05Yx+nT8vF5oEmt8VudWIhFYMvW7MC3D23tjBjcHcfG1Tu/BGl3pxc8ikvFj5FCg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.118.232) smtp.rcpttodomain=8bytes.org smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=7SGRrPS3HdagIo/c2OYsBv+ocTyBUS7cJdVp/ApU4Ww=;
+ b=maGviLPjtdymgUrpwbT7HAu6eSV7myau0SyhSc3EO6EC9+wczrlf4ZB73LqloDZRUHyDMqPz2MwOIZ14il6LeCBjuO4Qf+Xbyyyv8IrHRgZxPRxdwI7PvdsVL9dnMfnpZf3nfJ99oahutHnfkcONyyJkpsPApzYcG4L0rUuMFqNLkgaiBFK5JYpIijn2KTbKPQCDCC6YsMcDw5AfYhtpbfjDXzwv5pgqepo/IHTImgTZ3mO3Sa5NR1TuLT6k33XNpY62zfuD+PGdZvaVSRwskFI3EFnZMuJuM1vqDif+wx5aikjtNRKXlve0JYVGGt2ahCLXBHScM49IExoLmiE5zQ==
+Received: from SJ0PR05CA0152.namprd05.prod.outlook.com (2603:10b6:a03:339::7)
+ by CY8PR12MB7586.namprd12.prod.outlook.com (2603:10b6:930:99::15) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9228.10; Wed, 15 Oct
+ 2025 22:02:47 +0000
+Received: from SJ5PEPF000001ED.namprd05.prod.outlook.com
+ (2603:10b6:a03:339:cafe::dc) by SJ0PR05CA0152.outlook.office365.com
+ (2603:10b6:a03:339::7) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9253.4 via Frontend Transport; Wed,
+ 15 Oct 2025 22:02:47 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.118.232)
+ smtp.mailfrom=nvidia.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.118.232 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.118.232; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.118.232) by
+ SJ5PEPF000001ED.mail.protection.outlook.com (10.167.242.201) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.9228.7 via Frontend Transport; Wed, 15 Oct 2025 22:02:47 +0000
+Received: from drhqmail203.nvidia.com (10.126.190.182) by mail.nvidia.com
+ (10.127.129.5) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Wed, 15 Oct
+ 2025 15:02:38 -0700
+Received: from drhqmail203.nvidia.com (10.126.190.182) by
+ drhqmail203.nvidia.com (10.126.190.182) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.20; Wed, 15 Oct 2025 15:02:37 -0700
+Received: from Asurada-Nvidia (10.127.8.12) by mail.nvidia.com
+ (10.126.190.182) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20 via Frontend
+ Transport; Wed, 15 Oct 2025 15:02:35 -0700
+Date: Wed, 15 Oct 2025 15:02:34 -0700
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: <joro@8bytes.org>, <jgg@nvidia.com>, <kevin.tian@intel.com>
+CC: <suravee.suthikulpanit@amd.com>, <will@kernel.org>,
+	<robin.murphy@arm.com>, <sven@kernel.org>, <j@jannau.net>,
+	<jean-philippe@linaro.org>, <robin.clark@oss.qualcomm.com>,
+	<dwmw2@infradead.org>, <baolu.lu@linux.intel.com>, <yong.wu@mediatek.com>,
+	<matthias.bgg@gmail.com>, <angelogioacchino.delregno@collabora.com>,
+	<tjeznach@rivosinc.com>, <pjw@kernel.org>, <palmer@dabbelt.com>,
+	<aou@eecs.berkeley.edu>, <heiko@sntech.de>, <schnelle@linux.ibm.com>,
+	<mjrosato@linux.ibm.com>, <wens@csie.org>, <jernej.skrabec@gmail.com>,
+	<samuel@sholland.org>, <thierry.reding@gmail.com>, <jonathanh@nvidia.com>,
+	<iommu@lists.linux.dev>, <linux-kernel@vger.kernel.org>,
+	<asahi@lists.linux.dev>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-arm-msm@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-riscv@lists.infradead.org>, <linux-rockchip@lists.infradead.org>,
+	<linux-s390@vger.kernel.org>, <linux-sunxi@lists.linux.dev>,
+	<linux-tegra@vger.kernel.org>, <virtualization@lists.linux.dev>,
+	<patches@lists.linux.dev>
+Subject: Re: [PATCH v1 15/20] iommu/fsl_pamu_domain: Implement
+ fsl_pamu_domain_test_device
+Message-ID: <aPAZ+hknPmn7GSns@Asurada-Nvidia>
+References: <cover.1760312725.git.nicolinc@nvidia.com>
+ <a54211182e22db598b2a26f589e8f5f34ad78f98.1760312725.git.nicolinc@nvidia.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/5] drm/rockchip: dw_hdmi_qp: Improve error handling
- with dev_err_probe()
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
- devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- Alexey Charkov <alchark@gmail.com>, Algea Cao <algea.cao@rock-chips.com>,
- Andy Yan <andy.yan@rock-chips.com>,
- Cenk Uluisik <cenk.uluisik@googlemail.com>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Jimmy Hon <honyuenkwun@gmail.com>, Kever Yang <kever.yang@rock-chips.com>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Maxime Ripard
- <mripard@kernel.org>, Muhammed Efe Cetin <efectn@6tel.net>,
- Ondrej Jirman <megi@xff.cz>, Rob Herring <robh@kernel.org>,
- Sandy Huang <hjc@rock-chips.com>
-References: <20251005235542.1017-1-laurent.pinchart@ideasonboard.com>
- <20251005235542.1017-3-laurent.pinchart@ideasonboard.com>
- <gai5hfvu6xbbqpk4mu3i6nejolijeokjy3mkzca5xwzb4xwic7@jmee36svmwnb>
- <8706f168-5598-4f91-9ad0-fdbd04b410b7@collabora.com>
- <20251006162631.GK5944@pendragon.ideasonboard.com>
- <bfb68ced-e6ec-4636-816e-9b8fe8aa10b4@collabora.com>
- <20251009094122.GF12674@pendragon.ideasonboard.com>
-Content-Language: en-US
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-In-Reply-To: <20251009094122.GF12674@pendragon.ideasonboard.com>
+Content-Disposition: inline
+In-Reply-To: <a54211182e22db598b2a26f589e8f5f34ad78f98.1760312725.git.nicolinc@nvidia.com>
+X-NV-OnPremToCloud: ExternallySecured
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SJ5PEPF000001ED:EE_|CY8PR12MB7586:EE_
+X-MS-Office365-Filtering-Correlation-Id: 9b86166e-0e94-4460-4e10-08de0c369370
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|82310400026|36860700013|1800799024|376014|7416014;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?DEm0E062OZeDr7Kx+MIKv7FX+QtY7de0TPFI30lACvZPV0ZDNM8T3+VAr4OH?=
+ =?us-ascii?Q?zCuVB2yM89Q3zz6ga1y1GIwptgqdw9ALXvLpiFZUY3aFcZOnd+khIjfYM4uN?=
+ =?us-ascii?Q?2p1qmNH33WE/R7dvVhl7ZPEdITCOzPnRk47hJlXeNZlWa6rpwMyBK+nap7v7?=
+ =?us-ascii?Q?HFIqV1RI0o3AIB6OuQi4pQCAcODUGfnrthUXtyBBCeN1AGQwo6JVCNamOygM?=
+ =?us-ascii?Q?e9hrWHLuqSWJoRaMMPvYr7OIN+2mTbhX6o/Pj7rhU4sNthpD5Q8eU14dztLk?=
+ =?us-ascii?Q?vtzosnkyrUVkvVcMYI3650biT5SeS+sFr08sNpoGCggjt63HzHLU+6h7PSsc?=
+ =?us-ascii?Q?gGMF0GqJd4rSL+jXJAZE0aOvj/dVnWQnaNeyWz5kKhJ1eMOfJu7aMMX71rhN?=
+ =?us-ascii?Q?mIq8RANuPtLajMyaSPMOyUU/5ckZNQHIptC3PUkAQZY5VR2b8TrMyu7G3jMq?=
+ =?us-ascii?Q?hUccut6BEUxsLDlz0mHNrM4EVgxtvUbQe+sVkrjmoawriKs5IXBiIqEOotj5?=
+ =?us-ascii?Q?HkC6BfBMTNZRxBkBUjO1HWxyP6p0kcfh2vpKcGmKFz1ylbUlzTIUPZymY7rR?=
+ =?us-ascii?Q?hbK7/FTEuWq7egEQWHK8nNMnwgiboeCSwtmB8whWLYTyYT9/ucDbuDMSqQ3H?=
+ =?us-ascii?Q?rWXGsjLeBEG5OktuGX2fJydIG8c4IaNDjIbBVHJ7VTQDLwAnG7DiiYp/+GkR?=
+ =?us-ascii?Q?P3lUEo6vMO1hQ2E8TEF1IpHiCWac90FXWRG7Uk5TMkoY2OJtXhe/NUhRXqoM?=
+ =?us-ascii?Q?NWGhwHMh1SP1SHeZ+L19PJ3ZSwZN8MUx0UUYsnAOepV3msUFl69SpqEYOffn?=
+ =?us-ascii?Q?aJu1XFa1dbnt2hIXQZxUc70sI9eOtaMj9052s9lmI469wKM1HZBKArdyPgeP?=
+ =?us-ascii?Q?9nPOTEUkgXEY70vbY9bfF9YBR3Rj6HvPBvN+0wXJA7yFWYcDvRR4tQc/g/xb?=
+ =?us-ascii?Q?fjCMlEtlijhVqIO7OVS42LrkyjqdGyT4g10l9E7v+q4ryBA+5Qe1QBCV2Mxn?=
+ =?us-ascii?Q?qOr0mUUtyu4p8dKM3Xwjmyl2Je8g+onb0BmboltkCPzOpP/bZyREH6vvrIZd?=
+ =?us-ascii?Q?Giy7ANM323Cva97iZew9lrlBp23WLEYBj2SPPl/J8tCtGsvffRKjAANOadXN?=
+ =?us-ascii?Q?5WgJ0ttHdO1FyMOyDyHq5Fnll/xld5dHUwlkngK8pPgx8j4nG0Wq8v5qX+1L?=
+ =?us-ascii?Q?EkIGJmPGL5cHWwUQtBY0CGYcJ40Zg4lHTYVCBIuUSYtnj659zV2q00o6XxEO?=
+ =?us-ascii?Q?YoaEocPesTdf5GNbxPkK3mXMvvlSe2BAJYLl/CCtYNCgq1c180eX+WIr9hK5?=
+ =?us-ascii?Q?DUOisyNnpZnqVZG0NTzw2iHp2VLFmUbvOsOCsDIH/08knEP8Xs//Q6SIO++x?=
+ =?us-ascii?Q?tB/1RiDJZfEm+NnOlq4fJculdL/iuRPfYkIbTg+YBcTEAApQfS/n1d3v4z/o?=
+ =?us-ascii?Q?iLTjAdxzrPISKaWBL4RMu0oZjjOJipqD0+4E7poQtB3R7uLAex3QZQO9WbKD?=
+ =?us-ascii?Q?BEVlTXGsi42QwDjHQvCzhFE9sTzF6B96LFNjcQnaOjKqnHvOTu1Lds5P2hf8?=
+ =?us-ascii?Q?MEdh4WjGsZ1DubHsImA=3D?=
+X-Forefront-Antispam-Report: CIP:216.228.118.232;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:dc7edge1.nvidia.com;CAT:NONE;SFS:(13230040)(82310400026)(36860700013)(1800799024)(376014)(7416014);DIR:OUT;SFP:1101;
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Oct 2025 22:02:47.4353
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 9b86166e-0e94-4460-4e10-08de0c369370
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[216.228.118.232];Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: SJ5PEPF000001ED.namprd05.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY8PR12MB7586
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251015_141452_325700_5D37C4FE 
-X-CRM114-Status: GOOD (  20.22  )
+X-CRM114-CacheID: sfid-20251015_150303_839255_ECD4B846 
+X-CRM114-Status: UNSURE (   8.59  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,67 +167,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 10/9/25 12:41 PM, Laurent Pinchart wrote:
-> On Thu, Oct 09, 2025 at 10:24:25AM +0300, Cristian Ciocaltea wrote:
->> On 10/6/25 7:26 PM, Laurent Pinchart wrote:
->>> On Mon, Oct 06, 2025 at 05:37:23PM +0300, Cristian Ciocaltea wrote:
->>>> On 10/6/25 3:02 PM, Dmitry Baryshkov wrote:
->>>>> On Mon, Oct 06, 2025 at 02:55:38AM +0300, Laurent Pinchart wrote:
->>>>>> From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
->>>>>>
->>>>>> The error handling in dw_hdmi_qp_rockchip_bind() is quite inconsistent,
->>>>>> i.e. in some cases the error code is not included in the message, while
->>>>>> in some other cases there is no check for -EPROBE_DEFER.
->>>>>>
->>>>>> Since this is part of the probe path, address the aforementioned issues
->>>>>> by switching to dev_err_probe(), which also reduces the code a bit.
->>>>>>
->>>>>> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
->>>>>> Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
->>>>>> ---
->>>>>>  .../gpu/drm/rockchip/dw_hdmi_qp-rockchip.c    | 62 +++++++------------
->>>>>>  1 file changed, 24 insertions(+), 38 deletions(-)
->>>>>>
->>>>>> diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
->>>>>> index 7d531b6f4c09..4e7794aa2dde 100644
->>>>>> --- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
->>>>>> +++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
->>>>>> @@ -457,10 +457,8 @@ static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
->>>>>>  		return -ENODEV;
->>>>>>  
->>>>>>  	if (!cfg->ctrl_ops || !cfg->ctrl_ops->io_init ||
->>>>>> -	    !cfg->ctrl_ops->irq_callback || !cfg->ctrl_ops->hardirq_callback) {
->>>>>> -		dev_err(dev, "Missing platform ctrl ops\n");
->>>>>> -		return -ENODEV;
->>>>>> -	}
->>>>>> +	    !cfg->ctrl_ops->irq_callback || !cfg->ctrl_ops->hardirq_callback)
->>>>>> +		return dev_err_probe(dev, -ENODEV, "Missing platform ctrl ops\n");
->>>>>
->>>>> This only makes sense for the purpose of unification.
->>>>
->>>> Right, as mentioned in the commit description, the intention was to ensure
->>>> consistent error handling across the probe path rather than limiting the scope
->>>> to -EPROBE_DEFER exclusively.
->>>
->>> Should I revert this change in v3 or keep it ? I see value in
->>> unification, but I don't mind either way. Dmitry, what's your preference
->>> ?
->>
->> I missed to point out this patch has been also sent a while ago as part of
->> another series [1] which should be ready for merging.  It'd be great if there's
->> no need to revert any changes, otherwise we need to keep those in sync.
->>
->> Regardless, I'll let you know if that gets applied first, allowing us to drop
->> this one after rebasing.
-> 
-> Thanks for the information. I'm happy to merge 3/5 on top of that
-> series. The DT binding change in 1/5 can be merged separately.
+On Sun, Oct 12, 2025 at 05:05:12PM -0700, Nicolin Chen wrote:
+> +static int fsl_pamu_domain_test_device(struct iommu_domain *domain,
+> +				       struct device *dev, ioasid_t pasid,
+> +				       struct iommu_domain *old)
+> +{
+...
+> +	liodn = of_get_property(dev->of_node, "fsl,liodn", &len);
+> +	if (!liodn) {
+> +		pr_debug("missing fsl,liodn property at %pOF\n", dev->of_node);
+> +		return -ENODEV;
+> +	}
+> +
+> +	guard(spin_lock_irqsave)(&dma_domain->domain_lock);
 
-That series has been applied onto drm-misc-next.
+Sorry. This should be:
+	guard(spinlock_irqsave)(&dma_domain->domain_lock);
 
->> [1] https://lore.kernel.org/all/20250903-rk3588-hdmi-cec-v4-3-fa25163c4b08@collabora.com/
-> 
+I have fixed this locally, and did the full build tests on all
+impacted arches.
 
+I will send a v2 next week while collecting review comments here.
+
+Thanks
+Nicolin
 
 _______________________________________________
 Linux-rockchip mailing list
