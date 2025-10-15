@@ -4,93 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6563FCCD185
-	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Oct 2025 20:34:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45997CCD193
+	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Oct 2025 21:15:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=K6Vi671KX/UO2OY3ZwjypeUiFjeCuk34zp3ZzbUvsj0=; b=SrHDDXd40N88Y8
-	n991eL9GKei4edds1+mQF4vlNco3AE6JtjGO2m58gTdVla8orFnYUsIUVSzhloIXR9vz9ZgYgI7XP
-	LcJonVMJbiv6LXZP9UdiXt+a709ZF0BTyv1YA5ZklEGDsIOopjT6VpwFyPuPxJkUGV2MphXXolAri
-	uTMrfIfAN60j9mDXQIqbmkln8OKl59acCXCTZMcEhY+xRN4dlZ/GAPR72qawPx39nJ3uyRNp2LzJJ
-	7+TOoNTdV8zDh+ApkeHJAfiiDPZ7dD+4SGcDQh2vNdthcdfzRu3AVrBnpCQwadozZbQPKxNuFM8bK
-	2RPQRqsg7jG/YMDloVlA==;
+	List-Owner; bh=yZ3GvftZ4M/htcAcoshGEcztT5gLhBGG0q9UXpHD4kA=; b=M616PznuaorWsC
+	PFiUdWSYYZMFQ7O8vxNE2ry4inK9dJNSp9vTHLxpKfwKVgiK2p6IUjBJM7ct6aeg8AkYY1gxOLPxv
+	vG/+9sHlwfLyJjVKj+IwB5/m5CxTcPVdlmDo5t0H/QG1leO9SDv63r/Vxw7O2TEPDR5q2Qq4vztG2
+	XL64z3D9/fIIbujFKv20pxsNclsRG8sJpp/VSFaGzKLfdGjl0Xkn2lmx9ddubXyb2yQFlQhdeioQy
+	4z2wiBtdwiJufBONErY1BNWpgthbZOXC/KLWOujnWF63hNQ0+UnESBdGV9QZ9PtlMUPg4hR1OIjlH
+	azsAMPP1ikhuxyArkKDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v98Cy-00000002qon-1ctb;
-	Wed, 15 Oct 2025 20:34:52 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1v98pk-00000002vUi-0pCZ;
+	Wed, 15 Oct 2025 21:14:56 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v98Cw-00000002qny-0AjB;
-	Wed, 15 Oct 2025 20:34:50 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=oLA31juQGoiGMUFqFzO9vTxSXS7E8CLrzp7upb7S4y4=; b=RE/bb2wsWC0jFPZ0LnXOCzGckA
-	MSSGJQAdCT0bNdMy2vS/bI1cV+TseWvApROuIScugMXMH3KmH3GSuOyHcghxkjxg/GawZtAMfqV77
-	fNWaUlKUB9ZpgL2864hrTB7NvzodbvaK5XdHINIs5ouvPnIM2SHsCe/4DEQQCjqTNCPWfUw8YepfM
-	0htiYe6MfpCEcfHecLu/8/3R3zszcjTy+sJEKgD9Wzd9Wu2i9OrQHYUZe/V6kHiStVfYeNe+vVgn0
-	peXx4wSWY79Ydj4qw8XhW02ljHsWpZnrxTrP6L2A+QrgmEGwT8pWJt7+qgzTywCmLUMjyrKQQVtpa
-	RSqKBVgA==;
-Received: from gloria.sntech.de ([185.11.138.130])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v98Ce-00000006Egi-0z28;
-	Wed, 15 Oct 2025 20:34:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=oLA31juQGoiGMUFqFzO9vTxSXS7E8CLrzp7upb7S4y4=; b=rzJavV87hAgCX95iHRI8ObRfv3
-	wEp+Pc0pnwzuAcaIiVvZGyZXJuiKY5TIr0dvGQsZ55qp1R0ec/kDZMhUoiCYl3Ddk3YRCukg1tIXk
-	zjfH50xfAm98qHeof2rRjjna6bPfZPlEmUQ0D843Lm9jdubu/3lN7Mx1krASzz/75FztfB0DrtIXA
-	gdo338yTXvbipLWJZslBzbEN3hTKnmE9h6rs94OoKUvIJKfLBbVosU+CGe8pn7rMreD62EIE5OZIa
-	JLBcqXCcw3i53sP+GIEZ57MjjAXVL9VC55b3ZK5+aSFfJVntsR42Ttet1+vztxHTzRiI+DgFlpDh9
-	OkHOY6qQ==;
-Received: from i53875a40.versanet.de ([83.135.90.64] helo=localhost.localdomain)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1v98C8-0002Qp-Oa; Wed, 15 Oct 2025 22:34:00 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: Sandy Huang <hjc@rock-chips.com>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
-	Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Catalin Marinas <catalin.marinas@arm.com>,
-	Will Deacon <will@kernel.org>,
-	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	kernel@collabora.com,
-	dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Algea Cao <algea.cao@rock-chips.com>,
-	Derek Foreman <derek.foreman@collabora.com>,
-	Daniel Stone <daniels@collabora.com>
-Subject: Re: (subset) [PATCH v4 0/6] Add HDMI CEC support to Rockchip RK3588/RK3576 SoCs
-Date: Wed, 15 Oct 2025 22:33:50 +0200
-Message-ID: <176056042470.2037566.16932540958621144492.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250903-rk3588-hdmi-cec-v4-0-fa25163c4b08@collabora.com>
-References: <20250903-rk3588-hdmi-cec-v4-0-fa25163c4b08@collabora.com>
+	id 1v98pg-00000002vTf-0SBQ;
+	Wed, 15 Oct 2025 21:14:54 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1760562889;
+	bh=zkiZ/eu7Z3CIagnnUlT7M5TqSPRcECMp5fP+Gx2/JQE=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=b2Ch8KFLcmftV8KVxf+RsBh1T07gUeCuDfHhfGziTiou/8qQJzuywtp5ci19XMY7e
+	 mm2l/g2dSbm4KmjqefXCgHiH5GoP5ppi3v/uE5nG3ir067Qkkp7hUPlXcodE50P8hk
+	 hJGv4K2ae94mp9gJcHrRMqG7hFsW47KkBccDptbwn+EAT4bCTXWNtnzVF/Zd4ddyyY
+	 /w1F99eRyl6V/En+nGBOVwt6y+m6oqDLswdsq1Ginl0viQEBPtub2ggyjckI4EZHEp
+	 EE1lJm7Lbd5kYi3VNgeENqQLms0VRydmhciC35ukRIokH6qF+78CxyBZbpuO0s84Eg
+	 EReE78b2R9IUA==
+Received: from [192.168.1.90] (unknown [82.79.138.145])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0B62517E12C8;
+	Wed, 15 Oct 2025 23:14:49 +0200 (CEST)
+Message-ID: <ea6a38dc-65e1-4ac7-ad3a-813633fdff96@collabora.com>
+Date: Thu, 16 Oct 2025 00:14:48 +0300
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 2/5] drm/rockchip: dw_hdmi_qp: Improve error handling
+ with dev_err_probe()
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+ devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ Alexey Charkov <alchark@gmail.com>, Algea Cao <algea.cao@rock-chips.com>,
+ Andy Yan <andy.yan@rock-chips.com>,
+ Cenk Uluisik <cenk.uluisik@googlemail.com>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Jimmy Hon <honyuenkwun@gmail.com>, Kever Yang <kever.yang@rock-chips.com>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Maxime Ripard
+ <mripard@kernel.org>, Muhammed Efe Cetin <efectn@6tel.net>,
+ Ondrej Jirman <megi@xff.cz>, Rob Herring <robh@kernel.org>,
+ Sandy Huang <hjc@rock-chips.com>
+References: <20251005235542.1017-1-laurent.pinchart@ideasonboard.com>
+ <20251005235542.1017-3-laurent.pinchart@ideasonboard.com>
+ <gai5hfvu6xbbqpk4mu3i6nejolijeokjy3mkzca5xwzb4xwic7@jmee36svmwnb>
+ <8706f168-5598-4f91-9ad0-fdbd04b410b7@collabora.com>
+ <20251006162631.GK5944@pendragon.ideasonboard.com>
+ <bfb68ced-e6ec-4636-816e-9b8fe8aa10b4@collabora.com>
+ <20251009094122.GF12674@pendragon.ideasonboard.com>
+Content-Language: en-US
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+In-Reply-To: <20251009094122.GF12674@pendragon.ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251015_213435_058148_D8BD651B 
-X-CRM114-Status: GOOD (  13.61  )
+X-CRM114-CacheID: sfid-20251015_141452_325700_5D37C4FE 
+X-CRM114-Status: GOOD (  20.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,27 +91,67 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-On Wed, 03 Sep 2025 21:50:58 +0300, Cristian Ciocaltea wrote:
-> The first patch in the series implements the CEC capability of the
-> Synopsys DesignWare HDMI QP TX controller found in RK3588 & RK3576 Socs.
-> This is based on the downstream code, but rewritten on top of the CEC
-> helpers added recently to the DRM HDMI connector framework.
+On 10/9/25 12:41 PM, Laurent Pinchart wrote:
+> On Thu, Oct 09, 2025 at 10:24:25AM +0300, Cristian Ciocaltea wrote:
+>> On 10/6/25 7:26 PM, Laurent Pinchart wrote:
+>>> On Mon, Oct 06, 2025 at 05:37:23PM +0300, Cristian Ciocaltea wrote:
+>>>> On 10/6/25 3:02 PM, Dmitry Baryshkov wrote:
+>>>>> On Mon, Oct 06, 2025 at 02:55:38AM +0300, Laurent Pinchart wrote:
+>>>>>> From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+>>>>>>
+>>>>>> The error handling in dw_hdmi_qp_rockchip_bind() is quite inconsistent,
+>>>>>> i.e. in some cases the error code is not included in the message, while
+>>>>>> in some other cases there is no check for -EPROBE_DEFER.
+>>>>>>
+>>>>>> Since this is part of the probe path, address the aforementioned issues
+>>>>>> by switching to dev_err_probe(), which also reduces the code a bit.
+>>>>>>
+>>>>>> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+>>>>>> Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+>>>>>> ---
+>>>>>>  .../gpu/drm/rockchip/dw_hdmi_qp-rockchip.c    | 62 +++++++------------
+>>>>>>  1 file changed, 24 insertions(+), 38 deletions(-)
+>>>>>>
+>>>>>> diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
+>>>>>> index 7d531b6f4c09..4e7794aa2dde 100644
+>>>>>> --- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
+>>>>>> +++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
+>>>>>> @@ -457,10 +457,8 @@ static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
+>>>>>>  		return -ENODEV;
+>>>>>>  
+>>>>>>  	if (!cfg->ctrl_ops || !cfg->ctrl_ops->io_init ||
+>>>>>> -	    !cfg->ctrl_ops->irq_callback || !cfg->ctrl_ops->hardirq_callback) {
+>>>>>> -		dev_err(dev, "Missing platform ctrl ops\n");
+>>>>>> -		return -ENODEV;
+>>>>>> -	}
+>>>>>> +	    !cfg->ctrl_ops->irq_callback || !cfg->ctrl_ops->hardirq_callback)
+>>>>>> +		return dev_err_probe(dev, -ENODEV, "Missing platform ctrl ops\n");
+>>>>>
+>>>>> This only makes sense for the purpose of unification.
+>>>>
+>>>> Right, as mentioned in the commit description, the intention was to ensure
+>>>> consistent error handling across the probe path rather than limiting the scope
+>>>> to -EPROBE_DEFER exclusively.
+>>>
+>>> Should I revert this change in v3 or keep it ? I see value in
+>>> unification, but I don't mind either way. Dmitry, what's your preference
+>>> ?
+>>
+>> I missed to point out this patch has been also sent a while ago as part of
+>> another series [1] which should be ready for merging.  It'd be great if there's
+>> no need to revert any changes, otherwise we need to keep those in sync.
+>>
+>> Regardless, I'll let you know if that gets applied first, allowing us to drop
+>> this one after rebasing.
 > 
-> The second patch is needed for RK3576 in order to fixup the timer base
-> setup according to the actual reference clock rate, which differs
-> slightly from RK3588.
+> Thanks for the information. I'm happy to merge 3/5 on top of that
+> series. The DT binding change in 1/5 can be merged separately.
+
+That series has been applied onto drm-misc-next.
+
+>> [1] https://lore.kernel.org/all/20250903-rk3588-hdmi-cec-v4-3-fa25163c4b08@collabora.com/
 > 
-> [...]
 
-Applied, thanks!
-
-[6/6] arm64: defconfig: Enable DW HDMI QP CEC support
-      commit: ae753d769a5f63cddd483ec50067ec61eef5489d
-
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
