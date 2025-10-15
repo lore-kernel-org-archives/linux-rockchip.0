@@ -4,55 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 893E1CCD184
-	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Oct 2025 23:33:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB867CCD18E
+	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Oct 2025 06:22:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-ID:MIME-Version:To:Cc:
-	Date:References:In-Reply-To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=b0Y8hWDPmi+SqwYxiUV+YDI8A4dMrQlF393ofBY2pg8=; b=o4j54SNtW0VwJ/
-	bhYsD34PoUPXXVfgU+ZWj4ia4cL2EmW31wJZsskuPoJtXn/GhXFiM0zOlfDDjaPhmdak7npekQkKA
-	rZEAYnvpZefoDoyHbs1p12okls1VbZKDUlATn2I1gL4y02Tn1YU3vN9BVbWQ1Jf4byImTJZfoLZNL
-	bkNmmtbFBZf9i6wJO0ANT/afzPx12YbvpOGNd0ai3Uoa79ZivMD5KpxL1cBaiGuwWKjmpn249WKh6
-	h+z3MxFEyXvm0ng0b2FRt70nYAHX6kgt4VDaXKvfZCdWzzpwNtorm0I6ba2Sf0cH85m1gJupGg53q
-	ZebnZDatL28BJPoOZ7hQ==;
+	List-Owner; bh=3tSATerWdBZ9tRgarDD+AW2h82cGnxun3/IPQv5kkJo=; b=r6qVcz7+UIe4c2
+	8zp4fgdFDRULj5P26dCOrKldyBWjeC9mtLk7Eq3PGocBvgyyP2FLI37eGo4wl9eN6ak3gpydcqact
+	/N1Ue23EJeUoRik2n2e4kN6yNEGwGjCnNZhfXtlP+HKUoq1D3uPbHZjbQAbafTAPdqRsbpsQ7Fm5L
+	75dn3PeTQ17kIjOAHGNtKksxC3ALT+y7MliCxrusJbpsBxK6Idxdo6BK2ZxEIUrzt+fqSZX+FlDwn
+	+Q0gqAqzlICSajsPmVRZzhX0vCcW+2wJVzd9QsVJdlpyTCJgRzzD8PBF/w8mZPMIVcgF4T2jLOAl+
+	+Jkuie++fRJE9biSb2dw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8oWY-000000002tZ-06YR;
-	Tue, 14 Oct 2025 23:33:46 +0000
-Received: from mail1.manjaro.org ([2a01:4f8:c010:b6e8::1])
+	id 1v8uuJ-00000000aUE-1wUq;
+	Wed, 15 Oct 2025 06:22:43 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8oWV-000000002tD-0sZM
+	id 1v8uuH-00000000aTj-2WZz
 	for linux-rockchip@lists.infradead.org;
-	Tue, 14 Oct 2025 23:33:44 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPA id CB9AB40C22;
-	Wed, 15 Oct 2025 01:33:35 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=dkim;
-	t=1760484819; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=ahRdwrjWfMe0hKH1Tt1jKBLeldYczMpX7xtNUT0Ar2o=;
-	b=vhS0cTXZ1xd5DotYvzh1ii/gTMCLq3J1q+msKWoRt8k+J3S9YpBI3ZZeFoX5RRx0tgWTIU
-	bNYT5/dNi1mETlfmNXXfBd7QXUtoWx7k6OJuA955cTp6LOB9HzI255LP7a+pMsnaxi3Alv
-	p+dhEKd2Gysxwwu5gPOPtsj1z9AIOYxo35JrBcZmhKjtw1qTFw7Vylz4gQUSPj1C3foD+4
-	8eWrst8K+SGpfXyc8AdglJF7gGgxlC+xNb3yeCzUJ1a1jzGhWBHAv3frava2krodiSW4xe
-	C6+eQ+FAQBncWvr4e17sqxI8pXinVkG/3FRbJGPJv4CnehCb0hbVAMY6I75mfg==
-From: "Dragan Simic" <dsimic@manjaro.org>
-In-Reply-To: <20251014184905.GA896847@bhelgaas>
+	Wed, 15 Oct 2025 06:22:42 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id DFA0745ECA;
+	Wed, 15 Oct 2025 06:22:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7E57AC4CEF8;
+	Wed, 15 Oct 2025 06:22:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1760509360;
+	bh=GiBaNBK3/IViNyRFvWPC3WNeXPpoK/LfTYw7Mrnj5Bs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=kCjeq1O8SKcnC5uwXJkMGFAUZ9N0PYCklm8+0Bb1n3G9rVunCQUf+gtkbky+uaXYR
+	 3w32PUiWGPvCOgFRW9IpLRq5HaCoXNbp2UyffHJlwR5/n1TZh3Ft1xbCq74Lt0QhbT
+	 XhfO2BHxHuKbMfAOkBBR4188Ucr22ttit/xCnc9/kND+W6Kh6D8VHKs/G7mhbruvWI
+	 VoB9OgsMdnI9kiOB08eO4bX2g9g/dpOJQQG4xuZ6s226rd1vwe9tkgN1Aalkyra9uw
+	 YuBoWXL8cvkMZ8rX8T+5j9U/+8okzV6hKGfZRCuEKEVLuQGb8/E81RPFJb012ucGOq
+	 Dmv+lTF9PlF3w==
+Date: Wed, 15 Oct 2025 11:52:25 +0530
+From: Manivannan Sadhasivam <mani@kernel.org>
+To: Dragan Simic <dsimic@manjaro.org>
+Cc: Bjorn Helgaas <helgaas@kernel.org>, FUKAUMI Naoki <naoki@radxa.com>, 
+	manivannan.sadhasivam@oss.qualcomm.com, Bjorn Helgaas <bhelgaas@google.com>, 
+	Lorenzo Pieralisi <lpieralisi@kernel.org>, Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
+	Rob Herring <robh@kernel.org>, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-msm@vger.kernel.org, "David E. Box" <david.e.box@linux.intel.com>, 
+	Kai-Heng Feng <kai.heng.feng@canonical.com>, "Rafael J. Wysocki" <rafael@kernel.org>, 
+	Heiner Kallweit <hkallweit1@gmail.com>, Chia-Lin Kao <acelan.kao@canonical.com>, 
+	linux-rockchip@lists.infradead.org, regressions@lists.linux.dev
+Subject: Re: [PATCH v2 1/2] PCI/ASPM: Override the ASPM and Clock PM states
+ set by BIOS for devicetree platforms
+Message-ID: <fxakjhx7lrikgs4x3nbwgnhhcwmlum3esxp2dj5d26xc5iyg22@wkbbwysh3due>
 References: <20251014184905.GA896847@bhelgaas>
-Date: Wed, 15 Oct 2025 01:33:35 +0200
-Cc: "FUKAUMI Naoki" <naoki@radxa.com>, manivannan.sadhasivam@oss.qualcomm.com, "Bjorn Helgaas" <bhelgaas@google.com>, "Manivannan Sadhasivam" <mani@kernel.org>, "Lorenzo Pieralisi" <lpieralisi@kernel.org>, =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, "Rob Herring" <robh@kernel.org>, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org, =?utf-8?q?David_E=2E_Box?= <david.e.box@linux.intel.com>, "Kai-Heng Feng" <kai.heng.feng@canonical.com>, =?utf-8?q?Rafael_J=2E_Wysocki?= <rafael@kernel.org>, "Heiner Kallweit" <hkallweit1@gmail.com>, "Chia-Lin Kao" <acelan.kao@canonical.com>, linux-rockchip@lists.infradead.org, regressions@lists.linux.dev
-To: "Bjorn Helgaas" <helgaas@kernel.org>
+ <0899e629-eaaf-1000-72b5-52ad977677a8@manjaro.org>
 MIME-Version: 1.0
-Message-ID: <0899e629-eaaf-1000-72b5-52ad977677a8@manjaro.org>
-Subject: =?utf-8?q?Re=3A?= [PATCH v2 1/2] =?utf-8?q?PCI/ASPM=3A?= Override the ASPM 
- and Clock PM states set by BIOS for devicetree platforms
-User-Agent: SOGoMail 5.12.3
-X-Last-TLS-Session-Version: None
+Content-Disposition: inline
+In-Reply-To: <0899e629-eaaf-1000-72b5-52ad977677a8@manjaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251014_163343_518661_A8060282 
-X-CRM114-Status: GOOD (  26.54  )
+X-CRM114-CacheID: sfid-20251014_232241_848838_22875B84 
+X-CRM114-Status: GOOD (  48.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,83 +75,97 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello all,
-
-On Tuesday, October 14, 2025 20:49 CEST, Bjorn Helgaas <helgaas@kernel.org> wrote:
-> On Wed, Oct 15, 2025 at 01:30:16AM +0900, FUKAUMI Naoki wrote:
-> > I've noticed an issue on Radxa ROCK 5A/5B boards, which are based on the
-> > Rockchip RK3588(S) SoC.
-> > 
-> > When running Linux v6.18-rc1 or linux-next since 20250924, the kernel either
-> > freezes or fails to probe M.2 Wi-Fi modules. This happens with several
-> > different modules I've tested, including the Realtek RTL8852BE, MediaTek
-> > MT7921E, and Intel AX210.
-> > 
-> > I've found that reverting the following commit (i.e., the patch I'm replying
-> > to) resolves the problem:
-> > commit f3ac2ff14834a0aa056ee3ae0e4b8c641c579961
-> 
-> Thanks for the report, and sorry for the regression.
-> 
-> Since this affects several devices from different manufacturers and (I
-> assume) different drivers, it seems likely that there's some issue
-> with the Rockchip end, since ASPM probably works on these devices in
-> other systems.  So we should figure out if there's something wrong
-> with the way we configure ASPM, which we could potentially fix, or if
-> there's a hardware issue and we need some king of quirk to prevent
-> usage of ASPM on the affected platforms.
-> 
-> Can you collect a complete dmesg log when booting with
-> 
->   ignore_loglevel pci=earlydump dyndbg="file drivers/pci/* +p"
-> 
-> and the output of "sudo lspci -vv"?
-> 
-> When the kernel freezes, can you give us any information about where,
-> e.g., a log or screenshot?
-> 
-> Do you know if any platforms other than Radxa ROCK 5A/5B have this
-> problem?
-
-After thinking quite a bit about it, I think we should revert this
-patch and replace it with another patch that allows per-SoC, or
-maybe even per-board, opting into the forced enablement of PCIe
-ASPM.  Let me explain, please.
-
-When a new feature is introduced, it's expected that it may fail
-on some hardware or with some specific setups, so quirking off such
-instances, as time passes, is perfectly fine.  Such a new feature
-didn't work before it was implemented, so it's acceptable that it
-fails in some instances after the introduction, and that it gets
-quirked off as time passes and more testing is performed.
-
-However, when some widespread feature, such as PCIe, has already
-been in production for quite a while, introducing high-risk changes
-to it in a blanket fashion, while intending to have the incompatible
-or not-yet-ready platforms quirked off over time, simply isn't the
-way to go.  Breaking stuff intentionally to find out what actually
-doesn't work is rarely a good option.
-
-Thus, I'd suggest that this patch is replaced with nother patches,
-which would introduce an additional ASPM opt-in switch to the PCI
-binding, allowing SoCs or boards to have it enabled _after_ proper
-testing is performed.  The PCIe driver may emit a warning that ASPM
-is to be enabled at some point in the future, to "bug" people about
-the need to perform the testing, etc.  With all that in place, we
-could expect that in a year or two PCIe ASPM could eventually be
-enabled everywhere.  Getting everything tested is a massive endeavor,
-but that's the only way not to break stuff.
-
-Biting the bullet and hoping that it all goes well, I'd say, isn't
-the right approach here.
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gV2VkLCBPY3QgMTUsIDIwMjUgYXQgMDE6MzM6MzVBTSArMDIwMCwgRHJhZ2FuIFNpbWljIHdy
+b3RlOgo+IEhlbGxvIGFsbCwKPiAKPiBPbiBUdWVzZGF5LCBPY3RvYmVyIDE0LCAyMDI1IDIwOjQ5
+IENFU1QsIEJqb3JuIEhlbGdhYXMgPGhlbGdhYXNAa2VybmVsLm9yZz4gd3JvdGU6Cj4gPiBPbiBX
+ZWQsIE9jdCAxNSwgMjAyNSBhdCAwMTozMDoxNkFNICswOTAwLCBGVUtBVU1JIE5hb2tpIHdyb3Rl
+Ogo+ID4gPiBJJ3ZlIG5vdGljZWQgYW4gaXNzdWUgb24gUmFkeGEgUk9DSyA1QS81QiBib2FyZHMs
+IHdoaWNoIGFyZSBiYXNlZCBvbiB0aGUKPiA+ID4gUm9ja2NoaXAgUkszNTg4KFMpIFNvQy4KPiA+
+ID4gCj4gPiA+IFdoZW4gcnVubmluZyBMaW51eCB2Ni4xOC1yYzEgb3IgbGludXgtbmV4dCBzaW5j
+ZSAyMDI1MDkyNCwgdGhlIGtlcm5lbCBlaXRoZXIKPiA+ID4gZnJlZXplcyBvciBmYWlscyB0byBw
+cm9iZSBNLjIgV2ktRmkgbW9kdWxlcy4gVGhpcyBoYXBwZW5zIHdpdGggc2V2ZXJhbAo+ID4gPiBk
+aWZmZXJlbnQgbW9kdWxlcyBJJ3ZlIHRlc3RlZCwgaW5jbHVkaW5nIHRoZSBSZWFsdGVrIFJUTDg4
+NTJCRSwgTWVkaWFUZWsKPiA+ID4gTVQ3OTIxRSwgYW5kIEludGVsIEFYMjEwLgo+ID4gPiAKPiA+
+ID4gSSd2ZSBmb3VuZCB0aGF0IHJldmVydGluZyB0aGUgZm9sbG93aW5nIGNvbW1pdCAoaS5lLiwg
+dGhlIHBhdGNoIEknbSByZXBseWluZwo+ID4gPiB0bykgcmVzb2x2ZXMgdGhlIHByb2JsZW06Cj4g
+PiA+IGNvbW1pdCBmM2FjMmZmMTQ4MzRhMGFhMDU2ZWUzYWUwZTRiOGM2NDFjNTc5OTYxCj4gPiAK
+PiA+IFRoYW5rcyBmb3IgdGhlIHJlcG9ydCwgYW5kIHNvcnJ5IGZvciB0aGUgcmVncmVzc2lvbi4K
+PiA+IAo+ID4gU2luY2UgdGhpcyBhZmZlY3RzIHNldmVyYWwgZGV2aWNlcyBmcm9tIGRpZmZlcmVu
+dCBtYW51ZmFjdHVyZXJzIGFuZCAoSQo+ID4gYXNzdW1lKSBkaWZmZXJlbnQgZHJpdmVycywgaXQg
+c2VlbXMgbGlrZWx5IHRoYXQgdGhlcmUncyBzb21lIGlzc3VlCj4gPiB3aXRoIHRoZSBSb2NrY2hp
+cCBlbmQsIHNpbmNlIEFTUE0gcHJvYmFibHkgd29ya3Mgb24gdGhlc2UgZGV2aWNlcyBpbgo+ID4g
+b3RoZXIgc3lzdGVtcy4gIFNvIHdlIHNob3VsZCBmaWd1cmUgb3V0IGlmIHRoZXJlJ3Mgc29tZXRo
+aW5nIHdyb25nCj4gPiB3aXRoIHRoZSB3YXkgd2UgY29uZmlndXJlIEFTUE0sIHdoaWNoIHdlIGNv
+dWxkIHBvdGVudGlhbGx5IGZpeCwgb3IgaWYKPiA+IHRoZXJlJ3MgYSBoYXJkd2FyZSBpc3N1ZSBh
+bmQgd2UgbmVlZCBzb21lIGtpbmcgb2YgcXVpcmsgdG8gcHJldmVudAo+ID4gdXNhZ2Ugb2YgQVNQ
+TSBvbiB0aGUgYWZmZWN0ZWQgcGxhdGZvcm1zLgo+ID4gCj4gPiBDYW4geW91IGNvbGxlY3QgYSBj
+b21wbGV0ZSBkbWVzZyBsb2cgd2hlbiBib290aW5nIHdpdGgKPiA+IAo+ID4gICBpZ25vcmVfbG9n
+bGV2ZWwgcGNpPWVhcmx5ZHVtcCBkeW5kYmc9ImZpbGUgZHJpdmVycy9wY2kvKiArcCIKPiA+IAo+
+ID4gYW5kIHRoZSBvdXRwdXQgb2YgInN1ZG8gbHNwY2kgLXZ2Ij8KPiA+IAo+ID4gV2hlbiB0aGUg
+a2VybmVsIGZyZWV6ZXMsIGNhbiB5b3UgZ2l2ZSB1cyBhbnkgaW5mb3JtYXRpb24gYWJvdXQgd2hl
+cmUsCj4gPiBlLmcuLCBhIGxvZyBvciBzY3JlZW5zaG90Pwo+ID4gCj4gPiBEbyB5b3Uga25vdyBp
+ZiBhbnkgcGxhdGZvcm1zIG90aGVyIHRoYW4gUmFkeGEgUk9DSyA1QS81QiBoYXZlIHRoaXMKPiA+
+IHByb2JsZW0/Cj4gCj4gQWZ0ZXIgdGhpbmtpbmcgcXVpdGUgYSBiaXQgYWJvdXQgaXQsIEkgdGhp
+bmsgd2Ugc2hvdWxkIHJldmVydCB0aGlzCj4gcGF0Y2ggYW5kIHJlcGxhY2UgaXQgd2l0aCBhbm90
+aGVyIHBhdGNoIHRoYXQgYWxsb3dzIHBlci1Tb0MsIG9yCj4gbWF5YmUgZXZlbiBwZXItYm9hcmQs
+IG9wdGluZyBpbnRvIHRoZSBmb3JjZWQgZW5hYmxlbWVudCBvZiBQQ0llCj4gQVNQTS4gIExldCBt
+ZSBleHBsYWluLCBwbGVhc2UuCj4gCgpBU1BNIGlzIGEgUENJZSBkZXZpY2Ugc3BlY2lmaWMgZmVh
+dHVyZSwgbm90aGluZyByZWxhdGVkIHRvIFNvQy9ib2FyZC4gRXZlbiBpZgp5b3UgbGltaXQgaXQg
+dG8gY2VydGFpbiBwbGF0Zm9ybXMsIHRoZXJlIGlzIG5vIGd1YXJhbnRlZSB0aGF0IGl0IHdpbGwg
+YmUgc2FmZSBhcwp0aGUgdXNlcnMgY2FuIGNvbm5lY3QgYSBidWdneSBkZXZpY2UgdG8gdGhlIHNs
+b3QgYW5kIGl0IGNvdWxkIGxlYWQgdG8gdGhlIHNhbWUKaXNzdWUuCgo+IFdoZW4gYSBuZXcgZmVh
+dHVyZSBpcyBpbnRyb2R1Y2VkLCBpdCdzIGV4cGVjdGVkIHRoYXQgaXQgbWF5IGZhaWwKPiBvbiBz
+b21lIGhhcmR3YXJlIG9yIHdpdGggc29tZSBzcGVjaWZpYyBzZXR1cHMsIHNvIHF1aXJraW5nIG9m
+ZiBzdWNoCj4gaW5zdGFuY2VzLCBhcyB0aW1lIHBhc3NlcywgaXMgcGVyZmVjdGx5IGZpbmUuICBT
+dWNoIGEgbmV3IGZlYXR1cmUKPiBkaWRuJ3Qgd29yayBiZWZvcmUgaXQgd2FzIGltcGxlbWVudGVk
+LCBzbyBpdCdzIGFjY2VwdGFibGUgdGhhdCBpdAo+IGZhaWxzIGluIHNvbWUgaW5zdGFuY2VzIGFm
+dGVyIHRoZSBpbnRyb2R1Y3Rpb24sIGFuZCB0aGF0IGl0IGdldHMKPiBxdWlya2VkIG9mZiBhcyB0
+aW1lIHBhc3NlcyBhbmQgbW9yZSB0ZXN0aW5nIGlzIHBlcmZvcm1lZC4KPiAKCkFTUE0gaXMgbm90
+IGEgbmV3IGZlYXR1cmUuIEl0IHdhcyBpbnRyb2R1Y2VkIG1vcmUgdGhhbiBhIGRlY2FkZSBiZWZv
+cmUuIEJ1dCB3ZQpzb21laG93IHByb2Nhc3RpbmF0ZWQgdGhlIGVuYWJsZW1lbnQgZm9yIHNvIGxv
+bmcgdW50aWwgd2UgcmVhbGl6ZWQgdGhhdCBpZiB3ZQpkb24ndCBkbyBpdCBub3csIHdlIHdvdWxk
+bid0IGJlIGFibGUgdG8gZG8gaXQgYW55dGltZSBpbiB0aGUgZnV0dXJlLgoKPiBIb3dldmVyLCB3
+aGVuIHNvbWUgd2lkZXNwcmVhZCBmZWF0dXJlLCBzdWNoIGFzIFBDSWUsIGhhcyBhbHJlYWR5Cj4g
+YmVlbiBpbiBwcm9kdWN0aW9uIGZvciBxdWl0ZSBhIHdoaWxlLCBpbnRyb2R1Y2luZyBoaWdoLXJp
+c2sgY2hhbmdlcwo+IHRvIGl0IGluIGEgYmxhbmtldCBmYXNoaW9uLCB3aGlsZSBpbnRlbmRpbmcg
+dG8gaGF2ZSB0aGUgaW5jb21wYXRpYmxlCj4gb3Igbm90LXlldC1yZWFkeSBwbGF0Zm9ybXMgcXVp
+cmtlZCBvZmYgb3ZlciB0aW1lLCBzaW1wbHkgaXNuJ3QgdGhlCj4gd2F5IHRvIGdvLiAgQnJlYWtp
+bmcgc3R1ZmYgaW50ZW50aW9uYWxseSB0byBmaW5kIG91dCB3aGF0IGFjdHVhbGx5Cj4gZG9lc24n
+dCB3b3JrIGlzIHJhcmVseSBhIGdvb2Qgb3B0aW9uLgo+IAoKVGhlIGlzc3VlIGlzIGR1ZSB0byBk
+ZXZpY2VzIGV4cG9zaW5nIEFTUE0gY2FwYWJpbGl0eSwgYnV0IGJlaGF2aW5nIGVycmF0aWNhbGx5
+CndoZW4gZW5hYmxlZC4gVW50aWwsIHdlIGVuYWJsZSBBU1BNIG9uIHRoZXNlIGRldmljZXMsIHdl
+IGNhbm5vdCBrbm93IHdoZXRoZXIKdGhleSBhcmUgd29ya2luZyBvciBub3QuIFRvIGF2b2lkIG1h
+c3MgY2hhb3MsIHdlIGRlY2lkZWQgdG8gZW5hYmxlIGl0IG9ubHkgZm9yCmRldmljZXRyZWUgcGxh
+dGZvcm1zIGFzIGEgc3RhcnQuCgo+IFRodXMsIEknZCBzdWdnZXN0IHRoYXQgdGhpcyBwYXRjaCBp
+cyByZXBsYWNlZCB3aXRoIG5vdGhlciBwYXRjaGVzLAo+IHdoaWNoIHdvdWxkIGludHJvZHVjZSBh
+biBhZGRpdGlvbmFsIEFTUE0gb3B0LWluIHN3aXRjaCB0byB0aGUgUENJCj4gYmluZGluZywgYWxs
+b3dpbmcgU29DcyBvciBib2FyZHMgdG8gaGF2ZSBpdCBlbmFibGVkIF9hZnRlcl8gcHJvcGVyCj4g
+dGVzdGluZyBpcyBwZXJmb3JtZWQuICBUaGUgUENJZSBkcml2ZXIgbWF5IGVtaXQgYSB3YXJuaW5n
+IHRoYXQgQVNQTQo+IGlzIHRvIGJlIGVuYWJsZWQgYXQgc29tZSBwb2ludCBpbiB0aGUgZnV0dXJl
+LCB0byAiYnVnIiBwZW9wbGUgYWJvdXQKPiB0aGUgbmVlZCB0byBwZXJmb3JtIHRoZSB0ZXN0aW5n
+LCBldGMuCgpFdmVuIGlmIHdlIGVtaXQgYSAiWU9VUiBERVZJQ0UgTUFZIEJSRUFLIiB3YXJuaW5n
+LCBub2JvZHkgd291bGQgY2FyZSBhcyBsb25nIGFzCnRoZSBkZXZpY2Ugd29ya3MgZm9yIHRoZW0u
+IFdlIGRpZG4ndCBkZWNpZGUgdG8gZW5hYmxlIHRoaXMgZmVhdHVyZSBvdmVybmlnaHQgdG8KdHJv
+dWJsZSB1c2Vycy4gVGhlIGZhY3QgdGhhdCBBU1BNIHNhdmVzIHJ1bnRpbWUgcG93ZXIsIHdoaWNo
+IHdpbGwgYmVuZWZpdCB1c2VycwphbmQgb2ZjIHRoZSBlbnZpcm9ubWVudCBhcyBhIHdob2xlLCBz
+aG91bGQgbm90IGJlIGtlcHQgZGlzYWJsZWQuCgpCdXQgZG9lcyB0aGF0IG1lYW4sIHdlIHdhbnRl
+ZCB0byBoYXZlIGJyZWFrYWdlcywgTk8uIFdlIGV4cGVjdGVkIGJyZWFrYWdlcyBhcwpub3QgYWxs
+IGRldmljZXMgd2lsbCBwbGF5IG5pY2VseSB3aXRoIEFTUE0sIGJ1dCB0aGVyZSBpcyBvbmx5IG9u
+ZSB3YXkgdG8gZmluZApvdXQuIEFuZCB3ZSBkbyB3YW50IHRvIGRpc2FibGUgQVNQTSBvbmx5IGZv
+ciB0aG9zZSBkZXZpY2VzLgoKPiAgV2l0aCBhbGwgdGhhdCBpbiBwbGFjZSwgd2UKPiBjb3VsZCBl
+eHBlY3QgdGhhdCBpbiBhIHllYXIgb3IgdHdvIFBDSWUgQVNQTSBjb3VsZCBldmVudHVhbGx5IGJl
+Cj4gZW5hYmxlZCBldmVyeXdoZXJlLiAgR2V0dGluZyBldmVyeXRoaW5nIHRlc3RlZCBpcyBhIG1h
+c3NpdmUgZW5kZWF2b3IsCj4gYnV0IHRoYXQncyB0aGUgb25seSB3YXkgbm90IHRvIGJyZWFrIHN0
+dWZmLgo+IAo+IEJpdGluZyB0aGUgYnVsbGV0IGFuZCBob3BpbmcgdGhhdCBpdCBhbGwgZ29lcyB3
+ZWxsLCBJJ2Qgc2F5LCBpc24ndAo+IHRoZSByaWdodCBhcHByb2FjaCBoZXJlLgo+IAoKWW91ciB0
+d28geWVhciBwaGFzZWQgYXBwcm9hY2ggd291bGQgbmV2ZXIgd29yayBhcyB0aGF0J3Mgd2hhdCB3
+ZSBoYXZlIGhvcGVkIGZvcgptb3JlIHRoYW4gYSBkZWNhZGUuCgotIE1hbmkKCgotLSAK4K6u4K6j
+4K6/4K614K6j4K+N4K6j4K6p4K+NIOCumuCupOCuvuCumuCuv+CuteCuruCvjQoKX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFp
+bGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
+LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
