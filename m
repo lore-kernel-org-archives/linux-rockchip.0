@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75AD5CCD18E
-	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Oct 2025 11:35:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC4D2CCD18E
+	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Oct 2025 11:36:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3ddlLTsaLcAGfJRm4FIZDEVHhCmVYjb6ZHArUxM7VRk=; b=suJb5pSx8UHFaE
-	WoMX/yz9kZVQvSS66WTj1oAZ5ahN+7uZyoivY92vnI+GOGNqsSLVfB3z6btKPQ98v59O7FTLBHjcE
-	6unA9ctZpTHC3yCT/LpN9hgf9+BZOUNzn33+7ZsrWWw1wjz3qNmdF2SxylA1qqsGi27inaQSpVGkq
-	ZlA1g88pj0lP6MHQP8/WLYaniV7eWHqN8VK9OxIPhOJZnXEFE9ni3sOzHwWEVyFF4M00cXmw0w4Ci
-	clULqNgM52pChdig4w0ktS61CtrpNtdio/jmOfcABn4rNz8SdgXt/qa5H7h390sq+fMBzGhYwSJqY
-	6SF8eZ3sfyLDR4S28xuQ==;
+	List-Owner; bh=MDQ+iZshDwMwbeqmlWIqJz2tovmVvaCcPCqGnu4oGyM=; b=AVbpFASdTbXukN
+	mfQacrXT4y4/F2lIKXNnpVxWr7f2vp2h8FqoK3CZQCDWxIv417WcG5UqvcyT9JZQuo3hcJ05ZkhPT
+	hTWWrdq0zapsc23aYuJ+1NZZ7WXoosfQKoO0oMozA4rZpCIYE5VCZp3hZ7cFOCko773e4Gb4rxXpA
+	olQY39yy5s9np/L82MTdRodYmJCXfYksEQMXw+mFtTuri4ydEVnNzupbi/zZI/Iz+M2fB9IjpSy4G
+	Xc1/ZF+Vi3+9elhRcFbpVufyvPOan1VGNqMm82/tcguO6ImM/uSC/ZIaEeYZHGkxqs7y065Z9FO12
+	NQKRp21gQp/zrkATfCXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8zms-00000001QRP-3r2y;
-	Wed, 15 Oct 2025 11:35:22 +0000
-Received: from mgamail.intel.com ([198.175.65.16])
+	id 1v8zo2-00000001Qn8-2HoT;
+	Wed, 15 Oct 2025 11:36:34 +0000
+Received: from mgamail.intel.com ([192.198.163.15])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8zmq-00000001QQj-0gtY;
-	Wed, 15 Oct 2025 11:35:21 +0000
+	id 1v8znz-00000001QlZ-0mso;
+	Wed, 15 Oct 2025 11:36:32 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1760528120; x=1792064120;
+  t=1760528191; x=1792064191;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=N8KTLk2i4j4WLjDJhe9R8PN5ffY5bayo6I0hvYve81g=;
-  b=hcaeKDL6ZpSgomkhqoFuGfP9Ik9ocUfPzSKBZrzmSBzq8gfhaaBfor9E
-   vv+d1Br0s5vxAr0L8lACFTfgBIPGiAS134sJ2AADZWLdq25Vo+fPR5b7j
-   OFfZY2TMjzTOX7hhNPQqPy3FCW7TzxjY9X39UINDFqtsqloqNIqKJLA9M
-   plAUM+16ZacJGKbePWZXbgcYrrIlKj4XwZrA6ZpEUYPFBt0EyBKPLaRul
-   oy0XvHRN37fHqKv+choXQf+pFjjebpExu4m3axs7To+A69jMHrg0ec4vd
-   MEx3ivuIZMVPJN10IT1gjWETne7yLSRFGEkZULmb95nloOfWlbdazdCdI
-   g==;
-X-CSE-ConnectionGUID: kXJGeJsqSnqXJbbrUMax4g==
-X-CSE-MsgGUID: hHhM4Nj0QWaySeYGgWb1Rg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11582"; a="62851836"
+  bh=ErQnLFtT2VWWYam/1SWthYQckbFaJsg61CQEzmoDe6I=;
+  b=ni65yLSjIPZkPvnbfPolBk5Rj7khUIXGXd/HF0i7IICZT8JJu7YVjiB5
+   aWHTBj6msE2iyk7HP1+xHPv8TBOIF7U7ecyik5xEDJ8Lw77RNP9PhQ/9F
+   tfiSu14Z5TGMuoDSB/GOkv9uv9FS+C1YvJ9QUODQC0v2Hmfl2dKITgMOF
+   qG8OnBq640QNYG7U3u26gSZL8VVvyVBzKTXwWvRmXMcn2l4LMoVu9x0zz
+   LteuYEJC+n15s0lvAfQkKQ2PxX52uQR5h4bEp22aFpuMnMNmnRqsnUEuq
+   5J8f8BiuvQTZzR67lKhnUHP5saPRGmlwSuH5T5SgdBjvnEvUn2/9ipNcq
+   A==;
+X-CSE-ConnectionGUID: Drrk/ct1T7m4/NFrY4Btkg==
+X-CSE-MsgGUID: 7izMkSqgS92CWwl1Qha1ow==
+X-IronPort-AV: E=McAfee;i="6800,10657,11582"; a="62795856"
 X-IronPort-AV: E=Sophos;i="6.19,231,1754982000"; 
-   d="scan'208";a="62851836"
-Received: from orviesa007.jf.intel.com ([10.64.159.147])
-  by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Oct 2025 04:35:18 -0700
-X-CSE-ConnectionGUID: t14M/OvQQLKxXxjF7/urHw==
-X-CSE-MsgGUID: 99cgwGGKQsu1ghCz7GXPig==
+   d="scan'208";a="62795856"
+Received: from orviesa001.jf.intel.com ([10.64.159.141])
+  by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Oct 2025 04:36:29 -0700
+X-CSE-ConnectionGUID: /d3Ph3l1RMOBRNZIpR99nQ==
+X-CSE-MsgGUID: YraqQavTRsCnt2mqqJxSVg==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.19,231,1754982000"; 
-   d="scan'208";a="181952562"
+   d="scan'208";a="219293820"
 Received: from rvuia-mobl.ger.corp.intel.com (HELO mdjait-mobl) ([10.245.245.114])
-  by orviesa007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Oct 2025 04:35:11 -0700
-Date: Wed, 15 Oct 2025 13:35:02 +0200
+  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Oct 2025 04:36:22 -0700
+Date: Wed, 15 Oct 2025 13:36:15 +0200
 From: Mehdi Djait <mehdi.djait@linux.intel.com>
 To: michael.riesch@collabora.com
 Cc: Maxime Chevallier <maxime.chevallier@bootlin.com>, 
@@ -69,17 +69,18 @@ Cc: Maxime Chevallier <maxime.chevallier@bootlin.com>,
 	Philipp Zabel <p.zabel@pengutronix.de>, Sakari Ailus <sakari.ailus@linux.intel.com>, 
 	linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
 	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v12 06/18] media: rockchip: add driver for the rockchip
- mipi csi-2 receiver
-Message-ID: <j2elclqcuwdkz3lan265u4wucwyiyl5xgb5t7mzzunfn2mwjpm@f7ipn4y2uiag>
+Subject: Re: [PATCH v12 07/18] media: rockchip: add driver for the rockchip
+ camera interface
+Message-ID: <nrf4epgtmhujwdtkhbsjgpunqvwqxs6a4utipxgphakxi7hwsh@muazbpt325wu>
 References: <20240220-rk3568-vicap-v12-0-c6dbece6bb98@collabora.com>
- <20240220-rk3568-vicap-v12-6-c6dbece6bb98@collabora.com>
+ <20240220-rk3568-vicap-v12-7-c6dbece6bb98@collabora.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20240220-rk3568-vicap-v12-6-c6dbece6bb98@collabora.com>
+In-Reply-To: <20240220-rk3568-vicap-v12-7-c6dbece6bb98@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251015_043520_285049_31DC32EF 
-X-CRM114-Status: GOOD (  10.79  )
+X-CRM114-CacheID: sfid-20251015_043631_235217_80650B27 
+X-CRM114-Status: UNSURE (   9.70  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,20 +101,19 @@ Hi Michael,
 
 Thank you for the patches!
 
-On Tue, Oct 14, 2025 at 03:01:52PM +0200, Michael Riesch via B4 Relay wrote:
+On Tue, Oct 14, 2025 at 03:01:53PM +0200, Michael Riesch via B4 Relay wrote:
 > From: Michael Riesch <michael.riesch@collabora.com>
 > 
-> The Rockchip RK3568 MIPI CSI-2 Receiver is a CSI-2 bridge with one
-> input port and one output port. It receives the data with the help
-> of an external MIPI PHY (C-PHY or D-PHY) and passes it to the
-> Rockchip RK3568 Video Capture (VICAP) block.
-> 
-> Add a V4L2 subdevice driver for this unit.
+> Add the skeleton for a media controller centric V4L2 driver for the
+> Rockchip Camera Interface (CIF).
+> The skeleton features support for the PX30 Video Input Processor (VIP)
+> and the RK3568 Video Capture (VICAP) unit.
 > 
 
 Reviewed-by: Mehdi Djait <mehdi.djait@linux.intel.com>
 
-> Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
+> Tested-by: Gerald Loacker <gerald.loacker@wolfvision.net>
+> Reviewed-by: Gerald Loacker <gerald.loacker@wolfvision.net>
 > Reviewed-by: Bryan O'Donoghue <bryan.odonoghue@linaro.org>
 > Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
 
