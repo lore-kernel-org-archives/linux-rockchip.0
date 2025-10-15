@@ -4,69 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AED49CCD18E
-	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Oct 2025 11:24:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75AD5CCD18E
+	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Oct 2025 11:35:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:
-	Subject:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=u9/+WaLMTnggInvtjagcl5K+/3P/aEnfLTygfh6eBcM=; b=oDJDKkWvNCce8Y
-	uPWKFsLOlxLTWGLf6YWD0bNgJv/DI22atytMKUvZnnrFah0hBif7VgWuH/QskO/ngaADZD6Qhn+SM
-	7AfNFBAMv+bmwAcknS5RRAwAJDz+4Wn3AVRqBDc53VJixOCAeENFfC4vaSI3KaG+TCs84MbFqfImm
-	KLeOD857pWKq9YWjIpkXAGTp7JASLIYASLfUTd05Ko19G62vdCWWHpRC4ndNRrerKmlzGUeSwHOLC
-	U87B8RCxfGgudQepUQRd268YBY/tym1/hlnGyF/55zSjQXUv0NR0Qw2IU/YWFiIsPDp3Qvv4H2Yha
-	pbM88pqLqB9QiGAoLRIg==;
+	List-Owner; bh=3ddlLTsaLcAGfJRm4FIZDEVHhCmVYjb6ZHArUxM7VRk=; b=suJb5pSx8UHFaE
+	WoMX/yz9kZVQvSS66WTj1oAZ5ahN+7uZyoivY92vnI+GOGNqsSLVfB3z6btKPQ98v59O7FTLBHjcE
+	6unA9ctZpTHC3yCT/LpN9hgf9+BZOUNzn33+7ZsrWWw1wjz3qNmdF2SxylA1qqsGi27inaQSpVGkq
+	ZlA1g88pj0lP6MHQP8/WLYaniV7eWHqN8VK9OxIPhOJZnXEFE9ni3sOzHwWEVyFF4M00cXmw0w4Ci
+	clULqNgM52pChdig4w0ktS61CtrpNtdio/jmOfcABn4rNz8SdgXt/qa5H7h390sq+fMBzGhYwSJqY
+	6SF8eZ3sfyLDR4S28xuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8zbj-00000001POu-1dVJ;
-	Wed, 15 Oct 2025 11:23:51 +0000
-Received: from out-183.mta1.migadu.com ([2001:41d0:203:375::b7])
+	id 1v8zms-00000001QRP-3r2y;
+	Wed, 15 Oct 2025 11:35:22 +0000
+Received: from mgamail.intel.com ([198.175.65.16])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8zbg-00000001PMl-0TMr
-	for linux-rockchip@lists.infradead.org;
-	Wed, 15 Oct 2025 11:23:49 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow-tech.com;
-	s=key1; t=1760527411;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=u7suAm308V4lZ0hWGhrJ2JZyDcNujKQFY+XgzAQyH74=;
-	b=Ns/qkxdG4Rn4EJ6K7SljnQBvNEjMaDrTB1/ElfNZiulj3sQwibhvq0PesIrmmY9Q+1Fjyh
-	W6KEAEZMP4FHHqQXoPQkIGtpTnZTo3mGwN+zRnb9//J8E8WST3wXkpfQhVAP5YmQ4XUseb
-	2ZoztiG2+qY0MkG4AoM+KPkAjPkwwWLx8yPwhvjnfrkQ8xeOEgQoyCQRF+2yAEEanIgmyb
-	WbOxFaMqFU0rqn7Gs8QJBI21LssXjs1jwsEp9rMbsWRQkvhQo902VwYlMmEANvpyOsP3qP
-	76AQOGgWsDq0ZZrJe2F+dNLnvCGZlyTWU2VtEEQ2Uk4m/zine4e/pTswHh4E4Q==
-Date: Wed, 15 Oct 2025 13:23:10 +0200
-Message-Id: <DDIUVHT9W10K.2SHEZ7YWCDXL3@cknow-tech.com>
-Subject: Re: [PATCH v2 1/2] PCI/ASPM: Override the ASPM and Clock PM states
- set by BIOS for devicetree platforms
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <diederik@cknow-tech.com>
-To: "Manivannan Sadhasivam" <mani@kernel.org>, "Dragan Simic"
- <dsimic@manjaro.org>
-Cc: "Bjorn Helgaas" <helgaas@kernel.org>, "FUKAUMI Naoki" <naoki@radxa.com>,
- <manivannan.sadhasivam@oss.qualcomm.com>, "Bjorn Helgaas"
- <bhelgaas@google.com>, "Lorenzo Pieralisi" <lpieralisi@kernel.org>,
- =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, "Rob
- Herring" <robh@kernel.org>, <linux-pci@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-msm@vger.kernel.org>, "David E.
- Box" <david.e.box@linux.intel.com>, "Kai-Heng Feng"
- <kai.heng.feng@canonical.com>, "Rafael J. Wysocki" <rafael@kernel.org>,
- "Heiner Kallweit" <hkallweit1@gmail.com>, "Chia-Lin Kao"
- <acelan.kao@canonical.com>, <linux-rockchip@lists.infradead.org>,
- <regressions@lists.linux.dev>
-References: <20251014184905.GA896847@bhelgaas>
- <0899e629-eaaf-1000-72b5-52ad977677a8@manjaro.org>
- <fxakjhx7lrikgs4x3nbwgnhhcwmlum3esxp2dj5d26xc5iyg22@wkbbwysh3due>
-In-Reply-To: <fxakjhx7lrikgs4x3nbwgnhhcwmlum3esxp2dj5d26xc5iyg22@wkbbwysh3due>
-X-Migadu-Flow: FLOW_OUT
+	id 1v8zmq-00000001QQj-0gtY;
+	Wed, 15 Oct 2025 11:35:21 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1760528120; x=1792064120;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=N8KTLk2i4j4WLjDJhe9R8PN5ffY5bayo6I0hvYve81g=;
+  b=hcaeKDL6ZpSgomkhqoFuGfP9Ik9ocUfPzSKBZrzmSBzq8gfhaaBfor9E
+   vv+d1Br0s5vxAr0L8lACFTfgBIPGiAS134sJ2AADZWLdq25Vo+fPR5b7j
+   OFfZY2TMjzTOX7hhNPQqPy3FCW7TzxjY9X39UINDFqtsqloqNIqKJLA9M
+   plAUM+16ZacJGKbePWZXbgcYrrIlKj4XwZrA6ZpEUYPFBt0EyBKPLaRul
+   oy0XvHRN37fHqKv+choXQf+pFjjebpExu4m3axs7To+A69jMHrg0ec4vd
+   MEx3ivuIZMVPJN10IT1gjWETne7yLSRFGEkZULmb95nloOfWlbdazdCdI
+   g==;
+X-CSE-ConnectionGUID: kXJGeJsqSnqXJbbrUMax4g==
+X-CSE-MsgGUID: hHhM4Nj0QWaySeYGgWb1Rg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11582"; a="62851836"
+X-IronPort-AV: E=Sophos;i="6.19,231,1754982000"; 
+   d="scan'208";a="62851836"
+Received: from orviesa007.jf.intel.com ([10.64.159.147])
+  by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Oct 2025 04:35:18 -0700
+X-CSE-ConnectionGUID: t14M/OvQQLKxXxjF7/urHw==
+X-CSE-MsgGUID: 99cgwGGKQsu1ghCz7GXPig==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.19,231,1754982000"; 
+   d="scan'208";a="181952562"
+Received: from rvuia-mobl.ger.corp.intel.com (HELO mdjait-mobl) ([10.245.245.114])
+  by orviesa007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Oct 2025 04:35:11 -0700
+Date: Wed, 15 Oct 2025 13:35:02 +0200
+From: Mehdi Djait <mehdi.djait@linux.intel.com>
+To: michael.riesch@collabora.com
+Cc: Maxime Chevallier <maxime.chevallier@bootlin.com>, 
+	=?utf-8?B?VGjDqW8=?= Lebrun <theo.lebrun@bootlin.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
+	Gerald Loacker <gerald.loacker@wolfvision.net>, Bryan O'Donoghue <bryan.odonoghue@linaro.org>, 
+	Markus Elfring <Markus.Elfring@web.de>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+	Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Kever Yang <kever.yang@rock-chips.com>, 
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>, Sebastian Reichel <sebastian.reichel@collabora.com>, 
+	Collabora Kernel Team <kernel@collabora.com>, Paul Kocialkowski <paulk@sys-base.io>, 
+	Alexander Shiyan <eagle.alexander923@gmail.com>, Val Packett <val@packett.cool>, Rob Herring <robh@kernel.org>, 
+	Philipp Zabel <p.zabel@pengutronix.de>, Sakari Ailus <sakari.ailus@linux.intel.com>, 
+	linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v12 06/18] media: rockchip: add driver for the rockchip
+ mipi csi-2 receiver
+Message-ID: <j2elclqcuwdkz3lan265u4wucwyiyl5xgb5t7mzzunfn2mwjpm@f7ipn4y2uiag>
+References: <20240220-rk3568-vicap-v12-0-c6dbece6bb98@collabora.com>
+ <20240220-rk3568-vicap-v12-6-c6dbece6bb98@collabora.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20240220-rk3568-vicap-v12-6-c6dbece6bb98@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251015_042348_424060_3F3EE803 
-X-CRM114-Status: GOOD (  41.34  )
+X-CRM114-CacheID: sfid-20251015_043520_285049_31DC32EF 
+X-CRM114-Status: GOOD (  10.79  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,105 +96,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed Oct 15, 2025 at 8:22 AM CEST, Manivannan Sadhasivam wrote:
-> On Wed, Oct 15, 2025 at 01:33:35AM +0200, Dragan Simic wrote:
->> On Tuesday, October 14, 2025 20:49 CEST, Bjorn Helgaas <helgaas@kernel.org> wrote:
->> > On Wed, Oct 15, 2025 at 01:30:16AM +0900, FUKAUMI Naoki wrote:
->> > > I've noticed an issue on Radxa ROCK 5A/5B boards, which are based on the
->> > > Rockchip RK3588(S) SoC.
->> > > 
->> > > When running Linux v6.18-rc1 or linux-next since 20250924, the kernel either
->> > > freezes or fails to probe M.2 Wi-Fi modules. This happens with several
->> > > different modules I've tested, including the Realtek RTL8852BE, MediaTek
->> > > MT7921E, and Intel AX210.
->> > > 
->> > > I've found that reverting the following commit (i.e., the patch I'm replying
->> > > to) resolves the problem:
->> > > commit f3ac2ff14834a0aa056ee3ae0e4b8c641c579961
->> > 
->> > <snip>
->> > 
->> > Do you know if any platforms other than Radxa ROCK 5A/5B have this
->> > problem?
->> > 
->> After thinking quite a bit about it, I think we should revert this
->> patch and replace it with another patch that allows per-SoC, or
->> maybe even per-board, opting into the forced enablement of PCIe
->> ASPM.  Let me explain, please.
->
-> ASPM is a PCIe device specific feature, nothing related to SoC/board. Even if
-> you limit it to certain platforms, there is no guarantee that it will be safe as
-> the users can connect a buggy device to the slot and it could lead to the same
-> issue.
->
->> When a new feature is introduced, it's expected that it may fail
->> on some hardware or with some specific setups, so quirking off such
->> instances, as time passes, is perfectly fine.  Such a new feature
->> didn't work before it was implemented, so it's acceptable that it
->> fails in some instances after the introduction, and that it gets
->> quirked off as time passes and more testing is performed.
->
-> ASPM is not a new feature. It was introduced more than a decade before. But we
-> somehow procastinated the enablement for so long until we realized that if we
-> don't do it now, we wouldn't be able to do it anytime in the future.
+Hi Michael,
 
-Do you mean literally *now* or more like "we need to do it sometime"?
+Thank you for the patches!
 
->> However, when some widespread feature, such as PCIe, has already
->> been in production for quite a while, introducing high-risk changes
->> to it in a blanket fashion, while intending to have the incompatible
->> or not-yet-ready platforms quirked off over time, simply isn't the
->> way to go.  Breaking stuff intentionally to find out what actually
->> doesn't work is rarely a good option.
->
-> The issue is due to devices exposing ASPM capability, but behaving erratically
-> when enabled. Until, we enable ASPM on these devices, we cannot know whether
-> they are working or not. To avoid mass chaos, we decided to enable it only for
-> devicetree platforms as a start.
->
->> Thus, I'd suggest that this patch is replaced with nother patches,
->> which would introduce an additional ASPM opt-in switch to the PCI
->> binding, allowing SoCs or boards to have it enabled _after_ proper
->> testing is performed.  The PCIe driver may emit a warning that ASPM
->> is to be enabled at some point in the future, to "bug" people about
->> the need to perform the testing, etc.
->
-> Even if we emit a "YOUR DEVICE MAY BREAK" warning, nobody would care as long as
-> the device works for them. We didn't decide to enable this feature overnight to
-> trouble users. The fact that ASPM saves runtime power, which will benefit users
-> and ofc the environment as a whole, should not be kept disabled.
->
-> But does that mean, we wanted to have breakages, NO. We expected breakages as
-> not all devices will play nicely with ASPM, but there is only one way to find
-> out. And we do want to disable ASPM only for those devices.
+On Tue, Oct 14, 2025 at 03:01:52PM +0200, Michael Riesch via B4 Relay wrote:
+> From: Michael Riesch <michael.riesch@collabora.com>
+> 
+> The Rockchip RK3568 MIPI CSI-2 Receiver is a CSI-2 bridge with one
+> input port and one output port. It receives the data with the help
+> of an external MIPI PHY (C-PHY or D-PHY) and passes it to the
+> Rockchip RK3568 Video Capture (VICAP) block.
+> 
+> Add a V4L2 subdevice driver for this unit.
+> 
 
-I understand this logic. And I'm very much in favor of changes that
-reduce power usage.
-I suspect that 6.18 will become a LTS kernel, so introducing a change
-which may break many devices, sounds less then ideal for such a kernel.
-Kernel 6.19 OTOH sounds perfect for that. Then there's plenty of time to
-encounter and fix issues which may/will come up before there is another
-LTS kernel, namely ~ a year.
+Reviewed-by: Mehdi Djait <mehdi.djait@linux.intel.com>
 
-My 0.02.
+> Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
+> Reviewed-by: Bryan O'Donoghue <bryan.odonoghue@linaro.org>
+> Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
 
-Cheers,
-  Diederik
-
-PS: will send my bug/debug report separately
-
->> With all that in place, we could expect that in a year or two PCIe ASPM
->> could eventually be enabled everywhere. Getting everything tested is a
->> massive endeavor, but that's the only way not to break stuff.
->> 
->> Biting the bullet and hoping that it all goes well, I'd say, isn't
->> the right approach here.
->
-> Your two year phased approach would never work as that's what we have hoped for
-> more than a decade.
->
-> - Mani
-
+--
+Kind Regards
+Mehdi Djait
 
 _______________________________________________
 Linux-rockchip mailing list
