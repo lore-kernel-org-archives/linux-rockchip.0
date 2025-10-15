@@ -4,63 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFCE0CCD185
-	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Oct 2025 06:27:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49EA2CCD185
+	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Oct 2025 07:14:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vVG/Fz4FuNuCyeF9345Rb+IRnZjvwSIoO1wSn0smtpk=; b=TRfDI7sYdhPqbo
-	i/JdAJKVbFdsm9HbjfrnsM06hpFzWhcNLqs8OJsBMmx0PsgzCI/8nAe3fY4xev4ZP3nJQrm+U3bDv
-	LAsxgPAv/DfXwXkMU86OK5HHXpmIDA0aje94O2NAjOm7RfOt45gWTgdJXW4KBgLlumCWqyzyOhz66
-	0o/703ZrcfrGrF5eBMaS8T/haE1O01jz9Av1S3Q8o6V3D+VWfLvPU84vlnEQVF+czo2eaP6I7vIek
-	Ov4yV0ktJIXEKFzy/Mt/14OfsnQWSyobJtLoxvYzU5roNkvSwZZYjOvxXVSjaS3ww9pY+VRjtYALE
-	TnO+DHcrsTO98nLkI03A==;
+	List-Owner; bh=tmrRd6uisZDsNYFx6Z89YvID06A1PYkvG1nk2Fm0MNc=; b=VugJuvYgM4IPsl
+	NCOSy4sTFaLY/TG9eD/nljsUIMpFWQ3Kn6QcHOqO5ByXFH71y1wPS9jdPbGD/+novTxofszLI1zEa
+	qUlyRWwuU5DNHoOdbM1rl88wDB021+zTpUlPFijFChJ86JtVp88Gsi8BOioMCVQ7pBwNeJXPEQTbU
+	HaA+4em2qZ2XmYGB6FH4QJTRRbZL8pbmNAxlmuuUqoDzSUTXtP3qVd1rcEKwSloQL3JWS9z7CQaVb
+	UA1XCDxxfEgDwFYo19KMqLhchysJFTyLYpLKG6QuUXgykYA98CaQOntcPQuFXEuuj8WTkcDI/RtlB
+	9B51hZ08SPoueDi9S7pA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8uyP-00000000b6l-2otg;
-	Wed, 15 Oct 2025 06:26:57 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1v8vhv-00000000gCK-3Ad5;
+	Wed, 15 Oct 2025 07:13:59 +0000
+Received: from bg4.exmail.qq.com ([43.154.221.58])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8uyN-00000000b6X-43y8
+	id 1v8vhs-00000000gBo-0WEB
 	for linux-rockchip@lists.infradead.org;
-	Wed, 15 Oct 2025 06:26:56 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 67AF662983;
-	Wed, 15 Oct 2025 06:26:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EC493C4CEFE;
-	Wed, 15 Oct 2025 06:26:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1760509615;
-	bh=s2vnLEYNDminF6KyqSzh6+puX5u2MxsQYOfXIiPlDfc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=GiV1ScAzoGql9ZctxnOq2HXn0mF8tHyPm9iB7gU8/3znblU9EGeBMvE1zDGZ06aV+
-	 Pub/mN6NfZjBfy7pcCHUtVTNkD6yAYTk1BJD4JP1Vljpd+SmbS2HxnnskGCMFOwm9q
-	 CQots2D92zfZeHU7W2RHSjLu8l0XFJ+fNHacDgyRRoFnwQhRV4K3kTk4ocs4MIm8iM
-	 /EPEiGfycKXLeVGxTQVjW4dMqRJU1ycwx0iTybmSE0V0SER2OaJtUBYrgLIRcmYtq6
-	 BgmKoiWlaAuvYshzetXscYv9/0OLdtnW7p/V7JgNq+upnbdnBN10hUTP89/dcSmPrR
-	 me2LFNle22Gpg==
-Date: Wed, 15 Oct 2025 11:56:39 +0530
-From: Manivannan Sadhasivam <mani@kernel.org>
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: FUKAUMI Naoki <naoki@radxa.com>, 
-	manivannan.sadhasivam@oss.qualcomm.com, Bjorn Helgaas <bhelgaas@google.com>, 
-	Lorenzo Pieralisi <lpieralisi@kernel.org>, Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
-	Rob Herring <robh@kernel.org>, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-msm@vger.kernel.org, "David E. Box" <david.e.box@linux.intel.com>, 
-	Kai-Heng Feng <kai.heng.feng@canonical.com>, "Rafael J. Wysocki" <rafael@kernel.org>, 
-	Heiner Kallweit <hkallweit1@gmail.com>, Chia-Lin Kao <acelan.kao@canonical.com>, 
-	Dragan Simic <dsimic@manjaro.org>, linux-rockchip@lists.infradead.org, regressions@lists.linux.dev
+	Wed, 15 Oct 2025 07:13:57 +0000
+X-QQ-mid: zesmtpip4t1760512426t711b209d
+X-QQ-Originating-IP: 6nwnINKAFYIGvRML+7yx9lB3aMBjuHz5zLBDY+C1Tbg=
+Received: from [IPV6:240f:10b:7440:1:f559:f5f: ( [localhost])
+	by bizesmtp.qq.com (ESMTP) with 
+	id ; Wed, 15 Oct 2025 15:13:42 +0800 (CST)
+X-QQ-SSF: 0000000000000000000000000000000
+X-QQ-GoodBg: 0
+X-BIZMAIL-ID: 17869260487172494319
+Message-ID: <823262AB21C8D981+8c1b9d50-5897-432b-972e-b7bb25746ba5@radxa.com>
+Date: Wed, 15 Oct 2025 16:13:41 +0900
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v2 1/2] PCI/ASPM: Override the ASPM and Clock PM states
  set by BIOS for devicetree platforms
-Message-ID: <5ivvb3wctn65obgqvnajpxzifhndza65rsoiqgracfxl7iiimt@oym345d723o2>
+To: Manivannan Sadhasivam <mani@kernel.org>,
+ Bjorn Helgaas <helgaas@kernel.org>
+Cc: manivannan.sadhasivam@oss.qualcomm.com,
+ Bjorn Helgaas <bhelgaas@google.com>,
+ Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+ Rob Herring <robh@kernel.org>, linux-pci@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+ "David E. Box" <david.e.box@linux.intel.com>,
+ Kai-Heng Feng <kai.heng.feng@canonical.com>,
+ "Rafael J. Wysocki" <rafael@kernel.org>,
+ Heiner Kallweit <hkallweit1@gmail.com>,
+ Chia-Lin Kao <acelan.kao@canonical.com>, Dragan Simic <dsimic@manjaro.org>,
+ linux-rockchip@lists.infradead.org, regressions@lists.linux.dev
 References: <22594781424C5C98+22cb5d61-19b1-4353-9818-3bb2b311da0b@radxa.com>
  <20251014184905.GA896847@bhelgaas>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20251014184905.GA896847@bhelgaas>
+ <5ivvb3wctn65obgqvnajpxzifhndza65rsoiqgracfxl7iiimt@oym345d723o2>
+Content-Language: en-US
+From: FUKAUMI Naoki <naoki@radxa.com>
+In-Reply-To: <5ivvb3wctn65obgqvnajpxzifhndza65rsoiqgracfxl7iiimt@oym345d723o2>
+X-QQ-SENDSIZE: 520
+Feedback-ID: zesmtpip:radxa.com:qybglogicsvrgz:qybglogicsvrgz8a-1
+X-QQ-XMAILINFO: MP1WLfctJNZWA8tQkYiXqhIzj2GBzGRUHl9BM2DvVl8moKnsJiBaEncf
+	5ktTniLtmCQQsOQzmiXRihjSaFjNoImXxA9TVnW0gA7nYlm7Im9RYBHTWsHNUr5PkTjhXhD
+	TW1y33+L4666aABFL6O14StJ+16/03wjQg9y+lQX5J054SoLGwRRv81zzBueuW9HtBhvgkX
+	opdMM7uTIO2TyZs00DjPjiOMALC+KuxA/qoALxC6PvuIOPRSyzaEkh824T3apZLoplKcf4O
+	XYnFD+FWdXooQ7wVSLVQnHzRwvo6t6wImnkwwIIz1TvCTE0/NGXkBCv0aa5RP4dmBu20vhM
+	1VKZhs0ygdmb7e7u4zUeB89yGMnHik0eOIE8/9yx6gUL8QAuStm5cNtLv1RN2ASq25bNQXu
+	+oaOG0S6mwZixJpUD++79YxPjhCgwpLQ29VJI7FGdcxh7Wwolq/HPWIiim+Ead7NNI0tad2
+	4useyMQyjxj6AG8VG0GISu8vp6ngCqKU1UXGWG7FkF6TvfH98qG91QXob+/h+Ik5R13+FS7
+	p3JLYzYIs8mcaX3EMpPbsLnQeHxPPTOYdxPYRsdYNRlUz/d5MkMBOANdC9jP7LbZnCswKBS
+	jvNi10FhEWLPT8GqDpf6bOQ0oelMwnINgsvpHAQRt8i1/9papDthVnB9q/DQ9jcfAzifVeY
+	USgD/a9+SeSd5xYuUrBoSBYq9anS8TuzghPfjz9mHeXDRfTO7611tlvYznXcoYsNP0yfu6h
+	FasrJIm6Z3fNRqK6cwA7YJgLMX+EVmL2AlCy3IEHTI7NYeG38ZNp7yNQGPqZ+ZXh7PffBgD
+	0riePYqlJqtdpiNmYb1ztE2UEoYrOVj3onZKFJF6xJDdEptHdWrGzhvGDY/qGe5MPZu0yYg
+	w4J/a2+pJcH5zLCIQE3dPSwv5t0FO/wMdMgWcJ8oaRrhz2iE0qmQlzwgLukHo6qtE0AH37s
+	77G1IfTE+Esuotu2lcBb+o3Gop1az9wkxFooStEoTtpTtdD8vQPsud/09rTaCTwCD5y7bcU
+	6eAqPSMxrATOIlIVA3
+X-QQ-XMRINFO: Nq+8W0+stu50PRdwbJxPCL0=
+X-QQ-SPAM: true
+X-QQ-RECHKSPAM: 3
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251015_001356_507147_D33C4AA3 
+X-CRM114-Status: GOOD (  33.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,179 +96,242 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlLCBPY3QgMTQsIDIwMjUgYXQgMDE6NDk6MDVQTSAtMDUwMCwgQmpvcm4gSGVsZ2FhcyB3
-cm90ZToKPiBbK2NjIHJlZ3Jlc3Npb25zXQo+IAo+IE9uIFdlZCwgT2N0IDE1LCAyMDI1IGF0IDAx
-OjMwOjE2QU0gKzA5MDAsIEZVS0FVTUkgTmFva2kgd3JvdGU6Cj4gPiBIaSBNYW5pdmFubmFuIFNh
-ZGhhc2l2YW0sCj4gPiAKPiA+IEkndmUgbm90aWNlZCBhbiBpc3N1ZSBvbiBSYWR4YSBST0NLIDVB
-LzVCIGJvYXJkcywgd2hpY2ggYXJlIGJhc2VkIG9uIHRoZQo+ID4gUm9ja2NoaXAgUkszNTg4KFMp
-IFNvQy4KPiA+IAo+ID4gV2hlbiBydW5uaW5nIExpbnV4IHY2LjE4LXJjMSBvciBsaW51eC1uZXh0
-IHNpbmNlIDIwMjUwOTI0LCB0aGUga2VybmVsIGVpdGhlcgo+ID4gZnJlZXplcyBvciBmYWlscyB0
-byBwcm9iZSBNLjIgV2ktRmkgbW9kdWxlcy4gVGhpcyBoYXBwZW5zIHdpdGggc2V2ZXJhbAo+ID4g
-ZGlmZmVyZW50IG1vZHVsZXMgSSd2ZSB0ZXN0ZWQsIGluY2x1ZGluZyB0aGUgUmVhbHRlayBSVEw4
-ODUyQkUsIE1lZGlhVGVrCj4gPiBNVDc5MjFFLCBhbmQgSW50ZWwgQVgyMTAuCj4gPiAKPiA+IEkn
-dmUgZm91bmQgdGhhdCByZXZlcnRpbmcgdGhlIGZvbGxvd2luZyBjb21taXQgKGkuZS4sIHRoZSBw
-YXRjaCBJJ20gcmVwbHlpbmcKPiA+IHRvKSByZXNvbHZlcyB0aGUgcHJvYmxlbToKPiA+IGNvbW1p
-dCBmM2FjMmZmMTQ4MzRhMGFhMDU2ZWUzYWUwZTRiOGM2NDFjNTc5OTYxCj4gCj4gVGhhbmtzIGZv
-ciB0aGUgcmVwb3J0LCBhbmQgc29ycnkgZm9yIHRoZSByZWdyZXNzaW9uLgo+IAo+IFNpbmNlIHRo
-aXMgYWZmZWN0cyBzZXZlcmFsIGRldmljZXMgZnJvbSBkaWZmZXJlbnQgbWFudWZhY3R1cmVycyBh
-bmQgKEkKPiBhc3N1bWUpIGRpZmZlcmVudCBkcml2ZXJzLCBpdCBzZWVtcyBsaWtlbHkgdGhhdCB0
-aGVyZSdzIHNvbWUgaXNzdWUKPiB3aXRoIHRoZSBSb2NrY2hpcCBlbmQsIHNpbmNlIEFTUE0gcHJv
-YmFibHkgd29ya3Mgb24gdGhlc2UgZGV2aWNlcyBpbgo+IG90aGVyIHN5c3RlbXMuICBTbyB3ZSBz
-aG91bGQgZmlndXJlIG91dCBpZiB0aGVyZSdzIHNvbWV0aGluZyB3cm9uZwo+IHdpdGggdGhlIHdh
-eSB3ZSBjb25maWd1cmUgQVNQTSwgd2hpY2ggd2UgY291bGQgcG90ZW50aWFsbHkgZml4LCBvciBp
-Zgo+IHRoZXJlJ3MgYSBoYXJkd2FyZSBpc3N1ZSBhbmQgd2UgbmVlZCBzb21lIGtpbmcgb2YgcXVp
-cmsgdG8gcHJldmVudAo+IHVzYWdlIG9mIEFTUE0gb24gdGhlIGFmZmVjdGVkIHBsYXRmb3Jtcy4K
-PiAKCkkgYmVsaWV2ZSBpdCBpcyB0aGUgbGF0dGVyLiBUaGUgUm9vdCBQb3J0IGlzIGhhdmluZyB0
-cm91YmxlIHdpdGggQVNQTS4KCkZVS0FVTUkgTmFva2ksIGNvdWxkIHlvdSBwbGVhc2Ugc2hhcmUg
-dGhlICdzdWRvIGxzcGNpIC12dicgb3V0cHV0IHNvIHRoYXQgd2UKa25vdyB3aGF0IGtpbmQgb2Yg
-Um9vdCBQb3J0IHdlIGFyZSBkZWFsaW5nIHdpdGg/IFlvdSBjYW4gcmV2ZXJ0IHRoZSBvZmZlbmRp
-bmcKcGF0Y2ggYW5kIHNoYXJlIHRoZSBvdXRwdXQuCgpUaGVuIEkgY291bGQgc3VwcGx5IGEgcGF0
-Y2ggdGhhdCB5b3UgY2FuIHRlc3Qgb3V0LgoKLSBNYW5pCgo+IENhbiB5b3UgY29sbGVjdCBhIGNv
-bXBsZXRlIGRtZXNnIGxvZyB3aGVuIGJvb3Rpbmcgd2l0aAo+IAo+ICAgaWdub3JlX2xvZ2xldmVs
-IHBjaT1lYXJseWR1bXAgZHluZGJnPSJmaWxlIGRyaXZlcnMvcGNpLyogK3AiCj4gCj4gYW5kIHRo
-ZSBvdXRwdXQgb2YgInN1ZG8gbHNwY2kgLXZ2Ij8KPiAKPiBXaGVuIHRoZSBrZXJuZWwgZnJlZXpl
-cywgY2FuIHlvdSBnaXZlIHVzIGFueSBpbmZvcm1hdGlvbiBhYm91dCB3aGVyZSwKPiBlLmcuLCBh
-IGxvZyBvciBzY3JlZW5zaG90Pwo+IAo+IERvIHlvdSBrbm93IGlmIGFueSBwbGF0Zm9ybXMgb3Ro
-ZXIgdGhhbiBSYWR4YSBST0NLIDVBLzVCIGhhdmUgdGhpcwo+IHByb2JsZW0/Cj4gCj4gI3JlZ3pi
-b3QgaW50cm9kdWNlZDogZjNhYzJmZjE0ODM0ICgiUENJL0FTUE06IEVuYWJsZSBhbGwgQ2xvY2tQ
-TSBhbmQgQVNQTSBzdGF0ZXMgZm9yIGRldmljZXRyZWUgcGxhdGZvcm1zIikKPiAjcmVnemJvdCBk
-dXAtb2Y6IGh0dHBzOi8vZ2l0aHViLmNvbS9jaHppZ290emt5L2tlcm5lbHMvaXNzdWVzLzE3Cj4g
-Cj4gPiBPbiA5LzIzLzI1IDAxOjE2LCBNYW5pdmFubmFuIFNhZGhhc2l2YW0gdmlhIEI0IFJlbGF5
-IHdyb3RlOgo+ID4gPiBGcm9tOiBNYW5pdmFubmFuIFNhZGhhc2l2YW0gPG1hbml2YW5uYW4uc2Fk
-aGFzaXZhbUBvc3MucXVhbGNvbW0uY29tPgo+ID4gPiAKPiA+ID4gU28gZmFyLCB0aGUgUENJIHN1
-YnN5c3RlbSBoYXMgaG9ub3JlZCB0aGUgQVNQTSBhbmQgQ2xvY2sgUE0gc3RhdGVzIHNldCBieQo+
-ID4gPiB0aGUgQklPUyAodGhyb3VnaCBMTktDVEwpIGR1cmluZyBkZXZpY2UgaW5pdGlhbGl6YXRp
-b24sIGlmIGl0IHJlbGllcyBvbiB0aGUKPiA+ID4gZGVmYXVsdCBzdGF0ZSBzZWxlY3RlZCB1c2lu
-ZzoKPiA+ID4gCj4gPiA+ICogS2NvbmZpZzogQ09ORklHX1BDSUVBU1BNX0RFRkFVTFQ9eSwgb3IK
-PiA+ID4gKiBjbWRsaW5lOiAicGNpZV9hc3BtPW9mZiIsIG9yCj4gPiA+ICogRkFEVDogQUNQSV9G
-QURUX05PX0FTUE0KPiA+ID4gCj4gPiA+IFRoaXMgd2FzIGRvbmUgY29uc2VydmF0aXZlbHkgdG8g
-YXZvaWQgaXNzdWVzIHdpdGggdGhlIGJ1Z2d5IGRldmljZXMgdGhhdAo+ID4gPiBhZHZlcnRpc2Ug
-QVNQTSBjYXBhYmlsaXRpZXMsIGJ1dCBiZWhhdmUgZXJyYXRpY2FsbHkgaWYgdGhlIEFTUE0gc3Rh
-dGVzIGFyZQo+ID4gPiBlbmFibGVkLiBTbyB0aGUgUENJIHN1YnN5c3RlbSBlbmRlZCB1cCB0cnVz
-dGluZyB0aGUgQklPUyB0byBlbmFibGUgb25seSB0aGUKPiA+ID4gQVNQTSBzdGF0ZXMgdGhhdCB3
-ZXJlIGtub3duIHRvIHdvcmsgZm9yIHRoZSBkZXZpY2VzLgo+ID4gPiAKPiA+ID4gQnV0IHRoaXMg
-dHVybmVkIG91dCB0byBiZSBhIHByb2JsZW0gZm9yIGRldmljZXRyZWUgcGxhdGZvcm1zLCBlc3Bl
-Y2lhbGx5Cj4gPiA+IHRoZSBBUk0gYmFzZWQgZGV2aWNldHJlZSBwbGF0Zm9ybXMgcG93ZXJpbmcg
-RW1iZWRkZWQgYW5kICpzb21lKiBDb21wdXRlCj4gPiA+IGRldmljZXMgYXMgdGhleSB0ZW5kIHRv
-IHJ1biB3aXRob3V0IGFueSBzdGFuZGFyZCBCSU9TLiBTbyB0aGUgQVNQTSBzdGF0ZXMKPiA+ID4g
-b24gdGhlc2UgcGxhdGZvcm1zIHdlcmUgbGVmdCBkaXNhYmxlZCBkdXJpbmcgYm9vdCBhbmQgdGhl
-IFBDSSBzdWJzeXN0ZW0KPiA+ID4gbmV2ZXIgYm90aGVyZWQgdG8gZW5hYmxlIHRoZW0sIHVubGVz
-cyB0aGUgdXNlciBoYXMgZm9yY2VmdWxseSBlbmFibGVkIHRoZQo+ID4gPiBBU1BNIHN0YXRlcyB0
-aHJvdWdoIEtjb25maWcsIGNtZGxpbmUsIGFuZCBzeXNmcyBvciB0aGUgZGV2aWNlIGRyaXZlcnMK
-PiA+ID4gdGhlbXNlbHZlcywgZW5hYmxpbmcgdGhlIEFTUE0gc3RhdGVzIHRocm91Z2ggcGNpX2Vu
-YWJsZV9saW5rX3N0YXRlKCkgQVBJcy4KPiA+ID4gCj4gPiA+IFRoaXMgY2F1c2VkIHJ1bnRpbWUg
-cG93ZXIgaXNzdWVzIG9uIHRob3NlIHBsYXRmb3Jtcy4gU28gYSBjb3VwbGUgb2YKPiA+ID4gYXBw
-cm9hY2hlcyB3ZXJlIHRyaWVkIHRvIG1pdGlnYXRlIHRoaXMgQklPUyBkZXBlbmRlbmN5IHdpdGhv
-dXQgdXNlcgo+ID4gPiBpbnRlcnZlbnRpb24gYnkgZW5hYmxpbmcgdGhlIEFTUE0gc3RhdGVzIGlu
-IHRoZSBQQ0kgY29udHJvbGxlciBkcml2ZXJzCj4gPiA+IGFmdGVyIGRldmljZSBlbnVtZXJhdGlv
-biwgYW5kIG92ZXJyaWRpbmcgdGhlIEFTUE0vQ2xvY2sgUE0gc3RhdGVzCj4gPiA+IGJ5IHRoZSBQ
-Q0kgY29udHJvbGxlciBkcml2ZXJzIHRocm91Z2ggYW4gQVBJIGJlZm9yZSBlbnVtZXJhdGlvbi4K
-PiA+ID4gCj4gPiA+IEJ1dCBpdCBoYXMgYmVlbiBjb25jbHVkZWQgdGhhdCBub25lIG9mIHRoZXNl
-IG1pdGlnYXRpb25zIHNob3VsZCByZWFsbHkgYmUKPiA+ID4gcmVxdWlyZWQgYW5kIHRoZSBQQ0kg
-c3Vic3lzdGVtIHNob3VsZCBlbmFibGUgdGhlIEFTUE0gc3RhdGVzIGFkdmVydGlzZWQgYnkKPiA+
-ID4gdGhlIGRldmljZXMgd2l0aG91dCByZWx5aW5nIG9uIEJJT1Mgb3IgdGhlIFBDSSBjb250cm9s
-bGVyIGRyaXZlcnMuIElmIGFueQo+ID4gPiBkZXZpY2UgaXMgZm91bmQgdG8gYmUgbWlzYmVoYXZp
-bmcgYWZ0ZXIgZW5hYmxpbmcgQVNQTSBzdGF0ZXMgdGhhdCB0aGV5Cj4gPiA+IGFkdmVydGlzZWQs
-IHRoZW4gdGhvc2UgZGV2aWNlcyBzaG91bGQgYmUgcXVpcmtlZCB0byBkaXNhYmxlIHRoZSBwcm9i
-bGVtYXRpYwo+ID4gPiBBU1BNL0Nsb2NrIFBNIHN0YXRlcy4KPiA+ID4gCj4gPiA+IEluIGFuIGVm
-Zm9ydCB0byBkbyBzbywgc3RhcnQgYnkgb3ZlcnJpZGluZyB0aGUgQVNQTSBhbmQgQ2xvY2sgUE0g
-c3RhdGVzIHNldAo+ID4gPiBieSB0aGUgQklPUyBmb3IgZGV2aWNldHJlZSBwbGF0Zm9ybXMgZmly
-c3QuIFNlcGFyYXRlIGhlbHBlciBmdW5jdGlvbnMgYXJlCj4gPiA+IGludHJvZHVjZWQgdG8gb3Zl
-cnJpZGUgdGhlIEJJT1Mgc2V0IHN0YXRlcyBieSBlbmFibGluZyBhbGwgb2YgdGhlbSBpZgo+ID4g
-PiBvZl9oYXZlX3BvcHVsYXRlZF9kdCgpIHJldHVybnMgdHJ1ZS4gVG8gYWlkIGRlYnVnZ2luZywg
-cHJpbnQgdGhlIG92ZXJyaWRkZW4KPiA+ID4gQVNQTSBhbmQgQ2xvY2sgUE0gc3RhdGVzIGFzIHdl
-bGwuCj4gPiA+IAo+ID4gPiBJbiB0aGUgZnV0dXJlLCB0aGVzZSBoZWxwZXJzIGNvdWxkIGJlIGV4
-dGVuZGVkIHRvIGFsbG93IG90aGVyIHBsYXRmb3Jtcwo+ID4gPiBsaWtlIFZNRCwgbmV3ZXIgQUNQ
-SSBzeXN0ZW1zIHdpdGggYSBjdXRvZmYgeWVhciBldGMuLi4gdG8gZm9sbG93IHRoZSBwYXRoLgo+
-ID4gPiAKPiA+ID4gTGluazogaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbGludXgtcGNpLzIwMjUw
-ODI4MjA0MzQ1LkdBOTU4NDYxQGJoZWxnYWFzCj4gPiA+IFN1Z2dlc3RlZC1ieTogQmpvcm4gSGVs
-Z2FhcyA8aGVsZ2Fhc0BrZXJuZWwub3JnPgo+ID4gPiBTaWduZWQtb2ZmLWJ5OiBNYW5pdmFubmFu
-IFNhZGhhc2l2YW0gPG1hbml2YW5uYW4uc2FkaGFzaXZhbUBvc3MucXVhbGNvbW0uY29tPgo+ID4g
-PiBMaW5rOiBodHRwczovL3BhdGNoLm1zZ2lkLmxpbmsvMjAyNTA5MTYtcGNpLWR0LWFzcG0tdjEt
-MS03NzhmZTkwN2M5YWRAb3NzLnF1YWxjb21tLmNvbQo+ID4gPiAtLS0KPiA+ID4gICBkcml2ZXJz
-L3BjaS9wY2llL2FzcG0uYyB8IDQyICsrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysr
-KysrKystLQo+ID4gPiAgIDEgZmlsZSBjaGFuZ2VkLCA0MCBpbnNlcnRpb25zKCspLCAyIGRlbGV0
-aW9ucygtKQo+ID4gPiAKPiA+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvcGNpL3BjaWUvYXNwbS5j
-IGIvZHJpdmVycy9wY2kvcGNpZS9hc3BtLmMKPiA+ID4gaW5kZXggOTE5YTA1Yjk3NjQ3OTFjM2Nj
-NDY5YzlhZGE2MmJhNWIyYzQwNTExOC4uY2RhMzExNTBhZWMxYjY3YjZhNDhiNjA1NjkyMjJlYTNk
-MWMzZDQxZiAxMDA2NDQKPiA+ID4gLS0tIGEvZHJpdmVycy9wY2kvcGNpZS9hc3BtLmMKPiA+ID4g
-KysrIGIvZHJpdmVycy9wY2kvcGNpZS9hc3BtLmMKPiA+ID4gQEAgLTE1LDYgKzE1LDcgQEAKPiA+
-ID4gICAjaW5jbHVkZSA8bGludXgvbWF0aC5oPgo+ID4gPiAgICNpbmNsdWRlIDxsaW51eC9tb2R1
-bGUuaD4KPiA+ID4gICAjaW5jbHVkZSA8bGludXgvbW9kdWxlcGFyYW0uaD4KPiA+ID4gKyNpbmNs
-dWRlIDxsaW51eC9vZi5oPgo+ID4gPiAgICNpbmNsdWRlIDxsaW51eC9wY2kuaD4KPiA+ID4gICAj
-aW5jbHVkZSA8bGludXgvcGNpX3JlZ3MuaD4KPiA+ID4gICAjaW5jbHVkZSA8bGludXgvZXJybm8u
-aD4KPiA+ID4gQEAgLTIzNSwxMyArMjM2LDE1IEBAIHN0cnVjdCBwY2llX2xpbmtfc3RhdGUgewo+
-ID4gPiAgIAl1MzIgYXNwbV9zdXBwb3J0Ojc7CQkvKiBTdXBwb3J0ZWQgQVNQTSBzdGF0ZSAqLwo+
-ID4gPiAgIAl1MzIgYXNwbV9lbmFibGVkOjc7CQkvKiBFbmFibGVkIEFTUE0gc3RhdGUgKi8KPiA+
-ID4gICAJdTMyIGFzcG1fY2FwYWJsZTo3OwkJLyogQ2FwYWJsZSBBU1BNIHN0YXRlIHdpdGggbGF0
-ZW5jeSAqLwo+ID4gPiAtCXUzMiBhc3BtX2RlZmF1bHQ6NzsJCS8qIERlZmF1bHQgQVNQTSBzdGF0
-ZSBieSBCSU9TICovCj4gPiA+ICsJdTMyIGFzcG1fZGVmYXVsdDo3OwkJLyogRGVmYXVsdCBBU1BN
-IHN0YXRlIGJ5IEJJT1Mgb3IKPiA+ID4gKwkJCQkJICAgb3ZlcnJpZGUgKi8KPiA+ID4gICAJdTMy
-IGFzcG1fZGlzYWJsZTo3OwkJLyogRGlzYWJsZWQgQVNQTSBzdGF0ZSAqLwo+ID4gPiAgIAkvKiBD
-bG9jayBQTSBzdGF0ZSAqLwo+ID4gPiAgIAl1MzIgY2xrcG1fY2FwYWJsZToxOwkJLyogQ2xvY2sg
-UE0gY2FwYWJsZT8gKi8KPiA+ID4gICAJdTMyIGNsa3BtX2VuYWJsZWQ6MTsJCS8qIEN1cnJlbnQg
-Q2xvY2sgUE0gc3RhdGUgKi8KPiA+ID4gLQl1MzIgY2xrcG1fZGVmYXVsdDoxOwkJLyogRGVmYXVs
-dCBDbG9jayBQTSBzdGF0ZSBieSBCSU9TICovCj4gPiA+ICsJdTMyIGNsa3BtX2RlZmF1bHQ6MTsJ
-CS8qIERlZmF1bHQgQ2xvY2sgUE0gc3RhdGUgYnkgQklPUyBvcgo+ID4gPiArCQkJCQkgICBvdmVy
-cmlkZSAqLwo+ID4gPiAgIAl1MzIgY2xrcG1fZGlzYWJsZToxOwkJLyogQ2xvY2sgUE0gZGlzYWJs
-ZWQgKi8KPiA+ID4gICB9Owo+ID4gPiBAQCAtMzczLDYgKzM3NiwxOCBAQCBzdGF0aWMgdm9pZCBw
-Y2llX3NldF9jbGtwbShzdHJ1Y3QgcGNpZV9saW5rX3N0YXRlICpsaW5rLCBpbnQgZW5hYmxlKQo+
-ID4gPiAgIAlwY2llX3NldF9jbGtwbV9ub2NoZWNrKGxpbmssIGVuYWJsZSk7Cj4gPiA+ICAgfQo+
-ID4gPiArc3RhdGljIHZvaWQgcGNpZV9jbGtwbV9vdmVycmlkZV9kZWZhdWx0X2xpbmtfc3RhdGUo
-c3RydWN0IHBjaWVfbGlua19zdGF0ZSAqbGluaywKPiA+ID4gKwkJCQkJCSAgIGludCBlbmFibGVk
-KQo+ID4gPiArewo+ID4gPiArCXN0cnVjdCBwY2lfZGV2ICpwZGV2ID0gbGluay0+ZG93bnN0cmVh
-bTsKPiA+ID4gKwo+ID4gPiArCS8qIE92ZXJyaWRlIHRoZSBCSU9TIGRpc2FibGVkIENsb2NrIFBN
-IHN0YXRlIGZvciBkZXZpY2V0cmVlIHBsYXRmb3JtcyAqLwo+ID4gPiArCWlmIChvZl9oYXZlX3Bv
-cHVsYXRlZF9kdCgpICYmICFlbmFibGVkKSB7Cj4gPiA+ICsJCWxpbmstPmNsa3BtX2RlZmF1bHQg
-PSAxOwo+ID4gPiArCQlwY2lfaW5mbyhwZGV2LCAiQ2xvY2sgUE0gc3RhdGUgb3ZlcnJpZGRlbjog
-Q2xvY2tQTStcbiIpOwo+ID4gPiArCX0KPiA+ID4gK30KPiA+ID4gKwo+ID4gPiAgIHN0YXRpYyB2
-b2lkIHBjaWVfY2xrcG1fY2FwX2luaXQoc3RydWN0IHBjaWVfbGlua19zdGF0ZSAqbGluaywgaW50
-IGJsYWNrbGlzdCkKPiA+ID4gICB7Cj4gPiA+ICAgCWludCBjYXBhYmxlID0gMSwgZW5hYmxlZCA9
-IDE7Cj4gPiA+IEBAIC0zOTUsNiArNDEwLDcgQEAgc3RhdGljIHZvaWQgcGNpZV9jbGtwbV9jYXBf
-aW5pdChzdHJ1Y3QgcGNpZV9saW5rX3N0YXRlICpsaW5rLCBpbnQgYmxhY2tsaXN0KQo+ID4gPiAg
-IAl9Cj4gPiA+ICAgCWxpbmstPmNsa3BtX2VuYWJsZWQgPSBlbmFibGVkOwo+ID4gPiAgIAlsaW5r
-LT5jbGtwbV9kZWZhdWx0ID0gZW5hYmxlZDsKPiA+ID4gKwlwY2llX2Nsa3BtX292ZXJyaWRlX2Rl
-ZmF1bHRfbGlua19zdGF0ZShsaW5rLCBlbmFibGVkKTsKPiA+ID4gICAJbGluay0+Y2xrcG1fY2Fw
-YWJsZSA9IGNhcGFibGU7Cj4gPiA+ICAgCWxpbmstPmNsa3BtX2Rpc2FibGUgPSBibGFja2xpc3Qg
-PyAxIDogMDsKPiA+ID4gICB9Cj4gPiA+IEBAIC03ODgsNiArODA0LDI2IEBAIHN0YXRpYyB2b2lk
-IGFzcG1fbDFzc19pbml0KHN0cnVjdCBwY2llX2xpbmtfc3RhdGUgKmxpbmspCj4gPiA+ICAgCQlh
-c3BtX2NhbGNfbDEyX2luZm8obGluaywgcGFyZW50X2wxc3NfY2FwLCBjaGlsZF9sMXNzX2NhcCk7
-Cj4gPiA+ICAgfQo+ID4gPiArc3RhdGljIHZvaWQgcGNpZV9hc3BtX292ZXJyaWRlX2RlZmF1bHRf
-bGlua19zdGF0ZShzdHJ1Y3QgcGNpZV9saW5rX3N0YXRlICpsaW5rKQo+ID4gPiArewo+ID4gPiAr
-CXN0cnVjdCBwY2lfZGV2ICpwZGV2ID0gbGluay0+ZG93bnN0cmVhbTsKPiA+ID4gKwl1MzIgb3Zl
-cnJpZGU7Cj4gPiA+ICsKPiA+ID4gKwkvKiBPdmVycmlkZSB0aGUgQklPUyBkaXNhYmxlZCBBU1BN
-IHN0YXRlcyBmb3IgZGV2aWNldHJlZSBwbGF0Zm9ybXMgKi8KPiA+ID4gKwlpZiAob2ZfaGF2ZV9w
-b3B1bGF0ZWRfZHQoKSkgewo+ID4gPiArCQlsaW5rLT5hc3BtX2RlZmF1bHQgPSBQQ0lFX0xJTktf
-U1RBVEVfQVNQTV9BTEw7Cj4gPiA+ICsJCW92ZXJyaWRlID0gbGluay0+YXNwbV9kZWZhdWx0ICYg
-fmxpbmstPmFzcG1fZW5hYmxlZDsKPiA+ID4gKwkJaWYgKG92ZXJyaWRlKQo+ID4gPiArCQkJcGNp
-X2luZm8ocGRldiwgIkFTUE0gc3RhdGVzIG92ZXJyaWRkZW46ICVzJXMlcyVzJXMlc1xuIiwKPiA+
-ID4gKwkJCQkgKG92ZXJyaWRlICYgUENJRV9MSU5LX1NUQVRFX0wwUykgPyAiTDBzKywgIiA6ICIi
-LAo+ID4gPiArCQkJCSAob3ZlcnJpZGUgJiBQQ0lFX0xJTktfU1RBVEVfTDEpID8gIkwxKywgIiA6
-ICIiLAo+ID4gPiArCQkJCSAob3ZlcnJpZGUgJiBQQ0lFX0xJTktfU1RBVEVfTDFfMSkgPyAiTDEu
-MSssICIgOiAiIiwKPiA+ID4gKwkJCQkgKG92ZXJyaWRlICYgUENJRV9MSU5LX1NUQVRFX0wxXzIp
-ID8gIkwxLjIrLCAiIDogIiIsCj4gPiA+ICsJCQkJIChvdmVycmlkZSAmIFBDSUVfTElOS19TVEFU
-RV9MMV8xX1BDSVBNKSA/ICJMMS4xIFBDSS1QTSssICIgOiAiIiwKPiA+ID4gKwkJCQkgKG92ZXJy
-aWRlICYgUENJRV9MSU5LX1NUQVRFX0wxXzJfUENJUE0pID8gIkwxLjIgUENJLVBNKyIgOiAiIik7
-Cj4gPiA+ICsJfQo+ID4gPiArfQo+ID4gPiArCj4gPiA+ICAgc3RhdGljIHZvaWQgcGNpZV9hc3Bt
-X2NhcF9pbml0KHN0cnVjdCBwY2llX2xpbmtfc3RhdGUgKmxpbmssIGludCBibGFja2xpc3QpCj4g
-PiA+ICAgewo+ID4gPiAgIAlzdHJ1Y3QgcGNpX2RldiAqY2hpbGQgPSBsaW5rLT5kb3duc3RyZWFt
-LCAqcGFyZW50ID0gbGluay0+cGRldjsKPiA+ID4gQEAgLTg2OCw2ICs5MDQsOCBAQCBzdGF0aWMg
-dm9pZCBwY2llX2FzcG1fY2FwX2luaXQoc3RydWN0IHBjaWVfbGlua19zdGF0ZSAqbGluaywgaW50
-IGJsYWNrbGlzdCkKPiA+ID4gICAJLyogU2F2ZSBkZWZhdWx0IHN0YXRlICovCj4gPiA+ICAgCWxp
-bmstPmFzcG1fZGVmYXVsdCA9IGxpbmstPmFzcG1fZW5hYmxlZDsKPiA+ID4gKwlwY2llX2FzcG1f
-b3ZlcnJpZGVfZGVmYXVsdF9saW5rX3N0YXRlKGxpbmspOwo+ID4gPiArCj4gPiA+ICAgCS8qIFNl
-dHVwIGluaXRpYWwgY2FwYWJsZSBzdGF0ZS4gV2lsbCBiZSB1cGRhdGVkIGxhdGVyICovCj4gPiA+
-ICAgCWxpbmstPmFzcG1fY2FwYWJsZSA9IGxpbmstPmFzcG1fc3VwcG9ydDsKPiA+ID4gCj4gPiAK
-PiA+IAo+ID4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
-PiA+IExpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdAo+ID4gTGludXgtcm9ja2NoaXBAbGlzdHMu
-aW5mcmFkZWFkLm9yZwo+ID4gaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9saW51eC1yb2NrY2hpcAoKLS0gCuCuruCuo+Cuv+CuteCuo+CvjeCuo+CuqeCvjSDgrprg
-rqTgrr7grprgrr/grrXgrq7gr40KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBs
-aXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
-dGluZm8vbGludXgtcm9ja2NoaXAK
+Hi,
+
+On 10/15/25 15:26, Manivannan Sadhasivam wrote:
+> On Tue, Oct 14, 2025 at 01:49:05PM -0500, Bjorn Helgaas wrote:
+>> [+cc regressions]
+>>
+>> On Wed, Oct 15, 2025 at 01:30:16AM +0900, FUKAUMI Naoki wrote:
+>>> Hi Manivannan Sadhasivam,
+>>>
+>>> I've noticed an issue on Radxa ROCK 5A/5B boards, which are based on the
+>>> Rockchip RK3588(S) SoC.
+>>>
+>>> When running Linux v6.18-rc1 or linux-next since 20250924, the kernel either
+>>> freezes or fails to probe M.2 Wi-Fi modules. This happens with several
+>>> different modules I've tested, including the Realtek RTL8852BE, MediaTek
+>>> MT7921E, and Intel AX210.
+>>>
+>>> I've found that reverting the following commit (i.e., the patch I'm replying
+>>> to) resolves the problem:
+>>> commit f3ac2ff14834a0aa056ee3ae0e4b8c641c579961
+>>
+>> Thanks for the report, and sorry for the regression.
+>>
+>> Since this affects several devices from different manufacturers and (I
+>> assume) different drivers, it seems likely that there's some issue
+>> with the Rockchip end, since ASPM probably works on these devices in
+>> other systems.  So we should figure out if there's something wrong
+>> with the way we configure ASPM, which we could potentially fix, or if
+>> there's a hardware issue and we need some king of quirk to prevent
+>> usage of ASPM on the affected platforms.
+>>
+> 
+> I believe it is the latter. The Root Port is having trouble with ASPM.
+> 
+> FUKAUMI Naoki, could you please share the 'sudo lspci -vv' output so that we
+> know what kind of Root Port we are dealing with? You can revert the offending
+> patch and share the output.
+
+Here is dmesg/lspci output on ROCK 5A(RK3588S):
+  https://gist.github.com/RadxaNaoki/1355a0b4278b6e51a61d89df7a535a5d
+
+----
+
+I've (likely) noticed another PCIe issue on the ROCK 5B (RK3588).
+
+Reverting commit f3ac2ff14834a0aa056ee3ae0e4b8c641c579961 on top of 
+commit 331b2acbe6123dbbcb5c34698692959abbf5748b definitely gets the M.2 
+Wi-Fi working. However, reverting commit 
+f3ac2ff14834a0aa056ee3ae0e4b8c641c579961 on v6.18-rc1/next-20251014 does 
+not work. (It does work on the ROCK 5A.)
+
+Commit 331b2acbe6123dbbcb5c34698692959abbf5748b landed between 
+next-20250923 and next-20250924. I'm currently in the process of bisecting.
+
+Best regards,
+
+--
+FUKAUMI Naoki
+Radxa Computer (Shenzhen) Co., Ltd.
+
+> Then I could supply a patch that you can test out.
+> 
+> - Mani
+> 
+>> Can you collect a complete dmesg log when booting with
+>>
+>>    ignore_loglevel pci=earlydump dyndbg="file drivers/pci/* +p"
+>>
+>> and the output of "sudo lspci -vv"?
+>>
+>> When the kernel freezes, can you give us any information about where,
+>> e.g., a log or screenshot?
+>>
+>> Do you know if any platforms other than Radxa ROCK 5A/5B have this
+>> problem?
+>>
+>> #regzbot introduced: f3ac2ff14834 ("PCI/ASPM: Enable all ClockPM and ASPM states for devicetree platforms")
+>> #regzbot dup-of: https://github.com/chzigotzky/kernels/issues/17
+>>
+>>> On 9/23/25 01:16, Manivannan Sadhasivam via B4 Relay wrote:
+>>>> From: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
+>>>>
+>>>> So far, the PCI subsystem has honored the ASPM and Clock PM states set by
+>>>> the BIOS (through LNKCTL) during device initialization, if it relies on the
+>>>> default state selected using:
+>>>>
+>>>> * Kconfig: CONFIG_PCIEASPM_DEFAULT=y, or
+>>>> * cmdline: "pcie_aspm=off", or
+>>>> * FADT: ACPI_FADT_NO_ASPM
+>>>>
+>>>> This was done conservatively to avoid issues with the buggy devices that
+>>>> advertise ASPM capabilities, but behave erratically if the ASPM states are
+>>>> enabled. So the PCI subsystem ended up trusting the BIOS to enable only the
+>>>> ASPM states that were known to work for the devices.
+>>>>
+>>>> But this turned out to be a problem for devicetree platforms, especially
+>>>> the ARM based devicetree platforms powering Embedded and *some* Compute
+>>>> devices as they tend to run without any standard BIOS. So the ASPM states
+>>>> on these platforms were left disabled during boot and the PCI subsystem
+>>>> never bothered to enable them, unless the user has forcefully enabled the
+>>>> ASPM states through Kconfig, cmdline, and sysfs or the device drivers
+>>>> themselves, enabling the ASPM states through pci_enable_link_state() APIs.
+>>>>
+>>>> This caused runtime power issues on those platforms. So a couple of
+>>>> approaches were tried to mitigate this BIOS dependency without user
+>>>> intervention by enabling the ASPM states in the PCI controller drivers
+>>>> after device enumeration, and overriding the ASPM/Clock PM states
+>>>> by the PCI controller drivers through an API before enumeration.
+>>>>
+>>>> But it has been concluded that none of these mitigations should really be
+>>>> required and the PCI subsystem should enable the ASPM states advertised by
+>>>> the devices without relying on BIOS or the PCI controller drivers. If any
+>>>> device is found to be misbehaving after enabling ASPM states that they
+>>>> advertised, then those devices should be quirked to disable the problematic
+>>>> ASPM/Clock PM states.
+>>>>
+>>>> In an effort to do so, start by overriding the ASPM and Clock PM states set
+>>>> by the BIOS for devicetree platforms first. Separate helper functions are
+>>>> introduced to override the BIOS set states by enabling all of them if
+>>>> of_have_populated_dt() returns true. To aid debugging, print the overridden
+>>>> ASPM and Clock PM states as well.
+>>>>
+>>>> In the future, these helpers could be extended to allow other platforms
+>>>> like VMD, newer ACPI systems with a cutoff year etc... to follow the path.
+>>>>
+>>>> Link: https://lore.kernel.org/linux-pci/20250828204345.GA958461@bhelgaas
+>>>> Suggested-by: Bjorn Helgaas <helgaas@kernel.org>
+>>>> Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
+>>>> Link: https://patch.msgid.link/20250916-pci-dt-aspm-v1-1-778fe907c9ad@oss.qualcomm.com
+>>>> ---
+>>>>    drivers/pci/pcie/aspm.c | 42 ++++++++++++++++++++++++++++++++++++++++--
+>>>>    1 file changed, 40 insertions(+), 2 deletions(-)
+>>>>
+>>>> diff --git a/drivers/pci/pcie/aspm.c b/drivers/pci/pcie/aspm.c
+>>>> index 919a05b9764791c3cc469c9ada62ba5b2c405118..cda31150aec1b67b6a48b60569222ea3d1c3d41f 100644
+>>>> --- a/drivers/pci/pcie/aspm.c
+>>>> +++ b/drivers/pci/pcie/aspm.c
+>>>> @@ -15,6 +15,7 @@
+>>>>    #include <linux/math.h>
+>>>>    #include <linux/module.h>
+>>>>    #include <linux/moduleparam.h>
+>>>> +#include <linux/of.h>
+>>>>    #include <linux/pci.h>
+>>>>    #include <linux/pci_regs.h>
+>>>>    #include <linux/errno.h>
+>>>> @@ -235,13 +236,15 @@ struct pcie_link_state {
+>>>>    	u32 aspm_support:7;		/* Supported ASPM state */
+>>>>    	u32 aspm_enabled:7;		/* Enabled ASPM state */
+>>>>    	u32 aspm_capable:7;		/* Capable ASPM state with latency */
+>>>> -	u32 aspm_default:7;		/* Default ASPM state by BIOS */
+>>>> +	u32 aspm_default:7;		/* Default ASPM state by BIOS or
+>>>> +					   override */
+>>>>    	u32 aspm_disable:7;		/* Disabled ASPM state */
+>>>>    	/* Clock PM state */
+>>>>    	u32 clkpm_capable:1;		/* Clock PM capable? */
+>>>>    	u32 clkpm_enabled:1;		/* Current Clock PM state */
+>>>> -	u32 clkpm_default:1;		/* Default Clock PM state by BIOS */
+>>>> +	u32 clkpm_default:1;		/* Default Clock PM state by BIOS or
+>>>> +					   override */
+>>>>    	u32 clkpm_disable:1;		/* Clock PM disabled */
+>>>>    };
+>>>> @@ -373,6 +376,18 @@ static void pcie_set_clkpm(struct pcie_link_state *link, int enable)
+>>>>    	pcie_set_clkpm_nocheck(link, enable);
+>>>>    }
+>>>> +static void pcie_clkpm_override_default_link_state(struct pcie_link_state *link,
+>>>> +						   int enabled)
+>>>> +{
+>>>> +	struct pci_dev *pdev = link->downstream;
+>>>> +
+>>>> +	/* Override the BIOS disabled Clock PM state for devicetree platforms */
+>>>> +	if (of_have_populated_dt() && !enabled) {
+>>>> +		link->clkpm_default = 1;
+>>>> +		pci_info(pdev, "Clock PM state overridden: ClockPM+\n");
+>>>> +	}
+>>>> +}
+>>>> +
+>>>>    static void pcie_clkpm_cap_init(struct pcie_link_state *link, int blacklist)
+>>>>    {
+>>>>    	int capable = 1, enabled = 1;
+>>>> @@ -395,6 +410,7 @@ static void pcie_clkpm_cap_init(struct pcie_link_state *link, int blacklist)
+>>>>    	}
+>>>>    	link->clkpm_enabled = enabled;
+>>>>    	link->clkpm_default = enabled;
+>>>> +	pcie_clkpm_override_default_link_state(link, enabled);
+>>>>    	link->clkpm_capable = capable;
+>>>>    	link->clkpm_disable = blacklist ? 1 : 0;
+>>>>    }
+>>>> @@ -788,6 +804,26 @@ static void aspm_l1ss_init(struct pcie_link_state *link)
+>>>>    		aspm_calc_l12_info(link, parent_l1ss_cap, child_l1ss_cap);
+>>>>    }
+>>>> +static void pcie_aspm_override_default_link_state(struct pcie_link_state *link)
+>>>> +{
+>>>> +	struct pci_dev *pdev = link->downstream;
+>>>> +	u32 override;
+>>>> +
+>>>> +	/* Override the BIOS disabled ASPM states for devicetree platforms */
+>>>> +	if (of_have_populated_dt()) {
+>>>> +		link->aspm_default = PCIE_LINK_STATE_ASPM_ALL;
+>>>> +		override = link->aspm_default & ~link->aspm_enabled;
+>>>> +		if (override)
+>>>> +			pci_info(pdev, "ASPM states overridden: %s%s%s%s%s%s\n",
+>>>> +				 (override & PCIE_LINK_STATE_L0S) ? "L0s+, " : "",
+>>>> +				 (override & PCIE_LINK_STATE_L1) ? "L1+, " : "",
+>>>> +				 (override & PCIE_LINK_STATE_L1_1) ? "L1.1+, " : "",
+>>>> +				 (override & PCIE_LINK_STATE_L1_2) ? "L1.2+, " : "",
+>>>> +				 (override & PCIE_LINK_STATE_L1_1_PCIPM) ? "L1.1 PCI-PM+, " : "",
+>>>> +				 (override & PCIE_LINK_STATE_L1_2_PCIPM) ? "L1.2 PCI-PM+" : "");
+>>>> +	}
+>>>> +}
+>>>> +
+>>>>    static void pcie_aspm_cap_init(struct pcie_link_state *link, int blacklist)
+>>>>    {
+>>>>    	struct pci_dev *child = link->downstream, *parent = link->pdev;
+>>>> @@ -868,6 +904,8 @@ static void pcie_aspm_cap_init(struct pcie_link_state *link, int blacklist)
+>>>>    	/* Save default state */
+>>>>    	link->aspm_default = link->aspm_enabled;
+>>>> +	pcie_aspm_override_default_link_state(link);
+>>>> +
+>>>>    	/* Setup initial capable state. Will be updated later */
+>>>>    	link->aspm_capable = link->aspm_support;
+>>>>
+>>>
+>>>
+>>> _______________________________________________
+>>> Linux-rockchip mailing list
+>>> Linux-rockchip@lists.infradead.org
+>>> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+> 
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
