@@ -4,68 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 739CACCD185
-	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Oct 2025 07:50:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADCC1CCD185
+	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Oct 2025 07:54:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mQDYawqex5wWtjIlGSHMTZDwQO/MG1lRYzZJO44HYTk=; b=tAEFbG3s+8q8aK
-	5N1mKMf+aT1W0wSmYhmf8tNHcGVJpTvRQ2/YF66ZerF392y8dWaQiJ0KaNyOQCp7ne2x9dW4Q6fjB
-	ooUqMhRgfuBqEXd5kgahsPyhZJFrNlJqZmSHtI3L+cDVI+NZiV6Cii5QYakLEjUjz1y+r8Jq+nj5U
-	/nHT6X1aNglKTGw5n1aCxIbvkF/10dMPFb2sqdza/x4Z1IurtxnoLV+xssZik14fNrWidnlsy5dV3
-	6bRIO/f4gqWZnG6qZ/ORVhzpFk9wR3X++n+EtBJuE9utZTrgJIkPuHtaA69szemcMdPTDdCqy9dgm
-	gIU5+Flnt2Wneta7W+eA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=fHy/Jql2F394Rl7f8R5uyuqAzXKu3c54YP9MW4EvrGo=; b=y8VX1QE29ZhoCO
+	CwGXJ7pYUzG2F8FRT8owN6BhJ1vwerJ33iEL9Y9uKuxWBljARrkvJuMQGNe/2N3otlkLU+nNjBc+L
+	4OVTHOuhJWDxSQh3+gGBg/I230kvaugEhdhBzb8aj/RXLV+LdYgdb8/7ll8cFyQuXyjh8J2XHccvb
+	HLm1AhLa+ZLZgQ+sLWiOJdXsm69cy4sz+A7pU86jTTaW7wHDBhZzIAw7Jikve3zGu+bioh0izXKT/
+	+NADRzuhKsFIEY7SpxyPy8wjAI6sx2vSmwSvGzRlDxUfxTpqosG9NhPFuDeEJYq0zEovwfR7wherX
+	kLhxzHrTVmkGir6wpfAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8wHM-00000000oAx-1LKu;
-	Wed, 15 Oct 2025 07:50:36 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1v8wKn-00000000oa5-3zfo;
+	Wed, 15 Oct 2025 07:54:09 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v8wHJ-00000000oAA-3oTM
-	for linux-rockchip@lists.infradead.org;
-	Wed, 15 Oct 2025 07:50:35 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 8199644CBE;
-	Wed, 15 Oct 2025 07:50:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2F3CDC4CEF8;
-	Wed, 15 Oct 2025 07:50:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1760514633;
-	bh=N+KdJSmTL8JhpieQRxlnbC6Rxa5LC8KfPeDrItfVC1A=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=SFq4PluNMb3ZTq1LSh3igXo6xNp00Fu9larjvGLpNnmxT0zX80tUE7p0BQc2oonmg
-	 u+7REggKqKVjKJDAecTZYIMF7Xjq8SkHUwHmSUnyTDMHI3FREcrYMtESr9l3kiJnQi
-	 y3FXKtVzboRvHpvEqKOfHN337IO+djyYCmcQ34qP67FK5J6VlEYMIXHL/kDe2jUuf0
-	 Nu5GCbaARvK3xRfsIMmweCuilsHJ/6nQ4TNeDtYFZWP9ypiFOxEpQ8brXEV9NBvlIB
-	 KJVqsWzD1PHI7QvPve9VKFGKcL/kSy2IGc3GNA0xXeXyFlb6vby6bpQ0wYpnvqk5DP
-	 2lZDyc5Em93Zw==
-Date: Wed, 15 Oct 2025 13:20:17 +0530
-From: Manivannan Sadhasivam <mani@kernel.org>
-To: FUKAUMI Naoki <naoki@radxa.com>
-Cc: Bjorn Helgaas <helgaas@kernel.org>, 
-	manivannan.sadhasivam@oss.qualcomm.com, Bjorn Helgaas <bhelgaas@google.com>, 
-	Lorenzo Pieralisi <lpieralisi@kernel.org>, Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
-	Rob Herring <robh@kernel.org>, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-msm@vger.kernel.org, "David E. Box" <david.e.box@linux.intel.com>, 
-	Kai-Heng Feng <kai.heng.feng@canonical.com>, "Rafael J. Wysocki" <rafael@kernel.org>, 
-	Heiner Kallweit <hkallweit1@gmail.com>, Chia-Lin Kao <acelan.kao@canonical.com>, 
-	Dragan Simic <dsimic@manjaro.org>, linux-rockchip@lists.infradead.org, regressions@lists.linux.dev
-Subject: Re: [PATCH v2 1/2] PCI/ASPM: Override the ASPM and Clock PM states
- set by BIOS for devicetree platforms
-Message-ID: <7ugvxl3g5szxhc5ebxnlfllp46lhprjvcg5xp75mobsa44c6jv@h2j3dvm5a4lq>
-References: <22594781424C5C98+22cb5d61-19b1-4353-9818-3bb2b311da0b@radxa.com>
- <20251014184905.GA896847@bhelgaas>
- <5ivvb3wctn65obgqvnajpxzifhndza65rsoiqgracfxl7iiimt@oym345d723o2>
- <823262AB21C8D981+8c1b9d50-5897-432b-972e-b7bb25746ba5@radxa.com>
+	id 1v8wKk-00000000oZ2-1omE;
+	Wed, 15 Oct 2025 07:54:07 +0000
+Received: from pendragon.ideasonboard.com (87-94-110-32.bb.dnainternet.fi [87.94.110.32])
+	by perceval.ideasonboard.com (Postfix) with UTF8SMTPSA id 7C3E8E92;
+	Wed, 15 Oct 2025 09:52:22 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1760514742;
+	bh=HMpyQc1vCbg200Ovi9oVcwwxqMAbktCljqyWnp6/pa4=;
+	h=From:To:Cc:Subject:Date:From;
+	b=bHz2suxZQcf0OwK6sXgHCFZZ6iQ17jH8d09o9a4jKXrYvttYbKQiN193Zi3ckmrEb
+	 VOc063B/05xd/wZPm3lhzUiRSoCLduQif6EbnCkdyDb4f7fNTKbIFtfsUB7NowV2j5
+	 Xm/CYKIPh8yqEnxujxmRWLzg3Hf6LshKSceZbfRg=
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: linux-mediatek@lists.infradead.org,
+	imx@lists.linux.dev,
+	linux-amlogic@lists.infradead.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org
+Cc: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Matthew Majewski <mattwmajewski@gmail.com>,
+	Mirela Rabulea <mirela.rabulea@nxp.com>,
+	Jacek Anaszewski <jacek.anaszewski@gmail.com>,
+	Michael Tretter <m.tretter@pengutronix.de>,
+	Devarsh Thakkar <devarsht@ti.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	"Bryan O'Donoghue" <bod@kernel.org>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Arnd Bergmann <arnd@arndb.de>,
+	Sylwester Nawrocki <s.nawrocki@samsung.com>,
+	Ming Qian <ming.qian@nxp.com>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Hans Verkuil <hverkuil+cisco@kernel.org>,
+	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
+	Jacopo Mondi <jacopo.mondi@ideasonboard.com>,
+	Nathan Chancellor <nathan@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Hans Verkuil <hverkuil@kernel.org>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Xavier Roumegue <xavier.roumegue@oss.nxp.com>,
+	Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>,
+	Nikita Yushchenko <nikita.yoush@cogentembedded.com>,
+	Tiffany Lin <tiffany.lin@mediatek.com>,
+	Zhou Peng <eagle.zhou@nxp.com>,
+	Yunfei Dong <yunfei.dong@mediatek.com>,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Jiasheng Jiang <jiashengjiangcool@gmail.com>,
+	Vikash Garodia <vikash.garodia@oss.qualcomm.com>,
+	Shawn Guo <shawnguo@kernel.org>,
+	=?UTF-8?q?=C5=81ukasz=20Stelmach?= <l.stelmach@samsung.com>,
+	Abhinav Kumar <abhinav.kumar@linux.dev>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Yemike Abhilash Chandra <y-abhilashchandra@ti.com>,
+	Magnus Damm <magnus.damm@gmail.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Jacob Chen <jacob-chen@iotwrt.com>,
+	Dikshita Agarwal <dikshita.agarwal@oss.qualcomm.com>,
+	Bin Liu <bin.liu@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Fabio Estevam <festevam@gmail.com>,
+	Yunseong Kim <ysk@kzalloc.com>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Stefan Klug <stefan.klug@ideasonboard.com>
+Subject: [PATCH v2 00/25] media: v4l2-mem2mem: Reduce cargo-cult
+Date: Wed, 15 Oct 2025 10:53:23 +0300
+Message-ID: <20251015075353.22625-1-laurent.pinchart@ideasonboard.com>
+X-Mailer: git-send-email 2.51.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <823262AB21C8D981+8c1b9d50-5897-432b-972e-b7bb25746ba5@radxa.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251015_005033_996978_B297392B 
-X-CRM114-Status: GOOD (  29.96  )
+X-CRM114-CacheID: sfid-20251015_005406_612967_2A1DAC65 
+X-CRM114-Status: GOOD (  13.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,64 +115,119 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkLCBPY3QgMTUsIDIwMjUgYXQgMDQ6MTM6NDFQTSArMDkwMCwgRlVLQVVNSSBOYW9raSB3
-cm90ZToKPiBIaSwKPiAKPiBPbiAxMC8xNS8yNSAxNToyNiwgTWFuaXZhbm5hbiBTYWRoYXNpdmFt
-IHdyb3RlOgo+ID4gT24gVHVlLCBPY3QgMTQsIDIwMjUgYXQgMDE6NDk6MDVQTSAtMDUwMCwgQmpv
-cm4gSGVsZ2FhcyB3cm90ZToKPiA+ID4gWytjYyByZWdyZXNzaW9uc10KPiA+ID4gCj4gPiA+IE9u
-IFdlZCwgT2N0IDE1LCAyMDI1IGF0IDAxOjMwOjE2QU0gKzA5MDAsIEZVS0FVTUkgTmFva2kgd3Jv
-dGU6Cj4gPiA+ID4gSGkgTWFuaXZhbm5hbiBTYWRoYXNpdmFtLAo+ID4gPiA+IAo+ID4gPiA+IEkn
-dmUgbm90aWNlZCBhbiBpc3N1ZSBvbiBSYWR4YSBST0NLIDVBLzVCIGJvYXJkcywgd2hpY2ggYXJl
-IGJhc2VkIG9uIHRoZQo+ID4gPiA+IFJvY2tjaGlwIFJLMzU4OChTKSBTb0MuCj4gPiA+ID4gCj4g
-PiA+ID4gV2hlbiBydW5uaW5nIExpbnV4IHY2LjE4LXJjMSBvciBsaW51eC1uZXh0IHNpbmNlIDIw
-MjUwOTI0LCB0aGUga2VybmVsIGVpdGhlcgo+ID4gPiA+IGZyZWV6ZXMgb3IgZmFpbHMgdG8gcHJv
-YmUgTS4yIFdpLUZpIG1vZHVsZXMuIFRoaXMgaGFwcGVucyB3aXRoIHNldmVyYWwKPiA+ID4gPiBk
-aWZmZXJlbnQgbW9kdWxlcyBJJ3ZlIHRlc3RlZCwgaW5jbHVkaW5nIHRoZSBSZWFsdGVrIFJUTDg4
-NTJCRSwgTWVkaWFUZWsKPiA+ID4gPiBNVDc5MjFFLCBhbmQgSW50ZWwgQVgyMTAuCj4gPiA+ID4g
-Cj4gPiA+ID4gSSd2ZSBmb3VuZCB0aGF0IHJldmVydGluZyB0aGUgZm9sbG93aW5nIGNvbW1pdCAo
-aS5lLiwgdGhlIHBhdGNoIEknbSByZXBseWluZwo+ID4gPiA+IHRvKSByZXNvbHZlcyB0aGUgcHJv
-YmxlbToKPiA+ID4gPiBjb21taXQgZjNhYzJmZjE0ODM0YTBhYTA1NmVlM2FlMGU0YjhjNjQxYzU3
-OTk2MQo+ID4gPiAKPiA+ID4gVGhhbmtzIGZvciB0aGUgcmVwb3J0LCBhbmQgc29ycnkgZm9yIHRo
-ZSByZWdyZXNzaW9uLgo+ID4gPiAKPiA+ID4gU2luY2UgdGhpcyBhZmZlY3RzIHNldmVyYWwgZGV2
-aWNlcyBmcm9tIGRpZmZlcmVudCBtYW51ZmFjdHVyZXJzIGFuZCAoSQo+ID4gPiBhc3N1bWUpIGRp
-ZmZlcmVudCBkcml2ZXJzLCBpdCBzZWVtcyBsaWtlbHkgdGhhdCB0aGVyZSdzIHNvbWUgaXNzdWUK
-PiA+ID4gd2l0aCB0aGUgUm9ja2NoaXAgZW5kLCBzaW5jZSBBU1BNIHByb2JhYmx5IHdvcmtzIG9u
-IHRoZXNlIGRldmljZXMgaW4KPiA+ID4gb3RoZXIgc3lzdGVtcy4gIFNvIHdlIHNob3VsZCBmaWd1
-cmUgb3V0IGlmIHRoZXJlJ3Mgc29tZXRoaW5nIHdyb25nCj4gPiA+IHdpdGggdGhlIHdheSB3ZSBj
-b25maWd1cmUgQVNQTSwgd2hpY2ggd2UgY291bGQgcG90ZW50aWFsbHkgZml4LCBvciBpZgo+ID4g
-PiB0aGVyZSdzIGEgaGFyZHdhcmUgaXNzdWUgYW5kIHdlIG5lZWQgc29tZSBraW5nIG9mIHF1aXJr
-IHRvIHByZXZlbnQKPiA+ID4gdXNhZ2Ugb2YgQVNQTSBvbiB0aGUgYWZmZWN0ZWQgcGxhdGZvcm1z
-Lgo+ID4gPiAKPiA+IAo+ID4gSSBiZWxpZXZlIGl0IGlzIHRoZSBsYXR0ZXIuIFRoZSBSb290IFBv
-cnQgaXMgaGF2aW5nIHRyb3VibGUgd2l0aCBBU1BNLgo+ID4gCj4gPiBGVUtBVU1JIE5hb2tpLCBj
-b3VsZCB5b3UgcGxlYXNlIHNoYXJlIHRoZSAnc3VkbyBsc3BjaSAtdnYnIG91dHB1dCBzbyB0aGF0
-IHdlCj4gPiBrbm93IHdoYXQga2luZCBvZiBSb290IFBvcnQgd2UgYXJlIGRlYWxpbmcgd2l0aD8g
-WW91IGNhbiByZXZlcnQgdGhlIG9mZmVuZGluZwo+ID4gcGF0Y2ggYW5kIHNoYXJlIHRoZSBvdXRw
-dXQuCj4gCj4gSGVyZSBpcyBkbWVzZy9sc3BjaSBvdXRwdXQgb24gUk9DSyA1QShSSzM1ODhTKToK
-PiAgaHR0cHM6Ly9naXN0LmdpdGh1Yi5jb20vUmFkeGFOYW9raS8xMzU1YTBiNDI3OGI2ZTUxYTYx
-ZDg5ZGY3YTUzNWE1ZAo+IAoKVGhhbmtzISBDb3VsZCB5b3UgcGxlYXNlIHRyeSB0aGUgYmVsb3cg
-ZGlmZiB3aXRoIGYzYWMyZmYxNDgzNCBhcHBsaWVkPwoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvcGNp
-L3F1aXJrcy5jIGIvZHJpdmVycy9wY2kvcXVpcmtzLmMKaW5kZXggMjE0ZWQwNjBjYTFiLi4wMDY5
-ZDA2YzI4MmQgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvcGNpL3F1aXJrcy5jCisrKyBiL2RyaXZlcnMv
-cGNpL3F1aXJrcy5jCkBAIC0yNTI1LDYgKzI1MjUsMTUgQEAgc3RhdGljIHZvaWQgcXVpcmtfZGlz
-YWJsZV9hc3BtX2wwc19sMShzdHJ1Y3QgcGNpX2RldiAqZGV2KQogICovCiBERUNMQVJFX1BDSV9G
-SVhVUF9GSU5BTChQQ0lfVkVORE9SX0lEX0FTTUVESUEsIDB4MTA4MCwgcXVpcmtfZGlzYWJsZV9h
-c3BtX2wwc19sMSk7CgorCitzdGF0aWMgdm9pZCBxdWlya19kaXNhYmxlX2FzcG1fYWxsKHN0cnVj
-dCBwY2lfZGV2ICpkZXYpCit7CisgICAgICAgcGNpX2luZm8oZGV2LCAiRGlzYWJsaW5nIEFTUE1c
-biIpOworICAgICAgIHBjaV9kaXNhYmxlX2xpbmtfc3RhdGUoZGV2LCBQQ0lFX0xJTktfU1RBVEVf
-QUxMKTsKK30KKworREVDTEFSRV9QQ0lfRklYVVBfRklOQUwoUENJX1ZFTkRPUl9JRF9ST0NLQ0hJ
-UCwgMHgzNTg4LCBxdWlya19kaXNhYmxlX2FzcG1fYWxsKTsKKwogLyoKICAqIFNvbWUgUGVyaWNv
-bSBQQ0llLXRvLVBDSSBicmlkZ2VzIGluIHJldmVyc2UgbW9kZSBuZWVkIHRoZSBQQ0llIFJldHJh
-aW4KICAqIExpbmsgYml0IGNsZWFyZWQgYWZ0ZXIgc3RhcnRpbmcgdGhlIGxpbmsgcmV0cmFpbiBw
-cm9jZXNzIHRvIGFsbG93IHRoaXMKCgpGcm9tIHlvdXIgcHJldmlvdXMgY29tbWVudCwgSSBiZWxp
-ZXZlIHRoZSBSb290IFBvcnQgaXMgaGF2aW5nIHRoZSBpc3N1ZXMgd2l0aApBU1BNIGFzIHlvdSBz
-ZWVtIHRvIGhhdmUgdHJpZWQgY29ubmVjdGluZyBkaWZmZXJlbnQgZGV2aWNlcyB0byB0aGUgc2xv
-dC4gU28gSQpkaXNhYmxlZCBBU1BNIGZvciB0aGUgUm9vdCBQb3J0IHdpdGggdGhlIGFib3ZlIGRp
-ZmYuCgotIE1hbmkKCi0tIArgrq7grqPgrr/grrXgrqPgr43grqPgrqngr40g4K6a4K6k4K6+4K6a
-4K6/4K614K6u4K+NCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5m
-cmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
-bnV4LXJvY2tjaGlwCg==
+Hello,
+
+The v4l2_m2m_get_vq() function never returns NULL, but many mem2mem
+drivers still check its return value and consider NULL as an error. This
+may have originated a long time ago from valid checks when
+v4l2_m2m_get_vq() could return NULL, with drivers then just copying the
+checks. This series attempts to stop the cargo-cult behaviour.
+
+Patch 01/25 starts by explicitly stating in kerneldoc that the
+v4l2_m2m_get_vq() function never returns NULL. All the other patches
+drop NULL checks from drivers.
+
+I have carefully checked all patched locations in all drivers. They fall
+in 3 categories:
+
+- Checks in the VIDIOC_G_FMT, VIDIOC_TRY_FMT and VIDIOC_S_FMT handlers:
+  Those may have been added to ensure that the format type has a valid
+  value, but that is ensured by the V4L2 ioctl core before calling the
+  handlers. The checks can be dropped without a need to replace them
+  with proper type checks.
+
+- Checks in the VIDIOC_S_SELECTION handler: The only location where this
+  is performed has an explicit type check, so the NULL check can also be
+  dropped.
+
+- Checks in other locations where the type parameter to the
+  v4l2_m2m_get_vq() function is hardcoded: The hardcoded type is valid,
+  so the NULL check can't have been meant to check the type. It can also
+  be removed.
+
+There's no dependency between any of those patches so they can be merged
+in any order.
+
+Compared to v1, this version drops two more NULL checks, in the Mediatek
+vcodec encoder get format handler (09/25) and the Qualcomm iris venc set
+format handler (15/25).
+
+Laurent Pinchart (25):
+  media: v4l2-mem2mem: Document that v4l2_m2m_get_vq() never returns
+    NULL
+  media: allgro-dvt: Drop unneeded v4l2_m2m_get_vq() NULL check
+  media: meson-g2d: Drop unneeded v4l2_m2m_get_vq() NULL check
+  media: amphion: Drop unneeded v4l2_m2m_get_vq() NULL check
+  media: coda: Drop unneeded v4l2_m2m_get_vq() NULL check
+  media: imagination: e5010: Drop unneeded v4l2_m2m_get_vq() NULL check
+  media: m2m-deinterlace: Drop unneeded v4l2_m2m_get_vq() NULL check
+  media: mediatek: jpeg: Drop unneeded v4l2_m2m_get_vq() NULL check
+  media: mediatek: vcodec: Drop unneeded v4l2_m2m_get_vq() NULL check
+  media: dw100: Drop unneeded v4l2_m2m_get_vq() NULL check
+  media: imx-jpeg: Drop unneeded v4l2_m2m_get_vq() NULL check
+  media: imx-pxp: Drop unneeded v4l2_m2m_get_vq() NULL check
+  media: nxp: imx8-isi: Drop unneeded v4l2_m2m_get_vq() NULL check
+  media: mx2_emmaprp: Drop unneeded v4l2_m2m_get_vq() NULL check
+  media: qcom: iris: Drop unneeded v4l2_m2m_get_vq() NULL check
+  media: qcom: venus: Drop unneeded v4l2_m2m_get_vq() NULL check
+  media: renesas: fdp1: Drop unneeded v4l2_m2m_get_vq() NULL check
+  media: rcar_jpu: Drop unneeded v4l2_m2m_get_vq() NULL check
+  media: platform: rga: Drop unneeded v4l2_m2m_get_vq() NULL check
+  media: samsung: s5p-g2d: Drop unneeded v4l2_m2m_get_vq() NULL check
+  media: samsung: s5p-jpeg: Drop unneeded v4l2_m2m_get_vq() NULL check
+  media: stm32: dma2d: Drop unneeded v4l2_m2m_get_vq() NULL check
+  media: ti: vpe: Drop unneeded v4l2_m2m_get_vq() NULL check
+  media: vicodec: Drop unneeded v4l2_m2m_get_vq() NULL check
+  media: vim2m: Drop unneeded v4l2_m2m_get_vq() NULL check
+
+ drivers/media/platform/allegro-dvt/allegro-core.c  |  2 --
+ drivers/media/platform/amlogic/meson-ge2d/ge2d.c   |  5 -----
+ drivers/media/platform/amphion/vdec.c              |  2 --
+ drivers/media/platform/amphion/venc.c              |  2 --
+ .../media/platform/chips-media/coda/coda-common.c  |  4 ----
+ .../media/platform/imagination/e5010-jpeg-enc.c    |  4 ----
+ drivers/media/platform/m2m-deinterlace.c           |  7 -------
+ .../media/platform/mediatek/jpeg/mtk_jpeg_core.c   |  7 -------
+ .../mediatek/vcodec/decoder/mtk_vcodec_dec.c       |  7 -------
+ .../vcodec/decoder/vdec/vdec_av1_req_lat_if.c      |  2 --
+ .../vcodec/decoder/vdec/vdec_vp9_req_lat_if.c      |  2 --
+ .../mediatek/vcodec/encoder/mtk_vcodec_enc.c       | 14 --------------
+ drivers/media/platform/nxp/dw100/dw100.c           |  7 -------
+ drivers/media/platform/nxp/imx-jpeg/mxc-jpeg.c     |  4 ----
+ drivers/media/platform/nxp/imx-pxp.c               |  7 -------
+ drivers/media/platform/nxp/imx8-isi/imx8-isi-m2m.c |  2 --
+ drivers/media/platform/nxp/mx2_emmaprp.c           |  7 -------
+ drivers/media/platform/qcom/iris/iris_vdec.c       |  2 --
+ drivers/media/platform/qcom/iris/iris_venc.c       |  2 --
+ drivers/media/platform/qcom/venus/vdec.c           |  2 --
+ drivers/media/platform/qcom/venus/venc.c           |  2 --
+ drivers/media/platform/renesas/rcar_fdp1.c         |  3 ---
+ drivers/media/platform/renesas/rcar_jpu.c          |  8 --------
+ drivers/media/platform/rockchip/rga/rga.c          |  4 ----
+ drivers/media/platform/samsung/s5p-g2d/g2d.c       |  4 ----
+ .../media/platform/samsung/s5p-jpeg/jpeg-core.c    |  7 -------
+ drivers/media/platform/st/stm32/dma2d/dma2d.c      |  5 -----
+ drivers/media/platform/ti/vpe/vpe.c                |  7 -------
+ drivers/media/test-drivers/vicodec/vicodec-core.c  |  7 -------
+ drivers/media/test-drivers/vim2m.c                 | 12 ------------
+ drivers/media/v4l2-core/v4l2-mem2mem.c             | 12 +-----------
+ include/media/v4l2-mem2mem.h                       |  3 +++
+ 32 files changed, 4 insertions(+), 161 deletions(-)
+
+
+base-commit: 082b86919b7a94de01d849021b4da820a6cb89dc
+-- 
+Regards,
+
+Laurent Pinchart
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
