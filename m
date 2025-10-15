@@ -4,153 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67D7ACCD185
-	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Oct 2025 22:03:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8088BCCD193
+	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Oct 2025 22:50:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uM0MyTxwhgb5RSGTIFD7i6lOBKWtFTFWG6jVgES8RmA=; b=jjvBwhmDGCyAU5
-	nD9Ff25xsU3BaSfnLPrdulEPLuBaiR7GdZ7dfPVMeiXkIcEXSVuXHG1I3hHIv5nDTuGy5ahDBI7nT
-	kMKCvA0OqWHbs9BPDHOX+Lhof1HVybwRVPynApuKMETYt3WKO+XCi0/ARSjty6aE+9CtEI/m67Nng
-	elV1kMMOZHjy4AyLI1Hoo3PrmlBuohPlXRvd6e9mdKMabaf/fcC4ThMh0COYWf0XE05WUkoz/50LR
-	9Fy9SkaE8x964zn7baKWzcmOzIkFj1RZ503p1PPt2iqchEI/8Ck0CVrImfqUwkhe6mT6ubM1E2d7a
-	EgLLqKm0qRPqhrva7CLw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=fz9Qc0guoQn2OKftT0R3Nd5BTWKIQ8g9IJNCgxvCtlo=; b=c7OL++iXyo0ZP9
+	+kpTdaeHwx+59dMbM4sSJnlnCn1PSyu0YO1LIOAvDVkjFQ7LL+koNfGe+kNmSB80RUQ46jkjIoylv
+	sqB2+vH2W432TSwdV/JeODL0kX2KYGysZXaFl7gp9nrK+PN+ir3LcXqddWC+eae0FdYtlhEQhtEDW
+	O+c55t3DwB/MSR3gJ+oM55Y2flGaZbm7a8bIz365WlCtikoiT1fckf7zKy7SAjsQ2ASkcV1Mn5N/e
+	P2ybVtuCtpN7lyeRtM+Kp1iQxc7FPnNlhhFmlnZWgUl9KJRqH/mnGFs2+Zp8uM2NZeNN8p8YAGOza
+	E8/mJqq4W1BEv7QhrKEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v99aO-00000002zLU-1Kxl;
-	Wed, 15 Oct 2025 22:03:08 +0000
-Received: from mail-eastusazlp17011000f.outbound.protection.outlook.com ([2a01:111:f403:c100::f] helo=BL2PR02CU003.outbound.protection.outlook.com)
+	id 1v9AKL-000000032S7-2oCC;
+	Wed, 15 Oct 2025 22:50:37 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v99aJ-00000002zIG-3MCM;
-	Wed, 15 Oct 2025 22:03:06 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=mGsr+VdtLSjMMNDEgCEkujsMAfyuGbFWZ0oT5z7QJ0pq8KpR5gs23fmcWbq5awqQQjUp7oLfQ3WcxejVbFf0M3UXx1ChRA6kU5SXUmKU9hQ6U2twNNJN63y4luN8zQ26wB02bPBtBvZDln5NPdk0VNjCKH1BkLMovNfOJBNR/ExCOUimSnM5chKEVzRjlECrEoyAuMz1IbbrG/E9fjmBtBAnxgYDkzkKjS/mx10Qi/aErAlxEf+dciKh/alaRGGIkMPJUKotFW4K9CUTtBoIbJ3J/qe0/1r+yr9LfgKLSB0/ynah20sQrXT0f1FeJA4WIllu2RqjEddpae5rTnajBg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=7SGRrPS3HdagIo/c2OYsBv+ocTyBUS7cJdVp/ApU4Ww=;
- b=itv+XtdYBgxoeQBwLYfTsLMX6A5Kmr7PE6m06cSF/XPwPEDSVUQ1eALkgRMH2eIyddZoMIVyXdU5elWqqKvQO7TWeshd/3zmj9KuI2h64O7VjV67PJXK+4HNryP1/NBbElP6aoF/thCEy1/WDzqdJR5hA6GQMVae5QzZhv5W2ySr3sRJqwk0vY2eXyNYfk8Q1Ywr2f/ZQaajQpKr0nH5kDFbjr/RtMGFXKObshU3zSXQ9Q3+2lUNjwV+J19j/cYGB4S+hLjNjrNzoutPgSYIm/05Yx+nT8vF5oEmt8VudWIhFYMvW7MC3D23tjBjcHcfG1Tu/BGl3pxc8ikvFj5FCg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.118.232) smtp.rcpttodomain=8bytes.org smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=7SGRrPS3HdagIo/c2OYsBv+ocTyBUS7cJdVp/ApU4Ww=;
- b=maGviLPjtdymgUrpwbT7HAu6eSV7myau0SyhSc3EO6EC9+wczrlf4ZB73LqloDZRUHyDMqPz2MwOIZ14il6LeCBjuO4Qf+Xbyyyv8IrHRgZxPRxdwI7PvdsVL9dnMfnpZf3nfJ99oahutHnfkcONyyJkpsPApzYcG4L0rUuMFqNLkgaiBFK5JYpIijn2KTbKPQCDCC6YsMcDw5AfYhtpbfjDXzwv5pgqepo/IHTImgTZ3mO3Sa5NR1TuLT6k33XNpY62zfuD+PGdZvaVSRwskFI3EFnZMuJuM1vqDif+wx5aikjtNRKXlve0JYVGGt2ahCLXBHScM49IExoLmiE5zQ==
-Received: from SJ0PR05CA0152.namprd05.prod.outlook.com (2603:10b6:a03:339::7)
- by CY8PR12MB7586.namprd12.prod.outlook.com (2603:10b6:930:99::15) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9228.10; Wed, 15 Oct
- 2025 22:02:47 +0000
-Received: from SJ5PEPF000001ED.namprd05.prod.outlook.com
- (2603:10b6:a03:339:cafe::dc) by SJ0PR05CA0152.outlook.office365.com
- (2603:10b6:a03:339::7) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.9253.4 via Frontend Transport; Wed,
- 15 Oct 2025 22:02:47 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.118.232)
- smtp.mailfrom=nvidia.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.118.232 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.118.232; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.118.232) by
- SJ5PEPF000001ED.mail.protection.outlook.com (10.167.242.201) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.9228.7 via Frontend Transport; Wed, 15 Oct 2025 22:02:47 +0000
-Received: from drhqmail203.nvidia.com (10.126.190.182) by mail.nvidia.com
- (10.127.129.5) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Wed, 15 Oct
- 2025 15:02:38 -0700
-Received: from drhqmail203.nvidia.com (10.126.190.182) by
- drhqmail203.nvidia.com (10.126.190.182) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.20; Wed, 15 Oct 2025 15:02:37 -0700
-Received: from Asurada-Nvidia (10.127.8.12) by mail.nvidia.com
- (10.126.190.182) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20 via Frontend
- Transport; Wed, 15 Oct 2025 15:02:35 -0700
-Date: Wed, 15 Oct 2025 15:02:34 -0700
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: <joro@8bytes.org>, <jgg@nvidia.com>, <kevin.tian@intel.com>
-CC: <suravee.suthikulpanit@amd.com>, <will@kernel.org>,
-	<robin.murphy@arm.com>, <sven@kernel.org>, <j@jannau.net>,
-	<jean-philippe@linaro.org>, <robin.clark@oss.qualcomm.com>,
-	<dwmw2@infradead.org>, <baolu.lu@linux.intel.com>, <yong.wu@mediatek.com>,
-	<matthias.bgg@gmail.com>, <angelogioacchino.delregno@collabora.com>,
-	<tjeznach@rivosinc.com>, <pjw@kernel.org>, <palmer@dabbelt.com>,
-	<aou@eecs.berkeley.edu>, <heiko@sntech.de>, <schnelle@linux.ibm.com>,
-	<mjrosato@linux.ibm.com>, <wens@csie.org>, <jernej.skrabec@gmail.com>,
-	<samuel@sholland.org>, <thierry.reding@gmail.com>, <jonathanh@nvidia.com>,
-	<iommu@lists.linux.dev>, <linux-kernel@vger.kernel.org>,
-	<asahi@lists.linux.dev>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-arm-msm@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-riscv@lists.infradead.org>, <linux-rockchip@lists.infradead.org>,
-	<linux-s390@vger.kernel.org>, <linux-sunxi@lists.linux.dev>,
-	<linux-tegra@vger.kernel.org>, <virtualization@lists.linux.dev>,
-	<patches@lists.linux.dev>
-Subject: Re: [PATCH v1 15/20] iommu/fsl_pamu_domain: Implement
- fsl_pamu_domain_test_device
-Message-ID: <aPAZ+hknPmn7GSns@Asurada-Nvidia>
-References: <cover.1760312725.git.nicolinc@nvidia.com>
- <a54211182e22db598b2a26f589e8f5f34ad78f98.1760312725.git.nicolinc@nvidia.com>
+	id 1v9AKJ-000000032Rz-365V
+	for linux-rockchip@lists.infradead.org;
+	Wed, 15 Oct 2025 22:50:35 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id CE1A460323;
+	Wed, 15 Oct 2025 22:50:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4C64CC4CEF8;
+	Wed, 15 Oct 2025 22:50:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1760568634;
+	bh=YLBO0n7kCNA2DNr4AULWGXKmK1HQxkDhSaZZFEgXrjw=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=AUvJmCsSG4A8dOgYSfL3n/ufhUIE/Ip9vzQ6rrDJrXcsR7571piThJsUq7u6K65Cd
+	 57tGEB3YaFAQ6OBlhXIhEnEYxnIl3qPqRdaXCDZlUzT36zCH6HHUDOIFC/0l86h4S/
+	 cDKUb8kw3Dgpf2E2jE6lli1G3V4seucF4/bKrhO/NOb0dkP8QLv2JdyPv3IeADCvIU
+	 F/+NJIuDi9qIn9oH407Ws30IHA1spx6HPn1NF0YsxM4gEFas8vJSZex+PFQNOfNjkG
+	 FWnT8PB5YDapki8wyOGfGRhvgXzrNTLYZQA0+XHfqBR4OKbhvYc93OI6pitZp2ABc6
+	 ZM+kxKC/7W54w==
+Date: Wed, 15 Oct 2025 17:50:33 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Diederik de Haas <diederik@cknow-tech.com>
+Cc: FUKAUMI Naoki <naoki@radxa.com>, manivannan.sadhasivam@oss.qualcomm.com,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Rob Herring <robh@kernel.org>, linux-pci@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+	"David E. Box" <david.e.box@linux.intel.com>,
+	Kai-Heng Feng <kai.heng.feng@canonical.com>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Chia-Lin Kao <acelan.kao@canonical.com>,
+	Dragan Simic <dsimic@manjaro.org>,
+	linux-rockchip@lists.infradead.org, regressions@lists.linux.dev
+Subject: Re: [PATCH v2 1/2] PCI/ASPM: Override the ASPM and Clock PM states
+ set by BIOS for devicetree platforms
+Message-ID: <20251015225033.GA945930@bhelgaas>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <a54211182e22db598b2a26f589e8f5f34ad78f98.1760312725.git.nicolinc@nvidia.com>
-X-NV-OnPremToCloud: ExternallySecured
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SJ5PEPF000001ED:EE_|CY8PR12MB7586:EE_
-X-MS-Office365-Filtering-Correlation-Id: 9b86166e-0e94-4460-4e10-08de0c369370
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|82310400026|36860700013|1800799024|376014|7416014;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?DEm0E062OZeDr7Kx+MIKv7FX+QtY7de0TPFI30lACvZPV0ZDNM8T3+VAr4OH?=
- =?us-ascii?Q?zCuVB2yM89Q3zz6ga1y1GIwptgqdw9ALXvLpiFZUY3aFcZOnd+khIjfYM4uN?=
- =?us-ascii?Q?2p1qmNH33WE/R7dvVhl7ZPEdITCOzPnRk47hJlXeNZlWa6rpwMyBK+nap7v7?=
- =?us-ascii?Q?HFIqV1RI0o3AIB6OuQi4pQCAcODUGfnrthUXtyBBCeN1AGQwo6JVCNamOygM?=
- =?us-ascii?Q?e9hrWHLuqSWJoRaMMPvYr7OIN+2mTbhX6o/Pj7rhU4sNthpD5Q8eU14dztLk?=
- =?us-ascii?Q?vtzosnkyrUVkvVcMYI3650biT5SeS+sFr08sNpoGCggjt63HzHLU+6h7PSsc?=
- =?us-ascii?Q?gGMF0GqJd4rSL+jXJAZE0aOvj/dVnWQnaNeyWz5kKhJ1eMOfJu7aMMX71rhN?=
- =?us-ascii?Q?mIq8RANuPtLajMyaSPMOyUU/5ckZNQHIptC3PUkAQZY5VR2b8TrMyu7G3jMq?=
- =?us-ascii?Q?hUccut6BEUxsLDlz0mHNrM4EVgxtvUbQe+sVkrjmoawriKs5IXBiIqEOotj5?=
- =?us-ascii?Q?HkC6BfBMTNZRxBkBUjO1HWxyP6p0kcfh2vpKcGmKFz1ylbUlzTIUPZymY7rR?=
- =?us-ascii?Q?hbK7/FTEuWq7egEQWHK8nNMnwgiboeCSwtmB8whWLYTyYT9/ucDbuDMSqQ3H?=
- =?us-ascii?Q?rWXGsjLeBEG5OktuGX2fJydIG8c4IaNDjIbBVHJ7VTQDLwAnG7DiiYp/+GkR?=
- =?us-ascii?Q?P3lUEo6vMO1hQ2E8TEF1IpHiCWac90FXWRG7Uk5TMkoY2OJtXhe/NUhRXqoM?=
- =?us-ascii?Q?NWGhwHMh1SP1SHeZ+L19PJ3ZSwZN8MUx0UUYsnAOepV3msUFl69SpqEYOffn?=
- =?us-ascii?Q?aJu1XFa1dbnt2hIXQZxUc70sI9eOtaMj9052s9lmI469wKM1HZBKArdyPgeP?=
- =?us-ascii?Q?9nPOTEUkgXEY70vbY9bfF9YBR3Rj6HvPBvN+0wXJA7yFWYcDvRR4tQc/g/xb?=
- =?us-ascii?Q?fjCMlEtlijhVqIO7OVS42LrkyjqdGyT4g10l9E7v+q4ryBA+5Qe1QBCV2Mxn?=
- =?us-ascii?Q?qOr0mUUtyu4p8dKM3Xwjmyl2Je8g+onb0BmboltkCPzOpP/bZyREH6vvrIZd?=
- =?us-ascii?Q?Giy7ANM323Cva97iZew9lrlBp23WLEYBj2SPPl/J8tCtGsvffRKjAANOadXN?=
- =?us-ascii?Q?5WgJ0ttHdO1FyMOyDyHq5Fnll/xld5dHUwlkngK8pPgx8j4nG0Wq8v5qX+1L?=
- =?us-ascii?Q?EkIGJmPGL5cHWwUQtBY0CGYcJ40Zg4lHTYVCBIuUSYtnj659zV2q00o6XxEO?=
- =?us-ascii?Q?YoaEocPesTdf5GNbxPkK3mXMvvlSe2BAJYLl/CCtYNCgq1c180eX+WIr9hK5?=
- =?us-ascii?Q?DUOisyNnpZnqVZG0NTzw2iHp2VLFmUbvOsOCsDIH/08knEP8Xs//Q6SIO++x?=
- =?us-ascii?Q?tB/1RiDJZfEm+NnOlq4fJculdL/iuRPfYkIbTg+YBcTEAApQfS/n1d3v4z/o?=
- =?us-ascii?Q?iLTjAdxzrPISKaWBL4RMu0oZjjOJipqD0+4E7poQtB3R7uLAex3QZQO9WbKD?=
- =?us-ascii?Q?BEVlTXGsi42QwDjHQvCzhFE9sTzF6B96LFNjcQnaOjKqnHvOTu1Lds5P2hf8?=
- =?us-ascii?Q?MEdh4WjGsZ1DubHsImA=3D?=
-X-Forefront-Antispam-Report: CIP:216.228.118.232;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:dc7edge1.nvidia.com;CAT:NONE;SFS:(13230040)(82310400026)(36860700013)(1800799024)(376014)(7416014);DIR:OUT;SFP:1101;
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Oct 2025 22:02:47.4353
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 9b86166e-0e94-4460-4e10-08de0c369370
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[216.228.118.232];Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: SJ5PEPF000001ED.namprd05.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY8PR12MB7586
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251015_150303_839255_ECD4B846 
-X-CRM114-Status: UNSURE (   8.59  )
-X-CRM114-Notice: Please train this message.
+In-Reply-To: <DDIW7ZP5K1VR.2I7VW56B9CZLF@cknow-tech.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -167,30 +81,157 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sun, Oct 12, 2025 at 05:05:12PM -0700, Nicolin Chen wrote:
-> +static int fsl_pamu_domain_test_device(struct iommu_domain *domain,
-> +				       struct device *dev, ioasid_t pasid,
-> +				       struct iommu_domain *old)
-> +{
-...
-> +	liodn = of_get_property(dev->of_node, "fsl,liodn", &len);
-> +	if (!liodn) {
-> +		pr_debug("missing fsl,liodn property at %pOF\n", dev->of_node);
-> +		return -ENODEV;
-> +	}
-> +
-> +	guard(spin_lock_irqsave)(&dma_domain->domain_lock);
+On Wed, Oct 15, 2025 at 02:26:30PM +0200, Diederik de Haas wrote:
+> On Tue Oct 14, 2025 at 8:49 PM CEST, Bjorn Helgaas wrote:
+> > On Wed, Oct 15, 2025 at 01:30:16AM +0900, FUKAUMI Naoki wrote:
+> >> I've noticed an issue on Radxa ROCK 5A/5B boards, which are based on the
+> >> Rockchip RK3588(S) SoC.
+> >> 
+> >> When running Linux v6.18-rc1 or linux-next since 20250924, the kernel either
+> >> freezes or fails to probe M.2 Wi-Fi modules. This happens with several
+> >> different modules I've tested, including the Realtek RTL8852BE, MediaTek
+> >> MT7921E, and Intel AX210.
+> >> 
+> >> I've found that reverting the following commit (i.e., the patch I'm replying
+> >> to) resolves the problem:
+> >> commit f3ac2ff14834a0aa056ee3ae0e4b8c641c579961
+> >
+> > Thanks for the report, and sorry for the regression.
+> >
+> > Since this affects several devices from different manufacturers and (I
+> > assume) different drivers, it seems likely that there's some issue
+> > with the Rockchip end, since ASPM probably works on these devices in
+> > other systems.  So we should figure out if there's something wrong
+> > with the way we configure ASPM, which we could potentially fix, or if
+> > there's a hardware issue and we need some king of quirk to prevent
+> > usage of ASPM on the affected platforms.
+> >
+> > Can you collect a complete dmesg log when booting with
+> >
+> >   ignore_loglevel pci=earlydump dyndbg="file drivers/pci/* +p"
+> >
+> > and the output of "sudo lspci -vv"?
+> 
+> I have a Rock 5B as well, but I don't have a Wi-Fi module, but I do have
+> a NVMe drive connected. That boots fine with 6.17, but I end up in a
+> rescue shell with 6.18-rc1. I haven't verified that it's caused by the
+> same commit, but it does sound plausible.
 
-Sorry. This should be:
-	guard(spinlock_irqsave)(&dma_domain->domain_lock);
+FWIW, my expectation is that booting with "pcie_aspm=off" should
+effectively avoid the ASPM enabling and behave similarly to reverting
+f3ac2ff14834 ("PCI/ASPM: Enable all ClockPM and ASPM states for
+devicetree platforms").  My hope was that we could boot that way and
+incrementally enable ASPM via sysfs a device at a time for testing.
 
-I have fixed this locally, and did the full build tests on all
-impacted arches.
+If hardware implements ASPM correctly, enabling it should have no
+functional impact at all, so we might be tripping over some kind of
+hardware bug or maybe a generic Linux issue (ASPM has to be enabled in
+a very specific order, and it's conceivable we messed that up).
 
-I will send a v2 next week while collecting review comments here.
+> On this device, the NVMe isn't strictly needed (I used it to compile my
+> kernels on), so I added 'noauto' to the NVMe line in /etc/fstab ... and
+> that made it boot successfully into 6.18-rc1. Then running the 'mount'
+> command wrt that NVMe drive failed with this message:
+> 
+>   EXT4-fs (nvme0n1p1): unable to read superblock
+> 
+> The log of my attempts can be found here:
+> https://paste.sr.ht/~diederik/f435eb258dca60676f7ac5154c00ddfdc24ac0b7
+> 
+> > When the kernel freezes, can you give us any information about where,
+> > e.g., a log or screenshot?
+> 
+> For me, there is no kernel freeze. I ended up in a rescue shell as it
+> couldn't mount the NVMe drive. As described above, when not letting it
+> auto-mount that drive, the boot completed normally.
 
-Thanks
-Nicolin
+Thanks for the log, it's very useful.  This is pieced together from
+the serial console log and the "dmesg --level" output, but I think
+it's all the same boot:
+
+  [    2.872094] rockchip-dw-pcie a40000000.pcie: PCI host bridge to bus 0000:00
+  [    2.885904] pci 0000:00:00.0: [1d87:3588] type 01 class 0x060400 PCIe Root Port
+  [    2.888237] pci 0000:00:00.0: PCI bridge to [bus 01-ff]
+  [    3.143823] pci 0000:01:00.0: [144d:a80a] type 00 class 0x010802 PCIe Endpoint
+  [    3.144646] pci 0000:01:00.0: BAR 0 [mem 0x00000000-0x00003fff 64bit]
+  [    3.162748] pci 0000:01:00.0: BAR 0 [mem 0xf0200000-0xf0203fff 64bit]: assigned
+  [    3.298198] nvme nvme0: pci function 0000:01:00.0
+  [    3.298901] nvme 0000:01:00.0: enabling device (0000 -> 0002)
+  [    3.316695] nvme nvme0: D3 entry latency set to 10 seconds
+  ...
+  [   18.921811] rockchip-pm-domain fd8d8000.power-management:power-controller: sync_state() pending due to fdad0000.npu
+  [   18.922737] rockchip-pm-domain fd8d8000.power-management:power-controller: sync_state() pending due to fdb50000.video-codec
+  ...
+  [   39.971050] nvme nvme0: controller is down; will reset: CSTS=0xffffffff, PCI_STATUS read failed (134)
+  [   39.971945] nvme nvme0: Does your device have a faulty power saving mode enabled?
+  [   39.972609] nvme nvme0: Try "nvme_core.default_ps_max_latency_us=0 pcie_aspm=off pcie_port_pm=off" and report a bug
+  [   42.357637] nvme0n1: I/O Cmd(0x2) @ LBA 0, 8 blocks, I/O Error (sct 0x3 / sc 0x71)
+  [   42.358644] I/O error, dev nvme0n1, sector 0 op 0x0:(READ) flags 0x80700 phys_seg 1 prio class 2
+  [   42.391612] nvme 0000:01:00.0: Unable to change power state from D3cold to D0, device inaccessible
+  [   42.443644] nvme nvme0: Disabling device after reset failure: -19
+  [   42.459544] Buffer I/O error on dev nvme0n1, logical block 0, async page read
+  [   42.607749] EXT4-fs (nvme0n1p1): unable to read superblock
+
+The earlydump info shows the 00:00.0 Root Port had I/O+ Mem+
+BusMaster+ (0x0107) and the 01:00.0 NVMe initially had I/O- Mem-
+BusMaster- (0x0000).  We were able to enumerate the NVMe device and
+assign its BAR, and the nvme driver turned on Mem+ (0x002).
+
+  nvme_timeout
+    csts = readl(dev->bar + NVME_REG_CSTS)
+    if (nvme_should_reset(csts))
+      nvme_warn_reset(csts)
+        result = pci_read_config_word(PCI_STATUS)
+        "controller is down; will reset: CSTS=0xffffffff, ... failed (134)"
+    nvme_dev_disable
+
+But I think the NVMe device was powered down to D3cold somewhere
+before 39.971050.  I don't know if the power-controller messages at
+18.921811 have any connection, and I don't know why ASPM would be
+related.
+
+In any event, the NVME_REG_CSTS mem read returned ~0, probably because
+the device didn't respond and the RC fabricated ~0.  The PCI_STATUS
+config read failed with 134 (PCIBIOS_DEVICE_NOT_FOUND).  The config
+read should be this path, which probably failed because the link was
+down, which would happen if NVMe is in D3cold:
+
+  pci_read_config_word
+    if (pci_dev_is_disconnected())
+      return PCIBIOS_DEVICE_NOT_FOUND
+    pci_bus_read_config_word
+      ret = bus->ops->read
+        dw_pcie_rd_other_conf
+          pci_generic_config_read
+            addr = bus->ops->map_bus
+              dw_pcie_other_conf_map_bus
+                if (!dw_pcie_link_up())
+                  return pci->ops->link_up
+                    rockchip_pcie_link_up   # .link_up
+                  return NULL               # link was down
+            if (!addr)                      # .map_bus() failed b/c link down
+              return PCIBIOS_DEVICE_NOT_FOUND
+
+Your lspci shows no response, i.e., config reads to the device
+returned ~0:
+
+  0000:01:00.0 Non-Volatile memory controller: Samsung Electronics Co Ltd NVMe SSD Controller PM9A1/PM9A3/980PRO (prog-if 02 [NVM Express])
+        Subsystem: Samsung Electronics Co Ltd SSD 980 PRO
+        !!! Unknown header type 7f
+        Interrupt: pin ? routed to IRQ 94
+
+The Root Port shows a Completion Timeout error, which might be a
+consequence of NVMe being powered off:
+
+  0000:00:00.0 PCI bridge: Rockchip Electronics Co., Ltd RK3588 (rev 01) (prog-if 00 [Normal decode])
+        Capabilities: [100 v2] Advanced Error Reporting
+                UESta:  DLP- SDES- TLP- FCP- CmpltTO+ CmpltAbrt- UnxCmplt- RxOF- MalfTLP-
+
+Bottom line, I don't think I can get any further with this particular
+issue until we confirm that f3ac2ff14834 ("PCI/ASPM: Enable all
+ClockPM and ASPM states for devicetree platforms") is the cause.
+
+Bjorn
 
 _______________________________________________
 Linux-rockchip mailing list
