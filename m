@@ -4,73 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C3A3CCD19A
-	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Oct 2025 09:04:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A30D1CCD183
+	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Oct 2025 09:29:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=OTMCvUPh9ds9AF8nsjKk4vYjNeCRv/5O46RYcdq0kTE=; b=w6VZIvqyYq6mdd
-	Ph+xM7nOkwRPJOn5dgwT7xFRZsiVWm05edQQkPAlqS/3XI0Ohz3ygTDJ7ELLepGaGTjle6aVjGL8n
-	HjmcEYjK5AXgDFmjonxDTjl0EIyQbCfa8xSlCa1WLx0MsjIGiK9B1p8DxxgUhA2EjlSLUhJdQ/cnh
-	l6xxMti/+abPKkQhRLjOVw8SX/HOEy98xgCarEetNIrogZuyL93WB0BnCsACMiaBApVaKrgRhn3RT
-	V2dQ14rlqsGvh829XXSf9MeZMn4fK7iCNJKvi9fxcFcyM53+fRn7stbzu1ebTU1ugM4dpB5sQO5VO
-	XZREj/Fcnj5TXasRXd9Q==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:CC:To:Subject:
+	From:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=o8RYnmtEINwE7Idge/+M0Use4SVfC0uSyKL3fZjziks=; b=u8h0NVo6NnG71U
+	zCPdfaZ+tmHBkS4aFOt+InqSvcT7TJL95Yqr3/aMszgC7NXt2AKe+mqRjgJ3RFXczotrwZZk0N+oW
+	1DVdkOc+NqYj6oYtRP01tf0Co/oE7TEqwNLz7L+Rcn/gwr684ZwuN53c7i96ZU0nFuMBtPJ2SSBj+
+	pem59nXu2RHi8kw7bbGHyGA+2DEdVOwkj91heMq8cAYOK4YwJUIW0LvBq1aCFSbRH1vNC82ghD5cS
+	WXBd5wsuh4I9JgxWrHLj5WugPe7ziXpeoPgJnKIpRzAXrmtld8I8QHFT4vJDWQs8xO3I/XeGZyUB1
+	ScpmNhJywVV0j5ph0Yiw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9JuY-000000046TP-39uK;
-	Thu, 16 Oct 2025 09:04:38 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1v9KIa-00000004Brp-1C2A;
+	Thu, 16 Oct 2025 09:29:28 +0000
+Received: from mx01.omp.ru ([90.154.21.10])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9JuV-000000046S9-3knC;
-	Thu, 16 Oct 2025 09:04:37 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 8E0C443F7E;
-	Thu, 16 Oct 2025 09:04:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B1058C4CEF1;
-	Thu, 16 Oct 2025 09:04:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1760605475;
-	bh=+lWpPiGYgIsj4CL7weoN8PdEGbyE8TzjYmObhr7nNbA=;
-	h=From:To:Cc:Subject:Date:From;
-	b=Pj9TzT0AlasKWSmm2NeAMCofrPObdVRGipvxqqyYgXfize+/9whtSJT8M2u/uN8wF
-	 7a9m72xg9WK3i6EO6qxlcYG5Qjy2JTAEOlGAhm3EeeERq4Z7LTPETVW/RqrPfT9pQM
-	 LM1THAyUbLCe3blKMosls3+L4BldpdSqCymlT2FRGQ81AP4QnBhGFYtd0y+973F0U8
-	 diIUY7uTDVJOOLr7+l01jKkD0POvizO5VRXU0FkObwwQQzyssH2a7Zqe05YTieJamS
-	 OM4dMuhfdrlXLsQwFJRj/D3WamMk1chivdzaV/icwaeUYeCQeZ1Pm+GOXa/5eHs6fs
-	 Ze07tGQo3IRFg==
-From: Niklas Cassel <cassel@kernel.org>
-To: Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	Kever Yang <kever.yang@rock-chips.com>,
-	Simon Xue <xxm@rock-chips.com>
-Cc: Damien Le Moal <dlemoal@kernel.org>,
-	Dragan Simic <dsimic@manjaro.org>,
-	FUKAUMI Naoki <naoki@radxa.com>,
-	Diederik de Haas <diederik@cknow-tech.com>,
-	Niklas Cassel <cassel@kernel.org>,
-	stable@vger.kernel.org,
-	Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>,
-	linux-pci@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH v2] PCI: dw-rockchip: Disable L1 substates
-Date: Thu, 16 Oct 2025 11:04:22 +0200
-Message-ID: <20251016090422.451982-2-cassel@kernel.org>
-X-Mailer: git-send-email 2.51.0
+	id 1v9KIX-00000004BoN-1vhQ;
+	Thu, 16 Oct 2025 09:29:26 +0000
+Received: from [192.168.2.104] (213.87.135.100) by msexch01.omp.ru
+ (10.188.4.12) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.1258.12; Thu, 16 Oct
+ 2025 12:29:05 +0300
+Message-ID: <b0a06d38-74ea-4454-8b84-80f70442b8df@omp.ru>
+Date: Thu, 16 Oct 2025 12:29:05 +0300
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2709; i=cassel@kernel.org; h=from:subject; bh=+lWpPiGYgIsj4CL7weoN8PdEGbyE8TzjYmObhr7nNbA=; b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGDI+bBW7H2mmu/iL+dml7il6tU1XA8/cu7Owb+miRqVpl gVXciX7O0pZGMS4GGTFFFl8f7jsL+52n3Jc8Y4NzBxWJpAhDFycAjCRzQaMDHcveHt4earZVtgZ n9lx5IC4svs+4S91u5jqZM0uBFw0cGD471LT/GSVf+zB5d9qDE+9uvN6S3TU3kVRzK9lFbe+CzU uZwQA
-X-Developer-Key: i=cassel@kernel.org; a=openpgp; fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
+User-Agent: Mozilla Thunderbird
+From: Sergey Shtylyov <s.shtylyov@omp.ru>
+Subject: Re: [PATCH] pinctrl: rockchip: fix NULL ptr deref in
+ rockchip_pinctrl_parse_groups()
+To: Linus Walleij <linus.walleij@linaro.org>
+CC: Heiko Stuebner <heiko@sntech.de>, <linux-gpio@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-rockchip@lists.infradead.org>
+References: <179c9e8c-8760-41e6-aad7-7a128df60984@omp.ru>
+ <CACRpkdbzEmZN=-FPvax4z_iq7u6pHyHGJ213QtpxqFL98-Ou5Q@mail.gmail.com>
+Content-Language: en-US
+Organization: Open Mobile Platform
+In-Reply-To: <CACRpkdbzEmZN=-FPvax4z_iq7u6pHyHGJ213QtpxqFL98-Ou5Q@mail.gmail.com>
+X-Originating-IP: [213.87.135.100]
+X-ClientProxiedBy: msexch01.omp.ru (10.188.4.12) To msexch01.omp.ru
+ (10.188.4.12)
+X-KSE-ServerInfo: msexch01.omp.ru, 9
+X-KSE-AntiSpam-Interceptor-Info: scan successful
+X-KSE-AntiSpam-Version: 6.1.1, Database issued on: 10/16/2025 09:13:52
+X-KSE-AntiSpam-Status: KAS_STATUS_NOT_DETECTED
+X-KSE-AntiSpam-Method: none
+X-KSE-AntiSpam-Rate: 19
+X-KSE-AntiSpam-Info: Lua profiles 197127 [Oct 16 2025]
+X-KSE-AntiSpam-Info: Version: 6.1.1.11
+X-KSE-AntiSpam-Info: Envelope from: s.shtylyov@omp.ru
+X-KSE-AntiSpam-Info: LuaCore: 71 0.3.71
+ ee78c3da48e828d2b9b16d6d0b31328b8b240a3c
+X-KSE-AntiSpam-Info: {rep_avail}
+X-KSE-AntiSpam-Info: {Tracking_arrow_text}
+X-KSE-AntiSpam-Info: {Tracking_uf_ne_domains}
+X-KSE-AntiSpam-Info: {Tracking_from_domain_doesnt_match_to}
+X-KSE-AntiSpam-Info: {SMTP from is not routable}
+X-KSE-AntiSpam-Info: {Found in DNSBL: 213.87.135.100 in (user)
+ b.barracudacentral.org}
+X-KSE-AntiSpam-Info: {Found in DNSBL: 213.87.135.100 in (user)
+ dbl.spamhaus.org}
+X-KSE-AntiSpam-Info: omp.ru:7.1.1;d41d8cd98f00b204e9800998ecf8427e.com:7.1.1;127.0.0.199:7.1.2
+X-KSE-AntiSpam-Info: {Tracking_ip_hunter}
+X-KSE-AntiSpam-Info: {Tracking_References_header_contains_several_msgids}
+X-KSE-AntiSpam-Info: FromAlignment: s
+X-KSE-AntiSpam-Info: ApMailHostAddress: 213.87.135.100
+X-KSE-AntiSpam-Info: {DNS response errors}
+X-KSE-AntiSpam-Info: Rate: 19
+X-KSE-AntiSpam-Info: Status: not_detected
+X-KSE-AntiSpam-Info: Method: none
+X-KSE-AntiSpam-Info: Auth:dmarc=temperror header.from=omp.ru;spf=temperror
+ smtp.mailfrom=omp.ru;dkim=none
+X-KSE-Antiphishing-Info: Clean
+X-KSE-Antiphishing-ScanningType: Heuristic
+X-KSE-Antiphishing-Method: None
+X-KSE-Antiphishing-Bases: 10/16/2025 09:16:00
+X-KSE-Antivirus-Interceptor-Info: scan successful
+X-KSE-Antivirus-Info: Clean, bases: 10/16/2025 4:29:00 AM
+X-KSE-Attachment-Filter-Triggered-Rules: Clean
+X-KSE-Attachment-Filter-Triggered-Filters: Clean
+X-KSE-BulkMessagesFiltering-Scan-Result: InTheLimit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251016_020435_970586_2C447D5F 
-X-CRM114-Status: GOOD (  11.34  )
+X-CRM114-CacheID: sfid-20251016_022925_507963_36679FB8 
+X-CRM114-Status: UNSURE (   9.17  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,78 +108,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The L1 substates support requires additional steps to work, see e.g.
-section '11.6.6.4 L1 Substate' in the RK3588 TRM V1.0.
+On 9/8/25 3:59 PM, Linus Walleij wrote:
+[...]
 
-These steps are currently missing from the driver.
+>> In the Rockchip driver, rockchip_pinctrl_parse_groups() assumes that the
+>> "rockchip,pins" property will always be present in the DT node it parses
+>> and so doesn't check the result of of_get_property() for NULL. If the DT
+>> passed to the kernel happens to have such property missing, then we will
+>> get a kernel oops when the pointer is dereferenced in the *for* loop just
+>> a few lines after the call.  I think it's better to play safe by checking
+>> the list variable for NULL (and reporting error if so), like we check the
+>> size variable for validity further down...
+>>
+>> Found by Linux Verification Center (linuxtesting.org) with the Svace static
+>> analysis tool.
+>>
+>> Fixes: d3e5116119bd ("pinctrl: add pinctrl driver for Rockchip SoCs")
+>> Signed-off-by: Sergey Shtylyov <s.shtylyov@omp.ru>
+> 
+> Patch applied!
 
-While this has always been a problem when using e.g.
-CONFIG_PCIEASPM_POWER_SUPERSAVE=y, the problem became more apparent after
-commit f3ac2ff14834 ("PCI/ASPM: Enable all ClockPM and ASPM states for
-devicetree platforms"), which enabled ASPM also for
-CONFIG_PCIEASPM_DEFAULT=y.
+   Where? I'm not seeing it in any Linus' tree... :-/
 
-Disable L1 substates until proper support is added.
+> Yours,
+> Linus Walleij
 
-Cc: stable@vger.kernel.org
-Fixes: 0e898eb8df4e ("PCI: rockchip-dwc: Add Rockchip RK356X host controller driver")
-Fixes: f3ac2ff14834 ("PCI/ASPM: Enable all ClockPM and ASPM states for devicetree platforms")
-Signed-off-by: Niklas Cassel <cassel@kernel.org>
----
-Changes since v1:
--Remove superfluous dw_pcie_readl_dbi()
-
- drivers/pci/controller/dwc/pcie-dw-rockchip.c | 21 +++++++++++++++++++
- 1 file changed, 21 insertions(+)
-
-diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-index 3e2752c7dd09..84f882abbca5 100644
---- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-+++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-@@ -200,6 +200,25 @@ static bool rockchip_pcie_link_up(struct dw_pcie *pci)
- 	return FIELD_GET(PCIE_LINKUP_MASK, val) == PCIE_LINKUP;
- }
- 
-+/*
-+ * See e.g. section '11.6.6.4 L1 Substate' in the RK3588 TRM V1.0 for the steps
-+ * needed to support L1 substates. Currently, not a single rockchip platform
-+ * performs these steps, so disable L1 substates until there is proper support.
-+ */
-+static void rockchip_pcie_disable_l1sub(struct dw_pcie *pci)
-+{
-+	u32 cap, l1subcap;
-+
-+	cap = dw_pcie_find_ext_capability(pci, PCI_EXT_CAP_ID_L1SS);
-+	if (cap) {
-+		l1subcap = dw_pcie_readl_dbi(pci, cap + PCI_L1SS_CAP);
-+		l1subcap &= ~(PCI_L1SS_CAP_L1_PM_SS | PCI_L1SS_CAP_ASPM_L1_1 |
-+			      PCI_L1SS_CAP_ASPM_L1_2 | PCI_L1SS_CAP_PCIPM_L1_1 |
-+			      PCI_L1SS_CAP_PCIPM_L1_2);
-+		dw_pcie_writel_dbi(pci, cap + PCI_L1SS_CAP, l1subcap);
-+	}
-+}
-+
- static void rockchip_pcie_enable_l0s(struct dw_pcie *pci)
- {
- 	u32 cap, lnkcap;
-@@ -264,6 +283,7 @@ static int rockchip_pcie_host_init(struct dw_pcie_rp *pp)
- 	irq_set_chained_handler_and_data(irq, rockchip_pcie_intx_handler,
- 					 rockchip);
- 
-+	rockchip_pcie_disable_l1sub(pci);
- 	rockchip_pcie_enable_l0s(pci);
- 
- 	return 0;
-@@ -301,6 +321,7 @@ static void rockchip_pcie_ep_init(struct dw_pcie_ep *ep)
- 	struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
- 	enum pci_barno bar;
- 
-+	rockchip_pcie_disable_l1sub(pci);
- 	rockchip_pcie_enable_l0s(pci);
- 	rockchip_pcie_ep_hide_broken_ats_cap_rk3588(ep);
- 
--- 
-2.51.0
+MBR, Sergey
 
 
 _______________________________________________
