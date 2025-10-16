@@ -4,206 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AB29CCD19E
-	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Oct 2025 07:42:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 904C7CCD194
+	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Oct 2025 08:39:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:
-	References:CC:To:Subject:Date:Message-ID:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=BfJxg59fdgUrn7iEBJrZMOyw72qU2pIODfIQ4FSxo8o=; b=WuRqfa/gtsVWBRQXxrt5hu97L7
-	pXFFBNR2u2l9NEVlQ94cCVqJrModpm3fM7S90lna7nT2V0TYDq+LfbGSV/7xsee+BkQR6y3ZYvcSt
-	XIMgQ5LPWsjGpE2qeGybH9m2p3OZrg2XEsgEm9HpM4EHBmQ3luOq7X5ViTJu+XbGIfVso3fjRhXXw
-	gTqqcIk6QRX64S9sHPBSL9W9G+QyhrH4u+eNrKzwaUew8OW0juoagxSAGmeUwCUEWQIkwzkdeqDTB
-	dgYQtgd/gJm1/rfIDhQlykI2rEN97v3VajQcsMErldErOyPvF454IQ570hN5SwuIIOY5Ohlw98p54
-	NQnSILCw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=pNsHoscnroBY//oCRy6f8+V4U+J3I5Mx+hcshM3pknc=; b=0oxLpzoQErv42c
+	j+QthgUiAH21Hf+ZtOVf9g9tt0oTfTgYE1pwWhJqxi+k2vKipSFzi2PCg1RShZKf5cXqasO3d/ESW
+	Vpf+uNaWk11Pz0NalbQZ3E4dP302lo/H1JUqDHze7wL5t4kXPZujqzr/XmprG8u9B5CvZ7kQVQkZz
+	XwyxoqJ4eRP+N6jLzAwKLjSfoqD48eKmDxrfH6VfP3SARnw/ghd3MCPwOF6rrR+u4+5ir2jugn4nd
+	w0BetHMTbGE2vyZGM6vZuQsaKlQOaAx/gNjjbTBXjG1FAqo92wykCJrtcePqnpRvxNWdzahc6y170
+	ixmlDuk2tNlpabktDxjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9IdF-00000003n8j-2dan;
-	Thu, 16 Oct 2025 07:42:41 +0000
-Received: from mgamail.intel.com ([192.198.163.15])
+	id 1v9JWP-00000003zTC-3TyV;
+	Thu, 16 Oct 2025 08:39:41 +0000
+Received: from m16.mail.163.com ([220.197.31.2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9IdD-00000003n7m-0lC3
-	for linux-rockchip@lists.infradead.org;
-	Thu, 16 Oct 2025 07:42:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1760600559; x=1792136559;
-  h=message-id:date:subject:to:cc:references:from:
-   in-reply-to:content-transfer-encoding:mime-version;
-  bh=Jynh6jp73KPZ04uHSF63L/iuzIEI5GVzyXiAhw5QOzg=;
-  b=AULopwScYNR3JY9hZBWUebPgjfi5QJLl4dbyfbOmysbury01SODbFkQ2
-   7BsYkYUvbAmrQ9Uep4Vt5mZU7XHj4TXfJ0RnW9tms1Ig6PkN+Kh21Igc7
-   bAw7YQXjgVRzBzlsM9PWQXuaYT+Tii3ghn3jZh8WlxBvxCLOVnQ3gXUbm
-   FU2m4O1Cl8ZtktRFMLmHVc2Cf/0tgsGPMgZ4a0O0p4vINf2HFKrWzR4IQ
-   wMG1bzyJ/o3eSKXKSgCkMEBDD1MMouvwR6SqJnrehyN1wbdgPZzon0a/K
-   N+hemjcKRITcoG5Ikakw41mSN+Ro8e4ed+AuBl/ac9PEm47h/JpI7k/Pj
-   Q==;
-X-CSE-ConnectionGUID: 0IS1E1ZRSlCtT4UWTrJ/VQ==
-X-CSE-MsgGUID: RoAFxh3eRPKfKY7Vb8LrLA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11583"; a="62878621"
-X-IronPort-AV: E=Sophos;i="6.19,233,1754982000"; 
-   d="scan'208";a="62878621"
-Received: from orviesa001.jf.intel.com ([10.64.159.141])
-  by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Oct 2025 00:42:38 -0700
-X-CSE-ConnectionGUID: D49PT9WQR5mF35Rl1Ido+Q==
-X-CSE-MsgGUID: bODGak7uSD6sXP+qEwZiBA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.19,233,1754982000"; 
-   d="scan'208";a="219547879"
-Received: from fmsmsx903.amr.corp.intel.com ([10.18.126.92])
-  by orviesa001.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Oct 2025 00:42:37 -0700
-Received: from FMSMSX902.amr.corp.intel.com (10.18.126.91) by
- fmsmsx903.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.27; Thu, 16 Oct 2025 00:42:36 -0700
-Received: from fmsedg901.ED.cps.intel.com (10.1.192.143) by
- FMSMSX902.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.27 via Frontend Transport; Thu, 16 Oct 2025 00:42:36 -0700
-Received: from SN4PR0501CU005.outbound.protection.outlook.com (40.93.194.57)
- by edgegateway.intel.com (192.55.55.81) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.27; Thu, 16 Oct 2025 00:42:36 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=oC32Wwx/dKkuyBV71oI788ybg/AEu5/6vNgmbd8AFQ7IcEZ+72HgPqrGYlJRRHB3q/r08coGh+KIaNwAaE/VRZ7YBhuh2u4ar5mQQfrTf2XPI3K3lqaAB1t0WLSnPVxiaXKzNLwUadiayoV8hU2CH36qVzMotF9ZN2dpBuTfPzA7ibrwL1I/gF7g3AKvGUrBVaBIeIsxYvpYWx42dInLxIvqTWTlQoiQutrLw5L3iVdnRK3+1GQk9Kp4pY+z6ME8/IK7lnvYnhid/DzVgODgCmLsoGZebee1DmQBDifCGdxzAEQVz13Blzu8UIrZ4Mi1zLObAfvRGBarbcw2J9BaBg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=GsOEchmxu8GgNTX3qSbOmQlLO6C3rCEcTrAAxF+tfNc=;
- b=TlFKHBd+gisvwacn5Nn+qyi3Ipx5AsYaEXfMjcUYsrtR52XbpQjbdnXVWo0vUxnkEO+HrdlMzyC23d1+BnBaf5/s83ClDB+q3zQDDdFxkmBUmE1ObGlizc7dqUUQV7njKl2JKEXeB535lARryvIsAmi5gwrozUJgeTN5j0o6tD4kZoGuk795Bh3SBaBrNkMyzZnC9HLyDMb931xhPt54qVNV20zDxU4iPF4n+RiV9GeJ+ag95KS6BaKADvaHpcweyVqaevIvINrt7fTht84mAqqPuilJEvQr86g5FO2OgUbB1oFVj7F9DKjiELkdB6Jjl3FGPrVTKlXUKfJcJg2RtA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Received: from IA1PR11MB7198.namprd11.prod.outlook.com (2603:10b6:208:419::15)
- by SJ5PPF64191BB3C.namprd11.prod.outlook.com (2603:10b6:a0f:fc02::82f) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9228.10; Thu, 16 Oct
- 2025 07:42:34 +0000
-Received: from IA1PR11MB7198.namprd11.prod.outlook.com
- ([fe80::2c4e:e92a:4fa:a456]) by IA1PR11MB7198.namprd11.prod.outlook.com
- ([fe80::2c4e:e92a:4fa:a456%3]) with mapi id 15.20.9228.010; Thu, 16 Oct 2025
- 07:42:34 +0000
-Message-ID: <70cca930-29ac-40a9-8e3d-fba1aace9156@intel.com>
-Date: Thu, 16 Oct 2025 10:42:29 +0300
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] mmc: sdhci-of-dwcmshc: Add command queue support for
- rockchip SOCs
-To: Sebastian Reichel <sebastian.reichel@collabora.com>, Ulf Hansson
-	<ulf.hansson@linaro.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
-	<krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner
-	<heiko@sntech.de>
-CC: <linux-mmc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
-	<kernel@collabora.com>, Yifeng Zhao <yifeng.zhao@rock-chips.com>
-References: <20251014-rockchip-emmc-cqe-support-v1-0-918f03de0cb1@collabora.com>
- <20251014-rockchip-emmc-cqe-support-v1-1-918f03de0cb1@collabora.com>
-Content-Language: en-US
-From: Adrian Hunter <adrian.hunter@intel.com>
-Organization: Intel Finland Oy, Registered Address: c/o Alberga Business Park,
- 6 krs, Bertel Jungin Aukio 5, 02600 Espoo, Business Identity Code: 0357606 -
- 4, Domiciled in Helsinki
-In-Reply-To: <20251014-rockchip-emmc-cqe-support-v1-1-918f03de0cb1@collabora.com>
-X-ClientProxiedBy: DUZPR01CA0284.eurprd01.prod.exchangelabs.com
- (2603:10a6:10:4b7::22) To IA1PR11MB7198.namprd11.prod.outlook.com
- (2603:10b6:208:419::15)
+	id 1v9JWN-00000003zQm-0R7T;
+	Thu, 16 Oct 2025 08:39:40 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version; bh=RS
+	vYSPh8ZvpCq9Tn8rRo74pwoQsk+cPXDxtofOd/xlQ=; b=IXvHAR7fi2TAsfLHVn
+	2fLAddoDQPJpeHz+Hc0NSWLC+xBmv3zguiE5uAvUltBapI4Q7QDPwqAvtxclmPkb
+	HySd+GNCk9SREAlplFQSf1P2d3GRAx/h2mwx0FMk4yAhZlqMIDPv4A3aCVKxsnZo
+	zaVlOiK6ME/Ndg+TjBzMX2h+Y=
+Received: from ProDesk.. (unknown [])
+	by gzga-smtp-mtada-g0-0 (Coremail) with SMTP id _____wC3f_8Ur_BoSVKcAg--.8978S2;
+	Thu, 16 Oct 2025 16:38:48 +0800 (CST)
+From: Andy Yan <andyshrk@163.com>
+To: dmitry.baryshkov@oss.qualcomm.com,
+	heiko@sntech.de
+Cc: mripard@kernel.org,
+	neil.armstrong@linaro.org,
+	andrzej.hajda@intel.com,
+	jernej.skrabec@gmail.com,
+	jonas@kwiboo.se,
+	Laurent.pinchart@ideasonboard.com,
+	maarten.lankhorst@linux.intel.com,
+	rfoss@kernel.org,
+	simona@ffwll.ch,
+	tzimmermann@suse.de,
+	knaerzche@gmail.com,
+	devicetree@vger.kernel.org,
+	dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	Andy Yan <andy.yan@rock-chips.com>
+Subject: [PATCH v8 0/2] Convert inno hdmi to drm bridge
+Date: Thu, 16 Oct 2025 16:38:30 +0800
+Message-ID: <20251016083843.76675-1-andyshrk@163.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: IA1PR11MB7198:EE_|SJ5PPF64191BB3C:EE_
-X-MS-Office365-Filtering-Correlation-Id: 26a52e12-4f0d-47ea-4090-08de0c8791c5
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|376014|7416014|1800799024|7053199007;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?eDEzV1ExVk9MVWswK291czRINDROUFpFQXNKUjRTaUliS2lRMkVJVUJKVFJz?=
- =?utf-8?B?SzNxTllIdGxRMUNkdGRzNEtJaGRIT001aVM2UllWRjgrWEhXMkZsWTEraGJm?=
- =?utf-8?B?ZlZRTTNBNHNNK29WS3BzYjRxbTUzTEZVVjFta09aVlh0eFE2ZVhrcXcvaHNL?=
- =?utf-8?B?cXZPNk5TT2dxVDlZd1c3SjRhUXJ4bk9qVnVwY2Y0NkZ0NkJoMDBpNVczZWFu?=
- =?utf-8?B?akdPUHFWclNKSHl6NlJEZEpHaXdtRE8vNllVd1NmMEViK2M2TFdkaEtiK0ps?=
- =?utf-8?B?VGZUbDVqblFjb2xVeGRiS0N5OHIyU0hOcmZmdGxHR2FUSkJ4UXArN2tzTU5q?=
- =?utf-8?B?ckVOV0hZK1ZSSGVBcXdIZGRzbW1DRTdiMkw5K3YwY0UrcXhRZUxFRGpvNGgx?=
- =?utf-8?B?MkQ1WmN3cngzb3F2YmdxYnhxNGk0L3piMkFMOGZ2dTU1VzVUZWxQTkRZN3dG?=
- =?utf-8?B?TWZkaCtZdTZvK3ptYjFZVUQ0dVFWZ3NDRWg0MURORy85NFJjQVJTTnNKNEVk?=
- =?utf-8?B?c2VJeHVpVlNVbG0xY3Y2aHE4UFl5ZnZOYlAvN29vRkxBUFRYc1hjdVZSZlNy?=
- =?utf-8?B?S211N2MrTVV1UlhMbWZ5UWFjd1pVc1EzdWJsWExpc1F4UW5JR1g3M3RZb0Zm?=
- =?utf-8?B?OUZKMGxIUzIrZkpMenZSN0c2WVVKbW9RWEprODdHSktwTXcwQjh6dENvVVU2?=
- =?utf-8?B?ZC9iSXI3SEVGQzN1OVZJcU1Wc2dUSzVTckEvRDBKUHFWUU52QjJMU3EyODdq?=
- =?utf-8?B?ZHJraVEwL01SU21qN3FCa0o0ejhTZFNjZFd2aEZQR2hjSGF5aFBrL3VXNWxW?=
- =?utf-8?B?c01XaHV3aXVNbDdXVHVYQi91bW9TS1dkU21ydU15NWVjWmIrQ1Y0aEszWTBp?=
- =?utf-8?B?amxDMkRjbnJTY2czR0MrM2s5bWxZUGJ1NmdtNGl6dWdkTXZLSnRYeUtaRmpM?=
- =?utf-8?B?MVZTaHpuQ0tmMkJiUDBqRlkyRUlRRFVvMElnd01XMEJYTUJwd2p0SlBlc0Jq?=
- =?utf-8?B?THB5RDVDTXcrR2RZMUl5bjlPY083Z1ZLMlhkVzExcmNRSjFvZHpzV1VIbHh3?=
- =?utf-8?B?d05ZNktSY280Y1lDOGZuWmZqRDBJTjZmaG56aWxudkdIaWVBNS9acHNyVVZv?=
- =?utf-8?B?bXl4dzBQYld1TVZuSjBMN09nOHd0VjdCcTROT1NuNmxVM0txRHluWmhPeHpK?=
- =?utf-8?B?bkZudkVRNzB0eVZsaUxLeW8xb3htaFNyVE04OHVXU040NjhIZVFyUThJcngv?=
- =?utf-8?B?aGZJRGM1RGg3U1IyK0dLejdkZ1FheUxvMmY5OGd5ZVdlT1BNeEFHcFQvNHBp?=
- =?utf-8?B?Qy91NWtNVVkySWhhNHdxQk9zL1dwWWs1Z3VZNkR3SHNPKzBGYkcrOW01dng5?=
- =?utf-8?B?Sm1zSE9QeUU2S2IzVzRiM3hmbXpJUVg2dlVLN3dHQmJmSUpOUDRqaFZDQm1C?=
- =?utf-8?B?SDRWd3BUaWhLK1VXdGdHVjU1QlJSMUloa003OEpYOWNzTkEzM1I1b01RV0Fu?=
- =?utf-8?B?TTNOVStXTTkvWXNRMXZmbFJFS2dpazlnd3lMSzk5TFNza0oycEJRLzN0VU1N?=
- =?utf-8?B?VUVuK1JNd3RFdWlhMFBIS3hmSWsvSzBrV3dUek84K0NIVW5SV1YwM2ZGTG4w?=
- =?utf-8?B?ZkhmUDRMY1ZyTTFrZ3lsK0hSS3BkUHYrSWhEamw1Nk0vb3R5UUt1TDVZYTNl?=
- =?utf-8?B?WXdoMXVwVHVXckVQa2RvYXJXODlZQURRNHBiWmRyRnAxTjlPTTBTeVNSbi9F?=
- =?utf-8?B?R0x0cCs5Qk9INEU5eDNBaHF3TGhiVFAwaWZzZlVtemNmMGV0ZlJVQ1RmUHh5?=
- =?utf-8?B?K3hLajZjcUE2bHB3R0NTZDM0L1ZuZGFMYnVrOTdxa0VnazcrNHNKY0pteFdZ?=
- =?utf-8?B?Y2lVbEVBT0hpT24yV0VyblBJRHRIZDdxWll5VGh4YXBCTFVQQVBPZlN3Uldq?=
- =?utf-8?Q?EdXOPl9/Bp6yRfR1rlwqrkdZuaOj5URt?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:IA1PR11MB7198.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(376014)(7416014)(1800799024)(7053199007);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?MktRay9FTC9vektIZEVmYWlUWEF4c0l2amU3Rm9Fc1RkV2VTQkRlTDZNNDhU?=
- =?utf-8?B?Q2hBaStDQnFrazk1T0dIdWM4dmZxM3NrSTVqS3dZWmladitjRjVVNzBxL09Z?=
- =?utf-8?B?M3J1bGdwaFhWZitRdnl2elZ3a29mV1N1VWFWOHA5VFZBSTdHSWIvekMzcTI1?=
- =?utf-8?B?bkJDV1F6Uk9pZzVLaTAwcVB2dERZWktHUXkyTTBlcG1xVkQ0bzR4NVNkTkU4?=
- =?utf-8?B?TThPWUhnVjNlUjlKdzVtVDJHSW9NdzFLcW5mMmxXN2U3NVpiZm10Zk54aXhj?=
- =?utf-8?B?QUliajhKNWZZNm10Q01QcFFlMlo4M0IrRmtiYnNyVEZPTU1JS3AwK2JtTEdl?=
- =?utf-8?B?eGdidkV1TlRUZkZtWTZ3NmdmNW5jNjlobHh5cm1jbFNjdWZJeTEzM3RzenNS?=
- =?utf-8?B?RTJUUXJEc0VQam5RY2pmQ0xmY2QrT056eWM0U1BkT3M2akJTYmVlU2VqNVZR?=
- =?utf-8?B?MzRnamJQWGpGaDM5WGlVUmg4Zzd2dkhlVGU2dXJXeUNaSUpiYUsxbW8ydTRl?=
- =?utf-8?B?aUF2aFNQckY0YW56QnVMdVBCd1RRVUp5RFVHclBacnNmWDZnUmZYYm9TYUFh?=
- =?utf-8?B?QWpmdTUxbXVORWFCbTZIR1Q3SEI3QmNpYmMxUFpGdnpNWE9sSDJydGlETWV2?=
- =?utf-8?B?Z0tHdDR3NXREaHQvZ1F5L0RVTGUyMDZMbHhvVjVqaFo5TnJOV1lRZHNGSDNQ?=
- =?utf-8?B?Nk9haVlUV1pPMW1hVG9jQjgzbHpwT3NheFNFbEtRTzJRKzI5enVzY2dLcS9K?=
- =?utf-8?B?bUk2SmtCdHRqdFFEb3pjVXRPZ3lqSExFL1U4ZWdaUHJrUkM2bi9YMHJQdjRV?=
- =?utf-8?B?Y09lTU53aFRtdHZ1M29WMEJCSkU5WVd5cHpFcENoRGRFdHpobW5rRnpGblVM?=
- =?utf-8?B?MkNTeVJPaCsrZ20vMlJFWGlsRTJReHE3TjFzRzdUUUhBSzF3NXhneExWT0py?=
- =?utf-8?B?b2JHbjNOM0xqZVZDcVVETHh3aTJnb1lXRzNFM2tIYzU4RndlT0F5S3JiWWd6?=
- =?utf-8?B?ejhhQjY1a2NZb0tnVWZyVW96VzFvRlRXY0dOREszS08wSFVsRnAybDRDWTU1?=
- =?utf-8?B?VVlOV1RBaUI1N0JXL2l4WFQ4ai9RSU1heVZzYlpYZDZWd2Jyd0dWS2x3cnhp?=
- =?utf-8?B?eFh5Y2lRWGRBSjJDc09meWpBLzQ0TkJicWM1TVN5ZlRBdURyNVlidnJFYmVB?=
- =?utf-8?B?OXk5OEFHWWk5dE94KyttdU14VGJoTExYM1pSUHZZU05GS01OY0hMNkdsZUhk?=
- =?utf-8?B?KzZ4TjlkYjJ2b0hsSmIxZTA2dFE2eno0aWw3V3RmUUpkUzhocytGSXJqMWlu?=
- =?utf-8?B?SExlWjJBbXRRM0FSVE1EWlJvRUwrcWpxQnVwZU5obVA3TnZ6VmZNYjI2WW95?=
- =?utf-8?B?RnFEWDh5U2ZJb1gzbkxRQXg1L3FETmlMQW1NbG44NE05TE1SMDMwZitpOWcy?=
- =?utf-8?B?VW1LcGNLa2pUUktuWWlTTDBCdzFOc2E0K3lTSytsWlhxY1pRVnpva0NoNmlG?=
- =?utf-8?B?YlRLeXNyaUlJNllwTml4NVJyeVB0SzFlaWs5UVlhMzg2N0twQ3lwVUdTQ0p6?=
- =?utf-8?B?c0p3WGI3TmJxeUpNejBEdC9Ya2c3V3IyVHBPdkRtVkxrZTFrK0xxZHlFUTl6?=
- =?utf-8?B?a3RUOTNRZ3Z5bktpZkhQUVY0RnNjTG5FdG83QUVpZXB2bFRlN0NHSDBmSnVm?=
- =?utf-8?B?YTJ2RXBWTUIyN0p3ZlBwdHJCNGhZdm81S29qK2hyREdjRG9IVTFmVVFyRjdD?=
- =?utf-8?B?akY5ZFp5djFFdkVEOWRyRlpYVXdqeU16ZGtScXVSZ0tjVEFNVkhpMkY0bVUx?=
- =?utf-8?B?M0FEM20rd3Y3bFZ5UitaRWp4WHNNYkZzOVlVOGMzMGwxNTYzRmdOMUthZm5h?=
- =?utf-8?B?bzVnVkNzRmFua3ZOamw3SGRHcDZzdmhScloxb3pnUHMvSnYxV0ROd2NoaXdP?=
- =?utf-8?B?N1ZqVkZMNnRlOFVjYitvbklaMmd6ZlU2QUllMmJUZXpWK1pjZDQxM3FhS3RG?=
- =?utf-8?B?dG1rNDZxZGJ5ZFljOWZNd0ZRN3RaejBWczZlNGc0SVNKRUtrZFp4WDlBOTRl?=
- =?utf-8?B?NDZnQ2VqNTVWVnNZNUplV0xwTGcrVzlpR0lTRllHUjE4UlhRWldFQ3hLRmhm?=
- =?utf-8?B?aVgrU2RLTHA1aXgzQUdzRzZORGMrSE9ZelF0N25ReFEyZnA0cUxDcVQ0Y0tv?=
- =?utf-8?B?YXc9PQ==?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 26a52e12-4f0d-47ea-4090-08de0c8791c5
-X-MS-Exchange-CrossTenant-AuthSource: IA1PR11MB7198.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Oct 2025 07:42:34.1079
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: /QpYdu2w/IaWIPna3MBWBld2A4U5jCaM+cp5KdHtt1nnpBed6FSU5BlMRBKDf7bDcsQVRoDiu2/Z8FTFIG4aAg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ5PPF64191BB3C
-X-OriginatorOrg: intel.com
+X-CM-TRANSID: _____wC3f_8Ur_BoSVKcAg--.8978S2
+X-Coremail-Antispam: 1Uf129KBjvJXoW7CF4fZw1rGr4xKr48KrWDCFg_yoW8uF4kpa
+	yjyrW5GF47uF1jgFs2kF1fAr1Syan8Jw4S9ryxX34SvFW29F15Aws29F4Yqr9rZr47CFsF
+	yrn7Ja47KFy7ZaDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jv_M3UUUUU=
+X-Originating-IP: [58.22.7.114]
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbBEg7oXmjwqwOGzAAAsQ
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251016_004239_290098_DDA84458 
-X-CRM114-Status: GOOD (  21.49  )
+X-CRM114-CacheID: sfid-20251016_013939_440256_F1D3C574 
+X-CRM114-Status: UNSURE (   9.20  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -220,202 +87,62 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 14/10/2025 18:41, Sebastian Reichel wrote:
-> This adds CQE support for the Rockchip RK3588 and RK3576 platform. To
-> be functional, the eMMC device-tree node must have a 'supports-cqe;'
-> flag property.
-> 
-> As the RK3576 devicet-tree has been upstreamed with the 'supports-cqe;'
+From: Andy Yan <andy.yan@rock-chips.com>
 
-devicet-tree ?
 
-> property set by default, the kernel already tried to use CQE, which
-> results in system hang during suspend. This fixes the issue.
-> 
-> Co-developed-by: Yifeng Zhao <yifeng.zhao@rock-chips.com>
-> Signed-off-by: Yifeng Zhao <yifeng.zhao@rock-chips.com>
-> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> ---
->  drivers/mmc/host/sdhci-of-dwcmshc.c | 85 +++++++++++++++++++++++++++++++++++--
->  1 file changed, 82 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/mmc/host/sdhci-of-dwcmshc.c b/drivers/mmc/host/sdhci-of-dwcmshc.c
-> index eebd45389956..f533c98d5db1 100644
-> --- a/drivers/mmc/host/sdhci-of-dwcmshc.c
-> +++ b/drivers/mmc/host/sdhci-of-dwcmshc.c
-> @@ -24,6 +24,7 @@
->  
->  #include "sdhci-pltfm.h"
->  #include "cqhci.h"
-> +#include "sdhci-cqhci.h"
->  
->  #define SDHCI_DWCMSHC_ARG2_STUFF	GENMASK(31, 16)
->  
-> @@ -82,6 +83,8 @@
->  #define DWCMSHC_EMMC_DLL_TXCLK		0x808
->  #define DWCMSHC_EMMC_DLL_STRBIN		0x80c
->  #define DECMSHC_EMMC_DLL_CMDOUT		0x810
-> +#define DECMSHC_EMMC_MISC_CON		0x81C
-> +#define MISC_INTCLK_EN			BIT(1)
->  #define DWCMSHC_EMMC_DLL_STATUS0	0x840
->  #define DWCMSHC_EMMC_DLL_START		BIT(0)
->  #define DWCMSHC_EMMC_DLL_LOCKED		BIT(8)
-> @@ -234,6 +237,7 @@ struct dwcmshc_priv {
->  
->  struct dwcmshc_pltfm_data {
->  	const struct sdhci_pltfm_data pdata;
-> +	const struct cqhci_host_ops *cqhci_host_ops;
->  	int (*init)(struct device *dev, struct sdhci_host *host, struct dwcmshc_priv *dwc_priv);
->  	void (*postinit)(struct sdhci_host *host, struct dwcmshc_priv *dwc_priv);
->  };
-> @@ -561,6 +565,61 @@ static void dwcmshc_cqhci_dumpregs(struct mmc_host *mmc)
->  	sdhci_dumpregs(mmc_priv(mmc));
->  }
->  
-> +static void rk35xx_sdhci_cqe_enable(struct mmc_host *mmc)
-> +{
-> +	struct sdhci_host *host = mmc_priv(mmc);
-> +	struct sdhci_pltfm_host *pltfm_host = sdhci_priv(host);
-> +	struct dwcmshc_priv *dwc_priv = sdhci_pltfm_priv(pltfm_host);
-> +	u32 reg;
-> +
-> +	reg = sdhci_readl(host, dwc_priv->vendor_specific_area2 + CQHCI_CFG);
-> +	reg |= CQHCI_ENABLE;
-> +	sdhci_writel(host, reg, dwc_priv->vendor_specific_area2 + CQHCI_CFG);
-> +
-> +	reg = sdhci_readl(host, SDHCI_PRESENT_STATE);
-> +	while (reg & SDHCI_DATA_AVAILABLE) {
-> +		sdhci_readl(host, SDHCI_BUFFER);
-> +		reg = sdhci_readl(host, SDHCI_PRESENT_STATE);
-> +	}
-> +
-> +	sdhci_writew(host, DWCMSHC_SDHCI_CQE_TRNS_MODE, SDHCI_TRANSFER_MODE);
-> +
-> +	sdhci_cqe_enable(mmc);
-> +
-> +	sdhci_writew(host, DWCMSHC_SDHCI_CQE_TRNS_MODE, SDHCI_TRANSFER_MODE);
+Convert it to drm bridge driver, it will be convenient for us to
+migrate the connector part to the display driver later.
 
-Transfer mode was set already 2 lines up
+Patches that have already been merged in drm-misc-next are dropped.
 
-> +}
-> +
-> +static void rk35xx_sdhci_cqe_disabled(struct mmc_host *mmc, bool recovery)
 
-As mentioned elsewhere "disabled" -> "disable"
+Changes in v8:
+- Rebase on latest drm-misc-next tag: drm-misc-fixes-2025-10-09
+- Link to v7: https://lore.kernel.org/linux-rockchip/20250903110825.776807-1-andyshrk@163.com/
 
-> +{
-> +	struct sdhci_host *host = mmc_priv(mmc);
-> +	struct sdhci_pltfm_host *pltfm_host = sdhci_priv(host);
-> +	struct dwcmshc_priv *dwc_priv = sdhci_pltfm_priv(pltfm_host);
-> +	unsigned long flags;
-> +	u32 ctrl;
-> +
-> +	mmc->cqe_ops->cqe_wait_for_idle(mmc);
+Changes in v7:
+- Rebase on latest drm-misc-next
+- Link to v6: https://lore.kernel.org/linux-rockchip/20250717081344.1355613-1-andyshrk@163.com/
 
-Is this necessary?  If so, it seems more like something that should be done by
-cqhci itself.
+Changes in v6:
+- Rebase on latest drm-misc-next
+- Link to V5: https://lore.kernel.org/linux-rockchip/20250512124615.2848731-1-andyshrk@163.com/
 
-> +	spin_lock_irqsave(&host->lock, flags);
-> +
-> +	/*
-> +	 * During CQE command transfers, command complete bit gets latched.
-> +	 * So s/w should clear command complete interrupt status when CQE is
-> +	 * either halted or disabled. Otherwise unexpected SDCHI legacy
-> +	 * interrupt gets triggered when CQE is halted/disabled.
-> +	 */
-> +	ctrl = sdhci_readl(host, SDHCI_INT_ENABLE);
-> +	ctrl |= SDHCI_INT_RESPONSE;
-> +	sdhci_writel(host,  ctrl, SDHCI_INT_ENABLE);
-> +	sdhci_writel(host, SDHCI_INT_RESPONSE, SDHCI_INT_STATUS);
-> +
-> +	spin_unlock_irqrestore(&host->lock, flags);
-> +
-> +	sdhci_cqe_disable(mmc, recovery);
-> +
-> +	ctrl = sdhci_readl(host, dwc_priv->vendor_specific_area2 + CQHCI_CFG);
-> +	ctrl &= ~CQHCI_ENABLE;
-> +	sdhci_writel(host, ctrl, dwc_priv->vendor_specific_area2 + CQHCI_CFG);
-> +}
-> +
->  static void dwcmshc_rk3568_set_clock(struct sdhci_host *host, unsigned int clock)
->  {
->  	struct sdhci_pltfm_host *pltfm_host = sdhci_priv(host);
-> @@ -679,6 +738,10 @@ static void rk35xx_sdhci_reset(struct sdhci_host *host, u8 mask)
->  	struct sdhci_pltfm_host *pltfm_host = sdhci_priv(host);
->  	struct dwcmshc_priv *dwc_priv = sdhci_pltfm_priv(pltfm_host);
->  	struct rk35xx_priv *priv = dwc_priv->priv;
-> +	u32 extra = sdhci_readl(host, DECMSHC_EMMC_MISC_CON);
-> +
-> +	if ((host->mmc->caps2 & MMC_CAP2_CQE) && (mask & SDHCI_RESET_ALL))
-> +		cqhci_deactivate(host->mmc);
->  
->  	if (mask & SDHCI_RESET_ALL && priv->reset) {
->  		reset_control_assert(priv->reset);
-> @@ -687,6 +750,9 @@ static void rk35xx_sdhci_reset(struct sdhci_host *host, u8 mask)
->  	}
->  
->  	sdhci_reset(host, mask);
-> +
-> +	/* Enable INTERNAL CLOCK */
-> +	sdhci_writel(host, MISC_INTCLK_EN | extra, DECMSHC_EMMC_MISC_CON);
->  }
->  
->  static int dwcmshc_rk35xx_init(struct device *dev, struct sdhci_host *host,
-> @@ -1188,6 +1254,13 @@ static const struct dwcmshc_pltfm_data sdhci_dwcmshc_bf3_pdata = {
->  };
->  #endif
->  
-> +static const struct cqhci_host_ops rk35xx_cqhci_ops = {
-> +	.enable		= rk35xx_sdhci_cqe_enable,
-> +	.disable	= rk35xx_sdhci_cqe_disabled,
-> +	.dumpregs	= dwcmshc_cqhci_dumpregs,
-> +	.set_tran_desc	= dwcmshc_set_tran_desc,
-> +};
-> +
->  static const struct dwcmshc_pltfm_data sdhci_dwcmshc_rk35xx_pdata = {
->  	.pdata = {
->  		.ops = &sdhci_dwcmshc_rk35xx_ops,
-> @@ -1196,6 +1269,7 @@ static const struct dwcmshc_pltfm_data sdhci_dwcmshc_rk35xx_pdata = {
->  		.quirks2 = SDHCI_QUIRK2_PRESET_VALUE_BROKEN |
->  			   SDHCI_QUIRK2_CLOCK_DIV_ZERO_BROKEN,
->  	},
-> +	.cqhci_host_ops = &rk35xx_cqhci_ops,
->  	.init = dwcmshc_rk35xx_init,
->  	.postinit = dwcmshc_rk35xx_postinit,
->  };
-> @@ -1245,7 +1319,9 @@ static const struct cqhci_host_ops dwcmshc_cqhci_ops = {
->  	.set_tran_desc	= dwcmshc_set_tran_desc,
->  };
->  
-> -static void dwcmshc_cqhci_init(struct sdhci_host *host, struct platform_device *pdev)
-> +static void dwcmshc_cqhci_init(struct sdhci_host *host,
-> +			       struct platform_device *pdev,
-> +			       const struct dwcmshc_pltfm_data *pltfm_data)
->  {
->  	struct cqhci_host *cq_host;
->  	struct sdhci_pltfm_host *pltfm_host = sdhci_priv(host);
-> @@ -1275,7 +1351,10 @@ static void dwcmshc_cqhci_init(struct sdhci_host *host, struct platform_device *
->  	}
->  
->  	cq_host->mmio = host->ioaddr + priv->vendor_specific_area2;
-> -	cq_host->ops = &dwcmshc_cqhci_ops;
-> +	if (pltfm_data->cqhci_host_ops)
-> +		cq_host->ops = pltfm_data->cqhci_host_ops;
-> +	else
-> +		cq_host->ops = &dwcmshc_cqhci_ops;
->  
->  	/* Enable using of 128-bit task descriptors */
->  	dma64 = host->flags & SDHCI_USE_64_BIT_DMA;
-> @@ -1443,7 +1522,7 @@ static int dwcmshc_probe(struct platform_device *pdev)
->  		priv->vendor_specific_area2 =
->  			sdhci_readw(host, DWCMSHC_P_VENDOR_AREA2);
->  
-> -		dwcmshc_cqhci_init(host, pdev);
-> +		dwcmshc_cqhci_init(host, pdev, pltfm_data);
->  	}
->  
->  	if (pltfm_data->postinit)
-> 
+Changes in v5:
+- Split cleanup code to seperate patch
+- Switch to devm_drm_bridge_alloc() API
+- Link to V4: https://lore.kernel.org/linux-rockchip/20250422070455.432666-1-andyshrk@163.com/
+
+Changes in v4:
+- Do not store colorimetry within inno_hdmi struct
+- Link to V3: https://lore.kernel.org/linux-rockchip/20250402123150.238234-1-andyshrk@163.com/
+
+Changes in v3:
+- First included in v3
+- Link to V2: https://lore.kernel.org/dri-devel/20250325132944.171111-1-andyshrk@163.com/
+
+Andy Yan (2):
+  drm/rockchip: inno-hdmi: Convert to drm bridge
+  MAINTAINERS: Add entry for Innosilicon hdmi bridge library
+
+ MAINTAINERS                                   |   8 +
+ drivers/gpu/drm/bridge/Kconfig                |   7 +
+ drivers/gpu/drm/bridge/Makefile               |   1 +
+ .../inno_hdmi.c => bridge/inno-hdmi.c}        | 501 +++++-------------
+ drivers/gpu/drm/rockchip/Kconfig              |   1 +
+ drivers/gpu/drm/rockchip/Makefile             |   2 +-
+ drivers/gpu/drm/rockchip/inno_hdmi-rockchip.c | 189 +++++++
+ include/drm/bridge/inno_hdmi.h                |  33 ++
+ 8 files changed, 375 insertions(+), 367 deletions(-)
+ rename drivers/gpu/drm/{rockchip/inno_hdmi.c => bridge/inno-hdmi.c} (69%)
+ create mode 100644 drivers/gpu/drm/rockchip/inno_hdmi-rockchip.c
+ create mode 100644 include/drm/bridge/inno_hdmi.h
+
+-- 
+2.43.0
+
+base-commit: 21f0c9e6d2835608c3b46ab47d84e341fc7749fc
+branch: rk3036_hdmi_bridge_v8
 
 
 _______________________________________________
