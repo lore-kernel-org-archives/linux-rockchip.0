@@ -4,56 +4,117 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 444B5CCD199
-	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Oct 2025 18:32:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5421ECCD183
+	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Oct 2025 19:22:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:From:Subject:
-	Cc:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qE/enZL7uaOd7inbXW1dp2cW03z+UWjmCUB6QynZZ6U=; b=qMNiMqZeq1pICX
-	ACcZFWErz6RIqr/xoNMr5pV3ALir7316iggcgpMgMCJFJ2zjRvbfWosXlhI3no5BioRlLlmSxCtnx
-	vnVw92tmuvrdekFVpEf9MGOeoEnl19WLbRtklTXyeHiqbgFbfTDflJ1Un8OGDOkKRicHeOINxArXT
-	9YYVQoZIGXM7sgA9qfI3xYWFT45H7saSCVUDtGdQfZoriR2fg4dhw6LieOa8ahQJmloE17OSNfhdd
-	OhKXBFtqO8vNwyYstAihzZHWcshZCYxlDRnNyllJLhWp+W8GapK3QtJ1y5cY7IvLwYGn33ZAr9p90
-	3cdVZLgv2fIchBLyeQVg==;
+	List-Owner; bh=56owjuCVSm/uo5J9yLyNK5lJjY7GqiFxfyoHO6dWUoQ=; b=F1ZbFMk+EJ8t4c
+	EdlJ92aBmlH9ZPqcUgONP+wYh8F/b2aOI5wJpkY7e3QK52pbOgDy//DGmgv/jd5bg8vMmh2njZ4o8
+	6/+bo6nDGz3tDvK3GKCeEjnHEl1R6OFga//K3qfkkIx+nMn3MuxoIEjZnBigejkzaLK68aSCa3woh
+	UQXUX4JXtH1JgBB6crWTPOx3RSdUxBnHTbpxUrm3G3WCYsgPXJh4XCCBGXqcIBIFFILYwN4tNEx5/
+	pdmUFSgBp6CIAvxB8DjceO9x7YiKUkiI6XJXvBQoBhc4fyJXjidHOs1rvqPpKApHevziNBX9C6EOm
+	97cGNLdNiO0uB4C+ZpPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9SlY-00000005hYD-0O9y;
-	Thu, 16 Oct 2025 18:31:56 +0000
-Received: from out-184.mta0.migadu.com ([91.218.175.184])
+	id 1v9TYO-00000005nUI-24PB;
+	Thu, 16 Oct 2025 19:22:24 +0000
+Received: from mgamail.intel.com ([192.198.163.12])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9SlV-00000005hXj-3hjk
-	for linux-rockchip@lists.infradead.org;
-	Thu, 16 Oct 2025 18:31:55 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow-tech.com;
-	s=key1; t=1760639510;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=0DwL+c+9YdGQesQ1zy483f+QCC5NnESasUQDi6ea1c8=;
-	b=BveRcg1IIkC8akOq8/rGmCQJR9P+fJ82dDncn+W/TWMm8k4MVrNnOBjvxV+pVwYmaUVv7q
-	y92CCNPnJmbu0gSb2MTiNtTzO2vrORxHrcCpvLDQcKJr6WRlmzftOIV/3RKRyOtbP9zVuj
-	K90eodHgaj9tr9Wd9RiAeUYlcSympMiVwEBSIWWyd3hHl4e1UAaDN2GNUwWLrbw+GfrQhR
-	jj1poJMGkQt7MDNyUOeFhO91ctVC2r8x3snQYbXDdb2Nd7RPvvakQ4TLvN/N+pylj2rrIe
-	lp5ZFVvhnB/KVA7h5BrQ6x8w2wB3C+xFyimscTAIIKmDigxAaqSRAIuAMIsFfw==
-Date: Thu, 16 Oct 2025 20:31:47 +0200
-Message-Id: <DDJYM7XTXAGN.16TCJSI1VPUAB@cknow-tech.com>
-Cc: <linux-rockchip@lists.infradead.org>
-Subject: Re: Endless spam in dmesg: ASoC error (-19): at
- snd_soc_dai_prepare() on i2s-hifi
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <diederik@cknow-tech.com>
-To: <linux-sound@vger.kernel.org>
-References: <DDJ05640974K.3G1TLY1B75G7@cknow-tech.com>
-In-Reply-To: <DDJ05640974K.3G1TLY1B75G7@cknow-tech.com>
-X-Migadu-Flow: FLOW_OUT
+	id 1v9TYL-00000005nTh-39SW;
+	Thu, 16 Oct 2025 19:22:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1760642541; x=1792178541;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=70CHvEmZWEz+900ZJiNa3jXRD54PcFWARg2uD+iSNUs=;
+  b=V1LpRXGN7c1yJ2Iklh3yFxZBQnFZETWFf3WrGxs8jNIUPe5RlR9bQEdU
+   M1IvShymTH6nDtmxyFqe8nTJ493Xpu94b/iAk8HWaqpxB4DWSz9FterRt
+   wN2eLU/I0VGca4XMo9/x8dZxwPz4HPp2kXD3Qikfyww02QJk7yhDDQaNz
+   VPV67SQT6Sa2mlKZPETf1UuSEK7+SkrHZOTqZ5kZZc/egIMpBgfy5VzwD
+   68jqBkl7KlJngc5sTk1WG+zebsGMQxuzCyCpRMHOETLSU3TXLBz34V18z
+   +RHnI+/doMSERk5YXMvZu0QFH2Uj74bNfQx3a97Auq0yLF1WzAKzudbET
+   w==;
+X-CSE-ConnectionGUID: rcCdgTmFQPaEdDduN+wsGg==
+X-CSE-MsgGUID: Utvhe52bTKafKzw9rpFeag==
+X-IronPort-AV: E=McAfee;i="6800,10657,11584"; a="66714849"
+X-IronPort-AV: E=Sophos;i="6.19,234,1754982000"; 
+   d="scan'208";a="66714849"
+Received: from fmviesa004.fm.intel.com ([10.60.135.144])
+  by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Oct 2025 12:22:19 -0700
+X-CSE-ConnectionGUID: bRDS3vRKR4SjOvpt8TyPXQ==
+X-CSE-MsgGUID: 6oARni81RACAlb0elSOKpQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.19,234,1754982000"; 
+   d="scan'208";a="187816556"
+Received: from klitkey1-mobl1.ger.corp.intel.com (HELO kekkonen.fi.intel.com) ([10.245.244.31])
+  by fmviesa004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Oct 2025 12:22:09 -0700
+Received: from kekkonen.localdomain (localhost [IPv6:::1])
+	by kekkonen.fi.intel.com (Postfix) with SMTP id 936D312023C;
+	Thu, 16 Oct 2025 22:22:06 +0300 (EEST)
+Date: Thu, 16 Oct 2025 22:22:06 +0300
+Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6 krs, Bertel Jungin Aukio 5, 02600 Espoo
+From: Sakari Ailus <sakari.ailus@linux.intel.com>
+To: Ricardo Ribalda <ribalda@chromium.org>
+Cc: Linus Walleij <linus.walleij@linaro.org>,
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Hans Verkuil <hverkuil@kernel.org>,
+	Krzysztof =?utf-8?Q?Ha=C5=82asa?= <khalasa@piap.pl>,
+	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
+	Leon Luo <leonl@leopardimaging.com>,
+	Kieran Bingham <kieran.bingham@ideasonboard.com>,
+	Jacopo Mondi <jacopo+renesas@jmondi.org>,
+	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
+	Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
+	Niklas =?iso-8859-1?Q?S=F6derlund?= <niklas.soderlund+renesas@ragnatech.se>,
+	Julien Massot <julien.massot@collabora.com>,
+	Jacopo Mondi <jacopo@jmondi.org>,
+	Daniel Scally <djrscally@gmail.com>,
+	Dave Stevenson <dave.stevenson@raspberrypi.com>,
+	Benjamin Mugnier <benjamin.mugnier@foss.st.com>,
+	Sylvain Petinot <sylvain.petinot@foss.st.com>,
+	Yong Zhi <yong.zhi@intel.com>, Bingbu Cao <bingbu.cao@intel.com>,
+	Tianshu Qiu <tian.shu.qiu@intel.com>,
+	Tiffany Lin <tiffany.lin@mediatek.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Yunfei Dong <yunfei.dong@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Rui Miguel Silva <rmfrfs@gmail.com>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Martin Kepplinger <martink@posteo.de>,
+	Purism Kernel Team <kernel@puri.sm>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	Dafna Hirschfeld <dafna@fastmail.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Sylwester Nawrocki <s.nawrocki@samsung.com>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Yemike Abhilash Chandra <y-abhilashchandra@ti.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-input@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, imx@lists.linux.dev,
+	linux-renesas-soc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org, linux-staging@lists.linux.dev
+Subject: Re: [PATCH 00/32] media: Use %pe format specifier
+Message-ID: <aPFF3n-e7pAUDH5x@kekkonen.localdomain>
+References: <20251013-ptr_err-v1-0-2c5efbd82952@chromium.org>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20251013-ptr_err-v1-0-2c5efbd82952@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251016_113154_474857_8E114D51 
-X-CRM114-Status: GOOD (  14.64  )
+X-CRM114-CacheID: sfid-20251016_122221_822568_67B8C04B 
+X-CRM114-Status: GOOD (  10.39  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,40 +131,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed Oct 15, 2025 at 5:30 PM CEST, Diederik de Haas wrote:
-> On several of my Rockchip based devices I get ASoC errors, where the one
-> from the subject occurs the most, but there are others as well.
-> While it should ofc be reported when an error occurs, the volume was
-> bad, then really bad and now it's just absurd:
->
-> root@rock5b:~# dmesg | grep -c "ASoC error (-19): at snd_soc_dai_prepare"
-> 983
->
-> If 'dmesg' buffer can hold 1000 lines, then I have 17 of these as well:
-> hdmi-audio-codec hdmi-audio-codec.8.auto: HDMI: Unknown ELD version 0
->
-> This means that after just a few minutes, 'dmesg' has now become utterly
-> useless as it ONLY contains these errors/lines.
->
-> Booting into older kernels didn't seem to have an effect. If it had, I
-> could start to bisect it. I have no idea where it comes from.
-> So now I have removed pipewire ... and everything that depends on it ...
-> of which 'mpv' is the most important to me.
-> Now those errors are actually gone. And dmesg actually useful again.
+Hi Ricardo,
 
-I installed pipewire 1.4.2 from Debian Stable (previously 1.4.9 from
-Sid/Unstable) and now the count is steady at 120.
+On Mon, Oct 13, 2025 at 02:14:40PM +0000, Ricardo Ribalda wrote:
+> The %pe format specifier is designed to print error pointers. It prints
+> a symbolic error name (eg. -EINVAL) and it makes the code simpler by
+> omitting PTR_ERR().
+> 
+> The recently introduced test scripts/coccinelle/misc/ptr_err_to_pe.cocci
+> checks that we use %pe. Let's make it happy.
+> 
+> Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
 
-> So I guess it's triggered by (a change in) pipewire, but still the
-> kernel should not be generating endless copies of the same error. Once
-> or twice should be enough.
+Thanks for the set.
 
-120 is still too much, but now dmesg isn't entirely useless anymore.
+Acked-by: Sakari Ailus <sakari.ailus@linux.intel.com>
 
-> Can something be done about this?
+-- 
+Kind regards,
 
-Cheers,
-  Diederik
+Sakari Ailus
 
 _______________________________________________
 Linux-rockchip mailing list
