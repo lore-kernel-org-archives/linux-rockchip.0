@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12301CCD194
-	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Oct 2025 12:44:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B1D3CCD199
+	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Oct 2025 13:42:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tUIDD5X87fSUtbDm4Ik5GLptTELDCXmpyZ05TTKYk3s=; b=YoYCSPGbfsHiky
-	t1HUL6AnUjIKd8kjzOA0Hiovgq4+ohBv1Pr3VRr1DT0ryzuXCqrhEmzSXgAL/TueZKiyMukk7srgh
-	u0UMBDn2MeteebN2/TXh/4BtYSwAadLKzhKbIqu5zcNcegxiOkScET0vJWCMtRrUqwKbfkYTt6xMo
-	BzCvsOlXVIBQiFtRb6j4nnxQIaaFQ3GX73O5X3T/Aw+0DMSGOnV3eUpsDQ2n/pfIboEJRwxvyT/iu
-	swncT8NTHvdmfHbN7mgkkMy45Gs8CxfGirKtoW4v4xvS8gOtbCxsP7jI9fg6/BlouPzMKX6xgT30y
-	x1C5d/L1ezC9VCHRJnYQ==;
+	List-Owner; bh=lh/9eeJmjTzIH4rWSVdhtRLQvURY3nwLxIBXPq+hi0Q=; b=B4oJ55a23rVln/
+	CQNgoN4MXBbLafJ8K1MV+V2/R50JjQ5P8NW2+Vyr36PM+Yy0jTpzZzU40DPciwKTRGQShTahhZYo8
+	mPyFTj59PLJui6z0EnI3plMmS+AU8HMKpiatvTuR+CqJgro0X22J0KLny7Qfg7LDFFMj4frxOvtU9
+	Ejm63ZLd0g7BuT/KW5Zjj+5AqdtY6S3qP4sfDNwXLl0vwyl7uDP6jNnenbnLESDz/0JT8qXm5llzS
+	27oNl1pnmtn09V/MLoa7/M5fCzSdLSpgU1WMNThJrIwIblZSA4RHdURYOEymwPdarzzZ1n3YL22Ed
+	tHTVt6/BNzBeAsSbQbVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9NLA-00000004m9M-0koo;
-	Thu, 16 Oct 2025 12:44:20 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1v9OEw-00000004uUu-1VhE;
+	Thu, 16 Oct 2025 13:41:58 +0000
+Received: from mail-m21469.qiye.163.com ([117.135.214.69])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9NL7-00000004m8y-42Rb
-	for linux-rockchip@lists.infradead.org;
-	Thu, 16 Oct 2025 12:44:19 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 9FF8D44175;
-	Thu, 16 Oct 2025 12:44:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D8EC5C4CEFE;
-	Thu, 16 Oct 2025 12:44:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1760618657;
-	bh=UiRMtD4HrkDHeIc4FGb7iyKCK1GPw3RQ8DKO8RCSw5E=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=lCFKqBBxtc6cr2E4/WHp9X+Dzi6MJkbJAQ+uGPYm0MhZ+op0QysqkVonP0Jt5Mr/U
-	 6kSxCU7N/D+1N0FB0QlP20qeBjt4zhXci6QO4xfSzp3/M929nLo/dQVJeR6rWMdvJ9
-	 hVvNJXMnOrRc3h2RSqaCvYYE+iEPz/nntSDPXlrTD0PUgljaxOTg2C8jQq5xwJTsqj
-	 28DodsnyHG3d/Xuh7PVG1A2okfgLqMOz6gemfEBe8DiitEBXUaRfU0fc8HrppWRxu+
-	 EfNW7uAWbvSy7/TFVC/PMg/vNbwadAhE31W+isieJeDlUU43LuivccbV1vmPeXdxrh
-	 pfzpgvEENwWnw==
-Date: Thu, 16 Oct 2025 13:44:12 +0100
-From: Simon Horman <horms@kernel.org>
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	David Wu <david.wu@rock-chips.com>, netdev@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	kernel@collabora.com, stable@vger.kernel.org
-Subject: Re: [PATCH net] net: stmmac: dwmac-rk: Fix disabling
- set_clock_selection
-Message-ID: <aPDonJRMVKjsC6g7@horms.kernel.org>
-References: <20251014-rockchip-network-clock-fix-v1-1-c257b4afdf75@collabora.com>
+	id 1v9OEs-00000004uT0-3zTM;
+	Thu, 16 Oct 2025 13:41:57 +0000
+Received: from xf.. (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 26283fe38;
+	Thu, 16 Oct 2025 21:41:47 +0800 (GMT+08:00)
+From: Finley Xiao <finley.xiao@rock-chips.com>
+To: heiko@sntech.de
+Cc: robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	ulf.hansson@linaro.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-pm@vger.kernel.org,
+	finley.xiao@rock-chips.com,
+	zhangqing@rock-chips.com,
+	sugar.zhang@rock-chips.com,
+	huangtao@rock-chips.com
+Subject: [PATCH v1 1/2] dt-bindings: power: rockchip: Add support for RV1126B
+Date: Thu, 16 Oct 2025 21:41:02 +0800
+Message-ID: <20251016134103.294636-2-finley.xiao@rock-chips.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20251016134103.294636-1-finley.xiao@rock-chips.com>
+References: <20251016134103.294636-1-finley.xiao@rock-chips.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20251014-rockchip-network-clock-fix-v1-1-c257b4afdf75@collabora.com>
+X-HM-Tid: 0a99ed4159e403a9kunm0a0c6b9d28655
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQklJHVYYGhpKGBpNT08ZSk1WFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=I9vI8nQczWQy3DP95bfgsPAay2QjLm0Psn+mKGGRSoFPjubpTPXz7RpluqFeD+iB3cZrzHn3IHvvujyor7k5geUxta5GJOU5pmtleOWqfJzRKefytNIWRZPvp7XafwH5YMJ4HTkZjDy7kynCGMG5AOOLm5u39v8k+nMSQCJjCok=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=nv98wqplN2+zIis/g/iKLtF3JuIQw/bcfzKqgmtzFSw=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251016_054418_039313_DE9C9E9D 
-X-CRM114-Status: GOOD (  11.52  )
+X-CRM114-CacheID: sfid-20251016_064155_256207_F35765B7 
+X-CRM114-Status: GOOD (  10.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,21 +80,60 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Oct 14, 2025 at 05:49:34PM +0200, Sebastian Reichel wrote:
-> On all platforms set_clock_selection() writes to a GRF register. This
-> requires certain clocks running and thus should happen before the
-> clocks are disabled.
-> 
-> This has been noticed on RK3576 Sige5, which hangs during system suspend
-> when trying to suspend the second network interface. Note, that
-> suspending the first interface works, because the second device ensures
-> that the necessary clocks for the GRF are enabled.
-> 
-> Cc: stable@vger.kernel.org
-> Fixes: 2f2b60a0ec28 ("net: ethernet: stmmac: dwmac-rk: Add gmac support for rk3588")
-> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+Add the compatible string and power domain IDs for RV1126B SoC.
 
-Reviewed-by: Simon Horman <horms@kernel.org>
+signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
+---
+ .../power/rockchip,power-controller.yaml        |  2 ++
+ .../dt-bindings/power/rockchip,rv1126b-power.h  | 17 +++++++++++++++++
+ 2 files changed, 19 insertions(+)
+ create mode 100644 include/dt-bindings/power/rockchip,rv1126b-power.h
+
+diff --git a/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml b/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
+index a884e49c995f..f9db602de258 100644
+--- a/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
++++ b/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
+@@ -46,6 +46,7 @@ properties:
+       - rockchip,rk3576-power-controller
+       - rockchip,rk3588-power-controller
+       - rockchip,rv1126-power-controller
++      - rockchip,rv1126b-power-controller
+ 
+   "#power-domain-cells":
+     const: 1
+@@ -126,6 +127,7 @@ $defs:
+           "include/dt-bindings/power/rk3568-power.h"
+           "include/dt-bindings/power/rk3588-power.h"
+           "include/dt-bindings/power/rockchip,rv1126-power.h"
++          "include/dt-bindings/power/rockchip,rv1126b-power.h"
+ 
+       clocks:
+         minItems: 1
+diff --git a/include/dt-bindings/power/rockchip,rv1126b-power.h b/include/dt-bindings/power/rockchip,rv1126b-power.h
+new file mode 100644
+index 000000000000..0a418f16e4ea
+--- /dev/null
++++ b/include/dt-bindings/power/rockchip,rv1126b-power.h
+@@ -0,0 +1,17 @@
++/* SPDX-License-Identifier: (GPL-2.0+ OR MIT) */
++/*
++ * Copyright (c) 2024 Rockchip Electronics Co., Ltd.
++ * Author: Finley Xiao <finley.xiao@rock-chips.com>
++ */
++
++#ifndef __DT_BINDINGS_POWER_RV1126B_POWER_H__
++#define __DT_BINDINGS_POWER_RV1126B_POWER_H__
++
++/* VD_NPU */
++#define RV1126B_PD_NPU		0
++
++/* VD_LOGIC */
++#define RV1126B_PD_VDO		1
++#define RV1126B_PD_AISP		2
++
++#endif
+-- 
+2.43.0
 
 
 _______________________________________________
