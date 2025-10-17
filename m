@@ -4,107 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF8C3CCD184
-	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Oct 2025 07:40:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A765CCCD195
+	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Oct 2025 07:58:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:Subject:References:Cc:To:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QmZqVPzqZWGSyBJbfXzMbrCmG5Uvro6o9ABfuln7KMg=; b=fpYEJUdRrIhFo2
-	ql77KQ0rCoUH1jTUTwN7dDBUszVI5rshlpWv+YAhJf2GHmL2LV6xvqgMcgkKufRIvUelsqy+xztlg
-	QaQHvtNyCwge0LzYNmLhYg/HJB8z0/tMBdHVKZtfMAPvU8GMnY1mipX8ZeEgBVrbDrCnRdjwKzhr6
-	K66vpH1erw6N1xGwU/l1T1OvLzZPoqz/HvX40CPt1Qsn8xtMgkZBYAfCUGbdN7/sTJ4vju30frtQ0
-	HGX8/dF6dsRfRjUDD9B/Gr4BhLsH772UcPcYi7LByyfdrpGbYCQ0CLn8tKwm0ab4SDHt11v+KzBP6
-	Nkt3p3iDPrXsu36XhGfA==;
+	List-Owner; bh=X5lLt6gnNlMJiyAZuejW9Avmdnh7ufUPZHsTm1S9R0w=; b=bMqttaVdQaUn+Q
+	0Y+unmfi/TyMMuSS4XZavMBHQIMWRMXsYxySaO9piDh+XWU9wEFGxSzdFRW7PvtoGKqy778QnmH1F
+	qP3iE5teosKM3XXEltj65PqvGnkg2S/qJx6D/ZcTa/rcFp3xE11UGcHq1cv7M5D5+tJ0ND4rsc51X
+	JdhljWhd/Uh8xp3+KvV6pY/QjuJImu1QqShmpqYWzrPNao0hsY3tvSPOU19KbxBEPc5TS9Mzw8lAC
+	mJ8qMbQddbZw+PORNHEj5hHcWyDzGrrFfz3jDFtFZDY2BXyKPgsbT9xC+OxROqJ4dhkjdzPatkmEC
+	03kju3VfLxwIOy1/aCug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9f4n-00000006zJt-24BO;
-	Fri, 17 Oct 2025 07:40:37 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1v9fMC-000000071X5-1gFq;
+	Fri, 17 Oct 2025 07:58:36 +0000
+Received: from mail3.ecloud.global ([135.181.139.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9f4k-00000006zIP-458L;
-	Fri, 17 Oct 2025 07:40:36 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 988B2456D8;
-	Fri, 17 Oct 2025 07:40:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 79F47C4CEE7;
-	Fri, 17 Oct 2025 07:40:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1760686834;
-	bh=sb/nElh9KMN8mQVtbv98NeQoE2uRu5jwjS2h4VMCK1A=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=ajzyhNDCNv3tFpAGl/2kxzSDKoyY5sO4ci+57z4j0yIk54h1Eswl5xzKilAMuu6Px
-	 MfqtkkYeHXCaRWue658cKrOdLidcvjHBpnr4RFTdAWPgUKx8l56msfqEbN5I4vxFks
-	 pQH1Ey2qdh3Ucafbu7bRlZHWI3qQ+6KrNdivvqnpJd9SgUKZePb/DF8XokRWVjZjBg
-	 9jaaIayru7fdbwWU7HfIxC1fyq9PzdmP7ZnD6SSsLZQwLreYnOm8XfBbHoOiopuUPK
-	 Ip7sRCHriZ29HlqSVcJSVZhDoLHoObhuPKFcPJysZJrJqRVl/xkeab6NXUDzLF21VG
-	 3+9QDfc6qes1Q==
-Message-ID: <1ce0101b-e6ee-4914-8c41-215a2f1aacf4@kernel.org>
-Date: Fri, 17 Oct 2025 09:40:29 +0200
+	id 1v9fM9-000000071W8-3QTg;
+	Fri, 17 Oct 2025 07:58:35 +0000
+Received: from authenticated-user (mail3.ecloud.global [127.0.0.1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mail3.ecloud.global (Postfix) with ESMTPSA id AEBAD8844C7;
+	Fri, 17 Oct 2025 07:58:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=murena.io; s=mail3;
+	t=1760687904;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=5+N/g+Cv9kWgSOuIgoyJn0tjR7NN022I4B62iu5cZoI=;
+	b=Bwe+9CcyUwQRoVsGFfIVFX7RAtwlIiFEUdlhv3ANwuLFytOkKmG5tMD3H6j/XdnEZGik/z
+	L0h0EfmDWuHP/7ytSuLPFEmLJ9P6vVpjHa0TaDtq0Kpmys0p9oR2p0SHL+/9++d5c0P+Bs
+	xTonHHy3cApXXPbD6tCP/sUxOQR4Q0g=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=murena.io;
+	s=mail3; t=1760687904;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=5+N/g+Cv9kWgSOuIgoyJn0tjR7NN022I4B62iu5cZoI=;
+	b=h7XC6EJLNOSr2xCjrKKvzFpTGgC37z8vwGGUEz/yDpwgEM1EFv9ihoX3mWMEs1aZkf1kCW
+	R0/HMKBPOAB88wj5s+pWSl9MJOGGWxCIgq/E0UUExaxLNmyFtIqGxTxHrf1GT0EaXhyeBJ
+	g6KWr2MOYwx31wQ3kzXnhqg6IeYx7yU=
+ARC-Authentication-Results: i=1;
+	mail3.ecloud.global;
+	auth=pass smtp.mailfrom=maud_spierings@murena.io
+ARC-Seal: i=1; s=mail3; d=murena.io; t=1760687904; a=rsa-sha256; cv=none;
+	b=0j0ePx5LqN5bNtXIaCR6iUppWGVksPuWjcEHiLwqt4vi9w6bXwRmsly/cu1e1ko/x/TcZ1
+	rYi2dNWvWgPA6dPOrjf4/OPq/tmcAMEzh45RF3rfArefZ4yrUBvzmxJVntRIKbNGMQ4Cum
+	jWmVbmTk3idqcDHnOavdiktfS2fua0Q=
+Message-ID: <040d8fe8-da2f-4aa5-a2c3-1aec0cf2e8f0@murena.io>
+Date: Fri, 17 Oct 2025 09:58:22 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 1/2] dt-bindings: power: rockchip: Add support for
- RV1126B
-To: Finley Xiao <finley.xiao@rock-chips.com>, heiko@sntech.de
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- ulf.hansson@linaro.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
- zhangqing@rock-chips.com, sugar.zhang@rock-chips.com
-References: <20251017065646.320643-1-finley.xiao@rock-chips.com>
- <20251017065646.320643-2-finley.xiao@rock-chips.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
+To: andyshrk@163.com
+Cc: Laurent.pinchart@ideasonboard.com, andrzej.hajda@intel.com,
+ andy.yan@rock-chips.com, devicetree@vger.kernel.org,
+ dmitry.baryshkov@oss.qualcomm.com, dri-devel@lists.freedesktop.org,
+ heiko@sntech.de, jernej.skrabec@gmail.com, jonas@kwiboo.se,
+ knaerzche@gmail.com, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ maarten.lankhorst@linux.intel.com, mripard@kernel.org,
+ neil.armstrong@linaro.org, rfoss@kernel.org, simona@ffwll.ch,
+ tzimmermann@suse.de
+References: <20251016083843.76675-3-andyshrk@163.com>
+Subject: Re: [PATCH v8 2/2] MAINTAINERS: Add entry for Innosilicon hdmi bridge
+ library
 Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <20251017065646.320643-2-finley.xiao@rock-chips.com>
+From: Maud Spierings <maud_spierings@murena.io>
+In-Reply-To: <20251016083843.76675-3-andyshrk@163.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251017_004035_056791_6AA133B0 
-X-CRM114-Status: UNSURE (   7.51  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251017_005834_331954_0E9063EA 
+X-CRM114-Status: GOOD (  14.93  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,27 +92,58 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 17/10/2025 08:56, Finley Xiao wrote:
+Hi Andy,
+
+> From: Andy Yan <andy.yan@rock-chips.com>
+> 
+> Add entry for Innosilicon hdmi bridge library
+> 
+> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+> ---
+> 
+> (no changes since v1)
+> 
+>  MAINTAINERS | 8 ++++++++
+>  1 file changed, 8 insertions(+)
+> 
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index f9f985c7d7479..0adcfb1c264a1 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -12299,6 +12299,14 @@ M:	Samuel Holland <samuel@sholland.org>
+>  S:	Maintained
+>  F:	drivers/power/supply/ip5xxx_power.c
 >  
->        clocks:
->          minItems: 1
-> diff --git a/include/dt-bindings/power/rockchip,rv1126b-power.h b/include/dt-bindings/power/rockchip,rv1126b-power.h
-> new file mode 100644
-> index 000000000000..beb692bd8e72
-> --- /dev/null
-> +++ b/include/dt-bindings/power/rockchip,rv1126b-power.h
+> +INNOSILICON HDMI BRIDGE DRIVER
+> +M:	Andy Yan <andy.yan@rock-chips.com>
+> +L:	dri-devel@lists.freedesktop.org
+> +S:	Maintained
+> +T:	git https://gitlab.freedesktop.org/drm/misc/kernel.git
+> +F:	drivers/gpu/drm/bridge/inno-hdmi.c
+> +F:	include/drm/bridge/inno_hdmi.h
+> +
+>  INOTIFY
+>  M:	Jan Kara <jack@suse.cz>
+>  R:	Amir Goldstein <amir73il@gmail.com>
+> -- 
+> 2.43.0
 
+I believe this patch should be squashed into the patch that actually 
+creates the files listed in the MAINTAINERS entry, like I do here [1]. 
+Checkpatch should be complaining about patch [1/2] if I'm not mistaken, 
+when you run `b4 prep --check`.
 
-I don't see my comment addressed. You never responded. Please slow down
-with your postings and respond to comments.
+Link: 
+https://lore.kernel.org/all/20251009-max25014-v4-1-6adb2a0aa35f@gocontroll.com/ 
+[1]
 
-Best regards,
-Krzysztof
+Kind regards,
+Maud
 
 _______________________________________________
 Linux-rockchip mailing list
