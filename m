@@ -4,62 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A924CCD184
-	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Oct 2025 08:32:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57C02CCD19A
+	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Oct 2025 08:58:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
-	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=jBNYmxKXhDVRHm7CRf9vdQcW+FCStcrNdUB63zziEzA=; b=4MITl7MDxhIxh4vcQHWKvXXJYv
-	jzHrXfFCY86FxaOWCc5iVz5BQ7NZ7/D/E0l2ew/eV27U0hNS5VihPecuWWzbVztsaMVvLLZdoGy18
-	3MkNVj+0HX7KVMuKvJad7vbwIvsJfIXnyWSABn0tUeGDvYEG6GbXaYmwU9pUQEKFVFRij6qOjG/5Q
-	hoOvhFWKmMAOMeC0CCd1fNtbZB63mm73bQmAoWGi4ZOboz6DkFQGS+IZ7yJjY62VX6I4PQCkMFf+Z
-	ZoZzis+Xf0PAe1aHt/6MevC/dFQLF7ouIAicvpjOgSaEaeziHQV/arEXu+eCQC3WeVdh5L007TZJA
-	Xh+3sYzw==;
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
+	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=lhuRVUcl2QaXX6pbNHqHTip9ZDwQULvebvVscXsFFtI=; b=qrIDJKuzthvFal
+	fgmwmqSVw20yF+rbJSdCGoaO7EFTeID7byO66Ov7QOsfHRfZRaiz4IHRpTRLh3zr8dBul/NqflA0k
+	JOCvoyZF/XGP0uUgHh/btQ9BzpNWYvXWFoWdss9dfQ2IliSpwIuSr9D6J6M1Ktd0VzYNNddBoGTgM
+	di2WraFio47bc46NGPhGhl42d7RbtOK3JFNuz/d+r9KCOujhHuzl/iMMaWzka+UlDWIX7AGiQPDaW
+	v9nNgiigtTLM/Cxx97zm+G16HW9gepnbauWZAkNHVhUwRKpg3YfuqDinHcJri81t8VfTG4RJDJX0V
+	SpaOMqbs+gaHGzpeHTuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9fsO-0000000750d-32qx;
-	Fri, 17 Oct 2025 08:31:52 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1v9gHS-00000007ADJ-043s;
+	Fri, 17 Oct 2025 08:57:46 +0000
+Received: from m16.mail.163.com ([220.197.31.3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9fsL-000000074zX-1TeA;
-	Fri, 17 Oct 2025 08:31:50 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 489ED455C6;
-	Fri, 17 Oct 2025 08:31:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id ED015C4CEE7;
-	Fri, 17 Oct 2025 08:31:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1760689908;
-	bh=8JUiOrjDfOdA/96I1n2RoxKgJNH0r2C48Z5YYltnGhg=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=bSxYK2kDJV4zgONmPeuPitDLrbENAOcdwhHNI9fk2w0/zI5It/AVh5B3m2jkhK9S7
-	 geXRz55eImzmjpiK8aUGHgF8yVZhmi8zxkgihRCKnMIWmnCqMFPZMUomGx2keiu7H5
-	 TDWkfMaZgaKdT5MHSOx2Hxdy4ZoLUQGuBSytAwCdaVRGR9t5WY96tAUTsNsARIPvc4
-	 OW4xweUoJtc4gGXNhSkQg3OxGtfijv6DD9W0NDlgC8MimW8fVppaqm3rUS8FdJehf2
-	 nb8B/nVLpIqWKO4ZekSXkLFbOnMNF3onDdBkYeo+s/ZbYRqUkKh5JIYy6wGz8qdH3n
-	 6benPmRb8/eoA==
-Date: Fri, 17 Oct 2025 03:31:46 -0500
+	id 1v9gHP-00000007ABE-0aeF;
+	Fri, 17 Oct 2025 08:57:44 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=Date:From:To:Subject:Content-Type:MIME-Version:
+	Message-ID; bh=0I00pQnbY1u48SLSbfkjT/kC6CPcVg5dby2NqOBL3+k=; b=B
+	CNdO21oTuVDDYpNEGDxqBTpsymKzpM4FzG/XkmpdVAk9FZEHsrHwtoFzZBBsj6si
+	w7FLyqTo7h1hEPjRZqZUHKJqUkReB0k5FyxNNWSTls0p+d/8FjzRUdF3/twcUef8
+	JkMF4RsTTxEu8yC4QwDVohHV862zRxhK0WwwmR9LcA=
+Received: from andyshrk$163.com ( [58.22.7.114] ) by
+ ajax-webmail-wmsvr-40-143 (Coremail) ; Fri, 17 Oct 2025 16:56:38 +0800
+ (CST)
+X-Originating-IP: [58.22.7.114]
+Date: Fri, 17 Oct 2025 16:56:38 +0800 (CST)
+From: "Andy Yan" <andyshrk@163.com>
+To: "Maud Spierings" <maud_spierings@murena.io>
+Cc: Laurent.pinchart@ideasonboard.com, andrzej.hajda@intel.com,
+	andy.yan@rock-chips.com, devicetree@vger.kernel.org,
+	dmitry.baryshkov@oss.qualcomm.com, dri-devel@lists.freedesktop.org,
+	heiko@sntech.de, jernej.skrabec@gmail.com, jonas@kwiboo.se,
+	knaerzche@gmail.com, linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	maarten.lankhorst@linux.intel.com, mripard@kernel.org,
+	neil.armstrong@linaro.org, rfoss@kernel.org, simona@ffwll.ch,
+	tzimmermann@suse.de
+Subject: Re:Re: [PATCH v8 2/2] MAINTAINERS: Add entry for Innosilicon hdmi
+ bridge library
+X-Priority: 3
+X-Mailer: Coremail Webmail Server Version 2023.4-cmXT build
+ 20250723(a044bf12) Copyright (c) 2002-2025 www.mailtech.cn 163com
+In-Reply-To: <040d8fe8-da2f-4aa5-a2c3-1aec0cf2e8f0@murena.io>
+References: <20251016083843.76675-3-andyshrk@163.com>
+ <040d8fe8-da2f-4aa5-a2c3-1aec0cf2e8f0@murena.io>
+X-NTES-SC: AL_Qu2dAvqSvksi7iKcZekfmUgWjuw/WsG1v/Ul1YBSP556jC/r8zkjQUF9DEnN7/uOLACpsBq9WjdwxuR2UoVeWLsLcVeD6Y6TtCYHViqiBA2GRw==
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: sugar.zhang@rock-chips.com, krzysztof.kozlowski+dt@linaro.org, 
- linux-arm-kernel@lists.infradead.org, heiko@sntech.de, 
- mturquette@baylibre.com, conor+dt@kernel.org, huangtao@rock-chips.com, 
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- linux-clk@vger.kernel.org, sboyd@kernel.org, devicetree@vger.kernel.org
-To: Elaine Zhang <zhangqing@rock-chips.com>
-In-Reply-To: <20251017063107.1606965-5-zhangqing@rock-chips.com>
-References: <20251017063107.1606965-1-zhangqing@rock-chips.com>
- <20251017063107.1606965-5-zhangqing@rock-chips.com>
-Message-Id: <176068990653.1336490.3635831064787473495.robh@kernel.org>
-Subject: Re: [PATCH v2 4/5] dt-bindings: clock: Add support for rockchip
- pvtpll
+Message-ID: <671fc19.84e3.199f162a66c.Coremail.andyshrk@163.com>
+X-Coremail-Locale: zh_CN
+X-CM-TRANSID: jygvCgAnDpjGBPJodsENAA--.5725W
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbB0gTpXmjyAwEUgwACss
+X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251017_013149_427461_2F3C58CC 
-X-CRM114-Status: UNSURE (   9.77  )
+X-CRM114-CacheID: sfid-20251017_015743_487907_CD1ECE94 
+X-CRM114-Status: UNSURE (   9.72  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -72,51 +78,41 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-On Fri, 17 Oct 2025 14:31:06 +0800, Elaine Zhang wrote:
-> Add pvtpll documentation for rockchip.
-> 
-> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
-> ---
->  .../bindings/clock/rockchip,clk-pvtpll.yaml   | 98 +++++++++++++++++++
->  1 file changed, 98 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/clock/rockchip,clk-pvtpll.yaml
-> 
-
-My bot found errors running 'make dt_binding_check' on your patch:
-
-yamllint warnings/errors:
-
-dtschema/dtc warnings/errors:
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/clock/rockchip,clk-pvtpll.example.dtb: pvtpll-core@20480000 (rockchip,rv1126b-core-pvtpll): compatible: ['rockchip,rv1126b-core-pvtpll', 'syscon'] is too long
-	from schema $id: http://devicetree.org/schemas/clock/rockchip,clk-pvtpll.yaml#
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/clock/rockchip,clk-pvtpll.example.dtb: pvtpll-npu@22080000 (rockchip,rv1126b-npu-pvtpll): compatible: ['rockchip,rv1126b-npu-pvtpll', 'syscon'] is too long
-	from schema $id: http://devicetree.org/schemas/clock/rockchip,clk-pvtpll.yaml#
-
-doc reference errors (make refcheckdocs):
-
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20251017063107.1606965-5-zhangqing@rock-chips.com
-
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+CgpIZWxsbyBNYXVk77yMCgpBdCAyMDI1LTEwLTE3IDE1OjU4OjIyLCAiTWF1ZCBTcGllcmluZ3Mi
+IDxtYXVkX3NwaWVyaW5nc0BtdXJlbmEuaW8+IHdyb3RlOgo+SGkgQW5keSwKPgo+PiBGcm9tOiBB
+bmR5IFlhbiA8YW5keS55YW5Acm9jay1jaGlwcy5jb20+Cj4+IAo+PiBBZGQgZW50cnkgZm9yIElu
+bm9zaWxpY29uIGhkbWkgYnJpZGdlIGxpYnJhcnkKPj4gCj4+IFNpZ25lZC1vZmYtYnk6IEFuZHkg
+WWFuIDxhbmR5LnlhbkByb2NrLWNoaXBzLmNvbT4KPj4gLS0tCj4+IAo+PiAobm8gY2hhbmdlcyBz
+aW5jZSB2MSkKPj4gCj4+ICBNQUlOVEFJTkVSUyB8IDggKysrKysrKysKPj4gIDEgZmlsZSBjaGFu
+Z2VkLCA4IGluc2VydGlvbnMoKykKPj4gCj4+IGRpZmYgLS1naXQgYS9NQUlOVEFJTkVSUyBiL01B
+SU5UQUlORVJTCj4+IGluZGV4IGY5Zjk4NWM3ZDc0NzkuLjBhZGNmYjFjMjY0YTEgMTAwNjQ0Cj4+
+IC0tLSBhL01BSU5UQUlORVJTCj4+ICsrKyBiL01BSU5UQUlORVJTCj4+IEBAIC0xMjI5OSw2ICsx
+MjI5OSwxNCBAQCBNOglTYW11ZWwgSG9sbGFuZCA8c2FtdWVsQHNob2xsYW5kLm9yZz4KPj4gIFM6
+CU1haW50YWluZWQKPj4gIEY6CWRyaXZlcnMvcG93ZXIvc3VwcGx5L2lwNXh4eF9wb3dlci5jCj4+
+ICAKPj4gK0lOTk9TSUxJQ09OIEhETUkgQlJJREdFIERSSVZFUgo+PiArTToJQW5keSBZYW4gPGFu
+ZHkueWFuQHJvY2stY2hpcHMuY29tPgo+PiArTDoJZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9w
+Lm9yZwo+PiArUzoJTWFpbnRhaW5lZAo+PiArVDoJZ2l0IGh0dHBzOi8vZ2l0bGFiLmZyZWVkZXNr
+dG9wLm9yZy9kcm0vbWlzYy9rZXJuZWwuZ2l0Cj4+ICtGOglkcml2ZXJzL2dwdS9kcm0vYnJpZGdl
+L2lubm8taGRtaS5jCj4+ICtGOglpbmNsdWRlL2RybS9icmlkZ2UvaW5ub19oZG1pLmgKPj4gKwo+
+PiAgSU5PVElGWQo+PiAgTToJSmFuIEthcmEgPGphY2tAc3VzZS5jej4KPj4gIFI6CUFtaXIgR29s
+ZHN0ZWluIDxhbWlyNzNpbEBnbWFpbC5jb20+Cj4+IC0tIAo+PiAyLjQzLjAKPgo+SSBiZWxpZXZl
+IHRoaXMgcGF0Y2ggc2hvdWxkIGJlIHNxdWFzaGVkIGludG8gdGhlIHBhdGNoIHRoYXQgYWN0dWFs
+bHkgCj5jcmVhdGVzIHRoZSBmaWxlcyBsaXN0ZWQgaW4gdGhlIE1BSU5UQUlORVJTIGVudHJ5LCBs
+aWtlIEkgZG8gaGVyZSBbMV0uIAo+Q2hlY2twYXRjaCBzaG91bGQgYmUgY29tcGxhaW5pbmcgYWJv
+dXQgcGF0Y2ggWzEvMl0gaWYgSSdtIG5vdCBtaXN0YWtlbiwgCj53aGVuIHlvdSBydW4gYGI0IHBy
+ZXAgLS1jaGVja2AuCgpXZSB0YWxrZWQgYWJvdXQgc29tZXRoaW5nIHNpbWlsYXIgaGVyZVsyXe+8
+mgpNYXhpbWUgYmVsaWV2ZXMgdGhleSBzaG91bGQgYmUgc2VwYXJhdGUgcGF0Y2hlcywgCkFuZCBJ
+J3ZlIHNlZW4gbWFueSBtZXJnZWQgY29tbWl0cyBpbiB0aGUga2VybmVsIGFyZSBhbHNvIGhhbmRs
+ZSBNQUlOVEFJTkVSUyBlbnRyeSBhcyBzZXBhcmF0ZSBwYXRjaGVzCgoKWzJdaHR0cHM6Ly9sb3Jl
+Lmtlcm5lbC5vcmcvbGludXgtcm9ja2NoaXAvM3lncW5qNGlkZXk3dTRtN2x0bHY3cG5maGtrdmNl
+cG1wZmRpamRzemN0YWVvcHEza3lAcXRlZzMzY29tamwzLwoKPgo+TGluazogCj5odHRwczovL2xv
+cmUua2VybmVsLm9yZy9hbGwvMjAyNTEwMDktbWF4MjUwMTQtdjQtMS02YWRiMmEwYWEzNWZAZ29j
+b250cm9sbC5jb20vIAo+WzFdCj4KPktpbmQgcmVnYXJkcywKPk1hdWQKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBs
+aXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJh
+ZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
