@@ -4,83 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A765CCCD195
-	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Oct 2025 07:58:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A924CCD184
+	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Oct 2025 08:32:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:Subject:References:Cc:To:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=X5lLt6gnNlMJiyAZuejW9Avmdnh7ufUPZHsTm1S9R0w=; b=bMqttaVdQaUn+Q
-	0Y+unmfi/TyMMuSS4XZavMBHQIMWRMXsYxySaO9piDh+XWU9wEFGxSzdFRW7PvtoGKqy778QnmH1F
-	qP3iE5teosKM3XXEltj65PqvGnkg2S/qJx6D/ZcTa/rcFp3xE11UGcHq1cv7M5D5+tJ0ND4rsc51X
-	JdhljWhd/Uh8xp3+KvV6pY/QjuJImu1QqShmpqYWzrPNao0hsY3tvSPOU19KbxBEPc5TS9Mzw8lAC
-	mJ8qMbQddbZw+PORNHEj5hHcWyDzGrrFfz3jDFtFZDY2BXyKPgsbT9xC+OxROqJ4dhkjdzPatkmEC
-	03kju3VfLxwIOy1/aCug==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
+	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=jBNYmxKXhDVRHm7CRf9vdQcW+FCStcrNdUB63zziEzA=; b=4MITl7MDxhIxh4vcQHWKvXXJYv
+	jzHrXfFCY86FxaOWCc5iVz5BQ7NZ7/D/E0l2ew/eV27U0hNS5VihPecuWWzbVztsaMVvLLZdoGy18
+	3MkNVj+0HX7KVMuKvJad7vbwIvsJfIXnyWSABn0tUeGDvYEG6GbXaYmwU9pUQEKFVFRij6qOjG/5Q
+	hoOvhFWKmMAOMeC0CCd1fNtbZB63mm73bQmAoWGi4ZOboz6DkFQGS+IZ7yJjY62VX6I4PQCkMFf+Z
+	ZoZzis+Xf0PAe1aHt/6MevC/dFQLF7ouIAicvpjOgSaEaeziHQV/arEXu+eCQC3WeVdh5L007TZJA
+	Xh+3sYzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9fMC-000000071X5-1gFq;
-	Fri, 17 Oct 2025 07:58:36 +0000
-Received: from mail3.ecloud.global ([135.181.139.185])
+	id 1v9fsO-0000000750d-32qx;
+	Fri, 17 Oct 2025 08:31:52 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9fM9-000000071W8-3QTg;
-	Fri, 17 Oct 2025 07:58:35 +0000
-Received: from authenticated-user (mail3.ecloud.global [127.0.0.1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mail3.ecloud.global (Postfix) with ESMTPSA id AEBAD8844C7;
-	Fri, 17 Oct 2025 07:58:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=murena.io; s=mail3;
-	t=1760687904;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=5+N/g+Cv9kWgSOuIgoyJn0tjR7NN022I4B62iu5cZoI=;
-	b=Bwe+9CcyUwQRoVsGFfIVFX7RAtwlIiFEUdlhv3ANwuLFytOkKmG5tMD3H6j/XdnEZGik/z
-	L0h0EfmDWuHP/7ytSuLPFEmLJ9P6vVpjHa0TaDtq0Kpmys0p9oR2p0SHL+/9++d5c0P+Bs
-	xTonHHy3cApXXPbD6tCP/sUxOQR4Q0g=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=murena.io;
-	s=mail3; t=1760687904;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=5+N/g+Cv9kWgSOuIgoyJn0tjR7NN022I4B62iu5cZoI=;
-	b=h7XC6EJLNOSr2xCjrKKvzFpTGgC37z8vwGGUEz/yDpwgEM1EFv9ihoX3mWMEs1aZkf1kCW
-	R0/HMKBPOAB88wj5s+pWSl9MJOGGWxCIgq/E0UUExaxLNmyFtIqGxTxHrf1GT0EaXhyeBJ
-	g6KWr2MOYwx31wQ3kzXnhqg6IeYx7yU=
-ARC-Authentication-Results: i=1;
-	mail3.ecloud.global;
-	auth=pass smtp.mailfrom=maud_spierings@murena.io
-ARC-Seal: i=1; s=mail3; d=murena.io; t=1760687904; a=rsa-sha256; cv=none;
-	b=0j0ePx5LqN5bNtXIaCR6iUppWGVksPuWjcEHiLwqt4vi9w6bXwRmsly/cu1e1ko/x/TcZ1
-	rYi2dNWvWgPA6dPOrjf4/OPq/tmcAMEzh45RF3rfArefZ4yrUBvzmxJVntRIKbNGMQ4Cum
-	jWmVbmTk3idqcDHnOavdiktfS2fua0Q=
-Message-ID: <040d8fe8-da2f-4aa5-a2c3-1aec0cf2e8f0@murena.io>
-Date: Fri, 17 Oct 2025 09:58:22 +0200
+	id 1v9fsL-000000074zX-1TeA;
+	Fri, 17 Oct 2025 08:31:50 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 489ED455C6;
+	Fri, 17 Oct 2025 08:31:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id ED015C4CEE7;
+	Fri, 17 Oct 2025 08:31:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1760689908;
+	bh=8JUiOrjDfOdA/96I1n2RoxKgJNH0r2C48Z5YYltnGhg=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=bSxYK2kDJV4zgONmPeuPitDLrbENAOcdwhHNI9fk2w0/zI5It/AVh5B3m2jkhK9S7
+	 geXRz55eImzmjpiK8aUGHgF8yVZhmi8zxkgihRCKnMIWmnCqMFPZMUomGx2keiu7H5
+	 TDWkfMaZgaKdT5MHSOx2Hxdy4ZoLUQGuBSytAwCdaVRGR9t5WY96tAUTsNsARIPvc4
+	 OW4xweUoJtc4gGXNhSkQg3OxGtfijv6DD9W0NDlgC8MimW8fVppaqm3rUS8FdJehf2
+	 nb8B/nVLpIqWKO4ZekSXkLFbOnMNF3onDdBkYeo+s/ZbYRqUkKh5JIYy6wGz8qdH3n
+	 6benPmRb8/eoA==
+Date: Fri, 17 Oct 2025 03:31:46 -0500
 MIME-Version: 1.0
-To: andyshrk@163.com
-Cc: Laurent.pinchart@ideasonboard.com, andrzej.hajda@intel.com,
- andy.yan@rock-chips.com, devicetree@vger.kernel.org,
- dmitry.baryshkov@oss.qualcomm.com, dri-devel@lists.freedesktop.org,
- heiko@sntech.de, jernej.skrabec@gmail.com, jonas@kwiboo.se,
- knaerzche@gmail.com, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- maarten.lankhorst@linux.intel.com, mripard@kernel.org,
- neil.armstrong@linaro.org, rfoss@kernel.org, simona@ffwll.ch,
- tzimmermann@suse.de
-References: <20251016083843.76675-3-andyshrk@163.com>
-Subject: Re: [PATCH v8 2/2] MAINTAINERS: Add entry for Innosilicon hdmi bridge
- library
-Content-Language: en-US
-From: Maud Spierings <maud_spierings@murena.io>
-In-Reply-To: <20251016083843.76675-3-andyshrk@163.com>
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: sugar.zhang@rock-chips.com, krzysztof.kozlowski+dt@linaro.org, 
+ linux-arm-kernel@lists.infradead.org, heiko@sntech.de, 
+ mturquette@baylibre.com, conor+dt@kernel.org, huangtao@rock-chips.com, 
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+ linux-clk@vger.kernel.org, sboyd@kernel.org, devicetree@vger.kernel.org
+To: Elaine Zhang <zhangqing@rock-chips.com>
+In-Reply-To: <20251017063107.1606965-5-zhangqing@rock-chips.com>
+References: <20251017063107.1606965-1-zhangqing@rock-chips.com>
+ <20251017063107.1606965-5-zhangqing@rock-chips.com>
+Message-Id: <176068990653.1336490.3635831064787473495.robh@kernel.org>
+Subject: Re: [PATCH v2 4/5] dt-bindings: clock: Add support for rockchip
+ pvtpll
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251017_005834_331954_0E9063EA 
-X-CRM114-Status: GOOD (  14.93  )
+X-CRM114-CacheID: sfid-20251017_013149_427461_2F3C58CC 
+X-CRM114-Status: UNSURE (   9.77  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,58 +72,49 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Andy,
 
-> From: Andy Yan <andy.yan@rock-chips.com>
+On Fri, 17 Oct 2025 14:31:06 +0800, Elaine Zhang wrote:
+> Add pvtpll documentation for rockchip.
 > 
-> Add entry for Innosilicon hdmi bridge library
-> 
-> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
 > ---
+>  .../bindings/clock/rockchip,clk-pvtpll.yaml   | 98 +++++++++++++++++++
+>  1 file changed, 98 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/clock/rockchip,clk-pvtpll.yaml
 > 
-> (no changes since v1)
-> 
->  MAINTAINERS | 8 ++++++++
->  1 file changed, 8 insertions(+)
-> 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index f9f985c7d7479..0adcfb1c264a1 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -12299,6 +12299,14 @@ M:	Samuel Holland <samuel@sholland.org>
->  S:	Maintained
->  F:	drivers/power/supply/ip5xxx_power.c
->  
-> +INNOSILICON HDMI BRIDGE DRIVER
-> +M:	Andy Yan <andy.yan@rock-chips.com>
-> +L:	dri-devel@lists.freedesktop.org
-> +S:	Maintained
-> +T:	git https://gitlab.freedesktop.org/drm/misc/kernel.git
-> +F:	drivers/gpu/drm/bridge/inno-hdmi.c
-> +F:	include/drm/bridge/inno_hdmi.h
-> +
->  INOTIFY
->  M:	Jan Kara <jack@suse.cz>
->  R:	Amir Goldstein <amir73il@gmail.com>
-> -- 
-> 2.43.0
 
-I believe this patch should be squashed into the patch that actually 
-creates the files listed in the MAINTAINERS entry, like I do here [1]. 
-Checkpatch should be complaining about patch [1/2] if I'm not mistaken, 
-when you run `b4 prep --check`.
+My bot found errors running 'make dt_binding_check' on your patch:
 
-Link: 
-https://lore.kernel.org/all/20251009-max25014-v4-1-6adb2a0aa35f@gocontroll.com/ 
-[1]
+yamllint warnings/errors:
 
-Kind regards,
-Maud
+dtschema/dtc warnings/errors:
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/clock/rockchip,clk-pvtpll.example.dtb: pvtpll-core@20480000 (rockchip,rv1126b-core-pvtpll): compatible: ['rockchip,rv1126b-core-pvtpll', 'syscon'] is too long
+	from schema $id: http://devicetree.org/schemas/clock/rockchip,clk-pvtpll.yaml#
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/clock/rockchip,clk-pvtpll.example.dtb: pvtpll-npu@22080000 (rockchip,rv1126b-npu-pvtpll): compatible: ['rockchip,rv1126b-npu-pvtpll', 'syscon'] is too long
+	from schema $id: http://devicetree.org/schemas/clock/rockchip,clk-pvtpll.yaml#
+
+doc reference errors (make refcheckdocs):
+
+See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20251017063107.1606965-5-zhangqing@rock-chips.com
+
+The base for the series is generally the latest rc1. A different dependency
+should be noted in *this* patch.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit after running the above command yourself. Note
+that DT_SCHEMA_FILES can be set to your schema file to speed up checking
+your schema. However, it must be unset to test all examples with your schema.
+
 
 _______________________________________________
 Linux-rockchip mailing list
