@@ -4,65 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7E29CCD184
-	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Oct 2025 06:58:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E11CECCD184
+	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Oct 2025 07:31:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=39cklMqAizG6Lmhce33y0wmedhbmLO2LsVCuy2aiPZs=; b=UOSIIyDja7RZBk
-	xvPWYOFDFVPAd9k2q+RZp5VWplud5tbPkW1Uo3MiHej/4MTbhW8pLA5S6pc7MV7jezmPvVI7zuj6E
-	l6GzcSvNtC8QhlgnOaZykv2lvTNRGJQnpuoZGasD557NCpoIhRE86dlU7TEmcODDzOxNeyl+qPg9u
-	nkho2cYtfqrz/uaj3iW4W/yPFtlOi2HJPYJMFXKH4Yvfcc6KYIkgcku9f46RsqNw2hZ7ojreuSPs5
-	AB/pPMGz9COx0NFr4wX2edtV7B1E2rpi38c5gzyUhXlEKllhpF9LJw0xo4C4gAZJ0OCkG6jvmGcvS
-	yW0y9OnWge5wzUC5sc6w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:To:From:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=+ORi1V1BRbuWotPwDpnXmEXM1zbSCuK3BWybt+DWud4=; b=zmDRFyOws+CU4b
+	m/YCaGOWKKvXyYrHbyNjKTUD9c3fKJQ9R4ayX1P7U3MAAHyLz5qt3ZlmlePddRUqmn7dtkb2W57ac
+	n3ictJh8vg06HRpBa7K0b1uUsrnbWF0Rd5z4niiO04wajwQED4quhf4tmLwkxU5l51Mt6/TlZHcI7
+	r7YWXbRTp44peeWXz4+ckKSTzNGuRmUyE9zwEkNjhO7JujozHuqCKhu/uCuBN1xW595G/QoS8sVXu
+	IN/Zs4lYejlkU95EQTGNs4s9VAiJ/dW8FlM8aiXt/Q2/va5fyS/4JlDCuKUcYig8gPngdWguwvr3a
+	8wZPXA1AOHA8g+ZbViLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9ePy-00000006uDg-3EeZ;
-	Fri, 17 Oct 2025 06:58:26 +0000
-Received: from mail-m19731100.qiye.163.com ([220.197.31.100])
+	id 1v9ew7-00000006y1z-0NQo;
+	Fri, 17 Oct 2025 07:31:39 +0000
+Received: from mail.ventrixor.pl ([91.134.88.136])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9ePx-00000006uAm-0UkS;
-	Fri, 17 Oct 2025 06:58:26 +0000
-Received: from xf.. (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 263eafd29;
-	Fri, 17 Oct 2025 14:58:21 +0800 (GMT+08:00)
-From: Finley Xiao <finley.xiao@rock-chips.com>
-To: heiko@sntech.de
-Cc: robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	ulf.hansson@linaro.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-pm@vger.kernel.org,
-	zhangqing@rock-chips.com,
-	sugar.zhang@rock-chips.com,
-	Finley Xiao <finley.xiao@rock-chips.com>
-Subject: [PATCH v3 2/2] pmdomain: rockchip: Add support for RV1126B
-Date: Fri, 17 Oct 2025 14:56:46 +0800
-Message-ID: <20251017065646.320643-3-finley.xiao@rock-chips.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20251017065646.320643-1-finley.xiao@rock-chips.com>
-References: <20251017065646.320643-1-finley.xiao@rock-chips.com>
+	id 1v9ew4-00000006y1f-491f
+	for linux-rockchip@lists.infradead.org;
+	Fri, 17 Oct 2025 07:31:38 +0000
+Received: by mail.ventrixor.pl (Postfix, from userid 1002)
+	id 3F9B125955; Fri, 17 Oct 2025 07:31:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ventrixor.pl; s=mail;
+	t=1760686285; bh=Pi9+p40l7//vLKO8DuYTv+ORJz3B9aWETGdVOxLyydc=;
+	h=Date:From:To:Subject:From;
+	b=beW8W3z/HwliR6x6uhXcuZg6bOw/uOSre1lBQky0MHduxiczabXwTt3QQFpTDacsl
+	 WeCVzTiks+5Opay1L5gdhbsJMvUCYnHsklSXZuEXX8kyqgoY03YOegVX06ps2imz50
+	 CP6pcljnR8Lic2mpI/ImtnXvZef4aw/MOiUjQelXf1GTmrCY7IqCewYRELyDkA3cmV
+	 nUFlw4pCR208uKnir+mmkts7tJQiHl2idnFv+u4iFmG5q7V+gJyyU5LG3zZqb7TNOL
+	 u5GDfCa7WSHwrrdlad0APL83NoCiPay/hzZS9kqGGhc+T4nkfmzjDSMqrxPH/DU1DA
+	 WDwZmYSN3TRCw==
+Received: by mail.ventrixor.pl for <linux-rockchip@lists.infradead.org>; Fri, 17 Oct 2025 07:31:09 GMT
+Message-ID: <20251017064500-0.1.a2.290u6.0.nljdfjp4l1@ventrixor.pl>
+Date: Fri, 17 Oct 2025 07:31:09 GMT
+From: "Jan Adamczyk" <jan.adamczyk@ventrixor.pl>
+To: <linux-rockchip@lists.infradead.org>
+Subject: Rekrutacja handlowca 
+X-Mailer: mail.ventrixor.pl
 MIME-Version: 1.0
-X-HM-Tid: 0a99f0f65e1403a9kunmca707a4712448d
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGhofQ1ZMGhpNGEtDQkkeS0pWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=L0UBp0++FJ2reLvUj/7YrSIEYufL3GZhZ3vLVLXddZ6C4b5lZXYC6ttnIj29Gqd4tv+78H0OvUxNW8zOvJ/wqWje6uuD+F968w8mAtUaDS3xJyzlRieb5Ts6PmYqBkeHWc5S+/R1hJkGhiPjnGtD3zg1JUTnw4KNKDQNYab2ZnU=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=DAzFTU/MPkNJze0jgQJtJnOyq06axZG1FGEYccrKKHs=;
-	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251016_235825_316007_BA7BFF4F 
-X-CRM114-Status: GOOD (  10.40  )
+X-CRM114-CacheID: sfid-20251017_003137_289479_A184F214 
+X-CRM114-Status: UNSURE (   0.98  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,118 +61,17 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add configuration and power domains for RV1126 SoC.
-
-Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
----
-
-Changes in v3: None
-
-Changes in v2:
-- rename AISP to AIISP
-- collect review tag
-
- drivers/pmdomain/rockchip/pm-domains.c | 41 ++++++++++++++++++++++++++
- 1 file changed, 41 insertions(+)
-
-diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/rockchip/pm-domains.c
-index 1955c6d453e4..281a76947a08 100644
---- a/drivers/pmdomain/rockchip/pm-domains.c
-+++ b/drivers/pmdomain/rockchip/pm-domains.c
-@@ -25,6 +25,7 @@
- #include <soc/rockchip/rockchip_sip.h>
- #include <dt-bindings/power/px30-power.h>
- #include <dt-bindings/power/rockchip,rv1126-power.h>
-+#include <dt-bindings/power/rockchip,rv1126b-power.h>
- #include <dt-bindings/power/rk3036-power.h>
- #include <dt-bindings/power/rk3066-power.h>
- #include <dt-bindings/power/rk3128-power.h>
-@@ -137,6 +138,20 @@ struct rockchip_pmu {
- 	.active_wakeup = wakeup,			\
- }
- 
-+#define DOMAIN_M_G(_name, pwr, status, req, idle, ack, g_mask, wakeup, keepon)	\
-+{							\
-+	.name = _name,					\
-+	.pwr_w_mask = (pwr) << 16,			\
-+	.pwr_mask = (pwr),				\
-+	.status_mask = (status),			\
-+	.req_w_mask = (req) << 16,			\
-+	.req_mask = (req),				\
-+	.idle_mask = (idle),				\
-+	.ack_mask = (ack),				\
-+	.clk_ungate_mask = (g_mask),			\
-+	.active_wakeup = wakeup,			\
-+}
-+
- #define DOMAIN_M_G_SD(_name, pwr, status, req, idle, ack, g_mask, mem, wakeup, keepon)	\
- {							\
- 	.name = _name,					\
-@@ -205,6 +220,9 @@ struct rockchip_pmu {
- #define DOMAIN_RV1126(name, pwr, req, idle, wakeup)		\
- 	DOMAIN_M(name, pwr, pwr, req, idle, idle, wakeup)
- 
-+#define DOMAIN_RV1126B(name, pwr, req, wakeup)			\
-+	DOMAIN_M_G(name, pwr, pwr, req, req, req, req, wakeup, true)
-+
- #define DOMAIN_RK3288(name, pwr, status, req, wakeup)		\
- 	DOMAIN(name, pwr, status, req, req, (req) << 16, wakeup)
- 
-@@ -1104,6 +1122,13 @@ static const struct rockchip_domain_info rv1126_pm_domains[] = {
- 	[RV1126_PD_USB]		= DOMAIN_RV1126("usb", BIT(9), BIT(15), BIT(15),  false),
- };
- 
-+static const struct rockchip_domain_info rv1126b_pm_domains[] = {
-+					      /* name     pwr     req      wakeup */
-+	[RV1126B_PD_NPU]	= DOMAIN_RV1126B("npu",   BIT(0), BIT(8),  false),
-+	[RV1126B_PD_VDO]	= DOMAIN_RV1126B("vdo",   BIT(1), BIT(9),  false),
-+	[RV1126B_PD_AIISP]	= DOMAIN_RV1126B("aiisp", BIT(2), BIT(10), false),
-+};
-+
- static const struct rockchip_domain_info rk3036_pm_domains[] = {
- 	[RK3036_PD_MSCH]	= DOMAIN_RK3036("msch", BIT(14), BIT(23), BIT(30), true),
- 	[RK3036_PD_CORE]	= DOMAIN_RK3036("core", BIT(13), BIT(17), BIT(24), false),
-@@ -1516,6 +1541,18 @@ static const struct rockchip_pmu_info rv1126_pmu = {
- 	.domain_info = rv1126_pm_domains,
- };
- 
-+static const struct rockchip_pmu_info rv1126b_pmu = {
-+	.pwr_offset = 0x210,
-+	.status_offset = 0x230,
-+	.req_offset = 0x110,
-+	.idle_offset = 0x128,
-+	.ack_offset = 0x120,
-+	.clk_ungate_offset = 0x140,
-+
-+	.num_domains = ARRAY_SIZE(rv1126b_pm_domains),
-+	.domain_info = rv1126b_pm_domains,
-+};
-+
- static const struct of_device_id rockchip_pm_domain_dt_match[] = {
- 	{
- 		.compatible = "rockchip,px30-power-controller",
-@@ -1585,6 +1622,10 @@ static const struct of_device_id rockchip_pm_domain_dt_match[] = {
- 		.compatible = "rockchip,rv1126-power-controller",
- 		.data = (void *)&rv1126_pmu,
- 	},
-+	{
-+		.compatible = "rockchip,rv1126b-power-controller",
-+		.data = (void *)&rv1126b_pmu,
-+	},
- 	{ /* sentinel */ },
- };
- 
--- 
-2.43.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+V2l0YW0sCgpDenkgbWFqxIUgUGHFhHN0d2EgYWt0dWFsbmllIHBvdHJ6ZWJ5IHogemFrcmVzdSBy
+ZWtydXRhY2ppIG9zw7NiIGRvIGR6aWHFgnUgaGFuZGxvd2Vnbz8gCgpQb21hZ2FteSBza3V0ZWN6
+bmllIHJla3J1dG93YcSHIG9zb2J5IG5hIHN0YW5vd2lza2EgUHJ6ZWRzdGF3aWNpZWxhIEhhbmRs
+b3dlZ28sIFNhbGVzIE1hbmFnZXJhLCBhIHRha8W8ZSBLYWRyeSBNYW5hZ2Vyc2tpZWogdyBvYnN6
+YXJ6ZSBzcHJ6ZWRhxbx5LgoKQ3p5IG1vxbxlbXkgcG9yb3ptYXdpYcSHPyAKCgpQb3pkcmF3aWFt
+CkphbiBBZGFtY3p5awoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmlu
+ZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9s
+aW51eC1yb2NrY2hpcAo=
