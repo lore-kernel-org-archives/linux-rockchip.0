@@ -4,109 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5B3FCCD184
-	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Oct 2025 05:18:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D09CCCD195
+	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Oct 2025 06:31:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7tJMb/PeQzBCvbhHvOkcGrSYnXOxvj4e464rEIgYp0Y=; b=mG4UpCFOK6lPpX
-	mzJIyeie6jKwK7z6qLc8/YeHWz9KcEHAVuaCh6Egm1X6Im1KOOBB6RKQYkWAkG2B5fSZXO/ck0J0F
-	9iAJhvVbjPjnRDDuJIkj8TC7wqtMUhenJt7SNndm61zdBeBbA46w87noAoWmYFgySIVTphs8smlzy
-	rtW7ZgSRS00FeWilJ4PdQV5915GYBWT+64spluOfgu8iHKOz7rnExEiAEa0EQZI/rhDdH09Ie5y90
-	0LV2F5Jvk/Izt4OYcP3oV0ySkAClOwuhuRpFqLX6B5ANAfjOlt3l5lFpcGZ8rAQoKFhPbsR6clN0y
-	rYD+YveH1l6EzsJrU36g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=IxwQTyUJPG3P6hlD0hhgkpCOJfS7uRBIG5BON3DojG4=; b=Bs5FzAQFWQY2W5
+	USlSK3Xlh/Z9c32ab5hTiox46gesj1ahGYAzb5Q8/L9KyaRJNvRAyntE6XhAp2+KF2ASWHPksQU0F
+	KHjPnsp5MAkX/+9d7WKErUDPWUyccg2uxonqfwuir4Zu/Nh7f8dfOlcI4UvaOTJLThrG0AeXJ6Pmj
+	H0yk2eaN7xKqYFRi2sIZ4hqzccsCohlkrpqqP7BhC71JAtEiWDl3FkJOUo4kqdX10rxycpN6SwQyr
+	BodSRfv5WD+TygnrQQ98D5PY+j3vxR6l13GZFzrXQh65+oISVo5co9b855cMoDlv0zYtAmr/sWhVs
+	yCxgQ0BJI+Dj3ady57EA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9crW-00000006bhy-418h;
-	Fri, 17 Oct 2025 05:18:46 +0000
-Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
+	id 1v9dzk-00000006mpP-2cWB;
+	Fri, 17 Oct 2025 06:31:20 +0000
+Received: from mail-m49194.qiye.163.com ([45.254.49.194])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9crU-00000006bgS-0hye
-	for linux-rockchip@lists.infradead.org;
-	Fri, 17 Oct 2025 05:18:45 +0000
-Received: by mail-pf1-x430.google.com with SMTP id d2e1a72fcca58-781001e3846so1487508b3a.2
-        for <linux-rockchip@lists.infradead.org>; Thu, 16 Oct 2025 22:18:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1760678323; x=1761283123; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=l6S63uReOFquePjk+el+IDhyWrHQTPL8Zy49l1W17no=;
-        b=fn9pUa1+NX5CQG1g2GuzdLtXFzqBVEVeMFF8eqQOCixb3EoL04Zcns8y/eo/M4mwxg
-         F5Y3ls7ZoNEsVJxKZLvkB70ABSMcwUUH1JXj71ZdJ9KJe7cgnvl61MmJ1MBSMBquPwD2
-         2C6BRpc1xf/i5yq8E2TASZx6/FdZxz02rpmwQyIbF5fv0MZlLieb90JnMSamwZvl6QDb
-         BMQyHGw9+jyfqVUuHmASn1L+zpuBB5qXvtnfaqOpkSJ6uxyufx07JWNlSsHebtFu7xhI
-         92PpkDmOWkVBGqu1pxT8CXSb6rAtB8+gRnEW4rdbgjSntUCm0/ZgkaETD2fFyaVz6uVW
-         xe9A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1760678323; x=1761283123;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=l6S63uReOFquePjk+el+IDhyWrHQTPL8Zy49l1W17no=;
-        b=rcJ4U/2v4upMbEs3q5Bzh28a2zlW2cQvbnVLrYSK/4zWQYzTBjEGXCOLy4WYj8klPj
-         sosNz5pUM2kOzKDQGMIt+vnTJKNnU+zkKJ33DMiKK7AFP3s5dZBMJO1dcYX7DyKIULUb
-         QBkatlp646L/4YQHQiWrtwd0oM+3Q6abLg4zWn+8Z7U3Mk+bjdoGhQXgm6z4ND4TjBBo
-         +FK9FbtucRMFynvoddj7zDPon/lRpb01HNvSxvQQ4QYta0HKN5+aMfoqsWUZ4z7OTxdP
-         2isi0s1e34x1i74yanYS6e8adTrw0JF8Inq/2e7RpB9rYND6QDlw7bn4+prb2IoMFuRS
-         fVQQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWogkRO8T8mehpYa/+nUMWLJUjgzkByruFJGO0OUgBA3c3AqpmDZi4qIr+VDXeYrj4VNvt6q88tShM73uWapw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyiBM6h1ZigVIYNOOPATMPssjeClnDmPv5pQfnHW9LnWiOx8z84
-	/WVSMe5sgC4IwcmrjbIO5j4G2EX1YXXHx8CzT6lzzbIBWFHDq+Ib/pjY
-X-Gm-Gg: ASbGncvUrXGt+qEDzX1MF8/E5v1rz1xb7+aNE9/PIVidgcdMi1dks9NZAORcTAwNGF2
-	mKHIiZPvCu+TYhYSmf+thE3v/BdPHDghRLNqitWelI8m6QuTqGr7GQ+xmDmg4oluFIdjUVicW8n
-	9AzBzGB1JegCxQZcfaG+44VELRIPsnd636D9kBTNIQN1EdJU8qlUJzHk3zKTYI2VbLU3QJQyAkl
-	gXqdkPZt0tn66KNEkNwe2CryXTHkSgb971gjbjIP5X53TBBH3sFLiHvKw6JmVfrY1uPyiXS4S2e
-	NxyT+yQA9jV+wgR7f0xFljyl9unVdBQ7CMMt8klicw4ldKzWaJYNycywmQOLFJ1u0pq95gQuXBo
-	e4eACY5Cc8UKQ/NzbNbDLdati59ny4s52Pp2AXuT4QTHm1OncZuZScJ1b92RtDIFNH8HEYM7w5B
-	mvHoisLZWQfy1LkAINeTTRKIrHtxIt4BofTR/6ucabxRGR37fgOS4=
-X-Google-Smtp-Source: AGHT+IEoZYavaM7njBnG3D3Z+hduFKNotyz+5aU6kPX8BleR1uI1Sy5GSDkuztm0nYl05g784spRlg==
-X-Received: by 2002:a05:6a20:9185:b0:32d:b946:dd20 with SMTP id adf61e73a8af0-334a8566437mr3249260637.24.1760678322944;
-        Thu, 16 Oct 2025 22:18:42 -0700 (PDT)
-Received: from google.com ([2a00:79e0:2ebe:8:df8a:9eba:d1a8:6b39])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-7992d993853sm24177361b3a.74.2025.10.16.22.18.40
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 16 Oct 2025 22:18:42 -0700 (PDT)
-Date: Thu, 16 Oct 2025 22:18:38 -0700
-From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-To: Ricardo Ribalda <ribalda@chromium.org>
-Cc: Linus Walleij <linus.walleij@linaro.org>, 
-	Mauro Carvalho Chehab <mchehab@kernel.org>, Hans Verkuil <hverkuil@kernel.org>, 
-	Sakari Ailus <sakari.ailus@linux.intel.com>, Krzysztof =?utf-8?Q?Ha=C5=82asa?= <khalasa@piap.pl>, 
-	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, Leon Luo <leonl@leopardimaging.com>, 
-	Kieran Bingham <kieran.bingham@ideasonboard.com>, Jacopo Mondi <jacopo+renesas@jmondi.org>, 
-	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, 
-	Niklas =?utf-8?Q?S=C3=B6derlund?= <niklas.soderlund+renesas@ragnatech.se>, Julien Massot <julien.massot@collabora.com>, 
-	Jacopo Mondi <jacopo@jmondi.org>, Daniel Scally <djrscally@gmail.com>, 
-	Dave Stevenson <dave.stevenson@raspberrypi.com>, Benjamin Mugnier <benjamin.mugnier@foss.st.com>, 
-	Sylvain Petinot <sylvain.petinot@foss.st.com>, Yong Zhi <yong.zhi@intel.com>, Bingbu Cao <bingbu.cao@intel.com>, 
-	Tianshu Qiu <tian.shu.qiu@intel.com>, Tiffany Lin <tiffany.lin@mediatek.com>, 
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Rui Miguel Silva <rmfrfs@gmail.com>, 
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Martin Kepplinger <martink@posteo.de>, 
-	Purism Kernel Team <kernel@puri.sm>, Shawn Guo <shawnguo@kernel.org>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
-	Fabio Estevam <festevam@gmail.com>, Dafna Hirschfeld <dafna@fastmail.com>, 
-	Heiko Stuebner <heiko@sntech.de>, Sylwester Nawrocki <s.nawrocki@samsung.com>, 
-	Krzysztof Kozlowski <krzk@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
-	Yemike Abhilash Chandra <y-abhilashchandra@ti.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	linux-input@vger.kernel.org, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, imx@lists.linux.dev, 
-	linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-samsung-soc@vger.kernel.org, linux-staging@lists.linux.dev
-Subject: Re: [PATCH 01/32] Input: cyttsp5 - Use %pe format specifier
-Message-ID: <xirb6664gow5ldjy7xihkz2wooidbm4bsyl7qrm2uosdybdki7@mqkdqzeznx6h>
-References: <20251013-ptr_err-v1-0-2c5efbd82952@chromium.org>
- <20251013-ptr_err-v1-1-2c5efbd82952@chromium.org>
+	id 1v9dzg-00000006mli-2SP2;
+	Fri, 17 Oct 2025 06:31:19 +0000
+Received: from rockchip.. (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 263d85163;
+	Fri, 17 Oct 2025 14:31:09 +0800 (GMT+08:00)
+From: Elaine Zhang <zhangqing@rock-chips.com>
+To: mturquette@baylibre.com,
+	sboyd@kernel.org,
+	sugar.zhang@rock-chips.com,
+	zhangqing@rock-chips.com,
+	heiko@sntech.de,
+	robh@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	conor+dt@kernel.org
+Cc: devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-clk@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	huangtao@rock-chips.com
+Subject: [PATCH v2 0/5] clk: rockchip: Add clock controller for the RV1126B
+Date: Fri, 17 Oct 2025 14:31:02 +0800
+Message-Id: <20251017063107.1606965-1-zhangqing@rock-chips.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20251013-ptr_err-v1-1-2c5efbd82952@chromium.org>
+X-HM-Tid: 0a99f0dd749003a3kunm5af2b40521c1cf
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGUIYH1YaHRpOTUwaTh5PHkJWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=cnuzAA2YnYc/7WeXNe67MWdEAI4RslvR6hqWPXaNo+JTAKV5AXu1dGw7ChizLd4dsGeWvNszC6CdZ5xFifusCPuahqgkuqMhs/Fh0HcXkYSTNytepcqBQVcg5/wVxfkVU+KhZRR3i2jY4OhWhk/8dMPHsjVNank2WjY+ZPJr5cM=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=/aINBKiM753GDV/mgQ76FLNKFuuq3DWGoIuhWFugFMM=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251016_221844_218825_FF98E515 
-X-CRM114-Status: GOOD (  10.35  )
+X-CRM114-CacheID: sfid-20251016_233117_906933_B01FE5F5 
+X-CRM114-Status: UNSURE (   8.30  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,20 +79,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Oct 13, 2025 at 02:14:41PM +0000, Ricardo Ribalda wrote:
-> The %pe format specifier is designed to print error pointers. It prints
-> a symbolic error name (eg. -EINVAL) and it makes the code simpler by
-> omitting PTR_ERR()
-> 
-> This patch fixes this cocci report:
-> ./cyttsp5.c:927:3-10: WARNING: Consider using %pe to print PTR_ERR()
-> 
-> Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
+Add yaml and dt-bindings for the RV1126B.
 
-Applied, thank you.
+Change in V2:
+[PATCH v2 1/5]: update commit message, rename v2 to multi_pll
+[PATCH v2 2/5]: Modify DT binding headers license
+[PATCH v2 3/5]: update driver
+[PATCH v2 4/5]: fix error
+[PATCH v2 5/5]: update commit message
+
+Elaine Zhang (5):
+  clk: rockchip: Implement rockchip_clk_register_armclk_multi_pll()
+  dt-bindings: clock, reset: Add support for rv1126b
+  clk: rockchip: Add clock controller for the RV1126B
+  dt-bindings: clock: Add support for rockchip pvtpll
+  clk: rockchip: add support for pvtpll clk
+
+ .../bindings/clock/rockchip,clk-pvtpll.yaml   |   98 ++
+ .../bindings/clock/rockchip,rv1126b-cru.yaml  |   52 +
+ drivers/clk/rockchip/Kconfig                  |    7 +
+ drivers/clk/rockchip/Makefile                 |    1 +
+ drivers/clk/rockchip/clk-cpu.c                |  165 +++
+ drivers/clk/rockchip/clk-pvtpll.c             |  925 ++++++++++++++
+ drivers/clk/rockchip/clk-rv1126b.c            | 1105 +++++++++++++++++
+ drivers/clk/rockchip/clk.c                    |   24 +
+ drivers/clk/rockchip/clk.h                    |   83 ++
+ drivers/clk/rockchip/rst-rv1126b.c            |  444 +++++++
+ .../dt-bindings/clock/rockchip,rv1126b-cru.h  |  392 ++++++
+ .../dt-bindings/reset/rockchip,rv1126b-cru.h  |  405 ++++++
+ 12 files changed, 3701 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/clock/rockchip,clk-pvtpll.yaml
+ create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rv1126b-cru.yaml
+ create mode 100644 drivers/clk/rockchip/clk-pvtpll.c
+ create mode 100644 drivers/clk/rockchip/clk-rv1126b.c
+ create mode 100644 drivers/clk/rockchip/rst-rv1126b.c
+ create mode 100644 include/dt-bindings/clock/rockchip,rv1126b-cru.h
+ create mode 100644 include/dt-bindings/reset/rockchip,rv1126b-cru.h
 
 -- 
-Dmitry
+2.34.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
