@@ -4,70 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29367CCD1A7
-	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Oct 2025 16:33:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E21C6CCD199
+	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Oct 2025 16:35:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=eZIi+i68iNcXHuc5eOy80+/tVLks0FjgtDRYQXtTMtw=; b=CGKcBNpIYxvIvD
-	8axFk1Xz1yHfUBFZ5e5bD6dFZweCnjfObyRu2pnOKvamKzc8UtMK0+KmdO0WbKNpYfPRPE1rt9F0M
-	xvqjWkpY2g19S/MaPxnrc9SxAK5wU+4QJGCA/ML4xC3Rab24G1uY7t2L0SUAF/cdtsNdtmaB0eUf0
-	LrbX7wnT3XXN5x3IiOUZCH3xeC6T8/yfMPX0dBnxxPadHxEwINYjoKqKBxcQSelPh5cH7mpgLblh0
-	axvd9KAnK5uvMcBnFw0LP/Q/JyQgsPu+GitpbJTlZRWFc6hC7QPmKkr4rjCkOWKWP6MJGXk0elNz0
-	wTcMg7Oe+di4262tvdeA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=13cAvU3U6r65Fx6RDliCs2bo9f64gaUNmbw2VgefUlI=; b=XWVOoH+kWRWbS5
+	BH2VGGzsxbCqScbNe82B46BjblPizhpAQd5OAS+WQdpN4D0ID2b6XFhc+704EiSVg2FJQqA8YUjTv
+	VN9ajlN2wmTETNFQQctpbGiKO+glSTMhyYlOFPr0tm/q/pdKIHpMbpvrwCrXNngX8NgIaqfheonWJ
+	B4kVJM71bHEetPxISV1eI5NY3pBLdPinlZLn7If67yd/O9o+/FZgU3WOzL9YbHbYbsVvGQBdNoiMa
+	cwg5MbpNMySss0T0Q+HUXZ7y9g/np7kwyyh5uC4JlvtEJiQHLWWyQ9BL7sVtBN+UNgfC0TQmxrvKP
+	8FdL62fNJFKeNI9QavBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9nOD-00000008SOg-1ARH;
-	Fri, 17 Oct 2025 16:33:13 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1v9nPy-00000008SkY-1p2b;
+	Fri, 17 Oct 2025 16:35:02 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9nOB-00000008SOF-2fpw;
-	Fri, 17 Oct 2025 16:33:11 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 0A1AE647C3;
-	Fri, 17 Oct 2025 16:33:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 983EFC4CEE7;
-	Fri, 17 Oct 2025 16:33:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1760718790;
-	bh=YalfQ6bnC/Qus6A8HLxzTaKEuSJ9wI8LHGYjVnhv5QY=;
-	h=From:To:Cc:Subject:Date:From;
-	b=lG+baq3Dhz6Vmz1jp1JEXs4NSNsOPrZQl4adCq/xOwej2OtKACrWjm2vtoSkscOTz
-	 JHk2Jcvbyko4jQtIL+vAGClTCydcexn3cDTasb/04va+Z0D27cpapYvgF70hwdNME6
-	 JOkse1kC1FuejGA6QQcNUQwPHOsgneiaefX9+ZNoVjWv9jS0WSjxHhwf0LFt0g47ln
-	 sYk602lE3Y39bvxrLOJPYZ79xd4P5TtBjJGXaY1yCkxIfv+/fkUrkP249FB/aWdf1P
-	 /c+PxS2fH326e0o0PicmBbnTvhlaCtHncnobVAXOVlWs57zk7CRVAzMmKEGDTiZKdj
-	 At7MZI4ADdBTg==
-From: Niklas Cassel <cassel@kernel.org>
-To: Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	Kever Yang <kever.yang@rock-chips.com>,
-	Simon Xue <xxm@rock-chips.com>
-Cc: Damien Le Moal <dlemoal@kernel.org>,
-	Dragan Simic <dsimic@manjaro.org>,
-	FUKAUMI Naoki <naoki@radxa.com>,
-	Diederik de Haas <diederik@cknow-tech.com>,
-	Niklas Cassel <cassel@kernel.org>,
-	stable@vger.kernel.org,
-	Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>,
-	linux-pci@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH v3] PCI: dw-rockchip: Prevent advertising L1 Substates support
-Date: Fri, 17 Oct 2025 18:32:53 +0200
-Message-ID: <20251017163252.598812-2-cassel@kernel.org>
-X-Mailer: git-send-email 2.51.0
+	id 1v9nPx-00000008Sjt-1c2w
+	for linux-rockchip@bombadil.infradead.org;
+	Fri, 17 Oct 2025 16:35:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=DiU/qRnryf546DyCg24gqS1SHnp8qC1F8SvAGiAg928=; b=NIEi5nsaV/oOjBh4K+wYC4W0Tx
+	fnIXh6VEBa1Y+VWiGGrys75I6y2G7LUV/+yLJPdr3HRyl338uRSXWGLHnyFRqSlGZPGfowPphkBj1
+	A4KuAvPCbg6gWp6ccdLotndJfLEezAgCKBx5W3jB1IhEkVy2Tg1F/cmUh6EUmP8tRWBxM0gL83iU+
+	nXcLPcvv+Mro9flFyq/kmAUfE0p+ZOkAXemTN15KnGS+eN+x3hoEXj1AzggR+Pl0L3LRRMhAUqVU6
+	KEO7DLz9Rdf+RkBfIYzNZkKQtKQ2hDi5ApDf6yc4Q0Fbl9pUNlj+56hRxFxYxHsnwWYJ9rBBpZzmo
+	liVLA63w==;
+Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1v9nPu-00000007lWm-0e75
+	for linux-rockchip@lists.infradead.org;
+	Fri, 17 Oct 2025 16:35:00 +0000
+Received: by mail-pf1-x432.google.com with SMTP id d2e1a72fcca58-7a213c3c3f5so2933877b3a.3
+        for <linux-rockchip@lists.infradead.org>; Fri, 17 Oct 2025 09:34:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1760718895; x=1761323695; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=DiU/qRnryf546DyCg24gqS1SHnp8qC1F8SvAGiAg928=;
+        b=S4lVLhp+EENCsszo9j/sqLPTMLIYRCDymvoBTf0kTrQ60sBSZ+2gbs4VrOGws5AhHm
+         FCZR/1eIbJcQT5bWUnZfpDGUCxO5YVWqW3GePwbd4ZxX8bNgA2unp3tdxCJiPFrTLUwF
+         7TrCF19R2BSEcXJBwaMwWFQxmUCK3gc4v0/qI4hO/CK+BLEHQT6zU7NqCh0SYgBDURvQ
+         YmBOkB9iSaEIDfDP5g17jb7OZeYFMe+fmniYaAXNd495aFZSwmiQ26591qLrDGVrorXe
+         2tK91Dc6d9UoWXkS210ZHIg+orPpu+RbuU7bpnkxhyCdUbktJox6p5gQHxUvLvoe4K31
+         /9sQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1760718895; x=1761323695;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=DiU/qRnryf546DyCg24gqS1SHnp8qC1F8SvAGiAg928=;
+        b=dl3eskcz7H2uexcMueESbQQLZrTIbgGty5gktmnOyynl2k3sZRvwK4ro7L16DIYRwU
+         DHjQzshso0elFWHaPRyoR12SDAFvdks6BDC7RSTbJz7ZRF38g71QADDhRwUd9Tox8cou
+         XarvrpWYJc/3GSOCNzXPMnzEU6kFvHCVGd1HqcOlFiMfHKnB5HviCfDXg9xo99/hEd0/
+         qC6otuLnNnRGTQc4bqvhnKRMzRXETWCqfo4lDXf0mZT/CXnCaiT9x+RZeHdYqbjjuK6+
+         +9nIWsBxRj80g1mkjxfp9eX25b6UclzBAR0tcTHuTqZ8tXJvnwDSNrgwZf/MJIRZlSxQ
+         scNw==
+X-Forwarded-Encrypted: i=1; AJvYcCUfDwc23Mbg2RN8Us1BlmMCw440WddqbduHKHTDklhR64e7AZuZVdf8IpLq4MG/Ik9/y/5D1B6H0rA1z8oa5Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwpyT9zjB36BUqQOY91hT3tLa6W+CnGX3qApccKEKfWXBWsgaKY
+	Lz1oo88sb5y4afr94ODCQrFuNyTIFb6qHvQ22s69axzeIKmvcXYKA9Gj
+X-Gm-Gg: ASbGncuN0eThtNPLn5/8tBVJloDTQTpo8rvpVu41PDvIOONK5yM0k2yRi7CkMMOPi8X
+	IU+TR+YjNN82HjkE+apx6xVPbst0DLyvgJXF8Essh1nwaNQ4trFtViVXNCZlfdzzkoayDfNjDHP
+	wTacJR9DjRLRr1Cw3nhSGxzZikLi2R+DcuvOjtBKE8aCbz/L1+rfjfbahYp2dgAqhTUGK0UFgzI
+	LAAhaZToHKdJ+bTYgAJKpPHZoLtDhb7AyugHhJj6zUdz7jnr1YS/0jj3IrhegSpiyU+WmezpJAu
+	OV94/FNCEw5dbKb8d9MFIJ9t4yDLi0GVe1DLADQSoWPjUhKqHl0xwrNwFpgUMUtqwy3HbVjUJCW
+	cxDMzlVpoPQkh9pxxrvfUrPhyrzX2ckjjftMCz2Ag6q69IuLIrBVghiE27MmFvg==
+X-Google-Smtp-Source: AGHT+IFJ3+KNPGSuwMfsWk2oP7Mi4HeigQmPSucY0XlswK32zmoftHGchXXTi+JkTmrGrEHybr+mbA==
+X-Received: by 2002:a05:6a20:e291:b0:307:a015:37ef with SMTP id adf61e73a8af0-334a84da469mr5925151637.20.1760718894441;
+        Fri, 17 Oct 2025 09:34:54 -0700 (PDT)
+Received: from CNSZTL-PC.lan ([2401:b60:5:2::a])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-7a22ff15829sm16810b3a.11.2025.10.17.09.34.51
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 17 Oct 2025 09:34:54 -0700 (PDT)
+Message-ID: <601cd8dc-afb5-4a67-af63-567814d755a4@gmail.com>
+Date: Sat, 18 Oct 2025 00:34:49 +0800
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3710; i=cassel@kernel.org; h=from:subject; bh=YalfQ6bnC/Qus6A8HLxzTaKEuSJ9wI8LHGYjVnhv5QY=; b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGDI+5W/xOBN/P0R3RcevsyZpLgsXOp3iCX6cu3VCu82TB f9XeUzo7ChlYRDjYpAVU2Tx/eGyv7jbfcpxxTs2MHNYmUCGMHBxCsBE5AwZ/hkw2S1jiMru+Mi0 v2bqOia+TaIvWTxV2sX9XsT2rt99YTIjwzr26enqLPI8nnf2WFwJm/Tz7F6mq72yE7pWaISoHbX 5wg0A
-X-Developer-Key: i=cassel@kernel.org; a=openpgp; fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] arm64: dts: rockchip: fix eMMC corruption on NanoPC-T6
+ with A3A444 chips
+To: Dragan Simic <dsimic@manjaro.org>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Grzegorz Sterniczuk <grzegorz@sternicz.uk>, Jonas Karlman <jonas@kwiboo.se>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20251017073954.130710-1-cnsztl@gmail.com>
+ <7f0b1747-87eb-0b0b-6fb0-304811a4be21@manjaro.org>
+ <d9d14ce2-2e65-422e-95fb-eb30b128ad90@gmail.com>
+ <41154cde-a447-0707-4387-cd3dca90b97d@manjaro.org>
+From: Tianling Shen <cnsztl@gmail.com>
+In-Reply-To: <41154cde-a447-0707-4387-cd3dca90b97d@manjaro.org>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251017_173458_361256_6FBC19B2 
+X-CRM114-Status: GOOD (  25.40  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,100 +116,90 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The L1 substates support requires additional steps to work, namely:
--Proper handling of the CLKREQ# sideband signal. (It is mostly handled by
- hardware, but software still needs to set the clkreq fields in the
- PCIE_CLIENT_POWER_CON register to match the hardware implementation.)
--Program the frequency of the aux clock into the
- DSP_PCIE_PL_AUX_CLK_FREQ_OFF register. (During L1 substates the core_clk
- is turned off and the aux_clk is used instead.)
+On 2025/10/17 23:15, Dragan Simic wrote:
+> On Friday, October 17, 2025 14:08 CEST, Tianling Shen <cnsztl@gmail.com> wrote:
+>> On 2025/10/17 18:25, Dragan Simic wrote:
+>>> On Friday, October 17, 2025 09:39 CEST, Tianling Shen <cnsztl@gmail.com> wrote:
+>>>> From: Grzegorz Sterniczuk <grzegorz@sternicz.uk>
+>>>>
+>>>> Some NanoPC-T6 boards with A3A444 eMMC chips experience I/O errors and
+>>>> corruption when using HS400 mode. Downgrade to HS200 mode to ensure
+>>>> stable operation.
+>>>
+>>> Could you, please, provide more details about the troublesome eMMC
+>>> chip that gets identified as A3A444, i.e. what's the actual brand
+>>> and model?  Maybe you could send a picture of it?  It might also
+>>> help if you'd send the contents of "/sys/class/block/mmcblkX/device
+>>> /manfid" from your board (where "X" should equal two).
+>>
+>> Unfortunately I don't have this board nor this eMMC chip.
+>> I got the chip model from my friend, it's FORESEE FEMDNN256G-A3A44,
+>> manfid is 0x0000d6.
+> 
+> Thanks for responding and providing the details so quickly!
+> 
+>>> I'm asking for that because I'd like to research it a bit further,
+>>> if possible, because some other eMMC chips that are also found on
+>>> the NanoPc-T6 seem to work fine in HS400 mode. [1]  It may be that
+>>> the A3A444 chip has some issues with the HS400 mode on its own,
+>>> i.e. the observed issues may not be caused by the board.
+>>
+>> Yes, it should be caused by this eMMC chip.
+> 
+> I'd suggest that we move forward by "quirking off" the HS400 mode
+> for the FEMDNN256G-A3A44 eMMC chip in the MMC drivers, instead of
+> downgrading the speed of the sdhci interface on the NanoPC-T6.
+> 
+> That way, the other similar Foresee eMMC chip that's also found
+> on NanoPC-T6 boards, FEMDNN256G-A3A564, will continue to work in
+> the faster HS400 mode, while the troublesome A3A44 variant will
+> be downgraded to the HS200 globally for everyone's benefit.  It's
+> quite unlikely that the A3A44 variant fails to work reliable in
+> HS400 mode on the NanoPC-T6 only, so quirking it off in the MMC
+> drivers should be a sane and safe choice.
+> 
+> If you agree with dropping this patch, I'll be more than happy
+> to implement this HS200 quirk in the MMC drivers.
 
-These steps are currently missing from the driver.
+Yes for sure, thank you ;)
+The full cid is d6010341334134343411f63ea7208700.
 
-For more details, see section '18.6.6.4 L1 Substate' in the RK3658 TRM 1.1
-Part 2, or section '11.6.6.4 L1 Substate' in the RK3588 TRM 1.0 Part2.
+Thanks,
+Tianling.
 
-While this has always been a problem when using e.g.
-CONFIG_PCIEASPM_POWER_SUPERSAVE=y, or when modifying
-/sys/bus/pci/devices/.../link/l1_2_aspm, the lacking driver support for L1
-substates became more apparent after commit f3ac2ff14834 ("PCI/ASPM:
-Enable all ClockPM and ASPM states for devicetree platforms"), which
-enabled ASPM also for CONFIG_PCIEASPM_DEFAULT=y.
-
-When using e.g. an NVMe drive connected to the PCIe controller, the
-problem will be seen as:
-nvme nvme0: controller is down; will reset: CSTS=0xffffffff, PCI_STATUS=0x10
-nvme nvme0: Does your device have a faulty power saving mode enabled?
-nvme nvme0: Try "nvme_core.default_ps_max_latency_us=0 pcie_aspm=off pcie_port_pm=off" and report a bug
-
-Thus, prevent advertising L1 Substates support until proper driver support
-is added.
-
-Cc: stable@vger.kernel.org
-Fixes: 0e898eb8df4e ("PCI: rockchip-dwc: Add Rockchip RK356X host controller driver")
-Fixes: f3ac2ff14834 ("PCI/ASPM: Enable all ClockPM and ASPM states for devicetree platforms")
-Acked-by: Shawn Lin <shawn.lin@rock-chips.com>
-Signed-off-by: Niklas Cassel <cassel@kernel.org>
----
-Changes since v2:
--Improve commit message (Bjorn)
-
- drivers/pci/controller/dwc/pcie-dw-rockchip.c | 21 +++++++++++++++++++
- 1 file changed, 21 insertions(+)
-
-diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-index 3e2752c7dd09..84f882abbca5 100644
---- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-+++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-@@ -200,6 +200,25 @@ static bool rockchip_pcie_link_up(struct dw_pcie *pci)
- 	return FIELD_GET(PCIE_LINKUP_MASK, val) == PCIE_LINKUP;
- }
- 
-+/*
-+ * See e.g. section '11.6.6.4 L1 Substate' in the RK3588 TRM V1.0 for the steps
-+ * needed to support L1 substates. Currently, not a single rockchip platform
-+ * performs these steps, so disable L1 substates until there is proper support.
-+ */
-+static void rockchip_pcie_disable_l1sub(struct dw_pcie *pci)
-+{
-+	u32 cap, l1subcap;
-+
-+	cap = dw_pcie_find_ext_capability(pci, PCI_EXT_CAP_ID_L1SS);
-+	if (cap) {
-+		l1subcap = dw_pcie_readl_dbi(pci, cap + PCI_L1SS_CAP);
-+		l1subcap &= ~(PCI_L1SS_CAP_L1_PM_SS | PCI_L1SS_CAP_ASPM_L1_1 |
-+			      PCI_L1SS_CAP_ASPM_L1_2 | PCI_L1SS_CAP_PCIPM_L1_1 |
-+			      PCI_L1SS_CAP_PCIPM_L1_2);
-+		dw_pcie_writel_dbi(pci, cap + PCI_L1SS_CAP, l1subcap);
-+	}
-+}
-+
- static void rockchip_pcie_enable_l0s(struct dw_pcie *pci)
- {
- 	u32 cap, lnkcap;
-@@ -264,6 +283,7 @@ static int rockchip_pcie_host_init(struct dw_pcie_rp *pp)
- 	irq_set_chained_handler_and_data(irq, rockchip_pcie_intx_handler,
- 					 rockchip);
- 
-+	rockchip_pcie_disable_l1sub(pci);
- 	rockchip_pcie_enable_l0s(pci);
- 
- 	return 0;
-@@ -301,6 +321,7 @@ static void rockchip_pcie_ep_init(struct dw_pcie_ep *ep)
- 	struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
- 	enum pci_barno bar;
- 
-+	rockchip_pcie_disable_l1sub(pci);
- 	rockchip_pcie_enable_l0s(pci);
- 	rockchip_pcie_ep_hide_broken_ats_cap_rk3588(ep);
- 
--- 
-2.51.0
+> 
+> As a note, FEMDNN256G-A3A44 is found in the Rockchip Qualified
+> eMMC Support List v1.84, [2] but the evidence says the opposite,
+> so we should react appropriately by adding this quirk.
+> 
+> [1] https://github.com/openwrt/openwrt/issues/18844
+> [2] https://dl.radxa.com/rock5/hw/RKeMMCSupportList%20Ver1.84_20240815.pdf
+> 
+>>>> Signed-off-by: Grzegorz Sterniczuk <grzegorz@sternicz.uk>
+>>>> Signed-off-by: Tianling Shen <cnsztl@gmail.com>
+>>>> ---
+>>>>    arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi | 3 +--
+>>>>    1 file changed, 1 insertion(+), 2 deletions(-)
+>>>>
+>>>> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
+>>>> index fafeabe9adf9..5f63f38f7326 100644
+>>>> --- a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
+>>>> +++ b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
+>>>> @@ -717,8 +717,7 @@ &sdhci {
+>>>>    	no-sd;
+>>>>    	non-removable;
+>>>>    	max-frequency = <200000000>;
+>>>> -	mmc-hs400-1_8v;
+>>>> -	mmc-hs400-enhanced-strobe;
+>>>> +	mmc-hs200-1_8v;
+>>>>    	status = "okay";
+>>>>    };
+> 
 
 
 _______________________________________________
