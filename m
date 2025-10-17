@@ -4,91 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC963CCD195
-	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Oct 2025 07:40:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF8C3CCD184
+	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Oct 2025 07:40:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=8JFx/mGBysa4RakFftS6xzAnRWg7q/PMYvObhsfK290=; b=PxYC8l18674203
-	aMnh7HeIrQl/MNHYAdBu/ZySTF0gd4JaYDquIBgOE9qqFKlfn7ReEW2TCSQuljanqKe26T3gVnTyu
-	ndUn5gsG1eEtMtLg3D472QpPsDw4PeJnA5NljADz1z3WJicaAW1EpFcj6goFShzPxrzOlajaIyySw
-	qnTS/ke1FlP5L8esv53axnd8feGtHmXPr78/1L20GxnriBVBeLXoTihqeWniQPbAjo/nGyDo5VN9S
-	bnKzZdd9TMSCCC//uS+Jw0zbNbK/x4Uiuy9eSDQ+YMFWj4Xb1PyUII0iRkne7AY7snK5dYYL4DaCx
-	Vwjxp1KbDliX0Pxc0Rcg==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=QmZqVPzqZWGSyBJbfXzMbrCmG5Uvro6o9ABfuln7KMg=; b=fpYEJUdRrIhFo2
+	ql77KQ0rCoUH1jTUTwN7dDBUszVI5rshlpWv+YAhJf2GHmL2LV6xvqgMcgkKufRIvUelsqy+xztlg
+	QaQHvtNyCwge0LzYNmLhYg/HJB8z0/tMBdHVKZtfMAPvU8GMnY1mipX8ZeEgBVrbDrCnRdjwKzhr6
+	K66vpH1erw6N1xGwU/l1T1OvLzZPoqz/HvX40CPt1Qsn8xtMgkZBYAfCUGbdN7/sTJ4vju30frtQ0
+	HGX8/dF6dsRfRjUDD9B/Gr4BhLsH772UcPcYi7LByyfdrpGbYCQ0CLn8tKwm0ab4SDHt11v+KzBP6
+	Nkt3p3iDPrXsu36XhGfA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9f4c-00000006zEr-2bbv;
-	Fri, 17 Oct 2025 07:40:26 +0000
-Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029])
+	id 1v9f4n-00000006zJt-24BO;
+	Fri, 17 Oct 2025 07:40:37 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9f4a-00000006zD7-0rlF
-	for linux-rockchip@lists.infradead.org;
-	Fri, 17 Oct 2025 07:40:25 +0000
-Received: by mail-pj1-x1029.google.com with SMTP id 98e67ed59e1d1-33bb090aa78so1388029a91.3
-        for <linux-rockchip@lists.infradead.org>; Fri, 17 Oct 2025 00:40:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1760686822; x=1761291622; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=8bx5Txy8og/O6i1T8MIDUUZY/+F2oP8HDFFEoUUoKHk=;
-        b=jD/hXOpSgCdLe8WCopexclzaDiLWgTHHGQYWR/pn5a3k8e/09Fu2ngNpx3e2/Zf/JE
-         b/o/+W4oRK8XD+RIIz9i2VEd0zhf/Gy0T+HpNpy5In5BbD/eIUD9yvxl4LDjvDerCPIN
-         cW59+rNQt0vuGr0d7+H0b0yMDvuZm9BhqK8+ZN2vEALVTcov7aCK0kZ7998NxyuDe6OD
-         xF9CF4mMOecZ9INAL2Qqc+Qmdvm1TBa/Az6poLPdX50Y8WSUyUKmW/QiLJcHgkVo6iMW
-         PwNdqWOK/XtuOKdTdCBVcoycrSXTDrc3Etcqj5zWBSPEmCnY/TRXjUSfHF9Um4Ou0gWc
-         kmoA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1760686822; x=1761291622;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=8bx5Txy8og/O6i1T8MIDUUZY/+F2oP8HDFFEoUUoKHk=;
-        b=XFR9bejGhOelR0sXWckgCwNwF0zcmga60vYNcedFpndpdda8I0UdkW31LZhzpbp01w
-         FzHHTrnjE4avNicJw8RhEEu/HsHmB3Q8ERZOUCs10nw2k1R9UseYietJsw3MWE5Eh2j8
-         pHoGb4BnP5ak2tg10UdaudAvof0M3IfGgsUUWYY6HmicpTqPnC5qrF3LpxNCL7hJ7wpc
-         6LRZeSlL6Ie3w2PKyTC9jVAFznVuQnzdki83GPbgHspQ5v6Au6oHCdOvARUfGRrPy5Pl
-         3+j4CXc0Ssbtq+nzEc+TGITe9JSAg8Dl8lZaIcD6Fq5u64mR1Ai+VV9vbaGXTvcb1Pi9
-         FnIw==
-X-Forwarded-Encrypted: i=1; AJvYcCXLV7R7MZ9bNwdpBm5xrTrxjhq1tJDGlnGJiKUL5IfHRumA7z5rnTzYO0UMxprfVaJ1w1kEUNSmp3BcYR2QVw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz8+KiagH4XTObzrWFUvZvwhskT8SWzpUxzFMBdHiFyDMeef+Ou
-	VXhe5/iweFZ79QhdwLepg1d8e2oPX2/vNw6p4nLJIq2yQJ+pyQbXL6mQ
-X-Gm-Gg: ASbGncvCbuesijQOYn+5tjOCZWTId8gdDrf7uEBTWrxSNkyPHaxkDjJr6PiIbRMuErp
-	4S3B4UakB7pa3XSn/GdbyisjHquEHNHktlriVHztPLTceeIz4WmpYYLqGocan8L7U/R3TH7XdNV
-	7+HIQ54ridpEKs+xHVRBq1LRUm1Emcr+SHuF3ol/KBHL/4cCEiFGHDakQ/b9/r2rvdTASDgbYoU
-	39Fdxz+y60jETbz0XoFb64CZP0200vsQ9DgyaX35+jqIai2I/l2hvfcHJv+kghAz21NJmrbNlGx
-	H6PLAAFTb3BzfrL50v7XR/bAeHeUp438Ox+JbgQngY6VTdnb19VLiqfK5z0areuOon/riy8+o45
-	EpfpuwSzzi6XymmXi5elahVwng+SXozfyXUSK/aKc6+xkZJX29qdokMy2qydn8P0=
-X-Google-Smtp-Source: AGHT+IE5Wq2LSw/8u7zxDPAEAndLC3TWgGO8LMJfU4cDrcRHWlGtfWo/mBTgBjACKeby5RgogHrlvg==
-X-Received: by 2002:a17:90b:38c7:b0:339:d1f0:c735 with SMTP id 98e67ed59e1d1-33bcf91e032mr3105311a91.28.1760686821347;
-        Fri, 17 Oct 2025 00:40:21 -0700 (PDT)
-Received: from CNSZTL-DEB.lan ([2401:b60:5:2::a])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-33bd7b3173asm1879479a91.12.2025.10.17.00.40.18
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 17 Oct 2025 00:40:20 -0700 (PDT)
-From: Tianling Shen <cnsztl@gmail.com>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Grzegorz Sterniczuk <grzegorz@sternicz.uk>,
-	Tianling Shen <cnsztl@gmail.com>,
-	Dragan Simic <dsimic@manjaro.org>,
-	Jonas Karlman <jonas@kwiboo.se>
-Cc: devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] arm64: dts: rockchip: fix eMMC corruption on NanoPC-T6 with A3A444 chips
-Date: Fri, 17 Oct 2025 15:39:54 +0800
-Message-ID: <20251017073954.130710-1-cnsztl@gmail.com>
-X-Mailer: git-send-email 2.51.0
+	id 1v9f4k-00000006zIP-458L;
+	Fri, 17 Oct 2025 07:40:36 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 988B2456D8;
+	Fri, 17 Oct 2025 07:40:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 79F47C4CEE7;
+	Fri, 17 Oct 2025 07:40:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1760686834;
+	bh=sb/nElh9KMN8mQVtbv98NeQoE2uRu5jwjS2h4VMCK1A=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=ajzyhNDCNv3tFpAGl/2kxzSDKoyY5sO4ci+57z4j0yIk54h1Eswl5xzKilAMuu6Px
+	 MfqtkkYeHXCaRWue658cKrOdLidcvjHBpnr4RFTdAWPgUKx8l56msfqEbN5I4vxFks
+	 pQH1Ey2qdh3Ucafbu7bRlZHWI3qQ+6KrNdivvqnpJd9SgUKZePb/DF8XokRWVjZjBg
+	 9jaaIayru7fdbwWU7HfIxC1fyq9PzdmP7ZnD6SSsLZQwLreYnOm8XfBbHoOiopuUPK
+	 Ip7sRCHriZ29HlqSVcJSVZhDoLHoObhuPKFcPJysZJrJqRVl/xkeab6NXUDzLF21VG
+	 3+9QDfc6qes1Q==
+Message-ID: <1ce0101b-e6ee-4914-8c41-215a2f1aacf4@kernel.org>
+Date: Fri, 17 Oct 2025 09:40:29 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 1/2] dt-bindings: power: rockchip: Add support for
+ RV1126B
+To: Finley Xiao <finley.xiao@rock-chips.com>, heiko@sntech.de
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ ulf.hansson@linaro.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
+ zhangqing@rock-chips.com, sugar.zhang@rock-chips.com
+References: <20251017065646.320643-1-finley.xiao@rock-chips.com>
+ <20251017065646.320643-2-finley.xiao@rock-chips.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <20251017065646.320643-2-finley.xiao@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251017_004024_264499_C6030DDF 
-X-CRM114-Status: UNSURE (   9.56  )
+X-CRM114-CacheID: sfid-20251017_004035_056791_6AA133B0 
+X-CRM114-Status: UNSURE (   7.51  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -106,35 +121,22 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Grzegorz Sterniczuk <grzegorz@sternicz.uk>
+On 17/10/2025 08:56, Finley Xiao wrote:
+>  
+>        clocks:
+>          minItems: 1
+> diff --git a/include/dt-bindings/power/rockchip,rv1126b-power.h b/include/dt-bindings/power/rockchip,rv1126b-power.h
+> new file mode 100644
+> index 000000000000..beb692bd8e72
+> --- /dev/null
+> +++ b/include/dt-bindings/power/rockchip,rv1126b-power.h
 
-Some NanoPC-T6 boards with A3A444 eMMC chips experience I/O errors and
-corruption when using HS400 mode. Downgrade to HS200 mode to ensure
-stable operation.
 
-Signed-off-by: Grzegorz Sterniczuk <grzegorz@sternicz.uk>
-Signed-off-by: Tianling Shen <cnsztl@gmail.com>
----
- arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+I don't see my comment addressed. You never responded. Please slow down
+with your postings and respond to comments.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
-index fafeabe9adf9..5f63f38f7326 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
-@@ -717,8 +717,7 @@ &sdhci {
- 	no-sd;
- 	non-removable;
- 	max-frequency = <200000000>;
--	mmc-hs400-1_8v;
--	mmc-hs400-enhanced-strobe;
-+	mmc-hs200-1_8v;
- 	status = "okay";
- };
- 
--- 
-2.51.0
-
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
