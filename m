@@ -4,97 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5019CCD199
-	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Oct 2025 15:00:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66A50CCD195
+	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Oct 2025 15:15:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-ID:MIME-Version:To:Cc:
+	Date:References:In-Reply-To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=u6GIQ48ZuMZ1WeFhRZLtSeFXK3KIcF+OOF/T5VmFUlQ=; b=RQYZ8EXjUPTIWi
-	QUHVQ1m9XwKyo+f2UkgHVrxrmH+zOTs42Hy5fS0KAkdTXrkL8GfMsg1h4Y54Zs2LJ5kf6YuxT/d9T
-	iYjTwL//Vtfux3XvraIZ3DfOLKtKZAwdhzO6bUV/QkMCHoMMKDdyo8XwKmwtBYau4n46fQS4uVcT2
-	YPAZ6bOBeby2G4NzDa1SLWLmC5dX8bxWXnC5m3Fa7GKrBIfDGR8YOqGOqmnIYrS2lzQot2Dy2czxE
-	5h/ce6qXf2KOxUX1aMogL5xrjozgSZoW42/fFAauJxWKO18geWdngQKq5OSySU/t+WK4/zRjh9lqY
-	UoQ3lMz9a3xiKdNWUUdA==;
+	List-Owner; bh=LseyVQViPM2WDf+pZc6ZrPfsBYKLcMNSy31Cg+03z48=; b=Doh4BMWFN+5DYT
+	uLsUWzNUzvlZzDiTvz6jf0K1v53QLfoQhrTJEAVXPDrVEwM3xDNVhZqFiRdCIibwcSg5r7PGYEpM/
+	u3nBDOKviv8AuAtwPVDtl3UT0PyM2IwJb0KnUPTdhefU4BMFyN0KBhcLMbSFPsoVBrTgHIXIkAnfv
+	uQTPSdtLonTIixQo8z3sNK9LKAcltwX4YRmpCM1oo0Mc5oNo4wK0f/Vr/zHH4wSWGoUTbomQQlNxC
+	WxNCC+7Ej79V0YjtXJageHkIKOsTnDgZHrvVRouNxy+YUEgMXFcfN99FoAxyIqsDU39DLPXIP7kdW
+	TjuzJuxqZGsAq4c7fpQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9lwb-00000008BoT-26Rt;
-	Fri, 17 Oct 2025 15:00:37 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1v9mB6-00000008Ejs-1rvI;
+	Fri, 17 Oct 2025 15:15:36 +0000
+Received: from mail1.manjaro.org ([142.132.176.110])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9lwa-00000008BmI-0hft
-	for linux-rockchip@bombadil.infradead.org;
-	Fri, 17 Oct 2025 15:00:36 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=acA95Xvg9priKPeRhiKIT1XQiR8GD1M4gNqXOoAK4Tk=; b=gS3L4LQdQ4bo+Sy3HFAJ9aVqkZ
-	T9BapsPPlFKsN2pG+yAPdS8ulbZRUNtQfVvtot+akar/0VxFK2jPeqXJfEc0Ycf3BvrO0gLa46wLK
-	VYumfJUifmZTLM5I4gRJwgHpFFTegL7yjU2cmsUPeRqL+M08GGrq78MarVjKMuEOB0N0SgAhMMBtz
-	Fz/j5eItLMnv6cphjj5AVVyWGfCCujcruSX3ruDZIdEjNqHhD51Ix3tkmGUUL9AT551l8s1e0iSh/
-	v4p8FKFGgo7CNwsQs9iKB3qst9GrlAfHFyIluLCzfMxofyYTMkipZhxfYEn/yQyQ4tManTvfnzDb8
-	xgPR/F+g==;
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v9lwT-00000007fGA-1WKp
-	for linux-rockchip@lists.infradead.org;
-	Fri, 17 Oct 2025 15:00:34 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <mkl@pengutronix.de>)
-	id 1v9lwJ-00028D-Pd; Fri, 17 Oct 2025 17:00:19 +0200
-Received: from moin.white.stw.pengutronix.de ([2a0a:edc0:0:b01:1d::7b] helo=bjornoya.blackshift.org)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <mkl@pengutronix.de>)
-	id 1v9lwI-0044jX-3B;
-	Fri, 17 Oct 2025 17:00:19 +0200
-Received: from hardanger.blackshift.org (p54b152ce.dip0.t-ipconnect.de [84.177.82.206])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(Client did not present a certificate)
-	(Authenticated sender: mkl-all@blackshift.org)
-	by smtp.blackshift.org (Postfix) with ESMTPSA id A0CA4489289;
-	Fri, 17 Oct 2025 15:00:18 +0000 (UTC)
-From: Marc Kleine-Budde <mkl@pengutronix.de>
-Date: Fri, 17 Oct 2025 16:59:59 +0200
-Subject: [PATCH can 1/3] can: bxcan: bxcan_start_xmit(): use
- can_dev_dropped_skb() instead of can_dropped_invalid_skb()
+	id 1v9mB2-00000008EhB-2bJQ;
+	Fri, 17 Oct 2025 15:15:34 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPA id 46E9C40AC1;
+	Fri, 17 Oct 2025 17:15:26 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=dkim;
+	t=1760714127; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:in-reply-to:references;
+	bh=5Cy8msbaVQL4RqkL1z4L//TRHjEaBia8aV/EsD4kb2A=;
+	b=QBsfgZVcnnyvm8L965nE5L4uf2nbBjJxo1rMBktKk9EqMbaBT+Nd/52ep87VJSSJLbVLJg
+	Zd/cCZu9r3jkrZsVvr4sCfmRKU2Dtgggt/bM/dS532i86M+hE1O1jtpk/T/VnD7k6bZki6
+	uk6M9opYXhYjb0b4dRud5dP5He929uHhe37ACltZ0YA5f6E3DkeEimf0cqWYRL1Rej2I+E
+	Z/7g7zuaWnacdiSFUEO/ONPRNldKpZwNcmSXuuG87h74t/0j4L0KdwpQgysvrkM17y7x3U
+	EZ1jtmirat30ocxN9DUCeardWW5kRyGGxvUequVPmRCNORaUiPm60dDRYP9eUg==
+From: "Dragan Simic" <dsimic@manjaro.org>
+In-Reply-To: <d9d14ce2-2e65-422e-95fb-eb30b128ad90@gmail.com>
+References: <20251017073954.130710-1-cnsztl@gmail.com>
+ <7f0b1747-87eb-0b0b-6fb0-304811a4be21@manjaro.org> <d9d14ce2-2e65-422e-95fb-eb30b128ad90@gmail.com>
+Date: Fri, 17 Oct 2025 17:15:25 +0200
+Cc: "Rob Herring" <robh@kernel.org>, "Krzysztof Kozlowski" <krzk+dt@kernel.org>, "Conor Dooley" <conor+dt@kernel.org>, "Heiko Stuebner" <heiko@sntech.de>, "Grzegorz Sterniczuk" <grzegorz@sternicz.uk>, "Jonas Karlman" <jonas@kwiboo.se>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+To: "Tianling Shen" <cnsztl@gmail.com>
 MIME-Version: 1.0
-Message-Id: <20251017-fix-skb-drop-check-v1-1-556665793fa4@pengutronix.de>
-References: <20251017-fix-skb-drop-check-v1-0-556665793fa4@pengutronix.de>
-In-Reply-To: <20251017-fix-skb-drop-check-v1-0-556665793fa4@pengutronix.de>
-To: Dario Binacchi <dario.binacchi@amarulasolutions.com>, 
- Vincent Mailhol <mailhol@kernel.org>, 
- Oliver Hartkopp <socketcan@hartkopp.net>, 
- =?utf-8?q?Stefan_M=C3=A4tje?= <stefan.maetje@esd.eu>, socketcan@esd.eu, 
- Heiko Stuebner <heiko@sntech.de>
-Cc: kernel@pengutronix.de, linux-can@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, Marc Kleine-Budde <mkl@pengutronix.de>
-X-Mailer: b4 0.15-dev-2196b
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1070; i=mkl@pengutronix.de;
- h=from:subject:message-id; bh=xRvDLRixebYPSYwTuPzWzUvQiPgr3KsCHUzve9UgeMQ=;
- b=owEBbQGS/pANAwAKAQx0Zd/5kJGcAcsmYgBo8ln88IspOhek6G2ZvTtEwUJ3WTyKkZgEMRnh/
- Xvh67H1RCmJATMEAAEKAB0WIQSf+wzYr2eoX/wVbPMMdGXf+ZCRnAUCaPJZ/AAKCRAMdGXf+ZCR
- nIuUB/9w+vSk2ohkks7AVj4R3v9dUk0UVMeZh6rLYXJttbgEDD5Iv1UYMk2x8GtaF+ZDd/GtVU5
- nUsNekRejup2UXxGHA5RcfV0NccrtMld77ji+CTAGLJC5W2pk5BX68ymXPgVUYnOgbz8rtxZEji
- 7WlOq/5rId3SDasoTD65ab5l8QXfMos5rZyq0lubMlT87lZSCQ0h3a242+mEUqq0GyHjDq1FDC5
- 7QMoYNtWIeB2CXW7IjEkaeVn6dwnmTSErotlhsWX8x5IMnvwteY4GAll2Sfnb5Q6tvqBaUa2Fmz
- oymQfHOG1wvdzJaSKWrlHeKgln1Ym4K1HBNTxk+0KTYHh/KN
-X-Developer-Key: i=mkl@pengutronix.de; a=openpgp;
- fpr=C1400BA0B3989E6FBC7D5B5C2B5EE211C58AEA54
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: mkl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+Message-ID: <41154cde-a447-0707-4387-cd3dca90b97d@manjaro.org>
+Subject: =?utf-8?q?Re=3A?= [PATCH] =?utf-8?q?arm64=3A?==?utf-8?q?_dts=3A?=
+ =?utf-8?q?_rockchip=3A?= fix eMMC corruption on NanoPC-T6 with A3A444 chips
+User-Agent: SOGoMail 5.12.3
+X-Last-TLS-Session-Version: None
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251017_160029_623010_E5A97035 
-X-CRM114-Status: GOOD (  12.41  )
+X-CRM114-CacheID: sfid-20251017_081532_886562_AAEF9375 
+X-CRM114-Status: GOOD (  23.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,37 +69,76 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-In addition to can_dropped_invalid_skb(), the helper function
-can_dev_dropped_skb() checks whether the device is in listen-only mode and
-discards the skb accordingly.
+On Friday, October 17, 2025 14:08 CEST, Tianling Shen <cnsztl@gmail.com> wrote:
+> On 2025/10/17 18:25, Dragan Simic wrote:
+> > On Friday, October 17, 2025 09:39 CEST, Tianling Shen <cnsztl@gmail.com> wrote:
+> >> From: Grzegorz Sterniczuk <grzegorz@sternicz.uk>
+> >>
+> >> Some NanoPC-T6 boards with A3A444 eMMC chips experience I/O errors and
+> >> corruption when using HS400 mode. Downgrade to HS200 mode to ensure
+> >> stable operation.
+> > 
+> > Could you, please, provide more details about the troublesome eMMC
+> > chip that gets identified as A3A444, i.e. what's the actual brand
+> > and model?  Maybe you could send a picture of it?  It might also
+> > help if you'd send the contents of "/sys/class/block/mmcblkX/device
+> > /manfid" from your board (where "X" should equal two).
+> 
+> Unfortunately I don't have this board nor this eMMC chip.
+> I got the chip model from my friend, it's FORESEE FEMDNN256G-A3A44, 
+> manfid is 0x0000d6.
 
-Replace can_dropped_invalid_skb() by can_dev_dropped_skb() to also drop
-skbs in for listen-only mode.
+Thanks for responding and providing the details so quickly!
 
-Reported-by: Marc Kleine-Budde <mkl@pengutronix.de>
-Closes: https://lore.kernel.org/all/20251017-bizarre-enchanted-quokka-f3c704-mkl@pengutronix.de/
-Fixes: f00647d8127b ("can: bxcan: add support for ST bxCAN controller")
-Signed-off-by: Marc Kleine-Budde <mkl@pengutronix.de>
----
- drivers/net/can/bxcan.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> > I'm asking for that because I'd like to research it a bit further,
+> > if possible, because some other eMMC chips that are also found on
+> > the NanoPc-T6 seem to work fine in HS400 mode. [1]  It may be that
+> > the A3A444 chip has some issues with the HS400 mode on its own,
+> > i.e. the observed issues may not be caused by the board.
+> 
+> Yes, it should be caused by this eMMC chip.
 
-diff --git a/drivers/net/can/bxcan.c b/drivers/net/can/bxcan.c
-index bfc60eb33dc3..333ad42ea73b 100644
---- a/drivers/net/can/bxcan.c
-+++ b/drivers/net/can/bxcan.c
-@@ -842,7 +842,7 @@ static netdev_tx_t bxcan_start_xmit(struct sk_buff *skb,
- 	u32 id;
- 	int i, j;
- 
--	if (can_dropped_invalid_skb(ndev, skb))
-+	if (can_dev_dropped_skb(ndev, skb))
- 		return NETDEV_TX_OK;
- 
- 	if (bxcan_tx_busy(priv))
+I'd suggest that we move forward by "quirking off" the HS400 mode
+for the FEMDNN256G-A3A44 eMMC chip in the MMC drivers, instead of
+downgrading the speed of the sdhci interface on the NanoPC-T6.
 
--- 
-2.51.0
+That way, the other similar Foresee eMMC chip that's also found
+on NanoPC-T6 boards, FEMDNN256G-A3A564, will continue to work in
+the faster HS400 mode, while the troublesome A3A44 variant will
+be downgraded to the HS200 globally for everyone's benefit.  It's
+quite unlikely that the A3A44 variant fails to work reliable in
+HS400 mode on the NanoPC-T6 only, so quirking it off in the MMC
+drivers should be a sane and safe choice.
+
+If you agree with dropping this patch, I'll be more than happy
+to implement this HS200 quirk in the MMC drivers.
+
+As a note, FEMDNN256G-A3A44 is found in the Rockchip Qualified
+eMMC Support List v1.84, [2] but the evidence says the opposite,
+so we should react appropriately by adding this quirk.
+
+[1] https://github.com/openwrt/openwrt/issues/18844
+[2] https://dl.radxa.com/rock5/hw/RKeMMCSupportList%20Ver1.84_20240815.pdf
+
+> >> Signed-off-by: Grzegorz Sterniczuk <grzegorz@sternicz.uk>
+> >> Signed-off-by: Tianling Shen <cnsztl@gmail.com>
+> >> ---
+> >>   arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi | 3 +--
+> >>   1 file changed, 1 insertion(+), 2 deletions(-)
+> >>
+> >> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
+> >> index fafeabe9adf9..5f63f38f7326 100644
+> >> --- a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
+> >> +++ b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
+> >> @@ -717,8 +717,7 @@ &sdhci {
+> >>   	no-sd;
+> >>   	non-removable;
+> >>   	max-frequency = <200000000>;
+> >> -	mmc-hs400-1_8v;
+> >> -	mmc-hs400-enhanced-strobe;
+> >> +	mmc-hs200-1_8v;
+> >>   	status = "okay";
+> >>   };
 
 
 _______________________________________________
