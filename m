@@ -4,57 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D374BCCD184
-	for <linux-rockchip@archiver.kernel.org>; Sun, 19 Oct 2025 16:06:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0F92CCD195
+	for <linux-rockchip@archiver.kernel.org>; Sun, 19 Oct 2025 17:05:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-ID:MIME-Version:To:Cc:
+	Date:References:In-Reply-To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fd3Q4rAwOkWXuS25VRX7xVvu0xMqnhIGj9Xx+iDphZY=; b=LvRuzGrygbvFz8
-	l2KgpW7vBc55TcMBN/ch1KmKG2AGL63gN5l86J6LYlCXz8QVZnvEqxmPV+5DYUFWlPe7dGZ3Km+Zv
-	SexfQi/0GQce/1UY3BtK70Foy8sacH53j5FeQ5sAk0tgxp3sIlcg6pzzv+G5DaHR8Ie2hF3FDYsYi
-	/OgPiI3ypMaCcH72jlB4UFEQJ+j3P1DRZOIDaObjCUuJAatSgWRcBzecBLRKyIj67fYWvt6dIQQVu
-	owD4hsQcQnfvBqsXjiv/51+oYOzBbbewhfqIYgIaeU1pM4TOOoMrIArAy027J2mQxkypl+4xEMmKO
-	GgH2uYKGA+r9XY+OZWhA==;
+	List-Owner; bh=P7uOMp5Jvynfr0f1A6HUYTEgOpgz/8ggpVBQ8lVJwLU=; b=e/hqDH9fsuv0fs
+	28WBArnuhT/wTF4XXoCPqt6JgN/Vh87iOfiRGpXa0Sa96SX2Lic19SXlan+TZbj4NnaCNfEOjCZI4
+	4J/rwnJrScbWOLoHiZI4sTmrCgIcAER+5oHUVn0f0SsPXzw+MYzHtAnof6/x4fyCJiWogBv2szeOC
+	+MkCOrmJ+Q2QyirmnWt+Ax0VG/JV7q7EtJ5jtUim/yG7RhjqnNzem11kOQ8wE76PUHOFNUjRsck4z
+	OQu7VciA0uMKnBFLd4eQuOH7JBx0anr318mEccVaBKhhoJiHn3hkhx2tHTPG62K8dEngRfgU0Jvib
+	fewfSFx+XrwN0F8f7qcQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAVvJ-0000000BBJw-18eM;
-	Sun, 19 Oct 2025 16:06:21 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1vAWpr-0000000BEYr-45jt;
+	Sun, 19 Oct 2025 17:04:47 +0000
+Received: from mail1.manjaro.org ([2a01:4f8:c010:b6e8::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAVvG-0000000BBJ8-3fJ3;
-	Sun, 19 Oct 2025 16:06:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=AHfKA9U4Qc/kfoVyXIAwIin/0PHtcEBFmI2qkbJlwas=; b=YSQqmBdBp6Cnqio5Q494KslAOs
-	4IwGfKAEq3Yx1gDBSm40vA7TITFzwpl7tzPQiEk9pf91Qljfll83vZg7bFt7U76ye5LcZPZcQihYm
-	rMD+Tm67OaIlxTr+A/J08+ujbQhWSUCniipMMiuOza4Uk5++DBGDynN1uY8xCwi9U84b8/6uex+U2
-	j1wvM7P2YQ7FdQ2dRqlRQoRuMiBSYlHJdZeaT9guLiLTmGrhTfKaKQg3CDVXMApOXZdpL2H7g9MrW
-	EJZfKmepspjCiTWqBBKcPOA0c8/SBZ5P2LDmeCerFlB05cvK3DpuzBCfgIg5pJvMP4BB0Z6X46ldl
-	sRFA5eAA==;
-Received: from i53875a28.versanet.de ([83.135.90.40] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1vAVv4-0001nY-Qi; Sun, 19 Oct 2025 18:06:06 +0200
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- David Petry <petry103@gmail.com>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- David Petry <petry103@gmail.com>
-Subject: Re: [PATCH] arm64: dts: rockchip: Enable second HDMI output on CM3588
-Date: Sun, 19 Oct 2025 18:06:05 +0200
-Message-ID: <6801712.G0QQBjFxQf@diego>
-In-Reply-To: <20251019142053.11047-1-petry103@gmail.com>
-References: <20251019142053.11047-1-petry103@gmail.com>
+	id 1vAWpo-0000000BEXO-43CW;
+	Sun, 19 Oct 2025 17:04:46 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPA id 798F640D07;
+	Sun, 19 Oct 2025 19:04:30 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=dkim;
+	t=1760893480; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:in-reply-to:references;
+	bh=89pcnqHw6GeCqqkxoyyYoM031ZknkpS6TyEdPScCLBQ=;
+	b=feN0m9vz9xepdNVeyszgt4J9lygxtJJV4M+epGRMOa/A1mU8wSgxMaNeobaWfiG9n32OW0
+	0BLpORvYv4TtSZ7ulhp94Crw24Xgj8BDInMP27qsN3RrdY3uaLkakvR9sUOeFvdpBOmT1J
+	DEOnZb5bW2C/grjE8ZOajzOxFmkGubtqYxF/p49k4pv749kwBVwu9lX6credP+5/nFPZxy
+	Q1U4MX2GYVdyyFyCZyKUibY6+2blN2b/qe0viwN079Bz8wWffKpz5h9wT2tAmya7snNdQm
+	CUCSr87CTMvAUoQguQ8FO+I1Wt7UNal84mfHgsD3UZp8bRWTaK2aLofYIWW41w==
+From: "Dragan Simic" <dsimic@manjaro.org>
+In-Reply-To: <CABGV7H_pTkJ_-WQNgVbGE+Ys7jOZaKcRrnMtPr8idfKoYMgKjg@mail.gmail.com>
+References: <20251017073954.130710-1-cnsztl@gmail.com> <7f0b1747-87eb-0b0b-6fb0-304811a4be21@manjaro.org> <CABGV7H_pTkJ_-WQNgVbGE+Ys7jOZaKcRrnMtPr8idfKoYMgKjg@mail.gmail.com>
+Date: Sun, 19 Oct 2025 19:04:30 +0200
+Cc: "Tianling Shen" <cnsztl@gmail.com>, "Rob Herring" <robh@kernel.org>, "Krzysztof Kozlowski" <krzk+dt@kernel.org>, "Conor Dooley" <conor+dt@kernel.org>, "Heiko Stuebner" <heiko@sntech.de>, "Grzegorz Sterniczuk" <grzegorz@sternicz.uk>, "Jonas Karlman" <jonas@kwiboo.se>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+To: "Grzegorz Sterniczuk" <grzegorz.sterniczuk@gmail.com>
 MIME-Version: 1.0
+Message-ID: <f26601b4-c589-5909-5432-378c496e9010@manjaro.org>
+Subject: =?utf-8?q?Re=3A?= [PATCH] =?utf-8?q?arm64=3A?==?utf-8?q?_dts=3A?=
+ =?utf-8?q?_rockchip=3A?= fix eMMC corruption on NanoPC-T6 with A3A444 chips
+User-Agent: SOGoMail 5.12.3
+X-Last-TLS-Session-Version: None
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251019_090618_962478_3689E087 
-X-CRM114-Status: GOOD (  17.65  )
+X-CRM114-CacheID: sfid-20251019_100445_221730_5FCE9673 
+X-CRM114-Status: GOOD (  20.99  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,48 +63,68 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgRGF2aWQsCgpBbSBTb25udGFnLCAxOS4gT2t0b2JlciAyMDI1LCAxNjoyMDo1MyBNaXR0ZWxl
-dXJvcMOkaXNjaGUgU29tbWVyemVpdCBzY2hyaWViIERhdmlkIFBldHJ5Ogo+IEVuYWJsZSB0aGUg
-c2Vjb25kIEhETUkgb3V0cHV0IHBvcnQgZm91bmQgb24gRnJpZW5kbHlFbGVjIENNMzU4OCBhbmQg
-Q00zNTg4Cgp0aGUgZGVjcmlwdGlvbiBzb3VuZHMgbGlrZSB5b3UncmUgcmVmZXJlbmNpbmcgdHdv
-IGJvYXJkcywgYnV0IHRoZSBjaGFuZ2UKaXRzZWxmIG9ubHkgdG91Y2hlcyBvbmUuIElzIHRoZXJl
-IGEgMm5kIHBhdGNoIG1pc3Npbmcgb3IgZG9lcyB0aGUgd29yZGluZwphYm92ZSBuZWVkIGltcHJv
-dmVtZW50PwoKVGhhbmtzCkhlaWtvCgo+IAo+IFNpZ25lZC1vZmYtYnk6IERhdmlkIFBldHJ5IDxw
-ZXRyeTEwM0BnbWFpbC5jb20+Cj4gLS0tCj4gIC4uLi9yazM1ODgtZnJpZW5kbHllbGVjLWNtMzU4
-OC1uYXMuZHRzICAgICAgICB8IDM4ICsrKysrKysrKysrKysrKysrKysKPiAgMSBmaWxlIGNoYW5n
-ZWQsIDM4IGluc2VydGlvbnMoKykKPiAKPiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm02NC9ib290L2R0
-cy9yb2NrY2hpcC9yazM1ODgtZnJpZW5kbHllbGVjLWNtMzU4OC1uYXMuZHRzIGIvYXJjaC9hcm02
-NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODgtZnJpZW5kbHllbGVjLWNtMzU4OC1uYXMuZHRzCj4g
-aW5kZXggNWZiYmViNmY1YTkzNS4uMTBhN2QzNjkxYTI2ZiAxMDA2NDQKPiAtLS0gYS9hcmNoL2Fy
-bTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OC1mcmllbmRseWVsZWMtY20zNTg4LW5hcy5kdHMK
-PiArKysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OC1mcmllbmRseWVsZWMt
-Y20zNTg4LW5hcy5kdHMKPiBAQCAtMTAxLDYgKzEwMSwxNyBAQCBoZG1pMF9jb25faW46IGVuZHBv
-aW50IHsKPiAgCQl9Owo+ICAJfTsKPiAgCj4gKwloZG1pMS1jb24gewo+ICsJCWNvbXBhdGlibGUg
-PSAiaGRtaS1jb25uZWN0b3IiOwo+ICsJCXR5cGUgPSAiYSI7Cj4gKwo+ICsJCXBvcnQgewo+ICsJ
-CQloZG1pMV9jb25faW46IGVuZHBvaW50IHsKPiArCQkJCXJlbW90ZS1lbmRwb2ludCA9IDwmaGRt
-aTFfb3V0X2Nvbj47Cj4gKwkJCX07Cj4gKwkJfTsKPiArCX07Cj4gKwo+ICAJaXItcmVjZWl2ZXIg
-ewo+ICAJCWNvbXBhdGlibGUgPSAiZ3Bpby1pci1yZWNlaXZlciI7Cj4gIAkJZ3Bpb3MgPSA8Jmdw
-aW8wIFJLX1BENCBHUElPX0FDVElWRV9MT1c+Owo+IEBAIC0zMzUsNiArMzQ2LDIyIEBAIGhkbWkw
-X291dF9jb246IGVuZHBvaW50IHsKPiAgCX07Cj4gIH07Cj4gIAo+ICsmaGRtaTEgewo+ICsJc3Rh
-dHVzID0gIm9rYXkiOwo+ICt9Owo+ICsKPiArJmhkbWkxX2luIHsKPiArCWhkbWkxX2luX3ZwMTog
-ZW5kcG9pbnQgewo+ICsJCXJlbW90ZS1lbmRwb2ludCA9IDwmdnAxX291dF9oZG1pMT47Cj4gKwl9
-Owo+ICt9Owo+ICsKPiArJmhkbWkxX291dCB7Cj4gKwloZG1pMV9vdXRfY29uOiBlbmRwb2ludCB7
-Cj4gKwkJcmVtb3RlLWVuZHBvaW50ID0gPCZoZG1pMV9jb25faW4+Owo+ICsJfTsKPiArfTsKPiAr
-Cj4gICZoZG1pX3JlY2VpdmVyX2NtYSB7Cj4gIAlzdGF0dXMgPSAib2theSI7Cj4gIH07Cj4gQEAg
-LTM1MCw2ICszNzcsMTAgQEAgJmhkcHR4cGh5MCB7Cj4gIAlzdGF0dXMgPSAib2theSI7Cj4gIH07
-Cj4gIAo+ICsmaGRwdHhwaHkxIHsKPiArCXN0YXR1cyA9ICJva2F5IjsKPiArfTsKPiArCj4gIC8q
-IENvbm5lY3RlZCB0byBNSVBJLURTSTAgKi8KPiAgJmkyYzUgewo+ICAJcGluY3RybC1uYW1lcyA9
-ICJkZWZhdWx0IjsKPiBAQCAtODQwLDMgKzg3MSwxMCBAQCB2cDBfb3V0X2hkbWkwOiBlbmRwb2lu
-dEBST0NLQ0hJUF9WT1AyX0VQX0hETUkwIHsKPiAgCQlyZW1vdGUtZW5kcG9pbnQgPSA8JmhkbWkw
-X2luX3ZwMD47Cj4gIAl9Owo+ICB9Owo+ICsKPiArJnZwMSB7Cj4gKwl2cDFfb3V0X2hkbWkxOiBl
-bmRwb2ludEBST0NLQ0hJUF9WT1AyX0VQX0hETUkxIHsKPiArCQlyZWcgPSA8Uk9DS0NISVBfVk9Q
-Ml9FUF9IRE1JMT47Cj4gKwkJcmVtb3RlLWVuZHBvaW50ID0gPCZoZG1pMV9pbl92cDE+Owo+ICsJ
-fTsKPiArfTsKPiAKCgoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMu
-aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
-L2xpbnV4LXJvY2tjaGlwCg==
+Hello Grzegorz,
+
+On Sunday, October 19, 2025 12:05 CEST, Grzegorz Sterniczuk <grzegorz.sterniczuk@gmail.com> wrote:
+> [image: image.png]
+> [image: IMG_0471.jpeg]
+
+Nice, thanks for the pictures!  BTW, I'm hoping to get the quirk
+patch(es) done and submitted to the MLs in the next few days.  Of
+course, I'll Cc your and everyone else's email addresses so you
+can perform the required testing and provide Tested-by tags.
+
+> On Fri, 17 Oct 2025 at 12:25, Dragan Simic <dsimic@manjaro.org> wrote:
+> > On Friday, October 17, 2025 09:39 CEST, Tianling Shen <cnsztl@gmail.com>
+> > wrote:
+> > > From: Grzegorz Sterniczuk <grzegorz@sternicz.uk>
+> > >
+> > > Some NanoPC-T6 boards with A3A444 eMMC chips experience I/O errors and
+> > > corruption when using HS400 mode. Downgrade to HS200 mode to ensure
+> > > stable operation.
+> >
+> > Could you, please, provide more details about the troublesome eMMC
+> > chip that gets identified as A3A444, i.e. what's the actual brand
+> > and model?  Maybe you could send a picture of it?  It might also
+> > help if you'd send the contents of "/sys/class/block/mmcblkX/device
+> > /manfid" from your board (where "X" should equal two).
+> >
+> > I'm asking for that because I'd like to research it a bit further,
+> > if possible, because some other eMMC chips that are also found on
+> > the NanoPc-T6 seem to work fine in HS400 mode. [1]  It may be that
+> > the A3A444 chip has some issues with the HS400 mode on its own,
+> > i.e. the observed issues may not be caused by the board.
+> >
+> > [1] https://github.com/openwrt/openwrt/issues/18844
+> >
+> > > Signed-off-by: Grzegorz Sterniczuk <grzegorz@sternicz.uk>
+> > > Signed-off-by: Tianling Shen <cnsztl@gmail.com>
+> > > ---
+> > >  arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi | 3 +--
+> > >  1 file changed, 1 insertion(+), 2 deletions(-)
+> > >
+> > > diff --git a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
+> > b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
+> > > index fafeabe9adf9..5f63f38f7326 100644
+> > > --- a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
+> > > +++ b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
+> > > @@ -717,8 +717,7 @@ &sdhci {
+> > >       no-sd;
+> > >       non-removable;
+> > >       max-frequency = <200000000>;
+> > > -     mmc-hs400-1_8v;
+> > > -     mmc-hs400-enhanced-strobe;
+> > > +     mmc-hs200-1_8v;
+> > >       status = "okay";
+> > >  };
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
