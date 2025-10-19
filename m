@@ -4,68 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47D00CCD183
-	for <linux-rockchip@archiver.kernel.org>; Sun, 19 Oct 2025 14:44:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D374BCCD184
+	for <linux-rockchip@archiver.kernel.org>; Sun, 19 Oct 2025 16:06:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Sgys/NIiZS2fAZ0MwrtSBAsMmqcTB5xLj2DMU7/jkuY=; b=WGLOv2V/HA6rlM
-	3LUgx+Kctab15E0q8lyBZrFqQt2nQN1uhYZOUtfb8mtVOC46lZXJyJhsTjmdzYvGZ6DaVcazWW7G2
-	rFelZNOOxg8C9pXllV6JVOvV9BZ+/KNHmgsLKPj9bT0Kbunt5Vm8Qzg02j2SovyhDS847/y3N1YN3
-	LY9Hch2FWe6c4MpMw0LyhPkCdlA8+cWbbu0R7h9keBcXuT7CDb4RCHnpcqQ9JsGM1Y8Aj9hhUd87A
-	+RIckZFuwKONQxpJKX7G1wKjVyEpctRmPSD9B7W+hZsgpBKat8iPX0wlH4BD5cuQeXMQvxtiUevmI
-	QOdl7KugFViohWw0EIxA==;
+	List-Owner; bh=fd3Q4rAwOkWXuS25VRX7xVvu0xMqnhIGj9Xx+iDphZY=; b=LvRuzGrygbvFz8
+	l2KgpW7vBc55TcMBN/ch1KmKG2AGL63gN5l86J6LYlCXz8QVZnvEqxmPV+5DYUFWlPe7dGZ3Km+Zv
+	SexfQi/0GQce/1UY3BtK70Foy8sacH53j5FeQ5sAk0tgxp3sIlcg6pzzv+G5DaHR8Ie2hF3FDYsYi
+	/OgPiI3ypMaCcH72jlB4UFEQJ+j3P1DRZOIDaObjCUuJAatSgWRcBzecBLRKyIj67fYWvt6dIQQVu
+	owD4hsQcQnfvBqsXjiv/51+oYOzBbbewhfqIYgIaeU1pM4TOOoMrIArAy027J2mQxkypl+4xEMmKO
+	GgH2uYKGA+r9XY+OZWhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAUdu-0000000B6S6-0Cct;
-	Sun, 19 Oct 2025 14:44:18 +0000
-Received: from smtp.forwardemail.net ([121.127.44.73])
+	id 1vAVvJ-0000000BBJw-18eM;
+	Sun, 19 Oct 2025 16:06:21 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAUdr-0000000B6Qh-1F5C
-	for linux-rockchip@lists.infradead.org;
-	Sun, 19 Oct 2025 14:44:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1760885052;
- bh=qSqIvRJaVaOD2FEuoL8TgkWRa8SKjL48NnFIM4Gn36w=;
- b=wh250url/t2+Fx6GI6ngoAeJQmzvE3QbSpY5ERt+UyL2X82Lm0SdK+tyngIog4KFg+u96T8JF
- 0uCEMigSM9ITmzGzHbXfHt2jLW06FLgBMv8pYKq/l6OxMOtNcXVrSmRAAKNrN5IekhJ3LRXcwVv
- Jt0idl32kdI6QQ5a0ls/dWjd2o39DPD+xm7eW7MMOiqY/SXccsZy9mPq/RuEyT/3qlVPCOuHX9w
- 7c0OLB/+FFFjcTguuVtIKMwiAMDQ1V6qEZ1r+YoAa49tvjeK0agqe62LTEbJe9yihSHK4iAeMWf
- FhgSxDcU4SlOtvgBphw4dLXjSzezqwLg+JUP0243T2LQ==
-X-Forward-Email-ID: 68f4f9393ada90b94ba980e5
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 121.127.44.73
-X-Forward-Email-Version: 1.3.0
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <ff1765b0-ad78-4bdb-94fa-c58456358781@kwiboo.se>
-Date: Sun, 19 Oct 2025 16:44:03 +0200
+	id 1vAVvG-0000000BBJ8-3fJ3;
+	Sun, 19 Oct 2025 16:06:20 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=AHfKA9U4Qc/kfoVyXIAwIin/0PHtcEBFmI2qkbJlwas=; b=YSQqmBdBp6Cnqio5Q494KslAOs
+	4IwGfKAEq3Yx1gDBSm40vA7TITFzwpl7tzPQiEk9pf91Qljfll83vZg7bFt7U76ye5LcZPZcQihYm
+	rMD+Tm67OaIlxTr+A/J08+ujbQhWSUCniipMMiuOza4Uk5++DBGDynN1uY8xCwi9U84b8/6uex+U2
+	j1wvM7P2YQ7FdQ2dRqlRQoRuMiBSYlHJdZeaT9guLiLTmGrhTfKaKQg3CDVXMApOXZdpL2H7g9MrW
+	EJZfKmepspjCiTWqBBKcPOA0c8/SBZ5P2LDmeCerFlB05cvK3DpuzBCfgIg5pJvMP4BB0Z6X46ldl
+	sRFA5eAA==;
+Received: from i53875a28.versanet.de ([83.135.90.40] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1vAVv4-0001nY-Qi; Sun, 19 Oct 2025 18:06:06 +0200
+From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
+To: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ David Petry <petry103@gmail.com>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ David Petry <petry103@gmail.com>
+Subject: Re: [PATCH] arm64: dts: rockchip: Enable second HDMI output on CM3588
+Date: Sun, 19 Oct 2025 18:06:05 +0200
+Message-ID: <6801712.G0QQBjFxQf@diego>
+In-Reply-To: <20251019142053.11047-1-petry103@gmail.com>
+References: <20251019142053.11047-1-petry103@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 05/11] phy: rockchip: inno-usb2: Add support for RK3528
-To: Vinod Koul <vkoul@kernel.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>,
- Yao Zi <ziyao@disroot.org>, Chukun Pan <amadeus@jmu.edu.cn>,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, Jianwei Zheng <jianwei.zheng@rock-chips.com>
-References: <20250723122323.2344916-1-jonas@kwiboo.se>
- <20250723122323.2344916-6-jonas@kwiboo.se> <aJtip49r8R3-2XXi@vaman>
-Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <aJtip49r8R3-2XXi@vaman>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251019_074415_420259_C60412AE 
-X-CRM114-Status: GOOD (  19.72  )
+X-CRM114-CacheID: sfid-20251019_090618_962478_3689E087 
+X-CRM114-Status: GOOD (  17.65  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,91 +66,48 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Vinod,
-
-On 8/12/2025 5:49 PM, Vinod Koul wrote:
-> On 23-07-25, 12:23, Jonas Karlman wrote:
->> From: Jianwei Zheng <jianwei.zheng@rock-chips.com>
-> 
-> Please do not send encrypted emails over public mail lists
-> 
->>
->> The RK3528 has a single USB2PHY with a otg and host port.
->>
->> Add support for the RK3528 variant of USB2PHY.
->>
->> PHY tuning for RK3528:
->>
->> - Turn off differential receiver in suspend mode to save power
->>   consumption.
->>
->> - Set HS eye-height to 400mV instead of default 450mV.
->>
->> - Choose the Tx fs/ls data as linestate from TX driver for otg port
->>   which uses dwc3 controller to improve fs/ls devices compatibility with
->>   long cables.
->>
->> This is based on vendor kernel linux-stan-6.1-rkr5 tag.
->>
->> Signed-off-by: Jianwei Zheng <jianwei.zheng@rock-chips.com>
->> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
->> ---
->>  drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 74 +++++++++++++++++++
->>  1 file changed, 74 insertions(+)
->>
->> diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
->> index cd1a02b990ef..b8950d9f9e97 100644
->> --- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
->> +++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
->> @@ -1507,6 +1507,28 @@ static int rk3128_usb2phy_tuning(struct rockchip_usb2phy *rphy)
->>  				BIT(2) << BIT_WRITEABLE_SHIFT | 0);
->>  }
->>  
->> +static int rk3528_usb2phy_tuning(struct rockchip_usb2phy *rphy)
->> +{
->> +	int ret = 0;
-> 
-> Superfluous init
-
-I would think it make it much clearer to init to zero because we are
-bitwise OR return values from the following calls.
-
-> 
->> +
->> +	/* Turn off otg port differential receiver in suspend mode */
->> +	ret |= regmap_write(rphy->phy_base, 0x30, BIT(18) | 0x0000);
->> +
->> +	/* Turn off host port differential receiver in suspend mode */
->> +	ret |= regmap_write(rphy->phy_base, 0x430, BIT(18) | 0x0000);
->> +
->> +	/* Set otg port HS eye height to 400mv (default is 450mv) */
->> +	ret |= regmap_write(rphy->phy_base, 0x30, GENMASK(22, 20) | 0x0000);
->> +
->> +	/* Set host port HS eye height to 400mv (default is 450mv) */
->> +	ret |= regmap_write(rphy->phy_base, 0x430, GENMASK(22, 20) | 0x0000);
->> +
->> +	/* Choose the Tx fs/ls data as linestate from TX driver for otg port */
->> +	ret |= regmap_write(rphy->phy_base, 0x94, GENMASK(22, 19) | 0x0018);
-> 
-> No error checking?
-
-Error checking is happening in the function calling this internal ops.
-
-Similar to the other tuning ops in this driver it does not matter
-exactly what fails, the use of |= is there to help simplify the function
-and for the caller to just error out if any of the write fails.
-
-I will shortly send a v2 without changing anything in this patch.
-
-Regards,
-Jonas
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgRGF2aWQsCgpBbSBTb25udGFnLCAxOS4gT2t0b2JlciAyMDI1LCAxNjoyMDo1MyBNaXR0ZWxl
+dXJvcMOkaXNjaGUgU29tbWVyemVpdCBzY2hyaWViIERhdmlkIFBldHJ5Ogo+IEVuYWJsZSB0aGUg
+c2Vjb25kIEhETUkgb3V0cHV0IHBvcnQgZm91bmQgb24gRnJpZW5kbHlFbGVjIENNMzU4OCBhbmQg
+Q00zNTg4Cgp0aGUgZGVjcmlwdGlvbiBzb3VuZHMgbGlrZSB5b3UncmUgcmVmZXJlbmNpbmcgdHdv
+IGJvYXJkcywgYnV0IHRoZSBjaGFuZ2UKaXRzZWxmIG9ubHkgdG91Y2hlcyBvbmUuIElzIHRoZXJl
+IGEgMm5kIHBhdGNoIG1pc3Npbmcgb3IgZG9lcyB0aGUgd29yZGluZwphYm92ZSBuZWVkIGltcHJv
+dmVtZW50PwoKVGhhbmtzCkhlaWtvCgo+IAo+IFNpZ25lZC1vZmYtYnk6IERhdmlkIFBldHJ5IDxw
+ZXRyeTEwM0BnbWFpbC5jb20+Cj4gLS0tCj4gIC4uLi9yazM1ODgtZnJpZW5kbHllbGVjLWNtMzU4
+OC1uYXMuZHRzICAgICAgICB8IDM4ICsrKysrKysrKysrKysrKysrKysKPiAgMSBmaWxlIGNoYW5n
+ZWQsIDM4IGluc2VydGlvbnMoKykKPiAKPiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm02NC9ib290L2R0
+cy9yb2NrY2hpcC9yazM1ODgtZnJpZW5kbHllbGVjLWNtMzU4OC1uYXMuZHRzIGIvYXJjaC9hcm02
+NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODgtZnJpZW5kbHllbGVjLWNtMzU4OC1uYXMuZHRzCj4g
+aW5kZXggNWZiYmViNmY1YTkzNS4uMTBhN2QzNjkxYTI2ZiAxMDA2NDQKPiAtLS0gYS9hcmNoL2Fy
+bTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OC1mcmllbmRseWVsZWMtY20zNTg4LW5hcy5kdHMK
+PiArKysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OC1mcmllbmRseWVsZWMt
+Y20zNTg4LW5hcy5kdHMKPiBAQCAtMTAxLDYgKzEwMSwxNyBAQCBoZG1pMF9jb25faW46IGVuZHBv
+aW50IHsKPiAgCQl9Owo+ICAJfTsKPiAgCj4gKwloZG1pMS1jb24gewo+ICsJCWNvbXBhdGlibGUg
+PSAiaGRtaS1jb25uZWN0b3IiOwo+ICsJCXR5cGUgPSAiYSI7Cj4gKwo+ICsJCXBvcnQgewo+ICsJ
+CQloZG1pMV9jb25faW46IGVuZHBvaW50IHsKPiArCQkJCXJlbW90ZS1lbmRwb2ludCA9IDwmaGRt
+aTFfb3V0X2Nvbj47Cj4gKwkJCX07Cj4gKwkJfTsKPiArCX07Cj4gKwo+ICAJaXItcmVjZWl2ZXIg
+ewo+ICAJCWNvbXBhdGlibGUgPSAiZ3Bpby1pci1yZWNlaXZlciI7Cj4gIAkJZ3Bpb3MgPSA8Jmdw
+aW8wIFJLX1BENCBHUElPX0FDVElWRV9MT1c+Owo+IEBAIC0zMzUsNiArMzQ2LDIyIEBAIGhkbWkw
+X291dF9jb246IGVuZHBvaW50IHsKPiAgCX07Cj4gIH07Cj4gIAo+ICsmaGRtaTEgewo+ICsJc3Rh
+dHVzID0gIm9rYXkiOwo+ICt9Owo+ICsKPiArJmhkbWkxX2luIHsKPiArCWhkbWkxX2luX3ZwMTog
+ZW5kcG9pbnQgewo+ICsJCXJlbW90ZS1lbmRwb2ludCA9IDwmdnAxX291dF9oZG1pMT47Cj4gKwl9
+Owo+ICt9Owo+ICsKPiArJmhkbWkxX291dCB7Cj4gKwloZG1pMV9vdXRfY29uOiBlbmRwb2ludCB7
+Cj4gKwkJcmVtb3RlLWVuZHBvaW50ID0gPCZoZG1pMV9jb25faW4+Owo+ICsJfTsKPiArfTsKPiAr
+Cj4gICZoZG1pX3JlY2VpdmVyX2NtYSB7Cj4gIAlzdGF0dXMgPSAib2theSI7Cj4gIH07Cj4gQEAg
+LTM1MCw2ICszNzcsMTAgQEAgJmhkcHR4cGh5MCB7Cj4gIAlzdGF0dXMgPSAib2theSI7Cj4gIH07
+Cj4gIAo+ICsmaGRwdHhwaHkxIHsKPiArCXN0YXR1cyA9ICJva2F5IjsKPiArfTsKPiArCj4gIC8q
+IENvbm5lY3RlZCB0byBNSVBJLURTSTAgKi8KPiAgJmkyYzUgewo+ICAJcGluY3RybC1uYW1lcyA9
+ICJkZWZhdWx0IjsKPiBAQCAtODQwLDMgKzg3MSwxMCBAQCB2cDBfb3V0X2hkbWkwOiBlbmRwb2lu
+dEBST0NLQ0hJUF9WT1AyX0VQX0hETUkwIHsKPiAgCQlyZW1vdGUtZW5kcG9pbnQgPSA8JmhkbWkw
+X2luX3ZwMD47Cj4gIAl9Owo+ICB9Owo+ICsKPiArJnZwMSB7Cj4gKwl2cDFfb3V0X2hkbWkxOiBl
+bmRwb2ludEBST0NLQ0hJUF9WT1AyX0VQX0hETUkxIHsKPiArCQlyZWcgPSA8Uk9DS0NISVBfVk9Q
+Ml9FUF9IRE1JMT47Cj4gKwkJcmVtb3RlLWVuZHBvaW50ID0gPCZoZG1pMV9pbl92cDE+Owo+ICsJ
+fTsKPiArfTsKPiAKCgoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMu
+aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
+L2xpbnV4LXJvY2tjaGlwCg==
