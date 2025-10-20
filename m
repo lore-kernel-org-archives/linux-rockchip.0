@@ -4,60 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF9E4CCD199
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 17:19:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E6B7CCD199
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 17:25:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ucxmsBbomQQCLFoFzP8VXXJyNNkzIuO9Z7piXYS0A58=; b=QhszToXlwnGkB/HniFtpLwLHys
-	Xh3cACpUpWodOWrwErWTbFV5JWuZb1AEUOaeogMBQQ/+3ZncIXNsV2qhwGkbGeqhRUO96zHsMBqHn
-	ODQWWzBjjrgFcGpKO4OVo741FwvLD6r5ocG2mgiPjT+3CRL4U1YopEwi7k6sUYhyB8fJAUTTLrljM
-	QnTRlkFnoQwiffQYFtg0FbHJShOlwEkuPmQT7xqYf/n9/8fQHMJs1o1YAnYtcMEyx5ghzy6XeFYz6
-	/XqX0x9boXbuUoXe9ohelx0ZjTVxmiiPn0xJ/5HZVIlcymuyGXrzPpLi2t9oZqGgfyDXgymU1EOTK
-	/Px/BsPw==;
+	bh=Wf1Hy/3GY5S7Y3GHwgfB4KGYafZRN8fYB0SHVl71K5Y=; b=QljkMCEK8ON0PnvIjmhL+OcurS
+	RTe2Q8wP8EZjbaGecI0GJBgaDdGLi5R1Gyk6JZGC4AkkSbsDtlyWA9jqWHV9vLZuGdwgoU8AK9I2B
+	dmD/OdJ5IAZpJdilEVyPKWBX0RDNGIv/68FjgFOKtzbTfoTIXDX/XwKVgyNvihs30zm/XknLqTQCT
+	Kh9EYZzdYXJcvcDqpsxK1O6m96oseXLSdJ8iz9EH/4kaLcHSoZX4h6/SfsCCTpI8oCIlsYqA9eVFt
+	lST5SOn/EJbxWTq+H9KEY1xU51JWy6xpkG8iPD3jG87wSIzrnA6w/7tbOtc8AxWisZq0Ivix7yhkg
+	9cDZKlrA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAtXE-0000000ET2X-1tbV;
-	Mon, 20 Oct 2025 17:19:04 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vAtdb-0000000ETye-0t96;
+	Mon, 20 Oct 2025 17:25:39 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAtXD-0000000ET1x-1ex3;
-	Mon, 20 Oct 2025 17:19:03 +0000
+	id 1vAtdZ-0000000ETy3-0nKi;
+	Mon, 20 Oct 2025 17:25:37 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id CD4C2620CB;
-	Mon, 20 Oct 2025 17:19:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 559C4C4CEF9;
-	Mon, 20 Oct 2025 17:18:59 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id D32E462053;
+	Mon, 20 Oct 2025 17:25:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AFB16C4CEF9;
+	Mon, 20 Oct 2025 17:25:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1760980742;
-	bh=d2jINvzcEowHYXUQtyByG0BLnrpPSoNJ9KYOgYddVTI=;
+	s=k20201202; t=1760981132;
+	bh=DuBiH9luvdFsYtFQDPaPHiGDRbY0ctxFlHUj5m7vjTM=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=qSfz08NsopoJBlCTowu9oCXd//s4JDWGOFYx3omXLXJefUl1UzZL5Mj0T1IQc2mhg
-	 vjerZuHSwJ2gZUmIvMwly4gwcb3GG8PvnLIeOQFv5UMVnBSWDQPQkl7Ceaoy1/zUim
-	 EHm/rD/S4Y36etd0uOEnCn7OZDn1ydWG/SzOlX6bnpkc6qmIht7vX8MBqL0csrtdsr
-	 rzSnz+qwouug/Z1RNrXtIL9Uj9l1WNPC/Q8uQtDFY0pe3+v2UFcdNTL8g887y9APim
-	 Kj0wJCYBA3qdka/oR7GbS4x8E2y+i2znYcmB7Q/42VhGaW+jEYL4Q9VAIiYCvQfFJ9
-	 q17inbhmJaWZg==
-Date: Mon, 20 Oct 2025 18:18:56 +0100
+	b=hvFaRQws7bdXPnuSz/e9AOAPBP5vBrh4radRk3rQm+sefnQSGzRu3/alDZVhArAuJ
+	 yqau7dOASZUNWselQ2tzgdz4BRYTmRsG8tR34AwICJaEHX/Ykdo+soiQJHDc9WUUwM
+	 xKHW8fopijbL08IfGG3DQhUlvUTxbYi6nZgJi6g2Ws4TRclTKbt4NnZ0lVHp3C+uwV
+	 rrZawovEREr+Y7GLeuGXQ8DGukbkIklwlmxAm81VJojIA/ghY/D5EDKX1U8ayM6JbW
+	 s5k3AJECYx/FbjGxyKs8GhBxmxq0VEKeLzCE27bSgT5pFwyTF7O5Urv8HCQwB6SnKM
+	 78qcZBhgNad0g==
+Date: Mon, 20 Oct 2025 18:25:27 +0100
 From: Conor Dooley <conor@kernel.org>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: maarten.lankhorst@linux.intel.com, mripard@kernel.org,
-	tzimmermann@suse.de, robh@kernel.org, krzk+dt@kernel.org,
-	conor+dt@kernel.org, quentin.schulz@cherry.de,
-	andy.yan@rock-chips.com, dri-devel@lists.freedesktop.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+To: Diederik de Haas <diederik@cknow-tech.com>
+Cc: Elaine Zhang <zhangqing@rock-chips.com>, mturquette@baylibre.com,
+	sboyd@kernel.org, sugar.zhang@rock-chips.com, heiko@sntech.de,
+	robh@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+	conor+dt@kernel.org, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org,
 	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	cn.liweihao@gmail.com, Heiko Stuebner <heiko.stuebner@cherry.de>
-Subject: Re: [PATCH 1/9] dt-bindings: display: rockchip: dw-hdmi: Add
- compatible for RK3368 HDMI
-Message-ID: <20251020-showcase-crayon-660e4f67881a@spud>
-References: <20251020082508.3636511-1-heiko@sntech.de>
- <20251020082508.3636511-2-heiko@sntech.de>
+	huangtao@rock-chips.com
+Subject: Re: [PATCH v3 4/5] dt-bindings: clock: Add support for rockchip
+ pvtpll
+Message-ID: <20251020-pureness-portion-61cef49b6042@spud>
+References: <20251020023724.2723372-1-zhangqing@rock-chips.com>
+ <20251020023724.2723372-5-zhangqing@rock-chips.com>
+ <DDN1RQB4LG0X.30F0A3IMJ4YI4@cknow-tech.com>
 MIME-Version: 1.0
-In-Reply-To: <20251020082508.3636511-2-heiko@sntech.de>
+In-Reply-To: <DDN1RQB4LG0X.30F0A3IMJ4YI4@cknow-tech.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,39 +70,196 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7356462269247144350=="
+Content-Type: multipart/mixed; boundary="===============9059353062687198405=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============7356462269247144350==
+--===============9059353062687198405==
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="7YQcMoFn8RBCI1lI"
+	protocol="application/pgp-signature"; boundary="zDbktCb2H3iO4Q0A"
 Content-Disposition: inline
 
 
---7YQcMoFn8RBCI1lI
+--zDbktCb2H3iO4Q0A
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
-pw-bot: not-applicable
+On Mon, Oct 20, 2025 at 11:38:02AM +0200, Diederik de Haas wrote:
+> On Mon Oct 20, 2025 at 4:37 AM CEST, Elaine Zhang wrote:
+> > Add pvtpll documentation for rockchip.
+> >
+> > Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+> > ---
+> >  .../bindings/clock/rockchip,clk-pvtpll.yaml   | 100 ++++++++++++++++++
+> >  1 file changed, 100 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/clock/rockchip,cl=
+k-pvtpll.yaml
+> >
+> > diff --git a/Documentation/devicetree/bindings/clock/rockchip,clk-pvtpl=
+l.yaml b/Documentation/devicetree/bindings/clock/rockchip,clk-pvtpll.yaml
+> > new file mode 100644
+>=20
+> Should this file have the 'clk-' part in its name?
+> In a way this is different from the other DT binding files, but none of
+> the others have the 'clk-' part in their file name:
 
---7YQcMoFn8RBCI1lI
+Normally we would ask for a filename matching the compatible, which IIRC
+is what these -cru ones are doing.
+
+>=20
+> me@pc:~/linux/Documentation/devicetree/bindings/clock$ ls -lh rockchip,*
+> -rw-rw-r-- 1 me me 2,9K okt 20 11:32 rockchip,px30-cru.yaml
+> -rw-rw-r-- 1 me me 1,9K okt 20 11:32 rockchip,rk3036-cru.yaml
+> -rw-rw-r-- 1 me me 1,8K okt 20 11:32 rockchip,rk3128-cru.yaml
+> -rw-rw-r-- 1 me me 2,3K okt 20 11:32 rockchip,rk3188-cru.yaml
+> -rw-rw-r-- 1 me me 2,1K okt 20 11:32 rockchip,rk3228-cru.yaml
+> -rw-rw-r-- 1 me me 2,6K okt 20 11:32 rockchip,rk3288-cru.yaml
+> -rw-rw-r-- 1 me me 2,2K okt 20 11:32 rockchip,rk3308-cru.yaml
+> -rw-rw-r-- 1 me me 2,1K okt 20 11:32 rockchip,rk3328-cru.yaml
+> -rw-rw-r-- 1 me me 2,4K okt 20 11:32 rockchip,rk3368-cru.yaml
+> -rw-rw-r-- 1 me me 2,5K okt 20 11:32 rockchip,rk3399-cru.yaml
+> -rw-rw-r-- 1 me me 1,5K okt 20 11:32 rockchip,rk3528-cru.yaml
+> -rw-rw-r-- 1 me me 1,1K okt 20 11:32 rockchip,rk3562-cru.yaml
+> -rw-rw-r-- 1 me me 1,8K okt 20 11:32 rockchip,rk3568-cru.yaml
+> -rw-rw-r-- 1 me me 1,2K okt 20 11:32 rockchip,rk3576-cru.yaml
+> -rw-rw-r-- 1 me me 1,6K okt 20 11:32 rockchip,rk3588-cru.yaml
+> -rw-rw-r-- 1 me me 2,2K okt 20 11:32 rockchip,rv1108-cru.yaml
+> -rw-rw-r-- 1 me me 1,3K okt 20 11:32 rockchip,rv1126-cru.yaml
+>=20
+> > index 000000000000..8be34bcde7b0
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/clock/rockchip,clk-pvtpll.yaml
+> > @@ -0,0 +1,100 @@
+> > +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
+> > +%YAML 1.2
+> > +---
+> > +$id: http://devicetree.org/schemas/clock/rockchip,clk-pvtpll.yaml#
+> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > +
+> > +title: Rockchip Pvtpll
+> > +
+> > +maintainers:
+> > +  - Elaine Zhang <zhangqing@rock-chips.com>
+> > +  - Heiko Stuebner <heiko@sntech.de>
+> > +
+> > +properties:
+> > +  compatible:
+> > +    items:
+> > +      - enum:
+> > +          - rockchip,rv1103b-core-pvtpll
+> > +          - rockchip,rv1103b-enc-pvtpll
+> > +          - rockchip,rv1103b-isp-pvtpll
+> > +          - rockchip,rv1103b-npu-pvtpll
+> > +          - rockchip,rv1126b-core-pvtpll
+> > +          - rockchip,rv1126b-isp-pvtpll
+> > +          - rockchip,rv1126b-enc-pvtpll
+> > +          - rockchip,rv1126b-aisp-pvtpll
+> > +          - rockchip,rv1126b-npu-pvtpll
+> > +          - rockchip,rk3506-core-pvtpll
+> > +      - const: syscon
+> > +
+> > +  reg:
+> > +    maxItems: 1
+> > +
+> > +  "#clock-cells":
+> > +    const: 0
+> > +
+> > +  clocks:
+> > +    maxItems: 1
+> > +
+> > +  clock-output-names:
+> > +    maxItems: 1
+> > +
+> > +  rockchip,cru:
+> > +    $ref: /schemas/types.yaml#/definitions/phandle
+> > +    description: |
+> > +      Phandle to the main Clock and Reset Unit (CRU) controller.
+> > +      Required for PVTPLLs that need to interact with the main CRU
+> > +      for clock management operations.
+> > +
+> > +required:
+> > +  - "#clock-cells"
+> > +  - compatible
+> > +  - reg
+> > +  - clock-output-names
+> > +
+> > +additionalProperties: false
+> > +
+> > +examples:
+> > +  - |
+> > +    pvtpll_core: pvtpll-core@20480000 {
+
+Additionally, none of the labels are being used and should be removed.
+"pvtpll-anything" is also not a generic node name, so those should get
+changed too.
+
+> > +      compatible =3D "rockchip,rv1126b-core-pvtpll", "syscon";
+> > +      reg =3D <0x20480000 0x100>;
+> > +      #clock-cells =3D <0>;
+> > +      clock-output-names =3D "clk_core_pvtpll";
+> > +    };
+> > +
+> > +  - |
+> > +    pvtpll_isp: pvtpll-isp@21c60000 {
+> > +      compatible =3D "rockchip,rv1126b-isp-pvtpll", "syscon";
+> > +      reg =3D <0x21c60000 0x100>;
+> > +      rockchip,cru =3D <&cru>;
+> > +      #clock-cells =3D <0>;
+> > +      clock-output-names =3D "clk_isp_pvtpll";
+> > +    };
+> > +
+> > +  - |
+> > +    pvtpll_enc: pvtpll-enc@21f00000 {
+> > +      compatible =3D "rockchip,rv1126b-enc-pvtpll", "syscon";
+> > +      reg =3D <0x21f00000 0x100>;
+> > +      #clock-cells =3D <0>;
+> > +      clock-output-names =3D "clk_vepu_pvtpll";
+> > +    };
+> > +
+> > +  - |
+> > +    pvtpll_aisp: pvtpll-aisp@21fc0000 {
+> > +      compatible =3D "rockchip,rv1126b-aisp-pvtpll", "syscon";
+> > +      reg =3D <0x21fc0000 0x100>;
+> > +      rockchip,cru =3D <&cru>;
+> > +      #clock-cells =3D <0>;
+> > +      clock-output-names =3D "clk_vcp_pvtpll";
+> > +    };
+> > +
+> > +  - |
+> > +    pvtpll_npu: pvtpll-npu@22080000 {
+> > +      compatible =3D "rockchip,rv1126b-npu-pvtpll", "syscon";
+> > +      reg =3D <0x22080000 0x100>;
+> > +      rockchip,cru =3D <&cru>;
+> > +      #clock-cells =3D <0>;
+> > +      clock-output-names =3D "clk_npu_pvtpll";
+>=20
+> rockchip,cru line as the last line?
+>=20
+> Cheers,
+>   Diederik
+>=20
+> > +    };
+> > +
+> > +...
+>=20
+
+--zDbktCb2H3iO4Q0A
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaPZvAAAKCRB4tDGHoIJi
-0gdnAP9UKaGnCPV2zaldvnd211nAHuvWh9YTAsetUvI6810yKwEAvc3hLDjMN6Zn
-5Mim/845bWOoq9O19ETLpIYckAc7uAE=
-=7vaE
+iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaPZwhwAKCRB4tDGHoIJi
+0iLPAP94ZMFR0xuWCqtCuslKikrX4Ilvj42EKuYV0Wo1K3G3xgEA6RkNCbvO3yRX
+ZW3mmydndwZgdwfiMuW03QLeH0FEnwI=
+=Kr3S
 -----END PGP SIGNATURE-----
 
---7YQcMoFn8RBCI1lI--
+--zDbktCb2H3iO4Q0A--
 
 
---===============7356462269247144350==
+--===============9059353062687198405==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -112,5 +270,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============7356462269247144350==--
+--===============9059353062687198405==--
 
