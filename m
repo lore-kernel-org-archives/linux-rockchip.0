@@ -4,62 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3852FCCD193
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 10:23:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1A4DCCD199
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 11:08:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:From:Subject:
-	Cc:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OqYHTU6kGCaogLpSuqtn9RMEzTJmdvRDHECAdu+l+UM=; b=PSF8KJv3wwwKFx
-	UtDC7tTlEqeRB/e/ZKLezoBm1zDsHoUVFQFSH8yE9jPonlR/BvKJgk5PSaNjPwDJ3PkCIKv4J480l
-	XKqtbrO74YVep8Nw40EW7CxjO+RuPkibIObEHqY4LOUxLT7+YrwYqajVkEANGJWC7lv2bdFMOeOCn
-	l+T+PDeUdZngJkEVTxeU1m8VVNXytG9ltrWKa0Ok+owwOSZwElCqAucwJt0urNaEPi5+HPzGYwJrE
-	Tx+bbQNPeNTy08kf4nEBf6OriIahk1wfxYmG0zNMvKHZEHU1dPhGjQs74lqFsLwT0qI4TdJ/ZPB9s
-	Z8Sw6B5vcF4PkRFnanMw==;
+	List-Owner; bh=/ZUuuqgOC/1yeV/JSbii9ac+9wyd4SshQVOC2oSQGLo=; b=bNXufg7XLT0grE
+	aGkWQWAoDKP41cg/XYJUJz9Fd2u24i4mx4IYh45ZQQoOl96S19bo4Ck741KfxeHLr3yUmM9Npc8RX
+	Qy4wgB/BfIUIwAKqweTBlVYBoCI5NHggn6MjKFcRZAOxMLVPgNu7hcm9IkWfO+BuCs/Eh8V2x58rJ
+	1s2+EVecFfSRpswqzaC/atSIHLHjROE+EurdVQIXYDovjiJ6WSmU6P1DeGBDikzw4JgJXwDWNbUOo
+	+Z6FxhEbi3rQftQe1S8ITjk/Wm4vq3VX7gqegwblwQ5tZbX6n6ClnTtARWvUTu8/gjC00Pc3mZ3LT
+	qeh0Zvasa/ITXWM6FQbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAn2y-0000000Cqbw-044g;
-	Mon, 20 Oct 2025 10:23:24 +0000
-Received: from out-173.mta0.migadu.com ([2001:41d0:1004:224b::ad])
+	id 1vAnkC-0000000D0K1-0KHO;
+	Mon, 20 Oct 2025 11:08:04 +0000
+Received: from mail-m1973177.qiye.163.com ([220.197.31.77])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAn2w-0000000CqZU-1BCa
-	for linux-rockchip@lists.infradead.org;
-	Mon, 20 Oct 2025 10:23:23 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow-tech.com;
-	s=key1; t=1760955788;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=VNNEOzlbJ+EpRHTDYCWfkhalXUCCgphJIuOM79MU4aM=;
-	b=fPxtP3eO4pIybGviOxSGTBl0MzU+7o4PDjmokTLpHHAGISxHzP3X1744e25ke7RiLL+005
-	+92q7wEhleYQLj92B/f/Hv1drToatKE7qObN8+gxArTQsEtNRdOuRwtYYPeCnCl97MkN0a
-	PrQw3mkZQ3osWueSrcBbh3wikCfWbztfJ17se1Qe/diZ1kAXhfmgh4MqIIURB8ixiggQ5s
-	epnzhTpAgC8Nt8dxLs/9rs4do8CKdIYSwHaocGbxhwxpgY5dmMqWx9AbXMTQitoMbVFCgs
-	4652qbHH4N68+P/4gWEUUNgzDyLcMm/FI/vH4GsFoJIL4ypQw+8KfmmQebKcfQ==
-Date: Mon, 20 Oct 2025 12:23:05 +0200
-Message-Id: <DDN2Q7RZKYZR.E49OGFZL7BIW@cknow-tech.com>
-Cc: <maarten.lankhorst@linux.intel.com>, <mripard@kernel.org>,
- <tzimmermann@suse.de>, <robh@kernel.org>, <krzk+dt@kernel.org>,
- <conor+dt@kernel.org>, <quentin.schulz@cherry.de>,
- <andy.yan@rock-chips.com>, <dri-devel@lists.freedesktop.org>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <cn.liweihao@gmail.com>
-Subject: Re: [PATCH 0/9] Gernal RK3368 HDMI support and 2 outputs for
- RK3368-Lion
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <diederik@cknow-tech.com>
-To: "Heiko Stuebner" <heiko@sntech.de>
-References: <20251020082508.3636511-1-heiko@sntech.de>
-In-Reply-To: <20251020082508.3636511-1-heiko@sntech.de>
-X-Migadu-Flow: FLOW_OUT
+	id 1vAnk8-0000000D0HR-2sbv;
+	Mon, 20 Oct 2025 11:08:02 +0000
+Received: from [172.16.12.149] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 268423cdc;
+	Mon, 20 Oct 2025 19:07:48 +0800 (GMT+08:00)
+Message-ID: <954a67d1-1759-4e18-8eef-3fa14fb3cef5@rock-chips.com>
+Date: Mon, 20 Oct 2025 19:07:46 +0800
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6 1/8] usb: typec: Add default HPD device when register
+ DisplayPort altmode
+To: Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+ Chaoyi Chen <kernel@airkyi.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
+ Kishon Vijay Abraham I <kishon@kernel.org>, Heiko Stuebner
+ <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>,
+ Andy Yan <andy.yan@rock-chips.com>,
+ Yubing Zhang <yubing.zhang@rock-chips.com>,
+ Frank Wang <frank.wang@rock-chips.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Amit Sunil Dhamne <amitsd@google.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Dragan Simic <dsimic@manjaro.org>, Johan Jonker <jbx6244@gmail.com>,
+ Diederik de Haas <didi.debian@cknow.org>,
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+ Peter Robinson <pbrobinson@gmail.com>, linux-usb@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
+References: <20251016022741.91-1-kernel@airkyi.com>
+ <20251016022741.91-2-kernel@airkyi.com> <aPYImGmesrZWwyqh@kuha.fi.intel.com>
+Content-Language: en-US
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+In-Reply-To: <aPYImGmesrZWwyqh@kuha.fi.intel.com>
+X-HM-Tid: 0a9a014dd00203abkunm40e5dafaa0fcfb
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQxlKGVZPGB1KQx1CSU5CSUJWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpOTE
+	9VSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=dXqj5NkZfi6RdQnKgqMUg8BCh/n152sPRHim3KgJLTuoqkgUqNXBIJ1AlymydVKUpz8pF6HwyNm2AetRmBbh9s5l+IGGlsVFCOmPNAyFWUBGqpTYSkwmiZ3vxoKGCHQdHSj3aXmc2X4h5qhyffGPX+Ek0rtr7mj99qONbKoltJ8=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=PW2Gb3KgS1lxfff0TLl++nMBLOL4Uug61XDZnqG+onc=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251020_032322_459434_F2633E37 
-X-CRM114-Status: GOOD (  16.03  )
+X-CRM114-CacheID: sfid-20251020_040800_876229_9881EDC2 
+X-CRM114-Status: GOOD (  23.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,73 +85,148 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Heiko,
+Hi Heikki,
 
-On Mon Oct 20, 2025 at 10:24 AM CEST, Heiko Stuebner wrote:
-> This series adds the necessary bits for HDMI output on RK3368 and enables
-> this on RK3368-Lion. At the same time, use the recently added DSI support
-> to enable the generic Video-Demo-adapter as an overlay on Lion as well.
+On 10/20/2025 6:02 PM, Heikki Krogerus wrote:
+> On Thu, Oct 16, 2025 at 10:27:34AM +0800, Chaoyi Chen wrote:
+>> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+>>
+>> Add default DRM AUX HPD bridge device when register DisplayPort
+>> altmode. That makes it redundant for each Type-C driver to implement
+>> a similar registration process in embedded scenarios.
+>>
+>> Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+>> ---
+>>
+>> Changes in v6:
+>> - Fix depend in Kconfig.
+>>
+>> Changes in v5:
+>> - Remove the calls related to `drm_aux_hpd_bridge_notify()`.
+>> - Place the helper functions in the same compilation unit.
+>> - Add more comments about parent device.
+>>
+>>   drivers/usb/typec/Kconfig         |  2 ++
+>>   drivers/usb/typec/class.c         | 26 ++++++++++++++++++++++++++
+>>   include/linux/usb/typec_altmode.h |  2 ++
+>>   3 files changed, 30 insertions(+)
+>>
+>> diff --git a/drivers/usb/typec/Kconfig b/drivers/usb/typec/Kconfig
+>> index 2f80c2792dbd..a6730fbb576b 100644
+>> --- a/drivers/usb/typec/Kconfig
+>> +++ b/drivers/usb/typec/Kconfig
+>> @@ -2,6 +2,8 @@
+>>   
+>>   menuconfig TYPEC
+>>   	tristate "USB Type-C Support"
+>> +	depends on DRM || DRM=n
+>> +	select DRM_AUX_HPD_BRIDGE if DRM_BRIDGE && OF
+> This is wrong. DRM should not dictate how this entire subsystem core
+> is configured. The dependency needs to be on the DRM bridge side.
+>
+> You can for example use the bus notification there to see when a new
+> alternate mode is being registered, or use some other notification
+> mechanism.
 
-I noticed several 'spelling' issues in various patches, therefor
-reporting it against the series:
+Is it a good idea to implement notification functions like drivers/usb/core/notify.c in TCPM, and then let other subsystems (such as DRM) listen to these notifications?
 
-- s/Gernal/General/ ? (series Subject)
-- s/internal in the controller/internal to the controller/ (patch 1)
-
-Incorrect/inconsistent casing (not sure about these though):
-- s/phy/PHY/ (patch 2)
-- s/soc/SoC/ (patch 3 + 7)
-- s/hdmi/HDMI/ (patch 7)
-- s/vop/VOP/ (patch 7)
-
-- s/the newer one that/the newer ones that/ ? (correct if there is only
-  1 newer) (patch 3)
-- s/devicetree already is set up/devicetree is already set up/ (patch 3)
-- s/definitly/definitely/ (patch 4 + 5)
-- s/to no cause/to not cause/ (patch 4 + 5)
-- s/power-domain property/power-domains property/ (patch 4 + 5)
-- s/hirarchy/hierarchy/ (patch 6)
-- s/is change at/is changed at/ (patch 6)
-
-Sorry ;-P
-
-Diederik
 
 >
-> The reason I'm shaving this Yak is that the recently added DSI support
-> created DTC warnings about a single endpoint with an address.
+> thanks,
 >
-> So it was either removing the @0 from the endpoint, or adding a second
-> output option :-) .
->
->
-> Heiko Stuebner (9):
->   dt-bindings: display: rockchip: dw-hdmi: Add compatible for RK3368
->     HDMI
->   drm/rockchip: hdmi: add RK3368 controller variant
->   soc: rockchip: grf: Add select correct PWM implementation on RK3368
->   arm64: dts: rockchip: Add power-domain to RK3368 DSI controller
->   arm64: dts: rockchip: Add power-domain to RK3368 VOP controller
->   arm64: dts: rockchip: Use phandle for i2c_lvds_blc on rk3368-lion
->     haikou
->   arm64: dts: rockchip: Add HDMI node to RK3368
->   arm64: dts: rockchip: Enable HDMI output on RK3368-Lion-Haikou
->   arm64: dts: rockchip: Add the Video-Demo overlay for Lion Haikou
->
->  .../display/rockchip/rockchip,dw-hdmi.yaml    |   1 +
->  arch/arm64/boot/dts/rockchip/Makefile         |   5 +
->  .../rk3368-lion-haikou-video-demo.dtso        | 174 ++++++++++++++++++
->  .../boot/dts/rockchip/rk3368-lion-haikou.dts  |  36 +++-
->  arch/arm64/boot/dts/rockchip/rk3368.dtsi      |  45 +++++
->  drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c   |  16 ++
->  drivers/soc/rockchip/grf.c                    |   1 +
->  7 files changed, 268 insertions(+), 10 deletions(-)
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3368-lion-haikou-video-demo.dtso
+>>   	help
+>>   	  USB Type-C Specification defines a cable and connector for USB where
+>>   	  only one type of plug is supported on both ends, i.e. there will not
+>> diff --git a/drivers/usb/typec/class.c b/drivers/usb/typec/class.c
+>> index 67a533e35150..e9d7772d1a8f 100644
+>> --- a/drivers/usb/typec/class.c
+>> +++ b/drivers/usb/typec/class.c
+>> @@ -8,14 +8,18 @@
+>>   
+>>   #include <linux/module.h>
+>>   #include <linux/mutex.h>
+>> +#include <linux/of.h>
+>>   #include <linux/property.h>
+>>   #include <linux/slab.h>
+>>   #include <linux/string_choices.h>
+>>   #include <linux/usb/pd_vdo.h>
+>> +#include <linux/usb/typec_dp.h>
+>>   #include <linux/usb/typec_mux.h>
+>>   #include <linux/usb/typec_retimer.h>
+>>   #include <linux/usb.h>
+>>   
+>> +#include <drm/bridge/aux-bridge.h>
+>> +
+>>   #include "bus.h"
+>>   #include "class.h"
+>>   #include "pd.h"
+>> @@ -538,6 +542,21 @@ const struct device_type typec_altmode_dev_type = {
+>>   	.release = typec_altmode_release,
+>>   };
+>>   
+>> +static void dp_altmode_hpd_device_register(struct typec_altmode *alt)
+>> +{
+>> +	if (alt->svid != USB_TYPEC_DP_SID)
+>> +		return;
+>> +
+>> +	/*
+>> +	 * alt->dev.parent->parent : USB-C controller device
+>> +	 * alt->dev.parent         : USB-C connector device
+>> +	 */
+>> +	alt->hpd_dev = drm_dp_hpd_bridge_register(alt->dev.parent->parent,
+>> +						  to_of_node(alt->dev.parent->fwnode));
+>> +	if (IS_ERR(alt->hpd_dev))
+>> +		alt->hpd_dev = NULL;
+>> +}
+>> +
+>>   static struct typec_altmode *
+>>   typec_register_altmode(struct device *parent,
+>>   		       const struct typec_altmode_desc *desc)
+>> @@ -600,6 +619,13 @@ typec_register_altmode(struct device *parent,
+>>   		return ERR_PTR(ret);
+>>   	}
+>>   
+>> +	/*
+>> +	 * It is too late to register the HPD device when the DisplayPort
+>> +	 * altmode device becomes ready. If the current altmode is DP,
+>> +	 * register a static HPD device.
+>> +	 */
+>> +	dp_altmode_hpd_device_register(&alt->adev);
+>> +
+>>   	return &alt->adev;
+>>   }
+>>   
+>> diff --git a/include/linux/usb/typec_altmode.h b/include/linux/usb/typec_altmode.h
+>> index b3c0866ea70f..acb0af1b9d5d 100644
+>> --- a/include/linux/usb/typec_altmode.h
+>> +++ b/include/linux/usb/typec_altmode.h
+>> @@ -21,6 +21,7 @@ struct typec_altmode_ops;
+>>    * @desc: Optional human readable description of the mode
+>>    * @ops: Operations vector from the driver
+>>    * @cable_ops: Cable operations vector from the driver.
+>> + * @hpd_dev: HPD device for DisplayPort
+>>    */
+>>   struct typec_altmode {
+>>   	struct device			dev;
+>> @@ -32,6 +33,7 @@ struct typec_altmode {
+>>   	char				*desc;
+>>   	const struct typec_altmode_ops	*ops;
+>>   	const struct typec_cable_ops	*cable_ops;
+>> +	struct device			*hpd_dev;
+>>   };
+>>   
+>>   #define to_typec_altmode(d) container_of(d, struct typec_altmode, dev)
+>> -- 
+>> 2.49.0
+
+-- 
+Best,
+Chaoyi
 
 
 _______________________________________________
