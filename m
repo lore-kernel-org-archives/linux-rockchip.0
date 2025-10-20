@@ -4,56 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7417CCCD199
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 14:44:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7125ACCD199
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 15:19:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PeoLaUJ3AZ7DYnjJmp7uL1sVbM/nu51G+9d/M9if+hg=; b=LdoL5mVga7HKmS
-	ozJYiS9NDZBSSuG5g0QVwOtlOU+UNiTFM+LQ4LITmh3NZ1SecsAtiaFjMDgo1kzwU3Yc6T5h6Zaqu
-	7LyUJpwpjz+KcAAoS3vetTc60iLI9DvuR3O01DTMLfA5Mu7p2MOpISWyM7l/VX1fXDK8eBGZQbLSr
-	69gf1jtlQDcuZ+eULZaUs5T7qDkBgmOeb3cTCFX2+eXp/nhkGhP4Nm/rhIi3fgb9ntYut7itDH06t
-	4c+otj/V1zjwdc9Wdy+kYY8L53RYnFxKpyT09b8AskKnoihmf7ISQcAR9LmCZZi8SefMFfs5p37xR
-	UqQZ8GCzLjzRXYxnEC+w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=iMUXUv/IbGoKiAANHCWeOoxLO8cIpaMk6+Hu6igLb+k=; b=uUG/sCE7wV2gzC/W/eyHbf/Jlg
+	TbCvl+PK7W8p4RkAsxbH5Q79ZUEYDToo12SvHpzLBorSFz5JG/25RC5D3XjabFS/Wu6ToMs1t6o/P
+	D04OG3kn2XqQCQqXmTuoNRv0e7UJiDuA/cCaA9tsh0pA40b3A4imAKjHKDqwB2ALB6WpXPgON8kyR
+	2SIkgD1rmMKd2b6XjYuA2ioaLhJa29as2n+mhlTL1Vl1oT8wuKP7867/7tKsO1+ZSkVt1l89gzXMF
+	u1WKbOPiQP1wDKyzDpPvKAdgDJKE3mT4KqfWG8nYmeeySNNsGj3AtfRmVTH9KU3SrinJIw5+8uvnm
+	y2DL/RXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAr7f-0000000Dzf8-0hSe;
-	Mon, 20 Oct 2025 14:44:31 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1vArfe-0000000E6CL-0HR1;
+	Mon, 20 Oct 2025 15:19:38 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAr7c-0000000Dzdq-0oyM;
-	Mon, 20 Oct 2025 14:44:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=AT8kvrM/pmB47OHQy99Ebe3K0Er153ALtlnbPz3lC68=; b=MZzlvL561DhtDq2BnjgVNhw48X
-	LdAaF8ZhQcfaQgm+NAamiJkMr1WoA4Bu+vWxwcgA8s87SSytjOE920W12HnSzH968gx/MuzEGhHbD
-	cxjoHsx9T4BY87bsYn+dVVg21RLcSxSSZbHPwh/7s9VIQwrPjqWLzq1mshNxOI0TOHOscFvu+d8Sq
-	F8u1vl5xdWcg4gPAi9uiykIAgMyOVqoUA+jxcMMYASFvKKrhHMPFL0BNMUBxYkBFH+mLSmYOfHq0q
-	llao0jVA859vPzpB2Wgb3Sp+Zv9DYtQn369m9EtC0CggdZFfCJK2HoqdkAX5ODls1ZArzmC0j1iiq
-	PKgScYYw==;
-Received: from [212.111.240.218] (helo=phil.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1vAr7W-0002MH-Fu; Mon, 20 Oct 2025 16:44:22 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Subject: Re: [PATCH v2 0/5] arm64: dts: rockchip: Add device tree for the Orange Pi
- CM5 Base board
-Date: Mon, 20 Oct 2025 16:44:21 +0200
-Message-ID: <2328202.iZASKD2KPV@phil>
-In-Reply-To: <20251005235542.1017-1-laurent.pinchart@ideasonboard.com>
-References: <20251005235542.1017-1-laurent.pinchart@ideasonboard.com>
+	id 1vArfb-0000000E6B4-2xg9
+	for linux-rockchip@lists.infradead.org;
+	Mon, 20 Oct 2025 15:19:37 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <mkl@pengutronix.de>)
+	id 1vArfT-0003vB-7G; Mon, 20 Oct 2025 17:19:27 +0200
+Received: from moin.white.stw.pengutronix.de ([2a0a:edc0:0:b01:1d::7b] helo=bjornoya.blackshift.org)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <mkl@pengutronix.de>)
+	id 1vArfS-004ZTW-1I;
+	Mon, 20 Oct 2025 17:19:26 +0200
+Received: from pengutronix.de (p54b152ce.dip0.t-ipconnect.de [84.177.82.206])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(Client did not present a certificate)
+	(Authenticated sender: mkl-all@blackshift.org)
+	by smtp.blackshift.org (Postfix) with ESMTPSA id 1DBDB48B56C;
+	Mon, 20 Oct 2025 15:19:26 +0000 (UTC)
+Date: Mon, 20 Oct 2025 17:19:24 +0200
+From: Marc Kleine-Budde <mkl@pengutronix.de>
+To: Dario Binacchi <dario.binacchi@amarulasolutions.com>, 
+	Vincent Mailhol <mailhol@kernel.org>, Oliver Hartkopp <socketcan@hartkopp.net>, 
+	Stefan =?utf-8?B?TcOkdGpl?= <stefan.maetje@esd.eu>, socketcan@esd.eu, Heiko Stuebner <heiko@sntech.de>
+Cc: kernel@pengutronix.de, linux-can@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH can 0/3] can: drivers: drop skb in xmit if device is in
+ listen only mode
+Message-ID: <20251020-electric-dramatic-cow-e8178b-mkl@pengutronix.de>
+References: <20251017-fix-skb-drop-check-v1-0-556665793fa4@pengutronix.de>
 MIME-Version: 1.0
+In-Reply-To: <20251017-fix-skb-drop-check-v1-0-556665793fa4@pengutronix.de>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: mkl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251020_074428_232311_89B641A1 
-X-CRM114-Status: GOOD (  21.42  )
+X-CRM114-CacheID: sfid-20251020_081935_738984_5BCB23A0 
+X-CRM114-Status: GOOD (  13.40  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,47 +77,71 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Ondrej Jirman <megi@xff.cz>, Conor Dooley <conor+dt@kernel.org>, Cenk Uluisik <cenk.uluisik@googlemail.com>, Rob Herring <robh@kernel.org>, Jimmy Hon <honyuenkwun@gmail.com>, Kever Yang <kever.yang@rock-chips.com>, Maxime Ripard <mripard@kernel.org>, Sandy Huang <hjc@rock-chips.com>, Muhammed Efe Cetin <efectn@6tel.net>, Algea Cao <algea.cao@rock-chips.com>, Alexey Charkov <alchark@gmail.com>, Andy Yan <andy.yan@rock-chips.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============7912713660145513686=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgTGF1cmVudCwKCkFtIE1vbnRhZywgNi4gT2t0b2JlciAyMDI1LCAwMTo1NTozNiBNaXR0ZWxl
-dXJvcMOkaXNjaGUgU29tbWVyemVpdCBzY2hyaWViIExhdXJlbnQgUGluY2hhcnQ6Cj4gSGVsbG8s
-Cj4gCj4gVGhpcyBwYXRjaCBzZXJpZXMgYWRkcyBhIGRldmljZSB0cmVlIGZvciB0aGUgT3Jhbmdl
-IFBpIENNNSBCYXNlIGJvYXJkCj4gZnJvbSBYdW5sb25nLiBUaGlzIGlzIGEgY29tYmluYXRpb24g
-b2YgYSBjb21wdXRlIG1vZHVsZSBhbmQgYSBjYXJyaWVyCj4gYm9hcmQsIHNvIHRoZSBkZXZpY2Ug
-dHJlZSBpcyBzcGxpdCBpbiB0d28gZmlsZXMuCj4gCj4gVGhlIHdvcmsgaXMgYmFzZWQgb24gYSBj
-b21iaW5hdGlvbiBvZiB1cHN0cmVhbSBkZXZpY2UgdHJlZXMgZm9yIG90aGVyCj4gUkszNTg4LWJh
-c2VkIE9yYW5nZSBQaSBib2FyZHMgYW5kIHRoZSBkb3duc3RyZWFtIGRldmljZSB0cmVlLCBhbGwK
-PiBjaGVja2VkIGFnYWluc3QgdGhlIGF2YWlsYWJsZSBzY2hlbWF0aWNzIGZvciB0aGUgY2Fycmll
-ciBib2FyZC4gVGhlCj4gY29tcHV0ZSBtb2R1bGUgc2NoZW1hdGljcyBpcyB1bmZvcnR1bmF0ZWx5
-IG5vdCBhdmFpbGFibGUuCj4gCj4gVGhlIHNlcmllcyBzdGFydHMgd2l0aCB0aHJlZSBwYXRjaGVz
-IHRoYXQgYWRkIGEgbmV3IHRtZHMtZW5hYmxlLWdwaW9zCj4gcHJvcGVydHkgdG8gdGhlIHJrMzU4
-OC1kdy1oZG1pLXFwIERUIGJpbmRpbmcgKDEvNSkgYW5kIHVwZGF0ZSB0aGUgZHJpdmVyCj4gYWNj
-b3JkaW5nbHkgKDIvNSBhbmQgMy81KS4gVGhvc2UgcGF0Y2hlcyBoYXZlIGJlZW4gYXV0aG9yZWQg
-YnkgQ3Jpc3RpYW4KPiBDaW9jYWx0ZWEgYXMgcGFydCBvZiBhIGxhcmdlciBzZXJpZXMsIEkgaGF2
-ZSBpbmNvcnBvcmF0ZWQgdGhlbSBoZXJlCj4gYXMtaXMuCj4gCj4gUGF0Y2ggNC81IHRoZW4gYWRk
-IGEgbmV3IGNvbXBhdGlibGUgZm9yIHRoZSBib2FyZCB0byBhcm0vcm9ja2NoaXAueWFtbC4KPiBU
-aGUgbGFzdCBwYXRjaCAoNS81KSBhZGRzIHRoZSBkZXZpY2UgdHJlZSBmb3IgdGhlIGJvYXJkLgo+
-IAo+IFBhdGNoZXMgMi81IGFuZCAzLzUgY291bGQgYmUgbWVyZ2VkIHNlcGFyYXRlbHkgdGhyb3Vn
-aCB0aGUgRFJNIHRyZWUsCj4gYnV0IHBhdGNoIDEvNSBuZWVkcyB0byBiZSBtZXJnZWQgd2l0aCB0
-aGUgZGV2aWNlIHRyZWUgaW4gNS81IHRvIGF2b2lkCj4gaW50cm9kdWNpbmcgRFQgdmFsaWRhdGlv
-biB3YXJuaW5ncy4gSSdkIGFwcHJlY2lhdGUgYWR2aWNlIGZyb20gdGhlIERUCj4gbWFpbnRhaW5l
-cnMgcmVnYXJkaW5nIGhvdyB0byBoYW5kbGUgdGhpcywgYXMgSSBoYXZlIGJlZW4gdG9sZCBiZWZv
-cmUKPiB0aGF0IERUIGJpbmRpbmdzIGFuZCBEVCBzb3VyY2VzIGNhbid0IGJlIG1lcmdlZCB0aHJv
-dWdoIHRoZSBzYW1lIHRyZWUuCgpJIHRoaW5rIHdlIGdlbmVyYWxseSBvbmx5IGNhcmUgYWJvdXQg
-YmluZGluZyB3YXJuaW5ncyBoYXBwZW5pbmcKaW4gbGludXgtbmV4dC4KCkkuZS4gaW4gbW9zdCBj
-YXNlcywgdGhlIGJpbmRpbmcgaXMgbWVyZ2VkIHdpdGggdGhlIGRyaXZlciBhbmQKdGhlIGR0cyB0
-aGVuIGludG8gYSBzZXBhcmF0ZSB0cmVlIC0gc29ydCBvZiBpZ25vcmluZyB0aGUgbG9jYWwKYmlu
-ZGluZyBlcnJvciwgYmVjYXVzZSBldmVyeXRoaW5nIHdpbGwgYmUgZmluZSBvbmNlIHN0dWZmIGNv
-bWVzCnRvZ2V0aGVyIGluIGxpbnV4LW5leHQuCgoKU3BlYWtpbmcgb2YgYmluZGluZ3MsIGRvZXMg
-eW91ciBib2FyZCBfbmVlZF8gdGhlIGZybC1ncGlvIHRvIHByb2R1Y2UKYW55IGhkbWkgb3V0cHV0
-PyBMaWtlIGNvdWxkIHdlIG1lcmdlIHRoZSBib2FyZCB3aXRob3V0IHRoZSAob3B0aW9uYWwpCmdw
-aW8gYW5kIHRoZW4gYWRkIGl0IGxhdGVyLCBvbmNlIHRoZSBiaW5kaW5nK2RyaXZlciBoYXZlIG1h
-ZGUgaXQgaW4/CgpKdXN0IG1lIHRyeWluZyB0byBncmFiIHRoZSBiaWcgY2h1bmtzIGVhcmxpZXIg
-aW4gdGhlIGN5Y2xlLgoKClRoYW5rcwpIZWlrbwoKCgpfX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgt
-cm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+
+--===============7912713660145513686==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="l5m4fvbx7vmqre5l"
+Content-Disposition: inline
+
+
+--l5m4fvbx7vmqre5l
+Content-Type: text/plain; protected-headers=v1; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH can 0/3] can: drivers: drop skb in xmit if device is in
+ listen only mode
+MIME-Version: 1.0
+
+On 17.10.2025 16:59:58, Marc Kleine-Budde wrote:
+> I notived that 3 drivers (bxcan, esd and rockchip) use the function
+> can_dropped_invalid_skb(), that doesn't check if the device is in listen
+> only mode. This series converts these driver to use the new
+> can_dev_dropped_skb() function.
+>=20
+> Signed-off-by: Marc Kleine-Budde <mkl@pengutronix.de>
+
+Applied to linux-can.
+
+Marc
+
+--=20
+Pengutronix e.K.                 | Marc Kleine-Budde          |
+Embedded Linux                   | https://www.pengutronix.de |
+Vertretung N=C3=BCrnberg              | Phone: +49-5121-206917-129 |
+Amtsgericht Hildesheim, HRA 2686 | Fax:   +49-5121-206917-9   |
+
+--l5m4fvbx7vmqre5l
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEn/sM2K9nqF/8FWzzDHRl3/mQkZwFAmj2UvgACgkQDHRl3/mQ
+kZwysQf7BA83gk3POJDewYtZEMQHNZnob1qHnopUO8DyF+bSAr7qCymLLwpj2R7p
+shOie/EQ8QeEeWPeVYQS4u1kjbO5xRtQ8bmQCgDcOnpg6JXX/zZ9/8yGgeJhzMoo
+aE7MnZEV1C9jA5MVXNVyfCGtAJizWWPHyf5R8mwDSqAJmm3UlXtx8UEL8b7tCaEB
+Hhg/LmIL2BLWZC9l+IS78R8CUFRKVq3RjLK2nyzCb4SYGJfuxXzoF2rQUBGseTL+
+MFPb1SW/15f2f2GJzdqPdgW2nhy2S7NxGrWCqs+J27GTySr20aW4poTMBtU7+KvL
+U+/LpZDPJ1qd4ljdZ8WxHeUiaWQ++A==
+=5pMM
+-----END PGP SIGNATURE-----
+
+--l5m4fvbx7vmqre5l--
+
+
+--===============7912713660145513686==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============7912713660145513686==--
+
