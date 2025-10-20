@@ -4,63 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84AC6CCD199
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 08:20:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFA27CCD1A5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 08:25:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KzTEXcseuGiHob0ONnz5WPsUtW3mLVKc1A2vd5xxmTs=; b=3jXjqCxkP5pBys
-	2EVY2U8vYiElPRKiSV38u8nwRA8lAg+qKR9TgzLW6Y0j4FrQ6JoO1eM/sdDcmu7yGKB4cf9Xr0egC
-	ABKiIaqdHRaswBbheB/pkxg2AtXwO6AlN1KVpIbygcoiF0yDDDEGTMAFoF1ebU4/NB5PlwrccGOR+
-	7bSgeIjQmO9dn7hpuJN1GbMy/ZIr+FtLc/DF1fIUHH6egZlOafi5NHbheeDxP5xJrjFGRlCKebspF
-	aFoAsP4wcBFknLpxxVuWc2AcDpp0nhOgCp7MpHpEmG1aYR6UJ7ZA+vYNmrTHHD/4V8QdpZTCt40kf
-	ylZWBF+sQuOosyfJzHnA==;
+	List-Owner; bh=uKEzzhmUmLmp16toMlxMdswMeNbpde5pBXhIWCAAFQM=; b=hjLR8cdSDqOmDl
+	FExZquC6z//EKUNVVB6cnwVS3ducqtgS9K8gd05KLHgqVoboPm8V2OC+wQ7d0EEGABU2ZtkWT4J4x
+	3Ccx8K6FiU9Nf57vPTmvhorSAYDbqqu5+g9oqfu/AoUPSbiD1IQkLFH8de6AK6clBdRzUKSo6G6jD
+	cIV2aUHtHgLYcyHKy8zUVnnp6P4IYPsqxjDPEYYnKfApDETZB+Fg/FmvGXEFeSXQHnv0fMiF/qYYz
+	OhV3zFackCKTXU134DDoaGwu5WkiKjE8gDTqnY1q+QXnEa6PBc+w5IdG4OdkVKxlx9OkAkwhWFVpv
+	xAVUwxtdY2sFjMi6gHDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAl8F-0000000CLH9-1V15;
-	Mon, 20 Oct 2025 08:20:43 +0000
-Received: from mail-m158252.netease.com ([47.251.158.252])
+	id 1vAlCS-0000000CLz4-0cat;
+	Mon, 20 Oct 2025 08:25:04 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAl8B-0000000CLEX-2qUn;
-	Mon, 20 Oct 2025 08:20:41 +0000
-Received: from [172.16.12.129] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 267e17090;
-	Mon, 20 Oct 2025 16:20:32 +0800 (GMT+08:00)
-Message-ID: <77be8aa2-f91b-4291-b3f3-73ae97a2c495@rock-chips.com>
-Date: Mon, 20 Oct 2025 16:20:31 +0800
+	id 1vAlCO-0000000CLvr-3ydD;
+	Mon, 20 Oct 2025 08:25:02 +0000
+Received: from [192.168.1.102] (93-61-96-190.ip145.fastwebnet.it [93.61.96.190])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 8669F1116;
+	Mon, 20 Oct 2025 10:23:15 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1760948596;
+	bh=Hf+mZVh/21OUTmvHUpHmYMXcMyGNzYqP900JsER1oH0=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=ojklEwlhYOqITshz00TVK0juS1OgjQHxBPpcMCZktghSARYMLdVpArGGU0zyguug3
+	 yNCr3xk9LXIUsldkmT0CqsjLQe9cI5AsbuY/vyc6yE8+2trImmRQ2kMefwcM/Rd04y
+	 GxPSGhSYftIG0VhWMcl0aMzcwNiE3oOvbKPnToGc=
+From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+Date: Mon, 20 Oct 2025 10:24:47 +0200
+Subject: [PATCH v8 1/8] media: uapi: Introduce V4L2 generic ISP types
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Cc: shawn.lin@rock-chips.com, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Grzegorz Sterniczuk <grzegorz@sternicz.uk>,
- Dragan Simic <dsimic@manjaro.org>, Heiko Stuebner <heiko@sntech.de>,
- Jonas Karlman <jonas@kwiboo.se>
-Subject: Re: [PATCH] arm64: dts: rockchip: fix eMMC corruption on NanoPC-T6
- with A3A444 chips
-To: Tianling Shen <cnsztl@gmail.com>, Hugh Cole-Baker <sigmaris@gmail.com>
-References: <20251017073954.130710-1-cnsztl@gmail.com>
- <d70c0eb5-9aa2-47b1-8205-81b724180319@rock-chips.com>
- <08911ae2-fef3-432d-a236-d820c9cb67ac@gmail.com>
-From: Shawn Lin <shawn.lin@rock-chips.com>
-In-Reply-To: <08911ae2-fef3-432d-a236-d820c9cb67ac@gmail.com>
-X-HM-Tid: 0a9a00b4af9a09cckunma851ec124e48ea
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQx0dS1ZCH05CSk1NGktOGBpWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpKQk
-	xVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=FYMRm0h1xoQknRUP34oGrB1pA/MPaKTWnA15xR/xfT/uxUzm/R3VAhuGIvU7aAoEqk+PnXghGlYL7e3oETmsIeuQBW+Gd35FhFLL1e6TMR6nodDCFy0foDq1PeNgNyHlhIKYanQcemlRddnjKuY/VgAkZxmNLsHxuRebDevp9p0=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=8h2l1N5Cg8vyKobtn2Pe4zUGVCtgOR3YdwiahusUFj0=;
-	h=date:mime-version:subject:message-id:from;
+Message-Id: <20251020-extensible-parameters-validation-v8-1-afba4ba7b42d@ideasonboard.com>
+References: <20251020-extensible-parameters-validation-v8-0-afba4ba7b42d@ideasonboard.com>
+In-Reply-To: <20251020-extensible-parameters-validation-v8-0-afba4ba7b42d@ideasonboard.com>
+To: Dafna Hirschfeld <dafna@fastmail.com>, 
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+ Keke Li <keke.li@amlogic.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Heiko Stuebner <heiko@sntech.de>, Dan Scally <dan.scally@ideasonboard.com>, 
+ Sakari Ailus <sakari.ailus@linux.intel.com>, 
+ Antoine Bouyer <antoine.bouyer@nxp.com>
+Cc: linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+ Jacopo Mondi <jacopo.mondi@ideasonboard.com>, 
+ Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, 
+ Michael Riesch <michael.riesch@collabora.com>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=6398;
+ i=jacopo.mondi@ideasonboard.com; h=from:subject:message-id;
+ bh=Hf+mZVh/21OUTmvHUpHmYMXcMyGNzYqP900JsER1oH0=;
+ b=owEBbQKS/ZANAwAKAXI0Bo8WoVY8AcsmYgBo9fHX8D+twJn48EIwve+Jbu+M5/6sKEm0nl4uE
+ EuR8+S+Z3CJAjMEAAEKAB0WIQS1xD1IgJogio9YOMByNAaPFqFWPAUCaPXx1wAKCRByNAaPFqFW
+ PDlXD/9QXQKgF8/QaKK3apST+wAmtomhqqny2ZnSWi192RvOt8Fly10F9RnCYce0fXcRJPEr2EJ
+ Vki6yE4u/2Cn3OM2J2R22/r1f8zjj2LcDAE5NoJo2QkOc9viNLtJwgj8tscEF01WprShMJ1yOqr
+ f9sosL6CqRvb5uErFFdWqTcZZECSzbkR0jy59/UG1i32dyTamvBJHb7Md0aYrIuRNT8BQP6J+FP
+ pNTcHyzHHUmeel9XwiyJ+gkbCyEJI4GEYPTLA/E+UmtV3TnjgsuXsUnp5g02teWy+MQqQHFb5Ji
+ KWB5wzRJN+bnVV/XYmRbXCtiAHwVOHRfNUrI/VTm2Qz7Qtmko5QfB17xjsIrULIgCEBasiymf0E
+ Ayxv3TtMm7oe+BCzUJWtYbt9E0zEZjh/cJirncmmgLUBeOHzzTK7rxLaQ7yb7eed8IaDX0oGVVw
+ 3PjRGY/BcMyOIedf4ArP6s7dw7ZzPj942DJHYKSsGNTlYrmjiReIY7w/epeaeeHmAc7LQV2qUwr
+ ZdzUqUOtmRFTV092sxqWR0AJ160Z+z1xvnA4YoEZzDicftKq1D1ewgRl/DQNsSUZMBLjBhXBJdt
+ ObPAkADBZVGr5yJd1IhgIa3Y7nIN9yRsf+Nq3UitZbOhqp/HCjX5hnzWN5CyMckWGXTJE8xKb0S
+ e6gvfpZUZp4ZJdQ==
+X-Developer-Key: i=jacopo.mondi@ideasonboard.com; a=openpgp;
+ fpr=72392EDC88144A65C701EA9BA5826A2587AD026B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251020_012040_228523_34477F0E 
-X-CRM114-Status: GOOD (  17.01  )
+X-CRM114-CacheID: sfid-20251020_012501_139013_C3CEB19E 
+X-CRM114-Status: GOOD (  22.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,41 +86,169 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-KyBIdWdoIENvbGUtQmFrZXIgd2hvIHNlZW1zIGFsc28gc3VmZmVyIGZyb20gdGhpcyBpc3N1ZQoK
-5ZyoIDIwMjUvMTAvMjAg5pif5pyf5LiAIDEyOjQ0LCBUaWFubGluZyBTaGVuIOWGmemBkzoKPiBI
-aSBTaGF3biwKPiAKPiBPbiAyMDI1LzEwLzIwIDk6NTMsIFNoYXduIExpbiB3cm90ZToKPj4gSGkg
-VGlhbmxpbmcKPj4KPj4gT24gMjAyNS8xMC8xNyBGcmlkYXkgMTU6MzksIFRpYW5saW5nIFNoZW4g
-d3JvdGU6Cj4+PiBGcm9tOiBHcnplZ29yeiBTdGVybmljenVrIDxncnplZ29yekBzdGVybmljei51
-az4KPj4+Cj4+PiBTb21lIE5hbm9QQy1UNiBib2FyZHMgd2l0aCBBM0E0NDQgZU1NQyBjaGlwcyBl
-eHBlcmllbmNlIEkvTyBlcnJvcnMgYW5kCj4+PiBjb3JydXB0aW9uIHdoZW4gdXNpbmcgSFM0MDAg
-bW9kZS4gRG93bmdyYWRlIHRvIEhTMjAwIG1vZGUgdG8gZW5zdXJlCj4+PiBzdGFibGUgb3BlcmF0
-aW9uLgo+Pgo+PiBNYXkgSSBhc2sgeW91IHRvIHRlc3QgYW5vdGhlciBwYXRjaCBJIGp1c3QgcG9z
-dGVkIHRvIHNlZSBpZiBpdCBmaXhlcwo+PiB5b3VyIGlzc3VlPwo+Pgo+PiBodHRwczovL3BhdGNo
-d29yay5rZXJuZWwub3JnL3Byb2plY3QvbGludXgtbW1jLyAKPj4gcGF0Y2gvMTc2MDkyNDk4MS01
-MjMzOS0xLSBnaXQtc2VuZC1lbWFpbC1zaGF3bi5saW5Acm9jay1jaGlwcy5jb20vCj4gCj4gVGhh
-bmsgeW91IGZvciB0aGUgcGF0Y2ghIEkgd2lsbCBhc2sgbXkgZnJpZW5kIHRvIHRlc3QgaXQgYnV0
-IGhlIHVzZXMgCj4gdGhpcyBib2FyZCBhcyBhIGhvbWUgcm91dGVyLCBzbyBpdCBtYXkgdGFrZSBh
-IGZldyBkYXlzIG9yIHdlZWtzIHRvIAo+IHJlcG9ydCB0aGUgcmVzdWx0LgogPiA+IFRoYW5rcywK
-PiBUaWFubGluZy4KPiAKPj4KPj4KPj4+Cj4+PiBTaWduZWQtb2ZmLWJ5OiBHcnplZ29yeiBTdGVy
-bmljenVrIDxncnplZ29yekBzdGVybmljei51az4KPj4+IFNpZ25lZC1vZmYtYnk6IFRpYW5saW5n
-IFNoZW4gPGNuc3p0bEBnbWFpbC5jb20+Cj4+PiAtLS0KPj4+IMKgIGFyY2gvYXJtNjQvYm9vdC9k
-dHMvcm9ja2NoaXAvcmszNTg4LW5hbm9wYy10Ni5kdHNpIHwgMyArLS0KPj4+IMKgIDEgZmlsZSBj
-aGFuZ2VkLCAxIGluc2VydGlvbigrKSwgMiBkZWxldGlvbnMoLSkKPj4+Cj4+PiBkaWZmIC0tZ2l0
-IGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODgtbmFub3BjLXQ2LmR0c2kgYi8g
-Cj4+PiBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OC1uYW5vcGMtdDYuZHRzaQo+
-Pj4gaW5kZXggZmFmZWFiZTlhZGY5Li41ZjYzZjM4ZjczMjYgMTAwNjQ0Cj4+PiAtLS0gYS9hcmNo
-L2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OC1uYW5vcGMtdDYuZHRzaQo+Pj4gKysrIGIv
-YXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODgtbmFub3BjLXQ2LmR0c2kKPj4+IEBA
-IC03MTcsOCArNzE3LDcgQEAgJnNkaGNpIHsKPj4+IMKgwqDCoMKgwqAgbm8tc2Q7Cj4+PiDCoMKg
-wqDCoMKgIG5vbi1yZW1vdmFibGU7Cj4+PiDCoMKgwqDCoMKgIG1heC1mcmVxdWVuY3kgPSA8MjAw
-MDAwMDAwPjsKPj4+IC3CoMKgwqAgbW1jLWhzNDAwLTFfOHY7Cj4+PiAtwqDCoMKgIG1tYy1oczQw
-MC1lbmhhbmNlZC1zdHJvYmU7Cj4+PiArwqDCoMKgIG1tYy1oczIwMC0xXzh2Owo+Pj4gwqDCoMKg
-wqDCoCBzdGF0dXMgPSAib2theSI7Cj4+PiDCoCB9Owo+Pgo+IAo+IAoKCl9fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcg
-bGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZy
-YWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Introduce v4l2-isp.h in the Linux kernel uAPI.
+
+The header includes types for generic ISP configuration parameters
+and will be extended in the future with support for generic ISP statistics
+formats.
+
+Generic ISP parameters support is provided by introducing two new
+types that represent an extensible and versioned buffer of ISP
+configuration parameters.
+
+The v4l2_params_buffer represents the container for the ISP
+configuration data block. The generic type is defined with a 0-sized
+data member that the ISP driver implementations shall properly size
+according to their capabilities. The v4l2_params_block_header structure
+represents the header to be prepend to each ISP configuration block.
+
+Signed-off-by: Daniel Scally <dan.scally@ideasonboard.com>
+Reviewed-by: Daniel Scally <dan.scally@ideasonboard.com>
+Reviewed-by: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>
+Reviewed-by: Michael Riesch <michael.riesch@collabora.com>
+Acked-by: Sakari Ailus <sakari.ailus@linux.intel.com>
+Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+---
+ MAINTAINERS                         |   6 +++
+ include/uapi/linux/media/v4l2-isp.h | 102 ++++++++++++++++++++++++++++++++++++
+ 2 files changed, 108 insertions(+)
+
+diff --git a/MAINTAINERS b/MAINTAINERS
+index f7351fced572eff0a18038095ec1724047890b55..d925745077f21e5a1388a30217a24beeb4fff3b5 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -26852,6 +26852,12 @@ F:	drivers/media/i2c/vd55g1.c
+ F:	drivers/media/i2c/vd56g3.c
+ F:	drivers/media/i2c/vgxy61.c
+ 
++V4L2 GENERIC ISP PARAMETERS AND STATISTIC FORMATS
++M:	Jacopo Mondi <jacopo.mondi@ideasonboard.com>
++L:	linux-media@vger.kernel.org
++S:	Maintained
++F:	include/uapi/linux/media/v4l2-isp.h
++
+ VF610 NAND DRIVER
+ M:	Stefan Agner <stefan@agner.ch>
+ L:	linux-mtd@lists.infradead.org
+diff --git a/include/uapi/linux/media/v4l2-isp.h b/include/uapi/linux/media/v4l2-isp.h
+new file mode 100644
+index 0000000000000000000000000000000000000000..779168f9058e3bcf6451f681e247d34d95676cc0
+--- /dev/null
++++ b/include/uapi/linux/media/v4l2-isp.h
+@@ -0,0 +1,102 @@
++/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
++/*
++ * Video4Linux2 generic ISP parameters and statistics support
++ *
++ * Copyright (C) 2025 Ideas On Board Oy
++ * Author: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
++ */
++
++#ifndef _UAPI_V4L2_ISP_H_
++#define _UAPI_V4L2_ISP_H_
++
++#include <linux/stddef.h>
++#include <linux/types.h>
++
++/**
++ * enum v4l2_isp_params_version - V4L2 ISP parameters versioning
++ *
++ * @V4L2_ISP_PARAMS_VERSION_V0: First version of the V4L2 ISP parameters format
++ *				(for compatibility)
++ * @V4L2_ISP_PARAMS_VERSION_V1: First version of the V4L2 ISP parameters format
++ *
++ * V0 and V1 are identical in order to support drivers compatible with the V4L2
++ * ISP parameters format already upstreamed which use either 0 or 1 as their
++ * versioning identifier. Both V0 and V1 refers to the first version of the
++ * V4L2 ISP parameters format.
++ *
++ * Future revisions of the V4L2 ISP parameters format should start from the
++ * value of 2.
++ */
++enum v4l2_isp_params_version {
++	V4L2_ISP_PARAMS_VERSION_V0 = 0,
++	V4L2_ISP_PARAMS_VERSION_V1
++};
++
++#define V4L2_ISP_PARAMS_FL_BLOCK_DISABLE	(1U << 0)
++#define V4L2_ISP_PARAMS_FL_BLOCK_ENABLE		(1U << 1)
++
++/*
++ * Reserve the first 8 bits for V4L2_ISP_PARAMS_FL_* flag.
++ *
++ * Driver-specific flags should be defined as:
++ * #define DRIVER_SPECIFIC_FLAG0     ((1U << V4L2_ISP_PARAMS_FL_DRIVER_FLAGS(0))
++ * #define DRIVER_SPECIFIC_FLAG1     ((1U << V4L2_ISP_PARAMS_FL_DRIVER_FLAGS(1))
++ */
++#define V4L2_ISP_PARAMS_FL_DRIVER_FLAGS(n)       ((n) + 8)
++
++/**
++ * struct v4l2_isp_params_block_header - V4L2 extensible parameters block header
++ * @type: The parameters block type (driver-specific)
++ * @flags: A bitmask of block flags (driver-specific)
++ * @size: Size (in bytes) of the parameters block, including this header
++ *
++ * This structure represents the common part of all the ISP configuration
++ * blocks. Each parameters block shall embed an instance of this structure type
++ * as its first member, followed by the block-specific configuration data.
++ *
++ * The @type field is an ISP driver-specific value that identifies the block
++ * type. The @size field specifies the size of the parameters block.
++ *
++ * The @flags field is a bitmask of per-block flags V4L2_PARAMS_ISP_FL_* and
++ * driver-specific flags specified by the driver header.
++ */
++struct v4l2_isp_params_block_header {
++	__u16 type;
++	__u16 flags;
++	__u32 size;
++} __attribute__((aligned(8)));
++
++/**
++ * struct v4l2_isp_params_buffer - V4L2 extensible parameters configuration
++ * @version: The parameters buffer version (driver-specific)
++ * @data_size: The configuration data effective size, excluding this header
++ * @data: The configuration data
++ *
++ * This structure contains the configuration parameters of the ISP algorithms,
++ * serialized by userspace into a data buffer. Each configuration parameter
++ * block is represented by a block-specific structure which contains a
++ * :c:type:`v4l2_isp_params_block_header` entry as first member. Userspace
++ * populates the @data buffer with configuration parameters for the blocks that
++ * it intends to configure. As a consequence, the data buffer effective size
++ * changes according to the number of ISP blocks that userspace intends to
++ * configure and is set by userspace in the @data_size field.
++ *
++ * The parameters buffer is versioned by the @version field to allow modifying
++ * and extending its definition. Userspace shall populate the @version field to
++ * inform the driver about the version it intends to use. The driver will parse
++ * and handle the @data buffer according to the data layout specific to the
++ * indicated version and return an error if the desired version is not
++ * supported.
++ *
++ * For each ISP block that userspace wants to configure, a block-specific
++ * structure is appended to the @data buffer, one after the other without gaps
++ * in between. Userspace shall populate the @data_size field with the effective
++ * size, in bytes, of the @data buffer.
++ */
++struct v4l2_isp_params_buffer {
++	__u32 version;
++	__u32 data_size;
++	__u8 data[] __counted_by(data_size);
++};
++
++#endif /* _UAPI_V4L2_ISP_H_ */
+
+-- 
+2.51.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
