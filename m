@@ -4,163 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 246F6CCD193
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 09:22:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65D84CCD193
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 09:38:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5A1MAH3J7nJY8XEdQTOxAtiL1va9VX2YWfCweaL3U04=; b=ESSPF/V5ixcmmzpji4zx7kLC0r
-	RNiIfJ5eJsjf4C3B9L3L/GZbU2Pl65nQuiCPP0kqcJBewAqRvGuf8WpRTdt3wXfEjkeZsLr4YoECj
-	q5rRrifPl3zpzLgjYRACosEYysUVI+/5Cqbs5/zvNmNS9H/kZmSqghk7Rp7Zp3x8vuGI87AJQbtCL
-	7RWMYwykgj02Hysp1YIWIwW8+psdZ9fxE7rJYKxZHwlO/XmjFUvlZ2yZInswZek01GXqv+DLdNSQ6
-	zBWFTm8Eojkkk7M2kJqeg3PPOronjmwWWmsSv6TI6fmtl5vLsMx5JW52/T1RtVoZQvq9bu1Qaxs6M
-	tVm97Xyw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:From:Subject:
+	Cc:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=boPyFVQ6x5LpkkUuItFyi7nWCL2k3sFYKNqFQ1plZVA=; b=1ydRq/YaNEkQBE
+	RXFZ4vDhWOj0FrZvq9SLOH+tURrECY1hTSaR8ycmYlLHoW15LbtaGjr6W+Ne4K8J7TcCwnWlLtNXW
+	KlNY2ak7LXDtUVkiMHctUC8YREdooqVJjwOpU5xblJM7fOQPL+uFS6OfOIr7hqreEe8QLSzmpgVN1
+	V5FsqKFzfenVNdgXGj/nfG2sCHP4veWGVh9Xe6o/K27gSCN7FxPYSt4unETMA7cE7KxBfY6G8MvxL
+	lkupiyjwhRm576QeqdA323RgSlMiG9MSD27b7StHgyIcI4UKMu6JuZz9KdWSffoyf35GKvx7WXbPR
+	np9udaoZvSXTGQBVxcTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAm63-0000000CYhJ-0jzW;
-	Mon, 20 Oct 2025 09:22:31 +0000
-Received: from mail-northeuropeazon11012060.outbound.protection.outlook.com ([52.101.66.60] helo=DUZPR83CU001.outbound.protection.outlook.com)
+	id 1vAmLU-0000000CcZT-0PH9;
+	Mon, 20 Oct 2025 09:38:28 +0000
+Received: from out-189.mta1.migadu.com ([95.215.58.189])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAm5y-0000000CYfy-37Yc;
-	Mon, 20 Oct 2025 09:22:28 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=pNX3WAGa7ihTnzvmzV9MlVWuXjeqIhUluACyrtVEqp7YBsuMkBI+K1z38JyNiSwn8P+6168G8WFYiPn56SBoPEo3LlgYhXadfx5/TBG377atDErTE3I4FmgXgduRpzTbMkjGMbhoOkPuLk018LnhTU6XagUo9FYjvGT5uL5VvN7JDI73PgGzfXBULqXDfiiPQmIgGVuTDppMImqmROpFg+GYHo/ij2aIrer4DtDx2sAdFf0slA1GWdW7qq6OOAARw2mdpBaEoQ/Ljnq6eS4LpvrLKev6sNOL7YK6lvMbwLlqNrfbsC2jaxUnPgW6pc4zS/6MqGcBUouf69H1pAO/dA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=GlTGd2OEm56mOieRZbSG7HwjRIxn1xZjgIE0qiIkoHA=;
- b=mpms0bgZLfcR7ln7GsHdvW1ctEcKeC2G565HR5A3XUzpxt0CRmKkZnbHs2VcWVVHZ2Yk8q0Ff26Z0bkZaSUDlXdUsz3U60W46JGs0mTNFm+Sx1/TICnjaRIIxEdLdQo+UFFokUwl2AYGBYj4eLr5g6yIWlWRcPJwJt38jAonr+5Uld2V823QNHFlfIXgYrOzFM36wYBxw+bSaRoEErL2XoPy60ytMfl9qpzVR0Qxzg5m57fLV4eDpFt8gPOZF2/FamoRIVWP1j+IUh/LyivRkjNOn9Qd0ulgTN6F/mm0TnDNp5OeOF1KSWfMZd2WI+PinSp2jByuDGejmF9ECzNmow==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=cherry.de; dmarc=pass action=none header.from=cherry.de;
- dkim=pass header.d=cherry.de; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cherry.de;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=GlTGd2OEm56mOieRZbSG7HwjRIxn1xZjgIE0qiIkoHA=;
- b=MFLtLtL6HdeYNnMbiGJyu2Wh0Yz44Mwk6cJEh1yRmlDtZ0VVGlXdwcX0x0SWXCJ8ay8LbOSD7Pcw9yG84NYAzaodeiPcAQ10GqqU3bhWy5+B+NYhYrAsRkcLslPr5KYYIH9PXhnFPm2xG0R4fHnWFmL+6xySae/8yOIsm3NIhRI=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=cherry.de;
-Received: from AS8PR04MB8897.eurprd04.prod.outlook.com (2603:10a6:20b:42c::20)
- by PA6PR04MB11803.eurprd04.prod.outlook.com (2603:10a6:102:523::14) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9228.16; Mon, 20 Oct
- 2025 09:22:19 +0000
-Received: from AS8PR04MB8897.eurprd04.prod.outlook.com
- ([fe80::5ee:7297:93b4:a8d1]) by AS8PR04MB8897.eurprd04.prod.outlook.com
- ([fe80::5ee:7297:93b4:a8d1%6]) with mapi id 15.20.9228.015; Mon, 20 Oct 2025
- 09:22:19 +0000
-Message-ID: <64b79330-5168-4aa5-9485-0e9b34578d24@cherry.de>
-Date: Mon, 20 Oct 2025 11:22:17 +0200
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: rockchip: Fix indentation on rk3399 haikou
- demo dtso
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, Heiko Stuebner <heiko.stuebner@cherry.de>
-References: <20251020091139.3652738-1-heiko@sntech.de>
-Content-Language: en-US
-From: Quentin Schulz <quentin.schulz@cherry.de>
-In-Reply-To: <20251020091139.3652738-1-heiko@sntech.de>
-X-ClientProxiedBy: FR3P281CA0037.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:d10:4a::21) To AS8PR04MB8897.eurprd04.prod.outlook.com
- (2603:10a6:20b:42c::20)
-MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: AS8PR04MB8897:EE_|PA6PR04MB11803:EE_
-X-MS-Office365-Filtering-Correlation-Id: d7c56b3e-560b-4e66-adf7-08de0fba2aaa
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|366016|376014;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?eVFhU093Q0VHTGVHLzZaaW9Oc1l5L2ltc2QydExhem9BdHE5ZmJiUHd3S3J4?=
- =?utf-8?B?L09wdVdzTm4wQWl4WERvdmZ4TlBpUVVhbjJaQ1QxcXB1RGYzdWI2azhpck1y?=
- =?utf-8?B?U2J5cDRjSExhb2ZOVmloTVZoZ2Y5NnJRSEI0ajkxWjZySVlESnZmOUNIV2ln?=
- =?utf-8?B?ZzFwNllyL0tmWlRiQ0F3OXJWbmFlVWdTSTR0Sk9wcDNPSEdlcjBvM2pPaUtp?=
- =?utf-8?B?ZWtRQzk0aERCVi9qTnkreFlBTHF3M2pDWkp6K2NEYy9ZZi9vYzcrWTVmNGlR?=
- =?utf-8?B?QktqeEpHRVdLd3BXeS9vL2hlVWY4dEJLdkxBT1dMSnpTTzg4SkFaa0pwU2Zl?=
- =?utf-8?B?dnpSSnlqelJtZ01CNkdVN041T1lpNVZxOC93dndQaFlWZ3JWSzZoUGhWeG1Q?=
- =?utf-8?B?V2R6VVcvaU5SL0tVMmd6aG5xQkRuUWtVSmM4S1l0YWZhSFkweit0cnA4T1Z2?=
- =?utf-8?B?Q0NtQzVLNFRUZndzM3NBZDg3aHNXRVVhMFNud0doaW15d29xTE5DUzFVWW5V?=
- =?utf-8?B?ekN4TU5mWTZmTWlRUWdxZ1BqUE1sUVhUQmN0eXdLUFVkRm82NlhvTlhTczFG?=
- =?utf-8?B?RmR2Z2tlSHp2Umc2MHBybHh4ZUpZTTZHd01CTlNKeUFaVmdyOEUrNFdNS0dp?=
- =?utf-8?B?RE5YNGlTaStBblZDMWlvUjgvZlhSOGt3cXZnWnhpQmFsUDJxd3dVRlU1d293?=
- =?utf-8?B?dlZuL1pxbXk1d3JpZHVyekV1VEhxOGtmci9CeG5IU1dBWG5FejJlQlBKa2lH?=
- =?utf-8?B?TDdiRG40NFJEUE5WZjMwdCt3SzJjK0VPV3hWaDhyeUVQYm9YcUFDZjdJRDY4?=
- =?utf-8?B?RW00ODF4YmtHbWVLOFJaOG5CdmVRQVhtckhwbWRuSytjb0NPemtwTGJoQTZH?=
- =?utf-8?B?NWI1T1dJbVo4MUNQdHFFemtieXIwSnVvbW92RHZuQzdNYkNSL3cwNk9IcnM5?=
- =?utf-8?B?ZFVFMG1QVDNKREJlL21nbUxmd2xMem91eTlQZHdhK1lvN04reVV4ZkZKRWpF?=
- =?utf-8?B?UFZvVVhkSXNTVC9XOVh5dVlraTVlUStYaWRpcGppKzBkTzFwVEZmSFhUNmRW?=
- =?utf-8?B?cmx6TFhtaDhJUEZrRnNIcmxma0FURU4yKzVMbUJZZWRuRUFlNWlZak4zaDlW?=
- =?utf-8?B?S0lxcm5rSzExR1ZHa01YKzUzR1NPZ0w0aktBR2VUYnEyTXd2d0pMRFdrSVlv?=
- =?utf-8?B?bXBHUmZ1VUlScDNUOXJ5SStIRWpKaUNXZG9zQUpjMDZ5SEZYQ0p4by9EL01T?=
- =?utf-8?B?NkN0WkNiajlFTEcwek1qdXY1dmFDVzFXVUorcS94emVxdkFBQ3JCUXIvMXhw?=
- =?utf-8?B?Rys0amxkQVJ5anhJdFpCN0hLYkYwSzRya3R1dEZUOGJTb25nM1NCbFlHNU5Z?=
- =?utf-8?B?VHI1VlAxUkVzVUt6OEJLZGpvTytEeHRaeHZyVTN4OGdrMnZLNXVZWW5Cblc3?=
- =?utf-8?B?RmdPZUIwL2VHVkVzRitBZ0FBcWtXcDdJdFF1Nmw4Z0RnTTV4TUR5R09qWUVW?=
- =?utf-8?B?WkQyejN0MnpJMGlQRFBxZTBTTldpQUVBZzJjcVA4NjMzaFVkUWUrbzZXVm9o?=
- =?utf-8?B?NXBnVk15UDdzSmxvV0wyY01oQm9UTk5NaGF2ZjZ4ZEhwUWQveGlOcWQvZEMv?=
- =?utf-8?B?RVYxS2pXYTBPNklvSkFmaGI5ejVIckE3T3R4dzF1UklXamJzODRCNGk1RG5Q?=
- =?utf-8?B?Q0pMK1VjdzNjSE9jRTduYmloZUgwckdqZWsvRTQ0aWpITUNVNUtxamVuMngz?=
- =?utf-8?B?elMxRGRDM0RHS0JjbC9ETnFGQVQ5UCt3NHU0SWpvYTdDWE4zU05GcHhpb0tD?=
- =?utf-8?B?MmkwdWpvVVp5K2FVQm4xM2laODl2YWtYV0NoL3k1N09KSWV0OWFadEs2Q2cx?=
- =?utf-8?B?ZDROeUViS0hVL1hycENJaHJUa1IrWkRqL1d2QTBxZ0luWlNPeWVxNmhvZXYx?=
- =?utf-8?Q?M/4UO51CqBE9PoKmaEE1P+y1LQXJBDyL?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AS8PR04MB8897.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(366016)(376014);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?RU1Bam1oM1NRb3hZZ2ZHMnZ5eElIUzcvNWdrOWdORlNvUE1SQzFnY1B1OWZZ?=
- =?utf-8?B?aDBXNnVQT20rT1JKQmxRS2RWdkduaFlOK05LTTdOWFBNNkg1SmZML2lWMyt3?=
- =?utf-8?B?eHUzRmNKNlJtSmE4MWp4cFBpSXpGZW1PMExHT1VKN2NJWGdXaDhmYzlTQUxw?=
- =?utf-8?B?TkZuNEFPaHFCQktjWWtWTnFkSTJENEVRaUJjNE14d0J1SFhRTExDKzMvNzZ0?=
- =?utf-8?B?MjF0aWk4TzhQeTN5TUJQMkw4Myt1Wm5MRTBaZ09xc3hIWXJ1TzJINjlsTTM4?=
- =?utf-8?B?aUZ0TkNBQlF5K1hDY0VZUk04UXlGaFRlNmllWnVwYWJyaUpqWTRwck52VGxr?=
- =?utf-8?B?RDV2eFhkWXJSQlRkK2VFVjRTQ3E1Z0hDR3UzekpNL3JRcUt0aHpOSlZTWFox?=
- =?utf-8?B?d2JyNXFwMFVqSXg1ZlhINjZZQ3ZpQWlVVXREc1NhVENtMGx1RTVTT1k1WlN0?=
- =?utf-8?B?bEs3cXhXRVBmK0M5OExxK3ZVWHM5eWFNK3RWWDNhTDQ1MUxmbkFtMTl6RWpI?=
- =?utf-8?B?dkh1L3BsS1JtNGVHZWhPakFFNFVyZXg0RFcxSCtrTGVQV3dvRVJRK0VNTnhl?=
- =?utf-8?B?MEVqL1NnMUNNaXNjcnVoZzRBdTROVW04NXRyMTQra3hmdHF3dlUxcE1YQXhQ?=
- =?utf-8?B?ZHp1NW1yTTZUK0ZIMzBQaHdaSGRsc3IxU1FuODgwUW9SV2grbXNEM09vS05P?=
- =?utf-8?B?VVhsRFRNU3JFVktBbExNczB3SkoyNE5RbnA3QW9paCtEZVRaSlRwanF2dndh?=
- =?utf-8?B?ZU9wU0VmNllodEJNQjUzendEU3BJMGtzYUtOaWozSGQ3OU81c004N3ROYWJB?=
- =?utf-8?B?NWtXekdDSnQ3YVV0bWlmaTZoV2VmaWVMWlRkVDhGSEFrMVFGRzc4d21EUDgy?=
- =?utf-8?B?VGhxUU01T2xKZ0g5bjJ6Rm43T3BJcWxTV3NucEJOUVpYSE9IZVMyNCtVSldn?=
- =?utf-8?B?b2dWUEhVTFhoRVY3RkpzS2dqWWl4VVJzT1NFMkUzTGhCVC9kVFFVdURrSWtR?=
- =?utf-8?B?Slh3MW1PUFVReWt5VmdSdFJWcE5jUFFuUlhZS3Y4UjJ1c1VWK0xRYlBpSUcw?=
- =?utf-8?B?OC8xNXlTYmhDWkRVdXJobzJXczRsMWhHZG1mODBBOUVTMk1QeHNOQS91UmRF?=
- =?utf-8?B?aklPL3duYllYVUo1UVVUZUcveWs0MUpKZ2p3emVsOWE4bW1QWmJ3ZXR2Wnl5?=
- =?utf-8?B?djR6VkcrZlltNzl1UFB6bFJ1WE1DOEdIUjNqdjJIVVRlUGlWaDFkY1pneWtF?=
- =?utf-8?B?S1IyNjZENVBZaVRjaW9HUXN1TGt5VjFvd2MvMmZjOTUrdCtWRDlHTmwreXRC?=
- =?utf-8?B?RWkycmpJOEdXY2FvbllkZUVuTmxSYVhPVHBrb3NtVEZLM0I5dmdrc0o2dzV6?=
- =?utf-8?B?czRmNjZCcm5kNFAveU1KNzU1Y2JqTTQ0ZmlrUnJPOWZwbkQwZ1J6eGJWUHBx?=
- =?utf-8?B?b2MvYnVQWmg5akZUcldXbGU4TWtJblQ5eUNwOGNLUmJCRjcvL3A1WEVoWEF3?=
- =?utf-8?B?UzlIL2phZjNTRzkxMXQ4b1hTTEFjNldkSlJ0ak1TU3lULzUrajg4R1NIaEdw?=
- =?utf-8?B?YTVScHVmUHFoVnVDTUUyaW9tNHpUM3lQdkxNUC9GeCtWaHF0bXRrdGt4WXM5?=
- =?utf-8?B?UFZpc2xoZGFLLytXVUZSbUdhZ04rR3FoY1AxZ3ZKWk1ZbGVySkVQL0JLdUZD?=
- =?utf-8?B?Zm9RYm92RWliRlQxMzJsZ3owVFd0eWVhTWxETWZTT0xSSE9DclAybFMwdTMv?=
- =?utf-8?B?eXlpbnRlenBRaHdzUHZ1WWFvdEduTHMrYVUvRWljakk2WHZnY1B3VVNwcG5Y?=
- =?utf-8?B?MTlocEZ2N1FWSUlsRDRsU1J2aE15SjV0TUNjN1B0ZzdWbnc1dDZvODRVUGhV?=
- =?utf-8?B?NnZNei92SnNPMXRIZG5sUWxYV1VxQlNBMXVCdlh5Ri9KWXNoZHpXSU1pT01o?=
- =?utf-8?B?UHpOZDFIRElralY0dUdOWHJCaTBLNjJ6OVkyMDZtMG5CMXdJZ2RweW1OTnI1?=
- =?utf-8?B?YUVCUmxUUTFYNGcrL0Jlc3o3OUQyVndveXJZUFc5dm1nYlNZSkIwSWNvbFRI?=
- =?utf-8?B?eUphclRCRVFNNkcwd1hweHd4SGZBT3RHbG4zY09lQmV6dCtKeXhCYXJHQUZC?=
- =?utf-8?B?OUN4eVcyQVF0dnV6U3Zzd1UwQ29EUythWmJaV2RTNG5lNWNwL1luSUdRN1k0?=
- =?utf-8?B?dmc9PQ==?=
-X-OriginatorOrg: cherry.de
-X-MS-Exchange-CrossTenant-Network-Message-Id: d7c56b3e-560b-4e66-adf7-08de0fba2aaa
-X-MS-Exchange-CrossTenant-AuthSource: AS8PR04MB8897.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Oct 2025 09:22:18.9148
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 82VHfkZ7nTfeyyNPY6fW5h1MBzA1ZhJlezef3bbwe2p1f+22bfIwhfkrMdIE8+EuqrQb67Pt+qdAfp3yPYZzXCt2SM+lRTcMNlxzOT/UI8M=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PA6PR04MB11803
+	id 1vAmLQ-0000000CcYR-45UR
+	for linux-rockchip@lists.infradead.org;
+	Mon, 20 Oct 2025 09:38:27 +0000
+Mime-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow-tech.com;
+	s=key1; t=1760953090;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=Q5GKFSb8/CEfXGsPeMSq9twJk4tF7yOdz4CDd5l/dKU=;
+	b=onWXANZnK+qqfixEuAceXS1lWRx+JeiaxMXIWo0ENGg8AfYu6LSCzWRujpeE3aJgRl1MKD
+	5UYyN5Yu3LXWx0Pfe51SQNTWPgNGGwPlQub+f+qcMrlq1Ku3R9tK2sRXTOVmF5Y7wrAam9
+	paPdawkWZi6FjgBdOrwdkMzsQGQdYngyKTiWWVdnTCPE3hdsVUg/YvhuwmP+ZP3RQ+kq6r
+	a1dg7XBXJsQ+fAYnAyg3JrzuJLlaY24b5vin667/995YhHWgvY9Agftc09sFMPjGhnxV6M
+	lEJLdbXKhmGgw7RyRLeRm+zJ5nHdrkUyOLVr8zM7RnWrXoWozQe3ocHOXkRZDg==
+Date: Mon, 20 Oct 2025 11:38:02 +0200
+Message-Id: <DDN1RQB4LG0X.30F0A3IMJ4YI4@cknow-tech.com>
+Cc: <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-clk@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>, <huangtao@rock-chips.com>
+Subject: Re: [PATCH v3 4/5] dt-bindings: clock: Add support for rockchip
+ pvtpll
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Diederik de Haas" <diederik@cknow-tech.com>
+To: "Elaine Zhang" <zhangqing@rock-chips.com>, <mturquette@baylibre.com>,
+ <sboyd@kernel.org>, <sugar.zhang@rock-chips.com>, <heiko@sntech.de>,
+ <robh@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
+ <conor+dt@kernel.org>
+References: <20251020023724.2723372-1-zhangqing@rock-chips.com>
+ <20251020023724.2723372-5-zhangqing@rock-chips.com>
+In-Reply-To: <20251020023724.2723372-5-zhangqing@rock-chips.com>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251020_022226_794854_6E798AB5 
-X-CRM114-Status: UNSURE (   7.06  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251020_023825_789007_B5E595B6 
+X-CRM114-Status: GOOD (  14.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -172,26 +71,157 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Heiko,
+On Mon Oct 20, 2025 at 4:37 AM CEST, Elaine Zhang wrote:
+> Add pvtpll documentation for rockchip.
+>
+> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+> ---
+>  .../bindings/clock/rockchip,clk-pvtpll.yaml   | 100 ++++++++++++++++++
+>  1 file changed, 100 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/clock/rockchip,clk-pvtpll.yaml
+>
+> diff --git a/Documentation/devicetree/bindings/clock/rockchip,clk-pvtpll.yaml b/Documentation/devicetree/bindings/clock/rockchip,clk-pvtpll.yaml
+> new file mode 100644
 
-On 10/20/25 11:11 AM, Heiko Stuebner wrote:
-> From: Heiko Stuebner <heiko.stuebner@cherry.de>
-> 
-> The regulator-cam-dovdd-1v8 uses spaces for indentation, where it should
-> use tabs. Fix this.
-> 
-> Fixes: 066a69db9db3 ("arm64: dts: rockchip: add overlay for RK3399 Puma Haikou Video Demo adapter")
-> Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
+Should this file have the 'clk-' part in its name?
+In a way this is different from the other DT binding files, but none of
+the others have the 'clk-' part in their file name:
 
-Reviewed-by: Quentin Schulz <quentin.schulz@cherry.de>
+me@pc:~/linux/Documentation/devicetree/bindings/clock$ ls -lh rockchip,*
+-rw-rw-r-- 1 me me 2,9K okt 20 11:32 rockchip,px30-cru.yaml
+-rw-rw-r-- 1 me me 1,9K okt 20 11:32 rockchip,rk3036-cru.yaml
+-rw-rw-r-- 1 me me 1,8K okt 20 11:32 rockchip,rk3128-cru.yaml
+-rw-rw-r-- 1 me me 2,3K okt 20 11:32 rockchip,rk3188-cru.yaml
+-rw-rw-r-- 1 me me 2,1K okt 20 11:32 rockchip,rk3228-cru.yaml
+-rw-rw-r-- 1 me me 2,6K okt 20 11:32 rockchip,rk3288-cru.yaml
+-rw-rw-r-- 1 me me 2,2K okt 20 11:32 rockchip,rk3308-cru.yaml
+-rw-rw-r-- 1 me me 2,1K okt 20 11:32 rockchip,rk3328-cru.yaml
+-rw-rw-r-- 1 me me 2,4K okt 20 11:32 rockchip,rk3368-cru.yaml
+-rw-rw-r-- 1 me me 2,5K okt 20 11:32 rockchip,rk3399-cru.yaml
+-rw-rw-r-- 1 me me 1,5K okt 20 11:32 rockchip,rk3528-cru.yaml
+-rw-rw-r-- 1 me me 1,1K okt 20 11:32 rockchip,rk3562-cru.yaml
+-rw-rw-r-- 1 me me 1,8K okt 20 11:32 rockchip,rk3568-cru.yaml
+-rw-rw-r-- 1 me me 1,2K okt 20 11:32 rockchip,rk3576-cru.yaml
+-rw-rw-r-- 1 me me 1,6K okt 20 11:32 rockchip,rk3588-cru.yaml
+-rw-rw-r-- 1 me me 2,2K okt 20 11:32 rockchip,rv1108-cru.yaml
+-rw-rw-r-- 1 me me 1,3K okt 20 11:32 rockchip,rv1126-cru.yaml
 
-Thanks!
-Quentin
+> index 000000000000..8be34bcde7b0
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/clock/rockchip,clk-pvtpll.yaml
+> @@ -0,0 +1,100 @@
+> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/clock/rockchip,clk-pvtpll.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Rockchip Pvtpll
+> +
+> +maintainers:
+> +  - Elaine Zhang <zhangqing@rock-chips.com>
+> +  - Heiko Stuebner <heiko@sntech.de>
+> +
+> +properties:
+> +  compatible:
+> +    items:
+> +      - enum:
+> +          - rockchip,rv1103b-core-pvtpll
+> +          - rockchip,rv1103b-enc-pvtpll
+> +          - rockchip,rv1103b-isp-pvtpll
+> +          - rockchip,rv1103b-npu-pvtpll
+> +          - rockchip,rv1126b-core-pvtpll
+> +          - rockchip,rv1126b-isp-pvtpll
+> +          - rockchip,rv1126b-enc-pvtpll
+> +          - rockchip,rv1126b-aisp-pvtpll
+> +          - rockchip,rv1126b-npu-pvtpll
+> +          - rockchip,rk3506-core-pvtpll
+> +      - const: syscon
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  "#clock-cells":
+> +    const: 0
+> +
+> +  clocks:
+> +    maxItems: 1
+> +
+> +  clock-output-names:
+> +    maxItems: 1
+> +
+> +  rockchip,cru:
+> +    $ref: /schemas/types.yaml#/definitions/phandle
+> +    description: |
+> +      Phandle to the main Clock and Reset Unit (CRU) controller.
+> +      Required for PVTPLLs that need to interact with the main CRU
+> +      for clock management operations.
+> +
+> +required:
+> +  - "#clock-cells"
+> +  - compatible
+> +  - reg
+> +  - clock-output-names
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    pvtpll_core: pvtpll-core@20480000 {
+> +      compatible = "rockchip,rv1126b-core-pvtpll", "syscon";
+> +      reg = <0x20480000 0x100>;
+> +      #clock-cells = <0>;
+> +      clock-output-names = "clk_core_pvtpll";
+> +    };
+> +
+> +  - |
+> +    pvtpll_isp: pvtpll-isp@21c60000 {
+> +      compatible = "rockchip,rv1126b-isp-pvtpll", "syscon";
+> +      reg = <0x21c60000 0x100>;
+> +      rockchip,cru = <&cru>;
+> +      #clock-cells = <0>;
+> +      clock-output-names = "clk_isp_pvtpll";
+> +    };
+> +
+> +  - |
+> +    pvtpll_enc: pvtpll-enc@21f00000 {
+> +      compatible = "rockchip,rv1126b-enc-pvtpll", "syscon";
+> +      reg = <0x21f00000 0x100>;
+> +      #clock-cells = <0>;
+> +      clock-output-names = "clk_vepu_pvtpll";
+> +    };
+> +
+> +  - |
+> +    pvtpll_aisp: pvtpll-aisp@21fc0000 {
+> +      compatible = "rockchip,rv1126b-aisp-pvtpll", "syscon";
+> +      reg = <0x21fc0000 0x100>;
+> +      rockchip,cru = <&cru>;
+> +      #clock-cells = <0>;
+> +      clock-output-names = "clk_vcp_pvtpll";
+> +    };
+> +
+> +  - |
+> +    pvtpll_npu: pvtpll-npu@22080000 {
+> +      compatible = "rockchip,rv1126b-npu-pvtpll", "syscon";
+> +      reg = <0x22080000 0x100>;
+> +      rockchip,cru = <&cru>;
+> +      #clock-cells = <0>;
+> +      clock-output-names = "clk_npu_pvtpll";
+
+rockchip,cru line as the last line?
+
+Cheers,
+  Diederik
+
+> +    };
+> +
+> +...
+
 
 _______________________________________________
 Linux-rockchip mailing list
