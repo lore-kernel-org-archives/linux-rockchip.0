@@ -4,119 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D5D6CCD193
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 12:04:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C2B0CCD1A7
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 12:04:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
-	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-ID:MIME-Version:To:Cc:
+	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=+vh97ykZYOGzq9hGxJr/Z0h4c83ScQ8GBJKfrLipkDc=; b=gsG5blI5GAiBSh
-	wPWrr8SJG6qKG1CPzKIM8SK020UVC7ogxJ5mybwIPXgGc1ieiQRDlmyhU6Cpkxycm+W+XFhXpu0b0
-	Azk8jAee2ycPvigVxR/CKEMRayxev95RviGJ25OhZyewtz0DIgvaQKZcQWzr9ayTitK5aVLweyCd1
-	59hfJErG5MaZRLP/aUsUqGx0vuuc6ZBbcAyX5Miolzf//RvW/BM+8j/uHE7w1FcjlSnA2zdjrmF9p
-	88TEhKHhci4HN3cLuu5XeU4woAt0k2hBAoyhYzpYI2MZ6ICpWJdC/kiCb/TKvk+qxtZfoQ3oohUZC
-	4FqhXczMAIqHJUxru4/w==;
+	List-Owner; bh=poNwG06SlT1De17DLMLJGB7k8IeayU216D8QGdA1Izg=; b=tMxYz5lhhhb5kw
+	0IfoDF1TghH3rhB5Ep8CufRMX2nVH+5PNvU1BfwSH68fpjDA3fU1zo9kDFzdushgg5xp7m2iT5Rcz
+	fXUmhcF5z7upungaPKObwdp+F0+j6gWTzGpadZADaTk5V77W2Aust48Q+SkKryUlWiCBzYUVpFwuY
+	2/H7qZrTu+KVH0hOZQjFk4Rz7IGUvaDREXzS+R4uHaUffC4T9joQ9/1fu+Q2w5UPGYaHjkYWj/eP5
+	RFtCTq8ApntD7SYehSxALzF+RV45YCoXwWrvBjb5HxqiQESnPKT1bHRJHRgfMa34w0V6H1pzQJ8ST
+	JfnjEvNdYQTfLwjmQz8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAocO-0000000DHcP-23lc;
-	Mon, 20 Oct 2025 12:04:04 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vAocP-0000000DHeV-2rhi;
+	Mon, 20 Oct 2025 12:04:05 +0000
+Received: from mail1.manjaro.org ([142.132.176.110])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1v3Y5U-000000054bh-3zEC;
-	Tue, 30 Sep 2025 11:00:05 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 3072F604CD;
-	Tue, 30 Sep 2025 11:00:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 51488C4CEF0;
-	Tue, 30 Sep 2025 11:00:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1759230003;
-	bh=hl6CpBsFM0yclQLF3Wr1UR3e+Pr0M3yXUJx6ZUgVFTo=;
-	h=From:Subject:Date:To:Cc:From;
-	b=hMgAjDFiUcHZlHXjNfiivYmi8e8vUVWCi59OcfXv0rRTbwfOXoZRgN9AbmT6dp24I
-	 QG9cauPJW6cadrjxv9LaBeqXg2c41/8Afqvud6K2PeYu5cT41oVL2Rd0dO08HLJ1KN
-	 EzucbmMAqmuZu+7MBn6um5hAXXbmRWnDv/rV8vIGOBaSOEnTsFyZ6ZM571/O9AUMGH
-	 Flap9Gu7hgedgeX22zbtnMoQdL9pkmX/clya9FLtDuexAQAJiXx6m81fUxDWpuNtm+
-	 hQszCjBUs8oMkf3jYBWhJnB4L+H4zNY2ZqKUrJaEKvD8H/JgewXOHCi9u/myHJLxn8
-	 dS3ZTJeRZILEw==
-From: Maxime Ripard <mripard@kernel.org>
-Subject: [PATCH v5 00/39] drm/atomic: Get rid of existing states (not
- really)
-Date: Tue, 30 Sep 2025 12:59:15 +0200
-Message-Id: <20250930-drm-no-more-existing-state-v5-0-eeb9e1287907@kernel.org>
+	id 1vAmmf-0000000CkKH-0orq;
+	Mon, 20 Oct 2025 10:06:34 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPA id 08DE540D09;
+	Mon, 20 Oct 2025 11:41:29 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=dkim;
+	t=1760953293; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding; bh=QGW0UXPHuAzfUyVJq6SzZa/ZD5eWO7i1MGpbhW7LPcI=;
+	b=jW7m505xbww0KhZcVkm/7a/5SkRhUKtxfzlyMz5EZs1RmvsphJ7m5lYLFyNG+c5m156ksA
+	/iMsmNQq85AYSsMDegTbO8SFQPO0wTJbiZ2Z2RsWhicfRuh1RfxzHJtikBsxmzRGcuLP0z
+	84QlUwkNCQ0xzH+23NnpYd2/yQmUW4JCXB8nru+JEBBgjttN1T+OvIR3R+OMCtDebkYMur
+	oEGWpARae1AueVRbftD9Ao9WiCG5y0laFfwqtqMzdu590msFvWzWbBZMO9cETaL8Tm6Ylu
+	tmDmByAxQCeQamP4oH5KLR/TAtmmQALfWHxDdb6QxvhENPhCw5NrmkqS+zvo8g==
+From: "Dragan Simic" <dsimic@manjaro.org>
+Date: Mon, 20 Oct 2025 11:41:29 +0200
+Cc: "Hugh Cole-Baker" <sigmaris@gmail.com>, "Jimmy Hon" <honyuenkwun@gmail.com>, "Tianling Shen" <cnsztl@gmail.com>, "Rob Herring" <robh@kernel.org>, "Krzysztof Kozlowski" <krzk+dt@kernel.org>, "Conor Dooley" <conor+dt@kernel.org>, "Heiko Stuebner" <heiko@sntech.de>, "Grzegorz Sterniczuk" <grzegorz@sternicz.uk>, "Jonas Karlman" <jonas@kwiboo.se>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, "Shawn Lin" <shawn.lin@rock-chips.com>
+To: "Anand Moon" <linux.amoon@gmail.com>
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAAO422gC/43NTWrDMBCG4asErTtFP5at6ar3KF3Yo5Ej2khFM
- iYl+O5VsmlKwHT5fgzPXETlErmKl8NFFF5jjTm1sE8HQccxzQzRtxZaaiudtuDLCVKGUy4MfI5
- 1iWmGuowLA05GW01qNGYSDfgqHOL5hr+9tz6261y+b79WdV3/xa4KJATpiDwGZwlfP7gk/nzOZ
- RZXd9W/Fkq9a+lmeUYXyIbe9/2DZe4t3LVMsxQN4+Cxl2TMg9XdWWrYtbpmWd9N6BySIffH2rb
- tB24+KlipAQAA
-X-Change-ID: 20250825-drm-no-more-existing-state-9b3252c1a33b
-To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
- Simona Vetter <simona@ffwll.ch>
-Cc: dri-devel@lists.freedesktop.org, Maxime Ripard <mripard@kernel.org>, 
- Luca Ceresoli <luca.ceresoli@bootlin.com>, 
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
- =?utf-8?q?Ville_Syrj=C3=A4l=C3=A4?= <ville.syrjala@linux.intel.com>, 
- Louis Chauvet <louis.chauvet@bootlin.com>, 
- Haneen Mohammed <hamohammed.sa@gmail.com>, 
- Melissa Wen <melissa.srw@gmail.com>, Jyri Sarha <jyri.sarha@iki.fi>, 
- Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, 
- Paul Cercueil <paul@crapouillou.net>, linux-mips@vger.kernel.org, 
- Liviu Dudau <liviu.dudau@arm.com>, Russell King <linux@armlinux.org.uk>, 
- Manikandan Muralidharan <manikandan.m@microchip.com>, 
- Dharma Balasubiramani <dharma.b@microchip.com>, 
- Nicolas Ferre <nicolas.ferre@microchip.com>, 
- Alexandre Belloni <alexandre.belloni@bootlin.com>, 
- Claudiu Beznea <claudiu.beznea@tuxon.dev>, 
- linux-arm-kernel@lists.infradead.org, Inki Dae <inki.dae@samsung.com>, 
- Seung-Woo Kim <sw0312.kim@samsung.com>, 
- Kyungmin Park <kyungmin.park@samsung.com>, 
- Krzysztof Kozlowski <krzk@kernel.org>, 
- Alim Akhtar <alim.akhtar@samsung.com>, linux-samsung-soc@vger.kernel.org, 
- Liu Ying <victor.liu@nxp.com>, Shawn Guo <shawnguo@kernel.org>, 
- Sascha Hauer <s.hauer@pengutronix.de>, 
- Pengutronix Kernel Team <kernel@pengutronix.de>, 
- Fabio Estevam <festevam@gmail.com>, imx@lists.linux.dev, 
- Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>, 
- Lucas Stach <l.stach@pengutronix.de>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Anitha Chrisanthus <anitha.chrisanthus@intel.com>, 
- Edmund Dea <edmund.j.dea@intel.com>, Paul Kocialkowski <paulk@sys-base.io>, 
- Sui Jingfeng <suijingfeng@loongson.cn>, 
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Rob Clark <robin.clark@oss.qualcomm.com>, 
- Dmitry Baryshkov <lumag@kernel.org>, 
- Abhinav Kumar <abhinav.kumar@linux.dev>, 
- Jessica Zhang <jessica.zhang@oss.qualcomm.com>, Sean Paul <sean@poorly.run>, 
- Marijn Suijten <marijn.suijten@somainline.org>, 
- linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org, 
- Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Andy Yan <andy.yan@rock-chips.com>, linux-rockchip@lists.infradead.org, 
- Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Samuel Holland <samuel@sholland.org>, linux-sunxi@lists.linux.dev, 
- Thierry Reding <thierry.reding@gmail.com>, 
- Mikko Perttunen <mperttunen@nvidia.com>, 
- Jonathan Hunter <jonathanh@nvidia.com>, linux-tegra@vger.kernel.org, 
- Hans de Goede <hansg@kernel.org>, 
- Dave Stevenson <dave.stevenson@raspberrypi.com>, 
- =?utf-8?q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>, 
- Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=6084; i=mripard@kernel.org;
- h=from:subject:message-id; bh=hl6CpBsFM0yclQLF3Wr1UR3e+Pr0M3yXUJx6ZUgVFTo=;
- b=owGbwMvMwCmsHn9OcpHtvjLG02pJDBm3d8j/a/a6xTLbujO7gOmIX8GRFI/Z08TFfa8l/f2wJ
- 1vwnOCTjqksDMKcDLJiiixPZMJOL29fXOVgv/IHzBxWJpAhDFycAjCRo76M9RGT5kX9/PrcYUOU
- Xc3vVCdrnrZQvp8/9rW2TlB2zd9arHTJpL76n8H01qSDffMSOxbsZayPWzpdcdqEsnkMcZ3Su3a
- bh9aUT/vo9XJ+SPfni76/f52viFVZ8PjkVV3ZNO+5Bldt9xgAAA==
-X-Developer-Key: i=mripard@kernel.org; a=openpgp;
- fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
+Message-ID: <52537005-b8a3-c202-770c-599efc6a4d17@manjaro.org>
+Subject: =?utf-8?q?Re=3A?= [PATCH] =?utf-8?q?arm64=3A?==?utf-8?q?_dts=3A?=
+ =?utf-8?q?_rockchip=3A?= fix eMMC corruption on NanoPC-T6 with A3A444 chips
+User-Agent: SOGoMail 5.12.3
+X-Last-TLS-Session-Version: None
+X-Bad-Reply: 'Re:' in Subject but no References or In-Reply-To headers
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251020_030633_423881_0D4C5DE2 
+X-CRM114-Status: GOOD (  20.50  )
 X-Mailman-Approved-At: Mon, 20 Oct 2025 04:56:18 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -134,129 +67,79 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Hello Anand,
 
-Here's a series to get rid of the drm_atomic_helper_get_existing_*_state
-accessors.
+On Monday, October 20, 2025 05:13 CEST, Anand Moon <linux.amoon@gmail.com> wrote:
+> On Sun, 19 Oct 2025 at 23:40, Dragan Simic <dsimic@manjaro.org> wrote:
+> > On Sunday, October 19, 2025 19:25 CEST, Anand Moon <linux.amoon@gmail.com> wrote:
+> > > Would you consider the following patch?
+> > >
+> > > As per the Rockchip RK3588S SoC Technical Reference Manual (TRM) Part 1,
+> > > chapter 21.6, Interface Description, the eMMC signals require careful handling
+> > > to ensure signal integrity.
+> > >
+> > > I2C2_SCL_M2 I/O EMMC_RSTN/I2C2_SCL_M2/UART5_RTSN_M1/GPIO2_A3_d
+> > > BUS_IOC_GPIO2A_IOMUX_SEL_L[15:12]=0x9
+> > > I2C2_SDA_M2 I/O EMMC_DATA_STROBE/I2C2_SDA_M2/UART5_CTSN_M1/GPIO2_A2_d
+> > > BUS_IOC_GPIO2A_IOMUX_SEL_L[11:8]=0x9
+> > >
+> > > $ git diff .
+> > > diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base-pinctrl.dtsi
+> > > b/arch/arm64/boot/dts/rockchip/rk3588-base-pinctrl.dtsi
+> > > index 6584d73660f6..f60a1d8be0ef 100644
+> > > --- a/arch/arm64/boot/dts/rockchip/rk3588-base-pinctrl.dtsi
+> > > +++ b/arch/arm64/boot/dts/rockchip/rk3588-base-pinctrl.dtsi
+> > > @@ -327,7 +327,7 @@ emmc {
+> > >                 emmc_rstnout: emmc-rstnout {
+> > >                         rockchip,pins =
+> > >                                 /* emmc_rstn */
+> > > -                               <2 RK_PA3 1 &pcfg_pull_none>;
+> > > +                               <2 RK_PA3 1 &pcfg_pull_down_drv_level_2>;
+> > >                 };
+> > >
+> > >                 /omit-if-no-ref/
+> > > @@ -369,7 +369,7 @@ emmc_cmd: emmc-cmd {
+> > >                 emmc_data_strobe: emmc-data-strobe {
+> > >                         rockchip,pins =
+> > >                                 /* emmc_data_strobe */
+> > > -                               <2 RK_PA2 1 &pcfg_pull_down>;
+> > > +                               <2 RK_PA2 1 &pcfg_pull_down_drv_level_2>;
+> > >                 };
+> > >         };
+> >
+> > Frankly, I'm not really sure how would such changes do something
+> > good regarding the eMMC signal integrity?  In general, signal
+> > integrity depends mostly on the routing of the PCB traces, which
+> > is purely hardware design.  Sure, termination of data lines also
+> > plays a significant role, but that surely isn't at play here.
+> >
+> It is necessary to enhance the signal quality from the controller to
+> the eMMC module
 
-The initial intent was to remove the __drm_*_state->state pointer to
-only rely on old and new states, but we still need it now to know which
-of the two we need to free: if a state has not been committed (either
-dropped or checked only), then we need to free the new one, if it has
-been committed we need to free the old state. 
+Well, yes, but the proposed change almost surely isn't a way
+to achieve that.  Maybe I'm missing something, but it looks like
+a pretty much random change to me.
 
-Thus, the state pointer is kept (and documented) only to point to the
-state we should free eventually.
+> > Moreover, the eMMC RSTn line is already pulled high to VCCIO in
+> > the reference RK3588 design, so pulling it down in the SoC itself
+> > would be pretty much wrong thing to do.
+> >
+> It is specified in the TRM that this is only applicable during
+> initialization.as per my understanding.
 
-All users have been converted to the relevant old or new state
-accessors.  
+It doesn't matter what the TRM says in this case, because the
+board-level pull-up and SoC-level pull-down remain the same at
+all times, and having both a pull-up and a pull-down at the same
+time is a typical example of what shouldn't be happening on some
+line until that's intentional and the pull-ups and pull-downs
+deliberately have different strengths.
 
-This was tested on tidss.
+Anyway, let's see will the patch that Shawn sent [1] fix this
+issue (by the way, thanks, Shawn!).  I'll hold the A3A444 quirk
+patch(es) off until Tianling's friend and Hugh find the time to
+test Shawn's patch.
 
-Let me know what you think,
-Maxime
-
-Signed-off-by: Maxime Ripard <mripard@kernel.org>
----
-Changes in v5:
-- Added some more documentation on state teardown
-- Link to v4: https://lore.kernel.org/r/20250917-drm-no-more-existing-state-v4-0-5d4b9889c3c8@kernel.org
-
-Changes in v4:
-- Fix ingenic
-- Rebased on latest drm-misc-next tag
-- Link to v3: https://lore.kernel.org/r/20250909-drm-no-more-existing-state-v3-0-1c7a7d960c33@kernel.org
-
-Changes in v3:
-- Added an armada rework patch
-- Added an ingenic fix
-- Collected tags
-- Rebased on latest drm-misc-next tag
-- Link to v2: https://lore.kernel.org/r/20250902-drm-no-more-existing-state-v2-0-de98fc5f6d66@kernel.org
-
-Changes in v2:
-- Dropped the first and second patches
-- Reworked the recipient list to be nicer with SMTPs
-- Link to v1: https://lore.kernel.org/r/20250825-drm-no-more-existing-state-v1-0-f08ccd9f85c9@kernel.org
-
----
-Maxime Ripard (39):
-      drm/atomic: Convert drm_atomic_get_connector_state() to use new connector state
-      drm/atomic: Remove unused drm_atomic_get_existing_connector_state()
-      drm/atomic: Document __drm_connectors_state state pointer
-      drm/atomic: Convert __drm_atomic_get_current_plane_state() to modern accessor
-      drm/atomic: Convert drm_atomic_get_plane_state() to use new plane state
-      drm/vkms: Convert vkms_crtc_atomic_check() to use new plane state
-      drm/tilcdc: crtc: Use drm_atomic_helper_check_crtc_primary_plane()
-      drm/atomic: Remove unused drm_atomic_get_existing_plane_state()
-      drm/atomic: Document __drm_planes_state state pointer
-      drm/atomic: Convert drm_atomic_get_crtc_state() to use new connector state
-      drm/ingenic: ipu: Switch to drm_atomic_get_new_crtc_state()
-      drm/arm/malidp: Switch to drm_atomic_get_new_crtc_state()
-      drm/armada: Drop always true condition in atomic_check
-      drm/armada: Switch to drm_atomic_get_new_crtc_state()
-      drm/atmel-hlcdc: Switch to drm_atomic_get_new_crtc_state()
-      drm/exynos: Switch to drm_atomic_get_new_crtc_state()
-      drm/imx-dc: Switch to drm_atomic_get_new_crtc_state()
-      drm/imx-dcss: Switch to drm_atomic_get_new_crtc_state()
-      drm/imx-ipuv3: Switch to drm_atomic_get_new_crtc_state()
-      drm/ingenic: Switch to drm_atomic_get_new_crtc_state()
-      drm/kmb: Switch to drm_atomic_get_new_crtc_state()
-      drm/logicvc: Switch to drm_atomic_get_new_crtc_state()
-      drm/loongson: Switch to drm_atomic_get_new_crtc_state()
-      drm/mediatek: Switch to drm_atomic_get_new_crtc_state()
-      drm/msm/mdp5: Switch to drm_atomic_get_new_crtc_state()
-      drm/omap: Switch to drm_atomic_get_new_crtc_state()
-      drm/rockchip: Switch to drm_atomic_get_new_crtc_state()
-      drm/sun4i: Switch to drm_atomic_get_new_crtc_state()
-      drm/tegra: Switch to drm_atomic_get_new_crtc_state()
-      drm/tilcdc: Switch to drm_atomic_get_new_crtc_state()
-      drm/vboxvideo: Switch to drm_atomic_get_new_crtc_state()
-      drm/vc4: Switch to drm_atomic_get_new_crtc_state()
-      drm/atomic: Switch to drm_atomic_get_new_crtc_state()
-      drm/framebuffer: Switch to drm_atomic_get_new_crtc_state()
-      drm/atomic: Remove unused drm_atomic_get_existing_crtc_state()
-      drm/atomic: Document __drm_crtcs_state state pointer
-      drm/ingenic: crtc: Switch to ingenic_drm_get_new_priv_state()
-      drm/atomic: Convert drm_atomic_get_private_obj_state() to use new plane state
-      drm/atomic: Document __drm_private_objs_state state pointer
-
- drivers/gpu/drm/arm/malidp_planes.c             |   2 +-
- drivers/gpu/drm/armada/armada_plane.c           |   7 +-
- drivers/gpu/drm/atmel-hlcdc/atmel_hlcdc_plane.c |   2 +-
- drivers/gpu/drm/drm_atomic.c                    |  21 ++--
- drivers/gpu/drm/drm_framebuffer.c               |   2 +-
- drivers/gpu/drm/exynos/exynos_drm_plane.c       |   2 +-
- drivers/gpu/drm/imx/dc/dc-plane.c               |   2 +-
- drivers/gpu/drm/imx/dcss/dcss-plane.c           |   4 +-
- drivers/gpu/drm/imx/ipuv3/ipuv3-plane.c         |   3 +-
- drivers/gpu/drm/ingenic/ingenic-drm-drv.c       |  13 +-
- drivers/gpu/drm/ingenic/ingenic-ipu.c           |   4 +-
- drivers/gpu/drm/kmb/kmb_plane.c                 |   3 +-
- drivers/gpu/drm/logicvc/logicvc_layer.c         |   4 +-
- drivers/gpu/drm/loongson/lsdc_plane.c           |   2 +-
- drivers/gpu/drm/mediatek/mtk_plane.c            |   3 +-
- drivers/gpu/drm/msm/disp/mdp5/mdp5_plane.c      |   7 +-
- drivers/gpu/drm/omapdrm/omap_plane.c            |   2 +-
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c     |   6 +-
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c    |   2 +-
- drivers/gpu/drm/sun4i/sun8i_ui_layer.c          |   3 +-
- drivers/gpu/drm/sun4i/sun8i_vi_layer.c          |   3 +-
- drivers/gpu/drm/tegra/dc.c                      |   2 +-
- drivers/gpu/drm/tilcdc/tilcdc_crtc.c            |   9 +-
- drivers/gpu/drm/tilcdc/tilcdc_plane.c           |   3 +-
- drivers/gpu/drm/vboxvideo/vbox_mode.c           |   8 +-
- drivers/gpu/drm/vc4/vc4_plane.c                 |   6 +-
- drivers/gpu/drm/vkms/vkms_crtc.c                |   4 +-
- include/drm/drm_atomic.h                        | 152 +++++++++++++-----------
- 28 files changed, 140 insertions(+), 141 deletions(-)
----
-base-commit: 91494dee1091a14d91da6bcb39e12a907765c793
-change-id: 20250825-drm-no-more-existing-state-9b3252c1a33b
-
-Best regards,
--- 
-Maxime Ripard <mripard@kernel.org>
+[1] https://patchwork.kernel.org/project/linux-mmc/patch/1760924981-52339-1-git-send-email-shawn.lin@rock-chips.com/
 
 
 _______________________________________________
