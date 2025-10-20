@@ -4,85 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 167A0CCD199
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 13:15:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F23CCCD1A2
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 14:06:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IIHhiusa+ULFExD3GJqFTTtRVuAcIEtcgMen6RLIUHM=; b=esompLg71EZvX3
-	j3HULcOmDZ09H2dF+ujAq1/g8ll31GmGhUJbi4WtfjKPHCYG3wntr08Q8YobjWLIom9+O8K3T5Tdx
-	8DVZ7n1A/fnpi8KM92mYN3q7GSinLEvNxaPLZpJt1rbfu2irSqKhrFACV0UuNshi/Ev6BBVcSVAr7
-	eyHUt0cMWYTjKDnMPPPaD1fg9DAslS2b1oSxY87jY+AzCiiYFR90r/Y/YF0iuqXC49glFVEvRGZcK
-	ae5g8SFoEQvdSbh7ByR+qANwNigqyLXVJwLBLJTnAVCjskYIKmtbCTVoUXqRGvVX12kX0D0pSrlI7
-	Biq1c31+sO7WniKHaUTQ==;
+	List-Owner; bh=M2FNCccOKdIfH7d/Njc2l9qxsx4SYFYgd3sCCS3n+pU=; b=WGIN8749bWDWU1
+	BvFThN95HKlbMNkin7ChxspvkPslTOOg3SrOHw+IOtbtiEAI56MqB7AKQN2bNVcJs/AAPs6Ov1hNx
+	WPt0AkwnP7JsZmAWEabASSZDIetirkYx2vTpOfYtCk+CpJPWHXwXjgtCShz6WO4Z+Aj9y3MBMfa5f
+	D7hQCBitu0b9Jbr9S9fDXKbaljYegQEl0qsPDTGwE/XyeTZ7N2Sm47PN0WjTsaXYohuDhHeyVLjH6
+	mzOav60PYaeQy5kvHwgImTt1p8+GHJ52D+1g/mh2XPvbQAAl5ta9N21+ElBjcyGAMKpmdEv0OEtCq
+	1aqSFMucsnm/qdFf9YRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vApiy-0000000Dk6z-2lXS;
-	Mon, 20 Oct 2025 13:14:56 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vApix-0000000Dk6D-3A8j;
-	Mon, 20 Oct 2025 13:14:55 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:Content-Type:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender
-	:Reply-To:Content-ID:Content-Description;
-	bh=CuQNCifUktlMCAA4v8tmCWank1/HSzSiksw1WUKqzUc=; b=bRa0cSJ4442ZO650F8Hg7bwebI
-	DAeE+GC2X1mxjz1ioB0UzZZdywqJ3Hd0beb+JVhJUwGZ2EzcNinhyuDcXj9lA0vh/FWe3YeneDjYo
-	jmiYlbINHHq0JuSUxhQvoQW5vfWcs47YQwwLRlyiSBym5pF7j83NroAy3ReSmhUSCGU0IUBxDJQGm
-	yQ+JtIdk1cwpTOFaKBjB98DeP/u39x8WkFmwLUHMdE4EoIjVK5LI/O+QVWsV2ebV8EFg65+JjL1jM
-	oGFNC/gr+LxZIXc/ZyD1Q9SRWvxyQQcNIEFMObKf9AKc9M3yFS/DSylE+KOOps9zTlapEXOma/opp
-	+ikkjA6g==;
+	id 1vAqWt-0000000DtlN-2dSA;
+	Mon, 20 Oct 2025 14:06:31 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
-	by casper.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vApit-00000007xVh-372d;
-	Mon, 20 Oct 2025 13:14:54 +0000
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vAqWp-0000000Dtif-26hp;
+	Mon, 20 Oct 2025 14:06:28 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=CuQNCifUktlMCAA4v8tmCWank1/HSzSiksw1WUKqzUc=; b=uELIpQfigKvvT9McDvhdbiIu/c
-	zlGP7XcXJrLNQcPukS4BU+SgL7bIIFazM0OVpQ/HbL2H7+59YcHeZm4Q1D4mI3pCLAB+P4TJcn9HI
-	A7fV1OifN1hw2ERuqgWa3o9PogVvleK7G6EtM1R5+N2IwjTo9IYgTd9c0VIbRK/LynLllv1hk5buy
-	WqgHQYzgysvNldEUCUTUSniEajLmisXl0JUo50ccLUNSn5dvP0lDMbqXKVCalpiLPOKIvcdlyqpYP
-	MW8XLCKz5Kzq90Tx5xPHAY1gJ/9Y4wYS7H/QZyFKxgR8pX7xMaoQhut98GvAgq77NKBtS+0wO1wQg
-	lH6z4rgw==;
-Received: from [141.76.253.240] (helo=phil.eduroam.local)
+	bh=0PWnVKIiov5KTPY8I52QIFf+vtTOPlLahNCTbyp5PPc=; b=yjg46oik+aetf7YnXtGPN0VGZ+
+	h6il6ri2MY+hGDwuUdoRtlH6a+lMGLhy+KKASiNd5f+d4eXgAGmpH5DzpCK3H3fUnn9kOn48pO7Yx
+	DcXyqKHBiVBaP1IxNrF0uJdY+bKNpGIItjOP2532bhdJGK9mMlxKSB788qk/4zcBwWynXX9Nk08kq
+	yJz7qVWrv5mej8Ng/DjvWKg/NAk+o+v5V4LuF7nPr54Pxc+Bn5e1YZG348I20YaCoGtJtGK++4CwQ
+	+9M3DaTuZESlxpHh93EkfvIbF1RJb3TFNeDBBCXN0gLf1m9SD50o6rf293TDiBkaN3g+s3Q4HxKUn
+	L3Xkl8YA==;
+Received: from [212.111.240.218] (helo=phil.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1vApim-0001Qj-4C; Mon, 20 Oct 2025 15:14:44 +0200
+	id 1vAqWc-00020A-7K; Mon, 20 Oct 2025 16:06:14 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: Bjorn Helgaas <bhelgaas@google.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	Simon Xue <xxm@rock-chips.com>,
-	Yao Zi <ziyao@disroot.org>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	linux-pci@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Chukun Pan <amadeus@jmu.edu.cn>
-Subject: Re: (subset) [PATCH v2 0/3] Add PCIe Gen2x1 controller support for RK3528
-Date: Mon, 20 Oct 2025 15:14:41 +0200
-Message-ID: <176096606936.3742628.8434480469163363343.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250918153057.56023-1-ziyao@disroot.org>
-References: <20250918153057.56023-1-ziyao@disroot.org>
+To: Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Brian Masney <bmasney@redhat.com>
+Cc: linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ Brian Masney <bmasney@redhat.com>
+Subject: Re: [PATCH v2 7/9] phy: rockchip: phy-rockchip-inno-hdmi: convert from
+ round_rate() to determine_rate()
+Date: Mon, 20 Oct 2025 16:06:13 +0200
+Message-ID: <13870920.uLZWGnKmhe@phil>
+In-Reply-To: <20250810-phy-clk-round-rate-v2-7-9162470bb9f2@redhat.com>
+References: <20250810-phy-clk-round-rate-v2-0-9162470bb9f2@redhat.com>
+ <20250810-phy-clk-round-rate-v2-7-9162470bb9f2@redhat.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251020_141453_030377_F3EA2570 
-X-CRM114-Status: GOOD (  10.12  )
+X-CRM114-CacheID: sfid-20251020_070627_532758_C0739684 
+X-CRM114-Status: UNSURE (   7.29  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,37 +75,18 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-On Thu, 18 Sep 2025 15:30:54 +0000, Yao Zi wrote:
-> Rockchip RK3528 ships one PCIe Gen2x1 controller that operates in RC
-> mode only. The SoC doesn't provide a separate MSI controller, thus the
-> one integrated in designware PCIe IP must be used. This series documents
-> the PCIe controller in dt-binding and describes it in the SoC devicetree.
-> 
-> Radxa E20C board is used for testing, whose LAN GbE port is provided
-> through an RTL8111H chip connected to PCIe controller. Its devicetree
-> is adjusted to enable the controller, and IPERF3 shows the interface
-> runs at full-speed. A typical result looks like
-> 
-> [...]
-
-Applied, thanks!
-
-[2/3] arm64: dts: rockchip: Add PCIe Gen2x1 controller for RK3528
-      commit: 263fac6b09b42a1b077c21354370d38758237ab0
-[3/3] arm64: dts: rockchip: Enable PCIe controller on Radxa E20C
-      commit: 047bac0be317e68b89d0deed4f659f8e080df6e8
-
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+QW0gTW9udGFnLCAxMS4gQXVndXN0IDIwMjUsIDAwOjQ1OjM1IE1pdHRlbGV1cm9ww6Rpc2NoZSBT
+b21tZXJ6ZWl0IHNjaHJpZWIgQnJpYW4gTWFzbmV5Ogo+IFRoZSByb3VuZF9yYXRlKCkgY2xrIG9w
+cyBpcyBkZXByZWNhdGVkLCBzbyBtaWdyYXRlIHRoaXMgZHJpdmVyIGZyb20KPiByb3VuZF9yYXRl
+KCkgdG8gZGV0ZXJtaW5lX3JhdGUoKSB1c2luZyB0aGUgQ29jY2luZWxsZSBzZW1hbnRpYyBwYXRj
+aAo+IG9uIHRoZSBjb3ZlciBsZXR0ZXIgb2YgdGhpcyBzZXJpZXMuCj4gCj4gU2lnbmVkLW9mZi1i
+eTogQnJpYW4gTWFzbmV5IDxibWFzbmV5QHJlZGhhdC5jb20+CgoKUmV2aWV3ZWQtYnk6IEhlaWtv
+IFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+CgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1y
+b2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
+aWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
