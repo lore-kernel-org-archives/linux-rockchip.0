@@ -4,80 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63CA2CCD193
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 05:54:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD130CCD193
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 08:02:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UrOyxhYmOQcCp5raguFzm2xPOnXOd98t0PaExOysrjo=; b=CkPnIRJuV09peq
-	KUGBXgX+CZDLXPRhva6LEhGqJkD6AdD7b2SuZKs83KK21AFB5rCgNjKTYCU77aCC6deV+oZvEvltZ
-	JfS1zN27H7x0GpHTBILrc5WvCYWjtesbT6pEh98HPXDixHAsfdsa/qMT6MsHFWx8dsrTCwSAJs5pj
-	2Qsh/7mzn3AEfbERS72gdVU2nhmSgwTohKDzEDWp1FwYeSm0HUDTGDyJUeR7OHhxB+zVvXb6DQDi+
-	2c1h/h6iB5xxBkUbK3k6aKFqrdTcvW0C+pebesMbrvxFHMP05hktbXzNnVxxnzMNnx9BOKxIscCtd
-	yJtW5K+CGKg9Mqzv7puw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:To:From:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=CRgAYM6OyBnMS/ZFbw0s0eM7ndjMHF0ncQuF1ko+tqw=; b=kU9+Hu/HUB9bev
+	8PrzQWvb+H/4hfhMwei1l8SywmMoraGgZ8BwswAmYvcpILZaoQlQMJY4sGaOeEuvf1slcNB7dyF0f
+	KwvFsNXZJdlC9ceYuk3FTPTqt8W3Roei+ydgw1ii3rGIJej7XL+HO0e6P4UDwSegu0Xo2TKnHDodA
+	nqnvOBYAQD7sHNcJPnZ5xVaVpPRBdTuAo7wUCbWqrsZCDZRf8opE1paFVIFF1z31UvliR7UNh7z6o
+	UzRT26df7LY08TruKkxPyOTU7kdIJ5LpMI9dBtgzL7+X0vv3uOS4jVajThtT9awc/5FhwdVYaOlZ3
+	fhfHGgJq1lyEjGibPP4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAiqd-0000000BxNV-42uh;
-	Mon, 20 Oct 2025 05:54:23 +0000
-Received: from smtpbgau1.qq.com ([54.206.16.166])
+	id 1vAkqd-0000000CIJ4-0O5Q;
+	Mon, 20 Oct 2025 08:02:31 +0000
+Received: from mail.proventix.pl ([51.195.118.1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAiqa-0000000BxLW-332s;
-	Mon, 20 Oct 2025 05:54:22 +0000
-X-QQ-mid: zesmtpip4t1760939614t5c453bdf
-X-QQ-Originating-IP: U5j3Bti5rsZtBzG/p7qq78o6KBS1qijssVWI0mMLFLs=
-Received: from [IPV6:240f:10b:7440:1:9bef:b2b: ( [localhost])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Mon, 20 Oct 2025 13:53:28 +0800 (CST)
-X-QQ-SSF: 0000000000000000000000000000000
-X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 14762818756063502707
-Message-ID: <6EF8998620B7739C+ae4bf629-2d0a-4adb-b724-1f0964283d5a@radxa.com>
-Date: Mon, 20 Oct 2025 14:53:26 +0900
+	id 1vAkqa-0000000CIH3-0lPn
+	for linux-rockchip@lists.infradead.org;
+	Mon, 20 Oct 2025 08:02:29 +0000
+Received: by mail.proventix.pl (Postfix, from userid 1002)
+	id 9C7E7A4294; Mon, 20 Oct 2025 10:01:00 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=proventix.pl; s=mail;
+	t=1760947343; bh=jxb0oDMobd7GaIcoqojTSF8ZoNcoVg4kM8ohJkoHKb8=;
+	h=Date:From:To:Subject:From;
+	b=OBRk5OStHLz+fcUIrOZGoB4kDyA3cYWWea/klWcTl+kAWU0qSX8AbFz9iiQNBnUym
+	 cgp6Ml5/OzD6dXZiKq6psHHaaBKvMYVfux90O/24CJ5ROeXk4nl5aWAqUEH0HFOXTT
+	 6d3zyQhfwc8C65tttNWcJQucVoJcaccsS3kfkGjGtv2OYK+PItWjSa86UgdSkIH+yL
+	 nZv2OqXN7lRy1dhrSR1msGBowHWAfx/Ef0hZfsu93LxDtQZg+a8LjzyiA5O6skX3Uu
+	 0UG4ArnSWTycUBREamGWnw283zG+BU9rk4FqSng+m2/0P/Yr1lTQ2kBYJdaHluBw9S
+	 OtLIy/mURE/BQ==
+Received: by mail.proventix.pl for <linux-rockchip@lists.infradead.org>; Mon, 20 Oct 2025 08:00:21 GMT
+Message-ID: <20251020084500-0.1.ol.3jc6m.0.b9flm34ptm@proventix.pl>
+Date: Mon, 20 Oct 2025 08:00:21 GMT
+From: "Adrian Liszka" <adrian.liszka@proventix.pl>
+To: <linux-rockchip@lists.infradead.org>
+Subject: =?UTF-8?Q?Prosz=C4=99_o_kontakt?=
+X-Mailer: mail.proventix.pl
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3] PCI: dw-rockchip: Prevent advertising L1 Substates
- support
-To: Niklas Cassel <cassel@kernel.org>,
- Lorenzo Pieralisi <lpieralisi@kernel.org>,
- =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
- Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>,
- Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>,
- Shawn Lin <shawn.lin@rock-chips.com>, Kever Yang
- <kever.yang@rock-chips.com>, Simon Xue <xxm@rock-chips.com>
-Cc: Damien Le Moal <dlemoal@kernel.org>, Dragan Simic <dsimic@manjaro.org>,
- Diederik de Haas <diederik@cknow-tech.com>, stable@vger.kernel.org,
- Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>,
- linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org
-References: <20251017163252.598812-2-cassel@kernel.org>
-Content-Language: en-US
-From: FUKAUMI Naoki <naoki@radxa.com>
-In-Reply-To: <20251017163252.598812-2-cassel@kernel.org>
-X-QQ-SENDSIZE: 520
-Feedback-ID: zesmtpip:radxa.com:qybglogicsvrsz:qybglogicsvrsz4a-0
-X-QQ-XMAILINFO: N6KQ8tvoTFZftboViCXanWFTW1/6mxHhyG+NIeZJkRfbAaKVvsAMbk7K
-	1O71kFsTaX5mXick2q7qLpp4YiEIygKLkcgx6iK/nYteupcHJb5dnkHNfAywc4dwEcKrj9C
-	2jm/SRFkq9ZvjSNMQ6UitwH0LLww3Xy/xGEAKUx6SmabIHJNQPaqUAJZMlGjTiYXCQo8LLM
-	Jq89veEynl1d4Y9tGMlbFTF5JNzfrmaXf4GOvoR3rZtgzmZXXt1hq30da+Q5ljpcsKU9C9N
-	t3p/ObKr/R+yUXZ5KNAYJ2Pgkk/jM6+qgrBnBuR0r9sO0jm/jS3ZI0D5/Mho6ZtreQDq79O
-	EWoPExw1DxAwe+YI67GOQmzagceDfYboxU0HnoKts/nbG9RMISxPGESwLkRUmejkF+e6rri
-	IXr7meNQLv+pJmAx7Muja6rUSQBItg5uWzhNLuQ+dhMKJ0iLea+6lDP66GaqkqmaE4k4dbo
-	eOMuTe20Oc8ucjxFDVSuSWHWLZMWZL6V31P0MyznBQ6oNfoe2p+99B/LHjUpySZaBkqYF1N
-	77LnDT/7l6wNLrcDYiKbv9J8DUoRm8BLiO9jkEtOqPpjbrT8MTlXYm4K7Y3sEkt3HwLHULJ
-	ffsb2Y527NN4vATEXq1Xf/jmtPDDKgsHQeNT5QY2wYAQG1B82BIiP5Ije9Pxa236Y2C4BE1
-	UR8YDbFQcFdbjhUqK52p+pT5UIJjc8sL7WTW8nMApsLcOdb3wy5mI6rpL641l/p62jWnbUJ
-	Iq/IjK/1g52l40ohup3xgnqgTVjTNTwmxA3H+rU+5dwM2rSlJgMrLNrffwsv0uFH8pOD3tl
-	votQ5wENQvzL2KvedC6VpAPV2hAIzOmC2IQXHtLyX8yGEqGBNKpY8OLfizlHRRpR4etnZLk
-	vAguBovfGyH8YPngDkSgwsj9+J5ZIqz3/3BUqqV7WoCDCYM49r5/d/w3cr0W56QaPjbtkRv
-	bUQQSYY6w+dO/5Q==
-X-QQ-XMRINFO: MSVp+SPm3vtS1Vd6Y4Mggwc=
-X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251019_225421_193086_F95949D4 
-X-CRM114-Status: GOOD (  28.57  )
+X-CRM114-CacheID: sfid-20251020_010228_491611_A23AE2CC 
+X-CRM114-Status: UNSURE (   0.26  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,128 +61,16 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Niklas,
-
-Thank you for your work.
-
-On 10/18/25 01:32, Niklas Cassel wrote:
-> The L1 substates support requires additional steps to work, namely:
-> -Proper handling of the CLKREQ# sideband signal. (It is mostly handled by
->   hardware, but software still needs to set the clkreq fields in the
->   PCIE_CLIENT_POWER_CON register to match the hardware implementation.)
-> -Program the frequency of the aux clock into the
->   DSP_PCIE_PL_AUX_CLK_FREQ_OFF register. (During L1 substates the core_clk
->   is turned off and the aux_clk is used instead.)
-> 
-> These steps are currently missing from the driver.
-> 
-> For more details, see section '18.6.6.4 L1 Substate' in the RK3658 TRM 1.1
-> Part 2, or section '11.6.6.4 L1 Substate' in the RK3588 TRM 1.0 Part2.
-> 
-> While this has always been a problem when using e.g.
-> CONFIG_PCIEASPM_POWER_SUPERSAVE=y, or when modifying
-> /sys/bus/pci/devices/.../link/l1_2_aspm, the lacking driver support for L1
-> substates became more apparent after commit f3ac2ff14834 ("PCI/ASPM:
-> Enable all ClockPM and ASPM states for devicetree platforms"), which
-> enabled ASPM also for CONFIG_PCIEASPM_DEFAULT=y.
-> 
-> When using e.g. an NVMe drive connected to the PCIe controller, the
-> problem will be seen as:
-> nvme nvme0: controller is down; will reset: CSTS=0xffffffff, PCI_STATUS=0x10
-> nvme nvme0: Does your device have a faulty power saving mode enabled?
-> nvme nvme0: Try "nvme_core.default_ps_max_latency_us=0 pcie_aspm=off pcie_port_pm=off" and report a bug
-> 
-> Thus, prevent advertising L1 Substates support until proper driver support
-> is added.
-> 
-> Cc: stable@vger.kernel.org
-> Fixes: 0e898eb8df4e ("PCI: rockchip-dwc: Add Rockchip RK356X host controller driver")
-> Fixes: f3ac2ff14834 ("PCI/ASPM: Enable all ClockPM and ASPM states for devicetree platforms")
-> Acked-by: Shawn Lin <shawn.lin@rock-chips.com>
-> Signed-off-by: Niklas Cassel <cassel@kernel.org>
-
-I've confirmed this patch resolves the issue in v6.18-rc1 using the 
-following configuration:
-
-  ROCK 5A & M.2 RTL8852BE
-  ROCK 5B & M.2 MT7921E, NVMe SSD
-  ROCK 5T & on-board AX210, NVMe SSD x2
-  ROCK 5 ITX+ & M.2 MT7922E, NVMe SSD x2
-
-Therefore,
-
-  Tested-by: FUKAUMI Naoki <naoki@radxa.com>
-
-Best regards,
-
-(P.S. I couldn't test on the ROCK 5B & M.2 RTL8852BE, ROCK 5B+ & 
-on-board RTL8852BE, and ROCK 5C & ASM2806 due to separate issues.)
-
---
-FUKAUMI Naoki
-Radxa Computer (Shenzhen) Co., Ltd.
-
-> ---
-> Changes since v2:
-> -Improve commit message (Bjorn)
-> 
->   drivers/pci/controller/dwc/pcie-dw-rockchip.c | 21 +++++++++++++++++++
->   1 file changed, 21 insertions(+)
-> 
-> diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> index 3e2752c7dd09..84f882abbca5 100644
-> --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> @@ -200,6 +200,25 @@ static bool rockchip_pcie_link_up(struct dw_pcie *pci)
->   	return FIELD_GET(PCIE_LINKUP_MASK, val) == PCIE_LINKUP;
->   }
->   
-> +/*
-> + * See e.g. section '11.6.6.4 L1 Substate' in the RK3588 TRM V1.0 for the steps
-> + * needed to support L1 substates. Currently, not a single rockchip platform
-> + * performs these steps, so disable L1 substates until there is proper support.
-> + */
-> +static void rockchip_pcie_disable_l1sub(struct dw_pcie *pci)
-> +{
-> +	u32 cap, l1subcap;
-> +
-> +	cap = dw_pcie_find_ext_capability(pci, PCI_EXT_CAP_ID_L1SS);
-> +	if (cap) {
-> +		l1subcap = dw_pcie_readl_dbi(pci, cap + PCI_L1SS_CAP);
-> +		l1subcap &= ~(PCI_L1SS_CAP_L1_PM_SS | PCI_L1SS_CAP_ASPM_L1_1 |
-> +			      PCI_L1SS_CAP_ASPM_L1_2 | PCI_L1SS_CAP_PCIPM_L1_1 |
-> +			      PCI_L1SS_CAP_PCIPM_L1_2);
-> +		dw_pcie_writel_dbi(pci, cap + PCI_L1SS_CAP, l1subcap);
-> +	}
-> +}
-> +
->   static void rockchip_pcie_enable_l0s(struct dw_pcie *pci)
->   {
->   	u32 cap, lnkcap;
-> @@ -264,6 +283,7 @@ static int rockchip_pcie_host_init(struct dw_pcie_rp *pp)
->   	irq_set_chained_handler_and_data(irq, rockchip_pcie_intx_handler,
->   					 rockchip);
->   
-> +	rockchip_pcie_disable_l1sub(pci);
->   	rockchip_pcie_enable_l0s(pci);
->   
->   	return 0;
-> @@ -301,6 +321,7 @@ static void rockchip_pcie_ep_init(struct dw_pcie_ep *ep)
->   	struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
->   	enum pci_barno bar;
->   
-> +	rockchip_pcie_disable_l1sub(pci);
->   	rockchip_pcie_enable_l0s(pci);
->   	rockchip_pcie_ep_hide_broken_ats_cap_rk3588(ep);
->   
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+RHppZcWEIGRvYnJ5LAoKQ3p5IGplc3QgbW/FvGxpd2/Fm8SHIG5hd2nEhXphbmlhIHdzcMOzxYJw
+cmFjeSB6IFBhxYRzdHdlbT8KClogY2jEmWNpxIUgcG9yb3ptYXdpYW0geiBvc29ixIUgemFqbXVq
+xIVjxIUgc2nEmSBkemlhxYJhbmlhbWkgendpxIV6YW55bWkgemUgc3ByemVkYcW8xIUuCgpQb21h
+Z2FteSBza3V0ZWN6bmllIHBvenlza2l3YcSHIG5vd3ljaCBrbGllbnTDs3cuCgpaYXByYXN6YW0g
+ZG8ga29udGFrdHUuCgoKWiBwb3pkcm93aWVuaWFtaQpBZHJpYW4gTGlzemthCgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWls
+aW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
+aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
