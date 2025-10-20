@@ -4,73 +4,157 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8324DCCD199
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 16:23:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1348CCD193
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 16:24:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:From:Cc:To:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=DG4LOkKQESMNFLqUrXg/TD741hRsPoOVgxoXdPyoixI=; b=MnSrBbOLorgMnr
-	BOVl1tWduQPKUbxEs8t1vwwoHtSegwwws0YI9Xs+xLZwaUapIY4UpX3+YSh5HRmTuPBhm1W55Sx6i
-	B1SOiaXIQrqgVwxR7pIZVaAnvSW+EURvZJiq6QKFzowEFx51bPLnKIi/29CgoEGHvkfqUUEOFyxp4
-	ebY8wO8XmNVCWkXito5tVWJHrEZzgQbcY2cJwU2Qpudn+itL8KJ5cKcC9HBSIbaBnogE5mw48ZzdK
-	K7lMGRLfJUJ2wWk4dsD8Jb4fWnLsa9TCWhwpEFZiSlffPrS0lCP2maUft26Wq332d2Q7coALi5ntL
-	c5UgG4JbyG9q1z7RM0dw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=W1Y4OE0cXogSYPDXMWlFDLoI9/GLixOF9dMYmIM0rhE=; b=JFmSOzzxch5FdK
+	/9VdfKD+EUU3x26icQS1gYxVFPUFkmYV0/VWK1rdziJMn5e4KFGtXu7v2f5JA1/hGanO5m7mDUT8K
+	KM7E7raQMmD0sBZ5+DOQHb6ED/rzQTnM2DF6YcJCIJf2PLt0sC8UHyrhHf34vG4Ky9p9+tbvLVCPw
+	8Y9syZXWazgVMi+SKUPXAcjs4zOgiwrEf/RcUQorT91rz53J1fBubeLR3eswce28iK4xWSn4liN/m
+	enJA+LoQ6w3AzWvw+LNgJft11FvNp8/zf7FNYgWWCmX18gbjSf4LulwPcOHAYizTjKgIcND/JlaCV
+	dfVHeZpVQxismK+aHIsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAsfX-0000000EHWI-0LKW;
-	Mon, 20 Oct 2025 16:23:35 +0000
-Received: from mout.web.de ([212.227.17.12])
+	id 1vAsgN-0000000EHoo-2p0u;
+	Mon, 20 Oct 2025 16:24:29 +0000
+Received: from mail-westus3azon11011008.outbound.protection.outlook.com ([40.107.208.8] helo=PH0PR06CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAsfU-0000000EHVj-1rFg;
-	Mon, 20 Oct 2025 16:23:33 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=web.de;
-	s=s29768273; t=1760977409; x=1761582209; i=markus.elfring@web.de;
-	bh=6kH2p0lzoeA3+NA5VGZgTRxycOBmsbfgJvGwJRzjTXc=;
-	h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:To:Cc:From:
-	 Subject:Content-Type:Content-Transfer-Encoding:cc:
-	 content-transfer-encoding:content-type:date:from:message-id:
-	 mime-version:reply-to:subject:to;
-	b=vtD6OWsD4FUgYci6opjL0GQtm/61X9d1SlZgn8ZhCDgwtjsvb6uMGpbc+vlK5g/o
-	 0uR4qqUlC0A8eas0sFt17BUtI1b1j8KPKxLOzE1YQ+mbR8mcjvVWucdzQsc5/+0/+
-	 5J4mXRDIp2b8w/mponRcMy/Z8dPDFBSmeDp6SYtzr75w5eZ05rxB2IY1A03SOAWEv
-	 A5H9MHlsE6EZkhpDf7swN7vJws5yBEn0v6O6ZHDWkeXUV2XJTt+Z8IG6I9Z52dg72
-	 rpEmlm5xc8PtHzNP1h2URW6X22PemVjyw/moHc62Ito16V4n2fFqS+WvV8y08S0Br
-	 3FY1RQzunKJR5N6sDQ==
-X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
-Received: from [192.168.178.29] ([94.31.69.235]) by smtp.web.de (mrweb105
- [213.165.67.124]) with ESMTPSA (Nemesis) id 1MWzCt-1uiTvs2SPB-00PgpG; Mon, 20
- Oct 2025 18:23:29 +0200
-Message-ID: <115fba03-e8ba-4bc1-84d8-7d483c06208c@web.de>
-Date: Mon, 20 Oct 2025 18:23:27 +0200
+	id 1vAsgJ-0000000EHlZ-2R9e;
+	Mon, 20 Oct 2025 16:24:25 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=TPYBS07ddWC2eITtePmUf3bGa074fT4zY0EYTTx8FJIGTqKO20E+OTFcBj9sjlOgX2E5Owyqbi0MR4VWhdNCRNJ4Z0wiW5nhxd62YwLvtv+ndNWZ1Un0HlnPkAdxp5DNxgZVZcXQtnG6TIXzhBtSrQAdcAF2//5m3Kkqxjo09zf1D9ZCWoLjrQrGEAWSimxA8RStFEyCUt3zw8rVfqaOAqkmD9QwL/o3Yr+eI/pQ99OZcnM/Q/lXcthnMe6D9m69QWxKQFSdsppHTO1JQZdzYsv83x//DH1oTwRhKiVE6oYy8sYbPYcf5tt+dpjuGdMsytHCfrwD1rLxp0exqYMQOA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=WyUc5iuG831VbfI5SzDmKm4lT6vli4Yl86xP/5srhLM=;
+ b=J1xmrqt06wYz9srLyK57ng5FXN1Vuww7+n8mvZviD10JWJ9BZrXBJ3wSIs3In8ZeRcnYRWkxEprJGe9AqJq8o5+/ynhYuS50iNOYIxGrtKD4ax8Q5AqQh5qmb/s3u3X9BmfUEYBuKtWgFHPgov9nx7FxVvJohDTfTxbf6+bZ5wmK4CEf1ICBuwDhE0JtI5vsiY9LZWZodKne6QY2CtgEk85flPs41bukPTaUzm3LrlqaLcvx1HgnJKBwyOMZ2q0W4fuVwG4QBWCEF8FSXM86j0EZgcHkKj8hLz/Bin+1X8nMKdYVY4+d8nfxK4VVGtTS5f8+9eOv4yc/hkQN1t8wMA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=WyUc5iuG831VbfI5SzDmKm4lT6vli4Yl86xP/5srhLM=;
+ b=UCANsZOuDseSbvkw6ijKMFj+bCulmCcHdW7mjFH9l23UPXzQeMwo004SQHziVRZWS20HTU5AW+0bAprQwM2eDzuJqTA6HhBBfV4Zri0CFyptXYgc9dXOdRTjvf/m2EIR1q3ycqPqDnyADUuoUQ+NixMbzCczo67/H1jSSeTlHatxpbiqZo/D8WPF1ghHZBQc2GDFvlZpP5j5A7YI0PNqjD6l9oq7klAuzvhELETi8xLyIyKz1y7d6j/i1uluMB3hKIPMPk0ae8P6+oCvla2D3tY0tNR+zYuOh0ih1TWBqnKfSwtDoS8Plr5jPSiPH2TQDZVRVdz34K+fe7t6pvJpjQ==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from MN2PR12MB3613.namprd12.prod.outlook.com (2603:10b6:208:c1::17)
+ by MW4PR12MB7381.namprd12.prod.outlook.com (2603:10b6:303:223::14) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9228.10; Mon, 20 Oct
+ 2025 16:24:15 +0000
+Received: from MN2PR12MB3613.namprd12.prod.outlook.com
+ ([fe80::1b3b:64f5:9211:608b]) by MN2PR12MB3613.namprd12.prod.outlook.com
+ ([fe80::1b3b:64f5:9211:608b%4]) with mapi id 15.20.9228.015; Mon, 20 Oct 2025
+ 16:24:15 +0000
+Date: Mon, 20 Oct 2025 13:24:13 -0300
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Nicolin Chen <nicolinc@nvidia.com>
+Cc: joro@8bytes.org, kevin.tian@intel.com, suravee.suthikulpanit@amd.com,
+	will@kernel.org, robin.murphy@arm.com, sven@kernel.org,
+	j@jannau.net, jean-philippe@linaro.org,
+	robin.clark@oss.qualcomm.com, dwmw2@infradead.org,
+	baolu.lu@linux.intel.com, yong.wu@mediatek.com,
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+	tjeznach@rivosinc.com, pjw@kernel.org, palmer@dabbelt.com,
+	aou@eecs.berkeley.edu, heiko@sntech.de, schnelle@linux.ibm.com,
+	mjrosato@linux.ibm.com, wens@csie.org, jernej.skrabec@gmail.com,
+	samuel@sholland.org, thierry.reding@gmail.com, jonathanh@nvidia.com,
+	iommu@lists.linux.dev, linux-kernel@vger.kernel.org,
+	asahi@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-riscv@lists.infradead.org, linux-rockchip@lists.infradead.org,
+	linux-s390@vger.kernel.org, linux-sunxi@lists.linux.dev,
+	linux-tegra@vger.kernel.org, virtualization@lists.linux.dev,
+	patches@lists.linux.dev
+Subject: Re: [PATCH v1 00/20] iommu: Introduce and roll out test_dev domain op
+Message-ID: <20251020162413.GV316284@nvidia.com>
+References: <cover.1760312725.git.nicolinc@nvidia.com>
+Content-Disposition: inline
+In-Reply-To: <cover.1760312725.git.nicolinc@nvidia.com>
+X-ClientProxiedBy: MN0PR02CA0014.namprd02.prod.outlook.com
+ (2603:10b6:208:530::19) To MN2PR12MB3613.namprd12.prod.outlook.com
+ (2603:10b6:208:c1::17)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: linux-sound@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org,
- Colin Ian King <colin.king@canonical.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, Jaroslav Kysela <perex@perex.cz>,
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
- Takashi Iwai <tiwai@suse.com>
-Content-Language: en-GB, de-DE
-Cc: LKML <linux-kernel@vger.kernel.org>, Anand Moon <linux.amoon@gmail.com>,
- Christophe Jaillet <christophe.jaillet@wanadoo.fr>,
- Colin Ian King <colin.i.king@gmail.com>
-From: Markus Elfring <Markus.Elfring@web.de>
-Subject: [PATCH] ASoC: rockchip: i2s-tdm: Omit a variable reassignment in
- rockchip_i2s_tdm_probe()
-X-Provags-ID: V03:K1:Z3LzQisUERsnXyYbiO6hvRPwUtO9iWWRvFklb3VZzjvW4RFdcFy
- sQcxNdjEujsuob5XI0bNRyY1Vmyi7jO/lDMpY50/LQfj9HwTYEYR3fVgNj/N1HDM4fB6a59
- 6a2xAxCEqGWdHJwMaOcjPntobDoQXQctp6YATRM+DiB4aUT39p+Th8FKtotyApTXa/NIclm
- c8b+j9aZfUqTqnX1J8zWg==
-UI-OutboundReport: notjunk:1;M01:P0:oBK/GTgpnZY=;tIj5SNt0EX2gisqUOYcMJ0dUJ3I NjGsxcXW6u24973Jq24Ro38YBGz4iSJnK5BMywxyKruY4ijmCgi/PIxZrfa2PfAt7oi0L01zA AzCLHbqpUsOpaWIYthx54qA4oqT1XmEtE8tfbFxEAvwN5/vGPJie227qIaNtRMfZBYyJUnOGz ZPKybhYJJsiAI8dmk8+7fvrxoccKMHx04ad9m7/ku4dH2xUZg/tMKcT57ltYZbY32Yla6+66q J6MP0mzC8BsDCpmws2TtavG5RBwfzTj9xDwdPoDK8q28M97nIje0l1f3AHTvJGtF2z/rzY5SM ZLDGTmKC/cHP/9Clgt/cbitU4CSk7LuVOKnGsma7hIFZAr25xC71Jy7TBCoVtavpdgX2TS0Od YgF9opGJz5SRTuT7nx9pqfo5Aliz3l3ol1sFcleY+YfGQY1whoN7tEQb5W+vtdrPDs6eADEoJ HQjhWl9wk07ACuP8bbCpCukMLAjuBmutSeGTBELf+0rjwbZZmZ9Zba9hxXvA2MBZUKgmUbhF6 cXLtj5+7KlPwllx9lgf0e0bT2p3ISPqns1KqHn5PaE98b/coj7JS8IoJ624bWzQY7Ij59HNlf 6lHn3opg5FRRnbShvu0bXjLgcceY+k5PdA3y26tZDq649SntX5sZcGtf/3QnkeeMsU74LAMlp Q5qN149AEKnCln8CyQey2xV2uOAQh3hdLL/BOy+u6cfEargCyDJGeWVk+LW2Ecp7w0Xt0oHbM 89wlFwI3D0WtXOTh1Apr2sLOw5tXrVEP0E1MIH33pNC6XmZICZIpDm99sLAivval4d2TPqXlM RFaW44zWmEdu9tILgVpzgnbjHdslgA3So3Nx3NO44EU3vjWUL6Tbob72b5sRlzGdTEcNgR/Zz c9yHFQj6TAKoLp6pWDyppSirVybxGbkHwuyzoTBKnjwK+GiWfaJFhkCbR4FqJgzBcJk2wgMwF k0cq34cgyiF3U3oXo9GI6w7+kR8M4jDSLG/QTbQdcLmoHXQ9E0wRwaN+bE5JAIKJ7hUpeLaFH Le1W5C9hdWPA0nTzPxnpGoPmSXUk2cWZmwVnFmhZb9uW7h/NiH9GtzzaWGeAQ+Y/bF3SWNmRe 1ovXMO2f+Sj65TS2Z4Z2mrh8dhiibLgGn9/6+Z4cwmMriDtiB1LQ6DhbC/q8JsMCC24SBvAIC Sp8zzCcdW6mfMMqBGPqrPsmKPEeLAeupoKkV5krB4oC4IDX3H//t32H+TcAFEHbeEy/pcVp7G OqSCn70RgsPDgr/loBlLAm7+2y9MKRu6h8q2EGbwqX2OZtVLU7R0o1jksaAXlzcwBV5/MtptL uKnPyY6FUr2D5paf4yPrrnwfdVQRXS11HiBL7mVsnl/CDfXd2rMXlJWDnemiafnl5T1B/kodI cb+LCkcrNg3zRj2uYXecKtajkHbm+2/Ih7o27ffzIfVRXwOYq1z0vDSUwid6hep1hH06blCPK CiW9S3GrCSxW7b7dJmdfX/UT4j7qvTUL099QO1PdcI5k7UvNSjfd5Xgyp82PhN9/y/WoWMmky evTIwv12mxBFFeyF9Q5o3l7IVa32xgYemNA2667H21n8YmOle2x+qiT3EbXG8EVtiSTXZHnJW dpoVFCl65P97aJ4wt0pRfxo5Oq8w3qlgG8Sfbmg+4NEsjW2kf/aiQ8EKV2tcniYAwxGt3GolT /qbpSPVll7BCh5zcOLXabDRIo8G61tuKctoWqDauaN2tp4t8hwKn0QuGzEtwZji90q44qeGEP 1mWN58+tg/Zncwv0CP7WQKizY1jTu6xUpwCRwG2HY6fxpZd8HihF1+0zhfxtkj46tnmSPe+2v CmFz407NiMih/jfh42azJ8Qh/HUpx77ymmoA2yHcGOeUGA2YU1j1AcroPt4f0hnsLClz2Jeil TyY1VI6cyLgnykW728hLgkb2rNT0mGl/kXOKOn5dVoy15XXZC8UdDctS6oSWXlP4JX+yPfKoz +6fWDTuHw1swmYZUms3oZIabZ+c6zLtNtwXqqCayLDQDeCATd2FBvEPtLKNK4TVWueRorWaUo U6s+Qx+SAMBzk3yWQW2tYhk24X201G4AIyL1uMozAGSi3fkja4ysz4JQpkfNmv30W1lHe2tC7 XZjH/GMGkaM+bgaQLH3pcdxovXUhERwsGla66OQXWKAc+iLDLjYZoOZrp9AAk3SeafssrIyCh N0w5YLmUrvbvQc9wu/1enWj0EuPW3OkbzHsu1kMk3IMYZx25cIMKSxdAikHnjxsy9soEsXXe0 rCS8myiNsYVza+mCMuTwHhOI9F+W8dgX4I4I62zDz1AQ/+akTWDs2fv49YFleNxzKZJcijqp9 O2nKPZbGLyuqHDVnw562UW4YtVI4duUXVZbczzemYX90t/F+Hg9tolU9nGUc7a/X4zc8trE20 dFCFhiPahcnxrwvpejVQukdOxEprOq2oAmVavAukN30G9XRLhsR8G4KfA7hhgFdN63FMO+gVA zzJNrzd196RpheABI07ghwnE0uLlkhxYO8pgVjXpEHlOV2oYfxvs0sn2scTlmf5JagLeBInpj kGq2wz5OMKfYaUaqsOXDgI96UMur3slVSr2Qgzn5VbiQ+cd/HpgaLLpJRbY1bS4PcnCY3k3EJ Yem5fsGrwx7Zi2RykvpaKE//cSfmlCaSX3+IMFqedbBZMftxIFfxc5PRXFDY2BxGZ74B8KVC+ sNFTQWGMYRgs/6/TDe068sVBILc64U1DDKaYwUaAB7QOEPE3zVA6aZ9FcVUQzTIsBKNFKOJKx iUwoM8nvHIeAu5OK9o6ORFLRdV9dM+e+/OkHhzWSOJYi3j6UHJJYjZlQaz7ugdHk1c5KjiGvR QS/TWKcswc3JCnYtp1S72itsxLEyxfsXgm4JhBzS9ZE+hXeW0ekwraCWZ5UYRTIzYHtVqd8ug 8csrvs86WNE82H2B2fyO3a5h1hUm764dqux++LFImxc+J1LLHZLUWgsJz6eKOyOX+JEVoyY0E /tASr3WkmFMMv+ynAERqERukcI05WKARRkzXAnyIAK3pR2WdHOF0Xs2U8us85/cNz2X4ijHfX dKgahJ5zUO5CgIDfIkd2V16k29CwxkJ5/JqINOQf1dX/F70+w05nz2TjcvaBamxwYz/vVNIYu bdwVcZjb7SUQnjwLTTSy/aEMSsAX64jy4bbqnkwxkF5M48ZJfuTD0UJNVDCJzFbes8zwd/Ege 5Poq3Qhtj5ireaq7hbzQF4EjZv/x3SNMtTDzQMAes9wW8J9XdJnD9m0UsCt4abulLkWAptMvx lipzOYLtiD+nLSmIwGI+i1RsGkNKxm1HCOLUuSUt4JA5oYytAm42qk4SfacIvdDFBHgwMSXUG DjwK/TXRKBLW0hOWo71RkpiqOxE02jpojdB0r6bNBk6EUhTMgfSEgoVddhG5tPk3sk0YtoRhf 7U1az+FO1Gwb+fHkAMb/HiGRMZqY5gigLCPUxZk2escpn+R3zcj3T45+S+rN6D1g1BriOEH3r 0M1wammE2lN3lgRKL3sLjH/OT+qgRi8ZviurtsO1O0J9U0FlZzoggzI6Peydo33NI73bn+45a xwf6vyCjC/t0z5vTs7Y5aDM2J7+XuTdCCHZaE9jx3PGo/+DVbRYFwWoeLLCJzkI4eyp6pI33u aTf+9MbhfZ35ImKJ5gw6rdgK6v1RYiq485MAwwO9+KJErLFe2RR8hyWKxDOD2jFJu8gp5l2Rw xSranQpmqAiS2A4adSQhYCkxoa4XXV2FgO488K4HNN1bjT9LKAEwLzvyxUgTccvyCzFprZqQX EGWXWGiqHK9N9rPEwk3ar8R0ftbtJBEEUf/0yvqwerqOn8cixy5oViV+xjaXuSBD7K8pin+Ut UMGAffFaSXOk4jfX/0qgnZWPzm+Di6AXGzzE17BF6noSC1WDGWXCax0AdfolDjW0S6eZ8zI9v
- ydv30JF/CYr4F/DGi8M5yJtZB8e658rl5cQKxvF04Oq7JdSqzgvEm6oVrcIETHMR4I7qyqdUk 8j6vjeS9vnL/Czw+0VZ5ALcTIHVa8hw/h5UBwaEnCki9OqvsiLvOgy1U5eNfthzk6hYeDJuHH VI7IdVoDC8bsLknSHu5E8bCJ7g4gGXNU/8j3jbmqqY4mu2/h8sS3AZYPF5xa07FvW43TwIv1M NUVU9zeNpGN2iEDxxFWmhNMn0j46QhRsv3sieTpLBYZ9IkDrEmkmR7+p0DXdAkMS5P0n+z7Fb h8pvcw7tn+4ddN8bp2VZ3WRN8S06DwWmZ+q0UUJ1tFwOIkoBpBXgcuqb4I/zrstNa37AqqhjY 7KcvkYb/RxPqTNKRVkDymAFqVqaKuRs5sJq7qfp01oXekz7ETrVo3/a/m3693h8AwV+7y4vap 5COabitFDh0kHgE08cHdeCe7LwP7YKKyB7YkU7LD9mwTWK9IlwwEIppnoOzzM9oSXeUUJT8/E 9UtczUEza13yggyARXwA+z021QWxPie1AVwhoQvnk7NujQ/Xblvmn3Pyw41Qm82IPqN1s9h1h LPWBU9LUD2Kl9p2GYR0NShX0a2orQAbphUD3MnMOdC/8pBZNpuDPcJCfn51zuEqolOV4yNy4D IEJF/mgoTU0c5WUCwpQAuaF4h8sa6Z48ililwP3YSsn9wAMJk8ZpMrv+/PZtIsRgftJTDyvGi iRN1kaiUvOctUwsLfDqSnE+nxk+i6+kiV8b3MhvnDtRePakdJjKNeWt0dlTzdxjnfs6RnLOiz /pgdqLbXQ4E1aPGdiB9Dy9abnRVGOQPExaSYB6RvFfWh6V+osH9jGHINhpQUqdkSqb8mhjLhc 1Ktix3wVDS6IQeIIiARYsNX8Qiy1trqfgag9cnD1IzvBBHmseWXh91iy0hSVeNx0DeJL1+AV1 5RSwVyG7mo8F3iz7Hiyfrv4o+QbC7VXwY8fGApk/sQBLDOEPs7hh8tIM1v4On3g+BZpMkeTyk KairkygxTA114VSAnaTSBIsobJ0TYR7uKIoCoYvMfPpqGoAWe0HUyq+bf7QgBiT3aNrsGIr6D vJz10wZcbnFPavktEGk54dkva5lAj7dScC9SGzP6cMvZqOAHIGIUEK7DZc8hbRp9RSuy+hyfk rA8eABTacO+0fbH2hNuOpg99cXojJ20pyjUIoLRh097WBBi
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: MN2PR12MB3613:EE_|MW4PR12MB7381:EE_
+X-MS-Office365-Filtering-Correlation-Id: 6dc9faa6-6734-417c-1841-08de0ff51c2f
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|1800799024|366016;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?LtCyy/i1pi895cOAcfvxnnl+cs69FVyT/2IISez8W3JkuE0dUfU9jnIB+e73?=
+ =?us-ascii?Q?n2xO5lwYeBJukA5Fk7FiYj7+Xvn4UrygYIE+N69H3hbEcnDNN/OxybPDf3B9?=
+ =?us-ascii?Q?1GBdqCG4FcQ4eQF0kz1qpzaVMXDOQcN4wI+Cn/uhEk2v6MOcAEI3N/k4H9Gb?=
+ =?us-ascii?Q?HQokBRvkXPK5Dj9YnoPWYwaepVMsp5b/uuLkATBsEosOqMPfWtBUulaZN+a3?=
+ =?us-ascii?Q?Ob6ZPxAdnyFl/RwR8B0UYbeuYcYVB91aFkHHGomsGm987f2v+iPmWA5lOOM0?=
+ =?us-ascii?Q?Z8Qx31+V+ck4EAGt2HsJTz2UcHD/F/hWzUWpMSkvysM/Bz8xfpsQO5aa5Iph?=
+ =?us-ascii?Q?AiN951Un2hqk9Vl/YYl9WMVsoIkWeUen7wLot/CLMKAGEpsDn4XvgAkFUS7C?=
+ =?us-ascii?Q?jmwL5+G7DrhUpipIPWktWegsUiseoT6xcWIvRbyzDbNEWhoAbdTPo2M1j2Yl?=
+ =?us-ascii?Q?xS2PxPK8IJAY9l2CLDnH04GpwGjC3gCMhJHQXD24bFFmqUSnlzPBzLwp7WB8?=
+ =?us-ascii?Q?3jbDckz2eCFZPPydQ7KPSa9iUQVbcxPcNHJzufpgxKuVf9UVRImqAWZTGYy7?=
+ =?us-ascii?Q?WoijI63/9WJoros1qxOc/YeQa8I/SLwXXZZiil3cuvOMTFBiyrYY8lC8MuxE?=
+ =?us-ascii?Q?zDmUusgEaOdnGjsZ58grq255LpG3XwJFXQU2jBirwJ7+O5+HOJO81385eet2?=
+ =?us-ascii?Q?FtnB/PvM1SSKyiFfetQP75j124NA9v5w73J8fyPj9o+7FjXIhNLOYsNZtcTw?=
+ =?us-ascii?Q?4CG5u7DYQR2FZpyHvYJbWGneJk8anP28lfi+vCdi/P+VFHlM3INA3mIO4hVp?=
+ =?us-ascii?Q?f/tHYaZgvH8z8rAAO6TfMrQdAfKpKUTxGFR/VkNpSz7V3dEB1hf+iEw1Z1qo?=
+ =?us-ascii?Q?NyCkyYfflC/ypSe65vsdEPsMy0YbZxZOynaGECCbaDDiIJCdyjg4+5EXG9/j?=
+ =?us-ascii?Q?dLaEBn8cAiOM82eUbDSYVYj4LqmFG043vj/y+aerRqzlTECjUabs1ttgn5IV?=
+ =?us-ascii?Q?yywpCfxVMBfks2RtrJ5CDwPn3WLo4UCjjIppSj6CePL3T2WwmGBprlyfNWKA?=
+ =?us-ascii?Q?IBlJaJq2u7BsCOqNMfJJiQpw7aYZxdBXgd4ncAVmsyaQfI5tJ+ufNtvzm/d9?=
+ =?us-ascii?Q?u8zaiZT+SOFYcam6GkDfJeNz/UbYbcRlVYMnZQg/HMdSPmFw694VCQIlLZYS?=
+ =?us-ascii?Q?jCygP07KAu3QXo6B+ZzrwpHrBY/XA6PiXBCL+1W4u22FQaPU5XWG/icOeTF8?=
+ =?us-ascii?Q?YfgTcPL3NvlsbjRl/ljJ2virtYxCZXbvTvBRZ/ERUO9rtscZO2tVsHZm31Au?=
+ =?us-ascii?Q?DKa2ngz8yOsrqqyipwFKCEi0RkXNN+Gc2aGg9Ey1U8izs8GYloM4Fa6y1LNM?=
+ =?us-ascii?Q?TqipZ3kCp+qtoz1feeFZbv2nsPqW2kxaCKLQHEwjq6SEY4I8jbUuIC9ONAhe?=
+ =?us-ascii?Q?VYMPZUDoNJHT5ZaK4bMwWJlee4Ic6kZJyeJqUlkQkLybhZ1PWDaJfw=3D=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MN2PR12MB3613.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(7416014)(1800799024)(366016);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?decPrwCF+RX/ht+phySzMsnzldOrq/5d3LHvbAK9eyOIxghCtnEowZhsOhuo?=
+ =?us-ascii?Q?3QyvpGUBoMKHuCRaIUk+v4eFlzDOKhv0G/YH5Xmn+385Y6KkDZU3ssfk6wSJ?=
+ =?us-ascii?Q?VMZvgdQob434HsIUk90Us0+g4NiKboy5x/hN2gYNQl7kU4uLBfVheU5QdNM3?=
+ =?us-ascii?Q?+DwuF38BcKkx1JLEFMqblkAJot4FjnCTmdLjgXXCZtTd/m/Xx3bE0pp+17Tz?=
+ =?us-ascii?Q?unTk0mXqM0VWeEfhK+fZ9AWcjcgaxqwQEBmXLjE9STpfL34CkbgAcScaMn+2?=
+ =?us-ascii?Q?geaiTvzYgSPDUlB41bJAW5GHYmrX+5H6EJ40wAN2izQZVMhan8eY7XBHP2QG?=
+ =?us-ascii?Q?YpmZRJAfYgwBCYNN3jXoOb8gXYqohovgWZ8zAV/ajKTrNJT/PjPjHjsdQUKY?=
+ =?us-ascii?Q?GqonjWgX0NGZCh8wFgAknrSy74iqyKghI54lFWUMSjBq/hNS7Q2rVwrd17Sj?=
+ =?us-ascii?Q?IKtljmSle7u/DNbUfISDB5mm/wb/tjG6Ke0e7ykDqPJnS5B2lUjmR7Q1rA6F?=
+ =?us-ascii?Q?6WjgstlwOW/HwgQ/4D0LWRI1pLgbyvNdirqLGr4RvNN6C+CPuv/0CIhOF6x2?=
+ =?us-ascii?Q?eYd38EgoXSkz0TVn8UBBxJBNTy1qoazH8pqsUWDYqz5OQzqUjNPn+lapsDug?=
+ =?us-ascii?Q?MPLx3SrMBLre7i9nLsjv8L3uqwNDRwt92UHq0bdjH59KuKr+Fhlwdoh399JS?=
+ =?us-ascii?Q?YksvKyytsbOnTm0tdVg7bfiSPoy26G6sdplfYqn66rmWVW0+TYS7UZb0ANDG?=
+ =?us-ascii?Q?IV6/8sqzsPB2tAefV2J40lEZnIBNXZTt+Om5cwRcg/ADZz+Un5/UU3a8VJ7p?=
+ =?us-ascii?Q?UKVD46JDz1ZK/Pod7u+oZkulKcS6qzfPX5+4Mw+wOXx8dsnptd/3ljBT2X25?=
+ =?us-ascii?Q?4fFTkbMcZS/6carPYS/eaIm91PWExu/8ghjnSHcI1CP52XuP+xXZpRredfS7?=
+ =?us-ascii?Q?IVZSsfefOTuXQR6iO8ByjpL8wm0pBmXpT4AB70MMg3p+4VZDhwBwKT+OjDOC?=
+ =?us-ascii?Q?aj7G7InbyeTaBIZhXPd3pbo8MGS+bs8lASJslcn1BbIZWe1QNdZitabISuR7?=
+ =?us-ascii?Q?SMxvj/D6hAfaVa3LrHn8Jxwxt5Gp8+gnuvKcr5edZs3iY8HXoy3XCiWzwyO5?=
+ =?us-ascii?Q?LQ4fsrP2pbyZW3Pv2hifXsqODvRc504Ud57xqWwh7KoqS/d2vyfESC5f9A09?=
+ =?us-ascii?Q?W5x0Rmglqrz1gMfjcw6n0VXUdmeTuJYQNP2vXwb44aaShIj9sJbS3iAK/mga?=
+ =?us-ascii?Q?SeJiIUTLzs12zGRcJLqiHQtZm4Evre4bUAnV+EL57vUF5alafX2lRj/JZEof?=
+ =?us-ascii?Q?BuWKS1iNAkcc2KSGX0Vf3QZgQG/Hq35j7Lyam1Q5Wg3EqiK0katnq9/gjtJP?=
+ =?us-ascii?Q?tEeLKlruh6ND7TLtPGhZSIniDZv+hkB5Fdnb1uePMX/yFAJ54ekoLjVz0cTc?=
+ =?us-ascii?Q?vUh4m+cZ7MHVDdYmIe2qg9V3Evwl4bbpnPjMxMWcjgyg0fJAMxb6q6AdIOdD?=
+ =?us-ascii?Q?nTql4Wd5D8oHGCDwKVs5cve06zfVl6g+PPN4lpMrZhYcBzlLbCMzqtw8sj/f?=
+ =?us-ascii?Q?tMOrJQfA5afR9ZYNnbOOEAXaDjXZlX3klz2JvKBX?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6dc9faa6-6734-417c-1841-08de0ff51c2f
+X-MS-Exchange-CrossTenant-AuthSource: MN2PR12MB3613.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Oct 2025 16:24:15.5986
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 3KK5U07vkHeSB3ho9wVznOCZd29qpN7dI24pod0DiJYtdKdKRFVWKlfHoi+CTax/
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW4PR12MB7381
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251020_092332_763928_D9DFC55E 
-X-CRM114-Status: UNSURE (   9.31  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251020_092424_020173_69C15A3D 
+X-CRM114-Status: GOOD (  11.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,38 +171,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Markus Elfring <elfring@users.sourceforge.net>
-Date: Mon, 20 Oct 2025 18:11:58 +0200
+On Sun, Oct 12, 2025 at 05:04:57PM -0700, Nicolin Chen wrote:
+> Add a new test_dev domain op for drivers to run a compatibility test prior
+> to the actual attachment at the driver level. Any incompatible attachment
+> will be rejected early, allowing the iommu core to postpone any concurrent
+> attachment during a device reset state.
 
-An error code was assigned to a variable and checked accordingly.
-This value was passed to a dev_err_probe() call in an if branch.
-This function is documented in the way that the same value is returned.
-Thus delete a redundant variable reassignment.
+I had to go back and find the original email from kevin to understand
+this..
 
-The source code was transformed by using the Coccinelle software.
-
-Signed-off-by: Markus Elfring <elfring@users.sourceforge.net>
----
- sound/soc/rockchip/rockchip_i2s_tdm.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
-
-diff --git a/sound/soc/rockchip/rockchip_i2s_tdm.c b/sound/soc/rockchip/rockchip_i2s_tdm.c
-index d9a1fab7f403..770b9bfbb384 100644
---- a/sound/soc/rockchip/rockchip_i2s_tdm.c
-+++ b/sound/soc/rockchip/rockchip_i2s_tdm.c
-@@ -1337,8 +1337,7 @@ static int rockchip_i2s_tdm_probe(struct platform_device *pdev)
  
- 	ret = i2s_tdm_prepare_enable_mclk(i2s_tdm);
- 	if (ret) {
--		ret = dev_err_probe(i2s_tdm->dev, ret,
--				    "Failed to enable one or more mclks\n");
-+		dev_err_probe(i2s_tdm->dev, ret, "Failed to enable one or more mclks\n");
- 		goto err_disable_hclk;
- 	}
- 
--- 
-2.51.1
+This is a preparatory series for new iommu_dev_reset APIs:
+https://lore.kernel.org/all/cover.1756682135.git.nicolinc@nvidia.com/
 
+That series parks the domain attachment at BLOCKED during a device
+reset. To keep the uAPI this also required that any change in domain
+during this reset sequence is just recorded and kept in the background
+until the reset is finished.
+
+This creates a weird hole where userspace could propose to attach to a
+domain that is incompatible with the device during FLR, have that
+attach queued and then ultimately have the domain attach fail when the
+FLR concludes.
+
+This can be mitigated by splitting out the compatability test from the
+attach and having the core code check the compatability before
+accepting a queued domain attach.
+
+It was felt that the subtle uAPI change warrants this rework.
+
+Jason
 
 _______________________________________________
 Linux-rockchip mailing list
