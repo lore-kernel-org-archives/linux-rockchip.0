@@ -4,43 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E956ECCD1A7
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 08:25:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AA5FCCD1AA
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 08:25:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8gmuXZqFAEKYCC70z0qoWdv1moBpTkOKMcUiUcpet2s=; b=rPMXGrJ+5s6BHb
-	BfHslTFDatQJLcQFFmKYvMqCEZivueTAxpfpvzXLpzEeOLOIXjqlT0DmXLUlV/R9ltSENMI+mJRjG
-	ikZqJGaPUojGME6dhGyZeCQvWb6/jsUL1rJMrGdIiNtu6685qTViSXoeWd2PGDhqTWWJ8YS4lbu1q
-	/L/VwWLK5AEAnT0Fi03mjIUPZcWDHGs5wK0XJa2qSrDQRonQ+ei4HP7v+jFUGcdJi24l9PLEpk6O8
-	2vM4wp/ejtQurxwvvpxxU2BPFBuvRMFcHPVMNWKz9Ex/vxuk3Jb6K8GPifC5CXgIwdn3KGvRcFjPM
-	sFc3s1iPDtaZ8ssYiTCQ==;
+	List-Owner; bh=9Xylu76g49uKan5Bu/jnjlM7nNL4OmyU0lQbSy1roJM=; b=b6z0tNTAzBggS8
+	o9xPpuftNYQ6Wm5cFL9O95XG8Fx6DjPRP+dbfV4VNXan5UAFf9tG1s+GU8YFVCRGMqZTy1ihPhOYT
+	bYEUs5QACBgDjoqgByPLYSuSY2s8o1IuhDYHEGrq71llWVWuQw84dtIfNB+BjoC1Qhhe/e4FlBBiW
+	tUIcj7STifenmmMcrV+Umlqyzajx7zaRtFXa18fTfemDntkVmBsQPXGAEkWxKSX3buO7e9Fok9QzR
+	wvGklBUVKFHlWmZMLW+Tvt1aoWuSfm6Gdvg+1Q1tLhSb8ttEJ9YFLTDXpfw6fEYKSBnqtKT0MmOwR
+	jw+YXumOdQalpN7xxDSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAlCc-0000000CMCC-2205;
-	Mon, 20 Oct 2025 08:25:14 +0000
+	id 1vAlCh-0000000CMIm-0cE2;
+	Mon, 20 Oct 2025 08:25:19 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAlCS-0000000CLyO-3XUY;
-	Mon, 20 Oct 2025 08:25:06 +0000
+	id 1vAlCV-0000000CM25-0BDc;
+	Mon, 20 Oct 2025 08:25:08 +0000
 Received: from [192.168.1.102] (93-61-96-190.ip145.fastwebnet.it [93.61.96.190])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 411891E79;
-	Mon, 20 Oct 2025 10:23:20 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 0F8001116;
+	Mon, 20 Oct 2025 10:23:21 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1760948600;
-	bh=fPMnxVdTFOQgQm0O4y1ScD0/38pb8OIHKrqFCNc1sjU=;
+	s=mail; t=1760948603;
+	bh=aphqrnjnIHEaL1McVyPsfsz1ESyLlGYYkbJKH8NlHMg=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=KOBRooxWguh4TPvk53/puSDYXFIXPPGig/RTp/3InhlI0HcOd8h/YWQzln9SOcmuo
-	 IM0BntMkPTrgeQo3+KE2COjYq2Od4oyR4ddbKIxSwIVI2+0pr1WDqODRtSI4F0wz06
-	 fAT+01GaKAxn2bvOvbCAZfsx2v1/Ojr65uwRdy1o=
+	b=Z+Fc3I3kwwM42ZJWD1OKt3Rcuuawr4d2kcM1vAoJfi35Qq4959AiJVgxr1XH+gG7d
+	 s4SVp5poG+AZXZyizdsbvZLRLQzEbZakvE98xyC0yTtnzujJOtb/hYI18Dx1WOnJ1k
+	 CljDBws2gl4v8LfVnlWUpnhM9PRt1oUIM63gi4D8=
 From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-Date: Mon, 20 Oct 2025 10:24:52 +0200
-Subject: [PATCH v8 6/8] media: rkisp1: Use v4l2-isp for validation
+Date: Mon, 20 Oct 2025 10:24:54 +0200
+Subject: [PATCH v8 8/8] media: Documentation: kapi: Add v4l2 generic ISP
+ support
 MIME-Version: 1.0
-Message-Id: <20251020-extensible-parameters-validation-v8-6-afba4ba7b42d@ideasonboard.com>
+Message-Id: <20251020-extensible-parameters-validation-v8-8-afba4ba7b42d@ideasonboard.com>
 References: <20251020-extensible-parameters-validation-v8-0-afba4ba7b42d@ideasonboard.com>
 In-Reply-To: <20251020-extensible-parameters-validation-v8-0-afba4ba7b42d@ideasonboard.com>
 To: Dafna Hirschfeld <dafna@fastmail.com>, 
@@ -51,28 +52,29 @@ To: Dafna Hirschfeld <dafna@fastmail.com>,
  Antoine Bouyer <antoine.bouyer@nxp.com>
 Cc: linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
  linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+ Jacopo Mondi <jacopo.mondi@ideasonboard.com>, 
+ Michael Riesch <michael.riesch@collabora.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=12723;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4112;
  i=jacopo.mondi@ideasonboard.com; h=from:subject:message-id;
- bh=fPMnxVdTFOQgQm0O4y1ScD0/38pb8OIHKrqFCNc1sjU=;
- b=owEBbQKS/ZANAwAKAXI0Bo8WoVY8AcsmYgBo9fHYWxbdrASuhFsapXl+nQ84Uep0Q6QU7Xd31
- LLXpjGj0DOJAjMEAAEKAB0WIQS1xD1IgJogio9YOMByNAaPFqFWPAUCaPXx2AAKCRByNAaPFqFW
- PLnXD/0ZhlifplsC6hfIaFnK/i/nuHVx1/qfr4VkwwEJtjr/vkadpCJtSaKe2Sjqkedml/vLgng
- fAbXA83nCyJYjziliE6HL2t/7epsoxrFzSMRtlpns60sCtNtsbVXb2uujRJuGVVjYs/T70Mt3Mz
- 7idUO8ghmKz4i5B07nXfFqNq3L+FUgygWleV9Mnw4LR7/QKcJsW706tpVNr3MVE8B/HU2rZnbQ0
- 4odCzJ9Ak2C34aocmSt60kZX+n7CJFzOMW0jeUGL0CkBY8i5ICpdw908ieTU8pDwl9PYa8/cOo9
- uzg7JvCYCOieHJV2v0B5tgMKnDItYVIrQllqjd0mCNZ1K4bxKPi9h7Ivn5y/ZCLzHWU7rJSQ8UR
- UhLRKuks6ebGq/IjUVp2Wp98Lg2Gw1qhuAeIfGO1sqZNND1Tf7UN0KBzNnS8DWv2k+Nl44P9qzi
- aqu171rxsZSINi8h9bf/yDEHARqXkM0CmU1trZlBVIZLql+CKdSDzsG2P6Ygep4S+uLHJVv/792
- Y+G2S+JMJANeTnKVdi/tMjj6ggLvEaaMN44lNMEP0fLnK7Leih6v4he0IjFXMhnbvrOM80aImyb
- MHsEsPuHvgHJKXrShluJMEwBuk/qLmyPKVBQGqBdoITAFdsjjao14ujCj9N53S5g8TygNNFcpMH
- 3+uNvtCE3ljOP+w==
+ bh=aphqrnjnIHEaL1McVyPsfsz1ESyLlGYYkbJKH8NlHMg=;
+ b=owEBbQKS/ZANAwAKAXI0Bo8WoVY8AcsmYgBo9fHYLuapdMSCrbxyTfvkamWN3atlzp6On/gWa
+ Ullsu6bJlWJAjMEAAEKAB0WIQS1xD1IgJogio9YOMByNAaPFqFWPAUCaPXx2AAKCRByNAaPFqFW
+ PMebD/40IT9AUTtqWZ1ILnE5CPIbzJn7CE5LICF8T/arumBlmCly/EBuhRr2Cc5lMTkqPq8BIR3
+ JzCsZmxP9yTspZctBCJ+ZvHC3GSur4e2GXJgJQa2DW98j6MJpx20A1q6Lb1+/hWag4G+xk1/PH+
+ yJfj/eZ3MOQStCijZOadI+l5jrUa70H3dzY2UCiB7FFog2/YMYFclF3LBe41lNNPt8qot0Trc65
+ bpmu56bfff00/AwdmoWkahb34YVztUxsuFkwnAUVqNlUGGy3DnTlWsRwTYdlGyUax3mbnWKJE0I
+ 7TfqzvONQ+0SZmHpu8vQTIa65cjA6WgyuhnhMnnOGaei4mHelvbAjJi+IuUrZXgyvwbJ3tKY66E
+ jIf/eDzd+LiDltTTWTc68j5mHybg0USzv9dObAvWpxJ+gEloSVhxD6upum5sVSGFhRsLATswqnA
+ 1FdGI18PiuzQ0rCcuQbrdcwA9IxAzbzhEHQ6fqpd9F1aWZOQklr7rGssEDY+GVNuotQztE9SlsG
+ YJ59FjfbRShIG2PZKk6w1JE0y3VhsCj29fSwxeu3efR95MAp1iQdL7AscBI0yeoCHnBR+4cbWNu
+ XK0E6QC7MbsXwrLJpyLsknPdH8dDGKO5a9V2JdICIWdOED3hRTT1SBKiAXrDKplYNL6QsPWJWVe
+ imETzVRPh5GckEA==
 X-Developer-Key: i=jacopo.mondi@ideasonboard.com; a=openpgp;
  fpr=72392EDC88144A65C701EA9BA5826A2587AD026B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251020_012505_206121_BFBCB6A9 
-X-CRM114-Status: GOOD (  18.13  )
+X-CRM114-CacheID: sfid-20251020_012507_292203_104821CD 
+X-CRM114-Status: GOOD (  16.38  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,343 +91,95 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Convert rkisp1-params.c to use the helpers defined in v4l2-isp.h
-to perform validation of a ISP parameters buffer.
+Add to the driver-api documentation the v4l2-isp.h types and
+helpers documentation.
 
 Reviewed-by: Daniel Scally <dan.scally@ideasonboard.com>
+Reviewed-by: Michael Riesch <michael.riesch@collabora.com>
 Acked-by: Sakari Ailus <sakari.ailus@linux.intel.com>
 Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
 ---
- drivers/media/platform/rockchip/rkisp1/Kconfig     |   1 +
- .../media/platform/rockchip/rkisp1/rkisp1-params.c | 183 +++++++++------------
- 2 files changed, 77 insertions(+), 107 deletions(-)
+ Documentation/driver-api/media/v4l2-core.rst |  1 +
+ Documentation/driver-api/media/v4l2-isp.rst  | 49 ++++++++++++++++++++++++++++
+ MAINTAINERS                                  |  1 +
+ 3 files changed, 51 insertions(+)
 
-diff --git a/drivers/media/platform/rockchip/rkisp1/Kconfig b/drivers/media/platform/rockchip/rkisp1/Kconfig
-index 731c9acbf6efa33188617204d441fb0ea59adebc..f53eb1f3f3e7003d8e02c9236aeabb5ae8844f7b 100644
---- a/drivers/media/platform/rockchip/rkisp1/Kconfig
-+++ b/drivers/media/platform/rockchip/rkisp1/Kconfig
-@@ -10,6 +10,7 @@ config VIDEO_ROCKCHIP_ISP1
- 	select VIDEOBUF2_VMALLOC
- 	select V4L2_FWNODE
- 	select GENERIC_PHY_MIPI_DPHY
-+	select V4L2_ISP
- 	default n
- 	help
- 	  Enable this to support the Image Signal Processing (ISP) module
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-index f1585f8fa0f478304f74317fd9dd09199c94ec82..a880a46d2eefefc6474b36dc5aa69b4f3dce51d1 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-@@ -12,6 +12,7 @@
- #include <media/v4l2-common.h>
- #include <media/v4l2-event.h>
- #include <media/v4l2-ioctl.h>
-+#include <media/v4l2-isp.h>
- #include <media/videobuf2-core.h>
- #include <media/videobuf2-vmalloc.h>	/* for ISP params */
- 
-@@ -2097,122 +2098,166 @@ typedef void (*rkisp1_block_handler)(struct rkisp1_params *params,
- 			     const union rkisp1_ext_params_config *config);
- 
- static const struct rkisp1_ext_params_handler {
--	size_t size;
- 	rkisp1_block_handler handler;
- 	unsigned int group;
- 	unsigned int features;
- } rkisp1_ext_params_handlers[] = {
- 	[RKISP1_EXT_PARAMS_BLOCK_TYPE_BLS] = {
--		.size		= sizeof(struct rkisp1_ext_params_bls_config),
- 		.handler	= rkisp1_ext_params_bls,
- 		.group		= RKISP1_EXT_PARAMS_BLOCK_GROUP_OTHERS,
- 		.features       = RKISP1_FEATURE_BLS,
- 	},
- 	[RKISP1_EXT_PARAMS_BLOCK_TYPE_DPCC] = {
--		.size		= sizeof(struct rkisp1_ext_params_dpcc_config),
- 		.handler	= rkisp1_ext_params_dpcc,
- 		.group		= RKISP1_EXT_PARAMS_BLOCK_GROUP_OTHERS,
- 	},
- 	[RKISP1_EXT_PARAMS_BLOCK_TYPE_SDG] = {
--		.size		= sizeof(struct rkisp1_ext_params_sdg_config),
- 		.handler	= rkisp1_ext_params_sdg,
- 		.group		= RKISP1_EXT_PARAMS_BLOCK_GROUP_OTHERS,
- 	},
- 	[RKISP1_EXT_PARAMS_BLOCK_TYPE_AWB_GAIN] = {
--		.size		= sizeof(struct rkisp1_ext_params_awb_gain_config),
- 		.handler	= rkisp1_ext_params_awbg,
- 		.group		= RKISP1_EXT_PARAMS_BLOCK_GROUP_OTHERS,
- 	},
- 	[RKISP1_EXT_PARAMS_BLOCK_TYPE_FLT] = {
--		.size		= sizeof(struct rkisp1_ext_params_flt_config),
- 		.handler	= rkisp1_ext_params_flt,
- 		.group		= RKISP1_EXT_PARAMS_BLOCK_GROUP_OTHERS,
- 	},
- 	[RKISP1_EXT_PARAMS_BLOCK_TYPE_BDM] = {
--		.size		= sizeof(struct rkisp1_ext_params_bdm_config),
- 		.handler	= rkisp1_ext_params_bdm,
- 		.group		= RKISP1_EXT_PARAMS_BLOCK_GROUP_OTHERS,
- 	},
- 	[RKISP1_EXT_PARAMS_BLOCK_TYPE_CTK] = {
--		.size		= sizeof(struct rkisp1_ext_params_ctk_config),
- 		.handler	= rkisp1_ext_params_ctk,
- 		.group		= RKISP1_EXT_PARAMS_BLOCK_GROUP_OTHERS,
- 	},
- 	[RKISP1_EXT_PARAMS_BLOCK_TYPE_GOC] = {
--		.size		= sizeof(struct rkisp1_ext_params_goc_config),
- 		.handler	= rkisp1_ext_params_goc,
- 		.group		= RKISP1_EXT_PARAMS_BLOCK_GROUP_OTHERS,
- 	},
- 	[RKISP1_EXT_PARAMS_BLOCK_TYPE_DPF] = {
--		.size		= sizeof(struct rkisp1_ext_params_dpf_config),
- 		.handler	= rkisp1_ext_params_dpf,
- 		.group		= RKISP1_EXT_PARAMS_BLOCK_GROUP_OTHERS,
- 	},
- 	[RKISP1_EXT_PARAMS_BLOCK_TYPE_DPF_STRENGTH] = {
--		.size		= sizeof(struct rkisp1_ext_params_dpf_strength_config),
- 		.handler	= rkisp1_ext_params_dpfs,
- 		.group		= RKISP1_EXT_PARAMS_BLOCK_GROUP_OTHERS,
- 	},
- 	[RKISP1_EXT_PARAMS_BLOCK_TYPE_CPROC] = {
--		.size		= sizeof(struct rkisp1_ext_params_cproc_config),
- 		.handler	= rkisp1_ext_params_cproc,
- 		.group		= RKISP1_EXT_PARAMS_BLOCK_GROUP_OTHERS,
- 	},
- 	[RKISP1_EXT_PARAMS_BLOCK_TYPE_IE] = {
--		.size		= sizeof(struct rkisp1_ext_params_ie_config),
- 		.handler	= rkisp1_ext_params_ie,
- 		.group		= RKISP1_EXT_PARAMS_BLOCK_GROUP_OTHERS,
- 	},
- 	[RKISP1_EXT_PARAMS_BLOCK_TYPE_LSC] = {
--		.size		= sizeof(struct rkisp1_ext_params_lsc_config),
- 		.handler	= rkisp1_ext_params_lsc,
- 		.group		= RKISP1_EXT_PARAMS_BLOCK_GROUP_LSC,
- 	},
- 	[RKISP1_EXT_PARAMS_BLOCK_TYPE_AWB_MEAS] = {
--		.size		= sizeof(struct rkisp1_ext_params_awb_meas_config),
- 		.handler	= rkisp1_ext_params_awbm,
- 		.group		= RKISP1_EXT_PARAMS_BLOCK_GROUP_OTHERS,
- 	},
- 	[RKISP1_EXT_PARAMS_BLOCK_TYPE_HST_MEAS] = {
--		.size		= sizeof(struct rkisp1_ext_params_hst_config),
- 		.handler	= rkisp1_ext_params_hstm,
- 		.group		= RKISP1_EXT_PARAMS_BLOCK_GROUP_OTHERS,
- 	},
- 	[RKISP1_EXT_PARAMS_BLOCK_TYPE_AEC_MEAS] = {
--		.size		= sizeof(struct rkisp1_ext_params_aec_config),
- 		.handler	= rkisp1_ext_params_aecm,
- 		.group		= RKISP1_EXT_PARAMS_BLOCK_GROUP_OTHERS,
- 	},
- 	[RKISP1_EXT_PARAMS_BLOCK_TYPE_AFC_MEAS] = {
--		.size		= sizeof(struct rkisp1_ext_params_afc_config),
- 		.handler	= rkisp1_ext_params_afcm,
- 		.group		= RKISP1_EXT_PARAMS_BLOCK_GROUP_OTHERS,
- 	},
- 	[RKISP1_EXT_PARAMS_BLOCK_TYPE_COMPAND_BLS] = {
--		.size		= sizeof(struct rkisp1_ext_params_compand_bls_config),
- 		.handler	= rkisp1_ext_params_compand_bls,
- 		.group		= RKISP1_EXT_PARAMS_BLOCK_GROUP_OTHERS,
- 		.features	= RKISP1_FEATURE_COMPAND,
- 	},
- 	[RKISP1_EXT_PARAMS_BLOCK_TYPE_COMPAND_EXPAND] = {
--		.size		= sizeof(struct rkisp1_ext_params_compand_curve_config),
- 		.handler	= rkisp1_ext_params_compand_expand,
- 		.group		= RKISP1_EXT_PARAMS_BLOCK_GROUP_OTHERS,
- 		.features	= RKISP1_FEATURE_COMPAND,
- 	},
- 	[RKISP1_EXT_PARAMS_BLOCK_TYPE_COMPAND_COMPRESS] = {
--		.size		= sizeof(struct rkisp1_ext_params_compand_curve_config),
- 		.handler	= rkisp1_ext_params_compand_compress,
- 		.group		= RKISP1_EXT_PARAMS_BLOCK_GROUP_OTHERS,
- 		.features	= RKISP1_FEATURE_COMPAND,
- 	},
- 	[RKISP1_EXT_PARAMS_BLOCK_TYPE_WDR] = {
--		.size		= sizeof(struct rkisp1_ext_params_wdr_config),
- 		.handler	= rkisp1_ext_params_wdr,
- 		.group		= RKISP1_EXT_PARAMS_BLOCK_GROUP_OTHERS,
- 	},
- };
- 
-+static const struct v4l2_isp_params_block_info rkisp1_ext_params_blocks_info[] = {
-+	[RKISP1_EXT_PARAMS_BLOCK_TYPE_BLS] = {
-+		.size		= sizeof(struct rkisp1_ext_params_bls_config),
-+	},
-+	[RKISP1_EXT_PARAMS_BLOCK_TYPE_DPCC] = {
-+		.size		= sizeof(struct rkisp1_ext_params_dpcc_config),
-+	},
-+	[RKISP1_EXT_PARAMS_BLOCK_TYPE_SDG] = {
-+		.size		= sizeof(struct rkisp1_ext_params_sdg_config),
-+	},
-+	[RKISP1_EXT_PARAMS_BLOCK_TYPE_AWB_GAIN] = {
-+		.size		= sizeof(struct rkisp1_ext_params_awb_gain_config),
-+	},
-+	[RKISP1_EXT_PARAMS_BLOCK_TYPE_FLT] = {
-+		.size		= sizeof(struct rkisp1_ext_params_flt_config),
-+	},
-+	[RKISP1_EXT_PARAMS_BLOCK_TYPE_BDM] = {
-+		.size		= sizeof(struct rkisp1_ext_params_bdm_config),
-+	},
-+	[RKISP1_EXT_PARAMS_BLOCK_TYPE_CTK] = {
-+		.size		= sizeof(struct rkisp1_ext_params_ctk_config),
-+	},
-+	[RKISP1_EXT_PARAMS_BLOCK_TYPE_GOC] = {
-+		.size		= sizeof(struct rkisp1_ext_params_goc_config),
-+	},
-+	[RKISP1_EXT_PARAMS_BLOCK_TYPE_DPF] = {
-+		.size		= sizeof(struct rkisp1_ext_params_dpf_config),
-+	},
-+	[RKISP1_EXT_PARAMS_BLOCK_TYPE_DPF_STRENGTH] = {
-+		.size		= sizeof(struct rkisp1_ext_params_dpf_strength_config),
-+	},
-+	[RKISP1_EXT_PARAMS_BLOCK_TYPE_CPROC] = {
-+		.size		= sizeof(struct rkisp1_ext_params_cproc_config),
-+	},
-+	[RKISP1_EXT_PARAMS_BLOCK_TYPE_IE] = {
-+		.size		= sizeof(struct rkisp1_ext_params_ie_config),
-+	},
-+	[RKISP1_EXT_PARAMS_BLOCK_TYPE_LSC] = {
-+		.size		= sizeof(struct rkisp1_ext_params_lsc_config),
-+	},
-+	[RKISP1_EXT_PARAMS_BLOCK_TYPE_AWB_MEAS] = {
-+		.size		= sizeof(struct rkisp1_ext_params_awb_meas_config),
-+	},
-+	[RKISP1_EXT_PARAMS_BLOCK_TYPE_HST_MEAS] = {
-+		.size		= sizeof(struct rkisp1_ext_params_hst_config),
-+	},
-+	[RKISP1_EXT_PARAMS_BLOCK_TYPE_AEC_MEAS] = {
-+		.size		= sizeof(struct rkisp1_ext_params_aec_config),
-+	},
-+	[RKISP1_EXT_PARAMS_BLOCK_TYPE_AFC_MEAS] = {
-+		.size		= sizeof(struct rkisp1_ext_params_afc_config),
-+	},
-+	[RKISP1_EXT_PARAMS_BLOCK_TYPE_COMPAND_BLS] = {
-+		.size		= sizeof(struct rkisp1_ext_params_compand_bls_config),
-+	},
-+	[RKISP1_EXT_PARAMS_BLOCK_TYPE_COMPAND_EXPAND] = {
-+		.size		= sizeof(struct rkisp1_ext_params_compand_curve_config),
-+	},
-+	[RKISP1_EXT_PARAMS_BLOCK_TYPE_COMPAND_COMPRESS] = {
-+		.size		= sizeof(struct rkisp1_ext_params_compand_curve_config),
-+	},
-+	[RKISP1_EXT_PARAMS_BLOCK_TYPE_WDR] = {
-+		.size		= sizeof(struct rkisp1_ext_params_wdr_config),
-+	},
-+};
+diff --git a/Documentation/driver-api/media/v4l2-core.rst b/Documentation/driver-api/media/v4l2-core.rst
+index ad987c34ad2a8460bb95e97adc4d850d624e0b81..a5f5102c64cca57b57b54ab95882b26286fb27de 100644
+--- a/Documentation/driver-api/media/v4l2-core.rst
++++ b/Documentation/driver-api/media/v4l2-core.rst
+@@ -27,3 +27,4 @@ Video4Linux devices
+     v4l2-common
+     v4l2-tveeprom
+     v4l2-jpeg
++    v4l2-isp
+diff --git a/Documentation/driver-api/media/v4l2-isp.rst b/Documentation/driver-api/media/v4l2-isp.rst
+new file mode 100644
+index 0000000000000000000000000000000000000000..150ba39b257b23e6a8ca1a348047f5b55588fbf7
+--- /dev/null
++++ b/Documentation/driver-api/media/v4l2-isp.rst
+@@ -0,0 +1,49 @@
++.. SPDX-License-Identifier: GPL-2.0
 +
- static void rkisp1_ext_params_config(struct rkisp1_params *params,
- 				     struct rkisp1_ext_params_cfg *cfg,
- 				     u32 block_group_mask)
-@@ -2646,31 +2691,16 @@ static int rkisp1_params_prepare_ext_params(struct rkisp1_params *params,
- {
- 	struct vb2_v4l2_buffer *vbuf = to_vb2_v4l2_buffer(vb);
- 	struct rkisp1_params_buffer *params_buf = to_rkisp1_params_buffer(vbuf);
--	size_t header_size = offsetof(struct rkisp1_ext_params_cfg, data);
- 	struct rkisp1_ext_params_cfg *cfg = params_buf->cfg;
- 	size_t payload_size = vb2_get_plane_payload(vb, 0);
- 	struct rkisp1_ext_params_cfg *usr_cfg =
- 		vb2_plane_vaddr(&vbuf->vb2_buf, 0);
--	size_t block_offset = 0;
--	size_t cfg_size;
--
--	/*
--	 * Validate the buffer payload size before copying the parameters. The
--	 * payload has to be smaller than the destination buffer size and larger
--	 * than the header size.
--	 */
--	if (payload_size > params->metafmt->buffersize) {
--		dev_dbg(params->rkisp1->dev,
--			"Too large buffer payload size %zu\n", payload_size);
--		return -EINVAL;
--	}
-+	int ret;
- 
--	if (payload_size < header_size) {
--		dev_dbg(params->rkisp1->dev,
--			"Buffer payload %zu smaller than header size %zu\n",
--			payload_size, header_size);
--		return -EINVAL;
--	}
-+	ret = v4l2_isp_params_validate_buffer_size(params->rkisp1->dev, vb,
-+						   params->metafmt->buffersize);
-+	if (ret)
-+		return ret;
- 
- 	/*
- 	 * Copy the parameters buffer to the internal scratch buffer to avoid
-@@ -2678,71 +2708,10 @@ static int rkisp1_params_prepare_ext_params(struct rkisp1_params *params,
- 	 */
- 	memcpy(cfg, usr_cfg, payload_size);
- 
--	/* Only v1 is supported at the moment. */
--	if (cfg->version != RKISP1_EXT_PARAM_BUFFER_V1) {
--		dev_dbg(params->rkisp1->dev,
--			"Unsupported extensible format version: %u\n",
--			cfg->version);
--		return -EINVAL;
--	}
--
--	/* Validate the size reported in the parameters buffer header. */
--	cfg_size = header_size + cfg->data_size;
--	if (cfg_size != payload_size) {
--		dev_dbg(params->rkisp1->dev,
--			"Data size %zu different than buffer payload size %zu\n",
--			cfg_size, payload_size);
--		return -EINVAL;
--	}
--
--	/* Walk the list of parameter blocks and validate them. */
--	cfg_size = cfg->data_size;
--	while (cfg_size >= sizeof(struct rkisp1_ext_params_block_header)) {
--		const struct rkisp1_ext_params_block_header *block;
--		const struct rkisp1_ext_params_handler *handler;
--
--		block = (const struct rkisp1_ext_params_block_header *)
--			&cfg->data[block_offset];
--
--		if (block->type >= ARRAY_SIZE(rkisp1_ext_params_handlers)) {
--			dev_dbg(params->rkisp1->dev,
--				"Invalid parameters block type\n");
--			return -EINVAL;
--		}
--
--		if (block->size > cfg_size) {
--			dev_dbg(params->rkisp1->dev,
--				"Premature end of parameters data\n");
--			return -EINVAL;
--		}
--
--		if ((block->flags & (RKISP1_EXT_PARAMS_FL_BLOCK_ENABLE |
--				     RKISP1_EXT_PARAMS_FL_BLOCK_DISABLE)) ==
--		   (RKISP1_EXT_PARAMS_FL_BLOCK_ENABLE |
--		    RKISP1_EXT_PARAMS_FL_BLOCK_DISABLE)) {
--			dev_dbg(params->rkisp1->dev,
--				"Invalid parameters block flags\n");
--			return -EINVAL;
--		}
--
--		handler = &rkisp1_ext_params_handlers[block->type];
--		if (block->size != handler->size) {
--			dev_dbg(params->rkisp1->dev,
--				"Invalid parameters block size\n");
--			return -EINVAL;
--		}
--
--		block_offset += block->size;
--		cfg_size -= block->size;
--	}
--
--	if (cfg_size) {
--		dev_dbg(params->rkisp1->dev,
--			"Unexpected data after the parameters buffer end\n");
--		return -EINVAL;
--	}
--
--	return 0;
-+	return v4l2_isp_params_validate_buffer(params->rkisp1->dev, vb,
-+				(struct v4l2_isp_params_buffer *)cfg,
-+				rkisp1_ext_params_blocks_info,
-+				ARRAY_SIZE(rkisp1_ext_params_blocks_info));
- }
- 
- static int rkisp1_params_vb2_buf_prepare(struct vb2_buffer *vb)
++V4L2 generic ISP parameters and statistics support
++^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++
++Design rationale
++================
++
++ISP configuration parameters and statistics are processed and collected by
++drivers and exchanged with userspace through data types that usually
++reflect the ISP peripheral registers layout.
++
++Each ISP driver defines its own metadata output format for parameters and
++a metadata capture format for statistics. The buffer layout is realized by a
++set of C structures that reflects the registers layout. The number and types
++of C structures is fixed by the format definition and becomes part of the Linux
++kernel uAPI/uABI interface.
++
++Because of the hard requirement of backward compatibility when extending the
++user API/ABI interface, modifying an ISP driver capture or output metadata
++format after it has been accepted by mainline is very hard if not impossible.
++
++It generally happens, in fact, that after the first accepted revision of an ISP
++driver the buffers layout need to be modified, either to support new hardware
++blocks, to fix bugs or to support different revisions of the hardware.
++
++Each of these situations would require defining a new metadata format, making it
++really hard to maintain and extend drivers and requiring userspace to use
++the correct format depending on the kernel revision in use.
++
++V4L2 ISP configuration parameters
++=================================
++
++For these reasons, Video4Linux2 defines generic types for ISP configuration
++parameters and statistics. Drivers are still expected to define their own
++formats for their metadata output and capture nodes, but the buffers layout can
++be defined using the extensible and versioned types defined by
++include/uapi/linux/media/v4l2-isp.h.
++
++Drivers are expected to provide the definitions of their supported ISP blocks,
++the control flags and the expected maximum size of a buffer.
++
++For driver developers a set of helper functions to assist them with validation
++of the buffer received from userspace is available in
++drivers/media/v4l2-core/v4l2-isp.c
++
++V4L2 ISP support driver documentation
++=====================================
++.. kernel-doc:: include/media/v4l2-isp.h
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 5833f82caa7f2f734bb0e1be144ade2109b23988..cd1137c7754538d02bd72521fec6c89e082246d2 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -26856,6 +26856,7 @@ V4L2 GENERIC ISP PARAMETERS AND STATISTIC FORMATS
+ M:	Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+ L:	linux-media@vger.kernel.org
+ S:	Maintained
++F:	Documentation/driver-api/media/v4l2-isp.rst
+ F:	Documentation/userspace-api/media/v4l/v4l2-isp.rst
+ F:	drivers/media/v4l2-core/v4l2-isp.c
+ F:	include/media/v4l2-isp.h
 
 -- 
 2.51.0
