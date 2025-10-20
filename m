@@ -4,61 +4,163 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFFA8CCD19F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 17:28:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7240CCD193
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 18:27:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uRfr921ybtJ3FGWt0YeimM0t1ymu76cg+2RtQ/3qnMM=; b=l3ffCI3yaxa+gfhExxnkCEOaxh
-	HW54fXAge20BzSg3O5iLMnuS3LVkBk+Y4qCfx4fNUG1CEM9zFDB6n1nGUGNEKP1336kGpczwyXSyI
-	uxNHikLPl0UO7C5lP/MXO9h2jPSQ9Jc4UhJFxKDL3pRBHDxWzNlelvB6eHzE8O+ml1K2rGr/uN6jk
-	VAeNreokD6Ds3vHPwzqdkoSGXPZS6hYtD7Z6v3DF9FZoOMImSeQlOyqY4SGF2obzMItAAgI64T52h
-	E0KF0XTPMd1NqisuxXDxQtOWIQ5CmrOC8kYq82OoGyDuAD3DboE8HdL+YetabLAfd+M1hw7bkaZhk
-	H0Vq2uRA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=1LiStTtmyv4EZ4VEaZnkDQapKSNhCiX41Y/wD/3LyCw=; b=GMhRiQGmmfBQFk
+	azrutw/IhrWTSNm8p6Gevt7mNFbLrS/TaZAhobErv5lN1QN46+611pQPUA7l9PLXwsnSaGE5KXadl
+	WhlIbtlWEGLD6oM2Q4T8U/NeIY3oYNzFgSeGjSazDmKJa/eYTFzT//12MwQ+biS9+2LostIuHI71O
+	JtYRA0T55HbfWis52MYK6ro8UiS2gGkyaOAicxUG6IujwM6I1ZQGvtCAva0ujhgHPujH2o51iOf4a
+	Zv+vf7eVyvEe8qPH8aOWnlzzHOxqyLNOatPjLdHP+rz+SL1OtoAJouddc4ammUEwAFtsxleLdV3l8
+	KSijEbS6FeSvgT6ZBwnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAtfo-0000000EUPz-2Gqc;
-	Mon, 20 Oct 2025 17:27:56 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vAubC-0000000Echl-32FR;
+	Mon, 20 Oct 2025 18:27:14 +0000
+Received: from mail-eastus2azon11011041.outbound.protection.outlook.com ([52.101.57.41] helo=BN8PR05CU002.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vAtfm-0000000EUPK-01e6;
-	Mon, 20 Oct 2025 17:27:55 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id CB636487E7;
-	Mon, 20 Oct 2025 17:27:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 16131C4CEFE;
-	Mon, 20 Oct 2025 17:27:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1760981270;
-	bh=5BENNYug8XWdW1sRlDCxLFbkXQ3SRgxDfRFcZP68nU8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=GZWlQqnhOTnejHM2lDjdNx9bZdkaSKeBvuSUWmPDoO75NqyF+zGtpp5J/jCZdFn+V
-	 l+qIkc7RYKOHvTP+mG+ckUNd6YwtYMk3hzLl2xkJKrdJ5Wpk2W1fLupLwuFzcwlogH
-	 fGCy3mMHMsu2StnL1PMyyVSANO94DUPlppuLCm3BhOQoF/3y/Yu9QSoL9VqudEKhjD
-	 ALXMoHKmyAyNrJbqicL3BRsLye9p4bPcIL+kHuDE5PgRe5tztq4yNlettuBpPgZN+Z
-	 P89Ndt56vztGV4lgnWD0qqfhgeb8lzYjnK/JKzLm2gJInlI8B3XZuaSSdgGQy5d4Q/
-	 25nS6P7VSc/yA==
-Date: Mon, 20 Oct 2025 18:27:46 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Elaine Zhang <zhangqing@rock-chips.com>
-Cc: mturquette@baylibre.com, sboyd@kernel.org, sugar.zhang@rock-chips.com,
-	heiko@sntech.de, robh@kernel.org, krzysztof.kozlowski+dt@linaro.org,
-	conor+dt@kernel.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	huangtao@rock-chips.com
-Subject: Re: [PATCH v3 2/5] dt-bindings: clock, reset: Add support for rv1126b
-Message-ID: <20251020-glorify-stalling-784a52342283@spud>
-References: <20251020023724.2723372-1-zhangqing@rock-chips.com>
- <20251020023724.2723372-3-zhangqing@rock-chips.com>
+	id 1vAub7-0000000EcgK-3fnz;
+	Mon, 20 Oct 2025 18:27:10 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=lamqZ095nZhO4Evd/JaTuzCi3U+iB7KOlK4xaoL6QRr3iTzNXtAsS3+57uHyvOPiPxNTeQJO8g0bofn3e72GzOHF5Fm9AmsNG5+bPAiDMWZagaeaqaLlMQcNCu/mK1i6XSIDU/eJgbAz0s7XnT+DKatZEkA8s+36/UkuCN5IsnHlj8rdarvSJswG/FWNqHNM/YIQS5eHUaifPYljOPEaLTp1/NshMCGuC1myVP/Kvu7W0awwBccqGkoHIuFqcCCvvQME5NMrcmbvrlyPrpDZLyOvhHgDai7glQ0gOnGHgHs3RXUf6HRRhvkA/x1AF4C2S1ahJchCkWwkhF9eFEalAg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=Ka1ehX/ULp6R2p9om9Tx9WVmBwl3XFYMyRzTYwhGKQQ=;
+ b=k15pJK7SkJQDPS7ogKf7C0906C2LA0oQq5J69f0xcaCC7U6hxWa6d9Kd1Adsw203u03y4dipbF8wypTnClPjiKBNXLenVMxTNoSl6ZAN2yOO4ix+wMxfqO3gIqgoftQvrJQqB+sCpPvZCljTKfKv4xvkzZlqqvtYu3ooVFZJzWtdQj2oxJ08uMgFZGbU/88BcrXmp4lN+GSgjIf6X09keom51ZtjXfIiRVT3bE4Mn4MXZPTOex1hlaMNOrqcmXWyGZiBkU23VMiWuzxxUAQWO6u/SLoS69IbC9kcn5Q9dI2/F0i9bryo1G29Gm8DG0ZyPJr1+HzzvcfZAViyJ4yOOQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Ka1ehX/ULp6R2p9om9Tx9WVmBwl3XFYMyRzTYwhGKQQ=;
+ b=mFU42XZCxQrNBN0gHYjOW8P8rHFvGs/bLU63ngxy3S4hYfaCRQeABA6Db7JX9UuF4VBqsoYoWoZ9D8kpfjGLenixmiXiLwUAmqwBeLofl7LiFCipi7D2FbbBSr4tlOekEDmNN4ouQSOnuzqDHKNtCpGDhqd5tx7EpiO8gj7UqY60/0Ng0XOzcjjquGxIQyEC/JkJQI7TebrUweHM/wrlTmmxLjEumjJjA2NQjcCCyFasB99YPBhLvt7tLpRrPbdXQJV8eO0s6bzNB2WaV4DPVslc/8OtH2EasuMWpvTaYmNj2bVC2Gv0u90lBF5B/ZGingqPQy4Ut85GClX//UFbjA==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from MN2PR12MB3613.namprd12.prod.outlook.com (2603:10b6:208:c1::17)
+ by BN3PR12MB9572.namprd12.prod.outlook.com (2603:10b6:408:2ca::17) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9228.16; Mon, 20 Oct
+ 2025 18:27:02 +0000
+Received: from MN2PR12MB3613.namprd12.prod.outlook.com
+ ([fe80::1b3b:64f5:9211:608b]) by MN2PR12MB3613.namprd12.prod.outlook.com
+ ([fe80::1b3b:64f5:9211:608b%4]) with mapi id 15.20.9228.015; Mon, 20 Oct 2025
+ 18:27:02 +0000
+Date: Mon, 20 Oct 2025 15:27:01 -0300
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Nicolin Chen <nicolinc@nvidia.com>
+Cc: joro@8bytes.org, kevin.tian@intel.com, suravee.suthikulpanit@amd.com,
+	will@kernel.org, robin.murphy@arm.com, sven@kernel.org,
+	j@jannau.net, robin.clark@oss.qualcomm.com,
+	m.szyprowski@samsung.com, krzk@kernel.org, dwmw2@infradead.org,
+	baolu.lu@linux.intel.com, yong.wu@mediatek.com,
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+	tjeznach@rivosinc.com, pjw@kernel.org, palmer@dabbelt.com,
+	aou@eecs.berkeley.edu, heiko@sntech.de, schnelle@linux.ibm.com,
+	mjrosato@linux.ibm.com, orsonzhai@gmail.com,
+	baolin.wang@linux.alibaba.com, wens@csie.org,
+	jernej.skrabec@gmail.com, samuel@sholland.org,
+	thierry.reding@gmail.com, jonathanh@nvidia.com,
+	jean-philippe@linaro.org, iommu@lists.linux.dev,
+	linux-kernel@vger.kernel.org, asahi@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-riscv@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-s390@vger.kernel.org,
+	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
+	virtualization@lists.linux.dev, patches@lists.linux.dev
+Subject: Re: [PATCH v1 2/6] iommu/arm-smmu-v3: Set release_domain to
+ arm_smmu_blocked_domain
+Message-ID: <20251020182701.GB316284@nvidia.com>
+References: <cover.1760312540.git.nicolinc@nvidia.com>
+ <cb0cd5a2d8b68dfd77cf9b94168254f3ae62d8ac.1760312540.git.nicolinc@nvidia.com>
+Content-Disposition: inline
+In-Reply-To: <cb0cd5a2d8b68dfd77cf9b94168254f3ae62d8ac.1760312540.git.nicolinc@nvidia.com>
+X-ClientProxiedBy: BL1PR13CA0419.namprd13.prod.outlook.com
+ (2603:10b6:208:2c2::34) To MN2PR12MB3613.namprd12.prod.outlook.com
+ (2603:10b6:208:c1::17)
 MIME-Version: 1.0
-In-Reply-To: <20251020023724.2723372-3-zhangqing@rock-chips.com>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: MN2PR12MB3613:EE_|BN3PR12MB9572:EE_
+X-MS-Office365-Filtering-Correlation-Id: 4dd90db2-0288-484b-8e97-08de100643ac
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|7416014|376014|366016;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?DgqXNnnZmx8ZK315+bVCgNHswDJjySQP8ybiBqtEOJljaTnx/YQCK9DrN0ZJ?=
+ =?us-ascii?Q?R+69sBiXo9ti1Ler7qOabrNHQpssR/XM9oollgSUSzeZ4V5+3Gu3Zbksef2b?=
+ =?us-ascii?Q?/UTkmcU+CxaxOfC22e4dPqEtLMzunSvDO0HzhnW9ECkie5x5h9egYz6SLYif?=
+ =?us-ascii?Q?IueZruNtEH+BfvrIUEZvR8yGwbORbQKfxWNgM/fRLIGwgeMDgUTV8Oam3xmI?=
+ =?us-ascii?Q?liACSyJmJyqdNhf9hxH1pjKwpVU2Jx+7gcuPHiKoX6t1DuSoN7SWF/6egCPf?=
+ =?us-ascii?Q?jGniMCltUFTfiK5P83nvEPCGh+2q1A/NWBByx3HH4wusEBd/jZsp1V8QHPaI?=
+ =?us-ascii?Q?PsEJfMfnvIGvYAawlXv9ATX1b1f2+im3w4aBppvnKVZAoKygCFMwK5QZF6tg?=
+ =?us-ascii?Q?Ca8FPp4ltwGWgAZKtSxyzA4qihDXce5J+N0CqSnOOPwTf6VuCAWZhUoep6Tn?=
+ =?us-ascii?Q?7EAZOiv3kW8pUg/Jq/3/FUZ+DhYnSqfdQ4GUV8rWxPiU7i8zJUZqQD4Ch11Y?=
+ =?us-ascii?Q?sAQ+v94dSMxRV91VxUiOw/cZep94UnDxwWLEfk7X0GAd6cUXKqEwudSSW5iB?=
+ =?us-ascii?Q?ahfmTdWJ7+Ievh6doaDClMwmIoQ5z7XehMldQQ8U7/owAu4+TEZD9cPhkTfD?=
+ =?us-ascii?Q?WLjDuTtnT29KkfG0Ra8x3qlqdRKowZMzEA3GHpQQO5uRe6AMU6TJ7KfQ1TNg?=
+ =?us-ascii?Q?LNVeKsA4zkJkD6KeGowqWynW5GYFUpRX+jqfwXi/xVdRiQog1no/mGTYKUjD?=
+ =?us-ascii?Q?Z7r3NUBlhqlU+B5k2rSj1yDm6Qfw8T0i6Vl+1xIevBL//vL3S9dAOkK/zfS6?=
+ =?us-ascii?Q?saOghe+sn2xQ6a1eJDTUvbridMJUcdmONMjdJL/L0Rg4Ikh55/jkeUlxG9OM?=
+ =?us-ascii?Q?TxVh9ASZyXEjWKitb+JKt2ekYlPNMdRzAh+ofFBQuQh7Zy9r9Ofj/2F9SXbR?=
+ =?us-ascii?Q?bqJMQs/BQQVeETG6tkW/iOQpr1TMtSQ/09oNixRWTK8yiSHEhGp7gMM8kvbL?=
+ =?us-ascii?Q?0xF6xvy6oZaIAUyzdilLCgb8FzmutJhrCB36zKeBltREGN1puj8a+dlfweQQ?=
+ =?us-ascii?Q?t4vGBEgdZq7p4P8m5JEuChyTaEpIlBplk/vA28ekAeh12+7zL2sxn6DRky4k?=
+ =?us-ascii?Q?MUtIaKg9rpXLGjsfr8mS9KuXRGD8JQM1KVg5mB8zoOUPLxQhg1Gy/MRMPum0?=
+ =?us-ascii?Q?juC6BqJMl0RETdIpsdux8i0wXQPZoAdRNBZA4NTmzm6iE3rJt/WAqDg3nvAL?=
+ =?us-ascii?Q?uOe+jF11nlVm9x2hosjHlDcEkJhXEjbiTdh5RHH09SYV/RY2ngEZ2Vp3xp+b?=
+ =?us-ascii?Q?E57sxOYl0rfC6OR4LiEe20h2Po2mcuWIp9h6LZdddrWeRvG3DZhXumlzbiaP?=
+ =?us-ascii?Q?C21s0aNKxKTTAoeIOMOvphWvw1rzzUk6U+ih9AmEMZFYIEDr2rdWXKc4zxra?=
+ =?us-ascii?Q?tVjCmkvRusimDZ7p9TiP3ddwZl44547x?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MN2PR12MB3613.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(7416014)(376014)(366016);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?PRjWaNO321moGMEqzf0V9g621SYMvyo3zkwcjwYiFfVEDT+ynsgIAxq85OoT?=
+ =?us-ascii?Q?E0pn1ACWZ+icsDDzCgatTepIc1e/XI51rIhpARZmlh0qdCCc6GIQmdcsz++U?=
+ =?us-ascii?Q?Cd3PxGf7TbzXa4+r1UouJiLnD64H+lhCAXxuSPLqSssXITYHuWKkk7rUX16R?=
+ =?us-ascii?Q?J0O4brPhsFKktbUXYphnYHyVqb4WHJKf2FS4SY24a+D+tj8K/8M4TycPuyAK?=
+ =?us-ascii?Q?CTwUaroIZAK7UHE897omM/uIQSnpaQW2TuhgVu5S96HVfVI3Hm/+L+5F3f9k?=
+ =?us-ascii?Q?JFNdgq/ixC4Gr9nPHtApRSp4KLXc85E4U8hCnMOM26azlpE0qN2yJWLxtT8D?=
+ =?us-ascii?Q?dZo0Atd/S7JaP5sDK0b3QMkgwyh+EnkiSZKkbF5pjkYEek8Um/qzY33850Oi?=
+ =?us-ascii?Q?LKdFeAbhV6rFE/5AsIDgV2YMfJGLcoKqvc+sOi6wgc2lq2Ws6JIv3De8+fW+?=
+ =?us-ascii?Q?W002zLnJ+5FPlMhxBMP641D3LZhzbbS048bFf1wPCjwoN0GtH+FW0r26kgh2?=
+ =?us-ascii?Q?+C9/UzoXQ9Nlw7V5ex+Zx1AfCkV8hoW7fNTeLkfnaZGrhAO143XDZ7JFUrcM?=
+ =?us-ascii?Q?nChaEEb+LHVR3xfHJOE9rrBIALfUK7H+tq38H9O0jrv8Sp1oRyuk8jR+Rhmx?=
+ =?us-ascii?Q?fsnDrpy6wpbm/4dgiopEbd0ppdfvVwNrRtOXMcdRWFz1V1+mIQFf44Y87WrG?=
+ =?us-ascii?Q?YKafL0SHla2d5OMTrF7RUBiZjb/1DWD4+9UPg+168kUg0nnorz9JgsvtlofM?=
+ =?us-ascii?Q?4fMzHjmhYxQnzjuFdY1UnAmtRAucLcK4O8v7Edcwhtq2CwepCjY3ZhzODrKN?=
+ =?us-ascii?Q?ZkiBicvwtsJiJctG23NgN8/KtqxRGKX4T9ExyITTo1atVQDZSbVyK55dVb29?=
+ =?us-ascii?Q?PHSqSb1MRVKpAEeCHsllgtv0I1RkvYfyuIGaYPK+lRKh/Mxrien1Ig+aRaYE?=
+ =?us-ascii?Q?IX3GfUxzlMJiDj4qLoDDI+/zrNSBe3m1tZbb4rOLP8V3+cy0ltXHwImP6VNl?=
+ =?us-ascii?Q?wbpnJxshRPCA8oKf17psBRaTVB6yLbuULzNdhyjBVnDxf3gxMJOA7cH0OY8h?=
+ =?us-ascii?Q?PRmwTgLB9Pf1rCf28yk83E7QAToQxwLEQYBi9KX2OpXlCq+mmay426W9crr9?=
+ =?us-ascii?Q?VaQU+Hx0ibQ0JilfV/13Ph30WizV4nZX8W0OzKyF48n/yq7AQE8Y6e+ZxMaf?=
+ =?us-ascii?Q?mXKGOlMa7caUiWy4Czii5XG1XTofxR0tgL5kd/SkuKVtsMv6RXhXyeR5MkzY?=
+ =?us-ascii?Q?Ha6JsyLMuC6+7Xi+Zi7651+RtDdddTTsZPh8ZmGWHgxBnE0xL2Kk9GPoK8YB?=
+ =?us-ascii?Q?NoEcAeo9x5VbuclA7ssxVJjWSOmMBflqXM59yVnndB0MXzSBaPFj7DxmI35W?=
+ =?us-ascii?Q?80e6N5vUHe9t9P1HtGKddWaVIjVt2nj2eoMiRkyc0pkCL9dNolHDumd1/LFx?=
+ =?us-ascii?Q?yUeWwO/SjPUrNiBvC4Yf4EazHWSwePbWz2aITOYIhaTYCUCKlqDPIQ8wyEwm?=
+ =?us-ascii?Q?yTclYP6FlqoVvJa0lCSLBwDmrIEWom2jsuGCrYUZwBUvBnxklGawXd4AmM1A?=
+ =?us-ascii?Q?IFOZXe3qmsyLMkMjg+KV2TLPB3NlpQLMqZq7X2l/?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4dd90db2-0288-484b-8e97-08de100643ac
+X-MS-Exchange-CrossTenant-AuthSource: MN2PR12MB3613.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Oct 2025 18:27:02.6184
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 2t4yV6wLKfObk3l4ZbJ/COpqZ9q0eCJVwuRhGmAihL635kezxO/HFjSXAG7vf9WT
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN3PR12MB9572
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251020_102754_083767_FEB3FA60 
-X-CRM114-Status: GOOD (  16.73  )
+X-CRM114-CacheID: sfid-20251020_112709_912035_468B49F4 
+X-CRM114-Status: UNSURE (   8.53  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,123 +172,25 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8339370492914371110=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
---===============8339370492914371110==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="8jPfVFF+LsEAbTxS"
-Content-Disposition: inline
-
-
---8jPfVFF+LsEAbTxS
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Mon, Oct 20, 2025 at 10:37:21AM +0800, Elaine Zhang wrote:
-> Add clock and reset ID defines for rv1126b.
-> Also add documentation for the rv1126b CRU core.
->=20
-> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+On Sun, Oct 12, 2025 at 04:57:38PM -0700, Nicolin Chen wrote:
+> Since the core now takes care of the require_direct case for the release
+> domain, simply use that via the release_domain op.
+> 
+> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
 > ---
->  .../bindings/clock/rockchip,rv1126b-cru.yaml  |  52 +++
->  .../dt-bindings/clock/rockchip,rv1126b-cru.h  | 392 +++++++++++++++++
->  .../dt-bindings/reset/rockchip,rv1126b-cru.h  | 405 ++++++++++++++++++
->  3 files changed, 849 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rv11=
-26b-cru.yaml
->  create mode 100644 include/dt-bindings/clock/rockchip,rv1126b-cru.h
->  create mode 100644 include/dt-bindings/reset/rockchip,rv1126b-cru.h
->=20
-> diff --git a/Documentation/devicetree/bindings/clock/rockchip,rv1126b-cru=
-=2Eyaml b/Documentation/devicetree/bindings/clock/rockchip,rv1126b-cru.yaml
-> new file mode 100644
-> index 000000000000..61bfcde9b16a
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/clock/rockchip,rv1126b-cru.yaml
-> @@ -0,0 +1,52 @@
-> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/clock/rockchip,rv1126b-cru.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Rockchip RV1126B Clock and Reset Unit
-> +
-> +maintainers:
-> +  - Elaine Zhang <zhangqing@rock-chips.com>
-> +  - Heiko Stuebner <heiko@sntech.de>
-> +
-> +description:
-> +  The rv1126b clock controller generates the clock and also implements a
-> +  reset controller for SoC peripherals.
-> +
-> +properties:
-> +  compatible:
-> +    enum:
-> +      - rockchip,rv1126b-cru
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  "#clock-cells":
-> +    const: 1
-> +
-> +  "#reset-cells":
-> +    const: 1
-> +
-> +  clocks:
-> +    maxItems: 1
-> +
-> +  clock-names:
-> +    const: xin24m
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - "#clock-cells"
-> +  - "#reset-cells"
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    cru: clock-controller@20000000 {
+>  drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c | 7 +------
+>  1 file changed, 1 insertion(+), 6 deletions(-)
 
-Drop this label, and then
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
-pw-bot: changes-requested
+Reviewed-by: Jason Gunthorpe <jgg@nvidia.com>
 
-Cheers,
-Conor.
-
---8jPfVFF+LsEAbTxS
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaPZxEQAKCRB4tDGHoIJi
-0kK8APsGDaDaPrNBh1llytFgMG6Li16PklHNduqnpWuyb+OT+AD9HLQrJ1te/veD
-OlXvk1cf/bainZQeYTHLjwAfv3PzoQI=
-=VlJd
------END PGP SIGNATURE-----
-
---8jPfVFF+LsEAbTxS--
-
-
---===============8339370492914371110==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Jason
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============8339370492914371110==--
-
