@@ -4,76 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00DF6CCD199
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 15:25:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E562BCCD199
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Oct 2025 15:25:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=w6T9E8esyGEVqgYiYKdOPiinNKrB9vNwXBMEgvqSZCo=; b=ryT5aMGMUFfNFx
-	WqZfQ//ukafNStSoUPoWvyjwrrtzFa3aS85jZJYfk/6xvRefwwLOhECPbyLuJo9EAD/rDQ2hB2j9U
-	dkuw74OJ58Sy+to7Vgg0UHRk98dEUmwphOb4CX3WrzuqKbLOHBAODl/TKmOX78ccBAOCRGpsoPfMJ
-	R2UpL6fETnOmCN7F/iN5VDA74Na2jHEOFurlqJtVdv/CYwpQHdCrpdjnbAyAw8Bhl2n3mosjNKMu+
-	cGR8M/nC2t/rZIi7AxCiopp+qtnl6gyiYHjzcNrTZjQRjK4WFVzbG3/QIQg/dIDvlQqlhbMMqkXRf
-	XS+Nrtwim97g2IzsOENg==;
+	List-Owner; bh=l4r7YK7+RgHNatcqI2V2SNkDFA+1L9HxL5lSBgHA7Gk=; b=NEit93mpOPkAgr
+	SuduFgvt3CfO25ppeCw2r+Bj1tjnEdJi84i1IKAe5zBvOSWHxnyWgjEIDy95RQchOc2dSrblyDxlf
+	qMmL9u/mtuoEmEcu4KF3ZZg2LW9gUHVpdS+EkmcsUOFvR/RgEZUqmv2WbDvYwZeNgm2ZQD3rbsZvm
+	54tIMFVoXOIht26u8bOUwyIMUMRSwgSgi5UToKiuz3Mcw3IC81z+BSjvdbKiWsZFfX3QCHaUQ895a
+	tXkmfYgRhTAgcUNX/iPwq/KRhiKggs9BGXiTY29PhEbi1/kdFmT8XnmyoWKNIoGzNy5PcIRDv61wP
+	Dpgh/KrrZRWW33jVjInA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vArl0-0000000E7K6-1tfj;
-	Mon, 20 Oct 2025 15:25:10 +0000
+	id 1vArl8-0000000E7OO-2C9a;
+	Mon, 20 Oct 2025 15:25:18 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vArkx-0000000E7IU-25pQ;
-	Mon, 20 Oct 2025 15:25:09 +0000
+	id 1vArl4-0000000E7Lc-1lr6;
+	Mon, 20 Oct 2025 15:25:15 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=CqOPWe4rfsEXq/Axf6YfN7t0vCSfPE7s8YtPOxax4AI=; b=bRn64KPiWoQCVOWet6ScvQRY9l
-	lD4nAkaGrSMWPtzDY5TPGUVSaH+dG6EG48t6Ose6jhmC+sXSmnsBLtz5PqNGAQWqRtmB1p6B+sSUh
-	wB4PXg/iGxxAV0Hf24/DWtqBxjsj4U3763uMJFtsgVErGbQxtt/kI5FLe9RxRtX/CmEuIHhzC2zJ3
-	yIF6LMYioHHVf7FmOaA3LdKLFTLj5nkQ69HmjKGPQFdYq/Dy9GT/5HB1OuDoFVFekj9NPdxHiKRof
-	1V2PrHpTzYht81R4sGXIRryfvMcjyCKNr1M0xX3ZmARsRVM4dZ9ToYbrYWmoziVbqGu/ElenlNEox
-	BVN370cg==;
+	bh=NmhX4kAAyfaAWBf9jg1TYvPxGghx+4HQ1uSQaHLqzz0=; b=KEuwc5vx/e6kDEjIO3rjrixtnS
+	oqjdbr/vo4yVqGp59A2by8CYFxZoL23j0lzT4clDJAMncPvYCSxDZebw6BwxtY3SJuleFJ40yfxHD
+	50TkE9YPx/uEnARb4ZftLhNxCch5Wjn9oScTeVAC73WMcl95ZfWH5kH5IA4e20rKdeq4xL6ASKQKF
+	PMhXftWXTaBDCuoB64xF96KhTSj6uwimGeBs9mvweMhcp3bKrDf+hi1i5ZOPgTaGm+xenwS2Qy5YL
+	1BGdjO4tMg9fY+32av1W3BwDaV9SEE5yYoyx1TrwXaH6B9zAeZHAHq2dV+JOps/M1hPexpCpOM4zG
+	NYARyCog==;
 Received: from [212.111.240.218] (helo=phil.guestnet.ukdd.de)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1vArka-0002qD-Cy; Mon, 20 Oct 2025 17:24:44 +0200
+	id 1vArkZ-0002qD-Sn; Mon, 20 Oct 2025 17:24:43 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	quentin.schulz@cherry.de,
-	kever.yang@rock-chips.com,
-	naoki@radxa.com,
-	honyuenkwun@gmail.com,
-	inindev@gmail.com,
-	ivan8215145640@gmail.com,
-	neil.armstrong@linaro.org,
-	mani@kernel.org,
-	dsimic@manjaro.org,
-	pbrobinson@gmail.com,
-	alchark@gmail.com,
-	didi.debian@cknow.org,
-	jbx6244@gmail.com,
-	andrew@lunn.ch,
-	Liangbin Lian <jjm2473@gmail.com>
+To: Fred Bloggs <f.blogs@napier.co.nz>,
+	Hsun Lai <i@chainsx.cn>
 Cc: Heiko Stuebner <heiko@sntech.de>,
+	Conor Dooley <conor.dooley@microchip.com>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Stephen Rothwell <sfr@canb.auug.org.au>,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v6 0/3] arm64: dts: rockchip: introduce LinkEase EasePi R1
-Date: Mon, 20 Oct 2025 17:24:42 +0200
-Message-ID: <176097387773.44471.5625428430704805786.b4-ty@sntech.de>
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v4 1/2] dt-bindings: arm: rockchip: Add 100ASK DShanPi A1
+Date: Mon, 20 Oct 2025 17:24:41 +0200
+Message-ID: <176097387775.44471.9315562892075549326.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20251014051226.64255-1-jjm2473@gmail.com>
-References: <20251014051226.64255-1-jjm2473@gmail.com>
+In-Reply-To: <0601AB836AE5F348+20251014021623.286121-2-i@chainsx.cn>
+References: <0601AB836AE5F348+20251014021623.286121-2-i@chainsx.cn>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251020_082507_554908_419779FA 
-X-CRM114-Status: UNSURE (   9.57  )
+X-CRM114-CacheID: sfid-20251020_082514_462007_589F88C5 
+X-CRM114-Status: UNSURE (   9.67  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -92,33 +81,19 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Tue, 14 Oct 2025 13:12:23 +0800, Liangbin Lian wrote:
-> LinkEase EasePi R1 [1] is a high-performance mini router.
+On Tue, 14 Oct 2025 10:16:13 +0800, Hsun Lai wrote:
+> This documents 100ASK DShanPi A1 which is a SBC based on RK3576 SoC.
 > 
-> Specification:
-> - Rockchip RK3568
-> - 2GB/4GB LPDDR4 RAM
-> - 16GB on-board eMMC
-> - 1x M.2 key for 2280 NVMe (PCIe 3.0)
-> - 1x USB 3.0 Type-A
-> - 1x USB 2.0 Type-C (for USB flashing)
-> - 2x 1000 Base-T (native, RTL8211F)
-> - 2x 2500 Base-T (PCIe, RTL8125B)
-> - 1x HDMI 2.0 Output
-> - 12v DC Jack
-> - 1x Power key connected to PMIC
-> - 2x LEDs (one static power supplied, one GPIO controlled)
+> Link: https://wiki.dshanpi.org/en/docs/DshanPi-A1/intro/
 > 
-> [...]
+> 
 
 Applied, thanks!
 
-[1/3] dt-bindings: vendor-prefixes: Document LinkEase
-      commit: 9e38dc1abce6fb776d4b6731ccc64ad25e525d39
-[2/3] dt-bindings: arm: rockchip: Add LinkEase EasePi R1
-      commit: fc3cd4021eeecb9adbe030b8cf32587126775d8e
-[3/3] arm64: dts: rockchip: add LinkEase EasePi R1
-      commit: deaefeaf3df433d50935b9a85076041040f06d74
+[1/2] dt-bindings: arm: rockchip: Add 100ASK DShanPi A1
+      commit: ff29a83cda0f6eebb57d14f0a6456e3d1e5dc7c3
+[2/2] arm64: dts: rockchip: add DTs for 100ASK DShanPi A1
+      commit: d809417c5a4012feb4379cd1767549b3568906e3
 
 Best regards,
 -- 
