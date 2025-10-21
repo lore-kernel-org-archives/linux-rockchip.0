@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0040ACCD1A7
-	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Oct 2025 15:23:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16B45CCD1B9
+	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Oct 2025 15:23:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=A2jabHthnnQaMceiZ5jcjmzlt3LF33le9AiGbH5b2jc=; b=sIijhhYXKLFqZF
-	SPx+PIHXw2q0Fh71PvsNViozIOOuTFaTS+g/x7dGG7Y6ZWYRE8VDugKYo27EJfezuJA4kFH8k0nuP
-	9gQ9UqxkJHkJ63BPjsBBK6O67DN58b4TIz64YDG3hGs98qZtkaSRT+lsW3Wj8AkQZNLbtWUWnbgI+
-	fmJMylWbGhkhKM/XDydGJmTR+OX8rhVUm3a4h26PYnY7WYKuiB461AOpHvf6tFXwiUjHEQiL5o7F8
-	5N6aC5AhLbzHBu5j62/cA4ObYINJjsrqMls7Rx2/qFsnLN+yvAAJNzEDx5sqGdLQc9PTNBpknL/bs
-	k2u7wz+hETsXeDiKYLmA==;
+	List-Owner; bh=31hfsjPj6RFpEUrMOwEKoueXojn41vjSvWNT6s8Jyn4=; b=le+S4Gc6lJTaDu
+	Svy5PX84Bcdh64wXCtELiA731NSIHWPQLwmy1FSTQ1j/HZaKCRtf/xlOeHx1nJiYuiwBc6vINagkf
+	L/3d5JhQj8ph7YtI5PI+7U77o+L4BBtumEhqPS575X45NzeebipEOH2PVSkNJm5OCazD6zlsU4ppa
+	uzqp7QhE1ADrPO+8+AfaMhR+tUx3elmcl0TeRqH20BjFhVUa/YbrUiEQfcjF6JyaQ4ZZfW+CUjAUo
+	FI6B5SLJsx8PuRTfC+FZS01Ingr4RAbpGydmCBPGNNDdmFdXI+AR4gnl2dokqfJnhVFlQSZJHfulP
+	3bJt3kp5DzLMITxVgijQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBECm-0000000HUBq-1mbJ;
+	id 1vBECm-0000000HUBD-0SAi;
 	Tue, 21 Oct 2025 15:23:20 +0000
-Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBECh-0000000HU3X-2Bdz
+	id 1vBECg-0000000HU2D-1iFP
 	for linux-rockchip@lists.infradead.org;
-	Tue, 21 Oct 2025 15:23:16 +0000
-Received: by mail-ej1-x631.google.com with SMTP id a640c23a62f3a-b5c18993b73so919269866b.0
-        for <linux-rockchip@lists.infradead.org>; Tue, 21 Oct 2025 08:23:15 -0700 (PDT)
+	Tue, 21 Oct 2025 15:23:15 +0000
+Received: by mail-ej1-x62f.google.com with SMTP id a640c23a62f3a-b54f55a290cso870083166b.2
+        for <linux-rockchip@lists.infradead.org>; Tue, 21 Oct 2025 08:23:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1761060193; x=1761664993; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1761060192; x=1761664992; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=JF1Khuy4nqLiE2y1n9lovRhx5obbKE7xwKO+d5/rlWI=;
-        b=TpSP7IjyPAg7NZtWy0iygaJYcJGkOGH5v3v+EC3fv13r3NIuxkk71cztVHfTlWnlzY
-         tComy9ct79KLnHy9zR5i9w3LEqTEmaxvI0l0DTvqaBIK2LqWBtKitHxUKr5rSNRau8rG
-         uqGwNmVh34vAuK0w7RGMb4eLbkqeFNc8kbJmMJswC9WbroblB9qxjIXwkcgnlyV2hxdI
-         N5wZC8DQjSJTsA68e4NHgqJzPzAWznuRjpk3QYSwTb+jC4Dl4glufQDnY7iosyaSB4VT
-         FNpar0A7DU2oi/gNLh3Ma19E1j8funtkKj8QX4AdAejufIAf7r3ITdqKgM/sa4goKTbh
-         A8SA==
+        bh=d9adNp0vIB1m6cHMOI8TscYP77iYGGA2dR4MofxfiQU=;
+        b=RxFlo6mdqmpX/RZILVqCz31VzTpcJBbfFrLlRUSRs4pSby3s6RMOZojoVuuxy+1xxf
+         ROUpB+sIP+gtwVaXz4hsUU0aFvbL6I/OVsb+3APN37oy2pJUKIwDY3UGoxoDjZg4T3YB
+         VfIRC4nMZA+HZAQfU2fkGKt9trOginJc/HVc4jRQ8UYbcRiiqLLwTS2TZgE6fzX6vW4v
+         7uGtWMy4eEnGLjHj9bNH8ZUEzIKPKgNaR2kXfJhoqKAq4m47BCOPWIl3UEY2egm3kufi
+         HKVN65HYrx9IeeoIWrSytckTaqtn3GBO1XI3F1u3fJ1PmEe9Ls+FTkwIRtoF3WSQH+xX
+         wpTQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1761060193; x=1761664993;
+        d=1e100.net; s=20230601; t=1761060192; x=1761664992;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=JF1Khuy4nqLiE2y1n9lovRhx5obbKE7xwKO+d5/rlWI=;
-        b=YkxnTOUltFifDeox1nJwk9TVEciLp4YnlRTB9Ctg5EficgCwWbc06xbUm40aRQhaj0
-         sKg6dIlibhtkTD7KwiGrTsot8FbNdA/i2RtJnZRw9NI76L4y6Pt75RrUy/ltuQoNun4L
-         5WJ5HjjBbcV+/6Df1DQKQQTVh5Y0q7VR2cOEn0lWCRnk+aQt8kCBBCc748I/Qee8LT2f
-         SzjGAFtWud3yERzyghOs8ONDe+HTqLBD6jnNCMeiTlnUHVt40rhIZa8H/8p5baGb0ney
-         0rxZUrWzOdRbtCx9R3w6qGV0GoNR1FyfIG2IetNivXdRZy8fGKDBP7XR2wztwBfgu4m0
-         34VA==
-X-Gm-Message-State: AOJu0YzYzvghR8gQsO9mJDUd5O99okA4q81qCgTqNX1XJkbq38/yFXNY
-	MsNpBYpc9kNE1GcjurPzZFuMHLqehLJUBum/GKmSGdXmtr5lkZzzThNwH8rpOVKM
-X-Gm-Gg: ASbGncsx9q6usnNS+HMEWWmAjzZdSfnQ+6eE3ckDwW3bDA9f+ofmsJxyQVHQ/mgIKfX
-	hG+8ohYATvt2IaUeH+8m3Ts8VnxP5HoukrdtNiboJ+riQLkcjmDCKA7/mfsnow4rROhHy3gGfTF
-	e/hCUKiiABoFt2L5BbT/FVNHqZmduvtYmxg6huK0mCFCWGmt0c/yzafrd/vAgzijSd/D9N9TDhd
-	k3v/XdOXVpKeDdFbEHlK9UkLzD09mv15L3OpAE81Hy8Hnx2N0E3NP54Tm7z4R4LC9GPdDUqjMGO
-	hZmY1n4249QktjN4JTQ+hi+7aGdFnEdAVWfioXmI0Cx3v00ARgkMytQO70z7lXLTe4TRWJ4k/Yx
-	u5cEvtzkItUbbYsHALRuf/g+KPD0rT0eG5kd2SZxn9RGE2AGl9F92iTQxofmAfzzNTAfSyjp5tO
-	gNsqOVeuFzD0yOnsttz4JifgS+dXlMpRx2Io6FlQ==
-X-Google-Smtp-Source: AGHT+IG8ZMx/3IH1gWXA/kMHWe4Ced895g7GfNQEjLkqqPoqoeKq+HY9fH6rztVBxeqVkVrZOdbVkg==
-X-Received: by 2002:a17:906:794e:b0:ad5:d597:561e with SMTP id a640c23a62f3a-b6475708a50mr2149204266b.56.1761060193479;
-        Tue, 21 Oct 2025 08:23:13 -0700 (PDT)
+        bh=d9adNp0vIB1m6cHMOI8TscYP77iYGGA2dR4MofxfiQU=;
+        b=D3yNa0js+HqT2ED16p49S+n9iEwWAwO3PjxBcTYl/O9v/WiBO3m5rnykSO3JnAYBqZ
+         3GGhd05UIz0Agy3IC1i+/6hHTQIbPHPCxIbJllJ7R5hnv/xacWcVCG2C3bVxFGHjLfU9
+         4ODe+1mLy8c4tDDU/kax4iSjq4R9Pw+jzqA8fs4tFlZN6scAffBlBwR6GP+O1yw885yc
+         NLtv0chfQ0ObV7dL473xkl4+ZN5OAtJUXFe139jm1wjDrnrI/xV9M/59i1Nwsq7B+kYF
+         Fv4VWOX7IYsug0kRTgfob0W4U+nJDm8Ut2eULdAZbl2utVd9UH29XopAlsXX0m6bBvyr
+         gqnw==
+X-Gm-Message-State: AOJu0YzaUZrz9mF5RUMB8NeCsCjcd488c29z05UWg2ZV19Igr0/kzoEx
+	VBAc+BFufadIdbarQblv6miIh8DEbeHWFGx6x+sa9Rw5BCNUh4KLTe9FP6rA1nlb
+X-Gm-Gg: ASbGnct8rg8oodWNibe0cfiRPrXKQZXZcP9LdLDXwp5Me5nHsVxjaEVzo94J0aDOI9X
+	5E69i+XwR2QNfq7Jv0uqaYf9W4hDehRUxPFk4Ye/rsP8o9o/yZEFU1hvIkbEi1RAp0EoCOLyUOD
+	sTRZ6w0uOTun4+sAe+FE264p0EthO0pUCq/pqhIyw/gi+WCbBnctU5RzPl20Skb/WDn6qYSIKGz
+	X3HdCeloZYlZKV9Ewy86RTKH7sgw8KoIqPWSjV9FGCNT+Tg6c3daYOD8OZT3uZjJk7rNc9J1ZuE
+	RXi+h17NH3XYdpCesl9LWPDGcpB49KKO7jOSUaylSl4mt6BUj4Na+gxbRLLb1k4peOLSqYZOkhR
+	kuafUPQcZIHJ01X3gQ/6XdIz6csTqC/ErutoGlBWO/UMvUBopA80WiGv3YCEQJGdwY5TH2JzPgK
+	TdbJAe+peI4ul6KBhmKdE8HRpwC66ZxajtY+Joig==
+X-Google-Smtp-Source: AGHT+IHurBcs/BvjTvbOQhGO+EbHIilgUbXuYs+sCrM7j/eTqSvavNvGUlTAR8coiGhQ9kPUDFiU+Q==
+X-Received: by 2002:a17:907:3daa:b0:b34:985c:a503 with SMTP id a640c23a62f3a-b6474b36a19mr1999860966b.35.1761060191871;
+        Tue, 21 Oct 2025 08:23:11 -0700 (PDT)
 Received: from tearch (pc142.ds2-s.us.edu.pl. [155.158.56.142])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-b65e8581780sm1082737866b.31.2025.10.21.08.23.12
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-b65e8581780sm1082737866b.31.2025.10.21.08.23.10
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 21 Oct 2025 08:23:13 -0700 (PDT)
+        Tue, 21 Oct 2025 08:23:11 -0700 (PDT)
 From: muhammed.efecetin.67@gmail.com
 X-Google-Original-From: muhammed.efecetin67@gmail.com
 To: linux-rockchip@lists.infradead.org
@@ -83,17 +83,16 @@ Cc: devicetree@vger.kernel.org,
 	rafael@kernel.org,
 	efectn@protonmail.com,
 	daniel.lezcano@linaro.org
-Subject: [PATCH v3 5/5] arm64: dts: rockchip: add Khadas MCU and fan control nodes
-Date: Tue, 21 Oct 2025 17:22:45 +0200
-Message-ID: <611deaaa0e408eb042db7faf215b85370569edeb.1761059314.git.efectn@protonmail.com>
+Subject: [PATCH v3 4/5] thermal: khadas_mcu_fan: add support for Khadas Edge 2
+Date: Tue, 21 Oct 2025 17:22:44 +0200
+Message-ID: <68fbedccd22459c3fb5bff8a41c485075799a111.1761059314.git.efectn@protonmail.com>
 X-Mailer: git-send-email 2.51.1.dirty
 In-Reply-To: <cover.1761059314.git.efectn@protonmail.com>
 References: <cover.1761059314.git.efectn@protonmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251021_082315_607972_C96ADE33 
-X-CRM114-Status: UNSURE (   9.46  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251021_082314_452661_2ACFA997 
+X-CRM114-Status: GOOD (  15.15  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,88 +111,79 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Muhammed Efe Cetin <efectn@protonmail.com>
 
-Add Khadas MCU fan control to Khadas Edge 2 with 4 fan control levels.
+Fan control on the Khadas Edge 2 is controlled with the 0x8A register,
+using percentage values from 0 to 100, whereas there are only 3 constant
+steps in previous Khadas boards. Therefore, i adjusted max_level and
+fan_ctrl_reg when the mcu node is defined with khadas,mcu-edge2 compatible.
 
 Signed-off-by: Muhammed Efe Cetin <efectn@protonmail.com>
 ---
- .../dts/rockchip/rk3588s-khadas-edge2.dts     | 58 +++++++++++++++++++
- 1 file changed, 58 insertions(+)
+ drivers/thermal/khadas_mcu_fan.c | 20 ++++++++++++++++----
+ 1 file changed, 16 insertions(+), 4 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts b/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts
-index 2c22abaf40a82..ed5168d50e182 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts
-@@ -271,12 +271,70 @@ hym8563: rtc@51 {
- 		clock-output-names = "hym8563";
- 		wakeup-source;
- 	};
-+
-+	khadas_mcu: system-controller@18 {
-+		compatible = "khadas,mcu-edge2";
-+		reg = <0x18>;
-+		#cooling-cells = <2>;
-+	};
+diff --git a/drivers/thermal/khadas_mcu_fan.c b/drivers/thermal/khadas_mcu_fan.c
+index d35e5313bea41..e3ac4fb6d1f82 100644
+--- a/drivers/thermal/khadas_mcu_fan.c
++++ b/drivers/thermal/khadas_mcu_fan.c
+@@ -15,10 +15,13 @@
+ #include <linux/thermal.h>
+ 
+ #define MAX_LEVEL 3
++#define MAX_LEVEL_EDGE2 100
+ 
+ struct khadas_mcu_fan_ctx {
+ 	struct khadas_mcu *mcu;
+ 	unsigned int level;
++	unsigned int max_level;
++	unsigned int fan_ctrl_reg;
+ 	struct thermal_cooling_device *cdev;
  };
  
- &i2s5_8ch {
- 	status = "okay";
- };
+@@ -26,8 +29,7 @@ static int khadas_mcu_fan_set_level(struct khadas_mcu_fan_ctx *ctx,
+ 				    unsigned int level)
+ {
+ 	int ret;
+-
+-	ret = regmap_write(ctx->mcu->regmap, KHADAS_MCU_CMD_FAN_STATUS_CTRL_REG,
++	ret = regmap_write(ctx->mcu->regmap, ctx->fan_ctrl_reg,
+ 			   level);
+ 	if (ret)
+ 		return ret;
+@@ -40,7 +42,9 @@ static int khadas_mcu_fan_set_level(struct khadas_mcu_fan_ctx *ctx,
+ static int khadas_mcu_fan_get_max_state(struct thermal_cooling_device *cdev,
+ 					unsigned long *state)
+ {
+-	*state = MAX_LEVEL;
++	struct khadas_mcu_fan_ctx *ctx = cdev->devdata;
++
++	*state = ctx->max_level;
  
-+&package_thermal {
-+	polling-delay = <2000>;
+ 	return 0;
+ }
+@@ -61,7 +65,7 @@ khadas_mcu_fan_set_cur_state(struct thermal_cooling_device *cdev,
+ {
+ 	struct khadas_mcu_fan_ctx *ctx = cdev->devdata;
+ 
+-	if (state > MAX_LEVEL)
++	if (state > ctx->max_level)
+ 		return -EINVAL;
+ 
+ 	if (state == ctx->level)
+@@ -88,6 +92,14 @@ static int khadas_mcu_fan_probe(struct platform_device *pdev)
+ 	if (!ctx)
+ 		return -ENOMEM;
+ 	ctx->mcu = mcu;
++	ctx->max_level = MAX_LEVEL;
++	ctx->fan_ctrl_reg = KHADAS_MCU_CMD_FAN_STATUS_CTRL_REG;
 +
-+	trips {
-+		package_fan0: package-fan0 {
-+			temperature = <50000>;
-+			hysteresis = <5000>;
-+			type = "active";
-+		};
++	if (of_device_is_compatible(mcu->dev->of_node, "khadas,mcu-edge2")) {
++		ctx->fan_ctrl_reg = KHADAS_MCU_EDGE2_FAN_CTRL_REG;
++		ctx->max_level = MAX_LEVEL_EDGE2;
++	}
 +
-+		package_fan1: package-fan1 {
-+			temperature = <60000>;
-+			hysteresis = <5000>;
-+			type = "active";
-+		};
-+
-+		package_fan2: package-fan2 {
-+			temperature = <65000>;
-+			hysteresis = <5000>;
-+			type = "active";
-+		};
-+
-+		package_fan3: package-fan3 {
-+			temperature = <75000>;
-+			hysteresis = <5000>;
-+			type = "active";
-+		};
-+	};
-+
-+	cooling-maps {
-+		map0 {
-+			trip = <&package_fan0>;
-+			cooling-device = <&khadas_mcu THERMAL_NO_LIMIT 50>;
-+		};
-+
-+		map1 {
-+			trip = <&package_fan1>;
-+			cooling-device = <&khadas_mcu 50 72>;
-+		};
-+
-+		map2 {
-+			trip = <&package_fan2>;
-+			cooling-device = <&khadas_mcu 72 100>;
-+		};
-+
-+		map3 {
-+			trip = <&package_fan3>;
-+			cooling-device = <&khadas_mcu 100 THERMAL_NO_LIMIT>;
-+		};
-+	};
-+};
-+
- &pd_gpu {
- 	domain-supply = <&vdd_gpu_s0>;
- };
+ 	platform_set_drvdata(pdev, ctx);
+ 
+ 	cdev = devm_thermal_of_cooling_device_register(dev->parent,
 -- 
 2.51.1.dirty
 
