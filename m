@@ -4,69 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D95C2CCD1AA
-	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Oct 2025 12:19:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C84D6CCD1A7
+	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Oct 2025 13:47:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
-	In-Reply-To:Subject:cc:To:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ffivUmJMiF3ZqpjuMdc4w4uraYrzOKz31qjzRpaldV0=; b=V32Pgo/1qrFldZ
-	3Dhceskz96PcEQd6ersM1H5O5DoRHGAGjA2j+YA3HUexx80q90/w/IqGDR7yzHldOK8vNGpfMmci7
-	70HISEDysO+77BcZUpNQy6jjcs7v1VGzj0x9kNl7UrZIBTi6OSidoEgt8nAZXtpdqqu1WukQRuTHg
-	zHuwBkDBvz81QKJ3MJZzgSuKh/DqODJxjuYIBY2o6rRgtfMQmcNUN+WDpsaekK3fS6IAaw4k6mTU8
-	689OoIp/UX/dn0DB0BP6m7iFPXIuZ0FAVzY2lFHuvk7vXYHV5tAKXrKg/eoFL+Y3T31IkV+jGvuHd
-	A5MTkz6KlflYGada7ikQ==;
+	List-Owner; bh=9fWP60PG0dFIXMOJK9zgCGPp0NIT8IA+nLK/kYMc6Rg=; b=qZpdjhYdayFls2
+	JhtiyLc7Azvf0qHtLBRjwPXfTUaL1B2uOHerCe5MLnUhzxrItYsMOeVj3F6HLiuWJG8u6+A+Pmd5d
+	w/UQqn4Jdba86oBzd+pZCUkYaSYg8CTdoEmj9fDpIiLVRpW91wvlfGWg80EDGpiIslYZ10UgLWsI5
+	+gRYVNAriE8nRd7bjSfioN261N7qI9aWuXEAAhTQicjz+IVCYshMc2zItlGElcRFQtDpLV6tEApfr
+	wBHtN7g1gJqivODYsrBMMiCoglgiYMm7goJwMWCpJhTxsqZNXVjWimtXzFbsO5A2mYlN0sPfo16Ue
+	8FG3y5JhxzloKHbabdYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBBLA-0000000GwPD-1dlA;
-	Tue, 21 Oct 2025 12:19:48 +0000
-Received: from mgamail.intel.com ([198.175.65.17])
+	id 1vBChr-0000000HCUV-1BiL;
+	Tue, 21 Oct 2025 13:47:19 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBBL8-0000000GwNy-0mQ7
-	for linux-rockchip@lists.infradead.org;
-	Tue, 21 Oct 2025 12:19:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1761049186; x=1792585186;
-  h=from:date:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=s6vx8VrH2c/og0yLWr/Y9sUR3aZ+qnxVoV5eMNt6vVE=;
-  b=bdMZMNJhhSIf9HBQ46qaXeR+CnFulqQRQv2ad+G29Zr1CxIWxjqSAiSO
-   KqGddJTbm8oNl5391Sg1fbzl5aKy2nrJ1/z1RxmBiH88n6xRaxaMxQpHs
-   70bRKgBM9qy6bNHDdEpgFUVlp7YWJVPoh8n/eEVosY3EPN/ikntVe7wBJ
-   tOchg37wzPI+gSp5q3difITOHA2UQ2a08Pm5O/3L6U0HgzOnvDWDCK07v
-   zwPlehD7A1UMu8qBQ5Ans9hPMZvTSmEsDpdrGooREnCyr7HajgMcORXfO
-   ySQhva43zxvWamdKBuTPQJzk/EzopnFQQk2tC6RdsVx9JM1BzOU9E7cMK
-   w==;
-X-CSE-ConnectionGUID: Shrl9glOS9eZEgHB/ZE/lA==
-X-CSE-MsgGUID: Dpj1WBAlTh+6EBisk//Vvw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11531"; a="63093567"
-X-IronPort-AV: E=Sophos;i="6.17,312,1747724400"; 
-   d="scan'208";a="63093567"
-Received: from orviesa008.jf.intel.com ([10.64.159.148])
-  by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 21 Oct 2025 05:19:45 -0700
-X-CSE-ConnectionGUID: gG0xkmzTT+2jbxeYjZUpCg==
-X-CSE-MsgGUID: O9PRIGNiSiacB+a42S6WVQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.19,244,1754982000"; 
-   d="scan'208";a="183606993"
-Received: from ijarvine-mobl1.ger.corp.intel.com (HELO localhost) ([10.245.245.189])
-  by orviesa008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 21 Oct 2025 05:19:43 -0700
-From: =?UTF-8?q?Ilpo=20J=C3=A4rvinen?= <ilpo.jarvinen@linux.intel.com>
-Date: Tue, 21 Oct 2025 15:19:39 +0300 (EEST)
-To: FUKAUMI Naoki <naoki@radxa.com>
-cc: Manivannan Sadhasivam <mani@kernel.org>, 
-    linux-rockchip@lists.infradead.org, linux-pci@vger.kernel.org
-Subject: Re: ROCK 5B/5B+ RTL8852BE probe failure on v6.18-rc
-In-Reply-To: <3BA1DC4878E9DC7E+85e7ef2c-a762-4c12-8955-64212bc192da@radxa.com>
-Message-ID: <b7e058ab-a5bf-1e71-850f-03e99f274e77@linux.intel.com>
-References: <7755D0222F97F8A4+6c855efa-561f-4fd9-aadd-a4de3d244c7e@radxa.com> <dgn3ekyon6jwfinerxx2ohpvebnxvuvpyqratfc3ciys4l4et7@5un6wskt4xn3> <3BA1DC4878E9DC7E+85e7ef2c-a762-4c12-8955-64212bc192da@radxa.com>
+	id 1vBCho-0000000HCTX-1Be9;
+	Tue, 21 Oct 2025 13:47:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=aok4Q7VCeJwiry1qOMn1QTGAWgJx8h8keP6SSm7tHlQ=; b=Mlh89lu7wtQLx4mdH9MuwJQYFv
+	XjIltf3atCUoXi+p5e7lCcYpM4UyPbUFJm+8eFFY+UGuhKQeQyluZp0Rp4Gf4KwNQsQVqVsmdQKY+
+	QfyOik/etf8+aeNaxMM/M03AgFlf+oK63yjolN12SLXGnWrPaev6B6BdbNe2fOhTph+snLAMKMkhY
+	tcRNX0V96K6d+lekXsAm4R1AqXuq0oeJ40GsiSjyl8xqwkVAVmp1V1ul5J5fikDlL9QxhJDmoJg67
+	DL6D3FDSRj9khpecMAgByuCCTkYyfhzqrDg4gHSGMBAQLBa3rTWPA0cNDLF1L2DZ2nEzDHOmZ2UG1
+	ltdW8tjw==;
+Received: from i53875b19.versanet.de ([83.135.91.25] helo=phil.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1vBChk-0003Zt-HY; Tue, 21 Oct 2025 15:47:12 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: mturquette@baylibre.com, sboyd@kernel.org, sugar.zhang@rock-chips.com,
+ zhangqing@rock-chips.com, robh@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ conor+dt@kernel.org, Elaine Zhang <zhangqing@rock-chips.com>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, huangtao@rock-chips.com,
+ finley.xiao@rock-chips.com
+Subject: Re: [PATCH v4 5/7] clk: rockchip: add support for pvtpll clk
+Date: Tue, 21 Oct 2025 15:47:11 +0200
+Message-ID: <13871591.dW097sEU6C@phil>
+In-Reply-To: <20251021065232.2201500-6-zhangqing@rock-chips.com>
+References: <20251021065232.2201500-1-zhangqing@rock-chips.com>
+ <20251021065232.2201500-6-zhangqing@rock-chips.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251021_051946_278279_9DCE59E0 
-X-CRM114-Status: GOOD (  29.62  )
+X-CRM114-CacheID: sfid-20251021_064716_349399_9AA29B41 
+X-CRM114-Status: GOOD (  18.76  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,97 +69,66 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 21 Oct 2025, FUKAUMI Naoki wrote:
-
-> Hi Manivannan,
-> 
-> Thank you for your reply.
-> 
-> On 10/21/25 20:02, Manivannan Sadhasivam wrote:
-> > On Tue, Oct 21, 2025 at 07:12:21PM +0900, FUKAUMI Naoki wrote:
-> > > Hi,
-> > > 
-> > > I've observed an issue where the RTL8852BE fails to probe on the ROCK 5B
-> > > and
-> > > ROCK 5B+ using Linux v6.18-rc.
-> > > 
-> > > [    7.719288] rtw89_8852be 0002:21:00.0: loaded firmware
-> > > rtw89/rtw8852b_fw-1.bin
-> > > [    7.720192] rtw89_8852be 0002:21:00.0: enabling device (0000 -> 0003)
-> > > [    7.728596] rtw89_8852be 0002:21:00.0: Firmware version 0.29.29.5
-> > > (da87cccd), cmd version 0, type 5
-> > > [    7.729407] rtw89_8852be 0002:21:00.0: Firmware version 0.29.29.5
-> > > (da87cccd), cmd version 0, type 3
-> > > [   11.420623] rtw89_8852be 0002:21:00.0: failed to dump efuse physical
-> > > map
-> > > [   11.422859] rtw89_8852be 0002:21:00.0: failed to setup chip information
-> > > [   11.425273] rtw89_8852be 0002:21:00.0: probe with driver rtw89_8852be
-> > > failed with error -16
-> > > 
-> > > This issue does not reproduce on v6.16. The issue does not reproduce with
-> > > the MT7921E or the AX210. Furthermore, the issue does not reproduce on the
-> > > ROCK 5A or the ROCK 5 ITX+.
-> > > 
-> > > The issue appears not to reproduce in or prior to commit 14bed9bc81ba. The
-> > > issue reproduces, albeit with a low incidence rate, after commit
-> > > bf76f23aa1c1.
-> > 
-> > Both of these commits are merge commits and they seem to be not related to
-> > PCI
-> > or WiFi.
-> > 
-> > > It reproduces, but not 100%, on v6.17, and is likely 100%
-> > > reproducible on v6.18-rc.
-> > > 
-> > > The dmesg output and the result of lspci -vv when the issue occurs can be
-> > > found below:
-> > >   https://gist.github.com/RadxaNaoki/bf57b6d3d88c1e4310a23247e7bac9de
-> > > 
-> > > What should I investigate next?
-> > > 
-> > 
-> > So the patch from Niklas [1] didn't solve the issue on these board + WiFi
-> > chip
-> > combo?
-> 
-> Yes, I am reproducing the issue with the patch applied, and it also reproduces
-> on v6.17.
-> 
-> The RTL8852BE on the ROCK 5B+ is an onboard component, while the ROCK 5B uses
-> an M.2 module; the issue does not appear on the ROCK 5A or ROCK 5 ITX+ even
-> with the same M.2 module and the same kernel/userland.
-
-Hi,
-
-There have been quite a few changes into rtw89 post-6.16. Depending on 
-how easy it is to reproduce the issue, a bisection might be useful to 
-pinpoint the cause.
-
-> Best regards,
-> 
-> --
-> FUKAUMI Naoki
-> Radxa Computer (Shenzhen) Co., Ltd.
-> 
-> > - Mani
-> > 
-> > [1]
-> > https://lore.kernel.org/linux-pci/20251017163252.598812-2-cassel@kernel.org/
-> > 
-> 
-> 
-> 
-
--- 
- i.
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+QW0gRGllbnN0YWcsIDIxLiBPa3RvYmVyIDIwMjUsIDA4OjUyOjMwIE1pdHRlbGV1cm9ww6Rpc2No
+ZSBTb21tZXJ6ZWl0IHNjaHJpZWIgRWxhaW5lIFpoYW5nOgo+IFN1cHBvcnQgdG8gYWRqdXN0IHB2
+dHBsbCBieSB2b2x0LXNlbCBhbmQgb3RwLgo+IFN1cHBvcnQgY2FsaWJyYXRlIHB2dHBsbCBpbml0
+IGZyZXF1ZW5jeS4KPiAKPiBQVlRQTEwgaXMgdXNlZCB0byBtb25pdG9yIHRoZSBjaGlwIHBlcmZv
+cm1hbmNlIHZhcmlhbmNlIGNhdXNlZCBieSBjaGlwCj4gcHJvY2Vzcywgdm9sdGFnZSBhbmQgdGVt
+cGVyYXR1cmUsIGFuZCBnZW5lcmF0ZSBhIHNldCBvZiByZWZlcmVuY2Ugc2lnbmFscwo+IGZvciBh
+ZGp1c3RpbmcgdGhlIHZvbHRhZ2Ugb2YgdGhlIGNoaXAuCj4gCj4gUFZUUExMIHN1cHBvcnRzIHRo
+ZSBmb2xsb3dpbmcgZmVhdHVyZXM6Cj4gCj4gMS4gQSBjbG9jayBvc2NpbGxhdGlvbiByaW5nIGlz
+IGludGVncmF0ZWQgYW5kIHVzZWQgdG8gZ2VuZXJhdGUgYSBjbG9jawo+IGxpa2Ugc2lnbmFsIChv
+c2NfY2xrKSx0aGUgZnJlcXVlbmN5IG9mIHRoaXMgY2xvY2sgaXMgZGV0ZXJtaW5lZAo+IGJ5IHRo
+ZSBjZWxsIGRlbGF5IHZhbHVlIG9mIGNsb2NrIG9zY2lsbGF0aW9uIHJpbmcgY2lyY3VpdAo+IAo+
+IDIuIEEgZnJlcXVlbmN5IGNvdW50ZXIob3NjX2NudCkgaXMgdXNlZCB0byBtZWFzdXJlIHRoZSBm
+cmVxdWVuY3kgb2Ygb3NjX2Nsay4KPiAKPiAzLiBBIGV4dGVybmFsbHkgaW5wdXQgY2xvY2sgKHJl
+Zl9jbGspIGlzIHVzZWQgYXMgYSByZWZlcmVuY2UgY2xvY2sgZm9yCj4gZGV0ZWN0aW5nIHRoZSBm
+cmVxdWVuY3kgb2Ygb3NjX2Nsay4KPiAKPiA0LiBBIGNhbGN1bGF0aW9uIGNvdW50ZXIgdXNlcyBy
+ZWZfY2xrIHRvIGdlbmVyYXRlIGEgY29uZmlndXJhYmxlCj4gcGVyaW9kaWMgdGltaW5nIHdpbmRv
+dy4KPiAKPiA1LiBUd28gY2xvY2sgY291bnRlcnMgYXJlIHVzZWQgdG8gbWVhc3VyZSB0aGUgZnJl
+cXVlbmN5IG9mIHRoZSBjbG9jawo+IGdlbmVyYXRlZCBieSBPU0NfV1JBUFBFUj8KPiAKPiA2LiBT
+dXBwb3J0IGZvciBkaXZpZGluZyB0aGUgcmVmX2NsayBhbmQgb3NjX2Nsawo+IAo+IDcuIFN1cHBv
+cnQgZm9yIGNvbmZpZ3VyaW5nIHRoZSBlZmZlY3RpdmUgcG9sYXJpdHkgb2YgdGhlIHZvbHRhZ2UK
+PiByZWd1bGF0b3Igc2lnbmFsICdPVVQnCj4gCj4gVGhlIGNsb2NrIHBhdGggb2YgY3B1IHVzZWQg
+cHZ0cGxsOgo+IAo+ICAgICAtLWdwbGwtLXwtLVwKPiAgICAgICAgICAgICB8ICAgXCAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgIHwgXAo+ICAgICAgICAgICAgIHwgICAgXCAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgfCAgXAo+ICAgICAgICAgICAgIHwgICAgIFwgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgfCAgIFwKPiAgICAtLXYwcGxsLS18IG11eCB8LS1bZ2F0
+ZV0tLVtkaXZdLS1jbGtfY29yZV9zcmMtLXxtdXggfC0tY2xrX2NvcmUKPiAgICAgICAgICAgICB8
+ICAgICAvICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAvCj4gICAgICAgICAgICAg
+fCAgICAvICAgLS1yZWZfY2xrLS1bZGl2XS1jcHVfcHZ0cGxsLS18ICAvCj4gICAgLS12MXBsbC0t
+fCAgIC8gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8IC8KPiAgICAgICAgICAgICB8
+LS0vCj4gCj4gU2lnbmVkLW9mZi1ieTogRWxhaW5lIFpoYW5nIDx6aGFuZ3FpbmdAcm9jay1jaGlw
+cy5jb20+CgpbLi4uXQoKPiArCXB2dHBsbC0+cmVnbWFwX2NydSA9IHN5c2Nvbl9yZWdtYXBfbG9v
+a3VwX2J5X3BoYW5kbGVfb3B0aW9uYWwobnAsICJyb2NrY2hpcCxjcnUiKTsKCk5vdCBjb252aW5j
+ZWQgYWJvdXQgdGhhdCA6LSkgLgoKKDEpIHRoZSBjcnUgaXRzZWxmIGFscmVhZHkgaW9yZW1hcHMg
+dGhlIENSVSBtZW1vcnksIHNvIGhhdmluZyBhIHN5c2NvbgogICAgdGhlcmUgd291bGQgaW9yZW1h
+cCB0aGF0IG1lbW9yeSBhIHNlY29uZCB0aW1lLgooMikgd2Ugc2hvdWxkIGRlZmluaXRseSBub3Qg
+ZXhwb3NlIHRoZSB3aG9sZSBDUlUgaW8tbWVtb3J5IHRvIG90aGVyCiAgICBkcml2ZXJzIHRvIHdy
+aXRlICJyYW5kb20iIHN0dWZmIHRvLiBUaGlzIHdpbGwganVzdCBpbnZpdGVkIGZ1cnRoZXIKICAg
+IGhhY2tzLCB3aGVyZSBwZW9wbGUgd2FudCB0byB0YWtlIHNob3J0Y3V0cyB3aXRoIGNsb2NrIHNl
+dHRpbmdzLgoKQWxzbyB0aGlzIHNlZW1zIGhpZ2hseSBzcGVjaWZpYyB0byB0aGUgcnYxMTI2Yi4K
+Ckxvb2tpbmcgYXQgdGhlIHJlZ2lzdGVycywgdGhpcyBpcyBhIGNsay1tdXggYmV0d2VlbiB0aGF0
+IGRlZXBzbG93IGNsb2NrCmFuZCB0aGUgYWN0dWFsIHB2dHBsbCBvdXRwdXQgYW5kIHRoZSBjb25m
+aWcgZnVuY3Rpb24gcmVhbGx5IG9ubHkKcmVwYXJlbnRzIHRvIHRoZSBwdnRwbGwgaW4gYWxsIGNh
+c2VzLgoKU28gSSBiZWxpZXZlIHRoaXMgc2hvdWxkIGluIHRoZSB3b3JzdCBjYXNlIGp1c3QgYmUg
+bXV4IGNsb2NrLCBidXQgYWxzbwpJIHNlZSB0aGF0IHRoZSAiY29ycmVjdCIgc2V0dGluZyB3aWxs
+IGFscmVhZHkgYmUgc2V0IGJ5IHRoZQoKICAgICAgICAvKiBwdnRwbGwgc3JjIGluaXQgKi8KICAg
+ICAgICB3cml0ZWxfcmVsYXhlZChQVlRQTExfU1JDX1NFTF9QVlRQTEwsIHJlZ19iYXNlICsgUlYx
+MTI2Ql9DT1JFQ0xLU0VMX0NPTigwKSk7CiAgICAgICAgd3JpdGVsX3JlbGF4ZWQoUFZUUExMX1NS
+Q19TRUxfUFZUUExMLCByZWdfYmFzZSArIFJWMTEyNkJfTlBVQ0xLU0VMX0NPTigwKSk7CiAgICAg
+ICAgd3JpdGVsX3JlbGF4ZWQoUFZUUExMX1NSQ19TRUxfUFZUUExMLCByZWdfYmFzZSArIFJWMTEy
+NkJfVklDTEtTRUxfQ09OKDApKTsKICAgICAgICB3cml0ZWxfcmVsYXhlZChQVlRQTExfU1JDX1NF
+TF9QVlRQTEwsIHJlZ19iYXNlICsgUlYxMTI2Ql9WRVBVQ0xLU0VMX0NPTigwKSk7CiAgICAgICAg
+d3JpdGVsX3JlbGF4ZWQoUFZUUExMX1NSQ19TRUxfUFZUUExMLCByZWdfYmFzZSArIFJWMTEyNkJf
+VkNQQ0xLU0VMX0NPTigwKSk7CgppbiB0aGUgcnYxMTI2YiBjbG9jayBkcml2ZXI/CgpTbyB0aGF0
+IHdob2xlIG1vZGUgc2V0dGluZyBzaG91bGQgbm90IGJlIG5lY2Vzc2FyeSBhdCBhbGwgbWF5YmU/
+CgpUaGFua3MKSGVpa28KCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3Rz
+LmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5m
+by9saW51eC1yb2NrY2hpcAo=
