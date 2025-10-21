@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C3E6CCD1AF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Oct 2025 07:43:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A12F0CCD1B0
+	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Oct 2025 07:43:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PQn5YOiv+A7Z4jVdcLPg+cDlUElzntQ6C6yH7JrBUfY=; b=dB9ULphmjERALb
-	2uyHpEOyZ8SEg5ZMuWx0L0gNd7suFJcZdiBLE/JLO4tmrghwgpI6EoeztaHSUqZzQ/SOrZV4ZjIQN
-	g5vbK/RVP/HX0OKK2icPnOJpMzF8SyMNFGIe0cLZ9nP76lCHUUPn1xEiOxwNyeubj9xvN9BVSoW+t
-	psJVPe4Diyz39ka2OYxJ1t7aK/79KhuXhFMe44EIDPG/KdsQ+whMXX8A+p/iHYZkNV57nBS83yI5p
-	rMe+HVNTSOvsyyoMjo3IzuK7vHsOgPIEbCl9JPuT16UgmeNFvgNKwn+dcipKSh9xShH0LXfVM9iOT
-	y5YXzKNMLK7d1TQUQc2g==;
+	List-Owner; bh=nljZkJtHPDoZzGMez8ZcZt1lglPBzBKJvdMCSn2bsGQ=; b=45jIBWKCADGKH4
+	d6ALn127Od6S95wF9P32a1jmOtH2KLNtBdRp4Aw7yMdPCZx/HyAgpUBNTK+jhguehgEiEbZ4MX6tr
+	ZzwawPDY8xrpy3r4JIwSIMUWNNCwOcQZ9LiZG0RVYYD9i1gbd6rom3TF9mfVqtXQo5uyYQqj7K8gG
+	DMetbqnRPOqI9GNQxofrlSZhvUtiMZfo3X6XNighU2GSAnYisI5E0qVQd0KCtWqgUeDpqF6rJLbwJ
+	kBRjJlccq9MJ4GVc4EKX6mR5PbaFp4vxyLZ4vD3+mWM3B8GZulv5QxQ3oTCF9++KFIAktVom+1F0+
+	AqJQnFX74BhDsWsX7oWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vB71s-0000000G751-1pPy;
-	Tue, 21 Oct 2025 07:43:36 +0000
+	id 1vB71v-0000000G7AX-0pIS;
+	Tue, 21 Oct 2025 07:43:39 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vB71i-0000000G6ne-1MG2;
+	id 1vB71i-0000000G6nw-472u;
 	Tue, 21 Oct 2025 07:43:29 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
 	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type;
-	bh=FS4dERJDFsHCnVZ76N6RaaiZZW7ln6HmoGA7DcqZWmQ=; b=QCpsxy9cZFNcyN9fqhpFFoyzIU
-	GLVWRogS3VEDnMPTV8IPVtHV7fz8uqB/C3C43KKxi1Rvh7kYoAGMVo+HKCP31BbcYRn9XN5y5+E2D
-	utJ1RiHVoWLeLUt+aW2K4cG9+1NPtWRDCWAKa8GBNDrA0fU6KKs+yuMUeagUtcPRlUfHlusR0FpLe
-	oG6vxv7zv6UbAke9k2lqVFaIyR/K1fYp968iaIyHNPTurlad1Xqcw2J3djCsdEaNpLyD0wMqtsHs3
-	BcIHvNvAchMJliCvGSrc020sgzMjL1sWvMzjhnfJOvPq2MvRaNUd8VN0VGhBlxkBNL2ECwWX5M4ve
-	RRVsz1hg==;
+	bh=Cc1STdILGLg5BzAaHuh5zXaUjmHX9akYX2GxkMZPRDo=; b=tiN9QwShaieVMZNJTQ68si1pga
+	Zxp8KYENwm/k4gjxvACQYAYGBpU8bsxOR6KJmC+BJttX9VsNBOppu3fXQ/SUy8a2rGmc2fRaZKYwf
+	/uo/dACxUSuoYoulrbvNvAteTskJtqPb0E7Fozfm1ZPTBcgIG3C8R8WbqOaZ+5ZNWFkVQGxggtbOh
+	X8kIs6BShjydMCC+amlR84XBKw1Y2eOwlR0QA+HXHY4iFbC3Seb3Y3ntwlJeIdU7Z0ucqdEy+tTqt
+	UYz8TuPkSPOATWKnueiw+X0xKpqilGOSh13xt0xmD9OdCsRLtQghAt1Bb8s3kvzfpKc/WSRHRdK16
+	kg6vvl7Q==;
 Received: from [212.111.240.218] (helo=phil.guestnet.ukdd.de)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1vB71N-0000uy-BF; Tue, 21 Oct 2025 09:43:05 +0200
+	id 1vB71P-0000uy-Bm; Tue, 21 Oct 2025 09:43:07 +0200
 From: Heiko Stuebner <heiko@sntech.de>
 To: heiko@sntech.de
 Cc: maarten.lankhorst@linux.intel.com,
@@ -57,16 +57,16 @@ Cc: maarten.lankhorst@linux.intel.com,
 	linux-kernel@vger.kernel.org,
 	cn.liweihao@gmail.com,
 	Heiko Stuebner <heiko.stuebner@cherry.de>
-Subject: [PATCH v2 2/9] drm/rockchip: hdmi: add RK3368 controller variant
-Date: Tue, 21 Oct 2025 09:42:47 +0200
-Message-ID: <20251021074254.87065-3-heiko@sntech.de>
+Subject: [PATCH v2 7/9] arm64: dts: rockchip: Add HDMI node to RK3368
+Date: Tue, 21 Oct 2025 09:42:52 +0200
+Message-ID: <20251021074254.87065-8-heiko@sntech.de>
 X-Mailer: git-send-email 2.47.2
 In-Reply-To: <20251021074254.87065-1-heiko@sntech.de>
 References: <20251021074254.87065-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251021_004326_391974_8DCD4F13 
-X-CRM114-Status: GOOD (  12.31  )
+X-CRM114-CacheID: sfid-20251021_004327_018500_56665AC8 
+X-CRM114-Status: GOOD (  11.83  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,48 +85,82 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Heiko Stuebner <heiko.stuebner@cherry.de>
 
-The RK3368 has only one VOP, so there is no source selection happening
-and the controller uses an internal PHY for the HDMI output.
+Add the HDMI controller node to the main SoC devicetree and hook
+it into the VOP.
 
 Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
 ---
- drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3368.dtsi | 43 ++++++++++++++++++++++++
+ 1 file changed, 43 insertions(+)
 
-diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-index 7b613997bb50..95ff3fce97a3 100644
---- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-@@ -467,6 +467,19 @@ static const struct dw_hdmi_plat_data rk3328_hdmi_drv_data = {
- 	.use_drm_infoframe = true,
- };
+diff --git a/arch/arm64/boot/dts/rockchip/rk3368.dtsi b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+index ce4b112b082b..892d35242259 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3368.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+@@ -875,6 +875,11 @@ vop_out_dsi: endpoint@0 {
+ 				reg = <0>;
+ 				remote-endpoint = <&dsi_in_vop>;
+ 			};
++
++			vop_out_hdmi: endpoint@1 {
++				reg = <1>;
++				remote-endpoint = <&hdmi_in_vop>;
++			};
+ 		};
+ 	};
  
-+static struct rockchip_hdmi_chip_data rk3368_chip_data = {
-+	.lcdsel_grf_reg = -1,
-+};
+@@ -933,6 +938,37 @@ dphy: phy@ff968000 {
+ 		status = "disabled";
+ 	};
+ 
++	hdmi: hdmi@ff980000 {
++		compatible = "rockchip,rk3368-dw-hdmi";
++		reg = <0x0 0xff980000 0x0 0x20000>;
++		interrupts = <GIC_SPI 103 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru PCLK_HDMI_CTRL>, <&cru SCLK_HDMI_HDCP>, <&cru SCLK_HDMI_CEC>;
++		clock-names = "iahb", "isfr", "cec";
++		pinctrl-names = "default";
++		pinctrl-0 = <&hdmi_i2c_xfer>;
++		power-domains = <&power RK3368_PD_VIO>;
++		reg-io-width = <4>;
++		rockchip,grf = <&grf>;
++		status = "disabled";
 +
-+static const struct dw_hdmi_plat_data rk3368_hdmi_drv_data = {
-+	.mode_valid = dw_hdmi_rockchip_mode_valid,
-+	.mpll_cfg   = rockchip_mpll_cfg,
-+	.cur_ctr    = rockchip_cur_ctr,
-+	.phy_config = rockchip_phy_config,
-+	.phy_data = &rk3368_chip_data,
-+	.use_drm_infoframe = true,
-+};
++		ports {
++			#address-cells = <1>;
++			#size-cells = <0>;
 +
- static struct rockchip_hdmi_chip_data rk3399_chip_data = {
- 	.lcdsel_grf_reg = RK3399_GRF_SOC_CON20,
- 	.lcdsel_big = FIELD_PREP_WM16_CONST(RK3399_HDMI_LCDC_SEL, 0),
-@@ -507,6 +520,9 @@ static const struct of_device_id dw_hdmi_rockchip_dt_ids[] = {
- 	{ .compatible = "rockchip,rk3328-dw-hdmi",
- 	  .data = &rk3328_hdmi_drv_data
- 	},
-+	{ .compatible = "rockchip,rk3368-dw-hdmi",
-+	 .data = &rk3368_hdmi_drv_data
-+	},
- 	{ .compatible = "rockchip,rk3399-dw-hdmi",
- 	  .data = &rk3399_hdmi_drv_data
- 	},
++			hdmi_in: port@0 {
++				reg = <0>;
++
++				hdmi_in_vop: endpoint {
++					remote-endpoint = <&vop_out_hdmi>;
++				};
++			};
++
++			hdmi_out: port@1 {
++				reg = <1>;
++			};
++		};
++	};
++
+ 	hevc_mmu: iommu@ff9a0440 {
+ 		compatible = "rockchip,iommu";
+ 		reg = <0x0 0xff9a0440 0x0 0x40>,
+@@ -1196,6 +1232,13 @@ rmii_pins: rmii-pins {
+ 			};
+ 		};
+ 
++		hdmi {
++			hdmi_i2c_xfer: hdmi-i2c-xfer {
++				rockchip,pins = <3 RK_PD2 1 &pcfg_pull_none>,
++						<3 RK_PD3 1 &pcfg_pull_none>;
++			};
++		};
++
+ 		i2c0 {
+ 			i2c0_xfer: i2c0-xfer {
+ 				rockchip,pins = <0 RK_PA6 1 &pcfg_pull_none>,
 -- 
 2.47.2
 
