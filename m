@@ -4,138 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60DC5CCD1A5
-	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Oct 2025 09:03:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1013CCD184
+	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Oct 2025 09:21:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XgRjCFwQrWDObxkASic4PzYKBxA8XLwurYwLuuYx4v0=; b=JV8ZZWpsPwjq9q
-	+2nW3qOGwq9u66Z0wnaduCLRh8SiKb+dospM40LAupZKz2t3y12qcKrWGqSI/lpWQHkQUtCPJr7iZ
-	+pxW90kN9TX/CcySvqhDuWagyMbY/JasEb9sj7vqD1E6n7LJdmYDXqcX7qiM3Pp8vFirsFkPpi7nn
-	8b/AfBybgWLs4fDoQzzrUOqmaShSRqdOMyzrsaMHPRIjB1RPsS0uu1cUlUQKxcVSM/4AGawmlNXwI
-	mf40whi5sgb5wYMb+n/PH0CSieShvRkqHYsSHffzJHUTxV/1aaHQChymGXAbLyrtQ7RF5UvKLrobn
-	KkHOHYgzHII4cXZx6bhg==;
+	List-Owner; bh=lj2XPuGuboX8mrYxMElvHQRT8Gf2bC9ZJoGffKXtZWI=; b=K9PCAfdrFsFNCO
+	yKucE12dI5VXibThAcLGMWnoQnmK+HmDrE6M6ZkUxPqVlwxKah+tP3zm92qwlGB0Bn15VsL/HLFo3
+	xKHNwzPbBdngu1877+2RCN3wXnLtyJdgHTR+BvzyvO5zQzU88xzfjaqgcyFqIpld+i1jRHjuKA32M
+	dYysVU+ol7aVn7pzqnI1cvX54KzHZzvm7AEy966SoZrSTeRNcuU1fmRaXuTIsZy0h6wIqxX+eOM+L
+	XRrCgGDnL4MSAA3QAom7of/R0JU30RHc1a1zNHzYS02KeUIly1TdXuqfIfI+Pev3V566VLSgKJrUv
+	RuAmmEtBZDNOJOIReMoQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vB8H2-0000000GNmW-0whI;
-	Tue, 21 Oct 2025 09:03:20 +0000
-Received: from mail-koreacentralazon11023138.outbound.protection.outlook.com ([40.107.44.138] helo=SEYPR02CU001.outbound.protection.outlook.com)
+	id 1vB8YC-0000000GQbE-3Z54;
+	Tue, 21 Oct 2025 09:21:04 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vB8Gz-0000000GNl9-3LDZ
-	for linux-rockchip@lists.infradead.org;
-	Tue, 21 Oct 2025 09:03:19 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=sqIq9sZLobpZeCDBfKKx0chHZXFm9+w0vincBWNMjMI3Xx2X9UNcbn8lJ4wpQwikyr/kEOahJOFqRJJ8Fb1zeQFEloWOu/OAzk9FWegE+GQs3yaPpUuuIHzWkJwK508HX617568YxMt9jRYIX6n2K6Kfj1nu7AsrcRmWER2e/M79AUuhdgmmGx9Ur7odN1z7awj40pSqUiAiqSQdAZR0FWJc4CQ3H776yfCeXQMoLu0e0GYkyQJ87h3RAen79KVIpO0Q1Qn8NBNtEsV8uqhAUpoPlTDuRbqxVwsFxT5619dTve+5gwvbqDUpA0YDa/5u4mJZZC9a3RqGeBMdCW7tDA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=bW6UvI9Xj8I4cu2Fi5BI1RpY7Hg7Tdvanlq1SALBi2M=;
- b=CrAfJUVH1gHfOYL048s4WwAAKjDFnHO7pCCPRfDJAdyUZFr8xrmKnil88/wgBdDz02IjgmOW9pxLs6mClKE8SX4turiP/C5adVM8vp6TzS3VzXRwdIdZDl+aUWDRqNJJVbajJMGcekP6elkx6aMyzF4dt3wVo/IidoulG5v0hAFftzSYT5aiOD4LFrRR/DMrnpG1q9HJO8NXI7IgMS0eDykYhBXnzMCKxI+9bkpwWMWYtWfYDzv94PMYRJEEdRJ8R0IsKUOW1udZoNmNW2LrV1llvIf9tGaAvBtkEfgqiW6NKqUMMgi+EKaiSFp4VI/85OrBNFMpo8+B0z11xWPKtA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 222.71.101.198) smtp.rcpttodomain=gmail.com smtp.mailfrom=cixtech.com;
- dmarc=bestguesspass action=none header.from=cixtech.com; dkim=none (message
- not signed); arc=none (0)
-Received: from SI2PR02CA0044.apcprd02.prod.outlook.com (2603:1096:4:196::17)
- by SEYPR06MB6661.apcprd06.prod.outlook.com (2603:1096:101:168::6) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9228.16; Tue, 21 Oct
- 2025 09:03:03 +0000
-Received: from SG2PEPF000B66CD.apcprd03.prod.outlook.com
- (2603:1096:4:196:cafe::66) by SI2PR02CA0044.outlook.office365.com
- (2603:1096:4:196::17) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.9228.16 via Frontend Transport; Tue,
- 21 Oct 2025 09:03:02 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 222.71.101.198)
- smtp.mailfrom=cixtech.com; dkim=none (message not signed)
- header.d=none;dmarc=bestguesspass action=none header.from=cixtech.com;
-Received-SPF: Pass (protection.outlook.com: domain of cixtech.com designates
- 222.71.101.198 as permitted sender) receiver=protection.outlook.com;
- client-ip=222.71.101.198; helo=smtprelay.cixcomputing.com; pr=C
-Received: from smtprelay.cixcomputing.com (222.71.101.198) by
- SG2PEPF000B66CD.mail.protection.outlook.com (10.167.240.27) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.9253.7 via Frontend Transport; Tue, 21 Oct 2025 09:03:01 +0000
-Received: from [172.16.96.116] (unknown [172.16.96.116])
-	by smtprelay.cixcomputing.com (Postfix) with ESMTPSA id 312C641604E0;
-	Tue, 21 Oct 2025 17:03:01 +0800 (CST)
-Message-ID: <ea1f6a6d-14d5-4655-9eed-110c02c8f487@cixtech.com>
-Date: Tue, 21 Oct 2025 17:03:00 +0800
+	id 1vB8Y9-0000000GQai-20fd;
+	Tue, 21 Oct 2025 09:21:02 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=PWQL1JLu99aUScGTl3BlK8hhjZ5L6bf92gYoRK4SM6g=; b=QJ2mTk/s2xEy7yC+Fx+lSwDvMI
+	O/QiJ/tHF/+pDGH4pZeJwHhtq8/fREjwOFW3szKRzqnPwk13ns38zcmX0V3yYTpQ4SRmr8JpEPfbC
+	NhEJKZVMMf3UadSo78WdDeKuyuC0ujKQaR+bgc5RL9UGkLEIKIYzW5RXtrmh5lBKN8HtopTzrH2nT
+	Fo94U4rHsNwupvuOMlttre6IOCXOE+wSOwLUaXSYhnkw3ekDvQDh8Fi/9ntKEE6NDC2l4swF1GiD0
+	99RtjZT8W0Qcz5xNzurmqhxAUxT/csZ+V0c9Pubrdis9wGXdbwVK0XlZm/Ik74lMAj5wY/Gx2dQxM
+	QjSgMQTA==;
+Received: from [212.111.240.218] (helo=phil.guestnet.ukdd.de)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1vB8Y7-0001mu-Ct; Tue, 21 Oct 2025 11:20:59 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: WeiHao Li <cn.liweihao@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v1 1/1] soc: rockchip: grf: Set pwm2/xin32k pad default to xin32k for rk3368
+Date: Tue, 21 Oct 2025 11:20:57 +0200
+Message-ID: <176103845188.96519.2904538243540608377.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.47.2
+In-Reply-To: <20250906142125.7602-1-cn.liweihao@gmail.com>
+References: <20250906142125.7602-1-cn.liweihao@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/4] PCI: dw-rockchip: Add L1sub support
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Thierry Reding <thierry.reding@gmail.com>,
- linux-rockchip@lists.infradead.org, Niklas Cassel <cassel@kernel.org>,
- linux-pci@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>,
- Manivannan Sadhasivam <mani@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>
-References: <1761032907-154829-1-git-send-email-shawn.lin@rock-chips.com>
- <1761032907-154829-4-git-send-email-shawn.lin@rock-chips.com>
- <3f90b0f9-06bb-44d3-97a3-a13ced9b1c3a@cixtech.com>
- <162e1af2-7de3-4aed-93d1-fa7120254e69@rock-chips.com>
-Content-Language: en-US
-From: Hans Zhang <hans.zhang@cixtech.com>
-In-Reply-To: <162e1af2-7de3-4aed-93d1-fa7120254e69@rock-chips.com>
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SG2PEPF000B66CD:EE_|SEYPR06MB6661:EE_
-X-MS-Office365-Filtering-Correlation-Id: 10b80ccc-ea8a-4e15-3a2d-08de1080a396
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|82310400026|1800799024|36860700013;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?Y09SeFRTbThSclpoNHNUcXdodlZYNGI2QkF0b2NIaUdNYlZLSHRwbmhyYXpj?=
- =?utf-8?B?WXZXMEVsbE1YL0xHZStOdWc4ZGFUaEtlNDMyZXRUdVEzS1FxNGtRWUFTbXZy?=
- =?utf-8?B?eHFkV3daWHpvN0IyT05mVDMyMS9pK3h1ZVZQYXdhUml6RlJCR2hya2lRSGdw?=
- =?utf-8?B?c2NNalRnVmprOEw2OWdQa0tSeDh3VzROek40YjF2UzBrNDZOd3QwekxNSkt2?=
- =?utf-8?B?YkpqTTRvb21ZZ3JmOUtJQVJ0dDZuK1E2UlZSdEViWGZ1YnlHZFZJaDVnV3NT?=
- =?utf-8?B?a2JxQXpTOUR6Z3ZuTzY3YXF5U3ZUeWp0Z2dFeFJCQWp2TXRramgwR3hUSk5r?=
- =?utf-8?B?NW5oM1YvQVBBeGdjWWI2QUltZ1pOTXFXb1Mzd24yQjJ4QVFEOElYdkJxOGFE?=
- =?utf-8?B?U0ZGTHp1NWowZ0hXLzUrdnRRcU1LSkd2YzRQWGhoOE0wNkRsN2xjVUlaeTR5?=
- =?utf-8?B?TTJnT25Ja1pPb1psVCtPTlBZblh4aVBxeDZiRWwrTGd5K0tHckIvYXVyTmI2?=
- =?utf-8?B?enc4eUlXNEJLUHFsNFFpVUdYTE5UakZ6RjF6Y2l5dVpaMlgyN2VSakxxSys0?=
- =?utf-8?B?ZC9LVW5YY2RrR1pqNG4yYVdoOFZlWUJDVXJPMnZKUzlEZWVlM3VsdDZvM2s3?=
- =?utf-8?B?MzNtMHpsL01XVVdYUit4eHRrdlZnTUgzRUQ4SHhkWFFXT2trbi9tN0RDUmtz?=
- =?utf-8?B?bENERE9PNjFOd24zS2xQOHgyTkZaSmVOaVdKRGxHMmdFZWgzRU9BMWZRcUI0?=
- =?utf-8?B?ZHZuSXZhUDVLTTBvUVBscFlLT3NPUDlZcE5wTTNhcUtqMndGSGo1OGxtQ3Zq?=
- =?utf-8?B?UzRZMGlWejFiRjVRMlIvUGEwQW05NmJObm1BNGcxS2VUelBIUzlkejI1M2Rx?=
- =?utf-8?B?b25TcXpkVFJEUk03L2FVbHQzZVhaSktaT2dIRXhuQlNWNVM5ck9rYVBpenpu?=
- =?utf-8?B?SVl6cEVPcjVybER0M0RXKzNGVkh6NXRQQ1pDVUEvcks4VHBiK1dvSEQ4OFdD?=
- =?utf-8?B?OHcvRmFpcFNya3h2czlDalFzMG45V1ovZ3V6QUhTdGhScWxOOHEwalZhMFFa?=
- =?utf-8?B?QkkwZUd3ZG93Q2dPeHJwbTl6RTJqRXliSWd0WmNNMWw5ZWxlUG5pRHhJVVpJ?=
- =?utf-8?B?RE5FZGVLa1BURkNnRTJteENmTUFDWlhzUmJNdEJTeGtBWWNDdkxJM3FwWnNu?=
- =?utf-8?B?ZCtITUtFY2xHUHBlOVdiV0d5YVY2NjNpbVZaTlBSSzQzcG5ybUZSbEp1dGVB?=
- =?utf-8?B?QWxOUEZ1K0tuQ1pxS2dFck1uQjFxRlVadEpTU3JkSksxazJUU3M3WWkwQk1z?=
- =?utf-8?B?OW5RZFNreVRFTUpWWGlPT0pSUjB4MVYzZ2RuK2drMlh2ak5ZLzVVSTRMSjRy?=
- =?utf-8?B?WG9zcEJrN25KaXRVQ2RBLzM1SzNVSURNdHRQbnpTNzcrOWJyZEY1aXF6aUIz?=
- =?utf-8?B?WU90Y3VrS1Z4Q01LaXVQVUtHSzF1M1JGQXBvYTkxRWswNFpxckI3eFVyM0hl?=
- =?utf-8?B?T082eGJ3TnZMRjYvR3dYUC82cjNvZXdvUVA5a1Q4RU1nTUF0MkxEY3c3OTMz?=
- =?utf-8?B?cldJQ0ZiL20rK1Uyb1JROWRWRWlUQXV3K1h5RnAwaS9RWmFEa3d0ZThEODNm?=
- =?utf-8?B?eTFtcmhCTTFacGJ0Mko5M0dBZnhrN0FLdlRsWVNrQURMMnNMcnFIV0UvV3Uy?=
- =?utf-8?B?ZUxqNU5rMkNMOGpuWVpJNEl1WXBSOUpncUwyM21iRUZtQzBDcWJYL1cwVlBw?=
- =?utf-8?B?Y3Joa09hSFZwQ2NCd3lLbU10MllsZW1rOW1ES29RaGhvc3J6U25WSFh4QzV0?=
- =?utf-8?B?Uko3STZBSEVWQSt5OFdIRnBqcnJjRUZEY2dQVE5Gc3Y1YWJ1ZHhhaDBBT3Nv?=
- =?utf-8?B?UW1wY0E5M3g2QloyREVpczJmZUs4V3E1RTdHaHV3RVVLMXhaSGNRbzN4NFJ5?=
- =?utf-8?B?eitUS0VWYy8rNkxaZVAzWmtFMjdWNGREbSt3RUhNSTRDLzBVUkhKM1Bra1hH?=
- =?utf-8?B?bkV0cVpUVnROelZ5Y1UwL2ppVlZXQXprYjlXZjNKekp0cE9RejFTV0h1Qjdj?=
- =?utf-8?B?QitOcXRWd2RWOFZ5UVc4TVhRbjdUT1ZZR253VWlSbkJZTzI5OWp2ckxTMlA2?=
- =?utf-8?Q?0kAo=3D?=
-X-Forefront-Antispam-Report: CIP:222.71.101.198;CTRY:CN;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:smtprelay.cixcomputing.com;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230040)(376014)(82310400026)(1800799024)(36860700013);DIR:OUT;SFP:1102;
-X-OriginatorOrg: cixtech.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 Oct 2025 09:03:01.7963
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 10b80ccc-ea8a-4e15-3a2d-08de1080a396
-X-MS-Exchange-CrossTenant-Id: 0409f77a-e53d-4d23-943e-ccade7cb4811
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=0409f77a-e53d-4d23-943e-ccade7cb4811;Ip=[222.71.101.198];Helo=[smtprelay.cixcomputing.com]
-X-MS-Exchange-CrossTenant-AuthSource: SG2PEPF000B66CD.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEYPR06MB6661
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251021_020317_829118_B1FE0FF0 
-X-CRM114-Status: UNSURE (   9.04  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251021_022101_672949_55A02D3C 
+X-CRM114-Status: GOOD (  11.95  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -147,45 +67,31 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-
-On 10/21/2025 4:42 PM, Shawn Lin wrote:
->>>
->>> -/*
->>> - * See e.g. section '11.6.6.4 L1 Substate' in the RK3588 TRM V1.0 for
->>> the steps
->>> - * needed to support L1 substates. Currently, not a single rockchip
->>> platform
->>> - * performs these steps, so disable L1 substates until there is
->>> proper support.
->>> - */
->>> -static void rockchip_pcie_disable_l1sub(struct dw_pcie *pci)
->>
->> Hi,
->>
->> https://git.kernel.org/pub/scm/linux/kernel/git/pci/pci.git/commit/?
->> h=controller/dw-rockchip&id=40331c63e7901a2cc75ce6b5d24d50601efb833d
->>
->> Mani has already placed this part in the above branch. Can it be removed?
->>
+On Sat, 06 Sep 2025 22:21:25 +0800, WeiHao Li wrote:
+> PWM2 and xin32k share the same pad, but some peripheral need to xin32k
+> clock to run properly, such as tsadc. I have observed that this pad is
+> used as xin32k by default on some existing board [1], so it maybe more
+> appropriate to set it to xin32k by default.
 > 
-> I think it's better to apply the changes on top of Niklas's commit
-> rather than removing it, out of respect for Niklas's credit.
+> I also tested it on another rk3368 based board [2], without this adjust,
+> tsadc does not work properly.
+> 
+> [...]
 
+Applied, thanks!
 
-Hi Shawn,
-
-Sorry, maybe I'm just looking at this issue from the perspective of 
-patch and understand what you mean.
+[1/1] soc: rockchip: grf: Set pwm2/xin32k pad default to xin32k for rk3368
+      commit: fc3d701f0d75ffbd788991cbf84f4937435e504e
 
 Best regards,
-Hans
-
+-- 
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
