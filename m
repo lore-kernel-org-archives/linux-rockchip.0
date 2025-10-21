@@ -4,60 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38772CCD184
-	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Oct 2025 08:43:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 715DDCCD1A5
+	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Oct 2025 08:49:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/uSfU8GMtii8LKA4xT+1NWaIAN7lfnCgTT5xPhcuels=; b=AH8AE9hnYwl8uu
-	ZtrUc+hAOKr2+l1DMe7weMptXz2oge/WvByan8lsmxhVJjtskuIhYQhwFHqp218daIBqW0l3GXzSJ
-	CFNE014hvhO1oWwqsp/NvNFOjR8YEMvPE0kqICqgY/Na9/vtW58dCqLav23dcO8SgQGB+/BXsh5R5
-	39ABHf0xubcFTiknWuXKxZXzRhrKcHm4eRId3qEZ5HIYBe5DG+QwLHpjgiFChfLLf8XfsvCub3f7I
-	dOc43jOCE9Bnaz3tCu0G7nPIAhVOhe7kHrx7ETVckidukJd9zQN+WvW+frp0t0qApGbGCwTFFhYRJ
-	54FbFRVoO1djQwOevYkw==;
+	List-Owner; bh=bvjzjfda4pSBoqP1QdzjZPjaswTDG9HU90/bqPh+pyA=; b=Tx8dnhzMaGomcF
+	AJoGKCcQ+h+I6UYDwz9s4fNkTlGpfxdC4X86PIw5OfSD7a2HGbatBOSBB7igDdwhbDketr3GrIZGB
+	oPH1atgmo73yi44XlFUQigBisFQ8/jPDeuTFTwxwq2HvS1deLLFOt0W2ybgTAhXLdOXT/plG9qUPM
+	4EMsOcT6PyxS06UI++Kmap2Wn1YCJxJoc32I9Aog3sXuROkcNNxqlh/VZkFshowe/FI5K2j6DlxxG
+	de5ir455RICUx0XFfJgexpOltyLSIF60XY24gZz00UZPL3ycf/T6w3JT3zgpxl9pTeofy2RrGE8jM
+	kb5Ifd8R0LOzBwCPb8ig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vB7xM-0000000GK7J-3Lul;
-	Tue, 21 Oct 2025 08:43:00 +0000
-Received: from mail-m15566.qiye.163.com ([101.71.155.66])
+	id 1vB83B-0000000GLSR-0G8z;
+	Tue, 21 Oct 2025 08:49:01 +0000
+Received: from mgamail.intel.com ([192.198.163.19])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vB7xJ-0000000GK6Z-3lcd
-	for linux-rockchip@lists.infradead.org;
-	Tue, 21 Oct 2025 08:42:59 +0000
-Received: from [172.16.12.129] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 26a41c81c;
-	Tue, 21 Oct 2025 16:42:54 +0800 (GMT+08:00)
-Message-ID: <162e1af2-7de3-4aed-93d1-fa7120254e69@rock-chips.com>
-Date: Tue, 21 Oct 2025 16:42:52 +0800
+	id 1vB837-0000000GLOQ-2KLO;
+	Tue, 21 Oct 2025 08:48:58 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1761036538; x=1792572538;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=ixN0SnuQ8N2jtGJB1Dvgz9zJy2AHG8oUKIXx/yt/S8w=;
+  b=ktSh5prXMw9y99evlhcjqnUUs5FcOxox0rlz2Sg8JkR3N6aaEHJHv0k2
+   KFeg1UxvmF5s2eOpTcM++8CXDMIEPxrcqDHPBhSSEr1QUyCeg05KtRtJ+
+   ugaf/GhtBVvLWmn9pSmf/A/DauVgZMvpKKNs5s2H/yZD7f8vJ2DCsHKbh
+   zF78Be8G0N7GUxQxa5+AxjygxXS0NQG87xpxRmSokd1WzsyDuhquGbMWH
+   UpHBcx2JAHvY250D0PUO6pF1Ixz2DMyUYO5l6zwyp99LR5vizsDHF788d
+   FWUE2wj7ZONkWa3o7HlfSEr2AqTXqFfixTkBi3DDnuxfGhD6NX1C+r4eQ
+   g==;
+X-CSE-ConnectionGUID: ofn0cztuSFOC1Ab+dCsjRQ==
+X-CSE-MsgGUID: A0ciot2mScmxrxVM4pKYmw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11586"; a="62190159"
+X-IronPort-AV: E=Sophos;i="6.19,244,1754982000"; 
+   d="scan'208";a="62190159"
+Received: from orviesa009.jf.intel.com ([10.64.159.149])
+  by fmvoesa113.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 21 Oct 2025 01:48:56 -0700
+X-CSE-ConnectionGUID: eCD/H1/RSIKfOQZXnX6Vww==
+X-CSE-MsgGUID: 5oEWrWiFR5aYJfjpPgNG5g==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.19,244,1754982000"; 
+   d="scan'208";a="183099996"
+Received: from mgerlach-mobl1.amr.corp.intel.com (HELO kuha.fi.intel.com) ([10.124.220.224])
+  by orviesa009.jf.intel.com with SMTP; 21 Oct 2025 01:48:47 -0700
+Received: by kuha.fi.intel.com (sSMTP sendmail emulation); Tue, 21 Oct 2025 11:48:45 +0300
+Date: Tue, 21 Oct 2025 11:48:45 +0300
+From: Heikki Krogerus <heikki.krogerus@linux.intel.com>
+To: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+Cc: Chaoyi Chen <kernel@airkyi.com>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Yubing Zhang <yubing.zhang@rock-chips.com>,
+	Frank Wang <frank.wang@rock-chips.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+	Amit Sunil Dhamne <amitsd@google.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Dragan Simic <dsimic@manjaro.org>, Johan Jonker <jbx6244@gmail.com>,
+	Diederik de Haas <didi.debian@cknow.org>,
+	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+	Peter Robinson <pbrobinson@gmail.com>, linux-usb@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
+Subject: Re: [PATCH v6 1/8] usb: typec: Add default HPD device when register
+ DisplayPort altmode
+Message-ID: <aPdI7Vb_djrfCfbT@kuha.fi.intel.com>
+References: <20251016022741.91-1-kernel@airkyi.com>
+ <20251016022741.91-2-kernel@airkyi.com>
+ <aPYImGmesrZWwyqh@kuha.fi.intel.com>
+ <954a67d1-1759-4e18-8eef-3fa14fb3cef5@rock-chips.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Cc: shawn.lin@rock-chips.com, Thierry Reding <thierry.reding@gmail.com>,
- linux-rockchip@lists.infradead.org, Niklas Cassel <cassel@kernel.org>,
- linux-pci@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>,
- Manivannan Sadhasivam <mani@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>
-Subject: Re: [PATCH 3/4] PCI: dw-rockchip: Add L1sub support
-To: Hans Zhang <hans.zhang@cixtech.com>
-References: <1761032907-154829-1-git-send-email-shawn.lin@rock-chips.com>
- <1761032907-154829-4-git-send-email-shawn.lin@rock-chips.com>
- <3f90b0f9-06bb-44d3-97a3-a13ced9b1c3a@cixtech.com>
-From: Shawn Lin <shawn.lin@rock-chips.com>
-In-Reply-To: <3f90b0f9-06bb-44d3-97a3-a13ced9b1c3a@cixtech.com>
-X-HM-Tid: 0a9a05ef832609cckunm01e5e79b65f352
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQ0hDS1YaQhhKThodGBoZT0lWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=PJcoCCMPvgW2WvvdGXLHF+H9UGDMHJ+QaLFbSaCPjowJFgQ2I1eIo+wgXaLBmapTsGacvsRoEUXrtkenqRT0ar3QrF2iuGtFUEPe6JksOTK7lW153ILwePQ/Oxr3RyaoEy0565ZFUiZG7yqtBYVuDFNdvwCCPKc32jwibKNGdzQ=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=sJzjhfTYU0Au/zOdVEyMsueBh9VAFR9q1ut8Hr7CQCM=;
-	h=date:mime-version:subject:message-id:from;
+Content-Disposition: inline
+In-Reply-To: <954a67d1-1759-4e18-8eef-3fa14fb3cef5@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251021_014258_486897_606D1D3E 
-X-CRM114-Status: GOOD (  20.09  )
+X-CRM114-CacheID: sfid-20251021_014857_627178_5263CF80 
+X-CRM114-Status: GOOD (  26.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,98 +102,72 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CuWcqCAyMDI1LzEwLzIxIOaYn+acn+S6jCAxNjowMSwgSGFucyBaaGFuZyDlhpnpgZM6Cj4gCj4g
-Cj4gT24gMTAvMjEvMjAyNSAzOjQ4IFBNLCBTaGF3biBMaW4gd3JvdGU6Cj4+IEVYVEVSTkFMIEVN
-QUlMCj4+Cj4+IFRoZSBkcml2ZXIgc2hvdWxkIHNldCBhcHBfY2xrX3JlcV9uKGNsa3JlcSByZWFk
-eSkgb2YgUENJRV9DTElFTlRfUE9XRVIgCj4+IHJlZwo+PiB0byBzdXBwb3J0IEwxc3ViLiBPdGhl
-cndpc2UsIHVuc2V0IGFwcF9jbGtfcmVxX24gYW5kIHB1bGwgZG93biBDTEtSRVEjLgo+Pgo+PiBT
-aWduZWQtb2ZmLWJ5OiBTaGF3biBMaW4gPHNoYXduLmxpbkByb2NrLWNoaXBzLmNvbT4KPj4gLS0t
-Cj4+IMKgIGRyaXZlcnMvcGNpL2NvbnRyb2xsZXIvZHdjL3BjaWUtZHctcm9ja2NoaXAuYyB8IDMx
-ICsrKysrKysrKysrKysrLS0tLS0KPj4gwqAgMSBmaWxlIGNoYW5nZWQsIDIzIGluc2VydGlvbnMo
-KyksIDggZGVsZXRpb25zKC0pCj4+Cj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3BjaS9jb250cm9s
-bGVyL2R3Yy9wY2llLWR3LXJvY2tjaGlwLmMgYi9kcml2ZXJzLyAKPj4gcGNpL2NvbnRyb2xsZXIv
-ZHdjL3BjaWUtZHctcm9ja2NoaXAuYwo+PiBpbmRleCA4N2RkMmRkMTg4YjQuLjhhNTJmZjczZWM0
-NiAxMDA2NDQKPj4gLS0tIGEvZHJpdmVycy9wY2kvY29udHJvbGxlci9kd2MvcGNpZS1kdy1yb2Nr
-Y2hpcC5jCj4+ICsrKyBiL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvZHdjL3BjaWUtZHctcm9ja2No
-aXAuYwo+PiBAQCAtNjIsNiArNjIsMTIgQEAKPj4gwqAgLyogSW50ZXJydXB0IE1hc2sgUmVnaXN0
-ZXIgUmVsYXRlZCB0byBNaXNjZWxsYW5lb3VzIE9wZXJhdGlvbiAqLwo+PiDCoCAjZGVmaW5lIFBD
-SUVfQ0xJRU5UX0lOVFJfTUFTS19NSVNDwqDCoMKgwqAgMHgyNAo+Pgo+PiArLyogUG93ZXIgTWFu
-YWdlbWVudCBDb250cm9sIFJlZ2lzdGVyICovCj4+ICsjZGVmaW5lIFBDSUVfQ0xJRU5UX1BPV0VS
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgMHgyYwo+PiArI2RlZmluZcKgIFBDSUVfQ0xLUkVR
-X1JFQURZwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIDB4MTAwMDEKPj4gKyNkZWZpbmXCoCBQQ0lF
-X0NMS1JFUV9OT1RfUkVBRFnCoMKgwqDCoMKgwqDCoMKgIDB4MTAwMDAKPj4gKyNkZWZpbmXCoCBQ
-Q0lFX0NMS1JFUV9QVUxMX0RPV07CoMKgwqDCoMKgwqDCoMKgIDB4MzAwMDEwMDAKPj4gKwo+PiDC
-oCAvKiBIb3QgUmVzZXQgQ29udHJvbCBSZWdpc3RlciAqLwo+PiDCoCAjZGVmaW5lIFBDSUVfQ0xJ
-RU5UX0hPVF9SRVNFVF9DVFJMwqDCoMKgwqAgMHgxODAKPj4gwqAgI2RlZmluZcKgIFBDSUVfTFRT
-U01fQVBQX0RMWTJfRU7CoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgQklUKDEpCj4+IEBA
-IC04NCw2ICs5MCw3IEBAIHN0cnVjdCByb2NrY2hpcF9wY2llIHsKPj4gwqDCoMKgwqDCoMKgwqDC
-oCBzdHJ1Y3QgZ3Bpb19kZXNjICpyc3RfZ3BpbzsKPj4gwqDCoMKgwqDCoMKgwqDCoCBzdHJ1Y3Qg
-aXJxX2RvbWFpbiAqaXJxX2RvbWFpbjsKPj4gwqDCoMKgwqDCoMKgwqDCoCBjb25zdCBzdHJ1Y3Qg
-cm9ja2NoaXBfcGNpZV9vZl9kYXRhICpkYXRhOwo+PiArwqDCoMKgwqDCoMKgIGJvb2wgc3VwcG9y
-dHNfY2xrcmVxOwo+PiDCoCB9Owo+Pgo+PiDCoCBzdHJ1Y3Qgcm9ja2NoaXBfcGNpZV9vZl9kYXRh
-IHsKPj4gQEAgLTE5OSwxNSArMjA2LDIxIEBAIHN0YXRpYyBib29sIHJvY2tjaGlwX3BjaWVfbGlu
-a191cChzdHJ1Y3QgZHdfcGNpZSAKPj4gKnBjaSkKPj4gwqDCoMKgwqDCoMKgwqDCoCByZXR1cm4g
-RklFTERfR0VUKFBDSUVfTElOS1VQX01BU0ssIHZhbCkgPT0gUENJRV9MSU5LVVA7Cj4+IMKgIH0K
-Pj4KPj4gLS8qCj4+IC0gKiBTZWUgZS5nLiBzZWN0aW9uICcxMS42LjYuNCBMMSBTdWJzdGF0ZScg
-aW4gdGhlIFJLMzU4OCBUUk0gVjEuMCBmb3IgCj4+IHRoZSBzdGVwcwo+PiAtICogbmVlZGVkIHRv
-IHN1cHBvcnQgTDEgc3Vic3RhdGVzLiBDdXJyZW50bHksIG5vdCBhIHNpbmdsZSByb2NrY2hpcCAK
-Pj4gcGxhdGZvcm0KPj4gLSAqIHBlcmZvcm1zIHRoZXNlIHN0ZXBzLCBzbyBkaXNhYmxlIEwxIHN1
-YnN0YXRlcyB1bnRpbCB0aGVyZSBpcyAKPj4gcHJvcGVyIHN1cHBvcnQuCj4+IC0gKi8KPj4gLXN0
-YXRpYyB2b2lkIHJvY2tjaGlwX3BjaWVfZGlzYWJsZV9sMXN1YihzdHJ1Y3QgZHdfcGNpZSAqcGNp
-KQo+IAo+IEhpLAo+IAo+IGh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvcHViL3NjbS9saW51eC9rZXJu
-ZWwvZ2l0L3BjaS9wY2kuZ2l0L2NvbW1pdC8/IAo+IGg9Y29udHJvbGxlci9kdy1yb2NrY2hpcCZp
-ZD00MDMzMWM2M2U3OTAxYTJjYzc1Y2U2YjVkMjRkNTA2MDFlZmI4MzNkCj4gCj4gTWFuaSBoYXMg
-YWxyZWFkeSBwbGFjZWQgdGhpcyBwYXJ0IGluIHRoZSBhYm92ZSBicmFuY2guIENhbiBpdCBiZSBy
-ZW1vdmVkPwo+IAoKSSB0aGluayBpdCdzIGJldHRlciB0byBhcHBseSB0aGUgY2hhbmdlcyBvbiB0
-b3Agb2YgTmlrbGFzJ3MgY29tbWl0IApyYXRoZXIgdGhhbiByZW1vdmluZyBpdCwgb3V0IG9mIHJl
-c3BlY3QgZm9yIE5pa2xhcydzIGNyZWRpdC4KCgo+IEJlc3QgcmVnYXJkcywKPiBIYW5zCj4gCj4g
-Cj4+ICtzdGF0aWMgdm9pZCByb2NrY2hpcF9wY2llX2VuYWJsZV9sMXN1YihzdHJ1Y3QgZHdfcGNp
-ZSAqcGNpKQo+PiDCoCB7Cj4+ICvCoMKgwqDCoMKgwqAgc3RydWN0IHJvY2tjaGlwX3BjaWUgKnJv
-Y2tjaGlwID0gdG9fcm9ja2NoaXBfcGNpZShwY2kpOwo+PiDCoMKgwqDCoMKgwqDCoMKgIHUzMiBj
-YXAsIGwxc3ViY2FwOwo+Pgo+PiArwqDCoMKgwqDCoMKgIC8qIEVuYWJsZSBMMSBzdWJzdGF0ZXMg
-aWYgQ0xLUkVRIyBpcyBwcm9wZXJseSBjb25uZWN0ZWQgKi8KPj4gK8KgwqDCoMKgwqDCoCBpZiAo
-cm9ja2NoaXAtPnN1cHBvcnRzX2Nsa3JlcSkgewo+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoCAvKiBSZWFkeSB0byBoYXZlIHJlZmVyZW5jZSBjbG9jayByZW1vdmVkICovCj4+ICvCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHJvY2tjaGlwX3BjaWVfd3JpdGVsX2FwYihyb2NrY2hp
-cCwgUENJRV9DTEtSRVFfUkVBRFksIAo+PiBQQ0lFX0NMSUVOVF9QT1dFUik7Cj4+ICvCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgIHJldHVybjsKPj4gK8KgwqDCoMKgwqDCoCB9Cj4+ICsKPj4g
-K8KgwqDCoMKgwqDCoCAvKiBPdGhlcndpc2UsIHB1bGwgZG93biBDTEtSRVEjIGFuZCBkaXNhYmxl
-IEwxIHN1YnN0YXRlcyAqLwo+PiArwqDCoMKgwqDCoMKgIHJvY2tjaGlwX3BjaWVfd3JpdGVsX2Fw
-Yihyb2NrY2hpcCwgUENJRV9DTEtSRVFfUFVMTF9ET1dOIHwgCj4+IFBDSUVfQ0xLUkVRX05PVF9S
-RUFEWSwKPj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgIFBDSUVfQ0xJRU5UX1BPV0VSKTsKPj4gwqDCoMKgwqDCoMKgwqDCoCBj
-YXAgPSBkd19wY2llX2ZpbmRfZXh0X2NhcGFiaWxpdHkocGNpLCBQQ0lfRVhUX0NBUF9JRF9MMVNT
-KTsKPj4gwqDCoMKgwqDCoMKgwqDCoCBpZiAoY2FwKSB7Cj4+IMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgIGwxc3ViY2FwID0gZHdfcGNpZV9yZWFkbF9kYmkocGNpLCBjYXAgKyBQQ0lf
-TDFTU19DQVApOwo+PiBAQCAtMjgyLDcgKzI5NSw3IEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfcGNp
-ZV9ob3N0X2luaXQoc3RydWN0IAo+PiBkd19wY2llX3JwICpwcCkKPj4gwqDCoMKgwqDCoMKgwqDC
-oCBpcnFfc2V0X2NoYWluZWRfaGFuZGxlcl9hbmRfZGF0YShpcnEsIAo+PiByb2NrY2hpcF9wY2ll
-X2ludHhfaGFuZGxlciwKPj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCByb2NrY2hpcCk7Cj4+
-Cj4+IC3CoMKgwqDCoMKgwqAgcm9ja2NoaXBfcGNpZV9kaXNhYmxlX2wxc3ViKHBjaSk7Cj4+ICvC
-oMKgwqDCoMKgwqAgcm9ja2NoaXBfcGNpZV9lbmFibGVfbDFzdWIocGNpKTsKPj4gwqDCoMKgwqDC
-oMKgwqDCoCByb2NrY2hpcF9wY2llX2VuYWJsZV9sMHMocGNpKTsKPj4KPj4gwqDCoMKgwqDCoMKg
-wqDCoCByZXR1cm4gMDsKPj4gQEAgLTMyMCw3ICszMzMsNyBAQCBzdGF0aWMgdm9pZCByb2NrY2hp
-cF9wY2llX2VwX2luaXQoc3RydWN0IAo+PiBkd19wY2llX2VwICplcCkKPj4gwqDCoMKgwqDCoMKg
-wqDCoCBzdHJ1Y3QgZHdfcGNpZSAqcGNpID0gdG9fZHdfcGNpZV9mcm9tX2VwKGVwKTsKPj4gwqDC
-oMKgwqDCoMKgwqDCoCBlbnVtIHBjaV9iYXJubyBiYXI7Cj4+Cj4+IC3CoMKgwqDCoMKgwqAgcm9j
-a2NoaXBfcGNpZV9kaXNhYmxlX2wxc3ViKHBjaSk7Cj4+ICvCoMKgwqDCoMKgwqAgcm9ja2NoaXBf
-cGNpZV9lbmFibGVfbDFzdWIocGNpKTsKPj4gwqDCoMKgwqDCoMKgwqDCoCByb2NrY2hpcF9wY2ll
-X2VuYWJsZV9sMHMocGNpKTsKPj4gwqDCoMKgwqDCoMKgwqDCoCByb2NrY2hpcF9wY2llX2VwX2hp
-ZGVfYnJva2VuX2F0c19jYXBfcmszNTg4KGVwKTsKPj4KPj4gQEAgLTQzMiw2ICs0NDUsOCBAQCBz
-dGF0aWMgaW50IHJvY2tjaGlwX3BjaWVfcmVzb3VyY2VfZ2V0KHN0cnVjdCAKPj4gcGxhdGZvcm1f
-ZGV2aWNlICpwZGV2LAo+PiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCByZXR1cm4g
-ZGV2X2Vycl9wcm9iZSgmcGRldi0+ZGV2LCBQVFJfRVJSKHJvY2tjaGlwLT5yc3QpLAo+PiDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoCAiZmFpbGVkIHRvIGdldCByZXNldCBsaW5lc1xuIik7Cj4+Cj4+ICvCoMKg
-wqDCoMKgwqAgcm9ja2NoaXAtPnN1cHBvcnRzX2Nsa3JlcSA9IG9mX3BjaV9jbGtyZXFfcHJlc2Vu
-dChwZGV2LSAKPj4gPmRldi5vZl9ub2RlKTsKPj4gKwo+PiDCoMKgwqDCoMKgwqDCoMKgIHJldHVy
-biAwOwo+PiDCoCB9Cj4+Cj4+IC0tIAo+PiAyLjQzLjAKPj4KPj4KPiAKPiAKCgpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWls
-aW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
-aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Hi,
+
+On Mon, Oct 20, 2025 at 07:07:46PM +0800, Chaoyi Chen wrote:
+> Hi Heikki,
+> 
+> On 10/20/2025 6:02 PM, Heikki Krogerus wrote:
+> > On Thu, Oct 16, 2025 at 10:27:34AM +0800, Chaoyi Chen wrote:
+> > > From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+> > > 
+> > > Add default DRM AUX HPD bridge device when register DisplayPort
+> > > altmode. That makes it redundant for each Type-C driver to implement
+> > > a similar registration process in embedded scenarios.
+> > > 
+> > > Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+> > > ---
+> > > 
+> > > Changes in v6:
+> > > - Fix depend in Kconfig.
+> > > 
+> > > Changes in v5:
+> > > - Remove the calls related to `drm_aux_hpd_bridge_notify()`.
+> > > - Place the helper functions in the same compilation unit.
+> > > - Add more comments about parent device.
+> > > 
+> > >   drivers/usb/typec/Kconfig         |  2 ++
+> > >   drivers/usb/typec/class.c         | 26 ++++++++++++++++++++++++++
+> > >   include/linux/usb/typec_altmode.h |  2 ++
+> > >   3 files changed, 30 insertions(+)
+> > > 
+> > > diff --git a/drivers/usb/typec/Kconfig b/drivers/usb/typec/Kconfig
+> > > index 2f80c2792dbd..a6730fbb576b 100644
+> > > --- a/drivers/usb/typec/Kconfig
+> > > +++ b/drivers/usb/typec/Kconfig
+> > > @@ -2,6 +2,8 @@
+> > >   menuconfig TYPEC
+> > >   	tristate "USB Type-C Support"
+> > > +	depends on DRM || DRM=n
+> > > +	select DRM_AUX_HPD_BRIDGE if DRM_BRIDGE && OF
+> > This is wrong. DRM should not dictate how this entire subsystem core
+> > is configured. The dependency needs to be on the DRM bridge side.
+> > 
+> > You can for example use the bus notification there to see when a new
+> > alternate mode is being registered, or use some other notification
+> > mechanism.
+> 
+> Is it a good idea to implement notification functions like
+> drivers/usb/core/notify.c in TCPM, and then let other subsystems (such as DRM)
+> listen to these notifications?
+
+Don't limit this to tcpm only. I would suggest something similar what
+we have for usb bus: drivers/usb/core/notify.c
+
+So that, but for the typec bus. Then in DRM bridge code you just use
+typec_register/unregister_notify().
+
+thanks,
+
+-- 
+heikki
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
