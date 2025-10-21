@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C03ECCD1A7
-	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Oct 2025 15:23:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16370CCD1AF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Oct 2025 15:23:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XuaNdJc2QIX8Yk6yjeiTyQimHagBa4L75RVs+GSyzfY=; b=RPSoqwhrdJBIHJ
-	UUFoDOnX0IQ5LPs6KmH52ku6zvUeisRUxRFsqzV4dTdDNs4j14dCdT4nlu5jGPdgx58ZxOEBrFSqU
-	s/r5V9cPHbBPSp+zijn+AnjRoibOOIH5qtWYit3rYEFcPoUa5SOCHh9QAlEQ1td4ZV9UtfyImTcBN
-	O+syjeAaVm3h0tNow+KB0i9kYzIU7/1ptbkV0+qBJHrzpMFkrEIkXRmpZVPbZWj3QLCtnJac2ayhY
-	XQlhqTxak+hDrhjWL+m3CJiU1pDdjLZ7N3BDcz/6G7LywdNlO1Eb2vEvv7JqVCLa9XwTKTDFtIOeU
-	Lh74he7y3YO0JXTUqIaQ==;
+	List-Owner; bh=yaxAcmWRPR6lN9vHTwLNfKkDEG5m6u80vfjNmI9dDQA=; b=DUnysL2XT2UmiK
+	YAHNU9+EHarYSyqY6VY6sUjrLMvAPdsYlLNqVm203AypWETCdS5ZG7QZMAG6rV0XMUnrByod0HVSE
+	3zzbxJ3/3QGJWAW/pMCOg3Ahp//TDeMROum6mqJ753LNRHoQ2AilS5l7uajZIYvjKsEBiaBbHihz6
+	cuq2BNGN0zMxOVfjSaJC6OImjSL2BRqCxCCpcXmV38X+hmVTpq4fTxuZEEL5kLIL6VK5CBFG9wZ59
+	ra5Brg7LMrfVBTKLHuWLyjfdUgIfrN8iRCx+p1XCv4W/3iX9aUhC3tgZLAwJoSM9BnzP+ViODvaQe
+	CCSfMM4OYa4oL/pWnleQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBECi-0000000HU6J-0Xdj;
-	Tue, 21 Oct 2025 15:23:16 +0000
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBECe-0000000HU0J-12H0
-	for linux-rockchip@lists.infradead.org;
+	id 1vBECg-0000000HU3z-2Ft8;
 	Tue, 21 Oct 2025 15:23:14 +0000
-Received: by mail-ej1-x630.google.com with SMTP id a640c23a62f3a-b3dbf11fa9eso1092852366b.0
-        for <linux-rockchip@lists.infradead.org>; Tue, 21 Oct 2025 08:23:11 -0700 (PDT)
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vBECc-0000000HTyx-4A9D
+	for linux-rockchip@lists.infradead.org;
+	Tue, 21 Oct 2025 15:23:12 +0000
+Received: by mail-ej1-x62d.google.com with SMTP id a640c23a62f3a-b64cdbb949cso942422266b.1
+        for <linux-rockchip@lists.infradead.org>; Tue, 21 Oct 2025 08:23:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1761060190; x=1761664990; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1761060189; x=1761664989; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=nDj3ECZvGhO87X2x0sK6CPlVQ1x93vEAeNy8nF85d1o=;
-        b=MRhxRkj4m0l6tndPSoODX/Arj391bCOv4KU6yWvvOixT1SDJflnEF6q/sija2qS07x
-         zwifzL4GT5Wm+6RSuasNfLDdyv+PcONDQKCmrW9003eQQwmvfShP6o2e1gzQkyCR2A23
-         XL/8RVkr8PkApO/XCLaBm4S80jlbbjX2OzXYC2QsaiWgj0diaZFmZrlFjpYjk1nj3LVO
-         jdtwqZ4+7DJjLVILwAIBPBQDn6ONavm5Ca5OspjEmw8NulX++o4gQcnqdvcb4ZVhqzgJ
-         M6NoPyclP/qchWVZ7y1TMC/jI6yi3EQn7wANcMuOYb5yFIP/fVu/WCaK9F1Ci98D3JmC
-         d3KA==
+        bh=pkVtrQQNx9JXmbmmhcqWd4PIxXamm4sTBDEU32vDCe4=;
+        b=YhXqIvIgOmBryc92AKjXNdyPiuBZKSpkoSHCh9sVpItLPBqQTMDz728Wb6fGVnzBD5
+         WRPYyndByMyPgRPDNZkCgRTOShfyIOKD0bEmEojK4Da4bpoJ0PdlqTXnme5aUBeQQm+3
+         225dwb/bdYSrp7j7R4AxyTldqZ7J/MyyOgEsydrm/B+Of3wIZrAjENLlfn+cNrTEtvzq
+         qHmwQhrzlrSDrjGSefca48FlVe5KHxjUG0Qr3WonHM6PGTKz6Sm6JP6LaE1jkTg1wEUi
+         FyYteWbA5JR4BidzfzlnWzPcXQruhcz4jSi5Vg9W3VRjnbwGXj5U17HnnWxFBq6YTFdR
+         uTpQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1761060190; x=1761664990;
+        d=1e100.net; s=20230601; t=1761060189; x=1761664989;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=nDj3ECZvGhO87X2x0sK6CPlVQ1x93vEAeNy8nF85d1o=;
-        b=C8ApTLjW72Ldect/Hz+I+TtjMkCaPJlhd/DglxCy2UIdu/2RYwns3Y7tBBgX7os8zZ
-         x3GXgR5qIwaUX0AvMtIwVDHIZLfzMpIJYOrIkZMO4xBQu+d4FvUcACxv2govjQF3nklK
-         fWBW5VDFFHjstufWLP+jYWfBlI7Rq1eog6Wz2zlAyxDSEwdven+E/ukwtsJRwmb/P4hW
-         T1/cizueghII7u6tovcYV4iYavtTcdvj3ML3RJiAQbDR1y/tf2KGpNi+1GRJDeYbYdqq
-         azqKKLwoNV2gCCuQjyA3v0hQIBNrtj9GM8JI9j2tO2ka4JWPQeEfX+r3liHD1P3a+ddN
-         roRQ==
-X-Gm-Message-State: AOJu0Yw5obCvVStn2oqActiNf0NsFvvIvzntXqpRkMM/l9u4VfSThMMc
-	o1eS4OPIX1VvSytymXW85fCrjBDNsKecAbNlrc1e56tCpksK6VG9rC4wWVeoOGpn
-X-Gm-Gg: ASbGncs/t5IMTdxnvS+5HGNswFVA2jpkiqyulE1ZB0049W5hKjZaaku8sMiZNY0XGll
-	ctPWtD5ORMq4CugMfp4dAkNIjX7kTndF0ZaUWZ5NrPtFutkVQN1tF1B3vU8ipJzoaQY5W55O6on
-	5S9HOFQnJ33po16ch8mGTqkutp08MnIE47RWpMHloXe2Bj6iwkm4+KFGl/rri+p+47dhsIQ+i/s
-	EPE2CAIC3qTfgBtIURnfA7CjftaIQyLilm+CO4P1Qy0Sn3YTHdN6ogFYlOQl5HQ45W1X+ESoeDT
-	V9hi9dtK1msAPLxb8wknQH/jV6mGlH+JwGU7tyPMv9Nq/j+mTOt1sU0Ag72D+SyhIa1kSrQNUvF
-	Es7J4JdJsoN30YKbOLmBV0uxCn/pIop2Aa6wN3BNVV5yMu9HTXT5nTH4G92xLp5o4sKwOqD/p9g
-	XSrXaNKYazx9YbWBdX6Rtqxo78IH35zJKQQw55gw==
-X-Google-Smtp-Source: AGHT+IEpytNOEQt+J8yOVwE7tliyy/C42TnWv+wFLdWTQQ5Wh/eoDy2mY56x2p4z2YBP4D34UCBrnA==
-X-Received: by 2002:a17:907:5c9:b0:b04:25ae:6c76 with SMTP id a640c23a62f3a-b6473f3feeamr1872558166b.47.1761060190303;
-        Tue, 21 Oct 2025 08:23:10 -0700 (PDT)
+        bh=pkVtrQQNx9JXmbmmhcqWd4PIxXamm4sTBDEU32vDCe4=;
+        b=W+qlwloLoyMQ02iDHGjst7RQgZzky0IQd5j2JWgsPs6z/Wvre6k+n5XBsQwVyBKn8T
+         hxlyZtY/FgDu8qfCuoBNNAhQmum4Y7DofG/q+0THrn/8PD6MiO0c1pLJNiR44eDDco1I
+         WJkelVrJzrmQhqoWCqPuuRr8/dA4VmnjiPUxi8Qa2GonxYPI8mRC9X6KJUZUl1msnMrV
+         4vBX9i7ZFT4EvIOoQKfHQsHL4+vcLOwgy/1YTtqkRSPtgw1UiC9C7Bi7xjw2caJ9kKde
+         /EIuK6RDAqeU2dabEtPgoF9Mbnok3EDhF5Zatai4nPxu7qEogXrmU9EYQ1wohSlFhg5F
+         Wgig==
+X-Gm-Message-State: AOJu0YzcQMuf+yGwCQYZPl1wdTptGnehyRk7/AWR8V3NF8RT7P2b1Z2E
+	kA+8gk0MPpCzn334z/JbPFlNFtpMvxdC7la+mkbmu+1WwHnCRvzl+lsorIFMo0mv
+X-Gm-Gg: ASbGnctW3wVByl5ghkJAqA9Phvh/lgWQmeMfqXw3LkRY7ORXIavGBuO+mU5+W+SZvUw
+	zA6Vv7J+qcj4IBT4bKflREIHsRR3YahShlCqdzA198KXz/PIG47sDr2T3sHQTwGM2QsUsOdy/LT
+	TJZKBjhuc/nGI/IAfDtn/tUzdnLrNPUdYKakr2DP4DfJ5Ft/w9Eo2IFJKimtihiPgQaqGDC310y
+	dG9vrIs7eiw9WhkEojfl7Cd12TzuF2lFgulfLnukFcOSN57sxODSWni0EIE1XTOk1RWucc939CG
+	Z+pHxwGwMPOnjAqWW0udE2thmVDVEYJNIFFfhSHxJXJR+itU45gc2P5+Z+AYBxJY4+arXoc4HVo
+	9ofzuwkCTzjDlfjy8fTUo7SNTkB4Jerv/TGOKkBD5+ucx0YOpTzuRUzhdHZc0c9+7WmboFtaldW
+	ssgPTojhppLvfAq2EVZNpdMAviht+WdbuX9VKDiQ==
+X-Google-Smtp-Source: AGHT+IFBawaPITrNdYmiay8yNLixvU/sNG7B1UP8/hHhq3TLFQvwCAZYt06AP2bMcG0Yh7bzOTP88g==
+X-Received: by 2002:a17:906:ee89:b0:b47:de64:df26 with SMTP id a640c23a62f3a-b6474b371a3mr1920210966b.35.1761060188643;
+        Tue, 21 Oct 2025 08:23:08 -0700 (PDT)
 Received: from tearch (pc142.ds2-s.us.edu.pl. [155.158.56.142])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-b65e8581780sm1082737866b.31.2025.10.21.08.23.09
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-b65e8581780sm1082737866b.31.2025.10.21.08.23.06
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 21 Oct 2025 08:23:10 -0700 (PDT)
+        Tue, 21 Oct 2025 08:23:07 -0700 (PDT)
 From: muhammed.efecetin.67@gmail.com
 X-Google-Original-From: muhammed.efecetin67@gmail.com
 To: linux-rockchip@lists.infradead.org
@@ -83,16 +83,16 @@ Cc: devicetree@vger.kernel.org,
 	rafael@kernel.org,
 	efectn@protonmail.com,
 	daniel.lezcano@linaro.org
-Subject: [PATCH v3 3/5] mfd: add Khadas Edge 2 registers to khadas-mcu.
-Date: Tue, 21 Oct 2025 17:22:43 +0200
-Message-ID: <adbd6dd5e9ed938bab7927597b7f21eca3274b78.1761059314.git.efectn@protonmail.com>
+Subject: [PATCH v3 2/5] mfd: khadas-mcu: drop unused nvmem code
+Date: Tue, 21 Oct 2025 17:22:42 +0200
+Message-ID: <78fab8c8b621c0ec1d7c702c028840d7f431e429.1761059314.git.efectn@protonmail.com>
 X-Mailer: git-send-email 2.51.1.dirty
 In-Reply-To: <cover.1761059314.git.efectn@protonmail.com>
 References: <cover.1761059314.git.efectn@protonmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251021_082312_329453_D78F8DF5 
-X-CRM114-Status: GOOD (  15.84  )
+X-CRM114-CacheID: sfid-20251021_082311_049868_C7D14A19 
+X-CRM114-Status: GOOD (  10.98  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,166 +111,43 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Muhammed Efe Cetin <efectn@protonmail.com>
 
-Add Khadas Edge 2 MCU registers to khadas-mcu.h with KHADAS_MCU_EDGE2 register.
-New "khadas,mcu-edge2" compatible added as it is quite different compared to older MCU variants
-and there are no way to distinguish them using any register.
+Drop "khadas-mcu-user-mem" code since it is not used anywhere.
 
 Signed-off-by: Muhammed Efe Cetin <efectn@protonmail.com>
+Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
 ---
- drivers/mfd/khadas-mcu.c       | 47 +++++++++++++++++++++++++++++++---
- include/linux/mfd/khadas-mcu.h | 32 +++++++++++++++++++++++
- 2 files changed, 76 insertions(+), 3 deletions(-)
+ drivers/mfd/khadas-mcu.c | 11 -----------
+ 1 file changed, 11 deletions(-)
 
 diff --git a/drivers/mfd/khadas-mcu.c b/drivers/mfd/khadas-mcu.c
-index ca4bd6cf56994..8898f5ab6915a 100644
+index ba981a7886921..ca4bd6cf56994 100644
 --- a/drivers/mfd/khadas-mcu.c
 +++ b/drivers/mfd/khadas-mcu.c
-@@ -32,6 +32,20 @@ static bool khadas_mcu_reg_volatile(struct device *dev, unsigned int reg)
- 	}
- }
- 
-+static bool khadas_mcu_reg_volatile_edge2(struct device *dev, unsigned int reg)
-+{
-+	switch (reg) {
-+	case KHADAS_MCU_EDGE2_SLEEP_EN_REG:
-+	case KHADAS_MCU_EDGE2_LED_ON_RAM_REG:
-+	case KHADAS_MCU_EDGE2_FAN_CTRL_REG:
-+	case KHADAS_MCU_EDGE2_WDT_EN_REG:
-+	case KHADAS_MCU_EDGE2_SYS_RST_REG:
-+		return true;
-+	default:
-+		return false;
-+	}
-+}
-+
- static bool khadas_mcu_reg_writeable(struct device *dev, unsigned int reg)
- {
- 	switch (reg) {
-@@ -65,6 +79,17 @@ static bool khadas_mcu_reg_writeable(struct device *dev, unsigned int reg)
- 	}
- }
- 
-+static bool khadas_mcu_reg_writeable_edge2(struct device *dev, unsigned int reg)
-+{
-+	switch (reg) {
-+	case KHADAS_MCU_EDGE2_VERSION1_REG:
-+	case KHADAS_MCU_EDGE2_VERSION2_REG:
-+		return false;
-+	default:
-+		return true;
-+	}
-+}
-+
- static const struct regmap_config khadas_mcu_regmap_config = {
- 	.reg_bits	= 8,
- 	.reg_stride	= 1,
-@@ -75,8 +100,18 @@ static const struct regmap_config khadas_mcu_regmap_config = {
- 	.cache_type	= REGCACHE_MAPLE,
- };
- 
-+static const struct regmap_config khadas_mcu_regmap_config_edge2 = {
-+	.reg_bits	= 8,
-+	.reg_stride	= 1,
-+	.val_bits	= 8,
-+	.max_register	= KHADAS_MCU_EDGE2_SYS_RST_REG,
-+	.volatile_reg	= khadas_mcu_reg_volatile_edge2,
-+	.writeable_reg	= khadas_mcu_reg_writeable_edge2,
-+	.cache_type	= REGCACHE_MAPLE,
-+};
-+
- static struct mfd_cell khadas_mcu_fan_cells[] = {
--	/* VIM1/2 Rev13+ and VIM3 only */
-+	/* VIM1/2 Rev13+, VIM3 and Edge2 only */
+@@ -80,10 +80,6 @@ static struct mfd_cell khadas_mcu_fan_cells[] = {
  	{ .name = "khadas-mcu-fan-ctrl", },
  };
  
-@@ -84,6 +119,7 @@ static int khadas_mcu_probe(struct i2c_client *client)
+-static struct mfd_cell khadas_mcu_cells[] = {
+-	{ .name = "khadas-mcu-user-mem", },
+-};
+-
+ static int khadas_mcu_probe(struct i2c_client *client)
  {
  	struct device *dev = &client->dev;
- 	struct khadas_mcu *ddata;
-+	const struct regmap_config *regmap_config;
- 	int ret;
+@@ -105,13 +101,6 @@ static int khadas_mcu_probe(struct i2c_client *client)
+ 		return ret;
+ 	}
  
- 	ddata = devm_kzalloc(dev, sizeof(*ddata), GFP_KERNEL);
-@@ -94,7 +130,11 @@ static int khadas_mcu_probe(struct i2c_client *client)
- 
- 	ddata->dev = dev;
- 
--	ddata->regmap = devm_regmap_init_i2c(client, &khadas_mcu_regmap_config);
-+	regmap_config = of_device_get_match_data(dev);
-+	if (!regmap_config)
-+		return -EINVAL;
-+
-+	ddata->regmap = devm_regmap_init_i2c(client, regmap_config);
- 	if (IS_ERR(ddata->regmap)) {
- 		ret = PTR_ERR(ddata->regmap);
- 		dev_err(dev, "Failed to allocate register map: %d\n", ret);
-@@ -112,7 +152,8 @@ static int khadas_mcu_probe(struct i2c_client *client)
- 
- #ifdef CONFIG_OF
- static const struct of_device_id khadas_mcu_of_match[] = {
--	{ .compatible = "khadas,mcu", },
-+	{ .compatible = "khadas,mcu", .data = &khadas_mcu_regmap_config },
-+	{ .compatible = "khadas,mcu-edge2", .data = &khadas_mcu_regmap_config_edge2 },
- 	{},
- };
- MODULE_DEVICE_TABLE(of, khadas_mcu_of_match);
-diff --git a/include/linux/mfd/khadas-mcu.h b/include/linux/mfd/khadas-mcu.h
-index a99ba2ed0e4e0..e278326451df6 100644
---- a/include/linux/mfd/khadas-mcu.h
-+++ b/include/linux/mfd/khadas-mcu.h
-@@ -10,6 +10,7 @@
- #ifndef MFD_KHADAS_MCU_H
- #define MFD_KHADAS_MCU_H
- 
-+/* Registers used by Khadas VIM2 rev14 and VIM3 */
- #define KHADAS_MCU_PASSWD_VEN_0_REG		0x00 /* RO */
- #define KHADAS_MCU_PASSWD_VEN_1_REG		0x01 /* RO */
- #define KHADAS_MCU_PASSWD_VEN_2_REG		0x02 /* RO */
-@@ -70,12 +71,43 @@
- #define KHADAS_MCU_WOL_INIT_START_REG		0x87 /* WO */
- #define KHADAS_MCU_CMD_FAN_STATUS_CTRL_REG	0x88 /* WO */
- 
-+/* Registers used by Khadas Edge 2 */
-+#define KHADAS_MCU_EDGE2_VERSION1_REG             0x12  /* RO */
-+#define KHADAS_MCU_EDGE2_VERSION2_REG             0x13  /* RO */
-+#define KHADAS_MCU_EDGE2_BOOT_MODE_REG            0x20  /* RW */
-+#define KHADAS_MCU_EDGE2_BOOT_EN_DCIN_REG         0x21  /* RW */
-+#define KHADAS_MCU_EDGE2_BOOT_EN_RTC_REG          0x22  /* RW */
-+#define KHADAS_MCU_EDGE2_LED_MODE_ON_REG          0x23  /* RW */
-+#define KHADAS_MCU_EDGE2_LED_MODE_OFF_REG         0x24  /* RW */
-+#define KHADAS_MCU_EDGE2_RGB_ON_R_REG             0x25  /* RW */
-+#define KHADAS_MCU_EDGE2_RGB_ON_G_REG             0x26  /* RW */
-+#define KHADAS_MCU_EDGE2_RGB_ON_B_REG             0x27  /* RW */
-+#define KHADAS_MCU_EDGE2_RGB_OFF_R_REG            0x28  /* RW */
-+#define KHADAS_MCU_EDGE2_RGB_OFF_G_REG            0x29  /* RW */
-+#define KHADAS_MCU_EDGE2_RGB_OFF_B_REG            0x2A  /* RW */
-+#define KHADAS_MCU_EDGE2_REST_CONF_REG            0x2C  /* WO */
-+#define KHADAS_MCU_EDGE2_SLEEP_EN_REG             0x2E  /* RW */
-+#define KHADAS_MCU_EDGE2_BOOT_EN_IR_REG           0x2F  /* RW */
-+#define KHADAS_MCU_EDGE2_IR1_CUST1_REG            0x30  /* RW */
-+#define KHADAS_MCU_EDGE2_IR1_CUST2_REG            0x31  /* RW */
-+#define KHADAS_MCU_EDGE2_IR1_ORDER1_REG           0x32  /* RW */
-+#define KHADAS_MCU_EDGE2_IR1_ORDER2_REG           0x33  /* RW */
-+#define KHADAS_MCU_EDGE2_IR2_CUST1_REG            0x34  /* RW */
-+#define KHADAS_MCU_EDGE2_IR2_CUST2_REG            0x35  /* RW */
-+#define KHADAS_MCU_EDGE2_IR2_ORDER1_REG           0x36  /* RW */
-+#define KHADAS_MCU_EDGE2_IR2_ORDER2_REG           0x37  /* RW */
-+#define KHADAS_MCU_EDGE2_LED_ON_RAM_REG           0x89  /* WO */
-+#define KHADAS_MCU_EDGE2_FAN_CTRL_REG             0x8A  /* WO */
-+#define KHADAS_MCU_EDGE2_WDT_EN_REG               0x8B  /* WO */
-+#define KHADAS_MCU_EDGE2_SYS_RST_REG              0x91  /* WO */
-+
- enum {
- 	KHADAS_BOARD_VIM1 = 0x1,
- 	KHADAS_BOARD_VIM2,
- 	KHADAS_BOARD_VIM3,
- 	KHADAS_BOARD_EDGE = 0x11,
- 	KHADAS_BOARD_EDGE_V,
-+	KHADAS_BOARD_EDGE2,
- };
- 
- /**
+-	ret = devm_mfd_add_devices(dev, PLATFORM_DEVID_NONE,
+-				   khadas_mcu_cells,
+-				   ARRAY_SIZE(khadas_mcu_cells),
+-				   NULL, 0, NULL);
+-	if (ret)
+-		return ret;
+-
+ 	if (of_property_present(dev->of_node, "#cooling-cells"))
+ 		return devm_mfd_add_devices(dev, PLATFORM_DEVID_NONE,
+ 					    khadas_mcu_fan_cells,
 -- 
 2.51.1.dirty
 
