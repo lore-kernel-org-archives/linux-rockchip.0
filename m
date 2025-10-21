@@ -4,67 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D6F2CCD1A7
-	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Oct 2025 02:32:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5704FCCD19F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Oct 2025 02:32:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=giz6WSEM+dx9zpWeRlDAC3l0isfEcD3C0uOEBY7q5R0=; b=y7wicve8Wc/neb
-	mHxu2HSZgDuJ9Ubz7ltwuCPpFRd4DtzpHYAuXFb+o73XoDHKYdJg1bIyv3L7AeGhzcEywPhixxUU0
-	CtjitNPhWh5uH1Q4JULEJ4F6mys3Q7hWXBP33BFWntMx9uXSVFgpPJpAjbQu8m1GllW5524y+NS61
-	Qtk+gIprHE2/YPiFOvWyXgYkbb7Fos1ANhgxWLj8g4MEwOYWCZhHFehgoiqBxZClGIawI5Zkk0peu
-	y2OP8E243V8W8T890IhyO9T3PUa/NoTnb/+aZEgTQ918ixz2/hdUfXObHpCogGJzxskmBWgt/1Xk5
-	6gDV6yOcP0TSlDdiU56Q==;
+	List-Owner; bh=Kv+Mui6h9Xqp839pirRfaCWc70u3d2G993C5EC8Yfxg=; b=Rf7Ptp7V0Rn0OB
+	c97pdqiJ2Z3wjtNSEc8w+RfYYFDre/iXKjyEYWjW8rcHlKTbOAt6Ht/Eco4hSFlfson20+J61vT+x
+	LKU/3E9z+l5kGa0dJLCwEempsEB1G80vpyfGNVEyy5qC521RB9FNPDcVE9TIfHjvqsz3BtGfYAs9O
+	wC9KgVqjXZhh6Fd6rQC89vLBI0zCbtDjqcIbcoDN5wjdHwKils5EQzhcQZ3pxCNBphUPKxQL5ucWi
+	Rlh7ULgrnwQQYmX0a8bBE6JqdxAA4p6fwDE1RteraeC5Bjcqag5VEsrcuCkNKYnh/fAMIfLw/RSy9
+	QHw/W5V3gXCP9nNpW0BA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vB2Ab-0000000FaAS-27GE;
-	Tue, 21 Oct 2025 02:32:17 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vB2Ax-0000000FaJk-3LIp;
+	Tue, 21 Oct 2025 02:32:39 +0000
+Received: from mail-m49240.qiye.163.com ([45.254.49.240])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vB2AX-0000000Fa7W-3z0g;
-	Tue, 21 Oct 2025 02:32:15 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 6B5E440966;
-	Tue, 21 Oct 2025 02:32:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E68ABC116C6;
-	Tue, 21 Oct 2025 02:32:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1761013933;
-	bh=8UAGN1YhXZIbc93snwY/CRtubSt6sDkHXFrJ7cAY2Ms=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=BHcnkSfVYUiNs1+laZL/oTzN3Hwxulz3SDXzmd39w+CmT5bYFjNvL3B2LlK9tR2EZ
-	 MsV+kFf0G0g34cY2gCGrybn3d+8LVj5mPlzQx65l6HFVpSX90tezuAsndIbl8dwdM/
-	 IIKkMsR6N2dMg011uJPL28VumrpkuIW5fMBZPytwtZrLDtraufFed0Xf55NANa26OJ
-	 OLhoySAkQjU6VOn+Ojr32RTbf4nUiTFyJ+SUYaQechFw9ycmSg9Iyn1bkx8nlbpYjx
-	 7l0l0rKtIRP7EIY2QMIhZwgN9s49EkHms8o4WL/BnTnrMl27ydTB3EENp18Fo/09Ro
-	 tIPFNNyq18iiw==
-Date: Tue, 21 Oct 2025 08:02:01 +0530
-From: Manivannan Sadhasivam <mani@kernel.org>
-To: Niklas Cassel <cassel@kernel.org>
-Cc: Bjorn Helgaas <helgaas@kernel.org>, 
-	Lorenzo Pieralisi <lpieralisi@kernel.org>, Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
-	Heiko Stuebner <heiko@sntech.de>, Shawn Lin <shawn.lin@rock-chips.com>, 
-	Kever Yang <kever.yang@rock-chips.com>, Simon Xue <xxm@rock-chips.com>, 
-	Damien Le Moal <dlemoal@kernel.org>, Dragan Simic <dsimic@manjaro.org>, 
-	FUKAUMI Naoki <naoki@radxa.com>, Diederik de Haas <diederik@cknow-tech.com>, 
-	stable@vger.kernel.org, Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>, 
-	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v3] PCI: dw-rockchip: Prevent advertising L1 Substates
- support
-Message-ID: <aaug44bngs5amid7un4plotcjpbc6ym44cztnhet7z44ybywgc@apzhg6enhxgy>
-References: <20251017164558.GA1034609@bhelgaas>
- <54FD6159-AE45-432B-8F0E-4654721D16A6@kernel.org>
+	id 1vB2Av-0000000FaIF-0elc;
+	Tue, 21 Oct 2025 02:32:38 +0000
+Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 26966e5d6;
+	Tue, 21 Oct 2025 10:32:32 +0800 (GMT+08:00)
+From: Damon Ding <damon.ding@rock-chips.com>
+To: andrzej.hajda@intel.com,
+	neil.armstrong@linaro.org,
+	rfoss@kernel.org
+Cc: Laurent.pinchart@ideasonboard.com,
+	jonas@kwiboo.se,
+	jernej.skrabec@gmail.com,
+	maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org,
+	tzimmermann@suse.de,
+	airlied@gmail.com,
+	simona@ffwll.ch,
+	shawnguo@kernel.org,
+	s.hauer@pengutronix.de,
+	kernel@pengutronix.de,
+	festevam@gmail.com,
+	inki.dae@samsung.com,
+	sw0312.kim@samsung.com,
+	kyungmin.park@samsung.com,
+	krzk@kernel.org,
+	alim.akhtar@samsung.com,
+	jingoohan1@gmail.com,
+	p.zabel@pengutronix.de,
+	hjc@rock-chips.com,
+	heiko@sntech.de,
+	andy.yan@rock-chips.com,
+	dmitry.baryshkov@oss.qualcomm.com,
+	dianders@chromium.org,
+	m.szyprowski@samsung.com,
+	luca.ceresoli@bootlin.com,
+	jani.nikula@intel.com,
+	linux-kernel@vger.kernel.org,
+	dri-devel@lists.freedesktop.org,
+	imx@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	Damon Ding <damon.ding@rock-chips.com>
+Subject: [PATCH v7 01/18] drm/display: bridge_connector: Ensure last bridge determines EDID/modes detection capabilities
+Date: Tue, 21 Oct 2025 10:31:13 +0800
+Message-Id: <20251021023130.1523707-2-damon.ding@rock-chips.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20251021023130.1523707-1-damon.ding@rock-chips.com>
+References: <20251021023130.1523707-1-damon.ding@rock-chips.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <54FD6159-AE45-432B-8F0E-4654721D16A6@kernel.org>
+X-HM-Tid: 0a9a049c6e9903a3kunm42a8e83d59a55d
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGR4dTFZCQkhJT0xCH01LGEhWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpKQk
+	1VSktLVUpCWQY+
+DKIM-Signature: a=rsa-sha256;
+	b=cGCXVsjvej/FbDt0ArDJP2LEZNBa2oyFzE8eYGLd1fLo3vzR0FP0eUCmj8A+0jnELOW7EYa4Wk7rGXC5tFdG85ouz/Pie0OkGEA4NqQmKA1Ne1ctdm2upQZOHUJ6uGiEUP5uii9ne6mm8A5O2ZOrbgGm6lKsm8lT3NWymdSqw4c=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=z6XpUeE8zoDoSFMUX5SO9d2HLBX2jZRTksAC/b3VfJU=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251020_193214_008697_733FDE0C 
-X-CRM114-Status: GOOD (  15.12  )
+X-CRM114-CacheID: sfid-20251020_193237_407759_6FF0B558 
+X-CRM114-Status: GOOD (  10.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,30 +98,83 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gU2F0LCBPY3QgMTgsIDIwMjUgYXQgMDc6MDc6MzVBTSArMDIwMCwgTmlrbGFzIENhc3NlbCB3
-cm90ZToKPiBPbiAxNyBPY3RvYmVyIDIwMjUgMTg6NDU6NTggQ0VTVCwgQmpvcm4gSGVsZ2FhcyA8
-aGVsZ2Fhc0BrZXJuZWwub3JnPiB3cm90ZToKPiAKPiAoc25pcCkKPiAKPiA+PiAKPiA+PiBUaHVz
-LCBwcmV2ZW50IGFkdmVydGlzaW5nIEwxIFN1YnN0YXRlcyBzdXBwb3J0IHVudGlsIHByb3BlciBk
-cml2ZXIgc3VwcG9ydAo+ID4+IGlzIGFkZGVkLgo+ID4KPiA+SSB0aGluayBNYW5pIGlzIHBsYW5u
-aW5nIGEgY2hhbmdlIHNvIHdlIGRvbid0IHRyeSB0byBlbmFibGUgTDEKPiA+U3Vic3RhdGVzIGJ5
-IGRlZmF1bHQsIHdoaWNoIHNob3VsZCBhdm9pZCB0aGUgcmVncmVzc2lvbiBldmVuIHdpdGhvdXQg
-YQo+ID5wYXRjaCBsaWtlIHRoaXMuCj4gCj4gU291bmRzIGdvb2QsIEkgc3VnZ2VzdGVkIHRoZSBz
-YW1lOgo+IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xpbnV4LXBjaS9hTzl0V2pnSG5rQVRyb05h
-QHJ5emVuLwo+IAo+IAo+ID4KPiA+VGhhdCB3aWxsIHN0aWxsIGxlYXZlIHRoZSBleGlzdGluZyBD
-T05GSUdfUENJRUFTUE1fUE9XRVJfU1VQRVJTQVZFPXkKPiA+YW5kIHN5c2ZzIGwxXzFfYXNwbSBw
-cm9ibGVtcy4KPiAKPiBJbmRlZWQsIHdoaWNoIGlzIHdoeSBJIHRoaW5rIHRoYXQgdGhpcyBwYXRj
-aCBpcyB2Ni4xOCBtYXRlcmlhbC4KPiAKCk5vdCBzdHJpY3RseSBhIDYuMTggbWF0ZXJpYWwgYXMg
-dGhlIEtjb25maWcvc3lzZnMvY21kbGluZSBpc3N1ZXMgZXhpc3RlZCBldmVuCmJlZm9yZSB3ZSBl
-bmFibGVkIHRoZSBBU1BNIHN0YXRlcyBieSBkZWZhdWx0IGluIHY2LjE4LXJjMS4KClRoZSBkZWZh
-dWx0IEFTUE0gaXNzdWUgd2lsbCBiZSBmaXhlZCBieSBhIHNlcGFyYXRlIHBhdGNoIHdoaWNoIHdp
-bGwgYmUgZ2VuZXJpYwpmb3IgYWxsIHBsYXRmb3Jtcy4gSSdsbCBhcHBseSB0aGlzIHBhdGNoIGZv
-ciB2Ni4xOS4KCi0gTWFuaQoKLS0gCuCuruCuo+Cuv+CuteCuo+CvjeCuo+CuqeCvjSDgrprgrqTg
-rr7grprgrr/grrXgrq7gr40KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0
-cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGlu
-Zm8vbGludXgtcm9ja2NoaXAK
+When multiple bridges are present, EDID detection capability
+(DRM_BRIDGE_OP_EDID) takes precedence over modes detection
+(DRM_BRIDGE_OP_MODES). To ensure the above two capabilities are
+determined by the last bridge in the chain, we handle three cases:
+
+Case 1: The later bridge declares only DRM_BRIDGE_OP_MODES
+ - If the previous bridge declares DRM_BRIDGE_OP_EDID, set
+   &drm_bridge_connector.bridge_edid to NULL and set
+   &drm_bridge_connector.bridge_modes to the later bridge.
+ - Ensure modes detection capability of the later bridge will not
+   be ignored.
+
+Case 2: The later bridge declares only DRM_BRIDGE_OP_EDID
+ - If the previous bridge declares DRM_BRIDGE_OP_MODES, set
+   &drm_bridge_connector.bridge_modes to NULL and set
+   &drm_bridge_connector.bridge_edid to the later bridge.
+ - Although EDID detection capability has higher priority, this
+   operation is for balance and makes sense.
+
+Case 3: the later bridge declares both of them
+ - Assign later bridge as &drm_bridge_connector.bridge_edid and
+   and &drm_bridge_connector.bridge_modes to this bridge.
+ - Just leave transfer of these two capabilities as before.
+
+Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
+Suggested-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+Tested-by: Marek Szyprowski <m.szyprowski@samsung.com>
+
+---
+
+Changes in v7:
+- As Luca suggested, simplify the code and related comment.
+---
+ drivers/gpu/drm/display/drm_bridge_connector.c | 16 ++++++++++++----
+ 1 file changed, 12 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/gpu/drm/display/drm_bridge_connector.c b/drivers/gpu/drm/display/drm_bridge_connector.c
+index baacd21e7341..7c2936d59517 100644
+--- a/drivers/gpu/drm/display/drm_bridge_connector.c
++++ b/drivers/gpu/drm/display/drm_bridge_connector.c
+@@ -673,14 +673,22 @@ struct drm_connector *drm_bridge_connector_init(struct drm_device *drm,
+ 		if (!bridge->ycbcr_420_allowed)
+ 			connector->ycbcr_420_allowed = false;
+ 
+-		if (bridge->ops & DRM_BRIDGE_OP_EDID)
+-			bridge_connector->bridge_edid = bridge;
++		/*
++		 * Ensure the last bridge declares OP_EDID or OP_MODES or both.
++		 */
++		if (bridge->ops & DRM_BRIDGE_OP_EDID || bridge->ops & DRM_BRIDGE_OP_MODES) {
++			bridge_connector->bridge_edid = NULL;
++			bridge_connector->bridge_modes = NULL;
++			if (bridge->ops & DRM_BRIDGE_OP_EDID)
++				bridge_connector->bridge_edid = bridge;
++			if (bridge->ops & DRM_BRIDGE_OP_MODES)
++				bridge_connector->bridge_modes = bridge;
++		}
+ 		if (bridge->ops & DRM_BRIDGE_OP_HPD)
+ 			bridge_connector->bridge_hpd = bridge;
+ 		if (bridge->ops & DRM_BRIDGE_OP_DETECT)
+ 			bridge_connector->bridge_detect = bridge;
+-		if (bridge->ops & DRM_BRIDGE_OP_MODES)
+-			bridge_connector->bridge_modes = bridge;
++
+ 		if (bridge->ops & DRM_BRIDGE_OP_HDMI) {
+ 			if (bridge_connector->bridge_hdmi)
+ 				return ERR_PTR(-EBUSY);
+-- 
+2.34.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
