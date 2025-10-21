@@ -4,95 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16B45CCD1B9
-	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Oct 2025 15:23:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6F5FCCD184
+	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Oct 2025 16:06:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=31hfsjPj6RFpEUrMOwEKoueXojn41vjSvWNT6s8Jyn4=; b=le+S4Gc6lJTaDu
-	Svy5PX84Bcdh64wXCtELiA731NSIHWPQLwmy1FSTQ1j/HZaKCRtf/xlOeHx1nJiYuiwBc6vINagkf
-	L/3d5JhQj8ph7YtI5PI+7U77o+L4BBtumEhqPS575X45NzeebipEOH2PVSkNJm5OCazD6zlsU4ppa
-	uzqp7QhE1ADrPO+8+AfaMhR+tUx3elmcl0TeRqH20BjFhVUa/YbrUiEQfcjF6JyaQ4ZZfW+CUjAUo
-	FI6B5SLJsx8PuRTfC+FZS01Ingr4RAbpGydmCBPGNNDdmFdXI+AR4gnl2dokqfJnhVFlQSZJHfulP
-	3bJt3kp5DzLMITxVgijQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Asky6n4EdBWDEgJwNl1uQFHtCEhCKP8/2V3dJBhNmWw=; b=PL9g6fnvFJrTAp
+	3vyucdgJnnuCPIpRSWUXm4WjDJuCzYgQjydd+rpDArcD3+I44H3n1t+/4CGdXtFDwkXVn6Nm03nv4
+	8qyHZoNNArXXqMr1t67XSgEX6rJfbTPn4f6tQVV0UMsY4POfTXwwvpdUlBYJjx2Fsz0jNzJHA8jSg
+	LxJiQXJkI9LMzg6QsKIedEFcRTJObrWX3bPiWdezwCvahgY/BwuV0uBvp9t0FUdwDZC7GUJc17y0/
+	+k5MQr5hZUpEcQdL2WbXYROFXA/qy7Q5nIjz99vMGpmx4lKXcjNQslKEAtcYPnZVSAG3ZZgrUfLYi
+	6DYpYxi0ZARpVcFSCEnw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBECm-0000000HUBD-0SAi;
-	Tue, 21 Oct 2025 15:23:20 +0000
-Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
+	id 1vBEsL-000000003Ab-3ab3;
+	Tue, 21 Oct 2025 16:06:17 +0000
+Received: from mail-wm1-f53.google.com ([209.85.128.53])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBECg-0000000HU2D-1iFP
+	id 1vBEsJ-0000000039F-2SW0
 	for linux-rockchip@lists.infradead.org;
-	Tue, 21 Oct 2025 15:23:15 +0000
-Received: by mail-ej1-x62f.google.com with SMTP id a640c23a62f3a-b54f55a290cso870083166b.2
-        for <linux-rockchip@lists.infradead.org>; Tue, 21 Oct 2025 08:23:13 -0700 (PDT)
+	Tue, 21 Oct 2025 16:06:16 +0000
+Received: by mail-wm1-f53.google.com with SMTP id 5b1f17b1804b1-47106fc51faso68610085e9.0
+        for <linux-rockchip@lists.infradead.org>; Tue, 21 Oct 2025 09:06:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1761060192; x=1761664992; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=d9adNp0vIB1m6cHMOI8TscYP77iYGGA2dR4MofxfiQU=;
-        b=RxFlo6mdqmpX/RZILVqCz31VzTpcJBbfFrLlRUSRs4pSby3s6RMOZojoVuuxy+1xxf
-         ROUpB+sIP+gtwVaXz4hsUU0aFvbL6I/OVsb+3APN37oy2pJUKIwDY3UGoxoDjZg4T3YB
-         VfIRC4nMZA+HZAQfU2fkGKt9trOginJc/HVc4jRQ8UYbcRiiqLLwTS2TZgE6fzX6vW4v
-         7uGtWMy4eEnGLjHj9bNH8ZUEzIKPKgNaR2kXfJhoqKAq4m47BCOPWIl3UEY2egm3kufi
-         HKVN65HYrx9IeeoIWrSytckTaqtn3GBO1XI3F1u3fJ1PmEe9Ls+FTkwIRtoF3WSQH+xX
-         wpTQ==
+        d=gmail.com; s=20230601; t=1761062773; x=1761667573; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=I+ODemdtelodNngZ+cnMjkBp0uDC6f3Gz3zokiA/WGA=;
+        b=bvR+DPzJHYPbXL3RMJMVAlDGt3fJT+jna/JfiJiBJqBMSviY9dKFYMv7JJdIzwMoil
+         FPpP5ylR2ZYXXVtp1sJcxX0vr0MtG3Y9DswRjOjr10ZcZflu8i6poOY1h8nRMIcAIKnR
+         CX5pk+7Bq7lH22PhqijHOKQPrblZdUoFJuZCFzntFLufNHdUbKzuGM0mFbdHCWL3iOpq
+         Zza5Ax2u3HxWYrUahKu27YXeHZOeO7hjoiQZi65o7jbJXCQmct2CsBSNP7Gg9jWmS23w
+         DeXXiJzrk2kDVCifBQl/8gQ9nL+XVPE69V5tpmvka6sN+ZBp9I+cDuAIUAFapYmv5izu
+         iQXA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1761060192; x=1761664992;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=d9adNp0vIB1m6cHMOI8TscYP77iYGGA2dR4MofxfiQU=;
-        b=D3yNa0js+HqT2ED16p49S+n9iEwWAwO3PjxBcTYl/O9v/WiBO3m5rnykSO3JnAYBqZ
-         3GGhd05UIz0Agy3IC1i+/6hHTQIbPHPCxIbJllJ7R5hnv/xacWcVCG2C3bVxFGHjLfU9
-         4ODe+1mLy8c4tDDU/kax4iSjq4R9Pw+jzqA8fs4tFlZN6scAffBlBwR6GP+O1yw885yc
-         NLtv0chfQ0ObV7dL473xkl4+ZN5OAtJUXFe139jm1wjDrnrI/xV9M/59i1Nwsq7B+kYF
-         Fv4VWOX7IYsug0kRTgfob0W4U+nJDm8Ut2eULdAZbl2utVd9UH29XopAlsXX0m6bBvyr
-         gqnw==
-X-Gm-Message-State: AOJu0YzaUZrz9mF5RUMB8NeCsCjcd488c29z05UWg2ZV19Igr0/kzoEx
-	VBAc+BFufadIdbarQblv6miIh8DEbeHWFGx6x+sa9Rw5BCNUh4KLTe9FP6rA1nlb
-X-Gm-Gg: ASbGnct8rg8oodWNibe0cfiRPrXKQZXZcP9LdLDXwp5Me5nHsVxjaEVzo94J0aDOI9X
-	5E69i+XwR2QNfq7Jv0uqaYf9W4hDehRUxPFk4Ye/rsP8o9o/yZEFU1hvIkbEi1RAp0EoCOLyUOD
-	sTRZ6w0uOTun4+sAe+FE264p0EthO0pUCq/pqhIyw/gi+WCbBnctU5RzPl20Skb/WDn6qYSIKGz
-	X3HdCeloZYlZKV9Ewy86RTKH7sgw8KoIqPWSjV9FGCNT+Tg6c3daYOD8OZT3uZjJk7rNc9J1ZuE
-	RXi+h17NH3XYdpCesl9LWPDGcpB49KKO7jOSUaylSl4mt6BUj4Na+gxbRLLb1k4peOLSqYZOkhR
-	kuafUPQcZIHJ01X3gQ/6XdIz6csTqC/ErutoGlBWO/UMvUBopA80WiGv3YCEQJGdwY5TH2JzPgK
-	TdbJAe+peI4ul6KBhmKdE8HRpwC66ZxajtY+Joig==
-X-Google-Smtp-Source: AGHT+IHurBcs/BvjTvbOQhGO+EbHIilgUbXuYs+sCrM7j/eTqSvavNvGUlTAR8coiGhQ9kPUDFiU+Q==
-X-Received: by 2002:a17:907:3daa:b0:b34:985c:a503 with SMTP id a640c23a62f3a-b6474b36a19mr1999860966b.35.1761060191871;
-        Tue, 21 Oct 2025 08:23:11 -0700 (PDT)
-Received: from tearch (pc142.ds2-s.us.edu.pl. [155.158.56.142])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-b65e8581780sm1082737866b.31.2025.10.21.08.23.10
+        d=1e100.net; s=20230601; t=1761062773; x=1761667573;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=I+ODemdtelodNngZ+cnMjkBp0uDC6f3Gz3zokiA/WGA=;
+        b=cXk5FaNBwg4KG+4CBmVorLe+fAUaxdx9JDaJLduXV8ESBXrSuUbG0BLHPsncoZUaoP
+         60LfftDDLwIUxYES81QhDmw8ATmswpRihjGU/zr5CXblywsv1jo913bvbtHk4knc0SoC
+         tyaM/SvD1VWMDbKKTlIehIxfDodP5QjbfvaGTTHGOEystZdI9vzzj0hagIch4T1B5CE8
+         2D5R/PfhH6/Psf9/xEtcUX94QBvly7TKex8HqO+2ezQ7blIINY2DZh2O7Dgy2qfdmB83
+         y4Jt91FtxW3tLdJIkr6fWHcctCEmGVUw78sw1ZjOS1BWPDzX6RDnqAngTDr8gDKqdGdj
+         mAdQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUSrGMzqzx6QcH83pVRd6p+31XcWP4+PotcCCJj26MOWMzGXWPKgnqHe1KQj5ECzrmm4G5peA/ulxLg2kIomg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzsFLo1QCwtbn1VYG+53ZeBvzXBW3eDnCX7/OnNJn6Yu0uLi92h
+	5RP4nvnJcW7bguWCDeTw2dbU1ckHJu9xdrwNuPIdc3xWrSGpsCPjRaie1wzT7sCC
+X-Gm-Gg: ASbGncv7Lk+Qvx4YLWrZwZhkWXT4HkgQjwJj8fRLGxWSNRfzONS3Rx1YKUXg+15MX9t
+	clyMOss7Pac8Hb7V2Kjus/Y2Q8/o+LhFXaUU/Ql6OozGoiqoRPQRx8QfbmFUHc5+vLoiP+hMLlw
+	1cFm51yDRD8xVCueu1pwZ5rV/dLqa70ZmaRY8aNLybCd35TsNOcLGLlESwGixcxQFwZVejkonXc
+	kRgXwHt7nP5pNx+CRFdtTSctG5/TTYj37aBZQU9bxtBommlyWKsHA7pDD+Pdq5iMxnokqVPX6Jh
+	eT0bJZ7HAXLQIW6y3STFsBL8/JWHyWWjhwwrjOmRHu+TPTBmgQUECpAkGo+jJLq7q2aLpWWGbH6
+	5EeVltWLSUU74BeklEiIUXIMlFZHGAv8YfHPGpm0ZW/VARm7djAQPFUzWjfoQDjXw5rvx4JNex/
+	DsVOc7
+X-Google-Smtp-Source: AGHT+IFJFL2AbUhadEu3zoiSmflGJqqKLGGnSqi38T2TvHgGSGw3DXC14Yf1ANAfxEsqrqF6d4xXtg==
+X-Received: by 2002:a05:600c:450c:b0:46e:38cc:d3e2 with SMTP id 5b1f17b1804b1-47117906a23mr136429645e9.22.1761062773077;
+        Tue, 21 Oct 2025 09:06:13 -0700 (PDT)
+Received: from debian.. ([193.42.96.237])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-47496d26affsm18543965e9.12.2025.10.21.09.06.11
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 21 Oct 2025 08:23:11 -0700 (PDT)
-From: muhammed.efecetin.67@gmail.com
-X-Google-Original-From: muhammed.efecetin67@gmail.com
-To: linux-rockchip@lists.infradead.org
-Cc: devicetree@vger.kernel.org,
+        Tue, 21 Oct 2025 09:06:12 -0700 (PDT)
+From: David Petry <petry103@gmail.com>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	Damon Ding <damon.ding@rock-chips.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	David Petry <petry103@gmail.com>,
+	=?UTF-8?q?Valentin=20H=C4=83loiu?= <valentin.haloiu@gmail.com>,
+	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	heiko@sntech.de,
-	neil.armstrong@linaro.org,
-	lee@kernel.org,
-	rafael@kernel.org,
-	efectn@protonmail.com,
-	daniel.lezcano@linaro.org
-Subject: [PATCH v3 4/5] thermal: khadas_mcu_fan: add support for Khadas Edge 2
-Date: Tue, 21 Oct 2025 17:22:44 +0200
-Message-ID: <68fbedccd22459c3fb5bff8a41c485075799a111.1761059314.git.efectn@protonmail.com>
-X-Mailer: git-send-email 2.51.1.dirty
-In-Reply-To: <cover.1761059314.git.efectn@protonmail.com>
-References: <cover.1761059314.git.efectn@protonmail.com>
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v2] arm64: dts: rockchip: Enable second HDMI output on CM3588
+Date: Tue, 21 Oct 2025 18:06:02 +0200
+Message-ID: <20251021160603.96934-1-petry103@gmail.com>
+X-Mailer: git-send-email 2.47.3
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251021_082314_452661_2ACFA997 
-X-CRM114-Status: GOOD (  15.15  )
+X-CRM114-CacheID: sfid-20251021_090615_652918_6A32B5DC 
+X-CRM114-Status: GOOD (  11.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,83 +106,85 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Muhammed Efe Cetin <efectn@protonmail.com>
+Enable the second HDMI output port found on FriendlyElec CM3588 and CM3588 Plus
 
-Fan control on the Khadas Edge 2 is controlled with the 0x8A register,
-using percentage values from 0 to 100, whereas there are only 3 constant
-steps in previous Khadas boards. Therefore, i adjusted max_level and
-fan_ctrl_reg when the mcu node is defined with khadas,mcu-edge2 compatible.
-
-Signed-off-by: Muhammed Efe Cetin <efectn@protonmail.com>
+Signed-off-by: David Petry <petry103@gmail.com>
 ---
- drivers/thermal/khadas_mcu_fan.c | 20 ++++++++++++++++----
- 1 file changed, 16 insertions(+), 4 deletions(-)
+Changes in v2:
+ - Fixed commit message according to feedback from Heiko Stuebner
+---
+ .../rk3588-friendlyelec-cm3588-nas.dts        | 38 +++++++++++++++++++
+ 1 file changed, 38 insertions(+)
 
-diff --git a/drivers/thermal/khadas_mcu_fan.c b/drivers/thermal/khadas_mcu_fan.c
-index d35e5313bea41..e3ac4fb6d1f82 100644
---- a/drivers/thermal/khadas_mcu_fan.c
-+++ b/drivers/thermal/khadas_mcu_fan.c
-@@ -15,10 +15,13 @@
- #include <linux/thermal.h>
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-friendlyelec-cm3588-nas.dts b/arch/arm64/boot/dts/rockchip/rk3588-friendlyelec-cm3588-nas.dts
+index 5fbbeb6f5a935..10a7d3691a26f 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-friendlyelec-cm3588-nas.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-friendlyelec-cm3588-nas.dts
+@@ -101,6 +101,17 @@ hdmi0_con_in: endpoint {
+ 		};
+ 	};
  
- #define MAX_LEVEL 3
-+#define MAX_LEVEL_EDGE2 100
- 
- struct khadas_mcu_fan_ctx {
- 	struct khadas_mcu *mcu;
- 	unsigned int level;
-+	unsigned int max_level;
-+	unsigned int fan_ctrl_reg;
- 	struct thermal_cooling_device *cdev;
++	hdmi1-con {
++		compatible = "hdmi-connector";
++		type = "a";
++
++		port {
++			hdmi1_con_in: endpoint {
++				remote-endpoint = <&hdmi1_out_con>;
++			};
++		};
++	};
++
+ 	ir-receiver {
+ 		compatible = "gpio-ir-receiver";
+ 		gpios = <&gpio0 RK_PD4 GPIO_ACTIVE_LOW>;
+@@ -335,6 +346,22 @@ hdmi0_out_con: endpoint {
+ 	};
  };
  
-@@ -26,8 +29,7 @@ static int khadas_mcu_fan_set_level(struct khadas_mcu_fan_ctx *ctx,
- 				    unsigned int level)
- {
- 	int ret;
--
--	ret = regmap_write(ctx->mcu->regmap, KHADAS_MCU_CMD_FAN_STATUS_CTRL_REG,
-+	ret = regmap_write(ctx->mcu->regmap, ctx->fan_ctrl_reg,
- 			   level);
- 	if (ret)
- 		return ret;
-@@ -40,7 +42,9 @@ static int khadas_mcu_fan_set_level(struct khadas_mcu_fan_ctx *ctx,
- static int khadas_mcu_fan_get_max_state(struct thermal_cooling_device *cdev,
- 					unsigned long *state)
- {
--	*state = MAX_LEVEL;
-+	struct khadas_mcu_fan_ctx *ctx = cdev->devdata;
++&hdmi1 {
++	status = "okay";
++};
 +
-+	*state = ctx->max_level;
- 
- 	return 0;
- }
-@@ -61,7 +65,7 @@ khadas_mcu_fan_set_cur_state(struct thermal_cooling_device *cdev,
- {
- 	struct khadas_mcu_fan_ctx *ctx = cdev->devdata;
- 
--	if (state > MAX_LEVEL)
-+	if (state > ctx->max_level)
- 		return -EINVAL;
- 
- 	if (state == ctx->level)
-@@ -88,6 +92,14 @@ static int khadas_mcu_fan_probe(struct platform_device *pdev)
- 	if (!ctx)
- 		return -ENOMEM;
- 	ctx->mcu = mcu;
-+	ctx->max_level = MAX_LEVEL;
-+	ctx->fan_ctrl_reg = KHADAS_MCU_CMD_FAN_STATUS_CTRL_REG;
++&hdmi1_in {
++	hdmi1_in_vp1: endpoint {
++		remote-endpoint = <&vp1_out_hdmi1>;
++	};
++};
 +
-+	if (of_device_is_compatible(mcu->dev->of_node, "khadas,mcu-edge2")) {
-+		ctx->fan_ctrl_reg = KHADAS_MCU_EDGE2_FAN_CTRL_REG;
-+		ctx->max_level = MAX_LEVEL_EDGE2;
-+	}
++&hdmi1_out {
++	hdmi1_out_con: endpoint {
++		remote-endpoint = <&hdmi1_con_in>;
++	};
++};
 +
- 	platform_set_drvdata(pdev, ctx);
+ &hdmi_receiver_cma {
+ 	status = "okay";
+ };
+@@ -350,6 +377,10 @@ &hdptxphy0 {
+ 	status = "okay";
+ };
  
- 	cdev = devm_thermal_of_cooling_device_register(dev->parent,
++&hdptxphy1 {
++	status = "okay";
++};
++
+ /* Connected to MIPI-DSI0 */
+ &i2c5 {
+ 	pinctrl-names = "default";
+@@ -840,3 +871,10 @@ vp0_out_hdmi0: endpoint@ROCKCHIP_VOP2_EP_HDMI0 {
+ 		remote-endpoint = <&hdmi0_in_vp0>;
+ 	};
+ };
++
++&vp1 {
++	vp1_out_hdmi1: endpoint@ROCKCHIP_VOP2_EP_HDMI1 {
++		reg = <ROCKCHIP_VOP2_EP_HDMI1>;
++		remote-endpoint = <&hdmi1_in_vp1>;
++	};
++};
 -- 
-2.51.1.dirty
+2.47.3
 
 
 _______________________________________________
