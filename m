@@ -4,84 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FF4BCCD1A5
-	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Oct 2025 10:19:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 051FDCCD1A5
+	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Oct 2025 10:32:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:From:Subject:
+	Cc:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rBfsWxh7iW6dIbxfTLH0dN0tIe0qGUJY81Uj2ZHchuo=; b=aw3QxFXf3fXHim
-	05kaFmpoJUdBEec3YbPTJWV0orNfGA76O6uT/9wefM6D4yQwlDImD99NeeD9dZSNz2Y7Vq+fBKe66
-	IvveXKJx+qjUD1vnVWsP3N4TP/wrdRwhIxyhaUbD2xN0oLPTzyiivxebZaSHoyz2xI+5pDdpwPJN9
-	30mmlSe9nSjNJRwM5977NOt2qyOIufJA++rcOk60fWWhd8ODfnLidVQMgSYDIj53jM+ytCYLyP6Ve
-	f8NpY/PP6FxqvH0CSKxu1ANmIIijBTuRczmJrJ1abMz4aboD/ZENshu6dq4q0com2R6ahlu9k7r1M
-	49v5qAOAIeodB0reCmwA==;
+	List-Owner; bh=shPaVjWUKGImv56L7Q1KWnknNWwveGRFZh9c53ssirQ=; b=SE3TmvDTAbiR7W
+	8vjT7nWYthjHajvJjgoqvKhDClDJ0On7wYJMPvecdUV60BZ2HaCUTOkatnEnWjwze6MwwtzgOqgJ0
+	gQYAFGn/i6fdx567Gu8S4L51Zf+8jTYi9QZNeUmDt23QaFBk2RBVxU4UjXRMGkzKkrwrn45X8boix
+	NHH284YsElT53XEC8spGPL8uHEl6Eoj6UuNqldh30q48fldrvE4IElmhZfPmcMbKNCsBfzzomThxS
+	do8LYanefZKlc0BE5aLt+abTKnBS9ua9wEThbZpcm3RMJD8+bf28dRDnOfbHSCalxCW7aph/ZmMAv
+	Whe4AWt5OQkOJrRMmTqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vB9T2-0000000GbCf-1AT0;
-	Tue, 21 Oct 2025 10:19:48 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1vB9et-0000000GdPO-3amX;
+	Tue, 21 Oct 2025 10:32:03 +0000
+Received: from smtpout-04.galae.net ([185.171.202.116])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vB9Sz-0000000Gb7c-3I76;
-	Tue, 21 Oct 2025 10:19:46 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=HrnPQ0Rlpx72jXDSZpvkPNp/2H4jZn3M087QskaFqvA=; b=an8aYmt9ymLINtIW/qh1yeZHCa
-	EXkj1qV7rx606IQp1IXg4H5dVvbgV3d968p5IjCE+D5EQK1byW7AAL8rEIdE267zZzycFecNaGbLW
-	KKbleVrjohGUQpWq/nTValT+4Xvzm77UtMTRJ7B39iEwuq2LEEdiAD9O3zjg14gdQCS4aSUm33UQu
-	EuHhaPk0Xbg+E+8S25zuCvIAg56tXd0pnXlhjpVgcj3VFB0Xxn7AO2oWlXj3bhK/SCDlTnEKD6Z54
-	MZPtPxgIBjZ2helZUAWj8gbA+EWOh2NdGfV7A6r8f8cyiyHGHuGrKzUms4e2l8He2ZehuB00/Lcq9
-	sPFdR1Pw==;
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vB8bD-00000000fae-2Q8F;
-	Tue, 21 Oct 2025 09:24:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1761041970;
-	bh=2cSPcRcetu19nIiABMe7i4sAQC6sGYCknXIE9y1yPg4=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=I/vScD0RgKo6qV+1u18CpreOi5kY6DYeVZmAm5GSw7erjg8HIAw27q8SScgniCurG
-	 Eb2LIyztM/Sum8WHvABFjs90vI2qFlVW+K3+sef2yCYxkm4+bu6yR3YHmZ5TOh3ZJp
-	 he8N1EK3q+mt6j0vZCR/rb2eAF1hkG87JjYVDyeEjDkxBc8ZTEXzSm0IjzgqhfjTZI
-	 pW8tQXPYkAwi5RQ2iRcmgs+4wn9L55Apai/F9IoMb8wAOoZiEHo0DBaqQ2mt2sruf5
-	 r4OEMlF2D007Kfa2ANTUYDChuUCcQcZWLzIl7nnq0LvTVhIGFMFB1GL+cc7jS2GAfu
-	 WsSF/97ewgWWQ==
-Received: from localhost (unknown [82.79.138.145])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with UTF8SMTPSA id DC98117E13A5;
-	Tue, 21 Oct 2025 12:19:29 +0200 (CEST)
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Tue, 21 Oct 2025 13:19:15 +0300
-Subject: [PATCH v3 2/5] drm/bridge: dw-hdmi-qp: Handle platform supported
- formats and color depth
-MIME-Version: 1.0
-Message-Id: <20251021-rk3588-10bpc-v3-2-3d3eed00a6db@collabora.com>
-References: <20251021-rk3588-10bpc-v3-0-3d3eed00a6db@collabora.com>
-In-Reply-To: <20251021-rk3588-10bpc-v3-0-3d3eed00a6db@collabora.com>
-To: Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Andy Yan <andy.yan@rock-chips.com>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Andrzej Hajda <andrzej.hajda@intel.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>
-Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, Daniel Stone <daniels@collabora.com>
-X-Mailer: b4 0.14.3
+	id 1vB9eq-0000000GdMV-3EGl;
+	Tue, 21 Oct 2025 10:32:03 +0000
+Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
+	by smtpout-04.galae.net (Postfix) with ESMTPS id DBB56C0B88C;
+	Tue, 21 Oct 2025 10:31:34 +0000 (UTC)
+Received: from mail.galae.net (mail.galae.net [212.83.136.155])
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 6FBD860680;
+	Tue, 21 Oct 2025 10:31:54 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 050A6102F238A;
+	Tue, 21 Oct 2025 12:31:15 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
+	t=1761042712; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:in-reply-to:references;
+	bh=YuVVLdxM0un/2EVnLCzvPprS2wmsm9jt4ri10VpX44E=;
+	b=UAKVwMh67iPoBl4NTClw0ksLV00XODy/DIHEJ+Abr2eO5IqpQcehz/93nuSEIk1KNn1Bmg
+	alRZgs0hHh6R//b9Djv11rXnVg0M3E+zSIsxC47sYWAJyGtBqcFsIVJo+s20tNSMGbhOor
+	eyrx4hjsFi7ZY638H2w5XkfJ2MlT/Z227QFyUd5rEkIdAeesvlToC3vmxcoH4ehhF9PII8
+	zbM6HzvGFQmw1YC877GgY3McN5LwDhQmATKGTMlq8UENwmFokLOU0KtyQWXnW3mlO7fJAu
+	j9PCgp7hTfzSMz4K/v7Wh0IGkXn6qFI19aHgSoubt+UeSXbN8tO7oymiMdGsUQ==
+Mime-Version: 1.0
+Date: Tue, 21 Oct 2025 12:31:11 +0200
+Message-Id: <DDNXIYL494D2.2N8L1J7XTBT4S@bootlin.com>
+Cc: <Laurent.pinchart@ideasonboard.com>, <jonas@kwiboo.se>,
+ <jernej.skrabec@gmail.com>, <maarten.lankhorst@linux.intel.com>,
+ <mripard@kernel.org>, <tzimmermann@suse.de>, <airlied@gmail.com>,
+ <simona@ffwll.ch>, <shawnguo@kernel.org>, <s.hauer@pengutronix.de>,
+ <kernel@pengutronix.de>, <festevam@gmail.com>, <inki.dae@samsung.com>,
+ <sw0312.kim@samsung.com>, <kyungmin.park@samsung.com>, <krzk@kernel.org>,
+ <alim.akhtar@samsung.com>, <jingoohan1@gmail.com>,
+ <p.zabel@pengutronix.de>, <hjc@rock-chips.com>, <heiko@sntech.de>,
+ <andy.yan@rock-chips.com>, <dmitry.baryshkov@oss.qualcomm.com>,
+ <dianders@chromium.org>, <m.szyprowski@samsung.com>,
+ <jani.nikula@intel.com>, <linux-kernel@vger.kernel.org>,
+ <dri-devel@lists.freedesktop.org>, <imx@lists.linux.dev>,
+ <linux-arm-kernel@lists.infradead.org>,
+ <linux-samsung-soc@vger.kernel.org>, <linux-rockchip@lists.infradead.org>
+Subject: Re: [PATCH v7 01/18] drm/display: bridge_connector: Ensure last
+ bridge determines EDID/modes detection capabilities
+From: "Luca Ceresoli" <luca.ceresoli@bootlin.com>
+To: "Damon Ding" <damon.ding@rock-chips.com>, <andrzej.hajda@intel.com>,
+ <neil.armstrong@linaro.org>, <rfoss@kernel.org>
+X-Mailer: aerc 0.20.1
+References: <20251021023130.1523707-1-damon.ding@rock-chips.com>
+ <20251021023130.1523707-2-damon.ding@rock-chips.com>
+In-Reply-To: <20251021023130.1523707-2-damon.ding@rock-chips.com>
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251021_102413_357743_EE329F58 
-X-CRM114-Status: GOOD (  12.69  )
+X-CRM114-CacheID: sfid-20251021_033200_985928_91A88F13 
+X-CRM114-Status: GOOD (  22.46  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,68 +89,93 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Extend struct dw_hdmi_qp_plat_data to include the supported display
-output formats and maximum bits per color channel.  When provided by the
-platform driver, use them to setup the HDMI bridge accordingly.
+Hello Damon,
 
-Additionally, improve debug logging in dw_hdmi_qp_bridge_atomic_enable()
-to also show the current HDMI output format and bpc.
+On Tue Oct 21, 2025 at 4:31 AM CEST, Damon Ding wrote:
+> When multiple bridges are present, EDID detection capability
+> (DRM_BRIDGE_OP_EDID) takes precedence over modes detection
+> (DRM_BRIDGE_OP_MODES). To ensure the above two capabilities are
+> determined by the last bridge in the chain, we handle three cases:
+>
+> Case 1: The later bridge declares only DRM_BRIDGE_OP_MODES
+>  - If the previous bridge declares DRM_BRIDGE_OP_EDID, set
+>    &drm_bridge_connector.bridge_edid to NULL and set
+>    &drm_bridge_connector.bridge_modes to the later bridge.
+>  - Ensure modes detection capability of the later bridge will not
+>    be ignored.
+>
+> Case 2: The later bridge declares only DRM_BRIDGE_OP_EDID
+>  - If the previous bridge declares DRM_BRIDGE_OP_MODES, set
+>    &drm_bridge_connector.bridge_modes to NULL and set
+>    &drm_bridge_connector.bridge_edid to the later bridge.
+>  - Although EDID detection capability has higher priority, this
+>    operation is for balance and makes sense.
+>
+> Case 3: the later bridge declares both of them
+>  - Assign later bridge as &drm_bridge_connector.bridge_edid and
+>    and &drm_bridge_connector.bridge_modes to this bridge.
+>  - Just leave transfer of these two capabilities as before.
+>
+> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
+> Suggested-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+> Tested-by: Marek Szyprowski <m.szyprowski@samsung.com>
+>
+> ---
+>
+> Changes in v7:
+> - As Luca suggested, simplify the code and related comment.
+> ---
+>  drivers/gpu/drm/display/drm_bridge_connector.c | 16 ++++++++++++----
+>  1 file changed, 12 insertions(+), 4 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/display/drm_bridge_connector.c b/drivers/gpu/drm/display/drm_bridge_connector.c
+> index baacd21e7341..7c2936d59517 100644
+> --- a/drivers/gpu/drm/display/drm_bridge_connector.c
+> +++ b/drivers/gpu/drm/display/drm_bridge_connector.c
+> @@ -673,14 +673,22 @@ struct drm_connector *drm_bridge_connector_init(struct drm_device *drm,
+>  		if (!bridge->ycbcr_420_allowed)
+>  			connector->ycbcr_420_allowed = false;
+>
+> -		if (bridge->ops & DRM_BRIDGE_OP_EDID)
+> -			bridge_connector->bridge_edid = bridge;
+> +		/*
+> +		 * Ensure the last bridge declares OP_EDID or OP_MODES or both.
+> +		 */
+> +		if (bridge->ops & DRM_BRIDGE_OP_EDID || bridge->ops & DRM_BRIDGE_OP_MODES) {
+> +			bridge_connector->bridge_edid = NULL;
+> +			bridge_connector->bridge_modes = NULL;
+> +			if (bridge->ops & DRM_BRIDGE_OP_EDID)
+> +				bridge_connector->bridge_edid = bridge;
+> +			if (bridge->ops & DRM_BRIDGE_OP_MODES)
+> +				bridge_connector->bridge_modes = bridge;
+> +		}
+>  		if (bridge->ops & DRM_BRIDGE_OP_HPD)
+>  			bridge_connector->bridge_hpd = bridge;
+>  		if (bridge->ops & DRM_BRIDGE_OP_DETECT)
+>  			bridge_connector->bridge_detect = bridge;
+> -		if (bridge->ops & DRM_BRIDGE_OP_MODES)
+> -			bridge_connector->bridge_modes = bridge;
+> +
 
-Acked-by: Daniel Stone <daniels@collabora.com>
-Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
----
- drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c | 11 +++++++++--
- include/drm/bridge/dw_hdmi_qp.h              |  4 ++++
- 2 files changed, 13 insertions(+), 2 deletions(-)
+This does not apply on current drm-misc-next, due to the patch I mentioned
+in a previous iteration, now applied as commit 2be300f9a0b6 ("drm/display:
+bridge_connector: get/put the stored bridges").
 
-diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-index 4ba7b339eff6..fe4c026280f0 100644
---- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-+++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-@@ -868,8 +868,9 @@ static void dw_hdmi_qp_bridge_atomic_enable(struct drm_bridge *bridge,
- 		return;
- 
- 	if (connector->display_info.is_hdmi) {
--		dev_dbg(hdmi->dev, "%s mode=HDMI rate=%llu\n",
--			__func__, conn_state->hdmi.tmds_char_rate);
-+		dev_dbg(hdmi->dev, "%s mode=HDMI %s rate=%llu bpc=%u\n", __func__,
-+			drm_hdmi_connector_get_output_format_name(conn_state->hdmi.output_format),
-+			conn_state->hdmi.tmds_char_rate, conn_state->hdmi.output_bpc);
- 		op_mode = 0;
- 		hdmi->tmds_char_rate = conn_state->hdmi.tmds_char_rate;
- 	} else {
-@@ -1287,6 +1288,12 @@ struct dw_hdmi_qp *dw_hdmi_qp_bind(struct platform_device *pdev,
- 	hdmi->bridge.vendor = "Synopsys";
- 	hdmi->bridge.product = "DW HDMI QP TX";
- 
-+	if (plat_data->supported_formats)
-+		hdmi->bridge.supported_formats = plat_data->supported_formats;
-+
-+	if (plat_data->max_bpc)
-+		hdmi->bridge.max_bpc = plat_data->max_bpc;
-+
- 	hdmi->bridge.ddc = dw_hdmi_qp_i2c_adapter(hdmi);
- 	if (IS_ERR(hdmi->bridge.ddc))
- 		return ERR_CAST(hdmi->bridge.ddc);
-diff --git a/include/drm/bridge/dw_hdmi_qp.h b/include/drm/bridge/dw_hdmi_qp.h
-index 76ecf3130199..3f461f6b9bbf 100644
---- a/include/drm/bridge/dw_hdmi_qp.h
-+++ b/include/drm/bridge/dw_hdmi_qp.h
-@@ -25,6 +25,10 @@ struct dw_hdmi_qp_plat_data {
- 	int main_irq;
- 	int cec_irq;
- 	unsigned long ref_clk_rate;
-+	/* Supported output formats: bitmask of @hdmi_colorspace */
-+	unsigned int supported_formats;
-+	/* Maximum bits per color channel: 8, 10 or 12 */
-+	unsigned int max_bpc;
- };
- 
- struct dw_hdmi_qp *dw_hdmi_qp_bind(struct platform_device *pdev,
+However I'm sorry I have to mention that patch turned out being buggy, so
+I've sent a series to apply a corrected version [0]. I suggest watching the
+disucssion about the fix series, and if that gets approved rebase on top of
+that and adapt your changes.
 
--- 
-2.51.0
+Sorry about the mess. :(
 
+[0] https://lore.kernel.org/r/20251017-drm-bridge-alloc-getput-bridge-connector-fix-hdmi_cec-v2-0-667abf6d47c0@bootlin.com
+
+Luca
+
+--
+Luca Ceresoli, Bootlin
+Embedded Linux and Kernel engineering
+https://bootlin.com
 
 _______________________________________________
 Linux-rockchip mailing list
