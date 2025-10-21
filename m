@@ -4,78 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9E1BCCD184
-	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Oct 2025 09:44:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52EBCCCD184
+	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Oct 2025 10:13:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PZu5onZ25WOmUAeHfiXM2I4YjaS6MMGcNjYfR7f1gq0=; b=pFvaPgBgicGusq
-	3GjmTS7bTcnxC0VCiZ0DCr/DwYhKixDhpBCzXPSVqMU3GW7nYtEX0nusomSKB1AwmO+quG3vyMJxl
-	v9b6EIlgHZYOiVSxHpTrEYbkDIPOgPrVe6q64yc4ZE8YZ+JZ41qJDqrT+m09i9e5hYo324K7olIza
-	jpbuTTjp/aspcakVbE/okTMvKytbHejUja1+iXipB2cTMANI/VwN14f8t1xOUZkO+z2WwU30mUMms
-	EWyB8F5ZahVGD/U0onVqjlMel02psPJm2VCC2nKcc0OKi43YVWvr+9Sk2WbiHKYj/EbBQQ1PbRnf+
-	TH/XO00xYXvqOEog3dpw==;
+	List-Unsubscribe:List-Id:Cc:To:Subject:From:MIME-Version:Date:Message-ID:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=B8DdEJrNxtIbP2DdqcwDHo+9wiRyJxQOtxrzFTBdTT4=; b=FjOkMb5DFBo/C1qnwrcr6C2eC6
+	W5AlQxbEwWJ/yikQ5NifA78s/M2+eO31ALnaaJju6wfxGL05+h46nCKS6TlC2n0nvqbeFZN0d0GGn
+	l/+793618/K1FxOVxGEu+d1EwBwEETZVu1ZXpWgsqhxKT5g2LvV7LHF1A5NCZ0h2uvqEX0VZpDo09
+	iN2loVfh/jcD5gAzYXXze5zpg45vNbSt73TJbFW17t0ZiyMYWFoFKh1j7BI5OaACzaSFys/LQNCqq
+	XrjqEPMpHx3yhYIJIMn2RJN1UhoIAnYNKP1JvDQ8Fko96h9lgNuuI/ic8Aj4JOhcFRJ2I7hlBg39R
+	xY7l7gkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vB8um-0000000GUqC-2dED;
-	Tue, 21 Oct 2025 09:44:24 +0000
-Received: from mail-m19731106.qiye.163.com ([220.197.31.106])
+	id 1vB9MZ-0000000Ga7R-2jn5;
+	Tue, 21 Oct 2025 10:13:07 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vB8uj-0000000GUoN-13KX;
-	Tue, 21 Oct 2025 09:44:23 +0000
-Received: from [172.16.12.149] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 26a698a5f;
-	Tue, 21 Oct 2025 17:44:12 +0800 (GMT+08:00)
-Message-ID: <1221dd6c-2035-4e5d-8052-341da279fe81@rock-chips.com>
-Date: Tue, 21 Oct 2025 17:44:11 +0800
+	id 1vB9MX-0000000Ga6s-1kys
+	for linux-rockchip@bombadil.infradead.org;
+	Tue, 21 Oct 2025 10:13:05 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:Cc:To:Subject:From:MIME-Version:Date:Message-ID:Sender:Reply-To:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=GfpnGAo5QsEjieIvsYJY0ub+masQtUoHIYSZP2L8o+w=; b=YmGPaXq3eGK7JbhDlaGbvuNzbY
+	ZlxOsiWVfYU4oyArmtRpZBC8He2S4oDmbceD4KCcGjG3R2tgUcYdwCPxavewJ2Vt1qGhxE3Zz54Vs
+	nAXO74qVZcKWlVLtJEYayklpFUl31ikczXjjr/7z4lYXxQTbAXGCd93hwdyjznUd/r8zzAfTZfp4F
+	+2oSKgLnNpADapiaJhzkoMy9R4Cj/ySvxljuWhi69MeULp55D539skeaMTwnYWCeeuc6Zi91OFfrI
+	6N4QgQgGIupEJhBIUZ6HC+SQsud85c9lR2JWuJArAFD2xQ6BAgms0bMnLU4wptWtmjTvDHSHIRPef
+	njPSxTQQ==;
+Received: from bg4.exmail.qq.com ([43.154.54.12])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vB8US-00000000fD9-0iUH
+	for linux-rockchip@lists.infradead.org;
+	Tue, 21 Oct 2025 09:17:31 +0000
+X-QQ-mid: zesmtpip2t1761041544t6e0ad998
+X-QQ-Originating-IP: KZt8UQ/l993XH8HuRDNma5R0zqC8lmd7GcqPAWOGRYA=
+Received: from [IPV6:240f:10b:7440:1:fbdd:6094 ( [localhost])
+	by bizesmtp.qq.com (ESMTP) with 
+	id ; Tue, 21 Oct 2025 18:12:21 +0800 (CST)
+X-QQ-SSF: 0000000000000000000000000000000
+X-QQ-GoodBg: 0
+X-BIZMAIL-ID: 5943898346792246940
+Message-ID: <7755D0222F97F8A4+6c855efa-561f-4fd9-aadd-a4de3d244c7e@radxa.com>
+Date: Tue, 21 Oct 2025 19:12:21 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 1/8] usb: typec: Add default HPD device when register
- DisplayPort altmode
-To: Heikki Krogerus <heikki.krogerus@linux.intel.com>
-Cc: Chaoyi Chen <kernel@airkyi.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
- Kishon Vijay Abraham I <kishon@kernel.org>, Heiko Stuebner
- <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>,
- Andy Yan <andy.yan@rock-chips.com>,
- Yubing Zhang <yubing.zhang@rock-chips.com>,
- Frank Wang <frank.wang@rock-chips.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Amit Sunil Dhamne <amitsd@google.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Dragan Simic <dsimic@manjaro.org>, Johan Jonker <jbx6244@gmail.com>,
- Diederik de Haas <didi.debian@cknow.org>,
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
- Peter Robinson <pbrobinson@gmail.com>, linux-usb@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
-References: <20251016022741.91-1-kernel@airkyi.com>
- <20251016022741.91-2-kernel@airkyi.com> <aPYImGmesrZWwyqh@kuha.fi.intel.com>
- <954a67d1-1759-4e18-8eef-3fa14fb3cef5@rock-chips.com>
- <aPdI7Vb_djrfCfbT@kuha.fi.intel.com>
 Content-Language: en-US
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-In-Reply-To: <aPdI7Vb_djrfCfbT@kuha.fi.intel.com>
-X-HM-Tid: 0a9a0627a3a903abkunm5cd7977fb8e2b1
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGUpDS1YaGRpIHUpDTBlKGU1WFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpOTE
-	9VSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=g6OhVZ/yiqpa03UuI1XX7K9vWZ8zWP3G2Gzz5rhk0AcJK/U+UJws7ashU78Y+//2Cp1XYy8iR5A+1sB1SdjmB78dMX58786reFgEn7dhTHoMucj84RbJ6zYHbg7CDu7vWXLe8oopZFd6uuDFaXjD2L3+MUHefnrApM/1yNbvoa0=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=qUewYvs5quWL8CZ5KUc8yRAa2rvIV3/2PN0yp7OZqoo=;
-	h=date:mime-version:subject:message-id:from;
+From: FUKAUMI Naoki <naoki@radxa.com>
+Subject: ROCK 5B/5B+ RTL8852BE probe failure on v6.18-rc
+To: linux-rockchip@lists.infradead.org
+Cc: linux-pci@vger.kernel.org
+X-QQ-SENDSIZE: 520
+Feedback-ID: zesmtpip:radxa.com:qybglogicsvrsz:qybglogicsvrsz4a-0
+X-QQ-XMAILINFO: OOCyznbq6KdUOlhtP0nrbpkbV8twnXANHbpDcjuiTn6Ywx7yypNCAIGM
+	mK26/ptNPW5SQSrDNC8WgqZFWvKIurIn+C0DdkmxCgmKegjU3dsy6pjSIFOj9BWUmPbyCl4
+	ZU3EVnGnsjEAvT8WP44uZoftepHbrPBzSyC/RR8i1BbdB73NDCLX4WC46tqpVaBFsu0vzxi
+	FJDOTBqB+m3avNDJUYUvI8Tv28R2LBFkDcpClfib1ku3qpiQeWy6dH+d0iWts/3IlDMesY+
+	lmxH6tkn52bi4vWu1zAWLvaVjGM7J2VpcX+pQjOFsMhe4usdm5NNrkgwHjyOAze6hFI1AuB
+	IMqpg1Btyqtw+LUBMIotR/1XcHVQsyOCKOC6VCcWn715Iu4FG0kQ9nc4nIktF9cMOzoae9j
+	ff07JHQo6MLV55iXwca9pqu/I7vexMOyaDXcrbEeLc/JB7fbdNX8AmSvWyb1xVUi+TqgzHM
+	7rEebrgZ4nmOznDXwT0ckTQ8UuC8KqhBh/VsKqF5gQ5LIas/E5dMWl7CegyJBk+MR+tHDzw
+	Ycjb5RLIemtc6DqwZfbzdpqY1kvGZ7nEcELg8Fe/GfxbQaHZwM7AGqbTKTPSelV6EU3KGgs
+	250UeqGJd+IxO6IENLz9U8wVAUalAkW04tuinRKEYFFnOtVJLtycxVJMXKeH96U5FE9LHDM
+	eOVMAW1WnRkorpy24QCb0F0i3DJtUyLkQLrR1ISBfaFPwpUR2RC8ei+RDOCWVHXJV7QcfGQ
+	4Sp5/ou2mAOHeXGGCMjS/I5R7fMViu1MZv3aTBkeJ3Bp2PJOOMfpn3QBx9UwnO0poFuW1Kb
+	vxuM2ojLNRJqQcOdh5EHJFHXMOBAZB2CDVPw9I9UpU2N9ApLc1ZlnwJinl0wliV0zYVqJOf
+	5/G9pShitdt8yQXllZyW3szLY1MgzeiIA6dqgcKG8Q3+PJOjSzEXUhAdeif8Wu7Nfq1RWlD
+	0/6f0ewsmdvubbUpiGg/EDqHKVfVEfvF/2fbwyyWXHfwPFcdVFFHJVxivgIhPqiYTiu9jo/
+	uMvT83Eg==
+X-QQ-XMRINFO: NyFYKkN4Ny6FSmKK/uo/jdU=
+X-QQ-SPAM: true
+X-QQ-RECHKSPAM: 3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251021_024421_821609_751BE74B 
-X-CRM114-Status: GOOD (  16.65  )
+X-CRM114-CacheID: sfid-20251021_101715_160814_ABDEDB59 
+X-CRM114-Status: UNSURE (   6.68  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,71 +100,41 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 10/21/2025 4:48 PM, Heikki Krogerus wrote:
+Hi,
 
-> Hi,
->
-> On Mon, Oct 20, 2025 at 07:07:46PM +0800, Chaoyi Chen wrote:
->> Hi Heikki,
->>
->> On 10/20/2025 6:02 PM, Heikki Krogerus wrote:
->>> On Thu, Oct 16, 2025 at 10:27:34AM +0800, Chaoyi Chen wrote:
->>>> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
->>>>
->>>> Add default DRM AUX HPD bridge device when register DisplayPort
->>>> altmode. That makes it redundant for each Type-C driver to implement
->>>> a similar registration process in embedded scenarios.
->>>>
->>>> Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
->>>> ---
->>>>
->>>> Changes in v6:
->>>> - Fix depend in Kconfig.
->>>>
->>>> Changes in v5:
->>>> - Remove the calls related to `drm_aux_hpd_bridge_notify()`.
->>>> - Place the helper functions in the same compilation unit.
->>>> - Add more comments about parent device.
->>>>
->>>>    drivers/usb/typec/Kconfig         |  2 ++
->>>>    drivers/usb/typec/class.c         | 26 ++++++++++++++++++++++++++
->>>>    include/linux/usb/typec_altmode.h |  2 ++
->>>>    3 files changed, 30 insertions(+)
->>>>
->>>> diff --git a/drivers/usb/typec/Kconfig b/drivers/usb/typec/Kconfig
->>>> index 2f80c2792dbd..a6730fbb576b 100644
->>>> --- a/drivers/usb/typec/Kconfig
->>>> +++ b/drivers/usb/typec/Kconfig
->>>> @@ -2,6 +2,8 @@
->>>>    menuconfig TYPEC
->>>>    	tristate "USB Type-C Support"
->>>> +	depends on DRM || DRM=n
->>>> +	select DRM_AUX_HPD_BRIDGE if DRM_BRIDGE && OF
->>> This is wrong. DRM should not dictate how this entire subsystem core
->>> is configured. The dependency needs to be on the DRM bridge side.
->>>
->>> You can for example use the bus notification there to see when a new
->>> alternate mode is being registered, or use some other notification
->>> mechanism.
->> Is it a good idea to implement notification functions like
->> drivers/usb/core/notify.c in TCPM, and then let other subsystems (such as DRM)
->> listen to these notifications?
-> Don't limit this to tcpm only. I would suggest something similar what
-> we have for usb bus: drivers/usb/core/notify.c
->
-> So that, but for the typec bus. Then in DRM bridge code you just use
-> typec_register/unregister_notify().
+I've observed an issue where the RTL8852BE fails to probe on the ROCK 5B 
+and ROCK 5B+ using Linux v6.18-rc.
 
-I will try to add drivers/usb/typec/notify.c in v7 to implement this. Thank you.
+[    7.719288] rtw89_8852be 0002:21:00.0: loaded firmware 
+rtw89/rtw8852b_fw-1.bin
+[    7.720192] rtw89_8852be 0002:21:00.0: enabling device (0000 -> 0003)
+[    7.728596] rtw89_8852be 0002:21:00.0: Firmware version 0.29.29.5 
+(da87cccd), cmd version 0, type 5
+[    7.729407] rtw89_8852be 0002:21:00.0: Firmware version 0.29.29.5 
+(da87cccd), cmd version 0, type 3
+[   11.420623] rtw89_8852be 0002:21:00.0: failed to dump efuse physical map
+[   11.422859] rtw89_8852be 0002:21:00.0: failed to setup chip information
+[   11.425273] rtw89_8852be 0002:21:00.0: probe with driver rtw89_8852be 
+failed with error -16
 
+This issue does not reproduce on v6.16. The issue does not reproduce 
+with the MT7921E or the AX210. Furthermore, the issue does not reproduce 
+on the ROCK 5A or the ROCK 5 ITX+.
 
->
-> thanks,
->
+The issue appears not to reproduce in or prior to commit 14bed9bc81ba. 
+The issue reproduces, albeit with a low incidence rate, after commit 
+bf76f23aa1c1. It reproduces, but not 100%, on v6.17, and is likely 100% 
+reproducible on v6.18-rc.
+
+The dmesg output and the result of lspci -vv when the issue occurs can 
+be found below:
+  https://gist.github.com/RadxaNaoki/bf57b6d3d88c1e4310a23247e7bac9de
+
+What should I investigate next?
+
 -- 
-Best,
-Chaoyi
-
+FUKAUMI Naoki
+Radxa Computer (Shenzhen) Co., Ltd.
 
 _______________________________________________
 Linux-rockchip mailing list
