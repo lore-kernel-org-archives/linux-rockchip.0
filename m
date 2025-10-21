@@ -4,87 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D510ECCD19F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Oct 2025 02:32:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D6F2CCD1A7
+	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Oct 2025 02:32:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=lXnX/N7Rb4Kq+3+hjmoo7M4b8wQcwcvSC8vNv7YwuYk=; b=pCr4R9QSI2LnQT
-	k6V3Q/7Dm2bza7GYwQDoeFCCQ4b1DlbTs5SmyfhBLhZXG5QUG+iSvtPx+kh73vHNDU2d6NoykNAmK
-	rFtmYeWCETSm88fn7ahV6/LB35orh2AWkpHTRegkeY+SqK2yWZqf9OF2gQ32ZJLP2Ic4FVy4LN1lK
-	+xmMtfjnl0X/d+MB+VEe5RDxdfCynuC5JETNT0eDiFhm4+dqL2UL+pFHcNGdiamjcGKV33auyA/47
-	3KQtnYHbiWrNXLUZC5DX3KU6m/jBqMn5beEmfUeXxGOYSunmSVJbdF31v6UE/CKWxnZicK1+l3xI1
-	F3Gmwu1Ye3OojVyre3Dg==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=giz6WSEM+dx9zpWeRlDAC3l0isfEcD3C0uOEBY7q5R0=; b=y7wicve8Wc/neb
+	mHxu2HSZgDuJ9Ubz7ltwuCPpFRd4DtzpHYAuXFb+o73XoDHKYdJg1bIyv3L7AeGhzcEywPhixxUU0
+	CtjitNPhWh5uH1Q4JULEJ4F6mys3Q7hWXBP33BFWntMx9uXSVFgpPJpAjbQu8m1GllW5524y+NS61
+	Qtk+gIprHE2/YPiFOvWyXgYkbb7Fos1ANhgxWLj8g4MEwOYWCZhHFehgoiqBxZClGIawI5Zkk0peu
+	y2OP8E243V8W8T890IhyO9T3PUa/NoTnb/+aZEgTQ918ixz2/hdUfXObHpCogGJzxskmBWgt/1Xk5
+	6gDV6yOcP0TSlDdiU56Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vB2AM-0000000Fa4z-0Dl9;
-	Tue, 21 Oct 2025 02:32:02 +0000
-Received: from mail-m49242.qiye.163.com ([45.254.49.242])
+	id 1vB2Ab-0000000FaAS-27GE;
+	Tue, 21 Oct 2025 02:32:17 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vB2AI-0000000Fa38-1YPc;
-	Tue, 21 Oct 2025 02:32:00 +0000
-Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 26966e4e4;
-	Tue, 21 Oct 2025 10:31:45 +0800 (GMT+08:00)
-From: Damon Ding <damon.ding@rock-chips.com>
-To: andrzej.hajda@intel.com,
-	neil.armstrong@linaro.org,
-	rfoss@kernel.org
-Cc: Laurent.pinchart@ideasonboard.com,
-	jonas@kwiboo.se,
-	jernej.skrabec@gmail.com,
-	maarten.lankhorst@linux.intel.com,
-	mripard@kernel.org,
-	tzimmermann@suse.de,
-	airlied@gmail.com,
-	simona@ffwll.ch,
-	shawnguo@kernel.org,
-	s.hauer@pengutronix.de,
-	kernel@pengutronix.de,
-	festevam@gmail.com,
-	inki.dae@samsung.com,
-	sw0312.kim@samsung.com,
-	kyungmin.park@samsung.com,
-	krzk@kernel.org,
-	alim.akhtar@samsung.com,
-	jingoohan1@gmail.com,
-	p.zabel@pengutronix.de,
-	hjc@rock-chips.com,
-	heiko@sntech.de,
-	andy.yan@rock-chips.com,
-	dmitry.baryshkov@oss.qualcomm.com,
-	dianders@chromium.org,
-	m.szyprowski@samsung.com,
-	luca.ceresoli@bootlin.com,
-	jani.nikula@intel.com,
-	linux-kernel@vger.kernel.org,
-	dri-devel@lists.freedesktop.org,
-	imx@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Damon Ding <damon.ding@rock-chips.com>
-Subject: [PATCH v7 00/18] Apply drm_bridge_connector and panel_bridge helper for the Analogix DP driver
-Date: Tue, 21 Oct 2025 10:31:12 +0800
-Message-Id: <20251021023130.1523707-1-damon.ding@rock-chips.com>
-X-Mailer: git-send-email 2.34.1
+	id 1vB2AX-0000000Fa7W-3z0g;
+	Tue, 21 Oct 2025 02:32:15 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 6B5E440966;
+	Tue, 21 Oct 2025 02:32:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E68ABC116C6;
+	Tue, 21 Oct 2025 02:32:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1761013933;
+	bh=8UAGN1YhXZIbc93snwY/CRtubSt6sDkHXFrJ7cAY2Ms=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=BHcnkSfVYUiNs1+laZL/oTzN3Hwxulz3SDXzmd39w+CmT5bYFjNvL3B2LlK9tR2EZ
+	 MsV+kFf0G0g34cY2gCGrybn3d+8LVj5mPlzQx65l6HFVpSX90tezuAsndIbl8dwdM/
+	 IIKkMsR6N2dMg011uJPL28VumrpkuIW5fMBZPytwtZrLDtraufFed0Xf55NANa26OJ
+	 OLhoySAkQjU6VOn+Ojr32RTbf4nUiTFyJ+SUYaQechFw9ycmSg9Iyn1bkx8nlbpYjx
+	 7l0l0rKtIRP7EIY2QMIhZwgN9s49EkHms8o4WL/BnTnrMl27ydTB3EENp18Fo/09Ro
+	 tIPFNNyq18iiw==
+Date: Tue, 21 Oct 2025 08:02:01 +0530
+From: Manivannan Sadhasivam <mani@kernel.org>
+To: Niklas Cassel <cassel@kernel.org>
+Cc: Bjorn Helgaas <helgaas@kernel.org>, 
+	Lorenzo Pieralisi <lpieralisi@kernel.org>, Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
+	Heiko Stuebner <heiko@sntech.de>, Shawn Lin <shawn.lin@rock-chips.com>, 
+	Kever Yang <kever.yang@rock-chips.com>, Simon Xue <xxm@rock-chips.com>, 
+	Damien Le Moal <dlemoal@kernel.org>, Dragan Simic <dsimic@manjaro.org>, 
+	FUKAUMI Naoki <naoki@radxa.com>, Diederik de Haas <diederik@cknow-tech.com>, 
+	stable@vger.kernel.org, Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>, 
+	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v3] PCI: dw-rockchip: Prevent advertising L1 Substates
+ support
+Message-ID: <aaug44bngs5amid7un4plotcjpbc6ym44cztnhet7z44ybywgc@apzhg6enhxgy>
+References: <20251017164558.GA1034609@bhelgaas>
+ <54FD6159-AE45-432B-8F0E-4654721D16A6@kernel.org>
 MIME-Version: 1.0
-X-HM-Tid: 0a9a049bb96503a3kunm42a8e83d59a061
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQ0IdGVZMH0tOHRofTU8dTklWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpKQk
-	1VSktLVUpCWQY+
-DKIM-Signature: a=rsa-sha256;
-	b=CnpRpl9fNYikwvmxsHLj6ua6I/hqLLJUEXpU65WZNnJXSmaY1m+U34y46qRJGQ70Q1gLgEoBvzXM0TIzbC87gqufOgVXsUKKFNkPTIgXY/rgJiVGBUUNOlVVZI5OA8Wb2LGqTrUXGoq1WjL9espkniEknj0d7TixNjz4vUioOP4=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=h2UBCcvP5reAyJrbhsaM6gHlBuq8fElDbwtCQt0bfGo=;
-	h=date:mime-version:subject:message-id:from;
+Content-Disposition: inline
+In-Reply-To: <54FD6159-AE45-432B-8F0E-4654721D16A6@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251020_193158_973867_FDB71176 
-X-CRM114-Status: GOOD (  18.20  )
+X-CRM114-CacheID: sfid-20251020_193214_008697_733FDE0C 
+X-CRM114-Status: GOOD (  15.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,157 +76,30 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-PATCH 1 is to ensure the last bridge declares OP_EDID or OP_MODES or both.
-PATCH 2 is a small format optimization for struct analogid_dp_device.
-PATCH 3 is to perform mode setting in &drm_bridge_funcs.atomic_enable.
-PATCH 4 is to add a new parameter to store the point of next bridge.
-PATCH 5 is to make legacy bridge driver more universal.
-PATCH 6-11 are preparations for apply drm_bridge_connector helper.
-PATCH 12 is to apply the drm_bridge_connector helper.
-PATCH 13-15 are to move the panel/bridge parsing to the Analogix side.
-PATCH 16 is to attach the next bridge on Analogix side uniformly.
-PATCH 17-18 are to apply the panel_bridge helper.
-
-The following reviewed commits, which to make codes more concise, are
-rebased to the front of this patch series:
-
-https://lore.kernel.org/all/20250911112756.4008435-1-damon.ding@rock-chips.com/
-https://lore.kernel.org/all/20250928104607.4007586-1-damon.ding@rock-chips.com/
-
-Damon Ding (18):
-  drm/display: bridge_connector: Ensure last bridge determines
-    EDID/modes detection capabilities
-  drm/bridge: analogix_dp: Formalize the struct analogix_dp_device
-  drm/bridge: analogix_dp: Move &drm_bridge_funcs.mode_set to
-    &drm_bridge_funcs.atomic_enable
-  drm/bridge: analogix_dp: Add &analogix_dp_plat_data.next_bridge
-  drm/bridge: Move legacy bridge driver out of imx directory for
-    multi-platform use
-  drm/exynos: exynos_dp: Remove &exynos_dp_device.ptn_bridge
-  drm/exynos: exynos_dp: Remove unused &exynos_dp_device.connector
-  drm/exynos: exynos_dp: Apply of-display-mode-bridge to parse the
-    display-timings node
-  drm/bridge: analogix_dp: Remove redundant
-    &analogix_dp_plat_data.skip_connector
-  drm/bridge: analogix_dp: Move the color format check to
-    .atomic_check() for Rockchip platforms
-  drm/bridge: analogix_dp: Remove unused
-    &analogix_dp_plat_data.get_modes()
-  drm/bridge: analogix_dp: Apply drm_bridge_connector helper
-  drm/bridge: analogix_dp: Add new API analogix_dp_finish_probe()
-  drm/rockchip: analogix_dp: Apply analogix_dp_finish_probe()
-  drm/exynos: exynos_dp: Apply analogix_dp_finish_probe()
-  drm/bridge: analogix_dp: Attach the next bridge in
-    analogix_dp_bridge_attach()
-  drm/bridge: analogix_dp: Remove bridge disabing and panel unpreparing
-    in analogix_dp_unbind()
-  drm/bridge: analogix_dp: Apply panel_bridge helper
-
- drivers/gpu/drm/bridge/Kconfig                |  10 +
- drivers/gpu/drm/bridge/Makefile               |   1 +
- drivers/gpu/drm/bridge/analogix/Kconfig       |   1 +
- .../drm/bridge/analogix/analogix_dp_core.c    | 395 +++++++++---------
- .../drm/bridge/analogix/analogix_dp_core.h    |   5 +-
- drivers/gpu/drm/bridge/imx/Kconfig            |  10 -
- drivers/gpu/drm/bridge/imx/Makefile           |   1 -
- .../gpu/drm/bridge/imx/imx-legacy-bridge.c    |  91 ----
- .../gpu/drm/bridge/of-display-mode-bridge.c   |  93 +++++
- .../gpu/drm/display/drm_bridge_connector.c    |  16 +-
- drivers/gpu/drm/exynos/Kconfig                |   2 +
- drivers/gpu/drm/exynos/exynos_dp.c            | 110 ++---
- drivers/gpu/drm/imx/ipuv3/Kconfig             |   4 +-
- drivers/gpu/drm/imx/ipuv3/imx-ldb.c           |   6 +-
- drivers/gpu/drm/imx/ipuv3/parallel-display.c  |   5 +-
- drivers/gpu/drm/rockchip/Kconfig              |   1 +
- .../gpu/drm/rockchip/analogix_dp-rockchip.c   |  67 +--
- include/drm/bridge/analogix_dp.h              |   8 +-
- include/drm/bridge/imx.h                      |  17 -
- include/drm/bridge/of-display-mode-bridge.h   |  17 +
- 20 files changed, 391 insertions(+), 469 deletions(-)
- delete mode 100644 drivers/gpu/drm/bridge/imx/imx-legacy-bridge.c
- create mode 100644 drivers/gpu/drm/bridge/of-display-mode-bridge.c
- delete mode 100644 include/drm/bridge/imx.h
- create mode 100644 include/drm/bridge/of-display-mode-bridge.h
-
----
-
-Changes in v2:
-- Update Exynos DP driver synchronously.
-- Move the panel/bridge parsing to the Analogix side.
-
-Changes in v3:
-- Rebase for the existing devm_drm_bridge_alloc() applying commit.
-- Fix the typographical error of panel/bridge check in exynos_dp_bind().
-- Squash all commits related to skip_connector deletion in both Exynos and
-  Analogix code into one.
-- Apply panel_bridge helper to make the codes more concise.
-- Fix the handing of bridge in analogix_dp_bridge_get_modes().
-- Remove unnecessary parameter struct drm_connector* for callback
-  &analogix_dp_plat_data.attach().
-- In order to decouple the connector driver and the bridge driver, move
-  the bridge connector initilization to the Rockchip and Exynos sides.
-
-Changes in v4:
-- Rebase for the applied &drm_bridge_funcs.detect() modification commit.
-- Rename analogix_dp_find_panel_or_bridge() to analogix_dp_finish_probe().
-- Drop the drmm_encoder_init() modification commit.
-- Rename the &analogix_dp_plat_data.bridge to
-  &analogix_dp_plat_data.next_bridge.
-
-Changes in v5:
-- Add legacy bridge to parse the display-timings node under the dp node
-  for Exynos side.
-- Move color format check to &drm_connector_helper_funcs.atomic_check()
-  in order to get rid of &analogix_dp_plat_data.get_modes().
-- Remove unused callback &analogix_dp_plat_data.get_modes().
-- Distinguish the &drm_bridge->ops of Analogix bridge based on whether
-  the downstream device is a panel, a bridge or neither.
-- Select DRM_DISPLAY_DP_AUX_BUS for DRM_ANALOGIX_DP, and remove it for
-  ROCKCHIP_ANALOGIX_DP.
-- Apply rockchip_dp_attach() to support the next bridge attachment for
-  the Rockchip side.
-- Move next_bridge attachment from Analogix side to Rockchip/Exynos sides.
-
-Changes in v6:
-- Move legacy bridge driver out of imx directory for multi-platform use.
-- Apply DRM legacy bridge to parse display timings intead of implementing
-  the same codes only for Exynos DP.
-- Ensure last bridge determines EDID/modes detection capabilities in DRM
-  bridge_connector driver.
-- Remove unnecessary drm_bridge_get_modes() in
-  analogix_dp_bridge_get_modes().
-- Simplify analogix_dp_bridge_edid_read().
-- If the next is a bridge, set DRM_BRIDGE_OP_DETECT and return
-  connector_status_connected in analogix_dp_bridge_detect().
-- Set flag DRM_BRIDGE_ATTACH_NO_CONNECTOR for bridge attachment while
-  binding. Meanwhile, make DRM_BRIDGE_ATTACH_NO_CONNECTOR unsuppported
-  in analogix_dp_bridge_attach().
-- Move the next bridge attachment to the Analogix side rather than
-  scattered on Rockchip and Exynos sides.
-- Remove the unnecessary analogix_dp_bridge_get_modes().
-- Squash [PATCH v5 15/17] into [PATCH v5 17/17].
-- Fix the &drm_bridge->ops to DRM_BRIDGE_OP_EDID | DRM_BRIDGE_OP_DETECT.
-
-Changes in v7:
-- As Luca suggested, simplify the code and related comment for bridge_connector
-  modifications. Additionally, move the commit related to bridge_connector to
-  the top of this patch series.
-- Rename legacy-bridge driver to of-display-mode-bridge driver.
-- Remove unnecessary API drm_bridge_is_legacy() and apply a temporary flag
-  &exynos_dp_device.has_of_bridge instead, which will be removed finally.
-- Remove exynos_dp_legacy_bridge_init() and inline API
-  devm_drm_of_display_mode_bridge().
-
--- 
-2.34.1
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gU2F0LCBPY3QgMTgsIDIwMjUgYXQgMDc6MDc6MzVBTSArMDIwMCwgTmlrbGFzIENhc3NlbCB3
+cm90ZToKPiBPbiAxNyBPY3RvYmVyIDIwMjUgMTg6NDU6NTggQ0VTVCwgQmpvcm4gSGVsZ2FhcyA8
+aGVsZ2Fhc0BrZXJuZWwub3JnPiB3cm90ZToKPiAKPiAoc25pcCkKPiAKPiA+PiAKPiA+PiBUaHVz
+LCBwcmV2ZW50IGFkdmVydGlzaW5nIEwxIFN1YnN0YXRlcyBzdXBwb3J0IHVudGlsIHByb3BlciBk
+cml2ZXIgc3VwcG9ydAo+ID4+IGlzIGFkZGVkLgo+ID4KPiA+SSB0aGluayBNYW5pIGlzIHBsYW5u
+aW5nIGEgY2hhbmdlIHNvIHdlIGRvbid0IHRyeSB0byBlbmFibGUgTDEKPiA+U3Vic3RhdGVzIGJ5
+IGRlZmF1bHQsIHdoaWNoIHNob3VsZCBhdm9pZCB0aGUgcmVncmVzc2lvbiBldmVuIHdpdGhvdXQg
+YQo+ID5wYXRjaCBsaWtlIHRoaXMuCj4gCj4gU291bmRzIGdvb2QsIEkgc3VnZ2VzdGVkIHRoZSBz
+YW1lOgo+IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xpbnV4LXBjaS9hTzl0V2pnSG5rQVRyb05h
+QHJ5emVuLwo+IAo+IAo+ID4KPiA+VGhhdCB3aWxsIHN0aWxsIGxlYXZlIHRoZSBleGlzdGluZyBD
+T05GSUdfUENJRUFTUE1fUE9XRVJfU1VQRVJTQVZFPXkKPiA+YW5kIHN5c2ZzIGwxXzFfYXNwbSBw
+cm9ibGVtcy4KPiAKPiBJbmRlZWQsIHdoaWNoIGlzIHdoeSBJIHRoaW5rIHRoYXQgdGhpcyBwYXRj
+aCBpcyB2Ni4xOCBtYXRlcmlhbC4KPiAKCk5vdCBzdHJpY3RseSBhIDYuMTggbWF0ZXJpYWwgYXMg
+dGhlIEtjb25maWcvc3lzZnMvY21kbGluZSBpc3N1ZXMgZXhpc3RlZCBldmVuCmJlZm9yZSB3ZSBl
+bmFibGVkIHRoZSBBU1BNIHN0YXRlcyBieSBkZWZhdWx0IGluIHY2LjE4LXJjMS4KClRoZSBkZWZh
+dWx0IEFTUE0gaXNzdWUgd2lsbCBiZSBmaXhlZCBieSBhIHNlcGFyYXRlIHBhdGNoIHdoaWNoIHdp
+bGwgYmUgZ2VuZXJpYwpmb3IgYWxsIHBsYXRmb3Jtcy4gSSdsbCBhcHBseSB0aGlzIHBhdGNoIGZv
+ciB2Ni4xOS4KCi0gTWFuaQoKLS0gCuCuruCuo+Cuv+CuteCuo+CvjeCuo+CuqeCvjSDgrprgrqTg
+rr7grprgrr/grrXgrq7gr40KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0
+cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGlu
+Zm8vbGludXgtcm9ja2NoaXAK
