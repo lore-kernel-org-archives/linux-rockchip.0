@@ -4,58 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1013CCD184
-	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Oct 2025 09:21:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9E1BCCD184
+	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Oct 2025 09:44:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lj2XPuGuboX8mrYxMElvHQRT8Gf2bC9ZJoGffKXtZWI=; b=K9PCAfdrFsFNCO
-	yKucE12dI5VXibThAcLGMWnoQnmK+HmDrE6M6ZkUxPqVlwxKah+tP3zm92qwlGB0Bn15VsL/HLFo3
-	xKHNwzPbBdngu1877+2RCN3wXnLtyJdgHTR+BvzyvO5zQzU88xzfjaqgcyFqIpld+i1jRHjuKA32M
-	dYysVU+ol7aVn7pzqnI1cvX54KzHZzvm7AEy966SoZrSTeRNcuU1fmRaXuTIsZy0h6wIqxX+eOM+L
-	XRrCgGDnL4MSAA3QAom7of/R0JU30RHc1a1zNHzYS02KeUIly1TdXuqfIfI+Pev3V566VLSgKJrUv
-	RuAmmEtBZDNOJOIReMoQ==;
+	List-Owner; bh=PZu5onZ25WOmUAeHfiXM2I4YjaS6MMGcNjYfR7f1gq0=; b=pFvaPgBgicGusq
+	3GjmTS7bTcnxC0VCiZ0DCr/DwYhKixDhpBCzXPSVqMU3GW7nYtEX0nusomSKB1AwmO+quG3vyMJxl
+	v9b6EIlgHZYOiVSxHpTrEYbkDIPOgPrVe6q64yc4ZE8YZ+JZ41qJDqrT+m09i9e5hYo324K7olIza
+	jpbuTTjp/aspcakVbE/okTMvKytbHejUja1+iXipB2cTMANI/VwN14f8t1xOUZkO+z2WwU30mUMms
+	EWyB8F5ZahVGD/U0onVqjlMel02psPJm2VCC2nKcc0OKi43YVWvr+9Sk2WbiHKYj/EbBQQ1PbRnf+
+	TH/XO00xYXvqOEog3dpw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vB8YC-0000000GQbE-3Z54;
-	Tue, 21 Oct 2025 09:21:04 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1vB8um-0000000GUqC-2dED;
+	Tue, 21 Oct 2025 09:44:24 +0000
+Received: from mail-m19731106.qiye.163.com ([220.197.31.106])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vB8Y9-0000000GQai-20fd;
-	Tue, 21 Oct 2025 09:21:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=PWQL1JLu99aUScGTl3BlK8hhjZ5L6bf92gYoRK4SM6g=; b=QJ2mTk/s2xEy7yC+Fx+lSwDvMI
-	O/QiJ/tHF/+pDGH4pZeJwHhtq8/fREjwOFW3szKRzqnPwk13ns38zcmX0V3yYTpQ4SRmr8JpEPfbC
-	NhEJKZVMMf3UadSo78WdDeKuyuC0ujKQaR+bgc5RL9UGkLEIKIYzW5RXtrmh5lBKN8HtopTzrH2nT
-	Fo94U4rHsNwupvuOMlttre6IOCXOE+wSOwLUaXSYhnkw3ekDvQDh8Fi/9ntKEE6NDC2l4swF1GiD0
-	99RtjZT8W0Qcz5xNzurmqhxAUxT/csZ+V0c9Pubrdis9wGXdbwVK0XlZm/Ik74lMAj5wY/Gx2dQxM
-	QjSgMQTA==;
-Received: from [212.111.240.218] (helo=phil.guestnet.ukdd.de)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1vB8Y7-0001mu-Ct; Tue, 21 Oct 2025 11:20:59 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: WeiHao Li <cn.liweihao@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v1 1/1] soc: rockchip: grf: Set pwm2/xin32k pad default to xin32k for rk3368
-Date: Tue, 21 Oct 2025 11:20:57 +0200
-Message-ID: <176103845188.96519.2904538243540608377.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250906142125.7602-1-cn.liweihao@gmail.com>
-References: <20250906142125.7602-1-cn.liweihao@gmail.com>
+	id 1vB8uj-0000000GUoN-13KX;
+	Tue, 21 Oct 2025 09:44:23 +0000
+Received: from [172.16.12.149] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 26a698a5f;
+	Tue, 21 Oct 2025 17:44:12 +0800 (GMT+08:00)
+Message-ID: <1221dd6c-2035-4e5d-8052-341da279fe81@rock-chips.com>
+Date: Tue, 21 Oct 2025 17:44:11 +0800
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6 1/8] usb: typec: Add default HPD device when register
+ DisplayPort altmode
+To: Heikki Krogerus <heikki.krogerus@linux.intel.com>
+Cc: Chaoyi Chen <kernel@airkyi.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
+ Kishon Vijay Abraham I <kishon@kernel.org>, Heiko Stuebner
+ <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>,
+ Andy Yan <andy.yan@rock-chips.com>,
+ Yubing Zhang <yubing.zhang@rock-chips.com>,
+ Frank Wang <frank.wang@rock-chips.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Amit Sunil Dhamne <amitsd@google.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Dragan Simic <dsimic@manjaro.org>, Johan Jonker <jbx6244@gmail.com>,
+ Diederik de Haas <didi.debian@cknow.org>,
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+ Peter Robinson <pbrobinson@gmail.com>, linux-usb@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
+References: <20251016022741.91-1-kernel@airkyi.com>
+ <20251016022741.91-2-kernel@airkyi.com> <aPYImGmesrZWwyqh@kuha.fi.intel.com>
+ <954a67d1-1759-4e18-8eef-3fa14fb3cef5@rock-chips.com>
+ <aPdI7Vb_djrfCfbT@kuha.fi.intel.com>
+Content-Language: en-US
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+In-Reply-To: <aPdI7Vb_djrfCfbT@kuha.fi.intel.com>
+X-HM-Tid: 0a9a0627a3a903abkunm5cd7977fb8e2b1
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGUpDS1YaGRpIHUpDTBlKGU1WFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpOTE
+	9VSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=g6OhVZ/yiqpa03UuI1XX7K9vWZ8zWP3G2Gzz5rhk0AcJK/U+UJws7ashU78Y+//2Cp1XYy8iR5A+1sB1SdjmB78dMX58786reFgEn7dhTHoMucj84RbJ6zYHbg7CDu7vWXLe8oopZFd6uuDFaXjD2L3+MUHefnrApM/1yNbvoa0=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=qUewYvs5quWL8CZ5KUc8yRAa2rvIV3/2PN0yp7OZqoo=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251021_022101_672949_55A02D3C 
-X-CRM114-Status: GOOD (  11.95  )
+X-CRM114-CacheID: sfid-20251021_024421_821609_751BE74B 
+X-CRM114-Status: GOOD (  16.65  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,31 +87,76 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On 10/21/2025 4:48 PM, Heikki Krogerus wrote:
 
-On Sat, 06 Sep 2025 22:21:25 +0800, WeiHao Li wrote:
-> PWM2 and xin32k share the same pad, but some peripheral need to xin32k
-> clock to run properly, such as tsadc. I have observed that this pad is
-> used as xin32k by default on some existing board [1], so it maybe more
-> appropriate to set it to xin32k by default.
-> 
-> I also tested it on another rk3368 based board [2], without this adjust,
-> tsadc does not work properly.
-> 
-> [...]
+> Hi,
+>
+> On Mon, Oct 20, 2025 at 07:07:46PM +0800, Chaoyi Chen wrote:
+>> Hi Heikki,
+>>
+>> On 10/20/2025 6:02 PM, Heikki Krogerus wrote:
+>>> On Thu, Oct 16, 2025 at 10:27:34AM +0800, Chaoyi Chen wrote:
+>>>> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+>>>>
+>>>> Add default DRM AUX HPD bridge device when register DisplayPort
+>>>> altmode. That makes it redundant for each Type-C driver to implement
+>>>> a similar registration process in embedded scenarios.
+>>>>
+>>>> Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+>>>> ---
+>>>>
+>>>> Changes in v6:
+>>>> - Fix depend in Kconfig.
+>>>>
+>>>> Changes in v5:
+>>>> - Remove the calls related to `drm_aux_hpd_bridge_notify()`.
+>>>> - Place the helper functions in the same compilation unit.
+>>>> - Add more comments about parent device.
+>>>>
+>>>>    drivers/usb/typec/Kconfig         |  2 ++
+>>>>    drivers/usb/typec/class.c         | 26 ++++++++++++++++++++++++++
+>>>>    include/linux/usb/typec_altmode.h |  2 ++
+>>>>    3 files changed, 30 insertions(+)
+>>>>
+>>>> diff --git a/drivers/usb/typec/Kconfig b/drivers/usb/typec/Kconfig
+>>>> index 2f80c2792dbd..a6730fbb576b 100644
+>>>> --- a/drivers/usb/typec/Kconfig
+>>>> +++ b/drivers/usb/typec/Kconfig
+>>>> @@ -2,6 +2,8 @@
+>>>>    menuconfig TYPEC
+>>>>    	tristate "USB Type-C Support"
+>>>> +	depends on DRM || DRM=n
+>>>> +	select DRM_AUX_HPD_BRIDGE if DRM_BRIDGE && OF
+>>> This is wrong. DRM should not dictate how this entire subsystem core
+>>> is configured. The dependency needs to be on the DRM bridge side.
+>>>
+>>> You can for example use the bus notification there to see when a new
+>>> alternate mode is being registered, or use some other notification
+>>> mechanism.
+>> Is it a good idea to implement notification functions like
+>> drivers/usb/core/notify.c in TCPM, and then let other subsystems (such as DRM)
+>> listen to these notifications?
+> Don't limit this to tcpm only. I would suggest something similar what
+> we have for usb bus: drivers/usb/core/notify.c
+>
+> So that, but for the typec bus. Then in DRM bridge code you just use
+> typec_register/unregister_notify().
 
-Applied, thanks!
+I will try to add drivers/usb/typec/notify.c in v7 to implement this. Thank you.
 
-[1/1] soc: rockchip: grf: Set pwm2/xin32k pad default to xin32k for rk3368
-      commit: fc3d701f0d75ffbd788991cbf84f4937435e504e
 
-Best regards,
+>
+> thanks,
+>
 -- 
-Heiko Stuebner <heiko@sntech.de>
+Best,
+Chaoyi
+
 
 _______________________________________________
 Linux-rockchip mailing list
