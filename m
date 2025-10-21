@@ -4,32 +4,32 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37886CCD184
-	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Oct 2025 07:49:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0005CCD1A5
+	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Oct 2025 07:49:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gk7/fo6KlfZbN0Q+GowOwFFDODPXacrAukBpphyIIfg=; b=Ix4mB2PNlbWC/0
-	QhUWoNf3q8n+NX7EMoGYcO0HVcoJlHIVBcmgxF4HNN3EumQ0EBuNOTrgf0YXRBw0IUs9kyLBgCNka
-	Bnzn9tYPTlPkIW8CW2kGvJ/J6n5vlVnkGSMegLuKuREs/dsAbLbJcKhvwyvU5UsmeXHa1QmL9p95x
-	XghQi/gvbSlRvuziJajKYa5pd1KeudcKLpGpx3U/X7kojNTuaNImUeMbtJ7rTQmSXThF3XhzyydEN
-	r5L9LTswnHvd4zrAcZ3pmYUyTht7zAeCz47l2k9XRii1CG9KCFFNO8p8sO6iOm1B1bbSk/y6TvjtU
-	7lcawzEdBzFNGztmgThg==;
+	List-Owner; bh=clfk/UpW/bjXO6mLZLYWdWRO/dVqgxCvDm+iJlRcl0Q=; b=I3Pn8A4Mx0u/9y
+	/5TF9T5hSDL5rTf5ZtxsR2Ngjz9z8bPlqtkc8zeYxzwEeFW/TB62c1S8UXZYZo1jk9R56EyLdT+hg
+	aqYPzRPuNZKLbnMsyS0RZFdEFNWojbp79wj6W1iQjdvCH506bWowUxJ/NucvfRQkbQ4hl9aPwDQEJ
+	UINya/FbtVXeAhmdore+xYf/euAi0VqBPIBv448QXj93G/FhPIMmunK9Th3XhskcaozHwc+/xpOjI
+	/p59kTi7EL0t/+oITA5cIWWjV6jRLnI+UFeWsti1KwcHq1l5VG3DaO1N7QKzRfsRiqdQjx/HG6X7i
+	VkQVTyU6Nq1BxB98CpnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vB77S-0000000G9nd-022T;
-	Tue, 21 Oct 2025 07:49:22 +0000
-Received: from mail-m15591.qiye.163.com ([101.71.155.91])
+	id 1vB77U-0000000G9p6-1AA6;
+	Tue, 21 Oct 2025 07:49:24 +0000
+Received: from mail-m3272.qiye.163.com ([220.197.32.72])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vB77P-0000000G9k9-0VTO
+	id 1vB77R-0000000G9mM-41G8
 	for linux-rockchip@lists.infradead.org;
-	Tue, 21 Oct 2025 07:49:20 +0000
+	Tue, 21 Oct 2025 07:49:23 +0000
 Received: from localhost.localdomain (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 26a1f52ee;
-	Tue, 21 Oct 2025 15:49:14 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 26a1f52fc;
+	Tue, 21 Oct 2025 15:49:18 +0800 (GMT+08:00)
 From: Shawn Lin <shawn.lin@rock-chips.com>
 To: Heiko Stuebner <heiko@sntech.de>,
 	Manivannan Sadhasivam <mani@kernel.org>,
@@ -39,25 +39,26 @@ Cc: Thierry Reding <thierry.reding@gmail.com>,
 	Niklas Cassel <cassel@kernel.org>,
 	linux-pci@vger.kernel.org,
 	Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH 3/4] PCI: dw-rockchip: Add L1sub support
-Date: Tue, 21 Oct 2025 15:48:26 +0800
-Message-Id: <1761032907-154829-4-git-send-email-shawn.lin@rock-chips.com>
+Subject: [PATCH 4/4] arm64: dts: rockchip: Add PCIe clkreq stuff for RK3588 EVB1
+Date: Tue, 21 Oct 2025 15:48:27 +0800
+Message-Id: <1761032907-154829-5-git-send-email-shawn.lin@rock-chips.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1761032907-154829-1-git-send-email-shawn.lin@rock-chips.com>
 References: <1761032907-154829-1-git-send-email-shawn.lin@rock-chips.com>
-X-HM-Tid: 0a9a05be63b709cckunm38953c58648233
+X-HM-Tid: 0a9a05be704409cckunm38953c58648290
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGUhPQ1YfSUNNSUtJSEIYQkJWFRQJFh
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQhoZHVYeGE8eSEtNTh5DGktWFRQJFh
 	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
 	hVSktLVUpCS0tZBg++
 DKIM-Signature: a=rsa-sha256;
-	b=SXFzxmVqMHQUidNCXWI/i5+1KodnEaDH1gECnDh+LeFFQOacF6WgIizYXeCDqEqyNZloTgng23KfPRqWMbWPQ80/WWUG9urQMBgv75tjB0ZFc4DY3/Ru/hHCuVjB9RiSPySETYbV36eZcYveU+sccoASfxkFUVSUJddLDB0d0ok=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=8p+P7sgYlFmGDCAraLMtjxy7LG8Kgxou20xrYiE6tSo=;
+	b=GPbeA/Hu/nckH1/F6KPmZa1j8jJ2qzdRbY7dcAiSfyBZWWaKwBivTkIVrQUDfFepoT3vrgLArnI7d8GI9L+wZbvt0dVijcstCs9SXGumYwR6kEUU1Utwt5ZeiTL/FuRs/GZBmK98M6xmetJv+lf5GHUp5vZwF580kT4g67b3aQQ=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=mBAxCGrCTd9wlaG397H8JWnqIiuZ9kVnamTzv/ECLFY=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251021_004919_350884_7F30CAD3 
-X-CRM114-Status: GOOD (  15.68  )
+X-CRM114-CacheID: sfid-20251021_004922_156555_F0BF0548 
+X-CRM114-Status: UNSURE (   9.78  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,94 +76,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The driver should set app_clk_req_n(clkreq ready) of PCIE_CLIENT_POWER reg
-to support L1sub. Otherwise, unset app_clk_req_n and pull down CLKREQ#.
+Add supports-clkreq and pinmux for PCIe ASPM L1 substates.
 
 Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 ---
- drivers/pci/controller/dwc/pcie-dw-rockchip.c | 31 ++++++++++++++-----
- 1 file changed, 23 insertions(+), 8 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-index 87dd2dd188b4..8a52ff73ec46 100644
---- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-+++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-@@ -62,6 +62,12 @@
- /* Interrupt Mask Register Related to Miscellaneous Operation */
- #define PCIE_CLIENT_INTR_MASK_MISC	0x24
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts b/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
+index ff1ba5ed56ef..c9d284cb738b 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
+@@ -522,6 +522,7 @@ &pcie2x1l0 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&pcie2_0_rst>, <&pcie2_0_wake>, <&pcie2_0_clkreq>, <&wifi_host_wake_irq>;
+ 	reset-gpios = <&gpio4 RK_PA5 GPIO_ACTIVE_HIGH>;
++	supports-clkreq;
+ 	vpcie3v3-supply = <&vcc3v3_wlan>;
+ 	status = "okay";
  
-+/* Power Management Control Register */
-+#define PCIE_CLIENT_POWER		0x2c
-+#define  PCIE_CLKREQ_READY		0x10001
-+#define  PCIE_CLKREQ_NOT_READY		0x10000
-+#define  PCIE_CLKREQ_PULL_DOWN		0x30001000
-+
- /* Hot Reset Control Register */
- #define PCIE_CLIENT_HOT_RESET_CTRL	0x180
- #define  PCIE_LTSSM_APP_DLY2_EN		BIT(1)
-@@ -84,6 +90,7 @@ struct rockchip_pcie {
- 	struct gpio_desc *rst_gpio;
- 	struct irq_domain *irq_domain;
- 	const struct rockchip_pcie_of_data *data;
-+	bool supports_clkreq;
+@@ -545,7 +546,8 @@ wifi: wifi@0,0 {
+ &pcie2x1l1 {
+ 	reset-gpios = <&gpio4 RK_PA2 GPIO_ACTIVE_HIGH>;
+ 	pinctrl-names = "default";
+-	pinctrl-0 = <&pcie2_1_rst>, <&rtl8111_isolate>;
++	pinctrl-0 = <&pcie2_1_rst>, <&rtl8111_isolate>, <&pcie30x1m1_1_clkreqn>;
++	supports-clkreq;
+ 	status = "okay";
  };
  
- struct rockchip_pcie_of_data {
-@@ -199,15 +206,21 @@ static bool rockchip_pcie_link_up(struct dw_pcie *pci)
- 	return FIELD_GET(PCIE_LINKUP_MASK, val) == PCIE_LINKUP;
- }
+@@ -555,7 +557,8 @@ &pcie30phy {
  
--/*
-- * See e.g. section '11.6.6.4 L1 Substate' in the RK3588 TRM V1.0 for the steps
-- * needed to support L1 substates. Currently, not a single rockchip platform
-- * performs these steps, so disable L1 substates until there is proper support.
-- */
--static void rockchip_pcie_disable_l1sub(struct dw_pcie *pci)
-+static void rockchip_pcie_enable_l1sub(struct dw_pcie *pci)
- {
-+	struct rockchip_pcie *rockchip = to_rockchip_pcie(pci);
- 	u32 cap, l1subcap;
- 
-+	/* Enable L1 substates if CLKREQ# is properly connected */
-+	if (rockchip->supports_clkreq) {
-+		/* Ready to have reference clock removed */
-+		rockchip_pcie_writel_apb(rockchip, PCIE_CLKREQ_READY, PCIE_CLIENT_POWER);
-+		return;
-+	}
-+
-+	/* Otherwise, pull down CLKREQ# and disable L1 substates */
-+	rockchip_pcie_writel_apb(rockchip, PCIE_CLKREQ_PULL_DOWN | PCIE_CLKREQ_NOT_READY,
-+				 PCIE_CLIENT_POWER);
- 	cap = dw_pcie_find_ext_capability(pci, PCI_EXT_CAP_ID_L1SS);
- 	if (cap) {
- 		l1subcap = dw_pcie_readl_dbi(pci, cap + PCI_L1SS_CAP);
-@@ -282,7 +295,7 @@ static int rockchip_pcie_host_init(struct dw_pcie_rp *pp)
- 	irq_set_chained_handler_and_data(irq, rockchip_pcie_intx_handler,
- 					 rockchip);
- 
--	rockchip_pcie_disable_l1sub(pci);
-+	rockchip_pcie_enable_l1sub(pci);
- 	rockchip_pcie_enable_l0s(pci);
- 
- 	return 0;
-@@ -320,7 +333,7 @@ static void rockchip_pcie_ep_init(struct dw_pcie_ep *ep)
- 	struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
- 	enum pci_barno bar;
- 
--	rockchip_pcie_disable_l1sub(pci);
-+	rockchip_pcie_enable_l1sub(pci);
- 	rockchip_pcie_enable_l0s(pci);
- 	rockchip_pcie_ep_hide_broken_ats_cap_rk3588(ep);
- 
-@@ -432,6 +445,8 @@ static int rockchip_pcie_resource_get(struct platform_device *pdev,
- 		return dev_err_probe(&pdev->dev, PTR_ERR(rockchip->rst),
- 				     "failed to get reset lines\n");
- 
-+	rockchip->supports_clkreq = of_pci_clkreq_present(pdev->dev.of_node);
-+
- 	return 0;
- }
- 
+ &pcie3x4 {
+ 	pinctrl-names = "default";
+-	pinctrl-0 = <&pcie3_reset>;
++	pinctrl-0 = <&pcie3_reset>, <&pcie30x4m1_clkreqn>;
++	supports-clkreq;
+ 	reset-gpios = <&gpio4 RK_PB6 GPIO_ACTIVE_HIGH>;
+ 	vpcie3v3-supply = <&vcc3v3_pcie30>;
+ 	status = "okay";
 -- 
 2.43.0
 
