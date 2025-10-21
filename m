@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E37B8CCD1B0
-	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Oct 2025 07:43:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9EC2CCD1B3
+	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Oct 2025 07:43:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zxmDMnp+ppk9oLR4v/tobJKXyS3OlqiNiO5l0JYCWeI=; b=wHoHNPVAym14sS
-	sSoN1pmT6SiizMw3yHOz1iOsln/oZLlLcZ8gEAcq5QxZaun5PzKm7bCWmtCmFvomjp9UBW0OM3sgW
-	7+afdnsw6K+8X3MlR/IeDSRFDMbGpB4n6v4xK+AzxfaaY4iDmWjfFOcnj2UwcW07nWMJ1m1BwGMKM
-	cmfRzdUA97OIs65nB7hq4xtdZST8pFWaiSAVHd7+pEIlx3TycDf81JTeRUX1GoIR3UtMNrIxCmOVi
-	VZypCysEhZbw0JWo00kHEPJSZuJVNB6YJvi4WvYE69NJQznGkeKoTscSm+ZdPHDudLpbdLXwSh8q1
-	DBxVCoDgemQXMw3YCgmA==;
+	List-Owner; bh=I9p72QLLhzgUnnJzgld2/h49TMdnMO5XTwIBmJdNhsE=; b=lnMQA+uZgpcs10
+	Tm4f+ubb0eILnzui0IJKQFvimATSksuJ1xlD2dzGJ8n5XBxpQbi3dMtr2DJUzbWLPJG7Ci9ZX5hw6
+	4uMhPZGhFMyI+g3AXO9fya29IQuwILiFxqF5MyvhzZTb1jDGuaUlryfWIRkN/0lcEQQy4xiSVskDu
+	L0F2yTJhkusLMQlHKSqaT46696IFwJtAoCDlOJJoyOPi/YuUdCgsI0LEqzjg3V0OxKEdfg7L4ZOi+
+	sGgZDkAciPxFIF166fhSQfL4DTbs+4cLbzkSK6hb132+SUer/xV/H+34qWqlddVKHWgaif3hBW7ez
+	U3nneUkzR1UMQFsWZlWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vB71o-0000000G6xJ-2VRs;
-	Tue, 21 Oct 2025 07:43:32 +0000
+	id 1vB71p-0000000G6z7-2HKI;
+	Tue, 21 Oct 2025 07:43:33 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vB71i-0000000G6nk-1PPB;
+	id 1vB71i-0000000G6ni-1PAj;
 	Tue, 21 Oct 2025 07:43:28 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
 	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type;
-	bh=AP5GZTY+6u3putkH9wiit+MCCXjcLlm9TffEsIJtyyg=; b=zzlF/GQwOQQvsH29acgbHn7dAx
-	ACbGisNDNz3tl3h2hrkFyVvLWA7oGx+H+Mjp9DE5lsHALp/RE3JLcsKaUW0c41i9v1/4crFVVedG2
-	AlMSHCTLWmg0ZUJiaGLcwNPRcaW+pIXnCMdDKCKMjz0bNglzD62Dy9PAE9AYVWanGk4uF3AsL08f9
-	MCkKHHAX6WVwftxB2eModVhyUOeW9OlIqjeUIJljygAa8bS7J7I4H4CN8alGbp8VIRwOlTCk95b97
-	GzbLFTjxfpAMAwe3p1gEhed5lRb6+VwZJGuv+dES2UvxABVI9HXUFrUFAevlrxM54coSPlW7qmrR/
-	AecrvQkg==;
+	bh=DQiFTA1Zb0f+PltH60opSgxEGjud3fhNqO/a6P7cdMQ=; b=hGigLLHzRgtp20dwA8JjHs7izb
+	OSAtKM6CvnKyn2qGGhTEgzXKtVgwieG5XeDqSRKz3Lpiwc6jXQXVm18YL/QiHwSTg2NRY1QBCYrgp
+	Vv0adkWzqEuMnuqGSSc4xWt0s60GpXcxRETJNaYSDdwOiInDYVa6WERFcBjFzNV3HAA9ee6PGWHJS
+	vpd7v9TOwOAPuSlhN2i9xWkK1YeMrBh8mcikpksA+enGOlEGDUXXVptYF+kjCkMiJtcYuKerS9xfN
+	om6qupUiMEL5YZIviWcgozizaR4b9od+LoObXwACthEjFOECfWTNzPLdtUALJro6iWKBWKf33/nBw
+	m+AvKbqg==;
 Received: from [212.111.240.218] (helo=phil.guestnet.ukdd.de)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1vB71M-0000uy-Mp; Tue, 21 Oct 2025 09:43:04 +0200
+	id 1vB71O-0000uy-4v; Tue, 21 Oct 2025 09:43:06 +0200
 From: Heiko Stuebner <heiko@sntech.de>
 To: heiko@sntech.de
 Cc: maarten.lankhorst@linux.intel.com,
@@ -56,18 +56,17 @@ Cc: maarten.lankhorst@linux.intel.com,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	cn.liweihao@gmail.com,
-	Heiko Stuebner <heiko.stuebner@cherry.de>,
-	Conor Dooley <conor.dooley@microchip.com>
-Subject: [PATCH v2 1/9] dt-bindings: display: rockchip: dw-hdmi: Add compatible for RK3368 HDMI
-Date: Tue, 21 Oct 2025 09:42:46 +0200
-Message-ID: <20251021074254.87065-2-heiko@sntech.de>
+	Heiko Stuebner <heiko.stuebner@cherry.de>
+Subject: [PATCH v2 4/9] arm64: dts: rockchip: Add power-domain to RK3368 DSI controller
+Date: Tue, 21 Oct 2025 09:42:49 +0200
+Message-ID: <20251021074254.87065-5-heiko@sntech.de>
 X-Mailer: git-send-email 2.47.2
 In-Reply-To: <20251021074254.87065-1-heiko@sntech.de>
 References: <20251021074254.87065-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251021_004326_386577_FFAAD755 
-X-CRM114-Status: GOOD (  10.15  )
+X-CRM114-CacheID: sfid-20251021_004326_406093_FC81771B 
+X-CRM114-Status: GOOD (  11.81  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,30 +85,28 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Heiko Stuebner <heiko.stuebner@cherry.de>
 
-Define a new compatible for RK3368 HDMI.
+The DSI controller is also part of the VIO power-domain and it
+definitely needs to be on when accessing it to not cause SError
+faults, so add the power-domains property to it.
 
-The RK3368 HDMI also uses a PHY internal to the controller, so works
-similar to other controllers, with the exception that the RK3368
-only has one VOP, so there is no source selection needed.
-
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
+Fixes: 5023d0cd6183 ("arm64: dts: rockchip: Add DSI for RK3368")
 Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
 ---
- .../devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml   | 1 +
+ arch/arm64/boot/dts/rockchip/rk3368.dtsi | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
-index 9d096856a79a..29716764413a 100644
---- a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
-+++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
-@@ -23,6 +23,7 @@ properties:
-       - rockchip,rk3228-dw-hdmi
-       - rockchip,rk3288-dw-hdmi
-       - rockchip,rk3328-dw-hdmi
-+      - rockchip,rk3368-dw-hdmi
-       - rockchip,rk3399-dw-hdmi
-       - rockchip,rk3568-dw-hdmi
- 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3368.dtsi b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+index 8f0216203241..5b2cbb3003b6 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3368.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+@@ -896,6 +896,7 @@ mipi_dsi: dsi@ff960000 {
+ 		clock-names = "pclk";
+ 		phys = <&dphy>;
+ 		phy-names = "dphy";
++		power-domains = <&power RK3368_PD_VIO>;
+ 		resets = <&cru SRST_MIPIDSI0>;
+ 		reset-names = "apb";
+ 		rockchip,grf = <&grf>;
 -- 
 2.47.2
 
