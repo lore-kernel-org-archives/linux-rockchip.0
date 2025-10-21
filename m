@@ -4,31 +4,31 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52F5CCCD1AB
-	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Oct 2025 03:39:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 149C8CCD1B0
+	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Oct 2025 03:39:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=DbgEMk++neOAV/LvWUrZfiOAIxvhRbjn5jARPcxDry0=; b=nbj48OEVe9FCtP
-	LAzyoFt3dTFy9W4tdqVQYmFl/oifzkldBoQLLy0XpFijCgJMKjK04h22WEPnBZIFq+iSjubcAE7Hh
-	+jc1PruEm0ltb5lmC9OZkNQ6Tfe1aGg7/j96CUrLWkUBNn8x3Whkx83F8K/T1EOUjG9Dle5VWOyR/
-	q222llASrk0A7REdH2D56B5KP1zf1tMf21FCJhdomdCgMuFl9RlrpTulPjvETE9ISV38T2QzsVa6q
-	MjDJ7SKD138oZprWSFoqHooJdQjtA+OGft01OwSjOMtaO3oOsr/1OmPZBm9UdpOd7zKnZv8FxpEat
-	kDbppx+HQ6R03z5bOZWQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=2m/VZ8gWQBf6RIvzdxgsAftXwi0dtYZSb47o2jkQkss=; b=im4ACSb+z0m05w
+	RcAivyCHecWOI4e6Fc/g4Y6BH8GmSv4uWHpqlITy7enKrB64+tpRshAHHVrVx6Sm1sHV5x/AO+SU8
+	MSgCZEkkDk3Xag1IRo4BT5ytVnfLLy4+OtNEhHQCH0DYc4yNSeG7PobbVYfa8cUCq+i4xtKPz6To/
+	PloMJSHJx3oGac99/FoueYffkQL+uK+s5RwooxnEkMPJ0p8jqaokKOQe/KWFok00ie+0bS+HRpSUj
+	fk+brmTuVyjF1eZ66cJ0jy0woyktLZUztJSVileUFm8ZU8l5U6haQ0HdDNctXQI54g4Q3FT8vzh9k
+	ZU5GzCb+PB1mepFTuYyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vB3Cy-0000000FiYV-2YUC;
-	Tue, 21 Oct 2025 03:38:48 +0000
-Received: from mail-m1973179.qiye.163.com ([220.197.31.79])
+	id 1vB3D6-0000000Fig6-1Yd0;
+	Tue, 21 Oct 2025 03:38:56 +0000
+Received: from mail-m81161.netease.com ([47.88.81.161])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vB3Cw-0000000FiVz-0YHl;
-	Tue, 21 Oct 2025 03:38:47 +0000
+	id 1vB3Cx-0000000FiWv-1utp;
+	Tue, 21 Oct 2025 03:38:49 +0000
 Received: from rockchip.. (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 26993a9ab;
-	Tue, 21 Oct 2025 11:38:35 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 26993a9d4;
+	Tue, 21 Oct 2025 11:38:42 +0800 (GMT+08:00)
 From: Elaine Zhang <zhangqing@rock-chips.com>
 To: mturquette@baylibre.com,
 	sboyd@kernel.org,
@@ -45,25 +45,26 @@ Cc: devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	huangtao@rock-chips.com,
 	finley.xiao@rock-chips.com
-Subject: [PATCH v4 0/7] clk: rockchip: Add clock controller for the RV1126B and RK3506
-Date: Tue, 21 Oct 2025 11:38:27 +0800
-Message-Id: <20251021033834.1390006-1-zhangqing@rock-chips.com>
+Subject: [PATCH v4 4/7] dt-bindings: clock: Add support for rockchip pvtpll
+Date: Tue, 21 Oct 2025 11:38:31 +0800
+Message-Id: <20251021033834.1390006-5-zhangqing@rock-chips.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20251021033834.1390006-1-zhangqing@rock-chips.com>
+References: <20251021033834.1390006-1-zhangqing@rock-chips.com>
 MIME-Version: 1.0
-X-HM-Tid: 0a9a04d8e84103a3kunma5e74fcc5b4d0d
+X-HM-Tid: 0a9a04d902d603a3kunma5e74fcc5b4db2
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQk4YHVZOQkgaGkIdQk5JSUxWFRQJFh
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGh9KSFZJHh9IGkpITEtKH0JWFRQJFh
 	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
 	hVSktLVUpCS0tZBg++
 DKIM-Signature: a=rsa-sha256;
-	b=jIG4z4kG5uFJmEK4iJczcXbKC012BlzlZ/Dxs/2Xwdhlrn3FE5GXwmjDZirWCJ/fJTOvQDanV8T9pXsDSCN3QddJ6mqC3KtzdbdgOqleSK3iOpt+AzHADroJs6Mc2nEESzzyOcmkjjzR4xkdyRKAcum9Msxk0TvwWUyOoldV4II=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=+RaFaMRd14vArqyAkmb0yjsiqsVcSivnEnRkSyz1WDQ=;
+	b=ctZ6M89TV5y7OUiwn62YXRWECFYzvbmTC1yBMtPioHe9zvfJgntFEexA4kGQKUWwNzsE1wqoSw+slDQoZPNENwMOp49QzORSsKUDlbT0Mf7lqkermNJrF8n3kf+l/ICB9zG/bInhr6OG/xDvK3/ziGGEmJkxTvIpCA+KmNot9BM=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=hK0m3WPO/7jWcDwpCV+FAJCPtqwyGGzQnafZ8p5+LSE=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251020_203846_381505_4E982C59 
-X-CRM114-Status: UNSURE (   9.54  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251020_203848_297946_7DFACA8A 
+X-CRM114-Status: GOOD (  12.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,76 +81,120 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add yaml and dt-bindings for the RV1126B and RK3506.
-RK3506 depend on patches 1/7 and 5/7, so it is merged and submitted.
+Add pvtpll documentation for rockchip.
 
-Change in V4:
-[PATCH v4 1/7]: No change
-[PATCH v4 2/7]: remove label
-[PATCH v4 3/7]: No change
-[PATCH v4 4/7]: remove label,fix order
-[PATCH v4 5/7]: No change
-[PATCH v4 6/7]: Add yaml and dt-bindings for the RK3506
-[PATCH v4 7/7]: Add clock controller for the RK3506
-
-Change in V3:
-[PATCH v3 1/5]: No change
-[PATCH v3 2/5]: Fix define error
-[PATCH v3 3/5]: update driver,fix errir
-[PATCH v3 4/5]: fix error
-[PATCH v3 5/5]: No change
-
-Change in V2:
-[PATCH v2 1/5]: update commit message, rename v2 to multi_pll
-[PATCH v2 2/5]: Modify DT binding headers license
-[PATCH v2 3/5]: update driver
-[PATCH v2 4/5]: fix error
-[PATCH v2 5/5]: update commit message
-
-Elaine Zhang (6):
-  clk: rockchip: Implement rockchip_clk_register_armclk_multi_pll()
-  dt-bindings: clock, reset: Add support for rv1126b
-  clk: rockchip: Add clock controller for the RV1126B
-  dt-bindings: clock: Add support for rockchip pvtpll
-  clk: rockchip: add support for pvtpll clk
-  clk: rockchip: Add clock and reset driver for RK3506
-
-Finley Xiao (1):
-  dt-bindings: clock: rockchip: Add RK3506 clock and reset unit
-
- .../bindings/clock/rockchip,pvtpll.yaml       |  100 ++
- .../bindings/clock/rockchip,rk3506-cru.yaml   |   45 +
- .../bindings/clock/rockchip,rv1126b-cru.yaml  |   52 +
- drivers/clk/rockchip/Kconfig                  |   14 +
- drivers/clk/rockchip/Makefile                 |    2 +
- drivers/clk/rockchip/clk-cpu.c                |  165 +++
- drivers/clk/rockchip/clk-pvtpll.c             |  925 ++++++++++++++
- drivers/clk/rockchip/clk-rk3506.c             |  871 +++++++++++++
- drivers/clk/rockchip/clk-rv1126b.c            | 1105 +++++++++++++++++
- drivers/clk/rockchip/clk.c                    |   24 +
- drivers/clk/rockchip/clk.h                    |   96 ++
- drivers/clk/rockchip/rst-rk3506.c             |  226 ++++
- drivers/clk/rockchip/rst-rv1126b.c            |  444 +++++++
- .../dt-bindings/clock/rockchip,rk3506-cru.h   |  285 +++++
- .../dt-bindings/clock/rockchip,rv1126b-cru.h  |  392 ++++++
- .../dt-bindings/reset/rockchip,rk3506-cru.h   |  211 ++++
- .../dt-bindings/reset/rockchip,rv1126b-cru.h  |  405 ++++++
- 17 files changed, 5362 insertions(+)
+Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+---
+ .../bindings/clock/rockchip,pvtpll.yaml       | 100 ++++++++++++++++++
+ 1 file changed, 100 insertions(+)
  create mode 100644 Documentation/devicetree/bindings/clock/rockchip,pvtpll.yaml
- create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3506-cru.yaml
- create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rv1126b-cru.yaml
- create mode 100644 drivers/clk/rockchip/clk-pvtpll.c
- create mode 100644 drivers/clk/rockchip/clk-rk3506.c
- create mode 100644 drivers/clk/rockchip/clk-rv1126b.c
- create mode 100644 drivers/clk/rockchip/rst-rk3506.c
- create mode 100644 drivers/clk/rockchip/rst-rv1126b.c
- create mode 100644 include/dt-bindings/clock/rockchip,rk3506-cru.h
- create mode 100644 include/dt-bindings/clock/rockchip,rv1126b-cru.h
- create mode 100644 include/dt-bindings/reset/rockchip,rk3506-cru.h
- create mode 100644 include/dt-bindings/reset/rockchip,rv1126b-cru.h
 
-
-base-commit: 9893549e592ad22d0a18de97acfb30204109290a
+diff --git a/Documentation/devicetree/bindings/clock/rockchip,pvtpll.yaml b/Documentation/devicetree/bindings/clock/rockchip,pvtpll.yaml
+new file mode 100644
+index 000000000000..b4beefb008d1
+--- /dev/null
++++ b/Documentation/devicetree/bindings/clock/rockchip,pvtpll.yaml
+@@ -0,0 +1,100 @@
++# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/clock/rockchip,clk-pvtpll.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Rockchip Pvtpll
++
++maintainers:
++  - Elaine Zhang <zhangqing@rock-chips.com>
++  - Heiko Stuebner <heiko@sntech.de>
++
++properties:
++  compatible:
++    items:
++      - enum:
++          - rockchip,rv1103b-core-pvtpll
++          - rockchip,rv1103b-enc-pvtpll
++          - rockchip,rv1103b-isp-pvtpll
++          - rockchip,rv1103b-npu-pvtpll
++          - rockchip,rv1126b-core-pvtpll
++          - rockchip,rv1126b-isp-pvtpll
++          - rockchip,rv1126b-enc-pvtpll
++          - rockchip,rv1126b-aisp-pvtpll
++          - rockchip,rv1126b-npu-pvtpll
++          - rockchip,rk3506-core-pvtpll
++      - const: syscon
++
++  reg:
++    maxItems: 1
++
++  "#clock-cells":
++    const: 0
++
++  clocks:
++    maxItems: 1
++
++  clock-output-names:
++    maxItems: 1
++
++  rockchip,cru:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description: |
++      Phandle to the main Clock and Reset Unit (CRU) controller.
++      Required for PVTPLLs that need to interact with the main CRU
++      for clock management operations.
++
++required:
++  - compatible
++  - reg
++  - "#clock-cells"
++  - clock-output-names
++
++additionalProperties: false
++
++examples:
++  - |
++    pvtpll@20480000 {
++      compatible = "rockchip,rv1126b-core-pvtpll", "syscon";
++      reg = <0x20480000 0x100>;
++      #clock-cells = <0>;
++      clock-output-names = "clk_core_pvtpll";
++    };
++
++  - |
++    pvtpll@21c60000 {
++      compatible = "rockchip,rv1126b-isp-pvtpll", "syscon";
++      reg = <0x21c60000 0x100>;
++      #clock-cells = <0>;
++      clock-output-names = "clk_isp_pvtpll";
++      rockchip,cru = <&cru>;
++    };
++
++  - |
++    pvtpll@21f00000 {
++      compatible = "rockchip,rv1126b-enc-pvtpll", "syscon";
++      reg = <0x21f00000 0x100>;
++      #clock-cells = <0>;
++      clock-output-names = "clk_vepu_pvtpll";
++    };
++
++  - |
++    pvtpll@21fc0000 {
++      compatible = "rockchip,rv1126b-aisp-pvtpll", "syscon";
++      reg = <0x21fc0000 0x100>;
++      #clock-cells = <0>;
++      clock-output-names = "clk_vcp_pvtpll";
++      rockchip,cru = <&cru>;
++    };
++
++  - |
++    pvtpll@22080000 {
++      compatible = "rockchip,rv1126b-npu-pvtpll", "syscon";
++      reg = <0x22080000 0x100>;
++      #clock-cells = <0>;
++      clock-output-names = "clk_npu_pvtpll";
++      rockchip,cru = <&cru>;
++    };
++
++...
 -- 
 2.34.1
 
