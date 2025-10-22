@@ -4,70 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36CBECCD1BB
-	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Oct 2025 16:21:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3486ECCD1BB
+	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Oct 2025 16:22:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=r6sNbDr3GG8F87e8TzXrnFuWW57h/O7KUZpczVDJUNY=; b=2hbDK8oBtRNXR4
-	PkwMLusBpYx6wFZ4VkL4ULfQdRTnMC66UhAz1hu1cO3UnMJh//pQITlEJMzkrh2qvlf5K8h0cOwGr
-	asrrwxy0au/6nJwyXIR6epDFJv5FWFu05zdLG6G1ovH+c8AQh3Ue1UV0xmCHehPpWfAgVUayWMwl2
-	jsnlsB6L1rgaQYwlH0XGihBQONSy9AAECmw+sYxtKJYZulrQhaS8Edpq0LgQ+i77F05n09w074jej
-	0aHlbNaA8FM6+9i6Cr9zEpHdxqon1T5Mzkr8gZpQXf7akZBUoDJ8sNhRtnD0XK/Kw/Q85Z0yO7LxA
-	yIyKxODjV5tnNxzCqA7g==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=eo+znm57SgrBHgDznKvjlW0Dk40n2mauCA4c5yFB+e4=; b=Wq3qV1AsKTyE5X
+	ZVriyWN/GLrkAwk8E4TTAOQdvB0RHZJVvi0ekgfxY5kvC6w5XGQNmGfkz9nXZNf3ulx9t1UuPcDZm
+	D9oSoTffm5H9sB/rw9Hr0wpnEnmZCoO8Tne0gaXaZAfWh5pGB2VQpGU3h2UqBifcGDbW8Nb/WheSc
+	UekZnRXFjhkhYRsZKPdI9HJIbTzjFptTwf8HQQW0DZoNC8iajF7jw1zwmZ2qWnDAxNHV0o4KJIBFG
+	Vrr5kbOhKU35ATOlgcnKHhZkroWlLb1Mor6JtGCa3mcxUUhR4BjK/l/XNcdJ0hd1zBWzguuIehruu
+	fHK9r7vJXikuU5wzQNNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBbaZ-00000003XEd-2aCy;
-	Wed, 22 Oct 2025 16:21:27 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1vBbbd-00000003Xbx-1c0E;
+	Wed, 22 Oct 2025 16:22:33 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBbaW-00000003XBF-2Sae;
-	Wed, 22 Oct 2025 16:21:26 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1761150069; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=lGCaflefZf9vW0sZUzl5R9DP8UEulwgyXUiaW+glHfUz31zKUpTCTtzJhn7nKRV0XYHMe7hwwkqRlSa6DNzkt2GWlia9O4YhjkvqdkVVK26uawqepgwLMmFOxxCjLnYK2zAf72kvwsYU66EU6Zi/alQaHMmDkjkIijxYYPMrAGU=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1761150069; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=FdcrSneWicl1pfGMcZk6PTeqOTBE1QoowN6eLnXOcgU=; 
-	b=H/uwlob0aAvM70DEBoKO/53Mu77vNhN7nV3svwqA6OZXj1Q6xieeknEwj66tK4ofB4Xf9p4A4IdPW5bZbAQvfXfcsKcAEkxBaitzg6enV8Di4F5cfOMwui4ZPwCgKiQyceNyTS3xXWS7PC/vy2LSLVcG9efvqFg04Lf/pbR8Bfs=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=dmitry.osipenko@collabora.com;
-	dmarc=pass header.from=<dmitry.osipenko@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1761150068;
-	s=zohomail; d=collabora.com; i=dmitry.osipenko@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:MIME-Version:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=FdcrSneWicl1pfGMcZk6PTeqOTBE1QoowN6eLnXOcgU=;
-	b=HjoYVDdPhe2UO4MEseYlCzsf5PLSkSqmQ3FBRRpzmXJYnVSgD+EsF1o8xOmD2lBO
-	QQW8K+SkhZYDmAJBDqyWPe+4t7rnakJ4ZJOOGeB85q9hxtMI7pc4+4efkg7d7kQPxYi
-	5PV1jfVkEizK87x9AmLdRXkEczkClnEiczdwOHWE=
-Received: by mx.zohomail.com with SMTPS id 1761150066573669.259808258432;
-	Wed, 22 Oct 2025 09:21:06 -0700 (PDT)
-From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-To: Sandy Huang <hjc@rock-chips.com>,
-	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Robin Murphy <robin.murphy@arm.com>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Daniel Stone <daniels@collabora.com>
-Cc: kernel@collabora.com,
-	linux-arm-kernel@lists.infradead.org,
+	id 1vBbbb-00000003Xbf-3MTl
+	for linux-rockchip@lists.infradead.org;
+	Wed, 22 Oct 2025 16:22:31 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 1E76C63D2B;
+	Wed, 22 Oct 2025 16:22:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A8BFEC4CEE7;
+	Wed, 22 Oct 2025 16:22:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1761150150;
+	bh=a7qOX4vLoFXsF/KBfrnam9mJzdoRDBYaNwPXMz2uNuc=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=bGGplLuDFaHooPKYXkkLnO0fT658NLWhLbrVWp7iph5O9GbYMn+X6444lfkAHDx4w
+	 xoF140XquMlg2io5MeFGghQsq82gDml4gRXLm7EhiDy2gCNxG48Fb2xjDMYRw+FmHT
+	 tIcyYjn3iYqrpRZoOYfK39bCymRDVXEf2cxVnOEttZ6ogY/WMma2Ss6nDXWReyL0H5
+	 29aTyUKGfr/5Sm3+jX/3QZk8AK4JNCe4AFHTrh5VYt7IY9jnaOepUsIT3b9N+3wO8F
+	 5qMzktaacfqUpRh4+oZKNgmv4Bx9SqkIGiB07YVS4dSILgMF496cfNi0RFdIo1NZfM
+	 Yq9b1uQZs2quw==
+Date: Wed, 22 Oct 2025 11:22:29 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Manivannan Sadhasivam <mani@kernel.org>
+Cc: Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Thierry Reding <thierry.reding@gmail.com>,
 	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	dri-devel@lists.freedesktop.org
-Subject: [PATCH v1] drm/rockchip: Set VOP for the DRM DMA device
-Date: Wed, 22 Oct 2025 19:19:48 +0300
-Message-ID: <20251022161948.199731-1-dmitry.osipenko@collabora.com>
-X-Mailer: git-send-email 2.51.0
+	Niklas Cassel <cassel@kernel.org>, linux-pci@vger.kernel.org
+Subject: Re: [PATCH 1/4] PCI: of: Add of_pci_clkreq_present()
+Message-ID: <20251022162229.GA1256220@bhelgaas>
 MIME-Version: 1.0
-X-ZohoMailClient: External
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251022_092124_682797_31C661A0 
-X-CRM114-Status: UNSURE (   9.89  )
-X-CRM114-Notice: Please train this message.
+Content-Disposition: inline
+In-Reply-To: <a3ky7mynu6p7noyx7d3frxhwsq7izlh6sgkbbnyg5txx3kufke@nvftvg4l5gzk>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,49 +66,48 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Use VOP for DMA operations performed by DRM core. Rockchip DRM driver
-is backed by a virtual device that isn't IOMMU-capable, while VOP is the
-actual display controller device backed by IOMMU. Fixes "swiotlb buffer
-is full" warning messages originated from GEM prime code paths.
-
-Note, that backporting is non-trivial as this depends on 143ec8d3f9396
-("drm/prime: Support dedicated DMA device for dma-buf imports"), which
-landed in v6.16 and 421be3ee36a4 ("drm/rockchip: Refactor IOMMU
-initialisation"), which landed in v5.19.
-
-Reported-by: Daniel Stone <daniels@collabora.com>
-Fixes: 2048e3286f34 ("drm: rockchip: Add basic drm driver")
-Cc: stable@vger.kernel.org # v6.16+
-Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-Signed-off-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
----
- drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 3 +++
- 1 file changed, 3 insertions(+)
-
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-index eb77bde9f628..e693160e9b7f 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-@@ -96,6 +96,9 @@ void rockchip_drm_dma_init_device(struct drm_device *drm_dev,
- 		private->iommu_dev = ERR_PTR(-ENODEV);
- 	else if (!private->iommu_dev)
- 		private->iommu_dev = dev;
-+
-+	if (!IS_ERR(private->iommu_dev))
-+		drm_dev_set_dma_dev(drm_dev, private->iommu_dev);
- }
- 
- static int rockchip_drm_init_iommu(struct drm_device *drm_dev)
--- 
-2.51.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gV2VkLCBPY3QgMjIsIDIwMjUgYXQgMDM6NTk6MTNQTSArMDUzMCwgTWFuaXZhbm5hbiBTYWRo
+YXNpdmFtIHdyb3RlOgo+IE9uIFdlZCwgT2N0IDIyLCAyMDI1IGF0IDA2OjEzOjU5UE0gKzA4MDAs
+IFNoYXduIExpbiB3cm90ZToKPiA+IOWcqCAyMDI1LzEwLzIyIOaYn+acn+S4iSAxODowMiwgTWFu
+aXZhbm5hbiBTYWRoYXNpdmFtIOWGmemBkzoKPiA+ID4gT24gVHVlLCBPY3QgMjEsIDIwMjUgYXQg
+MDM6NDg6MjRQTSArMDgwMCwgU2hhd24gTGluIHdyb3RlOgo+ID4gPiA+IG9mX3BjaV9jbGtyZXFf
+cHJlc2VudCgpIGlzIHVzZWQgYnkgaG9zdCBkcml2ZXJzIHRvIGRlY2lkZSB3aGV0aGVyIHRoZSBj
+bGtyZXEjCj4gPiA+ID4gaXMgcHJvcGVybHkgY29ubmVjdGVkIGFuZCBjb3VsZCBlbmFibGUgTDEu
+MS9MMS4yIHN1cHBvcnQuCj4gPiA+ID4gCj4gPiA+ID4gU2lnbmVkLW9mZi1ieTogU2hhd24gTGlu
+IDxzaGF3bi5saW5Acm9jay1jaGlwcy5jb20+Cj4gPiA+ID4gLS0tCj4gPiA+ID4gICBkcml2ZXJz
+L3BjaS9vZi5jICB8IDE4ICsrKysrKysrKysrKysrKysrKwo+ID4gPiA+ICAgZHJpdmVycy9wY2kv
+cGNpLmggfCAgNiArKysrKysKPiA+ID4gPiAgIDIgZmlsZXMgY2hhbmdlZCwgMjQgaW5zZXJ0aW9u
+cygrKQo+ID4gPiA+IAo+ID4gPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3BjaS9vZi5jIGIvZHJp
+dmVycy9wY2kvb2YuYwo+ID4gPiA+IGluZGV4IDM1NzkyNjVmMTE5OC4uNTJjNmQzNjUwODNiIDEw
+MDY0NAo+ID4gPiA+IC0tLSBhL2RyaXZlcnMvcGNpL29mLmMKPiA+ID4gPiArKysgYi9kcml2ZXJz
+L3BjaS9vZi5jCj4gPiA+ID4gQEAgLTEwMTAsMyArMTAxMCwyMSBAQCBpbnQgb2ZfcGNpX2dldF9l
+cXVhbGl6YXRpb25fcHJlc2V0cyhzdHJ1Y3QgZGV2aWNlICpkZXYsCj4gPiA+ID4gICAJcmV0dXJu
+IDA7Cj4gPiA+ID4gICB9Cj4gPiA+ID4gICBFWFBPUlRfU1lNQk9MX0dQTChvZl9wY2lfZ2V0X2Vx
+dWFsaXphdGlvbl9wcmVzZXRzKTsKPiA+ID4gPiArCj4gPiA+ID4gKy8qKgo+ID4gPiA+ICsgKiBv
+Zl9wY2lfY2xrcmVxX3ByZXNlbnQoKSAtIENoZWNrIGlmIHRoZSAic3VwcG9ydHMtY2xrcmVxIiBp
+cyBwcmVzZW50Cj4gPiA+IAo+ID4gPiBJIGRvbid0IHNlZSBhIGJlbmVmaXQgb2YgdGhpcyBBUEks
+IHRiaC4gVGhlIEFQSSBuYW1lIGNyZWF0ZXMgYW4KPiA+ID4gaW1wcmVzc2lvbiB0aGF0IHRoZSBB
+UEkgd2lsbCBjaGVjayBmb3IgdGhlIHByZXNlbmNlIG9mIENMS1JFUSMKPiA+ID4gc2lnbmFsIGlu
+IERULCBidXQgaXQgY2hlY2tzIGZvciB0aGUgcHJlc2VuY2Ugb2YgdGhlCj4gPiA+ICdzdXBwb3J0
+cy1jbGtyZXEnIHByb3BlcnR5LiBFdmVuIHRob3VnaCB0aGUgcHJlc2VuY2Ugb2YgdGhlCj4gPiA+
+IHByb3BlcnR5IGltcGxpZXMgdGhhdCB0aGUgQ0xLUkVRIyByb3V0aW5nIGlzIGF2YWlsYWJsZSwg
+SSdkCj4gPiA+IHByZWZlciB0byBjaGVjayBmb3IgdGhlIHByb3BlcnR5IGV4cGxpY2l0bHkgaW5z
+dGVhZCBvZiBoaWRpbmcgaXQKPiA+ID4gaW5zaWRlIHRoaXMgQVBJLgo+ID4gCj4gPiBJdCBtYWtl
+cyBzZW5zZS4KPiA+IAo+ID4gV2lsbCB0aGUgbmFtZSBvZl9wY2lfc3VwcG9ydHNfY2xrcmVxX3By
+ZXNlbnQoKSBsb29rIGdvb2Q/IE9yIHdlCj4gPiBqdXN0IGRyb3AgaXQgYW5kIGxldCBob3N0IGRy
+aXZlcnMgdG8gZXhwbGljaXRseSBjaGVjawo+ID4gc3VwcG9ydHMtY2xrcmVxIGluc2lkZSB0aGVp
+ciBjb2RlPwo+IAo+IEknZCBwcmVmZXIgdG8gZHJvcCB0aGUgQVBJLgoKQW4gQVBJIG1pZ2h0IGhl
+bHAgd2l0aCBjb25zaXN0ZW5jeSBhY3Jvc3MgRFQgYmluZGluZ3MuICBXZSBkb24ndCB3YW50CmRy
+aXZlcnMgdG8gcGljayB0aGVpciBvd24gbmFtZXMgZm9yICdzdXBwb3J0cy1jbGtyZXEnLgoKQnV0
+IHRoZSBwY2ktYnVzLWNvbW1vbiBzY2hlbWEgYWxyZWFkeSBpbmNsdWRlcyAnc3VwcG9ydHMtY2xr
+cmVxJywgYW5kCnRoYXQncyBwcm9iYWJseSBlbm91Z2g6Cmh0dHBzOi8vZ2l0aHViLmNvbS9kZXZp
+Y2V0cmVlLW9yZy9kdC1zY2hlbWEvYmxvYi85NzlmZWE4ZjNjMTgvZHRzY2hlbWEvc2NoZW1hcy9w
+Y2kvcGNpLWJ1cy1jb21tb24ueWFtbCNMMTU1CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9j
+a2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWls
+bWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
