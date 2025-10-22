@@ -4,57 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3486ECCD1BB
-	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Oct 2025 16:22:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77844CCD1BB
+	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Oct 2025 16:25:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=eo+znm57SgrBHgDznKvjlW0Dk40n2mauCA4c5yFB+e4=; b=Wq3qV1AsKTyE5X
-	ZVriyWN/GLrkAwk8E4TTAOQdvB0RHZJVvi0ekgfxY5kvC6w5XGQNmGfkz9nXZNf3ulx9t1UuPcDZm
-	D9oSoTffm5H9sB/rw9Hr0wpnEnmZCoO8Tne0gaXaZAfWh5pGB2VQpGU3h2UqBifcGDbW8Nb/WheSc
-	UekZnRXFjhkhYRsZKPdI9HJIbTzjFptTwf8HQQW0DZoNC8iajF7jw1zwmZ2qWnDAxNHV0o4KJIBFG
-	Vrr5kbOhKU35ATOlgcnKHhZkroWlLb1Mor6JtGCa3mcxUUhR4BjK/l/XNcdJ0hd1zBWzguuIehruu
-	fHK9r7vJXikuU5wzQNNw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=jKNjQpwoQDb9VFdkMn6uz5G0eYW6HL1qX7LA6bIkcuU=; b=cv+T7Tcv5hD+ZN
+	XMmxCqD02TW1cF+Kk13rktmJWEkYvgJqCxRNGJ8rsF5M1ovWIs4pUHXOVzKsu1hMZDBMF7eFuhysR
+	qojjZC8JVQ5QcZz0SknXiNi69Mvl8rqIHi2h3GaludLzujNrHtTTgIfGmbZ8XafH/h9kKMDAj/6WB
+	yNRUC5L8gT+R4DMbqYpIRYRo2P+6iqZosy2MEUrWt/dzH/0L3yzKrxnklmKqwWkeMn1Jf7FjJSdev
+	Drwcv3Pk1Id4chCTTUHNlNjhQPEqljfUtIJSYAbNFB2O6mtxioGw/O7yFeM3xkw1teoz0c9RhiKn2
+	uCkDOFs9tu0UDeEBa+Tg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBbbd-00000003Xbx-1c0E;
-	Wed, 22 Oct 2025 16:22:33 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vBbeb-00000003YMY-2Var;
+	Wed, 22 Oct 2025 16:25:37 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBbbb-00000003Xbf-3MTl
-	for linux-rockchip@lists.infradead.org;
-	Wed, 22 Oct 2025 16:22:31 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 1E76C63D2B;
-	Wed, 22 Oct 2025 16:22:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A8BFEC4CEE7;
-	Wed, 22 Oct 2025 16:22:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1761150150;
-	bh=a7qOX4vLoFXsF/KBfrnam9mJzdoRDBYaNwPXMz2uNuc=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=bGGplLuDFaHooPKYXkkLnO0fT658NLWhLbrVWp7iph5O9GbYMn+X6444lfkAHDx4w
-	 xoF140XquMlg2io5MeFGghQsq82gDml4gRXLm7EhiDy2gCNxG48Fb2xjDMYRw+FmHT
-	 tIcyYjn3iYqrpRZoOYfK39bCymRDVXEf2cxVnOEttZ6ogY/WMma2Ss6nDXWReyL0H5
-	 29aTyUKGfr/5Sm3+jX/3QZk8AK4JNCe4AFHTrh5VYt7IY9jnaOepUsIT3b9N+3wO8F
-	 5qMzktaacfqUpRh4+oZKNgmv4Bx9SqkIGiB07YVS4dSILgMF496cfNi0RFdIo1NZfM
-	 Yq9b1uQZs2quw==
-Date: Wed, 22 Oct 2025 11:22:29 -0500
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Manivannan Sadhasivam <mani@kernel.org>
-Cc: Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
+	id 1vBbeY-00000003YK5-2NEs;
+	Wed, 22 Oct 2025 16:25:36 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1761150330;
+	bh=OruFR1IL0sF0Yc9lSU8e89/AgjGQwgCuT+vdASDoh6c=;
+	h=From:To:Cc:Subject:Date:From;
+	b=ZZQxCZYJ6g/x3ywB9W+c/vcjGAgwPXB0V2/NjlvpGaioqRW2lLnv7cNvuNGNNlzDw
+	 PEwzUXmLcatToydpislaWeWUyP3ng2OFef7Gamc5qUXr650tFeiH0wHthR0EMruFlK
+	 iN9iOslK/B0/fzkbgZXr1Os8rTukEWT4kYvThL7nuD20Blr3gKnDCW60qyarAEJIf5
+	 ttB4cPR082JkBCbXZCJ0oJR+7Fam9PR3Qvz2BckTpC/usvVg5IepyZeK2PcvDK3Ux3
+	 oV/0gjhuy67wVEPYVZ8Yn8UQ7KFWEOXPWgBHYysjKl1/Y4Y/dElvggc5iCKdl4YRe0
+	 7lnGVfEwWbZfg==
+Received: from trenzalore (unknown [23.233.251.139])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: detlev)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 29C4117E108C;
+	Wed, 22 Oct 2025 18:25:28 +0200 (CEST)
+From: Detlev Casanova <detlev.casanova@collabora.com>
+To: linux-kernel@vger.kernel.org
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Detlev Casanova <detlev.casanova@collabora.com>,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Ricardo Ribalda <ribalda@chromium.org>,
+	Hans Verkuil <hverkuil@kernel.org>,
+	Hans de Goede <hansg@kernel.org>,
+	Yunke Cao <yunkec@google.com>,
+	Jonathan Corbet <corbet@lwn.net>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	James Cowgill <james.cowgill@blaize.com>,
+	linux-media@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	Niklas Cassel <cassel@kernel.org>, linux-pci@vger.kernel.org
-Subject: Re: [PATCH 1/4] PCI: of: Add of_pci_clkreq_present()
-Message-ID: <20251022162229.GA1256220@bhelgaas>
+	linux-arm-kernel@lists.infradead.org,
+	kernel@collabora.com,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Subject: [PATCH v3 00/15] media: rkvdec: Add support for VDPU381 and VDPU383
+Date: Wed, 22 Oct 2025 12:21:59 -0400
+Message-ID: <20251022162459.271603-1-detlev.casanova@collabora.com>
+X-Mailer: git-send-email 2.51.1.dirty
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <a3ky7mynu6p7noyx7d3frxhwsq7izlh6sgkbbnyg5txx3kufke@nvftvg4l5gzk>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251022_092534_770536_F078C3CB 
+X-CRM114-Status: GOOD (  17.65  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,48 +81,111 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkLCBPY3QgMjIsIDIwMjUgYXQgMDM6NTk6MTNQTSArMDUzMCwgTWFuaXZhbm5hbiBTYWRo
-YXNpdmFtIHdyb3RlOgo+IE9uIFdlZCwgT2N0IDIyLCAyMDI1IGF0IDA2OjEzOjU5UE0gKzA4MDAs
-IFNoYXduIExpbiB3cm90ZToKPiA+IOWcqCAyMDI1LzEwLzIyIOaYn+acn+S4iSAxODowMiwgTWFu
-aXZhbm5hbiBTYWRoYXNpdmFtIOWGmemBkzoKPiA+ID4gT24gVHVlLCBPY3QgMjEsIDIwMjUgYXQg
-MDM6NDg6MjRQTSArMDgwMCwgU2hhd24gTGluIHdyb3RlOgo+ID4gPiA+IG9mX3BjaV9jbGtyZXFf
-cHJlc2VudCgpIGlzIHVzZWQgYnkgaG9zdCBkcml2ZXJzIHRvIGRlY2lkZSB3aGV0aGVyIHRoZSBj
-bGtyZXEjCj4gPiA+ID4gaXMgcHJvcGVybHkgY29ubmVjdGVkIGFuZCBjb3VsZCBlbmFibGUgTDEu
-MS9MMS4yIHN1cHBvcnQuCj4gPiA+ID4gCj4gPiA+ID4gU2lnbmVkLW9mZi1ieTogU2hhd24gTGlu
-IDxzaGF3bi5saW5Acm9jay1jaGlwcy5jb20+Cj4gPiA+ID4gLS0tCj4gPiA+ID4gICBkcml2ZXJz
-L3BjaS9vZi5jICB8IDE4ICsrKysrKysrKysrKysrKysrKwo+ID4gPiA+ICAgZHJpdmVycy9wY2kv
-cGNpLmggfCAgNiArKysrKysKPiA+ID4gPiAgIDIgZmlsZXMgY2hhbmdlZCwgMjQgaW5zZXJ0aW9u
-cygrKQo+ID4gPiA+IAo+ID4gPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3BjaS9vZi5jIGIvZHJp
-dmVycy9wY2kvb2YuYwo+ID4gPiA+IGluZGV4IDM1NzkyNjVmMTE5OC4uNTJjNmQzNjUwODNiIDEw
-MDY0NAo+ID4gPiA+IC0tLSBhL2RyaXZlcnMvcGNpL29mLmMKPiA+ID4gPiArKysgYi9kcml2ZXJz
-L3BjaS9vZi5jCj4gPiA+ID4gQEAgLTEwMTAsMyArMTAxMCwyMSBAQCBpbnQgb2ZfcGNpX2dldF9l
-cXVhbGl6YXRpb25fcHJlc2V0cyhzdHJ1Y3QgZGV2aWNlICpkZXYsCj4gPiA+ID4gICAJcmV0dXJu
-IDA7Cj4gPiA+ID4gICB9Cj4gPiA+ID4gICBFWFBPUlRfU1lNQk9MX0dQTChvZl9wY2lfZ2V0X2Vx
-dWFsaXphdGlvbl9wcmVzZXRzKTsKPiA+ID4gPiArCj4gPiA+ID4gKy8qKgo+ID4gPiA+ICsgKiBv
-Zl9wY2lfY2xrcmVxX3ByZXNlbnQoKSAtIENoZWNrIGlmIHRoZSAic3VwcG9ydHMtY2xrcmVxIiBp
-cyBwcmVzZW50Cj4gPiA+IAo+ID4gPiBJIGRvbid0IHNlZSBhIGJlbmVmaXQgb2YgdGhpcyBBUEks
-IHRiaC4gVGhlIEFQSSBuYW1lIGNyZWF0ZXMgYW4KPiA+ID4gaW1wcmVzc2lvbiB0aGF0IHRoZSBB
-UEkgd2lsbCBjaGVjayBmb3IgdGhlIHByZXNlbmNlIG9mIENMS1JFUSMKPiA+ID4gc2lnbmFsIGlu
-IERULCBidXQgaXQgY2hlY2tzIGZvciB0aGUgcHJlc2VuY2Ugb2YgdGhlCj4gPiA+ICdzdXBwb3J0
-cy1jbGtyZXEnIHByb3BlcnR5LiBFdmVuIHRob3VnaCB0aGUgcHJlc2VuY2Ugb2YgdGhlCj4gPiA+
-IHByb3BlcnR5IGltcGxpZXMgdGhhdCB0aGUgQ0xLUkVRIyByb3V0aW5nIGlzIGF2YWlsYWJsZSwg
-SSdkCj4gPiA+IHByZWZlciB0byBjaGVjayBmb3IgdGhlIHByb3BlcnR5IGV4cGxpY2l0bHkgaW5z
-dGVhZCBvZiBoaWRpbmcgaXQKPiA+ID4gaW5zaWRlIHRoaXMgQVBJLgo+ID4gCj4gPiBJdCBtYWtl
-cyBzZW5zZS4KPiA+IAo+ID4gV2lsbCB0aGUgbmFtZSBvZl9wY2lfc3VwcG9ydHNfY2xrcmVxX3By
-ZXNlbnQoKSBsb29rIGdvb2Q/IE9yIHdlCj4gPiBqdXN0IGRyb3AgaXQgYW5kIGxldCBob3N0IGRy
-aXZlcnMgdG8gZXhwbGljaXRseSBjaGVjawo+ID4gc3VwcG9ydHMtY2xrcmVxIGluc2lkZSB0aGVp
-ciBjb2RlPwo+IAo+IEknZCBwcmVmZXIgdG8gZHJvcCB0aGUgQVBJLgoKQW4gQVBJIG1pZ2h0IGhl
-bHAgd2l0aCBjb25zaXN0ZW5jeSBhY3Jvc3MgRFQgYmluZGluZ3MuICBXZSBkb24ndCB3YW50CmRy
-aXZlcnMgdG8gcGljayB0aGVpciBvd24gbmFtZXMgZm9yICdzdXBwb3J0cy1jbGtyZXEnLgoKQnV0
-IHRoZSBwY2ktYnVzLWNvbW1vbiBzY2hlbWEgYWxyZWFkeSBpbmNsdWRlcyAnc3VwcG9ydHMtY2xr
-cmVxJywgYW5kCnRoYXQncyBwcm9iYWJseSBlbm91Z2g6Cmh0dHBzOi8vZ2l0aHViLmNvbS9kZXZp
-Y2V0cmVlLW9yZy9kdC1zY2hlbWEvYmxvYi85NzlmZWE4ZjNjMTgvZHRzY2hlbWEvc2NoZW1hcy9w
-Y2kvcGNpLWJ1cy1jb21tb24ueWFtbCNMMTU1CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9j
-a2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+These variants are found respectively in the RK3588 and RK3576 SoCs.
+This patch only adds support for H264 and H265 in both variants.
+
+As there is a considerable part of the code that can be shared with the
+already supported rkvdec decoder driver, the support for these variants
+is added here rather than writing a new driver.
+
+This patch set uses the newly introduced hevc_ext_sps_[ls]t_rps v4l2
+controls for HEVC.
+Therefore, a patched version of userpace tools is needed for HEVC
+support (added for GStreamer[1] and in an early stage for FFmpeg[2]).
+
+The patchset is based on Kwiboo's HEVC support for rk3399[3].
+
+[1]: https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/9355
+[2]: https://gitlab.collabora.com/detlev/ffmpeg
+[3]: https://lore.kernel.org/all/20250905161942.3759717-1-jonas@kwiboo.se/
+
+Changes since v2:
+ - Rebased on Kwiboo's HEVC support for rk3399
+ - Include hevc_ext_sps_[ls]t_rps v4l2 controls commits
+ - Remove empty lines at end of files
+ - Rename RKVDEC2_ALLOC_* to RKVDEC_ALLOC_*
+ - Set min_with and min_height to 64
+ - Remove vdpu38x_fill_pixfmt_mp() function
+ - Handle userspace not supporting hevc_ext_sps_[ls]t_rps
+ - Make all config structs static const
+
+Changes since v1:
+ - Add parsing of the short and long term ref frame sets from the new v4l2
+   controls
+ - Add RPS cache to avoid parsing the same data again
+ - Fix HEVC pixel formats selection
+ - Fix multiple indentation errors
+
+Detlev Casanova (15):
+  media: uapi: HEVC: Add v4l2_ctrl_hevc_ext_sps_[ls]t_rps controls
+  media: v4l2-ctrls: Add hevc_ext_sps_[ls]t_rps controls
+  media: rkvdec: Switch to using structs instead of writel
+  media: rkvdec: Move cabac tables to their own source file
+  media: rkvdec: Use structs to represent the HW RPS
+  media: rkvdec: Move h264 functions to common file
+  media: rkvdec: Move hevc functions to common file
+  media: rkvdec: Add generic configuration for variants
+  media: rkvdec: Add RCB and SRAM support
+  media: rkvdec: Support per-variant interrupt handler
+  media: rkvdec: Enable all clocks without naming them
+  media: rkvdec: Add H264 support for the VDPU381 variant
+  media: rkvdec: Add H264 support for the VDPU383 variant
+  media: rkvdec: Add HEVC support for the VDPU381 variant
+  media: rkvdec: Add HEVC support for the VDPU383 variant
+
+ .../media/v4l/ext-ctrls-codec-stateless.rst   | 114 +++
+ .../media/v4l/videodev2.h.rst.exceptions      |   2 +
+ .../media/v4l/vidioc-queryctrl.rst            |  12 +
+ .../media/platform/rockchip/rkvdec/Kconfig    |   1 +
+ .../media/platform/rockchip/rkvdec/Makefile   |  14 +-
+ .../{rkvdec-hevc-data.c => rkvdec-cabac.c}    | 506 +++++++++-
+ .../rockchip/rkvdec/rkvdec-h264-common.c      | 252 +++++
+ .../rockchip/rkvdec/rkvdec-h264-common.h      |  83 ++
+ .../platform/rockchip/rkvdec/rkvdec-h264.c    | 891 ++----------------
+ .../rockchip/rkvdec/rkvdec-hevc-common.c      | 531 +++++++++++
+ .../rockchip/rkvdec/rkvdec-hevc-common.h      | 112 +++
+ .../platform/rockchip/rkvdec/rkvdec-hevc.c    | 306 +-----
+ .../platform/rockchip/rkvdec/rkvdec-rcb.c     | 173 ++++
+ .../platform/rockchip/rkvdec/rkvdec-rcb.h     |  29 +
+ .../platform/rockchip/rkvdec/rkvdec-regs.h    | 571 +++++++----
+ .../rockchip/rkvdec/rkvdec-vdpu381-h264.c     | 469 +++++++++
+ .../rockchip/rkvdec/rkvdec-vdpu381-hevc.c     | 595 ++++++++++++
+ .../rockchip/rkvdec/rkvdec-vdpu381-regs.h     | 427 +++++++++
+ .../rockchip/rkvdec/rkvdec-vdpu383-h264.c     | 582 ++++++++++++
+ .../rockchip/rkvdec/rkvdec-vdpu383-hevc.c     | 690 ++++++++++++++
+ .../rockchip/rkvdec/rkvdec-vdpu383-regs.h     | 284 ++++++
+ .../platform/rockchip/rkvdec/rkvdec-vp9.c     | 231 ++---
+ .../media/platform/rockchip/rkvdec/rkvdec.c   | 536 ++++++++++-
+ .../media/platform/rockchip/rkvdec/rkvdec.h   |  39 +
+ drivers/media/v4l2-core/v4l2-ctrls-core.c     |  18 +
+ drivers/media/v4l2-core/v4l2-ctrls-defs.c     |  10 +
+ include/uapi/linux/v4l2-controls.h            |  61 ++
+ include/uapi/linux/videodev2.h                |   2 +
+ 28 files changed, 6080 insertions(+), 1461 deletions(-)
+ rename drivers/media/platform/rockchip/rkvdec/{rkvdec-hevc-data.c => rkvdec-cabac.c} (86%)
+ create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-h264-common.c
+ create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-h264-common.h
+ create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-hevc-common.c
+ create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-hevc-common.h
+ create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-rcb.c
+ create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-rcb.h
+ create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-h264.c
+ create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-hevc.c
+ create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-regs.h
+ create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-h264.c
+ create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-hevc.c
+ create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-regs.h
+
+-- 
+2.51.1.dirty
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
