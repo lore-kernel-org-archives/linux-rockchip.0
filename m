@@ -4,77 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE63ACCD1AB
-	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Oct 2025 07:19:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E390CCD1AB
+	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Oct 2025 08:06:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=u7vDKv8Q179gmiKAf5Wcksn6GOEk6fbDkrn51vSc8Gc=; b=LD3QZK8JkYYZq1
-	B9A1NHnSUeqQnzw66f5S5IXE5tDqYQbGKCuyvN+sU0whS0Pv0Sv4V+F0Mt1YOL+o225w4ceu+Sazj
-	8Tc2BgxYsZT3UOj/9penaAJoHkgewk45cXbId+gsRY+MPfCRNfcTLbTqOjG0UqRzO3Z/+YL4WCTlH
-	bPAUjaTLktDB8NaEY+EHIAd4I3xxt/ukpMMgbYVza0sS7fV/nH7KngYLiqpZk0bTOds/ukymSQDZO
-	7xXn4ixUTMs++EPbANhcfh1qeA+zOkYl0ECluo5AIkOi6js+3AEyI4xidYkA6OpuNGaPG/eUuU9zv
-	IHSr8dEORhf65lV33nRQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:To:From:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=+emCoohHcW/GVFKvHhz+oYhyH2b/lgyxMF8tlUboxFA=; b=NF7KbKZ9qCYOAg
+	AOivLYaAMh0BfObIOSm46IiwQptP4yte7Iun0OIzEC5PJfkNHzf32MT4jObi9cHpwrrIwdjZYM1ST
+	Tag7VAo7OQ7vNIK1N77cxFFSSxkOTaYL0uLmVr/CC3iY7+eUf1H/SYWztHAUNiP+8YeIMnDXTDucC
+	pQGNmQJ0MuxzvnO5IR1Gwi4UQWFyF2J2d3ttSV7uHhji5qVtypYVO7OREJd7h9mAvqmkIACLX7Xd1
+	5I5VZk+nm+YEejiMnmwq3AV2dKtkfFfArPLhvMm6XGZd/qKxbYjWYPXDWtUemnVMpVU2NATO+qkmO
+	BL0PYki4FTdlnknRQ3Og==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBT84-00000001qAL-0ARS;
-	Wed, 22 Oct 2025 07:19:28 +0000
-Received: from mgamail.intel.com ([192.198.163.9])
+	id 1vBTrs-000000020L4-1CHq;
+	Wed, 22 Oct 2025 08:06:48 +0000
+Received: from mail.taskera.pl ([51.75.73.133])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBT80-00000001q9T-11vE;
-	Wed, 22 Oct 2025 07:19:25 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1761117564; x=1792653564;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=UiGPap5OuCArfvp0Rq7pyLVsVmVZWUW9e6oIXM/7mSs=;
-  b=Ewx+zRZSSfLLbkUITeq5HjzPuZl3txo2qrkQs2rq4/o2MgnhXiSNf1S0
-   sJmp/xWP07oa4NVg1nYaca7qYU7mgskA+2cGLMVy+r71wy82fRKbqhW2j
-   cr5sK4DqJp2tPsTn0u4fnnQT2RqidCzpPH/2ays2GfKgZDZ6RO8Ep8jrI
-   Hj9m+CR3tuGIi7I81Kg0WB3YFUmrczW+bn6jAzMo8I5GfNjGm38a8Em6X
-   oUmv9WtN16IGdBUYFsnMd/QB3c4HZIaOFEWOLe49XqfwAKiQVFzKjQ6yk
-   DZBX0w2zLqYWBaSPoePwRngns2/jxdqUiE9NIo3SskCC7oCp+v7ciRKHg
-   A==;
-X-CSE-ConnectionGUID: 7T8kXoufQiimmMaFl+46HQ==
-X-CSE-MsgGUID: yeQT0FK1RnuaeE9ZqlhT+w==
-X-IronPort-AV: E=McAfee;i="6800,10657,11586"; a="73926138"
-X-IronPort-AV: E=Sophos;i="6.19,246,1754982000"; 
-   d="scan'208";a="73926138"
-Received: from orviesa004.jf.intel.com ([10.64.159.144])
-  by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Oct 2025 00:19:22 -0700
-X-CSE-ConnectionGUID: 7M7TzhqdR9KlUZ387HsP5Q==
-X-CSE-MsgGUID: 1tHd2Us/SE61EU8ZcZSO7g==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.19,246,1754982000"; 
-   d="scan'208";a="188074733"
-Received: from lkp-server02.sh.intel.com (HELO 66d7546c76b2) ([10.239.97.151])
-  by orviesa004.jf.intel.com with ESMTP; 22 Oct 2025 00:19:18 -0700
-Received: from kbuild by 66d7546c76b2 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1vBT7s-000C5h-1T;
-	Wed, 22 Oct 2025 07:19:16 +0000
-Date: Wed, 22 Oct 2025 15:18:28 +0800
-From: kernel test robot <lkp@intel.com>
-To: muhammed.efecetin.67@gmail.com, linux-rockchip@lists.infradead.org
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org, robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org, heiko@sntech.de,
-	neil.armstrong@linaro.org, lee@kernel.org, rafael@kernel.org,
-	efectn@protonmail.com, daniel.lezcano@linaro.org
-Subject: Re: [PATCH v3 3/5] mfd: add Khadas Edge 2 registers to khadas-mcu.
-Message-ID: <202510221512.9Ji8w2KZ-lkp@intel.com>
-References: <adbd6dd5e9ed938bab7927597b7f21eca3274b78.1761059314.git.efectn@protonmail.com>
+	id 1vBTrp-000000020IM-2r1U
+	for linux-rockchip@lists.infradead.org;
+	Wed, 22 Oct 2025 08:06:47 +0000
+Received: by mail.taskera.pl (Postfix, from userid 1002)
+	id 49AB4259B5; Wed, 22 Oct 2025 10:06:25 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=taskera.pl; s=mail;
+	t=1761120396; bh=LHmroAf0IX0JOjVUiIwqM4s8ghVxxktECxT6AQD+q2c=;
+	h=Date:From:To:Subject:From;
+	b=k/lDatokJqRNBXyQiK6yve+1YcbP3kRe0/oGLZTJtnLVdeeT4OU4+bWYuJ/Mde3OO
+	 dmj9YkR0iDx5o7qFV6yHwK5e25aUhZWm8rUa9H9dqZfbmIzKmf2GnsvJDr3EX/FSR6
+	 AQSCXlbD5tnTaEhoX+0niZkOopfPlmPVFWlIsJYG/dohfbMJ5NQMCv3CLKOUY6DyIM
+	 CjcnOu6cmTLzyKkPdy8idSS2KZmb7gfYry44K8YhrWPPSegPKUC/hivlAT6bZ9xCqo
+	 kI3ab/kH4vwfBP6NMjI/lIe1VK2KIjzR3/jz1M/0eQeLVRCVqjWEVO3eWqY0QiHh9u
+	 b/SvYluQT2UMQ==
+Received: by mail.taskera.pl for <linux-rockchip@lists.infradead.org>; Wed, 22 Oct 2025 08:05:57 GMT
+Message-ID: <20251022084500-0.1.e0.vuto.0.c9aefv9g39@taskera.pl>
+Date: Wed, 22 Oct 2025 08:05:57 GMT
+From: "Eryk Wawrzyn" <eryk.wawrzyn@taskera.pl>
+To: <linux-rockchip@lists.infradead.org>
+Subject: Zwrot
+X-Mailer: mail.taskera.pl
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <adbd6dd5e9ed938bab7927597b7f21eca3274b78.1761059314.git.efectn@protonmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251022_001924_425617_87C5F1D5 
-X-CRM114-Status: GOOD (  11.93  )
+X-CRM114-CacheID: sfid-20251022_010646_011633_A3B951F9 
+X-CRM114-Status: UNSURE (   0.68  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,74 +61,18 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-kernel test robot noticed the following build warnings:
-
-[auto build test WARNING on lee-mfd/for-mfd-next]
-[also build test WARNING on lee-mfd/for-mfd-fixes rockchip/for-next rafael-pm/thermal linus/master v6.18-rc2 next-20251022]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/muhammed-efecetin-67-gmail-com/dt-bindings-mfd-khadas-mcu-add-new-compatible-for-Khadas-Edge-2/20251021-232554
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/lee/mfd.git for-mfd-next
-patch link:    https://lore.kernel.org/r/adbd6dd5e9ed938bab7927597b7f21eca3274b78.1761059314.git.efectn%40protonmail.com
-patch subject: [PATCH v3 3/5] mfd: add Khadas Edge 2 registers to khadas-mcu.
-config: i386-buildonly-randconfig-002-20251022 (https://download.01.org/0day-ci/archive/20251022/202510221512.9Ji8w2KZ-lkp@intel.com/config)
-compiler: clang version 20.1.8 (https://github.com/llvm/llvm-project 87f0227cb60147a26a1eeb4fb06e3b505e9c7261)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20251022/202510221512.9Ji8w2KZ-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202510221512.9Ji8w2KZ-lkp@intel.com/
-
-All warnings (new ones prefixed by >>):
-
->> drivers/mfd/khadas-mcu.c:93:35: warning: unused variable 'khadas_mcu_regmap_config' [-Wunused-const-variable]
-      93 | static const struct regmap_config khadas_mcu_regmap_config = {
-         |                                   ^~~~~~~~~~~~~~~~~~~~~~~~
->> drivers/mfd/khadas-mcu.c:103:35: warning: unused variable 'khadas_mcu_regmap_config_edge2' [-Wunused-const-variable]
-     103 | static const struct regmap_config khadas_mcu_regmap_config_edge2 = {
-         |                                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   2 warnings generated.
-
-
-vim +/khadas_mcu_regmap_config +93 drivers/mfd/khadas-mcu.c
-
-54c97b83897fb1 Muhammed Efe Cetin 2025-10-21   92  
-6c27219e349116 Neil Armstrong     2020-06-08  @93  static const struct regmap_config khadas_mcu_regmap_config = {
-6c27219e349116 Neil Armstrong     2020-06-08   94  	.reg_bits	= 8,
-6c27219e349116 Neil Armstrong     2020-06-08   95  	.reg_stride	= 1,
-6c27219e349116 Neil Armstrong     2020-06-08   96  	.val_bits	= 8,
-6c27219e349116 Neil Armstrong     2020-06-08   97  	.max_register	= KHADAS_MCU_CMD_FAN_STATUS_CTRL_REG,
-6c27219e349116 Neil Armstrong     2020-06-08   98  	.volatile_reg	= khadas_mcu_reg_volatile,
-6c27219e349116 Neil Armstrong     2020-06-08   99  	.writeable_reg	= khadas_mcu_reg_writeable,
-14100f8e58564d Bo Liu             2024-02-06  100  	.cache_type	= REGCACHE_MAPLE,
-6c27219e349116 Neil Armstrong     2020-06-08  101  };
-6c27219e349116 Neil Armstrong     2020-06-08  102  
-54c97b83897fb1 Muhammed Efe Cetin 2025-10-21 @103  static const struct regmap_config khadas_mcu_regmap_config_edge2 = {
-54c97b83897fb1 Muhammed Efe Cetin 2025-10-21  104  	.reg_bits	= 8,
-54c97b83897fb1 Muhammed Efe Cetin 2025-10-21  105  	.reg_stride	= 1,
-54c97b83897fb1 Muhammed Efe Cetin 2025-10-21  106  	.val_bits	= 8,
-54c97b83897fb1 Muhammed Efe Cetin 2025-10-21  107  	.max_register	= KHADAS_MCU_EDGE2_SYS_RST_REG,
-54c97b83897fb1 Muhammed Efe Cetin 2025-10-21  108  	.volatile_reg	= khadas_mcu_reg_volatile_edge2,
-54c97b83897fb1 Muhammed Efe Cetin 2025-10-21  109  	.writeable_reg	= khadas_mcu_reg_writeable_edge2,
-54c97b83897fb1 Muhammed Efe Cetin 2025-10-21  110  	.cache_type	= REGCACHE_MAPLE,
-54c97b83897fb1 Muhammed Efe Cetin 2025-10-21  111  };
-54c97b83897fb1 Muhammed Efe Cetin 2025-10-21  112  
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+RHppZcWEIGRvYnJ5LAoKa29udGFrdHVqxJkgc2nEmSB3IGltaWVuaXUga2FuY2VsYXJpaSBzcGVj
+amFsaXp1asSFY2VqIHNpxJkgdyB6YXJ6xIVkemFuaXUgd2llcnp5dGVsbm/Fm2NpYW1pLgoKT2Qg
+bGF0IHdzcGllcmFteSBmaXJteSB3IG9kenlza2l3YW5pdSBuYWxlxbxub8WbY2kuIFByb3dhZHpp
+bXkga29tcGxla3Nvd8SFIG9ic8WCdWfEmSBuYSBldGFwYWNoOiBwcnplZHPEhWRvd3ltLCBzxIVk
+b3d5bSBpIGVnemVrdWN5am55bSwgZG9zdG9zb3d1asSFYyBkemlhxYJhbmlhIGRvIGJyYW7FvHkg
+S2xpZW50YS4KCktpZWR5IG1vxbxlbXkgcG9yb3ptYXdpYcSHPwoKClBvemRyYXdpYW0KRXJ5ayBX
+YXdyenluCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpM
+aW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFk
+Lm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJv
+Y2tjaGlwCg==
