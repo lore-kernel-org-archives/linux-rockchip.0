@@ -4,57 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 303ACCCD1BB
-	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Oct 2025 17:36:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17375CCD1BB
+	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Oct 2025 17:37:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=roB0cixq165s4sFxzZ4hPK9xvhYGuPar9zIy60WAFhA=; b=zqIIe9spOLD88b
-	AIJVCZBLriKm28Pt5vB494Juy83PUOSf+eLu2N58aWPYvT7VWdz1X+e7bD7dhvsdI9cIsEw8olflA
-	va0NjpFc/FVGWqi6UrGh8Yui2rKCEZ9zVHP7f+5xLFlIYU3m/pNdXEJYD7+hr0b8TK+7aQBYaIU10
-	xHqeb0AaBlcyUfdTEObcKrnRrhl0+DTPOcVfBJWqzpr+aboLmUduM8Kj4O3Q0HA5x+4TUUvz83Smr
-	Noah5pEDyVrTH26tSlJjdBA6oRWJqbo1cVyjK67lkyfJU3+3tfq33VtJYlYoTpY6Xq1f8pnUi0q5V
-	BTGWIMiSZtKQ7YydimKw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=k2cAoODuREjiyM+v5QG+w2yemCxPR2tdZhSq2KDQoAc=; b=BRrCmQmiYnqPgGTVGsUw2//P5P
+	H7uTbhPMpAAo3IG7NxOCGgPO28rA5BgaDfnaCTUraM+fc3p0N2zdfsXXUblb+/uhvF68th7mj2UDC
+	fR5KHoj6AejRhBb47ZfyTmNqZDmwoZTXpn1DlMWpY34+7bWjKBhCKkKzAtEYhrmKO1fmbysd20KFx
+	Eeqc3lab2kKyvgTls4KAuMecLFBMmuPZeZv6JffTPCZuUebIVdFDKZ9/2fVKfR7E1B1DAWUoE+6a0
+	3vCHllr1k0BTq3dQPBoczWmy5+FB7zzNHc2/vrRFwtgV6o6NVvT43V+vMyhV1pRe7SC02kKRsldwP
+	FOGtvG1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBckl-00000003oGo-2nOR;
-	Wed, 22 Oct 2025 17:36:03 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vBcm4-00000003oSa-1UiY;
+	Wed, 22 Oct 2025 17:37:24 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBckj-00000003oGf-40wy
-	for linux-rockchip@lists.infradead.org;
-	Wed, 22 Oct 2025 17:36:02 +0000
+	id 1vBcm1-00000003oRj-2GAo;
+	Wed, 22 Oct 2025 17:37:22 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 5521F6054A;
-	Wed, 22 Oct 2025 17:36:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 02071C4CEE7;
-	Wed, 22 Oct 2025 17:35:57 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id BF78A43656;
+	Wed, 22 Oct 2025 17:37:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2825DC4CEE7;
+	Wed, 22 Oct 2025 17:37:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1761154561;
-	bh=yNlx8B2q6AS0HUhxFGOdOrqrs+XeyF/GTSmEnedO8Ws=;
+	s=k20201202; t=1761154640;
+	bh=5C7JSiw2cENDeyIwTcB8RFCSbO1mNJYYryNwgOrWVso=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=YJB36TMRyVLlGuAZbIKc1Q3vha09gPZUGB7D/o9DPVLMnGmsQECJVBrAVoOXERkqf
-	 GKXcsJlhRtaX3C7yUCQgu+JwzW5Yj54HPW1i9F1HCzR2Sb0WKo10YU7a1bAgq5USXV
-	 qMZXnx5qF9AyKH9N+QPtcJRJBjtBoJLCre9C6XJFRWeOEQeFoGRfi2Ls4+Y03xu5EM
-	 a5MtomUDJGvcO+HXD6jVOop/RAReqEAMg/lVZUKkAn52a+fpOKS49kFplqlkXDNflB
-	 4DroqhIijsd37DgnhG56tp7hz8519qei/tgx2Q8hlM1n1hLrF5oZPVY/hO4p5bBALA
-	 AB60pN7orsh9w==
-Date: Wed, 22 Oct 2025 23:05:50 +0530
-From: Manivannan Sadhasivam <mani@kernel.org>
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, 
-	Bjorn Helgaas <bhelgaas@google.com>, Thierry Reding <thierry.reding@gmail.com>, 
-	linux-rockchip@lists.infradead.org, Niklas Cassel <cassel@kernel.org>, linux-pci@vger.kernel.org
-Subject: Re: [PATCH 1/4] PCI: of: Add of_pci_clkreq_present()
-Message-ID: <oiqs7vjw3hxbrp3tnlgut5zh3547tgowsixip5cgagyuh3uv4e@n7wielcx6hmc>
-References: <a3ky7mynu6p7noyx7d3frxhwsq7izlh6sgkbbnyg5txx3kufke@nvftvg4l5gzk>
- <20251022162229.GA1256220@bhelgaas>
+	b=M8Nl1Ov/VjLVySoMBa78J9a7d+ZFX4EVzcA2t3sF6Y2j7WIyymK/M6nuqwI90VbDj
+	 /unVVkTbOx72B2O8rKfle59it6XB63few2+KuCdIdrzHYmPb4812prFN3sMyiBsTfV
+	 MK7atH+JfMMZ5rcdVDdjbL+1FxkCDoW7Epj+MR6rMYIR71L31Li+D3BL9s0YS0PZpq
+	 pokqPeXjSUyOXDoG2uRvjZFee7XAt5ydHlBDxlS3A8Gav3gEtE66EntVLbnnfQV6BK
+	 dxGj9uwu4E4Gmcp03KPeh7RhUwa9Yi/HNHSncKG3h+0IbI3pwbraYviBppNDJl4XpX
+	 G4HKT0h8KgMNQ==
+Date: Wed, 22 Oct 2025 18:37:15 +0100
+From: Conor Dooley <conor@kernel.org>
+To: muhammed.efecetin.67@gmail.com
+Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+	heiko@sntech.de, neil.armstrong@linaro.org, lee@kernel.org,
+	rafael@kernel.org, efectn@protonmail.com, daniel.lezcano@linaro.org
+Subject: Re: [PATCH v3 1/5] dt-bindings: mfd: khadas-mcu: add new compatible
+ for Khadas Edge 2
+Message-ID: <20251022-maturity-driller-86e2b686066b@spud>
+References: <cover.1761059314.git.efectn@protonmail.com>
+ <0e604eca9ad9ce71f74b6f3aae60bbb949697590.1761059314.git.efectn@protonmail.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20251022162229.GA1256220@bhelgaas>
+In-Reply-To: <0e604eca9ad9ce71f74b6f3aae60bbb949697590.1761059314.git.efectn@protonmail.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251022_103721_595736_71041BC8 
+X-CRM114-Status: UNSURE (   9.17  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,55 +71,58 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============6173662795295726659=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkLCBPY3QgMjIsIDIwMjUgYXQgMTE6MjI6MjlBTSAtMDUwMCwgQmpvcm4gSGVsZ2FhcyB3
-cm90ZToKPiBPbiBXZWQsIE9jdCAyMiwgMjAyNSBhdCAwMzo1OToxM1BNICswNTMwLCBNYW5pdmFu
-bmFuIFNhZGhhc2l2YW0gd3JvdGU6Cj4gPiBPbiBXZWQsIE9jdCAyMiwgMjAyNSBhdCAwNjoxMzo1
-OVBNICswODAwLCBTaGF3biBMaW4gd3JvdGU6Cj4gPiA+IOWcqCAyMDI1LzEwLzIyIOaYn+acn+S4
-iSAxODowMiwgTWFuaXZhbm5hbiBTYWRoYXNpdmFtIOWGmemBkzoKPiA+ID4gPiBPbiBUdWUsIE9j
-dCAyMSwgMjAyNSBhdCAwMzo0ODoyNFBNICswODAwLCBTaGF3biBMaW4gd3JvdGU6Cj4gPiA+ID4g
-PiBvZl9wY2lfY2xrcmVxX3ByZXNlbnQoKSBpcyB1c2VkIGJ5IGhvc3QgZHJpdmVycyB0byBkZWNp
-ZGUgd2hldGhlciB0aGUgY2xrcmVxIwo+ID4gPiA+ID4gaXMgcHJvcGVybHkgY29ubmVjdGVkIGFu
-ZCBjb3VsZCBlbmFibGUgTDEuMS9MMS4yIHN1cHBvcnQuCj4gPiA+ID4gPiAKPiA+ID4gPiA+IFNp
-Z25lZC1vZmYtYnk6IFNoYXduIExpbiA8c2hhd24ubGluQHJvY2stY2hpcHMuY29tPgo+ID4gPiA+
-ID4gLS0tCj4gPiA+ID4gPiAgIGRyaXZlcnMvcGNpL29mLmMgIHwgMTggKysrKysrKysrKysrKysr
-KysrCj4gPiA+ID4gPiAgIGRyaXZlcnMvcGNpL3BjaS5oIHwgIDYgKysrKysrCj4gPiA+ID4gPiAg
-IDIgZmlsZXMgY2hhbmdlZCwgMjQgaW5zZXJ0aW9ucygrKQo+ID4gPiA+ID4gCj4gPiA+ID4gPiBk
-aWZmIC0tZ2l0IGEvZHJpdmVycy9wY2kvb2YuYyBiL2RyaXZlcnMvcGNpL29mLmMKPiA+ID4gPiA+
-IGluZGV4IDM1NzkyNjVmMTE5OC4uNTJjNmQzNjUwODNiIDEwMDY0NAo+ID4gPiA+ID4gLS0tIGEv
-ZHJpdmVycy9wY2kvb2YuYwo+ID4gPiA+ID4gKysrIGIvZHJpdmVycy9wY2kvb2YuYwo+ID4gPiA+
-ID4gQEAgLTEwMTAsMyArMTAxMCwyMSBAQCBpbnQgb2ZfcGNpX2dldF9lcXVhbGl6YXRpb25fcHJl
-c2V0cyhzdHJ1Y3QgZGV2aWNlICpkZXYsCj4gPiA+ID4gPiAgIAlyZXR1cm4gMDsKPiA+ID4gPiA+
-ICAgfQo+ID4gPiA+ID4gICBFWFBPUlRfU1lNQk9MX0dQTChvZl9wY2lfZ2V0X2VxdWFsaXphdGlv
-bl9wcmVzZXRzKTsKPiA+ID4gPiA+ICsKPiA+ID4gPiA+ICsvKioKPiA+ID4gPiA+ICsgKiBvZl9w
-Y2lfY2xrcmVxX3ByZXNlbnQoKSAtIENoZWNrIGlmIHRoZSAic3VwcG9ydHMtY2xrcmVxIiBpcyBw
-cmVzZW50Cj4gPiA+ID4gCj4gPiA+ID4gSSBkb24ndCBzZWUgYSBiZW5lZml0IG9mIHRoaXMgQVBJ
-LCB0YmguIFRoZSBBUEkgbmFtZSBjcmVhdGVzIGFuCj4gPiA+ID4gaW1wcmVzc2lvbiB0aGF0IHRo
-ZSBBUEkgd2lsbCBjaGVjayBmb3IgdGhlIHByZXNlbmNlIG9mIENMS1JFUSMKPiA+ID4gPiBzaWdu
-YWwgaW4gRFQsIGJ1dCBpdCBjaGVja3MgZm9yIHRoZSBwcmVzZW5jZSBvZiB0aGUKPiA+ID4gPiAn
-c3VwcG9ydHMtY2xrcmVxJyBwcm9wZXJ0eS4gRXZlbiB0aG91Z2ggdGhlIHByZXNlbmNlIG9mIHRo
-ZQo+ID4gPiA+IHByb3BlcnR5IGltcGxpZXMgdGhhdCB0aGUgQ0xLUkVRIyByb3V0aW5nIGlzIGF2
-YWlsYWJsZSwgSSdkCj4gPiA+ID4gcHJlZmVyIHRvIGNoZWNrIGZvciB0aGUgcHJvcGVydHkgZXhw
-bGljaXRseSBpbnN0ZWFkIG9mIGhpZGluZyBpdAo+ID4gPiA+IGluc2lkZSB0aGlzIEFQSS4KPiA+
-ID4gCj4gPiA+IEl0IG1ha2VzIHNlbnNlLgo+ID4gPiAKPiA+ID4gV2lsbCB0aGUgbmFtZSBvZl9w
-Y2lfc3VwcG9ydHNfY2xrcmVxX3ByZXNlbnQoKSBsb29rIGdvb2Q/IE9yIHdlCj4gPiA+IGp1c3Qg
-ZHJvcCBpdCBhbmQgbGV0IGhvc3QgZHJpdmVycyB0byBleHBsaWNpdGx5IGNoZWNrCj4gPiA+IHN1
-cHBvcnRzLWNsa3JlcSBpbnNpZGUgdGhlaXIgY29kZT8KPiA+IAo+ID4gSSdkIHByZWZlciB0byBk
-cm9wIHRoZSBBUEkuCj4gCj4gQW4gQVBJIG1pZ2h0IGhlbHAgd2l0aCBjb25zaXN0ZW5jeSBhY3Jv
-c3MgRFQgYmluZGluZ3MuICBXZSBkb24ndCB3YW50Cj4gZHJpdmVycyB0byBwaWNrIHRoZWlyIG93
-biBuYW1lcyBmb3IgJ3N1cHBvcnRzLWNsa3JlcScuCj4gCgpJIGRvbid0IGtub3cgd2hhdCB5b3Ug
-bWVhbiBieSAnZHJpdmVycyB0byBwaWNrIHRoZWlyIG93biBuYW1lcycuIFdpdGggb3Igd2l0aG91
-dAp0aGlzIEFQSSwgdGhlIGRyaXZlcnMgaGF2ZSB0byB1c2UgYSBsb2NhbCB2YXJpYWJsZToKCi0J
-cGNpZS0+c3VwcG9ydHNfY2xrcmVxID0KLQkJb2ZfcHJvcGVydHlfcmVhZF9ib29sKHBjaWUtPmRl
-di0+b2Zfbm9kZSwgInN1cHBvcnRzLWNsa3JlcSIpOworCXBjaWUtPnN1cHBvcnRzX2Nsa3JlcSA9
-IG9mX3BjaV9jbGtyZXFfcHJlc2VudChwY2llLT5kZXYtPm9mX25vZGUpOwoKV2hhdCB0aGlzIEFQ
-SSBkb2VzIGlzLCBqdXN0IGhpZGluZyB0aGUgJ3N1cHBvcnRzLWNsa3JlcScgcHJvcGVydHksIG5v
-dGhpbmcgbW9yZS4KCi0gTWFuaQoKLS0gCuCuruCuo+Cuv+CuteCuo+CvjeCuo+CuqeCvjSDgrprg
-rqTgrr7grprgrr/grrXgrq7gr40KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBs
-aXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
-dGluZm8vbGludXgtcm9ja2NoaXAK
+
+--===============6173662795295726659==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="fkgy7qwVQJZANVWh"
+Content-Disposition: inline
+
+
+--fkgy7qwVQJZANVWh
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Tue, Oct 21, 2025 at 05:22:41PM +0200, muhammed.efecetin.67@gmail.com wr=
+ote:
+> From: Muhammed Efe Cetin <efectn@protonmail.com>
+>=20
+> Add new khadas,mcu-edge2 compatible which is going to be used with Khadas
+> Edge 2.
+>=20
+> Signed-off-by: Muhammed Efe Cetin <efectn@protonmail.com>
+
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
+pw-bot: not-applicable
+
+--fkgy7qwVQJZANVWh
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaPkWSwAKCRB4tDGHoIJi
+0mKOAQCBpjYa4ZhdL2trp7ttjTHXvdg7cdGJcZm3u9Hngw8AAwEA83IZEKUFHqo2
+e7poEnoQa42kR0WbPNoO3Xjg3NFgygs=
+=OllD
+-----END PGP SIGNATURE-----
+
+--fkgy7qwVQJZANVWh--
+
+
+--===============6173662795295726659==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============6173662795295726659==--
+
