@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C3FDCCF9E1
-	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Oct 2025 16:25:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 347B4CCD1BC
+	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Oct 2025 16:25:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4XPpPkE9tAdu1/jBNC7KAx6K4UL1AUdRAU1EkFptUyA=; b=sNdmpopiin90Zd
-	TXlUzNsz4/XXNkGehxHJ8UEEGT158jPjNwvtoK89Lx0dNQfTrNdyq/aq9Jpox5LjFObxpWAuxhtc0
-	ryjxWKb8wsaWsemm/Y2LoIS6GwFtN8PPCoF5L6yV53DTXofLPP+K8DKePGZ9al8FHm1wIxZNxpUXD
-	HKATIp6qUvf/l4sWKd2iAhonl1XNYta5lnOUSJllU8iE2I4e0ex9IACxRYvUwY4WX855+rQjlnAxY
-	yFnIONJBMW5Vatm9/Ed+8cq2ijGUMkpo7PGJDgWmrYy74X2LgBMFxCArgO9gtV8TDfJ3949ONqXka
-	Ptu51juhCZf8FiVvAZrw==;
+	List-Owner; bh=CUyIUIchzkrfCQLzeSIbQxGUHglLfWGcO7Rvh4EoxoY=; b=1V21MPhOnlCHjF
+	ne82qH+MV2TXqPoCntyLQ5LlQ4NWKaXH+KdgvLaLN2qEnMywk2B0nPCC+7jjY+qFtHKP0Lnf3/KLI
+	g96jkeQgVmbGjblCrhJUh/i1rYChGuFdX++k76u5WGuT6TAEW89PIjQC3j8vHM+/6MZ0VzMvujBBY
+	dV3UCYKLAbc/7prprwCrWtjCotKe94LCiZ0n7kmsbKFfQFx+OmMPAwxDMKQm5nJqOBgXrP70XbmPA
+	T1QpqGhhgjEytN+DsBVhOzQIqhMaJLWoy9PAQIRCLbcSorTm1JLCB801eodZ3Azc7vRxWMXcOYV9v
+	MGxGJ9auUrOAtBDau6fA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBbem-00000003YVp-049I;
-	Wed, 22 Oct 2025 16:25:48 +0000
+	id 1vBber-00000003YdA-3BNL;
+	Wed, 22 Oct 2025 16:25:53 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBbef-00000003YO9-11Xo;
-	Wed, 22 Oct 2025 16:25:44 +0000
+	id 1vBbeh-00000003YQK-4Bdq;
+	Wed, 22 Oct 2025 16:25:47 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1761150338;
-	bh=f2fEBCZrGOsWKvCfquS/+GiEeUzkrxlGZ7e62F4CnQQ=;
+	s=mail; t=1761150341;
+	bh=Cs8lP4tys12ZhFtU1Od+kEGifjR6IAEPuhpSrnZ7dw8=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=UdCDSI0VrP3PPdAYBmKNaEYtihzx+N6HsuzPws3+7wS1X0xkgpQPrLebJ+ntbiWWc
-	 somfR4/rUgU2yr8WP5r6qRL2cqFFUBKpmT2ylbYh7zemAGJQAJR5erjonwTG5JPoFp
-	 rsrWvZfg0NQW5TQeuKZ46GeZAuyjePXlDoJ8LROvb4s4o/5jptU8n0ANdkY63sxPg8
-	 WRfNZ8Pm+OrcQZ8OdJgb6/QjwTlw3hNjA7CPnHgRKu/pqHmZMtbSUOXUQuDyJY9MN6
-	 PI6hDEHe2AVCJeRAyZ9WCtRMIlcgzJvALO2d+v8+m4mnqRf0F5N9wbJj8PuHN94Dia
-	 ef2fp6hUuts5w==
+	b=nJ/g6UITzO6dRtOt+Px2qCU+6PdnjOYmGV9qeKrAnMfm23mWAZTjCNTPVsaizdCN+
+	 R1GAPWHjiIGUqwrpfUHptG1RCWCItOLiBQcHi5gdICumh5U61pG420Nj5FMQWIZcEI
+	 XfSR5q8xvC9i24qvX+XGuJsF6bGbkNk9HEP2CGKHoFWhpORm22sGNXS3KvC9rhk0hh
+	 OgVGQTk4QnIbg4z33eut/VKQts42HNq0V48OTLCkNHfIRn8XltQ4RUmInD9iQjD5XS
+	 TtNK/rNncTu3iup7/lBYUgt//CeknKqa0V5beBuGaZUr1eVduwHVEeac5+/DfBT9XC
+	 fGsvHGnr+uzdw==
 Received: from trenzalore (unknown [23.233.251.139])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: detlev)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 11C2C17E1413;
-	Wed, 22 Oct 2025 18:25:35 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id EDE6017E108C;
+	Wed, 22 Oct 2025 18:25:38 +0200 (CEST)
 From: Detlev Casanova <detlev.casanova@collabora.com>
 To: linux-kernel@vger.kernel.org
 Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
@@ -63,16 +63,16 @@ Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
 	kernel@collabora.com,
 	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
 	Diederik de Haas <didi.debian@cknow.org>
-Subject: [PATCH v3 03/15] media: rkvdec: Switch to using structs instead of writel
-Date: Wed, 22 Oct 2025 12:22:02 -0400
-Message-ID: <20251022162459.271603-4-detlev.casanova@collabora.com>
+Subject: [PATCH v3 04/15] media: rkvdec: Move cabac tables to their own source file
+Date: Wed, 22 Oct 2025 12:22:03 -0400
+Message-ID: <20251022162459.271603-5-detlev.casanova@collabora.com>
 X-Mailer: git-send-email 2.51.1.dirty
 In-Reply-To: <20251022162459.271603-1-detlev.casanova@collabora.com>
 References: <20251022162459.271603-1-detlev.casanova@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251022_092541_961924_9D662E0F 
-X-CRM114-Status: GOOD (  23.98  )
+X-CRM114-CacheID: sfid-20251022_092544_550435_EDD43566 
+X-CRM114-Status: GOOD (  12.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,1447 +84,977 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-In an effort to merge the rkvdec2 driver [1] with this one, switch from
-writel() calls to using structs to represent the register mappings.
-
-This is done in order to have all supported decoders use the same format
-in the future and ease reading of the code.
-
-Using structs also improves stability as the hardware is tested and
-validated downstream using a similar method.
-It was noticed, on decoders, that:
- - Some registers require to be writen in increasing order [2]
- - Some registers, even if unrelated, need to be written to their reset
-   values (it was the case here for axi_ddr_[rw]data).
-
-Using structs can also help improving performance later when, e.g.
-multicore support is added on RK3588.
-
-Performance seems to be slightly improved, but at least, not made worse.
-Running fluster's JVT-AVC_V1 test suite with GStreamer on the Radxa ROCK
-PI 4 SE gives the following times:
-
-Before this patch:
-
-- --jobs 1: Ran 129/135 tests successfully               in 77.167 secs
-- --jobs 6: Ran 129/135 tests successfully               in 23.046 secs
-
-With this patch:
-- --jobs 1: Ran 129/135 tests successfully               in 70.698 secs
-- --jobs 6: Ran 129/135 tests successfully               in 22.917 secs
-
-This also shows that the fluster score hasn't changed.
-
-[1]: https://lore.kernel.org/all/20250325213303.826925-1-detlev.casanova@collabora.com/
-[2]: https://lore.kernel.org/all/20200127143009.15677-5-andrzej.p@collabora.com/
-
-Tested-by: Diederik de Haas <didi.debian@cknow.org>  # Rock 5B
-Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
----
- .../platform/rockchip/rkvdec/rkvdec-h264.c    | 165 +++--
- .../platform/rockchip/rkvdec/rkvdec-hevc.c    |  63 +-
- .../platform/rockchip/rkvdec/rkvdec-regs.h    | 571 ++++++++++++------
- .../platform/rockchip/rkvdec/rkvdec-vp9.c     | 231 +++----
- .../media/platform/rockchip/rkvdec/rkvdec.c   |  10 +-
- .../media/platform/rockchip/rkvdec/rkvdec.h   |   1 +
- 6 files changed, 587 insertions(+), 454 deletions(-)
-
-diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-h264.c b/drivers/media/platform/rockchip/rkvdec/rkvdec-h264.c
-index d14b4d173448..116e7b1076b7 100644
---- a/drivers/media/platform/rockchip/rkvdec/rkvdec-h264.c
-+++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-h264.c
-@@ -115,6 +115,7 @@ struct rkvdec_h264_run {
- struct rkvdec_h264_ctx {
- 	struct rkvdec_aux_buf priv_tbl;
- 	struct rkvdec_h264_reflists reflists;
-+	struct rkvdec_regs regs;
- };
- 
- #define CABAC_ENTRY(ctxidx, idc0_m, idc0_n, idc1_m, idc1_n,		\
-@@ -841,45 +842,41 @@ static void assemble_hw_scaling_list(struct rkvdec_ctx *ctx,
- }
- 
- /*
-- * dpb poc related registers table
-+ * Set the ref POC in the correct register.
-+ *
-+ * The 32 registers are spread across 3 regions, each alternating top and bottom ref POCs:
-+ *  - 1: ref 0 to 14 contain top 0 to 7 and bottoms 0 to 6
-+ *  - 2: ref 15 to 29 contain top 8 to 14 and bottoms 7 to 14
-+ *  - 3: ref 30 and 31 which correspond to top 15 and bottom 15 respectively.
-  */
--static const u32 poc_reg_tbl_top_field[16] = {
--	RKVDEC_REG_H264_POC_REFER0(0),
--	RKVDEC_REG_H264_POC_REFER0(2),
--	RKVDEC_REG_H264_POC_REFER0(4),
--	RKVDEC_REG_H264_POC_REFER0(6),
--	RKVDEC_REG_H264_POC_REFER0(8),
--	RKVDEC_REG_H264_POC_REFER0(10),
--	RKVDEC_REG_H264_POC_REFER0(12),
--	RKVDEC_REG_H264_POC_REFER0(14),
--	RKVDEC_REG_H264_POC_REFER1(1),
--	RKVDEC_REG_H264_POC_REFER1(3),
--	RKVDEC_REG_H264_POC_REFER1(5),
--	RKVDEC_REG_H264_POC_REFER1(7),
--	RKVDEC_REG_H264_POC_REFER1(9),
--	RKVDEC_REG_H264_POC_REFER1(11),
--	RKVDEC_REG_H264_POC_REFER1(13),
--	RKVDEC_REG_H264_POC_REFER2(0)
--};
--
--static const u32 poc_reg_tbl_bottom_field[16] = {
--	RKVDEC_REG_H264_POC_REFER0(1),
--	RKVDEC_REG_H264_POC_REFER0(3),
--	RKVDEC_REG_H264_POC_REFER0(5),
--	RKVDEC_REG_H264_POC_REFER0(7),
--	RKVDEC_REG_H264_POC_REFER0(9),
--	RKVDEC_REG_H264_POC_REFER0(11),
--	RKVDEC_REG_H264_POC_REFER0(13),
--	RKVDEC_REG_H264_POC_REFER1(0),
--	RKVDEC_REG_H264_POC_REFER1(2),
--	RKVDEC_REG_H264_POC_REFER1(4),
--	RKVDEC_REG_H264_POC_REFER1(6),
--	RKVDEC_REG_H264_POC_REFER1(8),
--	RKVDEC_REG_H264_POC_REFER1(10),
--	RKVDEC_REG_H264_POC_REFER1(12),
--	RKVDEC_REG_H264_POC_REFER1(14),
--	RKVDEC_REG_H264_POC_REFER2(1)
--};
-+static void set_poc_reg(struct rkvdec_regs *regs, uint32_t poc, int id, bool bottom)
-+{
-+	if (!bottom) {
-+		switch (id) {
-+		case 0 ... 7:
-+			regs->h26x.ref0_14_poc[id * 2] = poc;
-+			break;
-+		case 8 ... 14:
-+			regs->h26x.ref15_29_poc[(id - 8) * 2 + 1] = poc;
-+			break;
-+		case 15:
-+			regs->h26x.ref30_poc = poc;
-+			break;
-+		}
-+	} else {
-+		switch (id) {
-+		case 0 ... 6:
-+			regs->h26x.ref0_14_poc[id * 2 + 1] = poc;
-+			break;
-+		case 7 ... 14:
-+			regs->h26x.ref15_29_poc[(id - 7) * 2] = poc;
-+			break;
-+		case 15:
-+			regs->h26x.ref31_poc = poc;
-+			break;
-+		}
-+	}
-+}
- 
- static void config_registers(struct rkvdec_ctx *ctx,
- 			     struct rkvdec_h264_run *run)
-@@ -894,6 +891,7 @@ static void config_registers(struct rkvdec_ctx *ctx,
- 	struct vb2_v4l2_buffer *src_buf = run->base.bufs.src;
- 	struct vb2_v4l2_buffer *dst_buf = run->base.bufs.dst;
- 	const struct v4l2_format *f;
-+	struct rkvdec_regs *regs = &h264_ctx->regs;
- 	dma_addr_t rlc_addr;
- 	dma_addr_t refer_addr;
- 	u32 rlc_len;
-@@ -903,10 +901,11 @@ static void config_registers(struct rkvdec_ctx *ctx,
- 	u32 yuv_virstride = 0;
- 	u32 offset;
- 	dma_addr_t dst_addr;
--	u32 reg, i;
-+	u32 i;
- 
--	reg = RKVDEC_MODE(RKVDEC_MODE_H264);
--	writel_relaxed(reg, rkvdec->regs + RKVDEC_REG_SYSCTRL);
-+	memset(regs, 0, sizeof(*regs));
-+
-+	regs->common.reg02.dec_mode = RKVDEC_MODE_H264;
- 
- 	f = &ctx->decoded_fmt;
- 	dst_fmt = &f->fmt.pix_mp;
-@@ -921,39 +920,35 @@ static void config_registers(struct rkvdec_ctx *ctx,
- 	else if (sps->chroma_format_idc == 2)
- 		yuv_virstride = 2 * y_virstride;
- 
--	reg = RKVDEC_Y_HOR_VIRSTRIDE(hor_virstride / 16) |
--	      RKVDEC_UV_HOR_VIRSTRIDE(hor_virstride / 16) |
--	      RKVDEC_SLICE_NUM_HIGHBIT |
--	      RKVDEC_SLICE_NUM_LOWBITS(0x7ff);
--	writel_relaxed(reg, rkvdec->regs + RKVDEC_REG_PICPAR);
-+	regs->common.reg03.uv_hor_virstride = hor_virstride / 16;
-+	regs->common.reg03.y_hor_virstride = hor_virstride / 16;
-+	regs->common.reg03.slice_num_highbit = 1;
-+	regs->common.reg03.slice_num_lowbits = 0x7ff;
- 
- 	/* config rlc base address */
- 	rlc_addr = vb2_dma_contig_plane_dma_addr(&src_buf->vb2_buf, 0);
--	writel_relaxed(rlc_addr, rkvdec->regs + RKVDEC_REG_STRM_RLC_BASE);
--	writel_relaxed(rlc_addr, rkvdec->regs + RKVDEC_REG_RLCWRITE_BASE);
-+	regs->common.strm_rlc_base = rlc_addr;
-+	regs->h26x.rlcwrite_base = rlc_addr;
- 
- 	rlc_len = vb2_get_plane_payload(&src_buf->vb2_buf, 0);
--	reg = RKVDEC_STRM_LEN(rlc_len);
--	writel_relaxed(reg, rkvdec->regs + RKVDEC_REG_STRM_LEN);
-+	regs->common.stream_len = rlc_len;
- 
- 	/* config cabac table */
- 	offset = offsetof(struct rkvdec_h264_priv_tbl, cabac_table);
--	writel_relaxed(priv_start_addr + offset,
--		       rkvdec->regs + RKVDEC_REG_CABACTBL_PROB_BASE);
-+	regs->common.cabactbl_base = priv_start_addr + offset;
- 
- 	/* config output base address */
- 	dst_addr = vb2_dma_contig_plane_dma_addr(&dst_buf->vb2_buf, 0);
--	writel_relaxed(dst_addr, rkvdec->regs + RKVDEC_REG_DECOUT_BASE);
-+	regs->common.decout_base = dst_addr;
- 
--	reg = RKVDEC_Y_VIRSTRIDE(y_virstride / 16);
--	writel_relaxed(reg, rkvdec->regs + RKVDEC_REG_Y_VIRSTRIDE);
-+	regs->common.reg08.y_virstride = y_virstride / 16;
- 
--	reg = RKVDEC_YUV_VIRSTRIDE(yuv_virstride / 16);
--	writel_relaxed(reg, rkvdec->regs + RKVDEC_REG_YUV_VIRSTRIDE);
-+	regs->common.reg09.yuv_virstride = yuv_virstride / 16;
- 
- 	/* config ref pic address & poc */
- 	for (i = 0; i < ARRAY_SIZE(dec_params->dpb); i++) {
- 		struct vb2_buffer *vb_buf = run->ref_buf[i];
-+		struct ref_base *base;
- 
- 		/*
- 		 * If a DPB entry is unused or invalid, address of current destination
-@@ -963,54 +958,36 @@ static void config_registers(struct rkvdec_ctx *ctx,
- 			vb_buf = &dst_buf->vb2_buf;
- 		refer_addr = vb2_dma_contig_plane_dma_addr(vb_buf, 0);
- 
--		if (dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_ACTIVE)
--			refer_addr |= RKVDEC_COLMV_USED_FLAG_REF;
--		if (dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_FIELD)
--			refer_addr |= RKVDEC_FIELD_REF;
--
--		if (dpb[i].fields & V4L2_H264_TOP_FIELD_REF)
--			refer_addr |= RKVDEC_TOPFIELD_USED_REF;
--		if (dpb[i].fields & V4L2_H264_BOTTOM_FIELD_REF)
--			refer_addr |= RKVDEC_BOTFIELD_USED_REF;
--
--		writel_relaxed(dpb[i].top_field_order_cnt,
--			       rkvdec->regs +  poc_reg_tbl_top_field[i]);
--		writel_relaxed(dpb[i].bottom_field_order_cnt,
--			       rkvdec->regs + poc_reg_tbl_bottom_field[i]);
--
- 		if (i < V4L2_H264_NUM_DPB_ENTRIES - 1)
--			writel_relaxed(refer_addr,
--				       rkvdec->regs + RKVDEC_REG_H264_BASE_REFER(i));
-+			base = &regs->h26x.ref0_14_base[i];
- 		else
--			writel_relaxed(refer_addr,
--				       rkvdec->regs + RKVDEC_REG_H264_BASE_REFER15);
--	}
-+			base = &regs->h26x.ref15_base;
- 
--	reg = RKVDEC_CUR_POC(dec_params->top_field_order_cnt);
--	writel_relaxed(reg, rkvdec->regs + RKVDEC_REG_CUR_POC0);
-+		base->field_ref = !!(dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_FIELD);
-+		base->colmv_used_flag_ref = !!(dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_ACTIVE);
-+		base->topfield_used_ref = !!(dpb[i].fields & V4L2_H264_TOP_FIELD_REF);
-+		base->botfield_used_ref = !!(dpb[i].fields & V4L2_H264_BOTTOM_FIELD_REF);
-+		base->base_addr = refer_addr >> 4;
- 
--	reg = RKVDEC_CUR_POC(dec_params->bottom_field_order_cnt);
--	writel_relaxed(reg, rkvdec->regs + RKVDEC_REG_CUR_POC1);
-+		set_poc_reg(regs, dpb[i].top_field_order_cnt, i, false);
-+		set_poc_reg(regs, dpb[i].bottom_field_order_cnt, i, true);
-+	}
-+
-+	regs->h26x.cur_poc = dec_params->top_field_order_cnt;
-+	regs->h26x.cur_poc1 = dec_params->bottom_field_order_cnt;
- 
- 	/* config hw pps address */
- 	offset = offsetof(struct rkvdec_h264_priv_tbl, param_set);
--	writel_relaxed(priv_start_addr + offset,
--		       rkvdec->regs + RKVDEC_REG_PPS_BASE);
-+	regs->h26x.pps_base = priv_start_addr + offset;
- 
- 	/* config hw rps address */
- 	offset = offsetof(struct rkvdec_h264_priv_tbl, rps);
--	writel_relaxed(priv_start_addr + offset,
--		       rkvdec->regs + RKVDEC_REG_RPS_BASE);
--
--	reg = RKVDEC_AXI_DDR_RDATA(0);
--	writel_relaxed(reg, rkvdec->regs + RKVDEC_REG_AXI_DDR_RDATA);
--
--	reg = RKVDEC_AXI_DDR_WDATA(0);
--	writel_relaxed(reg, rkvdec->regs + RKVDEC_REG_AXI_DDR_WDATA);
-+	regs->h26x.rps_base = priv_start_addr + offset;
- 
- 	offset = offsetof(struct rkvdec_h264_priv_tbl, err_info);
--	writel_relaxed(priv_start_addr + offset,
--		       rkvdec->regs + RKVDEC_REG_H264_ERRINFO_BASE);
-+	regs->h26x.errorinfo_base = priv_start_addr + offset;
-+
-+	rkvdec_memcpy_toio(rkvdec->regs, regs, MIN(sizeof(*regs), 4 * rkvdec->variant->num_regs));
- }
- 
- #define RKVDEC_H264_MAX_DEPTH_IN_BYTES		2
-@@ -1181,8 +1158,6 @@ static int rkvdec_h264_run(struct rkvdec_ctx *ctx)
- 
- 	schedule_delayed_work(&rkvdec->watchdog_work, msecs_to_jiffies(2000));
- 
--	writel(0, rkvdec->regs + RKVDEC_REG_STRMD_ERR_EN);
--	writel(0, rkvdec->regs + RKVDEC_REG_H264_ERR_E);
- 	writel(1, rkvdec->regs + RKVDEC_REG_PREF_LUMA_CACHE_COMMAND);
- 	writel(1, rkvdec->regs + RKVDEC_REG_PREF_CHR_CACHE_COMMAND);
- 
-diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-hevc.c b/drivers/media/platform/rockchip/rkvdec/rkvdec-hevc.c
-index fc7e6a260b0a..01f92fa27356 100644
---- a/drivers/media/platform/rockchip/rkvdec/rkvdec-hevc.c
-+++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-hevc.c
-@@ -129,6 +129,7 @@ struct rkvdec_hevc_run {
- struct rkvdec_hevc_ctx {
- 	struct rkvdec_aux_buf priv_tbl;
- 	struct v4l2_ctrl_hevc_scaling_matrix scaling_matrix_cache;
-+	struct rkvdec_regs regs;
- };
- 
- struct scaling_factor {
-@@ -548,6 +549,7 @@ static void config_registers(struct rkvdec_ctx *ctx,
- 	const struct v4l2_ctrl_hevc_slice_params *sl_params = &run->slices_params[0];
- 	const struct v4l2_hevc_dpb_entry *dpb = decode_params->dpb;
- 	struct rkvdec_hevc_ctx *hevc_ctx = ctx->priv;
-+	struct rkvdec_regs *regs = &hevc_ctx->regs;
- 	dma_addr_t priv_start_addr = hevc_ctx->priv_tbl.dma;
- 	const struct v4l2_pix_format_mplane *dst_fmt;
- 	struct vb2_v4l2_buffer *src_buf = run->base.bufs.src;
-@@ -564,8 +566,9 @@ static void config_registers(struct rkvdec_ctx *ctx,
- 	dma_addr_t dst_addr;
- 	u32 reg, i;
- 
--	reg = RKVDEC_MODE(RKVDEC_MODE_HEVC);
--	writel_relaxed(reg, rkvdec->regs + RKVDEC_REG_SYSCTRL);
-+	memset(regs, 0, sizeof(*regs));
-+
-+	regs->common.reg02.dec_mode = RKVDEC_MODE_HEVC;
- 
- 	f = &ctx->decoded_fmt;
- 	dst_fmt = &f->fmt.pix_mp;
-@@ -580,33 +583,27 @@ static void config_registers(struct rkvdec_ctx *ctx,
- 	else if (sps->chroma_format_idc == 2)
- 		yuv_virstride = 2 * y_virstride;
- 
--	reg = RKVDEC_Y_HOR_VIRSTRIDE(hor_virstride / 16) |
--	      RKVDEC_UV_HOR_VIRSTRIDE(hor_virstride / 16) |
--	      RKVDEC_SLICE_NUM_LOWBITS(run->num_slices);
--	writel_relaxed(reg, rkvdec->regs + RKVDEC_REG_PICPAR);
-+	regs->common.reg03.slice_num_lowbits = run->num_slices;
-+	regs->common.reg03.uv_hor_virstride = hor_virstride / 16;
-+	regs->common.reg03.y_hor_virstride = hor_virstride / 16;
- 
- 	/* config rlc base address */
- 	rlc_addr = vb2_dma_contig_plane_dma_addr(&src_buf->vb2_buf, 0);
--	writel_relaxed(rlc_addr, rkvdec->regs + RKVDEC_REG_STRM_RLC_BASE);
-+	regs->common.strm_rlc_base = rlc_addr;
- 
- 	rlc_len = vb2_get_plane_payload(&src_buf->vb2_buf, 0);
--	reg = RKVDEC_STRM_LEN(round_up(rlc_len, 16) + 64);
--	writel_relaxed(reg, rkvdec->regs + RKVDEC_REG_STRM_LEN);
-+	regs->common.stream_len = round_up(rlc_len, 16) + 64;
- 
- 	/* config cabac table */
- 	offset = offsetof(struct rkvdec_hevc_priv_tbl, cabac_table);
--	writel_relaxed(priv_start_addr + offset,
--		       rkvdec->regs + RKVDEC_REG_CABACTBL_PROB_BASE);
-+	regs->common.cabactbl_base = priv_start_addr + offset;
- 
- 	/* config output base address */
- 	dst_addr = vb2_dma_contig_plane_dma_addr(&dst_buf->vb2_buf, 0);
--	writel_relaxed(dst_addr, rkvdec->regs + RKVDEC_REG_DECOUT_BASE);
--
--	reg = RKVDEC_Y_VIRSTRIDE(y_virstride / 16);
--	writel_relaxed(reg, rkvdec->regs + RKVDEC_REG_Y_VIRSTRIDE);
-+	regs->common.decout_base = dst_addr;
- 
--	reg = RKVDEC_YUV_VIRSTRIDE(yuv_virstride / 16);
--	writel_relaxed(reg, rkvdec->regs + RKVDEC_REG_YUV_VIRSTRIDE);
-+	regs->common.reg08.y_virstride = y_virstride / 16;
-+	regs->common.reg09.yuv_virstride = yuv_virstride / 16;
- 
- 	/* config ref pic address */
- 	for (i = 0; i < 15; i++) {
-@@ -620,33 +617,29 @@ static void config_registers(struct rkvdec_ctx *ctx,
- 		}
- 
- 		refer_addr = vb2_dma_contig_plane_dma_addr(vb_buf, 0);
--		writel_relaxed(refer_addr | reg,
--			       rkvdec->regs + RKVDEC_REG_H264_BASE_REFER(i));
- 
--		reg = RKVDEC_POC_REFER(i < decode_params->num_active_dpb_entries ?
--			dpb[i].pic_order_cnt_val : 0);
--		writel_relaxed(reg,
--			       rkvdec->regs + RKVDEC_REG_H264_POC_REFER0(i));
-+		regs->h26x.ref0_14_base[i].base_addr = refer_addr >> 4;
-+		regs->h26x.ref0_14_base[i].field_ref = !!(reg & 1);
-+		regs->h26x.ref0_14_base[i].topfield_used_ref = !!(reg & 2);
-+		regs->h26x.ref0_14_base[i].botfield_used_ref = !!(reg & 4);
-+		regs->h26x.ref0_14_base[i].colmv_used_flag_ref = !!(reg & 8);
-+
-+		regs->h26x.ref0_14_poc[i] = i < decode_params->num_active_dpb_entries
-+					    ? dpb[i].pic_order_cnt_val
-+					    : 0;
- 	}
- 
--	reg = RKVDEC_CUR_POC(sl_params->slice_pic_order_cnt);
--	writel_relaxed(reg, rkvdec->regs + RKVDEC_REG_CUR_POC0);
-+	regs->h26x.cur_poc = sl_params->slice_pic_order_cnt;
- 
- 	/* config hw pps address */
- 	offset = offsetof(struct rkvdec_hevc_priv_tbl, param_set);
--	writel_relaxed(priv_start_addr + offset,
--		       rkvdec->regs + RKVDEC_REG_PPS_BASE);
-+	regs->h26x.pps_base = priv_start_addr + offset;
- 
- 	/* config hw rps address */
- 	offset = offsetof(struct rkvdec_hevc_priv_tbl, rps);
--	writel_relaxed(priv_start_addr + offset,
--		       rkvdec->regs + RKVDEC_REG_RPS_BASE);
--
--	reg = RKVDEC_AXI_DDR_RDATA(0);
--	writel_relaxed(reg, rkvdec->regs + RKVDEC_REG_AXI_DDR_RDATA);
-+	regs->h26x.rps_base = priv_start_addr + offset;
- 
--	reg = RKVDEC_AXI_DDR_WDATA(0);
--	writel_relaxed(reg, rkvdec->regs + RKVDEC_REG_AXI_DDR_WDATA);
-+	rkvdec_memcpy_toio(rkvdec->regs, regs, MIN(sizeof(*regs), 4 * rkvdec->variant->num_regs));
- }
- 
- #define RKVDEC_HEVC_MAX_DEPTH_IN_BYTES		2
-@@ -784,8 +777,6 @@ static int rkvdec_hevc_run(struct rkvdec_ctx *ctx)
- 
- 	schedule_delayed_work(&rkvdec->watchdog_work, msecs_to_jiffies(2000));
- 
--	writel(0, rkvdec->regs + RKVDEC_REG_STRMD_ERR_EN);
--	writel(0, rkvdec->regs + RKVDEC_REG_H264_ERR_E);
- 	writel(1, rkvdec->regs + RKVDEC_REG_PREF_LUMA_CACHE_COMMAND);
- 	writel(1, rkvdec->regs + RKVDEC_REG_PREF_CHR_CACHE_COMMAND);
- 
-diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-regs.h b/drivers/media/platform/rockchip/rkvdec/rkvdec-regs.h
-index c627b6b6f53a..7745ea257148 100644
---- a/drivers/media/platform/rockchip/rkvdec/rkvdec-regs.h
-+++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-regs.h
-@@ -3,7 +3,12 @@
- #ifndef RKVDEC_REGS_H_
- #define RKVDEC_REGS_H_
- 
--/* rkvcodec registers */
-+#include <linux/types.h>
-+
-+/*
-+ * REG_INTERRUPT is accessed via writel to enable the decoder after
-+ * configuring it and clear interrupt strmd_error_status
-+ */
- #define RKVDEC_REG_INTERRUPT				0x004
- #define RKVDEC_INTERRUPT_DEC_E				BIT(0)
- #define RKVDEC_CONFIG_DEC_CLK_GATE_E			BIT(1)
-@@ -30,198 +35,384 @@
- #define RKVDEC_SOFTRESET_RDY				BIT(22)
- #define RKVDEC_WR_DDR_ALIGN_EN				BIT(23)
- 
--#define RKVDEC_REG_SYSCTRL				0x008
--#define RKVDEC_IN_ENDIAN				BIT(0)
--#define RKVDEC_IN_SWAP32_E				BIT(1)
--#define RKVDEC_IN_SWAP64_E				BIT(2)
--#define RKVDEC_STR_ENDIAN				BIT(3)
--#define RKVDEC_STR_SWAP32_E				BIT(4)
--#define RKVDEC_STR_SWAP64_E				BIT(5)
--#define RKVDEC_OUT_ENDIAN				BIT(6)
--#define RKVDEC_OUT_SWAP32_E				BIT(7)
--#define RKVDEC_OUT_CBCR_SWAP				BIT(8)
--#define RKVDEC_RLC_MODE_DIRECT_WRITE			BIT(10)
--#define RKVDEC_RLC_MODE					BIT(11)
--#define RKVDEC_STRM_START_BIT(x)			(((x) & 0x7f) << 12)
--#define RKVDEC_MODE(x)					(((x) & 0x03) << 20)
--#define RKVDEC_MODE_HEVC				0
--#define RKVDEC_MODE_H264				1
--#define RKVDEC_MODE_VP9					2
--#define RKVDEC_RPS_MODE					BIT(24)
--#define RKVDEC_STRM_MODE				BIT(25)
--#define RKVDEC_H264_STRM_LASTPKT			BIT(26)
--#define RKVDEC_H264_FIRSTSLICE_FLAG			BIT(27)
--#define RKVDEC_H264_FRAME_ORSLICE			BIT(28)
--#define RKVDEC_BUSPR_SLOT_DIS				BIT(29)
--
--#define RKVDEC_REG_PICPAR				0x00C
--#define RKVDEC_Y_HOR_VIRSTRIDE(x)			((x) & 0x1ff)
--#define RKVDEC_SLICE_NUM_HIGHBIT			BIT(11)
--#define RKVDEC_UV_HOR_VIRSTRIDE(x)			(((x) & 0x1ff) << 12)
--#define RKVDEC_SLICE_NUM_LOWBITS(x)			(((x) & 0x7ff) << 21)
--
--#define RKVDEC_REG_STRM_RLC_BASE			0x010
--
--#define RKVDEC_REG_STRM_LEN				0x014
--#define RKVDEC_STRM_LEN(x)				((x) & 0x7ffffff)
--
--#define RKVDEC_REG_CABACTBL_PROB_BASE			0x018
--#define RKVDEC_REG_DECOUT_BASE				0x01C
--
--#define RKVDEC_REG_Y_VIRSTRIDE				0x020
--#define RKVDEC_Y_VIRSTRIDE(x)				((x) & 0xfffff)
--
--#define RKVDEC_REG_YUV_VIRSTRIDE			0x024
--#define RKVDEC_YUV_VIRSTRIDE(x)				((x) & 0x1fffff)
--#define RKVDEC_REG_H264_BASE_REFER(i)			(((i) * 0x04) + 0x028)
--
--#define RKVDEC_REG_H264_BASE_REFER15			0x0C0
--#define RKVDEC_FIELD_REF				BIT(0)
--#define RKVDEC_TOPFIELD_USED_REF			BIT(1)
--#define RKVDEC_BOTFIELD_USED_REF			BIT(2)
--#define RKVDEC_COLMV_USED_FLAG_REF			BIT(3)
--
--#define RKVDEC_REG_VP9_LAST_FRAME_BASE			0x02c
--#define RKVDEC_REG_VP9_GOLDEN_FRAME_BASE		0x030
--#define RKVDEC_REG_VP9_ALTREF_FRAME_BASE		0x034
--
--#define RKVDEC_REG_VP9_CPRHEADER_OFFSET			0x028
--#define RKVDEC_VP9_CPRHEADER_OFFSET(x)			((x) & 0xffff)
--
--#define RKVDEC_REG_VP9_REFERLAST_BASE			0x02C
--#define RKVDEC_REG_VP9_REFERGOLDEN_BASE			0x030
--#define RKVDEC_REG_VP9_REFERALFTER_BASE			0x034
--
--#define RKVDEC_REG_VP9COUNT_BASE			0x038
--#define RKVDEC_VP9COUNT_UPDATE_EN			BIT(0)
--
--#define RKVDEC_REG_VP9_SEGIDLAST_BASE			0x03C
--#define RKVDEC_REG_VP9_SEGIDCUR_BASE			0x040
--#define RKVDEC_REG_VP9_FRAME_SIZE(i)			((i) * 0x04 + 0x044)
--#define RKVDEC_VP9_FRAMEWIDTH(x)			(((x) & 0xffff) << 0)
--#define RKVDEC_VP9_FRAMEHEIGHT(x)			(((x) & 0xffff) << 16)
--
--#define RKVDEC_VP9_SEGID_GRP(i)				((i) * 0x04 + 0x050)
--#define RKVDEC_SEGID_ABS_DELTA(x)			((x) & 0x1)
--#define RKVDEC_SEGID_FRAME_QP_DELTA_EN(x)		(((x) & 0x1) << 1)
--#define RKVDEC_SEGID_FRAME_QP_DELTA(x)			(((x) & 0x1ff) << 2)
--#define RKVDEC_SEGID_FRAME_LOOPFILTER_VALUE_EN(x)	(((x) & 0x1) << 11)
--#define RKVDEC_SEGID_FRAME_LOOPFILTER_VALUE(x)		(((x) & 0x7f) << 12)
--#define RKVDEC_SEGID_REFERINFO_EN(x)			(((x) & 0x1) << 19)
--#define RKVDEC_SEGID_REFERINFO(x)			(((x) & 0x03) << 20)
--#define RKVDEC_SEGID_FRAME_SKIP_EN(x)			(((x) & 0x1) << 22)
--
--#define RKVDEC_VP9_CPRHEADER_CONFIG			0x070
--#define RKVDEC_VP9_TX_MODE(x)				((x) & 0x07)
--#define RKVDEC_VP9_FRAME_REF_MODE(x)			(((x) & 0x03) << 3)
--
--#define RKVDEC_VP9_REF_SCALE(i)				((i) * 0x04 + 0x074)
--#define RKVDEC_VP9_REF_HOR_SCALE(x)			((x) & 0xffff)
--#define RKVDEC_VP9_REF_VER_SCALE(x)			(((x) & 0xffff) << 16)
--
--#define RKVDEC_VP9_REF_DELTAS_LASTFRAME			0x080
--#define RKVDEC_REF_DELTAS_LASTFRAME(pos, val)		(((val) & 0x7f) << ((pos) * 7))
--
--#define RKVDEC_VP9_INFO_LASTFRAME			0x084
--#define RKVDEC_MODE_DELTAS_LASTFRAME(pos, val)		(((val) & 0x7f) << ((pos) * 7))
--#define RKVDEC_SEG_EN_LASTFRAME				BIT(16)
--#define RKVDEC_LAST_SHOW_FRAME				BIT(17)
--#define RKVDEC_LAST_INTRA_ONLY				BIT(18)
--#define RKVDEC_LAST_WIDHHEIGHT_EQCUR			BIT(19)
--#define RKVDEC_COLOR_SPACE_LASTKEYFRAME(x)		(((x) & 0x07) << 20)
--
--#define RKVDEC_VP9_INTERCMD_BASE			0x088
--
--#define RKVDEC_VP9_INTERCMD_NUM				0x08C
--#define RKVDEC_INTERCMD_NUM(x)				((x) & 0xffffff)
--
--#define RKVDEC_VP9_LASTTILE_SIZE			0x090
--#define RKVDEC_LASTTILE_SIZE(x)				((x) & 0xffffff)
--
--#define RKVDEC_VP9_HOR_VIRSTRIDE(i)			((i) * 0x04 + 0x094)
--#define RKVDEC_HOR_Y_VIRSTRIDE(x)			((x) & 0x1ff)
--#define RKVDEC_HOR_UV_VIRSTRIDE(x)			(((x) & 0x1ff) << 16)
--
--#define RKVDEC_REG_H264_POC_REFER0(i)			(((i) * 0x04) + 0x064)
--#define RKVDEC_REG_H264_POC_REFER1(i)			(((i) * 0x04) + 0x0C4)
--#define RKVDEC_REG_H264_POC_REFER2(i)			(((i) * 0x04) + 0x120)
--#define RKVDEC_POC_REFER(x)				((x) & 0xffffffff)
--
--#define RKVDEC_REG_CUR_POC0				0x0A0
--#define RKVDEC_REG_CUR_POC1				0x128
--#define RKVDEC_CUR_POC(x)				((x) & 0xffffffff)
--
--#define RKVDEC_REG_RLCWRITE_BASE			0x0A4
--#define RKVDEC_REG_PPS_BASE				0x0A8
--#define RKVDEC_REG_RPS_BASE				0x0AC
--
--#define RKVDEC_REG_STRMD_ERR_EN				0x0B0
--#define RKVDEC_STRMD_ERR_EN(x)				((x) & 0xffffffff)
--
--#define RKVDEC_REG_STRMD_ERR_STA			0x0B4
--#define RKVDEC_STRMD_ERR_STA(x)				((x) & 0xfffffff)
--#define RKVDEC_COLMV_ERR_REF_PICIDX(x)			(((x) & 0x0f) << 28)
--
--#define RKVDEC_REG_STRMD_ERR_CTU			0x0B8
--#define RKVDEC_STRMD_ERR_CTU(x)				((x) & 0xff)
--#define RKVDEC_STRMD_ERR_CTU_YOFFSET(x)			(((x) & 0xff) << 8)
--#define RKVDEC_STRMFIFO_SPACE2FULL(x)			(((x) & 0x7f) << 16)
--#define RKVDEC_VP9_ERR_EN_CTU0				BIT(24)
--
--#define RKVDEC_REG_SAO_CTU_POS				0x0BC
--#define RKVDEC_SAOWR_XOFFSET(x)				((x) & 0x1ff)
--#define RKVDEC_SAOWR_YOFFSET(x)				(((x) & 0x3ff) << 16)
--
--#define RKVDEC_VP9_LAST_FRAME_YSTRIDE			0x0C0
--#define RKVDEC_VP9_GOLDEN_FRAME_YSTRIDE			0x0C4
--#define RKVDEC_VP9_ALTREF_FRAME_YSTRIDE			0x0C8
--#define RKVDEC_VP9_REF_YSTRIDE(x)			(((x) & 0xfffff) << 0)
--
--#define RKVDEC_VP9_LAST_FRAME_YUVSTRIDE			0x0CC
--#define RKVDEC_VP9_REF_YUVSTRIDE(x)			(((x) & 0x1fffff) << 0)
--
--#define RKVDEC_VP9_REF_COLMV_BASE			0x0D0
--
--#define RKVDEC_REG_PERFORMANCE_CYCLE			0x100
--#define RKVDEC_PERFORMANCE_CYCLE(x)			((x) & 0xffffffff)
--
--#define RKVDEC_REG_AXI_DDR_RDATA			0x104
--#define RKVDEC_AXI_DDR_RDATA(x)				((x) & 0xffffffff)
--
--#define RKVDEC_REG_AXI_DDR_WDATA			0x108
--#define RKVDEC_AXI_DDR_WDATA(x)				((x) & 0xffffffff)
--
--#define RKVDEC_REG_FPGADEBUG_RESET			0x10C
--#define RKVDEC_BUSIFD_RESETN				BIT(0)
--#define RKVDEC_CABAC_RESETN				BIT(1)
--#define RKVDEC_DEC_CTRL_RESETN				BIT(2)
--#define RKVDEC_TRANSD_RESETN				BIT(3)
--#define RKVDEC_INTRA_RESETN				BIT(4)
--#define RKVDEC_INTER_RESETN				BIT(5)
--#define RKVDEC_RECON_RESETN				BIT(6)
--#define RKVDEC_FILER_RESETN				BIT(7)
--
--#define RKVDEC_REG_PERFORMANCE_SEL			0x110
--#define RKVDEC_PERF_SEL_CNT0(x)				((x) & 0x3f)
--#define RKVDEC_PERF_SEL_CNT1(x)				(((x) & 0x3f) << 8)
--#define RKVDEC_PERF_SEL_CNT2(x)				(((x) & 0x3f) << 16)
--
--#define RKVDEC_REG_PERFORMANCE_CNT(i)			((i) * 0x04 + 0x114)
--#define RKVDEC_PERF_CNT(x)				((x) & 0xffffffff)
--
--#define RKVDEC_REG_H264_ERRINFO_BASE			0x12C
--
--#define RKVDEC_REG_H264_ERRINFO_NUM			0x130
--#define RKVDEC_SLICEDEC_NUM(x)				((x) & 0x3fff)
--#define RKVDEC_STRMD_DECT_ERR_FLAG			BIT(15)
--#define RKVDEC_ERR_PKT_NUM(x)				(((x) & 0x3fff) << 16)
--
--#define RKVDEC_REG_H264_ERR_E				0x134
--#define RKVDEC_H264_ERR_EN_HIGHBITS(x)			((x) & 0x3fffffff)
--
- #define RKVDEC_REG_QOS_CTRL				0x18C
- 
-+/*
-+ * Cache configuration is not covered in the range of the register struct
-+ */
- #define RKVDEC_REG_PREF_LUMA_CACHE_COMMAND		0x410
- #define RKVDEC_REG_PREF_CHR_CACHE_COMMAND		0x450
- 
-+/*
-+ * Define the mode values
-+ */
-+#define RKVDEC_MODE_HEVC				0
-+#define RKVDEC_MODE_H264				1
-+#define RKVDEC_MODE_VP9					2
-+
-+/* rkvcodec registers */
-+struct rkvdec_common_regs {
-+	struct rkvdec_id {
-+		u32 minor_ver	: 8;
-+		u32 level	: 1;
-+		u32 dec_support	: 3;
-+		u32 profile	: 1;
-+		u32 reserved0	: 1;
-+		u32 codec_flag	: 1;
-+		u32 reserved1	: 1;
-+		u32 prod_num	: 16;
-+	} reg00;
-+
-+	struct rkvdec_int {
-+		u32 dec_e			: 1;
-+		u32 dec_clkgate_e		: 1;
-+		u32 reserved0			: 1;
-+		u32 timeout_mode		: 1;
-+		u32 dec_irq_dis			: 1;
-+		u32 dec_timeout_e		: 1;
-+		u32 buf_empty_en		: 1;
-+		u32 stmerror_waitdecfifo_empty	: 1;
-+		u32 dec_irq			: 1;
-+		u32 dec_irq_raw			: 1;
-+		u32 reserved2			: 2;
-+		u32 dec_rdy_sta			: 1;
-+		u32 dec_bus_sta			: 1;
-+		u32 dec_error_sta		: 1;
-+		u32 dec_timeout_sta		: 1;
-+		u32 dec_empty_sta		: 1;
-+		u32 colmv_ref_error_sta		: 1;
-+		u32 cabu_end_sta		: 1;
-+		u32 h264orvp9_error_mode	: 1;
-+		u32 softrst_en_p		: 1;
-+		u32 force_softreset_valid	: 1;
-+		u32 softreset_rdy		: 1;
-+		u32 reserved1			: 9;
-+	} reg01;
-+
-+	struct rkvdec_sysctrl {
-+		u32 in_endian			: 1;
-+		u32 in_swap32_e			: 1;
-+		u32 in_swap64_e			: 1;
-+		u32 str_endian			: 1;
-+		u32 str_swap32_e		: 1;
-+		u32 str_swap64_e		: 1;
-+		u32 out_endian			: 1;
-+		u32 out_swap32_e		: 1;
-+		u32 out_cbcr_swap		: 1;
-+		u32 reserved0			: 1;
-+		u32 rlc_mode_direct_write	: 1;
-+		u32 rlc_mode			: 1;
-+		u32 strm_start_bit		: 7;
-+		u32 reserved1			: 1;
-+		u32 dec_mode			: 2;
-+		u32 reserved2			: 2;
-+		u32 rps_mode			: 1;
-+		u32 stream_mode			: 1;
-+		u32 stream_lastpacket		: 1;
-+		u32 firstslice_flag		: 1;
-+		u32 frame_orslice		: 1;
-+		u32 buspr_slot_disable		: 1;
-+		u32 reserved3			: 2;
-+	} reg02;
-+
-+	struct rkvdec_picpar {
-+		u32 y_hor_virstride	: 9;
-+		u32 reserved		: 2;
-+		u32 slice_num_highbit	: 1;
-+		u32 uv_hor_virstride	: 9;
-+		u32 slice_num_lowbits	: 11;
-+	} reg03;
-+
-+	u32 strm_rlc_base;
-+	u32 stream_len;
-+	u32 cabactbl_base;
-+	u32 decout_base;
-+
-+	struct rkvdec_y_virstride {
-+		u32 y_virstride	: 20;
-+		u32 reserved0	: 12;
-+	} reg08;
-+
-+	struct rkvdec_yuv_virstride {
-+		u32 yuv_virstride	: 21;
-+		u32 reserved0		: 11;
-+	} reg09;
-+} __packed;
-+
-+struct ref_base {
-+	u32 field_ref		: 1;
-+	u32 topfield_used_ref	: 1;
-+	u32 botfield_used_ref	: 1;
-+	u32 colmv_used_flag_ref	: 1;
-+	u32 base_addr		: 28;
-+};
-+
-+struct rkvdec_h26x_regs {
-+	struct ref_base ref0_14_base[15];
-+	u32 ref0_14_poc[15];
-+
-+	u32 cur_poc;
-+	u32 rlcwrite_base;
-+	u32 pps_base;
-+	u32 rps_base;
-+
-+	u32 strmd_error_e;
-+
-+	struct {
-+		u32 strmd_error_status		: 28;
-+		u32 colmv_error_ref_picidx	: 4;
-+	} reg45;
-+
-+	struct {
-+		u32 strmd_error_ctu_xoffset	: 8;
-+		u32 strmd_error_ctu_yoffset	: 8;
-+		u32 streamfifo_space2full	: 7;
-+		u32 reserved0			: 1;
-+		u32 vp9_error_ctu0_en		: 1;
-+		u32 reserved1			: 7;
-+	} reg46;
-+
-+	struct {
-+		u32 saowr_xoffet	: 9;
-+		u32 reserved0		: 7;
-+		u32 saowr_yoffset	: 10;
-+		u32 reserved1		: 6;
-+	} reg47;
-+
-+	struct ref_base ref15_base;
-+
-+	u32 ref15_29_poc[15];
-+
-+	u32 performance_cycle;
-+	u32 axi_ddr_rdata;
-+	u32 axi_ddr_wdata;
-+
-+	struct {
-+		u32 busifd_resetn	: 1;
-+		u32 cabac_resetn	: 1;
-+		u32 dec_ctrl_resetn	: 1;
-+		u32 transd_resetn	: 1;
-+		u32 intra_resetn	: 1;
-+		u32 inter_resetn	: 1;
-+		u32 recon_resetn	: 1;
-+		u32 filer_resetn	: 1;
-+		u32 reserved0		: 24;
-+	} reg67;
-+
-+	struct {
-+		u32 perf_cnt0_sel	: 6;
-+		u32 reserved0		: 2;
-+		u32 perf_cnt1_sel	: 6;
-+		u32 reserved1		: 2;
-+		u32 perf_cnt2_sel	: 6;
-+		u32 reserved2		: 10;
-+	} reg68;
-+
-+	u32 perf_cnt0;
-+	u32 perf_cnt1;
-+	u32 perf_cnt2;
-+	u32 ref30_poc;
-+	u32 ref31_poc;
-+	u32 cur_poc1;
-+	u32 errorinfo_base;
-+
-+	struct {
-+		u32 slicedec_num		: 14;
-+		u32 reserved0			: 1;
-+		u32 strmd_detect_error_flag	: 1;
-+		u32 error_packet_num		: 14;
-+		u32 reserved1			: 2;
-+	} reg76;
-+
-+	struct {
-+		u32 error_en_highbits	: 30;
-+		u32 reserved		: 2;
-+	} reg77;
-+} __packed;
-+
-+struct rkvdec_vp9_regs {
-+	struct cprheader_offset {
-+		u32 cprheader_offset	: 16;
-+		u32 reserved		: 16;
-+	} reg10;
-+
-+	u32 refer_bases[3];
-+	u32 count_base;
-+	u32 segidlast_base;
-+	u32 segidcur_base;
-+
-+	struct frame_sizes {
-+		u32 framewidth		: 16;
-+		u32 frameheight		: 16;
-+	} reg17_19[3];
-+
-+	struct segid_grp {
-+		u32 segid_abs_delta			: 1;
-+		u32 segid_frame_qp_delta_en		: 1;
-+		u32 segid_frame_qp_delta		: 9;
-+		u32 segid_frame_loopfilter_value_en	: 1;
-+		u32 segid_frame_loopfilter_value	: 7;
-+		u32 segid_referinfo_en			: 1;
-+		u32 segid_referinfo			: 2;
-+		u32 segid_frame_skip_en			: 1;
-+		u32 reserved				: 9;
-+	} reg20_27[8];
-+
-+	struct cprheader_config {
-+		u32 tx_mode			: 3;
-+		u32 frame_reference_mode	: 2;
-+		u32 reserved			: 27;
-+	} reg28;
-+
-+	struct ref_scale {
-+		u32 ref_hor_scale		: 16;
-+		u32 ref_ver_scale		: 16;
-+	} reg29_31[3];
-+
-+	struct ref_deltas_lastframe {
-+		u32 ref_deltas_lastframe0	: 7;
-+		u32 ref_deltas_lastframe1	: 7;
-+		u32 ref_deltas_lastframe2	: 7;
-+		u32 ref_deltas_lastframe3	: 7;
-+		u32 reserved			: 4;
-+	} reg32;
-+
-+	struct info_lastframe {
-+		u32 mode_deltas_lastframe0		: 7;
-+		u32 mode_deltas_lastframe1		: 7;
-+		u32 reserved0				: 2;
-+		u32 segmentation_enable_lstframe	: 1;
-+		u32 last_show_frame			: 1;
-+		u32 last_intra_only			: 1;
-+		u32 last_widthheight_eqcur		: 1;
-+		u32 color_space_lastkeyframe		: 3;
-+		u32 reserved1				: 9;
-+	} reg33;
-+
-+	u32 intercmd_base;
-+
-+	struct intercmd_num {
-+		u32 intercmd_num	: 24;
-+		u32 reserved		: 8;
-+	} reg35;
-+
-+	struct lasttile_size {
-+		u32 lasttile_size	: 24;
-+		u32 reserved		: 8;
-+	} reg36;
-+
-+	struct hor_virstride {
-+		u32 y_hor_virstride	: 9;
-+		u32 reserved0		: 7;
-+		u32 uv_hor_virstride	: 9;
-+		u32 reserved1		: 7;
-+	} reg37_39[3];
-+
-+	u32 cur_poc;
-+
-+	struct rlcwrite_base {
-+		u32 reserved		: 3;
-+		u32 rlcwrite_base	: 29;
-+	} reg41;
-+
-+	struct pps_base {
-+		u32 reserved	: 4;
-+		u32 pps_base	: 28;
-+	} reg42;
-+
-+	struct rps_base {
-+		u32 reserved	: 4;
-+		u32 rps_base	: 28;
-+	} reg43;
-+
-+	struct strmd_error_en {
-+		u32 strmd_error_e	: 28;
-+		u32 reserved		: 4;
-+	} reg44;
-+
-+	u32 vp9_error_info0;
-+
-+	struct strmd_error_ctu {
-+		u32 strmd_error_ctu_xoffset	: 8;
-+		u32 strmd_error_ctu_yoffset	: 8;
-+		u32 streamfifo_space2full	: 7;
-+		u32 reserved0			: 1;
-+		u32 error_ctu0_en		: 1;
-+		u32 reserved1			: 7;
-+	} reg46;
-+
-+	struct sao_ctu_position {
-+		u32 saowr_xoffet	: 9;
-+		u32 reserved0		: 7;
-+		u32 saowr_yoffset	: 10;
-+		u32 reserved1		: 6;
-+	} reg47;
-+
-+	struct ystride {
-+		u32 virstride	: 20;
-+		u32 reserved	: 12;
-+	} reg48_50[3];
-+
-+	struct lastref_yuvstride {
-+		u32 lastref_yuv_virstride	: 21;
-+		u32 reserved			: 11;
-+	} reg51;
-+
-+	u32 refcolmv_base;
-+
-+	u32 reserved0[11];
-+
-+	u32 performance_cycle;
-+	u32 axi_ddr_rdata;
-+	u32 axi_ddr_wdata;
-+
-+	struct fpgadebug_reset {
-+		u32 busifd_resetn	: 1;
-+		u32 cabac_resetn	: 1;
-+		u32 dec_ctrl_resetn	: 1;
-+		u32 transd_resetn	: 1;
-+		u32 intra_resetn	: 1;
-+		u32 inter_resetn	: 1;
-+		u32 recon_resetn	: 1;
-+		u32 filer_resetn	: 1;
-+		u32 reserved		: 24;
-+	} reg67;
-+
-+	struct performance_sel {
-+		u32 perf_cnt0_sel	: 6;
-+		u32 reserved0		: 2;
-+		u32 perf_cnt1_sel	: 6;
-+		u32 reserved1		: 2;
-+		u32 perf_cnt2_sel	: 6;
-+		u32 reserved		: 10;
-+	} reg68;
-+
-+	u32 perf_cnt0;
-+	u32 perf_cnt1;
-+	u32 perf_cnt2;
-+
-+	u32 reserved1[3];
-+
-+	u32 vp9_error_info1;
-+
-+	struct error_ctu1 {
-+		u32 vp9_error_ctu1_x	: 6;
-+		u32 reserved0		: 2;
-+		u32 vp9_error_ctu1_y	: 6;
-+		u32 reserved1		: 1;
-+		u32 vp9_error_ctu1_en	: 1;
-+		u32 reserved2		: 16;
-+	} reg76;
-+
-+	u32 reserved2;
-+} __packed;
-+
-+struct rkvdec_regs {
-+	struct rkvdec_common_regs common;
-+	union {
-+		struct rkvdec_h26x_regs h26x;
-+		struct rkvdec_vp9_regs  vp9;
-+	};
-+} __packed;
-+
- #endif /* RKVDEC_REGS_H_ */
-diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-vp9.c b/drivers/media/platform/rockchip/rkvdec/rkvdec-vp9.c
-index b4bf01e839ef..0cf5a559701c 100644
---- a/drivers/media/platform/rockchip/rkvdec/rkvdec-vp9.c
-+++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-vp9.c
-@@ -163,6 +163,7 @@ struct rkvdec_vp9_ctx {
- 	struct v4l2_vp9_frame_context frame_context[4];
- 	struct rkvdec_vp9_frame_info cur;
- 	struct rkvdec_vp9_frame_info last;
-+	struct rkvdec_regs regs;
- };
- 
- static void write_coeff_plane(const u8 coef[6][6][3], u8 *coeff_plane)
-@@ -347,38 +348,6 @@ static void init_probs(struct rkvdec_ctx *ctx,
- 		init_inter_probs(ctx, run);
- }
- 
--struct rkvdec_vp9_ref_reg {
--	u32 reg_frm_size;
--	u32 reg_hor_stride;
--	u32 reg_y_stride;
--	u32 reg_yuv_stride;
--	u32 reg_ref_base;
--};
--
--static struct rkvdec_vp9_ref_reg ref_regs[] = {
--	{
--		.reg_frm_size = RKVDEC_REG_VP9_FRAME_SIZE(0),
--		.reg_hor_stride = RKVDEC_VP9_HOR_VIRSTRIDE(0),
--		.reg_y_stride = RKVDEC_VP9_LAST_FRAME_YSTRIDE,
--		.reg_yuv_stride = RKVDEC_VP9_LAST_FRAME_YUVSTRIDE,
--		.reg_ref_base = RKVDEC_REG_VP9_LAST_FRAME_BASE,
--	},
--	{
--		.reg_frm_size = RKVDEC_REG_VP9_FRAME_SIZE(1),
--		.reg_hor_stride = RKVDEC_VP9_HOR_VIRSTRIDE(1),
--		.reg_y_stride = RKVDEC_VP9_GOLDEN_FRAME_YSTRIDE,
--		.reg_yuv_stride = 0,
--		.reg_ref_base = RKVDEC_REG_VP9_GOLDEN_FRAME_BASE,
--	},
--	{
--		.reg_frm_size = RKVDEC_REG_VP9_FRAME_SIZE(2),
--		.reg_hor_stride = RKVDEC_VP9_HOR_VIRSTRIDE(2),
--		.reg_y_stride = RKVDEC_VP9_ALTREF_FRAME_YSTRIDE,
--		.reg_yuv_stride = 0,
--		.reg_ref_base = RKVDEC_REG_VP9_ALTREF_FRAME_BASE,
--	}
--};
--
- static struct rkvdec_decoded_buffer *
- get_ref_buf(struct rkvdec_ctx *ctx, struct vb2_v4l2_buffer *dst, u64 timestamp)
- {
-@@ -412,18 +381,17 @@ static dma_addr_t get_mv_base_addr(struct rkvdec_decoded_buffer *buf)
- static void config_ref_registers(struct rkvdec_ctx *ctx,
- 				 const struct rkvdec_vp9_run *run,
- 				 struct rkvdec_decoded_buffer *ref_buf,
--				 struct rkvdec_vp9_ref_reg *ref_reg)
-+				 int i)
- {
- 	unsigned int aligned_pitch, aligned_height, y_len, yuv_len;
--	struct rkvdec_dev *rkvdec = ctx->dev;
-+	struct rkvdec_vp9_ctx *vp9_ctx = ctx->priv;
-+	struct rkvdec_regs *regs = &vp9_ctx->regs;
- 
- 	aligned_height = round_up(ref_buf->vp9.height, 64);
--	writel_relaxed(RKVDEC_VP9_FRAMEWIDTH(ref_buf->vp9.width) |
--		       RKVDEC_VP9_FRAMEHEIGHT(ref_buf->vp9.height),
--		       rkvdec->regs + ref_reg->reg_frm_size);
-+	regs->vp9.reg17_19[i].frameheight = ref_buf->vp9.height;
-+	regs->vp9.reg17_19[i].framewidth = ref_buf->vp9.width;
- 
--	writel_relaxed(vb2_dma_contig_plane_dma_addr(&ref_buf->base.vb.vb2_buf, 0),
--		       rkvdec->regs + ref_reg->reg_ref_base);
-+	regs->vp9.refer_bases[i] = vb2_dma_contig_plane_dma_addr(&ref_buf->base.vb.vb2_buf, 0);
- 
- 	if (&ref_buf->base.vb == run->base.bufs.dst)
- 		return;
-@@ -432,59 +400,50 @@ static void config_ref_registers(struct rkvdec_ctx *ctx,
- 	y_len = aligned_height * aligned_pitch;
- 	yuv_len = (y_len * 3) / 2;
- 
--	writel_relaxed(RKVDEC_HOR_Y_VIRSTRIDE(aligned_pitch / 16) |
--		       RKVDEC_HOR_UV_VIRSTRIDE(aligned_pitch / 16),
--		       rkvdec->regs + ref_reg->reg_hor_stride);
--	writel_relaxed(RKVDEC_VP9_REF_YSTRIDE(y_len / 16),
--		       rkvdec->regs + ref_reg->reg_y_stride);
--
--	if (!ref_reg->reg_yuv_stride)
--		return;
-+	regs->vp9.reg37_39[i].y_hor_virstride = aligned_pitch / 16;
-+	regs->vp9.reg37_39[i].uv_hor_virstride = aligned_pitch / 16;
-+	regs->vp9.reg48_50[i].virstride = y_len / 16;
- 
--	writel_relaxed(RKVDEC_VP9_REF_YUVSTRIDE(yuv_len / 16),
--		       rkvdec->regs + ref_reg->reg_yuv_stride);
-+	if (!i)
-+		regs->vp9.reg51.lastref_yuv_virstride = yuv_len / 16;
- }
- 
- static void config_seg_registers(struct rkvdec_ctx *ctx, unsigned int segid)
- {
- 	struct rkvdec_vp9_ctx *vp9_ctx = ctx->priv;
-+	struct rkvdec_regs *regs = &vp9_ctx->regs;
- 	const struct v4l2_vp9_segmentation *seg;
--	struct rkvdec_dev *rkvdec = ctx->dev;
- 	s16 feature_val;
- 	int feature_id;
--	u32 val = 0;
- 
- 	seg = vp9_ctx->last.valid ? &vp9_ctx->last.seg : &vp9_ctx->cur.seg;
- 	feature_id = V4L2_VP9_SEG_LVL_ALT_Q;
- 	if (v4l2_vp9_seg_feat_enabled(seg->feature_enabled, feature_id, segid)) {
- 		feature_val = seg->feature_data[segid][feature_id];
--		val |= RKVDEC_SEGID_FRAME_QP_DELTA_EN(1) |
--		       RKVDEC_SEGID_FRAME_QP_DELTA(feature_val);
-+		regs->vp9.reg20_27[segid].segid_frame_qp_delta_en = 1;
-+		regs->vp9.reg20_27[segid].segid_frame_qp_delta = feature_val;
- 	}
- 
- 	feature_id = V4L2_VP9_SEG_LVL_ALT_L;
- 	if (v4l2_vp9_seg_feat_enabled(seg->feature_enabled, feature_id, segid)) {
- 		feature_val = seg->feature_data[segid][feature_id];
--		val |= RKVDEC_SEGID_FRAME_LOOPFILTER_VALUE_EN(1) |
--		       RKVDEC_SEGID_FRAME_LOOPFILTER_VALUE(feature_val);
-+		regs->vp9.reg20_27[segid].segid_frame_loopfilter_value_en = 1;
-+		regs->vp9.reg20_27[segid].segid_frame_loopfilter_value = feature_val;
- 	}
- 
- 	feature_id = V4L2_VP9_SEG_LVL_REF_FRAME;
- 	if (v4l2_vp9_seg_feat_enabled(seg->feature_enabled, feature_id, segid)) {
- 		feature_val = seg->feature_data[segid][feature_id];
--		val |= RKVDEC_SEGID_REFERINFO_EN(1) |
--		       RKVDEC_SEGID_REFERINFO(feature_val);
-+		regs->vp9.reg20_27[segid].segid_referinfo_en = 1;
-+		regs->vp9.reg20_27[segid].segid_referinfo = feature_val;
- 	}
- 
- 	feature_id = V4L2_VP9_SEG_LVL_SKIP;
--	if (v4l2_vp9_seg_feat_enabled(seg->feature_enabled, feature_id, segid))
--		val |= RKVDEC_SEGID_FRAME_SKIP_EN(1);
--
--	if (!segid &&
--	    (seg->flags & V4L2_VP9_SEGMENTATION_FLAG_ABS_OR_DELTA_UPDATE))
--		val |= RKVDEC_SEGID_ABS_DELTA(1);
-+	regs->vp9.reg20_27[segid].segid_frame_skip_en =
-+		v4l2_vp9_seg_feat_enabled(seg->feature_enabled, feature_id, segid);
- 
--	writel_relaxed(val, rkvdec->regs + RKVDEC_VP9_SEGID_GRP(segid));
-+	regs->vp9.reg20_27[segid].segid_abs_delta = !segid &&
-+		(seg->flags & V4L2_VP9_SEGMENTATION_FLAG_ABS_OR_DELTA_UPDATE);
- }
- 
- static void update_dec_buf_info(struct rkvdec_decoded_buffer *buf,
-@@ -521,7 +480,8 @@ static void config_registers(struct rkvdec_ctx *ctx,
- 	struct rkvdec_decoded_buffer *ref_bufs[3];
- 	struct rkvdec_decoded_buffer *dst, *last, *mv_ref;
- 	struct rkvdec_vp9_ctx *vp9_ctx = ctx->priv;
--	u32 val, last_frame_info = 0;
-+	struct rkvdec_regs *regs = &vp9_ctx->regs;
-+	u32 val;
- 	const struct v4l2_vp9_segmentation *seg;
- 	struct rkvdec_dev *rkvdec = ctx->dev;
- 	dma_addr_t addr;
-@@ -547,8 +507,7 @@ static void config_registers(struct rkvdec_ctx *ctx,
- 			(V4L2_VP9_FRAME_FLAG_KEY_FRAME |
- 			 V4L2_VP9_FRAME_FLAG_INTRA_ONLY));
- 
--	writel_relaxed(RKVDEC_MODE(RKVDEC_MODE_VP9),
--		       rkvdec->regs + RKVDEC_REG_SYSCTRL);
-+	regs->common.reg02.dec_mode = RKVDEC_MODE_VP9;
- 
- 	bit_depth = dec_params->bit_depth;
- 	aligned_height = round_up(ctx->decoded_fmt.fmt.pix_mp.height, 64);
-@@ -560,17 +519,14 @@ static void config_registers(struct rkvdec_ctx *ctx,
- 	uv_len = y_len / 2;
- 	yuv_len = y_len + uv_len;
- 
--	writel_relaxed(RKVDEC_Y_HOR_VIRSTRIDE(aligned_pitch / 16) |
--		       RKVDEC_UV_HOR_VIRSTRIDE(aligned_pitch / 16),
--		       rkvdec->regs + RKVDEC_REG_PICPAR);
--	writel_relaxed(RKVDEC_Y_VIRSTRIDE(y_len / 16),
--		       rkvdec->regs + RKVDEC_REG_Y_VIRSTRIDE);
--	writel_relaxed(RKVDEC_YUV_VIRSTRIDE(yuv_len / 16),
--		       rkvdec->regs + RKVDEC_REG_YUV_VIRSTRIDE);
-+	regs->common.reg03.y_hor_virstride = aligned_pitch / 16;
-+	regs->common.reg03.uv_hor_virstride = aligned_pitch / 16;
-+	regs->common.reg08.y_virstride = y_len / 16;
-+	regs->common.reg09.yuv_virstride = yuv_len / 16;
- 
- 	stream_len = vb2_get_plane_payload(&run->base.bufs.src->vb2_buf, 0);
--	writel_relaxed(RKVDEC_STRM_LEN(stream_len),
--		       rkvdec->regs + RKVDEC_REG_STRM_LEN);
-+
-+	regs->common.stream_len = stream_len;
- 
- 	/*
- 	 * Reset count buffer, because decoder only output intra related syntax
-@@ -588,14 +544,13 @@ static void config_registers(struct rkvdec_ctx *ctx,
- 		vp9_ctx->cur.segmapid++;
- 
- 	for (i = 0; i < ARRAY_SIZE(ref_bufs); i++)
--		config_ref_registers(ctx, run, ref_bufs[i], &ref_regs[i]);
-+		config_ref_registers(ctx, run, ref_bufs[i], i);
- 
- 	for (i = 0; i < 8; i++)
- 		config_seg_registers(ctx, i);
- 
--	writel_relaxed(RKVDEC_VP9_TX_MODE(vp9_ctx->cur.tx_mode) |
--		       RKVDEC_VP9_FRAME_REF_MODE(dec_params->reference_mode),
--		       rkvdec->regs + RKVDEC_VP9_CPRHEADER_CONFIG);
-+	regs->vp9.reg28.tx_mode = vp9_ctx->cur.tx_mode;
-+	regs->vp9.reg28.frame_reference_mode = dec_params->reference_mode;
- 
- 	if (!intra_only) {
- 		const struct v4l2_vp9_loop_filter *lf;
-@@ -609,43 +564,56 @@ static void config_registers(struct rkvdec_ctx *ctx,
- 		val = 0;
- 		for (i = 0; i < ARRAY_SIZE(lf->ref_deltas); i++) {
- 			delta = lf->ref_deltas[i];
--			val |= RKVDEC_REF_DELTAS_LASTFRAME(i, delta);
-+			switch (i) {
-+			case 0:
-+				regs->vp9.reg32.ref_deltas_lastframe0 = delta;
-+				break;
-+			case 1:
-+				regs->vp9.reg32.ref_deltas_lastframe1 = delta;
-+				break;
-+			case 2:
-+				regs->vp9.reg32.ref_deltas_lastframe2 = delta;
-+				break;
-+			case 3:
-+				regs->vp9.reg32.ref_deltas_lastframe3 = delta;
-+				break;
-+			}
- 		}
- 
--		writel_relaxed(val,
--			       rkvdec->regs + RKVDEC_VP9_REF_DELTAS_LASTFRAME);
--
- 		for (i = 0; i < ARRAY_SIZE(lf->mode_deltas); i++) {
- 			delta = lf->mode_deltas[i];
--			last_frame_info |= RKVDEC_MODE_DELTAS_LASTFRAME(i,
--									delta);
-+			switch (i) {
-+			case 0:
-+				regs->vp9.reg33.mode_deltas_lastframe0 = delta;
-+				break;
-+			case 1:
-+				regs->vp9.reg33.mode_deltas_lastframe1 = delta;
-+				break;
-+			}
- 		}
- 	}
- 
--	if (vp9_ctx->last.valid && !intra_only &&
--	    vp9_ctx->last.seg.flags & V4L2_VP9_SEGMENTATION_FLAG_ENABLED)
--		last_frame_info |= RKVDEC_SEG_EN_LASTFRAME;
-+	regs->vp9.reg33.segmentation_enable_lstframe =
-+		vp9_ctx->last.valid && !intra_only &&
-+		vp9_ctx->last.seg.flags & V4L2_VP9_SEGMENTATION_FLAG_ENABLED;
- 
--	if (vp9_ctx->last.valid &&
--	    vp9_ctx->last.flags & V4L2_VP9_FRAME_FLAG_SHOW_FRAME)
--		last_frame_info |= RKVDEC_LAST_SHOW_FRAME;
-+	regs->vp9.reg33.last_show_frame =
-+		vp9_ctx->last.valid &&
-+		vp9_ctx->last.flags & V4L2_VP9_FRAME_FLAG_SHOW_FRAME;
- 
--	if (vp9_ctx->last.valid &&
--	    vp9_ctx->last.flags &
--	    (V4L2_VP9_FRAME_FLAG_KEY_FRAME | V4L2_VP9_FRAME_FLAG_INTRA_ONLY))
--		last_frame_info |= RKVDEC_LAST_INTRA_ONLY;
-+	regs->vp9.reg33.last_intra_only =
-+		vp9_ctx->last.valid &&
-+		vp9_ctx->last.flags &
-+		(V4L2_VP9_FRAME_FLAG_KEY_FRAME | V4L2_VP9_FRAME_FLAG_INTRA_ONLY);
- 
--	if (vp9_ctx->last.valid &&
--	    last->vp9.width == dst->vp9.width &&
--	    last->vp9.height == dst->vp9.height)
--		last_frame_info |= RKVDEC_LAST_WIDHHEIGHT_EQCUR;
-+	regs->vp9.reg33.last_widthheight_eqcur =
-+		vp9_ctx->last.valid &&
-+		last->vp9.width == dst->vp9.width &&
-+		last->vp9.height == dst->vp9.height;
- 
--	writel_relaxed(last_frame_info,
--		       rkvdec->regs + RKVDEC_VP9_INFO_LASTFRAME);
--
--	writel_relaxed(stream_len - dec_params->compressed_header_size -
--		       dec_params->uncompressed_header_size,
--		       rkvdec->regs + RKVDEC_VP9_LASTTILE_SIZE);
-+	regs->vp9.reg36.lasttile_size =
-+		stream_len - dec_params->compressed_header_size -
-+		dec_params->uncompressed_header_size;
- 
- 	for (i = 0; !intra_only && i < ARRAY_SIZE(ref_bufs); i++) {
- 		unsigned int refw = ref_bufs[i]->vp9.width;
-@@ -654,29 +622,28 @@ static void config_registers(struct rkvdec_ctx *ctx,
- 
- 		hscale = (refw << 14) /	dst->vp9.width;
- 		vscale = (refh << 14) / dst->vp9.height;
--		writel_relaxed(RKVDEC_VP9_REF_HOR_SCALE(hscale) |
--			       RKVDEC_VP9_REF_VER_SCALE(vscale),
--			       rkvdec->regs + RKVDEC_VP9_REF_SCALE(i));
-+
-+		regs->vp9.reg29_31[i].ref_hor_scale = hscale;
-+		regs->vp9.reg29_31[i].ref_ver_scale = vscale;
- 	}
- 
- 	addr = vb2_dma_contig_plane_dma_addr(&dst->base.vb.vb2_buf, 0);
--	writel_relaxed(addr, rkvdec->regs + RKVDEC_REG_DECOUT_BASE);
-+	regs->common.decout_base = addr;
- 	addr = vb2_dma_contig_plane_dma_addr(&run->base.bufs.src->vb2_buf, 0);
--	writel_relaxed(addr, rkvdec->regs + RKVDEC_REG_STRM_RLC_BASE);
--	writel_relaxed(vp9_ctx->priv_tbl.dma +
--		       offsetof(struct rkvdec_vp9_priv_tbl, probs),
--		       rkvdec->regs + RKVDEC_REG_CABACTBL_PROB_BASE);
--	writel_relaxed(vp9_ctx->count_tbl.dma,
--		       rkvdec->regs + RKVDEC_REG_VP9COUNT_BASE);
--
--	writel_relaxed(vp9_ctx->priv_tbl.dma +
--		       offsetof(struct rkvdec_vp9_priv_tbl, segmap) +
--		       (RKVDEC_VP9_MAX_SEGMAP_SIZE * vp9_ctx->cur.segmapid),
--		       rkvdec->regs + RKVDEC_REG_VP9_SEGIDCUR_BASE);
--	writel_relaxed(vp9_ctx->priv_tbl.dma +
--		       offsetof(struct rkvdec_vp9_priv_tbl, segmap) +
--		       (RKVDEC_VP9_MAX_SEGMAP_SIZE * (!vp9_ctx->cur.segmapid)),
--		       rkvdec->regs + RKVDEC_REG_VP9_SEGIDLAST_BASE);
-+	regs->common.strm_rlc_base = addr;
-+
-+	regs->common.cabactbl_base = vp9_ctx->priv_tbl.dma +
-+		offsetof(struct rkvdec_vp9_priv_tbl, probs);
-+
-+	regs->vp9.count_base = vp9_ctx->count_tbl.dma;
-+
-+	regs->vp9.segidlast_base = vp9_ctx->priv_tbl.dma +
-+		offsetof(struct rkvdec_vp9_priv_tbl, segmap) +
-+		(RKVDEC_VP9_MAX_SEGMAP_SIZE * (!vp9_ctx->cur.segmapid));
-+
-+	regs->vp9.segidcur_base = vp9_ctx->priv_tbl.dma +
-+		offsetof(struct rkvdec_vp9_priv_tbl, segmap) +
-+		(RKVDEC_VP9_MAX_SEGMAP_SIZE * vp9_ctx->cur.segmapid);
- 
- 	if (!intra_only &&
- 	    !(dec_params->flags & V4L2_VP9_FRAME_FLAG_ERROR_RESILIENT) &&
-@@ -685,12 +652,14 @@ static void config_registers(struct rkvdec_ctx *ctx,
- 	else
- 		mv_ref = dst;
- 
--	writel_relaxed(get_mv_base_addr(mv_ref),
--		       rkvdec->regs + RKVDEC_VP9_REF_COLMV_BASE);
-+	regs->vp9.refcolmv_base = get_mv_base_addr(mv_ref);
- 
--	writel_relaxed(ctx->decoded_fmt.fmt.pix_mp.width |
--		       (ctx->decoded_fmt.fmt.pix_mp.height << 16),
--		       rkvdec->regs + RKVDEC_REG_PERFORMANCE_CYCLE);
-+	regs->vp9.performance_cycle = ctx->decoded_fmt.fmt.pix_mp.width |
-+		       (ctx->decoded_fmt.fmt.pix_mp.height << 16);
-+
-+	regs->vp9.reg44.strmd_error_e = 0xe;
-+
-+	rkvdec_memcpy_toio(rkvdec->regs, regs, MIN(sizeof(*regs), rkvdec->variant->num_regs));
- }
- 
- static int validate_dec_params(struct rkvdec_ctx *ctx,
-@@ -823,8 +792,6 @@ static int rkvdec_vp9_run(struct rkvdec_ctx *ctx)
- 	writel(1, rkvdec->regs + RKVDEC_REG_PREF_LUMA_CACHE_COMMAND);
- 	writel(1, rkvdec->regs + RKVDEC_REG_PREF_CHR_CACHE_COMMAND);
- 
--	writel(0xe, rkvdec->regs + RKVDEC_REG_STRMD_ERR_EN);
--
- 	if (rkvdec->variant->quirks & RKVDEC_QUIRK_DISABLE_QOS)
- 		rkvdec_quirks_disable_qos(ctx);
- 
-diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.c b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-index 5af9aa5ab353..776149f871b0 100644
---- a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-+++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-@@ -914,6 +914,15 @@ void rkvdec_quirks_disable_qos(struct rkvdec_ctx *ctx)
- 	writel(reg, rkvdec->regs + RKVDEC_REG_QOS_CTRL);
- }
- 
-+void rkvdec_memcpy_toio(void __iomem *dst, void *src, size_t len)
-+{
-+#ifdef CONFIG_ARM64
-+	__iowrite32_copy(dst, src, len / 4);
-+#else
-+	memcpy_toio(dst, src, len);
-+#endif
-+}
-+
- static void rkvdec_device_run(void *priv)
- {
- 	struct rkvdec_ctx *ctx = priv;
-@@ -1227,7 +1236,6 @@ static void rkvdec_watchdog_func(struct work_struct *work)
- 	if (ctx) {
- 		dev_err(rkvdec->dev, "Frame processing timed out!\n");
- 		writel(RKVDEC_IRQ_DIS, rkvdec->regs + RKVDEC_REG_INTERRUPT);
--		writel(0, rkvdec->regs + RKVDEC_REG_SYSCTRL);
- 		rkvdec_job_finish(ctx, VB2_BUF_STATE_ERROR);
- 	}
- }
-diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.h b/drivers/media/platform/rockchip/rkvdec/rkvdec.h
-index 566e06fa2b1e..f35f6e80ea2e 100644
---- a/drivers/media/platform/rockchip/rkvdec/rkvdec.h
-+++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.h
-@@ -151,6 +151,7 @@ struct rkvdec_aux_buf {
- 
- void rkvdec_run_preamble(struct rkvdec_ctx *ctx, struct rkvdec_run *run);
- void rkvdec_run_postamble(struct rkvdec_ctx *ctx, struct rkvdec_run *run);
-+void rkvdec_memcpy_toio(void __iomem *dst, void *src, size_t len);
- 
- void rkvdec_quirks_disable_qos(struct rkvdec_ctx *ctx);
- 
--- 
-2.51.1.dirty
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+VGhpcyBpcyBpbiBwcmVwYXJhdGlvbiB0byBhZGQgc3VwcG9ydCBmb3IgbmV3IHZhcmlhbnRzIHRo
+YXQgd2lsbCB1c2UgdGhlCnNhbWUgdGFibGVzLgoKVGVzdGVkLWJ5OiBEaWVkZXJpayBkZSBIYWFz
+IDxkaWRpLmRlYmlhbkBja25vdy5vcmc+ICAjIFJvY2sgNUIKU2lnbmVkLW9mZi1ieTogRGV0bGV2
+IENhc2Fub3ZhIDxkZXRsZXYuY2FzYW5vdmFAY29sbGFib3JhLmNvbT4KLS0tCiAuLi4vbWVkaWEv
+cGxhdGZvcm0vcm9ja2NoaXAvcmt2ZGVjL01ha2VmaWxlICAgfCAgIDcgKy0KIC4uLi97cmt2ZGVj
+LWhldmMtZGF0YS5jID0+IHJrdmRlYy1jYWJhYy5jfSAgICB8IDUwNiArKysrKysrKysrKysrKysr
+Ky0KIC4uLi9wbGF0Zm9ybS9yb2NrY2hpcC9ya3ZkZWMvcmt2ZGVjLWgyNjQuYyAgICB8IDUwMSAr
+LS0tLS0tLS0tLS0tLS0tLQogLi4uL3BsYXRmb3JtL3JvY2tjaGlwL3JrdmRlYy9ya3ZkZWMtaGV2
+Yy5jICAgIHwgICA2ICstCiA0IGZpbGVzIGNoYW5nZWQsIDUxNCBpbnNlcnRpb25zKCspLCA1MDYg
+ZGVsZXRpb25zKC0pCiByZW5hbWUgZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9ya3Zk
+ZWMve3JrdmRlYy1oZXZjLWRhdGEuYyA9PiBya3ZkZWMtY2FiYWMuY30gKDg2JSkKCmRpZmYgLS1n
+aXQgYS9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3JvY2tjaGlwL3JrdmRlYy9NYWtlZmlsZSBiL2Ry
+aXZlcnMvbWVkaWEvcGxhdGZvcm0vcm9ja2NoaXAvcmt2ZGVjL01ha2VmaWxlCmluZGV4IGE3NzEy
+MjY0MWQxNC4uYThmZjVlM2Q3YmVjIDEwMDY0NAotLS0gYS9kcml2ZXJzL21lZGlhL3BsYXRmb3Jt
+L3JvY2tjaGlwL3JrdmRlYy9NYWtlZmlsZQorKysgYi9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3Jv
+Y2tjaGlwL3JrdmRlYy9NYWtlZmlsZQpAQCAtMSwzICsxLDggQEAKIG9iai0kKENPTkZJR19WSURF
+T19ST0NLQ0hJUF9WREVDKSArPSByb2NrY2hpcC12ZGVjLm8KIAotcm9ja2NoaXAtdmRlYy15ICs9
+IHJrdmRlYy5vIHJrdmRlYy1oMjY0Lm8gcmt2ZGVjLWhldmMubyBya3ZkZWMtdnA5Lm8KK3JvY2tj
+aGlwLXZkZWMteSArPSBcCisJCSAgIHJrdmRlYy5vIFwKKwkJICAgcmt2ZGVjLWNhYmFjLm8gXAor
+CQkgICBya3ZkZWMtaDI2NC5vIFwKKwkJICAgcmt2ZGVjLWhldmMubyBcCisJCSAgIHJrdmRlYy12
+cDkubwpkaWZmIC0tZ2l0IGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9ya3ZkZWMv
+cmt2ZGVjLWhldmMtZGF0YS5jIGIvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9ya3Zk
+ZWMvcmt2ZGVjLWNhYmFjLmMKc2ltaWxhcml0eSBpbmRleCA4NiUKcmVuYW1lIGZyb20gZHJpdmVy
+cy9tZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9ya3ZkZWMvcmt2ZGVjLWhldmMtZGF0YS5jCnJlbmFt
+ZSB0byBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL3JvY2tjaGlwL3JrdmRlYy9ya3ZkZWMtY2FiYWMu
+YwppbmRleCBlYWM0ZWE2MDQ5NDkuLmJjODdmNTk2MzZlYSAxMDA2NDQKLS0tIGEvZHJpdmVycy9t
+ZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9ya3ZkZWMvcmt2ZGVjLWhldmMtZGF0YS5jCisrKyBiL2Ry
+aXZlcnMvbWVkaWEvcGxhdGZvcm0vcm9ja2NoaXAvcmt2ZGVjL3JrdmRlYy1jYWJhYy5jCkBAIC0x
+LDE5ICsxLDUxNyBAQAogLy8gU1BEWC1MaWNlbnNlLUlkZW50aWZpZXI6IEdQTC0yLjAKIC8qCi0g
+KiBSb2NrY2hpcCBWaWRlbyBEZWNvZGVyIGRyaXZlcgorICogUm9ja2NoaXAgVmlkZW8gRGVjb2Rl
+ciBDQUJBQyB0YWJsZXMKICAqCiAgKiBDb3B5cmlnaHQgKEMpIDIwMjMgQ29sbGFib3JhLCBMdGQu
+CiAgKglTZWJhc3RpYW4gRnJpY2tlIDxzZWJhc3RpYW4uZnJpY2tlQGNvbGxhYm9yYS5jb20+Cisg
+KiBDb3B5cmlnaHQgKEMpIDIwMTkgQ29sbGFib3JhLCBMdGQuCisgKglCb3JpcyBCcmV6aWxsb24g
+PGJvcmlzLmJyZXppbGxvbkBjb2xsYWJvcmEuY29tPgogICovCiAKICNpbmNsdWRlIDxsaW51eC90
+eXBlcy5oPgogCi0jZGVmaW5lIFJLVl9DQUJBQ19UQUJMRV9TSVpFCQkyNzQ1NgorI2RlZmluZSBD
+QUJBQ19FTlRSWShjdHhpZHgsIGlkYzBfbSwgaWRjMF9uLCBpZGMxX20sIGlkYzFfbiwJCVwKKwkg
+ICAgaWRjMl9tLCBpZGMyX24sIGludHJhX20sIGludHJhX24pCQkJXAorCVswXVsoY3R4aWR4KV0g
+PSB7aWRjMF9tLCBpZGMwX259LAkJCVwKKwlbMV1bKGN0eGlkeCldID0ge2lkYzFfbSwgaWRjMV9u
+fSwJCQlcCisJWzJdWyhjdHhpZHgpXSA9IHtpZGMyX20sIGlkYzJfbn0sCQkJXAorCVszXVsoY3R4
+aWR4KV0gPSB7aW50cmFfbSwgaW50cmFfbn0KIAogLyoKLSAqIFRoaXMgZmlsZSBpcyAjaW5jbHVk
+ZSBmcm9tIHJrdmRlYy1oZXZjLmMgYW5kIG5vdCBjb21waWxlZC4KKyAqIENvbnN0YW50IENBQkFD
+IHRhYmxlLgorICogQnVpbHQgZnJvbSB0aGUgdGFibGVzIGRlc2NyaWJlZCBpbiBzZWN0aW9uICc5
+LjMuMS4xIEluaXRpYWxpc2F0aW9uIHByb2Nlc3MKKyAqIGZvciBjb250ZXh0IHZhcmlhYmxlcycg
+b2YgdGhlIEgyNjQgc3BlYy4KICAqLwotc3RhdGljIGNvbnN0IHU4IHJrdmRlY19oZXZjX2NhYmFj
+X3RhYmxlW1JLVl9DQUJBQ19UQUJMRV9TSVpFXSA9IHsKK2NvbnN0IHM4IHJrdmRlY19oMjY0X2Nh
+YmFjX3RhYmxlWzRdWzQ2NF1bMl0gPSB7CisJLyogVGFibGUgOS0xMiDigJMgVmFsdWVzIG9mIHZh
+cmlhYmxlcyBtIGFuZCBuIGZvciBjdHhJZHggZnJvbSAwIHRvIDEwICovCisJQ0FCQUNfRU5UUlko
+MCwgMjAsIC0xNSwgMjAsIC0xNSwgMjAsIC0xNSwgMjAsIC0xNSksCisJQ0FCQUNfRU5UUlkoMSwg
+MiwgNTQsIDIsIDU0LCAyLCA1NCwgMiwgNTQpLAorCUNBQkFDX0VOVFJZKDIsIDMsIDc0LCAzLCA3
+NCwgMywgNzQsIDMsIDc0KSwKKwlDQUJBQ19FTlRSWSgzLCAyMCwgLTE1LCAyMCwgLTE1LCAyMCwg
+LTE1LCAyMCwgLTE1KSwKKwlDQUJBQ19FTlRSWSg0LCAyLCA1NCwgMiwgNTQsIDIsIDU0LCAyLCA1
+NCksCisJQ0FCQUNfRU5UUlkoNSwgMywgNzQsIDMsIDc0LCAzLCA3NCwgMywgNzQpLAorCUNBQkFD
+X0VOVFJZKDYsIC0yOCwgMTI3LCAtMjgsIDEyNywgLTI4LCAxMjcsIC0yOCwgMTI3KSwKKwlDQUJB
+Q19FTlRSWSg3LCAtMjMsIDEwNCwgLTIzLCAxMDQsIC0yMywgMTA0LCAtMjMsIDEwNCksCisJQ0FC
+QUNfRU5UUlkoOCwgLTYsIDUzLCAtNiwgNTMsIC02LCA1MywgLTYsIDUzKSwKKwlDQUJBQ19FTlRS
+WSg5LCAtMSwgNTQsIC0xLCA1NCwgLTEsIDU0LCAtMSwgNTQpLAorCUNBQkFDX0VOVFJZKDEwLCA3
+LCA1MSwgNywgNTEsIDcsIDUxLCA3LCA1MSksCisKKwkvKiBUYWJsZSA5LTEzIOKAkyBWYWx1ZXMg
+b2YgdmFyaWFibGVzIG0gYW5kIG4gZm9yIGN0eElkeCBmcm9tIDExIHRvIDIzICovCisJQ0FCQUNf
+RU5UUlkoMTEsIDIzLCAzMywgMjIsIDI1LCAyOSwgMTYsIDAsIDApLAorCUNBQkFDX0VOVFJZKDEy
+LCAyMywgMiwgMzQsIDAsIDI1LCAwLCAwLCAwKSwKKwlDQUJBQ19FTlRSWSgxMywgMjEsIDAsIDE2
+LCAwLCAxNCwgMCwgMCwgMCksCisJQ0FCQUNfRU5UUlkoMTQsIDEsIDksIC0yLCA5LCAtMTAsIDUx
+LCAwLCAwKSwKKwlDQUJBQ19FTlRSWSgxNSwgMCwgNDksIDQsIDQxLCAtMywgNjIsIDAsIDApLAor
+CUNBQkFDX0VOVFJZKDE2LCAtMzcsIDExOCwgLTI5LCAxMTgsIC0yNywgOTksIDAsIDApLAorCUNB
+QkFDX0VOVFJZKDE3LCA1LCA1NywgMiwgNjUsIDI2LCAxNiwgMCwgMCksCisJQ0FCQUNfRU5UUlko
+MTgsIC0xMywgNzgsIC02LCA3MSwgLTQsIDg1LCAwLCAwKSwKKwlDQUJBQ19FTlRSWSgxOSwgLTEx
+LCA2NSwgLTEzLCA3OSwgLTI0LCAxMDIsIDAsIDApLAorCUNBQkFDX0VOVFJZKDIwLCAxLCA2Miwg
+NSwgNTIsIDUsIDU3LCAwLCAwKSwKKwlDQUJBQ19FTlRSWSgyMSwgMTIsIDQ5LCA5LCA1MCwgNiwg
+NTcsIDAsIDApLAorCUNBQkFDX0VOVFJZKDIyLCAtNCwgNzMsIC0zLCA3MCwgLTE3LCA3MywgMCwg
+MCksCisJQ0FCQUNfRU5UUlkoMjMsIDE3LCA1MCwgMTAsIDU0LCAxNCwgNTcsIDAsIDApLAorCisJ
+LyogVGFibGUgOS0xNCDigJMgVmFsdWVzIG9mIHZhcmlhYmxlcyBtIGFuZCBuIGZvciBjdHhJZHgg
+ZnJvbSAyNCB0byAzOSAqLworCUNBQkFDX0VOVFJZKDI0LCAxOCwgNjQsIDI2LCAzNCwgMjAsIDQw
+LCAwLCAwKSwKKwlDQUJBQ19FTlRSWSgyNSwgOSwgNDMsIDE5LCAyMiwgMjAsIDEwLCAwLCAwKSwK
+KwlDQUJBQ19FTlRSWSgyNiwgMjksIDAsIDQwLCAwLCAyOSwgMCwgMCwgMCksCisJQ0FCQUNfRU5U
+UlkoMjcsIDI2LCA2NywgNTcsIDIsIDU0LCAwLCAwLCAwKSwKKwlDQUJBQ19FTlRSWSgyOCwgMTYs
+IDkwLCA0MSwgMzYsIDM3LCA0MiwgMCwgMCksCisJQ0FCQUNfRU5UUlkoMjksIDksIDEwNCwgMjYs
+IDY5LCAxMiwgOTcsIDAsIDApLAorCUNBQkFDX0VOVFJZKDMwLCAtNDYsIDEyNywgLTQ1LCAxMjcs
+IC0zMiwgMTI3LCAwLCAwKSwKKwlDQUJBQ19FTlRSWSgzMSwgLTIwLCAxMDQsIC0xNSwgMTAxLCAt
+MjIsIDExNywgMCwgMCksCisJQ0FCQUNfRU5UUlkoMzIsIDEsIDY3LCAtNCwgNzYsIC0yLCA3NCwg
+MCwgMCksCisJQ0FCQUNfRU5UUlkoMzMsIC0xMywgNzgsIC02LCA3MSwgLTQsIDg1LCAwLCAwKSwK
+KwlDQUJBQ19FTlRSWSgzNCwgLTExLCA2NSwgLTEzLCA3OSwgLTI0LCAxMDIsIDAsIDApLAorCUNB
+QkFDX0VOVFJZKDM1LCAxLCA2MiwgNSwgNTIsIDUsIDU3LCAwLCAwKSwKKwlDQUJBQ19FTlRSWSgz
+NiwgLTYsIDg2LCA2LCA2OSwgLTYsIDkzLCAwLCAwKSwKKwlDQUJBQ19FTlRSWSgzNywgLTE3LCA5
+NSwgLTEzLCA5MCwgLTE0LCA4OCwgMCwgMCksCisJQ0FCQUNfRU5UUlkoMzgsIC02LCA2MSwgMCwg
+NTIsIC02LCA0NCwgMCwgMCksCisJQ0FCQUNfRU5UUlkoMzksIDksIDQ1LCA4LCA0MywgNCwgNTUs
+IDAsIDApLAorCisJLyogVGFibGUgOS0xNSDigJMgVmFsdWVzIG9mIHZhcmlhYmxlcyBtIGFuZCBu
+IGZvciBjdHhJZHggZnJvbSA0MCB0byA1MyAqLworCUNBQkFDX0VOVFJZKDQwLCAtMywgNjksIC0y
+LCA2OSwgLTExLCA4OSwgMCwgMCksCisJQ0FCQUNfRU5UUlkoNDEsIC02LCA4MSwgLTUsIDgyLCAt
+MTUsIDEwMywgMCwgMCksCisJQ0FCQUNfRU5UUlkoNDIsIC0xMSwgOTYsIC0xMCwgOTYsIC0yMSwg
+MTE2LCAwLCAwKSwKKwlDQUJBQ19FTlRSWSg0MywgNiwgNTUsIDIsIDU5LCAxOSwgNTcsIDAsIDAp
+LAorCUNBQkFDX0VOVFJZKDQ0LCA3LCA2NywgMiwgNzUsIDIwLCA1OCwgMCwgMCksCisJQ0FCQUNf
+RU5UUlkoNDUsIC01LCA4NiwgLTMsIDg3LCA0LCA4NCwgMCwgMCksCisJQ0FCQUNfRU5UUlkoNDYs
+IDIsIDg4LCAtMywgMTAwLCA2LCA5NiwgMCwgMCksCisJQ0FCQUNfRU5UUlkoNDcsIDAsIDU4LCAx
+LCA1NiwgMSwgNjMsIDAsIDApLAorCUNBQkFDX0VOVFJZKDQ4LCAtMywgNzYsIC0zLCA3NCwgLTUs
+IDg1LCAwLCAwKSwKKwlDQUJBQ19FTlRSWSg0OSwgLTEwLCA5NCwgLTYsIDg1LCAtMTMsIDEwNiwg
+MCwgMCksCisJQ0FCQUNfRU5UUlkoNTAsIDUsIDU0LCAwLCA1OSwgNSwgNjMsIDAsIDApLAorCUNB
+QkFDX0VOVFJZKDUxLCA0LCA2OSwgLTMsIDgxLCA2LCA3NSwgMCwgMCksCisJQ0FCQUNfRU5UUlko
+NTIsIC0zLCA4MSwgLTcsIDg2LCAtMywgOTAsIDAsIDApLAorCUNBQkFDX0VOVFJZKDUzLCAwLCA4
+OCwgLTUsIDk1LCAtMSwgMTAxLCAwLCAwKSwKKworCS8qIFRhYmxlIDktMTYg4oCTIFZhbHVlcyBv
+ZiB2YXJpYWJsZXMgbSBhbmQgbiBmb3IgY3R4SWR4IGZyb20gNTQgdG8gNTkgKi8KKwlDQUJBQ19F
+TlRSWSg1NCwgLTcsIDY3LCAtMSwgNjYsIDMsIDU1LCAwLCAwKSwKKwlDQUJBQ19FTlRSWSg1NSwg
+LTUsIDc0LCAtMSwgNzcsIC00LCA3OSwgMCwgMCksCisJQ0FCQUNfRU5UUlkoNTYsIC00LCA3NCwg
+MSwgNzAsIC0yLCA3NSwgMCwgMCksCisJQ0FCQUNfRU5UUlkoNTcsIC01LCA4MCwgLTIsIDg2LCAt
+MTIsIDk3LCAwLCAwKSwKKwlDQUJBQ19FTlRSWSg1OCwgLTcsIDcyLCAtNSwgNzIsIC03LCA1MCwg
+MCwgMCksCisJQ0FCQUNfRU5UUlkoNTksIDEsIDU4LCAwLCA2MSwgMSwgNjAsIDAsIDApLAorCisJ
+LyogVGFibGUgOS0xNyDigJMgVmFsdWVzIG9mIHZhcmlhYmxlcyBtIGFuZCBuIGZvciBjdHhJZHgg
+ZnJvbSA2MCB0byA2OSAqLworCUNBQkFDX0VOVFJZKDYwLCAwLCA0MSwgMCwgNDEsIDAsIDQxLCAw
+LCA0MSksCisJQ0FCQUNfRU5UUlkoNjEsIDAsIDYzLCAwLCA2MywgMCwgNjMsIDAsIDYzKSwKKwlD
+QUJBQ19FTlRSWSg2MiwgMCwgNjMsIDAsIDYzLCAwLCA2MywgMCwgNjMpLAorCUNBQkFDX0VOVFJZ
+KDYzLCAwLCA2MywgMCwgNjMsIDAsIDYzLCAwLCA2MyksCisJQ0FCQUNfRU5UUlkoNjQsIC05LCA4
+MywgLTksIDgzLCAtOSwgODMsIC05LCA4MyksCisJQ0FCQUNfRU5UUlkoNjUsIDQsIDg2LCA0LCA4
+NiwgNCwgODYsIDQsIDg2KSwKKwlDQUJBQ19FTlRSWSg2NiwgMCwgOTcsIDAsIDk3LCAwLCA5Nywg
+MCwgOTcpLAorCUNBQkFDX0VOVFJZKDY3LCAtNywgNzIsIC03LCA3MiwgLTcsIDcyLCAtNywgNzIp
+LAorCUNBQkFDX0VOVFJZKDY4LCAxMywgNDEsIDEzLCA0MSwgMTMsIDQxLCAxMywgNDEpLAorCUNB
+QkFDX0VOVFJZKDY5LCAzLCA2MiwgMywgNjIsIDMsIDYyLCAzLCA2MiksCisKKwkvKiBUYWJsZSA5
+LTE4IOKAkyBWYWx1ZXMgb2YgdmFyaWFibGVzIG0gYW5kIG4gZm9yIGN0eElkeCBmcm9tIDcwIHRv
+IDEwNCAqLworCUNBQkFDX0VOVFJZKDcwLCAwLCA0NSwgMTMsIDE1LCA3LCAzNCwgMCwgMTEpLAor
+CUNBQkFDX0VOVFJZKDcxLCAtNCwgNzgsIDcsIDUxLCAtOSwgODgsIDEsIDU1KSwKKwlDQUJBQ19F
+TlRSWSg3MiwgLTMsIDk2LCAyLCA4MCwgLTIwLCAxMjcsIDAsIDY5KSwKKwlDQUJBQ19FTlRSWSg3
+MywgLTI3LCAxMjYsIC0zOSwgMTI3LCAtMzYsIDEyNywgLTE3LCAxMjcpLAorCUNBQkFDX0VOVFJZ
+KDc0LCAtMjgsIDk4LCAtMTgsIDkxLCAtMTcsIDkxLCAtMTMsIDEwMiksCisJQ0FCQUNfRU5UUlko
+NzUsIC0yNSwgMTAxLCAtMTcsIDk2LCAtMTQsIDk1LCAwLCA4MiksCisJQ0FCQUNfRU5UUlkoNzYs
+IC0yMywgNjcsIC0yNiwgODEsIC0yNSwgODQsIC03LCA3NCksCisJQ0FCQUNfRU5UUlkoNzcsIC0y
+OCwgODIsIC0zNSwgOTgsIC0yNSwgODYsIC0yMSwgMTA3KSwKKwlDQUJBQ19FTlRSWSg3OCwgLTIw
+LCA5NCwgLTI0LCAxMDIsIC0xMiwgODksIC0yNywgMTI3KSwKKwlDQUJBQ19FTlRSWSg3OSwgLTE2
+LCA4MywgLTIzLCA5NywgLTE3LCA5MSwgLTMxLCAxMjcpLAorCUNBQkFDX0VOVFJZKDgwLCAtMjIs
+IDExMCwgLTI3LCAxMTksIC0zMSwgMTI3LCAtMjQsIDEyNyksCisJQ0FCQUNfRU5UUlkoODEsIC0y
+MSwgOTEsIC0yNCwgOTksIC0xNCwgNzYsIC0xOCwgOTUpLAorCUNBQkFDX0VOVFJZKDgyLCAtMTgs
+IDEwMiwgLTIxLCAxMTAsIC0xOCwgMTAzLCAtMjcsIDEyNyksCisJQ0FCQUNfRU5UUlkoODMsIC0x
+MywgOTMsIC0xOCwgMTAyLCAtMTMsIDkwLCAtMjEsIDExNCksCisJQ0FCQUNfRU5UUlkoODQsIC0y
+OSwgMTI3LCAtMzYsIDEyNywgLTM3LCAxMjcsIC0zMCwgMTI3KSwKKwlDQUJBQ19FTlRSWSg4NSwg
+LTcsIDkyLCAwLCA4MCwgMTEsIDgwLCAtMTcsIDEyMyksCisJQ0FCQUNfRU5UUlkoODYsIC01LCA4
+OSwgLTUsIDg5LCA1LCA3NiwgLTEyLCAxMTUpLAorCUNBQkFDX0VOVFJZKDg3LCAtNywgOTYsIC03
+LCA5NCwgMiwgODQsIC0xNiwgMTIyKSwKKwlDQUJBQ19FTlRSWSg4OCwgLTEzLCAxMDgsIC00LCA5
+MiwgNSwgNzgsIC0xMSwgMTE1KSwKKwlDQUJBQ19FTlRSWSg4OSwgLTMsIDQ2LCAwLCAzOSwgLTYs
+IDU1LCAtMTIsIDYzKSwKKwlDQUJBQ19FTlRSWSg5MCwgLTEsIDY1LCAwLCA2NSwgNCwgNjEsIC0y
+LCA2OCksCisJQ0FCQUNfRU5UUlkoOTEsIC0xLCA1NywgLTE1LCA4NCwgLTE0LCA4MywgLTE1LCA4
+NCksCisJQ0FCQUNfRU5UUlkoOTIsIC05LCA5MywgLTM1LCAxMjcsIC0zNywgMTI3LCAtMTMsIDEw
+NCksCisJQ0FCQUNfRU5UUlkoOTMsIC0zLCA3NCwgLTIsIDczLCAtNSwgNzksIC0zLCA3MCksCisJ
+Q0FCQUNfRU5UUlkoOTQsIC05LCA5MiwgLTEyLCAxMDQsIC0xMSwgMTA0LCAtOCwgOTMpLAorCUNB
+QkFDX0VOVFJZKDk1LCAtOCwgODcsIC05LCA5MSwgLTExLCA5MSwgLTEwLCA5MCksCisJQ0FCQUNf
+RU5UUlkoOTYsIC0yMywgMTI2LCAtMzEsIDEyNywgLTMwLCAxMjcsIC0zMCwgMTI3KSwKKwlDQUJB
+Q19FTlRSWSg5NywgNSwgNTQsIDMsIDU1LCAwLCA2NSwgLTEsIDc0KSwKKwlDQUJBQ19FTlRSWSg5
+OCwgNiwgNjAsIDcsIDU2LCAtMiwgNzksIC02LCA5NyksCisJQ0FCQUNfRU5UUlkoOTksIDYsIDU5
+LCA3LCA1NSwgMCwgNzIsIC03LCA5MSksCisJQ0FCQUNfRU5UUlkoMTAwLCA2LCA2OSwgOCwgNjEs
+IC00LCA5MiwgLTIwLCAxMjcpLAorCUNBQkFDX0VOVFJZKDEwMSwgLTEsIDQ4LCAtMywgNTMsIC02
+LCA1NiwgLTQsIDU2KSwKKwlDQUJBQ19FTlRSWSgxMDIsIDAsIDY4LCAwLCA2OCwgMywgNjgsIC01
+LCA4MiksCisJQ0FCQUNfRU5UUlkoMTAzLCAtNCwgNjksIC03LCA3NCwgLTgsIDcxLCAtNywgNzYp
+LAorCUNBQkFDX0VOVFJZKDEwNCwgLTgsIDg4LCAtOSwgODgsIC0xMywgOTgsIC0yMiwgMTI1KSwK
+KworCS8qIFRhYmxlIDktMTkg4oCTIFZhbHVlcyBvZiB2YXJpYWJsZXMgbSBhbmQgbiBmb3IgY3R4
+SWR4IGZyb20gMTA1IHRvIDE2NSAqLworCUNBQkFDX0VOVFJZKDEwNSwgLTIsIDg1LCAtMTMsIDEw
+MywgLTQsIDg2LCAtNywgOTMpLAorCUNBQkFDX0VOVFJZKDEwNiwgLTYsIDc4LCAtMTMsIDkxLCAt
+MTIsIDg4LCAtMTEsIDg3KSwKKwlDQUJBQ19FTlRSWSgxMDcsIC0xLCA3NSwgLTksIDg5LCAtNSwg
+ODIsIC0zLCA3NyksCisJQ0FCQUNfRU5UUlkoMTA4LCAtNywgNzcsIC0xNCwgOTIsIC0zLCA3Miwg
+LTUsIDcxKSwKKwlDQUJBQ19FTlRSWSgxMDksIDIsIDU0LCAtOCwgNzYsIC00LCA2NywgLTQsIDYz
+KSwKKwlDQUJBQ19FTlRSWSgxMTAsIDUsIDUwLCAtMTIsIDg3LCAtOCwgNzIsIC00LCA2OCksCisJ
+Q0FCQUNfRU5UUlkoMTExLCAtMywgNjgsIC0yMywgMTEwLCAtMTYsIDg5LCAtMTIsIDg0KSwKKwlD
+QUJBQ19FTlRSWSgxMTIsIDEsIDUwLCAtMjQsIDEwNSwgLTksIDY5LCAtNywgNjIpLAorCUNBQkFD
+X0VOVFJZKDExMywgNiwgNDIsIC0xMCwgNzgsIC0xLCA1OSwgLTcsIDY1KSwKKwlDQUJBQ19FTlRS
+WSgxMTQsIC00LCA4MSwgLTIwLCAxMTIsIDUsIDY2LCA4LCA2MSksCisJQ0FCQUNfRU5UUlkoMTE1
+LCAxLCA2MywgLTE3LCA5OSwgNCwgNTcsIDUsIDU2KSwKKwlDQUJBQ19FTlRSWSgxMTYsIC00LCA3
+MCwgLTc4LCAxMjcsIC00LCA3MSwgLTIsIDY2KSwKKwlDQUJBQ19FTlRSWSgxMTcsIDAsIDY3LCAt
+NzAsIDEyNywgLTIsIDcxLCAxLCA2NCksCisJQ0FCQUNfRU5UUlkoMTE4LCAyLCA1NywgLTUwLCAx
+MjcsIDIsIDU4LCAwLCA2MSksCisJQ0FCQUNfRU5UUlkoMTE5LCAtMiwgNzYsIC00NiwgMTI3LCAt
+MSwgNzQsIC0yLCA3OCksCisJQ0FCQUNfRU5UUlkoMTIwLCAxMSwgMzUsIC00LCA2NiwgLTQsIDQ0
+LCAxLCA1MCksCisJQ0FCQUNfRU5UUlkoMTIxLCA0LCA2NCwgLTUsIDc4LCAtMSwgNjksIDcsIDUy
+KSwKKwlDQUJBQ19FTlRSWSgxMjIsIDEsIDYxLCAtNCwgNzEsIDAsIDYyLCAxMCwgMzUpLAorCUNB
+QkFDX0VOVFJZKDEyMywgMTEsIDM1LCAtOCwgNzIsIC03LCA1MSwgMCwgNDQpLAorCUNBQkFDX0VO
+VFJZKDEyNCwgMTgsIDI1LCAyLCA1OSwgLTQsIDQ3LCAxMSwgMzgpLAorCUNBQkFDX0VOVFJZKDEy
+NSwgMTIsIDI0LCAtMSwgNTUsIC02LCA0MiwgMSwgNDUpLAorCUNBQkFDX0VOVFJZKDEyNiwgMTMs
+IDI5LCAtNywgNzAsIC0zLCA0MSwgMCwgNDYpLAorCUNBQkFDX0VOVFJZKDEyNywgMTMsIDM2LCAt
+NiwgNzUsIC02LCA1MywgNSwgNDQpLAorCUNBQkFDX0VOVFJZKDEyOCwgLTEwLCA5MywgLTgsIDg5
+LCA4LCA3NiwgMzEsIDE3KSwKKwlDQUJBQ19FTlRSWSgxMjksIC03LCA3MywgLTM0LCAxMTksIC05
+LCA3OCwgMSwgNTEpLAorCUNBQkFDX0VOVFJZKDEzMCwgLTIsIDczLCAtMywgNzUsIC0xMSwgODMs
+IDcsIDUwKSwKKwlDQUJBQ19FTlRSWSgxMzEsIDEzLCA0NiwgMzIsIDIwLCA5LCA1MiwgMjgsIDE5
+KSwKKwlDQUJBQ19FTlRSWSgxMzIsIDksIDQ5LCAzMCwgMjIsIDAsIDY3LCAxNiwgMzMpLAorCUNB
+QkFDX0VOVFJZKDEzMywgLTcsIDEwMCwgLTQ0LCAxMjcsIC01LCA5MCwgMTQsIDYyKSwKKwlDQUJB
+Q19FTlRSWSgxMzQsIDksIDUzLCAwLCA1NCwgMSwgNjcsIC0xMywgMTA4KSwKKwlDQUJBQ19FTlRS
+WSgxMzUsIDIsIDUzLCAtNSwgNjEsIC0xNSwgNzIsIC0xNSwgMTAwKSwKKwlDQUJBQ19FTlRSWSgx
+MzYsIDUsIDUzLCAwLCA1OCwgLTUsIDc1LCAtMTMsIDEwMSksCisJQ0FCQUNfRU5UUlkoMTM3LCAt
+MiwgNjEsIC0xLCA2MCwgLTgsIDgwLCAtMTMsIDkxKSwKKwlDQUJBQ19FTlRSWSgxMzgsIDAsIDU2
+LCAtMywgNjEsIC0yMSwgODMsIC0xMiwgOTQpLAorCUNBQkFDX0VOVFJZKDEzOSwgMCwgNTYsIC04
+LCA2NywgLTIxLCA2NCwgLTEwLCA4OCksCisJQ0FCQUNfRU5UUlkoMTQwLCAtMTMsIDYzLCAtMjUs
+IDg0LCAtMTMsIDMxLCAtMTYsIDg0KSwKKwlDQUJBQ19FTlRSWSgxNDEsIC01LCA2MCwgLTE0LCA3
+NCwgLTI1LCA2NCwgLTEwLCA4NiksCisJQ0FCQUNfRU5UUlkoMTQyLCAtMSwgNjIsIC01LCA2NSwg
+LTI5LCA5NCwgLTcsIDgzKSwKKwlDQUJBQ19FTlRSWSgxNDMsIDQsIDU3LCA1LCA1MiwgOSwgNzUs
+IC0xMywgODcpLAorCUNBQkFDX0VOVFJZKDE0NCwgLTYsIDY5LCAyLCA1NywgMTcsIDYzLCAtMTks
+IDk0KSwKKwlDQUJBQ19FTlRSWSgxNDUsIDQsIDU3LCAwLCA2MSwgLTgsIDc0LCAxLCA3MCksCisJ
+Q0FCQUNfRU5UUlkoMTQ2LCAxNCwgMzksIC05LCA2OSwgLTUsIDM1LCAwLCA3MiksCisJQ0FCQUNf
+RU5UUlkoMTQ3LCA0LCA1MSwgLTExLCA3MCwgLTIsIDI3LCAtNSwgNzQpLAorCUNBQkFDX0VOVFJZ
+KDE0OCwgMTMsIDY4LCAxOCwgNTUsIDEzLCA5MSwgMTgsIDU5KSwKKwlDQUJBQ19FTlRSWSgxNDks
+IDMsIDY0LCAtNCwgNzEsIDMsIDY1LCAtOCwgMTAyKSwKKwlDQUJBQ19FTlRSWSgxNTAsIDEsIDYx
+LCAwLCA1OCwgLTcsIDY5LCAtMTUsIDEwMCksCisJQ0FCQUNfRU5UUlkoMTUxLCA5LCA2MywgNywg
+NjEsIDgsIDc3LCAwLCA5NSksCisJQ0FCQUNfRU5UUlkoMTUyLCA3LCA1MCwgOSwgNDEsIC0xMCwg
+NjYsIC00LCA3NSksCisJQ0FCQUNfRU5UUlkoMTUzLCAxNiwgMzksIDE4LCAyNSwgMywgNjIsIDIs
+IDcyKSwKKwlDQUJBQ19FTlRSWSgxNTQsIDUsIDQ0LCA5LCAzMiwgLTMsIDY4LCAtMTEsIDc1KSwK
+KwlDQUJBQ19FTlRSWSgxNTUsIDQsIDUyLCA1LCA0MywgLTIwLCA4MSwgLTMsIDcxKSwKKwlDQUJB
+Q19FTlRSWSgxNTYsIDExLCA0OCwgOSwgNDcsIDAsIDMwLCAxNSwgNDYpLAorCUNBQkFDX0VOVFJZ
+KDE1NywgLTUsIDYwLCAwLCA0NCwgMSwgNywgLTEzLCA2OSksCisJQ0FCQUNfRU5UUlkoMTU4LCAt
+MSwgNTksIDAsIDUxLCAtMywgMjMsIDAsIDYyKSwKKwlDQUJBQ19FTlRSWSgxNTksIDAsIDU5LCAy
+LCA0NiwgLTIxLCA3NCwgMCwgNjUpLAorCUNBQkFDX0VOVFJZKDE2MCwgMjIsIDMzLCAxOSwgMzgs
+IDE2LCA2NiwgMjEsIDM3KSwKKwlDQUJBQ19FTlRSWSgxNjEsIDUsIDQ0LCAtNCwgNjYsIC0yMywg
+MTI0LCAtMTUsIDcyKSwKKwlDQUJBQ19FTlRSWSgxNjIsIDE0LCA0MywgMTUsIDM4LCAxNywgMzcs
+IDksIDU3KSwKKwlDQUJBQ19FTlRSWSgxNjMsIC0xLCA3OCwgMTIsIDQyLCA0NCwgLTE4LCAxNiwg
+NTQpLAorCUNBQkFDX0VOVFJZKDE2NCwgMCwgNjAsIDksIDM0LCA1MCwgLTM0LCAwLCA2MiksCisJ
+Q0FCQUNfRU5UUlkoMTY1LCA5LCA2OSwgMCwgODksIC0yMiwgMTI3LCAxMiwgNzIpLAorCisJLyog
+VGFibGUgOS0yMCDigJMgVmFsdWVzIG9mIHZhcmlhYmxlcyBtIGFuZCBuIGZvciBjdHhJZHggZnJv
+bSAxNjYgdG8gMjI2ICovCisJQ0FCQUNfRU5UUlkoMTY2LCAxMSwgMjgsIDQsIDQ1LCA0LCAzOSwg
+MjQsIDApLAorCUNBQkFDX0VOVFJZKDE2NywgMiwgNDAsIDEwLCAyOCwgMCwgNDIsIDE1LCA5KSwK
+KwlDQUJBQ19FTlRSWSgxNjgsIDMsIDQ0LCAxMCwgMzEsIDcsIDM0LCA4LCAyNSksCisJQ0FCQUNf
+RU5UUlkoMTY5LCAwLCA0OSwgMzMsIC0xMSwgMTEsIDI5LCAxMywgMTgpLAorCUNBQkFDX0VOVFJZ
+KDE3MCwgMCwgNDYsIDUyLCAtNDMsIDgsIDMxLCAxNSwgOSksCisJQ0FCQUNfRU5UUlkoMTcxLCAy
+LCA0NCwgMTgsIDE1LCA2LCAzNywgMTMsIDE5KSwKKwlDQUJBQ19FTlRSWSgxNzIsIDIsIDUxLCAy
+OCwgMCwgNywgNDIsIDEwLCAzNyksCisJQ0FCQUNfRU5UUlkoMTczLCAwLCA0NywgMzUsIC0yMiwg
+MywgNDAsIDEyLCAxOCksCisJQ0FCQUNfRU5UUlkoMTc0LCA0LCAzOSwgMzgsIC0yNSwgOCwgMzMs
+IDYsIDI5KSwKKwlDQUJBQ19FTlRSWSgxNzUsIDIsIDYyLCAzNCwgMCwgMTMsIDQzLCAyMCwgMzMp
+LAorCUNBQkFDX0VOVFJZKDE3NiwgNiwgNDYsIDM5LCAtMTgsIDEzLCAzNiwgMTUsIDMwKSwKKwlD
+QUJBQ19FTlRSWSgxNzcsIDAsIDU0LCAzMiwgLTEyLCA0LCA0NywgNCwgNDUpLAorCUNBQkFDX0VO
+VFJZKDE3OCwgMywgNTQsIDEwMiwgLTk0LCAzLCA1NSwgMSwgNTgpLAorCUNBQkFDX0VOVFJZKDE3
+OSwgMiwgNTgsIDAsIDAsIDIsIDU4LCAwLCA2MiksCisJQ0FCQUNfRU5UUlkoMTgwLCA0LCA2Mywg
+NTYsIC0xNSwgNiwgNjAsIDcsIDYxKSwKKwlDQUJBQ19FTlRSWSgxODEsIDYsIDUxLCAzMywgLTQs
+IDgsIDQ0LCAxMiwgMzgpLAorCUNBQkFDX0VOVFJZKDE4MiwgNiwgNTcsIDI5LCAxMCwgMTEsIDQ0
+LCAxMSwgNDUpLAorCUNBQkFDX0VOVFJZKDE4MywgNywgNTMsIDM3LCAtNSwgMTQsIDQyLCAxNSwg
+MzkpLAorCUNBQkFDX0VOVFJZKDE4NCwgNiwgNTIsIDUxLCAtMjksIDcsIDQ4LCAxMSwgNDIpLAor
+CUNBQkFDX0VOVFJZKDE4NSwgNiwgNTUsIDM5LCAtOSwgNCwgNTYsIDEzLCA0NCksCisJQ0FCQUNf
+RU5UUlkoMTg2LCAxMSwgNDUsIDUyLCAtMzQsIDQsIDUyLCAxNiwgNDUpLAorCUNBQkFDX0VOVFJZ
+KDE4NywgMTQsIDM2LCA2OSwgLTU4LCAxMywgMzcsIDEyLCA0MSksCisJQ0FCQUNfRU5UUlkoMTg4
+LCA4LCA1MywgNjcsIC02MywgOSwgNDksIDEwLCA0OSksCisJQ0FCQUNfRU5UUlkoMTg5LCAtMSwg
+ODIsIDQ0LCAtNSwgMTksIDU4LCAzMCwgMzQpLAorCUNBQkFDX0VOVFJZKDE5MCwgNywgNTUsIDMy
+LCA3LCAxMCwgNDgsIDE4LCA0MiksCisJQ0FCQUNfRU5UUlkoMTkxLCAtMywgNzgsIDU1LCAtMjks
+IDEyLCA0NSwgMTAsIDU1KSwKKwlDQUJBQ19FTlRSWSgxOTIsIDE1LCA0NiwgMzIsIDEsIDAsIDY5
+LCAxNywgNTEpLAorCUNBQkFDX0VOVFJZKDE5MywgMjIsIDMxLCAwLCAwLCAyMCwgMzMsIDE3LCA0
+NiksCisJQ0FCQUNfRU5UUlkoMTk0LCAtMSwgODQsIDI3LCAzNiwgOCwgNjMsIDAsIDg5KSwKKwlD
+QUJBQ19FTlRSWSgxOTUsIDI1LCA3LCAzMywgLTI1LCAzNSwgLTE4LCAyNiwgLTE5KSwKKwlDQUJB
+Q19FTlRSWSgxOTYsIDMwLCAtNywgMzQsIC0zMCwgMzMsIC0yNSwgMjIsIC0xNyksCisJQ0FCQUNf
+RU5UUlkoMTk3LCAyOCwgMywgMzYsIC0yOCwgMjgsIC0zLCAyNiwgLTE3KSwKKwlDQUJBQ19FTlRS
+WSgxOTgsIDI4LCA0LCAzOCwgLTI4LCAyNCwgMTAsIDMwLCAtMjUpLAorCUNBQkFDX0VOVFJZKDE5
+OSwgMzIsIDAsIDM4LCAtMjcsIDI3LCAwLCAyOCwgLTIwKSwKKwlDQUJBQ19FTlRSWSgyMDAsIDM0
+LCAtMSwgMzQsIC0xOCwgMzQsIC0xNCwgMzMsIC0yMyksCisJQ0FCQUNfRU5UUlkoMjAxLCAzMCwg
+NiwgMzUsIC0xNiwgNTIsIC00NCwgMzcsIC0yNyksCisJQ0FCQUNfRU5UUlkoMjAyLCAzMCwgNiwg
+MzQsIC0xNCwgMzksIC0yNCwgMzMsIC0yMyksCisJQ0FCQUNfRU5UUlkoMjAzLCAzMiwgOSwgMzIs
+IC04LCAxOSwgMTcsIDQwLCAtMjgpLAorCUNBQkFDX0VOVFJZKDIwNCwgMzEsIDE5LCAzNywgLTYs
+IDMxLCAyNSwgMzgsIC0xNyksCisJQ0FCQUNfRU5UUlkoMjA1LCAyNiwgMjcsIDM1LCAwLCAzNiwg
+MjksIDMzLCAtMTEpLAorCUNBQkFDX0VOVFJZKDIwNiwgMjYsIDMwLCAzMCwgMTAsIDI0LCAzMywg
+NDAsIC0xNSksCisJQ0FCQUNfRU5UUlkoMjA3LCAzNywgMjAsIDI4LCAxOCwgMzQsIDE1LCA0MSwg
+LTYpLAorCUNBQkFDX0VOVFJZKDIwOCwgMjgsIDM0LCAyNiwgMjUsIDMwLCAyMCwgMzgsIDEpLAor
+CUNBQkFDX0VOVFJZKDIwOSwgMTcsIDcwLCAyOSwgNDEsIDIyLCA3MywgNDEsIDE3KSwKKwlDQUJB
+Q19FTlRSWSgyMTAsIDEsIDY3LCAwLCA3NSwgMjAsIDM0LCAzMCwgLTYpLAorCUNBQkFDX0VOVFJZ
+KDIxMSwgNSwgNTksIDIsIDcyLCAxOSwgMzEsIDI3LCAzKSwKKwlDQUJBQ19FTlRSWSgyMTIsIDks
+IDY3LCA4LCA3NywgMjcsIDQ0LCAyNiwgMjIpLAorCUNBQkFDX0VOVFJZKDIxMywgMTYsIDMwLCAx
+NCwgMzUsIDE5LCAxNiwgMzcsIC0xNiksCisJQ0FCQUNfRU5UUlkoMjE0LCAxOCwgMzIsIDE4LCAz
+MSwgMTUsIDM2LCAzNSwgLTQpLAorCUNBQkFDX0VOVFJZKDIxNSwgMTgsIDM1LCAxNywgMzUsIDE1
+LCAzNiwgMzgsIC04KSwKKwlDQUJBQ19FTlRSWSgyMTYsIDIyLCAyOSwgMjEsIDMwLCAyMSwgMjgs
+IDM4LCAtMyksCisJQ0FCQUNfRU5UUlkoMjE3LCAyNCwgMzEsIDE3LCA0NSwgMjUsIDIxLCAzNywg
+MyksCisJQ0FCQUNfRU5UUlkoMjE4LCAyMywgMzgsIDIwLCA0MiwgMzAsIDIwLCAzOCwgNSksCisJ
+Q0FCQUNfRU5UUlkoMjE5LCAxOCwgNDMsIDE4LCA0NSwgMzEsIDEyLCA0MiwgMCksCisJQ0FCQUNf
+RU5UUlkoMjIwLCAyMCwgNDEsIDI3LCAyNiwgMjcsIDE2LCAzNSwgMTYpLAorCUNBQkFDX0VOVFJZ
+KDIyMSwgMTEsIDYzLCAxNiwgNTQsIDI0LCA0MiwgMzksIDIyKSwKKwlDQUJBQ19FTlRSWSgyMjIs
+IDksIDU5LCA3LCA2NiwgMCwgOTMsIDE0LCA0OCksCisJQ0FCQUNfRU5UUlkoMjIzLCA5LCA2NCwg
+MTYsIDU2LCAxNCwgNTYsIDI3LCAzNyksCisJQ0FCQUNfRU5UUlkoMjI0LCAtMSwgOTQsIDExLCA3
+MywgMTUsIDU3LCAyMSwgNjApLAorCUNBQkFDX0VOVFJZKDIyNSwgLTIsIDg5LCAxMCwgNjcsIDI2
+LCAzOCwgMTIsIDY4KSwKKwlDQUJBQ19FTlRSWSgyMjYsIC05LCAxMDgsIC0xMCwgMTE2LCAtMjQs
+IDEyNywgMiwgOTcpLAorCisJLyogVGFibGUgOS0yMSDigJMgVmFsdWVzIG9mIHZhcmlhYmxlcyBt
+IGFuZCBuIGZvciBjdHhJZHggZnJvbSAyMjcgdG8gMjc1ICovCisJQ0FCQUNfRU5UUlkoMjI3LCAt
+NiwgNzYsIC0yMywgMTEyLCAtMjQsIDExNSwgLTMsIDcxKSwKKwlDQUJBQ19FTlRSWSgyMjgsIC0y
+LCA0NCwgLTE1LCA3MSwgLTIyLCA4MiwgLTYsIDQyKSwKKwlDQUJBQ19FTlRSWSgyMjksIDAsIDQ1
+LCAtNywgNjEsIC05LCA2MiwgLTUsIDUwKSwKKwlDQUJBQ19FTlRSWSgyMzAsIDAsIDUyLCAwLCA1
+MywgMCwgNTMsIC0zLCA1NCksCisJQ0FCQUNfRU5UUlkoMjMxLCAtMywgNjQsIC01LCA2NiwgMCwg
+NTksIC0yLCA2MiksCisJQ0FCQUNfRU5UUlkoMjMyLCAtMiwgNTksIC0xMSwgNzcsIC0xNCwgODUs
+IDAsIDU4KSwKKwlDQUJBQ19FTlRSWSgyMzMsIC00LCA3MCwgLTksIDgwLCAtMTMsIDg5LCAxLCA2
+MyksCisJQ0FCQUNfRU5UUlkoMjM0LCAtNCwgNzUsIC05LCA4NCwgLTEzLCA5NCwgLTIsIDcyKSwK
+KwlDQUJBQ19FTlRSWSgyMzUsIC04LCA4MiwgLTEwLCA4NywgLTExLCA5MiwgLTEsIDc0KSwKKwlD
+QUJBQ19FTlRSWSgyMzYsIC0xNywgMTAyLCAtMzQsIDEyNywgLTI5LCAxMjcsIC05LCA5MSksCisJ
+Q0FCQUNfRU5UUlkoMjM3LCAtOSwgNzcsIC0yMSwgMTAxLCAtMjEsIDEwMCwgLTUsIDY3KSwKKwlD
+QUJBQ19FTlRSWSgyMzgsIDMsIDI0LCAtMywgMzksIC0xNCwgNTcsIC01LCAyNyksCisJQ0FCQUNf
+RU5UUlkoMjM5LCAwLCA0MiwgLTUsIDUzLCAtMTIsIDY3LCAtMywgMzkpLAorCUNBQkFDX0VOVFJZ
+KDI0MCwgMCwgNDgsIC03LCA2MSwgLTExLCA3MSwgLTIsIDQ0KSwKKwlDQUJBQ19FTlRSWSgyNDEs
+IDAsIDU1LCAtMTEsIDc1LCAtMTAsIDc3LCAwLCA0NiksCisJQ0FCQUNfRU5UUlkoMjQyLCAtNiwg
+NTksIC0xNSwgNzcsIC0yMSwgODUsIC0xNiwgNjQpLAorCUNBQkFDX0VOVFJZKDI0MywgLTcsIDcx
+LCAtMTcsIDkxLCAtMTYsIDg4LCAtOCwgNjgpLAorCUNBQkFDX0VOVFJZKDI0NCwgLTEyLCA4Mywg
+LTI1LCAxMDcsIC0yMywgMTA0LCAtMTAsIDc4KSwKKwlDQUJBQ19FTlRSWSgyNDUsIC0xMSwgODcs
+IC0yNSwgMTExLCAtMTUsIDk4LCAtNiwgNzcpLAorCUNBQkFDX0VOVFJZKDI0NiwgLTMwLCAxMTks
+IC0yOCwgMTIyLCAtMzcsIDEyNywgLTEwLCA4NiksCisJQ0FCQUNfRU5UUlkoMjQ3LCAxLCA1OCwg
+LTExLCA3NiwgLTEwLCA4MiwgLTEyLCA5MiksCisJQ0FCQUNfRU5UUlkoMjQ4LCAtMywgMjksIC0x
+MCwgNDQsIC04LCA0OCwgLTE1LCA1NSksCisJQ0FCQUNfRU5UUlkoMjQ5LCAtMSwgMzYsIC0xMCwg
+NTIsIC04LCA2MSwgLTEwLCA2MCksCisJQ0FCQUNfRU5UUlkoMjUwLCAxLCAzOCwgLTEwLCA1Nywg
+LTgsIDY2LCAtNiwgNjIpLAorCUNBQkFDX0VOVFJZKDI1MSwgMiwgNDMsIC05LCA1OCwgLTcsIDcw
+LCAtNCwgNjUpLAorCUNBQkFDX0VOVFJZKDI1MiwgLTYsIDU1LCAtMTYsIDcyLCAtMTQsIDc1LCAt
+MTIsIDczKSwKKwlDQUJBQ19FTlRSWSgyNTMsIDAsIDU4LCAtNywgNjksIC0xMCwgNzksIC04LCA3
+NiksCisJQ0FCQUNfRU5UUlkoMjU0LCAwLCA2NCwgLTQsIDY5LCAtOSwgODMsIC03LCA4MCksCisJ
+Q0FCQUNfRU5UUlkoMjU1LCAtMywgNzQsIC01LCA3NCwgLTEyLCA5MiwgLTksIDg4KSwKKwlDQUJB
+Q19FTlRSWSgyNTYsIC0xMCwgOTAsIC05LCA4NiwgLTE4LCAxMDgsIC0xNywgMTEwKSwKKwlDQUJB
+Q19FTlRSWSgyNTcsIDAsIDcwLCAyLCA2NiwgLTQsIDc5LCAtMTEsIDk3KSwKKwlDQUJBQ19FTlRS
+WSgyNTgsIC00LCAyOSwgLTksIDM0LCAtMjIsIDY5LCAtMjAsIDg0KSwKKwlDQUJBQ19FTlRSWSgy
+NTksIDUsIDMxLCAxLCAzMiwgLTE2LCA3NSwgLTExLCA3OSksCisJQ0FCQUNfRU5UUlkoMjYwLCA3
+LCA0MiwgMTEsIDMxLCAtMiwgNTgsIC02LCA3MyksCisJQ0FCQUNfRU5UUlkoMjYxLCAxLCA1OSwg
+NSwgNTIsIDEsIDU4LCAtNCwgNzQpLAorCUNBQkFDX0VOVFJZKDI2MiwgLTIsIDU4LCAtMiwgNTUs
+IC0xMywgNzgsIC0xMywgODYpLAorCUNBQkFDX0VOVFJZKDI2MywgLTMsIDcyLCAtMiwgNjcsIC05
+LCA4MywgLTEzLCA5NiksCisJQ0FCQUNfRU5UUlkoMjY0LCAtMywgODEsIDAsIDczLCAtNCwgODEs
+IC0xMSwgOTcpLAorCUNBQkFDX0VOVFJZKDI2NSwgLTExLCA5NywgLTgsIDg5LCAtMTMsIDk5LCAt
+MTksIDExNyksCisJQ0FCQUNfRU5UUlkoMjY2LCAwLCA1OCwgMywgNTIsIC0xMywgODEsIC04LCA3
+OCksCisJQ0FCQUNfRU5UUlkoMjY3LCA4LCA1LCA3LCA0LCAtNiwgMzgsIC01LCAzMyksCisJQ0FC
+QUNfRU5UUlkoMjY4LCAxMCwgMTQsIDEwLCA4LCAtMTMsIDYyLCAtNCwgNDgpLAorCUNBQkFDX0VO
+VFJZKDI2OSwgMTQsIDE4LCAxNywgOCwgLTYsIDU4LCAtMiwgNTMpLAorCUNBQkFDX0VOVFJZKDI3
+MCwgMTMsIDI3LCAxNiwgMTksIC0yLCA1OSwgLTMsIDYyKSwKKwlDQUJBQ19FTlRSWSgyNzEsIDIs
+IDQwLCAzLCAzNywgLTE2LCA3MywgLTEzLCA3MSksCisJQ0FCQUNfRU5UUlkoMjcyLCAwLCA1OCwg
+LTEsIDYxLCAtMTAsIDc2LCAtMTAsIDc5KSwKKwlDQUJBQ19FTlRSWSgyNzMsIC0zLCA3MCwgLTUs
+IDczLCAtMTMsIDg2LCAtMTIsIDg2KSwKKwlDQUJBQ19FTlRSWSgyNzQsIC02LCA3OSwgLTEsIDcw
+LCAtOSwgODMsIC0xMywgOTApLAorCUNBQkFDX0VOVFJZKDI3NSwgLTgsIDg1LCAtNCwgNzgsIC0x
+MCwgODcsIC0xNCwgOTcpLAorCisJLyogVGFibGUgOS0yMiDigJMgVmFsdWVzIG9mIHZhcmlhYmxl
+cyBtIGFuZCBuIGZvciBjdHhJZHggZnJvbSAyNzcgdG8gMzM3ICovCisJQ0FCQUNfRU5UUlkoMjc3
+LCAtMTMsIDEwNiwgLTIxLCAxMjYsIC0yMiwgMTI3LCAtNiwgOTMpLAorCUNBQkFDX0VOVFJZKDI3
+OCwgLTE2LCAxMDYsIC0yMywgMTI0LCAtMjUsIDEyNywgLTYsIDg0KSwKKwlDQUJBQ19FTlRSWSgy
+NzksIC0xMCwgODcsIC0yMCwgMTEwLCAtMjUsIDEyMCwgLTgsIDc5KSwKKwlDQUJBQ19FTlRSWSgy
+ODAsIC0yMSwgMTE0LCAtMjYsIDEyNiwgLTI3LCAxMjcsIDAsIDY2KSwKKwlDQUJBQ19FTlRSWSgy
+ODEsIC0xOCwgMTEwLCAtMjUsIDEyNCwgLTE5LCAxMTQsIC0xLCA3MSksCisJQ0FCQUNfRU5UUlko
+MjgyLCAtMTQsIDk4LCAtMTcsIDEwNSwgLTIzLCAxMTcsIDAsIDYyKSwKKwlDQUJBQ19FTlRSWSgy
+ODMsIC0yMiwgMTEwLCAtMjcsIDEyMSwgLTI1LCAxMTgsIC0yLCA2MCksCisJQ0FCQUNfRU5UUlko
+Mjg0LCAtMjEsIDEwNiwgLTI3LCAxMTcsIC0yNiwgMTE3LCAtMiwgNTkpLAorCUNBQkFDX0VOVFJZ
+KDI4NSwgLTE4LCAxMDMsIC0xNywgMTAyLCAtMjQsIDExMywgLTUsIDc1KSwKKwlDQUJBQ19FTlRS
+WSgyODYsIC0yMSwgMTA3LCAtMjYsIDExNywgLTI4LCAxMTgsIC0zLCA2MiksCisJQ0FCQUNfRU5U
+UlkoMjg3LCAtMjMsIDEwOCwgLTI3LCAxMTYsIC0zMSwgMTIwLCAtNCwgNTgpLAorCUNBQkFDX0VO
+VFJZKDI4OCwgLTI2LCAxMTIsIC0zMywgMTIyLCAtMzcsIDEyNCwgLTksIDY2KSwKKwlDQUJBQ19F
+TlRSWSgyODksIC0xMCwgOTYsIC0xMCwgOTUsIC0xMCwgOTQsIC0xLCA3OSksCisJQ0FCQUNfRU5U
+UlkoMjkwLCAtMTIsIDk1LCAtMTQsIDEwMCwgLTE1LCAxMDIsIDAsIDcxKSwKKwlDQUJBQ19FTlRS
+WSgyOTEsIC01LCA5MSwgLTgsIDk1LCAtMTAsIDk5LCAzLCA2OCksCisJQ0FCQUNfRU5UUlkoMjky
+LCAtOSwgOTMsIC0xNywgMTExLCAtMTMsIDEwNiwgMTAsIDQ0KSwKKwlDQUJBQ19FTlRSWSgyOTMs
+IC0yMiwgOTQsIC0yOCwgMTE0LCAtNTAsIDEyNywgLTcsIDYyKSwKKwlDQUJBQ19FTlRSWSgyOTQs
+IC01LCA4NiwgLTYsIDg5LCAtNSwgOTIsIDE1LCAzNiksCisJQ0FCQUNfRU5UUlkoMjk1LCA5LCA2
+NywgLTIsIDgwLCAxNywgNTcsIDE0LCA0MCksCisJQ0FCQUNfRU5UUlkoMjk2LCAtNCwgODAsIC00
+LCA4MiwgLTUsIDg2LCAxNiwgMjcpLAorCUNBQkFDX0VOVFJZKDI5NywgLTEwLCA4NSwgLTksIDg1
+LCAtMTMsIDk0LCAxMiwgMjkpLAorCUNBQkFDX0VOVFJZKDI5OCwgLTEsIDcwLCAtOCwgODEsIC0x
+MiwgOTEsIDEsIDQ0KSwKKwlDQUJBQ19FTlRSWSgyOTksIDcsIDYwLCAtMSwgNzIsIC0yLCA3Nywg
+MjAsIDM2KSwKKwlDQUJBQ19FTlRSWSgzMDAsIDksIDU4LCA1LCA2NCwgMCwgNzEsIDE4LCAzMiks
+CisJQ0FCQUNfRU5UUlkoMzAxLCA1LCA2MSwgMSwgNjcsIC0xLCA3MywgNSwgNDIpLAorCUNBQkFD
+X0VOVFJZKDMwMiwgMTIsIDUwLCA5LCA1NiwgNCwgNjQsIDEsIDQ4KSwKKwlDQUJBQ19FTlRSWSgz
+MDMsIDE1LCA1MCwgMCwgNjksIC03LCA4MSwgMTAsIDYyKSwKKwlDQUJBQ19FTlRSWSgzMDQsIDE4
+LCA0OSwgMSwgNjksIDUsIDY0LCAxNywgNDYpLAorCUNBQkFDX0VOVFJZKDMwNSwgMTcsIDU0LCA3
+LCA2OSwgMTUsIDU3LCA5LCA2NCksCisJQ0FCQUNfRU5UUlkoMzA2LCAxMCwgNDEsIC03LCA2OSwg
+MSwgNjcsIC0xMiwgMTA0KSwKKwlDQUJBQ19FTlRSWSgzMDcsIDcsIDQ2LCAtNiwgNjcsIDAsIDY4
+LCAtMTEsIDk3KSwKKwlDQUJBQ19FTlRSWSgzMDgsIC0xLCA1MSwgLTE2LCA3NywgLTEwLCA2Nywg
+LTE2LCA5NiksCisJQ0FCQUNfRU5UUlkoMzA5LCA3LCA0OSwgLTIsIDY0LCAxLCA2OCwgLTcsIDg4
+KSwKKwlDQUJBQ19FTlRSWSgzMTAsIDgsIDUyLCAyLCA2MSwgMCwgNzcsIC04LCA4NSksCisJQ0FC
+QUNfRU5UUlkoMzExLCA5LCA0MSwgLTYsIDY3LCAyLCA2NCwgLTcsIDg1KSwKKwlDQUJBQ19FTlRS
+WSgzMTIsIDYsIDQ3LCAtMywgNjQsIDAsIDY4LCAtOSwgODUpLAorCUNBQkFDX0VOVFJZKDMxMywg
+MiwgNTUsIDIsIDU3LCAtNSwgNzgsIC0xMywgODgpLAorCUNBQkFDX0VOVFJZKDMxNCwgMTMsIDQx
+LCAtMywgNjUsIDcsIDU1LCA0LCA2NiksCisJQ0FCQUNfRU5UUlkoMzE1LCAxMCwgNDQsIC0zLCA2
+NiwgNSwgNTksIC0zLCA3NyksCisJQ0FCQUNfRU5UUlkoMzE2LCA2LCA1MCwgMCwgNjIsIDIsIDY1
+LCAtMywgNzYpLAorCUNBQkFDX0VOVFJZKDMxNywgNSwgNTMsIDksIDUxLCAxNCwgNTQsIC02LCA3
+NiksCisJQ0FCQUNfRU5UUlkoMzE4LCAxMywgNDksIC0xLCA2NiwgMTUsIDQ0LCAxMCwgNTgpLAor
+CUNBQkFDX0VOVFJZKDMxOSwgNCwgNjMsIC0yLCA3MSwgNSwgNjAsIC0xLCA3NiksCisJQ0FCQUNf
+RU5UUlkoMzIwLCA2LCA2NCwgLTIsIDc1LCAyLCA3MCwgLTEsIDgzKSwKKwlDQUJBQ19FTlRSWSgz
+MjEsIC0yLCA2OSwgLTEsIDcwLCAtMiwgNzYsIC03LCA5OSksCisJQ0FCQUNfRU5UUlkoMzIyLCAt
+MiwgNTksIC05LCA3MiwgLTE4LCA4NiwgLTE0LCA5NSksCisJQ0FCQUNfRU5UUlkoMzIzLCA2LCA3
+MCwgMTQsIDYwLCAxMiwgNzAsIDIsIDk1KSwKKwlDQUJBQ19FTlRSWSgzMjQsIDEwLCA0NCwgMTYs
+IDM3LCA1LCA2NCwgMCwgNzYpLAorCUNBQkFDX0VOVFJZKDMyNSwgOSwgMzEsIDAsIDQ3LCAtMTIs
+IDcwLCAtNSwgNzQpLAorCUNBQkFDX0VOVFJZKDMyNiwgMTIsIDQzLCAxOCwgMzUsIDExLCA1NSwg
+MCwgNzApLAorCUNBQkFDX0VOVFJZKDMyNywgMywgNTMsIDExLCAzNywgNSwgNTYsIC0xMSwgNzUp
+LAorCUNBQkFDX0VOVFJZKDMyOCwgMTQsIDM0LCAxMiwgNDEsIDAsIDY5LCAxLCA2OCksCisJQ0FC
+QUNfRU5UUlkoMzI5LCAxMCwgMzgsIDEwLCA0MSwgMiwgNjUsIDAsIDY1KSwKKwlDQUJBQ19FTlRS
+WSgzMzAsIC0zLCA1MiwgMiwgNDgsIC02LCA3NCwgLTE0LCA3MyksCisJQ0FCQUNfRU5UUlkoMzMx
+LCAxMywgNDAsIDEyLCA0MSwgNSwgNTQsIDMsIDYyKSwKKwlDQUJBQ19FTlRSWSgzMzIsIDE3LCAz
+MiwgMTMsIDQxLCA3LCA1NCwgNCwgNjIpLAorCUNBQkFDX0VOVFJZKDMzMywgNywgNDQsIDAsIDU5
+LCAtNiwgNzYsIC0xLCA2OCksCisJQ0FCQUNfRU5UUlkoMzM0LCA3LCAzOCwgMywgNTAsIC0xMSwg
+ODIsIC0xMywgNzUpLAorCUNBQkFDX0VOVFJZKDMzNSwgMTMsIDUwLCAxOSwgNDAsIC0yLCA3Nywg
+MTEsIDU1KSwKKwlDQUJBQ19FTlRSWSgzMzYsIDEwLCA1NywgMywgNjYsIC0yLCA3NywgNSwgNjQp
+LAorCUNBQkFDX0VOVFJZKDMzNywgMjYsIDQzLCAxOCwgNTAsIDI1LCA0MiwgMTIsIDcwKSwKKwor
+CS8qIFRhYmxlIDktMjMg4oCTIFZhbHVlcyBvZiB2YXJpYWJsZXMgbSBhbmQgbiBmb3IgY3R4SWR4
+IGZyb20gMzM4IHRvIDM5OCAqLworCUNBQkFDX0VOVFJZKDMzOCwgMTQsIDExLCAxOSwgLTYsIDE3
+LCAtMTMsIDE1LCA2KSwKKwlDQUJBQ19FTlRSWSgzMzksIDExLCAxNCwgMTgsIC02LCAxNiwgLTks
+IDYsIDE5KSwKKwlDQUJBQ19FTlRSWSgzNDAsIDksIDExLCAxNCwgMCwgMTcsIC0xMiwgNywgMTYp
+LAorCUNBQkFDX0VOVFJZKDM0MSwgMTgsIDExLCAyNiwgLTEyLCAyNywgLTIxLCAxMiwgMTQpLAor
+CUNBQkFDX0VOVFJZKDM0MiwgMjEsIDksIDMxLCAtMTYsIDM3LCAtMzAsIDE4LCAxMyksCisJQ0FC
+QUNfRU5UUlkoMzQzLCAyMywgLTIsIDMzLCAtMjUsIDQxLCAtNDAsIDEzLCAxMSksCisJQ0FCQUNf
+RU5UUlkoMzQ0LCAzMiwgLTE1LCAzMywgLTIyLCA0MiwgLTQxLCAxMywgMTUpLAorCUNBQkFDX0VO
+VFJZKDM0NSwgMzIsIC0xNSwgMzcsIC0yOCwgNDgsIC00NywgMTUsIDE2KSwKKwlDQUJBQ19FTlRS
+WSgzNDYsIDM0LCAtMjEsIDM5LCAtMzAsIDM5LCAtMzIsIDEyLCAyMyksCisJQ0FCQUNfRU5UUlko
+MzQ3LCAzOSwgLTIzLCA0MiwgLTMwLCA0NiwgLTQwLCAxMywgMjMpLAorCUNBQkFDX0VOVFJZKDM0
+OCwgNDIsIC0zMywgNDcsIC00MiwgNTIsIC01MSwgMTUsIDIwKSwKKwlDQUJBQ19FTlRSWSgzNDks
+IDQxLCAtMzEsIDQ1LCAtMzYsIDQ2LCAtNDEsIDE0LCAyNiksCisJQ0FCQUNfRU5UUlkoMzUwLCA0
+NiwgLTI4LCA0OSwgLTM0LCA1MiwgLTM5LCAxNCwgNDQpLAorCUNBQkFDX0VOVFJZKDM1MSwgMzgs
+IC0xMiwgNDEsIC0xNywgNDMsIC0xOSwgMTcsIDQwKSwKKwlDQUJBQ19FTlRSWSgzNTIsIDIxLCAy
+OSwgMzIsIDksIDMyLCAxMSwgMTcsIDQ3KSwKKwlDQUJBQ19FTlRSWSgzNTMsIDQ1LCAtMjQsIDY5
+LCAtNzEsIDYxLCAtNTUsIDI0LCAxNyksCisJQ0FCQUNfRU5UUlkoMzU0LCA1MywgLTQ1LCA2Mywg
+LTYzLCA1NiwgLTQ2LCAyMSwgMjEpLAorCUNBQkFDX0VOVFJZKDM1NSwgNDgsIC0yNiwgNjYsIC02
+NCwgNjIsIC01MCwgMjUsIDIyKSwKKwlDQUJBQ19FTlRSWSgzNTYsIDY1LCAtNDMsIDc3LCAtNzQs
+IDgxLCAtNjcsIDMxLCAyNyksCisJQ0FCQUNfRU5UUlkoMzU3LCA0MywgLTE5LCA1NCwgLTM5LCA0
+NSwgLTIwLCAyMiwgMjkpLAorCUNBQkFDX0VOVFJZKDM1OCwgMzksIC0xMCwgNTIsIC0zNSwgMzUs
+IC0yLCAxOSwgMzUpLAorCUNBQkFDX0VOVFJZKDM1OSwgMzAsIDksIDQxLCAtMTAsIDI4LCAxNSwg
+MTQsIDUwKSwKKwlDQUJBQ19FTlRSWSgzNjAsIDE4LCAyNiwgMzYsIDAsIDM0LCAxLCAxMCwgNTcp
+LAorCUNBQkFDX0VOVFJZKDM2MSwgMjAsIDI3LCA0MCwgLTEsIDM5LCAxLCA3LCA2MyksCisJQ0FC
+QUNfRU5UUlkoMzYyLCAwLCA1NywgMzAsIDE0LCAzMCwgMTcsIC0yLCA3NyksCisJQ0FCQUNfRU5U
+UlkoMzYzLCAtMTQsIDgyLCAyOCwgMjYsIDIwLCAzOCwgLTQsIDgyKSwKKwlDQUJBQ19FTlRSWSgz
+NjQsIC01LCA3NSwgMjMsIDM3LCAxOCwgNDUsIC0zLCA5NCksCisJQ0FCQUNfRU5UUlkoMzY1LCAt
+MTksIDk3LCAxMiwgNTUsIDE1LCA1NCwgOSwgNjkpLAorCUNBQkFDX0VOVFJZKDM2NiwgLTM1LCAx
+MjUsIDExLCA2NSwgMCwgNzksIC0xMiwgMTA5KSwKKwlDQUJBQ19FTlRSWSgzNjcsIDI3LCAwLCAz
+NywgLTMzLCAzNiwgLTE2LCAzNiwgLTM1KSwKKwlDQUJBQ19FTlRSWSgzNjgsIDI4LCAwLCAzOSwg
+LTM2LCAzNywgLTE0LCAzNiwgLTM0KSwKKwlDQUJBQ19FTlRSWSgzNjksIDMxLCAtNCwgNDAsIC0z
+NywgMzcsIC0xNywgMzIsIC0yNiksCisJQ0FCQUNfRU5UUlkoMzcwLCAyNywgNiwgMzgsIC0zMCwg
+MzIsIDEsIDM3LCAtMzApLAorCUNBQkFDX0VOVFJZKDM3MSwgMzQsIDgsIDQ2LCAtMzMsIDM0LCAx
+NSwgNDQsIC0zMiksCisJQ0FCQUNfRU5UUlkoMzcyLCAzMCwgMTAsIDQyLCAtMzAsIDI5LCAxNSwg
+MzQsIC0xOCksCisJQ0FCQUNfRU5UUlkoMzczLCAyNCwgMjIsIDQwLCAtMjQsIDI0LCAyNSwgMzQs
+IC0xNSksCisJQ0FCQUNfRU5UUlkoMzc0LCAzMywgMTksIDQ5LCAtMjksIDM0LCAyMiwgNDAsIC0x
+NSksCisJQ0FCQUNfRU5UUlkoMzc1LCAyMiwgMzIsIDM4LCAtMTIsIDMxLCAxNiwgMzMsIC03KSwK
+KwlDQUJBQ19FTlRSWSgzNzYsIDI2LCAzMSwgNDAsIC0xMCwgMzUsIDE4LCAzNSwgLTUpLAorCUNB
+QkFDX0VOVFJZKDM3NywgMjEsIDQxLCAzOCwgLTMsIDMxLCAyOCwgMzMsIDApLAorCUNBQkFDX0VO
+VFJZKDM3OCwgMjYsIDQ0LCA0NiwgLTUsIDMzLCA0MSwgMzgsIDIpLAorCUNBQkFDX0VOVFJZKDM3
+OSwgMjMsIDQ3LCAzMSwgMjAsIDM2LCAyOCwgMzMsIDEzKSwKKwlDQUJBQ19FTlRSWSgzODAsIDE2
+LCA2NSwgMjksIDMwLCAyNywgNDcsIDIzLCAzNSksCisJQ0FCQUNfRU5UUlkoMzgxLCAxNCwgNzEs
+IDI1LCA0NCwgMjEsIDYyLCAxMywgNTgpLAorCUNBQkFDX0VOVFJZKDM4MiwgOCwgNjAsIDEyLCA0
+OCwgMTgsIDMxLCAyOSwgLTMpLAorCUNBQkFDX0VOVFJZKDM4MywgNiwgNjMsIDExLCA0OSwgMTks
+IDI2LCAyNiwgMCksCisJQ0FCQUNfRU5UUlkoMzg0LCAxNywgNjUsIDI2LCA0NSwgMzYsIDI0LCAy
+MiwgMzApLAorCUNBQkFDX0VOVFJZKDM4NSwgMjEsIDI0LCAyMiwgMjIsIDI0LCAyMywgMzEsIC03
+KSwKKwlDQUJBQ19FTlRSWSgzODYsIDIzLCAyMCwgMjMsIDIyLCAyNywgMTYsIDM1LCAtMTUpLAor
+CUNBQkFDX0VOVFJZKDM4NywgMjYsIDIzLCAyNywgMjEsIDI0LCAzMCwgMzQsIC0zKSwKKwlDQUJB
+Q19FTlRSWSgzODgsIDI3LCAzMiwgMzMsIDIwLCAzMSwgMjksIDM0LCAzKSwKKwlDQUJBQ19FTlRS
+WSgzODksIDI4LCAyMywgMjYsIDI4LCAyMiwgNDEsIDM2LCAtMSksCisJQ0FCQUNfRU5UUlkoMzkw
+LCAyOCwgMjQsIDMwLCAyNCwgMjIsIDQyLCAzNCwgNSksCisJQ0FCQUNfRU5UUlkoMzkxLCAyMywg
+NDAsIDI3LCAzNCwgMTYsIDYwLCAzMiwgMTEpLAorCUNBQkFDX0VOVFJZKDM5MiwgMjQsIDMyLCAx
+OCwgNDIsIDE1LCA1MiwgMzUsIDUpLAorCUNBQkFDX0VOVFJZKDM5MywgMjgsIDI5LCAyNSwgMzks
+IDE0LCA2MCwgMzQsIDEyKSwKKwlDQUJBQ19FTlRSWSgzOTQsIDIzLCA0MiwgMTgsIDUwLCAzLCA3
+OCwgMzksIDExKSwKKwlDQUJBQ19FTlRSWSgzOTUsIDE5LCA1NywgMTIsIDcwLCAtMTYsIDEyMywg
+MzAsIDI5KSwKKwlDQUJBQ19FTlRSWSgzOTYsIDIyLCA1MywgMjEsIDU0LCAyMSwgNTMsIDM0LCAy
+NiksCisJQ0FCQUNfRU5UUlkoMzk3LCAyMiwgNjEsIDE0LCA3MSwgMjIsIDU2LCAyOSwgMzkpLAor
+CUNBQkFDX0VOVFJZKDM5OCwgMTEsIDg2LCAxMSwgODMsIDI1LCA2MSwgMTksIDY2KSwKKworCS8q
+IFZhbHVlcyBvZiB2YXJpYWJsZXMgbSBhbmQgbiBmb3IgY3R4SWR4IGZyb20gMzk5IHRvIDQ2MyAo
+bm90IGRvY3VtZW50ZWQpICovCisJQ0FCQUNfRU5UUlkoMzk5LCAxMiwgNDAsIDI1LCAzMiwgMjEs
+IDMzLCAzMSwgMjEpLAorCUNBQkFDX0VOVFJZKDQwMCwgMTEsIDUxLCAyMSwgNDksIDE5LCA1MCwg
+MzEsIDMxKSwKKwlDQUJBQ19FTlRSWSg0MDEsIDE0LCA1OSwgMjEsIDU0LCAxNywgNjEsIDI1LCA1
+MCksCisJQ0FCQUNfRU5UUlkoNDAyLCAtNCwgNzksIC01LCA4NSwgLTMsIDc4LCAtMTcsIDEyMCks
+CisJQ0FCQUNfRU5UUlkoNDAzLCAtNywgNzEsIC02LCA4MSwgLTgsIDc0LCAtMjAsIDExMiksCisJ
+Q0FCQUNfRU5UUlkoNDA0LCAtNSwgNjksIC0xMCwgNzcsIC05LCA3MiwgLTE4LCAxMTQpLAorCUNB
+QkFDX0VOVFJZKDQwNSwgLTksIDcwLCAtNywgODEsIC0xMCwgNzIsIC0xMSwgODUpLAorCUNBQkFD
+X0VOVFJZKDQwNiwgLTgsIDY2LCAtMTcsIDgwLCAtMTgsIDc1LCAtMTUsIDkyKSwKKwlDQUJBQ19F
+TlRSWSg0MDcsIC0xMCwgNjgsIC0xOCwgNzMsIC0xMiwgNzEsIC0xNCwgODkpLAorCUNBQkFDX0VO
+VFJZKDQwOCwgLTE5LCA3MywgLTQsIDc0LCAtMTEsIDYzLCAtMjYsIDcxKSwKKwlDQUJBQ19FTlRS
+WSg0MDksIC0xMiwgNjksIC0xMCwgODMsIC01LCA3MCwgLTE1LCA4MSksCisJQ0FCQUNfRU5UUlko
+NDEwLCAtMTYsIDcwLCAtOSwgNzEsIC0xNywgNzUsIC0xNCwgODApLAorCUNBQkFDX0VOVFJZKDQx
+MSwgLTE1LCA2NywgLTksIDY3LCAtMTQsIDcyLCAwLCA2OCksCisJQ0FCQUNfRU5UUlkoNDEyLCAt
+MjAsIDYyLCAtMSwgNjEsIC0xNiwgNjcsIC0xNCwgNzApLAorCUNBQkFDX0VOVFJZKDQxMywgLTE5
+LCA3MCwgLTgsIDY2LCAtOCwgNTMsIC0yNCwgNTYpLAorCUNBQkFDX0VOVFJZKDQxNCwgLTE2LCA2
+NiwgLTE0LCA2NiwgLTE0LCA1OSwgLTIzLCA2OCksCisJQ0FCQUNfRU5UUlkoNDE1LCAtMjIsIDY1
+LCAwLCA1OSwgLTksIDUyLCAtMjQsIDUwKSwKKwlDQUJBQ19FTlRSWSg0MTYsIC0yMCwgNjMsIDIs
+IDU5LCAtMTEsIDY4LCAtMTEsIDc0KSwKKwlDQUJBQ19FTlRSWSg0MTcsIDksIC0yLCAxNywgLTEw
+LCA5LCAtMiwgMjMsIC0xMyksCisJQ0FCQUNfRU5UUlkoNDE4LCAyNiwgLTksIDMyLCAtMTMsIDMw
+LCAtMTAsIDI2LCAtMTMpLAorCUNBQkFDX0VOVFJZKDQxOSwgMzMsIC05LCA0MiwgLTksIDMxLCAt
+NCwgNDAsIC0xNSksCisJQ0FCQUNfRU5UUlkoNDIwLCAzOSwgLTcsIDQ5LCAtNSwgMzMsIC0xLCA0
+OSwgLTE0KSwKKwlDQUJBQ19FTlRSWSg0MjEsIDQxLCAtMiwgNTMsIDAsIDMzLCA3LCA0NCwgMyks
+CisJQ0FCQUNfRU5UUlkoNDIyLCA0NSwgMywgNjQsIDMsIDMxLCAxMiwgNDUsIDYpLAorCUNBQkFD
+X0VOVFJZKDQyMywgNDksIDksIDY4LCAxMCwgMzcsIDIzLCA0NCwgMzQpLAorCUNBQkFDX0VOVFJZ
+KDQyNCwgNDUsIDI3LCA2NiwgMjcsIDMxLCAzOCwgMzMsIDU0KSwKKwlDQUJBQ19FTlRSWSg0MjUs
+IDM2LCA1OSwgNDcsIDU3LCAyMCwgNjQsIDE5LCA4MiksCisJQ0FCQUNfRU5UUlkoNDI2LCAtNiwg
+NjYsIC01LCA3MSwgLTksIDcxLCAtMywgNzUpLAorCUNBQkFDX0VOVFJZKDQyNywgLTcsIDM1LCAw
+LCAyNCwgLTcsIDM3LCAtMSwgMjMpLAorCUNBQkFDX0VOVFJZKDQyOCwgLTcsIDQyLCAtMSwgMzYs
+IC04LCA0NCwgMSwgMzQpLAorCUNBQkFDX0VOVFJZKDQyOSwgLTgsIDQ1LCAtMiwgNDIsIC0xMSwg
+NDksIDEsIDQzKSwKKwlDQUJBQ19FTlRSWSg0MzAsIC01LCA0OCwgLTIsIDUyLCAtMTAsIDU2LCAw
+LCA1NCksCisJQ0FCQUNfRU5UUlkoNDMxLCAtMTIsIDU2LCAtOSwgNTcsIC0xMiwgNTksIC0yLCA1
+NSksCisJQ0FCQUNfRU5UUlkoNDMyLCAtNiwgNjAsIC02LCA2MywgLTgsIDYzLCAwLCA2MSksCisJ
+Q0FCQUNfRU5UUlkoNDMzLCAtNSwgNjIsIC00LCA2NSwgLTksIDY3LCAxLCA2NCksCisJQ0FCQUNf
+RU5UUlkoNDM0LCAtOCwgNjYsIC00LCA2NywgLTYsIDY4LCAwLCA2OCksCisJQ0FCQUNfRU5UUlko
+NDM1LCAtOCwgNzYsIC03LCA4MiwgLTEwLCA3OSwgLTksIDkyKSwKKwlDQUJBQ19FTlRSWSg0MzYs
+IC01LCA4NSwgLTMsIDgxLCAtMywgNzgsIC0xNCwgMTA2KSwKKwlDQUJBQ19FTlRSWSg0MzcsIC02
+LCA4MSwgLTMsIDc2LCAtOCwgNzQsIC0xMywgOTcpLAorCUNBQkFDX0VOVFJZKDQzOCwgLTEwLCA3
+NywgLTcsIDcyLCAtOSwgNzIsIC0xNSwgOTApLAorCUNBQkFDX0VOVFJZKDQzOSwgLTcsIDgxLCAt
+NiwgNzgsIC0xMCwgNzIsIC0xMiwgOTApLAorCUNBQkFDX0VOVFJZKDQ0MCwgLTE3LCA4MCwgLTEy
+LCA3MiwgLTE4LCA3NSwgLTE4LCA4OCksCisJQ0FCQUNfRU5UUlkoNDQxLCAtMTgsIDczLCAtMTQs
+IDY4LCAtMTIsIDcxLCAtMTAsIDczKSwKKwlDQUJBQ19FTlRSWSg0NDIsIC00LCA3NCwgLTMsIDcw
+LCAtMTEsIDYzLCAtOSwgNzkpLAorCUNBQkFDX0VOVFJZKDQ0MywgLTEwLCA4MywgLTYsIDc2LCAt
+NSwgNzAsIC0xNCwgODYpLAorCUNBQkFDX0VOVFJZKDQ0NCwgLTksIDcxLCAtNSwgNjYsIC0xNywg
+NzUsIC0xMCwgNzMpLAorCUNBQkFDX0VOVFJZKDQ0NSwgLTksIDY3LCAtNSwgNjIsIC0xNCwgNzIs
+IC0xMCwgNzApLAorCUNBQkFDX0VOVFJZKDQ0NiwgLTEsIDYxLCAwLCA1NywgLTE2LCA2NywgLTEw
+LCA2OSksCisJQ0FCQUNfRU5UUlkoNDQ3LCAtOCwgNjYsIC00LCA2MSwgLTgsIDUzLCAtNSwgNjYp
+LAorCUNBQkFDX0VOVFJZKDQ0OCwgLTE0LCA2NiwgLTksIDYwLCAtMTQsIDU5LCAtOSwgNjQpLAor
+CUNBQkFDX0VOVFJZKDQ0OSwgMCwgNTksIDEsIDU0LCAtOSwgNTIsIC01LCA1OCksCisJQ0FCQUNf
+RU5UUlkoNDUwLCAyLCA1OSwgMiwgNTgsIC0xMSwgNjgsIDIsIDU5KSwKKwlDQUJBQ19FTlRSWSg0
+NTEsIDIxLCAtMTMsIDE3LCAtMTAsIDksIC0yLCAyMSwgLTEwKSwKKwlDQUJBQ19FTlRSWSg0NTIs
+IDMzLCAtMTQsIDMyLCAtMTMsIDMwLCAtMTAsIDI0LCAtMTEpLAorCUNBQkFDX0VOVFJZKDQ1Mywg
+MzksIC03LCA0MiwgLTksIDMxLCAtNCwgMjgsIC04KSwKKwlDQUJBQ19FTlRSWSg0NTQsIDQ2LCAt
+MiwgNDksIC01LCAzMywgLTEsIDI4LCAtMSksCisJQ0FCQUNfRU5UUlkoNDU1LCA1MSwgMiwgNTMs
+IDAsIDMzLCA3LCAyOSwgMyksCisJQ0FCQUNfRU5UUlkoNDU2LCA2MCwgNiwgNjQsIDMsIDMxLCAx
+MiwgMjksIDkpLAorCUNBQkFDX0VOVFJZKDQ1NywgNjEsIDE3LCA2OCwgMTAsIDM3LCAyMywgMzUs
+IDIwKSwKKwlDQUJBQ19FTlRSWSg0NTgsIDU1LCAzNCwgNjYsIDI3LCAzMSwgMzgsIDI5LCAzNiks
+CisJQ0FCQUNfRU5UUlkoNDU5LCA0MiwgNjIsIDQ3LCA1NywgMjAsIDY0LCAxNCwgNjcpLAorfTsK
+KworI2RlZmluZSBSS1ZfSEVWQ19DQUJBQ19UQUJMRV9TSVpFCQkyNzQ1NgorCitjb25zdCB1OCBy
+a3ZkZWNfaGV2Y19jYWJhY190YWJsZVtSS1ZfSEVWQ19DQUJBQ19UQUJMRV9TSVpFXSA9IHsKIAkw
+eDA3LCAweDBmLCAweDQ4LCAweDU4LCAweDU4LCAweDQwLCAweDQwLCAweDQwLCAweDQwLCAweDQw
+LCAweDBmLCAweDQwLCAweDQwLCAweDQwLCAweDBmLAogCTB4NjgsIDB4NDgsIDB4NDAsIDB4NDAs
+IDB4NDAsIDB4NDAsIDB4NDAsIDB4NDAsIDB4NDAsIDB4NDAsIDB4NDAsIDB4NDAsIDB4NDAsIDB4
+MDcsIDB4NDAsCiAJMHg0MCwgMHg2OCwgMHg1OCwgMHg2MCwgMHg0MCwgMHgxZiwgMHg0MCwgMHg0
+MCwgMHg0MCwgMHg0MCwgMHg0MCwgMHg0MCwgMHg0OCwgMHg0OCwgMHg2MCwKZGlmZiAtLWdpdCBh
+L2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vcm9ja2NoaXAvcmt2ZGVjL3JrdmRlYy1oMjY0LmMgYi9k
+cml2ZXJzL21lZGlhL3BsYXRmb3JtL3JvY2tjaGlwL3JrdmRlYy9ya3ZkZWMtaDI2NC5jCmluZGV4
+IDExNmU3YjEwNzZiNy4uOTg5Mzc5YWUzYTczIDEwMDY0NAotLS0gYS9kcml2ZXJzL21lZGlhL3Bs
+YXRmb3JtL3JvY2tjaGlwL3JrdmRlYy9ya3ZkZWMtaDI2NC5jCisrKyBiL2RyaXZlcnMvbWVkaWEv
+cGxhdGZvcm0vcm9ja2NoaXAvcmt2ZGVjL3JrdmRlYy1oMjY0LmMKQEAgLTE1LDYgKzE1LDggQEAK
+ICNpbmNsdWRlICJya3ZkZWMuaCIKICNpbmNsdWRlICJya3ZkZWMtcmVncy5oIgogCitleHRlcm4g
+Y29uc3Qgczggcmt2ZGVjX2gyNjRfY2FiYWNfdGFibGVbNF1bNDY0XVsyXTsKKwogLyogU2l6ZSB3
+aXRoIHUzMiB1bml0cy4gKi8KICNkZWZpbmUgUktWX0NBQkFDX0lOSVRfQlVGRkVSX1NJWkUJKDM2
+ODAgKyAxMjgpCiAjZGVmaW5lIFJLVl9SUFNfU0laRQkJCSgoMTI4ICsgMTI4KSAvIDQpCkBAIC0x
+MTgsNTA1ICsxMjAsNiBAQCBzdHJ1Y3Qgcmt2ZGVjX2gyNjRfY3R4IHsKIAlzdHJ1Y3Qgcmt2ZGVj
+X3JlZ3MgcmVnczsKIH07CiAKLSNkZWZpbmUgQ0FCQUNfRU5UUlkoY3R4aWR4LCBpZGMwX20sIGlk
+YzBfbiwgaWRjMV9tLCBpZGMxX24sCQlcCi0JICAgIGlkYzJfbSwgaWRjMl9uLCBpbnRyYV9tLCBp
+bnRyYV9uKQkJCVwKLQlbMF1bKGN0eGlkeCldID0ge2lkYzBfbSwgaWRjMF9ufSwJCQlcCi0JWzFd
+WyhjdHhpZHgpXSA9IHtpZGMxX20sIGlkYzFfbn0sCQkJXAotCVsyXVsoY3R4aWR4KV0gPSB7aWRj
+Ml9tLCBpZGMyX259LAkJCVwKLQlbM11bKGN0eGlkeCldID0ge2ludHJhX20sIGludHJhX259Ci0K
+LS8qCi0gKiBDb25zdGFudCBDQUJBQyB0YWJsZS4KLSAqIEJ1aWx0IGZyb20gdGhlIHRhYmxlcyBk
+ZXNjcmliZWQgaW4gc2VjdGlvbiAnOS4zLjEuMSBJbml0aWFsaXNhdGlvbiBwcm9jZXNzCi0gKiBm
+b3IgY29udGV4dCB2YXJpYWJsZXMnIG9mIHRoZSBIMjY0IHNwZWMuCi0gKi8KLXN0YXRpYyBjb25z
+dCBzOCBya3ZkZWNfaDI2NF9jYWJhY190YWJsZVs0XVs0NjRdWzJdID0gewotCS8qIFRhYmxlIDkt
+MTIg4oCTIFZhbHVlcyBvZiB2YXJpYWJsZXMgbSBhbmQgbiBmb3IgY3R4SWR4IGZyb20gMCB0byAx
+MCAqLwotCUNBQkFDX0VOVFJZKDAsIDIwLCAtMTUsIDIwLCAtMTUsIDIwLCAtMTUsIDIwLCAtMTUp
+LAotCUNBQkFDX0VOVFJZKDEsIDIsIDU0LCAyLCA1NCwgMiwgNTQsIDIsIDU0KSwKLQlDQUJBQ19F
+TlRSWSgyLCAzLCA3NCwgMywgNzQsIDMsIDc0LCAzLCA3NCksCi0JQ0FCQUNfRU5UUlkoMywgMjAs
+IC0xNSwgMjAsIC0xNSwgMjAsIC0xNSwgMjAsIC0xNSksCi0JQ0FCQUNfRU5UUlkoNCwgMiwgNTQs
+IDIsIDU0LCAyLCA1NCwgMiwgNTQpLAotCUNBQkFDX0VOVFJZKDUsIDMsIDc0LCAzLCA3NCwgMywg
+NzQsIDMsIDc0KSwKLQlDQUJBQ19FTlRSWSg2LCAtMjgsIDEyNywgLTI4LCAxMjcsIC0yOCwgMTI3
+LCAtMjgsIDEyNyksCi0JQ0FCQUNfRU5UUlkoNywgLTIzLCAxMDQsIC0yMywgMTA0LCAtMjMsIDEw
+NCwgLTIzLCAxMDQpLAotCUNBQkFDX0VOVFJZKDgsIC02LCA1MywgLTYsIDUzLCAtNiwgNTMsIC02
+LCA1MyksCi0JQ0FCQUNfRU5UUlkoOSwgLTEsIDU0LCAtMSwgNTQsIC0xLCA1NCwgLTEsIDU0KSwK
+LQlDQUJBQ19FTlRSWSgxMCwgNywgNTEsIDcsIDUxLCA3LCA1MSwgNywgNTEpLAotCi0JLyogVGFi
+bGUgOS0xMyDigJMgVmFsdWVzIG9mIHZhcmlhYmxlcyBtIGFuZCBuIGZvciBjdHhJZHggZnJvbSAx
+MSB0byAyMyAqLwotCUNBQkFDX0VOVFJZKDExLCAyMywgMzMsIDIyLCAyNSwgMjksIDE2LCAwLCAw
+KSwKLQlDQUJBQ19FTlRSWSgxMiwgMjMsIDIsIDM0LCAwLCAyNSwgMCwgMCwgMCksCi0JQ0FCQUNf
+RU5UUlkoMTMsIDIxLCAwLCAxNiwgMCwgMTQsIDAsIDAsIDApLAotCUNBQkFDX0VOVFJZKDE0LCAx
+LCA5LCAtMiwgOSwgLTEwLCA1MSwgMCwgMCksCi0JQ0FCQUNfRU5UUlkoMTUsIDAsIDQ5LCA0LCA0
+MSwgLTMsIDYyLCAwLCAwKSwKLQlDQUJBQ19FTlRSWSgxNiwgLTM3LCAxMTgsIC0yOSwgMTE4LCAt
+MjcsIDk5LCAwLCAwKSwKLQlDQUJBQ19FTlRSWSgxNywgNSwgNTcsIDIsIDY1LCAyNiwgMTYsIDAs
+IDApLAotCUNBQkFDX0VOVFJZKDE4LCAtMTMsIDc4LCAtNiwgNzEsIC00LCA4NSwgMCwgMCksCi0J
+Q0FCQUNfRU5UUlkoMTksIC0xMSwgNjUsIC0xMywgNzksIC0yNCwgMTAyLCAwLCAwKSwKLQlDQUJB
+Q19FTlRSWSgyMCwgMSwgNjIsIDUsIDUyLCA1LCA1NywgMCwgMCksCi0JQ0FCQUNfRU5UUlkoMjEs
+IDEyLCA0OSwgOSwgNTAsIDYsIDU3LCAwLCAwKSwKLQlDQUJBQ19FTlRSWSgyMiwgLTQsIDczLCAt
+MywgNzAsIC0xNywgNzMsIDAsIDApLAotCUNBQkFDX0VOVFJZKDIzLCAxNywgNTAsIDEwLCA1NCwg
+MTQsIDU3LCAwLCAwKSwKLQotCS8qIFRhYmxlIDktMTQg4oCTIFZhbHVlcyBvZiB2YXJpYWJsZXMg
+bSBhbmQgbiBmb3IgY3R4SWR4IGZyb20gMjQgdG8gMzkgKi8KLQlDQUJBQ19FTlRSWSgyNCwgMTgs
+IDY0LCAyNiwgMzQsIDIwLCA0MCwgMCwgMCksCi0JQ0FCQUNfRU5UUlkoMjUsIDksIDQzLCAxOSwg
+MjIsIDIwLCAxMCwgMCwgMCksCi0JQ0FCQUNfRU5UUlkoMjYsIDI5LCAwLCA0MCwgMCwgMjksIDAs
+IDAsIDApLAotCUNBQkFDX0VOVFJZKDI3LCAyNiwgNjcsIDU3LCAyLCA1NCwgMCwgMCwgMCksCi0J
+Q0FCQUNfRU5UUlkoMjgsIDE2LCA5MCwgNDEsIDM2LCAzNywgNDIsIDAsIDApLAotCUNBQkFDX0VO
+VFJZKDI5LCA5LCAxMDQsIDI2LCA2OSwgMTIsIDk3LCAwLCAwKSwKLQlDQUJBQ19FTlRSWSgzMCwg
+LTQ2LCAxMjcsIC00NSwgMTI3LCAtMzIsIDEyNywgMCwgMCksCi0JQ0FCQUNfRU5UUlkoMzEsIC0y
+MCwgMTA0LCAtMTUsIDEwMSwgLTIyLCAxMTcsIDAsIDApLAotCUNBQkFDX0VOVFJZKDMyLCAxLCA2
+NywgLTQsIDc2LCAtMiwgNzQsIDAsIDApLAotCUNBQkFDX0VOVFJZKDMzLCAtMTMsIDc4LCAtNiwg
+NzEsIC00LCA4NSwgMCwgMCksCi0JQ0FCQUNfRU5UUlkoMzQsIC0xMSwgNjUsIC0xMywgNzksIC0y
+NCwgMTAyLCAwLCAwKSwKLQlDQUJBQ19FTlRSWSgzNSwgMSwgNjIsIDUsIDUyLCA1LCA1NywgMCwg
+MCksCi0JQ0FCQUNfRU5UUlkoMzYsIC02LCA4NiwgNiwgNjksIC02LCA5MywgMCwgMCksCi0JQ0FC
+QUNfRU5UUlkoMzcsIC0xNywgOTUsIC0xMywgOTAsIC0xNCwgODgsIDAsIDApLAotCUNBQkFDX0VO
+VFJZKDM4LCAtNiwgNjEsIDAsIDUyLCAtNiwgNDQsIDAsIDApLAotCUNBQkFDX0VOVFJZKDM5LCA5
+LCA0NSwgOCwgNDMsIDQsIDU1LCAwLCAwKSwKLQotCS8qIFRhYmxlIDktMTUg4oCTIFZhbHVlcyBv
+ZiB2YXJpYWJsZXMgbSBhbmQgbiBmb3IgY3R4SWR4IGZyb20gNDAgdG8gNTMgKi8KLQlDQUJBQ19F
+TlRSWSg0MCwgLTMsIDY5LCAtMiwgNjksIC0xMSwgODksIDAsIDApLAotCUNBQkFDX0VOVFJZKDQx
+LCAtNiwgODEsIC01LCA4MiwgLTE1LCAxMDMsIDAsIDApLAotCUNBQkFDX0VOVFJZKDQyLCAtMTEs
+IDk2LCAtMTAsIDk2LCAtMjEsIDExNiwgMCwgMCksCi0JQ0FCQUNfRU5UUlkoNDMsIDYsIDU1LCAy
+LCA1OSwgMTksIDU3LCAwLCAwKSwKLQlDQUJBQ19FTlRSWSg0NCwgNywgNjcsIDIsIDc1LCAyMCwg
+NTgsIDAsIDApLAotCUNBQkFDX0VOVFJZKDQ1LCAtNSwgODYsIC0zLCA4NywgNCwgODQsIDAsIDAp
+LAotCUNBQkFDX0VOVFJZKDQ2LCAyLCA4OCwgLTMsIDEwMCwgNiwgOTYsIDAsIDApLAotCUNBQkFD
+X0VOVFJZKDQ3LCAwLCA1OCwgMSwgNTYsIDEsIDYzLCAwLCAwKSwKLQlDQUJBQ19FTlRSWSg0OCwg
+LTMsIDc2LCAtMywgNzQsIC01LCA4NSwgMCwgMCksCi0JQ0FCQUNfRU5UUlkoNDksIC0xMCwgOTQs
+IC02LCA4NSwgLTEzLCAxMDYsIDAsIDApLAotCUNBQkFDX0VOVFJZKDUwLCA1LCA1NCwgMCwgNTks
+IDUsIDYzLCAwLCAwKSwKLQlDQUJBQ19FTlRSWSg1MSwgNCwgNjksIC0zLCA4MSwgNiwgNzUsIDAs
+IDApLAotCUNBQkFDX0VOVFJZKDUyLCAtMywgODEsIC03LCA4NiwgLTMsIDkwLCAwLCAwKSwKLQlD
+QUJBQ19FTlRSWSg1MywgMCwgODgsIC01LCA5NSwgLTEsIDEwMSwgMCwgMCksCi0KLQkvKiBUYWJs
+ZSA5LTE2IOKAkyBWYWx1ZXMgb2YgdmFyaWFibGVzIG0gYW5kIG4gZm9yIGN0eElkeCBmcm9tIDU0
+IHRvIDU5ICovCi0JQ0FCQUNfRU5UUlkoNTQsIC03LCA2NywgLTEsIDY2LCAzLCA1NSwgMCwgMCks
+Ci0JQ0FCQUNfRU5UUlkoNTUsIC01LCA3NCwgLTEsIDc3LCAtNCwgNzksIDAsIDApLAotCUNBQkFD
+X0VOVFJZKDU2LCAtNCwgNzQsIDEsIDcwLCAtMiwgNzUsIDAsIDApLAotCUNBQkFDX0VOVFJZKDU3
+LCAtNSwgODAsIC0yLCA4NiwgLTEyLCA5NywgMCwgMCksCi0JQ0FCQUNfRU5UUlkoNTgsIC03LCA3
+MiwgLTUsIDcyLCAtNywgNTAsIDAsIDApLAotCUNBQkFDX0VOVFJZKDU5LCAxLCA1OCwgMCwgNjEs
+IDEsIDYwLCAwLCAwKSwKLQotCS8qIFRhYmxlIDktMTcg4oCTIFZhbHVlcyBvZiB2YXJpYWJsZXMg
+bSBhbmQgbiBmb3IgY3R4SWR4IGZyb20gNjAgdG8gNjkgKi8KLQlDQUJBQ19FTlRSWSg2MCwgMCwg
+NDEsIDAsIDQxLCAwLCA0MSwgMCwgNDEpLAotCUNBQkFDX0VOVFJZKDYxLCAwLCA2MywgMCwgNjMs
+IDAsIDYzLCAwLCA2MyksCi0JQ0FCQUNfRU5UUlkoNjIsIDAsIDYzLCAwLCA2MywgMCwgNjMsIDAs
+IDYzKSwKLQlDQUJBQ19FTlRSWSg2MywgMCwgNjMsIDAsIDYzLCAwLCA2MywgMCwgNjMpLAotCUNB
+QkFDX0VOVFJZKDY0LCAtOSwgODMsIC05LCA4MywgLTksIDgzLCAtOSwgODMpLAotCUNBQkFDX0VO
+VFJZKDY1LCA0LCA4NiwgNCwgODYsIDQsIDg2LCA0LCA4NiksCi0JQ0FCQUNfRU5UUlkoNjYsIDAs
+IDk3LCAwLCA5NywgMCwgOTcsIDAsIDk3KSwKLQlDQUJBQ19FTlRSWSg2NywgLTcsIDcyLCAtNywg
+NzIsIC03LCA3MiwgLTcsIDcyKSwKLQlDQUJBQ19FTlRSWSg2OCwgMTMsIDQxLCAxMywgNDEsIDEz
+LCA0MSwgMTMsIDQxKSwKLQlDQUJBQ19FTlRSWSg2OSwgMywgNjIsIDMsIDYyLCAzLCA2MiwgMywg
+NjIpLAotCi0JLyogVGFibGUgOS0xOCDigJMgVmFsdWVzIG9mIHZhcmlhYmxlcyBtIGFuZCBuIGZv
+ciBjdHhJZHggZnJvbSA3MCB0byAxMDQgKi8KLQlDQUJBQ19FTlRSWSg3MCwgMCwgNDUsIDEzLCAx
+NSwgNywgMzQsIDAsIDExKSwKLQlDQUJBQ19FTlRSWSg3MSwgLTQsIDc4LCA3LCA1MSwgLTksIDg4
+LCAxLCA1NSksCi0JQ0FCQUNfRU5UUlkoNzIsIC0zLCA5NiwgMiwgODAsIC0yMCwgMTI3LCAwLCA2
+OSksCi0JQ0FCQUNfRU5UUlkoNzMsIC0yNywgMTI2LCAtMzksIDEyNywgLTM2LCAxMjcsIC0xNywg
+MTI3KSwKLQlDQUJBQ19FTlRSWSg3NCwgLTI4LCA5OCwgLTE4LCA5MSwgLTE3LCA5MSwgLTEzLCAx
+MDIpLAotCUNBQkFDX0VOVFJZKDc1LCAtMjUsIDEwMSwgLTE3LCA5NiwgLTE0LCA5NSwgMCwgODIp
+LAotCUNBQkFDX0VOVFJZKDc2LCAtMjMsIDY3LCAtMjYsIDgxLCAtMjUsIDg0LCAtNywgNzQpLAot
+CUNBQkFDX0VOVFJZKDc3LCAtMjgsIDgyLCAtMzUsIDk4LCAtMjUsIDg2LCAtMjEsIDEwNyksCi0J
+Q0FCQUNfRU5UUlkoNzgsIC0yMCwgOTQsIC0yNCwgMTAyLCAtMTIsIDg5LCAtMjcsIDEyNyksCi0J
+Q0FCQUNfRU5UUlkoNzksIC0xNiwgODMsIC0yMywgOTcsIC0xNywgOTEsIC0zMSwgMTI3KSwKLQlD
+QUJBQ19FTlRSWSg4MCwgLTIyLCAxMTAsIC0yNywgMTE5LCAtMzEsIDEyNywgLTI0LCAxMjcpLAot
+CUNBQkFDX0VOVFJZKDgxLCAtMjEsIDkxLCAtMjQsIDk5LCAtMTQsIDc2LCAtMTgsIDk1KSwKLQlD
+QUJBQ19FTlRSWSg4MiwgLTE4LCAxMDIsIC0yMSwgMTEwLCAtMTgsIDEwMywgLTI3LCAxMjcpLAot
+CUNBQkFDX0VOVFJZKDgzLCAtMTMsIDkzLCAtMTgsIDEwMiwgLTEzLCA5MCwgLTIxLCAxMTQpLAot
+CUNBQkFDX0VOVFJZKDg0LCAtMjksIDEyNywgLTM2LCAxMjcsIC0zNywgMTI3LCAtMzAsIDEyNyks
+Ci0JQ0FCQUNfRU5UUlkoODUsIC03LCA5MiwgMCwgODAsIDExLCA4MCwgLTE3LCAxMjMpLAotCUNB
+QkFDX0VOVFJZKDg2LCAtNSwgODksIC01LCA4OSwgNSwgNzYsIC0xMiwgMTE1KSwKLQlDQUJBQ19F
+TlRSWSg4NywgLTcsIDk2LCAtNywgOTQsIDIsIDg0LCAtMTYsIDEyMiksCi0JQ0FCQUNfRU5UUlko
+ODgsIC0xMywgMTA4LCAtNCwgOTIsIDUsIDc4LCAtMTEsIDExNSksCi0JQ0FCQUNfRU5UUlkoODks
+IC0zLCA0NiwgMCwgMzksIC02LCA1NSwgLTEyLCA2MyksCi0JQ0FCQUNfRU5UUlkoOTAsIC0xLCA2
+NSwgMCwgNjUsIDQsIDYxLCAtMiwgNjgpLAotCUNBQkFDX0VOVFJZKDkxLCAtMSwgNTcsIC0xNSwg
+ODQsIC0xNCwgODMsIC0xNSwgODQpLAotCUNBQkFDX0VOVFJZKDkyLCAtOSwgOTMsIC0zNSwgMTI3
+LCAtMzcsIDEyNywgLTEzLCAxMDQpLAotCUNBQkFDX0VOVFJZKDkzLCAtMywgNzQsIC0yLCA3Mywg
+LTUsIDc5LCAtMywgNzApLAotCUNBQkFDX0VOVFJZKDk0LCAtOSwgOTIsIC0xMiwgMTA0LCAtMTEs
+IDEwNCwgLTgsIDkzKSwKLQlDQUJBQ19FTlRSWSg5NSwgLTgsIDg3LCAtOSwgOTEsIC0xMSwgOTEs
+IC0xMCwgOTApLAotCUNBQkFDX0VOVFJZKDk2LCAtMjMsIDEyNiwgLTMxLCAxMjcsIC0zMCwgMTI3
+LCAtMzAsIDEyNyksCi0JQ0FCQUNfRU5UUlkoOTcsIDUsIDU0LCAzLCA1NSwgMCwgNjUsIC0xLCA3
+NCksCi0JQ0FCQUNfRU5UUlkoOTgsIDYsIDYwLCA3LCA1NiwgLTIsIDc5LCAtNiwgOTcpLAotCUNB
+QkFDX0VOVFJZKDk5LCA2LCA1OSwgNywgNTUsIDAsIDcyLCAtNywgOTEpLAotCUNBQkFDX0VOVFJZ
+KDEwMCwgNiwgNjksIDgsIDYxLCAtNCwgOTIsIC0yMCwgMTI3KSwKLQlDQUJBQ19FTlRSWSgxMDEs
+IC0xLCA0OCwgLTMsIDUzLCAtNiwgNTYsIC00LCA1NiksCi0JQ0FCQUNfRU5UUlkoMTAyLCAwLCA2
+OCwgMCwgNjgsIDMsIDY4LCAtNSwgODIpLAotCUNBQkFDX0VOVFJZKDEwMywgLTQsIDY5LCAtNywg
+NzQsIC04LCA3MSwgLTcsIDc2KSwKLQlDQUJBQ19FTlRSWSgxMDQsIC04LCA4OCwgLTksIDg4LCAt
+MTMsIDk4LCAtMjIsIDEyNSksCi0KLQkvKiBUYWJsZSA5LTE5IOKAkyBWYWx1ZXMgb2YgdmFyaWFi
+bGVzIG0gYW5kIG4gZm9yIGN0eElkeCBmcm9tIDEwNSB0byAxNjUgKi8KLQlDQUJBQ19FTlRSWSgx
+MDUsIC0yLCA4NSwgLTEzLCAxMDMsIC00LCA4NiwgLTcsIDkzKSwKLQlDQUJBQ19FTlRSWSgxMDYs
+IC02LCA3OCwgLTEzLCA5MSwgLTEyLCA4OCwgLTExLCA4NyksCi0JQ0FCQUNfRU5UUlkoMTA3LCAt
+MSwgNzUsIC05LCA4OSwgLTUsIDgyLCAtMywgNzcpLAotCUNBQkFDX0VOVFJZKDEwOCwgLTcsIDc3
+LCAtMTQsIDkyLCAtMywgNzIsIC01LCA3MSksCi0JQ0FCQUNfRU5UUlkoMTA5LCAyLCA1NCwgLTgs
+IDc2LCAtNCwgNjcsIC00LCA2MyksCi0JQ0FCQUNfRU5UUlkoMTEwLCA1LCA1MCwgLTEyLCA4Nywg
+LTgsIDcyLCAtNCwgNjgpLAotCUNBQkFDX0VOVFJZKDExMSwgLTMsIDY4LCAtMjMsIDExMCwgLTE2
+LCA4OSwgLTEyLCA4NCksCi0JQ0FCQUNfRU5UUlkoMTEyLCAxLCA1MCwgLTI0LCAxMDUsIC05LCA2
+OSwgLTcsIDYyKSwKLQlDQUJBQ19FTlRSWSgxMTMsIDYsIDQyLCAtMTAsIDc4LCAtMSwgNTksIC03
+LCA2NSksCi0JQ0FCQUNfRU5UUlkoMTE0LCAtNCwgODEsIC0yMCwgMTEyLCA1LCA2NiwgOCwgNjEp
+LAotCUNBQkFDX0VOVFJZKDExNSwgMSwgNjMsIC0xNywgOTksIDQsIDU3LCA1LCA1NiksCi0JQ0FC
+QUNfRU5UUlkoMTE2LCAtNCwgNzAsIC03OCwgMTI3LCAtNCwgNzEsIC0yLCA2NiksCi0JQ0FCQUNf
+RU5UUlkoMTE3LCAwLCA2NywgLTcwLCAxMjcsIC0yLCA3MSwgMSwgNjQpLAotCUNBQkFDX0VOVFJZ
+KDExOCwgMiwgNTcsIC01MCwgMTI3LCAyLCA1OCwgMCwgNjEpLAotCUNBQkFDX0VOVFJZKDExOSwg
+LTIsIDc2LCAtNDYsIDEyNywgLTEsIDc0LCAtMiwgNzgpLAotCUNBQkFDX0VOVFJZKDEyMCwgMTEs
+IDM1LCAtNCwgNjYsIC00LCA0NCwgMSwgNTApLAotCUNBQkFDX0VOVFJZKDEyMSwgNCwgNjQsIC01
+LCA3OCwgLTEsIDY5LCA3LCA1MiksCi0JQ0FCQUNfRU5UUlkoMTIyLCAxLCA2MSwgLTQsIDcxLCAw
+LCA2MiwgMTAsIDM1KSwKLQlDQUJBQ19FTlRSWSgxMjMsIDExLCAzNSwgLTgsIDcyLCAtNywgNTEs
+IDAsIDQ0KSwKLQlDQUJBQ19FTlRSWSgxMjQsIDE4LCAyNSwgMiwgNTksIC00LCA0NywgMTEsIDM4
+KSwKLQlDQUJBQ19FTlRSWSgxMjUsIDEyLCAyNCwgLTEsIDU1LCAtNiwgNDIsIDEsIDQ1KSwKLQlD
+QUJBQ19FTlRSWSgxMjYsIDEzLCAyOSwgLTcsIDcwLCAtMywgNDEsIDAsIDQ2KSwKLQlDQUJBQ19F
+TlRSWSgxMjcsIDEzLCAzNiwgLTYsIDc1LCAtNiwgNTMsIDUsIDQ0KSwKLQlDQUJBQ19FTlRSWSgx
+MjgsIC0xMCwgOTMsIC04LCA4OSwgOCwgNzYsIDMxLCAxNyksCi0JQ0FCQUNfRU5UUlkoMTI5LCAt
+NywgNzMsIC0zNCwgMTE5LCAtOSwgNzgsIDEsIDUxKSwKLQlDQUJBQ19FTlRSWSgxMzAsIC0yLCA3
+MywgLTMsIDc1LCAtMTEsIDgzLCA3LCA1MCksCi0JQ0FCQUNfRU5UUlkoMTMxLCAxMywgNDYsIDMy
+LCAyMCwgOSwgNTIsIDI4LCAxOSksCi0JQ0FCQUNfRU5UUlkoMTMyLCA5LCA0OSwgMzAsIDIyLCAw
+LCA2NywgMTYsIDMzKSwKLQlDQUJBQ19FTlRSWSgxMzMsIC03LCAxMDAsIC00NCwgMTI3LCAtNSwg
+OTAsIDE0LCA2MiksCi0JQ0FCQUNfRU5UUlkoMTM0LCA5LCA1MywgMCwgNTQsIDEsIDY3LCAtMTMs
+IDEwOCksCi0JQ0FCQUNfRU5UUlkoMTM1LCAyLCA1MywgLTUsIDYxLCAtMTUsIDcyLCAtMTUsIDEw
+MCksCi0JQ0FCQUNfRU5UUlkoMTM2LCA1LCA1MywgMCwgNTgsIC01LCA3NSwgLTEzLCAxMDEpLAot
+CUNBQkFDX0VOVFJZKDEzNywgLTIsIDYxLCAtMSwgNjAsIC04LCA4MCwgLTEzLCA5MSksCi0JQ0FC
+QUNfRU5UUlkoMTM4LCAwLCA1NiwgLTMsIDYxLCAtMjEsIDgzLCAtMTIsIDk0KSwKLQlDQUJBQ19F
+TlRSWSgxMzksIDAsIDU2LCAtOCwgNjcsIC0yMSwgNjQsIC0xMCwgODgpLAotCUNBQkFDX0VOVFJZ
+KDE0MCwgLTEzLCA2MywgLTI1LCA4NCwgLTEzLCAzMSwgLTE2LCA4NCksCi0JQ0FCQUNfRU5UUlko
+MTQxLCAtNSwgNjAsIC0xNCwgNzQsIC0yNSwgNjQsIC0xMCwgODYpLAotCUNBQkFDX0VOVFJZKDE0
+MiwgLTEsIDYyLCAtNSwgNjUsIC0yOSwgOTQsIC03LCA4MyksCi0JQ0FCQUNfRU5UUlkoMTQzLCA0
+LCA1NywgNSwgNTIsIDksIDc1LCAtMTMsIDg3KSwKLQlDQUJBQ19FTlRSWSgxNDQsIC02LCA2OSwg
+MiwgNTcsIDE3LCA2MywgLTE5LCA5NCksCi0JQ0FCQUNfRU5UUlkoMTQ1LCA0LCA1NywgMCwgNjEs
+IC04LCA3NCwgMSwgNzApLAotCUNBQkFDX0VOVFJZKDE0NiwgMTQsIDM5LCAtOSwgNjksIC01LCAz
+NSwgMCwgNzIpLAotCUNBQkFDX0VOVFJZKDE0NywgNCwgNTEsIC0xMSwgNzAsIC0yLCAyNywgLTUs
+IDc0KSwKLQlDQUJBQ19FTlRSWSgxNDgsIDEzLCA2OCwgMTgsIDU1LCAxMywgOTEsIDE4LCA1OSks
+Ci0JQ0FCQUNfRU5UUlkoMTQ5LCAzLCA2NCwgLTQsIDcxLCAzLCA2NSwgLTgsIDEwMiksCi0JQ0FC
+QUNfRU5UUlkoMTUwLCAxLCA2MSwgMCwgNTgsIC03LCA2OSwgLTE1LCAxMDApLAotCUNBQkFDX0VO
+VFJZKDE1MSwgOSwgNjMsIDcsIDYxLCA4LCA3NywgMCwgOTUpLAotCUNBQkFDX0VOVFJZKDE1Miwg
+NywgNTAsIDksIDQxLCAtMTAsIDY2LCAtNCwgNzUpLAotCUNBQkFDX0VOVFJZKDE1MywgMTYsIDM5
+LCAxOCwgMjUsIDMsIDYyLCAyLCA3MiksCi0JQ0FCQUNfRU5UUlkoMTU0LCA1LCA0NCwgOSwgMzIs
+IC0zLCA2OCwgLTExLCA3NSksCi0JQ0FCQUNfRU5UUlkoMTU1LCA0LCA1MiwgNSwgNDMsIC0yMCwg
+ODEsIC0zLCA3MSksCi0JQ0FCQUNfRU5UUlkoMTU2LCAxMSwgNDgsIDksIDQ3LCAwLCAzMCwgMTUs
+IDQ2KSwKLQlDQUJBQ19FTlRSWSgxNTcsIC01LCA2MCwgMCwgNDQsIDEsIDcsIC0xMywgNjkpLAot
+CUNBQkFDX0VOVFJZKDE1OCwgLTEsIDU5LCAwLCA1MSwgLTMsIDIzLCAwLCA2MiksCi0JQ0FCQUNf
+RU5UUlkoMTU5LCAwLCA1OSwgMiwgNDYsIC0yMSwgNzQsIDAsIDY1KSwKLQlDQUJBQ19FTlRSWSgx
+NjAsIDIyLCAzMywgMTksIDM4LCAxNiwgNjYsIDIxLCAzNyksCi0JQ0FCQUNfRU5UUlkoMTYxLCA1
+LCA0NCwgLTQsIDY2LCAtMjMsIDEyNCwgLTE1LCA3MiksCi0JQ0FCQUNfRU5UUlkoMTYyLCAxNCwg
+NDMsIDE1LCAzOCwgMTcsIDM3LCA5LCA1NyksCi0JQ0FCQUNfRU5UUlkoMTYzLCAtMSwgNzgsIDEy
+LCA0MiwgNDQsIC0xOCwgMTYsIDU0KSwKLQlDQUJBQ19FTlRSWSgxNjQsIDAsIDYwLCA5LCAzNCwg
+NTAsIC0zNCwgMCwgNjIpLAotCUNBQkFDX0VOVFJZKDE2NSwgOSwgNjksIDAsIDg5LCAtMjIsIDEy
+NywgMTIsIDcyKSwKLQotCS8qIFRhYmxlIDktMjAg4oCTIFZhbHVlcyBvZiB2YXJpYWJsZXMgbSBh
+bmQgbiBmb3IgY3R4SWR4IGZyb20gMTY2IHRvIDIyNiAqLwotCUNBQkFDX0VOVFJZKDE2NiwgMTEs
+IDI4LCA0LCA0NSwgNCwgMzksIDI0LCAwKSwKLQlDQUJBQ19FTlRSWSgxNjcsIDIsIDQwLCAxMCwg
+MjgsIDAsIDQyLCAxNSwgOSksCi0JQ0FCQUNfRU5UUlkoMTY4LCAzLCA0NCwgMTAsIDMxLCA3LCAz
+NCwgOCwgMjUpLAotCUNBQkFDX0VOVFJZKDE2OSwgMCwgNDksIDMzLCAtMTEsIDExLCAyOSwgMTMs
+IDE4KSwKLQlDQUJBQ19FTlRSWSgxNzAsIDAsIDQ2LCA1MiwgLTQzLCA4LCAzMSwgMTUsIDkpLAot
+CUNBQkFDX0VOVFJZKDE3MSwgMiwgNDQsIDE4LCAxNSwgNiwgMzcsIDEzLCAxOSksCi0JQ0FCQUNf
+RU5UUlkoMTcyLCAyLCA1MSwgMjgsIDAsIDcsIDQyLCAxMCwgMzcpLAotCUNBQkFDX0VOVFJZKDE3
+MywgMCwgNDcsIDM1LCAtMjIsIDMsIDQwLCAxMiwgMTgpLAotCUNBQkFDX0VOVFJZKDE3NCwgNCwg
+MzksIDM4LCAtMjUsIDgsIDMzLCA2LCAyOSksCi0JQ0FCQUNfRU5UUlkoMTc1LCAyLCA2MiwgMzQs
+IDAsIDEzLCA0MywgMjAsIDMzKSwKLQlDQUJBQ19FTlRSWSgxNzYsIDYsIDQ2LCAzOSwgLTE4LCAx
+MywgMzYsIDE1LCAzMCksCi0JQ0FCQUNfRU5UUlkoMTc3LCAwLCA1NCwgMzIsIC0xMiwgNCwgNDcs
+IDQsIDQ1KSwKLQlDQUJBQ19FTlRSWSgxNzgsIDMsIDU0LCAxMDIsIC05NCwgMywgNTUsIDEsIDU4
+KSwKLQlDQUJBQ19FTlRSWSgxNzksIDIsIDU4LCAwLCAwLCAyLCA1OCwgMCwgNjIpLAotCUNBQkFD
+X0VOVFJZKDE4MCwgNCwgNjMsIDU2LCAtMTUsIDYsIDYwLCA3LCA2MSksCi0JQ0FCQUNfRU5UUlko
+MTgxLCA2LCA1MSwgMzMsIC00LCA4LCA0NCwgMTIsIDM4KSwKLQlDQUJBQ19FTlRSWSgxODIsIDYs
+IDU3LCAyOSwgMTAsIDExLCA0NCwgMTEsIDQ1KSwKLQlDQUJBQ19FTlRSWSgxODMsIDcsIDUzLCAz
+NywgLTUsIDE0LCA0MiwgMTUsIDM5KSwKLQlDQUJBQ19FTlRSWSgxODQsIDYsIDUyLCA1MSwgLTI5
+LCA3LCA0OCwgMTEsIDQyKSwKLQlDQUJBQ19FTlRSWSgxODUsIDYsIDU1LCAzOSwgLTksIDQsIDU2
+LCAxMywgNDQpLAotCUNBQkFDX0VOVFJZKDE4NiwgMTEsIDQ1LCA1MiwgLTM0LCA0LCA1MiwgMTYs
+IDQ1KSwKLQlDQUJBQ19FTlRSWSgxODcsIDE0LCAzNiwgNjksIC01OCwgMTMsIDM3LCAxMiwgNDEp
+LAotCUNBQkFDX0VOVFJZKDE4OCwgOCwgNTMsIDY3LCAtNjMsIDksIDQ5LCAxMCwgNDkpLAotCUNB
+QkFDX0VOVFJZKDE4OSwgLTEsIDgyLCA0NCwgLTUsIDE5LCA1OCwgMzAsIDM0KSwKLQlDQUJBQ19F
+TlRSWSgxOTAsIDcsIDU1LCAzMiwgNywgMTAsIDQ4LCAxOCwgNDIpLAotCUNBQkFDX0VOVFJZKDE5
+MSwgLTMsIDc4LCA1NSwgLTI5LCAxMiwgNDUsIDEwLCA1NSksCi0JQ0FCQUNfRU5UUlkoMTkyLCAx
+NSwgNDYsIDMyLCAxLCAwLCA2OSwgMTcsIDUxKSwKLQlDQUJBQ19FTlRSWSgxOTMsIDIyLCAzMSwg
+MCwgMCwgMjAsIDMzLCAxNywgNDYpLAotCUNBQkFDX0VOVFJZKDE5NCwgLTEsIDg0LCAyNywgMzYs
+IDgsIDYzLCAwLCA4OSksCi0JQ0FCQUNfRU5UUlkoMTk1LCAyNSwgNywgMzMsIC0yNSwgMzUsIC0x
+OCwgMjYsIC0xOSksCi0JQ0FCQUNfRU5UUlkoMTk2LCAzMCwgLTcsIDM0LCAtMzAsIDMzLCAtMjUs
+IDIyLCAtMTcpLAotCUNBQkFDX0VOVFJZKDE5NywgMjgsIDMsIDM2LCAtMjgsIDI4LCAtMywgMjYs
+IC0xNyksCi0JQ0FCQUNfRU5UUlkoMTk4LCAyOCwgNCwgMzgsIC0yOCwgMjQsIDEwLCAzMCwgLTI1
+KSwKLQlDQUJBQ19FTlRSWSgxOTksIDMyLCAwLCAzOCwgLTI3LCAyNywgMCwgMjgsIC0yMCksCi0J
+Q0FCQUNfRU5UUlkoMjAwLCAzNCwgLTEsIDM0LCAtMTgsIDM0LCAtMTQsIDMzLCAtMjMpLAotCUNB
+QkFDX0VOVFJZKDIwMSwgMzAsIDYsIDM1LCAtMTYsIDUyLCAtNDQsIDM3LCAtMjcpLAotCUNBQkFD
+X0VOVFJZKDIwMiwgMzAsIDYsIDM0LCAtMTQsIDM5LCAtMjQsIDMzLCAtMjMpLAotCUNBQkFDX0VO
+VFJZKDIwMywgMzIsIDksIDMyLCAtOCwgMTksIDE3LCA0MCwgLTI4KSwKLQlDQUJBQ19FTlRSWSgy
+MDQsIDMxLCAxOSwgMzcsIC02LCAzMSwgMjUsIDM4LCAtMTcpLAotCUNBQkFDX0VOVFJZKDIwNSwg
+MjYsIDI3LCAzNSwgMCwgMzYsIDI5LCAzMywgLTExKSwKLQlDQUJBQ19FTlRSWSgyMDYsIDI2LCAz
+MCwgMzAsIDEwLCAyNCwgMzMsIDQwLCAtMTUpLAotCUNBQkFDX0VOVFJZKDIwNywgMzcsIDIwLCAy
+OCwgMTgsIDM0LCAxNSwgNDEsIC02KSwKLQlDQUJBQ19FTlRSWSgyMDgsIDI4LCAzNCwgMjYsIDI1
+LCAzMCwgMjAsIDM4LCAxKSwKLQlDQUJBQ19FTlRSWSgyMDksIDE3LCA3MCwgMjksIDQxLCAyMiwg
+NzMsIDQxLCAxNyksCi0JQ0FCQUNfRU5UUlkoMjEwLCAxLCA2NywgMCwgNzUsIDIwLCAzNCwgMzAs
+IC02KSwKLQlDQUJBQ19FTlRSWSgyMTEsIDUsIDU5LCAyLCA3MiwgMTksIDMxLCAyNywgMyksCi0J
+Q0FCQUNfRU5UUlkoMjEyLCA5LCA2NywgOCwgNzcsIDI3LCA0NCwgMjYsIDIyKSwKLQlDQUJBQ19F
+TlRSWSgyMTMsIDE2LCAzMCwgMTQsIDM1LCAxOSwgMTYsIDM3LCAtMTYpLAotCUNBQkFDX0VOVFJZ
+KDIxNCwgMTgsIDMyLCAxOCwgMzEsIDE1LCAzNiwgMzUsIC00KSwKLQlDQUJBQ19FTlRSWSgyMTUs
+IDE4LCAzNSwgMTcsIDM1LCAxNSwgMzYsIDM4LCAtOCksCi0JQ0FCQUNfRU5UUlkoMjE2LCAyMiwg
+MjksIDIxLCAzMCwgMjEsIDI4LCAzOCwgLTMpLAotCUNBQkFDX0VOVFJZKDIxNywgMjQsIDMxLCAx
+NywgNDUsIDI1LCAyMSwgMzcsIDMpLAotCUNBQkFDX0VOVFJZKDIxOCwgMjMsIDM4LCAyMCwgNDIs
+IDMwLCAyMCwgMzgsIDUpLAotCUNBQkFDX0VOVFJZKDIxOSwgMTgsIDQzLCAxOCwgNDUsIDMxLCAx
+MiwgNDIsIDApLAotCUNBQkFDX0VOVFJZKDIyMCwgMjAsIDQxLCAyNywgMjYsIDI3LCAxNiwgMzUs
+IDE2KSwKLQlDQUJBQ19FTlRSWSgyMjEsIDExLCA2MywgMTYsIDU0LCAyNCwgNDIsIDM5LCAyMiks
+Ci0JQ0FCQUNfRU5UUlkoMjIyLCA5LCA1OSwgNywgNjYsIDAsIDkzLCAxNCwgNDgpLAotCUNBQkFD
+X0VOVFJZKDIyMywgOSwgNjQsIDE2LCA1NiwgMTQsIDU2LCAyNywgMzcpLAotCUNBQkFDX0VOVFJZ
+KDIyNCwgLTEsIDk0LCAxMSwgNzMsIDE1LCA1NywgMjEsIDYwKSwKLQlDQUJBQ19FTlRSWSgyMjUs
+IC0yLCA4OSwgMTAsIDY3LCAyNiwgMzgsIDEyLCA2OCksCi0JQ0FCQUNfRU5UUlkoMjI2LCAtOSwg
+MTA4LCAtMTAsIDExNiwgLTI0LCAxMjcsIDIsIDk3KSwKLQotCS8qIFRhYmxlIDktMjEg4oCTIFZh
+bHVlcyBvZiB2YXJpYWJsZXMgbSBhbmQgbiBmb3IgY3R4SWR4IGZyb20gMjI3IHRvIDI3NSAqLwot
+CUNBQkFDX0VOVFJZKDIyNywgLTYsIDc2LCAtMjMsIDExMiwgLTI0LCAxMTUsIC0zLCA3MSksCi0J
+Q0FCQUNfRU5UUlkoMjI4LCAtMiwgNDQsIC0xNSwgNzEsIC0yMiwgODIsIC02LCA0MiksCi0JQ0FC
+QUNfRU5UUlkoMjI5LCAwLCA0NSwgLTcsIDYxLCAtOSwgNjIsIC01LCA1MCksCi0JQ0FCQUNfRU5U
+UlkoMjMwLCAwLCA1MiwgMCwgNTMsIDAsIDUzLCAtMywgNTQpLAotCUNBQkFDX0VOVFJZKDIzMSwg
+LTMsIDY0LCAtNSwgNjYsIDAsIDU5LCAtMiwgNjIpLAotCUNBQkFDX0VOVFJZKDIzMiwgLTIsIDU5
+LCAtMTEsIDc3LCAtMTQsIDg1LCAwLCA1OCksCi0JQ0FCQUNfRU5UUlkoMjMzLCAtNCwgNzAsIC05
+LCA4MCwgLTEzLCA4OSwgMSwgNjMpLAotCUNBQkFDX0VOVFJZKDIzNCwgLTQsIDc1LCAtOSwgODQs
+IC0xMywgOTQsIC0yLCA3MiksCi0JQ0FCQUNfRU5UUlkoMjM1LCAtOCwgODIsIC0xMCwgODcsIC0x
+MSwgOTIsIC0xLCA3NCksCi0JQ0FCQUNfRU5UUlkoMjM2LCAtMTcsIDEwMiwgLTM0LCAxMjcsIC0y
+OSwgMTI3LCAtOSwgOTEpLAotCUNBQkFDX0VOVFJZKDIzNywgLTksIDc3LCAtMjEsIDEwMSwgLTIx
+LCAxMDAsIC01LCA2NyksCi0JQ0FCQUNfRU5UUlkoMjM4LCAzLCAyNCwgLTMsIDM5LCAtMTQsIDU3
+LCAtNSwgMjcpLAotCUNBQkFDX0VOVFJZKDIzOSwgMCwgNDIsIC01LCA1MywgLTEyLCA2NywgLTMs
+IDM5KSwKLQlDQUJBQ19FTlRSWSgyNDAsIDAsIDQ4LCAtNywgNjEsIC0xMSwgNzEsIC0yLCA0NCks
+Ci0JQ0FCQUNfRU5UUlkoMjQxLCAwLCA1NSwgLTExLCA3NSwgLTEwLCA3NywgMCwgNDYpLAotCUNB
+QkFDX0VOVFJZKDI0MiwgLTYsIDU5LCAtMTUsIDc3LCAtMjEsIDg1LCAtMTYsIDY0KSwKLQlDQUJB
+Q19FTlRSWSgyNDMsIC03LCA3MSwgLTE3LCA5MSwgLTE2LCA4OCwgLTgsIDY4KSwKLQlDQUJBQ19F
+TlRSWSgyNDQsIC0xMiwgODMsIC0yNSwgMTA3LCAtMjMsIDEwNCwgLTEwLCA3OCksCi0JQ0FCQUNf
+RU5UUlkoMjQ1LCAtMTEsIDg3LCAtMjUsIDExMSwgLTE1LCA5OCwgLTYsIDc3KSwKLQlDQUJBQ19F
+TlRSWSgyNDYsIC0zMCwgMTE5LCAtMjgsIDEyMiwgLTM3LCAxMjcsIC0xMCwgODYpLAotCUNBQkFD
+X0VOVFJZKDI0NywgMSwgNTgsIC0xMSwgNzYsIC0xMCwgODIsIC0xMiwgOTIpLAotCUNBQkFDX0VO
+VFJZKDI0OCwgLTMsIDI5LCAtMTAsIDQ0LCAtOCwgNDgsIC0xNSwgNTUpLAotCUNBQkFDX0VOVFJZ
+KDI0OSwgLTEsIDM2LCAtMTAsIDUyLCAtOCwgNjEsIC0xMCwgNjApLAotCUNBQkFDX0VOVFJZKDI1
+MCwgMSwgMzgsIC0xMCwgNTcsIC04LCA2NiwgLTYsIDYyKSwKLQlDQUJBQ19FTlRSWSgyNTEsIDIs
+IDQzLCAtOSwgNTgsIC03LCA3MCwgLTQsIDY1KSwKLQlDQUJBQ19FTlRSWSgyNTIsIC02LCA1NSwg
+LTE2LCA3MiwgLTE0LCA3NSwgLTEyLCA3MyksCi0JQ0FCQUNfRU5UUlkoMjUzLCAwLCA1OCwgLTcs
+IDY5LCAtMTAsIDc5LCAtOCwgNzYpLAotCUNBQkFDX0VOVFJZKDI1NCwgMCwgNjQsIC00LCA2OSwg
+LTksIDgzLCAtNywgODApLAotCUNBQkFDX0VOVFJZKDI1NSwgLTMsIDc0LCAtNSwgNzQsIC0xMiwg
+OTIsIC05LCA4OCksCi0JQ0FCQUNfRU5UUlkoMjU2LCAtMTAsIDkwLCAtOSwgODYsIC0xOCwgMTA4
+LCAtMTcsIDExMCksCi0JQ0FCQUNfRU5UUlkoMjU3LCAwLCA3MCwgMiwgNjYsIC00LCA3OSwgLTEx
+LCA5NyksCi0JQ0FCQUNfRU5UUlkoMjU4LCAtNCwgMjksIC05LCAzNCwgLTIyLCA2OSwgLTIwLCA4
+NCksCi0JQ0FCQUNfRU5UUlkoMjU5LCA1LCAzMSwgMSwgMzIsIC0xNiwgNzUsIC0xMSwgNzkpLAot
+CUNBQkFDX0VOVFJZKDI2MCwgNywgNDIsIDExLCAzMSwgLTIsIDU4LCAtNiwgNzMpLAotCUNBQkFD
+X0VOVFJZKDI2MSwgMSwgNTksIDUsIDUyLCAxLCA1OCwgLTQsIDc0KSwKLQlDQUJBQ19FTlRSWSgy
+NjIsIC0yLCA1OCwgLTIsIDU1LCAtMTMsIDc4LCAtMTMsIDg2KSwKLQlDQUJBQ19FTlRSWSgyNjMs
+IC0zLCA3MiwgLTIsIDY3LCAtOSwgODMsIC0xMywgOTYpLAotCUNBQkFDX0VOVFJZKDI2NCwgLTMs
+IDgxLCAwLCA3MywgLTQsIDgxLCAtMTEsIDk3KSwKLQlDQUJBQ19FTlRSWSgyNjUsIC0xMSwgOTcs
+IC04LCA4OSwgLTEzLCA5OSwgLTE5LCAxMTcpLAotCUNBQkFDX0VOVFJZKDI2NiwgMCwgNTgsIDMs
+IDUyLCAtMTMsIDgxLCAtOCwgNzgpLAotCUNBQkFDX0VOVFJZKDI2NywgOCwgNSwgNywgNCwgLTYs
+IDM4LCAtNSwgMzMpLAotCUNBQkFDX0VOVFJZKDI2OCwgMTAsIDE0LCAxMCwgOCwgLTEzLCA2Miwg
+LTQsIDQ4KSwKLQlDQUJBQ19FTlRSWSgyNjksIDE0LCAxOCwgMTcsIDgsIC02LCA1OCwgLTIsIDUz
+KSwKLQlDQUJBQ19FTlRSWSgyNzAsIDEzLCAyNywgMTYsIDE5LCAtMiwgNTksIC0zLCA2MiksCi0J
+Q0FCQUNfRU5UUlkoMjcxLCAyLCA0MCwgMywgMzcsIC0xNiwgNzMsIC0xMywgNzEpLAotCUNBQkFD
+X0VOVFJZKDI3MiwgMCwgNTgsIC0xLCA2MSwgLTEwLCA3NiwgLTEwLCA3OSksCi0JQ0FCQUNfRU5U
+UlkoMjczLCAtMywgNzAsIC01LCA3MywgLTEzLCA4NiwgLTEyLCA4NiksCi0JQ0FCQUNfRU5UUlko
+Mjc0LCAtNiwgNzksIC0xLCA3MCwgLTksIDgzLCAtMTMsIDkwKSwKLQlDQUJBQ19FTlRSWSgyNzUs
+IC04LCA4NSwgLTQsIDc4LCAtMTAsIDg3LCAtMTQsIDk3KSwKLQotCS8qIFRhYmxlIDktMjIg4oCT
+IFZhbHVlcyBvZiB2YXJpYWJsZXMgbSBhbmQgbiBmb3IgY3R4SWR4IGZyb20gMjc3IHRvIDMzNyAq
+LwotCUNBQkFDX0VOVFJZKDI3NywgLTEzLCAxMDYsIC0yMSwgMTI2LCAtMjIsIDEyNywgLTYsIDkz
+KSwKLQlDQUJBQ19FTlRSWSgyNzgsIC0xNiwgMTA2LCAtMjMsIDEyNCwgLTI1LCAxMjcsIC02LCA4
+NCksCi0JQ0FCQUNfRU5UUlkoMjc5LCAtMTAsIDg3LCAtMjAsIDExMCwgLTI1LCAxMjAsIC04LCA3
+OSksCi0JQ0FCQUNfRU5UUlkoMjgwLCAtMjEsIDExNCwgLTI2LCAxMjYsIC0yNywgMTI3LCAwLCA2
+NiksCi0JQ0FCQUNfRU5UUlkoMjgxLCAtMTgsIDExMCwgLTI1LCAxMjQsIC0xOSwgMTE0LCAtMSwg
+NzEpLAotCUNBQkFDX0VOVFJZKDI4MiwgLTE0LCA5OCwgLTE3LCAxMDUsIC0yMywgMTE3LCAwLCA2
+MiksCi0JQ0FCQUNfRU5UUlkoMjgzLCAtMjIsIDExMCwgLTI3LCAxMjEsIC0yNSwgMTE4LCAtMiwg
+NjApLAotCUNBQkFDX0VOVFJZKDI4NCwgLTIxLCAxMDYsIC0yNywgMTE3LCAtMjYsIDExNywgLTIs
+IDU5KSwKLQlDQUJBQ19FTlRSWSgyODUsIC0xOCwgMTAzLCAtMTcsIDEwMiwgLTI0LCAxMTMsIC01
+LCA3NSksCi0JQ0FCQUNfRU5UUlkoMjg2LCAtMjEsIDEwNywgLTI2LCAxMTcsIC0yOCwgMTE4LCAt
+MywgNjIpLAotCUNBQkFDX0VOVFJZKDI4NywgLTIzLCAxMDgsIC0yNywgMTE2LCAtMzEsIDEyMCwg
+LTQsIDU4KSwKLQlDQUJBQ19FTlRSWSgyODgsIC0yNiwgMTEyLCAtMzMsIDEyMiwgLTM3LCAxMjQs
+IC05LCA2NiksCi0JQ0FCQUNfRU5UUlkoMjg5LCAtMTAsIDk2LCAtMTAsIDk1LCAtMTAsIDk0LCAt
+MSwgNzkpLAotCUNBQkFDX0VOVFJZKDI5MCwgLTEyLCA5NSwgLTE0LCAxMDAsIC0xNSwgMTAyLCAw
+LCA3MSksCi0JQ0FCQUNfRU5UUlkoMjkxLCAtNSwgOTEsIC04LCA5NSwgLTEwLCA5OSwgMywgNjgp
+LAotCUNBQkFDX0VOVFJZKDI5MiwgLTksIDkzLCAtMTcsIDExMSwgLTEzLCAxMDYsIDEwLCA0NCks
+Ci0JQ0FCQUNfRU5UUlkoMjkzLCAtMjIsIDk0LCAtMjgsIDExNCwgLTUwLCAxMjcsIC03LCA2Miks
+Ci0JQ0FCQUNfRU5UUlkoMjk0LCAtNSwgODYsIC02LCA4OSwgLTUsIDkyLCAxNSwgMzYpLAotCUNB
+QkFDX0VOVFJZKDI5NSwgOSwgNjcsIC0yLCA4MCwgMTcsIDU3LCAxNCwgNDApLAotCUNBQkFDX0VO
+VFJZKDI5NiwgLTQsIDgwLCAtNCwgODIsIC01LCA4NiwgMTYsIDI3KSwKLQlDQUJBQ19FTlRSWSgy
+OTcsIC0xMCwgODUsIC05LCA4NSwgLTEzLCA5NCwgMTIsIDI5KSwKLQlDQUJBQ19FTlRSWSgyOTgs
+IC0xLCA3MCwgLTgsIDgxLCAtMTIsIDkxLCAxLCA0NCksCi0JQ0FCQUNfRU5UUlkoMjk5LCA3LCA2
+MCwgLTEsIDcyLCAtMiwgNzcsIDIwLCAzNiksCi0JQ0FCQUNfRU5UUlkoMzAwLCA5LCA1OCwgNSwg
+NjQsIDAsIDcxLCAxOCwgMzIpLAotCUNBQkFDX0VOVFJZKDMwMSwgNSwgNjEsIDEsIDY3LCAtMSwg
+NzMsIDUsIDQyKSwKLQlDQUJBQ19FTlRSWSgzMDIsIDEyLCA1MCwgOSwgNTYsIDQsIDY0LCAxLCA0
+OCksCi0JQ0FCQUNfRU5UUlkoMzAzLCAxNSwgNTAsIDAsIDY5LCAtNywgODEsIDEwLCA2MiksCi0J
+Q0FCQUNfRU5UUlkoMzA0LCAxOCwgNDksIDEsIDY5LCA1LCA2NCwgMTcsIDQ2KSwKLQlDQUJBQ19F
+TlRSWSgzMDUsIDE3LCA1NCwgNywgNjksIDE1LCA1NywgOSwgNjQpLAotCUNBQkFDX0VOVFJZKDMw
+NiwgMTAsIDQxLCAtNywgNjksIDEsIDY3LCAtMTIsIDEwNCksCi0JQ0FCQUNfRU5UUlkoMzA3LCA3
+LCA0NiwgLTYsIDY3LCAwLCA2OCwgLTExLCA5NyksCi0JQ0FCQUNfRU5UUlkoMzA4LCAtMSwgNTEs
+IC0xNiwgNzcsIC0xMCwgNjcsIC0xNiwgOTYpLAotCUNBQkFDX0VOVFJZKDMwOSwgNywgNDksIC0y
+LCA2NCwgMSwgNjgsIC03LCA4OCksCi0JQ0FCQUNfRU5UUlkoMzEwLCA4LCA1MiwgMiwgNjEsIDAs
+IDc3LCAtOCwgODUpLAotCUNBQkFDX0VOVFJZKDMxMSwgOSwgNDEsIC02LCA2NywgMiwgNjQsIC03
+LCA4NSksCi0JQ0FCQUNfRU5UUlkoMzEyLCA2LCA0NywgLTMsIDY0LCAwLCA2OCwgLTksIDg1KSwK
+LQlDQUJBQ19FTlRSWSgzMTMsIDIsIDU1LCAyLCA1NywgLTUsIDc4LCAtMTMsIDg4KSwKLQlDQUJB
+Q19FTlRSWSgzMTQsIDEzLCA0MSwgLTMsIDY1LCA3LCA1NSwgNCwgNjYpLAotCUNBQkFDX0VOVFJZ
+KDMxNSwgMTAsIDQ0LCAtMywgNjYsIDUsIDU5LCAtMywgNzcpLAotCUNBQkFDX0VOVFJZKDMxNiwg
+NiwgNTAsIDAsIDYyLCAyLCA2NSwgLTMsIDc2KSwKLQlDQUJBQ19FTlRSWSgzMTcsIDUsIDUzLCA5
+LCA1MSwgMTQsIDU0LCAtNiwgNzYpLAotCUNBQkFDX0VOVFJZKDMxOCwgMTMsIDQ5LCAtMSwgNjYs
+IDE1LCA0NCwgMTAsIDU4KSwKLQlDQUJBQ19FTlRSWSgzMTksIDQsIDYzLCAtMiwgNzEsIDUsIDYw
+LCAtMSwgNzYpLAotCUNBQkFDX0VOVFJZKDMyMCwgNiwgNjQsIC0yLCA3NSwgMiwgNzAsIC0xLCA4
+MyksCi0JQ0FCQUNfRU5UUlkoMzIxLCAtMiwgNjksIC0xLCA3MCwgLTIsIDc2LCAtNywgOTkpLAot
+CUNBQkFDX0VOVFJZKDMyMiwgLTIsIDU5LCAtOSwgNzIsIC0xOCwgODYsIC0xNCwgOTUpLAotCUNB
+QkFDX0VOVFJZKDMyMywgNiwgNzAsIDE0LCA2MCwgMTIsIDcwLCAyLCA5NSksCi0JQ0FCQUNfRU5U
+UlkoMzI0LCAxMCwgNDQsIDE2LCAzNywgNSwgNjQsIDAsIDc2KSwKLQlDQUJBQ19FTlRSWSgzMjUs
+IDksIDMxLCAwLCA0NywgLTEyLCA3MCwgLTUsIDc0KSwKLQlDQUJBQ19FTlRSWSgzMjYsIDEyLCA0
+MywgMTgsIDM1LCAxMSwgNTUsIDAsIDcwKSwKLQlDQUJBQ19FTlRSWSgzMjcsIDMsIDUzLCAxMSwg
+MzcsIDUsIDU2LCAtMTEsIDc1KSwKLQlDQUJBQ19FTlRSWSgzMjgsIDE0LCAzNCwgMTIsIDQxLCAw
+LCA2OSwgMSwgNjgpLAotCUNBQkFDX0VOVFJZKDMyOSwgMTAsIDM4LCAxMCwgNDEsIDIsIDY1LCAw
+LCA2NSksCi0JQ0FCQUNfRU5UUlkoMzMwLCAtMywgNTIsIDIsIDQ4LCAtNiwgNzQsIC0xNCwgNzMp
+LAotCUNBQkFDX0VOVFJZKDMzMSwgMTMsIDQwLCAxMiwgNDEsIDUsIDU0LCAzLCA2MiksCi0JQ0FC
+QUNfRU5UUlkoMzMyLCAxNywgMzIsIDEzLCA0MSwgNywgNTQsIDQsIDYyKSwKLQlDQUJBQ19FTlRS
+WSgzMzMsIDcsIDQ0LCAwLCA1OSwgLTYsIDc2LCAtMSwgNjgpLAotCUNBQkFDX0VOVFJZKDMzNCwg
+NywgMzgsIDMsIDUwLCAtMTEsIDgyLCAtMTMsIDc1KSwKLQlDQUJBQ19FTlRSWSgzMzUsIDEzLCA1
+MCwgMTksIDQwLCAtMiwgNzcsIDExLCA1NSksCi0JQ0FCQUNfRU5UUlkoMzM2LCAxMCwgNTcsIDMs
+IDY2LCAtMiwgNzcsIDUsIDY0KSwKLQlDQUJBQ19FTlRSWSgzMzcsIDI2LCA0MywgMTgsIDUwLCAy
+NSwgNDIsIDEyLCA3MCksCi0KLQkvKiBUYWJsZSA5LTIzIOKAkyBWYWx1ZXMgb2YgdmFyaWFibGVz
+IG0gYW5kIG4gZm9yIGN0eElkeCBmcm9tIDMzOCB0byAzOTggKi8KLQlDQUJBQ19FTlRSWSgzMzgs
+IDE0LCAxMSwgMTksIC02LCAxNywgLTEzLCAxNSwgNiksCi0JQ0FCQUNfRU5UUlkoMzM5LCAxMSwg
+MTQsIDE4LCAtNiwgMTYsIC05LCA2LCAxOSksCi0JQ0FCQUNfRU5UUlkoMzQwLCA5LCAxMSwgMTQs
+IDAsIDE3LCAtMTIsIDcsIDE2KSwKLQlDQUJBQ19FTlRSWSgzNDEsIDE4LCAxMSwgMjYsIC0xMiwg
+MjcsIC0yMSwgMTIsIDE0KSwKLQlDQUJBQ19FTlRSWSgzNDIsIDIxLCA5LCAzMSwgLTE2LCAzNywg
+LTMwLCAxOCwgMTMpLAotCUNBQkFDX0VOVFJZKDM0MywgMjMsIC0yLCAzMywgLTI1LCA0MSwgLTQw
+LCAxMywgMTEpLAotCUNBQkFDX0VOVFJZKDM0NCwgMzIsIC0xNSwgMzMsIC0yMiwgNDIsIC00MSwg
+MTMsIDE1KSwKLQlDQUJBQ19FTlRSWSgzNDUsIDMyLCAtMTUsIDM3LCAtMjgsIDQ4LCAtNDcsIDE1
+LCAxNiksCi0JQ0FCQUNfRU5UUlkoMzQ2LCAzNCwgLTIxLCAzOSwgLTMwLCAzOSwgLTMyLCAxMiwg
+MjMpLAotCUNBQkFDX0VOVFJZKDM0NywgMzksIC0yMywgNDIsIC0zMCwgNDYsIC00MCwgMTMsIDIz
+KSwKLQlDQUJBQ19FTlRSWSgzNDgsIDQyLCAtMzMsIDQ3LCAtNDIsIDUyLCAtNTEsIDE1LCAyMCks
+Ci0JQ0FCQUNfRU5UUlkoMzQ5LCA0MSwgLTMxLCA0NSwgLTM2LCA0NiwgLTQxLCAxNCwgMjYpLAot
+CUNBQkFDX0VOVFJZKDM1MCwgNDYsIC0yOCwgNDksIC0zNCwgNTIsIC0zOSwgMTQsIDQ0KSwKLQlD
+QUJBQ19FTlRSWSgzNTEsIDM4LCAtMTIsIDQxLCAtMTcsIDQzLCAtMTksIDE3LCA0MCksCi0JQ0FC
+QUNfRU5UUlkoMzUyLCAyMSwgMjksIDMyLCA5LCAzMiwgMTEsIDE3LCA0NyksCi0JQ0FCQUNfRU5U
+UlkoMzUzLCA0NSwgLTI0LCA2OSwgLTcxLCA2MSwgLTU1LCAyNCwgMTcpLAotCUNBQkFDX0VOVFJZ
+KDM1NCwgNTMsIC00NSwgNjMsIC02MywgNTYsIC00NiwgMjEsIDIxKSwKLQlDQUJBQ19FTlRSWSgz
+NTUsIDQ4LCAtMjYsIDY2LCAtNjQsIDYyLCAtNTAsIDI1LCAyMiksCi0JQ0FCQUNfRU5UUlkoMzU2
+LCA2NSwgLTQzLCA3NywgLTc0LCA4MSwgLTY3LCAzMSwgMjcpLAotCUNBQkFDX0VOVFJZKDM1Nywg
+NDMsIC0xOSwgNTQsIC0zOSwgNDUsIC0yMCwgMjIsIDI5KSwKLQlDQUJBQ19FTlRSWSgzNTgsIDM5
+LCAtMTAsIDUyLCAtMzUsIDM1LCAtMiwgMTksIDM1KSwKLQlDQUJBQ19FTlRSWSgzNTksIDMwLCA5
+LCA0MSwgLTEwLCAyOCwgMTUsIDE0LCA1MCksCi0JQ0FCQUNfRU5UUlkoMzYwLCAxOCwgMjYsIDM2
+LCAwLCAzNCwgMSwgMTAsIDU3KSwKLQlDQUJBQ19FTlRSWSgzNjEsIDIwLCAyNywgNDAsIC0xLCAz
+OSwgMSwgNywgNjMpLAotCUNBQkFDX0VOVFJZKDM2MiwgMCwgNTcsIDMwLCAxNCwgMzAsIDE3LCAt
+MiwgNzcpLAotCUNBQkFDX0VOVFJZKDM2MywgLTE0LCA4MiwgMjgsIDI2LCAyMCwgMzgsIC00LCA4
+MiksCi0JQ0FCQUNfRU5UUlkoMzY0LCAtNSwgNzUsIDIzLCAzNywgMTgsIDQ1LCAtMywgOTQpLAot
+CUNBQkFDX0VOVFJZKDM2NSwgLTE5LCA5NywgMTIsIDU1LCAxNSwgNTQsIDksIDY5KSwKLQlDQUJB
+Q19FTlRSWSgzNjYsIC0zNSwgMTI1LCAxMSwgNjUsIDAsIDc5LCAtMTIsIDEwOSksCi0JQ0FCQUNf
+RU5UUlkoMzY3LCAyNywgMCwgMzcsIC0zMywgMzYsIC0xNiwgMzYsIC0zNSksCi0JQ0FCQUNfRU5U
+UlkoMzY4LCAyOCwgMCwgMzksIC0zNiwgMzcsIC0xNCwgMzYsIC0zNCksCi0JQ0FCQUNfRU5UUlko
+MzY5LCAzMSwgLTQsIDQwLCAtMzcsIDM3LCAtMTcsIDMyLCAtMjYpLAotCUNBQkFDX0VOVFJZKDM3
+MCwgMjcsIDYsIDM4LCAtMzAsIDMyLCAxLCAzNywgLTMwKSwKLQlDQUJBQ19FTlRSWSgzNzEsIDM0
+LCA4LCA0NiwgLTMzLCAzNCwgMTUsIDQ0LCAtMzIpLAotCUNBQkFDX0VOVFJZKDM3MiwgMzAsIDEw
+LCA0MiwgLTMwLCAyOSwgMTUsIDM0LCAtMTgpLAotCUNBQkFDX0VOVFJZKDM3MywgMjQsIDIyLCA0
+MCwgLTI0LCAyNCwgMjUsIDM0LCAtMTUpLAotCUNBQkFDX0VOVFJZKDM3NCwgMzMsIDE5LCA0OSwg
+LTI5LCAzNCwgMjIsIDQwLCAtMTUpLAotCUNBQkFDX0VOVFJZKDM3NSwgMjIsIDMyLCAzOCwgLTEy
+LCAzMSwgMTYsIDMzLCAtNyksCi0JQ0FCQUNfRU5UUlkoMzc2LCAyNiwgMzEsIDQwLCAtMTAsIDM1
+LCAxOCwgMzUsIC01KSwKLQlDQUJBQ19FTlRSWSgzNzcsIDIxLCA0MSwgMzgsIC0zLCAzMSwgMjgs
+IDMzLCAwKSwKLQlDQUJBQ19FTlRSWSgzNzgsIDI2LCA0NCwgNDYsIC01LCAzMywgNDEsIDM4LCAy
+KSwKLQlDQUJBQ19FTlRSWSgzNzksIDIzLCA0NywgMzEsIDIwLCAzNiwgMjgsIDMzLCAxMyksCi0J
+Q0FCQUNfRU5UUlkoMzgwLCAxNiwgNjUsIDI5LCAzMCwgMjcsIDQ3LCAyMywgMzUpLAotCUNBQkFD
+X0VOVFJZKDM4MSwgMTQsIDcxLCAyNSwgNDQsIDIxLCA2MiwgMTMsIDU4KSwKLQlDQUJBQ19FTlRS
+WSgzODIsIDgsIDYwLCAxMiwgNDgsIDE4LCAzMSwgMjksIC0zKSwKLQlDQUJBQ19FTlRSWSgzODMs
+IDYsIDYzLCAxMSwgNDksIDE5LCAyNiwgMjYsIDApLAotCUNBQkFDX0VOVFJZKDM4NCwgMTcsIDY1
+LCAyNiwgNDUsIDM2LCAyNCwgMjIsIDMwKSwKLQlDQUJBQ19FTlRSWSgzODUsIDIxLCAyNCwgMjIs
+IDIyLCAyNCwgMjMsIDMxLCAtNyksCi0JQ0FCQUNfRU5UUlkoMzg2LCAyMywgMjAsIDIzLCAyMiwg
+MjcsIDE2LCAzNSwgLTE1KSwKLQlDQUJBQ19FTlRSWSgzODcsIDI2LCAyMywgMjcsIDIxLCAyNCwg
+MzAsIDM0LCAtMyksCi0JQ0FCQUNfRU5UUlkoMzg4LCAyNywgMzIsIDMzLCAyMCwgMzEsIDI5LCAz
+NCwgMyksCi0JQ0FCQUNfRU5UUlkoMzg5LCAyOCwgMjMsIDI2LCAyOCwgMjIsIDQxLCAzNiwgLTEp
+LAotCUNBQkFDX0VOVFJZKDM5MCwgMjgsIDI0LCAzMCwgMjQsIDIyLCA0MiwgMzQsIDUpLAotCUNB
+QkFDX0VOVFJZKDM5MSwgMjMsIDQwLCAyNywgMzQsIDE2LCA2MCwgMzIsIDExKSwKLQlDQUJBQ19F
+TlRSWSgzOTIsIDI0LCAzMiwgMTgsIDQyLCAxNSwgNTIsIDM1LCA1KSwKLQlDQUJBQ19FTlRSWSgz
+OTMsIDI4LCAyOSwgMjUsIDM5LCAxNCwgNjAsIDM0LCAxMiksCi0JQ0FCQUNfRU5UUlkoMzk0LCAy
+MywgNDIsIDE4LCA1MCwgMywgNzgsIDM5LCAxMSksCi0JQ0FCQUNfRU5UUlkoMzk1LCAxOSwgNTcs
+IDEyLCA3MCwgLTE2LCAxMjMsIDMwLCAyOSksCi0JQ0FCQUNfRU5UUlkoMzk2LCAyMiwgNTMsIDIx
+LCA1NCwgMjEsIDUzLCAzNCwgMjYpLAotCUNBQkFDX0VOVFJZKDM5NywgMjIsIDYxLCAxNCwgNzEs
+IDIyLCA1NiwgMjksIDM5KSwKLQlDQUJBQ19FTlRSWSgzOTgsIDExLCA4NiwgMTEsIDgzLCAyNSwg
+NjEsIDE5LCA2NiksCi0KLQkvKiBWYWx1ZXMgb2YgdmFyaWFibGVzIG0gYW5kIG4gZm9yIGN0eElk
+eCBmcm9tIDM5OSB0byA0NjMgKG5vdCBkb2N1bWVudGVkKSAqLwotCUNBQkFDX0VOVFJZKDM5OSwg
+MTIsIDQwLCAyNSwgMzIsIDIxLCAzMywgMzEsIDIxKSwKLQlDQUJBQ19FTlRSWSg0MDAsIDExLCA1
+MSwgMjEsIDQ5LCAxOSwgNTAsIDMxLCAzMSksCi0JQ0FCQUNfRU5UUlkoNDAxLCAxNCwgNTksIDIx
+LCA1NCwgMTcsIDYxLCAyNSwgNTApLAotCUNBQkFDX0VOVFJZKDQwMiwgLTQsIDc5LCAtNSwgODUs
+IC0zLCA3OCwgLTE3LCAxMjApLAotCUNBQkFDX0VOVFJZKDQwMywgLTcsIDcxLCAtNiwgODEsIC04
+LCA3NCwgLTIwLCAxMTIpLAotCUNBQkFDX0VOVFJZKDQwNCwgLTUsIDY5LCAtMTAsIDc3LCAtOSwg
+NzIsIC0xOCwgMTE0KSwKLQlDQUJBQ19FTlRSWSg0MDUsIC05LCA3MCwgLTcsIDgxLCAtMTAsIDcy
+LCAtMTEsIDg1KSwKLQlDQUJBQ19FTlRSWSg0MDYsIC04LCA2NiwgLTE3LCA4MCwgLTE4LCA3NSwg
+LTE1LCA5MiksCi0JQ0FCQUNfRU5UUlkoNDA3LCAtMTAsIDY4LCAtMTgsIDczLCAtMTIsIDcxLCAt
+MTQsIDg5KSwKLQlDQUJBQ19FTlRSWSg0MDgsIC0xOSwgNzMsIC00LCA3NCwgLTExLCA2MywgLTI2
+LCA3MSksCi0JQ0FCQUNfRU5UUlkoNDA5LCAtMTIsIDY5LCAtMTAsIDgzLCAtNSwgNzAsIC0xNSwg
+ODEpLAotCUNBQkFDX0VOVFJZKDQxMCwgLTE2LCA3MCwgLTksIDcxLCAtMTcsIDc1LCAtMTQsIDgw
+KSwKLQlDQUJBQ19FTlRSWSg0MTEsIC0xNSwgNjcsIC05LCA2NywgLTE0LCA3MiwgMCwgNjgpLAot
+CUNBQkFDX0VOVFJZKDQxMiwgLTIwLCA2MiwgLTEsIDYxLCAtMTYsIDY3LCAtMTQsIDcwKSwKLQlD
+QUJBQ19FTlRSWSg0MTMsIC0xOSwgNzAsIC04LCA2NiwgLTgsIDUzLCAtMjQsIDU2KSwKLQlDQUJB
+Q19FTlRSWSg0MTQsIC0xNiwgNjYsIC0xNCwgNjYsIC0xNCwgNTksIC0yMywgNjgpLAotCUNBQkFD
+X0VOVFJZKDQxNSwgLTIyLCA2NSwgMCwgNTksIC05LCA1MiwgLTI0LCA1MCksCi0JQ0FCQUNfRU5U
+UlkoNDE2LCAtMjAsIDYzLCAyLCA1OSwgLTExLCA2OCwgLTExLCA3NCksCi0JQ0FCQUNfRU5UUlko
+NDE3LCA5LCAtMiwgMTcsIC0xMCwgOSwgLTIsIDIzLCAtMTMpLAotCUNBQkFDX0VOVFJZKDQxOCwg
+MjYsIC05LCAzMiwgLTEzLCAzMCwgLTEwLCAyNiwgLTEzKSwKLQlDQUJBQ19FTlRSWSg0MTksIDMz
+LCAtOSwgNDIsIC05LCAzMSwgLTQsIDQwLCAtMTUpLAotCUNBQkFDX0VOVFJZKDQyMCwgMzksIC03
+LCA0OSwgLTUsIDMzLCAtMSwgNDksIC0xNCksCi0JQ0FCQUNfRU5UUlkoNDIxLCA0MSwgLTIsIDUz
+LCAwLCAzMywgNywgNDQsIDMpLAotCUNBQkFDX0VOVFJZKDQyMiwgNDUsIDMsIDY0LCAzLCAzMSwg
+MTIsIDQ1LCA2KSwKLQlDQUJBQ19FTlRSWSg0MjMsIDQ5LCA5LCA2OCwgMTAsIDM3LCAyMywgNDQs
+IDM0KSwKLQlDQUJBQ19FTlRSWSg0MjQsIDQ1LCAyNywgNjYsIDI3LCAzMSwgMzgsIDMzLCA1NCks
+Ci0JQ0FCQUNfRU5UUlkoNDI1LCAzNiwgNTksIDQ3LCA1NywgMjAsIDY0LCAxOSwgODIpLAotCUNB
+QkFDX0VOVFJZKDQyNiwgLTYsIDY2LCAtNSwgNzEsIC05LCA3MSwgLTMsIDc1KSwKLQlDQUJBQ19F
+TlRSWSg0MjcsIC03LCAzNSwgMCwgMjQsIC03LCAzNywgLTEsIDIzKSwKLQlDQUJBQ19FTlRSWSg0
+MjgsIC03LCA0MiwgLTEsIDM2LCAtOCwgNDQsIDEsIDM0KSwKLQlDQUJBQ19FTlRSWSg0MjksIC04
+LCA0NSwgLTIsIDQyLCAtMTEsIDQ5LCAxLCA0MyksCi0JQ0FCQUNfRU5UUlkoNDMwLCAtNSwgNDgs
+IC0yLCA1MiwgLTEwLCA1NiwgMCwgNTQpLAotCUNBQkFDX0VOVFJZKDQzMSwgLTEyLCA1NiwgLTks
+IDU3LCAtMTIsIDU5LCAtMiwgNTUpLAotCUNBQkFDX0VOVFJZKDQzMiwgLTYsIDYwLCAtNiwgNjMs
+IC04LCA2MywgMCwgNjEpLAotCUNBQkFDX0VOVFJZKDQzMywgLTUsIDYyLCAtNCwgNjUsIC05LCA2
+NywgMSwgNjQpLAotCUNBQkFDX0VOVFJZKDQzNCwgLTgsIDY2LCAtNCwgNjcsIC02LCA2OCwgMCwg
+NjgpLAotCUNBQkFDX0VOVFJZKDQzNSwgLTgsIDc2LCAtNywgODIsIC0xMCwgNzksIC05LCA5Miks
+Ci0JQ0FCQUNfRU5UUlkoNDM2LCAtNSwgODUsIC0zLCA4MSwgLTMsIDc4LCAtMTQsIDEwNiksCi0J
+Q0FCQUNfRU5UUlkoNDM3LCAtNiwgODEsIC0zLCA3NiwgLTgsIDc0LCAtMTMsIDk3KSwKLQlDQUJB
+Q19FTlRSWSg0MzgsIC0xMCwgNzcsIC03LCA3MiwgLTksIDcyLCAtMTUsIDkwKSwKLQlDQUJBQ19F
+TlRSWSg0MzksIC03LCA4MSwgLTYsIDc4LCAtMTAsIDcyLCAtMTIsIDkwKSwKLQlDQUJBQ19FTlRS
+WSg0NDAsIC0xNywgODAsIC0xMiwgNzIsIC0xOCwgNzUsIC0xOCwgODgpLAotCUNBQkFDX0VOVFJZ
+KDQ0MSwgLTE4LCA3MywgLTE0LCA2OCwgLTEyLCA3MSwgLTEwLCA3MyksCi0JQ0FCQUNfRU5UUlko
+NDQyLCAtNCwgNzQsIC0zLCA3MCwgLTExLCA2MywgLTksIDc5KSwKLQlDQUJBQ19FTlRSWSg0NDMs
+IC0xMCwgODMsIC02LCA3NiwgLTUsIDcwLCAtMTQsIDg2KSwKLQlDQUJBQ19FTlRSWSg0NDQsIC05
+LCA3MSwgLTUsIDY2LCAtMTcsIDc1LCAtMTAsIDczKSwKLQlDQUJBQ19FTlRSWSg0NDUsIC05LCA2
+NywgLTUsIDYyLCAtMTQsIDcyLCAtMTAsIDcwKSwKLQlDQUJBQ19FTlRSWSg0NDYsIC0xLCA2MSwg
+MCwgNTcsIC0xNiwgNjcsIC0xMCwgNjkpLAotCUNBQkFDX0VOVFJZKDQ0NywgLTgsIDY2LCAtNCwg
+NjEsIC04LCA1MywgLTUsIDY2KSwKLQlDQUJBQ19FTlRSWSg0NDgsIC0xNCwgNjYsIC05LCA2MCwg
+LTE0LCA1OSwgLTksIDY0KSwKLQlDQUJBQ19FTlRSWSg0NDksIDAsIDU5LCAxLCA1NCwgLTksIDUy
+LCAtNSwgNTgpLAotCUNBQkFDX0VOVFJZKDQ1MCwgMiwgNTksIDIsIDU4LCAtMTEsIDY4LCAyLCA1
+OSksCi0JQ0FCQUNfRU5UUlkoNDUxLCAyMSwgLTEzLCAxNywgLTEwLCA5LCAtMiwgMjEsIC0xMCks
+Ci0JQ0FCQUNfRU5UUlkoNDUyLCAzMywgLTE0LCAzMiwgLTEzLCAzMCwgLTEwLCAyNCwgLTExKSwK
+LQlDQUJBQ19FTlRSWSg0NTMsIDM5LCAtNywgNDIsIC05LCAzMSwgLTQsIDI4LCAtOCksCi0JQ0FC
+QUNfRU5UUlkoNDU0LCA0NiwgLTIsIDQ5LCAtNSwgMzMsIC0xLCAyOCwgLTEpLAotCUNBQkFDX0VO
+VFJZKDQ1NSwgNTEsIDIsIDUzLCAwLCAzMywgNywgMjksIDMpLAotCUNBQkFDX0VOVFJZKDQ1Niwg
+NjAsIDYsIDY0LCAzLCAzMSwgMTIsIDI5LCA5KSwKLQlDQUJBQ19FTlRSWSg0NTcsIDYxLCAxNywg
+NjgsIDEwLCAzNywgMjMsIDM1LCAyMCksCi0JQ0FCQUNfRU5UUlkoNDU4LCA1NSwgMzQsIDY2LCAy
+NywgMzEsIDM4LCAyOSwgMzYpLAotCUNBQkFDX0VOVFJZKDQ1OSwgNDIsIDYyLCA0NywgNTcsIDIw
+LCA2NCwgMTQsIDY3KSwKLX07Ci0KIHN0YXRpYyB2b2lkIHNldF9wc19maWVsZCh1MzIgKmJ1Ziwg
+c3RydWN0IHJrdmRlY19wc19maWVsZCBmaWVsZCwgdTMyIHZhbHVlKQogewogCXU4IGJpdCA9IGZp
+ZWxkLm9mZnNldCAlIDMyLCB3b3JkID0gZmllbGQub2Zmc2V0IC8gMzI7CmRpZmYgLS1naXQgYS9k
+cml2ZXJzL21lZGlhL3BsYXRmb3JtL3JvY2tjaGlwL3JrdmRlYy9ya3ZkZWMtaGV2Yy5jIGIvZHJp
+dmVycy9tZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9ya3ZkZWMvcmt2ZGVjLWhldmMuYwppbmRleCAw
+MWY5MmZhMjczNTYuLmIwMWMxYmI1MmEwNCAxMDA2NDQKLS0tIGEvZHJpdmVycy9tZWRpYS9wbGF0
+Zm9ybS9yb2NrY2hpcC9ya3ZkZWMvcmt2ZGVjLWhldmMuYworKysgYi9kcml2ZXJzL21lZGlhL3Bs
+YXRmb3JtL3JvY2tjaGlwL3JrdmRlYy9ya3ZkZWMtaGV2Yy5jCkBAIC0xNiw3ICsxNiw2IEBACiAK
+ICNpbmNsdWRlICJya3ZkZWMuaCIKICNpbmNsdWRlICJya3ZkZWMtcmVncy5oIgotI2luY2x1ZGUg
+InJrdmRlYy1oZXZjLWRhdGEuYyIKIAogLyogU2l6ZSBpbiB1OC91MzIgdW5pdHMuICovCiAjZGVm
+aW5lIFJLVl9TQ0FMSU5HX0xJU1RfU0laRQkJMTM2MApAQCAtMjUsNiArMjQsOSBAQAogI2RlZmlu
+ZSBSS1ZfUlBTX1NJWkUJCQkoMzIgLyA0KQogI2RlZmluZSBSS1ZfUlBTX0xFTgkJCTYwMAogCisj
+ZGVmaW5lIFJLVl9IRVZDX0NBQkFDX1RBQkxFX1NJWkUJCTI3NDU2CitleHRlcm4gY29uc3QgdTgg
+cmt2ZGVjX2hldmNfY2FiYWNfdGFibGVbUktWX0hFVkNfQ0FCQUNfVEFCTEVfU0laRV07CisKIHN0
+cnVjdCBya3ZkZWNfc3BzX3Bwc19wYWNrZXQgewogCXUzMiBpbmZvW1JLVl9QUFNfU0laRV07CiB9
+OwpAQCAtMTEwLDcgKzExMiw3IEBAIHN0cnVjdCBya3ZkZWNfcHNfZmllbGQgewogCiAvKiBEYXRh
+IHN0cnVjdHVyZSBkZXNjcmliaW5nIGF1eGlsaWFyeSBidWZmZXIgZm9ybWF0LiAqLwogc3RydWN0
+IHJrdmRlY19oZXZjX3ByaXZfdGJsIHsKLQl1OCBjYWJhY190YWJsZVtSS1ZfQ0FCQUNfVEFCTEVf
+U0laRV07CisJdTggY2FiYWNfdGFibGVbUktWX0hFVkNfQ0FCQUNfVEFCTEVfU0laRV07CiAJdTgg
+c2NhbGluZ19saXN0W1JLVl9TQ0FMSU5HX0xJU1RfU0laRV07CiAJc3RydWN0IHJrdmRlY19zcHNf
+cHBzX3BhY2tldCBwYXJhbV9zZXRbUktWX1BQU19MRU5dOwogCXN0cnVjdCBya3ZkZWNfcnBzX3Bh
+Y2tldCBycHNbUktWX1JQU19MRU5dOwotLSAKMi41MS4xLmRpcnR5CgoKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBs
+aXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJh
+ZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
