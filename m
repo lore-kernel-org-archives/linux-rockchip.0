@@ -4,61 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 103A6CCD1AB
-	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Oct 2025 00:42:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD788CCD1AB
+	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Oct 2025 01:16:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=L9YCUrisauXbZ2uXfqRz7/CgCXzMGiIYfgAUqSUSV+I=; b=NkFJVw678KplPp
-	hBGCzapzdKUQcl76lV8FrsMtSkcBDPqkVSxMPMPafM83fkjykqF1xOzkPEZsIM2BNG9t8uEUHBnuo
-	zD4rRPY+nI4QYhqe1DTn2UAHEUzBxM43HChQieXwi5QvZGPQktVCcMBM69dSHGDuvfCMF7+yd3bw4
-	ACi2XN0QiAB9Q+6bUxMWC2iiEoQ/hdDRPgYTbBXn82sf9OxJqgn/A81OjMdUK0wwKXzUQN35uxdf5
-	6odyErtwnIRST95OhktE06XbAsGt9Z7hlQwbJQ2s90czRkjnmfo/dwAchKR3jx9MejFvdM7U3HYp3
-	xSrb1Hh79b4obcIygWdg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:From:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=v/PoUVITwFrPW/iWW9kkhXxO9vr9AmRGvZHEzqAWjBE=; b=wOMT2e3gCSb3QU
+	+T+7pSlOAg5zDqj/Ag1s9CALavJrCyCpsa3SUsb6VeAL+Q1qTsdhabMXEJkSMzK90+mA//usHtuDp
+	hfLoQHN5W6BSlzJOjkBG/4Ng4kcJHWHj9A/5w7N4Xhsw5RW0mdMlBi568A2Vg8kuW6SWZFU6w2Pwq
+	V2/7MQVfD8TiSH8vgc4PdyB7wIB/qBZUQKqta36NvlKn6I/WNNBzmjeJT/0QRkiA9+3wl4G4Ly8tw
+	hOQJQCfwgufoVcOdvYydzqq2Qq7+yuShpFjLCyXxESmqgPfuGcpXRByWug7FJqYNvoEk3BSfVP1PJ
+	D90IN8aQ3yweUkdKwVEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBMvX-000000014Cl-0E66;
-	Wed, 22 Oct 2025 00:42:07 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1vBNSN-000000017sg-2r4P;
+	Wed, 22 Oct 2025 01:16:03 +0000
+Received: from mail-m49226.qiye.163.com ([45.254.49.226])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBMvV-000000014Bp-11He;
-	Wed, 22 Oct 2025 00:42:06 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:
-	Subject:Cc:To:From:Reply-To:Content-Type:In-Reply-To:References;
-	bh=RsCiTjfAJVGKd8jls9/TBL277kk9xNpzA5VJ2++/V68=; b=ZOq55LUqsOYpHtsTa8MaDcX+xO
-	MWsY9mqJYPBQLKWK0jBiOqVABz8CCKXIdOlnZbJ/jChV/HH3dxjEExavHZsP4ixZL7yL/78kJXuWW
-	iqw/d5lbXy7Q/bs3kZzWa5xdZMUZzoQYT9DdKDnzxBU2b7mJaQTlVNMpXlpinoTJ5h3G+CVeToGAS
-	/IkJGwW++ZpcQTNLFTaLmjPHjdbC8xnWrRuMWRkQazqLafdKH9xutHlcXEJnU1LfdByJPCPX87Uye
-	IDJ/x85EeC1MjNm5QwLJv36Vrjjpbkk8leqpIsj3lmO9TvBoS+UAO+29vVUCBYV5+jGyxECr6XnRY
-	uc96Ttkw==;
-Received: from i53875b19.versanet.de ([83.135.91.25] helo=phil.fritz.box)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1vBMvT-0007Tx-2P; Wed, 22 Oct 2025 02:42:03 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: broonie@kernel.org
-Cc: robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	heiko@sntech.de,
-	linux-spi@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] dt-bindings: spi: spi-rockchip: Add RK3506 compatible
-Date: Wed, 22 Oct 2025 02:41:59 +0200
-Message-ID: <20251022004200.204276-1-heiko@sntech.de>
-X-Mailer: git-send-email 2.47.2
+	id 1vBNSK-000000017rw-1RFu;
+	Wed, 22 Oct 2025 01:16:02 +0000
+Received: from [172.16.12.26] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 26b816b55;
+	Wed, 22 Oct 2025 09:15:54 +0800 (GMT+08:00)
+Message-ID: <ff65f453-68a9-41fc-b9e3-02733bba96e3@rock-chips.com>
+Date: Wed, 22 Oct 2025 09:15:52 +0800
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+From: Damon Ding <damon.ding@rock-chips.com>
+Subject: Re: [PATCH v7 01/18] drm/display: bridge_connector: Ensure last
+ bridge determines EDID/modes detection capabilities
+To: Luca Ceresoli <luca.ceresoli@bootlin.com>, andrzej.hajda@intel.com,
+ neil.armstrong@linaro.org, rfoss@kernel.org
+Cc: Laurent.pinchart@ideasonboard.com, jonas@kwiboo.se,
+ jernej.skrabec@gmail.com, maarten.lankhorst@linux.intel.com,
+ mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch,
+ shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de,
+ festevam@gmail.com, inki.dae@samsung.com, sw0312.kim@samsung.com,
+ kyungmin.park@samsung.com, krzk@kernel.org, alim.akhtar@samsung.com,
+ jingoohan1@gmail.com, p.zabel@pengutronix.de, hjc@rock-chips.com,
+ heiko@sntech.de, andy.yan@rock-chips.com, dmitry.baryshkov@oss.qualcomm.com,
+ dianders@chromium.org, m.szyprowski@samsung.com, jani.nikula@intel.com,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
+ linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
+References: <20251021023130.1523707-1-damon.ding@rock-chips.com>
+ <20251021023130.1523707-2-damon.ding@rock-chips.com>
+ <DDNXIYL494D2.2N8L1J7XTBT4S@bootlin.com>
+Content-Language: en-US
+In-Reply-To: <DDNXIYL494D2.2N8L1J7XTBT4S@bootlin.com>
+X-HM-Tid: 0a9a097ca16b03a3kunm40777dd76b3afa
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGU5NTVZIGRkYGB1CSENNHk5WFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpKQk
+	1VSktLVUpCWQY+
+DKIM-Signature: a=rsa-sha256;
+	b=G3IBa/UR/LuPN+iUHG5BfBsR0wakY08fMpbIcc22chg3Yl2mDJuP3hApodwjF7Dp3I5RcHlsanrTg0887GoJUZgyuAx5TMRcyEawoDSmH9l/4xI5P1euGxlyg400GezPKB85JhtiTT1ZShmJwtVe+NOdaGsfV+2hDV4p/3K+h9E=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=zauBUVRHLTtxfE8FEqH72ce8GCghwo6SRo4GbUPwtY0=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251021_174205_303934_798DD111 
-X-CRM114-Status: GOOD (  10.56  )
+X-CRM114-CacheID: sfid-20251021_181601_025984_0B65A5BB 
+X-CRM114-Status: GOOD (  21.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,34 +79,104 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The SPI controller found in the RK3506 SoC is still compatible to the
-original one introduced with the RK3066, so add the RK3506 compatible
-to the list of its variants.
+Hi Luca,
 
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
----
- Documentation/devicetree/bindings/spi/spi-rockchip.yaml | 1 +
- 1 file changed, 1 insertion(+)
+On 10/21/2025 6:31 PM, Luca Ceresoli wrote:
+> Hello Damon,
+> 
+> On Tue Oct 21, 2025 at 4:31 AM CEST, Damon Ding wrote:
+>> When multiple bridges are present, EDID detection capability
+>> (DRM_BRIDGE_OP_EDID) takes precedence over modes detection
+>> (DRM_BRIDGE_OP_MODES). To ensure the above two capabilities are
+>> determined by the last bridge in the chain, we handle three cases:
+>>
+>> Case 1: The later bridge declares only DRM_BRIDGE_OP_MODES
+>>   - If the previous bridge declares DRM_BRIDGE_OP_EDID, set
+>>     &drm_bridge_connector.bridge_edid to NULL and set
+>>     &drm_bridge_connector.bridge_modes to the later bridge.
+>>   - Ensure modes detection capability of the later bridge will not
+>>     be ignored.
+>>
+>> Case 2: The later bridge declares only DRM_BRIDGE_OP_EDID
+>>   - If the previous bridge declares DRM_BRIDGE_OP_MODES, set
+>>     &drm_bridge_connector.bridge_modes to NULL and set
+>>     &drm_bridge_connector.bridge_edid to the later bridge.
+>>   - Although EDID detection capability has higher priority, this
+>>     operation is for balance and makes sense.
+>>
+>> Case 3: the later bridge declares both of them
+>>   - Assign later bridge as &drm_bridge_connector.bridge_edid and
+>>     and &drm_bridge_connector.bridge_modes to this bridge.
+>>   - Just leave transfer of these two capabilities as before.
+>>
+>> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
+>> Suggested-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+>> Tested-by: Marek Szyprowski <m.szyprowski@samsung.com>
+>>
+>> ---
+>>
+>> Changes in v7:
+>> - As Luca suggested, simplify the code and related comment.
+>> ---
+>>   drivers/gpu/drm/display/drm_bridge_connector.c | 16 ++++++++++++----
+>>   1 file changed, 12 insertions(+), 4 deletions(-)
+>>
+>> diff --git a/drivers/gpu/drm/display/drm_bridge_connector.c b/drivers/gpu/drm/display/drm_bridge_connector.c
+>> index baacd21e7341..7c2936d59517 100644
+>> --- a/drivers/gpu/drm/display/drm_bridge_connector.c
+>> +++ b/drivers/gpu/drm/display/drm_bridge_connector.c
+>> @@ -673,14 +673,22 @@ struct drm_connector *drm_bridge_connector_init(struct drm_device *drm,
+>>   		if (!bridge->ycbcr_420_allowed)
+>>   			connector->ycbcr_420_allowed = false;
+>>
+>> -		if (bridge->ops & DRM_BRIDGE_OP_EDID)
+>> -			bridge_connector->bridge_edid = bridge;
+>> +		/*
+>> +		 * Ensure the last bridge declares OP_EDID or OP_MODES or both.
+>> +		 */
+>> +		if (bridge->ops & DRM_BRIDGE_OP_EDID || bridge->ops & DRM_BRIDGE_OP_MODES) {
+>> +			bridge_connector->bridge_edid = NULL;
+>> +			bridge_connector->bridge_modes = NULL;
+>> +			if (bridge->ops & DRM_BRIDGE_OP_EDID)
+>> +				bridge_connector->bridge_edid = bridge;
+>> +			if (bridge->ops & DRM_BRIDGE_OP_MODES)
+>> +				bridge_connector->bridge_modes = bridge;
+>> +		}
+>>   		if (bridge->ops & DRM_BRIDGE_OP_HPD)
+>>   			bridge_connector->bridge_hpd = bridge;
+>>   		if (bridge->ops & DRM_BRIDGE_OP_DETECT)
+>>   			bridge_connector->bridge_detect = bridge;
+>> -		if (bridge->ops & DRM_BRIDGE_OP_MODES)
+>> -			bridge_connector->bridge_modes = bridge;
+>> +
+> 
+> This does not apply on current drm-misc-next, due to the patch I mentioned
+> in a previous iteration, now applied as commit 2be300f9a0b6 ("drm/display:
+> bridge_connector: get/put the stored bridges").
+> 
+> However I'm sorry I have to mention that patch turned out being buggy, so
+> I've sent a series to apply a corrected version [0]. I suggest watching the
+> disucssion about the fix series, and if that gets approved rebase on top of
+> that and adapt your changes.
+> 
+> Sorry about the mess. :(
+> 
+> [0] https://lore.kernel.org/r/20251017-drm-bridge-alloc-getput-bridge-connector-fix-hdmi_cec-v2-0-667abf6d47c0@bootlin.com
+> 
+> 
 
-diff --git a/Documentation/devicetree/bindings/spi/spi-rockchip.yaml b/Documentation/devicetree/bindings/spi/spi-rockchip.yaml
-index 748faf7f7081..ce6762c92fda 100644
---- a/Documentation/devicetree/bindings/spi/spi-rockchip.yaml
-+++ b/Documentation/devicetree/bindings/spi/spi-rockchip.yaml
-@@ -34,6 +34,7 @@ properties:
-               - rockchip,rk3328-spi
-               - rockchip,rk3368-spi
-               - rockchip,rk3399-spi
-+              - rockchip,rk3506-spi
-               - rockchip,rk3528-spi
-               - rockchip,rk3562-spi
-               - rockchip,rk3568-spi
--- 
-2.47.2
+I saw your fix patches before sending this series. I think your patches 
+will likely be merged relatively quickly, so I plan to wait until the 
+other patches in my patch series are confirmed to be fine, then submit 
+v8 version based on the latest bridge_connector driver. :-)
+
+Best regards,
+Damon
 
 
 _______________________________________________
