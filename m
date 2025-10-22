@@ -4,58 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 984A8CCD1BB
-	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Oct 2025 11:13:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42F1CCCD1BB
+	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Oct 2025 11:36:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=P8J+J8/EXAyxQ5ocTeD/WCvEySwIFZuZLtja0zMAMI8=; b=o+1oQXz8AMV3DWRUXmByINItos
-	NL+Pacs9LLNYYkf2ve+KZrUONQ+0vuMjO7V0Aa9+qJ2rHTdfohp8uxVt8P54fTj11FvKh6+NMjFIj
-	wBzGCw5AS1g6sQoI5vwP2mBtI3N51uepssCZckk7vB59pH4KxGAuOiVWa+1DGc0KcALIfsRuNbL9/
-	SrNFSF6RlqEm+NVKrX1+EqJBIhg0Hz7ZlaaXqpBTjPcww6g3FGzg2Gyl79k2kXLBPvmIux5JZs11m
-	q+fVgPELBX1FUHM8zte433I2vuev1R3/p0Kvl7eOOlxUhK/gTqBbDQj0NlMiQjbc7y77wHFgXEi3y
-	dfW4CRsw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=tELWNrc567EuQ/hiTH45dYgNg0rNccON2VerNJIt6Ic=; b=gMfgWvHUwtoKnH
+	V7OyFBaARiYAOXkGFhtoIxODs4kax/YQY2ID0ES7wub+BaXmsHsRbsO1MjU+Sey/TuqZKyVOyaV6d
+	gl9wJkIoGgAtjsbSsmHJ16BECmoG1ieC95625IsDWXzO0SI0uKwoT+ZFuWDtRz2TJ68jtsPvLo9Ii
+	3wumAcx9TiWtbN3Hbb4O9eHoSSQOIJgX1zOI9Kdgt5gZZ5EI1Cjqi/jGvA1VcH2ELmEdQ5ibhJj/7
+	dld+ro4pJZKG+tvpsY2A150RMHOAdBGjjmTQLmC4megkdErKrB9jzay6kWLNejmzQpjOA06DFtUV7
+	KNs+T7OKQ74RHJNvwGiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBWmU-00000002bQd-1m83;
-	Wed, 22 Oct 2025 11:13:26 +0000
-Received: from jabberwock.ucw.cz ([46.255.230.98])
+	id 1vBX8Y-00000002fvx-4AI4;
+	Wed, 22 Oct 2025 11:36:14 +0000
+Received: from mail-m3297.qiye.163.com ([220.197.32.97])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBWmO-00000002bOI-3Oz1;
-	Wed, 22 Oct 2025 11:13:22 +0000
-Received: by jabberwock.ucw.cz (Postfix, from userid 1017)
-	id 28A091C008F; Wed, 22 Oct 2025 13:13:19 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ucw.cz; s=gen1;
-	t=1761131599;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=RiHRtBrAUxWkpptBogGfntRkFVC2Xst6OAKpWS80aZI=;
-	b=a588LviioKG46EL+W3kvhY+IVvHPjaXGB76s3z6DaTDNxOphPnyzslyjeIE7w98AsOMlm+
-	ruJR2QRUtzIICO16MGJ/MtxuvfZ9/Ysc12i5CoL4tjLpLRoxaxq08nm00+b7wafFOcFC7q
-	YCjZL4qDlHCVkE76ZFrNlOWoHABsR7E=
-Date: Wed, 22 Oct 2025 13:13:18 +0200
-From: Pavel Machek <pavel@ucw.cz>
-To: guptarud@gmail.com
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Ondrej Jirman <megi@xff.cz>
-Subject: Re: [PATCH v4 4/4] arm64: dts: rk3399-pinephone-pro: Fix voltage
- threshold for volume keys
-Message-ID: <aPi8TsoarXJXvKuz@duo.ucw.cz>
-References: <20250929-ppp_light_accel_mag_vol-down-v4-0-6598f22d3451@gmail.com>
- <20250929-ppp_light_accel_mag_vol-down-v4-4-6598f22d3451@gmail.com>
-MIME-Version: 1.0
-In-Reply-To: <20250929-ppp_light_accel_mag_vol-down-v4-4-6598f22d3451@gmail.com>
+	id 1vBX8N-00000002fp8-3fM6
+	for linux-rockchip@lists.infradead.org;
+	Wed, 22 Oct 2025 11:36:11 +0000
+Received: from localhost.localdomain (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 26cdf437c;
+	Wed, 22 Oct 2025 19:35:59 +0800 (GMT+08:00)
+From: Shawn Lin <shawn.lin@rock-chips.com>
+To: Heiko Stuebner <heiko@sntech.de>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>
+Cc: linux-rockchip@lists.infradead.org,
+	Niklas Cassel <cassel@kernel.org>,
+	linux-pci@vger.kernel.org,
+	Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [PATCH v2 1/2] PCI: dw-rockchip: Add L1sub support
+Date: Wed, 22 Oct 2025 19:35:53 +0800
+Message-Id: <1761132954-177344-1-git-send-email-shawn.lin@rock-chips.com>
+X-Mailer: git-send-email 2.7.4
+X-HM-Tid: 0a9a0bb454d609cckunm6eedc7d27fce0f
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGh8eQlZMQkxKHUJCHkkeTkNWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=XZVpaBvnMFnzpqCTy5MAwII3sz1NvowwQynwbPyxebo/hmLxVBfLu5A2MJY7r3Fa7jTffRGQqiseMDR6gsoUIs3zv0QyyvJQOofYFIpbyiJ3AYR3QGB636/wTwwFekV63jyIIJU2TJgCD/GdVap7Is2QfREB38k7bBw6JAOc6nM=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=qOLHM+TrrAXVjum0eLPImVRVPBFYjL22w5LKZkowYSg=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251022_041321_002521_BFFF3262 
-X-CRM114-Status: GOOD (  10.06  )
+X-CRM114-CacheID: sfid-20251022_043607_822643_26EEFDFC 
+X-CRM114-Status: GOOD (  14.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,74 +66,113 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============4058848365132121265=="
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+The driver should set app_clk_req_n(clkreq ready) of PCIE_CLIENT_POWER reg
+to support L1sub. Otherwise, unset app_clk_req_n and pull down CLKREQ#.
 
---===============4058848365132121265==
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="8eFsTqdRSFJMsawS"
-Content-Disposition: inline
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 
+---
 
---8eFsTqdRSFJMsawS
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Changes in v2:
+- drop of_pci_clkreq_presnt API
+- drop dependency of Niklas's patch
 
-Hi!
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c | 36 +++++++++++++++++++++++++++
+ 1 file changed, 36 insertions(+)
 
-> From: Ondrej Jirman <megi@xff.cz>
->=20
-> Previously sometimes pressing the volume-down button would register as
-> a volume-up button. Match the thresholds as shown in the Pinephone Pro
-> schematic.
->=20
-> Tests:
->=20
-> ~ $ evtest
->     // Mashed the volume down ~100 times with varying intensity
->     Event: time xxx, type 1 (EV_KEY), code 114 (KEY_VOLUMEDOWN), value 1
->     Event: time xxx, type 1 (EV_KEY), code 114 (KEY_VOLUMEDOWN), value 0
->     // Mashed the volume up ~100 times with varying intensity
->     Event: time xxx, type 1 (EV_KEY), code 115 (KEY_VOLUMEUP), value 1
->     Event: time xxx, type 1 (EV_KEY), code 115 (KEY_VOLUMEUP), value 0
->=20
-> Signed-off-by: Ondrej Jirman <megi@xff.cz>
-> Signed-off-by: Rudraksha Gupta <guptarud@gmail.com>
+diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+index 3e2752c..18cd626 100644
+--- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
++++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+@@ -62,6 +62,12 @@
+ /* Interrupt Mask Register Related to Miscellaneous Operation */
+ #define PCIE_CLIENT_INTR_MASK_MISC	0x24
+ 
++/* Power Management Control Register */
++#define PCIE_CLIENT_POWER		0x2c
++#define  PCIE_CLKREQ_READY		0x10001
++#define  PCIE_CLKREQ_NOT_READY		0x10000
++#define  PCIE_CLKREQ_PULL_DOWN		0x30001000
++
+ /* Hot Reset Control Register */
+ #define PCIE_CLIENT_HOT_RESET_CTRL	0x180
+ #define  PCIE_LTSSM_APP_DLY2_EN		BIT(1)
+@@ -85,6 +91,7 @@ struct rockchip_pcie {
+ 	struct regulator *vpcie3v3;
+ 	struct irq_domain *irq_domain;
+ 	const struct rockchip_pcie_of_data *data;
++	bool supports_clkreq;
+ };
+ 
+ struct rockchip_pcie_of_data {
+@@ -200,6 +207,31 @@ static bool rockchip_pcie_link_up(struct dw_pcie *pci)
+ 	return FIELD_GET(PCIE_LINKUP_MASK, val) == PCIE_LINKUP;
+ }
+ 
++static void rockchip_pcie_enable_l1sub(struct dw_pcie *pci)
++{
++	struct rockchip_pcie *rockchip = to_rockchip_pcie(pci);
++	u32 cap, l1subcap;
++
++	/* Enable L1 substates if CLKREQ# is properly connected */
++	if (rockchip->supports_clkreq) {
++		/* Ready to have reference clock removed */
++		rockchip_pcie_writel_apb(rockchip, PCIE_CLKREQ_READY, PCIE_CLIENT_POWER);
++		return;
++	}
++
++	/* Otherwise, pull down CLKREQ# and disable L1 substates */
++	rockchip_pcie_writel_apb(rockchip, PCIE_CLKREQ_PULL_DOWN | PCIE_CLKREQ_NOT_READY,
++				 PCIE_CLIENT_POWER);
++	cap = dw_pcie_find_ext_capability(pci, PCI_EXT_CAP_ID_L1SS);
++	if (cap) {
++		l1subcap = dw_pcie_readl_dbi(pci, cap + PCI_L1SS_CAP);
++		l1subcap &= ~(PCI_L1SS_CAP_L1_PM_SS | PCI_L1SS_CAP_ASPM_L1_1 |
++			      PCI_L1SS_CAP_ASPM_L1_2 | PCI_L1SS_CAP_PCIPM_L1_1 |
++			      PCI_L1SS_CAP_PCIPM_L1_2);
++		dw_pcie_writel_dbi(pci, cap + PCI_L1SS_CAP, l1subcap);
++	}
++}
++
+ static void rockchip_pcie_enable_l0s(struct dw_pcie *pci)
+ {
+ 	u32 cap, lnkcap;
+@@ -264,6 +296,7 @@ static int rockchip_pcie_host_init(struct dw_pcie_rp *pp)
+ 	irq_set_chained_handler_and_data(irq, rockchip_pcie_intx_handler,
+ 					 rockchip);
+ 
++	rockchip_pcie_enable_l1sub(pci);
+ 	rockchip_pcie_enable_l0s(pci);
+ 
+ 	return 0;
+@@ -301,6 +334,7 @@ static void rockchip_pcie_ep_init(struct dw_pcie_ep *ep)
+ 	struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
+ 	enum pci_barno bar;
+ 
++	rockchip_pcie_enable_l1sub(pci);
+ 	rockchip_pcie_enable_l0s(pci);
+ 	rockchip_pcie_ep_hide_broken_ats_cap_rk3588(ep);
+ 
+@@ -412,6 +446,8 @@ static int rockchip_pcie_resource_get(struct platform_device *pdev,
+ 		return dev_err_probe(&pdev->dev, PTR_ERR(rockchip->rst),
+ 				     "failed to get reset lines\n");
+ 
++	rockchip->supports_clkreq = of_property_read_bool(pdev->dev.of_node, "supports-clkreq");
++
+ 	return 0;
+ }
+ 
+-- 
+2.7.4
 
-Reviewed-by: Pavel Machek <pavel@ucw.cz>
-
-BR,
-								Pavel
---=20
-I don't work for Nazis and criminals, and neither should you.
-Boycott Putin, Trump, Netanyahu and Musk!
-
---8eFsTqdRSFJMsawS
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iF0EABECAB0WIQRPfPO7r0eAhk010v0w5/Bqldv68gUCaPi8TgAKCRAw5/Bqldv6
-8oYXAJ9s4v0KB9wq1j3POu2TGNFDuabVrwCffytHlKiV39Y0bTN6VVIeuDzRjTg=
-=r+hr
------END PGP SIGNATURE-----
-
---8eFsTqdRSFJMsawS--
-
-
---===============4058848365132121265==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============4058848365132121265==--
-
