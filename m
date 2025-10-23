@@ -4,58 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BA57CCD193
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Oct 2025 09:50:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 488DDCCD1BC
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Oct 2025 10:06:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:From:Subject:
-	Cc:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4LUhdapzCVGQiSJLkcBxAVBExG5BmAH2Issd1GGbQ+U=; b=M49B4DNwkCX8Cn
-	4bjd44992QEw8ru8i4irJOGrQr9ZEs9h5xCcHkkSdBGN8J0FSrwPmsd0l+5H3Eu6UQhyKvNRfWob9
-	DfrxeD6HbUClRm5OFPvoD1e10u7D9MH5bEgWca8WKwJ+LmOSjqr7uivEVBDffdVHtfZCZlLW7MNsj
-	mltXeGZ8yKTGMhccpZ65BY9g0KPXSG8viwQoF0/xXus08wRIvhMyRT/aAl9M8OCfq3d5vDYqoPO/7
-	792X2JqpKtfxFZDf68GGfsjUVkE+6pO2JeBAq9a8bX0hksDW+tY+R1qNvHdcNYmU+rlf3MAboLB2K
-	r/3HWmAvgrtoid4ZfC4g==;
+	List-Owner; bh=Se4MUxrZuG6XULcf6C3BNAG5altPVYtYim8QZbOsTTU=; b=Hc6I1wjgBqsR7Y
+	98qMlmRkGObJxqrZxo7iPBYVRJDs3tOPIQ6XZ70QdbewUKtLdH8xTlk27x0oIVJt3dvkuqBXIN6mw
+	zwirCbk/+xJGScoVfVYwq/vMyI/klpTFtIbnK16mbSmNWDX07+RssQHWVBaAcUGcgD21WBucLVsk7
+	7uXPjAe3p4j168vorevHUaxJpPbhvzON0Wy+LVHuVuMWXSjvi4QMF9lZb9MvRM6Pu4xCT3mWPRd39
+	LooT3wrlpSxllugHdi77EHU/vNgZXCjinwu+pp5QehLYLUuZmhs6wqUKA0aohd2hBK2bAkjzEnx1q
+	lfvCk6m2vHqja+OYmAcA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBrxM-00000005nUB-2FFw;
-	Thu, 23 Oct 2025 09:50:04 +0000
-Received: from out-174.mta0.migadu.com ([91.218.175.174])
+	id 1vBsD1-00000005p89-21c5;
+	Thu, 23 Oct 2025 10:06:15 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBrxJ-00000005nTD-1W9n
-	for linux-rockchip@lists.infradead.org;
-	Thu, 23 Oct 2025 09:50:03 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow-tech.com;
-	s=key1; t=1761212996;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=1kKSuHqlpd7Q5R9WUMyjrIRemxGdRD0uvle2ohvhWxA=;
-	b=A0c9oRihcdJkh1kcn/JuOQiS3YRnSz3mZK6Yx9v7J27r5DQYF19o6Uj3G1C43TPBM0v62k
-	RKS8FGFBfWQdXdNuUtyCg7Y3PkGS9CUTHqSyxDLGC6UYSXFocZNvO3qiiimZqUi2tCg6Bg
-	zbOnhDCW4Z5VOsqOXrbWv10GDfIxthb/BrmnaktYnSk6FPYjJ7p0G0z9vtwJ9vf8Adm8Tc
-	I/t8195hkS10eQ1zB8q8MrZrPGsy4+6d6XLrlJ/9WZOC/0/MJrLOK1f0WIvvnmsdSNgemn
-	ZJTUFK2IBUV2nDXVUzMAhmNLfhIlaNE7N7LMtbk4YYDAsXNbg3CarDgyZ4aldg==
-Date: Thu, 23 Oct 2025 11:49:47 +0200
-Message-Id: <DDPLWD21EDEB.25TD1X46N5BDK@cknow-tech.com>
-Cc: <linux-rockchip@lists.infradead.org>, "Niklas Cassel"
- <cassel@kernel.org>, <linux-pci@vger.kernel.org>
-Subject: Re: [PATCH v3 1/2] PCI: dw-rockchip: Configure L1sub support
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <diederik@cknow-tech.com>
-To: "Shawn Lin" <shawn.lin@rock-chips.com>, "Heiko Stuebner"
- <heiko@sntech.de>, "Manivannan Sadhasivam" <mani@kernel.org>, "Bjorn
- Helgaas" <bhelgaas@google.com>
-References: <1761187883-150120-1-git-send-email-shawn.lin@rock-chips.com>
-In-Reply-To: <1761187883-150120-1-git-send-email-shawn.lin@rock-chips.com>
-X-Migadu-Flow: FLOW_OUT
+	id 1vBsCz-00000005p7V-1Dv2;
+	Thu, 23 Oct 2025 10:06:14 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1761213959; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=OLK072fVQUm6uoyWmfSIvM7Gj2Plzm1vwQw3XoZ/InQPjlVp1Z/wQJJCUffCt5SKo2J5IqyXiun/m0UgmZPGudqubUvjkrEicAUbIt6C1AVJEE9rxrcZsrCOcDZndyvMbTK9M43IOOxu3TfHb0P4D0M/zxa8It48BDGlQj9bgDU=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1761213959; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=MVDEM4oD9jX0d+ROBJ3prXRtO6D5OWGJxHZZT3Buk38=; 
+	b=n6sbHRfdYDRZpJ5gR7ftbntFW5AnxsqJUmn/n1mrafkz4TWKDPfAuC5PSzrV3hXk9maWGdB21sW5TUx2Wu+JVCQhLLMovvTjxswpgSph96gFhLa6vMDdUAEoSR7I794DDtsyJJ2NmrkFmrefRcNEXt3SKbCNlJBHfVvMJcoD9uQ=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=dmitry.osipenko@collabora.com;
+	dmarc=pass header.from=<dmitry.osipenko@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1761213959;
+	s=zohomail; d=collabora.com; i=dmitry.osipenko@collabora.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=MVDEM4oD9jX0d+ROBJ3prXRtO6D5OWGJxHZZT3Buk38=;
+	b=OCUWIGcyWmrXejR9OAxxkrU1SvAfqTyolX19MGbGBuFk45ewELOkHo/86QNMtlnb
+	xcGpL6V9ttgJ88u0+ZVpZotdaw8KdWDI7Od+UTTGxLJ7GsE7ItqxtpDnWxrI6hfhBl3
+	IXrOKXratDXejg44wig9LtpjiG6KRBdhgG06h31I=
+Received: by mx.zohomail.com with SMTPS id 1761213957436587.1983409307098;
+	Thu, 23 Oct 2025 03:05:57 -0700 (PDT)
+Message-ID: <3bc33fe2-5a6e-4f7b-a925-6fc72625a8c7@collabora.com>
+Date: Thu, 23 Oct 2025 13:05:48 +0300
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1] drm/rockchip: Set VOP for the DRM DMA device
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
+ Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
+ <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
+ Robin Murphy <robin.murphy@arm.com>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Daniel Stone <daniels@collabora.com>
+Cc: kernel@collabora.com, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org
+References: <20251022161948.199731-1-dmitry.osipenko@collabora.com>
+ <b25aa269-6dc8-43d4-a3f3-85691ace134e@collabora.com>
+Content-Language: en-US
+From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+In-Reply-To: <b25aa269-6dc8-43d4-a3f3-85691ace134e@collabora.com>
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251023_025002_172396_4832B1B0 
-X-CRM114-Status: GOOD (  29.30  )
+X-CRM114-CacheID: sfid-20251023_030613_509754_E969AF75 
+X-CRM114-Status: UNSURE (   8.58  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,144 +86,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu Oct 23, 2025 at 4:51 AM CEST, Shawn Lin wrote:
-> L1 PM Substates for RC mode require support in the dw-rockchip driver
-> including proper handling of the CLKREQ# sideband signal. It is mostly
-> handled by hardware, but software still needs to set the clkreq fields
-> in the PCIE_CLIENT_POWER_CON register to match the hardware implementation.
->
-> For more details, see section '18.6.6.4 L1 Substate' in the RK3658 TRM 1.1
-> Part 2, or section '11.6.6.4 L1 Substate' in the RK3588 TRM 1.0 Part2.
->
-> Meanwhile, for the EP mode, we haven't prepared enough to actually support
-> L1 PM Substates yet. So disable it now until proper support is added later.
->
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
->
-> ---
->
-> Changes in v3:
-> - rephrease the changelog
-> - use FIELD_PREP_WM16
-> - rename to rockchip_pcie_configure_l1sub
-> - disable L1ss for EP mode
->
-> Changes in v2:
-> - drop of_pci_clkreq_presnt API
-> - drop dependency of Niklas's patch
->
->  drivers/pci/controller/dwc/pcie-dw-rockchip.c | 43 +++++++++++++++++++++++++++
->  1 file changed, 43 insertions(+)
->
-> diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> index 3e2752c..25d2474 100644
-> --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> @@ -62,6 +62,12 @@
->  /* Interrupt Mask Register Related to Miscellaneous Operation */
->  #define PCIE_CLIENT_INTR_MASK_MISC	0x24
->  
-> +/* Power Management Control Register */
-> +#define PCIE_CLIENT_POWER_CON		0x2c
-> +#define  PCIE_CLKREQ_READY		FIELD_PREP_WM16(BIT(0), 1)
-> +#define  PCIE_CLKREQ_NOT_READY		FIELD_PREP_WM16(BIT(0), 0)
-> +#define  PCIE_CLKREQ_PULL_DOWN		FIELD_PREP_WM16(GENMASK(13, 12), 1)
-> +
->  /* Hot Reset Control Register */
->  #define PCIE_CLIENT_HOT_RESET_CTRL	0x180
->  #define  PCIE_LTSSM_APP_DLY2_EN		BIT(1)
-> @@ -85,6 +91,7 @@ struct rockchip_pcie {
->  	struct regulator *vpcie3v3;
->  	struct irq_domain *irq_domain;
->  	const struct rockchip_pcie_of_data *data;
-> +	bool supports_clkreq;
->  };
->  
->  struct rockchip_pcie_of_data {
-> @@ -200,6 +207,37 @@ static bool rockchip_pcie_link_up(struct dw_pcie *pci)
->  	return FIELD_GET(PCIE_LINKUP_MASK, val) == PCIE_LINKUP;
->  }
->  
-> +/*
-> + * See e.g. section '11.6.6.4 L1 Substate' in the RK3588 TRM V1.0 for the steps
-> + * needed to support L1 substates. Currently, just enable L1 substates for RC
-> + * mode if CLKREQ# is properly connected and supports-clkreq is present in DT.
-> + * For EP mode, there are more things should be done to actually save power in
+On 10/23/25 11:42, Cristian Ciocaltea wrote:
+> On 10/22/25 7:19 PM, Dmitry Osipenko wrote:
+>> Use VOP for DMA operations performed by DRM core. Rockchip DRM driver
+>> is backed by a virtual device that isn't IOMMU-capable, while VOP is the
+>> actual display controller device backed by IOMMU. Fixes "swiotlb buffer
+>> is full" warning messages originated from GEM prime code paths.
+>>
+>> Note, that backporting is non-trivial as this depends on 143ec8d3f9396
+>> ("drm/prime: Support dedicated DMA device for dma-buf imports"), which
+>> landed in v6.16 and 421be3ee36a4 ("drm/rockchip: Refactor IOMMU
+>> initialisation"), which landed in v5.19.
+>>
+>> Reported-by: Daniel Stone <daniels@collabora.com>
+>> Fixes: 2048e3286f34 ("drm: rockchip: Add basic drm driver")
+>> Cc: stable@vger.kernel.org # v6.16+
+>> Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+>> Signed-off-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+>> ---
+> 
+> With the patch applied I'm not able to fire those warnings anymore - tested on
+> my ROCK 5B (RK3588) and ROCK 4D (RK3576) boards.  Hence you may add:
+> 
+> Tested-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 
-"For EP mode, more things should be done ..." or
-"For EP mode, there are more things that should be done ..."
+More testing is good, thanks.
 
-Q: Is this patch set to fix the problem I and others reported wrt ASPM?
+Forgot to mention I'm myself tested on 5b/3588 and 4c/3399.
 
-Because there's Niklas' patch which has been accepted, there's another
-patch by Bjorn which initially didn't land on the linux-rockchip ML and
-there's this patch set.
-To me, those *seem* all 3 different solutions to the same issue, but
-it's quite possible I'm wrong in that. Apparently to try Bjorn's patch,
-one should not have Niklas' patch applied. And I have no idea what, if
-any, the relationship is of this patch set with those others.
-
-Some clarification would be helpful for n00bs like me.
-
-Cheers,
-  Diederik
-
-> + * L1 substates, so disable L1 substates until there is proper support.
-> + */
-> +static void rockchip_pcie_configure_l1sub(struct dw_pcie *pci)
-> +{
-> +	struct rockchip_pcie *rockchip = to_rockchip_pcie(pci);
-> +	u32 cap, l1subcap;
-> +
-> +	/* Enable L1 substates if CLKREQ# is properly connected */
-> +	if (rockchip->supports_clkreq && rockchip->data->mode == DW_PCIE_RC_TYPE ) {
-> +		rockchip_pcie_writel_apb(rockchip, PCIE_CLKREQ_READY, PCIE_CLIENT_POWER_CON);
-> +		return;
-> +	}
-> +
-> +	/* Otherwise, pull down CLKREQ# and disable L1 PM substates */
-> +	rockchip_pcie_writel_apb(rockchip, PCIE_CLKREQ_PULL_DOWN | PCIE_CLKREQ_NOT_READY,
-> +				 PCIE_CLIENT_POWER_CON);
-> +	cap = dw_pcie_find_ext_capability(pci, PCI_EXT_CAP_ID_L1SS);
-> +	if (cap) {
-> +		l1subcap = dw_pcie_readl_dbi(pci, cap + PCI_L1SS_CAP);
-> +		l1subcap &= ~(PCI_L1SS_CAP_L1_PM_SS | PCI_L1SS_CAP_ASPM_L1_1 |
-> +			      PCI_L1SS_CAP_ASPM_L1_2 | PCI_L1SS_CAP_PCIPM_L1_1 |
-> +			      PCI_L1SS_CAP_PCIPM_L1_2);
-> +		dw_pcie_writel_dbi(pci, cap + PCI_L1SS_CAP, l1subcap);
-> +	}
-> +}
-> +
->  static void rockchip_pcie_enable_l0s(struct dw_pcie *pci)
->  {
->  	u32 cap, lnkcap;
-> @@ -264,6 +302,7 @@ static int rockchip_pcie_host_init(struct dw_pcie_rp *pp)
->  	irq_set_chained_handler_and_data(irq, rockchip_pcie_intx_handler,
->  					 rockchip);
->  
-> +	rockchip_pcie_configure_l1sub(pci);
->  	rockchip_pcie_enable_l0s(pci);
->  
->  	return 0;
-> @@ -301,6 +340,7 @@ static void rockchip_pcie_ep_init(struct dw_pcie_ep *ep)
->  	struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
->  	enum pci_barno bar;
->  
-> +	rockchip_pcie_configure_l1sub(pci);
->  	rockchip_pcie_enable_l0s(pci);
->  	rockchip_pcie_ep_hide_broken_ats_cap_rk3588(ep);
->  
-> @@ -412,6 +452,9 @@ static int rockchip_pcie_resource_get(struct platform_device *pdev,
->  		return dev_err_probe(&pdev->dev, PTR_ERR(rockchip->rst),
->  				     "failed to get reset lines\n");
->  
-> +	rockchip->supports_clkreq = of_property_read_bool(pdev->dev.of_node,
-> +							  "supports-clkreq");
-> +
->  	return 0;
->  }
->  
-
+-- 
+Best regards,
+Dmitry
 
 _______________________________________________
 Linux-rockchip mailing list
