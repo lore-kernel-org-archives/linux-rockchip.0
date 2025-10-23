@@ -4,69 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A521ACCD1BC
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Oct 2025 08:05:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CA49CCD193
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Oct 2025 08:11:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:
-	From:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FE68VU5idyxi633m2kgBbfKHMLcW8p0ltibVMTSHnlE=; b=KXLg4X3Ls1KGMf
-	X+rccz0f1+/HhnOtsCUwb+OGN68ksoLGZx+KOvM+mSAAhgWqYiNZgpEc6PT4NMh326yf/8s/iHyFr
-	OAmjLtMljR7RjG/JACavOB4UZmCfpEKlMRL5sQv5ar39BiepdSlFTdMEYUnPuPxyEhIPtOLFdNrRG
-	7i8IuG8VSjyI71QmFFxw0dF0vHHmv6Cfa8sPpQb8sGCvhKo0ZLHXvurpYiT0cozWuzzRnEQUPhxXH
-	I8AlBdNPb7naaKo3Z+Ev3tlOpbaymp/7f1cmbFF1LxfbjE3QG3+sfg8SXhly/W9kpaU2cYxbibt9n
-	Wt46PdX3eVJIB2UTrwrA==;
+	List-Owner; bh=Zu4GltFsNlT7QYkbDj/YUfiqnslvp18hxtBp6KTdUqE=; b=owsp67dSuD1sR6
+	v2cj6QiaTTUeNpHcolmBnMceC1xjbPBbkgZuLNVbteccP3fGPZYzEJNd9P3aUapIMcLlsR9EQ39ix
+	KYSSZljKaSDAqdufdGpuW2lMAMnFPv7vPmLM31YvhzkBn7MNp7r4vaudiK54nc0DMBaZeY502pMwt
+	FVF2E3fhUsNsfgNB2ZhltgPHvGF7kv5GelDpFD86dwz2b1thnQzUUA1QzBYkflWFd/loWL6JnpyHb
+	PU5yJhVBppt8pu4jiYHSEvWg9YpSPlNDT8/WkudwXl2btc9qUNNSSTVef50OI45t87chdg9BymBXn
+	iSDnwwHSBv/q7o1pjfxQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBqJh-00000005SuX-0CsX;
-	Thu, 23 Oct 2025 08:05:01 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vBqPk-00000005UBZ-0vyH;
+	Thu, 23 Oct 2025 08:11:16 +0000
+Received: from mgamail.intel.com ([198.175.65.16])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBqJe-00000005StS-06z9;
-	Thu, 23 Oct 2025 08:04:59 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 1FE1145B63;
-	Thu, 23 Oct 2025 08:04:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 03E46C4CEFB;
-	Thu, 23 Oct 2025 08:04:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1761206697;
-	bh=WfJFIxtce+9xda6N2ampDStpps8m/5H2BCZ1d13rOhU=;
-	h=Date:From:Subject:To:Cc:References:In-Reply-To:From;
-	b=HW4mvy2XrZdL9KAQZhCKOcpMG+SiRNU7LOpFpYyHKBd3zME3AB3bJbqFf8KPFrK1F
-	 7mM89wgT2j/3Filu/vN4Ly3fyvqS9oJiKmGfbpzRDkEaUFy0t6MlnGhnrW8xSNRwCs
-	 uwXyEcCjOQ+99tOSigj3P0gCfvQbW9cL8zvC40fnsM0qCkiS85HIMTc7kByUEeFl9b
-	 A0eHl2EVqEw8wjsRccX2Tf76aBuEmT1qiXozGd07ftqpib/LR2VxsmAN0/OoPuuuTK
-	 sJ9SIuXNnyyFUI4qDLlvpGmhhpXR4vrZiac9x3ftPpc4ikXUQp7RfnBJwDe7DinPAR
-	 VRrOvYA6DeILg==
-Message-ID: <6eaa8b26-edab-4bfa-9c6a-1fbb54c36b4e@kernel.org>
-Date: Thu, 23 Oct 2025 10:04:52 +0200
+	id 1vBqPV-00000005U5E-21oc;
+	Thu, 23 Oct 2025 08:11:02 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1761207062; x=1792743062;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=X9A+e5HX8/DxioXkaxwvZdY29MB1MDYbmVYOX4ols5k=;
+  b=bjROa49mGgRUUM0p1GdTNUjPW3HtEPMv1M23t5/RAeB4sYgBcpmaO7gm
+   A4h6RrD6+dFCWlDnY5m3RJj0AIRvX2RPXwm6LUsdwuUVzuySpQ9Kig5be
+   +P7V3mzZW5F/+s2/UU2iCUmGBoUfVPx9/3w4p1WPitf6faFJ3o6jGqyGe
+   tBciPz7NYjQV52yWeixqBN7lOWefYEsObCm6y2zMJk2xKg6dF/m9QHMRD
+   4DQ071cqcHV50NXEERc/e+ZycyWP65MVSbSuEna9STWqELDVc3c5a6Eec
+   xgGrWECf8ltjsA+jt+K6FaLNQRBOG2DNReet5mh5UYzDyZUNJlD1ygxys
+   Q==;
+X-CSE-ConnectionGUID: TQABKgwDQOu1SnDePqoU9g==
+X-CSE-MsgGUID: WyM/x89tRuuB6f5KTVmCgw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11586"; a="63518391"
+X-IronPort-AV: E=Sophos;i="6.19,249,1754982000"; 
+   d="scan'208";a="63518391"
+Received: from orviesa007.jf.intel.com ([10.64.159.147])
+  by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Oct 2025 01:10:21 -0700
+X-CSE-ConnectionGUID: U/yJ+8RYQ+2huY61DLG6tw==
+X-CSE-MsgGUID: qjW+PJi/SHi+vFM/FDi4jw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.19,249,1754982000"; 
+   d="scan'208";a="183988336"
+Received: from bkammerd-mobl.amr.corp.intel.com (HELO kuha.fi.intel.com) ([10.124.221.165])
+  by orviesa007.jf.intel.com with SMTP; 23 Oct 2025 01:10:09 -0700
+Received: by kuha.fi.intel.com (sSMTP sendmail emulation); Thu, 23 Oct 2025 11:10:08 +0300
+Date: Thu, 23 Oct 2025 11:10:08 +0300
+From: Heikki Krogerus <heikki.krogerus@linux.intel.com>
+To: Chaoyi Chen <kernel@airkyi.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Yubing Zhang <yubing.zhang@rock-chips.com>,
+	Frank Wang <frank.wang@rock-chips.com>,
+	Andrzej Hajda <andrzej.hajda@intel.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Robert Foss <rfoss@kernel.org>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+	Amit Sunil Dhamne <amitsd@google.com>,
+	Chaoyi Chen <chaoyi.chen@rock-chips.com>,
+	Dragan Simic <dsimic@manjaro.org>, Johan Jonker <jbx6244@gmail.com>,
+	Diederik de Haas <didi.debian@cknow.org>,
+	Peter Robinson <pbrobinson@gmail.com>, linux-usb@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
+Subject: Re: [PATCH v7 1/9] usb: typec: Add notifier functions
+Message-ID: <aPni4AeDaem_rfZH@kuha.fi.intel.com>
+References: <20251023033009.90-1-kernel@airkyi.com>
+ <20251023033009.90-2-kernel@airkyi.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-From: Hans Verkuil <hverkuil+cisco@kernel.org>
-Subject: Re: [PATCH v4 02/15] media: v4l2-ctrls: Add hevc_ext_sps_[ls]t_rps
- controls
-To: Detlev Casanova <detlev.casanova@collabora.com>,
- linux-kernel@vger.kernel.org
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Heiko Stuebner <heiko@sntech.de>, Ricardo Ribalda <ribalda@chromium.org>,
- Hans Verkuil <hverkuil@kernel.org>, Hans de Goede <hansg@kernel.org>,
- Yunke Cao <yunkec@google.com>, Jonathan Corbet <corbet@lwn.net>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Sakari Ailus <sakari.ailus@linux.intel.com>,
- James Cowgill <james.cowgill@blaize.com>, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- kernel@collabora.com, Nicolas Dufresne <nicolas.dufresne@collabora.com>
-References: <20251022174508.284929-1-detlev.casanova@collabora.com>
- <20251022174508.284929-3-detlev.casanova@collabora.com>
-Content-Language: en-US, nl
-In-Reply-To: <20251022174508.284929-3-detlev.casanova@collabora.com>
+Content-Disposition: inline
+In-Reply-To: <20251023033009.90-2-kernel@airkyi.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251023_010458_132291_4D88AED3 
-X-CRM114-Status: GOOD (  26.99  )
+X-CRM114-CacheID: sfid-20251023_011101_585280_E2348839 
+X-CRM114-Status: GOOD (  11.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,203 +111,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 22/10/2025 19:44, Detlev Casanova wrote:
-> The vdpu381 decoder found on newer Rockchip SoC need the information
-> from the long term and short term ref pic sets from the SPS.
-> 
-> So far, it wasn't included in the v4l2 API, so add it with new dynamic
-> sized controls.
-> 
-> Each element of the hevc_ext_sps_lt_rps array contains the long term ref
-> pic set at that index.
-> Each element of the hevc_ext_sps_st_rps contains the short term ref pic
-> set at that index, as the raw data.
-> It is the role of the drivers to calculate the reference sets values.
-> 
-> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
-> ---
->  drivers/media/v4l2-core/v4l2-ctrls-core.c | 18 +++++++
->  drivers/media/v4l2-core/v4l2-ctrls-defs.c | 10 ++++
->  include/uapi/linux/v4l2-controls.h        | 61 +++++++++++++++++++++++
->  include/uapi/linux/videodev2.h            |  2 +
->  4 files changed, 91 insertions(+)
-> 
-> diff --git a/drivers/media/v4l2-core/v4l2-ctrls-core.c b/drivers/media/v4l2-core/v4l2-ctrls-core.c
-> index 7c660cd61e48..b330bd7719e9 100644
-> --- a/drivers/media/v4l2-core/v4l2-ctrls-core.c
-> +++ b/drivers/media/v4l2-core/v4l2-ctrls-core.c
-> @@ -418,6 +418,12 @@ void v4l2_ctrl_type_op_log(const struct v4l2_ctrl *ctrl)
->  	case V4L2_CTRL_TYPE_HEVC_SLICE_PARAMS:
->  		pr_cont("HEVC_SLICE_PARAMS");
->  		break;
-> +	case V4L2_CTRL_TYPE_HEVC_EXT_SPS_ST_RPS:
-> +		pr_cont("HEVC_EXT_SPS_ST_RPS");
-> +		break;
-> +	case V4L2_CTRL_TYPE_HEVC_EXT_SPS_LT_RPS:
-> +		pr_cont("HEVC_EXT_SPS_LT_RPS");
-> +		break;
->  	case V4L2_CTRL_TYPE_HEVC_SCALING_MATRIX:
->  		pr_cont("HEVC_SCALING_MATRIX");
->  		break;
-> @@ -1248,6 +1254,12 @@ static int std_validate_compound(const struct v4l2_ctrl *ctrl, u32 idx,
->  	case V4L2_CTRL_TYPE_HEVC_SLICE_PARAMS:
->  		break;
->  
-> +	case V4L2_CTRL_TYPE_HEVC_EXT_SPS_ST_RPS:
-> +		break;
+Hi,
+
+> diff --git a/include/linux/usb/typec_notify.h b/include/linux/usb/typec_notify.h
+> new file mode 100644
+> index 000000000000..a3f1f3b3ae47
+> --- /dev/null
+> +++ b/include/linux/usb/typec_notify.h
+> @@ -0,0 +1,17 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
 > +
-> +	case V4L2_CTRL_TYPE_HEVC_EXT_SPS_LT_RPS:
-> +		break;
+> +#ifndef __USB_TYPEC_NOTIFY
+> +#define __USB_TYPEC_NOTIFY
 > +
-
-There is nothing to validate here? Any value is fine? Just checking...
-
-Is this something that should be added to the visl driver so it is tested during regression
-tests? Or does this not apply to visl?
-
-I haven't looked in-depth into this, but I wondered about it.
-
-Regards,
-
-	Hans
-
->  	case V4L2_CTRL_TYPE_HDR10_CLL_INFO:
->  		break;
->  
-> @@ -2000,6 +2012,12 @@ static struct v4l2_ctrl *v4l2_ctrl_new(struct v4l2_ctrl_handler *hdl,
->  	case V4L2_CTRL_TYPE_HEVC_SLICE_PARAMS:
->  		elem_size = sizeof(struct v4l2_ctrl_hevc_slice_params);
->  		break;
-> +	case V4L2_CTRL_TYPE_HEVC_EXT_SPS_ST_RPS:
-> +		elem_size = sizeof(struct v4l2_ctrl_hevc_ext_sps_st_rps);
-> +		break;
-> +	case V4L2_CTRL_TYPE_HEVC_EXT_SPS_LT_RPS:
-> +		elem_size = sizeof(struct v4l2_ctrl_hevc_ext_sps_lt_rps);
-> +		break;
->  	case V4L2_CTRL_TYPE_HEVC_SCALING_MATRIX:
->  		elem_size = sizeof(struct v4l2_ctrl_hevc_scaling_matrix);
->  		break;
-> diff --git a/drivers/media/v4l2-core/v4l2-ctrls-defs.c b/drivers/media/v4l2-core/v4l2-ctrls-defs.c
-> index ad41f65374e2..167286c9e424 100644
-> --- a/drivers/media/v4l2-core/v4l2-ctrls-defs.c
-> +++ b/drivers/media/v4l2-core/v4l2-ctrls-defs.c
-> @@ -1233,6 +1233,8 @@ const char *v4l2_ctrl_get_name(u32 id)
->  	case V4L2_CID_STATELESS_HEVC_DECODE_MODE:		return "HEVC Decode Mode";
->  	case V4L2_CID_STATELESS_HEVC_START_CODE:		return "HEVC Start Code";
->  	case V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS:	return "HEVC Entry Point Offsets";
-> +	case V4L2_CID_STATELESS_HEVC_EXT_SPS_ST_RPS:		return "HEVC Short Term Ref Sets";
-> +	case V4L2_CID_STATELESS_HEVC_EXT_SPS_LT_RPS:		return "HEVC Long Term Ref Sets";
->  	case V4L2_CID_STATELESS_AV1_SEQUENCE:			return "AV1 Sequence Parameters";
->  	case V4L2_CID_STATELESS_AV1_TILE_GROUP_ENTRY:		return "AV1 Tile Group Entry";
->  	case V4L2_CID_STATELESS_AV1_FRAME:			return "AV1 Frame Parameters";
-> @@ -1578,6 +1580,14 @@ void v4l2_ctrl_fill(u32 id, const char **name, enum v4l2_ctrl_type *type,
->  		*type = V4L2_CTRL_TYPE_U32;
->  		*flags |= V4L2_CTRL_FLAG_DYNAMIC_ARRAY;
->  		break;
-> +	case V4L2_CID_STATELESS_HEVC_EXT_SPS_ST_RPS:
-> +		*type = V4L2_CTRL_TYPE_HEVC_EXT_SPS_ST_RPS;
-> +		*flags |= V4L2_CTRL_FLAG_DYNAMIC_ARRAY;
-> +		break;
-> +	case V4L2_CID_STATELESS_HEVC_EXT_SPS_LT_RPS:
-> +		*type = V4L2_CTRL_TYPE_HEVC_EXT_SPS_LT_RPS;
-> +		*flags |= V4L2_CTRL_FLAG_DYNAMIC_ARRAY;
-> +		break;
->  	case V4L2_CID_STATELESS_VP9_COMPRESSED_HDR:
->  		*type = V4L2_CTRL_TYPE_VP9_COMPRESSED_HDR;
->  		break;
-> diff --git a/include/uapi/linux/v4l2-controls.h b/include/uapi/linux/v4l2-controls.h
-> index 2d30107e047e..dd9e29afa155 100644
-> --- a/include/uapi/linux/v4l2-controls.h
-> +++ b/include/uapi/linux/v4l2-controls.h
-> @@ -2093,6 +2093,8 @@ struct v4l2_ctrl_mpeg2_quantisation {
->  #define V4L2_CID_STATELESS_HEVC_DECODE_MODE	(V4L2_CID_CODEC_STATELESS_BASE + 405)
->  #define V4L2_CID_STATELESS_HEVC_START_CODE	(V4L2_CID_CODEC_STATELESS_BASE + 406)
->  #define V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS (V4L2_CID_CODEC_STATELESS_BASE + 407)
-> +#define V4L2_CID_STATELESS_HEVC_EXT_SPS_ST_RPS  (V4L2_CID_CODEC_STATELESS_BASE + 408)
-> +#define V4L2_CID_STATELESS_HEVC_EXT_SPS_LT_RPS  (V4L2_CID_CODEC_STATELESS_BASE + 409)
->  
->  enum v4l2_stateless_hevc_decode_mode {
->  	V4L2_STATELESS_HEVC_DECODE_MODE_SLICE_BASED,
-> @@ -2548,6 +2550,65 @@ struct v4l2_ctrl_hevc_scaling_matrix {
->  	__u8	scaling_list_dc_coef_32x32[2];
->  };
->  
-> +#define V4L2_HEVC_EXT_SPS_ST_RPS_FLAG_INTER_REF_PIC_SET_PRED	0x1
+> +#include <linux/notifier.h>
 > +
-> +/*
-> + * struct v4l2_ctrl_hevc_ext_sps_st_rps - HEVC short term RPS parameters
-> + *
-> + * Dynamic size 1-dimension array for short term RPS. The number of elements
-> + * is v4l2_ctrl_hevc_sps::num_short_term_ref_pic_sets. It can contain up to 65 elements.
-> + *
-> + * @delta_idx_minus1: Specifies the delta compare to the index. See details in section 7.4.8
-> + *                    "Short-term reference picture set semantics" of the specification.
-> + * @delta_rps_sign: Sign of the delta as specified in section 7.4.8 "Short-term reference picture
-> + *                  set semantics" of the specification.
-> + * @abs_delta_rps_minus1: Absolute delta RPS as specified in section 7.4.8 "Short-term reference
-> + *                        picture set semantics" of the specification.
-> + * @num_negative_pics: Number of short-term RPS entries that have picture order count values less
-> + *                     than the picture order count value of the current picture.
-> + * @num_positive_pics: Number of short-term RPS entries that have picture order count values
-> + *                     greater than the picture order count value of the current picture.
-> + * @used_by_curr_pic: Bit j specifies if short-term RPS j is used by the current picture.
-> + * @use_delta_flag: Bit j equals to 1 specifies that the j-th entry in the source candidate
-> + *                  short-term RPS is included in this candidate short-term RPS.
-> + * @delta_poc_s0_minus1: Specifies the negative picture order count delta for the i-th entry in
-> + *                       the short-term RPS. See details in section 7.4.8 "Short-term reference
-> + *                       picture set semantics" of the specification.
-> + * @delta_poc_s1_minus1: Specifies the positive picture order count delta for the i-th entry in
-> + *                       the short-term RPS. See details in section 7.4.8 "Short-term reference
-> + *                       picture set semantics" of the specification.
-> + * @flags: See V4L2_HEVC_EXT_SPS_ST_RPS_FLAG_{}
-> + */
-> +struct v4l2_ctrl_hevc_ext_sps_st_rps {
-> +	__u8	delta_idx_minus1;
-> +	__u8	delta_rps_sign;
-> +	__u16	abs_delta_rps_minus1;
-> +	__u8	num_negative_pics;
-> +	__u8	num_positive_pics;
-> +	__u32	used_by_curr_pic;
-> +	__u32	use_delta_flag;
-> +	__u16	delta_poc_s0_minus1[16];
-> +	__u16	delta_poc_s1_minus1[16];
-> +	__u8	flags;
+> +enum usb_typec_event {
+> +	TYPEC_ALTMODE_REGISTERED
 > +};
-> +
-> +#define V4L2_HEVC_EXT_SPS_LT_RPS_FLAG_USED_LT		0x1
-> +
-> +/*
-> + * struct v4l2_ctrl_hevc_ext_sps_lt_rps - HEVC long term RPS parameters
-> + *
-> + * Dynamic size 1-dimension array for long term RPS. The number of elements
-> + * is v4l2_ctrl_hevc_sps::num_long_term_ref_pics_sps. It can contain up to 65 elements.
-> + *
-> + * @lt_ref_pic_poc_lsb_sps: picture order count modulo MaxPicOrderCntLsb of the i-th candidate
-> + *                          long-term reference picture.
-> + * @flags: See V4L2_HEVC_EXT_SPS_LT_RPS_FLAG_{}
-> + */
-> +struct v4l2_ctrl_hevc_ext_sps_lt_rps {
-> +	__u16	lt_ref_pic_poc_lsb_sps;
-> +	__u8	flags;
-> +};
-> +
->  /* Stateless VP9 controls */
->  
->  #define V4L2_VP9_LOOP_FILTER_FLAG_DELTA_ENABLED	0x1
-> diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
-> index becd08fdbddb..ae1d33fd37b7 100644
-> --- a/include/uapi/linux/videodev2.h
-> +++ b/include/uapi/linux/videodev2.h
-> @@ -1981,6 +1981,8 @@ enum v4l2_ctrl_type {
->  	V4L2_CTRL_TYPE_HEVC_SLICE_PARAMS	= 0x0272,
->  	V4L2_CTRL_TYPE_HEVC_SCALING_MATRIX	= 0x0273,
->  	V4L2_CTRL_TYPE_HEVC_DECODE_PARAMS	= 0x0274,
-> +	V4L2_CTRL_TYPE_HEVC_EXT_SPS_ST_RPS	= 0x0275,
-> +	V4L2_CTRL_TYPE_HEVC_EXT_SPS_LT_RPS	= 0x0276,
->  
->  	V4L2_CTRL_TYPE_AV1_SEQUENCE	    = 0x280,
->  	V4L2_CTRL_TYPE_AV1_TILE_GROUP_ENTRY = 0x281,
 
+Don't you need to know when the altmode is removed?
+
+> +
+> +int typec_register_notify(struct notifier_block *nb);
+> +int typec_unregister_notify(struct notifier_block *nb);
+> +
+> +void typec_notify_event(unsigned long event, void *data);
+
+Declare typec_notify_event() in drivers/usb/typec/bus.h
+
+thanks,
+
+-- 
+heikki
 
 _______________________________________________
 Linux-rockchip mailing list
