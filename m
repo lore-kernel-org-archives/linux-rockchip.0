@@ -4,99 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EFF0CCD193
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Oct 2025 09:44:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BA57CCD193
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Oct 2025 09:50:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:From:Subject:
+	Cc:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LQqMBr6LTPHhsBgI9TkHrGtZ8x3J4g94d2ZddGQf0vE=; b=HHY7iOeUkXf17f
-	UjOxkf6OBzJT2U7XR3sie3KB0o2S/NyYLT7uI3VIxusz6no9ChcXIgq0ZpfawsD47U2seVIYYJMdC
-	79Cg8V8OTZogpBv26+luq9gIkyS6cqV8e84dVP+AL5KYT/YxKWUUl5xepVTE2BNahhuFKBmyocGZW
-	qo/c+AJJbDYTIgf/KsuPKhLvYhTSIMCKxG8G1F1v9i31qtbbQTio0FiSYo+FBJUm6Or48JSiPiGVQ
-	oKQn9vt9R4TnmR9CHaTctoMdn2aWRCIA9PRRoEpRmTwiaKWeWcyarnUzdAMUnnMwYsFE5xRc3F/U4
-	xnzjoJBlv0By/uM0RrBw==;
+	List-Owner; bh=4LUhdapzCVGQiSJLkcBxAVBExG5BmAH2Issd1GGbQ+U=; b=M49B4DNwkCX8Cn
+	4bjd44992QEw8ru8i4irJOGrQr9ZEs9h5xCcHkkSdBGN8J0FSrwPmsd0l+5H3Eu6UQhyKvNRfWob9
+	DfrxeD6HbUClRm5OFPvoD1e10u7D9MH5bEgWca8WKwJ+LmOSjqr7uivEVBDffdVHtfZCZlLW7MNsj
+	mltXeGZ8yKTGMhccpZ65BY9g0KPXSG8viwQoF0/xXus08wRIvhMyRT/aAl9M8OCfq3d5vDYqoPO/7
+	792X2JqpKtfxFZDf68GGfsjUVkE+6pO2JeBAq9a8bX0hksDW+tY+R1qNvHdcNYmU+rlf3MAboLB2K
+	r/3HWmAvgrtoid4ZfC4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBrs9-00000005mVM-1qGU;
-	Thu, 23 Oct 2025 09:44:41 +0000
-Received: from mgamail.intel.com ([192.198.163.7])
+	id 1vBrxM-00000005nUB-2FFw;
+	Thu, 23 Oct 2025 09:50:04 +0000
+Received: from out-174.mta0.migadu.com ([91.218.175.174])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBrs6-00000005mTR-22cA;
-	Thu, 23 Oct 2025 09:44:39 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1761212678; x=1792748678;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=5x8jLsSxghG7IaRrLPPl0lFfXXLzEE7sGy+TAsSxs/Y=;
-  b=D7gMHjC9QJZkPcEehLGajenWIKg6nz5fvJkCe0o/A/t+xl7cTZSXv0uv
-   TNaudOoNaGKGS7nrOz9ndqWD3rwcYuXoVgpjH9Extp0V9acpUTk4hUPTd
-   54458aO7kXVQUK71hIf8j+qmjonPXacFJ7V96ttwO+W+32Q56zV+aH678
-   FhchFn2Z06RiG+8m0vsx6OreKu7VmvQB8irNKaIR8ZjfSJ8oRd5yeLLti
-   S011ul0n+gtBiKKmbVAVclfI8KiRltrZZJA3tdcm0VlN7amijzgL4fY0c
-   hHI+tObYrdVed1qJ+o1kr7vdj5GUPQLVYuOJRBTOIdU/fWKXVoDU6T9YK
-   Q==;
-X-CSE-ConnectionGUID: 73ayxTu9QvuHNN88XMbkxQ==
-X-CSE-MsgGUID: l9XLwfQ1Rj+aj+zwePs2Tw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11586"; a="88844040"
-X-IronPort-AV: E=Sophos;i="6.19,249,1754982000"; 
-   d="scan'208";a="88844040"
-Received: from orviesa001.jf.intel.com ([10.64.159.141])
-  by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Oct 2025 02:44:37 -0700
-X-CSE-ConnectionGUID: iLOeuevISgC6L9OMMBEeEA==
-X-CSE-MsgGUID: YhP6hwNSQqC/F6AV1drOTA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.19,249,1754982000"; 
-   d="scan'208";a="221305921"
-Received: from bkammerd-mobl.amr.corp.intel.com (HELO kuha.fi.intel.com) ([10.124.221.165])
-  by orviesa001.jf.intel.com with SMTP; 23 Oct 2025 02:44:26 -0700
-Received: by kuha.fi.intel.com (sSMTP sendmail emulation); Thu, 23 Oct 2025 12:44:25 +0300
-Date: Thu, 23 Oct 2025 12:44:25 +0300
-From: Heikki Krogerus <heikki.krogerus@linux.intel.com>
-To: Chaoyi Chen <kernel@airkyi.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Yubing Zhang <yubing.zhang@rock-chips.com>,
-	Frank Wang <frank.wang@rock-chips.com>,
-	Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-	Amit Sunil Dhamne <amitsd@google.com>,
-	Chaoyi Chen <chaoyi.chen@rock-chips.com>,
-	Dragan Simic <dsimic@manjaro.org>, Johan Jonker <jbx6244@gmail.com>,
-	Diederik de Haas <didi.debian@cknow.org>,
-	Peter Robinson <pbrobinson@gmail.com>, linux-usb@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
-Subject: Re: [PATCH v7 1/9] usb: typec: Add notifier functions
-Message-ID: <aPn4-S7upPOOtenr@kuha.fi.intel.com>
-References: <20251023033009.90-1-kernel@airkyi.com>
- <20251023033009.90-2-kernel@airkyi.com>
- <aPni4AeDaem_rfZH@kuha.fi.intel.com>
- <aPnvoSRJefwDlpNO@kuha.fi.intel.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <aPnvoSRJefwDlpNO@kuha.fi.intel.com>
+	id 1vBrxJ-00000005nTD-1W9n
+	for linux-rockchip@lists.infradead.org;
+	Thu, 23 Oct 2025 09:50:03 +0000
+Mime-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow-tech.com;
+	s=key1; t=1761212996;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=1kKSuHqlpd7Q5R9WUMyjrIRemxGdRD0uvle2ohvhWxA=;
+	b=A0c9oRihcdJkh1kcn/JuOQiS3YRnSz3mZK6Yx9v7J27r5DQYF19o6Uj3G1C43TPBM0v62k
+	RKS8FGFBfWQdXdNuUtyCg7Y3PkGS9CUTHqSyxDLGC6UYSXFocZNvO3qiiimZqUi2tCg6Bg
+	zbOnhDCW4Z5VOsqOXrbWv10GDfIxthb/BrmnaktYnSk6FPYjJ7p0G0z9vtwJ9vf8Adm8Tc
+	I/t8195hkS10eQ1zB8q8MrZrPGsy4+6d6XLrlJ/9WZOC/0/MJrLOK1f0WIvvnmsdSNgemn
+	ZJTUFK2IBUV2nDXVUzMAhmNLfhIlaNE7N7LMtbk4YYDAsXNbg3CarDgyZ4aldg==
+Date: Thu, 23 Oct 2025 11:49:47 +0200
+Message-Id: <DDPLWD21EDEB.25TD1X46N5BDK@cknow-tech.com>
+Cc: <linux-rockchip@lists.infradead.org>, "Niklas Cassel"
+ <cassel@kernel.org>, <linux-pci@vger.kernel.org>
+Subject: Re: [PATCH v3 1/2] PCI: dw-rockchip: Configure L1sub support
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Diederik de Haas" <diederik@cknow-tech.com>
+To: "Shawn Lin" <shawn.lin@rock-chips.com>, "Heiko Stuebner"
+ <heiko@sntech.de>, "Manivannan Sadhasivam" <mani@kernel.org>, "Bjorn
+ Helgaas" <bhelgaas@google.com>
+References: <1761187883-150120-1-git-send-email-shawn.lin@rock-chips.com>
+In-Reply-To: <1761187883-150120-1-git-send-email-shawn.lin@rock-chips.com>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251023_024438_535490_76E9DA74 
-X-CRM114-Status: GOOD (  21.44  )
+X-CRM114-CacheID: sfid-20251023_025002_172396_4832B1B0 
+X-CRM114-Status: GOOD (  29.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,94 +72,144 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Oct 23, 2025 at 12:04:44PM +0300, Heikki Krogerus wrote:
-> On Thu, Oct 23, 2025 at 11:10:20AM +0300, Heikki Krogerus wrote:
-> > Hi,
-> > 
-> > > diff --git a/include/linux/usb/typec_notify.h b/include/linux/usb/typec_notify.h
-> > > new file mode 100644
-> > > index 000000000000..a3f1f3b3ae47
-> > > --- /dev/null
-> > > +++ b/include/linux/usb/typec_notify.h
-> > > @@ -0,0 +1,17 @@
-> > > +/* SPDX-License-Identifier: GPL-2.0 */
-> > > +
-> > > +#ifndef __USB_TYPEC_NOTIFY
-> > > +#define __USB_TYPEC_NOTIFY
-> > > +
-> > > +#include <linux/notifier.h>
-> > > +
-> > > +enum usb_typec_event {
-> > > +	TYPEC_ALTMODE_REGISTERED
-> > > +};
-> > 
-> > Don't you need to know when the altmode is removed?
-> 
-> I noticed that you don't because drm_dp_hpd_bridge_register() is
-> always resource managed. But I think you could still send an event
-> also when the altmode is removed already now. That way it does not
-> need to be separately added if and when it is needed.
+On Thu Oct 23, 2025 at 4:51 AM CEST, Shawn Lin wrote:
+> L1 PM Substates for RC mode require support in the dw-rockchip driver
+> including proper handling of the CLKREQ# sideband signal. It is mostly
+> handled by hardware, but software still needs to set the clkreq fields
+> in the PCIE_CLIENT_POWER_CON register to match the hardware implementation.
+>
+> For more details, see section '18.6.6.4 L1 Substate' in the RK3658 TRM 1.1
+> Part 2, or section '11.6.6.4 L1 Substate' in the RK3588 TRM 1.0 Part2.
+>
+> Meanwhile, for the EP mode, we haven't prepared enough to actually support
+> L1 PM Substates yet. So disable it now until proper support is added later.
+>
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+>
+> ---
+>
+> Changes in v3:
+> - rephrease the changelog
+> - use FIELD_PREP_WM16
+> - rename to rockchip_pcie_configure_l1sub
+> - disable L1ss for EP mode
+>
+> Changes in v2:
+> - drop of_pci_clkreq_presnt API
+> - drop dependency of Niklas's patch
+>
+>  drivers/pci/controller/dwc/pcie-dw-rockchip.c | 43 +++++++++++++++++++++++++++
+>  1 file changed, 43 insertions(+)
+>
+> diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> index 3e2752c..25d2474 100644
+> --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> @@ -62,6 +62,12 @@
+>  /* Interrupt Mask Register Related to Miscellaneous Operation */
+>  #define PCIE_CLIENT_INTR_MASK_MISC	0x24
+>  
+> +/* Power Management Control Register */
+> +#define PCIE_CLIENT_POWER_CON		0x2c
+> +#define  PCIE_CLKREQ_READY		FIELD_PREP_WM16(BIT(0), 1)
+> +#define  PCIE_CLKREQ_NOT_READY		FIELD_PREP_WM16(BIT(0), 0)
+> +#define  PCIE_CLKREQ_PULL_DOWN		FIELD_PREP_WM16(GENMASK(13, 12), 1)
+> +
+>  /* Hot Reset Control Register */
+>  #define PCIE_CLIENT_HOT_RESET_CTRL	0x180
+>  #define  PCIE_LTSSM_APP_DLY2_EN		BIT(1)
+> @@ -85,6 +91,7 @@ struct rockchip_pcie {
+>  	struct regulator *vpcie3v3;
+>  	struct irq_domain *irq_domain;
+>  	const struct rockchip_pcie_of_data *data;
+> +	bool supports_clkreq;
+>  };
+>  
+>  struct rockchip_pcie_of_data {
+> @@ -200,6 +207,37 @@ static bool rockchip_pcie_link_up(struct dw_pcie *pci)
+>  	return FIELD_GET(PCIE_LINKUP_MASK, val) == PCIE_LINKUP;
+>  }
+>  
+> +/*
+> + * See e.g. section '11.6.6.4 L1 Substate' in the RK3588 TRM V1.0 for the steps
+> + * needed to support L1 substates. Currently, just enable L1 substates for RC
+> + * mode if CLKREQ# is properly connected and supports-clkreq is present in DT.
+> + * For EP mode, there are more things should be done to actually save power in
 
-Hold on! Every bus has already a notifier chain. That's the one that
-we should also use. Sorry for not noticing that earlier.
+"For EP mode, more things should be done ..." or
+"For EP mode, there are more things that should be done ..."
 
-So let's just export the bus type in this patch - you can then use
-bus_register_notifier() in your driver:
+Q: Is this patch set to fix the problem I and others reported wrt ASPM?
 
-diff --git a/drivers/usb/typec/bus.c b/drivers/usb/typec/bus.c
-index a884cec9ab7e..65ded9e3cdaa 100644
---- a/drivers/usb/typec/bus.c
-+++ b/drivers/usb/typec/bus.c
-@@ -547,3 +547,4 @@ const struct bus_type typec_bus = {
-        .probe = typec_probe,
-        .remove = typec_remove,
- };
-+EXPORT_SYMBOL_GPL(typec_bus);
-diff --git a/drivers/usb/typec/bus.h b/drivers/usb/typec/bus.h
-index 643b8c81786d..af9edb3db9d0 100644
---- a/drivers/usb/typec/bus.h
-+++ b/drivers/usb/typec/bus.h
-@@ -5,7 +5,6 @@
- 
- #include <linux/usb/typec_altmode.h>
- 
--struct bus_type;
- struct typec_mux;
- struct typec_retimer;
- 
-@@ -28,7 +27,6 @@ struct altmode {
- 
- #define to_altmode(d) container_of(d, struct altmode, adev)
- 
--extern const struct bus_type typec_bus;
- extern const struct device_type typec_altmode_dev_type;
- 
- #define is_typec_altmode(_dev_) (_dev_->type == &typec_altmode_dev_type)
-diff --git a/include/linux/usb/typec.h b/include/linux/usb/typec.h
-index 309251572e2e..c6fd46902fce 100644
---- a/include/linux/usb/typec.h
-+++ b/include/linux/usb/typec.h
-@@ -20,12 +20,15 @@ struct typec_port;
- struct typec_altmode_ops;
- struct typec_cable_ops;
- 
-+struct bus_type;
- struct fwnode_handle;
- struct device;
- 
- struct usb_power_delivery;
- struct usb_power_delivery_desc;
- 
-+extern const struct bus_type typec_bus;
-+
- enum typec_port_type {
-        TYPEC_PORT_SRC,
-        TYPEC_PORT_SNK,
+Because there's Niklas' patch which has been accepted, there's another
+patch by Bjorn which initially didn't land on the linux-rockchip ML and
+there's this patch set.
+To me, those *seem* all 3 different solutions to the same issue, but
+it's quite possible I'm wrong in that. Apparently to try Bjorn's patch,
+one should not have Niklas' patch applied. And I have no idea what, if
+any, the relationship is of this patch set with those others.
 
-thanks,
+Some clarification would be helpful for n00bs like me.
 
--- 
-heikki
+Cheers,
+  Diederik
+
+> + * L1 substates, so disable L1 substates until there is proper support.
+> + */
+> +static void rockchip_pcie_configure_l1sub(struct dw_pcie *pci)
+> +{
+> +	struct rockchip_pcie *rockchip = to_rockchip_pcie(pci);
+> +	u32 cap, l1subcap;
+> +
+> +	/* Enable L1 substates if CLKREQ# is properly connected */
+> +	if (rockchip->supports_clkreq && rockchip->data->mode == DW_PCIE_RC_TYPE ) {
+> +		rockchip_pcie_writel_apb(rockchip, PCIE_CLKREQ_READY, PCIE_CLIENT_POWER_CON);
+> +		return;
+> +	}
+> +
+> +	/* Otherwise, pull down CLKREQ# and disable L1 PM substates */
+> +	rockchip_pcie_writel_apb(rockchip, PCIE_CLKREQ_PULL_DOWN | PCIE_CLKREQ_NOT_READY,
+> +				 PCIE_CLIENT_POWER_CON);
+> +	cap = dw_pcie_find_ext_capability(pci, PCI_EXT_CAP_ID_L1SS);
+> +	if (cap) {
+> +		l1subcap = dw_pcie_readl_dbi(pci, cap + PCI_L1SS_CAP);
+> +		l1subcap &= ~(PCI_L1SS_CAP_L1_PM_SS | PCI_L1SS_CAP_ASPM_L1_1 |
+> +			      PCI_L1SS_CAP_ASPM_L1_2 | PCI_L1SS_CAP_PCIPM_L1_1 |
+> +			      PCI_L1SS_CAP_PCIPM_L1_2);
+> +		dw_pcie_writel_dbi(pci, cap + PCI_L1SS_CAP, l1subcap);
+> +	}
+> +}
+> +
+>  static void rockchip_pcie_enable_l0s(struct dw_pcie *pci)
+>  {
+>  	u32 cap, lnkcap;
+> @@ -264,6 +302,7 @@ static int rockchip_pcie_host_init(struct dw_pcie_rp *pp)
+>  	irq_set_chained_handler_and_data(irq, rockchip_pcie_intx_handler,
+>  					 rockchip);
+>  
+> +	rockchip_pcie_configure_l1sub(pci);
+>  	rockchip_pcie_enable_l0s(pci);
+>  
+>  	return 0;
+> @@ -301,6 +340,7 @@ static void rockchip_pcie_ep_init(struct dw_pcie_ep *ep)
+>  	struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
+>  	enum pci_barno bar;
+>  
+> +	rockchip_pcie_configure_l1sub(pci);
+>  	rockchip_pcie_enable_l0s(pci);
+>  	rockchip_pcie_ep_hide_broken_ats_cap_rk3588(ep);
+>  
+> @@ -412,6 +452,9 @@ static int rockchip_pcie_resource_get(struct platform_device *pdev,
+>  		return dev_err_probe(&pdev->dev, PTR_ERR(rockchip->rst),
+>  				     "failed to get reset lines\n");
+>  
+> +	rockchip->supports_clkreq = of_property_read_bool(pdev->dev.of_node,
+> +							  "supports-clkreq");
+> +
+>  	return 0;
+>  }
+>  
+
 
 _______________________________________________
 Linux-rockchip mailing list
