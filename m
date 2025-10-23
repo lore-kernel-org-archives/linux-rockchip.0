@@ -4,60 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF5E4CCD193
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Oct 2025 18:25:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1B6ECCD193
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Oct 2025 18:27:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=EItReUn4uCEa4iW8tdjTb8OD7S8IqUvBESdKqw49D14=; b=HUGgpF+CcRAKCk
-	5gFKTzBqjytvlC1Q/UfqpvLKgLfunF3/8R/gNxqAa85HsE02QiHeLSDpImVZoFnLPlKX47pJfSFkm
-	5SxLZzwFgQnsvNPIBzQjtomL3c6V6eGUf0PtpvZKEz2LlgwZEML1N8cCX9Z3LZjUXd9JfLy7sgAyg
-	pxR+oUKG0h9B+7XgxJXWLzEEdqdXFeK6WIb1mJZbXn7DfLIt2bSpdOE0bP3FOTZJTnoLOUiKIM3Pw
-	js4V1kExSvXfZfyadalgtfE37AbxaPnrJa/9JdZgm8+46339/TpOPFhAO7++wlC+iebCawK08Tf9T
-	qH6k4sQUbviWOePM8Z4g==;
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-ID:MIME-Version:To:Cc:
+	Date:References:In-Reply-To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=kYATPFCP6R/HR+GqiXQ9/bIjFBe1o0TBaK3IyMA4GbI=; b=Cw/HUeZdmHEB7d
+	YmyAjs1F5/WiUZt3wSCHk8+d5SmZIGYpQ81SZQq4qJZ5T7ArkijIeAs1Oxy8tYWMmqGj37SGpwxH9
+	QaNDCUtRUQoff+nVo6RhXMxsaFSq4I0G0mwkh8IwkvF9alL+D/ct+kHa90mFOfIziX7ckCJ78Hn/B
+	rutIks6CfRfTyLmFgYy3BB7HynFMD/tVDsRo0e6iemm4oz83qPQ/eoJ16n3iEM5gLLa/ylKCjkB0p
+	7GcmQqP6Q74uuvbcFH/afiU9RsMmd31Gi6HiEJySjJ8JnN2LMrPCVaRHgxv6etQ1bBBieW13eP7az
+	0HluSNV7paBT6H31Itjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vC009-00000007Di2-30m6;
-	Thu, 23 Oct 2025 18:25:29 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vC02F-00000007DvS-2CoL;
+	Thu, 23 Oct 2025 18:27:39 +0000
+Received: from mail1.manjaro.org ([2a01:4f8:c010:b6e8::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vC007-00000007Dgv-3LFT
+	id 1vC02C-00000007Dum-3EoK
 	for linux-rockchip@lists.infradead.org;
-	Thu, 23 Oct 2025 18:25:28 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 3C9EA61185;
-	Thu, 23 Oct 2025 18:25:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C23F9C4CEE7;
-	Thu, 23 Oct 2025 18:25:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1761243926;
-	bh=mOBvJWsTb0vY1iyFfVuyBlLeVYQAHWLsWjtUccN/ADA=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=o3bQddqmlEUkUHxUG3lxTANhdQ3CzljYSwNiZ+aw9PrwVxuPEQ1VK1NjH6lSPvVgj
-	 qYmBKwvUS0H/uIkSkZ/SxY1ue9eAEA+RHhnIhfII0JqwYt7whu4wIC0UAnoEvXkJmR
-	 xYH77ZXgLn00Q+kGapHy5q1qyteK081AOWetYP5XE270E36LWDnEgRHAcyKV5ivYYz
-	 10KMcwk98UI4QGwgIXVTzHtRQZI8BxHglr31GuDXx6XHYRNGzM4NnnAl1Rpunvg6gl
-	 CSfbS5ZdJRzisTbKkDo8ORXc/RZjiUWxCpgYfKqPDscSeSsaBxrf72IDO2M+9o2+02
-	 74WzG/ZfLnP/g==
-Date: Thu, 23 Oct 2025 13:25:25 -0500
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: linux-pci@vger.kernel.org
-Cc: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>,
-	Christian Zigotzky <chzigotzky@xenosoft.de>,
-	FUKAUMI Naoki <naoki@radxa.com>,
-	Herve Codina <herve.codina@bootlin.com>,
-	Diederik de Haas <diederik@cknow-tech.com>,
-	Dragan Simic <dsimic@manjaro.org>, linuxppc-dev@lists.ozlabs.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Bjorn Helgaas <bhelgaas@google.com>
-Subject: Re: [PATCH] PCI/ASPM: Enable only L0s and L1 for devicetree platforms
-Message-ID: <20251023182525.GA1306699@bhelgaas>
-MIME-Version: 1.0
-Content-Disposition: inline
+	Thu, 23 Oct 2025 18:27:38 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPA id 58F2D40D25;
+	Thu, 23 Oct 2025 20:27:25 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=dkim;
+	t=1761244050; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:in-reply-to:references;
+	bh=wMO+SCV0l5dh/TBWZh1mnrGafB3FTHbpefBDO3evOwI=;
+	b=x3vT1EJfPxqfvf6DDV90OVcHLztgqacXNaWxXyOwo0jNBDwyLCyeJv+Ph7niMcJnYDzjBG
+	J2UzZzAjq5i3/7WU/eAXEAMb6jgGRiRpLoww3MWmxhS+RtWLCXhJxmEuov4NulcMgpz5PG
+	w1GIi7xYmiBEH/4rLkLz+Fe4Xp6LKm4+7n2zwSIFFAGAZeOBEX3Cd0uhcrFSJYSM+4Dg7y
+	Y+p5mV9ipeAg9wQd8MQGJbqePWEDXiYtY+pdnPNA4lvoTUJyj/LwwX19qiQuaHv70L7Gi9
+	Y+LjMR4vDEkJcmcKkKSsFfSUNcozLPKt+1hwz1nu9t0VQ0cUmKUG331JrfXwew==
+From: "Dragan Simic" <dsimic@manjaro.org>
 In-Reply-To: <20251023180645.1304701-1-helgaas@kernel.org>
+References: <20251023180645.1304701-1-helgaas@kernel.org>
+Date: Thu, 23 Oct 2025 20:27:25 +0200
+Cc: linux-pci@vger.kernel.org, "Manivannan Sadhasivam" <manivannan.sadhasivam@oss.qualcomm.com>, "Christian Zigotzky" <chzigotzky@xenosoft.de>, "FUKAUMI Naoki" <naoki@radxa.com>, "Herve Codina" <herve.codina@bootlin.com>, "Diederik de Haas" <diederik@cknow-tech.com>, linuxppc-dev@lists.ozlabs.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, "Bjorn Helgaas" <bhelgaas@google.com>, "Shawn Lin" <shawn.lin@rock-chips.com>
+To: "Bjorn Helgaas" <helgaas@kernel.org>
+MIME-Version: 1.0
+Message-ID: <da79f38f-fdb9-0101-67cc-144ef8d6e1d1@manjaro.org>
+Subject: =?utf-8?q?Re=3A?= [PATCH] =?utf-8?q?PCI/ASPM=3A?= Enable only L0s and L1 
+ for devicetree platforms
+User-Agent: SOGoMail 5.12.3
+X-Last-TLS-Session-Version: None
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251023_112737_194439_CB01F9C4 
+X-CRM114-Status: GOOD (  23.77  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,7 +69,9 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Oct 23, 2025 at 01:06:26PM -0500, Bjorn Helgaas wrote:
+Hello Bjorn,
+
+On Thursday, October 23, 2025 20:06 CEST, Bjorn Helgaas <helgaas@kernel.org> wrote:
 > From: Bjorn Helgaas <bhelgaas@google.com>
 > 
 > f3ac2ff14834 ("PCI/ASPM: Enable all ClockPM and ASPM states for devicetree
@@ -97,11 +94,6 @@ On Thu, Oct 23, 2025 at 01:06:26PM -0500, Bjorn Helgaas wrote:
 > Link: https://lore.kernel.org/r/DDJXHRIRGTW9.GYC2ULZ5WQAL@cknow-tech.com/
 > Signed-off-by: Bjorn Helgaas <bhelgaas@google.com>
 > Tested-by: FUKAUMI Naoki <naoki@radxa.com>
-
-Provisionally applied to pci/for-linus, hoping to make v6.18-rc3.
-
-Happy to add any testing reports or amend as needed.
-
 > ---
 > I intend this for v6.18-rc3.
 > 
@@ -112,6 +104,18 @@ Happy to add any testing reports or amend as needed.
 > 
 > FUKAUMI Naoki's successful testing report:
 > https://lore.kernel.org/r/4B275FBD7B747BE6+a3e5b367-9710-4b67-9d66-3ea34fc30866@radxa.com/
+
+I'm more than happy with the way ASPM patches for DT platforms and
+Rockchip SoCs in particular are unfolding!  Admittedly, we've had
+a rough start with the blanket enabling of ASPM, which followed the
+theory, but the theory often differs from practice, so the combined
+state of this and associated patches from Shawn should be fine.
+
+Thank you very much for all the effort that included quite a lot
+of back and forth, and please feel free to include
+
+Acked-by: Dragan Simic <dsimic@manjaro.org>
+
 > ---
 >  drivers/pci/pcie/aspm.c | 34 +++++++++-------------------------
 >  1 file changed, 9 insertions(+), 25 deletions(-)
@@ -184,10 +188,7 @@ Happy to add any testing reports or amend as needed.
 > +				 FLAG(override, L1, " L1"));
 >  	}
 >  }
->  
-> -- 
-> 2.43.0
-> 
+
 
 _______________________________________________
 Linux-rockchip mailing list
