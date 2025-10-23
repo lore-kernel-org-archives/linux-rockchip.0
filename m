@@ -4,80 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD18ECCD1BE
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Oct 2025 13:52:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BA9CCCD1BC
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Oct 2025 14:07:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
-	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=9ACduz1bPLZsZgUpgD6J1ZQxMS6NX4xzkXvgZHNXink=; b=ODhnuZzPNTvjDRpo7suLYHNWOB
-	56tZedycZmoTMnd4+zWxYKBB2qd+K5CHsPC/eqS6ZDeOO5jr+SgcZJb6NcnE7goTeUrh4tNNRpvFx
-	PTxI/l5PppuoSLmAA34kcMm+/0Gj9WjBz45d8wNsOJVMHUQlUJDTFsm8OMHqON8c1YVQ6LkyJLE62
-	aMt23Q3AgeCIYsfAc5XvshPmMlVV952rVzqfE0svqrgBkOaeSVI/4aM6wVysdiEK/2VJ4Klxr+U9N
-	evpoG7y5I5y5tx9k1DQErzHKJ9bUB25bgvoWr9rE8ooQT4dOtk7EPKBZIK9Ig9rj/jPxDfNKq1lU9
-	dXe2LcuA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ZLQz86XkyeglH3LHOnuqDt83THuBDf6T0amK29H3P7I=; b=HIrTQjtRmhXyB+
+	fCMW6BdT42WntdCdeg7//eEbcnUcsPDv9/Aul9ecjXRuM9m2rlDlpleOxfVGFqkOtWy9TfJXqzFTH
+	FwUHvyLevfZfpa1RmOK+JqNOFXfMgztKSVTBML9Dk98NkMSNPJ/5XY//ma0wjmDgJsxqHa3WfBhAs
+	hJ8ofIGVL6lcO+lbCkWNCKODLQZ1AQnXfztEe+KsYN1HdEYB+/xFbEQ5XlphPEWjaFagdGP4xEP4I
+	/XFVmfYMIPwtEgomaxbQ6LKsvUm4lWTMKACGAWo+1+chSWdxYikjaFCF8CE8HXSOmYKPod8VzoTte
+	NhHELKD49nxj9hBv1VXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBvjb-00000006TVi-073W;
-	Thu, 23 Oct 2025 13:52:07 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vBvyp-00000006Woo-3HaD;
+	Thu, 23 Oct 2025 14:07:51 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBvjW-00000006TRY-1JCU;
-	Thu, 23 Oct 2025 13:52:03 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id D69304ADE8;
-	Thu, 23 Oct 2025 13:52:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 75F27C4CEE7;
-	Thu, 23 Oct 2025 13:52:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1761227521;
-	bh=TWwofATN6dvQVTmREPrumFtc6Yhov/qqrLEWPdQ7VWE=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=hcs0H9U+drZ+VNqvF8U2Kwq99Ui2p5nNjKuA91WsZov1i+kBVl15EzTLyENXbDfpA
-	 56XoQ1X/1q03SzYaSQiYpOwwZvjFOoZAzE6FSZnLcc6db2TSHgvBGK6QtRgt8H8EcE
-	 tuuGj5sgNBdB5BmEyS1B6Zqop51UlsuJ8CMLAeD7eJvVELWZ+iKHvvwbmVyOI7THOK
-	 K0Fzt4YWNJC/T/oD4fe8Z23CrrXGLdAfwIp0Nxou9fKSNavi4eY28G3iKbmzqVqBPR
-	 o1lrvAKsHFctSr6lXXhtW/RhGaNy4jIQ6mqQMe6y+LO9L2nuIZ4DXl1y8j7JvToFgj
-	 PeTB9MTrUNjHA==
-Date: Thu, 23 Oct 2025 08:52:00 -0500
+	id 1vBvyn-00000006Wo1-1n6L;
+	Thu, 23 Oct 2025 14:07:50 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1761228452; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=QJTDz73q9ULElSJbe3UBcx+2Lh0bvt0HNsiJran5Vx51osYjS85rMDSnSIQ3D8wy4/5jWxUFB33nEv6gyOwj3VXh8p8BOzgzdIsQLkL2bgHCAcrqnBurjZdf9P7ar8l9Z18pFsADQr4gUEobSTfCMDZfk34f+CEs91kZGRTU20M=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1761228452; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=Zn87WStNUu8QnMPbdDiRsUi5A/QpkGCBEl8yDwMULUg=; 
+	b=LTpLW0BGhziv59wBl4U/yI/p/C7UWo1UnC0ZolcyfF7kM0SRjzxJpGPW1m0xAS/bNuMDSKdyjiqo5nCsc65riPiGB/oSsy7l4FaYkrsbgdOQgCq9fZwLMYyCAGU8hFgVW0XO/Zck5R2/XKbG1cEqQysrz3X3suS5DPMf8/a9JTg=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
+	dmarc=pass header.from=<detlev.casanova@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1761228452;
+	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=Zn87WStNUu8QnMPbdDiRsUi5A/QpkGCBEl8yDwMULUg=;
+	b=AP8SnN0sy9jK6LmZJPJ5zgN9OdYE/1DvKHCdkQNCHLsPQ1DZN3s027C/aUb+l4Wd
+	UhbHHc0zrptRAa8zRgFvAy5gpjv1rdRrdNbyqHYsX3MK8TbMgjBaNvH8/40DNlqtZwy
+	ZyStghdS8G1krBgZ694sxhxkSAyL0v2DCAYevoVI=
+Received: by mx.zohomail.com with SMTPS id 1761228449352726.4571148367125;
+	Thu, 23 Oct 2025 07:07:29 -0700 (PDT)
+Message-ID: <c7ea2422-cff3-46ad-8c46-20aa651a18d4@collabora.com>
+Date: Thu, 23 Oct 2025 10:07:27 -0400
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: Robert Foss <rfoss@kernel.org>, Maxime Ripard <mripard@kernel.org>, 
- Peter Robinson <pbrobinson@gmail.com>, 
- Heikki Krogerus <heikki.krogerus@linux.intel.com>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
- Andy Yan <andy.yan@rock-chips.com>, Jonas Karlman <jonas@kwiboo.se>, 
- Diederik de Haas <didi.debian@cknow.org>, David Airlie <airlied@gmail.com>, 
- Amit Sunil Dhamne <amitsd@google.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>, 
- Chaoyi Chen <chaoyi.chen@rock-chips.com>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Johan Jonker <jbx6244@gmail.com>, 
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
- Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Thomas Zimmermann <tzimmermann@suse.de>, Simona Vetter <simona@ffwll.ch>, 
- linux-arm-kernel@lists.infradead.org, Sandy Huang <hjc@rock-chips.com>, 
- linux-rockchip@lists.infradead.org, 
- Kishon Vijay Abraham I <kishon@kernel.org>, devicetree@vger.kernel.org, 
- Frank Wang <frank.wang@rock-chips.com>, linux-phy@lists.infradead.org, 
- Vinod Koul <vkoul@kernel.org>, Yubing Zhang <yubing.zhang@rock-chips.com>, 
- linux-usb@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, 
- Andrzej Hajda <andrzej.hajda@intel.com>, Dragan Simic <dsimic@manjaro.org>, 
- Conor Dooley <conor+dt@kernel.org>, dri-devel@lists.freedesktop.org, 
- linux-kernel@vger.kernel.org
-To: Chaoyi Chen <kernel@airkyi.com>
-In-Reply-To: <20251023033009.90-1-kernel@airkyi.com>
-References: <20251023033009.90-1-kernel@airkyi.com>
-Message-Id: <176122700874.2723312.9950829312401281316.robh@kernel.org>
-Subject: Re: [PATCH v7 0/9] Add Type-C DP support for RK3399 EVB IND board
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 02/15] media: v4l2-ctrls: Add hevc_ext_sps_[ls]t_rps
+ controls
+To: Hans Verkuil <hverkuil+cisco@kernel.org>, linux-kernel@vger.kernel.org
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Heiko Stuebner <heiko@sntech.de>, Ricardo Ribalda <ribalda@chromium.org>,
+ Hans Verkuil <hverkuil@kernel.org>, Hans de Goede <hansg@kernel.org>,
+ Yunke Cao <yunkec@google.com>, Jonathan Corbet <corbet@lwn.net>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>,
+ James Cowgill <james.cowgill@blaize.com>, linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ kernel@collabora.com, Nicolas Dufresne <nicolas.dufresne@collabora.com>
+References: <20251022174508.284929-1-detlev.casanova@collabora.com>
+ <20251022174508.284929-3-detlev.casanova@collabora.com>
+ <6eaa8b26-edab-4bfa-9c6a-1fbb54c36b4e@kernel.org>
+Content-Language: en-US
+From: Detlev Casanova <detlev.casanova@collabora.com>
+In-Reply-To: <6eaa8b26-edab-4bfa-9c6a-1fbb54c36b4e@kernel.org>
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251023_065202_554225_6C719635 
-X-CRM114-Status: GOOD (  37.75  )
+X-CRM114-CacheID: sfid-20251023_070749_533239_B3770555 
+X-CRM114-Status: GOOD (  30.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,210 +84,228 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Hans,
 
-On Thu, 23 Oct 2025 11:30:00 +0800, Chaoyi Chen wrote:
-> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-> 
-> This series focuses on adding Type-C DP support for USBDP PHY and DP
-> driver. The USBDP PHY and DP will perceive the changes in cable status
-> based on the USB PD and Type-C state machines provided by TCPM. Before
-> this, the USBDP PHY and DP controller of RK3399 sensed cable state
-> changes through extcon, and devices such as the RK3399 Gru-Chromebook
-> rely on them. This series should not break them.
-> 
-> ====
-> 1. DisplayPort HPD status notify
-> 
-> Before v7, I implemented a variety of DP HPD status notify. However,
-> they all had various problems and it was difficult to become a generic
-> solution.
-> 
-> Under the guidance of Heikki and Dmitry, a decoupled notification
-> method between the TypeC and DRM subsystems was introduced in v7.
-> First, a notification is sent when TypeC registers a new altmode.
-> Then, a generic DP AUX HPD bridge is implemented on the DRM side.
-> 
-> That makes it redundant for each Type-C controller driver to implement
-> a similar DP AUX HPD bridge in embedded scenarios.
-> 
-> ====
-> 2. Altmode switching and orientation switching for USBDP PHY
-> 
-> For USB Type-C interfaces, an external Type-C controller chip assists
-> by detecting cable attachment, determining plug orientation, and
-> reporting USB PD message. The USB/DP combo PHY supports software
-> configurable pin mapping and DisplayPort lane assignment. Based on
-> these message, the combo PHY can perform both altmode switching and
-> orientation switching via software.
-> 
-> The RK3399 EVB IND board has a Type-C interface DisplayPort. It use
-> fusb302 chip as Type-C controller. The connection diagram is shown below:
-> 
-> fusb302 chip +---> USB2.0 PHY ----> DWC3 USB controller
->              |
->              +---> USB/DP PHY0 +--> CDN-DP controller
->                                |
->                                +--> DWC3 USB controller
-> 
-> ====
-> 3. Multiple bridge model for RK3399 CDN-DP
-> 
-> The RK3399 has two USB/DP combo PHY and one CDN-DP controller. And
-> the CDN-DP can be switched to output to one of the PHYs.
-> 
-> USB/DP PHY0 ---+
->                | <----> CDN-DP controller
-> USB/DP PHY1 ---+
-> 
-> In previous versions, if both PHY ports were connected to DP,
-> the CDN-DP driver would select the first PHY port for output.
-> 
-> On Dmitry's suggestion, we introduced a multi-bridge model to support
-> flexible selection of the output PHY port. For each PHY port, a
-> separate encoder and bridge are registered.
-> 
-> The change is based on the DRM AUX HPD bridge, rather than the
-> extcon approach. This requires the DT to correctly describe the
-> connections between the first bridge in bridge chain and DP
-> controller. And Once the first bridge is obtained, we can get the
-> last bridge corresponding to the USB-C connector, and then set the
-> DRM connector's fwnode to the corresponding one to enable HPD
-> notification.
-> 
-> ====
-> Patch1 add notifier functions for Type-C core.
-> Patch2 add generic USB Type-C DP HPD bridge.
-> Patch3 add new Type-C mode switch for RK3399 USBDP phy binding.
-> Patch4 add typec_mux and typec_switch for RK3399 USBDP PHY.
-> Patch5 add DRM AUX bridge support for RK3399 USBDP PHY.
-> Patch6 drops CDN-DP's extcon dependency when Type-C is present.
-> Patch7 add multiple bridges to support PHY port selection.
-> Patch8 add missing dp_out port for RK3399 CDN-DP.
-> Patch9 add Type-C DP support for RK3399 EVB IND board.
-> 
-> Changes in v7:
-> - Link to V6: https://lore.kernel.org/all/20251016022741.91-1-kernel@airkyi.com/
-> - Add notifier functions for Type-C core.
-> - Add generic USB Type-C DP HPD bridge.
-> 
-> Changes in v6:
-> - Link to V5: https://lore.kernel.org/all/20251011033233.97-1-kernel@airkyi.com/
-> - Fix depend in Kconfig.
-> - Check DP svid in tcphy_typec_mux_set().
-> - Remove mode setting in tcphy_orien_sw_set().
-> - Rename some variable names.
-> - Attach the DP bridge to the next bridge.
-> 
-> Changes in v5:
-> - Link to V4: https://lore.kernel.org/all/20250922012039.323-1-kernel@airkyi.com/
-> - Remove the calls related to `drm_aux_hpd_bridge_notify()`.
-> - Place the helper functions in the same compilation unit.
-> - Add more comments about parent device.
-> - Add DRM AUX bridge support for RK3399 USBDP PHY
-> - By parsing the HPD bridge chain, set the connector's of_node to the
-> of_node corresponding to the USB-C connector.
-> - Return EDID cache when other port is already enabled.
-> 
-> Changes in v4:
-> - Link to V3: https://lore.kernel.org/all/20250729090032.97-1-kernel@airkyi.com/
-> - Add default HPD device for DisplayPort altmode.
-> - Introduce multiple bridges for CDN-DP.
-> - ...
-> 
-> Changes in v3:
-> - Link to V2: https://lore.kernel.org/all/20250718062619.99-1-kernel@airkyi.com/
-> - Add more descriptions to clarify the role of the PHY in switching.
-> - Fix wrong vdo value.
-> - Fix port node in usb-c-connector.
-> 
-> Changes in v2:
-> - Link to V1: https://lore.kernel.org/all/20250715112456.101-1-kernel@airkyi.com/
-> - Reuse dp-port/usb3-port in rk3399-typec-phy binding.
-> - Fix compile error when CONFIG_TYPEC is not enabled.
-> - Notify DP HPD state by USB/DP PHY.
-> - Ignore duplicate HPD events.
-> - Add endpoint to link DP PHY and DP controller.
-> - Fix devicetree coding style.
-> 
-> Chaoyi Chen (9):
->   usb: typec: Add notifier functions
->   drm/bridge: Implement generic USB Type-C DP HPD bridge
->   dt-bindings: phy: rockchip: rk3399-typec-phy: Support mode-switch
->   phy: rockchip: phy-rockchip-typec: Add typec_mux/typec_switch support
->   phy: rockchip: phy-rockchip-typec: Add DRM AUX bridge
->   drm/rockchip: cdn-dp: Support handle lane info without extcon
->   drm/rockchip: cdn-dp: Add multiple bridges to support PHY port
->     selection
->   arm64: dts: rockchip: Add missing dp_out port for RK3399 CDN-DP
->   arm64: dts: rockchip: rk3399-evb-ind: Add support for DisplayPort
-> 
->  .../phy/rockchip,rk3399-typec-phy.yaml        |   6 +
->  arch/arm64/boot/dts/rockchip/rk3399-base.dtsi |  10 +-
->  .../boot/dts/rockchip/rk3399-evb-ind.dts      | 146 ++++++
->  drivers/gpu/drm/bridge/Kconfig                |  11 +
->  drivers/gpu/drm/bridge/Makefile               |   1 +
->  .../gpu/drm/bridge/aux-hpd-typec-dp-bridge.c  |  51 +++
->  drivers/gpu/drm/rockchip/cdn-dp-core.c        | 354 ++++++++++++---
->  drivers/gpu/drm/rockchip/cdn-dp-core.h        |  24 +-
->  drivers/phy/rockchip/Kconfig                  |   3 +
->  drivers/phy/rockchip/phy-rockchip-typec.c     | 420 +++++++++++++++++-
->  drivers/usb/typec/Makefile                    |   2 +-
->  drivers/usb/typec/class.c                     |   3 +
->  drivers/usb/typec/notify.c                    |  22 +
->  include/linux/usb/typec_notify.h              |  17 +
->  14 files changed, 987 insertions(+), 83 deletions(-)
->  create mode 100644 drivers/gpu/drm/bridge/aux-hpd-typec-dp-bridge.c
->  create mode 100644 drivers/usb/typec/notify.c
->  create mode 100644 include/linux/usb/typec_notify.h
-> 
-> --
-> 2.49.0
-> 
-> 
-> 
+On 10/23/25 04:04, Hans Verkuil wrote:
+> On 22/10/2025 19:44, Detlev Casanova wrote:
+>> The vdpu381 decoder found on newer Rockchip SoC need the information
+>> from the long term and short term ref pic sets from the SPS.
+>>
+>> So far, it wasn't included in the v4l2 API, so add it with new dynamic
+>> sized controls.
+>>
+>> Each element of the hevc_ext_sps_lt_rps array contains the long term ref
+>> pic set at that index.
+>> Each element of the hevc_ext_sps_st_rps contains the short term ref pic
+>> set at that index, as the raw data.
+>> It is the role of the drivers to calculate the reference sets values.
+>>
+>> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+>> ---
+>>   drivers/media/v4l2-core/v4l2-ctrls-core.c | 18 +++++++
+>>   drivers/media/v4l2-core/v4l2-ctrls-defs.c | 10 ++++
+>>   include/uapi/linux/v4l2-controls.h        | 61 +++++++++++++++++++++++
+>>   include/uapi/linux/videodev2.h            |  2 +
+>>   4 files changed, 91 insertions(+)
+>>
+>> diff --git a/drivers/media/v4l2-core/v4l2-ctrls-core.c b/drivers/media/v4l2-core/v4l2-ctrls-core.c
+>> index 7c660cd61e48..b330bd7719e9 100644
+>> --- a/drivers/media/v4l2-core/v4l2-ctrls-core.c
+>> +++ b/drivers/media/v4l2-core/v4l2-ctrls-core.c
+>> @@ -418,6 +418,12 @@ void v4l2_ctrl_type_op_log(const struct v4l2_ctrl *ctrl)
+>>   	case V4L2_CTRL_TYPE_HEVC_SLICE_PARAMS:
+>>   		pr_cont("HEVC_SLICE_PARAMS");
+>>   		break;
+>> +	case V4L2_CTRL_TYPE_HEVC_EXT_SPS_ST_RPS:
+>> +		pr_cont("HEVC_EXT_SPS_ST_RPS");
+>> +		break;
+>> +	case V4L2_CTRL_TYPE_HEVC_EXT_SPS_LT_RPS:
+>> +		pr_cont("HEVC_EXT_SPS_LT_RPS");
+>> +		break;
+>>   	case V4L2_CTRL_TYPE_HEVC_SCALING_MATRIX:
+>>   		pr_cont("HEVC_SCALING_MATRIX");
+>>   		break;
+>> @@ -1248,6 +1254,12 @@ static int std_validate_compound(const struct v4l2_ctrl *ctrl, u32 idx,
+>>   	case V4L2_CTRL_TYPE_HEVC_SLICE_PARAMS:
+>>   		break;
+>>   
+>> +	case V4L2_CTRL_TYPE_HEVC_EXT_SPS_ST_RPS:
+>> +		break;
+>> +
+>> +	case V4L2_CTRL_TYPE_HEVC_EXT_SPS_LT_RPS:
+>> +		break;
+>> +
+> There is nothing to validate here? Any value is fine? Just checking...
 
+I don't think we can really validate anything here without more context: 
+e.g.: Cannot validate that a referenced frame is valid
 
-My bot found new DTB warnings on the .dts files added or changed in this
-series.
+Even the num_negative_pics and num_positive_pics range ([0 16]) can't be 
+validated here without reconstructing the information, as it is done in 
+the driver (and I don't think that should be done twice).
 
-Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
-are fixed by another series. Ultimately, it is up to the platform
-maintainer whether these warnings are acceptable or not. No need to reply
-unless the platform maintainer has comments.
+Maybe just the flags could be validated though.
 
-If you already ran DT checks and didn't see these error(s), then
-make sure dt-schema is up to date:
+> Is this something that should be added to the visl driver so it is tested during regression
+> tests? Or does this not apply to visl?
 
-  pip3 install dtschema --upgrade
+This could be added to visl indeed. Currently, the data is constructed 
+in the rkvdec driver as it is the only one using it, but if added to 
+visl, I'd add some v4l2 function to do the work and use it in rkvdec and 
+visl.
 
+Also, I think this should be part of another patchset, once this lands.
 
-This patch series was applied (using b4) to base:
- Base: attempting to guess base-commit...
- Base: tags/v6.18-rc1-18-g924aa1d9e0ae (best guess, 9/11 blobs matched)
- Base: tags/v6.18-rc1-18-g924aa1d9e0ae (use --merge-base to override)
-
-If this is not the correct base, please add 'base-commit' tag
-(or use b4 which does this automatically)
-
-New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/rockchip/' for 20251023033009.90-1-kernel@airkyi.com:
-
-arch/arm64/boot/dts/rockchip/rk3399-evb-ind.dtb: syscon@ff770000 (rockchip,rk3399-grf): usb2phy@e450: 'port' does not match any of the regexes: '^pinctrl-[0-9]+$'
-	from schema $id: http://devicetree.org/schemas/soc/rockchip/grf.yaml
-arch/arm64/boot/dts/rockchip/rk3399-evb-ind.dtb: syscon@ff770000 (rockchip,rk3399-grf): usb2phy@e450: Unevaluated properties are not allowed ('port' was unexpected)
-	from schema $id: http://devicetree.org/schemas/soc/rockchip/grf.yaml
-arch/arm64/boot/dts/rockchip/rk3399-evb-ind.dtb: usb2phy@e450 (rockchip,rk3399-usb2phy): 'port' does not match any of the regexes: '^pinctrl-[0-9]+$'
-	from schema $id: http://devicetree.org/schemas/phy/rockchip,inno-usb2phy.yaml
-arch/arm64/boot/dts/rockchip/rk3399-evb-ind.dtb: /sound: failed to match any schema with compatible: ['rockchip,rk3399-gru-sound']
-
-
-
-
-
+>
+> I haven't looked in-depth into this, but I wondered about it.
+Detlev.
+>
+>>   	case V4L2_CTRL_TYPE_HDR10_CLL_INFO:
+>>   		break;
+>>   
+>> @@ -2000,6 +2012,12 @@ static struct v4l2_ctrl *v4l2_ctrl_new(struct v4l2_ctrl_handler *hdl,
+>>   	case V4L2_CTRL_TYPE_HEVC_SLICE_PARAMS:
+>>   		elem_size = sizeof(struct v4l2_ctrl_hevc_slice_params);
+>>   		break;
+>> +	case V4L2_CTRL_TYPE_HEVC_EXT_SPS_ST_RPS:
+>> +		elem_size = sizeof(struct v4l2_ctrl_hevc_ext_sps_st_rps);
+>> +		break;
+>> +	case V4L2_CTRL_TYPE_HEVC_EXT_SPS_LT_RPS:
+>> +		elem_size = sizeof(struct v4l2_ctrl_hevc_ext_sps_lt_rps);
+>> +		break;
+>>   	case V4L2_CTRL_TYPE_HEVC_SCALING_MATRIX:
+>>   		elem_size = sizeof(struct v4l2_ctrl_hevc_scaling_matrix);
+>>   		break;
+>> diff --git a/drivers/media/v4l2-core/v4l2-ctrls-defs.c b/drivers/media/v4l2-core/v4l2-ctrls-defs.c
+>> index ad41f65374e2..167286c9e424 100644
+>> --- a/drivers/media/v4l2-core/v4l2-ctrls-defs.c
+>> +++ b/drivers/media/v4l2-core/v4l2-ctrls-defs.c
+>> @@ -1233,6 +1233,8 @@ const char *v4l2_ctrl_get_name(u32 id)
+>>   	case V4L2_CID_STATELESS_HEVC_DECODE_MODE:		return "HEVC Decode Mode";
+>>   	case V4L2_CID_STATELESS_HEVC_START_CODE:		return "HEVC Start Code";
+>>   	case V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS:	return "HEVC Entry Point Offsets";
+>> +	case V4L2_CID_STATELESS_HEVC_EXT_SPS_ST_RPS:		return "HEVC Short Term Ref Sets";
+>> +	case V4L2_CID_STATELESS_HEVC_EXT_SPS_LT_RPS:		return "HEVC Long Term Ref Sets";
+>>   	case V4L2_CID_STATELESS_AV1_SEQUENCE:			return "AV1 Sequence Parameters";
+>>   	case V4L2_CID_STATELESS_AV1_TILE_GROUP_ENTRY:		return "AV1 Tile Group Entry";
+>>   	case V4L2_CID_STATELESS_AV1_FRAME:			return "AV1 Frame Parameters";
+>> @@ -1578,6 +1580,14 @@ void v4l2_ctrl_fill(u32 id, const char **name, enum v4l2_ctrl_type *type,
+>>   		*type = V4L2_CTRL_TYPE_U32;
+>>   		*flags |= V4L2_CTRL_FLAG_DYNAMIC_ARRAY;
+>>   		break;
+>> +	case V4L2_CID_STATELESS_HEVC_EXT_SPS_ST_RPS:
+>> +		*type = V4L2_CTRL_TYPE_HEVC_EXT_SPS_ST_RPS;
+>> +		*flags |= V4L2_CTRL_FLAG_DYNAMIC_ARRAY;
+>> +		break;
+>> +	case V4L2_CID_STATELESS_HEVC_EXT_SPS_LT_RPS:
+>> +		*type = V4L2_CTRL_TYPE_HEVC_EXT_SPS_LT_RPS;
+>> +		*flags |= V4L2_CTRL_FLAG_DYNAMIC_ARRAY;
+>> +		break;
+>>   	case V4L2_CID_STATELESS_VP9_COMPRESSED_HDR:
+>>   		*type = V4L2_CTRL_TYPE_VP9_COMPRESSED_HDR;
+>>   		break;
+>> diff --git a/include/uapi/linux/v4l2-controls.h b/include/uapi/linux/v4l2-controls.h
+>> index 2d30107e047e..dd9e29afa155 100644
+>> --- a/include/uapi/linux/v4l2-controls.h
+>> +++ b/include/uapi/linux/v4l2-controls.h
+>> @@ -2093,6 +2093,8 @@ struct v4l2_ctrl_mpeg2_quantisation {
+>>   #define V4L2_CID_STATELESS_HEVC_DECODE_MODE	(V4L2_CID_CODEC_STATELESS_BASE + 405)
+>>   #define V4L2_CID_STATELESS_HEVC_START_CODE	(V4L2_CID_CODEC_STATELESS_BASE + 406)
+>>   #define V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS (V4L2_CID_CODEC_STATELESS_BASE + 407)
+>> +#define V4L2_CID_STATELESS_HEVC_EXT_SPS_ST_RPS  (V4L2_CID_CODEC_STATELESS_BASE + 408)
+>> +#define V4L2_CID_STATELESS_HEVC_EXT_SPS_LT_RPS  (V4L2_CID_CODEC_STATELESS_BASE + 409)
+>>   
+>>   enum v4l2_stateless_hevc_decode_mode {
+>>   	V4L2_STATELESS_HEVC_DECODE_MODE_SLICE_BASED,
+>> @@ -2548,6 +2550,65 @@ struct v4l2_ctrl_hevc_scaling_matrix {
+>>   	__u8	scaling_list_dc_coef_32x32[2];
+>>   };
+>>   
+>> +#define V4L2_HEVC_EXT_SPS_ST_RPS_FLAG_INTER_REF_PIC_SET_PRED	0x1
+>> +
+>> +/*
+>> + * struct v4l2_ctrl_hevc_ext_sps_st_rps - HEVC short term RPS parameters
+>> + *
+>> + * Dynamic size 1-dimension array for short term RPS. The number of elements
+>> + * is v4l2_ctrl_hevc_sps::num_short_term_ref_pic_sets. It can contain up to 65 elements.
+>> + *
+>> + * @delta_idx_minus1: Specifies the delta compare to the index. See details in section 7.4.8
+>> + *                    "Short-term reference picture set semantics" of the specification.
+>> + * @delta_rps_sign: Sign of the delta as specified in section 7.4.8 "Short-term reference picture
+>> + *                  set semantics" of the specification.
+>> + * @abs_delta_rps_minus1: Absolute delta RPS as specified in section 7.4.8 "Short-term reference
+>> + *                        picture set semantics" of the specification.
+>> + * @num_negative_pics: Number of short-term RPS entries that have picture order count values less
+>> + *                     than the picture order count value of the current picture.
+>> + * @num_positive_pics: Number of short-term RPS entries that have picture order count values
+>> + *                     greater than the picture order count value of the current picture.
+>> + * @used_by_curr_pic: Bit j specifies if short-term RPS j is used by the current picture.
+>> + * @use_delta_flag: Bit j equals to 1 specifies that the j-th entry in the source candidate
+>> + *                  short-term RPS is included in this candidate short-term RPS.
+>> + * @delta_poc_s0_minus1: Specifies the negative picture order count delta for the i-th entry in
+>> + *                       the short-term RPS. See details in section 7.4.8 "Short-term reference
+>> + *                       picture set semantics" of the specification.
+>> + * @delta_poc_s1_minus1: Specifies the positive picture order count delta for the i-th entry in
+>> + *                       the short-term RPS. See details in section 7.4.8 "Short-term reference
+>> + *                       picture set semantics" of the specification.
+>> + * @flags: See V4L2_HEVC_EXT_SPS_ST_RPS_FLAG_{}
+>> + */
+>> +struct v4l2_ctrl_hevc_ext_sps_st_rps {
+>> +	__u8	delta_idx_minus1;
+>> +	__u8	delta_rps_sign;
+>> +	__u16	abs_delta_rps_minus1;
+>> +	__u8	num_negative_pics;
+>> +	__u8	num_positive_pics;
+>> +	__u32	used_by_curr_pic;
+>> +	__u32	use_delta_flag;
+>> +	__u16	delta_poc_s0_minus1[16];
+>> +	__u16	delta_poc_s1_minus1[16];
+>> +	__u8	flags;
+>> +};
+>> +
+>> +#define V4L2_HEVC_EXT_SPS_LT_RPS_FLAG_USED_LT		0x1
+>> +
+>> +/*
+>> + * struct v4l2_ctrl_hevc_ext_sps_lt_rps - HEVC long term RPS parameters
+>> + *
+>> + * Dynamic size 1-dimension array for long term RPS. The number of elements
+>> + * is v4l2_ctrl_hevc_sps::num_long_term_ref_pics_sps. It can contain up to 65 elements.
+>> + *
+>> + * @lt_ref_pic_poc_lsb_sps: picture order count modulo MaxPicOrderCntLsb of the i-th candidate
+>> + *                          long-term reference picture.
+>> + * @flags: See V4L2_HEVC_EXT_SPS_LT_RPS_FLAG_{}
+>> + */
+>> +struct v4l2_ctrl_hevc_ext_sps_lt_rps {
+>> +	__u16	lt_ref_pic_poc_lsb_sps;
+>> +	__u8	flags;
+>> +};
+>> +
+>>   /* Stateless VP9 controls */
+>>   
+>>   #define V4L2_VP9_LOOP_FILTER_FLAG_DELTA_ENABLED	0x1
+>> diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
+>> index becd08fdbddb..ae1d33fd37b7 100644
+>> --- a/include/uapi/linux/videodev2.h
+>> +++ b/include/uapi/linux/videodev2.h
+>> @@ -1981,6 +1981,8 @@ enum v4l2_ctrl_type {
+>>   	V4L2_CTRL_TYPE_HEVC_SLICE_PARAMS	= 0x0272,
+>>   	V4L2_CTRL_TYPE_HEVC_SCALING_MATRIX	= 0x0273,
+>>   	V4L2_CTRL_TYPE_HEVC_DECODE_PARAMS	= 0x0274,
+>> +	V4L2_CTRL_TYPE_HEVC_EXT_SPS_ST_RPS	= 0x0275,
+>> +	V4L2_CTRL_TYPE_HEVC_EXT_SPS_LT_RPS	= 0x0276,
+>>   
+>>   	V4L2_CTRL_TYPE_AV1_SEQUENCE	    = 0x280,
+>>   	V4L2_CTRL_TYPE_AV1_TILE_GROUP_ENTRY = 0x281,
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
 _______________________________________________
 Linux-rockchip mailing list
