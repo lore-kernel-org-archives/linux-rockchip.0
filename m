@@ -4,110 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 966D5CCD1BC
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Oct 2025 03:32:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A91B4CCD193
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Oct 2025 04:26:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:From:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CooEREswmugzCNg1QkCyseOrbe6JzIb/HGchJHDNpio=; b=AQc8XuOo+5DwMh
-	AULgRbHOTE/W9txZlTYnhrNZ0TVjonwyC7HiVpvDB607NpQ/rB6YiihJV2Hwfs29kDM6c+YmHU4Xb
-	fkMG/+7ay95c7My7C3V/PI2JJP00CNEbtZwNAxW5yFl0HBFZztU+bMqcchRVVFgsQDceRpCiazc5y
-	z/dHWXA5nEHr1rGEW1VAgs1z9hae39Ed7YvNNPEe4XmlrFrSBAwx+cMKrCdrIPG+Hhfb086dGYTpI
-	Hp+GdBcIsawgSGdkFJ9ZVNUZv+JJOw8xEgUjwTi+qY+ilZ6fkyJxi+NDMEz3pAUsba3djhpqDv7fI
-	/9OFDfM/d5fdSS740BbA==;
+	List-Owner; bh=x8sD+a7aSS2sHV3jlPgEZODegxJGmePldRc3mRCjooQ=; b=vRBAskapf+zx8p
+	BwOYjf21B+QVWKkIU5Z866ECw78VEDTGTHXRA1OHIOnMpY+9mPGWiQh3gDQclzKzV1e5LcqUNqkga
+	CO2rtG5l8G4uRF+JVnuIg424D61Qt/eW7SRvQsysgFXsR1cFiB1I1Mnozuc1ror7mpFqjrOc7cEDz
+	R0o1mzCsb5ua8RFPESE3wDo0sfVILZSoVZA40ziLp7MZkkfe3ETxP4h4n8INpcc+jOhjHm9esl32e
+	9MV1TGjBiNUNquRgJL9MCtB+jQUPaJU+nXk6F3EEIvCxEnFnfIIRirCqZQ0dmXNZhVgVoPJsflYeO
+	s5qbZJB6GlSvJAPmdMxg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBm3U-00000004wkW-1x8R;
-	Thu, 23 Oct 2025 03:32:00 +0000
-Received: from smtpbgeu2.qq.com ([18.194.254.142])
+	id 1vBmts-0000000523K-1WCn;
+	Thu, 23 Oct 2025 04:26:08 +0000
+Received: from smtpbg150.qq.com ([18.132.163.193])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBm3L-00000004w7N-0DNr;
-	Thu, 23 Oct 2025 03:31:58 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
-	s=altu2504; t=1761190268;
-	bh=1RfAR5qe3fDpGYWfe4IMPee9wlWopj1wjBrVtJQSHJQ=;
-	h=From:To:Subject:Date:Message-Id;
-	b=QGcMjIbAOrhi7siyAK0cs+JmzOc7o/pDAVv5Ys8MMHuuHSD9jG5bOdMioiH6YhLUN
-	 lEw3UDV/Q825nB5fHeoGiLJ5qUEw9nIyB4Bu8Zmbt/my4TpNg20+Ror4K0zKeGaeRV
-	 svRKLXjGbCIJ8HFnzPgT4CGvaYuFKQmSrMm9yYS8=
-X-QQ-mid: esmtpsz16t1761190266t43abe1df
-X-QQ-Originating-IP: 0d5iSVWuoMY/pzXTcvdmH8vOvSaqskohuXcY4gRyoIQ=
-Received: from DESKTOP-8BT1A2O.localdomain ( [58.22.7.114])
+	id 1vBmtp-0000000520a-03vA
+	for linux-rockchip@lists.infradead.org;
+	Thu, 23 Oct 2025 04:26:06 +0000
+X-QQ-mid: zesmtpip3t1761193522tef428f52
+X-QQ-Originating-IP: JPrRRTlHCfYPmJA50Mc6e8C2H74+nUxiiGHXdILT6fM=
+Received: from [IPV6:240f:10b:7440:1:e4c5:315f ( [localhost])
 	by bizesmtp.qq.com (ESMTP) with 
-	id ; Thu, 23 Oct 2025 11:31:03 +0800 (CST)
+	id ; Thu, 23 Oct 2025 12:25:18 +0800 (CST)
 X-QQ-SSF: 0000000000000000000000000000000
 X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 14524474531760413252
-From: Chaoyi Chen <kernel@airkyi.com>
-To: Heikki Krogerus <heikki.krogerus@linux.intel.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Sandy Huang <hjc@rock-chips.com>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Yubing Zhang <yubing.zhang@rock-chips.com>,
-	Frank Wang <frank.wang@rock-chips.com>,
-	Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
-	Amit Sunil Dhamne <amitsd@google.com>,
-	Chaoyi Chen <chaoyi.chen@rock-chips.com>,
-	Dragan Simic <dsimic@manjaro.org>,
-	Johan Jonker <jbx6244@gmail.com>,
-	Diederik de Haas <didi.debian@cknow.org>,
-	Peter Robinson <pbrobinson@gmail.com>
-Cc: linux-usb@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-phy@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	dri-devel@lists.freedesktop.org
-Subject: [PATCH v7 9/9] arm64: dts: rockchip: rk3399-evb-ind: Add support for DisplayPort
-Date: Thu, 23 Oct 2025 11:30:09 +0800
-Message-Id: <20251023033009.90-10-kernel@airkyi.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20251023033009.90-1-kernel@airkyi.com>
-References: <20251023033009.90-1-kernel@airkyi.com>
+X-BIZMAIL-ID: 993648041000243258
+Message-ID: <340D76D438E6105B+58e7f834-75f7-40c5-a46a-677cb279a02d@radxa.com>
+Date: Thu, 23 Oct 2025 13:25:17 +0900
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+From: FUKAUMI Naoki <naoki@radxa.com>
+Subject: [RESEND] Re: [PATCH] PCI/ASPM: Enable only L0s and L1 for devicetree
+ platforms
+To: Bjorn Helgaas <helgaas@kernel.org>,
+ Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
+Cc: Christian Zigotzky <chzigotzky@xenosoft.de>, linux-pci@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Bjorn Helgaas <bhelgaas@google.com>,
+ linux-rockchip@lists.infradead.org
+References: <20251022191313.GA1265088@bhelgaas>
+Content-Language: en-US
+In-Reply-To: <20251022191313.GA1265088@bhelgaas>
 X-QQ-SENDSIZE: 520
-Feedback-ID: esmtpsz:airkyi.com:qybglogicsvrsz:qybglogicsvrsz4a-0
-X-QQ-XMAILINFO: OE3tIrIEWSq4dvSAti+YxEXfy0MmWUDFapUQ60ZDGd9sngP6WSFoYF5n
-	VZHjz92kd/WEOhR8O8/gE7v/OStY7NtIWCgQnT3FgcHGWMKoIe+IJr30LbONPgwz9YMTWMq
-	sDbBm++/oB9MnaQ/73nsFTM/RE1WtMT1SSziLehG467cB2kXN8NiOgxGEe40+Bf1ejOxxxZ
-	UaCRGAxzNSdQGEcIy6T8JGoeQ5WVZ8ieOD88tSjCbb3ncJ/jt8HmFdXwKvd7vY1vPp9C800
-	cIvME+sx0HFb6Hr7HfjMy4W6ILJSb6Asfi2F3CeYSNtsVWoDGG15m/5ycLdH/sB9fwG/L/s
-	HY3ZN+aLkeX4EDyKUpRI2o4vxKMmP/XfVn6AW5ozful80y99ipmxCc2xFXWQ9plpAmOPt9R
-	6QtlGflQxH7kPC32A5Oje/rqtQBGs5Aaj6c0Wv5TR0arLDcrJkbtX1ADz41TQ/rWu2VVfRU
-	BfmUzyTcURen0EscCGaUvvE8KZvvGvbkX+ps3X4dhiEDzTPKggMIDziBSVvuIhe14qbaYr1
-	WvISUknJzN5LXSrqJNRndAL2iD4GIcpl+zUafhSPCg3twg/meGNfLh7dpmaG67qNW6/xi0Q
-	AEV9q21pe2kcVJ2GqLi+1JeGN45DqwBK5EXQDJmuaKUWriEwYBy9UtZzTMi0gvROSrA7Nli
-	M0kBRBq1tVhJ2yQ4DPwn3IrlEVcA7UVxxEivUL6yIWWe4PVOhzomiJhVPQemX4AiLlDeVcw
-	Vu6z0WcrcmNsEJZExNxaklUHa8GQNSM6TMawP7PmDEEy9QZTzHR2zPIAa9I8p62BF/ESJ6n
-	fBT6NL4Yu3xMXglKzcvyRXPLJSCmroxSbhQeuuPc6yjOXih8907XvdH4mf/r9a1QZalj5ym
-	pVYbbYPcKK0B1aj/DneF6kTMWiQNA0wf5wFusIGhTMOCHgXq96LUfiL3/Zqi0ZgttHElrUo
-	XhWGrrTZqlegREj6WjnE4ubwnTv5TN563Gep/FB9vam+jNRQH9S0f7YqFZKFGrNbET443KL
-	JQt+29MQ==
-X-QQ-XMRINFO: NS+P29fieYNw95Bth2bWPxk=
+Feedback-ID: zesmtpip:radxa.com:qybglogicsvrsz:qybglogicsvrsz4a-0
+X-QQ-XMAILINFO: NjShqG0OhPJBxRrvSuwcy0uYO8Kz7VbxbJRPk3bnzqPq7l9zo3dydnMn
+	t2XVAP79x/FtNsTFMHlw/c05WNOo1wIGshSWnadGd03jVj+DkrAC9rbwV+KWmwFOdrlh5UR
+	fzuJOlVE68DkXM+UJyxAtFVX03z2UBAy4w8sl4H5rSK/PGJ4GYVmMjC48Kv2FUKbSGHnKPo
+	Wj4QePlUfPAYIgDwxEGsa571b/Yq0dAZh2SPndm/8mXhfYPprmxwxjkYtNiaFbMk/fx04QW
+	N60iOtXUom2H96PsEa85SsaUmTRk+y3OuyVztbdOFx6s77PhpNVDNaOBDbjruXWzlJwZhxg
+	EhD9SKy/lYg9dHS3S+S0bbZxb3zxhOZT5u2cWGkUdtctEYB+IOkmFYSAPj3IRnr3ELofgEU
+	w0uIqx412zhAZgCYA0l8i36BsFZCa5X1VXpCf+OdObS61aRd5M4HLRDINB/J9NxCZiLz0+9
+	dzRiFP0f0Mvn9iPrgerOhvY4g/iNJGgNFZWr7Nf/XqYFQg2Ep/lyu7bHnntR2/T1Aip2OF5
+	jdUBecMTCO1W6rFrQKjIhr7IcFXdUrH1XbkHbn5oOvAOEsTasT+b3qU8xm6udbNl5NgDmkS
+	vpDcM9aP2RGRm6Z7HRlVbbK3gt3HuWhvB1jyi8c9VC8GU8EidJpIvq3XKKcrm9c+3kdSsiA
+	+EpeBjY/toIvr8l+IyYeRsMQUWRjmSRAr8kDTMYUTEOPIz8BaXkaKR7KIWsODvyPUMxdvi0
+	1JOP82avUD6dRl/iC+t4UTaFhU4dTAwKCAaRAkNSdGCM6cotLKMSmU/NwQGz35FR6cnh3lF
+	h47yjeObTpF/7DmIJ2UesWqdHSP/mqCc4fCik/REi8Ug2ShGhoR291PqAoHsVTn4SAst74Y
+	fUCzucAl7izi29g6xVN3XlbJZsdly6LwrdAkNlJO7zA4Q/jQl1eobnxsk1eBkkRR7tRpyjj
+	aD9IFljHOzmWPW8w8cvBa8J8mqRMLJ06eNWfOUDcdvvQIrAle8ZFkZFqjlUe+nPhBiMciTG
+	mTFYByB9n81umQrRMPbNq55xDfYRsLJb6n8kQuhg==
+X-QQ-XMRINFO: MPJ6Tf5t3I/ycC2BItcBVIA=
 X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251022_203151_682869_97619FBD 
-X-CRM114-Status: GOOD (  10.82  )
+X-CRM114-CacheID: sfid-20251022_212605_587471_0A5FA8BB 
+X-CRM114-Status: GOOD (  18.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,247 +84,134 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+# Fixes the ML address for linux-rockchip
+# Please resend the original patch to linux-rockchip@lists.infradead.org
 
-The RK3399 EVB IND board has a Type-C interface DisplayPort.
-It use fusb302 chip as Type-C controller.
+Hi Bjorn,
 
-fusb302 chip ---> USB/DP PHY0 <----> CDN-DP controller
+On 10/23/25 04:13, Bjorn Helgaas wrote:
+> Christian, Naoki, any chance you could test this patch on top of
+> v6.18-rc1 to see whether it resolves the problem you reported?
+> 
+> I'd like to verify that it works before merging it.
 
-Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
----
+I'll be testing now. May I test on v6.18-rc2 without the following patch?
 
-(no changes since v4)
+  "PCI: dw-rockchip: Prevent advertising L1 Substates support"
 
-Changes in v3:
-- Fix wrong vdo value.
-- Fix port node in usb-c-connector.
+Best regards,
 
-Changes in v2:
-- Add endpoint to link DP PHY and DP controller.
-- Fix devicetree coding style.
+--
+FUKAUMI Naoki
+Radxa Computer (Shenzhen) Co., Ltd.
 
- .../boot/dts/rockchip/rk3399-evb-ind.dts      | 146 ++++++++++++++++++
- 1 file changed, 146 insertions(+)
+> On Mon, Oct 20, 2025 at 05:12:07PM -0500, Bjorn Helgaas wrote:
+>> From: Bjorn Helgaas <bhelgaas@google.com>
+>>
+>> f3ac2ff14834 ("PCI/ASPM: Enable all ClockPM and ASPM states for devicetree
+>> platforms") enabled Clock Power Management and L1 Substates, but that
+>> caused regressions because these features depend on CLKREQ#, and not all
+>> devices and form factors support it.
+>>
+>> Enable only ASPM L0s and L1, and only when both ends of the link advertise
+>> support for them.
+>>
+>> Fixes: f3ac2ff14834 ("PCI/ASPM: Enable all ClockPM and ASPM states for devicetree platforms")
+>> Reported-by: Christian Zigotzky <chzigotzky@xenosoft.de>
+>> Link: https://lore.kernel.org/r/db5c95a1-cf3e-46f9-8045-a1b04908051a@xenosoft.de/
+>> Reported-by: FUKAUMI Naoki <naoki@radxa.com>
+>> Link: https://lore.kernel.org/r/22594781424C5C98+22cb5d61-19b1-4353-9818-3bb2b311da0b@radxa.com/
+>> ---
+>>
+>> Mani, not sure what you think we should do here.  Here's a stab at it as a
+>> strawman and in case anybody can test it.
+>>
+>> Not sure about the message log message.  Maybe OK for testing, but might be
+>> overly verbose ultimately.
+>>
+>> ---
+>>   drivers/pci/pcie/aspm.c | 34 +++++++++-------------------------
+>>   1 file changed, 9 insertions(+), 25 deletions(-)
+>>
+>> diff --git a/drivers/pci/pcie/aspm.c b/drivers/pci/pcie/aspm.c
+>> index 7cc8281e7011..dbc74cc85bcb 100644
+>> --- a/drivers/pci/pcie/aspm.c
+>> +++ b/drivers/pci/pcie/aspm.c
+>> @@ -243,8 +243,7 @@ struct pcie_link_state {
+>>   	/* Clock PM state */
+>>   	u32 clkpm_capable:1;		/* Clock PM capable? */
+>>   	u32 clkpm_enabled:1;		/* Current Clock PM state */
+>> -	u32 clkpm_default:1;		/* Default Clock PM state by BIOS or
+>> -					   override */
+>> +	u32 clkpm_default:1;		/* Default Clock PM state by BIOS */
+>>   	u32 clkpm_disable:1;		/* Clock PM disabled */
+>>   };
+>>   
+>> @@ -376,18 +375,6 @@ static void pcie_set_clkpm(struct pcie_link_state *link, int enable)
+>>   	pcie_set_clkpm_nocheck(link, enable);
+>>   }
+>>   
+>> -static void pcie_clkpm_override_default_link_state(struct pcie_link_state *link,
+>> -						   int enabled)
+>> -{
+>> -	struct pci_dev *pdev = link->downstream;
+>> -
+>> -	/* For devicetree platforms, enable ClockPM by default */
+>> -	if (of_have_populated_dt() && !enabled) {
+>> -		link->clkpm_default = 1;
+>> -		pci_info(pdev, "ASPM: DT platform, enabling ClockPM\n");
+>> -	}
+>> -}
+>> -
+>>   static void pcie_clkpm_cap_init(struct pcie_link_state *link, int blacklist)
+>>   {
+>>   	int capable = 1, enabled = 1;
+>> @@ -410,7 +397,6 @@ static void pcie_clkpm_cap_init(struct pcie_link_state *link, int blacklist)
+>>   	}
+>>   	link->clkpm_enabled = enabled;
+>>   	link->clkpm_default = enabled;
+>> -	pcie_clkpm_override_default_link_state(link, enabled);
+>>   	link->clkpm_capable = capable;
+>>   	link->clkpm_disable = blacklist ? 1 : 0;
+>>   }
+>> @@ -811,19 +797,17 @@ static void pcie_aspm_override_default_link_state(struct pcie_link_state *link)
+>>   	struct pci_dev *pdev = link->downstream;
+>>   	u32 override;
+>>   
+>> -	/* For devicetree platforms, enable all ASPM states by default */
+>> +	/* For devicetree platforms, enable L0s and L1 by default */
+>>   	if (of_have_populated_dt()) {
+>> -		link->aspm_default = PCIE_LINK_STATE_ASPM_ALL;
+>> +		if (link->aspm_support & PCIE_LINK_STATE_L0S)
+>> +			link->aspm_default |= PCIE_LINK_STATE_L0S;
+>> +		if (link->aspm_support & PCIE_LINK_STATE_L1)
+>> +			link->aspm_default |= PCIE_LINK_STATE_L1;
+>>   		override = link->aspm_default & ~link->aspm_enabled;
+>>   		if (override)
+>> -			pci_info(pdev, "ASPM: DT platform, enabling%s%s%s%s%s%s%s\n",
+>> -				 FLAG(override, L0S_UP, " L0s-up"),
+>> -				 FLAG(override, L0S_DW, " L0s-dw"),
+>> -				 FLAG(override, L1, " L1"),
+>> -				 FLAG(override, L1_1, " ASPM-L1.1"),
+>> -				 FLAG(override, L1_2, " ASPM-L1.2"),
+>> -				 FLAG(override, L1_1_PCIPM, " PCI-PM-L1.1"),
+>> -				 FLAG(override, L1_2_PCIPM, " PCI-PM-L1.2"));
+>> +			pci_info(pdev, "ASPM: DT platform, enabling%s%s\n",
+>> +				 FLAG(override, L0S, " L0s"),
+>> +				 FLAG(override, L1, " L1"));
+>>   	}
+>>   }
+>>   
+>> -- 
+>> 2.43.0
+>>
+> 
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-evb-ind.dts b/arch/arm64/boot/dts/rockchip/rk3399-evb-ind.dts
-index 70aee1ab904c..aeeee6bd2973 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-evb-ind.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-evb-ind.dts
-@@ -4,6 +4,7 @@
-  */
- 
- /dts-v1/;
-+#include <dt-bindings/usb/pd.h>
- #include "rk3399.dtsi"
- 
- / {
-@@ -19,6 +20,21 @@ chosen {
- 		stdout-path = "serial2:1500000n8";
- 	};
- 
-+	sound: sound {
-+		compatible = "rockchip,rk3399-gru-sound";
-+		rockchip,cpu = <&i2s0 &spdif>;
-+	};
-+
-+	vbus_typec: regulator-vbus-typec {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpio = <&gpio1 RK_PC2 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&vcc5v0_typec0_en>;
-+		regulator-name = "vbus_typec";
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+
- 	vcc5v0_sys: regulator-vcc5v0-sys {
- 		compatible = "regulator-fixed";
- 		enable-active-high;
-@@ -31,6 +47,11 @@ vcc5v0_sys: regulator-vcc5v0-sys {
- 	};
- };
- 
-+&cdn_dp {
-+	phys = <&tcphy0_dp>;
-+	status = "okay";
-+};
-+
- &cpu_b0 {
- 	cpu-supply = <&vdd_cpu_b>;
- };
-@@ -55,6 +76,12 @@ &cpu_l3 {
- 	cpu-supply = <&vdd_cpu_l>;
- };
- 
-+&dp_out {
-+	dp_controller_output: endpoint {
-+		remote-endpoint = <&dp_phy_in>;
-+	};
-+};
-+
- &emmc_phy {
- 	status = "okay";
- };
-@@ -341,6 +368,71 @@ regulator-state-mem {
- 	};
- };
- 
-+&i2c4 {
-+	i2c-scl-rising-time-ns = <475>;
-+	i2c-scl-falling-time-ns = <26>;
-+	status = "okay";
-+
-+	usbc0: typec-portc@22 {
-+		compatible = "fcs,fusb302";
-+		reg = <0x22>;
-+		interrupt-parent = <&gpio1>;
-+		interrupts = <RK_PA2 IRQ_TYPE_LEVEL_LOW>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&usbc0_int>;
-+		vbus-supply = <&vbus_typec>;
-+
-+		usb_con: connector {
-+			compatible = "usb-c-connector";
-+			label = "USB-C";
-+			data-role = "dual";
-+			power-role = "dual";
-+			try-power-role = "sink";
-+			op-sink-microwatt = <1000000>;
-+			sink-pdos =
-+				<PDO_FIXED(5000, 2500, PDO_FIXED_USB_COMM)>;
-+			source-pdos =
-+				<PDO_FIXED(5000, 1500, PDO_FIXED_USB_COMM)>;
-+
-+			altmodes {
-+				displayport {
-+					svid = /bits/ 16 <0xff01>;
-+					vdo = <0x00001c46>;
-+				};
-+			};
-+
-+			ports {
-+				#address-cells = <1>;
-+				#size-cells = <0>;
-+
-+				port@0 {
-+					reg = <0>;
-+
-+					usbc_hs: endpoint {
-+						remote-endpoint = <&u2phy0_typec_hs>;
-+					};
-+				};
-+
-+				port@1 {
-+					reg = <1>;
-+
-+					usbc_ss: endpoint {
-+						remote-endpoint = <&tcphy0_typec_ss>;
-+					};
-+				};
-+
-+				port@2 {
-+					reg = <2>;
-+
-+					usbc_dp: endpoint {
-+						remote-endpoint = <&tcphy0_typec_dp>;
-+					};
-+				};
-+			};
-+		};
-+	};
-+};
-+
- &i2s2 {
- 	status = "okay";
- };
-@@ -354,6 +446,16 @@ &io_domains {
- };
- 
- &pinctrl {
-+	usb-typec {
-+		usbc0_int: usbc0-int {
-+			rockchip,pins = <1 RK_PA2 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+
-+		vcc5v0_typec0_en: vcc5v0-typec0-en {
-+			rockchip,pins = <1 RK_PC2 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
- 	pmic {
- 		pmic_int_l: pmic-int-l {
- 			rockchip,pins = <1 RK_PC5 RK_FUNC_GPIO &pcfg_pull_up>;
-@@ -400,10 +502,48 @@ &sdmmc {
- 	status = "okay";
- };
- 
-+&sound {
-+	rockchip,codec = <&cdn_dp>;
-+	status = "okay";
-+};
-+
-+&spdif {
-+	status = "okay";
-+};
-+
- &tcphy0 {
- 	status = "okay";
- };
- 
-+&tcphy0_dp {
-+	mode-switch;
-+
-+	port {
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+
-+		tcphy0_typec_dp: endpoint@0 {
-+			reg = <0>;
-+			remote-endpoint = <&usbc_dp>;
-+		};
-+
-+		dp_phy_in: endpoint@1 {
-+			reg = <1>;
-+			remote-endpoint = <&dp_controller_output>;
-+		};
-+	};
-+};
-+
-+&tcphy0_usb3 {
-+	orientation-switch;
-+
-+	port {
-+		tcphy0_typec_ss: endpoint {
-+			remote-endpoint = <&usbc_ss>;
-+		};
-+	};
-+};
-+
- &tcphy1 {
- 	status = "okay";
- };
-@@ -418,6 +558,12 @@ &tsadc {
- 
- &u2phy0 {
- 	status = "okay";
-+
-+	port {
-+		u2phy0_typec_hs: endpoint {
-+			remote-endpoint = <&usbc_hs>;
-+		};
-+	};
- };
- 
- &u2phy0_host {
--- 
-2.49.0
 
 
 _______________________________________________
