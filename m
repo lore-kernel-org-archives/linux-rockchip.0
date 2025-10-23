@@ -4,146 +4,158 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A5E1CCD1BE
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Oct 2025 15:46:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C699DCCD193
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Oct 2025 16:59:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PusHxW5nu+H1Cgyg6r0D4Fsff2p2r0hax624QT7ion0=; b=B9EXiB17MuONT7
-	oOz3Yq+cyxGsRB0f4zfeMgFvKYahAVvled4h5bGmYRRaU6tq97mloZSNVJynGdteU7O90gzu6ETG1
-	XiTzkMsMVng5FN9/Evq9qk/MVE4Zo4lwKCUgIQifjDwJ6BdYcWvOXJVTKfwpGQROgpCTgbYR8UT/K
-	l89IUytcWVO3ivAulMY0WVPH0/X+JoWwYZm47sSlNP2ZQvDN2u81uy8nyUqeoCSHnRaBg4Nfl16dp
-	luuW/hSaTNRP4Dvr7+tQgBLfJZWagJ3KrSSWPwwN8NVdKmNVLEZF0PfSQvj014RcgUePLrCCFyZZj
-	tehiQkMYjDfwSuQWXbBQ==;
+	List-Owner; bh=c3s7nE/CDT9XYbBJz3+lTjwMD2awYYQFqiekKvpNuuw=; b=g305qYDDYVD3Kd
+	4u9NoGD5w6EBksXydpSQhgbDoozC8CnvbhXM1466zp26l9TVxeTwU87u1g0kKQPCz8ZPio+Of1ZGY
+	b5zNBuusTrI8ILjjCmvThPAYrK7TA+CU5xMuKL8u/B3ooLrXvbG+qvceWrQsr+L/7wkWlgiRrTQvV
+	WHx00CKjEhUDTyOG2++W8JfGuAycaxS1VUpl98hGO8LEA19XMXINYSkqNXqXrfL7GTQl330mGjvl3
+	CDG1zuMA834YovB5oxkRePl61YCzdr/Uy0ioocZ/KGONFhJ4N7RllwHmy3uI+a8pGi/xHTaZxb8CJ
+	gGQJAcWzykOjl84JBc5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBxWZ-00000006noa-222o;
-	Thu, 23 Oct 2025 15:46:47 +0000
-Received: from mail-swedencentralazlp170130007.outbound.protection.outlook.com ([2a01:111:f403:c202::7] helo=GVXPR05CU001.outbound.protection.outlook.com)
+	id 1vByeZ-000000070xL-1LZB;
+	Thu, 23 Oct 2025 16:59:07 +0000
+Received: from mail-centralusazlp170100005.outbound.protection.outlook.com ([2a01:111:f403:c111::5] helo=DM1PR04CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBxWW-00000006no4-12QG
-	for linux-rockchip@lists.infradead.org;
-	Thu, 23 Oct 2025 15:46:46 +0000
+	id 1vByeW-000000070wY-0YSW;
+	Thu, 23 Oct 2025 16:59:05 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=p2avdLbgirfeEXEqp23HglH984hJuJI0LGxr3fQ5OgsXaJPceu5VB+VpjC+rmht0LFmEYQOVNbS84VdLEmbzVrDstSagaK8f/Cg+Adj36NEVboyITpnMa4iuDsMjF4MF02dapBJ1tZwBl+miWd55g0+fg6me1f1nfoq+Okc7f93ptILR6cq/vTVGtuJwySu6BHUuudL1B4TzAJMrLt2EimNZADFLWqkBWS6Tbj5Vbpv1t/hu9XhZqh/KpEQ8LxXFApztr9XQxwGFtBQ/AlGq+sw2bNlzKTGy5OJkHDj7+AFRdxJW6Uw8mW1oqZn5yXNfzys4Wt8f9etcAY9BJsYmsw==
+ b=IC4pQT5/oZQp0nADfnuHiRl27aFb3jLZLYAcr3p9+N6EVRmmXwgfEDopPUy+G7QDXOLfE7+RuQIhYt3XZTdwFdFoYkCzFmM4K8iJbHcwtqDdy133W0lB8u/xdROmPFONH6IEswOFtp/QBCLMbx4PAjwbYY07iKmyfxbH/AisS3wEOmpbEApVnqEThodB1hGIoDyfgMN8FKUVWSm+S/botRqoI9gQ+98CjpaSrohUp9KRiab6YL3vBD6i5nu8r6uDfbks3I5hVSzZxmsTq73ctk04MMnFYnjGz0mQHgaw0cRnZdr9eGWmNWQPvr0YxsgVM+GiGS9hDnWVLyZO52S37g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=BouKKC+/bWwnu8x1SN1Gr8TpPJIliFOURRMcWbhm8Vk=;
- b=hQlTOVeIXDC858kBN3LHl6acfMR1L4k6w970wlkjcjtBKu6YLlXAeuzfz93ancdPdW0TNtvmOkDENuZ4F6MmO8Zkrtptw2BjS04f9alX9FiS/iTGZ7sBeJrwqP1xI8yBb49WHEXBRRvv3/wLZs+zjzx1Bt41C/K5dVC6VGnq611xBmGpALnLXpXvF7EwKN8OPzQi1hLgwDJya+tFrSLRXcw7kPneWknYSzWSyeBgf+6aIocnKJt3bvDmtzYb/pO5HQfZ/ICeRZtfG7flZ3I9bQNrDFGqDsqX3H/I/D45Hmu4CSy0H317mYtpbOTQglMxWpZW6cUj7qzeAmHBBKGRCw==
+ bh=9ZE3FlVbVNkRlgwHcDRLTLRrjkegvQIvyene/gJeqMY=;
+ b=ggWPSbCA/lfoaNbAQ455DLb5ecOGhE7GRJxwJptKRnrD/1t2X2TY6UVZwwoUi9tH7aZUsSInFs8tWSkYepS45MGv0h2Fa+haURa2CWwfwXP/VnanHW+46bnyXaNG+jU7p5MPszGfBBbDadvh1ingQ89u40OTHRgpqfQAeCBFGcuLjIHo9Ff0q1zf4KLG61BsxZBIzAyHun0S0XY/WjqaQ2OQSnDxUHCNTVK9vq0P261ZfUeSLRUCp+WY9fl4KAy5p+umoUROM+W01CXsOEG6lGkigdwRPC2YIZJ4yA3+e7JsaYijpxshnGR3qsGMwAM/JAe9ul0FPuvTyHC60d6vhw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
- header.d=nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=BouKKC+/bWwnu8x1SN1Gr8TpPJIliFOURRMcWbhm8Vk=;
- b=MGUOZd1/LgKCsGkIbCxmTGgMlScM+q8QtDF2wo8yAH4Qcb4lzsBtOASoLM62fG6XRDLsLCtFh9/uPJ11omtUdOivvBCtpLH5nq18JKZWGq8xdF7chJlKBtFplBSmA6CbZdobLS1/jlXDoKhc13xG96FQzHhqFxZkQ1MkIh/69t+KzN2nictJJ8McnxT4ukGkTGK0wXAZl53eKys2UlY7nSuxdgQh1OairzaACQKUwzRPuldOWF+D/tuK4RFXD4LplbcvDZDlQ1zHlff7bVPTxv/2i5KwfFz+x/1J0v+RjYGBFgFTTGuw900wY9GgLBforHH4zaPDa2CdpdZbWBeGZg==
+ bh=9ZE3FlVbVNkRlgwHcDRLTLRrjkegvQIvyene/gJeqMY=;
+ b=P3trElotsDUj+iDerQBTc1JZd2W0vj/ViMZS61EP5xRQ570DLPIm++xkg8D32t4kj8Cb/oCbjfx78NXH3DGf5+Mxgf89PPF+yrsg924HG2DodhKhcrrjPJdvHTmxe2zo+2gF/0Gt/hjeUmRpSKFIEHmTmlm/Ulr5bzfEav3N8/6yZrVU1KDluGsEE/s7dQM40qm2gagC1jnMVCh0E3u09WLZ/sMChvqpX1L2xJn4AFFRU/3oXUFLasX1Ri8rm/wocydY/2enekqqYPVNoXy+ekyg+OH/luQlI2Vj67r9bYvuijLoKcH7b6Hve2z9+nIYN8YcE6m42PiTOczZQ4EKXw==
 Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nxp.com;
-Received: from PAXSPRMB0053.eurprd04.prod.outlook.com (2603:10a6:102:23f::21)
- by GV2PR04MB11637.eurprd04.prod.outlook.com (2603:10a6:150:2ca::10) with
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from MN2PR12MB3613.namprd12.prod.outlook.com (2603:10b6:208:c1::17)
+ by PH8PR12MB7027.namprd12.prod.outlook.com (2603:10b6:510:1be::19) with
  Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9253.12; Thu, 23 Oct
- 2025 15:46:38 +0000
-Received: from PAXSPRMB0053.eurprd04.prod.outlook.com
- ([fe80::504f:2a06:4579:5f15]) by PAXSPRMB0053.eurprd04.prod.outlook.com
- ([fe80::504f:2a06:4579:5f15%6]) with mapi id 15.20.9253.011; Thu, 23 Oct 2025
- 15:46:38 +0000
-Date: Thu, 23 Oct 2025 11:46:32 -0400
-From: Frank Li <Frank.li@nxp.com>
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	linux-rockchip@lists.infradead.org,
-	Niklas Cassel <cassel@kernel.org>, linux-pci@vger.kernel.org
-Subject: Re: [PATCH v3 1/2] PCI: dw-rockchip: Configure L1sub support
-Message-ID: <aPpN2NX7IkAEU9Rh@lizhi-Precision-Tower-5810>
-References: <1761187883-150120-1-git-send-email-shawn.lin@rock-chips.com>
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9253.13; Thu, 23 Oct
+ 2025 16:58:57 +0000
+Received: from MN2PR12MB3613.namprd12.prod.outlook.com
+ ([fe80::1b3b:64f5:9211:608b]) by MN2PR12MB3613.namprd12.prod.outlook.com
+ ([fe80::1b3b:64f5:9211:608b%4]) with mapi id 15.20.9253.011; Thu, 23 Oct 2025
+ 16:58:57 +0000
+Date: Thu, 23 Oct 2025 13:58:54 -0300
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Robin Murphy <robin.murphy@arm.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Christian Benvenuti <benve@cisco.com>,
+	Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Joerg Roedel <joro@8bytes.org>, Leon Romanovsky <leon@kernel.org>,
+	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-rdma@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Nelson Escobar <neescoba@cisco.com>,
+	Rob Clark <robin.clark@oss.qualcomm.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
+	Chen-Yu Tsai <wens@csie.org>, Will Deacon <will@kernel.org>,
+	Yong Wu <yong.wu@mediatek.com>, patches@lists.linux.dev
+Subject: Re: [PATCH 3/3] iommu: Allow drivers to say if they use
+ report_iommu_fault()
+Message-ID: <20251023165854.GA742380@nvidia.com>
+References: <3-v1-391058a85f30+14b-iommu_set_fault_jgg@nvidia.com>
+ <d594cdf2-5aab-4539-8d44-f7e57770df72@arm.com>
+ <20251023145434.GJ262900@nvidia.com>
 Content-Disposition: inline
-In-Reply-To: <1761187883-150120-1-git-send-email-shawn.lin@rock-chips.com>
-X-ClientProxiedBy: PH0PR07CA0026.namprd07.prod.outlook.com
- (2603:10b6:510:5::31) To PAXSPRMB0053.eurprd04.prod.outlook.com
- (2603:10a6:102:23f::21)
+In-Reply-To: <20251023145434.GJ262900@nvidia.com>
+X-ClientProxiedBy: BY1P220CA0001.NAMP220.PROD.OUTLOOK.COM
+ (2603:10b6:a03:59d::14) To MN2PR12MB3613.namprd12.prod.outlook.com
+ (2603:10b6:208:c1::17)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PAXSPRMB0053:EE_|GV2PR04MB11637:EE_
-X-MS-Office365-Filtering-Correlation-Id: 26382a6a-98d1-4efb-33c1-08de124b5ab8
+X-MS-TrafficTypeDiagnostic: MN2PR12MB3613:EE_|PH8PR12MB7027:EE_
+X-MS-Office365-Filtering-Correlation-Id: a4e6977e-d3cc-428b-d8f3-08de12557470
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|19092799006|366016|52116014|376014|1800799024|38350700014|7053199007;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?4+uvu7OBOKja+9jpI/p9bV4YVAeSOMKEZgLg7MA3Alax4jL0w54RbSwPt/Mv?=
- =?us-ascii?Q?hY6tMWESG/jRPLvcJD7yCOmr9l5w/iHjK7R2gPwi3gTXn8YFAoJlALl62iRZ?=
- =?us-ascii?Q?PICjeUF8weJS//7jOlEuImjyHP8mI3lVrnTMzbGYzypd7n0X4KbnvHS781PC?=
- =?us-ascii?Q?bNQPXs5YFIAeKR/hLocmzDmvStJkNVt5wZhjZTVguQIpWfSVlvxnsQGJA/xW?=
- =?us-ascii?Q?atbTJOChmWG9jR+X0mJNP8mtqZOpi/B79BkdB6ZDEzxfJ3/4bK5yNrXOtGT1?=
- =?us-ascii?Q?QHeJIF1kUMUE0wtE5ekJ0IbAnnksdhFjv5koL6iTmVDMpLEaMPfs91ColrQG?=
- =?us-ascii?Q?dEBelzRrgjycidjKr9Cc4+PxuPJAnK0/F4tcPCXHyjH/jZ8mPbWGdChcrBtm?=
- =?us-ascii?Q?FwHkDDhVaaZGBTs9YSVP51pIPA4I9uTT2iSkofyxVRYL+CuSCvSWsZoZ0vI0?=
- =?us-ascii?Q?RZ/O9fgQ42KSqRl+f/q78lOGjAxI22ZnXoIsugvoqRtzmzzDRygQi196NZ9X?=
- =?us-ascii?Q?NXTwpyIpt5EnsKWr/tFXVCb7E3YoCci2kadWuF/fGsruePxn4oVGHmmzfmL4?=
- =?us-ascii?Q?jk7vGg/d7kePz54dm0VwE1Vbr4d6VDCjbsFAAJThVNOYzKcddwN3MQN2xylA?=
- =?us-ascii?Q?+CeYnea6hoTFb4rOzGKh/CPOwYPEiNqZp42PWQ9Qu4IcZVjrKArBfxVeE/kP?=
- =?us-ascii?Q?OkE5o7bEvoBVra0MaQDYYzl24gfv4rzeqfC5fOpm4gxvmU7x0by6TdrV84Se?=
- =?us-ascii?Q?l4ynJFPSmYQ9+EzmiknHfg7Fzb2qwqQ/UBECOD0/IxQy3qPuyyNsFOifqksc?=
- =?us-ascii?Q?AgizAWH3OFgpzdjLmrTpk6n6rhpt/iYPiOA6afdPlkPNSAaw6i6fH36RnheV?=
- =?us-ascii?Q?63EsEW1ezUXIxAIrW7s0fab1kJxx2tWhgFm6bcYwhi4PyCmWBtiNTW6cpNXi?=
- =?us-ascii?Q?em187I0RgW3jj/FhIRqho8pjquhLsEk57B/lH0rB/FPMW7Uq86gHt6j6yfaR?=
- =?us-ascii?Q?MkS1+49H7XnTxiAnp5yeSVSm2zlkkwIJH4SIK7uGBYXO0tWw9j0PzN/qtpe+?=
- =?us-ascii?Q?pTTh5Z3h96iwgu1C2Ncqh98lWmR6vjaFzCy5/T56JeW3bVCkthfGe4AfTZo9?=
- =?us-ascii?Q?ntvinZfak1zdaUZgNpgzwDrn0Zgi6xfY49pU2no6biX6m+LHkrncGUVK/WLN?=
- =?us-ascii?Q?+UrXSRARDh27buwZ8ydNrEFSpFBEqaWoEFmuO37hkmq/13psxmWG9ynqBv0y?=
- =?us-ascii?Q?BjJRw60d8EdPyGWAvZXFzxAndBHie66TRDLtIl1X6yV9wtx+9QII9lcug1rP?=
- =?us-ascii?Q?V87AkqrgHPql46qMd94c4NFztOSGXfOwTIJsgWwKcbXEDnvJIk3a+AAV+YgZ?=
- =?us-ascii?Q?sJJ/V9r9n2gjcfwrLJIXiT3AIZk6Ttv6vrK77c+MYvsQBtztItZe/dCoJXN5?=
- =?us-ascii?Q?Ep5Au37tz7RgyQqZukla0RikTdlcEuHUKzUtsYrRBxojjqntr0npmXMiJcVq?=
- =?us-ascii?Q?rEr9wVqxtqeX3yCHwr4YnJ9NIZaITg9oCuqo?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PAXSPRMB0053.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(19092799006)(366016)(52116014)(376014)(1800799024)(38350700014)(7053199007);DIR:OUT;SFP:1101;
+X-Microsoft-Antispam: BCL:0;ARA:13230040|7416014|376014|366016|1800799024;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?2yEwHtqPySWvqcJrey9EEidWQiXtn/UmWmWhs3rSTPCd5bQ6/dSRiDVmkdC9?=
+ =?us-ascii?Q?2Qi6L2EMgyr95tToOlkugHECpKlXmNIhWUKzwGqqf95WX9bjm0vKYGUqyHWf?=
+ =?us-ascii?Q?qIypQf9BX26fr0QDrmlraOG6j78QmUZbAarhD6UySS1iiUBosCUJWFMZv4Wz?=
+ =?us-ascii?Q?PkvyAqMBVErJPGd2zpmt1uchr/iOQoo8oImHBL27eAvTy8Up+E2R93GwSXO1?=
+ =?us-ascii?Q?hMQXfAI8Ij9iX1p+lvVzPKTQtEepoau2QUTBt+w+csjOBMgomziiT2H31MpE?=
+ =?us-ascii?Q?7HuM0PI4Oktz0QqAuayni4sWWGt7wICi8pFckN1HTb3DLhCbswwIDri4zobG?=
+ =?us-ascii?Q?IDgF845G/wROm60U2PqVeJcXj38wfv1C6IWkY3SZ2y6XHpcSe5F0Wg0A6Mr2?=
+ =?us-ascii?Q?Tw3eg+jfnpZDUmEdVXr0WKpxgrW2n48qrUGiVTJERj1p3a2shEx0Rqf8X5bX?=
+ =?us-ascii?Q?8uvJVMFUg0amw+FCrtowrpJU8IVUoyhn8deUfkpyy7Ins7TwY8vsCvVDFM0S?=
+ =?us-ascii?Q?o+fne7F/nXTZnq7UrsgC8Vp3H9WxKMdoDhPI35/1cwwn4dhwPfaCEPv4abxI?=
+ =?us-ascii?Q?SPX8p1LCKon8kjga+Pd+/m0ws7HQCpGgO4EYilgUdfqfqtZ+eYVYWEyxYsTh?=
+ =?us-ascii?Q?Lqwqd6mXbFt+h/jw8qBoc1DoN316B298OMLLsdfzdjpZ9v5SwWlNz3yOs6Uj?=
+ =?us-ascii?Q?r+ASsGirCT/91nTB4IQ8KOjtANffFVd8ME/kNKnMgj2kfB45NRaZ78KjJpaX?=
+ =?us-ascii?Q?IYgrongNgam7Ci+ERlsLgMmQVRHLqk9xfyVLwz8wRF0zz+TGOcVwd07RxICz?=
+ =?us-ascii?Q?I35P1hc5RrMh9GWa2taHohfpVfeOE5L0qQM8ziC6SdqEFNJ/lTWjVOCwdgC+?=
+ =?us-ascii?Q?Fh87k4PYouj1v5yrHxf9G4VkjQzD8LZPiBtPFNJp50AtJGt2RC/eIFTqM8Wb?=
+ =?us-ascii?Q?PEi3UwxEqrVYTj41D0AS1EKCccq+NXYNN2ph2t0gztWZCYBj2rYk3vjUbC90?=
+ =?us-ascii?Q?koFuU0din8O7u1oAB8RxCKiPWKkeTu8cyZcr7/IIIhUXc9Vh850krGVzdfKC?=
+ =?us-ascii?Q?YhFqAopbkDOGrD+mGDw7xXPV9TUizn1digLV+kqAGRD2ohQxSLQuYuI9KsAg?=
+ =?us-ascii?Q?Dp9kSxYh5Ozt/ESiuRrOUNf0rata9NFMpDsBbmYpzMFYp7qNrpI7JqpbIWwv?=
+ =?us-ascii?Q?UorlCQwR3/zKNw2EILFtevDyGLhjKANaUnj6ELkH2rVJIAHc9FahzhA3brgO?=
+ =?us-ascii?Q?6G8G208HSnpIZMTXwkMZt3D2xamcZQcW/ZLsTAS/qRcd/1Sn3zrDGW4EaoIe?=
+ =?us-ascii?Q?3mbINN0aSqlTN6ohrH4H121OMeKuO53l0+mHXuQMBvdWNAVfVbGJtkdi/DWf?=
+ =?us-ascii?Q?Bc3MZhtrJfjvPQXZp91d8LjFM/quUM1bFxULOMCEOgDkAN84Bz/D1ilI4U6W?=
+ =?us-ascii?Q?bjn9TbqpUO12vU9NgWPAy3eZgSDZuz1H?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MN2PR12MB3613.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(7416014)(376014)(366016)(1800799024);DIR:OUT;SFP:1101;
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?37HGu0G8pBvdYAdJYYiy2CLn/PKD0vMnMog+mP600VlvnKx2BerTW/nmPPsA?=
- =?us-ascii?Q?vRUU2RI1DhZeMFf9mE72eJs8FhdZ3kFZm2ailOMCi9fm+d2j4HleW69lIraa?=
- =?us-ascii?Q?5bt3xRmFB/zRPNIREW/4EV+8iXXrG9rN9z9540Ip/GK8T9ipVbJn/sGjr9pX?=
- =?us-ascii?Q?mKwRJUe//AxtPfjiAMhMF+lrOEIU4QgtVCfYw/REttvGutiQR7uXGcRj1Ar9?=
- =?us-ascii?Q?ebTJtxBRIUbCxl89AGJ5xzqofSS2uWcinbRbpWzxfQq0rLz/96LZOwWjCE/2?=
- =?us-ascii?Q?Eko1cAqGQv0OZdQyTYoi4mz8gEYGLvtvaZMjOSdzpH19FAZ7JEcuFnLMI440?=
- =?us-ascii?Q?+X+Cnm1QfaTkUVExxcWfagwQgFrgM6Sm/40hn7wjEI9dMr4TIE64OjFxmUAq?=
- =?us-ascii?Q?7oi5J0CoG+TfGhrk+eU5ru+Syal5A6N/xg3lu5gG4lCqYFDdNMY04sbAuC6Y?=
- =?us-ascii?Q?rkgArEL5q3ZUOhcrIfx6eJfrvIEZAt/jNRXNtjfwLMbTpka9XeP0hPsHzZRr?=
- =?us-ascii?Q?FnqgrhiC+HoiD5xPK2Lw+4vQ5KmEr0iUIoa4y/YyyXWho0lq4LTpJP9OJNSy?=
- =?us-ascii?Q?fkD1XyWvmvuQc9YSqLuu5sWJXT9reoogH7LC8bHREMZzlSOzH/PUqqxFrlFf?=
- =?us-ascii?Q?ZggAJRAlMO0Y0rZppE/jqrl10H8jIu35iIZ3ZcSvcpNXgJ6BvZsRqa/nP2Nr?=
- =?us-ascii?Q?5iwjcH+UPOxRjlF/gQEGFRIHL1xE7w6m8lp9IYLung/OaJbPl03T+gBXq1kQ?=
- =?us-ascii?Q?98IUkPZrTbQg7E90M4NFSjY06bXf67CIqsjdAdJGPlD/8u8NDw+8SXgzjYm2?=
- =?us-ascii?Q?e/jPv+o+uXy/O94fa8+YFVWFzjhXYTbrBiOgH38uXigci/C/+8SyaL0zcWuS?=
- =?us-ascii?Q?Jf4eg6++MdEwe3IEL4w/US/idakcMSXfpDgyzaMulXPEykTBlDDF7LvrU5aU?=
- =?us-ascii?Q?t2eoHQD2z78lqc8mvpws86Qz+1rfOjn3ac7A5NF7PqnTqdOVnJrvye9oe/NU?=
- =?us-ascii?Q?IEHyCfPiKJ5Blr3oTNKZ+ptzWcfRIjlvchZbHxVv4N9J75RYYGrndfsrmAwB?=
- =?us-ascii?Q?bpZBLXSmjNsNtR/oUPUhizri9uUMBi41oJkgJT3dvd1lG0VYo3JRvbmeiu1F?=
- =?us-ascii?Q?ehqiPFcwPyh3U+hrb1pgURzOgDHKERzQiMQAdPSpCewS1f4Kowgs9x6go2pF?=
- =?us-ascii?Q?rVJ4TRBDQ81/ZNBeZ6CUtkrEveqAAlZf4nCysI1yTZKQa215rcFdvVUGa3c4?=
- =?us-ascii?Q?sjy5F0A4dG/UtLScOgJByPsOC84wDYPUrArvVMUDKclSDTbglqcl4YiuYKLG?=
- =?us-ascii?Q?SPRLXw2xWdsNecE1l+nTcA4obWs/q1UbM/Ymm0RH6LNsFzE0CrJstT+Sg1u9?=
- =?us-ascii?Q?Tfp/fKWnzkst+jRCfE9Pmgs0jWPY9wkYCaMYKO/r3zat9TXYatKfLOc+Iylm?=
- =?us-ascii?Q?TnTp0jg0QPHu7LjIzPtSU0OCwhnCfUwVb1u3oJ/+/+Adz+Y8CJnjscBf0joo?=
- =?us-ascii?Q?TrQ5fcKDyIL1HMoJE3vNyeFKjzm62WiOh1VbWZ410CUyt0jE1tiYzwH0iO0L?=
- =?us-ascii?Q?MC3kOEn/tuLnHHp4yLAheEvtflrYM1BIbelaPUkL?=
-X-OriginatorOrg: nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 26382a6a-98d1-4efb-33c1-08de124b5ab8
-X-MS-Exchange-CrossTenant-AuthSource: PAXSPRMB0053.eurprd04.prod.outlook.com
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?azKN5s2ZQgKO1dtbB+rO20FAZmVop5ewEQUza4jYJ57cG5NJhyp6EN3FQ+iB?=
+ =?us-ascii?Q?VwuLTOpEOX3qa4W8TheQVuZD6T//Q13exPJW7dY8VQkeFzwDFDM9EfA9k56y?=
+ =?us-ascii?Q?9yUjJskkXwEJdCDnqgdfd7En9Xirt/u/HCceGtE3eZb1ck4eOaszSpl+NCH5?=
+ =?us-ascii?Q?XreotVpSR1s80ipNIkcfPlNBRu5OCNBedT223Jl/L5m30lXgFMbHN1NxvoRO?=
+ =?us-ascii?Q?eQ6XUOaqskOH+1d9MEhXjx2E4sF1GkAsEOgsUuvn7aNUP/3Z4whJQfhBvjwi?=
+ =?us-ascii?Q?TxGYKwKVbiZQGbWW0DmFHefz3eACrBfX86pgaJvetBEydQoDxsnespmH0y5u?=
+ =?us-ascii?Q?fYld67NnXJKIacKlccrrnWI7w2dErX9uEV3nhB6l+/Ad0NiDuK5h6UBVjb7h?=
+ =?us-ascii?Q?dwOR2fTqFmxQu2Tp3x9Ns38xo/cAdYQfCtMCgFDLTTImE6ykh9wroMQPjP48?=
+ =?us-ascii?Q?WnWmBdiE1pfVW0PptwQp+1LTNLKsyVi+8YG4bnR2Xj9Px6SJKnhy0WJC2Ntf?=
+ =?us-ascii?Q?zFD+105w/z8Q+8WK0Py61q9owp0IkFaez8NzG32UKsoYyyjJLsTCVknhq+v4?=
+ =?us-ascii?Q?ICQJTzKQT7dnuvS6nySXHs0ZwhVw8IitTGns1etxGajrtJZXgZIiHW0Cw++f?=
+ =?us-ascii?Q?ODmrwq5FRUVfc2YMOyUipIDr/rtWJhQEEekqLpcgqj/AEaTIVXQrU/F/Sobw?=
+ =?us-ascii?Q?np+WSVVTwreuj5K80ePTJW1YPtARzmSHZvCMw6vFoB1XAptfflsKqgpUWVBV?=
+ =?us-ascii?Q?tbLuY2SVOaMXho/dpUn0rgT+2WhKiyhnBrgFk1staKbE2TXAsCfWY3D071oT?=
+ =?us-ascii?Q?wldy88/472++/eA0P59UcXXl7Tn2ksklfxerAcs//4aUv6C+poU8A4iAmbZP?=
+ =?us-ascii?Q?V0MA9Xd4uWb8czun4+YNn9L9QVCZ/0QrMZjnr5oylLg3/8TzGIOcAtYn1SrF?=
+ =?us-ascii?Q?NS8tcmOjkAJ/qputICJrd2Ife6uAbehmk5M0e8bRn+q6D6stzSsRZyiZ8X32?=
+ =?us-ascii?Q?Xx7AaHHw6+NnouF8kBNVypoc8lQ3GlTM7StFhdG2w3VZgVCvN6Xru/qMRyz7?=
+ =?us-ascii?Q?Cb/TruNQfR60Sf775fL2zBCQ/zPUclbG85Of2M+lRd40YxW9x0SF7tGPwcFT?=
+ =?us-ascii?Q?4pvrioTQP19AQekEPixoB6uWwTka4W6whG98VM4PlraQTZ7FfK9lbHl5IDO8?=
+ =?us-ascii?Q?89sTyjzdwxTYqe0ORoIuQth6MNAswNVFGJfFV29NbtD9Ka1Pmj5s6H+Zr5qZ?=
+ =?us-ascii?Q?CHvhx8tD7KoLXkP++zAjTVUcFev7AjPH5pzpA6C0ZpA+y6jaVHqU7CZnoDGO?=
+ =?us-ascii?Q?ErcYArAwMxXNj+0Lg+7lsmq4p5mo916AtV3jFsnhoT9VLSnBaFXArW42mo6K?=
+ =?us-ascii?Q?wDu4p1IoDRzxqgMiKLhpCXqm109JFikHQFZtfLIRHqaRJ4uqHkXQRbgEDzPX?=
+ =?us-ascii?Q?AZXVNcQhLWkKlFbAn0RLFJUJ41ROOM7DHf+50UpMmd1p6P+WcggEv9RkLKVM?=
+ =?us-ascii?Q?fsEhZZlQgZxdRsFreTdNpQ5NXvCMDexQS2vMEpy7hggINAJJPHQJfYprSjSO?=
+ =?us-ascii?Q?pON8xUwkvs+KUjM3TL9F7rk7zWVhqvWvmmEfTiRj?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: a4e6977e-d3cc-428b-d8f3-08de12557470
+X-MS-Exchange-CrossTenant-AuthSource: MN2PR12MB3613.namprd12.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Oct 2025 15:46:38.8167
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Oct 2025 16:58:56.9808
  (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: hvDUs+XVBBw8IkzC2+qlezXl0m6OTs97r1K7bR32S+A+M3y6JAFZYzT66UeQq5tNd5kf3iphIZl8/MepVNOaQA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: GV2PR04MB11637
+X-MS-Exchange-CrossTenant-UserPrincipalName: CWZn2SwiTaWoQNOpqTur4nWLipkVemN3asW2PuFvx7VHHouB7tAxNwKp8EhaTXfN
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH8PR12MB7027
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251023_084644_812361_010CF95E 
-X-CRM114-Status: GOOD (  31.38  )
+X-CRM114-CacheID: sfid-20251023_095904_173422_7BABE840 
+X-CRM114-Status: GOOD (  22.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -160,141 +172,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Oct 23, 2025 at 10:51:22AM +0800, Shawn Lin wrote:
-> L1 PM Substates for RC mode require support in the dw-rockchip driver
-> including proper handling of the CLKREQ# sideband signal. It is mostly
-> handled by hardware, but software still needs to set the clkreq fields
-> in the PCIE_CLIENT_POWER_CON register to match the hardware implementation.
->
-> For more details, see section '18.6.6.4 L1 Substate' in the RK3658 TRM 1.1
-> Part 2, or section '11.6.6.4 L1 Substate' in the RK3588 TRM 1.0 Part2.
->
-> Meanwhile, for the EP mode, we haven't prepared enough to actually support
-> L1 PM Substates yet. So disable it now until proper support is added later.
->
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
->
-> ---
->
-> Changes in v3:
-> - rephrease the changelog
-> - use FIELD_PREP_WM16
-> - rename to rockchip_pcie_configure_l1sub
-> - disable L1ss for EP mode
->
-> Changes in v2:
-> - drop of_pci_clkreq_presnt API
-> - drop dependency of Niklas's patch
->
->  drivers/pci/controller/dwc/pcie-dw-rockchip.c | 43 +++++++++++++++++++++++++++
->  1 file changed, 43 insertions(+)
->
-> diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> index 3e2752c..25d2474 100644
-> --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> @@ -62,6 +62,12 @@
->  /* Interrupt Mask Register Related to Miscellaneous Operation */
->  #define PCIE_CLIENT_INTR_MASK_MISC	0x24
->
-> +/* Power Management Control Register */
-> +#define PCIE_CLIENT_POWER_CON		0x2c
-> +#define  PCIE_CLKREQ_READY		FIELD_PREP_WM16(BIT(0), 1)
-> +#define  PCIE_CLKREQ_NOT_READY		FIELD_PREP_WM16(BIT(0), 0)
-> +#define  PCIE_CLKREQ_PULL_DOWN		FIELD_PREP_WM16(GENMASK(13, 12), 1)
-> +
->  /* Hot Reset Control Register */
->  #define PCIE_CLIENT_HOT_RESET_CTRL	0x180
->  #define  PCIE_LTSSM_APP_DLY2_EN		BIT(1)
-> @@ -85,6 +91,7 @@ struct rockchip_pcie {
->  	struct regulator *vpcie3v3;
->  	struct irq_domain *irq_domain;
->  	const struct rockchip_pcie_of_data *data;
-> +	bool supports_clkreq;
->  };
->
->  struct rockchip_pcie_of_data {
-> @@ -200,6 +207,37 @@ static bool rockchip_pcie_link_up(struct dw_pcie *pci)
->  	return FIELD_GET(PCIE_LINKUP_MASK, val) == PCIE_LINKUP;
->  }
->
-> +/*
-> + * See e.g. section '11.6.6.4 L1 Substate' in the RK3588 TRM V1.0 for the steps
-> + * needed to support L1 substates. Currently, just enable L1 substates for RC
-> + * mode if CLKREQ# is properly connected and supports-clkreq is present in DT.
-> + * For EP mode, there are more things should be done to actually save power in
-> + * L1 substates, so disable L1 substates until there is proper support.
-> + */
-> +static void rockchip_pcie_configure_l1sub(struct dw_pcie *pci)
-> +{
-> +	struct rockchip_pcie *rockchip = to_rockchip_pcie(pci);
-> +	u32 cap, l1subcap;
-> +
-> +	/* Enable L1 substates if CLKREQ# is properly connected */
-> +	if (rockchip->supports_clkreq && rockchip->data->mode == DW_PCIE_RC_TYPE ) {
-> +		rockchip_pcie_writel_apb(rockchip, PCIE_CLKREQ_READY, PCIE_CLIENT_POWER_CON);
-> +		return;
-> +	}
-> +
-> +	/* Otherwise, pull down CLKREQ# and disable L1 PM substates */
-> +	rockchip_pcie_writel_apb(rockchip, PCIE_CLKREQ_PULL_DOWN | PCIE_CLKREQ_NOT_READY,
-> +				 PCIE_CLIENT_POWER_CON);
+On Thu, Oct 23, 2025 at 11:54:34AM -0300, Jason Gunthorpe wrote:
+> On Thu, Oct 23, 2025 at 12:24:01PM +0100, Robin Murphy wrote:
+> > On 2025-10-22 6:12 pm, Jason Gunthorpe wrote:
+> > > report_iommu_fault() is an older API that has been superseded by
+> > > iommu_report_device_fault() which is capable to support PRI.
+> > > 
+> > > Only two external drivers consume this, drivers/remoteproc and
+> > > drivers/gpu/drm/msm. Ideally they would move over to the new APIs, but for
+> > > now protect against accidentally mix and matching the wrong components.
+> > > 
+> > > The iommu drivers support either the old iommu_set_fault_handler() via the
+> > > driver calling report_iommu_fault(), or they are newer server focused
+> > > drivers that call iommu_report_device_fault().
+> > > 
+> > > Include a flag in the domain_ops if it calls report_iommu_fault() and
+> > > block iommu_set_fault_handler() on iommu's that can't support it.
+> > 
+> > This isn't a domain operation though; depending on how you look at it,
+> > supporting a legacy fault_handler is either a capability of the IOMMU driver
+> > (that would be reachable via domain->owner->capable) or a property of the
+> > iommu_domain itself that the drivers can set at allocation time (basically
+> > this same patch just with the lines in slightly different places).
+> 
+> That's right, the issue is:
+> 
+> void iommu_set_fault_handler(struct iommu_domain *domain,
+> 					iommu_fault_handler_t handler,
+> 					void *token)
+> 
+> We can't get to the iommu instance starting from a domain pointer
+> 
+> Do you think we should change the above signature to include a
+> struct device *?
 
-Looks like you force pull down clkreq should be enough, needn't disable
-L1SS. when RC force clkreq is low, Ref CLK always on even if L1SS enabled.
+Reading this again, it is easy to move it to the domain->owner, which
+is an *ops* pointer. It would still be driver global and not
+per-instance. Lets try that then
 
-Of course it depend on hardware implementation, But I think FULL_DOWN have
-high priority to force clkreq to low then PCI_L1SS control.
+I like adding a iommu_paging_domain_alloc_flags() option too..
 
-Frank
-
-> +	cap = dw_pcie_find_ext_capability(pci, PCI_EXT_CAP_ID_L1SS);
-> +	if (cap) {
-> +		l1subcap = dw_pcie_readl_dbi(pci, cap + PCI_L1SS_CAP);
-> +		l1subcap &= ~(PCI_L1SS_CAP_L1_PM_SS | PCI_L1SS_CAP_ASPM_L1_1 |
-> +			      PCI_L1SS_CAP_ASPM_L1_2 | PCI_L1SS_CAP_PCIPM_L1_1 |
-> +			      PCI_L1SS_CAP_PCIPM_L1_2);
-> +		dw_pcie_writel_dbi(pci, cap + PCI_L1SS_CAP, l1subcap);
-> +	}
-> +}
-> +
->  static void rockchip_pcie_enable_l0s(struct dw_pcie *pci)
->  {
->  	u32 cap, lnkcap;
-> @@ -264,6 +302,7 @@ static int rockchip_pcie_host_init(struct dw_pcie_rp *pp)
->  	irq_set_chained_handler_and_data(irq, rockchip_pcie_intx_handler,
->  					 rockchip);
->
-> +	rockchip_pcie_configure_l1sub(pci);
->  	rockchip_pcie_enable_l0s(pci);
->
->  	return 0;
-> @@ -301,6 +340,7 @@ static void rockchip_pcie_ep_init(struct dw_pcie_ep *ep)
->  	struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
->  	enum pci_barno bar;
->
-> +	rockchip_pcie_configure_l1sub(pci);
->  	rockchip_pcie_enable_l0s(pci);
->  	rockchip_pcie_ep_hide_broken_ats_cap_rk3588(ep);
->
-> @@ -412,6 +452,9 @@ static int rockchip_pcie_resource_get(struct platform_device *pdev,
->  		return dev_err_probe(&pdev->dev, PTR_ERR(rockchip->rst),
->  				     "failed to get reset lines\n");
->
-> +	rockchip->supports_clkreq = of_property_read_bool(pdev->dev.of_node,
-> +							  "supports-clkreq");
-> +
->  	return 0;
->  }
->
-> --
-> 2.7.4
->
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+Jason
 
 _______________________________________________
 Linux-rockchip mailing list
