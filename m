@@ -4,61 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5269CCCD1BE
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Oct 2025 12:34:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3298DCCD1BE
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Oct 2025 13:19:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CQPrFkC0sov60sGb2QOEdRuFOwlNmG0YcZ0aLkxL15k=; b=NI2zI1UEHH0EDA
-	WiriFvY8vf7WPiGya4oqK8rTjhKUl3OuhJlPcR1/CSbyTgv39Y+I9foE30uTnmdGi7SRAjHrQVZCf
-	f4eqVSI3hkDSlZ+JAAYxs5k5DKWYyURxWsJuCJCO/HSNiBc4mNKMdVkjB+2HJBKDMtMUJTgS0TKF4
-	Enix/BWhOnMNQ9PaYv3roEKJ2X8BoK1TAA5NdlH3+fOzyAssKS3Iu/JkKcbK7j9ypP0tmumy3+M39
-	1X9XAmLK1t6KdgSCXWiwDja1CZ1r2VBglsPzZZ3cz9yIpLbN5GCnx4eRMCmNykMu9R8prx3hO3UC0
-	h2zYaLEoDi7B9D/Nhi4A==;
+	List-Owner; bh=DnRW8Bgb+Qfttsij+Kz4ZZdu2Smw0DLhbOG83k9F6aY=; b=zZw7vGLQGetIp5
+	WQ8g2gJtAxWERlVmUNKFo1mAiwH72ZmsC/1N3Ya0I8QD+K8uhUlJEBhIe2zJldGJYwDnWRxuZzzHD
+	mtkJyd2Xsf2/04tyhu8XsxMvtSBRUJG2J/+15lmuywcSjw6LMSofS/Tr/W6DgDJ0ZPGSq68qw5ivS
+	n0Xzvs14eWwf+dfc6U6nVi2RBQe7mjHgYcJyL6O+ere5pWMVZGz9YQJEOWY9YJeq4kzAAw2MvNy5K
+	uVmWTP03UAEIapel4N1rFn1Jh6VBXfGna1cd/6o221Yo6iY3NsT6kFV2RpzyCrCAgK35IyN173dEk
+	Pg6A7H5llVNLo1Xk1okg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBuWV-00000006GJK-3zsb;
-	Thu, 23 Oct 2025 12:34:31 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBuWS-00000006GIQ-3PFM;
-	Thu, 23 Oct 2025 12:34:30 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 397E11516;
-	Thu, 23 Oct 2025 05:34:19 -0700 (PDT)
-Received: from [10.57.36.157] (unknown [10.57.36.157])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id D67773F59E;
-	Thu, 23 Oct 2025 05:34:23 -0700 (PDT)
-Message-ID: <579bdc4e-ab71-4120-8991-34400d4bbf8d@arm.com>
-Date: Thu, 23 Oct 2025 13:34:21 +0100
+	id 1vBvDe-00000006Lj9-0pf4;
+	Thu, 23 Oct 2025 13:19:06 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vBvDc-00000006Lic-1B8t;
+	Thu, 23 Oct 2025 13:19:04 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id C991560ABF;
+	Thu, 23 Oct 2025 13:19:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0A02EC4CEE7;
+	Thu, 23 Oct 2025 13:19:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1761225541;
+	bh=ZJniWJnry8+fO1GaHhaSnqADgGtJIJ8AN2vSP4jyT1Y=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=RZMmalc2PI3KQ7dFvTUbDh5yiuRR4B1rQ3kmUv8x1XuziDKiGm2c5xo+zIOJS33ZL
+	 TzYj8VUU+eeNcNv+iT0z9B5GZBqNhmcHPo9Y/EpmnSgYaZBJggGycuQHG41gtLcSNv
+	 pz6n75HxPtBXKGN1fIPsWj/N8maA1w0L31Fu5JlvFxhrxaBKxMk5oLTsP4gtaweIhZ
+	 3121XndTj/q3er6QBG1jJLho5B/qmhX8b9a4ojOugm0SEK7up/WiD5sb42G5rViHUi
+	 mcxXYN8ldCZJF6JVHZnP9Z/HqzzQW4rkNT8Br/iVxAckKmwkSu/04z3YxaXdKdsVUd
+	 hKAg6n+XxALIQ==
+Date: Thu, 23 Oct 2025 15:18:57 +0200
+From: Andi Shyti <andi.shyti@kernel.org>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org, 
+	devicetree@vger.kernel.org
+Subject: Re: [PATCH] dt-bindings: i2c: i2c-rk3x: Add compatible string for
+ RK3506
+Message-ID: <ka4wwbldtcmsivvoie2qjzdzadjpougx5odwztdy53252h3l4u@y4sfbrdbagp5>
+References: <20251021222853.193224-1-heiko@sntech.de>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/3] iommu/amd: Don't call report_iommu_fault()
-To: Jason Gunthorpe <jgg@nvidia.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Christian Benvenuti <benve@cisco.com>, Heiko Stuebner <heiko@sntech.de>,
- iommu@lists.linux.dev, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Joerg Roedel <joro@8bytes.org>, Leon Romanovsky <leon@kernel.org>,
- linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-rdma@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Nelson Escobar <neescoba@cisco.com>, Rob Clark
- <robin.clark@oss.qualcomm.com>, Samuel Holland <samuel@sholland.org>,
- Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
- Chen-Yu Tsai <wens@csie.org>, Will Deacon <will@kernel.org>,
- Yong Wu <yong.wu@mediatek.com>
-Cc: patches@lists.linux.dev
-References: <2-v1-391058a85f30+14b-iommu_set_fault_jgg@nvidia.com>
-From: Robin Murphy <robin.murphy@arm.com>
-Content-Language: en-GB
-In-Reply-To: <2-v1-391058a85f30+14b-iommu_set_fault_jgg@nvidia.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251023_053428_901033_DB08C4BF 
-X-CRM114-Status: GOOD (  18.04  )
+Content-Disposition: inline
+In-Reply-To: <20251021222853.193224-1-heiko@sntech.de>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,74 +65,23 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2025-10-22 6:12 pm, Jason Gunthorpe wrote:
-> This old style API is only used by drivers/gpu/drm/msm and
-> drivers/remoteproc, neither are used on x86 HW. Remove the dead code to
-> discourage new users.
+Hi Heiko,
 
-I'd be almost certain there's somebody somewhere using remoteproc on x86 
-with some FPGA/bespoke PCI device/on-board MCU/etc. - whether they're 
-doing it on AMD *and* care about its fault reporting mechanism is really 
-the question.
-> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
-> ---
->   drivers/iommu/amd/iommu.c | 24 ------------------------
->   1 file changed, 24 deletions(-)
+On Wed, Oct 22, 2025 at 12:28:53AM +0200, Heiko Stuebner wrote:
+> The i2c controller in the RK3506 is compatible to the variant first found
+> in the RK3399 SoC, so add the RK3506 to that variant list.
 > 
-> diff --git a/drivers/iommu/amd/iommu.c b/drivers/iommu/amd/iommu.c
-> index 2e1865daa1cee8..072c80bb2c2b3a 100644
-> --- a/drivers/iommu/amd/iommu.c
-> +++ b/drivers/iommu/amd/iommu.c
-> @@ -840,29 +840,6 @@ static void amd_iommu_report_page_fault(struct amd_iommu *iommu,
->   		dev_data = dev_iommu_priv_get(&pdev->dev);
->   
->   	if (dev_data) {
-> -		/*
-> -		 * If this is a DMA fault (for which the I(nterrupt)
-> -		 * bit will be unset), allow report_iommu_fault() to
-> -		 * prevent logging it.
-> -		 */
-> -		if (IS_IOMMU_MEM_TRANSACTION(flags)) {
-> -			/* Device not attached to domain properly */
-> -			if (dev_data->domain == NULL) {
-> -				pr_err_ratelimited("Event logged [Device not attached to domain properly]\n");
-> -				pr_err_ratelimited("  device=%04x:%02x:%02x.%x domain=0x%04x\n",
-> -						   iommu->pci_seg->id, PCI_BUS_NUM(devid), PCI_SLOT(devid),
-> -						   PCI_FUNC(devid), domain_id);
-> -				goto out;
-> -			}
-This part is unrelated to the report_iommu_fault() call - in fact it was 
-specifically added even more recently.
+> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+
+merged to i2c/i2c-host.
 
 Thanks,
-Robin.
-
-> -
-> -			if (!report_iommu_fault(&dev_data->domain->domain,
-> -						&pdev->dev, address,
-> -						IS_WRITE_REQUEST(flags) ?
-> -							IOMMU_FAULT_WRITE :
-> -							IOMMU_FAULT_READ))
-> -				goto out;
-> -		}
-> -
->   		if (__ratelimit(&dev_data->rs)) {
->   			pci_err(pdev, "Event logged [IO_PAGE_FAULT domain=0x%04x address=0x%llx flags=0x%04x]\n",
->   				domain_id, address, flags);
-> @@ -873,7 +850,6 @@ static void amd_iommu_report_page_fault(struct amd_iommu *iommu,
->   			domain_id, address, flags);
->   	}
->   
-> -out:
->   	if (pdev)
->   		pci_dev_put(pdev);
->   }
-
+Andi
 
 _______________________________________________
 Linux-rockchip mailing list
