@@ -4,80 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA3DACCD1BE
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Oct 2025 12:10:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5269CCCD1BE
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Oct 2025 12:34:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FCxKTZSAns/SRp7MYWLTSV5qrQU+DMYXEaWrOTr6G+Y=; b=usz3tC2LGtda/Y
-	AOX4cg0gZ9acDOYaBqHNZP68WWBxnmJTaIT/P85FCBdqqx30htPW/+/bQZtKPco0nVqeqxyUPbvmf
-	5EQWXJSljtIEYRmzxq+M7flpgPCszJiC7aZy7gGrBImbmy86Ek5hi+8h4bS8DOt59F6Kt3DwEuNnu
-	NjuIZy4mbYrGD9BC6F9D3k5jtLI95J9MtrXvyVyp4RwfAq7Zm0gGIzZmpufa+5FsY7Jpbe8NE2o/Y
-	RRfWZncl2RM8IjNsubYVR+rkzmcyGJFSgjragUX1+bko15wJwHxm4rVYJM0Z7kGLRBiBhgnMOAzrH
-	IYKUPd7gLzccfrJDyvyQ==;
+	List-Owner; bh=CQPrFkC0sov60sGb2QOEdRuFOwlNmG0YcZ0aLkxL15k=; b=NI2zI1UEHH0EDA
+	WiriFvY8vf7WPiGya4oqK8rTjhKUl3OuhJlPcR1/CSbyTgv39Y+I9foE30uTnmdGi7SRAjHrQVZCf
+	f4eqVSI3hkDSlZ+JAAYxs5k5DKWYyURxWsJuCJCO/HSNiBc4mNKMdVkjB+2HJBKDMtMUJTgS0TKF4
+	Enix/BWhOnMNQ9PaYv3roEKJ2X8BoK1TAA5NdlH3+fOzyAssKS3Iu/JkKcbK7j9ypP0tmumy3+M39
+	1X9XAmLK1t6KdgSCXWiwDja1CZ1r2VBglsPzZZ3cz9yIpLbN5GCnx4eRMCmNykMu9R8prx3hO3UC0
+	h2zYaLEoDi7B9D/Nhi4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBu9J-00000006Bpv-2uu9;
-	Thu, 23 Oct 2025 12:10:33 +0000
-Received: from mail-m32122.qiye.163.com ([220.197.32.122])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBu9F-00000006BoH-3xh5;
-	Thu, 23 Oct 2025 12:10:32 +0000
-Received: from [172.16.12.149] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 26f2c95f7;
-	Thu, 23 Oct 2025 20:10:21 +0800 (GMT+08:00)
-Message-ID: <6f769567-b383-4c79-b441-3dd84f21cdae@rock-chips.com>
-Date: Thu, 23 Oct 2025 20:10:20 +0800
+	id 1vBuWV-00000006GJK-3zsb;
+	Thu, 23 Oct 2025 12:34:31 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vBuWS-00000006GIQ-3PFM;
+	Thu, 23 Oct 2025 12:34:30 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 397E11516;
+	Thu, 23 Oct 2025 05:34:19 -0700 (PDT)
+Received: from [10.57.36.157] (unknown [10.57.36.157])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id D67773F59E;
+	Thu, 23 Oct 2025 05:34:23 -0700 (PDT)
+Message-ID: <579bdc4e-ab71-4120-8991-34400d4bbf8d@arm.com>
+Date: Thu, 23 Oct 2025 13:34:21 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 2/9] drm/bridge: Implement generic USB Type-C DP HPD
- bridge
-To: Heikki Krogerus <heikki.krogerus@linux.intel.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
- Kishon Vijay Abraham I <kishon@kernel.org>, Heiko Stuebner
- <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>,
- Andy Yan <andy.yan@rock-chips.com>,
- Yubing Zhang <yubing.zhang@rock-chips.com>,
- Frank Wang <frank.wang@rock-chips.com>,
- Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Amit Sunil Dhamne <amitsd@google.com>, Dragan Simic <dsimic@manjaro.org>,
- Johan Jonker <jbx6244@gmail.com>, Diederik de Haas <didi.debian@cknow.org>,
- Peter Robinson <pbrobinson@gmail.com>, linux-usb@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
-References: <20251023033009.90-1-kernel@airkyi.com>
- <20251023033009.90-3-kernel@airkyi.com> <aPnrKFWTvpuRTyhI@kuha.fi.intel.com>
- <14b8ac71-489b-4192-92d6-5f228ff3881d@rock-chips.com>
- <aPoZhBdc1M6Qgfae@kuha.fi.intel.com>
-Content-Language: en-US
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-In-Reply-To: <aPoZhBdc1M6Qgfae@kuha.fi.intel.com>
-X-HM-Tid: 0a9a10fa2ad903abkunm63b0b3181a1121
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQ0hCTlZDT0xDTk4ZSUgdHRhWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpPSE
-	xVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=biNjzk7LSVRSGV1ZBRFm2pqDrcSqN6X6pQT3v+20RIGWpgAkjhtuaHxj6ZVvF/acb202inF411z7yGIUoF/7CHQ2Pg/L6wLybWl0rz+LjhvsgHqysLYlVIWIXUgVF/qQOrfHbm3hQOkvKYsFtMh9rTdxx3ulZty1nhOw2ruKgYk=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=+tppR1r2GR2aHsAGWh+r4F7VMu3ZGa0gIoTITM9UMtU=;
-	h=date:mime-version:subject:message-id:from;
+Subject: Re: [PATCH 2/3] iommu/amd: Don't call report_iommu_fault()
+To: Jason Gunthorpe <jgg@nvidia.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Christian Benvenuti <benve@cisco.com>, Heiko Stuebner <heiko@sntech.de>,
+ iommu@lists.linux.dev, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Joerg Roedel <joro@8bytes.org>, Leon Romanovsky <leon@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-rdma@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Nelson Escobar <neescoba@cisco.com>, Rob Clark
+ <robin.clark@oss.qualcomm.com>, Samuel Holland <samuel@sholland.org>,
+ Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
+ Chen-Yu Tsai <wens@csie.org>, Will Deacon <will@kernel.org>,
+ Yong Wu <yong.wu@mediatek.com>
+Cc: patches@lists.linux.dev
+References: <2-v1-391058a85f30+14b-iommu_set_fault_jgg@nvidia.com>
+From: Robin Murphy <robin.murphy@arm.com>
+Content-Language: en-GB
+In-Reply-To: <2-v1-391058a85f30+14b-iommu_set_fault_jgg@nvidia.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251023_051030_399574_796236C5 
-X-CRM114-Status: GOOD (  22.41  )
+X-CRM114-CacheID: sfid-20251023_053428_901033_DB08C4BF 
+X-CRM114-Status: GOOD (  18.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,101 +75,68 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Heikki,
+On 2025-10-22 6:12 pm, Jason Gunthorpe wrote:
+> This old style API is only used by drivers/gpu/drm/msm and
+> drivers/remoteproc, neither are used on x86 HW. Remove the dead code to
+> discourage new users.
 
-On 10/23/2025 8:03 PM, Heikki Krogerus wrote:
->>>> diff --git a/drivers/gpu/drm/bridge/Makefile b/drivers/gpu/drm/bridge/Makefile
->>>> index 245e8a27e3fc..e91736829167 100644
->>>> --- a/drivers/gpu/drm/bridge/Makefile
->>>> +++ b/drivers/gpu/drm/bridge/Makefile
->>>> @@ -1,6 +1,7 @@
->>>>    # SPDX-License-Identifier: GPL-2.0
->>>>    obj-$(CONFIG_DRM_AUX_BRIDGE) += aux-bridge.o
->>>>    obj-$(CONFIG_DRM_AUX_HPD_BRIDGE) += aux-hpd-bridge.o
->>>> +obj-$(CONFIG_DRM_AUX_TYPEC_DP_HPD_BRIDGE) += aux-hpd-typec-dp-bridge.o
->>> Instead, why not just make that a part of aux-hpd-bridge
->>> conditionally:
->>>
->>> ifneq ($(CONFIG_TYPEC),)
->>>           aux-hpd-bridge-y        += aux-hpd-typec-dp-bridge.o
->>> endif
->> Oh, I did consider that! But I noticed that aux-hpd-bridge.c contains the
->> following statement module_auxiliary_driver(drm_aux_hpd_bridge_drv), which
->> already includes a module_init. In the newly added file, in order to call the
->> register function, another module_init was also added. If the two files are
->> each made into a module separately, would there be a problem?
-> You would not call module_init() from the new file. Instead you would
-> call drm_aux_hpd_typec_dp_bridge_init() and what ever directly from
-> aux-hpd-bridge.c:
->
-> diff --git a/drivers/gpu/drm/bridge/aux-bridge.h b/drivers/gpu/drm/bridge/aux-bridge.h
-> new file mode 100644
-> index 000000000000..ae689a7778fa
-> --- /dev/null
-> +++ b/drivers/gpu/drm/bridge/aux-hpd-bridge.h
-> @@ -0,0 +1,13 @@
-> +/* SPDX-License-Identifier: GPL-2.0-only */
-> +#ifndef AUX_HPD_BRIDGE_H
-> +#define AUX_HPD_BRIDGE_H
-> +
-> +#if IS_ENABLED(CONFIG_TYPEC)
-> +int drm_aux_hpd_typec_dp_bridge_init(void);
-> +void drm_aux_hpd_typec_dp_bridge_exit(void);
-> +#else
-> +static inline int drm_aux_hpd_typec_dp_bridge_init(void) { return 0; }
-> +static inline void drm_aux_hpd_typec_dp_bridge_exit(void) { }
-> +#endif /* IS_ENABLED(CONFIG_TYPEC) */
-> +
-> +#endif /* AUX_HPD_BRIDGE_H */
-> diff --git a/drivers/gpu/drm/bridge/aux-hpd-bridge.c b/drivers/gpu/drm/bridge/aux-hpd-bridge.c
-> index 2e9c702c7087..3578df1df78a 100644
-> --- a/drivers/gpu/drm/bridge/aux-hpd-bridge.c
-> +++ b/drivers/gpu/drm/bridge/aux-hpd-bridge.c
-> @@ -12,6 +12,8 @@
->   #include <drm/drm_bridge.h>
->   #include <drm/bridge/aux-bridge.h>
+I'd be almost certain there's somebody somewhere using remoteproc on x86 
+with some FPGA/bespoke PCI device/on-board MCU/etc. - whether they're 
+doing it on AMD *and* care about its fault reporting mechanism is really 
+the question.
+> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
+> ---
+>   drivers/iommu/amd/iommu.c | 24 ------------------------
+>   1 file changed, 24 deletions(-)
+> 
+> diff --git a/drivers/iommu/amd/iommu.c b/drivers/iommu/amd/iommu.c
+> index 2e1865daa1cee8..072c80bb2c2b3a 100644
+> --- a/drivers/iommu/amd/iommu.c
+> +++ b/drivers/iommu/amd/iommu.c
+> @@ -840,29 +840,6 @@ static void amd_iommu_report_page_fault(struct amd_iommu *iommu,
+>   		dev_data = dev_iommu_priv_get(&pdev->dev);
 >   
-> +#include "aux-hpd-bridge.h"
-> +
->   static DEFINE_IDA(drm_aux_hpd_bridge_ida);
+>   	if (dev_data) {
+> -		/*
+> -		 * If this is a DMA fault (for which the I(nterrupt)
+> -		 * bit will be unset), allow report_iommu_fault() to
+> -		 * prevent logging it.
+> -		 */
+> -		if (IS_IOMMU_MEM_TRANSACTION(flags)) {
+> -			/* Device not attached to domain properly */
+> -			if (dev_data->domain == NULL) {
+> -				pr_err_ratelimited("Event logged [Device not attached to domain properly]\n");
+> -				pr_err_ratelimited("  device=%04x:%02x:%02x.%x domain=0x%04x\n",
+> -						   iommu->pci_seg->id, PCI_BUS_NUM(devid), PCI_SLOT(devid),
+> -						   PCI_FUNC(devid), domain_id);
+> -				goto out;
+> -			}
+This part is unrelated to the report_iommu_fault() call - in fact it was 
+specifically added even more recently.
+
+Thanks,
+Robin.
+
+> -
+> -			if (!report_iommu_fault(&dev_data->domain->domain,
+> -						&pdev->dev, address,
+> -						IS_WRITE_REQUEST(flags) ?
+> -							IOMMU_FAULT_WRITE :
+> -							IOMMU_FAULT_READ))
+> -				goto out;
+> -		}
+> -
+>   		if (__ratelimit(&dev_data->rs)) {
+>   			pci_err(pdev, "Event logged [IO_PAGE_FAULT domain=0x%04x address=0x%llx flags=0x%04x]\n",
+>   				domain_id, address, flags);
+> @@ -873,7 +850,6 @@ static void amd_iommu_report_page_fault(struct amd_iommu *iommu,
+>   			domain_id, address, flags);
+>   	}
 >   
->   struct drm_aux_hpd_bridge_data {
-> @@ -190,9 +192,16 @@ static int drm_aux_hpd_bridge_probe(struct auxiliary_device *auxdev,
->   
->          auxiliary_set_drvdata(auxdev, data);
->   
-> +       drm_aux_hpd_typec_dp_bridge_init();
-> +
->          return devm_drm_bridge_add(data->dev, &data->bridge);
+> -out:
+>   	if (pdev)
+>   		pci_dev_put(pdev);
 >   }
->   
-> +static void drm_aux_hpd_bridge_remove(struct auxiliary_device *auxdev)
-> +{
-> +       drm_aux_hpd_typec_dp_bridge_exit();
-> +}
-> +
->   static const struct auxiliary_device_id drm_aux_hpd_bridge_table[] = {
->          { .name = KBUILD_MODNAME ".dp_hpd_bridge", .driver_data = DRM_MODE_CONNECTOR_DisplayPort, },
->          {},
-> @@ -203,6 +212,7 @@ static struct auxiliary_driver drm_aux_hpd_bridge_drv = {
->          .name = "aux_hpd_bridge",
->          .id_table = drm_aux_hpd_bridge_table,
->          .probe = drm_aux_hpd_bridge_probe,
-> +       .remove = drm_aux_hpd_bridge_remove,
->   };
->   module_auxiliary_driver(drm_aux_hpd_bridge_drv);
-
-Yes, if we don't distinguish them through Kconfig, we need to use the IS_ENABLED macro in the code. Thanks again for you code.
-
-
-Another thing is that CONFIG_DRM_AUX_HPD_BRIDGE originally needed to be selected by other modules. With this change, we also need to expose it in Kconfig.
-
-
->
->
--- 
-Best,
-Chaoyi
 
 
 _______________________________________________
