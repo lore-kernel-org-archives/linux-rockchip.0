@@ -4,55 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1B6ECCD193
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Oct 2025 18:27:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9BD6CCD1BC
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Oct 2025 18:57:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Subject:Message-ID:MIME-Version:To:Cc:
 	Date:References:In-Reply-To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kYATPFCP6R/HR+GqiXQ9/bIjFBe1o0TBaK3IyMA4GbI=; b=Cw/HUeZdmHEB7d
-	YmyAjs1F5/WiUZt3wSCHk8+d5SmZIGYpQ81SZQq4qJZ5T7ArkijIeAs1Oxy8tYWMmqGj37SGpwxH9
-	QaNDCUtRUQoff+nVo6RhXMxsaFSq4I0G0mwkh8IwkvF9alL+D/ct+kHa90mFOfIziX7ckCJ78Hn/B
-	rutIks6CfRfTyLmFgYy3BB7HynFMD/tVDsRo0e6iemm4oz83qPQ/eoJ16n3iEM5gLLa/ylKCjkB0p
-	7GcmQqP6Q74uuvbcFH/afiU9RsMmd31Gi6HiEJySjJ8JnN2LMrPCVaRHgxv6etQ1bBBieW13eP7az
-	0HluSNV7paBT6H31Itjw==;
+	List-Owner; bh=K+8y0ES1PMddln2Mk5aCHkknmsX/HJeqpBcv3L27zG8=; b=wr4nbF1Nm0NiMU
+	7YIaPuUlADh8iRc6MKFCfCyC1p8q6nyqh4vv4FbzwFuoSTwoC30jxOiNnqkn8/CKRxttoRjHcyBnz
+	q8HrvdPCN2i6UNloIYBT1/SPoiw2VWI65bGEds8kX6MUlrggC/6kHImq6xKS7CCattRbtAfxdFMV9
+	xdUaz1DIhsOp96vZqqfCywRTBV9dpQA2+bAGaIO6g0A9LkAkNeQ4PJvBZ8KxY62GVctqwZSylw2hV
+	HLHEqbnEO4JfJAj+qqN6bCHHpsXVMVwd7wyazonyxR8arRIqv4syb+jMb9gt3bZ/kxobssdY8/+9g
+	bVV/njn1JXvREHXLZiuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vC02F-00000007DvS-2CoL;
-	Thu, 23 Oct 2025 18:27:39 +0000
-Received: from mail1.manjaro.org ([2a01:4f8:c010:b6e8::1])
+	id 1vC0VB-00000007JDs-1BNk;
+	Thu, 23 Oct 2025 18:57:33 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vC02C-00000007Dum-3EoK
+	id 1vC0V9-00000007JCZ-3CSV
+	for linux-rockchip@bombadil.infradead.org;
+	Thu, 23 Oct 2025 18:57:31 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Subject:
+	Message-ID:MIME-Version:To:Cc:Date:References:Content-Type:In-Reply-To:From:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=jFoaeG/1d3oJARkrn8yECO2RwXWx0Noto3/Vpddq4gE=; b=IS620OIHp6nKPY1hM71oIg2P4h
+	oXaQlg5Lvs3YIoekzSFEr3//rvzfX4VFRbgRle0NkWOb5v8KtbDEaCnCuwXO6N9MzYPjMu0dSOxIw
+	eL2z2PWgFdk6cdTf/ck+BbhaYtEh7PHwliAXOHR/eoYP86JChTC/J8Asb/MbG9rSWnbCkqNHCY+VL
+	bwljJX4kq7hobOOvvMaBH+gAFYeitebe/8uu2Pa/3oODXGqlkIuWMcLJZxcT5ujuz3HUwVpZebT4H
+	2SiXxsi9IEhkNTMPWJ56ZyfWrJJW0GHwdOsmqlR1oVikPvRKqavPmVH/MxSNxQuGbsP1qwOpeMrgW
+	Yk4gM/PA==;
+Received: from mail1.manjaro.org ([142.132.176.110])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vBzdR-00000001dSq-3Rp0
 	for linux-rockchip@lists.infradead.org;
-	Thu, 23 Oct 2025 18:27:38 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPA id 58F2D40D25;
-	Thu, 23 Oct 2025 20:27:25 +0200 (CEST)
+	Thu, 23 Oct 2025 18:02:03 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPA id 704B840D1C;
+	Thu, 23 Oct 2025 20:57:13 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=dkim;
-	t=1761244050; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	t=1761245838; h=from:subject:date:message-id:to:cc:mime-version:content-type:
 	 content-transfer-encoding:in-reply-to:references;
-	bh=wMO+SCV0l5dh/TBWZh1mnrGafB3FTHbpefBDO3evOwI=;
-	b=x3vT1EJfPxqfvf6DDV90OVcHLztgqacXNaWxXyOwo0jNBDwyLCyeJv+Ph7niMcJnYDzjBG
-	J2UzZzAjq5i3/7WU/eAXEAMb6jgGRiRpLoww3MWmxhS+RtWLCXhJxmEuov4NulcMgpz5PG
-	w1GIi7xYmiBEH/4rLkLz+Fe4Xp6LKm4+7n2zwSIFFAGAZeOBEX3Cd0uhcrFSJYSM+4Dg7y
-	Y+p5mV9ipeAg9wQd8MQGJbqePWEDXiYtY+pdnPNA4lvoTUJyj/LwwX19qiQuaHv70L7Gi9
-	Y+LjMR4vDEkJcmcKkKSsFfSUNcozLPKt+1hwz1nu9t0VQ0cUmKUG331JrfXwew==
+	bh=jFoaeG/1d3oJARkrn8yECO2RwXWx0Noto3/Vpddq4gE=;
+	b=s/BqqRVhShF5evNuCamVwBbWlzR1H4GanU9Rz3oGQ2MNqRTY/lk0SrY+zf/g2KUGFl6EBy
+	hUqIaUJ45JG/vdg6Zv/XWm4i5sU88I5GXa7E0G2V9cPTtslidtZrwooba+6z2PGX6TAcu/
+	IfQX50fnCi6r8BHx6myoT+EnVzqn3515v527cJNX7CHyodhC4Y4XFSJZ2Gd4wlnf4SoAOX
+	DB8zDXT6Fbi2JWfmLmLKKnieKOQT8i5q1bIjoQ5qBZd3Gl/cOWc0wIyIuTvnOFaglSrMHQ
+	9lUDjZfl0qp6dF8fW8ne7cyHDI1YwEMfeneul+gN26u/3kaU2WDYfYwa9TZQwA==
 From: "Dragan Simic" <dsimic@manjaro.org>
-In-Reply-To: <20251023180645.1304701-1-helgaas@kernel.org>
-References: <20251023180645.1304701-1-helgaas@kernel.org>
-Date: Thu, 23 Oct 2025 20:27:25 +0200
-Cc: linux-pci@vger.kernel.org, "Manivannan Sadhasivam" <manivannan.sadhasivam@oss.qualcomm.com>, "Christian Zigotzky" <chzigotzky@xenosoft.de>, "FUKAUMI Naoki" <naoki@radxa.com>, "Herve Codina" <herve.codina@bootlin.com>, "Diederik de Haas" <diederik@cknow-tech.com>, linuxppc-dev@lists.ozlabs.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, "Bjorn Helgaas" <bhelgaas@google.com>, "Shawn Lin" <shawn.lin@rock-chips.com>
-To: "Bjorn Helgaas" <helgaas@kernel.org>
+In-Reply-To: <fxakjhx7lrikgs4x3nbwgnhhcwmlum3esxp2dj5d26xc5iyg22@wkbbwysh3due>
+References: <20251014184905.GA896847@bhelgaas>
+ <0899e629-eaaf-1000-72b5-52ad977677a8@manjaro.org> <fxakjhx7lrikgs4x3nbwgnhhcwmlum3esxp2dj5d26xc5iyg22@wkbbwysh3due>
+Date: Thu, 23 Oct 2025 20:57:13 +0200
+Cc: "Bjorn Helgaas" <helgaas@kernel.org>, "FUKAUMI Naoki" <naoki@radxa.com>, manivannan.sadhasivam@oss.qualcomm.com, "Bjorn Helgaas" <bhelgaas@google.com>, "Lorenzo Pieralisi" <lpieralisi@kernel.org>, =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, "Rob Herring" <robh@kernel.org>, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org, =?utf-8?q?David_E=2E_Box?= <david.e.box@linux.intel.com>, "Kai-Heng Feng" <kai.heng.feng@canonical.com>, =?utf-8?q?Rafael_J=2E_Wysocki?= <rafael@kernel.org>, "Heiner Kallweit" <hkallweit1@gmail.com>, "Chia-Lin Kao" <acelan.kao@canonical.com>, linux-rockchip@lists.infradead.org, regressions@lists.linux.dev, "Shawn Lin" <shawn.lin@rock-chips.com>, "Diederik de Haas" <diederik@cknow-tech.com>, "Heiko Stuebner" <heiko@sntech.de>
+To: "Manivannan Sadhasivam" <mani@kernel.org>
 MIME-Version: 1.0
-Message-ID: <da79f38f-fdb9-0101-67cc-144ef8d6e1d1@manjaro.org>
-Subject: =?utf-8?q?Re=3A?= [PATCH] =?utf-8?q?PCI/ASPM=3A?= Enable only L0s and L1 
- for devicetree platforms
+Message-ID: <b3e60f4e-6351-8303-6ad2-9e72849ccd18@manjaro.org>
+Subject: =?utf-8?q?Re=3A?= [PATCH v2 1/2] =?utf-8?q?PCI/ASPM=3A?= Override the ASPM 
+ and Clock PM states set by BIOS for devicetree platforms
 User-Agent: SOGoMail 5.12.3
 X-Last-TLS-Session-Version: None
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251023_112737_194439_CB01F9C4 
-X-CRM114-Status: GOOD (  23.77  )
+X-CRM114-CacheID: sfid-20251023_190201_990311_E2A1B07A 
+X-CRM114-Status: GOOD (  51.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,125 +85,130 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Bjorn,
+Hello Manivannan,
 
-On Thursday, October 23, 2025 20:06 CEST, Bjorn Helgaas <helgaas@kernel.org> wrote:
-> From: Bjorn Helgaas <bhelgaas@google.com>
+On Wednesday, October 15, 2025 08:22 CEST, Manivannan Sadhasivam <mani@kernel.org> wrote:
+> On Wed, Oct 15, 2025 at 01:33:35AM +0200, Dragan Simic wrote:
+> > On Tuesday, October 14, 2025 20:49 CEST, Bjorn Helgaas <helgaas@kernel.org> wrote:
+> > > On Wed, Oct 15, 2025 at 01:30:16AM +0900, FUKAUMI Naoki wrote:
+> > > > I've noticed an issue on Radxa ROCK 5A/5B boards, which are based on the
+> > > > Rockchip RK3588(S) SoC.
+> > > > 
+> > > > When running Linux v6.18-rc1 or linux-next since 20250924, the kernel either
+> > > > freezes or fails to probe M.2 Wi-Fi modules. This happens with several
+> > > > different modules I've tested, including the Realtek RTL8852BE, MediaTek
+> > > > MT7921E, and Intel AX210.
+> > > > 
+> > > > I've found that reverting the following commit (i.e., the patch I'm replying
+> > > > to) resolves the problem:
+> > > > commit f3ac2ff14834a0aa056ee3ae0e4b8c641c579961
+> > > 
+> > > Thanks for the report, and sorry for the regression.
+> > > 
+> > > Since this affects several devices from different manufacturers and (I
+> > > assume) different drivers, it seems likely that there's some issue
+> > > with the Rockchip end, since ASPM probably works on these devices in
+> > > other systems.  So we should figure out if there's something wrong
+> > > with the way we configure ASPM, which we could potentially fix, or if
+> > > there's a hardware issue and we need some king of quirk to prevent
+> > > usage of ASPM on the affected platforms.
+> > > 
+> > > Can you collect a complete dmesg log when booting with
+> > > 
+> > >   ignore_loglevel pci=earlydump dyndbg="file drivers/pci/* +p"
+> > > 
+> > > and the output of "sudo lspci -vv"?
+> > > 
+> > > When the kernel freezes, can you give us any information about where,
+> > > e.g., a log or screenshot?
+> > > 
+> > > Do you know if any platforms other than Radxa ROCK 5A/5B have this
+> > > problem?
+> > 
+> > After thinking quite a bit about it, I think we should revert this
+> > patch and replace it with another patch that allows per-SoC, or
+> > maybe even per-board, opting into the forced enablement of PCIe
+> > ASPM.  Let me explain, please.
 > 
-> f3ac2ff14834 ("PCI/ASPM: Enable all ClockPM and ASPM states for devicetree
-> platforms") enabled Clock Power Management and L1 PM Substates, but those
-> features depend on CLKREQ# and possibly other device-specific
-> configuration.  We don't know whether CLKREQ# is supported, so we shouldn't
-> blindly enable Clock PM and L1 PM Substates.
-> 
-> Enable only ASPM L0s and L1, and only when both ends of the link advertise
-> support for them.
-> 
-> Fixes: f3ac2ff14834 ("PCI/ASPM: Enable all ClockPM and ASPM states for devicetree platforms")
-> Reported-by: Christian Zigotzky <chzigotzky@xenosoft.de>
-> Link: https://lore.kernel.org/r/db5c95a1-cf3e-46f9-8045-a1b04908051a@xenosoft.de/
-> Reported-by: FUKAUMI Naoki <naoki@radxa.com>
-> Closes: https://lore.kernel.org/r/22594781424C5C98+22cb5d61-19b1-4353-9818-3bb2b311da0b@radxa.com/
-> Reported-by: Herve Codina <herve.codina@bootlin.com>
-> Link: https://lore.kernel.org/r/20251015101304.3ec03e6b@bootlin.com/
-> Reported-by: Diederik de Haas <diederik@cknow-tech.com>
-> Link: https://lore.kernel.org/r/DDJXHRIRGTW9.GYC2ULZ5WQAL@cknow-tech.com/
-> Signed-off-by: Bjorn Helgaas <bhelgaas@google.com>
-> Tested-by: FUKAUMI Naoki <naoki@radxa.com>
-> ---
-> I intend this for v6.18-rc3.
-> 
-> I think it will fix the issues reported by Diederik and FUKAUMI Naoki (both
-> on Rockchip).  I hope it will fix Christian's report on powerpc, but don't
-> have confirmation.  I think the performance regression Herve reported is
-> related, but this patch doesn't seem to fix it.
-> 
-> FUKAUMI Naoki's successful testing report:
-> https://lore.kernel.org/r/4B275FBD7B747BE6+a3e5b367-9710-4b67-9d66-3ea34fc30866@radxa.com/
+> ASPM is a PCIe device specific feature, nothing related to SoC/board. Even if
+> you limit it to certain platforms, there is no guarantee that it will be safe as
+> the users can connect a buggy device to the slot and it could lead to the same
+> issue.
 
-I'm more than happy with the way ASPM patches for DT platforms and
-Rockchip SoCs in particular are unfolding!  Admittedly, we've had
-a rough start with the blanket enabling of ASPM, which followed the
-theory, but the theory often differs from practice, so the combined
-state of this and associated patches from Shawn should be fine.
+I'm hoping that it's clear by now that the theory and practice
+actually diverge in this case, requiring certain level of support
+for different SoCs and boards, which makes ASPM more than just
+a device feature that's simply expected to work by default.
 
-Thank you very much for all the effort that included quite a lot
-of back and forth, and please feel free to include
+Dealing with buggy PCIe devices is, of course, another part of
+the entire endeavor.
 
-Acked-by: Dragan Simic <dsimic@manjaro.org>
-
-> ---
->  drivers/pci/pcie/aspm.c | 34 +++++++++-------------------------
->  1 file changed, 9 insertions(+), 25 deletions(-)
+> > When a new feature is introduced, it's expected that it may fail
+> > on some hardware or with some specific setups, so quirking off such
+> > instances, as time passes, is perfectly fine.  Such a new feature
+> > didn't work before it was implemented, so it's acceptable that it
+> > fails in some instances after the introduction, and that it gets
+> > quirked off as time passes and more testing is performed.
 > 
-> diff --git a/drivers/pci/pcie/aspm.c b/drivers/pci/pcie/aspm.c
-> index 7cc8281e7011..79b965158473 100644
-> --- a/drivers/pci/pcie/aspm.c
-> +++ b/drivers/pci/pcie/aspm.c
-> @@ -243,8 +243,7 @@ struct pcie_link_state {
->  	/* Clock PM state */
->  	u32 clkpm_capable:1;		/* Clock PM capable? */
->  	u32 clkpm_enabled:1;		/* Current Clock PM state */
-> -	u32 clkpm_default:1;		/* Default Clock PM state by BIOS or
-> -					   override */
-> +	u32 clkpm_default:1;		/* Default Clock PM state by BIOS */
->  	u32 clkpm_disable:1;		/* Clock PM disabled */
->  };
->  
-> @@ -376,18 +375,6 @@ static void pcie_set_clkpm(struct pcie_link_state *link, int enable)
->  	pcie_set_clkpm_nocheck(link, enable);
->  }
->  
-> -static void pcie_clkpm_override_default_link_state(struct pcie_link_state *link,
-> -						   int enabled)
-> -{
-> -	struct pci_dev *pdev = link->downstream;
-> -
-> -	/* For devicetree platforms, enable ClockPM by default */
-> -	if (of_have_populated_dt() && !enabled) {
-> -		link->clkpm_default = 1;
-> -		pci_info(pdev, "ASPM: DT platform, enabling ClockPM\n");
-> -	}
-> -}
-> -
->  static void pcie_clkpm_cap_init(struct pcie_link_state *link, int blacklist)
->  {
->  	int capable = 1, enabled = 1;
-> @@ -410,7 +397,6 @@ static void pcie_clkpm_cap_init(struct pcie_link_state *link, int blacklist)
->  	}
->  	link->clkpm_enabled = enabled;
->  	link->clkpm_default = enabled;
-> -	pcie_clkpm_override_default_link_state(link, enabled);
->  	link->clkpm_capable = capable;
->  	link->clkpm_disable = blacklist ? 1 : 0;
->  }
-> @@ -811,19 +797,17 @@ static void pcie_aspm_override_default_link_state(struct pcie_link_state *link)
->  	struct pci_dev *pdev = link->downstream;
->  	u32 override;
->  
-> -	/* For devicetree platforms, enable all ASPM states by default */
-> +	/* For devicetree platforms, enable L0s and L1 by default */
->  	if (of_have_populated_dt()) {
-> -		link->aspm_default = PCIE_LINK_STATE_ASPM_ALL;
-> +		if (link->aspm_support & PCIE_LINK_STATE_L0S)
-> +			link->aspm_default |= PCIE_LINK_STATE_L0S;
-> +		if (link->aspm_support & PCIE_LINK_STATE_L1)
-> +			link->aspm_default |= PCIE_LINK_STATE_L1;
->  		override = link->aspm_default & ~link->aspm_enabled;
->  		if (override)
-> -			pci_info(pdev, "ASPM: DT platform, enabling%s%s%s%s%s%s%s\n",
-> -				 FLAG(override, L0S_UP, " L0s-up"),
-> -				 FLAG(override, L0S_DW, " L0s-dw"),
-> -				 FLAG(override, L1, " L1"),
-> -				 FLAG(override, L1_1, " ASPM-L1.1"),
-> -				 FLAG(override, L1_2, " ASPM-L1.2"),
-> -				 FLAG(override, L1_1_PCIPM, " PCI-PM-L1.1"),
-> -				 FLAG(override, L1_2_PCIPM, " PCI-PM-L1.2"));
-> +			pci_info(pdev, "ASPM: default states%s%s\n",
-> +				 FLAG(override, L0S, " L0s"),
-> +				 FLAG(override, L1, " L1"));
->  	}
->  }
+> ASPM is not a new feature. It was introduced more than a decade before. But we
+> somehow procastinated the enablement for so long until we realized that if we
+> don't do it now, we wouldn't be able to do it anytime in the future.
+
+To clarify, I referred to PCIe as the already established feature,
+which evidently became broken on some SoCs and boards with the
+initial blanket enabling of ASPM.
+
+> > However, when some widespread feature, such as PCIe, has already
+> > been in production for quite a while, introducing high-risk changes
+> > to it in a blanket fashion, while intending to have the incompatible
+> > or not-yet-ready platforms quirked off over time, simply isn't the
+> > way to go.  Breaking stuff intentionally to find out what actually
+> > doesn't work is rarely a good option.
+> 
+> The issue is due to devices exposing ASPM capability, but behaving erratically
+> when enabled. Until, we enable ASPM on these devices, we cannot know whether
+> they are working or not. To avoid mass chaos, we decided to enable it only for
+> devicetree platforms as a start.
+
+As mentioned above, dealing with buggy PCIe devices is something
+to be covered separately, and wasn't the subject of my complaint.
+I referred to the SoC and board specifics.
+
+> > Thus, I'd suggest that this patch is replaced with nother patches,
+> > which would introduce an additional ASPM opt-in switch to the PCI
+> > binding, allowing SoCs or boards to have it enabled _after_ proper
+> > testing is performed.  The PCIe driver may emit a warning that ASPM
+> > is to be enabled at some point in the future, to "bug" people about
+> > the need to perform the testing, etc.
+> 
+> Even if we emit a "YOUR DEVICE MAY BREAK" warning, nobody would care as long as
+> the device works for them. We didn't decide to enable this feature overnight to
+> trouble users. The fact that ASPM saves runtime power, which will benefit users
+> and ofc the environment as a whole, should not be kept disabled.
+> 
+> But does that mean, we wanted to have breakages, NO. We expected breakages as
+> not all devices will play nicely with ASPM, but there is only one way to find
+> out. And we do want to disable ASPM only for those devices.
+
+I see, and it has turned out rather well in the end.  I totally
+understand the frustration that may come out of people not caring
+for something until it actually breaks, but as you can see, the
+Rockchip community, including people from Rockchip itself, actually
+cares quite a lot and is willing to help in different ways.
+
+> >  With all that in place, we
+> > could expect that in a year or two PCIe ASPM could eventually be
+> > enabled everywhere.  Getting everything tested is a massive endeavor,
+> > but that's the only way not to break stuff.
+> > 
+> > Biting the bullet and hoping that it all goes well, I'd say, isn't
+> > the right approach here.
+> 
+> Your two year phased approach would never work as that's what
+> we have hoped for more than a decade.
+
+Totally understood, but again, perhaps you haven't knocked at the
+right doors.  The Rockchip community cares, for example. :)
 
 
 _______________________________________________
