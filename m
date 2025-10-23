@@ -4,74 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F5E5CCD193
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Oct 2025 18:58:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CB71CCD193
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Oct 2025 19:36:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Q3g8nlrXdgtxYJU4rJqd5XUTzN1GU9/42dVjFrwMkuE=; b=sy+BK7ZDlR3LkL
-	K0nEm4GElCz3bnpuQDMqwz2lEbmRzVudkOe0DSQSKxocfB+QCCK8DWZua54rvePmMVQZSnuKQsVai
-	eRPvf+8aaNv5Rk/b/95tpTp3i+bx6Ns7y//sCvPwhlD2EtltIC5GgKF1b6sxP+tYBTAbyY9U9lvs2
-	D6a2GxfJnT/bYt2jHhHW4qDT7s7BRhgHtq4aChqWEboHSWDwKaNX5Qh0aLcTCAQ7v6y0gNFJ51RU5
-	OjA9JGoCcD8YOwfPweXVgDRVZ7DC+dFzySlnpCSw814y0iUz8UmvuuGaO4uR/FaMECQw0eCSfhcI4
-	enK2zk6pYrUrN0i4144Q==;
+	List-Owner; bh=YfiprKHjKj0+twR1hprY/ZTLVOP3wjMLYRVbKKhejq4=; b=UQ8aojp552Kj0M
+	YCc9XHqYs9gLT3wVpl8Z2YF8Ihob0LKc3JF7Eo+VQnqcPiTkXG1RfO2GHbc7u/tcZ6Ry/ECgQAos3
+	maB0vMVx3mMk8JQikCE2rtTMIS0K9O7odHsyFcmgP4czVvv1l05eYrhM7ndeN9GF8Gjw9C3IlHxEr
+	VkNmJOSk+pYk9N6IDYxalNxiDn0kqRRaCtRJjXDAPbGH7eE0ck2RKqW0frUD0qQzSo0nIqQYWYkb/
+	6UVP5UDRllqPaRQKNXH1xQUftuSFvLltIKZJ+NAv4rAaGAYy3Dj9mKQi+SzVZDg2dbketHaf9F/2P
+	6yVrQERwKUkuODsvd/0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vC0Vd-00000007JTF-0teB;
-	Thu, 23 Oct 2025 18:58:01 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1vC16C-00000007Nlf-1WDg;
+	Thu, 23 Oct 2025 19:35:48 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vC0Vc-00000007JS8-04JT;
-	Thu, 23 Oct 2025 18:58:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=X5+yCSGksFVRNRQf31YBe+wjmkAH6A3Ih7vubn4fPMA=; b=Ny/nVDpbLFedoWo7JAjvlb52lG
-	wiQEWaacalVKjQSdQOVfn4+GZ30ohzqIe9u63joocmB1YdaHTm5yPs3FFT4ebPONhW9ajVUaMFrqR
-	qA5f6DH8bYLnAunav7iJe93T5w7buwPF1DZ5it/e0kEFmK5VxzXaRL6iBKcMO9FVduPUJfnx0yyz2
-	P4TtcMtTzCjBbN2+awS0AGIjV7+27TfBXdn7FlFXaMex1QUL6vH2GwhJ6dzVaEUHT/kI/Vel7lSvP
-	vi1VgTqHT4Gw28RS1KXZzdc+u3PY0gseSSWPkVw7yBvb8McAipSlXYqINED6Wf6p8Dp4tQic0ahrF
-	RZVHKOuQ==;
-Received: from vps0.lunn.ch ([156.67.10.101])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBzdu-00000001dWH-1se7;
-	Thu, 23 Oct 2025 18:02:32 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=X5+yCSGksFVRNRQf31YBe+wjmkAH6A3Ih7vubn4fPMA=; b=b2ZJ0HIob3ZMvZA80vttAQ1a7H
-	iiBQHcFLOAxvT5TaBjA3jDeqeQoQu4TDQEvEa0JDnfiy8/0xYdn4VZr4TpDk24qMUHybPhD+cnZaI
-	0od+bZrDEhBVqx/DANgtBZfHCjpzb9B0tS6MG+f/rzsqvuBTsFiXv0bEE+avkj7sDoKY=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1vC0VS-00BuhZ-FF; Thu, 23 Oct 2025 20:57:50 +0200
-Date: Thu, 23 Oct 2025 20:57:50 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
-	kuba@kernel.org, pabeni@redhat.com, robh@kernel.org,
-	krzk+dt@kernel.org, conor+dt@kernel.org, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	jonas@kwiboo.se
-Subject: Re: [PATCH v2 5/5] MAINTAINERS: add dwmac-rk glue driver to the main
- Rockchip entry
-Message-ID: <35567cda-0f49-4784-b873-97e378fcee16@lunn.ch>
-References: <20251023111213.298860-1-heiko@sntech.de>
- <20251023111213.298860-6-heiko@sntech.de>
+	id 1vC168-00000007Nl2-3sZQ;
+	Thu, 23 Oct 2025 19:35:46 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1761248119; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=nv18uc+SyKl+K8SnLLTWpAq0fbUpluuoZJju1MeUj+H/X9bt51/ldBG63PC0/4u4BK/AzaRiCVKegxqnTYGFW6sgeQcO1qcz6nhGgc6/R2rg2MbmYPWuHPDHOjh7RHokXe5zoZF+wi84/s/4JuRd/ojvFfJ82tSfefflm5xe3C8=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1761248119; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=DoBeKc7k0tI/KT6rIVYw1QPBdWN+Yb/dqCkvda7xnq8=; 
+	b=lIKNEcyDva8gdJAeAtbnSr/3vdRnFgxZVz6Fxl5YVBbwLbulKabzGV8LWLUs0pEl64356H4Si+9zoI0J/j5KTR9ke9eCcQd+2lW4Pqy7FRMiUVc1JsfF4P+GMVwzq0oTQcAnflvVagNQggc4e/QbKq3UDPHmVJ10B4w8sUgcwd8=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
+	dmarc=pass header.from=<detlev.casanova@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1761248119;
+	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=DoBeKc7k0tI/KT6rIVYw1QPBdWN+Yb/dqCkvda7xnq8=;
+	b=eInEvmGEiPpCIw5+BSGE1S4LGFduLUjAMMsmQ9bPV9BCl8tZTEOEpuqUYqFl882L
+	okc8uQUclwD6wSqoR3A36tguk0pR/Owy6MJITrvJBgDWM7nl3k6Gd7aGURHkscaBiqM
+	FxT3cyYl3kxs/z2kGWsxqmU1+78vg8YhA3f+HIHI=
+Received: by mx.zohomail.com with SMTPS id 1761248113921586.062025324594;
+	Thu, 23 Oct 2025 12:35:13 -0700 (PDT)
+Message-ID: <174217e1-2ec5-42fe-bdc8-57b8a5f943c1@collabora.com>
+Date: Thu, 23 Oct 2025 15:35:11 -0400
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20251023111213.298860-6-heiko@sntech.de>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 08/15] media: rkvdec: Add generic configuration for
+ variants
+To: Jonas Karlman <jonas@kwiboo.se>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Heiko Stuebner <heiko@sntech.de>, Ricardo Ribalda <ribalda@chromium.org>,
+ Hans Verkuil <hverkuil@kernel.org>, Hans de Goede <hansg@kernel.org>,
+ Yunke Cao <yunkec@google.com>, Jonathan Corbet <corbet@lwn.net>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>,
+ James Cowgill <james.cowgill@blaize.com>, linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ kernel@collabora.com, Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ Diederik de Haas <didi.debian@cknow.org>, linux-kernel@vger.kernel.org
+References: <20251022174508.284929-1-detlev.casanova@collabora.com>
+ <20251022174508.284929-9-detlev.casanova@collabora.com>
+ <5d2f3b9c-3d1a-47a5-93f1-1a6d6ce540f3@kwiboo.se>
+Content-Language: en-US
+From: Detlev Casanova <detlev.casanova@collabora.com>
+In-Reply-To: <5d2f3b9c-3d1a-47a5-93f1-1a6d6ce540f3@kwiboo.se>
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251023_190230_559548_E2F497FE 
-X-CRM114-Status: UNSURE (   8.68  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251023_123545_000054_898513CA 
+X-CRM114-Status: GOOD (  23.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,23 +85,172 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Oct 23, 2025 at 01:12:12PM +0200, Heiko Stuebner wrote:
-> The dwmac-rk glue driver is currently not caught by the general maintainer
-> entry for Rockchip SoCs, so add it explicitly, similar to the i2c driver.
-> 
-> The binding document in net/rockchip-dwmac.yaml already gets caught by
-> the wildcard match.
-> 
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+Hi Jonas,
 
-Reviewed-by: Andrew Lunn <andrew@lunn.ch>
+On 10/22/25 16:57, Jonas Karlman wrote:
+> Hi Detlev,
+>
+> On 10/22/2025 7:45 PM, Detlev Casanova wrote:
+>> This is to prepare for adding new versions of the decoder and
+>> support specific formats and ops per version.
+>>
+>> Different rkvdec_variant instances will be able to share generic
+>> decoder configs.
+>>
+>> Tested-by: Diederik de Haas <didi.debian@cknow.org>  # Rock 5B
+>> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+>> ---
+>>   .../media/platform/rockchip/rkvdec/rkvdec.c   | 37 ++++++++++++-------
+>>   .../media/platform/rockchip/rkvdec/rkvdec.h   |  6 +++
+>>   2 files changed, 30 insertions(+), 13 deletions(-)
+>>
+>> diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.c b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
+>> index 776149f871b0..a7af1e3fdebd 100644
+>> --- a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
+>> +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
+>> @@ -373,15 +373,16 @@ static bool rkvdec_is_capable(struct rkvdec_ctx *ctx, unsigned int capability)
+>>   static const struct rkvdec_coded_fmt_desc *
+>>   rkvdec_enum_coded_fmt_desc(struct rkvdec_ctx *ctx, int index)
+>>   {
+>> +	const struct rkvdec_config *cfg = ctx->dev->variant->config;
+>>   	int fmt_idx = -1;
+>>   	unsigned int i;
+>>   
+>> -	for (i = 0; i < ARRAY_SIZE(rkvdec_coded_fmts); i++) {
+>> -		if (!rkvdec_is_capable(ctx, rkvdec_coded_fmts[i].capability))
+>> +	for (i = 0; i < cfg->coded_fmts_num; i++) {
+>> +		if (!rkvdec_is_capable(ctx, cfg->coded_fmts[i].capability))
+>>   			continue;
+>>   		fmt_idx++;
+>>   		if (index == fmt_idx)
+>> -			return &rkvdec_coded_fmts[i];
+>> +			return &cfg->coded_fmts[i];
+>>   	}
+>>   
+>>   	return NULL;
+>> @@ -390,12 +391,13 @@ rkvdec_enum_coded_fmt_desc(struct rkvdec_ctx *ctx, int index)
+>>   static const struct rkvdec_coded_fmt_desc *
+>>   rkvdec_find_coded_fmt_desc(struct rkvdec_ctx *ctx, u32 fourcc)
+>>   {
+>> +	const struct rkvdec_config *cfg = ctx->dev->variant->config;
+>>   	unsigned int i;
+>>   
+>> -	for (i = 0; i < ARRAY_SIZE(rkvdec_coded_fmts); i++) {
+>> -		if (rkvdec_is_capable(ctx, rkvdec_coded_fmts[i].capability) &&
+>> -		    rkvdec_coded_fmts[i].fourcc == fourcc)
+>> -			return &rkvdec_coded_fmts[i];
+>> +	for (i = 0; i < cfg->coded_fmts_num; i++) {
+>> +		if (rkvdec_is_capable(ctx, cfg->coded_fmts[i].capability) &&
+>> +		    cfg->coded_fmts[i].fourcc == fourcc)
+>> +			return &cfg->coded_fmts[i];
+>>   	}
+>>   
+>>   	return NULL;
+>> @@ -1014,18 +1016,19 @@ static int rkvdec_add_ctrls(struct rkvdec_ctx *ctx,
+>>   
+>>   static int rkvdec_init_ctrls(struct rkvdec_ctx *ctx)
+>>   {
+>> +	const struct rkvdec_config *cfg = ctx->dev->variant->config;
+>>   	unsigned int i, nctrls = 0;
+>>   	int ret;
+>>   
+>> -	for (i = 0; i < ARRAY_SIZE(rkvdec_coded_fmts); i++)
+>> -		if (rkvdec_is_capable(ctx, rkvdec_coded_fmts[i].capability))
+>> -			nctrls += rkvdec_coded_fmts[i].ctrls->num_ctrls;
+>> +	for (i = 0; i < cfg->coded_fmts_num; i++)
+>> +		if (rkvdec_is_capable(ctx, cfg->coded_fmts[i].capability))
+>> +			nctrls += cfg->coded_fmts[i].ctrls->num_ctrls;
+>>   
+>>   	v4l2_ctrl_handler_init(&ctx->ctrl_hdl, nctrls);
+>>   
+>> -	for (i = 0; i < ARRAY_SIZE(rkvdec_coded_fmts); i++) {
+>> -		if (rkvdec_is_capable(ctx, rkvdec_coded_fmts[i].capability)) {
+>> -			ret = rkvdec_add_ctrls(ctx, rkvdec_coded_fmts[i].ctrls);
+>> +	for (i = 0; i < cfg->coded_fmts_num; i++) {
+>> +		if (rkvdec_is_capable(ctx, cfg->coded_fmts[i].capability)) {
+>> +			ret = rkvdec_add_ctrls(ctx, cfg->coded_fmts[i].ctrls);
+>>   			if (ret)
+>>   				goto err_free_handler;
+>>   		}
+>> @@ -1240,13 +1243,20 @@ static void rkvdec_watchdog_func(struct work_struct *work)
+>>   	}
+>>   }
+>>   
+>> +static const struct rkvdec_config config_rkvdec = {
+>> +	.coded_fmts = rkvdec_coded_fmts,
+>> +	.coded_fmts_num = ARRAY_SIZE(rkvdec_coded_fmts),
+>> +};
+>> +
+>>   static const struct rkvdec_variant rk3288_rkvdec_variant = {
+>>   	.num_regs = 68,
+>> +	.config = &config_rkvdec,
+>>   	.capabilities = RKVDEC_CAPABILITY_HEVC,
+>>   };
+>>   
+>>   static const struct rkvdec_variant rk3328_rkvdec_variant = {
+>>   	.num_regs = 109,
+>> +	.config = &config_rkvdec,
+>>   	.capabilities = RKVDEC_CAPABILITY_HEVC |
+>>   			RKVDEC_CAPABILITY_H264 |
+>>   			RKVDEC_CAPABILITY_VP9,
+>> @@ -1255,6 +1265,7 @@ static const struct rkvdec_variant rk3328_rkvdec_variant = {
+>>   
+>>   static const struct rkvdec_variant rk3399_rkvdec_variant = {
+>>   	.num_regs = 78,
+>> +	.config = &config_rkvdec,
+>>   	.capabilities = RKVDEC_CAPABILITY_HEVC |
+>>   			RKVDEC_CAPABILITY_H264 |
+>>   			RKVDEC_CAPABILITY_VP9,
+>> diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.h b/drivers/media/platform/rockchip/rkvdec/rkvdec.h
+>> index f35f6e80ea2e..3b1cc511412e 100644
+>> --- a/drivers/media/platform/rockchip/rkvdec/rkvdec.h
+>> +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.h
+>> @@ -71,6 +71,7 @@ vb2_to_rkvdec_decoded_buf(struct vb2_buffer *buf)
+>>   
+>>   struct rkvdec_variant {
+>>   	unsigned int num_regs;
+>> +	const struct rkvdec_config *config;
+>>   	unsigned int capabilities;
+>>   	unsigned int quirks;
+>>   };
+>> @@ -113,6 +114,11 @@ struct rkvdec_coded_fmt_desc {
+>>   	unsigned int capability;
+>>   };
+>>   
+>> +struct rkvdec_config {
+>> +	const struct rkvdec_coded_fmt_desc *coded_fmts;
+>> +	size_t coded_fmts_num;
+>> +};
+> Do we really need a separate config struct? This chould/should me merged
+> with the variant struct.
+>
+> Using a two layer variant/config mostly seem to complicate things based
+> on an initial review.
 
-    Andrew
+I've been wondering about that and decided to go this way because 
+multiple variants could use a common config and this makes less copy/paste.
+
+But I think you are right, it does complicate things unnecessarily, I'd 
+rather see all variants with all their parameters directly. I'll change 
+that :)
+
+> Regards,
+> Jonas
+>
+>> +
+>>   struct rkvdec_dev {
+>>   	struct v4l2_device v4l2_dev;
+>>   	struct media_device mdev;
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
 _______________________________________________
 Linux-rockchip mailing list
