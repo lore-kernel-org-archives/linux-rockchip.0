@@ -4,75 +4,156 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BA9CCCD1BC
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Oct 2025 14:07:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82020CCD1BE
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Oct 2025 14:27:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZLQz86XkyeglH3LHOnuqDt83THuBDf6T0amK29H3P7I=; b=HIrTQjtRmhXyB+
-	fCMW6BdT42WntdCdeg7//eEbcnUcsPDv9/Aul9ecjXRuM9m2rlDlpleOxfVGFqkOtWy9TfJXqzFTH
-	FwUHvyLevfZfpa1RmOK+JqNOFXfMgztKSVTBML9Dk98NkMSNPJ/5XY//ma0wjmDgJsxqHa3WfBhAs
-	hJ8ofIGVL6lcO+lbCkWNCKODLQZ1AQnXfztEe+KsYN1HdEYB+/xFbEQ5XlphPEWjaFagdGP4xEP4I
-	/XFVmfYMIPwtEgomaxbQ6LKsvUm4lWTMKACGAWo+1+chSWdxYikjaFCF8CE8HXSOmYKPod8VzoTte
-	NhHELKD49nxj9hBv1VXA==;
+	List-Owner; bh=not4QlrEZVbHv9kvz9s4TAZnYRArenKmKH96DZZ74JM=; b=33kGvMQ6awyVmw
+	a3547Nj1OGr1YX7qLI8oAemzmfW7aVbYWkeEWppsrCV5Dcv3KXnB0I6xom/OTNQQG3mFrVka9WI9Z
+	DLH7l8AKzU/7xBWNCFi5hQufVMXnehC6hsaa//cgFzd4hKa112rOf0LAC7SC7ryjwameSfpcGJbXn
+	D2NIMhSJq9Lj3+4iMwDuehi2PZw5GvNXt/La80jybwke9Dclb4xmvdrFXsO2Ddjn7yp2r6iBXC5oF
+	CJm6hfH9c8kxFNfpLVyyE1oC7O40DZpp1LA6aPHP6gjrri5fsrFL/19fHZ48jjLGThkexBIZsprGA
+	/OnRwkpL0KeA1Tz/U84g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBvyp-00000006Woo-3HaD;
-	Thu, 23 Oct 2025 14:07:51 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1vBwHW-00000006abn-3Q2K;
+	Thu, 23 Oct 2025 14:27:10 +0000
+Received: from mail-westcentralusazon11013043.outbound.protection.outlook.com ([40.93.201.43] helo=CY3PR05CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBvyn-00000006Wo1-1n6L;
-	Thu, 23 Oct 2025 14:07:50 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1761228452; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=QJTDz73q9ULElSJbe3UBcx+2Lh0bvt0HNsiJran5Vx51osYjS85rMDSnSIQ3D8wy4/5jWxUFB33nEv6gyOwj3VXh8p8BOzgzdIsQLkL2bgHCAcrqnBurjZdf9P7ar8l9Z18pFsADQr4gUEobSTfCMDZfk34f+CEs91kZGRTU20M=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1761228452; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=Zn87WStNUu8QnMPbdDiRsUi5A/QpkGCBEl8yDwMULUg=; 
-	b=LTpLW0BGhziv59wBl4U/yI/p/C7UWo1UnC0ZolcyfF7kM0SRjzxJpGPW1m0xAS/bNuMDSKdyjiqo5nCsc65riPiGB/oSsy7l4FaYkrsbgdOQgCq9fZwLMYyCAGU8hFgVW0XO/Zck5R2/XKbG1cEqQysrz3X3suS5DPMf8/a9JTg=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
-	dmarc=pass header.from=<detlev.casanova@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1761228452;
-	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=Zn87WStNUu8QnMPbdDiRsUi5A/QpkGCBEl8yDwMULUg=;
-	b=AP8SnN0sy9jK6LmZJPJ5zgN9OdYE/1DvKHCdkQNCHLsPQ1DZN3s027C/aUb+l4Wd
-	UhbHHc0zrptRAa8zRgFvAy5gpjv1rdRrdNbyqHYsX3MK8TbMgjBaNvH8/40DNlqtZwy
-	ZyStghdS8G1krBgZ694sxhxkSAyL0v2DCAYevoVI=
-Received: by mx.zohomail.com with SMTPS id 1761228449352726.4571148367125;
-	Thu, 23 Oct 2025 07:07:29 -0700 (PDT)
-Message-ID: <c7ea2422-cff3-46ad-8c46-20aa651a18d4@collabora.com>
-Date: Thu, 23 Oct 2025 10:07:27 -0400
+	id 1vBwHU-00000006aap-2Ad6;
+	Thu, 23 Oct 2025 14:27:09 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=Zp8r2qlkb8MJUBtASLgWR8tbYPt4j0hjPFfjBf0U1gLqvP/APV339QBhHinJObhJeRWznN4ZGLeQKOazmh+0rNWHD7DL4xI0Xim3suiTTX3IRajV4qSITkxYnBo4H+ffci9RPsikFKJFWJGUVqNxxCDshqPFJnpaE/T4LiRiEKdKd7UmmsoiPw6RbcMqVBXtqWGPssdaRHAU/bG5T3COUj060MCzFz9/+Ra/bb4S6IFe1kOa+yZjQlo3ev+6h9idTOE6nWtoGKJZKMRoGIGAVNJBz5stzOU40P6tkX3Tv26l5jyVzPqH3bG+A7qYhhY1OVHQIkcrgRuHhrQgTUVNoA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=L70ISb5udTSOblj/fwUOMONa2wOnc7GX6XtX6syjQ/A=;
+ b=VVjSeLxDXb5u2xQmfLsIG4UB8Ao2SunI7hC2BlrivRlhLVBqxxZ8tdVIINqQjllMKbc8rUcK3CYUl/210j819t+VW/Pix6RPqH/IegBqV8kO978M3hvcjRmE7uK546Xk3MiwEkm8I+5DHo6yInBBs/YoXaET4kxo0NeHbIvkUCaTq9e+eeXV7xqShDlS9rnv6XRl0U7+dlRHAgqpHzVbrkljLf/Dq5Us2pvxINvcBdm+aW7PyY1mvZinGByeYN10gMYo5PcskiuBP26FIF2kgFabuVaZSwnT+O9+rqHwDahBVlWzP+8iPbIOdxKAn/2qTciSaZodjVDpYaZqsE6JVg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=L70ISb5udTSOblj/fwUOMONa2wOnc7GX6XtX6syjQ/A=;
+ b=LaErF0yY2OGFTRdwOOBIuM8AQuBmFbwSZxykaJNzCpKBNMdOLZOh/GpR8OBxMw8RvXzg4sAMQUVTqml+kPykHZ1J9kuBTHwNqCDbE47enKwHswgeDWB9dht48haicoE8Dhz4r2WSEKAMR55TKgbhqaas6knd7I7RGxnf6X0e981MRhoSmV78FQm0g5DrSQxJ+05zn2sQ2EzZP5sSTm1ObnE0e3biWJ8RdayKBDGVXqVXfS+t79lnqKfl1FlMYQ+ELOiJeDN4Qmkx2BSyGVeg0BB5pnmVasd1hOTB+ixTj6cC32/p+ev3eoBBQ2P58zQlGYQKqzB3RFMOmlZdHFIAyg==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from MN2PR12MB3613.namprd12.prod.outlook.com (2603:10b6:208:c1::17)
+ by DM4PR12MB7743.namprd12.prod.outlook.com (2603:10b6:8:101::19) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9253.13; Thu, 23 Oct
+ 2025 14:26:58 +0000
+Received: from MN2PR12MB3613.namprd12.prod.outlook.com
+ ([fe80::1b3b:64f5:9211:608b]) by MN2PR12MB3613.namprd12.prod.outlook.com
+ ([fe80::1b3b:64f5:9211:608b%4]) with mapi id 15.20.9253.011; Thu, 23 Oct 2025
+ 14:26:58 +0000
+Date: Thu, 23 Oct 2025 11:26:57 -0300
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Robin Murphy <robin.murphy@arm.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Christian Benvenuti <benve@cisco.com>,
+	Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Joerg Roedel <joro@8bytes.org>, Leon Romanovsky <leon@kernel.org>,
+	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-rdma@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Nelson Escobar <neescoba@cisco.com>,
+	Rob Clark <robin.clark@oss.qualcomm.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
+	Chen-Yu Tsai <wens@csie.org>, Will Deacon <will@kernel.org>,
+	Yong Wu <yong.wu@mediatek.com>, patches@lists.linux.dev
+Subject: Re: [PATCH 2/3] iommu/amd: Don't call report_iommu_fault()
+Message-ID: <20251023142657.GH262900@nvidia.com>
+References: <2-v1-391058a85f30+14b-iommu_set_fault_jgg@nvidia.com>
+ <579bdc4e-ab71-4120-8991-34400d4bbf8d@arm.com>
+Content-Disposition: inline
+In-Reply-To: <579bdc4e-ab71-4120-8991-34400d4bbf8d@arm.com>
+X-ClientProxiedBy: MN0PR04CA0026.namprd04.prod.outlook.com
+ (2603:10b6:208:52d::17) To MN2PR12MB3613.namprd12.prod.outlook.com
+ (2603:10b6:208:c1::17)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 02/15] media: v4l2-ctrls: Add hevc_ext_sps_[ls]t_rps
- controls
-To: Hans Verkuil <hverkuil+cisco@kernel.org>, linux-kernel@vger.kernel.org
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Heiko Stuebner <heiko@sntech.de>, Ricardo Ribalda <ribalda@chromium.org>,
- Hans Verkuil <hverkuil@kernel.org>, Hans de Goede <hansg@kernel.org>,
- Yunke Cao <yunkec@google.com>, Jonathan Corbet <corbet@lwn.net>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Sakari Ailus <sakari.ailus@linux.intel.com>,
- James Cowgill <james.cowgill@blaize.com>, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- kernel@collabora.com, Nicolas Dufresne <nicolas.dufresne@collabora.com>
-References: <20251022174508.284929-1-detlev.casanova@collabora.com>
- <20251022174508.284929-3-detlev.casanova@collabora.com>
- <6eaa8b26-edab-4bfa-9c6a-1fbb54c36b4e@kernel.org>
-Content-Language: en-US
-From: Detlev Casanova <detlev.casanova@collabora.com>
-In-Reply-To: <6eaa8b26-edab-4bfa-9c6a-1fbb54c36b4e@kernel.org>
-X-ZohoMailClient: External
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: MN2PR12MB3613:EE_|DM4PR12MB7743:EE_
+X-MS-Office365-Filtering-Correlation-Id: c37b7ba0-f2e7-4046-2c9e-08de124038ed
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|7416014|376014|366016;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?REoMElNXr7jlpZpQ0trkmXGqAvhAtCOVDrUD7ZC3d6Bo4zbmrhp/QmyjCcJc?=
+ =?us-ascii?Q?ACL5mlwUlHjKr5xscknjKDRZk+7eRPIOiAlLDFTYm8aUHRmqdE2cwPs20rxa?=
+ =?us-ascii?Q?MY0ZHiJEqAesUxza8xzvLWghFAELg9Eo7l6b0awNlZJESRnIbsHPlmtRAggR?=
+ =?us-ascii?Q?ljzXKI24GVzeJvL2k0qX1MspcvWSw0sMXN3Z5tuQnVDMFvFg5RjqOyt+zQCe?=
+ =?us-ascii?Q?814mNcCJhybLJs99SgY7SKGoF0mrgEhOBzritDkgyW4GrPDwdbDGnFm9aHmO?=
+ =?us-ascii?Q?iwC8dhfzNLjULsRuS8qXMMtvWfNI5ykGLrjClsB7Ox0c0JVcpSA8CvagL+XZ?=
+ =?us-ascii?Q?6NjagHdoLPGLn80OLhsVbpITZpFWSjCw4HQZQsibZL2fDmKhmL0uztNk/6eQ?=
+ =?us-ascii?Q?vaHpNR2aAQaI2zLDjnCuKGPN9jTuu/6ViE26DhxjrOr7ugrTs+zR9NYuXlq2?=
+ =?us-ascii?Q?50Z8DxxW4gKE5mwkiAAStNXnIs/in8BUtokFx4ZbwgAF+PNAhvCGyIzVJJe9?=
+ =?us-ascii?Q?GG5g/QytWP89MJHgSXrqN9c9Luue8CAI2tuezwuaCHqTIf5d8UQVRsCl9B5m?=
+ =?us-ascii?Q?zC0GlqprdBHsUn/C9pA4mpn060x+g9y3M8GBU7IWQfNbEdXITbO9wzoMdays?=
+ =?us-ascii?Q?0mlvA0FmKr2swbq3fwKmyqCp1uM+f8IbkQssBW0DomVPe6P2Es+oTWx3LWlV?=
+ =?us-ascii?Q?D4u5toI0Kfs+jE6apiAIYExNIszAfQC6EDxOIpX0HIUCRN70Cuue2cjfBKzR?=
+ =?us-ascii?Q?HExZ1Dr3IMLfMgg1Flxmt/BKSbISgLgGdUrFD+9uLZYfSWuD+q5F7OzzspuI?=
+ =?us-ascii?Q?RRwUGTiVNfEFTo1bzbF4LSNiPKNkhxd8hC3mG1bjD9A0pn+fsFMwh9j9f/e3?=
+ =?us-ascii?Q?EIhfvJ2BLEYjDaMKM/Me6fXYPlukazqAvZ84qS2eX+8YYpWnwGn61xtxH9Bc?=
+ =?us-ascii?Q?Ye+PGqV8hbz4lWHEETkWxZiYCvo+mGGHt/e+HqQymnvIpFq/afYcPUsu0a7b?=
+ =?us-ascii?Q?7mAyEYXU8jrX0vuw2tWsiaBAwGCWNCuiYskjiG0uHtQ9t4d+bH6Uwz7Jgw89?=
+ =?us-ascii?Q?pgrQZTLrR00rEKcD1CChL9DCexTkFNxOC7kJY9OR+yJbK9D18lGNWjH5ZeyB?=
+ =?us-ascii?Q?97hXrX5UV406hAQWiGS4N9cba23nhNrK19axK1xo5v0e1U1kuN+rt3oAWMxW?=
+ =?us-ascii?Q?16DTnVfL83hdrpglC8745dqVY/+lRa8Gd6UvedoGrgRFLhnXIQapYPNadtMs?=
+ =?us-ascii?Q?9sH0WzZa1DWiB9tFhdkFlkoxKcc3IN91VedhQXnbyDYOMznTFTgPF3GcNu1C?=
+ =?us-ascii?Q?EQ7E/wN9C83ynD5T2y2TA0r838DqAp0TcpJap2exz3fdpBaCiwdEGT9wBmR4?=
+ =?us-ascii?Q?RAHrm5diAHmMrDDFdCDRM6M79GuEnOfATKfEjRtgkVIjikqYM51/WOy0Wzsa?=
+ =?us-ascii?Q?oZFpnoY6pPZS3RLudwq5v+uOZckB7DyX?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MN2PR12MB3613.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(7416014)(376014)(366016);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?PIvtdRJKmggPKpS4XzTl+AxK0XCRneZRLugGHDAH/DQ7vn4nCwiEGLjRg6C+?=
+ =?us-ascii?Q?QEfBX6hxqBrbcRK4pJmnlWYwqWCEWEeNFNII9yypl8o0TWzCYYf8lKUdXocC?=
+ =?us-ascii?Q?LUS06atd4NNaCFXWqojzv6RS5h/tl1E90l4RO/VE+MCuH51NvA7ctriotzZx?=
+ =?us-ascii?Q?vkqXhWMbm4KwFRWAqwN5+ZjQf6KS/mmUV4irI7WNMtyKBm7IvXfasOTP01xg?=
+ =?us-ascii?Q?VdFcMlubBNvukVIliV465/3/ZA58Yc2WYRiqKLfrbuxd5Eo4hzEOganLakUE?=
+ =?us-ascii?Q?IwgdB+MiFP/uFbzdEASsqjRngcfTCpkp0t9I6UzlGrLlP29YGMUY8lr6UwGT?=
+ =?us-ascii?Q?/zZ2mJyOavbK6+WfZqrX386oIEaezFx6H5tD8OXyrIJajATDsN4zN1a2t29u?=
+ =?us-ascii?Q?EzIcDIbPRjdmtLJCDpcalfXnCd9upBVLa8OY2dFb+EHlBirEz/zDzhbOI+1h?=
+ =?us-ascii?Q?PVdpHrVJxT0LFsWNRu6krdjTrrypbK0DIxL9j2qJNW4kEFH84C+Vp0NB2Z3/?=
+ =?us-ascii?Q?hqmY+9jLSDZgqJHegfPpMYfxgYx73GxwwfCKZHVdw1+0acLDa9nOuJtRY9Ar?=
+ =?us-ascii?Q?geRzeQiCD8j7WRI4eItZK+PCpn7dR5iG9M45J491cCjr+9oWH3hrbmfS/3b1?=
+ =?us-ascii?Q?g3YSJYMn41rAQuS5EXDatyNciURZneDVod2B6OuA3azESLWjNxVe4f1kufh0?=
+ =?us-ascii?Q?ks56027rwjP4vyQ1KMErvo+d6FJawGcFdyvx/iraWKaqyHefGiTKvltBxjG6?=
+ =?us-ascii?Q?34A4W0yXNUJ2SEJ4UeTd5t7C5CKzkNWwBGXPfzyaoz7wxoc/LUJhmfJmICG2?=
+ =?us-ascii?Q?dtzbjyQ16CnaCcb89rvyAKTUsiR783EmFDIuxSHjJGektForohww2yqlR89k?=
+ =?us-ascii?Q?2HgplBidOcSg8MKC06wJg3VCAjxm4l0FrpaIE/KJpQGJr+ogM12Lcf9Vvemi?=
+ =?us-ascii?Q?Ez0V8Sf5Nv2v1qxgyI6v/JVG0PfYZlUUyFk1V1I7FEFwfKeKIduCCVR52Whu?=
+ =?us-ascii?Q?uX6lDhTHmvWPHqs+iPUnWiOpBEVtzTrssk9mDT01NTPXBt5/WSVn2BUYggbI?=
+ =?us-ascii?Q?WU1M38C9U+ux9BMfIf9V/dkD8rwllMuY/C8bvjXAE8vnbnE0f6ybFmOVfEc+?=
+ =?us-ascii?Q?honl7t0F32n+wZ6zTE0V/U5BhB8qREwbX2su4WamTfvcqt4ilrXQ9LqI6orC?=
+ =?us-ascii?Q?mKCN6mrQLPPH9mbF/jd/RTmFnYF1a0Lr8gE1cFyOh/lIWg5vxWguSgeqzaaK?=
+ =?us-ascii?Q?H/5XhCbS0MGLpHN2rex8ZkpGLyrjjhBGvdEp9fhUcVbfBW+izJqeWimTdNTM?=
+ =?us-ascii?Q?PDGi9Uc4uBB6NgDdE5cOauDHJaiG6JtHMWv4J8z19mD0t/RLAZOFfBW7uNlp?=
+ =?us-ascii?Q?LcrsBSLLls6bTPsUjDJ1uNR3rW93OBcXS+rhKDsGj/Q1BTngox7fz+zsNc2O?=
+ =?us-ascii?Q?SHZhQo8YJBS3N/cXO0ieny09s0W0RyNU7OwJ6du/Mt8GcN/eQyaqn4hTuuvb?=
+ =?us-ascii?Q?HB1nUk2T4JuDwcLrzVnYm2A9BB1KJPpNJUKnt4PjUQaGyUaMW3lb+fv3/Ed5?=
+ =?us-ascii?Q?esGHrKw1Jl0c0NwTdvg=3D?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: c37b7ba0-f2e7-4046-2c9e-08de124038ed
+X-MS-Exchange-CrossTenant-AuthSource: MN2PR12MB3613.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Oct 2025 14:26:58.0176
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: gpr+5VVnFFAJZN8NC2yB3UKQMBqLMY8fLwl3qLZbc2arRFa2jX5ypiTBtyzmw3Ew
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR12MB7743
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251023_070749_533239_B3770555 
-X-CRM114-Status: GOOD (  30.06  )
+X-CRM114-CacheID: sfid-20251023_072708_576762_98431F25 
+X-CRM114-Status: GOOD (  20.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,228 +165,93 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Hans,
+On Thu, Oct 23, 2025 at 01:34:21PM +0100, Robin Murphy wrote:
+> On 2025-10-22 6:12 pm, Jason Gunthorpe wrote:
+> > This old style API is only used by drivers/gpu/drm/msm and
+> > drivers/remoteproc, neither are used on x86 HW. Remove the dead code to
+> > discourage new users.
+> 
+> I'd be almost certain there's somebody somewhere using remoteproc on x86
+> with some FPGA/bespoke PCI device/on-board MCU/etc. - whether they're doing
+> it on AMD *and* care about its fault reporting mechanism is really the
+> question.
 
-On 10/23/25 04:04, Hans Verkuil wrote:
-> On 22/10/2025 19:44, Detlev Casanova wrote:
->> The vdpu381 decoder found on newer Rockchip SoC need the information
->> from the long term and short term ref pic sets from the SPS.
->>
->> So far, it wasn't included in the v4l2 API, so add it with new dynamic
->> sized controls.
->>
->> Each element of the hevc_ext_sps_lt_rps array contains the long term ref
->> pic set at that index.
->> Each element of the hevc_ext_sps_st_rps contains the short term ref pic
->> set at that index, as the raw data.
->> It is the role of the drivers to calculate the reference sets values.
->>
->> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
->> ---
->>   drivers/media/v4l2-core/v4l2-ctrls-core.c | 18 +++++++
->>   drivers/media/v4l2-core/v4l2-ctrls-defs.c | 10 ++++
->>   include/uapi/linux/v4l2-controls.h        | 61 +++++++++++++++++++++++
->>   include/uapi/linux/videodev2.h            |  2 +
->>   4 files changed, 91 insertions(+)
->>
->> diff --git a/drivers/media/v4l2-core/v4l2-ctrls-core.c b/drivers/media/v4l2-core/v4l2-ctrls-core.c
->> index 7c660cd61e48..b330bd7719e9 100644
->> --- a/drivers/media/v4l2-core/v4l2-ctrls-core.c
->> +++ b/drivers/media/v4l2-core/v4l2-ctrls-core.c
->> @@ -418,6 +418,12 @@ void v4l2_ctrl_type_op_log(const struct v4l2_ctrl *ctrl)
->>   	case V4L2_CTRL_TYPE_HEVC_SLICE_PARAMS:
->>   		pr_cont("HEVC_SLICE_PARAMS");
->>   		break;
->> +	case V4L2_CTRL_TYPE_HEVC_EXT_SPS_ST_RPS:
->> +		pr_cont("HEVC_EXT_SPS_ST_RPS");
->> +		break;
->> +	case V4L2_CTRL_TYPE_HEVC_EXT_SPS_LT_RPS:
->> +		pr_cont("HEVC_EXT_SPS_LT_RPS");
->> +		break;
->>   	case V4L2_CTRL_TYPE_HEVC_SCALING_MATRIX:
->>   		pr_cont("HEVC_SCALING_MATRIX");
->>   		break;
->> @@ -1248,6 +1254,12 @@ static int std_validate_compound(const struct v4l2_ctrl *ctrl, u32 idx,
->>   	case V4L2_CTRL_TYPE_HEVC_SLICE_PARAMS:
->>   		break;
->>   
->> +	case V4L2_CTRL_TYPE_HEVC_EXT_SPS_ST_RPS:
->> +		break;
->> +
->> +	case V4L2_CTRL_TYPE_HEVC_EXT_SPS_LT_RPS:
->> +		break;
->> +
-> There is nothing to validate here? Any value is fine? Just checking...
+Hmm!
 
-I don't think we can really validate anything here without more context: 
-e.g.: Cannot validate that a referenced frame is valid
+Looking more closely
 
-Even the num_negative_pics and num_positive_pics range ([0 16]) can't be 
-validated here without reconstructing the information, as it is done in 
-the driver (and I don't think that should be done twice).
+static int rproc_enable_iommu(struct rproc *rproc)
+{
+        struct iommu_domain *domain;
+        struct device *dev = rproc->dev.parent;
+        int ret;
 
-Maybe just the flags could be validated though.
+        if (!rproc->has_iommu) {
+                 ^^^^^^^^^^^^^
+                dev_dbg(dev, "iommu not present\n");
+                return 0;
+        }
 
-> Is this something that should be added to the visl driver so it is tested during regression
-> tests? Or does this not apply to visl?
+        iommu_set_fault_handler(domain, rproc_iommu_fault, rproc);
 
-This could be added to visl indeed. Currently, the data is constructed 
-in the rkvdec driver as it is the only one using it, but if added to 
-visl, I'd add some v4l2 function to do the work and use it in rkvdec and 
-visl.
+And then:
 
-Also, I think this should be part of another patchset, once this lands.
+drivers/remoteproc/omap_remoteproc.c:   rproc->has_iommu = true;
+drivers/remoteproc/qcom_q6v5_adsp.c:    .has_iommu = true,
 
->
-> I haven't looked in-depth into this, but I wondered about it.
-Detlev.
->
->>   	case V4L2_CTRL_TYPE_HDR10_CLL_INFO:
->>   		break;
->>   
->> @@ -2000,6 +2012,12 @@ static struct v4l2_ctrl *v4l2_ctrl_new(struct v4l2_ctrl_handler *hdl,
->>   	case V4L2_CTRL_TYPE_HEVC_SLICE_PARAMS:
->>   		elem_size = sizeof(struct v4l2_ctrl_hevc_slice_params);
->>   		break;
->> +	case V4L2_CTRL_TYPE_HEVC_EXT_SPS_ST_RPS:
->> +		elem_size = sizeof(struct v4l2_ctrl_hevc_ext_sps_st_rps);
->> +		break;
->> +	case V4L2_CTRL_TYPE_HEVC_EXT_SPS_LT_RPS:
->> +		elem_size = sizeof(struct v4l2_ctrl_hevc_ext_sps_lt_rps);
->> +		break;
->>   	case V4L2_CTRL_TYPE_HEVC_SCALING_MATRIX:
->>   		elem_size = sizeof(struct v4l2_ctrl_hevc_scaling_matrix);
->>   		break;
->> diff --git a/drivers/media/v4l2-core/v4l2-ctrls-defs.c b/drivers/media/v4l2-core/v4l2-ctrls-defs.c
->> index ad41f65374e2..167286c9e424 100644
->> --- a/drivers/media/v4l2-core/v4l2-ctrls-defs.c
->> +++ b/drivers/media/v4l2-core/v4l2-ctrls-defs.c
->> @@ -1233,6 +1233,8 @@ const char *v4l2_ctrl_get_name(u32 id)
->>   	case V4L2_CID_STATELESS_HEVC_DECODE_MODE:		return "HEVC Decode Mode";
->>   	case V4L2_CID_STATELESS_HEVC_START_CODE:		return "HEVC Start Code";
->>   	case V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS:	return "HEVC Entry Point Offsets";
->> +	case V4L2_CID_STATELESS_HEVC_EXT_SPS_ST_RPS:		return "HEVC Short Term Ref Sets";
->> +	case V4L2_CID_STATELESS_HEVC_EXT_SPS_LT_RPS:		return "HEVC Long Term Ref Sets";
->>   	case V4L2_CID_STATELESS_AV1_SEQUENCE:			return "AV1 Sequence Parameters";
->>   	case V4L2_CID_STATELESS_AV1_TILE_GROUP_ENTRY:		return "AV1 Tile Group Entry";
->>   	case V4L2_CID_STATELESS_AV1_FRAME:			return "AV1 Frame Parameters";
->> @@ -1578,6 +1580,14 @@ void v4l2_ctrl_fill(u32 id, const char **name, enum v4l2_ctrl_type *type,
->>   		*type = V4L2_CTRL_TYPE_U32;
->>   		*flags |= V4L2_CTRL_FLAG_DYNAMIC_ARRAY;
->>   		break;
->> +	case V4L2_CID_STATELESS_HEVC_EXT_SPS_ST_RPS:
->> +		*type = V4L2_CTRL_TYPE_HEVC_EXT_SPS_ST_RPS;
->> +		*flags |= V4L2_CTRL_FLAG_DYNAMIC_ARRAY;
->> +		break;
->> +	case V4L2_CID_STATELESS_HEVC_EXT_SPS_LT_RPS:
->> +		*type = V4L2_CTRL_TYPE_HEVC_EXT_SPS_LT_RPS;
->> +		*flags |= V4L2_CTRL_FLAG_DYNAMIC_ARRAY;
->> +		break;
->>   	case V4L2_CID_STATELESS_VP9_COMPRESSED_HDR:
->>   		*type = V4L2_CTRL_TYPE_VP9_COMPRESSED_HDR;
->>   		break;
->> diff --git a/include/uapi/linux/v4l2-controls.h b/include/uapi/linux/v4l2-controls.h
->> index 2d30107e047e..dd9e29afa155 100644
->> --- a/include/uapi/linux/v4l2-controls.h
->> +++ b/include/uapi/linux/v4l2-controls.h
->> @@ -2093,6 +2093,8 @@ struct v4l2_ctrl_mpeg2_quantisation {
->>   #define V4L2_CID_STATELESS_HEVC_DECODE_MODE	(V4L2_CID_CODEC_STATELESS_BASE + 405)
->>   #define V4L2_CID_STATELESS_HEVC_START_CODE	(V4L2_CID_CODEC_STATELESS_BASE + 406)
->>   #define V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS (V4L2_CID_CODEC_STATELESS_BASE + 407)
->> +#define V4L2_CID_STATELESS_HEVC_EXT_SPS_ST_RPS  (V4L2_CID_CODEC_STATELESS_BASE + 408)
->> +#define V4L2_CID_STATELESS_HEVC_EXT_SPS_LT_RPS  (V4L2_CID_CODEC_STATELESS_BASE + 409)
->>   
->>   enum v4l2_stateless_hevc_decode_mode {
->>   	V4L2_STATELESS_HEVC_DECODE_MODE_SLICE_BASED,
->> @@ -2548,6 +2550,65 @@ struct v4l2_ctrl_hevc_scaling_matrix {
->>   	__u8	scaling_list_dc_coef_32x32[2];
->>   };
->>   
->> +#define V4L2_HEVC_EXT_SPS_ST_RPS_FLAG_INTER_REF_PIC_SET_PRED	0x1
->> +
->> +/*
->> + * struct v4l2_ctrl_hevc_ext_sps_st_rps - HEVC short term RPS parameters
->> + *
->> + * Dynamic size 1-dimension array for short term RPS. The number of elements
->> + * is v4l2_ctrl_hevc_sps::num_short_term_ref_pic_sets. It can contain up to 65 elements.
->> + *
->> + * @delta_idx_minus1: Specifies the delta compare to the index. See details in section 7.4.8
->> + *                    "Short-term reference picture set semantics" of the specification.
->> + * @delta_rps_sign: Sign of the delta as specified in section 7.4.8 "Short-term reference picture
->> + *                  set semantics" of the specification.
->> + * @abs_delta_rps_minus1: Absolute delta RPS as specified in section 7.4.8 "Short-term reference
->> + *                        picture set semantics" of the specification.
->> + * @num_negative_pics: Number of short-term RPS entries that have picture order count values less
->> + *                     than the picture order count value of the current picture.
->> + * @num_positive_pics: Number of short-term RPS entries that have picture order count values
->> + *                     greater than the picture order count value of the current picture.
->> + * @used_by_curr_pic: Bit j specifies if short-term RPS j is used by the current picture.
->> + * @use_delta_flag: Bit j equals to 1 specifies that the j-th entry in the source candidate
->> + *                  short-term RPS is included in this candidate short-term RPS.
->> + * @delta_poc_s0_minus1: Specifies the negative picture order count delta for the i-th entry in
->> + *                       the short-term RPS. See details in section 7.4.8 "Short-term reference
->> + *                       picture set semantics" of the specification.
->> + * @delta_poc_s1_minus1: Specifies the positive picture order count delta for the i-th entry in
->> + *                       the short-term RPS. See details in section 7.4.8 "Short-term reference
->> + *                       picture set semantics" of the specification.
->> + * @flags: See V4L2_HEVC_EXT_SPS_ST_RPS_FLAG_{}
->> + */
->> +struct v4l2_ctrl_hevc_ext_sps_st_rps {
->> +	__u8	delta_idx_minus1;
->> +	__u8	delta_rps_sign;
->> +	__u16	abs_delta_rps_minus1;
->> +	__u8	num_negative_pics;
->> +	__u8	num_positive_pics;
->> +	__u32	used_by_curr_pic;
->> +	__u32	use_delta_flag;
->> +	__u16	delta_poc_s0_minus1[16];
->> +	__u16	delta_poc_s1_minus1[16];
->> +	__u8	flags;
->> +};
->> +
->> +#define V4L2_HEVC_EXT_SPS_LT_RPS_FLAG_USED_LT		0x1
->> +
->> +/*
->> + * struct v4l2_ctrl_hevc_ext_sps_lt_rps - HEVC long term RPS parameters
->> + *
->> + * Dynamic size 1-dimension array for long term RPS. The number of elements
->> + * is v4l2_ctrl_hevc_sps::num_long_term_ref_pics_sps. It can contain up to 65 elements.
->> + *
->> + * @lt_ref_pic_poc_lsb_sps: picture order count modulo MaxPicOrderCntLsb of the i-th candidate
->> + *                          long-term reference picture.
->> + * @flags: See V4L2_HEVC_EXT_SPS_LT_RPS_FLAG_{}
->> + */
->> +struct v4l2_ctrl_hevc_ext_sps_lt_rps {
->> +	__u16	lt_ref_pic_poc_lsb_sps;
->> +	__u8	flags;
->> +};
->> +
->>   /* Stateless VP9 controls */
->>   
->>   #define V4L2_VP9_LOOP_FILTER_FLAG_DELTA_ENABLED	0x1
->> diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
->> index becd08fdbddb..ae1d33fd37b7 100644
->> --- a/include/uapi/linux/videodev2.h
->> +++ b/include/uapi/linux/videodev2.h
->> @@ -1981,6 +1981,8 @@ enum v4l2_ctrl_type {
->>   	V4L2_CTRL_TYPE_HEVC_SLICE_PARAMS	= 0x0272,
->>   	V4L2_CTRL_TYPE_HEVC_SCALING_MATRIX	= 0x0273,
->>   	V4L2_CTRL_TYPE_HEVC_DECODE_PARAMS	= 0x0274,
->> +	V4L2_CTRL_TYPE_HEVC_EXT_SPS_ST_RPS	= 0x0275,
->> +	V4L2_CTRL_TYPE_HEVC_EXT_SPS_LT_RPS	= 0x0276,
->>   
->>   	V4L2_CTRL_TYPE_AV1_SEQUENCE	    = 0x280,
->>   	V4L2_CTRL_TYPE_AV1_TILE_GROUP_ENTRY = 0x281,
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+config OMAP_REMOTEPROC
+        tristate "OMAP remoteproc support"
+        depends on ARCH_OMAP4 || SOC_OMAP5 || SOC_DRA7XX
+        depends on OMAP_IOMMU
+
+config QCOM_Q6V5_ADSP
+        tristate "Qualcomm Technology Inc ADSP Peripheral Image Loader"
+        depends on OF && ARCH_QCOM
+        depends on QCOM_SMEM
+
+So, I think it is safe. I will revise the commit message.
+
+Seems like these drivers are definately used:
+
+ drivers/iommu/arm/arm-smmu/arm-smmu.c    |  1 +
+ drivers/iommu/arm/arm-smmu/qcom_iommu.c  |  1 +
+ drivers/iommu/omap-iommu.c               |  1 +
+
+But I wonder if these are all dead code too? Any thoughts?
+
+ drivers/iommu/ipmmu-vmsa.c               |  1 +
+ drivers/iommu/mtk_iommu.c                |  1 +
+ drivers/iommu/mtk_iommu_v1.c             |  1 +
+ drivers/iommu/rockchip-iommu.c           |  1 +
+ drivers/iommu/sun50i-iommu.c             |  1 +
+
+> >   	if (dev_data) {
+> > -		/*
+> > -		 * If this is a DMA fault (for which the I(nterrupt)
+> > -		 * bit will be unset), allow report_iommu_fault() to
+> > -		 * prevent logging it.
+> > -		 */
+> > -		if (IS_IOMMU_MEM_TRANSACTION(flags)) {
+> > -			/* Device not attached to domain properly */
+> > -			if (dev_data->domain == NULL) {
+> > -				pr_err_ratelimited("Event logged [Device not attached to domain properly]\n");
+> > -				pr_err_ratelimited("  device=%04x:%02x:%02x.%x domain=0x%04x\n",
+> > -						   iommu->pci_seg->id, PCI_BUS_NUM(devid), PCI_SLOT(devid),
+> > -						   PCI_FUNC(devid), domain_id);
+> > -				goto out;
+> > -			}
+> This part is unrelated to the report_iommu_fault() call - in fact it was
+> specifically added even more recently.
+
+Yeah, I'll fix it
+
+Thanks,
+Jason
 
 _______________________________________________
 Linux-rockchip mailing list
