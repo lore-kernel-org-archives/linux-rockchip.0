@@ -4,57 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C19EBCCF9E0
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Oct 2025 02:51:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66296CCF9E0
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Oct 2025 03:31:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
 	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=gs65GRhMo1G/mqkddqx0k9NmAnCrQVdeNytTa7QNJvU=; b=GchcCFS5OrI/bG
-	CuvqjKIeV6xtpwlHFupnbqoYmHe7i5um7uTGY61qyhsONKBvxph8pcZOgNtaXfQ/wl+h5LLSriICW
-	1xJ6aAx4IRmuvoS3uu2Ge+rPTCByPTnDKgSR4pTtzWv8jEfefbTzZeTSk4jF8BQH/qlQ4ArqDz8y9
-	nh+R5MK5QqjpKiwEpsaVkXVPIPoGoXC4koGwKIL5lZh7s7dfpGL1aAbegCBLLk9vR3SemFcS7OQIs
-	VdmgR9II+bIyd36JfcKC2b7c1uqh8U7zLMw5BrS1zbFpI5wg9KHlQTawA5RwpL6RXzRqi6Bps4X1j
-	04BPAzoKKfmJHDmCeJ1g==;
+	List-Owner; bh=wa8tFJ3tPVSFxYVnWy5c0N//FZo4w75NC3Y4uNuHeRM=; b=ivwDaCWWaI9pkY
+	P3zKIaAsIQq5/wv8UG0msFnTPJhWB0jqFVFm3b89algDelRjJoZs0GVoHvfDbVq0rQZQrT5a79re5
+	jNFFYSqSSvkHjXDerAN4MtqRUiSTEgi+0EzB2RNyDqlIVxa0eL/YUTpesibxrpJIRG6BjO/ecDOn1
+	lwJdFOSrWI++15MuEhEjGRxkqi0B5i84NWaY+bZc/6eHPqqGyf20T7B13FJtArUHQoY39y7pTCeYw
+	tMdL5bLdZoMLkm+cSHcCBSjyIxPv8kbfFaZ/0oLbk566JVJiIeAArNN9J1vg+2QCnb2fwPS7O0hNH
+	Oe9yMte5WJqbSJaYYtAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBlQW-00000004szk-1Ily;
-	Thu, 23 Oct 2025 02:51:44 +0000
-Received: from mail-m81232.xmail.ntesmail.com ([156.224.81.232])
+	id 1vBm2Y-00000004vnz-47lm;
+	Thu, 23 Oct 2025 03:31:03 +0000
+Received: from smtpbguseast3.qq.com ([54.243.244.52])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBlQT-00000004syy-0wIa
-	for linux-rockchip@lists.infradead.org;
-	Thu, 23 Oct 2025 02:51:43 +0000
-Received: from localhost.localdomain (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 26dfa2407;
-	Thu, 23 Oct 2025 10:51:34 +0800 (GMT+08:00)
-From: Shawn Lin <shawn.lin@rock-chips.com>
-To: Heiko Stuebner <heiko@sntech.de>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Bjorn Helgaas <bhelgaas@google.com>
-Cc: linux-rockchip@lists.infradead.org,
-	Niklas Cassel <cassel@kernel.org>,
-	linux-pci@vger.kernel.org,
-	Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH v3 1/2] PCI: dw-rockchip: Configure L1sub support
-Date: Thu, 23 Oct 2025 10:51:22 +0800
-Message-Id: <1761187883-150120-1-git-send-email-shawn.lin@rock-chips.com>
-X-Mailer: git-send-email 2.7.4
-X-HM-Tid: 0a9a0efa948d09cckunme7ff00708b369e
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGhpLH1YeSkNDSxpLGExOSEhWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=bR+sGQMULNy6K3nSK4E03UjeIEFp+2+4j0tu+j6hndapxBlNL+u3NLi2/vg+u70CftSp9PCHQOgT6dPupbkKJvY0QbfsyTrB5nOLUbo6wWQlcHlBMgtjOksUGZ2ZohCknjev/l93LvRo/mhF0GCLeeSD1Fx3pLJ3TAdfNzjVDtQ=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=LgbicayheB4Lhxo7f1O6GKeK04JXjIbvENp8KRU8J24=;
-	h=date:mime-version:subject:message-id:from;
+	id 1vBm2W-00000004vij-0ocT;
+	Thu, 23 Oct 2025 03:31:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
+	s=altu2504; t=1761190221;
+	bh=Dtbx3rarF8kn4YpxAC+Adtk+rXiU66ifgaq+doAFZE4=;
+	h=From:To:Subject:Date:Message-Id;
+	b=N4TYT6P63Fn4nXj18V7fIIarwP8elNvCqhAvKaMDF+l5jQ/vot8Pv2EN6UsChWM3z
+	 uG9lVi9aZQJImHsxZN/cIC0o16GeSpShiUheEcbiQz0HzIFWg7u8FEI/JvqMdRuTvN
+	 yXL0oZUac5apDgQ7WEt5DBdXW+qPZ/5ynuiZOnEk=
+X-QQ-mid: esmtpsz16t1761190219t69ad2cef
+X-QQ-Originating-IP: o1+oH0WirnlwNNXKtoiqaKBE7L2lbT1X+eJ6n8Rf5ME=
+Received: from DESKTOP-8BT1A2O.localdomain ( [58.22.7.114])
+	by bizesmtp.qq.com (ESMTP) with 
+	id ; Thu, 23 Oct 2025 11:30:16 +0800 (CST)
+X-QQ-SSF: 0000000000000000000000000000000
+X-QQ-GoodBg: 0
+X-BIZMAIL-ID: 11365234591125768724
+From: Chaoyi Chen <kernel@airkyi.com>
+To: Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Sandy Huang <hjc@rock-chips.com>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Yubing Zhang <yubing.zhang@rock-chips.com>,
+	Frank Wang <frank.wang@rock-chips.com>,
+	Andrzej Hajda <andrzej.hajda@intel.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Robert Foss <rfoss@kernel.org>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>,
+	Amit Sunil Dhamne <amitsd@google.com>,
+	Chaoyi Chen <chaoyi.chen@rock-chips.com>,
+	Dragan Simic <dsimic@manjaro.org>,
+	Johan Jonker <jbx6244@gmail.com>,
+	Diederik de Haas <didi.debian@cknow.org>,
+	Peter Robinson <pbrobinson@gmail.com>
+Cc: linux-usb@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-phy@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	dri-devel@lists.freedesktop.org
+Subject: [PATCH v7 0/9] Add Type-C DP support for RK3399 EVB IND board
+Date: Thu, 23 Oct 2025 11:30:00 +0800
+Message-Id: <20251023033009.90-1-kernel@airkyi.com>
+X-Mailer: git-send-email 2.17.1
+X-QQ-SENDSIZE: 520
+Feedback-ID: esmtpsz:airkyi.com:qybglogicsvrsz:qybglogicsvrsz4a-0
+X-QQ-XMAILINFO: MMKcwIwa79XOAwiWHb/ZtDJyZTY3DvJHMSkX5tY++55NIyw5LItVD1wG
+	BLanQ7rDPIkX28Y/CtKig5ZA29YFSlLX+ZRHnMrRl44dEkI0aHCxt35OQiRq2CLO3wCykKm
+	n5wVrFhfmo39JushRPJP9xZPPuJgt1+qMoMR8UyhfpEhUnHJEzDvdDIufq67godRmHTKkiQ
+	ibnvjOddEoV6+hTQ1t5fIeobaC1sZi6c9i2EsrYBkeAftKr6ecxiNdyH5kn+zBDoC6R2cej
+	XXKwjF4wGt/OFzUz3Fkj5O1oBirQm3R8Y/2y2bHbWvPsd/M9aapHBxQd5Lsexu+hByhQPe7
+	Y4qSjHRW/dAhxqfgpFSlo/kDSeWf0t4/jpz8pc65yae6jFTRBs8cxWa9dblFU5QjHntFX1l
+	s+eICAoEAacMU5VfDIsFK7VkXlx3yBPt4VQrqcPBFspbw0K6FViduQIWNEIY0r1JJhM60jv
+	Uv/8ikMI7usLtG1OhuP30FrKswmxqI9U6DTAmQKVHNmuBshvCxvHKJOmF5Nv2LzNJI1gXO6
+	vLIyRRVG3XivJq6tqKDGVaVySPx4HB/bfW9rPjcbcEQoyUfmyEOsDwRg+pM4CSJlhuRgeUC
+	bV2Z2pgI8UB1FDlaVEUVN9lBAXppfe8XSj2tEDGA/outu+gt5/S5+U+gVpDIE5RT1JB3WHa
+	gYc6XzVuMpm6iUlK0mS0Fx4pvBi+3OYtEz3IgooxSWbiemWfYPKnHE9dkJ2x6HRS0uv1iua
+	5qKB1YWz0V/RBy5EIXUdeG39zRGFIrBld2C35wRPZEO5iTHnVM71qouGHiKsFftbbEcvohp
+	e94eTFBEDDK1YDosnruRqJ1b4S//XXzN43YlV6UoHG3UYqH7uHz89yLJK86NGfXqRLxP17N
+	lV9iGF+ZxQHTD/32v5ATsCsaiAPQIfnCLDmToLIEBoPxcgv0v9BJgni/0yfr7j2qav3cuD6
+	u98mOqJaZFd49yvjK5nnsbwxg/1lVKdd8r8wx5eBjPyGfUv2eM/YwYM5rPfbsXFNGLROjLd
+	DS+kAQH7usnsmIghh0
+X-QQ-XMRINFO: NI4Ajvh11aEj8Xl/2s1/T8w=
+X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251022_195141_893938_F579DC28 
-X-CRM114-Status: GOOD (  16.90  )
+X-CRM114-CacheID: sfid-20251022_203100_718621_C57C0A07 
+X-CRM114-Status: GOOD (  22.27  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,125 +123,162 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-L1 PM Substates for RC mode require support in the dw-rockchip driver
-including proper handling of the CLKREQ# sideband signal. It is mostly
-handled by hardware, but software still needs to set the clkreq fields
-in the PCIE_CLIENT_POWER_CON register to match the hardware implementation.
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
 
-For more details, see section '18.6.6.4 L1 Substate' in the RK3658 TRM 1.1
-Part 2, or section '11.6.6.4 L1 Substate' in the RK3588 TRM 1.0 Part2.
+This series focuses on adding Type-C DP support for USBDP PHY and DP
+driver. The USBDP PHY and DP will perceive the changes in cable status
+based on the USB PD and Type-C state machines provided by TCPM. Before
+this, the USBDP PHY and DP controller of RK3399 sensed cable state
+changes through extcon, and devices such as the RK3399 Gru-Chromebook
+rely on them. This series should not break them.
 
-Meanwhile, for the EP mode, we haven't prepared enough to actually support
-L1 PM Substates yet. So disable it now until proper support is added later.
+====
+1. DisplayPort HPD status notify
 
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+Before v7, I implemented a variety of DP HPD status notify. However,
+they all had various problems and it was difficult to become a generic
+solution.
 
----
+Under the guidance of Heikki and Dmitry, a decoupled notification
+method between the TypeC and DRM subsystems was introduced in v7.
+First, a notification is sent when TypeC registers a new altmode.
+Then, a generic DP AUX HPD bridge is implemented on the DRM side.
+
+That makes it redundant for each Type-C controller driver to implement
+a similar DP AUX HPD bridge in embedded scenarios.
+
+====
+2. Altmode switching and orientation switching for USBDP PHY
+
+For USB Type-C interfaces, an external Type-C controller chip assists
+by detecting cable attachment, determining plug orientation, and
+reporting USB PD message. The USB/DP combo PHY supports software
+configurable pin mapping and DisplayPort lane assignment. Based on
+these message, the combo PHY can perform both altmode switching and
+orientation switching via software.
+
+The RK3399 EVB IND board has a Type-C interface DisplayPort. It use
+fusb302 chip as Type-C controller. The connection diagram is shown below:
+
+fusb302 chip +---> USB2.0 PHY ----> DWC3 USB controller
+             |
+             +---> USB/DP PHY0 +--> CDN-DP controller
+                               |
+                               +--> DWC3 USB controller
+
+====
+3. Multiple bridge model for RK3399 CDN-DP
+
+The RK3399 has two USB/DP combo PHY and one CDN-DP controller. And
+the CDN-DP can be switched to output to one of the PHYs.
+
+USB/DP PHY0 ---+
+               | <----> CDN-DP controller
+USB/DP PHY1 ---+
+
+In previous versions, if both PHY ports were connected to DP,
+the CDN-DP driver would select the first PHY port for output.
+
+On Dmitry's suggestion, we introduced a multi-bridge model to support
+flexible selection of the output PHY port. For each PHY port, a
+separate encoder and bridge are registered.
+
+The change is based on the DRM AUX HPD bridge, rather than the
+extcon approach. This requires the DT to correctly describe the
+connections between the first bridge in bridge chain and DP
+controller. And Once the first bridge is obtained, we can get the
+last bridge corresponding to the USB-C connector, and then set the
+DRM connector's fwnode to the corresponding one to enable HPD
+notification.
+
+====
+Patch1 add notifier functions for Type-C core.
+Patch2 add generic USB Type-C DP HPD bridge.
+Patch3 add new Type-C mode switch for RK3399 USBDP phy binding.
+Patch4 add typec_mux and typec_switch for RK3399 USBDP PHY.
+Patch5 add DRM AUX bridge support for RK3399 USBDP PHY.
+Patch6 drops CDN-DP's extcon dependency when Type-C is present.
+Patch7 add multiple bridges to support PHY port selection.
+Patch8 add missing dp_out port for RK3399 CDN-DP.
+Patch9 add Type-C DP support for RK3399 EVB IND board.
+
+Changes in v7:
+- Link to V6: https://lore.kernel.org/all/20251016022741.91-1-kernel@airkyi.com/
+- Add notifier functions for Type-C core.
+- Add generic USB Type-C DP HPD bridge.
+
+Changes in v6:
+- Link to V5: https://lore.kernel.org/all/20251011033233.97-1-kernel@airkyi.com/
+- Fix depend in Kconfig.
+- Check DP svid in tcphy_typec_mux_set().
+- Remove mode setting in tcphy_orien_sw_set().
+- Rename some variable names.
+- Attach the DP bridge to the next bridge.
+
+Changes in v5:
+- Link to V4: https://lore.kernel.org/all/20250922012039.323-1-kernel@airkyi.com/
+- Remove the calls related to `drm_aux_hpd_bridge_notify()`.
+- Place the helper functions in the same compilation unit.
+- Add more comments about parent device.
+- Add DRM AUX bridge support for RK3399 USBDP PHY
+- By parsing the HPD bridge chain, set the connector's of_node to the
+of_node corresponding to the USB-C connector.
+- Return EDID cache when other port is already enabled.
+
+Changes in v4:
+- Link to V3: https://lore.kernel.org/all/20250729090032.97-1-kernel@airkyi.com/
+- Add default HPD device for DisplayPort altmode.
+- Introduce multiple bridges for CDN-DP.
+- ...
 
 Changes in v3:
-- rephrease the changelog
-- use FIELD_PREP_WM16
-- rename to rockchip_pcie_configure_l1sub
-- disable L1ss for EP mode
+- Link to V2: https://lore.kernel.org/all/20250718062619.99-1-kernel@airkyi.com/
+- Add more descriptions to clarify the role of the PHY in switching.
+- Fix wrong vdo value.
+- Fix port node in usb-c-connector.
 
 Changes in v2:
-- drop of_pci_clkreq_presnt API
-- drop dependency of Niklas's patch
+- Link to V1: https://lore.kernel.org/all/20250715112456.101-1-kernel@airkyi.com/
+- Reuse dp-port/usb3-port in rk3399-typec-phy binding.
+- Fix compile error when CONFIG_TYPEC is not enabled.
+- Notify DP HPD state by USB/DP PHY.
+- Ignore duplicate HPD events.
+- Add endpoint to link DP PHY and DP controller.
+- Fix devicetree coding style.
 
- drivers/pci/controller/dwc/pcie-dw-rockchip.c | 43 +++++++++++++++++++++++++++
- 1 file changed, 43 insertions(+)
+Chaoyi Chen (9):
+  usb: typec: Add notifier functions
+  drm/bridge: Implement generic USB Type-C DP HPD bridge
+  dt-bindings: phy: rockchip: rk3399-typec-phy: Support mode-switch
+  phy: rockchip: phy-rockchip-typec: Add typec_mux/typec_switch support
+  phy: rockchip: phy-rockchip-typec: Add DRM AUX bridge
+  drm/rockchip: cdn-dp: Support handle lane info without extcon
+  drm/rockchip: cdn-dp: Add multiple bridges to support PHY port
+    selection
+  arm64: dts: rockchip: Add missing dp_out port for RK3399 CDN-DP
+  arm64: dts: rockchip: rk3399-evb-ind: Add support for DisplayPort
 
-diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-index 3e2752c..25d2474 100644
---- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-+++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-@@ -62,6 +62,12 @@
- /* Interrupt Mask Register Related to Miscellaneous Operation */
- #define PCIE_CLIENT_INTR_MASK_MISC	0x24
- 
-+/* Power Management Control Register */
-+#define PCIE_CLIENT_POWER_CON		0x2c
-+#define  PCIE_CLKREQ_READY		FIELD_PREP_WM16(BIT(0), 1)
-+#define  PCIE_CLKREQ_NOT_READY		FIELD_PREP_WM16(BIT(0), 0)
-+#define  PCIE_CLKREQ_PULL_DOWN		FIELD_PREP_WM16(GENMASK(13, 12), 1)
-+
- /* Hot Reset Control Register */
- #define PCIE_CLIENT_HOT_RESET_CTRL	0x180
- #define  PCIE_LTSSM_APP_DLY2_EN		BIT(1)
-@@ -85,6 +91,7 @@ struct rockchip_pcie {
- 	struct regulator *vpcie3v3;
- 	struct irq_domain *irq_domain;
- 	const struct rockchip_pcie_of_data *data;
-+	bool supports_clkreq;
- };
- 
- struct rockchip_pcie_of_data {
-@@ -200,6 +207,37 @@ static bool rockchip_pcie_link_up(struct dw_pcie *pci)
- 	return FIELD_GET(PCIE_LINKUP_MASK, val) == PCIE_LINKUP;
- }
- 
-+/*
-+ * See e.g. section '11.6.6.4 L1 Substate' in the RK3588 TRM V1.0 for the steps
-+ * needed to support L1 substates. Currently, just enable L1 substates for RC
-+ * mode if CLKREQ# is properly connected and supports-clkreq is present in DT.
-+ * For EP mode, there are more things should be done to actually save power in
-+ * L1 substates, so disable L1 substates until there is proper support.
-+ */
-+static void rockchip_pcie_configure_l1sub(struct dw_pcie *pci)
-+{
-+	struct rockchip_pcie *rockchip = to_rockchip_pcie(pci);
-+	u32 cap, l1subcap;
-+
-+	/* Enable L1 substates if CLKREQ# is properly connected */
-+	if (rockchip->supports_clkreq && rockchip->data->mode == DW_PCIE_RC_TYPE ) {
-+		rockchip_pcie_writel_apb(rockchip, PCIE_CLKREQ_READY, PCIE_CLIENT_POWER_CON);
-+		return;
-+	}
-+
-+	/* Otherwise, pull down CLKREQ# and disable L1 PM substates */
-+	rockchip_pcie_writel_apb(rockchip, PCIE_CLKREQ_PULL_DOWN | PCIE_CLKREQ_NOT_READY,
-+				 PCIE_CLIENT_POWER_CON);
-+	cap = dw_pcie_find_ext_capability(pci, PCI_EXT_CAP_ID_L1SS);
-+	if (cap) {
-+		l1subcap = dw_pcie_readl_dbi(pci, cap + PCI_L1SS_CAP);
-+		l1subcap &= ~(PCI_L1SS_CAP_L1_PM_SS | PCI_L1SS_CAP_ASPM_L1_1 |
-+			      PCI_L1SS_CAP_ASPM_L1_2 | PCI_L1SS_CAP_PCIPM_L1_1 |
-+			      PCI_L1SS_CAP_PCIPM_L1_2);
-+		dw_pcie_writel_dbi(pci, cap + PCI_L1SS_CAP, l1subcap);
-+	}
-+}
-+
- static void rockchip_pcie_enable_l0s(struct dw_pcie *pci)
- {
- 	u32 cap, lnkcap;
-@@ -264,6 +302,7 @@ static int rockchip_pcie_host_init(struct dw_pcie_rp *pp)
- 	irq_set_chained_handler_and_data(irq, rockchip_pcie_intx_handler,
- 					 rockchip);
- 
-+	rockchip_pcie_configure_l1sub(pci);
- 	rockchip_pcie_enable_l0s(pci);
- 
- 	return 0;
-@@ -301,6 +340,7 @@ static void rockchip_pcie_ep_init(struct dw_pcie_ep *ep)
- 	struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
- 	enum pci_barno bar;
- 
-+	rockchip_pcie_configure_l1sub(pci);
- 	rockchip_pcie_enable_l0s(pci);
- 	rockchip_pcie_ep_hide_broken_ats_cap_rk3588(ep);
- 
-@@ -412,6 +452,9 @@ static int rockchip_pcie_resource_get(struct platform_device *pdev,
- 		return dev_err_probe(&pdev->dev, PTR_ERR(rockchip->rst),
- 				     "failed to get reset lines\n");
- 
-+	rockchip->supports_clkreq = of_property_read_bool(pdev->dev.of_node,
-+							  "supports-clkreq");
-+
- 	return 0;
- }
- 
--- 
-2.7.4
+ .../phy/rockchip,rk3399-typec-phy.yaml        |   6 +
+ arch/arm64/boot/dts/rockchip/rk3399-base.dtsi |  10 +-
+ .../boot/dts/rockchip/rk3399-evb-ind.dts      | 146 ++++++
+ drivers/gpu/drm/bridge/Kconfig                |  11 +
+ drivers/gpu/drm/bridge/Makefile               |   1 +
+ .../gpu/drm/bridge/aux-hpd-typec-dp-bridge.c  |  51 +++
+ drivers/gpu/drm/rockchip/cdn-dp-core.c        | 354 ++++++++++++---
+ drivers/gpu/drm/rockchip/cdn-dp-core.h        |  24 +-
+ drivers/phy/rockchip/Kconfig                  |   3 +
+ drivers/phy/rockchip/phy-rockchip-typec.c     | 420 +++++++++++++++++-
+ drivers/usb/typec/Makefile                    |   2 +-
+ drivers/usb/typec/class.c                     |   3 +
+ drivers/usb/typec/notify.c                    |  22 +
+ include/linux/usb/typec_notify.h              |  17 +
+ 14 files changed, 987 insertions(+), 83 deletions(-)
+ create mode 100644 drivers/gpu/drm/bridge/aux-hpd-typec-dp-bridge.c
+ create mode 100644 drivers/usb/typec/notify.c
+ create mode 100644 include/linux/usb/typec_notify.h
+
+--
+2.49.0
 
 
 _______________________________________________
