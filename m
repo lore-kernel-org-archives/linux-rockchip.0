@@ -4,97 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CA49CCD193
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Oct 2025 08:11:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C382CCD193
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Oct 2025 08:43:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Zu4GltFsNlT7QYkbDj/YUfiqnslvp18hxtBp6KTdUqE=; b=owsp67dSuD1sR6
-	v2cj6QiaTTUeNpHcolmBnMceC1xjbPBbkgZuLNVbteccP3fGPZYzEJNd9P3aUapIMcLlsR9EQ39ix
-	KYSSZljKaSDAqdufdGpuW2lMAMnFPv7vPmLM31YvhzkBn7MNp7r4vaudiK54nc0DMBaZeY502pMwt
-	FVF2E3fhUsNsfgNB2ZhltgPHvGF7kv5GelDpFD86dwz2b1thnQzUUA1QzBYkflWFd/loWL6JnpyHb
-	PU5yJhVBppt8pu4jiYHSEvWg9YpSPlNDT8/WkudwXl2btc9qUNNSSTVef50OI45t87chdg9BymBXn
-	iSDnwwHSBv/q7o1pjfxQ==;
+	List-Owner; bh=YSvJJ059PqP8jcVbEOkeQREUaV3WwqshK0VlUw5w0sA=; b=fNVSgFWQwuiXsW
+	l6YO2p2lQVZiJ+dNQzu2hYGXhrlfuOkQlPhzL9ZJisFw1Aae8quYGHghwXklJQFnv5DXVT59b8zVY
+	HHzsC6xsePdT+2ZdTE+P/Pb9A9Mhp7Z02j0NKLBzgERnOTwNJOpy3ig8Ium5vvAYqcNo+H/f2zYHs
+	FACIdtoEXRTiVGd8dXhYMozevQH7b9ATEgrg4bMrjs3Z3k2OCTz3uWJ4p+ShORO3LvT0MrFoHkc3k
+	1hOsS5xUHHQJ+vDf6Ja+QXltoJ3ZS+JPCCE2ClJ3WY4xR81ohVlcs2v9le9f5xpYGIE7RyetZYaUF
+	5UCeeVRMCxF86b2cO5tw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBqPk-00000005UBZ-0vyH;
-	Thu, 23 Oct 2025 08:11:16 +0000
-Received: from mgamail.intel.com ([198.175.65.16])
+	id 1vBquR-00000005aA4-1pHm;
+	Thu, 23 Oct 2025 08:42:59 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vBqPV-00000005U5E-21oc;
-	Thu, 23 Oct 2025 08:11:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1761207062; x=1792743062;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=X9A+e5HX8/DxioXkaxwvZdY29MB1MDYbmVYOX4ols5k=;
-  b=bjROa49mGgRUUM0p1GdTNUjPW3HtEPMv1M23t5/RAeB4sYgBcpmaO7gm
-   A4h6RrD6+dFCWlDnY5m3RJj0AIRvX2RPXwm6LUsdwuUVzuySpQ9Kig5be
-   +P7V3mzZW5F/+s2/UU2iCUmGBoUfVPx9/3w4p1WPitf6faFJ3o6jGqyGe
-   tBciPz7NYjQV52yWeixqBN7lOWefYEsObCm6y2zMJk2xKg6dF/m9QHMRD
-   4DQ071cqcHV50NXEERc/e+ZycyWP65MVSbSuEna9STWqELDVc3c5a6Eec
-   xgGrWECf8ltjsA+jt+K6FaLNQRBOG2DNReet5mh5UYzDyZUNJlD1ygxys
-   Q==;
-X-CSE-ConnectionGUID: TQABKgwDQOu1SnDePqoU9g==
-X-CSE-MsgGUID: WyM/x89tRuuB6f5KTVmCgw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11586"; a="63518391"
-X-IronPort-AV: E=Sophos;i="6.19,249,1754982000"; 
-   d="scan'208";a="63518391"
-Received: from orviesa007.jf.intel.com ([10.64.159.147])
-  by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Oct 2025 01:10:21 -0700
-X-CSE-ConnectionGUID: U/yJ+8RYQ+2huY61DLG6tw==
-X-CSE-MsgGUID: qjW+PJi/SHi+vFM/FDi4jw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.19,249,1754982000"; 
-   d="scan'208";a="183988336"
-Received: from bkammerd-mobl.amr.corp.intel.com (HELO kuha.fi.intel.com) ([10.124.221.165])
-  by orviesa007.jf.intel.com with SMTP; 23 Oct 2025 01:10:09 -0700
-Received: by kuha.fi.intel.com (sSMTP sendmail emulation); Thu, 23 Oct 2025 11:10:08 +0300
-Date: Thu, 23 Oct 2025 11:10:08 +0300
-From: Heikki Krogerus <heikki.krogerus@linux.intel.com>
-To: Chaoyi Chen <kernel@airkyi.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Yubing Zhang <yubing.zhang@rock-chips.com>,
-	Frank Wang <frank.wang@rock-chips.com>,
-	Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-	Amit Sunil Dhamne <amitsd@google.com>,
-	Chaoyi Chen <chaoyi.chen@rock-chips.com>,
-	Dragan Simic <dsimic@manjaro.org>, Johan Jonker <jbx6244@gmail.com>,
-	Diederik de Haas <didi.debian@cknow.org>,
-	Peter Robinson <pbrobinson@gmail.com>, linux-usb@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
-Subject: Re: [PATCH v7 1/9] usb: typec: Add notifier functions
-Message-ID: <aPni4AeDaem_rfZH@kuha.fi.intel.com>
-References: <20251023033009.90-1-kernel@airkyi.com>
- <20251023033009.90-2-kernel@airkyi.com>
+	id 1vBquO-00000005a95-3NPJ;
+	Thu, 23 Oct 2025 08:42:58 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1761208967;
+	bh=sn155PxY4c6KoChuMd294Ou+jNKdIOB15aowevCx2w4=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=igiHR0SjfmIarvQk/NjsVaXyggKa7DLNKihy7JDojejk6ToxCdKqI/hSLZccxT67W
+	 tpX9hvWL4q8HZc4ioHrQ20yMd/FHDys2VK/g1xh9DQUx0FkxEaO44wEU15zUJUAshd
+	 ftfJHXIsACb0ykiS5OVplw8HDNQqdITDPUrKv9Vw8DrTTxaHhYx1SBS6nuWrzHpXh+
+	 Jn6MI3ftrjKYPNMOhTsB1Og72LlpKju9+zKvK6b5Yen08RmM1+/+jFqsJwVK6frQUk
+	 tlLUpTj2bO8b5fFV/EwIDIQ/2gn4DSvuP5oQ0Z5gtQP27Kws3tXb0vXiWTYCNtGPEY
+	 NPe8nR5SyEKqw==
+Received: from [192.168.1.90] (unknown [82.79.138.145])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 77CA917E127F;
+	Thu, 23 Oct 2025 10:42:47 +0200 (CEST)
+Message-ID: <b25aa269-6dc8-43d4-a3f3-85691ace134e@collabora.com>
+Date: Thu, 23 Oct 2025 11:42:46 +0300
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20251023033009.90-2-kernel@airkyi.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1] drm/rockchip: Set VOP for the DRM DMA device
+To: Dmitry Osipenko <dmitry.osipenko@collabora.com>,
+ Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
+ <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
+ Robin Murphy <robin.murphy@arm.com>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Daniel Stone <daniels@collabora.com>
+Cc: kernel@collabora.com, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org
+References: <20251022161948.199731-1-dmitry.osipenko@collabora.com>
+Content-Language: en-US
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+In-Reply-To: <20251022161948.199731-1-dmitry.osipenko@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251023_011101_585280_E2348839 
-X-CRM114-Status: GOOD (  11.54  )
+X-CRM114-CacheID: sfid-20251023_014257_016460_741736F2 
+X-CRM114-Status: UNSURE (   9.42  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,39 +81,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On 10/22/25 7:19 PM, Dmitry Osipenko wrote:
+> Use VOP for DMA operations performed by DRM core. Rockchip DRM driver
+> is backed by a virtual device that isn't IOMMU-capable, while VOP is the
+> actual display controller device backed by IOMMU. Fixes "swiotlb buffer
+> is full" warning messages originated from GEM prime code paths.
+> 
+> Note, that backporting is non-trivial as this depends on 143ec8d3f9396
+> ("drm/prime: Support dedicated DMA device for dma-buf imports"), which
+> landed in v6.16 and 421be3ee36a4 ("drm/rockchip: Refactor IOMMU
+> initialisation"), which landed in v5.19.
+> 
+> Reported-by: Daniel Stone <daniels@collabora.com>
+> Fixes: 2048e3286f34 ("drm: rockchip: Add basic drm driver")
+> Cc: stable@vger.kernel.org # v6.16+
+> Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> Signed-off-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+> ---
 
-> diff --git a/include/linux/usb/typec_notify.h b/include/linux/usb/typec_notify.h
-> new file mode 100644
-> index 000000000000..a3f1f3b3ae47
-> --- /dev/null
-> +++ b/include/linux/usb/typec_notify.h
-> @@ -0,0 +1,17 @@
-> +/* SPDX-License-Identifier: GPL-2.0 */
-> +
-> +#ifndef __USB_TYPEC_NOTIFY
-> +#define __USB_TYPEC_NOTIFY
-> +
-> +#include <linux/notifier.h>
-> +
-> +enum usb_typec_event {
-> +	TYPEC_ALTMODE_REGISTERED
-> +};
+With the patch applied I'm not able to fire those warnings anymore - tested on
+my ROCK 5B (RK3588) and ROCK 4D (RK3576) boards.  Hence you may add:
 
-Don't you need to know when the altmode is removed?
+Tested-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 
-> +
-> +int typec_register_notify(struct notifier_block *nb);
-> +int typec_unregister_notify(struct notifier_block *nb);
-> +
-> +void typec_notify_event(unsigned long event, void *data);
-
-Declare typec_notify_event() in drivers/usb/typec/bus.h
-
-thanks,
-
--- 
-heikki
 
 _______________________________________________
 Linux-rockchip mailing list
