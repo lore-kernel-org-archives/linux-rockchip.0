@@ -4,103 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0255CCD1A5
-	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Oct 2025 08:08:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B259CCD1A5
+	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Oct 2025 08:13:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oPZF9DhDppx3cz8tVuTewWG3W6cgKS2hV7/v+syZTyo=; b=idhtQh2hm4R6sD
-	9LNjII7RZ/ApekKejja7P4lWsvrAAsJbSEOVnblDQC8GQyqPicFsswA+LVbuG3L51cjVY4ovlyWv5
-	iHWQyzRtj5NLNSxt20MIKH5FitfJwAmIvJ83wIkaj0MqxLdbt6TNYHuVsxAwfQ+mY/CEqkqUTiZeN
-	QzPk/mOYjpcRsWzW4YZ553CC3DMjFsbXtbzEQwiWJnmKmoocWzCV33vc7Nj/ISi2m9K6DYuIK3p2T
-	K42lF2hPhUFEq/YCXktjeIGGYMj4XdCM2d8OWbZD+vhHfIdfmX85KGSvtHGUvjZxE/scpu+GeHVY1
-	Rj3xRxS6UEojn5YSweyg==;
+	List-Owner; bh=2aycQoU99+Mn5YaMmX8ys91iTK5l02DMg2/wpB+0oO0=; b=gkfp5sXmo+SYdl
+	EslEAJB1iCQ7tdyvwrX2sqPKMS8UrQYXfUJJyyMAJo9ROB2M/OffLmU3Nn13HqM5LYD8cPGippKrC
+	/hJXbRcCb8CWU9tkbW2HXSStKFiy2mN6EgPF/G9NaS10FPbfg5knNQSkfnEMjqRePtmaALgP3/PhX
+	e4+ZhyvZOZ1GF6yL/aPtaJBfYfTT4mzEw3e1Gzmr/CPKvEb4x8ZuoSHv/xzfI0AG1gSy9lu4PGuZa
+	iDKl8rZ00D1ei2vVu/ghgw1HpbRtOcS2nU7djia090dw61fVlo89NFcTji0HxMiC+lNYVdO70ofYB
+	i6e6zmQSrPOrvafOt0Mw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vCCqR-00000008cxi-0KyQ;
-	Fri, 24 Oct 2025 08:08:19 +0000
-Received: from mgamail.intel.com ([198.175.65.9])
+	id 1vCCuy-00000008dtr-0Nxx;
+	Fri, 24 Oct 2025 08:13:00 +0000
+Received: from mail-m21466.qiye.163.com ([117.135.214.66])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vCCqO-00000008cvi-0jKx;
-	Fri, 24 Oct 2025 08:08:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1761293296; x=1792829296;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:content-transfer-encoding:in-reply-to;
-  bh=iVIHEI/6GYiyKQtjDs+G9MH3NzfvOwU3yM+TuMzlGF8=;
-  b=iEAwYakOSOD8gOL+ax8AME35ICY8UENzW2xdSqXQS+eHR3l3KKJ6m7Z6
-   cOVYwzQt2B8ushtBbAc6F3bZ1JZyBiuQnbnkJ+PEZGucBck1bebUIuzd0
-   8eKeW1i4vDkV2GUu0NAdd7U1hpHdD67ur3V4DvYdhTijzZX7rOTIFpdww
-   ewQASw2xMrknZDGutghWeefIjHqpCn+6vYt8dHTJr3XzVJ4TPXzCoqyn6
-   aFL62QG6Ad8jblTXigKSWHh+VXsRtLTmaj9W6PmGy5TKmjrVwQ5lWHe7j
-   7zXwQ6cMvClsdO10vUPe6qpqEd9VHejaBLTmY16xCVdwXOYoqRT3fcVFZ
-   g==;
-X-CSE-ConnectionGUID: twTgrbeiSIqcggA1rZYAIQ==
-X-CSE-MsgGUID: /NiIfzYIS/2ydY3pXdigfQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11586"; a="86102765"
-X-IronPort-AV: E=Sophos;i="6.19,251,1754982000"; 
-   d="scan'208";a="86102765"
-Received: from orviesa001.jf.intel.com ([10.64.159.141])
-  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Oct 2025 01:08:14 -0700
-X-CSE-ConnectionGUID: ShAhcC5rRm+Zk2meUFiqQQ==
-X-CSE-MsgGUID: Y+ylwr1ITe6V3fw6sAb20w==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.19,251,1754982000"; 
-   d="scan'208";a="221572594"
-Received: from mjruhl-desk.amr.corp.intel.com (HELO kuha.fi.intel.com) ([10.124.221.255])
-  by orviesa001.jf.intel.com with SMTP; 24 Oct 2025 01:07:58 -0700
-Received: by kuha.fi.intel.com (sSMTP sendmail emulation); Fri, 24 Oct 2025 11:07:56 +0300
-Date: Fri, 24 Oct 2025 11:07:56 +0300
-From: Heikki Krogerus <heikki.krogerus@linux.intel.com>
-To: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-Cc: Chaoyi Chen <kernel@airkyi.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Yubing Zhang <yubing.zhang@rock-chips.com>,
-	Frank Wang <frank.wang@rock-chips.com>,
-	Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-	Amit Sunil Dhamne <amitsd@google.com>,
-	Dragan Simic <dsimic@manjaro.org>, Johan Jonker <jbx6244@gmail.com>,
-	Diederik de Haas <didi.debian@cknow.org>,
-	Peter Robinson <pbrobinson@gmail.com>, linux-usb@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
-Subject: Re: [PATCH v7 1/9] usb: typec: Add notifier functions
-Message-ID: <aPsz3PvZPgXdvM4E@kuha.fi.intel.com>
-References: <20251023033009.90-1-kernel@airkyi.com>
- <20251023033009.90-2-kernel@airkyi.com>
- <aPni4AeDaem_rfZH@kuha.fi.intel.com>
- <aPnvoSRJefwDlpNO@kuha.fi.intel.com>
- <aPn4-S7upPOOtenr@kuha.fi.intel.com>
- <3a24bd7f-c247-4541-8cf5-c1e66e2af5a0@rock-chips.com>
- <aPsuLREPS_FEV3DS@kuha.fi.intel.com>
- <4fddba9a-b073-4bca-bd13-64a415f4bc47@rock-chips.com>
+	id 1vCCuv-00000008dsr-0lPN;
+	Fri, 24 Oct 2025 08:12:58 +0000
+Received: from [172.16.12.149] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 270f1f398;
+	Fri, 24 Oct 2025 16:12:48 +0800 (GMT+08:00)
+Message-ID: <9ec2189e-ec36-4cd8-9713-beb490b8297c@rock-chips.com>
+Date: Fri, 24 Oct 2025 16:12:47 +0800
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <4fddba9a-b073-4bca-bd13-64a415f4bc47@rock-chips.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v7 2/9] drm/bridge: Implement generic USB Type-C DP HPD
+ bridge
+To: Heikki Krogerus <heikki.krogerus@linux.intel.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
+ Kishon Vijay Abraham I <kishon@kernel.org>, Heiko Stuebner
+ <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>,
+ Andy Yan <andy.yan@rock-chips.com>,
+ Yubing Zhang <yubing.zhang@rock-chips.com>,
+ Frank Wang <frank.wang@rock-chips.com>,
+ Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Amit Sunil Dhamne <amitsd@google.com>, Dragan Simic <dsimic@manjaro.org>,
+ Johan Jonker <jbx6244@gmail.com>, Diederik de Haas <didi.debian@cknow.org>,
+ Peter Robinson <pbrobinson@gmail.com>, linux-usb@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
+References: <20251023033009.90-1-kernel@airkyi.com>
+ <20251023033009.90-3-kernel@airkyi.com> <aPnrKFWTvpuRTyhI@kuha.fi.intel.com>
+ <14b8ac71-489b-4192-92d6-5f228ff3881d@rock-chips.com>
+ <aPoZhBdc1M6Qgfae@kuha.fi.intel.com>
+ <6f769567-b383-4c79-b441-3dd84f21cdae@rock-chips.com>
+ <aPsse5qVL84XOj8w@kuha.fi.intel.com>
+Content-Language: en-US
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+In-Reply-To: <aPsse5qVL84XOj8w@kuha.fi.intel.com>
+X-HM-Tid: 0a9a1547081303abkunmae71b56b2f4984
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQh9PTFYYHU8YGkNDQx0ZTx9WFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEtNQk
+	tVSktLVUpCWQY+
+DKIM-Signature: a=rsa-sha256;
+	b=cbh7z5oMnHR/DLqyOIDZk4K7gXmeu0Z/ewCxVZLD2lfh51kbnP5gwdZNZ7a3inVN4NoC/E/hL4XmvOdj5FQ0/XmmJ78CkfSevEhzvOTjQ9VpmomjoQ1rpjyzol1iXhudUcEI++95744VHFl5SRJlcN0jA2NbRp7MwZ9xcoa3t1g=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=k9PZlmFs4+G6V09YuUs38/TEsI+fOADgB825HrzHznU=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251024_010816_246267_054309CD 
-X-CRM114-Status: GOOD (  20.20  )
+X-CRM114-CacheID: sfid-20251024_011257_475472_0071DDE6 
+X-CRM114-Status: UNSURE (   7.94  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,59 +92,24 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Oct 24, 2025 at 03:59:50PM +0800, Chaoyi Chen wrote:
-> Hi Heikki,
-> =
-
-> On 10/24/2025 3:43 PM, Heikki Krogerus wrote:
-> > > I noticed the following statement in typec_register_altmode():
-> > > =
-
-> > > ```
-> > > =
-
-> > >  =A0 =A0 /* The partners are bind to drivers */
-> > >  =A0 =A0 if (is_typec_partner(parent))
-> > >  =A0 =A0 =A0 =A0 alt->adev.dev.bus =3D &typec_bus;
-> > > =
-
-> > > ```
-> > > =
-
-> > > If the condition is not met, the bus will not be set, which means bus=
-_notify()
-> > > won't be able to take effect. Did I miss something?
-> > Right, that would be the condition that I was talking about. Only
-> > partner altmodes are used in the bus.
-> > =
-
-> > Hold on! Do you need the port altmode instead of the partner altmode?
-> > If that's the case, then we can't use the bus notifier. So we'll need
-> > the separate notifier chain after all.
-> =
-
-> Yes, we need port altmode.=A0 The partner altmode device appears too late=
- for
-> DRM device, as it only shows up after the corresponding DP device is inse=
-rted.
-
-Got it. So just move the declaration of the typec_notify_event() to
-drivers/usb/typec/bus.h and this patch is OK by me.
-
-Sorry again about the misunderstanding.
-
-thanks,
-
--- =
-
-heikki
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gMTAvMjQvMjAyNSAzOjM2IFBNLCBIZWlra2kgS3JvZ2VydXMgd3JvdGU6Cgo+PiBBbm90aGVy
+IHRoaW5nIGlzIHRoYXQgQ09ORklHX0RSTV9BVVhfSFBEX0JSSURHRSBvcmlnaW5hbGx5IG5lZWRl
+ZCB0byBiZQo+PiBzZWxlY3RlZCBieSBvdGhlciBtb2R1bGVzLiBXaXRoIHRoaXMgY2hhbmdlLCB3
+ZSBhbHNvIG5lZWQgdG8gZXhwb3NlIGl0IGluCj4+IEtjb25maWcuCj4gU29ycnksIEkgZG9uJ3Qg
+dW5kZXJzdGFuZCB0aGUgcHJvYmxlbSBoZXJlPyBXaGF0IGRvIHlvdSBuZWVkIHRvIGV4cG9zZQo+
+IGluIEtjb25maWc/Cgpjb25maWcgRFJNX0FVWF9IUERfQlJJREdFCiDCoCDCoCB0cmlzdGF0ZQog
+wqAgwqAgZGVwZW5kcyBvbiBEUk1fQlJJREdFICYmIE9GCiDCoCDCoCBzZWxlY3QgQVVYSUxJQVJZ
+X0JVUwogwqAgwqAgaGVscAogwqAgwqAgwqAgU2ltcGxlIGJyaWRnZSB0aGF0IHRlcm1pbmF0ZXMg
+dGhlIGJyaWRnZSBjaGFpbiBhbmQgcHJvdmlkZXMgSFBECiDCoCDCoCDCoCBzdXBwb3J0LgoKVGhl
+IHRyaXN0YXRlIGhlcmUgaXMgZW1wdHksIHNvIG5vdyBpdCBjYW4gb25seSBiZSBzZWxlY3RlZCBi
+eSBzb21lIFR5cGVDIGNvbnRyb2xsZXIgZHJpdmVycy4gSSB0aGluayBpdCdzIG5vdCBhIGJpZyBk
+ZWFsLCBqdXN0IGV4cG9zZSB0aGlzIGl0ZW0uCgoKPgo+IHRoYW5rcywKPgotLSAKQmVzdCwKQ2hh
+b3lpCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGlu
+dXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5v
+cmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2Nr
+Y2hpcAo=
