@@ -4,62 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E3D2CCD1AB
-	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Oct 2025 07:14:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C8CECCD1A5
+	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Oct 2025 07:36:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xPJQz0x7Gudsasr3DmNo9XYTWACl4A+cN26rvkLkJ2M=; b=ibdDQP/nPfRmOz
-	EJschaYQDSyAbqgMIN3hHgNfXBSOnESZGVg7twbrPj+WFiJ0sB0ZA/f4qPoAW2483QvQhSkQz7bIW
-	qEaQKz+0cBtDYe0wg0W0XQhwGYhLtcPW0enqzGLXGEOkMDALwQGAaElNdsgBFwN/IZZ8PJ/2KCGDa
-	ow09EuJG89qvkQs38Smh4sQb31o/RWKgeeU57KMPIPyg70w2FUzZd4syjLQJTyC/PtGoSEa9ai7ft
-	K5RDD31hoFL4FWqORf/T/TYggbinseMwmCt+ewSAmo5dltc7mHz+AybkQq6drv64/IctrTjwtsuG8
-	doow0IJueHNOQYke7+zw==;
+	List-Owner; bh=IgWEQw5w1MllMUBhbY8YGJ4puvpycpsRubq8p1BFMzs=; b=m5sqrI58k3lNTO
+	D/9ObcACUOlGzTEvGnzqymsaorysPbFJAX+yNku3NiLl9KAL8Ui6gRUppGL0UBqMyr3jRUDkAU1Us
+	q3RyRI9hWeNJJZITh043c34rLEq0wQkHQ5HCDeSpRgfKBuhpq5q8tX2xlr6eLx2jd3D9IrRSIWA1I
+	Zg3EQKFtSSPDuH9lD7xbBNiq4FGEoYrapax3pH9SlGJZzvh9enqiZ21tgUDCBpix8IlimS0q/W3iJ
+	Rgyp8PX4CAGPbl1GuJKLCWCc+yupJM6wlZH0opBL0UOhEFt75Tbw9ptdf2aNTjTgBi5OzeaJI6no9
+	DmJj07rmtiQIAYTM+0Bw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vCC03-00000008RYO-2Fik;
-	Fri, 24 Oct 2025 07:14:11 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vCCLs-00000008Wgm-2lLo;
+	Fri, 24 Oct 2025 07:36:44 +0000
+Received: from mgamail.intel.com ([198.175.65.11])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vCC01-00000008RWx-1PiJ;
-	Fri, 24 Oct 2025 07:14:10 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id DEC92404A3;
-	Fri, 24 Oct 2025 07:14:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 30551C4CEF1;
-	Fri, 24 Oct 2025 07:14:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1761290048;
-	bh=tixsbOhPpx+6hLtcafF4AhfrtkXskRGuW6voP6ka0TU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Ex1t4OPx1GNhOGgxZG9mfTnTw6vg7QdtA/sCWg+iWh3jsuMYZI9yMUgqkPiIElcTp
-	 qb6WczdXr4o3U9dAaNA5iG2HH1NfR16Ork7l3Il5Zta32w7HUou1h+s5ROTuFB1zAZ
-	 TgZ8sYNWK60atK1vpk1vYQhxqwmgv/YHigW3PEYOBkNTMZzHD4preROzq6TB1w+QvX
-	 taPyrRNHrs7o4UKI8Z/TqDPTTtlRHvf30sttXdLnsT1UVoPLFqTKXHW0V/5AKBqakB
-	 777b+6NHPduvK/0TGOPWMTStTjCfsgOTZ2k4+VHN/5hPGL0VDcmWxRscQVMy4rcRtn
-	 /zsWNUNhuc6Gg==
-Date: Fri, 24 Oct 2025 09:14:05 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Elaine Zhang <zhangqing@rock-chips.com>
-Cc: mturquette@baylibre.com, sboyd@kernel.org, sugar.zhang@rock-chips.com, 
-	heiko@sntech.de, robh@kernel.org, krzysztof.kozlowski+dt@linaro.org, 
-	conor+dt@kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	huangtao@rock-chips.com, finley.xiao@rock-chips.com
-Subject: Re: [PATCH v4 6/7] dt-bindings: clock: rockchip: Add RK3506 clock
- and reset unit
-Message-ID: <20251024-wonderful-banana-bumblebee-273c8f@kuoka>
-References: <20251021065232.2201500-1-zhangqing@rock-chips.com>
- <20251021065232.2201500-7-zhangqing@rock-chips.com>
+	id 1vCCLo-00000008Wg2-41fj;
+	Fri, 24 Oct 2025 07:36:42 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1761291401; x=1792827401;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=mWjj9l8sR4AQPWA6ugbC691Ckn2QjoC60AB1xOLd+C4=;
+  b=X0/vM/FToYdCnOf+9Nc5k52rlsb7ahsbpYLFF5ODeC7WBgTZLwSHvLrz
+   BsfJfrWvQeD2eIeOt0RVU3aEyHDuow9zNo79R7LG7Sjq22nHjtBeQeWjo
+   kJyzdJKtZlv0WtIBlPIJbtEmGkze1jgy825PxkKSePBLxV6fiSa6Qg7D4
+   bJ9RxaNCI1bqP31v4nm42aAuaJ0j+iXOqaeTaymmv/vTrcl+WnZEAVhcz
+   ROMm5INYcQ1disbNppTnhcJwBaXsqo8GTDnvzDrkrAJCW8jOr8eDuLzBg
+   CER074GrZDK98RAlWoYu7VX1xsHMRvXQBGaLgBqCer+M22Wasx8uWu6Oj
+   A==;
+X-CSE-ConnectionGUID: YD4f2Ou5SOqlKnCy9uakxA==
+X-CSE-MsgGUID: 6dDVrxSpTa+wBdfE8zvx2A==
+X-IronPort-AV: E=McAfee;i="6800,10657,11586"; a="73759440"
+X-IronPort-AV: E=Sophos;i="6.19,251,1754982000"; 
+   d="scan'208";a="73759440"
+Received: from orviesa001.jf.intel.com ([10.64.159.141])
+  by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Oct 2025 00:36:41 -0700
+X-CSE-ConnectionGUID: +9H14C/KT3KpDNAQIA8LpQ==
+X-CSE-MsgGUID: DcV1UYgvS0+g8hqqTwa8Pg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.19,251,1754982000"; 
+   d="scan'208";a="221566635"
+Received: from mjruhl-desk.amr.corp.intel.com (HELO kuha.fi.intel.com) ([10.124.221.255])
+  by orviesa001.jf.intel.com with SMTP; 24 Oct 2025 00:36:27 -0700
+Received: by kuha.fi.intel.com (sSMTP sendmail emulation); Fri, 24 Oct 2025 10:36:27 +0300
+Date: Fri, 24 Oct 2025 10:36:27 +0300
+From: Heikki Krogerus <heikki.krogerus@linux.intel.com>
+To: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Yubing Zhang <yubing.zhang@rock-chips.com>,
+	Frank Wang <frank.wang@rock-chips.com>,
+	Andrzej Hajda <andrzej.hajda@intel.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Robert Foss <rfoss@kernel.org>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+	Amit Sunil Dhamne <amitsd@google.com>,
+	Dragan Simic <dsimic@manjaro.org>, Johan Jonker <jbx6244@gmail.com>,
+	Diederik de Haas <didi.debian@cknow.org>,
+	Peter Robinson <pbrobinson@gmail.com>, linux-usb@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
+Subject: Re: [PATCH v7 2/9] drm/bridge: Implement generic USB Type-C DP HPD
+ bridge
+Message-ID: <aPsse5qVL84XOj8w@kuha.fi.intel.com>
+References: <20251023033009.90-1-kernel@airkyi.com>
+ <20251023033009.90-3-kernel@airkyi.com>
+ <aPnrKFWTvpuRTyhI@kuha.fi.intel.com>
+ <14b8ac71-489b-4192-92d6-5f228ff3881d@rock-chips.com>
+ <aPoZhBdc1M6Qgfae@kuha.fi.intel.com>
+ <6f769567-b383-4c79-b441-3dd84f21cdae@rock-chips.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20251021065232.2201500-7-zhangqing@rock-chips.com>
+In-Reply-To: <6f769567-b383-4c79-b441-3dd84f21cdae@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251024_001409_392974_04989C43 
-X-CRM114-Status: GOOD (  13.79  )
+X-CRM114-CacheID: sfid-20251024_003641_061630_C3904D6F 
+X-CRM114-Status: UNSURE (   7.84  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,80 +116,17 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Oct 21, 2025 at 02:52:31PM +0800, Elaine Zhang wrote:
-> diff --git a/Documentation/devicetree/bindings/clock/rockchip,rk3506-cru.yaml b/Documentation/devicetree/bindings/clock/rockchip,rk3506-cru.yaml
-> new file mode 100644
-> index 000000000000..43e192d9b2af
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/clock/rockchip,rk3506-cru.yaml
-> @@ -0,0 +1,45 @@
-> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/clock/rockchip,rk3506-cru.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Rockchip RK3506 Clock and Reset Unit (CRU)
-> +
-> +maintainers:
-> +  - Finley Xiao <finley.xiao@rock-chips.com>
-> +  - Heiko Stuebner <heiko@sntech.de>
-> +
-> +description: |
+> Another thing is that CONFIG_DRM_AUX_HPD_BRIDGE originally needed to be
+> selected by other modules. With this change, we also need to expose it in
+> Kconfig.
 
-Do not need '|' unless you need to preserve formatting.
+Sorry, I don't understand the problem here? What do you need to expose
+in Kconfig?
 
-> +  The RK3506 CRU generates the clock and also implements reset for SoC
-> +  peripherals.
-> +
+thanks,
 
-...
-
-> diff --git a/include/dt-bindings/clock/rockchip,rk3506-cru.h b/include/dt-bindings/clock/rockchip,rk3506-cru.h
-> new file mode 100644
-> index 000000000000..f629b6fa75c3
-> --- /dev/null
-> +++ b/include/dt-bindings/clock/rockchip,rk3506-cru.h
-> @@ -0,0 +1,285 @@
-> +/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
-> +/*
-> + * Copyright (c) 2023-2025 Rockchip Electronics Co., Ltd.
-> + * Author: Finley Xiao <finley.xiao@rock-chips.com>
-> + */
-> +
-> +#ifndef _DT_BINDINGS_CLK_ROCKCHIP_RK3506_H
-> +#define _DT_BINDINGS_CLK_ROCKCHIP_RK3506_H
-> +
-> +/* cru plls */
-> +#define PLL_GPLL			1
-
-Other binding starts from 0, so be consistent.
-
-> +#define PLL_V0PLL			2
-> +#define PLL_V1PLL			3
-> +
-> +/* cru-clocks indices */
-
-You should not have holes in indices. These are abstract numbers, not
-hardware values.
-
-
-> +#define ARMCLK				15
-
-...
-
-
-> +#ifndef _DT_BINDINGS_REST_ROCKCHIP_RK3506_H
-> +#define _DT_BINDINGS_REST_ROCKCHIP_RK3506_H
-> +
-> +/* CRU-->SOFTRST_CON00 */
-> +#define SRST_NCOREPORESET0_AC		0
-
-Here ^^^ starts with 0, not 1.
-
-Best regards,
-Krzysztof
-
+-- 
+heikki
 
 _______________________________________________
 Linux-rockchip mailing list
