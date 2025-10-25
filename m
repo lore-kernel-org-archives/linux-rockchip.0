@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91287CCF9E0
-	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Oct 2025 23:49:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8528CCF9E0
+	for <linux-rockchip@archiver.kernel.org>; Sat, 25 Oct 2025 02:11:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Date:Message-Id:
-	References:In-Reply-To:From:Subject:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Date:
+	Message-Id:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fa6VxpcGMoCTn/9A0kvzuemkmNVUu94HhZiODUxPugk=; b=ciMC/ZcDbMLgTl
-	rpgJSytx0BIrbo13kCWhuhLJ/o1bGI/yz1NYvAX7aObYcGCUD6qkVNWiFa7xiuzjvth2EUsqVar54
-	R9UXVFQWWtJnDAM+JSmQQBfssEtYoj0zUYEysWNm7IsDrb6Cob1zgyTCmRsWypBdxe1StfR3EkPvt
-	26SQcUZ7N3oKPgQcGSeU7Am4P4LhN8pdLWb1CSAUq55hPSCmrPixUcQgyuNLJYE02rL8k4WKLFz2z
-	cCVsMHbLQ2bAw53Sa7YVlom9XwUSUk83w4weTN9cSaOAAkg04UKgxttemJWOAPoQ9snsAqNbYWjO5
-	T/QE1Zz+RluztYGy/gvw==;
+	List-Owner; bh=ft4yxPX5TsnPirAfLLXI2z5M2EarydfQTXhTTCCYts0=; b=O2fJIhPRwx2DjT
+	bgncltq9v5mH1qwHkbyWurxUy5LYYvJOB5b2B1FZx6CZ/VBNGgafSBLEDPaODoLNf73B5C8RC8TlQ
+	aaMI21RJ0w/vyW7CNeBS3xEK0SD3g3CuOj4sBONXPLjDScld7LTzhNigZA+JXYBl7uDsL6vDfFWJp
+	9z4td73KLrhQydpLOmAP5oZKbvrcizhWAyr5X3l7lrpXibfnydcsSRB3f/lZKgNx+JX4haLspPof0
+	jqB98aYXVDehWJ63SCKwUYpwsZXff+KGDkWNavEGLjdN3xHlGyWEZbPJr+JP8JrWBtDRGdqbfmWiu
+	BvyFNkHDnMOuJdiT1Whw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vCRWp-0000000AgHT-0EwO;
-	Fri, 24 Oct 2025 23:49:03 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vCTkI-0000000AooD-0ndp;
+	Sat, 25 Oct 2025 02:11:06 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vCRWn-0000000AgHJ-3QcP
-	for linux-rockchip@lists.infradead.org;
-	Fri, 24 Oct 2025 23:49:01 +0000
+	id 1vCTkE-0000000AomN-41jT;
+	Sat, 25 Oct 2025 02:11:04 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id B1260602B6;
-	Fri, 24 Oct 2025 23:49:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 53466C4CEF1;
-	Fri, 24 Oct 2025 23:49:00 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 6063945759;
+	Sat, 25 Oct 2025 02:11:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1EFCEC4CEF1;
+	Sat, 25 Oct 2025 02:11:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1761349740;
-	bh=ZyFTDKIxNzvgRWtwrO/yjPr6c+qow1NEKp1HamVZbPI=;
-	h=Subject:From:In-Reply-To:References:Date:To:Cc:From;
-	b=XlqnJiIYRxG7jDUGlrgYqJuNEyP3QmS68eJ7m8d2MnKUZmQmUwBXHTaojivtAIF7K
-	 da6IGCn8dcXFNtL+ve5Q7ealoLlvAWuzzQcg/QW7GYLli7O9Pm7p28kqKMxiscHP97
-	 h+JT2tDXQa/UYdhuUY28UgLvVrlcM+aOIS8CotyFn1f/4hdEqnXZ/ht8n6py9E9E5A
-	 ZiGh8BrtAYD6BAffx2l+kEHQksGaGKzKbzZon4BTa53+tpL6GsdSJUriDJq85J6Fgg
-	 DbgUIxsl9eEj6NfJ1Zmq1OKhqcb207aMPbZBTG252rxtRC6D0bFwK92Pf535lNeTbK
-	 FE9dbDbBFcwWA==
+	s=k20201202; t=1761358262;
+	bh=EJ/Aqtc+3CNTqVJNJQJ98eezwGN+8vLTVQDAuZan1Yw=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=sU/IWdhwzB32/JIa1gMSB5YRGpBBP4f3dotAQoI/K9H1vQpCO5ij3NwrUtuOmipxX
+	 +HsxEGNAATmwzhEb7rUeqkVyXqZOEGRg+iQIZchXWkzATZdmPFtNvWRshd5A1Mnwsn
+	 6dyLrmK9ZX7/mpIGwAeQS4J+TX32TDEuNsIDz26zvS8kIVk/iJchyWVbKNBPRRdSz8
+	 A2IMLYCMhdnuPCaIJxdzxRfn/3cpngKsH88zV99UhwN1srxF0W/Qo7exoLDEsiFOOu
+	 oWh7auGWXNMTbgS4ZytjLWPQYUfCsfXmG16OccgXompon9CF5JEs89280v2FRXWVo9
+	 Yy9V/SkexXZwQ==
 Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 34216380AA54;
-	Fri, 24 Oct 2025 23:48:41 +0000 (UTC)
-Subject: Re: [GIT PULL] PCI fixes for v6.18
-From: pr-tracker-bot@kernel.org
-In-Reply-To: <20251024192903.GA1360890@bhelgaas>
-References: <20251024192903.GA1360890@bhelgaas>
-X-PR-Tracked-List-Id: <linux-pci.vger.kernel.org>
-X-PR-Tracked-Message-Id: <20251024192903.GA1360890@bhelgaas>
-X-PR-Tracked-Remote: git://git.kernel.org/pub/scm/linux/kernel/git/pci/pci.git tags/pci-v6.18-fixes-3
-X-PR-Tracked-Commit-Id: df5192d9bb0e38bf831fb93e8026e346aa017ca8
-X-PR-Merge-Tree: torvalds/linux.git
-X-PR-Merge-Refname: refs/heads/master
-X-PR-Merge-Commit-Id: 31009296f8ff7f4cc8feec9bc02b87573b2aceeb
-Message-Id: <176134971993.4096869.5906045247298146805.pr-tracker-bot@kernel.org>
-Date: Fri, 24 Oct 2025 23:48:39 +0000
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: Linus Torvalds <torvalds@linux-foundation.org>, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>, Manivannan Sadhasivam <mani@kernel.org>, Krishna Chaitanya Chundru <krishna.chundru@oss.qualcomm.com>, Ron Economos <re@w6rz.net>, "Maciej W. Rozycki" <macro@orcam.me.uk>, Thomas Bogendoerfer <tsbogend@alpha.franken.de>, Ilpo =?utf-8?B?SsOkcnZpbmVu?= <ilpo.jarvinen@linux.intel.com>, Guenter Roeck <linux@roeck-us.net>, Christian Zigotzky <chzigotzky@xenosoft.de>, FUKAUMI Naoki <naoki@radxa.com>, Herve Codina <herve.codina@bootlin.com>, Diederik de Haas <diederik@cknow-tech.com>, Dragan Simic <dsimic@manjaro.org>, Johan Hovold <johan@kernel.org>, linuxppc-dev@lists.ozlabs.org, linux-rockchip@lists.infradead.org, linux-mips@vger.kernel.org
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id EAEE8380AA59;
+	Sat, 25 Oct 2025 02:10:42 +0000 (UTC)
+MIME-Version: 1.0
+Subject: Re: [PATCH v2 0/5] DWMAC support for Rockchip RK3506
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <176135824149.4124588.13375979090680382599.git-patchwork-notify@kernel.org>
+Date: Sat, 25 Oct 2025 02:10:41 +0000
+References: <20251023111213.298860-1-heiko@sntech.de>
+In-Reply-To: <20251023111213.298860-1-heiko@sntech.de>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, netdev@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, jonas@kwiboo.se
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251024_191103_022971_FCD1C407 
+X-CRM114-Status: GOOD (  14.84  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,24 +71,50 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The pull request you sent on Fri, 24 Oct 2025 14:29:03 -0500:
+Hello:
 
-> git://git.kernel.org/pub/scm/linux/kernel/git/pci/pci.git tags/pci-v6.18-fixes-3
+This series was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
 
-has been merged into torvalds/linux.git:
-https://git.kernel.org/torvalds/c/31009296f8ff7f4cc8feec9bc02b87573b2aceeb
+On Thu, 23 Oct 2025 13:12:07 +0200 you wrote:
+> Some cleanups to the DT binding for Rockchip variants of the dwmac
+> and adding the RK3506 support on top.
+> 
+> As well as the driver-glue needed for setting up the correct RMII
+> speed seitings.
+> 
+> changes in v2:
+> - add Conor's Acks to dt-bindings
+> - add Andrew's Reviews to first 3 patches
+>   I didn't add the driver Review, as I did address Jonas' comments
+> - adapt to Jonas' comments in the driver
+> - add a patch for a MAINTAINERS entry (Jakub)
+> 
+> [...]
 
-Thank you!
+Here is the summary with links:
+  - [v2,1/5] dt-bindings: net: snps,dwmac: move rk3399 line to its correct position
+    https://git.kernel.org/netdev/net-next/c/32dd679b88d5
+  - [v2,2/5] dt-bindings: net: snps,dwmac: Sync list of Rockchip compatibles
+    https://git.kernel.org/netdev/net-next/c/e774c91dca45
+  - [v2,3/5] dt-bindings: net: rockchip-dwmac: Add compatible string for RK3506
+    https://git.kernel.org/netdev/net-next/c/4a667bec74b3
+  - [v2,4/5] ethernet: stmmac: dwmac-rk: Add RK3506 GMAC support
+    https://git.kernel.org/netdev/net-next/c/2010163a8ea4
+  - [v2,5/5] MAINTAINERS: add dwmac-rk glue driver to the main Rockchip entry
+    https://git.kernel.org/netdev/net-next/c/384d84263295
 
+You are awesome, thank you!
 -- 
 Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/prtracker.html
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
