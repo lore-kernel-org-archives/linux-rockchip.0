@@ -4,66 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B40FCCF9E3
-	for <linux-rockchip@archiver.kernel.org>; Sat, 25 Oct 2025 16:28:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B46CCCCF9E3
+	for <linux-rockchip@archiver.kernel.org>; Sat, 25 Oct 2025 16:33:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HblPoifNG9faLXTIUWRNnMFhVt+4JTf062yLVHRJMso=; b=gLaHgV3IVBch9+
-	dcMcqdTFtRnlSI5H4at8Zh51Z2rSVFLbVHl8V0wpvsZrMsllg+K37W5HzypLdqVAxgCNvhEvhOuyN
-	nQ6HW/DkjzmKIgoIt/hCkMQSk9aSBd2N/BHSCDsfOQnbIXtR2jLTNrRInKEc99IKCpmcLMsYqGnHH
-	rluBChAGo0zZXcpo87xfqX94uA9M/4+0rDudXuZUb3Bg2aZvsgMwxY8tqIfknZFePduXpmex6Ayvj
-	CbG+2CBcBAUtpdlZwW+A17djESSbkIlf2OHHI85oGuLqq7rCwkXniZMwLcAGy0K9khxj5vaq9FL95
-	VNfWP5mCgaMgOuJgqvLg==;
+	List-Owner; bh=ysdMzxWbEacs3avgzLuwzf6XEWoZf+kq6dnklVzXdww=; b=rlAQ5rVl9jf0Qm
+	VleQikZoU38EbvFi4044PBT0WCj587Co/UVBSEnQYG3BR11d3yKU8mibOHyfRU6EnTWwWVjFTuTj7
+	XwYwuMOghdheeqAu14CAqC1Z4KXtBcBTHzY2Kf30YYgEURuCgysQvqt0ojjOkhEJjHQYS9bnSwjz1
+	C0itUDpc3CJ+0akLBzsi5AJIBzuejwY7aanJaDOouWO2Jl0yQWOzWaNrMLHUDOal6bZdAXIT46lKg
+	2SIp/RjDtEkVVDBT4QBeTjo8yAAFaY3jVfXUyGL2MZy7a+044BqTS8yUMHfxO2lrKmtYInEvBxtZl
+	hgscqJKWWFqvAPM2M4+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vCh82-0000000BVt7-0MIO;
-	Sat, 25 Oct 2025 16:28:30 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vChCk-0000000BWn1-3Lou;
+	Sat, 25 Oct 2025 16:33:22 +0000
+Received: from mail-qt1-x82b.google.com ([2607:f8b0:4864:20::82b])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vCh7y-0000000BVsB-38Bq;
-	Sat, 25 Oct 2025 16:28:28 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 4454844DCE;
-	Sat, 25 Oct 2025 16:28:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 23F57C4CEFF;
-	Sat, 25 Oct 2025 16:28:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1761409706;
-	bh=puSyWICh4xZTWpltYje/LxrpNqBU11Q4+JjET8EzRII=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=ts2A83G3VEwlR4wChInP31M2rhV+QAnVEk0rSB1xhBiW+1WkhI1iYUSPX60BgbsDo
-	 N2Rdowtl9Nd4UkQ9Apv3INXcyqIF/AqV0zcUppzHQ/EWnbDnmHhccvP4WYGvxKXvan
-	 rf0tTOR80fFiNsd1jQTxUxx9ZnhK+2tgMxtNoYzDiw4bvYAFFEJOvPCJ4UF/hFIizD
-	 gYyxHOPjnR8BaPI1hjoUc08i/Ijl/qPaJx2Kxi4zT68wMdq9mRBL+R64sfQpUEdPka
-	 pxVT11DBpisjlKAIr/tWAQnF9+zk8aED+tYy9yC3sz8ojSemdEL36sJXwJZ8MSkOdC
-	 Zc40rmjkuu+9A==
-From: Sasha Levin <sashal@kernel.org>
-To: patches@lists.linux.dev,
-	stable@vger.kernel.org
-Cc: Michael Riesch <michael.riesch@collabora.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Vinod Koul <vkoul@kernel.org>,
-	Sasha Levin <sashal@kernel.org>,
-	heiko@sntech.de,
+	id 1vChCg-0000000BWkW-2rtb
+	for linux-rockchip@lists.infradead.org;
+	Sat, 25 Oct 2025 16:33:19 +0000
+Received: by mail-qt1-x82b.google.com with SMTP id d75a77b69052e-4eba67d4b1bso7009751cf.1
+        for <linux-rockchip@lists.infradead.org>; Sat, 25 Oct 2025 09:33:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1761409997; x=1762014797; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=pQlnwek1lWpij8LeOBWh+sxDT7KmBEOhz8ZE1R1F1kI=;
+        b=SYrT5YVm+cQd6ZhYVZd9D5ITc6+54Lbcs4Dks1L4rTw1w1UqZHcfcAfEa89TnL56b3
+         L4IojMFb5LytnChnBz/YQagxmX/5aWu6exDhsVavasMuSsvw6u30BFnNDIBUqUiDX+L5
+         FZeAeu76dZqfZlsX9arWDliPNfotccqu5Yc7gURPFPNSn+DslFyIrFIYiBNAtjbGeljJ
+         miBTPG9WgdnyHBz7iOazc5iA3vzJhkdYWIoKPfXzouAqYUGfcHtGGiLPnJcgvVKciobV
+         xfojYRCCUpWz/r9gRC74LNB+Cmx/e/cgTYhF+tx0hBxDoehbgI6Ub6uzXoRy9JA3xHZK
+         NdOg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1761409997; x=1762014797;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=pQlnwek1lWpij8LeOBWh+sxDT7KmBEOhz8ZE1R1F1kI=;
+        b=Pre3wnH9f+c3yEV4jzYZRxRUsJOvXJDcrVw81MR10QYWo1oCGEPhNRCIRTfuVbKy+L
+         g7BPxELD6965nDG+ZT8VSDyaIollAQNhX6IG4GlQ1glQYICyHsz1a3jmEA112VK+/ZtG
+         NjiX22Rx9Z+t0Yvb5UqhDMmVlgaXXUo7uKkX/LMQ2XKIksUNo1Yp+DflMzgclYTID6Y1
+         ili4KExmQoUo2wJUT147RFKExRKu5ydOB7cucAC/ZkxCVybvDquPPD785St0O5KNSYy4
+         OChH5/ElSkTdFmiGMJg6zxovMB7El0qkI6Chnf5vKNs6RrFuN1ly9aDadhAw+Z402g8I
+         rVxw==
+X-Forwarded-Encrypted: i=1; AJvYcCUU/92KlrD4T+UntyFlUtpegxumPTn1WeEqodugWftEEXSkOFnhWVZ1qnMFAn8g0vhxyWm8gdXWJpDV+VKLtg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy6n8WikPZNxOkvdLWQCT38xrgQoEI52uOL0XbcGyavYC//bwD+
+	vrrQ8veXS7MidcGGsw8m7R25R4yXkYF3xBmS1r3FNAfVfmgOIx75bWW+
+X-Gm-Gg: ASbGnctT2ATxY678Ounh+BZfGNk65euoZx/PS0d/A3pWd0nzvTglP7jFABjGbuTeemZ
+	3aD59RudTvxMu8w5/YBO0uUFpRvB8UB8SeSkFtBAlW3ZzHRrturLaQM8obvPjzr2QmD+vjC1w0y
+	nMpnkEo4Gpzrm6xBvMbXFrtguIa5xAgjTwm0TgSqF971xWNWSUi7soic3KTjOEKFavHkYuJSdZJ
+	KmBDmmOue9GrACUtioJtETSb8CSwl9EKet03OCGvhfYUWM7CZVDyamyz/dT+jbvc+fHuN85yQqZ
+	LE3pNpyX+fV4us29r5vtP+SRL41K9HqoEvi+iCfugT4yU5By34jnUy3Sqzk2AqkD4LZsoB6TZSc
+	cN+sRsNRTxwYcMNDKy/SVlcTAyce7Dp381ewYSkNm5/1KJIQEgwCrMnqc1kUlf5dY4+IoD0FV
+X-Google-Smtp-Source: AGHT+IHyRdZCFKENEK5U2sVSqsYLQGnrThog0TUtBDXhz5Rjdgg8+4ZbO+vQpnHhnn4XFJ14+JpZIQ==
+X-Received: by 2002:a05:622a:1817:b0:4b5:e8ae:2c4f with SMTP id d75a77b69052e-4eb943824a5mr76637061cf.51.1761409997366;
+        Sat, 25 Oct 2025 09:33:17 -0700 (PDT)
+Received: from localhost ([12.22.141.131])
+        by smtp.gmail.com with ESMTPSA id d75a77b69052e-4eba37b96d0sm15170181cf.6.2025.10.25.09.33.15
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 25 Oct 2025 09:33:16 -0700 (PDT)
+From: "Yury Norov (NVIDIA)" <yury.norov@gmail.com>
+To: Linus Walleij <linus.walleij@linaro.org>,
+	Lee Jones <lee@kernel.org>,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.17-5.15] phy: rockchip: phy-rockchip-inno-csidphy: allow writes to grf register 0
-Date: Sat, 25 Oct 2025 12:01:00 -0400
-Message-ID: <20251025160905.3857885-429-sashal@kernel.org>
-X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20251025160905.3857885-1-sashal@kernel.org>
-References: <20251025160905.3857885-1-sashal@kernel.org>
+	linux-kernel@vger.kernel.org,
+	Sandy Huang <hjc@rock-chips.com>,
+	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>,
+	Shreeya Patel <shreeya.patel@collabora.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Jaehoon Chung <jh80.chung@samsung.com>,
+	Ulf Hansson <ulf.hansson@linaro.org>,
+	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>,
+	"Yury Norov (NVIDIA)" <yury.norov@gmail.com>,
+	dri-devel@lists.freedesktop.org,
+	linux-rockchip@lists.infradead.org,
+	linux-media@vger.kernel.org,
+	kernel@collabora.com,
+	linux-mmc@vger.kernel.org,
+	linux-sound@vger.kernel.org
+Cc: Linus Torvalds <torvalds@linux-foundation.org>
+Subject: [PATCH 11/21] drivers: don't use GENMASK() in FIELD_PREP_WM16()
+Date: Sat, 25 Oct 2025 12:32:53 -0400
+Message-ID: <20251025163305.306787-4-yury.norov@gmail.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20251025162858.305236-1-yury.norov@gmail.com>
+References: <20251025162858.305236-1-yury.norov@gmail.com>
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.17.5
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251025_092826_831058_AC3FBCB7 
-X-CRM114-Status: GOOD (  18.57  )
+X-CRM114-CacheID: sfid-20251025_093318_746929_F9F27834 
+X-CRM114-Status: GOOD (  13.51  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,95 +120,127 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RnJvbTogTWljaGFlbCBSaWVzY2ggPG1pY2hhZWwucmllc2NoQGNvbGxhYm9yYS5jb20+CgpbIFVw
-c3RyZWFtIGNvbW1pdCA4YzdjMTk0NjZjODU0ZmE4NmI4MmQyMTQ4ZWFhOWJmMGU2NTMxNDIzIF0K
-ClRoZSBkcml2ZXIgZm9yIHRoZSBSb2NrY2hpcCBNSVBJIENTSS0yIERQSFkgdXNlcyBHUkYgcmVn
-aXN0ZXIgb2Zmc2V0CnZhbHVlIDAgdG8gc29ydCBvdXQgdW5kZWZpbmVkIHJlZ2lzdGVycy4gSG93
-ZXZlciwgdGhlIFJLMzU4OCBDU0lEUEhZIEdSRgp0aGlzIG9mZnNldCBpcyBwZXJmZWN0bHkgZmlu
-ZSAoaW4gZmFjdCwgcmVnaXN0ZXIgMCBpcyB0aGUgb25seSBvbmUgaW4KdGhpcyByZWdpc3RlciBm
-aWxlKS4KSW50cm9kdWNlIGEgYm9vbGVhbiB2YXJpYWJsZSB0byBpbmRpY2F0ZSB2YWxpZCByZWdp
-c3RlcnMgYW5kIGFsbG93IHdyaXRlcwp0byByZWdpc3RlciAwLgoKUmV2aWV3ZWQtYnk6IE5laWwg
-QXJtc3Ryb25nIDxuZWlsLmFybXN0cm9uZ0BsaW5hcm8ub3JnPgpTaWduZWQtb2ZmLWJ5OiBNaWNo
-YWVsIFJpZXNjaCA8bWljaGFlbC5yaWVzY2hAY29sbGFib3JhLmNvbT4KTGluazogaHR0cHM6Ly9s
-b3JlLmtlcm5lbC5vcmcvci8yMDI1MDYxNi1yazM1ODgtY3NpLWRwaHktdjQtNC1hNGYzNDBhN2Yw
-Y2ZAY29sbGFib3JhLmNvbQpTaWduZWQtb2ZmLWJ5OiBWaW5vZCBLb3VsIDx2a291bEBrZXJuZWwu
-b3JnPgpTaWduZWQtb2ZmLWJ5OiBTYXNoYSBMZXZpbiA8c2FzaGFsQGtlcm5lbC5vcmc+Ci0tLQoK
-TExNIEdlbmVyYXRlZCBleHBsYW5hdGlvbnMsIG1heSBiZSBjb21wbGV0ZWx5IGJvZ3VzOgoKWUVT
-CgotIFdoYXQgaXQgZml4ZXM6IFRoZSBkcml2ZXIgcHJldmlvdXNseSB1c2VkIGBvZmZzZXQgPT0g
-MGAgYXMgYSBzZW50aW5lbAogIGZvciDigJxubyBHUkYgcmVnaXN0ZXLigJ0sIHdoaWNoIHNpbGVu
-dGx5IGJsb2NrcyBsZWdpdGltYXRlIHdyaXRlcyB3aGVuIGEKICBoYXJkd2FyZSByZWdpc3RlciBh
-Y3R1YWxseSBsaXZlcyBhdCBvZmZzZXQgMC4gT24gUkszNTg4IHRoZSBDU0lEUEhZCiAgR1JGIHVz
-ZXMgcmVnaXN0ZXIgMCBhcyBpdHMgb25seSByZWdpc3Rlciwgc28gdGhlIGRyaXZlciB3b3VsZCBz
-a2lwCiAgcmVxdWlyZWQgR1JGIHdyaXRlcyBhbmQgZmFpbCB0byBwcm9wZXJseSBicmluZyB1cCBs
-YW5lcy4KCi0gRXhhY3QgY2hhbmdlczoKICAtIEFkZHMgYW4gZXhwbGljaXQgdmFsaWRpdHkgZmxh
-ZyB0byBkZXNjcmliZSB3aGV0aGVyIGFuIGVudHJ5IGlzIGEKICAgIHJlYWwgR1JGIHJlZ2lzdGVy
-OgogICAgLSBgc3RydWN0IGRwaHlfcmVnIHsgLi4uIHU4IHZhbGlkOyB9YCBpbiBgZHJpdmVycy9w
-aHkvcm9ja2NoaXAvcGh5LQogICAgICByb2NrY2hpcC1pbm5vLWNzaWRwaHkuYzo5MC05NWAuCiAg
-LSBNYXJrcyBhbGwgZGVmaW5lZCByZWdpc3RlciBlbnRyaWVzIGFzIHZhbGlkIHZpYSB0aGUgaGVs
-cGVyIG1hY3JvOgogICAgLSBgI2RlZmluZSBQSFlfUkVHKC4uLil7IC4uLiAudmFsaWQgPSAxLCB9
-YCBpbgogICAgICBgZHJpdmVycy9waHkvcm9ja2NoaXAvcGh5LXJvY2tjaGlwLWlubm8tY3NpZHBo
-eS5jOjk3LTk5YC4KICAtIFN3aXRjaGVzIHRoZSB3cml0ZSBndWFyZCBmcm9tIOKAnG9mZnNldCBu
-b24temVyb+KAnSB0byDigJx2YWxpZCBpcyB0cnVl4oCdOgogICAgLSBgaWYgKHJlZy0+dmFsaWQp
-IHJlZ21hcF93cml0ZSguLi4pYCBpbiBgZHJpdmVycy9waHkvcm9ja2NoaXAvcGh5LQogICAgICBy
-b2NrY2hpcC1pbm5vLWNzaWRwaHkuYzoxNTYtMTY1YC4KICAtIFJLMzU4OCBleHBsaWNpdGx5IGRl
-ZmluZXMgaXRzIEdSRiBhdCBvZmZzZXQgMDoKICAgIC0gYCNkZWZpbmUgUkszNTg4X0NTSURQSFlf
-R1JGX0NPTjAgMHgwMDAwYCBpbgogICAgICBgZHJpdmVycy9waHkvcm9ja2NoaXAvcGh5LXJvY2tj
-aGlwLWlubm8tY3NpZHBoeS5jOjMzYC4KICAgIC0gVGhlIFJLMzU4OCByZWdpc3RlciB0YWJsZSB1
-c2VzIHRoYXQgb2Zmc2V0IChhbmQgbm93IHdyaXRlcyBhcmUKICAgICAgYWxsb3dlZCBiZWNhdXNl
-IGAudmFsaWQgPSAxYCk6CiAgICAgIC0gYHJrMzU4OF9ncmZfZHBoeV9yZWdzW11gIGluIGBkcml2
-ZXJzL3BoeS9yb2NrY2hpcC9waHktcm9ja2NoaXAtCiAgICAgICAgaW5uby1jc2lkcGh5LmM6MTIy
-LTEyNmAuCgotIFdoeSBpdCBtYXR0ZXJzOiBUaGUgcG93ZXItb24gc2VxdWVuY2UgZGVwZW5kcyBv
-biB0aGVzZSBHUkYgd3JpdGVzIHRvCiAgY29uZmlndXJlIOKAnGZvcmNlcnhtb2Rl4oCdLCBjbG9j
-ay1sYW5lIGVuYWJsZSwgYW5kIGRhdGEtbGFuZSBlbmFibGU6CiAgLSBDYWxscyBhdCBgZHJpdmVy
-cy9waHkvcm9ja2NoaXAvcGh5LXJvY2tjaGlwLWlubm8tY3NpZHBoeS5jOjI4Ny0zMDlgCiAgICBn
-byB0aHJvdWdoIGB3cml0ZV9ncmZfcmVnKC4uLilgLiBXaXRoIHRoZSBvbGQg4oCcb2Zmc2V0ICE9
-IDDigJ0gY2hlY2ssCiAgICBSSzM1ODggd291bGQgbmV2ZXIgcHJvZ3JhbSB0aGVzZSBiaXRzLCBi
-cmVha2luZyBDU0lEUEhZCiAgICBpbml0aWFsaXphdGlvbi4KCi0gU2NvcGUgYW5kIHJpc2s6CiAg
-LSBTbWFsbCwgY29udGFpbmVkIGNoYW5nZSB0byBvbmUgZHJpdmVyIGFuZCBpdHMgaW50ZXJuYWwK
-ICAgIGhlbHBlci9zdHJ1Y3QuIE5vIEFQSS9BQkkgY2hhbmdlIG91dHNpZGUgdGhlIGRyaXZlci4K
-ICAtIEJhY2t3YXJkLWNvbXBhdGlibGU6IGZvciBlbnRyaWVzIG5vdCBkZWZpbmVkIGluIGEgdGFi
-bGUsIHRoZSBuZXcKICAgIGB2YWxpZGAgZGVmYXVsdHMgdG8gMCAoQyB6ZXJvLWluaXRpYWxpemF0
-aW9uKSwgc28gd3JpdGVzIHJlbWFpbgogICAgc2tpcHBlZCBqdXN0IGxpa2UgYmVmb3JlOyBleGlz
-dGluZyByZWFsIGVudHJpZXMgYXJlIGNyZWF0ZWQgdmlhCiAgICBgUEhZX1JFRyguLi4pYCB3aGlj
-aCBub3cgc2V0cyBgLnZhbGlkID0gMWAuCiAgLSBPdGhlciBTb0NzIChyazE4MDgvcmszMzI2L3Jr
-MzM2OC9yazM1NjgpIGhhdmUgbm9uLXplcm8gb2Zmc2V0czsKICAgIGJlaGF2aW9yIGlzIHVuY2hh
-bmdlZCBiZWNhdXNlIGAudmFsaWQgPSAxYCBrZWVwcyB3cml0ZXMgZW5hYmxlZCBhcwogICAgYmVm
-b3JlLgogIC0gVGhlIG9ubHkgYmVoYXZpb3IgY2hhbmdlIGlzIHRvIGNvcnJlY3RseSBhbGxvdyB3
-cml0ZXMgdG8gb2Zmc2V0IDAKICAgIHdoZW4gdGhhdCByZWdpc3RlciBpcyB2YWxpZCwgd2hpY2gg
-aXMgdGhlIGludGVuZGVkIGZpeCBmb3IgUkszNTg4LgoKLSBTdGFibGUgY3JpdGVyaWE6CiAgLSBG
-aXhlcyBhIHJlYWwsIHVzZXItdmlzaWJsZSBidWcgKENTSS0yIERQSFkgb24gUkszNTg4IGZhaWxz
-IHRvCiAgICBjb25maWd1cmUpLCBub3QgYSBmZWF0dXJlLgogIC0gTWluaW1hbCBhbmQgbG93IHJp
-c2s7IG5vIGFyY2hpdGVjdHVyYWwgY2hhbmdlczsgaXNvbGF0ZWQgdG8gYSBQSFkKICAgIGRyaXZl
-ci4KICAtIENsZWFyIHNpZGUgZWZmZWN0cyBhcmUgcG9zaXRpdmUgKGVuYWJsZXMgaW50ZW5kZWQg
-R1JGIHdyaXRlcykgd2l0aAogICAgbm8gYnJvYWRlciBpbXBhY3QuCgpSZWNvbW1lbmRhdGlvbjog
-QmFja3BvcnQgdG8gc3RhYmxlIHRyZWVzIHRoYXQgaW5jbHVkZSB0aGlzIGRyaXZlciBhbmQKUksz
-NTg4IENTSURQSFkgc3VwcG9ydCAoaGFybWxlc3MgZWxzZXdoZXJlLCBidXQgZXNwZWNpYWxseSBu
-ZWNlc3NhcnkKd2hlcmUgUkszNTg4IGlzIHByZXNlbnQpLgoKIGRyaXZlcnMvcGh5L3JvY2tjaGlw
-L3BoeS1yb2NrY2hpcC1pbm5vLWNzaWRwaHkuYyB8IDUgKysrLS0KIDEgZmlsZSBjaGFuZ2VkLCAz
-IGluc2VydGlvbnMoKyksIDIgZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9waHkv
-cm9ja2NoaXAvcGh5LXJvY2tjaGlwLWlubm8tY3NpZHBoeS5jIGIvZHJpdmVycy9waHkvcm9ja2No
-aXAvcGh5LXJvY2tjaGlwLWlubm8tY3NpZHBoeS5jCmluZGV4IDJhYjk5ZTFkNDdlYmUuLjc1NTMz
-ZDA3MTAyNTAgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvcGh5L3JvY2tjaGlwL3BoeS1yb2NrY2hpcC1p
-bm5vLWNzaWRwaHkuYworKysgYi9kcml2ZXJzL3BoeS9yb2NrY2hpcC9waHktcm9ja2NoaXAtaW5u
-by1jc2lkcGh5LmMKQEAgLTg3LDEwICs4NywxMSBAQCBzdHJ1Y3QgZHBoeV9yZWcgewogCXUzMiBv
-ZmZzZXQ7CiAJdTMyIG1hc2s7CiAJdTMyIHNoaWZ0OworCXU4IHZhbGlkOwogfTsKIAogI2RlZmlu
-ZSBQSFlfUkVHKF9vZmZzZXQsIF93aWR0aCwgX3NoaWZ0KSBcCi0JeyAub2Zmc2V0ID0gX29mZnNl
-dCwgLm1hc2sgPSBCSVQoX3dpZHRoKSAtIDEsIC5zaGlmdCA9IF9zaGlmdCwgfQorCXsgLm9mZnNl
-dCA9IF9vZmZzZXQsIC5tYXNrID0gQklUKF93aWR0aCkgLSAxLCAuc2hpZnQgPSBfc2hpZnQsIC52
-YWxpZCA9IDEsIH0KIAogc3RhdGljIGNvbnN0IHN0cnVjdCBkcGh5X3JlZyByazE4MDhfZ3JmX2Rw
-aHlfcmVnc1tdID0gewogCVtHUkZfRFBIWV9DU0lQSFlfRk9SQ0VSWE1PREVdID0gUEhZX1JFRyhS
-SzE4MDhfR1JGX1BEX1ZJX0NPTl9PRkZTRVQsIDQsIDApLApAQCAtMTQ1LDcgKzE0Niw3IEBAIHN0
-YXRpYyBpbmxpbmUgdm9pZCB3cml0ZV9ncmZfcmVnKHN0cnVjdCByb2NrY2hpcF9pbm5vX2NzaWRw
-aHkgKnByaXYsCiAJY29uc3Qgc3RydWN0IGRwaHlfZHJ2X2RhdGEgKmRydl9kYXRhID0gcHJpdi0+
-ZHJ2X2RhdGE7CiAJY29uc3Qgc3RydWN0IGRwaHlfcmVnICpyZWcgPSAmZHJ2X2RhdGEtPmdyZl9y
-ZWdzW2luZGV4XTsKIAotCWlmIChyZWctPm9mZnNldCkKKwlpZiAocmVnLT52YWxpZCkKIAkJcmVn
-bWFwX3dyaXRlKHByaXYtPmdyZiwgcmVnLT5vZmZzZXQsCiAJCQkgICAgIEhJV09SRF9VUERBVEUo
-dmFsdWUsIHJlZy0+bWFzaywgcmVnLT5zaGlmdCkpOwogfQotLSAKMi41MS4wCgoKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFp
-bGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
-LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Recently added FIELD_PREP_WM16() in a few places uses GENMASK. It's
+confusing and may mislead readers. Switch to BITS() or FIRST_BITS()
+as appropriate.
+
+Suggested-by: Linus Torvalds <torvalds@linux-foundation.org>
+Link: https://lore.kernel.org/all/CAHk-=whoOUsqPKb7OQwhQf9H_3=5sXGPJrDbfQfwLB3Bi13tcQ@mail.gmail.com/
+Signed-off-by: Yury Norov (NVIDIA) <yury.norov@gmail.com>
+---
+ drivers/gpu/drm/rockchip/rockchip_lvds.h             | 2 +-
+ drivers/gpu/drm/rockchip/rockchip_vop2_reg.c         | 4 ++--
+ drivers/media/platform/synopsys/hdmirx/snps_hdmirx.h | 4 ++--
+ drivers/mmc/host/dw_mmc-rockchip.c                   | 4 ++--
+ drivers/soc/rockchip/grf.c                           | 4 ++--
+ sound/soc/rockchip/rockchip_i2s_tdm.h                | 2 +-
+ 6 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_lvds.h b/drivers/gpu/drm/rockchip/rockchip_lvds.h
+index 2d92447d819b..e79e6031be59 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_lvds.h
++++ b/drivers/gpu/drm/rockchip/rockchip_lvds.h
+@@ -115,7 +115,7 @@
+ #define   PX30_LVDS_INVERT_DCLK(val)		FIELD_PREP_WM16(BIT(5), (val))
+ 
+ #define PX30_LVDS_GRF_PD_VO_CON1		0x438
+-#define   PX30_LVDS_FORMAT(val)			FIELD_PREP_WM16(GENMASK(14, 13), (val))
++#define   PX30_LVDS_FORMAT(val)			FIELD_PREP_WM16(BITS(13, 14), (val))
+ #define   PX30_LVDS_MODE_EN(val)		FIELD_PREP_WM16(BIT(12), (val))
+ #define   PX30_LVDS_MSBSEL(val)			FIELD_PREP_WM16(BIT(11), (val))
+ #define   PX30_LVDS_P2S_EN(val)			FIELD_PREP_WM16(BIT(6), (val))
+diff --git a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+index 38c49030c7ab..438fea5f6f6d 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
++++ b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+@@ -1698,7 +1698,7 @@ static unsigned long rk3588_set_intf_mux(struct vop2_video_port *vp, int id, u32
+ 		val = rk3588_get_hdmi_pol(polflags);
+ 		regmap_write(vop2->vop_grf, RK3588_GRF_VOP_CON2, FIELD_PREP_WM16(BIT(1), 1));
+ 		regmap_write(vop2->vo1_grf, RK3588_GRF_VO1_CON0,
+-			     FIELD_PREP_WM16(GENMASK(6, 5), val));
++			     FIELD_PREP_WM16(BITS(5, 6), val));
+ 		break;
+ 	case ROCKCHIP_VOP2_EP_HDMI1:
+ 		div &= ~RK3588_DSP_IF_EDP_HDMI1_DCLK_DIV;
+@@ -1711,7 +1711,7 @@ static unsigned long rk3588_set_intf_mux(struct vop2_video_port *vp, int id, u32
+ 		val = rk3588_get_hdmi_pol(polflags);
+ 		regmap_write(vop2->vop_grf, RK3588_GRF_VOP_CON2, FIELD_PREP_WM16(BIT(4), 1));
+ 		regmap_write(vop2->vo1_grf, RK3588_GRF_VO1_CON0,
+-			     FIELD_PREP_WM16(GENMASK(8, 7), val));
++			     FIELD_PREP_WM16(BITS(7, 8), val));
+ 		break;
+ 	case ROCKCHIP_VOP2_EP_EDP0:
+ 		div &= ~RK3588_DSP_IF_EDP_HDMI0_DCLK_DIV;
+diff --git a/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.h b/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.h
+index b13f58e31944..14df3f53ff8f 100644
+--- a/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.h
++++ b/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.h
+@@ -12,8 +12,8 @@
+ #include <linux/bitops.h>
+ #include <linux/hw_bitfield.h>
+ 
+-#define UPDATE(x, h, l)		FIELD_PREP(GENMASK((h), (l)), (x))
+-#define HIWORD_UPDATE(v, h, l)	FIELD_PREP_WM16(GENMASK((h), (l)), (v))
++#define UPDATE(x, h, l)		FIELD_PREP(BITS((l), (h)), (x))
++#define HIWORD_UPDATE(v, h, l)	FIELD_PREP_WM16(BITS((l), (h)), (v))
+ 
+ /* SYS_GRF */
+ #define SYS_GRF_SOC_CON1			0x0304
+diff --git a/drivers/mmc/host/dw_mmc-rockchip.c b/drivers/mmc/host/dw_mmc-rockchip.c
+index 82dd906bb002..7fac1a7281bf 100644
+--- a/drivers/mmc/host/dw_mmc-rockchip.c
++++ b/drivers/mmc/host/dw_mmc-rockchip.c
+@@ -148,10 +148,10 @@ static int rockchip_mmc_set_internal_phase(struct dw_mci *host, bool sample, int
+ 
+ 	if (sample)
+ 		mci_writel(host, TIMING_CON1,
+-			   FIELD_PREP_WM16(GENMASK(11, 1), raw_value));
++			   FIELD_PREP_WM16(BITS(1, 11), raw_value));
+ 	else
+ 		mci_writel(host, TIMING_CON0,
+-			   FIELD_PREP_WM16(GENMASK(11, 1), raw_value));
++			   FIELD_PREP_WM16(BITS(1, 11), raw_value));
+ 
+ 	dev_dbg(host->dev, "set %s_phase(%d) delay_nums=%u actual_degrees=%d\n",
+ 		sample ? "sample" : "drv", degrees, delay_num,
+diff --git a/drivers/soc/rockchip/grf.c b/drivers/soc/rockchip/grf.c
+index 344870da7675..89fd4a4c69eb 100644
+--- a/drivers/soc/rockchip/grf.c
++++ b/drivers/soc/rockchip/grf.c
+@@ -125,8 +125,8 @@ static const struct rockchip_grf_info rk3566_pipegrf __initconst = {
+ #define RK3576_SYSGRF_SOC_CON1		0x0004
+ 
+ static const struct rockchip_grf_value rk3576_defaults_sys_grf[] __initconst = {
+-	{ "i3c0 weakpull", RK3576_SYSGRF_SOC_CON1, FIELD_PREP_WM16_CONST(GENMASK(7, 6), 3) },
+-	{ "i3c1 weakpull", RK3576_SYSGRF_SOC_CON1, FIELD_PREP_WM16_CONST(GENMASK(9, 8), 3) },
++	{ "i3c0 weakpull", RK3576_SYSGRF_SOC_CON1, FIELD_PREP_WM16_CONST(BITS(6, 7), 3) },
++	{ "i3c1 weakpull", RK3576_SYSGRF_SOC_CON1, FIELD_PREP_WM16_CONST(BITS(8, 9), 3) },
+ };
+ 
+ static const struct rockchip_grf_info rk3576_sysgrf __initconst = {
+diff --git a/sound/soc/rockchip/rockchip_i2s_tdm.h b/sound/soc/rockchip/rockchip_i2s_tdm.h
+index 0171e05ee886..eee6db372ee7 100644
+--- a/sound/soc/rockchip/rockchip_i2s_tdm.h
++++ b/sound/soc/rockchip/rockchip_i2s_tdm.h
+@@ -287,7 +287,7 @@ enum {
+ #define I2S_TDM_RXCR	(0x0034)
+ #define I2S_CLKDIV	(0x0038)
+ 
+-#define HIWORD_UPDATE(v, h, l)	(FIELD_PREP_WM16_CONST(GENMASK((h), (l)), (v)))
++#define HIWORD_UPDATE(v, h, l)	(FIELD_PREP_WM16_CONST(BITS((l), (h)), (v)))
+ 
+ /* PX30 GRF CONFIGS */
+ #define PX30_I2S0_CLK_IN_SRC_FROM_TX		HIWORD_UPDATE(1, 13, 12)
+-- 
+2.43.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
