@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BB2DCCF9E5
-	for <linux-rockchip@archiver.kernel.org>; Sun, 26 Oct 2025 08:35:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B2A5CCD193
+	for <linux-rockchip@archiver.kernel.org>; Sun, 26 Oct 2025 08:37:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jIH6WLQ1mLnWudkxtKUjUxA0QKGqO84z0ntAjQV558o=; b=er7bg0anMYkiKD
-	Fdjxz0VZ2sArisvtmATK/lJeBwC7BFuFILvuSafI0FdnXAiSQKpVpmhak2drhUz2KShc+TKc9hhzL
-	trQcaaNYn9g9FKk8lEiwj8tdDW7DsoWOFTjJP0R+X+i8wZ9osoQCrZAXD741318QfkwbIQpMSMKjh
-	tVKfrmaTWHMUg9fHaSkZQM1LUvhmAU1G0+savO8TUN0I0SIBft2pue1KYmpQvbpM74n4qfqD11Cbc
-	Aej1XfmA7WHKssD7SLCwpJr1/l2qk6kYJwIWpYDr/jsVrAAfAAMBrTO+/uwS4auTC7Q8Aro/cYRTx
-	aqRkIjqb3fOwD4qVJPdA==;
+	List-Owner; bh=rGBvG1qD5Q/nGa51cExoetDRV2G1Zlnl6oIHrDFXoYw=; b=e/2euODDw5Kpbd
+	LNmEY+XbzeK0mbyYEj7VIi34O3dwbK/sqw6EyA/WInAfhuu8L3UUWP/LgbF4OR4TUg06LVEvxWYji
+	aE17R1tPr3S+CAbziUkdvDZAuiW/YCAG2qRtkglGwYzqfys9Eqqvsl9HyFxKUnqB+UNQ6QqHRFCvt
+	5Mb0PSinsQkt81bdXV2ffNdqa63BH8QuJp89U1sFlpFYMIzW/ZWv+/5rV66GSvsaWBdWoELujxtwi
+	8jQTnUPufSW528UcM7rda6Jd5tFkJ7WK91zzSCJDQLnPfLKyId4ggl7NwcL+5ATiGCrq6O6jbf0z2
+	HSv7tu9Ge4HkRf2BLFrQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vCwE3-0000000CAdy-01VR;
-	Sun, 26 Oct 2025 08:35:43 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vCwFJ-0000000CAt7-0Zcw;
+	Sun, 26 Oct 2025 08:37:01 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vCwE0-0000000CAcW-1jju;
-	Sun, 26 Oct 2025 08:35:41 +0000
+	id 1vCwFH-0000000CAsI-1QaL;
+	Sun, 26 Oct 2025 08:36:59 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 4CDD644DB2;
-	Sun, 26 Oct 2025 08:35:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 54824C4CEE7;
-	Sun, 26 Oct 2025 08:35:36 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id B59E4601D6;
+	Sun, 26 Oct 2025 08:36:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B15A8C4CEE7;
+	Sun, 26 Oct 2025 08:36:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1761467739;
-	bh=rzxJTNoSOeK7VNGYumqIb4DOxnBQhT9we9NoIaaK07o=;
+	s=k20201202; t=1761467817;
+	bh=Zim3qGKsCpC2JYTbatO+MU+Eu3vnLSQRr1CABozWbcM=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=BeZN8h/WuGf9UdFvLhwi25+qrZW9fazEHdDdD8MZsFo/Rj2iLsTv+mLReMs/RGbHH
-	 Gdocozotplr+wWvgUEucfti9d9T9Y5hF9PTnDKKMohctpC+VTeKsTtfKBB2zBS2aFX
-	 83xV58yUHs51uQ3/kvB4bl2r6Q5fjbVy8C7reiV5FVHENfTMrPqy5NMlB1mNKmUiDI
-	 XR516/n8izQJUkeYaYezKnbMcwM7lE+qlTip1qqNY1bIaLC8FXmzYGuMrJ1vJsIDNH
-	 TtG/3CCi0dISme7goXKS4Kq+2JVP8fXfV1wiMPfk5ZEeKMbtTaobci081rt9s6nidl
-	 6mRajpX24eLKg==
-Message-ID: <84082a2a-c5ef-499a-8374-58f9a063f862@kernel.org>
-Date: Sun, 26 Oct 2025 09:35:34 +0100
+	b=XZ8fER3VQro4Ggyjf1AxjtI4qhktJF7hl645sn4jiLi+1xu3Rb9pzKp/rIr97TiHP
+	 BXANLH2pvo21B8amxi23knLJGukH5FivnQCN4NQ4i25bcawBkJ1L0whBCZtKrVCW1N
+	 51JGD5K3vtuFWAGAJ2A9CzHXQqBddNEwJbaHV+JqfzHCEZJO8E0ORSpAxy4kunFnCL
+	 K0x0UouQeLhvVStmfrDr43WLhjhmDHV3JMupBziOky08nQAMsUxnhpg6lO/4J/hzL9
+	 BKN621dXHnwBGryWBmLsvgoTz8CMc2IabBNX55YRnpxHbj8uCk+JNilSRrryrOMoYJ
+	 Vy49jOFYQ+0eg==
+Message-ID: <b4395d23-9004-4a01-942f-060876312317@kernel.org>
+Date: Sun, 26 Oct 2025 09:36:51 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/3] dt-bindings: arm: rockchip: Add NineTripod X3568
- series
+Subject: Re: [PATCH v2 3/3] arm64: dts: rockchip: Add devicetree for the
+ NineTripod X3568 v4
 To: Coia Prant <coiaprant@gmail.com>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
  <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
@@ -55,7 +55,7 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
  stable@vger.kernel.org
 References: <20251026062831.4045083-3-coiaprant@gmail.com>
- <20251026062831.4045083-5-coiaprant@gmail.com>
+ <20251026062831.4045083-7-coiaprant@gmail.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -101,11 +101,7 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  jWt87ecuHlpL3uuQ0ZZNWqHgZoQLXoqC2ZV5KrtKWb/jyiFX/sxSrodALf0zf+tfHv0FZWT2
  zHjUqd0t4njD/UOsuIMOQn4Ig0SdivYPfZukb5cdasKJukG1NOpbW7yRNivaCnfZz6dTawXw
  XRIV/KDsHQiyVxKvN73bThKhONkcX2LWuD928tAR6XMM2G5ovxLe09vuOzzfTWQDsm++9UKF a/A=
-In-Reply-To: <20251026062831.4045083-5-coiaprant@gmail.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251026_013540_501121_4472663F 
-X-CRM114-Status: UNSURE (   6.33  )
-X-CRM114-Notice: Please train this message.
+In-Reply-To: <20251026062831.4045083-7-coiaprant@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,27 +113,50 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 26/10/2025 07:28, Coia Prant wrote:
-> This documents NineTripod X3568 v4 which is a SBC based on RK3568 SoC.
-> 
-> Link: http://www.9tripod.com/showpro.php?id=117
-> Link: https://appletsapi.52solution.com/media/X3568V4%E5%BC%80%E5%8F%91%E6%9D%BF%E7%A1%AC%E4%BB%B6%E6%89%8B%E5%86%8C.pdf
-> 
-> Signed-off-by: Coia Prant <coiaprant@gmail.com>
-> Cc: stable@vger.kernel.org
-
-
-No, not a stable commit.
-
-Best regards,
-Krzysztof
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gMjYvMTAvMjAyNSAwNzoyOCwgQ29pYSBQcmFudCB3cm90ZToKPiBUaGUgTmluZVRyaXBvZCBY
+MzU2OCB2NCBpcyBhbiBSSzM1NjgtYmFzZWQgU0JDLCBqdXN0IGxpa2UgdGhlIFJLMzU2OC1FVkIu
+Cj4gSXQgYWx3YXlzIHVzZXMgc29sZGVyZWQgY29ubmVjdGlvbnMgYmV0d2VlbiB0aGUgWDM1NjhD
+VjIgY29yZSBib2FyZCBhbmQgdGhlIFgzNTY4YnY0IElPIGJvYXJkLgo+IAo+IFRoZSBYMzU2OCBi
+b2FyZCBoYXMgbXVsdGlwbGUgaGFyZHdhcmUgcmV2aXNpb25zLCBhbmQgd2UgY3VycmVudGx5IHN1
+cHBvcnQgdjQuCj4gCj4gU3BlY2lmaWNhdGlvbjoKPiAtIFNvQzogUm9ja0NoaXAgUkszNTY4IEFS
+TTY0ICg0IGNvcmVzKQo+IC0gZU1NQzogMTYtMTI4IEdCCj4gLSBSQU06IDItOCBHQgo+IC0gUG93
+ZXI6IERDIDEyViAyQQo+IC0gRXRoZXJuZXQ6IDJ4IFlUODUyMVNDIFJHTUlJICgxMC8xMDAvMTAw
+MCBNYnBzKQo+IC0gV2lyZWxlc3MgcmFkaW86IDgwMi4xMWIvZy9uL2FjL2F4IGR1YWwtYmFuZAo+
+IC0gTEVEOgo+ICAgUG93ZXI6IEFsd2F5c09uCj4gICBVc2VyOiBHUElPCj4gLSBCdXR0b246Cj4g
+ICBWT0wrOiBTQVJBREMvMCA8MzVrIMK1Vj4KPiAgIFZPTC06IFNBUkFEQy8wIDw0NTBrIMK1Vj4K
+PiAgIFBvd2VyL1Jlc2V0OiBQTUlDIFJLODA5Cj4gLSBDQU4KPiAgIENBTi8xOiA0LXBpbiAoUEgg
+Mi4wKQo+IC0gUFdNCj4gICBQV00vNDogQmFja2xpZ2h0IERTSS8wIERTSS8xCj4gICBQV00vNzog
+SVIgUmVjZWl2ZXIgW21heSBub3QgaW5zdGFsbF0KPiAtIFVBUlQ6Cj4gICBVQVJULzI6IERlYnVn
+IFRUTCAtIDE1MDAwMDAgOE4xICgxLjI1bW0pCj4gICBVQVJULzM6IFRUTCAoUEggMi4wKQo+ICAg
+VUFSVC80OiBUVEwgKFBIIDIuMCkKPiAgIFVBUlQvODogQVA2Mjc1UyBCbHVldG9vdGgKPiAgIFVB
+UlQvOTogVFRMIChQSCAyLjApCj4gLSBJMkM6Cj4gICBJMkMvMDogUE1JQyBSSzgwOQo+ICAgSTJD
+LzE6IFRvdWNoc2NyZWVuIERTSS8wIERTSS8xCj4gICBJMkMvNDogQ2FtZXJhCj4gICBJMkMvNTog
+UlRDQDUxIFBDRjg1NjMKPiAtIEkyUzoKPiAgIEkyUy8wOiBtaW5pSERNSSBTb3VuZAo+ICAgSTJT
+LzE6IFJLODA5IEF1ZGlvIENvZGVjCj4gICBJMlMvMzogQVA2Mjc1UyBCbHVldG9vdGggU291bmQK
+PiAtIFNETU1DOgo+ICAgU0RNTUMvMDogbWljcm9TRCAoVEYpIHNsb3QKPiAgIFNETU1DLzI6IEFQ
+NjI3NVMgU0RJTyBXaUZpIGNhcmQKPiAtIENhbWVyYTogMXggQ1NJCj4gLSBWaWRlbzogbWluaUhE
+TUkgLyBEU0kwIChNSVBJL0xWRFMpIC8gRFNJMSAoTUlQSS9FRFApCj4gLSBBdWRpbzogbWluaUhE
+TUkgLyBNSUMgb24tYm9hcmQgLyBTcGVha2VyIC8gU1BESUYgLyAzLjVtbSBIZWFkcGhvbmVzIC8g
+QVA2Mjc1UyBCbHVldG9vdGgKPiAtIFVTQjoKPiAgIFVTQiAyLjAgSE9TVCB4Mgo+ICAgVVNCIDIu
+MCBIT1NUIHgzICg0LXBpbikKPiAgIFVTQiAyLjAgT1RHIHgxIChzaGFyZWQgd2l0aCBVU0IgMy4w
+IE9URy9IT1NUKSBbc2xvdCBtYXkgbm90IGluc3RhbGxdCj4gICBVU0IgMy4wIEhPU1QgeDEKPiAg
+IFVTQiAzLjAgT1RHL0hPU1QgeDEKPiAtIFNBVEE6IDF4IFNBVEEgMy4wIHdpdGggUG93ZXIvNC1w
+aW4gW3Nsb3QgbWF5IG5vdCBpbnN0YWxsXQo+IC0gUENJZTogMXggUENJZSAzLjAgeDIgKHg0IGNv
+bm5lY3RlcikgW2Nsb2NrL3Nsb3QgbWF5IG5vdCBpbnN0YWxsXQo+IAo+IExpbms6Cj4gLSBodHRw
+czovL2FwcGxldHNhcGkuNTJzb2x1dGlvbi5jb20vbWVkaWEvWDM1NjhWNCVFNSVCQyU4MCVFNSU4
+RiU5MSVFNiU5RCVCRiVFNyVBMSVBQyVFNCVCQiVCNiVFNiU4OSU4QiVFNSU4NiU4Qy5wZGYKPiAt
+IGh0dHBzOi8vYmxvZy5nb3YuY29va2luZy9hcmNoaXZlcy9yZXNlYXJjaC1uaW5ldHJpcG9kLXgz
+NTY4LXY0LWFuZC1mbGFzaC5odG1sCj4gCj4gU2lnbmVkLW9mZi1ieTogQ29pYSBQcmFudCA8Y29p
+YXByYW50QGdtYWlsLmNvbT4KPiBDYzogc3RhYmxlQHZnZXIua2VybmVsLm9yZwoKCldoaWxlIGFk
+ZGluZyB2ZW5kb3IgcHJlZml4IGNvdWxkIGZhbGwgaW50byBhZGRpbmcgcXVpcmtzIChpdCdzIG5v
+dC4uLiksCmJ1dCBob3cgaXMgbmV3IHN1cHBvcnQgc3VwcG9zZWQgdG8gYmUgYnVnZml4IG9yIHF1
+aXJrPwoKVGhhdCdzIGRlZmluaXRlbHkgbm90IHJpZ2h0LgoKCkJlc3QgcmVnYXJkcywKS3J6eXN6
+dG9mCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51
+eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9y
+ZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tj
+aGlwCg==
