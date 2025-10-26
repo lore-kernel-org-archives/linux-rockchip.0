@@ -4,54 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E020BCCF9E5
-	for <linux-rockchip@archiver.kernel.org>; Sun, 26 Oct 2025 17:36:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 404BCCCF9E9
+	for <linux-rockchip@archiver.kernel.org>; Sun, 26 Oct 2025 17:45:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-ID:MIME-Version:To:Cc:
-	Date:References:In-Reply-To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:From:Subject:
+	Cc:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=whKkUNniRCcyqTE6ocuEQBMRar6Jo1mBi3APUAbukFQ=; b=XYVl7rEyVXsFSw
-	QZ/c/FNTjVQ2/PuUFAwNhOAy2VYtbid36ka9P7B5aVdr7X4zlb0yhP0sGUixkeKE+8Ap+8yJRnT6R
-	NoVk8e1s1zyYtWKWofvQd3CUTcdfI4roKe0KOeGBCSPXyY5vNkbFJH9N95KRNkvTS/iDSHGiGTtU8
-	elTbn7VWETUsW++0gTH/fYqL5MBElmFSjNmKl9J1CiyD10ey36I7azfXBgJ9MLnY8HiY3mTQfeHFR
-	/+/duXjcWGEhc3JfssHPf29SNsDed83ABQ3K+L0hmKLsNhx0o1JSTd4l9ux55ENo83m02Luy8YO9x
-	dDP6IWx8GcU4zi7YXIJw==;
+	List-Owner; bh=LKvkdNVrNndHgegnIPB5EiFV1fv0mEWVrgRjTxSIfLc=; b=QhiDx8FGFpUADe
+	9s+jJPM4bdrJA2q7E/wakREVPQg+huKA5uNkvJ7N3d7cd5CxiUPQYbmZoZfwtLjWbhOEyX0elG81q
+	2+VJjprb9+tdGQ1AJd5govxuTyXpUchaPy/7kwNkOAzU8jCsAToPzKjzvsbnkdAWEDP1o8f+sj7la
+	IUM38FHxP/Lnc5/63xVUlA7bx6wY3ZkT0THr6qQUlUcaOJhHLZtTJj9Gc9CM6HBhPBUP2kCWq9UYf
+	eG0r8y1NOulNjqjK6ZlEL3v+tkSM0bBd6EaQAYLAhXU/EGSVRrWl8qZIH7/y8FjbFEPMJ8VrYaHEB
+	7+qrodRWSHbOP5jdDQcA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vD4fJ-0000000CaVJ-3tVV;
-	Sun, 26 Oct 2025 17:36:25 +0000
-Received: from mail1.manjaro.org ([142.132.176.110])
+	id 1vD4no-0000000Cazk-2j5s;
+	Sun, 26 Oct 2025 17:45:12 +0000
+Received: from out-173.mta0.migadu.com ([2001:41d0:1004:224b::ad])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vD4fH-0000000CaUZ-3909;
-	Sun, 26 Oct 2025 17:36:25 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPA id 31B2940D20;
-	Sun, 26 Oct 2025 18:36:16 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=dkim;
-	t=1761500178; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=VE3zWNd8hyEKKt0aCbf0h+Pe6DuWRN17pEEkLFG58ko=;
-	b=YtCaKF0sba269jXpys5kvrSjKhG607xG769thtCRBdZvKbQdg0oJpjALMKO426aPKh5idW
-	9uQvEPSV2ppc49hQx6komclTXMKHoRtS09OsrSDpj4YJbzurP6/YLrYwDFpmKVAJgXezpl
-	XgJjdakMca22HMHH8sJWPhhxmKVKQQwfC2Ctq9Q/pxCdMWEJzK3IPvjqB3uo+PM/rJ0PH5
-	6VTppTB3ggk2xCvwo+pCOAbojoufQ5XwMEkhSHrSszjgVDzSbd3tUeGvGIP+9qxHKwFs8e
-	DZ4AsMSKs1gbHmWH1Rnylg0g37CZCII2h5fRd//joHzmbJkTjRBXwPEx8tSRwQ==
-From: "Dragan Simic" <dsimic@manjaro.org>
-In-Reply-To: <20251026172608.108956-1-diederik@cknow-tech.com>
-References: <20251026172608.108956-1-diederik@cknow-tech.com>
-Date: Sun, 26 Oct 2025 18:36:15 +0100
-Cc: "Rob Herring" <robh@kernel.org>, "Krzysztof Kozlowski" <krzk+dt@kernel.org>, "Conor Dooley" <conor+dt@kernel.org>, "Heiko Stuebner" <heiko@sntech.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, "Johan Jonker" <jbx6244@gmail.com>
-To: "Diederik de Haas" <diederik@cknow-tech.com>
-MIME-Version: 1.0
-Message-ID: <e2caefd1-9668-0404-598f-98b26375525c@manjaro.org>
-Subject: =?utf-8?q?Re=3A?= [PATCH] =?utf-8?q?arm64=3A?==?utf-8?q?_dts=3A?=
- =?utf-8?q?_rockchip=3A?= Fix vccio4-supply on rk3566-pinetab2
-User-Agent: SOGoMail 5.12.3
-X-Last-TLS-Session-Version: None
+	id 1vD4nm-0000000Cayj-1vmG
+	for linux-rockchip@lists.infradead.org;
+	Sun, 26 Oct 2025 17:45:11 +0000
+Mime-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow-tech.com;
+	s=key1; t=1761500695;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=Os2gdwgFgiG/vQXZuUM1r/XXyjqP6W0/g6mR5BtctSk=;
+	b=WGObrId+lc+EJHIlJzN+dD7JmH64mJaxToM+He6Bg64ipj7P9PoZ51oO3eVEBKpVmNiPS8
+	cKCqohngr3qvrAUcsONF/aT1AmNRoMPz6pmHrX0iTa8h17dzdC507UN3WqA6YW1YuLIYYR
+	I0ZgGkQYUtAUvTeWUUO3rCuBqMOhJTOOCcvfq1alots9bWpGPB3ScyVLioV2j+vC3is/cP
+	cXHRAem2rR/iS/mFCgVeXHQWCFFl0teHusYHPHYU76GZftHFY+EKoAmwzZ4M3C+Iqt2VVE
+	n1Mk4v8P0S8vv50X6ix3myq3bU4MJUwtr0VN3UCIGwIHMGmeauBn9noYt0ASKA==
+Date: Sun, 26 Oct 2025 18:44:42 +0100
+Message-Id: <DDSFVM1TXN8C.3JNX2M8XX04IF@cknow-tech.com>
+Cc: <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ "Dragan Simic" <dsimic@manjaro.org>, "Johan Jonker" <jbx6244@gmail.com>
+Subject: Re: [PATCH] arm64: dts: rockchip: Harmonize regulator formatting
+ for Pine64 rk3566 devices
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Diederik de Haas" <diederik@cknow-tech.com>
+To: "Diederik de Haas" <diederik@cknow-tech.com>, "Rob Herring"
+ <robh@kernel.org>, "Krzysztof Kozlowski" <krzk+dt@kernel.org>, "Conor
+ Dooley" <conor+dt@kernel.org>, "Heiko Stuebner" <heiko@sntech.de>
+References: <20251026153805.107774-1-diederik@cknow-tech.com>
+In-Reply-To: <20251026153805.107774-1-diederik@cknow-tech.com>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251026_103624_038149_64B632F6 
-X-CRM114-Status: GOOD (  13.40  )
+X-CRM114-CacheID: sfid-20251026_104510_634124_997BF084 
+X-CRM114-Status: GOOD (  14.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,45 +74,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Diederik,
+On Sun Oct 26, 2025 at 4:37 PM CET, Diederik de Haas wrote:
+> The regulator node properties in Pine64 rk3566 devices were formatted
+> rather inconsistently. To name a few:
+> - 'name' was sometimes put at the top of the list, while at other times
+>   it was (mostly) sorted in alphabetical order
+> - 'always-on' and 'boot-on' were sometimes at the top of the list,
+>   sometimes not
+> - 'state-mem' nodes sometimes had a preceding blank line, as they
+>   should, but sometimes not
+> - other properties seem to have been added to the end of the list, not
+>   in their alphabetical/natural order
+>
+> So harmonize the formatting by making all properties sorted
+> alphabetically/naturally. And harmonize the formatting of the
+> 'state-mem' nodes so they all have a preceding blank line. While at it,
+> also fix 2 incorrectly indented nodes.
+>
+> No functional changes.
 
-On Sunday, October 26, 2025 18:25 CET, Diederik de Haas <diederik@cknow-tech.com> wrote:
-> Page 13 of the PineTab2 v2 schematic dd 20230417 shows VCCIO4's power
-> source is VCCIO_WL. Page 19 shows that VCCIO_WL is connected to
-> VCCA1V8_PMU, so fix the PineTab2 dtsi to reflect that.
-> 
+I just found some additional ones.
+If these changes are considered OK (in principle), then I'll send a v2
+at some point.
+
+Cheers,
+  Diederik
+
 > Signed-off-by: Diederik de Haas <diederik@cknow-tech.com>
-
-Thanks for this patch.  As already discussed in private, this is
-correct and safe to do, because both supplies are designated as
-always-on, so please feel free to include:
-
-Reviewed-by: Dragan Simic <dsimic@manjaro.org>
-
-Though, I think this cleanup should also be propagated into the
-stable kernels.  Right now this patch doesn't actually introduce
-any functional changes, but maybe in the future there will be
-some related driver or DT changes or improvements that may end up
-relying on DT correction such as this one.
-
 > ---
->  arch/arm64/boot/dts/rockchip/rk3566-pinetab2.dtsi | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-pinetab2.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-pinetab2.dtsi
-> index d0e38412d56a..08bf40de17ea 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3566-pinetab2.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3566-pinetab2.dtsi
-> @@ -789,7 +789,7 @@ &pmu_io_domains {
->  	vccio1-supply = <&vccio_acodec>;
->  	vccio2-supply = <&vcc_1v8>;
->  	vccio3-supply = <&vccio_sd>;
-> -	vccio4-supply = <&vcc_1v8>;
-> +	vccio4-supply = <&vcca1v8_pmu>;
->  	vccio5-supply = <&vcc_1v8>;
->  	vccio6-supply = <&vcc1v8_dvp>;
->  	vccio7-supply = <&vcc_3v3>;
-
+>  .../boot/dts/rockchip/rk3566-pinenote.dtsi    | 52 +++++++++----------
+>  .../boot/dts/rockchip/rk3566-pinetab2.dtsi    | 29 ++++++++---
+>  .../boot/dts/rockchip/rk3566-quartz64-a.dts   | 51 +++++++++++-------
+>  .../boot/dts/rockchip/rk3566-quartz64-b.dts   | 52 ++++++++++---------
+>  .../dts/rockchip/rk3566-soquartz-blade.dts    |  6 +--
+>  .../boot/dts/rockchip/rk3566-soquartz-cm4.dts |  6 +--
+>  .../dts/rockchip/rk3566-soquartz-model-a.dts  | 10 ++--
+>  .../boot/dts/rockchip/rk3566-soquartz.dtsi    | 43 ++++++++++-----
+>  8 files changed, 148 insertions(+), 101 deletions(-)
 
 _______________________________________________
 Linux-rockchip mailing list
