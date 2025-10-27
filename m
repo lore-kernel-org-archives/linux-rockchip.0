@@ -4,65 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A51DCCF9E5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Oct 2025 12:39:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 501E4CCF9E5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Oct 2025 12:56:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tn3ZCWllTrqgdU1FceWW6PMuNgud2PUGm8Z/ZINrRYc=; b=q0zco2eE8vte4C
-	ueGD2VXHdUGe2/Ng2oCQ82GU7ke9uN7niy+eoMP8bhKyYgRlwVjmB5jAhKStRps+3TDE1YxHA1R1B
-	q55rGIQXeBgqxXYewBDssSCsPAfj73h6OcySd6XbsgEVzA/3jgtRP93y5nHH8UZ/WgVKiVRNOaVI4
-	Gwg1Scp7BtyorvXwfVCLPkkiNp5QkVskm5CjK81wfi3Vz2c4Ck+0wtPCB4TEqYpxXmpxkEE+Tlcas
-	4cSe4z8HCq6oSf2vBEmYrk2S26Kj0NZqKdsNMJd3e3QRr+0ThaB2ugjJxiTg+RqEXrDJJmuDn5asM
-	RkLb+ObS7Vf8hPCbmj9A==;
+	List-Owner; bh=C0dW7jgAWkE0E9AoV9exWVF9p1SRIjDT//WorM4ltLU=; b=242Pxb3u9Bqbgo
+	YrpQxFpLJwfAUttVhYa19IvW2lk57F8nNKwCZIfJkVz4MsKjFVs38mS4pZ1sAi9P4xcYlfq4YM1/v
+	QR5eSeVCOid/6l0OvNCH751kPAmeUxZo3HkI/3kyJrlyIk66FqKOFyalGoTHrU/IayeHasRJg4cwK
+	vcXI849R41DDVn+KJOKL0kPjCHb2Yo2cDhkVXi4AxbIUgk3VwQwpbqa70eTS4egOlzhhz8teFKOVl
+	zPmWJPGVRlAskgtlnqX/KZUXot+DtT010hL1X7B46yQB0L3DmTgLGibEmRIMXWMjdGYo+8zzQqofK
+	F1US+xhShc89aMAo6hyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDMVC-0000000Dupt-3d8c;
-	Mon, 27 Oct 2025 12:39:10 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vDMld-0000000Dwfe-2MRO;
+	Mon, 27 Oct 2025 12:56:09 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDMVA-0000000Dunp-0BPf;
-	Mon, 27 Oct 2025 12:39:09 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1761568743;
-	bh=ic23nmo9lgfOG3Z3HGilbKWoY/RcEgbzf3VPutvzob4=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=N6vRJVhaiEkHsez1pDm7qCVveefUoUXgEwiGf0Hxl/Jf0HRoQKn9Iz+MbCPsaNHi+
-	 T5w/5RNIA0FQL4WRZ+dafcRIwodzJtXuHu1V1EWkoea7alkWmyfDnPF/00R6D4AuFo
-	 qkZlGaWVPQOQVfrq85FPJtr4ARCt5g7hMvVo8vJ5aG+vokYy47F4V+SVwWQiwGBQOX
-	 8LyTUKxSk9RxiOXVfCjlJaHDVz8cU/2Yx5PO0dQmI0xcKalAaieCzpcfdSWJcKIOgo
-	 2l8VGGa6BttkTBLzoa4bOgekD2KXUpRrSikDo5xQrJ6MEDinPsIgiVu5DJ0KNlrP8v
-	 ggOd7pxr9D1hg==
-Received: from [10.40.0.100] (185-67-175-126.lampert.tv [185.67.175.126])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	id 1vDMla-0000000Dwe5-3yOE;
+	Mon, 27 Oct 2025 12:56:07 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=ZIHQREHt+l8XAscKxuWlR1jje62LN0QUhsJTrFrmIjQ=; b=juO0dUTBltU0F29M+2/0hv7+zR
+	JnMnagQ/Pql/OnX1CQO3nVEHbd+Mj0oCk06NXwDMu0SmIXTwcgxNdK/qHyfNTWvDHnpgtVkwzr+14
+	IcblOw1H3qCvrOTVEwnQwGWc1gUEeV+fuhEbtxv94eaKjcloIfygcNj0e3cUO9M1F3oYbphK+14XB
+	rcbI6DLkhqtQqa2AcHke5TaB01Wsu/1O5hmBuJHH9xiBMylXHQYxiCf3OJQMDyu0QrO+7fNfXtG/Z
+	3B3ZMJM/aSo9Ai0jXp7anvz6MNK0s5fWphxyDVKilDbZRI8B0pSrbJbgjEMp0Q1W3GZ/04sDikY2O
+	/DEsFJAg==;
+Received: from mail.8bytes.org ([85.214.250.239])
+	by desiato.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vDLti-000000026oQ-12nZ;
+	Mon, 27 Oct 2025 12:00:30 +0000
+Received: from 8bytes.org (p549214ac.dip0.t-ipconnect.de [84.146.20.172])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: mriesch)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6B23017E0927;
-	Mon, 27 Oct 2025 13:39:03 +0100 (CET)
-Message-ID: <1499f50e-aa4f-454a-b8b5-c9a21bef7f72@collabora.com>
-Date: Mon, 27 Oct 2025 13:39:02 +0100
+	by mail.8bytes.org (Postfix) with ESMTPSA id 574F959993;
+	Mon, 27 Oct 2025 13:55:56 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=8bytes.org;
+	s=default; t=1761569756;
+	bh=wdPrvvPNgCJ92pfYnd82XapNMb2/K9Lk7SnMdXsPwYo=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=HA4IsI57/crRJKm5huZnz2yM9cueuQ83JrqqF31F0g7mwiTfeSnd43x0jF6LZthZc
+	 xInJr7Dl8APiu4Qf/1dKwgAOW7EJNTBxKaqeF3SCeMWstoORITwx7nsvUeINWh5k+9
+	 Ny8WfW/m0sLSzi4YzjffMfU5XZZBpghT634JsVKbHjtinJ84F0IqokpBXMlZ9vPJO6
+	 HareDmhYXldiDUpmdDec87KCRVmJXWOlsHVldVZQAV6o+WAdhsPOkS6ZLKvwvFxjCx
+	 iZSNYPT42T4jbU1r7D4nVssf6XfXSjG7/V3tsl+vP1evUijU+Z9RswofRmqxeAExhN
+	 NJmXcf6NEl0nQ==
+Date: Mon, 27 Oct 2025 13:55:55 +0100
+From: =?utf-8?B?SsO2cmcgUsO2ZGVs?= <joro@8bytes.org>
+To: Nicolin Chen <nicolinc@nvidia.com>
+Cc: jgg@nvidia.com, kevin.tian@intel.com, suravee.suthikulpanit@amd.com, 
+	will@kernel.org, robin.murphy@arm.com, sven@kernel.org, j@jannau.net, 
+	robin.clark@oss.qualcomm.com, m.szyprowski@samsung.com, krzk@kernel.org, dwmw2@infradead.org, 
+	baolu.lu@linux.intel.com, yong.wu@mediatek.com, matthias.bgg@gmail.com, 
+	angelogioacchino.delregno@collabora.com, tjeznach@rivosinc.com, pjw@kernel.org, palmer@dabbelt.com, 
+	aou@eecs.berkeley.edu, heiko@sntech.de, schnelle@linux.ibm.com, mjrosato@linux.ibm.com, 
+	orsonzhai@gmail.com, baolin.wang@linux.alibaba.com, wens@csie.org, 
+	jernej.skrabec@gmail.com, samuel@sholland.org, thierry.reding@gmail.com, 
+	jonathanh@nvidia.com, jean-philippe@linaro.org, iommu@lists.linux.dev, 
+	linux-kernel@vger.kernel.org, asahi@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
+	linux-arm-msm@vger.kernel.org, linux-samsung-soc@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-riscv@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-s390@vger.kernel.org, linux-sunxi@lists.linux.dev, 
+	linux-tegra@vger.kernel.org, virtualization@lists.linux.dev, patches@lists.linux.dev
+Subject: Re: [PATCH v2 0/6] iommu: Pass in old_domain pointer to attach_dev
+Message-ID: <xlu227m6u3wubnexhxh2cpx7nwudhvbmgqcqoas57a6sqgvege@p4s5i5p77v7a>
+References: <cover.1761017765.git.nicolinc@nvidia.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: rockchip: orangepi-5: fix PCIe 3.3V regulator
- voltage
-To: Mykola Kvach <xakep.amatop@gmail.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Cenk Uluisik <cenk.uluisik@googlemail.com>, Johan Jonker <jbx6244@gmail.com>
-Cc: Jimmy Hon <honyuenkwun@gmail.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, Muhammed Efe Cetin <efectn@6tel.net>
-References: <20251024173830.49211-1-xakep.amatop@gmail.com>
-Content-Language: en-US
-From: Michael Riesch <michael.riesch@collabora.com>
-In-Reply-To: <20251024173830.49211-1-xakep.amatop@gmail.com>
+Content-Disposition: inline
+In-Reply-To: <cover.1761017765.git.nicolinc@nvidia.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251027_053908_266876_8525C604 
-X-CRM114-Status: GOOD (  15.88  )
+X-CRM114-CacheID: sfid-20251027_120026_334931_230A6645 
+X-CRM114-Status: GOOD (  10.37  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,55 +98,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Mykola,
-
-Thanks for your patch.
-
-Cc: Muhammed who is the author of commit b6bc755d806e
-
-On 10/24/25 19:38, Mykola Kvach wrote:
-> The vcc3v3_pcie20 fixed regulator powers the PCIe device-side 3.3V
-> rail for pcie2x1l2 via vpcie3v3-supply. The DTS mistakenly set its
-> regulator-min/max-microvolt to 1800000. Correct both to 3300000
-> to match the rail name, the PCIe/M.2 power requirement, and the
-> actual hardware wiring on Orange Pi 5.
+On Wed, Oct 22, 2025 at 07:21:03PM -0700, Nicolin Chen wrote:
+> Jason Gunthorpe (1):
+>   iommu: Generic support for RMRs during device release
 > 
-
-I guess a "Fixes" tag is in order here:
-
-Fixes: b6bc755d806e ("arm64: dts: rockchip: Add Orange Pi 5")
-
-And make sure to Cc: <stable@vger.kernel.org>
-
-> Signed-off-by: Mykola Kvach <xakep.amatop@gmail.com>
-
-The change itself makes sense to me.
-
-Reviewed-by: Michael Riesch <michael.riesch@collabora.com>
-
-Best regards,
-Michael
-
-> ---
->  arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+> Nicolin Chen (5):
+>   iommu/arm-smmu-v3: Set release_domain to arm_smmu_blocked_domain
+>   iommu/exynos-iommu: Set release_domain to exynos_identity_domain
+>   iommu/amd: Set release_domain to blocked_domain
+>   iommu: Do not revert set_domain for the last gdev
+>   iommu: Pass in old domain to attach_dev callback functions
 > 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts
-> index ad6d04793b0a..83b9b6645a1e 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts
-> @@ -14,8 +14,8 @@ vcc3v3_pcie20: regulator-vcc3v3-pcie20 {
->  		gpios = <&gpio0 RK_PC5 GPIO_ACTIVE_HIGH>;
->  		regulator-name = "vcc3v3_pcie20";
->  		regulator-boot-on;
-> -		regulator-min-microvolt = <1800000>;
-> -		regulator-max-microvolt = <1800000>;
-> +		regulator-min-microvolt = <3300000>;
-> +		regulator-max-microvolt = <3300000>;
->  		startup-delay-us = <50000>;
->  		vin-supply = <&vcc5v0_sys>;
->  	};
+>  include/linux/iommu.h                         |  3 +-
+>  arch/powerpc/kernel/iommu.c                   |  5 ++-
+>  drivers/iommu/amd/iommu.c                     | 21 +++------
+>  drivers/iommu/apple-dart.c                    |  9 ++--
+>  .../arm/arm-smmu-v3/arm-smmu-v3-iommufd.c     |  5 ++-
+>  drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c   | 31 ++++++-------
+>  drivers/iommu/arm/arm-smmu/arm-smmu.c         |  9 ++--
+>  drivers/iommu/arm/arm-smmu/qcom_iommu.c       | 11 ++---
+>  drivers/iommu/exynos-iommu.c                  | 11 ++---
+>  drivers/iommu/fsl_pamu_domain.c               | 12 ++---
+>  drivers/iommu/intel/iommu.c                   | 10 +++--
+>  drivers/iommu/intel/nested.c                  |  2 +-
+>  drivers/iommu/iommu.c                         | 44 +++++++++++++------
+>  drivers/iommu/iommufd/selftest.c              |  2 +-
+>  drivers/iommu/ipmmu-vmsa.c                    | 10 ++---
+>  drivers/iommu/msm_iommu.c                     | 11 ++---
+>  drivers/iommu/mtk_iommu.c                     |  8 ++--
+>  drivers/iommu/mtk_iommu_v1.c                  |  7 ++-
+>  drivers/iommu/omap-iommu.c                    | 12 ++---
+>  drivers/iommu/riscv/iommu.c                   |  9 ++--
+>  drivers/iommu/rockchip-iommu.c                | 20 ++++++---
+>  drivers/iommu/s390-iommu.c                    | 13 +++---
+>  drivers/iommu/sprd-iommu.c                    |  3 +-
+>  drivers/iommu/sun50i-iommu.c                  |  8 ++--
+>  drivers/iommu/tegra-smmu.c                    | 10 ++---
+>  drivers/iommu/virtio-iommu.c                  |  6 ++-
+>  26 files changed, 172 insertions(+), 120 deletions(-)
 
+Applied, thanks.
 
 _______________________________________________
 Linux-rockchip mailing list
