@@ -4,82 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78038CCF9E5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Oct 2025 02:05:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA6D5CCF9EA
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Oct 2025 08:42:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
-	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OHS8+UI7TzhEa9gsBXrx1Mo8ghgrXF7B4vLUuZf+8bg=; b=AEG5/vm3AsOrg2
-	22y05X5hb0M/JAvQBkXP+vBUPjMspLasuc9G3agRQ2j3DUYiBAK5cSAjJZvv+cQRheZvf+ckx9DXO
-	0LlgZO0/zbUP89jGeCRhWv4iToxARDSgqZM//x34ptlUQLUnanyh0GHjNk99cx6fUlhZOd4Ot//HT
-	6hLFnjTUz+UuQJD6YtDIdA7oQwYLQWKtY1FBTX2PfnjT2zj27l8klw6tW3VBqpRYNjbo0ttjkedQW
-	FCAuVj/c5Df0uEcFgZxf9mAA9633pGMfpQiOZEYHwQi813Bw4XK9bGDldsRHkN+cYh2G6THkvWvLx
-	lw0wuAsEbOYTm0w8M9TQ==;
+	List-Owner; bh=9oOH8f8TbxQzW7wEZGPXbazQX4Js8Ul4jSvDBgbeeow=; b=DNqsjVSG8RWNXs
+	qEJpPZ61sPVYbUQfG8C4taOF6IRlt4ev9qUdYun+1QjFCcaMt/9wytMyYhu/97KBgdVmKEk94Jq23
+	thgGApZ9rojg1RuEg3fupBZgWac9MDEH34pBLHOCQV3g/JKWF2RuEv2TkZ3nufvOWWYEnMdEXRLOK
+	BDc5pK6o1k36OubrLY3Iw6hyqnV4sDUH3B1VhjkOFL0ZSNIuKibRz0QnIaO51zgjFYDpY9iuUGyb3
+	/dabMCqXKbVcajxZsTJ/UErmDHe0j9ds/4APgLjg9dDEFraD0ggwRCseSEjG5wDyGU4uB0de9GPdK
+	hZFCIilel0jfqCo4iAHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDCbN-0000000Czsy-2osG;
-	Mon, 27 Oct 2025 02:04:53 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1vDInk-0000000DMVS-2KN2;
+	Mon, 27 Oct 2025 08:42:04 +0000
+Received: from mail-m15596.qiye.163.com ([101.71.155.96])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDCbL-0000000Czrt-1nKm;
-	Mon, 27 Oct 2025 02:04:51 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Message-ID:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:References:In-Reply-To:Subject:Cc:To:From:Date:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=wZ9Rmky0Ju7/r3CCR8vvqxWiziSgV9uMm0GnpAYq7PM=; b=NIaKL02x4DHJyCw9haw8Kk7d8M
-	mSJJYNMr244RzN4ocDdrFn4gkf2u6O5ybjxu1Oc5VmsfYQmHugercM+q10gtWAT4Rl8i6NAqiqXYt
-	LmSgG+hr6Nlz6/IsMR8C6qNJ9ubw31X57dK06kBNgrHrmTbmp5siWrk2TTKKMyiBaZTWakfGAUA7F
-	iUlopW23j8LoB0BeQhSMrdmWOO+6h+Go4ex/dcYv8Iz4ULWTc1krcER57mcVKiSs+0Rq1lcGKtbI4
-	uhgaEibuORMZZETpyyNvS4nyBppvBaCoPComylwpJqeNMlH/FUNq0gtqDedpb66eH0JrICKIWTIEY
-	tq/n/Mrw==;
-Received: from m16.mail.163.com ([117.135.210.4])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDBjH-00000001EGv-3ig5;
-	Mon, 27 Oct 2025 01:09:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Date:From:To:Subject:Content-Type:MIME-Version:
-	Message-ID; bh=td4L7MLtFab0E+yv45f4US5pOy9YUbhDBrZdLxXlFro=; b=G
-	mXYF015/H0xaxb8xZMf9LEepSD1RkeYpF4xpZjEzndTMnm5r/8xdrqZE8V1Gs71U
-	eIKvONZUuK3unNzNoAJn1wFLWppRtTKDvEZVahdu/py6MlvCoyMaXqGLsb7+l7uE
-	+iiPhycpaQRBmKPw69MSACw+k+wS7DqpJabRB0YHWc=
-Received: from andyshrk$163.com ( [58.22.7.114] ) by
- ajax-webmail-wmsvr-40-143 (Coremail) ; Mon, 27 Oct 2025 10:03:57 +0800
- (CST)
-X-Originating-IP: [58.22.7.114]
-Date: Mon, 27 Oct 2025 10:03:57 +0800 (CST)
-From: "Andy Yan" <andyshrk@163.com>
-To: "Sebastian Reichel" <sebastian.reichel@collabora.com>
-Cc: "Heiko Stuebner" <heiko@sntech.de>,
-	"Quentin Schulz" <quentin.schulz@cherry.de>, mturquette@baylibre.com,
-	sboyd@kernel.org, zhangqing@rock-chips.com,
-	linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org, "Andy Yan" <andy.yan@rock-chips.com>
-Subject: Re:Re: [PATCH] clk: rockchip: rk3588: Don't change PLL rates when
- setting dclk_vop2_src
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version 2023.4-cmXT build
- 20250723(a044bf12) Copyright (c) 2002-2025 www.mailtech.cn 163com
-In-Reply-To: <j6ondk5xnwbm36isdoni5vtdq5mf5ak4kp63ratqlnpwsgrqj2@paw5lzwqa2ze>
-References: <20251008133135.3745785-1-heiko@sntech.de>
- <2749454.BddDVKsqQX@diego>
- <eumxn7lvp34si2gik33hcavcrsstqqoxixiznjbertxars7zcx@xsycorjhj3id>
- <4856104.usQuhbGJ8B@phil>
- <j6ondk5xnwbm36isdoni5vtdq5mf5ak4kp63ratqlnpwsgrqj2@paw5lzwqa2ze>
-X-NTES-SC: AL_Qu2dA/mYv04o4SacYukfmUgWjuw/WsG1v/Ul1YBSP556jC/r9AQFYUF9G1/47+GNFiCiuyqKVwhE0uhmb5F8ZYQUU2a0aDa9tFCtXmfgYh43rA==
+	id 1vDIng-0000000DMT2-1Dh0;
+	Mon, 27 Oct 2025 08:42:02 +0000
+Received: from rockchip.. (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 27504ffd8;
+	Mon, 27 Oct 2025 16:41:50 +0800 (GMT+08:00)
+From: Elaine Zhang <zhangqing@rock-chips.com>
+To: mturquette@baylibre.com,
+	sboyd@kernel.org,
+	sugar.zhang@rock-chips.com,
+	zhangqing@rock-chips.com,
+	heiko@sntech.de,
+	robh@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	conor+dt@kernel.org
+Cc: devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-clk@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	huangtao@rock-chips.com,
+	finley.xiao@rock-chips.com
+Subject: [PATCH v5 1/7] clk: rockchip: Implement rockchip_clk_register_armclk_multi_pll()
+Date: Mon, 27 Oct 2025 16:41:41 +0800
+Message-Id: <20251027084147.4148739-2-zhangqing@rock-chips.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20251027084147.4148739-1-zhangqing@rock-chips.com>
+References: <20251027084147.4148739-1-zhangqing@rock-chips.com>
 MIME-Version: 1.0
-Message-ID: <7fb0eadb.1d09.19a23686d5a.Coremail.andyshrk@163.com>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: jygvCgA3eIQN0_5oSN8TAA--.1306W
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbBEgfzXmj+zQBbegAFsH
-X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
+X-HM-Tid: 0a9a24d4b3b103a3kunmca0e4b6150f5a3
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQxpIHVZJT0MfSExMSktJT0xWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=bDwNXqDMDuMDx1WX2SGjdFz8RVOoQSAPOLUU/y/s45RiR2GQNWAlkkc+J8mkM1U8QL1Kd+KkkCWYhy+cx0qXROGc22VehcDp1CVwqX9QyK3Muif2IjoenMB/iL/uvPLMd6E7W1ZanZ0rkxT4Sek+Sxhn5h5iTxXev/gd+C6L+lQ=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=Vt1xPRkUMcE8svXTy4dUISsmpUifWdbpaIRSmoEuGbY=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251027_010909_786871_50517036 
-X-CRM114-Status: GOOD (  33.72  )
+X-CRM114-CacheID: sfid-20251027_014201_619441_027A1DB1 
+X-CRM114-Status: GOOD (  15.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,101 +76,291 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CkhlbGxvLAoKQXQgMjAyNS0xMC0yMSAwMDowMDo1OSwgIlNlYmFzdGlhbiBSZWljaGVsIiA8c2Vi
-YXN0aWFuLnJlaWNoZWxAY29sbGFib3JhLmNvbT4gd3JvdGU6Cj5IaSwKPgo+T24gTW9uLCBPY3Qg
-MjAsIDIwMjUgYXQgMDI6NDk6MTBQTSArMDIwMCwgSGVpa28gU3R1ZWJuZXIgd3JvdGU6Cj4+IEFt
-IERvbm5lcnN0YWcsIDE2LiBPa3RvYmVyIDIwMjUsIDAwOjU3OjE1IE1pdHRlbGV1cm9ww6Rpc2No
-ZSBTb21tZXJ6ZWl0IHNjaHJpZWIgU2ViYXN0aWFuIFJlaWNoZWw6Cj4+ID4gT24gV2VkLCBPY3Qg
-MTUsIDIwMjUgYXQgMDM6Mjc6MTJQTSArMDIwMCwgSGVpa28gU3TDvGJuZXIgd3JvdGU6Cj4+ID4g
-PiBBbSBNaXR0d29jaCwgMTUuIE9rdG9iZXIgMjAyNSwgMTQ6NTg6NDYgTWl0dGVsZXVyb3DDpGlz
-Y2hlIFNvbW1lcnplaXQgc2NocmllYiBRdWVudGluIFNjaHVsejoKPj4gPiA+ID4gT24gMTAvOC8y
-NSAzOjMxIFBNLCBIZWlrbyBTdHVlYm5lciB3cm90ZToKPj4gPiA+ID4gPiBkY2xrX3ZvcDJfc3Jj
-IGN1cnJlbnRseSBoYXMgQ0xLX1NFVF9SQVRFX1BBUkVOVCB8IENMS19TRVRfUkFURV9OT19SRVBB
-UkVOVAo+PiA+ID4gPiA+IGZsYWdzIHNldCwgd2hpY2ggaXMgdmFzdGx5IGRpZmZlcmVudCB0aGFu
-IGRjbGtfdm9wMF9zcmMgb3IgZGNsa192b3AxX3NyYywKPj4gPiA+ID4gPiB3aGljaCBoYXZlIG5v
-bmUgb2YgdGhvc2UuCj4+ID4gPiA+ID4gCj4+ID4gPiA+ID4gV2l0aCB0aGVzZSBmbGFncyBpbiBk
-Y2xrX3ZvcDJfc3JjLCBhY3R1YWxseSBzZXR0aW5nIHRoZSBjbG9jayB0aGVuIHJlc3VsdHMKPj4g
-PiA+ID4gPiBpbiBhIGxvdCBvZiBvdGhlciBwZXJpcGhlcmFscyBicmVha2luZywgYmVjYXVzZSBz
-ZXR0aW5nIHRoZSByYXRlIHJlc3VsdHMKPj4gPiA+ID4gPiBpbiB0aGUgUExMIHNvdXJjZSBnZXR0
-aW5nIGNoYW5nZWQ6Cj4+ID4gPiA+ID4gCj4+ID4gPiA+ID4gWyAgIDE0Ljg5ODcxOF0gY2xrX2Nv
-cmVfc2V0X3JhdGVfbm9sb2NrOiBzZXR0aW5nIHJhdGUgZm9yIGRjbGtfdm9wMiB0byAxNTI4NDAw
-MDAKPj4gPiA+ID4gPiBbICAgMTUuMTU1MDE3XSBjbGtfY2hhbmdlX3JhdGU6IHNldHRpbmcgcmF0
-ZSBmb3IgcGxsX2dwbGwgdG8gMTY4MDAwMDAwMAo+PiA+ID4gPiA+IFsgY2xrIGFkanVzdGluZyBl
-dmVyeSBncGxsIHVzZXIgXQo+PiA+ID4gPiA+IAo+PiA+ID4gPiA+IFRoaXMgaW5jbHVkZXMgcG9z
-c2libHkgdGhlIG90aGVyIHZvcHMsIGkycywgc3BkaWYgYW5kIGV2ZW4gdGhlIHVhcnRzLgo+PiA+
-ID4gPiA+IEFtb25nIG90aGVyIHBvc3NpYmxlIHRoaW5ncywgdGhpcyBicmVha3MgdGhlIHVhcnQg
-Y29uc29sZSBvbiBhIGJvYXJkCj4+ID4gPiA+ID4gSSB1c2UuIFNvbWV0aW1lcyBpdCByZWNvdmVy
-cyBsYXRlciBvbiwgYnV0IHRoZXJlIHdpbGwgYmUgYSBiaWcgYmxvY2sKPj4gPiA+ID4gCj4+ID4g
-PiA+IEkgY2FuIHJlcHJvZHVjZSBvbiB0aGUgc2FtZSBib2FyZCBhcyB5b3VycyBhbmQgdGhpcyBm
-aXhlcyB0aGUgaXNzdWUgCj4+ID4gPiA+IGluZGVlZCAobm90ZSBJIGNhbiBvbmx5IHJlcHJvZHVj
-ZSBmb3Igbm93IHdoZW4gZGlzcGxheSB0aGUgbW9kZXRlc3QgCj4+ID4gPiA+IHBhdHRlcm4sIG90
-aGVyd2lzZSBhZnRlciBib290IHRoZSBjb25zb2xlIHNlZW1zIGZpbmUgdG8gbWUpLgo+PiA+ID4g
-Cj4+ID4gPiBJIGJvb3QgaW50byBhIERlYmlhbiByb290ZnMgd2l0aCBmYmNvbiBvbiBteSBzeXN0
-ZW0sIGFuZCB0aGUgc2VyaWFsCj4+ID4gPiBjb25zb2xlIHByb2R1Y2VzIGdhcmJsZWQgb3V0cHV0
-IHdoZW4gdGhlIHZvcCBhZGp1c3RzIHRoZSBjbG9jawo+PiA+ID4gCj4+ID4gPiBTb21ldGltZXMg
-aXQgcmVjb3ZlcnMgYWZ0ZXIgYSBiaXQsIGJ1dCBvdGhlciB0aW1lcyBpdCBkb2Vzbid0Cj4+ID4g
-PiAKPj4gPiA+ID4gUmV2aWV3ZWQtYnk6IFF1ZW50aW4gU2NodWx6IDxxdWVudGluLnNjaHVsekBj
-aGVycnkuZGU+Cj4+ID4gPiA+IFRlc3RlZC1ieTogUXVlbnRpbiBTY2h1bHogPHF1ZW50aW4uc2No
-dWx6QGNoZXJyeS5kZT4gIyBSSzM1ODggVGlnZXIgdy9EUCBjYXJyaWVyYm9hcmQKPj4gPiAKPj4g
-PiBJJ20gcHJldHR5IHN1cmUgSSd2ZSBzZWVuIHRoaXMgd2hpbGUgcGxheWluZyB3aXRoIFVTQi1D
-IERQIEFsdE1vZGUKPj4gPiBvbiBSb2NrIDVCLiBTbyBmYXIgSSBoYWQgbm8gdGltZSB0byBpbnZl
-c3RpZ2F0ZSBmdXJ0aGVyLgo+PiA+IAo+PiA+IFdoYXQgSSdtIG1pc3NpbmcgaW4gdGhlIGNvbW1p
-dCBtZXNzYWdlIGlzIHRoZSBpbXBhY3Qgb24gVk9QLiBBbHNvCj4+ID4gaXQgbWlnaHQgYmUgYSBn
-b29kIGlkZWEgdG8gaGF2ZSBBbmR5IGluIENjLCBzbyBJJ3ZlIGFkZGVkIGhpbS4KPj4gCj4+IEht
-bSwgaXQgYnJpbmdzIFZQMiBpbiBsaW5lIHdpdGggdGhlIG90aGVyIHR3byBWUHMsIG9ubHkgVlAy
-IGhhZCB0aGlzCj4+IHNwZWNpYWwgc2V0dGluZyAtIGV2ZW4gcmlnaHQgZnJvbSB0aGUgc3RhcnQs
-IHNvIGl0IGNvdWxkIHZlcnkgd2VsbAo+PiBoYXZlIGJlZW4gbGVmdCB0aGVyZSBhY2NpZGVudGlh
-bGx5IGR1cmluZyBzdWJtaXNzaW9uLgo+Cj5JIGRpZCB0aGUgaW5pdGlhbCB1cHN0cmVhbSBzdWJt
-aXNzaW9uIGJhc2VkIG9uIGRvd25zdHJlYW0gKHRoZSBUUk0KPmlzIHF1aXRlIGJhZCByZWdhZGlu
-ZyBkZXNjcmliaW5nIHRoZSBjbG9jayB0cmVlcywgc28gbm90IG11Y2gKPnZhbGlkYXRpb24gaGFz
-IGJlZW4gZG9uZSBieSBtZSkuIFRoZSBvbGQgdmVuZG9yIGtlcm5lbCB0cmVlIGhhZCBpdAo+bGlr
-ZSB0aGlzLCBidXQgdGhhdCBhbHNvIGNoYW5nZWQgYSBiaXQgb3ZlciB0aW1lIGFmdGVyd2FyZHMg
-YW5kIG5vCj5sb25nZXIgaGFzIGFueSBzcGVjaWFsIGhhbmRsaW5nIGZvciBWUDIuIE9UT0ggaXQg
-ZG9lcyBzZXQKPkNMS19TRVRfUkFURV9OT19SRVBBUkVOVCBmb3IgYWxsIGRjbGtfdm9wPG51bWJl
-cj5fc3JjLCB3aGljaCB5b3UKPmFyZSBub3cgcmVtb3ZpbmcgZm9yIFZQMi4KPgo+RldJVyB0aGVz
-ZSBhcmUgdGhlIHR3byBmbGFnczoKPgo+I2RlZmluZSBDTEtfU0VUX1JBVEVfUEFSRU5UICAgICBC
-SVQoMikgLyogcHJvcGFnYXRlIHJhdGUgY2hhbmdlIHVwIG9uZSBsZXZlbCAqLwo+I2RlZmluZSBD
-TEtfU0VUX1JBVEVfTk9fUkVQQVJFTlQgQklUKDcpIC8qIGRvbid0IHJlLXBhcmVudCBvbiByYXRl
-IGNoYW5nZSAqLwo+Cj5TbyBieSByZW1vdmluZyBDTEtfU0VUX1JBVEVfTk9fUkVQQVJFTlQgeW91
-IGFyZSBhbGxvd2luZyBkY2xrX3ZvcDJfc3JjCj50byBiZSBzd2l0Y2hlZCB0byBhIGRpZmZlcmVu
-dCBQTEwgd2hlbiBhIGRpZmZlcmVudCByYXRlIGlzIGJlaW5nCj5yZXF1ZXN0ZWQuIFRoYXQgY2hh
-bmdlIGlzIGNvbXBsZXRsZXkgdW5yZWxhdGVkIHRvIHRoZSBidWcgeW91IGFyZQo+c2VlaW5nIHJp
-Z2h0IG5vdz8KPgo+PiBTbyBpbiB0aGUgZW5kIFZQMiB3aWxsIGhhdmUgdG8gZGVhbCB3aXRoIHRo
-aXMsIGJlY2F1c2Ugd2hlbiB0aGUgVlAKPj4gY2F1c2VzIGEgcmF0ZSBjaGFuZ2UgaW4gdGhlIEdQ
-TEwsIHRoaXMgY2hhbmdlcyBzbyBtYW55IGNsb2NrcyBvZgo+PiBvdGhlciBwb3NzaWJseSBydW5u
-aW5nIGRldmljZXMuIE5vdCBvbmx5IHRoZSB1YXJ0LCBidXQgYWxzbyBlbW1jCj4+IGFuZCBtYW55
-IG1vcmUuIEFuZCBhbGwgdGhvc2UgZGV2aWNlcyBkbyBub3QgbGlrZSBpZiB0aGVpciBjbG9jayBn
-ZXRzCj4+IGNoYW5nZWQgdW5kZXIgdGhlbSBJIHRoaW5rLgo+Cj5JdCdzIGNlcnRhaW5seSB3ZWly
-ZCwgdGhhdCBWUDIgd2FzIChhbmQgc3RpbGwgaXMgaW4gdXBzdHJlYW0pIGhhbmRsZWQKPnNwZWNp
-YWwuIE5vdGUgdGhhdCBHUExMIGJlaW5nIGNoYW5nZWQgaXMgbm90IHJlYWxseSBuZWNlc3Nhcnku
-Cj5kY2xrX3ZvcDJfc3JjIHBhcmVudCBjYW4gYmUgR1BMTCwgQ1BMTCwgVjBQTEwgb3IgQVVQTEwu
-IEVmZmVjdHMgb24KPm90aGVyIGhhcmR3YXJlIElQIHZlcnkgbXVjaCBkZXBlbmRzIG9uIHRoZSBw
-YXJlbnQgc2V0dXAuIFdoYXQgSSB0cnkKPnRvIHVuZGVyc3RhbmQgaXMgaWYgdGhlcmUgaXMgYWxz
-byBhIGJ1ZyBpbiB0aGUgcm9ja2NoaXBkcm0gZHJpdmVyCj5hbmQvb3IgaWYgcmVtb3ZpbmcgQ0xL
-X1NFVF9SQVRFX05PX1JFUEFSRU5UIGlzIGEgZ29vZCBpZGVhLiBUaGF0J3MKPndoeSBJIGhvcGVk
-IEFuZHkgY291bGQgY2hpbWUgaW4gYW5kIHByb3ZpZGUgc29tZSBiYWNrZ3JvdW5kIDopCgpUaGUg
-bWFpbiBsaW1pdGF0aW9uIGlzIHRoYXQgdGhlcmUgYXJlIG5vdCBlbm91Z2ggUExMcyBvbiB0aGUg
-U29DIHRvIGJlIHVzZWQgZm9yIHRoZSBkaXNwbGF5IHNpZGUuIApJbiBvdXIgZG93bnN0cmVhbSBj
-b2RlIGltcGxlbWVudGF0aW9uLCB3ZSB1c3VhbGx5IGV4Y2x1c2l2ZWx5IGFzc2lnbiBWMFBMTCB0
-byBhIGNlcnRhaW4gVlAuCk90aGVyIFZQcyBnZW5lcmFsbHkgbmVlZCB0byBzaGFyZSB0aGUgUExM
-IHdpdGggb3RoZXIgcGVyaXBoZXJhbHMgLCBvciB1c2UgdGhlIEhETUkgUEhZIFBMTC4KCkZvciBH
-UExMIGFuZCBDUExMLCAgdGhleSB3aWxsIGJlIHNldCB0byBhIGZpeGVkIGZyZXF1ZW5jeSBkdXJp
-bmcgdGhlIHN5c3RlbSBzdGFydHVwIHN0YWdlLCBhbmQKdGhleSBzaG91bGQgbm90IGJlIG1vZGlm
-aWVkIGFnYWluIGFzIHRoZXNlIHR3byBQTEwgYWx3YXlzIHNoYXJlZCBieSBvdGhlciBwZXJpcGhl
-cmFscy4KCldoZW4gc2hhcmVkIHdpdGggb3RoZXIgcGVyaXBoZXJhbHMsICB3ZSBjYW4gbm90IGRv
-IENMS19TRVRfUkFURV9QQVJFTlQsLgpIb3dldmVyLCB3aGVuIHdlIG5lZWQgYSByZWxhdGl2ZWx5
-IHByZWNpc2UgZnJlcXVlbmN5IGluIGNlcnRhaW4gc2NlbmFyaW9zLCBzdWNoIGFzIGRyaXZpbmcg
-YW4gZURQCm9yIERTSSBwYW5lbO+8iHNlZSB3aGF0IHdlIGRvIGZvciBlRFAgb24gcmszNTg4cy1l
-dmIxLXYxMC5kdHMgYW5kIHJrMzU4OC1jb29scGktY201LWdlbmJvb2suZHRzIO+8iSwgCndlIHRl
-bmQgdG8gdXNlIFYwUExMLiBCdXQgc2luY2UgVjBQTEwgZG9lcyBub3QgcHJvcGVyIGluaXRpYWxp
-emF0ZWQgYXQgc3lzdGVtIHN0YXJ0dXAsIHdlIHRoZW4gbmVlZCBDTEtfU0VUX1JBVEVfUEFSRU5U
-LiAKVGhpcyBkb2VzIGluZGVlZCBzZWVtIHRvIGJlIGEgY29udHJhZGljdGlvbi4KCgoKPgo+R3Jl
-ZXRpbmdzLAo+Cj4tLSBTZWJhc3RpYW4KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlw
-QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+The current path will have an independent PLL(LPLL\BPLL)
+exclusively for the CPU to use.
+As follows:
+
+            |-\
+    --lpll--|  \
+            |mux|--[gate]--[div]--clk_core--
+    --gpll--|  /
+            |-/
+
+The new chip does not have a dedicated PLL for the cpu;
+it is distributed nearby from the common PLL.
+If there are special frequency requirements that require the
+use of pvtpll, explanations will be submitted later.
+
+The clock path of new soc CPU simplified as follows:
+
+    --gpll--|--\
+            |   \
+            |    \
+            |     \
+   --v0pll--| mux |--[gate]--[div]--clk_core--
+            |     /
+            |    /
+   --v1pll--|   /
+            |--/
+
+Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+---
+ drivers/clk/rockchip/clk-cpu.c | 165 +++++++++++++++++++++++++++++++++
+ drivers/clk/rockchip/clk.c     |  24 +++++
+ drivers/clk/rockchip/clk.h     |  15 +++
+ 3 files changed, 204 insertions(+)
+
+diff --git a/drivers/clk/rockchip/clk-cpu.c b/drivers/clk/rockchip/clk-cpu.c
+index dcc9dcb597ae..6e91a3041a03 100644
+--- a/drivers/clk/rockchip/clk-cpu.c
++++ b/drivers/clk/rockchip/clk-cpu.c
+@@ -396,3 +396,168 @@ struct clk *rockchip_clk_register_cpuclk(const char *name,
+ 	kfree(cpuclk);
+ 	return ERR_PTR(ret);
+ }
++
++static int rockchip_cpuclk_multi_pll_pre_rate_change(struct rockchip_cpuclk *cpuclk,
++						     struct clk_notifier_data *ndata)
++{
++	unsigned long new_rate = roundup(ndata->new_rate, 1000);
++	const struct rockchip_cpuclk_rate_table *rate;
++	unsigned long flags;
++
++	rate = rockchip_get_cpuclk_settings(cpuclk, new_rate);
++	if (!rate) {
++		pr_err("%s: Invalid rate : %lu for cpuclk\n",
++		       __func__, new_rate);
++		return -EINVAL;
++	}
++
++	if (new_rate > ndata->old_rate) {
++		spin_lock_irqsave(cpuclk->lock, flags);
++		rockchip_cpuclk_set_dividers(cpuclk, rate);
++		spin_unlock_irqrestore(cpuclk->lock, flags);
++	}
++
++	return 0;
++}
++
++static int rockchip_cpuclk_multi_pll_post_rate_change(struct rockchip_cpuclk *cpuclk,
++						      struct clk_notifier_data *ndata)
++{
++	unsigned long new_rate = roundup(ndata->new_rate, 1000);
++	const struct rockchip_cpuclk_rate_table *rate;
++	unsigned long flags;
++
++	rate = rockchip_get_cpuclk_settings(cpuclk, new_rate);
++	if (!rate) {
++		pr_err("%s: Invalid rate : %lu for cpuclk\n",
++		       __func__, new_rate);
++		return -EINVAL;
++	}
++
++	if (new_rate < ndata->old_rate) {
++		spin_lock_irqsave(cpuclk->lock, flags);
++		rockchip_cpuclk_set_dividers(cpuclk, rate);
++		spin_unlock_irqrestore(cpuclk->lock, flags);
++	}
++
++	return 0;
++}
++
++static int rockchip_cpuclk_multi_pll_notifier_cb(struct notifier_block *nb,
++						 unsigned long event, void *data)
++{
++	struct clk_notifier_data *ndata = data;
++	struct rockchip_cpuclk *cpuclk = to_rockchip_cpuclk_nb(nb);
++	int ret = 0;
++
++	pr_debug("%s: event %lu, old_rate %lu, new_rate: %lu\n",
++		 __func__, event, ndata->old_rate, ndata->new_rate);
++	if (event == PRE_RATE_CHANGE)
++		ret = rockchip_cpuclk_multi_pll_pre_rate_change(cpuclk, ndata);
++	else if (event == POST_RATE_CHANGE)
++		ret = rockchip_cpuclk_multi_pll_post_rate_change(cpuclk, ndata);
++
++	return notifier_from_errno(ret);
++}
++
++struct clk *rockchip_clk_register_cpuclk_multi_pll(const char *name,
++						   const char *const *parent_names,
++						   u8 num_parents, void __iomem *base,
++						   int muxdiv_offset, u8 mux_shift,
++						   u8 mux_width, u8 mux_flags,
++						   int div_offset, u8 div_shift,
++						   u8 div_width, u8 div_flags,
++						   unsigned long flags, spinlock_t *lock,
++						   const struct rockchip_cpuclk_rate_table *rates,
++						   int nrates)
++{
++	struct rockchip_cpuclk *cpuclk;
++	struct clk_hw *hw;
++	struct clk_mux *mux = NULL;
++	struct clk_divider *div = NULL;
++	const struct clk_ops *mux_ops = NULL, *div_ops = NULL;
++	int ret;
++
++	if (num_parents > 1) {
++		mux = kzalloc(sizeof(*mux), GFP_KERNEL);
++		if (!mux)
++			return ERR_PTR(-ENOMEM);
++
++		mux->reg = base + muxdiv_offset;
++		mux->shift = mux_shift;
++		mux->mask = BIT(mux_width) - 1;
++		mux->flags = mux_flags;
++		mux->lock = lock;
++		mux_ops = (mux_flags & CLK_MUX_READ_ONLY) ? &clk_mux_ro_ops
++							: &clk_mux_ops;
++	}
++
++	if (div_width > 0) {
++		div = kzalloc(sizeof(*div), GFP_KERNEL);
++		if (!div) {
++			ret = -ENOMEM;
++			goto free_mux;
++		}
++
++		div->flags = div_flags;
++		if (div_offset)
++			div->reg = base + div_offset;
++		else
++			div->reg = base + muxdiv_offset;
++		div->shift = div_shift;
++		div->width = div_width;
++		div->lock = lock;
++		div_ops = (div_flags & CLK_DIVIDER_READ_ONLY)
++						? &clk_divider_ro_ops
++						: &clk_divider_ops;
++	}
++
++	hw = clk_hw_register_composite(NULL, name, parent_names, num_parents,
++				       mux ? &mux->hw : NULL, mux_ops,
++				       div ? &div->hw : NULL, div_ops,
++				       NULL, NULL, flags);
++	if (IS_ERR(hw)) {
++		ret = PTR_ERR(hw);
++		goto free_div;
++	}
++
++	cpuclk = kzalloc(sizeof(*cpuclk), GFP_KERNEL);
++	if (!cpuclk) {
++		ret = -ENOMEM;
++		goto unregister_clk;
++	}
++
++	cpuclk->reg_base = base;
++	cpuclk->lock = lock;
++	cpuclk->clk_nb.notifier_call = rockchip_cpuclk_multi_pll_notifier_cb;
++	ret = clk_notifier_register(hw->clk, &cpuclk->clk_nb);
++	if (ret) {
++		pr_err("%s: failed to register clock notifier for %s\n",
++		       __func__, name);
++		goto free_cpuclk;
++	}
++
++	if (nrates > 0) {
++		cpuclk->rate_count = nrates;
++		cpuclk->rate_table = kmemdup(rates,
++					     sizeof(*rates) * nrates,
++					     GFP_KERNEL);
++		if (!cpuclk->rate_table) {
++			ret = -ENOMEM;
++			goto free_cpuclk;
++		}
++	}
++
++	return hw->clk;
++
++free_cpuclk:
++	kfree(cpuclk);
++unregister_clk:
++	clk_hw_unregister_composite(hw);
++free_div:
++	kfree(div);
++free_mux:
++	kfree(mux);
++
++	return ERR_PTR(ret);
++}
+diff --git a/drivers/clk/rockchip/clk.c b/drivers/clk/rockchip/clk.c
+index 19caf26c991b..2601df3b1066 100644
+--- a/drivers/clk/rockchip/clk.c
++++ b/drivers/clk/rockchip/clk.c
+@@ -722,6 +722,30 @@ void rockchip_clk_register_armclk(struct rockchip_clk_provider *ctx,
+ }
+ EXPORT_SYMBOL_GPL(rockchip_clk_register_armclk);
+ 
++void rockchip_clk_register_armclk_multi_pll(struct rockchip_clk_provider *ctx,
++					    struct rockchip_clk_branch *list,
++					    const struct rockchip_cpuclk_rate_table *rates,
++					    int nrates)
++{
++	struct clk *clk;
++
++	clk = rockchip_clk_register_cpuclk_multi_pll(list->name, list->parent_names,
++						     list->num_parents, ctx->reg_base,
++						     list->muxdiv_offset, list->mux_shift,
++						     list->mux_width, list->mux_flags,
++						     list->div_offset, list->div_shift,
++						     list->div_width, list->div_flags,
++						     list->flags, &ctx->lock, rates, nrates);
++	if (IS_ERR(clk)) {
++		pr_err("%s: failed to register clock %s: %ld\n",
++		       __func__, list->name, PTR_ERR(clk));
++		return;
++	}
++
++	rockchip_clk_set_lookup(ctx, clk, list->id);
++}
++EXPORT_SYMBOL_GPL(rockchip_clk_register_armclk_multi_pll);
++
+ void rockchip_clk_protect_critical(const char *const clocks[],
+ 				   int nclocks)
+ {
+diff --git a/drivers/clk/rockchip/clk.h b/drivers/clk/rockchip/clk.h
+index 7c5e74c7a2e2..23653a942403 100644
+--- a/drivers/clk/rockchip/clk.h
++++ b/drivers/clk/rockchip/clk.h
+@@ -622,6 +622,17 @@ struct clk *rockchip_clk_register_cpuclk(const char *name,
+ 			const struct rockchip_cpuclk_rate_table *rates,
+ 			int nrates, void __iomem *reg_base, spinlock_t *lock);
+ 
++struct clk *rockchip_clk_register_cpuclk_multi_pll(const char *name,
++						   const char *const *parent_names,
++						   u8 num_parents, void __iomem *base,
++						   int muxdiv_offset, u8 mux_shift,
++						   u8 mux_width, u8 mux_flags,
++						   int div_offset, u8 div_shift,
++						   u8 div_width, u8 div_flags,
++						   unsigned long flags, spinlock_t *lock,
++						   const struct rockchip_cpuclk_rate_table *rates,
++						   int nrates);
++
+ struct clk *rockchip_clk_register_mmc(const char *name,
+ 				const char *const *parent_names, u8 num_parents,
+ 				void __iomem *reg,
+@@ -1208,6 +1219,10 @@ void rockchip_clk_register_armclk(struct rockchip_clk_provider *ctx,
+ 			const struct rockchip_cpuclk_reg_data *reg_data,
+ 			const struct rockchip_cpuclk_rate_table *rates,
+ 			int nrates);
++void rockchip_clk_register_armclk_multi_pll(struct rockchip_clk_provider *ctx,
++					    struct rockchip_clk_branch *list,
++					    const struct rockchip_cpuclk_rate_table *rates,
++					    int nrates);
+ void rockchip_clk_protect_critical(const char *const clocks[], int nclocks);
+ void rockchip_register_restart_notifier(struct rockchip_clk_provider *ctx,
+ 					unsigned int reg, void (*cb)(void));
+-- 
+2.34.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
