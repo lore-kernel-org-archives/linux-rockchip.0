@@ -4,85 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E79CCCF9E0
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Oct 2025 17:14:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 833FFCCF9EE
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Oct 2025 17:18:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1Kkw2SUd0Imn75DMYDI1gYFGtu8Uuv0XoBIQIpF2FWU=; b=RjVOQfPK2IlVeZ
-	rFh5sIjAtAdSxtJrWFjph1AzPOz9Tid6Vj3uPJNWrmQhQvBT+Jatj5dptorniCEsAIp/N0IQJqsBz
-	Srha0HKkzOh424Wy4Mvd0joXYcFIajRbbgHR2N0ghideF1TERbs4wDCYJJ/VCwyVe5n5Pt8t5eMpX
-	/zUJzuvcmnRZs+iARLozScKhyVjzcHilczpiRHwdUJyQLSdihufo+OxsnrJaFg3bZx2mrwsmeHLbM
-	YqW/hSlxZunZINOE9PGhzk63R+aEFWqYCeulnlMWt+W2legD26jMsvYW9PsnAV5I9nZOgTC6OvaVY
-	xNzGw92eBPuyZgGZZONQ==;
+	List-Owner; bh=bJB8jQqM0q7moYWJHUNAVp56eSFNXRxUG8Gz8GHqcjU=; b=xrHO/dh63/Mgo2
+	V/tIj1oXEPrqtSsAcQwrd3TQZZpnUZWzXWkMv4c+99jhgcQSGTP93GULDFHFmzSKl0SIPvxeC+84h
+	ULp/c58fnMlYkdubZEpEawJ5TOtXBnt4shToJXPmoTcxcuZyZCfDZV2tKHXboNNxSAqU18G0I2T5/
+	octCnFGg/HvXn/5dBqjaa5S1BkVpLZp545EXPx/VvJ+YT4/a8Y+R4LsIJ8wyQ3ZHYUTvGoEietdWt
+	NS0S4BHrusA2MwieS/vigBdU7/z+dAy4FgLfQJc4lYaygbZ58Z9fIY0MmfZC+VudD9WItJacd1QT4
+	tYBDgTVkg2mWlgrL1E9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDQnp-0000000EPwP-2F2x;
-	Mon, 27 Oct 2025 17:14:41 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDQnk-0000000EPrA-2AhV;
-	Mon, 27 Oct 2025 17:14:36 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=I67bOjSOGdKubyE5dBnDfBCdL3Y5Tg26wF/RzeIjnlA=; b=GBz44Vlsr4BCwcXe6RE4FIgJi4
-	u3AyHNLx/j8rgYP/EtVvj+S25VHOChb2JdZ8DcrX4KqkFn5e/Fl//dQPsfZUX9VfMeDOtW65l7SPO
-	++oWgYtva+RV5C2uS2wkuw2kIelOb7Y3TirlbkNqjxN7IuJzsGcsgKr1ThdfDAt9SoNcWE1hETsPv
-	zhI1KXcAIFvtvH2KAgl7QWNw3y9qkoNTgKpS92g21fgY/SQK5925Rl/kR8qygxa7zdkMCAugi6KSv
-	NwNJCXE2tQajw38uLtWXHWAxvHQY4hWX3EA5qMBhxHpGbV9Wf9TVtL5eVAPaN40OiKGwd8Fbs5id6
-	hkvXx/zA==;
+	id 1vDQrI-0000000EQfo-0NFv;
+	Mon, 27 Oct 2025 17:18:16 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDPvx-00000002en0-2VFG;
-	Mon, 27 Oct 2025 16:19:03 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1761585261; cv=none; 
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vDQrF-0000000EQfB-1jeg;
+	Mon, 27 Oct 2025 17:18:14 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1761585485; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=nzWjLn5Z4BUtKuZOvnAE43l/MLdQnAujCdOBInOotQGFGQrQvs27n3K+M22Z/Ff3tQVam79kLGiANlt9C60hjKo6j0flyw7Kuo9wKwRYpy8xq13UEwySAJNM4TbhfF9HLSmeLfX389ykt9dhHCgR/cfLlwHKJyrMpFvAraJNikM=
+	b=X1gBeOXii1Wsijnw7Xu6bo8M4CrnCviOuvVZYWbFXBr1aczrloVhMYFB+MikS7pjy2qbb60tvRhENSnwzDgH6J6P1fQkI7A25H+TFVYDrRRki8ysfvS8nl3ZLS0GtRPZ9jD9w6BXOqEhTtTBD3uD0wqNMUIkZauQN5j8Mgb+5ww=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1761585261; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=I67bOjSOGdKubyE5dBnDfBCdL3Y5Tg26wF/RzeIjnlA=; 
-	b=J6+jlv9flXuV2f3w0ic3kEwtuPbBwMwPEHPHn/Q+uPp3OoV1n0eHkwR1sxtV2JzUfUvkgbw+/GpCQ8/HVykuWPUsgkvZOs5C3AZL0Eo9d7/BFPTjNVvn+cw9ZObwPzCH+aGwtiAdYPbTPw8OWq1LBXYGPkhS48cqolcgGrb3x6w=
+	t=1761585485; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=ZNW4fieYkSA2lBxgemD0NgMNnHAiHnhoG3/C5j4275U=; 
+	b=UNU5V48pqwdNROdHla4ojkPzWnjIVdCJco+lukvORCdLcK0YkTQni+DxtavsNlNxkqw/knoWPPsYVNV0yUgaXBqmz9RG4N5rLNHE1XXMIRHPtHN0LxKLw1g/fdgVmgqnvwhXK55DgkvrNxLle/5qcJT6AYDX3gpwh4c8dJI8wVY=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1761585261;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1761585485;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=I67bOjSOGdKubyE5dBnDfBCdL3Y5Tg26wF/RzeIjnlA=;
-	b=L0ZNfKKIYVQySWQBrC0n0WMpXErySYf3/Y0qttS3k1ACADSfZMX84UzyDdnWjJW/
-	C0XMlxH2WjzLDdpzUt43wenuRRXqNaZ+l0+S5Of3V8g3J2bAyknVa81Lh3slRCNmFvR
-	lxi/ndBhtVywtdHK/pFswg1gpaJlDBBvnu7BIn7w=
-Received: by mx.zohomail.com with SMTPS id 1761585260004677.38213585215;
-	Mon, 27 Oct 2025 10:14:20 -0700 (PDT)
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=ZNW4fieYkSA2lBxgemD0NgMNnHAiHnhoG3/C5j4275U=;
+	b=S6bRuYh5DomXJIJWsJQZRBcZ07/nhdm8EK2gY1MDPYCkTD3dEQEs7p1JJmolgssh
+	xNj/Mepmd8VCF1afEJF9O2i/lRT3gfGy3mv5lkuJcHQzsTqYMuIWcYD154ZxDihIhPH
+	6wWRJWvxeNxcAuvgvUvncXRL/Clwhw+dKenajAdQ=
+Received: by mx.zohomail.com with SMTPS id 1761585483468132.07412147907223;
+	Mon, 27 Oct 2025 10:18:03 -0700 (PDT)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Mon, 27 Oct 2025 18:12:00 +0100
-Subject: [PATCH v3 5/5] arm64: dts: rockchip: add PWM nodes to RK3576 SoC
- dtsi
+To: Anand Moon <linux.amoon@gmail.com>
+Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ Krzysztof =?UTF-8?B?V2lsY3p5xYRza2k=?= <kwilczynski@kernel.org>,
+ Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>,
+ Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>,
+ Niklas Cassel <cassel@kernel.org>, Shawn Lin <shawn.lin@rock-chips.com>,
+ Hans Zhang <18255117159@163.com>,
+ "open list:PCI NATIVE HOST BRIDGE AND ENDPOINT DRIVERS"
+ <linux-pci@vger.kernel.org>,
+ "moderated list:ARM/Rockchip SoC support"
+ <linux-arm-kernel@lists.infradead.org>,
+ "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>,
+ open list <linux-kernel@vger.kernel.org>
+Subject: Re: [PATCH v1 1/2] PCI: dw-rockchip: Add remove callback for resource cleanup
+Date: Mon, 27 Oct 2025 18:17:58 +0100
+Message-ID: <14087628.uLZWGnKmhe@workhorse>
+In-Reply-To: <CANAwSgTmOvOZ35=3XjhrKu2iPCMOU8c8prK5XVAkf3cF1DHekQ@mail.gmail.com>
+References: <20251027145602.199154-1-linux.amoon@gmail.com>
+ <5235617.GXAFRqVoOG@workhorse>
+ <CANAwSgTmOvOZ35=3XjhrKu2iPCMOU8c8prK5XVAkf3cF1DHekQ@mail.gmail.com>
 MIME-Version: 1.0
-Message-Id: <20251027-rk3576-pwm-v3-5-654a5cb1e3f8@collabora.com>
-References: <20251027-rk3576-pwm-v3-0-654a5cb1e3f8@collabora.com>
-In-Reply-To: <20251027-rk3576-pwm-v3-0-654a5cb1e3f8@collabora.com>
-To: =?utf-8?q?Uwe_Kleine-K=C3=B6nig?= <ukleinek@kernel.org>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Lee Jones <lee@kernel.org>, William Breathitt Gray <wbg@kernel.org>
-Cc: kernel@collabora.com, Jonas Karlman <jonas@kwiboo.se>, 
- Alexey Charkov <alchark@gmail.com>, linux-rockchip@lists.infradead.org, 
- linux-pwm@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
- linux-iio@vger.kernel.org, 
- Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251027_161901_988344_0D5B48FC 
-X-CRM114-Status: UNSURE (   8.53  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251027_101813_524168_2E640122 
+X-CRM114-Status: GOOD (  25.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,244 +87,75 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The RK3576 SoC features three distinct PWM controllers, with variable
-numbers of channels. Add each channel as a separate node to the SoC's
-device tree, as they don't really overlap in register ranges.
+On Monday, 27 October 2025 17:31:23 Central European Standard Time Anand Moon wrote:
+> Hi Nicolas,
+> 
+> Thanks for your review comments.
+> 
+> On Mon, 27 Oct 2025 at 20:42, Nicolas Frattaroli
+> <nicolas.frattaroli@collabora.com> wrote:
+> >
+> > On Monday, 27 October 2025 15:55:29 Central European Standard Time Anand Moon wrote:
+> > > Introduce a .remove() callback to the Rockchip DesignWare PCIe
+> > > controller driver to ensure proper resource deinitialization during
+> > > device removal. This includes disabling clocks and deinitializing the
+> > > PCIe PHY.
+> > >
+> > > Signed-off-by: Anand Moon <linux.amoon@gmail.com>
+> > > ---
+> > >  drivers/pci/controller/dwc/pcie-dw-rockchip.c | 11 +++++++++++
+> > >  1 file changed, 11 insertions(+)
+> > >
+> > > diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> > > index 87dd2dd188b4..b878ae8e2b3e 100644
+> > > --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> > > +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> > > @@ -717,6 +717,16 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+> > >       return ret;
+> > >  }
+> > >
+> > > +static void rockchip_pcie_remove(struct platform_device *pdev)
+> > > +{
+> > > +     struct device *dev = &pdev->dev;
+> > > +     struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
+> > > +
+> > > +     /* Perform other cleanups as necessary */
+> > > +     clk_bulk_disable_unprepare(rockchip->clk_cnt, rockchip->clks);
+> > > +     rockchip_pcie_phy_deinit(rockchip);
+> >
+> > You may want to add a
+> >
+> >     if (rockchip->vpcie3v3)
+> >             regulator_disable(rockchip->vpcie3v3);
+> >
+> > here, since it's enabled in the probe function if it's found.
+> >
+> > Not doing so means the regulator core will produce a warning
+> > splat when devres removes it I'm fairly sure.
+> >
+> I've removed the dependency on vpcie3v3 in the following commit:
+>  c930b10f17c0 ("PCI: dw-rockchip: Simplify regulator setup with
+> devm_regulator_get_enable_optional()")
+> Please review this commit and confirm if everything looks good.
 
-Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
----
- arch/arm64/boot/dts/rockchip/rk3576.dtsi | 208 +++++++++++++++++++++++++++++++
- 1 file changed, 208 insertions(+)
+I see. In that case, your code is indeed correct, thank you for
+pointing this out.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-index f0c3ab00a7f3..1e135cf09efc 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-@@ -1030,6 +1030,32 @@ uart1: serial@27310000 {
- 			status = "disabled";
- 		};
- 
-+		pwm0_2ch_0: pwm@27330000 {
-+			compatible = "rockchip,rk3576-pwm";
-+			reg = <0x0 0x27330000 0x0 0x1000>;
-+			clocks = <&cru CLK_PMU1PWM>, <&cru PCLK_PMU1PWM>,
-+				 <&cru CLK_PMU1PWM_OSC>, <&cru CLK_PMU1PWM_RC>;
-+			clock-names = "pwm", "pclk", "osc", "rc";
-+			interrupts = <GIC_SPI 100 IRQ_TYPE_LEVEL_HIGH>;
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&pwm0m0_ch0>;
-+			#pwm-cells = <3>;
-+			status = "disabled";
-+		};
-+
-+		pwm0_2ch_1: pwm@27331000 {
-+			compatible = "rockchip,rk3576-pwm";
-+			reg = <0x0 0x27331000 0x0 0x1000>;
-+			clocks = <&cru CLK_PMU1PWM>, <&cru PCLK_PMU1PWM>,
-+				 <&cru CLK_PMU1PWM_OSC>, <&cru CLK_PMU1PWM_RC>;
-+			clock-names = "pwm", "pclk", "osc", "rc";
-+			interrupts = <GIC_SPI 101 IRQ_TYPE_LEVEL_HIGH>;
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&pwm0m0_ch1>;
-+			#pwm-cells = <3>;
-+			status = "disabled";
-+		};
-+
- 		pmu: power-management@27380000 {
- 			compatible = "rockchip,rk3576-pmu", "syscon", "simple-mfd";
- 			reg = <0x0 0x27380000 0x0 0x800>;
-@@ -2480,6 +2506,188 @@ uart9: serial@2adc0000 {
- 			status = "disabled";
- 		};
- 
-+		pwm1_6ch_0: pwm@2add0000 {
-+			compatible = "rockchip,rk3576-pwm";
-+			reg = <0x0 0x2add0000 0x0 0x1000>;
-+			clocks = <&cru CLK_PWM1>, <&cru PCLK_PWM1>,
-+				 <&cru CLK_OSC_PWM1>, <&cru CLK_RC_PWM1>;
-+			clock-names = "pwm", "pclk", "osc", "rc";
-+			interrupts = <GIC_SPI 102 IRQ_TYPE_LEVEL_HIGH>;
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&pwm1m0_ch0>;
-+			#pwm-cells = <3>;
-+			status = "disabled";
-+		};
-+
-+		pwm1_6ch_1: pwm@2add1000 {
-+			compatible = "rockchip,rk3576-pwm";
-+			reg = <0x0 0x2add1000 0x0 0x1000>;
-+			clocks = <&cru CLK_PWM1>, <&cru PCLK_PWM1>,
-+				 <&cru CLK_OSC_PWM1>, <&cru CLK_RC_PWM1>;
-+			clock-names = "pwm", "pclk", "osc", "rc";
-+			interrupts = <GIC_SPI 103 IRQ_TYPE_LEVEL_HIGH>;
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&pwm1m0_ch1>;
-+			#pwm-cells = <3>;
-+			status = "disabled";
-+		};
-+
-+		pwm1_6ch_2: pwm@2add2000 {
-+			compatible = "rockchip,rk3576-pwm";
-+			reg = <0x0 0x2add2000 0x0 0x1000>;
-+			clocks = <&cru CLK_PWM1>, <&cru PCLK_PWM1>,
-+				 <&cru CLK_OSC_PWM1>, <&cru CLK_RC_PWM1>;
-+			clock-names = "pwm", "pclk", "osc", "rc";
-+			interrupts = <GIC_SPI 104 IRQ_TYPE_LEVEL_HIGH>;
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&pwm1m0_ch2>;
-+			#pwm-cells = <3>;
-+			status = "disabled";
-+		};
-+
-+		pwm1_6ch_3: pwm@2add3000 {
-+			compatible = "rockchip,rk3576-pwm";
-+			reg = <0x0 0x2add3000 0x0 0x1000>;
-+			clocks = <&cru CLK_PWM1>, <&cru PCLK_PWM1>,
-+				 <&cru CLK_OSC_PWM1>, <&cru CLK_RC_PWM1>;
-+			clock-names = "pwm", "pclk", "osc", "rc";
-+			interrupts = <GIC_SPI 105 IRQ_TYPE_LEVEL_HIGH>;
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&pwm1m0_ch3>;
-+			#pwm-cells = <3>;
-+			status = "disabled";
-+		};
-+
-+		pwm1_6ch_4: pwm@2add4000 {
-+			compatible = "rockchip,rk3576-pwm";
-+			reg = <0x0 0x2add4000 0x0 0x1000>;
-+			clocks = <&cru CLK_PWM1>, <&cru PCLK_PWM1>,
-+				 <&cru CLK_OSC_PWM1>, <&cru CLK_RC_PWM1>;
-+			clock-names = "pwm", "pclk", "osc", "rc";
-+			interrupts = <GIC_SPI 106 IRQ_TYPE_LEVEL_HIGH>;
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&pwm1m0_ch4>;
-+			#pwm-cells = <3>;
-+			status = "disabled";
-+		};
-+
-+		pwm1_6ch_5: pwm@2add5000 {
-+			compatible = "rockchip,rk3576-pwm";
-+			reg = <0x0 0x2add5000 0x0 0x1000>;
-+			clocks = <&cru CLK_PWM1>, <&cru PCLK_PWM1>,
-+				 <&cru CLK_OSC_PWM1>, <&cru CLK_RC_PWM1>;
-+			clock-names = "pwm", "pclk", "osc", "rc";
-+			interrupts = <GIC_SPI 107 IRQ_TYPE_LEVEL_HIGH>;
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&pwm1m0_ch5>;
-+			#pwm-cells = <3>;
-+			status = "disabled";
-+		};
-+
-+		pwm2_8ch_0: pwm@2ade0000 {
-+			compatible = "rockchip,rk3576-pwm";
-+			reg = <0x0 0x2ade0000 0x0 0x1000>;
-+			clocks = <&cru CLK_PWM2>, <&cru PCLK_PWM2>,
-+				 <&cru CLK_OSC_PWM2>, <&cru CLK_RC_PWM2>;
-+			clock-names = "pwm", "pclk", "osc", "rc";
-+			interrupts = <GIC_SPI 108 IRQ_TYPE_LEVEL_HIGH>;
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&pwm2m0_ch0>;
-+			#pwm-cells = <3>;
-+			status = "disabled";
-+		};
-+
-+		pwm2_8ch_1: pwm@2ade1000 {
-+			compatible = "rockchip,rk3576-pwm";
-+			reg = <0x0 0x2ade1000 0x0 0x1000>;
-+			clocks = <&cru CLK_PWM2>, <&cru PCLK_PWM2>,
-+				 <&cru CLK_OSC_PWM2>, <&cru CLK_RC_PWM2>;
-+			clock-names = "pwm", "pclk", "osc", "rc";
-+			interrupts = <GIC_SPI 109 IRQ_TYPE_LEVEL_HIGH>;
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&pwm2m0_ch1>;
-+			#pwm-cells = <3>;
-+			status = "disabled";
-+		};
-+
-+		pwm2_8ch_2: pwm@2ade2000 {
-+			compatible = "rockchip,rk3576-pwm";
-+			reg = <0x0 0x2ade2000 0x0 0x1000>;
-+			clocks = <&cru CLK_PWM2>, <&cru PCLK_PWM2>,
-+				 <&cru CLK_OSC_PWM2>, <&cru CLK_RC_PWM2>;
-+			clock-names = "pwm", "pclk", "osc", "rc";
-+			interrupts = <GIC_SPI 110 IRQ_TYPE_LEVEL_HIGH>;
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&pwm2m0_ch2>;
-+			#pwm-cells = <3>;
-+			status = "disabled";
-+		};
-+
-+		pwm2_8ch_3: pwm@2ade3000 {
-+			compatible = "rockchip,rk3576-pwm";
-+			reg = <0x0 0x2ade3000 0x0 0x1000>;
-+			clocks = <&cru CLK_PWM2>, <&cru PCLK_PWM2>,
-+				 <&cru CLK_OSC_PWM2>, <&cru CLK_RC_PWM2>;
-+			clock-names = "pwm", "pclk", "osc", "rc";
-+			interrupts = <GIC_SPI 111 IRQ_TYPE_LEVEL_HIGH>;
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&pwm2m0_ch3>;
-+			#pwm-cells = <3>;
-+			status = "disabled";
-+		};
-+
-+		pwm2_8ch_4: pwm@2ade4000 {
-+			compatible = "rockchip,rk3576-pwm";
-+			reg = <0x0 0x2ade4000 0x0 0x1000>;
-+			clocks = <&cru CLK_PWM2>, <&cru PCLK_PWM2>,
-+				 <&cru CLK_OSC_PWM2>, <&cru CLK_RC_PWM2>;
-+			clock-names = "pwm", "pclk", "osc", "rc";
-+			interrupts = <GIC_SPI 112 IRQ_TYPE_LEVEL_HIGH>;
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&pwm2m0_ch4>;
-+			#pwm-cells = <3>;
-+			status = "disabled";
-+		};
-+
-+		pwm2_8ch_5: pwm@2ade5000 {
-+			compatible = "rockchip,rk3576-pwm";
-+			reg = <0x0 0x2ade5000 0x0 0x1000>;
-+			clocks = <&cru CLK_PWM2>, <&cru PCLK_PWM2>,
-+				 <&cru CLK_OSC_PWM2>, <&cru CLK_RC_PWM2>;
-+			clock-names = "pwm", "pclk", "osc", "rc";
-+			interrupts = <GIC_SPI 113 IRQ_TYPE_LEVEL_HIGH>;
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&pwm2m0_ch5>;
-+			#pwm-cells = <3>;
-+			status = "disabled";
-+		};
-+
-+		pwm2_8ch_6: pwm@2ade6000 {
-+			compatible = "rockchip,rk3576-pwm";
-+			reg = <0x0 0x2ade6000 0x0 0x1000>;
-+			clocks = <&cru CLK_PWM2>, <&cru PCLK_PWM2>,
-+				 <&cru CLK_OSC_PWM2>, <&cru CLK_RC_PWM2>;
-+			clock-names = "pwm", "pclk", "osc", "rc";
-+			interrupts = <GIC_SPI 114 IRQ_TYPE_LEVEL_HIGH>;
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&pwm2m0_ch6>;
-+			#pwm-cells = <3>;
-+			status = "disabled";
-+		};
-+
-+		pwm2_8ch_7: pwm@2ade7000 {
-+			compatible = "rockchip,rk3576-pwm";
-+			reg = <0x0 0x2ade7000 0x0 0x1000>;
-+			clocks = <&cru CLK_PWM2>, <&cru PCLK_PWM2>,
-+				 <&cru CLK_OSC_PWM2>, <&cru CLK_RC_PWM2>;
-+			clock-names = "pwm", "pclk", "osc", "rc";
-+			interrupts = <GIC_SPI 115 IRQ_TYPE_LEVEL_HIGH>;
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&pwm2m0_ch7>;
-+			#pwm-cells = <3>;
-+			status = "disabled";
-+		};
-+
- 		saradc: adc@2ae00000 {
- 			compatible = "rockchip,rk3576-saradc", "rockchip,rk3588-saradc";
- 			reg = <0x0 0x2ae00000 0x0 0x10000>;
+Reviewed-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
--- 
-2.51.1
+Kind regards,
+Nicolas Frattaroli
+
+> 
+> > Kind regards,
+> > Nicolas Frattaroli
+> >
+> Thanks
+> -Anand
+> 
+
+
+
 
 
 _______________________________________________
