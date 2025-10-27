@@ -4,101 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B68D2CCF9EA
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Oct 2025 08:50:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 514B9CCF9EA
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Oct 2025 09:14:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
-	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nBCuXMH6e3xcnPYW7co6kgsS+dzLdtx2ZvzIHUVM/+0=; b=odYnTgSxEB1Rgm
-	14pRJhGOpCxjtCM6WIbR6YJqOvDGDmN2dyibrlgfDPDwUHWepegyVUooktAkfsCXSBDARuitpkrPF
-	3xxp3f39XNa6ZUdAQ3OElvuZK1k7a7udjQPlSREewxAnuecWlfeIMFolo0IKb2GQzmo3pc+axXXEr
-	ytXPVYbGjVxTA0mMQwt1uy/mTSgyLTc5mvriDmWnuvwWeZMyWF0pl29ybqJ1wVTtSDzLWrjqwYtbL
-	7UkFNM8OV5N6XhX3PCePzwelQtK7Ty9TexiiCM9FKGOtOlzNiJdDnczRfjzPPJHY/7n84PCSo6Ret
-	WfMiiAe3F+SPWqNVDKAw==;
+	List-Owner; bh=x6YVD4D4226Bxsp6dUSCZjzOYfd9YxXp3++onJM1Q1U=; b=0DG1BEwZ9oObZW
+	nfPRL9onJwic0e+/zkdIvzjGKYnq75Vm9cZPz69e7fKZyMlc7EiERcJvbzyDbOyVMxCNe7Vuhd1/Q
+	gy3QsaZW1ADycU8d8VYIALiZCMLfn0NIqXDwdii02WsXP17cr8ZaPA+k0Pl1ALqsPzEy1QavBy4/W
+	GweeAc8341Y8Vu/6+nQqvPGtFUAe+92OmBLsP47yL3zwyf+FHp4ua7NNisWh37KolLCS/xU5zbeX6
+	dHyThIf/TN8qVLyvfySWy83cv8x6WW19Zts7pRByNJGMYEQ1kezsqu70xhpGRN1quvEJpI+eEHyZt
+	cevm/FNTiS/atf555yuA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDIvj-0000000DSBY-0iZV;
-	Mon, 27 Oct 2025 08:50:19 +0000
+	id 1vDJJK-0000000DVFU-3WTk;
+	Mon, 27 Oct 2025 09:14:42 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDIvh-0000000DSAc-3xmi;
-	Mon, 27 Oct 2025 08:50:18 +0000
+	id 1vDJJK-0000000DVFE-07mP
+	for linux-rockchip@bombadil.infradead.org;
+	Mon, 27 Oct 2025 09:14:42 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:MIME-Version:Message-ID:
-	Date:References:In-Reply-To:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=BQUQZvo7RWlRw2SyqZkuIdrF9j4YkFrZe8rnZtpiUFc=; b=BnGuzxQM+DYyHJSOyFtBWy2G+S
-	CkVdOrYwmni83Nx89rybasISXUByopc/rcs7ZMHpeKZ6IgV0PEEnY0kreFnhnYfnMCQ7yEUpkWB6m
-	szYi9yNFKlRDjcSXw3b6PmgbQ0wfqqQ33sEIJ0iPd+eY2YasemChkbUoABBuzaaRcIB4o6P+P7eg8
-	XVzmlEUhVGjK0PyNt5SgLjkIDLOl7eeiPRqmX0AIywPSHuLqiD9KS9BePlfaIZWvs7LPYXoHCqptE
-	KRl2lVYzLVyrT+m7GD47DKNOCwAMKxOsvJiGge9bocx2Np0SfjBH3j+AvQyKtTzGPt1OCrmY86kVX
-	x2ShfzMQ==;
-Received: from mgamail.intel.com ([192.198.163.7])
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=k3ckgEiSkq+y7z9usMTBGQkVGgGdig/5c1NbkqTAlEY=; b=kr4U+T4fYkicTgdBntJQQJcGN4
+	aBArk8CNpBLU9uk/521LA784dy3QbhpuRJYQOCHw2or5jJRDv1Jgz18kzFMYWmU57RtB58gWHhPnh
+	Ku3e+lkY0xX9exoxgWpzv9uwGKsr0qceqzFuQX1oCoS0hF16/0/JBx50xa7dFDEcGdAAjco5iPmnG
+	q/dnGNwYwrUnOWnHOaCWY26eovnYLvsl0k40fCskSGMeTi3xPmR+VjPLLmQXUWjmbDSqTSWgRXchk
+	aHvVRZ1Er0LhA8jYTSYoE1LbCy0qBte/mzhhdoouqZlkA8icO61D2fg8hMgZh+kt1RKfboX1SmHPB
+	VpkN9+bw==;
+Received: from mail-qt1-x82c.google.com ([2607:f8b0:4864:20::82c])
 	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDI3s-00000001eIr-3zfV;
-	Mon, 27 Oct 2025 07:54:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1761555013; x=1793091013;
-  h=from:to:cc:subject:in-reply-to:references:date:
-   message-id:mime-version;
-  bh=lQFP5i4h0NhDRiG8WGVwpbu31fE0ocV55y7NMexkC28=;
-  b=HViUNdh+HNEKYjyfH3EjX5DpO55fdlOKa3eEkOuJLVJ7D5QjQ0aAuq6v
-   mWMlMoWvk6vFKDHfxC2bTIv2Knj0KTU8VP3vZY3Yj6Y5LUNCPsPrDow2u
-   p0UrJQ9/oIWaICIeDRXjFixZlSPhmQLNnIVSEUeJCguKTDpL7d6avWhWV
-   mf24sAiEU8GwfSpzzlAcBzYqooMJMIiYEY75wajRfbOKkokVX8tjvIKay
-   9MVt4Rse8dKaScYtL2qR+71LX0B5ca5+wy5mGGKxofr96vJR2ntucmkAL
-   LLIXGt+b5ixCKVt1of1UxWEgy59tHEovBKZKuPGNsGGgSNV/fluML34VQ
-   Q==;
-X-CSE-ConnectionGUID: 9nEW8RNdSa658/LCMAHc7g==
-X-CSE-MsgGUID: nm8EuWS/RiylNL4ocPW0TQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11586"; a="89101012"
-X-IronPort-AV: E=Sophos;i="6.19,258,1754982000"; 
-   d="scan'208";a="89101012"
-Received: from orviesa010.jf.intel.com ([10.64.159.150])
-  by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 Oct 2025 01:50:07 -0700
-X-CSE-ConnectionGUID: RWdTYCHBRXaBnyFA3fxD1Q==
-X-CSE-MsgGUID: hFLDCByJQnS1Drk++R66Ew==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.19,258,1754982000"; 
-   d="scan'208";a="184216145"
-Received: from slindbla-desk.ger.corp.intel.com (HELO localhost) ([10.245.246.35])
-  by orviesa010-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 Oct 2025 01:49:59 -0700
-From: Jani Nikula <jani.nikula@linux.intel.com>
-To: "Yury Norov (NVIDIA)" <yury.norov@gmail.com>, Linus Torvalds
- <torvalds@linux-foundation.org>, Linus Walleij <linus.walleij@linaro.org>,
- Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, Sandy Huang
- <hjc@rock-chips.com>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>,
- Andy Yan
- <andy.yan@rock-chips.com>, Maarten Lankhorst
- <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
- Simona Vetter <simona@ffwll.ch>, Shreeya Patel
- <shreeya.patel@collabora.com>, Mauro Carvalho Chehab <mchehab@kernel.org>,
- Jaehoon Chung <jh80.chung@samsung.com>, Ulf Hansson
- <ulf.hansson@linaro.org>, Nicolas Frattaroli
- <frattaroli.nicolas@gmail.com>, Liam Girdwood <lgirdwood@gmail.com>, Mark
- Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai
- <tiwai@suse.com>, "Yury Norov (NVIDIA)" <yury.norov@gmail.com>,
- dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org, kernel@collabora.com,
- linux-mmc@vger.kernel.org, linux-sound@vger.kernel.org
-Cc: Rasmus Villemoes <linux@rasmusvillemoes.dk>
-Subject: Re: [PATCH 11/21] drivers: don't use GENMASK() in FIELD_PREP_WM16()
-In-Reply-To: <20251025164023.308884-12-yury.norov@gmail.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
-References: <20251025164023.308884-1-yury.norov@gmail.com>
- <20251025164023.308884-12-yury.norov@gmail.com>
-Date: Mon, 27 Oct 2025 10:49:56 +0200
-Message-ID: <6e82c656573d436b6c53d242a0ed45007e5849ad@intel.com>
+	id 1vDIRW-00000001icK-3Ke9
+	for linux-rockchip@lists.infradead.org;
+	Mon, 27 Oct 2025 08:19:08 +0000
+Received: by mail-qt1-x82c.google.com with SMTP id d75a77b69052e-4ed02d102e2so1418421cf.1
+        for <linux-rockchip@lists.infradead.org>; Mon, 27 Oct 2025 02:14:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1761556476; x=1762161276; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=k3ckgEiSkq+y7z9usMTBGQkVGgGdig/5c1NbkqTAlEY=;
+        b=c9vED40XQJRS3l1OLjd+tvKKEh/UxLWlfaepZmOX7xPc7BHJK44TKHCiVSHSzAz4px
+         HDTyRunes0NmRRVx8E4u8OwX3Zvn2I/woLwy0/8P9PjRL1QdoAy5UE/ZLUYAy9T9zwMl
+         2lr0iNjI9CnA92GSMbEkD4CBkpcsRN4vS5y7tlrasEUv57O3hdlE0MYUwvzAPzR4JR1f
+         Ej2V98S6xabfQCPgFUmPyVzvr2MF5E4QwZHDhi0POMEsEX4rANFr8FuLm+mz80Lixcv6
+         5ispZTbHrXG2fLVSFfGfWp7aneRY66ouUKDpdgwgbRfZ80bGcRDNxHgfbwkH5RSvL5gn
+         TMQg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1761556476; x=1762161276;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=k3ckgEiSkq+y7z9usMTBGQkVGgGdig/5c1NbkqTAlEY=;
+        b=nN5+ITlrbyYuiipP2fyM2VeTw7ERXbQm2rhT+AeANhpJZwUg9fPArRFWYXDmO+pTvK
+         5BbUXPG0AxnHVcPKjYKClJa4thqbPDgKhilfYEWjPO+ubDQOxgZVQxKugKOaMymXoPTr
+         +HVctxQY4gfTOGNW87qFRCVI8LnzW4bRGTjQP7eHLaqzozde/crh4l13gmQ6/obqXm/N
+         thLUZ7CPRmgVS8K85j9ARKbbJdZEGUcS2lNrbKo7uPTTSOXoPHVIEFBU53ZpFJ2qZwS0
+         lguxRe+Ca0Dv0pVKCoip5mAn+vQMruBNs9dEQt47wUu/417axskpjbZ1Zz1DPZEE9NJq
+         grKg==
+X-Forwarded-Encrypted: i=1; AJvYcCVD2Ebo37PIBIQGNTFp4hmZvfkYihSfKjd3/EFM7IgHtHFZ8uJUOCKvu7gcYDXOZi30t0PTN8QK9T9WzVJD+A==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwTdU+4huzQ+YIDVMO+hKjEFJWE1ws7I+XaTq7AEEHcbw0/S6Ya
+	FYmup57LWZ3NmQLUFdlBVNaRbE8xANrQhF68Ybey7+oxca+1RNKBCh9Ch02jAsEfmrUQpQ7l/V0
+	jNpqL1nUHC+/jcIIfyotFrjFMIxtTVBs=
+X-Gm-Gg: ASbGncvWor7Q6bpCMrqkL8NYEJpt8D0jU1E8d9T7OBhGSCXdDsbGkYQ8zW402la+qIl
+	+Hem3odA6aY2L54c/t5E1EDE7xc4zV4+sgZHq2aWilIhoj5JzOq53aTA2N4e1HbhuOq+gn8yd1A
+	IsPrwtXGLGCrDc53pqV4ZCAq9oHO8M0pWHSIm0tSLESY3moBp3Z/8PY0nkHp2ZIUqBUp8y3MafW
+	bhK9TqdtQtuusehrxsFtWSQaSncVMKUD/JG6umGuzh8FiPXVDkZZ2ZMX3kXcUEumDea6L2oJdnk
+	nKIFTghm7+KjPzxPM2OlqIZ7Hq0p
+X-Google-Smtp-Source: AGHT+IF/2QvCzE1TEuKomhBiAScmROMfTstvpHg7L8JdAeBZ1CrC1wuEfqNsUGGYV9Dp9piQXEYqMgRlhzJKaaFXdAc=
+X-Received: by 2002:a05:622a:d16:b0:4eb:a2ab:4182 with SMTP id
+ d75a77b69052e-4eba2ab4738mr100138481cf.22.1761556476187; Mon, 27 Oct 2025
+ 02:14:36 -0700 (PDT)
 MIME-Version: 1.0
+References: <20251026194858.92461-1-sigmaris@gmail.com>
+In-Reply-To: <20251026194858.92461-1-sigmaris@gmail.com>
+From: Alexey Charkov <alchark@gmail.com>
+Date: Mon, 27 Oct 2025 13:14:28 +0400
+X-Gm-Features: AWmQ_bny2G__jDeyWDUL9Y-J8F57fNDWZftO8M3HOK0HvZdNg6brhmmHAL6LiRE
+Message-ID: <CABjd4YxsfxwEbic8QEabX1h9j0B3DBw9LWwctJx7SzdvXZdDhA@mail.gmail.com>
+Subject: Re: [PATCH] arm64: dts: rockchip: pwm-fan overlay for NanoPC-T6
+To: Hugh Cole-Baker <sigmaris@gmail.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251027_075441_340580_764569E7 
-X-CRM114-Status: GOOD (  15.74  )
+X-CRM114-CacheID: sfid-20251027_081907_028532_CCB1C232 
+X-CRM114-Status: GOOD (  10.46  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,144 +108,30 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, 25 Oct 2025, "Yury Norov (NVIDIA)" <yury.norov@gmail.com> wrote:
-> Recently added FIELD_PREP_WM16() in a few places uses GENMASK. It's
-> confusing and may mislead readers. Switch to BITS() or FIRST_BITS()
-> as appropriate.
-
-GENMASK argument order matches how most specs I've ever looked at define
-bits. It's high:low. I, for one, think it's silly to add another set of
-macros purely to swap the argument order.
-
-> Suggested-by: Linus Torvalds <torvalds@linux-foundation.org>
-> Link: https://lore.kernel.org/all/CAHk-=whoOUsqPKb7OQwhQf9H_3=5sXGPJrDbfQfwLB3Bi13tcQ@mail.gmail.com/
-> Signed-off-by: Yury Norov (NVIDIA) <yury.norov@gmail.com>
-> ---
->  drivers/gpu/drm/rockchip/rockchip_lvds.h             | 2 +-
->  drivers/gpu/drm/rockchip/rockchip_vop2_reg.c         | 4 ++--
->  drivers/media/platform/synopsys/hdmirx/snps_hdmirx.h | 4 ++--
->  drivers/mmc/host/dw_mmc-rockchip.c                   | 4 ++--
->  drivers/soc/rockchip/grf.c                           | 4 ++--
->  sound/soc/rockchip/rockchip_i2s_tdm.h                | 2 +-
->  6 files changed, 10 insertions(+), 10 deletions(-)
->
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_lvds.h b/drivers/gpu/drm/rockchip/rockchip_lvds.h
-> index 2d92447d819b..e79e6031be59 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_lvds.h
-> +++ b/drivers/gpu/drm/rockchip/rockchip_lvds.h
-> @@ -115,7 +115,7 @@
->  #define   PX30_LVDS_INVERT_DCLK(val)		FIELD_PREP_WM16(BIT(5), (val))
->  
->  #define PX30_LVDS_GRF_PD_VO_CON1		0x438
-> -#define   PX30_LVDS_FORMAT(val)			FIELD_PREP_WM16(GENMASK(14, 13), (val))
-> +#define   PX30_LVDS_FORMAT(val)			FIELD_PREP_WM16(BITS(13, 14), (val))
-
-IMO this change would make more sense in defining register contents:
-
-+#define   PX30_LVDS_FORMAT_MASK			GENMASK(14, 13)
--#define   PX30_LVDS_FORMAT(val)			FIELD_PREP_WM16(GENMASK(14, 13), (val))
-+#define   PX30_LVDS_FORMAT(val)			FIELD_PREP_WM16(PX30_LVDS_FORMAT_MASK, (val))
-
-
-BR,
-Jani.
-
-
->  #define   PX30_LVDS_MODE_EN(val)		FIELD_PREP_WM16(BIT(12), (val))
->  #define   PX30_LVDS_MSBSEL(val)			FIELD_PREP_WM16(BIT(11), (val))
->  #define   PX30_LVDS_P2S_EN(val)			FIELD_PREP_WM16(BIT(6), (val))
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-> index 38c49030c7ab..438fea5f6f6d 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-> @@ -1698,7 +1698,7 @@ static unsigned long rk3588_set_intf_mux(struct vop2_video_port *vp, int id, u32
->  		val = rk3588_get_hdmi_pol(polflags);
->  		regmap_write(vop2->vop_grf, RK3588_GRF_VOP_CON2, FIELD_PREP_WM16(BIT(1), 1));
->  		regmap_write(vop2->vo1_grf, RK3588_GRF_VO1_CON0,
-> -			     FIELD_PREP_WM16(GENMASK(6, 5), val));
-> +			     FIELD_PREP_WM16(BITS(5, 6), val));
->  		break;
->  	case ROCKCHIP_VOP2_EP_HDMI1:
->  		div &= ~RK3588_DSP_IF_EDP_HDMI1_DCLK_DIV;
-> @@ -1711,7 +1711,7 @@ static unsigned long rk3588_set_intf_mux(struct vop2_video_port *vp, int id, u32
->  		val = rk3588_get_hdmi_pol(polflags);
->  		regmap_write(vop2->vop_grf, RK3588_GRF_VOP_CON2, FIELD_PREP_WM16(BIT(4), 1));
->  		regmap_write(vop2->vo1_grf, RK3588_GRF_VO1_CON0,
-> -			     FIELD_PREP_WM16(GENMASK(8, 7), val));
-> +			     FIELD_PREP_WM16(BITS(7, 8), val));
->  		break;
->  	case ROCKCHIP_VOP2_EP_EDP0:
->  		div &= ~RK3588_DSP_IF_EDP_HDMI0_DCLK_DIV;
-> diff --git a/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.h b/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.h
-> index b13f58e31944..14df3f53ff8f 100644
-> --- a/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.h
-> +++ b/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.h
-> @@ -12,8 +12,8 @@
->  #include <linux/bitops.h>
->  #include <linux/hw_bitfield.h>
->  
-> -#define UPDATE(x, h, l)		FIELD_PREP(GENMASK((h), (l)), (x))
-> -#define HIWORD_UPDATE(v, h, l)	FIELD_PREP_WM16(GENMASK((h), (l)), (v))
-> +#define UPDATE(x, h, l)		FIELD_PREP(BITS((l), (h)), (x))
-> +#define HIWORD_UPDATE(v, h, l)	FIELD_PREP_WM16(BITS((l), (h)), (v))
->  
->  /* SYS_GRF */
->  #define SYS_GRF_SOC_CON1			0x0304
-> diff --git a/drivers/mmc/host/dw_mmc-rockchip.c b/drivers/mmc/host/dw_mmc-rockchip.c
-> index 82dd906bb002..7fac1a7281bf 100644
-> --- a/drivers/mmc/host/dw_mmc-rockchip.c
-> +++ b/drivers/mmc/host/dw_mmc-rockchip.c
-> @@ -148,10 +148,10 @@ static int rockchip_mmc_set_internal_phase(struct dw_mci *host, bool sample, int
->  
->  	if (sample)
->  		mci_writel(host, TIMING_CON1,
-> -			   FIELD_PREP_WM16(GENMASK(11, 1), raw_value));
-> +			   FIELD_PREP_WM16(BITS(1, 11), raw_value));
->  	else
->  		mci_writel(host, TIMING_CON0,
-> -			   FIELD_PREP_WM16(GENMASK(11, 1), raw_value));
-> +			   FIELD_PREP_WM16(BITS(1, 11), raw_value));
->  
->  	dev_dbg(host->dev, "set %s_phase(%d) delay_nums=%u actual_degrees=%d\n",
->  		sample ? "sample" : "drv", degrees, delay_num,
-> diff --git a/drivers/soc/rockchip/grf.c b/drivers/soc/rockchip/grf.c
-> index 344870da7675..89fd4a4c69eb 100644
-> --- a/drivers/soc/rockchip/grf.c
-> +++ b/drivers/soc/rockchip/grf.c
-> @@ -125,8 +125,8 @@ static const struct rockchip_grf_info rk3566_pipegrf __initconst = {
->  #define RK3576_SYSGRF_SOC_CON1		0x0004
->  
->  static const struct rockchip_grf_value rk3576_defaults_sys_grf[] __initconst = {
-> -	{ "i3c0 weakpull", RK3576_SYSGRF_SOC_CON1, FIELD_PREP_WM16_CONST(GENMASK(7, 6), 3) },
-> -	{ "i3c1 weakpull", RK3576_SYSGRF_SOC_CON1, FIELD_PREP_WM16_CONST(GENMASK(9, 8), 3) },
-> +	{ "i3c0 weakpull", RK3576_SYSGRF_SOC_CON1, FIELD_PREP_WM16_CONST(BITS(6, 7), 3) },
-> +	{ "i3c1 weakpull", RK3576_SYSGRF_SOC_CON1, FIELD_PREP_WM16_CONST(BITS(8, 9), 3) },
->  };
->  
->  static const struct rockchip_grf_info rk3576_sysgrf __initconst = {
-> diff --git a/sound/soc/rockchip/rockchip_i2s_tdm.h b/sound/soc/rockchip/rockchip_i2s_tdm.h
-> index 0171e05ee886..eee6db372ee7 100644
-> --- a/sound/soc/rockchip/rockchip_i2s_tdm.h
-> +++ b/sound/soc/rockchip/rockchip_i2s_tdm.h
-> @@ -287,7 +287,7 @@ enum {
->  #define I2S_TDM_RXCR	(0x0034)
->  #define I2S_CLKDIV	(0x0038)
->  
-> -#define HIWORD_UPDATE(v, h, l)	(FIELD_PREP_WM16_CONST(GENMASK((h), (l)), (v)))
-> +#define HIWORD_UPDATE(v, h, l)	(FIELD_PREP_WM16_CONST(BITS((l), (h)), (v)))
->  
->  /* PX30 GRF CONFIGS */
->  #define PX30_I2S0_CLK_IN_SRC_FROM_TX		HIWORD_UPDATE(1, 13, 12)
-
--- 
-Jani Nikula, Intel
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgSHVnaCwKCk9uIE1vbiwgT2N0IDI3LCAyMDI1IGF0IDE6MDnigK9QTSBIdWdoIENvbGUtQmFr
+ZXIgPHNpZ21hcmlzQGdtYWlsLmNvbT4gd3JvdGU6Cj4KPiBGcmllbmRseUVMRUMgb2ZmZXJzIGFu
+IG9wdGlvbmFsIGhlYXRzaW5rIGFuZCBmYW4gYWRkb24gZm9yIHRoZSBOYW5vUEMtVDYKPiBhbmQg
+VDYgTFRTLiBBZGQgYW4gb3ZlcmxheSB3aGljaCBjYW4gYmUgYXBwbGllZCBpZiB0aGUgZmFuIGlz
+IGZpdHRlZCBhbmQKPiBjb25maWd1cmVzIHRoZSBmYW4gYXMgYW4gYWN0aXZlIGNvb2xpbmcgZGV2
+aWNlIGZvciB0aGUgU29DIHBhY2thZ2UuCj4KPiBTaWduZWQtb2ZmLWJ5OiBIdWdoIENvbGUtQmFr
+ZXIgPHNpZ21hcmlzQGdtYWlsLmNvbT4KPiAtLS0KPiBGcmllbmRseUVMRUMgaGVhdHNpbmsgd2l0
+aCBmYW4gYWRkb246Cj4gaHR0cHM6Ly93d3cuZnJpZW5kbHllbGVjLmNvbS9pbmRleC5waHA/cm91
+dGU9cHJvZHVjdC9wcm9kdWN0JnByb2R1Y3RfaWQ9MzA1Cj4gVmVuZG9yIERUIHdpdGggdHJpcCBw
+b2ludHMgYW5kIFBXTSBkdXR5IGN5Y2xlIHZhbHVlczoKPiBodHRwczovL2dpdGh1Yi5jb20vZnJp
+ZW5kbHlhcm0va2VybmVsLXJvY2tjaGlwL2Jsb2IvNDk0NDYwMjU0MGI2MmY1YWFkMTM5ZmU2MDJh
+NzZjZjdjMzE3NjEyOC9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OC1uYW5vcGk2
+LXJldjAxLmR0cyNMNzUtTDkwCgpJcyB0aGVyZSBhbnkgZG93bnNpZGUgdG8gZW5hYmxpbmcgdGhp
+cyB1bmNvbmRpdGlvbmFsbHkgaW4gdGhlIGJvYXJkCi5kdHM/IE92ZXJsYXlzIHJlcXVpcmUgbW9y
+ZSB1c2VyIGNvbmZpZ3VyYXRpb24sIGFuZCBub3QgYWxsCmJvb3Rsb2FkZXJzIHN1cHBvcnQgdGhl
+bSBkaXJlY3RseSAoZS5nLiBzeXN0ZW1kLWJvb3QgdXNlcnMgd291bGQKc3RydWdnbGUpLiBDb21w
+aWxpbmcgd2l0aCBvdmVybGF5cyBlbmFibGVkIGFsc28gbWFrZXMgLmR0YidzIGEgbG90Cmxhcmdl
+ciBkdWUgdG8gYWRkZWQgc3ltYm9scyBpbmZvcm1hdGlvbi4KCkJlc3QgcmVnYXJkcywKQWxleGV5
+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1y
+b2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpo
+dHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlw
+Cg==
