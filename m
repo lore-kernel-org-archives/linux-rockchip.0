@@ -4,48 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8593ECCF9EA
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Oct 2025 12:27:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A51DCCF9E5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Oct 2025 12:39:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/xU5nWy4PyoGz8WNYtmaPlRXnu6IB4EmOXjq6MHqhcU=; b=pZETguJAwmo4AT
-	N0lKoq7U5ZagBjQ4PUfvYKlC99p4FXRMjS8gU6eFZP+LqHhToR1lKIPIzStZ/kmP7wuk8LX8vFr6P
-	3iax/AI0YDxm3GK8h4wJlTPyFxocZRk30j1fp2wBEG0yAH8qjWc2DXlc8rCoWEvHcxJtNsm9a3mEe
-	g485NoNzmDXub+Uq4ohPjKV34r5HWIq55GtIT2ghy6u8wljm3n9F90EdL/9u14KovQuZhwCQv4OZ0
-	UWDXFEAwbw5GvBqPnLpex7/eLaA/2RTd0dhuSGQoU3ZjyPkxOzTeYar3Yna3ZzsbkfpqWepOX1fMs
-	0Avnk4bCaTRN1CRTA7UA==;
+	List-Owner; bh=tn3ZCWllTrqgdU1FceWW6PMuNgud2PUGm8Z/ZINrRYc=; b=q0zco2eE8vte4C
+	ueGD2VXHdUGe2/Ng2oCQ82GU7ke9uN7niy+eoMP8bhKyYgRlwVjmB5jAhKStRps+3TDE1YxHA1R1B
+	q55rGIQXeBgqxXYewBDssSCsPAfj73h6OcySd6XbsgEVzA/3jgtRP93y5nHH8UZ/WgVKiVRNOaVI4
+	Gwg1Scp7BtyorvXwfVCLPkkiNp5QkVskm5CjK81wfi3Vz2c4Ck+0wtPCB4TEqYpxXmpxkEE+Tlcas
+	4cSe4z8HCq6oSf2vBEmYrk2S26Kj0NZqKdsNMJd3e3QRr+0ThaB2ugjJxiTg+RqEXrDJJmuDn5asM
+	RkLb+ObS7Vf8hPCbmj9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDMJn-0000000DtQY-1y2E;
-	Mon, 27 Oct 2025 12:27:23 +0000
-Received: from sakura.naobsd.org ([160.16.200.221] helo=mail.naobsd.org)
+	id 1vDMVC-0000000Dupt-3d8c;
+	Mon, 27 Oct 2025 12:39:10 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDMJi-0000000DtLg-2TcN
-	for linux-rockchip@lists.infradead.org;
-	Mon, 27 Oct 2025 12:27:19 +0000
-Received: from secure.fukaumi.org ([10.0.0.2])
-	by mail.naobsd.org (8.14.4/8.14.4/Debian-4.1ubuntu1.1) with ESMTP id 59RCQuqa031809;
-	Mon, 27 Oct 2025 21:27:01 +0900
-From: FUKAUMI Naoki <naoki@radxa.com>
-To: heiko@sntech.de
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, jonas@kwiboo.se,
-        dsimic@manjaro.org, amadeus@jmu.edu.cn, devicetree@vger.kernel.org,
-        linux-rockchip@lists.infradead.org, FUKAUMI Naoki <naoki@radxa.com>
-Subject: [PATCH 3/5] dt-bindings: arm: rockchip: Fix description for Radxa CM3I
-Date: Mon, 27 Oct 2025 12:26:39 +0000
-Message-ID: <20251027122641.39396-4-naoki@radxa.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20251027122641.39396-1-naoki@radxa.com>
-References: <20251027122641.39396-1-naoki@radxa.com>
+	id 1vDMVA-0000000Dunp-0BPf;
+	Mon, 27 Oct 2025 12:39:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1761568743;
+	bh=ic23nmo9lgfOG3Z3HGilbKWoY/RcEgbzf3VPutvzob4=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=N6vRJVhaiEkHsez1pDm7qCVveefUoUXgEwiGf0Hxl/Jf0HRoQKn9Iz+MbCPsaNHi+
+	 T5w/5RNIA0FQL4WRZ+dafcRIwodzJtXuHu1V1EWkoea7alkWmyfDnPF/00R6D4AuFo
+	 qkZlGaWVPQOQVfrq85FPJtr4ARCt5g7hMvVo8vJ5aG+vokYy47F4V+SVwWQiwGBQOX
+	 8LyTUKxSk9RxiOXVfCjlJaHDVz8cU/2Yx5PO0dQmI0xcKalAaieCzpcfdSWJcKIOgo
+	 2l8VGGa6BttkTBLzoa4bOgekD2KXUpRrSikDo5xQrJ6MEDinPsIgiVu5DJ0KNlrP8v
+	 ggOd7pxr9D1hg==
+Received: from [10.40.0.100] (185-67-175-126.lampert.tv [185.67.175.126])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: mriesch)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6B23017E0927;
+	Mon, 27 Oct 2025 13:39:03 +0100 (CET)
+Message-ID: <1499f50e-aa4f-454a-b8b5-c9a21bef7f72@collabora.com>
+Date: Mon, 27 Oct 2025 13:39:02 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] arm64: dts: rockchip: orangepi-5: fix PCIe 3.3V regulator
+ voltage
+To: Mykola Kvach <xakep.amatop@gmail.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Cenk Uluisik <cenk.uluisik@googlemail.com>, Johan Jonker <jbx6244@gmail.com>
+Cc: Jimmy Hon <honyuenkwun@gmail.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Muhammed Efe Cetin <efectn@6tel.net>
+References: <20251024173830.49211-1-xakep.amatop@gmail.com>
+Content-Language: en-US
+From: Michael Riesch <michael.riesch@collabora.com>
+In-Reply-To: <20251024173830.49211-1-xakep.amatop@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251027_052718_850566_310353F5 
-X-CRM114-Status: UNSURE (   7.60  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251027_053908_266876_8525C604 
+X-CRM114-Status: GOOD (  15.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -62,30 +79,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-"CM3I" is the preferred name.
+Hi Mykola,
 
-Fixes: ae9fbe0b1f965 ("dt-bindings: arm: rockchip: add Radxa CM3I E25")
-Link: https://dl.radxa.com/cm3i/docs/hw/radxa_cm3i_product_brief.pdf
-Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
----
- Documentation/devicetree/bindings/arm/rockchip.yaml | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Thanks for your patch.
 
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-index 15153e08d3881..70be7966f4d3e 100644
---- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-+++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-@@ -895,7 +895,7 @@ properties:
-           - const: radxa,cm3
-           - const: rockchip,rk3566
- 
--      - description: Radxa CM3 Industrial
-+      - description: Radxa CM3I
-         items:
-           - enum:
-               - radxa,e25
--- 
-2.43.0
+Cc: Muhammed who is the author of commit b6bc755d806e
+
+On 10/24/25 19:38, Mykola Kvach wrote:
+> The vcc3v3_pcie20 fixed regulator powers the PCIe device-side 3.3V
+> rail for pcie2x1l2 via vpcie3v3-supply. The DTS mistakenly set its
+> regulator-min/max-microvolt to 1800000. Correct both to 3300000
+> to match the rail name, the PCIe/M.2 power requirement, and the
+> actual hardware wiring on Orange Pi 5.
+> 
+
+I guess a "Fixes" tag is in order here:
+
+Fixes: b6bc755d806e ("arm64: dts: rockchip: Add Orange Pi 5")
+
+And make sure to Cc: <stable@vger.kernel.org>
+
+> Signed-off-by: Mykola Kvach <xakep.amatop@gmail.com>
+
+The change itself makes sense to me.
+
+Reviewed-by: Michael Riesch <michael.riesch@collabora.com>
+
+Best regards,
+Michael
+
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts
+> index ad6d04793b0a..83b9b6645a1e 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts
+> @@ -14,8 +14,8 @@ vcc3v3_pcie20: regulator-vcc3v3-pcie20 {
+>  		gpios = <&gpio0 RK_PC5 GPIO_ACTIVE_HIGH>;
+>  		regulator-name = "vcc3v3_pcie20";
+>  		regulator-boot-on;
+> -		regulator-min-microvolt = <1800000>;
+> -		regulator-max-microvolt = <1800000>;
+> +		regulator-min-microvolt = <3300000>;
+> +		regulator-max-microvolt = <3300000>;
+>  		startup-delay-us = <50000>;
+>  		vin-supply = <&vcc5v0_sys>;
+>  	};
 
 
 _______________________________________________
