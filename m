@@ -4,71 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19B31CCF9EA
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Oct 2025 10:01:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCC24CCF9EA
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Oct 2025 11:39:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-ID:MIME-Version:To:Cc:
+	Date:References:In-Reply-To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=exdOmx8AwBDgen9CCXNZBAoULV0YCv0J+iQ+QFOgt8Y=; b=cajDYeaCCJW74k
-	JLMlwYjuCM5aFfO/gNmYDYITGuOWFEPB78EVebbN3dLmwa7oxh/XsLunGw/2BrAC5cZ6gUQf0yq+6
-	pFhwuBSnkys8zH/H59lH1bh5SlUnwuxyDm1tk4npNXH/bMK6lusESBeyWqwjoZd8rJIF2QMintZpn
-	qTxEGuiuXVZCOhpIz6ZCWhLIbxr4M//QpQReXDOvBgC7WtV99rktfkjQlSP8oNiYIv+3ndb4jQLlc
-	GgFlx4CqB2naKz8VPnskamS8AcDsHHglHy8LaLB8SH/eV2OV/MPADf9lk+e2qh/pmy3itf2JD2sdP
-	AJQ1EnB4xXv4SUOLzHSQ==;
+	List-Owner; bh=QlrSjSGkdIJSRv2OG+7NVxdRPIWI7ySBKC3gQLkeypc=; b=bF6vGuNEgXXHws
+	GbgYVNkpGRhUtdDmRnrUsswfv9iZPHItZ7bja9TQdCrxFLfZb9aXzQgy2OtwiWSxsYc3glM1H0X6N
+	VTD12MEKM/LwvsQmcLpDD08/yG03zJgfoROf9AFSdNt7e3TdUfJSGoTFTshYjFIXESwJJ0RTGcCGs
+	9KUvHkU5z1NPGFI3uvvsCuktUfJuosBF5T96m0MI9DN+4cgRQ9ZLy971BA7o06F2rFHfG6sVFjsIG
+	Mra49OKSFAXUOgmtH7sfxG5s9rmbPZfxpDFfTlem15rAZ3KGMhF5WouaOXHUKWBpV6CV9aE8cWey9
+	riT24Tr1rJ1TOSjJ5dlA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDK1x-0000000DbtP-24W4;
-	Mon, 27 Oct 2025 10:00:49 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vDLYp-0000000DmXM-0nn7;
+	Mon, 27 Oct 2025 11:38:51 +0000
+Received: from mail1.manjaro.org ([142.132.176.110])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDK1u-0000000Dbsm-3azl
-	for linux-rockchip@lists.infradead.org;
-	Mon, 27 Oct 2025 10:00:48 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 8488E440F0;
-	Mon, 27 Oct 2025 10:00:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 630C5C4CEF1;
-	Mon, 27 Oct 2025 10:00:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1761559246;
-	bh=g9zJBVbnGEA4HG5ooeAzLqX41v1JBzQYQqje6z0ZFx0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=FjOEetGk9z+CDj6SBDLC3q333GF293fQKVJYDxwd4mFRcpbAl5zochz9FDKgGXH41
-	 C5NRL9OOCswq2yBRA6VHx3wscWweZ5DCaKaPIH+HHx/G4CaumZAeuXnNr02lCnLaNt
-	 0u3Q6m6HIXhBzojPGbamjXnF6syyixBeTP2ELdZIXKF57uNaQ4j+zkFqL2yE/ntjp9
-	 YuDgQWShi2tiOWYKMe9d7vS/L8nUsx7hVtEztKXt23ww/a9+ruGWrVBgoz+xQ8oMH/
-	 0bpfLGMt0Aw25SodjvjPRL/V98oy3OoGYxOsN+ts241fDcOxW4UNcSoWjMtbFF1lEx
-	 Ykf+RTgh70YQQ==
-Received: from johan by xi.lan with local (Exim 4.98.2)
-	(envelope-from <johan@kernel.org>)
-	id 1vDK1w-000000006Yg-38Bu;
-	Mon, 27 Oct 2025 11:00:49 +0100
-Date: Mon, 27 Oct 2025 11:00:48 +0100
-From: Johan Hovold <johan@kernel.org>
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: linux-pci@vger.kernel.org,
-	Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>,
-	Christian Zigotzky <chzigotzky@xenosoft.de>,
-	FUKAUMI Naoki <naoki@radxa.com>,
-	Herve Codina <herve.codina@bootlin.com>,
-	Diederik de Haas <diederik@cknow-tech.com>,
-	Dragan Simic <dsimic@manjaro.org>, linuxppc-dev@lists.ozlabs.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Shawn Lin <shawn.lin@rock-chips.com>, Frank Li <Frank.li@nxp.com>
-Subject: Re: [PATCH] PCI/ASPM: Enable only L0s and L1 for devicetree platforms
-Message-ID: <aP9C0H_2XVk6MiLV@hovoldconsulting.com>
-References: <aPuZQRaTN2tAwkb5@hovoldconsulting.com>
- <20251024203924.GA1361677@bhelgaas>
+	id 1vDLYl-0000000DmWE-2X5l;
+	Mon, 27 Oct 2025 11:38:48 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPA id E89CC40D0D;
+	Mon, 27 Oct 2025 12:38:42 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=dkim;
+	t=1761565124; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:in-reply-to:references;
+	bh=Pp+cdt5NUUAp/RayY/UAf6z47hnHubbe0RqQqLbK1fg=;
+	b=JZcT7et4yPf/J0RdIhCYH2lB1UyH+WU6CUzpWPc6n0kWLt471Tt4zM9yUi1AE5Xi4VKwkC
+	HSXLev3iMEqkk/raGfqRL11mYQPEADAfaj3BehnvwKmJ/6Y3Q7ath1yHTX975Gy90Dqp2X
+	zTj2GRvGCqV75VyrG7cTJP1bRIFTiTpM5xX7aQlnkrTYOzdFFxzW1HHW8wYSOBtOd6Go7K
+	O5meD131epz7A4ykMfSL9Nr6J1jfQCwwVcsUrohDfENyno0uCpiywCh96zDwiu2OXBBgv9
+	yC4+gWxqRjuVSti29HyeMsnLb76/nCruVcaLuhxlSA6qC9sRt60N6OxOFQ0suw==
+From: "Dragan Simic" <dsimic@manjaro.org>
+In-Reply-To: <DDSFVM1TXN8C.3JNX2M8XX04IF@cknow-tech.com>
+References: <20251026153805.107774-1-diederik@cknow-tech.com> <DDSFVM1TXN8C.3JNX2M8XX04IF@cknow-tech.com>
+Date: Mon, 27 Oct 2025 12:38:42 +0100
+Cc: "Rob Herring" <robh@kernel.org>, "Krzysztof Kozlowski" <krzk+dt@kernel.org>, "Conor Dooley" <conor+dt@kernel.org>, "Heiko Stuebner" <heiko@sntech.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, "Johan Jonker" <jbx6244@gmail.com>
+To: "Diederik de Haas" <diederik@cknow-tech.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20251024203924.GA1361677@bhelgaas>
+Message-ID: <d190d649-acd5-4202-4a7a-94b9ada67b17@manjaro.org>
+Subject: =?utf-8?q?Re=3A?= [PATCH] =?utf-8?q?arm64=3A?==?utf-8?q?_dts=3A?=
+ =?utf-8?q?_rockchip=3A?= Harmonize regulator formatting for Pine64 rk3566 
+ devices
+User-Agent: SOGoMail 5.12.3
+X-Last-TLS-Session-Version: None
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251027_030046_937929_2A1BC41C 
-X-CRM114-Status: GOOD (  27.13  )
+X-CRM114-CacheID: sfid-20251027_043847_870952_864235FC 
+X-CRM114-Status: GOOD (  17.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,59 +69,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Oct 24, 2025 at 03:39:24PM -0500, Bjorn Helgaas wrote:
-> On Fri, Oct 24, 2025 at 05:20:33PM +0200, Johan Hovold wrote:
-> > On Fri, Oct 24, 2025 at 05:12:38PM +0200, Johan Hovold wrote:
+Hello Diederik,
 
-> > > Note that this will regress ASPM on Qualcomm platforms further by
-> > > disabling L1SS for devices that do not use pwrctrl (e.g. NVMe). ASPM
-> > > with pwrctrl is already broken since 6.15. [1]
-> > 
-> > Actually, the 6.15 regression was fixed in 6.18-rc1 by the offending
-> > commit, but pwrctrl devices will now also regress again.
-> > 
-> > > Reverting also a729c1664619 ("PCI: qcom: Remove custom ASPM enablement
-> > > code") should avoid the new regression until a proper fix for the 6.15
-> > > regression is in place.
+On Sunday, October 26, 2025 18:44 CET, "Diederik de Haas" <diederik@cknow-tech.com> wrote:
+> On Sun Oct 26, 2025 at 4:37 PM CET, Diederik de Haas wrote:
+> > The regulator node properties in Pine64 rk3566 devices were formatted
+> > rather inconsistently. To name a few:
+> > - 'name' was sometimes put at the top of the list, while at other times
+> >   it was (mostly) sorted in alphabetical order
+> > - 'always-on' and 'boot-on' were sometimes at the top of the list,
+> >   sometimes not
+> > - 'state-mem' nodes sometimes had a preceding blank line, as they
+> >   should, but sometimes not
+> > - other properties seem to have been added to the end of the list, not
+> >   in their alphabetical/natural order
+> >
+> > So harmonize the formatting by making all properties sorted
+> > alphabetically/naturally. And harmonize the formatting of the
+> > 'state-mem' nodes so they all have a preceding blank line. While at it,
+> > also fix 2 incorrectly indented nodes.
+> >
+> > No functional changes.
 > 
-> Help me think through this.  I just sent a pull request [2] that
-> includes df5192d9bb0e ("PCI/ASPM: Enable only L0s and L1 for
-> devicetree platforms").  If all goes well, v6.18-rc3 will enable L0s
-> and L1 (but not L1SS) on Qualcomm platforms.
-> 
-> IIUC, if we then revert a729c1664619 ("PCI: qcom: Remove custom ASPM
-> enablement code"), it will enable L1SS again, but since this is done
-> in a dw_pcie_host_ops .post_init() hook, L1SS will only be enabled for
-> devices powered on at qcom-pcie probe time.  It will *not* be enabled
-> for pwrctrl devices because .post_init() was run when those devices
-> were powered off.
+> I just found some additional ones.
+> If these changes are considered OK (in principle), then I'll send a v2
+> at some point.
 
-Correct.
+Thanks for this patch!  FWIW, I think that SoC-wide DT cleanups
+and unifications such as this are nice and safe to do, so my vote
+goes towards the v2. :)
 
-> I think this is the same as in v6.17.  v6.18-rc1 enabled L1SS for
-> everything, including pwrctrl devices, because it was done in the PCI
-> enumeration path, not the host controller probe path.  I think that
-> enumeration is the right place to do this, but we need to figure out
-> how to do it in a generic way.  At a minimum, we need to know that
-> CLKREQ# is supported, and some platforms like dw-rockchip also need
-> device-specific configuration [3].
-> 
-> Bottom line, I think we need to revert a729c1664619 for v6.18 to get
-> all ASPM states including L1SS enabled on Qualcomm platforms for
-> non-pwrctrl devices.  I'll post a patch for this.
+> > Signed-off-by: Diederik de Haas <diederik@cknow-tech.com>
+> > ---
+> >  .../boot/dts/rockchip/rk3566-pinenote.dtsi    | 52 +++++++++----------
+> >  .../boot/dts/rockchip/rk3566-pinetab2.dtsi    | 29 ++++++++---
+> >  .../boot/dts/rockchip/rk3566-quartz64-a.dts   | 51 +++++++++++-------
+> >  .../boot/dts/rockchip/rk3566-quartz64-b.dts   | 52 ++++++++++---------
+> >  .../dts/rockchip/rk3566-soquartz-blade.dts    |  6 +--
+> >  .../boot/dts/rockchip/rk3566-soquartz-cm4.dts |  6 +--
+> >  .../dts/rockchip/rk3566-soquartz-model-a.dts  | 10 ++--
+> >  .../boot/dts/rockchip/rk3566-soquartz.dtsi    | 43 ++++++++++-----
+> >  8 files changed, 148 insertions(+), 101 deletions(-)
 
-Right, that would at least restore the 6.17 state of things with respect
-to Qualcomm machines.
- 
-> Then try to figure out how to make this work for pwrctrl devices for
-> v6.19.  Does this sound right?
-
-Yes, unless you can come up with a simple way to enable L1SS during
-enumeration on Qualcomm platforms, for example, using a driver callback
-that returns true for platforms using the 1.9.0 ops to indicate that
-L1SS is supported. That should address also the 6.15 pwrctrl regression.
-
-Johan
 
 _______________________________________________
 Linux-rockchip mailing list
