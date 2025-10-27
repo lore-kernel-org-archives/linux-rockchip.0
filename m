@@ -4,59 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DB42CCF9EB
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Oct 2025 16:47:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBC2ACCF9EB
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Oct 2025 17:13:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IKkrM1uBJAj4cZImm3H/rD8sosY+cm/1li7HAtjSj1o=; b=p9wg4kYLd4LWMov0A4buUgFpO3
-	2OPxXPQRVq/NB/1tnFOpArNWaZm/FYfbZK4L15/CPD1fIbo3gehuU6/UztigCwJGL/wWare/6GML9
-	2qp9ATRPhxsBPTBZ0tUu/3+MwH98XOFiWKz7UZJLtU82MwOLjgzwBuekB6ohandu3/SV0CGcIhF0p
-	3demPwBKiDoYFGzNybkElEorHKF5lH4v33Sgjj0Wr7JJgA0RgtPNI9ijC2NVhJ4Vd/ZGFlR1Oif2I
-	Ls/w89dIgTlVHVsoJ7shyT04vwtMlVABefYhm3AQcQzwqTFXcTkTMJttq+8ASXuxFXJ8Q97MnNz30
-	LTbsem7Q==;
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=qHdXLTGGXM77hxWFFWwM6tN1PDYDLnhjfWBr0deRYs8=; b=IWeCYbcSBR9MR+
+	O2RyLSpj4JKSwFXVEudUMkzCrU//9UMgt9sJAF5/kP1iAvSjMqDML318zXq4bd+6JzhVF7WAZOTIy
+	7I2lLCCA3G8GKfNPfC8L4sXYhbn3yBwBu5NMWPq6eL4Net20mpnNkDPFiGWAlsHs932TKNclm/poo
+	j6p80p/AWNHQFLsrdtOQVUOlqhSg1mszFvsYi98V8h2MdD10weVBhr4RuB+mE3cI8n/M+PLJhbaiE
+	XQYI+PRVLou+p9BR3HZ3u5nSPyXng6kpovPIqKUmO6rQGvPv8lBNR5pcPyO/5HRJhuBxmSYg/H/IY
+	uFe5NGlRoV3MCwJb2eOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDQNM-0000000EMRo-0azZ;
-	Mon, 27 Oct 2025 16:47:20 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vDQm6-0000000EPP4-26BI;
+	Mon, 27 Oct 2025 17:12:54 +0000
+Received: from mo4-p01-ob.smtp.rzone.de ([81.169.146.166])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDQNK-0000000EMQp-2fLs;
-	Mon, 27 Oct 2025 16:47:18 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 5B3346041B;
-	Mon, 27 Oct 2025 16:47:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 37CE3C113D0;
-	Mon, 27 Oct 2025 16:47:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1761583637;
-	bh=32yOyFVynkfVIvnGVgJ92i0Ip1krG1hpIICP4cn0SOY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=nIRBPzybk9NCdARzw23obr4pZMzwR/6XNdofj1qMoexG/4DU8IIk2+PM8X5IDn/gG
-	 /y1QthXqj9X6dblAsvAyIqeUiVOMpdrDk5BKx96RXacgKJFftP5+Z13HaYlb04F6gq
-	 SrY6R7NHuQFVjki4d6xx9Wy63ZuftiRH6jf5zyzitCSlTM24JBfK9VMx58eDCqgeEb
-	 odSzeccOojfaQ6ZC5gt0zyFnw20uNcDtwcX1cA3ifbaBMmhHwEa5G4hymHgg4yLhdk
-	 2hNg51IkIJRIObKlWkpVtrQwI0MckKkOLBzJJR5Vw9swl3jZwaB3lIPodHTno/fNvH
-	 B/GM2H8mSaPyw==
-Date: Mon, 27 Oct 2025 16:47:11 +0000
-From: Conor Dooley <conor@kernel.org>
-To: Elaine Zhang <zhangqing@rock-chips.com>
-Cc: mturquette@baylibre.com, sboyd@kernel.org, sugar.zhang@rock-chips.com,
-	heiko@sntech.de, robh@kernel.org, krzysztof.kozlowski+dt@linaro.org,
-	conor+dt@kernel.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	huangtao@rock-chips.com, finley.xiao@rock-chips.com
-Subject: Re: [PATCH v5 6/7] dt-bindings: clock: rockchip: Add RK3506 clock
- and reset unit
-Message-ID: <20251027-await-wound-0aee2d20e0a3@spud>
-References: <20251027084147.4148739-1-zhangqing@rock-chips.com>
- <20251027084147.4148739-7-zhangqing@rock-chips.com>
+	id 1vDQm3-0000000EPOQ-0fwD
+	for linux-rockchip@lists.infradead.org;
+	Mon, 27 Oct 2025 17:12:52 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1761585147; cv=none;
+    d=strato.com; s=strato-dkim-0002;
+    b=iSFk4OiuvL8e8Pzfi5fiJdD+jKLneJKnfcb8lL0E4JI+uUuy1Dc59tRlf7grT56CJT
+    hlPyr8x6uZ9wvbSOB80yDuVVNpWPf4RkOI4kEHnhoidJqSTf6lcfnpf2ukt+tGQxLoYD
+    jeZHGQAPVFmGHiRKMmDsblVWgAJyx7vw4VSzqeR/pQRqrn7uYmmbftwgSFZrdv8iWXVC
+    q9iagLSBh/HqG87tvPHzK1HxVjARZXcw2DcBJRUVGEqqsMv5neueDvzNNjkuNxU9uQDK
+    nLmu46nl0yqeqNQ2r84soFghuhnQVwfpksSAIrk3BdwpuS+oSO4KhL47VjNfkgFYLOcZ
+    W65A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; t=1761585147;
+    s=strato-dkim-0002; d=strato.com;
+    h=In-Reply-To:From:References:Cc:To:Subject:Date:Message-ID:Cc:Date:
+    From:Subject:Sender;
+    bh=13Eh27o4UqsOQ34xi8S2wPYjOon2zusfqlo4MpiYA2k=;
+    b=cc/uHztL9qfmFGxvFRvXRx9jH9UoYtEnUjx4QioYc9Nt13EoyGJqXMHwJhZW/c/JBy
+    X7ZHV8VNKQOezLsU6FCNK3UwxfL2RYp78dhXRQM4/hYjbZ+JyEQoqN721lE0Y0ZAG8rn
+    93yzMW8gXVidoAQpQ03pbFb94doSwTvzsKT+lmBSa7jdOFJrAAMliXK58sJ4BlL7yLxS
+    B2jXtAnT37s5BV0a8Rq+F5K4CavuJubSleN7dQC/3g33mRoSfFLweLgrAiCC9mH/FZTj
+    Dz2CY4Xdpd4qVm8kDuOxT20SSQJjDWApdzGH5m/o+6JwVR3tx6C/x8A1PG6SQDeeHJej
+    hrOA==
+ARC-Authentication-Results: i=1; strato.com;
+    arc=none;
+    dkim=none
+X-RZG-CLASS-ID: mo01
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; t=1761585147;
+    s=strato-dkim-0002; d=xenosoft.de;
+    h=In-Reply-To:From:References:Cc:To:Subject:Date:Message-ID:Cc:Date:
+    From:Subject:Sender;
+    bh=13Eh27o4UqsOQ34xi8S2wPYjOon2zusfqlo4MpiYA2k=;
+    b=SL0hpBWp9K5XPn08SzhMWLoaM3HAMUicwwKckYD30tB43wSmf3e8dn4uXATn4kLlPh
+    RZFVde1tdkEbWD+9/aFM65RhN1Oqlqj05eOTEj9gSBl/M98fgVd+6XZsb0Zt1ThPhoCQ
+    GUh74HjFHdCj0MPQH9fmMCbFi4+qh+dWi/rzHqyXWIlf++BrJwg7nn0b+X6/cvMo865i
+    IrQAEjPI50xpcmTl6TnDQTjpmFXwN9hw0JZ7DwMombbaCRVOjr0+IL53zlOMl2dD7XRw
+    uFWbnY0UPYH0sfXJE1+4QJ6bxd7tlG2hHGjlQL9JBnyyEtbYDgBh9tMmJyoaqnKLVawI
+    Y7VQ==
+X-RZG-AUTH: ":L2QefEenb+UdBJSdRCXu93KJ1bmSGnhMdmOod1DhGN0rBVhd9dFr4thIFiqT9BURIy+l7Rng"
+Received: from [192.168.178.48]
+    by smtp.strato.de (RZmta 53.4.2 DYNA|AUTH)
+    with ESMTPSA id e2886619RHCPBv7
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256 bits))
+	(Client did not present a certificate);
+    Mon, 27 Oct 2025 18:12:25 +0100 (CET)
+Message-ID: <3aa95b26-7801-476e-840f-5976b0ee11c1@xenosoft.de>
+Date: Mon, 27 Oct 2025 18:12:24 +0100
 MIME-Version: 1.0
-In-Reply-To: <20251027084147.4148739-7-zhangqing@rock-chips.com>
+User-Agent: Mozilla Thunderbird
+Subject: [PATCH] PCI/ASPM: Enable only L0s and L1 for devicetree platforms
+To: Bjorn Helgaas <helgaas@kernel.org>, Johan Hovold <johan@kernel.org>
+Cc: linux-pci@vger.kernel.org,
+ Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>,
+ FUKAUMI Naoki <naoki@radxa.com>, Herve Codina <herve.codina@bootlin.com>,
+ Diederik de Haas <diederik@cknow-tech.com>, Dragan Simic
+ <dsimic@manjaro.org>, linuxppc-dev@lists.ozlabs.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Bjorn Helgaas <bhelgaas@google.com>, Shawn Lin <shawn.lin@rock-chips.com>,
+ Frank Li <Frank.li@nxp.com>, "R.T.Dickinson" <rtd2@xtra.co.nz>,
+ mad skateman <madskateman@gmail.com>, hypexed@yahoo.com.au
+References: <20251024203924.GA1361677@bhelgaas>
+Content-Language: de-DE
+From: Christian Zigotzky <chzigotzky@xenosoft.de>
+In-Reply-To: <20251024203924.GA1361677@bhelgaas>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251027_101251_418442_8AF63542 
+X-CRM114-Status: UNSURE (   4.90  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,117 +102,25 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3120319122154130242=="
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi All,
 
---===============3120319122154130242==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="eSWQ1Ctgvp2pmYfz"
-Content-Disposition: inline
+I activated CONFIG_PCIEASPM and CONFIG_PCIEASPM_DEFAULT again for the 
+RC3 of kernel 6.18. Unfortunately my AMD Radeon HD6870 doesn't work with 
+the latest patches.
 
+But that doesn't matter because we disable the above kernel options by 
+default. We don't need power management for PCI Express because of boot 
+issues and performance issues.
 
---eSWQ1Ctgvp2pmYfz
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Mon, Oct 27, 2025 at 04:41:46PM +0800, Elaine Zhang wrote:
-> From: Finley Xiao <finley.xiao@rock-chips.com>
->=20
-> Add device tree bindings for clock and reset unit on RK3506 SoC.
-> Add clock and reset IDs for RK3506 SoC.
->=20
-> Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
-> ---
->  .../bindings/clock/rockchip,rk3506-cru.yaml   |  51 ++++
->  .../dt-bindings/clock/rockchip,rk3506-cru.h   | 285 ++++++++++++++++++
->  .../dt-bindings/reset/rockchip,rk3506-cru.h   | 211 +++++++++++++
->  3 files changed, 547 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk35=
-06-cru.yaml
->  create mode 100644 include/dt-bindings/clock/rockchip,rk3506-cru.h
->  create mode 100644 include/dt-bindings/reset/rockchip,rk3506-cru.h
->=20
-> diff --git a/Documentation/devicetree/bindings/clock/rockchip,rk3506-cru.=
-yaml b/Documentation/devicetree/bindings/clock/rockchip,rk3506-cru.yaml
-> new file mode 100644
-> index 000000000000..ecb5fa497747
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/clock/rockchip,rk3506-cru.yaml
-> @@ -0,0 +1,51 @@
-> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/clock/rockchip,rk3506-cru.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Rockchip RK3506 Clock and Reset Unit (CRU)
-> +
-> +maintainers:
-> +  - Finley Xiao <finley.xiao@rock-chips.com>
-> +  - Heiko Stuebner <heiko@sntech.de>
-> +
-> +description: |
-> +  The RK3506 CRU generates the clock and also implements reset for SoC
-> +  peripherals.
-> +
-> +properties:
-> +  compatible:
-> +    const: rockchip,rk3506-cru
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  "#clock-cells":
-> +    const: 1
-> +
-> +  "#reset-cells":
-> +    const: 1
-> +
-> +  clocks:
-> +    maxItems: 1
-
-Can you explain somewhere why the input clock is not required?
-Feels like it really should be required, if it is what the output clocks
-are generated from, but I can also see why it might be optional either.
-pw-bot: changes-requested
-
-> +
-> +  clock-names:
-> +    const: xin24m
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - "#clock-cells"
-> +  - "#reset-cells"
-
---eSWQ1Ctgvp2pmYfz
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaP+iDwAKCRB4tDGHoIJi
-0o54AP98UXzeSXPMJY9coqV6N4MEVJH9zwk04uZhVRES8i7hMgEAysyNVT4D/cF6
-jLYYWNYeQbkblle37SMJSItJT554Rgc=
-=vAfi
------END PGP SIGNATURE-----
-
---eSWQ1Ctgvp2pmYfz--
-
-
---===============3120319122154130242==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Cheers,
+Christian
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============3120319122154130242==--
-
