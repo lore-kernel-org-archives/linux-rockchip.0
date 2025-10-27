@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A07A6CCF9EB
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Oct 2025 19:06:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C863FCCF9E5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Oct 2025 19:07:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7oHWEY8ZOcw5Bu9o05DlPpaiy8L/7MLtM/GhPafM07I=; b=pVGUg+pMPqnTGd
-	8Kci9rrrRKjGaYDvko8H1XCwHDTLnD9v9S6/DGD5YNGJqDnufEa9+0rCWQHzDgzS7W1x4Kg+1U9SX
-	fI58sEnctjcd4c0MfK9ThK7S1l5E6RXkY9xh2HWQugRb2LJnarXW7d1yqCsnYR/pDx6kzOc1wyics
-	A5W7xIMp8SnY7RFjqmxy2RSKM8QuRz6Zvmd9Ce4Vt8AjJ4yrmSJuhcIMCYFGuNaCmIwCl22dvabCU
-	xptfCJiwoy7ejnkaFJ/tzp/ct8fRNZtZEcRuADmMQsbwE32LMk237V5/0T52WQlTp4aO+lwzy+UXS
-	72h1hdBp9DjLZXKDPUFw==;
+	List-Owner; bh=h+EaMnmX0FyQzeKvPsd0mc1sdnHfccMjcV3xIH17P+U=; b=CPtHyY2boon4tV
+	91KLTVQBzvoViXELWf7b0ZEWeOuJV8jZOXP1TsyZ/Uf3nt7e94nbKfQpBss5XoJeZDTh8I+3X5oOF
+	ZxEJWpQ4WvAYGwViTtipoucHznUOqdloykwjj3KcdBU5JO65fV7hAlw+wvFk2oA+U4Fep1yv6gcDd
+	asbe56gqrHeALNpBcRf5qJWll6cRcT4jEeI5ep5MbnBjtjSrJvXGW3GZgOi6FYcOE2rZgcIX1WtHE
+	IrxNOnTOrPP8/mtRdbiPaGoXW1/fNLPt5Q3YyrvhnSAyqMBL1CfKdXaYTxHA4VTv2zQOQJVyBJh1A
+	4Aqw9JOl+CcxoHXH6T1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDSYN-0000000EcaT-0A95;
-	Mon, 27 Oct 2025 19:06:51 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vDSYj-0000000EceD-1NXC;
+	Mon, 27 Oct 2025 19:07:13 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDSYL-0000000Eca7-1RKx
+	id 1vDSYh-0000000Ecdm-20Qu
 	for linux-rockchip@lists.infradead.org;
-	Mon, 27 Oct 2025 19:06:49 +0000
+	Mon, 27 Oct 2025 19:07:12 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id DFEB361D89;
-	Mon, 27 Oct 2025 19:06:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 31CC9C113D0;
-	Mon, 27 Oct 2025 19:06:44 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 29397417D8;
+	Mon, 27 Oct 2025 19:07:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B2FC1C4CEF1;
+	Mon, 27 Oct 2025 19:07:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1761592007;
-	bh=D/9XsIBeoxIFr9UfD2EQDPVl6fjaF7KeJMBNnNBxbvQ=;
+	s=k20201202; t=1761592031;
+	bh=L/2PtyUGLfc1+YJDY0KYwbAJgALsbugaeRaPDyOGQCU=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=tVQWg+PZ03sF+xXzus5yL3dyp4XolTqktg0ZN3cgHq/l+8Y3N6b2byVNFSjj31kMO
-	 nWs7+vIAdF579bAMYXUfoRSgqBV8SWSnH2xYbiuEwUR2X01fv4BPD67saLkJlvUO/o
-	 mWX39Gwj79CxUDw+c+nYUuLpUR/kwbrMbU1BVQl8oxlZOQhYFZkwOcCcvFXKNqPt67
-	 GKCXIEPD7JrE8Itd7Fe1ucOaCfjHfVLQ8+/WtzhxI7sTsN//xRsqaxpjsdNNA7/1Ek
-	 4mDb5d1DxAforSN41gxawtN5pFnbrZpNcEdG+Y1kN9O6UT9Czm0zSgScPfYrFBdvKt
-	 WqF3FTg0hzssw==
-Message-ID: <94d7d8aa-1481-4c50-9c4e-33f2a4e2d9a8@kernel.org>
-Date: Mon, 27 Oct 2025 20:06:43 +0100
+	b=aoz7O7AV7hk/DM6GNdqV1kfP+ormjDO7Ati5zDPhptQsC3pDPmBXrJKmF2pysQxnY
+	 hbGwke0PQMza0Co95v5oDoCrq5y1tJ529D5ow7E3SGYQ6mwZ1vrwQtRl7F+fnZGV1w
+	 bdT1KlgyIo8abPtiftCFVpmJ7jz8LZUHLvoTjG7GUJRYrCwYG+HrHkS1EiRaWB5jA6
+	 0581eszhKof/Uydy88c8dxVDfqCVI6bHAgZbDiOuXkrLPsNnlwOFv61/Q+39egwYgk
+	 0gqoUJMGcr3Vn6MB4e9wJorZhTYfkiBV/pWXrC30OA/WPkMe6NuESgQt1v+QD0thft
+	 wDewIrjVDtGFQ==
+Message-ID: <bd746117-910a-4874-8248-98d3ab6080b4@kernel.org>
+Date: Mon, 27 Oct 2025 20:07:07 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/5] dt-bindings: arm: rockchip: Fix description for Radxa
- ZERO 3E/3W
+Subject: Re: [PATCH 3/5] dt-bindings: arm: rockchip: Fix description for Radxa
+ CM3I
 To: FUKAUMI Naoki <naoki@radxa.com>, heiko@sntech.de
 Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
  jonas@kwiboo.se, dsimic@manjaro.org, amadeus@jmu.edu.cn,
  devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
 References: <20251027122641.39396-1-naoki@radxa.com>
- <20251027122641.39396-3-naoki@radxa.com>
+ <20251027122641.39396-4-naoki@radxa.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -99,7 +99,11 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  jWt87ecuHlpL3uuQ0ZZNWqHgZoQLXoqC2ZV5KrtKWb/jyiFX/sxSrodALf0zf+tfHv0FZWT2
  zHjUqd0t4njD/UOsuIMOQn4Ig0SdivYPfZukb5cdasKJukG1NOpbW7yRNivaCnfZz6dTawXw
  XRIV/KDsHQiyVxKvN73bThKhONkcX2LWuD928tAR6XMM2G5ovxLe09vuOzzfTWQDsm++9UKF a/A=
-In-Reply-To: <20251027122641.39396-3-naoki@radxa.com>
+In-Reply-To: <20251027122641.39396-4-naoki@radxa.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251027_120711_560949_6ECF6AD7 
+X-CRM114-Status: UNSURE (   4.69  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,12 +121,15 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 27/10/2025 13:26, FUKAUMI Naoki wrote:
-> "3E" precedes "3W" in alphanumeric order. Fix this.
-> 
-> Fixes: ad986e45ada99 ("dt-bindings: arm: rockchip: Add Radxa ZERO 3W/3E")
+> "CM3I" is the preferred name.
 
-Nothing to fix. Please invent some sort of bugs according to
-non-existing rules.
+According to whom? I would prefer previous, so for sure:
+
+> 
+> Fixes: ae9fbe0b1f965 ("dt-bindings: arm: rockchip: add Radxa CM3I E25")
+
+is not true.
+
 
 Best regards,
 Krzysztof
