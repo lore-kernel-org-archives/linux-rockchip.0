@@ -4,50 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6EF7CCF9EB
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Oct 2025 22:27:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9F04CCF9EA
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Oct 2025 22:27:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lfklVxXwbccyushierJzJfOPxTDpHH9Xa22ZiMSYKSs=; b=aVh3bM6qhbSjGH
-	Dq1QPVdUCo+wXsg6ee9utPA0wZj4PDPUwfwmk8MxVHF3bq0MR9zwRpQszIrtM7wyKETyhcSRCRgep
-	5VJyCtrg/PnWHUNWSEapLWTOcOZOgALVgO907qzYrOFE5L9O+iC0EgKtcvWIElFnEZaY8m8fXVdne
-	+AwAOIeNkEX1IGFJPlD6d/XQabbBvm3GWOOEVXq4hBuShfGHWsa6b7Icaz5SJxMHIhT2oAzyKPNNX
-	CTyQlpGMl++UU+TqXVjxNJ6LX8mkRKh90SKA2CMm3mDi5bJJ0l/q5kMGrvznwz4Asp3KX9eGTpbOC
-	VPeCMSeuSoMhigvMGSxg==;
+	List-Owner; bh=2IrYKc2YVw1N/8JpT6L5wRyrFk6GjlqPfLayqYZL8uQ=; b=m7xHSlngETnJyY
+	H4fQLCAIRFEtjLIhvM01opfH5GlzjFYhU9js+o1wSN2+5N7Q+0kqGCA4/70012PAMVNLkFh5j2nOu
+	jGkmfikuPtD+4qv/VkLs3H9N1IVe5fstoIVs0chIzCb5DwFORhkZO48BMxXhz/2gFPAxJurMd8ska
+	JbKlITbo0L+tbG/p6oU7Rt7Tn/M/dnP8o0xtYBZmwLzWjQ4CtGWNqpa1rue4YaeJ1xygnTdVfWEOs
+	+22p6QRQUo874uvaBhrOzxP0qeD5/2M6g3bxOor1LeKe07NAVCrxJrTXQGaO9e5W5sI1jFm4XKNKI
+	pxFkJV/akgX2alQMo9xw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDVgB-0000000ErwF-1rUd;
-	Mon, 27 Oct 2025 22:27:07 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1vDVgQ-0000000Es52-3SYK;
+	Mon, 27 Oct 2025 22:27:22 +0000
+Received: from smtpbgjp3.qq.com ([54.92.39.34])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDVg4-0000000ErrU-3Y4o;
-	Mon, 27 Oct 2025 22:27:02 +0000
-Received: from pendragon.ideasonboard.com (82-203-161-16.bb.dnainternet.fi [82.203.161.16])
-	by perceval.ideasonboard.com (Postfix) with UTF8SMTPSA id 5CD0B19A2;
-	Mon, 27 Oct 2025 23:25:10 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1761603910;
-	bh=Tl8MZUMZp7jla1zpWzpw3mApleIVFgmxEnRsDh+ZjEs=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=T1QJEk/H1QNweG/LbaYxMNhJXFEtps0BFWR83uHG4Cnha3p3/l0iK5DRdairvSbwQ
-	 cPi7zb/RyzoQajf1Wl3NKyOGzAfGuC0KFARwJocO6HGiTg7wCukmqEC1cDt3ghYvVX
-	 FNx7tycfue2/Pv2zzHBjMWpzUUNhU7Gavz7LVYL4=
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: dri-devel@lists.freedesktop.org
-Subject: [PATCH v3 2/2] drm/rockchip: dw_hdmi_qp: Fixup usage of enable_gpio member in main struct
-Date: Tue, 28 Oct 2025 00:26:41 +0200
-Message-ID: <20251027222641.25066-3-laurent.pinchart@ideasonboard.com>
-X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20251027222641.25066-1-laurent.pinchart@ideasonboard.com>
-References: <20251027222641.25066-1-laurent.pinchart@ideasonboard.com>
+	id 1vDVgO-0000000Err4-02rz
+	for linux-rockchip@lists.infradead.org;
+	Mon, 27 Oct 2025 22:27:21 +0000
+X-QQ-mid: zesmtpip2t1761603997t8c6ab6ff
+X-QQ-Originating-IP: lA5oyn2I9HILxI+p/3NZ4NIfvveAvyDEiKBVdsi7o1Q=
+Received: from [IPV6:240f:10b:7440:1:27fe:5767 ( [localhost])
+	by bizesmtp.qq.com (ESMTP) with 
+	id ; Tue, 28 Oct 2025 06:26:31 +0800 (CST)
+X-QQ-SSF: 0000000000000000000000000000000
+X-QQ-GoodBg: 0
+X-BIZMAIL-ID: 15533347437243192222
+Message-ID: <99DBBA392DBE07E2+bd27587c-ba94-4a3d-890a-9a38f2b5bc04@radxa.com>
+Date: Tue, 28 Oct 2025 07:26:30 +0900
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 3/5] dt-bindings: arm: rockchip: Fix description for Radxa
+ CM3I
+To: Krzysztof Kozlowski <krzk@kernel.org>, heiko@sntech.de
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ jonas@kwiboo.se, dsimic@manjaro.org, amadeus@jmu.edu.cn,
+ devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
+References: <20251027122641.39396-1-naoki@radxa.com>
+ <20251027122641.39396-4-naoki@radxa.com>
+ <bd746117-910a-4874-8248-98d3ab6080b4@kernel.org>
+Content-Language: en-US
+From: FUKAUMI Naoki <naoki@radxa.com>
+In-Reply-To: <bd746117-910a-4874-8248-98d3ab6080b4@kernel.org>
+X-QQ-SENDSIZE: 520
+Feedback-ID: zesmtpip:radxa.com:qybglogicsvrsz:qybglogicsvrsz4a-0
+X-QQ-XMAILINFO: MX+1SEN3H+wAqaz+gtICTtIVeoL6T6R4IvWgdXF7HTXZ6Q9sqVgHQ2zY
+	1qC0bFZFr0tuR87FdlYvKKOd6AFC0oR4bT6qX0kjCuvFCFz5jZpOq9xqvt3oL2k6tOxy64U
+	jfPgMnXs6qCFahsbQ+AYi6uxYnhLqQ9cl2TzYhlhfg6iP5e8FR7kROLhxLTuMx11SzbNP82
+	KGcTbdHhpLe+4i6EgGVVvRMfwDigY3njhp69BUbPXCFQxzFutrmsbyFijgm4FSAdTSdok3v
+	GmYa+2HZhCLaE+O+ECF/jUYtFWM+urBOf1wxao1mM8U6UG97UKBvz72TAcDXVW+8ruiY5sV
+	NCL7HrdgsisM/+Y1fQYQaHnTXQc3SaGGYgM51KsbN7k6D0c+7L025TGEa/jR/5sGR8KqSJV
+	0ycqUx4gY3FdStNsitGeUqJ8P9LHYiM3/SS5c00+4fhULFXn4RI20Rx7gErSzXAKaRhMqdm
+	GBaZuKAi/xDgQLgJ43RbqzsXu0Rq85+2kiRfFQwMLRvlmQU6sOX3EsE6G087QdU7rtQjnjA
+	f9auSH+olfULG/AcVyJ3B+e0vf5VctcmsCMYo+OGBlU6vvyhzKJ+ayKglYsEXXlHtj2hoph
+	xZW2XWPr19ev7yLoLOn2fzPiHXA1N05t1FbfEYfcVCiuWfCqy67enA7hglx0wwZ//ggxkCm
+	3dnosSckjf9OhnCcslIDOQohOgnHioGOXDDPonZ5oFxQ1RtworV+HaZMzCIdhQmYR8R5co7
+	2u4h6UoUe5CBZaP10uGTiEdrjfO014nKCvixmpEh3OVHDUoXoX7E1wFXr0HTfuRqRV7Ck8Y
+	gxEndxJEaLw22gmMY1NzvtQIedeWnipgyS4+Pia1F3EcC0MCkfNivdjz3zAM4JjFjKPXwvC
+	/2tscdn2JGK4LAC5iy/O597REBjlInqzQzKedROW/QFn42v4xGiILZO0U/EQKQbSsSgzDog
+	IReJxhtHvD5nyJSn4ol4b7Giyz43mgo3J3ToBm3ixs2/IvBoq0KsZBUeD
+X-QQ-XMRINFO: OD9hHCdaPRBwq3WW+NvGbIU=
+X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251027_152701_027421_822C09D6 
-X-CRM114-Status: GOOD (  15.00  )
+X-CRM114-CacheID: sfid-20251027_152720_328116_48D4387A 
+X-CRM114-Status: UNSURE (   6.79  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -59,83 +85,40 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>, Rob Herring <robh@kernel.org>, Sandy Huang <hjc@rock-chips.com>, linux-rockchip@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Hi Krzysztof,
 
-The name of the enable_gpio member in struct rockchip_hdmi_qp is too
-generic, as initially "borrowed" from downstream BSP code. Moreover,
-this hasn't been really in use so far, since there is neither a DT
-providing an "enable-gpios" property to any of the "hdmi" nodes, nor a
-binding documenting it.
+On 10/28/25 04:07, Krzysztof Kozlowski wrote:
+> On 27/10/2025 13:26, FUKAUMI Naoki wrote:
+>> "CM3I" is the preferred name.
+> 
+> According to whom? I would prefer previous, so for sure:
 
-The actual purpose of this GPIO line is to control the voltage bias for
-the HDMI TX data lines when switching between TMDS and FRL operating
-modes.
+Sorry, it should be:
 
-A previous patch introduced the "frl-enable-gpios" property of the
-RK3588 HDMI TX Controller binding, hence pass the updated string to
-devm_gpiod_get_optional(), rename the struct member accordingly and set
-it to a low level.
+"CM3I" is the correct name.
 
-Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
----
-Changes since v2:
+Link: https://dl.radxa.com/cm3i/docs/hw/radxa_cm3i_product_brief.pdf
 
-- Rename tmds-enable to frl-enable
-- Acquire the GPIO with GPIOD_OUT_LOW
----
- drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+Best regards,
 
-diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-index 931343b072ad..36363136a695 100644
---- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-@@ -92,7 +92,7 @@ struct rockchip_hdmi_qp {
- 	struct rockchip_encoder encoder;
- 	struct dw_hdmi_qp *hdmi;
- 	struct phy *phy;
--	struct gpio_desc *enable_gpio;
-+	struct gpio_desc *frl_enable_gpio;
- 	struct delayed_work hpd_work;
- 	int port_id;
- 	const struct rockchip_hdmi_qp_ctrl_ops *ctrl_ops;
-@@ -118,7 +118,7 @@ static void dw_hdmi_qp_rockchip_encoder_enable(struct drm_encoder *encoder)
- 	unsigned long long rate;
- 
- 	/* Unconditionally switch to TMDS as FRL is not yet supported */
--	gpiod_set_value(hdmi->enable_gpio, 1);
-+	gpiod_set_value(hdmi->frl_enable_gpio, 0);
- 
- 	if (crtc && crtc->state) {
- 		rate = drm_hdmi_compute_mode_clock(&crtc->state->adjusted_mode,
-@@ -515,11 +515,11 @@ static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
- 	plat_data.ref_clk_rate = clk_get_rate(ref_clk);
- 	clk_put(ref_clk);
- 
--	hdmi->enable_gpio = devm_gpiod_get_optional(hdmi->dev, "enable",
--						    GPIOD_OUT_HIGH);
--	if (IS_ERR(hdmi->enable_gpio))
--		return dev_err_probe(hdmi->dev, PTR_ERR(hdmi->enable_gpio),
--				     "Failed to request enable GPIO\n");
-+	hdmi->frl_enable_gpio = devm_gpiod_get_optional(hdmi->dev, "frl-enable",
-+							GPIOD_OUT_LOW);
-+	if (IS_ERR(hdmi->frl_enable_gpio))
-+		return dev_err_probe(hdmi->dev, PTR_ERR(hdmi->frl_enable_gpio),
-+				     "Failed to request FRL enable GPIO\n");
- 
- 	hdmi->phy = devm_of_phy_get_by_index(dev, dev->of_node, 0);
- 	if (IS_ERR(hdmi->phy))
--- 
-Regards,
+--
+FUKAUMI Naoki
+Radxa Computer (Shenzhen) Co., Ltd.
 
-Laurent Pinchart
+>> Fixes: ae9fbe0b1f965 ("dt-bindings: arm: rockchip: add Radxa CM3I E25")
+> 
+> is not true.
+> 
+> 
+> Best regards,
+> Krzysztof
+> 
+
 
 
 _______________________________________________
