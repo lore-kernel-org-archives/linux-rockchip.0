@@ -4,55 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCC24CCF9EA
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Oct 2025 11:39:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92AD4CCF9EA
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Oct 2025 12:22:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-ID:MIME-Version:To:Cc:
-	Date:References:In-Reply-To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QlrSjSGkdIJSRv2OG+7NVxdRPIWI7ySBKC3gQLkeypc=; b=bF6vGuNEgXXHws
-	GbgYVNkpGRhUtdDmRnrUsswfv9iZPHItZ7bja9TQdCrxFLfZb9aXzQgy2OtwiWSxsYc3glM1H0X6N
-	VTD12MEKM/LwvsQmcLpDD08/yG03zJgfoROf9AFSdNt7e3TdUfJSGoTFTshYjFIXESwJJ0RTGcCGs
-	9KUvHkU5z1NPGFI3uvvsCuktUfJuosBF5T96m0MI9DN+4cgRQ9ZLy971BA7o06F2rFHfG6sVFjsIG
-	Mra49OKSFAXUOgmtH7sfxG5s9rmbPZfxpDFfTlem15rAZ3KGMhF5WouaOXHUKWBpV6CV9aE8cWey9
-	riT24Tr1rJ1TOSjJ5dlA==;
+	List-Owner; bh=7TQ1Fb0J8drTBr2ihG4NUvaMn+P434+gqnkpEV/9BGg=; b=qgBw2zQqpJHRdk
+	8TZHva2YWQuq2oZ6/w1bOp/5XOJ1sOP4a7Wiq2hEFWVkAtz8SzBxaQQDT2EZm3Lxrzrrld+CggcBu
+	KZfEPAgZUpRkKVbRY0CPPrbgtLn3uYMfuFm+seQpL3vhBTlwJZknzGfBJ3NxM4kryt+EV+pEiwfwC
+	pdnLoSyNXacq06T4TejDo1tbN1WkYhyKpeGbJZCxCMZ4jizeYqO5QUxk4L6KvIUkZtIEgeInmSGH5
+	Q0G3zjKRStMcHFTiMNgdJU/Qa1uJB9bu7bc/WgHz6QHCYfW2JXEYUcB1NRPYwpfOiWAo+KV/QkEKe
+	KVkXv+FzOSRwCwkdL10g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDLYp-0000000DmXM-0nn7;
-	Mon, 27 Oct 2025 11:38:51 +0000
-Received: from mail1.manjaro.org ([142.132.176.110])
+	id 1vDMEk-0000000Dsny-2DC2;
+	Mon, 27 Oct 2025 12:22:10 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDLYl-0000000DmWE-2X5l;
-	Mon, 27 Oct 2025 11:38:48 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPA id E89CC40D0D;
-	Mon, 27 Oct 2025 12:38:42 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=dkim;
-	t=1761565124; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=Pp+cdt5NUUAp/RayY/UAf6z47hnHubbe0RqQqLbK1fg=;
-	b=JZcT7et4yPf/J0RdIhCYH2lB1UyH+WU6CUzpWPc6n0kWLt471Tt4zM9yUi1AE5Xi4VKwkC
-	HSXLev3iMEqkk/raGfqRL11mYQPEADAfaj3BehnvwKmJ/6Y3Q7ath1yHTX975Gy90Dqp2X
-	zTj2GRvGCqV75VyrG7cTJP1bRIFTiTpM5xX7aQlnkrTYOzdFFxzW1HHW8wYSOBtOd6Go7K
-	O5meD131epz7A4ykMfSL9Nr6J1jfQCwwVcsUrohDfENyno0uCpiywCh96zDwiu2OXBBgv9
-	yC4+gWxqRjuVSti29HyeMsnLb76/nCruVcaLuhxlSA6qC9sRt60N6OxOFQ0suw==
-From: "Dragan Simic" <dsimic@manjaro.org>
-In-Reply-To: <DDSFVM1TXN8C.3JNX2M8XX04IF@cknow-tech.com>
-References: <20251026153805.107774-1-diederik@cknow-tech.com> <DDSFVM1TXN8C.3JNX2M8XX04IF@cknow-tech.com>
-Date: Mon, 27 Oct 2025 12:38:42 +0100
-Cc: "Rob Herring" <robh@kernel.org>, "Krzysztof Kozlowski" <krzk+dt@kernel.org>, "Conor Dooley" <conor+dt@kernel.org>, "Heiko Stuebner" <heiko@sntech.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, "Johan Jonker" <jbx6244@gmail.com>
-To: "Diederik de Haas" <diederik@cknow-tech.com>
+	id 1vDMEh-0000000DsnL-1dyJ;
+	Mon, 27 Oct 2025 12:22:08 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1761567688; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=B37m3tRXg9231oauumFgq3IS919cZOBg5SjkoJsfAAEv3xg7NZzheR2/o1Z6DWXuET3Phh+B65kMnrMCibaDLL47gqWercUuzNjDdQ/QEDk4PDMfokyzUxleEz3k8oEQQE8eM/LGA6cXBQj3Z5m2bCDyEdLFNH72QNvwSyqfTHs=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1761567688; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=JzOl43h72qIg903VcLgPPqEaQOxJyebUM6Y8SFlK3FI=; 
+	b=PHxByQ8byaqaWcg7cDcy7ZXDXysm3SbInlN64ODpr8FHXGPi7kW3HXHt+zOniUMSCoQtu7DUByVBCUDCbhdmo00hUk8zNn6A7YdjO/9J7MEh1bEETNOogOlizsXIBRbcRpyX3gSWzK3sSO0p/n4fuKKbZFBpqUY9Cjzvie0NDxU=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1761567688;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=JzOl43h72qIg903VcLgPPqEaQOxJyebUM6Y8SFlK3FI=;
+	b=kDy9KX2417EVcr5ZvR/y8uZmt2IgIbpSIydVjZEiNT4mUYn+LTARqHpo2PI9/c+O
+	XrqA+KwqLPKUa7++D+dlwBTP8fipyA2OMRQQKoikyQmHtIagGSU4zKzvjDMhQPiCI7W
+	A4THQcscyFyTp2lEGrAOYogNvIgC0YM8dyTtux88=
+Received: by mx.zohomail.com with SMTPS id 1761567685152749.0643459384486;
+	Mon, 27 Oct 2025 05:21:25 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: Linus Torvalds <torvalds@linux-foundation.org>,
+ Linus Walleij <linus.walleij@linaro.org>, Sandy Huang <hjc@rock-chips.com>,
+ Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>,
+ Andy Yan <andy.yan@rock-chips.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Shreeya Patel <shreeya.patel@collabora.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Jaehoon Chung <jh80.chung@samsung.com>, Ulf Hansson <ulf.hansson@linaro.org>,
+ Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+ "Yury Norov (NVIDIA)" <yury.norov@gmail.com>,
+ dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org, kernel@collabora.com, linux-mmc@vger.kernel.org,
+ linux-sound@vger.kernel.org, "Yury Norov (NVIDIA)" <yury.norov@gmail.com>
+Cc: Rasmus Villemoes <linux@rasmusvillemoes.dk>
+Subject: Re: [PATCH 11/21] drivers: don't use GENMASK() in FIELD_PREP_WM16()
+Date: Mon, 27 Oct 2025 13:21:15 +0100
+Message-ID: <2824034.mvXUDI8C0e@workhorse>
+In-Reply-To: <20251025164023.308884-12-yury.norov@gmail.com>
+References: <20251025164023.308884-1-yury.norov@gmail.com>
+ <20251025164023.308884-12-yury.norov@gmail.com>
 MIME-Version: 1.0
-Message-ID: <d190d649-acd5-4202-4a7a-94b9ada67b17@manjaro.org>
-Subject: =?utf-8?q?Re=3A?= [PATCH] =?utf-8?q?arm64=3A?==?utf-8?q?_dts=3A?=
- =?utf-8?q?_rockchip=3A?= Harmonize regulator formatting for Pine64 rk3566 
- devices
-User-Agent: SOGoMail 5.12.3
-X-Last-TLS-Session-Version: None
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251027_043847_870952_864235FC 
-X-CRM114-Status: GOOD (  17.59  )
+X-CRM114-CacheID: sfid-20251027_052207_452983_65C444C0 
+X-CRM114-Status: GOOD (  16.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,47 +92,130 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Diederik,
-
-On Sunday, October 26, 2025 18:44 CET, "Diederik de Haas" <diederik@cknow-tech.com> wrote:
-> On Sun Oct 26, 2025 at 4:37 PM CET, Diederik de Haas wrote:
-> > The regulator node properties in Pine64 rk3566 devices were formatted
-> > rather inconsistently. To name a few:
-> > - 'name' was sometimes put at the top of the list, while at other times
-> >   it was (mostly) sorted in alphabetical order
-> > - 'always-on' and 'boot-on' were sometimes at the top of the list,
-> >   sometimes not
-> > - 'state-mem' nodes sometimes had a preceding blank line, as they
-> >   should, but sometimes not
-> > - other properties seem to have been added to the end of the list, not
-> >   in their alphabetical/natural order
-> >
-> > So harmonize the formatting by making all properties sorted
-> > alphabetically/naturally. And harmonize the formatting of the
-> > 'state-mem' nodes so they all have a preceding blank line. While at it,
-> > also fix 2 incorrectly indented nodes.
-> >
-> > No functional changes.
+On Saturday, 25 October 2025 18:40:10 Central European Standard Time Yury Norov (NVIDIA) wrote:
+> Recently added FIELD_PREP_WM16() in a few places uses GENMASK. It's
+> confusing and may mislead readers. Switch to BITS() or FIRST_BITS()
+> as appropriate.
 > 
-> I just found some additional ones.
-> If these changes are considered OK (in principle), then I'll send a v2
-> at some point.
+> Suggested-by: Linus Torvalds <torvalds@linux-foundation.org>
+> Link: https://lore.kernel.org/all/CAHk-=whoOUsqPKb7OQwhQf9H_3=5sXGPJrDbfQfwLB3Bi13tcQ@mail.gmail.com/
+> Signed-off-by: Yury Norov (NVIDIA) <yury.norov@gmail.com>
+> ---
+>  drivers/gpu/drm/rockchip/rockchip_lvds.h             | 2 +-
+>  drivers/gpu/drm/rockchip/rockchip_vop2_reg.c         | 4 ++--
+>  drivers/media/platform/synopsys/hdmirx/snps_hdmirx.h | 4 ++--
+>  drivers/mmc/host/dw_mmc-rockchip.c                   | 4 ++--
+>  drivers/soc/rockchip/grf.c                           | 4 ++--
+>  sound/soc/rockchip/rockchip_i2s_tdm.h                | 2 +-
+>  6 files changed, 10 insertions(+), 10 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_lvds.h b/drivers/gpu/drm/rockchip/rockchip_lvds.h
+> index 2d92447d819b..e79e6031be59 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_lvds.h
+> +++ b/drivers/gpu/drm/rockchip/rockchip_lvds.h
+> @@ -115,7 +115,7 @@
+>  #define   PX30_LVDS_INVERT_DCLK(val)		FIELD_PREP_WM16(BIT(5), (val))
+>  
+>  #define PX30_LVDS_GRF_PD_VO_CON1		0x438
+> -#define   PX30_LVDS_FORMAT(val)			FIELD_PREP_WM16(GENMASK(14, 13), (val))
+> +#define   PX30_LVDS_FORMAT(val)			FIELD_PREP_WM16(BITS(13, 14), (val))
+>  #define   PX30_LVDS_MODE_EN(val)		FIELD_PREP_WM16(BIT(12), (val))
+>  #define   PX30_LVDS_MSBSEL(val)			FIELD_PREP_WM16(BIT(11), (val))
+>  #define   PX30_LVDS_P2S_EN(val)			FIELD_PREP_WM16(BIT(6), (val))
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+> index 38c49030c7ab..438fea5f6f6d 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+> @@ -1698,7 +1698,7 @@ static unsigned long rk3588_set_intf_mux(struct vop2_video_port *vp, int id, u32
+>  		val = rk3588_get_hdmi_pol(polflags);
+>  		regmap_write(vop2->vop_grf, RK3588_GRF_VOP_CON2, FIELD_PREP_WM16(BIT(1), 1));
+>  		regmap_write(vop2->vo1_grf, RK3588_GRF_VO1_CON0,
+> -			     FIELD_PREP_WM16(GENMASK(6, 5), val));
+> +			     FIELD_PREP_WM16(BITS(5, 6), val));
+>  		break;
+>  	case ROCKCHIP_VOP2_EP_HDMI1:
+>  		div &= ~RK3588_DSP_IF_EDP_HDMI1_DCLK_DIV;
+> @@ -1711,7 +1711,7 @@ static unsigned long rk3588_set_intf_mux(struct vop2_video_port *vp, int id, u32
+>  		val = rk3588_get_hdmi_pol(polflags);
+>  		regmap_write(vop2->vop_grf, RK3588_GRF_VOP_CON2, FIELD_PREP_WM16(BIT(4), 1));
+>  		regmap_write(vop2->vo1_grf, RK3588_GRF_VO1_CON0,
+> -			     FIELD_PREP_WM16(GENMASK(8, 7), val));
+> +			     FIELD_PREP_WM16(BITS(7, 8), val));
+>  		break;
+>  	case ROCKCHIP_VOP2_EP_EDP0:
+>  		div &= ~RK3588_DSP_IF_EDP_HDMI0_DCLK_DIV;
+> diff --git a/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.h b/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.h
+> index b13f58e31944..14df3f53ff8f 100644
+> --- a/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.h
+> +++ b/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.h
+> @@ -12,8 +12,8 @@
+>  #include <linux/bitops.h>
+>  #include <linux/hw_bitfield.h>
+>  
+> -#define UPDATE(x, h, l)		FIELD_PREP(GENMASK((h), (l)), (x))
+> -#define HIWORD_UPDATE(v, h, l)	FIELD_PREP_WM16(GENMASK((h), (l)), (v))
+> +#define UPDATE(x, h, l)		FIELD_PREP(BITS((l), (h)), (x))
+> +#define HIWORD_UPDATE(v, h, l)	FIELD_PREP_WM16(BITS((l), (h)), (v))
+>  
+>  /* SYS_GRF */
+>  #define SYS_GRF_SOC_CON1			0x0304
+> diff --git a/drivers/mmc/host/dw_mmc-rockchip.c b/drivers/mmc/host/dw_mmc-rockchip.c
+> index 82dd906bb002..7fac1a7281bf 100644
+> --- a/drivers/mmc/host/dw_mmc-rockchip.c
+> +++ b/drivers/mmc/host/dw_mmc-rockchip.c
+> @@ -148,10 +148,10 @@ static int rockchip_mmc_set_internal_phase(struct dw_mci *host, bool sample, int
+>  
+>  	if (sample)
+>  		mci_writel(host, TIMING_CON1,
+> -			   FIELD_PREP_WM16(GENMASK(11, 1), raw_value));
+> +			   FIELD_PREP_WM16(BITS(1, 11), raw_value));
+>  	else
+>  		mci_writel(host, TIMING_CON0,
+> -			   FIELD_PREP_WM16(GENMASK(11, 1), raw_value));
+> +			   FIELD_PREP_WM16(BITS(1, 11), raw_value));
+>  
+>  	dev_dbg(host->dev, "set %s_phase(%d) delay_nums=%u actual_degrees=%d\n",
+>  		sample ? "sample" : "drv", degrees, delay_num,
+> diff --git a/drivers/soc/rockchip/grf.c b/drivers/soc/rockchip/grf.c
+> index 344870da7675..89fd4a4c69eb 100644
+> --- a/drivers/soc/rockchip/grf.c
+> +++ b/drivers/soc/rockchip/grf.c
+> @@ -125,8 +125,8 @@ static const struct rockchip_grf_info rk3566_pipegrf __initconst = {
+>  #define RK3576_SYSGRF_SOC_CON1		0x0004
+>  
+>  static const struct rockchip_grf_value rk3576_defaults_sys_grf[] __initconst = {
+> -	{ "i3c0 weakpull", RK3576_SYSGRF_SOC_CON1, FIELD_PREP_WM16_CONST(GENMASK(7, 6), 3) },
+> -	{ "i3c1 weakpull", RK3576_SYSGRF_SOC_CON1, FIELD_PREP_WM16_CONST(GENMASK(9, 8), 3) },
+> +	{ "i3c0 weakpull", RK3576_SYSGRF_SOC_CON1, FIELD_PREP_WM16_CONST(BITS(6, 7), 3) },
+> +	{ "i3c1 weakpull", RK3576_SYSGRF_SOC_CON1, FIELD_PREP_WM16_CONST(BITS(8, 9), 3) },
+>  };
+>  
+>  static const struct rockchip_grf_info rk3576_sysgrf __initconst = {
+> diff --git a/sound/soc/rockchip/rockchip_i2s_tdm.h b/sound/soc/rockchip/rockchip_i2s_tdm.h
+> index 0171e05ee886..eee6db372ee7 100644
+> --- a/sound/soc/rockchip/rockchip_i2s_tdm.h
+> +++ b/sound/soc/rockchip/rockchip_i2s_tdm.h
+> @@ -287,7 +287,7 @@ enum {
+>  #define I2S_TDM_RXCR	(0x0034)
+>  #define I2S_CLKDIV	(0x0038)
+>  
+> -#define HIWORD_UPDATE(v, h, l)	(FIELD_PREP_WM16_CONST(GENMASK((h), (l)), (v)))
+> +#define HIWORD_UPDATE(v, h, l)	(FIELD_PREP_WM16_CONST(BITS((l), (h)), (v)))
+>  
+>  /* PX30 GRF CONFIGS */
+>  #define PX30_I2S0_CLK_IN_SRC_FROM_TX		HIWORD_UPDATE(1, 13, 12)
+> 
 
-Thanks for this patch!  FWIW, I think that SoC-wide DT cleanups
-and unifications such as this are nice and safe to do, so my vote
-goes towards the v2. :)
+Reviewed-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
-> > Signed-off-by: Diederik de Haas <diederik@cknow-tech.com>
-> > ---
-> >  .../boot/dts/rockchip/rk3566-pinenote.dtsi    | 52 +++++++++----------
-> >  .../boot/dts/rockchip/rk3566-pinetab2.dtsi    | 29 ++++++++---
-> >  .../boot/dts/rockchip/rk3566-quartz64-a.dts   | 51 +++++++++++-------
-> >  .../boot/dts/rockchip/rk3566-quartz64-b.dts   | 52 ++++++++++---------
-> >  .../dts/rockchip/rk3566-soquartz-blade.dts    |  6 +--
-> >  .../boot/dts/rockchip/rk3566-soquartz-cm4.dts |  6 +--
-> >  .../dts/rockchip/rk3566-soquartz-model-a.dts  | 10 ++--
-> >  .../boot/dts/rockchip/rk3566-soquartz.dtsi    | 43 ++++++++++-----
-> >  8 files changed, 148 insertions(+), 101 deletions(-)
+I made sure there were no accidental changes introduced by the
+swapping of values, so in terms of correctness, this appears
+all good to me.
+
+Kind regards,
+Nicolas Frattaroli
+
+
 
 
 _______________________________________________
