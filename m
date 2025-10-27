@@ -4,71 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A578CCF9E5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Oct 2025 14:56:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C87BFCCF9E0
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Oct 2025 14:56:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=XIlwYf3DbI/iFqixR7vmS7qkX2LxxEYNzKQu9turvPA=; b=vcD9L1RLZ5UI3q
-	6XOHCj6sJmFCpm/UilSsydxLd0pLpkT4etxRLMwgKinEbxM+xv9xusQFDQG3VPu+95cTAE6EOC8Om
-	wlZREK5Sq0TdOhJDClDOBc9qhLArDHvvJ89kwZ86aHmcSI+vEBG06vSjXQPZAJxXtBD+RzzyLW5k/
-	3MwU7SH56DW3bx7PI7mvaleI8lTYJOvnNScsHTlXMa+1skiMCzpZhKCQq5r069wiYrW020MrIqmTV
-	d1CcuwnpxtmiNn+HS83ruUWruKePD3WbujnIyAxLNK5nb6B1ttaOBvZsL1HJtlyn2c9kRU3v61VIn
-	qfNucTwmyFohHGc7/hQA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=rCONs+zh1P7P04TTJHfIko1doUM9qHscf+lYuQ0aKDY=; b=W8IEoja0Q2D/JD
+	ZvzEGgxCq4BEzrGz0fovBElEmMq0rpwdhoTpyzfqVT4sAZw/jutVlEDI/shxoKYoK5AJTrc4C0Yqn
+	RB5ZJVKTjL4o+HVHmQJIGWPOjIyOsc5kSu9f31Nwct8oWlvgi7BabpuKKpsFlAaWjSKdY9ihpbgmf
+	Z+ga6Q3GxzPEcbCLEQoi/byhoVSU//V04cBQ28VOYEfSkLtPw4yqBs7h37a2oLDUPjT3QNkyvd0RU
+	lsJ5RNFb2GmU7A10NZXmbYKxSkQnlI9Eg4vCNhrwWzEfYWJeTIdaVAcf0eOJUtSDjw8XW7NiAls5a
+	hGvgaWOqWu/TDEeYOiGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDOdp-0000000EAQd-35vR;
-	Mon, 27 Oct 2025 14:56:13 +0000
-Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
+	id 1vDOdz-0000000EATg-1CI6;
+	Mon, 27 Oct 2025 14:56:23 +0000
+Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDOdn-0000000EAPY-0Ei0
+	id 1vDOdw-0000000EASG-0WH9
 	for linux-rockchip@lists.infradead.org;
-	Mon, 27 Oct 2025 14:56:12 +0000
-Received: by mail-pf1-x42a.google.com with SMTP id d2e1a72fcca58-7a435a3fc57so928536b3a.1
-        for <linux-rockchip@lists.infradead.org>; Mon, 27 Oct 2025 07:56:10 -0700 (PDT)
+	Mon, 27 Oct 2025 14:56:21 +0000
+Received: by mail-pf1-x429.google.com with SMTP id d2e1a72fcca58-7a27ab05a2dso4013874b3a.2
+        for <linux-rockchip@lists.infradead.org>; Mon, 27 Oct 2025 07:56:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1761576970; x=1762181770; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=8yVMi7V8qTRELGGfV+IcZ9w9BuBp+eY7s7IocvDD4Ig=;
-        b=beCaQl02IcgWGtuC+xiTucKlHKQKgHifhHXLpg/b/ihg50//oHmJUS+TY6a+vqxhE/
-         ejoDvwDUWdJTtXJKbwZOWVh6CceHgRCrGBe7vmdV/9RYKQWccgXSQjlxqQlkjKklM8Hy
-         xJXOZY9mYp7QTxv3lnkDgP/uXUNkK9FxQ82FbkCALZEYaeTdZCGCnMhgzhvBSxzMZIRv
-         h9J8emL8ZHabYxS0F4KK2GOJc+1uMAaOKJN/PPzSSMlG69/vi0eYN4e0FkWzxu1m0HB3
-         7nEtIJ5f03bjMGlM/+MHu/k8cz3iy96DRJnnOJI/7Oa/YVlzt6TWf7yEw4c+j5OaV60V
-         3kfw==
+        d=gmail.com; s=20230601; t=1761576979; x=1762181779; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=gyBK5HLss/zF/tM/K4qW2J+Z3asnvx9H1hG28ozg6Qk=;
+        b=FvXPULNr3CTQkTdb7Hsx/Tl4M5vpDUTWbXakmjOpAyEppEUgsUdyVOb5MhuVRJmC/G
+         znuOLgaqg5/jplfruj2NW1BP3TU9MsopgdLPC21D0gb/Qqr9PrheW5Pt3+5IaYBxpoa1
+         TnE7HMkOF/EWLW9e1kGtuAOOVSwHOF88uA6/7cDUmTByp0z8Rl6yKwzIA8EBdoQLHwcB
+         Yuh+vhpeZLtDrF2TBRDI8FP7vh36wqDblvKWprLu1ei0L01wcX5wU8pc3nRVrYr3XZ6E
+         bR/CpEQYZ+2CSFPLua4nuAUgkIf7A13nQ2j7khDscs8czWA2z5JAcEX2TCqpQPHXiRjV
+         zSPg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1761576970; x=1762181770;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=8yVMi7V8qTRELGGfV+IcZ9w9BuBp+eY7s7IocvDD4Ig=;
-        b=IFwx5QHsYXMH5XkTbE1xhrvR/fXpck+UfThNBtH5YLlV3bh1kuAw6ea53Ed0ReLyTB
-         +1rRiis55nVrTnj80pHtg1RtZPPWIeyr2GzjhlExqymk2iQdQVWoe/dVHyAyES+6ItW3
-         zVXyvytFR/tPI9QoW5SLnAV8jTjoo31IvvoCJ7LxgQ3T0k9yy0+1smcTLBXYdNn0XEDU
-         rM2NWfAtLqTYtqHIYODpvaVm3VrbxkGpbQeLs9kPqV8VHNyIpa35BSmTp1A0UNmVMjom
-         fK63RijW9MrykZHrR2FJ51sEY/FOYFtsEFqqqWLDKzzuzhitmUnRIsLbQpxy/+NT7zLu
-         cDyg==
-X-Forwarded-Encrypted: i=1; AJvYcCXztJHYb8hjFqPytWVgrNsVE83i6eBy3VN8g2rhKr4Cy6QzdMT4Pq9z7EsqkZZd3FQrjulcjxkNUWGm9SkR4A==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzJRhT90GJKMYdp/AZ85Pb/yD/gJs0+9hHdgh7jFYd++lfh28bW
-	sLqfsOaItxWLXhfO8hSc8CMELNQtZlF6yyj3A5krpiYsbf729/DssmW3
-X-Gm-Gg: ASbGncuLwEJT5EOD+8lPfjeveYKlmR4xM31FyDHTu5tMX3pMsW3rdvwJ1EpYwOPiy4+
-	TQDK4d9n9AJgsRj7GqZIvSqmwV96G/jAcsOZtm4iIWkFD8qoeVhroYqbAUouwkEHKiNc2/Aiae/
-	agyFK78S3eXskvxnpNJn4v3mY/JKX9pQTixtJ8/baAx7uUeMR/XNhru/v0qRymopYErxwnGxok8
-	kAkls+siwuDsXf8wnRmYUxcm4bCipXmi1oRPrLf8bcAOy9SF86/9CQ41w56ZITNtpWriBHhGcg0
-	GhlE6CvHnZ75s9R6MBO3W6lgllGNwu7bxokZDRo5KdA9ufKvVU61wEVRNumgs/HJbt+XbInhTyr
-	d8avhtRn66z5Yp0IGv/LYPexuVPml84+/4WrZT7gM+ZN1G0Zn7CzqZWMwVOxpXXXbfkCmZDTDkc
-	b/8FoL3sxAhV6hCLabfIM=
-X-Google-Smtp-Source: AGHT+IFNNRsqOAD0ej4MkP02YIZHAarj1O7wDlGaz+jF0eTKJU0nb26xxgTWECACFe3NIf0baZUBNA==
-X-Received: by 2002:a05:6a00:c86:b0:77f:324a:6037 with SMTP id d2e1a72fcca58-7a441b7aa11mr318696b3a.7.1761576970098;
-        Mon, 27 Oct 2025 07:56:10 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1761576979; x=1762181779;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=gyBK5HLss/zF/tM/K4qW2J+Z3asnvx9H1hG28ozg6Qk=;
+        b=Jgj80N9EA2T4YxB91LWQjqKJmhKxY66zX5dYzLNqfRlXPmDc8aLncpDeoPtlsxHwq0
+         7zTaglQhqqQKDsUU+Q9Kx9uv3oQH08ZmEgeC/MC42encAkfm6ynG9QhGLOk5hCTXYMmD
+         bfQ0LIS0DR8gaBnzAxrYJZ1m1WPazj13HMFtNXLfU4Dc7dELJvFCAxmJASo76fjoQkpK
+         hh25yIE41ukjaJrkAClBggNPZTrdz3Rv3BmsDCZkc0lpcrHfbeCs7muvNp6KafIM8zTz
+         /s0UyD3NxTHvxm/m0Q9/+h/T+EdLOiTFG4X4NMZ+9hNzI5Zh+FlFGiBOVFl6LD4DX1AM
+         U3LA==
+X-Forwarded-Encrypted: i=1; AJvYcCUxDku+xi//NEiERh3ms0NViKfUXJT37vDvcCy3BjOtYxPRObWLFxf+vVWkACjYiyzD1+nGIL6CD1K8GTKqLg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz2L/BOKyZFFYnzmy9FkpFQEE8JeyiawX1FWa6M/6IDG7FMNE//
+	OhZaKwP+DwIHGfuEP7LcmLKuJJUV0ylH+Q+t5pDA4hxRai3fvNI+DT5u
+X-Gm-Gg: ASbGncuBVbZy0/vz3s7np09XZhOzZ+P0khAHjJ9teNwzzH3i6Bgsu1Pl2vxsNqtbARG
+	GxO23+jbrBjjKC77AeeGneDs9q6v31+qU8f+HIm4ayuHjRAZ7CSsi3zGGHtnUb10qDgVyVwM+yw
+	NCVYq+YvcG+6rtrx4NZg/4IWmI/xfqaghlEe3+bOtBgtpVbzzcb9w3v0p8U6Osb3lWw1dxA83wH
+	Zkn1oRXyjSBn0WnZcoHgzs+G6tLB7ckdloYcO3QEZufB1DhgR53qrv29F++U3gDhrH8eecetLC0
+	gaRrNnUPmVT3j+6aa9HF4R8o5d+D+uLtVXVRf6v+dcAgP0pBfVK0lY2KszwQM8nkwCtJ6Dqcc7s
+	uEvFZyxuOf9iPtr3VQSOi8abYUoBhjqgjB3juTZGx8bEQhK7wxJMYaMXWGGWs4cwCT0lVUmvOhw
+	==
+X-Google-Smtp-Source: AGHT+IF+HmWWIbu4RONj+wms//aaht+5AP20I8+4ooWFn7x7evY1F6ZZlpjlb36aBgMXfZJZOoYYlQ==
+X-Received: by 2002:a05:6a00:928a:b0:781:9a6:116a with SMTP id d2e1a72fcca58-7a441bdb5ecmr276136b3a.9.1761576979105;
+        Mon, 27 Oct 2025 07:56:19 -0700 (PDT)
 Received: from rockpi-5b ([45.112.0.108])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-7a414012b19sm8373372b3a.12.2025.10.27.07.56.05
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-7a414012b19sm8373372b3a.12.2025.10.27.07.56.14
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 27 Oct 2025 07:56:09 -0700 (PDT)
+        Mon, 27 Oct 2025 07:56:18 -0700 (PDT)
 From: Anand Moon <linux.amoon@gmail.com>
 To: Lorenzo Pieralisi <lpieralisi@kernel.org>,
 	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
@@ -85,15 +86,16 @@ To: Lorenzo Pieralisi <lpieralisi@kernel.org>,
 	linux-rockchip@lists.infradead.org (open list:ARM/Rockchip SoC support),
 	linux-kernel@vger.kernel.org (open list)
 Cc: Anand Moon <linux.amoon@gmail.com>
-Subject: [PATCH v1 0/2] Add runtime PM support to Rockchip DW PCIe driver
-Date: Mon, 27 Oct 2025 20:25:28 +0530
-Message-ID: <20251027145602.199154-1-linux.amoon@gmail.com>
+Subject: [PATCH v1 1/2] PCI: dw-rockchip: Add remove callback for resource cleanup
+Date: Mon, 27 Oct 2025 20:25:29 +0530
+Message-ID: <20251027145602.199154-2-linux.amoon@gmail.com>
 X-Mailer: git-send-email 2.50.1
+In-Reply-To: <20251027145602.199154-1-linux.amoon@gmail.com>
+References: <20251027145602.199154-1-linux.amoon@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251027_075611_122221_25A2DA5C 
-X-CRM114-Status: UNSURE (   9.05  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251027_075620_163451_0BB43526 
+X-CRM114-Status: GOOD (  13.80  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,29 +112,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Introduce runtime power management support in the Rockchip DesignWare PCIe
-controller driver.  These changes allow the PCIe controller to suspend and
-resume dynamically, improving power efficiency on supported platforms.
+Introduce a .remove() callback to the Rockchip DesignWare PCIe
+controller driver to ensure proper resource deinitialization during
+device removal. This includes disabling clocks and deinitializing the
+PCIe PHY.
 
-Can Patch 1 can be backpoted to stable? It helps clean shutdown of PCIe.
+Signed-off-by: Anand Moon <linux.amoon@gmail.com>
+---
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
-Clarification: the series is based on
-
-git://git.kernel.org/pub/scm/linux/kernel/git/pci/pci.git
-branch : controller/dw-rockchip
-
-Thanks
--Anand
-
-Anand Moon (2):
-  PCI: dw-rockchip: Add remove callback for resource cleanup
-  PCI: dw-rockchip: Add runtime PM support to Rockchip PCIe driver
-
- drivers/pci/controller/dwc/pcie-dw-rockchip.c | 32 +++++++++++++++++++
- 1 file changed, 32 insertions(+)
-
-
-base-commit: 7ad31f88429369ada44710176e176256a2812c3f
+diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+index 87dd2dd188b4..b878ae8e2b3e 100644
+--- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
++++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+@@ -717,6 +717,16 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+ 	return ret;
+ }
+ 
++static void rockchip_pcie_remove(struct platform_device *pdev)
++{
++	struct device *dev = &pdev->dev;
++	struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
++
++	/* Perform other cleanups as necessary */
++	clk_bulk_disable_unprepare(rockchip->clk_cnt, rockchip->clks);
++	rockchip_pcie_phy_deinit(rockchip);
++}
++
+ static const struct rockchip_pcie_of_data rockchip_pcie_rc_of_data_rk3568 = {
+ 	.mode = DW_PCIE_RC_TYPE,
+ };
+@@ -754,5 +764,6 @@ static struct platform_driver rockchip_pcie_driver = {
+ 		.suppress_bind_attrs = true,
+ 	},
+ 	.probe = rockchip_pcie_probe,
++	.remove = rockchip_pcie_remove,
+ };
+ builtin_platform_driver(rockchip_pcie_driver);
 -- 
 2.50.1
 
