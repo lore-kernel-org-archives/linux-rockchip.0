@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DF66CCF9E5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Oct 2025 19:06:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A07A6CCF9EB
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Oct 2025 19:06:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=femgQAiNd5yhPdsxp9Yu6/drQMg5stCN6SecxEfgDHk=; b=pRGOqE3c9Pw1up
-	z24Uo9iklU8f8r7cQnkR1wFPX9ewrChMFTTDdQe3TkfRxIdEgzawzLv+TUUXilSUoUiWFCgxEV3lJ
-	E6ZNSjHd3XLo7Q85djNacIk8C9hck1VL7zlc1c9u9qwhAHTTMseeoPuFYnni0wAJttkEfR7/M2fTG
-	ss8YWQWf+3UMo7eucpfC+VT22Bj0jK4DjRLyNHVGXaljmtNzZC30DBEchvyOKHil4NSiv1+ji/4YZ
-	PvB3XNVwmSal/NmZvfVjimSoBDkPTlrf4hJs9MX8a5PwFNzTwI+LGMVBdhHuNAyAez03ZfHzT1htv
-	Nrx8ll7kBkzWhIlfaoew==;
+	List-Owner; bh=7oHWEY8ZOcw5Bu9o05DlPpaiy8L/7MLtM/GhPafM07I=; b=pVGUg+pMPqnTGd
+	8Kci9rrrRKjGaYDvko8H1XCwHDTLnD9v9S6/DGD5YNGJqDnufEa9+0rCWQHzDgzS7W1x4Kg+1U9SX
+	fI58sEnctjcd4c0MfK9ThK7S1l5E6RXkY9xh2HWQugRb2LJnarXW7d1yqCsnYR/pDx6kzOc1wyics
+	A5W7xIMp8SnY7RFjqmxy2RSKM8QuRz6Zvmd9Ce4Vt8AjJ4yrmSJuhcIMCYFGuNaCmIwCl22dvabCU
+	xptfCJiwoy7ejnkaFJ/tzp/ct8fRNZtZEcRuADmMQsbwE32LMk237V5/0T52WQlTp4aO+lwzy+UXS
+	72h1hdBp9DjLZXKDPUFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDSXs-0000000EcUu-3Bqp;
-	Mon, 27 Oct 2025 19:06:20 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vDSYN-0000000EcaT-0A95;
+	Mon, 27 Oct 2025 19:06:51 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDSXr-0000000EcUX-2wYf
+	id 1vDSYL-0000000Eca7-1RKx
 	for linux-rockchip@lists.infradead.org;
-	Mon, 27 Oct 2025 19:06:19 +0000
+	Mon, 27 Oct 2025 19:06:49 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id D093C61D89;
-	Mon, 27 Oct 2025 19:06:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 86BB3C4CEF1;
-	Mon, 27 Oct 2025 19:06:15 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id DFEB361D89;
+	Mon, 27 Oct 2025 19:06:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 31CC9C113D0;
+	Mon, 27 Oct 2025 19:06:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1761591978;
-	bh=T0TZOZXurnZmiF5A/Q7ITCjVE1XDGmBbQLQILtEnUjA=;
+	s=k20201202; t=1761592007;
+	bh=D/9XsIBeoxIFr9UfD2EQDPVl6fjaF7KeJMBNnNBxbvQ=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=oyqV/OAkfGt2pkS0nZG89b/DEnnWKDLWTz3q8zPl//5O+MMG/VAzs06uuyx8yw9/4
-	 Kmv6OxRD2iSD0ncm4UeigrFmwCcLmRqPQcub1X+6qFoR2gEfOPT/MePrSa1k7nG6a1
-	 ZjNk8Lkh1L40tAIUGAFikfJ3ECplgDkee8qJl96771RomtMvhc8PPUeD2BO9lxKfly
-	 nISF7a+M2EROmqM6MRSQB7rWExnYd/eT6sZ6EJP/bPvRRnNlqg5hFZuKd2Nwd7aO+X
-	 x8l7K2n62EYcD+K29ovlz1EbGmTU9tG/kK7tM/1byisZJf9vlUi4qfm/yOgAfHWD0y
-	 iLXK5d8Sge4/w==
-Message-ID: <f70128c0-55ed-49bb-b3dc-92efa680c0e9@kernel.org>
-Date: Mon, 27 Oct 2025 20:06:13 +0100
+	b=tVQWg+PZ03sF+xXzus5yL3dyp4XolTqktg0ZN3cgHq/l+8Y3N6b2byVNFSjj31kMO
+	 nWs7+vIAdF579bAMYXUfoRSgqBV8SWSnH2xYbiuEwUR2X01fv4BPD67saLkJlvUO/o
+	 mWX39Gwj79CxUDw+c+nYUuLpUR/kwbrMbU1BVQl8oxlZOQhYFZkwOcCcvFXKNqPt67
+	 GKCXIEPD7JrE8Itd7Fe1ucOaCfjHfVLQ8+/WtzhxI7sTsN//xRsqaxpjsdNNA7/1Ek
+	 4mDb5d1DxAforSN41gxawtN5pFnbrZpNcEdG+Y1kN9O6UT9Czm0zSgScPfYrFBdvKt
+	 WqF3FTg0hzssw==
+Message-ID: <94d7d8aa-1481-4c50-9c4e-33f2a4e2d9a8@kernel.org>
+Date: Mon, 27 Oct 2025 20:06:43 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/5] dt-bindings: arm: rockchip: Fix description for Radxa
- Rock2 Square
+Subject: Re: [PATCH 2/5] dt-bindings: arm: rockchip: Fix description for Radxa
+ ZERO 3E/3W
 To: FUKAUMI Naoki <naoki@radxa.com>, heiko@sntech.de
 Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
  jonas@kwiboo.se, dsimic@manjaro.org, amadeus@jmu.edu.cn,
  devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
 References: <20251027122641.39396-1-naoki@radxa.com>
- <20251027122641.39396-2-naoki@radxa.com>
+ <20251027122641.39396-3-naoki@radxa.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -99,7 +99,7 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  jWt87ecuHlpL3uuQ0ZZNWqHgZoQLXoqC2ZV5KrtKWb/jyiFX/sxSrodALf0zf+tfHv0FZWT2
  zHjUqd0t4njD/UOsuIMOQn4Ig0SdivYPfZukb5cdasKJukG1NOpbW7yRNivaCnfZz6dTawXw
  XRIV/KDsHQiyVxKvN73bThKhONkcX2LWuD928tAR6XMM2G5ovxLe09vuOzzfTWQDsm++9UKF a/A=
-In-Reply-To: <20251027122641.39396-2-naoki@radxa.com>
+In-Reply-To: <20251027122641.39396-3-naoki@radxa.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,13 +117,12 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 27/10/2025 13:26, FUKAUMI Naoki wrote:
-> The name 'Rock 2' is incorrect; 'Rock2' is correct. Fix this.
+> "3E" precedes "3W" in alphanumeric order. Fix this.
 > 
-> Fixes: d78084cdb5a95 ("dt-bindings: arm: rockchip: Correct the descriptions for Radxa boards")
+> Fixes: ad986e45ada99 ("dt-bindings: arm: rockchip: Add Radxa ZERO 3W/3E")
 
-That's not a bug, really. Please squash all the patches. These are
-unimportant trivialities.
-
+Nothing to fix. Please invent some sort of bugs according to
+non-existing rules.
 
 Best regards,
 Krzysztof
