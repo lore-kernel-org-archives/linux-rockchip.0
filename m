@@ -4,55 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34CA2CCF9E0
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Oct 2025 18:19:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DF66CCF9E5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Oct 2025 19:06:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-ID:MIME-Version:To:Cc:
-	Date:References:In-Reply-To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dlMZ8jgaSE+Y+Qd+nnXtpUuLzTT4vR6Hk6xNL7+IGPA=; b=vHbY9Io3D/yJRj
-	u09APB6LJrzAR0L4wvyLki0lAKEohQrj2lHwb7VKJFsxXQg07/LcgsHTimM3ud8ACOB3Yqob3p8yp
-	wohHNHCNOLDYoyFtVr6M7f44JkPKPvuP+6Xoq4F0ccNLkziK4gBUY743lWf1LhZuBfHfAuQuDMqo+
-	JEOSABEhHyz/Y+P888AbVVCdMtyLmUtc2GpIW81Ss6gCWCOzJDfFrpL58NpcRyqfPBLoBsY21Yoeh
-	3GFkTXXcvIEhWl8UKoTGqCYyo7/Qpbn/w9y823ZjMr4r8E+FvaAHTvUAZtG5uhbcjBnz8WhefHhkU
-	zA6LIlRndimnRdb/uhIg==;
+	List-Owner; bh=femgQAiNd5yhPdsxp9Yu6/drQMg5stCN6SecxEfgDHk=; b=pRGOqE3c9Pw1up
+	z24Uo9iklU8f8r7cQnkR1wFPX9ewrChMFTTDdQe3TkfRxIdEgzawzLv+TUUXilSUoUiWFCgxEV3lJ
+	E6ZNSjHd3XLo7Q85djNacIk8C9hck1VL7zlc1c9u9qwhAHTTMseeoPuFYnni0wAJttkEfR7/M2fTG
+	ss8YWQWf+3UMo7eucpfC+VT22Bj0jK4DjRLyNHVGXaljmtNzZC30DBEchvyOKHil4NSiv1+ji/4YZ
+	PvB3XNVwmSal/NmZvfVjimSoBDkPTlrf4hJs9MX8a5PwFNzTwI+LGMVBdhHuNAyAez03ZfHzT1htv
+	Nrx8ll7kBkzWhIlfaoew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDRon-0000000EXcI-0p5M;
-	Mon, 27 Oct 2025 18:19:45 +0000
-Received: from mail1.manjaro.org ([142.132.176.110])
+	id 1vDSXs-0000000EcUu-3Bqp;
+	Mon, 27 Oct 2025 19:06:20 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDRok-0000000EXad-2m1Z;
-	Mon, 27 Oct 2025 18:19:44 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPA id 9416840D1B;
-	Mon, 27 Oct 2025 19:19:36 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=dkim;
-	t=1761589178; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=36Cbfb/vjeQ/MuEIGnK6bEu0FQjCPhD4xvsTx+U2YiI=;
-	b=hqARmNiwPpusSwZKYVqiX/9ApyoiqEQ34kuYnR5OGtVLZuJCUemXxsuyCtUKGlv3pq5bo0
-	VVnO2r9zlxTW1PAB6V1GeVc62DBZvqYa9UnFy0MwiAcHnEXFnHM05jUkspAdBO7fWYaP+y
-	urmSrkx/NUvm5Z6HBpzFwW2itsn+taP8SA28E8tHErXq4vUisZrUWn+M/umpX6vzHe408F
-	W3eqbHZWCfFvHz6QDWNTNIvaRvs5EeFKviSmsv0bPFZFLnZpdGgEwTYPRatYYhMsubajif
-	YjeqZ7OWCAGIRsKDHG4McORglLhhQK3i5cdkFLGwJyEe6Z0TnQup9qGF9TW7Jw==
-From: "Dragan Simic" <dsimic@manjaro.org>
-In-Reply-To: <60a1046c-437e-400a-8e2c-391cd471c358@kwiboo.se>
-References: <20251027154517.136976-1-diederik@cknow-tech.com> <60a1046c-437e-400a-8e2c-391cd471c358@kwiboo.se>
-Date: Mon, 27 Oct 2025 19:19:36 +0100
-Cc: "Diederik de Haas" <diederik@cknow-tech.com>, "Rob Herring" <robh@kernel.org>, "Krzysztof Kozlowski" <krzk+dt@kernel.org>, "Conor Dooley" <conor+dt@kernel.org>, "Heiko Stuebner" <heiko@sntech.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, "Johan Jonker" <jbx6244@gmail.com>
-To: "Jonas Karlman" <jonas@kwiboo.se>
+	id 1vDSXr-0000000EcUX-2wYf
+	for linux-rockchip@lists.infradead.org;
+	Mon, 27 Oct 2025 19:06:19 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id D093C61D89;
+	Mon, 27 Oct 2025 19:06:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 86BB3C4CEF1;
+	Mon, 27 Oct 2025 19:06:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1761591978;
+	bh=T0TZOZXurnZmiF5A/Q7ITCjVE1XDGmBbQLQILtEnUjA=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=oyqV/OAkfGt2pkS0nZG89b/DEnnWKDLWTz3q8zPl//5O+MMG/VAzs06uuyx8yw9/4
+	 Kmv6OxRD2iSD0ncm4UeigrFmwCcLmRqPQcub1X+6qFoR2gEfOPT/MePrSa1k7nG6a1
+	 ZjNk8Lkh1L40tAIUGAFikfJ3ECplgDkee8qJl96771RomtMvhc8PPUeD2BO9lxKfly
+	 nISF7a+M2EROmqM6MRSQB7rWExnYd/eT6sZ6EJP/bPvRRnNlqg5hFZuKd2Nwd7aO+X
+	 x8l7K2n62EYcD+K29ovlz1EbGmTU9tG/kK7tM/1byisZJf9vlUi4qfm/yOgAfHWD0y
+	 iLXK5d8Sge4/w==
+Message-ID: <f70128c0-55ed-49bb-b3dc-92efa680c0e9@kernel.org>
+Date: Mon, 27 Oct 2025 20:06:13 +0100
 MIME-Version: 1.0
-Message-ID: <7dc31259-c172-de0e-554c-2563014b9c2c@manjaro.org>
-Subject: =?utf-8?q?Re=3A?= [PATCH v2] =?utf-8?q?arm64=3A?==?utf-8?q?_dts=3A?=
- =?utf-8?q?_rockchip=3A?= Harmonize regulator formatting for Pine64 rk3566 
- devices
-User-Agent: SOGoMail 5.12.3
-X-Last-TLS-Session-Version: None
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251027_111942_942474_BED3F51A 
-X-CRM114-Status: GOOD (  12.77  )
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/5] dt-bindings: arm: rockchip: Fix description for Radxa
+ Rock2 Square
+To: FUKAUMI Naoki <naoki@radxa.com>, heiko@sntech.de
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ jonas@kwiboo.se, dsimic@manjaro.org, amadeus@jmu.edu.cn,
+ devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
+References: <20251027122641.39396-1-naoki@radxa.com>
+ <20251027122641.39396-2-naoki@radxa.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <20251027122641.39396-2-naoki@radxa.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,41 +116,17 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Jonas and Heiko,
-
-On Monday, October 27, 2025 19:06 CET, Jonas Karlman <jonas@kwiboo.se> wrote:
-> On 10/27/2025 4:39 PM, Diederik de Haas wrote:
-> > The regulator node properties in Pine64 rk3566 devices were formatted
-> > rather inconsistently. To name a few:
-> > - 'name' was sometimes put at the top of the list, while at other times
-> >   it was (mostly) sorted in alphabetical order
+On 27/10/2025 13:26, FUKAUMI Naoki wrote:
+> The name 'Rock 2' is incorrect; 'Rock2' is correct. Fix this.
 > 
-> Personally I prefer to list the regulator-name as the first property, I
-> think it makes it visually easier/quicker to identify a regulator with
-> the name prop at top.
-> 
-> I typically try to use the following prop ordering for regulators on
-> board DTs I submit (and review):
-> 
-> - regulator-name as the first prop (to quickly identify the regulator)
-> - regulator-min-* before regulator-max-* (natural order)
-> - regulator-* in alphabetical/natural order
-> 
-> Maybe this preference just comes from a long history of always putting
-> id/primary key/unique identifiers at top or beginning of data tables,
-> classes, structs etc ;-)
+> Fixes: d78084cdb5a95 ("dt-bindings: arm: rockchip: Correct the descriptions for Radxa boards")
 
-Oh, I actually agree with your and Heiko's preferences when
-it comes to the ordering, regardless of that being personal
-preference, tribal knowledge or just common sense. :)
+That's not a bug, really. Please squash all the patches. These are
+unimportant trivialities.
 
-However, that's quite conflicting with the current official
-rules for writing DT files, which don't recognize such exceptions
-at all.  Perhaps we should attempt to incorporate such preferences
-into the official rules, because such non-standard ordering does
-make DTs more readable?  Following the rules is good, unless it
-makes the end results worse, IMHO.
 
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
