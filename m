@@ -4,60 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74225CCF9E0
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Oct 2025 16:47:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DB42CCF9EB
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Oct 2025 16:47:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=R5+QY4XZDHzVoef5Fy+3Z+OOXMIBFk4CCSatSV6WS6Y=; b=LqcXlq+UNAWVtS
-	4WQ3hHi14hIMes6+4LH12y4qS2YRr+L93iv61cMyYwa3ZJP+BbxsQbb7tKYyxYXWTs80h8wb7/iHO
-	aZQaUqkNpNA9BRcQ/uHVsz8G4iy2VLEqEWYsODL7CPJornVTlwlJk/ixPyhUiLXO/gDZRF6tl358G
-	/KKrFnjstg2CZ6g7134clVQJ+ipmctuidk1NBu75cFQ8poAmiiP2CtYd+K1XcI0E0uUSTLS76p0tr
-	yBW2IJyI2IyUv0nWFBU89RsItCtgcQkD6X8IIMhaOoWeaB+QK7zwMFq1VqPCZTSdSjNSL0fJ98hkM
-	o5k2pGv/dkAT01+wgF4w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=IKkrM1uBJAj4cZImm3H/rD8sosY+cm/1li7HAtjSj1o=; b=p9wg4kYLd4LWMov0A4buUgFpO3
+	2OPxXPQRVq/NB/1tnFOpArNWaZm/FYfbZK4L15/CPD1fIbo3gehuU6/UztigCwJGL/wWare/6GML9
+	2qp9ATRPhxsBPTBZ0tUu/3+MwH98XOFiWKz7UZJLtU82MwOLjgzwBuekB6ohandu3/SV0CGcIhF0p
+	3demPwBKiDoYFGzNybkElEorHKF5lH4v33Sgjj0Wr7JJgA0RgtPNI9ijC2NVhJ4Vd/ZGFlR1Oif2I
+	Ls/w89dIgTlVHVsoJ7shyT04vwtMlVABefYhm3AQcQzwqTFXcTkTMJttq+8ASXuxFXJ8Q97MnNz30
+	LTbsem7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDQNE-0000000EMOu-00Pt;
-	Mon, 27 Oct 2025 16:47:12 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1vDQNM-0000000EMRo-0azZ;
+	Mon, 27 Oct 2025 16:47:20 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDQNB-0000000EMOS-2Q6Z;
-	Mon, 27 Oct 2025 16:47:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=6VropRRCJmyIDE6mt2lFPIyoGvs5jUPiwexBau4cLyg=; b=KPaZUyTDWThc0N7lTe/ONzVw0U
-	ESn0Fa6QH5v87GZZ6plLOs7iA7tv/CUYy9djvkl2fnDloFoe5XRpSU0oqtSxWZBW3XR+URwVte/2W
-	R+4WTo3iZ5QT7ZsKeBkIdwb5ie0EX5kP4jhA/BenkUcwqSW4ck1YTKiP84kcIOraRifLEta7N3662
-	QuNhAZVmwpnU9K1Fx7IP0pQ2d+3QPicBeyuOxKh8yAH/UzJhaFKJxtIr4TafFrRR5ZklGk/kmC7N6
-	O7kf9O2sGUHubyFX814JIxD4jFmdOjQPXJoIzAOZHSO2Gzri8pUkiRzSKE0i08NtNlxmPEAIZ2IHS
-	BMfhM9tA==;
-Received: from i53875be3.versanet.de ([83.135.91.227] helo=phil.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1vDQMx-0002Ep-6h; Mon, 27 Oct 2025 17:46:55 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: Diederik de Haas <diederik@cknow-tech.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Diederik de Haas <diederik@cknow-tech.com>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- Dragan Simic <dsimic@manjaro.org>, Johan Jonker <jbx6244@gmail.com>
-Subject: Re: [PATCH] arm64: dts: rockchip: Harmonize regulator formatting for Pine64
- rk3566 devices
-Date: Mon, 27 Oct 2025 17:46:54 +0100
-Message-ID: <5054965.31r3eYUQgx@phil>
-In-Reply-To: <DDSFVM1TXN8C.3JNX2M8XX04IF@cknow-tech.com>
-References: <20251026153805.107774-1-diederik@cknow-tech.com>
- <DDSFVM1TXN8C.3JNX2M8XX04IF@cknow-tech.com>
+	id 1vDQNK-0000000EMQp-2fLs;
+	Mon, 27 Oct 2025 16:47:18 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 5B3346041B;
+	Mon, 27 Oct 2025 16:47:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 37CE3C113D0;
+	Mon, 27 Oct 2025 16:47:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1761583637;
+	bh=32yOyFVynkfVIvnGVgJ92i0Ip1krG1hpIICP4cn0SOY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=nIRBPzybk9NCdARzw23obr4pZMzwR/6XNdofj1qMoexG/4DU8IIk2+PM8X5IDn/gG
+	 /y1QthXqj9X6dblAsvAyIqeUiVOMpdrDk5BKx96RXacgKJFftP5+Z13HaYlb04F6gq
+	 SrY6R7NHuQFVjki4d6xx9Wy63ZuftiRH6jf5zyzitCSlTM24JBfK9VMx58eDCqgeEb
+	 odSzeccOojfaQ6ZC5gt0zyFnw20uNcDtwcX1cA3ifbaBMmhHwEa5G4hymHgg4yLhdk
+	 2hNg51IkIJRIObKlWkpVtrQwI0MckKkOLBzJJR5Vw9swl3jZwaB3lIPodHTno/fNvH
+	 B/GM2H8mSaPyw==
+Date: Mon, 27 Oct 2025 16:47:11 +0000
+From: Conor Dooley <conor@kernel.org>
+To: Elaine Zhang <zhangqing@rock-chips.com>
+Cc: mturquette@baylibre.com, sboyd@kernel.org, sugar.zhang@rock-chips.com,
+	heiko@sntech.de, robh@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+	conor+dt@kernel.org, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	huangtao@rock-chips.com, finley.xiao@rock-chips.com
+Subject: Re: [PATCH v5 6/7] dt-bindings: clock: rockchip: Add RK3506 clock
+ and reset unit
+Message-ID: <20251027-await-wound-0aee2d20e0a3@spud>
+References: <20251027084147.4148739-1-zhangqing@rock-chips.com>
+ <20251027084147.4148739-7-zhangqing@rock-chips.com>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251027_094709_641205_9F3804F1 
-X-CRM114-Status: GOOD (  24.10  )
+In-Reply-To: <20251027084147.4148739-7-zhangqing@rock-chips.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,43 +68,117 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============3120319122154130242=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-QW0gU29ubnRhZywgMjYuIE9rdG9iZXIgMjAyNSwgMTg6NDQ6NDIgTWl0dGVsZXVyb3DDpGlzY2hl
-IE5vcm1hbHplaXQgc2NocmllYiBEaWVkZXJpayBkZSBIYWFzOgo+IE9uIFN1biBPY3QgMjYsIDIw
-MjUgYXQgNDozNyBQTSBDRVQsIERpZWRlcmlrIGRlIEhhYXMgd3JvdGU6Cj4gPiBUaGUgcmVndWxh
-dG9yIG5vZGUgcHJvcGVydGllcyBpbiBQaW5lNjQgcmszNTY2IGRldmljZXMgd2VyZSBmb3JtYXR0
-ZWQKPiA+IHJhdGhlciBpbmNvbnNpc3RlbnRseS4gVG8gbmFtZSBhIGZldzoKPiA+IC0gJ25hbWUn
-IHdhcyBzb21ldGltZXMgcHV0IGF0IHRoZSB0b3Agb2YgdGhlIGxpc3QsIHdoaWxlIGF0IG90aGVy
-IHRpbWVzCj4gPiAgIGl0IHdhcyAobW9zdGx5KSBzb3J0ZWQgaW4gYWxwaGFiZXRpY2FsIG9yZGVy
-Cj4gPiAtICdhbHdheXMtb24nIGFuZCAnYm9vdC1vbicgd2VyZSBzb21ldGltZXMgYXQgdGhlIHRv
-cCBvZiB0aGUgbGlzdCwKPiA+ICAgc29tZXRpbWVzIG5vdAo+ID4gLSAnc3RhdGUtbWVtJyBub2Rl
-cyBzb21ldGltZXMgaGFkIGEgcHJlY2VkaW5nIGJsYW5rIGxpbmUsIGFzIHRoZXkKPiA+ICAgc2hv
-dWxkLCBidXQgc29tZXRpbWVzIG5vdAo+ID4gLSBvdGhlciBwcm9wZXJ0aWVzIHNlZW0gdG8gaGF2
-ZSBiZWVuIGFkZGVkIHRvIHRoZSBlbmQgb2YgdGhlIGxpc3QsIG5vdAo+ID4gICBpbiB0aGVpciBh
-bHBoYWJldGljYWwvbmF0dXJhbCBvcmRlcgo+ID4KPiA+IFNvIGhhcm1vbml6ZSB0aGUgZm9ybWF0
-dGluZyBieSBtYWtpbmcgYWxsIHByb3BlcnRpZXMgc29ydGVkCj4gPiBhbHBoYWJldGljYWxseS9u
-YXR1cmFsbHkuIEFuZCBoYXJtb25pemUgdGhlIGZvcm1hdHRpbmcgb2YgdGhlCj4gPiAnc3RhdGUt
-bWVtJyBub2RlcyBzbyB0aGV5IGFsbCBoYXZlIGEgcHJlY2VkaW5nIGJsYW5rIGxpbmUuIFdoaWxl
-IGF0IGl0LAo+ID4gYWxzbyBmaXggMiBpbmNvcnJlY3RseSBpbmRlbnRlZCBub2Rlcy4KPiA+Cj4g
-PiBObyBmdW5jdGlvbmFsIGNoYW5nZXMuCj4gCj4gSSBqdXN0IGZvdW5kIHNvbWUgYWRkaXRpb25h
-bCBvbmVzLgo+IElmIHRoZXNlIGNoYW5nZXMgYXJlIGNvbnNpZGVyZWQgT0sgKGluIHByaW5jaXBs
-ZSksIHRoZW4gSSdsbCBzZW5kIGEgdjIKPiBhdCBzb21lIHBvaW50LgoKT3JpZ2luYWxseSwgSSBh
-bHdheXMgbGlrZWQgcmVndWxhdG9yLW5hbWUgdG8gYmUgb24gdG9wLCBpZGVudGlmeWluZwp0aGUg
-cmVndWxhdG9yLCBzaW1pbGFyIHRvIGhvdyBjb21wYXRpYmxlIHdvcmtzLgoKQnV0IEkgZG8gaGF2
-ZSB0byBjb25jZWRlIHRoYXQgdGhpcyBpcyBqdXN0IGFub3RoZXIgInNwZWNpYWwtY2FzZSIgb2YK
-c3R5bGUtcHJlZmVyZW5jZSwgdGhhdCBtYWtlcyBpdCBoYXJkZXIgdG8gZXhwbGFpbiB0aGluZ3Mg
-dG8gcGVvcGxlCmFuZCBpbiB0aGUgZW5kIHdlIHNob3VsZCBqdXN0IGZvbGxvdyB0aGUgZG9jdW1l
-bnRlZCBzb3J0aW5nLCB3aXRob3V0CnRyaWJhbCBrbm93bGVkZ2UgOi0pIC4KCgpUaGUgb3RoZXIg
-aXNzdWUgd2l0aCBtb3Zpbmcgc3R1ZmYgYXJvdW5kIGlzLCB0aGF0IGl0IG1ha2VzIGl0IGhhcmRl
-cgp0byBmb2xsb3cgZ2l0IGhpc3RvcnksIGJlY2F1c2UgZ2l0IGJsYW1lIHRoZW4gcmVwb3J0cyB0
-aGUgc29ydC1jb21taXQuCgoKSSBndWVzcyBpdCBpcyBvayBmb3IgaW5kaXZpZHVhbCBmaWxlcywg
-c29tZW9uZSBkb2VzIHRha2UgY2FyZSBvZiwKbGlrZSBEaWVkZXJpayBmb3IgdGhlIFBpbmV0YWIs
-IGJ1dCBwbGVhc2UgZG9uJ3Qgc3RhcnQgcmVzb3J0aW5nIGFsbCB0aGUKZXhpc3RpbmcgZGV2aWNl
-dHJlZXMgOi0pIC4KCgpIZWlrbwoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBA
-bGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+
+--===============3120319122154130242==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="eSWQ1Ctgvp2pmYfz"
+Content-Disposition: inline
+
+
+--eSWQ1Ctgvp2pmYfz
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Mon, Oct 27, 2025 at 04:41:46PM +0800, Elaine Zhang wrote:
+> From: Finley Xiao <finley.xiao@rock-chips.com>
+>=20
+> Add device tree bindings for clock and reset unit on RK3506 SoC.
+> Add clock and reset IDs for RK3506 SoC.
+>=20
+> Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
+> ---
+>  .../bindings/clock/rockchip,rk3506-cru.yaml   |  51 ++++
+>  .../dt-bindings/clock/rockchip,rk3506-cru.h   | 285 ++++++++++++++++++
+>  .../dt-bindings/reset/rockchip,rk3506-cru.h   | 211 +++++++++++++
+>  3 files changed, 547 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk35=
+06-cru.yaml
+>  create mode 100644 include/dt-bindings/clock/rockchip,rk3506-cru.h
+>  create mode 100644 include/dt-bindings/reset/rockchip,rk3506-cru.h
+>=20
+> diff --git a/Documentation/devicetree/bindings/clock/rockchip,rk3506-cru.=
+yaml b/Documentation/devicetree/bindings/clock/rockchip,rk3506-cru.yaml
+> new file mode 100644
+> index 000000000000..ecb5fa497747
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/clock/rockchip,rk3506-cru.yaml
+> @@ -0,0 +1,51 @@
+> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/clock/rockchip,rk3506-cru.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Rockchip RK3506 Clock and Reset Unit (CRU)
+> +
+> +maintainers:
+> +  - Finley Xiao <finley.xiao@rock-chips.com>
+> +  - Heiko Stuebner <heiko@sntech.de>
+> +
+> +description: |
+> +  The RK3506 CRU generates the clock and also implements reset for SoC
+> +  peripherals.
+> +
+> +properties:
+> +  compatible:
+> +    const: rockchip,rk3506-cru
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  "#clock-cells":
+> +    const: 1
+> +
+> +  "#reset-cells":
+> +    const: 1
+> +
+> +  clocks:
+> +    maxItems: 1
+
+Can you explain somewhere why the input clock is not required?
+Feels like it really should be required, if it is what the output clocks
+are generated from, but I can also see why it might be optional either.
+pw-bot: changes-requested
+
+> +
+> +  clock-names:
+> +    const: xin24m
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - "#clock-cells"
+> +  - "#reset-cells"
+
+--eSWQ1Ctgvp2pmYfz
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaP+iDwAKCRB4tDGHoIJi
+0o54AP98UXzeSXPMJY9coqV6N4MEVJH9zwk04uZhVRES8i7hMgEAysyNVT4D/cF6
+jLYYWNYeQbkblle37SMJSItJT554Rgc=
+=vAfi
+-----END PGP SIGNATURE-----
+
+--eSWQ1Ctgvp2pmYfz--
+
+
+--===============3120319122154130242==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============3120319122154130242==--
+
