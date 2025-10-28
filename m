@@ -4,44 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BA5FCCF9EC
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Oct 2025 09:45:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EAACCCF9E0
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Oct 2025 10:41:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0e6eE9wOsbSyJ2yzFpnBJYTEOYtWkl/0wEscD6sH64s=; b=cMuzZMMATrsFWW
-	mry3pdKy6SwjgJApYR6eHksJjqWMBr9VaKyAplhLoFJ/gOl4cFUxpmBquyZJz3nSOYe1kbelI2vpz
-	sTDp/lI3kyBj7blHqJoE6QrHkMXSEe/dpD+tmqhTH+sOVjLyMhYXcG9x1yDY7eV1M31eiehhGFT9w
-	WxYgFyzCojDVZFHdq29/OSdToAAl/gmHa6cD+BilGcuuLGln9bRK/tRP/meCPziDD6A4UCRvYOZYq
-	M9kqeX4p40+UoRDOBtHxGVStPSUjyabLzgDXskvbdvHke3EIUtc3Ocno2CxTrU4ClN6PYGwAPhdt3
-	OfOg6FX6GGrjweylWUeg==;
+	List-Owner; bh=e9jWmReR9Tw20FCMTzqfgsdDniqNl8ZE7W+t7rsQBhg=; b=erbZQgz5Pjlp1T
+	uzkRNeZj5DXNAm4KsAhWohHld7mCvfl22uzwDtFmBEcP5dlPoVHpxaCq9tnp1Tq9jkmG9ivmDpkmI
+	ctTSp5H7io9ykYaBzZbJ+rDzXoOeJKa4PzKNJMAbMp3sypy+zoeeCfo2fXz3NMs7BbaeWCHb74DG0
+	FbpBKI4NEEWZ2EEcLTeJ0RFRcYA4fcJojBLL9vLlmpmuAhhb2eNIFZSjb3ZzolX5LFK2ocDVBeQ16
+	UEwodNTKZLoDGnov4cUMBFXB85clsp1/28ypze/D/xhueUDljS8DfsYD8qBNbcwyB8/OBAtz179Sh
+	CSfHuwISn6r+yzl2yB0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDgGy-0000000FfFh-2cll;
-	Tue, 28 Oct 2025 09:45:48 +0000
-Received: from smtpbg151.qq.com ([18.169.211.239])
+	id 1vDh97-0000000FmEV-26UE;
+	Tue, 28 Oct 2025 10:41:45 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDgGv-0000000FfEK-3hpm
+	id 1vDh95-0000000FmDD-1Pq8
 	for linux-rockchip@lists.infradead.org;
-	Tue, 28 Oct 2025 09:45:47 +0000
-X-QQ-mid: zesmtpip2t1761644696t6badc7b6
-X-QQ-Originating-IP: OiWb3yCwJkW93ilCz0aFHt4DXFMWxYcD3+vm7HIDNLc=
-Received: from [IPV6:240f:10b:7440:1:27fe:5767 ( [localhost])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Tue, 28 Oct 2025 17:44:50 +0800 (CST)
-X-QQ-SSF: 0000000000000000000000000000000
-X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 5025758860806143264
-Message-ID: <870075785A1ED2B9+6fb5238e-dc57-406b-acf9-b88b237d8e5b@radxa.com>
-Date: Tue, 28 Oct 2025 18:44:49 +0900
+	Tue, 28 Oct 2025 10:41:44 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 93B4148D17;
+	Tue, 28 Oct 2025 10:41:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 108A2C4CEE7;
+	Tue, 28 Oct 2025 10:41:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1761648102;
+	bh=pL8cLCQ4d/YVjv8TZyN7yeRNOVxsFNE9EZDlNtGyw+w=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=ooP4jPdNSs+1pgH+IiPrvoVoGfJkdzDbrlkmWYMEuEoUtftf10U0+qz+c5QpHxHwR
+	 4Kt1S763gF96gZtrdvuWG17SFBERgr1ePDkyiuH0sCwSRzJ6J+tx5KtKm+bHXjAVw/
+	 bsOz9GBSeOLyv8CBup9jWQX5NIr3ZTR3UK4MkbDPybZBqGzbfe9n4pGg5L0Zd/bCvp
+	 FwvgkDCA8fzT2rKAV1JgqMchI7YE+z+2KqDd8E7q+t2jHhl6Y/6ZOE7oeEG5TE3UTI
+	 Fk4Xo/bmGo8UKQlBqry9TspEfu9r/cHKQ6BhTqhvfE0vU5XEAaz/CxhDyg/UjXKWpW
+	 aoYOKVNagpjxQ==
+Message-ID: <f12bc562-b5bb-4bdd-b274-23582df8f2d4@kernel.org>
+Date: Tue, 28 Oct 2025 11:41:38 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v3 1/3] dt-bindings: arm: rockchip: Add Radxa CM5 IO board
-To: Krzysztof Kozlowski <krzk@kernel.org>,
- Joseph Kogut <joseph.kogut@gmail.com>
+To: FUKAUMI Naoki <naoki@radxa.com>, Joseph Kogut <joseph.kogut@gmail.com>
 Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
  <conor+dt@kernel.org>, devicetree@vger.kernel.org,
@@ -53,32 +59,56 @@ References: <174735136138.1544989.11909422896170025756.robh@kernel.org>
  <20250529-impressive-real-monkey-a7818b@kuoka>
  <6443BD03B4C4F1FE+d20c3903-e2dc-4c2b-8f6e-fac38f242898@radxa.com>
  <2f4e7f94-2921-493c-94fa-45749a060bc0@kernel.org>
+ <870075785A1ED2B9+6fb5238e-dc57-406b-acf9-b88b237d8e5b@radxa.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
-From: FUKAUMI Naoki <naoki@radxa.com>
-In-Reply-To: <2f4e7f94-2921-493c-94fa-45749a060bc0@kernel.org>
-X-QQ-SENDSIZE: 520
-Feedback-ID: zesmtpip:radxa.com:qybglogicsvrsz:qybglogicsvrsz4a-0
-X-QQ-XMAILINFO: NRkWGnbnkwTmU/WK0mSt5e9UCz0f7jbg1RWFgtKdB72zlIwDHGbo2JsE
-	dYtTSWn10sSp1/i1eKhF16i+Nzb4lT1ZsszT0A719dDTphzwDX/aL0G2Lyx374s4xQrZbHQ
-	+nAh/WcPyyfu7/3XcgjUv8xiONH7Uwf8HiDasd6/rauAziJ0lBUzu49mvJQ1g6ZWGCj9MFz
-	NB09cteOHv4ykZiuje+xXGao+Qu7EJv/g9UrePH1un1un5JMO3qn/PqnZZxRPUa+WKtyuj7
-	5DnRazsV4cDuoiazRNpHNWEqPKVU1Fq8FG9a3bfR17IwAUyKqwHLYAkzyHtlaydSPAQnc6p
-	MnMgxY7Ju7HBTgDS5VvZmMBbq0jKAiE/j0R7NyjS8hM8bn+jASMzSxnVNlWuhUBL8FjkYA6
-	F3K3l0sh6SFa100T8YfkPZkxF6y6wQmpy/hjkvLXe7taEJS+trETC16W9pitkElcpIz4uXA
-	CDmgfrgZd5+8WF4c/2fTsCJg9VLUXiWK1ZuJigwkiKpUEBejHMcMy1e18UUOgz8s25aE1o2
-	5QeLYK6bpSxlDPOA15k3hzABkHgz0F5IuItfBLH8CwXy2nguj9yPO7GkdCId61Ir4/OziQh
-	nmHtUdkWNt74FOPIL+qhkM5SG1bO6ncE/bI9fx1OCebcAO/qtR5KEPH1J+imPYdOIiNsiQD
-	ULLYypuMmhImsfVAkbdZQiJ1x61EmVcwi8rS3Tl5cGv359ZezSqrcsj3f6y77A6jfuWXI9u
-	O3UcU4YZ+V9Q2/j/Q2hTMcNj5xs7o1/dO4QpkZH3Rswhk4VP5bhKnLINeGU+DV6g4FQ5E2b
-	Z37N097oJJAFeR6t4LqS9uC5uJm4kXPjUWNRKRQqXbwkCRIw3rbGxAqnXNy9wskz8mfU3nx
-	OWlEKHsHX+mUJwD+oiqTP0JplAv2iyCYF1leibGTVPLbmE2OjYFao7uamDeKQoe29y3m3DT
-	YKCmAb6MSI1RiBE2wVM1yUSsJEF2qTFXSMY8EziD+eKsHpbcDbyy0TX45V8YVnJLK4xPIEm
-	7qRjQ4lywoCeff5Lddn5G8aRmkeD0uUqbzAPxn9A==
-X-QQ-XMRINFO: OD9hHCdaPRBwq3WW+NvGbIU=
-X-QQ-RECHKSPAM: 0
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <870075785A1ED2B9+6fb5238e-dc57-406b-acf9-b88b237d8e5b@radxa.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251028_024546_447672_CFFC2C5A 
-X-CRM114-Status: GOOD (  11.99  )
+X-CRM114-CacheID: sfid-20251028_034143_422406_FD2A38D3 
+X-CRM114-Status: GOOD (  13.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,53 +120,58 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Joseph
-
-Your patch seems to be NAKed.
-I will submit new patch soon.
-
-Best regards,
-
---
-FUKAUMI Naoki
-Radxa Computer (Shenzhen) Co., Ltd.
-
-On 10/28/25 18:37, Krzysztof Kozlowski wrote:
-> On 28/10/2025 10:33, FUKAUMI Naoki wrote:
->> Hi Krzysztof,
->>
->> https://patchwork.kernel.org/project/linux-rockchip/patch/20250528221823.2974653-2-joseph.kogut@gmail.com/
->>
->> On 5/29/25 18:19, Krzysztof Kozlowski wrote:
->>> On Wed, May 28, 2025 at 03:18:21PM GMT, Joseph Kogut wrote:
->>>> Add device tree binding for the Radxa CM5 IO board.
->>>>
->>>> This board is based on the rk3588s.
->>>
->>> Do not attach (thread) your patchsets to some other threads (unrelated
->>> or older versions). This buries them deep in the mailbox and might
->>> interfere with applying entire sets.
->>>
->>>
->>> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
->> Please explain the sorting rule used for this file. You must have known
->> the sorting rule; otherwise, how can you be sure this patch is correct?
+On 28/10/2025 10:44, FUKAUMI Naoki wrote:
+> Hi Joseph
 > 
-> Huh? I don't have a clue about sorting rule but if you mock my review
-> let's make it different:
-> 
-> NAK
+> Your patch seems to be NAKed.
+> I will submit new patch soon.
+
+Sorry, what? Don't hijack other people's work.
+
 > 
 > Best regards,
-> Krzysztof
 > 
+> --
+> FUKAUMI Naoki
+> Radxa Computer (Shenzhen) Co., Ltd.
+> 
+> On 10/28/25 18:37, Krzysztof Kozlowski wrote:
+>> On 28/10/2025 10:33, FUKAUMI Naoki wrote:
+>>> Hi Krzysztof,
+>>>
+>>> https://patchwork.kernel.org/project/linux-rockchip/patch/20250528221823.2974653-2-joseph.kogut@gmail.com/
+>>>
+>>> On 5/29/25 18:19, Krzysztof Kozlowski wrote:
+>>>> On Wed, May 28, 2025 at 03:18:21PM GMT, Joseph Kogut wrote:
+>>>>> Add device tree binding for the Radxa CM5 IO board.
+>>>>>
+>>>>> This board is based on the rk3588s.
+>>>>
+>>>> Do not attach (thread) your patchsets to some other threads (unrelated
+>>>> or older versions). This buries them deep in the mailbox and might
+>>>> interfere with applying entire sets.
+>>>>
+>>>>
+>>>> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+>>> Please explain the sorting rule used for this file. You must have known
+>>> the sorting rule; otherwise, how can you be sure this patch is correct?
+>>
+>> Huh? I don't have a clue about sorting rule but if you mock my review
+>> let's make it different:
+>>
+>> NAK
 
 
+Ah, you were poking around other patch? I should have ignored that :/
+
+
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
