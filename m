@@ -4,71 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA12ACCF9E0
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Oct 2025 19:02:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32D6BCCF9EB
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Oct 2025 19:25:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=PqEx6/DrZJTl0dEvWDhXetQ/K1MxXBYyatKpmMJbb6c=; b=3E/9j4bSSgYmH3
-	dOElEXkmhUOiVel+rrZRi70S/FZmELOY9psoBApJPkjZDbiGBhMXhHSKLik6NV4XQhhmKWe6cs8Op
-	mIVzdrhDWpYf98E1Mp3jfgPejiGb3/ee9brVhmCErLOiOi6pGwn+yn14HJnwDAehEK6eiV/S4xGjy
-	EQKmkQZgrRJe4w8DeOo4RUkOdLqI2ND6D+pu/K8BV1RrT15gHnYp9ffSfaVhBTXZMoNjSHeyGFolL
-	PjKzaH3+E2kKs5zFhBKT9lJO33mCyHINIUO6bE2gcRc/05Tw5OmCJNHGSmK+A+9qr+pbTbJJdpVMs
-	iGfSQKldVhLh5e1YBP9w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=JG+RQjvVr4nPWu6hGHpNn//EA9E5sR4qrdyVRhRW3G8=; b=sYyecoznoc7vhjjJqtVuTueCJ7
+	utgQoZKgdM22vYMs8r4MpK/5u9b9H7/pOHKlE08Dc04UwAxbcR1TVx2BliTD+gbOQt6Lg8Monqqo9
+	uoSwP3tAT1mJ7tN/CkXa8QznLZDzS1RDe1SKn/IRocOXNP6RqDZowagfx3iY+988ypEFdyAD+ihIg
+	Tl2ICrVIbBQnkzY4x51ymWV+V/5vWQckQ+akuEfbdrVpinQvo+qgSuEUOhsE6mCTfa+7j3TVq757O
+	vyZNl5WuGn5KfmeRnBrQ53yXODe0ZVUJT4Mfa/EOdt0PgUbEwHPaFV2PSm33VpRz2SGSeTbTyGzwv
+	9pIYaD+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDoxc-0000000GWy3-1Hyu;
-	Tue, 28 Oct 2025 19:02:24 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vDpJh-0000000GYAI-1erH;
+	Tue, 28 Oct 2025 19:25:13 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDoxZ-0000000GWxQ-2lyk;
-	Tue, 28 Oct 2025 19:02:22 +0000
+	id 1vDpJf-0000000GY9o-3Pm0;
+	Tue, 28 Oct 2025 19:25:11 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 6B63840B8C;
-	Tue, 28 Oct 2025 19:02:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2EB35C4CEE7;
-	Tue, 28 Oct 2025 19:02:20 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id A18DF6117F;
+	Tue, 28 Oct 2025 19:25:10 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C818FC4CEE7;
+	Tue, 28 Oct 2025 19:25:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1761678140;
-	bh=FphJo2SDn8RkNNoEowQmoek17vzitC3fE1fUYqVA91k=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=spaiYdVM2oh+Rg2HGD4pv16liq4KvSXnsknDcLkGpJIzFAaTlNs5jDfxLZ/IepDvY
-	 62UimWM5lX8csDBaI77mWy6Ili7I1d6a85CvHCYgH2jbQVz307BqBPGfcvrLMw7SnG
-	 Zewk9g4GF1VWuwl0bjqY9H9jUfNSmgolqL+Gbxuzm08sMa6X6j2GTtnCZyMbn84fiM
-	 TCdgT72Uwz6FKvpot1gfnFfQPObge1LD0k1OkeAUt/H3fS4zYKMl+1XQzP6zYNXidO
-	 7LXPE3BF/xZsNZMK1K1EzUjZjEd5L7eo3RjgIMGZUecvDUQgvBe9TmINHFC5KGHn6t
-	 UMeALpMErElyQ==
-Date: Tue, 28 Oct 2025 14:02:18 -0500
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Niklas Cassel <cassel@kernel.org>
-Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	Kever Yang <kever.yang@rock-chips.com>,
-	Simon Xue <xxm@rock-chips.com>, Damien Le Moal <dlemoal@kernel.org>,
-	Dragan Simic <dsimic@manjaro.org>, FUKAUMI Naoki <naoki@radxa.com>,
-	Diederik de Haas <diederik@cknow-tech.com>, stable@vger.kernel.org,
-	Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>,
-	Daire McNamara <daire.mcnamara@microchip.com>,
-	Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>,
-	Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, linux-pci@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v3] PCI: dw-rockchip: Prevent advertising L1 Substates
- support
-Message-ID: <20251028190218.GA1525614@bhelgaas>
+	s=k20201202; t=1761679510;
+	bh=XzkzbGZFJX7fWGHnbE/Y5oGhVPC5GuyUzPdnHmqzKb0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=GrLIAFo837yv+OWNyDu2d7MfcVLAIEW1OGZDv4EX/FNQrHRPhEHQqqadlnFzzWtbP
+	 pN6M2yGl+gQB88R+iroqnT2AlMq8biC3DoeyZ+uljYwqUIneHquhv29cbQZvEXcKu4
+	 ACazwHy3RZlY96Dfaseqoa9pF2FiAxEMvs7fjak2Xbf+2PalNuQDUCa6SmcoIUExaz
+	 Dd8Mef7vf09/9VhSGzDewGXOFDXKZGBht9veqw1xiqKow6c4c1KclcYhyaCClWtqks
+	 i8NU6u9vULZaqPSZDOj1ylhaYG+E+CQesRtsfboIF7pcycyey9qxpWSxPN7wyJ4Muv
+	 Chs3znba4NPSw==
+Date: Tue, 28 Oct 2025 19:25:05 +0000
+From: Conor Dooley <conor@kernel.org>
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Subject: Re: [PATCH v3 1/2] dt-bindings: display: rk3588-dw-hdmi-qp: Add
+ frl-enable-gpios property
+Message-ID: <20251028-villain-baboon-a52e54d46050@spud>
+References: <20251027222641.25066-1-laurent.pinchart@ideasonboard.com>
+ <20251027222641.25066-2-laurent.pinchart@ideasonboard.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20251017163252.598812-2-cassel@kernel.org>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251028_120221_745713_FC069195 
-X-CRM114-Status: GOOD (  29.83  )
+In-Reply-To: <20251027222641.25066-2-laurent.pinchart@ideasonboard.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,94 +62,63 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>, Rob Herring <robh@kernel.org>, Sandy Huang <hjc@rock-chips.com>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
+Content-Type: multipart/mixed; boundary="===============6537528494402663709=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-[+cc Daire, Karthikeyan, Hou]
 
-On Fri, Oct 17, 2025 at 06:32:53PM +0200, Niklas Cassel wrote:
-> The L1 substates support requires additional steps to work, namely:
-> -Proper handling of the CLKREQ# sideband signal. (It is mostly handled by
->  hardware, but software still needs to set the clkreq fields in the
->  PCIE_CLIENT_POWER_CON register to match the hardware implementation.)
-> -Program the frequency of the aux clock into the
->  DSP_PCIE_PL_AUX_CLK_FREQ_OFF register. (During L1 substates the core_clk
->  is turned off and the aux_clk is used instead.)
-> 
-> These steps are currently missing from the driver.
-> 
-> For more details, see section '18.6.6.4 L1 Substate' in the RK3658 TRM 1.1
-> Part 2, or section '11.6.6.4 L1 Substate' in the RK3588 TRM 1.0 Part2.
-> 
-> While this has always been a problem when using e.g.
-> CONFIG_PCIEASPM_POWER_SUPERSAVE=y, or when modifying
-> /sys/bus/pci/devices/.../link/l1_2_aspm, the lacking driver support for L1
-> substates became more apparent after commit f3ac2ff14834 ("PCI/ASPM:
-> Enable all ClockPM and ASPM states for devicetree platforms"), which
-> enabled ASPM also for CONFIG_PCIEASPM_DEFAULT=y.
-> 
-> When using e.g. an NVMe drive connected to the PCIe controller, the
-> problem will be seen as:
-> nvme nvme0: controller is down; will reset: CSTS=0xffffffff, PCI_STATUS=0x10
-> nvme nvme0: Does your device have a faulty power saving mode enabled?
-> nvme nvme0: Try "nvme_core.default_ps_max_latency_us=0 pcie_aspm=off pcie_port_pm=off" and report a bug
-> 
-> Thus, prevent advertising L1 Substates support until proper driver support
-> is added.
-> 
-> Cc: stable@vger.kernel.org
-> Fixes: 0e898eb8df4e ("PCI: rockchip-dwc: Add Rockchip RK356X host controller driver")
-> Fixes: f3ac2ff14834 ("PCI/ASPM: Enable all ClockPM and ASPM states for devicetree platforms")
-> Acked-by: Shawn Lin <shawn.lin@rock-chips.com>
-> Signed-off-by: Niklas Cassel <cassel@kernel.org>
-> ---
-> Changes since v2:
-> -Improve commit message (Bjorn)
-> 
->  drivers/pci/controller/dwc/pcie-dw-rockchip.c | 21 +++++++++++++++++++
->  1 file changed, 21 insertions(+)
-> 
-> diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> index 3e2752c7dd09..84f882abbca5 100644
-> --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> @@ -200,6 +200,25 @@ static bool rockchip_pcie_link_up(struct dw_pcie *pci)
->  	return FIELD_GET(PCIE_LINKUP_MASK, val) == PCIE_LINKUP;
->  }
->  
-> +/*
-> + * See e.g. section '11.6.6.4 L1 Substate' in the RK3588 TRM V1.0 for the steps
-> + * needed to support L1 substates. Currently, not a single rockchip platform
-> + * performs these steps, so disable L1 substates until there is proper support.
-> + */
-> +static void rockchip_pcie_disable_l1sub(struct dw_pcie *pci)
-> +{
-> +	u32 cap, l1subcap;
-> +
-> +	cap = dw_pcie_find_ext_capability(pci, PCI_EXT_CAP_ID_L1SS);
-> +	if (cap) {
-> +		l1subcap = dw_pcie_readl_dbi(pci, cap + PCI_L1SS_CAP);
-> +		l1subcap &= ~(PCI_L1SS_CAP_L1_PM_SS | PCI_L1SS_CAP_ASPM_L1_1 |
-> +			      PCI_L1SS_CAP_ASPM_L1_2 | PCI_L1SS_CAP_PCIPM_L1_1 |
-> +			      PCI_L1SS_CAP_PCIPM_L1_2);
-> +		dw_pcie_writel_dbi(pci, cap + PCI_L1SS_CAP, l1subcap);
-> +	}
-> +}
+--===============6537528494402663709==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="iclSnaj8umiVc3sR"
+Content-Disposition: inline
 
-I like this.  But why should we do it just for dw-rockchip?  Is there
-something special about dw-rockchip that makes this a problem?  Maybe
-we should consider doing this in the dwc, cadence, mobiveil, and plda
-cores instead of trying to do it for every driver individually?
 
-Advertising L1SS support via PCI_EXT_CAP_ID_L1SS means users can
-enable L1SS via CONFIG_PCIEASPM_POWER_SUPERSAVE=y or sysfs, and that
-seems likely to cause problems unless CLKREQ# is supported.
+--iclSnaj8umiVc3sR
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Bjorn
+On Tue, Oct 28, 2025 at 12:26:40AM +0200, Laurent Pinchart wrote:
+> From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+>=20
+> Add an optional property to RK3588 HDMI TX Controller binding describing
+> a GPIO line to be asserted when operating in HDMI 2.1 FRL mode and
+> deasserted for HDMI 1.4/2.0 TMDS.
+>=20
+> This is used to control an external voltage bias for HDMI data lines.
+>=20
+> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+> Co-developed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
+pw-bot: not-applicable
+
+--iclSnaj8umiVc3sR
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaQEYkQAKCRB4tDGHoIJi
+0piUAP9EBL9wyve+A7DplHmvD/iHMXkse+rSUiPoBFdlzDNptAEAvqsaVjGlt25G
+KP2c82RyKgToVpl0b7ZzHc5UWZ26bQ4=
+=a3Iy
+-----END PGP SIGNATURE-----
+
+--iclSnaj8umiVc3sR--
+
+
+--===============6537528494402663709==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============6537528494402663709==--
+
