@@ -4,49 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9C49CCD1BF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Oct 2025 21:09:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69B67CCF9E0
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Oct 2025 21:10:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lIj83QWm65y+WxEURPXZQ/JD0fj+jB2v5N9oDfplqKs=; b=36Ibp1yH/XbhqK
-	JHdXCuH5rTljXmPxGMXTvnP1AipTWwICCy5lyVHvcEm6JVUswyTO6xZtYiKnEnhFEtEQtaDuOiN7R
-	a3VrvEMpEEu+2k0CCf6/8MFkqa9Iy0BS6gHtr58U+BD1nWxLU53IdG5bybMzUJ+wj99qmJ7x1w4oU
-	uoBeesoowHZwxCxqDL04d69lKXZ5uZ5eICSQ92WXwBBJetp2DcSzBw+xPcrCzX6CWhIe5EGPPgYp6
-	bKyhaA++f7xloSlu5IHk1YI0mj6fWquEJ7bQRRsxW4utAXizS4LyV4b33nqukWsbRE6MOFZJAsM4y
-	+0zpMIT8r91RMjthKsXw==;
+	List-Owner; bh=5wVynI/wSqx97y50/GqejLnyEfw5c/IipKesziBqbQs=; b=SqVDCLpnAvlH02
+	cBEZ5IwmNko4r6fo/AmoHAKFyxP57Fi1tAKd4hnmePjnssbsg6MvV/nAkQWVuC51Mg19Di8aKQdxP
+	lHWWuewdtwkAm/DkT/Hz5PVK5MP8V2fW3Y6pOZ2h1EoehhjMcVLlVxFo+MTCWLYG05nA6qd3PUuSi
+	ZoKiQhF5z4ekLMu1pPAcnjWbzojv0PrQIrhoQISiIvhLwxAJi8fWTbZqjRaEDRq0zrdRIYWzgS2mF
+	oHDoLQ+L/U37MhYJGDxDeFoblI+U8yJO5DOjZ0ATHXZyZ3aYtc7TdTn6PSU19Q9SCib/18KBQhg5v
+	NUXzVNexm3gw+5VXxqpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDqwP-0000000GfJH-0nsw;
-	Tue, 28 Oct 2025 21:09:17 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vDqxK-0000000GfWe-2QxV;
+	Tue, 28 Oct 2025 21:10:14 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDqwL-0000000GfI5-1QVb;
-	Tue, 28 Oct 2025 21:09:14 +0000
+	id 1vDqxI-0000000GfWA-3wSh;
+	Tue, 28 Oct 2025 21:10:13 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 2B79344E9B;
-	Tue, 28 Oct 2025 21:09:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 15EE1C4CEE7;
-	Tue, 28 Oct 2025 21:09:06 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 293DE60052;
+	Tue, 28 Oct 2025 21:10:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 45B12C4CEE7;
+	Tue, 28 Oct 2025 21:10:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1761685750;
-	bh=SliK6vUaqzg8v6tMdDPxWlV7PCvGYh3QHD8eAZfx6X8=;
+	s=k20201202; t=1761685810;
+	bh=YotBn30JNy1S09WNuV+F7vJnGzh9gaNJ64bE2K4jb3c=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=AqGxJ+55lrAZqJ5nIQEd4zR95BjHjReBWZhU4mrrakOM7Y7ciWte/nAF2wHOyZj11
-	 FoG8UYnXxXemHqKTa4hBqpuka2aYHx0GNzBJPCReLyTMx64M34SH6QN7Kkbm8pdCG/
-	 YHt0dAGcV8DE5mUCmTbE307Q7Fx25L+zP/PZcYbeKceCJYSJkgLzsmA8l1Z7+w6Dpi
-	 rPSxtHb3vmpTL9g2BkK6hlzKGuQP/NrqUBxoNthRVcpl7KvztybrAsbR4rTLutkJOw
-	 0KBodfXGvhK9/dWLDbzA0Hwilqa/+6V/kOxC0hj8QA92+wlk9bZAvkze81GiX1jClZ
-	 pYYB2ebuFta3A==
-Message-ID: <68765cf5-0377-4c7a-a82a-7645fae0b142@kernel.org>
-Date: Tue, 28 Oct 2025 22:09:05 +0100
+	b=VQoBn5zWpM4DVt8R5nq+WuR/6ZkWOaaZBiyPibhVWnqCSFIsn0sOQxEce/CiC1UEF
+	 CcMj6HiMAUphUZS5tRabmwGwDJZBFmVA5Wfp5Y4PI7ET/f4+/Nrv9rnfxe8ik3bfwx
+	 HSxdQfV25UYYgHeSVZPmeJ6MhT5gNzzGC8qXqI7WKiXypZTwIVPPKzMXKOe3KjyD2V
+	 xrAccnNRhXbq3jj47KYOtNX6lruR1PNSs8RV1sH4aENVgJvojm6eqnkR0EX9L/QqGH
+	 idOoiJUCXt1lMpfzcvqoGDOefVOLoOlcy9H4wiVT7goDg9hXCnbpYzeNnvmqGcp1pa
+	 RfH5+lJ/qJfog==
+Message-ID: <8ee98adf-ce92-4d07-b17e-cfecfeaae77b@kernel.org>
+Date: Tue, 28 Oct 2025 22:10:06 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 2/3] dt-bindings: arm: rockchip: Add NineTripod X3568
- series
+Subject: Re: [PATCH v4 1/3] dt-bindings: vendor-prefixes: Add NineTripod
 To: Coia Prant <coiaprant@gmail.com>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
  <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
@@ -54,7 +53,6 @@ To: Coia Prant <coiaprant@gmail.com>, Rob Herring <robh@kernel.org>,
 Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 References: <20251026150358.1078453-1-coiaprant@gmail.com>
- <20251026150358.1078453-2-coiaprant@gmail.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -100,10 +98,7 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  jWt87ecuHlpL3uuQ0ZZNWqHgZoQLXoqC2ZV5KrtKWb/jyiFX/sxSrodALf0zf+tfHv0FZWT2
  zHjUqd0t4njD/UOsuIMOQn4Ig0SdivYPfZukb5cdasKJukG1NOpbW7yRNivaCnfZz6dTawXw
  XRIV/KDsHQiyVxKvN73bThKhONkcX2LWuD928tAR6XMM2G5ovxLe09vuOzzfTWQDsm++9UKF a/A=
-In-Reply-To: <20251026150358.1078453-2-coiaprant@gmail.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251028_140913_423672_955110D7 
-X-CRM114-Status: GOOD (  12.75  )
+In-Reply-To: <20251026150358.1078453-1-coiaprant@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,36 +116,25 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 26/10/2025 16:03, Coia Prant wrote:
-> This documents NineTripod X3568 v4 which is a SBC based on RK3568 SoC.
-> 
-> Link: http://www.9tripod.com/showpro.php?id=117
-> Link: https://appletsapi.52solution.com/media/X3568V4%E5%BC%80%E5%8F%91%E6%9D%BF%E7%A1%AC%E4%BB%B6%E6%89%8B%E5%86%8C.pdf
+> Add NineTripod to the vendor prefixes.
 > 
 > Signed-off-by: Coia Prant <coiaprant@gmail.com>
 > ---
->  Documentation/devicetree/bindings/arm/rockchip.yaml | 6 ++++++
->  1 file changed, 6 insertions(+)
+>  Documentation/devicetree/bindings/vendor-prefixes.yaml | 2 ++
+>  1 file changed, 2 insertions(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-> index 6aceaa8ac..417100209 100644
-> --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-> +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-> @@ -777,6 +777,12 @@ properties:
->            - const: netxeon,r89
->            - const: rockchip,rk3288
->  
-> +      - description: NineTripod X3568 series board
-> +        items:
-> +          - enum:
-> +              - ninetripod,x3568-v4
+> diff --git a/Documentation/devicetree/bindings/vendor-prefixes.yaml b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+> index f1d188200..37687737e 100644
+> --- a/Documentation/devicetree/bindings/vendor-prefixes.yaml
+> +++ b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+> @@ -1124,6 +1124,8 @@ patternProperties:
+>      description: National Instruments
+>    "^nicera,.*":
+>      description: Nippon Ceramic Co., Ltd.
+> +  "^ninetripod,.*":
 
 
-You are supposed to use domain name as prefix. 9tripod
-
-Don't send new versions 30 minutes after sending previous one. Allow
-people to actually review.
-
-You have now comments at v3 and here. You must implement them all.
+9tripod, as domain name.
 
 Best regards,
 Krzysztof
