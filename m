@@ -4,101 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69B67CCF9E0
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Oct 2025 21:10:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BAD87CCF9EA
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Oct 2025 21:34:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5wVynI/wSqx97y50/GqejLnyEfw5c/IipKesziBqbQs=; b=SqVDCLpnAvlH02
-	cBEZ5IwmNko4r6fo/AmoHAKFyxP57Fi1tAKd4hnmePjnssbsg6MvV/nAkQWVuC51Mg19Di8aKQdxP
-	lHWWuewdtwkAm/DkT/Hz5PVK5MP8V2fW3Y6pOZ2h1EoehhjMcVLlVxFo+MTCWLYG05nA6qd3PUuSi
-	ZoKiQhF5z4ekLMu1pPAcnjWbzojv0PrQIrhoQISiIvhLwxAJi8fWTbZqjRaEDRq0zrdRIYWzgS2mF
-	oHDoLQ+L/U37MhYJGDxDeFoblI+U8yJO5DOjZ0ATHXZyZ3aYtc7TdTn6PSU19Q9SCib/18KBQhg5v
-	NUXzVNexm3gw+5VXxqpA==;
+	List-Owner; bh=siuRg/UxuUbY6BBRJHZCEuclr4/cCVgNqcuw0gpei48=; b=zEvuAOwwtOJQ0J
+	52+e6vTh/KSFVvGCA4U5Tck4tdSm4YsxIUqIY1sQilp9PZvp63oab0sIIrH9SJIZwZtRpRvQ2O1o3
+	bliLQ//xW1aum1ltBL4syhTMN1CQCf/gEnvzmRA7Gr1BNWbzuHqqKpqyPANV3ESbfqdF5/N8v8jDl
+	SOpP4zb9ptLMqjgtozeRlsf9AuVp6zvNc4I6U395gFYJbTBvgllg6c0bp5bmskfUoaRD7MsRp/UEo
+	4x8KSXIsUBsfAbt7pOhE9l7F1eiybEJSJuGcIOlQf+1wBYAlNsbrB0sNaAYfywK0XsdjEwuh6Xe6P
+	Lk+vPoKvhgHB8X5/aRQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDqxK-0000000GfWe-2QxV;
-	Tue, 28 Oct 2025 21:10:14 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vDrKV-0000000GhMb-1ftT;
+	Tue, 28 Oct 2025 21:34:11 +0000
+Received: from mail1.manjaro.org ([2a01:4f8:c010:b6e8::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDqxI-0000000GfWA-3wSh;
-	Tue, 28 Oct 2025 21:10:13 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 293DE60052;
-	Tue, 28 Oct 2025 21:10:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 45B12C4CEE7;
-	Tue, 28 Oct 2025 21:10:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1761685810;
-	bh=YotBn30JNy1S09WNuV+F7vJnGzh9gaNJ64bE2K4jb3c=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=VQoBn5zWpM4DVt8R5nq+WuR/6ZkWOaaZBiyPibhVWnqCSFIsn0sOQxEce/CiC1UEF
-	 CcMj6HiMAUphUZS5tRabmwGwDJZBFmVA5Wfp5Y4PI7ET/f4+/Nrv9rnfxe8ik3bfwx
-	 HSxdQfV25UYYgHeSVZPmeJ6MhT5gNzzGC8qXqI7WKiXypZTwIVPPKzMXKOe3KjyD2V
-	 xrAccnNRhXbq3jj47KYOtNX6lruR1PNSs8RV1sH4aENVgJvojm6eqnkR0EX9L/QqGH
-	 idOoiJUCXt1lMpfzcvqoGDOefVOLoOlcy9H4wiVT7goDg9hXCnbpYzeNnvmqGcp1pa
-	 RfH5+lJ/qJfog==
-Message-ID: <8ee98adf-ce92-4d07-b17e-cfecfeaae77b@kernel.org>
-Date: Tue, 28 Oct 2025 22:10:06 +0100
+	id 1vDrKR-0000000GhLX-3ICM;
+	Tue, 28 Oct 2025 21:34:09 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 63F6B40D1C;
+	Tue, 28 Oct 2025 22:33:58 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=dkim;
+	t=1761687241; h=from:subject:date:message-id:to:cc:mime-version:
+	 content-transfer-encoding:in-reply-to:references;
+	bh=OaeV3ReOG98zpsdwkv/9umMpI5IPraCJeVtVuXAToME=;
+	b=Pq77o6HDo9/OSHrQ6/4t3Dekd4Q49eaGkoic01K1yveOMuxs2bsV2H3d/whs55vA1RyDCx
+	ln0HayR5AoExJ7Wbfga9ma11rsONrEU9oNlFPw9SCS83lUocgFw8EHTxi5RN8wabT4y2Bk
+	EeivFgTwt9Re5mbQKNby3HqAN9OvLEKOa6SiiNQDfthFfsW6FeSPh4ZBd3UmQMmdS1aw59
+	u71NY+SwqsDrt/PCLeKunLGWcO2gBl24d8WGsVD298qayTt4K2qP2w3cu1hBaYCPj73MwS
+	7lPDhjLxRc9kgJ5MvzAUH6/XZ0N2E363TB02zrWCv/sQCb7DgndQLWjExOo+kQ==
+From: Dragan Simic <dsimic@manjaro.org>
+To: nicolas.frattaroli@collabora.com
+Cc: alexandre.belloni@bootlin.com,
+	conor+dt@kernel.org,
+	devicetree@vger.kernel.org,
+	dmitry.torokhov@gmail.com,
+	heiko@sntech.de,
+	kernel@collabora.com,
+	krzk+dt@kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-input@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	robh@kernel.org
+Subject: [PATCH 2/4] Input: adc-keys - support types that aren't just keyboard keys
+Date: Tue, 28 Oct 2025 22:32:09 +0100
+Message-Id: <20251028213209.2646838-1-dsimic@manjaro.org>
+X-Mailer: git-send-email 2.33.1
+In-Reply-To: <20250630-rock4d-audio-v1-2-0b3c8e8fda9c@collabora.com>
+References: <20250630-rock4d-audio-v1-2-0b3c8e8fda9c@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 1/3] dt-bindings: vendor-prefixes: Add NineTripod
-To: Coia Prant <coiaprant@gmail.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Dragan Simic <dsimic@manjaro.org>, Jonas Karlman <jonas@kwiboo.se>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20251026150358.1078453-1-coiaprant@gmail.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <20251026150358.1078453-1-coiaprant@gmail.com>
+X-Last-TLS-Session-Version: TLSv1.3
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251028_143408_065096_A21AA312 
+X-CRM114-Status: GOOD (  23.93  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,29 +78,114 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 26/10/2025 16:03, Coia Prant wrote:
-> Add NineTripod to the vendor prefixes.
+Hello Nicolas,
+
+On Monday, June 30, 2025, 12:19:24 Nicolas Frattaroli wrote:
+> Instead of doing something like what gpio-keys is doing, adc-keys
+> hardcodes that all keycodes must be of type EV_KEY.
 > 
-> Signed-off-by: Coia Prant <coiaprant@gmail.com>
+> This limits the usefulness of adc-keys, and overcomplicates the code
+> with manual bit-setting logic.
+> 
+> Instead, refactor the code to read the linux,input-type fwnode property,
+> and get rid of the custom bit setting logic, replacing it with
+> input_set_capability instead. input_report_key is replaced with
+> input_event, which allows us to explicitly pass the type.
+
+Thanks for this patch, it's indeed very useful!  Please see some
+comments below.
+
+> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 > ---
->  Documentation/devicetree/bindings/vendor-prefixes.yaml | 2 ++
->  1 file changed, 2 insertions(+)
+>  drivers/input/keyboard/adc-keys.c | 16 ++++++++++++----
+>  1 file changed, 12 insertions(+), 4 deletions(-)
 > 
-> diff --git a/Documentation/devicetree/bindings/vendor-prefixes.yaml b/Documentation/devicetree/bindings/vendor-prefixes.yaml
-> index f1d188200..37687737e 100644
-> --- a/Documentation/devicetree/bindings/vendor-prefixes.yaml
-> +++ b/Documentation/devicetree/bindings/vendor-prefixes.yaml
-> @@ -1124,6 +1124,8 @@ patternProperties:
->      description: National Instruments
->    "^nicera,.*":
->      description: Nippon Ceramic Co., Ltd.
-> +  "^ninetripod,.*":
+> diff --git a/drivers/input/keyboard/adc-keys.c b/drivers/input/keyboard/adc-keys.c
+> index f1753207429db02ce6510e5ec0da9b24d9edb61d..339dd4d4a0842108da2c6136b1e0098cd1f6a3cd 100644
+> --- a/drivers/input/keyboard/adc-keys.c
+> +++ b/drivers/input/keyboard/adc-keys.c
+> @@ -19,12 +19,14 @@
+>  struct adc_keys_button {
+>  	u32 voltage;
+>  	u32 keycode;
+> +	u32 type;
+>  };
+>  
+>  struct adc_keys_state {
+>  	struct iio_channel *channel;
+>  	u32 num_keys;
+>  	u32 last_key;
+> +	u32 last_type;
+>  	u32 keyup_voltage;
+>  	const struct adc_keys_button *map;
+>  };
+> @@ -35,6 +37,7 @@ static void adc_keys_poll(struct input_dev *input)
+>  	int i, value, ret;
+>  	u32 diff, closest = 0xffffffff;
+>  	int keycode = 0;
+> +	u32 type = EV_KEY;
+>  
+>  	ret = iio_read_channel_processed(st->channel, &value);
+>  	if (unlikely(ret < 0)) {
+> @@ -46,6 +49,7 @@ static void adc_keys_poll(struct input_dev *input)
+>  			if (diff < closest) {
+>  				closest = diff;
+>  				keycode = st->map[i].keycode;
+> +				type = st->map[i].type;
+>  			}
+>  		}
+>  	}
+> @@ -54,13 +58,14 @@ static void adc_keys_poll(struct input_dev *input)
+>  		keycode = 0;
+>  
+>  	if (st->last_key && st->last_key != keycode)
+> -		input_report_key(input, st->last_key, 0);
+> +		input_event(input, st->last_type, st->last_key, 0);
+>  
+>  	if (keycode)
+> -		input_report_key(input, keycode, 1);
+> +		input_event(input, type, keycode, 1);
 
+When EV_ABS is defined in the DT as the key type, which happens with
+joysticks and whatnot, separate handling is needed, by requiring the
+actual associated button values to be reported in the input_event()
+invocations, more specifically on the keypresses only.
 
-9tripod, as domain name.
+That's also visible in the gpio_keys_gpio_report_event() function in
+drivers/input/keyboard/gpio_keys.c.
 
-Best regards,
-Krzysztof
+>  	input_sync(input);
+>  	st->last_key = keycode;
+> +	st->last_type = type;
+>  }
+>  
+>  static int adc_keys_load_keymap(struct device *dev, struct adc_keys_state *st)
+> @@ -93,6 +98,10 @@ static int adc_keys_load_keymap(struct device *dev, struct adc_keys_state *st)
+>  			return -EINVAL;
+>  		}
+>  
+> +		if (fwnode_property_read_u32(child, "linux,input-type",
+> +					     &map[i].type))
+> +			map[i].type = EV_KEY;
+
+Going along with the remarks above, it will also be needed to read
+and record the values of "linux,input-value" DT properties here, and
+to extend the associated binding to define their presence.
+
+>  		i++;
+>  	}
+>  
+> @@ -156,9 +165,8 @@ static int adc_keys_probe(struct platform_device *pdev)
+>  	input->id.product = 0x0001;
+>  	input->id.version = 0x0100;
+>  
+> -	__set_bit(EV_KEY, input->evbit);
+>  	for (i = 0; i < st->num_keys; i++)
+> -		__set_bit(st->map[i].keycode, input->keybit);
+> +		input_set_capability(input, st->map[i].type, st->map[i].keycode);
+>  
+>  	if (device_property_read_bool(dev, "autorepeat"))
+>  		__set_bit(EV_REP, input->evbit);
 
 _______________________________________________
 Linux-rockchip mailing list
