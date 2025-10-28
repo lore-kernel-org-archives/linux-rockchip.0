@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C81ACCD1BF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Oct 2025 08:02:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26B3ECCD1BF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Oct 2025 08:16:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kA9qKZ7AhZeWBv32aEB74wY0AfnMqiuyaP0hbdfGsaM=; b=BauTTp5JfI1gQF
-	HKeMpH5DpVeDI6eVpauNBDPtBezL4BXY82tfedHohoZD/QxnVOJF6YrbyhSdVGeqHUncJfqdW6uqB
-	WR/ii9j22QEERIn9G0XCLhNvrygAU00KCBGMUcqfZ5G6PWa3IjcxPlMB/lbf4uvFSYf+R01LgMYCr
-	s9/xQ4JMIW/3F35tK4yCm/GJcPKKXoAhCEuc27D356K9QKzdgS/oJlmOauChVrZ2U61JCdZwZpKx0
-	J5lEFLSCFgpDSaGWn6IP4PmBci96pNX8KhrKhCiPbOZCyKxnfPYMgCJKBEGLa8KAQars8oTZbdmkE
-	maGy07XGG3uCB03NwOxw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:
+	Cc:To:Subject:MIME-Version:Date:Message-ID:Content-Type:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=W0WRyahsnFF+vQAwFm9IK6qSkUjxhdK42CHPiE+C+Fg=; b=DMZfPryKnAKj0qexX4uwSpJdF6
+	82Y6DzJFLeTb9gM5vGwFyalWjYtj6Kw0UDTCBze/CImFjbIpFwBPnwba1Cunt8o2ozWEBZj7xAX3d
+	yEVn4LEl3qGSlj5Ful6JVFTpHJk0DRhEA168rPtEbcZzb3s+mVuWFghQlXi6hY+7KEcZ4XypxFTcx
+	xpMyWNyJXnh0DbSX2Sz205rCvzPTugaLjxMxMMNyKi/vvTPyLWomyM5BDc/a4aS1M7XredFl22V10
+	EnNXdOlGYyijjMd7y8ueOnw8766+/KDO+uK1qthkB4GBLOzouDyELRrBMhicqpOgjfEYQ+QZo4vh3
+	dXfMpmlw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDeer-0000000FV3n-1Fn8;
-	Tue, 28 Oct 2025 08:02:21 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vDesd-0000000FWED-2o1T;
+	Tue, 28 Oct 2025 08:16:35 +0000
+Received: from mail-m49217.qiye.163.com ([45.254.49.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDeee-0000000FUtk-3Ysn;
-	Tue, 28 Oct 2025 08:02:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1761638526;
-	bh=TNHkPXwgc5tmqyvbeK2fXln0nHFwJI1Jb/ffLMCgK9k=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=YpAVHajvBYQsiyXBva9b/ZbbvasCAkium04BpsQHT811VRI+ZWsW56dwQ8IkgKHx8
-	 1WfbIgZeGvoIZItIrt49UgGPZW3uGC7F/+kq7VvzSKS91+irYZwqVTr6VSGYhzDVjm
-	 wTvNtczckSYHaP48GpJ4SNpn3hFzWXSNiPeEbScHF00gB+Fu60F/chkUmREdNLhbeU
-	 tEAQ/zFnMm/0zN8yse8MKFPKlcvoZuD8gL156hCWDrkgJbLKQZ3WhXnBYZB3GfZBb5
-	 yhFx9Mpq7GfhWUJjxSv9hL3gWUSMEosGDtDhwNyIlC36UUWhfU5UBG8qrOQDbiUUxP
-	 VqfINe2aqWPFw==
-Received: from localhost (unknown [82.79.138.145])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with UTF8SMTPSA id 5679A17E1402;
-	Tue, 28 Oct 2025 09:02:06 +0100 (CET)
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Tue, 28 Oct 2025 10:00:56 +0200
-Subject: [PATCH RESEND 3/3] phy: rockchip: samsung-hdptx: Prevent
- Inter-Pair Skew from exceeding the limits
+	id 1vDesa-0000000FWCu-1ZeI;
+	Tue, 28 Oct 2025 08:16:34 +0000
+Received: from [172.16.12.26] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 277602d99;
+	Tue, 28 Oct 2025 16:16:27 +0800 (GMT+08:00)
+Content-Type: multipart/mixed; boundary="------------PdXS0cE3u8xAHvhAPnkRnp4J"
+Message-ID: <8a6e920b-9565-4161-9d71-63f924593c23@rock-chips.com>
+Date: Tue, 28 Oct 2025 16:16:26 +0800
 MIME-Version: 1.0
-Message-Id: <20251028-phy-hdptx-fixes-v1-3-ecc642a59d94@collabora.com>
-References: <20251028-phy-hdptx-fixes-v1-0-ecc642a59d94@collabora.com>
-In-Reply-To: <20251028-phy-hdptx-fixes-v1-0-ecc642a59d94@collabora.com>
-To: Vinod Koul <vkoul@kernel.org>, 
- Kishon Vijay Abraham I <kishon@kernel.org>, 
- Heiko Stuebner <heiko@sntech.de>, Dmitry Baryshkov <lumag@kernel.org>, 
- Algea Cao <algea.cao@rock-chips.com>
-Cc: kernel@collabora.com, linux-phy@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org
-X-Mailer: b4 0.14.3
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 3/5] pwm: Add rockchip PWMv4 driver
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
+ =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <ukleinek@kernel.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Lee Jones <lee@kernel.org>, William Breathitt Gray <wbg@kernel.org>
+Cc: kernel@collabora.com, Jonas Karlman <jonas@kwiboo.se>,
+ Alexey Charkov <alchark@gmail.com>, linux-rockchip@lists.infradead.org,
+ linux-pwm@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-iio@vger.kernel.org
+References: <20251027-rk3576-pwm-v3-0-654a5cb1e3f8@collabora.com>
+ <20251027-rk3576-pwm-v3-3-654a5cb1e3f8@collabora.com>
+Content-Language: en-US
+From: Damon Ding <damon.ding@rock-chips.com>
+In-Reply-To: <20251027-rk3576-pwm-v3-3-654a5cb1e3f8@collabora.com>
+X-HM-Tid: 0a9a29e3d04203a3kunma54aa20d1201d1
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGRhNHVYYGkJPHU5PHhpNHUhWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=SB3GWG7T0SlKULOUlaw954l4NyDL+/Bzf8HSPCc4jUguT6hvhizVzYnaLQSSvWeM9oEUq6ff3MuChk3Ts9xBN5xTncQCaPBtW1XqOVC8PV4UY1lmOCCAB68DO6ZMey7vmjiErK5PUVOukLybRhiWCZOcd53xlul0/VsWkPBCO5o=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=K+6HGTgjaSvG82Coa3pZ418ociHvbPlPsxJ2duK2Hvo=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251028_010209_055882_03596A7D 
-X-CRM114-Status: UNSURE (   8.76  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251028_011632_940840_22C3C7C7 
+X-CRM114-Status: GOOD (  36.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,59 +74,248 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Fixup PHY deskew FIFO to prevent the phase of D2 lane going ahead of
-other lanes.  It's worth noting this might only happen when dealing with
-HDMI 2.0 rates.
+This is a multi-part message in MIME format.
+--------------PdXS0cE3u8xAHvhAPnkRnp4J
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 
-Fixes: 553be2830c5f ("phy: rockchip: Add Samsung HDMI/eDP Combo PHY driver")
-Co-developed-by: Algea Cao <algea.cao@rock-chips.com>
-Signed-off-by: Algea Cao <algea.cao@rock-chips.com>
-Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
----
- drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
+Hi Nicolas,
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-index 8ba9b53c2309..29de2f7bdae8 100644
---- a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-+++ b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-@@ -668,13 +668,9 @@ static const struct reg_sequence rk_hdtpx_common_lane_init_seq[] = {
- 
- static const struct reg_sequence rk_hdtpx_tmds_lane_init_seq[] = {
- 	REG_SEQ0(LANE_REG(0312), 0x00),
--	REG_SEQ0(LANE_REG(031e), 0x00),
- 	REG_SEQ0(LANE_REG(0412), 0x00),
--	REG_SEQ0(LANE_REG(041e), 0x00),
- 	REG_SEQ0(LANE_REG(0512), 0x00),
--	REG_SEQ0(LANE_REG(051e), 0x00),
- 	REG_SEQ0(LANE_REG(0612), 0x00),
--	REG_SEQ0(LANE_REG(061e), 0x08),
- 	REG_SEQ0(LANE_REG(0303), 0x2f),
- 	REG_SEQ0(LANE_REG(0403), 0x2f),
- 	REG_SEQ0(LANE_REG(0503), 0x2f),
-@@ -687,6 +683,11 @@ static const struct reg_sequence rk_hdtpx_tmds_lane_init_seq[] = {
- 	REG_SEQ0(LANE_REG(0406), 0x1c),
- 	REG_SEQ0(LANE_REG(0506), 0x1c),
- 	REG_SEQ0(LANE_REG(0606), 0x1c),
-+	/* Keep Inter-Pair Skew in the limits */
-+	REG_SEQ0(LANE_REG(031e), 0x02),
-+	REG_SEQ0(LANE_REG(041e), 0x02),
-+	REG_SEQ0(LANE_REG(051e), 0x02),
-+	REG_SEQ0(LANE_REG(061e), 0x0a),
- };
- 
- static struct tx_drv_ctrl tx_drv_ctrl_rbr[4][4] = {
+On 10/28/2025 1:11 AM, Nicolas Frattaroli wrote:
+> The Rockchip RK3576 brings with it a new PWM IP, in downstream code
+> referred to as "v4". This new IP is different enough from the previous
+> Rockchip IP that I felt it necessary to add a new driver for it, instead
+> of shoehorning it in the old one.
+> 
+> Add this new driver, based on the PWM core's waveform APIs. Its platform
+> device is registered by the parent mfpwm driver, from which it also
+> receives a little platform data struct, so that mfpwm can guarantee that
+> all the platform device drivers spread across different subsystems for
+> this specific hardware IP do not interfere with each other.
+> 
+> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> ---
+>   MAINTAINERS                   |   1 +
+>   drivers/pwm/Kconfig           |  13 ++
+>   drivers/pwm/Makefile          |   1 +
+>   drivers/pwm/pwm-rockchip-v4.c | 353 ++++++++++++++++++++++++++++++++++++++++++
+>   4 files changed, 368 insertions(+)
+> 
 
--- 
-2.51.0
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 8f3235ba825e..2079c2d51d5c 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -22372,6 +22372,7 @@ L:	linux-rockchip@lists.infradead.org
+>   L:	linux-pwm@vger.kernel.org
+>   S:	Maintained
+>   F:	Documentation/devicetree/bindings/pwm/rockchip,rk3576-pwm.yaml
+> +F:	drivers/pwm/pwm-rockchip-v4.c
+>   F:	drivers/soc/rockchip/mfpwm.c
+>   F:	include/soc/rockchip/mfpwm.h
+>   
+> diff --git a/drivers/pwm/Kconfig b/drivers/pwm/Kconfig
+> index c2fd3f4b62d9..b852a7b2a29d 100644
+> --- a/drivers/pwm/Kconfig
+> +++ b/drivers/pwm/Kconfig
+> @@ -615,6 +615,19 @@ config PWM_ROCKCHIP
+>   	  Generic PWM framework driver for the PWM controller found on
+>   	  Rockchip SoCs.
+>   
+> +config PWM_ROCKCHIP_V4
+> +	tristate "Rockchip PWM v4 support"
+> +	depends on ARCH_ROCKCHIP || COMPILE_TEST
+> +	depends on HAS_IOMEM
+> +	depends on MFD_ROCKCHIP_MFPWM
+> +	help
+> +	  Generic PWM framework driver for the PWM controller found on
+> +	  later Rockchip SoCs such as the RK3576.
+> +
+> +	  Uses the Rockchip Multi-function PWM controller driver infrastructure
+> +	  to guarantee fearlessly concurrent operation with other functions of
+> +	  the same device implemented by drivers in other subsystems.
+> +
+>   config PWM_SAMSUNG
+>   	tristate "Samsung PWM support"
+>   	depends on PLAT_SAMSUNG || ARCH_S5PV210 || ARCH_EXYNOS || COMPILE_TEST
+> diff --git a/drivers/pwm/Makefile b/drivers/pwm/Makefile
+> index dfa8b4966ee1..fe0d16558d99 100644
+> --- a/drivers/pwm/Makefile
+> +++ b/drivers/pwm/Makefile
+> @@ -55,6 +55,7 @@ obj-$(CONFIG_PWM_RENESAS_RZG2L_GPT)	+= pwm-rzg2l-gpt.o
+>   obj-$(CONFIG_PWM_RENESAS_RZ_MTU3)	+= pwm-rz-mtu3.o
+>   obj-$(CONFIG_PWM_RENESAS_TPU)	+= pwm-renesas-tpu.o
+>   obj-$(CONFIG_PWM_ROCKCHIP)	+= pwm-rockchip.o
+> +obj-$(CONFIG_PWM_ROCKCHIP_V4)	+= pwm-rockchip-v4.o
+>   obj-$(CONFIG_PWM_SAMSUNG)	+= pwm-samsung.o
+>   obj-$(CONFIG_PWM_SIFIVE)	+= pwm-sifive.o
+>   obj-$(CONFIG_PWM_SL28CPLD)	+= pwm-sl28cpld.o
+> diff --git a/drivers/pwm/pwm-rockchip-v4.c b/drivers/pwm/pwm-rockchip-v4.c
+> new file mode 100644
+> index 000000000000..7afa83f12b6a
+> --- /dev/null
+> +++ b/drivers/pwm/pwm-rockchip-v4.c
+> @@ -0,0 +1,353 @@
+> +// SPDX-License-Identifier: GPL-2.0-or-later
+> +/*
+> + * Copyright (c) 2025 Collabora Ltd.
+> + *
+> + * A Pulse-Width-Modulation (PWM) generator driver for the generators found in
+> + * Rockchip SoCs such as the RK3576, internally referred to as "PWM v4". Uses
+> + * the MFPWM infrastructure to guarantee exclusive use over the device without
+> + * other functions of the device from different drivers interfering with its
+> + * operation while it's active.
+> + *
+> + * Technical Reference Manual: Chapter 31 of the RK3506 TRM Part 1, a SoC which
+> + * uses the same PWM hardware and has a publicly available TRM.
+> + * https://opensource.rock-chips.com/images/3/36/Rockchip_RK3506_TRM_Part_1_V1.2-20250811.pdf
+> + *
+> + * Authors:
+> + *     Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> + *
+> + * Limitations:
+> + * - When the output is disabled, it will end abruptly without letting the
+> + *   current period complete.
+> + *   TODO: This can be fixed in the driver in the future by having the enable-
+> + *         to-disable transition switch to oneshot mode with one repetition,
+> + *         and then disable the pwmclk and release mfpwm when the oneshot
+> + *         complete interrupt fires.
+> + * - When the output is disabled, the pin will remain driven to whatever state
+> + *   it last had.
+> + * - Adjustments to the duty cycle will only take effect during the next period.
+> + * - Adjustments to the period length will only take effect during the next
+> + *   period.
+> + * - offset should be between 0 and (period - duty)
+> + */
+> +
+> +#include <linux/math64.h>
+> +#include <linux/mfd/rockchip-mfpwm.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/pwm.h>
+> +
+> +struct rockchip_pwm_v4 {
+> +	struct rockchip_mfpwm_func *pwmf;
+> +	struct pwm_chip chip;
+> +};
+> +
+> +struct rockchip_pwm_v4_wf {
+> +	u32 period;
+> +	u32 duty;
+> +	u32 offset;
+> +	u8 enable;
+> +};
+> +
 
+...
+
+> +
+> +static int rockchip_pwm_v4_read_wf(struct pwm_chip *chip, struct pwm_device *pwm,
+> +				   void *_wfhw)
+> +{
+> +	struct rockchip_pwm_v4 *pc = to_rockchip_pwm_v4(chip);
+> +	struct rockchip_pwm_v4_wf *wfhw = _wfhw;
+> +	int ret = 0;
+> +
+
+Redundant blank lin. ;-)
+
+> +
+> +	ret = mfpwm_acquire(pc->pwmf);
+> +	if (ret)
+> +		return ret;
+> +
+> +	wfhw->period = mfpwm_reg_read(pc->pwmf->base, PWMV4_REG_PERIOD);
+> +	wfhw->duty = mfpwm_reg_read(pc->pwmf->base, PWMV4_REG_DUTY);
+> +	wfhw->offset = mfpwm_reg_read(pc->pwmf->base, PWMV4_REG_OFFSET);
+> +	wfhw->enable = mfpwm_reg_read(pc->pwmf->base, PWMV4_REG_ENABLE) & PWMV4_EN_BOTH_MASK;
+> +
+> +	mfpwm_release(pc->pwmf);
+> +
+> +	return 0;
+> +}
+> +
+
+...
+
+> +MODULE_AUTHOR("Nicolas Frattaroli <nicolas.frattaroli@collabora.com>");
+> +MODULE_DESCRIPTION("Rockchip PWMv4 Driver");
+> +MODULE_LICENSE("GPL");
+> +MODULE_IMPORT_NS("ROCKCHIP_MFPWM");
+> +MODULE_ALIAS("platform:pwm-rockchip-v4");
+> 
+
+Tested-by: Damon Ding <damon.ding@rock-chips.com>
+
+I have tested all the PWM channels in continuous mode on my 
+RK3576-IOTEST board.
+
+Test commands are like:
+
+cd /sys/class/pwm/pwmchip0/
+echo 0 > export
+cd pwm0
+echo 10000 > period
+echo 5000 > duty_cycle
+echo normal > polarity
+echo 1 > enable
+
+In addition, the patch related to DTS are attached.
+
+Best regards,
+Damon
+
+--------------PdXS0cE3u8xAHvhAPnkRnp4J
+Content-Type: text/plain; charset=UTF-8;
+ name="rk3576_evb1_enable_all_pwm_channels.patch"
+Content-Disposition: attachment;
+ filename="rk3576_evb1_enable_all_pwm_channels.patch"
+Content-Transfer-Encoding: base64
+
+ZGlmZiAtLWdpdCBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTc2LWV2YjEt
+djEwLmR0cyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTc2LWV2YjEtdjEw
+LmR0cwppbmRleCBkYjhmZWY3YTRmMWIuLmI4ZGI2ZTRjMTI0NiAxMDA2NDQKLS0tIGEvYXJj
+aC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1NzYtZXZiMS12MTAuZHRzCisrKyBiL2Fy
+Y2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTc2LWV2YjEtdjEwLmR0cwpAQCAtMjQs
+NiArMjQsNyBAQCBhbGlhc2VzIHsKIAogCWNob3NlbjogY2hvc2VuIHsKIAkJc3Rkb3V0LXBh
+dGggPSAic2VyaWFsMDoxNTAwMDAwbjgiOworCQlib290YXJncyA9ICJyb290PVBBUlRVVUlE
+PTYxNGUwMDAwLTAwMDAgcm9vdHdhaXQiOwogCX07CiAKIAlhZGNfa2V5czogYWRjLWtleXMg
+ewpAQCAtOTQxLDMgKzk0Miw4MyBAQCB2cDBfb3V0X2hkbWk6IGVuZHBvaW50QFJPQ0tDSElQ
+X1ZPUDJfRVBfSERNSTAgewogCQlyZW1vdGUtZW5kcG9pbnQgPSA8JmhkbWlfaW5fdnAwPjsK
+IAl9OwogfTsKKworJnB3bTBfMmNoXzAgeworCXN0YXR1cyA9ICJva2F5IjsKKwlwaW5jdHJs
+LTAgPSA8JnB3bTBtMV9jaDA+OworfTsKKworJnB3bTBfMmNoXzEgeworCXN0YXR1cyA9ICJv
+a2F5IjsKKwlwaW5jdHJsLTAgPSA8JnB3bTBtMl9jaDE+OworfTsKKworJnB3bTFfNmNoXzAg
+eworCXN0YXR1cyA9ICJva2F5IjsKKwlwaW5jdHJsLTAgPSA8JnB3bTFtMV9jaDA+OworfTsK
+KworJnB3bTFfNmNoXzEgeworCXN0YXR1cyA9ICJva2F5IjsKKwlwaW5jdHJsLTAgPSA8JnB3
+bTFtMV9jaDE+OworfTsKKworJnB3bTFfNmNoXzIgeworCXN0YXR1cyA9ICJva2F5IjsKKwlw
+aW5jdHJsLTAgPSA8JnB3bTFtMl9jaDI+OworfTsKKworJnB3bTFfNmNoXzMgeworCXN0YXR1
+cyA9ICJva2F5IjsKKwlwaW5jdHJsLTAgPSA8JnB3bTFtMV9jaDM+OworfTsKKworJnB3bTFf
+NmNoXzQgeworCXN0YXR1cyA9ICJva2F5IjsKKwlwaW5jdHJsLTAgPSA8JnB3bTFtMV9jaDQ+
+OworfTsKKworJnB3bTFfNmNoXzUgeworCXN0YXR1cyA9ICJva2F5IjsKKwlwaW5jdHJsLTAg
+PSA8JnB3bTFtMV9jaDU+OworfTsKKworJnB3bTJfOGNoXzAgeworCXN0YXR1cyA9ICJva2F5
+IjsKKwlwaW5jdHJsLTAgPSA8JnB3bTJtMV9jaDA+OworfTsKKworJnB3bTJfOGNoXzEgewor
+CXN0YXR1cyA9ICJva2F5IjsKKwlwaW5jdHJsLTAgPSA8JnB3bTJtMV9jaDE+OworfTsKKwor
+JnB3bTJfOGNoXzIgeworCXN0YXR1cyA9ICJva2F5IjsKKwlwaW5jdHJsLTAgPSA8JnB3bTJt
+MV9jaDI+OworfTsKKworJnB3bTJfOGNoXzMgeworCXN0YXR1cyA9ICJva2F5IjsKKwlwaW5j
+dHJsLTAgPSA8JnB3bTJtMV9jaDM+OworfTsKKworJnB3bTJfOGNoXzQgeworCXN0YXR1cyA9
+ICJva2F5IjsKKwlwaW5jdHJsLTAgPSA8JnB3bTJtMV9jaDQ+OworfTsKKworJnB3bTJfOGNo
+XzUgeworCXN0YXR1cyA9ICJva2F5IjsKKwlwaW5jdHJsLTAgPSA8JnB3bTJtMV9jaDU+Owor
+fTsKKworJnB3bTJfOGNoXzYgeworCXN0YXR1cyA9ICJva2F5IjsKKwlwaW5jdHJsLTAgPSA8
+JnB3bTJtMl9jaDY+OworfTsKKworJnB3bTJfOGNoXzcgeworCXN0YXR1cyA9ICJva2F5IjsK
+KwlwaW5jdHJsLTAgPSA8JnB3bTJtMl9jaDc+OworfTsK
+
+--------------PdXS0cE3u8xAHvhAPnkRnp4J
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--------------PdXS0cE3u8xAHvhAPnkRnp4J--
+
