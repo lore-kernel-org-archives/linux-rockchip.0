@@ -4,81 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13F75CCD1BF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Oct 2025 15:08:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FD7CCCF9EB
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Oct 2025 15:24:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=B7oc2bCxNIzN9h2Nk3zmNXkdmCrKEcbOwIdUCQlm2KA=; b=Dryy/WrwJagiEzI70uc1CQ+7Bd
-	mlNPusCNbi9yBkj+MejhF6aPgP7cdvwqjiy5BHd1xy2rXS3ZiaGay3fpL/s8GHsa/C7aEFKMVCLHI
-	UlfhB9IrcYGCJJfJREXnWq8gwU0c1lY2EaKN5BT6IexBROyJvGuWf7NKxXx0v/ygSenIlKiNF0mH7
-	PKJNtwtiwEDcMVryXsRSBWlstiHicxdsyMOvTdRlS7WI8f2WpepvIFSptlKqguRAb2aU5oJGuWv3o
-	Jj8bFnhYIERCT7OfxLOkXYCG7msAp1vnvcIECHmQPWAVEX99mOlGQWxCQsTZlF3/rQRru3zpR0u5C
-	UFi0Uk3Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=5UZCaNe8AdXAFFbdXr9IHZmYdClxmxVFbz4cgDQDzU4=; b=FSkG++8KxvMtjk
+	dxHB9eGoTYcK8bSbL1PLQG81yJk9fkQHWF2OHr6FBae/RuW/1DpY/5fYak8T0hEtN2yiBTLOfsUFV
+	0xgX5Jk5tYP77GxoFa1IFIEnKpZxfZ+PbSfhaJ+MU7LcEbfajnf4d9FSBb0B241IPMumtxd0ZtAbj
+	VZwu5h5ecKJNsGpzjotvKkNtHovlhm2/cWZavjlq/dy8i89qw5H14ZyLemHd7JVc6n0w1uG36YDfY
+	xAA01tKE/A0DwDw5vUEQEYvktq4XdQc5JDyuO3XfXZg1VWK/4coVo33xjyc3FKb7q7VClcUYn3h7L
+	TP7XInUUCOkTEkfHHo8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDlJ6-0000000G9D4-13oG;
-	Tue, 28 Oct 2025 15:08:20 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vDlZ4-0000000GAPK-4Ahw;
+	Tue, 28 Oct 2025 15:24:50 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDlJ3-0000000G9BY-0zGM;
-	Tue, 28 Oct 2025 15:08:18 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 2977C48EF3;
-	Tue, 28 Oct 2025 15:08:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2FD92C4CEE7;
-	Tue, 28 Oct 2025 15:08:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1761664096;
-	bh=nC5h8Ln9RiB4A32t/cW1wNQwvbwaWDrUshVJEGXjFc8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=fbKhzdPgXB6ebEOtYoiN0anfPBW7d1hKD0//YiiPI3FuBSIyfyD9VBl77gtua8cu8
-	 4RwdhGEvDTAaZY7L/D+CCB6bRrc951CgS4CC9y/yCrA119TKIAnFWCAyyKa+9nbsYt
-	 v8rzUMm76rCFx3tTG/fndXoJh9ZtnTiDirpoj+GLgGU/rySShcDsHGryvdZBMWH/xO
-	 A9ji6Y6VaBlnxY14gXdiBqRaOIn7+otKFBPj45AapTN2uMOG3uLJKQyMHQl+pDfCKB
-	 YU9uZftiy3bTTLXxX1hQJzLT077SVX7AKputTk8wfh1XIADHdDmTS9uX7yIPLkzLvb
-	 LztIRjbGUtr8A==
-Date: Tue, 28 Oct 2025 15:08:06 +0000
-From: Mark Brown <broonie@kernel.org>
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: Sandy Huang <hjc@rock-chips.com>,
-	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-	Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Catalin Marinas <catalin.marinas@arm.com>,
-	Will Deacon <will@kernel.org>, kernel@collabora.com,
-	dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Algea Cao <algea.cao@rock-chips.com>,
-	Derek Foreman <derek.foreman@collabora.com>,
-	Daniel Stone <daniels@collabora.com>, Aishwarya.TCV@arm.com
+	id 1vDlZ0-0000000GAOG-3FUW;
+	Tue, 28 Oct 2025 15:24:50 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1761665083;
+	bh=aNk99UalTGwijupNSbWQmEeAIhQV4fyxuz2lZ6raB8U=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=KE1qR1mcIPBMQqUvCOe8SKBlL6lza7JasYZqvvO4b+yB5WfVxZOIEO/mfAoOLAkU/
+	 +RdF+PDdbqoUsbewOURnFmifJabsAdpv2em5BVXV+7q97zlFiE7Qyg9Z4VjslvysT7
+	 Qjy0WeaDD08lo7onj8AJir70MxZEiGUjJ7PBZ8jkrEJpTEMqhRY7+miWxygdy3tN8j
+	 uOWGKfL60s9uklDgn18/ZE67xH8i1BS1nVY/+74evb3NgbGB7WdMrcRbqgY7nMK0KF
+	 UsO/4bdwBjeMeZRbXZH4qq/TOcI5xi9Gu8nVSG+AHDwb7Rci94DZ/7rIIa1saxcz5h
+	 89AyVnQGBJXxQ==
+Received: from [192.168.1.90] (unknown [82.79.138.145])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id BF23917E055D;
+	Tue, 28 Oct 2025 16:24:42 +0100 (CET)
+Message-ID: <13c3810b-8197-4a42-9089-d20a78b8126f@collabora.com>
+Date: Tue, 28 Oct 2025 17:24:42 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v4 0/6] Add HDMI CEC support to Rockchip RK3588/RK3576
  SoCs
-Message-ID: <5678895e-2647-42db-b3f0-86a21b9bc225@sirena.org.uk>
+To: Mark Brown <broonie@kernel.org>
+Cc: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
+ <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
+ kernel@collabora.com, dri-devel@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Algea Cao <algea.cao@rock-chips.com>,
+ Derek Foreman <derek.foreman@collabora.com>,
+ Daniel Stone <daniels@collabora.com>, Aishwarya.TCV@arm.com
 References: <20250903-rk3588-hdmi-cec-v4-0-fa25163c4b08@collabora.com>
  <6f3f126d-72c1-48cb-a9c8-8d354af2a3d5@sirena.org.uk>
  <410fa913-e86b-4ffd-9d79-ce804f0271ff@collabora.com>
  <63003a7e-8d3d-433a-8a44-54fe8740bc3a@collabora.com>
-MIME-Version: 1.0
-In-Reply-To: <63003a7e-8d3d-433a-8a44-54fe8740bc3a@collabora.com>
-X-Cookie: Your canceled check is your receipt.
+ <5678895e-2647-42db-b3f0-86a21b9bc225@sirena.org.uk>
+Content-Language: en-US
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+In-Reply-To: <5678895e-2647-42db-b3f0-86a21b9bc225@sirena.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251028_080817_291920_F39BB475 
-X-CRM114-Status: GOOD (  10.36  )
+X-CRM114-CacheID: sfid-20251028_082446_985429_CA6FDD98 
+X-CRM114-Status: GOOD (  10.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,58 +88,26 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1586669164205494434=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On 10/28/25 5:08 PM, Mark Brown wrote:
+> On Tue, Oct 28, 2025 at 04:57:03PM +0200, Cristian Ciocaltea wrote:
+> 
+>> This seems to have been already addressed:
+> 
+>> https://lore.kernel.org/all/20251017-drm-bridge-alloc-getput-bridge-connector-fix-hdmi_cec-v2-0-667abf6d47c0@bootlin.com/
+> 
+> Ah, good.  Hopefully that lands soon, do you have any idea what's
+> holding it up?
 
---===============1586669164205494434==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="hHHi8VVPfq5V2b8D"
-Content-Disposition: inline
+I guess it's just the complexity, since that is part of a larger work concerning DRM bridges:
 
-
---hHHi8VVPfq5V2b8D
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-On Tue, Oct 28, 2025 at 04:57:03PM +0200, Cristian Ciocaltea wrote:
-
-> This seems to have been already addressed:
-
-> https://lore.kernel.org/all/20251017-drm-bridge-alloc-getput-bridge-connector-fix-hdmi_cec-v2-0-667abf6d47c0@bootlin.com/
-
-Ah, good.  Hopefully that lands soon, do you have any idea what's
-holding it up?
-
---hHHi8VVPfq5V2b8D
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmkA3FYACgkQJNaLcl1U
-h9AVOQf/TT3cHQKKcbpTXY1jqeGzTtOf4Q+lasiQNfgPQnTeq/V2uYagmZRlgVFc
-9SDXeRkcFN/u7GiPt9+nQ4tWJaWkAV3BOnqPndzPF4mCtBqDuI68jq1wdjnY2ILB
-ptsrNz1xkUu+oJlsPWALqlSsQHWGNsYENLDExWjs4/MkM45mOHEH2b/jPAoD4GTT
-lmp2TmEYZ03SR8wl362H8XVg8GAHFZLVVdetTwdB3TknjZf5aJD8L3cf0uSqkufw
-3lk0lx+xFMh6hk3IBLAiuqdhVMDEkUaSEpgy5lHGhpSraZYjJ6cvcyV/s8m7lGl4
-s9ZOEfXvUgqO8XcY36AaBaNolFqsSw==
-=AwHR
------END PGP SIGNATURE-----
-
---hHHi8VVPfq5V2b8D--
-
-
---===============1586669164205494434==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+https://lore.kernel.org/all/20250926-drm-bridge-alloc-getput-bridge-connector-v2-1-138b4bb70576@bootlin.com/
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============1586669164205494434==--
-
