@@ -4,51 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF41DCCD1BF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Oct 2025 07:26:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77C43CCD1BF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Oct 2025 07:30:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DUbXmX6BYXGozh2uqsQVurwHksb4ilHTh2FM8f8iMDs=; b=1y7Vcsj/We/CRM
-	cutaZOw3pFxyTosLh6UivaKvr2g39TPBnpsiBsSPwO8BEnjnGSOhaeotqYDjERhPbScExvcRVOzr+
-	6UF0ONB09w3yiX3aJVDNkzhVJq7+UFFwsMcXvVRrceO9nVEV0zFFwQoCfF4GsOp3aqkZvVKEITxrV
-	3r0AUwOLLL5CgGCDHAbx+7S+wRnxhEPfIo8R3Eqf6OeIxMr+v1Gc6VXah5YMtjMRy7GUlePnRtba+
-	ggSX/WP2HP5YANxYITGPk4ePMeoritsg3zHRNJUrTxYhEmXFaL4kcpMj0J+Y2MZzRYSOFMVg4sU8R
-	KBNvFg9n1bi+sV/r+uVQ==;
+	List-Owner; bh=uVQrhmGrFdMui/9VMeh8gQ/A57mkHkwAF6AABg8wZc0=; b=iFTx168/hxAu9o
+	SIfZBKvtO3NXajeNIX+u6KEfUnJPafZbyLRTlG61k2Ljo4uHBC3KuxTAQONb2UuGepKhnHtSJ2acT
+	oKO7I6/bakmAQ6EeVlqVbv8wCxFEzZCy7A9n8KN34jO9tt4PMfdXfwie7kvMrOAx4sQRjB6BQdUdR
+	HriGx6CJv8uCuSlnCx5+wkfI6AR71T2x+VnlFMnVYefi3bM35O1UAq1DZleM8vWJs0SG+NPEzXmt0
+	UoPiG6S9MAfTTdGtjE/aA0lGPJTWrLILDNY9gKPG6hKpQbVxoeoe8BUBbIzIj79xc3LxQUxB9n+gS
+	6/aEcQ9rW+x2AwfMb9SA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDe6C-0000000FPGs-1qZd;
-	Tue, 28 Oct 2025 07:26:32 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vDeA4-0000000FPfy-0Yrg;
+	Tue, 28 Oct 2025 07:30:32 +0000
+Received: from smtpbgsg2.qq.com ([54.254.200.128])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDe6A-0000000FPGD-1hhB
+	id 1vDeA0-0000000FPeq-3X4N
 	for linux-rockchip@lists.infradead.org;
-	Tue, 28 Oct 2025 07:26:31 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id AAFF4481D8;
-	Tue, 28 Oct 2025 07:26:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 11D64C4CEE7;
-	Tue, 28 Oct 2025 07:26:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1761636389;
-	bh=SNOI1ecGFarCW3MRZMjrKuj73rNcnp5V9FGnPyS9VAI=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=oH0sruXsCZIxRfVo3X49yddnHTn7YZLjQFhT1z+cKzz+4hALKx2iFTwMhtj+xYboF
-	 CM8sHs6uh35Yr9/CdcWAPtyVRBXY/fuEQAVIeZTF/iuOEnVgdrDgCaclvkwZO0KRv3
-	 Aew3bAZ3azRHBP9baJMwy6aE/n86QCBFHfa/3tB5m2niCcTwQdmQaM9e0T4rNzBPDW
-	 ZOJYibNepr40otP35cC1u1qRfeahSF4Qv3YnXi+T4UuFb6otLTXtJl1uVTHWHLplhc
-	 YiA5VnWXynChdMR2U7Z16nEIm3dlA6jzguDY4+uVM2ERUh3JACsnXccK8O+P9qDX6L
-	 DgLU6BT9G5oeQ==
-Message-ID: <1fc497ee-3363-49c9-93eb-20acd4373df9@kernel.org>
-Date: Tue, 28 Oct 2025 08:26:24 +0100
+	Tue, 28 Oct 2025 07:30:30 +0000
+X-QQ-mid: zesmtpip3t1761636589t561f20e6
+X-QQ-Originating-IP: Z9ofJTy/4V9GYiUUEoWjwp0mZmyXtvCFrkn4y1tSXKM=
+Received: from [IPV6:240f:10b:7440:1:27fe:5767 ( [localhost])
+	by bizesmtp.qq.com (ESMTP) with 
+	id ; Tue, 28 Oct 2025 15:29:42 +0800 (CST)
+X-QQ-SSF: 0000000000000000000000000000000
+X-QQ-GoodBg: 0
+X-BIZMAIL-ID: 3051709390252911974
+Message-ID: <A39F9BCC6572BA03+67736ed4-86a0-4a78-98af-b2f39aeb785e@radxa.com>
+Date: Tue, 28 Oct 2025 16:29:41 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH 4/5] dt-bindings: arm: rockchip: Reorder the Radxa board
  entries
-To: FUKAUMI Naoki <naoki@radxa.com>, heiko@sntech.de
+To: Krzysztof Kozlowski <krzk@kernel.org>, heiko@sntech.de
 Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
  jonas@kwiboo.se, dsimic@manjaro.org, amadeus@jmu.edu.cn,
  devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
@@ -56,55 +49,32 @@ References: <20251027122641.39396-1-naoki@radxa.com>
  <20251027122641.39396-5-naoki@radxa.com>
  <67e7badd-4b38-4f93-872b-e51a43281d3b@kernel.org>
  <6B986FE9E161F74F+f2826946-a3e9-4618-b5c8-6e29f9f6b83c@radxa.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
+ <1fc497ee-3363-49c9-93eb-20acd4373df9@kernel.org>
 Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <6B986FE9E161F74F+f2826946-a3e9-4618-b5c8-6e29f9f6b83c@radxa.com>
+From: FUKAUMI Naoki <naoki@radxa.com>
+In-Reply-To: <1fc497ee-3363-49c9-93eb-20acd4373df9@kernel.org>
+X-QQ-SENDSIZE: 520
+Feedback-ID: zesmtpip:radxa.com:qybglogicsvrsz:qybglogicsvrsz4a-0
+X-QQ-XMAILINFO: NNCgUTg3ctKTko4szyorCihpTWEu0D1DKx9TQRyvuQg8T49GejY1m67D
+	xCV2FYw+BZCo2BXeurGNMug0Tvj9/aFHodFX7a+LH/GAe4FJ9oJuT3xsgUJgDG0Zso0jI03
+	ZzihXAT9pus84LPBBnYRXgvDE3JZNV/9DRpPcC0dLTroWfizVED41z1txTmQSuGLSKDK0PG
+	nmA6bzc5ldq3mJDfuQK4/0CO8yqTiP4AIwRQhPulgONn3ZPv4CZLgHWUG77dWqzIM9xUHKK
+	+5SXMgZt70CC/FmW5X9DixUUhh77Tn2L8chkpNuc34Tdm6t8GBOoQDNQvQ2JfT3PGeWCaJ4
+	OZXZFdDUkTp05oLjyBXYutVL3tIXsZ/tT0HCBYvtE+/2MI5A9WsSEPM9PKkogIl7Wnym9gV
+	XhgPOreWslEK1FoxghC1w/LU1L6gAQL8TOHWiWeBAuuv808EzPHhvsJl1X0Vb5mjVYt1nQm
+	l1etu+AdhapbwjMMVDNDs50MhSBQr2VJhad2iMIx9JjfxvJY7ce+cFTPP6UqqOj5VANYCYu
+	wN18C4zaQjMmIL/MnLckJM7nUgK/TTPoEkQNL4CkoupZHlNnNn+Ua8JOKXCEvF6Yx8c/ZuP
+	eLxSzqw4etgN7hxV3tDSSh8DoAY45aNbuGCBTp8Y/fWJCjeM17YqPh5mgiaiN2M6al6FiQ1
+	4PEoGYpPBH/LNcfEuUSF+8XlQblUd+d2TXIabgSY6Q4QLcxQAQBTNFJISfPJRJGjMYcKNx3
+	Mo0VRBl3dmtn8jlerXV9WBJVZWoj9J6L5wHLCc/KX45GnDK0xujJ4OqPCtP5T7V/7LeQzpl
+	u+2Hcp/tplZV0wX6e4yJyfR/NMYdn82YSoK2j0FdXJ4kGAUDDG3890fNKDtY0zHJtOeMD3C
+	ZwM0qDQrZBWynABGoKoiac9SBeqixR1Xjh3Dz+2pRE4RJXyjhY4w07CUxr7Ur2K9tqZOPb5
+	1UQmxp2LbAn3JNZnTaGF6UJcF
+X-QQ-XMRINFO: Nq+8W0+stu50PRdwbJxPCL0=
+X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251028_002630_496335_B3DBFADE 
-X-CRM114-Status: UNSURE (   7.59  )
+X-CRM114-CacheID: sfid-20251028_003029_276458_BA15106E 
+X-CRM114-Status: UNSURE (   8.50  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -117,30 +87,44 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 27/10/2025 23:30, FUKAUMI Naoki wrote:
-> Hi Krzysztof,
-> 
-> On 10/28/25 04:08, Krzysztof Kozlowski wrote:
->> On 27/10/2025 13:26, FUKAUMI Naoki wrote:
->>> Reorder the Radxa board entries alphanumerically, with the following
->>> exceptions:
->>
->>
->> Why? You must explain that in the commit. What sorting is being used by
->> this file? Why do you think your re-order matches that sorting rule?
-> 
-> I understand there is no rule, only your preference. Thanks.
+Hi Krzysztof,
 
+On 10/28/25 16:26, Krzysztof Kozlowski wrote:
+> On 27/10/2025 23:30, FUKAUMI Naoki wrote:
+>> Hi Krzysztof,
+>>
+>> On 10/28/25 04:08, Krzysztof Kozlowski wrote:
+>>> On 27/10/2025 13:26, FUKAUMI Naoki wrote:
+>>>> Reorder the Radxa board entries alphanumerically, with the following
+>>>> exceptions:
+>>>
+>>>
+>>> Why? You must explain that in the commit. What sorting is being used by
+>>> this file? Why do you think your re-order matches that sorting rule?
+>>
+>> I understand there is no rule, only your preference. Thanks.
+> 
+> 
+> Really there is no? Are you sure?
 
-Really there is no? Are you sure?
+Could you please tell me what sort of sorting is being used for this file?
 
 Best regards,
-Krzysztof
+
+--
+FUKAUMI Naoki
+Radxa Computer (Shenzhen) Co., Ltd.
+
+> Best regards,
+> Krzysztof
+> 
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
