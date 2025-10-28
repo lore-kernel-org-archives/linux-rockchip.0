@@ -4,70 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B68ACCF9E0
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Oct 2025 01:25:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83885CCF9E0
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Oct 2025 03:06:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
-	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=S5tdUMM7+26wGXYLEnAaASabJM9v84J3kuY3Bm4VMRQ=; b=XRaqNLN68zWaro
-	BCScl7khOyDtNMM99M4WrcMru6o/qH3loTB2psgeNbczkJTjYuplLz7WCTon914fbPOfaDkGa4Xe+
-	FQUWEtPEawO5JHr2Xc/m64PfPLLA4oX8hbUHuLiQDQcTmHYjGX+SA6bAfdFBVMrDD0r5GWrmJxhBY
-	8neKo7ab7DpNj7LQpxuMHf0SNv5H+RaSOI7V3S31u6sGm8JT7ESsEZdxVIYEtRjhk9pDU4yZguTWi
-	RLQHIAfmdKtOMUS8CyoDBWNaNafmxt0CkYOkMFwOgpkTjpyfxv3HDucvTxzxrp6KFWELIW0qV766B
-	mPpYCIeSn4v4cMeAylYw==;
+	List-Owner; bh=w+rX9MNuXbg1VdAbmWUCEjvvR3P0OCSneytyao4C6fA=; b=2KzpbpkRoeKMxA
+	v+2Ji3cYgG18tf2EpVxJDvhBJevak7bJozpgkcslXwKJPBrbXRGAPpAlUuJBeUvRYla8qb0wlF/Zm
+	5FrZFle3sSfQid3+HcCoRufHT0/xIEwFgz6INbNgDX2j7boJeM22MStsBJa2Ge0SI5nbtubkaQ9C2
+	VNHU5Y6KjuMx4YD/oxdbPHw9Yon6y289OLtY19sTlfUBJHvW/MAQhfX0lOWUlb+J2pF57mTNb8bfR
+	dL9vLza2MxQR0qDaqNBd/l/sYPaSPWzMst0a4RM+gEJzNj4f8D3F3YWDKRjUrVc2PmzL64/BNIDia
+	7A8ufPiebr64+i+CBhGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDYT2-0000000F3sh-3o5j;
-	Tue, 28 Oct 2025 01:25:44 +0000
-Received: from m16.mail.163.com ([117.135.210.3])
+	id 1vDa2Y-0000000F8yX-0UeP;
+	Tue, 28 Oct 2025 03:06:30 +0000
+Received: from mail-m49251.qiye.163.com ([45.254.49.251])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDYT0-0000000F3rl-0M8o;
-	Tue, 28 Oct 2025 01:25:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Date:From:To:Subject:Content-Type:MIME-Version:
-	Message-ID; bh=RcD6UJpWiZLWdPRHjMQy8kVb58HjNeOquHG+oaEt2hE=; b=Q
-	kwHzaRHPlZ14taMfJhYOh6MoL8qpDpuMP/W10Ixupzs253mfxSUDNp1IitQNO7H2
-	wYC+whv4K7rrGlE6d4tVuWwLkw7h4J7otuCCCM3/YUMZZGhxqPbFMG75lkGI0Jks
-	kvZLFxZonBuHNZ0Xt24o1UQ0QT6GB3FgeAjE6Yrm9k=
-Received: from andyshrk$163.com ( [58.22.7.114] ) by
- ajax-webmail-wmsvr-40-140 (Coremail) ; Tue, 28 Oct 2025 09:25:14 +0800
- (CST)
-X-Originating-IP: [58.22.7.114]
-Date: Tue, 28 Oct 2025 09:25:14 +0800 (CST)
-From: "Andy Yan" <andyshrk@163.com>
-To: "Sebastian Reichel" <sebastian.reichel@collabora.com>
-Cc: "Heiko Stuebner" <heiko@sntech.de>,
-	"Quentin Schulz" <quentin.schulz@cherry.de>, mturquette@baylibre.com,
-	sboyd@kernel.org, zhangqing@rock-chips.com,
-	linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org, "Andy Yan" <andy.yan@rock-chips.com>
-Subject: Re:Re: [PATCH] clk: rockchip: rk3588: Don't change PLL rates when
- setting dclk_vop2_src
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version 2023.4-cmXT build
- 20250723(a044bf12) Copyright (c) 2002-2025 www.mailtech.cn 163com
-In-Reply-To: <w3ttg7rmkut44gbys7m7rcwvsa67d4bqyez5fie3cxgbtjs6ib@pyelryb6gth2>
-References: <20251008133135.3745785-1-heiko@sntech.de>
- <2749454.BddDVKsqQX@diego>
- <eumxn7lvp34si2gik33hcavcrsstqqoxixiznjbertxars7zcx@xsycorjhj3id>
- <4856104.usQuhbGJ8B@phil>
- <j6ondk5xnwbm36isdoni5vtdq5mf5ak4kp63ratqlnpwsgrqj2@paw5lzwqa2ze>
- <7fb0eadb.1d09.19a23686d5a.Coremail.andyshrk@163.com>
- <w3ttg7rmkut44gbys7m7rcwvsa67d4bqyez5fie3cxgbtjs6ib@pyelryb6gth2>
-X-NTES-SC: AL_Qu2dA/qau08q4imeZ+kfmUgWjuw/WsG1v/Ul1YBSP556jB/owRk8U0V5JWnTwv+lGjmyiQi1bSp28c1ccLleeZstWBwy1KDYF0pRidmCDMjG+Q==
+	id 1vDa2U-0000000F8xu-2Khp;
+	Tue, 28 Oct 2025 03:06:28 +0000
+Received: from [172.16.12.26] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 276a7504d;
+	Tue, 28 Oct 2025 11:06:16 +0800 (GMT+08:00)
+Message-ID: <ff9631f5-8fff-4be8-8b6f-807c29943ef6@rock-chips.com>
+Date: Tue, 28 Oct 2025 11:06:15 +0800
 MIME-Version: 1.0
-Message-ID: <368a3ca3.110d.19a286b585d.Coremail.andyshrk@163.com>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: jCgvCgCXCmt7GwBpk54UAA--.5077W
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbBEAP0XmkAGRw8rQABsF
-X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 1/5] dt-bindings: pwm: Add a new binding for
+ rockchip,rk3576-pwm
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
+ =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <ukleinek@kernel.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Lee Jones <lee@kernel.org>, William Breathitt Gray <wbg@kernel.org>
+Cc: kernel@collabora.com, Jonas Karlman <jonas@kwiboo.se>,
+ Alexey Charkov <alchark@gmail.com>, linux-rockchip@lists.infradead.org,
+ linux-pwm@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-iio@vger.kernel.org, Conor Dooley <conor.dooley@microchip.com>
+References: <20251027-rk3576-pwm-v3-0-654a5cb1e3f8@collabora.com>
+ <20251027-rk3576-pwm-v3-1-654a5cb1e3f8@collabora.com>
+Content-Language: en-US
+From: Damon Ding <damon.ding@rock-chips.com>
+In-Reply-To: <20251027-rk3576-pwm-v3-1-654a5cb1e3f8@collabora.com>
+X-HM-Tid: 0a9a28c7d7a403a3kunm3d7a8e9cae638
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGR1NH1ZPQh5OGEpITh1MTR9WFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpKQk
+	xVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=GnW4Aw/dYogb45ppMn1qSoJSL2pNnFjBY0b/PtiQx/TSoajxTtANAPZYI2US7qTJxIytb8x03LMsWpn+ewbLYxi7VKk8//rVLAHcgXAfWEQR2cipDN5G90peVYads7hG4fsu94iGsxFccwarJeK+jGAhcKRDXCFx5toNeGHGRYQ=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=nNMTKt7YjJq48T2Pcq2cArq/vrX7B1+Cr2MDe+JTEgw=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251027_182542_471314_341357B3 
-X-CRM114-Status: GOOD (  42.10  )
+X-CRM114-CacheID: sfid-20251027_200627_126634_35C9F34B 
+X-CRM114-Status: GOOD (  21.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,128 +74,149 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CkhlbGxv77yMCuWcqCAyMDI1LTEwLTI3IDIxOjIwOjE177yMIlNlYmFzdGlhbiBSZWljaGVsIiA8
-c2ViYXN0aWFuLnJlaWNoZWxAY29sbGFib3JhLmNvbT4g5YaZ6YGT77yaCj5IaSwKPgo+T24gTW9u
-LCBPY3QgMjcsIDIwMjUgYXQgMTA6MDM6NTdBTSArMDgwMCwgQW5keSBZYW4gd3JvdGU6Cj4+IEF0
-IDIwMjUtMTAtMjEgMDA6MDA6NTksICJTZWJhc3RpYW4gUmVpY2hlbCIgPHNlYmFzdGlhbi5yZWlj
-aGVsQGNvbGxhYm9yYS5jb20+IHdyb3RlOgo+PiA+T24gTW9uLCBPY3QgMjAsIDIwMjUgYXQgMDI6
-NDk6MTBQTSArMDIwMCwgSGVpa28gU3R1ZWJuZXIgd3JvdGU6Cj4+ID4+IEFtIERvbm5lcnN0YWcs
-IDE2LiBPa3RvYmVyIDIwMjUsIDAwOjU3OjE1IE1pdHRlbGV1cm9ww6Rpc2NoZSBTb21tZXJ6ZWl0
-IHNjaHJpZWIgU2ViYXN0aWFuIFJlaWNoZWw6Cj4+ID4+ID4gT24gV2VkLCBPY3QgMTUsIDIwMjUg
-YXQgMDM6Mjc6MTJQTSArMDIwMCwgSGVpa28gU3TDvGJuZXIgd3JvdGU6Cj4+ID4+ID4gPiBBbSBN
-aXR0d29jaCwgMTUuIE9rdG9iZXIgMjAyNSwgMTQ6NTg6NDYgTWl0dGVsZXVyb3DDpGlzY2hlIFNv
-bW1lcnplaXQgc2NocmllYiBRdWVudGluIFNjaHVsejoKPj4gPj4gPiA+ID4gT24gMTAvOC8yNSAz
-OjMxIFBNLCBIZWlrbyBTdHVlYm5lciB3cm90ZToKPj4gPj4gPiA+ID4gPiBkY2xrX3ZvcDJfc3Jj
-IGN1cnJlbnRseSBoYXMgQ0xLX1NFVF9SQVRFX1BBUkVOVCB8IENMS19TRVRfUkFURV9OT19SRVBB
-UkVOVAo+PiA+PiA+ID4gPiA+IGZsYWdzIHNldCwgd2hpY2ggaXMgdmFzdGx5IGRpZmZlcmVudCB0
-aGFuIGRjbGtfdm9wMF9zcmMgb3IgZGNsa192b3AxX3NyYywKPj4gPj4gPiA+ID4gPiB3aGljaCBo
-YXZlIG5vbmUgb2YgdGhvc2UuCj4+ID4+ID4gPiA+ID4gCj4+ID4+ID4gPiA+ID4gV2l0aCB0aGVz
-ZSBmbGFncyBpbiBkY2xrX3ZvcDJfc3JjLCBhY3R1YWxseSBzZXR0aW5nIHRoZSBjbG9jayB0aGVu
-IHJlc3VsdHMKPj4gPj4gPiA+ID4gPiBpbiBhIGxvdCBvZiBvdGhlciBwZXJpcGhlcmFscyBicmVh
-a2luZywgYmVjYXVzZSBzZXR0aW5nIHRoZSByYXRlIHJlc3VsdHMKPj4gPj4gPiA+ID4gPiBpbiB0
-aGUgUExMIHNvdXJjZSBnZXR0aW5nIGNoYW5nZWQ6Cj4+ID4+ID4gPiA+ID4gCj4+ID4+ID4gPiA+
-ID4gWyAgIDE0Ljg5ODcxOF0gY2xrX2NvcmVfc2V0X3JhdGVfbm9sb2NrOiBzZXR0aW5nIHJhdGUg
-Zm9yIGRjbGtfdm9wMiB0byAxNTI4NDAwMDAKPj4gPj4gPiA+ID4gPiBbICAgMTUuMTU1MDE3XSBj
-bGtfY2hhbmdlX3JhdGU6IHNldHRpbmcgcmF0ZSBmb3IgcGxsX2dwbGwgdG8gMTY4MDAwMDAwMAo+
-PiA+PiA+ID4gPiA+IFsgY2xrIGFkanVzdGluZyBldmVyeSBncGxsIHVzZXIgXQo+PiA+PiA+ID4g
-PiA+IAo+PiA+PiA+ID4gPiA+IFRoaXMgaW5jbHVkZXMgcG9zc2libHkgdGhlIG90aGVyIHZvcHMs
-IGkycywgc3BkaWYgYW5kIGV2ZW4gdGhlIHVhcnRzLgo+PiA+PiA+ID4gPiA+IEFtb25nIG90aGVy
-IHBvc3NpYmxlIHRoaW5ncywgdGhpcyBicmVha3MgdGhlIHVhcnQgY29uc29sZSBvbiBhIGJvYXJk
-Cj4+ID4+ID4gPiA+ID4gSSB1c2UuIFNvbWV0aW1lcyBpdCByZWNvdmVycyBsYXRlciBvbiwgYnV0
-IHRoZXJlIHdpbGwgYmUgYSBiaWcgYmxvY2sKPj4gPj4gPiA+ID4gCj4+ID4+ID4gPiA+IEkgY2Fu
-IHJlcHJvZHVjZSBvbiB0aGUgc2FtZSBib2FyZCBhcyB5b3VycyBhbmQgdGhpcyBmaXhlcyB0aGUg
-aXNzdWUgCj4+ID4+ID4gPiA+IGluZGVlZCAobm90ZSBJIGNhbiBvbmx5IHJlcHJvZHVjZSBmb3Ig
-bm93IHdoZW4gZGlzcGxheSB0aGUgbW9kZXRlc3QgCj4+ID4+ID4gPiA+IHBhdHRlcm4sIG90aGVy
-d2lzZSBhZnRlciBib290IHRoZSBjb25zb2xlIHNlZW1zIGZpbmUgdG8gbWUpLgo+PiA+PiA+ID4g
-Cj4+ID4+ID4gPiBJIGJvb3QgaW50byBhIERlYmlhbiByb290ZnMgd2l0aCBmYmNvbiBvbiBteSBz
-eXN0ZW0sIGFuZCB0aGUgc2VyaWFsCj4+ID4+ID4gPiBjb25zb2xlIHByb2R1Y2VzIGdhcmJsZWQg
-b3V0cHV0IHdoZW4gdGhlIHZvcCBhZGp1c3RzIHRoZSBjbG9jawo+PiA+PiA+ID4gCj4+ID4+ID4g
-PiBTb21ldGltZXMgaXQgcmVjb3ZlcnMgYWZ0ZXIgYSBiaXQsIGJ1dCBvdGhlciB0aW1lcyBpdCBk
-b2Vzbid0Cj4+ID4+ID4gPiAKPj4gPj4gPiA+ID4gUmV2aWV3ZWQtYnk6IFF1ZW50aW4gU2NodWx6
-IDxxdWVudGluLnNjaHVsekBjaGVycnkuZGU+Cj4+ID4+ID4gPiA+IFRlc3RlZC1ieTogUXVlbnRp
-biBTY2h1bHogPHF1ZW50aW4uc2NodWx6QGNoZXJyeS5kZT4gIyBSSzM1ODggVGlnZXIgdy9EUCBj
-YXJyaWVyYm9hcmQKPj4gPj4gPiAKPj4gPj4gPiBJJ20gcHJldHR5IHN1cmUgSSd2ZSBzZWVuIHRo
-aXMgd2hpbGUgcGxheWluZyB3aXRoIFVTQi1DIERQIEFsdE1vZGUKPj4gPj4gPiBvbiBSb2NrIDVC
-LiBTbyBmYXIgSSBoYWQgbm8gdGltZSB0byBpbnZlc3RpZ2F0ZSBmdXJ0aGVyLgo+PiA+PiA+IAo+
-PiA+PiA+IFdoYXQgSSdtIG1pc3NpbmcgaW4gdGhlIGNvbW1pdCBtZXNzYWdlIGlzIHRoZSBpbXBh
-Y3Qgb24gVk9QLiBBbHNvCj4+ID4+ID4gaXQgbWlnaHQgYmUgYSBnb29kIGlkZWEgdG8gaGF2ZSBB
-bmR5IGluIENjLCBzbyBJJ3ZlIGFkZGVkIGhpbS4KPj4gPj4gCj4+ID4+IEhtbSwgaXQgYnJpbmdz
-IFZQMiBpbiBsaW5lIHdpdGggdGhlIG90aGVyIHR3byBWUHMsIG9ubHkgVlAyIGhhZCB0aGlzCj4+
-ID4+IHNwZWNpYWwgc2V0dGluZyAtIGV2ZW4gcmlnaHQgZnJvbSB0aGUgc3RhcnQsIHNvIGl0IGNv
-dWxkIHZlcnkgd2VsbAo+PiA+PiBoYXZlIGJlZW4gbGVmdCB0aGVyZSBhY2NpZGVudGlhbGx5IGR1
-cmluZyBzdWJtaXNzaW9uLgo+PiA+Cj4+ID5JIGRpZCB0aGUgaW5pdGlhbCB1cHN0cmVhbSBzdWJt
-aXNzaW9uIGJhc2VkIG9uIGRvd25zdHJlYW0gKHRoZSBUUk0KPj4gPmlzIHF1aXRlIGJhZCByZWdh
-ZGluZyBkZXNjcmliaW5nIHRoZSBjbG9jayB0cmVlcywgc28gbm90IG11Y2gKPj4gPnZhbGlkYXRp
-b24gaGFzIGJlZW4gZG9uZSBieSBtZSkuIFRoZSBvbGQgdmVuZG9yIGtlcm5lbCB0cmVlIGhhZCBp
-dAo+PiA+bGlrZSB0aGlzLCBidXQgdGhhdCBhbHNvIGNoYW5nZWQgYSBiaXQgb3ZlciB0aW1lIGFm
-dGVyd2FyZHMgYW5kIG5vCj4+ID5sb25nZXIgaGFzIGFueSBzcGVjaWFsIGhhbmRsaW5nIGZvciBW
-UDIuIE9UT0ggaXQgZG9lcyBzZXQKPj4gPkNMS19TRVRfUkFURV9OT19SRVBBUkVOVCBmb3IgYWxs
-IGRjbGtfdm9wPG51bWJlcj5fc3JjLCB3aGljaCB5b3UKPj4gPmFyZSBub3cgcmVtb3ZpbmcgZm9y
-IFZQMi4KPj4gPgo+PiA+RldJVyB0aGVzZSBhcmUgdGhlIHR3byBmbGFnczoKPj4gPgo+PiA+I2Rl
-ZmluZSBDTEtfU0VUX1JBVEVfUEFSRU5UICAgICBCSVQoMikgLyogcHJvcGFnYXRlIHJhdGUgY2hh
-bmdlIHVwIG9uZSBsZXZlbCAqLwo+PiA+I2RlZmluZSBDTEtfU0VUX1JBVEVfTk9fUkVQQVJFTlQg
-QklUKDcpIC8qIGRvbid0IHJlLXBhcmVudCBvbiByYXRlIGNoYW5nZSAqLwo+PiA+Cj4+ID5TbyBi
-eSByZW1vdmluZyBDTEtfU0VUX1JBVEVfTk9fUkVQQVJFTlQgeW91IGFyZSBhbGxvd2luZyBkY2xr
-X3ZvcDJfc3JjCj4+ID50byBiZSBzd2l0Y2hlZCB0byBhIGRpZmZlcmVudCBQTEwgd2hlbiBhIGRp
-ZmZlcmVudCByYXRlIGlzIGJlaW5nCj4+ID5yZXF1ZXN0ZWQuIFRoYXQgY2hhbmdlIGlzIGNvbXBs
-ZXRsZXkgdW5yZWxhdGVkIHRvIHRoZSBidWcgeW91IGFyZQo+PiA+c2VlaW5nIHJpZ2h0IG5vdz8K
-Pj4gPgo+PiA+PiBTbyBpbiB0aGUgZW5kIFZQMiB3aWxsIGhhdmUgdG8gZGVhbCB3aXRoIHRoaXMs
-IGJlY2F1c2Ugd2hlbiB0aGUgVlAKPj4gPj4gY2F1c2VzIGEgcmF0ZSBjaGFuZ2UgaW4gdGhlIEdQ
-TEwsIHRoaXMgY2hhbmdlcyBzbyBtYW55IGNsb2NrcyBvZgo+PiA+PiBvdGhlciBwb3NzaWJseSBy
-dW5uaW5nIGRldmljZXMuIE5vdCBvbmx5IHRoZSB1YXJ0LCBidXQgYWxzbyBlbW1jCj4+ID4+IGFu
-ZCBtYW55IG1vcmUuIEFuZCBhbGwgdGhvc2UgZGV2aWNlcyBkbyBub3QgbGlrZSBpZiB0aGVpciBj
-bG9jayBnZXRzCj4+ID4+IGNoYW5nZWQgdW5kZXIgdGhlbSBJIHRoaW5rLgo+PiA+Cj4+ID5JdCdz
-IGNlcnRhaW5seSB3ZWlyZCwgdGhhdCBWUDIgd2FzIChhbmQgc3RpbGwgaXMgaW4gdXBzdHJlYW0p
-IGhhbmRsZWQKPj4gPnNwZWNpYWwuIE5vdGUgdGhhdCBHUExMIGJlaW5nIGNoYW5nZWQgaXMgbm90
-IHJlYWxseSBuZWNlc3NhcnkuCj4+ID5kY2xrX3ZvcDJfc3JjIHBhcmVudCBjYW4gYmUgR1BMTCwg
-Q1BMTCwgVjBQTEwgb3IgQVVQTEwuIEVmZmVjdHMgb24KPj4gPm90aGVyIGhhcmR3YXJlIElQIHZl
-cnkgbXVjaCBkZXBlbmRzIG9uIHRoZSBwYXJlbnQgc2V0dXAuIFdoYXQgSSB0cnkKPj4gPnRvIHVu
-ZGVyc3RhbmQgaXMgaWYgdGhlcmUgaXMgYWxzbyBhIGJ1ZyBpbiB0aGUgcm9ja2NoaXBkcm0gZHJp
-dmVyCj4+ID5hbmQvb3IgaWYgcmVtb3ZpbmcgQ0xLX1NFVF9SQVRFX05PX1JFUEFSRU5UIGlzIGEg
-Z29vZCBpZGVhLiBUaGF0J3MKPj4gPndoeSBJIGhvcGVkIEFuZHkgY291bGQgY2hpbWUgaW4gYW5k
-IHByb3ZpZGUgc29tZSBiYWNrZ3JvdW5kIDopCj4+IAo+PiBUaGUgbWFpbiBsaW1pdGF0aW9uIGlz
-IHRoYXQgdGhlcmUgYXJlIG5vdCBlbm91Z2ggUExMcyBvbiB0aGUgU29DCj4+IHRvIGJlIHVzZWQg
-Zm9yIHRoZSBkaXNwbGF5IHNpZGUuIEluIG91ciBkb3duc3RyZWFtIGNvZGUKPj4gaW1wbGVtZW50
-YXRpb24sIHdlIHVzdWFsbHkgZXhjbHVzaXZlbHkgYXNzaWduIFYwUExMIHRvIGEgY2VydGFpbgo+
-PiBWUC4gT3RoZXIgVlBzIGdlbmVyYWxseSBuZWVkIHRvIHNoYXJlIHRoZSBQTEwgd2l0aCBvdGhl
-cgo+PiBwZXJpcGhlcmFscyAsIG9yIHVzZSB0aGUgSERNSSBQSFkgUExMLgo+PiAKPj4gRm9yIEdQ
-TEwgYW5kIENQTEwsICB0aGV5IHdpbGwgYmUgc2V0IHRvIGEgZml4ZWQgZnJlcXVlbmN5IGR1cmlu
-Zwo+PiB0aGUgc3lzdGVtIHN0YXJ0dXAgc3RhZ2UsIGFuZCB0aGV5IHNob3VsZCBub3QgYmUgbW9k
-aWZpZWQgYWdhaW4gYXMKPj4gdGhlc2UgdHdvIFBMTCBhbHdheXMgc2hhcmVkIGJ5IG90aGVyIHBl
-cmlwaGVyYWxzLgo+PiAKPj4gV2hlbiBzaGFyZWQgd2l0aCBvdGhlciBwZXJpcGhlcmFscywgIHdl
-IGNhbiBub3QgZG8KPj4gQ0xLX1NFVF9SQVRFX1BBUkVOVCwuIEhvd2V2ZXIsIHdoZW4gd2UgbmVl
-ZCBhIHJlbGF0aXZlbHkgcHJlY2lzZQo+PiBmcmVxdWVuY3kgaW4gY2VydGFpbiBzY2VuYXJpb3Ms
-IHN1Y2ggYXMgZHJpdmluZyBhbiBlRFAgb3IgRFNJCj4+IHBhbmVs77yIc2VlIHdoYXQgd2UgZG8g
-Zm9yIGVEUCBvbiByazM1ODhzLWV2YjEtdjEwLmR0cyBhbmQKPj4gcmszNTg4LWNvb2xwaS1jbTUt
-Z2VuYm9vay5kdHMg77yJLCB3ZSB0ZW5kIHRvIHVzZSBWMFBMTC4gQnV0IHNpbmNlCj4+IFYwUExM
-IGRvZXMgbm90IHByb3BlciBpbml0aWFsaXphdGVkIGF0IHN5c3RlbSBzdGFydHVwLCB3ZSB0aGVu
-Cj4+IG5lZWQgQ0xLX1NFVF9SQVRFX1BBUkVOVC4gVGhpcyBkb2VzIGluZGVlZCBzZWVtIHRvIGJl
-IGEKPj4gY29udHJhZGljdGlvbi4KPgo+SSBzdXBwb3NlIGZvciBlRFAgYW5kIERTSSwgd2hpY2gg
-YXJlIG1vcmUgb3IgbGVzcyBmaXhlZCwgaXQgd291bGQKPmJlIHBvc3NpYmxlIHRvIGFzc2lnbiBh
-IGJvYXJkIHNwZWNpZmljIGZpeGVkIGZyZXF1ZW5jeSBsaWtlIHRoaXMKPmFuZCBnZXQgdGhlIGZy
-ZXF1ZW5jeSBpbml0aWFsaXplZCB3aXRob3V0IHJlbHlpbmcgb24gVk9QIHNldHRpbmcKPnRoZSBQ
-TEwgcmF0ZSB2aWEgQ0xLX1NFVF9SQVRFX1BBUkVOVCBmcm9tIHRoZSBkcml2ZXI6Cj4KPiZ2b3Ag
-ewo+ICAgIGFzc2lnbmVkLWNsb2NrcyA9IDwmY3J1IERDTEtfVk9QMl9TUkM+LCA8JmNydSBQTExf
-VjBQTEw+Owo+ICAgIGFzc2lnbmVkLWNsb2NrLXBhcmVudHMgPSA8JmNydSBQTExfVjBQTEw+Owo+
-ICAgIGFzc2lnbmVkLWNsb2NrLXJhdGVzID0gPDA+LCA8MTMzNz47Cj59OwoKCkZvciBhIGZpeGVk
-IHNjcmVlbiwgdGhpcyBzb2x1dGlvbiBpcyBmZWFzaWJsZS4gQnV0IHdoYXQgYWJvdXQgcGx1Z2dh
-YmxlIGludGVyZmFjZXMgbGlrZSBIRE1JIG9yIERQPyAKRm9yIGV4YW1wbGUsIGlmIGEgYm9hcmQg
-aGFzIHR3byBIRE1JIHBvcnRzIGFuZCBvbmUgRFAgcG9ydCwgdGhlIHR3byBIRE1JIHBvcnRzIG1p
-Z2h0IHN1cHBvcnQKYW55IHJlc29sdXRpb24gdXNpbmcgdGhlIEhETUkgUEhZIFBMTCwgYnV0IGlu
-IHRoYXQgY2FzZSwgdGhlIERQIHBvcnQgbWlnaHQgb25seSBiZSBhYmxlIHRvIHVzZSB0aGUgVjBQ
-TEwuIApVbmRlciBzdWNoIGNpcmN1bXN0YW5jZXMsIGl0J3MgbmVjZXNzYXJ5IHRvIGJlIGFibGUg
-dG8gZHluYW1pY2FsbHkgYWRqdXN0IHRoZSBQTEwgZnJlcXVlbmN5LgoKSSdtIG5vdCBzdXJlIHdo
-ZXRoZXIgdGhlIGNsb2NrIGZyYW1ld29yayBjYW4gZW5mb3JjZSByZXN0cmljdGlvbnMgc3VjaCB0
-aGF0IHRoZSBmcmVxdWVuY2llcyBvZiBzaGFyZWQgUExMcyBsaWtlIENQTEwgYW5kIEdQTEwsIAp3
-aGljaCBhcmUgdXNlZCBieSBvdGhlciBwZXJpcGhlcmFscywgY2Fubm90IGJlIG1vZGlmaWVkLCB3
-aGlsZSBhbGxvd2luZyB0aGUgZnJlcXVlbmN5IG9mIGFuIGV4Y2x1c2l2ZSBQTEwgbGlrZSBWMFBM
-TCwgCndoaWNoIGlzIGRlZGljYXRlZCB0byBkaXNwbGF5LCB0byBiZSBhZGp1c3RhYmxlLgoKCj4K
-PkdyZWV0aW5ncywKPgo+LS0gU2ViYXN0aWFuCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2Nr
-Y2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
-YW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Hi Nicolas,
+
+On 10/28/2025 1:11 AM, Nicolas Frattaroli wrote:
+> The Rockchip RK3576 SoC has a newer PWM controller IP revision than
+> previous Rockchip SoCs. This IP, called "PWMv4" by Rockchip, introduces
+> several new features, and consequently differs in its bindings.
+> 
+> Instead of expanding the ever-growing rockchip-pwm binding that already
+> has an if-condition, add an entirely new binding to handle this.
+> 
+> There are two additional clocks, "osc" and "rc". These are available for
+> every PWM instance, and the PWM hardware can switch between the "pwm",
+> "osc" and "rc" clock at runtime.
+> 
+> The PWM controller also comes with an interrupt now. This interrupt is
+> used to signal various conditions.
+> 
+> Reviewed-by: Conor Dooley <conor.dooley@microchip.com>
+> Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> ---
+>   .../bindings/pwm/rockchip,rk3576-pwm.yaml          | 77 ++++++++++++++++++++++
+>   MAINTAINERS                                        |  7 ++
+>   2 files changed, 84 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/pwm/rockchip,rk3576-pwm.yaml b/Documentation/devicetree/bindings/pwm/rockchip,rk3576-pwm.yaml
+> new file mode 100644
+> index 000000000000..48d5055c8b06
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/pwm/rockchip,rk3576-pwm.yaml
+> @@ -0,0 +1,77 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/pwm/rockchip,rk3576-pwm.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Rockchip PWMv4 controller
+> +
+> +maintainers:
+> +  - Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> +
+> +description: |
+> +  The Rockchip PWMv4 controller is a PWM controller found on several Rockchip
+> +  SoCs, such as the RK3576.
+> +
+> +  It supports both generating and capturing PWM signals.
+> +
+> +allOf:
+> +  - $ref: pwm.yaml#
+> +
+> +properties:
+> +  compatible:
+> +    items:
+> +      - const: rockchip,rk3576-pwm
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  clocks:
+> +    items:
+> +      - description: Used to derive the PWM signal.
+> +      - description: Used as the APB bus clock.
+> +      - description: Used as an alternative to derive the PWM signal.
+> +      - description: Used as another alternative to derive the PWM signal.
+> +
+> +  clock-names:
+> +    items:
+> +      - const: pwm
+> +      - const: pclk
+> +      - const: osc
+> +      - const: rc
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  "#pwm-cells":
+> +    const: 3
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - clocks
+> +  - clock-names
+> +  - interrupts
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/clock/rockchip,rk3576-cru.h>
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +    #include <dt-bindings/interrupt-controller/irq.h>
+> +
+> +    soc {
+> +        #address-cells = <2>;
+> +        #size-cells = <2>;
+> +
+> +        pwm@2add0000 {
+> +            compatible = "rockchip,rk3576-pwm";
+> +            reg = <0x0 0x2add0000 0x0 0x1000>;
+> +            clocks = <&cru CLK_PWM1>, <&cru PCLK_PWM1>, <&cru CLK_OSC_PWM1>,
+> +                     <&cru CLK_RC_PWM1>;
+> +            clock-names = "pwm", "pclk", "osc", "rc";
+> +            interrupts = <GIC_SPI 102 IRQ_TYPE_LEVEL_HIGH>;
+> +            #pwm-cells = <3>;
+> +        };
+> +    };
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 252b06d4240c..baecabab35a2 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -22366,6 +22366,13 @@ F:	Documentation/userspace-api/media/v4l/metafmt-rkisp1.rst
+>   F:	drivers/media/platform/rockchip/rkisp1
+>   F:	include/uapi/linux/rkisp1-config.h
+>   
+> +ROCKCHIP MFPWM
+> +M:	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> +L:	linux-rockchip@lists.infradead.org
+> +L:	linux-pwm@vger.kernel.org
+> +S:	Maintained
+> +F:	Documentation/devicetree/bindings/pwm/rockchip,rk3576-pwm.yaml
+> +
+>   ROCKCHIP RK3568 RANDOM NUMBER GENERATOR SUPPORT
+>   M:	Daniel Golle <daniel@makrotopia.org>
+>   M:	Aurelien Jarno <aurelien@aurel32.net>
+> 
+
+The RK3506 and RV1126B platforms that are about to be upstream also use 
+this PWM IP. Would it be better to name the yaml file 
+"pwm-rockchip-v4.yaml"? Then subsequent platforms only need to expand 
+the compatible property.
+
+Best regards,
+Damon
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
