@@ -4,52 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0FD9CCD1BF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Oct 2025 11:51:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09DB9CCD1BF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Oct 2025 12:26:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xmYfU1ZeYtBhsOho0Y7p+HmPA0aTsASC9HiX5uAledQ=; b=RqpkK0+1vjy67H
-	Cfg4UqRFueyOhQ7gh/0p4ZF3y0OQLoYy9AYklqQx00g9CPrYW+0z8J51iPviZrR95vHOe0/ig8ouN
-	UZ5D2bVDlj2C2wKZfJtLWHOTLwlWDROY4sH0Hw+pTlzDpyBqrN1FHbCAbiZktFskPdPg6bUkq3MYC
-	6ZdeyUYo+HoGqVfUYeJKLOekQrNAxMGFgTFErBoD4JnT7VUiCKpmEzXRg9Xm+5jPsWRWuBnPM+zW6
-	+zTtBDQ+iv6JEcEAGm7mgdYdkNxjgrqRIoKCxF6oOEg3fZqeX3gm4tP1fI1Xcp3fxFymzQJ1wmZTm
-	hLZVLMOjvuYupL4BrddQ==;
+	List-Owner; bh=vcWGd3YNS1CbicZcmOnGKgRx1K0juwQVmUp7LjDcSHg=; b=wmaWAORDQvWnB5
+	8jr2tJPlU2GlZoo1X/X8bgRCR21MhNeNClLwv6uoxxpUlBRbAH+BrAp04ittr9dwpletoSjBZ6N59
+	5SoAn7iaQj9t0ilVzEORlM9l5FVrPEJMzGL2sl68S2EnghyFs7ajqWPv9fFiPz3DtD8klXr+7xa0j
+	Bo12jVDcyJU5CRd0MD2JzIM0VztiyGI0hBqiqxaCDBvdCUyxbU0DFEgwzLaEY0l7nDC4HGd1cFfVP
+	Xi804C21R41UxSyZ1RlaCckpxsAOGUXrSxWveWQeQEt9wE/l1nc98KF++4oHAIz8wkuYVKkJLzfn/
+	YyQjCBqiTZ68AGSu5Fpw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDiEN-0000000FsFG-03Gl;
-	Tue, 28 Oct 2025 11:51:15 +0000
-Received: from sakura.naobsd.org ([160.16.200.221] helo=mail.naobsd.org)
+	id 1vDimN-0000000Fvva-3eTQ;
+	Tue, 28 Oct 2025 12:26:23 +0000
+Received: from smtpbguseast3.qq.com ([54.243.244.52])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDiEJ-0000000FsEF-3m4V
+	id 1vDimL-0000000FvrE-0Vqc
 	for linux-rockchip@lists.infradead.org;
-	Tue, 28 Oct 2025 11:51:13 +0000
-Received: from secure.fukaumi.org ([10.0.0.2])
-	by mail.naobsd.org (8.14.4/8.14.4/Debian-4.1ubuntu1.1) with ESMTP id 59SBollA002909;
-	Tue, 28 Oct 2025 20:50:50 +0900
-From: FUKAUMI Naoki <naoki@radxa.com>
-To: heiko@sntech.de
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
-        liujianfeng1994@gmail.com, dmitry.baryshkov@oss.qualcomm.com,
-        sebastian.reichel@collabora.com, andy.yan@rock-chips.com,
-        nicolas.frattaroli@collabora.com, damon.ding@rock-chips.com,
-        jbx6244@gmail.com, detlev.casanova@collabora.com,
-        devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
-        FUKAUMI Naoki <naoki@radxa.com>
-Subject: [PATCH 2/2] arm64: dts: rockchip: Fix USB Type-C host mode for Radxa ROCK 5 ITX
-Date: Tue, 28 Oct 2025 11:50:40 +0000
-Message-ID: <20251028115040.101156-2-naoki@radxa.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20251028115040.101156-1-naoki@radxa.com>
-References: <20251028115040.101156-1-naoki@radxa.com>
+	Tue, 28 Oct 2025 12:26:23 +0000
+X-QQ-mid: zesmtpip2t1761654318t7f936c1d
+X-QQ-Originating-IP: yvfBL7O8gh818stg7fqBr3pW5/SJD7nE4jj2O24rJtk=
+Received: from [IPV6:240f:10b:7440:1:27fe:5767 ( [localhost])
+	by bizesmtp.qq.com (ESMTP) with 
+	id ; Tue, 28 Oct 2025 20:25:05 +0800 (CST)
+X-QQ-SSF: 0000000000000000000000000000000
+X-QQ-GoodBg: 0
+X-BIZMAIL-ID: 9726398132461173433
+Message-ID: <2677EA3D584229BA+9a4c2359-c8ef-48f9-ab9f-ce197dbcc203@radxa.com>
+Date: Tue, 28 Oct 2025 21:25:02 +0900
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 0/3] Add Radxa CM5 module and IO board dts
+From: FUKAUMI Naoki <naoki@radxa.com>
+To: Joseph Kogut <joseph.kogut@gmail.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Jimmy Hon <honyuenkwun@gmail.com>, Steve deRosier <derosier@cal-sierra.com>,
+ devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+References: <20250617-rk3588s-cm5-io-dts-upstream-v5-0-8d96854a5bbd@gmail.com>
+ <57969F385B5AF318+653dac83-8227-4987-84c6-f3e08b10085c@radxa.com>
+ <CAMWSM7iHtAxewW4JkRqRsifVnccqeFviaCgeOyprKDr92FOurg@mail.gmail.com>
+ <AE0735A6C797CCFF+10496d73-7c0a-4884-9561-24721305a24f@radxa.com>
+Content-Language: en-US
+In-Reply-To: <AE0735A6C797CCFF+10496d73-7c0a-4884-9561-24721305a24f@radxa.com>
+X-QQ-SENDSIZE: 520
+Feedback-ID: zesmtpip:radxa.com:qybglogicsvrsz:qybglogicsvrsz4a-0
+X-QQ-XMAILINFO: Mf+HUhdnuYe/4tSlQuwmfIpImsPDVH08knSQtbfVxEmRnWyZ10PiKQ6S
+	GEd57lo86F14FvgWovdqBphSKxF4UIO7Ud/gQsacRCDK4ks9+7JJg+8JiX6loOMnUPhdA2c
+	bHmnPwWcDmRYIXdj9ulGCoqO4FCwdhY63zTvFKlC1pgQmghKJHqCGmizFdebdEIxO7MnfAA
+	rdvx464wSOVfhT8qucFbTxhovBa9VshnyvPRpg5f2URpgkuJmqtrXVBFieJcnZJegPftfa3
+	nVB0OnpR9umxEy/lhnQO77L5hq8O7ZmhI+dBD8lIfpHjwggOlG2O6o7mO47ygSid8oF5U7n
+	SGyAohO6DIvdHegL5bZ6jmAiWgVkt+jbWOFy1W0gkWFwTaI7GaYAhLrOUP1MrCKmaPKtEj4
+	RdM0+NLtwdQo/FWoH9Bp+Uq+GnkrvVLNtCZ6Cf46OmvO7zQ7g9MLgbIMekFEBQ43HHYbwKg
+	0NCb8FULee8K5ytTiAUeRcsNrjOyMlbBz3xoEnabUPID+gtY2jEhfeDAzC3afFeA7ejY6R+
+	oPoGHK5msxtsFPuBjYYSyMP1zWvD3gnDBezg9Q7+MjCv1qjzjZhGQc4MtqniQASpLGPIL29
+	efDXDv8dVc31ZOcOogHAdSuDogoS0qmQNF2YmGz8fmX7lk6X/wbYgZw3DaKNa60wYgEKPWx
+	pkSmBCQ8rIodIxb/eZfyFmU4za+X3yPXCDklUBEwk8P2s144o6A4ZY0Tuh6U11nN+7+79Bf
+	CHGl59sG+bZ8K850bA9OvpVZ+CqpubbPfaMNNobOJPcuysu0/uUTNXnVs6qMeLID1TODpjc
+	bywQMdyk5lA8zbmKATygnCDQksFPappNZeN6iIHMgdu2pd7O2nf3nt+Xk9XHnOIKrP6jESB
+	HS0U9MTTuT66njaD+kEIr+0kVCAqnRbOQUj2dHp1mVZsGNCVjwA/nW3IZs0SufB5xy5E1DC
+	lX4Q9SGCK7Z0a7+zEr0td9nvnHIJKZuPtfOkdj5qu5wF1QuLTVp817quVN0J4iAxnvIvtwR
+	UPD5IxWg==
+X-QQ-XMRINFO: NyFYKkN4Ny6FSmKK/uo/jdU=
+X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251028_045112_158047_A3F1C369 
-X-CRM114-Status: UNSURE (   9.80  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251028_052621_666788_98A88412 
+X-CRM114-Status: GOOD (  22.38  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -61,55 +88,85 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The USB Type-C port on the Radxa ROCK 5B+/5T supports Dual-Role-Data
-and Dual-Role-Power. However, currently it cannot operate as host/
-source.
-
-By setting "power-role" to "dual" and "try-power-role" to "sink"
-(along with adding related properties), the data role can operate as
-host.
-
-Unfortunately, a remaining issue is that when a USB 3.0 SuperSpeed
-device's orientation is reverse, the root port is detected but the
-device itself is not. This must be addressed separately.
-(USB 2.0/1.1 devices operate even in reverse orientation.)
-
-Fixes: 31390eb8ffbf2 ("arm64: dts: rockchip: add ROCK 5 ITX board")
-Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
----
- arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts
-index bc8140883de47..1664f85db4aaa 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts
-@@ -484,9 +484,14 @@ usb_con: connector {
- 			compatible = "usb-c-connector";
- 			data-role = "dual";
- 			label = "USB-C";
--			power-role = "source";
-+			op-sink-microwatt = <50000>;
-+			/* fusb302 supports PD Rev 2.0 Ver 1.2 */
-+			pd-revision = /bits/ 8 <0x2 0x0 0x1 0x2>;
-+			power-role = "dual";
-+			sink-pdos = <PDO_FIXED(5000, 10, PDO_FIXED_USB_COMM)>;
- 			source-pdos =
- 				<PDO_FIXED(5000, 3000, PDO_FIXED_USB_COMM)>;
-+			try-power-role = "sink";
- 
- 			ports {
- 				#address-cells = <1>;
--- 
-2.43.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgSm9zZXBoLAoKSSBhcG9sb2dpemUgZm9yIHRoZSBkZWxheSBpbiBteSB3b3JrLiBNeSBwYXJ0
+IGlzIGFsbW9zdCBjb21wbGV0ZSAoc2VlIApiZWxvdyksIGJ1dCB3b3VsZCB5b3UgbGlrZSB0byB0
+YWtlIG92ZXIgdGhlIHJlc3Q/CgogIGh0dHBzOi8vZ2l0aHViLmNvbS9SYWR4YU5hb2tpL2xpbnV4
+L2NvbW1pdHMvcmFkeGEtY201LWlvLwoKQmVzdCByZWdhcmRzLAoKRlVLQVVNSSBOYW9raQpSYWR4
+YSBDb21wdXRlciAoU2hlbnpoZW4pIENvLiwgTHRkLgoKT24gMTAvMTYvMjUgMTA6NDksIEZVS0FV
+TUkgTmFva2kgd3JvdGU6Cj4gSGkgSm9zZXBoLAo+IAo+IE9uIDEwLzE2LzI1IDA4OjM5LCBKb3Nl
+cGggS29ndXQgd3JvdGU6Cj4+IEhlbGxvIE5hb2tpLAo+Pgo+Pgo+PiBPbiBXZWQsIFNlcCAzLCAy
+MDI1IGF0IDE6MjjigK9BTSBGVUtBVU1JIE5hb2tpIDxuYW9raUByYWR4YS5jb20+IHdyb3RlOgo+
+Pj4KPj4+IEhpIEpvc2VwaCwKPj4+Cj4+PiBJJ20gdGhpbmtpbmcgb2YgY29udGludWluZyB5b3Vy
+IHdvcmssIHNvIGlmIHlvdSd2ZSBhbHJlYWR5IGRvbmUKPj4+IHNvbWV0aGluZywgcGxlYXNlIGxl
+dCBtZSBrbm93Lgo+Pj4KPj4KPj4gSSd2ZSBub3QgZm9sbG93ZWQgdXAgb24gdGhpcyBzZXJpZXMg
+eWV0LCBidXQgSSdtIHBsYW5uaW5nIG9uIHBpY2tpbmcKPj4gaXQgYmFjayB1cCB0aGlzIHdlZWsu
+IEknbSBoYXBweSB0byBjb2xsYWJvcmF0ZSB3aXRoIHlvdSwgZG8gbGV0IG1lCj4+IGtub3cgaWYg
+eW91J3ZlIG1hZGUgYW55IHByb2dyZXNzIG9yIGltcHJvdmVtZW50cywgYW5kIHRoYW5rIHlvdSBm
+b3IKPj4geW91ciByZXZpZXcgZWFybGllci4KPiAKPiBJJ3ZlIGFscmVhZHkgYWxtb3N0IGZpbmlz
+aGVkIHRoZSB3b3JrLiBVbmZvcnR1bmF0ZWx5LCBhIHByb2JsZW0oKjEpIAo+IGNhdXNlZCB0aGUg
+d29yayB0byBzdG9wIGZvciBhIGZldyB3ZWVrcywgYnV0IHRoZSBwcm9ibGVtIGhhcyBiZWVuIAo+
+IHJlc29sdmVkKCoyKSwgc28gSSBjYW4gY29udGludWUgd29ya2luZy4gSSdsbCBwb3N0IGEgcGF0
+Y2ggc29vbiBvbmNlIAo+IHNvbWUgbWlub3IgdHdlYWtpbmcgYW5kIHRlc3RpbmcgaXMgY29tcGxl
+dGUuCj4gCj4gQnkgdGhlIHdheSwgYXQgc29tZSBwb2ludCBJIHN3aXRjaGVkIGZyb20gImNvbnRp
+bnVpbmcgeW91ciB3b3JrIiB0byAKPiAicmVjcmVhdGluZyBhIG5ldyBvbmUgYmFzZWQgb24gbXkg
+Y3VycmVudCB3b3JrLiIgVGhlIHJlc3VsdHMgb2YgbXkgCj4gY3VycmVudCB3b3JrKCozKSBoYXZl
+IGNoYW5nZWQgc2lnbmlmaWNhbnRseS4KPiAKPiAqMSBodHRwczovL3BhdGNod29yay5rZXJuZWwu
+b3JnL3Byb2plY3QvbGludXgtcGNpL3BhdGNoLzIwMjUwOTIyLXBjaS1kdC0gCj4gYXNwbS12Mi0x
+LTJhNjVjZjg0ZTMyNkBvc3MucXVhbGNvbW0uY29tLyMyNjYwMzQ5OQo+ICoyIGh0dHBzOi8vcGF0
+Y2h3b3JrLmtlcm5lbC5vcmcvcHJvamVjdC9saW51eC1yb2NrY2hpcC8gCj4gcGF0Y2gvMjAyNTEw
+MTUxMjMxNDIuMzkyMjc0LTItY2Fzc2VsQGtlcm5lbC5vcmcvCj4gKjMgaHR0cHM6Ly9naXRodWIu
+Y29tL1JhZHhhTmFva2kvdS1ib290L2NvbW1pdHMvcmFkeGEtY201LWlvLwo+IAo+IEJlc3QgcmVn
+YXJkcywKPiAKPiAtLSAKPiBGVUtBVU1JIE5hb2tpCj4gUmFkeGEgQ29tcHV0ZXIgKFNoZW56aGVu
+KSBDby4sIEx0ZC4KPiAKPj4gQmVzdCwKPj4gSm9zZXBoCj4+Cj4+PiBCZXN0IHJlZ2FyZHMsCj4+
+Pgo+Pj4gLS0gCj4+PiBGVUtBVU1JIE5hb2tpCj4+PiBSYWR4YSBDb21wdXRlciAoU2hlbnpoZW4p
+IENvLiwgTHRkLgo+Pj4KPj4+IE9uIDYvMTgvMjUgMDc6MTEsIEpvc2VwaCBLb2d1dCB3cm90ZToK
+Pj4+PiBUaGlzIHBhdGNoIHNlcmllcyBhZGRzIGluaXRpYWwgZGV2aWNlIHRyZWUgc3VwcG9ydCBm
+b3IgdGhlIFJhZHhhIENNNSAKPj4+PiBTb00KPj4+PiBhbmQgYWNjb21wYW55aW5nIElPIGJvYXJk
+Lgo+Pj4+Cj4+Pj4gVjQgLT4gVjU6Cj4+Pj4gwqDCoMKgIFBhdGNoICgyLzMpLCBwZXIgSmltbXk6
+Cj4+Pj4gwqDCoMKgIC0gQWxpYXMgZU1NQyB0byBtbWMwCj4+Pj4gwqDCoMKgIC0gUmVtb3ZlIHVu
+dXNlZCBzZGlvIGFsaWFzCj4+Pj4gwqDCoMKgIC0gTW92ZSBnbWFjLCBoZG1pMCBub2RlcyB0byBj
+YXJyaWVyIGJvYXJkIGR0cwo+Pj4+Cj4+Pj4gwqDCoMKgIFBhdGNoICgzLzMpLCBwZXIgSmltbXk6
+Cj4+Pj4gwqDCoMKgIC0gRW5hYmxlIGhkbWkwX3NvdW5kIGFuZCBpMnM1XzhjaAo+Pj4+IMKgwqDC
+oCAtIFJlbW92ZSByZWR1bmRhbnQgZW5hYmxlbWVudCBvZiBzZGhjaQo+Pj4+IMKgwqDCoCAtIEVu
+YWJsZSB1c2JfaG9zdDJfeGhjaQo+Pj4+Cj4+Pj4gwqDCoMKgIC0gVGVzdGVkIEhETUkgYXVkaW8K
+Pj4+Pgo+Pj4+IFYzIC0+IFY0Ogo+Pj4+IMKgwqDCoCAtIEZpeGVkIFhIQ0kgaW5pdGlhbGl6YXRp
+b24gYnVnIGJ5IGNoYW5naW5nIHRyeS1wb3dlci1yb2xlIGZyb20gCj4+Pj4gc291cmNlCj4+Pj4g
+wqDCoMKgwqDCoCB0byBzaW5rCj4+Pj4KPj4+PiBWMiAtPiBWMzoKPj4+PiDCoMKgwqAgLSBBZGRy
+ZXNzZWQgWUFNTCBzeW50YXggZXJyb3IgaW4gZHQgYmluZGluZyAocGVyIFJvYikKPj4+PiDCoMKg
+wqAgLSBGaXhlZCB3aGl0ZXNwYWNlIGlzc3VlIGluIGR0cyByZXBvcnRlZCBieSBjaGVja3BhdGNo
+LnBsCj4+Pj4gwqDCoMKgIC0gU3BsaXQgYmFzZSBTb00gYW5kIGNhcnJpZXIgYm9hcmQgaW50byBz
+ZXBhcmF0ZSBwYXRjaGVzCj4+Pj4gwqDCoMKgIC0gQWRkZWQgZnVydGhlciBkZXRhaWxzIGFib3V0
+IHRoZSBTb00gYW5kIGNhcnJpZXIgdG8gdGhlIGNvbW1pdAo+Pj4+IMKgwqDCoMKgwqAgbWVzc2Fn
+ZXMKPj4+Pgo+Pj4+IFYxIC0+IFYyOgo+Pj4+IMKgwqDCoCAtIEFkZGVkIGNvcHlyaWdodCBoZWFk
+ZXIgYW5kIGRhdGEgc2hlZXQgbGlua3MKPj4+PiDCoMKgwqAgLSBSZW1vdmVkIG5vbi1leGlzdGVu
+dCBwcm9wZXJ0eQo+Pj4+IMKgwqDCoCAtIFNvcnRlZCBhbHBoYWJldGljYWxseQo+Pj4+IMKgwqDC
+oCAtIFJlbW92ZWQgZXJyYW50IHdoaXRlc3BhY2UKPj4+PiDCoMKgwqAgLSBNb3ZlZCBzdGF0dXMg
+dG8gdGhlIGVuZCBvZiBlYWNoIG5vZGUKPj4+PiDCoMKgwqAgLSBSZW1vdmVkIHBpbmN0cmwtbmFt
+ZXMgcHJvcGVydHkgZnJvbSBsZWRzIChpbmRpY2F0ZWQgYnkgCj4+Pj4gQ0hFQ0tfRFRCUykKPj4+
+PiDCoMKgwqAgLSBSZW1vdmVkIGRlbGF5cyBmcm9tIGdtYWMgd2l0aCBpbnRlcm5hbCBkZWxheQo+
+Pj4+Cj4+Pj4gLSBMaW5rIHRvIHY0OiBodHRwczovL2xvcmUua2VybmVsLm9yZy9yLzIwMjUwNjA1
+LXJrMzU4OHMtY201LWlvLWR0cy0gCj4+Pj4gdXBzdHJlYW0tdjQtMC04NDQ1ZGI1Y2E2YjBAZ21h
+aWwuY29tCj4+Pj4KPj4+PiBTaWduZWQtb2ZmLWJ5OiBKb3NlcGggS29ndXQgPGpvc2VwaC5rb2d1
+dEBnbWFpbC5jb20+Cj4+Pj4gLS0tCj4+Pj4gSm9zZXBoIEtvZ3V0ICgzKToKPj4+PiDCoMKgwqDC
+oMKgwqDCoCBkdC1iaW5kaW5nczogYXJtOiByb2NrY2hpcDogQWRkIFJhZHhhIENNNSBJTyBib2Fy
+ZAo+Pj4+IMKgwqDCoMKgwqDCoMKgIGFybTY0OiBkdHM6IHJvY2tjaGlwOiBBZGQgcmszNTg4IGJh
+c2VkIFJhZHhhIENNNQo+Pj4+IMKgwqDCoMKgwqDCoMKgIGFybTY0OiBkdHM6IHJvY2tjaGlwOiBB
+ZGQgc3VwcG9ydCBmb3IgQ001IElPIGNhcnJpZXIKPj4+Pgo+Pj4+IMKgwqAgLi4uL2RldmljZXRy
+ZWUvYmluZGluZ3MvYXJtL3JvY2tjaGlwLnlhbWzCoMKgwqDCoMKgwqDCoMKgwqAgfMKgwqAgNyAr
+Cj4+Pj4gwqDCoCBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL01ha2VmaWxlwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqAgfMKgwqAgMSArCj4+Pj4gwqDCoCAuLi4vYm9vdC9kdHMvcm9ja2No
+aXAvcmszNTg4cy1yYWR4YS1jbTUtaW8uZHRzwqDCoMKgwqAgfCA0ODYgKysrKysrKysgCj4+Pj4g
+KysrKysrKysrKysrKwo+Pj4+IMKgwqAgLi4uL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4
+OHMtcmFkeGEtY201LmR0c2kgfCAxMzUgKysrKysrCj4+Pj4gwqDCoCA0IGZpbGVzIGNoYW5nZWQs
+IDYyOSBpbnNlcnRpb25zKCspCj4+Pj4gLS0tCj4+Pj4gYmFzZS1jb21taXQ6IDBhZjJmNmJlMWI0
+MjgxMzg1YjYxOGNiODZhZDk0NmVkZWQwODlhYzgKPj4+PiBjaGFuZ2UtaWQ6IDIwMjUwNjA1LXJr
+MzU4OHMtY201LWlvLWR0cy11cHN0cmVhbS1mNGQxZTg1Mzk3N2UKPj4+Pgo+Pj4+IEJlc3QgcmVn
+YXJkcywKPj4+Cj4+Cj4gCj4gCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxp
+c3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9saW51eC1yb2NrY2hpcAo=
