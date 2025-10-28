@@ -4,49 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EAACCCF9E0
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Oct 2025 10:41:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0374CCCF9E0
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Oct 2025 10:42:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=e9jWmReR9Tw20FCMTzqfgsdDniqNl8ZE7W+t7rsQBhg=; b=erbZQgz5Pjlp1T
-	uzkRNeZj5DXNAm4KsAhWohHld7mCvfl22uzwDtFmBEcP5dlPoVHpxaCq9tnp1Tq9jkmG9ivmDpkmI
-	ctTSp5H7io9ykYaBzZbJ+rDzXoOeJKa4PzKNJMAbMp3sypy+zoeeCfo2fXz3NMs7BbaeWCHb74DG0
-	FbpBKI4NEEWZ2EEcLTeJ0RFRcYA4fcJojBLL9vLlmpmuAhhb2eNIFZSjb3ZzolX5LFK2ocDVBeQ16
-	UEwodNTKZLoDGnov4cUMBFXB85clsp1/28ypze/D/xhueUDljS8DfsYD8qBNbcwyB8/OBAtz179Sh
-	CSfHuwISn6r+yzl2yB0w==;
+	List-Owner; bh=wGqG9/cMPe8qDmBdH61tol80YoKh1N8R4yEyJco8AVQ=; b=ZALZxUO1YKxCxs
+	3j/rbBb0jwv7oRUDJBaSb4M/07rwbxbZWK1O6VwNyizPGmWi9QpZRjdqQLuxyd3SSsyvSW60eCRmD
+	8hcavZlNzUlAQEJMOnes2d6j77AqYgJ/CEGTM36MIVArgzbhGwV1QZ+aPa3qKAIUPvrytOj8IsSwJ
+	EIWb+/YmqNxfT9MicbjrX/P808AA5wPCdi52UevE249CDnlXIffP1tHfVT4BrdAg9ncWoeVu8/R1U
+	3fKER7PqosnkaMSTuqy+v7H42+dNRCP+JT3LBZqMn4HS4vmvTCJqnZfS6T2bmGdwHEPmbtNW6WkFs
+	GC0dhJKrSn0g2w1O2JLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDh97-0000000FmEV-26UE;
-	Tue, 28 Oct 2025 10:41:45 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vDh9p-0000000FmPh-1ZA7;
+	Tue, 28 Oct 2025 10:42:29 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDh95-0000000FmDD-1Pq8
+	id 1vDh9m-0000000FmOo-1e74
 	for linux-rockchip@lists.infradead.org;
-	Tue, 28 Oct 2025 10:41:44 +0000
+	Tue, 28 Oct 2025 10:42:27 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 93B4148D17;
-	Tue, 28 Oct 2025 10:41:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 108A2C4CEE7;
-	Tue, 28 Oct 2025 10:41:39 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 08A3848D4B;
+	Tue, 28 Oct 2025 10:42:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7AFDFC4CEE7;
+	Tue, 28 Oct 2025 10:42:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1761648102;
-	bh=pL8cLCQ4d/YVjv8TZyN7yeRNOVxsFNE9EZDlNtGyw+w=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=ooP4jPdNSs+1pgH+IiPrvoVoGfJkdzDbrlkmWYMEuEoUtftf10U0+qz+c5QpHxHwR
-	 4Kt1S763gF96gZtrdvuWG17SFBERgr1ePDkyiuH0sCwSRzJ6J+tx5KtKm+bHXjAVw/
-	 bsOz9GBSeOLyv8CBup9jWQX5NIr3ZTR3UK4MkbDPybZBqGzbfe9n4pGg5L0Zd/bCvp
-	 FwvgkDCA8fzT2rKAV1JgqMchI7YE+z+2KqDd8E7q+t2jHhl6Y/6ZOE7oeEG5TE3UTI
-	 Fk4Xo/bmGo8UKQlBqry9TspEfu9r/cHKQ6BhTqhvfE0vU5XEAaz/CxhDyg/UjXKWpW
-	 aoYOKVNagpjxQ==
-Message-ID: <f12bc562-b5bb-4bdd-b274-23582df8f2d4@kernel.org>
-Date: Tue, 28 Oct 2025 11:41:38 +0100
+	s=k20201202; t=1761648145;
+	bh=38wxE3g3XRLJs8huMWHMGaxxdwbTkUF7vehtIb5e760=;
+	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
+	b=KCfHSVbnJHFUbKQ0dOh5bZo18QqtuQ11GmlCaUuORBW169eHEB8OXwvD917+cXf09
+	 BByH+nVdCZU7vqt7QxsXPAsxZOcCNMyqT79v917FfDD3eS5J8NgqPwurwZFqcv/HZA
+	 XzTEkhp76Z0gJ8ZAxpsVtdOk5Fsx1EpkIb8WRr8VJ7t03FNG21U4vVsSIhLlYjHSFx
+	 vH1t3pyImTGRnf2wuwOgbsjgQEqkopVLDSNG12SltITeqerxfPFx34mIwc9G/cGrz+
+	 O/ObIwHOu2wm8cU8UPHCmHG07EhMGZy5nYuDYDcpTO7ETsq554iQ7XbTXvb4lc9mB7
+	 5Zo0/+87cVCgw==
+Message-ID: <400d08a1-c373-4efa-8ec4-f535e74acd98@kernel.org>
+Date: Tue, 28 Oct 2025 11:42:21 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v3 1/3] dt-bindings: arm: rockchip: Add Radxa CM5 IO board
+From: Krzysztof Kozlowski <krzk@kernel.org>
 To: FUKAUMI Naoki <naoki@radxa.com>, Joseph Kogut <joseph.kogut@gmail.com>
 Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
@@ -59,8 +60,6 @@ References: <174735136138.1544989.11909422896170025756.robh@kernel.org>
  <20250529-impressive-real-monkey-a7818b@kuoka>
  <6443BD03B4C4F1FE+d20c3903-e2dc-4c2b-8f6e-fac38f242898@radxa.com>
  <2f4e7f94-2921-493c-94fa-45749a060bc0@kernel.org>
- <870075785A1ED2B9+6fb5238e-dc57-406b-acf9-b88b237d8e5b@radxa.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -105,10 +104,10 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  jWt87ecuHlpL3uuQ0ZZNWqHgZoQLXoqC2ZV5KrtKWb/jyiFX/sxSrodALf0zf+tfHv0FZWT2
  zHjUqd0t4njD/UOsuIMOQn4Ig0SdivYPfZukb5cdasKJukG1NOpbW7yRNivaCnfZz6dTawXw
  XRIV/KDsHQiyVxKvN73bThKhONkcX2LWuD928tAR6XMM2G5ovxLe09vuOzzfTWQDsm++9UKF a/A=
-In-Reply-To: <870075785A1ED2B9+6fb5238e-dc57-406b-acf9-b88b237d8e5b@radxa.com>
+In-Reply-To: <2f4e7f94-2921-493c-94fa-45749a060bc0@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251028_034143_422406_FD2A38D3 
-X-CRM114-Status: GOOD (  13.57  )
+X-CRM114-CacheID: sfid-20251028_034226_479679_E2DAFE0E 
+X-CRM114-Status: GOOD (  11.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,50 +124,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 28/10/2025 10:44, FUKAUMI Naoki wrote:
-> Hi Joseph
-> 
-> Your patch seems to be NAKed.
-> I will submit new patch soon.
-
-Sorry, what? Don't hijack other people's work.
-
-> 
-> Best regards,
-> 
-> --
-> FUKAUMI Naoki
-> Radxa Computer (Shenzhen) Co., Ltd.
-> 
-> On 10/28/25 18:37, Krzysztof Kozlowski wrote:
->> On 28/10/2025 10:33, FUKAUMI Naoki wrote:
->>> Hi Krzysztof,
->>>
->>> https://patchwork.kernel.org/project/linux-rockchip/patch/20250528221823.2974653-2-joseph.kogut@gmail.com/
->>>
->>> On 5/29/25 18:19, Krzysztof Kozlowski wrote:
->>>> On Wed, May 28, 2025 at 03:18:21PM GMT, Joseph Kogut wrote:
->>>>> Add device tree binding for the Radxa CM5 IO board.
->>>>>
->>>>> This board is based on the rk3588s.
->>>>
->>>> Do not attach (thread) your patchsets to some other threads (unrelated
->>>> or older versions). This buries them deep in the mailbox and might
->>>> interfere with applying entire sets.
->>>>
->>>>
->>>> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
->>> Please explain the sorting rule used for this file. You must have known
->>> the sorting rule; otherwise, how can you be sure this patch is correct?
+On 28/10/2025 10:37, Krzysztof Kozlowski wrote:
+> On 28/10/2025 10:33, FUKAUMI Naoki wrote:
+>> Hi Krzysztof,
 >>
->> Huh? I don't have a clue about sorting rule but if you mock my review
->> let's make it different:
+>> https://patchwork.kernel.org/project/linux-rockchip/patch/20250528221823.2974653-2-joseph.kogut@gmail.com/
 >>
->> NAK
+>> On 5/29/25 18:19, Krzysztof Kozlowski wrote:
+>>> On Wed, May 28, 2025 at 03:18:21PM GMT, Joseph Kogut wrote:
+>>>> Add device tree binding for the Radxa CM5 IO board.
+>>>>
+>>>> This board is based on the rk3588s.
+>>>
+>>> Do not attach (thread) your patchsets to some other threads (unrelated
+>>> or older versions). This buries them deep in the mailbox and might
+>>> interfere with applying entire sets.
+>>>
+>>>
+>>> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+>> Please explain the sorting rule used for this file. You must have known 
+>> the sorting rule; otherwise, how can you be sure this patch is correct?
+> 
+> Huh? I don't have a clue about sorting rule but if you mock my review
+> let's make it different:
+> 
+> NAK
 
-
-Ah, you were poking around other patch? I should have ignored that :/
-
+Please ignore, I thought that's patch from FUKAUMI Naoki which code and
+then pokes about that.
 
 Best regards,
 Krzysztof
