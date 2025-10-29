@@ -4,59 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6828CCF9F1
-	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Oct 2025 17:48:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35B0DCCF9EE
+	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Oct 2025 17:57:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=x3sSaA8ZBdUu7ILMnHofWgQkn8MM9uE+ZSQ8j02dWq8=; b=TacWmIqPkzZuEfUjNCCoSbl9ge
-	p6hWV7Ar9rJjtRhJwrl0raxjjr+DJYNfSu5nn0lygYbmol2XUWdkRLAQ9dx/2qt4oWnt3k5GyMYaz
-	qdruVc4PAt1f7VjlkAqYowAPGkw5iK/kJjzDxvrN2shRI54I2vkADTS6axmn3qqOpqRT6ph9XDCyc
-	EwiJpV7nn3RO/7yHFI3d5VvSpQoH7QHp1cWYfxWMwazcOO2dQ66m5QcnvEJB5i3D6ReeRaqowexds
-	TWXESM9Vt2hYOHy7Mkphl0v4ITSxMLLQUBt+5mKWL+fk/6IHF4RTBzo+ikw3n0zkbzT0d4L52/7Gq
-	MzDZvKZA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=KxwTKXt3RIK1nSo0mC4pwwDJuxWRpMGAt3iYZgSGWv4=; b=SfDuAKt8iI8Wv8
+	bhBfI9BIJc+l/mlpxEtPKhxBktkHZB1SKS6jYp7NJYYYgX9GO0cSSuzUhY5kPP74ZMNyiF9YD7ORu
+	p3sO/FlgkrwAdeAbyjDtlqjxObPJLUEmyyvB/qv0XCJzCSPeFsJzcbtmEpWGwwikTrtZUI3H1Acrc
+	VCi2w9cYN7U7NTdoW0nFjans8Y2FTmjRtcYDhQb7DrpXVD7IAhTa/j2Nfcer/MFNvddn46bO10uzN
+	xXbFVv74MIDtRpYDhBEfhUoMp0e/+qzg5ancSgRmRCNMojNe5JY9aERq1tIyu3H28aWJ+gXs/Iur5
+	/o6eGxVZl6PIpgx+QtbQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vEAHQ-00000002GY6-0lJb;
-	Wed, 29 Oct 2025 17:48:16 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vEAQ1-00000002ISn-0FDr;
+	Wed, 29 Oct 2025 17:57:09 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vEAHO-00000002GXH-3Puz;
-	Wed, 29 Oct 2025 17:48:14 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id F1584605A2;
-	Wed, 29 Oct 2025 17:48:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F30CCC4CEF7;
-	Wed, 29 Oct 2025 17:48:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1761760093;
-	bh=gmuvfAv/HRo9/GwGj6MrrNns2n4S/yptkDh+ez1A/BA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=CBBijb++94bBV+SfzKmrzvQHpsG2lpDu/Ezjq70clIZUkpYOKyA3Ucnx/leoM5EHN
-	 0vXvguO7ibhtHZLH86g0kSFNkQZT9uaU20GSzB2vxK/IXScQJAd5bkuFyS0vB3RkJC
-	 VKVwWVMYHbebGpxW5XkPxlzp+aMbXYTZFtjXsWiPm1fYv+oxg/mTiTWhEUejdTuXR5
-	 fkMwGORoAbO+FwFdJTrr0e3nHQxK8nR+uJJ6rwrxJ/aw8vmy3INxHi1PGcv9bXRzv0
-	 aqz46WoMgdfBdP7BBSOkD7beU9vqkIjYrknRILy5C0BYsQpZteiEB5ol1CsYdWhOrL
-	 GvA5x2rdvnZMg==
-Date: Wed, 29 Oct 2025 17:48:08 +0000
-From: Conor Dooley <conor@kernel.org>
-To: Elaine Zhang <zhangqing@rock-chips.com>
-Cc: mkl@pengutronix.de, kernel@pengutronix.de, mailhol.vincent@wanadoo.fr,
-	robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
-	heiko@sntech.de, cl@rock-chips.com, linux-can@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org
-Subject: Re: [PATCH v8 1/4] dt-bindings: can: rockchip_canfd: add rk3576 CAN
- controller
-Message-ID: <20251029-unreal-heroics-6e56a89e34d0@spud>
-References: <20251029032302.1238973-1-zhangqing@rock-chips.com>
- <20251029032302.1238973-2-zhangqing@rock-chips.com>
+	id 1vEAPx-00000002IOl-32KV;
+	Wed, 29 Oct 2025 17:57:07 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1761760622;
+	bh=ObU1xjT7JAA7PqNYLw1LzJzSMyQNrZXDdS3snuzBFwQ=;
+	h=From:Subject:Date:To:Cc:From;
+	b=JgqLGY3qRvEnHd64TPO99fpsj3yPGyAjhNp9Ls+lZhhz7DS/7rcJB5LPAYp+kIFbH
+	 5iOo2DqXSbEnXhgDf2ALUoxA1pxQ3VuDnJlNc4w8ReHJA1zpQE5y3mLm+m7J4gK+jq
+	 Tcrkb8p1LYWuoYmcE+leujLve4NLOEPVPFoOar60G8c4LF+2TVS1UR2ny18l/f6uCj
+	 iwt+9ot+XojTVSOHFtTuX1TD15huMtyGI1Fr7CgxaLAGrvWxpttjjIZtcqqQrSELYv
+	 Bfg55bQ17CeXPD5fkipshXnH4Gxlgy+LuV3ZvwOTuoxdrwjwA3DxyGXnb7Vo8vJdBm
+	 CK/bkrnKOdllA==
+Received: from jupiter.universe (dyndsl-091-248-085-053.ewe-ip-backbone.de [91.248.85.53])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6B39117E12BA;
+	Wed, 29 Oct 2025 18:57:02 +0100 (CET)
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id 1AA47480044; Wed, 29 Oct 2025 18:57:02 +0100 (CET)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+Subject: [PATCH v4 0/9] PCI: dw-rockchip: add system suspend support
+Date: Wed, 29 Oct 2025 18:56:39 +0100
+Message-Id: <20251029-rockchip-pcie-system-suspend-v4-0-ce2e1b0692d2@collabora.com>
 MIME-Version: 1.0
-In-Reply-To: <20251029032302.1238973-2-zhangqing@rock-chips.com>
+X-B4-Tracking: v=1; b=H4sIAFdVAmkC/x3MwQqDMAwA0F+RnA3UoFvnr8gOGuMMY7U0TjbEf
+ 7d4fJe3g0lSMWiLHZJsarqEjLosgOc+vAR1zAZy1FSOPKaF3zxrxMgqaH9b5YP2tShhRH/jyfn
+ +PhA9IBcxyaS/q++ex3ECbY/hhW4AAAA=
+X-Change-ID: 20251028-rockchip-pcie-system-suspend-86cf08a7b229
+To: Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+ =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
+ Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, Jingoo Han <jingoohan1@gmail.com>, 
+ Shawn Lin <shawn.lin@rock-chips.com>
+Cc: linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ kernel@collabora.com, Sebastian Reichel <sebastian.reichel@collabora.com>
+X-Mailer: b4 0.14.3
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3171;
+ i=sebastian.reichel@collabora.com; h=from:subject:message-id;
+ bh=ObU1xjT7JAA7PqNYLw1LzJzSMyQNrZXDdS3snuzBFwQ=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGkCVW1ndM+n1Si+JdT6O2m9KNQnyob4o/Uf7
+ dq3Gk2JnLCq9IkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJpAlVtAAoJENju1/PI
+ O/qa0DgP/j9QvWe+g+UOtj0/VSLCp2Ms0qwURIWZxgrNWk5i+O7moNHbLrAkzWrzKcg9WNR+nXj
+ g1x9XPjj5wmomRfW78NoHVXkLSJ1nC/149FrBHQ96RO7fhPTDMGx7wZSfIfhVPpSjUQ7UmJdMw+
+ S9gNZX5p5A4HoM+WGAi59e2NT9Z6aO6+9EyYgf4Yu3nEspfoQ5De/nfhNW04KmbmuvlfpVGLyc5
+ IEOmsWrlBqwDg1U9R/nAFwVUOscE+IAMbhXrrpt2jZoa4QJp1oK2o0P+XuwCJddc3nSeseDalZ9
+ SQhelIkR5xw9J+cXRKmWhT+W6bOmgub4pT01kFuHKfi4y3pxxeCJwC8wsyIMcGMMFSkET5AMguv
+ +jtU7fcRyR2bBELeA2TMRhC1amS9zlbu9YAl+BK1Me5qo52dCtLcdFgpgfblllKOT6XXmHgf7Za
+ NRHoqfv4JWqxF56gDeUrGHm7GsHh9YnOkSOPWtl79EB/ZHY91yUTa8AYjuVR5BF82fwSHldIcb7
+ jo8a33ewiCyE+WY19ETR33pCrEpNrFJChfPcJLzB2YcEJxa1EoMujq25F3Yr89W1SraG21locgO
+ 4LJBs+AfmRJ69I8+Qg7Mkh8PREBX3dqjVIf3o1eFAoXor1BX21h1Od+nAp9fz++u7H6nAfpoXJB
+ ckEOWDtVwOSTLGvCt/s0uCA==
+X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
+ fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251029_105705_932067_C4E5EE1E 
+X-CRM114-Status: GOOD (  12.86  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,148 +95,77 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0480190938905860874=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+I've recently been working on fixing up at least basic system suspend
+support on the Rockchip RK3576 platform. Currently the biggest open
+issue is missing support in the PCIe driver. This series is a follow-up
+for Shawn Lin's series with feedback from Niklas Cassel and Manivannan
+Sadhasivam being handled as well as some of my own changes fixing up
+things I noticed.
 
---===============0480190938905860874==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="01IpGdZZ9oQxgRWr"
-Content-Disposition: inline
+In opposite to Shawn Lin I did not test with different peripherals as my
+main goal is getting basic suspend to ram working in the first place. I
+did notice issues with the Broadcom WLAN card on the RK3576 EVB.
+Suspending that platform without a driver being probed works, but after
+probing brcmfmac suspend is aborted because brcmf_pcie_pm_enter_D3()
+does not work. As far as I can tell the problem is unrelated to the
+Rockchip PCIe driver.
 
+Changes since PATCHv3:
+ * https://lore.kernel.org/linux-pci/1744940759-23823-1-git-send-email-shawn.lin@rock-chips.com/
+ * rename rockchip_pcie_get_ltssm to rockchip_pcie_get_ltssm_status_reg
+   in a separate patch (Niklas Cassel)
+ * rename rockchip_pcie_get_pure_ltssm to rockchip_pcie_get_ltssm_state
+   in a separate patch (Niklas Cassel)
+ * Move devm_phy_get out of phy_init to probe in a separate patch
+   (Manivannan Sadhasivam)
+ * Add helper function for enhanced LTSSM control mode in a separate patch
+   (Niklas Cassel)
+ * Add helper function for controller mode in a separate patch
+   (Niklas Cassel)
+ * Add helper function for DDL indicator in a separate patch
+   (Niklas Cassel)
+ * Move rockchip_pcie_pme_turn_off implementation in a separate patch
+ * Rebase to v6.18-rc3 using new FIELD_PREP_WM16()
+ * Improve readability of PME_TURN_OFF/PME_TO_ACK defines (Manivannan Sadhasivam)
+ * Fix usage of reverse Xmas (Manivannan Sadhasivam)
+ * Assert PERST# before turning off other resources (Manivannan Sadhasivam)
+ * Improve some error messages (Manivannan Sadhasivam)
+ * Rename goto labels as per their purpose (Manivannan Sadhasivam)
+ * Add extra patch for dw_pcie_resume_noirq, since I've seen errors
+   during resume on boards not having anything plugged into their PCIe
+   port
 
---01IpGdZZ9oQxgRWr
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+Sebastian Reichel (9):
+      PCI: dw-rockchip: Rename rockchip_pcie_get_ltssm function
+      PCI: dw-rockchip: Support get_ltssm operation
+      PCI: dw-rockchip: Move devm_phy_get out of phy_init
+      PCI: dw-rockchip: Add helper function for enhanced LTSSM control mode
+      PCI: dw-rockchip: Add helper function for controller mode
+      PCI: dw-rockchip: Add helper function for DDL indicator
+      PCI: dw-rockchip: Add pme_turn_off support
+      PCI: dw-rockchip: Add system PM support
+      PCI: dwc: support missing PCIe device on resume
 
-On Wed, Oct 29, 2025 at 11:22:59AM +0800, Elaine Zhang wrote:
-> Add documentation for the rockchip rk3576 CAN controller.
->=20
-> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
-> ---
->  .../net/can/rockchip,rk3568v2-canfd.yaml      | 52 +++++++++++++++++--
->  1 file changed, 48 insertions(+), 4 deletions(-)
->=20
-> diff --git a/Documentation/devicetree/bindings/net/can/rockchip,rk3568v2-=
-canfd.yaml b/Documentation/devicetree/bindings/net/can/rockchip,rk3568v2-ca=
-nfd.yaml
-> index a077c0330013..30782218728e 100644
-> --- a/Documentation/devicetree/bindings/net/can/rockchip,rk3568v2-canfd.y=
-aml
-> +++ b/Documentation/devicetree/bindings/net/can/rockchip,rk3568v2-canfd.y=
-aml
-> @@ -10,13 +10,12 @@ title:
->  maintainers:
->    - Marc Kleine-Budde <mkl@pengutronix.de>
-> =20
-> -allOf:
-> -  - $ref: can-controller.yaml#
-> -
->  properties:
->    compatible:
->      oneOf:
-> -      - const: rockchip,rk3568v2-canfd
-> +      - enum:
-> +          - rockchip,rk3568v2-canfd
-> +          - rockchip,rk3576-can
->        - items:
->            - const: rockchip,rk3568v3-canfd
->            - const: rockchip,rk3568v2-canfd
-> @@ -43,6 +42,33 @@ properties:
->        - const: core
->        - const: apb
-> =20
-> +  dmas:
-> +    maxItems: 1
-> +
-> +  dma-names:
-> +    items:
-> +      - const: rx
-> +
-> +allOf:
-> +  - $ref: can-controller.yaml#
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            const: rockchip,rk3576-can
-> +    then:
-> +      properties:
-> +        dmas:
-> +          minItems: 1
-> +          maxItems: 2
-> +        dma-names:
-> +          minItems: 1
-> +          maxItems: 2
+ drivers/pci/controller/dwc/pcie-designware-host.c |  13 +-
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c     | 220 ++++++++++++++++++----
+ 2 files changed, 198 insertions(+), 35 deletions(-)
+---
+base-commit: dcb6fa37fd7bc9c3d2b066329b0d27dedf8becaa
+change-id: 20251028-rockchip-pcie-system-suspend-86cf08a7b229
 
-This looks wrong. You have one dma, but you're setting maxItems to 2.
-Seems fine otherwise.
-pw-bot: changes-requested
+Best regards,
+-- 
+Sebastian Reichel <sebastian.reichel@collabora.com>
 
-
-Cheers,
-Conor.
-
-> +    else:
-> +      properties:
-> +        dmas: false
-> +        dma-names: false
-> +
->  required:
->    - compatible
->    - reg
-> @@ -72,3 +98,21 @@ examples:
->              reset-names =3D "core", "apb";
->          };
->      };
-> +
-> +  - |
-> +    soc {
-> +        #address-cells =3D <2>;
-> +        #size-cells =3D <2>;
-> +
-> +        can@2ac00000 {
-> +            compatible =3D "rockchip,rk3576-can";
-> +            reg =3D <0x0 0x2ac00000 0x0 0x1000>;
-> +            interrupts =3D <GIC_SPI 121 IRQ_TYPE_LEVEL_HIGH>;
-> +            clocks =3D <&cru CLK_CAN0>, <&cru PCLK_CAN0>;
-> +            clock-names =3D "baud", "pclk";
-> +            resets =3D <&cru SRST_CAN0>, <&cru SRST_P_CAN0>;
-> +            reset-names =3D "core", "apb";
-> +            dmas =3D <&dmac0 20>;
-> +            dma-names =3D "rx";
-> +        };
-> +    };
-> --=20
-> 2.34.1
->=20
-
---01IpGdZZ9oQxgRWr
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaQJTWAAKCRB4tDGHoIJi
-0qVhAPsG3U2zIV2IEhCQGMbLtQJNoGSUmzb6yyOYDB/ZsqWM9gD/UvCgdautseC1
-gMmchbJQAcHxrEqzZGxopx+iLXenaQ8=
-=an9+
------END PGP SIGNATURE-----
-
---01IpGdZZ9oQxgRWr--
-
-
---===============0480190938905860874==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============0480190938905860874==--
-
