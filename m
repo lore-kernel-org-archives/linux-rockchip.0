@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9944CCD1BF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Oct 2025 07:16:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8598CCF9EE
+	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Oct 2025 07:16:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IqVL7oXpGL+HQKmgwhVCgsOPckzCXJt6r+VYtdDik08=; b=V7h538Hyydf3D8
-	n7zW7yq3j0inUQnmy8mx1+5znXEJ644kv7imfGat91Oe/iIOZt5zQEB48e4J7bTbzvyCTknEJxDgp
-	cEQH4e8i3HizHZBYFh/Fv+Gp5pdHzd/ZIUTh1oavYVittff5APN3REpNU6KXbl84slc7tt1n4kJdv
-	XjeQWwzjKhjltNxnj/Hh6Uc5IYuOclHXqi/N3sErKAXxF9zla/scQuFnabsYKR2rPI/gD3Qp5iKAy
-	Z2elbWGrYK1aWvN5Ipy1olmblKIUyGh+48QXMU0OG75+/NynhRO6xGcFzeFYBa3yEf4n1Tw7UrEzL
-	3V9DHxMI2V/JByjEN21Q==;
+	List-Owner; bh=AR866aW3RDAITUF6Oat/pHcuRvRzvO8gE9v0xWI2J8U=; b=YF3CJA2+wDmzVe
+	PoklidYRgsvKvbAM4TKHEKXYX9DXXxwigU9TUArTmiTHrOs+G7LtUgD3UdgtMxW+X8WIuD/vbW3QZ
+	BTvoJkMYL9NmbKW4ZQCqRV2JTHcoWC1kbMk7VGwSZJVooofraXZcfU2UK1LdfLT57nb9R/S+hPKmt
+	MAwtDZNwCVB0fBAQq6MHMWOhcMU35GHwSkp1kZ1DEGLTSNcnyapBB+MdSHvFqnx7Fqi+w4+uMx742
+	yZmUTf+et2NTl5/quGqvphs9om1k74naDlH9xXgvqCWUr8sVApl6XwysV0spkWuzWaSQhFlpa1ixv
+	NmCwTbDUt7BrCgVbDWTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vE0Pb-000000002mJ-32aM;
-	Wed, 29 Oct 2025 07:16:03 +0000
+	id 1vE0Pd-000000002oY-1ejE;
+	Wed, 29 Oct 2025 07:16:05 +0000
 Received: from smtpbgbr2.qq.com ([54.207.22.56])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vE0PM-000000002Hg-2bP7;
-	Wed, 29 Oct 2025 07:15:51 +0000
+	id 1vE0PM-000000002H1-2zUD;
+	Wed, 29 Oct 2025 07:15:52 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
-	s=altu2504; t=1761722091;
-	bh=j2j9WA1trqT3vAVw/jd1rQawmJe4KSEvtc97hT+jsmc=;
+	s=altu2504; t=1761722095;
+	bh=brizxRBu3LFpj2XHv7UBCSeP95PLEUGrh/8On/FsYA4=;
 	h=From:To:Subject:Date:Message-Id;
-	b=axDSjnoMzuC5X6IKwC9o8L+YT8jloY/jdQraAGDAwFUMaGnjlNLYOJirtVl6qZZMj
-	 KneCijyldkDE7fIj9+2B5ZIO+YkhaGeOAIMhQqG3eo8f3ddXdiIzVbfcZnKqBQRTEj
-	 9dpvZ6nagLyzIzSQCBE/WfKsv90ZVTNJhy0lwi0g=
-X-QQ-mid: zesmtpsz6t1761722089t7ff69d0c
-X-QQ-Originating-IP: 7bQdVQ9oUX34jRxfdd7Wtzl35M8B8aqczAbGIlIcToY=
+	b=GjU2IXd6PkwymaUvkTE9jFp822SjnwxBtY2tuju2gt0wMsra9EK6aLL47yxgxE+Wl
+	 zZfZASSTthemMhNWbB38ddjliV6/wu/3zfc2Xe2LunsI8baWe6N93UQYQay7/sklGe
+	 YfNTU2+Nviq41BV+/ewpSJrbmdqPL+yoyaHKM4lU=
+X-QQ-mid: zesmtpsz6t1761722094tafaac705
+X-QQ-Originating-IP: 6uKBeLRKt9TvmdEuUvqbMA/JOlRqI8QIJ5dkrGmyzOE=
 Received: from DESKTOP-8BT1A2O.localdomain ( [58.22.7.114])
 	by bizesmtp.qq.com (ESMTP) with 
-	id ; Wed, 29 Oct 2025 15:14:45 +0800 (CST)
+	id ; Wed, 29 Oct 2025 15:14:51 +0800 (CST)
 X-QQ-SSF: 0000000000000000000000000000000
 X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 376849328953314141
+X-BIZMAIL-ID: 10059686084255947240
 From: Chaoyi Chen <kernel@airkyi.com>
 To: Heikki Krogerus <heikki.krogerus@linux.intel.com>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
@@ -79,34 +79,35 @@ Cc: linux-usb@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	dri-devel@lists.freedesktop.org
-Subject: [PATCH v8 01/10] usb: typec: Add notifier functions
-Date: Wed, 29 Oct 2025 15:14:26 +0800
-Message-Id: <20251029071435.88-2-kernel@airkyi.com>
+Subject: [PATCH v8 02/10] usb: typec: Export all typec device types
+Date: Wed, 29 Oct 2025 15:14:27 +0800
+Message-Id: <20251029071435.88-3-kernel@airkyi.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20251029071435.88-1-kernel@airkyi.com>
 References: <20251029071435.88-1-kernel@airkyi.com>
 X-QQ-SENDSIZE: 520
 Feedback-ID: zesmtpsz:airkyi.com:qybglogicsvrsz:qybglogicsvrsz4a-0
-X-QQ-XMAILINFO: MjqaYNLY8QZGIpmhSyWql8me1d5OxWxLDL4l4EY/xytzQsP2bDcsJWMt
-	49n8ST3h+nN0tPnp1cxviRfuOfbgBmdWy+/hy5YZ3jSgKY3dsUAR3393FgGroGshRWi+nSD
-	+OcO90YAQWoOhyV3VuW6G9femXmqzYHnKNQytoLtnQwlvl2TiUy/xPwH44PcrgFWMnT3rXz
-	bVWEqUmBcKXUDbo7nMaYbjWqgXDXeM01N6xqbxHaQ3v3p28kWEDyHEDLVjkGcf8/DnlxhqI
-	PH68mbUb1+mhy0mgVYxTwcqA7Qtwx9Tni5dTDIf2LrZ50lCjcas7THoR2tJfiZ5UwpjICJ+
-	tnZduuYp7U1yaSzw3ZDY5ZRKgcwGj4/jnblrjELDykEdh+mOtQO5DkWzFc05+lnTRh+Bbp6
-	J2LAKv98Seg6CSCuMvZv6yWkZXlJ++csPj1YivMvL2tVu1jhfOwjtyqecPGx7LJ1lH6z4i1
-	YOKjECb8140Ugw/c8eqCu1onEupANpLfjiZa0ULJ8aRAuz+kA+kkLgYn8l92bYnWe9J93EN
-	tLD6RC8+t1Y6mT0z9LeJ4V5qg34LDHODStS28IEefDVda4tX+NWbOkaCykv9LaNkCTj54Hr
-	GZi671WHSuRneXDpZuqUh6I3cTOwsYSj2L5MiixFYuTm1HbFbm1UVTrvMOpqywjFp389geM
-	n1VaiuGgqmeO/k7fHx4F0Sc6OAC407IhzI/389SOsaNuJ+02KllOEWwJAW/fA2Mr7AYTE07
-	Oog5lplwnUlfrBqCGIsfV/45LFLKxBYckhWcmnmbkqEod6oVNgyQD279QKxJ6Ga9blkWEl9
-	GAYeeZc5+etZAY9KwWsGaX3Oyf0C/YDoV6gcgHsQdWHZMURiRO+cJJw5Y6zeJSpA0puJxZA
-	/+S7w0Bd8hE6g2kfBoyjWUODYCZHGmjmZXqMF21N9q67X3r/zTAs7n5d56MNYTtIIfHtud/
-	U86yulE2M359yC5hhMBPrUJrRru3RbeXeROxvtwJjfYbgcSjLZfrsJIdtdHQXkHCV4d4=
-X-QQ-XMRINFO: M/715EihBoGSf6IYSX1iLFg=
+X-QQ-XMAILINFO: NE5Pnkvry7UFYCMhecDQbQs4M31xG+wRVtJNT1y+KXxm1VlUFVE3FuN9
+	p3T896cvThq7faeZTXBOdcsfiH92OHkq6mJ8iTXFAWdI5hMRsBSTR/RD5iYv4omkGFShyYU
+	ynA7hHE8rH+ovLMbrOJQKs6werzfep3djzmTlWzHdG2+nT7S2c3DRfD4JxgqRfSyYnZoxIe
+	yl7cCSlFSkspHUtaxD3VmxuOyJovm9POqagQ0jGDiEpPA3lQZ5voVOsUnarbIIJPjqle2AC
+	my92ivocc9J8kQu8PZ+jTjHxEPGAGiDWxQMoE5YVep53YsAyeXen3HnuuZNG6eQbHD6zuPd
+	JeNRmxja62pxh0qWwpnjVJRAm+d3Z5MM+qR4WmkoNpUY61CmsE9T0IKzCgjYBIAQC9OLkw/
+	gvIxTpLmTslExIWX3rl1JQ2lvCj/vz9rWADWonY7B0ugeuraM+dNWurixY+GdpVRWANX32i
+	BS/YiL8x0dSazCmmtmNqZfJ9zM3hJliakoI7BSoozglalvQWlAfA6Ge7MwI52AU1yn9qiov
+	/ynrVqvr2Scx2JO+jPvbOSXgTPMOI5VKk+37Tt39hklkWWTXe6WPeNJ3B1kUt8JEyERU4b1
+	mMcLoZX8SZZopOF4VfQ25unw5Vsm3kQxK+eecrnaZ5inj6/LtE264vIusFGHFfiDuqGC0JE
+	+DNETzK2yCTUAAw0q5fUrz146e2EbqN9ru/7roMsrhlHkdDF3PQlP+Xy0itrB5NN5mgOIIC
+	6F2GDJb0d7EbY9+XxcjHyLTEAYR2Ht786USXsg/3UIaIGYZlr1h4W/UamxYlUgDH4luPVAN
+	IgjXAKsPzXD0I4UX6/NpbxzzlY5+qEjf0GLBmMY/YOWbPaWaNj37hjwtA8zy3b7ZN4rti1e
+	224z5gbpWH8JT8VKKxOeDgKFZjY8rbcXd2cWQG+1y0mMDwtkqZt2fDa0VXDxMdOZbTIZRYU
+	HgAyockj4tphOllgltTCXX122guoyFldG4wTmECnFeaqtTgwG63/AUyYk80ZDm3v6kg8RHd
+	fR5OWn1v2tKEccti8D
+X-QQ-XMRINFO: NyFYKkN4Ny6FSmKK/uo/jdU=
 X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251029_001549_507648_59862324 
-X-CRM114-Status: GOOD (  18.72  )
+X-CRM114-CacheID: sfid-20251029_001549_632951_BE4291E9 
+X-CRM114-Status: GOOD (  12.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,123 +127,93 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
 
-Some other part of kernel may want to know the event of typec bus.
-
-This patch add common notifier function to notify these event.
+Export all typec device types for identification.
 
 Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
 ---
+ drivers/usb/typec/class.c |  4 ++++
+ drivers/usb/typec/class.h | 10 ----------
+ include/linux/usb/typec.h | 10 ++++++++++
+ 3 files changed, 14 insertions(+), 10 deletions(-)
 
-Changes in v8:
-- Fix coding style.
-
- drivers/usb/typec/Makefile       |  2 +-
- drivers/usb/typec/bus.h          |  2 ++
- drivers/usb/typec/class.c        |  3 +++
- drivers/usb/typec/notify.c       | 24 ++++++++++++++++++++++++
- include/linux/usb/typec_notify.h | 16 ++++++++++++++++
- 5 files changed, 46 insertions(+), 1 deletion(-)
- create mode 100644 drivers/usb/typec/notify.c
- create mode 100644 include/linux/usb/typec_notify.h
-
-diff --git a/drivers/usb/typec/Makefile b/drivers/usb/typec/Makefile
-index 7a368fea61bc..20d09c5314d7 100644
---- a/drivers/usb/typec/Makefile
-+++ b/drivers/usb/typec/Makefile
-@@ -1,6 +1,6 @@
- # SPDX-License-Identifier: GPL-2.0
- obj-$(CONFIG_TYPEC)		+= typec.o
--typec-y				:= class.o mux.o bus.o pd.o retimer.o
-+typec-y				:= class.o mux.o notify.o bus.o pd.o retimer.o
- typec-$(CONFIG_ACPI)		+= port-mapper.o
- obj-$(CONFIG_TYPEC)		+= altmodes/
- obj-$(CONFIG_TYPEC_TCPM)	+= tcpm/
-diff --git a/drivers/usb/typec/bus.h b/drivers/usb/typec/bus.h
-index 643b8c81786d..820b59b6d434 100644
---- a/drivers/usb/typec/bus.h
-+++ b/drivers/usb/typec/bus.h
-@@ -26,6 +26,8 @@ struct altmode {
- 	struct altmode			*plug[2];
- };
- 
-+void typec_notify_event(unsigned long event, void *data);
-+
- #define to_altmode(d) container_of(d, struct altmode, adev)
- 
- extern const struct bus_type typec_bus;
 diff --git a/drivers/usb/typec/class.c b/drivers/usb/typec/class.c
-index 9b2647cb199b..51e971bc68d1 100644
+index 51e971bc68d1..04b55f066b06 100644
 --- a/drivers/usb/typec/class.c
 +++ b/drivers/usb/typec/class.c
-@@ -13,6 +13,7 @@
- #include <linux/string_choices.h>
- #include <linux/usb/pd_vdo.h>
- #include <linux/usb/typec_mux.h>
-+#include <linux/usb/typec_notify.h>
- #include <linux/usb/typec_retimer.h>
- #include <linux/usb.h>
+@@ -793,6 +793,7 @@ const struct device_type typec_partner_dev_type = {
+ 	.groups = typec_partner_groups,
+ 	.release = typec_partner_release,
+ };
++EXPORT_SYMBOL_GPL(typec_partner_dev_type);
  
-@@ -600,6 +601,8 @@ typec_register_altmode(struct device *parent,
- 		return ERR_PTR(ret);
- 	}
+ static void typec_partner_link_device(struct typec_partner *partner, struct device *dev)
+ {
+@@ -1147,6 +1148,7 @@ const struct device_type typec_plug_dev_type = {
+ 	.groups = typec_plug_groups,
+ 	.release = typec_plug_release,
+ };
++EXPORT_SYMBOL_GPL(typec_plug_dev_type);
  
-+	typec_notify_event(TYPEC_ALTMODE_REGISTERED, &alt->adev);
-+
- 	return &alt->adev;
- }
+ /**
+  * typec_plug_set_num_altmodes - Set the number of available plug altmodes
+@@ -1295,6 +1297,7 @@ const struct device_type typec_cable_dev_type = {
+ 	.groups = typec_cable_groups,
+ 	.release = typec_cable_release,
+ };
++EXPORT_SYMBOL_GPL(typec_cable_dev_type);
  
-diff --git a/drivers/usb/typec/notify.c b/drivers/usb/typec/notify.c
-new file mode 100644
-index 000000000000..0a14d3ae224e
---- /dev/null
-+++ b/drivers/usb/typec/notify.c
-@@ -0,0 +1,24 @@
-+// SPDX-License-Identifier: GPL-2.0
-+#include <linux/notifier.h>
-+#include <linux/usb/typec_notify.h>
+ /**
+  * typec_cable_get - Get a reference to the USB Type-C cable
+@@ -2034,6 +2037,7 @@ const struct device_type typec_port_dev_type = {
+ 	.uevent = typec_uevent,
+ 	.release = typec_release,
+ };
++EXPORT_SYMBOL_GPL(typec_port_dev_type);
+ 
+ /* --------------------------------------- */
+ /* Driver callbacks to report role updates */
+diff --git a/drivers/usb/typec/class.h b/drivers/usb/typec/class.h
+index db2fe96c48ff..f04f6987bed8 100644
+--- a/drivers/usb/typec/class.h
++++ b/drivers/usb/typec/class.h
+@@ -87,16 +87,6 @@ struct typec_port {
+ #define to_typec_cable(_dev_) container_of(_dev_, struct typec_cable, dev)
+ #define to_typec_partner(_dev_) container_of(_dev_, struct typec_partner, dev)
+ 
+-extern const struct device_type typec_partner_dev_type;
+-extern const struct device_type typec_cable_dev_type;
+-extern const struct device_type typec_plug_dev_type;
+-extern const struct device_type typec_port_dev_type;
+-
+-#define is_typec_partner(dev) ((dev)->type == &typec_partner_dev_type)
+-#define is_typec_cable(dev) ((dev)->type == &typec_cable_dev_type)
+-#define is_typec_plug(dev) ((dev)->type == &typec_plug_dev_type)
+-#define is_typec_port(dev) ((dev)->type == &typec_port_dev_type)
+-
+ extern const struct class typec_mux_class;
+ extern const struct class retimer_class;
+ extern const struct class typec_class;
+diff --git a/include/linux/usb/typec.h b/include/linux/usb/typec.h
+index 309251572e2e..02fed8293415 100644
+--- a/include/linux/usb/typec.h
++++ b/include/linux/usb/typec.h
+@@ -56,6 +56,16 @@ enum typec_role {
+ 	TYPEC_SOURCE,
+ };
+ 
++extern const struct device_type typec_partner_dev_type;
++extern const struct device_type typec_cable_dev_type;
++extern const struct device_type typec_plug_dev_type;
++extern const struct device_type typec_port_dev_type;
 +
-+#include "bus.h"
++#define is_typec_partner(dev) ((dev)->type == &typec_partner_dev_type)
++#define is_typec_cable(dev) ((dev)->type == &typec_cable_dev_type)
++#define is_typec_plug(dev) ((dev)->type == &typec_plug_dev_type)
++#define is_typec_port(dev) ((dev)->type == &typec_port_dev_type)
 +
-+static BLOCKING_NOTIFIER_HEAD(typec_notifier_list);
-+
-+int typec_altmode_register_notify(struct notifier_block *nb)
-+{
-+	return blocking_notifier_chain_register(&typec_notifier_list, nb);
-+}
-+EXPORT_SYMBOL_GPL(typec_altmode_register_notify);
-+
-+int typec_altmode_unregister_notify(struct notifier_block *nb)
-+{
-+	return blocking_notifier_chain_unregister(&typec_notifier_list, nb);
-+}
-+EXPORT_SYMBOL_GPL(typec_altmode_unregister_notify);
-+
-+void typec_notify_event(unsigned long event, void *data)
-+{
-+	blocking_notifier_call_chain(&typec_notifier_list, event, data);
-+}
-diff --git a/include/linux/usb/typec_notify.h b/include/linux/usb/typec_notify.h
-new file mode 100644
-index 000000000000..f3a7b5f5b05b
---- /dev/null
-+++ b/include/linux/usb/typec_notify.h
-@@ -0,0 +1,16 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+
-+#ifndef __USB_TYPEC_NOTIFY
-+#define __USB_TYPEC_NOTIFY
-+
-+#include <linux/notifier.h>
-+
-+enum usb_typec_event {
-+	TYPEC_ALTMODE_REGISTERED,
-+	TYPEC_ALTMODE_UNREGISTERED,
-+};
-+
-+int typec_altmode_register_notify(struct notifier_block *nb);
-+int typec_altmode_unregister_notify(struct notifier_block *nb);
-+
-+#endif /* __USB_TYPEC_NOTIFY */
+ static inline int is_sink(enum typec_role role)
+ {
+ 	return role == TYPEC_SINK;
 -- 
 2.49.0
 
