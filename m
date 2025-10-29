@@ -4,31 +4,31 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0832CCF9F5
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94F74CCF9F3
 	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Oct 2025 03:23:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=qazfCzaHJhJAX6xgcPECwTG0O0mEm0n1dc3yRSw9Qc0=; b=Z9Ji8GfIouVees
-	PjmBfJY2ZOu7vP6YgHWUs3DOaHE+V9Az06dOcwuSmtvtH+CSvBHH68mVgwljCeshUGc4V3wMc7zVc
-	EhtyBs08T9kT16UFq9DQE0XJFD9nsTM6EsxelcOC06tw3rUc2jAGqsfpcNs65iSixbf6IUbClvbeL
-	1szkQacU+ifRGR8/+TAMvOMT5B0Phn1SJ6VUj73XcMDuipKJlnxoko788EjfgE5Dk8jxc2DhmA8Px
-	2A5uXo81WWOcsTsMprD8IdIUgL/t4kL4pXdSOrYroa1LHa1vz00lixiWjw4pybUG6HksuRkbwMFBq
-	dvj1q8zoS3vCiKKWhGKQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=zgmajus7mjJnWBdRYSmsZnhMV2aQ3ZQDM5D2NpxAW14=; b=0LmkhinCFvQWyz
+	SHF7Z66UMruGK76COzj7OxwoeWUN4v3oyewkjIt30fzkdbO8rNobsYTNQwP5NxXklS5Ummq4fa77R
+	9LjpaaFXuZcm3+kn/cGQtlLQhjADfNOxs0ie62aQ3f9qnaKVWjLcnCgTotmu96JuYo1wimlwc9dCB
+	AfYwU8iTX5BghC6svmOOUwynP0gmTCqSGn1dn/h/khI3MiZCX5xZjBFMKSb8ZVPhU4quDgMyUAV+2
+	QTvzvimMbd461/n78JJkhhvHnRrbWCsHHRj44Aq6Wvig5ViZ7mKC3j92rmWx8zV/tCheWm5VK/9Op
+	kmXiBrw1R+khfGPFceUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDwmM-0000000H29t-3E2T;
-	Wed, 29 Oct 2025 03:23:18 +0000
-Received: from mail-m82107.xmail.ntesmail.com ([156.224.82.107])
+	id 1vDwmO-0000000H2B7-2wKr;
+	Wed, 29 Oct 2025 03:23:20 +0000
+Received: from mail-m155106.qiye.163.com ([101.71.155.106])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDwmI-0000000H26a-2St6;
+	id 1vDwmJ-0000000H27C-0bK3;
 	Wed, 29 Oct 2025 03:23:17 +0000
 Received: from rockchip.. (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 279245ee8;
-	Wed, 29 Oct 2025 11:23:04 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 279245f16;
+	Wed, 29 Oct 2025 11:23:11 +0800 (GMT+08:00)
 From: Elaine Zhang <zhangqing@rock-chips.com>
 To: zhangqing@rock-chips.com,
 	mkl@pengutronix.de,
@@ -44,24 +44,26 @@ Cc: linux-can@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	devicetree@vger.kernel.org
-Subject: [PATCH v8 0/4] rockchip: add can for RK3576 Soc
-Date: Wed, 29 Oct 2025 11:22:58 +0800
-Message-Id: <20251029032302.1238973-1-zhangqing@rock-chips.com>
+Subject: [PATCH v8 4/4] net: can: rockchip: support dma for rk3576 rx
+Date: Wed, 29 Oct 2025 11:23:02 +0800
+Message-Id: <20251029032302.1238973-5-zhangqing@rock-chips.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20251029032302.1238973-1-zhangqing@rock-chips.com>
+References: <20251029032302.1238973-1-zhangqing@rock-chips.com>
 MIME-Version: 1.0
-X-HM-Tid: 0a9a2dfd94c903a3kunm7a63a81221fa97
+X-HM-Tid: 0a9a2dfdaece03a3kunm7a63a81221fb59
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGk4eGFZOGR1NTEMfGk9KTh5WFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGUJCGVZMGRpCSE9JH0xDHh5WFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpKQk
+	1VSktLVUpCWQY+
 DKIM-Signature: a=rsa-sha256;
-	b=Ls3LksbnYXmhl9tXfUdaMaCsM+8IBaYUCjoPlX6zN+hOaDQ4ygEmoiSvWKNTD+Z0fQ0786OyWnvAqLGnH4RmD2tR6Wut9VX0ugdox9uDVd3rEX8hJHL4rKLecqe0ZFurvtRBt7ywm+6nZLnf7isyOxSdSFmx5cmBAGMrIHlIm9Q=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=au2n4rrZx8SO4PVuqq8XAKDLJGp5zKXJpUNLmozR0c8=;
+	b=MGBh7evqWzxWtcKFPQCU6l9hrTHfUpPEptqDxV4nwF4Nws5QFsanPZEFR4Cb1+Aj+NPuua080a8gb/5DzGnr9exIFg/YHySj3bqVm7hWf2RcSNwlea2yKILxOisYENQxuU5VJakWybvBaxKhIbpk0vbwYInTQCnEWdKeDeITxoc=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=Gx1ZNKdQ6vm4QkQx+CizmRfGvSq5qGs0J5j5xTq7oJI=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251028_202314_967655_BE6BFF48 
-X-CRM114-Status: GOOD (  10.61  )
+X-CRM114-CacheID: sfid-20251028_202315_386689_0A30535C 
+X-CRM114-Status: GOOD (  22.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,77 +80,298 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-rk3576 can is a new controller,new register layout and Bit position
-definition:
-Support CAN protocol.
-Support Dma.
+The new can controller of rk3576 supports rx dma.
 
-There are major differences from the previous rk3568.
-All errata on the rk3568 have been fixed and redesigned.
+Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+---
+ .../net/can/rockchip/rockchip_canfd-core.c    |  62 +++++++++-
+ drivers/net/can/rockchip/rockchip_canfd-rx.c  | 109 ++++++++++++++++++
+ drivers/net/can/rockchip/rockchip_canfd.h     |   9 ++
+ 3 files changed, 178 insertions(+), 2 deletions(-)
 
-RK3576 CANFD requires authorization and permission. The software
-code is not open by default and needs to be authorized separately.
-
-Change in V8:
-[PATCH v8 1/4]: Drop CANFD, correction format warning.
-[PATCH v8 2/4]: Drop fifo_setup of rkcanfd_devtype_data.
-[PATCH v8 3/4]: Drop CANFD.
-[PATCH v8 4/4]: Drop CANFD.
-
-Change in V7:
-[PATCH v7 1/4]: Correction format warning.
-[PATCH v7 2/4]: No change.
-[PATCH v7 3/4]: Correct the writing of some registers and
-                correct the annotations.
-[PATCH v7 4/4]: Optimize the structure parameters and
-                ensure error handling.
-
-Change in V6:
-[PATCH v6 1/4]: Fix dma is support only for rk3576.
-[PATCH v6 2/4]: Fix the compilation warning.
-[PATCH v6 3/4]: Fix the compilation warning.
-[PATCH v6 4/4]: Fix the compilation warning.
-
-Change in V5:
-[PATCH v5 1/4]: Add rk3576 canfd to rockchip,rk3568v2-canfd.yaml, remove
-                rockchip,rk3576-canfd.yaml
-[PATCH v5 2/4]: Encapsulate some hardware operation functions into
-                rkcanfd_devtype_data to provide differentiated
-                implementations for different models
-                (such as RK3568v2/v3)..
-[PATCH v5 3/4]: Add rk3576 canfd,fix the register naming rule,
-                Delete the variables used by rockchip itself.
-[PATCH v5 4/4]: Fix .h sorting.
-
-
-Change in V4:
-[PATCH v4 1/3]: Correct the format and add explanations.
-[PATCH v4 2/3]: No change.
-[PATCH v4 3/3]: No change.
-
-Change in V3:
-[PATCH v3 1/3]: Add documentation for the rk3576 CAN-FD.
-[PATCH v3 2/3]: Adjust the differentiated code section and
-                add dma function.
-[PATCH v3 3/3]: Remove dma, no use dma by default.
-
-Change in V2:
-[PATCH v2 1/2]: remove rk3576_canfd.c, use the rockchip_canfd driver
-[PATCH v2 2/2]: code style.
-
-Elaine Zhang (4):
-  dt-bindings: can: rockchip_canfd: add rk3576 CAN controller
-  net: can: rockchip: Refactor the rkcanfd_devtype_data structure
-  net: can: rockchip: add can for RK3576 Soc
-  net: can: rockchip: support dma for rk3576 rx
-
- .../net/can/rockchip,rk3568v2-canfd.yaml      |  52 +-
- .../net/can/rockchip/rockchip_canfd-core.c    | 581 ++++++++++++++++--
- drivers/net/can/rockchip/rockchip_canfd-rx.c  | 212 +++++++
- drivers/net/can/rockchip/rockchip_canfd-tx.c  |  20 +
- drivers/net/can/rockchip/rockchip_canfd.h     | 277 +++++++++
- 5 files changed, 1094 insertions(+), 48 deletions(-)
-
+diff --git a/drivers/net/can/rockchip/rockchip_canfd-core.c b/drivers/net/can/rockchip/rockchip_canfd-core.c
+index 58fffcf97b20..8284bf05efba 100644
+--- a/drivers/net/can/rockchip/rockchip_canfd-core.c
++++ b/drivers/net/can/rockchip/rockchip_canfd-core.c
+@@ -399,6 +399,9 @@ static void rk3576can_chip_start(struct rkcanfd_priv *priv)
+ 		      RK3576CAN_REG_BRS_CFG_BRS_NEGSYNC_EN |
+ 		      RK3576CAN_REG_BRS_CFG_BRS_POSSYNC_EN);
+ 
++	if (priv->dma_thr)
++		rkcanfd_write(priv, RK3576CAN_REG_DMA_CTRL,
++			      RK3576CAN_REG_DMA_CTRL_DMA_RX_EN | priv->dma_thr);
+ 	rkcanfd_set_bittiming(priv);
+ 
+ 	priv->devtype_data.interrupts_disable(priv);
+@@ -1288,10 +1291,34 @@ static const struct of_device_id rkcanfd_of_match[] = {
+ };
+ MODULE_DEVICE_TABLE(of, rkcanfd_of_match);
+ 
++static int rk3576_canfd_dma_init(struct rkcanfd_priv *priv, struct resource *res)
++{
++	struct dma_slave_config rxconf = {
++		.direction = DMA_DEV_TO_MEM,
++		.src_addr = res->start + RK3576CAN_REG_RXFRD,
++		.src_addr_width = 4,
++		.dst_addr_width = 4,
++		.src_maxburst = 9,
++	};
++
++	priv->dma_thr = rxconf.src_maxburst - 1;
++	priv->dma_size = RK3576CAN_REG_STR_STATE_INTM_LEFT_CNT_UNIT * 4;
++	priv->rxbuf = dma_alloc_coherent(priv->ndev->dev.parent,
++					 priv->dma_size * RK3576CAN_SRAM_MAX_FIFO_CNT,
++					 &priv->rx_dma_dst_addr, GFP_KERNEL);
++	if (!priv->rxbuf) {
++		priv->rxbuf = NULL;
++		return -ENOMEM;
++	}
++	dmaengine_slave_config(priv->rxchan, &rxconf);
++	return 0;
++}
++
+ static int rkcanfd_probe(struct platform_device *pdev)
+ {
+ 	struct rkcanfd_priv *priv;
+ 	struct net_device *ndev;
++	struct resource *res;
+ 	const void *match;
+ 	int err;
+ 
+@@ -1313,7 +1340,7 @@ static int rkcanfd_probe(struct platform_device *pdev)
+ 		goto out_free_candev;
+ 	}
+ 
+-	priv->regs = devm_platform_ioremap_resource(pdev, 0);
++	priv->regs = devm_platform_get_and_ioremap_resource(pdev, 0, &res);
+ 	if (IS_ERR(priv->regs)) {
+ 		err = PTR_ERR(priv->regs);
+ 		goto out_free_candev;
+@@ -1348,10 +1375,22 @@ static int rkcanfd_probe(struct platform_device *pdev)
+ 			priv->can.ctrlmode_supported |= CAN_CTRLMODE_FD;
+ 	}
+ 
++	priv->rxchan = dma_request_chan(&pdev->dev, "rx");
++	if (IS_ERR(priv->rxchan)) {
++		netdev_warn(priv->ndev,
++			    "Failed to request RX-DMA channel: %pe, continuing without DMA",
++			    priv->rxchan);
++		priv->rxchan = NULL;
++	} else {
++		err = rk3576_canfd_dma_init(priv, res);
++		if (err)
++			goto out_can_dma_rx_chan_del;
++	}
++
+ 	err = can_rx_offload_add_manual(ndev, &priv->offload,
+ 					RKCANFD_NAPI_WEIGHT);
+ 	if (err)
+-		goto out_free_candev;
++		goto out_can_dma_rx_chan_del;
+ 
+ 	err = rkcanfd_register(priv);
+ 	if (err)
+@@ -1361,6 +1400,15 @@ static int rkcanfd_probe(struct platform_device *pdev)
+ 
+ out_can_rx_offload_del:
+ 	can_rx_offload_del(&priv->offload);
++out_can_dma_rx_chan_del:
++	if (priv->rxbuf) {
++		dma_free_coherent(priv->ndev->dev.parent,
++				  priv->dma_size * RK3576CAN_SRAM_MAX_FIFO_CNT,
++				  priv->rxbuf, priv->rx_dma_dst_addr);
++		priv->rxbuf = NULL;
++	}
++	if (priv->rxchan)
++		dma_release_channel(priv->rxchan);
+ out_free_candev:
+ 	free_candev(ndev);
+ 
+@@ -1372,6 +1420,16 @@ static void rkcanfd_remove(struct platform_device *pdev)
+ 	struct rkcanfd_priv *priv = platform_get_drvdata(pdev);
+ 	struct net_device *ndev = priv->ndev;
+ 
++	if (priv->rxbuf) {
++		dma_free_coherent(priv->ndev->dev.parent,
++				  priv->dma_size * RK3576CAN_SRAM_MAX_FIFO_CNT,
++				  priv->rxbuf, priv->rx_dma_dst_addr);
++		priv->rxbuf = NULL;
++	}
++
++	if (priv->rxchan)
++		dma_release_channel(priv->rxchan);
++
+ 	rkcanfd_unregister(priv);
+ 	can_rx_offload_del(&priv->offload);
+ 	free_candev(ndev);
+diff --git a/drivers/net/can/rockchip/rockchip_canfd-rx.c b/drivers/net/can/rockchip/rockchip_canfd-rx.c
+index 6bc4b0185502..e478b2b482c1 100644
+--- a/drivers/net/can/rockchip/rockchip_canfd-rx.c
++++ b/drivers/net/can/rockchip/rockchip_canfd-rx.c
+@@ -277,6 +277,71 @@ static int rk3576can_handle_rx_int_one(struct rkcanfd_priv *priv)
+ 	return 0;
+ }
+ 
++static int rk3576can_handle_rx_dma(struct rkcanfd_priv *priv, u32 addr)
++{
++	struct net_device_stats *stats = &priv->ndev->stats;
++	struct canfd_frame *skb_cfd;
++	struct sk_buff *skb;
++	u32 frameinfo, id, data[16] = {0};
++	u8 dlc;
++	int i;
++
++	frameinfo = *(u32 *)(priv->rxbuf + addr * RK3576CAN_REG_STR_STATE_INTM_LEFT_CNT_UNIT);
++	id = *(u32 *)(priv->rxbuf + 1 + addr * RK3576CAN_REG_STR_STATE_INTM_LEFT_CNT_UNIT);
++	for (i = 0; i < (RK3576CAN_REG_STR_STATE_INTM_LEFT_CNT_UNIT - 2); i++)
++		data[i] = *(u32 *)(priv->rxbuf + 2 + i +
++				   addr * RK3576CAN_REG_STR_STATE_INTM_LEFT_CNT_UNIT);
++
++	if (frameinfo & RK3576CAN_REG_RXFRD_FRAMEINFO_FDF)
++		skb = alloc_canfd_skb(priv->ndev, &skb_cfd);
++	else
++		skb = alloc_can_skb(priv->ndev, (struct can_frame **)&skb_cfd);
++
++	if (!skb) {
++		stats->rx_dropped++;
++
++		return 0;
++	}
++
++	if (frameinfo & RK3576CAN_REG_RXFRD_FRAMEINFO_FRAME_FORMAT)
++		skb_cfd->can_id = FIELD_GET(RKCANFD_REG_FD_ID_EFF, id) |
++			CAN_EFF_FLAG;
++	else
++		skb_cfd->can_id = FIELD_GET(RKCANFD_REG_FD_ID_SFF, id);
++
++	dlc = FIELD_GET(RK3576CAN_REG_RXFRD_FRAMEINFO_DATA_LENGTH,
++			frameinfo);
++
++	/* CAN-FD */
++	if (frameinfo & RK3576CAN_REG_RXFRD_FRAMEINFO_FDF) {
++		skb_cfd->len = can_fd_dlc2len(dlc);
++
++		/* The cfd is not allocated by alloc_canfd_skb(), so
++		 * set CANFD_FDF here.
++		 */
++		skb_cfd->flags |= CANFD_FDF;
++
++		if (frameinfo & RK3576CAN_REG_RXFRD_FRAMEINFO_BRS)
++			skb_cfd->flags |= CANFD_BRS;
++	} else {
++		skb_cfd->len = can_cc_dlc2len(dlc);
++
++		if (frameinfo & RK3576CAN_REG_RXFRD_FRAMEINFO_RTR)
++			skb_cfd->can_id |= CAN_RTR_FLAG;
++	}
++	if (!(skb_cfd->can_id & CAN_RTR_FLAG)) {
++		/* Change CANFD data format to SocketCAN data format */
++		for (i = 0; i < skb_cfd->len; i += 4)
++			*(u32 *)(skb_cfd->data + i) = data[i / 4];
++	}
++
++	stats->rx_packets++;
++	stats->rx_bytes += skb_cfd->len;
++	netif_rx(skb);
++
++	return 0;
++}
++
+ static int rkcanfd_handle_rx_int_one(struct rkcanfd_priv *priv)
+ {
+ 	struct net_device_stats *stats = &priv->ndev->stats;
+@@ -372,6 +437,43 @@ rk3576can_rx_fifo_get_len(const struct rkcanfd_priv *priv)
+ 	return DIV_ROUND_UP(val, RK3576CAN_REG_STR_STATE_INTM_LEFT_CNT_UNIT);
+ }
+ 
++static void rk3576_can_rx_dma_callback(void *data)
++{
++	struct rkcanfd_priv *priv = data;
++	int i;
++
++	for (i = 0; i < priv->quota; i++)
++		rk3576can_handle_rx_dma(priv, i);
++
++	rkcanfd_write(priv, RK3576CAN_REG_INT_MASK, priv->reg_int_mask_default);
++}
++
++static int rk3576_can_rx_dma(struct rkcanfd_priv *priv)
++{
++	struct dma_async_tx_descriptor *rxdesc = NULL;
++	const u32 reg = rkcanfd_read(priv, RK3576CAN_REG_STR_STATE);
++	int quota = FIELD_GET(RK3576CAN_REG_STR_STATE_INTM_LEFT_CNT, reg);
++
++	quota = DIV_ROUND_UP(quota, RK3576CAN_REG_STR_STATE_INTM_LEFT_CNT_UNIT);
++	priv->quota = quota;
++	if (priv->quota == 0) {
++		rkcanfd_write(priv, RK3576CAN_REG_INT_MASK, priv->reg_int_mask_default);
++		return 0;
++	}
++
++	rxdesc = dmaengine_prep_slave_single(priv->rxchan, priv->rx_dma_dst_addr,
++					     priv->dma_size * priv->quota, DMA_DEV_TO_MEM, 0);
++	if (!rxdesc)
++		return -ENOMSG;
++
++	rxdesc->callback = rk3576_can_rx_dma_callback;
++	rxdesc->callback_param = priv;
++
++	dmaengine_submit(rxdesc);
++	dma_async_issue_pending(priv->rxchan);
++	return 0;
++}
++
+ int rkcanfd_handle_rx_int(struct rkcanfd_priv *priv)
+ {
+ 	unsigned int len;
+@@ -391,6 +493,13 @@ int rkcanfd_handle_rk3576_rx_int(struct rkcanfd_priv *priv)
+ 	unsigned int len;
+ 	int err;
+ 
++	if (priv->rxchan) {
++		err = rk3576_can_rx_dma(priv);
++		if (err)
++			return err;
++		else
++			return 0;
++	}
+ 	while ((len = rk3576can_rx_fifo_get_len(priv))) {
+ 		err = rk3576can_handle_rx_int_one(priv);
+ 		if (err)
+diff --git a/drivers/net/can/rockchip/rockchip_canfd.h b/drivers/net/can/rockchip/rockchip_canfd.h
+index 77c673cfea3b..bdd01150d920 100644
+--- a/drivers/net/can/rockchip/rockchip_canfd.h
++++ b/drivers/net/can/rockchip/rockchip_canfd.h
+@@ -11,6 +11,8 @@
+ #include <linux/can/dev.h>
+ #include <linux/can/rx-offload.h>
+ #include <linux/clk.h>
++#include <linux/dma-mapping.h>
++#include <linux/dmaengine.h>
+ #include <linux/io.h>
+ #include <linux/netdevice.h>
+ #include <linux/reset.h>
+@@ -532,6 +534,7 @@
+ #define RK3576CAN_ISM_WATERMASK_CANFD 0x6c /* word */
+ 
+ #define RK3576CAN_SRAM_MAX_DEPTH 256 /* word */
++#define RK3576CAN_SRAM_MAX_FIFO_CNT (RK3576CAN_SRAM_MAX_DEPTH / 18)
+ 
+ #define RK3576CAN_CANFD_FILTER GENMASK(28, 0)
+ 
+@@ -748,6 +751,12 @@ struct rkcanfd_priv {
+ 	struct reset_control *reset;
+ 	struct clk_bulk_data *clks;
+ 	int clks_num;
++	u32 dma_size;
++	u32 dma_thr;
++	int quota;
++	struct dma_chan *rxchan;
++	u32 *rxbuf;
++	dma_addr_t rx_dma_dst_addr;
+ };
+ 
+ static inline u32
 -- 
 2.34.1
 
