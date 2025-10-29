@@ -4,56 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FE25CCF9E9
-	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Oct 2025 13:51:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5038ACCF9EE
+	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Oct 2025 14:01:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
-	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Cz3JlX8SMAikhqnSBgUR0XnfrtGoSrA8f+bjgdCWLbw=; b=IlERjrsNY6Wum5
-	yiVcqUsPJV3O+rev2F3c04GxlBSBS7vo93NJuw4AWPHRszATc0nphwmiDtEZGabvcZLDAsXxdTmT7
-	c3D7vdTxE5mUX5OuJrr0cADnM+7F0llEUWwWQjQK5US1R1Ih5T6c1Z9KZxOCXtucqxkF0tZY8AnnP
-	wk4t2okar/YG8xvNcDW5kNr1EQRA2oh7YLWqgjM68blIH7fCFi7hUYU5fCQJKkvCcMegubevEb5Xu
-	TD57DDq/X/JDdY5O6L8y2G7jvonV80IYxDYko6knCGLVLehc2DJKAVkfBb0LORCjVORW0N0us9DeN
-	xn815jcnHlRZbKXF34dA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=L0wAHM4cUu98uJg/a2IbD1GvuAl+zRwGv+VT6g5sQZY=; b=MImkd2b8Grpivu
+	tyXhOCCMYpQkhgROkqoM5w7ABi79j4mia6z8VvOjcVI9zdqptk8WAkqS+sOhsstQWC+QnbkrO2gBB
+	OqoCr5J121sqOeUBUxLX7GHrqu1WIyL4gugV6R8oYvvyZ9fRjmw2BYqxxhngTEmEJjjTbvcisG140
+	PqBr2Go0rWm3/27rXUbj24pX6Ss6KEQmIWAv/2nkKN+QZwL0qrzQSjNtC361E9zZtvP8BSk1E79PU
+	Mc0xiJOViFqV0mUU4siSlzI4S9PYHce6oQUdDUDY/CCyGrL4j6Zh4+WfsKEJ7NSby/lAKqeyfiqc7
+	S9bgs2uKDSce8WBFpFNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vE6aD-00000001Rhe-10dl;
-	Wed, 29 Oct 2025 13:51:25 +0000
-Received: from smtp-8fa9.mail.infomaniak.ch ([2001:1600:7:10::8fa9])
+	id 1vE6jM-00000001UMd-1NPR;
+	Wed, 29 Oct 2025 14:00:52 +0000
+Received: from mail-m49197.qiye.163.com ([45.254.49.197])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vE6a9-00000001RfD-17Q0
-	for linux-rockchip@lists.infradead.org;
-	Wed, 29 Oct 2025 13:51:24 +0000
-Received: from smtp-4-0001.mail.infomaniak.ch (unknown [IPv6:2001:1600:7:10::a6c])
-	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4cxTDL1QMfz9X7;
-	Wed, 29 Oct 2025 14:51:14 +0100 (CET)
-Received: from unknown by smtp-4-0001.mail.infomaniak.ch (Postfix) with ESMTPA id 4cxTDK1V4Rz5F0;
-	Wed, 29 Oct 2025 14:51:13 +0100 (CET)
-From: Quentin Schulz <foss+kernel@0leil.net>
-Date: Wed, 29 Oct 2025 14:50:59 +0100
-Subject: [PATCH] arm64: dts: rockchip: include rk3399-base instead of
- rk3399 in rk3399-op1
+	id 1vE6jI-00000001UJg-0SMT;
+	Wed, 29 Oct 2025 14:00:50 +0000
+Received: from localhost.localdomain (unknown [58.61.140.134])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 27a69f6db;
+	Wed, 29 Oct 2025 22:00:37 +0800 (GMT+08:00)
+From: Chukun Pan <amadeus@jmu.edu.cn>
+To: i@chainsx.cn
+Cc: conor+dt@kernel.org,
+	devicetree@vger.kernel.org,
+	heiko@sntech.de,
+	krzk+dt@kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	Chukun Pan <amadeus@jmu.edu.cn>
+Subject: Re: [PATCH v4 2/2] arm64: dts: rockchip: add DTs for 100ASK DShanPi A1
+Date: Wed, 29 Oct 2025 22:00:26 +0800
+Message-Id: <20251029140026.867458-1-amadeus@jmu.edu.cn>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <77BB123A1F1E3D11+20251014021623.286121-3-i@chainsx.cn>
+References: <77BB123A1F1E3D11+20251014021623.286121-3-i@chainsx.cn>
 MIME-Version: 1.0
-Message-Id: <20251029-rk3399-op1-include-v1-1-2472ee60e7f8@cherry.de>
-X-B4-Tracking: v=1; b=H4sIAMIbAmkC/x3MSwqAMAwA0atI1gaaVoV4FXHhJ2pQqrQognh3i
- 8u3mHkgSlCJUGcPBLk06u4TKM9gWDo/C+qYDNbYkoxlDKtzzLgfhOqH7RwFe0fUF0IVG4YUHkE
- mvf9p077vB4K2Eq9kAAAA
-X-Change-ID: 20251029-rk3399-op1-include-b311b4e16909
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Dragan Simic <dsimic@manjaro.org>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Quentin Schulz <quentin.schulz@cherry.de>, stable@vger.kernel.org
-X-Mailer: b4 0.14.3
-X-Infomaniak-Routing: alpha
+X-HM-Tid: 0a9a304543c703a2kunm624f917d129bff
+X-HM-MType: 10
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlCGkJJVkpIHRhIGUkaSBhOSFYeHw5VEwETFhoSFy
+	QUDg9ZV1kYEgtZQVlOQ1VNSlVKT0tVSkhPWVdZFhoPEhUdFFlBWU9LSFVKS0lCTUtKVUpLS1VLWQ
+	Y+
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251029_065121_455385_D5467F9B 
-X-CRM114-Status: UNSURE (   8.86  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251029_070048_308717_275B45D2 
+X-CRM114-Status: GOOD (  10.77  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,55 +71,122 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Quentin Schulz <quentin.schulz@cherry.de>
+Hi,
 
-In commit 296602b8e5f7 ("arm64: dts: rockchip: Move RK3399 OPPs to dtsi
-files for SoC variants"), everything shared between variants of RK3399
-was put into rk3399-base.dtsi and the rest in variant-specific DTSI,
-such as rk3399-t, rk3399-op1, rk3399, etc.
-Therefore, the variant-specific DTSI should include rk3399-base.dtsi and
-not another variant's DTSI.
+From the schematic, DT still has some things wrong:
+https://dl.100ask.net/Hardware/MPU/RK3576-DshanPi-A1/DshanPi-A1-RK3576-SCH_V1.1.pdf
 
-rk3399-op1 wrongly includes rk3399 (a variant) DTSI instead of
-rk3399-base DTSI, let's fix this oversight by including the intended
-DTSI.
+Do you want to resend the whole patch or I send some patches fixing them?
 
-Fortunately, this had no impact on the resulting DTB since all nodes
-were named the same and all node properties were overridden in
-rk3399-op1.dtsi. This was checked by doing a checksum of rk3399-op1 DTBs
-before and after this commit.
+> +	vcc_1v2_ufs_vccq_s0: regulator-vcc-1v2-ufs-vccq-s0 {
+> +	vcc_1v8_ufs_vccq2_s0: regulator-vcc-1v8-ufs-vccq2-s0 {
+> +	vcc_3v3_rtc_s5: regulator-vcc-3v3-rtc-s5 {
+> +	vcc_3v3_ufs_s0: regulator-vcc-ufs-s0 {
 
-No intended change in behavior.
+These ufs and rtc regulators do not actually exist.
 
-Fixes: 296602b8e5f7 ("arm64: dts: rockchip: Move RK3399 OPPs to dtsi files for SoC variants")
-Cc: stable@vger.kernel.org
-Signed-off-by: Quentin Schulz <quentin.schulz@cherry.de>
----
- arch/arm64/boot/dts/rockchip/rk3399-op1.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> +	vcc_5v0_typec0: regulator-vcc-5v0-typec0 {
+> +		regulator-name = "vcc_5v0_typec0";
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-op1.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-op1.dtsi
-index c4f4f1ff6117b..9da6fd82e46b2 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-op1.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-op1.dtsi
-@@ -3,7 +3,7 @@
-  * Copyright (c) 2016-2017 Fuzhou Rockchip Electronics Co., Ltd
-  */
- 
--#include "rk3399.dtsi"
-+#include "rk3399-base.dtsi"
- 
- / {
- 	cluster0_opp: opp-table-0 {
+The name on the schematic is vbus5v0_typec.
 
----
-base-commit: e53642b87a4f4b03a8d7e5f8507fc3cd0c595ea6
-change-id: 20251029-rk3399-op1-include-b311b4e16909
+> +&gmac1 {
+> +	clock_in_out = "output";
+> +	phy-mode = "rgmii-id";
+> +	phy-handle = <&rgmii_phy1>;
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&eth1m0_miim
+> +		     &eth1m0_tx_bus2
+> +		     &eth1m0_rx_bus2
+> +		     &eth1m0_rgmii_clk
+> +		     &eth1m0_rgmii_bus
+> +		     &ethm0_clk1_25m_out>;
 
-Best regards,
--- 
-Quentin Schulz <quentin.schulz@cherry.de>
+This should be ethm1_clk0_25m_out.
+It seems that the 25m clock is not used.
 
+> +&i2c4 {
+> +	status = "okay";
+> +
+> +	es8388: audio-codec@10 {
+> +		compatible = "everest,es8388", "everest,es8328";
+> +		reg = <0x10>;
+
+i2cdetect reports that its address is 0x11
+
+> +		clocks = <&cru CLK_SAI1_MCLKOUT_TO_IO>;
+> +		AVDD-supply = <&vcca_3v3_s0>;
+> +		DVDD-supply = <&vcc_3v3_s0>;
+> +		HPVDD-supply = <&vcca_3v3_s0>;
+> +		PVDD-supply = <&vcc_3v3_s0>;
+
+These are all from VCC3P3 (VCC3V3_S0).
+
+> +		assigned-clocks = <&cru CLK_SAI1_MCLKOUT_TO_IO>;
+> +		assigned-clock-rates = <12288000>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&sai1m0_mclk>;
+
+In fact, this is connected to sai2.
+The schematic is quite misleading here:
+RK3576 - SAI2_xxx - SAI1_xxx - ES8388
+
+> +		#sound-dai-cells = <0>;
+> +	};
+> +};
+
+> +&mdio0 {
+> +	rgmii_phy0: phy@1 {
+> +		compatible = "ethernet-phy-ieee802.3-c22";
+> +		reg = <0x1>;
+
+The phy address configured in the schematic is 0,
+which is also the case in practice.
+
+> +		clocks = <&cru REFCLKO25M_GMAC0_OUT>;
+
+This 25m clock is not used.
+
+> +&mdio1 {
+> +	rgmii_phy1: phy@1 {
+> +		compatible = "ethernet-phy-ieee802.3-c22";
+> +		reg = <0x1>;
+
+The phy address is 0.
+
+> +		clocks = <&cru REFCLKO25M_GMAC1_OUT>;
+
+This 25m clock is not used.
+
+> +	headphone {
+> +		hp_det: hp-det {
+> +			rockchip,pins = <0 RK_PD3 RK_FUNC_GPIO &pcfg_pull_up>;
+
+According to the schematic, this should be GPIO0_A2?
+
+> +		};
+> +	};
+
+> +&sdhci {
+> +	bus-width = <8>;
+> +	full-pwr-cycle-in-suspend;
+> +	max-frequency = <200000000>;
+
+max-frequency is already defined in dtsi
+
+> +&sdmmc {
+> +	bus-width = <4>;
+> +	cap-mmc-highspeed;
+> +	cap-sd-highspeed;
+> +	disable-wp;
+> +	max-frequency = <200000000>;
+
+max-frequency is already defined in dtsi
+
+> +	sd-uhs-sdr104;
+> +	vmmc-supply = <&vcc_3v3_s3>;
+
+This comes from VCC3P3 (VCC3V3_S0).
 
 _______________________________________________
 Linux-rockchip mailing list
