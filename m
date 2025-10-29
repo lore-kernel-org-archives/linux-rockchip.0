@@ -4,85 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB234CCF9EE
-	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Oct 2025 17:58:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B7FBCCF9EB
+	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Oct 2025 18:01:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:References:
+	In-Reply-To:Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wywFV95VPpAZKMIfj49lkTOILRCtZYQIBTAMweyKvoQ=; b=Zx3QwuA/lH/wDY
-	elNnGpyxEvyCqDR/o/bV5c6rJgfmf5sU4vpXQbBPlk2w6+pFeGbEXz0UHW37iMndUPL0uhQN1qVlR
-	jDzgC2ySxWzyzRW+hF2Om+Nxv0EaHIKV6Odw+301IddSrBhfr4xU8ARSWx6P2k6o0Y7JpWqEdWzV0
-	9QqHOtu6F4eeDlKN80CmNHhQubJNgNUAM5fH8QmHmatQE4wqtN5cDCXSjPKsESz9Bne76cr6KSnK3
-	tNucUlizPSIhIWDxI34kEKJZBwtpXDw5X9aIJ3H9eurMWg8OcYnEBK6jtA3g3lko3Yyy/1Fn4gcg5
-	SqumLMe9jPJ5AxSpHNew==;
+	List-Owner; bh=ixI1fmaDkAjNWBpR0dBsNrcf2q7lfoEbf+5pmgYoVy0=; b=z5rSLgXR3Ac+AD
+	dD9oSMvZ67dQesN+iL25jsJcUIdRtGHdva+/k+8fgi5xMt+uO+MQQ2DKb62a39SMB/0aBs/4rfP8Z
+	7vKh63x+nf0PZ2DOlOGZucXGpzMBQZiGa63+s2uDeCV4A/4UioBtkPDWTXdK6h4ZJxM8uq8EAc0U5
+	60+3bKwnDIfFswFDTbSkI4UdXBPswPg4ZSba6EIq6iPRM5uRwgqfowLsZf205o8KIqzR639srAkHP
+	y7BB4OIuebmBIPptdw301ETuCFghpVO5IG341XaOotUDoj3W0trjQ3eumzvK1fakxPC6Sb0jTeXu+
+	Wt/WER3Q8fOKS4OCTkaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vEAQn-00000002JKL-2okW;
-	Wed, 29 Oct 2025 17:57:57 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vEATv-00000002KEo-2gsD;
+	Wed, 29 Oct 2025 18:01:11 +0000
+Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vEAQ3-00000002IT6-04QQ;
-	Wed, 29 Oct 2025 17:57:13 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1761760627;
-	bh=PIWbCQVMLO0czKmSk54OiAydafyyJJiqIu+dfGb7c8Q=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=IaYzqsF7TCa2rwrQEf08gFu9l0zxMAj77yNREbGLKJSspPg9nw1AzKE6fxobygUd8
-	 +L1tHQsh1EVMtz+hIYyMhfX7pPD9aDk7ljkF0xU5sf6VScGPX4nv+xJAQLXtye22cK
-	 IuUhvs2aP0UIy3EkZMpoJ+04jzQr6egSvNUX352hX+55ASg1UrmZUfZ+KJmAlwRbxS
-	 ia09ik60qmaOGAfzQzh4KNflrw57Cedjmw9CNXMyNz0HIXXLHlESd+mK8dAy+JFve7
-	 2+woAtJQ88p0YOjzNeF8KxtOndGwLKCgnb7FonYc3TXQ0JdgyCO8AYKIkxbNV+Tr+j
-	 TQJXbqf7cr32g==
-Received: from jupiter.universe (dyndsl-091-248-085-053.ewe-ip-backbone.de [91.248.85.53])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 63C2817E1423;
-	Wed, 29 Oct 2025 18:57:07 +0100 (CET)
-Received: by jupiter.universe (Postfix, from userid 1000)
-	id 1FBFC480055; Wed, 29 Oct 2025 18:57:02 +0100 (CET)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Wed, 29 Oct 2025 18:56:43 +0100
-Subject: [PATCH v4 4/9] PCI: dw-rockchip: Add helper function for enhanced
- LTSSM control mode
+	id 1vEATs-00000002KDb-3RDM
+	for linux-rockchip@lists.infradead.org;
+	Wed, 29 Oct 2025 18:01:10 +0000
+Received: by mail-pf1-x441.google.com with SMTP id d2e1a72fcca58-781ea2cee3fso212795b3a.0
+        for <linux-rockchip@lists.infradead.org>; Wed, 29 Oct 2025 11:01:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1761760868; x=1762365668; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:references
+         :in-reply-to:user-agent:subject:cc:to:from:date:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=gbssRci/vHGmHOd8+cbdEKN3kF4NLOmkPHSLIdISFlM=;
+        b=AS6XP6P/3kzV0PNmFebgOPqQe/8fBLuYNDEtr83Ouv14x4tOBl1/T/iMIawK3mQNCG
+         NVT6NIMXnqh1HMZLuSJxisJB2XdHa4Gfx93ybSZSWLlqEf+ZYYDhH5ToIF6X7H3XP+4P
+         EZUUN2M2PlJ5qrymzYIOoWzRBcR9Fnj5DMOFXNQaxVa6HN/Uxq7ov1Zz+qYNh0MT9OLX
+         k5s1zXFjL6UIIyHjU59fFFfgOYrV5Ph17SGJydV649siW9jTF9uFkrr8GewcRZMcQAu2
+         HXvwFh7kJxevlw21wYfn1Bu2cwO6RjVzbsCcavh8NtJ0sIAA1yma9fTF6GqbLs55Bqye
+         2QzQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1761760868; x=1762365668;
+        h=content-transfer-encoding:mime-version:message-id:references
+         :in-reply-to:user-agent:subject:cc:to:from:date:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=gbssRci/vHGmHOd8+cbdEKN3kF4NLOmkPHSLIdISFlM=;
+        b=uqrwa2FFAorr16sSMO61ZKoyFTqhnVEBfKwZoTaexXs+UZoMoA0o0sgRqtUDiIn0Zs
+         wE2gYQBry+3ByS5NeokrD4xVzT8nUncuVhexPtkFmvUmnpNImczqvVjm7Lr6M2rGJZqx
+         i2k+8U4M2W/2xZq4nPmGfP0mwdJwXZApyZK1EFM95To9RGw7VrcQn4mXH8HX2/UFI71v
+         Hid7pu7mopfh4wHInZyzoLqsuB4KC754gNhiwQS1QMWmh91MYwX1/fapmwKHizsfnSvj
+         vMf/BSih4c+s/28Uh0bpryLBJiulZpjef4SQEfmDZ90wqphQ4I9cNAne7UVWHSGdD4aq
+         m/Zg==
+X-Forwarded-Encrypted: i=1; AJvYcCXBUD07g155v+PaZWEtmwSqRHGaylJHFFHBxjPIGaVP8tiOP9A9AUXRzQ1PJJR1AehBdP6BfATYbhUn3NW1VA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyrhFk4PK+efj0gBT8ADmiDdbrp06x1knPVwjaNND0chfkYMq3C
+	ByoEdXLndVhe76NchU2o7x+qGWj5910N13rAuHRpmHtg8gNjQU1Gy5kj
+X-Gm-Gg: ASbGncvR7Lc/BFdq3tI23EKUhlKpWIlF0V1ulDzwcwYU91TCTQm0rPzgx7aTY2s59ZY
+	D7tc+2c3gdVDzitzgDPxhva48N40XTI3heTLzt2ugnzWyUnvQr5rUmGXM47ZJZmDDKL0S1IBWg+
+	sjhgp5UYlk6BLzXYXarjCfexlCaKc8sD7hT1FMXdeI4r5JH8CujLIxvLeJ6yvukk33o7seHoLsa
+	qfkSC1vfuc1RfwW0Qbeb/PNYZdJLnbYAPyT/QgA7A3OQGgx6ncbKmwlmsMexoCoi2pyLBoKIj/H
+	LNY9QqHawQY7XCQkpK+aOvwqqrf4iE+haspuDMYiYw5sRbrAeN1YeSTe5EtJddCbruv9dy/lYwx
+	6vVxe1t3ELdOv0nd2/kmppxibjlIlzJtafsw7sY+rhhXt5z3RcpXN2X2t2oOdoBuSWP9MH1D8AB
+	TWc62sKyCZF9s=
+X-Google-Smtp-Source: AGHT+IEK7EeZVIM4eFqBddBlc5fujpHTgJwOvNfrZ2enVKLzN/V/zlDV72wpwI//cQqfhNOcBy1gRA==
+X-Received: by 2002:a05:6300:210b:b0:334:992d:ecfa with SMTP id adf61e73a8af0-3465381d8ffmr4700279637.18.1761760867622;
+        Wed, 29 Oct 2025 11:01:07 -0700 (PDT)
+Received: from ehlo.thunderbird.net ([150.230.217.250])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-7a414032c71sm16133366b3a.25.2025.10.29.11.01.05
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 29 Oct 2025 11:01:07 -0700 (PDT)
+Date: Thu, 30 Oct 2025 02:00:23 +0800
+From: Coia Prant <coiaprant@gmail.com>
+To: Conor Dooley <conor@kernel.org>
+CC: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Dragan Simic <dsimic@manjaro.org>, Jonas Karlman <jonas@kwiboo.se>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v3 1/3] dt-bindings: vendor-prefixes: Add NineTripod
+User-Agent: K-9 Mail for Android
+In-Reply-To: <20251029-reseller-unsavory-5461fe7f6cce@spud>
+References: <20251028-semicolon-audacity-dd5bdd418207@spud> <CALj3r0hWzH+pmkbJe7DdqEzwqcpSQdkfPFtv3S7m-H8gZp0A6w@mail.gmail.com> <20251029-reseller-unsavory-5461fe7f6cce@spud>
+Message-ID: <8C82BBEB-2302-49F7-A441-600014D7E250@gmail.com>
 MIME-Version: 1.0
-Message-Id: <20251029-rockchip-pcie-system-suspend-v4-4-ce2e1b0692d2@collabora.com>
-References: <20251029-rockchip-pcie-system-suspend-v4-0-ce2e1b0692d2@collabora.com>
-In-Reply-To: <20251029-rockchip-pcie-system-suspend-v4-0-ce2e1b0692d2@collabora.com>
-To: Lorenzo Pieralisi <lpieralisi@kernel.org>, 
- =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
- Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>, 
- Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, 
- Philipp Zabel <p.zabel@pengutronix.de>, Jingoo Han <jingoohan1@gmail.com>, 
- Shawn Lin <shawn.lin@rock-chips.com>
-Cc: linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- kernel@collabora.com, Sebastian Reichel <sebastian.reichel@collabora.com>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2489;
- i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=PIWbCQVMLO0czKmSk54OiAydafyyJJiqIu+dfGb7c8Q=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGkCVW0oCjxq418OHByOeSI3S7y61NUnIPR7a
- mx8V+8rLxpwyokCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJpAlVtAAoJENju1/PI
- O/qa4PgP+QFeVp8gqhGnqA8uz6mf2ojDd1Qa8C48wxy9ixGhMgrqKQ8GJaVVhku3ImLZ1dZrrDk
- nONU6XPkMtJ0nia+NfID0iymRJQQaMdlZfrPoJwt1Astj5RsCVWQWUxsHEjPfdXLAbdVys7P6p4
- Ks3lSS4nfhep5obHN38Jfs+7EHHoFL7qeGQZFRVEiCNECMno9lDfMiPw6w7yNzKaBf+Bqw6mp+9
- EoCrkIQQfYGOQL8GVgw/wsRg2J/1pR+OERZBZH+sTSCeDhEcOhN58bziLIee0rh3+2hV+XUbKJD
- d19PlL/zjF8uND9Jc0DOMtOrQTghjXleSszN03JS4qoWZjI0R87/WXfjcpq7yzNpz+WkKK4LBrS
- fcR61eSfgbseVYwrItSkD2j8zoVOs1uUz/2qeVT6LjjhiWBrGP/tmZbmcYlBUT1N24pqo5Y3H27
- Ik/VNkYG7NJ3QwWehqak2N0+0hWw5dzljlS4Utudc6pVZd+whlVqY5FP4qnlIWPnfzbVA2lk9Vs
- korQzc/wpKz3VnQUN1fG/YDsUJls48f8rEZjuzaREv+gTx39+ctGDTXpHL6HQt35SJRPsQ78Uau
- ytocMmYVhuwnt7rwom7bFyz6x4D3dYUInsqw7DAHIpGxsOX5ItHAf5AAFCq1m44iBHbfA5htu2e
- /0IJUh2xO5eaqjOiVur4kdA==
-X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
- fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251029_105711_362151_FAC58BD0 
-X-CRM114-Status: GOOD (  14.45  )
+X-CRM114-CacheID: sfid-20251029_110108_887101_0D7887E2 
+X-CRM114-Status: GOOD (  29.45  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,76 +103,82 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Remove code duplocation and improve readability by introducing a new
-function to setup the enhanced LTSSM mode.
+On October 30, 2025 1:24:55 AM GMT+08:00, Conor Dooley <conor@kernel.org> wrote:
+>On Tue, Oct 28, 2025 at 01:04:32PM -0700, Coia Prant wrote:
+>> There won't be any problems at the moment.
+>
+>Please stop top posting.
+>
+>> Just out of habit (because when writing code, variable names cannot
+>> begin with a number)
+>> There may be some misimplemented parsers that cannot do this.
+>> 
+>> As a practical matter, the branch of openwrt has added support for
+>> this board in advance, and openwrt uses the DTS name to initialize
+>> some default settings such as LEDs and bridge
+>
+>That sounds like a problem with the WRT development process. This is a
+>trivial change, there could be more disruptive things required to
+>satisfy reviewers. Why was it submitted there in advance anyway?
+>
+>> I'm not sure if he will affect the version that has been released.
+>> But maybe it's not a big problem.
+>> 
+>> If you feel that there is no problem, I can send a new set of patches
+>> to fix this problem.
+>
+>Please do.
+>
+>> 2025-10-28 19:46 (GMT+00:00), Conor Dooley <conor@kernel.org> said:
+>> > On Tue, Oct 28, 2025 at 12:38:10PM -0700, Coia Prant wrote:
+>> > At first, it was to avoid problems with the beginning of numbers.
+>> > What problems does starting with a number produce?
+>> > Given that it is already used by downstream projects, we have retained
+>> > this to ensure that users can seamlessly migrate to the mainline
+>> > version.
+>> > What's the actual impact of changing it from "nine" to "9" for
+>> > downstream users? This is a board vendor, probably nothing is even
+>> > interacting with the board-level compatible at all programmatically?
+>> > Please don't top post.
+>> > Thanks.
+>> >
+>> > 2025-10-28 19:35 (GMT+00:00), Conor Dooley  said:
+>> > On Sun, Oct 26, 2025 at 10:36:44PM +0800, Coia Prant wrote:
+>> > Add NineTripod to the vendor prefixes.
+>> >
+>> > Signed-off-by: Coia Prant
+>> > ---
+>> > Documentation/devicetree/bindings/vendor-prefixes.yaml | 2 ++
+>> > 1 file changed, 2 insertions(+)
+>> >
+>> > diff --git a/Documentation/devicetree/bindings/vendor-prefixes.yaml
+>> > b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+>> > index f1d188200..37687737e 100644
+>> > --- a/Documentation/devicetree/bindings/vendor-prefixes.yaml
+>> > +++ b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+>> > @@ -1124,6 +1124,8 @@ patternProperties:
+>> > description: National Instruments
+>> > "^nicera,.*":
+>> > description: Nippon Ceramic Co., Ltd.
+>> > +  "^ninetripod,.*":
+>> > Why ninetripod instead of 9tripod? That's what the company uses and in
+>> > the marketing fluff for the boards.
+>> > +    description: Shenzhen 9Tripod Innovation and Development CO., LTD.
+>> > "^nintendo,.*":
+>> > description: Nintendo
+>> > "^nlt,.*":
+>> > --
+>> > 2.47.3
+>> >
 
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
- drivers/pci/controller/dwc/pcie-dw-rockchip.c | 27 ++++++++++++++-------------
- 1 file changed, 14 insertions(+), 13 deletions(-)
+Sorry.
 
-diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-index 8e584016e244..45586a964ead 100644
---- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-+++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-@@ -511,13 +511,24 @@ static irqreturn_t rockchip_pcie_ep_sys_irq_thread(int irq, void *arg)
- 	return IRQ_HANDLED;
- }
- 
-+static void rockchip_pcie_enable_enhanced_ltssm_control_mode(struct rockchip_pcie *rockchip,
-+							     u32 flags)
-+{
-+	u32 val;
-+
-+	/* Enable the enhanced control mode of signal app_ltssm_enable */
-+	val = FIELD_PREP_WM16(PCIE_LTSSM_ENABLE_ENHANCE, 1);
-+	if (flags)
-+		val |= FIELD_PREP_WM16(flags, 1);
-+	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_HOT_RESET_CTRL);
-+}
-+
- static int rockchip_pcie_configure_rc(struct platform_device *pdev,
- 				      struct rockchip_pcie *rockchip)
- {
- 	struct device *dev = &pdev->dev;
- 	struct dw_pcie_rp *pp;
- 	int irq, ret;
--	u32 val;
- 
- 	if (!IS_ENABLED(CONFIG_PCIE_ROCKCHIP_DW_HOST))
- 		return -ENODEV;
-@@ -534,10 +545,7 @@ static int rockchip_pcie_configure_rc(struct platform_device *pdev,
- 		return ret;
- 	}
- 
--	/* LTSSM enable control mode */
--	val = FIELD_PREP_WM16(PCIE_LTSSM_ENABLE_ENHANCE, 1);
--	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_HOT_RESET_CTRL);
--
-+	rockchip_pcie_enable_enhanced_ltssm_control_mode(rockchip, 0);
- 	rockchip_pcie_writel_apb(rockchip,
- 				 PCIE_CLIENT_SET_MODE(PCIE_CLIENT_MODE_RC),
- 				 PCIE_CLIENT_GENERAL_CON);
-@@ -581,14 +589,7 @@ static int rockchip_pcie_configure_ep(struct platform_device *pdev,
- 		return ret;
- 	}
- 
--	/*
--	 * LTSSM enable control mode, and automatically delay link training on
--	 * hot reset/link-down reset.
--	 */
--	val = FIELD_PREP_WM16(PCIE_LTSSM_ENABLE_ENHANCE, 1) |
--	      FIELD_PREP_WM16(PCIE_LTSSM_APP_DLY2_EN, 1);
--	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_HOT_RESET_CTRL);
--
-+	rockchip_pcie_enable_enhanced_ltssm_control_mode(rockchip, PCIE_LTSSM_APP_DLY2_EN);
- 	rockchip_pcie_writel_apb(rockchip,
- 				 PCIE_CLIENT_SET_MODE(PCIE_CLIENT_MODE_EP),
- 				 PCIE_CLIENT_GENERAL_CON);
+I already switch to a new mali client which support bottom posting.
 
--- 
-2.51.0
+I will send new patches after test with install PCIe CLK.
 
+Wish have a good day.
+:)
 
 _______________________________________________
 Linux-rockchip mailing list
