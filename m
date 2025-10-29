@@ -4,52 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98C4CCCF9F1
-	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Oct 2025 17:57:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD5DDCCF9EB
+	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Oct 2025 17:57:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JXsncHehPVdhvZuCMkDX70Dx/TxvthCQgnXY8izruf4=; b=Va0bINctKHEN1z
-	iZ0NT1fspkJ1LdXTdeECbiusDekWQ58qWT3C4Er/Rc/cQ9KJksou+XTeJdxQ4Np9G/JlP21c/UkgW
-	V7LDbSx5Fsqtz8oDq0zP2xN2GYcbDFBkZuu/hJSG2qcGBSTXsHcK7vg0vEPhdUvpJxBieuvNNCRl4
-	dMMJMuZfRXUqJu5IBvLkoXLkwEHAZesYvet50GHot6jOf4GWrRcGCc2hN/vmM7/j5XTQyKe37r5uU
-	KOAiQEjB2ZSHmy3YSFBJD4BX5KkYDbveeaaIdVwpvH0rEvBdROJ6Vmg3uvBvY5Xe6E1XiEAsNOsc4
-	06MQlpJWaRgiVOrcoH3A==;
+	List-Owner; bh=B6XClC9dxATqIJDiZYOuiYVSjjGuyVIlOnHm+zdlV6g=; b=jgQ5hXhTWtGXH8
+	hmgcGqFSIfyYIhXiTmOxKzhnFRlvR8UFMuSdqFcHUKOAgf7CXBDYWHwdTut7YMRvJ6YlnbJmxc4KJ
+	sCIIBrYXA2mmrbGdZcvNtyWKcvFtR13MXZiwKyyoiGjx87UaOrXLaaxLmarkkTXBK+fXN89aIjPHT
+	o1LJNvvN88Ozw8MVr6oMBGJybI90Kbs+Z0v7riYw9nx76/GZambG/15O2sf7/ICnAdYokrPpl6R+J
+	n6RBge52eMZ0lqWIxA7EHAvqoF1PgY5ZOvsWNi5IRcm2LUIhtevg4fTUJkXjVvzwikE1Ck/BXB3MS
+	9aIG8+2JdtVXvG0PRrgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vEAQH-00000002IjV-3D7L;
-	Wed, 29 Oct 2025 17:57:25 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vEAQN-00000002Iom-1vD8;
+	Wed, 29 Oct 2025 17:57:31 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vEAPy-00000002IOj-0EyA;
+	id 1vEAPz-00000002IOm-39Q6;
 	Wed, 29 Oct 2025 17:57:08 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1761760622;
-	bh=PuyVfSl398NT/6ecyLhz+ySqbYBIDyiLnSHsDsbjgnw=;
+	bh=gaQ6PhWIvkF7IvK5kYE/g8/88NuFUu8QFhhiMCw+Mjg=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=OVW3/HssUYIRIN6T0VzeMzq27aBBExEMMAF1Aut8MLTeyz103S9F2ozyP3TrP07Fs
-	 8U/jT0ru5u3SBdQMS9tz1CbtMpxCSY/9mM7lPQK0fu15Wn184cHZc0n5ShPh/tovVv
-	 TQNAFe2MncWhPpNQ4VKCWCQCTM2ssQ9zmZknxWMmKZovbfxa2zFUI8zJ0i4NEuKlLy
-	 65SYthHmso0Q0Tnz8ZX2I9PfPZwXlwWcdVcVw6saDlkF7eFrgqGvtqNXISvAGA7tG9
-	 OX02lB/EJMJw/LBWI8bUrhHZ/hkyVeli2QEXtFH9FS16sCWJfg7HR74Qxm/ZI9OC2C
-	 pVnGLnC3HVoSw==
+	b=SVSaYA3Rlj4kq+syR9xCMMFpfJ6Gy8VgB6noI32UIkHwf8SWJQB+Sd7+SU2I8+SBj
+	 iLLIQ/5Ntb+QJt809FRiRI0AXLVtYReKLOLhKhMEQsBaZVIxBwVTWZoqS+1rL7dsVv
+	 2hU8c6CKvXxteB3iB26MEabpREtagXK9pz7knd6Yua7yTVIyO+6NdCHGM9Wluvu3/9
+	 19d7Vm3dErM8RqVZiI+EBvdXFaKHCDO/EX/EDt03FbJ4WH695mB8Pck66GPW1UFY2u
+	 RoNZhvEe4l/HONVUK9kBkHVzKxnC+8Ig5ge5LPb8NlUzMgKaw5SWq2x65NdTS6uHWq
+	 FoSLV5OBFaSUw==
 Received: from jupiter.universe (dyndsl-091-248-085-053.ewe-ip-backbone.de [91.248.85.53])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 69DBA17E0FC7;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id C567B17E13F9;
 	Wed, 29 Oct 2025 18:57:02 +0100 (CET)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 1E062480048; Wed, 29 Oct 2025 18:57:02 +0100 (CET)
+	id 21057480062; Wed, 29 Oct 2025 18:57:02 +0100 (CET)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Wed, 29 Oct 2025 18:56:41 +0100
-Subject: [PATCH v4 2/9] PCI: dw-rockchip: Support get_ltssm operation
+Date: Wed, 29 Oct 2025 18:56:44 +0100
+Subject: [PATCH v4 5/9] PCI: dw-rockchip: Add helper function for
+ controller mode
 MIME-Version: 1.0
-Message-Id: <20251029-rockchip-pcie-system-suspend-v4-2-ce2e1b0692d2@collabora.com>
+Message-Id: <20251029-rockchip-pcie-system-suspend-v4-5-ce2e1b0692d2@collabora.com>
 References: <20251029-rockchip-pcie-system-suspend-v4-0-ce2e1b0692d2@collabora.com>
 In-Reply-To: <20251029-rockchip-pcie-system-suspend-v4-0-ce2e1b0692d2@collabora.com>
 To: Lorenzo Pieralisi <lpieralisi@kernel.org>, 
@@ -62,26 +63,26 @@ Cc: linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
  kernel@collabora.com, Sebastian Reichel <sebastian.reichel@collabora.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1643;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1954;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=PuyVfSl398NT/6ecyLhz+ySqbYBIDyiLnSHsDsbjgnw=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGkCVW28H/21LLERHjkq71fIYPt6/SEpljoWa
- BB5CDQXS5JngIkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJpAlVtAAoJENju1/PI
- O/qaVLcQAJp8e92zwlTDz6wMa+kwBneL72FSfp7tTJ6Em5BGqGUFX9yESNKiTFPHJYweHs9BHvF
- 2QQo/waZGNExHAD5gRNVXBySRO6IWHlHgQ2LRrMD31MdMR/CvISeo5o9J5ZWCieG6oVXgGnPER6
- 6EYRcrfDS0AYmk6bVsTQhTmUfeoWRjD0P2OBv4YseEMMnQZ8u1spKu9THXIO+IMdKSHoTGN8NEp
- NjVNjSqjLdUgkM3Ib78GmXhApCs94oFxA679a8vyBkcIqbaNrjr+1ittAoeW4A7ylIKTERqSGpG
- cUN+g9cVaACEdt7N2Bon6FUxomSL8QNv+fGwYueFCezjP/Y38gAc5INLJAAmV2UHt3f0vETs91Q
- z2936iltjMbwabUlOAhj5KycF6NGwPIgUbga71SxLFTk1osW8sD+X4lnmoWUXadY+TyltfhrMNg
- w6BhAD++3321oR2sibCNlvjEE7ljbk0pmSnFTGA81CnaP322i9rprD6cfpuVTHy8yIsM6a5u1hf
- lW4hTtrUFeP/J7GagYr/ilVjBKsB138AwZFx1KAVlpYFGsrDoO4WxfsAPLy06+B9E5ksf13MATr
- ClswZmNkLabrmX3FH6WQbaNim1QOWcBN2YHiw8Y4FKy/nnCmE4NKkhR+8RSYC6JN9nHXLC0bnrS
- 8Fyea40atVBsk4dW3ErAklA==
+ bh=gaQ6PhWIvkF7IvK5kYE/g8/88NuFUu8QFhhiMCw+Mjg=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGkCVW3feJBw5VJVIAUNbSIQ1BUn2NdGO2FxA
+ PdWqXC9j3d88YkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJpAlVtAAoJENju1/PI
+ O/qaYWkQAIIfCyKZgR2sek5kFYRGVB2I28xxykuPxKo93XHAkAA1sYFvmdCdyR46uXlZUJxBOTd
+ 7aC31QgE13T62P8HrFlulEgUlhUBAypWDSKtbmayN+pmTmXPPYcG/Q7jVeCfleZObo8pZ92LPdU
+ MRLYZSZ8wZb4Bqkj33xjV1uQjwGVoLklHVCFFRM3URLuCx6dedaE+lxYa4HpTmtCcg3OuwiMrGX
+ ELOVl5uwZUvC5ZlBUf6aL6QW/+uWr0Kf8cZxfYvX/nYvUNbYt78h0poibhYSLuL4zC2VncdVSyL
+ ctVOM+gY1o0auMWJ1Ol5ilbnr/qinvRcYtkBQPfMTRTJmWKb2ouf2OJPN5SlpBfLSqGFGjMoxgO
+ K+3Q1y+8nxU5CiuQXDlorw65TrGT6TDexokpsaOfuoMIh1VazaGg15js6tx0wxcqM/3KpUr1tfb
+ WZWG0qYIXNOKR0TLfWRaiwgulgfzoN8W7R/GvTjUL257pfauJg+7/XrjAvHPwo02Jesss/ugCu+
+ A5nejRcUJArnvdBxXbUijfJzN11vyCY4OnfoVx16Kh6HBXeTg53KhmDx9ItaQn6Z5WYeo+9+vyJ
+ JIMqs4YHlIU63h0XdF3KTxuXAI7fT/kLejZG6WgdZDz1nI8A+x40WMW120PT7UAupMs5OIDcEHX
+ m7625g8mwhLPrHhrRMKUvnw==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251029_105706_319203_2604201F 
-X-CRM114-Status: GOOD (  11.61  )
+X-CRM114-CacheID: sfid-20251029_105707_953604_D6B6D3C6 
+X-CRM114-Status: GOOD (  11.80  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,44 +99,52 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Implement .get_ltssm operation function pointer, which will be needed
-for system suspend support. As the driver used to have a function
-called rockchip_pcie_get_ltssm() with different behavior the new
-function is named rockchip_pcie_get_ltssm_state(), so that issues
-can easily be detected when porting patches.
+Remove code duplication and improve readability by introducing a new
+function to setup the controller mode.
 
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/pci/controller/dwc/pcie-dw-rockchip.c | 9 +++++++++
- 1 file changed, 9 insertions(+)
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-index 58427db1cc65..e3d7792f7819 100644
+index 45586a964ead..5c8d30e15a44 100644
 --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
 +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-@@ -180,6 +180,14 @@ static u32 rockchip_pcie_get_ltssm_status_reg(struct rockchip_pcie *rockchip)
- 	return rockchip_pcie_readl_apb(rockchip, PCIE_CLIENT_LTSSM_STATUS);
+@@ -523,6 +523,11 @@ static void rockchip_pcie_enable_enhanced_ltssm_control_mode(struct rockchip_pci
+ 	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_HOT_RESET_CTRL);
  }
  
-+static u32 rockchip_pcie_get_ltssm_state(struct dw_pcie *pci)
++static void rockchip_pcie_set_controller_mode(struct rockchip_pcie *rockchip, u32 mode)
 +{
-+	struct rockchip_pcie *rockchip = to_rockchip_pcie(pci);
-+	u32 val = rockchip_pcie_get_ltssm_status_reg(rockchip);
-+
-+	return FIELD_GET(PCIE_LTSSM_STATUS_MASK, val);
++	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_SET_MODE(mode), PCIE_CLIENT_GENERAL_CON);
 +}
 +
- static void rockchip_pcie_enable_ltssm(struct rockchip_pcie *rockchip)
+ static int rockchip_pcie_configure_rc(struct platform_device *pdev,
+ 				      struct rockchip_pcie *rockchip)
  {
- 	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_ENABLE_LTSSM,
-@@ -446,6 +454,7 @@ static const struct dw_pcie_ops dw_pcie_ops = {
- 	.link_up = rockchip_pcie_link_up,
- 	.start_link = rockchip_pcie_start_link,
- 	.stop_link = rockchip_pcie_stop_link,
-+	.get_ltssm = rockchip_pcie_get_ltssm_state,
- };
+@@ -546,9 +551,7 @@ static int rockchip_pcie_configure_rc(struct platform_device *pdev,
+ 	}
  
- static irqreturn_t rockchip_pcie_rc_sys_irq_thread(int irq, void *arg)
+ 	rockchip_pcie_enable_enhanced_ltssm_control_mode(rockchip, 0);
+-	rockchip_pcie_writel_apb(rockchip,
+-				 PCIE_CLIENT_SET_MODE(PCIE_CLIENT_MODE_RC),
+-				 PCIE_CLIENT_GENERAL_CON);
++	rockchip_pcie_set_controller_mode(rockchip, PCIE_CLIENT_MODE_RC);
+ 
+ 	pp = &rockchip->pci.pp;
+ 	pp->ops = &rockchip_pcie_host_ops;
+@@ -590,9 +593,7 @@ static int rockchip_pcie_configure_ep(struct platform_device *pdev,
+ 	}
+ 
+ 	rockchip_pcie_enable_enhanced_ltssm_control_mode(rockchip, PCIE_LTSSM_APP_DLY2_EN);
+-	rockchip_pcie_writel_apb(rockchip,
+-				 PCIE_CLIENT_SET_MODE(PCIE_CLIENT_MODE_EP),
+-				 PCIE_CLIENT_GENERAL_CON);
++	rockchip_pcie_set_controller_mode(rockchip, PCIE_CLIENT_MODE_EP);
+ 
+ 	rockchip->pci.ep.ops = &rockchip_pcie_ep_ops;
+ 	rockchip->pci.ep.page_size = SZ_64K;
 
 -- 
 2.51.0
