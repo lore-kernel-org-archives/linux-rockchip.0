@@ -4,61 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFDD6CCF9EE
-	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Oct 2025 17:25:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56940CCF9F0
+	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Oct 2025 17:26:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fhHVss+C7i/MfBGo/DVtFhYg1kkkFQl3l5Gk3v9aEvw=; b=urB7ZuLq7wlCYsPc1HV8Z75BGS
-	saG5z3B2UURdcRWOVOFN5TJ5yX68Au6sq9M5oAUbMQ29DeIhlRAOfMM9pPe4WW0QKwe9C7LKaN+X3
-	cxfyXd7XgilAKwgmoejGb/z4MpN5Xh7HHBc8CGamc9loPdFf6sT6/YrrvgY1Yw5lb/GkWZo+VsIyO
-	Oucai7u1KtrjUsaFpPWngvTx5mACyR52vJmLapDmWFXkk4bFXYmc+bfzmfE3GfU/P25o5tCBnW/ZD
-	b5oRNADF1dSxz6s8WDJ01yvKlgh0DSEerg3rzd0wUGCUraJpxphONcUnI37feq0rQHqrqTLkEXLks
-	B6a9nzEg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=SSo+PVs8tK8L1kIvdfjcoiW6+OndthynLR47oCUZLws=; b=hltNh/ZTthINaa
+	ICujt8ubdKDn1v8dC8mGwEtrfr8f61Lw9q5PKvaCIpVbXd+dKAbazdXBK4FL+YJANaxdIErNY0vcM
+	Cgz+fsgJMmlWqMvcjll6DxKyY4ifLDnGu/ME7dR8l2viWImvqldDoyfSmbYZ1/7e7Orpvuq28oE+q
+	E71IcR9HqUymGXOL00Xg7+XByGXNC40aqvNzzikqBrNPCeoF2EPIdPZ7BEDHORpR3Nit3LiAcWkIz
+	Qv+iwO+rck8Z4s0m3Bz07bI5tKbTYEYCqx2bxM80Hwc/kmN1LFpOn62Cvbbrmg5gMI0sBy1Eu4fYJ
+	7rWXFY6sweKAl3k2x5hQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vE9ux-00000002BwT-046k;
-	Wed, 29 Oct 2025 17:25:03 +0000
+	id 1vE9vs-00000002CDC-0UPB;
+	Wed, 29 Oct 2025 17:26:00 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vE9uu-00000002BvA-18jC;
-	Wed, 29 Oct 2025 17:25:01 +0000
+	id 1vE9vp-00000002CCm-47Fn
+	for linux-rockchip@lists.infradead.org;
+	Wed, 29 Oct 2025 17:25:59 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 9940043F46;
-	Wed, 29 Oct 2025 17:24:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 560EFC4CEF7;
-	Wed, 29 Oct 2025 17:24:57 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 6FD7C437D1;
+	Wed, 29 Oct 2025 17:25:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1D4A8C4CEF7;
+	Wed, 29 Oct 2025 17:25:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1761758699;
-	bh=Y9eg+bqtuiBvhj27qPsEMgI3sW1YPbmbNenD0mtafaU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=EaCvJ3fiHxDt543+sjeDB8LsZ82ttPD7FQK0tI8+cvxbDcPE7liNpVCjbI6Bd3T5Y
-	 x+w4+dvepmDJXwiWd50kB95RLAM9dQRLbW3k60fPkivDBZVeYqxun0qWyark9akkKn
-	 MhL7NBjfLVhfH1d0eQY9xoeY68/dNDYU95kQuI9PURJVhVHno8mZ4PSGbBHoyAz4b6
-	 wQ3yxMXqOcUO/G7tU740cLgruD5pAF4FAaN+v+nqe/9gO7LDQaXab1TKVs8NJWeAZx
-	 qb3CCXhg5Fm7q365p30Cx5ETU4bXovasTXW64WcHN4Y0X5sqnBhh15ZCxj3k5vVek3
-	 vSWVve+SE470Q==
-Date: Wed, 29 Oct 2025 17:24:55 +0000
-From: Conor Dooley <conor@kernel.org>
-To: Coia Prant <coiaprant@gmail.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, Dragan Simic <dsimic@manjaro.org>,
-	Jonas Karlman <jonas@kwiboo.se>, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3 1/3] dt-bindings: vendor-prefixes: Add NineTripod
-Message-ID: <20251029-reseller-unsavory-5461fe7f6cce@spud>
-References: <20251028-semicolon-audacity-dd5bdd418207@spud>
- <CALj3r0hWzH+pmkbJe7DdqEzwqcpSQdkfPFtv3S7m-H8gZp0A6w@mail.gmail.com>
+	s=k20201202; t=1761758756;
+	bh=UNCv/SLEKVdIM0/F5Qh+o3LkOisYzz/k4Ngw7LOuDtI=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=PWuHWZJ+oT416PmcdJeCl9fvjHCkJFvtKNX1frItmY4dqgCUDhAjz0oSZ9qODt2ef
+	 Io0O15PkPD/uyhqnbe/y9MiXW+KucYH9xYGU25wyKLDab0A3ELRwYUAHplXUIumVdO
+	 rg60yYQWUd/mefNR48m2K6ssxnsTARoDO0CREaMYhAARUKqxOwe1UMO0QEws9iAxai
+	 4VXTheLLFK1WBzjkyTWZiYk4EVK/ZqrBXYe63qdVM/xS0geger8Twg0mQvBB1ZwZKS
+	 dFAY9v4BQ9fbHFwx9W76Wrc0ho0S+1pglHvzoKxq8/sE+EVHKfhHGHBcgXvgxLqnGX
+	 STD/Opd53ruzQ==
+Date: Wed, 29 Oct 2025 12:25:54 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Christian Zigotzky <chzigotzky@xenosoft.de>
+Cc: Johan Hovold <johan@kernel.org>, linux-pci@vger.kernel.org,
+	Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>,
+	Naoki FUKAUMI <naoki@radxa.com>,
+	Herve Codina <herve.codina@bootlin.com>,
+	Diederik de Haas <diederik@cknow-tech.com>,
+	Dragan Simic <dsimic@manjaro.org>, linuxppc-dev@lists.ozlabs.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Shawn Lin <shawn.lin@rock-chips.com>, Frank Li <Frank.li@nxp.com>,
+	"R.T.Dickinson" <rtd2@xtra.co.nz>,
+	mad skateman <madskateman@gmail.com>, hypexed@yahoo.com.au,
+	Christian Zigotzky <info@xenosoft.de>
+Subject: Re: [PATCH] PCI/ASPM: Enable only L0s and L1 for devicetree platforms
+Message-ID: <20251029172554.GA1571455@bhelgaas>
 MIME-Version: 1.0
-In-Reply-To: <CALj3r0hWzH+pmkbJe7DdqEzwqcpSQdkfPFtv3S7m-H8gZp0A6w@mail.gmail.com>
+Content-Disposition: inline
+In-Reply-To: <D6280EFB-08D7-41EC-BAC6-FD7793A98A16@xenosoft.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251029_102500_352007_85F56753 
-X-CRM114-Status: GOOD (  34.10  )
+X-CRM114-CacheID: sfid-20251029_102558_057717_9A682C15 
+X-CRM114-Status: GOOD (  25.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,113 +76,58 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============5354607433616063375=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
---===============5354607433616063375==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="bqqsbG4ObdDSRjQO"
-Content-Disposition: inline
-
-
---bqqsbG4ObdDSRjQO
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Tue, Oct 28, 2025 at 01:04:32PM -0700, Coia Prant wrote:
-> There won't be any problems at the moment.
-
-Please stop top posting.
-
-> Just out of habit (because when writing code, variable names cannot
-> begin with a number)
-> There may be some misimplemented parsers that cannot do this.
->=20
-> As a practical matter, the branch of openwrt has added support for
-> this board in advance, and openwrt uses the DTS name to initialize
-> some default settings such as LEDs and bridge
-
-That sounds like a problem with the WRT development process. This is a
-trivial change, there could be more disruptive things required to
-satisfy reviewers. Why was it submitted there in advance anyway?
-
-> I'm not sure if he will affect the version that has been released.
-> But maybe it's not a big problem.
->=20
-> If you feel that there is no problem, I can send a new set of patches
-> to fix this problem.
-
-Please do.
-
-> 2025-10-28 19:46 (GMT+00:00), Conor Dooley <conor@kernel.org> said:
-> > On Tue, Oct 28, 2025 at 12:38:10PM -0700, Coia Prant wrote:
-> > At first, it was to avoid problems with the beginning of numbers.
-> > What problems does starting with a number produce?
-> > Given that it is already used by downstream projects, we have retained
-> > this to ensure that users can seamlessly migrate to the mainline
-> > version.
-> > What's the actual impact of changing it from "nine" to "9" for
-> > downstream users? This is a board vendor, probably nothing is even
-> > interacting with the board-level compatible at all programmatically?
-> > Please don't top post.
-> > Thanks.
-> >
-> > 2025-10-28 19:35 (GMT+00:00), Conor Dooley  said:
-> > On Sun, Oct 26, 2025 at 10:36:44PM +0800, Coia Prant wrote:
-> > Add NineTripod to the vendor prefixes.
-> >
-> > Signed-off-by: Coia Prant
-> > ---
-> > Documentation/devicetree/bindings/vendor-prefixes.yaml | 2 ++
-> > 1 file changed, 2 insertions(+)
-> >
-> > diff --git a/Documentation/devicetree/bindings/vendor-prefixes.yaml
-> > b/Documentation/devicetree/bindings/vendor-prefixes.yaml
-> > index f1d188200..37687737e 100644
-> > --- a/Documentation/devicetree/bindings/vendor-prefixes.yaml
-> > +++ b/Documentation/devicetree/bindings/vendor-prefixes.yaml
-> > @@ -1124,6 +1124,8 @@ patternProperties:
-> > description: National Instruments
-> > "^nicera,.*":
-> > description: Nippon Ceramic Co., Ltd.
-> > +  "^ninetripod,.*":
-> > Why ninetripod instead of 9tripod? That's what the company uses and in
-> > the marketing fluff for the boards.
-> > +    description: Shenzhen 9Tripod Innovation and Development CO., LTD.
-> > "^nintendo,.*":
-> > description: Nintendo
-> > "^nlt,.*":
-> > --
-> > 2.47.3
-> >
-
---bqqsbG4ObdDSRjQO
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaQJN5gAKCRB4tDGHoIJi
-0jDdAPoClQkD6kyF0W8zdSBg6g+HBjeLj8bAkhQPXRv5HmS7DAD7B0sWK1QT34S4
-iTErDKBUfPq7GGimNUNj0cY2Mjo7tgI=
-=2YvP
------END PGP SIGNATURE-----
-
---bqqsbG4ObdDSRjQO--
-
-
---===============5354607433616063375==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============5354607433616063375==--
-
+T24gV2VkLCBPY3QgMjksIDIwMjUgYXQgMDY6NDc6MTlBTSArMDEwMCwgQ2hyaXN0aWFuIFppZ290
+emt5IHdyb3RlOgo+ID4gT24gMjkgT2N0b2JlciAyMDI1IGF0IDAwOjMzIGFtLCBCam9ybiBIZWxn
+YWFzIDxoZWxnYWFzQGtlcm5lbC5vcmc+IHdyb3RlOgo+ID4g77u/T24gTW9uLCBPY3QgMjcsIDIw
+MjUgYXQgMDY6MTI6MjRQTSArMDEwMCwgQ2hyaXN0aWFuIFppZ290emt5IHdyb3RlOgo+ID4+IEhp
+IEFsbCwKPiA+PiAKPiA+PiBJIGFjdGl2YXRlZCBDT05GSUdfUENJRUFTUE0gYW5kIENPTkZJR19Q
+Q0lFQVNQTV9ERUZBVUxUIGFnYWluIGZvciB0aGUgUkMzIG9mCj4gPj4ga2VybmVsIDYuMTguIFVu
+Zm9ydHVuYXRlbHkgbXkgQU1EIFJhZGVvbiBIRDY4NzAgZG9lc24ndCB3b3JrIHdpdGggdGhlIGxh
+dGVzdAo+ID4+IHBhdGNoZXMuCj4gPj4gCj4gPj4gQnV0IHRoYXQgZG9lc24ndCBtYXR0ZXIgYmVj
+YXVzZSB3ZSBkaXNhYmxlIHRoZSBhYm92ZSBrZXJuZWwgb3B0aW9ucyBieQo+ID4+IGRlZmF1bHQu
+IFdlIGRvbid0IG5lZWQgcG93ZXIgbWFuYWdlbWVudCBmb3IgUENJIEV4cHJlc3MgYmVjYXVzZSBv
+ZiBib290Cj4gPj4gaXNzdWVzIGFuZCBwZXJmb3JtYW5jZSBpc3N1ZXMuCj4gPiAKPiA+IElmIHlv
+dSBoYXZlIGEgY2hhbmNlLCBjb3VsZCB5b3UgdHJ5IHRoZSBwYXRjaCBiZWxvdyBvbiB0b3Agb2YK
+PiA+IHY2LjE4LXJjMyB3aXRoIENPTkZJR19QQ0lFQVNQTT15Pwo+ID4gCj4gPiBkaWZmIC0tZ2l0
+IGEvZHJpdmVycy9wY2kvcXVpcmtzLmMgYi9kcml2ZXJzL3BjaS9xdWlya3MuYwo+ID4gaW5kZXgg
+MjE0ZWQwNjBjYTFiLi4yYjZkNGUwOTU4YWEgMTAwNjQ0Cj4gPiAtLS0gYS9kcml2ZXJzL3BjaS9x
+dWlya3MuYwo+ID4gKysrIGIvZHJpdmVycy9wY2kvcXVpcmtzLmMKPiA+IEBAIC0yNTI0LDYgKzI1
+MjQsNyBAQCBzdGF0aWMgdm9pZCBxdWlya19kaXNhYmxlX2FzcG1fbDBzX2wxKHN0cnVjdCBwY2lf
+ZGV2ICpkZXYpCj4gPiAgKiBkaXNhYmxlIGJvdGggTDBzIGFuZCBMMSBmb3Igbm93IHRvIGJlIHNh
+ZmUuCj4gPiAgKi8KPiA+IERFQ0xBUkVfUENJX0ZJWFVQX0ZJTkFMKFBDSV9WRU5ET1JfSURfQVNN
+RURJQSwgMHgxMDgwLCBxdWlya19kaXNhYmxlX2FzcG1fbDBzX2wxKTsKPiA+ICtERUNMQVJFX1BD
+SV9GSVhVUF9GSU5BTChQQ0lfVkVORE9SX0lEX0ZSRUVTQ0FMRSwgMHgwNDUxLCBxdWlya19kaXNh
+YmxlX2FzcG1fbDBzX2wxKTsKPiA+IAo+ID4gLyoKPiA+ICAqIFNvbWUgUGVyaWNvbSBQQ0llLXRv
+LVBDSSBicmlkZ2VzIGluIHJldmVyc2UgbW9kZSBuZWVkIHRoZSBQQ0llIFJldHJhaW4KPiAKPiBU
+aGFua3MgZm9yIHRoZSBwYXRjaC4gCj4gCj4gSSB3aWxsIHRlc3QgaXQgb24gbXkgRlNMIEN5cnVz
+KyBib2FyZCBvdmVyIHRoZSB3ZWVrZW5kLgo+IEJUVywgSSBhbHNvIHRlc3RlZCBteSBQQVNlbWkg
+TmVtbyBib2FyZCB3aXRoIHRoZSBSQzMgb2Yga2VybmVsIDYuMTgKPiBhbmQgd2l0aCBwb3dlciBt
+YW5hZ2VtZW50IGZvciBQQ0kgRXhwcmVzcyBlbmFibGVkLiBVbmZvcnR1bmF0ZWx5LAo+IHRoZSBp
+bnN0YWxsZWQgQU1EIFJhZGVvbiBIRDU4NzAgZG9lcyBub3Qgd29yayB3aXRoIHBvd2VyIG1hbmFn
+ZW1lbnQKPiBmb3IgUENJIEV4cHJlc3MgZW5hYmxlZCBlaXRoZXIuCgpPb3BzLCBJIG1hZGUgdGhh
+dCBmaXh1cCBydW4gdG9vIGxhdGUuICBJbnN0ZWFkIG9mIHRoZSBwYXRjaCBhYm92ZSwgY2FuCnlv
+dSB0ZXN0IHRoZSBvbmUgYmVsb3c/CgpZb3UnbGwgbGlrZWx5IHNlZSBzb21ldGhpbmcgbGlrZSB0
+aGlzLCB3aGljaCBpcyBhIGxpdHRsZSBtaXNsZWFkaW5nCmJlY2F1c2UgZXZlbiB0aG91Z2ggd2Ug
+Y2xhaW0gImRlZmF1bHQgTDEiIGZvciAwMTowMC4wIChvciB3aGF0ZXZlcgp5b3VyIFJhZGVvbiBp
+cyksIHRoZSBmYWN0IHRoYXQgTDBzIGFuZCBMMSBhcmUgZGlzYWJsZWQgYXQgdGhlIG90aGVyCmVu
+ZCBvZiB0aGUgbGluayAoMDA6MDAuMCkgc2hvdWxkIHByZXZlbnQgdXMgZnJvbSBhY3R1YWxseSBl
+bmFibGluZyBpdDoKCiAgcGNpIDAwMDA6MDA6MDAuMDogRGlzYWJsaW5nIEFTUE0gTDBzL0wxCiAg
+cGNpIDAwMDA6MDE6MDAuMDogQVNQTTogZGVmYXVsdCBzdGF0ZXMgTDEKCmRpZmYgLS1naXQgYS9k
+cml2ZXJzL3BjaS9xdWlya3MuYyBiL2RyaXZlcnMvcGNpL3F1aXJrcy5jCmluZGV4IDIxNGVkMDYw
+Y2ExYi4uMjc3NzdkZWQ5YTJjIDEwMDY0NAotLS0gYS9kcml2ZXJzL3BjaS9xdWlya3MuYworKysg
+Yi9kcml2ZXJzL3BjaS9xdWlya3MuYwpAQCAtMjUyNCw2ICsyNTI0LDcgQEAgc3RhdGljIHZvaWQg
+cXVpcmtfZGlzYWJsZV9hc3BtX2wwc19sMShzdHJ1Y3QgcGNpX2RldiAqZGV2KQogICogZGlzYWJs
+ZSBib3RoIEwwcyBhbmQgTDEgZm9yIG5vdyB0byBiZSBzYWZlLgogICovCiBERUNMQVJFX1BDSV9G
+SVhVUF9GSU5BTChQQ0lfVkVORE9SX0lEX0FTTUVESUEsIDB4MTA4MCwgcXVpcmtfZGlzYWJsZV9h
+c3BtX2wwc19sMSk7CitERUNMQVJFX1BDSV9GSVhVUF9IRUFERVIoUENJX1ZFTkRPUl9JRF9GUkVF
+U0NBTEUsIDB4MDQ1MSwgcXVpcmtfZGlzYWJsZV9hc3BtX2wwc19sMSk7CiAKIC8qCiAgKiBTb21l
+IFBlcmljb20gUENJZS10by1QQ0kgYnJpZGdlcyBpbiByZXZlcnNlIG1vZGUgbmVlZCB0aGUgUENJ
+ZSBSZXRyYWluCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+XwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFk
+ZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4
+LXJvY2tjaGlwCg==
