@@ -4,68 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADAADCCF9FC
-	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Oct 2025 13:55:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47EF0CCF9F0
+	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Oct 2025 17:52:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0TUMkA0xZTPLS77rsMV/HH+6jMVHTTMRSC5lvWmTnoc=; b=lMohO3iPwhMPXb
-	nAEuGcP+qDxUG7QLuHaDtwUjPZfhm/f0g+Yy7DOkN3ANV4YI8WdredmCmv8tchuw7plhCkKLjhL2a
-	j0THzs+hHha/d76gyBlCf6P5lOvLRitZn+4NhEr0E9P0/gQjvjFsnuG725dP9QyAf0bd/OemMkPxF
-	V2G6uNiO/bOTsUR7ri5yXxFWAT9oCjLkSRkqnN0szYsdUXh5crxAyw2IiSNF8QR7dChB5virlDIQo
-	10dY8s8kS5uOn7i+UjDSY4wVvFvqeyG9T8Un0kNLdix9AUKFMX9dVjjayNlOjzmJokCd5MSmY3tHZ
-	TUgd3lO2E4uyOAVeXfwg==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:From:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=YtkQCO1wHx+e9/42/MgovkVMyYxSuGwcRUHozsQMjLQ=; b=iKAlZRd5D1FHvs
+	PO1okUsH7vt16VKLklmySmtbFj6H6PYenlK8fr6jkPbzF3LlZyCZ9iOxZmTnsx+y1umOvpsTXQ/2O
+	jA4OEtXvzMCV5L9xBTRC5GMzFEdUhWPPq0X1IrK1jGqcGG0wRDsTo9nDlQcST6mktTeYVI0G5VDi0
+	r6ff1fHTYoB3Ts5AibZS/jLxdKR1ipzU1f17B4Mf/Ix1antbofD3h0UzkUhaUQX/NvTbMVPkprp1C
+	/5BqagFz13MAhUIEH9U0ywywDkUFaMtgH9a+nxG7O7uuPnLeGhcLPd/1j46I+nQBjTuLsQ10NvKgs
+	0Lh2JN7Dl77qOf/Yc9+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vET7w-00000004G1T-3jMj;
-	Thu, 30 Oct 2025 13:55:44 +0000
-Received: from smtp.forwardemail.net ([149.28.215.223])
+	id 1vEWpF-00000004Ype-1CH3;
+	Thu, 30 Oct 2025 17:52:41 +0000
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vET7r-00000004FzR-2ecG
+	id 1vEWpC-00000004Yow-1EKs
 	for linux-rockchip@lists.infradead.org;
-	Thu, 30 Oct 2025 13:55:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1761832539;
- bh=11fSyszQtR3jkoioIebSh0k83RLr07LvekxLFqOoF38=;
- b=zK8vChKse4L0s5lp6HYTkTdXP6N0ZxA0zL02UFCInNBRfpNFaUeTPKTgCF8HD7f+GBvhFwX6y
- gnmlhOXinLMgBjiB9QSHtvQNGc81Y54xQ1F9RX2sXSG3PC1xZ5CkB0sW8DDcbNqGhOfs8ZYXzYs
- OBowDddErtTcFkAU/vbXAmgdx+rLhzTRinv769Qzow7rnRY8m1cXzeEDCTP2982e51TLf/Pb+sp
- EdO2xp5aPqrvO3NOcRaE7ttDB+uY1yEoolTe3H82QeCSKbGg8Fg3kPAKg9bXIPmgA4USn0NRGl9
- QK1y75oNd+7bT4KfyNZxBZZyone2nbE2ka2ek475q1qQ==
-X-Forward-Email-ID: 69036e450fa9097cfdeb6e32
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 149.28.215.223
-X-Forward-Email-Version: 1.4.1
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <241e4a1d-039c-4738-b492-6325ad354b2e@kwiboo.se>
-Date: Thu, 30 Oct 2025 14:55:12 +0100
+	Thu, 30 Oct 2025 17:52:39 +0000
+Received: by mail-ej1-x629.google.com with SMTP id a640c23a62f3a-b6d4e877915so19819166b.0
+        for <linux-rockchip@lists.infradead.org>; Thu, 30 Oct 2025 10:52:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1761846756; x=1762451556; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-language:cc:to:subject:from
+         :user-agent:mime-version:date:message-id:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=njsjO4VFZqA7R0pPo1P10WkBD8Q9L5cVjM6fjzkdhIU=;
+        b=GDdEvmqjULohlyQMuzk10RInXCfMfkQsAA3YLdXqKuR4rB5mrsSEq9AKmB32isFBW4
+         qeUrKLTAIipVLu70K1HgpUwEqVtxq1XzcU+fbKXQ5qJfPfts3q3twbF7UwVUzWoOB6uK
+         zjP1cFQKwfTG01+FRg7hcyTMiz8JvcXe/h2Y/qPSaWE3nWRYmI37sC4UdYxik2byy4vl
+         P43Zeh1tDCmmqiUr7ljt01T5nEPA6oH0W8gIm6Xr4yZIg9+BX9CrYjjCfaKp390RkAOO
+         p//BsmFfmnaubpKeCfyr8TFy97YWqmncRzzzl4eHNP9qyDLEwSF0m9DEhtlm6XQD5ba7
+         vhug==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1761846756; x=1762451556;
+        h=content-transfer-encoding:content-language:cc:to:subject:from
+         :user-agent:mime-version:date:message-id:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=njsjO4VFZqA7R0pPo1P10WkBD8Q9L5cVjM6fjzkdhIU=;
+        b=o7hQg8o99t5X95+YggyKWx+hBo01R74XynzI4jOHlh+cAV22HtS1UaHBcisHSBj2vC
+         q469P4WOerAm6SmL6GUl/X7ThwNO2HcvjDFCEp2HcwQ8uGw+4EpKmv01Ke4q5qXYJY7h
+         ig18HL77sSd7oOB2l+8nyUeZ8j4LR8kr99E2WimpKWz5kuB0Jh1qo0lLSOPoi8kmQ2uX
+         fWj3OoYZyKLf17H2mFMiRLs2UfZDAqtuQoXtIxUq7U7dlFHKEvzDzou7SZ1kafJjVd18
+         mZ0phaxhBLDcKbOtbM46zGOhpbxQ9CXGjgNbWfgR9P64AkW5TiumVq98I50hlXNmIkOO
+         8o2Q==
+X-Forwarded-Encrypted: i=1; AJvYcCX31QgSVmeT9aQ2PWPeAxcYtpZGGc6FVnccjUu6iKhzcgV8UBBCqUvKePXa3JO1A1GaOoWmQekWzWQQ4zta9g==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yxyt4OIlkE++tp5qVMCQbG9mctR4A9KvFMYkNdXYaeQWYLXfOF4
+	rxABjmTq0T/xZ02SahcAmp7IOSP8kyQQvlOqk4/nxbtvTGgaqAyZ92Dn
+X-Gm-Gg: ASbGncuN+3xLlrRePGfHe85cramutSy/X01AslOtEiyZCFbmpfAu/Xzfk1THkv85EDq
+	YKJmgVMBZVbM9ZYtai8swMaMNH9cywtNM0leIzkJIClcHqqSQ3mps+DEbZUcT/2EAFFreuGRmvI
+	X5kWwcqfkqEEvyqXrEVIhAUSZ46w6lCwE9XRA869gKZvBrinIPIv6yIP5k8ByekqdcxPB2jVlpo
+	yxbW33WOXtATMm7PQdGBwZRIjBf3fdZub7dOHRyksJTLKYcTYg73sx1tVIPYdpJhm2XNCGP0reu
+	qvCAvJIF37OXHoRkrTEzAXvqVzrlF5e2ISy1WOMxmY+61Ly3S/+p9Vu6azho4OOEmGaujSf9F1F
+	2k1+6pS+O5c7kFZ6+z48OmwuzCmSlaiPnWj6PENZnr1Tz9RMD63M163MEkhxPnz+dawdwZRQyAY
+	tg1kHXV64pqh4BtnhQSuPnLuneH3KruAA8PpNNHFdGME+ZVJ90HQ==
+X-Google-Smtp-Source: AGHT+IHEjrjKgjCwmL8TWuOerIFvVWufwSPMm4yYLEbgFtGVI/ku0NlxLVuGe2f+k6tpzEbHXAXZQA==
+X-Received: by 2002:a17:907:3e0c:b0:b6d:6d44:d255 with SMTP id a640c23a62f3a-b70700af393mr23224166b.1.1761846756003;
+        Thu, 30 Oct 2025 10:52:36 -0700 (PDT)
+Received: from ?IPV6:2a02:a449:4071:0:32d0:42ff:fe10:6983? ([2a02:a449:4071:0:32d0:42ff:fe10:6983])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-b6d85398444sm1778908866b.35.2025.10.30.10.52.35
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 30 Oct 2025 10:52:35 -0700 (PDT)
+Message-ID: <8a423a6f-bfdc-4947-aef9-35ee7c4f6ca2@gmail.com>
+Date: Thu, 30 Oct 2025 18:52:34 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 6/7] dt-bindings: clock: rockchip: Add RK3506 clock and
- reset unit
-To: Elaine Zhang <zhangqing@rock-chips.com>
-Cc: mturquette@baylibre.com, sboyd@kernel.org, sugar.zhang@rock-chips.com,
- heiko@sntech.de, robh@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- conor+dt@kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- huangtao@rock-chips.com, finley.xiao@rock-chips.com
-References: <20251027084147.4148739-1-zhangqing@rock-chips.com>
- <20251027084147.4148739-7-zhangqing@rock-chips.com>
+From: Johan Jonker <jbx6244@gmail.com>
+Subject: [PATCH v1] arm: dts: rockchip: rk3288-veyron: add spi_flash label
+To: heiko@sntech.de
+Cc: robh@kernel.org, conor+dt@kernel.org, krzk+dt@kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <20251027084147.4148739-7-zhangqing@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251030_065542_580791_B06FF851 
-X-CRM114-Status: GOOD (  12.98  )
+X-CRM114-CacheID: sfid-20251030_105238_328742_D4574906 
+X-CRM114-Status: GOOD (  10.15  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,100 +100,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Elaine,
+The u-boot,spl-boot-order property requires a label at a boot
+device node. In order to migrate to OF_UPSTREAM more easier
+add a spi_flash label to the rk3288-veyron.dtsi file.
 
-On 10/27/2025 9:41 AM, Elaine Zhang wrote:
-> From: Finley Xiao <finley.xiao@rock-chips.com>
-> 
-> Add device tree bindings for clock and reset unit on RK3506 SoC.
-> Add clock and reset IDs for RK3506 SoC.
-> 
-> Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
-> ---
->  .../bindings/clock/rockchip,rk3506-cru.yaml   |  51 ++++
->  .../dt-bindings/clock/rockchip,rk3506-cru.h   | 285 ++++++++++++++++++
->  .../dt-bindings/reset/rockchip,rk3506-cru.h   | 211 +++++++++++++
->  3 files changed, 547 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3506-cru.yaml
->  create mode 100644 include/dt-bindings/clock/rockchip,rk3506-cru.h
->  create mode 100644 include/dt-bindings/reset/rockchip,rk3506-cru.h
+Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+---
 
-[snip]
+https://gitlab.com/u-boot/u-boot/-/blob/master/arch/arm/dts/rk3288-veyron-u-boot.dtsi#L10
+https://gitlab.com/u-boot/u-boot/-/blob/master/arch/arm/dts/rk3288-veyron.dtsi#L267
+---
+ arch/arm/boot/dts/rockchip/rk3288-veyron.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> diff --git a/include/dt-bindings/reset/rockchip,rk3506-cru.h b/include/dt-bindings/reset/rockchip,rk3506-cru.h
-> new file mode 100644
-> index 000000000000..f38cc066009b
-> --- /dev/null
-> +++ b/include/dt-bindings/reset/rockchip,rk3506-cru.h
-> @@ -0,0 +1,211 @@
-> +/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
-> +/*
-> + * Copyright (c) 2023-2025 Rockchip Electronics Co., Ltd.
-> + * Author: Finley Xiao <finley.xiao@rock-chips.com>
-> + */
-> +
-> +#ifndef _DT_BINDINGS_REST_ROCKCHIP_RK3506_H
-> +#define _DT_BINDINGS_REST_ROCKCHIP_RK3506_H
-> +
-> +/* CRU-->SOFTRST_CON00 */
-> +#define SRST_NCOREPORESET0_AC		0
-> +#define SRST_NCOREPORESET1_AC		1
-> +#define SRST_NCOREPORESET2_AC		2
-> +#define SRST_NCORESET0_AC		3
-> +#define SRST_NCORESET1_AC		4
-> +#define SRST_NCORESET2_AC		5
-> +#define SRST_NL2RESET_AC		6
-> +#define SRST_ARESETN_CORE_BIU_AC	7
-> +#define SRST_HRESETN_M0_AC		8
-> +
-> +/* CRU-->SOFTRST_CON02 */
-> +#define SRST_NDBGRESET			9
-> +#define SRST_PRESETN_CORE_BIU		10
-> +#define SRST_RESETN_PMU			11
-> +
-> +/* CRU-->SOFTRST_CON03 */
-> +#define SRST_PRESETN_DBG		12
-> +#define SRST_POTRESETN_DBG		13
-> +#define SRST_PRESETN_CORE_GRF		14
-> +#define SRST_RESETN_CORE_EMA_DETECT	15
-> +#define SRST_RESETN_REF_PVTPLL_CORE	16
-> +#define SRST_PRESETN_GPIO1		17
-> +#define SRST_DBRESETN_GPIO1		18
-> +
-> +/* CRU-->SOFTRST_CON04 */
-> +#define SRST_ARESETN_CORE_PERI_BIU	19
-> +#define SRST_ARESETN_DSMC		20
-> +#define SRST_PRESETN_DSMC		21
-> +#define SRST_RESETN_FLEXBUS		22
-> +#define SRST_ARESETN_FLEXBUS		23
-> +#define SRST_HRESETN_FLEXBUS		24
-> +#define SRST_ARESETN_DSMC_SLV		25
-> +#define SRST_HRESETN_DSMC_SLV		26
-> +#define SRST_RESETN_DSMC_SLV		27
-> +
-> +/* CRU-->SOFTRST_CON05 */
-> +#define SRST_ARESETN_BUS_BIU		28
-> +#define SRST_HRESETN_BUS_BIU		29
-> +#define SRST_PRESETN_BUS_BIU		30
-> +#define SRST_ARESETN_SYSRAM		31
-> +#define SRST_HRESETN_SYSRAM		32
-> +#define SRST_ARESETN_DMAC0		33
-> +#define SRST_ARESETN_DMAC1		34
-> +#define SRST_HRESETN_M0			35
-> +#define SRST_RESETN_M0_JTAG		36
-> +#define SRST_HRESETN_CRYPTO		37
+diff --git a/arch/arm/boot/dts/rockchip/rk3288-veyron.dtsi b/arch/arm/boot/dts/rockchip/rk3288-veyron.dtsi
+index 260d6c92cfd1..2d6cf08d00f9 100644
+--- a/arch/arm/boot/dts/rockchip/rk3288-veyron.dtsi
++++ b/arch/arm/boot/dts/rockchip/rk3288-veyron.dtsi
+@@ -388,7 +388,7 @@ &spi2 {
 
-Is there a reason why this (and the RV1126B) reset names now include the
-RESETN name in all reset constant?
+ 	rx-sample-delay-ns = <12>;
 
-For RK3528 and prior mainline SoCs the RESETN part of the name has been
-striped from the constant, suggest we also strip the RESETN part for
-RK3506 and RV1126B for consistency with other RK SoCs.
+-	flash@0 {
++	spi_flash: flash@0 {
+ 		compatible = "jedec,spi-nor";
+ 		spi-max-frequency = <50000000>;
+ 		reg = <0>;
+--
+2.39.5
 
-Regards,
-Jonas
-
-[snip]
 
 _______________________________________________
 Linux-rockchip mailing list
