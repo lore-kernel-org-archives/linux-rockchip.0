@@ -4,85 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BAF00CCFA02
-	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Oct 2025 15:58:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97FDBCCFA02
+	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Oct 2025 22:53:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qoDqbrUimaUlT5TogFqUCDCpDGF8poJrzVT0YzbKExE=; b=qVDQkN1aSrS2XG
-	Fsn0xKLEZ8ejhZRSC1loZ7jwt9BqtKueK4PZo1g/7PcZEXKTwg37unR0i2qp7RKqo7JS7n/MNaxnY
-	Qu4BGOBWN2fDGdpFPxWNwH2NFk0m6g1pVFURClvXCXtzvn0Plpc2W4tW7Fylp8Pylmtg2EfvARa71
-	4EFpn2oovONAztcYjWGSPeEiM2WUXPLizlwMw38+I6CBTMsTLwYxUOpJFsn4yJhUjvIIOpoFRyXM4
-	CJjUB5RaJFcGwZAI5Ozca3jQmMIuQfl3ma8joe1P/ZrOGaRqYQMG3ZZORo30+B/XXPjIgavmRUHuT
-	A6OBuC7y9DQ1xDkThTtA==;
+	List-Owner; bh=Q+PbyHOWDYC1h+NFey8RA+39V+jIzHi8rCfMIjk5Bp0=; b=T/mpJwOEeBvvLp
+	qNONlDjjDtnvN28iCl33XyPNbcjTWXyNSLyMUdt49Rv6AAhcE9+OHuvnSY0cMXxb0Th41PZ6+fcdo
+	UEWpGHD3zjwIZNi576JUC3jDpB2Sxta8vFla2JWNiMbd/2DBgd0rw9fhkD9vkRnLLWr+t7v04eijF
+	7o+3yQg5Jkgs3uH+IeUti3rYGCpZjD5kAxGhF+9yO3f2qlTRXzsRwR/mox3lRdJGJhy5DPC8d8Hca
+	ns/lQsN7omhjTNvJGtuuMW+jXgynraPmK+zo9tARwBSCzmrkrPPuddWGRBrTfdJR2XIa++/2pJLXh
+	LzCh6eJh5u6fdHgXNiAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vErWO-00000006Kut-05LE;
-	Fri, 31 Oct 2025 15:58:36 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vExzz-00000006spk-0cFX;
+	Fri, 31 Oct 2025 22:53:35 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vErWK-00000006KtA-1NcF
-	for linux-rockchip@lists.infradead.org;
-	Fri, 31 Oct 2025 15:58:34 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1761926308;
-	bh=xNKlc7tVib9id/nLaOFp5eRTygy8Ayi18VAnakCYDc0=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=Op4rQqqhLqO6vHP+GJmbppGVEmm82TH2O7i5LKUSw23ba4usOLbyWVDRuRSGbu95A
-	 rQHHZKRnbaJfQuXmJgdM8NmWtsAlN4mcK3MPTobX6OkrlErJbBo0W2+g72dSk9f3Wk
-	 ca84S9n8JWEjvgcytZs4PaL1RFXEOTIAyU0hfnMIyZSdn+Hrd4EqFhKagO+Ms0P9Vj
-	 Fa2qLsJNXPuZXVgZYIU8IPI5/r+r7oDh8cdM4t3GR5DHfhihw8ED/leAM37SefR62G
-	 XiUjxedyKNEL9NvgakIChdLJJS65Xud9P3s++57y539NFKd36YmhKXdUiT1vkWz9Io
-	 GfGrCdCz7ZlbA==
-Received: from jupiter.universe (dyndsl-091-248-209-065.ewe-ip-backbone.de [91.248.209.65])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 656A717E0927;
-	Fri, 31 Oct 2025 16:58:28 +0100 (CET)
-Received: by jupiter.universe (Postfix, from userid 1000)
-	id 19E94480048; Fri, 31 Oct 2025 16:58:28 +0100 (CET)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Fri, 31 Oct 2025 16:58:24 +0100
-Subject: [PATCH v2 2/2] arm64: dts: rockchip: add eMMC CQE support for
- rk3588
+	id 1vExzw-00000006soT-0jl0;
+	Fri, 31 Oct 2025 22:53:33 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=0vACZFnTE1bFSK6RsWKOJ3s4+2BvKyHRqatrbxMl81k=; b=HU7EEj8qL6B/gNydI3tA0ju5Cu
+	X83feZ/yfAG2tn2ObEDKc1T85bWsn4a6rYnPpDFc6XT7o5QFTqvAMbASE3jjHi3cnTKrddRLN1Uv0
+	ztoIpS8/t94sZfWx+IlXr2Jn0SUlg5Z6Zj75+MqGQeDoLGN5V5ZJj29cR0TL+czAwUWu6eyYDweRs
+	eJzKmsW3mMVXpp/iK4ediMhKT/3mDbeUCcZm6MMYf5K8a0S153OcPEcr/e0U0gkz+jwyYsk3o2dM3
+	1G10CKxm1Mc14q91acqkd7pZYVYAgCLq7cjGeUAJevgQw6Zs6PoctGoTgnkv/qWR3ehTKNzqA5Ls0
+	AZVAEyZg==;
+Received: from i53875bca.versanet.de ([83.135.91.202] helo=phil.fritz.box)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1vExzr-0004vM-Vg; Fri, 31 Oct 2025 23:53:28 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: Johan Jonker <jbx6244@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	robh@kernel.org,
+	conor+dt@kernel.org,
+	krzk+dt@kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v1] arm: dts: rockchip: rk3288: remove mshc aliases
+Date: Fri, 31 Oct 2025 23:53:22 +0100
+Message-ID: <176195118794.233084.14651345764669751687.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.47.2
+In-Reply-To: <3e461bce-e8e6-48f1-a296-34040447ff25@gmail.com>
+References: <3e461bce-e8e6-48f1-a296-34040447ff25@gmail.com>
 MIME-Version: 1.0
-Message-Id: <20251031-rockchip-emmc-cqe-support-v2-2-958171f5edad@collabora.com>
-References: <20251031-rockchip-emmc-cqe-support-v2-0-958171f5edad@collabora.com>
-In-Reply-To: <20251031-rockchip-emmc-cqe-support-v2-0-958171f5edad@collabora.com>
-To: Adrian Hunter <adrian.hunter@intel.com>, 
- Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, 
- devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- kernel@collabora.com, Sebastian Reichel <sebastian.reichel@collabora.com>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=732;
- i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=xNKlc7tVib9id/nLaOFp5eRTygy8Ayi18VAnakCYDc0=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGkE3KT10+HtdpKrdxfLysoy4gnBOE1GjWoYu
- LYlhRsIqdOu/4kCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJpBNykAAoJENju1/PI
- O/qaaIUP/ifdsUAblQx2If/fov/LVpkbn+AUYv5ebd1yFa9NryPkYFXcEbaXfL6eH0lr4cfbQim
- bdixaxdoVZPZ4/luJeVAsfviQvJ6lHTbexcTyZHIl2xMtt7QHMiAkyFrzrt1qV+Y+ASBHdC/vnR
- 2bSsONhoggourjki7g+t0w0HoHqIK0fbtemdMV9MQIG187JQhn4eZv+vgK0HbYuE6gtiIEBvXez
- YZrYqz8stUlZ6sVEhzfueJTpd0p2mgLq0pyjSCU5JNYjHkVpcsTxVLWsKt37d/zvkAYL+/HuLrv
- 0sw115tByn9dQw4bcyeJF3XLrGopUq7r8dagL9yaGBWO/7ouXFbi49F1eiBESanSrWshoes0IRT
- 4DKZ34zxHzad0+jEoT5586tNG/lah2BJ9RsWhfqsVvu4rF3t93vm6wBGqiPeO0HIzi4N5qVkhjj
- Yll34PIcHUaFq3vcdAvL3Uym8++r6Np55wu4YIbL74/+RiPtI1iLvOISXYKmjLkc3KqvfP9PSel
- zGMWljbFVuniwbrvUATIAdYzKMiQqdnkCHu9V5qFCttxCXEI0tj+BDI2gayeuoMUw8ACTzflmsv
- 24uFNQ80uuchDoJi9Smc3zSCIqtgX5Dp0TxFUZwKbadJZtGy8eizFvUIInzB3f7wVd9zhSfWZ/B
- yjGpJ/3IIPoYk/F5oE9U4YA==
-X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
- fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251031_085832_795707_D62EABE7 
-X-CRM114-Status: UNSURE (   9.20  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251031_155332_207981_48C78C5B 
+X-CRM114-Status: GOOD (  10.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,30 +76,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The RK3588 eMMC controller supports CQE, so add the missing
-DT flag.
 
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
- arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 1 +
- 1 file changed, 1 insertion(+)
+On Thu, 30 Oct 2025 19:20:42 +0100, Johan Jonker wrote:
+> The use of mshc aliases is deprecated for some while,
+> so remove them from the rk3288.dtsi file.
+> 
+> 
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-index e2500e31c434..2a7921793020 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-@@ -2181,6 +2181,7 @@ sdhci: mmc@fe2e0000 {
- 			 <&cru SRST_A_EMMC>, <&cru SRST_B_EMMC>,
- 			 <&cru SRST_T_EMMC>;
- 		reset-names = "core", "bus", "axi", "block", "timer";
-+		supports-cqe;
- 		status = "disabled";
- 	};
- 
+Applied, thanks!
 
+[1/1] arm: dts: rockchip: rk3288: remove mshc aliases
+      commit: cafaf99e4a790f8492a034a3470f878779c8c535
+
+Best regards,
 -- 
-2.51.0
-
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
