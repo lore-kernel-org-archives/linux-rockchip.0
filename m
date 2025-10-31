@@ -4,71 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57003CCF9FE
-	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Oct 2025 10:49:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03B0FCCF9FE
+	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Oct 2025 10:49:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=BgCAvuUDM0mjNFW31c9FYNWWleJtDQ8qaNjn/CTcv9s=; b=BXg4Z6ZkCYEInD
-	ehqu3RCHG3TAeWsAnCc2BQ0g7GP7C8XPXyA7/Ty/Cv460nKwkAU0QnMnFShP6TTGJwo/QZ+JNdpMX
-	Qrlbjuwmh+f9kchUtr5IfQ9a6wmD9OvNGUwek9Ysg+Wyvv/NiI6bfQb230kEOIwXHUCNgEGgpJ655
-	t8H7wBlEXGoWnmyH/9mxtHY36H9QcDNmXUHHyn4h+9ElpJS4qgMHfyfrfCWu/Xk8zfNvluei1B1CJ
-	luosV4h8EJxJn1L+yOyF7VwwmRS6t6fYYCnDGs/b+81YIwrm7rYvfpw/52ElcSp36r3BxPCIkZnQk
-	lCbQRi0o2WNgp10SJwaQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=iCrF8NzTHQ9dgs9feIdILRphCktudFBHARfwwPcEzos=; b=1dBGgwlqrA7Aqu
+	uy0qIOnRyPjNjTaN6Il7uuyjlbB7br0xWQO4VR7uZiD14nTFsAeaHfUHhTCcJw4v1CDTtXGjxmdzh
+	+tgipxLTUd4s+iIZWbvgkkV5ptiJqVR4IJkuipqtTfQfO7qXT3O7H/0GGR6LfRmS7d4Ba8k/UhDXh
+	EpMz/Gbjp2rqvKQwTP5Ixim+UstN0Wx/IUWGP2qeS1xA14aV4mSNYYUqVmUY1catErc2ZXLn//s61
+	YIuK2Y3MvxtippUxRO8YMgLGkXsXo8fkvaqUqGhcuWeLFxebl6PVl5/BLy/iuV5gUEBlE2NODtePU
+	N6JTtIOvXpEL5PPsntEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vEmgh-00000005xb2-3bmq;
-	Fri, 31 Oct 2025 10:48:55 +0000
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+	id 1vEmgo-00000005xdR-00bL;
+	Fri, 31 Oct 2025 10:49:02 +0000
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vEmge-00000005xYF-2Ehl
+	id 1vEmgf-00000005xZ6-3duL
 	for linux-rockchip@lists.infradead.org;
-	Fri, 31 Oct 2025 10:48:54 +0000
-Received: by mail-wm1-x332.google.com with SMTP id 5b1f17b1804b1-47109187c32so10875695e9.2
-        for <linux-rockchip@lists.infradead.org>; Fri, 31 Oct 2025 03:48:51 -0700 (PDT)
+	Fri, 31 Oct 2025 10:48:55 +0000
+Received: by mail-wr1-x432.google.com with SMTP id ffacd0b85a97d-3f0ae439b56so1270807f8f.3
+        for <linux-rockchip@lists.infradead.org>; Fri, 31 Oct 2025 03:48:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=suse.com; s=google; t=1761907730; x=1762512530; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=NgLCYfpgrKXyb0uNcHRkHZoucWvjEkXvo5QPwaDt/k0=;
-        b=SI8B0czy+yAbKvi0PKzV+ugS2MKOFsD2sWhjfHI0fuBQKkJRDu5qMF2CZxAtUPoJ53
-         9nrivpkwuPqfZ26MU7mA6VjCbNBAgP9mpRiWvAxxGUdp78AWZuJG8EPc+6+mvILfA3sZ
-         jy1T23BTv91vPJNxkUX4KOm/pP+podpQhLEzUNxFzQ4lVoLUAgdHgfv9wXfYEBLkYLFI
-         gTzl8Xau0iYkZJsivjuRy4bendG40a4gljrECZZ8udYRfG9mrNBHIpv0K9LLtpfBjSah
-         dZ39GOXHURtd+DoF2ZvrC86PYag12iu9C8aUSpUS3pcsyZiSHkwkDbXGK2m4NydBMok5
-         vhHA==
+        d=suse.com; s=google; t=1761907732; x=1762512532; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=+Zo2jj2MOuswONrFhs1A8zruhpNCnAbrPgnW3srwcDM=;
+        b=f9Q1cKc4OBClZaROD4VkQ3wFjW3MNcKJ5h4Q5q4K4KkjoWkk9ZeeGSqdH1qQFB206G
+         9DJxQAlQSyov2E+dlxRUBG8cSlEe436t9UWB91lp+aMELfTBAsz5vxhzBS7DgNK2jqqc
+         nhP0NN+/JGmeL/3bhlePwC7+ktOuC3QBmGYW5zJlWB8ZeYFiU5AHmRyrOjuKdxID9epd
+         n8b29gAQfGEAGfR7wbC91Rmd5mFrz+N9FrHBMgKr1e9kUMGINE0nymttcv/XN72tLJ0V
+         AfPMGiti2CmnWG209vN+2SZDcKCrsge7njiG/rFRfNtTmQN3s27iiKXK8yLemtRAttFB
+         4zAQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1761907730; x=1762512530;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=NgLCYfpgrKXyb0uNcHRkHZoucWvjEkXvo5QPwaDt/k0=;
-        b=HFUGbVDP5QKWSGJemaeG7dqzHd4BYU5cZxjSxodyNUSSF56Zq08AFhl62ans3s+O5o
-         8n6GpgB6BAxAgeXTMN7oYs3DpOIFzt9NSPLI7P+CrSm2b2Rv4jiB2X6X2PT/yEeIQHy2
-         brZwmscVob0b3vFuifl0Pe5oMUX7B9kkctoA5mPDeq4wBWyKx23nrrj4OOiU3lY7Bp6A
-         y7PfpfRF5Hl3Diqv4KxL1/o5/R1jkWEc5tkC8d0nqzyKyie1cMWTiNCvAtUu7dzR6CIf
-         kgOBf227NmW1SN+Sz5rcWcy/yh8BMd0tl4YoJrnRAqpW3TdmxYqknZsfaalcXnJEtPUz
-         H2eA==
-X-Forwarded-Encrypted: i=1; AJvYcCXKyk/r9NGopU2Qt4J2zf6c3ainXZIog76xHjzLPYJm/g+5uuhKtLkv9JYLf+LqtS4wqe5GEiu5c2BWwtJZVw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzfgi52Z8tsLcpOLJgnFSU2sF6ldif04DRqaJeKe2bIgLEtcFMG
-	2OWs+GTcDYJ3p1+plu3Fx30+3M1WkcE+c9h/Tp6l4p/WaM8f/llz+5remm6+8v5CsS0=
-X-Gm-Gg: ASbGncsA3qtTLD/qxam4LVTxsFgM5+OQzFVsDiphEO06BiP01Aup1WK9850tVrMNpYW
-	fGp/oREYOJw1xRkLvZ4Pwj1YGgmYdSNBtfujQ/yJFcdJ6eBwtasDSXrmgcIXpiqIu9p3SNwI3av
-	tODazZTDL6juckZ4pjpA55Lk6qgdYLBhrdws4ymKVYoyV8vduIravfph4Eb4PgQr7s3vgKTiAHJ
-	izeBEee8S9OVDtEicdQyMzhYYrQvBxlnjZ+CSzcBF5wnoAL7Qr9SVZvTnHOWh38dt7lTgrkS9dG
-	WX4/BpAUsVUbTal1deA3bT2S/H23O74pmofX/WxjcviXR6RDwQkFkwRQnBb5ADvEpLbJkuQ/65I
-	62wtBPi5H9cgvQ6ocNCBY6uEKSP+aFsC0UyFWXf+uQKRUfVR9crRgy1OZ5CmQVMTFdFTlr6Q4uh
-	5dyJ+/BqBmAgGQIUqnTnQmzlsgx35elf9wBJM=
-X-Google-Smtp-Source: AGHT+IFP987BsDATwy71oQrVgMqL+tPUdk6zXS4vwh+ZuiP9GnPeneDUsTtppOuOWWpaBC8dvT1MnQ==
-X-Received: by 2002:a05:600c:3e06:b0:475:dc58:39e5 with SMTP id 5b1f17b1804b1-4773089b541mr26933225e9.27.1761907729944;
-        Fri, 31 Oct 2025 03:48:49 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1761907732; x=1762512532;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=+Zo2jj2MOuswONrFhs1A8zruhpNCnAbrPgnW3srwcDM=;
+        b=nrk73xrj8fGUOdPwIslnb8M5gpds0oT3chCKTjN7lWNgnxEDDZl6tUfa8pHefzNM3v
+         gK5DXp5qWAcYkOlNUAqEWk44JxbrbmM1MyaFYadklrdbkEgGTaExL9+KW8opCvYcbfEb
+         gAxtDXsXM+dwUBcJP2Ze0PlOSNycqjuu3jn+WlD4yMKS0kZ/sVTlYVu2hzhOgOu2hW8K
+         /JiTtkSx2/F9f38ILBl94tQZBD7DKwPKvnwMmYU3TA5c9RDrrG5/B+Eh6jRu0XGjvSnT
+         nEPfrmmPTm5l2OVBxI0Om5jUd4vvtX8bLCe6h4VIv5T+4O5Um6x7mIpuHU8p08RV+YjQ
+         86cg==
+X-Forwarded-Encrypted: i=1; AJvYcCXZPaqZAxSNH/ZQQONt52Efkg9JKPXQO2ah8aRLwA3eCh1r/cjYP64fFQMd4UTnV83pzbpmkwswckoLlVldWQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxBWZTw66PzOhGs2zAsOIxSgDUP8+WVvPPNegmGxwkkRgFXNpn6
+	1P5KLm40cl5XC3Dik6jyP9LRU91ksf1h2sVHqev4dwnZn45wG/nfG08bikbDA//FTT0=
+X-Gm-Gg: ASbGnctyaxGdS9EJBpMnKKlVaAzzSA/GkpvzYWk8rgH6+Obpa7+oqEX6HbaFlJSJ0Zk
+	FgMsYDQQJe2wKVqtyw0WzaBcoNz1rNl6XaehRdhG/mFb0yH0L0CnrTkV4MZ8PC9Cw/mbpcWEJA0
+	BJ0QOBdasYQ2e0njFTGTmHpp5A0wr+oO10TBJqBnfwX0ARChQpdRrGSjpUJKUbaLXT1Xuei0Ko4
+	MPKUbbxhWpiQpy2sDB9uRWtHrMHOqVyrLrvQXNtI1Jmh7o9HgH9nc3cvUvXkoyCmPzc+JUSER7b
+	dYDMGJTrbpjlv84p/wD1tbcVoFqpgLMoywoTRZB7PWhlSVSuvYc3fbaq4ZKyhKL0gtwz+RtfIdv
+	6RgqqNmA9EQWMXGCAKVraDldB3Z+aBEFgjFAHo4A6nQJfJkV3x3qU5/s3L7SIP45mllu8cdtO0n
+	ApScF+6NELB1yuya9g3+d38WAy2HNbj95DBE4=
+X-Google-Smtp-Source: AGHT+IGobibt4LNxx3fw5hmxTlHoYafBePMtzQoeq6djNMJvhNOcnjqVzzpJ8k598YLOu8WNRveGDw==
+X-Received: by 2002:a5d:5d02:0:b0:427:9d7:86f9 with SMTP id ffacd0b85a97d-429bd6a8f88mr2587154f8f.47.1761907732011;
+        Fri, 31 Oct 2025 03:48:52 -0700 (PDT)
 Received: from localhost.localdomain ([2a00:6d43:105:c401:e307:1a37:2e76:ce91])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-429c102dfd2sm2961635f8f.0.2025.10.31.03.48.49
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-429c102dfd2sm2961635f8f.0.2025.10.31.03.48.51
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 31 Oct 2025 03:48:49 -0700 (PDT)
+        Fri, 31 Oct 2025 03:48:51 -0700 (PDT)
 From: Marco Crivellari <marco.crivellari@suse.com>
 To: linux-kernel@vger.kernel.org,
 	dri-devel@lists.freedesktop.org,
@@ -87,14 +88,16 @@ Cc: Tejun Heo <tj@kernel.org>,
 	Thomas Zimmermann <tzimmermann@suse.de>,
 	David Airlie <airlied@gmail.com>,
 	Simona Vetter <simona@ffwll.ch>
-Subject: [PATCH 0/2] rename system_wq and system_unbound_wq
-Date: Fri, 31 Oct 2025 11:48:44 +0100
-Message-ID: <20251031104846.119503-1-marco.crivellari@suse.com>
+Subject: [PATCH 2/2] drm/rockchip: replace use of system_wq with system_percpu_wq
+Date: Fri, 31 Oct 2025 11:48:46 +0100
+Message-ID: <20251031104846.119503-3-marco.crivellari@suse.com>
 X-Mailer: git-send-email 2.51.0
+In-Reply-To: <20251031104846.119503-1-marco.crivellari@suse.com>
+References: <20251031104846.119503-1-marco.crivellari@suse.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251031_034852_611630_5740DF8F 
-X-CRM114-Status: GOOD (  14.13  )
+X-CRM114-CacheID: sfid-20251031_034853_919177_4F5B9EBE 
+X-CRM114-Status: GOOD (  13.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,24 +114,6 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-=== Current situation: problems ===
-
-Let's consider a nohz_full system with isolated CPUs: wq_unbound_cpumask is
-set to the housekeeping CPUs, for !WQ_UNBOUND the local CPU is selected.
-
-This leads to different scenarios if a work item is scheduled on an
-isolated CPU where "delay" value is 0 or greater then 0:
-        schedule_delayed_work(, 0);
-
-This will be handled by __queue_work() that will queue the work item on the
-current local (isolated) CPU, while:
-
-        schedule_delayed_work(, 1);
-
-Will move the timer on an housekeeping CPU, and schedule the work there.
-
 Currently if a user enqueue a work item using schedule_delayed_work() the
 used wq is "system_wq" (per-cpu wq) while queue_delayed_work() use
 WORK_CPU_UNBOUND (used when a cpu is not specified). The same applies to
@@ -137,39 +122,39 @@ again of WORK_CPU_UNBOUND.
 
 This lack of consistency cannot be addressed without refactoring the API.
 
-=== Recent changes to the WQ API ===
+system_wq should be the per-cpu workqueue, yet in this name nothing makes
+that clear, so replace system_wq with system_percpu_wq.
 
-The following, address the recent changes in the Workqueue API:
+The old wq (system_wq) will be kept for a few release cycles.
 
-- commit 128ea9f6ccfb ("workqueue: Add system_percpu_wq and system_dfl_wq")
-- commit 930c2ea566af ("workqueue: Add new WQ_PERCPU flag")
-
-The old workqueues will be removed in a future release cycle.
-
-=== Introduced Changes by this series ===
-
-1) [P 1-2]  Replace uses of system_wq and system_unbound_wq
-
-    system_wq is a per-CPU workqueue, but his name is not clear.
-    system_unbound_wq is to be used when locality is not required.
-
-    Because of that, system_wq has been replaced with system_percpu_wq, and
-    system_unbound_wq has been replaced with system_dfl_wq.
-
-	The new wq(s) keep the same old behavior.
-
-
-Thanks!
-
-
-Marco Crivellari (2):
-  drm/rockchip: replace use of system_unbound_wq with system_dfl_wq
-  drm/rockchip: replace use of system_wq with system_percpu_wq
-
+Suggested-by: Tejun Heo <tj@kernel.org>
+Signed-off-by: Marco Crivellari <marco.crivellari@suse.com>
+---
  drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 4 ++--
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c    | 2 +-
- 2 files changed, 3 insertions(+), 3 deletions(-)
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
+diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
+index ed6e8f036f4b..deeeface0b63 100644
+--- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
+@@ -276,7 +276,7 @@ static irqreturn_t dw_hdmi_qp_rk3576_irq(int irq, void *dev_id)
+ 
+ 	val = FIELD_PREP_WM16(RK3576_HDMI_HPD_INT_CLR, 1);
+ 	regmap_write(hdmi->regmap, RK3576_IOC_MISC_CON0, val);
+-	mod_delayed_work(system_wq, &hdmi->hpd_work,
++	mod_delayed_work(system_percpu_wq, &hdmi->hpd_work,
+ 			 msecs_to_jiffies(HOTPLUG_DEBOUNCE_MS));
+ 
+ 	val = FIELD_PREP_WM16(RK3576_HDMI_HPD_INT_MSK, 0);
+@@ -319,7 +319,7 @@ static irqreturn_t dw_hdmi_qp_rk3588_irq(int irq, void *dev_id)
+ 		val = FIELD_PREP_WM16(RK3588_HDMI0_HPD_INT_CLR, 1);
+ 	regmap_write(hdmi->regmap, RK3588_GRF_SOC_CON2, val);
+ 
+-	mod_delayed_work(system_wq, &hdmi->hpd_work,
++	mod_delayed_work(system_percpu_wq, &hdmi->hpd_work,
+ 			 msecs_to_jiffies(HOTPLUG_DEBOUNCE_MS));
+ 
+ 	if (hdmi->port_id)
 -- 
 2.51.0
 
