@@ -4,98 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 118DBCCFA03
-	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Oct 2025 13:58:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 773D1CCF9F8
+	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Oct 2025 14:03:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UQ7bGv5ARaTBz2fcDFi2sXsbyPk0HEeWPj5lyyFoQLg=; b=edCC5VXmfWuA3a
-	3ZQnxmswUOcI0G3ID28zM6tIRy162kh20MmuiQxi4Przj6CpgOSsgBHEVy4V3KCUr47zxsx7JdXa5
-	WcCdojbtaDoSiN247yb0iKO7wZJGi9112aYqjh+aR/JIQd019Xaaedo+1U9MPZpCNEBB1FQyD9UIO
-	AIqcSgNNuJmYoQ5ebcNrJa2ImXr+lb2NuYRgmFaSPWiRLS9GoL6NIekSpTzJg7gdyS8BwNapl+bsk
-	LK3e1/0Bq0ybbwx9RUVZFrosbByDnztp/+ojmvf7bQaGK3Y92fkz74UlplmTxlTtmqejP6akb1G61
-	uVAABOtS9dV5sQtqSmvw==;
+	List-Owner; bh=+nKlQb76dd+glpNNjV1TFqK3ybQrh5gkgTV1E36R0SE=; b=Eosf9dstdoqrvX
+	j0yaa/ScF3tcwKVzZnNvcqukTvHcHg4zovcWkMWqp1ZuGfjgNYlgYqJKX0FgS22mtmyEAZyx/aqnR
+	tpXfoGenu3D91FS7j+89iGMm0G0MOnJo7syYV4cM2KOTx7qUjRGm404CVatA8yN4MxS+/i4B09k2H
+	cCru40k1oUImv8p0OrbovjXmIXUn1NPm7D0lZojt0unwg583wd2P3bwppIvgKzZVFTHVU3F8bX1+X
+	IV23pqROWxgxfWt5Xtl7hjRG6q9h9ZwZbIZEyvdJdIN9QeUppWbebzIpF76sbe5fao6fIzv6WZp+a
+	FufNH/P7t68PpFe6wMYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vEpeG-00000006BuD-1Aci;
-	Fri, 31 Oct 2025 13:58:36 +0000
-Received: from mgamail.intel.com ([192.198.163.18])
+	id 1vEpjE-00000006CE1-3OEg;
+	Fri, 31 Oct 2025 14:03:44 +0000
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vEpeC-00000006Bt9-3YPZ;
-	Fri, 31 Oct 2025 13:58:34 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1761919112; x=1793455112;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=bayY/glbkyFlGSSY0jLX8k8RyrFSF/EZWDZ5KOPr+xg=;
-  b=DPq21M34YxdBDaVqAAG8OCAWArNcb8r90NRNV1TdjYbW5V/L02KAyQ8N
-   wezAE/4gqtpTG/LOjKaByVdY+DODGeOB4KTf4R8YX9qjeFamYFD15PEJM
-   d1GM7qoS1f+niLYl2YZKefacIL3ImV5aXe05BGQC6ZGAHEq+aDitL0NZE
-   S5Z+OglIxU/h9vIDvwO+sCIUp4285XOsTIWfP+8vdgqWE93AEs3zpkVDI
-   kGoyV0HhGbBc8MVEdbwQkA4oGadT1yrYw5MAKrk5AwZNtHkdtFYHBVcFA
-   JCDURDwS1ltOtYTAcVh9CcgqyS/QvfhBvEAtqcxeqsNiMkOT3XJusE/Uf
-   w==;
-X-CSE-ConnectionGUID: PKgHiyCERx2U88eoYkzwwQ==
-X-CSE-MsgGUID: YAr91cddRt6v4lLCKIN8HQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11598"; a="63284488"
-X-IronPort-AV: E=Sophos;i="6.19,269,1754982000"; 
-   d="scan'208";a="63284488"
-Received: from orviesa005.jf.intel.com ([10.64.159.145])
-  by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 31 Oct 2025 06:58:31 -0700
-X-CSE-ConnectionGUID: 0FL1TS1dQjWf+PAOirhHgg==
-X-CSE-MsgGUID: aAVBaDI1RMyRq5JrNtEbZg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.19,269,1754982000"; 
-   d="scan'208";a="191387593"
-Received: from jjgreens-desk20.amr.corp.intel.com (HELO kuha.fi.intel.com) ([10.124.220.81])
-  by orviesa005.jf.intel.com with SMTP; 31 Oct 2025 06:58:16 -0700
-Received: by kuha.fi.intel.com (sSMTP sendmail emulation); Fri, 31 Oct 2025 15:58:13 +0200
-Date: Fri, 31 Oct 2025 15:58:13 +0200
-From: Heikki Krogerus <heikki.krogerus@linux.intel.com>
-To: Chaoyi Chen <kernel@airkyi.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Yubing Zhang <yubing.zhang@rock-chips.com>,
-	Frank Wang <frank.wang@rock-chips.com>,
-	Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-	Amit Sunil Dhamne <amitsd@google.com>,
-	Chaoyi Chen <chaoyi.chen@rock-chips.com>,
-	Dragan Simic <dsimic@manjaro.org>, Johan Jonker <jbx6244@gmail.com>,
-	Diederik de Haas <didi.debian@cknow.org>,
-	Peter Robinson <pbrobinson@gmail.com>, linux-usb@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
-Subject: Re: [PATCH v8 03/10] drm/bridge: Implement generic USB Type-C DP HPD
- bridge
-Message-ID: <aQTAdaIgjgTRSgxL@kuha.fi.intel.com>
-References: <20251029071435.88-1-kernel@airkyi.com>
- <20251029071435.88-4-kernel@airkyi.com>
+	id 1vEpjC-00000006CD3-0p0e
+	for linux-rockchip@lists.infradead.org;
+	Fri, 31 Oct 2025 14:03:43 +0000
+Received: by mail-ed1-x52a.google.com with SMTP id 4fb4d7f45d1cf-640860f97b5so382485a12.2
+        for <linux-rockchip@lists.infradead.org>; Fri, 31 Oct 2025 07:03:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1761919420; x=1762524220; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=Rj8s1wnUATyl/Io36KEtToNI7y6NAciHE7SXMDsNhyY=;
+        b=lepSm5pEBrAgoMn877ghvG5Sfi3H2hcedVSKidV8aEpVhWM9ZXfJ3BvneS+wNIRgQ1
+         CYHglLTmiqnBPjWDYepU2SVbPM0RvLJM8OSTooPq/5SAq+k5DB+4CDTpAsstPm0XkwEt
+         E0ogcKeEMVX+3sjaXdIBgIGbkSsxQpeYCU56jRQ55zjX0uVGSVYOr/7MoloDFZYbLHoV
+         zu9slOk/xH2CrJgSe8a5TOmZNPQDTqT58OkCmhiLNbpy8ob/BuBQGm8pM01Klm+duCqA
+         3hJPrSS/fDayaMtpBX8WNwL1aK+FM1IGPecFu8UiAEqWepHUMlbaHjLy/1Q4FV2Z+sam
+         tbVw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1761919420; x=1762524220;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=Rj8s1wnUATyl/Io36KEtToNI7y6NAciHE7SXMDsNhyY=;
+        b=X2jBMSsmUUFcJNwZ6oY2TIogacfSpadBl5gXn2J4OVcax4x8ZOJQjsstI5yGPlE1/b
+         XuNPWBDtv+OCLD37fyk9GkzbOvn13M9NDTprBkloq+UjB1aGidx2jzzjZ/U0sh7I/Dah
+         83Du6CGu5Ix7DAGiNjdjM8SQ7PP3/yu7eZWYaBbGOBPQ8ayDC0BvLtI4sAHYqBbxGViV
+         sE3IR5W1aTgLEniZLWczNRTxge/5wGFf6sXiLclLLMRQcHZboTVBizlQCMujl5BxperS
+         Kd+Hwu/RworX2sK00EymKyrPNQekCnwbj/U3Dw2GvVQbrqYIMWZGMNCAkXc/D82BwzFj
+         kjdA==
+X-Forwarded-Encrypted: i=1; AJvYcCXqvsbTUj4m8ZTQy5tUVC5cLByQy0/FAHuEDIGNAVSzrenbf6VkaOId4eHh5KJFc6n91IbgswsnuWOzzpUzfw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxmhxysfxlBxhzpFLsxRbzBc6ZoZ6fy6DmDrg6BNg2z1dW44e/O
+	PKJZrYNYYG9xyiZUlxH+7KSmBjpWpTqlUXqtKZssUhG1kaxBF70wEcpjkpDF65+yJERLhHdnDEI
+	r+RWL2L4vOavLoDR/A3Hb7aQPxGrEw+BluDtm
+X-Gm-Gg: ASbGncv32T6HuxW4D8aJtwUpyjH/693FVMqeHk6dIkHsv4dEmfQjtXsTudUF18wQrkL
+	YxBze+h4FB52qEYUXjMSQWIIkoiD1+BUoDcc5en91ygg5lJ+4fN3ruFzsDQYjez9s55AVWpoTsS
+	MJiufUeuhyc6NymTvnW/pJyC6GsqamUIpRhhHXbKXgNhlChiWC9IB34qDc3NyHUStOthyMB2OLi
+	2A6iYLAIhqvnJbF+21Mt3tSU6hNcWote3/tt5LezpB/g3+PRxkRclHE2gc=
+X-Google-Smtp-Source: AGHT+IFFEnMjDFLH3xr8fEIyqOPBV7EY4VCIK4pS6uE8BEVFtTPJxx3MWiLabn3HLkuRrI1ocxVTpieowo++InLDHHw=
+X-Received: by 2002:a05:6402:1e90:b0:639:fca4:c471 with SMTP id
+ 4fb4d7f45d1cf-6407704da9fmr2381667a12.28.1761919419979; Fri, 31 Oct 2025
+ 07:03:39 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20251029071435.88-4-kernel@airkyi.com>
+References: <20251027145602.199154-1-linux.amoon@gmail.com>
+ <20251027145602.199154-3-linux.amoon@gmail.com> <ukgkfetbggzon4ppndl7gpitlsz7hjhzhyx3dgxqhdo52exguy@bqksd7d27lpy>
+In-Reply-To: <ukgkfetbggzon4ppndl7gpitlsz7hjhzhyx3dgxqhdo52exguy@bqksd7d27lpy>
+From: Anand Moon <linux.amoon@gmail.com>
+Date: Fri, 31 Oct 2025 19:33:23 +0530
+X-Gm-Features: AWmQ_bk2RE7HwEI0_pE9LFbkkRWOVq0EH46VuMrlsLHx-lzP_lVcojMP9zLP-UY
+Message-ID: <CANAwSgTECOAoKeJS_=HxkkTP4OJvYu5xGQxY__Auh81v3QT=-w@mail.gmail.com>
+Subject: Re: [PATCH v1 2/2] PCI: dw-rockchip: Add runtime PM support to
+ Rockchip PCIe driver
+To: Manivannan Sadhasivam <mani@kernel.org>
+Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>, =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, 
+	Niklas Cassel <cassel@kernel.org>, Shawn Lin <shawn.lin@rock-chips.com>, 
+	Hans Zhang <18255117159@163.com>, Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
+	"open list:PCI NATIVE HOST BRIDGE AND ENDPOINT DRIVERS" <linux-pci@vger.kernel.org>, 
+	"moderated list:ARM/Rockchip SoC support" <linux-arm-kernel@lists.infradead.org>, 
+	"open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>, 
+	open list <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251031_065832_948893_CFC164F9 
-X-CRM114-Status: GOOD (  30.32  )
+X-CRM114-CacheID: sfid-20251031_070342_288072_B5C37B95 
+X-CRM114-Status: GOOD (  14.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,197 +102,119 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Wed, Oct 29, 2025 at 03:14:28PM +0800, Chaoyi Chen kirjoitti:
-> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-> 
-> Several USB-C controller drivers have already implemented the DP HPD
-> bridge function provided by aux-hpd-bridge.c, but there are still
-> some USB-C controller driver that have not yet implemented it.
-> 
-> This patch implements a generic DP HPD bridge based on aux-hpd-bridge.c,
-> so that other USB-C controller drivers don't need to implement it again.
-> 
-> Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-> ---
-> 
-> Changes in v8:
-> - Merge generic DP HPD bridge into one module.
-> 
->  drivers/gpu/drm/bridge/Kconfig                |  5 +-
->  drivers/gpu/drm/bridge/Makefile               |  8 +++-
->  drivers/gpu/drm/bridge/aux-hpd-bridge.c       | 23 ++++++++-
->  drivers/gpu/drm/bridge/aux-hpd-bridge.h       | 13 +++++
->  .../gpu/drm/bridge/aux-hpd-typec-dp-bridge.c  | 47 +++++++++++++++++++
->  5 files changed, 93 insertions(+), 3 deletions(-)
->  create mode 100644 drivers/gpu/drm/bridge/aux-hpd-bridge.h
->  create mode 100644 drivers/gpu/drm/bridge/aux-hpd-typec-dp-bridge.c
-> 
-> diff --git a/drivers/gpu/drm/bridge/Kconfig b/drivers/gpu/drm/bridge/Kconfig
-> index a250afd8d662..17257b223a28 100644
-> --- a/drivers/gpu/drm/bridge/Kconfig
-> +++ b/drivers/gpu/drm/bridge/Kconfig
-> @@ -23,13 +23,16 @@ config DRM_AUX_BRIDGE
->  	  build bridges chain.
->  
->  config DRM_AUX_HPD_BRIDGE
-> -	tristate
-> +	tristate "AUX HPD bridge support"
+Hi Manivannan
 
-Don't you now need:
+Thanks for your review comment.
 
-        depends on TYPEC || !TYPEC
+On Fri, 31 Oct 2025 at 14:09, Manivannan Sadhasivam <mani@kernel.org> wrote:
+>
+> On Mon, Oct 27, 2025 at 08:25:30PM +0530, Anand Moon wrote:
+> > Add runtime power management support to the Rockchip DesignWare PCIe
+> > controller driver by enabling devm_pm_runtime() in the probe function.
+> > These changes allow the PCIe controller to suspend and resume dynamically,
+> > improving power efficiency on supported platforms.
+> >
+>
+> Seriously? How can this patch improve the power efficiency if it is not doing
+> any PM operation on its own?
+>
+I could verify that runtime power management is active
 
->  	depends on DRM_BRIDGE && OF
->  	select AUXILIARY_BUS
->  	help
->  	  Simple bridge that terminates the bridge chain and provides HPD
->  	  support.
->  
-> +	  Specifically, if you want a default Type-C DisplayPort HPD bridge for
-> +	  each port of the Type-C controller, say Y here.
-> +
->  menu "Display Interface Bridges"
->  	depends on DRM && DRM_BRIDGE
->  
-> diff --git a/drivers/gpu/drm/bridge/Makefile b/drivers/gpu/drm/bridge/Makefile
-> index c7dc03182e59..2998937444bc 100644
-> --- a/drivers/gpu/drm/bridge/Makefile
-> +++ b/drivers/gpu/drm/bridge/Makefile
-> @@ -1,6 +1,12 @@
->  # SPDX-License-Identifier: GPL-2.0
->  obj-$(CONFIG_DRM_AUX_BRIDGE) += aux-bridge.o
-> -obj-$(CONFIG_DRM_AUX_HPD_BRIDGE) += aux-hpd-bridge.o
-> +
-> +hpd-bridge-y := aux-hpd-bridge.o
-> +ifneq ($(CONFIG_TYPEC),)
-> +hpd-bridge-y += aux-hpd-typec-dp-bridge.o
-> +endif
-> +obj-$(CONFIG_DRM_AUX_HPD_BRIDGE) += hpd-bridge.o
-> +
->  obj-$(CONFIG_DRM_CHIPONE_ICN6211) += chipone-icn6211.o
->  obj-$(CONFIG_DRM_CHRONTEL_CH7033) += chrontel-ch7033.o
->  obj-$(CONFIG_DRM_CROS_EC_ANX7688) += cros-ec-anx7688.o
-> diff --git a/drivers/gpu/drm/bridge/aux-hpd-bridge.c b/drivers/gpu/drm/bridge/aux-hpd-bridge.c
-> index 2e9c702c7087..11ad6dc776c7 100644
-> --- a/drivers/gpu/drm/bridge/aux-hpd-bridge.c
-> +++ b/drivers/gpu/drm/bridge/aux-hpd-bridge.c
-> @@ -12,6 +12,8 @@
->  #include <drm/drm_bridge.h>
->  #include <drm/bridge/aux-bridge.h>
->  
-> +#include "aux-hpd-bridge.h"
-> +
->  static DEFINE_IDA(drm_aux_hpd_bridge_ida);
->  
->  struct drm_aux_hpd_bridge_data {
-> @@ -204,7 +206,26 @@ static struct auxiliary_driver drm_aux_hpd_bridge_drv = {
->  	.id_table = drm_aux_hpd_bridge_table,
->  	.probe = drm_aux_hpd_bridge_probe,
->  };
-> -module_auxiliary_driver(drm_aux_hpd_bridge_drv);
-> +
-> +static int drm_aux_hpd_bridge_mod_init(void)
-> +{
-> +	int ret;
-> +
-> +	ret = auxiliary_driver_register(&drm_aux_hpd_bridge_drv);
-> +	if (ret)
-> +		return ret;
-> +
-> +	return drm_aux_hpd_typec_dp_bridge_init();
-> +}
-> +
-> +static void drm_aux_hpd_bridge_mod_exit(void)
-> +{
-> +	drm_aux_hpd_typec_dp_bridge_exit();
-> +	auxiliary_driver_unregister(&drm_aux_hpd_bridge_drv);
-> +}
-> +
-> +module_init(drm_aux_hpd_bridge_mod_init);
-> +module_exit(drm_aux_hpd_bridge_mod_exit);
->  
->  MODULE_AUTHOR("Dmitry Baryshkov <dmitry.baryshkov@linaro.org>");
->  MODULE_DESCRIPTION("DRM HPD bridge");
-> diff --git a/drivers/gpu/drm/bridge/aux-hpd-bridge.h b/drivers/gpu/drm/bridge/aux-hpd-bridge.h
-> new file mode 100644
-> index 000000000000..69364731c2f1
-> --- /dev/null
-> +++ b/drivers/gpu/drm/bridge/aux-hpd-bridge.h
-> @@ -0,0 +1,13 @@
-> +/* SPDX-License-Identifier: GPL-2.0-only */
-> +#ifndef AUX_HPD_BRIDGE_H
-> +#define AUX_HPD_BRIDGE_H
-> +
-> +#if IS_REACHABLE(CONFIG_TYPEC)
-> +int drm_aux_hpd_typec_dp_bridge_init(void);
-> +void drm_aux_hpd_typec_dp_bridge_exit(void);
-> +#else
-> +static inline int drm_aux_hpd_typec_dp_bridge_init(void) { return 0; }
-> +static inline void drm_aux_hpd_typec_dp_bridge_exit(void) { }
-> +#endif /* IS_REACHABLE(CONFIG_TYPEC) */
-> +
-> +#endif /* AUX_HPD_BRIDGE_H */
-> diff --git a/drivers/gpu/drm/bridge/aux-hpd-typec-dp-bridge.c b/drivers/gpu/drm/bridge/aux-hpd-typec-dp-bridge.c
-> new file mode 100644
-> index 000000000000..6f2a1fca0fc5
-> --- /dev/null
-> +++ b/drivers/gpu/drm/bridge/aux-hpd-typec-dp-bridge.c
-> @@ -0,0 +1,47 @@
-> +// SPDX-License-Identifier: GPL-2.0+
-> +#include <linux/of.h>
-> +#include <linux/usb/typec_altmode.h>
-> +#include <linux/usb/typec_dp.h>
-> +#include <linux/usb/typec_notify.h>
-> +
-> +#include <drm/bridge/aux-bridge.h>
-> +
-> +#include "aux-hpd-bridge.h"
-> +
-> +#if IS_REACHABLE(CONFIG_TYPEC)
+[root@rockpi-5b alarm]# cat
+/sys/devices/platform/a41000000.pcie/power/runtime_status
+active
+[root@rockpi-5b alarm]#  find /sys -name runtime_status
+/sys/devices/platform/a41000000.pcie/pci0004:40/0004:40:00.0/power/runtime_status
+/sys/devices/platform/a41000000.pcie/pci0004:40/0004:40:00.0/pci_bus/0004:41/power/runtime_status
+/sys/devices/platform/a41000000.pcie/pci0004:40/0004:40:00.0/0004:41:00.0/power/runtime_status
+/sys/devices/platform/a41000000.pcie/pci0004:40/0004:40:00.0/0004:41:00.0/net/enP4p65s0/power/runtime_status
+/sys/devices/platform/a41000000.pcie/pci0004:40/0004:40:00.0/0004:41:00.0/net/enP4p65s0/enP4p65s0-3::lan/power/runtime_status
+/sys/devices/platform/a41000000.pcie/pci0004:40/0004:40:00.0/0004:41:00.0/net/enP4p65s0/enP4p65s0-2::lan/power/runtime_status
+/sys/devices/platform/a41000000.pcie/pci0004:40/0004:40:00.0/0004:41:00.0/net/enP4p65s0/enP4p65s0-1::lan/power/runtime_status
+/sys/devices/platform/a41000000.pcie/pci0004:40/0004:40:00.0/0004:41:00.0/net/enP4p65s0/enP4p65s0-0::lan/power/runtime_status
+/sys/devices/platform/a41000000.pcie/pci0004:40/0004:40:00.0/0004:41:00.0/mdio_bus/r8169-4-4100/power/runtime_status
+/sys/devices/platform/a41000000.pcie/pci0004:40/0004:40:00.0/0004:41:00.0/mdio_bus/r8169-4-4100/r8169-4-4100:00/power/runtime_status
+/sys/devices/platform/a41000000.pcie/pci0004:40/0004:40:00.0/0004:41:00.0/mdio_bus/r8169-4-4100/r8169-4-4100:00/hwmon/hwmon11/power/runtime_status
 
-You don't need that. You should not use ifdefs in .c files.
+Well, the powertop shows that the runtime power management is enabled
+on Radxa Rock 5b,
 
-> +static int drm_typec_bus_event(struct notifier_block *nb,
-> +			       unsigned long action, void *data)
-> +{
-> +	struct typec_altmode *alt = (struct typec_altmode *)data;
-> +
-> +	if (action != TYPEC_ALTMODE_REGISTERED)
-> +		goto done;
-> +
-> +	if (is_typec_partner(&alt->dev) || alt->svid != USB_TYPEC_DP_SID)
-> +		goto done;
-> +
-> +	/*
-> +	 * alt->dev.parent->parent : USB-C controller device
-> +	 * alt->dev.parent         : USB-C connector device
-> +	 */
-> +	drm_dp_hpd_bridge_register(alt->dev.parent->parent,
-> +				   to_of_node(alt->dev.parent->fwnode));
-> +
-> +done:
-> +	return NOTIFY_OK;
-> +}
-> +
-> +static struct notifier_block drm_typec_event_nb = {
-> +	.notifier_call = drm_typec_bus_event,
-> +};
-> +
-> +int drm_aux_hpd_typec_dp_bridge_init(void)
-> +{
-> +	return typec_altmode_register_notify(&drm_typec_event_nb);
-> +}
-> +
-> +void drm_aux_hpd_typec_dp_bridge_exit(void)
-> +{
-> +	typec_altmode_unregister_notify(&drm_typec_event_nb);
-> +}
-> +#endif
-> -- 
-> 2.49.0
+PowerTOP 2.15     Overview   Idle stats   Frequency stats   Device
+stats   Device Freq stats   Tunables   WakeUp
+>> Good          Wireless Power Saving for interface wlan0
+   Good          VM writeback timeout
+   Good          Bluetooth device interface status
+   Good          NMI watchdog should be turned off
+   Good          Autosuspend for unknown USB device 2-1.3 (8087:0a2b)
+   Good          Autosuspend for USB device USB 2.0 Hub [2-1]
+   Good          Autosuspend for USB device Generic Platform OHCI
+controller [usb1]
+   Good          Autosuspend for USB device xHCI Host Controller [usb8]
+   Good          Autosuspend for USB device Generic Platform OHCI
+controller [usb4]
+   Good          Autosuspend for USB device EHCI Host Controller [usb2]
+   Good          Autosuspend for USB device xHCI Host Controller [usb6]
+   Good          Autosuspend for USB device EHCI Host Controller [usb3]
+   Good          Autosuspend for USB device xHCI Host Controller [usb5]
+   Good          Autosuspend for USB device xHCI Host Controller [usb7]
+   Good          Runtime PM for PCI Device Intel Corporation Wireless
+8265 / 8275
+   Good          Runtime PM for PCI Device Rockchip Electronics Co., Ltd RK3588
+   Good          Runtime PM for PCI Device Rockchip Electronics Co., Ltd RK3588
+   Good          Runtime PM for PCI Device Realtek Semiconductor Co.,
+Ltd. RTL8125 2.5GbE Controller
+   Good          Runtime PM for PCI Device Rockchip Electronics Co., Ltd RK3588
+   Good          Runtime PM for PCI Device Samsung Electronics Co Ltd
+NVMe SSD Controller SM981/PM981/PM983
 
--- 
-heikki
+PowerTOP 2.15     Overview   Idle stats   Frequency stats   Device
+stats   Device Freq stats   Tunables   WakeUp
+              Usage     Device name
+              1.1%        CPU use
+            100.0%        Radio device: rfkill_gpio
+            100.0%        runtime-rockchip-gate-link-clk.712
+            100.0%        PCI Device: Realtek Semiconductor Co., Ltd.
+RTL8125 2.5GbE Controller
+            100.0%        runtime-rockchip-gate-link-clk.717
+            100.0%        runtime-rockchip-gate-link-clk.714
+            100.0%        runtime-rockchip-gate-link-clk.489
+            100.0%        runtime-a40000000.pcie
+            100.0%        runtime-a40800000.pcie
+            100.0%        runtime-rockchip-gate-link-clk.718
+            100.0%        runtime-rockchip-gate-link-clk.706
+            100.0%        runtime-rockchip-gate-link-clk.708
+            100.0%        PCI Device: Intel Corporation Wireless 8265 / 8275
+            100.0%        Radio device: btusb
+            100.0%        runtime-fcd00000.usb
+            100.0%        PCI Device: Samsung Electronics Co Ltd NVMe
+SSD Controller SM981/PM981/PM983
+            100.0%        Radio device: rfkill_gpio
+            100.0%        runtime-fc000000.usb
+            100.0%        Radio device: iwlwifi
+            100.0%        PCI Device: Rockchip Electronics Co., Ltd RK3588
+            100.0%        PCI Device: Rockchip Electronics Co., Ltd RK3588
+            100.0%        PCI Device: Rockchip Electronics Co., Ltd RK3588
+            100.0%        runtime-rockchip-gate-link-clk.711
+            100.0%        runtime-fc400000.usb
+            100.0%        runtime-rockchip-gate-link-clk.704
+            100.0%        runtime-rockchip-gate-link-clk.701
+            100.0%        runtime-rockchip-gate-link-clk.716
+            100.0%        runtime-rockchip-gate-link-clk.707
+            100.0%        runtime-rockchip-gate-link-clk.709
+            100.0%        runtime-rockchip-gate-link-clk.719
+            100.0%        runtime-xhci-hcd.1.auto
+            100.0%        runtime-feb50000.serial
+            100.0%        runtime-rockchip-gate-link-clk.715
+            100.0%        runtime-rockchip-gate-link-clk.710
+
+> Again, a pointless patch.
+I implemented a .remove patch to ensure proper resource cleanup,
+which is a necessary step for successfully enabling and managing
+runtime power for the device.
+>
+> - Mani
+Thanks
+-Anand
 
 _______________________________________________
 Linux-rockchip mailing list
