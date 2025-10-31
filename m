@@ -4,57 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A86B7CCF9FF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Oct 2025 13:40:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EE7FCCF9F8
+	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Oct 2025 13:49:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=a6rP0dd6k5ExfiT+47uBmtKtn+FKzr08IRhaooeaDDc=; b=GfgYyQjzmt4/YE
-	x4gf6+lxHaEaJHYXyXOWiv9VIJ3JBNCBYIpLrWOVTYng8DuV8N84KgN2QSsvDz5hYU/dak7lQlYDp
-	mZipy3AzhdV4IbD6WOvtgA9YfFnoUJyGhzBhidGWTegyhYSF2IpvINBrrs3dRd3cnz9fIrEU+NYHn
-	a4IWEbw7ApUROqxvi2wh7U+sspNdb1LTEuLT77mKThsehKevzXqxdU86rr+NkCYaWzVjTO1pRgequ
-	ePe+DkwttOqCgkgv0lW6jA3qhtKLVMc/kd45wtjG49B706iDkzBQLuiaG3zqRedj76+4Rn0i0C7MG
-	xbhNEaBICI2JQCO0p9kA==;
+	List-Owner; bh=TFPfSt5sh0PdTK6oPVvyYn5d2Icrddzgkxbo35CYIOs=; b=zPOArGCAL9SrsL
+	qMsoRLGDHd8bnto/MJqNEGTvaacry0XR9jY2JqSyz5snn1ZV2929drpejblX0M2sk+kDh/qmdP0kq
+	3cuDCHxEq9z9Ho89myXeW/ntsR9fj1LIHlvLB04thw3B/x1o8aUysARpiogZ3MGk2lk6jmsW8pFGP
+	FIIBKAaIth8e7C/xmiOH+Z0OEIY4xfZCKmARtxfRzO6b48QB0AeGE4mFLv9ncnJBearSXp5NvThaQ
+	OaI0ub3kUIgJ+1Hl/xRdqU1+/aR98vXmzGpCrhTJxOJpgSIKgcp03238yqRNmgu3k8dPVgcXZO7T8
+	GpDinr+Ib97+h6YZdc+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vEpMG-00000006APT-3jRX;
-	Fri, 31 Oct 2025 13:40:00 +0000
-Received: from mgamail.intel.com ([192.198.163.16])
+	id 1vEpVN-00000006At5-16so;
+	Fri, 31 Oct 2025 13:49:25 +0000
+Received: from mgamail.intel.com ([192.198.163.7])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vEpMC-00000006AOO-3olY;
-	Fri, 31 Oct 2025 13:39:58 +0000
+	id 1vEpVI-00000006ArK-2T6U;
+	Fri, 31 Oct 2025 13:49:21 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1761917997; x=1793453997;
+  t=1761918561; x=1793454561;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=2cVyjKey4dFxUiUnROSgPcOL0J7KqoBoYiJcjCFDf/g=;
-  b=c6Ob6ym9n9gA/m1b3ZXr0SXhcqvC7gnyPvmfAGVzWXQfwsn6V1LB2/4H
-   IL4i1rz7p6w+gDykz9d+RMbTv1g6l23IjyskjzM+oIugPZ1Xt8x3ENaZ5
-   weAxNJwr5wS/4Lse/CA4dylqWAM84RgjLtRrFcqBCoN8VxsnLPfHgReja
-   lDOu8tO5a4hG9UHzXW9Srzo9Wyx1/l2ijjZfgxUKThNQgW5jRWfXIIR3b
-   IONUOolxBHZ6sD6k62Wl9lB1Xu0by/lQbx6IadSoh1ynGNuReivwgbMLK
-   XlKjmD9S4OV+lx5bsGYWrJ0FQEmxsb6XvMZjNbGbptD5btUPueup/Cqsg
-   Q==;
-X-CSE-ConnectionGUID: Er/r1P2PTG2L6Br1erwu+w==
-X-CSE-MsgGUID: 2a7yo+WFSv+mtfzGCQqXJw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11598"; a="51650228"
+  bh=HYOEnKzDkgpEufqlLglR4PKxYUcxwU5/7H2j5fZg/Vg=;
+  b=BHxRYXWi6DdJ6V3N/WFilCSbHb3k3qr2cJKwETlgkxAH+m2cp4TgaPxZ
+   OiKuWIcDEEf0adbW+XbLh2GsSsu63tNRztRPuDnlNHHipMlCGmOAlGW8V
+   O0vniVjJtshO/NZr42y82vvO+f0v0E6ToT6vKWZrLU1bzqVMqRd9WhtmT
+   W9LihST9jhJoTWtPvHNEz9mU2zmZgdE0ByLtsYEsXRA/vZIM7vZROd3k8
+   fFHfR7Jm7kZJb9ZBIH92J4wFEqRwa3pvppKNKGjhhBJT6LIcAM73eXwWR
+   2fWFTQ/oU+FyFtzx/qEN/99sJLL8QMzO15VN11qSqHiwOlZDHwNBGKeoa
+   w==;
+X-CSE-ConnectionGUID: p8kHvefEQA6mmvZHpibY+w==
+X-CSE-MsgGUID: gNhBZ71DSRevvPmN6krw9A==
+X-IronPort-AV: E=McAfee;i="6800,10657,11598"; a="89542978"
 X-IronPort-AV: E=Sophos;i="6.19,269,1754982000"; 
-   d="scan'208";a="51650228"
-Received: from fmviesa006.fm.intel.com ([10.60.135.146])
-  by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 31 Oct 2025 06:39:56 -0700
-X-CSE-ConnectionGUID: a3xtnYTPQP+uCyKoQ92d0Q==
-X-CSE-MsgGUID: C/6GFGJvSTi0FjPfK6/uAw==
+   d="scan'208";a="89542978"
+Received: from orviesa010.jf.intel.com ([10.64.159.150])
+  by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 31 Oct 2025 06:49:19 -0700
+X-CSE-ConnectionGUID: 7+2Rt3wtTpGrCunfhDOadg==
+X-CSE-MsgGUID: THGSvAIfTTaI5GaWq7/fJA==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.19,269,1754982000"; 
-   d="scan'208";a="186115249"
+   d="scan'208";a="185512675"
 Received: from jjgreens-desk20.amr.corp.intel.com (HELO kuha.fi.intel.com) ([10.124.220.81])
-  by fmviesa006.fm.intel.com with SMTP; 31 Oct 2025 06:39:46 -0700
-Received: by kuha.fi.intel.com (sSMTP sendmail emulation); Fri, 31 Oct 2025 15:39:45 +0200
-Date: Fri, 31 Oct 2025 15:39:45 +0200
+  by orviesa010.jf.intel.com with SMTP; 31 Oct 2025 06:49:08 -0700
+Received: by kuha.fi.intel.com (sSMTP sendmail emulation); Fri, 31 Oct 2025 15:49:06 +0200
+Date: Fri, 31 Oct 2025 15:49:06 +0200
 From: Heikki Krogerus <heikki.krogerus@linux.intel.com>
 To: Chaoyi Chen <kernel@airkyi.com>
 Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
@@ -85,16 +85,16 @@ Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
 	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
-Subject: Re: [PATCH v8 01/10] usb: typec: Add notifier functions
-Message-ID: <aQS8IatWiAUzBUxd@kuha.fi.intel.com>
+Subject: Re: [PATCH v8 02/10] usb: typec: Export all typec device types
+Message-ID: <aQS-UtR7JGyXKmTB@kuha.fi.intel.com>
 References: <20251029071435.88-1-kernel@airkyi.com>
- <20251029071435.88-2-kernel@airkyi.com>
+ <20251029071435.88-3-kernel@airkyi.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20251029071435.88-2-kernel@airkyi.com>
+In-Reply-To: <20251029071435.88-3-kernel@airkyi.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251031_063956_965926_66358F01 
-X-CRM114-Status: GOOD (  12.61  )
+X-CRM114-CacheID: sfid-20251031_064920_662739_085CF1C2 
+X-CRM114-Status: GOOD (  16.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,39 +111,101 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Wed, Oct 29, 2025 at 03:14:27PM +0800, Chaoyi Chen kirjoitti:
+> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+> 
+> Export all typec device types for identification.
+> 
+> Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
 
-> diff --git a/include/linux/usb/typec_notify.h b/include/linux/usb/typec_notify.h
-> new file mode 100644
-> index 000000000000..f3a7b5f5b05b
-> --- /dev/null
-> +++ b/include/linux/usb/typec_notify.h
-> @@ -0,0 +1,16 @@
-> +/* SPDX-License-Identifier: GPL-2.0 */
+Reviewed-by: Heikki Krogerus <heikki.krogerus@linux.intel.com>
+
+> ---
+>  drivers/usb/typec/class.c |  4 ++++
+>  drivers/usb/typec/class.h | 10 ----------
+>  include/linux/usb/typec.h | 10 ++++++++++
+>  3 files changed, 14 insertions(+), 10 deletions(-)
+> 
+> diff --git a/drivers/usb/typec/class.c b/drivers/usb/typec/class.c
+> index 51e971bc68d1..04b55f066b06 100644
+> --- a/drivers/usb/typec/class.c
+> +++ b/drivers/usb/typec/class.c
+> @@ -793,6 +793,7 @@ const struct device_type typec_partner_dev_type = {
+>  	.groups = typec_partner_groups,
+>  	.release = typec_partner_release,
+>  };
+> +EXPORT_SYMBOL_GPL(typec_partner_dev_type);
+>  
+>  static void typec_partner_link_device(struct typec_partner *partner, struct device *dev)
+>  {
+> @@ -1147,6 +1148,7 @@ const struct device_type typec_plug_dev_type = {
+>  	.groups = typec_plug_groups,
+>  	.release = typec_plug_release,
+>  };
+> +EXPORT_SYMBOL_GPL(typec_plug_dev_type);
+>  
+>  /**
+>   * typec_plug_set_num_altmodes - Set the number of available plug altmodes
+> @@ -1295,6 +1297,7 @@ const struct device_type typec_cable_dev_type = {
+>  	.groups = typec_cable_groups,
+>  	.release = typec_cable_release,
+>  };
+> +EXPORT_SYMBOL_GPL(typec_cable_dev_type);
+>  
+>  /**
+>   * typec_cable_get - Get a reference to the USB Type-C cable
+> @@ -2034,6 +2037,7 @@ const struct device_type typec_port_dev_type = {
+>  	.uevent = typec_uevent,
+>  	.release = typec_release,
+>  };
+> +EXPORT_SYMBOL_GPL(typec_port_dev_type);
+>  
+>  /* --------------------------------------- */
+>  /* Driver callbacks to report role updates */
+> diff --git a/drivers/usb/typec/class.h b/drivers/usb/typec/class.h
+> index db2fe96c48ff..f04f6987bed8 100644
+> --- a/drivers/usb/typec/class.h
+> +++ b/drivers/usb/typec/class.h
+> @@ -87,16 +87,6 @@ struct typec_port {
+>  #define to_typec_cable(_dev_) container_of(_dev_, struct typec_cable, dev)
+>  #define to_typec_partner(_dev_) container_of(_dev_, struct typec_partner, dev)
+>  
+> -extern const struct device_type typec_partner_dev_type;
+> -extern const struct device_type typec_cable_dev_type;
+> -extern const struct device_type typec_plug_dev_type;
+> -extern const struct device_type typec_port_dev_type;
+> -
+> -#define is_typec_partner(dev) ((dev)->type == &typec_partner_dev_type)
+> -#define is_typec_cable(dev) ((dev)->type == &typec_cable_dev_type)
+> -#define is_typec_plug(dev) ((dev)->type == &typec_plug_dev_type)
+> -#define is_typec_port(dev) ((dev)->type == &typec_port_dev_type)
+> -
+>  extern const struct class typec_mux_class;
+>  extern const struct class retimer_class;
+>  extern const struct class typec_class;
+> diff --git a/include/linux/usb/typec.h b/include/linux/usb/typec.h
+> index 309251572e2e..02fed8293415 100644
+> --- a/include/linux/usb/typec.h
+> +++ b/include/linux/usb/typec.h
+> @@ -56,6 +56,16 @@ enum typec_role {
+>  	TYPEC_SOURCE,
+>  };
+>  
+> +extern const struct device_type typec_partner_dev_type;
+> +extern const struct device_type typec_cable_dev_type;
+> +extern const struct device_type typec_plug_dev_type;
+> +extern const struct device_type typec_port_dev_type;
 > +
-> +#ifndef __USB_TYPEC_NOTIFY
-> +#define __USB_TYPEC_NOTIFY
+> +#define is_typec_partner(dev) ((dev)->type == &typec_partner_dev_type)
+> +#define is_typec_cable(dev) ((dev)->type == &typec_cable_dev_type)
+> +#define is_typec_plug(dev) ((dev)->type == &typec_plug_dev_type)
+> +#define is_typec_port(dev) ((dev)->type == &typec_port_dev_type)
 > +
-> +#include <linux/notifier.h>
-
-Replace that include with a forward declaration:
-
-struct notifier_block;
-
-> +enum usb_typec_event {
-> +	TYPEC_ALTMODE_REGISTERED,
-> +	TYPEC_ALTMODE_UNREGISTERED,
-> +};
-> +
-> +int typec_altmode_register_notify(struct notifier_block *nb);
-> +int typec_altmode_unregister_notify(struct notifier_block *nb);
-> +
-> +#endif /* __USB_TYPEC_NOTIFY */
-
-I don't see any need for a separate header file for this. Intoduce
-those in typec_altmode.h.
-
-thanks,
+>  static inline int is_sink(enum typec_role role)
+>  {
+>  	return role == TYPEC_SINK;
+> -- 
+> 2.49.0
 
 -- 
 heikki
