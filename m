@@ -4,129 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41935CD13DA
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Nov 2025 12:28:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E20FCCFA03
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Nov 2025 12:29:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PrNUfWkyL0LpP+VkTdYQ2VaHz74Zh/NRFCAFab17ibc=; b=Oy8yRIabmIl0xT
-	1i3lANU2/Mk1zrtHyfusxBpCg44ip8GMDtSZykWVepAHJ69hRodR1pTh4vctzdPRbcevkOPH6gtUy
-	sjI4AIuKhFMAflBep5wH4maXJm6RPvTNOm402OeWSyUys1XyeDznWBWi8CL5Ep0yC/4WKRz6eJZS4
-	HVucNT8ZtmgVksgywi/cpnnmoj6QpD77gtLP0JRLhbkIYWBQbcM1Y37yB8tH7GwdHo4S0yB2tB9CF
-	qYPLNapVnkBX3sf8Pm4ey4LAV/qdsx52Wjkz84CeOWIVwEKG686EnYuw2qLw22t7YstwSz5kVMQmb
-	aGS4xyYhd5iXByKILqDw==;
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-ID:MIME-Version:To:Cc:
+	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ud+7GYVNELmPrS/gfqohKd41QgpwsVbsHGzELCmcXyg=; b=WhoRewF0YxgT+i
+	gbaRQVwHk0xHYonS8AlnEM5mK10qbkqouii6vpZv18qt2AUr3Y6UuVu1vvsI+IllZ5Vf7mqVL7KVw
+	q9S68XBHjGarKEXcm241VEshC9dRSU77UvinGS27ZeJc8yrGinxg6hZpqMUddcZ7xjsjqM+8Kivms
+	6hgJ3b0Vrivi+RITUCHk0NZ9NmeniVLBFS2NVlnH8qXdPXD80B2sQjmVziqAjk4R1chcvDy2EatY8
+	N6VdN/RgLyvpmjk7MuwEWq0o5TythArlFXRajzbrJO2thv/dw6RNIt49Ok1TZU89uzeEpuaxFWYfk
+	yQAWHlnca8Q72in6WtoQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGz6d-0000000FRZW-0S7r;
-	Thu, 06 Nov 2025 12:28:47 +0000
-Received: from mgamail.intel.com ([198.175.65.11])
+	id 1vGz6j-0000000FRda-42F3;
+	Thu, 06 Nov 2025 12:28:54 +0000
+Received: from mail1.manjaro.org ([2a01:4f8:c010:b6e8::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1utsrw-00000007PdR-1Rhc;
-	Wed, 03 Sep 2025 19:10:09 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1756926609; x=1788462609;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:content-transfer-encoding:in-reply-to;
-  bh=nqS3UzHQKIkIb/Rkk4XlaX9LsWxMZrg1+PMmz+JaHDI=;
-  b=Tkt1kU36Kk3CoUnN4zOGXRiYTrbAkdfxLxyseQ+9RwGXaRk9Q1ZGGWCA
-   pOaud677XwQeHiK1T09GvbSWrLMAwyJkjIdNwT3N4rjFFi+PXhI7r94ns
-   NdJrGR0mx7ix+NvAvycrhehfFOD6D7vAT8d8G+8A8z052k1yHORYtH6S0
-   C8DfZUUTKofVCoGOL5kZDxz8TZzFvwMChgEUsrzPIzlp/LzfzN6srGoVY
-   WS2QTBI00TxJKRbABsbHnXys66t7aCnt4dj6SV17f2zVpiiJ9bwZkLLJ+
-   q8T/+zy3nImZNyVfQbVm6oHe4pT5DL3/beRtPBZB2qxmOYkGMeiR10PEW
-   w==;
-X-CSE-ConnectionGUID: H3x/pTFbTY2ITf878bhEdQ==
-X-CSE-MsgGUID: k0JsXy60Qs+W755juHXsZg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11542"; a="69513746"
-X-IronPort-AV: E=Sophos;i="6.18,236,1751266800"; 
-   d="scan'208";a="69513746"
-Received: from orviesa008.jf.intel.com ([10.64.159.148])
-  by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Sep 2025 12:10:01 -0700
-X-CSE-ConnectionGUID: nGwL7IPyTYW/wuPoo+6uVg==
-X-CSE-MsgGUID: AsgfiIXISiG9KRkXNJLYfg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.18,236,1751266800"; 
-   d="scan'208";a="171814105"
-Received: from bergbenj-mobl1.ger.corp.intel.com (HELO localhost) ([10.245.244.11])
-  by orviesa008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Sep 2025 12:09:45 -0700
-Date: Wed, 3 Sep 2025 22:09:41 +0300
-From: Ville =?iso-8859-1?Q?Syrj=E4l=E4?= <ville.syrjala@linux.intel.com>
-To: Maxime Ripard <mripard@kernel.org>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-	dri-devel@lists.freedesktop.org,
-	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
-	Louis Chauvet <louis.chauvet@bootlin.com>,
-	Haneen Mohammed <hamohammed.sa@gmail.com>,
-	Melissa Wen <melissa.srw@gmail.com>, Jyri Sarha <jyri.sarha@iki.fi>,
-	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
-	Paul Cercueil <paul@crapouillou.net>, linux-mips@vger.kernel.org,
-	Liviu Dudau <liviu.dudau@arm.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Manikandan Muralidharan <manikandan.m@microchip.com>,
-	Dharma Balasubiramani <dharma.b@microchip.com>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-	linux-arm-kernel@lists.infradead.org,
-	Inki Dae <inki.dae@samsung.com>,
-	Seung-Woo Kim <sw0312.kim@samsung.com>,
-	Kyungmin Park <kyungmin.park@samsung.com>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	linux-samsung-soc@vger.kernel.org, Liu Ying <victor.liu@nxp.com>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>, imx@lists.linux.dev,
-	Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>,
-	Lucas Stach <l.stach@pengutronix.de>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Anitha Chrisanthus <anitha.chrisanthus@intel.com>,
-	Edmund Dea <edmund.j.dea@intel.com>,
-	Paul Kocialkowski <paulk@sys-base.io>,
-	Sui Jingfeng <suijingfeng@loongson.cn>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Rob Clark <robin.clark@oss.qualcomm.com>,
-	Dmitry Baryshkov <lumag@kernel.org>,
-	Abhinav Kumar <abhinav.kumar@linux.dev>,
-	Jessica Zhang <jessica.zhang@oss.qualcomm.com>,
-	Sean Paul <sean@poorly.run>,
-	Marijn Suijten <marijn.suijten@somainline.org>,
-	linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org,
-	Sandy Huang <hjc@rock-chips.com>,
-	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	linux-rockchip@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>, linux-sunxi@lists.linux.dev,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Mikko Perttunen <mperttunen@nvidia.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>, linux-tegra@vger.kernel.org,
-	Hans de Goede <hansg@kernel.org>,
-	Dave Stevenson <dave.stevenson@raspberrypi.com>,
-	=?iso-8859-1?Q?Ma=EDra?= Canal <mcanal@igalia.com>,
-	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>
-Subject: Re: [PATCH v2 00/37] drm/atomic: Get rid of existing states (not
- really)
-Message-ID: <aLiSdWgOl15jb8Ga@intel.com>
-References: <20250902-drm-no-more-existing-state-v2-0-de98fc5f6d66@kernel.org>
+	id 1vFEwg-00000007xWH-0azj;
+	Sat, 01 Nov 2025 16:59:19 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPA id CCC2240E64;
+	Sat,  1 Nov 2025 17:59:10 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=dkim;
+	t=1762016353; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding; bh=sMl6CrU8n9CPvD/7RHfQqN/cNpPavM10Xf1mdRiKWUw=;
+	b=FVUHwmBSEL5aIJ1c0fb9aFCKPuK5Q4UuwIsQwmfnSdy+fV2DoLZD3oOJZmi2IPmcIknZbY
+	kkUl+o77eAkhizFN4RQYHs6VMvMVLSO1sWarxs3ru82X+lsvrlL0HLGQG14g+MdXZ+2GcE
+	ZUq+Bvhq9zD99aTrCpND48sG4M6JuHYYWqainbbKXAlRV7sncpYMv4LwiQFBFvf0CLlv0q
+	mr8wDYB6y0NfNxUVpPRCIlxyvZJTwn2anq8yvRGdZ0OpSlLUpObtgok6uYON/Nx4VELUw3
+	ynSOhbmPebWOx/fFS/MV88pgMrfEzN68Ym+BWXqkc/TnE7Yk2AeZwmICdOCd3w==
+From: "Dragan Simic" <dsimic@manjaro.org>
+Date: Sat, 01 Nov 2025 17:59:10 +0100
+Cc: "Heiko Stuebner" <heiko@sntech.de>, "Alexey Charkov" <alchark@gmail.com>, conor+dt@kernel.org, devicetree@vger.kernel.org, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh@kernel.org
+To: "Hugh Cole-Baker" <sigmaris@gmail.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20250902-drm-no-more-existing-state-v2-0-de98fc5f6d66@kernel.org>
-X-Patchwork-Hint: comment
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+Message-ID: <0ac61ea1-9e22-7101-646d-694e350ec1b4@manjaro.org>
+Subject: =?utf-8?q?Re=3A?= [PATCH] =?utf-8?q?arm64=3A?==?utf-8?q?_dts=3A?=
+ =?utf-8?q?_rockchip=3A?= pwm-fan overlay for NanoPC-T6
+User-Agent: SOGoMail 5.12.3
+X-Last-TLS-Session-Version: None
+X-Bad-Reply: 'Re:' in Subject but no References or In-Reply-To headers
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250903_121008_416975_0C536465 
-X-CRM114-Status: GOOD (  30.52  )
+X-CRM114-CacheID: sfid-20251101_095918_607156_7DA8EBB5 
+X-CRM114-Status: GOOD (  21.14  )
 X-Mailman-Approved-At: Thu, 06 Nov 2025 04:28:36 -0800
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -139,151 +62,99 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Sep 02, 2025 at 11:34:59AM +0200, Maxime Ripard wrote:
-> Hi,
-> =
+Hello Hugh,
 
-> Here's a series to get rid of the drm_atomic_helper_get_existing_*_state
-> accessors.
-> =
+On Saturday, November 01, 2025 14:14 CET, Hugh Cole-Baker <sigmaris@gmail.com> wrote:
+> On 01/11/2025 11:44, Heiko Stuebner wrote:
+> > Personally, I'm more on the less complication side.
+> > 
+> > I.e. if there is an actual fan-connector on the board we should describe
+> > it as such.
+> > 
+> > Overlays I see for things where you attach hats to generic pin headers
+> > to create specific functionality on top of a generic interface.
+> > 
+> > But if the board itself has an actual fan header, it should be described
+> > as such. Because that then _is_ the standard use of that.
+> 
+> The board does have a fan connector, just no fan by default. But anyway,
+> since it sounds like the preferred approach I'll send a v2 which puts the
+> fan into the base board .dts.
+> 
+> Dragan, you mentioned there's no need for more than 2 trip points - if
+> I remove the trip points between "SoC is warm, start fan at slow speed"
+> and "SoC is v. hot, run fan at full speed" is the OS/kernel expected to
+> interpolate between those 2 trip points (if you have a link to docs or
+> code about this it'd be interesting, I couldn't find anything in the
+> dt-bindings)?
 
-> The initial intent was to remove the __drm_*_state->state pointer to
-> only rely on old and new states, but we still need it now to know which
-> of the two we need to free: if a state has not been committed (either
-> dropped or checked only), then we need to free the new one, if it has
-> been committed we need to free the old state. =
+True, that isn't described in the bindings, because it basically
+doesn't belong there.  Thus, the most specific description of the
+associated cooling stuff, as provided by the bindings, is the
+following excerpt from Documentation/devicetree/bindings/thermal/
+thermal-zones.yaml:
 
-> =
+  209 cooling-device:
+  210   $ref: /schemas/types.yaml#/definitions/phandle-array
+  211   description:
+  212     A list of cooling device phandles along with the minimum
+  213     and maximum cooling state specifiers for each cooling
+  214     device. Using the THERMAL_NO_LIMIT (-1UL) constant in the
+  215     cooling-device phandle limit specifier lets the framework
+  216     use the minimum and maximum cooling state for that cooling
+  217     device automatically.
 
-> Thus, the state pointer is kept (and documented) only to point to the
-> state we should free eventually.
-> =
+That's where the cooling hardware description ends, so that's also
+where the associated binding ends.  Everything else belongs to the
+thermal governors, because they actually decide on how to best use
+the available cooling features.
 
-> All users have been converted to the relevant old or new state
-> accessors.  =
+For example, the chain of events may look like this:
 
-> =
+  (1) The rockchip_thermal_alarm_irq_thread() function, defined in
+      drivers/thermal/rockchip_thermal.c, gets triggered by TSADC
+      within the parameters of DT-defined "active" trip types
 
-> This was tested on tidss.
-> =
+  (2) It calls the thermal_zone_device_update() function defined
+      in drivers/thermal/thermal_core.c
 
-> Let me know what you think,
-> Maxime
-> =
+  (3) This ends up calling the step_wise_manage() function that's
+      defined in drivers/thermal/gov_step_wise.c, which handles
+      the previously triggered "active" trip
 
-> Signed-off-by: Maxime Ripard <mripard@kernel.org>
+  (4) This calls the drivers/thermal/gov_step_wise.c's locally
+      defined thermal_zone_trip_update() and get_target_state()
+      functions, which end up ramping the fan speed up and down
+      as needed, while respecting the upper and lower limits
+      defined through the "cooling-device" DT map properties,
+      which correspond to the "cooling-levels" defined in the
+      DT fan property
 
-<replying again to see if my smtp issues are now solved...>
+Here's also an excerpt from drivers/thermal/gov_step_wise.c, which
+confirms all this and explains it a bit further:
 
-Other than the pre-existing ingenic private state issue that
-Dmitry spotted I didn't see anything obviously wrong.
+  113  /*
+  114   * Throttling Logic: Use the trend of the thermal zone to throttle.
+  115   * If the thermal zone is 'heating up', throttle all of the cooling
+  116   * devices associated with each trip point by one step. If the zone
+  117   * is 'cooling down', it brings back the performance of the devices
+  118   * by one step.
+  119   */
 
-So apart from that the series is
-Reviewed-by: Ville Syrj=E4l=E4 <ville.syrjala@linux.intel.com>
+With all that in mind, the fan will ramp its speed up and down
+nicely, according to the current temperature, with no need for
+having multiple manually defined steps.
 
-> ---
-> Changes in v2:
-> - Dropped the first and second patches
-> - Reworked the recipient list to be nicer with SMTPs
-> - Link to v1: https://lore.kernel.org/r/20250825-drm-no-more-existing-sta=
-te-v1-0-f08ccd9f85c9@kernel.org
-> =
+The intended benefit of having the two usual, distinct "active"
+thermal trips and cooling maps is to lower the fan-induced noise
+a bit while not affecting the cooling much.  This is all visible
+in rk3399-rockpro64.dtsi, for example.
 
-> ---
-> Maxime Ripard (37):
->       drm/atomic: Convert drm_atomic_get_connector_state() to use new con=
-nector state
->       drm/atomic: Remove unused drm_atomic_get_existing_connector_state()
->       drm/atomic: Document __drm_connectors_state state pointer
->       drm/atomic: Convert __drm_atomic_get_current_plane_state() to moder=
-n accessor
->       drm/atomic: Convert drm_atomic_get_plane_state() to use new plane s=
-tate
->       drm/vkms: Convert vkms_crtc_atomic_check() to use new plane state
->       drm/tilcdc: crtc: Use drm_atomic_helper_check_crtc_primary_plane()
->       drm/atomic: Remove unused drm_atomic_get_existing_plane_state()
->       drm/atomic: Document __drm_planes_state state pointer
->       drm/atomic: Convert drm_atomic_get_crtc_state() to use new connecto=
-r state
->       drm/ingenic: ipu: Switch to drm_atomic_get_new_crtc_state()
->       drm/arm/malidp: Switch to drm_atomic_get_new_crtc_state()
->       drm/armada: Switch to drm_atomic_get_new_crtc_state()
->       drm/atmel-hlcdc: Switch to drm_atomic_get_new_crtc_state()
->       drm/exynos: Switch to drm_atomic_get_new_crtc_state()
->       drm/imx-dc: Switch to drm_atomic_get_new_crtc_state()
->       drm/imx-dcss: Switch to drm_atomic_get_new_crtc_state()
->       drm/imx-ipuv3: Switch to drm_atomic_get_new_crtc_state()
->       drm/ingenic: Switch to drm_atomic_get_new_crtc_state()
->       drm/kmb: Switch to drm_atomic_get_new_crtc_state()
->       drm/logicvc: Switch to drm_atomic_get_new_crtc_state()
->       drm/loongson: Switch to drm_atomic_get_new_crtc_state()
->       drm/mediatek: Switch to drm_atomic_get_new_crtc_state()
->       drm/msm/mdp5: Switch to drm_atomic_get_new_crtc_state()
->       drm/omap: Switch to drm_atomic_get_new_crtc_state()
->       drm/rockchip: Switch to drm_atomic_get_new_crtc_state()
->       drm/sun4i: Switch to drm_atomic_get_new_crtc_state()
->       drm/tegra: Switch to drm_atomic_get_new_crtc_state()
->       drm/tilcdc: Switch to drm_atomic_get_new_crtc_state()
->       drm/vboxvideo: Switch to drm_atomic_get_new_crtc_state()
->       drm/vc4: Switch to drm_atomic_get_new_crtc_state()
->       drm/atomic: Switch to drm_atomic_get_new_crtc_state()
->       drm/framebuffer: Switch to drm_atomic_get_new_crtc_state()
->       drm/atomic: Remove unused drm_atomic_get_existing_crtc_state()
->       drm/atomic: Document __drm_crtcs_state state pointer
->       drm/atomic: Convert drm_atomic_get_private_obj_state() to use new p=
-lane state
->       drm/atomic: Document __drm_private_objs_state state pointer
-> =
-
->  drivers/gpu/drm/arm/malidp_planes.c             |   2 +-
->  drivers/gpu/drm/armada/armada_plane.c           |   3 +-
->  drivers/gpu/drm/atmel-hlcdc/atmel_hlcdc_plane.c |   2 +-
->  drivers/gpu/drm/drm_atomic.c                    |  21 ++--
->  drivers/gpu/drm/drm_framebuffer.c               |   2 +-
->  drivers/gpu/drm/exynos/exynos_drm_plane.c       |   2 +-
->  drivers/gpu/drm/imx/dc/dc-plane.c               |   2 +-
->  drivers/gpu/drm/imx/dcss/dcss-plane.c           |   4 +-
->  drivers/gpu/drm/imx/ipuv3/ipuv3-plane.c         |   3 +-
->  drivers/gpu/drm/ingenic/ingenic-drm-drv.c       |   3 +-
->  drivers/gpu/drm/ingenic/ingenic-ipu.c           |   4 +-
->  drivers/gpu/drm/kmb/kmb_plane.c                 |   3 +-
->  drivers/gpu/drm/logicvc/logicvc_layer.c         |   4 +-
->  drivers/gpu/drm/loongson/lsdc_plane.c           |   2 +-
->  drivers/gpu/drm/mediatek/mtk_plane.c            |   3 +-
->  drivers/gpu/drm/msm/disp/mdp5/mdp5_plane.c      |   7 +-
->  drivers/gpu/drm/omapdrm/omap_plane.c            |   2 +-
->  drivers/gpu/drm/rockchip/rockchip_drm_vop.c     |   6 +-
->  drivers/gpu/drm/rockchip/rockchip_drm_vop2.c    |   2 +-
->  drivers/gpu/drm/sun4i/sun8i_ui_layer.c          |   3 +-
->  drivers/gpu/drm/sun4i/sun8i_vi_layer.c          |   3 +-
->  drivers/gpu/drm/tegra/dc.c                      |   2 +-
->  drivers/gpu/drm/tilcdc/tilcdc_crtc.c            |   9 +-
->  drivers/gpu/drm/tilcdc/tilcdc_plane.c           |   3 +-
->  drivers/gpu/drm/vboxvideo/vbox_mode.c           |   8 +-
->  drivers/gpu/drm/vc4/vc4_plane.c                 |   6 +-
->  drivers/gpu/drm/vkms/vkms_crtc.c                |   4 +-
->  include/drm/drm_atomic.h                        | 144 ++++++++++++------=
-------
->  28 files changed, 124 insertions(+), 135 deletions(-)
-> ---
-> base-commit: 7fa4d8dc380fbd81a9d702a855c50690c9c6442c
-> change-id: 20250825-drm-no-more-existing-state-9b3252c1a33b
-> =
-
-> Best regards,
-> -- =
-
-> Maxime Ripard <mripard@kernel.org>
-
--- =
-
-Ville Syrj=E4l=E4
-Intel
 
 _______________________________________________
 Linux-rockchip mailing list
