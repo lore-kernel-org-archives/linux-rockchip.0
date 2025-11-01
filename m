@@ -4,87 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC196CCFA03
-	for <linux-rockchip@archiver.kernel.org>; Sat,  1 Nov 2025 15:35:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F6F0CCF9F8
+	for <linux-rockchip@archiver.kernel.org>; Sat,  1 Nov 2025 23:18:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:From:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=fdncjJDEt0iZ5w7qzqVVNCFV3cHZ/hIuYAMD8QjXel8=; b=3H4DrG9/BWh3iz
-	mLbGEY1g1MKPuJKqJsQGONzd0Mt1aTI5jFXgm5E+DVsGXB60FXEmxyqpS9iMeNx+IlWe692VBMLkc
-	GNEOBQ8NMqRr/uoid1oMxP9bM1CoGC1UAqLYGes+WS0E22hBcXMe1f44Cv0R/BkET6e63PBE8yCWY
-	/sCCp9m26JTNuycLMasUhm0pixH6RmtsC1OexBc3TGg3gvPLPuYP/ac21ARyEwMk3WXwlFJfMmlTY
-	HovdEJ7iOR/ZiWNAVLG6sPVJJ8/MOdYH1JeoU8S5INhDlbHYOzvLZEwfIJmjAN+NGjoE06rcwcdMa
-	HuShA57Pg9ILBHK1QPLQ==;
+	List-Owner; bh=mRLy3uOqzr52me6LgfIny4PvnWpNRUmocXLV4rKeo/A=; b=QkVf8ZOsdMq8D2
+	x3fmTpV3asHIRXAtK5B+vnpF6QfR1H6GIIIHB21+tH335uEFPj+X54zWfccLJ0PKQ/fh5XNxX78qF
+	67R6zqy2vMgkJo/KoYaa3AIHqjQP5G/rYFrlSGRos+bjTOhhjaHpANbCJf3vnnPz26+xkfKQHzMBO
+	ZPg0awOs225LEXI7QmOfNc1rDU2h+XBpLvmZcLEmbNnqS85lZWwhmqF2XsZYUYJwfpJdOWRGKfTur
+	e7TcsZC547gy+Kk6zAcMnOMBP7Xd036CpEF159K6SOlWzUMos7VmKMK8C6fzsVZ/Mi76zw7nSJi2m
+	ef+yBPUT5oJ+7pv6dLGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vFDdc-00000007sRo-0RZ8;
-	Sat, 01 Nov 2025 15:35:32 +0000
-Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
+	id 1vFKrU-000000089Rh-1yNh;
+	Sat, 01 Nov 2025 23:18:20 +0000
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vFDdZ-00000007sR3-3Pjz
+	id 1vFKrR-000000089Qt-1D6x
 	for linux-rockchip@lists.infradead.org;
-	Sat, 01 Nov 2025 15:35:31 +0000
-Received: by mail-ed1-x52d.google.com with SMTP id 4fb4d7f45d1cf-6390fdaa1f4so681292a12.3
-        for <linux-rockchip@lists.infradead.org>; Sat, 01 Nov 2025 08:35:29 -0700 (PDT)
+	Sat, 01 Nov 2025 23:18:19 +0000
+Received: by mail-ej1-x634.google.com with SMTP id a640c23a62f3a-b6d6027158eso61538866b.1
+        for <linux-rockchip@lists.infradead.org>; Sat, 01 Nov 2025 16:18:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1762011328; x=1762616128; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1762039095; x=1762643895; darn=lists.infradead.org;
         h=content-transfer-encoding:content-language:cc:to:subject:from
          :user-agent:mime-version:date:message-id:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=h0Tk9dDcYmqBenbtFC0DeeXVXsg2rmtasPdJhxUdBos=;
-        b=TuLifoN+SfiZ8J8UV5RTJDY7lK59rE2x9yVRHKujbGpYIVlvqolNWNOG+2eqS2x9Sz
-         cIg+NZhAtMeTXbxYjrAHef8IeHtc8eO3rNgRo3Wo2GlE+8oknrBIXWn/mbtB7Fi1q8WS
-         EN3I6cTR8MEVlgA39SbBA7c6FLUsi45Qp/13f7FRFC+0pVszYuYsJJW0EicDQiIv+7CT
-         f/LWi4efRXh4Yx3LG7QeITYyAq5r2OROwqnGms52jwEF4Eh1QME5zxNZJjpHIKI3rQ2e
-         k+H98Ln4Wz153pdzOR8qgAN0SPfhQxmPmyXc5VAhCsokJZvGV4AB3i9c924x6L6dPFn+
-         jogg==
+        bh=v2kY5ZNCCQbsUksqRncXUOQKnSfwxn1jvbedFSwvdQE=;
+        b=EZOKESzGdQ1ko6V8ETLZOj66PCJW2sAXzTHL0+/2QMTNVdK2USF0J1/4KTVtzt7zW8
+         kvYkVMrSP4VmujIDfrZqaP/OzHxwd7fx9nqr9D4LUaQggq/K8eW2U3CkU/g3UHPyiDPX
+         +7opKTTChuOmfvIGqrZwywBIoL4IrGcSZVAOsHP6NmUz5Gh/ZQW9TmaqwrvTcxmmnEjv
+         892IUExh7ciJZ6n+I1bu/IJiIwfKoXayXhRZKn3ZRn/vOARCbt3CTBLLdOWJLongXqlQ
+         WZUi9TXwDAukIWC3LrXa8pVm1hzPlEbYSXhtQ+JlgZ/RXzJRN1cg7rG9sNH+CNe1W+vR
+         kbdw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1762011328; x=1762616128;
+        d=1e100.net; s=20230601; t=1762039095; x=1762643895;
         h=content-transfer-encoding:content-language:cc:to:subject:from
          :user-agent:mime-version:date:message-id:x-gm-message-state:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=h0Tk9dDcYmqBenbtFC0DeeXVXsg2rmtasPdJhxUdBos=;
-        b=i3qkhlXuUP4RGaRd77rNX/CbRcZu7zXZTC3giVkI2o3pnpcgJ5/vUbjucggXBDKKmE
-         5Pzhy9+RdwQMdFlAGg+pMwcvwLU9iTTLs7o9ZWNRBCyyt+XBpJqWgaWxmf2ntyksFRVZ
-         BcdmozNe0SGYKch37IPvjpQ3Xs9Wg1Lz2UAh98/y4aFyo1Xl0pPUXVr3FB+QDguWX6Sf
-         VQeKueiLI2z0AeBUUlOtJoml/QcxZLDrm70TAo4mlDlilWHGSgXeiGI5PxY5CY9bTZ0w
-         oOAEvgSRp/PD6d18u5Hj9ThKeiQqLj/p7vbmkaPnxlD2AHBzJnKxewXRs7DQd6A9FsnS
-         t4mA==
-X-Forwarded-Encrypted: i=1; AJvYcCVI/zfOjtnrgQEymB1YHvS1QznJen3m4b9AhRrba+8iGCyJCaeKIKSBAhynZ06+ujKC/txnxJEqpFxnNTbfbA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzRZpKaR/PJTpgvwI/7dumtzoatz1obTMjpThb+CN1vWO79hVlp
-	Y0Y7WKjsbNYL5kk7CDtLE2iKPXctuwLLB9T0nVQnizS4QRQ2eKcpCZ4h
-X-Gm-Gg: ASbGnct/YxSIaHDpfSvJUfsWWGQZdnzHfQNCG3ocKnfIEGp15Kqkvd3DUti6QImCwHL
-	vkJFi3fhr5TEQwNswrMaxaBqKRRrmO6eMXiD5ep+05Ad0UHPFupNlC7K/ahEXPghrjGLx6s6OhR
-	4l5Cy/0CmTJDt0qx7lYIFwiLcbmBSRL9z+ydFHKf9HYTXODXS1PTC9o+gpf8mIzNuF/zOte9+qy
-	leK+5Wg8jExIRuAO9F1oHHnchY3ZGjjtyzsIiWocAHRi3OTSr1t1QyV7/eiHwEzTQXpSWaDmB+S
-	tvR6l0EY0vDKOFGBShY1kqjNdudp2ltPQWYAoJy3MO9SttiJPwqhvmTKgXNxf5xqr2TbnxXKVnF
-	hll+Tz5OXKIMxNv17chEuZcbLj030jZyAnjC9ef/z9ap/8E+Q3/nY4OllODPfJhIWzrC+gCkthr
-	95TWXcrRRq1MUcBxBIUAlQ/+tIlDmUg78l/zASlPPVuPiWD1zyrQ==
-X-Google-Smtp-Source: AGHT+IGGbZKmix+04v0yBeE+miuCe2f5O67VTMu7nJKCL7jr0B/QprRarMtQ6I/yofHU8ylwWgs/DA==
-X-Received: by 2002:a17:906:730b:b0:b6d:5587:e336 with SMTP id a640c23a62f3a-b70708c8a6fmr418924566b.9.1762011327533;
-        Sat, 01 Nov 2025 08:35:27 -0700 (PDT)
+        bh=v2kY5ZNCCQbsUksqRncXUOQKnSfwxn1jvbedFSwvdQE=;
+        b=KIFgw8BXjOq0KARSregvE+wXp0rI41WNZsTuxbwRQa4TSyhkOvNLttdwDwe5gR+gMQ
+         ZnxXovsSWBRIuAxyLMoPeuJ7W4Gb6IVIM730fT5ePQKSzl40KLkIQBZ9bYNjEHP/yD50
+         zJlwX3h9cjOPk6GJrt6UIx6KBTVKQhY7eHangShcIpVFQQtaLgIFHp8BPywxLVbKSMKb
+         93My1k3c2jOreCadsENo/N0nnbDCpjGD9XObvAjqL58iiosugY96R4+dwcJD9WmCi55w
+         A0lj7+Rv/54md07r6o4GBAdUG/2tvvb5HOQHOieKcxiif00dwzjjeYuyJWiWtGQYNOyD
+         C2qQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXpYXqb3n4s27JVxnm0120BcLB9Bc4acA8gPHftL+bJG7goOf+uiYQhiWylvl0Cta757x9Kwf+vK5MEiUdgPw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yxn66k4Yv5UKHWa9or4V2rNGvN5kI+lM3oLTbXYeG0gXJUc1czD
+	gVtYLhT92I7OgQDtFOoGl6ZPlRO+pprCnmIGe5cyi6J0MGOH31G4sKdX
+X-Gm-Gg: ASbGncvR3YphTSIs/fKoag9KVV5/1dbA3GviDcm7p78YkYOW2uzHRz/FWI+QRYWsozv
+	T+s+vSsnWPIn1hz7mguHA82dp/SnmrJRT7lGiLBsO/kCtflOMyS6+TgLLFy1c+ZpAfL0b+UvITq
+	sA0sSs73b/A5rFRm+2Wb3l1DQJ5mEqNT1um6LRlgYlePCZtFYh5QrdqSADec9uQpzsAKsSMJ8fe
+	/nb5F1Ddw6iKaL+BEiI/KO5TgoYitD//oAHOv2VY2LNO9gVc6QHpRJQxD5g0NOldnlEkmYqZUYm
+	XYP0Jhs5wAZGH71bmqNvuolNslT9Ug0b6wW3czF9z7+IOVT8NonNG11FNGUgaF6x3zonyYOLeJK
+	Mcwch/7btErrEV80liIjbCf/BKdEKunGuQOmILnHpoJOBp77t+H0SOUb8CN/3F2Ix91ChLhgPmV
+	bhrha6ZKS7YdC4oxoLaiSBMI1jddTpdyQSrU07fNGWmRiH4C2GkA==
+X-Google-Smtp-Source: AGHT+IHcmBZR/CYZGz+1H8YjiW4T4LxbNxir8Pj0nOjlwjuLiZBdJmsLBYzTwNDhteMqoR37SkWibw==
+X-Received: by 2002:a17:907:7e96:b0:b3f:5eaa:ef19 with SMTP id a640c23a62f3a-b707012ac5emr437203766b.3.1762039095064;
+        Sat, 01 Nov 2025 16:18:15 -0700 (PDT)
 Received: from ?IPV6:2a02:a449:4071:0:32d0:42ff:fe10:6983? ([2a02:a449:4071:0:32d0:42ff:fe10:6983])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-b7077cfa966sm478124166b.65.2025.11.01.08.35.26
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-b70779762e9sm571946666b.7.2025.11.01.16.18.14
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 01 Nov 2025 08:35:27 -0700 (PDT)
-Message-ID: <92714b6c-6c0d-4a10-afe4-73ed313c87c0@gmail.com>
-Date: Sat, 1 Nov 2025 16:35:26 +0100
+        Sat, 01 Nov 2025 16:18:14 -0700 (PDT)
+Message-ID: <7d6fa223-ab90-4c44-9180-54df78467ea5@gmail.com>
+Date: Sun, 2 Nov 2025 00:18:13 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 From: Johan Jonker <jbx6244@gmail.com>
-Subject: [PATCH v1] arm64: dts: rockchip: correct assigned-clock-rates
- spelling
+Subject: [PATCH v1] ARM: dts: rockchip: rk3288: move edp assigned-clocks to
+ edp node
 To: heiko@sntech.de
 Cc: robh@kernel.org, conor+dt@kernel.org, krzk+dt@kernel.org,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251101_083529_873895_D9C0D4DB 
-X-CRM114-Status: GOOD (  10.43  )
+X-CRM114-CacheID: sfid-20251101_161817_351533_9314D83E 
+X-CRM114-Status: GOOD (  10.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,45 +101,55 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Due to some copy and paste from the manufacturer tree the property
-assigned-clock-rate is missing a letter "s". Correct spelling to
-reduce dtbs_check output.
+The rk3288 power-controller node contains an assigned-clocks property
+that conflicts with the bindings. From the git history it shows that they
+wanted to assign the rk3288 EDP_24M clock input centrally before an edp
+node was available. Move the edp assigned-clocks property to the edp node
+to reduce dtbs_check output.
 
 Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 ---
 
-https://github.com/rockchip-linux/kernel/blob/develop-4.4/arch/arm64/boot/dts/rockchip/rk3328-evb.dts#L313
+Not tested with hardware.
+
+ARM: dts: rockchip: Assign RK3288 EDP_24M input centrally
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/arch/arm/boot/dts/rk3288.dtsi?id=df5ea015984633526874619ca1288fc5f2cf47c0
+
+ARM: dts: rockchip: add rk3288 displayport controller node
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/arch/arm/boot/dts/rk3288.dtsi?id=6df7ec6186644a4ffb4f0c859327ef41a1145a5f
+
+ARM: dts: rockchip: add rk3288 edp-phy node
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/arch/arm/boot/dts/rk3288.dtsi?id=f5663969d8125a5c5b7835812e1e636ecedf030b
+
+ARM: dts: rockchip: move rk3288 edp phy under the GRF
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/arch/arm/boot/dts/rk3288.dtsi?id=4b91545072ad7ca1963d2a89c8b42fc2eb561484
 ---
- arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts | 2 +-
- arch/arm64/boot/dts/rockchip/rk3328-evb.dts     | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ arch/arm/boot/dts/rockchip/rk3288.dtsi | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts b/arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts
-index b5bf84322031..b9d4d78bff0f 100644
---- a/arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts
-@@ -184,7 +184,7 @@ &emmc {
+diff --git a/arch/arm/boot/dts/rockchip/rk3288.dtsi b/arch/arm/boot/dts/rockchip/rk3288.dtsi
+index 7e284b4fecdc..7477fc5da3ec 100644
+--- a/arch/arm/boot/dts/rockchip/rk3288.dtsi
++++ b/arch/arm/boot/dts/rockchip/rk3288.dtsi
+@@ -741,9 +741,6 @@ power: power-controller {
+ 			#address-cells = <1>;
+ 			#size-cells = <0>;
 
- &gmac2phy {
- 	assigned-clock-parents = <&cru SCLK_MAC2PHY_SRC>;
--	assigned-clock-rate = <50000000>;
-+	assigned-clock-rates = <50000000>;
- 	assigned-clocks = <&cru SCLK_MAC2PHY>;
- 	status = "okay";
- };
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-evb.dts b/arch/arm64/boot/dts/rockchip/rk3328-evb.dts
-index 3707df6acf1f..76715de886e2 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-evb.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-evb.dts
-@@ -101,7 +101,7 @@ &emmc {
- &gmac2phy {
- 	phy-supply = <&vcc_phy>;
- 	clock_in_out = "output";
--	assigned-clock-rate = <50000000>;
-+	assigned-clock-rates = <50000000>;
- 	assigned-clocks = <&cru SCLK_MAC2PHY>;
- 	assigned-clock-parents = <&cru SCLK_MAC2PHY_SRC>;
- 	status = "okay";
+-			assigned-clocks = <&cru SCLK_EDP_24M>;
+-			assigned-clock-parents = <&xin24m>;
+-
+ 			/*
+ 			 * Note: Although SCLK_* are the working clocks
+ 			 * of device without including on the NOC, needed for
+@@ -1193,6 +1190,8 @@ edp: dp@ff970000 {
+ 		compatible = "rockchip,rk3288-dp";
+ 		reg = <0x0 0xff970000 0x0 0x4000>;
+ 		interrupts = <GIC_SPI 98 IRQ_TYPE_LEVEL_HIGH>;
++		assigned-clocks = <&cru SCLK_EDP_24M>;
++		assigned-clock-parents = <&xin24m>;
+ 		clocks = <&cru SCLK_EDP>, <&cru PCLK_EDP_CTRL>;
+ 		clock-names = "dp", "pclk";
+ 		phys = <&edp_phy>;
 --
 2.39.5
 
