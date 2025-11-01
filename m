@@ -4,85 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2611BCCF9F8
-	for <linux-rockchip@archiver.kernel.org>; Sat,  1 Nov 2025 11:20:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD6A6CCF9F8
+	for <linux-rockchip@archiver.kernel.org>; Sat,  1 Nov 2025 11:45:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1YKGF6tFeo9IG2jPCs+xrc7+VKl05jdnM0oiyZDSMCc=; b=hhzOLNDlO+ArHo
-	r0yGuiMMSKJ1dYwSvS2G2F/xxediwLERDyd50WjrTBJMHKzjw8RK0eBuGeGF8LREhyeVEcr6dyuEm
-	u+BBWqktnfGuEt0z5/LGsQ0CwqKj9a7VTz5mrcm3R94DIdsjilTG99un5nJa7XtOKuXbHSqRHzbJg
-	z/NuFUyp48ff3GJIiIl7qsZde+Qz2ALlw44GgiT7ExN2ED1dwA2GAuQU5FP6pGVnG+ct8RoYB0AdT
-	5pS9Dt37gQ5qWJLTIIuObkavsY/pPkZwsgYdFHmDqpVSqTidSyybM/WlSztzeGK4a4Z8VN4Ij5AIn
-	0EXMohciCcaGSrnWw6/g==;
+	List-Owner; bh=AJn1PyAbV1tWtzj6fx8MvGtwkKB/gCk+zk3scDb5k1M=; b=Wh1nObZUzJp/1/
+	AGLbX/ncXg5OgGeMbsqfppnpn0e53iEGsgzvtiH25SnL0bpcDy2ehYgLtVQWYfD1tZSZxDPB49c4S
+	9ZHGDLBCnGWX3k2ZsPC5lPkfV4FbkZNIyUXoJ1Rp1qUgunnuhi/aBTtdRtMpMjbff6pKqkkpV1R7X
+	pe6lmf0X4gCfbAEDwUqB/2vErw1Q17Pj+9y5sXCrc8TAuGABfw/dnLvC1N9f3e6T8BMGhd2s8MfME
+	NDINGkeXIAo2Oy1QlYCIAPw1hTaG495AVu2JMt7M3cpEQXqitXYEzeBXlq3gsirPP296CXGILFL0Q
+	eZcYQxlB+JU7OTp4mo8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vF9e9-00000007ICE-2sbH;
-	Sat, 01 Nov 2025 11:19:49 +0000
-Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
+	id 1vFA2Z-00000007JJ2-3oMk;
+	Sat, 01 Nov 2025 11:45:03 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vF9e5-00000007IBH-2Q6Z
-	for linux-rockchip@lists.infradead.org;
-	Sat, 01 Nov 2025 11:19:47 +0000
-Received: by mail-ed1-x52d.google.com with SMTP id 4fb4d7f45d1cf-6407e617ad4so2763002a12.0
-        for <linux-rockchip@lists.infradead.org>; Sat, 01 Nov 2025 04:19:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1761995983; x=1762600783; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=VA9/GYZqPtmMozVN89uR4Q0aoS5m99Ji3OBPgu1mZyE=;
-        b=ADjBQbZauXLq2IZzorxQJ1znMdcEmQfkh7CzGUSZzV3flJ3mcu3e0Aq/aVMza8K4fG
-         yLrwo6u2+uhqVVGeoy0wS8JO5RdNwi4e5fTc7gr580sbw+fH7wxW4t5pDK9xM42LVahR
-         dMwW/FAOmNljVw0pRhd1f74wmk6x6JSQh89dvH8PohbeK3aq4MGhRCpW4u/HTlIkfRgo
-         5pkaWwaeBrsdEvnMM/UFXOVg8aNGSKjcIDWyQBaRkLiFwZ971k1w1YOwCWinBNjT/+kD
-         OjCGwZXyTwRe1+YLj+OQucC1x4iMz2rqnTUdxYf/eRXo45YLKZveufpxsjQx8IffZKog
-         eXuA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1761995983; x=1762600783;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=VA9/GYZqPtmMozVN89uR4Q0aoS5m99Ji3OBPgu1mZyE=;
-        b=PDhG+oXJB1a4z+1j3QyeMi9Oe8cm2bNCBOnpj9Q3zgOZLnpPwWZpaFHCyBFXvKUvEX
-         Zhv46l/WKd4aSSBjZUcwc+XrSs/0TFIuleyZB+MSEwqJaRLqJbH8pgGRJzdkSsKKe8o+
-         N4M44YoX+UYRhZkgEyLwapsTNvlGrlldaHMurgWnSrW8TF12TFgLYcbPdov4AhY9pN23
-         NX8Q2iJ4NxPF74gGzj3HKYeGkQjRep+nDhhl81Iwn3e5Hjh/1JpJvnm314g8PfQdi9lP
-         FQoT0RyaLh9dKTxSIMQVfgqpm9yrFAWU5OKeK6/bay2DlUIqy1EE9YaGURv9TDDrekWY
-         0YsQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXf0EXsQh+oqObH0OwXNZcb6cms5D7SaBYNecygxdEowpevXckHAYWwcVMiOk+V7nRKBUqTgBgOEa47Pcdirw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Ywbk3u7xAd7qSH8LU9rVFsUL0nbpOYcyT8DrhuXwrB1vHXhWm/O
-	KXYemi24JL2pDTghN22cZ9b9qBYCoMyH3yA51n+pN9YWY8LemKRJIvUD36yDJSnSNbbEbpjnzo4
-	stdCGVdhwK4Xd+M2k6vZaDDSnv+NMw/g=
-X-Gm-Gg: ASbGncvUiLudszK6LRk9SRj4GhJt19ofz7h7iPprSjgN0UwMYPKTOYiEusdiypxfUUl
-	vCH+wMOIH4kpINCRQC1W/HOt3ibrrjHFfmEnHU0i5+6TBtYA86JcwAykweN1Uo8BWJ7wtzGMWwG
-	JJKnykwWbvDxv0P17/nRAGyGbN0jakHmgis4XokVbD0REyj7DoCtHuB1jFmJHz5vUG6ZVIXn23f
-	WbaFtHikJE7iutvVBeJc8S8y85hurf0mjTbwFUiIm36twxCzAJCpiErMBFZlHfLe5w8Qw==
-X-Google-Smtp-Source: AGHT+IEQEHTI7whxk9fnli4P3xU5KyTR7FJHxqf2wRSXKBIIgvmPQ5NPDMPaydsHGdsnaMf8venN81CtsI73mU47/Pw=
-X-Received: by 2002:a05:6402:210b:b0:640:9997:a229 with SMTP id
- 4fb4d7f45d1cf-6409997ae92mr1067104a12.3.1761995983045; Sat, 01 Nov 2025
- 04:19:43 -0700 (PDT)
+	id 1vFA2X-00000007JI5-1y6S;
+	Sat, 01 Nov 2025 11:45:02 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=PHVYSvdDYI0ifXKzRw7b8rWjTZ1yx6Imu7EM6kr3mrU=; b=F9EcTBASWM5qh/zDz2Za0DKHJv
+	O86Tv5obC46pwjRdwxGXFTKR4PRNCzkPOkXPSnqWov/3dIxsIxD3Ne0RjmQzOn0YG5aAkU3hFoL4g
+	+s+WRlofAnWqd/jtEX59Us1aepVBVm2xn/WwE+qLd5oUHbVJjWXwdXWvVmywqjAXM7DJGN55ERaWK
+	ek3ieHeDNY1kQSmWmFNZZTLr6kiWLGzqpxVmOjvJjL/CWDZDHP1owMZ6CwrvOLr8Nxh+wdd0rAeyu
+	yCkTa1xbnBENaEsSEpr7zWK1X5Tn51bI3PZMKji1nQ1FpOIhiRfPgPeFX3BGaw9AcTUdIwyK3/A3G
+	FK1eTZ3g==;
+Received: from i53875b80.versanet.de ([83.135.91.128] helo=phil.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1vFA2Q-0008ME-Vd; Sat, 01 Nov 2025 12:44:55 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: Alexey Charkov <alchark@gmail.com>, Dragan Simic <dsimic@manjaro.org>
+Cc: sigmaris@gmail.com, conor+dt@kernel.org, devicetree@vger.kernel.org,
+ krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ robh@kernel.org
+Subject: Re: [PATCH] arm64: dts: rockchip: pwm-fan overlay for NanoPC-T6
+Date: Sat, 01 Nov 2025 12:44:54 +0100
+Message-ID: <2246326.irdbgypaU6@phil>
+In-Reply-To: <2cfeeb0c-f7e0-b101-62c4-3b6eae40a30b@manjaro.org>
+References: <d583ee43-38c4-40fb-b33b-ce3153c9723b@gmail.com>
+ <CABjd4Yzfx-4xBHVB=W_r6nEdbwNJKdpHYB6bN3Xsk8dZOegJWw@mail.gmail.com>
+ <2cfeeb0c-f7e0-b101-62c4-3b6eae40a30b@manjaro.org>
 MIME-Version: 1.0
-References: <20251029-rockchip-pcie-system-suspend-v4-0-ce2e1b0692d2@collabora.com>
-In-Reply-To: <20251029-rockchip-pcie-system-suspend-v4-0-ce2e1b0692d2@collabora.com>
-From: Anand Moon <linux.amoon@gmail.com>
-Date: Sat, 1 Nov 2025 16:49:25 +0530
-X-Gm-Features: AWmQ_bmpT_2mcSjzejdSRAZS_z3Z3YCstTId1JiavKjLthWXyNA8r6zVYPZ7wSg
-Message-ID: <CANAwSgTMc=FcOi4=vPCUytMMg5dZO7QU4m6D=6V8RZ9hSDxn4A@mail.gmail.com>
-Subject: Re: [PATCH v4 0/9] PCI: dw-rockchip: add system suspend support
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>, =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
-	Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
-	Heiko Stuebner <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Jingoo Han <jingoohan1@gmail.com>, Shawn Lin <shawn.lin@rock-chips.com>, 
-	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	kernel@collabora.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251101_041945_921027_555C0D05 
-X-CRM114-Status: GOOD (  15.39  )
+X-CRM114-CacheID: sfid-20251101_044501_536406_5C2CB679 
+X-CRM114-Status: GOOD (  55.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,346 +68,115 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Sebastian,
-
-On Wed, 29 Oct 2025 at 23:27, Sebastian Reichel
-<sebastian.reichel@collabora.com> wrote:
->
-> I've recently been working on fixing up at least basic system suspend
-> support on the Rockchip RK3576 platform. Currently the biggest open
-> issue is missing support in the PCIe driver. This series is a follow-up
-> for Shawn Lin's series with feedback from Niklas Cassel and Manivannan
-> Sadhasivam being handled as well as some of my own changes fixing up
-> things I noticed.
->
-> In opposite to Shawn Lin I did not test with different peripherals as my
-> main goal is getting basic suspend to ram working in the first place. I
-> did notice issues with the Broadcom WLAN card on the RK3576 EVB.
-> Suspending that platform without a driver being probed works, but after
-> probing brcmfmac suspend is aborted because brcmf_pcie_pm_enter_D3()
-> does not work. As far as I can tell the problem is unrelated to the
-> Rockchip PCIe driver.
->
-Well, I gave it a try on Radxa Rock 5b,
-I am observing the falling warning.
-
-PM: noirq suspend of devices failed
-
-alarm@rockpi-5b:~$ sudo systemctl suspend
-[sudo] password for alarm:
-alarm@rockpi-5b:~$ [  459.301536][ T6149] wlan0: deauthenticating from
-78:d2:94:85:bb:b2 by local choice (Reason: 3=DEAUTH_LEAVING)
-[  459.383823][ T6056] r8169 0004:41:00.0 enP4p65s0: Link is Down
-[  459.384568][ T6056] r8169 0004:41:00.0: disabling bus mastering
-[  459.862229][ T6291] PM: suspend entry (deep)
-[  459.935040][ T6291] Filesystems sync: 0.072 seconds
-[  459.941444][ T6253] (NULL device *): loading
-/lib/firmware/6.18.0-rc3-3-ARM64-GCC/intel/ibt-12-16.sfi failed with
-error -20
-[  459.943775][ T6253] (NULL device *): loading
-/lib/firmware/6.18.0-rc3-3-ARM64-GCC/intel/ibt-12-16.ddc failed with
-error -20
-[  459.945047][   T59] (NULL device *): loading
-/lib/firmware/6.18.0-rc3-3-ARM64-GCC/arm/mali/arch10.8/mali_csffw.bin
-failed with error -20
-[  459.946854][ T6253] (NULL device *): loading
-/lib/firmware/6.18.0-rc3-3-ARM64-GCC/iwlwifi-8265-36.ucode failed with
-error -20
-[  459.953052][ T6291] Freezing user space processes
-[  460.001306][ T6291] Freezing user space processes completed
-(elapsed 0.047 seconds)
-[  460.001993][ T6291] OOM killer disabled.
-[  460.002341][ T6291] Freezing remaining freezable tasks
-[  460.004202][ T6291] Freezing remaining freezable tasks completed
-(elapsed 0.001 seconds)
-[  460.004953][ T6291] printk: Suspending console(s) (use
-no_console_suspend to debug)
-[  460.070242][ T6253] nvme 0000:01:00.0: save config 0x00: 0xa808144d
-[  460.070261][ T6253] nvme 0000:01:00.0: save config 0x04: 0x00100406
-[  460.070272][ T6253] nvme 0000:01:00.0: save config 0x08: 0x01080200
-[  460.070281][ T6253] nvme 0000:01:00.0: save config 0x0c: 0x00000000
-[  460.070291][ T6253] nvme 0000:01:00.0: save config 0x10: 0xf0200004
-[  460.070300][ T6253] nvme 0000:01:00.0: save config 0x14: 0x00000000
-[  460.070309][ T6253] nvme 0000:01:00.0: save config 0x18: 0x00000000
-[  460.070319][ T6253] nvme 0000:01:00.0: save config 0x1c: 0x00000000
-[  460.070328][ T6253] nvme 0000:01:00.0: save config 0x20: 0x00000000
-[  460.070337][ T6253] nvme 0000:01:00.0: save config 0x24: 0x00000000
-[  460.070346][ T6253] nvme 0000:01:00.0: save config 0x28: 0x00000000
-[  460.070355][ T6253] nvme 0000:01:00.0: save config 0x2c: 0xa801144d
-[  460.070364][ T6253] nvme 0000:01:00.0: save config 0x30: 0x00000000
-[  460.070373][ T6253] nvme 0000:01:00.0: save config 0x34: 0x00000040
-[  460.070383][ T6253] nvme 0000:01:00.0: save config 0x38: 0x00000000
-[  460.070392][ T6253] nvme 0000:01:00.0: save config 0x3c: 0x0000016d
-[  460.274027][ T6253] iwlwifi 0002:21:00.0: save config 0x00: 0x24fd8086
-[  460.274058][ T6253] iwlwifi 0002:21:00.0: save config 0x04: 0x00100406
-[  460.274080][ T6253] iwlwifi 0002:21:00.0: save config 0x08: 0x02800078
-[  460.274102][ T6253] iwlwifi 0002:21:00.0: save config 0x0c: 0x00000000
-[  460.274124][ T6253] iwlwifi 0002:21:00.0: save config 0x10: 0xf2200004
-[  460.274146][ T6253] iwlwifi 0002:21:00.0: save config 0x14: 0x00000000
-[  460.274168][ T6253] iwlwifi 0002:21:00.0: save config 0x18: 0x00000000
-[  460.274189][ T6253] iwlwifi 0002:21:00.0: save config 0x1c: 0x00000000
-[  460.274210][ T6253] iwlwifi 0002:21:00.0: save config 0x20: 0x00000000
-[  460.274232][ T6253] iwlwifi 0002:21:00.0: save config 0x24: 0x00000000
-[  460.274253][ T6253] iwlwifi 0002:21:00.0: save config 0x28: 0x00000000
-[  460.274275][ T6253] iwlwifi 0002:21:00.0: save config 0x2c: 0x10108086
-[  460.274296][ T6253] iwlwifi 0002:21:00.0: save config 0x30: 0x00000000
-[  460.274318][ T6253] iwlwifi 0002:21:00.0: save config 0x34: 0x000000c8
-[  460.274340][ T6253] iwlwifi 0002:21:00.0: save config 0x38: 0x00000000
-[  460.274361][ T6253] iwlwifi 0002:21:00.0: save config 0x3c: 0x00000183
-[  460.274917][ T6300] r8169 0004:41:00.0: save config 0x00: 0x812510ec
-[  460.274927][ T6300] r8169 0004:41:00.0: save config 0x04: 0x00100403
-[  460.274937][ T6300] r8169 0004:41:00.0: save config 0x08: 0x02000005
-[  460.274947][ T6300] r8169 0004:41:00.0: save config 0x0c: 0x00000010
-[  460.274957][ T6300] r8169 0004:41:00.0: save config 0x10: 0xf4100001
-[  460.274967][ T6300] r8169 0004:41:00.0: save config 0x14: 0x00000000
-[  460.274977][ T6300] r8169 0004:41:00.0: save config 0x18: 0xf4200004
-[  460.274987][ T6300] r8169 0004:41:00.0: save config 0x1c: 0x00000000
-[  460.274996][ T6300] r8169 0004:41:00.0: save config 0x20: 0xf4210004
-[  460.275006][ T6300] r8169 0004:41:00.0: save config 0x24: 0x00000000
-[  460.275016][ T6300] r8169 0004:41:00.0: save config 0x28: 0x00000000
-[  460.275026][ T6300] r8169 0004:41:00.0: save config 0x2c: 0x012310ec
-[  460.275036][ T6300] r8169 0004:41:00.0: save config 0x30: 0x00000000
-[  460.275045][ T6300] r8169 0004:41:00.0: save config 0x34: 0x00000040
-[  460.275055][ T6300] r8169 0004:41:00.0: save config 0x38: 0x00000000
-[  460.275065][ T6300] r8169 0004:41:00.0: save config 0x3c: 0x00000197
-[  460.285117][ T6253] iwlwifi 0002:21:00.0: PCI PM: Suspend power state: D3hot
-[  460.287498][ T6300] r8169 0004:41:00.0: PCI PM: Suspend power state: D3hot
-[  460.287631][ T6296] pcieport 0004:40:00.0: save config 0x00: 0x35881d87
-[  460.287644][ T6296] pcieport 0004:40:00.0: save config 0x04: 0x00100507
-[  460.287651][ T6296] pcieport 0004:40:00.0: save config 0x08: 0x06040001
-[  460.287658][ T6296] pcieport 0004:40:00.0: save config 0x0c: 0x00010000
-[  460.287664][ T6296] pcieport 0004:40:00.0: save config 0x10: 0x00000000
-[  460.287671][ T6296] pcieport 0004:40:00.0: save config 0x14: 0x00000000
-[  460.287677][ T6296] pcieport 0004:40:00.0: save config 0x18: 0x00414140
-[  460.287683][ T6296] pcieport 0004:40:00.0: save config 0x1c: 0x00000000
-[  460.287689][ T6296] pcieport 0004:40:00.0: save config 0x20: 0xf420f420
-[  460.287696][ T6296] pcieport 0004:40:00.0: save config 0x24: 0x0001fff1
-[  460.287702][ T6296] pcieport 0004:40:00.0: save config 0x28: 0x00000000
-[  460.287708][ T6296] pcieport 0004:40:00.0: save config 0x2c: 0x00000000
-[  460.287714][ T6296] pcieport 0004:40:00.0: save config 0x30: 0x00000000
-[  460.287720][ T6296] pcieport 0004:40:00.0: save config 0x34: 0x00000040
-[  460.287727][ T6296] pcieport 0004:40:00.0: save config 0x38: 0x00000000
-[  460.287733][ T6296] pcieport 0004:40:00.0: save config 0x3c: 0x00020197
-[  460.299895][ T6296] pcieport 0004:40:00.0: PCI PM: Suspend power state: D3hot
-[  460.311927][ T6291] rockchip-dw-pcie a41000000.pcie: Timeout
-waiting for L2 entry! LTSSM: 0x12
-[  460.311935][ T6291] rockchip-dw-pcie a41000000.pcie: PM:
-dpm_run_callback(): genpd_suspend_noirq returns -110
-[  460.311950][ T6291] rockchip-dw-pcie a41000000.pcie: PM: failed to
-suspend noirq: error -110
-[  460.328691][   T57] pcieport 0004:40:00.0: restore config 0x2c:
-0x00000000 -> 0x00000000
-[  460.328706][   T57] pcieport 0004:40:00.0: restore config 0x28:
-0x00000000 -> 0x00000000
-[  460.328714][   T57] pcieport 0004:40:00.0: restore config 0x24:
-0x0001fff1 -> 0x0001fff1
-[  460.329363][ T6299] iwlwifi 0002:21:00.0: restore config 0x3c:
-0x00000100 -> 0x00000183
-[  460.329558][ T6299] iwlwifi 0002:21:00.0: restore config 0x10:
-0x00000004 -> 0xf2200004
-[  460.329643][ T6299] iwlwifi 0002:21:00.0: restore config 0x04:
-0x00100000 -> 0x00100406
-[  460.341978][ T6291] PM: noirq suspend of devices failed
-[  460.352925][ T6303] xhci-hcd xhci-hcd.7.auto: xHC error in resume,
-USBSTS 0x401, Reinit
-[  460.352937][ T6303] usb usb5: root hub lost power or was reset
-[  460.352941][ T6303] usb usb6: root hub lost power or was reset
-[  460.517043][   T56] xhci-hcd xhci-hcd.8.auto: xHC error in resume,
-USBSTS 0x401, Reinit
-[  460.517056][   T56] usb usb7: root hub lost power or was reset
-[  460.517060][   T56] usb usb8: root hub lost power or was reset
-[  460.833660][ T6291] OOM killer enabled.
-[  460.834002][ T6291] Restarting tasks: Starting
-[  460.835432][ T6291] Restarting tasks: Done
-[  460.835846][ T6291] random: crng reseeded on system resumption
-[  460.837377][ T6291] PM: suspend exit
-[  460.838167][ T6291] PM: suspend entry (s2idle)
-[  460.976541][ T6291] Filesystems sync: 0.138 seconds
-[  460.978668][ T6291] Freezing user space processes
-[  460.980928][ T6291] Freezing user space processes completed
-(elapsed 0.001 seconds)
-[  460.981607][ T6291] OOM killer disabled.
-[  460.981954][ T6291] Freezing remaining freezable tasks
-[  460.997394][ T6291] Freezing remaining freezable tasks completed
-(elapsed 0.014 seconds)
-[  460.998116][ T6291] printk: Suspending console(s) (use
-no_console_suspend to debug)
-[  461.041501][ T6299] nvme 0000:01:00.0: save config 0x00: 0xa808144d
-[  461.041520][ T6299] nvme 0000:01:00.0: save config 0x04: 0x00100406
-[  461.041530][ T6299] nvme 0000:01:00.0: save config 0x08: 0x01080200
-[  461.041540][ T6299] nvme 0000:01:00.0: save config 0x0c: 0x00000000
-[  461.041549][ T6299] nvme 0000:01:00.0: save config 0x10: 0xf0200004
-[  461.041559][ T6299] nvme 0000:01:00.0: save config 0x14: 0x00000000
-[  461.041568][ T6299] nvme 0000:01:00.0: save config 0x18: 0x00000000
-[  461.041577][ T6299] nvme 0000:01:00.0: save config 0x1c: 0x00000000
-[  461.041586][ T6299] nvme 0000:01:00.0: save config 0x20: 0x00000000
-[  461.041595][ T6299] nvme 0000:01:00.0: save config 0x24: 0x00000000
-[  461.041604][ T6299] nvme 0000:01:00.0: save config 0x28: 0x00000000
-[  461.041613][ T6299] nvme 0000:01:00.0: save config 0x2c: 0xa801144d
-[  461.041622][ T6299] nvme 0000:01:00.0: save config 0x30: 0x00000000
-[  461.041632][ T6299] nvme 0000:01:00.0: save config 0x34: 0x00000040
-[  461.041641][ T6299] nvme 0000:01:00.0: save config 0x38: 0x00000000
-[  461.041650][ T6299] nvme 0000:01:00.0: save config 0x3c: 0x0000016d
-[  461.211199][ T6307] r8169 0004:41:00.0: save config 0x00: 0x812510ec
-[  461.211220][ T6307] r8169 0004:41:00.0: save config 0x04: 0x00100403
-[  461.211233][ T6307] r8169 0004:41:00.0: save config 0x08: 0x02000005
-[  461.211246][ T6307] r8169 0004:41:00.0: save config 0x0c: 0x00000010
-[  461.211257][ T6307] r8169 0004:41:00.0: save config 0x10: 0xf4100001
-[  461.211269][ T6307] r8169 0004:41:00.0: save config 0x14: 0x00000000
-[  461.211294][ T6297] iwlwifi 0002:21:00.0: save config 0x00: 0x24fd8086
-[  461.211298][ T6307] r8169 0004:41:00.0: save config 0x18: 0xf4200004
-[  461.211311][ T6307] r8169 0004:41:00.0: save config 0x1c: 0x00000000
-[  461.211327][ T6297] iwlwifi 0002:21:00.0: save config 0x04: 0x00100406
-[  461.211333][ T6307] r8169 0004:41:00.0: save config 0x20: 0xf4210004
-[  461.211350][ T6297] iwlwifi 0002:21:00.0: save config 0x08: 0x02800078
-[  461.211355][ T6307] r8169 0004:41:00.0: save config 0x24: 0x00000000
-[  461.211372][ T6297] iwlwifi 0002:21:00.0: save config 0x0c: 0x00000000
-[  461.211379][ T6307] r8169 0004:41:00.0: save config 0x28: 0x00000000
-[  461.211395][ T6297] iwlwifi 0002:21:00.0: save config 0x10: 0xf2200004
-[  461.211401][ T6307] r8169 0004:41:00.0: save config 0x2c: 0x012310ec
-[  461.211417][ T6297] iwlwifi 0002:21:00.0: save config 0x14: 0x00000000
-[  461.211421][ T6307] r8169 0004:41:00.0: save config 0x30: 0x00000000
-[  461.211439][ T6297] iwlwifi 0002:21:00.0: save config 0x18: 0x00000000
-[  461.211445][ T6307] r8169 0004:41:00.0: save config 0x34: 0x00000040
-[  461.211461][ T6297] iwlwifi 0002:21:00.0: save config 0x1c: 0x00000000
-[  461.211468][ T6307] r8169 0004:41:00.0: save config 0x38: 0x00000000
-[  461.211483][ T6297] iwlwifi 0002:21:00.0: save config 0x20: 0x00000000
-[  461.211487][ T6307] r8169 0004:41:00.0: save config 0x3c: 0x00000197
-[  461.211505][ T6297] iwlwifi 0002:21:00.0: save config 0x24: 0x00000000
-[  461.211527][ T6297] iwlwifi 0002:21:00.0: save config 0x28: 0x00000000
-[  461.211550][ T6297] iwlwifi 0002:21:00.0: save config 0x2c: 0x10108086
-[  461.211574][ T6297] iwlwifi 0002:21:00.0: save config 0x30: 0x00000000
-[  461.211596][ T6297] iwlwifi 0002:21:00.0: save config 0x34: 0x000000c8
-[  461.211618][ T6297] iwlwifi 0002:21:00.0: save config 0x38: 0x00000000
-[  461.211644][ T6297] iwlwifi 0002:21:00.0: save config 0x3c: 0x00000183
-[  461.224517][ T6297] iwlwifi 0002:21:00.0: PCI PM: Suspend power state: D3hot
-[  461.224566][ T6307] r8169 0004:41:00.0: PCI PM: Suspend power state: D3hot
-[  461.224614][ T6299] pcieport 0004:40:00.0: save config 0x00: 0x35881d87
-[  461.224622][ T6299] pcieport 0004:40:00.0: save config 0x04: 0x00100507
-[  461.224629][ T6299] pcieport 0004:40:00.0: save config 0x08: 0x06040001
-[  461.224636][ T6299] pcieport 0004:40:00.0: save config 0x0c: 0x00010000
-[  461.224642][ T6299] pcieport 0004:40:00.0: save config 0x10: 0x00000000
-[  461.224649][ T6299] pcieport 0004:40:00.0: save config 0x14: 0x00000000
-[  461.224655][ T6299] pcieport 0004:40:00.0: save config 0x18: 0x00414140
-[  461.224661][ T6299] pcieport 0004:40:00.0: save config 0x1c: 0x00000000
-[  461.224667][ T6299] pcieport 0004:40:00.0: save config 0x20: 0xf420f420
-[  461.224673][ T6299] pcieport 0004:40:00.0: save config 0x24: 0x0001fff1
-[  461.224680][ T6299] pcieport 0004:40:00.0: save config 0x28: 0x00000000
-[  461.224686][ T6299] pcieport 0004:40:00.0: save config 0x2c: 0x00000000
-[  461.224692][ T6299] pcieport 0004:40:00.0: save config 0x30: 0x00000000
-[  461.224698][ T6299] pcieport 0004:40:00.0: save config 0x34: 0x00000040
-[  461.224705][ T6299] pcieport 0004:40:00.0: save config 0x38: 0x00000000
-[  461.224711][ T6299] pcieport 0004:40:00.0: save config 0x3c: 0x00020197
-[  461.236873][ T6299] pcieport 0004:40:00.0: PCI PM: Suspend power state: D3hot
-[  461.247945][ T6291] rockchip-dw-pcie a41000000.pcie: Failed to
-receive PME_TO_Ack
-[  461.258929][ T6291] rockchip-dw-pcie a41000000.pcie: Timeout
-waiting for L2 entry! LTSSM: 0x12
-[  461.258937][ T6291] rockchip-dw-pcie a41000000.pcie: PM:
-dpm_run_callback(): genpd_suspend_noirq returns -110
-[  461.258952][ T6291] rockchip-dw-pcie a41000000.pcie: PM: failed to
-suspend noirq: error -110
-[  461.276608][ T6303] iwlwifi 0002:21:00.0: restore config 0x3c:
-0x00000100 -> 0x00000183
-[  461.276655][ T6302] pcieport 0004:40:00.0: restore config 0x2c:
-0x00000000 -> 0x00000000
-[  461.276683][ T6302] pcieport 0004:40:00.0: restore config 0x28:
-0x00000000 -> 0x00000000
-[  461.276714][ T6302] pcieport 0004:40:00.0: restore config 0x24:
-0x0001fff1 -> 0x0001fff1
-[  461.276805][ T6303] iwlwifi 0002:21:00.0: restore config 0x10:
-0x00000004 -> 0xf2200004
-[  461.276908][ T6303] iwlwifi 0002:21:00.0: restore config 0x04:
-0x00100000 -> 0x00100406
-[  461.289977][ T6291] PM: noirq suspend of devices failed
-[  461.302571][ T6298] xhci-hcd xhci-hcd.7.auto: xHC error in resume,
-USBSTS 0x401, Reinit
-[  461.302581][ T6298] usb usb5: root hub lost power or was reset
-[  461.302585][ T6298] usb usb6: root hub lost power or was reset
-[  461.425101][ T6307] xhci-hcd xhci-hcd.8.auto: xHC error in resume,
-USBSTS 0x401, Reinit
-[  461.425111][ T6307] usb usb7: root hub lost power or was reset
-[  461.425115][ T6307] usb usb8: root hub lost power or was reset
-[  461.746324][ T6291] OOM killer enabled.
-[  461.746666][ T6291] Restarting tasks: Starting
-[  461.748345][ T6291] Restarting tasks: Done
-[  461.748757][ T6291] random: crng reseeded on system resumption
-[  461.749533][ T6291] PM: suspend exit
-[  461.809104][ T6056] Realtek Internal NBASE-T PHY r8169-4-4100:00:
-attached PHY driver (mii_bus:phy_addr=r8169-4-4100:00, irq=MAC)
-[  461.810148][ T6056] r8169 0004:41:00.0: enabling bus mastering
-[  461.989335][ T6298] r8169 0004:41:00.0 enP4p65s0: Link is Down
-[  464.915207][ T6311] r8169 0004:41:00.0 enP4p65s0: Link is Up -
-1Gbps/Full - flow control rx/tx
-[  465.527599][ T6149] wlan0: authenticate with 78:d2:94:85:bb:b2
-(local address=a4:6b:b6:06:5c:8e)
-[  465.529749][ T6149] wlan0: send auth to 78:d2:94:85:bb:b2 (try 1/3)
-[  465.543850][ T6298] wlan0: authenticated
-[  465.545190][ T6298] wlan0: associate with 78:d2:94:85:bb:b2 (try 1/3)
-[  465.555534][ T6298] wlan0: RX AssocResp from 78:d2:94:85:bb:b2
-(capab=0x31 status=0 aid=1)
-[  465.560431][ T6298] wlan0: associated
-
-Thanks
--Anand
-
-> Changes since PATCHv3:
->  * https://lore.kernel.org/linux-pci/1744940759-23823-1-git-send-email-shawn.lin@rock-chips.com/
->  * rename rockchip_pcie_get_ltssm to rockchip_pcie_get_ltssm_status_reg
->    in a separate patch (Niklas Cassel)
->  * rename rockchip_pcie_get_pure_ltssm to rockchip_pcie_get_ltssm_state
->    in a separate patch (Niklas Cassel)
->  * Move devm_phy_get out of phy_init to probe in a separate patch
->    (Manivannan Sadhasivam)
->  * Add helper function for enhanced LTSSM control mode in a separate patch
->    (Niklas Cassel)
->  * Add helper function for controller mode in a separate patch
->    (Niklas Cassel)
->  * Add helper function for DDL indicator in a separate patch
->    (Niklas Cassel)
->  * Move rockchip_pcie_pme_turn_off implementation in a separate patch
->  * Rebase to v6.18-rc3 using new FIELD_PREP_WM16()
->  * Improve readability of PME_TURN_OFF/PME_TO_ACK defines (Manivannan Sadhasivam)
->  * Fix usage of reverse Xmas (Manivannan Sadhasivam)
->  * Assert PERST# before turning off other resources (Manivannan Sadhasivam)
->  * Improve some error messages (Manivannan Sadhasivam)
->  * Rename goto labels as per their purpose (Manivannan Sadhasivam)
->  * Add extra patch for dw_pcie_resume_noirq, since I've seen errors
->    during resume on boards not having anything plugged into their PCIe
->    port
->
-> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> ---
-> Sebastian Reichel (9):
->       PCI: dw-rockchip: Rename rockchip_pcie_get_ltssm function
->       PCI: dw-rockchip: Support get_ltssm operation
->       PCI: dw-rockchip: Move devm_phy_get out of phy_init
->       PCI: dw-rockchip: Add helper function for enhanced LTSSM control mode
->       PCI: dw-rockchip: Add helper function for controller mode
->       PCI: dw-rockchip: Add helper function for DDL indicator
->       PCI: dw-rockchip: Add pme_turn_off support
->       PCI: dw-rockchip: Add system PM support
->       PCI: dwc: support missing PCIe device on resume
->
->  drivers/pci/controller/dwc/pcie-designware-host.c |  13 +-
->  drivers/pci/controller/dwc/pcie-dw-rockchip.c     | 220 ++++++++++++++++++----
->  2 files changed, 198 insertions(+), 35 deletions(-)
-> ---
-> base-commit: dcb6fa37fd7bc9c3d2b066329b0d27dedf8becaa
-> change-id: 20251028-rockchip-pcie-system-suspend-86cf08a7b229
->
-> Best regards,
-> --
-> Sebastian Reichel <sebastian.reichel@collabora.com>
->
->
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+QW0gTW9udGFnLCAyNy4gT2t0b2JlciAyMDI1LCAyMjoxNTowNSBNaXR0ZWxldXJvcMOkaXNjaGUg
+Tm9ybWFsemVpdCBzY2hyaWViIERyYWdhbiBTaW1pYzoKPiBIZWxsbyBBbGV4ZXksCj4gCj4gT24g
+TW9uZGF5LCBPY3RvYmVyIDI3LCAyMDI1IDIxOjU2IENFVCwgQWxleGV5IENoYXJrb3YgPGFsY2hh
+cmtAZ21haWwuY29tPiB3cm90ZToKPiA+IE9uIFR1ZSwgT2N0IDI4LCAyMDI1IGF0IDEyOjAy4oCv
+QU0gRHJhZ2FuIFNpbWljIDxkc2ltaWNAbWFuamFyby5vcmc+IHdyb3RlOgo+ID4gPiBPbiBNb24s
+IE9jdCAyNywgMjAyNSBhdCA3OjA44oCvUE0gSHVnaCBDb2xlLUJha2VyIDxzaWdtYXJpc0BnbWFp
+bC5jb20+IHdyb3RlOgo+ID4gPiA+IE9uIDI3LzEwLzIwMjUgMDk6MTQsIEFsZXhleSBDaGFya292
+IHdyb3RlOgo+ID4gPiA+Cj4gPiA+ID4+IElzIHRoZXJlIGFueSBkb3duc2lkZSB0byBlbmFibGlu
+ZyB0aGlzIHVuY29uZGl0aW9uYWxseSBpbiB0aGUgYm9hcmQKPiA+ID4gPj4gLmR0cz8KPiA+ID4g
+Pgo+ID4gPiA+IE9ubHkgdGhhdCBpdCBnb2VzIGFnYWluc3QgdGhlIHByaW5jaXBsZSB0aGF0IHRo
+ZSBEVCBzaG91bGQgZGVzY3JpYmUgdGhlCj4gPiA+ID4gaGFyZHdhcmU7IHRoZSBib2FyZCAuZHRz
+IHdvdWxkIGRlc2NyaWJlIGEgY29vbGluZyBkZXZpY2UgdGhhdCBkb2Vzbid0Cj4gPiA+ID4gYWN0
+dWFsbHkgZXhpc3Qgb24gdGhlIGJhc2UgYm9hcmQuCj4gPiA+Cj4gPiA+IEhhdmluZyBhIHNlcGFy
+YXRlIERUIG92ZXJsYXkgaXMgcGVyZmVjdGx5IGZpbmUgaWYgd2Ugd2FudCB0bwo+ID4gPiBkZXNj
+cmliZSBhIGJvYXJkIGFic29sdXRlbHkgY29ycmVjdGx5OiBpZiB0aGUgZmFuIGFjdHVhbGx5IGlz
+bid0Cj4gPiA+IHByZXNlbnQsIHRoZSBvcGVyYXRpbmcgc3lzdGVtIHNob3VsZG4ndCBiZSBtYWRl
+IHRvIHRoaW5rIGl0IGlzCj4gPiA+IHRoZXJlLCBlc3BlY2lhbGx5IGlmIHRoZXJlJ3Mgbm8gZmFu
+IFJQTSBmZWVkYmFjaywgd2hpY2ggaXMgdGhlCj4gPiA+IGNhc2Ugb24gYWxtb3N0IGFsbCBSb2Nr
+Y2hpcCBib2FyZHMgdGhhdCBzdXBwb3J0IGEgZmFuLgo+ID4gPgo+ID4gPiBQcmV2ZW50aW5nIHRo
+ZSBrZXJuZWwgZnJvbSBtYW5hZ2luZyBhIG5vbi1leGlzdGVudCBmYW4gbWlnaHQgZXZlbgo+ID4g
+PiBzYXZlIHNvbWUgQ1BVIGN5Y2xlcywgZW5kaW5nIHVwIHByb2R1Y2luZyBhIGJpdCBsZXNzIGhl
+YXQsIHdoaWNoCj4gPiA+IGNhbiBvbmx5IGhlbHAgaW4gcGFzc2l2ZWx5IGNvb2xlZCBzZXR1cHMu
+Cj4gPiAKPiA+IFNvdW5kcyBsaWtlIGFuIG92ZXJjb21wbGljYXRpb24gd2l0aG91dCByZWFsIGJl
+bmVmaXQuIEl0J3Mgb25lIHRoaW5nCj4gPiB3aXRoIG92ZXJsYXlzIGZvciBmdW5jdGlvbmFsaXR5
+IHRoYXQgY2FuIGJlIHNvZnR3YXJlLWluY29tcGF0aWJsZQo+ID4gZGVwZW5kaW5nIG9uIHdoZXRo
+ZXIgYW4gZXh0ZXJuYWwgYXR0YWNobWVudCBpcyBjb25uZWN0ZWQgb3IgZGVwZW5kaW5nCj4gPiBv
+biB0aGUgdHlwZSBvZiBhdHRhY2htZW50IGNvbm5lY3RlZC4gSGVyZSB3ZSBhcmUgbG9va2luZyBh
+dCBhIHBsYWluCj4gPiAyLXBpbiBmYW4gd2hpY2ggY2Fubm90IGJlIHNvZnR3YXJlIGluY29tcGF0
+aWJsZSB0byBhbnl0aGluZyByZWFsbHkKPiA+IChpdCdzIG5vdCBsaWtlIG9uZSBjb3VsZCByZXB1
+cnBvc2UgdGhlIGZhbiBjb25uZWN0b3IgZm9yIGFueXRoaW5nCj4gPiBtZWFuaW5nZnVsIGlmIGEg
+ZmFuIGlzIG5vdCBpbiB1c2UsIGFuZCBub29uZSBnZXRzIGh1cnQgaWYgYSBQV00gb3V0cHV0Cj4g
+PiBpcyBsZWZ0IHJ1bm5pbmcgd2l0aG91dCBsb2FkKS4KPiA+IAo+ID4gVGhlIENQVSBjeWNsZXMg
+c3BlbnQgcGFyc2luZyBhIHNsaWdodGx5IGxhcmdlciBEVEIgYXQgYm9vdCBhcmUgbGlrZWx5Cj4g
+PiBjb21wYXJhYmxlIHRvIHRob3NlIHNwZW50IGFjdGl2YXRpbmcgYSBQV00gb3V0cHV0IG5lZWRs
+ZXNzbHkgdXBvbgo+ID4gaGl0dGluZyB0aGUgYWN0aXZlIGNvb2xpbmcgdHJpcCBwb2ludCwgYW5k
+IGJvdGggYXJlIG5lZ2xpZ2libGUgZm9yIGFueQo+ID4gcHJhY3RpY2FsIHB1cnBvc2UuCj4gCj4g
+SG1tLCByaWdodCwgSSBmb3Jnb3QgZm9yIGEgbW9tZW50IHRoYXQgdGhlIFBXTSBvdXRwdXQgaXMg
+Z2VuZXJhdGVkCj4gYnkgZGVkaWNhdGVkIGhhcmR3YXJlLCBzbyBub3QgbWFueSBDUFUgY3ljbGVz
+IHdvdWxkIGJlIHdhc3RlZC4KPiAKPiBCVFcsIHdpdGggYSBmYW4gUFdNIHNpZ25hbCBnZW5lcmF0
+ZWQgYnkgYSBzb2Z0LUdQSU8gb3V0cHV0LCBtdWNoCj4gbW9yZSBDUFUgY3ljbGVzIHdvdWxkJ3Zl
+IGJlZW4gc2F2ZWQgYnkgb21pdHRpbmcgdGhlIGZhbiBkZWZpbml0aW9uCj4gaWYgaXQgaXNuJ3Qg
+cHJlc2VudCwgYnV0IHRoYXQgaXNuJ3QgdGhlIGNhc2UgaGVyZS4KPiAKPiA+ID4gSG93ZXZlciwg
+dGhlIHByYWN0aWNlIHNvIGZhciBoYXMgYmVlbiB0byBkZXNjcmliZSB0aGUgZmFucyBpbiB0aGUK
+PiA+ID4gbWFpbiBib2FyZCBkdHMgZmlsZXMsIGlmIHRoZSBib2FyZCBwcm92aWRlcyBmYW4gc3Vw
+cG9ydCwgcmVnYXJkbGVzcwo+ID4gPiBvZiB0aGUgZmFuIGJlaW5nIHByZXNlbnQgaW4gYSBwYXJ0
+aWN1bGFyIGJvYXJkIHNldHVwIG9yIG5vdC4KPiA+ID4KPiA+ID4gPiBJIGd1ZXNzIHRoZW4gaW4g
+dGhlb3J5LCBhbiBPUyBtaWdodCBhbGxvdyB0aGUgU29DIHRvIHJlYWNoIHVuZGVzaXJhYmx5IGhp
+Z2gKPiA+ID4gPiB0ZW1wZXJhdHVyZXMgaWYgaXQncyByZWx5aW5nIG9uIHRoZSBub25leGlzdGVu
+dCBmYW4gdG8gY29vbCBpdCBkb3duLiBCdXQgSQo+ID4gPiA+IGRvbid0IHRoaW5rIHRoaXMgd291
+bGQgYmUgYW4gaXNzdWUgb24gTGludXgsIGF0IGxlYXN0LCBpbiBwcmFjdGljZS4KPiA+ID4KPiA+
+ID4gV2UncmUgc2FmZSwgYSB0aGVybWFsIHJ1bmF3YXkgaXNuJ3QgZ29pbmcgdG8gaGFwcGVuIHdo
+ZW4gdGhlIGZhbiBpcwo+ID4gPiBkZWZpbmVkIGluIGEgYm9hcmQgRFQgYnV0IGFjdHVhbGx5IGlz
+bid0IHByZXNlbnQuICBUaGVybWFsIENQVSBhbmQKPiA+ID4gR1BVIHRocm90dGxpbmcgd2lsbCBw
+cmV2ZW50IHRoZSBvdmVyaGVhdGluZyBmcm9tIGhhcHBlbmluZy4KPiA+ID4KPiA+ID4gPj4gT3Zl
+cmxheXMgcmVxdWlyZSBtb3JlIHVzZXIgY29uZmlndXJhdGlvbiwgYW5kIG5vdCBhbGwKPiA+ID4g
+Pj4gYm9vdGxvYWRlcnMgc3VwcG9ydCB0aGVtIGRpcmVjdGx5IChlLmcuIHN5c3RlbWQtYm9vdCB1
+c2VycyB3b3VsZAo+ID4gPiA+PiBzdHJ1Z2dsZSkuIENvbXBpbGluZyB3aXRoIG92ZXJsYXlzIGVu
+YWJsZWQgYWxzbyBtYWtlcyAuZHRiJ3MgYSBsb3QKPiA+ID4gPj4gbGFyZ2VyIGR1ZSB0byBhZGRl
+ZCBzeW1ib2xzIGluZm9ybWF0aW9uLgo+ID4gPiA+Cj4gPiA+ID4gTm93YWRheXMgKG9uIERlYmlh
+biBhdCBsZWFzdCkgdXNpbmcgb3ZlcmxheXMgaXMgcHJldHR5IGVhc3ksIEknbSB1c2luZyB0aGUK
+PiA+ID4gPiB1LWJvb3QtbWVudSBwYWNrYWdlIGluIERlYmlhbiwgSSBqdXN0IGNvcHkgdGhlIG92
+ZXJsYXkocykgdG8gL2Jvb3QvZHRiby8gYW5kCj4gPiA+ID4gaXQgZGV0ZWN0cyB0aGVtIGF1dG9t
+YXRpY2FsbHkgYW5kIGFkZHMgdGhlbSB0byBleHRsaW51eC5jb25mIGZvciB1LWJvb3QgdG8KPiA+
+ID4gPiBhcHBseS4KPiA+ID4gPgo+ID4gPiA+IENvdWxkbid0IHN5c3RlbWQtYm9vdCB1c2VycyBq
+dXN0IHVzZSByazM1ODgtbmFub3BjLXQ2LShsdHMtKXdpdGgtZmFuLmR0YiBhcwo+ID4gPiA+IHRo
+ZWlyIHNpbmdsZSBEVCB0byBsb2FkLCBpZiBpdCBkb2Vzbid0IHN1cHBvcnQgYXBwbHlpbmcgb3Zl
+cmxheXMgYW5kIHRoZXkKPiA+ID4gPiB3YW50IHRvIHVzZSB0aGUgZmFuIGFkZG9uPwo+ID4gCj4g
+PiBTdXJlLCBidXQgaXQncyBhIG1hbnVhbCBjb25maWd1cmF0aW9uIHN0ZXAsIHdoZXJlIG90aGVy
+d2lzZSB0aGUga2VybmVsCj4gPiB3b3VsZCBqdXN0IGRlZmF1bHQgdG8gdGhlIGNvcnJlY3QgZHRi
+IGZvciB0aGUgYm9hcmQgdGhhdCB0aGUgZmlybXdhcmUKPiA+IHRvbGQgaXQgYWJvdXQuIFRoZSBm
+YW4gaXMgbm90IGRpc2NvdmVyYWJsZSwgc28gdGhlIGZpcm13YXJlIHdvbid0IGV2ZXIKPiA+IG9m
+ZmVyIHRoZSAiLXdpdGgtZmFuIiB2YXJpYW50LCBtZWFuaW5nIHVzZXJzIHdvdWxkIG5lZWQgdG8g
+c3VwcGx5IGl0Cj4gPiBtYW51YWxseSBpbiBldmVyeSBpbnN0YW5jZS4KPiAKPiBGV0lXLCB0aGUg
+bW9zdCB1c2VyLWZyaWVuZGx5IFNCQyBmYW1pbHkgaW4gdGhlIHdvcmxkLCBSYXNwYmVycnkKPiBQ
+aSwgOikgcmVxdWlyZXMgbWFudWFsIGVuYWJsaW5nIG9mIHRoZSBmYW4gb24gUmFzcGJlcnJ5IFBp
+IDQuCj4gSSBoYXZlbid0IHJlc2VhcmNoZWQgd2hhdCdzIHRoZSBiYWNrZ3JvdW5kIGZvciB0aGF0
+LCBwZXJoYXBzIHRoZQo+IG5lZWQgdG8ga2VlcCB0aGUgR1BJTyBleHBhbnNpb24gaGVhZGVyIGNv
+bXBsZXRlbHkgdW5vY2N1cGllZCBieQo+IGRlZmF1bHQsIGJlY2F1c2UgdGhlIGZhbiBhdHRhY2hl
+cyB0byB0aGUgR1BJTyBoZWFkZXIsIGluc3RlYWQgb2YKPiB0byBzb21lIGRlZGljYXRlZCBmYW4g
+Y29ubmVjdG9yLgo+IAo+ID4gPiBZZXMsIHRoYXQncyBhbiBvcHRpb24uICBIb3dldmVyLCB0aGF0
+IGluIGdlbmVyYWwgZG9lc24ndCByZXNvbHZlCj4gPiA+IHRoZSBpc3N1ZXMgYXJpc2luZyBmcm9t
+IHN5c3RlbWQtYm9vdCB1c2VycyB3YW50aW5nIHRvIGFwcGx5IG1vcmUKPiA+ID4gdGhhbiBhIHNp
+bmdsZSBEVCBvdmVybGF5Lgo+ID4gPgo+ID4gPiA+IEZXSVcsIEkgaGF2ZW4ndCBub3RpY2VkIGFu
+eSBwcm9ibGVtcyB3aXRoIGhhdmluZyBhIGxhcmdlciAuZHRiICh1c2luZyBtYWlubGluZQo+ID4g
+PiA+IFUtQm9vdCB0byBsb2FkIGl0KSBhbmQgc2V2ZXJhbCBvdGhlciBSSzM1ODggYm9hcmRzIGFy
+ZSBhbHNvIGNvbXBpbGVkIHdpdGgKPiA+ID4gPiBzeW1ib2xzIGVuYWJsZWQgYWxyZWFkeSwgYW5k
+IEkgaGF2ZW4ndCBzZWVuIGFueSBpc3N1ZXMgcmVwb3J0ZWQgd2l0aCB0aGVtLgo+ID4gPgo+ID4g
+PiBBZnRlciB0aGlua2luZyBhIGJpdCBhYm91dCBpdCwgSSdkIHN1cHBvcnQgdGhlIGV4dHJhY3Rp
+b24gb2YgZmFuCj4gPiA+IGRlZmluaXRpb25zIGludG8gc2VwYXJhdGUgRFQgb3ZlcmxheXMuICBB
+cyBJIHdyb3RlIGFib3ZlIGFscmVhZHksCj4gPiA+IG5vdCBtYW5hZ2luZyB0aGUgbm9uLWV4aXN0
+ZW50IGZhbiBtaWdodCBhY3R1YWxseSBoZWxwIGEgYml0IHdpdGgKPiA+ID4gcGFzc2l2ZWx5IGNv
+b2xlZCBib2FyZCBzZXR1cHMsIHdoaWNoIGlzIGEgZ29vZCBlbm91Z2ggcmVhc29uIGZvcgo+ID4g
+PiBtZSB0byBzdXBwb3J0IHNlcGFyYXRlIERUIG92ZXJsYXlzLgo+ID4gCj4gPiBQcmFjdGljYWwg
+YmVuZWZpdHMgc291bmQgZmFyIGZldGNoZWQgaGVyZSwgd2hpbGUgZm9yY2luZyB1c2VycyB0bwo+
+ID4gbWFudWFsbHkgY29uZmlndXJlIHNvbWV0aGluZyB0aGF0IHdvdWxkIGhhdmUgb3RoZXJ3aXNl
+IGp1c3Qgd29ya2VkLgo+ID4gTGV0J3Mgc2VlIHdoYXQgSGVpa28gdGhpbmtzLgoKUGVyc29uYWxs
+eSwgSSdtIG1vcmUgb24gdGhlIGxlc3MgY29tcGxpY2F0aW9uIHNpZGUuCgpJLmUuIGlmIHRoZXJl
+IGlzIGFuIGFjdHVhbCBmYW4tY29ubmVjdG9yIG9uIHRoZSBib2FyZCB3ZSBzaG91bGQgZGVzY3Jp
+YmUKaXQgYXMgc3VjaC4KCk92ZXJsYXlzIEkgc2VlIGZvciB0aGluZ3Mgd2hlcmUgeW91IGF0dGFj
+aCBoYXRzIHRvIGdlbmVyaWMgcGluIGhlYWRlcnMKdG8gY3JlYXRlIHNwZWNpZmljIGZ1bmN0aW9u
+YWxpdHkgb24gdG9wIG9mIGEgZ2VuZXJpYyBpbnRlcmZhY2UuCgpCdXQgaWYgdGhlIGJvYXJkIGl0
+c2VsZiBoYXMgYW4gYWN0dWFsIGZhbiBoZWFkZXIsIGl0IHNob3VsZCBiZSBkZXNjcmliZWQKYXMg
+c3VjaC4gQmVjYXVzZSB0aGF0IHRoZW4gX2lzXyB0aGUgc3RhbmRhcmQgdXNlIG9mIHRoYXQuCgoK
+SGVpa28KCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
+TGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVh
+ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1y
+b2NrY2hpcAo=
