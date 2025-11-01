@@ -4,58 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBC75CCFA03
-	for <linux-rockchip@archiver.kernel.org>; Sat,  1 Nov 2025 14:00:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0FC2CCFA03
+	for <linux-rockchip@archiver.kernel.org>; Sat,  1 Nov 2025 14:01:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bP6FJTFh1GbgkJXbAsKbUStIOaWuRaB1CXU3Ti8Vyh4=; b=1dVy8sRWrse3H+
-	QEsSzalJrsNcCEzsXKNFNu20VYu8K4E1jGWbMAzMtfVVZ2Izq+CPwz2JvjJRufbaFR/uZL3YWui1E
-	bq4X8sAG+ETW9lfgJUFZbtRU8xDPGe1qlcGKD9iNZDgEjO3lscAow1lcAXSah0Ztya4I2erDg5Sjj
-	Ew751s3dQnU2oMlvEjsdOXX4Iwk2c2wMb4Nys4Sok/tU4oWSaLuFX3A+qIw06tsZU0FJVT993xsBA
-	0kpPvs/D9C46RYJSbt6FoP6bmYXZ7WX0zyf5wuYHEKLVSGFGgDWdPwt4c+YCXKNB8CgvtE7dFtx5d
-	OYvUh3EBhjCh7Fr5HhNw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=TQ5FKPe/1rKuN7UGA3wYJfGvaucXRdSKkhHNpDlkj/c=; b=x8gplL6iJHM9R2
+	OUVDmD+lMMZWKSdyumTOULSn4O+V/xVzgu+u38M/Z0DBvhsZ+M/ZKBW2oFfg6+pHZSit29twfWq+Y
+	Pp38pJibW/I++HBY64W/+CjxRZV257/o7pG1v8yhlyYQbnRLpF4wcFDR2Gn5GWTybpEzWbeouKdyT
+	rSxkTGUu+i0KWIFWxWrXppBt5paFFq08lpuwGKsgV7DbiqpuXU943WSY5zeXWev9xGW4pedqFO8l0
+	AauRknq5p3VrOA18pCEa24pTYIqKE3u2jxE2hFmeaArutGEZGAnQNgrye+zIJa8h0iyOpi8Gi01yv
+	MRyFlJNx0w1AfCRTsxpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vFC99-00000007ofx-2p62;
-	Sat, 01 Nov 2025 13:59:59 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vFCAP-00000007oor-1IPG;
+	Sat, 01 Nov 2025 14:01:17 +0000
+Received: from mail-m49198.qiye.163.com ([45.254.49.198])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vFC97-00000007ofi-2Urp;
-	Sat, 01 Nov 2025 13:59:57 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 2B7F3601EF;
-	Sat,  1 Nov 2025 13:59:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CF889C4CEF1;
-	Sat,  1 Nov 2025 13:59:50 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1762005595;
-	bh=m7C3U3qzThf33XwoRsd1OWSRs7f7Z7SEULSpUd0++FY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=midrRS9rdrC+XyGBuprUT4byWe1Zbx/aHwRVsM+laKgkIPY7Hx0MJsydN9UB+Mv1u
-	 LbjwBJ0uN6ZNQlsengRus2AVi7f6atWT6IJu7UjpqkpWDAZamMvSWB3BNNYmUwAmmy
-	 zR9gHFpHDvN6JJxI4WpQYjKhQsgMlRV4KOVeQIQNqQtdNRtbw5Z5AJtWih8S9HhBbb
-	 392hKPrCZIEMqw4uzD3aHXmWt084ouHdWBexpDvcUYuupitHWxQ80xCGsYj1Q50qJi
-	 cTIpw3gZ3ylkPAMmbZC1FX7GqXEHUDAHY5CZ3pHoTgurhIc0I2X1DvN70aD/U529w2
-	 pp8HI2n2Tgf8Q==
-Date: Sat, 1 Nov 2025 19:29:41 +0530
-From: Manivannan Sadhasivam <mani@kernel.org>
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>, 
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>, Rob Herring <robh@kernel.org>, 
-	Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, 
-	Philipp Zabel <p.zabel@pengutronix.de>, Jingoo Han <jingoohan1@gmail.com>, 
-	Shawn Lin <shawn.lin@rock-chips.com>, linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, kernel@collabora.com
-Subject: Re: [PATCH v4 0/9] PCI: dw-rockchip: add system suspend support
-Message-ID: <cf6zumlp4iiltglu7bbrpdeysaznrkyvlemwl4lxwkfjkgux7a@wl37bxilsprx>
-References: <20251029-rockchip-pcie-system-suspend-v4-0-ce2e1b0692d2@collabora.com>
+	id 1vFCAL-00000007ony-1Pyd;
+	Sat, 01 Nov 2025 14:01:15 +0000
+Received: from localhost.localdomain (unknown [58.61.140.134])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 2802e7076;
+	Sat, 1 Nov 2025 22:01:07 +0800 (GMT+08:00)
+From: Chukun Pan <amadeus@jmu.edu.cn>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	Chukun Pan <amadeus@jmu.edu.cn>
+Subject: [PATCH 1/1] arm64: dts: rockchip: drop reset from rk3576 i2c9 node
+Date: Sat,  1 Nov 2025 22:01:01 +0800
+Message-Id: <20251101140101.302229-1-amadeus@jmu.edu.cn>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20251029-rockchip-pcie-system-suspend-v4-0-ce2e1b0692d2@collabora.com>
+X-HM-Tid: 0a9a3fb8ce2803a2kunm744b76102df25f
+X-HM-MType: 10
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkZThpCVkpOGUJOSh4YSBoaH1YeHw5VEwETFhoSFy
+	QUDg9ZV1kYEgtZQVlOQ1VNSlVKT0tVSkhPWVdZFhoPEhUdFFlBWU9LSFVKS0hKTkxOVUpLS1VKQk
+	tLWQY+
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251101_070113_851359_2C90070D 
+X-CRM114-Status: UNSURE (   7.89  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,79 +65,39 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkLCBPY3QgMjksIDIwMjUgYXQgMDY6NTY6MzlQTSArMDEwMCwgU2ViYXN0aWFuIFJlaWNo
-ZWwgd3JvdGU6Cj4gSSd2ZSByZWNlbnRseSBiZWVuIHdvcmtpbmcgb24gZml4aW5nIHVwIGF0IGxl
-YXN0IGJhc2ljIHN5c3RlbSBzdXNwZW5kCj4gc3VwcG9ydCBvbiB0aGUgUm9ja2NoaXAgUkszNTc2
-IHBsYXRmb3JtLiBDdXJyZW50bHkgdGhlIGJpZ2dlc3Qgb3Blbgo+IGlzc3VlIGlzIG1pc3Npbmcg
-c3VwcG9ydCBpbiB0aGUgUENJZSBkcml2ZXIuIFRoaXMgc2VyaWVzIGlzIGEgZm9sbG93LXVwCj4g
-Zm9yIFNoYXduIExpbidzIHNlcmllcyB3aXRoIGZlZWRiYWNrIGZyb20gTmlrbGFzIENhc3NlbCBh
-bmQgTWFuaXZhbm5hbgo+IFNhZGhhc2l2YW0gYmVpbmcgaGFuZGxlZCBhcyB3ZWxsIGFzIHNvbWUg
-b2YgbXkgb3duIGNoYW5nZXMgZml4aW5nIHVwCj4gdGhpbmdzIEkgbm90aWNlZC4KPiAKPiBJbiBv
-cHBvc2l0ZSB0byBTaGF3biBMaW4gSSBkaWQgbm90IHRlc3Qgd2l0aCBkaWZmZXJlbnQgcGVyaXBo
-ZXJhbHMgYXMgbXkKPiBtYWluIGdvYWwgaXMgZ2V0dGluZyBiYXNpYyBzdXNwZW5kIHRvIHJhbSB3
-b3JraW5nIGluIHRoZSBmaXJzdCBwbGFjZS4KCldvdWxkbid0IGl0IGJyZWFrIHVzZXJzIHdobyBo
-YXZlIGNvbm5lY3RlZCBlbmRwb2ludCBkZXZpY2VzIGFuZCBzdXNwZW5kIHRoZWlyCnBsYXRmb3Jt
-PyBJIGRvbid0IHdhbnQgdG8gaGF2ZSBhbiB1bnRlc3RlZCBmZWF0dXJlIHRoYXQgY291bGQgcG90
-ZW50aWFsbHkgY2F1c2UKcmVncmVzc2lvbnMsIGp1c3QgZm9yIHRoZSBzYWtlIG9mIGdldHRpbmcg
-YmFzaWMgc3lzdGVtIFBNLgoKQnV0IGlmIHlvdXIgZ29hbCBpcyB0byBqdXN0IGFkZCBiYXNpYyBz
-eXN0ZW0gUE0gb3BlcmF0aW9ucyBmb3IgQ0kgdGVzdGluZywgdGhlbgpJIHdvdWxkIHN1Z2dlc3Qg
-eW91IHRvIGRvIHNvbWV0aGluZyBtaW5pbWFsIGluIHRoZSBzdXNwZW5kL3Jlc3VtZSBwYXRoIHRo
-YXQKZG9uJ3QgZGlzcnVwdCB0aGUgb3BlcmF0aW9uIG9mIGEgZGV2aWNlLgoKQnV0IHRoaXMgYWxz
-byBzaG91bGQgYmUgdGVzdGVkIHdpdGggc29tZSBkZXZpY2VzIGZvciBzYW5pdHkuCgotIE1hbmkK
-Cj4gSQo+IGRpZCBub3RpY2UgaXNzdWVzIHdpdGggdGhlIEJyb2FkY29tIFdMQU4gY2FyZCBvbiB0
-aGUgUkszNTc2IEVWQi4KPiBTdXNwZW5kaW5nIHRoYXQgcGxhdGZvcm0gd2l0aG91dCBhIGRyaXZl
-ciBiZWluZyBwcm9iZWQgd29ya3MsIGJ1dCBhZnRlcgo+IHByb2JpbmcgYnJjbWZtYWMgc3VzcGVu
-ZCBpcyBhYm9ydGVkIGJlY2F1c2UgYnJjbWZfcGNpZV9wbV9lbnRlcl9EMygpCj4gZG9lcyBub3Qg
-d29yay4gQXMgZmFyIGFzIEkgY2FuIHRlbGwgdGhlIHByb2JsZW0gaXMgdW5yZWxhdGVkIHRvIHRo
-ZQo+IFJvY2tjaGlwIFBDSWUgZHJpdmVyLgo+IAo+IENoYW5nZXMgc2luY2UgUEFUQ0h2MzoKPiAg
-KiBodHRwczovL2xvcmUua2VybmVsLm9yZy9saW51eC1wY2kvMTc0NDk0MDc1OS0yMzgyMy0xLWdp
-dC1zZW5kLWVtYWlsLXNoYXduLmxpbkByb2NrLWNoaXBzLmNvbS8KPiAgKiByZW5hbWUgcm9ja2No
-aXBfcGNpZV9nZXRfbHRzc20gdG8gcm9ja2NoaXBfcGNpZV9nZXRfbHRzc21fc3RhdHVzX3JlZwo+
-ICAgIGluIGEgc2VwYXJhdGUgcGF0Y2ggKE5pa2xhcyBDYXNzZWwpCj4gICogcmVuYW1lIHJvY2tj
-aGlwX3BjaWVfZ2V0X3B1cmVfbHRzc20gdG8gcm9ja2NoaXBfcGNpZV9nZXRfbHRzc21fc3RhdGUK
-PiAgICBpbiBhIHNlcGFyYXRlIHBhdGNoIChOaWtsYXMgQ2Fzc2VsKQo+ICAqIE1vdmUgZGV2bV9w
-aHlfZ2V0IG91dCBvZiBwaHlfaW5pdCB0byBwcm9iZSBpbiBhIHNlcGFyYXRlIHBhdGNoCj4gICAg
-KE1hbml2YW5uYW4gU2FkaGFzaXZhbSkKPiAgKiBBZGQgaGVscGVyIGZ1bmN0aW9uIGZvciBlbmhh
-bmNlZCBMVFNTTSBjb250cm9sIG1vZGUgaW4gYSBzZXBhcmF0ZSBwYXRjaAo+ICAgIChOaWtsYXMg
-Q2Fzc2VsKQo+ICAqIEFkZCBoZWxwZXIgZnVuY3Rpb24gZm9yIGNvbnRyb2xsZXIgbW9kZSBpbiBh
-IHNlcGFyYXRlIHBhdGNoCj4gICAgKE5pa2xhcyBDYXNzZWwpCj4gICogQWRkIGhlbHBlciBmdW5j
-dGlvbiBmb3IgRERMIGluZGljYXRvciBpbiBhIHNlcGFyYXRlIHBhdGNoCj4gICAgKE5pa2xhcyBD
-YXNzZWwpCj4gICogTW92ZSByb2NrY2hpcF9wY2llX3BtZV90dXJuX29mZiBpbXBsZW1lbnRhdGlv
-biBpbiBhIHNlcGFyYXRlIHBhdGNoCj4gICogUmViYXNlIHRvIHY2LjE4LXJjMyB1c2luZyBuZXcg
-RklFTERfUFJFUF9XTTE2KCkKPiAgKiBJbXByb3ZlIHJlYWRhYmlsaXR5IG9mIFBNRV9UVVJOX09G
-Ri9QTUVfVE9fQUNLIGRlZmluZXMgKE1hbml2YW5uYW4gU2FkaGFzaXZhbSkKPiAgKiBGaXggdXNh
-Z2Ugb2YgcmV2ZXJzZSBYbWFzIChNYW5pdmFubmFuIFNhZGhhc2l2YW0pCj4gICogQXNzZXJ0IFBF
-UlNUIyBiZWZvcmUgdHVybmluZyBvZmYgb3RoZXIgcmVzb3VyY2VzIChNYW5pdmFubmFuIFNhZGhh
-c2l2YW0pCj4gICogSW1wcm92ZSBzb21lIGVycm9yIG1lc3NhZ2VzIChNYW5pdmFubmFuIFNhZGhh
-c2l2YW0pCj4gICogUmVuYW1lIGdvdG8gbGFiZWxzIGFzIHBlciB0aGVpciBwdXJwb3NlIChNYW5p
-dmFubmFuIFNhZGhhc2l2YW0pCj4gICogQWRkIGV4dHJhIHBhdGNoIGZvciBkd19wY2llX3Jlc3Vt
-ZV9ub2lycSwgc2luY2UgSSd2ZSBzZWVuIGVycm9ycwo+ICAgIGR1cmluZyByZXN1bWUgb24gYm9h
-cmRzIG5vdCBoYXZpbmcgYW55dGhpbmcgcGx1Z2dlZCBpbnRvIHRoZWlyIFBDSWUKPiAgICBwb3J0
-Cj4gCj4gU2lnbmVkLW9mZi1ieTogU2ViYXN0aWFuIFJlaWNoZWwgPHNlYmFzdGlhbi5yZWljaGVs
-QGNvbGxhYm9yYS5jb20+Cj4gLS0tCj4gU2ViYXN0aWFuIFJlaWNoZWwgKDkpOgo+ICAgICAgIFBD
-STogZHctcm9ja2NoaXA6IFJlbmFtZSByb2NrY2hpcF9wY2llX2dldF9sdHNzbSBmdW5jdGlvbgo+
-ICAgICAgIFBDSTogZHctcm9ja2NoaXA6IFN1cHBvcnQgZ2V0X2x0c3NtIG9wZXJhdGlvbgo+ICAg
-ICAgIFBDSTogZHctcm9ja2NoaXA6IE1vdmUgZGV2bV9waHlfZ2V0IG91dCBvZiBwaHlfaW5pdAo+
-ICAgICAgIFBDSTogZHctcm9ja2NoaXA6IEFkZCBoZWxwZXIgZnVuY3Rpb24gZm9yIGVuaGFuY2Vk
-IExUU1NNIGNvbnRyb2wgbW9kZQo+ICAgICAgIFBDSTogZHctcm9ja2NoaXA6IEFkZCBoZWxwZXIg
-ZnVuY3Rpb24gZm9yIGNvbnRyb2xsZXIgbW9kZQo+ICAgICAgIFBDSTogZHctcm9ja2NoaXA6IEFk
-ZCBoZWxwZXIgZnVuY3Rpb24gZm9yIERETCBpbmRpY2F0b3IKPiAgICAgICBQQ0k6IGR3LXJvY2tj
-aGlwOiBBZGQgcG1lX3R1cm5fb2ZmIHN1cHBvcnQKPiAgICAgICBQQ0k6IGR3LXJvY2tjaGlwOiBB
-ZGQgc3lzdGVtIFBNIHN1cHBvcnQKPiAgICAgICBQQ0k6IGR3Yzogc3VwcG9ydCBtaXNzaW5nIFBD
-SWUgZGV2aWNlIG9uIHJlc3VtZQo+IAo+ICBkcml2ZXJzL3BjaS9jb250cm9sbGVyL2R3Yy9wY2ll
-LWRlc2lnbndhcmUtaG9zdC5jIHwgIDEzICstCj4gIGRyaXZlcnMvcGNpL2NvbnRyb2xsZXIvZHdj
-L3BjaWUtZHctcm9ja2NoaXAuYyAgICAgfCAyMjAgKysrKysrKysrKysrKysrKysrLS0tLQo+ICAy
-IGZpbGVzIGNoYW5nZWQsIDE5OCBpbnNlcnRpb25zKCspLCAzNSBkZWxldGlvbnMoLSkKPiAtLS0K
-PiBiYXNlLWNvbW1pdDogZGNiNmZhMzdmZDdiYzljM2QyYjA2NjMyOWIwZDI3ZGVkZjhiZWNhYQo+
-IGNoYW5nZS1pZDogMjAyNTEwMjgtcm9ja2NoaXAtcGNpZS1zeXN0ZW0tc3VzcGVuZC04NmNmMDhh
-N2IyMjkKPiAKPiBCZXN0IHJlZ2FyZHMsCj4gLS0gCj4gU2ViYXN0aWFuIFJlaWNoZWwgPHNlYmFz
-dGlhbi5yZWljaGVsQGNvbGxhYm9yYS5jb20+Cj4gCgotLSAK4K6u4K6j4K6/4K614K6j4K+N4K6j
-4K6p4K+NIOCumuCupOCuvuCumuCuv+CuteCuruCvjQoKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4
-LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+The reset property is not part of the binding, so drop it.
+It is also not used by the driver, so it was likely copied
+from some vendor-kernel node.
+
+Fixes: 57b1ce903966 ("arm64: dts: rockchip: Add rk3576 SoC base DT")
+Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
+---
+ arch/arm64/boot/dts/rockchip/rk3576.dtsi | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+index f0c3ab00a7f3..a86fc6b4e8c4 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+@@ -2549,8 +2549,6 @@ i2c9: i2c@2ae80000 {
+ 			interrupts = <GIC_SPI 97 IRQ_TYPE_LEVEL_HIGH>;
+ 			pinctrl-names = "default";
+ 			pinctrl-0 = <&i2c9m0_xfer>;
+-			resets = <&cru SRST_I2C9>, <&cru SRST_P_I2C9>;
+-			reset-names = "i2c", "apb";
+ 			#address-cells = <1>;
+ 			#size-cells = <0>;
+ 			status = "disabled";
+-- 
+2.25.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
