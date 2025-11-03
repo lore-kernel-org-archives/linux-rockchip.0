@@ -4,63 +4,183 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0F00CCF9F8
-	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Nov 2025 18:10:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCC54CCFA03
+	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Nov 2025 18:54:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=rQPVQqemhT4WwnH/IX7czMIVau/KTu61i2Zg7ftcEKo=; b=j6ZZV5mvzBSuP8
-	CfhjzfFe+uC0JrkRzj7/C1yzZNsWe6RmXTCdw9KuaW6b7Mf1kjKZ8WAmNZs23I2cPrZOh7tgrxY6k
-	ZdvsNJgI9f3bSm8YLSQelOvL1BzwEeH12rCZ6qsb9IwJLTqCs707cceAAQ8UxzjseXImGGMpls7fQ
-	qdZIyZ5mhz+puRMk25Im9YFD0MsiWXzs6Kc0PjPzHOaQsacdqgyBxiW/TjTzow2ftjbv8M4d7Olqx
-	/znlSaFtY6n1gOehEC2VhryF49+Xb5bondX6/GZlijEbjNGtD7+a309Wn/Ec4RsfHMG5m0kp599ys
-	xZvc/JBtr9c3tyhuywKg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=OgtgHuPyqYjj3OzXihHX9NPLIDYW+ESQxiSJsUJ5SiA=; b=rYD29WvaQT03T0
+	razFRq56Yir2BwYWTNAUbKi5SoYkFVBcz7T01e3EGrToowLOlJovAlyfEN+5eC9opENUyjO1yeinU
+	Bs3iTGT8y9AYtmwYB4EKTImaxmW7HYYNAFkW0p7ZzcLObRVAXgfDq42PW5Too73d20iwyen+lW0FB
+	9ey7Q+8FEoCeXs+1vqfDy/2m70sD0CDERXRFmmCT8skLA60R/9EP4RP+QWCKIZ6oxqfjNKSbTg2sQ
+	o9yflulZIVf7PECmo8wJSe+EWMqx7eH+1Q1VS4ua7+6mrWrWMbB9C1k0BwKZRAbHgoTtfgHh8CcTb
+	25OuDw5Mxgh/Cne5tO5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vFz0s-0000000ASyA-3Yak;
-	Mon, 03 Nov 2025 18:10:42 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vFzh1-0000000AVpN-15WF;
+	Mon, 03 Nov 2025 18:54:15 +0000
+Received: from mail-centralusazon11010023.outbound.protection.outlook.com ([52.101.61.23] helo=DM1PR04CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vFz0r-0000000ASxk-1W0v;
-	Mon, 03 Nov 2025 18:10:41 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 7FD446013C;
-	Mon,  3 Nov 2025 18:10:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 03921C4CEE7;
-	Mon,  3 Nov 2025 18:10:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1762193440;
-	bh=dZ5DzmV8v+EdzX/v24I9P1Dtpu2Lj+7owRynAELiKHQ=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=LwB/JXL47a6IAwbTm9xSakkJCGfu82fn/vpMMT6GFWRB6cQ0dL2vEVWxPkGkmN+N/
-	 1EkdRhwDrAHXkytiFeIwv/kWUcnqe1++yX7rQ2xrNS6MoNfcRMuoVUIXLkO546Edak
-	 EGkq79cEE0iemsqGiiDdxOTQZgkTya6f4jriLo0bfK2vQso/PHIHxYRjm1BIMXbLkw
-	 MRYd/0ugIMaWgcmpGmednsEbbBZYJFD4BBdr5HPZvtN/nk7/C/+VSM0f+h1zscxvHE
-	 kuXtZQ32SPf/HLrlhA7hUUtHooqG67Z7hW6Dc/Ez7IRSAiCGEP46p6X0vPqoYkmPaJ
-	 FB1RjwG24qhMQ==
-Date: Mon, 3 Nov 2025 12:10:38 -0600
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Geraldo Nascimento <geraldogabriel@gmail.com>
-Cc: linux-rockchip@lists.infradead.org,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Johan Jonker <jbx6244@gmail.com>
-Subject: Re: [RFC PATCH 2/2] PCI: rockchip-host: drop wait on PERST# toggle
-Message-ID: <20251103181038.GA1814635@bhelgaas>
-MIME-Version: 1.0
+	id 1vFzgx-0000000AVno-1ovd;
+	Mon, 03 Nov 2025 18:54:12 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=j+pH0y2IONrgVd0+aFugk4tG3iIPaPkd2MKtDKcmGsbH1NMcWTuNRrddwoBmcfxStyDLe1t5LRFP6JHegZ2QJUppf1N6awN2AP/91BpBlUhauryOSg8eVhaUHnH1+HNXRRsqzgyOChOk+uhrZpvZckOzpa39Buk3RHeeiMFo7Fc3eJyqzYUDHL29vg5zpFZ0r8BAtjJ6wzReHxE0gl+ejlSv/3U6lzv4RxhfngZGoDN0d9j3bESbdTZcWZgNa6oRDCFv+DS/X7Ra9GK+y76cS1QfD/5FAvowMhhV8GoGncm4rV+Y3qpjk9Nf4Wm7w5cndJIZ9luJbg+mJ1ioFBQnhw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=yj3fUhDhfhfxVJyqMlNMmluhM8PA25nyJNIOaAuLGDw=;
+ b=TR7ah27wgWnL9PbLrA5OmJXS8DCn/fEbhum65XtvKesH7xo7arWPmzavBW/UfmvSnqjSDpK0PlDHSCsUhxgCY/A3MRGWWdGnu0lDG2dDklRQOLmzdn2QiKaMocg7DIacAv6+ozsuEkBAxFqR/9ecWdurTVuTjcH5bWDK6fyP+dTu8uL1CrfH1cafNcNIs8AI2FMUtnbQHDZmwAuAl7hOT2XesqGZu3TkkpTo7XggLDVhqo26NRDVz+eiH8OdB9r5COAul2gOT5j9CMyc73dLx3dOFA6LiqTMAkiDyK1lO2xmjUW5TEpd1azFS8/khRf39CCwwWQmGi4dQU7x4ThmIA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=yj3fUhDhfhfxVJyqMlNMmluhM8PA25nyJNIOaAuLGDw=;
+ b=mf+znmq9wJatmKJh0YFCJXSEcu7eOiBlvg4zitbxhyZe2HhrcxD7Am8Ssa7x887UJ1PeVa7wgyXpP23MadJdZi+AQ5OlYgZ8dPBQNBghDq6nv7yFX9X+qyj+7kTE+PT0vTysh2+j1OhgZIstNIjThFW0crQA+A6GqYK5zh3I8DKli0X6QIRtq4Mabq5A8jhO3uZRkaP0lkz6XuS4/W+NXQfYomG/e/b1h8oyaTBpe8/tdQL0XIXNEPZFll8F8hZ/f2JbpMJDGqGl6XB5Pm1DtMJkR1wWxlN29l4S+BxE8MtaWjlYaxv0k8+A7waXN6hWF0Bt9dNIpzCuSxhLABScRg==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from MN2PR12MB3613.namprd12.prod.outlook.com (2603:10b6:208:c1::17)
+ by CY5PR12MB6431.namprd12.prod.outlook.com (2603:10b6:930:39::8) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9275.16; Mon, 3 Nov
+ 2025 18:54:01 +0000
+Received: from MN2PR12MB3613.namprd12.prod.outlook.com
+ ([fe80::1b3b:64f5:9211:608b]) by MN2PR12MB3613.namprd12.prod.outlook.com
+ ([fe80::1b3b:64f5:9211:608b%4]) with mapi id 15.20.9275.015; Mon, 3 Nov 2025
+ 18:54:01 +0000
+Date: Mon, 3 Nov 2025 14:54:00 -0400
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Nicolin Chen <nicolinc@nvidia.com>
+Cc: "Tian, Kevin" <kevin.tian@intel.com>,
+	"joro@8bytes.org" <joro@8bytes.org>,
+	"suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
+	"will@kernel.org" <will@kernel.org>,
+	"robin.murphy@arm.com" <robin.murphy@arm.com>,
+	"sven@kernel.org" <sven@kernel.org>, "j@jannau.net" <j@jannau.net>,
+	"jean-philippe@linaro.org" <jean-philippe@linaro.org>,
+	"robin.clark@oss.qualcomm.com" <robin.clark@oss.qualcomm.com>,
+	"dwmw2@infradead.org" <dwmw2@infradead.org>,
+	"baolu.lu@linux.intel.com" <baolu.lu@linux.intel.com>,
+	"yong.wu@mediatek.com" <yong.wu@mediatek.com>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>,
+	"tjeznach@rivosinc.com" <tjeznach@rivosinc.com>,
+	"pjw@kernel.org" <pjw@kernel.org>,
+	"palmer@dabbelt.com" <palmer@dabbelt.com>,
+	"aou@eecs.berkeley.edu" <aou@eecs.berkeley.edu>,
+	"heiko@sntech.de" <heiko@sntech.de>,
+	"schnelle@linux.ibm.com" <schnelle@linux.ibm.com>,
+	"mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
+	"wens@csie.org" <wens@csie.org>,
+	"jernej.skrabec@gmail.com" <jernej.skrabec@gmail.com>,
+	"samuel@sholland.org" <samuel@sholland.org>,
+	"thierry.reding@gmail.com" <thierry.reding@gmail.com>,
+	"jonathanh@nvidia.com" <jonathanh@nvidia.com>,
+	"iommu@lists.linux.dev" <iommu@lists.linux.dev>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"asahi@lists.linux.dev" <asahi@lists.linux.dev>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	"linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
+	"linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
+	"linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
+	"linux-sunxi@lists.linux.dev" <linux-sunxi@lists.linux.dev>,
+	"linux-tegra@vger.kernel.org" <linux-tegra@vger.kernel.org>,
+	"virtualization@lists.linux.dev" <virtualization@lists.linux.dev>,
+	"patches@lists.linux.dev" <patches@lists.linux.dev>
+Subject: Re: [PATCH v1 02/20] iommu: Introduce a test_dev domain op and an
+ internal helper
+Message-ID: <20251103185400.GA1537560@nvidia.com>
+References: <cover.1760312725.git.nicolinc@nvidia.com>
+ <32ce256a2ece5d63e99d5858f953586859818ffc.1760312725.git.nicolinc@nvidia.com>
+ <BN9PR11MB5276D10BD480FE66881870B08CFBA@BN9PR11MB5276.namprd11.prod.outlook.com>
+ <aQO//+6/B/WbdK2h@Asurada-Nvidia>
 Content-Disposition: inline
-In-Reply-To: <d3d0c3a387ff461e62bbd66a0bde654a9a17761e.1762150971.git.geraldogabriel@gmail.com>
+In-Reply-To: <aQO//+6/B/WbdK2h@Asurada-Nvidia>
+X-ClientProxiedBy: BL1PR13CA0265.namprd13.prod.outlook.com
+ (2603:10b6:208:2ba::30) To MN2PR12MB3613.namprd12.prod.outlook.com
+ (2603:10b6:208:c1::17)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: MN2PR12MB3613:EE_|CY5PR12MB6431:EE_
+X-MS-Office365-Filtering-Correlation-Id: 59ee45de-9ea3-4d4a-8db1-08de1b0a5a52
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|1800799024|7416014|376014;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?9ERHwDpYtDfspgdJzH4vMwcZmXWsdSipnlFgTFQyNc4GxvYjQRc/1ZuyaLP4?=
+ =?us-ascii?Q?DxjythutWStwJaahcW4d1M3Ga2p7t2R7DVeN47VLE4KLhwrHLvhppJm7muyP?=
+ =?us-ascii?Q?P/fnPsWGYCNESteAsj+J/Qft65WqoLR23uUB6yfbFS7JihDU3ZL7UStvARZ9?=
+ =?us-ascii?Q?7KzN8dG60Y5d5rEjxq4wTdwZ7NAdKqWNwazYNy0c8iJsZbEjCbS1OhCDQiyD?=
+ =?us-ascii?Q?RTFUvhrjbIA2w3eF1KAeqdHGPpY7rBOz95TDoAhkeRYP6uBGZZa+ILRDoyVs?=
+ =?us-ascii?Q?/y6bAA7AvXUtBEmxqvwNVlJbYn4cG4GCa/A4X801MM7Bo3ydXC/7+rGZfdyT?=
+ =?us-ascii?Q?TjVer46QT57t9FFSNgrpJPV5H60T2pr9T8q/2okIaOZFpxcf7BxlgWzFd7R9?=
+ =?us-ascii?Q?nAXwS7Xkb59Ls2tu3l04ni2uiFeHZhLTwboidNfMWRs8vj+yRnMDJhcj+eXy?=
+ =?us-ascii?Q?N4Abs+1JkVEktZzcrRJHNf3vsSVBrecFqxAmxL2jQhDkdednkcPUo3xLQBM/?=
+ =?us-ascii?Q?WYKjs/kvmOaep6wWU31+DDhUOek6PhG8xQs4rsH+9QGN4+Pz5zEjr2QKX4+g?=
+ =?us-ascii?Q?qIeJ+tbLPWOPM0PbchbAHlTCqJvDgcVQjEQgsFXL8WiPIEjw3+qpGf+Vc4PZ?=
+ =?us-ascii?Q?HblQFUw0FQFO6uVm59FiJBLNO77rlfU3snT8Im1d8y6+a6GWg/lsR2USv5Mj?=
+ =?us-ascii?Q?ouWFk5pmN8DcQkAIXRoFFgEoZMBiQBOpI4SpQZgKF5IR0zNRPB6UGMTvJWhU?=
+ =?us-ascii?Q?V/2aLxpzPQ8k6tNPfF0hEMMWUjYlVkzdnOnRYBIJubPbiUkN1kbfQBzKw+QY?=
+ =?us-ascii?Q?hSD960bVoSFeMBlmHlYcFSbvqIQjbX27DUaujKnBN2lMi8BCfQALlylxXwx9?=
+ =?us-ascii?Q?G+fhqgaolowjQHN9mJADXcNCW6oLof55DXsvrtntVNa5LyGzW6Mr8EJtJPdq?=
+ =?us-ascii?Q?EO7iWxRZKenft3R7azDxTbZLTFfieMSJtHskrySv71vwFZgK3QPGpNYYxvgp?=
+ =?us-ascii?Q?ImLNrFOHFy72VWT+UWwbAjc5rGcNUxEv3rQ5vy//xEgtc+D7I5OSeTwjSvzD?=
+ =?us-ascii?Q?Cw7AW1WS5pg9ApqUj7BVPD3sjmy4pxl8f/Zo0D8l4M2xk2JXA7xqo0qHLFPK?=
+ =?us-ascii?Q?XyGLG4VWWxGIMWTKMmLzX2EKtlNLlekwr8qaNl80x40AxsR0VrMU1LULVgjW?=
+ =?us-ascii?Q?RDrzLlJbdjfyEoCamcJ1es/yClk5sMFPKsoic8H7GWsmO0D7ijFGIwqTbC8f?=
+ =?us-ascii?Q?Xlx474HBsGpu6v5MPaLrq7WWedBaOZrE/zbeZNVnUyhsJYW9S0kpaoxB2FTN?=
+ =?us-ascii?Q?ZzgqnpKt/jQsoNu8s4VnN85dqQOrXfdX1bTjZapDe9jImCalAzJaASzi/KWJ?=
+ =?us-ascii?Q?kN2n/3AoxQY0tFMIjya6IV7WcrNHTcg+lhqO8jzE3OxO2uUABitJw/Mm5Xfr?=
+ =?us-ascii?Q?vXzOGqE8epHkrHOAEMQnYQjMh3YMKGsg?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MN2PR12MB3613.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(7416014)(376014);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?OGt9KK0BZ9r2ndE8cd6PaC3l8X3t8TxblUwAqIhPQVViwSFCdWicPi19O3d0?=
+ =?us-ascii?Q?mhiWtJA3x1S5Q8jGeQEqEj1QGsSefzefmumZKqSbUCdclhE6xpe8YrT5OTou?=
+ =?us-ascii?Q?1w0D4Hu156h3Zlc5bAL11imWASOkJsQpCYtJIUPvhFePeswkTFmLK71+pICD?=
+ =?us-ascii?Q?7KM65h4DlT/sVIGQD1v7ERHtIgx35EZVNaVIlh7wGXZKJUxPsT9HeMOOZEG9?=
+ =?us-ascii?Q?cuyq081aqow/olhhvFZ0K0j/PpZpIumoEscc988/yxVwXPcQFJNKxT8w85kg?=
+ =?us-ascii?Q?NM+gV+UpopDuXk92MUcDzAXQrlL87VQ0YzlVt6HtX7rm/Nl4FI78o3AjVlOT?=
+ =?us-ascii?Q?PLStUtz2FQSxv5GOMuC5+Gl/oOMDX44ktbB8NwT2WvUezW4q6Y0MK91bnnWl?=
+ =?us-ascii?Q?a+r6CJEOLED1R28hs0x3SCNp10NMPOVUYpPYAWXYdDluxqUjCpXrbSaSkEQ6?=
+ =?us-ascii?Q?tdbqn1HQaDrt82pnqwZuJ4rNFGhYkEFnXyTYCqT7XvbtIIrm5jP3RRWrQSqD?=
+ =?us-ascii?Q?pbTdslBayQD56WMs14bRgY8e4mRQv5FZ2J1mEGdYrkLCHhZMOE/tpyf2lgV3?=
+ =?us-ascii?Q?aFXHwF/gKQty0gMOZDV21Ge4rFsVkAj0+OsPZbdwXwRoudiYkKYG5quprnkg?=
+ =?us-ascii?Q?55A2lR7Qjc2Wvx3Ze3/vUJcJ+//mk5AWywYRcop+N6gCiZ0KjAF7HXOq8T6M?=
+ =?us-ascii?Q?gd/hhoDWbzdKvmpr5CP1XPhBxvwJy6J01dVt9I+EOjXmVILrGdb9TWvZ19bv?=
+ =?us-ascii?Q?R//aeg89XrX5RMM2MPp7LWLCxDZX2J6Cq72MUlhVW3Lqvg8oHQr+rL4qE8bt?=
+ =?us-ascii?Q?RFxJMqTXiTr2fAcdoCoyvyCh/L+TDZIgQFQnlfCUY0kacNiZApT8ByowL7dt?=
+ =?us-ascii?Q?7bfGt9Po3iIwCqeIs79DvEJ3csIyD+muH1oiQ0z0rK88e52ab0F5lQW0TXNX?=
+ =?us-ascii?Q?3tkYZtW9km9sZyW6hZ7IAJeDB2B60W0YGW36Ms+g1Zxu2+qUPATnGJo9NWSm?=
+ =?us-ascii?Q?45ETOeieZh0u9bJoQ9yhPhvqRnt0fGJZ97GLXEAtVScfc1eKJ2YTFJK5Ke/1?=
+ =?us-ascii?Q?XIeeO8TyO4gOyOnzxAgt7nKuHQPuA93Kvtq/Lz3cKu7xzw92V5c0p0jA+4IQ?=
+ =?us-ascii?Q?EaxISnTA10C3KujHymKXiK4MiZW33IcaGaX9q7K20p1pB7mau0MXI9sR1g0P?=
+ =?us-ascii?Q?eartFnbO7QE4rXTx2GRA+CLY7Tjnl/5wW5cxMwCbrntYkRfEMMGf2VbecpqF?=
+ =?us-ascii?Q?5okFTUN9jIjthLBXVLV4xoH4muuCeHp8ChHAw218t4om6Zw+Es4+1h+2bTl/?=
+ =?us-ascii?Q?PtGzAcbzwEgztZJcSB93AfXaNelOoQtaWl05W7FXFy7czf9eMOmCCh0GtBNC?=
+ =?us-ascii?Q?8u7nnhtavfELmzjp6yrEoB6oWrF64XCAO9mPNH7vnuFXg/U1IvpKm5PgH8uC?=
+ =?us-ascii?Q?Rg82loKyymA/nmI+xRJAygDp4amQSM6dzkX5OOeI2X+j7egV5nuPKNbzYB13?=
+ =?us-ascii?Q?pZD5P6uRZh2ZBbBDIX4ut0kwaxulFmGfc9KarXmBsz9ffRa17dfry+OE8IaU?=
+ =?us-ascii?Q?pVvQSj0MyVj/zciNyaI=3D?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 59ee45de-9ea3-4d4a-8db1-08de1b0a5a52
+X-MS-Exchange-CrossTenant-AuthSource: MN2PR12MB3613.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Nov 2025 18:54:01.3813
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: GBFFQPVVX6WJAcuBxzILU3DDIplJh+q6ILmgLpN5n59SOQ3VaaYHRADviDm+1mHF
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY5PR12MB6431
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251103_105411_510438_E52D46F8 
+X-CRM114-Status: UNSURE (   9.44  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,52 +197,20 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Nov 03, 2025 at 03:27:25AM -0300, Geraldo Nascimento wrote:
-> With this change PCIe will complete link-training with a known quirky
-> device - Samsung OEM PM981a SSD. This is completely against the PCIe
-> spec and yet it works as long as the power regulator for 3v3 PCIe
-> power is not defined as always-on or boot-on.
+On Thu, Oct 30, 2025 at 12:43:59PM -0700, Nicolin Chen wrote:
 
-What is against the spec?  In what way is this SSD "known quirky"?  Is
-there a published erratum for it?
-
-Removing this delay might make this SSD work, but if this delay is
-required per PCIe spec, how can we be confident that other devices
-will still work?
-
-Reports of devices that still work is not really enough to move this
-from the "hack that makes one device work" column to the "safe and
-effective for all devices" column.
-
-It's easy to see how *lack* of a delay can break something, but much
-harder to imagine how *removing* a delay can make something work.
-Devices must be able to tolerate pretty much arbitrary delays.
-
-> Signed-off-by: Geraldo Nascimento <geraldogabriel@gmail.com>
-> ---
->  drivers/pci/controller/pcie-rockchip-host.c | 1 -
->  1 file changed, 1 deletion(-)
+> FWIW, I am thinking of another design based on Jason's remarks:
+> https://lore.kernel.org/linux-iommu/aQBopHFub8wyQh5C@Asurada-Nvidia/
 > 
-> diff --git a/drivers/pci/controller/pcie-rockchip-host.c b/drivers/pci/controller/pcie-rockchip-host.c
-> index ee1822ca01db..6add0faf6dc9 100644
-> --- a/drivers/pci/controller/pcie-rockchip-host.c
-> +++ b/drivers/pci/controller/pcie-rockchip-host.c
-> @@ -314,7 +314,6 @@ static int rockchip_pcie_host_init_port(struct rockchip_pcie *rockchip)
->  	rockchip_pcie_write(rockchip, PCIE_CLIENT_LINK_TRAIN_ENABLE,
->  			    PCIE_CLIENT_CONFIG);
->  
-> -	msleep(PCIE_T_PVPERL_MS);
->  	gpiod_set_value_cansleep(rockchip->perst_gpio, 1);
->  
->  	msleep(PCIE_RESET_CONFIG_WAIT_MS);
-> -- 
-> 2.49.0
-> 
-> 
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+> So, instead of core initiating the round trip between the blocking
+> domain and group->domain, it forwards dev_reset_prepare/done to the
+> driver where it does a low-level attachment that wouldn't fail:
+>   For SMMUv3, it's an STE update.
+>   For intel_iommu, it seems to be the context table update?
+
+Kevin, how bad do you think the UAPI issue is if we ignore it?
+
+Jason
 
 _______________________________________________
 Linux-rockchip mailing list
