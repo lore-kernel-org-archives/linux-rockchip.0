@@ -4,75 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 329FCCCF9F8
-	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Nov 2025 19:01:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62B46CCF9F8
+	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Nov 2025 20:56:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vV2XzWcaD1LFeIBcA7lQezrw2k79XXewasMgijnoi1c=; b=4jBSOt1DvtHJHqGdXJt3d+WdXE
-	Kvow9JE3AnYRWZbC8NXlFvtNybcKe7wl0QI227dYmt6oZsUV9Trwr6BeUST3E/4/kNLufRu1Wcas5
-	Hoc542COxNl93tatG35oH3ivTZlwdd2gkQ3ljEoiLxlLnLlbqEdO6F7Lsb7FA6xreMb5ytokQZoCv
-	VZ4fDI+YIVGVa3vQmeUbIMHpJ3xzSd4kmJvGZXCE0+2JciRQJWBFk3bfMKs8dbTi9hdHQIxvp2dR1
-	aTLy5bUydoIpMZaRdHewVNMP9ZSGWN/UvFTICNyFi15G/ZFwXP66DmaPKXlxWOPfEyMtvzTPofezo
-	Hg0IHRaQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ugEXfhSVGkUTciquL6JHjkU8O0FSRKkStVLfCtPf3Ro=; b=uDF1l0X+d1jX3Z
+	mvHf1QsG9IDpiFftvSrmNI4NGxFl2Rrn4VLumIbpmwssPEqRCiTPpbbprahygzQv3fRLk/YPbxq76
+	z5zxQRLpXoDPHKtyAQoKTqjKlMgKg4DJGVJegqStjUf7r7i+NAcKUZGKcWfXUWWgPOsKj/TON6duz
+	wKWSpodgPYHyIwdYAtoShfFsY0d5BYqo4lsNBsiY2P+SE7maNvb7AmzdnlaSYGNIh/TbHnc6g4ZYy
+	j3jYOIA4t+lrMREZPbN1EbIS5uO3oBM9T3CGRC/ebyUf4BVWLRFQtZT30RTxX/JdVSQnyMxMl2WoL
+	qsS1ppC8/K7AGrSYTKwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vFznn-0000000AWMy-0gdf;
-	Mon, 03 Nov 2025 19:01:15 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1vG1aj-0000000AcfG-1yTV;
+	Mon, 03 Nov 2025 20:55:53 +0000
+Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vFznl-0000000AWMW-0pKB;
-	Mon, 03 Nov 2025 19:01:14 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1762196454; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=MzqOKhqJa9gC88iyxwI7s7fOQZnWvoV2aM/+RTvqDD4mxXfEG9LJjtR77alZUHm51ui76ALrT4oZnwufmrcsxbzVI0epHtG0v5MqEI4+14qZGLF8yOjXVyyF9iuPy+3DB2g/wQiAA9J9qiuiRb/xXUO7O+f8n5KJDiA2k0gujaY=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1762196454; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=kNKSQa2kVwPMCXQR0sV5pA6zP64EIfrRIVHoLe4gYdQ=; 
-	b=m6OfssqaUlgY2ekPgKcnW3P4V+DvM9hzZewH/Gqv+pX1zvhRsxV0eo6xjg6BiGlxl1wOlvDHCvsJacxXoJBcH1PijR1x6dSbsG8/VtrSUmMlKK/byLu7wqtP1w0ZhX9dz1aKpTmmZbc1nMgxu4xIioKh7EAm5zrJt6i1nu064Pk=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
-	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1762196454;
-	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
-	bh=kNKSQa2kVwPMCXQR0sV5pA6zP64EIfrRIVHoLe4gYdQ=;
-	b=ZznU2pnBIg9Gek3PXRc/sHRorf7yD0gfJO5ILLjdlMkhoGZjhT1jwHCDmr39QeFF
-	up9KK+Xao29K3w11ICC/knQW/kSjMsWUzKNFd7rQu8fRssEDiHx9dfkgjqD+//d+aZF
-	YseptpAb4jRSdCE95LGYit0MeyK3huyXFpwhHrZ0=
-Received: by mx.zohomail.com with SMTPS id 1762196452142381.11883699950636;
-	Mon, 3 Nov 2025 11:00:52 -0800 (PST)
-Received: by venus (Postfix, from userid 1000)
-	id D186A182F6B; Mon, 03 Nov 2025 20:00:45 +0100 (CET)
-Date: Mon, 3 Nov 2025 20:00:45 +0100
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Manivannan Sadhasivam <mani@kernel.org>
-Cc: Krishna Chaitanya Chundru <krishna.chundru@oss.qualcomm.com>, 
-	Lorenzo Pieralisi <lpieralisi@kernel.org>, Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
-	Heiko Stuebner <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Jingoo Han <jingoohan1@gmail.com>, Shawn Lin <shawn.lin@rock-chips.com>, linux-pci@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	kernel@collabora.com
-Subject: Re: [PATCH v4 9/9] PCI: dwc: support missing PCIe device on resume
-Message-ID: <s67opnadijrebativ27oiofub5cgr3lbclhxnmwnqrkltweqqj@j4douhswobsv>
-References: <20251029-rockchip-pcie-system-suspend-v4-0-ce2e1b0692d2@collabora.com>
- <20251029-rockchip-pcie-system-suspend-v4-9-ce2e1b0692d2@collabora.com>
- <dc230a62-bd31-450a-9acd-fa654f694b3a@oss.qualcomm.com>
- <qlil44i7ywwxurdfovkbqvvjff7dey53uy5hzq4zbmvg7jg54o@zdg27w4q26gr>
+	id 1vG1ag-0000000AceV-2MLv
+	for linux-rockchip@lists.infradead.org;
+	Mon, 03 Nov 2025 20:55:51 +0000
+Received: by mail-pf1-x42d.google.com with SMTP id d2e1a72fcca58-76e2ea933b7so4882797b3a.1
+        for <linux-rockchip@lists.infradead.org>; Mon, 03 Nov 2025 12:55:50 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1762203350; x=1762808150; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=T1FZmM9cdt+xj6V1Hd+gvwGWqSc0g8vu7TF1E04sPkw=;
+        b=miRf5ow0zlWl0RpyYWvV0OtjaBsNFFArjysOhc7NSpRBofqQ+pwPzrADrxsovmsyhn
+         nwBDVLldWTxiatJHydzMeTf2drFH9YHdXloHM/jMNI1/NwQDJ5zFFwpzjRFWCodbZn3C
+         //EKMLwipFDiY7zs3XtzNtOW6+kvO6lBXBHUpk5qyKLO5G40CvzIjvUo7P+snDmlzIcL
+         SqrHKQcHLanrpIa3wreZvwJLTECv2sOp64yRZ4lq4KQ7RKmQokCVn9h9m8Cu7XRCP9S4
+         q0CT8XGtNMEk+PmUwp3BvuL1CMdSJDS9VwUUx6BpHIkw0FBS/q9I5i04K4OigWtLrtil
+         6sNA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1762203350; x=1762808150;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=T1FZmM9cdt+xj6V1Hd+gvwGWqSc0g8vu7TF1E04sPkw=;
+        b=BqDxqVO0ZSX2Hz7zyCe8aJibKghJpqExPxdt+aDhAxJQSa7KqNTv14TazvGaYRKL27
+         gj47teK9+3l+sNNiYaROTA4dKbEzrgCdXT1zYkZ34ocJYA34arhdCFk7HsiEo/ao2N1m
+         8/WIFOP3D6moJ3EMWPSZE0wMh4cTOqytIpNwZgRSXQdXe/NLnhD5BskE6qKKP5AS2naa
+         yido+oi5AM4RqpgC4IN0ACHtedPuy6LBVJZn6tFS5irH1TQQI4gUFvz2qplw0hgGpg4R
+         fUMKE6zxFGMIGkHOzAb3pLIuQI5rCSFaZU/j+FfYVk9bXmKAqWoZ/10gDQavO1/2TD45
+         07IA==
+X-Gm-Message-State: AOJu0YzJ2sRZd8VKDNrmjV4PglFcJdfEg4EbhGmXRR9/Ab5KcLS2YBXo
+	AAo9avu/jOOOYNYMkMOVlaOn0cHgUunJOSge+MBtWQvqv3wTLsLdYBN/
+X-Gm-Gg: ASbGncuGuItujjKvNHhJOquj/jG8LbAbn2QVVcnn4VJQa+xFUJpJWZ+eeEAA64YVDVa
+	f+r15K5fG9NQJSIUrb12YxDkSatLsSCCtLfK5/Qb4yQPcOkpcG6/AlMBFKhErCpr2lCUiPBXBcv
+	hgDdVLKAbLS8NvieHAmIqG6xY+Qp4guzQ4uDoQzQ969/8zyVKzkvHNzL/X3rAdtF927QINBpCF3
+	GwJ3mlT72Pwsmn9jwrzZo0QiZlO5QjOGYjvQiUWaInmwmud5/+ubOEugzjs07xD9sInCB9lE7Th
+	6nS+ow3lYRPq3r5P8RVAKpaSjdjn8tt8O0dAYrbhOVEBRy9CaC2fubNj8wprOtbZSs4K5WgOBfu
+	+4uSfL9WWfruCy7beOCTTdzwkyp6c3VFf7bqac2Vmg0QHX0+bg0vOkhljrbQPWQ==
+X-Google-Smtp-Source: AGHT+IGYDVdNgNWocqi7ihWCrOOfROJ4jnfVXq0iLB5L8b6BF6bhkooF51PIKfTJUsi9RRg9FKFduA==
+X-Received: by 2002:a05:6a00:468a:b0:7aa:19a9:566a with SMTP id d2e1a72fcca58-7acbbb5a284mr818412b3a.0.1762203349654;
+        Mon, 03 Nov 2025 12:55:49 -0800 (PST)
+Received: from geday ([2804:7f2:800b:e79::dead:c001])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-7acd623e091sm315775b3a.54.2025.11.03.12.55.45
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 03 Nov 2025 12:55:49 -0800 (PST)
+Date: Mon, 3 Nov 2025 17:55:38 -0300
+From: Geraldo Nascimento <geraldogabriel@gmail.com>
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: linux-rockchip@lists.infradead.org,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Johan Jonker <jbx6244@gmail.com>
+Subject: Re: [RFC PATCH 2/2] PCI: rockchip-host: drop wait on PERST# toggle
+Message-ID: <aQkWysK2XA01lkB8@geday>
+References: <d3d0c3a387ff461e62bbd66a0bde654a9a17761e.1762150971.git.geraldogabriel@gmail.com>
+ <20251103181038.GA1814635@bhelgaas>
 MIME-Version: 1.0
-In-Reply-To: <qlil44i7ywwxurdfovkbqvvjff7dey53uy5hzq4zbmvg7jg54o@zdg27w4q26gr>
-X-Zoho-Virus-Status: 1
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-1.5.1/262.144.53
-X-ZohoMailClient: External
+Content-Disposition: inline
+In-Reply-To: <20251103181038.GA1814635@bhelgaas>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251103_110113_306074_F74C26A7 
-X-CRM114-Status: GOOD (  33.41  )
+X-CRM114-CacheID: sfid-20251103_125550_615033_881159A3 
+X-CRM114-Status: GOOD (  20.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,122 +103,66 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============4419045970336227441=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Mon, Nov 03, 2025 at 12:10:38PM -0600, Bjorn Helgaas wrote:
+> On Mon, Nov 03, 2025 at 03:27:25AM -0300, Geraldo Nascimento wrote:
+> > With this change PCIe will complete link-training with a known quirky
+> > device - Samsung OEM PM981a SSD. This is completely against the PCIe
+> > spec and yet it works as long as the power regulator for 3v3 PCIe
+> > power is not defined as always-on or boot-on.
+> 
+> What is against the spec?  In what way is this SSD "known quirky"?  Is
+> there a published erratum for it?
 
---===============4419045970336227441==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="obly2eyx2h24unc2"
-Content-Disposition: inline
+Hi Bjorn!
 
+My proposed change itself is against the spec.
 
---obly2eyx2h24unc2
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v4 9/9] PCI: dwc: support missing PCIe device on resume
-MIME-Version: 1.0
+This SSD is known to simply not complete initial link-training with
+Rockchip-IP PCIe. This is not officialy documented but based on
+reports across boards (like the Armbian one).
 
-Hi,
+I think it's the other way around though, it's the Rockchip-IP PCIe
+controller that is quirky somehow and doesn't play nice with
+many, many devices.
 
-On Sat, Nov 01, 2025 at 07:50:58PM +0530, Manivannan Sadhasivam wrote:
-> On Thu, Oct 30, 2025 at 11:07:19AM +0530, Krishna Chaitanya Chundru wrote:
-> >=20
-> > On 10/29/2025 11:26 PM, Sebastian Reichel wrote:
-> > > When dw_pcie_resume_noirq() is called for a PCIe root complex for a P=
-CIe
-> > > slot with no device plugged on Rockchip RK3576, dw_pcie_wait_for_link=
-()
-> > > will return -ETIMEDOUT. During probe time this does not happen, since
-> > > the platform sets 'use_linkup_irq'.
-> > >=20
-> > > This adds the same logic from dw_pcie_host_init() to the PM resume
-> > > function to avoid the problem.
-> > >=20
-> > > Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> > > ---
-> > >   drivers/pci/controller/dwc/pcie-designware-host.c | 13 ++++++++++---
-> > >   1 file changed, 10 insertions(+), 3 deletions(-)
-> > >=20
-> > > diff --git a/drivers/pci/controller/dwc/pcie-designware-host.c b/driv=
-ers/pci/controller/dwc/pcie-designware-host.c
-> > > index e92513c5bda5..f25f1c136900 100644
-> > > --- a/drivers/pci/controller/dwc/pcie-designware-host.c
-> > > +++ b/drivers/pci/controller/dwc/pcie-designware-host.c
-> > > @@ -1215,9 +1215,16 @@ int dw_pcie_resume_noirq(struct dw_pcie *pci)
-> > >   	if (ret)
-> > >   		return ret;
-> > > -	ret =3D dw_pcie_wait_for_link(pci);
-> > > -	if (ret)
-> > > -		return ret;
-> > > +	/*
-> > > +	 * Note: Skip the link up delay only when a Link Up IRQ is present.
-> > > +	 * If there is no Link Up IRQ, we should not bypass the delay
-> > > +	 * because that would require users to manually rescan for devices.
-> > > +	 */
-> >=20
-> > In the resume scenario, we should explicitly wait for the link to be up,
-> > there is no IRQ support at this resume phase
->=20
-> This could be fixed if the PM handlers are moved to non-no_irq ones.
->=20
-> > and secondly after controller resume pm framework will start resuming t=
-he
-> > bridges & endpoints. what happens
-> > if the link is not up by the time endpoint is resume is called. And ent=
-ire
-> > save & restore states might also gets messed up.
-> > There will be no way to recover from this.
-> >=20
->=20
-> This is true if there were any devices connected to the bus during suspen=
-d. If
-> there were no devices, then it is fine to skip waiting for the link to be=
- up.
+> 
+> Removing this delay might make this SSD work, but if this delay is
+> required per PCIe spec, how can we be confident that other devices
+> will still work?
 
-I thought about setting a flag in the suspend routine, that a device
-is expected to be there at resume time. But I suppose it might also
-have been removed during the system suspend?
+We really can't be sure there will be no side-effects to other devices.
 
-Greetings,
+> 
+> Reports of devices that still work is not really enough to move this
+> from the "hack that makes one device work" column to the "safe and
+> effective for all devices" column.
 
--- Sebastian
+I agree, and I knew from the start I would not get encouragements from
+the community relative to this change. Still, it seemed selfish not to
+share the workaround.
 
---obly2eyx2h24unc2
-Content-Type: application/pgp-signature; name="signature.asc"
+> 
+> It's easy to see how *lack* of a delay can break something, but much
+> harder to imagine how *removing* a delay can make something work.
+> Devices must be able to tolerate pretty much arbitrary delays.
 
------BEGIN PGP SIGNATURE-----
+That said, the problem of quirky Rockchip-IP PCIe remains. The fact
+that removing the delay makes it work with devices that previously
+did not complete initial link training must at least point to a
+resolution somehow, even if the present change is unacceptable.
 
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmkI+90ACgkQ2O7X88g7
-+pqgZg/9EF9L7gEKTe0tDzzOUncD96XuMsIlIRBt+9Mjsdfd7Xr5Rbr4K0h1lEy6
-Ul6KCQTMonZt0skafLBp3yAiv3rGJsZonOjHtFMsOUNeW+fCH8Ifvp2TqW/1blih
-SJ85klUOM9ShsN42FYcQBfRMHjCFmh1/A5jAgLsT3hlTAWAsBa1PXUd3HAkH4n0P
-cFdNs3+Wlk5FqDY7/xVCUcSEg8Hvfa/VTFbzZrRe6f9E0+tZF/K+rOt5ItRE8WM0
-fRTDnExoYbrwOtkyDjHv5eKLNnZ+Ak4SZX4Td5A+Fk+GhAC8tfOXw5i1qbY4PskL
-vFpUcKUtaKgeAj4aZjuVd2yYOnY8VnuGv7YSa4FAkvNPWufhg/yuVngdqTB1tgR1
-wc5Omt3x/YJzSLl3CYGXTrSnvS1PHYQrOE6kS0mikj/k9h71VYoY7UgpnbryaGjK
-Yl7zrqY5qHsEOLXvrrxrGuRqsG6cPJDLnU+3abanBEKd+lcqMKwyFpoaVmWaWkNO
-3Fdo7XDpitfwzxu96ZxOZgNFsazcovjlziFQnOSNmFdBsiJXsfDapLX4rQqjdrDn
-zFpgCaCCVohNfAAuVq1K1FnH/8z8o6NicAy7rJMCBs8jXw3IpJdfHbT8f3JDNl3r
-AsAHt4gzUND2Jtbwu6zpOaZdLgnQqvbfM+yN1NtiCqhxdEKKtOM=
-=SFK4
------END PGP SIGNATURE-----
+I'll continue to hack around this, see if I can pinpoint exactly why
+that delay screws up my initial link training.
 
---obly2eyx2h24unc2--
-
-
---===============4419045970336227441==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Thanks,
+Geraldo Nascimento
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============4419045970336227441==--
-
