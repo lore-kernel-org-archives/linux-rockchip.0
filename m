@@ -4,96 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EC08CCFA04
-	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Nov 2025 10:11:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACFF5CCF9F8
+	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Nov 2025 10:30:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=P7q48wPo7ci82d+USO5w8lZB6SHL0UC6+BwAu9G5WzI=; b=2OMApLRuCRexN+
-	O9mKi24kTTk3MVD6tRf1ORUqPzo9Qpdcmfz1KW4o+qu2E/SfMSn/UX4pbAewSGtsuRkP16zhiV6gz
-	MNMFu5daVQw+wjEEJTta94ytrCA9YO9RS0wPwaS+/4UGuBvli5W+Mt13OxnRctFwJhj5pVj6WV/Rw
-	wN3X7JjnYJkhPCdcrZDH9gY+MkFCU5y3ejxONAXGzuGJpkPJ/dBLhShSvVJj/sK5cDsLKlGE/qq9X
-	MpI4RsY27sMk3EAbc/xCk/qCnhqkWX0zL49QVyxZArRGJhnWj2GJNTL9OFlNdA0qlSODfWe+GUebE
-	tYwI2KSw3I0QLzxzX6Mw==;
+	List-Owner; bh=WOkn+CO5VvmnpTNl5759KcU6PCXdKtvJToxiUhEuQ8g=; b=qhGWdgOLq+fLVY
+	L5BIVfV9jBNgBeLCMiJ2c4LiLuNFU9W9sBCscDcjbDDu6UMjXCvNek+LCOZyFFajsWMWF7Zkbwgba
+	aN9sW3yujohjw6c8wT9OWY2o7PU2sRo99MMCg+PhRa0ZUnnhdJneu3S5drnnkabCM3LzR4A19hPvW
+	ydWwbbRntl1vWJ4O68iqc1A8p8oyymCjqKqS/f18QjBnCDPvtIcMs801FwsfJX/hYyhp/7x0yrzM/
+	dwKos2c9/GgALq//WqPnDGRRtz1cNEXvpz0cB3DXFXVXF8rJfQ0SZPm8SciXxWgVYCBjliNLR7RqX
+	jvOpjcGTvlVazxuGT8Dw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vFrWY-00000009ZqV-2fa0;
-	Mon, 03 Nov 2025 10:10:54 +0000
-Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
+	id 1vFrp8-00000009dUe-0Bwj;
+	Mon, 03 Nov 2025 10:30:06 +0000
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vFrWV-00000009Zp6-1pH8
+	id 1vFrp5-00000009dTW-1dtI
 	for linux-rockchip@lists.infradead.org;
-	Mon, 03 Nov 2025 10:10:53 +0000
-Received: by mail-ej1-x631.google.com with SMTP id a640c23a62f3a-afcb7ae6ed0so783011666b.3
-        for <linux-rockchip@lists.infradead.org>; Mon, 03 Nov 2025 02:10:50 -0800 (PST)
+	Mon, 03 Nov 2025 10:30:05 +0000
+Received: by mail-ej1-x635.google.com with SMTP id a640c23a62f3a-b64cdbb949cso693575966b.1
+        for <linux-rockchip@lists.infradead.org>; Mon, 03 Nov 2025 02:30:02 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1762164649; x=1762769449; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1762165801; x=1762770601; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=zV61ssPxcQ80Vn+xuEZISQ1ICnJDQBimD7YTtlxO9tk=;
-        b=FPVA8fPIY0Nn9sx6tfXHHSE7MZZVSCsBmNmojbHmL0g6qJH3X2WY3vwJdKCa29Yz0X
-         m/Xv69/2lrCN6mobFG/MJeSD/zZsajYnRJCIHXO9jUjoK98iGUJTyLsl7Jl0wCsAdmMT
-         uNfNWz7nmX+srtC0H7oAFdnNesSLaZiqKD9bknCAQPWCPZdQR6u56Sx5nVzzhAINdP5l
-         6gw7JuiJxtsTILr+mwMVhbE63cAK0e9ccIm605+apyzD3NWMVS7xTK+KGQO7BTuy4VbL
-         sIZiqaea0t8Pw88qd4ZP7AaUx7nSZQLTnGNL0f5zmJG9WMaIeCfJ7AU2GlN+OSVQPNYH
-         BzIQ==
+        bh=7uol8SK9zB104eiF162tGqib2QMloTOnkfiMZtp2mug=;
+        b=fOSBW4ArvDC7mEUh2aQGrBTj+euzgiG9/RQLgcmFCxGHNBJqCGVMzzIII7Ac5JwIot
+         AwvM4n32GRa3QvpDcaGHlLPFQWT58ycZRbw0NgY3UzGoftJVS3uMlTIBwl+ejttkelCt
+         jn3lMIIJdp5qwuPfljoTr3V6pC/oilhcEEVFyA8BzKtbD7md2k5Wo4x49WwV1mHsKymn
+         RVjNy2GlwXROPZVD3cagPYY0TIrfx5yreYLFlR1E395TEBXtLZsMdJlktz1ddhjLlwsV
+         LnRd0LczSHP4cm5fgpopn5c+7w0Y20qYyeHyfdBYK4pVru5H157glkHWnuCUWqc2cJt7
+         NcmA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1762164649; x=1762769449;
+        d=1e100.net; s=20230601; t=1762165801; x=1762770601;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=zV61ssPxcQ80Vn+xuEZISQ1ICnJDQBimD7YTtlxO9tk=;
-        b=Zix4whv+gJnA8wsvdLTo1YBrb52fbaFmuZDwvyIJjpihIC9xj76e4Q45n4CMOmoTS4
-         OWITvMQTzBa0Mem0luD3QQb/n/aW+YfvzW1PYXHXmhTKzuD7SNu87+dOWS7VN7w/1qe3
-         81uKvVdFpc1FUTf/j0mqUpRx4PAYbsVifwMhlI08IIsSN+n3NyGM1olxQDEmDv3UK06C
-         rt2vUAB82xTAvOd/7Nu6lPL845xqXlN9iln37O0n/u9q4HuYCkSA3WwlyPkCwW78bqR3
-         3+5uy5Jj41I55V7q6xrKFrpapYDaknl2Un5HlodaUWNEVGlkih9gxmeIdTYcF9fC3c9N
-         eJ/Q==
-X-Forwarded-Encrypted: i=1; AJvYcCWxLj1YlC3nUMnnQG6QZ9SatWQ3RvwbhEQxXegQTYxLcKXDSXbL/3wbUG5A/z557f++KEZD0jxYFooKWGsE/g==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxTqdR6TnIfwgkbKsmKLVRJNOdn7ByG89o3wudKJGRvduFRaQxO
-	1J6BVTc+MLcKUMpCz/heudaLzX/ilDsAbKU50umMYFbvdCAd7FdtKBB2
-X-Gm-Gg: ASbGncuW3uc75IsGUDBw+iiMIndhO/H6LMK2vlpxoeSa1slEvJ5jp8pmnD1Ew9+Z4as
-	SCSjk/ln4P3nGbmDkQeisqIOzPNf70uH+wYNbdUnDZXn2FYV/MSCJHF6s860eyhj7d1SyplbuJ5
-	8YBVOKGPpYjBN3TmCgxxZGtautfBDgi/HguOHZq9Xu8m3eYw/eaYQru/YqeXuSTz465xOeXg2qX
-	2JEYRUrc/RCI3Wk3udpIxe6/qD+kyI1huQTD8+SA6rlg7ipLX+YN1OE6h1L0Puj3k0tIfwljiLz
-	ZUr5HGDAdeDTCFpd8YkoNhzauoee1Dwr6CUa+moNJhxAqGtX06bSDJe+41xikfLoO6WK2XPcJcQ
-	ncsQ2xZsh1B6YmoCM8lXMqlbnry8NFKzqV/vVWx2exAfG/BTtNpLcUELCigVkhzAtSjjbvzQCb8
-	wu1zzL2GL9elENRfLUQbXforIvahIJ+6PW+tZGJVWM4DXgU3Il6ZPn1w==
-X-Google-Smtp-Source: AGHT+IFp+T/Nu357ftkE83jIAMW9+xcbhTQBIaVYYeJtQz1ee/caz6rCsgqFAGPZlpwzilmbvSJQ7g==
-X-Received: by 2002:a17:907:2d25:b0:b3e:5f20:88ad with SMTP id a640c23a62f3a-b70701c3f34mr1227300566b.28.1762164649077;
-        Mon, 03 Nov 2025 02:10:49 -0800 (PST)
+        bh=7uol8SK9zB104eiF162tGqib2QMloTOnkfiMZtp2mug=;
+        b=I0nJyIh1eFF/WN0z7Xf8ABIttc5bvLbDLJ0SdTlf+GdIzXqxtrYxIvhVEdF1zZ4Js8
+         ZzwO6wrliOjtC9d+8YZ6bTuaz3uaUppoETtp1RkFEZszXR1aT4PLeeETxBEgMLg/85nA
+         1sZRnDqyQI2PusggjpFVBY/NoSwZPJvI5/lJScL8MNoxS6jYXOmpehy9YNr+W1//sYG2
+         0DnmmEOBGlNBzDRsBbAPjGk/sQnSioVp5KQFsIcQ+ordKWowx83/2SJsaD0mCrQ7R2tp
+         cKIZmhbinTxW3gMMNzIKJiXLWB8ZTM10kA3XvYcqgewhxZcq2QRzxrSbeKaJuatgqMrB
+         rq3Q==
+X-Forwarded-Encrypted: i=1; AJvYcCVFWSeyNgeyL2efc//+FAr1lNfbdYZk3My+v/QDuB6yi8jlLE9q1IMp+dXNu1imPryDfnps2g7+CjdFbaOgDg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxvEqNC6IPEJuEVJWyejj7VMREIFL5bRiG0myp+Ufpk0q+aBOZp
+	YUb4MUI7O0fnDRKOQo8Hktwtjhj2qOlZVGCHJeSun/s4hR3Q9zWsa43a
+X-Gm-Gg: ASbGncvPkgBAr3xMXgLzhnt252h0FST/WBep1XvD1ONY7J4wP05ZWQyrIf7yYft0vdK
+	TUCGqMWE7N06SToWHlVhvL0D62qFmYf403gi9/Yoy0b6u9XHkLoZgOtjYwDq5iadVpnofYBw8Ja
+	UYQFktCf6K7HOQcKro36yRjo7U+Q1Tts/DHPdfeITtsuMVnI+dSDKmF5Hy/pJqc8p7qBC2CEPCv
+	fCnD8bqgd/jDEF0YSURFdU+Vd5kMroXfEIIhRiFSDUdMuEzFUKumzO4lB9seoKayJUrjcAUplv+
+	RLrh6dLP/uuxMHiEDqm4SDozqN/tgXjl8r5scMDDQxk44K/rVP+rZyYguMoTBvUAsYn7XnbUal6
+	ALu8MlBtM1xU+zKx0yYZlRnvVMAghFYMAiTI3A/Ixf4m/COG7xDRI8PeHTj+U3PQ1Kz+XdsbI/c
+	FkJxmVpcgpBufERdcGBym/PfJ55Jwb2OF3
+X-Google-Smtp-Source: AGHT+IFzeqw0ZeFTmoI7Ikvy2aB+JcBqMNqP5GohkKyfHRJfwjd2EG3S5q7dA3xFkhtZeKZ3AHM9dA==
+X-Received: by 2002:a17:907:7252:b0:b6d:2682:8306 with SMTP id a640c23a62f3a-b7070198c2dmr1296081666b.23.1762165800923;
+        Mon, 03 Nov 2025 02:30:00 -0800 (PST)
 Received: from EPUAKYIW02F7.. (pool185-5-253-81.as6723.net. [185.5.253.81])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-b718f8b52fdsm66758666b.18.2025.11.03.02.10.48
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-b7077975d77sm1005193966b.9.2025.11.03.02.30.00
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 03 Nov 2025 02:10:48 -0800 (PST)
+        Mon, 03 Nov 2025 02:30:00 -0800 (PST)
 From: Mykola Kvach <xakep.amatop@gmail.com>
 To: Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
 	Heiko Stuebner <heiko@sntech.de>,
-	Michael Riesch <michael.riesch@collabora.com>,
 	Johan Jonker <jbx6244@gmail.com>,
-	Muhammed Efe Cetin <efectn@6tel.net>,
+	Michael Riesch <michael.riesch@collabora.com>,
 	=?UTF-8?q?Ond=C5=99ej=20Jirman?= <megi@xff.cz>,
+	Muhammed Efe Cetin <efectn@6tel.net>,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
 Cc: stable@vger.kernel.org
-Subject: [PATCH v2] arm64: dts: rockchip: orangepi-5: fix PCIe 3.3V regulator voltage
-Date: Mon,  3 Nov 2025 12:08:14 +0200
-Message-ID: <9232ae8cc8e7eb4f986734c8820f44b7989b9dae.1762161839.git.xakep.amatop@gmail.com>
+Subject: [PATCH v3] arm64: dts: rockchip: orangepi-5: fix PCIe 3.3V regulator voltage
+Date: Mon,  3 Nov 2025 12:27:40 +0200
+Message-ID: <cf6e08dfdfbf1c540685d12388baab1326f95d2c.1762165324.git.xakep.amatop@gmail.com>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20251024173830.49211-1-xakep.amatop@gmail.com>
-References: <20251024173830.49211-1-xakep.amatop@gmail.com>
+In-Reply-To: <9232ae8cc8e7eb4f986734c8820f44b7989b9dae.1762161839.git.xakep.amatop@gmail.com>
+References: <9232ae8cc8e7eb4f986734c8820f44b7989b9dae.1762161839.git.xakep.amatop@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251103_021051_488716_55B49A10 
-X-CRM114-Status: GOOD (  11.68  )
+X-CRM114-CacheID: sfid-20251103_023004_040849_74E833E1 
+X-CRM114-Status: GOOD (  11.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,9 +117,13 @@ regulator-min/max-microvolt to 1800000 (1.8 V). Correct both to 3300000
 actual hardware wiring on Orange Pi 5.
 
 Fixes: b6bc755d806e ("arm64: dts: rockchip: Add Orange Pi 5")
+Cc: stable@vger.kernel.org
 Signed-off-by: Mykola Kvach <xakep.amatop@gmail.com>
 Reviewed-by: Michael Riesch <michael.riesch@collabora.com>
 ---
+Changes in v3:
+- add "Cc: stable@vger.kernel.org" to commit message.
+
 Changes in v2:
 - add Fixes tag and Cc stable list as requested during review.
 ---
