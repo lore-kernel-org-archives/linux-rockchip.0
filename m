@@ -4,96 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACFF5CCF9F8
-	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Nov 2025 10:30:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66430CCF9F8
+	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Nov 2025 13:48:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WOkn+CO5VvmnpTNl5759KcU6PCXdKtvJToxiUhEuQ8g=; b=qhGWdgOLq+fLVY
-	L5BIVfV9jBNgBeLCMiJ2c4LiLuNFU9W9sBCscDcjbDDu6UMjXCvNek+LCOZyFFajsWMWF7Zkbwgba
-	aN9sW3yujohjw6c8wT9OWY2o7PU2sRo99MMCg+PhRa0ZUnnhdJneu3S5drnnkabCM3LzR4A19hPvW
-	ydWwbbRntl1vWJ4O68iqc1A8p8oyymCjqKqS/f18QjBnCDPvtIcMs801FwsfJX/hYyhp/7x0yrzM/
-	dwKos2c9/GgALq//WqPnDGRRtz1cNEXvpz0cB3DXFXVXF8rJfQ0SZPm8SciXxWgVYCBjliNLR7RqX
-	jvOpjcGTvlVazxuGT8Dw==;
+	List-Owner; bh=9G2rE4mAYXRW7aWbXKZ5PItuUlhqFxiA9XZ/c7TbYmc=; b=Iw2ca6/TeXWyFy
+	lD8w5wIqRApDkzyMQJXVIGPZIKDI211ueCKwFme5JPLFGh8dl5GCnkKOEDe3DnabSTQ0doFjOBuxf
+	XRJzoh+L3m9xp8mT/ppwE77AcA/WoE/Np+QzECoLD0vT6msGOoyNNZRAxl3swxSk0c9v6YKS+sHeh
+	sD05hOvcAVrTOibFjvBCYN5X5MLnvmQ/Tkokx1QGiJGQdMWURNjt0ni35tMjCgYHgaDyDVGL3Nd8q
+	LovcIpqhVc6OFHepyB2tuykyrLWuJmFAQpU7Q6nNN5Cyc5LAMTajw0fui/G2BztJp7hj7czUsdWGI
+	ayWo7BGgUHtjiSlN+kUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vFrp8-00000009dUe-0Bwj;
-	Mon, 03 Nov 2025 10:30:06 +0000
-Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
+	id 1vFuvA-00000009x5m-3vnJ;
+	Mon, 03 Nov 2025 13:48:32 +0000
+Received: from mgamail.intel.com ([198.175.65.21])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vFrp5-00000009dTW-1dtI
-	for linux-rockchip@lists.infradead.org;
-	Mon, 03 Nov 2025 10:30:05 +0000
-Received: by mail-ej1-x635.google.com with SMTP id a640c23a62f3a-b64cdbb949cso693575966b.1
-        for <linux-rockchip@lists.infradead.org>; Mon, 03 Nov 2025 02:30:02 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1762165801; x=1762770601; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=7uol8SK9zB104eiF162tGqib2QMloTOnkfiMZtp2mug=;
-        b=fOSBW4ArvDC7mEUh2aQGrBTj+euzgiG9/RQLgcmFCxGHNBJqCGVMzzIII7Ac5JwIot
-         AwvM4n32GRa3QvpDcaGHlLPFQWT58ycZRbw0NgY3UzGoftJVS3uMlTIBwl+ejttkelCt
-         jn3lMIIJdp5qwuPfljoTr3V6pC/oilhcEEVFyA8BzKtbD7md2k5Wo4x49WwV1mHsKymn
-         RVjNy2GlwXROPZVD3cagPYY0TIrfx5yreYLFlR1E395TEBXtLZsMdJlktz1ddhjLlwsV
-         LnRd0LczSHP4cm5fgpopn5c+7w0Y20qYyeHyfdBYK4pVru5H157glkHWnuCUWqc2cJt7
-         NcmA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1762165801; x=1762770601;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=7uol8SK9zB104eiF162tGqib2QMloTOnkfiMZtp2mug=;
-        b=I0nJyIh1eFF/WN0z7Xf8ABIttc5bvLbDLJ0SdTlf+GdIzXqxtrYxIvhVEdF1zZ4Js8
-         ZzwO6wrliOjtC9d+8YZ6bTuaz3uaUppoETtp1RkFEZszXR1aT4PLeeETxBEgMLg/85nA
-         1sZRnDqyQI2PusggjpFVBY/NoSwZPJvI5/lJScL8MNoxS6jYXOmpehy9YNr+W1//sYG2
-         0DnmmEOBGlNBzDRsBbAPjGk/sQnSioVp5KQFsIcQ+ordKWowx83/2SJsaD0mCrQ7R2tp
-         cKIZmhbinTxW3gMMNzIKJiXLWB8ZTM10kA3XvYcqgewhxZcq2QRzxrSbeKaJuatgqMrB
-         rq3Q==
-X-Forwarded-Encrypted: i=1; AJvYcCVFWSeyNgeyL2efc//+FAr1lNfbdYZk3My+v/QDuB6yi8jlLE9q1IMp+dXNu1imPryDfnps2g7+CjdFbaOgDg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxvEqNC6IPEJuEVJWyejj7VMREIFL5bRiG0myp+Ufpk0q+aBOZp
-	YUb4MUI7O0fnDRKOQo8Hktwtjhj2qOlZVGCHJeSun/s4hR3Q9zWsa43a
-X-Gm-Gg: ASbGncvPkgBAr3xMXgLzhnt252h0FST/WBep1XvD1ONY7J4wP05ZWQyrIf7yYft0vdK
-	TUCGqMWE7N06SToWHlVhvL0D62qFmYf403gi9/Yoy0b6u9XHkLoZgOtjYwDq5iadVpnofYBw8Ja
-	UYQFktCf6K7HOQcKro36yRjo7U+Q1Tts/DHPdfeITtsuMVnI+dSDKmF5Hy/pJqc8p7qBC2CEPCv
-	fCnD8bqgd/jDEF0YSURFdU+Vd5kMroXfEIIhRiFSDUdMuEzFUKumzO4lB9seoKayJUrjcAUplv+
-	RLrh6dLP/uuxMHiEDqm4SDozqN/tgXjl8r5scMDDQxk44K/rVP+rZyYguMoTBvUAsYn7XnbUal6
-	ALu8MlBtM1xU+zKx0yYZlRnvVMAghFYMAiTI3A/Ixf4m/COG7xDRI8PeHTj+U3PQ1Kz+XdsbI/c
-	FkJxmVpcgpBufERdcGBym/PfJ55Jwb2OF3
-X-Google-Smtp-Source: AGHT+IFzeqw0ZeFTmoI7Ikvy2aB+JcBqMNqP5GohkKyfHRJfwjd2EG3S5q7dA3xFkhtZeKZ3AHM9dA==
-X-Received: by 2002:a17:907:7252:b0:b6d:2682:8306 with SMTP id a640c23a62f3a-b7070198c2dmr1296081666b.23.1762165800923;
-        Mon, 03 Nov 2025 02:30:00 -0800 (PST)
-Received: from EPUAKYIW02F7.. (pool185-5-253-81.as6723.net. [185.5.253.81])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-b7077975d77sm1005193966b.9.2025.11.03.02.30.00
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 03 Nov 2025 02:30:00 -0800 (PST)
-From: Mykola Kvach <xakep.amatop@gmail.com>
-To: Rob Herring <robh@kernel.org>,
+	id 1vFuv7-00000009x2g-0qdk;
+	Mon, 03 Nov 2025 13:48:31 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1762177709; x=1793713709;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=/eMBTgNJH8/Xgm8LgLzir6GKHePQ75zTAgJlicmNsfQ=;
+  b=WoEhzKYemBdcD8PsWNzNw5GpGsxipF4zNsvDD+kJ2q/ZJ1zCjXBRV9RO
+   +kDYMo58SBbvdtNm3qvOkFRT4cLQKAIJL1k+cSiHArylAXKORuXJNPQUZ
+   rk9nQDIQZ5fQwo6P8yAdJz+kxNS7OX0PROUXsQdNSqPttJWviXv2jUwP5
+   kbi0SaprYUKwk8m7Nvv9e/IJVxVvbZaDVJA0G5bEJRO0q7ZEauOL91BMq
+   5e+4mnRp/YEMA9bD9RnHI2/7Fg2o41yDlr+GJj3kHANHAoQ0wOC+c0rq+
+   UlanJs6L+8YuY8QsEp72pk1iZ4m45rcZjmIXYONRN13YSF/AiYa9b7WPI
+   Q==;
+X-CSE-ConnectionGUID: ZCumIJWDSemHRqGUVoD/rQ==
+X-CSE-MsgGUID: KquS19ZySMiehBBYXz6Uuw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11531"; a="64156335"
+X-IronPort-AV: E=Sophos;i="6.17,312,1747724400"; 
+   d="scan'208";a="64156335"
+Received: from orviesa006.jf.intel.com ([10.64.159.146])
+  by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Nov 2025 05:48:28 -0800
+X-CSE-ConnectionGUID: JFm5J5b9STC09kNJqEZ1eA==
+X-CSE-MsgGUID: J32ocSpgR2yn1eLsQx1Tpg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.19,276,1754982000"; 
+   d="scan'208";a="186110382"
+Received: from aschofie-mobl2.amr.corp.intel.com (HELO kuha.fi.intel.com) ([10.124.220.222])
+  by orviesa006.jf.intel.com with SMTP; 03 Nov 2025 05:48:11 -0800
+Received: by kuha.fi.intel.com (sSMTP sendmail emulation); Mon, 03 Nov 2025 15:48:09 +0200
+Date: Mon, 3 Nov 2025 15:48:09 +0200
+From: Heikki Krogerus <heikki.krogerus@linux.intel.com>
+To: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+Cc: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+	Chaoyi Chen <kernel@airkyi.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Johan Jonker <jbx6244@gmail.com>,
-	Michael Riesch <michael.riesch@collabora.com>,
-	=?UTF-8?q?Ond=C5=99ej=20Jirman?= <megi@xff.cz>,
-	Muhammed Efe Cetin <efectn@6tel.net>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Cc: stable@vger.kernel.org
-Subject: [PATCH v3] arm64: dts: rockchip: orangepi-5: fix PCIe 3.3V regulator voltage
-Date: Mon,  3 Nov 2025 12:27:40 +0200
-Message-ID: <cf6e08dfdfbf1c540685d12388baab1326f95d2c.1762165324.git.xakep.amatop@gmail.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <9232ae8cc8e7eb4f986734c8820f44b7989b9dae.1762161839.git.xakep.amatop@gmail.com>
-References: <9232ae8cc8e7eb4f986734c8820f44b7989b9dae.1762161839.git.xakep.amatop@gmail.com>
+	Conor Dooley <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Yubing Zhang <yubing.zhang@rock-chips.com>,
+	Frank Wang <frank.wang@rock-chips.com>,
+	Andrzej Hajda <andrzej.hajda@intel.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Robert Foss <rfoss@kernel.org>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+	Amit Sunil Dhamne <amitsd@google.com>,
+	Dragan Simic <dsimic@manjaro.org>, Johan Jonker <jbx6244@gmail.com>,
+	Diederik de Haas <didi.debian@cknow.org>,
+	Peter Robinson <pbrobinson@gmail.com>, linux-usb@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
+Subject: Re: [PATCH v8 03/10] drm/bridge: Implement generic USB Type-C DP HPD
+ bridge
+Message-ID: <aQiymTFVU7UpcJ1p@kuha.fi.intel.com>
+References: <20251029071435.88-1-kernel@airkyi.com>
+ <20251029071435.88-4-kernel@airkyi.com>
+ <rzozpbqmymdczerh3iijxxtz3xnsznoku7w2mquikwv6u5osvo@7h43hwc2fpzm>
+ <eca9d5bd-23bd-4c1d-b2f2-c0c32f14177f@rock-chips.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <eca9d5bd-23bd-4c1d-b2f2-c0c32f14177f@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251103_023004_040849_74E833E1 
-X-CRM114-Status: GOOD (  11.87  )
+X-CRM114-CacheID: sfid-20251103_054829_286153_AD1D7397 
+X-CRM114-Status: GOOD (  31.49  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,44 +114,173 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The vcc3v3_pcie20 fixed regulator powers the PCIe device-side 3.3V rail
-for pcie2x1l2 via vpcie3v3-supply. The DTS mistakenly set its
-regulator-min/max-microvolt to 1800000 (1.8 V). Correct both to 3300000
-(3.3 V) to match the rail name, the PCIe/M.2 power requirement, and the
-actual hardware wiring on Orange Pi 5.
+> > > diff --git a/drivers/gpu/drm/bridge/Kconfig b/drivers/gpu/drm/bridge/Kconfig
+> > > index a250afd8d662..17257b223a28 100644
+> > > --- a/drivers/gpu/drm/bridge/Kconfig
+> > > +++ b/drivers/gpu/drm/bridge/Kconfig
+> > > @@ -23,13 +23,16 @@ config DRM_AUX_BRIDGE
+> > >   	  build bridges chain.
+> > >   config DRM_AUX_HPD_BRIDGE
+> > > -	tristate
+> > > +	tristate "AUX HPD bridge support"
+> > Why? No, this is supposed to be selected by other drivers. Users don't
+> > know an wouldn't know what is this.
+> 
+> In v7, I implemented an additional module for selecting this option. But
+> Heikki believes that it would be better to merge the two modules into one.
 
-Fixes: b6bc755d806e ("arm64: dts: rockchip: Add Orange Pi 5")
-Cc: stable@vger.kernel.org
-Signed-off-by: Mykola Kvach <xakep.amatop@gmail.com>
-Reviewed-by: Michael Riesch <michael.riesch@collabora.com>
----
-Changes in v3:
-- add "Cc: stable@vger.kernel.org" to commit message.
+Like I said before, I was merely curious why not just squash the
+support into that AUX_PD_HPD_BRIDGE. If that does not make sense, then
+so be it - make it a "Display Interface Bridge" driver like you
+originally proposed.
 
-Changes in v2:
-- add Fixes tag and Cc stable list as requested during review.
----
- arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+> > >   	depends on DRM_BRIDGE && OF
+> > >   	select AUXILIARY_BUS
+> > >   	help
+> > >   	  Simple bridge that terminates the bridge chain and provides HPD
+> > >   	  support.
+> > > +	  Specifically, if you want a default Type-C DisplayPort HPD bridge for
+> > > +	  each port of the Type-C controller, say Y here.
+> > > +
+> > >   menu "Display Interface Bridges"
+> > >   	depends on DRM && DRM_BRIDGE
+> > > diff --git a/drivers/gpu/drm/bridge/Makefile b/drivers/gpu/drm/bridge/Makefile
+> > > index c7dc03182e59..2998937444bc 100644
+> > > --- a/drivers/gpu/drm/bridge/Makefile
+> > > +++ b/drivers/gpu/drm/bridge/Makefile
+> > > @@ -1,6 +1,12 @@
+> > >   # SPDX-License-Identifier: GPL-2.0
+> > >   obj-$(CONFIG_DRM_AUX_BRIDGE) += aux-bridge.o
+> > > -obj-$(CONFIG_DRM_AUX_HPD_BRIDGE) += aux-hpd-bridge.o
+> > > +
+> > > +hpd-bridge-y := aux-hpd-bridge.o
+> > > +ifneq ($(CONFIG_TYPEC),)
+> > > +hpd-bridge-y += aux-hpd-typec-dp-bridge.o
+> > > +endif
+> > > +obj-$(CONFIG_DRM_AUX_HPD_BRIDGE) += hpd-bridge.o
+> > > +
+> > >   obj-$(CONFIG_DRM_CHIPONE_ICN6211) += chipone-icn6211.o
+> > >   obj-$(CONFIG_DRM_CHRONTEL_CH7033) += chrontel-ch7033.o
+> > >   obj-$(CONFIG_DRM_CROS_EC_ANX7688) += cros-ec-anx7688.o
+> > > diff --git a/drivers/gpu/drm/bridge/aux-hpd-bridge.c b/drivers/gpu/drm/bridge/aux-hpd-bridge.c
+> > > index 2e9c702c7087..11ad6dc776c7 100644
+> > > --- a/drivers/gpu/drm/bridge/aux-hpd-bridge.c
+> > > +++ b/drivers/gpu/drm/bridge/aux-hpd-bridge.c
+> > > @@ -12,6 +12,8 @@
+> > >   #include <drm/drm_bridge.h>
+> > >   #include <drm/bridge/aux-bridge.h>
+> > > +#include "aux-hpd-bridge.h"
+> > > +
+> > >   static DEFINE_IDA(drm_aux_hpd_bridge_ida);
+> > >   struct drm_aux_hpd_bridge_data {
+> > > @@ -204,7 +206,26 @@ static struct auxiliary_driver drm_aux_hpd_bridge_drv = {
+> > >   	.id_table = drm_aux_hpd_bridge_table,
+> > >   	.probe = drm_aux_hpd_bridge_probe,
+> > >   };
+> > > -module_auxiliary_driver(drm_aux_hpd_bridge_drv);
+> > > +
+> > > +static int drm_aux_hpd_bridge_mod_init(void)
+> > > +{
+> > > +	int ret;
+> > > +
+> > > +	ret = auxiliary_driver_register(&drm_aux_hpd_bridge_drv);
+> > > +	if (ret)
+> > > +		return ret;
+> > > +
+> > > +	return drm_aux_hpd_typec_dp_bridge_init();
+> > > +}
+> > > +
+> > > +static void drm_aux_hpd_bridge_mod_exit(void)
+> > > +{
+> > > +	drm_aux_hpd_typec_dp_bridge_exit();
+> > > +	auxiliary_driver_unregister(&drm_aux_hpd_bridge_drv);
+> > > +}
+> > > +
+> > > +module_init(drm_aux_hpd_bridge_mod_init);
+> > > +module_exit(drm_aux_hpd_bridge_mod_exit);
+> > >   MODULE_AUTHOR("Dmitry Baryshkov <dmitry.baryshkov@linaro.org>");
+> > >   MODULE_DESCRIPTION("DRM HPD bridge");
+> > > diff --git a/drivers/gpu/drm/bridge/aux-hpd-bridge.h b/drivers/gpu/drm/bridge/aux-hpd-bridge.h
+> > > new file mode 100644
+> > > index 000000000000..69364731c2f1
+> > > --- /dev/null
+> > > +++ b/drivers/gpu/drm/bridge/aux-hpd-bridge.h
+> > > @@ -0,0 +1,13 @@
+> > > +/* SPDX-License-Identifier: GPL-2.0-only */
+> > > +#ifndef AUX_HPD_BRIDGE_H
+> > > +#define AUX_HPD_BRIDGE_H
+> > > +
+> > > +#if IS_REACHABLE(CONFIG_TYPEC)
+> > > +int drm_aux_hpd_typec_dp_bridge_init(void);
+> > > +void drm_aux_hpd_typec_dp_bridge_exit(void);
+> > > +#else
+> > > +static inline int drm_aux_hpd_typec_dp_bridge_init(void) { return 0; }
+> > > +static inline void drm_aux_hpd_typec_dp_bridge_exit(void) { }
+> > > +#endif /* IS_REACHABLE(CONFIG_TYPEC) */
+> > > +
+> > > +#endif /* AUX_HPD_BRIDGE_H */
+> > > diff --git a/drivers/gpu/drm/bridge/aux-hpd-typec-dp-bridge.c b/drivers/gpu/drm/bridge/aux-hpd-typec-dp-bridge.c
+> > > new file mode 100644
+> > > index 000000000000..6f2a1fca0fc5
+> > > --- /dev/null
+> > > +++ b/drivers/gpu/drm/bridge/aux-hpd-typec-dp-bridge.c
+> > > @@ -0,0 +1,47 @@
+> > > +// SPDX-License-Identifier: GPL-2.0+
+> > > +#include <linux/of.h>
+> > > +#include <linux/usb/typec_altmode.h>
+> > > +#include <linux/usb/typec_dp.h>
+> > > +#include <linux/usb/typec_notify.h>
+> > > +
+> > > +#include <drm/bridge/aux-bridge.h>
+> > > +
+> > > +#include "aux-hpd-bridge.h"
+> > > +
+> > > +#if IS_REACHABLE(CONFIG_TYPEC)
+> > > +static int drm_typec_bus_event(struct notifier_block *nb,
+> > > +			       unsigned long action, void *data)
+> > > +{
+> > This feels like this should be a part of the Type-C subsystem rather
+> > than DRM.
+> 
+> In v7, this used to be a part of the Type-C subsystem. I'm not sure what
+> Heikki thinks about this.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts
-index ad6d04793b0a..83b9b6645a1e 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts
-@@ -14,8 +14,8 @@ vcc3v3_pcie20: regulator-vcc3v3-pcie20 {
- 		gpios = <&gpio0 RK_PC5 GPIO_ACTIVE_HIGH>;
- 		regulator-name = "vcc3v3_pcie20";
- 		regulator-boot-on;
--		regulator-min-microvolt = <1800000>;
--		regulator-max-microvolt = <1800000>;
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
- 		startup-delay-us = <50000>;
- 		vin-supply = <&vcc5v0_sys>;
- 	};
---
-2.43.0
+Your original proposal of making the entire TYPEC subsystem depend on
+DRM is _not_ going to happen. In general, if I've now understood this
+correctly, this thing probable should be a "display interface bridge
+driver", similar to what you proposed in the previous version.
 
+Note also that you could make it selected automatically, so there is
+no need for user selectable option if that's the preference. Kconfig
+and Makefile gives you options on how to do that. For example, maybe
+this Kconfig works (or does not, but something like it will):
+
+diff --git a/drivers/gpu/drm/bridge/Kconfig b/drivers/gpu/drm/bridge/Kconfig
+index a250afd8d662..7487024ba2ce 100644
+--- a/drivers/gpu/drm/bridge/Kconfig
++++ b/drivers/gpu/drm/bridge/Kconfig
+@@ -30,6 +30,15 @@ config DRM_AUX_HPD_BRIDGE
+          Simple bridge that terminates the bridge chain and provides HPD
+          support.
+ 
++if DRM_AUX_HPD_BRIDGE
++
++config DRM_AUX_HPD_TYPEC_BRIDGE
++       tristate
++       depends on TYPEC || !TYPEC
++       default TYPEC
++
++endif /* DRM_AUX_HPD_BRIDGE */
++
+ menu "Display Interface Bridges"
+        depends on DRM && DRM_BRIDGE
+ 
+
+
+thanks,
+
+-- 
+heikki
 
 _______________________________________________
 Linux-rockchip mailing list
