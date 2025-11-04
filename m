@@ -4,77 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F38B7CCFA1E
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Nov 2025 12:29:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1210BCCFA03
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Nov 2025 12:29:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7Guk5zDdjbnvmI/fdpoezD4ZhLAMZtwGOFJYoP2TAP0=; b=lfAOtQnB0KZlh0
-	7aTM3CrLtNaJSBRX34nGTJvfIlFPFMQ0wtuSNfCnzX3bIENbVjusAEs01KhgYKdVPJ3QqDD877Ci1
-	z5sT/DhtYgAIX7/iargmUVBeqj2ZLGhcDicL/Y1x4rFZdnbzLEc3zVcOCiTf7pEHIRkpNIVJGdBs3
-	6/w8aPD1dIaBhPkCaNBUT1WVVlStm9U/utS46TMfD3weqpP6Q0cQUFo9MMZ8bveRSrmLlXtWixbx5
-	Yg9mpeeX7sxg+BCETiakz0ffMB9lIYTNAlnSXnGApYCleuXMnFjAR6lJU598tEsIeiT8EhzASVkjG
-	fz0L3UQaXQckcaGlW3Vw==;
+	List-Owner; bh=li+UmORV5UYenFbJ0tx4xTKCt+i77CS57ajfU4oBUyM=; b=PH3xpSHHUsLUlm
+	u1ou20Y8DsdlgprebMDShDlu0RHgCYrvcw2izsPf8SHd6H7E2THK2q6vK23cWjVe0/RH3jsYDe6Fj
+	avY4P8HWJO4LtIOQcARwqakz+CcTO1KgKRz18+olxgmhD8kjLqe6hauIR7wzXUYTWdMOFGO0xBav0
+	9pskx/DhQXQJqAh+XpAK0sxhzcT1QDh98gi427r6vXZj4ek1ymQPDc0meXhO56WNuXEm42N9TSjtE
+	Xq1nenhiBsniXQtSiNWr2+AvbVntJawicc69JhJfu+Dt82kNT9eNa57J1NuFzWMQwWI6uMLQ50/Wc
+	zAGaJSIGvLaqZMz93GFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGz6o-0000000FRma-0jPq;
-	Thu, 06 Nov 2025 12:28:58 +0000
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+	id 1vGz6r-0000000FRru-0WFu;
+	Thu, 06 Nov 2025 12:29:01 +0000
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGGn1-0000000Bqc1-1R8U
+	id 1vGGnA-0000000Bqnn-1heZ
 	for linux-rockchip@lists.infradead.org;
-	Tue, 04 Nov 2025 13:09:38 +0000
-Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-471b80b994bso71208345e9.3
-        for <linux-rockchip@lists.infradead.org>; Tue, 04 Nov 2025 05:09:34 -0800 (PST)
+	Tue, 04 Nov 2025 13:09:46 +0000
+Received: by mail-wr1-x434.google.com with SMTP id ffacd0b85a97d-429b7ba208eso3414185f8f.1
+        for <linux-rockchip@lists.infradead.org>; Tue, 04 Nov 2025 05:09:44 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1762261773; x=1762866573; darn=lists.infradead.org;
+        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1762261783; x=1762866583; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=ohz6eJ3JY6PCTOt6pOm4PJLek87cyeexjL7soGZmZnQ=;
-        b=xEGeyPkcSgHrmXw8zLHW8XzfZMl2u/q1PFmDwWspu6ZB3g9bpB+g0MtEnw0rp3c6RU
-         VHcQn5gZTzqIX9dE04P5Zz1PtFphLlqISJdijkVaBVBgDIlafjjcHlPBDRN1gJ2cna14
-         +4NTI6zSbhKcaKuWy9t3D0NKvxHQgEMceYGG4UjKPlqlBJX+3ZNpnQKOrD3q8PO8auXr
-         oWTTA7UTyYqH4ngEI4wbToQWngiR1TRZSso0l68GI3WRlAeVCVpy4vYKmWWA5EuSpgqy
-         8yxB5bTeC04Ne8bEyRdRHoQFDbol//6uXZrYtEZm37pVpKnXuAn4rEPJ8ECme1rUkJXh
-         7Ehg==
+        bh=A7G2ramQk2hxdGs1tmlSj6o/OfknwFPaFfxdjJIosVo=;
+        b=nPOmPou0s4i47VmHjfS9Z17e6t+QW4z/k0BGuAfSQ7/9FPLhwPMagwIkzpDIN4gA2O
+         liaNS8Fc0xhxqmtigKCDk1yOzrXj9zsU2bpwA6m78R6fLsx/2/UHWZE/Des9UMC7QS5U
+         +F4lS8xpdg0wi1HP6Wmv1RKwUjz6DCAUh7TmDqnx7mKJ3jDPIAzGNySsRi63E4BJTI5s
+         8rWDeydZJLsawH2ok2WF6uGXe8A4t9aSCHfak5yYYj392UHDeTswXas1QeMjaT9mOv7G
+         eWOORkmloW25Mm1UPJ5PCprytbY05t7+P474jMBRHVFCjRpdo/50qY8EQn1YM2vIA0N6
+         UxzA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1762261773; x=1762866573;
+        d=1e100.net; s=20230601; t=1762261783; x=1762866583;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=ohz6eJ3JY6PCTOt6pOm4PJLek87cyeexjL7soGZmZnQ=;
-        b=H1vcOHUcs/YORsSTsu4eIQeBPl9jMRlDb9j8ATQCzv7rCi46GLrsOqhCbJdvx47I4K
-         EDF3c9gjxqvmwImVg6nOHAPDjpHD/xDsJ7U1JGutuNKUztDFMpt6pPYNmrC4dFDbkPUs
-         YPQWuOQ2V5P38XP6RSM8epvtTwfw5xrEgLUWu+BBGvtGxHaj54fKkR+exDixojguMwjA
-         USFUOyP5yqWRTI1ZwvMwk1i8+dXphpFOQTofrErqgT6LYA6lHeucDAprnSqHQKJaBO3e
-         gTXAHRQ38Yt+3FhrS3FG4wiu9tyAEI1OfUEC/Iq/pfNgAoQ+KNqrV6BZ1ITuLlboDD7a
-         Q1Wg==
-X-Forwarded-Encrypted: i=1; AJvYcCWM9uB3ReD5d9kSa044bxLVOuh7e59oOVmkoU47aV/SiUNrdInjZYL0rv8OT1DIyNSbyIOSsJLPUJMbrcbMTg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzBFsB1GELsI1TW0oh5lm18N3v8rVcyeBVGky82pEASe7Wrcw0d
-	Ze/MJHAgnejZXJoU0oFSUrhdzbBhn8bCMQr+QHAT2f1usiI13nnRVSXvO8FFVFQocTI=
-X-Gm-Gg: ASbGncuHB7GMTqP9IIJEE+XrPrNrWAws0/c7lKvRzhMl0MGSh2yHLP04OF4MwLil8Uc
-	BnOMmuoRpqGfpwxPMOZ/ce+Qs0JN8DSxMVD9eVyieHn92JR9Qi+7/KaaB+ZLlQDV4RoD95pUqjT
-	NAENA7y2rPd9aWX0UFBuJmP8d0hfdfyA/n/c7MEE42hSfyXIb4air+Onqf644o03QwPycDxARwX
-	fvnl4SmNuqM1amlUDBICYNOlfeqGRxwHhII6F/Beu45slOcT+c4RXCC0GPBnZ/Sl/Ey7SHUfbka
-	tzCXKMRJwI4SgQBhE+AiOx8CfxYPjcYz3EVIi3iLmbHbqqGkmbo1FxKPUurFeH0MEepserB/enN
-	kdu+1IYTKlbCYMQ5nM9uKlGbkR3yIohYXAOCrrzjw0KS3zdl8WK9b/hxdYE1xGQuKdAWQLQ==
-X-Google-Smtp-Source: AGHT+IHLeJTkz3Z9JUhRNQIdfiIz3zju/KKqwii1AcstjAWBhNyTLGOcii2tELicylV8dY7OWKqeQQ==
-X-Received: by 2002:a05:600c:3485:b0:471:13dd:bae7 with SMTP id 5b1f17b1804b1-4773bfb51f8mr122528535e9.30.1762261773214;
-        Tue, 04 Nov 2025 05:09:33 -0800 (PST)
+        bh=A7G2ramQk2hxdGs1tmlSj6o/OfknwFPaFfxdjJIosVo=;
+        b=pwZq6XYo/M6NWPHyQVAhMi0bG8dmwzoD2dO2cZpHVRhBQSef5dtyhEqWjVyov7I51E
+         flJ0QUuC06lGofU+GtnjlKyPVM5SpnolrKPZQkQmityr7qI/2ZYu2a6JuKFhrAjjZRrn
+         BU3iTo1oHOyupLjZtQeU/2tD5pjFwBu23DUjm57tmD8R5e9budyy8b+/yLiSnfVDgUC5
+         30RW5wFC2AwAhwiuRwl9PHv/XtIfueJMAL7tqgu3EmljExthO5lgglcPmB4ZGUrT78RL
+         C9o+KOFP+cUJyDOHCwoEBU/o1ooYN1upq+LUkLCI+7/92HjVRhUwTYm/7SuSY18dY9qy
+         t4DA==
+X-Forwarded-Encrypted: i=1; AJvYcCUNh/6usFq5H/8tFCxz7qJNovp0mmc2/WikyyXTjdHn27sAkbv550PL7UwExQuWQUbt536A2waBeou9lXZUCw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YycUJbEt5AuP2327BEteW6dBUGF1zdQP2BrrCOvqG1NxYNYRFQi
+	vCkYIdrj1EJmkzTMmKdgq1+j1AFeEvR+ihPuPc1LPBT+w6heUQYf1Hz2ZFS29RkxL/c=
+X-Gm-Gg: ASbGnct9b79qqCs/fSaiMJd4yrRn7T1dbIgdbngbqeMLCD2QboAfxsb7pA4mummU8pO
+	eg1lOJ3A7ZutktQTGp0lmi9RhG1Htv0z25aQZtD8mQoikUQSXZt9tmMBKkAGKe9W5D/YX8jKgaa
+	qM3MMeX2vkD1JAynwsABWXAZFhxMHoDMMH2xDUZL5v/nOsh65OdbaBSHlJfJl9hOT8Z9/sZ9Wi9
+	sgttrxRLDJGDPR6WkoxKOTcHkHZ9tK0uTS5v73DUumRltKP1xP28OsxfuryzadcCWtkrspMLhTn
+	4eMiYp1cMbk6BWjdYc0OlWX0iSqLsQ1CKxOVC7MDWiFpBAbqAb5UNE+ksUuWU/Xh/bFnmMx3X+S
+	oHge5GoxbmmCnupcrei+1UaWDwfokeem666oDJMUCuUjh+lQYriLmFlOasNYrbgDqcAz7hg==
+X-Google-Smtp-Source: AGHT+IGt39/RFIYRQsWApaQS4QlJBSyR/bfENK9HcdGp1Eg6T4YSk8jvmlZ1WO8dgmB5bkvcm4+SQA==
+X-Received: by 2002:a05:6000:26cf:b0:429:c6a7:4cdc with SMTP id ffacd0b85a97d-429c6a74ff1mr11008945f8f.50.1762261782582;
+        Tue, 04 Nov 2025 05:09:42 -0800 (PST)
 Received: from [127.0.1.1] ([2a01:cb1d:dc:7e00:9ea1:7ab7:4748:cae3])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-429dc18efd3sm4554431f8f.5.2025.11.04.05.09.27
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-429dc18efd3sm4554431f8f.5.2025.11.04.05.09.37
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 04 Nov 2025 05:09:29 -0800 (PST)
+        Tue, 04 Nov 2025 05:09:39 -0800 (PST)
 From: Bartosz Golaszewski <brgl@bgdev.pl>
-Date: Tue, 04 Nov 2025 14:08:56 +0100
-Subject: [PATCH v4 5/8] net: stmmac: qcom-ethqos: split power management
- fields into a separate structure
+Date: Tue, 04 Nov 2025 14:08:58 +0100
+Subject: [PATCH v4 7/8] net: stmmac: qcom-ethqos: define a callback for
+ setting the serdes speed
 MIME-Version: 1.0
-Message-Id: <20251104-qcom-sa8255p-emac-v4-5-f76660087cea@linaro.org>
+Message-Id: <20251104-qcom-sa8255p-emac-v4-7-f76660087cea@linaro.org>
 References: <20251104-qcom-sa8255p-emac-v4-0-f76660087cea@linaro.org>
 In-Reply-To: <20251104-qcom-sa8255p-emac-v4-0-f76660087cea@linaro.org>
 To: Bjorn Andersson <andersson@kernel.org>, 
@@ -128,26 +128,26 @@ Cc: linux-arm-msm@vger.kernel.org, devicetree@vger.kernel.org,
  linux-riscv@lists.infradead.org, 
  Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3440;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1914;
  i=bartosz.golaszewski@linaro.org; h=from:subject:message-id;
- bh=GhJny0rrOhbWO9GcfNfulcQ1HGUq/SGEEOh5ESB4E5E=;
- b=owEBbQKS/ZANAwAKARGnLqAUcddyAcsmYgBpCfrt1PXYHKJt2IulJ2CyvGw0mRwafmetNOR2Y
- 5zJmQ+uGwGJAjMEAAEKAB0WIQQWnetsC8PEYBPSx58Rpy6gFHHXcgUCaQn67QAKCRARpy6gFHHX
- crVLEADE2sKmE+cnYe6vd8MrSPmBXpfZ48+xv9duA0AFvw0Jl0TIVags+e1ih+VNlrPKVQkDN1E
- 4hvIVk5690c3a7nxPof8XwbSvHgwyqCuAu9+rR2qjl3J010XvLAjdjJQBWKUQXOhLWDomWEEHNG
- mgCVEHSsM8vWjKT7puhWaGverUX8oMQ1aMQt8wHHcbw0YpWz7QEI8oAduybvItGU0SS2C3tLaH7
- Jd3Eab4GHdc1anBVlXj9a71lYduzL4icKt6e2gR3cn7pTAfGEeDU8K3aXwXYyiUKaMHlDPO3AsK
- Fr+ivt8c63rfdqbPTHNjeQLAf64hx+XfXcg4DvlUImNOjGESEoJiE0fxuMaz2citgMG246tCSYU
- C5uLvQbjLqchzLfNPDaA2QihiKOQmHRRkGKcqFqk5Xhw46XlYCItAnlkMKm71+2tkb+xswW9NAN
- iwi2Tba4S6v9um/tsCcXu4R2gRT46lYwFGNHj3ndHgtdafKm3jGsLmiEDYuX6n5HPZkxm/1qQCr
- HjlYxUxuRoFDhUZ7MxewBMebBxObzXfWGg01dynSHvIzFBogam2kDjrtSCOYxEiXq7ZdTExPbzK
- z+l9sZSchK0d1c8tZffhQ/6KlCSXT79aF5UfiQJj6KCvGC5x8i7+YLETdMQ//TKcwS11rR7IXeL
- MYJ/8y8lkrz6tPA==
+ bh=Yczz6nmRkpIoGqMAKNVvyF3zmCEkrzboH4PyVFVc9jM=;
+ b=owEBbQKS/ZANAwAKARGnLqAUcddyAcsmYgBpCfrucVA2CeMFxPGfABXbkXXyqSC5jmN8LI8mD
+ yCNOJ0bLhOJAjMEAAEKAB0WIQQWnetsC8PEYBPSx58Rpy6gFHHXcgUCaQn67gAKCRARpy6gFHHX
+ ciBqD/0XNJFi5uHJB6d9F1X9w/Akoe2fxdrPp29/FzIfuLlu4+eNY+P8ZHWXvGT21CWTBHzyLRu
+ e0CXNLnV1f4a1wGZEvwBVVfisgS/M5avHcSEdAfYOIYk0DcbJfKIrYhpJprz/82G+ujPgLdl/kn
+ TaYBe32VUyJHFGX0s+6ZMEQZDKgAQ2R73og7Zw/AckjDePp2xiiEb11GU8ckU6wwQtG0GEURGh5
+ TFXn2h7JLMGoElSLJlJFYz/1ZBC9CQqcX8WPjpHcIOHDClY5dmoMJ0E/A/nsdOVC+1eS4HwkZtf
+ hy9I8tBtPs/FIb4xoVM5zQbLtNu5pfkWYl0IL/lcMyRYfV51YrMG+As1VTo0lemfPcVLtf75muB
+ sthcpgvGIFJ8q3uxmA6DmoCAA9zeUYYSOpR8Uv182IqbYfaAnhLGu/XIuLcivlPoi3eFqMWCSq9
+ nTgIrvu5OVCSrQ7GXx6POR0ysJ1GJa7axDRNaThJUimC07hyobjKOtejPjjH6MC5zAeIOgAZXA6
+ WdPsoVGTqwtOeotmc2KOOZQnWeEPyo//Hd33noVu8pQBWmSLyXgsa3uIpmDbkeJP/bRuUA5BfNp
+ 0D78mPjyDVvKS3gSyXyjG1KXrnjeuov9V3NvOVzkiMghcYQTB9IMUjf//vqgCNmlotmEnX2mptx
+ QZ5kuabKK8e7LFQ==
 X-Developer-Key: i=bartosz.golaszewski@linaro.org; a=openpgp;
  fpr=169DEB6C0BC3C46013D2C79F11A72EA01471D772
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251104_050935_547261_441E8EF4 
-X-CRM114-Status: GOOD (  15.49  )
+X-CRM114-CacheID: sfid-20251104_050944_518947_3143D3F4 
+X-CRM114-Status: GOOD (  13.48  )
 X-Mailman-Approved-At: Thu, 06 Nov 2025 04:28:36 -0800
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -167,96 +167,54 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
 
-Now that we have a separate wrapper for device match data, let's extend
-this structure with a pointer to the structure containing fields related
-to power-management only. This is done because a device may have the
-same device settings but different power management mode (e.g.: firmware
-vs manual).
+Ahead of adding support for firmware driven power management, let's
+allow different ways of setting the PHY speed. To that end create a
+callback with a single implementation for now, that will be extended
+later.
 
 Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
 ---
- .../net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c   | 19 ++++++++++++++++---
- 1 file changed, 16 insertions(+), 3 deletions(-)
+ drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c
-index 9cafe101049d5412d649b3beaca350c497ffc981..1f00556bbad997e2ec76b521cffe2eb14fabb79e 100644
+index 09f122062dec87aa11804af2769ddff4964e6596..446f06b591a0b70992c7a431b56cf88c1b6718fd 100644
 --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c
 +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c
-@@ -91,14 +91,18 @@ struct ethqos_emac_driver_data {
+@@ -120,6 +120,7 @@ struct qcom_ethqos {
+ 	struct ethqos_emac_pm_ctx pm;
+ 	phy_interface_t phy_mode;
+ 	int serdes_speed;
++	int (*set_serdes_speed)(struct qcom_ethqos *ethqos);
+ 
+ 	const struct ethqos_emac_por *por;
  	unsigned int num_por;
- 	bool rgmii_config_loopback_en;
- 	bool has_emac_ge_3;
--	const char *link_clk_name;
- 	u32 dma_addr_width;
- 	struct dwmac4_addrs dwmac4_addrs;
- 	bool needs_sgmii_loopback;
- };
+@@ -640,11 +641,16 @@ static int ethqos_configure_rgmii(struct qcom_ethqos *ethqos, int speed)
+ 	return 0;
+ }
  
-+struct ethqos_emac_pm_data {
-+	const char *link_clk_name;
-+};
++static int ethqos_set_serdes_speed_phy(struct qcom_ethqos *ethqos)
++{
++	return phy_set_speed(ethqos->pm.serdes_phy, ethqos->serdes_speed);
++}
 +
- struct ethqos_emac_match_data {
- 	const struct ethqos_emac_driver_data *drv_data;
-+	const struct ethqos_emac_pm_data *pm_data;
- };
- 
- struct qcom_ethqos {
-@@ -292,7 +296,6 @@ static const struct ethqos_emac_driver_data emac_v4_0_0_data = {
- 	.num_por = ARRAY_SIZE(emac_v4_0_0_por),
- 	.rgmii_config_loopback_en = false,
- 	.has_emac_ge_3 = true,
--	.link_clk_name = "phyaux",
- 	.needs_sgmii_loopback = true,
- 	.dma_addr_width = 36,
- 	.dwmac4_addrs = {
-@@ -313,8 +316,13 @@ static const struct ethqos_emac_driver_data emac_v4_0_0_data = {
- 	},
- };
- 
-+static const struct ethqos_emac_pm_data emac_sa8775p_pm_data = {
-+	.link_clk_name = "phyaux",
-+};
-+
- static const struct ethqos_emac_match_data emac_sa8775p_data = {
- 	.drv_data = &emac_v4_0_0_data,
-+	.pm_data = &emac_sa8775p_pm_data,
- };
- 
- static int ethqos_dll_configure(struct qcom_ethqos *ethqos)
-@@ -771,11 +779,13 @@ static void ethqos_ptp_clk_freq_config(struct stmmac_priv *priv)
- static int qcom_ethqos_probe(struct platform_device *pdev)
+ static void ethqos_set_serdes_speed(struct qcom_ethqos *ethqos, int speed)
  {
- 	const struct ethqos_emac_driver_data *drv_data;
-+	const struct ethqos_emac_pm_data *pm_data;
- 	const struct ethqos_emac_match_data *data;
- 	struct plat_stmmacenet_data *plat_dat;
- 	struct stmmac_resources stmmac_res;
- 	struct device *dev = &pdev->dev;
- 	struct qcom_ethqos *ethqos;
-+	const char *clk_name;
- 	int ret, i;
+ 	if (ethqos->serdes_speed != speed) {
+-		phy_set_speed(ethqos->pm.serdes_phy, speed);
+ 		ethqos->serdes_speed = speed;
++		ethqos->set_serdes_speed(ethqos);
+ 	}
+ }
  
- 	ret = stmmac_get_platform_resources(pdev, &stmmac_res);
-@@ -823,6 +833,9 @@ static int qcom_ethqos_probe(struct platform_device *pdev)
+@@ -865,6 +871,7 @@ static int qcom_ethqos_probe(struct platform_device *pdev)
+ 		return dev_err_probe(dev, PTR_ERR(ethqos->pm.serdes_phy),
+ 				     "Failed to get serdes phy\n");
  
- 	data = device_get_match_data(dev);
- 	drv_data = data->drv_data;
-+	pm_data = data->pm_data;
-+	clk_name = pm_data && pm_data->link_clk_name ?
-+				pm_data->link_clk_name : "rgmii";
- 
- 	ethqos->por = drv_data->por;
- 	ethqos->num_por = drv_data->num_por;
-@@ -830,7 +843,7 @@ static int qcom_ethqos_probe(struct platform_device *pdev)
- 	ethqos->has_emac_ge_3 = drv_data->has_emac_ge_3;
- 	ethqos->needs_sgmii_loopback = drv_data->needs_sgmii_loopback;
- 
--	ethqos->link_clk = devm_clk_get(dev, drv_data->link_clk_name ?: "rgmii");
-+	ethqos->link_clk = devm_clk_get(dev, clk_name);
- 	if (IS_ERR(ethqos->link_clk))
- 		return dev_err_probe(dev, PTR_ERR(ethqos->link_clk),
- 				     "Failed to get link_clk\n");
++	ethqos->set_serdes_speed = ethqos_set_serdes_speed_phy;
+ 	ethqos->serdes_speed = SPEED_1000;
+ 	ethqos_update_link_clk(ethqos, SPEED_1000);
+ 	ethqos_set_func_clk_en(ethqos);
 
 -- 
 2.51.0
