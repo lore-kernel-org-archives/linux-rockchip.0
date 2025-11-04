@@ -4,52 +4,150 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E20FCCFA03
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Nov 2025 12:29:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55A75CCFA1B
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Nov 2025 12:29:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-ID:MIME-Version:To:Cc:
-	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ud+7GYVNELmPrS/gfqohKd41QgpwsVbsHGzELCmcXyg=; b=WhoRewF0YxgT+i
-	gbaRQVwHk0xHYonS8AlnEM5mK10qbkqouii6vpZv18qt2AUr3Y6UuVu1vvsI+IllZ5Vf7mqVL7KVw
-	q9S68XBHjGarKEXcm241VEshC9dRSU77UvinGS27ZeJc8yrGinxg6hZpqMUddcZ7xjsjqM+8Kivms
-	6hgJ3b0Vrivi+RITUCHk0NZ9NmeniVLBFS2NVlnH8qXdPXD80B2sQjmVziqAjk4R1chcvDy2EatY8
-	N6VdN/RgLyvpmjk7MuwEWq0o5TythArlFXRajzbrJO2thv/dw6RNIt49Ok1TZU89uzeEpuaxFWYfk
-	yQAWHlnca8Q72in6WtoQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=5G+dOzxat1zdkpaRLLZ2UZJl1Li0Ow06b/5nszgKl7g=; b=fpxv2cSkQ1SDkm
+	p9FqakO632wg/fX5/IPxS4DuT8O94pYwAWotfrnmWoUFomvKDYnMJhFFq6PRpy6WacXzeZH5CY4F4
+	pKaEz11LacJ/vq6Vu3ZrReOn8vNH+Gd/TFsgFZIWSyD9QSAmFiPHuLP/JbjbhWKxvOiI1TZhGLNaC
+	4ja/Oyyziqftq95mFSo2qvG4FaS2GzT+0M0rpQ9UVhflE8ksm5cFr2oGpbg4PbFIf0bMYfewrZC2C
+	t1TwIfC2zG7hhx2GNglZq1DxrQbdOB5HWZESMN3pYaouXQD0yQ9EzzHAlfvq92J7LRzsg2EkhLzRW
+	WBtrPI6qxTk+Y9T1B2rA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGz6j-0000000FRda-42F3;
-	Thu, 06 Nov 2025 12:28:54 +0000
-Received: from mail1.manjaro.org ([2a01:4f8:c010:b6e8::1])
+	id 1vGz6m-0000000FRjl-3euo;
+	Thu, 06 Nov 2025 12:28:56 +0000
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vFEwg-00000007xWH-0azj;
-	Sat, 01 Nov 2025 16:59:19 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPA id CCC2240E64;
-	Sat,  1 Nov 2025 17:59:10 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=dkim;
-	t=1762016353; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding; bh=sMl6CrU8n9CPvD/7RHfQqN/cNpPavM10Xf1mdRiKWUw=;
-	b=FVUHwmBSEL5aIJ1c0fb9aFCKPuK5Q4UuwIsQwmfnSdy+fV2DoLZD3oOJZmi2IPmcIknZbY
-	kkUl+o77eAkhizFN4RQYHs6VMvMVLSO1sWarxs3ru82X+lsvrlL0HLGQG14g+MdXZ+2GcE
-	ZUq+Bvhq9zD99aTrCpND48sG4M6JuHYYWqainbbKXAlRV7sncpYMv4LwiQFBFvf0CLlv0q
-	mr8wDYB6y0NfNxUVpPRCIlxyvZJTwn2anq8yvRGdZ0OpSlLUpObtgok6uYON/Nx4VELUw3
-	ynSOhbmPebWOx/fFS/MV88pgMrfEzN68Ym+BWXqkc/TnE7Yk2AeZwmICdOCd3w==
-From: "Dragan Simic" <dsimic@manjaro.org>
-Date: Sat, 01 Nov 2025 17:59:10 +0100
-Cc: "Heiko Stuebner" <heiko@sntech.de>, "Alexey Charkov" <alchark@gmail.com>, conor+dt@kernel.org, devicetree@vger.kernel.org, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh@kernel.org
-To: "Hugh Cole-Baker" <sigmaris@gmail.com>
+	id 1vGGmf-0000000BqJ2-2x16
+	for linux-rockchip@lists.infradead.org;
+	Tue, 04 Nov 2025 13:09:16 +0000
+Received: by mail-wr1-x42d.google.com with SMTP id ffacd0b85a97d-429bcddad32so3279171f8f.3
+        for <linux-rockchip@lists.infradead.org>; Tue, 04 Nov 2025 05:09:13 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1762261752; x=1762866552; darn=lists.infradead.org;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=EeInQQFLiIKx9a2aZ0cucvmhXeQc/nRxrd1ryoO5rZk=;
+        b=lZUJ3d37THV6mX5tkgPzHJUPR7vAPKUnD/dZ6qdjlHre2MZxgbuQYAh6Uyw2ZZRgFj
+         RO1WmAXtrLjKIfnks9rXUeQw1ce5KuR14LJSkyvf7MVCeUYRSLMPU9+mfo3GjDKLO5K1
+         QO12Mt6MsBIdMfjB+4O+MIBwF/zgUthwLnaMYR+4nGTCjurJcRtQKBLkHOBfCPTu3RbD
+         x8coRYH7k3AAx7vNGYwqCv8nlgDRpiePwuayOa7PM4KquSBz2DBdHTswuTnASkGs66NA
+         9B2V7oBlptfx0R3XhuwIoKKm3GjnvynYvpiKKcHbTeFpgLNL5pJUJUiNIa1SzUplmKde
+         PSRA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1762261752; x=1762866552;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=EeInQQFLiIKx9a2aZ0cucvmhXeQc/nRxrd1ryoO5rZk=;
+        b=QUzPds+CJ+ieAF82C/LHqYdAPOWaPWQ5bdXrV+DmuvWSnXMNp0rfj3bo/UR09eBsgV
+         W4RYjk+Bz1S2Jd7chLCP1jKdWABgTyQdcKwDHkwQolRSgPgDW06G4jU7F23lwqXGfIAF
+         Y6OP0k+ebU0LGZqzWF3aV/ZUseNHwQhiGYq/WFZbldY9/SLLVxEUk0Lp+WbXT7aZBFSs
+         FZHPLLh39RZIljoPKP8VIiZSAaL8mbudeDDUKl5X7A/yvc7pJNqwEKFiBhe7oWUTvAEB
+         KDSzK+LyWvdRdZlkymXX4RXDB1ZY4n/PkT9UR5KAwoP0EWII1nMePz2hmx2amUnYwy0M
+         OQvw==
+X-Forwarded-Encrypted: i=1; AJvYcCWwjAxO544583TocfuE168/fgDOyTdCkzyN81y4J2yyR63xIItbV4TiglTtZ6c4g3PWAhaNYy5YTc5OoTWE0w==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyDmeTzUSwTY42F9zn1qX6PhOCwu6EhLd5TGHlMIJo8SAeJXt85
+	b0V65JL4k8uuKvIGlsbY9tCG8pSC9lIFpPFQQ4rMQFzmbFkIWNTT72f5Z0oS3QE4Xrg=
+X-Gm-Gg: ASbGncsaSniu3QF31XYi2KxZJ42p/OZvzdjSxIJexKdSHzGq4rNJEKfvaydbFvxyn3i
+	wbPKe2XyZEbwWQkFdIBQ+IBXH9W1b9se96EtF4eP5FUt3EpDNEonX4i2p4kR+ScIs29AmlH5UCW
+	LFAE+rTTd/qoIcHUd2bepAFb05GiKhUXXfKXHljgFfisTsOUIzg4sGlvb7yC6r0NEMGif2+zFYL
+	VQBnF52S/8pmbuAfKWcrz/T/q7gGtgf64D5WgS4EGV49dKp8qcPN75Q87MRfovhyoQgn5vbzcgP
+	hlcHgr+vhbbWQGAHw9wqaPkvpMmLci4wBoeK61VNXrBx6HWOBSOruEQkiimpROSphsy1ndr407X
+	vEGVQBVs7khi5SNc/46xaQeqyLpC1FSHlyvVODSbotKrIjsdUa4ZbuNiacXOiRhLNey67sQ==
+X-Google-Smtp-Source: AGHT+IEazXC1/4e+3C9LIKFv0ME+i45XzCYX35RlKHJ+lvSQy9CFk/4mRB0TKiPc1PmCBPTWdT7aKw==
+X-Received: by 2002:a5d:5f87:0:b0:429:d565:d7b0 with SMTP id ffacd0b85a97d-429d565da79mr4914264f8f.40.1762261751551;
+        Tue, 04 Nov 2025 05:09:11 -0800 (PST)
+Received: from [127.0.1.1] ([2a01:cb1d:dc:7e00:9ea1:7ab7:4748:cae3])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-429dc18efd3sm4554431f8f.5.2025.11.04.05.09.08
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 04 Nov 2025 05:09:10 -0800 (PST)
+From: Bartosz Golaszewski <brgl@bgdev.pl>
+Date: Tue, 04 Nov 2025 14:08:53 +0100
+Subject: [PATCH v4 2/8] net: stmmac: qcom-ethqos: use generic device
+ properties
 MIME-Version: 1.0
-Message-ID: <0ac61ea1-9e22-7101-646d-694e350ec1b4@manjaro.org>
-Subject: =?utf-8?q?Re=3A?= [PATCH] =?utf-8?q?arm64=3A?==?utf-8?q?_dts=3A?=
- =?utf-8?q?_rockchip=3A?= pwm-fan overlay for NanoPC-T6
-User-Agent: SOGoMail 5.12.3
-X-Last-TLS-Session-Version: None
-X-Bad-Reply: 'Re:' in Subject but no References or In-Reply-To headers
+Message-Id: <20251104-qcom-sa8255p-emac-v4-2-f76660087cea@linaro.org>
+References: <20251104-qcom-sa8255p-emac-v4-0-f76660087cea@linaro.org>
+In-Reply-To: <20251104-qcom-sa8255p-emac-v4-0-f76660087cea@linaro.org>
+To: Bjorn Andersson <andersson@kernel.org>, 
+ Konrad Dybcio <konradybcio@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Richard Cochran <richardcochran@gmail.com>, 
+ Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+ Vinod Koul <vkoul@kernel.org>, Giuseppe Cavallaro <peppe.cavallaro@st.com>, 
+ Jose Abreu <joabreu@synopsys.com>, Chen-Yu Tsai <wens@kernel.org>, 
+ Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Samuel Holland <samuel@sholland.org>, 
+ Matthew Gerlach <matthew.gerlach@altera.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, 
+ Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
+ Keguang Zhang <keguang.zhang@gmail.com>, Shawn Guo <shawnguo@kernel.org>, 
+ Sascha Hauer <s.hauer@pengutronix.de>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ Fabio Estevam <festevam@gmail.com>, Jan Petrous <jan.petrous@oss.nxp.com>, 
+ s32@nxp.com, Romain Gantois <romain.gantois@bootlin.com>, 
+ Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>, 
+ Heiko Stuebner <heiko@sntech.de>, Chen Wang <unicorn_wang@outlook.com>, 
+ Inochi Amaoto <inochiama@gmail.com>, Emil Renner Berthing <kernel@esmil.dk>, 
+ Minda Chen <minda.chen@starfivetech.com>, Drew Fustini <fustini@kernel.org>, 
+ Guo Ren <guoren@kernel.org>, Fu Wei <wefu@redhat.com>, 
+ Nobuhiro Iwamatsu <nobuhiro.iwamatsu.x90@mail.toshiba>, 
+ Geert Uytterhoeven <geert+renesas@glider.be>, 
+ Magnus Damm <magnus.damm@gmail.com>, Maxime Ripard <mripard@kernel.org>, 
+ Shuang Liang <liangshuang@eswincomputing.com>, 
+ Zhi Li <lizhi2@eswincomputing.com>, 
+ Shangjuan Wei <weishangjuan@eswincomputing.com>, 
+ "G. Jaya Kumaran" <vineetha.g.jaya.kumaran@intel.com>, 
+ Clark Wang <xiaoning.wang@nxp.com>, Linux Team <linux-imx@nxp.com>, 
+ Frank Li <Frank.Li@nxp.com>, David Wu <david.wu@rock-chips.com>, 
+ Samin Guo <samin.guo@starfivetech.com>, 
+ Christophe Roullier <christophe.roullier@foss.st.com>, 
+ Swathi K S <swathi.ks@samsung.com>
+Cc: linux-arm-msm@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, netdev@vger.kernel.org, 
+ linux-stm32@st-md-mailman.stormreply.com, 
+ linux-arm-kernel@lists.infradead.org, 
+ Drew Fustini <dfustini@tenstorrent.com>, linux-sunxi@lists.linux.dev, 
+ linux-amlogic@lists.infradead.org, linux-mips@vger.kernel.org, 
+ imx@lists.linux.dev, linux-renesas-soc@vger.kernel.org, 
+ linux-rockchip@lists.infradead.org, sophgo@lists.linux.dev, 
+ linux-riscv@lists.infradead.org, 
+ Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2896;
+ i=bartosz.golaszewski@linaro.org; h=from:subject:message-id;
+ bh=POv+vDF2xSPchjLMqtdcREByAr5wVSRC/4xfmqCj4bM=;
+ b=owEBbQKS/ZANAwAKARGnLqAUcddyAcsmYgBpCfrsfPxny4b8sz641T3T8EFvMTQx5kwO1QGOR
+ 8pb8GTd+BeJAjMEAAEKAB0WIQQWnetsC8PEYBPSx58Rpy6gFHHXcgUCaQn67AAKCRARpy6gFHHX
+ cnqVD/97NywmsMZe+hTiJ7jxCsNyrWnMcFO+7cIL2RPel3gou8gIXIQsX7ETeIUDtcJzTZ1KqSm
+ agsydioe3Mk2/PKY0XdQxNxEpMu65rEETgcwAzTyKgoU/GZTN7LqKeqxXx3S8aUCDiwGkjQifN8
+ X2v8MajyRTcRmY6D54ypAgNEnFYJkeXukrUxi75A6NLw5DrkAJXiElFKV8Tfmc35UABzpEhoqVE
+ T88M2BP+jZLRswE6QrLutFh322QPaF+UjIRKHUaSw4FFBTZTy5aDvugwNG/kaGN3HopwyUXjCRf
+ ErGV9fj5k1xKzd0LYxkqFzXGd+anLTeceuPdxnQBJJS1WQStSlyRM8YM9o7iyG6Vpn9AwHwPQOX
+ IG1GY+EPViR2egEOTkA05k9276NPSpxVnYXxSiEq5Qbk35L4ZJDO96QF/G7uILkWr5coGWSSms/
+ P4UoZRGYq4KVQ/m8Q+r5upzCzXVqfEDAyKuhITS4g84ORbRJEezl5MXDte+IYVB+qcRrWEmXjBz
+ 8g60W21TaM8AfbRDvZtWVjkNzCIlUv68U1HsXEpCg7dJiPHZYMpZeM6sgFYNYCONcr/XTMwTODa
+ ar4PeVg5WExRCx2+/p2gUOp1THWngsIY51xRK43VP8GvryZCHp/WVW7HF7s7bCwOHAoLr0/70vM
+ g1Xe3JNSs8RSY5w==
+X-Developer-Key: i=bartosz.golaszewski@linaro.org; a=openpgp;
+ fpr=169DEB6C0BC3C46013D2C79F11A72EA01471D772
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251101_095918_607156_7DA8EBB5 
-X-CRM114-Status: GOOD (  21.14  )
+X-CRM114-CacheID: sfid-20251104_050913_779573_EA1B9048 
+X-CRM114-Status: GOOD (  15.23  )
 X-Mailman-Approved-At: Thu, 06 Nov 2025 04:28:36 -0800
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -67,93 +165,77 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Hugh,
+From: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
 
-On Saturday, November 01, 2025 14:14 CET, Hugh Cole-Baker <sigmaris@gmail.com> wrote:
-> On 01/11/2025 11:44, Heiko Stuebner wrote:
-> > Personally, I'm more on the less complication side.
-> > 
-> > I.e. if there is an actual fan-connector on the board we should describe
-> > it as such.
-> > 
-> > Overlays I see for things where you attach hats to generic pin headers
-> > to create specific functionality on top of a generic interface.
-> > 
-> > But if the board itself has an actual fan header, it should be described
-> > as such. Because that then _is_ the standard use of that.
-> 
-> The board does have a fan connector, just no fan by default. But anyway,
-> since it sounds like the preferred approach I'll send a v2 which puts the
-> fan into the base board .dts.
-> 
-> Dragan, you mentioned there's no need for more than 2 trip points - if
-> I remove the trip points between "SoC is warm, start fan at slow speed"
-> and "SoC is v. hot, run fan at full speed" is the OS/kernel expected to
-> interpolate between those 2 trip points (if you have a link to docs or
-> code about this it'd be interesting, I couldn't find anything in the
-> dt-bindings)?
+In order to drop the dependency on CONFIG_OF, convert all device property
+getters from OF-specific to generic device properties and stop pulling
+in any linux/of.h symbols.
 
-True, that isn't described in the bindings, because it basically
-doesn't belong there.  Thus, the most specific description of the
-associated cooling stuff, as provided by the bindings, is the
-following excerpt from Documentation/devicetree/bindings/thermal/
-thermal-zones.yaml:
+Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+---
+ drivers/net/ethernet/stmicro/stmmac/Kconfig             | 2 +-
+ drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c | 9 ++++-----
+ 2 files changed, 5 insertions(+), 6 deletions(-)
 
-  209 cooling-device:
-  210   $ref: /schemas/types.yaml#/definitions/phandle-array
-  211   description:
-  212     A list of cooling device phandles along with the minimum
-  213     and maximum cooling state specifiers for each cooling
-  214     device. Using the THERMAL_NO_LIMIT (-1UL) constant in the
-  215     cooling-device phandle limit specifier lets the framework
-  216     use the minimum and maximum cooling state for that cooling
-  217     device automatically.
+diff --git a/drivers/net/ethernet/stmicro/stmmac/Kconfig b/drivers/net/ethernet/stmicro/stmmac/Kconfig
+index 87c5bea6c2a243f3be998b2c3935bc1dc23bfe22..22d0eaab35eaffac0bca58f8625ecc5c955b6631 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/Kconfig
++++ b/drivers/net/ethernet/stmicro/stmmac/Kconfig
+@@ -135,7 +135,7 @@ config DWMAC_MESON
+ config DWMAC_QCOM_ETHQOS
+ 	tristate "Qualcomm ETHQOS support"
+ 	default ARCH_QCOM
+-	depends on OF && (ARCH_QCOM || COMPILE_TEST)
++	depends on ARCH_QCOM || COMPILE_TEST
+ 	help
+ 	  Support for the Qualcomm ETHQOS core.
+ 
+diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c
+index 1a616a71c36ace29a74a0aa23fc8173443aa49a5..8578a2df8cf0d1d8808bcf7e7b57c93eb14c87db 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c
++++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c
+@@ -1,8 +1,8 @@
+ // SPDX-License-Identifier: GPL-2.0
+ // Copyright (c) 2018-19, Linaro Limited
+ 
++#include <linux/mod_devicetable.h>
+ #include <linux/module.h>
+-#include <linux/of.h>
+ #include <linux/of_net.h>
+ #include <linux/platform_device.h>
+ #include <linux/phy.h>
+@@ -748,7 +748,6 @@ static void ethqos_ptp_clk_freq_config(struct stmmac_priv *priv)
+ 
+ static int qcom_ethqos_probe(struct platform_device *pdev)
+ {
+-	struct device_node *np = pdev->dev.of_node;
+ 	const struct ethqos_emac_driver_data *data;
+ 	struct plat_stmmacenet_data *plat_dat;
+ 	struct stmmac_resources stmmac_res;
+@@ -799,7 +798,7 @@ static int qcom_ethqos_probe(struct platform_device *pdev)
+ 
+ 	ethqos->mac_base = stmmac_res.addr;
+ 
+-	data = of_device_get_match_data(dev);
++	data = device_get_match_data(dev);
+ 	ethqos->por = data->por;
+ 	ethqos->num_por = data->num_por;
+ 	ethqos->rgmii_config_loopback_en = data->rgmii_config_loopback_en;
+@@ -836,9 +835,9 @@ static int qcom_ethqos_probe(struct platform_device *pdev)
+ 	if (ethqos->has_emac_ge_3)
+ 		plat_dat->dwmac4_addrs = &data->dwmac4_addrs;
+ 	plat_dat->pmt = 1;
+-	if (of_property_read_bool(np, "snps,tso"))
++	if (device_property_present(dev, "snps,tso"))
+ 		plat_dat->flags |= STMMAC_FLAG_TSO_EN;
+-	if (of_device_is_compatible(np, "qcom,qcs404-ethqos"))
++	if (device_is_compatible(dev, "qcom,qcs404-ethqos"))
+ 		plat_dat->flags |= STMMAC_FLAG_RX_CLK_RUNS_IN_LPI;
+ 	if (data->dma_addr_width)
+ 		plat_dat->host_dma_width = data->dma_addr_width;
 
-That's where the cooling hardware description ends, so that's also
-where the associated binding ends.  Everything else belongs to the
-thermal governors, because they actually decide on how to best use
-the available cooling features.
-
-For example, the chain of events may look like this:
-
-  (1) The rockchip_thermal_alarm_irq_thread() function, defined in
-      drivers/thermal/rockchip_thermal.c, gets triggered by TSADC
-      within the parameters of DT-defined "active" trip types
-
-  (2) It calls the thermal_zone_device_update() function defined
-      in drivers/thermal/thermal_core.c
-
-  (3) This ends up calling the step_wise_manage() function that's
-      defined in drivers/thermal/gov_step_wise.c, which handles
-      the previously triggered "active" trip
-
-  (4) This calls the drivers/thermal/gov_step_wise.c's locally
-      defined thermal_zone_trip_update() and get_target_state()
-      functions, which end up ramping the fan speed up and down
-      as needed, while respecting the upper and lower limits
-      defined through the "cooling-device" DT map properties,
-      which correspond to the "cooling-levels" defined in the
-      DT fan property
-
-Here's also an excerpt from drivers/thermal/gov_step_wise.c, which
-confirms all this and explains it a bit further:
-
-  113  /*
-  114   * Throttling Logic: Use the trend of the thermal zone to throttle.
-  115   * If the thermal zone is 'heating up', throttle all of the cooling
-  116   * devices associated with each trip point by one step. If the zone
-  117   * is 'cooling down', it brings back the performance of the devices
-  118   * by one step.
-  119   */
-
-With all that in mind, the fan will ramp its speed up and down
-nicely, according to the current temperature, with no need for
-having multiple manually defined steps.
-
-The intended benefit of having the two usual, distinct "active"
-thermal trips and cooling maps is to lower the fan-induced noise
-a bit while not affecting the cooling much.  This is all visible
-in rk3399-rockpro64.dtsi, for example.
+-- 
+2.51.0
 
 
 _______________________________________________
