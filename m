@@ -4,42 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 334E3CCFA00
-	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Nov 2025 08:54:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20704CCF9E3
+	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Nov 2025 10:43:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=EyU/iQ4GC+BKMmW57/AfXDcyAaGXZHPe2Z05br/g9DU=; b=gY5gZigtCdWOnr
-	A1KuDrt0HMy8trP00hVb8qzQTzLIzBANGcrk7a/RV3BogPq4Ch587Nuyd01hBvRF7xzu3+ArehvYd
-	soNzMy89LydYD3kgW+C8dwCM6IYkTugSmyMg5NHHkrVepNw63T/WVQj1YLDLFTn++GlvgjpA5FIqd
-	jBNZ2Te945CoDmbTD8/45G8HlUEmvKhY8wD9zY88iACLT6/Lh6gsLcRGZO3WbmWzSfS51gA1SN4bG
-	lWz0E8jONvdZXvOuZGtdelhhB3D58ApUsnbQGG+RmqUnagpIDJeXa5LVToG5i3z9HJGHvsYW273u4
-	pVgDDY4twurc0Oe2QJ5g==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=iEZvDkrHlVC8pBdD+ov0bZrjHgmj0fffQBYRu75gGb4=; b=1HP3evkxYPuo8L
+	yCGiixq4/8gPrdHzykEz7/kaZErb6pUycjz0LgpVHjbQDNKRkSOkyoc50+XaCb1rsuKu6j1dypjcl
+	ktyd6RYZE3spt3W9eZGWV9EPSS01Cs8Kugxad+NUjyxeQsk/+obtdC66dbal9CeYPfOwyuB2a1GOG
+	tT9UXRMZ/YyFFyh3eK8EAszW8os/mtE5sompkdFSAHg5CGdb6v2KvRa4uHcxNwr6bOYedSL90IO10
+	ptZ3mkXs5sfFow5lxbgCPMIrnBUuXXMnzY4EatCGJDT8qMFvOtOlhYLFNTM3h9YPUvP1HTxrPsekT
+	c88syK7mtwTJ8NrxnH1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGCns-0000000BTXj-2vhf;
-	Tue, 04 Nov 2025 08:54:12 +0000
-Received: from sakura.naobsd.org ([160.16.200.221] helo=mail.naobsd.org)
+	id 1vGEVN-0000000BdHY-23Bs;
+	Tue, 04 Nov 2025 10:43:13 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGCnp-0000000BTUm-3BtG
-	for linux-rockchip@lists.infradead.org;
-	Tue, 04 Nov 2025 08:54:11 +0000
-Received: from secure.fukaumi.org ([10.0.0.2])
-	by mail.naobsd.org (8.14.4/8.14.4/Debian-4.1ubuntu1.1) with ESMTP id 5A48qYtt028441;
-	Tue, 4 Nov 2025 17:52:34 +0900
-From: FUKAUMI Naoki <naoki@radxa.com>
-To: heiko@sntech.de
-Subject: [PATCH v3] arm64: dts: rockchip: Fix USB Type-C host mode for Radxa ROCK 5B+/5T
-Date: Tue,  4 Nov 2025 08:52:27 +0000
-Message-ID: <20251104085227.820-1-naoki@radxa.com>
-X-Mailer: git-send-email 2.43.0
+	id 1vGEVL-0000000BdGd-2b24;
+	Tue, 04 Nov 2025 10:43:12 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=XjgsfMkrLaZXeX2KsYSs/abzxMl8bXYbsXOSIwq34Qk=; b=PAi+h2Ejyq4PpTkpTOO9TwDrvk
+	hkAhoy2Oz8VEBgy1YcJ7fqmqV6aPcONiQ70PhnC9z+f6W7MdFesbfVJCoRBJzXKVP7RpayOo4qyZB
+	qzdazj0fw5USxNsk3fwetilyjkhAY+nuTW1JTnEFsM909zdVYuIFGDzltIiYZQKNDNEFsEfWozAkc
+	6kj9jiyMuegVsPBHePsQlTieq/91B2JZSZFdgxHr7LMUvtA+cos9iPGTIvvrDIgAHH8CCYekQOrm+
+	uZ4AX5utJy6ylo6frILGyuZLFUScACdr71z7QHjzWBX+1lyFQPJxrxMCmZy8v9CBNq8pJWyB49n/6
+	jS3jrGJA==;
+Received: from i53875aae.versanet.de ([83.135.90.174] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1vGEVG-000405-Au; Tue, 04 Nov 2025 11:43:06 +0100
+From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
+To: Ye Zhang <ye.zhang@rock-chips.com>,
+ Linus Walleij <linus.walleij@linaro.org>, Ye Zhang <ye.zhang@rock-chips.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, linux-gpio@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ tao.huang@rock-chips.com
+Subject: Re: [PATCH v1 1/3] dt-bindings: pinctrl: Add rk3506 pinctrl support
+Date: Tue, 04 Nov 2025 11:43:03 +0100
+Message-ID: <3705122.LM0AJKV5NW@diego>
+In-Reply-To: <20251104021223.2375116-2-ye.zhang@rock-chips.com>
+References: <20251104021223.2375116-1-ye.zhang@rock-chips.com>
+ <20251104021223.2375116-2-ye.zhang@rock-chips.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251104_005410_014885_5FBE8CB0 
-X-CRM114-Status: GOOD (  15.49  )
+X-CRM114-CacheID: sfid-20251104_024311_701510_CA0D22DC 
+X-CRM114-Status: UNSURE (   8.60  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -51,121 +70,16 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: robh@kernel.org, conor+dt@kernel.org, detlev.casanova@collabora.com, quentin.schulz@cherry.de, sebastian.reichel@collabora.com, damon.ding@rock-chips.com, FUKAUMI Naoki <naoki@radxa.com>, didi.debian@cknow.org, jbx6244@gmail.com, linux-rockchip@lists.infradead.org, krzk+dt@kernel.org, nicolas.frattaroli@collabora.com, devicetree@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The Radxa ROCK 5B+/5T USB Type-C port supports Dual Role Data and
-should also act as a host. However, currently, when acting as a host,
-only self-powered devices work.
-
-Since the ROCK 5B+ supports Dual Role Power, set the power-role
-property to "dual" and the try-power-role property to "sink". (along
-with related properties)
-
-The ROCK 5T should only support the "source" power-role.
-
-This allows the port to act as a host, supply power to the port, and
-allow bus-powered devices to work.
-
-Note that on the ROCK 5T, with this patch applied, it has been
-observed that some bus-powered devices do not work correctly. Also,
-it has been observed that after connecting a device (and the data-role
-switches to host), connecting a host device does not switch the
-data-role back to the device role. These issues should be addressed
-separately.
-
-Note that there is a separate known issue where USB 3.0 SuperSpeed
-devices do not work when oriented in reverse. This issue should also be
-addressed separately. (USB 2.0/1.1 devices work in both orientations)
-
-Fixes: 67b2c15d8fb3c ("arm64: dts: rockchip: add USB-C support for ROCK 5B/5B+/5T")
-Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
----
-Changes in v3:
-- Use power-role = "source" for ROCK 5T
-Changes in v2:
-- Refine commit message
-- Use board-specific dts to describe (try-)power-role
----
- arch/arm64/boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi | 4 ++--
- arch/arm64/boot/dts/rockchip/rk3588-rock-5b-plus.dts    | 5 +++++
- arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts         | 4 ++++
- arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts         | 4 ++++
- 4 files changed, 15 insertions(+), 2 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi
-index 3bbe78810ec6f..7aac77dfc5f16 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi
-@@ -331,12 +331,12 @@ usb_con: connector {
- 			data-role = "dual";
- 			/* fusb302 supports PD Rev 2.0 Ver 1.2 */
- 			pd-revision = /bits/ 8 <0x2 0x0 0x1 0x2>;
--			power-role = "sink";
--			try-power-role = "sink";
- 			op-sink-microwatt = <1000000>;
- 			sink-pdos =
- 				<PDO_FIXED(5000, 3000, PDO_FIXED_USB_COMM)>,
- 				<PDO_VAR(5000, 20000, 5000)>;
-+			source-pdos =
-+				<PDO_FIXED(5000, 3000, PDO_FIXED_USB_COMM)>;
- 
- 			altmodes {
- 				displayport {
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-plus.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-plus.dts
-index 5e984a44120e4..07a840d9b3859 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-plus.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-plus.dts
-@@ -110,6 +110,11 @@ vcc5v0_host_en: vcc5v0-host-en {
- 	};
- };
- 
-+&usb_con {
-+	power-role = "dual";
-+	try-power-role = "sink";
-+};
-+
- &usbdp_phy0 {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&usbc_sbu_dc>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-index 8ef01010d985b..da13dafcbc823 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dts
-@@ -49,6 +49,10 @@ vcc5v0_host_en: vcc5v0-host-en {
- 	};
- };
- 
-+&usb_con {
-+	power-role = "sink";
-+};
-+
- &usbdp_phy0 {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&usbc_sbu_dc>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts
-index c1763835f53d4..0dd90c744380b 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts
-@@ -130,6 +130,10 @@ usbc_sbu_dc: usbc-sbu-dc {
- 	};
- };
- 
-+&usb_con {
-+	power-role = "source";
-+};
-+
- &usbdp_phy0 {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&usbc_sbu_dc>;
--- 
-2.43.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+QW0gRGllbnN0YWcsIDQuIE5vdmVtYmVyIDIwMjUsIDAzOjEyOjIxIE1pdHRlbGV1cm9ww6Rpc2No
+ZSBOb3JtYWx6ZWl0IHNjaHJpZWIgWWUgWmhhbmc6Cj4gQWRkIHRoZSBjb21wYXRpYmxlIHN0cmlu
+ZyBmb3IgdGhlIHJrMzUwNiBTb0MuCj4gCj4gU2lnbmVkLW9mZi1ieTogWWUgWmhhbmcgPHllLnpo
+YW5nQHJvY2stY2hpcHMuY29tPgoKUmV2aWV3ZWQtYnk6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0Bz
+bnRlY2guZGU+CgoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5m
+cmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
+bnV4LXJvY2tjaGlwCg==
