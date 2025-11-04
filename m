@@ -4,51 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1F47CCF9E3
-	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Nov 2025 22:17:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F199FCCFA04
+	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Nov 2025 22:25:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=3gDLH3vSf90xBv6RqgtqAIjA7EtdpERgGxg73INZ6S8=; b=MKYGI2GnPv9S8L
-	TNx4gNSmakRcBHg1NcOrEpfeqjky3SoGTXYdrOgsEPeHTOdALjoXlDT1dhYPFu7aFnb7VttkM5yWy
-	MtWKm86xE3uJdY4359WN5MyAKmFqzDm01+pf9m8+fxbhTDWlFjZvd+bkCteYo3oIv5V2SMawUG7pK
-	bjkF8eCMl+t5froyH7MxeBowZFfqvwGZZHrUM41WYbbWxa56tzZPkWKhYD6lwXtM9jg3O+my82Wci
-	tVhI7sVmEPKNSv1a2HWOeFMN+zF3yIfCiFcWr4bMRdPccBrnFT/Bbp7V0Ga3k2aQD90NJfXmNU6nf
-	KyfjiSZssxJk/vGgysXg==;
+	List-Owner; bh=oXEmxEVyEbGkDepZsJ1rY+JGTGrg7kP9wkIBhdpZZ9U=; b=CiyNvM5VQS6HlV
+	WJ/mMErlD2JVxVjpVZfKgKPgFrB8x0NT7lDvuWP/0bCM6hupx+Cr9bzqR1Z8ElFsFU6VpKY4M+ekn
+	98G+Wq+Py3gKnfNz0ZZ1/Z4EarfR+ybfVXorNJ9NG5pePqIXQahYMIq6KqfVAPlf1CtL4Jp2XK8wi
+	7JaGGUdRjR+3oRGYV9k5j9Ds3xKXxjpLo6tsazQ3wSOn7BupRoHI5vpgvW0L+itnldSEZ2nva/vrH
+	4IMBKgsGQMRkcQsX53LX1xbKCbQMHEqn1newbPtCFjYeewYVg8ZqjI4OGEmV71We2vVdWsOLkr2dk
+	DsjBF3QacpAZAjcu/RWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGPLE-0000000Cfmt-2ILj;
-	Tue, 04 Nov 2025 22:17:28 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vGPSb-0000000CgRW-3RSF;
+	Tue, 04 Nov 2025 22:25:05 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGPLC-0000000Cfmc-45Gc;
-	Tue, 04 Nov 2025 22:17:27 +0000
+	id 1vGPSY-0000000CgQd-0U2b;
+	Tue, 04 Nov 2025 22:25:03 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 0E5E8601ED;
-	Tue,  4 Nov 2025 22:17:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 95707C4CEF7;
-	Tue,  4 Nov 2025 22:17:25 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 1035444845;
+	Tue,  4 Nov 2025 22:25:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C0966C4CEF8;
+	Tue,  4 Nov 2025 22:25:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1762294645;
-	bh=GPnXKcnSWDO6n2Vnl3gr4/8tfcpo5ILwTjAVUvTUtEg=;
+	s=k20201202; t=1762295100;
+	bh=MpBA+UULRGogBYd/iiElinHqnh5k6olSM7ACsR1ylwE=;
 	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=gwgMheG/Lqh9MW9jqrIe6oalohogZJoSuM/jTZ+BNjDgyBNu6WnB4Ar+UjoLS9L47
-	 XxesL+NxPDSS+3+XW6a4hNunMJYu6PjYv37oovpvdY0by3dheB+8hy7w8VBO85bteS
-	 yqHXt9j95V70w409wLIUDlTD/cyS+k0BVYfJ6N1FYpp405k9soSebrH5Gvb+39iP93
-	 kSJbbMC657OBONgwKaq4MwdhZW31dczdiY7tHvf2R4MkCUAhqpUCJZ0DmryQRl924r
-	 uT8/YRvEtBgo37maJtTCeTh7h4nSZwtp62glfFjYXQxKYiZlaHiQSA3RMJJCejTPwk
-	 hl5rS2II+oyWg==
-Date: Tue, 4 Nov 2025 16:17:24 -0600
+	b=UQZp25VyWCMTDQ9j29IMpi6TqHDlYY3SFYSR78Ndgg7TwFhh6wrOrGCArjzifof27
+	 4byTJicLROTO8eC9xOZqgzl0Nnf6WNkmeNt+glnOzXRG1cxhRBSHSmm55Wty7Ul4WE
+	 0EaArA6UfCUxVbJIpJeuKfNNq4kbGpjiqBJ0BPQNw5pOv7LUDsn8lOneeaC49g268D
+	 ObGHpqFsot3UajEJRhEC0YNEiwbu+Yeh21RQZCu8yI3vyT8iWHdio6btqFQ0UVlMy6
+	 I4HJ2Yn/rjd13mMm9kBv561u6QIp1sNTnNxcO6ExT3crGwFTtCdxSl3vqsMWMbP6zj
+	 rtpWqYbH4dEcg==
+Date: Tue, 4 Nov 2025 16:24:59 -0600
 From: Bjorn Helgaas <helgaas@kernel.org>
-To: Shawn Lin <shawn.lin@rock-chips.com>
+To: Niklas Cassel <cassel@kernel.org>
 Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>,
 	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
 	Manivannan Sadhasivam <mani@kernel.org>,
 	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
 	Heiko Stuebner <heiko@sntech.de>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
 	Kever Yang <kever.yang@rock-chips.com>,
 	Simon Xue <xxm@rock-chips.com>, Damien Le Moal <dlemoal@kernel.org>,
 	Dragan Simic <dsimic@manjaro.org>, FUKAUMI Naoki <naoki@radxa.com>,
@@ -58,14 +59,16 @@ Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>,
 	Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>,
 	Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, linux-pci@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	Niklas Cassel <cassel@kernel.org>
+	linux-rockchip@lists.infradead.org
 Subject: Re: [PATCH v3] PCI: dw-rockchip: Prevent advertising L1 Substates
  support
-Message-ID: <20251104221724.GA1875081@bhelgaas>
+Message-ID: <20251104222459.GA1875296@bhelgaas>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <0e32766b-b951-4ab4-ae3d-c802cf649edf@rock-chips.com>
+In-Reply-To: <aQn3RGrJi1lb0EO1@ryzen>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251104_142502_200880_DC4615C7 
+X-CRM114-Status: GOOD (  46.63  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,107 +80,145 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlLCBOb3YgMDQsIDIwMjUgYXQgMDg6NTg6MDJBTSArMDgwMCwgU2hhd24gTGluIHdyb3Rl
-Ogo+IOWcqCAyMDI1LzExLzA0IOaYn+acn+S6jCA1OjMyLCBCam9ybiBIZWxnYWFzIOWGmemBkzoK
-PiA+IE9uIFR1ZSwgT2N0IDI4LCAyMDI1IGF0IDAyOjAyOjE4UE0gLTA1MDAsIEJqb3JuIEhlbGdh
-YXMgd3JvdGU6Cj4gPiA+IE9uIEZyaSwgT2N0IDE3LCAyMDI1IGF0IDA2OjMyOjUzUE0gKzAyMDAs
-IE5pa2xhcyBDYXNzZWwgd3JvdGU6Cj4gPiA+ID4gVGhlIEwxIHN1YnN0YXRlcyBzdXBwb3J0IHJl
-cXVpcmVzIGFkZGl0aW9uYWwgc3RlcHMgdG8gd29yaywgbmFtZWx5Ogo+ID4gPiA+IC1Qcm9wZXIg
-aGFuZGxpbmcgb2YgdGhlIENMS1JFUSMgc2lkZWJhbmQgc2lnbmFsLiAoSXQgaXMgbW9zdGx5IGhh
-bmRsZWQgYnkKPiA+ID4gPiAgIGhhcmR3YXJlLCBidXQgc29mdHdhcmUgc3RpbGwgbmVlZHMgdG8g
-c2V0IHRoZSBjbGtyZXEgZmllbGRzIGluIHRoZQo+ID4gPiA+ICAgUENJRV9DTElFTlRfUE9XRVJf
-Q09OIHJlZ2lzdGVyIHRvIG1hdGNoIHRoZSBoYXJkd2FyZSBpbXBsZW1lbnRhdGlvbi4pCj4gPiA+
-ID4gLVByb2dyYW0gdGhlIGZyZXF1ZW5jeSBvZiB0aGUgYXV4IGNsb2NrIGludG8gdGhlCj4gPiA+
-ID4gICBEU1BfUENJRV9QTF9BVVhfQ0xLX0ZSRVFfT0ZGIHJlZ2lzdGVyLiAoRHVyaW5nIEwxIHN1
-YnN0YXRlcyB0aGUgY29yZV9jbGsKPiA+ID4gPiAgIGlzIHR1cm5lZCBvZmYgYW5kIHRoZSBhdXhf
-Y2xrIGlzIHVzZWQgaW5zdGVhZC4pCj4gPiA+IC4uLgo+ID4gCj4gPiA+ID4gK3N0YXRpYyB2b2lk
-IHJvY2tjaGlwX3BjaWVfZGlzYWJsZV9sMXN1YihzdHJ1Y3QgZHdfcGNpZSAqcGNpKQo+ID4gPiA+
-ICt7Cj4gPiA+ID4gKwl1MzIgY2FwLCBsMXN1YmNhcDsKPiA+ID4gPiArCj4gPiA+ID4gKwljYXAg
-PSBkd19wY2llX2ZpbmRfZXh0X2NhcGFiaWxpdHkocGNpLCBQQ0lfRVhUX0NBUF9JRF9MMVNTKTsK
-PiA+ID4gPiArCWlmIChjYXApIHsKPiA+ID4gPiArCQlsMXN1YmNhcCA9IGR3X3BjaWVfcmVhZGxf
-ZGJpKHBjaSwgY2FwICsgUENJX0wxU1NfQ0FQKTsKPiA+ID4gPiArCQlsMXN1YmNhcCAmPSB+KFBD
-SV9MMVNTX0NBUF9MMV9QTV9TUyB8IFBDSV9MMVNTX0NBUF9BU1BNX0wxXzEgfAo+ID4gPiA+ICsJ
-CQkgICAgICBQQ0lfTDFTU19DQVBfQVNQTV9MMV8yIHwgUENJX0wxU1NfQ0FQX1BDSVBNX0wxXzEg
-fAo+ID4gPiA+ICsJCQkgICAgICBQQ0lfTDFTU19DQVBfUENJUE1fTDFfMik7Cj4gPiA+ID4gKwkJ
-ZHdfcGNpZV93cml0ZWxfZGJpKHBjaSwgY2FwICsgUENJX0wxU1NfQ0FQLCBsMXN1YmNhcCk7Cj4g
-PiA+ID4gKwl9Cj4gPiA+ID4gK30KPiA+ID4gCj4gPiA+IEkgbGlrZSB0aGlzLiAgQnV0IHdoeSBz
-aG91bGQgd2UgZG8gaXQganVzdCBmb3IgZHctcm9ja2NoaXA/ICBJcyB0aGVyZQo+ID4gPiBzb21l
-dGhpbmcgc3BlY2lhbCBhYm91dCBkdy1yb2NrY2hpcCB0aGF0IG1ha2VzIHRoaXMgYSBwcm9ibGVt
-PyAgTWF5YmUKPiA+ID4gd2Ugc2hvdWxkIGNvbnNpZGVyIGRvaW5nIHRoaXMgaW4gdGhlIGR3Yywg
-Y2FkZW5jZSwgbW9iaXZlaWwsIGFuZCBwbGRhCj4gPiA+IGNvcmVzIGluc3RlYWQgb2YgdHJ5aW5n
-IHRvIGRvIGl0IGZvciBldmVyeSBkcml2ZXIgaW5kaXZpZHVhbGx5Pwo+ID4gPiAKPiA+ID4gQWR2
-ZXJ0aXNpbmcgTDFTUyBzdXBwb3J0IHZpYSBQQ0lfRVhUX0NBUF9JRF9MMVNTIG1lYW5zIHVzZXJz
-IGNhbgo+ID4gPiBlbmFibGUgTDFTUyB2aWEgQ09ORklHX1BDSUVBU1BNX1BPV0VSX1NVUEVSU0FW
-RT15IG9yIHN5c2ZzLCBhbmQgdGhhdAo+ID4gPiBzZWVtcyBsaWtlbHkgdG8gY2F1c2UgcHJvYmxl
-bXMgdW5sZXNzIENMS1JFUSMgaXMgc3VwcG9ydGVkLgo+ID4gCj4gPiBBbnkgdGhvdWdodHMgb24g
-dGhpcz8gIFRoZXJlJ3Mgbm90aGluZyByb2NrY2hpcC1zcGVjaWZpYyBpbiB0aGlzCj4gPiBwYXRj
-aC4gIFdoYXQgSSdtIHByb3Bvc2luZyBpcyBzb21ldGhpbmcgbGlrZSB0aGlzOgo+IAo+IEkgbGlr
-ZSB5b3VyIGlkZWEsIHRob3VnaC4gQnV0IGNvdWxkIGl0IGJlIGFub3RoZXIgZm9ybSBvZiByZWdy
-ZXNzaW9uCj4gdGhhdCB3ZSBtYXkgYnJlYWtzIHRoZSBwbGF0Zm9ybSB3aGljaCBoYXZlIGFscmVh
-ZHkgc3VwcG9ydCBMMVNTCj4gcHJvcGVybHk/IEl0J3MgZXZlbiBoYXJkZXIgdG8gZGV0ZWN0IGJl
-Y2F1c2UgYSBmdW5jdGlvbmFsIGJyZWFrIGlzIGVhc2llciB0bwo+IG5vdGljZSB0aGFuIGluY3Jl
-YXNlZCBwb3dlciBjb25zdW1wdGlvbi4gCgpUcnVlLCBidXQgSSB0aGluayBpdCdzIHVubGlrZWx5
-IGJlY2F1c2UgdGhlIFBDSSBjb3JlIG5ldmVyIGVuYWJsZWQKTDFTUyAoZXhjZXB0IGZvciBDT05G
-SUdfUENJRUFTUE1fUE9XRVJfU1VQRVJTQVZFPXkgb3Igc3lzZnMsIHdoaWNoIEkKZG91YnQgYW55
-Ym9keSByZWFsbHkgdXNlcykuCgpEZXZpY2V0cmVlIHBsYXRmb3JtcyB0aGF0IHVzZSBMMVNTIHNo
-b3VsZCBoYXZlIGV4cGxpY2l0IGNvZGUgdG8gZW5hYmxlCml0LCBsaWtlIHFjb20gZG9lcywgc28g
-d2Ugc2hvdWxkIGJlIGFibGUgdG8gZmluZCB0aGVtIGFuZCBtYWtlIHN1cmUKdGhleSBkbyB3aGF0
-J3MgbmVlZGVkIHRvIHByZXZlbnQgdGhlIHJlZ3Jlc3Npb24uCgo+IE9yIG1heWJlIHdlIGNvdWxk
-Cj4ganVzdCBleHBvcnQgZHdfcGNpZV9jbGVhcl9sMXNzX2FkdmVydCgpIGluIGR3YyBmb3IgaG9z
-dCBkcml2ZXJzIHRvCj4gY2FsbCBpdD8KCkkgZG9uJ3QgbGlrZSB0aGUgaWRlYSBvZiBob3N0IGRy
-aXZlcnMgaGF2aW5nIHRvIG9wdCBpbiBmb3IgdGhpcwpiZWNhdXNlIHRoYXQgcmVxdWlyZXMgY2hh
-bmdlcyB0byBhbGwgb2YgdGhlbSwgbm90IGp1c3QgY2hhbmdlcyB0bwpkcml2ZXJzIHRoYXQgaGF2
-ZSBkb25lIHRoZSB3b3JrIHRvIGFjdHVhbGx5IHN1cHBvcnQgTDFTUy4KCj4gPiAgICAgIFBDSTog
-ZHdjOiBQcmV2ZW50IGFkdmVydGlzaW5nIEwxIFBNIFN1YnN0YXRlcwo+ID4gICAgICBMMSBQTSBT
-dWJzdGF0ZXMgcmVxdWlyZSB0aGUgQ0xLUkVGIyBzaWduYWwgYW5kIGRyaXZlci1zcGVjaWZpYyBz
-dXBwb3J0LiAgSWYKPiA+ICAgICAgQ0xLUkVGIyBpcyBub3Qgc3VwcG9ydGVkIG9yIHRoZSBkcml2
-ZXIgc3VwcG9ydCBpcyBsYWNraW5nLCBlbmFibGluZyBMMS4xIG9yCj4gPiAgICAgIEwxLjIgbWF5
-IGNhdXNlIGVycm9ycyB3aGVuIGFjY2Vzc2luZyBkZXZpY2VzLCBlLmcuLAo+ID4gICAgICAgIG52
-bWUgbnZtZTA6IGNvbnRyb2xsZXIgaXMgZG93bjsgd2lsbCByZXNldDogQ1NUUz0weGZmZmZmZmZm
-LCBQQ0lfU1RBVFVTPTB4MTAKPiA+ICAgICAgSWYgYm90aCBlbmRzIG9mIGEgbGluayBhZHZlcnRp
-c2Ugc3VwcG9ydCBmb3IgTDEgUE0gU3Vic3RhdGVzLCBhbmQgdGhlCj4gPiAgICAgIGtlcm5lbCBp
-cyBidWlsdCB3aXRoIENPTkZJR19QQ0lFQVNQTV9QT1dFUl9TVVBFUlNBVkU9eSBvciB1c2VycyBl
-bmFibGUgTDEueAo+ID4gICAgICB2aWEgc3lzZnMsIExpbnV4IHRyaWVzIHRvIGVuYWJsZSB0aGVt
-Lgo+ID4gICAgICBUbyBwcmV2ZW50IGVycm9ycyB3aGVuIEwxLnggbWF5IG5vdCB3b3JrLCBkaXNh
-YmxlIGFkdmVydGlzaW5nIHRoZSBMMSBQTQo+ID4gICAgICBTdWJzdGF0ZXMuICBEcml2ZXJzIGNh
-biBlbmFibGUgYWR2ZXJ0aXNpbmcgdGhlbSBpZiB0aGV5IGtub3cgQ0xLUkVGIyBpcwo+ID4gICAg
-ICBwcmVzZW50IGFuZCB0aGUgUm9vdCBQb3J0IGlzIGNvbmZpZ3VyZWQgY29ycmVjdGx5Lgo+ID4g
-ICAgICBCYXNlZCBvbiBOaWtsYXMncyBwYXRjaCBmcm9tCj4gPiAgICAgIGh0dHBzOi8vcGF0Y2gu
-bXNnaWQubGluay8yMDI1MTAxNzE2MzI1Mi41OTg4MTItMi1jYXNzZWxAa2VybmVsLm9yZwo+ID4g
-Cj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9wY2kvY29udHJvbGxlci9kd2MvcGNpZS1kZXNpZ253
-YXJlLWhvc3QuYyBiL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvZHdjL3BjaWUtZGVzaWdud2FyZS1o
-b3N0LmMKPiA+IGluZGV4IDIwYzkzMzNiY2IxYy4uODNiNTMzMGM5ZTQ1IDEwMDY0NAo+ID4gLS0t
-IGEvZHJpdmVycy9wY2kvY29udHJvbGxlci9kd2MvcGNpZS1kZXNpZ253YXJlLWhvc3QuYwo+ID4g
-KysrIGIvZHJpdmVycy9wY2kvY29udHJvbGxlci9kd2MvcGNpZS1kZXNpZ253YXJlLWhvc3QuYwo+
-ID4gQEAgLTk1MCw2ICs5NTAsMjcgQEAgc3RhdGljIGludCBkd19wY2llX2lhdHVfc2V0dXAoc3Ry
-dWN0IGR3X3BjaWVfcnAgKnBwKQo+ID4gICAJcmV0dXJuIDA7Cj4gPiAgIH0KPiA+ICtzdGF0aWMg
-dm9pZCBkd19wY2llX2NsZWFyX2wxc3NfYWR2ZXJ0KHN0cnVjdCBkd19wY2llX3JwICpwcCkKPiA+
-ICt7Cj4gPiArCXN0cnVjdCBkd19wY2llICpwY2kgPSB0b19kd19wY2llX2Zyb21fcHAocHApOwo+
-ID4gKwl1MTYgbDFzczsKPiA+ICsJdTMyIGwxc3NfY2FwOwo+ID4gKwo+ID4gKwlsMXNzID0gZHdf
-cGNpZV9maW5kX2V4dF9jYXBhYmlsaXR5KHBjaSwgUENJX0VYVF9DQVBfSURfTDFTUyk7Cj4gPiAr
-CWlmICghbDFzcykKPiA+ICsJCXJldHVybjsKPiA+ICsKPiA+ICsJLyoKPiA+ICsJICogQnkgZGVm
-YXVsdCwgZG9uJ3QgYWR2ZXJ0aXNlIEwxIFBNIFN1YnN0YXRlcyBiZWNhdXNlIHRoZXkgcmVxdWly
-ZQo+ID4gKwkgKiBDTEtSRUYjIGFuZCBvdGhlciBkcml2ZXItc3BlY2lmaWMgc3VwcG9ydC4KPiA+
-ICsJICovCj4gPiArCWwxc3NfY2FwID0gZHdfcGNpZV9yZWFkbF9kYmkocGNpLCBsMXNzICsgUENJ
-X0wxU1NfQ0FQKTsKPiA+ICsJbDFzc19jYXAgJj0gfihQQ0lfTDFTU19DQVBfUENJUE1fTDFfMSB8
-IFBDSV9MMVNTX0NBUF9BU1BNX0wxXzEgfAo+ID4gKwkJICAgICAgUENJX0wxU1NfQ0FQX1BDSVBN
-X0wxXzIgfCBQQ0lfTDFTU19DQVBfQVNQTV9MMV8yIHwKPiA+ICsJCSAgICAgIFBDSV9MMVNTX0NB
-UF9MMV9QTV9TUyk7Cj4gPiArCWR3X3BjaWVfd3JpdGVsX2RiaShwY2ksIGwxc3MgKyBQQ0lfTDFT
-U19DQVAsIGwxc3NfY2FwKTsKPiA+ICt9Cj4gPiArCj4gPiAgIHN0YXRpYyB2b2lkIGR3X3BjaWVf
-cHJvZ3JhbV9wcmVzZXRzKHN0cnVjdCBkd19wY2llX3JwICpwcCwgZW51bSBwY2lfYnVzX3NwZWVk
-IHNwZWVkKQo+ID4gICB7Cj4gPiAgIAlzdHJ1Y3QgZHdfcGNpZSAqcGNpID0gdG9fZHdfcGNpZV9m
-cm9tX3BwKHBwKTsKPiA+IEBAIC0xMDYwLDYgKzEwODEsNyBAQCBpbnQgZHdfcGNpZV9zZXR1cF9y
-YyhzdHJ1Y3QgZHdfcGNpZV9ycCAqcHApCj4gPiAgIAkJUENJX0NPTU1BTkRfTUFTVEVSIHwgUENJ
-X0NPTU1BTkRfU0VSUjsKPiA+ICAgCWR3X3BjaWVfd3JpdGVsX2RiaShwY2ksIFBDSV9DT01NQU5E
-LCB2YWwpOwo+ID4gKwlkd19wY2llX2NsZWFyX2wxc3NfYWR2ZXJ0KHBwKTsKPiA+ICAgCWR3X3Bj
-aWVfY29uZmlnX3ByZXNldHMocHApOwo+ID4gICAJLyoKPiA+ICAgCSAqIElmIHRoZSBwbGF0Zm9y
-bSBwcm92aWRlcyBpdHMgb3duIGNoaWxkIGJ1cyBjb25maWcgYWNjZXNzZXMsIGl0IG1lYW5zCj4g
-PiAKPiAKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
-bnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
-b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9j
-a2NoaXAK
+On Tue, Nov 04, 2025 at 01:53:24PM +0100, Niklas Cassel wrote:
+> On Mon, Nov 03, 2025 at 03:32:06PM -0600, Bjorn Helgaas wrote:
+> > On Tue, Oct 28, 2025 at 02:02:18PM -0500, Bjorn Helgaas wrote:
+> > > On Fri, Oct 17, 2025 at 06:32:53PM +0200, Niklas Cassel wrote:
+> > > > The L1 substates support requires additional steps to work, namely:
+> > > > -Proper handling of the CLKREQ# sideband signal. (It is mostly handled by
+> > > >  hardware, but software still needs to set the clkreq fields in the
+> > > >  PCIE_CLIENT_POWER_CON register to match the hardware implementation.)
+> > > > -Program the frequency of the aux clock into the
+> > > >  DSP_PCIE_PL_AUX_CLK_FREQ_OFF register. (During L1 substates the core_clk
+> > > >  is turned off and the aux_clk is used instead.)
+> > > ...
+> > 
+> > > > +static void rockchip_pcie_disable_l1sub(struct dw_pcie *pci)
+> > > > +{
+> > > > +	u32 cap, l1subcap;
+> > > > +
+> > > > +	cap = dw_pcie_find_ext_capability(pci, PCI_EXT_CAP_ID_L1SS);
+> > > > +	if (cap) {
+> > > > +		l1subcap = dw_pcie_readl_dbi(pci, cap + PCI_L1SS_CAP);
+> > > > +		l1subcap &= ~(PCI_L1SS_CAP_L1_PM_SS | PCI_L1SS_CAP_ASPM_L1_1 |
+> > > > +			      PCI_L1SS_CAP_ASPM_L1_2 | PCI_L1SS_CAP_PCIPM_L1_1 |
+> > > > +			      PCI_L1SS_CAP_PCIPM_L1_2);
+> > > > +		dw_pcie_writel_dbi(pci, cap + PCI_L1SS_CAP, l1subcap);
+> > > > +	}
+> > > > +}
+> > > 
+> > > I like this.  But why should we do it just for dw-rockchip?  Is there
+> > > something special about dw-rockchip that makes this a problem?  Maybe
+> > > we should consider doing this in the dwc, cadence, mobiveil, and plda
+> > > cores instead of trying to do it for every driver individually?
+> > > 
+> > > Advertising L1SS support via PCI_EXT_CAP_ID_L1SS means users can
+> > > enable L1SS via CONFIG_PCIEASPM_POWER_SUPERSAVE=y or sysfs, and that
+> > > seems likely to cause problems unless CLKREQ# is supported.
+> > 
+> > Any thoughts on this?  There's nothing rockchip-specific in this
+> > patch.  What I'm proposing is something like this:
+> > 
+> >     PCI: dwc: Prevent advertising L1 PM Substates
+> >     
+> >     L1 PM Substates require the CLKREF# signal and driver-specific support.  If
+> >     CLKREF# is not supported or the driver support is lacking, enabling L1.1 or
+> >     L1.2 may cause errors when accessing devices, e.g.,
+> >     
+> >       nvme nvme0: controller is down; will reset: CSTS=0xffffffff, PCI_STATUS=0x10
+> >     
+> >     If both ends of a link advertise support for L1 PM Substates, and the
+> >     kernel is built with CONFIG_PCIEASPM_POWER_SUPERSAVE=y or users enable L1.x
+> >     via sysfs, Linux tries to enable them.
+> >     
+> >     To prevent errors when L1.x may not work, disable advertising the L1 PM
+> >     Substates.  Drivers can enable advertising them if they know CLKREF# is
+> >     present and the Root Port is configured correctly.
+> >     
+> >     Based on Niklas's patch from
+> >     https://patch.msgid.link/20251017163252.598812-2-cassel@kernel.org
+> > 
+> > diff --git a/drivers/pci/controller/dwc/pcie-designware-host.c b/drivers/pci/controller/dwc/pcie-designware-host.c
+> > index 20c9333bcb1c..83b5330c9e45 100644
+> > --- a/drivers/pci/controller/dwc/pcie-designware-host.c
+> > +++ b/drivers/pci/controller/dwc/pcie-designware-host.c
+> > @@ -950,6 +950,27 @@ static int dw_pcie_iatu_setup(struct dw_pcie_rp *pp)
+> >  	return 0;
+> >  }
+> >  
+> > +static void dw_pcie_clear_l1ss_advert(struct dw_pcie_rp *pp)
+> > +{
+> > +	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
+> > +	u16 l1ss;
+> > +	u32 l1ss_cap;
+> > +
+> > +	l1ss = dw_pcie_find_ext_capability(pci, PCI_EXT_CAP_ID_L1SS);
+> > +	if (!l1ss)
+> > +		return;
+> > +
+> > +	/*
+> > +	 * By default, don't advertise L1 PM Substates because they require
+> > +	 * CLKREF# and other driver-specific support.
+> > +	 */
+> > +	l1ss_cap = dw_pcie_readl_dbi(pci, l1ss + PCI_L1SS_CAP);
+> > +	l1ss_cap &= ~(PCI_L1SS_CAP_PCIPM_L1_1 | PCI_L1SS_CAP_ASPM_L1_1 |
+> > +		      PCI_L1SS_CAP_PCIPM_L1_2 | PCI_L1SS_CAP_ASPM_L1_2 |
+> > +		      PCI_L1SS_CAP_L1_PM_SS);
+> > +	dw_pcie_writel_dbi(pci, l1ss + PCI_L1SS_CAP, l1ss_cap);
+> > +}
+> > +
+> >  static void dw_pcie_program_presets(struct dw_pcie_rp *pp, enum pci_bus_speed speed)
+> >  {
+> >  	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
+> > @@ -1060,6 +1081,7 @@ int dw_pcie_setup_rc(struct dw_pcie_rp *pp)
+> >  		PCI_COMMAND_MASTER | PCI_COMMAND_SERR;
+> >  	dw_pcie_writel_dbi(pci, PCI_COMMAND, val);
+> >  
+> > +	dw_pcie_clear_l1ss_advert(pp);
+> >  	dw_pcie_config_presets(pp);
+> >  	/*
+> >  	 * If the platform provides its own child bus config accesses, it means
+> 
+> My patch disables L1 substates when running the controller in both
+> root complex mode and endpoint mode.
+> 
+> Your patch above only disables L1 substates when running the the
+> controller in root complex mode.
+> 
+> I think this code has to be in pcie-designware.c and then e.g.
+> dw_pcie_setup_rc() (pcie-designware-host.c) and
+> dw_pcie_ep_init_registers() (pcie-designware-ep.c) can both use it.
+
+I'm not opposed to doing it for endpoints as well if the endpoint mode
+driver needs to configure L1SS things before it can work.
+
+I don't think an endpoint should be enabling L1SS on the host, so
+enabling L1SS probably has to be done by the host, and the host driver
+knows the topology and whether CLKREQ# is supported (e.g., via DT) and
+whether the RP is configured for it.
+
+> And like Shawn mentions. Disabling it by default for all DWC based
+> platforms could introduce regressions where L1 substates already is
+> working fine.
+> 
+> Sure, the only driver that checks for the DT property
+> 'supports-clkreq' is drivers/pci/controller/dwc/pcie-tegra194.c.
+> However Mani claimed that the qcom driver also has support for L1
+> substates already, even though it does not check the
+> 'supports-clkreq' DT property.
+
+Yes, we would need to ensure tegra, qcom, and any others that use L1SS
+don't regress.  That's why I said "something like this" and didn't
+include a signed-off-by.  I wanted to have exactly this conversation.
+
+Bjorn
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
