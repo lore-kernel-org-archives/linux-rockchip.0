@@ -4,79 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55A75CCFA1B
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Nov 2025 12:29:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3ABDBCCFA1C
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Nov 2025 12:29:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5G+dOzxat1zdkpaRLLZ2UZJl1Li0Ow06b/5nszgKl7g=; b=fpxv2cSkQ1SDkm
-	p9FqakO632wg/fX5/IPxS4DuT8O94pYwAWotfrnmWoUFomvKDYnMJhFFq6PRpy6WacXzeZH5CY4F4
-	pKaEz11LacJ/vq6Vu3ZrReOn8vNH+Gd/TFsgFZIWSyD9QSAmFiPHuLP/JbjbhWKxvOiI1TZhGLNaC
-	4ja/Oyyziqftq95mFSo2qvG4FaS2GzT+0M0rpQ9UVhflE8ksm5cFr2oGpbg4PbFIf0bMYfewrZC2C
-	t1TwIfC2zG7hhx2GNglZq1DxrQbdOB5HWZESMN3pYaouXQD0yQ9EzzHAlfvq92J7LRzsg2EkhLzRW
-	WBtrPI6qxTk+Y9T1B2rA==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=JVrlygB1KOoVMki0cM4J8COHSLi/I+ffq3RMfhm4xCk=; b=hZBLVNkuS94ill
+	8VmvOnhKTohg4o4l5+QdKYg+noKjeXYeGF6ygc0o39zPNJfQ/wUbBVAUXCk5T/k5zvFUMp25RwGCm
+	3bHCwyc5F+Pu09v8DzrwlbHs5gw5tPG3guxOUfMNaP3df+CEv90WBKUaGmRRY+mByuw7dtGXF1Bhw
+	WWuMNQBKFgsQrQo0N8det9VkRnCk+N0rMfSZbSDIm3ZCuJYNDXE/0i5EA/OinPU+v6kooR0MV3le0
+	Zdr1D5+gZr3iPp+D0lvZ8o2ayVsAl0k0GVLs2VS9vuhuf9u7xeH8qPizlFas4jwYpn3qV/J3Dn5MH
+	5o8pJLSP8pPZLIhgC7nQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGz6m-0000000FRjl-3euo;
-	Thu, 06 Nov 2025 12:28:56 +0000
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+	id 1vGz6l-0000000FRgy-22SC;
+	Thu, 06 Nov 2025 12:28:55 +0000
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGGmf-0000000BqJ2-2x16
+	id 1vGGmZ-0000000BqFs-40sf
 	for linux-rockchip@lists.infradead.org;
-	Tue, 04 Nov 2025 13:09:16 +0000
-Received: by mail-wr1-x42d.google.com with SMTP id ffacd0b85a97d-429bcddad32so3279171f8f.3
-        for <linux-rockchip@lists.infradead.org>; Tue, 04 Nov 2025 05:09:13 -0800 (PST)
+	Tue, 04 Nov 2025 13:09:09 +0000
+Received: by mail-wr1-x430.google.com with SMTP id ffacd0b85a97d-429c4c65485so4134758f8f.0
+        for <linux-rockchip@lists.infradead.org>; Tue, 04 Nov 2025 05:09:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1762261752; x=1762866552; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=EeInQQFLiIKx9a2aZ0cucvmhXeQc/nRxrd1ryoO5rZk=;
-        b=lZUJ3d37THV6mX5tkgPzHJUPR7vAPKUnD/dZ6qdjlHre2MZxgbuQYAh6Uyw2ZZRgFj
-         RO1WmAXtrLjKIfnks9rXUeQw1ce5KuR14LJSkyvf7MVCeUYRSLMPU9+mfo3GjDKLO5K1
-         QO12Mt6MsBIdMfjB+4O+MIBwF/zgUthwLnaMYR+4nGTCjurJcRtQKBLkHOBfCPTu3RbD
-         x8coRYH7k3AAx7vNGYwqCv8nlgDRpiePwuayOa7PM4KquSBz2DBdHTswuTnASkGs66NA
-         9B2V7oBlptfx0R3XhuwIoKKm3GjnvynYvpiKKcHbTeFpgLNL5pJUJUiNIa1SzUplmKde
-         PSRA==
+        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1762261746; x=1762866546; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=FxK9/M5N84FExLoRTW+PNKgn9H8+1HjlE5VylpeIsHQ=;
+        b=XBVN+fSNXJ/QcA+YZvAj9cNP54wMiWuRqmeWbf/Gn3RGQXrNjHWXazxnusd0Mm5urs
+         rKb31ww+Zqgc/ELJr+qSF1W+DokYhWn9Z0yz90U2B82JcZi3vQX/DkeHHf6Ev6Ae7OgA
+         K3F7W8N3XGGRncymWGPfdXUYWPQ4WHK5yWbO+zjI5h4HpcyWqw8sp8uNGM+rwMa3To3o
+         Pxzg7rscr43/ZS79dkdmdn3Wbs04u18ISJDhvHNUWsLU22RuPTPMWb2KSMnneTFkH5G6
+         PioPYzd+RWbTBIK7SvD8CG2mEkUfoJ9V+il4IJS+ZjOfeuN5YAqOZ/TwMy08hHUx7SIa
+         pZ2A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1762261752; x=1762866552;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=EeInQQFLiIKx9a2aZ0cucvmhXeQc/nRxrd1ryoO5rZk=;
-        b=QUzPds+CJ+ieAF82C/LHqYdAPOWaPWQ5bdXrV+DmuvWSnXMNp0rfj3bo/UR09eBsgV
-         W4RYjk+Bz1S2Jd7chLCP1jKdWABgTyQdcKwDHkwQolRSgPgDW06G4jU7F23lwqXGfIAF
-         Y6OP0k+ebU0LGZqzWF3aV/ZUseNHwQhiGYq/WFZbldY9/SLLVxEUk0Lp+WbXT7aZBFSs
-         FZHPLLh39RZIljoPKP8VIiZSAaL8mbudeDDUKl5X7A/yvc7pJNqwEKFiBhe7oWUTvAEB
-         KDSzK+LyWvdRdZlkymXX4RXDB1ZY4n/PkT9UR5KAwoP0EWII1nMePz2hmx2amUnYwy0M
-         OQvw==
-X-Forwarded-Encrypted: i=1; AJvYcCWwjAxO544583TocfuE168/fgDOyTdCkzyN81y4J2yyR63xIItbV4TiglTtZ6c4g3PWAhaNYy5YTc5OoTWE0w==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyDmeTzUSwTY42F9zn1qX6PhOCwu6EhLd5TGHlMIJo8SAeJXt85
-	b0V65JL4k8uuKvIGlsbY9tCG8pSC9lIFpPFQQ4rMQFzmbFkIWNTT72f5Z0oS3QE4Xrg=
-X-Gm-Gg: ASbGncsaSniu3QF31XYi2KxZJ42p/OZvzdjSxIJexKdSHzGq4rNJEKfvaydbFvxyn3i
-	wbPKe2XyZEbwWQkFdIBQ+IBXH9W1b9se96EtF4eP5FUt3EpDNEonX4i2p4kR+ScIs29AmlH5UCW
-	LFAE+rTTd/qoIcHUd2bepAFb05GiKhUXXfKXHljgFfisTsOUIzg4sGlvb7yC6r0NEMGif2+zFYL
-	VQBnF52S/8pmbuAfKWcrz/T/q7gGtgf64D5WgS4EGV49dKp8qcPN75Q87MRfovhyoQgn5vbzcgP
-	hlcHgr+vhbbWQGAHw9wqaPkvpMmLci4wBoeK61VNXrBx6HWOBSOruEQkiimpROSphsy1ndr407X
-	vEGVQBVs7khi5SNc/46xaQeqyLpC1FSHlyvVODSbotKrIjsdUa4ZbuNiacXOiRhLNey67sQ==
-X-Google-Smtp-Source: AGHT+IEazXC1/4e+3C9LIKFv0ME+i45XzCYX35RlKHJ+lvSQy9CFk/4mRB0TKiPc1PmCBPTWdT7aKw==
-X-Received: by 2002:a5d:5f87:0:b0:429:d565:d7b0 with SMTP id ffacd0b85a97d-429d565da79mr4914264f8f.40.1762261751551;
-        Tue, 04 Nov 2025 05:09:11 -0800 (PST)
+        d=1e100.net; s=20230601; t=1762261746; x=1762866546;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=FxK9/M5N84FExLoRTW+PNKgn9H8+1HjlE5VylpeIsHQ=;
+        b=Mx0y2OnLAl0SBMTEFYdhUthmZkA+Har2FiivexzXh46ON/IpzcdDJ/AkkMPAq6KTxT
+         yyX1rqxUWUT08yOYrh2a2Ha60hf639o37yKfkvbtZd7uU15/3+C+nel0jpk5j2sbi/sH
+         H2hleW6jUdpr/VTMhcBE6NqAx5+4mOpU17KI2RBI/YmIwD/fakh804iqXSZgZy6dLYND
+         oXjeEeJ6JRGGrC6klR2hfPtvkl1KKET4oQGbOcoEHrrblUhCzYZHhs+o/V81X1xiO3SJ
+         +PaGtbVKscIXTnfMYMGxW+9/5RyQGC76L/LIvGb0luj9qGrshBezUfQfmZO9FcFDsy6d
+         wrug==
+X-Forwarded-Encrypted: i=1; AJvYcCXlS4ma6xQrPANkuNzqDiHGbIi+3B27+766JzntwOayEeBeRTJydJGOSq2n4sca26rVcLw63ZFTkTTfcM8YjQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywqul6wfjY6fuBXgN64ogNNpe4lrRttlU0JyKuZ5CNyRWzVHkfs
+	LqNxhDnd8csii1nXLNDStIMTpBGxU9rxQDa5k6ytCusTIAvEmVkpTW5iew3Mem3gg2U=
+X-Gm-Gg: ASbGncveOalC9luyOaOzt1bM7Y+5wv6Wr5WEqgdyHIHf1FsFTOl6LmubS8Oece5w1js
+	Pc9Pi68BmOR2DNvX6R9XArNSLKxykv3dLB5CkqT8Fp10QSeFIJ+Bbctfs0T4OuIMFFUKy2krbEm
+	P3xaNxlRNb+z028DvPgYbiYS2xY7b6XskSwXRXNCsStGpZFbpOZerxoHVW/k3sDffHbML3lOr9d
+	9VhLuAmll78O2B6aeLjS1LvrlIfISSxDuUeHXCOgpJPWooAL9rVc5W+xMu5lUfZ2UFddow6QJ5s
+	eqMwRkdzJvJMAN7Y3WmogBjCgtMxrpPBr4YQjigJxl/JSJUDkvFmZsyRdS08arFJPvs1BMHDD1y
+	EmO1+sIsdxtx/X5uznfyMPS5NxH3/dpLkXh1mwUadTQWqtKqEJd2kbz7SE3YJokWId8UlYg==
+X-Google-Smtp-Source: AGHT+IE51x9w7/hxMZ9PYtS8ESk4KgkwdjVyNKfliIp++ChjMUBtnNjUsSmL+9gueXbgY/eWMabzRA==
+X-Received: by 2002:a05:6000:25c3:b0:429:c989:cec0 with SMTP id ffacd0b85a97d-429c989d7c1mr8999942f8f.48.1762261745752;
+        Tue, 04 Nov 2025 05:09:05 -0800 (PST)
 Received: from [127.0.1.1] ([2a01:cb1d:dc:7e00:9ea1:7ab7:4748:cae3])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-429dc18efd3sm4554431f8f.5.2025.11.04.05.09.08
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-429dc18efd3sm4554431f8f.5.2025.11.04.05.09.02
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 04 Nov 2025 05:09:10 -0800 (PST)
+        Tue, 04 Nov 2025 05:09:04 -0800 (PST)
 From: Bartosz Golaszewski <brgl@bgdev.pl>
-Date: Tue, 04 Nov 2025 14:08:53 +0100
-Subject: [PATCH v4 2/8] net: stmmac: qcom-ethqos: use generic device
- properties
+Subject: [PATCH v4 0/8] net: stmmac: qcom-ethqos: add support for SCMI
+ power domains
+Date: Tue, 04 Nov 2025 14:08:51 +0100
+Message-Id: <20251104-qcom-sa8255p-emac-v4-0-f76660087cea@linaro.org>
 MIME-Version: 1.0
-Message-Id: <20251104-qcom-sa8255p-emac-v4-2-f76660087cea@linaro.org>
-References: <20251104-qcom-sa8255p-emac-v4-0-f76660087cea@linaro.org>
-In-Reply-To: <20251104-qcom-sa8255p-emac-v4-0-f76660087cea@linaro.org>
+X-B4-Tracking: v=1; b=H4sIAOP6CWkC/23N0QqDIBTG8VcJr+c4HlNrV3uPsQtzVsLKpkM2o
+ nefNRgMuvx/cH5nJtEGZyM5FTMJNrno/JijPBTE9HrsLHW33AQBBSgo6cP4gUZdoRATtYM2tCo
+ lIBfaCIYk303Btu61mZdr7t7Fpw/v7UVi6/rVagY7WmIUKEetatMyK2V1vrtRB3/0oSMrl/iPY
+ IBqj+CZUEJJ1dTIQTd/xLIsH6aIvcj2AAAA
+X-Change-ID: 20250704-qcom-sa8255p-emac-8460235ac512
 To: Bjorn Andersson <andersson@kernel.org>, 
  Konrad Dybcio <konradybcio@kernel.org>, Rob Herring <robh@kernel.org>, 
  Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -128,26 +130,26 @@ Cc: linux-arm-msm@vger.kernel.org, devicetree@vger.kernel.org,
  linux-riscv@lists.infradead.org, 
  Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2896;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3930;
  i=bartosz.golaszewski@linaro.org; h=from:subject:message-id;
- bh=POv+vDF2xSPchjLMqtdcREByAr5wVSRC/4xfmqCj4bM=;
- b=owEBbQKS/ZANAwAKARGnLqAUcddyAcsmYgBpCfrsfPxny4b8sz641T3T8EFvMTQx5kwO1QGOR
- 8pb8GTd+BeJAjMEAAEKAB0WIQQWnetsC8PEYBPSx58Rpy6gFHHXcgUCaQn67AAKCRARpy6gFHHX
- cnqVD/97NywmsMZe+hTiJ7jxCsNyrWnMcFO+7cIL2RPel3gou8gIXIQsX7ETeIUDtcJzTZ1KqSm
- agsydioe3Mk2/PKY0XdQxNxEpMu65rEETgcwAzTyKgoU/GZTN7LqKeqxXx3S8aUCDiwGkjQifN8
- X2v8MajyRTcRmY6D54ypAgNEnFYJkeXukrUxi75A6NLw5DrkAJXiElFKV8Tfmc35UABzpEhoqVE
- T88M2BP+jZLRswE6QrLutFh322QPaF+UjIRKHUaSw4FFBTZTy5aDvugwNG/kaGN3HopwyUXjCRf
- ErGV9fj5k1xKzd0LYxkqFzXGd+anLTeceuPdxnQBJJS1WQStSlyRM8YM9o7iyG6Vpn9AwHwPQOX
- IG1GY+EPViR2egEOTkA05k9276NPSpxVnYXxSiEq5Qbk35L4ZJDO96QF/G7uILkWr5coGWSSms/
- P4UoZRGYq4KVQ/m8Q+r5upzCzXVqfEDAyKuhITS4g84ORbRJEezl5MXDte+IYVB+qcRrWEmXjBz
- 8g60W21TaM8AfbRDvZtWVjkNzCIlUv68U1HsXEpCg7dJiPHZYMpZeM6sgFYNYCONcr/XTMwTODa
- ar4PeVg5WExRCx2+/p2gUOp1THWngsIY51xRK43VP8GvryZCHp/WVW7HF7s7bCwOHAoLr0/70vM
- g1Xe3JNSs8RSY5w==
+ bh=27kqkXSD5Dzki0U4bTNuaSeqDRFBWPYuP5DPJT8ZFZo=;
+ b=owEBbQKS/ZANAwAKARGnLqAUcddyAcsmYgBpCfroWcJdifPCL3DqXR4QlKAcd6tQEdpGbNgCW
+ Q0tgy82H+GJAjMEAAEKAB0WIQQWnetsC8PEYBPSx58Rpy6gFHHXcgUCaQn66AAKCRARpy6gFHHX
+ cnpEEACoL9P7Ziw7NnZ7jlXuq7UvKyOILSTEZrw4bOjYVbB1okZWNYg8nELLmKc0SWoQh1v81zn
+ 8jPH/xO+q8aI6WJyCtcYYoYAEbDEbrtPkkbAC9JBR1mQDXuBzUwhYTv6yrR+rPN1VgKpBxsoFGU
+ lsvwRztOiuowXcfATN6VcDvribhefA+yt3NcXIKQYnVGQMLUVpsHX65Y4Kuu/7b0+I+REk3PjdX
+ ueeB9pGfgvbs8cWR0bkEGRMrOwxNddI+q51rRBf3e3Wbwo3zZ6B5Akb/epU/Bxm+vE9bRHNx+Vh
+ bhKSRhAno4uTknAh/I5sXVGLUnS5eFTJSOkME2ySH+J/3mz7cg4rH6aXMborjd0F3BS+zwYJIk+
+ Vy3/TIzzfowg6ZmoYhJwVMDNF/KJKIlHM4E7iVeL8BY5UA/EvMv8hSsebb/K+ZzGWFMWxdHMR+I
+ qbzm2ZlOv1gA6l+Zlv3jqJia1kgKYBHqCif6ucHCZkvx4uu717BzMa73qdKGhxDDmNV/TYltteb
+ g/frzBavk4BzSsb0fEbqf83E8rp02Ks3gYYTvdPdXNf38dNdYvljDIdcDPqgLU/qBfMD9mp3dTC
+ 5ggohhPVS5WZWsK2NORk/IjygwdLF8oiWlmjh1MzdcMjuQOAvJE4V4SwjKWQnqSCuGO58QdU+KD
+ DP2eqomEec9/ZFQ==
 X-Developer-Key: i=bartosz.golaszewski@linaro.org; a=openpgp;
  fpr=169DEB6C0BC3C46013D2C79F11A72EA01471D772
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251104_050913_779573_EA1B9048 
-X-CRM114-Status: GOOD (  15.23  )
+X-CRM114-CacheID: sfid-20251104_050908_281149_4467C052 
+X-CRM114-Status: GOOD (  14.11  )
 X-Mailman-Approved-At: Thu, 06 Nov 2025 04:28:36 -0800
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -165,77 +167,83 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+Add support for the firmware-managed variant of the DesignWare MAC on
+the sa8255p platform. This series contains new DT bindings and driver
+changes required to support the MAC in the STMMAC driver.
 
-In order to drop the dependency on CONFIG_OF, convert all device property
-getters from OF-specific to generic device properties and stop pulling
-in any linux/of.h symbols.
+It also reorganizes the ethqos code quite a bit to make the introduction
+of power domains into the driver a bit easier on the eye.
+
+The DTS changes will go in separately.
 
 Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
 ---
- drivers/net/ethernet/stmicro/stmmac/Kconfig             | 2 +-
- drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c | 9 ++++-----
- 2 files changed, 5 insertions(+), 6 deletions(-)
+Changes in v4:
+- Remove the phys property from the SCMI bindings
+- Mark the power-domain-names property as required
+- Set maxItems for power-domains to 1 for all existing bindings to
+  maintain the current requirements after modifying the value in the
+  top-level document
+- Link to v3: https://lore.kernel.org/r/20251027-qcom-sa8255p-emac-v3-0-75767b9230ab@linaro.org
 
-diff --git a/drivers/net/ethernet/stmicro/stmmac/Kconfig b/drivers/net/ethernet/stmicro/stmmac/Kconfig
-index 87c5bea6c2a243f3be998b2c3935bc1dc23bfe22..22d0eaab35eaffac0bca58f8625ecc5c955b6631 100644
---- a/drivers/net/ethernet/stmicro/stmmac/Kconfig
-+++ b/drivers/net/ethernet/stmicro/stmmac/Kconfig
-@@ -135,7 +135,7 @@ config DWMAC_MESON
- config DWMAC_QCOM_ETHQOS
- 	tristate "Qualcomm ETHQOS support"
- 	default ARCH_QCOM
--	depends on OF && (ARCH_QCOM || COMPILE_TEST)
-+	depends on ARCH_QCOM || COMPILE_TEST
- 	help
- 	  Support for the Qualcomm ETHQOS core.
- 
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c
-index 1a616a71c36ace29a74a0aa23fc8173443aa49a5..8578a2df8cf0d1d8808bcf7e7b57c93eb14c87db 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c
-@@ -1,8 +1,8 @@
- // SPDX-License-Identifier: GPL-2.0
- // Copyright (c) 2018-19, Linaro Limited
- 
-+#include <linux/mod_devicetable.h>
- #include <linux/module.h>
--#include <linux/of.h>
- #include <linux/of_net.h>
- #include <linux/platform_device.h>
- #include <linux/phy.h>
-@@ -748,7 +748,6 @@ static void ethqos_ptp_clk_freq_config(struct stmmac_priv *priv)
- 
- static int qcom_ethqos_probe(struct platform_device *pdev)
- {
--	struct device_node *np = pdev->dev.of_node;
- 	const struct ethqos_emac_driver_data *data;
- 	struct plat_stmmacenet_data *plat_dat;
- 	struct stmmac_resources stmmac_res;
-@@ -799,7 +798,7 @@ static int qcom_ethqos_probe(struct platform_device *pdev)
- 
- 	ethqos->mac_base = stmmac_res.addr;
- 
--	data = of_device_get_match_data(dev);
-+	data = device_get_match_data(dev);
- 	ethqos->por = data->por;
- 	ethqos->num_por = data->num_por;
- 	ethqos->rgmii_config_loopback_en = data->rgmii_config_loopback_en;
-@@ -836,9 +835,9 @@ static int qcom_ethqos_probe(struct platform_device *pdev)
- 	if (ethqos->has_emac_ge_3)
- 		plat_dat->dwmac4_addrs = &data->dwmac4_addrs;
- 	plat_dat->pmt = 1;
--	if (of_property_read_bool(np, "snps,tso"))
-+	if (device_property_present(dev, "snps,tso"))
- 		plat_dat->flags |= STMMAC_FLAG_TSO_EN;
--	if (of_device_is_compatible(np, "qcom,qcs404-ethqos"))
-+	if (device_is_compatible(dev, "qcom,qcs404-ethqos"))
- 		plat_dat->flags |= STMMAC_FLAG_RX_CLK_RUNS_IN_LPI;
- 	if (data->dma_addr_width)
- 		plat_dat->host_dma_width = data->dma_addr_width;
+Changes in v3:
+- Drop 'power' and 'perf' prefixes from power domain names
+- Rebase on top of Russell's changes to dwmac
+- Rebase on top of even more changes from Russell that are not yet
+  in next (E1vB6ld-0000000BIPy-2Qi4@rmk-PC.armlinux.org.uk)
+- Link to v2: https://lore.kernel.org/all/20251008-qcom-sa8255p-emac-v2-0-92bc29309fce@linaro.org/
 
+Changes in v2:
+- Fix the power-domains property in DT bindings
+- Rework the DT bindings example
+- Drop the DTS patch, it will go upstream separately
+- Link to v1: https://lore.kernel.org/r/20250910-qcom-sa8255p-emac-v1-0-32a79cf1e668@linaro.org
+
+---
+Bartosz Golaszewski (8):
+      dt-bindings: net: qcom: document the ethqos device for SCMI-based systems
+      net: stmmac: qcom-ethqos: use generic device properties
+      net: stmmac: qcom-ethqos: improve typing in devres callback
+      net: stmmac: qcom-ethqos: wrap emac driver data in additional structure
+      net: stmmac: qcom-ethqos: split power management fields into a separate structure
+      net: stmmac: qcom-ethqos: split power management context into a separate struct
+      net: stmmac: qcom-ethqos: define a callback for setting the serdes speed
+      net: stmmac: qcom-ethqos: add support for sa8255p
+
+ .../bindings/net/allwinner,sun7i-a20-gmac.yaml     |   3 +
+ .../bindings/net/altr,socfpga-stmmac.yaml          |   3 +
+ .../bindings/net/amlogic,meson-dwmac.yaml          |   3 +
+ .../devicetree/bindings/net/eswin,eic7700-eth.yaml |   3 +
+ .../devicetree/bindings/net/intel,dwmac-plat.yaml  |   3 +
+ .../bindings/net/loongson,ls1b-gmac.yaml           |   3 +
+ .../bindings/net/loongson,ls1c-emac.yaml           |   3 +
+ .../devicetree/bindings/net/nxp,dwmac-imx.yaml     |   3 +
+ .../devicetree/bindings/net/nxp,lpc1850-dwmac.yaml |   3 +
+ .../devicetree/bindings/net/nxp,s32-dwmac.yaml     |   3 +
+ .../devicetree/bindings/net/qcom,ethqos-scmi.yaml  |  97 ++++++
+ .../devicetree/bindings/net/qcom,ethqos.yaml       |   3 +
+ .../devicetree/bindings/net/renesas,rzn1-gmac.yaml |   3 +
+ .../bindings/net/renesas,rzv2h-gbeth.yaml          |   3 +
+ .../devicetree/bindings/net/rockchip-dwmac.yaml    |   3 +
+ .../devicetree/bindings/net/snps,dwmac.yaml        |   5 +-
+ .../bindings/net/sophgo,cv1800b-dwmac.yaml         |   3 +
+ .../bindings/net/sophgo,sg2044-dwmac.yaml          |   3 +
+ .../bindings/net/starfive,jh7110-dwmac.yaml        |   3 +
+ .../devicetree/bindings/net/stm32-dwmac.yaml       |   3 +
+ .../devicetree/bindings/net/tesla,fsd-ethqos.yaml  |   3 +
+ .../devicetree/bindings/net/thead,th1520-gmac.yaml |   3 +
+ .../bindings/net/toshiba,visconti-dwmac.yaml       |   3 +
+ MAINTAINERS                                        |   1 +
+ drivers/net/ethernet/stmicro/stmmac/Kconfig        |   2 +-
+ .../ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c    | 342 +++++++++++++++++----
+ 26 files changed, 447 insertions(+), 63 deletions(-)
+---
+base-commit: 9823120909776bbca58a3c55ef1f27d49283c1f3
+change-id: 20250704-qcom-sa8255p-emac-8460235ac512
+
+Best regards,
 -- 
-2.51.0
+Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
 
 
 _______________________________________________
