@@ -4,68 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4EE8CCF9F8
-	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Nov 2025 00:58:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51E5ACCFA03
+	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Nov 2025 01:19:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VsAIZWpQKsqXMm4aWwlwIPs2SnCsBRRmKHmeyeM6FxI=; b=JCY7SG6cMfzSNg
-	1Z+1gX56MsKvV+D7qlCNdYfXHVMBXbmIROFzAPEuBRauVsy/1RN8Ejrc6z1wTsNuzeieZ+UD1keT3
-	/dEkd6CzfBlZ2FB8zprSN8tLXOkB1JrAOUmEn6w4ovHmIwNiQmYE2KgspFZfzePEKdUdo/Ce+EQDp
-	dbqxgYl1VT+QqEK/eKIy49xyYnvSsgDTCA+VPVUa8+s+g44o6VmauSp2afQI6Ym0Kj4LCjLEH41pc
-	OiqilWpkIH1lu0zlcbnUj+R4Lo8Q7W1rPsFAGKY7t/DxD17YDdjwQrgWPYrSawiM+uFJ6c7SxC25x
-	14GjCcUyui6W6rd0HNEA==;
+	List-Owner; bh=Nc0SxeVfY1DpLod51td93ENCxqca5I+RMKphgBBqdsQ=; b=HibelI9cjBi96M
+	LFE0XPtDKXagzArdk4/pHQfMiEYXWgjlMD1+L0URUMw8Rw7rqAGYWJ4y3rsQRdGacQVGLLvRRrSbH
+	uh5wTnxSWNOzTRtGe0BT9KNLIL9i2rxBhDYh4jn/aV11LMvU2JLaR1lFNhht4eqcmwFzAdBIJM9B9
+	ab+m59CtJM5VOLgogK5gSPoghwqEPh95JGgXGWM8/9P8An1cqgrOG52TgTsV4FHVdx81fnZF1oOUR
+	qIHUoArhAyggp8iXHJlPM2l8ELyxqn0qfSj6qwkxOTuzyfLC/HBKlkBJe9+nZIxLketAmR94Ey1N8
+	OMkP4ppqW6aja7zQDBPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vG5NI-0000000Arvo-3SXd;
-	Tue, 04 Nov 2025 00:58:16 +0000
-Received: from mail-m15573.qiye.163.com ([101.71.155.73])
+	id 1vG5hC-0000000Asvt-0g2C;
+	Tue, 04 Nov 2025 01:18:50 +0000
+Received: from mail-m49244.qiye.163.com ([45.254.49.244])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vG5NF-0000000Aruz-2FP3;
-	Tue, 04 Nov 2025 00:58:15 +0000
-Received: from [172.16.12.129] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 284017063;
-	Tue, 4 Nov 2025 08:58:03 +0800 (GMT+08:00)
-Message-ID: <0e32766b-b951-4ab4-ae3d-c802cf649edf@rock-chips.com>
-Date: Tue, 4 Nov 2025 08:58:02 +0800
+	id 1vG5h8-0000000AsvL-2Qsz;
+	Tue, 04 Nov 2025 01:18:48 +0000
+Received: from [172.16.12.149] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 2840cd1f4;
+	Tue, 4 Nov 2025 09:18:35 +0800 (GMT+08:00)
+Message-ID: <7fb7e578-b97d-4ea5-a8af-33199563d834@rock-chips.com>
+Date: Tue, 4 Nov 2025 09:18:33 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Cc: shawn.lin@rock-chips.com, Lorenzo Pieralisi <lpieralisi@kernel.org>,
- =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
- Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>,
- Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>,
- Kever Yang <kever.yang@rock-chips.com>, Simon Xue <xxm@rock-chips.com>,
- Damien Le Moal <dlemoal@kernel.org>, Dragan Simic <dsimic@manjaro.org>,
- FUKAUMI Naoki <naoki@radxa.com>, Diederik de Haas <diederik@cknow-tech.com>,
- stable@vger.kernel.org,
- Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>,
- Daire McNamara <daire.mcnamara@microchip.com>,
- Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>,
- Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, linux-pci@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- Niklas Cassel <cassel@kernel.org>
-Subject: Re: [PATCH v3] PCI: dw-rockchip: Prevent advertising L1 Substates
- support
-To: Bjorn Helgaas <helgaas@kernel.org>
-References: <20251103213206.GA1818418@bhelgaas>
-From: Shawn Lin <shawn.lin@rock-chips.com>
-In-Reply-To: <20251103213206.GA1818418@bhelgaas>
-X-HM-Tid: 0a9a4c5ef5ba09cckunmc021633caac835
+Subject: Re: [PATCH v8 03/10] drm/bridge: Implement generic USB Type-C DP HPD
+ bridge
+To: Heikki Krogerus <heikki.krogerus@linux.intel.com>
+Cc: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+ Chaoyi Chen <kernel@airkyi.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
+ Kishon Vijay Abraham I <kishon@kernel.org>, Heiko Stuebner
+ <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>,
+ Andy Yan <andy.yan@rock-chips.com>,
+ Yubing Zhang <yubing.zhang@rock-chips.com>,
+ Frank Wang <frank.wang@rock-chips.com>,
+ Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Amit Sunil Dhamne <amitsd@google.com>, Dragan Simic <dsimic@manjaro.org>,
+ Johan Jonker <jbx6244@gmail.com>, Diederik de Haas <didi.debian@cknow.org>,
+ Peter Robinson <pbrobinson@gmail.com>, linux-usb@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
+References: <20251029071435.88-1-kernel@airkyi.com>
+ <20251029071435.88-4-kernel@airkyi.com>
+ <rzozpbqmymdczerh3iijxxtz3xnsznoku7w2mquikwv6u5osvo@7h43hwc2fpzm>
+ <eca9d5bd-23bd-4c1d-b2f2-c0c32f14177f@rock-chips.com>
+ <aQiymTFVU7UpcJ1p@kuha.fi.intel.com>
+Content-Language: en-US
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+In-Reply-To: <aQiymTFVU7UpcJ1p@kuha.fi.intel.com>
+X-HM-Tid: 0a9a4c71c26b03abkunm130d5e00ad8ac3
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQ0MaGlZIHR5LSkpNTx1CSkhWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGUxJHlZCQk5KS09MHxpMSklWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpOTE
+	5VSktLVUpCS0tZBg++
 DKIM-Signature: a=rsa-sha256;
-	b=OOilC0TS6CmRYaAWmUwHiSnh1xyTkxm21fbPezQSTIgU3wGR55vbYVdtJ0IGRH46A34Aj/6u4O25ceGZ7zl3RJvff8gahyY0PmHAucbj8RIF6KqdQz6Zc7FPJckglGuMchZUaWIB378rBj09SookHJEBErPM6uqhPpLJZHVhSuo=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=ifI6+QG6/qY9ph4H6akJ2gwdOb0wTyL2kFP/EzfV+vc=;
+	b=AuKMie6XasD4Ngz32l1vJN8MYJB3Q/ibq1sswvGRbMIkyPTR7zzbtimzXPHmxbP/bkGpQZbAOxK+Ojkz38e9UGsxnPhHyh8hEMd1ysID0NaZV31oqLPgpYK9A8fiLwUsQ9bSXv2Psd5G5LAHaF052M4swaypeBxEzuuYoRhmnOw=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=wIQSa2jEFJAsHLJt6tSAavwwKal+P7ObcOZRQSB3xAQ=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251103_165814_096261_B672E8C3 
-X-CRM114-Status: GOOD (  31.33  )
+X-CRM114-CacheID: sfid-20251103_171847_172357_E16BE6F4 
+X-CRM114-Status: GOOD (  25.72  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,93 +91,188 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgQmpvcm4sCgrlnKggMjAyNS8xMS8wNCDmmJ/mnJ/kuowgNTozMiwgQmpvcm4gSGVsZ2FhcyDl
-hpnpgZM6Cj4gT24gVHVlLCBPY3QgMjgsIDIwMjUgYXQgMDI6MDI6MThQTSAtMDUwMCwgQmpvcm4g
-SGVsZ2FhcyB3cm90ZToKPj4gT24gRnJpLCBPY3QgMTcsIDIwMjUgYXQgMDY6MzI6NTNQTSArMDIw
-MCwgTmlrbGFzIENhc3NlbCB3cm90ZToKPj4+IFRoZSBMMSBzdWJzdGF0ZXMgc3VwcG9ydCByZXF1
-aXJlcyBhZGRpdGlvbmFsIHN0ZXBzIHRvIHdvcmssIG5hbWVseToKPj4+IC1Qcm9wZXIgaGFuZGxp
-bmcgb2YgdGhlIENMS1JFUSMgc2lkZWJhbmQgc2lnbmFsLiAoSXQgaXMgbW9zdGx5IGhhbmRsZWQg
-YnkKPj4+ICAgaGFyZHdhcmUsIGJ1dCBzb2Z0d2FyZSBzdGlsbCBuZWVkcyB0byBzZXQgdGhlIGNs
-a3JlcSBmaWVsZHMgaW4gdGhlCj4+PiAgIFBDSUVfQ0xJRU5UX1BPV0VSX0NPTiByZWdpc3RlciB0
-byBtYXRjaCB0aGUgaGFyZHdhcmUgaW1wbGVtZW50YXRpb24uKQo+Pj4gLVByb2dyYW0gdGhlIGZy
-ZXF1ZW5jeSBvZiB0aGUgYXV4IGNsb2NrIGludG8gdGhlCj4+PiAgIERTUF9QQ0lFX1BMX0FVWF9D
-TEtfRlJFUV9PRkYgcmVnaXN0ZXIuIChEdXJpbmcgTDEgc3Vic3RhdGVzIHRoZSBjb3JlX2Nsawo+
-Pj4gICBpcyB0dXJuZWQgb2ZmIGFuZCB0aGUgYXV4X2NsayBpcyB1c2VkIGluc3RlYWQuKQo+PiAu
-Li4KPiAKPj4+ICtzdGF0aWMgdm9pZCByb2NrY2hpcF9wY2llX2Rpc2FibGVfbDFzdWIoc3RydWN0
-IGR3X3BjaWUgKnBjaSkKPj4+ICt7Cj4+PiArCXUzMiBjYXAsIGwxc3ViY2FwOwo+Pj4gKwo+Pj4g
-KwljYXAgPSBkd19wY2llX2ZpbmRfZXh0X2NhcGFiaWxpdHkocGNpLCBQQ0lfRVhUX0NBUF9JRF9M
-MVNTKTsKPj4+ICsJaWYgKGNhcCkgewo+Pj4gKwkJbDFzdWJjYXAgPSBkd19wY2llX3JlYWRsX2Ri
-aShwY2ksIGNhcCArIFBDSV9MMVNTX0NBUCk7Cj4+PiArCQlsMXN1YmNhcCAmPSB+KFBDSV9MMVNT
-X0NBUF9MMV9QTV9TUyB8IFBDSV9MMVNTX0NBUF9BU1BNX0wxXzEgfAo+Pj4gKwkJCSAgICAgIFBD
-SV9MMVNTX0NBUF9BU1BNX0wxXzIgfCBQQ0lfTDFTU19DQVBfUENJUE1fTDFfMSB8Cj4+PiArCQkJ
-ICAgICAgUENJX0wxU1NfQ0FQX1BDSVBNX0wxXzIpOwo+Pj4gKwkJZHdfcGNpZV93cml0ZWxfZGJp
-KHBjaSwgY2FwICsgUENJX0wxU1NfQ0FQLCBsMXN1YmNhcCk7Cj4+PiArCX0KPj4+ICt9Cj4+Cj4+
-IEkgbGlrZSB0aGlzLiAgQnV0IHdoeSBzaG91bGQgd2UgZG8gaXQganVzdCBmb3IgZHctcm9ja2No
-aXA/ICBJcyB0aGVyZQo+PiBzb21ldGhpbmcgc3BlY2lhbCBhYm91dCBkdy1yb2NrY2hpcCB0aGF0
-IG1ha2VzIHRoaXMgYSBwcm9ibGVtPyAgTWF5YmUKPj4gd2Ugc2hvdWxkIGNvbnNpZGVyIGRvaW5n
-IHRoaXMgaW4gdGhlIGR3YywgY2FkZW5jZSwgbW9iaXZlaWwsIGFuZCBwbGRhCj4+IGNvcmVzIGlu
-c3RlYWQgb2YgdHJ5aW5nIHRvIGRvIGl0IGZvciBldmVyeSBkcml2ZXIgaW5kaXZpZHVhbGx5Pwo+
-Pgo+PiBBZHZlcnRpc2luZyBMMVNTIHN1cHBvcnQgdmlhIFBDSV9FWFRfQ0FQX0lEX0wxU1MgbWVh
-bnMgdXNlcnMgY2FuCj4+IGVuYWJsZSBMMVNTIHZpYSBDT05GSUdfUENJRUFTUE1fUE9XRVJfU1VQ
-RVJTQVZFPXkgb3Igc3lzZnMsIGFuZCB0aGF0Cj4+IHNlZW1zIGxpa2VseSB0byBjYXVzZSBwcm9i
-bGVtcyB1bmxlc3MgQ0xLUkVRIyBpcyBzdXBwb3J0ZWQuCj4gCj4gQW55IHRob3VnaHRzIG9uIHRo
-aXM/ICBUaGVyZSdzIG5vdGhpbmcgcm9ja2NoaXAtc3BlY2lmaWMgaW4gdGhpcwo+IHBhdGNoLiAg
-V2hhdCBJJ20gcHJvcG9zaW5nIGlzIHNvbWV0aGluZyBsaWtlIHRoaXM6CgpJIGxpa2UgeW91ciBp
-ZGVhLCB0aG91Z2guIEJ1dCBjb3VsZCBpdCBiZSBhbm90aGVyIGZvcm0gb2YgcmVncmVzc2lvbgp0
-aGF0IHdlIG1heSBicmVha3MgdGhlIHBsYXRmb3JtIHdoaWNoIGhhdmUgYWxyZWFkeSBzdXBwb3J0
-IEwxU1MKcHJvcGVybHk/IEl0J3MgZXZlbiBoYXJkZXIgdG8gZGV0ZWN0IGJlY2F1c2UgYSBmdW5j
-dGlvbmFsIGJyZWFrIGlzIAplYXNpZXIgdG8gbm90aWNlIHRoYW4gaW5jcmVhc2VkIHBvd2VyIGNv
-bnN1bXB0aW9uLiBPciBtYXliZSB3ZSBjb3VsZApqdXN0IGV4cG9ydCBkd19wY2llX2NsZWFyX2wx
-c3NfYWR2ZXJ0KCkgaW4gZHdjIGZvciBob3N0IGRyaXZlcnMgdG8KY2FsbCBpdD8KCj4gCj4gICAg
-ICBQQ0k6IGR3YzogUHJldmVudCBhZHZlcnRpc2luZyBMMSBQTSBTdWJzdGF0ZXMKPiAgICAgIAo+
-ICAgICAgTDEgUE0gU3Vic3RhdGVzIHJlcXVpcmUgdGhlIENMS1JFRiMgc2lnbmFsIGFuZCBkcml2
-ZXItc3BlY2lmaWMgc3VwcG9ydC4gIElmCj4gICAgICBDTEtSRUYjIGlzIG5vdCBzdXBwb3J0ZWQg
-b3IgdGhlIGRyaXZlciBzdXBwb3J0IGlzIGxhY2tpbmcsIGVuYWJsaW5nIEwxLjEgb3IKPiAgICAg
-IEwxLjIgbWF5IGNhdXNlIGVycm9ycyB3aGVuIGFjY2Vzc2luZyBkZXZpY2VzLCBlLmcuLAo+ICAg
-ICAgCj4gICAgICAgIG52bWUgbnZtZTA6IGNvbnRyb2xsZXIgaXMgZG93bjsgd2lsbCByZXNldDog
-Q1NUUz0weGZmZmZmZmZmLCBQQ0lfU1RBVFVTPTB4MTAKPiAgICAgIAo+ICAgICAgSWYgYm90aCBl
-bmRzIG9mIGEgbGluayBhZHZlcnRpc2Ugc3VwcG9ydCBmb3IgTDEgUE0gU3Vic3RhdGVzLCBhbmQg
-dGhlCj4gICAgICBrZXJuZWwgaXMgYnVpbHQgd2l0aCBDT05GSUdfUENJRUFTUE1fUE9XRVJfU1VQ
-RVJTQVZFPXkgb3IgdXNlcnMgZW5hYmxlIEwxLngKPiAgICAgIHZpYSBzeXNmcywgTGludXggdHJp
-ZXMgdG8gZW5hYmxlIHRoZW0uCj4gICAgICAKPiAgICAgIFRvIHByZXZlbnQgZXJyb3JzIHdoZW4g
-TDEueCBtYXkgbm90IHdvcmssIGRpc2FibGUgYWR2ZXJ0aXNpbmcgdGhlIEwxIFBNCj4gICAgICBT
-dWJzdGF0ZXMuICBEcml2ZXJzIGNhbiBlbmFibGUgYWR2ZXJ0aXNpbmcgdGhlbSBpZiB0aGV5IGtu
-b3cgQ0xLUkVGIyBpcwo+ICAgICAgcHJlc2VudCBhbmQgdGhlIFJvb3QgUG9ydCBpcyBjb25maWd1
-cmVkIGNvcnJlY3RseS4KPiAgICAgIAo+ICAgICAgQmFzZWQgb24gTmlrbGFzJ3MgcGF0Y2ggZnJv
-bQo+ICAgICAgaHR0cHM6Ly9wYXRjaC5tc2dpZC5saW5rLzIwMjUxMDE3MTYzMjUyLjU5ODgxMi0y
-LWNhc3NlbEBrZXJuZWwub3JnCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvcGNpL2NvbnRyb2xs
-ZXIvZHdjL3BjaWUtZGVzaWdud2FyZS1ob3N0LmMgYi9kcml2ZXJzL3BjaS9jb250cm9sbGVyL2R3
-Yy9wY2llLWRlc2lnbndhcmUtaG9zdC5jCj4gaW5kZXggMjBjOTMzM2JjYjFjLi44M2I1MzMwYzll
-NDUgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9wY2kvY29udHJvbGxlci9kd2MvcGNpZS1kZXNpZ253
-YXJlLWhvc3QuYwo+ICsrKyBiL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvZHdjL3BjaWUtZGVzaWdu
-d2FyZS1ob3N0LmMKPiBAQCAtOTUwLDYgKzk1MCwyNyBAQCBzdGF0aWMgaW50IGR3X3BjaWVfaWF0
-dV9zZXR1cChzdHJ1Y3QgZHdfcGNpZV9ycCAqcHApCj4gICAJcmV0dXJuIDA7Cj4gICB9Cj4gICAK
-PiArc3RhdGljIHZvaWQgZHdfcGNpZV9jbGVhcl9sMXNzX2FkdmVydChzdHJ1Y3QgZHdfcGNpZV9y
-cCAqcHApCj4gK3sKPiArCXN0cnVjdCBkd19wY2llICpwY2kgPSB0b19kd19wY2llX2Zyb21fcHAo
-cHApOwo+ICsJdTE2IGwxc3M7Cj4gKwl1MzIgbDFzc19jYXA7Cj4gKwo+ICsJbDFzcyA9IGR3X3Bj
-aWVfZmluZF9leHRfY2FwYWJpbGl0eShwY2ksIFBDSV9FWFRfQ0FQX0lEX0wxU1MpOwo+ICsJaWYg
-KCFsMXNzKQo+ICsJCXJldHVybjsKPiArCj4gKwkvKgo+ICsJICogQnkgZGVmYXVsdCwgZG9uJ3Qg
-YWR2ZXJ0aXNlIEwxIFBNIFN1YnN0YXRlcyBiZWNhdXNlIHRoZXkgcmVxdWlyZQo+ICsJICogQ0xL
-UkVGIyBhbmQgb3RoZXIgZHJpdmVyLXNwZWNpZmljIHN1cHBvcnQuCj4gKwkgKi8KPiArCWwxc3Nf
-Y2FwID0gZHdfcGNpZV9yZWFkbF9kYmkocGNpLCBsMXNzICsgUENJX0wxU1NfQ0FQKTsKPiArCWwx
-c3NfY2FwICY9IH4oUENJX0wxU1NfQ0FQX1BDSVBNX0wxXzEgfCBQQ0lfTDFTU19DQVBfQVNQTV9M
-MV8xIHwKPiArCQkgICAgICBQQ0lfTDFTU19DQVBfUENJUE1fTDFfMiB8IFBDSV9MMVNTX0NBUF9B
-U1BNX0wxXzIgfAo+ICsJCSAgICAgIFBDSV9MMVNTX0NBUF9MMV9QTV9TUyk7Cj4gKwlkd19wY2ll
-X3dyaXRlbF9kYmkocGNpLCBsMXNzICsgUENJX0wxU1NfQ0FQLCBsMXNzX2NhcCk7Cj4gK30KPiAr
-Cj4gICBzdGF0aWMgdm9pZCBkd19wY2llX3Byb2dyYW1fcHJlc2V0cyhzdHJ1Y3QgZHdfcGNpZV9y
-cCAqcHAsIGVudW0gcGNpX2J1c19zcGVlZCBzcGVlZCkKPiAgIHsKPiAgIAlzdHJ1Y3QgZHdfcGNp
-ZSAqcGNpID0gdG9fZHdfcGNpZV9mcm9tX3BwKHBwKTsKPiBAQCAtMTA2MCw2ICsxMDgxLDcgQEAg
-aW50IGR3X3BjaWVfc2V0dXBfcmMoc3RydWN0IGR3X3BjaWVfcnAgKnBwKQo+ICAgCQlQQ0lfQ09N
-TUFORF9NQVNURVIgfCBQQ0lfQ09NTUFORF9TRVJSOwo+ICAgCWR3X3BjaWVfd3JpdGVsX2RiaShw
-Y2ksIFBDSV9DT01NQU5ELCB2YWwpOwo+ICAgCj4gKwlkd19wY2llX2NsZWFyX2wxc3NfYWR2ZXJ0
-KHBwKTsKPiAgIAlkd19wY2llX2NvbmZpZ19wcmVzZXRzKHBwKTsKPiAgIAkvKgo+ICAgCSAqIElm
-IHRoZSBwbGF0Zm9ybSBwcm92aWRlcyBpdHMgb3duIGNoaWxkIGJ1cyBjb25maWcgYWNjZXNzZXMs
-IGl0IG1lYW5zCj4gCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmlu
-ZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9s
-aW51eC1yb2NrY2hpcAo=
+On 11/3/2025 9:48 PM, Heikki Krogerus wrote:
+
+>>>> diff --git a/drivers/gpu/drm/bridge/Kconfig b/drivers/gpu/drm/bridge/Kconfig
+>>>> index a250afd8d662..17257b223a28 100644
+>>>> --- a/drivers/gpu/drm/bridge/Kconfig
+>>>> +++ b/drivers/gpu/drm/bridge/Kconfig
+>>>> @@ -23,13 +23,16 @@ config DRM_AUX_BRIDGE
+>>>>    	  build bridges chain.
+>>>>    config DRM_AUX_HPD_BRIDGE
+>>>> -	tristate
+>>>> +	tristate "AUX HPD bridge support"
+>>> Why? No, this is supposed to be selected by other drivers. Users don't
+>>> know an wouldn't know what is this.
+>> In v7, I implemented an additional module for selecting this option. But
+>> Heikki believes that it would be better to merge the two modules into one.
+> Like I said before, I was merely curious why not just squash the
+> support into that AUX_PD_HPD_BRIDGE. If that does not make sense, then
+> so be it - make it a "Display Interface Bridge" driver like you
+> originally proposed.
+
+Yes, it is.
+
+
+>>>>    	depends on DRM_BRIDGE && OF
+>>>>    	select AUXILIARY_BUS
+>>>>    	help
+>>>>    	  Simple bridge that terminates the bridge chain and provides HPD
+>>>>    	  support.
+>>>> +	  Specifically, if you want a default Type-C DisplayPort HPD bridge for
+>>>> +	  each port of the Type-C controller, say Y here.
+>>>> +
+>>>>    menu "Display Interface Bridges"
+>>>>    	depends on DRM && DRM_BRIDGE
+>>>> diff --git a/drivers/gpu/drm/bridge/Makefile b/drivers/gpu/drm/bridge/Makefile
+>>>> index c7dc03182e59..2998937444bc 100644
+>>>> --- a/drivers/gpu/drm/bridge/Makefile
+>>>> +++ b/drivers/gpu/drm/bridge/Makefile
+>>>> @@ -1,6 +1,12 @@
+>>>>    # SPDX-License-Identifier: GPL-2.0
+>>>>    obj-$(CONFIG_DRM_AUX_BRIDGE) += aux-bridge.o
+>>>> -obj-$(CONFIG_DRM_AUX_HPD_BRIDGE) += aux-hpd-bridge.o
+>>>> +
+>>>> +hpd-bridge-y := aux-hpd-bridge.o
+>>>> +ifneq ($(CONFIG_TYPEC),)
+>>>> +hpd-bridge-y += aux-hpd-typec-dp-bridge.o
+>>>> +endif
+>>>> +obj-$(CONFIG_DRM_AUX_HPD_BRIDGE) += hpd-bridge.o
+>>>> +
+>>>>    obj-$(CONFIG_DRM_CHIPONE_ICN6211) += chipone-icn6211.o
+>>>>    obj-$(CONFIG_DRM_CHRONTEL_CH7033) += chrontel-ch7033.o
+>>>>    obj-$(CONFIG_DRM_CROS_EC_ANX7688) += cros-ec-anx7688.o
+>>>> diff --git a/drivers/gpu/drm/bridge/aux-hpd-bridge.c b/drivers/gpu/drm/bridge/aux-hpd-bridge.c
+>>>> index 2e9c702c7087..11ad6dc776c7 100644
+>>>> --- a/drivers/gpu/drm/bridge/aux-hpd-bridge.c
+>>>> +++ b/drivers/gpu/drm/bridge/aux-hpd-bridge.c
+>>>> @@ -12,6 +12,8 @@
+>>>>    #include <drm/drm_bridge.h>
+>>>>    #include <drm/bridge/aux-bridge.h>
+>>>> +#include "aux-hpd-bridge.h"
+>>>> +
+>>>>    static DEFINE_IDA(drm_aux_hpd_bridge_ida);
+>>>>    struct drm_aux_hpd_bridge_data {
+>>>> @@ -204,7 +206,26 @@ static struct auxiliary_driver drm_aux_hpd_bridge_drv = {
+>>>>    	.id_table = drm_aux_hpd_bridge_table,
+>>>>    	.probe = drm_aux_hpd_bridge_probe,
+>>>>    };
+>>>> -module_auxiliary_driver(drm_aux_hpd_bridge_drv);
+>>>> +
+>>>> +static int drm_aux_hpd_bridge_mod_init(void)
+>>>> +{
+>>>> +	int ret;
+>>>> +
+>>>> +	ret = auxiliary_driver_register(&drm_aux_hpd_bridge_drv);
+>>>> +	if (ret)
+>>>> +		return ret;
+>>>> +
+>>>> +	return drm_aux_hpd_typec_dp_bridge_init();
+>>>> +}
+>>>> +
+>>>> +static void drm_aux_hpd_bridge_mod_exit(void)
+>>>> +{
+>>>> +	drm_aux_hpd_typec_dp_bridge_exit();
+>>>> +	auxiliary_driver_unregister(&drm_aux_hpd_bridge_drv);
+>>>> +}
+>>>> +
+>>>> +module_init(drm_aux_hpd_bridge_mod_init);
+>>>> +module_exit(drm_aux_hpd_bridge_mod_exit);
+>>>>    MODULE_AUTHOR("Dmitry Baryshkov <dmitry.baryshkov@linaro.org>");
+>>>>    MODULE_DESCRIPTION("DRM HPD bridge");
+>>>> diff --git a/drivers/gpu/drm/bridge/aux-hpd-bridge.h b/drivers/gpu/drm/bridge/aux-hpd-bridge.h
+>>>> new file mode 100644
+>>>> index 000000000000..69364731c2f1
+>>>> --- /dev/null
+>>>> +++ b/drivers/gpu/drm/bridge/aux-hpd-bridge.h
+>>>> @@ -0,0 +1,13 @@
+>>>> +/* SPDX-License-Identifier: GPL-2.0-only */
+>>>> +#ifndef AUX_HPD_BRIDGE_H
+>>>> +#define AUX_HPD_BRIDGE_H
+>>>> +
+>>>> +#if IS_REACHABLE(CONFIG_TYPEC)
+>>>> +int drm_aux_hpd_typec_dp_bridge_init(void);
+>>>> +void drm_aux_hpd_typec_dp_bridge_exit(void);
+>>>> +#else
+>>>> +static inline int drm_aux_hpd_typec_dp_bridge_init(void) { return 0; }
+>>>> +static inline void drm_aux_hpd_typec_dp_bridge_exit(void) { }
+>>>> +#endif /* IS_REACHABLE(CONFIG_TYPEC) */
+>>>> +
+>>>> +#endif /* AUX_HPD_BRIDGE_H */
+>>>> diff --git a/drivers/gpu/drm/bridge/aux-hpd-typec-dp-bridge.c b/drivers/gpu/drm/bridge/aux-hpd-typec-dp-bridge.c
+>>>> new file mode 100644
+>>>> index 000000000000..6f2a1fca0fc5
+>>>> --- /dev/null
+>>>> +++ b/drivers/gpu/drm/bridge/aux-hpd-typec-dp-bridge.c
+>>>> @@ -0,0 +1,47 @@
+>>>> +// SPDX-License-Identifier: GPL-2.0+
+>>>> +#include <linux/of.h>
+>>>> +#include <linux/usb/typec_altmode.h>
+>>>> +#include <linux/usb/typec_dp.h>
+>>>> +#include <linux/usb/typec_notify.h>
+>>>> +
+>>>> +#include <drm/bridge/aux-bridge.h>
+>>>> +
+>>>> +#include "aux-hpd-bridge.h"
+>>>> +
+>>>> +#if IS_REACHABLE(CONFIG_TYPEC)
+>>>> +static int drm_typec_bus_event(struct notifier_block *nb,
+>>>> +			       unsigned long action, void *data)
+>>>> +{
+>>> This feels like this should be a part of the Type-C subsystem rather
+>>> than DRM.
+>> In v7, this used to be a part of the Type-C subsystem. I'm not sure what
+>> Heikki thinks about this.
+> Your original proposal of making the entire TYPEC subsystem depend on
+> DRM is _not_ going to happen. In general, if I've now understood this
+> correctly, this thing probable should be a "display interface bridge
+> driver", similar to what you proposed in the previous version.
+>
+> Note also that you could make it selected automatically, so there is
+> no need for user selectable option if that's the preference. Kconfig
+> and Makefile gives you options on how to do that. For example, maybe
+> this Kconfig works (or does not, but something like it will):
+>
+> diff --git a/drivers/gpu/drm/bridge/Kconfig b/drivers/gpu/drm/bridge/Kconfig
+> index a250afd8d662..7487024ba2ce 100644
+> --- a/drivers/gpu/drm/bridge/Kconfig
+> +++ b/drivers/gpu/drm/bridge/Kconfig
+> @@ -30,6 +30,15 @@ config DRM_AUX_HPD_BRIDGE
+>            Simple bridge that terminates the bridge chain and provides HPD
+>            support.
+>   
+> +if DRM_AUX_HPD_BRIDGE
+> +
+> +config DRM_AUX_HPD_TYPEC_BRIDGE
+> +       tristate
+> +       depends on TYPEC || !TYPEC
+> +       default TYPEC
+> +
+> +endif /* DRM_AUX_HPD_BRIDGE */
+> +
+>   menu "Display Interface Bridges"
+>          depends on DRM && DRM_BRIDGE
+
+Thank you for your code. I think both of your points make sense. So choosing the approach you mentioned now (similar to v7) might be a reasonable compromise.
+
+
+
+>   
+>
+>
+> thanks,
+>
+-- 
+Best,
+Chaoyi
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
