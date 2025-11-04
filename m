@@ -4,149 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12DDECCFA1B
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Nov 2025 12:29:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38DB9CCFA05
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Nov 2025 12:29:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NYu05u6nPCO0FxwmxF6i4U/5m2b5bYv5+0bxlmKKFBs=; b=nVp+1+uR0LXbRp
-	Rc6FgOxfY5s6xYQi/7tn1J5ggaVuBAFetOPtAxHPyWZxz5HD26KlGzKfbhekaMr9F6pcZ9TqdSgOv
-	qfpppvrsFDonOl4fVN1mqro6B5lq2iZn5ET3f4ydCzrj0Bt7mPDY5vVM0yEpZ+ZmFAh0sV/LC3WPO
-	WAJ1eiTQW83YlFhMoEJUQADtdRRHIbyJivdLDHG+W0m1X43CUWwGdDTHNzmHvXlkjeYF32jGnje5b
-	N62/EGF/yeKtU9b/7mtU0pc49G/wwFHq9IvnxKnrpR+HBUAgKQYpekvNZlZ71AN+43pNxfH+oPSZu
-	RZCoD6QvRo0lzosNRgaw==;
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-ID:MIME-Version:To:Cc:
+	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=jWF7EXZwt1woTWPQEMpHpW+p0X1+F24FfFbvBdz5EDg=; b=RWFdcoIDgtPhJG
+	eUg3sYwEzTKCvHew3Tr1uayXlYGJHeO6KXmzEfe3WmhCi3rHjLyZOnVJg1XO96jYFcLdbvHNSrEN3
+	QgmMmrcik5B6W/xdDosqZTwkiZPQ3hibot3wFIhFL5zePzjKrH8Mfjn4M9QPX8RgYInp/n0ppKF7B
+	0JPXzyvZsd0eHYqsBhxnphzDTvtLhXJozBnN+disUcyWoyKvvWBqz/P/v0vPZmaaUVJrC9EpHIx/s
+	vFV3qfoOIkOdJtEscHrrNmsPegZSc+7QxM9XN7/FtQ14UpD/o1cSQ9Vvfdyf+UcYr+0vhkaZlEq8d
+	sVnqhhArwJS+H3aiLZfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGz6s-0000000FRth-0wyl;
-	Thu, 06 Nov 2025 12:29:02 +0000
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+	id 1vGz6x-0000000FS0c-0dUK;
+	Thu, 06 Nov 2025 12:29:07 +0000
+Received: from mail1.manjaro.org ([2a01:4f8:c010:b6e8::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGGnF-0000000BqvD-2Hbo
-	for linux-rockchip@lists.infradead.org;
-	Tue, 04 Nov 2025 13:09:52 +0000
-Received: by mail-wr1-x42b.google.com with SMTP id ffacd0b85a97d-3ee15b5435bso3999706f8f.0
-        for <linux-rockchip@lists.infradead.org>; Tue, 04 Nov 2025 05:09:49 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1762261788; x=1762866588; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=RYc8z4PcZ9T49QURApQLtXvrbC8JQdZPwHKl+MXpn3g=;
-        b=FWUV+ceTIxke9KOc+EVVMyJrq+DDgJzOZsLrtdDL6rnRxex67wxIdSeXuT93soJisQ
-         35eqMwV3NbEdTHHAWsPej6xsiFdDm/0iGW9MFhlVwpp9yJgRo97Jbf6E45CLsz2S0/DG
-         IUP8CpjPBG27EnGhkzbVFKyF6EuiXsmr4dcytbhci/O+dp2MZbNMCGRymCogVDat/rcO
-         ULDethtoB/N8KGXYDabEBVrUoC/BV+21DOCxci6XtV8iSWyxWEy3WWzT/8GPAD7pCvGL
-         i2QWHWaLUrirlBygQ6LDw4XU7ndOvFgyd5dwHT/7Xynv6+ezDCXuWX+CTMY30A2cixNN
-         pC9Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1762261788; x=1762866588;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=RYc8z4PcZ9T49QURApQLtXvrbC8JQdZPwHKl+MXpn3g=;
-        b=mApaDfF4uJxxTqbU/zCByNG6ltkPww4LFp/a8/1dEc5D2anI3dkjlQpn7TQUdHB/Fb
-         t6ho09QWa4D1gvYcPiDk2mEatKuX5lt8liWwUKaxFdRDMgjXV/ZgvsjzPXQFfMBJ3ZVc
-         XvqbE0/Z+wCmhNH6wTnVQfcbVaKMADV+DqiMi2lbWjz1Fk+EKMFNx+bVx66/Yqb7Uhl6
-         q34T6xxbIx/lW2TZmdHD5Z6ywHjnFbGOyIgD55bBdPFZwwB8/8s0M+0Qyxv48mMvsBkI
-         0YL5Fjsr88yjjm9+OntJgTTLLtp3SdpBP6E47mejfQVtiqnqe8mMEwdBhDnw5N1XgZvF
-         ne8w==
-X-Forwarded-Encrypted: i=1; AJvYcCX8Hf2WIG4TpG1F/iAf5TorWurylkJoPMjUN0dz8mFsjX1ZfoV91Qy2qiMtHr9qs/jxr475aqTOKjX5AYQLoQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw6hh6KIgTpQum3yNgK4xCjJxgSlfVSdbj6Qoa87Lk9p3gT3wV/
-	EoUZvDPk5n4eyMWvHnK41EEayBlR+/sNtQmh1sBuIg1ACDgHzy67h/I1uxUWwB0ol+M=
-X-Gm-Gg: ASbGncsYO4TbYpH9+Avgm75yFRwXnkFsDWUGgnXTbUmw8ReVITT+VRSVgOl0h4GGJ1I
-	y/cH0XPz78RGoHHChq0400JQPm7HOxPpcYWDB58oZ+CSI+FeeJfJK1Zc5xLOwoEfOTT7OEDy9MU
-	XtllruBnXWAKfXbRmG2xHjB2OF0OD2xyqt7IA1u8iD0RzXxff86am0j1ICLfabpclzEJBYfv9cB
-	FFdj4M1m6kjvMTTsbijIodP8ro8tTGGBe6ImJyIO+beIAbYUpSBqlFtUgWyGQ2Xhm4x+BC84lz6
-	M41EX6vj8zkO9F++ScaW4ptNkkA/DEq/Qhc9M6j0bA8d1Lb0X63h5yWGQvHH+Bx+Vzr3zvo+0DZ
-	kTKrZlHLMzeFriiTWnbx3vxvNshg1vX8hyInNT48uecb79hdM+nVg4KMqPYtW/wf9g9TL+g==
-X-Google-Smtp-Source: AGHT+IHPpON6LYi1/Q8aXjFmURJbxcrY+l8z8FiJePOjNwnG1FKRukzxqD0pp8zNbhw6M6VPHhOkIg==
-X-Received: by 2002:a05:6000:26d2:b0:429:c5db:f50f with SMTP id ffacd0b85a97d-429c5dbf6a0mr11233740f8f.29.1762261787616;
-        Tue, 04 Nov 2025 05:09:47 -0800 (PST)
-Received: from [127.0.1.1] ([2a01:cb1d:dc:7e00:9ea1:7ab7:4748:cae3])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-429dc18efd3sm4554431f8f.5.2025.11.04.05.09.42
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 04 Nov 2025 05:09:44 -0800 (PST)
-From: Bartosz Golaszewski <brgl@bgdev.pl>
-Date: Tue, 04 Nov 2025 14:08:59 +0100
-Subject: [PATCH v4 8/8] net: stmmac: qcom-ethqos: add support for sa8255p
+	id 1vGHof-0000000By9F-0iyH;
+	Tue, 04 Nov 2025 14:15:22 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPA id B2F1840E58;
+	Tue,  4 Nov 2025 15:15:10 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=dkim;
+	t=1762265711; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding; bh=heBDAPe+EDP5KXVqXGrOUdIPLJKmXSTtMeNmnTa/byk=;
+	b=pg0Z0YP0QZayfNRkiCt/zw6yQFA/WqH8GvYryOee+PIB88s0zimfnARzt22TdPatiC0rFg
+	42zBenoFfidM+Z4KmnS6SYyaQgL8bPZdxYQZx0fYPPvBmGW/gPAMngncn2fnFRhbKW1zID
+	EtZ8jFKNgDaqvKz+NCa5pD8dJXOa8Hd6FXK4J+MlqtS1VH9a9hfCx8wXgF8wZXPk7NczjU
+	RJSwNhRPRkwxAnqs8y4CqcWNYqJw8E2JjP1iCGbqcrtiaI2fRStA7UBzQ3iULaMBGmhqnN
+	A4R3r4SOZekPxEivrkEnalx11C995xVVQgIPhg1rpIqnA7GJgBTmcRdMTnCH6w==
+From: "Dragan Simic" <dsimic@manjaro.org>
+Date: Tue, 04 Nov 2025 15:15:10 +0100
+Cc: "Heiko Stuebner" <heiko@sntech.de>, "Alexey Charkov" <alchark@gmail.com>, conor+dt@kernel.org, devicetree@vger.kernel.org, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh@kernel.org
+To: "Hugh Cole-Baker" <sigmaris@gmail.com>
 MIME-Version: 1.0
-Message-Id: <20251104-qcom-sa8255p-emac-v4-8-f76660087cea@linaro.org>
-References: <20251104-qcom-sa8255p-emac-v4-0-f76660087cea@linaro.org>
-In-Reply-To: <20251104-qcom-sa8255p-emac-v4-0-f76660087cea@linaro.org>
-To: Bjorn Andersson <andersson@kernel.org>, 
- Konrad Dybcio <konradybcio@kernel.org>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Richard Cochran <richardcochran@gmail.com>, 
- Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
- Alexandre Torgue <alexandre.torgue@foss.st.com>, 
- Vinod Koul <vkoul@kernel.org>, Giuseppe Cavallaro <peppe.cavallaro@st.com>, 
- Jose Abreu <joabreu@synopsys.com>, Chen-Yu Tsai <wens@kernel.org>, 
- Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Samuel Holland <samuel@sholland.org>, 
- Matthew Gerlach <matthew.gerlach@altera.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>, 
- Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
- Keguang Zhang <keguang.zhang@gmail.com>, Shawn Guo <shawnguo@kernel.org>, 
- Sascha Hauer <s.hauer@pengutronix.de>, 
- Pengutronix Kernel Team <kernel@pengutronix.de>, 
- Fabio Estevam <festevam@gmail.com>, Jan Petrous <jan.petrous@oss.nxp.com>, 
- s32@nxp.com, Romain Gantois <romain.gantois@bootlin.com>, 
- Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>, 
- Heiko Stuebner <heiko@sntech.de>, Chen Wang <unicorn_wang@outlook.com>, 
- Inochi Amaoto <inochiama@gmail.com>, Emil Renner Berthing <kernel@esmil.dk>, 
- Minda Chen <minda.chen@starfivetech.com>, Drew Fustini <fustini@kernel.org>, 
- Guo Ren <guoren@kernel.org>, Fu Wei <wefu@redhat.com>, 
- Nobuhiro Iwamatsu <nobuhiro.iwamatsu.x90@mail.toshiba>, 
- Geert Uytterhoeven <geert+renesas@glider.be>, 
- Magnus Damm <magnus.damm@gmail.com>, Maxime Ripard <mripard@kernel.org>, 
- Shuang Liang <liangshuang@eswincomputing.com>, 
- Zhi Li <lizhi2@eswincomputing.com>, 
- Shangjuan Wei <weishangjuan@eswincomputing.com>, 
- "G. Jaya Kumaran" <vineetha.g.jaya.kumaran@intel.com>, 
- Clark Wang <xiaoning.wang@nxp.com>, Linux Team <linux-imx@nxp.com>, 
- Frank Li <Frank.Li@nxp.com>, David Wu <david.wu@rock-chips.com>, 
- Samin Guo <samin.guo@starfivetech.com>, 
- Christophe Roullier <christophe.roullier@foss.st.com>, 
- Swathi K S <swathi.ks@samsung.com>
-Cc: linux-arm-msm@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, netdev@vger.kernel.org, 
- linux-stm32@st-md-mailman.stormreply.com, 
- linux-arm-kernel@lists.infradead.org, 
- Drew Fustini <dfustini@tenstorrent.com>, linux-sunxi@lists.linux.dev, 
- linux-amlogic@lists.infradead.org, linux-mips@vger.kernel.org, 
- imx@lists.linux.dev, linux-renesas-soc@vger.kernel.org, 
- linux-rockchip@lists.infradead.org, sophgo@lists.linux.dev, 
- linux-riscv@lists.infradead.org, 
- Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=10753;
- i=bartosz.golaszewski@linaro.org; h=from:subject:message-id;
- bh=kH82UvTkPA4Owu7n7V2nTB+oPAmR25mANNr93utn74g=;
- b=owEBbQKS/ZANAwAKARGnLqAUcddyAcsmYgBpCfruh2gxdJgmTj0+zkkuyG+w1M/56xqsarn41
- ZPBYWNIMjSJAjMEAAEKAB0WIQQWnetsC8PEYBPSx58Rpy6gFHHXcgUCaQn67gAKCRARpy6gFHHX
- cpVyD/9ixuat3AHDNJC0PRiJjI8ZBWoFYNK/GFnKGpGV8mOyZ5RhoCXvb4J0XxCRz2iT82+Uypr
- 6q7xVZOjreOOIh4AG/HaRxse/Kxf1I9mX9n7a+AHRs8bWm1D3gA7lMwsIBIWpjIU0augIyfnfv5
- LV0F81QwFLiqfSlt9xEW7GW/b81xrKeQhHd03uJPfnWJvxMeif9h7W4cz50cup4Tnpt2FcHMgYi
- 87taXwWIl19DKQaTpkNh+/cjPDBJpQm/nGOM0DDLt3tGbXK2HMGRZmvo61I+Z9UnzonFleCTzsm
- hPGn+Om6M+wVvSJL3T8+iSEmTd5bEc8V+fG8zVghoU41QJ3RqKh9DwhlfA8XOECUGUm3+5uXUU2
- qQYgktGE2BgGqrrQUKlWqckXbAbARIqPpBZrGplyhXDZ7fv4xSOzTKAHrWIRsmSKETMaG2mcXhG
- Hvkvz3ZNWRzRmZDD/9W3WM/+fDq+tVQ3agdy7NlzXByyBYA6N/dAa2IM1JEKpBUYAGBfSoLpWzn
- gAA6WBPYiTrPEU8iLAyfgMSy/XoxjIriTBnhWWwAewPhtKghcFCdGUAAZClSE90dXutgvWi3CUy
- iXU472N6z9/ZyUHsOSkq2TqXcftMJQZCT7j6itABU18ESw6vDKLSYyDmbdmJ8sbNxPhPES4G4ff
- b6NU77t5VkvaKRQ==
-X-Developer-Key: i=bartosz.golaszewski@linaro.org; a=openpgp;
- fpr=169DEB6C0BC3C46013D2C79F11A72EA01471D772
+Message-ID: <232be108-ea84-2808-77b9-ff46d2b8baf7@manjaro.org>
+Subject: =?utf-8?q?Re=3A?= [PATCH] =?utf-8?q?arm64=3A?==?utf-8?q?_dts=3A?=
+ =?utf-8?q?_rockchip=3A?= pwm-fan overlay for NanoPC-T6
+User-Agent: SOGoMail 5.12.3
+X-Last-TLS-Session-Version: None
+X-Bad-Reply: 'Re:' in Subject but no References or In-Reply-To headers
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251104_050949_845770_1AE8967C 
-X-CRM114-Status: GOOD (  24.09  )
+X-CRM114-CacheID: sfid-20251104_061521_495762_0E55EF85 
+X-CRM114-Status: GOOD (  22.25  )
 X-Mailman-Approved-At: Thu, 06 Nov 2025 04:28:36 -0800
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -164,353 +67,96 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+(Resending because the original message ended up on some spam lists,
+seemingly as a result of some UTF-8 characters in the subject.)
 
-Extend the driver to support a new model - sa8255p. Unlike the
-previously supported variants, this one's power management is done in
-the firmware using SCMI. This is modeled in linux using power domains so
-add support for them.
+Hello Hugh,
 
-Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
----
- .../ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c    | 230 ++++++++++++++++++---
- 1 file changed, 201 insertions(+), 29 deletions(-)
+On Saturday, November 01, 2025 14:14 CET, Hugh Cole-Baker <sigmaris@gmail.com> wrote:
+> On 01/11/2025 11:44, Heiko Stuebner wrote:
+> > Personally, I'm more on the less complication side.
+> > 
+> > I.e. if there is an actual fan-connector on the board we should describe
+> > it as such.
+> > 
+> > Overlays I see for things where you attach hats to generic pin headers
+> > to create specific functionality on top of a generic interface.
+> > 
+> > But if the board itself has an actual fan header, it should be described
+> > as such. Because that then _is_ the standard use of that.
+> 
+> The board does have a fan connector, just no fan by default. But anyway,
+> since it sounds like the preferred approach I'll send a v2 which puts the
+> fan into the base board .dts.
+> 
+> Dragan, you mentioned there's no need for more than 2 trip points - if
+> I remove the trip points between "SoC is warm, start fan at slow speed"
+> and "SoC is v. hot, run fan at full speed" is the OS/kernel expected to
+> interpolate between those 2 trip points (if you have a link to docs or
+> code about this it'd be interesting, I couldn't find anything in the
+> dt-bindings)?
 
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c
-index 446f06b591a0b70992c7a431b56cf88c1b6718fd..d2922b4fb4bad1bb8dd77f1feaa7a260b97f0ae8 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c
-@@ -7,6 +7,8 @@
- #include <linux/platform_device.h>
- #include <linux/phy.h>
- #include <linux/phy/phy.h>
-+#include <linux/pm_opp.h>
-+#include <linux/pm_domain.h>
- 
- #include "stmmac.h"
- #include "stmmac_platform.h"
-@@ -81,6 +83,13 @@
- 
- #define SGMII_10M_RX_CLK_DVDR			0x31
- 
-+enum ethqos_pd_selector {
-+	ETHQOS_PD_CORE = 0,
-+	ETHQOS_PD_MDIO,
-+	ETHQOS_PD_SERDES,
-+	ETHQOS_NUM_PDS,
-+};
-+
- struct ethqos_emac_por {
- 	unsigned int offset;
- 	unsigned int value;
-@@ -98,6 +107,9 @@ struct ethqos_emac_driver_data {
- 
- struct ethqos_emac_pm_data {
- 	const char *link_clk_name;
-+	bool use_domains;
-+	struct dev_pm_domain_attach_data pd;
-+	unsigned int clk_ptp_rate;
- };
- 
- struct ethqos_emac_match_data {
-@@ -111,13 +123,20 @@ struct ethqos_emac_pm_ctx {
- 	struct phy *serdes_phy;
- };
- 
-+struct ethqos_emac_pd_ctx {
-+	struct dev_pm_domain_list *pd_list;
-+};
-+
- struct qcom_ethqos {
- 	struct platform_device *pdev;
- 	void __iomem *rgmii_base;
- 	void __iomem *mac_base;
- 	int (*configure_func)(struct qcom_ethqos *ethqos, int speed);
- 
--	struct ethqos_emac_pm_ctx pm;
-+	union {
-+		struct ethqos_emac_pm_ctx pm;
-+		struct ethqos_emac_pd_ctx pd;
-+	};
- 	phy_interface_t phy_mode;
- 	int serdes_speed;
- 	int (*set_serdes_speed)(struct qcom_ethqos *ethqos);
-@@ -330,6 +349,25 @@ static const struct ethqos_emac_match_data emac_sa8775p_data = {
- 	.pm_data = &emac_sa8775p_pm_data,
- };
- 
-+static const char * const emac_sa8255p_pd_names[] = {
-+	"core", "mdio", "serdes"
-+};
-+
-+static const struct ethqos_emac_pm_data emac_sa8255p_pm_data = {
-+	.pd = {
-+		.pd_flags = PD_FLAG_NO_DEV_LINK,
-+		.pd_names = emac_sa8255p_pd_names,
-+		.num_pd_names = ETHQOS_NUM_PDS,
-+	},
-+	.use_domains = true,
-+	.clk_ptp_rate = 230400000,
-+};
-+
-+static const struct ethqos_emac_match_data emac_sa8255p_data = {
-+	.drv_data = &emac_v4_0_0_data,
-+	.pm_data = &emac_sa8255p_pm_data,
-+};
-+
- static int ethqos_dll_configure(struct qcom_ethqos *ethqos)
- {
- 	struct device *dev = &ethqos->pdev->dev;
-@@ -411,6 +449,28 @@ static int ethqos_dll_configure(struct qcom_ethqos *ethqos)
- 	return 0;
- }
- 
-+static int qcom_ethqos_domain_on(struct qcom_ethqos *ethqos,
-+				 enum ethqos_pd_selector sel)
-+{
-+	struct device *dev = ethqos->pd.pd_list->pd_devs[sel];
-+	int ret;
-+
-+	ret = pm_runtime_resume_and_get(dev);
-+	if (ret < 0)
-+		dev_err(&ethqos->pdev->dev,
-+			"Failed to enable the power domain for %s\n",
-+			dev_name(dev));
-+	return ret;
-+}
-+
-+static void qcom_ethqos_domain_off(struct qcom_ethqos *ethqos,
-+				   enum ethqos_pd_selector sel)
-+{
-+	struct device *dev = ethqos->pd.pd_list->pd_devs[sel];
-+
-+	pm_runtime_put_sync(dev);
-+}
-+
- static int ethqos_rgmii_macro_init(struct qcom_ethqos *ethqos, int speed)
- {
- 	struct device *dev = &ethqos->pdev->dev;
-@@ -646,6 +706,13 @@ static int ethqos_set_serdes_speed_phy(struct qcom_ethqos *ethqos)
- 	return phy_set_speed(ethqos->pm.serdes_phy, ethqos->serdes_speed);
- }
- 
-+static int ethqos_set_serdes_speed_pd(struct qcom_ethqos *ethqos)
-+{
-+	struct device *dev = ethqos->pd.pd_list->pd_devs[ETHQOS_PD_SERDES];
-+
-+	return dev_pm_opp_set_level(dev, ethqos->serdes_speed);
-+}
-+
- static void ethqos_set_serdes_speed(struct qcom_ethqos *ethqos, int speed)
- {
- 	if (ethqos->serdes_speed != speed) {
-@@ -737,6 +804,27 @@ static void qcom_ethqos_serdes_powerdown(struct net_device *ndev, void *priv)
- 	phy_exit(ethqos->pm.serdes_phy);
- }
- 
-+static int qcom_ethqos_pd_serdes_powerup(struct net_device *ndev, void *priv)
-+{
-+	struct qcom_ethqos *ethqos = priv;
-+	struct device *dev = ethqos->pd.pd_list->pd_devs[ETHQOS_PD_SERDES];
-+	int ret;
-+
-+	ret = qcom_ethqos_domain_on(ethqos, ETHQOS_PD_SERDES);
-+	if (ret < 0)
-+		return ret;
-+
-+	return dev_pm_opp_set_level(dev, ethqos->serdes_speed);
-+}
-+
-+static void qcom_ethqos_pd_serdes_powerdown(struct net_device *ndev, void *priv)
-+{
-+	struct qcom_ethqos *ethqos = priv;
-+
-+	/* TODO set level */
-+	qcom_ethqos_domain_off(ethqos, ETHQOS_PD_SERDES);
-+}
-+
- static int ethqos_clks_config(void *priv, bool enabled)
- {
- 	struct qcom_ethqos *ethqos = priv;
-@@ -769,6 +857,61 @@ static void ethqos_clks_disable(void *data)
- 	ethqos_clks_config(ethqos, false);
- }
- 
-+static int ethqos_pd_clks_config(void *priv, bool enabled)
-+{
-+	struct qcom_ethqos *ethqos = priv;
-+	int ret = 0;
-+
-+	if (enabled) {
-+		ret = qcom_ethqos_domain_on(ethqos, ETHQOS_PD_MDIO);
-+		if (ret < 0) {
-+			dev_err(&ethqos->pdev->dev,
-+				"Failed to enable the MDIO power domain\n");
-+			return ret;
-+		}
-+
-+		ethqos_set_func_clk_en(ethqos);
-+	} else {
-+		qcom_ethqos_domain_off(ethqos, ETHQOS_PD_MDIO);
-+	}
-+
-+	return ret;
-+}
-+
-+static int qcom_ethqos_pd_init(struct platform_device *pdev, void *priv)
-+{
-+	struct qcom_ethqos *ethqos = priv;
-+	int ret;
-+
-+	/*
-+	 * Enable functional clock to prevent DMA reset after timeout due
-+	 * to no PHY clock being enabled after the hardware block has been
-+	 * power cycled. The actual configuration will be adjusted once
-+	 * ethqos_fix_mac_speed() is called.
-+	 */
-+	ethqos_set_func_clk_en(ethqos);
-+
-+	ret = qcom_ethqos_domain_on(ethqos, ETHQOS_PD_CORE);
-+	if (ret)
-+		return ret;
-+
-+	ret = qcom_ethqos_domain_on(ethqos, ETHQOS_PD_MDIO);
-+	if (ret) {
-+		qcom_ethqos_domain_off(ethqos, ETHQOS_PD_CORE);
-+		return ret;
-+	}
-+
-+	return 0;
-+}
-+
-+static void qcom_ethqos_pd_exit(struct platform_device *pdev, void *data)
-+{
-+	struct qcom_ethqos *ethqos = data;
-+
-+	qcom_ethqos_domain_off(ethqos, ETHQOS_PD_MDIO);
-+	qcom_ethqos_domain_off(ethqos, ETHQOS_PD_CORE);
-+}
-+
- static void ethqos_ptp_clk_freq_config(struct stmmac_priv *priv)
- {
- 	struct plat_stmmacenet_data *plat_dat = priv->plat;
-@@ -809,8 +952,6 @@ static int qcom_ethqos_probe(struct platform_device *pdev)
- 				     "dt configuration failed\n");
- 	}
- 
--	plat_dat->clks_config = ethqos_clks_config;
--
- 	ethqos = devm_kzalloc(dev, sizeof(*ethqos), GFP_KERNEL);
- 	if (!ethqos)
- 		return -ENOMEM;
-@@ -852,28 +993,63 @@ static int qcom_ethqos_probe(struct platform_device *pdev)
- 	ethqos->rgmii_config_loopback_en = drv_data->rgmii_config_loopback_en;
- 	ethqos->has_emac_ge_3 = drv_data->has_emac_ge_3;
- 	ethqos->needs_sgmii_loopback = drv_data->needs_sgmii_loopback;
--
--	ethqos->pm.link_clk = devm_clk_get(dev, clk_name);
--	if (IS_ERR(ethqos->pm.link_clk))
--		return dev_err_probe(dev, PTR_ERR(ethqos->pm.link_clk),
--				     "Failed to get link_clk\n");
--
--	ret = ethqos_clks_config(ethqos, true);
--	if (ret)
--		return ret;
--
--	ret = devm_add_action_or_reset(dev, ethqos_clks_disable, ethqos);
--	if (ret)
--		return ret;
--
--	ethqos->pm.serdes_phy = devm_phy_optional_get(dev, "serdes");
--	if (IS_ERR(ethqos->pm.serdes_phy))
--		return dev_err_probe(dev, PTR_ERR(ethqos->pm.serdes_phy),
--				     "Failed to get serdes phy\n");
--
--	ethqos->set_serdes_speed = ethqos_set_serdes_speed_phy;
- 	ethqos->serdes_speed = SPEED_1000;
--	ethqos_update_link_clk(ethqos, SPEED_1000);
-+
-+	if (pm_data && pm_data->use_domains) {
-+		ethqos->set_serdes_speed = ethqos_set_serdes_speed_pd;
-+
-+		ret = devm_pm_domain_attach_list(dev, &pm_data->pd,
-+						 &ethqos->pd.pd_list);
-+		if (ret < 0)
-+			return dev_err_probe(dev, ret, "Failed to attach power domains\n");
-+
-+		plat_dat->clks_config = ethqos_pd_clks_config;
-+		plat_dat->serdes_powerup = qcom_ethqos_pd_serdes_powerup;
-+		plat_dat->serdes_powerdown = qcom_ethqos_pd_serdes_powerdown;
-+		plat_dat->exit = qcom_ethqos_pd_exit;
-+		plat_dat->init = qcom_ethqos_pd_init;
-+		plat_dat->clk_ptp_rate = pm_data->clk_ptp_rate;
-+
-+		ret = qcom_ethqos_pd_init(pdev, ethqos);
-+		if (ret)
-+			return ret;
-+
-+		ret = qcom_ethqos_domain_on(ethqos, ETHQOS_PD_SERDES);
-+		if (ret)
-+			return dev_err_probe(dev, ret,
-+					     "Failed to enable the serdes power domain\n");
-+	} else {
-+		ethqos->set_serdes_speed = ethqos_set_serdes_speed_phy;
-+
-+		ethqos->pm.link_clk = devm_clk_get(dev, clk_name);
-+		if (IS_ERR(ethqos->pm.link_clk))
-+			return dev_err_probe(dev, PTR_ERR(ethqos->pm.link_clk),
-+					     "Failed to get link_clk\n");
-+
-+		ret = ethqos_clks_config(ethqos, true);
-+		if (ret)
-+			return ret;
-+
-+		ret = devm_add_action_or_reset(dev, ethqos_clks_disable, ethqos);
-+		if (ret)
-+			return ret;
-+
-+		ethqos->pm.serdes_phy = devm_phy_optional_get(dev, "serdes");
-+		if (IS_ERR(ethqos->pm.serdes_phy))
-+			return dev_err_probe(dev, PTR_ERR(ethqos->pm.serdes_phy),
-+					     "Failed to get serdes phy\n");
-+
-+		ethqos_update_link_clk(ethqos, SPEED_1000);
-+
-+		plat_dat->clks_config = ethqos_clks_config;
-+		plat_dat->ptp_clk_freq_config = ethqos_ptp_clk_freq_config;
-+
-+		if (ethqos->pm.serdes_phy) {
-+			plat_dat->serdes_powerup = qcom_ethqos_serdes_powerup;
-+			plat_dat->serdes_powerdown  = qcom_ethqos_serdes_powerdown;
-+		}
-+	}
-+
- 	ethqos_set_func_clk_en(ethqos);
- 
- 	plat_dat->bsp_priv = ethqos;
-@@ -891,11 +1067,6 @@ static int qcom_ethqos_probe(struct platform_device *pdev)
- 	if (drv_data->dma_addr_width)
- 		plat_dat->host_dma_width = drv_data->dma_addr_width;
- 
--	if (ethqos->pm.serdes_phy) {
--		plat_dat->serdes_powerup = qcom_ethqos_serdes_powerup;
--		plat_dat->serdes_powerdown  = qcom_ethqos_serdes_powerdown;
--	}
--
- 	/* Enable TSO on queue0 and enable TBS on rest of the queues */
- 	for (i = 1; i < plat_dat->tx_queues_to_use; i++)
- 		plat_dat->tx_queues_cfg[i].tbs_en = 1;
-@@ -905,6 +1076,7 @@ static int qcom_ethqos_probe(struct platform_device *pdev)
- 
- static const struct of_device_id qcom_ethqos_match[] = {
- 	{ .compatible = "qcom,qcs404-ethqos", .data = &emac_qcs404_data},
-+	{ .compatible = "qcom,sa8255p-ethqos", .data = &emac_sa8255p_data},
- 	{ .compatible = "qcom,sa8775p-ethqos", .data = &emac_sa8775p_data},
- 	{ .compatible = "qcom,sc8280xp-ethqos", .data = &emac_sc8280xp_data},
- 	{ .compatible = "qcom,sm8150-ethqos", .data = &emac_sm8150_data},
+True, that isn't described in the bindings, because it basically
+doesn't belong there.  Thus, the most specific description of the
+associated cooling stuff, as provided by the bindings, is the
+following excerpt from Documentation/devicetree/bindings/thermal/
+thermal-zones.yaml:
 
--- 
-2.51.0
+  209 cooling-device:
+  210   $ref: /schemas/types.yaml#/definitions/phandle-array
+  211   description:
+  212     A list of cooling device phandles along with the minimum
+  213     and maximum cooling state specifiers for each cooling
+  214     device. Using the THERMAL_NO_LIMIT (-1UL) constant in the
+  215     cooling-device phandle limit specifier lets the framework
+  216     use the minimum and maximum cooling state for that cooling
+  217     device automatically.
+
+That's where the cooling hardware description ends, so that's also
+where the associated binding ends.  Everything else belongs to the
+thermal governors, because they actually decide on how to best use
+the available cooling features.
+
+For example, the chain of events may look like this:
+
+  (1) The rockchip_thermal_alarm_irq_thread() function, defined in
+      drivers/thermal/rockchip_thermal.c, gets triggered by TSADC
+      within the parameters of DT-defined "active" trip types
+
+  (2) It calls the thermal_zone_device_update() function defined
+      in drivers/thermal/thermal_core.c
+
+  (3) This ends up calling the step_wise_manage() function that's
+      defined in drivers/thermal/gov_step_wise.c, which handles
+      the previously triggered "active" trip
+
+  (4) This calls the drivers/thermal/gov_step_wise.c's locally
+      defined thermal_zone_trip_update() and get_target_state()
+      functions, which end up ramping the fan speed up and down
+      as needed, while respecting the upper and lower limits
+      defined through the "cooling-device" DT map properties,
+      which correspond to the "cooling-levels" defined in the
+      DT fan property
+
+Here's also an excerpt from drivers/thermal/gov_step_wise.c, which
+confirms all this and explains it a bit further:
+
+  113  /*
+  114   * Throttling Logic: Use the trend of the thermal zone to throttle.
+  115   * If the thermal zone is 'heating up', throttle all of the cooling
+  116   * devices associated with each trip point by one step. If the zone
+  117   * is 'cooling down', it brings back the performance of the devices
+  118   * by one step.
+  119   */
+
+With all that in mind, the fan will ramp its speed up and down
+nicely, according to the current temperature, with no need for
+having multiple manually defined steps.
+
+The intended benefit of having the two usual, distinct "active"
+thermal trips and cooling maps is to lower the fan-induced noise
+a bit while not affecting the cooling much.  This is all visible
+in rk3399-rockpro64.dtsi, for example.
 
 
 _______________________________________________
