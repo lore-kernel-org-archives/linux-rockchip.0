@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED7D0CCF9E3
-	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Nov 2025 12:30:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C913ACCFA04
+	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Nov 2025 12:53:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=87dYBGnEe4MZ8S1fdtGoUTNpbABJ7HfN65ad9WJoZkI=; b=yfmobI/nbvVHTc
-	FandpAfdKyE1krKz/hzSY1eCzxElDfpPNGhUhUscsRhn6VtfPq15Mo2HECch5/pDlNVCr+NhRDriT
-	5C87VhDMsyShrVSlfggWnw9+ZqyxY0Lvn3k9+aRVSfXMEhaPYAtUPTM7Q3blDlairpqxicCVKYJQW
-	+KHwzVeFFN1u8ggQS/0lO5ZGe4OJKNdnRrsX59GEEuYLBu4SLM6+djFxtkqWTIU1pGJZ39O2K8ze1
-	DZziwgWtnTw+NV6a2EEWwkYWB0vcpdJy8Rav2HEYl3VTlFwxyIUvboB4JZrqgKsyebN3t5xNHQO9p
-	r9zqP/H55D9jjvsexqYQ==;
+	List-Owner; bh=l1izRbMOosBDG6brv/Hi08lBndQxV1FtH5I9meRYU2Q=; b=SQVnRNCtNz5iMg
+	LxF6gjJCTc18Nu3Ed5icR7uApovBD/ChdHtCVNZrkLqXu2JMS903OdtUPj3gUKSnV3AaeyGNGiaoc
+	0BRpFVat1jfgtNGWTT88ntzRw6aBiaWwM3dItOSfsMaOEXoYikAc/c3xO6tnfgy2/OK9sTDMsX7Ii
+	skDlyeF+B/EjspqH0XDnO2UJCxy5N6oR5nFVuIdanCg/OOAMRAeEsppJ8/w6j2gv3nYilF2vuDO78
+	PpSB53OtnH2YigIWZj30CoEKvZGenV8QNyce8ffqiPIQ3zFmQ7Agi9dfwNAqE0aoiRT67KKYzFFLw
+	ftQ6mC1ea8CtFBwbAOIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGGBK-0000000BmtO-0Ol1;
-	Tue, 04 Nov 2025 12:30:38 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vGGXV-0000000Bob3-2dtr;
+	Tue, 04 Nov 2025 12:53:33 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGGBI-0000000Bmso-0T5x;
-	Tue, 04 Nov 2025 12:30:36 +0000
+	id 1vGGXU-0000000BoaO-1e0r;
+	Tue, 04 Nov 2025 12:53:32 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 88E71601EC;
-	Tue,  4 Nov 2025 12:30:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7CB33C4CEF7;
-	Tue,  4 Nov 2025 12:30:31 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 25F90601EC;
+	Tue,  4 Nov 2025 12:53:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8F2BCC4CEF7;
+	Tue,  4 Nov 2025 12:53:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1762259435;
-	bh=FSpG5YsbzDPakXOv7zcHt6Bb8WRjzWGwnycLNiPNIws=;
+	s=k20201202; t=1762260810;
+	bh=kBePapwwI6HFP1Ie8oXMdV7JbHo8eVO/XYn+bJLYsGQ=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=fNaXCyHmH2JWtxXKdCRrOaKgCy6dFh9Tf8n9Pz4ygElOxC42vTsmmQLq2WOYqVDf3
-	 I09YelFRLWNEihcMjgnwpphg6vjCR+vhwxYZJYU7IVSeB/sDkponxhJL9t7acnsGEJ
-	 UZm3rusrz7hj9+nE3dORF531A4gqGnZkyV6HrXn10qC1Gq1BEn4ZYaTUFgmkJRgLPc
-	 ROKurA28vLp4yqqifk/345Pbj2NKVLi5B+xNAQNkzuoXFKVuoskw90P31nO7p9N+s7
-	 sku/hjVKyVt35LVarrN9ElmDsLdwcHd0/MOLiefy2+rgXkjtfc5f0n+n1LVbdlsX06
-	 T2y7oUZS6kSGQ==
-Date: Tue, 4 Nov 2025 13:30:28 +0100
+	b=VIA/GT6LcnpY1SQ6WzNn5tWDCswWcoo+0OjfE3aZ6aeRCCSQtgSQunc6Sz7/PrZlo
+	 rC2BRHSAwdd4jSR3HqZEIDR2Nwcb4hSwBtnreLnuRyuzKLliNIyzE2KAnDrVnmSl1E
+	 +nkJfJjlpHabGBCx6LuvjhQ0eaD7RhCus8bX9mIJ72a0ryeYCVU1FgdONOdUCAqZIY
+	 MxR1zDUPtDaQVbmBQIe2J0VcJIEt2WizRNMWJCVAAZ1Viuvzth3CP3f/8bvCT+FTu+
+	 qP3OUo2hxAf/8OTryFgQQNo+J0IiAo6H3z3UxMMJRBLZQbFgnI5RPYnDL8xWd/k6Fi
+	 Cy/8GVaE/aAAQ==
+Date: Tue, 4 Nov 2025 13:53:24 +0100
 From: Niklas Cassel <cassel@kernel.org>
-To: Manivannan Sadhasivam <mani@kernel.org>
-Cc: Bjorn Helgaas <helgaas@kernel.org>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>,
 	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Manivannan Sadhasivam <mani@kernel.org>,
 	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
 	Heiko Stuebner <heiko@sntech.de>,
 	Shawn Lin <shawn.lin@rock-chips.com>,
@@ -55,17 +55,19 @@ Cc: Bjorn Helgaas <helgaas@kernel.org>,
 	Dragan Simic <dsimic@manjaro.org>, FUKAUMI Naoki <naoki@radxa.com>,
 	Diederik de Haas <diederik@cknow-tech.com>, stable@vger.kernel.org,
 	Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>,
-	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	Daire McNamara <daire.mcnamara@microchip.com>,
+	Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>,
+	Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, linux-pci@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
 Subject: Re: [PATCH v3] PCI: dw-rockchip: Prevent advertising L1 Substates
  support
-Message-ID: <aQnx5KZSQuBniEv-@ryzen>
-References: <20251017164558.GA1034609@bhelgaas>
- <54FD6159-AE45-432B-8F0E-4654721D16A6@kernel.org>
- <aaug44bngs5amid7un4plotcjpbc6ym44cztnhet7z44ybywgc@apzhg6enhxgy>
+Message-ID: <aQn3RGrJi1lb0EO1@ryzen>
+References: <20251028190218.GA1525614@bhelgaas>
+ <20251103213206.GA1818418@bhelgaas>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <aaug44bngs5amid7un4plotcjpbc6ym44cztnhet7z44ybywgc@apzhg6enhxgy>
+In-Reply-To: <20251103213206.GA1818418@bhelgaas>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,53 +84,125 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Mani,
+Hello Bjorn,
 
-On Tue, Oct 21, 2025 at 08:02:01AM +0530, Manivannan Sadhasivam wrote:
-> On Sat, Oct 18, 2025 at 07:07:35AM +0200, Niklas Cassel wrote:
-> > On 17 October 2025 18:45:58 CEST, Bjorn Helgaas <helgaas@kernel.org> wrote:
-> > 
-> > (snip)
-> > 
-> > >> 
-> > >> Thus, prevent advertising L1 Substates support until proper driver support
-> > >> is added.
-> > >
-> > >I think Mani is planning a change so we don't try to enable L1
-> > >Substates by default, which should avoid the regression even without a
-> > >patch like this.
-> > 
-> > Sounds good, I suggested the same:
-> > https://lore.kernel.org/linux-pci/aO9tWjgHnkATroNa@ryzen/
-> > 
-> > 
-> > >
-> > >That will still leave the existing CONFIG_PCIEASPM_POWER_SUPERSAVE=y
-> > >and sysfs l1_1_aspm problems.
-> > 
-> > Indeed, which is why I think that this patch is v6.18 material.
-> > 
+On Mon, Nov 03, 2025 at 03:32:06PM -0600, Bjorn Helgaas wrote:
+> On Tue, Oct 28, 2025 at 02:02:18PM -0500, Bjorn Helgaas wrote:
+> > On Fri, Oct 17, 2025 at 06:32:53PM +0200, Niklas Cassel wrote:
+> > > The L1 substates support requires additional steps to work, namely:
+> > > -Proper handling of the CLKREQ# sideband signal. (It is mostly handled by
+> > >  hardware, but software still needs to set the clkreq fields in the
+> > >  PCIE_CLIENT_POWER_CON register to match the hardware implementation.)
+> > > -Program the frequency of the aux clock into the
+> > >  DSP_PCIE_PL_AUX_CLK_FREQ_OFF register. (During L1 substates the core_clk
+> > >  is turned off and the aux_clk is used instead.)
+> > ...
 > 
-> Not strictly a 6.18 material as the Kconfig/sysfs/cmdline issues existed even
-> before we enabled the ASPM states by default in v6.18-rc1.
+> > > +static void rockchip_pcie_disable_l1sub(struct dw_pcie *pci)
+> > > +{
+> > > +	u32 cap, l1subcap;
+> > > +
+> > > +	cap = dw_pcie_find_ext_capability(pci, PCI_EXT_CAP_ID_L1SS);
+> > > +	if (cap) {
+> > > +		l1subcap = dw_pcie_readl_dbi(pci, cap + PCI_L1SS_CAP);
+> > > +		l1subcap &= ~(PCI_L1SS_CAP_L1_PM_SS | PCI_L1SS_CAP_ASPM_L1_1 |
+> > > +			      PCI_L1SS_CAP_ASPM_L1_2 | PCI_L1SS_CAP_PCIPM_L1_1 |
+> > > +			      PCI_L1SS_CAP_PCIPM_L1_2);
+> > > +		dw_pcie_writel_dbi(pci, cap + PCI_L1SS_CAP, l1subcap);
+> > > +	}
+> > > +}
+> > 
+> > I like this.  But why should we do it just for dw-rockchip?  Is there
+> > something special about dw-rockchip that makes this a problem?  Maybe
+> > we should consider doing this in the dwc, cadence, mobiveil, and plda
+> > cores instead of trying to do it for every driver individually?
+> > 
+> > Advertising L1SS support via PCI_EXT_CAP_ID_L1SS means users can
+> > enable L1SS via CONFIG_PCIEASPM_POWER_SUPERSAVE=y or sysfs, and that
+> > seems likely to cause problems unless CLKREQ# is supported.
+> 
+> Any thoughts on this?  There's nothing rockchip-specific in this
+> patch.  What I'm proposing is something like this:
+> 
+>     PCI: dwc: Prevent advertising L1 PM Substates
+>     
+>     L1 PM Substates require the CLKREF# signal and driver-specific support.  If
+>     CLKREF# is not supported or the driver support is lacking, enabling L1.1 or
+>     L1.2 may cause errors when accessing devices, e.g.,
+>     
+>       nvme nvme0: controller is down; will reset: CSTS=0xffffffff, PCI_STATUS=0x10
+>     
+>     If both ends of a link advertise support for L1 PM Substates, and the
+>     kernel is built with CONFIG_PCIEASPM_POWER_SUPERSAVE=y or users enable L1.x
+>     via sysfs, Linux tries to enable them.
+>     
+>     To prevent errors when L1.x may not work, disable advertising the L1 PM
+>     Substates.  Drivers can enable advertising them if they know CLKREF# is
+>     present and the Root Port is configured correctly.
+>     
+>     Based on Niklas's patch from
+>     https://patch.msgid.link/20251017163252.598812-2-cassel@kernel.org
+> 
+> diff --git a/drivers/pci/controller/dwc/pcie-designware-host.c b/drivers/pci/controller/dwc/pcie-designware-host.c
+> index 20c9333bcb1c..83b5330c9e45 100644
+> --- a/drivers/pci/controller/dwc/pcie-designware-host.c
+> +++ b/drivers/pci/controller/dwc/pcie-designware-host.c
+> @@ -950,6 +950,27 @@ static int dw_pcie_iatu_setup(struct dw_pcie_rp *pp)
+>  	return 0;
+>  }
+>  
+> +static void dw_pcie_clear_l1ss_advert(struct dw_pcie_rp *pp)
+> +{
+> +	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
+> +	u16 l1ss;
+> +	u32 l1ss_cap;
+> +
+> +	l1ss = dw_pcie_find_ext_capability(pci, PCI_EXT_CAP_ID_L1SS);
+> +	if (!l1ss)
+> +		return;
+> +
+> +	/*
+> +	 * By default, don't advertise L1 PM Substates because they require
+> +	 * CLKREF# and other driver-specific support.
+> +	 */
+> +	l1ss_cap = dw_pcie_readl_dbi(pci, l1ss + PCI_L1SS_CAP);
+> +	l1ss_cap &= ~(PCI_L1SS_CAP_PCIPM_L1_1 | PCI_L1SS_CAP_ASPM_L1_1 |
+> +		      PCI_L1SS_CAP_PCIPM_L1_2 | PCI_L1SS_CAP_ASPM_L1_2 |
+> +		      PCI_L1SS_CAP_L1_PM_SS);
+> +	dw_pcie_writel_dbi(pci, l1ss + PCI_L1SS_CAP, l1ss_cap);
+> +}
+> +
+>  static void dw_pcie_program_presets(struct dw_pcie_rp *pp, enum pci_bus_speed speed)
+>  {
+>  	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
+> @@ -1060,6 +1081,7 @@ int dw_pcie_setup_rc(struct dw_pcie_rp *pp)
+>  		PCI_COMMAND_MASTER | PCI_COMMAND_SERR;
+>  	dw_pcie_writel_dbi(pci, PCI_COMMAND, val);
+>  
+> +	dw_pcie_clear_l1ss_advert(pp);
+>  	dw_pcie_config_presets(pp);
+>  	/*
+>  	 * If the platform provides its own child bus config accesses, it means
 
-I don't agree that "strictly 6.18 material" means "only fixes for bugs
-introduced in the 6.18 merge window".
+My patch disables L1 substates when running the controller in both root
+complex mode and endpoint mode.
 
-Normally, for a strict bug fix, the fix is merged during the current
-kernel release cycle (rather than waiting for the next merge window),
-even if the bug was introduced in an earlier kernel version.
+Your patch above only disables L1 substates when running the the controller
+in root complex mode.
 
-E.g. a fix for a bug introduced during the 6.17 release cycle is
-definitely 6.18 material, IMO.
+I think this code has to be in pcie-designware.c and then e.g.
+dw_pcie_setup_rc() (pcie-designware-host.c) and
+dw_pcie_ep_init_registers() (pcie-designware-ep.c) can both use it.
 
-Sure, if the bug is extremely old, that probably means that it is okay
-to wait until the next merge window.
 
-In this case, the Fixes tag is a commit first introduced in kernel v5.15,
-released Sun Oct 31 13:53:10 2021.
+And like Shawn mentions. Disabling it by default for all DWC based
+platforms could introduce regressions where L1 substates already is working
+fine.
 
-Having that said, I'm perfectly fine with delaying.
+Sure, the only driver that checks for the DT property 'supports-clkreq' is
+drivers/pci/controller/dwc/pcie-tegra194.c. However Mani claimed that the
+qcom driver also has support for L1 substates already, even though it does
+not check the 'supports-clkreq' DT property.
 
 
 Kind regards,
