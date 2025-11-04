@@ -4,84 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5891CCFA07
-	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Nov 2025 16:07:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2091CCFA0C
+	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Nov 2025 16:33:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OfIpAlurxyXu8Ci8I3n2DmVP9Sr8vlQPnsclYmw7XoY=; b=G1IQ1nhm9+XJeLfWqnZNwaiQBo
-	SuuiAHmTFsra7+7PxMlHyQS8hbViWnWEdayQr/FSs+GLTLEr9EWUWn8Hz7sCLGR/h8aTi5lzD52Vt
-	14fCY9I23Ghj2WeeFkMQmsETC/kgN+d7tKH54uGEJn8Gxr4uGkOj23UeSssYotKKOwr5LnMPINgAk
-	mQ8oasTcRbLNQAm67ytL4tVorZJ2U+syn55XJd44VKAM0ung1Uq9XlqK+BhK12S6BiB1SeybacjfS
-	YlFxIIC4oJzex/yVd+K9bWdvj9LvO1iPq3TIMUr/+e0jAzJTX+X/Dwfaowa3JgbzAKdeKnxX5vph/
-	yOV9aFZw==;
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=HPTdQHw2kjgtE7/JVlrXcnAZDeV19UgI36DNxrxzS1g=; b=GTbHrYCzVmOFbH
+	C3x5JZpFGtzCLEQgmlDitJHzdhlmzjG4f2YJ07hYRpH8sWojmG1Fvs26fccmdDBsC4Kawr2Jyhsgg
+	OrZZ42IAj1qzXACkDwkcj7EOZZD6n91jxQED7ny6ZdYQK3bx/ovYCBsZbYbCgZQM2MRQ9KXw4QXHm
+	jWl926Xy/YxTq+XpkL+Oum9devQzqTmdWcvkK3HbV2S2M0rHqjmYR8Z5Y+6+Dhyc1++fzouEXf6ap
+	k1VRyaaye9w0SPFHj9kCEx46YYG5dSLeALUZwdAcsFn+JExAMcg1Qu4Fg5Ukqe5BmH44B3r5nzcMG
+	PrtmwbhxuVCNvCLwSOZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGJZ2-0000000CA48-0DGI;
-	Tue, 04 Nov 2025 16:07:20 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vGJyM-0000000CCLe-1WAR;
+	Tue, 04 Nov 2025 16:33:30 +0000
+Received: from m16.mail.163.com ([220.197.31.4])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGJYy-0000000CA3V-3Tt4;
-	Tue, 04 Nov 2025 16:07:18 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1762272432;
-	bh=a5GxNjkCvPp2VLoH8Oqj+okJ074BdV9VCpmANAZjfs4=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=PeySt5v1mQGqEoAZrjwuWa1I332AXwYr7l1tvudB6QVbiqM+THUOecHhiQBpliTxG
-	 t717t1jBvYxmiRDgfaDLXX2P7TcaAKYORth9yOMX0UO50BVPp/G+QLLxp4UMv50pH5
-	 R4XN3HXRjYsFrGlSkJk36I16mU0U1evVz1Y2FmBxhiZJX8kpPQlm3S1DWwt0kCUMxu
-	 2iNtpiw7hwxMdMZyQ9af3PBZ3X7OMbYtbGCyavd64WJDPfLDS1hMqSadhOXOyv/JU+
-	 Q5fjWW7bpeqCs/kEhhXxZrKEJtf8F/Q3zObpGYSDL0++qLV5iZdMWEKxswT0GE2Q6O
-	 RWkXFjMbveLuQ==
-Received: from [IPv6:2606:6d00:17:ebd3::5ac] (unknown [IPv6:2606:6d00:17:ebd3::5ac])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5CF3417E0CA1;
-	Tue,  4 Nov 2025 17:07:10 +0100 (CET)
-Message-ID: <b4c041d6603fcc107c466bd1ed8c402c96aef5e1.camel@collabora.com>
-Subject: Re: [PATCH v4 02/15] media: v4l2-ctrls: Add hevc_ext_sps_[ls]t_rps
- controls
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Hans Verkuil <hverkuil+cisco@kernel.org>, Detlev Casanova
-	 <detlev.casanova@collabora.com>, linux-kernel@vger.kernel.org
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Ezequiel Garcia	
- <ezequiel@vanguardiasur.com.ar>, Heiko Stuebner <heiko@sntech.de>, Ricardo
- Ribalda <ribalda@chromium.org>, Hans Verkuil <hverkuil@kernel.org>, Hans de
- Goede <hansg@kernel.org>,  Yunke Cao <yunkec@google.com>, Jonathan Corbet
- <corbet@lwn.net>, Laurent Pinchart	 <laurent.pinchart@ideasonboard.com>,
- Sakari Ailus <sakari.ailus@linux.intel.com>,  James Cowgill
- <james.cowgill@blaize.com>, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org, 	linux-arm-kernel@lists.infradead.org,
- kernel@collabora.com
-Date: Tue, 04 Nov 2025 11:07:08 -0500
-In-Reply-To: <6eaa8b26-edab-4bfa-9c6a-1fbb54c36b4e@kernel.org>
-References: <20251022174508.284929-1-detlev.casanova@collabora.com>
-	 <20251022174508.284929-3-detlev.casanova@collabora.com>
-	 <6eaa8b26-edab-4bfa-9c6a-1fbb54c36b4e@kernel.org>
-Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
- keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
- /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
- cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
- CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
- abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
- nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
- AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
- smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
- AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
- iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
- ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
- bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
-Organization: Collabora Canada
-User-Agent: Evolution 3.56.2 (3.56.2-2.fc42) 
+	id 1vGJyI-0000000CCJe-2YxQ;
+	Tue, 04 Nov 2025 16:33:28 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=Message-ID:Date:MIME-Version:Subject:To:From:
+	Content-Type; bh=trzVWn3q8K520lsD6h38S6zhjQv/gzjNZVwNLqNGPyU=;
+	b=am+dmD4/csrOyZJOXdSv2u8xwXTFEawi+UcC+idUmmLv+AgzSeygvq/5Ck0Xgh
+	cpk0VkMOwAHn/1AZXzAmPrfewybsTU9OcfMi7rYJDgiiVc4co3uE0tCrahbMzuus
+	vfmKoe+LvaGmNLfPd3ajSOM7Z6a9nv2LO4D227qGg7quM=
+Received: from [IPV6:240e:b8f:927e:1000:355:1a70:fad9:bcdf] (unknown [])
+	by gzga-smtp-mtada-g1-0 (Coremail) with SMTP id _____wD3r7uOKgppcpmYBg--.12641S2;
+	Wed, 05 Nov 2025 00:32:15 +0800 (CST)
+Message-ID: <161d6789-4e7f-456a-91ed-9ef682187eae@163.com>
+Date: Wed, 5 Nov 2025 00:32:14 +0800
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 1/2] PCI: Configure root port MPS during host probing
+To: Niklas Cassel <cassel@kernel.org>, Bjorn Helgaas <helgaas@kernel.org>
+Cc: lpieralisi@kernel.org, kwilczynski@kernel.org, bhelgaas@google.com,
+ heiko@sntech.de, mani@kernel.org, yue.wang@amlogic.com, pali@kernel.org,
+ neil.armstrong@linaro.org, robh@kernel.org, jingoohan1@gmail.com,
+ khilman@baylibre.com, jbrunet@baylibre.com,
+ martin.blumenstingl@googlemail.com, linux-pci@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org
+References: <20250620155507.1022099-2-18255117159@163.com>
+ <20250902174828.GA1165373@bhelgaas> <aLlmV8Qiaph1PHFY@ryzen>
+ <aQoU-JhWz6IYTpGi@ryzen>
+Content-Language: en-US
+From: Hans Zhang <18255117159@163.com>
+In-Reply-To: <aQoU-JhWz6IYTpGi@ryzen>
+X-CM-TRANSID: _____wD3r7uOKgppcpmYBg--.12641S2
+X-Coremail-Antispam: 1Uf129KBjvJXoW3Xr4rGw18Ww48Gw13uw4DJwb_yoW7Gw48pa
+	yjqa1vyFn7GryfCrs2va1F9rWUtrZ3AFW5Jr98Jry093Z0vF1Iqr4qyw45Cas7Cr4DArWj
+	vrZ8XryxZ3Z5AFJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07U46wZUUUUU=
+X-Originating-IP: [240e:b8f:927e:1000:355:1a70:fad9:bcdf]
+X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/1tbiOgD7o2kKH03PFAAAsI
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251104_080717_187519_60BB59A2 
-X-CRM114-Status: GOOD (  29.64  )
+X-CRM114-CacheID: sfid-20251104_083327_084564_E0B7244E 
+X-CRM114-Status: GOOD (  27.89  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,315 +75,146 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3203492294051699776=="
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============3203492294051699776==
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-EgYc8K706Xiy5xAdYVZQ"
 
+On 2025/11/4 23:00, Niklas Cassel wrote:
+> Hello Hans,
+> 
+> Any chance that you have time to re-spin this series?
+> 
+> I've seen some new DWC based drivers like NXP that also want to
+> configure MPS.
+> 
+> Most likely we know the reason... The PCI core does not change it
+> without this series.
+> 
 
---=-EgYc8K706Xiy5xAdYVZQ
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Hi Niklas,
 
-Hi,
+I will modify a version based on Bjorn and your opinions and then send 
+it out.
 
-Le jeudi 23 octobre 2025 =C3=A0 10:04 +0200, Hans Verkuil a =C3=A9crit=C2=
-=A0:
-> On 22/10/2025 19:44, Detlev Casanova wrote:
-> > The vdpu381 decoder found on newer Rockchip SoC need the information
-> > from the long term and short term ref pic sets from the SPS.
-> >=20
-> > So far, it wasn't included in the v4l2 API, so add it with new dynamic
-> > sized controls.
-> >=20
-> > Each element of the hevc_ext_sps_lt_rps array contains the long term re=
-f
-> > pic set at that index.
-> > Each element of the hevc_ext_sps_st_rps contains the short term ref pic
-> > set at that index, as the raw data.
-> > It is the role of the drivers to calculate the reference sets values.
-> >=20
-> > Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
-> > ---
-> > =C2=A0drivers/media/v4l2-core/v4l2-ctrls-core.c | 18 +++++++
-> > =C2=A0drivers/media/v4l2-core/v4l2-ctrls-defs.c | 10 ++++
-> > =C2=A0include/uapi/linux/v4l2-controls.h=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0 | 61 +++++++++++++++++++++++
-> > =C2=A0include/uapi/linux/videodev2.h=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0 2 +
-> > =C2=A04 files changed, 91 insertions(+)
-> >=20
-> > diff --git a/drivers/media/v4l2-core/v4l2-ctrls-core.c b/drivers/media/=
-v4l2-core/v4l2-ctrls-core.c
-> > index 7c660cd61e48..b330bd7719e9 100644
-> > --- a/drivers/media/v4l2-core/v4l2-ctrls-core.c
-> > +++ b/drivers/media/v4l2-core/v4l2-ctrls-core.c
-> > @@ -418,6 +418,12 @@ void v4l2_ctrl_type_op_log(const struct v4l2_ctrl =
-*ctrl)
-> > =C2=A0	case V4L2_CTRL_TYPE_HEVC_SLICE_PARAMS:
-> > =C2=A0		pr_cont("HEVC_SLICE_PARAMS");
-> > =C2=A0		break;
-> > +	case V4L2_CTRL_TYPE_HEVC_EXT_SPS_ST_RPS:
-> > +		pr_cont("HEVC_EXT_SPS_ST_RPS");
-> > +		break;
-> > +	case V4L2_CTRL_TYPE_HEVC_EXT_SPS_LT_RPS:
-> > +		pr_cont("HEVC_EXT_SPS_LT_RPS");
-> > +		break;
-> > =C2=A0	case V4L2_CTRL_TYPE_HEVC_SCALING_MATRIX:
-> > =C2=A0		pr_cont("HEVC_SCALING_MATRIX");
-> > =C2=A0		break;
-> > @@ -1248,6 +1254,12 @@ static int std_validate_compound(const struct v4=
-l2_ctrl *ctrl, u32 idx,
-> > =C2=A0	case V4L2_CTRL_TYPE_HEVC_SLICE_PARAMS:
-> > =C2=A0		break;
-> > =C2=A0
-> > +	case V4L2_CTRL_TYPE_HEVC_EXT_SPS_ST_RPS:
-> > +		break;
-> > +
-> > +	case V4L2_CTRL_TYPE_HEVC_EXT_SPS_LT_RPS:
-> > +		break;
-> > +
->=20
-> There is nothing to validate here? Any value is fine? Just checking...
->=20
-> Is this something that should be added to the visl driver so it is tested=
- during regression
-> tests? Or does this not apply to visl?
->=20
-> I haven't looked in-depth into this, but I wondered about it.
+Best regards,
+Hans
 
-Seems appropriate to add to VISL.
+> 
+> Kind regards,
+> Niklas
+> 
+> On Thu, Sep 04, 2025 at 12:13:43PM +0200, Niklas Cassel wrote:
+>> On Tue, Sep 02, 2025 at 12:48:28PM -0500, Bjorn Helgaas wrote:
+>>> On Fri, Jun 20, 2025 at 11:55:06PM +0800, Hans Zhang wrote:
+>>>> Current PCIe initialization logic may leave root ports operating with
+>>>> non-optimal Maximum Payload Size (MPS) settings. While downstream device
+>>>> configuration is handled during bus enumeration, root port MPS values
+>>>> inherited from firmware or hardware defaults ...
+>>>
+>>> Apparently Root Port MPS configuration is different from that for
+>>> downstream devices?
+>>
+>> pci_host_probe() will call pci_scan_root_bus_bridge(), which will call
+>> pci_scan_single_device(), which will call pci_device_add(), which will
+>> call pci_configure_device(), which will call pci_configure_mps().
+>>
+>> This will be done for both bridges and endpoints.
+>>
+>> The bridge will be scanned/added first, before devices behind the bridge.
+>>
+>>
+>> While pci_configure_device()/pci_configure_mps() will be called for both
+>> bridges and endpoints, pci_configure_mps() will do an early return for
+>> devices where pci_upstream_bridge() returns NULL, i.e. for devices where
+>> that does not have an upstream bridge, i.e. for the root bridge itself:
+>> https://github.com/torvalds/linux/blob/v6.17-rc4/drivers/pci/probe.c#L2181-L2182
+>>
+>> So MPS will not be touched for root bridges.
+>>
+>> This patch ensures that MPS for root bridges gets initialized to MPSS
+>> (Max supported MPS).
+>>
+>> Later, when pci_configure_device()/pci_configure_mps() is called for a
+>> device behind the bridge, if the MPSS of the device behind the bridge is
+>> smaller than the MPS of the bridge, the code reduces the MPS of the bridge:
+>> https://github.com/torvalds/linux/blob/v6.17-rc4/drivers/pci/probe.c#L2205
+>>
+>>
+>> My only question with this patch is if there is a bridge behind a bridge,
+>> will the bridge behind the bridge still have pci_pcie_type() ==
+>> PCI_EXP_TYPE_ROOT_PORT ?
+>>
+>> If so, perhaps we should modify this patch from:
+>>
+>> +       if (pci_pcie_type(dev) == PCI_EXP_TYPE_ROOT_PORT &&
+>> +           pcie_bus_config != PCIE_BUS_TUNE_OFF) {
+>> +               pcie_write_mps(dev, 128 << dev->pcie_mpss);
+>> +       }
+>> +
+>>          if (!bridge || !pci_is_pcie(bridge))
+>>                  return;
+>>
+>>
+>> to:
+>>
+>> +       if (!bridge && pci_pcie_type(dev) == PCI_EXP_TYPE_ROOT_PORT &&
+>> +           pcie_bus_config != PCIE_BUS_TUNE_OFF) {
+>> +               pcie_write_mps(dev, 128 << dev->pcie_mpss);
+>> +       }
+>> +
+>>          if (!bridge || !pci_is_pcie(bridge))
+>>                  return;
+>>
+>>
+>>
+>>>> During host controller probing phase, when PCIe bus tuning is enabled,
+>>>> the implementation now configures root port MPS settings to their
+>>>> hardware-supported maximum values. Specifically, when configuring the MPS
+>>>> for a PCIe device, if the device is a root port and the bus tuning is not
+>>>> disabled (PCIE_BUS_TUNE_OFF), the MPS is set to 128 << dev->pcie_mpss to
+>>>> match the Root Port's maximum supported payload size. The Max Read Request
+>>>> Size (MRRS) is subsequently adjusted through existing companion logic to
+>>>> maintain compatibility with PCIe specifications.
+>>>>
+>>>> Note that this initial setting of the root port MPS to the maximum might
+>>>> be reduced later during the enumeration of downstream devices if any of
+>>>> those devices do not support the maximum MPS of the root port.
+>>>>
+>>>> Explicit initialization at host probing stage ensures consistent PCIe
+>>>> topology configuration before downstream devices perform their own MPS
+>>>> negotiations. This proactive approach addresses platform-specific
+>>>> requirements where controller drivers depend on properly initialized
+>>>> root port settings, while maintaining backward compatibility through
+>>>> PCIE_BUS_TUNE_OFF conditional checks. Hardware capabilities are fully
+>>>> utilized without altering existing device negotiation behaviors.
+>>>
+>>> This last paragraph seems kind of like marketing without any real
+>>> content.  Is there something important in there?
+>>>
+>>> Nits:
+>>> s/root port/Root Port/
+>>>
+>>> Reword "implementation now configures" to be clear about whether "now"
+>>> refers to before this patch or after.
+>>>
+>>> Update the MRRS "to maintain compatibility" part.  I'm dubious about
+>>> there being a spec compatibility issue with respect to MRRS.  Cite the
+>>> relevant section if there is an issue.
+>>
+>> I'm not sure why the commit message mentions MRRS at all.
+>>
+>> Sure, pcie_write_mrrs() might set MRRS to MPS, but that is existing logic
+>> and not really related to the change in this patch IMO.
+>>
+>>
+>> Kind regards,
+>> Niklas
 
-Nicolas
-
->=20
-> Regards,
->=20
-> 	Hans
->=20
-> > =C2=A0	case V4L2_CTRL_TYPE_HDR10_CLL_INFO:
-> > =C2=A0		break;
-> > =C2=A0
-> > @@ -2000,6 +2012,12 @@ static struct v4l2_ctrl *v4l2_ctrl_new(struct v4=
-l2_ctrl_handler *hdl,
-> > =C2=A0	case V4L2_CTRL_TYPE_HEVC_SLICE_PARAMS:
-> > =C2=A0		elem_size =3D sizeof(struct v4l2_ctrl_hevc_slice_params);
-> > =C2=A0		break;
-> > +	case V4L2_CTRL_TYPE_HEVC_EXT_SPS_ST_RPS:
-> > +		elem_size =3D sizeof(struct v4l2_ctrl_hevc_ext_sps_st_rps);
-> > +		break;
-> > +	case V4L2_CTRL_TYPE_HEVC_EXT_SPS_LT_RPS:
-> > +		elem_size =3D sizeof(struct v4l2_ctrl_hevc_ext_sps_lt_rps);
-> > +		break;
-> > =C2=A0	case V4L2_CTRL_TYPE_HEVC_SCALING_MATRIX:
-> > =C2=A0		elem_size =3D sizeof(struct v4l2_ctrl_hevc_scaling_matrix);
-> > =C2=A0		break;
-> > diff --git a/drivers/media/v4l2-core/v4l2-ctrls-defs.c b/drivers/media/=
-v4l2-core/v4l2-ctrls-defs.c
-> > index ad41f65374e2..167286c9e424 100644
-> > --- a/drivers/media/v4l2-core/v4l2-ctrls-defs.c
-> > +++ b/drivers/media/v4l2-core/v4l2-ctrls-defs.c
-> > @@ -1233,6 +1233,8 @@ const char *v4l2_ctrl_get_name(u32 id)
-> > =C2=A0	case V4L2_CID_STATELESS_HEVC_DECODE_MODE:		return "HEVC Decode M=
-ode";
-> > =C2=A0	case V4L2_CID_STATELESS_HEVC_START_CODE:		return "HEVC Start Cod=
-e";
-> > =C2=A0	case V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS:	return "HEVC E=
-ntry Point Offsets";
-> > +	case V4L2_CID_STATELESS_HEVC_EXT_SPS_ST_RPS:		return "HEVC Short Term=
- Ref Sets";
-> > +	case V4L2_CID_STATELESS_HEVC_EXT_SPS_LT_RPS:		return "HEVC Long Term =
-Ref Sets";
-> > =C2=A0	case V4L2_CID_STATELESS_AV1_SEQUENCE:			return "AV1 Sequence Par=
-ameters";
-> > =C2=A0	case V4L2_CID_STATELESS_AV1_TILE_GROUP_ENTRY:		return "AV1 Tile =
-Group Entry";
-> > =C2=A0	case V4L2_CID_STATELESS_AV1_FRAME:			return "AV1 Frame Parameter=
-s";
-> > @@ -1578,6 +1580,14 @@ void v4l2_ctrl_fill(u32 id, const char **name, e=
-num v4l2_ctrl_type *type,
-> > =C2=A0		*type =3D V4L2_CTRL_TYPE_U32;
-> > =C2=A0		*flags |=3D V4L2_CTRL_FLAG_DYNAMIC_ARRAY;
-> > =C2=A0		break;
-> > +	case V4L2_CID_STATELESS_HEVC_EXT_SPS_ST_RPS:
-> > +		*type =3D V4L2_CTRL_TYPE_HEVC_EXT_SPS_ST_RPS;
-> > +		*flags |=3D V4L2_CTRL_FLAG_DYNAMIC_ARRAY;
-> > +		break;
-> > +	case V4L2_CID_STATELESS_HEVC_EXT_SPS_LT_RPS:
-> > +		*type =3D V4L2_CTRL_TYPE_HEVC_EXT_SPS_LT_RPS;
-> > +		*flags |=3D V4L2_CTRL_FLAG_DYNAMIC_ARRAY;
-> > +		break;
-> > =C2=A0	case V4L2_CID_STATELESS_VP9_COMPRESSED_HDR:
-> > =C2=A0		*type =3D V4L2_CTRL_TYPE_VP9_COMPRESSED_HDR;
-> > =C2=A0		break;
-> > diff --git a/include/uapi/linux/v4l2-controls.h b/include/uapi/linux/v4=
-l2-controls.h
-> > index 2d30107e047e..dd9e29afa155 100644
-> > --- a/include/uapi/linux/v4l2-controls.h
-> > +++ b/include/uapi/linux/v4l2-controls.h
-> > @@ -2093,6 +2093,8 @@ struct v4l2_ctrl_mpeg2_quantisation {
-> > =C2=A0#define V4L2_CID_STATELESS_HEVC_DECODE_MODE	(V4L2_CID_CODEC_STATE=
-LESS_BASE + 405)
-> > =C2=A0#define V4L2_CID_STATELESS_HEVC_START_CODE	(V4L2_CID_CODEC_STATEL=
-ESS_BASE + 406)
-> > =C2=A0#define V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS (V4L2_CID_COD=
-EC_STATELESS_BASE + 407)
-> > +#define V4L2_CID_STATELESS_HEVC_EXT_SPS_ST_RPS=C2=A0 (V4L2_CID_CODEC_S=
-TATELESS_BASE + 408)
-> > +#define V4L2_CID_STATELESS_HEVC_EXT_SPS_LT_RPS=C2=A0 (V4L2_CID_CODEC_S=
-TATELESS_BASE + 409)
-> > =C2=A0
-> > =C2=A0enum v4l2_stateless_hevc_decode_mode {
-> > =C2=A0	V4L2_STATELESS_HEVC_DECODE_MODE_SLICE_BASED,
-> > @@ -2548,6 +2550,65 @@ struct v4l2_ctrl_hevc_scaling_matrix {
-> > =C2=A0	__u8	scaling_list_dc_coef_32x32[2];
-> > =C2=A0};
-> > =C2=A0
-> > +#define V4L2_HEVC_EXT_SPS_ST_RPS_FLAG_INTER_REF_PIC_SET_PRED	0x1
-> > +
-> > +/*
-> > + * struct v4l2_ctrl_hevc_ext_sps_st_rps - HEVC short term RPS paramete=
-rs
-> > + *
-> > + * Dynamic size 1-dimension array for short term RPS. The number of el=
-ements
-> > + * is v4l2_ctrl_hevc_sps::num_short_term_ref_pic_sets. It can contain =
-up to 65 elements.
-> > + *
-> > + * @delta_idx_minus1: Specifies the delta compare to the index. See de=
-tails in section 7.4.8
-> > + *=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "Short-term reference pict=
-ure set semantics" of the specification.
-> > + * @delta_rps_sign: Sign of the delta as specified in section 7.4.8 "S=
-hort-term reference picture
-> > + *=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 set semantics" of the specification.
-> > + * @abs_delta_rps_minus1: Absolute delta RPS as specified in section 7=
-.4.8 "Short-term reference
-> > + *=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 pi=
-cture set semantics" of the specification.
-> > + * @num_negative_pics: Number of short-term RPS entries that have pict=
-ure order count values less
-> > + *=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 than the picture ord=
-er count value of the current picture.
-> > + * @num_positive_pics: Number of short-term RPS entries that have pict=
-ure order count values
-> > + *=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 greater than the pic=
-ture order count value of the current picture.
-> > + * @used_by_curr_pic: Bit j specifies if short-term RPS j is used by t=
-he current picture.
-> > + * @use_delta_flag: Bit j equals to 1 specifies that the j-th entry in=
- the source candidate
-> > + *=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 short-term RPS is included in this can=
-didate short-term RPS.
-> > + * @delta_poc_s0_minus1: Specifies the negative picture order count de=
-lta for the i-th entry in
-> > + *=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 the shor=
-t-term RPS. See details in section 7.4.8 "Short-term reference
-> > + *=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 picture =
-set semantics" of the specification.
-> > + * @delta_poc_s1_minus1: Specifies the positive picture order count de=
-lta for the i-th entry in
-> > + *=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 the shor=
-t-term RPS. See details in section 7.4.8 "Short-term reference
-> > + *=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 picture =
-set semantics" of the specification.
-> > + * @flags: See V4L2_HEVC_EXT_SPS_ST_RPS_FLAG_{}
-> > + */
-> > +struct v4l2_ctrl_hevc_ext_sps_st_rps {
-> > +	__u8	delta_idx_minus1;
-> > +	__u8	delta_rps_sign;
-> > +	__u16	abs_delta_rps_minus1;
-> > +	__u8	num_negative_pics;
-> > +	__u8	num_positive_pics;
-> > +	__u32	used_by_curr_pic;
-> > +	__u32	use_delta_flag;
-> > +	__u16	delta_poc_s0_minus1[16];
-> > +	__u16	delta_poc_s1_minus1[16];
-> > +	__u8	flags;
-> > +};
-> > +
-> > +#define V4L2_HEVC_EXT_SPS_LT_RPS_FLAG_USED_LT		0x1
-> > +
-> > +/*
-> > + * struct v4l2_ctrl_hevc_ext_sps_lt_rps - HEVC long term RPS parameter=
-s
-> > + *
-> > + * Dynamic size 1-dimension array for long term RPS. The number of ele=
-ments
-> > + * is v4l2_ctrl_hevc_sps::num_long_term_ref_pics_sps. It can contain u=
-p to 65 elements.
-> > + *
-> > + * @lt_ref_pic_poc_lsb_sps: picture order count modulo MaxPicOrderCntL=
-sb of the i-th candidate
-> > + *=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0 long-term reference picture.
-> > + * @flags: See V4L2_HEVC_EXT_SPS_LT_RPS_FLAG_{}
-> > + */
-> > +struct v4l2_ctrl_hevc_ext_sps_lt_rps {
-> > +	__u16	lt_ref_pic_poc_lsb_sps;
-> > +	__u8	flags;
-> > +};
-> > +
-> > =C2=A0/* Stateless VP9 controls */
-> > =C2=A0
-> > =C2=A0#define V4L2_VP9_LOOP_FILTER_FLAG_DELTA_ENABLED	0x1
-> > diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videod=
-ev2.h
-> > index becd08fdbddb..ae1d33fd37b7 100644
-> > --- a/include/uapi/linux/videodev2.h
-> > +++ b/include/uapi/linux/videodev2.h
-> > @@ -1981,6 +1981,8 @@ enum v4l2_ctrl_type {
-> > =C2=A0	V4L2_CTRL_TYPE_HEVC_SLICE_PARAMS	=3D 0x0272,
-> > =C2=A0	V4L2_CTRL_TYPE_HEVC_SCALING_MATRIX	=3D 0x0273,
-> > =C2=A0	V4L2_CTRL_TYPE_HEVC_DECODE_PARAMS	=3D 0x0274,
-> > +	V4L2_CTRL_TYPE_HEVC_EXT_SPS_ST_RPS	=3D 0x0275,
-> > +	V4L2_CTRL_TYPE_HEVC_EXT_SPS_LT_RPS	=3D 0x0276,
-> > =C2=A0
-> > =C2=A0	V4L2_CTRL_TYPE_AV1_SEQUENCE	=C2=A0=C2=A0=C2=A0 =3D 0x280,
-> > =C2=A0	V4L2_CTRL_TYPE_AV1_TILE_GROUP_ENTRY =3D 0x281,
->=20
-
---=-EgYc8K706Xiy5xAdYVZQ
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaQokrAAKCRDZQZRRKWBy
-9CRrAP0T63QfmgbLlSMXTPW4GUXXWbfgHP1Hwo6UUnxwbExjVgD7Bd45RyDtdQKA
-BrpngGZRRjg65wceMOHG9pObvy+VUQQ=
-=T/U4
------END PGP SIGNATURE-----
-
---=-EgYc8K706Xiy5xAdYVZQ--
-
-
---===============3203492294051699776==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============3203492294051699776==--
-
