@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CAFCCCFA07
-	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Nov 2025 08:56:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00609CCF9F8
+	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Nov 2025 09:08:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:From:Subject:
+	Cc:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gAxFFPeHieGO1f0ey0rNWcC8GIB31tykzeeqWOQVhuM=; b=WcgQj74Nd2pQf9
-	5TD0SDAgtWeX+MnCJL6w4IDrbcEmb3U7XWCQKwtcTL0YEYqCigKyc4u/W8zvIOdODdKoMRktouIw7
-	Hq3/nhXKnV25FZ2NlqH138x6+5X0RqZlV/KgiEft8NGmBdWiRWVUb6BsXw3Rd0qBaKIkNL/XQdxfd
-	wrwsnulK8L7ecgsmCSZWsgh/MjixRAEXRFQNbqn03cauL0/Mpkdx7BHF+XHiGfY6bIgzAlv2a0Ad1
-	8izBtT/oUflaEGDOHHCGM4HyP45SkxqejNVXpEBQrjgz+kv9rEZMv9OBgob3ejyddN7PLnoUFgzZH
-	O1Bq2zLNuPKOvkRVUZyg==;
+	List-Owner; bh=JvtpjxDscuCXHkpGWO0T2RzP+9MBzMb0v+yc5S+zZso=; b=uiZBPkOQ7zKw2y
+	VhpYJhuEp8pE9Fm4N/uLTh2CFBKD0r9l3BvQ8cnEDr0+uVd0pGxarjJjBM7Y757U8jaRJNsLvhux/
+	PQja12r2EBdoSBgjskR2Ce6KVIPCYdG11U23TQ8aFYF7rgGkmAkYdpGPuHPhbia8PxASmsMMKGSnb
+	3jrGwZmaobpeRa6VawhEIY6suoSa2DVIVkTJfndEyhLvyUKORAOPlnfhCf32s0ihiNWs93H2uMCNO
+	BfmEmR+qAxv5a10STKk7fdCjSMKugXfIWqOP9B2wKoG+45EB6O7A2sgvL7myn+K5sj+AFpTs9sjU3
+	BpAAY+m3N9p39hEdwMVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGZJu-0000000DKgy-0szQ;
-	Wed, 05 Nov 2025 08:56:46 +0000
-Received: from mail-m19731109.qiye.163.com ([220.197.31.109])
+	id 1vGZUy-0000000DLwq-3OJx;
+	Wed, 05 Nov 2025 09:08:12 +0000
+Received: from out-177.mta1.migadu.com ([95.215.58.177])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGZJr-0000000DKf3-10Fb;
-	Wed, 05 Nov 2025 08:56:45 +0000
-Received: from [172.16.12.129] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 2879b25b7;
-	Wed, 5 Nov 2025 16:56:37 +0800 (GMT+08:00)
-Message-ID: <67b605b0-7046-448a-bc9b-d3ac56333809@rock-chips.com>
-Date: Wed, 5 Nov 2025 16:56:36 +0800
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Cc: shawn.lin@rock-chips.com, Lorenzo Pieralisi <lpieralisi@kernel.org>,
- =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
- Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>,
- Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>,
- linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Johan Jonker <jbx6244@gmail.com>,
- linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH] arm64: dts: rockchip: align bindings to PCIe spec
-To: Geraldo Nascimento <geraldogabriel@gmail.com>
-References: <4b5ffcccfef2a61838aa563521672a171acb27b2.1762321976.git.geraldogabriel@gmail.com>
- <ba120577-42da-424d-8102-9d085c1494c8@rock-chips.com>
- <aQsIXcQzeYop6a0B@geday>
-From: Shawn Lin <shawn.lin@rock-chips.com>
-In-Reply-To: <aQsIXcQzeYop6a0B@geday>
-X-HM-Tid: 0a9a533b783109cckunmc8d35d74ceaecc
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQx9ITVYeTElJGBkZTklCTB5WFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=TtlfyECiKclZk4FcAtw4aOhBtS/6otJUxxK+rAlXHPyEBcTD1Hd+1B6FhZ5RcW1dRr8TZ7OS/MXNgEhhSBtlHTYmY7dJpqJ/fBNYu1jEWRl5T8x236EefqlPHoh1GsqivMeI8Y4gCRslOhyb2IGJqfYP5GIf3hccAsYL8uh4Yjg=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=CS//WAipPfjSfjlGPO7nyoViLe54hOkmqQ/3rPaesvk=;
-	h=date:mime-version:subject:message-id:from;
+	id 1vGZUw-0000000DLsC-12GW
+	for linux-rockchip@lists.infradead.org;
+	Wed, 05 Nov 2025 09:08:12 +0000
+Mime-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow-tech.com;
+	s=key1; t=1762333619;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=20X0FggjNIZtK2wTcA0T98MzwYS7d/pU6xJcudRoIkA=;
+	b=aQkDEf0o1hZDlA0jt/SAK7d1jIzuk83Wctvw7Khhjx221G75fVkjY6y1QChQga2p0H/gx7
+	jb80JscYaEXymno4WJMr7sszvCliTv/kGLD5aPpkUxXzuRqF+LkkqfxPFih1rr28zE2J5F
+	Nj4j+BNbr3lDj3fzWXfFiSEnTYem1pnhUR9c9vbgezDW3NOmMRyx8jOQBlK+rwIJRQ5dn4
+	cPCszNjP4TFptEs6ceoB1Ye5Vpg52GLT54a2vP6c7ydi7ZQ3/JmqQEDGRhGO6hyULD+3U+
+	nFWJc2Q+h1lvn//Uu3Vn7Ypoy5RnrjIoRappU70Tf1Txx5KyWKhpEUk1DdPkTw==
+Date: Wed, 05 Nov 2025 10:06:53 +0100
+Message-Id: <DE0N4LA8MOJD.236O12UZ3I3C4@cknow-tech.com>
+Cc: <linux-rockchip@lists.infradead.org>, "Shawn Lin"
+ <shawn.lin@rock-chips.com>, "Lorenzo Pieralisi" <lpieralisi@kernel.org>,
+ =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, "Manivannan
+ Sadhasivam" <mani@kernel.org>, "Rob Herring" <robh@kernel.org>, "Bjorn
+ Helgaas" <bhelgaas@google.com>, "Heiko Stuebner" <heiko@sntech.de>,
+ <linux-pci@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>, "Krzysztof
+ Kozlowski" <krzk+dt@kernel.org>, "Conor Dooley" <conor+dt@kernel.org>,
+ "Johan Jonker" <jbx6244@gmail.com>
+Subject: Re: [RFC PATCH 2/2] PCI: rockchip-host: drop wait on PERST# toggle
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Diederik de Haas" <diederik@cknow-tech.com>
+To: "Geraldo Nascimento" <geraldogabriel@gmail.com>, "Bjorn Helgaas"
+ <helgaas@kernel.org>
+References: <d3d0c3a387ff461e62bbd66a0bde654a9a17761e.1762150971.git.geraldogabriel@gmail.com> <20251103181038.GA1814635@bhelgaas> <aQrKtFT0ldc70gKj@geday>
+In-Reply-To: <aQrKtFT0ldc70gKj@geday>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251105_005643_768528_36AA98E7 
-X-CRM114-Status: GOOD (  26.59  )
+X-CRM114-CacheID: sfid-20251105_010810_870759_2F6A0602 
+X-CRM114-Status: GOOD (  18.80  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,91 +73,76 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-5ZyoIDIwMjUvMTEvMDUg5pif5pyf5LiJIDE2OjE4LCBHZXJhbGRvIE5hc2NpbWVudG8g5YaZ6YGT
-Ogo+IE9uIFdlZCwgTm92IDA1LCAyMDI1IGF0IDAyOjM1OjI4UE0gKzA4MDAsIFNoYXduIExpbiB3
-cm90ZToKPj4gSGkgR2VyYWxkbywKPj4KPj4g5ZyoIDIwMjUvMTEvMDUg5pif5pyf5LiJIDEzOjU1
-LCBHZXJhbGRvIE5hc2NpbWVudG8g5YaZ6YGTOgo+Pj4gVGhlIFBFUlNUIyBzaWRlLWJhbmQgc2ln
-bmFsIGlzIGRlZmluZWQgYnkgUENJZSBzcGVjIGFzIGFuIG9wZW4tZHJhaW4KPj4KPj4gSSBjb3Vs
-ZG4ndCBmaW5kIGFueSBjbHVlIHRoYXQgc2F5cyBQRVJTVCMgaXMgYW4gb3Blbi1kcmFpbiBzaWdu
-YWwuIENvdWxkCj4+IHlvdSBxdW90ZSBpdCBmcm9tIFBDSSBFeHByZXNzIENhcmQgRWxlY3Ryb21l
-Y2hhbmljYWwgU3BlY2lmaWNhdGlvbj8KPj4KPj4+IGFjdGl2ZS1sb3cgc2lnbmFsIHRoYXQgZGVw
-ZW5kcyBvbiBhIHB1bGwtdXAgcmVzaXN0b3IgdG8ga2VlcCB0aGUKPj4+IHNpZ25hbCBoaWdoIHdo
-ZW4gZGVhc3NlcnRlZC4gQWxpZ24gYmluZGluZ3MgdG8gdGhlIHNwZWMuCj4+Cj4+IFRoaXMgaXMg
-bm90IHRydWUgZnJvbSBteSBQT1YuIEFuIG9wZW4tZHJhaW4gUENJZSBzaWRlLWJhbmQgIHNpZ25h
-bAo+PiBpcyB1c2VkIGZvciBib3RoIG9mIEVQIGFuZCBSQyB0byBhY2hpZXZlIHNvbWUgc3BlY2lh
-bCB3b3JrLWZsb3csIGxpa2UKPj4gQ0xLUkVRIyBmb3IgTDFzcywgZXRjLiBTaW5jZSBib3RoIGVu
-ZHMgY291bGQgY29udHJvbCBpdC4gQnV0IFBFUlNUIyBpcyBhCj4+IGZ1bmRhbWVudGFsIHJlc2V0
-IHNpZ25hbCBkcml2ZW4gYnkgUkMgd2hpY2ggc2hvdWxkIGJlIGluIHN1cmUgc3RhdGUsCj4+IGhp
-Z2ggb3IgbG93LCBoYXMgbm90aGluZyB0byBkbyB3aXRoIG9wZW4tZHJhaW4uCj4+Cj4+Pgo+Pj4g
-Tm90ZSB0aGF0IHRoZSByZWxldmFudCBkcml2ZXIgaGFja3MgdGhlIGFjdGl2ZS1sb3cgc2lnbmFs
-IGFzCj4+PiBhY3RpdmUtaGlnaCBhbmQgc3dpdGNoZXMgdGhlIG5vcm1hbCBwb2xhcml0eSBvZiBQ
-RVJTVCMKPj4+IGFzc2VydGlvbi9kZWFzc2VydGlvbiwgMSBhbmQgMCBpbiB0aGF0IG9yZGVyLCBh
-bmQgaW5zdGVhZCB1c2VzCj4+PiAwIHRvIHNpZ25hbCBsb3cgKGFzc2VydGlvbikgYW5kIDEgdG8g
-c2lnbmFsIGRlYXNzZXJ0aW9uLgo+Pj4KPj4+IEluY2lkZW50YWxseSwgdGhpcyBjaGFuZ2UgbWFr
-ZXMgaGFyZHdhcmUgdGhhdCByZWZ1c2VkIHRvIHdvcmsKPj4+IHdpdGggdGhlIFJvY2tjaGlwLUlQ
-IFBDSWUgY29yZSB3b3JraW5nIGZvciBtZSwgd2hpY2ggd2FzIHRoZQo+Pj4gb2JqZWN0IG9mIG1h
-bnkgZm9vbCdzIGVycmFuZHMuCj4+Pgo+Pj4gU2lnbmVkLW9mZi1ieTogR2VyYWxkbyBOYXNjaW1l
-bnRvIDxnZXJhbGRvZ2FicmllbEBnbWFpbC5jb20+Cj4+PiAtLS0KPj4+ICAgIGFyY2gvYXJtNjQv
-Ym9vdC9kdHMvcm9ja2NoaXAvcmszMzk5cHJvLXZtYXJjLXNvbS5kdHNpIHwgOCArKysrKystLQo+
-Pj4gICAgMSBmaWxlIGNoYW5nZWQsIDYgaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkKPj4+
-Cj4+PiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTlwcm8t
-dm1hcmMtc29tLmR0c2kgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OXByby12
-bWFyYy1zb20uZHRzaQo+Pj4gaW5kZXggYWE3MDc3NmU4OThhLi44ZGNiMDM3MDgxNDUgMTAwNjQ0
-Cj4+PiAtLS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OXByby12bWFyYy1z
-b20uZHRzaQo+Pj4gKysrIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTlwcm8t
-dm1hcmMtc29tLmR0c2kKPj4+IEBAIC0zODMsOSArMzgzLDkgQEAgJnBjaWVfcGh5IHsKPj4+ICAg
-IH07Cj4+PiAgICAKPj4+ICAgICZwY2llMCB7Cj4+PiAtCWVwLWdwaW9zID0gPCZncGlvMCBSS19Q
-QjQgR1BJT19BQ1RJVkVfSElHSD47Cj4+PiArCWVwLWdwaW9zID0gPCZncGlvMCBSS19QQjQgKEdQ
-SU9fQUNUSVZFX0hJR0ggfCBHUElPX09QRU5fRFJBSU4pPjsKPj4KPj4gU28gbXkgYmlnZ2VzdCBn
-dWVzcyBpcyB3ZSBkb24ndCBuZWVkIHRoaXMgY2hhbmdlIGF0IGFsbC4KPj4gZ3BpbzBiNCBpcyB1
-c2VkIGFzIGdwaW8gZnVuY3Rpb24sIHRoZSBwcm9ibGVtIHlvdSBmYWNlZCBpcyB0aGF0IGl0Cj4+
-IGRpZG4ndCBzZXQgZ3BpbzBiNCBhcyBwdWxsLXVwLCBiZWNhdXNlIHRoZSBkZWZhdXQgc3RhdGUg
-aXMgcHVsbC1kb3duLgo+Pgo+PiBNYXliZSB0aGUgZHJpdmUgY3VycmVudCBvZiB0aGlzIElPIGlz
-IHRvbyB3ZWFrLCBtYWtpbmcgaXQgdW5hYmxlIHRvCj4+IGZ1bGx5IGRyaXZlIGhpZ2ggaW4gdGhl
-IHB1bGwtZG93biBzdGF0ZT8gSWYgdGhhdCdzIHRoZSBjYXNlLCBjYW4geW91IHNlZQo+PiBhIGhh
-bGYtbGV2ZWwgc2lnbmFsIG9uIHRoZSBvc2NpbGxvc2NvcGU/Cj4+Cj4+PiAgICAJbnVtLWxhbmVz
-ID0gPDQ+Owo+Pj4gLQlwaW5jdHJsLTAgPSA8JnBjaWVfY2xrcmVxbmJfY3BtPjsKPj4+ICsJcGlu
-Y3RybC0wID0gPCZwY2llX2Nsa3JlcW5iX2NwbT4sIDwmcGNpZV9wZXJzdD47Cj4+PiAgICAJcGlu
-Y3RybC1uYW1lcyA9ICJkZWZhdWx0IjsKPj4+ICAgIAl2cGNpZTB2OS1zdXBwbHkgPSA8JnZjY2Ff
-MHY5PjsJLyogVkNDXzBWOV9TMCAqLwo+Pj4gICAgCXZwY2llMXY4LXN1cHBseSA9IDwmdmNjYV8x
-djg+OwkvKiBWQ0NfMVY4X1MwICovCj4+PiBAQCAtNDA4LDYgKzQwOCwxMCBAQCBwY2llIHsKPj4+
-ICAgIAkJcGNpZV9wd3I6IHBjaWUtcHdyIHsKPj4+ICAgIAkJCXJvY2tjaGlwLHBpbnMgPSA8NCBS
-S19QRDQgUktfRlVOQ19HUElPICZwY2ZnX3B1bGxfdXA+Owo+Pj4gICAgCQl9Owo+Pj4gKwkJcGNp
-ZV9wZXJzdDogcGNpZS1wZXJzdCB7Cj4+PiArCQkJcm9ja2NoaXAscGlucyA9IDwwIFJLX1BCNCBS
-S19GVU5DX0dQSU8gJnBjZmdfcHVsbF91cD47Cj4+PiArCQl9Owo+Pj4gKwo+Pj4gICAgCX07Cj4+
-PiAgICAKPj4+ICAgIAlwbWljIHsKPj4KPiAKPiBIaSBTaGF3biwgZ2xhZCB0byBoZWFyIGZyb20g
-eW91Lgo+IAo+IFBlcmhhcHMgdGhlIGZvbGxvd2luZyBjaGFuZ2UgaXMgYmV0dGVyPyBJdCByZXNv
-bHZlcyB0aGUgaXNzdWUKPiB3aXRob3V0IHRoZSBhZGRlZCBjb21wbGljYXRpb24gb2Ygb3BlbiBk
-cmFpbi4gQWZ0ZXIgeW91IHF1ZXN0aW9uZWQKPiBpZiBvcGVuIGRyYWluIGlzIGFjdHVhbGx5IHBh
-cnQgb2YgdGhlIHNwZWMsIEkgcmVtZW1iZXJlZCB0aGF0Cj4gR1BJT19PUEVOX0RSQUlOIGlzIGFj
-dHVhbGx5IChHUElPX1NJTkdMRV9FTkRFRCB8IEdQSU9fTElORV9PUEVOX0RSQUlOKQo+IHNvIEkg
-ZGVjaWRlZCB0byB0ZXN0IHdpdGgganVzdCBHUElPX1NJTkdMRV9FTkRFRCBhbmQgaXQgd29ya3Mu
-CgoKRG9lcyB0aGF0IHdvcmsgZm9yIHlvdSB0b28/CgomcGNpZTAgewoJZXAtZ3Bpb3MgPSA8Jmdw
-aW8wIFJLX1BCNCBHUElPX0FDVElWRV9ISUdIPjsKICAJbnVtLWxhbmVzID0gPDQ+OwotCXBpbmN0
-cmwtMCA9IDwmcGNpZV9jbGtyZXFuYl9jcG0+OworCXBpbmN0cmwtMCA9IDwmcGNpZV9jbGtyZXFu
-Yl9jcG0+LCA8JnBjaWVfcGVyc3Q+OwogIAlwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOwogIAl2
-cGNpZTB2OS1zdXBwbHkgPSA8JnZjY2FfMHY5PjsJLyogVkNDXzBWOV9TMCAqLwogIAl2cGNpZTF2
-OC1zdXBwbHkgPSA8JnZjY2FfMXY4PjsJLyogVkNDXzFWOF9TMCAqLwpAQCAtNDA4LDYgKzQwOCwx
-MCBAQCBwY2llIHsKICAJCXBjaWVfcHdyOiBwY2llLXB3ciB7CiAgCQkJcm9ja2NoaXAscGlucyA9
-IDw0IFJLX1BENCBSS19GVU5DX0dQSU8gJnBjZmdfcHVsbF91cD47CiAgCQl9OworCQlwY2llX3Bl
-cnN0OiBwY2llLXBlcnN0IHsKKwkJCXJvY2tjaGlwLHBpbnMgPSA8MCBSS19QQjQgUktfRlVOQ19H
-UElPICZwY2ZnX3B1bGxfdXA+OworCQl9OworCiAgCX07Cgo+IAo+IFRoYW5rcywKPiBHZXJhbGRv
-IE5hc2NpbWVudG8KPiAKPiAtLS0KPiAKPiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm02NC9ib290L2R0
-cy9yb2NrY2hpcC9yazMzOTlwcm8tdm1hcmMtc29tLmR0c2kgYi9hcmNoL2FybTY0L2Jvb3QvZHRz
-L3JvY2tjaGlwL3JrMzM5OXByby12bWFyYy1zb20uZHRzaQo+IGluZGV4IGFhNzA3NzZlODk4YS4u
-YjNkMTlkY2U1MzlmIDEwMDY0NAo+IC0tLSBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAv
-cmszMzk5cHJvLXZtYXJjLXNvbS5kdHNpCj4gKysrIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2Nr
-Y2hpcC9yazMzOTlwcm8tdm1hcmMtc29tLmR0c2kKPiBAQCAtMzgzLDcgKzM4Myw3IEBAICZwY2ll
-X3BoeSB7Cj4gICB9Owo+ICAgCj4gICAmcGNpZTAgewo+IC0JZXAtZ3Bpb3MgPSA8JmdwaW8wIFJL
-X1BCNCBHUElPX0FDVElWRV9ISUdIPjsKPiArCWVwLWdwaW9zID0gPCZncGlvMCBSS19QQjQgKEdQ
-SU9fQUNUSVZFX0hJR0ggfCBHUElPX1NJTkdMRV9FTkRFRCk+Owo+ICAgCW51bS1sYW5lcyA9IDw0
-PjsKPiAgIAlwaW5jdHJsLTAgPSA8JnBjaWVfY2xrcmVxbmJfY3BtPjsKPiAgIAlwaW5jdHJsLW5h
-bWVzID0gImRlZmF1bHQiOwo+IAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBs
-aXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
-dGluZm8vbGludXgtcm9ja2NoaXAK
+On Wed Nov 5, 2025 at 4:55 AM CET, Geraldo Nascimento wrote:
+> On Mon, Nov 03, 2025 at 12:10:38PM -0600, Bjorn Helgaas wrote:
+>> On Mon, Nov 03, 2025 at 03:27:25AM -0300, Geraldo Nascimento wrote:
+>> > With this change PCIe will complete link-training with a known quirky
+>> > device - Samsung OEM PM981a SSD. This is completely against the PCIe
+>
+> Something in my intuition kept telling me this was PERST# related,
+> and so I followed that rabbit-hole.
+>
+> It seems the following change will allow the SSD to work with the
+> Rockchip-IP PCIe core without any other changes. So it is purely
+> a DT change and we are able to keep the mandatory 100ms delay
+> after driving PERST# low, as well as the always-on/boot-on
+> properties of the 3v3 power regulator.
+>
+> This time everything is within the PCIe spec AFAICT, PERST# indeed
+> is an Open Drain signal, and indeed it does requires pull-up resistor
+> to maintain the drive after driving it high.
+>
+> I'm still testing the overall stability of this, let's hope for the
+> best!
+
+I have a Samsung PM981 (without the 'a') and AFAICT it works fine.
+I had noticed that the PERST# (pinctrl) was missing, but 'ep-gpios'
+was/is new to me and I hadn't had time to research that properly yet.
+Good to see you already found it yourself :-)
+
+Cheers,
+  Diederik
+
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi b/arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi
+> index aa70776e898a..1c5afc0413bc 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi
+> @@ -383,13 +383,14 @@ &pcie_phy {
+>  };
+>  
+>  &pcie0 {
+> -	ep-gpios = <&gpio0 RK_PB4 GPIO_ACTIVE_HIGH>;
+> +	ep-gpios = <&gpio0 RK_PB4 (GPIO_ACTIVE_HIGH | GPIO_OPEN_DRAIN)>;
+>  	num-lanes = <4>;
+> -	pinctrl-0 = <&pcie_clkreqnb_cpm>;
+> +	pinctrl-0 = <&pcie_clkreqnb_cpm>, <&pcie_perst>;
+>  	pinctrl-names = "default";
+>  	vpcie0v9-supply = <&vcca_0v9>;	/* VCC_0V9_S0 */
+>  	vpcie1v8-supply = <&vcca_1v8>;	/* VCC_1V8_S0 */
+>  	vpcie3v3-supply = <&vcc3v3_pcie>;
+> +	max-link-speed = <2>;
+>  	status = "okay";
+>  };
+>  
+> @@ -408,6 +409,10 @@ pcie {
+>  		pcie_pwr: pcie-pwr {
+>  			rockchip,pins = <4 RK_PD4 RK_FUNC_GPIO &pcfg_pull_up>;
+>  		};
+> +		pcie_perst: pcie-perst {
+> +			rockchip,pins = <0 RK_PB4 RK_FUNC_GPIO &pcfg_pull_up>;
+> +		};
+> +
+>  	};
+>  
+>  	pmic {
+>
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
