@@ -4,64 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00609CCF9F8
-	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Nov 2025 09:08:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0B41CCF9F8
+	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Nov 2025 10:10:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:From:Subject:
-	Cc:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JvtpjxDscuCXHkpGWO0T2RzP+9MBzMb0v+yc5S+zZso=; b=uiZBPkOQ7zKw2y
-	VhpYJhuEp8pE9Fm4N/uLTh2CFBKD0r9l3BvQ8cnEDr0+uVd0pGxarjJjBM7Y757U8jaRJNsLvhux/
-	PQja12r2EBdoSBgjskR2Ce6KVIPCYdG11U23TQ8aFYF7rgGkmAkYdpGPuHPhbia8PxASmsMMKGSnb
-	3jrGwZmaobpeRa6VawhEIY6suoSa2DVIVkTJfndEyhLvyUKORAOPlnfhCf32s0ihiNWs93H2uMCNO
-	BfmEmR+qAxv5a10STKk7fdCjSMKugXfIWqOP9B2wKoG+45EB6O7A2sgvL7myn+K5sj+AFpTs9sjU3
-	BpAAY+m3N9p39hEdwMVw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ZfnBMwi2ZSscT8IfND+wcuq1Ftnd6Lx3Sss9VI4Nexg=; b=tGwB1Q0c6v/6ru
+	V0nL8+CTmSPGdVKMeA3rOhqBm5EC/ozzfaEydRahsKiQ8PSHO72/wHugEaXAiqfjOKeelJVoxjn75
+	fWyGeoUbvmxUrSEiF/qEBsq1LYUZMzvs9fsWwxUQ9tQxD7Ircx3TRRskke78yaMNxRlsLGNDMMNdw
+	jiXz4zAIr6yoa79Fj7b+ll1KL3oASvq1IQcv4nF/yNaBh7qamUGhgACPwkIeui8vGlf/BfgDf/hhu
+	5oQiy4J0T+hlsvTdKxsRSVCAwGOD8XrvpS1X17JgfQE7mNbYuNGQEIarTNTwC/F6XeLlgtxEf3ncP
+	dE1Bw3R80o7RdGqqrZjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGZUy-0000000DLwq-3OJx;
-	Wed, 05 Nov 2025 09:08:12 +0000
-Received: from out-177.mta1.migadu.com ([95.215.58.177])
+	id 1vGaSt-0000000DRx5-2Lba;
+	Wed, 05 Nov 2025 10:10:07 +0000
+Received: from mx01.omp.ru ([90.154.21.10])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGZUw-0000000DLsC-12GW
+	id 1vGaSq-0000000DRuG-48yE
 	for linux-rockchip@lists.infradead.org;
-	Wed, 05 Nov 2025 09:08:12 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow-tech.com;
-	s=key1; t=1762333619;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=20X0FggjNIZtK2wTcA0T98MzwYS7d/pU6xJcudRoIkA=;
-	b=aQkDEf0o1hZDlA0jt/SAK7d1jIzuk83Wctvw7Khhjx221G75fVkjY6y1QChQga2p0H/gx7
-	jb80JscYaEXymno4WJMr7sszvCliTv/kGLD5aPpkUxXzuRqF+LkkqfxPFih1rr28zE2J5F
-	Nj4j+BNbr3lDj3fzWXfFiSEnTYem1pnhUR9c9vbgezDW3NOmMRyx8jOQBlK+rwIJRQ5dn4
-	cPCszNjP4TFptEs6ceoB1Ye5Vpg52GLT54a2vP6c7ydi7ZQ3/JmqQEDGRhGO6hyULD+3U+
-	nFWJc2Q+h1lvn//Uu3Vn7Ypoy5RnrjIoRappU70Tf1Txx5KyWKhpEUk1DdPkTw==
-Date: Wed, 05 Nov 2025 10:06:53 +0100
-Message-Id: <DE0N4LA8MOJD.236O12UZ3I3C4@cknow-tech.com>
-Cc: <linux-rockchip@lists.infradead.org>, "Shawn Lin"
- <shawn.lin@rock-chips.com>, "Lorenzo Pieralisi" <lpieralisi@kernel.org>,
- =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, "Manivannan
- Sadhasivam" <mani@kernel.org>, "Rob Herring" <robh@kernel.org>, "Bjorn
- Helgaas" <bhelgaas@google.com>, "Heiko Stuebner" <heiko@sntech.de>,
- <linux-pci@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>, "Krzysztof
- Kozlowski" <krzk+dt@kernel.org>, "Conor Dooley" <conor+dt@kernel.org>,
- "Johan Jonker" <jbx6244@gmail.com>
-Subject: Re: [RFC PATCH 2/2] PCI: rockchip-host: drop wait on PERST# toggle
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <diederik@cknow-tech.com>
-To: "Geraldo Nascimento" <geraldogabriel@gmail.com>, "Bjorn Helgaas"
- <helgaas@kernel.org>
-References: <d3d0c3a387ff461e62bbd66a0bde654a9a17761e.1762150971.git.geraldogabriel@gmail.com> <20251103181038.GA1814635@bhelgaas> <aQrKtFT0ldc70gKj@geday>
-In-Reply-To: <aQrKtFT0ldc70gKj@geday>
-X-Migadu-Flow: FLOW_OUT
+	Wed, 05 Nov 2025 10:10:06 +0000
+Received: from spb1wst022.omp.ru (87.226.253.162) by msexch01.omp.ru
+ (10.188.4.12) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.1258.12; Wed, 5 Nov
+ 2025 13:09:42 +0300
+From: Karina Yankevich <k.yankevich@omp.ru>
+To: Sandy Huang <hjc@rock-chips.com>
+CC: Karina Yankevich <k.yankevich@omp.ru>, =?UTF-8?q?Heiko=20St=C3=BCbner?=
+	<heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
+	<linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<lvc-project@linuxtesting.org>, Sergey Shtylyov <s.shtylyov@omp.ru>
+Subject: [PATCH] drm/rockchip: gem: Fix memory leak when drm object init failed
+Date: Wed, 5 Nov 2025 13:04:39 +0300
+Message-ID: <20251105100439.2780370-1-k.yankevich@omp.ru>
+X-Mailer: git-send-email 2.34.1
+MIME-Version: 1.0
+X-Originating-IP: [87.226.253.162]
+X-ClientProxiedBy: msexch01.omp.ru (10.188.4.12) To msexch01.omp.ru
+ (10.188.4.12)
+X-KSE-ServerInfo: msexch01.omp.ru, 9
+X-KSE-AntiSpam-Interceptor-Info: scan successful
+X-KSE-AntiSpam-Version: 6.1.1, Database issued on: 11/05/2025 09:53:46
+X-KSE-AntiSpam-Status: KAS_STATUS_NOT_DETECTED
+X-KSE-AntiSpam-Method: none
+X-KSE-AntiSpam-Rate: 59
+X-KSE-AntiSpam-Info: Lua profiles 197782 [Nov 05 2025]
+X-KSE-AntiSpam-Info: Version: 6.1.1.11
+X-KSE-AntiSpam-Info: Envelope from: k.yankevich@omp.ru
+X-KSE-AntiSpam-Info: LuaCore: 74 0.3.74
+ 076026cf5b16801374fbd5d19166f5aeefca6115
+X-KSE-AntiSpam-Info: {rep_avail}
+X-KSE-AntiSpam-Info: {Tracking_uf_ne_domains}
+X-KSE-AntiSpam-Info: {Tracking_from_domain_doesnt_match_to}
+X-KSE-AntiSpam-Info: {relay has no DNS name}
+X-KSE-AntiSpam-Info: {SMTP from is not routable}
+X-KSE-AntiSpam-Info: omp.ru:7.1.1;87.226.253.162:7.1.2;spb1wst022.omp.ru:7.1.1;127.0.0.199:7.1.2;d41d8cd98f00b204e9800998ecf8427e.com:7.1.1
+X-KSE-AntiSpam-Info: FromAlignment: s
+X-KSE-AntiSpam-Info: ApMailHostAddress: 87.226.253.162
+X-KSE-AntiSpam-Info: {DNS response errors}
+X-KSE-AntiSpam-Info: Rate: 59
+X-KSE-AntiSpam-Info: Status: not_detected
+X-KSE-AntiSpam-Info: Method: none
+X-KSE-AntiSpam-Info: Auth:dmarc=temperror header.from=omp.ru;spf=temperror
+ smtp.mailfrom=omp.ru;dkim=none
+X-KSE-Antiphishing-Info: Clean
+X-KSE-Antiphishing-ScanningType: Heuristic
+X-KSE-Antiphishing-Method: None
+X-KSE-Antiphishing-Bases: 11/05/2025 09:55:00
+X-KSE-Antivirus-Interceptor-Info: scan successful
+X-KSE-Antivirus-Info: Clean, bases: 11/5/2025 9:03:00 AM
+X-KSE-Attachment-Filter-Triggered-Rules: Clean
+X-KSE-Attachment-Filter-Triggered-Filters: Clean
+X-KSE-BulkMessagesFiltering-Scan-Result: InTheLimit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251105_010810_870759_2F6A0602 
-X-CRM114-Status: GOOD (  18.80  )
+X-CRM114-CacheID: sfid-20251105_021005_027484_A708F6BA 
+X-CRM114-Status: UNSURE (   8.47  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,69 +99,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed Nov 5, 2025 at 4:55 AM CET, Geraldo Nascimento wrote:
-> On Mon, Nov 03, 2025 at 12:10:38PM -0600, Bjorn Helgaas wrote:
->> On Mon, Nov 03, 2025 at 03:27:25AM -0300, Geraldo Nascimento wrote:
->> > With this change PCIe will complete link-training with a known quirky
->> > device - Samsung OEM PM981a SSD. This is completely against the PCIe
->
-> Something in my intuition kept telling me this was PERST# related,
-> and so I followed that rabbit-hole.
->
-> It seems the following change will allow the SSD to work with the
-> Rockchip-IP PCIe core without any other changes. So it is purely
-> a DT change and we are able to keep the mandatory 100ms delay
-> after driving PERST# low, as well as the always-on/boot-on
-> properties of the 3v3 power regulator.
->
-> This time everything is within the PCIe spec AFAICT, PERST# indeed
-> is an Open Drain signal, and indeed it does requires pull-up resistor
-> to maintain the drive after driving it high.
->
-> I'm still testing the overall stability of this, let's hope for the
-> best!
+If drm_gem_object_init() call in rockchip_gem_alloc_object() fails
+then rk_obj isn't freed. Fix this by checking drm_gem_object_init()'s
+result.
 
-I have a Samsung PM981 (without the 'a') and AFAICT it works fine.
-I had noticed that the PERST# (pinctrl) was missing, but 'ep-gpios'
-was/is new to me and I hadn't had time to research that properly yet.
-Good to see you already found it yourself :-)
+Found by Linux Verification Center (linuxtesting.org) with SVACE.
 
-Cheers,
-  Diederik
+Fixes: 6fd0bfe2f7ea ("drm/rockchip: support prime import sg table")
+Signed-off-by: Karina Yankevich <k.yankevich@omp.ru>
+Reviewed-by: Sergey Shtylyov <s.shtylyov@omp.ru>
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_gem.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi b/arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi
-> index aa70776e898a..1c5afc0413bc 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi
-> @@ -383,13 +383,14 @@ &pcie_phy {
->  };
->  
->  &pcie0 {
-> -	ep-gpios = <&gpio0 RK_PB4 GPIO_ACTIVE_HIGH>;
-> +	ep-gpios = <&gpio0 RK_PB4 (GPIO_ACTIVE_HIGH | GPIO_OPEN_DRAIN)>;
->  	num-lanes = <4>;
-> -	pinctrl-0 = <&pcie_clkreqnb_cpm>;
-> +	pinctrl-0 = <&pcie_clkreqnb_cpm>, <&pcie_perst>;
->  	pinctrl-names = "default";
->  	vpcie0v9-supply = <&vcca_0v9>;	/* VCC_0V9_S0 */
->  	vpcie1v8-supply = <&vcca_1v8>;	/* VCC_1V8_S0 */
->  	vpcie3v3-supply = <&vcc3v3_pcie>;
-> +	max-link-speed = <2>;
->  	status = "okay";
->  };
->  
-> @@ -408,6 +409,10 @@ pcie {
->  		pcie_pwr: pcie-pwr {
->  			rockchip,pins = <4 RK_PD4 RK_FUNC_GPIO &pcfg_pull_up>;
->  		};
-> +		pcie_perst: pcie-perst {
-> +			rockchip,pins = <0 RK_PB4 RK_FUNC_GPIO &pcfg_pull_up>;
-> +		};
-> +
->  	};
->  
->  	pmic {
->
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
+index 6330b883efc3..ad888f9379db 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
+@@ -284,6 +284,7 @@ static struct rockchip_gem_object *
+ {
+ 	struct rockchip_gem_object *rk_obj;
+ 	struct drm_gem_object *obj;
++	int ret;
+ 
+ 	size = round_up(size, PAGE_SIZE);
+ 
+@@ -295,7 +296,12 @@ static struct rockchip_gem_object *
+ 
+ 	obj->funcs = &rockchip_gem_object_funcs;
+ 
+-	drm_gem_object_init(drm, obj, size);
++	ret = drm_gem_object_init(drm, obj, size);
++	if (ret) {
++		DRM_ERROR("failed to initialize gem object: %d\n", ret);
++		kfree(rk_obj);
++		return ERR_PTR(ret);
++	}
+ 
+ 	return rk_obj;
+ }
+-- 
+2.34.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
