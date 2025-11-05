@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 499EDCCF9F8
-	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Nov 2025 06:43:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CD6CCCFA04
+	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Nov 2025 06:45:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4yR/BRfWxqzkM7nyyFy8UhDjt4l/Gqt1ZP4nIqGhoUU=; b=gVRK+8zVer18xQ
-	5rlun/YvCGJgigE6TuC7N51rID3m92f0AS0gLYUOGaEMFIVMDuMKsJgq1PVrS7p/7vTUhCPhquLTX
-	8LvML4w6HLFMnqjRTXqhngQx6UwF91damZqPkPlEuS5d9w71QBpCRQv4Y0xjI2FwSnmyoYhVQUEd0
-	G31v+wSl0Rdr0RAR7BDN0EM5sfE7tPR50AH5XLgyYg3acStK6grxZ2QGetmYXSFwA7eCUqB7lJx8N
-	/DHXua17Lzidp9hR5Jnx1YQjr3fvnXzVfO+7xIfdO1po6jUF/hoyDPc6GfTxqm5N6RiGsWcz8wEAZ
-	71XGpqJ4LtmqgBZ13DuA==;
+	List-Owner; bh=FmtTlT2EqJ3X4grG6+S+FgE3xXeDlTWhuyvxz/2BliY=; b=x2xL4LY+UHNBJr
+	AbmWRj8P1OzgbgbEuOYpmGaypzkcYhmzfVAThrCSy2HQYAJ7xsZv7qM0Dc7LC46jg6pYjUQF0Gl/K
+	DtZKKiVja3JjxELtiehYKZHMF/8u3Pxq0qpNh3aFagPRlkvt8iUtuut7rwISCsfDIia5kl+1rv9Ar
+	1VG/HD/xkjWPKfFRgEQdgPP36g6Lxd1PKo64+b4T9fcChowDQcvkfwKez8vjzp64CHF3d59LAm+o2
+	Y/RULau2vGUYMhAGO8Jdj/7kSQ7VYHPbHfiMUoNqvGUjUS2NRwz8lxQaJ1A+0dLJamV/0gn/QFYhr
+	aHQ68hgKtXfbDHLawFTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGXEn-0000000D5h8-1L5m;
-	Wed, 05 Nov 2025 06:43:21 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vGXGm-0000000D5nL-0J4u;
+	Wed, 05 Nov 2025 06:45:24 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGXEl-0000000D5gQ-29ku
+	id 1vGXGk-0000000D5nD-0c6i
 	for linux-rockchip@lists.infradead.org;
-	Wed, 05 Nov 2025 06:43:20 +0000
+	Wed, 05 Nov 2025 06:45:22 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id C86FE433F3;
-	Wed,  5 Nov 2025 06:43:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 142BFC116B1;
-	Wed,  5 Nov 2025 06:43:14 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 676EA601DE;
+	Wed,  5 Nov 2025 06:45:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6EAFCC4CEFB;
+	Wed,  5 Nov 2025 06:45:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1762324998;
-	bh=AOLJRB/zqRWosczIa4m3F38wLK3SHVP6k4HXxLMOWf0=;
+	s=k20201202; t=1762325120;
+	bh=3GmbPll0R5WKwoCFjF708QexyRmGRrLyMVvhZJK0Vbs=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=aanCLziruHsIOhtrvHumScCSKw1hi+D1iyasmEDTtNjLRV7IVADW2TLQqYo/VcaaT
-	 7eG5XzKg3iD0YKCardYciMRA7vaRoDVi6iNfjhoxeiO+ZmuJ4cxSLfFUFwqLuq/EYu
-	 peRxCnB+xPqxBV1Dt5tLfo5ht8YZ7iamrb7/0cfpvvS1lchUmp8A6DeWWF12zjBmMs
-	 kJNB7AUUdonulpxxjeVUPQ66VwObfEArMKzm7Ow0Bg+6ogW0Ainet/fCPaBTTuCeqb
-	 axGzNgLGVpTPPV5Ix+/hOtkdyFTqcNoxcgqvTSUOw9tKZYgbwZFN3gzw9uCXr8l5ia
-	 V5eGjgJ0oJj8w==
-Message-ID: <ce6e6369-a7e4-4a35-80f8-70ef41c3b877@kernel.org>
-Date: Wed, 5 Nov 2025 07:43:13 +0100
+	b=FOYCYXvfMlydPL341JVlapOcZywoyQ4ayt0SUiaHkek2B4NgT1P1hxbvVAyF4MLCn
+	 04kwoOKjzcyCIf1tn9v7Q7WJ3AeQoJggvzCS/xukAa+wGFoOQqKsnHymtHKGVRwIlV
+	 bOn1mgWxXqJjKHoUuCj3E1ChxMa3ImrIUbOi3NlfwauDdSfJyfr/VwzXwX9uIO9JBC
+	 Ax5MEu1+G2rHnWmJuMkTW0df6yh3QSD32W5YDBg3yKxIs8edw5j3KceGLQcq+udWOP
+	 vE1sXL0IhazQh9KQPmsBSoC3XOJDq5kMAyg2MXBJUrS0dLmp5TfNBAoQ4INLKv4Y+B
+	 LoR8mvN4txkFA==
+Message-ID: <f2f0e888-253a-4b4c-b7f7-da35e7fa5532@kernel.org>
+Date: Wed, 5 Nov 2025 07:45:14 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 1/3] dt-bindings: arm: rockchip: Add Radxa CM5 IO Board
+Subject: Re: [PATCH v6 2/3] arm64: dts: rockchip: Add Radxa CM5
 To: FUKAUMI Naoki <naoki@radxa.com>, heiko@sntech.de
 Cc: joseph.kogut@gmail.com, robh@kernel.org, krzk+dt@kernel.org,
  conor+dt@kernel.org, jonas@kwiboo.se, kever.yang@rock-chips.com,
@@ -55,7 +55,7 @@ Cc: joseph.kogut@gmail.com, robh@kernel.org, krzk+dt@kernel.org,
  jbx6244@gmail.com, devicetree@vger.kernel.org,
  linux-rockchip@lists.infradead.org
 References: <20251105051335.17652-1-naoki@radxa.com>
- <20251105051335.17652-2-naoki@radxa.com>
+ <20251105051335.17652-3-naoki@radxa.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -101,11 +101,7 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  jWt87ecuHlpL3uuQ0ZZNWqHgZoQLXoqC2ZV5KrtKWb/jyiFX/sxSrodALf0zf+tfHv0FZWT2
  zHjUqd0t4njD/UOsuIMOQn4Ig0SdivYPfZukb5cdasKJukG1NOpbW7yRNivaCnfZz6dTawXw
  XRIV/KDsHQiyVxKvN73bThKhONkcX2LWuD928tAR6XMM2G5ovxLe09vuOzzfTWQDsm++9UKF a/A=
-In-Reply-To: <20251105051335.17652-2-naoki@radxa.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251104_224319_595924_CC72BD27 
-X-CRM114-Status: UNSURE (   5.25  )
-X-CRM114-Notice: Please train this message.
+In-Reply-To: <20251105051335.17652-3-naoki@radxa.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,18 +119,26 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 05/11/2025 06:13, FUKAUMI Naoki wrote:
-> Add device tree binding documentation for the Radxa CM5 IO Board.
+> The Radxa CM5 is a high performance embedded SoM based on the Rockchip
+> RK3588S2 SoC.
 > 
-> Link: https://dl.radxa.com/cm5/radxa_cm5_product_brief.pdf
+> Specification:
+> - Quad-core Cortex-A76 and quad-core Cortex-A55 CPU
+> - Mali-G610 MP4 GPU
+> - 6TOPS NPU
+> - Up to 32GB LPDDR4x RAM
+> - Up to 128GB on-board eMMC
+> - On-board Gigabit Ethernet PHY
+> - RK806-1 PMIC
+> 
+> Link: https://dl.radxa.com/cm5/v2210/radxa_cm5_v2210_schematic.pdf
 > Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
 > Signed-off-by: Joseph Kogut <joseph.kogut@gmail.com>
 
-Wrong DCO chain.
 
-> ---
->  Documentation/devicetree/bindings/arm/rockchip.yaml | 7 +++++++
+NAK, wrong DCO chain and not attributed true authorship.
 
-NAK, you just stolen ownership of an already posted patch.
+Stop taking other people's work. This was already posted.
 
 Best regards,
 Krzysztof
