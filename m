@@ -4,88 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96A90CCF9F8
-	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Nov 2025 21:08:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11D1ECCFA13
+	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Nov 2025 21:22:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=W7xv85+h3NWN5XIF4lAhJonuJqYM4DQO+R/BzhJwwvA=; b=dekycBv8rfW7jI
-	5yoXwvriX/UucqAmi0SaeOZlZHJZpcVm0ygQeYJv7QK5rtPlXT3suqszAp83FzB26S3q8m0sZfgJ1
-	1T3i2W4EjN9EH0e5OL34ENptuqnqbNiDOVDKLcFnSwl0lyB5MASBSfsQ3yZ8DWxhetK+H24Xlv7VQ
-	VH2umX9blOzoXASGiT8jTcMwv8Fa34qOHUrw2J9VKMtVUc75EWvqjh1CmDHlIuI7ll2ZgOPGlKHc5
-	Qih2Vy5eowloXZwsrGb1UinzBrj/NYfuHDu1rCjHWkJxhtPYymI89+tOjOTBMkbqUmqLi2bg65r7Z
-	bevZAVhBlM67TY1OX3FQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=TCW7732n/T2JPSOkCqv3BRzRYIcLgmOS4WxXnul9pJ4=; b=kU0cDILsMhlvEs
+	O18wLw2wZfgTRMRJOQokNDSyUUTPI340VOU14o7qs9oxCIg/Dt8bIK6CyQnVf6bOjq8w7s9/gkOka
+	iitNwSr5X5yr6e9yG9eFkeib2tlRUFhwP3DCSUKWgSUD4/fuo6iv10+gZravo2JzrVUJczr0aUTBV
+	mwpvoDaUL19efY+43cr76V2XFVAHA18I1nJ1BzBzTnJyXhzjW50g0tvf3m0VAvLvbLz5Vo8s6beNh
+	/8tBFZWgklBESTOY2nw5lWI0HQNv0f4WkcqJxFlAFEj21y1SkktBkubTdOGCjjVhSodv0ELna9gC0
+	XX+ZkkdZiEFk5O2h9D/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGkjz-0000000ESlz-1FBc;
-	Wed, 05 Nov 2025 21:08:27 +0000
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
+	id 1vGkxN-0000000EVgv-0CSb;
+	Wed, 05 Nov 2025 21:22:17 +0000
+Received: from mail-oa1-x35.google.com ([2001:4860:4864:20::35])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGkjw-0000000ESip-2pXE
+	id 1vGkxJ-0000000EVfd-41JQ
 	for linux-rockchip@lists.infradead.org;
-	Wed, 05 Nov 2025 21:08:25 +0000
-Received: by mail-ej1-x633.google.com with SMTP id a640c23a62f3a-afcb7ae6ed0so46810366b.3
-        for <linux-rockchip@lists.infradead.org>; Wed, 05 Nov 2025 13:08:23 -0800 (PST)
+	Wed, 05 Nov 2025 21:22:15 +0000
+Received: by mail-oa1-x35.google.com with SMTP id 586e51a60fabf-3c9c379af8aso252691fac.1
+        for <linux-rockchip@lists.infradead.org>; Wed, 05 Nov 2025 13:22:13 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1762376902; x=1762981702; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=4/N5rROtcnxc6d5f0IUPrUWxw9x/K7/M9hcGw0GwgYE=;
-        b=ezpn6I52yd/QnaXBR7R7+7kiIavPpI4Z6GiqBe8xIGocZKDUHIsxkcPHnyuCC5fOOm
-         kzErvxQi1JaPi3NbVaGMOjcQqymRhAhO+FgYD/gTztubC8mn7ILcqr/ehaAcePkZcQcE
-         j6tKSNPl3BEhqDEV2tvt8cNujIT3tSMzVQWN9qV/aI3eEen4gK1m9/Sln+jacdoLNzBX
-         eROexM4hJmlmsZedTq+hpEVl/+b2b2c3QLRf7Og2TGReLPt0/1fTbSdTdRf19Nw6a88L
-         sZS+JoCGOmQ4x5EyoVD2tSwwMOtbmFIDqkdRC5+Bzaq7bib3yhoNrKfE814B+V9O+5cv
-         rZXw==
+        d=gmail.com; s=20230601; t=1762377733; x=1762982533; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=0/FBmebtO0Vkrgh/mrFAUBv/BWvq5VVY9yGcMnDDP8s=;
+        b=hTtVrYIPqEaeuDSwvXh7Xbhf9531fmC/TK2ewjO+pzn5Nu/99/PSvZMEUvg9ichsBH
+         WWoyXsyx2MPl3Fo1Uf/svKj4JdErxwoZy8T7k32Lvl28NyESC/BP1g/Z16g0BR8mCOpf
+         nRWnt5WMWRqBpv71znbSJevvf7O9r4gGX9Cb2FFU3BTc5hlWcPudBGWd8Fbxkd98Z43C
+         DPrho4s9xDoUGYcprkXOuAct9CxAI54wbjx//XnQf1G/VPoLnjSqKMsrP6X2KDK6y7K7
+         shtid73ltAjCxrGMUVDAZZRZFExSTh2dbE4H80IK5PW4gcZdLdNMt3wwcT0OksiVTiAg
+         EWCg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1762376902; x=1762981702;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=4/N5rROtcnxc6d5f0IUPrUWxw9x/K7/M9hcGw0GwgYE=;
-        b=MPfIpnR9I4O1fJ4LbdbDQArrJ5CPQbel0LPTRGedmkzf7sffN0VKRbBe04yImSkxyv
-         HLGlmlZho7lK/7MBweoH3iubSZum4/ifr4TnYnRB0eEzSbFuLNIR/w2xRPS542xkXhFR
-         nchhk3nW5MCOCQMKyRGw1GUYWxcrQYMZcssSWCC98upebhinp/K6ZU9iKZQF/D9sxkgD
-         59G0DE70tKxH+N0X9yHw4bWiZI0WnTpc9RySHw4ukPkpdQXAWcw6lNr+T2tJLSXI3Yt1
-         HCZAz+UdU8RQ6EFVLzGv8LZp6b9hTc1DgwPOYSF+M80UB3G+S8jACpdQFJjW94XxfBSC
-         wW9g==
-X-Forwarded-Encrypted: i=1; AJvYcCVS+p5F3n0MQfriwAjtJkzfqJtrCoSrxPpLcl7ekR9iucfkXAtWStw5lQbygVxlT2rcQ6CvHRoYtpoEgqfU8g==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx3C3sj/dqk0nlqGNiRzk233bvlCJJhvbu0uGzNWenXlEBrdU/y
-	WYRR7smr8FznJWM3/IfH6IvccFIa6IidFfqLuiV2BCklW12dVIuh+iQ/
-X-Gm-Gg: ASbGncsUnPO1ZGk9M0PZbhU1dy6yx1Qi5phzpjqZhz5e3KhsTULDb7z5d5JdcbdsEvB
-	ylEGk6gH6kzn21rwOH3OB9w7CfYXst5uWft4x3kgrora/MoJWbxLWdu8K7nEwJtp9gUH0mWy5kL
-	q70gsSwTVKL4FKUlj4mrxna9QJxxZxGqSSQzdyjPEmIce2YnCS7sr+5D/10mVG33NDxQXdHh835
-	PT6KY6d8s/IR/I2zCH4zUqcvI710yzhzKGv9PwLsskqTWLtQcbDlGzDAVabJUGwiMrpsjg1WdEY
-	fkDK+83BHgLR02sozE6xhZZ5oIje0l2YXgs1sA1kiFe1BbfSpiONlzXxsx9ScpfoExWK7MyNYbu
-	laZIRJ6dTvijle4kpAmCSB7GKNAtD3ovdzqI1eFCuIjtIgho+jQQSviX5m2GPEI6c5ZOfz27UtM
-	IxQikad2lyE95a6CKYBR44kz8qq5G+a5Hx9KkQnAGd2WaobA==
-X-Google-Smtp-Source: AGHT+IEQN8LEBzg2FibdPs1zW7myIBbg1Dg3RX0BLIHipmkT0F6MtRX6Fdv53CQhOLloh0SQE8k81g==
-X-Received: by 2002:a17:907:968c:b0:b72:5983:db0a with SMTP id a640c23a62f3a-b7265297e0amr437027566b.15.1762376902297;
-        Wed, 05 Nov 2025 13:08:22 -0800 (PST)
-Received: from HomePC (89-67-214-154.dynamic.play.pl. [89.67.214.154])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-b728937cc8dsm54005766b.17.2025.11.05.13.08.21
+        d=1e100.net; s=20230601; t=1762377733; x=1762982533;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=0/FBmebtO0Vkrgh/mrFAUBv/BWvq5VVY9yGcMnDDP8s=;
+        b=Stg/C5sLwuSsax6OWHwJJoBy+aryxCC333O6E0W+7xf+EFG8uZRt7NOTAaYct9Haa5
+         nH/shJeoH2Sdz1iQE2EjH6O4jJiLa7dye+NQuVILr9W6LR8RGCOWO7gADwcu57RBswei
+         6eSDnblYrEnLSdsNzj018leYyzQ3mMJYjxHPGMWaEHAeX07pi62FhPMbyyMjjNca4cX7
+         Fi6sxJo0gdGf0KeexVhd2qvfh4KDWN/39uJnLerSr0RyL3P86qGDNbgRRRKBVlt+ogdh
+         2atKw6zHwZpyJr5BNrAM4jS8S+Vz05UB0or1FDnDE6Tf1SgHy/v4qZ+l4Up0Iyd0z5Mg
+         MiEg==
+X-Forwarded-Encrypted: i=1; AJvYcCUEWLB0WUpQM54nqKqEEBkFx8tsG0Vp1j3DvgSAC4cBVN8Cci32qOuV4pS0pI48wbKOf/xON1GJ70XWA0gkTQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwczlMf/MF+26FqMLy/3OL6OgzQWCHhhxej/gtVjbDecCP+8m9L
+	0Zi2osyNqh03KAv9fhH/seaO7mZCNgrUJyhMnPZXkWfDJAifRvcWMNVI
+X-Gm-Gg: ASbGnctzoMYFmkhPqvJAan0RvsZYvKbyvkOKDtfSoTIsChCQii3tIFdmsHLBd5QQb8A
+	+PvWTfJUDCVnnFd8Xqqavau7HsCk5YoL0yIpSVnYVcunDcq0H8xn09InOBccq6zPZERgGYqeEy7
+	J+L+0arg/KLpFzCZK++g0Cg4QUVZN+I1szeyS8uKA7nQHXmZ3JSYxz6FNeq1dOGcQl+tfnnaBmQ
+	SgFCLaugZTTu2T+xH+YJ/44ogsXP91Kw/8XwMFLFoN39+X/lUMVw1Cuf3K3JrllHS8IWQDFnOUA
+	kmhoSCRH+OBuvQWaQFrAZaD7ye3xFwORQO8oHpWu7Iz9COPFOkOLVuBObG0qvbNtl5XF9kyzsR9
+	qmJ87CWxk5BGsQ9xS3Z8X8P+o5FM/qSngap9ks8godubMstygj7fWxzVAPH34p2oqs2sep3CLtI
+	Y75cHKWVZo
+X-Google-Smtp-Source: AGHT+IH6bmLILBlZkClZJKGGVOQMJ8uDofSrhNGHs3xLSaav5plph/1k0YKtCJFMX/UFHGhYB7B7Sg==
+X-Received: by 2002:a05:6870:1484:b0:3d2:e6a7:e938 with SMTP id 586e51a60fabf-3e2e3d8c98amr572130fac.15.1762377732693;
+        Wed, 05 Nov 2025 13:22:12 -0800 (PST)
+Received: from geday ([2804:7f2:800b:2ebb::dead:c001])
+        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-3e30847fe83sm153392fac.6.2025.11.05.13.22.08
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 05 Nov 2025 13:08:21 -0800 (PST)
-From: Andrey Leonchikov <andreil499@gmail.com>
-To: devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Cc: Andrey Leonchikov <andreil499@gmail.com>,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	heiko@sntech.de
-Subject: [PATCH] arm64: dts: rockchip: Fix USB power enable pin for BTT CB2 and Pi2
-Date: Wed,  5 Nov 2025 22:07:33 +0100
-Message-ID: <20251105210741.850031-1-andreil499@gmail.com>
-X-Mailer: git-send-email 2.51.0
+        Wed, 05 Nov 2025 13:22:12 -0800 (PST)
+Date: Wed, 5 Nov 2025 18:22:00 -0300
+From: Geraldo Nascimento <geraldogabriel@gmail.com>
+To: Diederik de Haas <diederik@cknow-tech.com>
+Cc: Bjorn Helgaas <helgaas@kernel.org>, linux-rockchip@lists.infradead.org,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Johan Jonker <jbx6244@gmail.com>
+Subject: Re: [RFC PATCH 2/2] PCI: rockchip-host: drop wait on PERST# toggle
+Message-ID: <aQu_-JDy7qqeviUm@geday>
+References: <d3d0c3a387ff461e62bbd66a0bde654a9a17761e.1762150971.git.geraldogabriel@gmail.com>
+ <20251103181038.GA1814635@bhelgaas>
+ <aQrKtFT0ldc70gKj@geday>
+ <DE0N4LA8MOJD.236O12UZ3I3C4@cknow-tech.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <DE0N4LA8MOJD.236O12UZ3I3C4@cknow-tech.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251105_130824_743492_FFFFE297 
-X-CRM114-Status: GOOD (  10.04  )
+X-CRM114-CacheID: sfid-20251105_132214_025599_BB2090A3 
+X-CRM114-Status: GOOD (  13.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,49 +112,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Wed, Nov 05, 2025 at 10:06:53AM +0100, Diederik de Haas wrote:
+> I have a Samsung PM981 (without the 'a') and AFAICT it works fine.
+> I had noticed that the PERST# (pinctrl) was missing, but 'ep-gpios'
+> was/is new to me and I hadn't had time to research that properly yet.
+> Good to see you already found it yourself :-)
+> 
+> Cheers,
+>   Diederik
 
- Fix typo into regulator GPIO definition. With current
- definition - USB powered off. Valid definition can be found on "pinctrl"
- section:
- 		vcc5v0_usb2t_en: vcc5v0-usb2t-en {
- 				rockchip,pins = <3 RK_PD5 RK_FUNC_GPIO &pcfg_pull_none>;
- 				 		};
+Hello Diederik,
 
- 		vcc5v0_usb2b_en: vcc5v0-usb2b-en {
- 			rockchip,pins = <4 RK_PC4 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
+Thanks for the heads up!
 
-Fixes: bfbc663d2733a ("arm64: dts: rockchip: Add BigTreeTech CB2 and Pi2")
-Signed-off-by: Andrey Leonchikov <andreil499@gmail.com>
+Would you mind testing the following DT change to make sure your PM981
+continues to work fine?
+
+Thank you,
+Geraldo Nascimento
+
 ---
- arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-cb2.dtsi | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-cb2.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-cb2.dtsi
-index f74590af7e33..b6cf03a7ba66 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-cb2.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-bigtreetech-cb2.dtsi
-@@ -187,7 +187,7 @@ vcc5v0_usb: regulator-vcc5v0-usb {
- 	vcc5v0_usb2b: regulator-vcc5v0-usb2b {
- 		compatible = "regulator-fixed";
- 		enable-active-high;
--		gpio = <&gpio0 RK_PC4 GPIO_ACTIVE_HIGH>;
-+		gpio = <&gpio4 RK_PC4 GPIO_ACTIVE_HIGH>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&vcc5v0_usb2b_en>;
- 		regulator-name = "vcc5v0_usb2b";
-@@ -199,7 +199,7 @@ vcc5v0_usb2b: regulator-vcc5v0-usb2b {
- 	vcc5v0_usb2t: regulator-vcc5v0-usb2t {
- 		compatible = "regulator-fixed";
- 		enable-active-high;
--		gpios = <&gpio0 RK_PD5 GPIO_ACTIVE_HIGH>;
-+		gpios = <&gpio3 RK_PD5 GPIO_ACTIVE_HIGH>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&vcc5v0_usb2t_en>;
- 		regulator-name = "vcc5v0_usb2t";
--- 
-2.51.0
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi b/arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi
+index aa70776e898a..b3d19dce539f 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi
+@@ -383,7 +383,7 @@ &pcie_phy {
+ };
+ 
+ &pcie0 {
+-	ep-gpios = <&gpio0 RK_PB4 GPIO_ACTIVE_HIGH>;
++	ep-gpios = <&gpio0 RK_PB4 (GPIO_ACTIVE_HIGH | GPIO_SINGLE_ENDED)>;
+ 	num-lanes = <4>;
+ 	pinctrl-0 = <&pcie_clkreqnb_cpm>;
+ 	pinctrl-names = "default";
 
 _______________________________________________
 Linux-rockchip mailing list
