@@ -4,58 +4,164 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 251ACCCFA05
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Nov 2025 19:51:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04DF1CCFA13
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Nov 2025 20:35:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=AsOQuXDdxb946OGC11L83l62rNvPxteI6l849SM7TG0=; b=bgEY/3W0p3TvOB
-	CaW7TwXkubSYqJBe/UOpEd7qaslAqdBe6PdSZh4QHv37Fc9vIS0DCBKZPAfsw7Z74+OtqvSPu3QJ2
-	zcrIwJ4m1TU9vcx1MUx1EOc7BiA/NnjnjL8bCPg5SJENWSTwbUQqeKzTcD+uDEudQkM1xv6x8hExj
-	2bF7GhKibMldAdLM64oicRojY1rZxRcMsh8XojroYkQ/nSMUA+dUvufQh6SKYuhP3OGSVJUQjGZCx
-	9X1wvA9ecQrJo9XuxFkgJ0zayAOsVy0rXyz1KE5w25vy2Xm+z70085s6FBpBJcGtdGplEdMUfC4wG
-	m9sAC7Za8n8R1P65KoCQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=pDhK2qDlukn8XKj1aFN+o+Xiws1Ag7JQVrN/XJhVvhY=; b=RQ5Zoyyg5joqjA
+	OJMTYu/iCoHf4OxNq6HmNpX9CvHDBcdLAm8hp+0U6Qexh1PjtnhYa7q2ks5EtAsMxRngE+LYKtqYb
+	2q0t+/X63MvFb14WF/Du+86iRABf/YNWbt/2s+qclAUuy8uBW1yS9DHe/LAOzQa+OBa69Nqy8MPrV
+	V0fBoRIek0mw7impEzweZZv1YvYxWxSBvLrY4kHU3v9f63ga752oym/wRiHX6RjmD9QZLla6+1tcg
+	ppO5lQqXhF2iTpfwIP6czIYhco4j7VJGHjuRD1ePJbsyR+69KvYs6tWj8twZFzUzeHV0zf3RRvyUq
+	fXYa2Lzxy+EM/LPZNgqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vH60e-0000000GBHp-2Uld;
-	Thu, 06 Nov 2025 19:51:04 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vH6hP-0000000GDtN-3vZ8;
+	Thu, 06 Nov 2025 20:35:15 +0000
+Received: from mail-southcentralusazon11012047.outbound.protection.outlook.com ([40.93.195.47] helo=SN4PR2101CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vH60Z-0000000GBHQ-2Any
-	for linux-rockchip@lists.infradead.org;
-	Thu, 06 Nov 2025 19:51:00 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 7F1364051D;
-	Thu,  6 Nov 2025 19:50:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 410D2C113D0;
-	Thu,  6 Nov 2025 19:50:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1762458658;
-	bh=1lB3DZzZMhqcI9NwkXLNHHcsV1/W9B3qgHsM67aLrrU=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=ZVVZZRUtFy+4HxR/aMNXvbPN2iz63KQ5m5A7eMbPT3B8SKM9kCa+I9r5NKT3yMyU1
-	 t3Oc/50oCHl0hpLwkW7IxqCSZZWNeRcfORKPECk7th0o98TfYmxkb5njHf8soDxDyb
-	 I3yjQJnzmcQbvEDTo2GJ98MNHAAMwCFVKttpl8hCH8w2Bphlgq06oo19PhumC3tonH
-	 upXVIy3mpu6YPW2jKIt7Fg6js1d/DWmSeulBTyDQFM8OyUKizJ7+Gn9kqTebEj09Bi
-	 Iibocqgq0ncOAoXP8JPpv4qAgSgn9G60OA+Ql/kvNgWVaj0gTjzF+6zVh0a4dgx+ox
-	 U2qbsQSpIaBUg==
-Date: Thu, 6 Nov 2025 13:50:57 -0600
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Manivannan Sadhasivam <mani@kernel.org>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	linux-rockchip@lists.infradead.org, linux-pci@vger.kernel.org
-Subject: Re: [PATCH] PCI: Add ASPM quirk for Hi1105 PCIe Wi-Fi
-Message-ID: <20251106195057.GA1965757@bhelgaas>
+	id 1vH6hL-0000000GDo5-1DGK;
+	Thu, 06 Nov 2025 20:35:13 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=jXFgJIF3/hcq7NVlgQJ/9ctWMZXjJ5IWKh7Y9xxKyXUNULh8wzm0+zdX2+ALQnRVZkZiCSuMFNWcAtsWBmsYLuoxCoLFTvb0w6YyhPG9FGW8xQu0fjvXeeatAuBrFXWOz8GJV92IH34qTpIpgR7cHIObSy8QprWSpLT2l00X+LfVXYKJytxZcvhwyzB/w2VsQFosVc49LpMRSu/X5X4NHkc1mN9TGWmv3MzS7saOOfbjvuiXUTHxYf2rU2NrZ6KqtsVRSVTPzgTFsRmF0CwhOkaJjGJo2dQes24Nljl6RfPUibO64wBZ28HEBB48raVizAJkbvOg6A075viz1MFpgg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=My24LlDJyOsjOyX8HI6wIQkfNsPWTSeEWuzPouIkp08=;
+ b=bo6G+8mPiS84Q/xe93yPYWgfFp2CJIS0Qwa9Dup4Pxpba5Y6BZN/ECvd9SkmGQiJvWejHcpl6a77/KfO4JOTOx2Z+qB9ZP+tqRyrMW/2i5RBAXbIaPCK+gj/szRmiLilxaY2xNQaqnKVAFoHkEprRfTNLoZFJangDWjgB4uaNgYMBs5Dv6SYFpW42RFGdS5M+SHRWa663F7J2PWrW0QitqIKZUIBxClNHDfGfWh4eklmJgslE9A20U/+NX2MiyyUmZxGTFNHMqwjtwHzyOJj0M+dWmIKDSD38LQsJ2JMHRkPRUuaOO2Vlb8I3Uc26t5zh0/cZgvXHs/9GNwjDoyN2A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=My24LlDJyOsjOyX8HI6wIQkfNsPWTSeEWuzPouIkp08=;
+ b=ISkdjELMiKyC9tG1kaztAzlRNTz7BFKeT2JIEO0f433L4SDd1buprlhdkpoIJzkByS/i+KU9BQW5s96h/LvMZe6xMBJmZmZmNtfL6xhuGRn6GPUGbMGkaZhdEAek/YZcyEyCOlRw66JUNYcZzO1/HO3JV1bhyoV5UZCYMfVfBeTttd3fKKHqk7GgBxIVW1g9+rfnezOKT0r+Zk6qgi+sj5BM9uF+WOaten0/xSzpu8uRYI5iXPeS40dIaVEO9cItkWYPBXjY51tK0Sxy06OSbyJKNUrt/w9keGyWVwjY7GLntNv64b68kvLWUjIwYt+2iULTUGPTEk2NAmQZwX6akQ==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from MN2PR12MB3613.namprd12.prod.outlook.com (2603:10b6:208:c1::17)
+ by SN7PR12MB7108.namprd12.prod.outlook.com (2603:10b6:806:2a3::21) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9275.13; Thu, 6 Nov
+ 2025 20:35:01 +0000
+Received: from MN2PR12MB3613.namprd12.prod.outlook.com
+ ([fe80::1b3b:64f5:9211:608b]) by MN2PR12MB3613.namprd12.prod.outlook.com
+ ([fe80::1b3b:64f5:9211:608b%4]) with mapi id 15.20.9298.006; Thu, 6 Nov 2025
+ 20:35:01 +0000
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Christian Benvenuti <benve@cisco.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	iommu@lists.linux.dev,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Joerg Roedel <joro@8bytes.org>,
+	Leon Romanovsky <leon@kernel.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-rdma@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-sunxi@lists.linux.dev,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Nelson Escobar <neescoba@cisco.com>,
+	Rob Clark <robin.clark@oss.qualcomm.com>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
+	Chen-Yu Tsai <wens@csie.org>,
+	Will Deacon <will@kernel.org>,
+	Yong Wu <yong.wu@mediatek.com>
+Cc: Lu Baolu <baolu.lu@linux.intel.com>,
+	patches@lists.linux.dev
+Subject: [PATCH v2 1/3] RDMA/usnic: Remove iommu_set_fault_handler()
+Date: Thu,  6 Nov 2025 16:34:57 -0400
+Message-ID: <1-v2-25fc75484cab+ab-iommu_set_fault_jgg@nvidia.com>
+In-Reply-To: <0-v2-25fc75484cab+ab-iommu_set_fault_jgg@nvidia.com>
+References: 
+X-ClientProxiedBy: MN2PR05CA0059.namprd05.prod.outlook.com
+ (2603:10b6:208:236::28) To MN2PR12MB3613.namprd12.prod.outlook.com
+ (2603:10b6:208:c1::17)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1762401119-232631-1-git-send-email-shawn.lin@rock-chips.com>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: MN2PR12MB3613:EE_|SN7PR12MB7108:EE_
+X-MS-Office365-Filtering-Correlation-Id: 350bd9b5-babe-4d75-603b-08de1d73f584
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|366016|7416014|1800799024|921020;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?/hNNiGNxQVSb1k+oxM3VGNepS8TVQUQyQWfK5qQcnCnAxC46Q8ER5JTDc0So?=
+ =?us-ascii?Q?Z1m+WiwboVmoz+Q6CihwJxZVKOAs9XThRVk6tEOwjaC9KMYzKsG9gCyXRrG4?=
+ =?us-ascii?Q?eLNHtz5wpAYex4gDEtdbRVjuLtjgBix4/TnGrxWR+tQi0p7DwQlIZqv8pleM?=
+ =?us-ascii?Q?8M8MKOEXS9PCLzl1/NmohrWrJyh16VlgKn885rUFYSApbumhc98qeKaVS50T?=
+ =?us-ascii?Q?RwVdqamy8IrxSPg3+lNELZWr6L1yDqxl11JVSeVx5JhnuIA5da0Sr2fApy7Z?=
+ =?us-ascii?Q?wGy/U47hSdkO7WB4dBwqsi/VBjr72avLjK/T3NAiIdj6Cmo1ppeDalCG1Dvu?=
+ =?us-ascii?Q?Ju8qV2zkAhfHdL0ssT42WOwlOBfz3TmRr3pIOJ9Fh/9co5/TBew/klBNJiHd?=
+ =?us-ascii?Q?peZ6e9HtAtoNAyN3IRE4bGUhNTWTh9hH1NE7XI7wr63vnpsPD96g6syw/Do2?=
+ =?us-ascii?Q?X9hHNWPKTkffYgEFvIlMy5lPGVxJgdGk2SZF8Kkb3fesnVNsPpf63yynGcE7?=
+ =?us-ascii?Q?bIJQfa/ozDHIadBUi2BGH1rzMuGPD1Q4VRL2N71e6yzNqLDLt4qyDhzfnr3f?=
+ =?us-ascii?Q?a+c4IDzAjU9lPRJyK9QHYHMmfjes3XBPURCX9+ii0wLe95dqzmEgkVkqDEXy?=
+ =?us-ascii?Q?sB5mFPWlHtVxYdXBevEwqJXFEEncTEzWAJVdCbMJIzovL4iHnnFQJmmYnisu?=
+ =?us-ascii?Q?4LHBZUIEu6tyxvwIOl4dRVXESwCerE4vrqRrYApHEQz9ZkVuJ3vZyScN7y1N?=
+ =?us-ascii?Q?Uuycv+tCpqHDsIHgUZbhYVVovSlgxDkqwgBilzofIukpo0ykk1K+eGIqtzfx?=
+ =?us-ascii?Q?MnS2HmGk25DnmmrcGxR9/9pQnpV2H/JuuHkc6eSkGIFBXvL4aVQDZ9JlgPA9?=
+ =?us-ascii?Q?TQfFRmg1/mdDUqqpiLZS4Q5AmVYl2NS0AsUnD/axhZoKMOUG9eDRi7lKuNhR?=
+ =?us-ascii?Q?q1UhlyYfToyIHrMH90Opy5aIPoAsHfeuymAjafuZPGd6IXpbAtH4MpMIgYtI?=
+ =?us-ascii?Q?GppNGv5xJEjnwYU9N82URuyCN83XTXwjpRJdYMoTyYXFxT0snXe+Nv1KQNGh?=
+ =?us-ascii?Q?IJNr/uMiD5Nu0kaeqopWVIDv8L+1n4f6pPtk/ynkoyX02rlv+SH0s/6uQpjN?=
+ =?us-ascii?Q?Drt62MenA4oO3g1dJ9eZAg8ruWnrakmgt2gVYGmpVXB6FNCkfo9dxo3VHsRx?=
+ =?us-ascii?Q?0cnmPkNJA7nFJyZJDcw1tbAyVI1EdREW6GR92gBP5G/g3QkDggo91kpfeqnk?=
+ =?us-ascii?Q?YHm5zE0MzkWvEZhmks3BIh4mnZuH5dKx37Z6sWBPq4Asru9qMo/HLi5IkVsn?=
+ =?us-ascii?Q?p0OwvK71Nh3J+rpks7uzljgNAm6Q1P1eBpWW7qqR/PXi1iEpfCnL2XdlcuQD?=
+ =?us-ascii?Q?XCHkY8ceASSA/PGgKRVw+TElSYFF9E4QuMmI5E+ELOGl6YSi1oclDvVuRckb?=
+ =?us-ascii?Q?gZMy2aJx+uFVcf2XV07EUC2XA+1v4cOEMMh/0hDZ4Qz+OZi4IXJGozOKfnfi?=
+ =?us-ascii?Q?+VPuizSLZ9ZLPnU=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MN2PR12MB3613.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(366016)(7416014)(1800799024)(921020);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?NJNZpA6r43uGTdgadsolTzcWYr/wDpET0RpZlNUlehGPvTCZG6UUHPdKEi0p?=
+ =?us-ascii?Q?21eSNZDWtQtFjDZS3+5GOfmgMH7WTyBzmGeyu/2A0hhIkO8XfVje7FOe2twM?=
+ =?us-ascii?Q?FQ3n9ZMRxQsymyT+UUDMEVXca93qdGM6yb1XGl6TdD8sadcOkeJUMySbiBK4?=
+ =?us-ascii?Q?BXwm4jHAtIUzK2aGLxid1LZzz5kVWvd6tVVSn5Ws5FuSU3TQQ2T9tGiTyT8o?=
+ =?us-ascii?Q?AoUJRsIhcG0wEmNU+wwog7wH2rqaC/4AqEAUeW+PnJU24m4YZh9S3XzKJQO/?=
+ =?us-ascii?Q?ZESlQRYvYFrHPRYgHgBMCZnY7egyeDqTh6SOMH8bRiEauNEvKIhxp9wMAwSp?=
+ =?us-ascii?Q?itLcFuOJAUZrkdzQNk7XRqs4UnkL/n6G2Ab8e9N2wVusvrpaovaEbRDUzw7Y?=
+ =?us-ascii?Q?3L3Rjtbg0q0XF3s/In/fP3zk2ylZFcgpcBj3zQkH/DSyBu/0mQY3gnG8TiG4?=
+ =?us-ascii?Q?KiLK2ewZr4YNgeRcyMuUwg4hgbcMfOj00jxvuKTiaocRm1sweuqjBHWJe1cQ?=
+ =?us-ascii?Q?ID0T+0YgXNAizzo4Od2xSRQTApICcuk/8R53XuBV32WhIdUvETZOZytP08UG?=
+ =?us-ascii?Q?7myVA18XC4v6R1Ba/Lcz7gHsDgEWooXtgfcCRX1Qv43tj6iRXKkbXPbUXiMf?=
+ =?us-ascii?Q?ONyLUXC6XCqdVn2vcSLp7Dd7WTkH3i9uw2HcZnw2vEwg6E8hdq3SVGXXwXrp?=
+ =?us-ascii?Q?wenMVH9lQHlbK+2dys7Gb92ndOnSIlqh+vbO0Sv+XFB+73EPFI0LWsdqpPSq?=
+ =?us-ascii?Q?+xhg+dY0TBNfKNlhF9l4/XQNgaTT8GhynDGO7RogQoRkGXkb1AX5YXvQE+Ox?=
+ =?us-ascii?Q?rydvF8EGHA3SWc46EYsgmxcX3c4aNZHvz9Jin6Xj08zuZRR9u83ydd0zTM29?=
+ =?us-ascii?Q?PuFwX/nnYIEjFBJSV4z97dT73aMbon+SaU8tAvGqBDZgNS/W2msJzia1VEAA?=
+ =?us-ascii?Q?9BJXhhEoclv0NvU7FqhevPX2pm4YzZzeQkxNEhWWJOgoi4CT5naUxD49/ZZZ?=
+ =?us-ascii?Q?MVAW9Dy/Vrp9IJlvVpJhG6L3k4USgWqvIV1EJ7nt0CavH84PgE12kU1HDZCk?=
+ =?us-ascii?Q?bLna2NDjMMS5AROMIC/xssvGucrVYDOVZ5SF03jKXiV8NQIkGXZTqWpgTqev?=
+ =?us-ascii?Q?V2o6D5DzDyBf2ynYWDIhP/93qECjPCZAF7Ble2xXtyFQLwfwXCXwyj1dtmUd?=
+ =?us-ascii?Q?/e4vEYm/YxdHJkIk7N+3w6DQoX3R7h+rwoR/uG8xeoLtYwbCzdfoFzzWdTaz?=
+ =?us-ascii?Q?H+gFKQOXVXCpViId3kdyeUgZYqUEEcSChLq52kyMoB+ZTn3punRlwbLALUVm?=
+ =?us-ascii?Q?sA/EpuNlzG3pJVua+d+WVMz6HYwHzlvIfde/zH1dMeauzhhQV0Brt8K06ky9?=
+ =?us-ascii?Q?3DS3oGwCe7RBY6Qhwu8sUlSwiKeFE8BCbOF9EPvIMUBbD4lIfOy+V0WhmtHc?=
+ =?us-ascii?Q?/EPG9khTAbqy0PF0gzuQ6pl3eLZhSLVp0pDGZXg+UWXOsN1bAvefhbO3J5JS?=
+ =?us-ascii?Q?dsFlPL6GPbYgGPq25J0fXXTvuQfDw/venyQCUjRLqEDTAfLRsCa/Siy3JNvA?=
+ =?us-ascii?Q?A9h1um90PPhkpoFAdUs=3D?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 350bd9b5-babe-4d75-603b-08de1d73f584
+X-MS-Exchange-CrossTenant-AuthSource: MN2PR12MB3613.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Nov 2025 20:35:01.1506
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: syDgtu60NZt3FhIKphPz9VczI8/s093USABYwRQaN2GkRv1i6vr/yK0UhysmGCSf
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN7PR12MB7108
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251106_115059_580198_DD438512 
-X-CRM114-Status: GOOD (  18.48  )
+X-CRM114-CacheID: sfid-20251106_123511_334103_C58CE541 
+X-CRM114-Status: UNSURE (   9.10  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,60 +178,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Nov 06, 2025 at 11:51:59AM +0800, Shawn Lin wrote:
-> This Wi-Fi advertises the L0s and L1 capabilities but actually
-> it doesn't support them. This's comfirmed by Hisilicon team in
-> actual productization.
-> 
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-> ---
-> 
->  drivers/pci/quirks.c | 6 ++++++
->  1 file changed, 6 insertions(+)
-> 
-> diff --git a/drivers/pci/quirks.c b/drivers/pci/quirks.c
-> index 214ed06..67250d4 100644
-> --- a/drivers/pci/quirks.c
-> +++ b/drivers/pci/quirks.c
-> @@ -2526,6 +2526,12 @@ static void quirk_disable_aspm_l0s_l1(struct pci_dev *dev)
->  DECLARE_PCI_FIXUP_FINAL(PCI_VENDOR_ID_ASMEDIA, 0x1080, quirk_disable_aspm_l0s_l1);
->  
->  /*
-> + * The Hi1105 PCIe Wi-Fi doesn't support L0s and L1 but advertise the capability.
-> + * Disable both L0s and L1 for now.
-> + */
-> +DECLARE_PCI_FIXUP_FINAL(PCI_VENDOR_ID_HUAWEI, 0x1105, quirk_disable_aspm_l0s_l1);
+The handler in usnic just prints a fault report message, the iommu drivers
+all do a better job of that these days. Just remove the use of this old
+API.
 
-PCI_VENDOR_ID_HUAWEI is 0x19e5.  Is there an upstream driver that
-matches [19e5:1105]?  I didn't find anything.
+Acked-by: Jason Gunthorpe <jgg@nvidia.com>
+Reviewed-by: Lu Baolu <baolu.lu@linux.intel.com>
+Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
+---
+ drivers/infiniband/hw/usnic/usnic_uiom.c | 13 -------------
+ 1 file changed, 13 deletions(-)
 
-I think quirk_disable_aspm_l0s_l1() might be a problem because the new
-strategy is to enable ASPM early (in pcie_aspm_init_link_state(),
-called from pci_scan_slot(), which happens before FINAL fixups are run
-during pci_bus_add_device().
-
-So I think we will enable L0s and L1 briefly before
-quirk_disable_aspm_l0s_l1() runs, and it's possible we'd see a problem
-then.
-
-But if you apply this series:
-  https://lore.kernel.org/r/20251106183643.1963801-1-helgaas@kernel.org
-
-and then the patch below on top, I think we should avoid enabling L0s
-and L1 at all:
-
-diff --git a/drivers/pci/quirks.c b/drivers/pci/quirks.c
-index 44e780718953..24c278857159 100644
---- a/drivers/pci/quirks.c
-+++ b/drivers/pci/quirks.c
-@@ -2536,6 +2536,7 @@ static void quirk_disable_aspm_l0s_l1_cap(struct pci_dev *dev)
- 	pci_info(dev, "ASPM: L0s L1 removed from Link Capabilities to work around device defect\n");
- }
- DECLARE_PCI_FIXUP_HEADER(PCI_VENDOR_ID_FREESCALE, 0x0451, quirk_disable_aspm_l0s_l1_cap);
-+DECLARE_PCI_FIXUP_HEADER(PCI_VENDOR_ID_HUAWEI, 0x1105, quirk_disable_aspm_l0s_l1_cap);
+diff --git a/drivers/infiniband/hw/usnic/usnic_uiom.c b/drivers/infiniband/hw/usnic/usnic_uiom.c
+index 3fbf99757b1148..f7fb6246c83aba 100644
+--- a/drivers/infiniband/hw/usnic/usnic_uiom.c
++++ b/drivers/infiniband/hw/usnic/usnic_uiom.c
+@@ -51,17 +51,6 @@
+ 	((void *) &((struct usnic_uiom_chunk *) 0)->page_list[1] -	\
+ 	(void *) &((struct usnic_uiom_chunk *) 0)->page_list[0]))
  
- /*
-  * Some Pericom PCIe-to-PCI bridges in reverse mode need the PCIe Retrain
+-static int usnic_uiom_dma_fault(struct iommu_domain *domain,
+-				struct device *dev,
+-				unsigned long iova, int flags,
+-				void *token)
+-{
+-	usnic_err("Device %s iommu fault domain 0x%p va 0x%lx flags 0x%x\n",
+-		dev_name(dev),
+-		domain, iova, flags);
+-	return -ENOSYS;
+-}
+-
+ static void usnic_uiom_put_pages(struct list_head *chunk_list, int dirty)
+ {
+ 	struct usnic_uiom_chunk *chunk, *tmp;
+@@ -450,8 +439,6 @@ struct usnic_uiom_pd *usnic_uiom_alloc_pd(struct device *dev)
+ 		return ERR_CAST(domain);
+ 	}
+ 
+-	iommu_set_fault_handler(pd->domain, usnic_uiom_dma_fault, NULL);
+-
+ 	spin_lock_init(&pd->lock);
+ 	INIT_LIST_HEAD(&pd->devs);
+ 
+-- 
+2.43.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
