@@ -4,81 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58A8BCCFA05
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9F4CCCFA13
 	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Nov 2025 18:11:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=zQQKahC7kJnbnHL7aJ8rd+fPAWeTpwjCFLmb9oTCQWY=; b=ydIwBJO9uNLW65
-	ugamgtt5klKqDO5uYRAXUJM+oIIrkXd7CPgs1WOwjhMveG+57vEigyRZqRzFvPgySF1pm8tzPLdwl
-	OAAu1MBxSjIwCOvS5hvmmB9poY4h+dokitKXP/jlu8SoCrWpGIiWnDUdrttXMue1fAcX85+XG+9Op
-	PcQoI6KuljdiZ28QmaaK7VPIhSJrRGWwSPXAtAGiYwnfHGs8AuEHob1sBm54Va2NzokBViNhQTGEp
-	qkjg+21UBKf0FjoZiEtmIepeBoJelKYmXEx8F80HE1tpo55/GjlKXFlvribtKJc4aAem2JzwxGYqT
-	qrRchc2QYKG+FSqYql+g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=3fv7KwHPYn3tPvgetqtcLsjrINYPvAv7vliQ+wBGilo=; b=CjAzbawRO4HRE9
+	piD9W40IhoJhZs6Pg5WI3GVmcjtdUymc975Wu4ED5EcH5ITZWQwFkkeugDa+HFX356RGhxECDsjau
+	tkfFdnIWcrl+7LEybBbTaYmyQHDkzTf0s8qg6Hl9ctBHpLAZiCzqhmuCP0UyiG13/XcZJ6omPKiDJ
+	Fsj4CfJrwf5+KLjMIGFBjPKCLqHYrirrAoPiQBqjeHU1g2wuR1UvWmIc+CVVYMXGn4VW8Nvuy64Li
+	SA/dmap8bN/2SvVenyqtIP+gS++WEJaY0ZI/ow3iZRhzATAbCPuD3iFesdBRBPaKwY9s+TpvHIaxE
+	VcRsh+J5xdebVQXtqiqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vH4SU-0000000G4rC-2RFj;
+	id 1vH4SU-0000000G4rI-3Wif;
 	Thu, 06 Nov 2025 18:11:42 +0000
-Received: from mail-oa1-x34.google.com ([2001:4860:4864:20::34])
+Received: from mail-oa1-x35.google.com ([2001:4860:4864:20::35])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vH4SR-0000000G4pp-21uU
+	id 1vH4SR-0000000G4pq-3cN9
 	for linux-rockchip@lists.infradead.org;
 	Thu, 06 Nov 2025 18:11:40 +0000
-Received: by mail-oa1-x34.google.com with SMTP id 586e51a60fabf-3c92328d0bcso719636fac.2
+Received: by mail-oa1-x35.google.com with SMTP id 586e51a60fabf-3d5bb03d5c2so753094fac.1
         for <linux-rockchip@lists.infradead.org>; Thu, 06 Nov 2025 10:11:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20230601; t=1762452698; x=1763057498; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=cpT0TLdGzfQfSoii4/bs36ZSx7naUbNo4dP7DJ25fa0=;
-        b=OirAU8IUGfpqjxGOJAz8bAyJgEH6o7qDhLiS4HYAyh5rAHs225EQ0thgl/5tTuZ8sX
-         e+GUspz/FiicWpVjb0UULPxQ+f4AYtHwTR++lE73YdNzFzJ8NpoK3IwD48GeUSvdZ3c5
-         uSFd9SmpvoU2bEXoFwC6ZpnloilIFVkOLoyQ1kZR6MgzapJIKP+nHOq/ioy+2KtKFwEv
-         sFi8Q/tkZvVDQ9tK5FdsrbWVhDB/UkhemVg+6tNsVjK2ylC/sX9u5QzrrfTEnAglceFx
-         HMKZnep45JXhf0TO15T7ZfB7vlnALV6kkmpBuhbHGzIu/vfBodjYo4+NyBEa11aE+X+F
-         Xp2g==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=T0LfZV6ZvHIu2m+187yq+/hilPWa6I1ikCEzp8Vg+NA=;
+        b=BNP68psRvJKB+2wIiFBpDtfg5YgNT078Vy8fruErKUtyV/W1t1zNS2i9JSxAeB2xDQ
+         /C7i8Btb8K/fWe7wWbDEglSgf9YjSoyCHV6ArsWsbE8gVg/wREj95u2xAOT9q7Yof9yr
+         KHm7NThGpc+WI1z4GGiQJTDmOEOnf4FZRgWEIgxsmaAn8fC1QCHPmqy3xZbIYQm00ZDF
+         ZyJjr6kfjhdMZ4CpnDiGdr6mHKVndeGCPUYFg3z20XI4HEKTPEDZ0ZyKtYKYHwy2CZnr
+         BNvMgbpNL1ElqNNNj9PoqDqaqI1FYcsXo2pt4xqeLAkzELuCeW2BEdirFMboP0/uKVqc
+         Uw6Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20230601; t=1762452698; x=1763057498;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=cpT0TLdGzfQfSoii4/bs36ZSx7naUbNo4dP7DJ25fa0=;
-        b=G3hxNTRjK4dGHgvgxUgQaojOGsnzLK8VL4WnfXQAOsj7BastInYk4hZcMDPFZzBt15
-         MeqRtcIbHv5mp+DZEmnPug8buaRbingJdUU10XxWxAcgLDr4Dz1YRB7pKRBom8NcVdDN
-         mTV9i+3idgInDQZ6AOz4VEnuRTxYkGzkMtMkUL5E5VUhCuoY3rOk2qnr8xfQLIs26Goh
-         I+m61Zkv/kWK6YHyZ1sF3pZp+1zGJaPQJDiOySBXb/Wpq6sKXKEp6TZJ7tXmZJuvGypc
-         YejtsSikkGLyZL7tx5yj8Xu15Kdiz9bdVwKNBr9eGrCERUYc708qtQvqK72VXVD4rTtf
-         738g==
-X-Gm-Message-State: AOJu0YxNUgQHGaca1/5VJc4BgzN2du5B0qFqW0NxLgw+3AWkwLaALPzy
-	vgiLy5jaK3B0jzWSjW731VQWNS3bCsMGeUDoutSnOmXwsaTkaXvjjb/p4a+QZg==
-X-Gm-Gg: ASbGncvC3eQP2x5dsF4eud1EH7XH98GC99SCiv9POBZWVxkacmV4+o6oPcZBmYIg7Xx
-	Gvf+sxTT44YU3qrJmCmEgpPocBZD5bspBghKSC+TVWSjM/eIOPG4JZG7fi+pu7K9E+S9KsZMjta
-	xiAg7YUQt0wjDJ3sAA8vAknFVb5iveyFM/50Nd6OLeAciogEAdleZCTjno/2kIsr/oLb4bNAVlc
-	yRSIyhRE/YSphWNZA4Ci0LxXKZHu8G0QLTr5VPOlnUExaJft2QKDqMb+OOnMaHw+uDIYrHTUX7G
-	+WWvt3eynUFI8QuW8Xxozjao7eRuPHz3y95RzRVY2WUcgUSwfpZG+yG0pa4MvEmPX/L1nr3LXQP
-	se46TWu7l/2ogIpjP07EfNZ7WOXiXojAga88utjsZuYYDy7Ojx4bKljUJDe0gFnQw4R1wvmLiSM
-	E32Uc/YRC01BTVpBZCfNg=
-X-Google-Smtp-Source: AGHT+IGAvjoXA76/UDaqXpOU4Fcz8E3D7Krbf8yR4RW+nCN1vEdGUmxv0HqWHlh+xaipNHgHQc4imw==
-X-Received: by 2002:a05:6871:5b1b:b0:3d2:5ad4:4e7 with SMTP id 586e51a60fabf-3e41e6afbb2mr348131fac.47.1762452697786;
-        Thu, 06 Nov 2025 10:11:37 -0800 (PST)
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=T0LfZV6ZvHIu2m+187yq+/hilPWa6I1ikCEzp8Vg+NA=;
+        b=UIGDefwOXeZK75jsrA+Eg7SLN++M/YjZp6T/G+cGN6YcyBA+OUFyTKkRnO5DbY79cm
+         dw7bcWhgPGGllVjMQqT4A4if6Zs8CwRjxXzy3Okj0+ws/ikC8EBDv8aRZiO9PR851ERo
+         Bziq/7c/NHxfCbRKSoKQGpnYTZVrPu95HGwzQxitvFeYkPF70v9jW8mDN5Sn+qCHOhGU
+         zvzMh4IObVg3A86OCeq6+aiQfyoUJvzK0CHPROhWSMrazNzOxYnqZZwPlqnmTF2TsPRX
+         /ydTjQ/boq8XxdjWb/FipnUcvp59oW1ivaVbTcVGwBZo+P7TKXjoun6+FCuuaTMJsZjI
+         OpbQ==
+X-Gm-Message-State: AOJu0Yz1D94XJXEMAzuRS+nOnffmluPrKvhQBUq4cdY0Qja4c4hY6Xpi
+	QsYBwmzrUCkSPq5toAHxoo9wfZtxSFO2CL1uFk8u2CfnLIe9itC9+LTSHyOe4A==
+X-Gm-Gg: ASbGncs+Zui/kL5XrtUvTRjkhLKHZc5/9ohEjRGZfyRZObWaX1VBXMIrO71zgRhxJiQ
+	UfLEO9TF2Onw/BzeKdmRB1eKq7qOJRKdRfROattlvC3uwA0HKf+3nWU4SA396DHPW7pDWGCsxex
+	Terq+V+MX3rQdQVCCnNVuyGg/054btkV+Qj39tRo/sV3Pu+Gtx8MpG12AxxDYFNwDIv7Xd0R3Kx
+	syT/ZCeJx+8ZOih0tM0kQC3t9U0Na4DN9hwfyu5ILEQF6Q3VrbqcuvUa8wTMKaDi5Lt13Szf3Tm
+	kHbWpId6l0NVOXqCQ94TjzRrZuLLYnbY/uePLkgEamldskXngG6KmCppMinvdHRdF3GelvH9obY
+	Sno8dmb1UXFhM0RJ26rXf6mmE/xbmJU/mvu1ere/Y/2ttWK+tuE0f1S6mTKjQMLmotcQphtCfgR
+	lov9HS8oFJ0HDobOGr6n0kVaCeyBHCKg==
+X-Google-Smtp-Source: AGHT+IEuLeAiIcFbvckZdi0fEGQUB8Xf6ZhxDDLX2HCSRm7iQ+wj5DqmHKY9RpQQmONnKJ+cIm7Vyw==
+X-Received: by 2002:a05:6871:1d5:b0:3d3:5f85:af68 with SMTP id 586e51a60fabf-3e41e3c250emr345117fac.10.1762452698548;
+        Thu, 06 Nov 2025 10:11:38 -0800 (PST)
 Received: from localhost.localdomain ([2600:1700:fb0:1bc0:41f9:c9d3:db30:c36a])
-        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-3e41ed0aa06sm137739fac.8.2025.11.06.10.11.36
+        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-3e41ed0aa06sm137739fac.8.2025.11.06.10.11.37
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 06 Nov 2025 10:11:37 -0800 (PST)
+        Thu, 06 Nov 2025 10:11:38 -0800 (PST)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: linux-rockchip@lists.infradead.org
-Subject: [PATCH 0/3] Add HDMI for Gameforce Ace
-Date: Thu,  6 Nov 2025 12:09:11 -0600
-Message-ID: <20251106180914.768502-1-macroalpha82@gmail.com>
+Subject: [PATCH 1/3] dt-bindings: display: rockchip: Add no-hpd for dw-hdmi-qp controller
+Date: Thu,  6 Nov 2025 12:09:12 -0600
+Message-ID: <20251106180914.768502-2-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20251106180914.768502-1-macroalpha82@gmail.com>
+References: <20251106180914.768502-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251106_101139_664225_75F526F6 
-X-CRM114-Status: UNSURE (   8.57  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251106_101139_904220_9D802964 
+X-CRM114-Status: GOOD (  11.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,20 +100,38 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-Add support for the micro HDMI port for the Gameforce Ace. This port does
-not have a HPD pin so it requires making changes to the HDMI controller
-to support this configuration.
+Add an attribute of "no-hpd" for the Rockchip dw-hdmi-qp controller.
+This is used to describe implementations where the HPD pin is not
+connected or used for other purposes, such as in the RK3588S based
+Gameforce Ace which repurposed the GPIO for an additional face
+button.
 
-Chris Morgan (3):
-  dt-bindings: display: rockchip: Add no-hpd for dw-hdmi-qp controller
-  drm/bridge: dw-hdmi-qp: Add support for missing HPD
-  arm64: dts: rockchip: Add HDMI to Gameforce Ace
+The "no-hpd" option was chosen to be consistent with other devices
+which already define this parameter for broken or missing hpd
+functionality.
 
- .../rockchip/rockchip,rk3588-dw-hdmi-qp.yaml  |  6 ++
- .../dts/rockchip/rk3588s-gameforce-ace.dts    | 63 +++++++++++++++++++
- drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c  | 35 +++++++++--
- 3 files changed, 100 insertions(+), 4 deletions(-)
+Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+---
+ .../display/rockchip/rockchip,rk3588-dw-hdmi-qp.yaml        | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
+diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3588-dw-hdmi-qp.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3588-dw-hdmi-qp.yaml
+index 96b4b088eebe..07342838cd52 100644
+--- a/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3588-dw-hdmi-qp.yaml
++++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3588-dw-hdmi-qp.yaml
+@@ -69,6 +69,12 @@ properties:
+       - const: main
+       - const: hpd
+ 
++  no-hpd:
++    type: boolean
++    description:
++      The HPD pin is not present or used for another purpose, and the EDID
++      must be polled instead to determine if a device is attached.
++
+   phys:
+     maxItems: 1
+     description: The HDMI/eDP PHY
 -- 
 2.43.0
 
