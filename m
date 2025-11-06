@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 055F0CCFA0D
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Nov 2025 02:07:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1DE4CCFA1C
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Nov 2025 02:07:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aryjA5gwvIVFSF1pWvwPBDm3kgj59KEZAQaGRIIBDj8=; b=ubeKNTF5dgmlHk
-	NmK77N6WtJ5uCpxqWkry3hwlU6C9ohzb5hzjy9QZBvd/4zJbfcjmwa8lA0FYIemHjUeYUYZNTxA3N
-	qo2HJlHxyuhkZxVsQAHWBd195vGJK1TKtlZf5IucscOO1nzEqE1NjaHiJZar3JWylfyWHfs9Y8I08
-	sxAmw0Dk409+8e+FVIKQtWmw2PjbDwg8qLAy8oePrVY7N5Ee1+hhWJarlT5V9D23lfe/8M4Di/uF6
-	morMigmHyNMnxcwswZBeP5xjS7ErrpylF2ZIVyL/w1dQldQjNZpoT/uRZObETXmGsGw+TD4XDZ19h
-	7XtNrD/9PZX+QsyDvUhg==;
+	List-Owner; bh=I7D0jg3p39Gm4pRGV8lLbNvJPFFS38JFjFAQJsXPW9M=; b=I5a4Hc5+tt+qPc
+	zoEycqbebdHjbrEzMjSBtcKlikI72WqrIPppcLN8d7mYogLvTIS2+i2ziSieQKZhlsxd60LJn4TVw
+	ITxkYMtciWQJ/3g93vT77PAxRqCERwgU3yfbIQHnsI0q4Km8BUkHojniRJqwR8vaJcEuHcMikufta
+	oh0yBUmwmYso/TiLu+qQp18OTW5SqbEzJAD5EjrfHywcClq4ugnBvyqCfBqdtvEcha3Tsm7eV7/Z6
+	5Vhr+XGvY18m7Y8CHS/u3d/UcIS9Ei2aO/Qkjthgc0FdGcMw9/w8DQx2ADpSLPn7MKusVAnOKWvYH
+	FUS9JQvcPBij46Y1zkSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGpPO-0000000EjO1-2F3M;
-	Thu, 06 Nov 2025 02:07:30 +0000
-Received: from smtpbg151.qq.com ([18.169.211.239])
+	id 1vGpPR-0000000EjS2-3TCj;
+	Thu, 06 Nov 2025 02:07:33 +0000
+Received: from smtpbgbr2.qq.com ([54.207.22.56])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGpPK-0000000EjGs-3g3l;
-	Thu, 06 Nov 2025 02:07:28 +0000
+	id 1vGpPL-0000000EjGr-3itw;
+	Thu, 06 Nov 2025 02:07:29 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
-	s=altu2504; t=1762394810;
-	bh=x0b6nYcdg7hiAcKdA4JhGlxHiilGQ3K7Dert+al7aoA=;
+	s=altu2504; t=1762394817;
+	bh=9yCjsaoFkOvmC3WJaoawYLPivucq321KJsantBtPkYE=;
 	h=From:To:Subject:Date:Message-Id;
-	b=B1kxuvooB2GQMghXnBGjsUY0nM2kNBC6VAT7XUeXLGjGFv8I3THJNKkFd6jMVBj2v
-	 4wiXOm2KR9GmWWX6cmZXw9teXpRioPjmrmDWNXjEepDP8BZvFaWxjvE4ranHaEXEyx
-	 Y6G/5S98C//Tznwl9dSNk4Rw6wcR+VI3tdaPw8N8=
-X-QQ-mid: esmtpgz15t1762394808tb962b6a1
-X-QQ-Originating-IP: Kxt++LRpNywAhVRcx54Iw5qydXwjg4t+r/VQWDBNVZU=
+	b=dm555Ud/bmZKwapq4//dn1xIkHHF3D84kxzgaebaKQ1otml/PdW2NUY8xmywXeJfZ
+	 cX+kBgd+Y3Tm45dJdTzAVWbBN7bLv+IWFoNZe2QAWvnO0rtOfdRVRBkP5JsFgbPN4U
+	 J3dEuUWPzfFP/VyPkBil5FyHNtua3unIxxzao3fY=
+X-QQ-mid: esmtpgz15t1762394815tba64791d
+X-QQ-Originating-IP: xOTzFY12cbSb/MFbDxpiyuQb1pU09c+X3VAD/uHNlBU=
 Received: from DESKTOP-8BT1A2O.localdomain ( [58.22.7.114])
 	by bizesmtp.qq.com (ESMTP) with 
-	id ; Thu, 06 Nov 2025 10:06:41 +0800 (CST)
+	id ; Thu, 06 Nov 2025 10:06:53 +0800 (CST)
 X-QQ-SSF: 0000000000000000000000000000000
 X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 3992485569025743558
+X-BIZMAIL-ID: 6204674981207334838
 From: Chaoyi Chen <kernel@airkyi.com>
 To: Neil Armstrong <neil.armstrong@linaro.org>,
 	Jessica Zhang <jessica.zhang@oss.qualcomm.com>,
@@ -64,35 +64,35 @@ Cc: dri-devel@lists.freedesktop.org,
 	linux-rockchip@lists.infradead.org,
 	linux-phy@lists.infradead.org,
 	Chaoyi Chen <chaoyi.chen@rock-chips.com>
-Subject: [PATCH 1/9] dt-bindings: ili9881c: Add compatible string for Wanchanglong w552946aaa
-Date: Thu,  6 Nov 2025 10:06:24 +0800
-Message-Id: <20251106020632.92-2-kernel@airkyi.com>
+Subject: [PATCH 3/9] dt-bindings: display: rockchip,dw-mipi-dsi: Add compatible for rk3506
+Date: Thu,  6 Nov 2025 10:06:26 +0800
+Message-Id: <20251106020632.92-4-kernel@airkyi.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20251106020632.92-1-kernel@airkyi.com>
 References: <20251106020632.92-1-kernel@airkyi.com>
 X-QQ-SENDSIZE: 520
 Feedback-ID: esmtpgz:airkyi.com:qybglogicsvrgz:qybglogicsvrgz6b-0
-X-QQ-XMAILINFO: OYPMZDjp99nuc/wUw2MdUSwpzyG4/mrfL/0v7O17UWEQtq6vNT81vMIG
-	zuZLhWSFK8nSwjfqDwWyRYACQ1qqjB0pmwx2NzfvxuuB9KZCFkyupnNq53wtAl6zea0cTC5
-	Nl+qSww2hhZporfG0iYXlbdmtOMYpk2GLLDAQd5G9h8zA9nAy9lu6oGb2WP6rVfQEPWI8mr
-	nHWRgbZsezAuiel/k1VxmGDhGXLiOa+8BdMFLAwa4vHMyBOIXRP1FjNjvsu1snz/oqJzJCJ
-	E1ZnxpTUcN+L6vXTTBljbkrrsITOZdFeKcLm0N1dpxVRHKcgSWmj7UOy6lijJ/1KivuNXQT
-	Yj8hRnA3tcwynQgXD4ulRxnwf9md2hbEMf7UPLVewWOaxVS7x04Wp8oTTjZOOWELQG0vQ2U
-	f1EyFXKl/1v7mquAGnagRv0gNOeSyat/JIS2o9MpBepMSnpVFKIpw6lhSSxqEt/o0JiSwXK
-	5sQgSJUzi5tyA/kL+Umr1BmCSvpa6KkhFHoTwO8XQ/nGnJZCg9TJFVHJ9BdjgfJ8nCV2pKq
-	eTkS4HrkNbimGUl8XZH4C6Sz+s1e/wvS5QXWXnPiY9o+Cc/01PoubsaFRzWo+E7L0b5zCKi
-	4fOdbXVLQ1OR4zUwkL5YDhPlygfYyanvAbBZbMRfrIqMHHiOtsGoiKMXhTI3EB3ViY8KwlX
-	ROfKRhIiZc5eWFD+KtmHejBlZXKtDTV9hpdcVojcgJrZMO9+a99CWY6+DDqZeKFZHmL1C7P
-	TVN63/+zLjzVY2CIV+yL/g6y/IjYzGrNzz/oos27I8d1mvDxuAcTsNDbHmmAh62lGveHYSo
-	UW7Pn9uBbH8nOU8WKDMr8BOdqLjeE79JTxMi3sBebZlUBr6gcvWULrGoTVt5iE+BNKF6FrY
-	fsigN7Jrk0qLoV99BLRCW3fKX4cLqLF6eCAvxgybyZsYPkzbAyuKz4f78QAh1O8kxb6O1uE
-	g7tdfXdCJjIROf3ZmqQ10XJ39qdUVokqjMbN6mxQzz0PnNVQYSubJOqdY+mnlladSNraHJv
-	zwjx2WrWPrsS1QqI51iCtcsKCxatWcpeGcoziCZA==
-X-QQ-XMRINFO: NyFYKkN4Ny6FSmKK/uo/jdU=
+X-QQ-XMAILINFO: OVdyvDaZFkszlfAdqQIKMczp6crbpwZOUDN0fThezjR5l+O+KepqWIxp
+	FxALUlukqNb5b8wQc9j9AkcwCwwlMj7at9SeyILcZMaeufuKGya6TrpsktV2X2pZHiL8abr
+	EdknnfdVLdrUFLzVgC8HvFJ/CNZ6zE8iVfiJGcymGm8hIHsjuH3E0JO+RhqJbFoGS8R3Zmt
+	AT0Gz2etjHJuub2BRLc6UxEMHMls8i8g1cnH4BgKko7aF8yM7cXtmVk0VuI8BWhstg86nH5
+	M3P7oKqpjnHCFB4NJOydDXCEWMqiLLkuvySUV+tWAD59zPXYZImSJMX4w6mwEpXWldQfv4f
+	sHFVTpYtziLNbgM1bm5WLgn56yPqUMUDTic7vWsRk+vEfLux+4Jf6intW6hBbC19+UCzoOO
+	g847JCXcKF++jNuGmmCRSabVL2Z3I4LyH8Pu+QJmdcxyWkU09b4wcs7UhZxsQMBes2e29dk
+	Slc27aes+6Dyk0vOXhQM4c0go7kcL4//L20XW5dpbbBVDgF+WtxxEkGMk8w3oxGQkOO6NA6
+	EDY6TU+4cXNTrMIU/3ugtEoA6yxCmijEHJRiqWFCdOQWkMISal5/IQoAV5X0cffY84OANY1
+	28uxGhMHY1yhphZTm/Fpp7lpyDIAkNlzxHEIIYHMit+n2d26COPYCFHlrHp3FB7BizvnTRe
+	FtVnFzZ92GkFBn0GWfduUxADOACppENEc0goQp+Y6CoYEnRjgZ/DznuypJ5V9LC+ETCa2AF
+	yx/y42+fUwn2vp5GNqOqWxsZMQugJX9tbmF5tFjZiheIjdXzP8HB7a1xhAbAtc+T85czbem
+	kcB7bK8DJBUU6Tf43Fjw4Y+t67KLuKPrHYmZODV1tHyB6gLRU8pJ8mIHHypUp2IFRm7tRV8
+	SsQc/pRnjEKyPi2MOkecHm2vm3ZcT1mff9P+s+yJq9jbTy7p23JLCrGknAnYlOwjOzlVgCg
+	JjdBbq+mZVfgUPqyAOwosxzd3A/NtD9tSTQdCwQFf1LI9dvEQKz8RF4cDz0Y7/M/JCb5jZL
+	88/VNVKc70Rky5bVOlXBizoDmcd+g=
+X-QQ-XMRINFO: MSVp+SPm3vtS1Vd6Y4Mggwc=
 X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251105_180727_424750_EF7A796C 
-X-CRM114-Status: UNSURE (   7.66  )
+X-CRM114-CacheID: sfid-20251105_180728_772462_D64B9F86 
+X-CRM114-Status: UNSURE (   8.14  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -113,25 +113,24 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
 
-Like w552946aba, w552946aaa uses the Ilitek ILI9881D controller chip,
-and it supports up to 2 lanes.
+Document a compatible string for the rk3506 mipi-dsi.
 
 Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
 ---
- .../devicetree/bindings/display/panel/ilitek,ili9881c.yaml       | 1 +
+ .../bindings/display/rockchip/rockchip,dw-mipi-dsi.yaml          | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/display/panel/ilitek,ili9881c.yaml b/Documentation/devicetree/bindings/display/panel/ilitek,ili9881c.yaml
-index 434cc6af9c95..f331a47cc759 100644
---- a/Documentation/devicetree/bindings/display/panel/ilitek,ili9881c.yaml
-+++ b/Documentation/devicetree/bindings/display/panel/ilitek,ili9881c.yaml
-@@ -23,6 +23,7 @@ properties:
-           - raspberrypi,dsi-7inch
-           - startek,kd050hdfia020
-           - tdo,tl050hdv35
-+          - wanchanglong,w552946aaa
-           - wanchanglong,w552946aba
-       - const: ilitek,ili9881c
+diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-mipi-dsi.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-mipi-dsi.yaml
+index c59df3c1a3f7..d949750a3afd 100644
+--- a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-mipi-dsi.yaml
++++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-mipi-dsi.yaml
+@@ -73,6 +73,7 @@ allOf:
+             enum:
+               - rockchip,px30-mipi-dsi
+               - rockchip,rk3128-mipi-dsi
++              - rockchip,rk3506-mipi-dsi
+               - rockchip,rk3568-mipi-dsi
+               - rockchip,rv1126-mipi-dsi
  
 -- 
 2.51.1
