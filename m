@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DF7FCCFA1A
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Nov 2025 02:07:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 622EECCFA18
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Nov 2025 02:07:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AplqRHbz5QMJESk5BQlKQRUOFCc7/nNvVbxR4snuxqw=; b=h5OyYaPGKQB3m+
-	JLXlU4fJUFhS5+6u28XYN2+qMJLr0R9n0lCS9naaPMC/7UUc8pQfH6xuw83khCIySrSjccrUYecpO
-	oKT0dnerI6eZrntMgeCoVu15YMyIylva8WkLEmM9DXJRx/RJj5WiiJcRFMqd8l4IK+TUQrY82xlgv
-	2KADT9BNOyDtt4WYeWZ6nDNDULCAgBoBCpfcOXPki/tU231y1tHQCMzOvG/ZXYUvVzWw2CMVK1qcW
-	yZL1f6URqH11VeyrhMgkcuUPliQl+kWBcWq88OvF4WzdsVuVbOiZ+Q6gBeNF217XgC2UMqda1RPsX
-	Zpglixe1oLePDmzQ2UKQ==;
+	List-Owner; bh=oHfXP8qInMzpKdd34MnTCrIBnZFK9fVX6I2yBt34TTk=; b=r+Fi3S6XuV2qW7
+	SFORfr6JHXWbyasIykOyj7va59RCAzfeM9pA0H6wvZjaVuSOEd0+Su8tVpWOqBDImcxeUMiSx10eF
+	oy10qHvL8ChPbbbxOQ7dddxrq7kM9iqM7kxut7K4x2auwUn1SJhOSTjVsYFhvUMX3VpooszwI+2OX
+	NzTYyotNKvfcRohlY56bxy6KZk4z0oIYuWwqtff/BbHgsC1Q/dxDSkRMj+qul2X1H7KdrfHHFN44N
+	XqnRfHJX9apB4eURTtFQkZtqrjV3+q/ThfbVsTiJHTQ5zq4WbG9K6UbV+huFcVVHI3h57cfihkqm8
+	kFqTQ9TSW9iok1HdvNcg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGpPa-0000000EjeP-2Vo1;
-	Thu, 06 Nov 2025 02:07:42 +0000
-Received: from smtpbguseast1.qq.com ([54.204.34.129])
+	id 1vGpPe-0000000EjlL-3nVT;
+	Thu, 06 Nov 2025 02:07:46 +0000
+Received: from smtpbg150.qq.com ([18.132.163.193])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGpPV-0000000EjH0-08eN;
-	Thu, 06 Nov 2025 02:07:38 +0000
+	id 1vGpPa-0000000EjHW-0ixY;
+	Thu, 06 Nov 2025 02:07:44 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
-	s=altu2504; t=1762394824;
-	bh=dlreJtu1yTZc+3gYynIBMms0O05/ZWzTxS4Cx5D33aA=;
+	s=altu2504; t=1762394831;
+	bh=hbx/QURwIjeUHxXbRkGU120xvy1OzyC8WzA8ZpLbBU8=;
 	h=From:To:Subject:Date:Message-Id;
-	b=mgXdmeso8Y5CzbeGvBmSoXVkikF7UGQcM84Tgan7qgPzmmW5dZ2AayaqkzPABuvcj
-	 Sw0YQ/4oFGPupfSoH/7+R1fjjirkVkkatHIC/+rHqisQ6xy5FHm0xaSs+iH7V4kzZM
-	 BLLZwqnUyRgbauDhXfoS789uQ1kwyR33o+qAFZ+Q=
-X-QQ-mid: esmtpgz15t1762394822t3dff838e
-X-QQ-Originating-IP: otWT7nKKGfQI+mkYDiDkRHYGEnaihLiw+FDQpRrNMKw=
+	b=dbMNM1WcveNPRCNa+XdBH4Mgf/F0VHbSBQyfSdVE803JWmgojptyukcQt1+nWaFX6
+	 3E1jAaXNr818MRUOQIQ8owxVyeDhlsi0Er56qHBGPlpFEdTOhuGvkcOzbgJNWLfQ80
+	 AsFro4FFyWDnb9V9IqX3s0ngIZ+ZXhxal1q4+sc4=
+X-QQ-mid: esmtpgz15t1762394829t0f07c30b
+X-QQ-Originating-IP: QZPMgX2USNKo5HEA2++y4wEpyHyL9QH/EATI2ze4C+o=
 Received: from DESKTOP-8BT1A2O.localdomain ( [58.22.7.114])
 	by bizesmtp.qq.com (ESMTP) with 
-	id ; Thu, 06 Nov 2025 10:07:00 +0800 (CST)
+	id ; Thu, 06 Nov 2025 10:07:07 +0800 (CST)
 X-QQ-SSF: 0000000000000000000000000000000
 X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 8019224694940531236
+X-BIZMAIL-ID: 4356867921177031121
 From: Chaoyi Chen <kernel@airkyi.com>
 To: Neil Armstrong <neil.armstrong@linaro.org>,
 	Jessica Zhang <jessica.zhang@oss.qualcomm.com>,
@@ -63,37 +63,36 @@ Cc: dri-devel@lists.freedesktop.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-phy@lists.infradead.org,
-	Chaoyi Chen <chaoyi.chen@rock-chips.com>
-Subject: [PATCH 5/9] drm/panel: ilitek-ili9881d: Add support for Wanchanglong W552946AAA panel
-Date: Thu,  6 Nov 2025 10:06:28 +0800
-Message-Id: <20251106020632.92-6-kernel@airkyi.com>
+	Chaoyi Chen <chaoyi.chen@rock-chips.com>,
+	Hongming Zou <hongming.zou@rock-chips.com>
+Subject: [PATCH 7/9] drm/rockchip: dsi: Add support for rk3506
+Date: Thu,  6 Nov 2025 10:06:30 +0800
+Message-Id: <20251106020632.92-8-kernel@airkyi.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20251106020632.92-1-kernel@airkyi.com>
 References: <20251106020632.92-1-kernel@airkyi.com>
 X-QQ-SENDSIZE: 520
 Feedback-ID: esmtpgz:airkyi.com:qybglogicsvrgz:qybglogicsvrgz6b-0
-X-QQ-XMAILINFO: MoEtoil6yR/CNkuu9v3dTG2uI1VNp0vJRpos/NRJ08iueGeCH8On6t1v
-	1B6f4wE9hQWLOZsoyLM61e6wF/KEFCyMnVckGv/kjzkh4ol4IyqGspWLHzyXcxZ8xJpMA4q
-	rRF2UrpD/fHm9dj2oC7lopTbEm4vFChxKzxHI3kPPkY0D3d9hH6xnB6BmPVoeDNAJl5IFYe
-	PkRp/FI1ZJzZ0himjZxKYNSN0JZ3rPiT2BKhHLRAHGPecS5d8bUMWyJwMUTOFxlJQTqMXS/
-	obbP6ogRYE6drvCPSVSttz2G+yXT5mhKDgDBQPyFuT6S8RUhU+JzXWFBrwc44/Pf9fJzauv
-	vgHzvA0v/R9FBdjRP8MdljRMCxb+H77f6w4/OxcV7iz4C7SUeCaTitetshWoix7NHvjBIzR
-	7fhdpd0Q7FxSWQdQdExt8kHncAjqO12F0G3JvF9JXijhN/OZxjFxicFdXgZL23Ts6AjElHU
-	XfCf9y/xbGAzw9/LhZ6MxpXW0dJEO53fCyPpUdgfGpipLpAyb507LmYNItgWQqEA32o5317
-	/weBCgoCwRX8wQTr5DFA4dS6p8xoR4d1UfUaOowSamfNKjuaaBlqnWJVx1POm/Yfo8S8Vjv
-	499fow0OfgsM8kFPNuGx1u2Enxw13rhBVpxe1EWfRImi377kjzEWxS6Eg9bXOS93BwPDxXs
-	3VGa8bF9JvlgT6hZcyZSDlGShl97sRzJ3q/Cteh35XVlbyNZKPQK3daONV6c/foL5jyU0mf
-	CFpqkKwrRhEkLwKC/UqSwvuwwpZR08soBB8Fz6iwMW1I2j/mhhULUYUSupWOrwwMaoB0kxU
-	40Wohe/Np03jvYODzIkXRhVfbPH7JpGeK5Wn5eYzkJwuE+OetPagRqFPCQdIsMDAr0dv6n4
-	LPDq2w2Cg/jw74zuD1pRlt5CubY5mebluS1SIoDpb28jabShF8MnUD+9BTp2WTYtH/Zw8Se
-	9703iPKaIHCmmo4/poeteSeG0O3Fbwas/LU9aIB9oZn9bhvtXEf6tQNCvOv8kL6kXxkocgp
-	K+XBXCAw==
+X-QQ-XMAILINFO: M7OGOwGJ/FwKEJNhnwTmktqSTqpPSEiEb4tzm1v004AAuRZv2UE0hzKK
+	urqskMQaMtrJaOUrzCVyyKtPM1P1KQ2lcfVqw0v5vF/Ete7BZdPONjh8vrGe22hTnJmcUJi
+	89SSxFIv/dNwKAugT6ry3rzoJoRD2khwH9nPUL/mmEKzFkCw12W9GQJ1mPDQwMUXhyEoyrF
+	u2i6Pa5wKCzmwHqwUCd2XCN97v6j1+n9ZYmQGBVyWumSGDQ7qZYVuOKVpsbA+V1RyNBvSId
+	tDvZFP518ZLfb4HmGS2b7YqI22Np/32EmiI/9MnHgjAAl/Av5QS9U9Z5nVxp5wAZZU2mP3d
+	RMNp5hkZ1RCZjsCHXz5fBs7Wj/JlBe0YkivmnwweYjEyI89TtVOn2Zd2zp+GhMnLyHCbv8A
+	/ZrQObm2zvP5MMsx0/wGDA4YBzcy5WeKIHt1AjEIxXniZ3Rnl0AUEXUk4Vyj++1Hjg7tx+y
+	RPK58lmJJLhlmVgYFPs1OgyL5mnaavHx4zx4XVdw1tfQbKvyT/nvZOOD/SSBvfqSDVrrdjV
+	wJ6xf5ifG1p7+lP1L9p3n/zqSVbbtZ9AVrPJc0OsPQ8aVf8wfGk221PKXEiuhBTrgvwPVgD
+	f2WBj6WIFn7mSC9gmEvpfdby/m0piJDz2qUyQu6qhI9nuewO/62M1Fc6f1Oy6DM798/n60E
+	O/QrqkxsuZ9o6mRGHvsrED+3CA0SfwiS3+okq63DPFEc4c9QX0fDBdaCQUItaeyOdrDSg9X
+	E/qmwRmJA7dBP6xtkznXEJJKXelxHLiEuUAgH+tEheikZzIuKCDfjVgWqC2d0Y/UndBhHGZ
+	McUeElQFh0JC1ouWR+ycH9hXLGhyyxsR6zgkhxd9d4M4MK/1k7UMoAkEXhs10yXapblKnXu
+	MSU6G8smsVywpb3t7rxkPMJdfxpgGYkriDArOPoLBQ2rqMryIVNOWsfIDmbBJOYhX7nRGIB
+	gOLvjovBqLFV1BvLQAWGv8EJhdsCMH1TrPZHZH++nau1Oli19Uot9vXqbDB3vEytn8Wg=
 X-QQ-XMRINFO: NS+P29fieYNw95Bth2bWPxk=
 X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251105_180737_575466_1F53DA34 
-X-CRM114-Status: UNSURE (   9.74  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251105_180742_793787_1BF49A87 
+X-CRM114-Status: GOOD (  12.27  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,276 +112,59 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
 
-W552946AAA is a panel by Wanchanglong. This panel utilizes the
-Ilitek ILI9881D controller.
+The dsi controller found on RK3506 supports up to 2 lanes.
 
-W552946AAA is similar to W552946ABA, but the W552946AAA only
-uses 2 lanes.
-
-Tested on rk3506g-evb1-v10.
-
+Signed-off-by: Hongming Zou <hongming.zou@rock-chips.com>
 Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
 ---
- drivers/gpu/drm/panel/panel-ilitek-ili9881c.c | 225 ++++++++++++++++++
- 1 file changed, 225 insertions(+)
+ .../gpu/drm/rockchip/dw-mipi-dsi-rockchip.c   | 20 +++++++++++++++++++
+ 1 file changed, 20 insertions(+)
 
-diff --git a/drivers/gpu/drm/panel/panel-ilitek-ili9881c.c b/drivers/gpu/drm/panel/panel-ilitek-ili9881c.c
-index ad4993b2f92a..9b3e9450808d 100644
---- a/drivers/gpu/drm/panel/panel-ilitek-ili9881c.c
-+++ b/drivers/gpu/drm/panel/panel-ilitek-ili9881c.c
-@@ -820,6 +820,204 @@ static const struct ili9881c_instr tl050hdv35_init[] = {
- 	ILI9881C_COMMAND_INSTR(0xd3, 0x39),
+diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+index 5523911b990d..06e58cf287d3 100644
+--- a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+@@ -192,6 +192,11 @@
+ #define RK3568_DSI0_TURNDISABLE		BIT(2)
+ #define RK3568_DSI0_FORCERXMODE		BIT(0)
+ 
++#define RK3506_SYS_GRF_SOC_CON6		0x0018
++#define RK3506_DSI_FORCETXSTOPMODE	(0xf << 4)
++#define RK3506_DSI_TURNDISABLE		BIT(2)
++#define RK3506_DSI_FORCERXMODE		BIT(0)
++
+ /*
+  * Note these registers do not appear in the datasheet, they are
+  * however present in the BSP driver which is where these values
+@@ -1643,6 +1648,18 @@ static const struct rockchip_dw_dsi_chip_data rk3399_chip_data[] = {
+ 	{ /* sentinel */ }
  };
  
-+static const struct ili9881c_instr w552946aaa_init[] = {
-+	ILI9881C_SWITCH_PAGE_INSTR(3),
-+	ILI9881C_COMMAND_INSTR(0x01, 0x00),
-+	ILI9881C_COMMAND_INSTR(0x02, 0x00),
-+	ILI9881C_COMMAND_INSTR(0x03, 0x53),
-+	ILI9881C_COMMAND_INSTR(0x04, 0x53),
-+	ILI9881C_COMMAND_INSTR(0x05, 0x13),
-+	ILI9881C_COMMAND_INSTR(0x06, 0x04),
-+	ILI9881C_COMMAND_INSTR(0x07, 0x02),
-+	ILI9881C_COMMAND_INSTR(0x08, 0x02),
-+	ILI9881C_COMMAND_INSTR(0x09, 0x00),
-+	ILI9881C_COMMAND_INSTR(0x0a, 0x00),
-+	ILI9881C_COMMAND_INSTR(0x0b, 0x00),
-+	ILI9881C_COMMAND_INSTR(0x0c, 0x00),
-+	ILI9881C_COMMAND_INSTR(0x0d, 0x00),
-+	ILI9881C_COMMAND_INSTR(0x0e, 0x00),
-+	ILI9881C_COMMAND_INSTR(0x0f, 0x00),
-+	ILI9881C_COMMAND_INSTR(0x10, 0x00),
-+	ILI9881C_COMMAND_INSTR(0x11, 0x00),
-+	ILI9881C_COMMAND_INSTR(0x12, 0x00),
-+	ILI9881C_COMMAND_INSTR(0x13, 0x00),
-+	ILI9881C_COMMAND_INSTR(0x14, 0x00),
-+	ILI9881C_COMMAND_INSTR(0x15, 0x08),
-+	ILI9881C_COMMAND_INSTR(0x16, 0x10),
-+	ILI9881C_COMMAND_INSTR(0x17, 0x00),
-+	ILI9881C_COMMAND_INSTR(0x18, 0x08),
-+	ILI9881C_COMMAND_INSTR(0x19, 0x00),
-+	ILI9881C_COMMAND_INSTR(0x1a, 0x00),
-+	ILI9881C_COMMAND_INSTR(0x1b, 0x00),
-+	ILI9881C_COMMAND_INSTR(0x1c, 0x00),
-+	ILI9881C_COMMAND_INSTR(0x1d, 0x00),
-+	ILI9881C_COMMAND_INSTR(0x1e, 0xc0),
-+	ILI9881C_COMMAND_INSTR(0x1f, 0x80),
-+	ILI9881C_COMMAND_INSTR(0x20, 0x02),
-+	ILI9881C_COMMAND_INSTR(0x21, 0x09),
-+	ILI9881C_COMMAND_INSTR(0x22, 0x00),
-+	ILI9881C_COMMAND_INSTR(0x23, 0x00),
-+	ILI9881C_COMMAND_INSTR(0x24, 0x00),
-+	ILI9881C_COMMAND_INSTR(0x25, 0x00),
-+	ILI9881C_COMMAND_INSTR(0x26, 0x00),
-+	ILI9881C_COMMAND_INSTR(0x27, 0x00),
-+	ILI9881C_COMMAND_INSTR(0x28, 0x55),
-+	ILI9881C_COMMAND_INSTR(0x29, 0x03),
-+	ILI9881C_COMMAND_INSTR(0x2a, 0x00),
-+	ILI9881C_COMMAND_INSTR(0x2b, 0x00),
-+	ILI9881C_COMMAND_INSTR(0x2c, 0x00),
-+	ILI9881C_COMMAND_INSTR(0x2d, 0x00),
-+	ILI9881C_COMMAND_INSTR(0x2e, 0x00),
-+	ILI9881C_COMMAND_INSTR(0x2f, 0x00),
-+	ILI9881C_COMMAND_INSTR(0x30, 0x00),
-+	ILI9881C_COMMAND_INSTR(0x31, 0x00),
-+	ILI9881C_COMMAND_INSTR(0x32, 0x00),
-+	ILI9881C_COMMAND_INSTR(0x33, 0x00),
-+	ILI9881C_COMMAND_INSTR(0x34, 0x04),
-+	ILI9881C_COMMAND_INSTR(0x35, 0x05),
-+	ILI9881C_COMMAND_INSTR(0x36, 0x05),
-+	ILI9881C_COMMAND_INSTR(0x37, 0x00),
-+	ILI9881C_COMMAND_INSTR(0x38, 0x3c),
-+	ILI9881C_COMMAND_INSTR(0x39, 0x35),
-+	ILI9881C_COMMAND_INSTR(0x3a, 0x00),
-+	ILI9881C_COMMAND_INSTR(0x3b, 0x40),
-+	ILI9881C_COMMAND_INSTR(0x3c, 0x00),
-+	ILI9881C_COMMAND_INSTR(0x3d, 0x00),
-+	ILI9881C_COMMAND_INSTR(0x3e, 0x00),
-+	ILI9881C_COMMAND_INSTR(0x3f, 0x00),
-+	ILI9881C_COMMAND_INSTR(0x40, 0x00),
-+	ILI9881C_COMMAND_INSTR(0x41, 0x88),
-+	ILI9881C_COMMAND_INSTR(0x42, 0x00),
-+	ILI9881C_COMMAND_INSTR(0x43, 0x00),
-+	ILI9881C_COMMAND_INSTR(0x44, 0x1f),
-+	ILI9881C_COMMAND_INSTR(0x50, 0x01),
-+	ILI9881C_COMMAND_INSTR(0x51, 0x23),
-+	ILI9881C_COMMAND_INSTR(0x52, 0x45),
-+	ILI9881C_COMMAND_INSTR(0x53, 0x67),
-+	ILI9881C_COMMAND_INSTR(0x54, 0x89),
-+	ILI9881C_COMMAND_INSTR(0x55, 0xab),
-+	ILI9881C_COMMAND_INSTR(0x56, 0x01),
-+	ILI9881C_COMMAND_INSTR(0x57, 0x23),
-+	ILI9881C_COMMAND_INSTR(0x58, 0x45),
-+	ILI9881C_COMMAND_INSTR(0x59, 0x67),
-+	ILI9881C_COMMAND_INSTR(0x5a, 0x89),
-+	ILI9881C_COMMAND_INSTR(0x5b, 0xab),
-+	ILI9881C_COMMAND_INSTR(0x5c, 0xcd),
-+	ILI9881C_COMMAND_INSTR(0x5d, 0xef),
-+	ILI9881C_COMMAND_INSTR(0x5e, 0x03),
-+	ILI9881C_COMMAND_INSTR(0x5f, 0x14),
-+	ILI9881C_COMMAND_INSTR(0x60, 0x15),
-+	ILI9881C_COMMAND_INSTR(0x61, 0x0c),
-+	ILI9881C_COMMAND_INSTR(0x62, 0x0d),
-+	ILI9881C_COMMAND_INSTR(0x63, 0x0e),
-+	ILI9881C_COMMAND_INSTR(0x64, 0x0f),
-+	ILI9881C_COMMAND_INSTR(0x65, 0x10),
-+	ILI9881C_COMMAND_INSTR(0x66, 0x11),
-+	ILI9881C_COMMAND_INSTR(0x67, 0x08),
-+	ILI9881C_COMMAND_INSTR(0x68, 0x02),
-+	ILI9881C_COMMAND_INSTR(0x69, 0x0a),
-+	ILI9881C_COMMAND_INSTR(0x6a, 0x02),
-+	ILI9881C_COMMAND_INSTR(0x6b, 0x02),
-+	ILI9881C_COMMAND_INSTR(0x6c, 0x02),
-+	ILI9881C_COMMAND_INSTR(0x6d, 0x02),
-+	ILI9881C_COMMAND_INSTR(0x6e, 0x02),
-+	ILI9881C_COMMAND_INSTR(0x6f, 0x02),
-+	ILI9881C_COMMAND_INSTR(0x70, 0x02),
-+	ILI9881C_COMMAND_INSTR(0x71, 0x02),
-+	ILI9881C_COMMAND_INSTR(0x72, 0x06),
-+	ILI9881C_COMMAND_INSTR(0x73, 0x02),
-+	ILI9881C_COMMAND_INSTR(0x74, 0x02),
-+	ILI9881C_COMMAND_INSTR(0x75, 0x14),
-+	ILI9881C_COMMAND_INSTR(0x76, 0x15),
-+	ILI9881C_COMMAND_INSTR(0x77, 0x0f),
-+	ILI9881C_COMMAND_INSTR(0x78, 0x0e),
-+	ILI9881C_COMMAND_INSTR(0x79, 0x0d),
-+	ILI9881C_COMMAND_INSTR(0x7a, 0x0c),
-+	ILI9881C_COMMAND_INSTR(0x7b, 0x11),
-+	ILI9881C_COMMAND_INSTR(0x7c, 0x10),
-+	ILI9881C_COMMAND_INSTR(0x7d, 0x06),
-+	ILI9881C_COMMAND_INSTR(0x7e, 0x02),
-+	ILI9881C_COMMAND_INSTR(0x7f, 0x0a),
-+	ILI9881C_COMMAND_INSTR(0x80, 0x02),
-+	ILI9881C_COMMAND_INSTR(0x81, 0x02),
-+	ILI9881C_COMMAND_INSTR(0x82, 0x02),
-+	ILI9881C_COMMAND_INSTR(0x83, 0x02),
-+	ILI9881C_COMMAND_INSTR(0x84, 0x02),
-+	ILI9881C_COMMAND_INSTR(0x85, 0x02),
-+	ILI9881C_COMMAND_INSTR(0x86, 0x02),
-+	ILI9881C_COMMAND_INSTR(0x87, 0x02),
-+	ILI9881C_COMMAND_INSTR(0x88, 0x08),
-+	ILI9881C_COMMAND_INSTR(0x89, 0x02),
-+	ILI9881C_COMMAND_INSTR(0x8a, 0x02),
-+	ILI9881C_SWITCH_PAGE_INSTR(4),
-+	ILI9881C_COMMAND_INSTR(0x00, 0x80),
-+	ILI9881C_COMMAND_INSTR(0x70, 0x00),
-+	ILI9881C_COMMAND_INSTR(0x71, 0x00),
-+	ILI9881C_COMMAND_INSTR(0x66, 0xfe),
-+	ILI9881C_COMMAND_INSTR(0x82, 0x15),
-+	ILI9881C_COMMAND_INSTR(0x84, 0x15),
-+	ILI9881C_COMMAND_INSTR(0x85, 0x15),
-+	ILI9881C_COMMAND_INSTR(0x3a, 0x24),
-+	ILI9881C_COMMAND_INSTR(0x32, 0xac),
-+	ILI9881C_COMMAND_INSTR(0x8c, 0x80),
-+	ILI9881C_COMMAND_INSTR(0x3c, 0xf5),
-+	ILI9881C_COMMAND_INSTR(0x88, 0x33),
-+	ILI9881C_SWITCH_PAGE_INSTR(1),
-+	ILI9881C_COMMAND_INSTR(0x22, 0x0a),
-+	ILI9881C_COMMAND_INSTR(0x31, 0x00),
-+	ILI9881C_COMMAND_INSTR(0x53, 0x78),
-+	ILI9881C_COMMAND_INSTR(0x55, 0x7b),
-+	ILI9881C_COMMAND_INSTR(0x60, 0x20),
-+	ILI9881C_COMMAND_INSTR(0x61, 0x00),
-+	ILI9881C_COMMAND_INSTR(0x62, 0x0d),
-+	ILI9881C_COMMAND_INSTR(0x63, 0x00),
-+	ILI9881C_COMMAND_INSTR(0xa0, 0x00),
-+	ILI9881C_COMMAND_INSTR(0xa1, 0x10),
-+	ILI9881C_COMMAND_INSTR(0xa2, 0x1c),
-+	ILI9881C_COMMAND_INSTR(0xa3, 0x13),
-+	ILI9881C_COMMAND_INSTR(0xa4, 0x15),
-+	ILI9881C_COMMAND_INSTR(0xa5, 0x26),
-+	ILI9881C_COMMAND_INSTR(0xa6, 0x1a),
-+	ILI9881C_COMMAND_INSTR(0xa7, 0x1d),
-+	ILI9881C_COMMAND_INSTR(0xa8, 0x67),
-+	ILI9881C_COMMAND_INSTR(0xa9, 0x1c),
-+	ILI9881C_COMMAND_INSTR(0xaa, 0x29),
-+	ILI9881C_COMMAND_INSTR(0xab, 0x5b),
-+	ILI9881C_COMMAND_INSTR(0xac, 0x26),
-+	ILI9881C_COMMAND_INSTR(0xad, 0x28),
-+	ILI9881C_COMMAND_INSTR(0xae, 0x5c),
-+	ILI9881C_COMMAND_INSTR(0xaf, 0x30),
-+	ILI9881C_COMMAND_INSTR(0xb0, 0x31),
-+	ILI9881C_COMMAND_INSTR(0xb1, 0x32),
-+	ILI9881C_COMMAND_INSTR(0xb2, 0x00),
-+	ILI9881C_COMMAND_INSTR(0xb1, 0x2e),
-+	ILI9881C_COMMAND_INSTR(0xb2, 0x32),
-+	ILI9881C_COMMAND_INSTR(0xb3, 0x00),
-+	ILI9881C_COMMAND_INSTR(0xb6, 0x02),
-+	ILI9881C_COMMAND_INSTR(0xb7, 0x03),
-+	ILI9881C_COMMAND_INSTR(0xc0, 0x00),
-+	ILI9881C_COMMAND_INSTR(0xc1, 0x10),
-+	ILI9881C_COMMAND_INSTR(0xc2, 0x1c),
-+	ILI9881C_COMMAND_INSTR(0xc3, 0x13),
-+	ILI9881C_COMMAND_INSTR(0xc4, 0x15),
-+	ILI9881C_COMMAND_INSTR(0xc5, 0x26),
-+	ILI9881C_COMMAND_INSTR(0xc6, 0x1a),
-+	ILI9881C_COMMAND_INSTR(0xc7, 0x1d),
-+	ILI9881C_COMMAND_INSTR(0xc8, 0x67),
-+	ILI9881C_COMMAND_INSTR(0xc9, 0x1c),
-+	ILI9881C_COMMAND_INSTR(0xca, 0x29),
-+	ILI9881C_COMMAND_INSTR(0xcb, 0x5b),
-+	ILI9881C_COMMAND_INSTR(0xcc, 0x26),
-+	ILI9881C_COMMAND_INSTR(0xcd, 0x28),
-+	ILI9881C_COMMAND_INSTR(0xce, 0x5c),
-+	ILI9881C_COMMAND_INSTR(0xcf, 0x30),
-+	ILI9881C_COMMAND_INSTR(0xd0, 0x31),
-+	ILI9881C_COMMAND_INSTR(0xd1, 0x2e),
-+	ILI9881C_COMMAND_INSTR(0xd2, 0x32),
-+	ILI9881C_COMMAND_INSTR(0xd3, 0x00),
-+	ILI9881C_SWITCH_PAGE_INSTR(0),
++static const struct rockchip_dw_dsi_chip_data rk3506_chip_data[] = {
++	{
++		.reg = 0xff640000,
++		.lanecfg1_grf_reg = RK3506_SYS_GRF_SOC_CON6,
++		.lanecfg1 = (FIELD_PREP_WM16_CONST(RK3506_DSI_TURNDISABLE, 0) |
++			     FIELD_PREP_WM16_CONST(RK3506_DSI_FORCERXMODE, 0) |
++			     FIELD_PREP_WM16_CONST(RK3506_DSI_FORCETXSTOPMODE, 0)),
++		.max_data_lanes = 2,
++	},
++	{ /* sentinel */ }
 +};
 +
- static const struct ili9881c_instr w552946ab_init[] = {
- 	ILI9881C_SWITCH_PAGE_INSTR(3),
- 	ILI9881C_COMMAND_INSTR(0x01, 0x00),
-@@ -1772,6 +1970,23 @@ static const struct drm_display_mode tl050hdv35_default_mode = {
- 	.height_mm	= 110,
- };
- 
-+static const struct drm_display_mode w552946aaa_default_mode = {
-+	.clock		= 65000,
-+
-+	.hdisplay	= 720,
-+	.hsync_start	= 720 + 52,
-+	.hsync_end	= 720 + 52 + 8,
-+	.htotal		= 720 + 52 + 8 + 48,
-+
-+	.vdisplay	= 1280,
-+	.vsync_start	= 1280 + 16,
-+	.vsync_end	= 1280 + 16 + 6,
-+	.vtotal		= 1280 + 16 + 6 + 15,
-+
-+	.width_mm	= 68,
-+	.height_mm	= 121,
-+};
-+
- static const struct drm_display_mode w552946aba_default_mode = {
- 	.clock		= 64000,
- 
-@@ -1983,6 +2198,15 @@ static const struct ili9881c_desc tl050hdv35_desc = {
- 	.default_address_mode = 0x03,
- };
- 
-+static const struct ili9881c_desc w552946aaa_desc = {
-+	.init = w552946aaa_init,
-+	.init_length = ARRAY_SIZE(w552946aaa_init),
-+	.mode = &w552946aaa_default_mode,
-+	.mode_flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_BURST |
-+		      MIPI_DSI_MODE_LPM | MIPI_DSI_MODE_NO_EOT_PACKET,
-+	.lanes = 2,
-+};
-+
- static const struct ili9881c_desc w552946aba_desc = {
- 	.init = w552946ab_init,
- 	.init_length = ARRAY_SIZE(w552946ab_init),
-@@ -2023,6 +2247,7 @@ static const struct of_device_id ili9881c_of_match[] = {
- 	{ .compatible = "feixin,k101-im2byl02", .data = &k101_im2byl02_desc },
- 	{ .compatible = "startek,kd050hdfia020", .data = &kd050hdfia020_desc },
- 	{ .compatible = "tdo,tl050hdv35", .data = &tl050hdv35_desc },
-+	{ .compatible = "wanchanglong,w552946aaa", .data = &w552946aaa_desc },
- 	{ .compatible = "wanchanglong,w552946aba", .data = &w552946aba_desc },
- 	{ .compatible = "ampire,am8001280g", .data = &am8001280g_desc },
- 	{ .compatible = "raspberrypi,dsi-7inch", &rpi_7inch_desc },
+ static const struct rockchip_dw_dsi_chip_data rk3568_chip_data[] = {
+ 	{
+ 		.reg = 0xfe060000,
+@@ -1690,6 +1707,9 @@ static const struct of_device_id dw_mipi_dsi_rockchip_dt_ids[] = {
+ 	}, {
+ 	 .compatible = "rockchip,rk3399-mipi-dsi",
+ 	 .data = &rk3399_chip_data,
++	}, {
++	 .compatible = "rockchip,rk3506-mipi-dsi",
++	 .data = &rk3506_chip_data,
+ 	}, {
+ 	 .compatible = "rockchip,rk3568-mipi-dsi",
+ 	 .data = &rk3568_chip_data,
 -- 
 2.51.1
 
