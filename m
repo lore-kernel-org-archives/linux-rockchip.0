@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C7D8CCFA1A
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Nov 2025 02:07:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1344ACCF9F8
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Nov 2025 02:07:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vCw3sXlS/WdEnSkDj4BX4H424vaIfKuCfKiGEDkzjrk=; b=iK2/9PY9/no+TA
-	g6dn+dPlA+p74FX1Pd2MbTRQEkDeDs7TCCAU1HVNspAV6kH029NIT0AcAnPt7R/9s0t25+LFQsGB9
-	fF0kGt0j9ASC7WRWIM+bqtqQpKYJlq9ldoaYuXhdEDtWZ5zYLIfZQ9AjZh8K67CANEGsotRkpYnru
-	5yFNUZ0SC1AnF2bF8GuknHfpvjj51wHMEU52js80fvq5hvqf8b2SXMnpD6533EFaLJNw4UGhvjWxf
-	QY3wSHZgD1fJj82cH8DFBX1xQqbj7aPL0EndPvfd5o2csoQbLAfTgElTPAzPhDP2W7yj5OQ2frLdI
-	dkPTqejzKnjCKmXURtHw==;
+	List-Owner; bh=qVWDBmzDdSz0Rs20ozIZXVOeNr/gHM4qc4Et/Jq3HuA=; b=olSttxW2y7YWw+
+	UF5sJI5bPINa7sawLg3N/9vpQC2lT80B3KgUXuNjaZw42yXVlX9ouUZfhgqb0pOuzVrtNfbW8dRwW
+	F0uVvMQ5DG72cSDkz7eRKiN7jr2PQZ+y2efCYGzkcU5j1bMYY4QUxSAOaDsyfDjMg1LdFs0IfGGXF
+	/2a58R5WDhbycBdwSIohHzg0pi52zMYzGBvP+R0lyFxfmR/6w8vP1nMta4kN1qFCkHwZx6Ag/ajtV
+	Qp39g4/muuLYo030Dk5sGQ28DzN5Apbh6xkUDEMdmNzIjPOSnpsLz6iGG+HIp9rcgeQVoWrTVWPuw
+	ABfAgEMmDbaVNzmoiN4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGpPQ-0000000EjQa-3yLX;
-	Thu, 06 Nov 2025 02:07:32 +0000
-Received: from smtpbgsg1.qq.com ([54.254.200.92])
+	id 1vGpPW-0000000EjY0-1KoD;
+	Thu, 06 Nov 2025 02:07:38 +0000
+Received: from smtpbgau2.qq.com ([54.206.34.216])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGpPL-0000000EjGt-3FCO;
-	Thu, 06 Nov 2025 02:07:29 +0000
+	id 1vGpPT-0000000EjGy-0gqc;
+	Thu, 06 Nov 2025 02:07:36 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
-	s=altu2504; t=1762394821;
-	bh=aJfT3al64j89KUZlTband3H4GOH/hk+OuA8dIFJ1TmA=;
+	s=altu2504; t=1762394827;
+	bh=jCvXR+xtHN8zNeI9HyrNbgQst6B5lB1aewkYCgwCIvc=;
 	h=From:To:Subject:Date:Message-Id;
-	b=YAMzm5Vf+xNv1ToAgP0q47eMYraDXkm6A3a9ioofICo8SCGt9j5uUilHhvT07OmRG
-	 NnTATt+M59f891jAHtyrGQv81KTp4wmEfK1OdSykiAnzWCbB+ZOYLN4+0UtlnOdp58
-	 KJHSTvD9QsnOxAkKIcY6uRHqylZu7Y4reQ4DF0n0=
-X-QQ-mid: esmtpgz15t1762394819t768674e9
-X-QQ-Originating-IP: UM6wceQl0W0g/3PA4zWPUeXO1m1KWpgObbxmmmz1aKA=
+	b=aT6HNn7Ar4rrBQwhjXx0ZCBET91eMNEjO8q4eQPbqrjD3GlpfgDrgwaeJerqVG5kn
+	 2VpG64pSlgxE5tc3RCR5081kCQvtRcEy0W89l6PKjsAP8mmr7gaOaZ1xc5qMqNWZR0
+	 pDA1+bC5I/8csPo0PI/P2WFtOXOxYfVCNvgyAInI=
+X-QQ-mid: esmtpgz15t1762394826t5cc258c4
+X-QQ-Originating-IP: SeeXlzF1dnwv3Vr5Y8FlyYCG69HSWnlfwjiW2HttmNM=
 Received: from DESKTOP-8BT1A2O.localdomain ( [58.22.7.114])
 	by bizesmtp.qq.com (ESMTP) with 
-	id ; Thu, 06 Nov 2025 10:06:56 +0800 (CST)
+	id ; Thu, 06 Nov 2025 10:07:03 +0800 (CST)
 X-QQ-SSF: 0000000000000000000000000000000
 X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 5131190821667047602
+X-BIZMAIL-ID: 10135614962610030786
 From: Chaoyi Chen <kernel@airkyi.com>
 To: Neil Armstrong <neil.armstrong@linaro.org>,
 	Jessica Zhang <jessica.zhang@oss.qualcomm.com>,
@@ -63,37 +63,37 @@ Cc: dri-devel@lists.freedesktop.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-phy@lists.infradead.org,
-	Chaoyi Chen <chaoyi.chen@rock-chips.com>
-Subject: [PATCH 4/9] dt-bindings: display: rockchip,vop: Add compatible for rk3506
-Date: Thu,  6 Nov 2025 10:06:27 +0800
-Message-Id: <20251106020632.92-5-kernel@airkyi.com>
+	Chaoyi Chen <chaoyi.chen@rock-chips.com>,
+	Hongming Zou <hongming.zou@rock-chips.com>
+Subject: [PATCH 6/9] phy: rockchip: inno-dsidphy: Add support for rk3506
+Date: Thu,  6 Nov 2025 10:06:29 +0800
+Message-Id: <20251106020632.92-7-kernel@airkyi.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20251106020632.92-1-kernel@airkyi.com>
 References: <20251106020632.92-1-kernel@airkyi.com>
 X-QQ-SENDSIZE: 520
 Feedback-ID: esmtpgz:airkyi.com:qybglogicsvrgz:qybglogicsvrgz6b-0
-X-QQ-XMAILINFO: MvWsgqCEECOfPYMVn5vCz4J74sJwC9vSpGLaeFiiVJlMZZiS7ytL3P0S
-	BqKWhHrwxo1dhdAPR6Tr1Xz9LkRE8uMEQlyawBS5p5MF3dlA+jwurBcCCR/BkzCafsGg6x8
-	K0LdYkgv29hvyTAW8txi4iSNAhw8DE4Yq3ccD1MzpuWUwsxE9KV62cBy2LnZoZfc1YZkJnK
-	7Fs7fcVGK/oCB8nTOBL+SKvJsk8CmM+Zt3e/xxKQS8Ku3K/mNfwVTsRda74tSkyK0MTvJaY
-	0qW0jZ9lX/ux1L8G0nn12NmbmCbLJ/CaUWTg4XR4Llij+k14wvTiDHnosSmYDkI5WnGJkzE
-	k6o2e+oCKfvuh+ckXWTbDPSOr+jJbThJuawuwN3VKaJep95Gc7Btyr6n9LjM1es4v1xwpSe
-	Jb8H8hxX30Jwy7M2iQaPB/Lv1B39L4sr8XiEo+FMaRaozLQBikxyRURHp7qpUSkJ1nfr5RK
-	/mQZ/2n7EJiJErx6xtWWSijyO7dQ2Pshcxq7GiF1419HXZLOR46QnRlAeu2kbNRXNcQ5Mbb
-	y2odrpb4nQI3a1KCHn2fROx/1zDpPq6jThXUN3o0HGKDr1VSOWmBAEP7gl7qnlnKRh21ASR
-	kYR0rHhizWbU20N0zEQtSGufVI2R9Lf5DbxrlSIeTc9NAplJlo68PgqKBU8TPc/dkAhSg6C
-	wR0qRrdtDQ4pGuBvfjTHNBdGibTj/b+K17Cg/V9nGKh8xF2eEXJXKONc5u5IAY5HU7LlxYf
-	8+Zi3gxZiThF+CTKF0BkVD9npkf/PXkhwdi/ztbGOmVKuU9HFulEChLW8WiFK5wsJXzcrTd
-	Lr0jXUGpAvicGcpGjLchZ4UQ3a38XIrvr/Qn3VkdyKCY3uO4UawOQVeP6bdiRJi6f7j46qW
-	3mARXa0aEWVs9j65bnIsLmC8ACXJr+4WZTsxsaEVBooxXcP+YrHd+p9e/MSYnnBu69UrGBn
-	hpW5knfqzNOHqnhdxv9gsdvmOM2jUXshJ9iAHu598Z+gpHqx5XDxJkRnHkD5JZ1EGdJY+lZ
-	xD3IqmvZ5uG/QRtf/8U9edwBmFnwk=
-X-QQ-XMRINFO: NI4Ajvh11aEj8Xl/2s1/T8w=
+X-QQ-XMAILINFO: NsKw77UaNFtDdX5qudBkf8iJyIWz6OVV8/QTysgzrECpPkS1KjAEl6P4
+	/MCOfW/JI1n1fhndzaEDAR6fMxWIOst+HRGFFdjjl5OSIKwTA35GdbfAPs6kTb6wE51c+MH
+	UoW4K4gbv8SL7CoXYqQWeUTAvCoa91x+7D9/eW3fEEHYi63+WWRDee2FcHuMYOOKz92mlaB
+	tf5i7NFzCfT6Ei4GJyqom4vkszQvPdMTlL4LevMSFRL51D3yVSyhuxCm2N+nQiFDDRXIEI1
+	s3IRmlmH4l4E6pbPQbKp/lNpYtDoaC17V7n/ge/7jVaPYLH7M87BhpGBLxkF3xdfi/JI4OU
+	OVhZ/s1PdR0qqdsLmvUiAJ/riEahV/zdgi5n1BZfT8GXDbqvVF3BgSBij2K/BtETlmRzfag
+	ranxeRV0wu/v4E8RyTWcktkBtrb3+UxTxV/TYISiLgWlRvhnrmhONIVxgOL/sJMXF/QQKQo
+	lm95ePRW3NQ0xO9GnVsQerO0IeBFpycfIACossIXuOarehN/9ttlKiTaajCTR41jcHSDrhd
+	tDHKK9T3MbTRVCjv8CPsv1/WlVnq8SZIgRES0srWMIBo14ZoU6cayyliAH21ixajHj2YmKm
+	uLaBOuUFKMaupymOIdkYfP4AgWwj8hanhONec/rp+I07Wl5Nx8F5zqXDm3aa/ldCtseDHPm
+	Hx553mL9J+KRmFSy7InXfs91OQRH7dep3AKcTWNa43Ybh4Fhz4+2MRgZDgvs0C0/MaVsCHw
+	icurMSNFOVHTu6i4TC8ZAeFP/D+1CahpSwwoyPoQj1AMB2OoslDuFbvPvECL92KXEdFYf9s
+	4rv11V4A9hdcloOx+KZ/h6BRNwvqoHvYLsz8g0NiCBcoNCYyD5BNOaEwTi7ypvhCryFCOGQ
+	pT6vj01N0ZLXBQljVQIe56w/jvcof2y9azaxOR4nR7XuuxHYqhfQ3p5pM8aENCBAFOloKgw
+	h0Z5xH31Xl+gVW0hiUdtpavVazfuU+lDq9bfgkekY3FEKF8nnDklOK5go+AzLi5SwTfBpgo
+	wCvBWLskLcq3hh5Ycfsza0k6CcMCOKU4pR5nfJUQ==
+X-QQ-XMRINFO: M/715EihBoGSf6IYSX1iLFg=
 X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251105_180728_212280_C7ABA26E 
-X-CRM114-Status: UNSURE (   7.57  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251105_180735_643678_6D678E1E 
+X-CRM114-Status: GOOD (  15.60  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,26 +113,184 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
 
-The rk3506 VOP has adopted a new implementation.
-Add a new compatible string for it.
+For MIPI mode, the inno-dsidphy found on RK3506 supports up to 2 lanes
+and a maximum data rate of 1.5GHz.
 
+Signed-off-by: Hongming Zou <hongming.zou@rock-chips.com>
 Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
 ---
- .../devicetree/bindings/display/rockchip/rockchip-vop.yaml       | 1 +
- 1 file changed, 1 insertion(+)
+ .../phy/rockchip/phy-rockchip-inno-dsidphy.c  | 91 ++++++++++++++++++-
+ 1 file changed, 88 insertions(+), 3 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop.yaml
-index 8b5f58103dda..fdf4b1109da2 100644
---- a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop.yaml
-+++ b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop.yaml
-@@ -31,6 +31,7 @@ properties:
-       - rockchip,rk3368-vop
-       - rockchip,rk3399-vop-big
-       - rockchip,rk3399-vop-lit
-+      - rockchip,rk3506-vop
-       - rockchip,rv1126-vop
+diff --git a/drivers/phy/rockchip/phy-rockchip-inno-dsidphy.c b/drivers/phy/rockchip/phy-rockchip-inno-dsidphy.c
+index d5b1a4e2f7d3..30d5e5ddff4a 100644
+--- a/drivers/phy/rockchip/phy-rockchip-inno-dsidphy.c
++++ b/drivers/phy/rockchip/phy-rockchip-inno-dsidphy.c
+@@ -99,10 +99,30 @@
+ #define VOD_MID_RANGE				0x3
+ #define VOD_BIG_RANGE				0x7
+ #define VOD_MAX_RANGE				0xf
++/* Analog Register Part: reg18 */
++#define LANE0_PRE_EMPHASIS_ENABLE_MASK		BIT(6)
++#define LANE0_PRE_EMPHASIS_ENABLE		BIT(6)
++#define LANE0_PRE_EMPHASIS_DISABLE		0
++#define LANE1_PRE_EMPHASIS_ENABLE_MASK		BIT(5)
++#define LANE1_PRE_EMPHASIS_ENABLE		BIT(5)
++#define LANE1_PRE_EMPHASIS_DISABLE		0
++/* Analog Register Part: reg19 */
++#define PRE_EMPHASIS_RANGE_SET_MASK		GENMASK(7, 6)
++#define PRE_EMPHASIS_RANGE_SET(x)		UPDATE(x, 7, 6)
+ /* Analog Register Part: reg1E */
+ #define PLL_MODE_SEL_MASK			GENMASK(6, 5)
+ #define PLL_MODE_SEL_LVDS_MODE			0
+ #define PLL_MODE_SEL_MIPI_MODE			BIT(5)
++/* Analog Register Part: reg20 */
++#define LANE0_PRE_EMPHASIS_RANGE_SET_MASK	GENMASK(7, 6)
++#define LANE0_PRE_EMPHASIS_RANGE_SET(x)		UPDATE(x, 7, 6)
++/* Analog Register Part: reg21 */
++#define LANE1_PRE_EMPHASIS_RANGE_SET_MASK	GENMASK(7, 6)
++#define LANE1_PRE_EMPHASIS_RANGE_SET(x)		UPDATE(x, 7, 6)
++#define PRE_EMPHASIS_MIN_RANGE			0x0
++#define PRE_EMPHASIS_MID_RANGE			0x1
++#define PRE_EMPHASIS_MAX_RANGE			0x2
++#define PRE_EMPHASIS_RESERVED_RANGE		0x3
+ /* Digital Register Part: reg00 */
+ #define REG_DIG_RSTN_MASK			BIT(0)
+ #define REG_DIG_RSTN_NORMAL			BIT(0)
+@@ -193,6 +213,7 @@
  
-   reg:
+ enum phy_max_rate {
+ 	MAX_1GHZ,
++	MAX_1_5GHZ,
+ 	MAX_2_5GHZ,
+ };
+ 
+@@ -200,6 +221,7 @@ struct inno_video_phy_plat_data {
+ 	const struct inno_mipi_dphy_timing *inno_mipi_dphy_timing_table;
+ 	const unsigned int num_timings;
+ 	enum phy_max_rate max_rate;
++	unsigned int max_lanes;
+ };
+ 
+ struct inno_dsidphy {
+@@ -258,6 +280,24 @@ struct inno_mipi_dphy_timing inno_mipi_dphy_timing_table_max_1ghz[] = {
+ 	{1000000000, 0x0, 0x09, 0x20, 0x09, 0x27},
+ };
+ 
++static const
++struct inno_mipi_dphy_timing inno_mipi_dphy_timing_table_max_1_5ghz[] = {
++	{ 110, 0x02, 0x7f, 0x16, 0x02, 0x02},
++	{ 150, 0x02, 0x7f, 0x16, 0x03, 0x02},
++	{ 200, 0x02, 0x7f, 0x17, 0x04, 0x02},
++	{ 250, 0x02, 0x7f, 0x17, 0x05, 0x04},
++	{ 300, 0x02, 0x7f, 0x18, 0x06, 0x04},
++	{ 400, 0x03, 0x7e, 0x19, 0x07, 0x04},
++	{ 500, 0x03, 0x7c, 0x1b, 0x07, 0x08},
++	{ 600, 0x03, 0x70, 0x1d, 0x08, 0x10},
++	{ 700, 0x05, 0x40, 0x1e, 0x08, 0x30},
++	{ 800, 0x05, 0x02, 0x1f, 0x09, 0x30},
++	{1000, 0x05, 0x08, 0x20, 0x09, 0x30},
++	{1200, 0x06, 0x03, 0x32, 0x14, 0x0f},
++	{1400, 0x09, 0x03, 0x32, 0x14, 0x0f},
++	{1500, 0x0d, 0x42, 0x36, 0x0e, 0x0f},
++};
++
+ static const
+ struct inno_mipi_dphy_timing inno_mipi_dphy_timing_table_max_2_5ghz[] = {
+ 	{ 110000000, 0x02, 0x7f, 0x16, 0x02, 0x02},
+@@ -372,6 +412,7 @@ static void inno_dsidphy_mipi_mode_enable(struct inno_dsidphy *inno)
+ 	u32 hs_exit, clk_post, clk_pre, wakeup, lpx, ta_go, ta_sure, ta_wait;
+ 	u32 hs_prepare, hs_trail, hs_zero, clk_lane_hs_zero, data_lane_hs_zero;
+ 	unsigned int i;
++	u32 val;
+ 
+ 	timings = inno->pdata->inno_mipi_dphy_timing_table;
+ 
+@@ -393,6 +434,23 @@ static void inno_dsidphy_mipi_mode_enable(struct inno_dsidphy *inno)
+ 		phy_update_bits(inno, REGISTER_PART_ANALOG, 0x0b,
+ 				CLOCK_LANE_VOD_RANGE_SET_MASK,
+ 				CLOCK_LANE_VOD_RANGE_SET(VOD_MAX_RANGE));
++	} else if (inno->pdata->max_rate == MAX_1_5GHZ) {
++		phy_update_bits(inno, REGISTER_PART_ANALOG, 0x18,
++				LANE0_PRE_EMPHASIS_ENABLE_MASK, LANE0_PRE_EMPHASIS_ENABLE);
++		phy_update_bits(inno, REGISTER_PART_ANALOG, 0x18,
++				LANE1_PRE_EMPHASIS_ENABLE_MASK, LANE1_PRE_EMPHASIS_ENABLE);
++		phy_update_bits(inno, REGISTER_PART_ANALOG, 0x19,
++				PRE_EMPHASIS_RANGE_SET_MASK,
++				PRE_EMPHASIS_RANGE_SET(PRE_EMPHASIS_MID_RANGE));
++		phy_update_bits(inno, REGISTER_PART_ANALOG, 0x1a,
++				LANE0_PRE_EMPHASIS_RANGE_SET_MASK,
++				LANE0_PRE_EMPHASIS_RANGE_SET(PRE_EMPHASIS_MID_RANGE));
++		phy_update_bits(inno, REGISTER_PART_ANALOG, 0x1b,
++				LANE1_PRE_EMPHASIS_RANGE_SET_MASK,
++				LANE1_PRE_EMPHASIS_RANGE_SET(PRE_EMPHASIS_MID_RANGE));
++		phy_update_bits(inno, REGISTER_PART_ANALOG, 0x0b,
++				CLOCK_LANE_VOD_RANGE_SET_MASK,
++				CLOCK_LANE_VOD_RANGE_SET(VOD_MAX_RANGE));
+ 	}
+ 	/* Enable PLL and LDO */
+ 	phy_update_bits(inno, REGISTER_PART_ANALOG, 0x01,
+@@ -518,10 +576,25 @@ static void inno_dsidphy_mipi_mode_enable(struct inno_dsidphy *inno)
+ 				T_TA_WAIT_CNT(ta_wait));
+ 	}
+ 
+-	/* Enable all lanes on analog part */
++	/* Enable lanes on analog part */
++	switch (inno->pdata->max_lanes) {
++	case 1:
++		val =  LANE_EN_0;
++		break;
++	case 2:
++		val =  LANE_EN_0 | LANE_EN_1;
++		break;
++	case 3:
++		val = LANE_EN_0 | LANE_EN_1 | LANE_EN_2;
++		break;
++	case 4:
++	default:
++		val = LANE_EN_0 | LANE_EN_1 | LANE_EN_2 | LANE_EN_3;
++		break;
++	}
++
+ 	phy_update_bits(inno, REGISTER_PART_ANALOG, 0x00,
+-			LANE_EN_MASK, LANE_EN_CK | LANE_EN_3 | LANE_EN_2 |
+-			LANE_EN_1 | LANE_EN_0);
++			LANE_EN_MASK, LANE_EN_CK | val);
+ }
+ 
+ static void inno_dsidphy_lvds_mode_enable(struct inno_dsidphy *inno)
+@@ -680,12 +753,21 @@ static const struct inno_video_phy_plat_data max_1ghz_video_phy_plat_data = {
+ 	.inno_mipi_dphy_timing_table = inno_mipi_dphy_timing_table_max_1ghz,
+ 	.num_timings = ARRAY_SIZE(inno_mipi_dphy_timing_table_max_1ghz),
+ 	.max_rate = MAX_1GHZ,
++	.max_lanes = 4,
++};
++
++static const struct inno_video_phy_plat_data max_1_5ghz_video_phy_plat_data = {
++	.inno_mipi_dphy_timing_table = inno_mipi_dphy_timing_table_max_1_5ghz,
++	.num_timings = ARRAY_SIZE(inno_mipi_dphy_timing_table_max_1_5ghz),
++	.max_rate = MAX_1_5GHZ,
++	.max_lanes = 2,
+ };
+ 
+ static const struct inno_video_phy_plat_data max_2_5ghz_video_phy_plat_data = {
+ 	.inno_mipi_dphy_timing_table = inno_mipi_dphy_timing_table_max_2_5ghz,
+ 	.num_timings = ARRAY_SIZE(inno_mipi_dphy_timing_table_max_2_5ghz),
+ 	.max_rate = MAX_2_5GHZ,
++	.max_lanes = 4,
+ };
+ 
+ static int inno_dsidphy_probe(struct platform_device *pdev)
+@@ -767,6 +849,9 @@ static const struct of_device_id inno_dsidphy_of_match[] = {
+ 	}, {
+ 		.compatible = "rockchip,rk3368-dsi-dphy",
+ 		.data = &max_1ghz_video_phy_plat_data,
++	}, {
++		.compatible = "rockchip,rk3506-dsi-dphy",
++		.data = &max_1_5ghz_video_phy_plat_data,
+ 	}, {
+ 		.compatible = "rockchip,rk3568-dsi-dphy",
+ 		.data = &max_2_5ghz_video_phy_plat_data,
 -- 
 2.51.1
 
