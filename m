@@ -4,73 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCBFACCFA13
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Nov 2025 17:28:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58A8BCCFA05
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Nov 2025 18:11:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lOc3KPSiUKqSs9BDEqygsu6VnGHL7+1E3cBK8NnRpLE=; b=t8HB/dTrN7JWc8DKeV7vRImpNx
-	s4eAyq2CZUE71RX71AZPsLx+Fy9ZX53rGaBx/SSqBlGr1kD4BBvNM9//0jZanOrUMDEGIKmGNtQ7k
-	15oPhVgKszRQcM8G7CBJTu+7b7USNLveGxj2H7vo9Kj4RH0MlQ9G0Yl8MZgZWRaSFGVBkQBkLbdMH
-	OV7w2pQMFSJgejVyv17LiJCDnU8F2xjscr8BYtG56d6wqzbLr0yPEdgSsnXJe3VG45lHL2FqnaMS0
-	8RmHyCK1wr8w7GVI5Uh6mx1mGZHCxDZ0FRZ0l01ksYaKGvUAkUnHatAtyUXwxy7wFyCBCvE3WmkoX
-	bs9SsfmA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=zQQKahC7kJnbnHL7aJ8rd+fPAWeTpwjCFLmb9oTCQWY=; b=ydIwBJO9uNLW65
+	ugamgtt5klKqDO5uYRAXUJM+oIIrkXd7CPgs1WOwjhMveG+57vEigyRZqRzFvPgySF1pm8tzPLdwl
+	OAAu1MBxSjIwCOvS5hvmmB9poY4h+dokitKXP/jlu8SoCrWpGIiWnDUdrttXMue1fAcX85+XG+9Op
+	PcQoI6KuljdiZ28QmaaK7VPIhSJrRGWwSPXAtAGiYwnfHGs8AuEHob1sBm54Va2NzokBViNhQTGEp
+	qkjg+21UBKf0FjoZiEtmIepeBoJelKYmXEx8F80HE1tpo55/GjlKXFlvribtKJc4aAem2JzwxGYqT
+	qrRchc2QYKG+FSqYql+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vH3mh-0000000G1c0-2VVq;
-	Thu, 06 Nov 2025 17:28:31 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vH4SU-0000000G4rC-2RFj;
+	Thu, 06 Nov 2025 18:11:42 +0000
+Received: from mail-oa1-x34.google.com ([2001:4860:4864:20::34])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vH3me-0000000G1a5-0hiO;
-	Thu, 06 Nov 2025 17:28:29 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id BC5FD419A7;
-	Thu,  6 Nov 2025 17:28:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 818A5C116B1;
-	Thu,  6 Nov 2025 17:28:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1762450107;
-	bh=iC6Sx3olaO5GIbhILXITGGp5LFe0wk6ZVESyi6YJa2c=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=sZ/RhAlPp91Mcy1gWTPrw7f3QWkfcTayy9dLFwOf2tcTfXVkM0kPETL+M35yIWeD8
-	 Z7vRAcMc7Gih4uILpZ85GUThjO5PmTL3ZoynkD1DBRl0/Ra4aCjINSqgAIGGZbjI0Y
-	 5vevItUdsd7wjA69sCF7U4GKYAbVy06qJRMCmq9Pm9IIUzOQzvSKXxqGotopm95QEz
-	 v26R4Zc4ZhQdM2K1xSmJMhM2K63QMdZkXTPOkDnW3GFF7pvdhh16q380+vw4TfLEO+
-	 1hpDKGr1+VtdnU7UeJdRDBqjpJStrgXPORz2PDGKWkFI3nn7c4X2v13DY1r/FVY83d
-	 Ucj6JVHe60/Eg==
-Date: Thu, 6 Nov 2025 17:28:21 +0000
-From: Conor Dooley <conor@kernel.org>
-To: Chaoyi Chen <kernel@airkyi.com>
-Cc: Neil Armstrong <neil.armstrong@linaro.org>,
-	Jessica Zhang <jessica.zhang@oss.qualcomm.com>,
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Sandy Huang <hjc@rock-chips.com>,
-	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
-	Andy Yan <andy.yan@rock-chips.com>, Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-phy@lists.infradead.org,
-	Chaoyi Chen <chaoyi.chen@rock-chips.com>
-Subject: Re: [PATCH 1/9] dt-bindings: ili9881c: Add compatible string for
- Wanchanglong w552946aaa
-Message-ID: <20251106-kung-lunacy-c5d7abc9208d@spud>
-References: <20251106020632.92-1-kernel@airkyi.com>
- <20251106020632.92-2-kernel@airkyi.com>
+	id 1vH4SR-0000000G4pp-21uU
+	for linux-rockchip@lists.infradead.org;
+	Thu, 06 Nov 2025 18:11:40 +0000
+Received: by mail-oa1-x34.google.com with SMTP id 586e51a60fabf-3c92328d0bcso719636fac.2
+        for <linux-rockchip@lists.infradead.org>; Thu, 06 Nov 2025 10:11:39 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1762452698; x=1763057498; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=cpT0TLdGzfQfSoii4/bs36ZSx7naUbNo4dP7DJ25fa0=;
+        b=OirAU8IUGfpqjxGOJAz8bAyJgEH6o7qDhLiS4HYAyh5rAHs225EQ0thgl/5tTuZ8sX
+         e+GUspz/FiicWpVjb0UULPxQ+f4AYtHwTR++lE73YdNzFzJ8NpoK3IwD48GeUSvdZ3c5
+         uSFd9SmpvoU2bEXoFwC6ZpnloilIFVkOLoyQ1kZR6MgzapJIKP+nHOq/ioy+2KtKFwEv
+         sFi8Q/tkZvVDQ9tK5FdsrbWVhDB/UkhemVg+6tNsVjK2ylC/sX9u5QzrrfTEnAglceFx
+         HMKZnep45JXhf0TO15T7ZfB7vlnALV6kkmpBuhbHGzIu/vfBodjYo4+NyBEa11aE+X+F
+         Xp2g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1762452698; x=1763057498;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=cpT0TLdGzfQfSoii4/bs36ZSx7naUbNo4dP7DJ25fa0=;
+        b=G3hxNTRjK4dGHgvgxUgQaojOGsnzLK8VL4WnfXQAOsj7BastInYk4hZcMDPFZzBt15
+         MeqRtcIbHv5mp+DZEmnPug8buaRbingJdUU10XxWxAcgLDr4Dz1YRB7pKRBom8NcVdDN
+         mTV9i+3idgInDQZ6AOz4VEnuRTxYkGzkMtMkUL5E5VUhCuoY3rOk2qnr8xfQLIs26Goh
+         I+m61Zkv/kWK6YHyZ1sF3pZp+1zGJaPQJDiOySBXb/Wpq6sKXKEp6TZJ7tXmZJuvGypc
+         YejtsSikkGLyZL7tx5yj8Xu15Kdiz9bdVwKNBr9eGrCERUYc708qtQvqK72VXVD4rTtf
+         738g==
+X-Gm-Message-State: AOJu0YxNUgQHGaca1/5VJc4BgzN2du5B0qFqW0NxLgw+3AWkwLaALPzy
+	vgiLy5jaK3B0jzWSjW731VQWNS3bCsMGeUDoutSnOmXwsaTkaXvjjb/p4a+QZg==
+X-Gm-Gg: ASbGncvC3eQP2x5dsF4eud1EH7XH98GC99SCiv9POBZWVxkacmV4+o6oPcZBmYIg7Xx
+	Gvf+sxTT44YU3qrJmCmEgpPocBZD5bspBghKSC+TVWSjM/eIOPG4JZG7fi+pu7K9E+S9KsZMjta
+	xiAg7YUQt0wjDJ3sAA8vAknFVb5iveyFM/50Nd6OLeAciogEAdleZCTjno/2kIsr/oLb4bNAVlc
+	yRSIyhRE/YSphWNZA4Ci0LxXKZHu8G0QLTr5VPOlnUExaJft2QKDqMb+OOnMaHw+uDIYrHTUX7G
+	+WWvt3eynUFI8QuW8Xxozjao7eRuPHz3y95RzRVY2WUcgUSwfpZG+yG0pa4MvEmPX/L1nr3LXQP
+	se46TWu7l/2ogIpjP07EfNZ7WOXiXojAga88utjsZuYYDy7Ojx4bKljUJDe0gFnQw4R1wvmLiSM
+	E32Uc/YRC01BTVpBZCfNg=
+X-Google-Smtp-Source: AGHT+IGAvjoXA76/UDaqXpOU4Fcz8E3D7Krbf8yR4RW+nCN1vEdGUmxv0HqWHlh+xaipNHgHQc4imw==
+X-Received: by 2002:a05:6871:5b1b:b0:3d2:5ad4:4e7 with SMTP id 586e51a60fabf-3e41e6afbb2mr348131fac.47.1762452697786;
+        Thu, 06 Nov 2025 10:11:37 -0800 (PST)
+Received: from localhost.localdomain ([2600:1700:fb0:1bc0:41f9:c9d3:db30:c36a])
+        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-3e41ed0aa06sm137739fac.8.2025.11.06.10.11.36
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 06 Nov 2025 10:11:37 -0800 (PST)
+From: Chris Morgan <macroalpha82@gmail.com>
+To: linux-rockchip@lists.infradead.org
+Subject: [PATCH 0/3] Add HDMI for Gameforce Ace
+Date: Thu,  6 Nov 2025 12:09:11 -0600
+Message-ID: <20251106180914.768502-1-macroalpha82@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-In-Reply-To: <20251106020632.92-2-kernel@airkyi.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251106_092828_224313_7F1E9851 
-X-CRM114-Status: UNSURE (   6.52  )
+X-CRM114-CacheID: sfid-20251106_101139_664225_75F526F6 
+X-CRM114-Status: UNSURE (   8.57  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -83,48 +90,33 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============2034087444410439779=="
+Cc: mripard@kernel.org, devicetree@vger.kernel.org, conor+dt@kernel.org, Chris Morgan <macromorgan@hotmail.com>, rfoss@kernel.org, tzimmermann@suse.de, jonas@kwiboo.se, neil.armstrong@linaro.org, heiko@sntech.de, sebastian.reichel@collabora.com, jernej.skrabec@gmail.com, dri-devel@lists.freedesktop.org, andrzej.hajda@intel.com, andy.yan@rock-chips.com, krzk+dt@kernel.org, robh@kernel.org, Laurent.pinchart@ideasonboard.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+From: Chris Morgan <macromorgan@hotmail.com>
 
---===============2034087444410439779==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="ofQ0I7gBfCHdH+8t"
-Content-Disposition: inline
+Add support for the micro HDMI port for the Gameforce Ace. This port does
+not have a HPD pin so it requires making changes to the HDMI controller
+to support this configuration.
 
+Chris Morgan (3):
+  dt-bindings: display: rockchip: Add no-hpd for dw-hdmi-qp controller
+  drm/bridge: dw-hdmi-qp: Add support for missing HPD
+  arm64: dts: rockchip: Add HDMI to Gameforce Ace
 
---ofQ0I7gBfCHdH+8t
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+ .../rockchip/rockchip,rk3588-dw-hdmi-qp.yaml  |  6 ++
+ .../dts/rockchip/rk3588s-gameforce-ace.dts    | 63 +++++++++++++++++++
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c  | 35 +++++++++--
+ 3 files changed, 100 insertions(+), 4 deletions(-)
 
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
-pw-bot: not-applicable
+-- 
+2.43.0
 
---ofQ0I7gBfCHdH+8t
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaQzatQAKCRB4tDGHoIJi
-0rwnAQDmcL+k21bj18YzPi7gOSkRemWwpLsYjKt9s2bYSP+QyQEAxoCT6xwaVu0E
-/KkqsLi7QzzgY/xbeYqQKIK693W4pwI=
-=sGc8
------END PGP SIGNATURE-----
-
---ofQ0I7gBfCHdH+8t--
-
-
---===============2034087444410439779==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============2034087444410439779==--
-
