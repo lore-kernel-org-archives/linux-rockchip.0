@@ -4,95 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1AE56CCFA0D
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Nov 2025 02:08:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DABC3CCFA05
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Nov 2025 03:07:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=a9oKy9YR2wEcS5yY6L+ZeW4gAwwPMe+tpT/PhUzFuHA=; b=VzFJpvUH77vjIG
-	qAtOk+a34/DzrRIA+7nZyGsICUD0mgGcyfLsueBDPrZX70jibil8JsDuAjJBg+/k5ZkGNLf3X1aMZ
-	hI5Dx6GPksDj1RUssJPVY9//20TzlGhOCrs4IcutDPiaD546EPlv/EPyEfD/lEKcAvywiEJIbLr/K
-	QpqBl0Rh8pHMZSp57FRcV80D2KNfVYU+AKsTaXDVlaEfQKyPhi+s/E6+fQxbutGuObnbSRC6QOAz3
-	TyDd/L0C3vlCfX7cvsyNa7w2l5ne2ovoA48vw3DBOQmExmWIHy03GZ99NQfng3mTsHI61gGqb5Ct8
-	mGMrLJtv0SWbmKCYAmsg==;
+	List-Owner; bh=7cl7ym4IMLFJibkqqmlR61gwHEncY1HzAudcT1gWQZA=; b=VAnaL0aeVbCIHQ
+	h8btDHF9qxU0r29BghqmxY+jbC96y8hFV/RuKt4g+Oa+Jjy8bTtCL6OEUFEbW9HVMje0sygoUjjdZ
+	+dyhskKj94kp37s3LxOOVNTib4dpP5d9wNQMGV4peolVjlz2nVIDEn3yRDAlQNx3GrolSSH1Ktrc5
+	OjYBDU6UVrzYTLKUeUUcUh+AhkbcmlQnHL68e+BOmJaLrrUGqm+GryLrvrEKrIo/l6mahk/M3mBVZ
+	x7eKIDFOKZ32v4pZ+7Bp0sfHgQSHQhvj2s12Aw5AUJwow6JRFlbRaqSj2XUhZnbyljPL1CcRE4AeC
+	/3PPjCJhAVMm0IAc7IKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGpPs-0000000Ek21-2yg3;
-	Thu, 06 Nov 2025 02:08:00 +0000
-Received: from smtpbgau1.qq.com ([54.206.16.166])
+	id 1vGqL9-0000000Eng0-0TbH;
+	Thu, 06 Nov 2025 03:07:11 +0000
+Received: from mail-m128193.netease.com ([103.209.128.193])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGpPn-0000000EjQ9-3Hx2;
-	Thu, 06 Nov 2025 02:07:58 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
-	s=altu2504; t=1762394838;
-	bh=J2Dfi8ObLWDtR4Ds26hqQWc9pn2P2eSkWbDnDzh2tek=;
-	h=From:To:Subject:Date:Message-Id;
-	b=QWIMM8WMLgmM1GHI2ekmPYFThz45q9VZVmq8Tu/S+w+MjnJDs2JJKQrU8Tvupgr+7
-	 6bt1dw2uq68DQKZfSlWhkS2WbEyYGaocSqjGAQh9Qh3AkTrKWPk7JkscrPROkLZZBh
-	 jd+i5m3MBZx1lu4jT570uTwKfyaptIFTt8vWguiU=
-X-QQ-mid: esmtpgz15t1762394836t5c25a9a9
-X-QQ-Originating-IP: MNgHLaivXKIqdVXO1uJSHb8Co2TeOFaAisJDtLBd4mA=
-Received: from DESKTOP-8BT1A2O.localdomain ( [58.22.7.114])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Thu, 06 Nov 2025 10:07:14 +0800 (CST)
-X-QQ-SSF: 0000000000000000000000000000000
-X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 4187062248744172939
-From: Chaoyi Chen <kernel@airkyi.com>
-To: Neil Armstrong <neil.armstrong@linaro.org>,
-	Jessica Zhang <jessica.zhang@oss.qualcomm.com>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Sandy Huang <hjc@rock-chips.com>,
-	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>
-Cc: dri-devel@lists.freedesktop.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-phy@lists.infradead.org,
-	Chaoyi Chen <chaoyi.chen@rock-chips.com>
-Subject: [PATCH 9/9] drm/rockchip: vop: Add support for rk3506
-Date: Thu,  6 Nov 2025 10:06:32 +0800
-Message-Id: <20251106020632.92-10-kernel@airkyi.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20251106020632.92-1-kernel@airkyi.com>
-References: <20251106020632.92-1-kernel@airkyi.com>
-X-QQ-SENDSIZE: 520
-Feedback-ID: esmtpgz:airkyi.com:qybglogicsvrgz:qybglogicsvrgz6b-0
-X-QQ-XMAILINFO: NmjM7tI9iA2tclLMxUkABYeywUVgWiGT5d+cHlw3fxtG6M+TkmOC9emn
-	G69z+CUpiKxYB9BKG/DFScyQE8b3X/uNE/2uorCMt64eUnZNggaXcdE9RuEeU3SfX8t+v20
-	/q+3fZrScWbp1gKT11rm3JOBwHio8wzuHhUfUwMYMD6iG9MZ8ZKHtbs5ICB2MGAe+CS2Vvj
-	dwaeHOvdFxEaLWbkG+xakq2cj23rc6wSmXy8VUzYgZ14Q3ZtCTpzTXbU6hhXhgFaNu0qkSq
-	FNpIHtG+Mg2Hqu/M9vzIECGuk7PRduFdD5CqWKcXRJiHFPuBCapxh+4Z6DBzS4zSzEY+Cz1
-	FglCY6+XjFVkElG39Gge9aFcs2DGcybzjYCgF/ILu2/6GjB0wSgU36djHPFVmRWJ1hYM+fb
-	CL1p7036Z1zP7Eg25C/yKBU/SuriIzTU671fbKpttmolJPmS8Uo6mIGwfLRHGr9md+qOYmf
-	C0lUYJe8YIMitmlB0NdRSspNnALLMDBA415mN2KPhnO7/afL5Y1Xp+U0ddxwC4wLZG5f6bz
-	MHJfVutBlHwYywJq58B357JHw/IiWLqxtMTuyno5fUyGPMP6cNTW26wCG//ay/utfZCW2ol
-	0VrOfDUCE6yPVTbckosU+0wmajJwHPYPWOAue4S7modGzpKwj9AkVZNxNPS64BwgRHECVbk
-	uYV+rZ6TqXdpJNQ1PICVVh7cZL1J/Xh6EmHtKLt7sT/iwZqRLNWMB14wetJ73MXxJ+iQxui
-	oBj/yBhOmMqgFDjG6dDqXP/Tp23vnT5uXAUrpaElIdNzpSoodAT1ylCJxPy5m6VRvuajNWW
-	uz0qXWVOgpz1pdzAS/9rvmRebi32ZvaNTvLnGzh4iKK30GIYDQvagnLtQwN7hDHIcwmBk1X
-	uPtunjxzZoNxnWQZcEIkmO9p4irwsrLwa1aBXbd8lVCPQrLAG2iL33RJFiyTheugHKlPzr7
-	UVnxHqGNJ1FawHFzZdcaizdxn6zp+6kryDTJDU9sgKQKi8uA5uiPVIdYWmI+tUM7Wzc1r97
-	PACVtKgHNmY52td5yLJ1MXIO00/Z+CtxrgpTMcqA==
-X-QQ-XMRINFO: MSVp+SPm3vtS1Vd6Y4Mggwc=
-X-QQ-RECHKSPAM: 0
+	id 1vGqL5-0000000EnfO-3DrY;
+	Thu, 06 Nov 2025 03:07:09 +0000
+Received: from [172.16.12.149] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 2893b798a;
+	Thu, 6 Nov 2025 11:06:56 +0800 (GMT+08:00)
+Message-ID: <64de56d4-43e8-4e77-a171-0bd0855ad816@rock-chips.com>
+Date: Thu, 6 Nov 2025 11:06:54 +0800
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v8 03/10] drm/bridge: Implement generic USB Type-C DP HPD
+ bridge
+To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+ Chaoyi Chen <kernel@airkyi.com>
+Cc: Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
+ Kishon Vijay Abraham I <kishon@kernel.org>, Heiko Stuebner
+ <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>,
+ Andy Yan <andy.yan@rock-chips.com>,
+ Yubing Zhang <yubing.zhang@rock-chips.com>,
+ Frank Wang <frank.wang@rock-chips.com>,
+ Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Amit Sunil Dhamne <amitsd@google.com>, Dragan Simic <dsimic@manjaro.org>,
+ Johan Jonker <jbx6244@gmail.com>, Diederik de Haas <didi.debian@cknow.org>,
+ Peter Robinson <pbrobinson@gmail.com>, linux-usb@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
+References: <20251029071435.88-1-kernel@airkyi.com>
+ <20251029071435.88-4-kernel@airkyi.com>
+ <rzozpbqmymdczerh3iijxxtz3xnsznoku7w2mquikwv6u5osvo@7h43hwc2fpzm>
+Content-Language: en-US
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+In-Reply-To: <rzozpbqmymdczerh3iijxxtz3xnsznoku7w2mquikwv6u5osvo@7h43hwc2fpzm>
+X-HM-Tid: 0a9a5721af0c03abkunm89fae464e7fb72
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGUtKHlZKSk1MSE5OS0kfTkpWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpPSE
+	xVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=evRfUVzE9gnJAOXo0XuZFWXMj+MLkXfh5miIhw12ck4N1iYs5TbQdrxU9sXAhiqRhN95j9bofAlR+87xDufP/ZBmz83i5dVRqQ8YiIiWE3TJThOgujLTjEgg/nXx4gfI/QUtvi+Nqf0kpUsoxBrB6H+DOC0XV+9rUTNW2AupTjQ=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=uxhO0QLYdKtAxkfwSVZCwZIlmY3EqbMoelKvCYvQETM=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251105_180756_278681_A8FDE1DE 
-X-CRM114-Status: GOOD (  10.90  )
+X-CRM114-CacheID: sfid-20251105_190708_354184_A26F3E49 
+X-CRM114-Status: GOOD (  20.38  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,128 +89,65 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+On 11/3/2025 12:00 PM, Dmitry Baryshkov wrote:
 
-The VOP on rk3506:
-- Support 2 lane MIPI DSI interface, 1.5Gbps/lane.
-- Support RGB interface.
-- Max output resolution is 1280x1280@60fps.
-- WIN1 layer support RGB888/ARGB8888/RGB565.
-- Support Gamma LUT.
-- ...
+> On Wed, Oct 29, 2025 at 03:14:28PM +0800, Chaoyi Chen wrote:
+>> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+>>
+>> Several USB-C controller drivers have already implemented the DP HPD
+>> bridge function provided by aux-hpd-bridge.c, but there are still
+>> some USB-C controller driver that have not yet implemented it.
+>>
+>> This patch implements a generic DP HPD bridge based on aux-hpd-bridge.c,
+>> so that other USB-C controller drivers don't need to implement it again.
+> This doesn't describe the problem that you are trying to solve.
+>
+>> Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+>> ---
+>>
+>> Changes in v8:
+>> - Merge generic DP HPD bridge into one module.
+>>
+>>   drivers/gpu/drm/bridge/Kconfig                |  5 +-
+>>   drivers/gpu/drm/bridge/Makefile               |  8 +++-
+>>   drivers/gpu/drm/bridge/aux-hpd-bridge.c       | 23 ++++++++-
+>>   drivers/gpu/drm/bridge/aux-hpd-bridge.h       | 13 +++++
+>>   .../gpu/drm/bridge/aux-hpd-typec-dp-bridge.c  | 47 +++++++++++++++++++
+>>   5 files changed, 93 insertions(+), 3 deletions(-)
+>>   create mode 100644 drivers/gpu/drm/bridge/aux-hpd-bridge.h
+>>   create mode 100644 drivers/gpu/drm/bridge/aux-hpd-typec-dp-bridge.c
+>>
+>> diff --git a/drivers/gpu/drm/bridge/Kconfig b/drivers/gpu/drm/bridge/Kconfig
+>> index a250afd8d662..17257b223a28 100644
+>> --- a/drivers/gpu/drm/bridge/Kconfig
+>> +++ b/drivers/gpu/drm/bridge/Kconfig
+>> @@ -23,13 +23,16 @@ config DRM_AUX_BRIDGE
+>>   	  build bridges chain.
+>>   
+>>   config DRM_AUX_HPD_BRIDGE
+>> -	tristate
+>> +	tristate "AUX HPD bridge support"
+> Why? No, this is supposed to be selected by other drivers. Users don't
+> know an wouldn't know what is this.
+>
+Sorry, I might have misunderstood you point. In v7, I added a new DRM_AUX_TYPEC_DP_HPD_BRIDGE module to select DRM_AUX_HPD_BRIDGE. This seems to fit the "selected by other drivers" scenario, but I think you might not want to expose any information to the users.
 
-Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
----
- drivers/gpu/drm/rockchip/rockchip_vop_reg.c | 57 +++++++++++++++++++++
- drivers/gpu/drm/rockchip/rockchip_vop_reg.h | 14 +++++
- 2 files changed, 71 insertions(+)
+And the other one is what Heikki said:
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-index d1f788763318..6b654b682a94 100644
---- a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-@@ -1179,6 +1179,61 @@ static const struct vop_data rk3328_vop = {
- 	.max_output = { 4096, 2160 },
- };
- 
-+static const struct vop_common rk3506_common = {
-+	.standby = VOP_REG_SYNC(RK3506_SYS_CTRL2, 0x1, 1),
-+	.out_mode = VOP_REG(RK3506_DSP_CTRL2, 0xf, 16),
-+	.dsp_blank = VOP_REG(RK3506_DSP_CTRL2, 0x1, 14),
-+	.dither_down_en = VOP_REG(RK3506_DSP_CTRL2, 0x1, 8),
-+	.dither_down_sel = VOP_REG(RK3506_DSP_CTRL2, 0x1, 7),
-+	.dither_down_mode = VOP_REG(RK3506_DSP_CTRL2, 0x1, 6),
-+	.dsp_lut_en = VOP_REG(RK3506_DSP_CTRL2, 0x1, 5),
-+	.dither_up = VOP_REG(RK3506_DSP_CTRL2, 0x1, 2),
-+	.cfg_done = VOP_REG_SYNC(RK3506_REG_CFG_DONE, 0x1, 0),
-+};
-+
-+static const struct vop_output rk3506_output = {
-+	.rgb_en = VOP_REG(RK3506_DSP_CTRL0, 0x1, 0),
-+	.rgb_pin_pol = VOP_REG(RK3506_DSP_CTRL0, 0x7, 2),
-+	.mipi_en = VOP_REG(RK3506_DSP_CTRL0, 0x1, 24),
-+	.mipi_dclk_pol = VOP_REG(RK3506_DSP_CTRL0, 0x1, 25),
-+	.mipi_pin_pol = VOP_REG(RK3506_DSP_CTRL0, 0x7, 26),
-+};
-+
-+static const struct vop_win_phy rk3506_win1_data = {
-+	.data_formats = formats_win_lite,
-+	.nformats = ARRAY_SIZE(formats_win_lite),
-+	.format_modifiers = format_modifiers_win_lite,
-+	.enable = VOP_REG(RK3506_WIN1_CTRL0, 0x1, 0),
-+	.format = VOP_REG(RK3506_WIN1_CTRL0, 0x7, 4),
-+	.rb_swap = VOP_REG(RK3506_WIN1_CTRL0, 0x1, 12),
-+	.channel = VOP_REG(RK3506_WIN1_CTRL1, 0xf, 8),
-+	.yrgb_vir = VOP_REG(RK3506_WIN1_VIR, 0x1fff, 0),
-+	.yrgb_mst = VOP_REG(RK3506_WIN1_MST, 0xffffffff, 0),
-+	.dsp_info = VOP_REG(RK3506_WIN1_DSP_INFO, 0xffffffff, 0),
-+	.dsp_st = VOP_REG(RK3506_WIN1_DSP_ST, 0xffffffff, 0),
-+	.alpha_en = VOP_REG(RK3506_WIN1_ALPHA_CTRL, 0x1, 0),
-+	.alpha_mode = VOP_REG(RK3506_WIN1_ALPHA_CTRL, 0x1, 1),
-+	.alpha_pre_mul = VOP_REG(RK3506_WIN1_ALPHA_CTRL, 0x1, 2),
-+};
-+
-+static const struct vop_win_data rk3506_vop_win_data[] = {
-+	{ .base = 0x00, .phy = &rk3506_win1_data,
-+	  .type = DRM_PLANE_TYPE_PRIMARY },
-+};
-+
-+static const struct vop_data rk3506_vop = {
-+	.version = VOP_VERSION(2, 0xe),
-+	.feature = VOP_FEATURE_INTERNAL_RGB,
-+	.intr = &px30_intr,
-+	.common = &rk3506_common,
-+	.modeset = &px30_modeset,
-+	.output = &rk3506_output,
-+	.win = rk3506_vop_win_data,
-+	.win_size = ARRAY_SIZE(rk3506_vop_win_data),
-+	.lut_size = 256,
-+	.max_output = { 1280, 1280 },
-+};
-+
- static const struct vop_common rv1126_common = {
- 	.standby = VOP_REG_SYNC(PX30_SYS_CTRL2, 0x1, 1),
- 	.out_mode = VOP_REG(PX30_DSP_CTRL2, 0xf, 16),
-@@ -1259,6 +1314,8 @@ static const struct of_device_id vop_driver_dt_match[] = {
- 	  .data = &rk3228_vop },
- 	{ .compatible = "rockchip,rk3328-vop",
- 	  .data = &rk3328_vop },
-+	{ .compatible = "rockchip,rk3506-vop",
-+	  .data = &rk3506_vop },
- 	{ .compatible = "rockchip,rv1126-vop",
- 	  .data = &rv1126_vop },
- 	{},
-diff --git a/drivers/gpu/drm/rockchip/rockchip_vop_reg.h b/drivers/gpu/drm/rockchip/rockchip_vop_reg.h
-index addf8ca085f6..7805533e88bc 100644
---- a/drivers/gpu/drm/rockchip/rockchip_vop_reg.h
-+++ b/drivers/gpu/drm/rockchip/rockchip_vop_reg.h
-@@ -1033,4 +1033,18 @@
- #define RK3066_DSP_LUT_ADDR		0x800
- /* rk3066 register definition end */
- 
-+/* rk3506 register definition */
-+#define RK3506_REG_CFG_DONE		0x00
-+#define RK3506_SYS_CTRL2		0x18
-+#define RK3506_DSP_CTRL0		0x20
-+#define RK3506_DSP_CTRL2		0x28
-+#define RK3506_WIN1_CTRL0		0x90
-+#define RK3506_WIN1_CTRL1		0x94
-+#define RK3506_WIN1_VIR			0x98
-+#define RK3506_WIN1_MST			0xa0
-+#define RK3506_WIN1_DSP_INFO		0xa4
-+#define RK3506_WIN1_DSP_ST		0xa8
-+#define RK3506_WIN1_ALPHA_CTRL		0xbc
-+/* rk3506 register definition end */
-+
- #endif /* _ROCKCHIP_VOP_REG_H */
++if DRM_AUX_HPD_BRIDGE + +config DRM_AUX_HPD_TYPEC_BRIDGE + tristate + depends on TYPEC || !TYPEC + default TYPEC + +endif /* DRM_AUX_HPD_BRIDGE */ + menu "Display Interface Bridges" depends on DRM && DRM_BRIDGE
+
+If I understand correctly, in this scenario we need to select DRM_AUX_HPD_BRIDGE in the DP driver. When Type-C is available, DRM_AUX_HPD_TYPEC_BRIDGE will be selected automatically.
+
+Is the method mentioned by Heikki what you want? Thank you.
+
 -- 
-2.51.1
+Best,
+Chaoyi
 
 
 _______________________________________________
