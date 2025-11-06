@@ -4,59 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BC3CCCFA05
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Nov 2025 19:45:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 251ACCCFA05
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Nov 2025 19:51:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rraxySPxq+GOsgDaCmV8DfqrXLQ2sKlElrlFo2DdVxA=; b=PRTZ3Uc5SwMbmh
-	gspITNr9fmZJv8W/uiXCTSeYD5nWDTZE85sCbnzbof00cU8paU5or4dm7b/qDux4E2+g+bw0V9u3w
-	Ka59oB5T4Q+GgLjwy5USFWTYT6HyJFRGMBqe3e7r9YwFRqwmuNouIGoGIGbvagIOEcLdXczi6D8WY
-	aNemVwQdUZg6jKBqpwIpNZ4dnFXkBUc/0nfDjKoO79OnhmjMOLM3pZuPbX+XqbPXCaUg8WIrVJpGQ
-	HE8aTivLVlQTITs/f5dw6+yZq7hUkK3taJq0UJCfhj9B8mOseK0yTSgeroEvFW4WF/gMQHdFoSKbR
-	fmnBIMZwmbECpv2vaFUA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=AsOQuXDdxb946OGC11L83l62rNvPxteI6l849SM7TG0=; b=bgEY/3W0p3TvOB
+	CaW7TwXkubSYqJBe/UOpEd7qaslAqdBe6PdSZh4QHv37Fc9vIS0DCBKZPAfsw7Z74+OtqvSPu3QJ2
+	zcrIwJ4m1TU9vcx1MUx1EOc7BiA/NnjnjL8bCPg5SJENWSTwbUQqeKzTcD+uDEudQkM1xv6x8hExj
+	2bF7GhKibMldAdLM64oicRojY1rZxRcMsh8XojroYkQ/nSMUA+dUvufQh6SKYuhP3OGSVJUQjGZCx
+	9X1wvA9ecQrJo9XuxFkgJ0zayAOsVy0rXyz1KE5w25vy2Xm+z70085s6FBpBJcGtdGplEdMUfC4wG
+	m9sAC7Za8n8R1P65KoCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vH5vN-0000000GB52-3d0b;
-	Thu, 06 Nov 2025 19:45:37 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1vH60e-0000000GBHp-2Uld;
+	Thu, 06 Nov 2025 19:51:04 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vH5vL-0000000GB4b-3HX6
+	id 1vH60Z-0000000GBHQ-2Any
 	for linux-rockchip@lists.infradead.org;
-	Thu, 06 Nov 2025 19:45:36 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=bNCTfdUYGfYwpTXCs05Wi92PJgfBGxwDffQgA/Eoyhg=; b=lwfghxUygOTW5wy+ryDKWkrh4q
-	4ykv+c62oXDCezOSS/pvo8TizGZKIkv5/x6bGWQcDQ6mGAZO9Fw36MU86CznIrjxFRwSgleORlNyq
-	xk2mzWdS2iS3KMwZXlaBODbdKXtllFg0v00X13zpRCvXD2BQQP9vMskC+EbGRf4wPF0894BWPIxqr
-	HYmsGlEHc559+yksOE9PishRL4cKu8pN9DQodr8ggBJEz3BNqoy61h/jsv+tgZxgbyb0vRsOhA8Oe
-	0LPOQHUPKWkzVKulK7IIbg0nedXreSkG+L2hMALPmpq3bIhJqiEKwwfZpx4Y3sU48lXMiLKm87BYY
-	uKFHBwZA==;
-Received: from i53875bac.versanet.de ([83.135.91.172] helo=phil.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1vH5vK-0000jx-0F; Thu, 06 Nov 2025 20:45:34 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: linux-rockchip@lists.infradead.org, Chris Morgan <macroalpha82@gmail.com>
-Cc: devicetree@vger.kernel.org, sebastian.reichel@collabora.com,
- damon.ding@rock-chips.com, jbx6244@gmail.com, conor+dt@kernel.org,
- krzk+dt@kernel.org, robh@kernel.org, Chris Morgan <macromorgan@hotmail.com>
-Subject: Re: [PATCH 2/5] arm64: dts: rockchip: Add Additional pinctrl defs for
- Indiedroid Nova
-Date: Thu, 06 Nov 2025 20:45:33 +0100
-Message-ID: <3438819.aeNJFYEL58@phil>
-In-Reply-To: <20251105205708.732125-3-macroalpha82@gmail.com>
-References: <20251105205708.732125-1-macroalpha82@gmail.com>
- <20251105205708.732125-3-macroalpha82@gmail.com>
+	Thu, 06 Nov 2025 19:51:00 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 7F1364051D;
+	Thu,  6 Nov 2025 19:50:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 410D2C113D0;
+	Thu,  6 Nov 2025 19:50:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1762458658;
+	bh=1lB3DZzZMhqcI9NwkXLNHHcsV1/W9B3qgHsM67aLrrU=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=ZVVZZRUtFy+4HxR/aMNXvbPN2iz63KQ5m5A7eMbPT3B8SKM9kCa+I9r5NKT3yMyU1
+	 t3Oc/50oCHl0hpLwkW7IxqCSZZWNeRcfORKPECk7th0o98TfYmxkb5njHf8soDxDyb
+	 I3yjQJnzmcQbvEDTo2GJ98MNHAAMwCFVKttpl8hCH8w2Bphlgq06oo19PhumC3tonH
+	 upXVIy3mpu6YPW2jKIt7Fg6js1d/DWmSeulBTyDQFM8OyUKizJ7+Gn9kqTebEj09Bi
+	 Iibocqgq0ncOAoXP8JPpv4qAgSgn9G60OA+Ql/kvNgWVaj0gTjzF+6zVh0a4dgx+ox
+	 U2qbsQSpIaBUg==
+Date: Thu, 6 Nov 2025 13:50:57 -0600
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Manivannan Sadhasivam <mani@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	linux-rockchip@lists.infradead.org, linux-pci@vger.kernel.org
+Subject: Re: [PATCH] PCI: Add ASPM quirk for Hi1105 PCIe Wi-Fi
+Message-ID: <20251106195057.GA1965757@bhelgaas>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <1762401119-232631-1-git-send-email-shawn.lin@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251106_114535_958601_00B28755 
-X-CRM114-Status: GOOD (  16.69  )
+X-CRM114-CacheID: sfid-20251106_115059_580198_DD438512 
+X-CRM114-Status: GOOD (  18.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,69 +67,67 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgQ2hyaXMsCgpBbSBNaXR0d29jaCwgNS4gTm92ZW1iZXIgMjAyNSwgMjE6NTc6MDUgTWl0dGVs
-ZXVyb3DDpGlzY2hlIE5vcm1hbHplaXQgc2NocmllYiBDaHJpcyBNb3JnYW46Cj4gRnJvbTogQ2hy
-aXMgTW9yZ2FuIDxtYWNyb21vcmdhbkBob3RtYWlsLmNvbT4KPiAKPiBEZWZpbmUgdGhlIHBpbmN0
-cmwgbm9kZXMgZm9yIHRoZSBXaUZpIGludGVycnVwdHMsIGNvcnJlY3QgdGhlIHBpbmN0cmwKPiBm
-b3IgdGhlIGV0aGVybmV0IGFjY29yZGluZyB0byB0aGUgc2NoZW1hdGljLCBhbmQgYWRkIHRoZSBj
-bGszMmtfaW4KPiBjb250cm9sIGZvciB0aGUgUlRDLiBBZGQgdGhlIGNvcnJlY3QgcmVndWxhdG9y
-IG1hcHBpbmcgZm9yIHRoZSBQQ0lFCj4gdG9vLgoKd2F5IHRvbyBtdWNoIGNvbXBsZXRlbHkgZGlm
-ZmVyZW50IHRoaW5ncyB0byBzdHVmZiBpbnRvIG9uZSBwYXRjaC4KCi0gQWRkaW5nIHRoZSBzZGlv
-IHdpZmkgaXMgb25lCi0gZXRoZXJuZXQgaXMgbmV4dCAuLi4geW91J3JlIG5vdCBmaXhpbmcsIGJ1
-dCByZW1vdmluZyB0aGUgcGluY3RybD8KLSBwY2llMiBmaXhlcyBpcyBhbm90aGVyIG9uZQotIGFu
-ZCB0aGUgY2xraW4zMmsgYXMgd2VsbAoKCkhlaWtvCgo+IAo+IFNpZ25lZC1vZmYtYnk6IENocmlz
-IE1vcmdhbiA8bWFjcm9tb3JnYW5AaG90bWFpbC5jb20+Cj4gLS0tCj4gIC4uLi9kdHMvcm9ja2No
-aXAvcmszNTg4cy1pbmRpZWRyb2lkLW5vdmEuZHRzICB8IDQzICsrKysrKysrKysrKy0tLS0tLS0K
-PiAgMSBmaWxlIGNoYW5nZWQsIDI4IGluc2VydGlvbnMoKyksIDE1IGRlbGV0aW9ucygtKQo+IAo+
-IGRpZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OHMtaW5kaWVk
-cm9pZC1ub3ZhLmR0cyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4cy1pbmRp
-ZWRyb2lkLW5vdmEuZHRzCj4gaW5kZXggZGViYWI3NzMyYjcxLi5mNDA3ODJiNmM3ZGIgMTAwNjQ0
-Cj4gLS0tIGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODhzLWluZGllZHJvaWQt
-bm92YS5kdHMKPiArKysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OHMtaW5k
-aWVkcm9pZC1ub3ZhLmR0cwo+IEBAIC00MDYsNyArNDA2LDcgQEAgcnRjX2h5bTg1NjM6IHJ0Y0A1
-MSB7Cj4gIAkJY2xvY2stb3V0cHV0LW5hbWVzID0gImh5bTg1NjMiOwo+ICAJCWludGVycnVwdC1w
-YXJlbnQgPSA8JmdwaW8wPjsKPiAgCQlpbnRlcnJ1cHRzID0gPFJLX1BCMCBJUlFfVFlQRV9MRVZF
-TF9MT1c+Owo+IC0JCXBpbmN0cmwtMCA9IDwmaHltODU2M19pbnQ+Owo+ICsJCXBpbmN0cmwtMCA9
-IDwmaHltODU2M19pbnQ+LCA8JmNsazMya19pbj47Cj4gIAkJcGluY3RybC1uYW1lcyA9ICJkZWZh
-dWx0IjsKPiAgCQl3YWtldXAtc291cmNlOwo+ICAJfTsKPiBAQCAtNDU5LDggKzQ1OSwxMSBAQCAm
-aTJzNV84Y2ggewo+ICB9Owo+ICAKPiAgJnBjaWUyeDFsMiB7Cj4gLQlwaW5jdHJsLTAgPSA8JnJ0
-bDgxMTFfcGVyc3RiPjsKPiArCXBpbmN0cmwtMCA9IDwmcGNpZTIweDFtMF9wZXJzdG4+LCA8JnBj
-aWUyMHgxbTBfY2xrcmVxbj4sCj4gKwkJICAgIDwmcGNpZTIweDFtMF93YWtlbj47Cj4gIAlwaW5j
-dHJsLW5hbWVzID0gImRlZmF1bHQiOwo+ICsJcmVzZXQtZ3Bpb3MgPSA8JmdwaW8zIFJLX1BEMSBH
-UElPX0FDVElWRV9ISUdIPjsKPiArCXZwY2llM3YzLXN1cHBseSA9IDwmdmNjXzN2M19zMz47Cj4g
-IAlzdGF0dXMgPSAib2theSI7Cj4gIH07Cj4gIAo+IEBAIC00ODYsMTIgKzQ4OSw2IEBAIGJ0X3dh
-a2VfaG9zdDogYnQtd2FrZS1ob3N0IHsKPiAgCQl9Owo+ICAJfTsKPiAgCj4gLQlldGhlcm5ldC1w
-aW5zIHsKPiAtCQlydGw4MTExX3BlcnN0YjogcnRsODExMS1wZXJzdGIgewo+IC0JCQlyb2NrY2hp
-cCxwaW5zID0gPDMgUktfUEQxIFJLX0ZVTkNfR1BJTyAmcGNmZ19wdWxsX3VwPjsKPiAtCQl9Owo+
-IC0JfTsKPiAtCj4gIAloeW04NTYzIHsKPiAgCj4gIAkJaHltODU2M19pbnQ6IGh5bTg1NjMtaW50
-IHsKPiBAQCAtNTAwLDEzICs0OTcsNiBAQCBoeW04NTYzX2ludDogaHltODU2My1pbnQgewo+ICAJ
-CX07Cj4gIAl9Owo+ICAKPiAtCXNkaW8tcHdyc2VxIHsKPiAtCQl3aWZpX2VuYWJsZV9oOiB3aWZp
-LWVuYWJsZS1oIHsKPiAtCQkJcm9ja2NoaXAscGlucyA9Cj4gLQkJCQk8MCBSS19QQzcgUktfRlVO
-Q19HUElPICZwY2ZnX3B1bGxfbm9uZT47Cj4gLQkJfTsKPiAtCX07Cj4gLQo+ICAJdXNiLXR5cGVj
-IHsKPiAgCQl1c2JjMF9pbnQ6IHVzYmMwLWludCB7Cj4gIAkJCXJvY2tjaGlwLHBpbnMgPQo+IEBA
-IC01MTgsNiArNTA4LDE4IEBAIHR5cGVjNXZfcHdyZW46IHR5cGVjNXYtcHdyZW4gewo+ICAJCQkJ
-PDQgUktfUEE1IFJLX0ZVTkNfR1BJTyAmcGNmZ19wdWxsX25vbmU+Owo+ICAJCX07Cj4gIAl9Owo+
-ICsKPiArCXdpZmkgewo+ICsJCXdpZmlfZW5hYmxlX2g6IHdpZmktZW5hYmxlLWggewo+ICsJCQly
-b2NrY2hpcCxwaW5zID0KPiArCQkJCTwwIFJLX1BDNyBSS19GVU5DX0dQSU8gJnBjZmdfcHVsbF9u
-b25lPjsKPiArCQl9Owo+ICsKPiArCQl3aWZpX2hvc3Rfd2FrZV9pcnE6IHdpZmktaG9zdC13YWtl
-LWlycSB7Cj4gKwkJCXJvY2tjaGlwLHBpbnMgPQo+ICsJCQkJPDAgUktfUEEwIFJLX0ZVTkNfR1BJ
-TyAmcGNmZ19wdWxsX2Rvd24+Owo+ICsJCX07Cj4gKwl9Owo+ICB9Owo+ICAKPiAgJnNhcmFkYyB7
-Cj4gQEAgLTUzOCw2ICs1NDAsNyBAQCAmc2RoY2kgewo+ICB9Owo+ICAKPiAgJnNkaW8gewo+ICsJ
-I2FkZHJlc3MtY2VsbHMgPSA8MT47Cj4gIAlidXMtd2lkdGggPSA8ND47Cj4gIAljYXAtc2QtaGln
-aHNwZWVkOwo+ICAJY2FwLXNkaW8taXJxOwo+IEBAIC01NDksOSArNTUyLDE5IEBAICZzZGlvIHsK
-PiAgCW5vLXNkOwo+ICAJbm9uLXJlbW92YWJsZTsKPiAgCXNkLXVocy1zZHIxMDQ7Cj4gKwkjc2l6
-ZS1jZWxscyA9IDwwPjsKPiAgCXZtbWMtc3VwcGx5ID0gPCZ2Y2NfM3YzX3MzPjsKPiAgCXZxbW1j
-LXN1cHBseSA9IDwmdmNjXzF2OF9zMz47Cj4gIAlzdGF0dXMgPSAib2theSI7Cj4gKwo+ICsJc2Rp
-b193aWZpOiB3aWZpQDEgewo+ICsJCXJlZyA9IDwxPjsKPiArCQlpbnRlcnJ1cHQtcGFyZW50ID0g
-PCZncGlvMD47Cj4gKwkJaW50ZXJydXB0cyA9IDxSS19QQTAgSVJRX1RZUEVfTEVWRUxfTE9XPjsK
-PiArCQlpbnRlcnJ1cHQtbmFtZXMgPSAiaG9zdC13YWtlIjsKPiArCQlwaW5jdHJsLTAgPSA8Jndp
-ZmlfaG9zdF93YWtlX2lycT47Cj4gKwkJcGluY3RybC1uYW1lcyA9ICJkZWZhdWx0IjsKPiArCX07
-Cj4gIH07Cj4gIAo+ICAmc2RtbWMgewo+IAoKCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1y
-b2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
-aWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+On Thu, Nov 06, 2025 at 11:51:59AM +0800, Shawn Lin wrote:
+> This Wi-Fi advertises the L0s and L1 capabilities but actually
+> it doesn't support them. This's comfirmed by Hisilicon team in
+> actual productization.
+> 
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> ---
+> 
+>  drivers/pci/quirks.c | 6 ++++++
+>  1 file changed, 6 insertions(+)
+> 
+> diff --git a/drivers/pci/quirks.c b/drivers/pci/quirks.c
+> index 214ed06..67250d4 100644
+> --- a/drivers/pci/quirks.c
+> +++ b/drivers/pci/quirks.c
+> @@ -2526,6 +2526,12 @@ static void quirk_disable_aspm_l0s_l1(struct pci_dev *dev)
+>  DECLARE_PCI_FIXUP_FINAL(PCI_VENDOR_ID_ASMEDIA, 0x1080, quirk_disable_aspm_l0s_l1);
+>  
+>  /*
+> + * The Hi1105 PCIe Wi-Fi doesn't support L0s and L1 but advertise the capability.
+> + * Disable both L0s and L1 for now.
+> + */
+> +DECLARE_PCI_FIXUP_FINAL(PCI_VENDOR_ID_HUAWEI, 0x1105, quirk_disable_aspm_l0s_l1);
+
+PCI_VENDOR_ID_HUAWEI is 0x19e5.  Is there an upstream driver that
+matches [19e5:1105]?  I didn't find anything.
+
+I think quirk_disable_aspm_l0s_l1() might be a problem because the new
+strategy is to enable ASPM early (in pcie_aspm_init_link_state(),
+called from pci_scan_slot(), which happens before FINAL fixups are run
+during pci_bus_add_device().
+
+So I think we will enable L0s and L1 briefly before
+quirk_disable_aspm_l0s_l1() runs, and it's possible we'd see a problem
+then.
+
+But if you apply this series:
+  https://lore.kernel.org/r/20251106183643.1963801-1-helgaas@kernel.org
+
+and then the patch below on top, I think we should avoid enabling L0s
+and L1 at all:
+
+diff --git a/drivers/pci/quirks.c b/drivers/pci/quirks.c
+index 44e780718953..24c278857159 100644
+--- a/drivers/pci/quirks.c
++++ b/drivers/pci/quirks.c
+@@ -2536,6 +2536,7 @@ static void quirk_disable_aspm_l0s_l1_cap(struct pci_dev *dev)
+ 	pci_info(dev, "ASPM: L0s L1 removed from Link Capabilities to work around device defect\n");
+ }
+ DECLARE_PCI_FIXUP_HEADER(PCI_VENDOR_ID_FREESCALE, 0x0451, quirk_disable_aspm_l0s_l1_cap);
++DECLARE_PCI_FIXUP_HEADER(PCI_VENDOR_ID_HUAWEI, 0x1105, quirk_disable_aspm_l0s_l1_cap);
+ 
+ /*
+  * Some Pericom PCIe-to-PCI bridges in reverse mode need the PCIe Retrain
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
