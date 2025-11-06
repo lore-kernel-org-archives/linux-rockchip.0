@@ -4,53 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38DB9CCFA05
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Nov 2025 12:29:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D64FCCFA13
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Nov 2025 17:27:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-ID:MIME-Version:To:Cc:
-	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=jWF7EXZwt1woTWPQEMpHpW+p0X1+F24FfFbvBdz5EDg=; b=RWFdcoIDgtPhJG
-	eUg3sYwEzTKCvHew3Tr1uayXlYGJHeO6KXmzEfe3WmhCi3rHjLyZOnVJg1XO96jYFcLdbvHNSrEN3
-	QgmMmrcik5B6W/xdDosqZTwkiZPQ3hibot3wFIhFL5zePzjKrH8Mfjn4M9QPX8RgYInp/n0ppKF7B
-	0JPXzyvZsd0eHYqsBhxnphzDTvtLhXJozBnN+disUcyWoyKvvWBqz/P/v0vPZmaaUVJrC9EpHIx/s
-	vFV3qfoOIkOdJtEscHrrNmsPegZSc+7QxM9XN7/FtQ14UpD/o1cSQ9Vvfdyf+UcYr+0vhkaZlEq8d
-	sVnqhhArwJS+H3aiLZfQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ma+lDVwmW1EqYCjxE3RMNO2E3Lfczo5V0JqLNsdl4/8=; b=XrLpblpEIAH52ROSOtK76zw2tc
+	K/0Y6yBoxt4Gqzrw/ktXhSxu3W5LpzS6+O2S08DBCbaI//GCa4PZee8qxnVs1wl7fyP+BWvB87eIq
+	tT+7Qg+Ua+e8K66CfWRQe5oL3NH/5yEiNdZG6EVlPP5VF897bTzBxbppH4WabNO6HAQqMSbequwn3
+	fqr3SsTo8GEL3w1bLus/RmsLdK4NwQHhaw3JIsRKtkNSpRB2Q+Yo3g+L119cfqPvarMaJe+hPidxY
+	TAvA5Rwf63bNCch4T6SYUqSzLNiI2z+T0g+iWGh+iq3jq29FVREJw2mWcH/7RlCspcKApeJWvFuNI
+	4SRjGVeg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGz6x-0000000FS0c-0dUK;
-	Thu, 06 Nov 2025 12:29:07 +0000
-Received: from mail1.manjaro.org ([2a01:4f8:c010:b6e8::1])
+	id 1vH3lb-0000000G1Ab-2tDM;
+	Thu, 06 Nov 2025 17:27:23 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGHof-0000000By9F-0iyH;
-	Tue, 04 Nov 2025 14:15:22 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPA id B2F1840E58;
-	Tue,  4 Nov 2025 15:15:10 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=dkim;
-	t=1762265711; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding; bh=heBDAPe+EDP5KXVqXGrOUdIPLJKmXSTtMeNmnTa/byk=;
-	b=pg0Z0YP0QZayfNRkiCt/zw6yQFA/WqH8GvYryOee+PIB88s0zimfnARzt22TdPatiC0rFg
-	42zBenoFfidM+Z4KmnS6SYyaQgL8bPZdxYQZx0fYPPvBmGW/gPAMngncn2fnFRhbKW1zID
-	EtZ8jFKNgDaqvKz+NCa5pD8dJXOa8Hd6FXK4J+MlqtS1VH9a9hfCx8wXgF8wZXPk7NczjU
-	RJSwNhRPRkwxAnqs8y4CqcWNYqJw8E2JjP1iCGbqcrtiaI2fRStA7UBzQ3iULaMBGmhqnN
-	A4R3r4SOZekPxEivrkEnalx11C995xVVQgIPhg1rpIqnA7GJgBTmcRdMTnCH6w==
-From: "Dragan Simic" <dsimic@manjaro.org>
-Date: Tue, 04 Nov 2025 15:15:10 +0100
-Cc: "Heiko Stuebner" <heiko@sntech.de>, "Alexey Charkov" <alchark@gmail.com>, conor+dt@kernel.org, devicetree@vger.kernel.org, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh@kernel.org
-To: "Hugh Cole-Baker" <sigmaris@gmail.com>
+	id 1vH3lX-0000000G19v-3RwQ;
+	Thu, 06 Nov 2025 17:27:20 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id E2AF74433B;
+	Thu,  6 Nov 2025 17:27:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AC827C116C6;
+	Thu,  6 Nov 2025 17:27:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1762450038;
+	bh=lUYNwn621b4INnVv6cYUd9i8ygchqkVKYYeeytWLys8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=AmMzs73VnjPXmC/0CawgwdAAECJ1wJXAWnwMQs7cvyNsJ8gcIKEmofrUeLkYBv1bd
+	 1dwbVsduZY9Hh2P4Er88otWdF/OtGWQBj59m5EtsoxzMWIQqz4I/gg5CSBj2A1TXk5
+	 +CDYE5TE1HSL3IZtGbNZ/4X9hMqqYJj3wEvS3IweFoWj2AE2jtIarNJYcPWV3e6Try
+	 T5g4cl/zNIMVWgstSipeHjVO7I4mYPDg0HSmdLE1UpofGJZx4AuNIgH3xfYWXSof1Y
+	 TW1r3xus5GPisF2NMyuBSwOVbEIQhFCmZEWc+SbXjqHg69Zu9aFNrWLLQm5Z4gR/u/
+	 7DpEB7V12nwxg==
+Date: Thu, 6 Nov 2025 17:27:12 +0000
+From: Conor Dooley <conor@kernel.org>
+To: Chaoyi Chen <kernel@airkyi.com>
+Cc: Neil Armstrong <neil.armstrong@linaro.org>,
+	Jessica Zhang <jessica.zhang@oss.qualcomm.com>,
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Sandy Huang <hjc@rock-chips.com>,
+	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
+	Andy Yan <andy.yan@rock-chips.com>, Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-phy@lists.infradead.org,
+	Chaoyi Chen <chaoyi.chen@rock-chips.com>
+Subject: Re: [PATCH 2/9] dt-bindings: phy: rockchip-inno-dsidphy: Add
+ compatible for rk3506
+Message-ID: <20251106-litigate-cultivate-75a4aac333c7@spud>
+References: <20251106020632.92-1-kernel@airkyi.com>
+ <20251106020632.92-3-kernel@airkyi.com>
 MIME-Version: 1.0
-Message-ID: <232be108-ea84-2808-77b9-ff46d2b8baf7@manjaro.org>
-Subject: =?utf-8?q?Re=3A?= [PATCH] =?utf-8?q?arm64=3A?==?utf-8?q?_dts=3A?=
- =?utf-8?q?_rockchip=3A?= pwm-fan overlay for NanoPC-T6
-User-Agent: SOGoMail 5.12.3
-X-Last-TLS-Session-Version: None
-X-Bad-Reply: 'Re:' in Subject but no References or In-Reply-To headers
+In-Reply-To: <20251106020632.92-3-kernel@airkyi.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251104_061521_495762_0E55EF85 
-X-CRM114-Status: GOOD (  22.25  )
-X-Mailman-Approved-At: Thu, 06 Nov 2025 04:28:36 -0800
+X-CRM114-CacheID: sfid-20251106_092719_879079_1F3716ED 
+X-CRM114-Status: UNSURE (   6.47  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -62,104 +83,48 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============1890431114758516655=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-(Resending because the original message ended up on some spam lists,
-seemingly as a result of some UTF-8 characters in the subject.)
 
-Hello Hugh,
+--===============1890431114758516655==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="V33MzIjcuA2BZAPY"
+Content-Disposition: inline
 
-On Saturday, November 01, 2025 14:14 CET, Hugh Cole-Baker <sigmaris@gmail.com> wrote:
-> On 01/11/2025 11:44, Heiko Stuebner wrote:
-> > Personally, I'm more on the less complication side.
-> > 
-> > I.e. if there is an actual fan-connector on the board we should describe
-> > it as such.
-> > 
-> > Overlays I see for things where you attach hats to generic pin headers
-> > to create specific functionality on top of a generic interface.
-> > 
-> > But if the board itself has an actual fan header, it should be described
-> > as such. Because that then _is_ the standard use of that.
-> 
-> The board does have a fan connector, just no fan by default. But anyway,
-> since it sounds like the preferred approach I'll send a v2 which puts the
-> fan into the base board .dts.
-> 
-> Dragan, you mentioned there's no need for more than 2 trip points - if
-> I remove the trip points between "SoC is warm, start fan at slow speed"
-> and "SoC is v. hot, run fan at full speed" is the OS/kernel expected to
-> interpolate between those 2 trip points (if you have a link to docs or
-> code about this it'd be interesting, I couldn't find anything in the
-> dt-bindings)?
 
-True, that isn't described in the bindings, because it basically
-doesn't belong there.  Thus, the most specific description of the
-associated cooling stuff, as provided by the bindings, is the
-following excerpt from Documentation/devicetree/bindings/thermal/
-thermal-zones.yaml:
+--V33MzIjcuA2BZAPY
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-  209 cooling-device:
-  210   $ref: /schemas/types.yaml#/definitions/phandle-array
-  211   description:
-  212     A list of cooling device phandles along with the minimum
-  213     and maximum cooling state specifiers for each cooling
-  214     device. Using the THERMAL_NO_LIMIT (-1UL) constant in the
-  215     cooling-device phandle limit specifier lets the framework
-  216     use the minimum and maximum cooling state for that cooling
-  217     device automatically.
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
+pw-bot: not-applicable
 
-That's where the cooling hardware description ends, so that's also
-where the associated binding ends.  Everything else belongs to the
-thermal governors, because they actually decide on how to best use
-the available cooling features.
+--V33MzIjcuA2BZAPY
+Content-Type: application/pgp-signature; name="signature.asc"
 
-For example, the chain of events may look like this:
+-----BEGIN PGP SIGNATURE-----
 
-  (1) The rockchip_thermal_alarm_irq_thread() function, defined in
-      drivers/thermal/rockchip_thermal.c, gets triggered by TSADC
-      within the parameters of DT-defined "active" trip types
+iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaQzacAAKCRB4tDGHoIJi
+0hUTAQD7NwjnqRmBmopmm9xS3ZqfaL4Lj+EawXUG/K8Qy/2v1QEArBXv4nDqLv9S
+VD0Fl63GQYh+57qF0vwhbIjEcBRyQgs=
+=XWuK
+-----END PGP SIGNATURE-----
 
-  (2) It calls the thermal_zone_device_update() function defined
-      in drivers/thermal/thermal_core.c
+--V33MzIjcuA2BZAPY--
 
-  (3) This ends up calling the step_wise_manage() function that's
-      defined in drivers/thermal/gov_step_wise.c, which handles
-      the previously triggered "active" trip
 
-  (4) This calls the drivers/thermal/gov_step_wise.c's locally
-      defined thermal_zone_trip_update() and get_target_state()
-      functions, which end up ramping the fan speed up and down
-      as needed, while respecting the upper and lower limits
-      defined through the "cooling-device" DT map properties,
-      which correspond to the "cooling-levels" defined in the
-      DT fan property
-
-Here's also an excerpt from drivers/thermal/gov_step_wise.c, which
-confirms all this and explains it a bit further:
-
-  113  /*
-  114   * Throttling Logic: Use the trend of the thermal zone to throttle.
-  115   * If the thermal zone is 'heating up', throttle all of the cooling
-  116   * devices associated with each trip point by one step. If the zone
-  117   * is 'cooling down', it brings back the performance of the devices
-  118   * by one step.
-  119   */
-
-With all that in mind, the fan will ramp its speed up and down
-nicely, according to the current temperature, with no need for
-having multiple manually defined steps.
-
-The intended benefit of having the two usual, distinct "active"
-thermal trips and cooling maps is to lower the fan-induced noise
-a bit while not affecting the cooling much.  This is all visible
-in rk3399-rockpro64.dtsi, for example.
-
+--===============1890431114758516655==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============1890431114758516655==--
+
