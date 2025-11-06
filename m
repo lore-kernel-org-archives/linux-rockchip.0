@@ -4,56 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C4E6CCFA03
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Nov 2025 03:52:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F427CCFA03
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Nov 2025 04:30:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=1QNkiC1ABbnWFUZdyayWkIAXvfzfF7EUVO/1jtobGCA=; b=nstkhiyukaDV5V
-	F9eAesoWREvJQ7LREwN2z9g1bSeflyX4p6ddwZsHfiEyKhClqmd/1EzldYmW99CWaz+WJDr3We/5J
-	FXnTWMvnu1Lc6lzdS4H8a2eD/z9DRVwfaeiFp46J/BdoMYTcUpdZFvw2z9cr7xcgZzUgXNASyXyMB
-	jI0XlFNY0zK9IEWwvSgm+6UNF5gDBfmtV0b40TLwzartmHk5Hfq+pIcxEnb64RozdjlaeUmPCoKTQ
-	IMoHuRCZNEp0/mbyFPCw2vfgTTF/TAu9S68Y9IWQuQWq8RNaJw3axHPUpcKRaGBaaifvj3rieBq0P
-	w1BgX1LKC+PmIptAHl2Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=NsxdpFyETjoSPS8N1eJ8huMZLjNBNjwWmABxA0uqstE=; b=duOTiF1vPbdcz4
+	0+T08JxBQlnlRHXRBPn607hFjLuOiHwa8z1f2TlkOM28DMOBmrekIq9VUOuaxlEB5SnyV7z9jnnS1
+	rpXygk0LHfC4oq4Eky3KUsMD/lADqp6bxOtq45g4a8hPqxwlJEX2ZzR3S003o1OF07+cj1uA5X4E9
+	0A4nnTVdWHZZeozZSS2XnrVJ1cQaxyy9KzKwvv1Z2fSkT+2OxFeJNu2Za/Dybh453ry7lvA91ow34
+	UHAJWeLF5Rzi/8lVWbpWTwK9Podom9R3zFju79PgPVCetL+2+fgoifK8CSfBCkYG5Lz1AGSDZix5J
+	MPmXbZyxPAhYIRC2aDpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGr2j-0000000EqAe-0mbH;
-	Thu, 06 Nov 2025 03:52:13 +0000
-Received: from mail-m93109.xmail.ntesmail.com ([103.126.93.109])
+	id 1vGrdt-0000000ErBG-1it0;
+	Thu, 06 Nov 2025 04:30:37 +0000
+Received: from smtpbguseast2.qq.com ([54.204.34.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGr2d-0000000EqAB-2em4
+	id 1vGrdp-0000000ErAH-1R1J
 	for linux-rockchip@lists.infradead.org;
-	Thu, 06 Nov 2025 03:52:11 +0000
-Received: from localhost.localdomain (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 28958a74a;
-	Thu, 6 Nov 2025 11:52:02 +0800 (GMT+08:00)
-From: Shawn Lin <shawn.lin@rock-chips.com>
-To: Manivannan Sadhasivam <mani@kernel.org>,
-	Bjorn Helgaas <bhelgaas@google.com>
-Cc: linux-rockchip@lists.infradead.org,
-	linux-pci@vger.kernel.org,
-	Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH] PCI: Add ASPM quirk for Hi1105 PCIe Wi-Fi
-Date: Thu,  6 Nov 2025 11:51:59 +0800
-Message-Id: <1762401119-232631-1-git-send-email-shawn.lin@rock-chips.com>
-X-Mailer: git-send-email 2.7.4
-X-HM-Tid: 0a9a574af90209cckunmc10c5b4edfd220
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQhodTVZDSk4eGhkZThoaS0hWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpMTU
-	1VSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=LcNe6dPcznv0ogN4jyV/P9T2o5haKihe5jZHNhyKEPuUZsUwXE/FIlnRddS+LKvRbsq9oqMZg5ptwkPiJP+i6fjtDvi81WH50CjdpOlaDmWBSuq8GSeW9VYRfUo1j7foxvq+X9riL2Wklrns12V57FhmJso1CXEU90la1SxkVvo=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=KXVfLfjQl7Jc2uWt/iluuVv1/POOyLkrkqzuVKsR3Bg=;
-	h=date:mime-version:subject:message-id:from;
+	Thu, 06 Nov 2025 04:30:35 +0000
+X-QQ-mid: zesmtpip2t1762403365t556f18a9
+X-QQ-Originating-IP: EwkxOrRxBoJddIR4pEOMne+0CXyJ2WWFVCrq2hNoezM=
+Received: from [IPV6:240f:10b:7440:1:4c9d:dff9 ( [localhost])
+	by bizesmtp.qq.com (ESMTP) with 
+	id ; Thu, 06 Nov 2025 12:29:22 +0800 (CST)
+X-QQ-SSF: 0000000000000000000000000000000
+X-QQ-GoodBg: 0
+X-BIZMAIL-ID: 15303690167575674742
+Message-ID: <62149259BA8D0C0B+f4370c28-0eee-4095-9bf8-cd5e307a4c84@radxa.com>
+Date: Thu, 6 Nov 2025 13:29:21 +0900
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6 3/3] arm64: dts: rockchip: Add Radxa CM5 IO Board
+To: Dragan Simic <dsimic@manjaro.org>
+Cc: Jimmy Hon <honyuenkwun@gmail.com>, heiko@sntech.de,
+ joseph.kogut@gmail.com, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, jonas@kwiboo.se, kever.yang@rock-chips.com,
+ quentin.schulz@cherry.de, pbrobinson@gmail.com, amadeus@jmu.edu.cn,
+ jbx6244@gmail.com, devicetree@vger.kernel.org,
+ linux-rockchip@lists.infradead.org
+References: <20251105051335.17652-1-naoki@radxa.com>
+ <20251105051335.17652-4-naoki@radxa.com>
+ <CALWfF7KyTfpXSyjVQaFzqtn6KyDxuyZOBpPR8y-jf6sduNxq5A@mail.gmail.com>
+ <1EE1A1D9D7C100DA+1b365782-98c4-4ee0-ab96-920990841903@radxa.com>
+ <35ff8e6f-dd2b-d909-70c7-b19240e32ccf@manjaro.org>
+Content-Language: en-US
+From: FUKAUMI Naoki <naoki@radxa.com>
+In-Reply-To: <35ff8e6f-dd2b-d909-70c7-b19240e32ccf@manjaro.org>
+X-QQ-SENDSIZE: 520
+Feedback-ID: zesmtpip:radxa.com:qybglogicsvrsz:qybglogicsvrsz4b-0
+X-QQ-XMAILINFO: ND3CPZxVFFQcdOGYKK4WwQ840VSpJHuVO7tRkrFWheVYIdKLWB+t/Wb5
+	fC9crXYU6rYtXT+eLl9o+zT19Q5vwRgz7KfBbmNcdG/tQKtFGip4BusinYq/FG4Kd9KNNWV
+	Su2p9FX095npGIzybaRV7CpEsZ2etMmgW5ctI7P4nRA5KBb8HMmQrkA2e4wUgKX7+vhlSPO
+	NGTW3GWlTJ+BdY76OA9LP2wGglMl9ngoqHEQsCtWrrsBmwd2m7xLMNlHhmsCASbH/PR53aU
+	q0JV/oXy9FaX9KOFBFZHBkotq56Whgn9EJXMs26eMaoryRoXdhOEW8KX/gQ4JrBuWV5iPob
+	zSfSFOsk5s66QxcwSGqX1WTBZNHCEShOm7PED2TUFaeKKPEQuTqgk4XFfALv983zbyfO1YA
+	qQueqZfj065FJlGFFRJqwkh2IGK7f6xWk1JH/QORB8lJFx2SiYzGaWJykQiuf/kHmfOb0Fw
+	s0w1uopWLMhOqEagQLCQPwqAZilulrGRwtjyuvKHYylQsJcGijwijtiZIzyjzL6qJp8++ZQ
+	5pOTA2no//Kvx2AhwuvYfrMFZ3ssdpTLje1lrXHxbfTt341YetWHPEoecefBxI7S+WY0H3W
+	oJH0TYFaDGOVBOt8QLbpEP5A5PK5pFu076OYvqIAgtMzSUtp4OJXV01Eaj0KSirCECiHa3R
+	zFEVxeislzW4dfupsx8pEv9LY9+fb0B52NPAcvcwRqsDmbVlc1RFpWUdaGTLvaqBp7oxhsN
+	d8+znxUWEglt8HcYvauqb5HsCEM45erEkaW8qPd7c8a3nVAx3Z+XXKLa5zsd4HKoMOxOvy/
+	UlXECzJ6CHL7hihho+1DD7BF8JeEKW5XgyMPz8Cxq0fwb1aCAKSkTVr3n0PV1TYaNmUrJ0j
+	zzgpizlxN/1aa76iop2Xz5h3ear2Lto3L1jMhWHBGalRS52oTNm5iGTXhCCbeGWiJZhSY09
+	IdgUzY++EQ1ECst0/eqDJX/KZQjM8uH55ch8KxW8wYVDXuRJHNFdoIEEK
+X-QQ-XMRINFO: OWPUhxQsoeAVDbp3OJHYyFg=
+X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251105_195209_885472_C2F96971 
-X-CRM114-Status: UNSURE (   8.65  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251105_203033_971278_8A03B65A 
+X-CRM114-Status: GOOD (  27.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,44 +88,86 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This Wi-Fi advertises the L0s and L1 capabilities but actually
-it doesn't support them. This's comfirmed by Hisilicon team in
-actual productization.
-
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
----
-
- drivers/pci/quirks.c | 6 ++++++
- 1 file changed, 6 insertions(+)
-
-diff --git a/drivers/pci/quirks.c b/drivers/pci/quirks.c
-index 214ed06..67250d4 100644
---- a/drivers/pci/quirks.c
-+++ b/drivers/pci/quirks.c
-@@ -2526,6 +2526,12 @@ static void quirk_disable_aspm_l0s_l1(struct pci_dev *dev)
- DECLARE_PCI_FIXUP_FINAL(PCI_VENDOR_ID_ASMEDIA, 0x1080, quirk_disable_aspm_l0s_l1);
- 
- /*
-+ * The Hi1105 PCIe Wi-Fi doesn't support L0s and L1 but advertise the capability.
-+ * Disable both L0s and L1 for now.
-+ */
-+DECLARE_PCI_FIXUP_FINAL(PCI_VENDOR_ID_HUAWEI, 0x1105, quirk_disable_aspm_l0s_l1);
-+
-+/*
-  * Some Pericom PCIe-to-PCI bridges in reverse mode need the PCIe Retrain
-  * Link bit cleared after starting the link retrain process to allow this
-  * process to finish.
--- 
-2.7.4
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgRHJhZ2FuLAoKT24gMTEvNi8yNSAxMjozMSwgRHJhZ2FuIFNpbWljIHdyb3RlOgo+IEhlbGxv
+IE5hb2tpLAo+IAo+IE9uIFRodXJzZGF5LCBOb3ZlbWJlciAwNiwgMjAyNSAwMDozOCBDRVQsIEZV
+S0FVTUkgTmFva2kgPG5hb2tpQHJhZHhhLmNvbT4gd3JvdGU6Cj4+IE9uIDExLzYvMjUgMDM6Mjcs
+IEppbW15IEhvbiB3cm90ZToKPj4+IE9uIFR1ZSwgTm92IDQsIDIwMjUgYXQgMTE6MTTigK9QTSBG
+VUtBVU1JIE5hb2tpIDxuYW9raUByYWR4YS5jb20+IHdyb3RlOgo+Pj4+Cj4+Pj4gVGhlIFJhZHhh
+IENNNSBJTyBCb2FyZCBpcyBhbiBhcHBsaWNhdGlvbiBib2FyZCBmb3IgdGhlIFJhZHhhIENNNS4K
+Pj4+Pgo+Pj4+IFNwZWNpZmljYXRpb246Cj4+Pgo+Pj4+IC0gMXggbWljcm9TRCBjYXJkIHNsb3QK
+Pj4+Cj4+PiBbIHNuaXAgXQo+Pj4KPj4+PiArCj4+Pj4gKyZzZG1tYyB7Cj4+Pj4gKyAgICAgICBi
+dXMtd2lkdGggPSA8ND47Cj4+Pj4gKyAgICAgICBjYXAtbW1jLWhpZ2hzcGVlZDsKPj4+PiArICAg
+ICAgIGNhcC1zZC1oaWdoc3BlZWQ7Cj4+Pj4gKyAgICAgICBjZC1ncGlvcyA9IDwmZ3BpbzAgUktf
+UEE0IEdQSU9fQUNUSVZFX0xPVz47Cj4+Pj4gKyAgICAgICBkaXNhYmxlLXdwOwo+Pj4+ICsgICAg
+ICAgbm8tc2RpbzsKPj4+PiArICAgICAgIHBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7Cj4+Pj4g
+KyAgICAgICBwaW5jdHJsLTAgPSA8JnNkbW1jX2J1czQgJnNkbW1jX2NsayAmc2RtbWNfY21kPjsK
+Pj4+PiArICAgICAgIHNkLXVocy1zZHIxMDQ7Cj4+Pj4gKyAgICAgICB2bW1jLXN1cHBseSA9IDwm
+dmNjXzN2M19zMz47Cj4+Pj4gKyAgICAgICB2cW1tYy1zdXBwbHkgPSA8JnZjY2lvX3NkX3MwPjsK
+Pj4+PiArICAgICAgIHN0YXR1cyA9ICJva2F5IjsKPj4+PiArfTsKPj4+Cj4+PiBXaGVuIHVzZWQg
+YXMgYSBURiBzbG90LCBzaG91bGRuJ3QgdGhlcmUgYmUgYSAibm8tbW1jIiBhbHNvPwo+Pgo+PiBX
+ZSBoYXZlICJlTU1DIHRvIHVTRC4iCj4+ICAgIGh0dHBzOi8vcmFkeGEuY29tL3Byb2R1Y3RzL2Fj
+Y2Vzc29yaWVzL2VtbWMtdG8tdXNkCj4+Cj4+IFsgIDIwMi4xNzY3NTddIG1tY19ob3N0IG1tYzE6
+IEJ1cyBzcGVlZCAoc2xvdCAwKSA9IDQ5NTAwMDAwSHogKHNsb3QgcmVxCj4+IDUyMDAwMDAwSHos
+IGFjdHVhbCA0OTUwMDAwMEhaIGRpdiA9IDApCj4+IFsgIDIwMi4xNzg0NzddIG1tYzE6IG5ldyBo
+aWdoIHNwZWVkIE1NQyBjYXJkIGF0IGFkZHJlc3MgMDAwMQo+PiBbICAyMDIuMTc5NTM0XSBtbWNi
+bGsxOiBtbWMxOjAwMDEgU0xENjRHIDU3LjYgR2lCCj4+IFsgIDIwMi4yMDczMzZdIG1tY2JsazFi
+b290MDogbW1jMTowMDAxIFNMRDY0RyA0LjAwIE1pQgo+PiBbICAyMDIuMjEwMzc0XSBtbWNibGsx
+Ym9vdDE6IG1tYzE6MDAwMSBTTEQ2NEcgNC4wMCBNaUIKPj4gWyAgMjAyLjIxMjk2N10gbW1jYmxr
+MXJwbWI6IG1tYzE6MDAwMSBTTEQ2NEcgNC4wMCBNaUIsIGNoYXJkZXYgKDUxMToxKQo+Pgo+PiAo
+SSdtIG5vdCBzdXJlIHdoeSBpdCBzYXlzICJOb3Qgd29yayB3aXRoIHRoZSBTRCBzbG90IG9uIHRo
+ZSBib2FyZC4iIEkKPj4gd2lsbCBjaGVjay4pCj4gCj4gVGhhbmtzIGZvciBicmluZ2luZyB0aGlz
+IHVwLCBJJ3ZlIGFsd2F5cyB3b25kZXJlZCBob3cgYXJlIHN1Y2gKPiBzaW1wbGUgZU1NQy10by1t
+aWNyb1NEIGFkYXB0ZXJzIHN1cHBvc2VkIHRvIHdvcmssIHNvIHRoaXMgd2FzCj4gYSBnb29kIG9w
+cG9ydHVuaXR5IHRvIHJlc2VhcmNoIHRoYXQgYSBiaXQgZnVydGhlci4KPiAKPiBJbiBhIGZldyB3
+b3JkcywgdGhleSdyZSBub3Qgc3VwcG9zZWQgdG8gd29yayBpbiB0cnVlIG1pY3JvU0QgY2FyZAo+
+IHNsb3RzLCBhbmQgdGhleSBzZWVtIHRvIHJlbHkgb24gVVNCIGNhcmQgcmVhZGVycyB0aGF0IHN1
+cHBvcnQKPiBtdWx0aXBsZSBjYXJkIGludGVyZmFjZSBzdGFuZGFyZHMsIGJ1dCBub3QgbW9yZSB0
+aGFuIGEgc2luZ2xlIGNhcmQKPiBhdCBvbmNlLCBieSB3aXJpbmcgdGhlaXIgc2luZ2xlIGludGVy
+ZmFjZSBsaW5lcyBpbiBwYXJhbGxlbCB0byB0aGUKPiBkaWZmZXJlbnQgdHlwZXMgb2YgY2FyZCBz
+bG90cyB0aGF0IHRoZXkgcHJvdmlkZS4KPiAKPiBUbyBleHBsYWluIGl0IGEgYml0IGZ1cnRoZXIs
+IGFuIGVNTUMgY2hpcCBzdXBwb3J0cyBkaWZmZXJlbnQgZGF0YQo+IGJ1cyB3aWR0aHMgYW5kIGEg
+YmFja3dhcmQtY29tcGF0aWJsZSBNTUMgY2FyZCBtb2RlLCBidXQgdGhleSBoYXZlCj4gdmVyeSBs
+aXR0bGUga25vd2xlZGdlIGFib3V0IHRoZSBTRCBzcGVjaWZpY2F0aW9uLCBkZXNwaXRlIGJlaW5n
+Cj4gc29tZXdoYXQgc2ltaWxhcjsgdGhlIGV4Y2VwdGlvbiBpcyB0aGUgc2ltcGxpZmllZCBlTU1D
+IGJvb3QgbW9kZS4KPiBUaGlzIGlzIGV4cGxhaW5lZCBmdXJ0aGVyIGluIHRoZSBKRURFQyBKRVNE
+ODQtQjUxIHN0YW5kYXJkLCB3aGljaAo+IGlzIGF2YWlsYWJsZSBmcmVlbHkgZnJvbSB0aGUgSkVE
+RUMgd2Vic2l0ZSBhZnRlciByZWdpc3RyYXRpb24uCj4gCj4gVGhpcyBpcyBhbHNvIGNvbmZpcm1l
+ZCBieSB0aGUga2VybmVsIG1lc3NhZ2VzIHF1b3RlZCBhYm92ZSwgd2hpY2gKPiBzaG93IHRoYXQg
+dGhlIGVNTUMgY2hpcCBpcyBkZXRlY3RlZCBhcyBhbiBNTUMgY2FyZCB0aGlzIHdheS4KPiAKPiBX
+aXRoIGFsbCB0aGF0IGluIG1pbmQsIHdlIHNob3VsZCBzcGVjaWZ5ICJuby1tbWMiIGhlcmUsIGJl
+Y2F1c2UKPiB3ZSdyZSBkZXNjcmliaW5nIGEgbWljcm9TRCBzbG90LCBpbnN0ZWFkIG9mIGRlc2Ny
+aWJpbmcgc29tZSBoeWJyaWQKPiBNTUMvbWljcm9TRCBzbG90LiAgVGhhdCBhbHNvIGV4cGxhaW5z
+IHdoeSB0aGUgYWRhcHRlciBzb2xkIGJ5IFJhZHhhCj4gaXMgZGVzY3JpYmVkIGFzIG5vdCB0byBi
+ZSB1c2VkIHdpdGggbWljcm9TRCBjYXJkIHNsb3RzIG9uIFNCQ3MuICBJJ2QKPiBhbHNvIGxpa2Ug
+dG8gaGVhciBpcyB0aGlzIGFkYXB0ZXIvZU1NQyBjaGlwIGNvbWJvIHJlY29nbml6ZWQgYnkgdGhl
+Cj4ga2VybmVsIHdoZW4gIm5vLW1tYyIgaXMgc3BlY2lmaWVkOyBpdCBzaG91bGQgZmFpbC4KPiAK
+PiBBY3R1YWxseSwgbm90IHNwZWNpZnlpbmcgIm5vLW1tYyIgaGVyZSBtYXkgcmVzdWx0IGluIHNv
+bWUgdW5mb3Jlc2Vlbgo+IGlzc3VlcyB3aXRoIHNvbWUgKG9yIHBlcmhhcHMgbWFueT8pIG1pY3Jv
+U0QgY2FyZHMsIGJlY2F1c2UgdGhlIE1NQwo+IGRyaXZlcnMgd2lsbCB0cmVhdCB0aGVtIGFzIE1N
+Qy1jYXBhYmxlIGRldmljZXMgYW5kIHRyeSB0byBpbml0aWFsaXplCj4gdGhlbSBhcyBzdWNoLCB3
+aGljaCBtYXkgY2F1c2UgYWxsIGtpbmRzIG9mIGlzc3Vlcy4gIEluIGZhY3QsIEknbSBub3QKPiBy
+ZWFsbHkgc3VyZSB0aGF0IHRoZSBNTUMgZHJpdmVycyBhcmUgYWN0dWFsbHkgaW1wbGVtZW50ZWQg
+aW4gYSB3YXkKPiB0aGF0IGF2b2lkcyBhbGwgcG9zc2libGUgaXNzdWVzIHdpdGggdGhlIHN0b3Jh
+Z2UgY29udHJvbGxlcnMgdGhhdAo+IGFyZSBjYXBhYmxlIG9mIGJvdGggU0QgYW5kIE1NQyBtb2Rl
+cyB3aGVuIG5laXRoZXIgb2YgIm5vLXNkIiBhbmQKPiAibm8tbW1jIiBpcyBzcGVjaWZpZWQgaW4g
+dGhlaXIgRFQgbm9kZXMuCgpJIGhhdmUgbm8gb2JqZWN0aW9uIHRvIHNwZWNpZnlpbmcgbm8tbW1j
+IChhbmQgcmVtb3ZpbmcgCmNhcC1tbWMtaGlnaHNwZWVkKS4gV2UgaGF2ZSBhIFVTQiBlTU1DL1VG
+UyBNb2R1bGUgUmVhZGVyLCB3aGljaCBpcyBtdWNoIApmYXN0ZXIgdGhhbiBhbiBlTU1DIHRvIHVT
+RCByZWFkZXIgOikKCj4gRnVydGhlcm1vcmUsIGl0IHNlZW1zIHRoYXQgc3BlY2lmeWluZyAiY2Fw
+LW1tYy1oaWdoc3BlZWQiIHRvZ2V0aGVyCj4gd2l0aCAibm8tZW1tYyIgaXMgYWN0dWFsbHkgcmVk
+dW5kYW50LCB3aGljaCB3b3VsZCBtYWtlIHNlbnNlLCBidXQKPiBmdXJ0aGVyIHJlc2VhcmNoIG9m
+IHRoZSBNTUMgZHJpdmVycyBpcyBuZWVkZWQuICBJJ3ZlIGFkZGVkIHRoYXQgdG8KPiBteSBldmVy
+LWdyb3dpbmcgVE9ETyBsaXN0LiA6KQoKR29vZCBsdWNrIHdpdGggeW91ciBldmVyLWdyb3dpbmcg
+VE9ETyBsaXN0IQoKQmVzdCByZWdhcmRzLAoKLS0KRlVLQVVNSSBOYW9raQpSYWR4YSBDb21wdXRl
+ciAoU2hlbnpoZW4pIENvLiwgTHRkLgoKPj4+IFRoYXQncyBob3cgdGhlIFJvY2sgNUEsIDVCLCBh
+bmQgNUMgd2VyZSBkZWZpbmVkLgo+Pgo+PiBJIGhhdmUgc3VibWl0dGVkIGEgcGF0Y2ggd2l0aG91
+dCAibm8tbW1jIiBiZWZvcmUuIEkgaW50ZW5kIHRvIHNlbmQgb25lCj4+IGFnYWluIHdoZW4gSSBo
+YXZlIHRoZSBjaGFuY2UuCj4gCj4gCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hp
+cEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4v
+bGlzdGluZm8vbGludXgtcm9ja2NoaXAK
