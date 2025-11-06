@@ -4,64 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50DE7CCFA13
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Nov 2025 22:58:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E89ECCCFA13
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Nov 2025 22:58:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3YQMYv2BB9NvXMiNcMDPZt+GnJE6h7iulxmpSrRQwOU=; b=XnLHoIu4JcQPqS
-	5BImRRQ98O8bpiIGNTDj46ceZHnizRwO8wnQAfSCAVhaNbh3aUkQQFCze5rOvsZzhFaNK2OQSopQJ
-	Xx4+ZiLaflHtMAEC3EpcodJKRSkkt8GPTbZNOnD3vts5sfhaMqvi8Mjgn4cgkRJrxf0kd9Nd+/dXD
-	OxKLm+nXse8f+I0q+GN6ibmu02XkRMSVcSbVQkZoGqh/yuSj30au0PwBK1kHQRXInTLyc8m8feQeY
-	cZ917Ni4GwaBw/9Z+PbAMDcfc0JzX+qHsfctywvhLnzsJfDvISS2hFUZWGSCygGK+MWfYBmDTN2Q+
-	McT/Uq6ljSlgmlyj1qmQ==;
+	List-Owner; bh=BDIJLB3GG6ToJm8pI47JKO6r+qfZozoSbIsp9BTbM5A=; b=MzCcmvVeRvCm7/
+	XoKHFdN54nhf+i4Noy11K/5t4Nxb+sM9K12PkF18vn+HTiXzQH8Mv1bBQCYNfe49xFWaS6LpFLcPU
+	IuYu6E7ZhNGirXQUdFDPVbwSEdfPTCvqboHAoaFNFD8/8+xuFFk4jOOUUTBLo+i74A5EgCpUJoXX0
+	VuuAmVQc0K1+Wwf9iNVDcDKt0aPRL9ZhlQey4KT5GlZZoX6JA2xkjZ5BDao1Z7+moEx2g+dppV3uN
+	/S+BPM1zBgarQCoWKbN4xCS/TapTyuseEFR/EOt7Df/L8bI4gfCk+va4090wN653VycQZQQVewer6
+	WWt/RiKoxaGjwukv4hgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vH8wH-0000000GLAv-37tn;
-	Thu, 06 Nov 2025 22:58:47 +0000
+	id 1vH8wP-0000000GLFy-0vCb;
+	Thu, 06 Nov 2025 22:58:53 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vH8wE-0000000GL7Z-1jZc;
-	Thu, 06 Nov 2025 22:58:43 +0000
+	id 1vH8wM-0000000GLDT-3fgH
+	for linux-rockchip@lists.infradead.org;
+	Thu, 06 Nov 2025 22:58:51 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=66drUzeJX6dC+QazFCafnL4iFqkKi3oQMXaB9Tb7WcM=; b=ZPFSJYhhgvdGSqHJsmjYioP6XU
-	iWy7sNTs8wyyXn/U0r6s4afa/omTIMnDQ1l/4dIoq+HU0dAyN57wwHJtYzIhpG2L3GRFwRCWdC/oQ
-	hJhQcAMao/ikKUkV+4owK26FjNGnyorWIC2sGROe60yKXDtNZJvhXTxAFrIoB2vPHXLYkxj5OtVl+
-	5M0l+4mbeFV3627ToS+wW7dl1FtXIkHwVbyADhtZdf6OheU9tzFoRDs2ycwh/yVR5B3HDoL71a4Ru
-	UeDhvPFKrFlogEBgv6Ag37glzywbvRKvvpIxVP0yPnBG3wXUAYi8BQE5IBSCkH7/yF7auo01E0uVu
-	IvOtQLVQ==;
+	bh=q5BaZus5WeymNKM4U1Ymi+4owlLbrKXJ0bebIgphDZE=; b=JZRdQiVA1H9xwmkuwSA8XFSlh/
+	NpSYXs6O4jYKW0v+robg8DBouK500mcy4uafbBLd6Sgb7BBs/mfFgUtvBzzHB6+Yi2PmOP5cx4QAy
+	jbFg1X4ytnyI72KR3uBzhkKu/NqYFTsqW3+1bD8vnmGlU3rS6DwkCQ+e31T3oL0xwZk4sH2HwW66b
+	9ahQ0bUDV7dksfepnZ+yX8mQDGv5trzld9eUwLqPIJ0QAbhwoX/GZz4WY3SaUrsd7DsDZOJ4ZpHkD
+	hO16h92PJ5OfZ1dLqrqYhUIxNY0lzlp8QG71hgVraOWLUV6TPpept7Y4BacIyjayqS55ko/eBy6f0
+	Be1whIqw==;
 Received: from i53875bac.versanet.de ([83.135.91.172] helo=phil.fritz.box)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1vH8wA-0001pr-7L; Thu, 06 Nov 2025 23:58:38 +0100
+	id 1vH8wB-0001pr-Lv; Thu, 06 Nov 2025 23:58:39 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Dragan Simic <dsimic@manjaro.org>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Coia Prant <coiaprant@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v5 0/3] Add devicetree for the 9Tripod X3568 v4
-Date: Thu,  6 Nov 2025 23:58:32 +0100
-Message-ID: <176246989738.210200.5023344118308147970.b4-ty@sntech.de>
+To: FUKAUMI Naoki <naoki@radxa.com>
+Subject: Re: [PATCH v3] arm64: dts: rockchip: Fix USB Type-C host mode for Radxa ROCK 5B+/5T
+Date: Thu,  6 Nov 2025 23:58:35 +0100
+Message-ID: <176246989735.210200.333917172984191028.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20251103171702.1518730-1-coiaprant@gmail.com>
-References: <20251103171702.1518730-1-coiaprant@gmail.com>
+In-Reply-To: <20251104085227.820-1-naoki@radxa.com>
+References: <20251104085227.820-1-naoki@radxa.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251106_145842_464401_F9D9EFE8 
-X-CRM114-Status: GOOD (  10.04  )
+X-CRM114-CacheID: sfid-20251106_145850_920279_B1F02393 
+X-CRM114-Status: UNSURE (   9.37  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,30 +65,28 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: robh@kernel.org, conor+dt@kernel.org, Heiko Stuebner <heiko@sntech.de>, detlev.casanova@collabora.com, quentin.schulz@cherry.de, sebastian.reichel@collabora.com, damon.ding@rock-chips.com, didi.debian@cknow.org, jbx6244@gmail.com, linux-rockchip@lists.infradead.org, krzk+dt@kernel.org, nicolas.frattaroli@collabora.com, devicetree@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Tue, 04 Nov 2025 01:16:59 +0800, Coia Prant wrote:
-> Change in v2:
-> - Add vendor 'ninetripod' to board filename
->   > 'x3568_v4' => 'ninetripod_x3568_v4'
+On Tue, 04 Nov 2025 08:52:27 +0000, FUKAUMI Naoki wrote:
+> The Radxa ROCK 5B+/5T USB Type-C port supports Dual Role Data and
+> should also act as a host. However, currently, when acting as a host,
+> only self-powered devices work.
 > 
-> Change in v3:
-> - Fix Makefile
+> Since the ROCK 5B+ supports Dual Role Power, set the power-role
+> property to "dual" and the try-power-role property to "sink". (along
+> with related properties)
 > 
 > [...]
 
 Applied, thanks!
 
-[1/3] dt-bindings: vendor-prefixes: Add 9Tripod
-      commit: 25802f8d16374bcfc1e32d26fdee0d89ec82f865
-[2/3] dt-bindings: arm: rockchip: Add 9Tripod X3568 series
-      commit: a12838aab0cea1e4427d8d620906ce6a1a83a344
-[3/3] arm64: dts: rockchip: Add devicetree for the 9Tripod X3568 v4
-      commit: 156a530ed5ed012f35e8319c2ee5223dfc7195d3
+[1/1] arm64: dts: rockchip: Fix USB Type-C host mode for Radxa ROCK 5B+/5T
+      commit: fbf90d1b697faf61bb8b3ed72be6a8ebeb09de3d
 
 Best regards,
 -- 
