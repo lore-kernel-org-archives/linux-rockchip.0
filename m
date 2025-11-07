@@ -4,99 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 204E9CCF9F8
-	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Nov 2025 17:32:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57C32CCF9E3
+	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Nov 2025 18:42:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/ZEmKFSXrXPHbNWBtaVwL0mmX4IS5zCb681r+Zf29Qg=; b=Uc4ZKhr3cWq6wA
-	lXTkhd40zQ2wxI3W1k+6EKxKLS5O5svfNI4vT8NV6WS2ZeJQwsOY6KFPmGx/q+1FQbk5YugSOzGtg
-	65vtIOncQEStlavaERgmxP4vpPHCSSCPBzkh0U9YY5pDi7Cfd+H+L5xxeMmX6bDaUkViN5vLcq00r
-	y4AQL/f1c/jDFsVUsethypYppS6UVgXgS7dBNNO2Qc90ysuGHuA3+fBKklsXiLnyHASc5JlbfDvOj
-	tJ+l4TBov7VqfIpDtSTlbd+7mFJtR7+1hRF33dbqI5zaXvsmP2t7EhhbNVBDIUycY7bHmBn/rNaHx
-	nUp1tnMpa6rgn/GYR+ew==;
+	List-Owner; bh=o8uf7OwSa01U+DFe3SSxaiboQhdS9zZHCqsWu2f+yxs=; b=T7v01aV3cHTbea
+	q5fNTQOT1Dh3lpbql+mZ8bS+sYuWd1Fm/KJ2hQtSlqu74kSsxjmNzMwTevnbciusP9yq0ICorMM6R
+	4gNjAU/3y51/tpcqlTxYtKpQI68xtpodd7LBE2CCPkq+7lF7jcLudvS9JDbqpptgeIvT86qX7IzrS
+	EOnJbEi45TOPLkcyxoK0xgq3YxiPq4yuMIQkbvuYQlPAUM7OXTHQ0WWoTw4kCfJOijOZ29nGF7Jc8
+	0LkF2zjb96in+dr8b/+wtf6YNM/NuEolYAUjSqM8vpr6Ns6GggdPnwHKmi/sddlf9KppeLkyf5wSb
+	V31Mb6WIdCa6M49JUfzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vHQKF-00000000HQm-2kLl;
-	Fri, 07 Nov 2025 17:32:39 +0000
-Received: from mgamail.intel.com ([198.175.65.11])
+	id 1vHRPV-00000000XdQ-3Kfn;
+	Fri, 07 Nov 2025 18:42:09 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vHQKC-00000000HPO-0W8I;
-	Fri, 07 Nov 2025 17:32:37 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1762536757; x=1794072757;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=br/yoQcXazpIhba0JM9br+2Xu+ekNSGhpyy+fjDbUQs=;
-  b=N+p7F7ketYG+3F82mk5f2lOnVozPNa4R8B6l7bGPuhxP7bqqRwTn3IJM
-   D0wQs46xOrGNU6/BTRNmhjbXcOtgaJG0P+83WeJfDFwPRMkXj6pvtgbtC
-   Om1XloG2U+suAzD/xiz8dk0J76RYW6A3MVNp4b0uYt+9lmNVcbbeWQK9H
-   eIJRgxPYqj9evgGGsnU7w8bwzkD0niCCG/lEHe4Fn9shVoqgt57niXo6G
-   hbRF2SgSuxKUK3AwSXF8CjSboDMEg0BRPDXqMyzFVaiXyQWbzI7ri/Xkp
-   12FD7oBa1ksoEi/L1UYfKaebZzt/CyNUQt83AJpSJI3dodYyTUIyUqacJ
-   A==;
-X-CSE-ConnectionGUID: QcMYwnD6TEWk4Xcngoe+Yw==
-X-CSE-MsgGUID: uPzAriwvSDu6lAWd9gC1jg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11606"; a="74984222"
-X-IronPort-AV: E=Sophos;i="6.19,287,1754982000"; 
-   d="scan'208";a="74984222"
-Received: from orviesa003.jf.intel.com ([10.64.159.143])
-  by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Nov 2025 09:32:36 -0800
-X-CSE-ConnectionGUID: olbkBok6TgOZIIyj+YRicw==
-X-CSE-MsgGUID: fEjkLyDgQ8C+BXPOdvpQGw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.19,287,1754982000"; 
-   d="scan'208";a="192185843"
-Received: from kniemiec-mobl1.ger.corp.intel.com (HELO kekkonen.fi.intel.com) ([10.245.245.117])
-  by ORVIESA003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Nov 2025 09:32:26 -0800
-Received: from kekkonen.localdomain (localhost [IPv6:::1])
-	by kekkonen.fi.intel.com (Postfix) with SMTP id D3FDF11FC72;
-	Fri, 07 Nov 2025 19:32:22 +0200 (EET)
-Date: Fri, 7 Nov 2025 19:32:22 +0200
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6 krs, Bertel Jungin Aukio 5, 02600 Espoo
-From: Sakari Ailus <sakari.ailus@linux.intel.com>
-To: michael.riesch@collabora.com
-Cc: Mehdi Djait <mehdi.djait@linux.intel.com>,
-	Maxime Chevallier <maxime.chevallier@bootlin.com>,
-	=?iso-8859-1?Q?Th=E9o?= Lebrun <theo.lebrun@bootlin.com>,
-	Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
-	Gerald Loacker <gerald.loacker@wolfvision.net>,
-	Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
-	Markus Elfring <Markus.Elfring@web.de>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Kever Yang <kever.yang@rock-chips.com>,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Collabora Kernel Team <kernel@collabora.com>,
-	Paul Kocialkowski <paulk@sys-base.io>,
-	Alexander Shiyan <eagle.alexander923@gmail.com>,
-	Val Packett <val@packett.cool>, Rob Herring <robh@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>, linux-media@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	Mehdi Djait <mehdi.djait@bootlin.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	Bryan O'Donoghue <bod@kernel.org>, Chen-Yu Tsai <wens@csie.org>
+	id 1vHRPQ-00000000XaW-3kxS;
+	Fri, 07 Nov 2025 18:42:08 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1762540921;
+	bh=QurK2/aeYYaTshySUtEliqovujqE6ttMkDCo9FMWluk=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=eJxS1HR/gSikwNVeEpl1avVNjIn7ZGA5CTTYUp2tru/xqQnyTn0H3l11WaYOyugVm
+	 +RbdSUs6PSlOPKSYLA0/iLT+ftjhNzx0D4/qIkVqCykXfPtjI7NdPlL0ekn1tF4Rhw
+	 OMp49kkjL8hTafEWwJnuSBP+fWL2jyYRY6HnXojFl466kwGFzqmeWCGK8Ado7+SMss
+	 642WgG6YFCbEEZDrMOHAIFkMQSBTqkV3dmpEwXCG1RQOGhlcUTVksZiyU4iGqQWD3c
+	 tcZ5lzNIroWcWn84WINhOEpiSRiSISmIZ8Jhs0wd3iv9v1LTZdtLVMSZwAWEmOO9pb
+	 bDpj0p60CljWw==
+Received: from [10.40.0.100] (185-67-175-126.lampert.tv [185.67.175.126])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: mriesch)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4814D17E108B;
+	Fri,  7 Nov 2025 19:42:00 +0100 (CET)
+Message-ID: <074cd08e-0412-49f9-8dd9-b1f96eb11717@collabora.com>
+Date: Fri, 7 Nov 2025 19:41:59 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v14 00/18] media: rockchip: add a driver for the rockchip
  camera interface
-Message-ID: <aQ4tJg8r_j4NyKhv@kekkonen.localdomain>
+To: Sakari Ailus <sakari.ailus@linux.intel.com>
+Cc: Mehdi Djait <mehdi.djait@linux.intel.com>,
+ Maxime Chevallier <maxime.chevallier@bootlin.com>,
+ =?UTF-8?Q?Th=C3=A9o_Lebrun?= <theo.lebrun@bootlin.com>,
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+ Gerald Loacker <gerald.loacker@wolfvision.net>,
+ Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
+ Markus Elfring <Markus.Elfring@web.de>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Kever Yang <kever.yang@rock-chips.com>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Collabora Kernel Team <kernel@collabora.com>,
+ Paul Kocialkowski <paulk@sys-base.io>,
+ Alexander Shiyan <eagle.alexander923@gmail.com>,
+ Val Packett <val@packett.cool>, Rob Herring <robh@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ Mehdi Djait <mehdi.djait@bootlin.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Bryan O'Donoghue <bod@kernel.org>, Chen-Yu Tsai <wens@csie.org>
 References: <20240220-rk3568-vicap-v14-0-b38b6da0fc80@collabora.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240220-rk3568-vicap-v14-0-b38b6da0fc80@collabora.com>
+ <aQ4tJg8r_j4NyKhv@kekkonen.localdomain>
+Content-Language: en-US
+From: Michael Riesch <michael.riesch@collabora.com>
+In-Reply-To: <aQ4tJg8r_j4NyKhv@kekkonen.localdomain>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251107_093236_199528_88F78283 
-X-CRM114-Status: GOOD (  14.86  )
+X-CRM114-CacheID: sfid-20251107_104205_125171_06BCFE16 
+X-CRM114-Status: GOOD (  16.81  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,33 +98,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Michael,
+Hi Sakari,
 
-On Fri, Oct 24, 2025 at 02:51:29PM +0200, Michael Riesch via B4 Relay wrote:
-> Habidere,
+On 11/7/25 18:32, Sakari Ailus wrote:
+> Hi Michael,
 > 
-> This series introduces support for the Rockchip Camera Interface (CIF),
-> which is featured in many Rockchip SoCs in different variations.
-> For example, the PX30 Video Input Processor (VIP) is able to receive
-> video data via the Digital Video Port (DVP, a parallel data interface)
-> and transfer it into system memory using a double-buffering mechanism
-> called ping-pong mode.
-> The RK3568 Video Capture (VICAP) unit, on the other hand, features a
-> DVP and a MIPI CSI-2 receiver that can receive video data independently
-> (both using the ping-pong scheme).
-> The different variants may have additional features, such as scaling
-> and/or cropping.
-> Finally, the RK3588 VICAP unit constitutes an essential piece of the
-> camera interface with one DVP, six MIPI CSI-2 receivers, scale/crop
-> units, and a data path multiplexer (to scaler units, to ISP, ...).
+> On Fri, Oct 24, 2025 at 02:51:29PM +0200, Michael Riesch via B4 Relay wrote:
+>> Habidere,
+>>
+>> This series introduces support for the Rockchip Camera Interface (CIF),
+>> which is featured in many Rockchip SoCs in different variations.
+>> For example, the PX30 Video Input Processor (VIP) is able to receive
+>> video data via the Digital Video Port (DVP, a parallel data interface)
+>> and transfer it into system memory using a double-buffering mechanism
+>> called ping-pong mode.
+>> The RK3568 Video Capture (VICAP) unit, on the other hand, features a
+>> DVP and a MIPI CSI-2 receiver that can receive video data independently
+>> (both using the ping-pong scheme).
+>> The different variants may have additional features, such as scaling
+>> and/or cropping.
+>> Finally, the RK3588 VICAP unit constitutes an essential piece of the
+>> camera interface with one DVP, six MIPI CSI-2 receivers, scale/crop
+>> units, and a data path multiplexer (to scaler units, to ISP, ...).
+> 
+> I understand both RK3568 and RK3588 include an ISP. Do you have insight on
+> how would this work, should the support for the ISP be added later on?
+> 
 
-I understand both RK3568 and RK3588 include an ISP. Do you have insight on
-how would this work, should the support for the ISP be added later on?
+Short answer: Yes and yes.
 
--- 
-Kind regards,
+Long answer:
 
-Sakari Ailus
+The patch series at hand adds support for the PX30 VIP and the RK3568
+VICAP. I cannot really say something about the PX30, but on the RK3568
+VICAP and ISP are orthogonal (the ISP features its own MIPI CSI-2
+receiver, different from that introduced in this series). Thus, ISP
+support can be introduced anytime (whenever someone is motivated ;-)).
+
+Once this patch series is merged, I'll push out changes that introduce
+support for the RK3588 VICAP. We can discuss the integration of any
+RK3588 ISP in this scope then -- and there may be some things to discuss
+as there the VICAP and the ISP(s) are directly connected by means of a
+MUX unit in the VICAP.
+
+Alright?
+
+Best regards,
+Michael
+
 
 _______________________________________________
 Linux-rockchip mailing list
