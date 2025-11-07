@@ -4,84 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45B3ACCFA05
-	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Nov 2025 13:39:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2135ACCF9F8
+	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Nov 2025 14:31:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ZeJ6YUOOkI3K12ks08K7Qw64PWQFhbDKY0wXmIptruc=; b=BgsCMKJCaEaPW/
-	9xo9uoU8R853f1ARZiV8aviDZlCARF6KwhuYQcccIYzwYvA2KcgBoObQC51qr0HkkRwurm/aENv+q
-	QJpfqFlgU+u6WtFncru80CoB35F/934ut6sgBNaGm2UroUh/9/OXo73+mKDaz+itgdbydfP2bI+9F
-	V4s2+YwZYP2iwZdlhiYnJQvbGsOZzwykwviGMlj8hyVH9JnAWPTtiTmuORMsGT1m/RNSWuuql9GNI
-	QOjWFnWoMzgOt700+0Zttcjd+35vwawWhnqDqx0W06Wd/TNtDN3g0GZF9doOMAgEpK2RB0S4E5NYo
-	uxCNwuivzSsdH+dnD+oQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=BEuh3HsALjUMRAYUPzEEOWUKCbIVUnsUph1Mqx3xS4A=; b=MUouCCpevJF+sW
+	g6zZfLtUx6jUca/P7qfA9nX1SHqXRm9UZOyvKnBfVLCoFMXZueOqaunfBAlZWM3/BivCicx60j7Gp
+	ikmuwtRdcyQnSjsI4NjyRF+FHzfls9kOnPonPBjan8QaEHO+shLejxDR/e28KY8YxiggOnwBi4/ac
+	70wghogTHH9gUVgiriD2VlTrm4qwJepZZMBSptK/LpuHzxqpk0pD9gIyuthuXSL/KuPKvyDlvc8Zg
+	/VNtLKsiTxdt97KCatDHHpCOskGkZDkOOIhecXyiar6QCHc+l3k+6a+NsrbuxwX/SZCuL5eSDDoWG
+	XGqMvQ0lhWfdUrik5irw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vHMfy-0000000HQAv-1YUf;
-	Fri, 07 Nov 2025 13:38:50 +0000
-Received: from mail-pj1-x1041.google.com ([2607:f8b0:4864:20::1041])
+	id 1vHNUu-0000000HVUC-2nPE;
+	Fri, 07 Nov 2025 14:31:28 +0000
+Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vHMfw-0000000HQAY-3hoA
+	id 1vHNUs-0000000HVTF-2oSh
 	for linux-rockchip@lists.infradead.org;
-	Fri, 07 Nov 2025 13:38:50 +0000
-Received: by mail-pj1-x1041.google.com with SMTP id 98e67ed59e1d1-34101107cc8so606660a91.0
-        for <linux-rockchip@lists.infradead.org>; Fri, 07 Nov 2025 05:38:48 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1762522728; x=1763127528; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=jJ6i5QFZLIXUsCrEe0mdSHfsDvzDf4P+mBRrC8poWsg=;
-        b=na54mZDo12h9OR807ppE5WHviZE9Og2O/zERwSzHp787/abrlAvQfNXD3hOz9rcAYp
-         kIH5Fo4k5uAx9alyCMiPJxx38usm5qMiHMbd9sIPdBHO4KxsO91wX0KagKKxMrG6vg3H
-         0CXqnk1h4BTSfiSPI9R5eqnHKs4wKjkPk+LdEPHzrUTLo7iG+JMJIRSoo/fEjb6GPRTV
-         W+7FhaeN2155TR60IdtCapITpkc9NC8sGj7wyfEVL73VHZp6gSyj/TVCHB4xrg2tJq3j
-         mxJsz8svg4B8n2s4P6MI+33AHipQBHUn8DZbx9eyv2s8xOKmFEeU3j74a15iLY8FiVNs
-         5ugA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1762522728; x=1763127528;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=jJ6i5QFZLIXUsCrEe0mdSHfsDvzDf4P+mBRrC8poWsg=;
-        b=bETd3XmLBw4dKcYjFbhzqKI/7Hpx/NArLFCbcxvSS4+1U6/xLwuoGmr+Kd5Hd2kxiM
-         2o/MYjAuqgb2Hq5GlRpOUledII7qrKFr6X4C+fpUERtD59hZCKbcRAWei9kVBZv6JDiB
-         CK5IX/kaTXEckXVqnoIYmipO7TewmWqEiM5D9Ikz1Y5PiVbONNjvMeRLtby8jm02AuVD
-         G014xsU1i/WQUovRNhwY11X9QYcZ1MKkKvLMiJPIc9jRSTAqT6Df245BNUOWZYJ4GnwE
-         LqyKuKBSN1zRi+ZL/2CI0m8Z54vxOFLDOkKhMsfvfqxIS0tUf3k1dPeUM4/VvFQZK6aT
-         3xHQ==
-X-Gm-Message-State: AOJu0YzEbQWTfRsozFOt0NZ8kxXixTBigNJOAyI+L/ejfIS3Ah00vjbF
-	lymRRebcef27XaQw/KCodhTSDy4eMVqmRWRGfyKiuA9PXK/631IijxZNfba4e4mTXfg=
-X-Gm-Gg: ASbGncuDGTCof4r/WO1TDhA1awcqziYVzRaf5iyOdXF6HqwBKGPVj6j+IxHu7m0R9U/
-	M4ZgkIxFlf9ylIP2VXwQGCqh4gbk8Gyeezau+k/hdQ2RE5f6PmbENuYqFZ9DJa9DlR8J78Es97B
-	e63h8wcwdO3NKoUuFwGZmBe6uqPiNSPGWCUW5QY56KipS4Jka0a6MfdOO6mLDifZVe+EQ1aZRfJ
-	+lFa80lw5fKovfjlDvITusb9LA0XhRaOSDcscNkpuoamZAV68tMeSkQfvTkOKlENXhWxJky4jEY
-	x1PpVvF9DgnQouG/2TJFa8qGC7pGwM3XemyQuW89B7gwYcEKgk5o//E8q+W3lgPXkFjw+Yxz4qS
-	lh08TzxMHXqyuzeMY4AwHTKzfckgmVoCjPqCdhCJ3dcJzQ61NS4RNn12sOyTLAZJ0mXO+4HO5kd
-	oy0QAZrg==
-X-Google-Smtp-Source: AGHT+IG4l7HicS3Le3aL0YFeQkU4o+7MNbGUnvh1G+o7pBk4WXRTmpELgxnyrfcV0IqYR/is61rOeQ==
-X-Received: by 2002:a17:90b:17cb:b0:339:ec9c:b275 with SMTP id 98e67ed59e1d1-3434c4efc0amr3789493a91.6.1762522727993;
-        Fri, 07 Nov 2025 05:38:47 -0800 (PST)
-Received: from server.lan ([103.213.4.16])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3434c343107sm2705259a91.14.2025.11.07.05.38.43
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 07 Nov 2025 05:38:47 -0800 (PST)
-From: Coia Prant <coiaprant@gmail.com>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Coia Prant <coiaprant@gmail.com>
-Subject: [PATCH] arm64: dts: rockchip: clean up devicetree for 9Tripod X3568 v4
-Date: Fri,  7 Nov 2025 21:38:38 +0800
-Message-ID: <20251107133839.300252-1-coiaprant@gmail.com>
-X-Mailer: git-send-email 2.47.3
+	Fri, 07 Nov 2025 14:31:27 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
+ Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
+ s=fe-e1b5cab7be; t=1762525886;
+ bh=dBnEo9kQFWn16Gia7CBsD427l5/li0reZ07Ety+v/ps=;
+ b=fhUg4Gj+izK5OnhZqunf0VJZ8C8ao9Df5aSejlUJM6w89icFHhr0J7ggRFixtaVW5QkPZQOjJ
+ wpv4+ZHUuaNKNOKV4ZbCKSQUazPie1k31z5NP0Z0TdKTScXGLmy6E/NP9BiWllraAfRsaP5ceFL
+ /NOWBcEW1M0gKAtZywzP/BI/8NEncLw873goZewK5kWbMWNl6vMKMsrvWGw+wsclZyBZdHnjH6L
+ ivFKA9hHH4EIvpjXI1zcGdqKi0eRS82hjwetfSpjHezko/sdyNik8deer8ru34o70+pXVuj44Up
+ ofL8x8+4CSwP56c2XwePvmpe151Z4jPMcm/PzJlfS/Cw==
+X-Forward-Email-ID: 690e02ab07551ffa40a0e268
+X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 149.28.215.223
+X-Forward-Email-Version: 1.4.3
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+Message-ID: <3be7a6e4-4025-42b4-a73f-a9d05e64191d@kwiboo.se>
+Date: Fri, 7 Nov 2025 15:31:02 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6 2/5] dt-bindings: clock, reset: Add support for rv1126b
+To: Elaine Zhang <zhangqing@rock-chips.com>
+Cc: mturquette@baylibre.com, sboyd@kernel.org, sugar.zhang@rock-chips.com,
+ heiko@sntech.de, robh@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ conor+dt@kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ huangtao@rock-chips.com, finley.xiao@rock-chips.com,
+ Conor Dooley <conor.dooley@microchip.com>
+References: <20251104030633.2721038-1-zhangqing@rock-chips.com>
+ <20251104030633.2721038-3-zhangqing@rock-chips.com>
+Content-Language: en-US
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <20251104030633.2721038-3-zhangqing@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251107_053848_959057_007B1D69 
-X-CRM114-Status: UNSURE (   9.24  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251107_063126_744949_010C18BA 
+X-CRM114-Status: GOOD (  13.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,82 +82,76 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Fix indentation, remove unused SDIO properties, and drop the GMAC clock
-that was used for input direction. The board uses the clock as
-output, so the input clock is not needed.
+Hi Elaine,
 
-Signed-off-by: Coia Prant <coiaprant@gmail.com>
----
- .../dts/rockchip/rk3568-9tripod-x3568-v4.dts  | 25 +++++++------------
- 1 file changed, 9 insertions(+), 16 deletions(-)
+On 11/4/2025 4:06 AM, Elaine Zhang wrote:
+> Add clock and reset ID defines for rv1126b.
+> Also add documentation for the rv1126b CRU core.
+> 
+> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+> Acked-by: Conor Dooley <conor.dooley@microchip.com>
+> ---
+>  .../bindings/clock/rockchip,rv1126b-cru.yaml  |  52 +++
+>  .../dt-bindings/clock/rockchip,rv1126b-cru.h  | 392 +++++++++++++++++
+>  .../dt-bindings/reset/rockchip,rv1126b-cru.h  | 405 ++++++++++++++++++
+>  3 files changed, 849 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rv1126b-cru.yaml
+>  create mode 100644 include/dt-bindings/clock/rockchip,rv1126b-cru.h
+>  create mode 100644 include/dt-bindings/reset/rockchip,rv1126b-cru.h
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568-9tripod-x3568-v4.dts b/arch/arm64/boot/dts/rockchip/rk3568-9tripod-x3568-v4.dts
-index 443ed7d4b..ad4d62060 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568-9tripod-x3568-v4.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3568-9tripod-x3568-v4.dts
-@@ -273,11 +273,10 @@ &gmac0 {
- 	clock_in_out = "output";
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&gmac0_miim
--			&gmac0_tx_bus2
--			&gmac0_rx_bus2
--			&gmac0_rgmii_clk
--			&gmac0_rgmii_bus
--			&gmac0_clkinout>;
-+		     &gmac0_tx_bus2
-+		     &gmac0_rx_bus2
-+		     &gmac0_rgmii_clk
-+		     &gmac0_rgmii_bus>;
- 	phy-handle = <&rgmii_phy0>;
- 	phy-mode = "rgmii-id";
- 	status = "okay";
-@@ -290,11 +289,10 @@ &gmac1 {
- 	clock_in_out = "output";
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&gmac1m1_miim
--			&gmac1m1_tx_bus2
--			&gmac1m1_rx_bus2
--			&gmac1m1_rgmii_clk
--			&gmac1m1_rgmii_bus
--			&gmac1m1_clkinout>;
-+		     &gmac1m1_tx_bus2
-+		     &gmac1m1_rx_bus2
-+		     &gmac1m1_rgmii_clk
-+		     &gmac1m1_rgmii_bus>;
- 	phy-handle = <&rgmii_phy1>;
- 	phy-mode = "rgmii-id";
- 	status = "okay";
-@@ -674,8 +672,7 @@ led_work_en: led_work_en {
- 
- 	pmic {
- 		pmic_int: pmic_int {
--			rockchip,pins =
--				<0 RK_PA3 RK_FUNC_GPIO &pcfg_pull_up>;
-+			rockchip,pins = <0 RK_PA3 RK_FUNC_GPIO &pcfg_pull_up>;
- 		};
- 	};
- 
-@@ -763,7 +760,6 @@ &sdmmc0 {
- /* used for AP6275S WiFi */
- &sdmmc2 {
- 	bus-width = <4>;
--	disable-wp;
- 	cap-sd-highspeed;
- 	cap-sdio-irq;
- 	keep-power-in-suspend;
-@@ -771,9 +767,6 @@ &sdmmc2 {
- 	non-removable;
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&sdmmc2m0_bus4 &sdmmc2m0_cmd &sdmmc2m0_clk>;
--	sd-uhs-sdr12;
--	sd-uhs-sdr25;
--	sd-uhs-sdr50;
- 	sd-uhs-sdr104;
- 	vmmc-supply = <&vcc3v3_sys>;
- 	vqmmc-supply = <&vcc_1v8>;
--- 
-2.47.3
+[snip]
 
+> diff --git a/include/dt-bindings/clock/rockchip,rv1126b-cru.h b/include/dt-bindings/clock/rockchip,rv1126b-cru.h
+> new file mode 100644
+> index 000000000000..d6040058c21f
+> --- /dev/null
+> +++ b/include/dt-bindings/clock/rockchip,rv1126b-cru.h
+> @@ -0,0 +1,392 @@
+> +/* SPDX-License-Identifier: (GPL-2.0-only OR MIT) */
+> +/*
+> + * Copyright (c) 2025 Rockchip Electronics Co., Ltd.
+> + * Author: Elaine Zhang <zhangqing@rock-chips.com>
+> + */
+> +
+> +#ifndef _DT_BINDINGS_CLK_ROCKCHIP_RV1126B_H
+> +#define _DT_BINDINGS_CLK_ROCKCHIP_RV1126B_H
+> +
+> +/* pll clocks */
+> +#define PLL_GPLL				1
+
+The clock indices should typically start at 0 not 1.
+
+[snip]
+
+> +#define HCLK_RKRNG_NS				362
+> +#define HCLK_RKRNG_S_NS				363
+> +#define CLK_AISP_PLL_SRC			364
+> +
+> +/* secure clks */
+> +#define CLK_USER_OTPC_S				400
+
+And the indices should typically not contain any jumps in numbers.
+
+Regards,
+Jonas
+
+> +#define CLK_SBPI_OTPC_S				401
+> +#define PCLK_OTPC_S				402
+> +#define PCLK_KEY_READER_S			403
+> +#define HCLK_KL_RKCE_S				404
+> +#define HCLK_RKCE_S				405
+> +#define PCLK_WDT_S				406
+> +#define TCLK_WDT_S				407
+> +#define CLK_STIMER0				408
+> +#define CLK_STIMER1				409
+> +#define PLK_STIMER				410
+> +#define HCLK_RKRNG_S				411
+> +#define CLK_PKA_RKCE_S				412
+> +#define ACLK_RKCE_S				413
+> +
+> +#endif
+
+[snip]
 
 _______________________________________________
 Linux-rockchip mailing list
