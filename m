@@ -4,60 +4,154 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE319CEBF86
-	for <linux-rockchip@archiver.kernel.org>; Sat, 15 Nov 2025 23:28:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F0FFCEBF87
+	for <linux-rockchip@archiver.kernel.org>; Sat, 15 Nov 2025 23:29:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=n3rkeekqnk3/YC+nUymPsDm98tsK7sFNoZpE9R/4u7w=; b=a+J+qSZnAavA/E
-	hu/nHiaDi6EynbHaYKNlUZYGatlSRnCFEPEPBECv6RTgUBFdE6clL6NTdq/oY7luhanXAHvkZpWb4
-	VIpgQzd8hSl/pbamvqJVd51G7x0R9YDlVgclNSU9mhNbJhRPLOTRxzXJh+fOn+9CQU48NKYbqrvwX
-	R8/TqOYSb75ob94XJA+CFpsUh4qK8IRdP8WaKxoLsrk2fu1R+8iNM8d0dh2MlGimnFH7coV35SQMb
-	n/ko5VmCPRgm3a6m1AmYME5ocFqYOyAlAeKdlxNwAlhyJtYk9w+GGeY+DS63JsFs5Q/owTuwd7cu/
-	jBMMXqk6Szl6khy6+Nzg==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=FIZyFh1U/Y61rDfbww22/BwnthGixT8Umurfx/HW3BQ=; b=PaZSjql9jJFWOo
+	iUgOT+eyTVNE8tUHcn/ZZzGjMbLsO3OSpBPv/hra7boRoFiV3qtc0ycPoEdBiyrwHYll5VUefvfLn
+	GH0xJBDyWLAqti4IEvDbMKIpFw15g9VRuRQnidUPz7V8kApBLdti5viwgyJVTrMgDzVozOYQP9q+q
+	jSTMoonXdYCvT0ShOc12jDHKS3bXg0XwcmsLjWTZ5lqgZm9ubkgruc7X7bzk7EgUqUR4c4JvdEKLV
+	ky5bVGObZ3j7ZmgH+/UTp7gIVfzKsku1kwn22xPMMbj762+kFd2m6P4ze9ZSb5FfUbW3x+JH3YqpM
+	NpaK0aBK6Ik1NIcgcUWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vKPga-0000000EC1p-2N5u;
-	Sat, 15 Nov 2025 23:28:04 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1vKPhV-0000000EC7z-3sBT;
+	Sat, 15 Nov 2025 23:29:01 +0000
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vKPgV-0000000EC1A-2Dwh;
-	Sat, 15 Nov 2025 23:28:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=l82rx51AsbqXiASt6mT5fRvFZ6R8MXZa4sonzok/Imc=; b=kPR3e9wPKNamPD854AOIQaiw7l
-	4xZAMXQlw5rAnZnUA1xYhV+d34O7688QgFE2vXy7evtO4fro+OUGIzZrB//0wFT5hdNSahDyScp1k
-	2Dtgi/V3CBdov3nX9VbfibUDul+kavFcjajuE3iif/w06k4cWaUs3nRFb9cJLsOlupJraZAEwCsgG
-	hqAyHSnhCVoSVA2Aivj25mxGAhAqjylfTMWE33/PMMIK+6J9hQgk52XNYQTiLY0MHOwsZlhmhv/CH
-	IaZzAn/EjPhn03M7HfHYiA7CAAOF3mM/0MguWXmqVH2Tv1xWb5jGEfPknhK2hP2O4yIwJr50mR33b
-	CEsbmNAg==;
-Received: from i53875bd0.versanet.de ([83.135.91.208] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1vKPgK-0001oE-GP; Sun, 16 Nov 2025 00:27:48 +0100
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: Michael Opdenacker <michael.opdenacker@rootcommit.com>,
- Dragan Simic <dsimic@manjaro.org>
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 2/2] arm64: dts: rockchip: Add Asus Tinker Board 3 and 3S
- device tree
-Date: Sun, 16 Nov 2025 00:27:47 +0100
-Message-ID: <2455319.NG923GbCHz@diego>
-In-Reply-To: <24561990-8293-0505-5837-eca416d01bb7@manjaro.org>
-References: <12d6e151-dfa0-ca0a-5888-ddffb2dbdec7@manjaro.org>
- <bb74679a-ce21-4373-bcc5-1214e9bf832e@rootcommit.com>
- <24561990-8293-0505-5837-eca416d01bb7@manjaro.org>
+	id 1vHJjK-0000000H51r-1lYo
+	for linux-rockchip@lists.infradead.org;
+	Fri, 07 Nov 2025 10:30:15 +0000
+Received: by mail-wm1-x335.google.com with SMTP id 5b1f17b1804b1-477563bcaacso4163585e9.1
+        for <linux-rockchip@lists.infradead.org>; Fri, 07 Nov 2025 02:30:05 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1762511404; x=1763116204; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=6lK1bWhoDlOt3D7+OTYGFbwlQlHjc0qM/7Y1vcvdtOY=;
+        b=oWsJIhMNqDGEdQdEDiykcgQL/GAX+0fV42M35+kNmoi50i8NdPE0STrwE219QXL8aj
+         iRZMkdEHf2sDuqluK8bSoT7r3lI9mN21hol4a32BNnkSj25Bh5KTE4a7QTH8nCMvxdq9
+         t0jqialPIN/lXxPTQF46cSJSS2fDJtHSha2yVm9UQyOVk3NvgjmvRKn9Mt6bKT2XMfLT
+         j9HO7Q7G3h6VEv64zdyuWIEVlYm3ORgvQzFv6+30tAXn6qnzSbzZK7zxL007DW5GoKkh
+         CcEqUHwFjv1T9MfDxkUivjrjj4aRcS2I3AwQRQxosRs26P+8/C80MSlDDK/pzoiuU3oE
+         6Qgg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1762511404; x=1763116204;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=6lK1bWhoDlOt3D7+OTYGFbwlQlHjc0qM/7Y1vcvdtOY=;
+        b=Rxr32FjxvhurFMmcJkpEAg5WyPTRrJVfGCDgkLkIv49QYhlwq8VA98jsATshf4tIP0
+         7f5ntWvNGzWJrQlOTcB+0UJx6u4NXQyC9AupAr7hKyj303I+/CP4yukomQS6lw0SFjmi
+         0Jwa57Gtzcxr0zj8S2W2Hf+2iX5S6rIjaJ/M+bjH8OeIV4J0P5UyV/U6ipD4iNNeGlIL
+         QDt0RitJm2ElFHQwIZ+BrsxhI6S0RPwzqOj5/J2Al4k+9vgh/LI8Ka3aun71iYj6z5gN
+         gCiLYg7+2z1jGm6UWBHlCkvrbDHP3IvvPcAaW3+VyisEMnAWKvVckYP85Cbmj4c8WNXk
+         wI7A==
+X-Forwarded-Encrypted: i=1; AJvYcCU2hoJVFlnGtubYrQkOrR7zQBQX3xhP2TUaGP3+9NHaXDHZml6UlNU6eneprjnSPxYyxbQS3mrNrxVT+akeig==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyR8udrSKEpprbQF1yxccJmDDxt2TV7VChaM1CWEWXk9isEJ2uH
+	AplLP/wIUKGSYEPaF7ACxjRfqOy18u5cIemQIoHE/18v3PYk00seb3IuyW8dIHDlRLU=
+X-Gm-Gg: ASbGncvnnkHeff7R/WQ+FdkS/OT6BIeFGJJKXPPk8kH/Xsgd7A5Did97m1M8q6KagHz
+	/BPz1L/uZZHqRn8WzyRlCHjAU/gWITaalzC97urRtymSLQq18wqCMuCyzvqD1vHIebnQHrQbkGG
+	6rEaXGl3CmMYn5UST0I3ypUYs3P+1igGijKJsyOl+qvFNaaEaMOeDuUEDXW6znz4I8cBbk3QiUa
+	uztwRs/EAnNMIV7ALaDmQlJT9O71gcRiecRjgh0plUyfORSixKR6EpXiubCtvu8Q83EsLRfPbLE
+	HQ0hQXT90EN2jweB4KRjJRunGAGeiWaLwMx9tcutvi+xEOlvQdQEkId4VGCJ/gf6mQV5eLlOFAx
+	X1qWjJkkNo6vU9zfwAOuIMsFw/FMTJehrBJA6LC/4hs1AJ+Bl8DwcwxqY3LvvgyeuxOZyZxzypI
+	2tAYLxk2Ui0/SWxw==
+X-Google-Smtp-Source: AGHT+IGLasgznDpysA1VVPTGU5y82R7RrVgkRw3m6DuFOG2T0Xrl7Qi/ZwJh7t3lCXtqhciZW19mKg==
+X-Received: by 2002:a05:600c:1384:b0:471:14b1:da13 with SMTP id 5b1f17b1804b1-4776bc93e89mr17460965e9.14.1762511404248;
+        Fri, 07 Nov 2025 02:30:04 -0800 (PST)
+Received: from [127.0.1.1] ([2a01:cb1d:dc:7e00:fb6d:2ee:af61:f551])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-42ac67920fcsm4414864f8f.39.2025.11.07.02.30.01
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 07 Nov 2025 02:30:03 -0800 (PST)
+From: Bartosz Golaszewski <brgl@bgdev.pl>
+Subject: [PATCH v5 0/8] net: stmmac: qcom-ethqos: add support for SCMI
+ power domains
+Date: Fri, 07 Nov 2025 11:29:50 +0100
+Message-Id: <20251107-qcom-sa8255p-emac-v5-0-01d3e3aaf388@linaro.org>
 MIME-Version: 1.0
+X-B4-Tracking: v=1; b=H4sIAB7KDWkC/23PSwrCMBCA4auUrI1M3q0r7yEu0pi2AdvURIJSe
+ nfTCorY5T8w3zATijY4G9GhmFCwyUXnhxxiVyDT6aG12F1yIwpUgAKOb8b3OOqSCjFi22uDSy6
+ BMqGNIBTlvTHYxj1W83TO3bl49+G5nkhkmb61isCGlggGzKhWlWmIlbI8Xt2gg9/70KKFS+xDE
+ KBqi2CZUEJJVVeUga7/CP4lyOZPiWeiUVJKgFIZq3+IeZ5fGplk2DkBAAA=
+X-Change-ID: 20250704-qcom-sa8255p-emac-8460235ac512
+To: Bjorn Andersson <andersson@kernel.org>, 
+ Konrad Dybcio <konradybcio@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Richard Cochran <richardcochran@gmail.com>, 
+ Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+ Vinod Koul <vkoul@kernel.org>, Giuseppe Cavallaro <peppe.cavallaro@st.com>, 
+ Jose Abreu <joabreu@synopsys.com>, Chen-Yu Tsai <wens@kernel.org>, 
+ Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Samuel Holland <samuel@sholland.org>, 
+ Matthew Gerlach <matthew.gerlach@altera.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, 
+ Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
+ Keguang Zhang <keguang.zhang@gmail.com>, Shawn Guo <shawnguo@kernel.org>, 
+ Sascha Hauer <s.hauer@pengutronix.de>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ Fabio Estevam <festevam@gmail.com>, Jan Petrous <jan.petrous@oss.nxp.com>, 
+ s32@nxp.com, Romain Gantois <romain.gantois@bootlin.com>, 
+ Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>, 
+ Heiko Stuebner <heiko@sntech.de>, Chen Wang <unicorn_wang@outlook.com>, 
+ Inochi Amaoto <inochiama@gmail.com>, Emil Renner Berthing <kernel@esmil.dk>, 
+ Minda Chen <minda.chen@starfivetech.com>, Drew Fustini <fustini@kernel.org>, 
+ Guo Ren <guoren@kernel.org>, Fu Wei <wefu@redhat.com>, 
+ Nobuhiro Iwamatsu <nobuhiro.iwamatsu.x90@mail.toshiba>, 
+ Geert Uytterhoeven <geert+renesas@glider.be>, 
+ Magnus Damm <magnus.damm@gmail.com>, Maxime Ripard <mripard@kernel.org>, 
+ Shuang Liang <liangshuang@eswincomputing.com>, 
+ Zhi Li <lizhi2@eswincomputing.com>, 
+ Shangjuan Wei <weishangjuan@eswincomputing.com>, 
+ "G. Jaya Kumaran" <vineetha.g.jaya.kumaran@intel.com>, 
+ Clark Wang <xiaoning.wang@nxp.com>, Linux Team <linux-imx@nxp.com>, 
+ Frank Li <Frank.Li@nxp.com>, David Wu <david.wu@rock-chips.com>, 
+ Samin Guo <samin.guo@starfivetech.com>, 
+ Christophe Roullier <christophe.roullier@foss.st.com>, 
+ Swathi K S <swathi.ks@samsung.com>
+Cc: linux-arm-msm@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, netdev@vger.kernel.org, 
+ linux-stm32@st-md-mailman.stormreply.com, 
+ linux-arm-kernel@lists.infradead.org, 
+ Drew Fustini <dfustini@tenstorrent.com>, linux-sunxi@lists.linux.dev, 
+ linux-amlogic@lists.infradead.org, linux-mips@vger.kernel.org, 
+ imx@lists.linux.dev, linux-renesas-soc@vger.kernel.org, 
+ linux-rockchip@lists.infradead.org, sophgo@lists.linux.dev, 
+ linux-riscv@lists.infradead.org, 
+ Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4165;
+ i=bartosz.golaszewski@linaro.org; h=from:subject:message-id;
+ bh=ZivlGpi+T1c5DUoMpOPkmITE34pLl/IzVvSOHSJ88dQ=;
+ b=owEBbQKS/ZANAwAKARGnLqAUcddyAcsmYgBpDcojt3k/2PQCBq6F4SnzHXqKBXG0p9VyMcZAB
+ IR/euEb67iJAjMEAAEKAB0WIQQWnetsC8PEYBPSx58Rpy6gFHHXcgUCaQ3KIwAKCRARpy6gFHHX
+ cq4aEADTN+ZUS9OBISS21hcbWDotjjlsSXxfMzNstpmanMhTAjTDqTozFbZykCw0Vf274vKfVTb
+ 3g3WrNgP5cYiyZLsDLBQrRu6Ymi7HMPV/05dLA/ZwUDNCnI1z7BZ88PIdxY5BkCZVJ3GKChFHtc
+ /MO9zH6RfTWIudWrMD7Lfd9ZY6jZIvDoq773GGAi6RNBmUIuMwrmFa6KoiNx9FQ0NswFVmDySZh
+ JXxm6zVaFTbIkl9oXrLqI2XJ/gVgWH0/Z84+6CyYJJfsal7i8ARil61hGY321B8LC7SosFR+j7j
+ B++DT5/YtpyqEq7RWzvA9k+oYt2zfujGqApAhNHp98SeFy5vw7tmBvrmtAU5n+KbCm9f3NTe1i2
+ fknVSt8R40eV+g1TckJWN/2/vn4TyZd0s9D7Xa8ovqOBTJDAbL9f+suLfjhBL3R5AIF1jlWhh64
+ mk81XGCxt6IW5TnYAMUXhE+G4unUmH8c2hdj/NqoR1owhNhOADjIgBosXOV3YrxLMKT0gL57ydA
+ hvbBFUSxE6/hrs7QM6W8VUkwoGv2QB0OI8zxJo6s2F2ZMuoMMLhGpkgud1m20fPaPHx4HQTSZR5
+ +NT8ZRc9bQyTREbDWHw9J0JKcCeAP3mxkCDn1v3X1p7YmUtI4pBF/WjLgOT6OM9riUztf9yMJFV
+ h4+xLNJvvsQjMdw==
+X-Developer-Key: i=bartosz.golaszewski@linaro.org; a=openpgp;
+ fpr=169DEB6C0BC3C46013D2C79F11A72EA01471D772
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251115_152759_615689_5469D0A2 
-X-CRM114-Status: GOOD (  25.70  )
+X-CRM114-CacheID: sfid-20251107_023006_634009_742A0581 
+X-CRM114-Status: GOOD (  13.53  )
+X-Mailman-Approved-At: Sat, 15 Nov 2025 15:29:00 -0800
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,49 +163,97 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-QW0gU2Ftc3RhZywgMTUuIE5vdmVtYmVyIDIwMjUsIDA4OjE0OjU4IE1pdHRlbGV1cm9ww6Rpc2No
-ZSBOb3JtYWx6ZWl0IHNjaHJpZWIgRHJhZ2FuIFNpbWljOgo+IEhlbGxvIE1pY2hhZWwsCj4gCj4g
-T24gU2F0dXJkYXksIE5vdmVtYmVyIDE1LCAyMDI1IDA3OjAzIENFVCwgTWljaGFlbCBPcGRlbmFj
-a2VyIDxtaWNoYWVsLm9wZGVuYWNrZXJAcm9vdGNvbW1pdC5jb20+IHdyb3RlOgo+ID4gT24gMTEv
-MTUvMjUgMDE6NTMsIERyYWdhbiBTaW1pYyB3cm90ZToKPiA+ID4gVGhhbmtzIGZvciB0aGUgdjIh
-ICBQbGVhc2UsIHNlZSBvbmUgbml0cGljayBiZWxvdy4KPiA+ID4KPiA+ID4gT24gRnJpZGF5LCBO
-b3ZlbWJlciAxNCwgMjAyNSAxNjo0NiBDRVQsIG1pY2hhZWwub3BkZW5hY2tlckByb290Y29tbWl0
-LmNvbSB3cm90ZToKPiA+ID4+IEZyb206IE1pY2hhZWwgT3BkZW5hY2tlciA8bWljaGFlbC5vcGRl
-bmFja2VyQHJvb3Rjb21taXQuY29tPgo+ID4gPiBJJ20gc29ycnkgZm9yIG5vdCBtZW50aW9uaW5n
-IGl0IGluIG15IGVhcmxpZXIgcmVzcG9uc2VzLCBidXQgdGhpcwo+ID4gPiBsaW5lIGlzIHJlZHVu
-ZGFudCwgYmVjYXVzZSBpdCBkdXBsaWNhdGVzIHRoZSBGcm9tIHZhbHVlIGZvdW5kIGluCj4gPiA+
-IHRoZSBhY3R1YWwgZW1haWwgbWVzc2FnZS4KPiA+IAo+ID4gVGhpcyBhY3R1YWxseSBjb21lcyBm
-cm9tIG15IEdpdCBzZXR0aW5ncy4gSSBuZWVkIHRoaXMgd2hlbiBJIHNlbmQgCj4gPiBwYXRjaGVz
-IHRvIHRoZSBZb2N0byBwcm9qZWN0IGFuZCBPcGVuRW1iZWRkZWQuIFRoYXQncyBiZWNhdXNlIHRo
-ZWlyIAo+ID4gbWFpbGluZyBsaXN0IHNlcnZlciB3aGljaCBhbHRlcnMgdGhlIGFkZHJlc3Mgb2Yg
-c2VuZGVycyAoIjxzZW5kZXI+IHZpYSAKPiA+IGxpc3RzLnlvY3RvcHJvamVjdC5vcmciKSwgYW5k
-IHVsdGltYXRlbHkgdGhlIGNvbW1pdCBhdXRob3IgaWRlbnRpdHkgaW4gCj4gPiBHaXQuIFNlZSAK
-PiA+IGh0dHBzOi8vZG9jcy55b2N0b3Byb2plY3Qub3JnL2NvbnRyaWJ1dG9yLWd1aWRlL3N1Ym1p
-dC1jaGFuZ2VzLmh0bWwjZml4aW5nLXlvdXItZnJvbS1pZGVudGl0eQo+ID4gCj4gPiBJJ3ZlIGNo
-ZWNrZWQgdGhhdCBteSBwYXRjaGVzIGFwcGx5IGZpbmUgYW5kIHRoYXQgdGhpcyAiRnJvbToiIGxp
-bmUgCj4gPiBkb2Vzbid0IGFwcGVhciBpbiB0aGUgY29tbWl0cyBpbiB0aGUgdHJlZS4KPiA+IFNv
-LCBjYW4gSSBrZWVwIHRoaXM/CgpZZXMgeW91IGNhbiBrZWVwIHRoYXQsIEkgZG9uJ3Qgc2VlIGEg
-cHJvYmxlbSB3aXRoIHRoYXQgYWRkaXRpb25hbApGcm9tIGhlYWRlci4KCj4gQWN0dWFsbHksIEkg
-Zm9yZ290IHRvIG1lbnRpb24gdGhhdCB0aGUgRnJvbSBoZWFkZXJzIGluIHlvdXIgcGF0Y2gKPiBz
-dWJtaXNzaW9ucyBhcmUgYSBiaXQgd3JvbmcgYnkgY29udGFpbmluZyBqdXN0IHRoZSBlbWFpbCBh
-ZGRyZXNzLAo+IHdpdGhvdXQgdGhlIGZpcnN0IGFuZCBsYXN0IG5hbWUuICBUaGF0IGlzc3VlIHNo
-b3VsZCBiZSBmaXhlZCBmaXJzdCwKPiByZWdhcmRsZXNzIG9mIHRoZSBwcmVzZW5jZSAob3IgYWJz
-ZW5jZSkgb2YgRnJvbSB0YWdzLgo+IAo+IFRoYW5rcyBmb3IgY2xhcmlmeWluZyB3aGF0J3MgdGhl
-IHJlYXNvbiBmb3IgaGF2aW5nIHRoZSBGcm9tIHRhZ3MKPiByZWdhcmRsZXNzIG9mIHRoZSBhY3R1
-YWwgbmVlZCBmb3IgaGF2aW5nIHRoZW0uICBNYXliZSBzZXR0aW5nIEdpdCdzCj4gImZvcm1hdC5m
-cm9tIiBvcHRpb24gdG8gdHJ1ZSBhdCB0aGUgcmVwb3NpdG9yeSBsZXZlbCBjb3VsZCBzb2x2ZQo+
-IHRoaXMgbmljZWx5LCB3aGlsZSBhbHNvIGV4ZXJjaXNpbmcgdGhlIEdpdC1mdSBhIGJpdD8gOikK
-PiAKPiBCVFcsIG15IHJlc3BvbnNlcyBhcmUgY3VycmVudGx5IGphaWxlZCBieSB0aGUgbGludXgt
-cm9ja2NoaXAgbWFpbGluZwo+IGxpc3QsIHJlcXVpcmluZyBtYW51YWwgYXBwcm92YWwsIGFzIGEg
-cmVzdWx0IG9mIHRoZSBtYWlsIHNlcnZlciBJJ20KPiB1c2luZyBzb21ldGltZXMgaW5zZXJ0aW5n
-IHNvbWUgc3RyYW5nZSBpbnZpc2libGUgVVRGLTggY2hhcmFjdGVycwo+IGludG8gdGhlIGVtYWls
-IHN1YmplY3RzLiAgT2ggd2VsbC4gOikKCkkgZ3Vlc3MgdGhhdCBtYWlsc2VydmVyIG5lZWRzIGEg
-Zml4IDotKQoKCkhlaWtvCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0
-cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGlu
-Zm8vbGludXgtcm9ja2NoaXAK
+Add support for the firmware-managed variant of the DesignWare MAC on
+the sa8255p platform. This series contains new DT bindings and driver
+changes required to support the MAC in the STMMAC driver.
+
+It also reorganizes the ethqos code quite a bit to make the introduction
+of power domains into the driver a bit easier on the eye.
+
+The DTS changes will go in separately.
+
+Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+---
+Changes in v5:
+- Name the DT binding document after the new compatbile
+- Add missing space
+- Make the power-domains limits stricter
+- Link to v4: https://lore.kernel.org/r/20251104-qcom-sa8255p-emac-v4-0-f76660087cea@linaro.org
+
+Changes in v4:
+- Remove the phys property from the SCMI bindings
+- Mark the power-domain-names property as required
+- Set maxItems for power-domains to 1 for all existing bindings to
+  maintain the current requirements after modifying the value in the
+  top-level document
+- Link to v3: https://lore.kernel.org/r/20251027-qcom-sa8255p-emac-v3-0-75767b9230ab@linaro.org
+
+Changes in v3:
+- Drop 'power' and 'perf' prefixes from power domain names
+- Rebase on top of Russell's changes to dwmac
+- Rebase on top of even more changes from Russell that are not yet
+  in next (E1vB6ld-0000000BIPy-2Qi4@rmk-PC.armlinux.org.uk)
+- Link to v2: https://lore.kernel.org/all/20251008-qcom-sa8255p-emac-v2-0-92bc29309fce@linaro.org/
+
+Changes in v2:
+- Fix the power-domains property in DT bindings
+- Rework the DT bindings example
+- Drop the DTS patch, it will go upstream separately
+- Link to v1: https://lore.kernel.org/r/20250910-qcom-sa8255p-emac-v1-0-32a79cf1e668@linaro.org
+
+---
+Bartosz Golaszewski (8):
+      dt-bindings: net: qcom: document the ethqos device for SCMI-based systems
+      net: stmmac: qcom-ethqos: use generic device properties
+      net: stmmac: qcom-ethqos: improve typing in devres callback
+      net: stmmac: qcom-ethqos: wrap emac driver data in additional structure
+      net: stmmac: qcom-ethqos: split power management fields into a separate structure
+      net: stmmac: qcom-ethqos: split power management context into a separate struct
+      net: stmmac: qcom-ethqos: define a callback for setting the serdes speed
+      net: stmmac: qcom-ethqos: add support for sa8255p
+
+ .../bindings/net/allwinner,sun7i-a20-gmac.yaml     |   3 +
+ .../bindings/net/altr,socfpga-stmmac.yaml          |   3 +
+ .../bindings/net/amlogic,meson-dwmac.yaml          |   3 +
+ .../devicetree/bindings/net/eswin,eic7700-eth.yaml |   3 +
+ .../devicetree/bindings/net/intel,dwmac-plat.yaml  |   3 +
+ .../bindings/net/loongson,ls1b-gmac.yaml           |   3 +
+ .../bindings/net/loongson,ls1c-emac.yaml           |   3 +
+ .../devicetree/bindings/net/nxp,dwmac-imx.yaml     |   3 +
+ .../devicetree/bindings/net/nxp,lpc1850-dwmac.yaml |   3 +
+ .../devicetree/bindings/net/nxp,s32-dwmac.yaml     |   3 +
+ .../devicetree/bindings/net/qcom,ethqos.yaml       |   3 +
+ .../bindings/net/qcom,sa8255p-ethqos.yaml          |  98 ++++++
+ .../devicetree/bindings/net/renesas,rzn1-gmac.yaml |   3 +
+ .../bindings/net/renesas,rzv2h-gbeth.yaml          |   3 +
+ .../devicetree/bindings/net/rockchip-dwmac.yaml    |   3 +
+ .../devicetree/bindings/net/snps,dwmac.yaml        |   5 +-
+ .../bindings/net/sophgo,cv1800b-dwmac.yaml         |   3 +
+ .../bindings/net/sophgo,sg2044-dwmac.yaml          |   3 +
+ .../bindings/net/starfive,jh7110-dwmac.yaml        |   3 +
+ .../devicetree/bindings/net/stm32-dwmac.yaml       |   3 +
+ .../devicetree/bindings/net/tesla,fsd-ethqos.yaml  |   3 +
+ .../devicetree/bindings/net/thead,th1520-gmac.yaml |   3 +
+ .../bindings/net/toshiba,visconti-dwmac.yaml       |   3 +
+ MAINTAINERS                                        |   1 +
+ drivers/net/ethernet/stmicro/stmmac/Kconfig        |   2 +-
+ .../ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c    | 342 +++++++++++++++++----
+ 26 files changed, 448 insertions(+), 63 deletions(-)
+---
+base-commit: 9c0826a5d9aa4d52206dd89976858457a2a8a7ed
+change-id: 20250704-qcom-sa8255p-emac-8460235ac512
+
+Best regards,
+-- 
+Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
