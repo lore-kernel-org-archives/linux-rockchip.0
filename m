@@ -4,174 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A713BCCF9F8
-	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Nov 2025 18:59:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF854CCF9E3
+	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Nov 2025 20:52:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=i55324RCq6AtJ9bI8wiRTDZyBnx228MGegbPuQ+PAQc=; b=MG6j/xwOd9BPX4
-	PYs6csRuVXo2pvlFEkuqWDjGtYnWEI7hGYc8e0rJJU0ekze4bOJcjPipF6Bo92RfTxEWNvTOI/8LB
-	prbMC4cTLrSRCFEpmvPeFPtylY3o/DY1bVYqBeRwvWf1tLEDmolrSSZgHNkXGcMpStN1zVPcdFomR
-	RxW5G4LpSIWu2HGeoBgDHrfuQMJ9LyAmGUwYKc09e08HyisC6ZUQ35UOP1o46B347jbJLftzgoK02
-	vuDBu22L72q8Hw5+6WyEC5P6+U/slIS37FbQ93jGumqe/jQd86M/zf5yVZqhvzkeowRJkf6DQhVRv
-	XBRyxhyfibMvXJJRHr7A==;
+	List-Owner; bh=gDh3FOPfQloNHhChOn68kmletMuhNUTsasLq7lKcpeM=; b=35vB9rqQEQxJxc
+	omjVCjOf2SKljVFf/mcTXOhpLiFWOG3Ax9RnXz/bQC8KGIBiqciWScGljtGXn+iV+ACdq3f1QQrRM
+	7lyr3QB7Eu2hoeTwnlyZuWWcFZjYR90PNzVZQFi1Rg1D4gUUi5514t6KZKPfaDgfsMThEn1M1/o9s
+	qXUVg9MAnHdr0hriq52/l8YiVECQ4+rRVlcgSTfqhtIjvgYVqdDKmKzUu83+e1A4nmQeFxKmNBOW7
+	dl2wOxKSINI9CjXfcWTRXkEEn5LvkxHMLjBo1WOUYDTSdaVE+uRccRbcCpMofSDz6rM3Tspgp9GIn
+	5tjha2ncbLDSoTDmtHFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vHRgI-00000000bqR-0sNg;
-	Fri, 07 Nov 2025 18:59:31 +0000
-Received: from mail-eastusazon11011023.outbound.protection.outlook.com ([52.101.52.23] helo=BL2PR02CU003.outbound.protection.outlook.com)
+	id 1vHTQw-000000011oX-07m3;
+	Fri, 07 Nov 2025 20:51:46 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vHRgF-00000000boQ-0Pup;
-	Fri, 07 Nov 2025 18:59:28 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=XDnthst8Um+m8gDO0I1kfXr2I526XjXv6OSd26XYYwzVyhGLTK3f1WiRMtN3p/VdV2iEjPJTvFFSeEJk8MWRZ6no39+MJEYRJKGNYE/twAKYS66mbPD4CZp7VAyb8zSiykeU/3NqSG8A5LbX/G9fBkPJCueNmtFDkNgEk0RqrFZPAFOZWPkgNWqO7lLrrN4IRX4HcV9ZHWpfQPuG3PqCnaK31EPSRsZT7F34u65XDu6Tm2eyKpI6+ewwZRH9ctlJVuD3gjSvIHfa+NseLH0uyyWQ3f/n9Q0RT45lHlqHt+9DyKk/SV1P1qFcIdw/qnSMxWboxtZ+VVBBJ1YUGpWuZQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=R/CqcIEtH3a6mpjanHTrhl5/5mqZeanCekUhNOaJgjc=;
- b=CiOxsXUS1HnRSv8trBXQUDPSQHaEcI4FxxY+bOAvK8PxIxoTVeyTAQDiojEc3qy9BRXp9eopt5er0E70sTLSSh+H6yztqp9xC2ywXFPrSkT4W8vOLN83caigr+TBDUgrC/sTXAXeFTVUzLgnblfgxbHFGSAAkDtBWhO8yj0bdwS0icSiLeR66RS5ZRe4p+pFgDxBEgFGRQZHxkhLZil1L7b6mcnPWY0WLhwC+Tr30AXDWEmaQcjpzW+NJ90zmDAX/N2CWAdEcXOgi3p0c4AKsc7z3zCAL2k2oCpPuX0yQX1k1xFw2bd2I0lC+asWlFQifeiH0uJhBAHd0j10kYAavw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.117.160) smtp.rcpttodomain=csie.org smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=R/CqcIEtH3a6mpjanHTrhl5/5mqZeanCekUhNOaJgjc=;
- b=FHpEME00nd6CEZbzmibUkTviaETZOgMEaLAqDAq8P0QyVCObK0hBjk9/d9JsuiFbzSIuZzW3P2YcWpYGWEDo9Z1BHNkUAzpFrZJtlk/zibrGdORFMBQfOrrE3OSFD2rF7DAvz2Zz1t7YKKI7Mc1bQPq50jxO/GG5LULm7QNLR4VJ7B+urXhgt69kAy8I0c6vdgIuyBElc1mZmyk9AwieLDOkOKZF2vmKN4WAeEEEBDzWUwD4rmNF7so2s07q+UczaaKKS7erOUbrp4A4W6gpiiMaSRAIH9AAJP1HGpxQH5mNPEohqmMxDqZGaouk5SEcoRZMagVk65H3tY3pZ44MrA==
-Received: from BN9PR03CA0031.namprd03.prod.outlook.com (2603:10b6:408:fb::6)
- by CH3PR12MB9147.namprd12.prod.outlook.com (2603:10b6:610:19a::9) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9298.12; Fri, 7 Nov
- 2025 18:59:16 +0000
-Received: from BN2PEPF000044A4.namprd02.prod.outlook.com
- (2603:10b6:408:fb:cafe::8b) by BN9PR03CA0031.outlook.office365.com
- (2603:10b6:408:fb::6) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.9298.9 via Frontend Transport; Fri, 7
- Nov 2025 18:59:15 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.160)
- smtp.mailfrom=nvidia.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.117.160 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.117.160; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.117.160) by
- BN2PEPF000044A4.mail.protection.outlook.com (10.167.243.155) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.9298.6 via Frontend Transport; Fri, 7 Nov 2025 18:59:14 +0000
-Received: from rnnvmail202.nvidia.com (10.129.68.7) by mail.nvidia.com
- (10.129.200.66) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Fri, 7 Nov
- 2025 10:59:00 -0800
-Received: from rnnvmail205.nvidia.com (10.129.68.10) by rnnvmail202.nvidia.com
- (10.129.68.7) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Fri, 7 Nov
- 2025 10:58:59 -0800
-Received: from Asurada-Nvidia (10.127.8.11) by mail.nvidia.com (10.129.68.10)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20 via Frontend
- Transport; Fri, 7 Nov 2025 10:58:57 -0800
-Date: Fri, 7 Nov 2025 10:58:56 -0800
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: Jason Gunthorpe <jgg@nvidia.com>
-CC: "Tian, Kevin" <kevin.tian@intel.com>, "joro@8bytes.org" <joro@8bytes.org>,
-	"suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
-	"will@kernel.org" <will@kernel.org>, "robin.murphy@arm.com"
-	<robin.murphy@arm.com>, "sven@kernel.org" <sven@kernel.org>, "j@jannau.net"
-	<j@jannau.net>, "jean-philippe@linaro.org" <jean-philippe@linaro.org>,
-	"robin.clark@oss.qualcomm.com" <robin.clark@oss.qualcomm.com>,
-	"dwmw2@infradead.org" <dwmw2@infradead.org>, "baolu.lu@linux.intel.com"
-	<baolu.lu@linux.intel.com>, "yong.wu@mediatek.com" <yong.wu@mediatek.com>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>, "tjeznach@rivosinc.com"
-	<tjeznach@rivosinc.com>, "pjw@kernel.org" <pjw@kernel.org>,
-	"palmer@dabbelt.com" <palmer@dabbelt.com>, "aou@eecs.berkeley.edu"
-	<aou@eecs.berkeley.edu>, "heiko@sntech.de" <heiko@sntech.de>,
-	"schnelle@linux.ibm.com" <schnelle@linux.ibm.com>, "mjrosato@linux.ibm.com"
-	<mjrosato@linux.ibm.com>, "wens@csie.org" <wens@csie.org>,
-	"jernej.skrabec@gmail.com" <jernej.skrabec@gmail.com>, "samuel@sholland.org"
-	<samuel@sholland.org>, "thierry.reding@gmail.com" <thierry.reding@gmail.com>,
-	"jonathanh@nvidia.com" <jonathanh@nvidia.com>, "iommu@lists.linux.dev"
-	<iommu@lists.linux.dev>, "linux-kernel@vger.kernel.org"
-	<linux-kernel@vger.kernel.org>, "asahi@lists.linux.dev"
-	<asahi@lists.linux.dev>, "linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-arm-msm@vger.kernel.org"
-	<linux-arm-msm@vger.kernel.org>, "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>, "linux-riscv@lists.infradead.org"
-	<linux-riscv@lists.infradead.org>, "linux-rockchip@lists.infradead.org"
-	<linux-rockchip@lists.infradead.org>, "linux-s390@vger.kernel.org"
-	<linux-s390@vger.kernel.org>, "linux-sunxi@lists.linux.dev"
-	<linux-sunxi@lists.linux.dev>, "linux-tegra@vger.kernel.org"
-	<linux-tegra@vger.kernel.org>, "virtualization@lists.linux.dev"
-	<virtualization@lists.linux.dev>, "patches@lists.linux.dev"
-	<patches@lists.linux.dev>
-Subject: Re: [PATCH v1 02/20] iommu: Introduce a test_dev domain op and an
- internal helper
-Message-ID: <aQ5BcKLR1YzRggGo@Asurada-Nvidia>
-References: <cover.1760312725.git.nicolinc@nvidia.com>
- <32ce256a2ece5d63e99d5858f953586859818ffc.1760312725.git.nicolinc@nvidia.com>
- <BN9PR11MB5276D10BD480FE66881870B08CFBA@BN9PR11MB5276.namprd11.prod.outlook.com>
- <aQO//+6/B/WbdK2h@Asurada-Nvidia>
- <20251103185400.GA1537560@nvidia.com>
- <BN9PR11MB527638C0E43E8AA000410B878CC5A@BN9PR11MB5276.namprd11.prod.outlook.com>
- <aQuU2dic75VkSyjr@Asurada-Nvidia>
- <20251107185409.GA1932966@nvidia.com>
+	id 1vHTQs-000000011n9-1aOL;
+	Fri, 07 Nov 2025 20:51:44 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1762548699;
+	bh=8UovAiOWTROIXZYM+ZVGV+MUbMteVqZyd+P1kJY5714=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=PwpJW9oOEFMqTwZPZKr4AcwLhrUGSHyEZdZloMFfJkZNeWHxC8gLE8fZCEmqhK62c
+	 A2cl0V710LDQdQM54axRs5ZpzuEz1uk0ruczX5ImU0ybiDx9oo5En6YUz+qu0KKO1A
+	 6gxkjEiCF0oPIFCMoCNOfTqOTNlfcbQY9kzTPqnS29cuOVJ70XYrDrEFhPbln5A9YU
+	 BBjLgTbdxX96s6FDW0aaaxXLjfBIGM+lcoVijXj9E6j/BtdEJP9F3sU0etd/00P7O7
+	 efPwYzWpT37DH9qhvqetbqsF5Z9HgOFWshuslCWI8BcD/4ivTKMytg1tFRM64hSWIy
+	 AySk/Fmm926Vg==
+Received: from [10.40.0.100] (185-67-175-126.lampert.tv [185.67.175.126])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: mriesch)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2C3BC17E12D5;
+	Fri,  7 Nov 2025 21:51:38 +0100 (CET)
+Message-ID: <13c43edb-9592-4779-a39a-7856bb0f964d@collabora.com>
+Date: Fri, 7 Nov 2025 21:51:37 +0100
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20251107185409.GA1932966@nvidia.com>
-X-NV-OnPremToCloud: ExternallySecured
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BN2PEPF000044A4:EE_|CH3PR12MB9147:EE_
-X-MS-Office365-Filtering-Correlation-Id: ec991946-88f8-4851-745c-08de1e2fbeaa
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|36860700013|82310400026|7416014|376014|1800799024;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?XYZ4AqT2Jncw+SLim9eN/0vL0+UthlAs2AZnerz3Wyij4qNbB2wkH8NiOQa5?=
- =?us-ascii?Q?TC+YythVHBvJefhy4kdJ1bVGDC3iO9VeqcE6FUckmCjmPKGHWkMcd0AuhNNF?=
- =?us-ascii?Q?8c5/uNz8h+vYycryibPGR8Qc96To+HQE17+QzKTf+Ha8Oi0QIc0xOe7dNyul?=
- =?us-ascii?Q?9sUMrXyWm5Qz4E6Ns8T74nDoU2vZ/bkRAKYwoDF4JYhPbbgofeMui30Z5Sq/?=
- =?us-ascii?Q?gcRDciXr/7y5dhi1wlUjSP0x9wcXwJLoNTmOBbyy8s8KNy4SYnQ701NF8Uui?=
- =?us-ascii?Q?R+ZQzGTNQ/1eiT5hUBflNDj5mM1HN+RM1Oo9K38TkT+3XAkumfAzxY6Dl5hN?=
- =?us-ascii?Q?/2Cswy/TUTleRdZR9qlL1Evvhu8DfosCX9n4JfjMUyrF6lNjdKf9jJzK+6Vo?=
- =?us-ascii?Q?QWsUl89D4Tpgb0Rtboa89UG4q5EwQW5AlqSV9c/n6kQ1CZMuZ0H54Fv3vD9Y?=
- =?us-ascii?Q?+dDF2yS0cXaTjlbMqq5KWXh4e4DnHXCoknmke+85UelpiCG98YC48bCEwIFC?=
- =?us-ascii?Q?7PoANUC2Ou3DXvwVx91jnk0tL9S8xQd1z3UVlIC0MZMQ3KNc2Up9Q/D7AqXZ?=
- =?us-ascii?Q?l8COggEMYqlJmL/NIyc+XgNeIyPWv1lNYW8EKgw9Q8uHtdKx/zxGSGpq1B9h?=
- =?us-ascii?Q?kQ85RxZpGSd9ClTbye92Y3aT2XQqgFfafAW11Aq3/DddESLZjO78apnU9zbI?=
- =?us-ascii?Q?LX+iRzW/WLreR1eGtv/87d59HALYEIxeRW03dDbmWEquGTOFuaEG3QuVfqh5?=
- =?us-ascii?Q?CACSkPBvqdR2osR3LNjf3ZlJGj4TFetpdRRm+Uvdy0qUuw2XrdnDMVnrQE1g?=
- =?us-ascii?Q?MnBRTAtU0cx4be+I4e+uui0dj3gaSyNHB60Za8JTLVdikVcZkCVFMtbIcBc7?=
- =?us-ascii?Q?IHMTLaoaKAQc3H1LszBN/Mr6AicrxRINU85JhyNVWcepzfNzvUhgS7zTFQUF?=
- =?us-ascii?Q?lJLDQio8iQAgscHR/xo71bXG/91ND7ATe4zm+6O9I/o0YTrhDedLYTYQM/hM?=
- =?us-ascii?Q?IJigLonZaEh229s7xHtV5TiZ9HQTPlV5KSQC7sv68haYZEsO4d9duWevdwNj?=
- =?us-ascii?Q?Jz49RoxIAWuofwg5T87CNbyyMM6pEoP2+lcKNXPYnpM5JrKZf6tiQ5s+9N+f?=
- =?us-ascii?Q?I6xluPaw+iiz5bQ2wKeK731dWNSgKl44Ccx96ecimW3snk5Vv//g9A7lfLOA?=
- =?us-ascii?Q?B5SnZ/sv2FlIfOsxDyc0IQqpIZXFpMJT7Kv9He/wh5pALkugyhrrH5N9Zv1l?=
- =?us-ascii?Q?nnX8uswkt0zMXlMTQMWjkDXMmvCKbhOx3RTarkYP8zVOuj85BDaAsieEPm8+?=
- =?us-ascii?Q?qLpMlx1GOn+YlYGuzN0fUfTL0Ccfy+Kgf345X2ixOHkSVh26inT73O7crWqF?=
- =?us-ascii?Q?C7SuXYw6Rag++3wfDBGLgxdUVyW0qTIdYreVDFO1AH2l9GVyffWIE3aBh1mh?=
- =?us-ascii?Q?h5Ryd2LrgHyzFuYOs05A6hsSyXeqFH1OJSO+yRnx3dqW4xYgZowD5YqWJoCU?=
- =?us-ascii?Q?/6cE/EjMVCY3cMzm53IHUhrGhEycraFYOOZkpGumog3B20Rt2M4ifc4yFa7V?=
- =?us-ascii?Q?Yj2B0Tr3XjKlTM4mqfQSpcotAr84+oucRgA2XwuR?=
-X-Forefront-Antispam-Report: CIP:216.228.117.160;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:dc6edge1.nvidia.com;CAT:NONE;SFS:(13230040)(36860700013)(82310400026)(7416014)(376014)(1800799024);DIR:OUT;SFP:1101;
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 Nov 2025 18:59:14.2221
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: ec991946-88f8-4851-745c-08de1e2fbeaa
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[216.228.117.160];Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: BN2PEPF000044A4.namprd02.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH3PR12MB9147
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v14 00/18] media: rockchip: add a driver for the rockchip
+ camera interface
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Mehdi Djait <mehdi.djait@linux.intel.com>,
+ Maxime Chevallier <maxime.chevallier@bootlin.com>,
+ =?UTF-8?Q?Th=C3=A9o_Lebrun?= <theo.lebrun@bootlin.com>,
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+ Gerald Loacker <gerald.loacker@wolfvision.net>,
+ Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
+ Markus Elfring <Markus.Elfring@web.de>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Kever Yang <kever.yang@rock-chips.com>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Collabora Kernel Team <kernel@collabora.com>,
+ Paul Kocialkowski <paulk@sys-base.io>,
+ Alexander Shiyan <eagle.alexander923@gmail.com>,
+ Val Packett <val@packett.cool>, Rob Herring <robh@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ Mehdi Djait <mehdi.djait@bootlin.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Bryan O'Donoghue <bod@kernel.org>, Chen-Yu Tsai <wens@csie.org>
+References: <20240220-rk3568-vicap-v14-0-b38b6da0fc80@collabora.com>
+ <aQ4tJg8r_j4NyKhv@kekkonen.localdomain>
+ <074cd08e-0412-49f9-8dd9-b1f96eb11717@collabora.com>
+ <20251107185441.GG5558@pendragon.ideasonboard.com>
+Content-Language: en-US
+From: Michael Riesch <michael.riesch@collabora.com>
+In-Reply-To: <20251107185441.GG5558@pendragon.ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251107_105927_142722_1FDAA1A3 
-X-CRM114-Status: GOOD (  27.30  )
+X-CRM114-CacheID: sfid-20251107_125142_601299_3A27B68B 
+X-CRM114-Status: GOOD (  23.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -188,57 +100,75 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Nov 07, 2025 at 02:54:09PM -0400, Jason Gunthorpe wrote:
-> On Wed, Nov 05, 2025 at 10:18:01AM -0800, Nicolin Chen wrote:
-> > On Wed, Nov 05, 2025 at 06:57:31AM +0000, Tian, Kevin wrote:
-> > > > From: Jason Gunthorpe <jgg@nvidia.com>
-> > > > Sent: Tuesday, November 4, 2025 2:54 AM
-> > > > 
-> > > > On Thu, Oct 30, 2025 at 12:43:59PM -0700, Nicolin Chen wrote:
-> > > > 
-> > > > > FWIW, I am thinking of another design based on Jason's remarks:
-> > > > > https://lore.kernel.org/linux-iommu/aQBopHFub8wyQh5C@Asurada-
-> > > > Nvidia/
-> > > > >
-> > > > > So, instead of core initiating the round trip between the blocking
-> > > > > domain and group->domain, it forwards dev_reset_prepare/done to the
-> > > > > driver where it does a low-level attachment that wouldn't fail:
-> > > > >   For SMMUv3, it's an STE update.
-> > > > >   For intel_iommu, it seems to be the context table update?
-> > > > 
-> > > > Kevin, how bad do you think the UAPI issue is if we ignore it?
-> > > > 
-> > > 
-> > > yeah probably better to leave it. I didn't see a clean way and the
-> > > value didn't justify the complexity.
-> > > 
-> > > Regarding to PF reset, it's a devastating operation while the vf user
-> > > is operating the vf w/o any awareness. there must be certain
-> > > coordination in userspace. otherwise nobody can recover the
-> > > registers. Comparing to that, solving the domain attach problem
-> > > is less important...
-> > 
-> > If I capture these correctly, we should go with a -EBUSY version:
-> >  - Reject concurrent attachments during a device reset
-> >  - Skip reset for devices having sibling group devices
-> >  - Allow PF to stop IOMMU, ignoring VFs
-> > ?
-> > 
-> > That sounds pretty much like this v4:
-> > https://lore.kernel.org/linux-iommu/0f6021b500c74db33af8118210dd7a2b2fd31b3c.1756682135.git.nicolinc@nvidia.com/
-> > by dropping the SRIOV concern.
-> 
-> It seems like the simplest answer..
-> 
-> I'd ignore the VFs, I think it is already really weird/dangerous to be
-> resetting the PF while VFs have drivers bound.. Not sure there is
-> anything we can do to make this work better.
+Hi Laurent,
 
-Ack. I've rebased that and will do some cleanup and run sanity tests
-before sending.
+On 11/7/25 19:54, Laurent Pinchart wrote:
+> On Fri, Nov 07, 2025 at 07:41:59PM +0100, Michael Riesch wrote:
+>> On 11/7/25 18:32, Sakari Ailus wrote:
+>>> On Fri, Oct 24, 2025 at 02:51:29PM +0200, Michael Riesch via B4 Relay wrote:
+>>>> Habidere,
+>>>>
+>>>> This series introduces support for the Rockchip Camera Interface (CIF),
+>>>> which is featured in many Rockchip SoCs in different variations.
+>>>> For example, the PX30 Video Input Processor (VIP) is able to receive
+>>>> video data via the Digital Video Port (DVP, a parallel data interface)
+>>>> and transfer it into system memory using a double-buffering mechanism
+>>>> called ping-pong mode.
+>>>> The RK3568 Video Capture (VICAP) unit, on the other hand, features a
+>>>> DVP and a MIPI CSI-2 receiver that can receive video data independently
+>>>> (both using the ping-pong scheme).
+>>>> The different variants may have additional features, such as scaling
+>>>> and/or cropping.
+>>>> Finally, the RK3588 VICAP unit constitutes an essential piece of the
+>>>> camera interface with one DVP, six MIPI CSI-2 receivers, scale/crop
+>>>> units, and a data path multiplexer (to scaler units, to ISP, ...).
+>>>
+>>> I understand both RK3568 and RK3588 include an ISP. Do you have insight on
+>>> how would this work, should the support for the ISP be added later on?
+>>
+>> Short answer: Yes and yes.
+>>
+>> Long answer:
+>>
+>> The patch series at hand adds support for the PX30 VIP and the RK3568
+>> VICAP. I cannot really say something about the PX30, but on the RK3568
+>> VICAP and ISP are orthogonal (the ISP features its own MIPI CSI-2
+>> receiver, different from that introduced in this series). Thus, ISP
+>> support can be introduced anytime (whenever someone is motivated ;-)).
+> 
+> Won't they both be connected to the same sensor though, and probably the
+> same D-PHY in the SoC ? They don't seem entirely separate to me.
 
-Thanks
-Nicolin
+The MIPI CSI-2 DPHY is shared, indeed. Thus, they *maybe technically
+could be* connected to the same sensor, but I don't know whether that
+works and fail to see why anyone would to such a thing (if it is about
+raw capture, the MIPI CSI-2 receiver in the ISP can do that on its own).
+
+The DPHY can be operated in split mode, with two lanes for VICAP and two
+lanes for ISP. This is not implemented yet, but can be done at a later
+stage on PHY level (not media related). In this case, ISP and VICAP can
+receive data from different subdevices via CSI-2.
+
+BTW the ISP is able to process the data captured by VICAP, but
+apparently this includes a RAM round trip (VICAP captures to memory, ISP
+operates in mem2mem mode).
+
+> A block diagram that shows connections between the CSI-2 pins, D-PHY,
+> CSI-2 receivers, VICAP and ISP could help.
+> 
+>> Once this patch series is merged, I'll push out changes that introduce
+>> support for the RK3588 VICAP. We can discuss the integration of any
+>> RK3588 ISP in this scope then -- and there may be some things to discuss
+>> as there the VICAP and the ISP(s) are directly connected by means of a
+>> MUX unit in the VICAP.
+>>
+>> Alright?
+> 
+
+Best regards,
+Michael
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
