@@ -4,64 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14508CCFA05
-	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Nov 2025 10:28:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C634CCFA05
+	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Nov 2025 11:00:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:From:Subject:
-	Cc:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7QoIJKFxiJPfoncWqx8yT2nDk5qmOifjKtASflaey4c=; b=MLox18838RaRJ7
-	Yynmgmo9AF7sy1DYDtOi0+C/g/Vs8BMtT589dLuF+ONess8gtUsRqGG9ZkJNrUtdd+2fj813+QJn6
-	ZQRABaPkXZhhAfheONc2SY4YwdvWfg3CRjsqo1fMEJ4xnsQBH8Gq85ptaatv1XdsZxwdqVkMzOucG
-	2rEihDB/bNCDMB5Z6Cr6k55SjdB+kYcK05u013DRe8cuoS2a7pw+ERFjR72bpkJtDnu5jnP3ooJ2B
-	kNR65FtqyUcegc9PFOTsXqEGI7dFo3AmbXX54rLsznPO/Ia/oU5mnIGb+9XifYTi24Ntf3YpLQ4Rm
-	Hv8+hrdA7pDNod1qktMw==;
+	List-Owner; bh=lkYNY2qmgLDdMVvXTmpPooDrQ2BEXs9GUmv3nKgEgw4=; b=oUE6/FBJor8kmj
+	qD+M853rto227+IJL2Q6rw7IUNpUqVwBwjNcKp8sZfu/cBgi55vhRqJ5RjTkJeKjjnNb3UBo/ky5i
+	YBxCWNB8ad8Lk1OFXNYn5Suots9MpoxGHvq+KeEA6z0T7MS5ImxFZkvNf0Rh3lKcZS7XxE+2Klc+V
+	Ztr2XfFoq/mMKA45+BUe5XrH/yoS2zt2BvL2zqL6wNpr+ZTUlswrirwMcVbt3AFiDL0u/X7dKW9BD
+	jFg6tSiY5qUWBU8eFSaVQWuFS4nFTSs1xn6j+wE6S/dQbi2YoHo1tfvdXlhV3I5LsKNGEa7dgvigK
+	nKSFWqx3aSk/DUefMuPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vHJhJ-0000000H4Ye-1EYX;
-	Fri, 07 Nov 2025 10:28:01 +0000
-Received: from out-176.mta1.migadu.com ([95.215.58.176])
+	id 1vHKCz-0000000H9mf-3oOE;
+	Fri, 07 Nov 2025 11:00:45 +0000
+Received: from mail-m49198.qiye.163.com ([45.254.49.198])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vHJhF-0000000H4YC-2DXP
-	for linux-rockchip@lists.infradead.org;
-	Fri, 07 Nov 2025 10:27:59 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow-tech.com;
-	s=key1; t=1762511271;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=WXxxLdb7XheOy75RFTu6qpzQ1CR6/qzHUiLBzTJbIfo=;
-	b=LTXY4niJ2Q4v9blFZDDIDMhmT6YuANss37XVrUPjaWkBRYbGPvukGIrKWMjfMtjCz9X4y2
-	D0icX131qTv+kScD53gosbMyEh9nKGD7IdwIhnbkx9kmiVcrc3fXJVV8w0StZO3YlSuV6u
-	N0fDkWwwzBQPhuNam3hUStygGtLEykiDTBETx/DGwquha8F2AIUK55iJQQjrfXkvH8ri19
-	JWvm9c3kuu8nOS8c0V9jSfOMNKS9NziiYCuireCSED3VE6TV87pkiPaoZ/tU7QArHk1qe1
-	UkRkKnx8n4UE05b8wzlOpUbvsSK+LAJmaMEErMTaPXGlZ7HCyBphXEv2Ab2MQw==
-Date: Fri, 07 Nov 2025 11:27:45 +0100
-Message-Id: <DE2E3LND1O81.25N3JM01890FT@cknow-tech.com>
-Cc: "Bjorn Helgaas" <helgaas@kernel.org>,
- <linux-rockchip@lists.infradead.org>, "Shawn Lin"
- <shawn.lin@rock-chips.com>, "Lorenzo Pieralisi" <lpieralisi@kernel.org>,
- =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, "Manivannan
- Sadhasivam" <mani@kernel.org>, "Rob Herring" <robh@kernel.org>, "Bjorn
- Helgaas" <bhelgaas@google.com>, "Heiko Stuebner" <heiko@sntech.de>,
- <linux-pci@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>, "Krzysztof
- Kozlowski" <krzk+dt@kernel.org>, "Conor Dooley" <conor+dt@kernel.org>,
- "Johan Jonker" <jbx6244@gmail.com>
-Subject: Re: [RFC PATCH 2/2] PCI: rockchip-host: drop wait on PERST# toggle
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <diederik@cknow-tech.com>
-To: "Geraldo Nascimento" <geraldogabriel@gmail.com>
-References: <d3d0c3a387ff461e62bbd66a0bde654a9a17761e.1762150971.git.geraldogabriel@gmail.com> <20251103181038.GA1814635@bhelgaas> <aQrKtFT0ldc70gKj@geday> <DE0N4LA8MOJD.236O12UZ3I3C4@cknow-tech.com> <aQu_-JDy7qqeviUm@geday>
-In-Reply-To: <aQu_-JDy7qqeviUm@geday>
-X-Migadu-Flow: FLOW_OUT
+	id 1vHKCq-0000000H9iG-1WcG;
+	Fri, 07 Nov 2025 11:00:44 +0000
+Received: from amadeus-Vostro-3710.lan (unknown [58.61.140.134])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 28c95884c;
+	Fri, 7 Nov 2025 19:00:25 +0800 (GMT+08:00)
+From: Chukun Pan <amadeus@jmu.edu.cn>
+To: coiaprant@gmail.com
+Cc: conor+dt@kernel.org,
+	devicetree@vger.kernel.org,
+	heiko@sntech.de,
+	krzk+dt@kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	robh@kernel.org,
+	Chukun Pan <amadeus@jmu.edu.cn>
+Subject: Re: [PATCH v5 3/3] arm64: dts: rockchip: Add devicetree for the 9Tripod X3568 v4
+Date: Fri,  7 Nov 2025 19:00:20 +0800
+Message-Id: <20251107110020.226562-1-amadeus@jmu.edu.cn>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20251103171702.1518730-4-coiaprant@gmail.com>
+References: <20251103171702.1518730-4-coiaprant@gmail.com>
+MIME-Version: 1.0
+X-HM-Tid: 0a9a5df9865003a2kunm70c19c3b637495
+X-HM-MType: 10
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkZQ0xOVk9CHhkZTUpDSxgfS1YeHw5VEwETFhoSFy
+	QUDg9ZV1kYEgtZQVlOQ1VNSlVKT0tVSkhPWVdZFhoPEhUdFFlBWU9LSFVKS0lCTUtKVUpLS1VLWQ
+	Y+
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251107_022758_149579_B3FE9551 
-X-CRM114-Status: GOOD (  15.15  )
+X-CRM114-CacheID: sfid-20251107_030036_599992_78BA842D 
+X-CRM114-Status: GOOD (  11.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,55 +72,86 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Geraldo,
+Hi,
 
-On Wed Nov 5, 2025 at 10:22 PM CET, Geraldo Nascimento wrote:
-> On Wed, Nov 05, 2025 at 10:06:53AM +0100, Diederik de Haas wrote:
->> I have a Samsung PM981 (without the 'a') and AFAICT it works fine.
->> I had noticed that the PERST# (pinctrl) was missing, but 'ep-gpios'
->> was/is new to me and I hadn't had time to research that properly yet.
->> Good to see you already found it yourself :-)
->
-> Would you mind testing the following DT change to make sure your PM981
-> continues to work fine?
+> +++ b/arch/arm64/boot/dts/rockchip/rk3568-9tripod-x3568-v4-camera-demo.dtso
+> @@ -0,0 +1,84 @@
+> +// SPDX-License-Identifier: (GPL-2.0-or-later OR MIT)
+> +
+> +// This is a sample reference, due to lack of hardware can not be tested, at your own risk
 
-I just learned the the PCIe system on rk3399 is indeed different from
-the systems where I use it with (rk3568 & rk3588). And 'ep-gpios' is
-only used with rk3399 based devices (in the Rockchip dts tree), which
-explains why I hadn't seen that before.
-Which in turn means I can't test your proposed change.
+> +++ b/arch/arm64/boot/dts/rockchip/rk3568-9tripod-x3568-v4-video-demo.dtso
+> @@ -0,0 +1,154 @@
+> +// SPDX-License-Identifier: (GPL-2.0-or-later OR MIT)
+> +
+> +// This is a sample reference, due to lack of hardware can not be tested, at your own risk
 
-I guess I was triggered by RFC patch 2 which said 'a known quirky
-device' while my Samsung PM981's are working fine ... but with DW based
-IP. You did specify in your cover letter the connection with Rockchip
-PCI IP, which apparently can make a (lot of?) difference.
-Me finding the PERST# pinctrl in a few minutes and we finding
-improvements in RockPro64's PCI 'config' recently, indicated to me that
-a new look into the dts definition may be warranted, before changing
-``drivers/pci/controller/pcie-rockchip-host.c`` for everyone.
+Why are these demo DT Overlays needed? Are these optional accessories?
+These untested DT Overlays should be removed.
 
-Cheers,
-  Diederik
+> +	vcc3v3_pcie: regulator-vcc3v3-pcie {
+> +		compatible = "regulator-gpio";
 
-> Thank you,
-> Geraldo Nascimento
->
-> ---
->
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi b/arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi
-> index aa70776e898a..b3d19dce539f 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi
-> @@ -383,7 +383,7 @@ &pcie_phy {
->  };
->  
->  &pcie0 {
-> -	ep-gpios = <&gpio0 RK_PB4 GPIO_ACTIVE_HIGH>;
-> +	ep-gpios = <&gpio0 RK_PB4 (GPIO_ACTIVE_HIGH | GPIO_SINGLE_ENDED)>;
->  	num-lanes = <4>;
->  	pinctrl-0 = <&pcie_clkreqnb_cpm>;
->  	pinctrl-names = "default";
+This should use regulator-fixed.
 
+> +		regulator-name = "vcc3v3_pcie";
+> +		regulator-min-microvolt = <100000>;
+> +		regulator-max-microvolt = <3300000>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&vcc3v3_pcie_en_pin>;
+
+Is this the name from the schematic?
+
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&gmac0_miim
+> +			&gmac0_tx_bus2
+> +			&gmac0_rx_bus2
+> +			&gmac0_rgmii_clk
+> +			&gmac0_rgmii_bus
+> +			&gmac0_clkinout>;
+
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&gmac1m1_miim
+> +			&gmac1m1_tx_bus2
+> +			&gmac1m1_rx_bus2
+> +			&gmac1m1_rgmii_clk
+> +			&gmac1m1_rgmii_bus
+> +			&gmac1m1_clkinout>;
+
+Align Indentation.
+
+> +		codec {
+> +			rockchip,mic-in-differential;
+> +		};
+
+Is it confirmed to be differential signaling?
+
+> +	pmic {
+> +		pmic_int: pmic_int {
+> +			rockchip,pins =
+> +				<0 RK_PA3 RK_FUNC_GPIO &pcfg_pull_up>;
+
+No line break is needed here.
+
+> +/* Required remotectl for IR receiver */
+> +&pwm7 {
+> +	status = "disabled";
+> +};
+
+This should be replaced with gpio-ir-receiver.
+
+> +&sdmmc2 {
+> +	bus-width = <4>;
+> +	disable-wp;
+
+The disable-wp property does not apply to SDIO cards.
+
+> +	sd-uhs-sdr12;
+> +	sd-uhs-sdr25;
+> +	sd-uhs-sdr50;
+> +	sd-uhs-sdr104;
+
+Just declare the highest supported speed.
 
 _______________________________________________
 Linux-rockchip mailing list
