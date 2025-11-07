@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57D94CEBF86
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB433CEBF8E
 	for <linux-rockchip@archiver.kernel.org>; Sat, 15 Nov 2025 23:29:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,69 +12,69 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jPOXVJ+1ageVItt7k9bueA27ISql9g34HUybdCz6ytE=; b=PfIIInAyKlK+4M
-	Yi0i/ST4TI/gh6BPiP9GK1ijTk52KjyJT0j+PPXD+kzjeHA4kBHtum43QC5NHx/ISwHI3sDBVXQUf
-	oh2jveE9g/7E59JHh5MecS6T9CIWKcCemmcQlCyGyoJy1ohEw9g4Czy9LQcHM/vsuckCqAQ1fxvqs
-	Tx6KNaKybniUY4kQnX9Z+fRPYw61gU7yyMKDo3G9TcW42iOpkS6sc2YQS743XDyqFmIyfenluuxVz
-	ePxmpmbmch8RvrXMPo8AUKEmedLF4NxnnCmCIoDE/cCEhLrU+mWxRJdpkGLF9DCWjC0xw2zQkzFWQ
-	dhTkuPF/wA8MpkTKxjfA==;
+	List-Owner; bh=7Guk5zDdjbnvmI/fdpoezD4ZhLAMZtwGOFJYoP2TAP0=; b=lmwHvypKA7fPSz
+	dZxad5Hd6922esVYlzu/d6msne+Y6gDxyhI+ampLjlmd+RFGFQ9/mFHYvPNcNLgV4gcVe4thojBtU
+	0l8p1XNS1n/KYEmIov9b+M90KZR4nVJYXLtyNQFCOPLkGfJJCJqfwW4PX7CxX4O+vaqvFZkTcPZXq
+	xFxxlPaJkOZ8iVDsJnw79GBhFKEE++6P/QVIgOnPSAvztHQKcx9P9hx5DFJbE7Lgxq5lCUCuxOOuh
+	KiwE4Y+o9hgYyjgnTvsJ+xTnG7n9Cz0DgNujKtAZX7+FfJvrjvrDuCFAR98+TKN5ZKoKemjac4mWh
+	yPc1sDTFjmPwO+S+ZAHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vKPhW-0000000EC8X-1tOf;
+	id 1vKPhW-0000000EC8n-33Is;
 	Sat, 15 Nov 2025 23:29:02 +0000
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vHJjV-0000000H56j-30rX
+	id 1vHJjZ-0000000H5Ar-39P2
 	for linux-rockchip@lists.infradead.org;
-	Fri, 07 Nov 2025 10:30:19 +0000
-Received: by mail-wr1-x429.google.com with SMTP id ffacd0b85a97d-421851bcb25so285336f8f.2
-        for <linux-rockchip@lists.infradead.org>; Fri, 07 Nov 2025 02:30:17 -0800 (PST)
+	Fri, 07 Nov 2025 10:30:23 +0000
+Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-47118259fd8so3660675e9.3
+        for <linux-rockchip@lists.infradead.org>; Fri, 07 Nov 2025 02:30:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1762511416; x=1763116216; darn=lists.infradead.org;
+        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1762511420; x=1763116220; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=6g7dsZ8u0SOZn4ZdglRbxzgGZbve11SxESJzoyiLLfA=;
-        b=Md5/u6Ozx5WFMFPcjHVF9PaWSQuliFH6v+H9Gv7/rVWAxGiJXLbJXG+GbyPfg9vknT
-         wU+E9cZh2fwnBFnmj8DKza/SxQiKCx8nQ0gBCLT1BU1DPI5ZSLPpgxtZ/EdXiEeAHrBw
-         PtNh1a0aFdyKCBbxawaglhkRCQxcrnRf3Da6yd8FuD9mf9MWAn3yaZZTTqzXpcChxtj3
-         73K9au3c6fJToZC4+/oOjLyjoLzxPXPlvxXDYfOkO6H+Rftq98x4M0EKb+rED16al+/P
-         zlN30BF6ZQrVMb7PxIKi4CAXCMRtx2awTaJLW38lDl9ffmkSbE7Sr2uszw24vdoPsYPY
-         tpmA==
+        bh=ohz6eJ3JY6PCTOt6pOm4PJLek87cyeexjL7soGZmZnQ=;
+        b=VXH5VAqgumd0kvOZ5fXUW0vcwiyTPSGEvXS48dDk7RzWYl+G5i/D0I2+Bp5Z210VM7
+         yygLZLkG4weUdHDjfh7kWgyIQi1bDUCQ30hCfwv00zuWm3yxqT6O7HIADMZzQH4Xz7rS
+         oWC+CESLH1zhJKKVqOysDOrDMGTJgkLGNg6obNkiOsARcdz+3DlhzM2HVm9HijBMd563
+         7KzHK3cKJNGaFstKLdGJah/ziAyChrCOXXTCmC56Tde74bMJ5o2JJeUgiL2VjcNWFaI8
+         bP9uf7ueERD3qo6uYZ8f0gfRh1BiDH+ySSrO2UQEma/CZBie68llvA4amMkfq6YfMZ5G
+         0c5w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1762511416; x=1763116216;
+        d=1e100.net; s=20230601; t=1762511420; x=1763116220;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=6g7dsZ8u0SOZn4ZdglRbxzgGZbve11SxESJzoyiLLfA=;
-        b=fWqTShvpCMuQWBFpT/gt7gSQ9AcgB7DFE8DEGiaSvD7JOWMHsZHdCa7T4tshmuo9QX
-         AyqDTXpWyJmQ2izCFwvQD+x/SpgTpFiwLkmpZkC3U+H/U0hIqK99Yl6ztKvPNhF6KeLa
-         jBJ/WQvSq4ouvwzJc6G2pPx8OVDEcxAl0oC9LCxszz93OcyCY7H9RKGGFdGrzpwPQ/qb
-         wsSBejGLWvvY4zimYKz2nBXhCXwKY8rndfE7+ole5kpoN051+l5sYYgENokQAqrdH/zT
-         RoGJdQKFvMbbKXuKQPaEM6pIEFeFm4xWFTtixpH2VY8/fFJzDmUiOKppS7Wz7viBHZbZ
-         H9vw==
-X-Forwarded-Encrypted: i=1; AJvYcCUCNJOnu9McsU1iVicXo2FZTDdfq2vHLLIcQ7lC46ZW9coHyiBknq1WZmv2Heo5BuoJj5U6d5CagmoJViml+A==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzHeQZJ+qYigODX9i+grAWDYt5kWa2Do1KXq71GyW4g4usJKPGX
-	H1K3WuTnn0Nz+MsGaPqMr+c82v3ON1aGAHNZs0gARdvdPeQy/Hri8wsxPDtIrCLx6EM=
-X-Gm-Gg: ASbGnctJoUP4qW1GJPYN3xmXkmTdZWOUrf0EfJJk9kiHyZo/eLjKuDaFzKBqRK+fzX/
-	E2oWOCHfF6fvJelVyLi8++qyda5i89SZPoxx8WVt9sN0cYANzPHqP0BosWNT6Ec31rqNnJTaAtW
-	YITKK7D9dPn069uLLLHd4sF9dKIJVR3hsMUpqWnCAy3X3qB6fmfFI9wFQofadGDwii4HTS7xnpW
-	3T1AVm7hzPzlzR6tcTIVhjhXnHpvZqNQ2NGlJ3r78Z95jpsE/q4pMl0NlRBucPdINe9qOY4Ed0Y
-	OvQ66HVI5IWCWlGDmxmR26kn8l89+izeKYCAEwcAF0t4gNQsgyvuvhxGqgXiY6/8M1OxOY8kciB
-	1F2K40levKtnLzlLLt75xcXLLXs1JBM0Sthxrl8gaoEGD4gyz1N7gbgKMpfnBkqjI41Za
-X-Google-Smtp-Source: AGHT+IGjWqT926NXSYOyJLRW80qfFEBsN3CZLG323CE3ZOxMO0Sltaq1d1IcpoU8pb1e3RtYjr7rzw==
-X-Received: by 2002:a5d:5d06:0:b0:429:b751:7916 with SMTP id ffacd0b85a97d-42ae5ae025dmr2131435f8f.45.1762511415568;
-        Fri, 07 Nov 2025 02:30:15 -0800 (PST)
+        bh=ohz6eJ3JY6PCTOt6pOm4PJLek87cyeexjL7soGZmZnQ=;
+        b=Dao5vYu+2OQp1uqiDcHH3G1TDHst0WB3qR5nxufP1oRgUJHLITvIPpuq/I51lCx5M0
+         zVOCfOE0kTRW4R7JSQ2XIqiLEYnGkvDtrtaNolj+5uUves707227TjldcsdB+S3Kbb0L
+         AKTbC3/Csysyhqfu0cTs8hPA9uVDETvT2kmzmmOLu8G1TTmpFxYshtwr/BVJIn/Y7pQ8
+         yrU0mkOfOzNhFJnHstFz/uPmlfBXoqFFNc6/vlSO2bhjuH0OjQSsH2SScjYke2jCaIZ5
+         qMyL3gLS4yWPLyx5pkIsVKwKNlXOB/XD5GK5iTeKFSWbdQaevKm8Ol1yyRIMwah3VWvJ
+         N5NQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWg3FM1IZsdT6OErBGmjGjd8ZE0O6pDHjl+hVL/5VJTX54+HG8ARyM13h2Y320fEEB0EWS4vKRoMhSuvjRgdw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzi/xK5so6EP5CRyNkRx6//rIqroFlLFo6lBs+PhKZAMVBLGWjK
+	UjhTbgSCiOfOS4q5KPCre3D1maTGCdiIZNtMWhHbeIXOFZRZdDnPVp0rogJNSTQzKXk=
+X-Gm-Gg: ASbGncuO4Q65kO+lyletzrQg2as0ZILGELjpvXDX4Bo8Tyv/SICqCjkMgQAkPEEYnss
+	VMWu5Y4iGggr1Fo203cY7KTLdevN1RLFY3+Ik+1ER32RJIXX0iaEwAgdwRQRrFZZnxI65N5BEol
+	nVSxfGfDFap1DOJJcc7ugTZ8juw2lCxl9XhLwIM56BI1iP3cM6JslZtLWSFV5Jb974djGFnZkpo
+	9JRsaoRgehx6PaD2MRk79jQ6Lc7aS2ZJUIXihEQ4mZmDhB4g11QXow3kaxPTpUHcX/PNLtd+4EA
+	XeJEaEMD4tfAZAzBVXUXS3gDNvKZWV57fcLfCyJbqTeZhlaNZm3kz3tuSWk1y0L1rcwgwtDIGZi
+	CG7WZvcKl6ZVTHf0ZvaJARMWYuCxeT04V0vxtxZY0sGosRZ9m3uC9+97p5/CjxjvDvn11
+X-Google-Smtp-Source: AGHT+IFKea4oH8KFgwyHaSc2l6blpKP8GuUwPAJgJx/KeJrPkBTKpHrnLvxgE6v/f0QnXtYHee9P1g==
+X-Received: by 2002:a05:600c:4fd0:b0:477:641a:1402 with SMTP id 5b1f17b1804b1-4776bc8654cmr24454425e9.4.1762511419489;
+        Fri, 07 Nov 2025 02:30:19 -0800 (PST)
 Received: from [127.0.1.1] ([2a01:cb1d:dc:7e00:fb6d:2ee:af61:f551])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-42ac67920fcsm4414864f8f.39.2025.11.07.02.30.12
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-42ac67920fcsm4414864f8f.39.2025.11.07.02.30.15
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 07 Nov 2025 02:30:14 -0800 (PST)
+        Fri, 07 Nov 2025 02:30:17 -0800 (PST)
 From: Bartosz Golaszewski <brgl@bgdev.pl>
-Date: Fri, 07 Nov 2025 11:29:54 +0100
-Subject: [PATCH v5 4/8] net: stmmac: qcom-ethqos: wrap emac driver data in
- additional structure
+Date: Fri, 07 Nov 2025 11:29:55 +0100
+Subject: [PATCH v5 5/8] net: stmmac: qcom-ethqos: split power management
+ fields into a separate structure
 MIME-Version: 1.0
-Message-Id: <20251107-qcom-sa8255p-emac-v5-4-01d3e3aaf388@linaro.org>
+Message-Id: <20251107-qcom-sa8255p-emac-v5-5-01d3e3aaf388@linaro.org>
 References: <20251107-qcom-sa8255p-emac-v5-0-01d3e3aaf388@linaro.org>
 In-Reply-To: <20251107-qcom-sa8255p-emac-v5-0-01d3e3aaf388@linaro.org>
 To: Bjorn Andersson <andersson@kernel.org>, 
@@ -128,26 +128,26 @@ Cc: linux-arm-msm@vger.kernel.org, devicetree@vger.kernel.org,
  linux-riscv@lists.infradead.org, 
  Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=5646;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3440;
  i=bartosz.golaszewski@linaro.org; h=from:subject:message-id;
- bh=FNtfWUOF4aoHZQXzUDVa1raYDkAAFgkdXVleG8nnhtM=;
- b=owEBbQKS/ZANAwAKARGnLqAUcddyAcsmYgBpDcool2zGWAFikwgtdjrvFAFi5YomqW8xImQ2T
- QXlmf8S3+2JAjMEAAEKAB0WIQQWnetsC8PEYBPSx58Rpy6gFHHXcgUCaQ3KKAAKCRARpy6gFHHX
- cl2VEACqTpc4dL47ZWZ/SzyIHTYakk3glXirLn2ZL9SFZunoJCJoi6zwm+f+1+5VDZ6j9durf5v
- A9qeHYJm1gph+hLEmyn9e9tuPDqPfh1e4v/9Wu8jIY5XD/5yoVt9kwaQ0v91D3MYV9a0ErY6oU2
- PYM1W8NkW5+lUs41TB6biM2HMQoa0VsHOa7lOdYt5nNUNhFiu0Qnu2/Z8t3GbLgSqqOCN3rFUel
- vC8iF8zUaiO8HgGEeuM+gRE7ZkLXWSg98xo+efB0A0VCEHCk3U3m6CGG/ayGpVlZtISZXa+l808
- 4C1h94xXu9ajAxFFRIKRsr2DemVtJMmpG8bQyTZKrxGy/otQ0jczkYY7fusKe/uMpiVvoJvLrAu
- opLOftH0kLcleHpiNL1mp5HU1qqcishRcrZrW/T+Ud8GqJ69lgED2cGP9QX9XSGNvsOx5HUOn/j
- 2q8/RwltyqNE4WAMZdZKV3FMANcxoA6GO01vGwR3O/RqRVwU90IX3/n6R45KrkLJA3TIKQwGDiF
- 8tVdjAAcgDPQf5MRhK5J8LxUi7VxtbFyXgp5XRdjkFcRUJRQELIFpAKefK55JACbcH48/pZNVUx
- tm5TTJUd/CyMRnyYEufOrm94X6z0/gh1HI+vszkSpwEWnZywOTfpkOFzWwtZSK0fz7f6qE5QTz7
- OQIeaRCQnSdIlag==
+ bh=GhJny0rrOhbWO9GcfNfulcQ1HGUq/SGEEOh5ESB4E5E=;
+ b=owEBbQKS/ZANAwAKARGnLqAUcddyAcsmYgBpDcooKW8Y7IR9mSClISDLeDYYhK8iNiIaH/TPy
+ fxuwujaev6JAjMEAAEKAB0WIQQWnetsC8PEYBPSx58Rpy6gFHHXcgUCaQ3KKAAKCRARpy6gFHHX
+ coQrD/4qTn+RVPw7hjcmgGU3/snDkcs3NDhDHvv/5Gw30fWDbq4JYVy7783sYOwPB85RJqY4S7e
+ orJaF0tbCcwFjqBa5r8puEfO+0tE9C798uYzqB4byWlr6wBm4ZV6MDxHdHiFUueijk1GVKKDf6p
+ g0vBL/7/QSHIP3uvzWFS0McUu8nUHMLyHlC4mDTBLNRh/CvqCrRhcCskFXvUwnq+mVRXz1wUxWz
+ eDuRl3e2s3lfYQsM69iL9yBi0tU6BCfztIGXqBZZwjMcofQem0B48N8RmtBPROWrheeySK+WqZk
+ OBM8gt2jphPBxF7VBTtiIk6NShAwzwpC4LOeJNfR7Iz4oMzbMZ1+sr+95ubeQz3fiF83h920czl
+ MJwT3u6C5W6fr5f4J/BTXhnb2QIiyRdoOk2UI8S3GwfBO2JW8PjAMexz4jvF1bo1Y08k6rUB30B
+ WQe+j+4ipBuswROPqGlXNHuAuYh0Ctt53cyQNyXmx2rv1Wz5rFkVXEI2ponYkRGvYXmUGdjCRCo
+ EvX51dwNUgROqZCbihmyIjeymPgPQWSJnm27ZMUAE/b9wYySNcBPLTPheqUICJIZ4O+Gr8QFVWK
+ TVRxJAFi0n4SyszGjUpLKWarMWT+htsRLk6A8LGgEbPjOumLm7HeK2SO6eVB8sCZ8rWG4snO4ZZ
+ 6c8vSYyDBZkk7jg==
 X-Developer-Key: i=bartosz.golaszewski@linaro.org; a=openpgp;
  fpr=169DEB6C0BC3C46013D2C79F11A72EA01471D772
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251107_023017_843320_37A6C7C2 
-X-CRM114-Status: GOOD (  16.28  )
+X-CRM114-CacheID: sfid-20251107_023021_890892_ED786A6F 
+X-CRM114-Status: GOOD (  14.84  )
 X-Mailman-Approved-At: Sat, 15 Nov 2025 15:29:00 -0800
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -167,140 +167,96 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
 
-As the first step in enabling power domain support in the driver, we'll
-split the device match data and runtime data structures into their
-general and power-management-specific parts. To allow that: first wrap
-the emac driver data in another layer which will later be expanded.
+Now that we have a separate wrapper for device match data, let's extend
+this structure with a pointer to the structure containing fields related
+to power-management only. This is done because a device may have the
+same device settings but different power management mode (e.g.: firmware
+vs manual).
 
 Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
 ---
- .../ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c    | 51 ++++++++++++++++------
- 1 file changed, 37 insertions(+), 14 deletions(-)
+ .../net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c   | 19 ++++++++++++++++---
+ 1 file changed, 16 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c
-index 8493131ca32f5c6ca7e1654da0bbf4ffa1eefa4e..9cafe101049d5412d649b3beaca350c497ffc981 100644
+index 9cafe101049d5412d649b3beaca350c497ffc981..1f00556bbad997e2ec76b521cffe2eb14fabb79e 100644
 --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c
 +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c
-@@ -97,6 +97,10 @@ struct ethqos_emac_driver_data {
+@@ -91,14 +91,18 @@ struct ethqos_emac_driver_data {
+ 	unsigned int num_por;
+ 	bool rgmii_config_loopback_en;
+ 	bool has_emac_ge_3;
+-	const char *link_clk_name;
+ 	u32 dma_addr_width;
+ 	struct dwmac4_addrs dwmac4_addrs;
  	bool needs_sgmii_loopback;
  };
  
-+struct ethqos_emac_match_data {
-+	const struct ethqos_emac_driver_data *drv_data;
++struct ethqos_emac_pm_data {
++	const char *link_clk_name;
 +};
 +
+ struct ethqos_emac_match_data {
+ 	const struct ethqos_emac_driver_data *drv_data;
++	const struct ethqos_emac_pm_data *pm_data;
+ };
+ 
  struct qcom_ethqos {
- 	struct platform_device *pdev;
- 	void __iomem *rgmii_base;
-@@ -214,6 +218,10 @@ static const struct ethqos_emac_driver_data emac_v2_3_0_data = {
- 	.has_emac_ge_3 = false,
- };
- 
-+static const struct ethqos_emac_match_data emac_qcs404_data = {
-+	.drv_data = &emac_v2_3_0_data,
-+};
-+
- static const struct ethqos_emac_por emac_v2_1_0_por[] = {
- 	{ .offset = RGMII_IO_MACRO_CONFIG,	.value = 0x40C01343 },
- 	{ .offset = SDCC_HC_REG_DLL_CONFIG,	.value = 0x2004642C },
-@@ -230,6 +238,10 @@ static const struct ethqos_emac_driver_data emac_v2_1_0_data = {
- 	.has_emac_ge_3 = false,
- };
- 
-+static const struct ethqos_emac_match_data emac_sm8150_data = {
-+	.drv_data = &emac_v2_1_0_data,
-+};
-+
- static const struct ethqos_emac_por emac_v3_0_0_por[] = {
- 	{ .offset = RGMII_IO_MACRO_CONFIG,	.value = 0x40c01343 },
- 	{ .offset = SDCC_HC_REG_DLL_CONFIG,	.value = 0x2004642c },
-@@ -262,6 +274,10 @@ static const struct ethqos_emac_driver_data emac_v3_0_0_data = {
+@@ -292,7 +296,6 @@ static const struct ethqos_emac_driver_data emac_v4_0_0_data = {
+ 	.num_por = ARRAY_SIZE(emac_v4_0_0_por),
+ 	.rgmii_config_loopback_en = false,
+ 	.has_emac_ge_3 = true,
+-	.link_clk_name = "phyaux",
+ 	.needs_sgmii_loopback = true,
+ 	.dma_addr_width = 36,
+ 	.dwmac4_addrs = {
+@@ -313,8 +316,13 @@ static const struct ethqos_emac_driver_data emac_v4_0_0_data = {
  	},
  };
  
-+static const struct ethqos_emac_match_data emac_sc8280xp_data = {
-+	.drv_data = &emac_v3_0_0_data,
++static const struct ethqos_emac_pm_data emac_sa8775p_pm_data = {
++	.link_clk_name = "phyaux",
 +};
 +
- static const struct ethqos_emac_por emac_v4_0_0_por[] = {
- 	{ .offset = RGMII_IO_MACRO_CONFIG,	.value = 0x40c01343 },
- 	{ .offset = SDCC_HC_REG_DLL_CONFIG,	.value = 0x2004642c },
-@@ -297,6 +313,10 @@ static const struct ethqos_emac_driver_data emac_v4_0_0_data = {
- 	},
+ static const struct ethqos_emac_match_data emac_sa8775p_data = {
+ 	.drv_data = &emac_v4_0_0_data,
++	.pm_data = &emac_sa8775p_pm_data,
  };
  
-+static const struct ethqos_emac_match_data emac_sa8775p_data = {
-+	.drv_data = &emac_v4_0_0_data,
-+};
-+
  static int ethqos_dll_configure(struct qcom_ethqos *ethqos)
- {
- 	struct device *dev = &ethqos->pdev->dev;
-@@ -750,7 +770,8 @@ static void ethqos_ptp_clk_freq_config(struct stmmac_priv *priv)
- 
+@@ -771,11 +779,13 @@ static void ethqos_ptp_clk_freq_config(struct stmmac_priv *priv)
  static int qcom_ethqos_probe(struct platform_device *pdev)
  {
--	const struct ethqos_emac_driver_data *data;
-+	const struct ethqos_emac_driver_data *drv_data;
-+	const struct ethqos_emac_match_data *data;
+ 	const struct ethqos_emac_driver_data *drv_data;
++	const struct ethqos_emac_pm_data *pm_data;
+ 	const struct ethqos_emac_match_data *data;
  	struct plat_stmmacenet_data *plat_dat;
  	struct stmmac_resources stmmac_res;
  	struct device *dev = &pdev->dev;
-@@ -801,13 +822,15 @@ static int qcom_ethqos_probe(struct platform_device *pdev)
- 	ethqos->mac_base = stmmac_res.addr;
+ 	struct qcom_ethqos *ethqos;
++	const char *clk_name;
+ 	int ret, i;
+ 
+ 	ret = stmmac_get_platform_resources(pdev, &stmmac_res);
+@@ -823,6 +833,9 @@ static int qcom_ethqos_probe(struct platform_device *pdev)
  
  	data = device_get_match_data(dev);
--	ethqos->por = data->por;
--	ethqos->num_por = data->num_por;
--	ethqos->rgmii_config_loopback_en = data->rgmii_config_loopback_en;
--	ethqos->has_emac_ge_3 = data->has_emac_ge_3;
--	ethqos->needs_sgmii_loopback = data->needs_sgmii_loopback;
-+	drv_data = data->drv_data;
+ 	drv_data = data->drv_data;
++	pm_data = data->pm_data;
++	clk_name = pm_data && pm_data->link_clk_name ?
++				pm_data->link_clk_name : "rgmii";
  
--	ethqos->link_clk = devm_clk_get(dev, data->link_clk_name ?: "rgmii");
-+	ethqos->por = drv_data->por;
-+	ethqos->num_por = drv_data->num_por;
-+	ethqos->rgmii_config_loopback_en = drv_data->rgmii_config_loopback_en;
-+	ethqos->has_emac_ge_3 = drv_data->has_emac_ge_3;
-+	ethqos->needs_sgmii_loopback = drv_data->needs_sgmii_loopback;
-+
-+	ethqos->link_clk = devm_clk_get(dev, drv_data->link_clk_name ?: "rgmii");
+ 	ethqos->por = drv_data->por;
+ 	ethqos->num_por = drv_data->num_por;
+@@ -830,7 +843,7 @@ static int qcom_ethqos_probe(struct platform_device *pdev)
+ 	ethqos->has_emac_ge_3 = drv_data->has_emac_ge_3;
+ 	ethqos->needs_sgmii_loopback = drv_data->needs_sgmii_loopback;
+ 
+-	ethqos->link_clk = devm_clk_get(dev, drv_data->link_clk_name ?: "rgmii");
++	ethqos->link_clk = devm_clk_get(dev, clk_name);
  	if (IS_ERR(ethqos->link_clk))
  		return dev_err_probe(dev, PTR_ERR(ethqos->link_clk),
  				     "Failed to get link_clk\n");
-@@ -835,14 +858,14 @@ static int qcom_ethqos_probe(struct platform_device *pdev)
- 	plat_dat->ptp_clk_freq_config = ethqos_ptp_clk_freq_config;
- 	plat_dat->core_type = DWMAC_CORE_GMAC4;
- 	if (ethqos->has_emac_ge_3)
--		plat_dat->dwmac4_addrs = &data->dwmac4_addrs;
-+		plat_dat->dwmac4_addrs = &drv_data->dwmac4_addrs;
- 	plat_dat->pmt = 1;
- 	if (device_property_present(dev, "snps,tso"))
- 		plat_dat->flags |= STMMAC_FLAG_TSO_EN;
- 	if (device_is_compatible(dev, "qcom,qcs404-ethqos"))
- 		plat_dat->flags |= STMMAC_FLAG_RX_CLK_RUNS_IN_LPI;
--	if (data->dma_addr_width)
--		plat_dat->host_dma_width = data->dma_addr_width;
-+	if (drv_data->dma_addr_width)
-+		plat_dat->host_dma_width = drv_data->dma_addr_width;
- 
- 	if (ethqos->serdes_phy) {
- 		plat_dat->serdes_powerup = qcom_ethqos_serdes_powerup;
-@@ -857,10 +880,10 @@ static int qcom_ethqos_probe(struct platform_device *pdev)
- }
- 
- static const struct of_device_id qcom_ethqos_match[] = {
--	{ .compatible = "qcom,qcs404-ethqos", .data = &emac_v2_3_0_data},
--	{ .compatible = "qcom,sa8775p-ethqos", .data = &emac_v4_0_0_data},
--	{ .compatible = "qcom,sc8280xp-ethqos", .data = &emac_v3_0_0_data},
--	{ .compatible = "qcom,sm8150-ethqos", .data = &emac_v2_1_0_data},
-+	{ .compatible = "qcom,qcs404-ethqos", .data = &emac_qcs404_data},
-+	{ .compatible = "qcom,sa8775p-ethqos", .data = &emac_sa8775p_data},
-+	{ .compatible = "qcom,sc8280xp-ethqos", .data = &emac_sc8280xp_data},
-+	{ .compatible = "qcom,sm8150-ethqos", .data = &emac_sm8150_data},
- 	{ }
- };
- MODULE_DEVICE_TABLE(of, qcom_ethqos_match);
 
 -- 
 2.51.0
