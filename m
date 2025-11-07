@@ -4,86 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF854CCF9E3
-	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Nov 2025 20:52:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CDE6FCCF9E3
+	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Nov 2025 21:50:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gDh3FOPfQloNHhChOn68kmletMuhNUTsasLq7lKcpeM=; b=35vB9rqQEQxJxc
-	omjVCjOf2SKljVFf/mcTXOhpLiFWOG3Ax9RnXz/bQC8KGIBiqciWScGljtGXn+iV+ACdq3f1QQrRM
-	7lyr3QB7Eu2hoeTwnlyZuWWcFZjYR90PNzVZQFi1Rg1D4gUUi5514t6KZKPfaDgfsMThEn1M1/o9s
-	qXUVg9MAnHdr0hriq52/l8YiVECQ4+rRVlcgSTfqhtIjvgYVqdDKmKzUu83+e1A4nmQeFxKmNBOW7
-	dl2wOxKSINI9CjXfcWTRXkEEn5LvkxHMLjBo1WOUYDTSdaVE+uRccRbcCpMofSDz6rM3Tspgp9GIn
-	5tjha2ncbLDSoTDmtHFg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=/AnoZHdUhbTM6JlhwWD2oQ5KzN4B1kqzBKLyxKiokCU=; b=4T7+DeR1xxhEh3
+	+DPYZiHOwQedyIY8yV6U9i+93soFqp3aFOs7+FHUbcENmX60cuMTYJGlmNF/cQ+M5Kywh6sd3+S82
+	XfK0KmFIcMN23cWBXspwnkVcCJ7mxcK3GyjWAlKVvMBA0L87RlRz3m4ajUqQ/hrMWYGkUI0dxu8aa
+	w3SVsSIr16eekEzTYOIZkVQuFhh7ecltCLaSd7K8gkEJsWKOLYlNcMu9Wc2zbfVKqKCjzsS/72vcz
+	xlM9mOYz4Pj6nUJLwYDlrW6b8APCV0irD4eGbnyGOHawNkbrtKc0c6XhFQOygcnemb4IDpV7npBxs
+	hrIKznsVKACXQn+FHJ1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vHTQw-000000011oX-07m3;
-	Fri, 07 Nov 2025 20:51:46 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vHULO-00000001Dwy-0aKm;
+	Fri, 07 Nov 2025 21:50:06 +0000
+Received: from mail-oi1-x22d.google.com ([2607:f8b0:4864:20::22d])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vHTQs-000000011n9-1aOL;
-	Fri, 07 Nov 2025 20:51:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1762548699;
-	bh=8UovAiOWTROIXZYM+ZVGV+MUbMteVqZyd+P1kJY5714=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=PwpJW9oOEFMqTwZPZKr4AcwLhrUGSHyEZdZloMFfJkZNeWHxC8gLE8fZCEmqhK62c
-	 A2cl0V710LDQdQM54axRs5ZpzuEz1uk0ruczX5ImU0ybiDx9oo5En6YUz+qu0KKO1A
-	 6gxkjEiCF0oPIFCMoCNOfTqOTNlfcbQY9kzTPqnS29cuOVJ70XYrDrEFhPbln5A9YU
-	 BBjLgTbdxX96s6FDW0aaaxXLjfBIGM+lcoVijXj9E6j/BtdEJP9F3sU0etd/00P7O7
-	 efPwYzWpT37DH9qhvqetbqsF5Z9HgOFWshuslCWI8BcD/4ivTKMytg1tFRM64hSWIy
-	 AySk/Fmm926Vg==
-Received: from [10.40.0.100] (185-67-175-126.lampert.tv [185.67.175.126])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: mriesch)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2C3BC17E12D5;
-	Fri,  7 Nov 2025 21:51:38 +0100 (CET)
-Message-ID: <13c43edb-9592-4779-a39a-7856bb0f964d@collabora.com>
-Date: Fri, 7 Nov 2025 21:51:37 +0100
+	id 1vHULL-00000001DvX-1n6s
+	for linux-rockchip@lists.infradead.org;
+	Fri, 07 Nov 2025 21:50:04 +0000
+Received: by mail-oi1-x22d.google.com with SMTP id 5614622812f47-44fa4808c15so248106b6e.3
+        for <linux-rockchip@lists.infradead.org>; Fri, 07 Nov 2025 13:50:02 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1762552202; x=1763157002; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=oruE4G6E0HzZ52urZnTY6HJtCupwgaLtwj8wmXDsPEg=;
+        b=Z9QQLkTukCxbr7PDXv2KhhBS12o/Zh5YWMrlZpUmcymPynveUBm8xnuzVsS7CCp6wm
+         yKD4WZUH9ibld9CgIl+zIxOyABD1HxqrHaVFivZ8SVHLuFy6CFeNVag6ZZw8DVEmXRwT
+         5aqkfoLc/wGWPpO9R+yTjnEdhQx1QH7JwOpoCgvl+mgaLfRQX0GepiO2VTix5SXHkf7O
+         jFq7akHHYW4L2c7ptBakyDwFg26FO4nLB3ERH3eCxuRVHUbLoE59INOrWiZwJkkj2o5Z
+         TL2h7j3vc+vncqkhb7CHXVrqEydANBGxQ8SDWXpZeilysPkWbYC5uZuUBfRDl6gyIF4S
+         gkPg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1762552202; x=1763157002;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=oruE4G6E0HzZ52urZnTY6HJtCupwgaLtwj8wmXDsPEg=;
+        b=lm9wcJBmCBEm7DllMp+mRNljeZik1aY8wMNc9wWi+xD4yMAkRcRhaVxOM4jzr/9ZSt
+         CB0OjUsS+Islf45bpR5CziHm9QLXRwA6+DH1TpTY5TdwVjl+7ZFRdZ1c8NHCV+8Ddb8K
+         1AC6TKPkNAYm2LW7AqtgC72BmYfWzMYn3ugO6KurZFIhXlAvud+Zkdu01OU9didB6KRr
+         cZ/B14vyEBMvByf2QlKY/3o1a7qnRLQ6UWUTNaMHIpa1RXEob4kvfHqa3wQFYJWDGTDr
+         d7hWcBC7DIc9Qv1mycj/gyXB0rg+Gxq8VwyGv3DBKGh44rsruPurI/JaW5qX7jdrOhqV
+         OCXA==
+X-Gm-Message-State: AOJu0YyuuwGvQDQf327U2qd35Xt46CORYqoY9OvcAo7BWI/PErteTXwX
+	FKM0Dn7q1ZkWjFz088ug1ESpNvLmaVhpJwfSbZX653bJ7l+8iKFF7Vwz0ZJ7rw==
+X-Gm-Gg: ASbGncssOrmThkarukvpWL83pvMRx3UQO6SYCvA+HTdX7ExeeeY1i7FzOef8srYDb2z
+	u3BnxYjjGcAZO1vtIoQItsgJiVTa56tzGuYJWB4CU4fjy+kr6+57jLj5dCU23RI9vbiZrMaWul3
+	rHA5OqK95bpcS8m5MRIoo+vQmv/Bx7Z3mSRH1CoDPmtufFfg2Hh43ZlWS9XRLb6EJglJGv8ITKx
+	2wFrkWTYPWtvkpq6xdOjbv/LKo8B35k+4NRRTCmcv8uunHctPrBilcXp3PmTEV0qo0iAKXwq0jZ
+	cTRHl17InT/DOi2fzVcKfA7WtrHrMDpOByvLNQk5g+gUlRF03Jp98zBzMOjgVGv6HQiP33mfQqU
+	9yjCo8Q+Vdn6GUB2FyXTPROh0lT5xmt2MzCoXi60Ep5DGw78qB0smqQBqpEM66clpNfy7Hmu19Q
+	==
+X-Google-Smtp-Source: AGHT+IGnHtoS06uKQp9OJNKvErPkxz4GM53Mjudicm/94eiXH2/xC5iIjNLtSgIiCihKYR+XercU0g==
+X-Received: by 2002:a05:6808:1b11:b0:44d:a817:2d72 with SMTP id 5614622812f47-4502a4028b6mr439896b6e.60.1762552201700;
+        Fri, 07 Nov 2025 13:50:01 -0800 (PST)
+Received: from localhost.localdomain ([2600:1700:fb0:1bc0::54])
+        by smtp.gmail.com with ESMTPSA id 5614622812f47-450027a46bcsm2787517b6e.16.2025.11.07.13.50.00
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 07 Nov 2025 13:50:00 -0800 (PST)
+From: Chris Morgan <macroalpha82@gmail.com>
+To: linux-rockchip@lists.infradead.org
+Cc: devicetree@vger.kernel.org,
+	damon.ding@rock-chips.com,
+	sebastian.reichel@collabora.com,
+	jbx6244@gmail.com,
+	heiko@sntech.de,
+	conor+dt@kernel.org,
+	krzk+dt@kernel.org,
+	robh@kernel.org,
+	Chris Morgan <macromorgan@hotmail.com>
+Subject: [PATCH] arm64: dts: rockchip: Enable USB-C DP Alt for Indiedroid Nova
+Date: Fri,  7 Nov 2025 15:47:24 -0600
+Message-ID: <20251107214724.878955-1-macroalpha82@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v14 00/18] media: rockchip: add a driver for the rockchip
- camera interface
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: Sakari Ailus <sakari.ailus@linux.intel.com>,
- Mehdi Djait <mehdi.djait@linux.intel.com>,
- Maxime Chevallier <maxime.chevallier@bootlin.com>,
- =?UTF-8?Q?Th=C3=A9o_Lebrun?= <theo.lebrun@bootlin.com>,
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- Gerald Loacker <gerald.loacker@wolfvision.net>,
- Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
- Markus Elfring <Markus.Elfring@web.de>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Kever Yang <kever.yang@rock-chips.com>,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
- Collabora Kernel Team <kernel@collabora.com>,
- Paul Kocialkowski <paulk@sys-base.io>,
- Alexander Shiyan <eagle.alexander923@gmail.com>,
- Val Packett <val@packett.cool>, Rob Herring <robh@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- Mehdi Djait <mehdi.djait@bootlin.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Bryan O'Donoghue <bod@kernel.org>, Chen-Yu Tsai <wens@csie.org>
-References: <20240220-rk3568-vicap-v14-0-b38b6da0fc80@collabora.com>
- <aQ4tJg8r_j4NyKhv@kekkonen.localdomain>
- <074cd08e-0412-49f9-8dd9-b1f96eb11717@collabora.com>
- <20251107185441.GG5558@pendragon.ideasonboard.com>
-Content-Language: en-US
-From: Michael Riesch <michael.riesch@collabora.com>
-In-Reply-To: <20251107185441.GG5558@pendragon.ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251107_125142_601299_3A27B68B 
-X-CRM114-Status: GOOD (  23.04  )
+X-CRM114-CacheID: sfid-20251107_135003_477914_54701E8D 
+X-CRM114-Status: GOOD (  11.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,74 +103,157 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Laurent,
+From: Chris Morgan <macromorgan@hotmail.com>
 
-On 11/7/25 19:54, Laurent Pinchart wrote:
-> On Fri, Nov 07, 2025 at 07:41:59PM +0100, Michael Riesch wrote:
->> On 11/7/25 18:32, Sakari Ailus wrote:
->>> On Fri, Oct 24, 2025 at 02:51:29PM +0200, Michael Riesch via B4 Relay wrote:
->>>> Habidere,
->>>>
->>>> This series introduces support for the Rockchip Camera Interface (CIF),
->>>> which is featured in many Rockchip SoCs in different variations.
->>>> For example, the PX30 Video Input Processor (VIP) is able to receive
->>>> video data via the Digital Video Port (DVP, a parallel data interface)
->>>> and transfer it into system memory using a double-buffering mechanism
->>>> called ping-pong mode.
->>>> The RK3568 Video Capture (VICAP) unit, on the other hand, features a
->>>> DVP and a MIPI CSI-2 receiver that can receive video data independently
->>>> (both using the ping-pong scheme).
->>>> The different variants may have additional features, such as scaling
->>>> and/or cropping.
->>>> Finally, the RK3588 VICAP unit constitutes an essential piece of the
->>>> camera interface with one DVP, six MIPI CSI-2 receivers, scale/crop
->>>> units, and a data path multiplexer (to scaler units, to ISP, ...).
->>>
->>> I understand both RK3568 and RK3588 include an ISP. Do you have insight on
->>> how would this work, should the support for the ISP be added later on?
->>
->> Short answer: Yes and yes.
->>
->> Long answer:
->>
->> The patch series at hand adds support for the PX30 VIP and the RK3568
->> VICAP. I cannot really say something about the PX30, but on the RK3568
->> VICAP and ISP are orthogonal (the ISP features its own MIPI CSI-2
->> receiver, different from that introduced in this series). Thus, ISP
->> support can be introduced anytime (whenever someone is motivated ;-)).
-> 
-> Won't they both be connected to the same sensor though, and probably the
-> same D-PHY in the SoC ? They don't seem entirely separate to me.
+Enable the Display Port alt-mode for the USB-C port on the Indiedroid
+Nova.
 
-The MIPI CSI-2 DPHY is shared, indeed. Thus, they *maybe technically
-could be* connected to the same sensor, but I don't know whether that
-works and fail to see why anyone would to such a thing (if it is about
-raw capture, the MIPI CSI-2 receiver in the ISP can do that on its own).
+Note that while ROCKCHIP_VOP2_EP_DP0 is defined as 10 we need to
+set the address to "a" or else we receive a dtc warning.
 
-The DPHY can be operated in split mode, with two lanes for VICAP and two
-lanes for ISP. This is not implemented yet, but can be done at a later
-stage on PHY level (not media related). In this case, ISP and VICAP can
-receive data from different subdevices via CSI-2.
+Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+---
+ .../dts/rockchip/rk3588s-indiedroid-nova.dts  | 80 ++++++++++++++++---
+ 1 file changed, 67 insertions(+), 13 deletions(-)
 
-BTW the ISP is able to process the data captured by VICAP, but
-apparently this includes a RAM round trip (VICAP captures to memory, ISP
-operates in mem2mem mode).
-
-> A block diagram that shows connections between the CSI-2 pins, D-PHY,
-> CSI-2 receivers, VICAP and ISP could help.
-> 
->> Once this patch series is merged, I'll push out changes that introduce
->> support for the RK3588 VICAP. We can discuss the integration of any
->> RK3588 ISP in this scope then -- and there may be some things to discuss
->> as there the VICAP and the ISP(s) are directly connected by means of a
->> MUX unit in the VICAP.
->>
->> Alright?
-> 
-
-Best regards,
-Michael
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts b/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
+index dee053afc6b6..174d299cc6bb 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
+@@ -190,6 +190,22 @@ &cpu_b3 {
+ 	cpu-supply = <&vdd_cpu_big1_s0>;
+ };
+ 
++&dp0 {
++	status = "okay";
++};
++
++&dp0_in {
++	dp0_in_vp1: endpoint {
++		remote-endpoint = <&vp1_out_dp0>;
++	};
++};
++
++&dp0_out {
++	dp0_out_con: endpoint {
++		remote-endpoint = <&usbdp_phy0_dp_in>;
++	};
++};
++
+ /*
+  * Add labels for each GPIO pin exposed on the 40 pin header. Note that
+  * voltage of each GPIO pin could be either 3.3v or 1.8v (as noted by
+@@ -371,28 +387,36 @@ usb_con: connector {
+ 			sink-pdos = <PDO_FIXED(5000, 1000, PDO_FIXED_USB_COMM)>;
+ 			op-sink-microwatt = <1000000>;
+ 
++			altmodes {
++				displayport {
++					svid = /bits/ 16 <0xff01>;
++					vdo = <0xffffffff>;
++				};
++			};
++
++
+ 			ports {
+ 				#address-cells = <1>;
+ 				#size-cells = <0>;
+ 
+ 				port@0 {
+ 					reg = <0>;
+-					usbc0_orien_sw: endpoint {
+-						remote-endpoint = <&usbdp_phy0_orientation_switch>;
++					usbc0_hs: endpoint {
++						remote-endpoint = <&usb_host0_xhci_hs>;
+ 					};
+ 				};
+ 
+ 				port@1 {
+ 					reg = <1>;
+-					usbc0_role_sw: endpoint {
+-						remote-endpoint = <&dwc3_0_role_switch>;
++					usbc0_ss: endpoint {
++						remote-endpoint = <&usbdp_phy0_ss_out>;
+ 					};
+ 				};
+ 
+ 				port@2 {
+ 					reg = <2>;
+-					dp_altmode_mux: endpoint {
+-						remote-endpoint = <&usbdp_phy0_dp_altmode_mux>;
++					usbc0_sbu: endpoint {
++						remote-endpoint = <&usbdp_phy0_dp_out>;
+ 					};
+ 				};
+ 			};
+@@ -973,9 +997,22 @@ &usb_host0_xhci {
+ 	usb-role-switch;
+ 	status = "okay";
+ 
+-	port {
+-		dwc3_0_role_switch: endpoint {
+-			remote-endpoint = <&usbc0_role_sw>;
++	ports {
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		port@0 {
++			reg = <0>;
++			usb_host0_xhci_hs: endpoint {
++				remote-endpoint = <&usbc0_hs>;
++			};
++		};
++
++		port@1 {
++			reg = <1>;
++			usb_host0_xhci_ss: endpoint {
++				remote-endpoint = <&usbdp_phy0_ss_in>;
++			};
+ 		};
+ 	};
+ };
+@@ -1004,14 +1041,24 @@ port {
+ 		#address-cells = <1>;
+ 		#size-cells = <0>;
+ 
+-		usbdp_phy0_orientation_switch: endpoint@0 {
++		usbdp_phy0_ss_out: endpoint@0 {
+ 			reg = <0>;
+-			remote-endpoint = <&usbc0_orien_sw>;
++			remote-endpoint = <&usbc0_ss>;
+ 		};
+ 
+-		usbdp_phy0_dp_altmode_mux: endpoint@1 {
++		usbdp_phy0_ss_in: endpoint@1 {
+ 			reg = <1>;
+-			remote-endpoint = <&dp_altmode_mux>;
++			remote-endpoint = <&usb_host0_xhci_ss>;
++		};
++
++		usbdp_phy0_dp_in: endpoint@2 {
++			reg = <2>;
++			remote-endpoint = <&dp0_out_con>;
++		};
++
++		usbdp_phy0_dp_out: endpoint@3 {
++			reg = <3>;
++			remote-endpoint = <&usbc0_sbu>;
+ 		};
+ 	};
+ };
+@@ -1030,3 +1077,10 @@ vp0_out_hdmi0: endpoint@ROCKCHIP_VOP2_EP_HDMI0 {
+ 		remote-endpoint = <&hdmi0_in_vp0>;
+ 	};
+ };
++
++&vp1 {
++	vp1_out_dp0: endpoint@a {
++		reg = <ROCKCHIP_VOP2_EP_DP0>;
++		remote-endpoint = <&dp0_in_vp1>;
++	};
++};
+-- 
+2.43.0
 
 
 _______________________________________________
