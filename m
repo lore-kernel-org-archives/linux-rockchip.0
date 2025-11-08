@@ -4,67 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 981A9CCFA18
-	for <linux-rockchip@archiver.kernel.org>; Sat,  8 Nov 2025 14:22:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78FF6CCFA18
+	for <linux-rockchip@archiver.kernel.org>; Sat,  8 Nov 2025 22:13:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:From:Subject:
-	Cc:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=L3pmpBtTIgS8fkd1smDmgOB494llOCjswLEl5+aSDGk=; b=16xSWR3mhU9gzS
-	Om7Ij0L2CMH88S6ykhPMAKh9SNySA7pXt5mQK+pN9mhZBNRb6zkbcaBnaxWxYJdcgBTrKeSzp8/5n
-	tZtvsU06JJ1p2riMrvD+/WelzTv25xPDh34JeNLZQw5N42Y3aWml3cSGRPlV/9S0mxm1xjGRrkTAi
-	95j+i+xLgNVil2JoYhWAaCAmmWRQYRaLz+LQ0Px37lchSi0khstu3cYYLArn38MxCGgRBQ/RT8kOQ
-	uhgYo3OGNCFvTXQS9QzK6YNw7CNnGTC0mUQ8jt+gbp3tMX9R3SsBhc4hCKzfkZavcuihthYuS8jrG
-	773nHfL8A95LjXMYWdbQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=HEj284YdEG7a0NFVRvqcbkD1FUFk9UxKa2lEdU5kIQg=; b=0lJgkbqxIP43ZVFEKqXVufOz2L
+	/Lcob50CgM+zrFOPX7Dhh0BvtSiKJns6GxSaAliVuhthQidLXC5xYjd5BWt5/LPiyyCisMs/Y072M
+	kM27HBMSl10HVdD9DPGJCm0vEx0LAqH9eqas5a6RkYtItJMeSo6qPHWzDs3iS/+JRWocu7RsQofzx
+	FzpnwX2j+Qu8kR7kP8orC0jwqUlKDidW8Ff9HsCVoefuzMNsa0bQX8KJHHzgcjXNstUdtDorfNopr
+	1o5G5kNk0QlzTTDyCDiTA5PXsc++lj7oaAR20aTEB/N8Q5ejz0/AywIOYA5bHm6hIUUP5PKmSgFSG
+	czUlTROg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vHjpR-00000003BfK-3BnL;
-	Sat, 08 Nov 2025 14:22:09 +0000
-Received: from out-189.mta1.migadu.com ([2001:41d0:203:375::bd])
+	id 1vHrBR-00000003Vn9-0JTv;
+	Sat, 08 Nov 2025 22:13:21 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vHjpM-00000003BeR-0Ihm
-	for linux-rockchip@lists.infradead.org;
-	Sat, 08 Nov 2025 14:22:08 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow-tech.com;
-	s=key1; t=1762611715;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=LPn9l+QoDiG2QhjIafrV6sGFlG1kFs7V/OcM6xzYO04=;
-	b=P189H++3jsjVCo2N95hPxrfBzWWByQ0uwh1OJKldQ/RBEV/5VZAgdfHmvB5vYrtufQnceg
-	WApyA74cMwLyug8RtetofDrFbjO4cC48jNDcwONMyeACAcv0mvZh7ZnQTHA9JWew3W9ZWi
-	qBH+ZmcO65lYR1rqmc/zMYzcY+ePOGBzLlpkSJWEtQRFD0OlobZPINuSI/Pfa3N7E2WfWU
-	nCCihzEoTb6LsqNm1+Vx+pUpNlYVm8rgximClhXyAVtwZVUFQ52C1a15J2j7sy2BtrbfAF
-	ZkHAeduwh8nm7yQz1YlcwyV/AAcYiwU/LwmBbOs2Z5KjF5B6UsH8uTsBVDLE8Q==
-Date: Sat, 08 Nov 2025 15:21:45 +0100
-Message-Id: <DE3DPAVIOGZP.7RW4SGB8HXUT@cknow-tech.com>
-Cc: "FUKAUMI Naoki" <naoki@radxa.com>, "Damien Le Moal"
- <dlemoal@kernel.org>, "Anand Moon" <linux.amoon@gmail.com>,
- <linux-pci@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- "Dragan Simic" <dsimic@manjaro.org>, "Lorenzo Pieralisi"
- <lpieralisi@kernel.org>, =?utf-8?q?Krzysztof_Wilczy=C5=84ski?=
- <kw@linux.com>, "Manivannan Sadhasivam" <manivannan.sadhasivam@linaro.org>,
- "Rob Herring" <robh@kernel.org>, "Bjorn Helgaas" <bhelgaas@google.com>,
- "Heiko Stuebner" <heiko@sntech.de>
-Subject: Re: [PATCH] PCI: dw-rockchip: Skip waiting for link up
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <diederik@cknow-tech.com>
-To: "Niklas Cassel" <cassel@kernel.org>, "Shawn Lin"
- <shawn.lin@rock-chips.com>
-References: <20250113-rockchip-no-wait-v1-1-25417f37b92f@kernel.org>
- <1E8E4DB773970CB5+5a52c9e1-01b8-4872-99b7-021099f04031@radxa.com>
- <6e87b611-13ea-4d89-8dbf-85510dd86fa6@rock-chips.com>
- <aQ840q5BxNS1eIai@ryzen> <aQ9FWEuW47L8YOxC@ryzen>
-In-Reply-To: <aQ9FWEuW47L8YOxC@ryzen>
-X-Migadu-Flow: FLOW_OUT
+	id 1vHrBO-00000003Vmb-1tqC;
+	Sat, 08 Nov 2025 22:13:19 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1762639989; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=cHKQixeSbiQYgFr/nIMungXoozpc+I+XHBYAKYLIOMCBZoPMuiZ9juvWVCCIfB2Q/4tDXJ7Gzfwk6r7KVnxNZJ9qTtSiFHH2sYUbgoMesswY18rneR+me7pX011K+SopAoRMsd6CItg/WFC6tEBlyJNxmlCBX5m+7hvnrYyvwVI=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1762639989; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=VMIv9AGq780AijX5IiGXZgy94EnHSeQu6sTSzhiMxek=; 
+	b=CoRS3XCRJtH5n/+F/hNiC4IUbAVjxoO9cRZG+aD8QfvIMk9gSRfOpcsSUPvFHzVbvTEz53jtm+pXYeZgjwgKyWWdwBFWZZqAdPEYA7NG0peepJ7HeHrJBE2H07Pwv+XPXWi9HiUVCENSXWOCTiRwEKhuoYx4Gz++AO13RSCHMH8=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1762639989;
+	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
+	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
+	bh=VMIv9AGq780AijX5IiGXZgy94EnHSeQu6sTSzhiMxek=;
+	b=GgvaFjo7eVdA72Ou0P0SfF46EBvPLHLMhqhIPO5oG++ndoVBg4X+fymn97HzeZ5o
+	0OdtbgGC3fILokPh6Lh3y7261vKyjmiTvp5vPHPszkGqgodAM6Dm+xtw2TugzX1NVg1
+	vwizaabpSi0/U9lZ9vR8VJEZbTF5zDgE2DHJq6UY=
+Received: by mx.zohomail.com with SMTPS id 1762639987433151.93053330001715;
+	Sat, 8 Nov 2025 14:13:07 -0800 (PST)
+Received: by venus (Postfix, from userid 1000)
+	id 7A8E61801B3; Sat, 08 Nov 2025 23:12:54 +0100 (CET)
+Date: Sat, 8 Nov 2025 23:12:54 +0100
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Geraldo Nascimento <geraldogabriel@gmail.com>, 
+	Ye Zhang <ye.zhang@rock-chips.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>, Manivannan Sadhasivam <mani@kernel.org>, 
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
+	Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Johan Jonker <jbx6244@gmail.com>, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH] arm64: dts: rockchip: align bindings to PCIe spec
+Message-ID: <sbulnlwz3vxyk3yw2c2tcsdvyu57cdvyixkpeq2okh4vn6yyod@4o4kltfb5u6n>
+References: <4b5ffcccfef2a61838aa563521672a171acb27b2.1762321976.git.geraldogabriel@gmail.com>
+ <ba120577-42da-424d-8102-9d085c1494c8@rock-chips.com>
+ <aQsIXcQzeYop6a0B@geday>
+ <67b605b0-7046-448a-bc9b-d3ac56333809@rock-chips.com>
+ <aQ1c7ZDycxiOIy8Y@geday>
+ <d9e257bd-806c-48b4-bb22-f1342e9fc15a@rock-chips.com>
+MIME-Version: 1.0
+In-Reply-To: <d9e257bd-806c-48b4-bb22-f1342e9fc15a@rock-chips.com>
+X-Zoho-Virus-Status: 1
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-1.5.1/262.598.13
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251108_062206_051168_2982BE6B 
-X-CRM114-Status: GOOD (  16.52  )
+X-CRM114-CacheID: sfid-20251108_141318_557085_1E74B50B 
+X-CRM114-Status: GOOD (  23.60  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,76 +87,113 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============6561345409473438464=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat Nov 8, 2025 at 2:27 PM CET, Niklas Cassel wrote:
-> On Sat, Nov 08, 2025 at 01:34:32PM +0100, Niklas Cassel wrote:
->> 
->> The pcie-dw-rockchip.c driver is modelled after the qcom driver.
->> So if this is a problem when a ASM2806 switch is connected, I would
->> expect qcom platforms to have the same problem.
->
-> Looking more closely at this, comparing the "good" kernel:
 
-There's another thing that caught my eye ...
+--===============6561345409473438464==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="npjyxqdavydus2a6"
+Content-Disposition: inline
 
-> [    1.868857] pci 0004:40:00.0: [1d87:3588] type 01 class 0x060400 PCIe Root Port
-> [    1.869509] pci 0004:40:00.0: ROM [mem 0x00000000-0x0000ffff pref]
-> ...
-> [    1.879764] pci 0004:41:00.0: enabling Extended Tags
-> [    1.880614] pci 0004:41:00.0: PME# supported from D0 D3hot D3cold
-> [    1.881409] pci 0004:41:00.0: 2.000 Gb/s available PCIe bandwidth, limited by 2.5 GT/s PCIe x1 link at 0004:40:00.0 (capable of 15.752 Gb/s with 8.0 GT/s PCIe x2 link)
 
-... 2.000 Gb/s ...
+--npjyxqdavydus2a6
+Content-Type: text/plain; protected-headers=v1; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH] arm64: dts: rockchip: align bindings to PCIe spec
+MIME-Version: 1.0
 
-> [    1.888729] pci 0004:41:00.0: bridge configuration invalid ([bus 00-00]), reconfiguring
-> ...
->
->
-> With the "bad" kernel:
-> [    1.383075] pci 0004:40:00.0: [1d87:3588] type 01 class 0x060400 PCIe Root Port
-> [    1.383738] pci 0004:40:00.0: ROM [mem 0x00000000-0x0000ffff pref]
-> ...
-> [    1.415746] pci 0004:41:00.0: enabling Extended Tags
-> [    1.416465] pci 0004:41:00.0: PME# supported from D0 D3hot D3cold
-> [    1.417181] pci 0004:41:00.0: 4.000 Gb/s available PCIe bandwidth, limited by 5.0 GT/s PCIe x1 link at 0004:40:00.0 (capable of 15.752 Gb/s with 8.0 GT/s PCIe x2 link)
+Hi,
 
-... 4.0000 Gb/s
+On Fri, Nov 07, 2025 at 11:01:04AM +0800, Shawn Lin wrote:
+> + Ye Zhang
+>=20
+> =E5=9C=A8 2025/11/07 =E6=98=9F=E6=9C=9F=E4=BA=94 10:43, Geraldo Nasciment=
+o =E5=86=99=E9=81=93:
+> > On Wed, Nov 05, 2025 at 04:56:36PM +0800, Shawn Lin wrote:
+> > > =E5=9C=A8 2025/11/05 =E6=98=9F=E6=9C=9F=E4=B8=89 16:18, Geraldo Nasci=
+mento =E5=86=99=E9=81=93:
+> > > > Hi Shawn, glad to hear from you.
+> > > >=20
+> > > > Perhaps the following change is better? It resolves the issue
+> > > > without the added complication of open drain. After you questioned
+> > > > if open drain is actually part of the spec, I remembered that
+> > > > GPIO_OPEN_DRAIN is actually (GPIO_SINGLE_ENDED | GPIO_LINE_OPEN_DRA=
+IN)
+> > > > so I decided to test with just GPIO_SINGLE_ENDED and it works.
+> >=20
+> > Shawn,
+> >=20
+> > I quote from the PCIe Mini Card Electromechanical Specification Rev 1.2
+> >=20
+> > "3.4.1. Logic Signal Requirements
+> >=20
+> > The 3.3V card logic levels for single-ended digital signals (WAKE#,
+> > CLKREQ#, PERST#, and W_DISABLE#) are given in Table 3-7. [...]"
+> >=20
+> > So while you are correct that PERST# is most definitely not Open Drain,
+> > there's evidence on the spec that defines this signal as Single-Ended.
+> >=20
+>=20
+> This's true. But I couldn't find any user in dts using either
+> GPIO_SINGLE_ENDED or GPIO_OPEN_DRAIN for PCIe PERST#. I'm curious
+> how these two flags affect actual behavior of chips. Ye, could you
+> please help check it?
 
-I don't know if that's relevant or important, but wanted to mention it.
+FWIW I assume single-ended in the spec means it's not differential
+like all the highspeed signals on the PCIe connection. This says
+nothing about open-drain, open-source or push-pull being used. The
+kernel on the other hand has a very specific understanding of
+GPIO_SINGLE_ENDED:
 
-Cheers,
-  Diederik
+	if (flags & OF_GPIO_SINGLE_ENDED) {
+		if (flags & OF_GPIO_OPEN_DRAIN)
+			lflags |=3D GPIO_OPEN_DRAIN;
+		else
+			lflags |=3D GPIO_OPEN_SOURCE;
+	}
 
-> [    1.423384] pci 0004:41:00.0: bridge configuration invalid ([bus 00-00]), reconfiguring
-> ...
->
->
-> We can see that the pcie-dw-rockchip.c driver detects the ASM2806 switch
-> in both cases. So the problem is not really with enumerating the root port.
->
-> The problem seems to be that with the "bad" kernel, you get a lot of:
-> [    1.464651] pci 0004:42:00.0: devices behind bridge are unusable because [bus 43] cannot be assigned for them
->
-> Because the bus ends are different, and conflicts with each other.
-> I don't know why this happens.
->
-> Perhaps we could add a quirk for ASM2806 that does some extra sleep if that
-> switch is detected, if for some reason, the switch is not actually ready
-> after the delays defined by the PCIe specification.
->
-> (And btw. please test with the latest 6.18-rc, as, from experience, the
-> ASPM problems in earlier RCs can result in some weird problems that are
-> not immediately deduced to be caused by the ASPM enablement.)
->
->
-> Kind regards,
-> Niklas
+I.e. it is the same as configuring open-source ;)
+
+Greetings,
+
+-- Sebastian
+
+--npjyxqdavydus2a6
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmkPwGIACgkQ2O7X88g7
++pph/w/9EGXoEnn09vOlQ9Hk9Y4BurUJ0BtpcYyw58obAh4TBxpw6qpl2pEmL+ZA
+7R2h2AlQm3O5wuHTtOwRaiTJsRSIBNOFebqwSZO7lY3OpuOTknFfhUKR98tcuAlQ
+DJD0nQMupT6x3GJ0GzKyI1kn6jbV98BhQsqXnoL5Digupn89Z5XvaCHTsUG9quRn
+fy1iZlLtgTvpTHOHXoAZkPn0RWznH3hLTlELwwkhEayvdCAGP5m0igUMbO8WWryY
+J6358C7Q88GcSffavbmhJYmBsqCoadgN4A2hPwQEgmuIBgwlrgkefaP2dZG0qD5v
+GpTSYGiWdLw/bDEW87lq4sav9F+lOPiYJJ+MvhdjZWpLWMuVOJbJpGw/kTrZRTTN
+TfElFYQ+7ZWnJUhkCTlebraB8SzjwDA7nc2zIDMXeijIH9++NzAP2XzU48yqllsG
+gTlLKhi1Vva7XcPhwEHof6X2IJvUZGp4fwJF7VhI8j+uD90Sb30ZFD/665vrIfZb
+vUnY3qTY8Ypo2ITcF//tyeHV8xz5N9kWar8CWYpZcuHxl8/ea7PZYh0L1eDLHQxs
+vEOBqezfUI49QVEawDqFFXNflM63IoWyHFb7/VJ7r95O0WJvm9DmyfIWgBhGesXs
+hYHvk73EY+0JKzpK+rx/Jn88tD5LOlAG/b4AvYtrTIVIacxtDIk=
+=5sqv
+-----END PGP SIGNATURE-----
+
+--npjyxqdavydus2a6--
+
+
+--===============6561345409473438464==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============6561345409473438464==--
+
