@@ -4,79 +4,174 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 202CACCFA18
-	for <linux-rockchip@archiver.kernel.org>; Sat,  8 Nov 2025 09:37:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5D1DCCFA13
+	for <linux-rockchip@archiver.kernel.org>; Sat,  8 Nov 2025 11:17:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SpHlfNQlMLx1t+0GHDwX9qelzYYXhDFu/+IgvLijn30=; b=MWfIPGzHpcvtLm
-	XcQob7Evz0/q0G1HbjVWehjsh72RzyYKwVgTw9qnClUKN0fGWOPz+R7q4M9F9XRsmUA1jCLzY7bXE
-	w52GBmRgDwGwCp7i4GrXyTXVSX5xZ1P+OkHV7OyHv5uZl7iA+csJqcp9DIVnu+oh/Y5szqcv1XdEK
-	f4A4ogXp7r6r3J93Q2Ik+2xKB8JexpvMJo0iEZq0Slp8etZwgO3yueOdM+R2Onpt5G3Atd+lB0Vmg
-	2GbBgb8grasDL2IgMc9mm6FuCVHHQIMgmDGecIY3U7zQtZfZesRFyrQtqc/xAJA3Q9b3PxiEQYJGe
-	HFQ0PGvGwIomepj+QFZQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:
+	References:Cc:To:Subject:Date:Message-ID:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=/j5MoQ5RrVgr3eCjoPd46WP7TxJ06jqjKuhKH/mdgQI=; b=TEBjvl3PqxZTZDWkPdXuphUbLc
+	F7Ntly9rEhlBG9ZtK84n/BL9rwLBUN/kpLmppdq9bHDAW1oP+WrS/dwR8MTL5JunqYaE6Fj/lE+Qt
+	t6uWRCPWPjy/NB1EMcUmW4CBHk1RhErhysKw8eo58eVkdJ8+VXGGxv4SN7CpljBbfBzQMZ6IgDZpB
+	CAiB0foVNuhyu3VHmRzIykO+/a7MIBq8QBRUDSqUuBxhcF0JdWyEbLPq/dbii7FlmbruK1tFI11Gy
+	PQdXLqfhnodZS08x5w6O0L23k41vp1SdWWk6Q/sryXWmfY405ng+0DNx/Dq3JMIItR5vT09fSwFmQ
+	gJ3Bo2Vw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vHfNT-00000002ymP-0Rvi;
-	Sat, 08 Nov 2025 09:36:59 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1vHgwe-000000033MX-3rnL;
+	Sat, 08 Nov 2025 11:17:24 +0000
+Received: from mail-westus3azon11010058.outbound.protection.outlook.com ([52.101.201.58] helo=PH7PR06CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vHfNM-00000002yZG-0gRY;
-	Sat, 08 Nov 2025 09:36:53 +0000
-Received: from [192.168.0.172] (mob-5-90-142-135.net.vodafone.it [5.90.142.135])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 70FE7F89;
-	Sat,  8 Nov 2025 10:34:53 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1762594494;
-	bh=unblC2giKYD3uiatEYi0ZweERga9XTWzkHw2hg2KQNc=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=X64BHdQ88uTtFzdNQg26B6iI1LJ2SKGnhiLqrUiBLytUJvWMG50bpFqcF03qkHq/h
-	 c8BNSmIOGGvrkKF9gmZShfIquaHGRBQriAl1ly3T/W7DJeH4Fb50k1nF5NjIf4RRLr
-	 yi50HfJqaZuq2aRx2Njg9FjIwARqgklIiGp6MHKA=
-From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-Date: Sat, 08 Nov 2025 10:36:29 +0100
-Subject: [PATCH v9 8/8] media: Documentation: kapi: Add v4l2 generic ISP
- support
+	id 1vHgwc-000000033Lz-2D93;
+	Sat, 08 Nov 2025 11:17:24 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=rQIL/C9MxCYzIKURh8o1mYfAVBT7CmO5gB1vK//FKYux0+OTcYiax/baxfltu3dFNlljQPkqDXSG453mU4jr1rFhjzrCEZHDAthBXq3nSZVwccFD7YVssRxYOMmKrUIlGSR7PCq8q4DL7dqpnI7li21XBcmwwxkrsUkSBrIgFSogTVMrhaso+2z1p937aOZ0NpI45vgs3xCg4T0Mqwa8+KuN8W7yiKLloD2+uPTVuACnK4jQeBrhdT0G6m1btgDNUCZs5A73BQJcc6nh+tqYluroibMKHFsJkkh1QN/CsfnbSkMHPaK/2+ri+PuRxSF751XYyXni7slC5OhId/z0CQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=PdLBbCNWqs+1xaxtjP5bj/G1Nbv7ym/Q3TesPYa22Ew=;
+ b=dRQT5EeL+x26ZlOB6hmf9cJr2yZ38672zKXcbxs0yZhB8xvaRdtqmZvo1wR6JXTnZXWN4/GJemXzFsB0FrAdn48ZHcH2WO+q118UungchoPK2JlbIihpZO94SVhDPt9diEZTOOv7qunW1x8bmiFUIsRGLdXcOioL4Pku51RvEb/rDCpcZpSUVhlhYER+hE3V6RCZWYJHBogBukJvNWLXg5y/3iQbIckGgYkZuyv7KOuvDNSN6HyDLYF1Q1nvIaAmTwOwSO9BTGF+sK5YrB/zyBwK6MYUrw60ijHbR7sdT+B6HGcCsVUQen/6a5/iZjcvrrj9kH59eoSX5lXYW/ZBUQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
+ header.d=amd.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=PdLBbCNWqs+1xaxtjP5bj/G1Nbv7ym/Q3TesPYa22Ew=;
+ b=dCWaApXQITFAaUjw1KiaAx/n4iSXAL9jHkEDcF14edvRTS3vCZooT1EHPtU2kDulyBLNQ5mnue7GS6EOKJYnBIf5LB4ahb4ICy74T+v6bbRTqh0PQjG7mrSsdxzma3WDed2aGGCzZHwS9wlNyqWIF6lcKD6s//dL2JnGSeFVj2c=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=amd.com;
+Received: from DS7PR12MB6048.namprd12.prod.outlook.com (2603:10b6:8:9f::5) by
+ DM4PR12MB9733.namprd12.prod.outlook.com (2603:10b6:8:225::13) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.9275.14; Sat, 8 Nov 2025 11:17:15 +0000
+Received: from DS7PR12MB6048.namprd12.prod.outlook.com
+ ([fe80::6318:26e5:357a:74a5]) by DS7PR12MB6048.namprd12.prod.outlook.com
+ ([fe80::6318:26e5:357a:74a5%7]) with mapi id 15.20.9298.012; Sat, 8 Nov 2025
+ 11:17:15 +0000
+Message-ID: <93fd05cd-b227-42ab-8d96-7873a830e6be@amd.com>
+Date: Sat, 8 Nov 2025 16:47:02 +0530
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 2/3] iommu/amd: Don't call report_iommu_fault()
+To: Jason Gunthorpe <jgg@nvidia.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Christian Benvenuti <benve@cisco.com>, Heiko Stuebner <heiko@sntech.de>,
+ iommu@lists.linux.dev, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Joerg Roedel <joro@8bytes.org>, Leon Romanovsky <leon@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-rdma@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Nelson Escobar <neescoba@cisco.com>, Rob Clark
+ <robin.clark@oss.qualcomm.com>, Robin Murphy <robin.murphy@arm.com>,
+ Samuel Holland <samuel@sholland.org>,
+ Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
+ Chen-Yu Tsai <wens@csie.org>, Will Deacon <will@kernel.org>,
+ Yong Wu <yong.wu@mediatek.com>
+Cc: Lu Baolu <baolu.lu@linux.intel.com>, patches@lists.linux.dev
+References: <2-v2-25fc75484cab+ab-iommu_set_fault_jgg@nvidia.com>
+Content-Language: en-US
+From: Vasant Hegde <vasant.hegde@amd.com>
+In-Reply-To: <2-v2-25fc75484cab+ab-iommu_set_fault_jgg@nvidia.com>
+X-ClientProxiedBy: PN2PR01CA0213.INDPRD01.PROD.OUTLOOK.COM
+ (2603:1096:c01:ea::7) To DS7PR12MB6048.namprd12.prod.outlook.com
+ (2603:10b6:8:9f::5)
 MIME-Version: 1.0
-Message-Id: <20251108-extensible-parameters-validation-v9-8-6a7e22aa57d0@ideasonboard.com>
-References: <20251108-extensible-parameters-validation-v9-0-6a7e22aa57d0@ideasonboard.com>
-In-Reply-To: <20251108-extensible-parameters-validation-v9-0-6a7e22aa57d0@ideasonboard.com>
-To: Dafna Hirschfeld <dafna@fastmail.com>, 
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
- Keke Li <keke.li@amlogic.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Heiko Stuebner <heiko@sntech.de>, Dan Scally <dan.scally@ideasonboard.com>, 
- Sakari Ailus <sakari.ailus@linux.intel.com>, 
- Antoine Bouyer <antoine.bouyer@nxp.com>
-Cc: linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- Jacopo Mondi <jacopo.mondi@ideasonboard.com>, 
- Michael Riesch <michael.riesch@collabora.com>, 
- Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, 
- Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=4236;
- i=jacopo.mondi@ideasonboard.com; h=from:subject:message-id;
- bh=unblC2giKYD3uiatEYi0ZweERga9XTWzkHw2hg2KQNc=;
- b=owEBbQKS/ZANAwAKAXI0Bo8WoVY8AcsmYgBpDw8mugHbUy0HBAmf2IJaIWqdb45XHTSwvOHZz
- fepfGtFCNKJAjMEAAEKAB0WIQS1xD1IgJogio9YOMByNAaPFqFWPAUCaQ8PJgAKCRByNAaPFqFW
- PIYJD/4tgmgxZ2K/fAYcBmL31WCcEuC6OcXRWYEHzJKigLlwX9n4NUsq1ghWyo9NpYbRHKkt3cb
- krkukRHzjenZuhRB7YnF4ctA6WPxz13ctcyQ9xxt5A1LaI4vcsUERA7h+iNOR7z460rEXnqnnse
- iIP3zFHdvthzmLdmxak/XB0So9BRUFf1scrDbNmPbLn0FG+CN7KdR8ZJDv4yUmqDrOoRgrtwHa1
- 7s8TnBI10HbPXaI1/jdtms0uCmZUJWMc6Qs05Wx1YNjHDA2nZDHGX2nmi9CkCloraTSmD6QscXd
- az4RtNytADzN/gzG4/KaDRmDpN8+G415Vnpbyguz5huReu2ejz8aIP2QpHmV07DdyVToTKe5MiB
- HuPZ+pH8GSjq6Gkfx5GridMEfu9TGBJl/zsnE2y+TYBCFxmTjaoTL/erH9yUe6CmcQCx9Em8hHT
- Q2KAkgc1Znpk4cWyx2zCR5pNguzm7M6hRaXSYxZ483/L1SSJRDh/LA4xB8JHXTTbUykHl70d+Zb
- xkF2MNBSUHtrydAxRAH+HWXDtZk2tiHgIeHGmGSXElx78wFD0rXm1mOjMO3semHFLDwUxXUd4VH
- QypJe+I2cG8hn/enif50rVhru0ox2Vz/68HyKkinfKdWzHDlzfio4hbD+K23rdTSQvT7wiZ2E3i
- MUQiS8gCqaJH8og==
-X-Developer-Key: i=jacopo.mondi@ideasonboard.com; a=openpgp;
- fpr=72392EDC88144A65C701EA9BA5826A2587AD026B
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DS7PR12MB6048:EE_|DM4PR12MB9733:EE_
+X-MS-Office365-Filtering-Correlation-Id: 04b93074-a0f3-46a8-fbdf-08de1eb85ecc
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|7416014|366016|376014|7053199007|921020;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?VENmV0czVUdEeDlNZDMvM2F1ci9SRmNUQ3M0ZjdCcS9jaGNva2ZrUEpsVnRP?=
+ =?utf-8?B?elkwTnR1SGZ0TlIvdEVocFJ3TTd2YjRqaUNEejI0VnZhT2gyU3k1SExYVjZl?=
+ =?utf-8?B?RkQrSTZ6R1JWSkhRbVVSRUtMRWF6Q29ubnlXQldTS1RnUUJFNFlwSjhzVnlS?=
+ =?utf-8?B?dHY2NXlQdjIwL3doVGpxZGhyR2Y1ZnVGc2xmOGtYRkpHSE1IMU5BYU9WaG9a?=
+ =?utf-8?B?bmx3VW41eGZ0aURmYUE3MGxqRXNDdkphK2JsVVBtMnkzQWI1UTZqcmIyQ1dM?=
+ =?utf-8?B?WUV1QVFHQjBmdElJNk9pRWxZcUJBbU44UEs3WUZNWWdkU1pQc0E5cnBlbGh4?=
+ =?utf-8?B?NDdkRmEwTXUzQkk0Y25ESUhtTURqblord0FsKytLVWZQNFNkOUtWQ1JyeWVR?=
+ =?utf-8?B?aU8vRlljVzJLQ0FxQmtxSHpuWHkxdzBETDdUZXdlR0VyNWFpZkRYUXg4Qzhk?=
+ =?utf-8?B?SVJpNDl5RW82UUhubkNXMzN2NkJxRGFBOFhhVTdUSmp6UllLUEpydlU2U3Jy?=
+ =?utf-8?B?blVOZ2IxSjBOcmFTTUFNVnhjZ0VuS1JGOUJVNjhob252TUpJMkxsWHVnR2lw?=
+ =?utf-8?B?dndrTjVjRFhXaFNrR3BkSTZCblpCSGdUVit3Ym9nOGdqK0MvbHhOWDV3REs2?=
+ =?utf-8?B?SWxpaFJiQ0dCSDRGU0FFS0gvTGZTeVJnaDJZMW4yVGRWeFFSSDc2cThOelhh?=
+ =?utf-8?B?V2J0RnFWdCs1MEdPZm1qTjBQbkFzVjNySXJFTnlHNWVmQUR0QkFxcVBqL0FT?=
+ =?utf-8?B?Q0xOd3RRV2lkU1dVbFdqWW94aGxQMFdPcEIzQ201M1hPSklrY3hlS2pZRS94?=
+ =?utf-8?B?eDlUQnc4NndZWFdJdEZpTCsyY0dSelF2ZWRSK01tbDUwVjlRSXVsQ2luUWMx?=
+ =?utf-8?B?SFl5Z1dIemd1WGNzVG5Ra21CTHp5N2VuOHYyZnN5N1FSV043bTF0V1FsWnVT?=
+ =?utf-8?B?MUw4NzdpcklCRVRYQUMzNmluNWNNQS85WFcwYysra0FoWGRCbHlEeEJHM0Fz?=
+ =?utf-8?B?RkllUGQydmRjY3dBSTMwWTBmSkVIWlFtdm0wd21NcUppUkg3djIyRVQ4dHEr?=
+ =?utf-8?B?OTVWYlI5VTRJUU5XckZyK3ozZTMrMk9uL1NsdHBaMWkvS1hoT2ZlTzY4MW5Q?=
+ =?utf-8?B?T1ZGUm9udFFUcWVNMVpxTUExR09qb2NvcVN2dFJzeGloc2VCTUZ0QU93VXNU?=
+ =?utf-8?B?YjE3bXkxWWViUUVBRU10a3dpbWdhdUJvZDlkRDdKRWtVeWRiL243Z1FtbFRL?=
+ =?utf-8?B?NDhOenBKSU1kYnlTTWJES1NTc1owR3hIUVp3MXY3dGx6NTg0YS90RDk3Ri9N?=
+ =?utf-8?B?aVdOT1lUZk9QN0hBdHVaekxhK3RSVzJQRkZOOUdPTDN5Szd5eWRmV2lDSmFl?=
+ =?utf-8?B?eCszSTdmNWZPUWJySjdCbEd1RWVtL1dPaGNZRUllejRRbEdBRlNOSDRrbjg1?=
+ =?utf-8?B?WndmKy9VVGFIQ3VlaTNkaERqVEF0S3c2V2pyUmp6VmpGRzJOR0Q0SGo1S1Jp?=
+ =?utf-8?B?ZVVoSVRnU3VreXArTzgrQzA4K05LazlhajllczIrcjFoazJFQ08zclVtbE5B?=
+ =?utf-8?B?bmxFZUlDK2Irc0VQT2t2eC81a2JjOS9VNHFxY0EvRW5Ycml0Um40Z0taNENH?=
+ =?utf-8?B?SlVZdlRSblpoWVBLY21iVmJObms5dXVMY1RwUVJML3pwd2w0MDc5Z25SaTd1?=
+ =?utf-8?B?WXRMZjVhaHY1NGRXbGZPc05PbFNwM05uMXdYSjI4aHg4M2RjdUQya3J4eHFz?=
+ =?utf-8?B?ak9WR29IeVVHeUlZaENrTVlkYWJLS1MvdU0raS83ZDZzeGoyNUdqdHRwWmpV?=
+ =?utf-8?B?dTRTelVUVk44TFkvTWRJWnlqU1NoM25EbExwanhkMkE4T21VdW9YaXpSS3Fn?=
+ =?utf-8?B?OEtIR2ttR2dBcTlncTZEYmVTN0ZoRFVPblpQUXh5NklwTnhsZXNJUXZhR0w3?=
+ =?utf-8?B?TGJWOHUydUF4cmthRWEycjkwN3Z1Ly9ZV2REaitIbnNYMDZCTURnRGY4dEti?=
+ =?utf-8?B?VFppcXYvY0x3ZWk1eVNBZTE2aGdQOHhEOFFIbDBKNGRiakgva1pCOEhyTndE?=
+ =?utf-8?Q?XZjVKY?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DS7PR12MB6048.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(7416014)(366016)(376014)(7053199007)(921020);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?NnNxMHJpa0hXSU8zcWdaM0JGSDlDUGw2eUphczlaQ0x1ZGg2SGduRGZJeXJC?=
+ =?utf-8?B?Sk81ZmQwemFpOEwwa0Y1SWFpSENFWDFGRmxZdWlSYzNxSkIvaXdSQlBieHdj?=
+ =?utf-8?B?WnRhOGJaM3dGcTBvbit3UVRLYjl5MGlzZzdvRHRyZlpmbThqQnB4dEl5eEhR?=
+ =?utf-8?B?cHdHNm9BQlduQnpCRUhkVTZWOFpYbGRSN1FySDBRQzJKRXFBSFJBa3M5SmtG?=
+ =?utf-8?B?VDFKcjlMcDYyWXhDREhKRmVjRnN2VjlkUVFnOEVqNUl3b3pCd0ovd1ZEOEE3?=
+ =?utf-8?B?SlBOTWhWdXBBZDNXUjVpVDN2RThtMFJ0V0REWXJQYjhFSWNYSURDN2xuWHJi?=
+ =?utf-8?B?V1NGcW9FWjFUTmhKZnJuU2cvRGhxbHNDcjRiRmo3ai8yQ2RpRHFUVk5iZzBt?=
+ =?utf-8?B?c0FuQUE0QTlBM3RvdXQyUWpJTXBXZzFPNGNPUTFHTDRDdm5Kak9JMk56OGhx?=
+ =?utf-8?B?c2tqZG53NDNGNG5udHU3OTFlYlJmUVRnTk1aTHFmRTdhQWZqLzFVcmRLVnUz?=
+ =?utf-8?B?MHZKNnEyZzdjZzFGb3ExTFRKVFVnaUdDWVlCcFJLMHluUkVQVU02UnFSM045?=
+ =?utf-8?B?WEg1OWxoVVV1ZloxMTJNMjk0TGNwNWp5M0JxTUZKbGNKMGtGY3FwdzZxU0Nj?=
+ =?utf-8?B?TG1Rbk1hL3l6ekUwYVE0Y1lkMFdWUFJzOWhIY3c0cDZHY3NyVkdGRW8zWkVH?=
+ =?utf-8?B?bHQwM3pFOUU0eUpXU21PS1gxUXQwNG9xN0p3NVR6QlZWYmNyOU1QcUhpdUh5?=
+ =?utf-8?B?N3V2YlpJVHcxaHhCWm1JbGNkSnJNQTNjRzJNdzN4RDhlQlBpcXc1eDNJZGx0?=
+ =?utf-8?B?OStYRkJJRER0YVJ6RjlmdU1CRnJKWXhJZFNRZGc4dkRSUk5Iek1qbnpzaVIr?=
+ =?utf-8?B?R0Y3ZkExR0FhQ1VKalhEZ3F0STk2K21mckIzbFVoS0xoZDlreVEvaHNvUlRX?=
+ =?utf-8?B?OU5pNlU2Mk1VTlR5WEZwSzZyV1NjclYxSSthZ2hqdmdQTWJycldrbXdDMmpa?=
+ =?utf-8?B?SmtEdGJwS1lmTnlLSldrNjg5LzY1NnpwSTJPaTR6alBleEY1VW5qSGZSOVB5?=
+ =?utf-8?B?aFphWjR3bHpuelNORjFsRjlZR3VRQXlIMk0vVm4vQThPUm15bDJmdHp1Yml1?=
+ =?utf-8?B?Qi93Y1g0REFKTlR3MnF0WDUrMmhnbzNLaDVtQ3dUNE9MNkxrOHgzbFlhUTdt?=
+ =?utf-8?B?QjNkMTFnY0pNL201b21mVGdUcnk5czN0MkFTWDB6QWp3K1lDRE5IU0dtN256?=
+ =?utf-8?B?T0EyeUdTQjZxUk1EdVk0VURMdmljeE1VVGpwT0hCak1wR1RIRVpKbndnbXNW?=
+ =?utf-8?B?MjJqejI3OFovd2dhWUlhSDJCL1dXeGN0cW8vd0txQ2VRMmNKTHJ0WXNIbGsw?=
+ =?utf-8?B?Z3hQeHA2NTJEWEJ2QmgxSDhneGRGaURJV3doTzdXeXY0ai9oTktRSWN2Qnd2?=
+ =?utf-8?B?VXhDWEFzUmlGcXp0dVAxWUlQUzJCMWx6OExocUxPc1hWeW1ya1ByOU5xV2xG?=
+ =?utf-8?B?aTltQnluWFlkN3JBQnVhRmMxcGlMa21OdDZBTnVjYWwwWkRvNmNVZ3hDTXlX?=
+ =?utf-8?B?RkxOSlh5b1pwQ0dTajBMbUN1bWFwcDhnMmhPVkwxVC94QVhZSXJXUmE2NXNX?=
+ =?utf-8?B?c3Z3SGNmTkh0b05OVkNjaTlmZTBwd2JXUktNTytJOHFWSlhQVUZINmxNN2VO?=
+ =?utf-8?B?NTZ4S0ZhRFpIRWhER3JNZjR4TlZRdmluS3JMMGpxTzUzcllPWFdQRXpSKzVW?=
+ =?utf-8?B?bnJETElaWlFvdVhPb0FaUHFUeHhVWXhUWTcxc2FBYWNidTVyV1BXM0tPTjdF?=
+ =?utf-8?B?UUNFTUxIY3pXM2hIVFg5TzJZUmtvYTg3c1UxNEQzem1rYkY0cS9tNDFTZVNB?=
+ =?utf-8?B?S1k4ZWpIRHZwMkNGa2dtS3VJKzU3WThkMkhndHdJMXpxQStLODByVUxvcit1?=
+ =?utf-8?B?b1N1Y2ZkME1MSUpUOTc5ckpHNUsvaDhGY2VyL1FBTlpzWWV6SHpSN05OOERI?=
+ =?utf-8?B?dmtxNVpzRDBSOGpub1VzeTlFdVpFVkFqRUxqVGlTajdTNVJESUZ0czdLajRZ?=
+ =?utf-8?B?UFdtLzBkSnBOMG5YR212dU9hOFJPalRWMHErT256NU1tcHJVQnJjUDEzYWZu?=
+ =?utf-8?Q?+qnaaSWeTKAYSmcI/Q+2eUIlC?=
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 04b93074-a0f3-46a8-fbdf-08de1eb85ecc
+X-MS-Exchange-CrossTenant-AuthSource: DS7PR12MB6048.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Nov 2025 11:17:15.0310
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: /UulNx2WX2yAqdQ7O/tbckoMxixI1UrG24t1/32YJtpYkXbvT0E56xd8SnWNZo+JJRYlf7XN9BNVpsDSGbxmSw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR12MB9733
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251108_013652_351572_44BADDC7 
-X-CRM114-Status: GOOD (  17.25  )
+X-CRM114-CacheID: sfid-20251108_031722_621876_364FCFF2 
+X-CRM114-Status: GOOD (  16.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,100 +188,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add to the driver-api documentation the v4l2-isp.h types and
-helpers documentation.
+On 11/7/2025 2:04 AM, Jason Gunthorpe wrote:
+> This old style API is only used by drivers/gpu/drm/msm,
+> drivers/remoteproc/omap_remoteproc.c, and
+> drivers/remoteproc/qcom_q6v5_adsp.c none are used on x86 HW.
+> 
+> Remove the dead code to discourage new users.
+> 
+> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
 
-Reviewed-by: Daniel Scally <dan.scally@ideasonboard.com>
-Reviewed-by: Michael Riesch <michael.riesch@collabora.com>
-Acked-by: Sakari Ailus <sakari.ailus@linux.intel.com>
-Reviewed-by: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>
-Tested-by: Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
-Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
----
- Documentation/driver-api/media/v4l2-core.rst |  1 +
- Documentation/driver-api/media/v4l2-isp.rst  | 49 ++++++++++++++++++++++++++++
- MAINTAINERS                                  |  1 +
- 3 files changed, 51 insertions(+)
+Reviewed-by: Vasant Hegde <vasant.hegde@amd.com>
 
-diff --git a/Documentation/driver-api/media/v4l2-core.rst b/Documentation/driver-api/media/v4l2-core.rst
-index ad987c34ad2a8460bb95e97adc4d850d624e0b81..a5f5102c64cca57b57b54ab95882b26286fb27de 100644
---- a/Documentation/driver-api/media/v4l2-core.rst
-+++ b/Documentation/driver-api/media/v4l2-core.rst
-@@ -27,3 +27,4 @@ Video4Linux devices
-     v4l2-common
-     v4l2-tveeprom
-     v4l2-jpeg
-+    v4l2-isp
-diff --git a/Documentation/driver-api/media/v4l2-isp.rst b/Documentation/driver-api/media/v4l2-isp.rst
-new file mode 100644
-index 0000000000000000000000000000000000000000..618ae614ff79424a9edb23509644e89d57071b2a
---- /dev/null
-+++ b/Documentation/driver-api/media/v4l2-isp.rst
-@@ -0,0 +1,49 @@
-+.. SPDX-License-Identifier: GPL-2.0
-+
-+V4L2 generic ISP parameters and statistics support
-+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-+
-+Design rationale
-+================
-+
-+ISP configuration parameters and statistics are processed and collected by
-+drivers and exchanged with userspace through data types that usually
-+reflect the ISP peripheral registers layout.
-+
-+Each ISP driver defines its own metadata output format for parameters and
-+a metadata capture format for statistics. The buffer layout is realized by a
-+set of C structures that reflects the registers layout. The number and types
-+of C structures is fixed by the format definition and becomes part of the Linux
-+kernel uAPI/uABI interface.
-+
-+Because of the hard requirement of backward compatibility when extending the
-+user API/ABI interface, modifying an ISP driver capture or output metadata
-+format after it has been accepted by mainline is very hard if not impossible.
-+
-+It generally happens, in fact, that after the first accepted revision of an ISP
-+driver the buffers layout need to be modified, either to support new hardware
-+blocks, to fix bugs or to support different revisions of the hardware.
-+
-+Each of these situations would require defining a new metadata format, making it
-+really hard to maintain and extend drivers and requiring userspace to use
-+the correct format depending on the kernel revision in use.
-+
-+V4L2 ISP configuration parameters
-+=================================
-+
-+For these reasons, Video4Linux2 defines generic types for ISP configuration
-+parameters and statistics. Drivers are still expected to define their own
-+formats for their metadata output and capture nodes, but the buffers layout can
-+be defined using the extensible and versioned types defined by
-+include/uapi/linux/media/v4l2-isp.h.
-+
-+Drivers are expected to provide the definitions of their supported ISP blocks
-+and the expected maximum size of a buffer.
-+
-+For driver developers a set of helper functions to assist them with validation
-+of the buffer received from userspace is available in
-+drivers/media/v4l2-core/v4l2-isp.c
-+
-+V4L2 ISP support driver documentation
-+=====================================
-+.. kernel-doc:: include/media/v4l2-isp.h
-diff --git a/MAINTAINERS b/MAINTAINERS
-index f9a86528a153f635a5a3db5ce9cf6854f699f47f..931b0fc72279a5ce2830d1ce5d2845ed1a2ae633 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -26859,6 +26859,7 @@ V4L2 GENERIC ISP PARAMETERS AND STATISTIC FORMATS
- M:	Jacopo Mondi <jacopo.mondi@ideasonboard.com>
- L:	linux-media@vger.kernel.org
- S:	Maintained
-+F:	Documentation/driver-api/media/v4l2-isp.rst
- F:	Documentation/userspace-api/media/v4l/v4l2-isp.rst
- F:	drivers/media/v4l2-core/v4l2-isp.c
- F:	include/media/v4l2-isp.h
 
--- 
-2.51.0
+> ---
+>  drivers/iommu/amd/iommu.c | 7 -------
+>  1 file changed, 7 deletions(-)
+> 
+> diff --git a/drivers/iommu/amd/iommu.c b/drivers/iommu/amd/iommu.c
+> index 2e1865daa1cee8..d4d9a5dbfa6333 100644
+> --- a/drivers/iommu/amd/iommu.c
+> +++ b/drivers/iommu/amd/iommu.c
+> @@ -854,13 +854,6 @@ static void amd_iommu_report_page_fault(struct amd_iommu *iommu,
+>  						   PCI_FUNC(devid), domain_id);
+>  				goto out;
+>  			}
+
+If you're planning to respin this series, could you please update the comment
+above the if condition?
+
+-Vasant
+
+
+> -
+> -			if (!report_iommu_fault(&dev_data->domain->domain,
+> -						&pdev->dev, address,
+> -						IS_WRITE_REQUEST(flags) ?
+> -							IOMMU_FAULT_WRITE :
+> -							IOMMU_FAULT_READ))
+> -				goto out;
+>  		}
+>  
+>  		if (__ratelimit(&dev_data->rs)) {
 
 
 _______________________________________________
