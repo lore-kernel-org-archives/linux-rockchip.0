@@ -4,68 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E994CCFA13
-	for <linux-rockchip@archiver.kernel.org>; Sat,  8 Nov 2025 13:28:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 981A9CCFA18
+	for <linux-rockchip@archiver.kernel.org>; Sat,  8 Nov 2025 14:22:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:From:Subject:
+	Cc:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hwIL2tzvHaiQd3Q8NadJAuqyu/dZyI3SbdrBXhrcWTQ=; b=tAydf6cFB2eXHh
-	Z5XpIbtZ4OHrtNRxERoXoWoFh9AcQbYlsO6UlLxCbc8dCynWAU01ZOR5a5ntnSzH0MqsACAzXcwXX
-	TYLiCL4ZQf6lVfcTSfS9vGI1A/Yb78tbxlJ1qJplkA4j8IPBBO1wg5vpUXjfr57XUUHlKAUe1Mfbv
-	xfsrIjqquphH8jo8AlJyYlnr36GVRW7ANbe44AYAJaVNrjcJ9r+iupDxLZWMz30b+YJURuvWuIEuz
-	iMm8G/EYDf587VaHNprq2p5qnUDds4RmF0GqrMXASehk15Q/+JiBCZJddbiOolVPKaQ4g/Hbgb0ax
-	LLncktGzciMPsfRXZlvA==;
+	List-Owner; bh=L3pmpBtTIgS8fkd1smDmgOB494llOCjswLEl5+aSDGk=; b=16xSWR3mhU9gzS
+	Om7Ij0L2CMH88S6ykhPMAKh9SNySA7pXt5mQK+pN9mhZBNRb6zkbcaBnaxWxYJdcgBTrKeSzp8/5n
+	tZtvsU06JJ1p2riMrvD+/WelzTv25xPDh34JeNLZQw5N42Y3aWml3cSGRPlV/9S0mxm1xjGRrkTAi
+	95j+i+xLgNVil2JoYhWAaCAmmWRQYRaLz+LQ0Px37lchSi0khstu3cYYLArn38MxCGgRBQ/RT8kOQ
+	uhgYo3OGNCFvTXQS9QzK6YNw7CNnGTC0mUQ8jt+gbp3tMX9R3SsBhc4hCKzfkZavcuihthYuS8jrG
+	773nHfL8A95LjXMYWdbQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vHiz3-000000039Or-2ZKA;
-	Sat, 08 Nov 2025 13:28:01 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vHjpR-00000003BfK-3BnL;
+	Sat, 08 Nov 2025 14:22:09 +0000
+Received: from out-189.mta1.migadu.com ([2001:41d0:203:375::bd])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vHiz1-000000039OK-0saS;
-	Sat, 08 Nov 2025 13:28:00 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 22D13441B5;
-	Sat,  8 Nov 2025 13:27:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1A9A6C116C6;
-	Sat,  8 Nov 2025 13:27:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1762608478;
-	bh=QeGuROr+Dr2oL5DcoUeRVOAIwOeC5RcqPRm5KXFpnsw=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ilNH3q9NrhOHNla2+3dARxg/3Xfn1ZfQl4N1Bwdi/w3zRG3uAPUb0dj5OlNLq5szQ
-	 j4u2uMCLxotZPpjEkOHexu4uKUXfbGsRA3kRtVg8OKzxSxFVebmvnuOOo8VB9yO7iM
-	 Ob3otYACIYoorbZaU3eYWA9BHOuTblqgHt+u8YzeUwTBI3QNfwOt+opdia8WQWVGai
-	 +A13AQMVw4fQQCAnAyVi4Xz8eDT7/2Bo4iVZ6sy4cP1cTUUxc9bvO67WunBT7DvA0E
-	 EGE4cLJFasLg33S/kgZv7naDA9CrS8FNNlenKd8Aow39KEhiSvEHHYL2tZmjkoj/5k
-	 zaRF0XqP+48Wg==
-Date: Sat, 8 Nov 2025 14:27:52 +0100
-From: Niklas Cassel <cassel@kernel.org>
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: FUKAUMI Naoki <naoki@radxa.com>, Damien Le Moal <dlemoal@kernel.org>,
-	Anand Moon <linux.amoon@gmail.com>, linux-pci@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Dragan Simic <dsimic@manjaro.org>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>
+	id 1vHjpM-00000003BeR-0Ihm
+	for linux-rockchip@lists.infradead.org;
+	Sat, 08 Nov 2025 14:22:08 +0000
+Mime-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow-tech.com;
+	s=key1; t=1762611715;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=LPn9l+QoDiG2QhjIafrV6sGFlG1kFs7V/OcM6xzYO04=;
+	b=P189H++3jsjVCo2N95hPxrfBzWWByQ0uwh1OJKldQ/RBEV/5VZAgdfHmvB5vYrtufQnceg
+	WApyA74cMwLyug8RtetofDrFbjO4cC48jNDcwONMyeACAcv0mvZh7ZnQTHA9JWew3W9ZWi
+	qBH+ZmcO65lYR1rqmc/zMYzcY+ePOGBzLlpkSJWEtQRFD0OlobZPINuSI/Pfa3N7E2WfWU
+	nCCihzEoTb6LsqNm1+Vx+pUpNlYVm8rgximClhXyAVtwZVUFQ52C1a15J2j7sy2BtrbfAF
+	ZkHAeduwh8nm7yQz1YlcwyV/AAcYiwU/LwmBbOs2Z5KjF5B6UsH8uTsBVDLE8Q==
+Date: Sat, 08 Nov 2025 15:21:45 +0100
+Message-Id: <DE3DPAVIOGZP.7RW4SGB8HXUT@cknow-tech.com>
+Cc: "FUKAUMI Naoki" <naoki@radxa.com>, "Damien Le Moal"
+ <dlemoal@kernel.org>, "Anand Moon" <linux.amoon@gmail.com>,
+ <linux-pci@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ "Dragan Simic" <dsimic@manjaro.org>, "Lorenzo Pieralisi"
+ <lpieralisi@kernel.org>, =?utf-8?q?Krzysztof_Wilczy=C5=84ski?=
+ <kw@linux.com>, "Manivannan Sadhasivam" <manivannan.sadhasivam@linaro.org>,
+ "Rob Herring" <robh@kernel.org>, "Bjorn Helgaas" <bhelgaas@google.com>,
+ "Heiko Stuebner" <heiko@sntech.de>
 Subject: Re: [PATCH] PCI: dw-rockchip: Skip waiting for link up
-Message-ID: <aQ9FWEuW47L8YOxC@ryzen>
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Diederik de Haas" <diederik@cknow-tech.com>
+To: "Niklas Cassel" <cassel@kernel.org>, "Shawn Lin"
+ <shawn.lin@rock-chips.com>
 References: <20250113-rockchip-no-wait-v1-1-25417f37b92f@kernel.org>
  <1E8E4DB773970CB5+5a52c9e1-01b8-4872-99b7-021099f04031@radxa.com>
  <6e87b611-13ea-4d89-8dbf-85510dd86fa6@rock-chips.com>
- <aQ840q5BxNS1eIai@ryzen>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <aQ840q5BxNS1eIai@ryzen>
+ <aQ840q5BxNS1eIai@ryzen> <aQ9FWEuW47L8YOxC@ryzen>
+In-Reply-To: <aQ9FWEuW47L8YOxC@ryzen>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251108_052759_370602_67627125 
-X-CRM114-Status: GOOD (  14.62  )
+X-CRM114-CacheID: sfid-20251108_062206_051168_2982BE6B 
+X-CRM114-Status: GOOD (  16.52  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,124 +81,69 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, Nov 08, 2025 at 01:34:32PM +0100, Niklas Cassel wrote:
-> 
-> The pcie-dw-rockchip.c driver is modelled after the qcom driver.
-> So if this is a problem when a ASM2806 switch is connected, I would
-> expect qcom platforms to have the same problem.
+On Sat Nov 8, 2025 at 2:27 PM CET, Niklas Cassel wrote:
+> On Sat, Nov 08, 2025 at 01:34:32PM +0100, Niklas Cassel wrote:
+>> 
+>> The pcie-dw-rockchip.c driver is modelled after the qcom driver.
+>> So if this is a problem when a ASM2806 switch is connected, I would
+>> expect qcom platforms to have the same problem.
+>
+> Looking more closely at this, comparing the "good" kernel:
 
-Looking more closely at this, comparing the "good" kernel:
+There's another thing that caught my eye ...
 
-[    1.868857] pci 0004:40:00.0: [1d87:3588] type 01 class 0x060400 PCIe Root Port
-[    1.869509] pci 0004:40:00.0: ROM [mem 0x00000000-0x0000ffff pref]
-[    1.870050] pci 0004:40:00.0: PCI bridge to [bus 01-ff]
-[    1.870510] pci 0004:40:00.0:   bridge window [io  0x0000-0x0fff]
-[    1.871044] pci 0004:40:00.0:   bridge window [mem 0x00000000-0x000fffff]
-[    1.871640] pci 0004:40:00.0:   bridge window [mem 0x00000000-0x000fffff 64bit pref]
-[    1.872353] pci 0004:40:00.0: supports D1 D2
-[    1.872738] pci 0004:40:00.0: PME# supported from D0 D1 D3hot
-[    1.875190] pci 0004:40:00.0: Primary bus is hard wired to 0
-[    1.875690] pci 0004:40:00.0: bridge configuration invalid ([bus 01-ff]), reconfiguring
-[    1.876543] pci 0004:41:00.0: [1b21:2806] type 01 class 0x060400 PCIe Switch Upstream Port
-[    1.877384] pci 0004:41:00.0: PCI bridge to [bus 00]
-[    1.877846] pci 0004:41:00.0:   bridge window [io  0x0000-0x0fff]
-[    1.878389] pci 0004:41:00.0:   bridge window [mem 0x00000000-0x000fffff]
-[    1.879030] pci 0004:41:00.0:   bridge window [mem 0x00000000-0x000fffff 64bit pref]
-[    1.879764] pci 0004:41:00.0: enabling Extended Tags
-[    1.880614] pci 0004:41:00.0: PME# supported from D0 D3hot D3cold
-[    1.881409] pci 0004:41:00.0: 2.000 Gb/s available PCIe bandwidth, limited by 2.5 GT/s PCIe x1 link at 0004:40:00.0 (capable of 15.752 Gb/s with 8.0 GT/s PCIe x2 link)
-[    1.888729] pci 0004:41:00.0: bridge configuration invalid ([bus 00-00]), reconfiguring
-[    1.889766] pci 0004:42:00.0: [1b21:2806] type 01 class 0x060400 PCIe Switch Downstream Port
-[    1.890621] pci 0004:42:00.0: PCI bridge to [bus 00]
-[    1.891084] pci 0004:42:00.0:   bridge window [io  0x0000-0x0fff]
-[    1.891628] pci 0004:42:00.0:   bridge window [mem 0x00000000-0x000fffff]
-[    1.892269] pci 0004:42:00.0:   bridge window [mem 0x00000000-0x000fffff 64bit pref]
-[    1.893028] pci 0004:42:00.0: enabling Extended Tags
-...
-[    1.928510] pci_bus 0004:43: busn_res: [bus 43-4f] end is updated to 44
-[    1.929432] pci_bus 0004:45: busn_res: [bus 45-4f] end is updated to 45
-[    1.944674] pci_bus 0004:46: busn_res: [bus 46-4f] end is updated to 46
-[    1.956691] pci_bus 0004:47: busn_res: [bus 47-4f] end is updated to 47
-[    1.957298] pci_bus 0004:42: busn_res: [bus 42-4f] end is updated to 47
-[    1.957893] pci_bus 0004:41: busn_res: [bus 41-4f] end is updated to 47
+> [    1.868857] pci 0004:40:00.0: [1d87:3588] type 01 class 0x060400 PCIe Root Port
+> [    1.869509] pci 0004:40:00.0: ROM [mem 0x00000000-0x0000ffff pref]
+> ...
+> [    1.879764] pci 0004:41:00.0: enabling Extended Tags
+> [    1.880614] pci 0004:41:00.0: PME# supported from D0 D3hot D3cold
+> [    1.881409] pci 0004:41:00.0: 2.000 Gb/s available PCIe bandwidth, limited by 2.5 GT/s PCIe x1 link at 0004:40:00.0 (capable of 15.752 Gb/s with 8.0 GT/s PCIe x2 link)
 
+... 2.000 Gb/s ...
 
-With the "bad" kernel:
-[    1.383075] pci 0004:40:00.0: [1d87:3588] type 01 class 0x060400 PCIe Root Port
-[    1.383738] pci 0004:40:00.0: ROM [mem 0x00000000-0x0000ffff pref]
-[    1.384280] pci 0004:40:00.0: PCI bridge to [bus 01-ff]
-[    1.384740] pci 0004:40:00.0:   bridge window [io  0x0000-0x0fff]
-[    1.385274] pci 0004:40:00.0:   bridge window [mem 0x00000000-0x000fffff]
-[    1.385871] pci 0004:40:00.0:   bridge window [mem 0x00000000-0x000fffff 64bit pref]
-[    1.386582] pci 0004:40:00.0: supports D1 D2
-[    1.386957] pci 0004:40:00.0: PME# supported from D0 D1 D3hot
-[    1.389549] pci 0004:40:00.0: Primary bus is hard wired to 0
-[    1.390062] pci 0004:40:00.0: bridge configuration invalid ([bus 01-ff]), reconfiguring
-[    1.390897] pci_bus 0004:41: busn_res: [bus 41-4f] end is updated to 41
-[    1.391505] pci 0004:40:00.0: ROM [mem 0xf4200000-0xf420ffff pref]: assigned
-[    1.392130] pci 0004:40:00.0: PCI bridge to [bus 41]
-[    1.392607] pci_bus 0004:40: resource 4 [io  0x0000-0xfffff]
-[    1.393103] pci_bus 0004:40: resource 5 [mem 0xf4200000-0xf4ffffff]
-[    1.393657] pci_bus 0004:40: resource 6 [mem 0xa00000000-0xa3fffffff]
-[    1.412296] pci 0004:41:00.0: [1b21:2806] type 01 class 0x060400 PCIe Switch Upstream Port
-[    1.413155] pci 0004:41:00.0: PCI bridge to [bus 00]
-[    1.413641] pci 0004:41:00.0:   bridge window [io  0x0000-0x0fff]
-[    1.414204] pci 0004:41:00.0:   bridge window [mem 0x00000000-0x000fffff]
-[    1.414934] pci 0004:41:00.0:   bridge window [mem 0x00000000-0x000fffff 64bit pref]
-[    1.415746] pci 0004:41:00.0: enabling Extended Tags
-[    1.416465] pci 0004:41:00.0: PME# supported from D0 D3hot D3cold
-[    1.417181] pci 0004:41:00.0: 4.000 Gb/s available PCIe bandwidth, limited by 5.0 GT/s PCIe x1 link at 0004:40:00.0 (capable of 15.752 Gb/s with 8.0 GT/s PCIe x2 link)
-[    1.423384] pci 0004:41:00.0: bridge configuration invalid ([bus 00-00]), reconfiguring
-[    1.424348] pci_bus 0004:42: busn_res: can not insert [bus 42-41] under [bus 41] (conflicts with (null) [bus 41])
-[    1.425351] pci 0004:42:00.0: [1b21:2806] type 01 class 0x060400 PCIe Switch Downstream Port
-[    1.426698] pci 0004:42:00.0: PCI bridge to [bus 00]
-[    1.427184] pci 0004:42:00.0:   bridge window [io  0x0000-0x0fff]
-[    1.427766] pci 0004:42:00.0:   bridge window [mem 0x00000000-0x000fffff]
-[    1.428415] pci 0004:42:00.0:   bridge window [mem 0x00000000-0x000fffff 64bit pref]
-[    1.429171] pci 0004:42:00.0: enabling Extended Tags
-...
-[    1.462051] pci_bus 0004:43: busn_res: can not insert [bus 43-41] under [bus 42-41] (conflicts with (null) [bus 42-41])
-[    1.463116] pci_bus 0004:43: busn_res: [bus 43-41] end is updated to 43
-[    1.463718] pci_bus 0004:43: busn_res: can not insert [bus 43] under [bus 42-41] (conflicts with (null) [bus 42-41])
-[    1.464651] pci 0004:42:00.0: devices behind bridge are unusable because [bus 43] cannot be assigned for them
-[    1.465688] pci_bus 0004:44: busn_res: can not insert [bus 44-41] under [bus 42-41] (conflicts with (null) [bus 42-41])
-[    1.466747] pci_bus 0004:44: busn_res: [bus 44-41] end is updated to 44
-[    1.467351] pci_bus 0004:44: busn_res: can not insert [bus 44] under [bus 42-41] (conflicts with (null) [bus 42-41])
-[    1.468283] pci 0004:42:02.0: devices behind bridge are unusable because [bus 44] cannot be assigned for them
-[    1.469322] pci_bus 0004:45: busn_res: can not insert [bus 45-41] under [bus 42-41] (conflicts with (null) [bus 42-41])
-[    1.470370] pci_bus 0004:45: busn_res: [bus 45-41] end is updated to 45
-[    1.470960] pci_bus 0004:45: busn_res: can not insert [bus 45] under [bus 42-41] (conflicts with (null) [bus 42-41])
-[    1.471902] pci 0004:42:06.0: devices behind bridge are unusable because [bus 45] cannot be assigned for them
-[    1.472930] pci_bus 0004:46: busn_res: can not insert [bus 46-41] under [bus 42-41] (conflicts with (null) [bus 42-41])
-[    1.473985] pci_bus 0004:46: busn_res: [bus 46-41] end is updated to 46
-[    1.474578] pci_bus 0004:46: busn_res: can not insert [bus 46] under [bus 42-41] (conflicts with (null) [bus 42-41])
-[    1.475530] pci 0004:42:0e.0: devices behind bridge are unusable because [bus 46] cannot be assigned for them
-[    1.476414] pci_bus 0004:42: busn_res: [bus 42-41] end is updated to 46
-[    1.477001] pci_bus 0004:42: busn_res: can not insert [bus 42-46] under [bus 41] (conflicts with (null) [bus 41])
-[    1.477911] pci 0004:41:00.0: devices behind bridge are unusable because [bus 42-46] cannot be assigned for them
-[    1.478814] pcieport 0004:40:00.0: bridge has subordinate 41 but max busn 46
+> [    1.888729] pci 0004:41:00.0: bridge configuration invalid ([bus 00-00]), reconfiguring
+> ...
+>
+>
+> With the "bad" kernel:
+> [    1.383075] pci 0004:40:00.0: [1d87:3588] type 01 class 0x060400 PCIe Root Port
+> [    1.383738] pci 0004:40:00.0: ROM [mem 0x00000000-0x0000ffff pref]
+> ...
+> [    1.415746] pci 0004:41:00.0: enabling Extended Tags
+> [    1.416465] pci 0004:41:00.0: PME# supported from D0 D3hot D3cold
+> [    1.417181] pci 0004:41:00.0: 4.000 Gb/s available PCIe bandwidth, limited by 5.0 GT/s PCIe x1 link at 0004:40:00.0 (capable of 15.752 Gb/s with 8.0 GT/s PCIe x2 link)
 
+... 4.0000 Gb/s
 
-We can see that the pcie-dw-rockchip.c driver detects the ASM2806 switch
-in both cases. So the problem is not really with enumerating the root port.
+I don't know if that's relevant or important, but wanted to mention it.
 
-The problem seems to be that with the "bad" kernel, you get a lot of:
-[    1.464651] pci 0004:42:00.0: devices behind bridge are unusable because [bus 43] cannot be assigned for them
+Cheers,
+  Diederik
 
-Because the bus ends are different, and conflicts with each other.
-I don't know why this happens.
-
-Perhaps we could add a quirk for ASM2806 that does some extra sleep if that
-switch is detected, if for some reason, the switch is not actually ready
-after the delays defined by the PCIe specification.
-
-(And btw. please test with the latest 6.18-rc, as, from experience, the
-ASPM problems in earlier RCs can result in some weird problems that are
-not immediately deduced to be caused by the ASPM enablement.)
-
-
-Kind regards,
-Niklas
+> [    1.423384] pci 0004:41:00.0: bridge configuration invalid ([bus 00-00]), reconfiguring
+> ...
+>
+>
+> We can see that the pcie-dw-rockchip.c driver detects the ASM2806 switch
+> in both cases. So the problem is not really with enumerating the root port.
+>
+> The problem seems to be that with the "bad" kernel, you get a lot of:
+> [    1.464651] pci 0004:42:00.0: devices behind bridge are unusable because [bus 43] cannot be assigned for them
+>
+> Because the bus ends are different, and conflicts with each other.
+> I don't know why this happens.
+>
+> Perhaps we could add a quirk for ASM2806 that does some extra sleep if that
+> switch is detected, if for some reason, the switch is not actually ready
+> after the delays defined by the PCIe specification.
+>
+> (And btw. please test with the latest 6.18-rc, as, from experience, the
+> ASPM problems in earlier RCs can result in some weird problems that are
+> not immediately deduced to be caused by the ASPM enablement.)
+>
+>
+> Kind regards,
+> Niklas
 
 _______________________________________________
 Linux-rockchip mailing list
