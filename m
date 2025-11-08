@@ -4,60 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68CF0CCFA1A
-	for <linux-rockchip@archiver.kernel.org>; Sat,  8 Nov 2025 09:00:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D880CCFA1A
+	for <linux-rockchip@archiver.kernel.org>; Sat,  8 Nov 2025 09:36:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OLPbfZSkNRztFUXq3dQSE9OR6PL/j1tFdlsnqJVdNyo=; b=ee/QMagHBY+XRW
-	eGj382eb6QEivasLt2VQdBtcMO8eEbV0jBGIN/Q+PXnTCpUwdZUsvwDuvNmCu379/72P3ETureAx+
-	tyqpjszQLCQALeQIedGIIfG96UsjF5YVJZfgOWIovL2Q7WNeY/v8+Mo9l2bZTdKHwtFQqXElGGpGM
-	/lTPegU0x5BKy140wQyRGS0HwIMvurFn3j0S/WeKvn8wMYkCopqzEziIakTDhCKdTChV65olpNiw5
-	GRaUs+uRti6cE+f9NDj7Moo25kjzDd8bwr26EojmtcKMFOChJHGQ7cQy9HmRxOm77KZaXJRmDYFvQ
-	P5TbrPeJyJUPRyBd3k5A==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=1uayM735L9sG4gaNSb/5dk8ozja5/Y75I/0nkWJ1/Ys=; b=BApebFii9M+wQA
+	ba9mN1X0PRUSYWslefGcHfEtlgfLnEJ2DBG352qfB0UGB4pQp/uBePCTJM0Y3+f1ogXXtNRceF2rc
+	2IRYLFcoQgdDcYPNcBYVs2rCvBsbJ7yUxpEUdUeA9TQ1Vwm+TZlppfUFkodGBs+2OFutzBebM43Ne
+	rgBRZkcfRBAk57FF54HUyyK+YynpoxJQYTCxuIlLwHvRbRu6/8Xf3QzBHw3B9lPNV27qK2Yvva6i3
+	LuDFZiVBBfzmGBejG9JdgW0zAyZ7N5F67EgYNx8pyyV9wcDURI1btIAog6LiD0zirrmVwOK/NoayN
+	MYpheo0YqHPUYDmBNBbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vHeni-00000002wsB-06ZB;
-	Sat, 08 Nov 2025 09:00:02 +0000
+	id 1vHfNG-00000002yWI-3fn0;
+	Sat, 08 Nov 2025 09:36:46 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vHene-00000002wrM-0ZOz;
-	Sat, 08 Nov 2025 08:59:59 +0000
-Received: from ideasonboard.com (mob-5-90-142-135.net.vodafone.it [5.90.142.135])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 73AECA8F;
-	Sat,  8 Nov 2025 09:57:59 +0100 (CET)
+	id 1vHfND-00000002yUT-0HJg;
+	Sat, 08 Nov 2025 09:36:45 +0000
+Received: from [192.168.0.172] (mob-5-90-142-135.net.vodafone.it [5.90.142.135])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 33A98DD9;
+	Sat,  8 Nov 2025 10:34:43 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1762592279;
-	bh=GK9/pYpgxRpxkDg4lN3sV8PHwr9nJAKZZ5+5RMljr8E=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=l/q+RL7Za4EJNnOywr+3KQ/tcGWAovJDYcebgak0tCbhyIGtTPyjKwMNMn43pVeC7
-	 VkHQE+6He8RkKHM5OKxNuM8xTLneZaWcCILwSrYU5UXOysZLbmx/SnaTqp/nGGiGrx
-	 2mXW1Foc99KTYnC7B1e4lt2b6gWjfQR10WJUYOYo=
-Date: Sat, 8 Nov 2025 09:59:51 +0100
+	s=mail; t=1762594484;
+	bh=BhhSYA/yQZfYitLuF4IY7WD/v9JWZaXGBTVLojARsv0=;
+	h=From:Subject:Date:To:Cc:From;
+	b=qmChAzpA1D9im/tXnzs+pwgybmBljME+K0Cr3qpeur/RS3clH3QBFZknzLiDxyyJw
+	 ufKt5n7PBSVUR9doHlwPxtRvct4ceQBJgsjL5WpYK92kIi3ZSQ68gN9Yc9MDGW0/3J
+	 ZE8tXPhsub7EZYWgsw3eyBAR3Z1WXK98SaooILv0=
 From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: Jacopo Mondi <jacopo.mondi@ideasonboard.com>, 
-	Dafna Hirschfeld <dafna@fastmail.com>, Keke Li <keke.li@amlogic.com>, 
-	Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
-	Dan Scally <dan.scally@ideasonboard.com>, Sakari Ailus <sakari.ailus@linux.intel.com>, 
-	Antoine Bouyer <antoine.bouyer@nxp.com>, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	Michael Riesch <michael.riesch@collabora.com>
-Subject: Re: [PATCH v8 4/8] media: Documentation: uapi: Add V4L2 ISP
- documentation
-Message-ID: <ochkz2axakkaqv6ygqwfackxh37nmelcu45d3g6cpmh3dxxjmf@mg6jlfyb62iv>
-References: <20251020-extensible-parameters-validation-v8-0-afba4ba7b42d@ideasonboard.com>
- <20251020-extensible-parameters-validation-v8-4-afba4ba7b42d@ideasonboard.com>
- <20251108001713.GL5558@pendragon.ideasonboard.com>
+Subject: [PATCH v9 0/8] media: Introduce V4L2 generic ISP support
+Date: Sat, 08 Nov 2025 10:36:21 +0100
+Message-Id: <20251108-extensible-parameters-validation-v9-0-6a7e22aa57d0@ideasonboard.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20251108001713.GL5558@pendragon.ideasonboard.com>
+X-B4-Tracking: v=1; b=H4sIABUPD2kC/43Qz2oDIRAG8FcJnmvx76o59T1KDzqOjZDsBl2Wl
+ JB3rwm02UOXevwG5vcNcyUVS8ZK9rsrKbjkmqexBfeyI3Dw4yfSHFsmggnNDOMULzOONYcj0rM
+ v/oQzlkoXf8zRz22ZgpU8maQBWCCNORdM+fKoeP9o+ZDrPJWvR+PC79Mf3P6PL5wy6hIIAw6Ms
+ PCWI/o6jWHyJb7CdCL3jkWsXM46XNFcg2AdtwhKyQ1XPl3LXYcr7/dGYMxKZYNkG65auaLnXtV
+ cyRJq7xwEnjZc/XQd1x2ubi4OMTilBuvT1h+GX5czZjrcobk6Ge6iS9Kh3nDNyuWqwzXNHQZhA
+ 0YN3tkN167crv/a5voUvAreBCXiH+7tdvsG+TbCcT8DAAA=
+X-Change-ID: 20250701-extensible-parameters-validation-c831f7f5cc0b
+To: Dafna Hirschfeld <dafna@fastmail.com>, 
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+ Keke Li <keke.li@amlogic.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Heiko Stuebner <heiko@sntech.de>, Dan Scally <dan.scally@ideasonboard.com>, 
+ Sakari Ailus <sakari.ailus@linux.intel.com>, 
+ Antoine Bouyer <antoine.bouyer@nxp.com>
+Cc: linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+ Jacopo Mondi <jacopo.mondi@ideasonboard.com>, 
+ Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, 
+ Michael Riesch <michael.riesch@collabora.com>, 
+ Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=6558;
+ i=jacopo.mondi@ideasonboard.com; h=from:subject:message-id;
+ bh=BhhSYA/yQZfYitLuF4IY7WD/v9JWZaXGBTVLojARsv0=;
+ b=owEBbQKS/ZANAwAKAXI0Bo8WoVY8AcsmYgBpDw8lZork7+wch0LJyMIkMt584D14/Y9QKj2ai
+ gExnKh1pSyJAjMEAAEKAB0WIQS1xD1IgJogio9YOMByNAaPFqFWPAUCaQ8PJQAKCRByNAaPFqFW
+ PA/aEADBfoMyvkoo9ErdWAMc+RKsrgooN5iAOIJjpAe15exE4BXXWvUq1qnSz5RmYmoSYTcqGTK
+ yjoqWeDGnQ0tRxlhLcqJrYqB5V0baX7WOWcsf4hmRR2leC8taO4RerDmxFE7PQEwmVIiadao4Iv
+ fsWncThhrpOt8OYVQPNBsynCvFuetIdUSyOLSfI8AE2Aos5czJ3nE7LdVJRx2cZivC/7ECkzP2h
+ 52NA9IApiLvcCrI0JMvarTQuv+9NKO8xJpx/t4pked46uMy8mfnrc19KCh9PIozWTUaIHFcK1AV
+ bct8Pj8/w/c0s8VZLwOxbNTyjoZILsR8o6jCCiXGvXOFoChHlgri146tdzDlyrYF40GatvwDOqu
+ JReAk1A023rqCLfzxvhZiWyg/Y2uPZxiJaF9e6jVIZdkoakqyjU/8TRr2DcdpgvA+EIESpULKk7
+ LYTi9cNDlaULrwvVVCEVfjdQJIEnROLmw2DBrJfOHTyPj/EbIit+05HV3izSGyaWYAH32EXAWAP
+ 9BprTFDJUpGvamJl5g8A1HKRBiEu1B4dUZopypGeqOAJKsqRoltnp3mVpC2OWFsZLD3pk9u/Jeb
+ SYFnbONeVeYuEHWkES5MrJ4onUxI4kmtkiV1/z9WBDlI2AkYjm1AvI1GZna0DghPnh7uXpIw+HT
+ bPayhmhf1V2SE8g==
+X-Developer-Key: i=jacopo.mondi@ideasonboard.com; a=openpgp;
+ fpr=72392EDC88144A65C701EA9BA5826A2587AD026B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251108_005958_344297_AB21F328 
-X-CRM114-Status: GOOD (  46.01  )
+X-CRM114-CacheID: sfid-20251108_013644_056858_25A4984D 
+X-CRM114-Status: GOOD (  17.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,261 +97,148 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Laurent
+Extensible parameters meta formats have been introduced in the Linux
+kernel v6.12 initially to support different revision of the RkISP1 ISP
+implemented in different SoC. In order to avoid breaking userspace
+everytime an ISP configuration block is added or modified in the uAPI
+these new formats, which are versionated and extensible by their
+definition have been introduced.
 
-On Sat, Nov 08, 2025 at 02:17:13AM +0200, Laurent Pinchart wrote:
-> Hi Jacopo,
->
-> Thank you for the patch.
->
-> On Mon, Oct 20, 2025 at 10:24:50AM +0200, Jacopo Mondi wrote:
-> > Add userspace documentation for V4L2 ISP generic parameters and
-> > statistics formats.
-> >
-> > Reviewed-by: Daniel Scally <dan.scally@ideasonboard.com>
-> > Reviewed-by: Michael Riesch <michael.riesch@collabora.com>
-> > Acked-by: Sakari Ailus <sakari.ailus@linux.intel.com>
-> > Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-> > ---
-> >  .../userspace-api/media/v4l/meta-formats.rst       |   1 +
-> >  Documentation/userspace-api/media/v4l/v4l2-isp.rst | 120 +++++++++++++++++++++
-> >  MAINTAINERS                                        |   1 +
-> >  3 files changed, 122 insertions(+)
-> >
-> > diff --git a/Documentation/userspace-api/media/v4l/meta-formats.rst b/Documentation/userspace-api/media/v4l/meta-formats.rst
-> > index d9868ee88a0717c1acaa4ee477eaed96a6411f73..7b758ea9eb4ac3c4b354bf8e2f319985ed9e2b37 100644
-> > --- a/Documentation/userspace-api/media/v4l/meta-formats.rst
-> > +++ b/Documentation/userspace-api/media/v4l/meta-formats.rst
-> > @@ -25,3 +25,4 @@ These formats are used for the :ref:`metadata` interface only.
-> >      metafmt-vivid
-> >      metafmt-vsp1-hgo
-> >      metafmt-vsp1-hgt
-> > +    v4l2-isp
-> > diff --git a/Documentation/userspace-api/media/v4l/v4l2-isp.rst b/Documentation/userspace-api/media/v4l/v4l2-isp.rst
-> > new file mode 100644
-> > index 0000000000000000000000000000000000000000..b53df722ed29117c3827314e844fc4de61343f40
-> > --- /dev/null
-> > +++ b/Documentation/userspace-api/media/v4l/v4l2-isp.rst
-> > @@ -0,0 +1,120 @@
-> > +.. SPDX-License-Identifier: GFDL-1.1-no-invariants-or-later
-> > +
-> > +.. _v4l2-isp:
-> > +
-> > +************************
-> > +Generic V4L2 ISP formats
-> > +************************
-> > +
-> > +ISP configuration and statistics: theory of operations
-> > +======================================================
-> > +
-> > +ISP configuration parameters are computed by userspace and programmed into a
-> > +*parameters buffer* which is queued to the ISP driver on a per-frame basis.
-> > +
-> > +ISP statistics are collected at a specific time point and drivers use them to
-> > +populate a *statistics buffer* which is then returned to userspace.
-> > +
-> > +The parameters and statistics buffers are organized in a driver-specific
-> > +way, and their data layout differs between one driver and another.
-> > +
-> > +ISP drivers generally exchange parameters and statistics with userspace through
-> > +a metadata output and capture node respectively, implementing the
-> > +:c:type:`v4l2_meta_format` interface. Each ISP driver defines one metadata
-> > +capture format and one metadata output format to be used on those video nodes,
-> > +and the buffer content layout and organization is fixed by the format definition.
-> > +
-> > +The uAPI/ABI problem
-> > +--------------------
-> > +
-> > +By upstreaming the metadata formats that describe the parameters and statistics
-> > +buffers layout, driver developers make them part of the Linux kernel ABI. As for
-> > +most peripherals, ISP driver development in Linux is often an iterative process,
-> > +in which not all of the hardware features are supported in the first version.
-> > +
-> > +The support for new features and/or bug fixes may land in the kernel at a later
-> > +stage and require changes to the metadata formats definition. This is
-> > +considered an ABI breakage that is strictly forbidden by the Linux kernel
-> > +policies. For this reason, any change in the ISP parameters and statistics
-> > +buffer layout would require defining a new metadata format.
-> > +
-> > +For these reasons Video4Linux2 has introduced support for generic ISP parameters
-> > +and statistics data types, designed with the goal of being:
-> > +
-> > +- Extensible: new features can be added later on without breaking the existing
-> > +  interface
-> > +- Versioned: different versions of the format can be defined without
-> > +  breaking the existing interface
-> > +
-> > +ISP configuration
-> > +=================
-> > +
-> > +Before the introduction of generic formats
-> > +------------------------------------------
-> > +
-> > +Metadata output formats that describe ISP configuration parameters were
-> > +typically realized by defining C structures that reflect the ISP registers
-> > +layout and get populated by userspace before queueing the buffer to the ISP.
-> > +Each C structure usually corresponds to one ISP *processing block*, with each
-> > +block implementing one of the ISP supported features.
-> > +
-> > +The number of supported ISP blocks, the layout of their configuration data are
-> > +fixed by the format definition, incurring in the above described uAPI/uABI
-> > +problem.
-> > +
-> > +Generic ISP parameters
-> > +----------------------
-> > +
->
-> Most of the text above is a design rationale that in my opinion doesn't
-> belong to the UAPI documentation. You already include a design rationale
+See for reference:
+e9d05e9d5db1 ("media: uapi: rkisp1-config: Add extensible params format")
+6c53a7b68c5d ("media: rkisp1: Implement extensible params support")
 
-mm, you're right, I'll drop it
+The Amlogic C3 ISP driver followed shortly, introducing an extensible
+format for the ISP configuration:
 
-> in the kernel documentation, in patch 8/8. If some of the text above
-> contains a more verbose explanation, it could be moved there.
+6d406187ebc0 ("media: uapi: Add stats info and parameters buffer for C3 ISP")
 
-I think it's fine
+with a very similar, if not identical, implementation of the routines to
+validate and handle the ISP configuration in the ISP driver in the
+c3-isp-params.c file.
 
->
-> I would shorten all this to
->
-> ************************
-> Generic V4L2 ISP formats
-> ************************
->
-> Generic ISP formats are metadata formats that define a mechanism to pass ISP
-> parameters and statistics between userspace and drivers in V4L2 buffers. They
-> are designed to allow extending the data in a backward-compatible way.
->
-> ISP configuration
-> =================
+fb2e135208f3 ("media: platform: Add C3 ISP driver")
 
-Now re-organized as
+With the recent upstreaming attempt of the Mali C55 ISP driver from Dan,
+a third user of extensible parameters is going to be itroduced in the
+kernel, duplicating again in the driver the procedure for validating and
+handling the ISP configuration blocks
 
-************************
-Generic V4L2 ISP formats
-************************
+https://patchwork.linuxtv.org/project/linux-media/patch/20250624-c55-v10-15-54f3d4196990@ideasonboard.com/
 
-ISP parameters
-=================
+To avoid duplicating again the validation routines and common types
+definition, this series introduces v4l2-isp.c/.h for the kAPI
+and v4l2-isp.h for the uAPI and re-organize the RkISP1
+and Amlogic C3 drivers to use the common types and the helper validation
+routines.
 
-ISP Block enabling, disabling and configuration
------------------------------------------------
+The v4l2-isp abstraction will be augmented to support statistcs as well.
 
-ISP statistics
-==============
+If the here proposed approach is accepted, I propose to rebase the Mali
+C55 driver on top of this series, to use the new common types and
+helpers.
 
-V4L2 ISP uAPI data types
-========================
-
->
-> > +The generic ISP configuration parameters format is realized by a defining a
-> > +single C structure that contains a header, followed by a binary buffer where
-> > +userspace programs a variable number of ISP configuration data block, one for
-> > +each supported ISP feature.
-> > +
-> > +The :c:type:`v4l2_isp_params_buffer` structure defines the parameters buffer
-> > +header which is followed by a binary buffer of ISP configuration parameters.
-> > +Userspace shall correctly populate the buffer header with the versioning
->
-> s/versioning information/extensible parameters format version/
-
-
-Thanks, I tried in the last versions to avoid the term "extensible"
-and I've used "generic" everywhere I could.
-
-I have reworded this as it follows to avoid repeating 'parameters' 3
-times in a single paragraph:
-
-The :c:type:`v4l2_isp_params_buffer` structure defines the buffer header which
-is followed by a binary buffer of ISP configuration data. Userspace shall
-correctly populate the buffer header with the generic parameters format version
-and with the size (in bytes) of the binary data buffer where it will store the
-ISP blocks configuration.
-
->
-> > +information and with the size (in bytes) of the binary data buffer where it will
-> > +store the ISP blocks configuration.
-> > +
-> > +Each *ISP configuration block* is preceded by an header implemented by the
-> > +:c:type:`v4l2_isp_params_block_header` structure, followed by the configuration
-> > +parameters for that specific block, defined by the ISP driver specific data
-> > +types.
-> > +
-> > +Userspace applications are responsible for correctly populating each block's
-> > +header fields (type, flags and size) and the block-specific parameters.
-> > +
-> > +ISP Block enabling, disabling and configuration
-> > +-----------------------------------------------
-> > +
-> > +When userspace wants to configure and enable an ISP block it shall fully
-> > +populate the block configuration and set the V4L2_ISP_PARAMS_FL_BLOCK_ENABLE
-> > +bit in the block header's `flags` field.
-> > +
-> > +When userspace simply wants to disable an ISP block the
-> > +V4L2_ISP_PARAMS_FL_BLOCK_DISABLE bit should be set in block header's `flags`
-> > +field. Drivers accept a configuration parameters block with no additional
-> > +data after the header in this case.
-> > +
-> > +If the configuration of an already active ISP block has to be updated,
-> > +userspace shall fully populate the ISP block parameters and omit setting the
-> > +V4L2_ISP_PARAMS_FL_BLOCK_ENABLE and V4L2_ISP_PARAMS_FL_BLOCK_DISABLE bits in the
-> > +header's `flags` field.
-> > +
-> > +Setting both the V4L2_ISP_PARAMS_FL_BLOCK_ENABLE and
-> > +V4L2_ISP_PARAMS_FL_BLOCK_DISABLE bits in the flags field is not allowed and not
-> > +accepted.
->
-> s/and not accepted/and returns an error/
->
-> > +
-> > +Any further extension to the parameters layout that happens after the ISP driver
->
-> s/Any further extension/Extensions/
->
-> > +has been merged in Linux can be implemented by adding new blocks definition
->
-> s/after the ISP driver has been merged in Linux //
-
-Reworded as
-
-Extension to the parameters format can be implemented by adding new blocks
-definition without invalidating the existing ones.
-
->
-> Reviewed-by: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>
+Tested on Mali C55 and RkISP1 with camshark
 
 Thanks
   j
 
->
-> > +without invalidating the existing ones.
-> > +
-> > +ISP statistics
-> > +==============
-> > +
-> > +Support for generic statistics format is not yet implemented in Video4Linux2.
-> > +
-> > +V4L2 ISP uAPI data types
-> > +========================
-> > +
-> > +.. kernel-doc:: include/uapi/linux/media/v4l2-isp.h
-> > diff --git a/MAINTAINERS b/MAINTAINERS
-> > index d925745077f21e5a1388a30217a24beeb4fff3b5..f52237d57710cadff78b297d2b4610b508f55092 100644
-> > --- a/MAINTAINERS
-> > +++ b/MAINTAINERS
-> > @@ -26856,6 +26856,7 @@ V4L2 GENERIC ISP PARAMETERS AND STATISTIC FORMATS
-> >  M:	Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-> >  L:	linux-media@vger.kernel.org
-> >  S:	Maintained
-> > +F:	Documentation/userspace-api/media/v4l/v4l2-isp.rst
-> >  F:	include/uapi/linux/media/v4l2-isp.h
-> >
-> >  VF610 NAND DRIVER
->
-> --
-> Regards,
->
-> Laurent Pinchart
+Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+---
+Changes in v9:
+- Modify the RkISP1 and C3 params drivers to enumerate their block info
+  with macros (and static_assert they're of the correct size)
+- Modify documentation according to Laurent's suggestion
+- Link to v8: https://lore.kernel.org/r/20251020-extensible-parameters-validation-v8-0-afba4ba7b42d@ideasonboard.com
+
+Changes in v8:
+- Address Michael comments and reword documentation
+- Use the correct "metadata capture" for stats and "metadata output" for
+  parameters. I mixed up the two in the previous revisions.
+- Link to v7: https://lore.kernel.org/r/20251014-extensible-parameters-validation-v7-0-6628bed5ca98@ideasonboard.com
+
+Changes in v7:
+- Moved version to the v4l2-isp uAPI
+- Moved version check to the v4l2-isp.c helpers
+- Link to v6: https://lore.kernel.org/r/20251007-extensible-parameters-validation-v6-0-5f719d9f39e5@ideasonboard.com
+
+Changes in v6:
+- Rename all symbols to v4l2_isp
+- Changed the interface of the two buffer validation functions
+- Reworked the rkisp1 and c3 porting accordingly
+- Updated documentation
+- I have moved v4l2_params_buffer_size() from uAPI because it was
+  convenient for linux but not required in userspace
+- Link to v5: https://lore.kernel.org/r/20250915-extensible-parameters-validation-v5-0-e6db94468af3@ideasonboard.com
+
+Changes in v5:
+- Move everything to v4l2-isp prefix except from format documentation
+  which still is about 'extensible-parameters' (to be paired in future
+  with extensbile-stats)
+- Simplify documentation and move it part to the driver-api
+  Documentation
+- Remove 'group' and 'features' from the generic handlers definition and
+  adjust rkisp1 accordingly
+- Link to v4: https://lore.kernel.org/r/20250820-extensible-parameters-validation-v4-0-30fe5a99cb1f@ideasonboard.com
+
+Changes in v4:
+- Fix the definition of V4L2_PARAMS_FL_PLATFORM_FLAGS
+- Add __counted_by() attribute to the data[] flexible-array member of
+  v4l2_params_buffer
+- Minor style change
+- Link to v3: https://lore.kernel.org/r/20250819-extensible-parameters-validation-v3-0-9dc008348b30@ideasonboard.com
+
+Changes in v3:
+- Rebased on latest media-committers/next
+- Take in Dan's suggestion in block size validation
+- Documentation minor spelling fixes
+- Link to v2: https://lore.kernel.org/r/20250710-extensible-parameters-validation-v2-0-7ec8918ec443@ideasonboard.com
+
+Changes in v2:
+- Make v4l2_params_buffer directly usable
+- Centralize ENABLE/DISABLE flags definition and validation
+- Take in Dan's v4l2_params_buffer_size()
+- Allow blocks to only contain the header if they're going to be
+  disabled
+- Documentation fixes as reported by Nicolas
+- Link to v1: https://lore.kernel.org/r/20250708-extensible-parameters-validation-v1-0-9fc27c9c728c@ideasonboard.com
+
+---
+Jacopo Mondi (8):
+      media: uapi: Introduce V4L2 generic ISP types
+      media: uapi: Convert RkISP1 to V4L2 extensible params
+      media: uapi: Convert Amlogic C3 to V4L2 extensible params
+      media: Documentation: uapi: Add V4L2 ISP documentation
+      media: v4l2-core: Introduce v4l2-isp.c
+      media: rkisp1: Use v4l2-isp for validation
+      media: amlogic-c3: Use v4l2-isp for validation
+      media: Documentation: kapi: Add v4l2 generic ISP support
+
+ Documentation/driver-api/media/v4l2-core.rst       |   1 +
+ Documentation/driver-api/media/v4l2-isp.rst        |  49 ++++++
+ .../userspace-api/media/v4l/meta-formats.rst       |   1 +
+ Documentation/userspace-api/media/v4l/v4l2-isp.rst |  67 +++++++++
+ MAINTAINERS                                        |  10 ++
+ drivers/media/platform/amlogic/c3/isp/Kconfig      |   1 +
+ .../media/platform/amlogic/c3/isp/c3-isp-params.c  | 165 ++++++---------------
+ drivers/media/platform/rockchip/rkisp1/Kconfig     |   1 +
+ .../media/platform/rockchip/rkisp1/rkisp1-params.c | 150 ++++++-------------
+ drivers/media/v4l2-core/Kconfig                    |   4 +
+ drivers/media/v4l2-core/Makefile                   |   1 +
+ drivers/media/v4l2-core/v4l2-isp.c                 | 128 ++++++++++++++++
+ include/media/v4l2-isp.h                           |  91 ++++++++++++
+ include/uapi/linux/media/amlogic/c3-isp-config.h   |  92 +++---------
+ include/uapi/linux/media/v4l2-isp.h                | 102 +++++++++++++
+ include/uapi/linux/rkisp1-config.h                 | 107 +++----------
+ 16 files changed, 590 insertions(+), 380 deletions(-)
+---
+base-commit: b4fbb13db86adb0bae1d7f968b61ea8dc9635e33
+change-id: 20250701-extensible-parameters-validation-c831f7f5cc0b
+
+Best regards,
+-- 
+Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+
 
 _______________________________________________
 Linux-rockchip mailing list
