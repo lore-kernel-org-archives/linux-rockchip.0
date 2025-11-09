@@ -4,71 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3274FCCFA1E
-	for <linux-rockchip@archiver.kernel.org>; Sun,  9 Nov 2025 12:28:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8011DCCFA13
+	for <linux-rockchip@archiver.kernel.org>; Sun,  9 Nov 2025 14:19:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FeWcY4mijPne1FTGBa6H4oKe+LbOTcmL5NZ0DtJKO5A=; b=r7N+IqKz7xa+9i
-	lp7GLFM3HXL5FHFTCToCz3BCK7BGYQSzEUHjDsSBbIPwbsmsxGiRs+eqc6DheLcepi/UkgWMuOkXe
-	Ngw26gUN1XKTD6LY2XNw70+NNpq1hyqIu4MAmOP92LUAt9Ob7ZtYufobTUfdOc+JPEXe078q9zjdt
-	XfLopGu4T55xIEsKcvMcMQFVDBlt0kUjvnGPbwRVzLR6CWXrCcfXTBqeWGhYoZB6iq3i62sXbfRAs
-	JIpIIit5bHEtTtObJm6Ux+vYz5H5okshr6w9EURm7vHW1BLdlOujTBW+zCQxiqBzeCHCvDERpXk7w
-	jyVDWPRx80seX1tylUHg==;
+	List-Owner; bh=s2vT02PuZ3GzDkPjSVqHL+S9LGMNndSj7RCwWj49mis=; b=MFrTakEWE1fWah
+	C3KeiF3mEnKbbWuOrIT9/urATyb+o+H6vh/HjCXB1J02/7CpTxrYKBbBQxim6KsufQKp8xDeb1j0c
+	blPCO79Xr1YrRpSnDTieWR/lgDFLs6o/r+p5WeCJdYPTyulkoNGApVX10A5esPnXJxKK2R9IJDWs8
+	ylj6JmDW7/xEwjxxTQ/OwJdksxfcfdd9i7mF0Pj2Mw7DkC0HR78cNatc0du14ifR6eNykMZreOAI/
+	v23c+hhNV0lZV3XvsLXinJ7weiXwknwas8lhbq9RIYWh/HOl5Edbf4dS+q/8J2mH5mp3otk55hxcC
+	qrHqbZzRyU/ZU5Fp4spg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vI4X2-00000003zvD-1uzw;
-	Sun, 09 Nov 2025 12:28:32 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vI6GP-000000043vs-3UXp;
+	Sun, 09 Nov 2025 14:19:29 +0000
+Received: from sakura.naobsd.org ([160.16.200.221] helo=mail.naobsd.org)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vI4Wy-00000003zud-38ca;
-	Sun, 09 Nov 2025 12:28:30 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 125C64182B;
-	Sun,  9 Nov 2025 12:28:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E41ABC4CEF8;
-	Sun,  9 Nov 2025 12:28:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1762691307;
-	bh=9+deIiz/07lRUWttLH1XL6KToavdGNMSxgLPjvkZhJg=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=hurIJbO4oHCGlhmRNAgt+fgtD84571YdTIU65SqQLikCy0YK6bGSG7HxhBNlSk9aS
-	 PALZVZ02wZOtd9kZLJqpdvYHJZ/HSYktjSKv08/JU4tlGx8jIssFmNBzs4yu2IGtJU
-	 0YxNi2u0zPftBTq/zVxWk45vug4/C5PHWgNZJRuErdgmGm9yisSh6mwc0bA40SRXas
-	 FbTqSGCiqroy0yC+wm+BmvTih4g6V/tnUB0rYJShev3QE87VQusnlGoMuV7RlUvqbg
-	 CkslesMC7ljHB7f7iAID75aBnIQP3T9N/4s6Ty0pftu6RB/9GGpUUvhN9L9fBqEL/h
-	 wvgFouCpUPSUg==
-Date: Sun, 9 Nov 2025 13:28:22 +0100
-From: Niklas Cassel <cassel@kernel.org>
-To: FUKAUMI Naoki <naoki@radxa.com>
-Cc: Shawn Lin <shawn.lin@rock-chips.com>,
-	Damien Le Moal <dlemoal@kernel.org>,
-	Anand Moon <linux.amoon@gmail.com>, linux-pci@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Dragan Simic <dsimic@manjaro.org>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] PCI: dw-rockchip: Skip waiting for link up
-Message-ID: <aRCI5kG16_1erMME@ryzen>
-References: <20250113-rockchip-no-wait-v1-1-25417f37b92f@kernel.org>
- <1E8E4DB773970CB5+5a52c9e1-01b8-4872-99b7-021099f04031@radxa.com>
- <6e87b611-13ea-4d89-8dbf-85510dd86fa6@rock-chips.com>
- <aQ840q5BxNS1eIai@ryzen>
- <aQ9FWEuW47L8YOxC@ryzen>
- <55EB0E5F655F3AFC+136b89fd-98d4-42af-a99d-a0bb05cc93f3@radxa.com>
+	id 1vI6GK-000000043r3-3gUX
+	for linux-rockchip@lists.infradead.org;
+	Sun, 09 Nov 2025 14:19:27 +0000
+Received: from secure.fukaumi.org ([10.0.0.2])
+	by mail.naobsd.org (8.14.4/8.14.4/Debian-4.1ubuntu1.1) with ESMTP id 5A9EJ5dn015030;
+	Sun, 9 Nov 2025 23:19:07 +0900
+From: FUKAUMI Naoki <naoki@radxa.com>
+To: heiko@sntech.de
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+        dsimic@manjaro.org, alchark@gmail.com, devicetree@vger.kernel.org,
+        linux-rockchip@lists.infradead.org, FUKAUMI Naoki <naoki@radxa.com>
+Subject: [PATCH v7 03/14] arm64: dts: rockchip: Remove rtc for Radxa ROCK 5C
+Date: Sun,  9 Nov 2025 14:18:48 +0000
+Message-ID: <20251109141859.206835-4-naoki@radxa.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20251109141859.206835-1-naoki@radxa.com>
+References: <20251109141859.206835-1-naoki@radxa.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <55EB0E5F655F3AFC+136b89fd-98d4-42af-a99d-a0bb05cc93f3@radxa.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251109_042828_828954_584AA7E5 
-X-CRM114-Status: GOOD (  15.96  )
+X-CRM114-CacheID: sfid-20251109_061925_204863_D78E8310 
+X-CRM114-Status: UNSURE (   7.06  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,84 +62,71 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sun, Nov 09, 2025 at 01:42:23PM +0900, FUKAUMI Naoki wrote:
-> Hi Niklas,
-> 
-> On 11/8/25 22:27, Niklas Cassel wrote:
-> (snip)> (And btw. please test with the latest 6.18-rc, as, from experience,
-> the
-> > ASPM problems in earlier RCs can result in some weird problems that are
-> > not immediately deduced to be caused by the ASPM enablement.)
-> 
-> Here is dmesg from v6.18-rc4:
->  https://gist.github.com/RadxaNaoki/40e1d049bff4f1d2d4773a5ba0ed9dff
+There is no RTC on the actual board, so remove it.
 
-Same problem as before:
-[    1.732538] pci_bus 0004:43: busn_res: can not insert [bus 43-41] under [bus 42-41] (conflicts with (null) [bus 42-41])
-[    1.732645] pci_bus 0004:43: busn_res: [bus 43-41] end is updated to 43
-[    1.732651] pci_bus 0004:43: busn_res: can not insert [bus 43] under [bus 42-41] (conflicts with (null) [bus 42-41])
-[    1.732661] pci 0004:42:00.0: devices behind bridge are unusable because [bus 43] cannot be assigned for them
-[    1.732840] pci_bus 0004:44: busn_res: can not insert [bus 44-41] under [bus 42-41] (conflicts with (null) [bus 42-41])
-[    1.732947] pci_bus 0004:44: busn_res: [bus 44-41] end is updated to 44
-[    1.732952] pci_bus 0004:44: busn_res: can not insert [bus 44] under [bus 42-41] (conflicts with (null) [bus 42-41])
-[    1.732962] pci 0004:42:02.0: devices behind bridge are unusable because [bus 44] cannot be assigned for them
-[    1.733134] pci_bus 0004:45: busn_res: can not insert [bus 45-41] under [bus 42-41] (conflicts with (null) [bus 42-41])
-[    1.733246] pci_bus 0004:45: busn_res: [bus 45-41] end is updated to 45
-[    1.733255] pci_bus 0004:45: busn_res: can not insert [bus 45] under [bus 42-41] (conflicts with (null) [bus 42-41])
-[    1.733266] pci 0004:42:06.0: devices behind bridge are unusable because [bus 45] cannot be assigned for them
-[    1.733438] pci_bus 0004:46: busn_res: can not insert [bus 46-41] under [bus 42-41] (conflicts with (null) [bus 42-41])
-[    1.733544] pci_bus 0004:46: busn_res: [bus 46-41] end is updated to 46
-[    1.733550] pci_bus 0004:46: busn_res: can not insert [bus 46] under [bus 42-41] (conflicts with (null) [bus 42-41])
-[    1.733560] pci 0004:42:0e.0: devices behind bridge are unusable because [bus 46] cannot be assigned for them
-[    1.733571] pci_bus 0004:42: busn_res: [bus 42-41] end is updated to 46
-[    1.733575] pci_bus 0004:42: busn_res: can not insert [bus 42-46] under [bus 41] (conflicts with (null) [bus 41])
-[    1.733585] pci 0004:41:00.0: devices behind bridge are unusable because [bus 42-46] cannot be assigned for them
-[    1.733596] pcieport 0004:40:00.0: bridge has subordinate 41 but max busn 46
-
-
-Seems like the ASM2806 switch, for some reason, is not ready.
-
-One change that Diederik pointed out is that in the "good" case,
-the link is always in Gen1 speed.
-
-Perhaps you could build with CONFIG_PCI_QUIRKS=y and try this patch:
-
-diff --git a/drivers/pci/quirks.c b/drivers/pci/quirks.c
-index 214ed060ca1b..ac134d95a97f 100644
---- a/drivers/pci/quirks.c
-+++ b/drivers/pci/quirks.c
-@@ -96,6 +96,7 @@ int pcie_failed_link_retrain(struct pci_dev *dev)
- {
- 	static const struct pci_device_id ids[] = {
- 		{ PCI_VDEVICE(ASMEDIA, 0x2824) }, /* ASMedia ASM2824 */
-+		{ PCI_VDEVICE(ASMEDIA, 0x2806) }, /* ASMedia ASM2806 */
- 		{}
- 	};
- 	u16 lnksta, lnkctl2;
-
-
-
-
-
-If that does not work, perhaps you could try this patch
-(assuming that all Rock 5C:s have a ASM2806 on pcie2x1l2):
+Fixes: 3ddf5cdb77e6 ("arm64: dts: rockchip: add Radxa ROCK 5C")
+Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
+---
+Changes in v7:
+- Reword commit message
+Changes in v6:
+- Reword commit message
+Changes in v5:
+- Reword commit message
+Changes in v4:
+- None
+Changes in v3:
+- None
+Changes in v2:
+- New
+---
+ .../boot/dts/rockchip/rk3588s-rock-5c.dts     | 23 -------------------
+ 1 file changed, 23 deletions(-)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
-index dd7317bab613..26f8539d934a 100644
+index 086b4f45fabf3..9a9430b2494b7 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
-@@ -452,6 +452,7 @@ &pcie2x1l2 {
- 	pinctrl-0 = <&pcie20x1_2_perstn_m0>;
- 	reset-gpios = <&gpio3 RK_PD1 GPIO_ACTIVE_HIGH>;
- 	vpcie3v3-supply = <&pcie2x1l2_3v3>;
-+	max-link-speed = <1>;
- 	status = "okay";
+@@ -350,23 +350,6 @@ regulator-state-mem {
+ 	};
  };
+ 
+-&i2c5 {
+-	pinctrl-names = "default";
+-	pinctrl-0 = <&i2c5m2_xfer>;
+-	status = "okay";
+-
+-	rtc@51 {
+-		compatible = "haoyu,hym8563";
+-		reg = <0x51>;
+-		#clock-cells = <0>;
+-		clock-output-names = "rtcic_32kout";
+-		interrupt-parent = <&gpio0>;
+-		interrupts = <RK_PB0 IRQ_TYPE_LEVEL_LOW>;
+-		pinctrl-names = "default";
+-		pinctrl-0 = <&rtc_int_l>;
+-	};
+-};
+-
+ &i2c7 {
+ 	status = "okay";
+ 
+@@ -483,12 +466,6 @@ pow_en: pow-en {
+ 		};
+ 	};
+ 
+-	rtc {
+-		rtc_int_l: rtc-int-l {
+-			rockchip,pins = <0 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
+-		};
+-	};
+-
+ 	usb {
+ 		usb_host_pwren_h: usb-host-pwren-h {
+ 			rockchip,pins = <4 RK_PB5 RK_FUNC_GPIO &pcfg_pull_none>;
+-- 
+2.43.0
 
-
-
-Kind regards,
-Niklas
 
 _______________________________________________
 Linux-rockchip mailing list
