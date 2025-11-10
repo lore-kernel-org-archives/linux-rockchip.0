@@ -4,57 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E27DCCF9E3
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Nov 2025 07:39:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E600DCCFA1A
+	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Nov 2025 07:53:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-ID:MIME-Version:To:Cc:
-	Date:References:In-Reply-To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sDUrfoZxJGbmc1ON7ju7tVbdtfi/++Q9eFxnVSCDCwE=; b=k57AA5F9ddVaWy
-	FeUSTkxeuVo5d/r1JENrrUdYIR5j32fn1DMF8YGL8DMHS6GklDZ522T0jR7a5Y0RkHk+z6HdFqbUg
-	KpHwKgvfpgykeXZGDIpAyyitC/s2qmVJcTBQRXil9NNp9eUAU+gLGPJYGToAQx1Dp0eVI3PNrsLj3
-	SU9muagDo1517paHQjsYNNyS+19aZTp0btXU9iClFOe6ig6cX8rkvPBC7oCc6zTF7UVzqqGWw1OAP
-	EL4C1NrhHPnH/7hzzQE8/PJ2g2qd0MkJhhQldU5rGF198wx0HOlsEenF1PzAxyu0bJJdQ1ZAGMjtO
-	T0zEpN3JPf+LA8eW3PKw==;
+	List-Owner; bh=BhlowGybhiEUwQyC3fL3By/EoB3SarrnBH9psBTBmAE=; b=J94uGBwLSiQugq
+	/X6Q1nxoCC49DQL+BhPrVODkaT/yEBpRwYH6mVbViK4WbVFPtT8/saYA+sXzTPfmi4OcHw4iGYFZl
+	qPRQZffunmlM+GQ97b3oq8iReU2/lZmxbm5O/isBAsHOnlkLz/0Qiq+Vbvx/vpts5apQNdPKjSpyF
+	WBNOKRlW9kUUwbtnIb42gOzNo4xEltd9nPgtInaWkWm7HkIRAcddowc44t4rzEiv3YqQ7jjKmqCxW
+	ko/eBqmD1XH4gVaLh+b8nJ6x/PPSP4UI2jH00bSlvb07mcqPYCZXurjpwrFJMKQdq9r4ZCKLFHxYk
+	qSGQmS+aueEGCGntzDFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIMUL-00000004uCb-1ARw;
-	Mon, 10 Nov 2025 07:38:57 +0000
-Received: from mail1.manjaro.org ([142.132.176.110])
+	id 1vIMiV-00000004v1u-49zE;
+	Mon, 10 Nov 2025 07:53:36 +0000
+Received: from bg4.exmail.qq.com ([43.154.221.58])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIMUI-00000004uBf-2hYf
-	for linux-rockchip@lists.infradead.org;
-	Mon, 10 Nov 2025 07:38:56 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPA id 81FF940ED0;
-	Mon, 10 Nov 2025 08:38:47 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=dkim;
-	t=1762760331; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=97BThzbzJ5g4tsS6IHLfH1gqfVXUwxAiYiBXaKPJD8w=;
-	b=wscAjVSLeXmIx5vmNo+icIt215WkJWY7vNPs6aompATz9Ng1y9Tf+VmwJrnmqBu3wSSpz0
-	9ziLsgF/X/piYUbwc0tteamYytKjZhyek9uaLxcHmu/QaxgURPvFvIvnHIR+wAIs31Cblu
-	Ra6iCVT0Gt/N40agzmU7T/ODi0sIN59sGz8bchNx1vK8OxbB2xGPS2WdscC2lpVmpR653a
-	DR4j0pa/zfaMsDpxF0pK+VaMCf3gbE+TlggM8NBlcjizDZKXcP3mG5m4uZwpz9h0sIz+St
-	32vvM3ATwfBq2DqqBLLNhbLJ6rLlV8DbYMDoCmkWb9MIARhCdEX2RL0nJ96K3w==
-From: "Dragan Simic" <dsimic@manjaro.org>
-In-Reply-To: <38861A00B4F4BA62+e3221913-43e5-4335-9aaf-9b9eed5834ac@radxa.com>
-References: <20251110035455.839863-1-naoki@radxa.com>
- <20251110035455.839863-2-naoki@radxa.com>
- <36843804-433a-5c0c-4961-451b44d70bc4@manjaro.org> <38861A00B4F4BA62+e3221913-43e5-4335-9aaf-9b9eed5834ac@radxa.com>
-Date: Mon, 10 Nov 2025 08:38:46 +0100
-Cc: heiko@sntech.de, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, jbx6244@gmail.com, pbrobinson@gmail.com, kylepzak@projectinitiative.io, damon.ding@rock-chips.com, sebastian.reichel@collabora.com, amadeus@jmu.edu.cn, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
-To: "FUKAUMI Naoki" <naoki@radxa.com>
+	id 1vIMiT-00000004v0o-2QOB;
+	Mon, 10 Nov 2025 07:53:35 +0000
+X-QQ-mid: zesmtpip4t1762761171t85c608ae
+X-QQ-Originating-IP: 4/pj04GV+NUG9bPpfO1T31SnMqTdV393yM24KkNEq88=
+Received: from [IPV6:240f:10b:7440:1:64e0:6ba: ( [localhost])
+	by bizesmtp.qq.com (ESMTP) with 
+	id ; Mon, 10 Nov 2025 15:52:47 +0800 (CST)
+X-QQ-SSF: 0000000000000000000000000000000
+X-QQ-GoodBg: 0
+X-BIZMAIL-ID: 3134091033668820903
+Message-ID: <0C31787C387488ED+fd39bfe6-0844-4a87-bf48-675dd6d6a2df@radxa.com>
+Date: Mon, 10 Nov 2025 16:52:46 +0900
 MIME-Version: 1.0
-Message-ID: <65f17890-c052-f303-4731-f882946df1f1@manjaro.org>
-Subject: =?utf-8?q?Re=3A?= [PATCH 2/2] =?utf-8?q?arm64=3A?==?utf-8?q?_dts=3A?=
- =?utf-8?q?_rockchip=3A?= Make eeprom read-only for Radxa ROCK 5A
-User-Agent: SOGoMail 5.12.3
-X-Last-TLS-Session-Version: None
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RESEND] Re: [PATCH] PCI: dw-rockchip: Skip waiting for link up
+To: Shawn Lin <shawn.lin@rock-chips.com>, Niklas Cassel <cassel@kernel.org>
+Cc: Damien Le Moal <dlemoal@kernel.org>, Anand Moon <linux.amoon@gmail.com>,
+ linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Dragan Simic <dsimic@manjaro.org>, Lorenzo Pieralisi
+ <lpieralisi@kernel.org>, =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?=
+ <kw@linux.com>, Rob Herring <robh@kernel.org>,
+ Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>,
+ mani@kernel.org
+References: <20250113-rockchip-no-wait-v1-1-25417f37b92f@kernel.org>
+ <1E8E4DB773970CB5+5a52c9e1-01b8-4872-99b7-021099f04031@radxa.com>
+ <6e87b611-13ea-4d89-8dbf-85510dd86fa6@rock-chips.com>
+ <aQ840q5BxNS1eIai@ryzen> <aQ9FWEuW47L8YOxC@ryzen>
+ <55EB0E5F655F3AFC+136b89fd-98d4-42af-a99d-a0bb05cc93f3@radxa.com>
+ <aRCI5kG16_1erMME@ryzen>
+ <F8B2B6FA2884D69A+b7da13f2-0ffb-4308-b1ba-0549bc461be8@radxa.com>
+ <780a4209-f89f-43a9-9364-331d3b77e61e@rock-chips.com>
+ <4487DA40249CC821+19232169-a096-4737-bc6a-5cec9592d65f@radxa.com>
+ <363d6b4d-c999-43d4-866e-880ef7d0dec3@rock-chips.com>
+Content-Language: en-US
+From: FUKAUMI Naoki <naoki@radxa.com>
+In-Reply-To: <363d6b4d-c999-43d4-866e-880ef7d0dec3@rock-chips.com>
+X-QQ-SENDSIZE: 520
+Feedback-ID: zesmtpip:radxa.com:qybglogicsvrsz:qybglogicsvrsz4b-0
+X-QQ-XMAILINFO: NDd9MucL1yTJP8cslL27VgoiFHesaAmGI8PUnF2ncR/NwSMNxHDMHj/c
+	rCh3V0/XArTE0RE2jpdRHQijik12OEfi8E+Wal5zRRSbeC50GTE53hSS9bKaoEYUrPuTReI
+	XsbIaS9R1ih+4njnNW0uHsXRm2kx6EbdtRCCM5IiO8LO0Y+bd/Qp4+3oJuKHUsC0g622oxf
+	8IQRcJ6ib6lPmvGn1aNROCX7NixdZEe95rCSJyqbnnH7k665xTlEsCSUa/JWCxinrNKGDzU
+	yUE30Xc+0r2uctajNr8zM4KnXYtf4NFcpAHf2rkLC8AOKtGhbCSQYafz8gDzVWpM1zXlBct
+	gVqmao0bnJ1ZfpOKJcZXT3KffHGKvRDZHXj/oeCK/p77BCwYJTJaOhjN2Ep4Lz+hZAK5Jxx
+	xfvmgDwrl+f4vI6XfQsZFgyqt5bkRFXSaqb8LGj+qfoZTwYxXjyQT7D181r+7+Z9K/J7lyC
+	I8uJOEWwMjmphI9ePhN5lpNKDka6/fhO9WMscyqLxWfQ7VZ8UGFvImXNygg5m6Pts+Us7YQ
+	ZHO0xHZKQvzoCrwY0lGUZ5LQDr0Hh1DRbEiJELHWMiWvwXV0umFSnkXuZ6PJN1gPC2vfNSq
+	MAvMPWZ71dzG/5uUIYAo1nNJ9yLxX4oNXgTBt0OrD4TecUElV0Cr7WlVpXhM24Ux/SHGn85
+	tXe+4tw5sAXgOfVSbceDv4eLRDqhWScJ2udV2rne7q7LeWdjL06Oa84DJaZl0LYQJo1HVPI
+	EObwJtNGDhlnltdlbt+IP3OHLaQDlQJxXVDZQ0Escf+OGlGqzIdpgA61ObFd4xu/M66Sten
+	GHaH1F39I4Y8Hq4eN1BVYAHQ3+rsPSybgTs+qTWqPCVPW5Fn7dh/QMZEgGgzCmfX5lLYB2K
+	6Ua5HgX1oju+jkoiUD0f8zYaIk0NcB03P/aMJZSotzb1T3O6tASW9sClsq53U3efVyzotMD
+	XgEndcutICkHrzlXjJRp1qFf8r26E9u+5D/KN6AjQWrzfgh63Kl4Bqq0kk7nclK3uNRVrf8
+	8dsGEHAkB3vvvXT3Im
+X-QQ-XMRINFO: NI4Ajvh11aEj8Xl/2s1/T8w=
+X-QQ-SPAM: true
+X-QQ-RECHKSPAM: 3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251109_233854_910821_49C61E21 
-X-CRM114-Status: GOOD (  24.99  )
+X-CRM114-CacheID: sfid-20251109_235334_002265_FB254B0C 
+X-CRM114-Status: UNSURE (   7.91  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,83 +97,37 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Monday, November 10, 2025 08:05 CET, FUKAUMI Naoki <naoki@radxa.com> wrote:
-> On 11/10/25 14:17, Dragan Simic wrote:
-> > On Monday, November 10, 2025 04:54 CET, FUKAUMI Naoki <naoki@radxa.com> wrote:
-> >> Make EEPROM read-only as it may contain factory-programmed
-> >> board-specific data.
-> >>
-> >> Fixes: 89c880808cff8 ("arm64: dts: rockchip: add I2C EEPROM to rock-5a")
-> >> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
-> >> ---
-> >>   arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts | 1 +
-> >>   1 file changed, 1 insertion(+)
-> >>
-> >> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
-> >> index 19a08f7794e67..ae7b03488c9e7 100644
-> >> --- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
-> >> +++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
-> >> @@ -254,6 +254,7 @@ eeprom: eeprom@50 {
-> >>   		compatible = "belling,bl24c16a", "atmel,24c16";
-> >>   		reg = <0x50>;
-> >>   		pagesize = <16>;
-> >> +		read-only;
-> >>   	};
-> >>   };
-> > 
-> > I've checked the board schematic and making this BL24C16 chip
-> > read-only makes sense to me.  However, I think that the patch
-> > description should be expanded to contain a better description
-> > of what might be found in the chip, such as a factory-programmed
-> > MAC address.  Also, providing a link to the board schematic, as
-> > a reference, would be a good idea.
+Hi Shawn,
+
+On 11/10/25 16:12, Shawn Lin wrote:
+(snip)> Thanks for testing. I just got a ASM2806 switch as yours and 
+verified it
+> on vanilla v6.18-rc5. After 30 times of cold boot, two NVMes behind
+> ASM2806 work as expected. Nothing special happened when I checked
+> with PA as well. You could help check the log and lspci dump there[1].
 > 
-> ----
-> arm64: dts: rockchip: Make eeprom read-only for Radxa ROCK 3C/5A/5C
-> 
-> Make the EEPROM[1][2][3] read-only. Board-specific data written to the 
-> EEPROM at the factory includes, but is not limited to, the SKU (~ 
-> product name), BOM version (~ board version), and MAC address.
+> [1]https://pastebin.com/sAF1fT0g
 
-Thanks for the improvements!  I'd just suggest that the opening
-sentence above is rewritten like this:
+Thanks for the info!
 
-  Make the BL24C16 EEPROM chips found on Radxa ROCK 3C, 5A and
-  5C SBCs [1][2][3] read-only, because they contain factory-
-  programmed data that isn't supposed to be modified by the end
-  users.
+I tried ASM2806 on Radxa ROCK 5B (RK3588).
+  https://gist.github.com/RadxaNaoki/640e47d377add9fe38301de164d4058e
 
-This would also be perfect timing for Radxa to officially release
-the layout of the board-specific data that goes into these EPROM
-chips, so the data can actually be used.
+It doesn't work on PCIe 2.0 (M.2 E Key), but it does work on PCIe 3.0 
+(M.2 M Key).
 
-> [1] 
-> https://dl.radxa.com/rock3/docs/hw/3c/v1400/radxa_rock_3c_v1400_schematic.pdf 
-> p.13
-> [2] https://dl.radxa.com/rock5/5a/docs/hw/radxa_rock5a_V1.1_sch.pdf p.19
-> [3] 
-> https://dl.radxa.com/rock5/5c/docs/hw/v1100/radxa_rock_5c_schematic_v1100.pdf 
-> p.18
-> ----
-> 
-> > With these remarks addressed in a v2, please feel free to include
-> > 
-> > Reviewed-by: Dragan Simic <dsimic@manjaro.org>
-> > 
-> > Additionally, it would make sense to squash this patch and your
-> > other patch that addresses the ROCK 5C together.  They're very
-> > similar and having them together in a single commit might actually
-> > help the people browsing the repository understand it better.
-> 
-> I'll drop eeprom patch from ROCK 5C v7 patch series, and squash eeprom 
-> patches for ROCK 3C/5A/5C.
+Could you try PCIe 2.0 slot on your board?
 
-Thanks!
+Best regards,
+
+--
+FUKAUMI Naoki
+Radxa Computer (Shenzhen) Co., Ltd.
 
 
 _______________________________________________
