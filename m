@@ -4,88 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48729CCF9E3
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Nov 2025 10:30:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D6E9CCFA13
+	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Nov 2025 11:24:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BtvRB0yZ3CyR+SLvU9bja5yS7zK+cEyDV29FutAQo38=; b=ANDYeMqyowi4JO
-	XFM5mgiZnDjt5nrQmZIQtMzegpVtoRjwKDKpEDP4rM8hkmiFNNRV3jS9m+n8RVEHDp9ruE6egRX/B
-	BXVBXeWYhIbkbfZNAygv9NDg62WRiWHomRx56JAOwuBho6iarBBQg5VRnChqT84v7LVq9+a6cR8qb
-	tj9jP52mhc25B25cA32mlehZrB6us1S68QMVXncvfrcqnpj2dwXbyDVH7yRmQSGHMPwfDEx98/EhZ
-	thrd89lNbtgtOYrAnBM1RfSW9x3ansjmt9K/g+IUzMOEMK/teXIpAMxKuTIvKOtWYCJsq77uvXNEb
-	P7d6B+/810d0ey4WRQVg==;
+	List-Owner; bh=LkMfpdSU/nEPeEffISmD133mxd/OyofBWR42euVmYbU=; b=gYYkj/vUKA8pUa
+	ao2akjkZ1jOGuZ8SheQCwAaLC6jqWzLkQHtxv4vAoIv5z2c3w9RAdHLL+YDRz+/vkui5CMRBFaiYA
+	BOJqSXPIzF2MjdQLI2mPkbdtQ4a/UpAAq7EZU4VWrkCcZoWcmtf5BdtKhyOtLijbrIjK8qM0yGNhv
+	G0JUHWO2uScyn0yTFKYr1fhSMHfP0PkV705HdMEMIxQn2F9QFGBMwQEI56OWmsFZIG/Hi2IGNzVFK
+	U4PX/Tw0CAN3IKDd7pi5IF+XhNCYA/YFu6urv73owg70iwN/fPkers6XShGj0EWYp1glsGPe4NwQ9
+	gSsKtGcNxZTSYLk823MQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIP9y-00000005BRO-0iCs;
-	Mon, 10 Nov 2025 10:30:06 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vIQ0c-00000005Ivs-29Wm;
+	Mon, 10 Nov 2025 11:24:30 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIP9u-00000005BQr-3TJK;
-	Mon, 10 Nov 2025 10:30:04 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1762770599;
-	bh=LKcjUvamtaRp5VMo3tOXWpvnOYnMuYx9dZBPJdrUs+s=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=PRf6dxUcq0UEdSiLe1Onb+Yo+VTS6NVXgiv+vXd5KGFs3q/hoxY2VWb2yKh6CgtYV
-	 CDoyGNBBd1VsYgh4H49Vjydts0Ohh73OLYdXRRDcGXrb2Rpm+HGoAIVT5EsVLWsz0L
-	 wylVlsZDaV7eC29uWUEj9VRLVKiJsBGshU7PNM5RzX6BlqfkAuUZR2OENrKU6HAgIB
-	 c1X2R62jqJQah5MWwxKE3/5mJDYLea91xeuzAAm8fxuNl2DvcDZnS9YhhHRbA0MyMw
-	 YLf50y3rEOwrJ7hhFngeOqlToQZYUy8jXhMdDAmM7BSKw+p8boA4VSpFsD5jpb3Cxq
-	 7yn8NEXgetc6g==
-Received: from [10.40.0.100] (185-67-175-126.lampert.tv [185.67.175.126])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: mriesch)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C2EA917E12E5;
-	Mon, 10 Nov 2025 11:29:57 +0100 (CET)
-Message-ID: <b89746e1-4574-4b65-af69-c533576ed185@collabora.com>
-Date: Mon, 10 Nov 2025 11:29:57 +0100
+	id 1vIQ0Y-00000005ItD-3SiE;
+	Mon, 10 Nov 2025 11:24:26 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 3AB856014D;
+	Mon, 10 Nov 2025 11:24:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 02DF2C116D0;
+	Mon, 10 Nov 2025 11:24:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1762773865;
+	bh=RsaOGTix9Ur+eCDtdyFW52wEEbBpedzXfB2AohWy/OQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Torrhd+o19dK8++DuxENcSYZFvhQ52lCnhlUZM07H/XkV5MODzY14KibeWlBQXKTL
+	 4EjSms5fYq7BIcbvUdTIrC7lr4/YfJgFabzNQHmQ6wUsNGSPengbQid2Mc/Mjta4a8
+	 JwOjhbwXLz6/+ddnP9o2NeJxC88XVeiEBLeEqRHkMZof/iy8XhtD5LHAoanTGuar2B
+	 t9p1RLNe3D2C7tOPkuBISJpUidRJ1UR4aHC9GInyeKmSSkdSYkjFyQ0znKHODp3LWw
+	 dyvqhnwUIvKTvYEIGSQWmDSUFds2sSa8zgVHTRpCHo3FIYNzQsn0LkQVXDfb7J5clG
+	 OFWvSN6FiFaYw==
+Date: Mon, 10 Nov 2025 16:54:13 +0530
+From: Manivannan Sadhasivam <mani@kernel.org>
+To: FUKAUMI Naoki <naoki@radxa.com>
+Cc: Niklas Cassel <cassel@kernel.org>, 
+	Shawn Lin <shawn.lin@rock-chips.com>, Damien Le Moal <dlemoal@kernel.org>, 
+	Anand Moon <linux.amoon@gmail.com>, linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Dragan Simic <dsimic@manjaro.org>, 
+	Lorenzo Pieralisi <lpieralisi@kernel.org>, Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>, 
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
+	Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [RESEND] Re: [PATCH] PCI: dw-rockchip: Skip waiting for link up
+Message-ID: <4f4wsgf56eublizg63fz6xmdjixesalb2q3rxetphd55jpqqju@zfyzsxfgiyim>
+References: <20250113-rockchip-no-wait-v1-1-25417f37b92f@kernel.org>
+ <1E8E4DB773970CB5+5a52c9e1-01b8-4872-99b7-021099f04031@radxa.com>
+ <6e87b611-13ea-4d89-8dbf-85510dd86fa6@rock-chips.com>
+ <aQ840q5BxNS1eIai@ryzen>
+ <aQ9FWEuW47L8YOxC@ryzen>
+ <55EB0E5F655F3AFC+136b89fd-98d4-42af-a99d-a0bb05cc93f3@radxa.com>
+ <aRCI5kG16_1erMME@ryzen>
+ <F8B2B6FA2884D69A+b7da13f2-0ffb-4308-b1ba-0549bc461be8@radxa.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v14 00/18] media: rockchip: add a driver for the rockchip
- camera interface
-To: Sakari Ailus <sakari.ailus@linux.intel.com>
-Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Mehdi Djait <mehdi.djait@linux.intel.com>,
- Maxime Chevallier <maxime.chevallier@bootlin.com>,
- =?UTF-8?Q?Th=C3=A9o_Lebrun?= <theo.lebrun@bootlin.com>,
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- Gerald Loacker <gerald.loacker@wolfvision.net>,
- Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
- Markus Elfring <Markus.Elfring@web.de>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Kever Yang <kever.yang@rock-chips.com>,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
- Collabora Kernel Team <kernel@collabora.com>,
- Paul Kocialkowski <paulk@sys-base.io>,
- Alexander Shiyan <eagle.alexander923@gmail.com>,
- Val Packett <val@packett.cool>, Rob Herring <robh@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- Mehdi Djait <mehdi.djait@bootlin.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Bryan O'Donoghue <bod@kernel.org>, Chen-Yu Tsai <wens@csie.org>
-References: <20240220-rk3568-vicap-v14-0-b38b6da0fc80@collabora.com>
- <aQ4tJg8r_j4NyKhv@kekkonen.localdomain>
- <074cd08e-0412-49f9-8dd9-b1f96eb11717@collabora.com>
- <20251107185441.GG5558@pendragon.ideasonboard.com>
- <13c43edb-9592-4779-a39a-7856bb0f964d@collabora.com>
- <aRGlvQRVoQs0WjyA@kekkonen.localdomain>
-Content-Language: en-US
-From: Michael Riesch <michael.riesch@collabora.com>
-In-Reply-To: <aRGlvQRVoQs0WjyA@kekkonen.localdomain>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251110_023003_191603_416D38A5 
-X-CRM114-Status: GOOD (  38.46  )
+Content-Disposition: inline
+In-Reply-To: <F8B2B6FA2884D69A+b7da13f2-0ffb-4308-b1ba-0549bc461be8@radxa.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,161 +75,159 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Sakari,
-
-On 11/10/25 09:43, Sakari Ailus wrote:
-> Hi Michael, Laurent,
-> 
-> On Fri, Nov 07, 2025 at 09:51:37PM +0100, Michael Riesch wrote:
->> Hi Laurent,
->>
->> On 11/7/25 19:54, Laurent Pinchart wrote:
->>> On Fri, Nov 07, 2025 at 07:41:59PM +0100, Michael Riesch wrote:
->>>> On 11/7/25 18:32, Sakari Ailus wrote:
->>>>> On Fri, Oct 24, 2025 at 02:51:29PM +0200, Michael Riesch via B4 Relay wrote:
->>>>>> Habidere,
->>>>>>
->>>>>> This series introduces support for the Rockchip Camera Interface (CIF),
->>>>>> which is featured in many Rockchip SoCs in different variations.
->>>>>> For example, the PX30 Video Input Processor (VIP) is able to receive
->>>>>> video data via the Digital Video Port (DVP, a parallel data interface)
->>>>>> and transfer it into system memory using a double-buffering mechanism
->>>>>> called ping-pong mode.
->>>>>> The RK3568 Video Capture (VICAP) unit, on the other hand, features a
->>>>>> DVP and a MIPI CSI-2 receiver that can receive video data independently
->>>>>> (both using the ping-pong scheme).
->>>>>> The different variants may have additional features, such as scaling
->>>>>> and/or cropping.
->>>>>> Finally, the RK3588 VICAP unit constitutes an essential piece of the
->>>>>> camera interface with one DVP, six MIPI CSI-2 receivers, scale/crop
->>>>>> units, and a data path multiplexer (to scaler units, to ISP, ...).
->>>>>
->>>>> I understand both RK3568 and RK3588 include an ISP. Do you have insight on
->>>>> how would this work, should the support for the ISP be added later on?
->>>>
->>>> Short answer: Yes and yes.
->>>>
->>>> Long answer:
->>>>
->>>> The patch series at hand adds support for the PX30 VIP and the RK3568
->>>> VICAP. I cannot really say something about the PX30, but on the RK3568
->>>> VICAP and ISP are orthogonal (the ISP features its own MIPI CSI-2
->>>> receiver, different from that introduced in this series). Thus, ISP
->>>> support can be introduced anytime (whenever someone is motivated ;-)).
->>>
->>> Won't they both be connected to the same sensor though, and probably the
->>> same D-PHY in the SoC ? They don't seem entirely separate to me.
->>
->> The MIPI CSI-2 DPHY is shared, indeed. Thus, they *maybe technically
->> could be* connected to the same sensor, but I don't know whether that
->> works and fail to see why anyone would to such a thing (if it is about
->> raw capture, the MIPI CSI-2 receiver in the ISP can do that on its own).
->>
->> The DPHY can be operated in split mode, with two lanes for VICAP and two
->> lanes for ISP. This is not implemented yet, but can be done at a later
->> stage on PHY level (not media related). In this case, ISP and VICAP can
->> receive data from different subdevices via CSI-2.
-> 
-> The two would be part of the same media graph in that case and as there are
-> two CSI-2 receivers and a single PHY, the PHY would probably need to have a
-> sub-device as well, to allow link configuration to be used to select where
-> the PHY is connected.
-> 
-> I don't think we have such a setup elsewhere, and supporting this would
-> require changes in the MC framework.
-
-What follows is a response that also addresses issues raised during our
-off-list discussion.
-
-First of all, I agree with you that the RK3568 HW is "a bit special" (to
-say the least) in that regard. Let's have an outlook to newer SoCs, such
-as the RK3588: Here, the MIPI CSI-2 DPHYs (there are two of them) with
-their split mode are present as well, but the assignment is fixed. For
-example, the RK3588 VICAP has six MIPI CSI-2 receiver units and six MIPI
-CSI-2 capture units. Units 1 and 2 handle a different MIPI PHY, units 3
-and 5 handle the DPHYs (without split mode), units 4 and/or 6 are active
-whenever DPHY 1 and/or 2 is in split mode.
-
-I would model this by adding support for more than one (logical) PHYs
-(phy-cells = <1>;) and assigning the logical PHYs to the MIPI CSI-2
-receivers. There is not really a possibility to route anything at this
-point (routing is done in a MUX unit that takes the different MIPI CSI-2
-receivers as inputs).
-
-Now back to the peculiar RK3568 situation: By default the split mode of
-the DPHY is off and both VICAP and ISP are able to receive the same data
-(from up to four lanes) with their MIPI CSI-2 receivers (not sure
-whether both can be active at the same time, though). There are two bits
-in the GRF that define the lanes that ISP and VICAP receive in split
-mode (lane 0/1 or lane 2/3). Not sure whether these bits are supposed to
-be changed during runtime.
-
-I would suggest modelling this on PHY level in DT, e.g., by passing
-reasonable properties to the dphy node, such as
-    rockchip,dphy-split-mode;
-    rockchip,dphy-split-invert;
-where the former activates the split mode and assigns lanes 0/1 to the
-ISP and lanes 2/3 to the VICAP, and the latter inverts this assignment
-(lanes 2/3 to the ISP and lanes 0/1 to the VICAP). This would facilitate
-the reasonable use cases with reasonable effort.
-
-Otherwise, to keep it perfectly general and most flexible and
-everything, we would have to introduce another subdevice indeed, which
-would be active on the RK3568 exclusively. Therefore, I don't see that
-the PHY driver introduces this subdevice, but a specialized (syscon?)
-MUX driver that deals with the RK3568 GRF bits. Something like this
-
-                           |----------------------|     |-------------|
- Sensor A --- /2 lanes --- | lane 0/1      to ISP | --- | ISP MIPI RX |
-                           |                      |     |-------------|
-                           |                      |
-                           |                      |     |-------------|
- Sensor B --- /2 lanes --- | lane 2/3    to VICAP | --- |VICAP MIPI RX|
-                           |----------------------|     |-------------|
-
-But IMHO this will be too much effort for corner use case that I doubt
-anyone will actually use.
-
-What do you think:
- - Let's keep the PHYs out of V4L2/MC, ok?
- - Let's model the reasonable use cases with device tree properties in
-   the dphy DT node, ok?
-
-> How does the media graph look like for the device at the moment?
-
-Please take a look at the media graph in the documentation patch (PATCH
-v14 01/18). This is without the ISP, but gives an overview of what the
-RK3568 VICAP is capable of.
-
-Best regards,
-Michael
-
-> 
->>
->> BTW the ISP is able to process the data captured by VICAP, but
->> apparently this includes a RAM round trip (VICAP captures to memory, ISP
->> operates in mem2mem mode).
->>
->>> A block diagram that shows connections between the CSI-2 pins, D-PHY,
->>> CSI-2 receivers, VICAP and ISP could help.
->>>
->>>> Once this patch series is merged, I'll push out changes that introduce
->>>> support for the RK3588 VICAP. We can discuss the integration of any
->>>> RK3588 ISP in this scope then -- and there may be some things to discuss
->>>> as there the VICAP and the ISP(s) are directly connected by means of a
->>>> MUX unit in the VICAP.
->>>>
->>>> Alright?
->>>
-> 
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gTW9uLCBOb3YgMTAsIDIwMjUgYXQgMDg6MjY6NTZBTSArMDkwMCwgRlVLQVVNSSBOYW9raSB3
+cm90ZToKPiAoUkVTRU5EOiBmaXggbWFuaSdzIGVtYWlsIGFkZHJlc3MpCj4gCgpUaGFua3MgZm9y
+IGxvb3BpbmcgbWUgaW4hIE15IExpbmFybyBlbWFpbCBpcyBub3QgZnVuY3Rpb25hbCBhbnltb3Jl
+LgoKPiBIaSBOaWtsYXMsCj4gCj4gT24gMTEvOS8yNSAyMToyOCwgTmlrbGFzIENhc3NlbCB3cm90
+ZToKPiA+IE9uIFN1biwgTm92IDA5LCAyMDI1IGF0IDAxOjQyOjIzUE0gKzA5MDAsIEZVS0FVTUkg
+TmFva2kgd3JvdGU6Cj4gPiA+IEhpIE5pa2xhcywKPiA+ID4gCj4gPiA+IE9uIDExLzgvMjUgMjI6
+MjcsIE5pa2xhcyBDYXNzZWwgd3JvdGU6Cj4gPiA+IChzbmlwKT4gKEFuZCBidHcuIHBsZWFzZSB0
+ZXN0IHdpdGggdGhlIGxhdGVzdCA2LjE4LXJjLCBhcywgZnJvbSBleHBlcmllbmNlLAo+ID4gPiB0
+aGUKPiA+ID4gPiBBU1BNIHByb2JsZW1zIGluIGVhcmxpZXIgUkNzIGNhbiByZXN1bHQgaW4gc29t
+ZSB3ZWlyZCBwcm9ibGVtcyB0aGF0IGFyZQo+ID4gPiA+IG5vdCBpbW1lZGlhdGVseSBkZWR1Y2Vk
+IHRvIGJlIGNhdXNlZCBieSB0aGUgQVNQTSBlbmFibGVtZW50LikKPiA+ID4gCj4gPiA+IEhlcmUg
+aXMgZG1lc2cgZnJvbSB2Ni4xOC1yYzQ6Cj4gPiA+ICAgaHR0cHM6Ly9naXN0LmdpdGh1Yi5jb20v
+UmFkeGFOYW9raS80MGUxZDA0OWJmZjRmMWQyZDQ3NzNhNWJhMGVkOWRmZgo+ID4gCj4gPiBTYW1l
+IHByb2JsZW0gYXMgYmVmb3JlOgo+ID4gWyAgICAxLjczMjUzOF0gcGNpX2J1cyAwMDA0OjQzOiBi
+dXNuX3JlczogY2FuIG5vdCBpbnNlcnQgW2J1cyA0My00MV0gdW5kZXIgW2J1cyA0Mi00MV0gKGNv
+bmZsaWN0cyB3aXRoIChudWxsKSBbYnVzIDQyLTQxXSkKPiA+IFsgICAgMS43MzI2NDVdIHBjaV9i
+dXMgMDAwNDo0MzogYnVzbl9yZXM6IFtidXMgNDMtNDFdIGVuZCBpcyB1cGRhdGVkIHRvIDQzCj4g
+PiBbICAgIDEuNzMyNjUxXSBwY2lfYnVzIDAwMDQ6NDM6IGJ1c25fcmVzOiBjYW4gbm90IGluc2Vy
+dCBbYnVzIDQzXSB1bmRlciBbYnVzIDQyLTQxXSAoY29uZmxpY3RzIHdpdGggKG51bGwpIFtidXMg
+NDItNDFdKQo+ID4gWyAgICAxLjczMjY2MV0gcGNpIDAwMDQ6NDI6MDAuMDogZGV2aWNlcyBiZWhp
+bmQgYnJpZGdlIGFyZSB1bnVzYWJsZSBiZWNhdXNlIFtidXMgNDNdIGNhbm5vdCBiZSBhc3NpZ25l
+ZCBmb3IgdGhlbQo+ID4gWyAgICAxLjczMjg0MF0gcGNpX2J1cyAwMDA0OjQ0OiBidXNuX3Jlczog
+Y2FuIG5vdCBpbnNlcnQgW2J1cyA0NC00MV0gdW5kZXIgW2J1cyA0Mi00MV0gKGNvbmZsaWN0cyB3
+aXRoIChudWxsKSBbYnVzIDQyLTQxXSkKPiA+IFsgICAgMS43MzI5NDddIHBjaV9idXMgMDAwNDo0
+NDogYnVzbl9yZXM6IFtidXMgNDQtNDFdIGVuZCBpcyB1cGRhdGVkIHRvIDQ0Cj4gPiBbICAgIDEu
+NzMyOTUyXSBwY2lfYnVzIDAwMDQ6NDQ6IGJ1c25fcmVzOiBjYW4gbm90IGluc2VydCBbYnVzIDQ0
+XSB1bmRlciBbYnVzIDQyLTQxXSAoY29uZmxpY3RzIHdpdGggKG51bGwpIFtidXMgNDItNDFdKQo+
+ID4gWyAgICAxLjczMjk2Ml0gcGNpIDAwMDQ6NDI6MDIuMDogZGV2aWNlcyBiZWhpbmQgYnJpZGdl
+IGFyZSB1bnVzYWJsZSBiZWNhdXNlIFtidXMgNDRdIGNhbm5vdCBiZSBhc3NpZ25lZCBmb3IgdGhl
+bQo+ID4gWyAgICAxLjczMzEzNF0gcGNpX2J1cyAwMDA0OjQ1OiBidXNuX3JlczogY2FuIG5vdCBp
+bnNlcnQgW2J1cyA0NS00MV0gdW5kZXIgW2J1cyA0Mi00MV0gKGNvbmZsaWN0cyB3aXRoIChudWxs
+KSBbYnVzIDQyLTQxXSkKPiA+IFsgICAgMS43MzMyNDZdIHBjaV9idXMgMDAwNDo0NTogYnVzbl9y
+ZXM6IFtidXMgNDUtNDFdIGVuZCBpcyB1cGRhdGVkIHRvIDQ1Cj4gPiBbICAgIDEuNzMzMjU1XSBw
+Y2lfYnVzIDAwMDQ6NDU6IGJ1c25fcmVzOiBjYW4gbm90IGluc2VydCBbYnVzIDQ1XSB1bmRlciBb
+YnVzIDQyLTQxXSAoY29uZmxpY3RzIHdpdGggKG51bGwpIFtidXMgNDItNDFdKQo+ID4gWyAgICAx
+LjczMzI2Nl0gcGNpIDAwMDQ6NDI6MDYuMDogZGV2aWNlcyBiZWhpbmQgYnJpZGdlIGFyZSB1bnVz
+YWJsZSBiZWNhdXNlIFtidXMgNDVdIGNhbm5vdCBiZSBhc3NpZ25lZCBmb3IgdGhlbQo+ID4gWyAg
+ICAxLjczMzQzOF0gcGNpX2J1cyAwMDA0OjQ2OiBidXNuX3JlczogY2FuIG5vdCBpbnNlcnQgW2J1
+cyA0Ni00MV0gdW5kZXIgW2J1cyA0Mi00MV0gKGNvbmZsaWN0cyB3aXRoIChudWxsKSBbYnVzIDQy
+LTQxXSkKPiA+IFsgICAgMS43MzM1NDRdIHBjaV9idXMgMDAwNDo0NjogYnVzbl9yZXM6IFtidXMg
+NDYtNDFdIGVuZCBpcyB1cGRhdGVkIHRvIDQ2Cj4gPiBbICAgIDEuNzMzNTUwXSBwY2lfYnVzIDAw
+MDQ6NDY6IGJ1c25fcmVzOiBjYW4gbm90IGluc2VydCBbYnVzIDQ2XSB1bmRlciBbYnVzIDQyLTQx
+XSAoY29uZmxpY3RzIHdpdGggKG51bGwpIFtidXMgNDItNDFdKQo+ID4gWyAgICAxLjczMzU2MF0g
+cGNpIDAwMDQ6NDI6MGUuMDogZGV2aWNlcyBiZWhpbmQgYnJpZGdlIGFyZSB1bnVzYWJsZSBiZWNh
+dXNlIFtidXMgNDZdIGNhbm5vdCBiZSBhc3NpZ25lZCBmb3IgdGhlbQo+ID4gWyAgICAxLjczMzU3
+MV0gcGNpX2J1cyAwMDA0OjQyOiBidXNuX3JlczogW2J1cyA0Mi00MV0gZW5kIGlzIHVwZGF0ZWQg
+dG8gNDYKPiA+IFsgICAgMS43MzM1NzVdIHBjaV9idXMgMDAwNDo0MjogYnVzbl9yZXM6IGNhbiBu
+b3QgaW5zZXJ0IFtidXMgNDItNDZdIHVuZGVyIFtidXMgNDFdIChjb25mbGljdHMgd2l0aCAobnVs
+bCkgW2J1cyA0MV0pCj4gPiBbICAgIDEuNzMzNTg1XSBwY2kgMDAwNDo0MTowMC4wOiBkZXZpY2Vz
+IGJlaGluZCBicmlkZ2UgYXJlIHVudXNhYmxlIGJlY2F1c2UgW2J1cyA0Mi00Nl0gY2Fubm90IGJl
+IGFzc2lnbmVkIGZvciB0aGVtCj4gPiBbICAgIDEuNzMzNTk2XSBwY2llcG9ydCAwMDA0OjQwOjAw
+LjA6IGJyaWRnZSBoYXMgc3Vib3JkaW5hdGUgNDEgYnV0IG1heCBidXNuIDQ2Cj4gPiAKPiA+IAo+
+ID4gU2VlbXMgbGlrZSB0aGUgQVNNMjgwNiBzd2l0Y2gsIGZvciBzb21lIHJlYXNvbiwgaXMgbm90
+IHJlYWR5Lgo+ID4gCj4gPiBPbmUgY2hhbmdlIHRoYXQgRGllZGVyaWsgcG9pbnRlZCBvdXQgaXMg
+dGhhdCBpbiB0aGUgImdvb2QiIGNhc2UsCj4gPiB0aGUgbGluayBpcyBhbHdheXMgaW4gR2VuMSBz
+cGVlZC4KPiA+IAo+ID4gUGVyaGFwcyB5b3UgY291bGQgYnVpbGQgd2l0aCBDT05GSUdfUENJX1FV
+SVJLUz15IGFuZCB0cnkgdGhpcyBwYXRjaDoKPiA+IAo+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMv
+cGNpL3F1aXJrcy5jIGIvZHJpdmVycy9wY2kvcXVpcmtzLmMKPiA+IGluZGV4IDIxNGVkMDYwY2Ex
+Yi4uYWMxMzRkOTVhOTdmIDEwMDY0NAo+ID4gLS0tIGEvZHJpdmVycy9wY2kvcXVpcmtzLmMKPiA+
+ICsrKyBiL2RyaXZlcnMvcGNpL3F1aXJrcy5jCj4gPiBAQCAtOTYsNiArOTYsNyBAQCBpbnQgcGNp
+ZV9mYWlsZWRfbGlua19yZXRyYWluKHN0cnVjdCBwY2lfZGV2ICpkZXYpCj4gPiAgIHsKPiA+ICAg
+CXN0YXRpYyBjb25zdCBzdHJ1Y3QgcGNpX2RldmljZV9pZCBpZHNbXSA9IHsKPiA+ICAgCQl7IFBD
+SV9WREVWSUNFKEFTTUVESUEsIDB4MjgyNCkgfSwgLyogQVNNZWRpYSBBU00yODI0ICovCj4gPiAr
+CQl7IFBDSV9WREVWSUNFKEFTTUVESUEsIDB4MjgwNikgfSwgLyogQVNNZWRpYSBBU00yODA2ICov
+Cj4gPiAgIAkJe30KPiA+ICAgCX07Cj4gPiAgIAl1MTYgbG5rc3RhLCBsbmtjdGwyOwo+IAo+IEl0
+IGRvZXNuJ3QgaGVscCB3aXRoIGVpdGhlciBwcm9iaW5nIGJlaGluZCB0aGUgYnJpZGdlIG9yIHRo
+ZSBsaW5rIHNwZWVkLgo+IAo+ID4gSWYgdGhhdCBkb2VzIG5vdCB3b3JrLCBwZXJoYXBzIHlvdSBj
+b3VsZCB0cnkgdGhpcyBwYXRjaAo+ID4gKGFzc3VtaW5nIHRoYXQgYWxsIFJvY2sgNUM6cyBoYXZl
+IGEgQVNNMjgwNiBvbiBwY2llMngxbDIpOgo+IAo+IFJPQ0sgNUMgaGFzIGEgUENJZSBGUEMgY29u
+bmVjdG9yIGFuZCBJJ20gdXNpbmcgRHVhbCAyLjVHIFJvdXRlciBIQVQuCj4gIGh0dHBzOi8vcmFk
+eGEuY29tL3Byb2R1Y3RzL3JvY2s1LzVjI3RlY2hzcGVjCj4gIGh0dHBzOi8vcmFkeGEuY29tL3By
+b2R1Y3RzL2FjY2Vzc29yaWVzL2R1YWwtMi01Zy1yb3V0ZXItaGF0Cj4gCj4gUmVnYXJkaW5nIHRo
+ZSBsaW5rIHNwZWVkLCBJIGluaXRpYWxseSBzdXNwZWN0ZWQgdGhlIEZQQyBjb25uZWN0b3IgYW5k
+L29yCj4gY2FibGUgbWlnaHQgYmUgdGhlIGlzc3VlLiBIb3dldmVyLCBJIHRyaWVkIHRoZSBEdWFs
+IDIuNUcgUm91dGVyIEhBVCB3aXRoIHRoZQo+IFJPQ0sgNUEgKHdoaWNoIHVzZXMgYSBkaWZmZXJl
+bnQgY2FibGUpLCBhbmQgSSBnb3QgdGhlIHNhbWUgcmVzdWx0Lgo+IAo+IEJUVywgdGhlIGxpbmsg
+c3BlZWQgdmFyaWVzIGJldHdlZW4gMkdiL3MgYW5kIDRHYi9zIGRlcGVuZGluZyBvbiB0aGUgcmVi
+b290Lgo+ICh3aXRoIG9yIHdpdGhvdXQgcXVpcmspCj4gCgpGcm9tIHRoZSBkbWVzZyBsb2csIGl0
+IGxvb2tzIGxpa2UgdGhlIGlzc3VlIGlzIG1vc3QgcHJvYmFibHkgZHVlIHRvIGJ1cyBudW1iZXIK
+YXNzaWdubWVudCBmb3IgdGhlIFJvb3QgUG9ydC4gRHVyaW5nIHRoZSBpbml0aWFsIGJ1cyBzY2Fu
+LCB0aGUgUENJIGNvcmUgd2lsbAphc3NpZ24gdGhlIHN1Ym9yZGluYXRlIGJ1cyBudW1iZXIgKG1h
+eCBidXMgbnVtYmVyIGJlaGluZCB0aGUgUENJIGJyaWRnZSkgb2YgdGhlClBDSSBicmlkZ2UgYmFz
+ZWQgb24gdGhlIGF2YWlsYWJsZSBidXNzZXMgc2Nhbm5lZCBiZWhpbmQgdGhlIGJyaWRnZS4gQmVm
+b3JlIHRoZQpsaW5rIHVwIElSUSBwYXRjaCwgSSBndWVzcyB0aGUgUENJZSBzd2l0Y2ggY29ubmVj
+dGVkIHRvIHRoZSBSb290IFBvcnQgZ2V0cwplbnVtZXJhdGVkIGR1cmluZyBkd19wY2llX3dhaXRf
+Zm9yX2xpbmsoKSBpdHNlbGYgaS5lLiwgYmVmb3JlIHRoZSBQQ0kgY29yZQpzdGFydHMgdGhlIGJ1
+cyBzY2FuIHdpdGggYSBjYWxsIHRvIHBjaV9ob3N0X3Byb2JlKCkuIFNvIHRoZSBzd2l0Y2ggYXBw
+ZWFycyB3aGVuCnRoZSBQQ0kgY29yZSBzdGFydHMgc2Nhbm5pbmcgdGhlIGJ1cyBhbmQgdGhlIHN1
+Ym9yZGluYXRlIGJ1cyBudW1iZXIgZ2V0cwphc3NpZ25lZCBjb3JyZWN0bHkgYXMgdGhlIFBDSSBj
+b3JlIGNvdWxkIHNlZSB0aGUgYXZhaWxhYmxlIGJ1c3NlcyBiZWhpbmQgdGhlClJvb3QgUG9ydC4K
+ClRoaXMgY291bGQgYmUgY29uZmlybWVkIGZyb20gdGhlIHRpbWluZyBvZiB0aGUgc3VjY2VzcyBs
+b2c6CgpbICAgIDEuODc1NjkwXSBwY2kgMDAwNDo0MDowMC4wOiBicmlkZ2UgY29uZmlndXJhdGlv
+biBpbnZhbGlkIChbYnVzIDAxLWZmXSksIHJlY29uZmlndXJpbmcKWyAgICAxLjg3NjU0M10gcGNp
+IDAwMDQ6NDE6MDAuMDogWzFiMjE6MjgwNl0gdHlwZSAwMSBjbGFzcyAweDA2MDQwMCBQQ0llIFN3
+aXRjaCBVcHN0cmVhbSBQb3J0CgpUaW1lIGRpZmZlcmVuY2UgaXMgODUzbXMuCgpCdXQgd2l0aCB0
+aGUgbGluayB1cCBJUlEgcGF0Y2gsIGR3X3BjaWVfd2FpdF9mb3JfbGluaygpIGlzIHNraXBwZWQg
+YW5kIHRoZQpkZXZpY2UgYXBwZWFycyAqYWZ0ZXIqIHRoZSBpbml0aWFsIGJ1cyBzY2FuIGJ5IHRo
+ZSBQQ0kgY29yZS4KCkZyb20gdGhlIGZhaWx1cmUgbG9nOgoKWyAgICAxLjM5MjEzMF0gcGNpIDAw
+MDQ6NDA6MDAuMDogUENJIGJyaWRnZSB0byBbYnVzIDQxXQpbICAgIDEuMzkyNjA3XSBwY2lfYnVz
+IDAwMDQ6NDA6IHJlc291cmNlIDQgW2lvICAweDAwMDAtMHhmZmZmZl0KWyAgICAxLjM5MzEwM10g
+cGNpX2J1cyAwMDA0OjQwOiByZXNvdXJjZSA1IFttZW0gMHhmNDIwMDAwMC0weGY0ZmZmZmZmXQpb
+ICAgIDEuMzkzNjU3XSBwY2lfYnVzIDAwMDQ6NDA6IHJlc291cmNlIDYgW21lbSAweGEwMDAwMDAw
+MC0weGEzZmZmZmZmZl0KWyAgICAxLjQxMjI5Nl0gcGNpIDAwMDQ6NDE6MDAuMDogWzFiMjE6Mjgw
+Nl0gdHlwZSAwMSBjbGFzcyAweDA2MDQwMCBQQ0llIFN3aXRjaCBVcHN0cmVhbSBQb3J0CgpOb3Rl
+IHRoZSB0aW1pbmcgYW5kIGFsc28gdGhlIFBDSSBicmlkZ2UgcmVzb3VyY2UgYXNzaWdubWVudC4K
+ClNvIGR1cmluZyB0aGUgaW5pdGlhbCBzY2FuLCBQQ0kgY29yZSBkb2Vzbid0IHNlZSB0aGUgc3dp
+dGNoIGFuZCBzaW5jZSB0aGUgUm9vdApQb3J0IGlzIG5vdCBob3QgcGx1ZyBjYXBhYmxlIChJJ20g
+YXNzdW1pbmcgdGhhdCdzIHRoZSBjYXNlKSwgdGhlIHNlY29uZGFyeSBidXMKbnVtYmVyIGdldHMg
+YXNzaWduZWQgYXMgdGhlIHN1Ym9yZGluYXRlIGJ1cyBudW1iZXIgKDQxKS4gVGhpcyBtZWFucywg
+dGhlIFBDSQpjb3JlIGFzc3VtZXMgdGhhdCBvbmx5IG9uZSBidXMgd2lsbCBhcHBlYXIgYmVoaW5k
+IHRoZSBSb290IFBvcnQgc2luY2UgdGhlIFJvb3QKUG9ydCBpcyBub3QgaG90IHBsdWcgY2FwYWJs
+ZS4gVGhpcyB3aWxsIHdvcmsgcGVyZmVjdGx5IGZpbmUgZm9yIFBDSWUgZW5kcG9pbnRzCmNvbm5l
+Y3RlZCB0byB0aGUgUm9vdCBQb3J0LCBzaW5jZSB0aGV5IGRvbid0IGV4dGVuZCB0aGUgYnVzLiBC
+dXQgaWYgeW91IGNvbm5lY3QKYSBQQ0llIHN3aXRjaCwgdGhlbiB5b3UnbGwgc2VlIHRoZSBpc3N1
+ZSBhcyB0aGUgZG93bnN0cmVhbSBidXNzZXMgc3RhcnRzIHNob3dpbmcKdXAgYW5kIFBDSSBjb3Jl
+IGRvZXNuJ3QgZXh0ZW5kIHRoZSBzdWJvcmRpbmF0ZSBidXMgbnVtYmVyIGFmdGVyIGluaXRpYWwg
+c2NhbgpkdXJpbmcgYm9vdC4KClRoaXMgaXMgYWxzbyBjb25maXJtZWQgYnkgdGhlIGJlbG93IGxv
+ZyBpbiBmYWlsdXJlIGNhc2U6CgpbICAgIDEuNDc4ODE0XSBwY2llcG9ydCAwMDA0OjQwOjAwLjA6
+IGJyaWRnZSBoYXMgc3Vib3JkaW5hdGUgNDEgYnV0IG1heCBidXNuIDQ2CgpJZiB5b3UgdHJ5IHRo
+ZSBiZWxvdyBoYWNrLCB5b3UgbWlnaHQgZ2V0IHRoZSBzd2l0Y2ggd29ya2luZzoKCmRpZmYgLS1n
+aXQgYS9kcml2ZXJzL3BjaS9wcm9iZS5jIGIvZHJpdmVycy9wY2kvcHJvYmUuYwppbmRleCBjODNl
+NzVhMGVjMTIuLjAxYWZiNWIyM2ViYSAxMDA2NDQKLS0tIGEvZHJpdmVycy9wY2kvcHJvYmUuYwor
+KysgYi9kcml2ZXJzL3BjaS9wcm9iZS5jCkBAIC0xNzAxLDYgKzE3MDEsMTEgQEAgdm9pZCBzZXRf
+cGNpZV9ob3RwbHVnX2JyaWRnZShzdHJ1Y3QgcGNpX2RldiAqcGRldikKIHsKICAgICAgICB1MzIg
+cmVnMzI7CiAKKyAgICAgICBpZiAocGRldi0+dmVuZG9yID09IDB4MWQ4NyAmJiBwZGV2LT5kZXZp
+Y2UgPT0gMHgzNTg4KSB7CisgICAgICAgICAgICAgICBwZGV2LT5pc19ob3RwbHVnX2JyaWRnZSA9
+IHBkZXYtPmlzX3BjaWVocCA9IDE7CisgICAgICAgICAgICAgICByZXR1cm47CisgICAgICAgfQor
+CiAgICAgICAgcGNpZV9jYXBhYmlsaXR5X3JlYWRfZHdvcmQocGRldiwgUENJX0VYUF9TTFRDQVAs
+ICZyZWczMik7CiAgICAgICAgaWYgKHJlZzMyICYgUENJX0VYUF9TTFRDQVBfSFBDKQogICAgICAg
+ICAgICAgICAgcGRldi0+aXNfaG90cGx1Z19icmlkZ2UgPSBwZGV2LT5pc19wY2llaHAgPSAxOwoK
+VGhlIGFib3ZlIGRpZmYganVzdCBmYWtlcyB0aGUgUm9vdCBQb3J0IGFzIGhvdCBwbHVnIGNhcGFi
+bGUgdG8gdGhlIFBDSSBjb3JlIHNvCnRoYXQgbW9yZSBzdWJvcmRpbmF0ZSBidXMgbnVtYmVycyBn
+ZXRzIGFzc2lnbmVkIHRvIGl0IGluIHRoZSBhbnRpY2lwYXRpb24gb2YKbW9yZSBidXNzZXMgc2hv
+d2luZyB1cCBwb3N0IHNjYW4uCgpJZiB0aGUgYWJvdmUgd29ya3MsIHRoZW4geW91IHNob3VsZCBt
+YWtlIHN1cmUgdGhhdCB0aGUgc3dpdGNoIGlzIHBvd2VyZWQgYW5kIHRoZQpsaW5rIHRvIGJlIHVw
+IGJlZm9yZSB0aGUgaW5pdGlhbCBidXMgc2Nhbi4gVGhlIHByb3BlciB3YXkgdG8gZG8gdGhpcyB3
+b3VsZCBiZSBieQptb2RlbGluZyB5b3VyIHN3aXRjaCBwb3dlciByZXNvdXJjZXMgaW4gZGV2aWNl
+dHJlZSBhbmQgcmVseWluZyBvbiB0aGUKQ09ORklHX1BXUkNUUkxfU0xPVCBkcml2ZXIgdG8gcG93
+ZXIgaXQgdXAgYW5kIHNjYW4gdGhlIGJ1cy4gQnV0IHRoaXMgZHJpdmVyCm5lZWRzIHNvbWUgZXh0
+cmEgd29yayB0byBzYXRpc2Z5IHlvdXIgbmVlZHMgYW5kIEknbSBnb2luZyB0byBwb3N0IGEgc2Vy
+aWVzIGluCnRoZSBjb21pbmcgd2Vla3MgZm9yIHRoYXQuCgpVbnRpbCB0aGVuLCBJJ2Qgc3VnZ2Vz
+dCB0byByZXZlcnQgdGhlIGxpbmsgdXAgSVJRIHBhdGNoIGFzIGEgc3RvcC1nYXAgc29sdXRpb24u
+CgpOT1RFOiBBcyBOaWtsYXMgcmlnaHRseSBwb2ludGVkIG91dCwgdGhpcyBpc3N1ZSBhbHNvIGFm
+ZmVjdHMgdGhlIFFjb20gcGxhdGZvcm1zCndoaWNoIGZvbGxvd3MgdGhlIHNhbWUgY29kZSBwYXR0
+ZXJuIGFuZCBhbHNvIG90aGVyIHBsYXRmb3JtcyBhcyB3ZWxsLiBGb3IgUWNvbSwKd2UgYXJlIHJl
+bHlpbmcgb24gdGhlIHVwY29taW5nIHB3cmN0cmwgZml4ZXMgdG8gcHJvcGVybHkgZW51bWVyYXRl
+IHRoZSBQQ0llCnN3aXRjaGVzIGluIHVwc3RyZWFtLgoKLSBNYW5pCgotLSAK4K6u4K6j4K6/4K61
+4K6j4K+N4K6j4K6p4K+NIOCumuCupOCuvuCumuCuv+CuteCuruCvjQoKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBs
+aXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJh
+ZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
