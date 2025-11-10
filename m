@@ -4,42 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78FD6CCFA1A
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Nov 2025 02:29:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51B86CCFA1A
+	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Nov 2025 02:30:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=rSmvtjHlJq6oJ+WScaZ6oWKG3yN689gHyYWwNIp0K24=; b=K28V9GelBmC1Es
-	0rARCdWf4260whHaJ8KVtMq1JOWRB/oh6ajCIxWZ8a6qG882znsS9W8+A/4CEpBEA1wlh26QXYUm0
-	PjPtzDvsUg9YH6XzmfO1MWNuvuZ/cRZ/8e2/R2UU5YnsxxhFMW6Vf0BLe1qQY8CRMQx2W8/RM3tHI
-	GYdEbZE0CsKA/xQsLP7nY94QGCw1dXvqNl/FYttdQjYTAEQfz9n6MidMj9s8xPdFl399SZfgJqhwd
-	KOAVyG0u3tOtQn3Oq1a4TAFgguDZe82WyR1CSl6VWU0YHQKODLGH8VM1sJXmNpXxrhM9l7f/qrvun
-	RHMPQm/VnZT0djrr46rA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=AxMjCTZbE1oaUTNWu9Bg7X0YFPD03Vb7D8/IcC4kEQA=; b=eDM9BQ75IXjir9
+	yIiY2nRWQfGrD1e4IGaPn1dfxUF9B4d7KNFxjJu7pU0Tm3yz3o6WTfu/S/a9/8HBU/3e4eNxCoRWG
+	+NmnUcWDIFOWeJbsh9hoOqzBm+I7WExl1/zKTSanQxTCc0ffzXzuEaMsy2kcP4ybxi6eV7i8uS8GP
+	dTvxj1ppt8Udt7lvLoQ9Bh2Yx5PZ8sfV2BmJkwLldP68pCNTB+CQQ6vPNQmDJbN32csIMtLlMqA2L
+	A8oxubvpEqO9U634TzwHdT6btCZjh9GhTVTbt+V/ulhzmB0UhOum3yF6F7ruic1yVTZB/+cByyqs2
+	cxe2KbyeyPv47OjvciWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIHeC-00000004cNw-40JG;
-	Mon, 10 Nov 2025 02:28:48 +0000
-Received: from sakura.naobsd.org ([160.16.200.221] helo=mail.naobsd.org)
+	id 1vIHfy-00000004cUE-3mOw;
+	Mon, 10 Nov 2025 02:30:38 +0000
+Received: from mail-m32122.qiye.163.com ([220.197.32.122])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIHe9-00000004cNb-1Pfu
-	for linux-rockchip@lists.infradead.org;
-	Mon, 10 Nov 2025 02:28:46 +0000
-Received: from secure.fukaumi.org ([10.0.0.2])
-	by mail.naobsd.org (8.14.4/8.14.4/Debian-4.1ubuntu1.1) with ESMTP id 5AA2Rd1x016860;
-	Mon, 10 Nov 2025 11:27:39 +0900
-From: FUKAUMI Naoki <naoki@radxa.com>
-To: heiko@sntech.de
-Subject: [PATCH] arm64: dts: rockchip: Turn all LEDs on at boot for Radxa boards
-Date: Mon, 10 Nov 2025 02:27:32 +0000
-Message-ID: <20251110022732.809145-1-naoki@radxa.com>
-X-Mailer: git-send-email 2.43.0
+	id 1vIHfv-00000004cTi-2oPO;
+	Mon, 10 Nov 2025 02:30:37 +0000
+Received: from [172.16.12.129] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 28f6e9869;
+	Mon, 10 Nov 2025 10:30:24 +0800 (GMT+08:00)
+Message-ID: <780a4209-f89f-43a9-9364-331d3b77e61e@rock-chips.com>
+Date: Mon, 10 Nov 2025 10:30:20 +0800
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Cc: shawn.lin@rock-chips.com, Damien Le Moal <dlemoal@kernel.org>,
+ Anand Moon <linux.amoon@gmail.com>, linux-pci@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Dragan Simic <dsimic@manjaro.org>,
+ Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>,
+ Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+ Heiko Stuebner <heiko@sntech.de>, mani@kernel.org,
+ Niklas Cassel <cassel@kernel.org>
+Subject: Re: [RESEND] Re: [PATCH] PCI: dw-rockchip: Skip waiting for link up
+To: FUKAUMI Naoki <naoki@radxa.com>
+References: <20250113-rockchip-no-wait-v1-1-25417f37b92f@kernel.org>
+ <1E8E4DB773970CB5+5a52c9e1-01b8-4872-99b7-021099f04031@radxa.com>
+ <6e87b611-13ea-4d89-8dbf-85510dd86fa6@rock-chips.com>
+ <aQ840q5BxNS1eIai@ryzen> <aQ9FWEuW47L8YOxC@ryzen>
+ <55EB0E5F655F3AFC+136b89fd-98d4-42af-a99d-a0bb05cc93f3@radxa.com>
+ <aRCI5kG16_1erMME@ryzen>
+ <F8B2B6FA2884D69A+b7da13f2-0ffb-4308-b1ba-0549bc461be8@radxa.com>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+In-Reply-To: <F8B2B6FA2884D69A+b7da13f2-0ffb-4308-b1ba-0549bc461be8@radxa.com>
+X-HM-Tid: 0a9a6b99abfe09cckunm39d6557412b970a
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQh9IHVZIGBhMSh0aGkJJHxpWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpKQk
+	xVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=GUxFPHmh5MX8wp7RrOmxB7Fy+w6B+Zbl+TkUp3xCyX6leuKuiZCEFDdiKy0akiHYJJ+ykpT8yYLRVhjtplDwDi210e+zX1I9nI8LBPfoA4nn5T50/H5L3/kwWPOBHjGFG2hrGK534NEh9XfEtJtZdcDhKuiJWgTB2uW9Gc7jEx4=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=ST4GcK2McWrhDhZAl75VtQG+4FHxpdlWOF4ND05GHw4=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251109_182845_600008_5DB90662 
-X-CRM114-Status: GOOD (  10.99  )
+X-CRM114-CacheID: sfid-20251109_183036_185287_C7BCB7BE 
+X-CRM114-Status: GOOD (  26.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -51,293 +77,131 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: stephen@radxa.com, amadeus@jmu.edu.cn, dsimic@manjaro.org, ziyao@disroot.org, robh@kernel.org, sebastian.reichel@collabora.com, linux-rockchip@lists.infradead.org, pbrobinson@gmail.com, dmitry.osipenko@collabora.com, FUKAUMI Naoki <naoki@radxa.com>, devicetree@vger.kernel.org, conor+dt@kernel.org, pgwipeout@gmail.com, jonas@kwiboo.se, kylepzak@projectinitiative.io, damon.ding@rock-chips.com, jbx6244@gmail.com, wens@kernel.org, dmitry.baryshkov@oss.qualcomm.com, liujianfeng1994@gmail.com, detlev.casanova@collabora.com, didi.debian@cknow.org, andy.yan@rock-chips.com, krzk+dt@kernel.org, nicolas.frattaroli@collabora.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Radxa's boards turn all LEDs on at boot(loader), but some boards, e.g.
-ROCK Pi E don't have `default-state` property in Linux kernel tree but
-have it in U-Boot tree[1] instead.
-
-This patch adds `default-state = "on"` for (almost) all LEDs (with a
-few exceptions which should be "off" such as RGB LEDs on E25 and LAN/
-WAN LEDs on E20C/E52C).
-
-Also, remove following redundant properties:
- linux,default-trigger = "default-on"; // use default-state = "on"
- default-state = "off"; // default is "off"
-
-[1] https://source.denx.de/u-boot/u-boot/-/blob/v2025.10/arch/arm/dts/rk3328-rock-pi-e-base-u-boot.dtsi#L11
-
-Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
----
- arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts    | 1 -
- arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts    | 1 +
- arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dts | 3 ++-
- arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi   | 1 +
- arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts   | 2 --
- arch/arm64/boot/dts/rockchip/rk3528-rock-2a.dts      | 1 -
- arch/arm64/boot/dts/rockchip/rk3566-radxa-cm3-io.dts | 1 +
- arch/arm64/boot/dts/rockchip/rk3566-rock-3c.dts      | 1 +
- arch/arm64/boot/dts/rockchip/rk3568-radxa-cm3i.dtsi  | 1 +
- arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts      | 1 +
- arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts      | 3 ++-
- arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dts   | 2 --
- arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts   | 3 ++-
- arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dtsi     | 1 +
- arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts      | 1 +
- arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts     | 3 ++-
- 16 files changed, 16 insertions(+), 10 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts b/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts
-index 7a32972bc2496..c1e3098b9a7bc 100644
---- a/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts
-@@ -35,7 +35,6 @@ green-led {
- 			function = LED_FUNCTION_POWER;
- 			gpios = <&gpio0 RK_PA6 GPIO_ACTIVE_HIGH>;
- 			label = "rockpis:green:power";
--			linux,default-trigger = "default-on";
- 		};
- 
- 		blue-led {
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts b/arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts
-index a4bdd87d0729f..d3d6f34b66fb0 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts
-@@ -59,6 +59,7 @@ leds {
- 
- 		led-0 {
- 			color = <LED_COLOR_ID_BLUE>;
-+			default-state = "on";
- 			gpios = <&gpio3 RK_PA5 GPIO_ACTIVE_LOW>;
- 			linux,default-trigger = "heartbeat";
- 		};
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dts b/arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dts
-index 962b8b231c960..a83ffbef22a7b 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dts
-@@ -39,14 +39,15 @@ leds {
- 		led-0 {
- 			function = LED_FUNCTION_POWER;
- 			color = <LED_COLOR_ID_GREEN>;
-+			default-state = "on";
- 			gpios = <&gpio3 RK_PD4 GPIO_ACTIVE_LOW>;
--			linux,default-trigger = "default-on";
- 		};
- 
- 		/* USER_LED2 */
- 		led-1 {
- 			function = LED_FUNCTION_STATUS;
- 			color = <LED_COLOR_ID_BLUE>;
-+			default-state = "on";
- 			gpios = <&gpio3 RK_PD5 GPIO_ACTIVE_HIGH>;
- 			linux,default-trigger = "heartbeat";
- 		};
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
-index 046dbe3290178..ef434c23fe85c 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
-@@ -35,6 +35,7 @@ leds {
- 		led-0 {
- 			function = LED_FUNCTION_STATUS;
- 			color = <LED_COLOR_ID_BLUE>;
-+			default-state = "on";
- 			gpios = <&gpio3 RK_PD5 GPIO_ACTIVE_HIGH>;
- 			linux,default-trigger = "heartbeat";
- 		};
-diff --git a/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts b/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts
-index b324527561558..79d316a1d8495 100644
---- a/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts
-@@ -62,7 +62,6 @@ leds {
- 
- 		led-lan {
- 			color = <LED_COLOR_ID_GREEN>;
--			default-state = "off";
- 			function = LED_FUNCTION_LAN;
- 			gpios = <&gpio4 RK_PB5 GPIO_ACTIVE_HIGH>;
- 			linux,default-trigger = "netdev";
-@@ -78,7 +77,6 @@ led-sys {
- 
- 		led-wan {
- 			color = <LED_COLOR_ID_GREEN>;
--			default-state = "off";
- 			function = LED_FUNCTION_WAN;
- 			gpios = <&gpio4 RK_PC0 GPIO_ACTIVE_HIGH>;
- 			linux,default-trigger = "netdev";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3528-rock-2a.dts b/arch/arm64/boot/dts/rockchip/rk3528-rock-2a.dts
-index c03ae1dd34560..0b696d49b71fa 100644
---- a/arch/arm64/boot/dts/rockchip/rk3528-rock-2a.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3528-rock-2a.dts
-@@ -45,7 +45,6 @@ led-1 {
- 		default-state = "on";
- 		function = LED_FUNCTION_STATUS;
- 		gpios = <&gpio3 RK_PC1 GPIO_ACTIVE_LOW>;
--		linux,default-trigger = "default-on";
- 	};
- };
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-radxa-cm3-io.dts b/arch/arm64/boot/dts/rockchip/rk3566-radxa-cm3-io.dts
-index b5b253f04cdf5..9e7212b70e3f1 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-radxa-cm3-io.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-radxa-cm3-io.dts
-@@ -46,6 +46,7 @@ leds {
- 		led-1 {
- 			gpios = <&gpio4 RK_PA4 GPIO_ACTIVE_LOW>;
- 			color = <LED_COLOR_ID_GREEN>;
-+			default-state = "on";
- 			function = LED_FUNCTION_ACTIVITY;
- 			linux,default-trigger = "heartbeat";
- 			pinctrl-names = "default";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-rock-3c.dts b/arch/arm64/boot/dts/rockchip/rk3566-rock-3c.dts
-index 6224d72813e59..3ec108bcf89a1 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-rock-3c.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-rock-3c.dts
-@@ -47,6 +47,7 @@ led-0 {
- 			gpios = <&gpio0 RK_PA0 GPIO_ACTIVE_HIGH>;
- 			function = LED_FUNCTION_HEARTBEAT;
- 			color = <LED_COLOR_ID_BLUE>;
-+			default-state = "on";
- 			linux,default-trigger = "heartbeat";
- 			pinctrl-names = "default";
- 			pinctrl-0 = <&user_led2>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568-radxa-cm3i.dtsi b/arch/arm64/boot/dts/rockchip/rk3568-radxa-cm3i.dtsi
-index 729e38b9f620e..140582f8e1034 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568-radxa-cm3i.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3568-radxa-cm3i.dtsi
-@@ -23,6 +23,7 @@ led_user: led-0 {
- 			gpios = <&gpio0 RK_PA6 GPIO_ACTIVE_HIGH>;
- 			function = LED_FUNCTION_HEARTBEAT;
- 			color = <LED_COLOR_ID_GREEN>;
-+			default-state = "on";
- 			linux,default-trigger = "heartbeat";
- 			pinctrl-names = "default";
- 			pinctrl-0 = <&led_user_en>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
-index 44cfdfeed6681..e6c18df0fa582 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
-@@ -47,6 +47,7 @@ led_user: led-0 {
- 			gpios = <&gpio0 RK_PB7 GPIO_ACTIVE_HIGH>;
- 			function = LED_FUNCTION_HEARTBEAT;
- 			color = <LED_COLOR_ID_BLUE>;
-+			default-state = "on";
- 			linux,default-trigger = "heartbeat";
- 			pinctrl-names = "default";
- 			pinctrl-0 = <&led_user_en>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
-index 9bc33422ced50..99d3a8be8f18c 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
-@@ -52,13 +52,14 @@ leds: leds {
- 
- 		power-led {
- 			color = <LED_COLOR_ID_GREEN>;
-+			default-state = "on";
- 			function = LED_FUNCTION_STATUS;
- 			gpios = <&gpio0 RK_PB4 GPIO_ACTIVE_HIGH>;
--			linux,default-trigger = "default-on";
- 		};
- 
- 		user-led {
- 			color = <LED_COLOR_ID_BLUE>;
-+			default-state = "on";
- 			function = LED_FUNCTION_HEARTBEAT;
- 			gpios = <&gpio0 RK_PC4 GPIO_ACTIVE_LOW>;
- 			linux,default-trigger = "heartbeat";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dts b/arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dts
-index 854c118418eb8..f737769d4a007 100644
---- a/arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dts
-@@ -71,7 +71,6 @@ leds-1 {
- 
- 		led-1 {
- 			color = <LED_COLOR_ID_GREEN>;
--			default-state = "off";
- 			function = LED_FUNCTION_LAN;
- 			linux,default-trigger = "netdev";
- 			pwms = <&pwm14 0 1000000 PWM_POLARITY_INVERTED>;
-@@ -80,7 +79,6 @@ led-1 {
- 
- 		led-2 {
- 			color = <LED_COLOR_ID_GREEN>;
--			default-state = "off";
- 			function = LED_FUNCTION_WAN;
- 			linux,default-trigger = "netdev";
- 			pwms = <&pwm11 0 1000000 PWM_POLARITY_INVERTED>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts
-index bc8140883de47..86477346c3f5a 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts
-@@ -88,11 +88,12 @@ gpio-leds {
- 		pinctrl-0 = <&led_pins>;
- 
- 		power-led1 {
-+			default-state = "on";
- 			gpios = <&gpio0 RK_PB7 GPIO_ACTIVE_HIGH>;
--			linux,default-trigger = "default-on";
- 		};
- 
- 		hdd-led2 {
-+			default-state = "on";
- 			gpios = <&gpio0 RK_PC0 GPIO_ACTIVE_HIGH>;
- 			linux,default-trigger = "disk-activity";
- 		};
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dtsi
-index e5c474e4d02a6..8c4a4270f9f93 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dtsi
-@@ -30,6 +30,7 @@ leds {
- 		led_rgb_b {
- 			function = LED_FUNCTION_STATUS;
- 			color = <LED_COLOR_ID_BLUE>;
-+			default-state = "on";
- 			gpios = <&gpio0 RK_PB7 GPIO_ACTIVE_HIGH>;
- 			linux,default-trigger = "heartbeat";
- 		};
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts
-index 0dd90c744380b..87e9d4b86dad4 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts
-@@ -33,6 +33,7 @@ leds {
- 		led_rgb_b {
- 			function = LED_FUNCTION_STATUS;
- 			color = <LED_COLOR_ID_BLUE>;
-+			default-state = "on";
- 			gpios = <&gpio0 RK_PA0 GPIO_ACTIVE_HIGH>;
- 			linux,default-trigger = "heartbeat";
- 		};
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
-index 19a08f7794e67..46c81e796b100 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
-@@ -54,6 +54,7 @@ leds {
- 
- 		io-led {
- 			color = <LED_COLOR_ID_BLUE>;
-+			default-state = "on";
- 			function = LED_FUNCTION_STATUS;
- 			gpios = <&gpio3 RK_PD5 GPIO_ACTIVE_HIGH>;
- 			linux,default-trigger = "heartbeat";
-@@ -61,9 +62,9 @@ io-led {
- 
- 		power-led {
- 			color = <LED_COLOR_ID_GREEN>;
-+			default-state = "on";
- 			function = LED_FUNCTION_POWER;
- 			gpios = <&gpio3 RK_PC4 GPIO_ACTIVE_HIGH>;
--			linux,default-trigger = "default-on";
- 		};
- 	};
- 
--- 
-2.43.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgRnVrYXVtaQoK5ZyoIDIwMjUvMTEvMTAg5pif5pyf5LiAIDc6MjYsIEZVS0FVTUkgTmFva2kg
+5YaZ6YGTOgo+IChSRVNFTkQ6IGZpeCBtYW5pJ3MgZW1haWwgYWRkcmVzcykKPiAKPiBIaSBOaWts
+YXMsCj4gCj4gT24gMTEvOS8yNSAyMToyOCwgTmlrbGFzIENhc3NlbCB3cm90ZToKPj4gT24gU3Vu
+LCBOb3YgMDksIDIwMjUgYXQgMDE6NDI6MjNQTSArMDkwMCwgRlVLQVVNSSBOYW9raSB3cm90ZToK
+Pj4+IEhpIE5pa2xhcywKPj4+Cj4+PiBPbiAxMS84LzI1IDIyOjI3LCBOaWtsYXMgQ2Fzc2VsIHdy
+b3RlOgo+Pj4gKHNuaXApPiAoQW5kIGJ0dy4gcGxlYXNlIHRlc3Qgd2l0aCB0aGUgbGF0ZXN0IDYu
+MTgtcmMsIGFzLCBmcm9tIAo+Pj4gZXhwZXJpZW5jZSwKPj4+IHRoZQo+Pj4+IEFTUE0gcHJvYmxl
+bXMgaW4gZWFybGllciBSQ3MgY2FuIHJlc3VsdCBpbiBzb21lIHdlaXJkIHByb2JsZW1zIHRoYXQg
+YXJlCj4+Pj4gbm90IGltbWVkaWF0ZWx5IGRlZHVjZWQgdG8gYmUgY2F1c2VkIGJ5IHRoZSBBU1BN
+IGVuYWJsZW1lbnQuKQo+Pj4KPj4+IEhlcmUgaXMgZG1lc2cgZnJvbSB2Ni4xOC1yYzQ6Cj4+PiDC
+oCBodHRwczovL2dpc3QuZ2l0aHViLmNvbS9SYWR4YU5hb2tpLzQwZTFkMDQ5YmZmNGYxZDJkNDc3
+M2E1YmEwZWQ5ZGZmCj4+Cj4+IFNhbWUgcHJvYmxlbSBhcyBiZWZvcmU6Cj4+IFvCoMKgwqAgMS43
+MzI1MzhdIHBjaV9idXMgMDAwNDo0MzogYnVzbl9yZXM6IGNhbiBub3QgaW5zZXJ0IFtidXMgNDMt
+NDFdIAo+PiB1bmRlciBbYnVzIDQyLTQxXSAoY29uZmxpY3RzIHdpdGggKG51bGwpIFtidXMgNDIt
+NDFdKQo+PiBbwqDCoMKgIDEuNzMyNjQ1XSBwY2lfYnVzIDAwMDQ6NDM6IGJ1c25fcmVzOiBbYnVz
+IDQzLTQxXSBlbmQgaXMgdXBkYXRlZCAKPj4gdG8gNDMKPj4gW8KgwqDCoCAxLjczMjY1MV0gcGNp
+X2J1cyAwMDA0OjQzOiBidXNuX3JlczogY2FuIG5vdCBpbnNlcnQgW2J1cyA0M10gCj4+IHVuZGVy
+IFtidXMgNDItNDFdIChjb25mbGljdHMgd2l0aCAobnVsbCkgW2J1cyA0Mi00MV0pCj4+IFvCoMKg
+wqAgMS43MzI2NjFdIHBjaSAwMDA0OjQyOjAwLjA6IGRldmljZXMgYmVoaW5kIGJyaWRnZSBhcmUg
+dW51c2FibGUgCj4+IGJlY2F1c2UgW2J1cyA0M10gY2Fubm90IGJlIGFzc2lnbmVkIGZvciB0aGVt
+Cj4+IFvCoMKgwqAgMS43MzI4NDBdIHBjaV9idXMgMDAwNDo0NDogYnVzbl9yZXM6IGNhbiBub3Qg
+aW5zZXJ0IFtidXMgNDQtNDFdIAo+PiB1bmRlciBbYnVzIDQyLTQxXSAoY29uZmxpY3RzIHdpdGgg
+KG51bGwpIFtidXMgNDItNDFdKQo+PiBbwqDCoMKgIDEuNzMyOTQ3XSBwY2lfYnVzIDAwMDQ6NDQ6
+IGJ1c25fcmVzOiBbYnVzIDQ0LTQxXSBlbmQgaXMgdXBkYXRlZCAKPj4gdG8gNDQKPj4gW8KgwqDC
+oCAxLjczMjk1Ml0gcGNpX2J1cyAwMDA0OjQ0OiBidXNuX3JlczogY2FuIG5vdCBpbnNlcnQgW2J1
+cyA0NF0gCj4+IHVuZGVyIFtidXMgNDItNDFdIChjb25mbGljdHMgd2l0aCAobnVsbCkgW2J1cyA0
+Mi00MV0pCj4+IFvCoMKgwqAgMS43MzI5NjJdIHBjaSAwMDA0OjQyOjAyLjA6IGRldmljZXMgYmVo
+aW5kIGJyaWRnZSBhcmUgdW51c2FibGUgCj4+IGJlY2F1c2UgW2J1cyA0NF0gY2Fubm90IGJlIGFz
+c2lnbmVkIGZvciB0aGVtCj4+IFvCoMKgwqAgMS43MzMxMzRdIHBjaV9idXMgMDAwNDo0NTogYnVz
+bl9yZXM6IGNhbiBub3QgaW5zZXJ0IFtidXMgNDUtNDFdIAo+PiB1bmRlciBbYnVzIDQyLTQxXSAo
+Y29uZmxpY3RzIHdpdGggKG51bGwpIFtidXMgNDItNDFdKQo+PiBbwqDCoMKgIDEuNzMzMjQ2XSBw
+Y2lfYnVzIDAwMDQ6NDU6IGJ1c25fcmVzOiBbYnVzIDQ1LTQxXSBlbmQgaXMgdXBkYXRlZCAKPj4g
+dG8gNDUKPj4gW8KgwqDCoCAxLjczMzI1NV0gcGNpX2J1cyAwMDA0OjQ1OiBidXNuX3JlczogY2Fu
+IG5vdCBpbnNlcnQgW2J1cyA0NV0gCj4+IHVuZGVyIFtidXMgNDItNDFdIChjb25mbGljdHMgd2l0
+aCAobnVsbCkgW2J1cyA0Mi00MV0pCj4+IFvCoMKgwqAgMS43MzMyNjZdIHBjaSAwMDA0OjQyOjA2
+LjA6IGRldmljZXMgYmVoaW5kIGJyaWRnZSBhcmUgdW51c2FibGUgCj4+IGJlY2F1c2UgW2J1cyA0
+NV0gY2Fubm90IGJlIGFzc2lnbmVkIGZvciB0aGVtCj4+IFvCoMKgwqAgMS43MzM0MzhdIHBjaV9i
+dXMgMDAwNDo0NjogYnVzbl9yZXM6IGNhbiBub3QgaW5zZXJ0IFtidXMgNDYtNDFdIAo+PiB1bmRl
+ciBbYnVzIDQyLTQxXSAoY29uZmxpY3RzIHdpdGggKG51bGwpIFtidXMgNDItNDFdKQo+PiBbwqDC
+oMKgIDEuNzMzNTQ0XSBwY2lfYnVzIDAwMDQ6NDY6IGJ1c25fcmVzOiBbYnVzIDQ2LTQxXSBlbmQg
+aXMgdXBkYXRlZCAKPj4gdG8gNDYKPj4gW8KgwqDCoCAxLjczMzU1MF0gcGNpX2J1cyAwMDA0OjQ2
+OiBidXNuX3JlczogY2FuIG5vdCBpbnNlcnQgW2J1cyA0Nl0gCj4+IHVuZGVyIFtidXMgNDItNDFd
+IChjb25mbGljdHMgd2l0aCAobnVsbCkgW2J1cyA0Mi00MV0pCj4+IFvCoMKgwqAgMS43MzM1NjBd
+IHBjaSAwMDA0OjQyOjBlLjA6IGRldmljZXMgYmVoaW5kIGJyaWRnZSBhcmUgdW51c2FibGUgCj4+
+IGJlY2F1c2UgW2J1cyA0Nl0gY2Fubm90IGJlIGFzc2lnbmVkIGZvciB0aGVtCj4+IFvCoMKgwqAg
+MS43MzM1NzFdIHBjaV9idXMgMDAwNDo0MjogYnVzbl9yZXM6IFtidXMgNDItNDFdIGVuZCBpcyB1
+cGRhdGVkIAo+PiB0byA0Ngo+PiBbwqDCoMKgIDEuNzMzNTc1XSBwY2lfYnVzIDAwMDQ6NDI6IGJ1
+c25fcmVzOiBjYW4gbm90IGluc2VydCBbYnVzIDQyLTQ2XSAKPj4gdW5kZXIgW2J1cyA0MV0gKGNv
+bmZsaWN0cyB3aXRoIChudWxsKSBbYnVzIDQxXSkKPj4gW8KgwqDCoCAxLjczMzU4NV0gcGNpIDAw
+MDQ6NDE6MDAuMDogZGV2aWNlcyBiZWhpbmQgYnJpZGdlIGFyZSB1bnVzYWJsZSAKPj4gYmVjYXVz
+ZSBbYnVzIDQyLTQ2XSBjYW5ub3QgYmUgYXNzaWduZWQgZm9yIHRoZW0KPj4gW8KgwqDCoCAxLjcz
+MzU5Nl0gcGNpZXBvcnQgMDAwNDo0MDowMC4wOiBicmlkZ2UgaGFzIHN1Ym9yZGluYXRlIDQxIGJ1
+dCAKPj4gbWF4IGJ1c24gNDYKPj4KPj4KPj4gU2VlbXMgbGlrZSB0aGUgQVNNMjgwNiBzd2l0Y2gs
+IGZvciBzb21lIHJlYXNvbiwgaXMgbm90IHJlYWR5Lgo+Pgo+PiBPbmUgY2hhbmdlIHRoYXQgRGll
+ZGVyaWsgcG9pbnRlZCBvdXQgaXMgdGhhdCBpbiB0aGUgImdvb2QiIGNhc2UsCj4+IHRoZSBsaW5r
+IGlzIGFsd2F5cyBpbiBHZW4xIHNwZWVkLgo+Pgo+PiBQZXJoYXBzIHlvdSBjb3VsZCBidWlsZCB3
+aXRoIENPTkZJR19QQ0lfUVVJUktTPXkgYW5kIHRyeSB0aGlzIHBhdGNoOgo+Pgo+PiBkaWZmIC0t
+Z2l0IGEvZHJpdmVycy9wY2kvcXVpcmtzLmMgYi9kcml2ZXJzL3BjaS9xdWlya3MuYwo+PiBpbmRl
+eCAyMTRlZDA2MGNhMWIuLmFjMTM0ZDk1YTk3ZiAxMDA2NDQKPj4gLS0tIGEvZHJpdmVycy9wY2kv
+cXVpcmtzLmMKPj4gKysrIGIvZHJpdmVycy9wY2kvcXVpcmtzLmMKPj4gQEAgLTk2LDYgKzk2LDcg
+QEAgaW50IHBjaWVfZmFpbGVkX2xpbmtfcmV0cmFpbihzdHJ1Y3QgcGNpX2RldiAqZGV2KQo+PiDC
+oCB7Cj4+IMKgwqDCoMKgwqAgc3RhdGljIGNvbnN0IHN0cnVjdCBwY2lfZGV2aWNlX2lkIGlkc1td
+ID0gewo+PiDCoMKgwqDCoMKgwqDCoMKgwqAgeyBQQ0lfVkRFVklDRShBU01FRElBLCAweDI4MjQp
+IH0sIC8qIEFTTWVkaWEgQVNNMjgyNCAqLwo+PiArwqDCoMKgwqDCoMKgwqAgeyBQQ0lfVkRFVklD
+RShBU01FRElBLCAweDI4MDYpIH0sIC8qIEFTTWVkaWEgQVNNMjgwNiAqLwo+PiDCoMKgwqDCoMKg
+wqDCoMKgwqAge30KPj4gwqDCoMKgwqDCoCB9Owo+PiDCoMKgwqDCoMKgIHUxNiBsbmtzdGEsIGxu
+a2N0bDI7Cj4gCj4gSXQgZG9lc24ndCBoZWxwIHdpdGggZWl0aGVyIHByb2JpbmcgYmVoaW5kIHRo
+ZSBicmlkZ2Ugb3IgdGhlIGxpbmsgc3BlZWQuCj4gCj4+IElmIHRoYXQgZG9lcyBub3Qgd29yaywg
+cGVyaGFwcyB5b3UgY291bGQgdHJ5IHRoaXMgcGF0Y2gKPj4gKGFzc3VtaW5nIHRoYXQgYWxsIFJv
+Y2sgNUM6cyBoYXZlIGEgQVNNMjgwNiBvbiBwY2llMngxbDIpOgo+IAo+IFJPQ0sgNUMgaGFzIGEg
+UENJZSBGUEMgY29ubmVjdG9yIGFuZCBJJ20gdXNpbmcgRHVhbCAyLjVHIFJvdXRlciBIQVQuCj4g
+IMKgaHR0cHM6Ly9yYWR4YS5jb20vcHJvZHVjdHMvcm9jazUvNWMjdGVjaHNwZWMKPiAgwqBodHRw
+czovL3JhZHhhLmNvbS9wcm9kdWN0cy9hY2Nlc3Nvcmllcy9kdWFsLTItNWctcm91dGVyLWhhdAo+
+IAo+IFJlZ2FyZGluZyB0aGUgbGluayBzcGVlZCwgSSBpbml0aWFsbHkgc3VzcGVjdGVkIHRoZSBG
+UEMgY29ubmVjdG9yIGFuZC9vciAKPiBjYWJsZSBtaWdodCBiZSB0aGUgaXNzdWUuIEhvd2V2ZXIs
+IEkgdHJpZWQgdGhlIER1YWwgMi41RyBSb3V0ZXIgSEFUIHdpdGggCj4gdGhlIFJPQ0sgNUEgKHdo
+aWNoIHVzZXMgYSBkaWZmZXJlbnQgY2FibGUpLCBhbmQgSSBnb3QgdGhlIHNhbWUgcmVzdWx0Lgo+
+IAo+IEJUVywgdGhlIGxpbmsgc3BlZWQgdmFyaWVzIGJldHdlZW4gMkdiL3MgYW5kIDRHYi9zIGRl
+cGVuZGluZyBvbiB0aGUgCj4gcmVib290LiAod2l0aCBvciB3aXRob3V0IHF1aXJrKQoKQ291bGQg
+eW91IHBsZWFzZSBoZWxwIGNoZWNrIHRoaXMgcGF0Y2g/CgotLS0gYS9kcml2ZXJzL3BjaS9jb250
+cm9sbGVyL2R3Yy9wY2llLWR3LXJvY2tjaGlwLmMKKysrIGIvZHJpdmVycy9wY2kvY29udHJvbGxl
+ci9kd2MvcGNpZS1kdy1yb2NrY2hpcC5jCkBAIC00NTQsNiArNDU0LDggQEAgc3RhdGljIGlycXJl
+dHVybl90IApyb2NrY2hpcF9wY2llX3JjX3N5c19pcnFfdGhyZWFkKGludCBpcnEsIHZvaWQgKmFy
+ZykKICAgICAgICAgc3RydWN0IGR3X3BjaWUgKnBjaSA9ICZyb2NrY2hpcC0+cGNpOwogICAgICAg
+ICBzdHJ1Y3QgZHdfcGNpZV9ycCAqcHAgPSAmcGNpLT5wcDsKICAgICAgICAgc3RydWN0IGRldmlj
+ZSAqZGV2ID0gcGNpLT5kZXY7CisgICAgICAgc3RydWN0IHBjaV9idXMgKmNoaWxkLCAqcm9vdF9i
+dXMgPSBOVUxMOworICAgICAgIHN0cnVjdCBwY2lfZGV2ICpicmlkZ2U7CiAgICAgICAgIHUzMiBy
+ZWc7CgogICAgICAgICByZWcgPSByb2NrY2hpcF9wY2llX3JlYWRsX2FwYihyb2NrY2hpcCwgClBD
+SUVfQ0xJRU5UX0lOVFJfU1RBVFVTX01JU0MpOwpAQCAtNDYyLDEyICs0NjQsMjEgQEAgc3RhdGlj
+IGlycXJldHVybl90IApyb2NrY2hpcF9wY2llX3JjX3N5c19pcnFfdGhyZWFkKGludCBpcnEsIHZv
+aWQgKmFyZykKICAgICAgICAgZGV2X2RiZyhkZXYsICJQQ0lFX0NMSUVOVF9JTlRSX1NUQVRVU19N
+SVNDOiAlI3hcbiIsIHJlZyk7CiAgICAgICAgIGRldl9kYmcoZGV2LCAiTFRTU01fU1RBVFVTOiAl
+I3hcbiIsIApyb2NrY2hpcF9wY2llX2dldF9sdHNzbShyb2NrY2hpcCkpOwoKKyAgICAgICBsaXN0
+X2Zvcl9lYWNoX2VudHJ5KGNoaWxkLCAmcHAtPmJyaWRnZS0+YnVzLT5jaGlsZHJlbiwgbm9kZSkg
+eworICAgICAgICAgICAgICAgaWYgKGNoaWxkLT5wYXJlbnQgPT0gcHAtPmJyaWRnZS0+YnVzKSB7
+CisgICAgICAgICAgICAgICAgICAgICAgIHJvb3RfYnVzID0gY2hpbGQ7CisgICAgICAgICAgICAg
+ICAgICAgICAgIGJyaWRnZSA9IHJvb3RfYnVzLT5zZWxmOworICAgICAgICAgICAgICAgICAgICAg
+ICBicmVhazsKKyAgICAgICAgICAgICAgIH0KKyAgICAgICAgfQorCiAgICAgICAgIGlmIChyZWcg
+JiBQQ0lFX1JETEhfTElOS19VUF9DSEdFRCkgewogICAgICAgICAgICAgICAgIGlmIChyb2NrY2hp
+cF9wY2llX2xpbmtfdXAocGNpKSkgewogICAgICAgICAgICAgICAgICAgICAgICAgbXNsZWVwKFBD
+SUVfUkVTRVRfQ09ORklHX1dBSVRfTVMpOwogICAgICAgICAgICAgICAgICAgICAgICAgZGV2X2Ri
+ZyhkZXYsICJSZWNlaXZlZCBMaW5rIHVwIGV2ZW50LiBTdGFydGluZyAKZW51bWVyYXRpb24hXG4i
+KTsKICAgICAgICAgICAgICAgICAgICAgICAgIC8qIFJlc2NhbiB0aGUgYnVzIHRvIGVudW1lcmF0
+ZSBlbmRwb2ludCBkZXZpY2VzICovCiAgICAgICAgICAgICAgICAgICAgICAgICBwY2lfbG9ja19y
+ZXNjYW5fcmVtb3ZlKCk7CisgICAgICAgICAgICAgICAgICAgICAgIHBjaV9zdG9wX2FuZF9yZW1v
+dmVfYnVzX2RldmljZShicmlkZ2UpOwogICAgICAgICAgICAgICAgICAgICAgICAgcGNpX3Jlc2Nh
+bl9idXMocHAtPmJyaWRnZS0+YnVzKTsKICAgICAgICAgICAgICAgICAgICAgICAgIHBjaV91bmxv
+Y2tfcmVzY2FuX3JlbW92ZSgpOwogICAgICAgICAgICAgICAgIH0KCgo+IAo+IEJlc3QgcmVnYXJk
+cywKPiAKPiAtLSAKPiBGVUtBVU1JIE5hb2tpCj4gUmFkeGEgQ29tcHV0ZXIgKFNoZW56aGVuKSBD
+by4sIEx0ZC4KPiAKPj4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAv
+cmszNTg4cy1yb2NrLTVjLmR0cyBiL2FyY2gvIAo+PiBhcm02NC9ib290L2R0cy9yb2NrY2hpcC9y
+azM1ODhzLXJvY2stNWMuZHRzCj4+IGluZGV4IGRkNzMxN2JhYjYxMy4uMjZmODUzOWQ5MzRhIDEw
+MDY0NAo+PiAtLS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OHMtcm9jay01
+Yy5kdHMKPj4gKysrIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODhzLXJvY2st
+NWMuZHRzCj4+IEBAIC00NTIsNiArNDUyLDcgQEAgJnBjaWUyeDFsMiB7Cj4+IMKgwqDCoMKgwqAg
+cGluY3RybC0wID0gPCZwY2llMjB4MV8yX3BlcnN0bl9tMD47Cj4+IMKgwqDCoMKgwqAgcmVzZXQt
+Z3Bpb3MgPSA8JmdwaW8zIFJLX1BEMSBHUElPX0FDVElWRV9ISUdIPjsKPj4gwqDCoMKgwqDCoCB2
+cGNpZTN2My1zdXBwbHkgPSA8JnBjaWUyeDFsMl8zdjM+Owo+PiArwqDCoMKgIG1heC1saW5rLXNw
+ZWVkID0gPDE+Owo+PiDCoMKgwqDCoMKgIHN0YXR1cyA9ICJva2F5IjsKPj4gwqAgfTsKPj4KPj4K
+Pj4KPj4gS2luZCByZWdhcmRzLAo+PiBOaWtsYXMKPj4KPiAKPiAKCgpfX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxp
+c3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFk
+ZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
