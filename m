@@ -4,58 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B203FCCFA13
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Nov 2025 19:59:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EAF29CCF9E3
+	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Nov 2025 22:15:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=G+jpF7giJkBrzj96D1Z3KMjJkGU91fRRGN66FbsFSsM=; b=uqD9BUEwzjqVjb
-	7faudnpPMPXmnDKY6T2OyuNlMMSi9/7UV9VFrSsKuMffp736/eSNl3I2+6b4oHrtxfThc7bdDbBcu
-	1d7aVWXnzc+otfkZVVaKEfP3O5LVTxQjz8rZUBLEoOAgugpRtvVrcdWkWiVWvhPh7buCMOVNOOV2T
-	71vaUdvdeDm3TOtP0KKSF8ywWs9X1tfAKRoie2+B2b43eu+HOdHqTmaid9pV193Up94MR0GOCUadl
-	PVwavVD0Ivtzhh7l4FNOSc/2UpPZz7ig1ijworcMIk6DnCwI0iOk42+rRq7IQdYZb42OzouMaSZU6
-	ULrOxvJpYG8OgEQuECrw==;
+	List-Owner; bh=/YWpKxZfOVEdxQpE/9Cv9EV00mNJU704R8yAHqQCTuE=; b=IZdBgzmT/V9/ZZ
+	FTJLLZZjn8oyjN7JzRCJV9W0lL2JYEGvHl+26REbXklU1IZYmqDKoMY0a8roooRcT175eXr/Aq39a
+	546UQHuI+teoXICyIsZiZDj6exUFDseMf7yxENbs2gjpJGjLeaIP52gkPSOGjrSE0Lhxy5CUNW19/
+	pxS5hovbC8CtkVZyG/Y36tsfUQEta5xBirUd5Y8WuIbt95MncOgef8ci/M0nMM574hmWBxiWBd/6w
+	f3ANRGkeiJb3lT0B2MOejfUsuRvoUnce8vRD4C518epXcCH+s8Cx0MIAu0VOeBcCAI+euTcTnRq/Y
+	mj9hcngDo69F/1efIb5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIY2o-000000063F8-3IoZ;
-	Mon, 10 Nov 2025 19:59:18 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vIaAc-00000006C0r-2YPX;
+	Mon, 10 Nov 2025 22:15:30 +0000
+Received: from smtpbgbr1.qq.com ([54.207.19.206])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIY2n-000000063Eg-082s;
-	Mon, 10 Nov 2025 19:59:17 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 303CD6013F;
-	Mon, 10 Nov 2025 19:59:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C9D79C116B1;
-	Mon, 10 Nov 2025 19:59:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1762804755;
-	bh=wTnqwKhS+4PIH92TTwaqkXzXibgTx5JR53nrD4Z6ed4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=HaLaT3JMP3hIC3CDosn1iMi1gDO/ywlO3P/pwUD8CTRbVSSwNbZrKB1DME5dhEYN0
-	 p1P9Dl+JZXXEdBP4rBLJ93uFiMublnmBr9MWG/g1zq6Go5+L0UPdfk3x+Tm2Epdzgz
-	 pmHbp5ZVfEy6HzE7oMEKCpuxu/wcScdtQs3XKu/hy2HXEcG++sqkvPw9tMKpsTmOMz
-	 6KQyP7o0g3SZpvXAPt3wCVw4UoVn8vVFj/MCEEmTljRMkYkBZwsvpw7g2qacJmuzwA
-	 Tuefvy8TiAyC9r7GnuL1MGyEJ8fCsDiVypDeLEdxo4UahbFRpEo1f4TFeLdjuGnt3P
-	 DRoQiSAlHQ/Tw==
-Date: Mon, 10 Nov 2025 20:59:08 +0100
-From: Niklas Cassel <cassel@kernel.org>
-To: Manivannan Sadhasivam <mani@kernel.org>
-Cc: Shawn Lin <shawn.lin@rock-chips.com>, FUKAUMI Naoki <naoki@radxa.com>,
-	Damien Le Moal <dlemoal@kernel.org>,
-	Anand Moon <linux.amoon@gmail.com>, linux-pci@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Dragan Simic <dsimic@manjaro.org>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>
+	id 1vIaAZ-00000006BzR-370a;
+	Mon, 10 Nov 2025 22:15:29 +0000
+X-QQ-mid: zesmtpip4t1762812868t96193133
+X-QQ-Originating-IP: E9Yl8bFeRQ31iU6DcptQALqHx/7FY2qbcwSWHKucAQI=
+Received: from [IPV6:240f:10b:7440:1:62e3:2c99 ( [localhost])
+	by bizesmtp.qq.com (ESMTP) with 
+	id ; Tue, 11 Nov 2025 06:14:25 +0800 (CST)
+X-QQ-SSF: 0000000000000000000000000000000
+X-QQ-GoodBg: 0
+X-BIZMAIL-ID: 3378252220156844302
+Message-ID: <326A5CF08811110E+7785bc1e-6245-453d-9312-1b5726e7aed1@radxa.com>
+Date: Tue, 11 Nov 2025 07:14:23 +0900
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
 Subject: Re: [RESEND] Re: [PATCH] PCI: dw-rockchip: Skip waiting for link up
-Message-ID: <aRJEDEEJr9Ic-RKN@fedora>
+To: Niklas Cassel <cassel@kernel.org>, Manivannan Sadhasivam <mani@kernel.org>
+Cc: Shawn Lin <shawn.lin@rock-chips.com>, Damien Le Moal
+ <dlemoal@kernel.org>, Anand Moon <linux.amoon@gmail.com>,
+ linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Dragan Simic <dsimic@manjaro.org>, Lorenzo Pieralisi
+ <lpieralisi@kernel.org>, =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?=
+ <kw@linux.com>, Rob Herring <robh@kernel.org>,
+ Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>
 References: <55EB0E5F655F3AFC+136b89fd-98d4-42af-a99d-a0bb05cc93f3@radxa.com>
  <aRCI5kG16_1erMME@ryzen>
  <F8B2B6FA2884D69A+b7da13f2-0ffb-4308-b1ba-0549bc461be8@radxa.com>
@@ -66,9 +58,32 @@ References: <55EB0E5F655F3AFC+136b89fd-98d4-42af-a99d-a0bb05cc93f3@radxa.com>
  <dc932773-af5b-4af7-a0d0-8cc72dfbd3c7@rock-chips.com>
  <aRHb4S40a7ZUDop1@ryzen>
  <2n3wamm3txxc6xbmvf3nnrvaqpgsck3w4a6omxnhex3mqeujib@2tb4svn5d3z6>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <2n3wamm3txxc6xbmvf3nnrvaqpgsck3w4a6omxnhex3mqeujib@2tb4svn5d3z6>
+ <aRJEDEEJr9Ic-RKN@fedora>
+Content-Language: en-US
+From: FUKAUMI Naoki <naoki@radxa.com>
+In-Reply-To: <aRJEDEEJr9Ic-RKN@fedora>
+X-QQ-SENDSIZE: 520
+Feedback-ID: zesmtpip:radxa.com:qybglogicsvrsz:qybglogicsvrsz4b-0
+X-QQ-XMAILINFO: NvP4hNjT8tlUGQl73nD4w74yzWMi3692DHk2wMnNSFnhams3vmaBLoOX
+	AH88WridlNYalHSFKdkVS8kbWUS7fzC6P/ND9y3SQAtiuFMeeoLIUOTQ0FpOXsaFPR1iYCG
+	L0GLZ/HiBOyOD6Oz3OJET1nqQoluPSdqoymkneH39Rdz6NJmRokyRAq6BPipeqbITEwbUr2
+	UasqRCFc+HZaacB0q/Iah5Tiwg81XSfmWhdHOWcvXSErdlJHgzJZ2Kbl37Dxa4QaD1g/zMd
+	xKwtKjOS0jSN+RV/vZr4FQZdPCMaX6mzBOqGF5gU0O6KZOXpjW/elAHUqUkPdvpBeuKUTmj
+	hX50fBtLSHagELRXIAdbfyU4/ComUudobKMMOOei21X3tbOfu4ikvrD59bErvqqNG/ETiSd
+	TmodQOvlTBzLDKjgMQ7XEt426pgUznc83XYdvBNZhat1t/x/RMsKVsaVCPR1qkxqjViKtI5
+	48jUXAAEkqb+0WXmffC1FlmZl+0VJji0hJSbavM7uz+NJlV/6mmgAoibiexUAmNpCKrhv4y
+	fMJsAKwTtyFY5CuqdFMLxWsfdQhd1JH8FU0lmmxMbjuz0TQvbbjSQhMZZAXdW0x6ExWzwSt
+	q7arCPFNsFsTBmtQ0uprdNK+GWk3a3CrB1D3bxMdeAoOqr3oMw0JdGi7Sr9Dg8vHK1SiuM4
+	RfsZjATq/Z0uuxQ140uX0gXLehVtkL6k40BSv23Ps0v5zdjydwqtkBSRA5sYQz2Xpvgau9r
+	tHeXqStezaa5TTNj4QLNc51BD3JlrUnLk79cN07YpZVg4JpZ4altdYUzT1ILiPT1Cgc2OlJ
+	MRWnYfffSRD7E7qip9cP9bqIuSgNCOGexX+HnJBzMwFbk5xdjSbh0BXR1hWQ2N3zBXWB4Rh
+	7kmy0cRHbwEyKd+iQlHBA5AxpI+Lnh8HCA8R+DaPbzzFG5Bzoa7aYgiCwQYTkZZhp9m/9yd
+	jmB1nUBQHf9hts1gNtJyU0CdOReCVg229NDOomBloW90Du96t9p0Qh6sbIyLiIxZEHmU=
+X-QQ-XMRINFO: NI4Ajvh11aEj8Xl/2s1/T8w=
+X-QQ-RECHKSPAM: 0
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251110_141528_633266_BE14FCDD 
+X-CRM114-Status: GOOD (  24.83  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,78 +95,91 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Nov 10, 2025 at 09:23:02PM +0530, Manivannan Sadhasivam wrote:
-> > 
-> > Considering what Shawn says, that the switch gets enumerated properly
-> > if we simply add a msleep() in ->start_link(), which will be called
-> > by dw_pcie_host_init() before pci_host_probe() is called...
-> > 
+Hi Niklas,
+
+On 11/11/25 04:59, Niklas Cassel wrote:
+> On Mon, Nov 10, 2025 at 09:23:02PM +0530, Manivannan Sadhasivam wrote:
+>>>
+>>> Considering what Shawn says, that the switch gets enumerated properly
+>>> if we simply add a msleep() in ->start_link(), which will be called
+>>> by dw_pcie_host_init() before pci_host_probe() is called...
+>>>
+>>
+>> Yes, that delay probably gives enough time for the link up IRQ to kick in before
+>> the initial bus scan happens.
 > 
-> Yes, that delay probably gives enough time for the link up IRQ to kick in before
-> the initial bus scan happens.
-
-I think that the problem is that even for platforms with link up IRQ,
-we will always do:
-1) dw_pcie_start_link() (if (!dw_pcie_link_up()))
-2) pci_host_probe() from dw_pcie_host_init(), this will enumerate the bus
-3) pci_rescan_bus() from the Link Up IRQ handler
-
-Thus, in 2, when enumerating the bus, without performing any of the delays
-mandated by the PCIe spec, it still seems possible to detect a device (it
-must have been really quick to initialize), and to communicate with that
-device, however since we have not performed the delays mandated by the spec,
-it appears that the device might not yet behave properly.
-
-Hence my suggestion to never call pci_host_probe() in dw_pcie_host_init()
-for platforms with Link Up IRQ.
-
-At least for pcie-dw-rockchip.c, we only unmask the Link Up IRQ after
-dw_pcie_host_init() has returned, so I think that your theory: that Shawn's
-suggested delay causes the Link Up IRQ to kick in before the initial bus
-scan, is incorrect. (Since the IRQ should not be able to trigger until
-dw_pcie_host_init() has returned.)
-
-
+> I think that the problem is that even for platforms with link up IRQ,
+> we will always do:
+> 1) dw_pcie_start_link() (if (!dw_pcie_link_up()))
+> 2) pci_host_probe() from dw_pcie_host_init(), this will enumerate the bus
+> 3) pci_rescan_bus() from the Link Up IRQ handler
 > 
-> > ...we already have a delay in the link up IRQ handler, before calling
-> > pci_rescan_bus().
-> > 
+> Thus, in 2, when enumerating the bus, without performing any of the delays
+> mandated by the PCIe spec, it still seems possible to detect a device (it
+> must have been really quick to initialize), and to communicate with that
+> device, however since we have not performed the delays mandated by the spec,
+> it appears that the device might not yet behave properly.
 > 
-> That delay won't help in this case.
-
-Sure, I was just saying that even though Shawn's patch made things work,
-it seems incorrect, as we do not want to add "the same delay" that we
-already have in the Link Up IRQ. (The delay in the Link Up IRQ should be
-the only one.)
-
-
-> > I think a better solution would be something like:
-
-(snip)
-
-> This solution will work as long as the PCIe device is powered ON before
-> start_link(). For CEM and M.2 Key M connectors, the host controller can power
-> manage the components. But for other specifications/keys requiring custom power
-> management, a separate driver would be needed.
+> Hence my suggestion to never call pci_host_probe() in dw_pcie_host_init()
+> for platforms with Link Up IRQ.
 > 
-> That's why I suggested using pwrctrl framework as it can satisfy both usecases.
-> However, as I said, it needs a bit of rework and I'm close to submitting it.
+> At least for pcie-dw-rockchip.c, we only unmask the Link Up IRQ after
+> dw_pcie_host_init() has returned, so I think that your theory: that Shawn's
+> suggested delay causes the Link Up IRQ to kick in before the initial bus
+> scan, is incorrect. (Since the IRQ should not be able to trigger until
+> dw_pcie_host_init() has returned.)
 > 
-> But until that gets merged, either we need to revert your link up IRQ change or
-> have the below patch. IMO, the revert seems simple.
+> 
+>>
+>>> ...we already have a delay in the link up IRQ handler, before calling
+>>> pci_rescan_bus().
+>>>
+>>
+>> That delay won't help in this case.
+> 
+> Sure, I was just saying that even though Shawn's patch made things work,
+> it seems incorrect, as we do not want to add "the same delay" that we
+> already have in the Link Up IRQ. (The delay in the Link Up IRQ should be
+> the only one.)
+> 
+> 
+>>> I think a better solution would be something like:
+> 
+> (snip)
+> 
+>> This solution will work as long as the PCIe device is powered ON before
+>> start_link(). For CEM and M.2 Key M connectors, the host controller can power
+>> manage the components. But for other specifications/keys requiring custom power
+>> management, a separate driver would be needed.
+>>
+>> That's why I suggested using pwrctrl framework as it can satisfy both usecases.
+>> However, as I said, it needs a bit of rework and I'm close to submitting it.
+>>
+>> But until that gets merged, either we need to revert your link up IRQ change or
+>> have the below patch. IMO, the revert seems simple.
+> 
+> Using pwrctrl framework once it can handle this use case sounds good to me.
+> 
+> FUKAUMI, could you please send a revert of the two patches?
 
-Using pwrctrl framework once it can handle this use case sounds good to me.
+Well, I cannot write a detailed explanation...
 
-FUKAUMI, could you please send a revert of the two patches?
+Best regards,
+
+--
+FUKAUMI Naoki
+Radxa Computer (Shenzhen) Co., Ltd.
+
+> Kind regards,
+> Niklas
+> 
 
 
-Kind regards,
-Niklas
 
 _______________________________________________
 Linux-rockchip mailing list
