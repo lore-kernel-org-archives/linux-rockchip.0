@@ -4,105 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D99EFCCF9E3
-	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Nov 2025 09:26:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3EB27CD1297
+	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Nov 2025 10:42:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bhBDLX/Eo9rh4hi0TmBxlhiBE/WuLbeeoMxdorZPfjU=; b=ulUaRszKQVpwy0
-	KBPnweM5JHpE47Qjsw/2N4XCA4hZn4vdhHcY7WBtCprM1BlWGXau85RJwGaPqgvWbT+5HxYaR0S/X
-	PsPdZuYRxwGULd2gKA2Bs4DGoTGgUWxRxmkZ8htjHk5ZCLAKm2IHUmiB4PVGFZnPZTCwF7vhQB2AV
-	X0jeCpYrJ49M+6Y4QQyM+v8AIXIn/FdcLrvFJ+qWa0VP2c/P6DkorKuzO1Cszym74ISI4+VCq3RGH
-	u1zune+YjXdGBxg5Sp35BlSsN6uX/cZ79osLNLE2/2U95EMYPX34ygLT/0n66Mv0NITOa6uRSvFI2
-	rwbOy/l4Odif/R+2JeXQ==;
+	List-Owner; bh=4UToPMyBgatO+QB3ICCxVeJh8b91SkArV+0viMFzqBo=; b=gOv6vdzX0sNBRP
+	hmpP45ZSP/nAH1G3AgjcYlee2oYRvTIG6ySBA+jlEPpF6Qcf/TjP+bCllUvRBiEJtPSs3cbKsKlGA
+	vf/3AESo/032R04A6o+0Ts/tEcjSnt2Tu5SUs6nMhbU8szVM05EOR5sH/miV8wNoasWtQfdXrCgMs
+	B9YHai2soojvsJBYhq+eisDeoKosbT5tUnUh+nwUUJZknJv6WeobERId0C3d/tWa2EaBltCjv4/qj
+	raOFb7JfUd6TV1BkDSjXUl7SzEj6K+2/UQcN/ocIa/0hOMNfa/77YcYRLj78fsPQAHt9bi/UHiTxM
+	amj8bC06LFys/Wj/dZYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIkdq-00000006qBa-1cmV;
-	Tue, 11 Nov 2025 09:26:22 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vIlpF-00000006yXG-23K0;
+	Tue, 11 Nov 2025 10:42:13 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIkdn-00000006qA5-0Z4P;
-	Tue, 11 Nov 2025 09:26:20 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 7C31942A93;
-	Tue, 11 Nov 2025 09:26:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4F55DC19423;
-	Tue, 11 Nov 2025 09:26:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1762853178;
-	bh=dxJl6J2CtbaTteGybNjKa4QQeR/lRzB/xgCS77moFk0=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=G7AWKwMx+XHNG2jtALJxzbBvu8Iw+J5g+YdRdNQJWMH2/gICiKw0G9GUPhrZ9pXny
-	 FygxxivVJd10zpR+gi/DpqTMvC0viB1T7s91ruKpNtlGhAC9wkxiUBNu3H/SyZWbc6
-	 Q0jxU8sQnD8yK90KitrN9fJmWpBHtp3JUmxZWGkGbyi3nf10zKD0N5tOS+vc7R94UV
-	 fw1vUg+FdTuk0rAxqE9bXfyHhNMudbOJVwnbe+b1PBEfdqvluXrIzBnTbeoHkhurCd
-	 J5YVAx8MZdZn9xi1E7wBOLpzQzcNeSrJnRHnHY+ZYQ7fNsWN2V0t5uqn9Plc43hmZh
-	 JrZTtXu6WOA3A==
-Message-ID: <7d663aee-d77f-4553-a173-af9c2d75da50@kernel.org>
-Date: Tue, 11 Nov 2025 10:26:13 +0100
+	id 1vIlpC-00000006yWL-32p9;
+	Tue, 11 Nov 2025 10:42:12 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1762857726;
+	bh=jJElLLmlTNOPMaQl1bcR+ybZDJWxkHdbChsUP8hGruA=;
+	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
+	b=l/94beWZkmZO79b/fiDDAu8zy1EAXp6k8Xlal0v33hcc3m4OYDM22+BhGtdRp4WAd
+	 lqrahqPCKy7CyekfNOjl/F3NLWhBHpe8mS7ljPJg3OoaLQwveWtCwNVhJ9ITLNroA0
+	 iWZioi10ZMhGFwCdpPSGx8PVfxn8bRQFCVdAKw4OxvRFFFKaJ+1b8z9LTDdjob7oVv
+	 Yf1q1t4MI8eHQ+3o7TtpvsjyWINctonT96daqcCoayLpvpHnQypXzNNILhCeLjSUQx
+	 46bwaWnMUIjyFEKttF0C/rNNmT4ApgcX6Uqn3KVC0XxXxzf7ggltmx/oScJnr9B1Fk
+	 TH/p7/lQRvjWQ==
+Received: from [10.40.0.100] (185-67-175-126.lampert.tv [185.67.175.126])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: mriesch)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9090017E1299;
+	Tue, 11 Nov 2025 11:42:05 +0100 (CET)
+Message-ID: <ea541696-40db-409e-955f-983723d42b79@collabora.com>
+Date: Tue, 11 Nov 2025 11:42:04 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RESEND PATCH v8 1/4] dt-bindings: can: rockchip_canfd: add
- rk3576 CAN controller
-To: Elaine Zhang <zhangqing@rock-chips.com>, mkl@pengutronix.de,
- kernel@pengutronix.de, mailhol.vincent@wanadoo.fr, robh@kernel.org,
- krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de, cl@rock-chips.com
-Cc: linux-can@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org
-References: <20251111080511.2923069-1-zhangqing@rock-chips.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
+Subject: Re: [PATCH v14 00/18] media: rockchip: add a driver for the rockchip
+ camera interface
+From: Michael Riesch <michael.riesch@collabora.com>
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Mehdi Djait <mehdi.djait@linux.intel.com>,
+ Maxime Chevallier <maxime.chevallier@bootlin.com>,
+ =?UTF-8?Q?Th=C3=A9o_Lebrun?= <theo.lebrun@bootlin.com>,
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+ Gerald Loacker <gerald.loacker@wolfvision.net>,
+ Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
+ Markus Elfring <Markus.Elfring@web.de>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Kever Yang <kever.yang@rock-chips.com>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Collabora Kernel Team <kernel@collabora.com>,
+ Paul Kocialkowski <paulk@sys-base.io>,
+ Alexander Shiyan <eagle.alexander923@gmail.com>,
+ Val Packett <val@packett.cool>, Rob Herring <robh@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ Mehdi Djait <mehdi.djait@bootlin.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Bryan O'Donoghue <bod@kernel.org>, Chen-Yu Tsai <wens@csie.org>
+References: <20240220-rk3568-vicap-v14-0-b38b6da0fc80@collabora.com>
+ <aQ4tJg8r_j4NyKhv@kekkonen.localdomain>
+ <074cd08e-0412-49f9-8dd9-b1f96eb11717@collabora.com>
+ <20251107185441.GG5558@pendragon.ideasonboard.com>
+ <13c43edb-9592-4779-a39a-7856bb0f964d@collabora.com>
+ <aRGlvQRVoQs0WjyA@kekkonen.localdomain>
+ <b89746e1-4574-4b65-af69-c533576ed185@collabora.com>
+ <20251111000627.GA30837@pendragon.ideasonboard.com>
+ <7266245d-46b8-4355-a966-654e816ec93c@collabora.com>
 Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <20251111080511.2923069-1-zhangqing@rock-chips.com>
+In-Reply-To: <7266245d-46b8-4355-a966-654e816ec93c@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251111_012619_226828_CECE4871 
-X-CRM114-Status: GOOD (  13.62  )
+X-CRM114-CacheID: sfid-20251111_024210_954697_9FB3C0C3 
+X-CRM114-Status: GOOD (  52.81  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,95 +105,230 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 11/11/2025 09:05, Elaine Zhang wrote:
-> Add documentation for the rockchip rk3576 CAN controller.
+Hi Laurent,
+
+On 11/11/25 09:37, Michael Riesch wrote:
+> Hi Laurent,
 > 
-> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
-> ---
->  .../net/can/rockchip,rk3568v2-canfd.yaml      | 52 +++++++++++++++++--
->  1 file changed, 48 insertions(+), 4 deletions(-)
-
-Your threading is completely broken. I don't see any other patches here.
-
-That's v8, resend and still not correct :(
-
+> On 11/11/25 01:06, Laurent Pinchart wrote:
+>> On Mon, Nov 10, 2025 at 11:29:57AM +0100, Michael Riesch wrote:
+>>> On 11/10/25 09:43, Sakari Ailus wrote:
+>>>> On Fri, Nov 07, 2025 at 09:51:37PM +0100, Michael Riesch wrote:
+>>>>> On 11/7/25 19:54, Laurent Pinchart wrote:
+>>>>>> On Fri, Nov 07, 2025 at 07:41:59PM +0100, Michael Riesch wrote:
+>>>>>>> On 11/7/25 18:32, Sakari Ailus wrote:
+>>>>>>>> On Fri, Oct 24, 2025 at 02:51:29PM +0200, Michael Riesch via B4 Relay wrote:
+>>>>>>>>> Habidere,
+>>>>>>>>>
+>>>>>>>>> This series introduces support for the Rockchip Camera Interface (CIF),
+>>>>>>>>> which is featured in many Rockchip SoCs in different variations.
+>>>>>>>>> For example, the PX30 Video Input Processor (VIP) is able to receive
+>>>>>>>>> video data via the Digital Video Port (DVP, a parallel data interface)
+>>>>>>>>> and transfer it into system memory using a double-buffering mechanism
+>>>>>>>>> called ping-pong mode.
+>>>>>>>>> The RK3568 Video Capture (VICAP) unit, on the other hand, features a
+>>>>>>>>> DVP and a MIPI CSI-2 receiver that can receive video data independently
+>>>>>>>>> (both using the ping-pong scheme).
+>>>>>>>>> The different variants may have additional features, such as scaling
+>>>>>>>>> and/or cropping.
+>>>>>>>>> Finally, the RK3588 VICAP unit constitutes an essential piece of the
+>>>>>>>>> camera interface with one DVP, six MIPI CSI-2 receivers, scale/crop
+>>>>>>>>> units, and a data path multiplexer (to scaler units, to ISP, ...).
+>>>>>>>>
+>>>>>>>> I understand both RK3568 and RK3588 include an ISP. Do you have insight on
+>>>>>>>> how would this work, should the support for the ISP be added later on?
+>>>>>>>
+>>>>>>> Short answer: Yes and yes.
+>>>>>>>
+>>>>>>> Long answer:
+>>>>>>>
+>>>>>>> The patch series at hand adds support for the PX30 VIP and the RK3568
+>>>>>>> VICAP. I cannot really say something about the PX30, but on the RK3568
+>>>>>>> VICAP and ISP are orthogonal (the ISP features its own MIPI CSI-2
+>>>>>>> receiver, different from that introduced in this series). Thus, ISP
+>>>>>>> support can be introduced anytime (whenever someone is motivated ;-)).
+>>>>>>
+>>>>>> Won't they both be connected to the same sensor though, and probably the
+>>>>>> same D-PHY in the SoC ? They don't seem entirely separate to me.
+>>>>>
+>>>>> The MIPI CSI-2 DPHY is shared, indeed. Thus, they *maybe technically
+>>>>> could be* connected to the same sensor, but I don't know whether that
+>>>>> works and fail to see why anyone would to such a thing (if it is about
+>>>>> raw capture, the MIPI CSI-2 receiver in the ISP can do that on its own).
+>>>>>
+>>>>> The DPHY can be operated in split mode, with two lanes for VICAP and two
+>>>>> lanes for ISP. This is not implemented yet, but can be done at a later
+>>>>> stage on PHY level (not media related). In this case, ISP and VICAP can
+>>>>> receive data from different subdevices via CSI-2.
+>>>>
+>>>> The two would be part of the same media graph in that case and as there are
+>>>> two CSI-2 receivers and a single PHY, the PHY would probably need to have a
+>>>> sub-device as well, to allow link configuration to be used to select where
+>>>> the PHY is connected.
+>>>>
+>>>> I don't think we have such a setup elsewhere, and supporting this would
+>>>> require changes in the MC framework.
+>>>
+>>> What follows is a response that also addresses issues raised during our
+>>> off-list discussion.
+>>>
+>>> First of all, I agree with you that the RK3568 HW is "a bit special" (to
+>>> say the least) in that regard. Let's have an outlook to newer SoCs, such
+>>> as the RK3588: Here, the MIPI CSI-2 DPHYs (there are two of them) with
+>>> their split mode are present as well, but the assignment is fixed. For
+>>> example, the RK3588 VICAP has six MIPI CSI-2 receiver units and six MIPI
+>>> CSI-2 capture units. Units 1 and 2 handle a different MIPI PHY, units 3
+>>> and 5 handle the DPHYs (without split mode), units 4 and/or 6 are active
+>>> whenever DPHY 1 and/or 2 is in split mode.
+>>>
+>>> I would model this by adding support for more than one (logical) PHYs
+>>> (phy-cells = <1>;) and assigning the logical PHYs to the MIPI CSI-2
+>>> receivers. There is not really a possibility to route anything at this
+>>> point (routing is done in a MUX unit that takes the different MIPI CSI-2
+>>> receivers as inputs).
+>>>
+>>> Now back to the peculiar RK3568 situation: By default the split mode of
+>>> the DPHY is off and both VICAP and ISP are able to receive the same data
+>>> (from up to four lanes) with their MIPI CSI-2 receivers (not sure
+>>> whether both can be active at the same time, though).
+>>
+>> A common use case for capturing data from the same sensor through both
+>> ISP and VICAP would be routing image data to the ISP and embedded data
+>> to VICAP. Assuming the hardware is able to do this, there will be users
+>> interested in this feature.
 > 
-> diff --git a/Documentation/devicetree/bindings/net/can/rockchip,rk3568v2-canfd.yaml b/Documentation/devicetree/bindings/net/can/rockchip,rk3568v2-canfd.yaml
-> index a077c0330013..30782218728e 100644
-> --- a/Documentation/devicetree/bindings/net/can/rockchip,rk3568v2-canfd.yaml
-> +++ b/Documentation/devicetree/bindings/net/can/rockchip,rk3568v2-canfd.yaml
-> @@ -10,13 +10,12 @@ title:
->  maintainers:
->    - Marc Kleine-Budde <mkl@pengutronix.de>
->  
-> -allOf:
-> -  - $ref: can-controller.yaml#
-> -
->  properties:
->    compatible:
->      oneOf:
-> -      - const: rockchip,rk3568v2-canfd
-> +      - enum:
-> +          - rockchip,rk3568v2-canfd
-> +          - rockchip,rk3576-can
->        - items:
->            - const: rockchip,rk3568v3-canfd
->            - const: rockchip,rk3568v2-canfd
-> @@ -43,6 +42,33 @@ properties:
->        - const: core
->        - const: apb
->  
-> +  dmas:
-> +    maxItems: 1
-> +
-> +  dma-names:
-> +    items:
-> +      - const: rx
-> +
-> +allOf:
-> +  - $ref: can-controller.yaml#
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            const: rockchip,rk3576-can
-> +    then:
-> +      properties:
-> +        dmas:
-> +          minItems: 1
-> +          maxItems: 1
-> +        dma-names:
-> +          minItems: 1
-> +          maxItems: 1
+> VICAP and ISP would capture different CSI-2 links. AFAIK the embedded
+> data is usually transmitted on the same CSI-2 link but on a different
+> virtual channel. The MIPI CSI receiver in the ISP is capable of
+> capturing (up to three, I think) virtual channels and passing e.g. one
+> VC to the ISP and capturing another VC to memory.
+> 
+>>> There are two bits
+>>> in the GRF that define the lanes that ISP and VICAP receive in split
+>>> mode (lane 0/1 or lane 2/3). Not sure whether these bits are supposed to
+>>> be changed during runtime.
+>>>
+>>> I would suggest modelling this on PHY level in DT, e.g., by passing
+>>> reasonable properties to the dphy node, such as
+>>>     rockchip,dphy-split-mode;
+>>
+>> Split mode should indeed be conveyed through DT, as it's a property of
+>> the hardware.
+> 
+> Ack!
+> 
+>>
+>>>     rockchip,dphy-split-invert;
+>>> where the former activates the split mode and assigns lanes 0/1 to the
+>>> ISP and lanes 2/3 to the VICAP, and the latter inverts this assignment
+>>> (lanes 2/3 to the ISP and lanes 0/1 to the VICAP). This would facilitate
+>>> the reasonable use cases with reasonable effort.
+>>
+>> This I'm less convinced about. The routing should be dynamic.
+> 
+> Ack.
+> 
+>> How do you envision the connections to the CSI-2 sources to be modelled
+>> in DT ? We need ports and endpoints, and data-lanes properties. Where
+>> would those reside on the RK3568 side ?
+> 
+> Goto ASCII sketch below for that...
+> 
+>>> Otherwise, to keep it perfectly general and most flexible and
+>>> everything, we would have to introduce another subdevice indeed, which
+>>> would be active on the RK3568 exclusively. Therefore, I don't see that
+>>> the PHY driver introduces this subdevice, but a specialized (syscon?)
+>>> MUX driver that deals with the RK3568 GRF bits. Something like this
+>>>
+>>>                            |----------------------|     |-------------|
+>>>  Sensor A --- /2 lanes --- | lane 0/1      to ISP | --- | ISP MIPI RX |
+>>>                            |                      |     |-------------|
+>>>                            |                      |
+>>>                            |                      |     |-------------|
+>>>  Sensor B --- /2 lanes --- | lane 2/3    to VICAP | --- |VICAP MIPI RX|
+>>>                            |----------------------|     |-------------|
+>>>
+>>> But IMHO this will be too much effort for corner use case that I doubt
+>>> anyone will actually use.
+>>>
+>>> What do you think:
+>>>  - Let's keep the PHYs out of V4L2/MC, ok?
+>>>  - Let's model the reasonable use cases with device tree properties in
+>>>    the dphy DT node, ok?
+>>
+>> I think the routing should be dynamic.
+> 
+> In this case, my suggestion would be the following:
+> 
+>  - An additional MUX subdevice on the RK3568 only, see sketch above
+>  - One or two input ports (depending on split mode being activated)
+>  - Two output ports (to ISP MIPI RX, to VICAP MIPI RX)
+>  - Routing possible 1:N (both input ports can be connected to one or two
+>    output ports)
+>  - The subdevice will have ports, endpoints, data-lanes properties on
+>    both sides.
+> 
+> The nice thing about it is that the current state can be extended once
+> split mode is implemented, IOW patches 01/18 - 17/18 can be readily applied.
+> 
+> Patch 18/18 must not be applied at this time, as this would be the first
+> actual usage of the MIPI CSI-2 pipeline. I guess we need to implement
+> and insert the new subdevice first for the sake of uAPI compatibility.
+> 
+> So pretty-please-with-sugar-on-top can we merge 01-17 so that I don't
+> have to drag these patches along anymore?
 
-Drop both, no need to duplicate what is in top level.
+In an off-list chat with Sakari we found that it would make sense to
+leave patches 01 and 12 away as well, in order to avoid uAPI
+compatibility issues for good. The MIPI CSI-2 receiver bindings and
+driver can be merged, as the only difference in the new setup will be
+that on the RK3568 the receiver is connected to the new MUX subdevice,
+rather than to a sensor (as will be the case on e.g. the RK3588).
 
+Can we agree on the following plan:
+ 1) You shall merge patches 02/18 - 11/18 + 13/18 - 17/18.
+ 2) I shall add the MUX subdev and send a revised version of patches 01,
+    12, 18 along with it.
+ 3) We shall have a solid basis to implement split mode in the DPHY
+    driver, RK3568 ISP support (if anyone has time for that), and RK3588
+    VICAP support.
 
-> +    else:
-> +      properties:
-> +        dmas: false
-> +        dma-names: false
-> +
->  required:
->    - compatible
->    - reg
-> @@ -72,3 +98,21 @@ examples:
->              reset-names = "core", "apb";
->          };
->      };
-> +
-> +  - |
-> +    soc {
-> +        #address-cells = <2>;
-> +        #size-cells = <2>;
-> +
-> +        can@2ac00000 {
-
-Difference in one property usually does not justify new example.
-
+OK for everyone? @Laurent: can we get an Ack from you?
 
 Best regards,
-Krzysztof
+Michael
+
+> 
+> Best regards,
+> Michael
+> 
+>>
+>>>> How does the media graph look like for the device at the moment?
+>>>
+>>> Please take a look at the media graph in the documentation patch (PATCH
+>>> v14 01/18). This is without the ISP, but gives an overview of what the
+>>> RK3568 VICAP is capable of.
+>>>
+>>> Best regards,
+>>> Michael
+>>>
+>>>>> BTW the ISP is able to process the data captured by VICAP, but
+>>>>> apparently this includes a RAM round trip (VICAP captures to memory, ISP
+>>>>> operates in mem2mem mode).
+>>>>>
+>>>>>> A block diagram that shows connections between the CSI-2 pins, D-PHY,
+>>>>>> CSI-2 receivers, VICAP and ISP could help.
+>>>>>>
+>>>>>>> Once this patch series is merged, I'll push out changes that introduce
+>>>>>>> support for the RK3588 VICAP. We can discuss the integration of any
+>>>>>>> RK3588 ISP in this scope then -- and there may be some things to discuss
+>>>>>>> as there the VICAP and the ISP(s) are directly connected by means of a
+>>>>>>> MUX unit in the VICAP.
+>>>>>>>
+>>>>>>> Alright?
+>>
+> 
+
 
 _______________________________________________
 Linux-rockchip mailing list
