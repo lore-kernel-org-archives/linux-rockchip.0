@@ -4,71 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85ACBCCFA18
-	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Nov 2025 14:00:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D32ACCFA18
+	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Nov 2025 14:01:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xUkyocdAKKM5bH4/eWEn6lfzCVbYKMEqHMJ3BbQw2Y4=; b=qKrAh/uQkmokNb
-	Hn27iOZXo0ZLivvPXRxXf63sFO6g2r7yCFsxGEbAzYb0i+Z0fnUuXjWCtADR9BL3zIGebBrwIrqsK
-	BImKQV+0PRPj7HqqqSjfwdgCEMpFUgTx/tXvN7K7Tc2TNQzB0fcV17QPLKkD4QSjcvM6x26G2epPw
-	wUhVKfHQDNbypY0cjh4sMCV82WtPx1zf6bL7QA3nlJYTsWhGJqIht9RZ7wNwucRX56VGF2NLil/uy
-	EKfm8+1loEAvWSy8ZRy6WhxwgACnsDg+LhEJ+B/YzEfxuF96pPuVPyYU/Vz3iiOjjEX3BWcZ60TT1
-	1gVhXvzZZsp4ffoun25w==;
+	List-Owner; bh=BVFPZtzCqmfxKbiwq+JVQbmBOBS8eFQv8mKbKelugOo=; b=LqV3zIwdepBaW0
+	xR5FTlXNETMJBZUW05gGVLDd09oSrVFCKYcgL5vEwB9IHu5sR6NaQuO3Bl/WAqau2FdKMKBYlDv4f
+	aZhJQhq8n5Py7/OIGZCOClzeXWUdyPtltIMUApfrLqXVWiQv0Y4oyH42tbiVf/NHZZj82P+gw0E+H
+	LmDn4M1S4HV5ra1UKrwFVaoFn49ssItMLHo/GZcU7haa/RBjrhtfpBdDgBorhGaY0B6S6f/e3mwog
+	qZrvQrLDGRyF5lUm8n1MqAoN3X7C/B/2bVyuPAWvma/nzPOBfuGXvILghGvGNxL9bcEvYw8c7lgzC
+	wF4ie7eIcuLpjsTk509A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIouo-00000007HDB-1HAw;
-	Tue, 11 Nov 2025 14:00:10 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vIovb-00000007HLb-0ju3;
+	Tue, 11 Nov 2025 14:00:59 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIoum-00000007HCj-1eaP;
-	Tue, 11 Nov 2025 14:00:08 +0000
+	id 1vIovX-00000007HKa-20pS;
+	Tue, 11 Nov 2025 14:00:57 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 8201A6020B;
-	Tue, 11 Nov 2025 14:00:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D2B6CC113D0;
-	Tue, 11 Nov 2025 14:00:03 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 317F343B0B;
+	Tue, 11 Nov 2025 14:00:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 04F89C116D0;
+	Tue, 11 Nov 2025 14:00:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1762869607;
-	bh=D1S3OL4p0+J4mWcZ2dm1aw9L5R0M+rOLhxjglXPSaEc=;
+	s=k20201202; t=1762869654;
+	bh=f2fo/lMwwwTFs05IRMmwp7u2nd3gJMMvyXczqFBKzc0=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=BK6yS3ikNQGdeSm87kJZrIJJ2XY6POhOH7MZmL27V0Z5S3dw3nYncaxgaHcY1Lu+F
-	 JfFL1HyiOjKsoFotilBRDoOwnVtfEN+Am17dFZfdhl0iJzjCla5OqcEAQDJEoJm/UW
-	 zQl/cTwTmOjKHw9ttl9MFYwgAmc2524Srxq/IfABJDKxLrba4bc4JT3yXrBsZMKi5H
-	 Da2hh7/+bYFZH+VSJUbPQjShpd8y+P5ZonC8DCmnRcV2ZQTaP9oh5X/y2e05XA9pX1
-	 V2vT6CqyqJnODCdbHc0Dsnc313OsQ0rZJdxY80KZzyZZThukX8LeGbI/ySB71OPEQO
-	 kUp8PlC3G+pJQ==
-Date: Tue, 11 Nov 2025 15:00:01 +0100
-From: Niklas Cassel <cassel@kernel.org>
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: FUKAUMI Naoki <naoki@radxa.com>, Damien Le Moal <dlemoal@kernel.org>,
-	Anand Moon <linux.amoon@gmail.com>, linux-pci@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Dragan Simic <dsimic@manjaro.org>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Manivannan Sadhasivam <mani@kernel.org>
-Subject: Re: [RESEND] Re: [PATCH] PCI: dw-rockchip: Skip waiting for link up
-Message-ID: <aRNBYX8MbR7PtssY@ryzen>
-References: <780a4209-f89f-43a9-9364-331d3b77e61e@rock-chips.com>
- <4487DA40249CC821+19232169-a096-4737-bc6a-5cec9592d65f@radxa.com>
- <363d6b4d-c999-43d4-866e-880ef7d0dec3@rock-chips.com>
- <0C31787C387488ED+fd39bfe6-0844-4a87-bf48-675dd6d6a2df@radxa.com>
- <dc932773-af5b-4af7-a0d0-8cc72dfbd3c7@rock-chips.com>
- <aRHb4S40a7ZUDop1@ryzen>
- <2n3wamm3txxc6xbmvf3nnrvaqpgsck3w4a6omxnhex3mqeujib@2tb4svn5d3z6>
- <aRJEDEEJr9Ic-RKN@fedora>
- <B721C8A516FDB604+a04b38d3-64ec-423f-9e4c-040c8d2aec76@radxa.com>
- <05bd0efe-9a84-40e9-af07-51c0b0d865bf@rock-chips.com>
+	b=mOszoN0EVkDNaWiWT/dOfBVBREwWsaVPDEGgezj7eMzfFJ9X1OoM3t/4ldDkESoI0
+	 9vdP4ZBbU1P0o79MbD0CLokJBT4Sh1gjMWlCF/3sNJGOfaaoIbYpd8VN5GaP3Cl5Q0
+	 1cjXs4XF7MgSNYKXDpDh0yI7t0wMSXlR06GHCXg2gK0YRozBI/hDD2+SeeAJZM9Yud
+	 8qLnNKy86+Ne+HzRkTrRuaYLfL142/T49KYaGGKIbIog7L81ls5n9iI5bT3/GM1LMG
+	 JfZomoFK8p5IRHGgHnQELr0Sggxf4YmETL8BhtOim0JVGLBiJNjcLl1ksNgX+rZV1+
+	 iIcsfjVsSbScQ==
+Date: Tue, 11 Nov 2025 19:30:38 +0530
+From: Manivannan Sadhasivam <mani@kernel.org>
+To: Lukas Wunner <lukas@wunner.de>
+Cc: Niklas Cassel <cassel@kernel.org>, Jingoo Han <jingoohan1@gmail.com>, 
+	Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+	Krzysztof =?utf-8?B?V2lsY3p577+9P3NraQ==?= <kwilczynski@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, 
+	Shawn Lin <shawn.lin@rock-chips.com>, FUKAUMI Naoki <naoki@radxa.com>, 
+	Krishna chaitanya chundru <quic_krichai@quicinc.com>, linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org
+Subject: Re: [PATCH 0/6] PCI: dwc: Revert Link Up IRQ support
+Message-ID: <admktutwz6542najyyo5vlrci5euqlxnwueaqxixxy7pruqoe5@6qbbejnn5gpb>
+References: <20251111105100.869997-8-cassel@kernel.org>
+ <aRMZS3EUYx189Xup@wunner.de>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <05bd0efe-9a84-40e9-af07-51c0b0d865bf@rock-chips.com>
+In-Reply-To: <aRMZS3EUYx189Xup@wunner.de>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251111_060055_539797_AD2DB0E0 
+X-CRM114-Status: GOOD (  18.98  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,45 +72,38 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Nov 11, 2025 at 11:17:23AM +0800, Shawn Lin wrote:
-> > 
-> > It works stably on the ROCK 5A. The link speed is 2Gb/s.
-> > 
-> > The ROCK 5C is unstable. It initially worked with a link speed of 4Gb/s,
-> > but eventually started showing kernel oops. The dts files for the 5A and
-> > 5C are compatible and interchangeable, but even using the 5A's dts on
-> > the 5C, the operation remains unstable.
-> 
-> The link speed on ROCK 5A is 2Gb/s also means it's downgraded now. Did
-> ROCK 5A work under the link speed of 4Gb/s before?
-> 
-> In case it's signal integrity relevant, you could enable PCIE_DW_DEBUGFS
-> and refer to Documentation/ABI/testing/debugfs-dwc-pcie to collect
-> RASDES info from there.
-
-Just a quick note:
-I've noticed that you cannot blindly look at the link speed in dmesg.
-
-E.g. on my ROCK 5B boards, I can occasionally see something like:
-[    1.417181] pci 0000:01:00.0: 4.000 Gb/s available PCIe bandwidth, limited by 5.0 GT/s PCIe x1 link
-
-However, if I check the actual link speed with lspci after boot:
-
-# lspci -vvv  -s 0000:01:00.0 | grep LnkSta:
-                LnkSta: Speed 8GT/s, Width x4
-
-I can see that the link is actually using the correct speed + number of lanes.
-
-
-Kind regards,
-Niklas
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gVHVlLCBOb3YgMTEsIDIwMjUgYXQgMTI6MDg6NTlQTSArMDEwMCwgTHVrYXMgV3VubmVyIHdy
+b3RlOgo+IE9uIFR1ZSwgTm92IDExLCAyMDI1IGF0IDExOjUxOjAwQU0gKzAxMDAsIE5pa2xhcyBD
+YXNzZWwgd3JvdGU6Cj4gPiBSZXZlcnQgYWxsIHBhdGNoZXMgcmVsYXRlZCB0byBwY2llLWRlc2ln
+bndhcmUgUm9vdCBDb21wbGV4IExpbmsgVXAgSVJRCj4gPiBzdXBwb3J0Lgo+ID4gCj4gPiBXaGls
+ZSB0aGlzIGZha2UgaG90cGx1Z2dpbmcgd2FzIGEgbmljZSBpZGVhLCBpdCBoYXMgc2hvd24gdGhh
+dCB0aGlzIGZlYXR1cmUKPiA+IGRvZXMgbm90IGhhbmRsZSBQQ0llIHN3aXRjaGVzIGNvcnJlY3Rs
+eToKPiBbLi4uXQo+ID4gRHVyaW5nIHRoZSBpbml0aWFsIHNjYW4sIFBDSSBjb3JlIGRvZXNuJ3Qg
+c2VlIHRoZSBzd2l0Y2ggYW5kIHNpbmNlIHRoZSBSb290Cj4gPiBQb3J0IGlzIG5vdCBob3QgcGx1
+ZyBjYXBhYmxlLCB0aGUgc2Vjb25kYXJ5IGJ1cyBudW1iZXIgZ2V0cyBhc3NpZ25lZCBhcyB0aGUK
+PiA+IHN1Ym9yZGluYXRlIGJ1cyBudW1iZXIuIFRoaXMgbWVhbnMsIHRoZSBQQ0kgY29yZSBhc3N1
+bWVzIHRoYXQgb25seSBvbmUgYnVzCj4gPiB3aWxsIGFwcGVhciBiZWhpbmQgdGhlIFJvb3QgUG9y
+dCBzaW5jZSB0aGUgUm9vdCBQb3J0IGlzIG5vdCBob3QgcGx1Zwo+ID4gY2FwYWJsZS4KPiA+IAo+
+ID4gVGhpcyB3b3JrcyBwZXJmZWN0bHkgZmluZSBmb3IgUENJZSBlbmRwb2ludHMgY29ubmVjdGVk
+IHRvIHRoZSBSb290IFBvcnQsCj4gPiBzaW5jZSB0aGV5IGRvbid0IGV4dGVuZCB0aGUgYnVzLiBI
+b3dldmVyLCBpZiBhIFBDSWUgc3dpdGNoIGlzIGNvbm5lY3RlZCwKPiA+IHRoZW4gdGhlcmUgaXMg
+YSBwcm9ibGVtIHdoZW4gdGhlIGRvd25zdHJlYW0gYnVzc2VzIHN0YXJ0cyBzaG93aW5nIHVwIGFu
+ZAo+ID4gdGhlIFBDSSBjb3JlIGRvZXNuJ3QgZXh0ZW5kIHRoZSBzdWJvcmRpbmF0ZSBidXMgbnVt
+YmVyIGFmdGVyIGluaXRpYWwgc2Nhbgo+ID4gZHVyaW5nIGJvb3QuCj4gCj4gSW4gcHJpbmNpcGxl
+IGl0IGlzIHBvc3NpYmxlIHRvIHNldCB0aGUgaXNfaG90cGx1Z19icmlkZ2UgZmxhZyBvbiB0aGUK
+PiBicmlkZ2UgdG8gZm9yY2UgYWxsb2NhdGlvbiBvZiBtb3JlIGJ1c2VzLiAgV2UndmUgYWxyZWFk
+eSBnb3QgYSBxdWlyawo+IHRvIHNldCB0aGUgZmxhZyBvbiBhIENvbnZlbnRpb25hbCBQQ0kgYnJp
+ZGdlIHdob3NlIGhvdHBsdWcgY2FwYWJpbGl0eQo+IGNhbm5vdCBiZSBkaXNjb3ZlcmVkIG90aGVy
+d2lzZSAoc2VlIHF1aXJrX2hvdHBsdWdfYnJpZGdlKCkgaW4KPiBkcml2ZXJzL3BjaS9xdWlya3Mu
+YykuCgpCdXQgaGVyZSwgdGhlIGJyaWRnZXMgYXJlIG5vdCBob3RwbHVnIGNhcGFibGUgYXQgYWxs
+LiBUaGV5IGRvIG5vdCBzdXBwb3J0IHRoZQpQQ0kgSG90LVBsdWcgU3BlY2lmaWNhdGlvbi4gU28g
+c2V0dGluZyB0aGUgZmxhZyB3b3VsZCBiZSBpbmNvcnJlY3QuCgotIE1hbmkKCi0tIArgrq7grqPg
+rr/grrXgrqPgr43grqPgrqngr40g4K6a4K6k4K6+4K6a4K6/4K614K6u4K+NCgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWls
+aW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
+aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
