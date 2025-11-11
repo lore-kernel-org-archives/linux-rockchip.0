@@ -4,74 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8300CCCFA1A
-	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Nov 2025 11:44:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04D83CCFA1A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Nov 2025 11:54:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TkKtm01HoIg2nJuaCTz4/+xAI/rXmQqtyX2oUMcMnTg=; b=TACa1Q7TYYOBzR
-	GK90KtvFAaO0axik9+vd3ZtVy+BWsWxPx1H0oJNd/0/UX1OF8bjtob0z446LSvEQUtpdW6eIJuzji
-	a3UgjmIetRbHkaQlWnEbbJxHl6eIeyDFvnantmRqC20M2u2VWkt5Ai99wYxubAkFToO/zvd5ZHuls
-	s5e7ceLJ93VXqTOJvfRpXppI6v3kL3Z4k+f427oJLlUd7OdKCDorUz62OueWwAfWyGKzmIlukYiK8
-	1UelsvfqjfDGz1wH5AcYmjgM9YnnJtDvFL8SFnDchUoVE3IYK7DhpGV+vdvcLoMM54q8+aayCwfET
-	rVlGkBWXr1dcETkINJMQ==;
+	List-Owner; bh=II2EGMOaDTRy/luHRQ36mx/YBKBvr+WyBVw8/BaYXMY=; b=PD2mH0YkVWIO2f
+	A65zKO6OtLxNeBLik3JxOrKb/eZgeKL737DWitsp+ZzVYT+bnUZsm4mWyVKwSJxiVq0c+FriAObFE
+	v5+Y31gAZ00dddkNR+ZcgNBl0gISn1G2kJfIYqHBy1DNzqJInvT5onqyIjA9RpNd+7k5VcIR6cfA7
+	Oj1/eRmQcApXoKjq1L3zUj1Pv3LQZ/b/PEIr6uKDSSNcUUEB3IGV9fe2znGYUBsAxwkYYhWnRYaWB
+	YalXY3RIJOZUBO/+0EuwqApJJtI7b1+oDZKvGxVuuF+IzlQghKKjJH0PwHp7rz2PUOO3saTYogqs4
+	fJ78GORNrIA42RbRarJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vImmy-000000076U1-03qU;
-	Tue, 11 Nov 2025 11:43:56 +0000
-Received: from smtpbg151.qq.com ([18.169.211.239])
+	id 1vImxR-000000077WI-3e4m;
+	Tue, 11 Nov 2025 11:54:45 +0000
+Received: from smtpbgbr1.qq.com ([54.207.19.206])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vImmu-000000076Ri-32Fu
+	id 1vImxP-000000077Ts-1LHU
 	for linux-rockchip@lists.infradead.org;
-	Tue, 11 Nov 2025 11:43:55 +0000
-X-QQ-mid: zesmtpip4t1762861389t225b1ad2
-X-QQ-Originating-IP: CnFKXworqreyPgjtRRUIGo1/7hlQ0Xqt6xU26RYKeDs=
+	Tue, 11 Nov 2025 11:54:45 +0000
+X-QQ-mid: zesmtpip3t1762861977teba315bb
+X-QQ-Originating-IP: 9hk3gt7N3vjJwmXMB16WeBR8MVSYirzN9zA3vngNTqw=
 Received: from [IPV6:240f:10b:7440:1:62e3:2c99 ( [localhost])
 	by bizesmtp.qq.com (ESMTP) with 
-	id ; Tue, 11 Nov 2025 19:43:06 +0800 (CST)
+	id ; Tue, 11 Nov 2025 19:52:54 +0800 (CST)
 X-QQ-SSF: 0000000000000000000000000000000
 X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 4623093854345164356
-Message-ID: <FC06F2D88D1A6D6B+2515ff82-cd34-4f1d-8078-feb669912e41@radxa.com>
-Date: Tue, 11 Nov 2025 20:43:05 +0900
+X-BIZMAIL-ID: 4277675725007631455
+Message-ID: <617FDAB231C501DC+3f9809df-87df-4a02-bd5f-ebc6299b3aa7@radxa.com>
+Date: Tue, 11 Nov 2025 20:52:54 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 04/14] arm64: dts: rockchip: Fix microSD card detect
- for Radxa ROCK 5C
-To: heiko@sntech.de
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- dsimic@manjaro.org, alchark@gmail.com, devicetree@vger.kernel.org,
- linux-rockchip@lists.infradead.org
-References: <20251109141859.206835-1-naoki@radxa.com>
- <20251109141859.206835-5-naoki@radxa.com>
+Subject: Re: [PATCH v6 0/3] Add Radxa CM5 and IO Board
+To: Joseph Kogut <joseph.kogut@gmail.com>
+Cc: heiko@sntech.de, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, jonas@kwiboo.se, kever.yang@rock-chips.com,
+ honyuenkwun@gmail.com, quentin.schulz@cherry.de, dsimic@manjaro.org,
+ pbrobinson@gmail.com, amadeus@jmu.edu.cn, jbx6244@gmail.com,
+ devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
+References: <20251105051335.17652-1-naoki@radxa.com>
+ <199E172C8E20ED38+71169242-5525-4d60-9e37-a03ad172d639@radxa.com>
+ <CAMWSM7gezjVSoF+-7ivboTeB=5gQAE-QVrbAbKu3M=obmb3Axg@mail.gmail.com>
 Content-Language: en-US
 From: FUKAUMI Naoki <naoki@radxa.com>
-In-Reply-To: <20251109141859.206835-5-naoki@radxa.com>
+In-Reply-To: <CAMWSM7gezjVSoF+-7ivboTeB=5gQAE-QVrbAbKu3M=obmb3Axg@mail.gmail.com>
 X-QQ-SENDSIZE: 520
 Feedback-ID: zesmtpip:radxa.com:qybglogicsvrsz:qybglogicsvrsz4b-0
-X-QQ-XMAILINFO: NPR7uEA6bBho2vyFxAH/44d4hURMFkoPr9g1+PLwALB+a7Ud/0lJRJx1
-	NZwsWxLd892O/pChgcAklYB/010wj7p4lOmBZz6e+7cjV3dX7eVt5UJ8y11ygUlIwu1QpLU
-	UTDMwGslSMcAU3PKx8SlP5XZGBPvRcRZPPh+UgUVkPoE9BApcom72HCBkm7aNfqIx+7BXWC
-	KEEhSFCVJiv9Uzf+/fFf5v9FX3PWRTaOxaU/Y8Tc+aFQIGcqah3boThwqTnbZ5oQ/efRajH
-	TMB32oMcG1cgz5/5ymdGTYbfcvV7Emyg/2V1+Ug6G8zU8x1Xgm3PzNbS2Tv4noLCkWdmEUd
-	7NiI+eUL+AABv3a6LNx2aWhh1ald6aRPhiWpEIhzrzMjhAd/1YtGqLi67+EEZogM6KYfrAv
-	SmUgUsytc8vn9hB/3qiqcUd2F8tVqvRts5gGUHH51KItF0VoT3OD8RKbNqwQhNHAOtyg9Fb
-	gMgox5fnYDDHbROnFHGArz8hfL4fW7uMNFcLLhOmHhQgJcYfA4VGM0QbwMDeUSR0fyiHY5D
-	gHv/Anaq9U1nLScK+b1knAlAfoaRdKOBComRf12BYpgJzxjA5rUGAS+5UX2grA5k2vjiOjE
-	9TkaG1JtQEDYxpm3XgmlJ9h1o0yxuibkS04U/UfRHYB7RgFrAdOExnMqbkqXTlvGSwVBhBG
-	h+6P1AzCfDquWWtQRQOptIav+mB1vW21Oe27uEzXGRuPmUs4XHq0PoDRlyCHFMmrnmXOvuX
-	tjWk0/uSHxH065KLVbXEVornJgh3HwoTycKJkKd0h4szGGnNV2eHJcSqmck2JcbOXOkqGZT
-	wSiOp9Jf5PWF+he7eVWJlS36hqOFlakgSa4/Z66B7Oz81+ATdfqk2lwN4cTJnWLo4JtzA0X
-	jct/BSmu463nlUFlJhAcdO6p23v3T8mXtz/tqe8zNOmQSSTGzde+jwabKzgc0rA/ikZ6HHe
-	OXNx22+SkMLTk+V4HEAR40TFw8OQvumoSM+zdKPqtJkLxxfM2j4U0FIpc
+X-QQ-XMAILINFO: NSdk79fbXCzSL5DG/KqddmABTDb89FEkhKKOW4DaP5cqo28AaXtl4E5V
+	qs0wChiOGdMpMKSTcbh3tNCX8lUKdTl6iZZvw4iXMYq/9HBkuImvxiCawEW6gPbazJ1JJlk
+	aUXFjvylAC0ItDnlmmReHvLe0fAReZH5jMK6PSaKiPt720LRcXU+65krInbJWKtO/VxM+ts
+	kUJiR8cZuL76+lPzpBQGPmGlfOl1piPrSeLj6pXcL1omVqRMqCl3dmLUk2Q1d0cwZKSAHD3
+	5Zm1gkI+foi7CRcLxNsyjioQoXgc2+i1ppDsXSOfGov7uel1OeZ2yXrMEtVAF3WxqtoEafQ
+	V8RusYtsBGkuKI+qQune+6yys+hnh2vpcX1dlleis+jbUBSFij/m2HGytfXsdnVKYDOif3F
+	Kcv6JMbsHb/LIIr6FI5jUNvKj6dP9LirR2J4EDW8WxLMS/mUn0uVFIzRoPZvwXecMW6dA2Q
+	80ZFmjCrW3cTasvaFLFWdeNv7fHUW4hcAvX8jexH4iByDDbGwiSiZigtIxys6Vs+o5SEz1M
+	CWpNaOiZZfMZvkE86B7RWVgrvkdk2He7ioMJRY/KEsK8iwrGBxcN+534pLSB10i8Q4C7RjW
+	6EMCMxtwoTCp7o/jYR/n7OUyHDKHI6TjxDihXrg/DHXR8BPGVv0p1U/nXu9rrhhWyqRHVP6
+	TfL8NGJ6kgJpHQnJ2nXERNZp5CmrdMM3T4TrDkv6ZoqdYCnJoPnS0r05PQ+AUSVHUO0c5ls
+	Z7RnMK056eQAGhdEn23Eb1BQ8LmPQ2WS/zlvagbEzyDzUD6Pksl8Y8wju4K5nLE0Ft78fPp
+	qNi+G7rdxQdUyxbO1koao0OIUR4FcKEPjfrXHOYHnt66mLaymnUq+1W2fnDQ0qm3oAmms7B
+	/8YmWo2qUQRkmZjZfXqvPINCVMPS0B6wtW/jX4kkgKuE9olE+lYwDF33mBdIQUHejpOFKOu
+	Egf8gItAamritdkimR1TrDTQtA5W01rfG/u64wWV77dNH7RGJGpEa3Xk7AduHPaxUH7veSl
+	WpI6O6xNOt+srZcVclRkG7z1GOy+yy7fsZC3jpxQ==
 X-QQ-XMRINFO: Mp0Kj//9VHAxr69bL5MkOOs=
 X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251111_034353_698307_84FBFFB3 
-X-CRM114-Status: GOOD (  11.99  )
+X-CRM114-CacheID: sfid-20251111_035444_271115_4414616E 
+X-CRM114-Status: GOOD (  11.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,69 +86,28 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-I'll drop this on v8. This will be handled in
-  https://lore.kernel.org/linux-rockchip/20251111071730.126238-1-naoki@radxa.com/
-
-Best regards,
-
---
-FUKAUMI Naoki
-Radxa Computer (Shenzhen) Co., Ltd.
-
-On 11/9/25 23:18, FUKAUMI Naoki wrote:
-> Due to the discussion about cd-gpios and sdmmmc_det pin
-> functionality[1], it would be better to use cd-gpios for now.
-> 
-> [1] https://lore.kernel.org/linux-rockchip/20240912152538.1.I858c2a0bf83606c8b59ba1ab6944978a398d2ac5@changeid/T/#u
-> 
-> Fixes: 3ddf5cdb77e6 ("arm64: dts: rockchip: add Radxa ROCK 5C")
-> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
-> ---
-> Changes in v7:
-> - Add pinctrl-*
-> - Reword commit message
-> Changes in v6:
-> - Reword commit message
-> Changes in v5:
-> - Reword commit message
-> Changes in v4:
-> - None
-> Changes in v3:
-> - None
-> Changes in v2:
-> - None
-> ---
->   arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts | 3 +++
->   1 file changed, 3 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
-> index 9a9430b2494b7..1257aaac8f350 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
-> @@ -510,9 +510,12 @@ &sdmmc {
->   	bus-width = <4>;
->   	cap-mmc-highspeed;
->   	cap-sd-highspeed;
-> +	cd-gpios = <&gpio0 RK_PA4 GPIO_ACTIVE_LOW>;
->   	disable-wp;
->   	no-sdio;
->   	no-mmc;
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&sdmmc_bus4 &sdmmc_clk &sdmmc_cmd>;
->   	sd-uhs-sdr104;
->   	vmmc-supply = <&vcc_3v3_s3>;
->   	vqmmc-supply = <&vccio_sd_s0>;
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgYWxsLAoKT24gMTEvNi8yNSAwMjo0OCwgSm9zZXBoIEtvZ3V0IHdyb3RlOgo+IEhlbGxvIGFs
+bCwKPiAKPiBPbiBXZWQsIE5vdiA1LCAyMDI1IGF0IDQ6MTXigK9BTSBGVUtBVU1JIE5hb2tpIDxu
+YW9raUByYWR4YS5jb20+IHdyb3RlOgo+Pgo+PiBJJ2QgbGlrZSB0byBjbGFyaWZ5IHRoZSBzaXR1
+YXRpb24gcmVnYXJkaW5nIHRoZSB2NiBwYXRjaCBzZXJpZXMgSSBzdWJtaXR0ZWQuCj4+Cj4+IFRo
+ZSBvcmlnaW5hbCBkZXZpY2UgdHJlZSB3b3JrIGZvciB0aGUgUmFkeGEgQ001IGFuZCBJTyBCb2Fy
+ZCB3YXMKPj4gYXV0aG9yZWQgYnkgSm9zZXBoIEtvZ3V0LiBJIHRvb2sgb3ZlciB0aGUgcmVzcG9u
+c2liaWxpdHkgb2YgZ2V0dGluZyBpdAo+PiB1cHN0cmVhbWVkIHdpdGggaGlzIGFncmVlbWVudC4K
+PiAKPiBJJ2xsIGNvbmZpcm0gdGhpcy4gSSd2ZSBiZWVuIGluIGNvbW11bmljYXRpb24gd2l0aCBO
+YW9raS4gVGhleSBtYWRlIGEKPiBsYXJnZSBudW1iZXIgb2YgcmV2aXNpb25zIHRvIG15IG9yaWdp
+bmFsIHBhdGNoIHNlcmllcywgd2hpY2ggSSB0aGluawo+IGhhdmUgdGVjaG5pY2FsIG1lcml0LiBJ
+IHN1Z2dlc3RlZCB0aGV5IHN1Ym1pdCB0aGUgcGF0Y2hlcyB0aGVtc2VsdmVzLAo+IGFuZCBnYXZl
+IHRoZW0gZXhwbGljaXQgcGVybWlzc2lvbiB0byBhZGQgbXkgU2lnbmVkLW9mZi1ieSBhbmQgQ0Mg
+bWUuCj4gCj4gSSBhc3N1bWUgdGhpcyB3YXMgdGhlIGNvcnJlY3Qgd2F5IGZvciB0aGVtIHRvIGNv
+bnRpbnVlIHRoZSB3b3JrIEkKPiBzdGFydGVkLCBidXQgaWYgbm90LCBwbGVhc2UgbGV0IHVzIGtu
+b3cgdGhlIGJlc3Qgd2F5IHRvIHByb2NlZWQuCgpDYW4gYW55b25lIGhlbHAgdXM/CgpCZXN0IHJl
+Z2FyZHMsCgotLQpGVUtBVU1JIE5hb2tpClJhZHhhIENvbXB1dGVyIChTaGVuemhlbikgQ28uLCBM
+dGQuCgo+IEJlc3QsCj4gSm9zZXBoCj4gCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2Nr
+Y2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
+YW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
