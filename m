@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC266CD13D2
-	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Nov 2025 22:16:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08073CD13CF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Nov 2025 22:16:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DyND3jog32DrFRur19nZYl50KcITCALzX/ElOSlqG/U=; b=CSuRTIY2QCNK2g
-	1cFn5ybJL4a1Pk1zmNTXne4qLFbTEFUJTzUw2/h82Uvedz5NduI0VkrwZveqoa2CtlKum2hwZvSa6
-	7BXzKJ9+DyCSXJ0kVzVPK1sxJVkcZdvPBPsMNnNZp3MVSL0D4uYLm8tZEj06u/gEtEQbaUz/66dwy
-	5wfeRNwA9IUIxmLWvl50CpPc020oiJRXQ5JBkcXqeKsAE5Qhv6bukNUNh3sn0NE5UgwYLk+SvO5ul
-	3HVlPYy+D+RgZtBh5fG02R3GXlBuicdjFic9j3jPQ3n1I9ruND0oXlriLKf4bRDWXKFzeVLg/5mNr
-	Vd1pD0HocnJKv99XU9Qg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=qcKMqrCKMWlVghCH70DVfhvb1WYFMTCJpG5yy7Tvyrk=; b=JlQRUKRaQtBk3b
+	ymxv1pfU34OJZvVVyWI5Dzpbt2UFxwuwAc4x+kff48Yz+ZMv+VcwMnasIQKl8E2SUbjeeSjtetykP
+	GVVcVY5pogpiEe2LESFuM3imoizrQv8PGwI7HX32lk/cyJ5ZGq7TZN0sIt5jWrAhdoAJQxTKe8p3M
+	mFlzMzPwfGVrcxXLB5635LO9rRTgZnlp2bNgFVTkakEnBF/Df8VDkCCU86ytkH9+M6la0fq+CVghw
+	gcMPrIEEzRbvczbYJb49oSZv716yQCD8aT9obUnTPs08RspGn1FQsIcoSRZHVADA7QkNwRapYE424
+	24B6MXrQpetnGZue6ixA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIwfI-00000007pq1-3HeH;
-	Tue, 11 Nov 2025 22:16:40 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vIwfD-00000007pmW-2ev6;
+	Tue, 11 Nov 2025 22:16:35 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIwfE-00000007pme-2mBN;
-	Tue, 11 Nov 2025 22:16:37 +0000
+	id 1vIwfC-00000007pmI-1RRW;
+	Tue, 11 Nov 2025 22:16:34 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id EABD943998;
-	Tue, 11 Nov 2025 22:16:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 862D8C16AAE;
-	Tue, 11 Nov 2025 22:16:35 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 1C89C60055;
+	Tue, 11 Nov 2025 22:16:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 984B1C113D0;
+	Tue, 11 Nov 2025 22:16:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1762899395;
-	bh=tWgtFDVczwJGDGIoy+OuLVGscnJT3/fUkwwYZbHhyNk=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=lihuqsIQ6lvYr+A5OEmUsIVIOt1oRZ57SAYptaA2Tyn8sLN2VpGGeo7KV7CZW3eFZ
-	 Q9F+diyamYV2ozlV5h4/z8+h8tLs526kYd0pqEkNW828INbciF1ROW9sqczxTkfz9u
-	 U6OA67BwczHfvaBKmK7Tl/t/mwuQQJkT3D1OvoyQDZoBND06UAp1i/eEi0Z4DE84NO
-	 uZn3nAfFEfAQsPy0SRMqu2M4Wy9g8Myb0CV/P+NDF5EJUds9oKs6yZHFkY2b2xL4z2
-	 4S96Nt2rxGsFJxmqo3aAWjVjBPYOFOfZ8f0DHbCOouzKLobgPhe5eAZeV3SuMCQwbL
-	 e+/pyjb+tlywQ==
+	s=k20201202; t=1762899392;
+	bh=o7bQ4BiteNEBflYFO9xS4aNpUQ3/uiKdReJRD+W/Xs8=;
+	h=From:To:Cc:Subject:Date:From;
+	b=jDBZpZr8VayAjbfjTI+vVLb8YkruhItc0a4znA0U/zzvGzz4nwGj2WujwIHv6tJhu
+	 3zK9UwoSXHXCY2IYV1iIFM8qRjItU5+ItVPJNXe61erfMUTIaFr57RLFEZfkhP1cmG
+	 qXFeO/b9aNrXBVUjqVZpr2qNh53RNDFjQr5rtXCZiUU+D/PalgvHAD9HE/vINwuARB
+	 8Yo11/gdkbCw/OwRlraXtp9KO0EBubd/rEBiwhNSQGhSCSCglAU1HxyPgnCNTKsSK3
+	 0+DlnEZxblC37ydwYRVQDFMN1e+G5a2ueAKmKjhXJfY+c/G0ZMoDD6v/bVlRHuvL3H
+	 IwX4vosCfAEvg==
 From: Bjorn Helgaas <helgaas@kernel.org>
 To: Niklas Cassel <cassel@kernel.org>,
 	Shawn Lin <shawn.lin@rock-chips.com>
@@ -72,16 +72,11 @@ Cc: Manivannan Sadhasivam <mani@kernel.org>,
 	linux-rockchip@lists.infradead.org,
 	kernel@pengutronix.de,
 	Bjorn Helgaas <bhelgaas@google.com>
-Subject: [PATCH 2/4] PCI: tegra194: Remove unnecessary L1SS disable code
-Date: Tue, 11 Nov 2025 16:16:09 -0600
-Message-ID: <20251111221621.2208606-3-helgaas@kernel.org>
+Subject: [PATCH 0/4] PCI: dwc: Advertise L1 PM Substates only if driver requests it
+Date: Tue, 11 Nov 2025 16:16:07 -0600
+Message-ID: <20251111221621.2208606-1-helgaas@kernel.org>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20251111221621.2208606-1-helgaas@kernel.org>
-References: <20251111221621.2208606-1-helgaas@kernel.org>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251111_141636_745082_236B265C 
-X-CRM114-Status: GOOD (  11.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,86 +95,49 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Bjorn Helgaas <bhelgaas@google.com>
 
-The DWC core clears the L1 Substates Supported bits unless the driver sets
-the "dw_pcie.l1ss_support" flag.
+This is a follow-up to Niklas's patch at
+https://lore.kernel.org/r/20251017163252.598812-2-cassel@kernel.org.  That
+patch clears the L1 PM Substate Supported bits for the dw-rockchip driver,
+which doesn't yet do the device configuration to support the L1 Substates.
 
-The tegra194 init_host_aspm() sets "dw_pcie.l1ss_support" if the platform
-has the "supports-clkreq" DT property.  If "supports-clkreq" is absent,
-"dw_pcie.l1ss_support" is not set, and the DWC core will clear the L1
-Substates Supported bits.
+This series does the same thing, but in the DWC core so it applies to all
+DWC-based drivers.  Drivers that do support L1 Substates (currently
+tegra194 and qcom) indicate that by setting "dw_pcie.l1ss_support", and the
+DWC core will leave the L1 PM Substate Supported bits alone.
 
-The tegra194 code to clear the L1 Substates Supported bits is unnecessary,
-so remove it.
+This also includes Shawn's patches to add the dw-rockchip support for L1
+Substates.
 
-Signed-off-by: Bjorn Helgaas <bhelgaas@google.com>
----
- drivers/pci/controller/dwc/pcie-tegra194.c | 32 ----------------------
- 1 file changed, 32 deletions(-)
+The problem this fixes is that users are currently able to enable L1
+Substates, e.g., by
 
-diff --git a/drivers/pci/controller/dwc/pcie-tegra194.c b/drivers/pci/controller/dwc/pcie-tegra194.c
-index 3934757baa30..d5545bf37f81 100644
---- a/drivers/pci/controller/dwc/pcie-tegra194.c
-+++ b/drivers/pci/controller/dwc/pcie-tegra194.c
-@@ -608,24 +608,6 @@ static struct pci_ops tegra_pci_ops = {
- };
- 
- #if defined(CONFIG_PCIEASPM)
--static void disable_aspm_l11(struct tegra_pcie_dw *pcie)
--{
--	u32 val;
--
--	val = dw_pcie_readl_dbi(&pcie->pci, pcie->cfg_link_cap_l1sub);
--	val &= ~PCI_L1SS_CAP_ASPM_L1_1;
--	dw_pcie_writel_dbi(&pcie->pci, pcie->cfg_link_cap_l1sub, val);
--}
--
--static void disable_aspm_l12(struct tegra_pcie_dw *pcie)
--{
--	u32 val;
--
--	val = dw_pcie_readl_dbi(&pcie->pci, pcie->cfg_link_cap_l1sub);
--	val &= ~PCI_L1SS_CAP_ASPM_L1_2;
--	dw_pcie_writel_dbi(&pcie->pci, pcie->cfg_link_cap_l1sub, val);
--}
--
- static inline u32 event_counter_prog(struct tegra_pcie_dw *pcie, u32 event)
- {
- 	u32 val;
-@@ -729,8 +711,6 @@ static void init_debugfs(struct tegra_pcie_dw *pcie)
- 				    aspm_state_cnt);
- }
- #else
--static inline void disable_aspm_l12(struct tegra_pcie_dw *pcie) { return; }
--static inline void disable_aspm_l11(struct tegra_pcie_dw *pcie) { return; }
- static inline void init_host_aspm(struct tegra_pcie_dw *pcie) { return; }
- static inline void init_debugfs(struct tegra_pcie_dw *pcie) { return; }
- #endif
-@@ -934,12 +914,6 @@ static int tegra_pcie_dw_host_init(struct dw_pcie_rp *pp)
- 
- 	init_host_aspm(pcie);
- 
--	/* Disable ASPM-L1SS advertisement if there is no CLKREQ routing */
--	if (!pcie->supports_clkreq) {
--		disable_aspm_l11(pcie);
--		disable_aspm_l12(pcie);
--	}
--
- 	if (!pcie->of_data->has_l1ss_exit_fix) {
- 		val = dw_pcie_readl_dbi(pci, GEN3_RELATED_OFF);
- 		val &= ~GEN3_RELATED_OFF_GEN3_ZRXDC_NONCOMPL;
-@@ -1874,12 +1848,6 @@ static void pex_ep_event_pex_rst_deassert(struct tegra_pcie_dw *pcie)
- 
- 	init_host_aspm(pcie);
- 
--	/* Disable ASPM-L1SS advertisement if there is no CLKREQ routing */
--	if (!pcie->supports_clkreq) {
--		disable_aspm_l11(pcie);
--		disable_aspm_l12(pcie);
--	}
--
- 	if (!pcie->of_data->has_l1ss_exit_fix) {
- 		val = dw_pcie_readl_dbi(pci, GEN3_RELATED_OFF);
- 		val &= ~GEN3_RELATED_OFF_GEN3_ZRXDC_NONCOMPL;
+  - building with with CONFIG_PCIEASPM_POWER_SUPERSAVE=y
+  - booting with "pcie_aspm.policy=powersupersave"
+  - echo powersupersave > /sys/module/pcie_aspm/parameters/policy
+  - echo 1 > /sys/bus/pci/devices/.../link/l1_1_aspm
+
+but this breaks devices if the platform doesn't support CLKREQ# or lacks
+Root Port configuration.  This series avoids that problem by preventing the
+kernel from enabling L1.x in the first place.
+
+Bjorn Helgaas (2):
+  PCI: dwc: Advertise L1 PM Substates only if driver requests it
+  PCI: tegra194: Remove unnecessary L1SS disable code
+
+Shawn Lin (2):
+  PCI: dw-rockchip: Configure L1sub support
+  arm64: dts: rockchip: Add PCIe clkreq stuff for RK3588 EVB1
+
+ .../boot/dts/rockchip/rk3588-evb1-v10.dts     |  7 +++-
+ .../pci/controller/dwc/pcie-designware-ep.c   |  2 +
+ .../pci/controller/dwc/pcie-designware-host.c |  2 +
+ drivers/pci/controller/dwc/pcie-designware.c  | 24 ++++++++++++
+ drivers/pci/controller/dwc/pcie-designware.h  |  2 +
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c | 38 +++++++++++++++++++
+ drivers/pci/controller/dwc/pcie-qcom.c        |  2 +
+ drivers/pci/controller/dwc/pcie-tegra194.c    | 35 ++---------------
+ 8 files changed, 78 insertions(+), 34 deletions(-)
+
 -- 
 2.43.0
 
