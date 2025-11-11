@@ -4,107 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2E58CEBF92
-	for <linux-rockchip@archiver.kernel.org>; Sat, 15 Nov 2025 23:29:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D6C0CEBF86
+	for <linux-rockchip@archiver.kernel.org>; Sat, 15 Nov 2025 23:29:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
-	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=jLSbvn3M7Q6lbpMEHGYCeoXTa9TcOcyGUKNNrMBdpSs=; b=uOTlg5AzZXTHUGInoZhy1MQcYQ
-	dSIGLF0xIyYejIpNrXtSBsxKRsoGJgBnQqAlnK45bPWBr/IXTmoMavWXZKWl/Loz6kKuUDNeziZr9
-	NV4Cik/PVTxg+wJmVx7bMHqLAHA2swtAMREo6fjOPPmu1MwRdur419fPVreFx/sgwiK2e51Y+f/i2
-	FMA/MCkOYn8LwFS5O0bQGMl7NXZIaTO5g37TdVnx8qGQIIwPiIdVmNISaocdCHl4JSYFHsbbxGI6s
-	rwIfSHlMvc3buA5vpS3O0Bze7FaG/PPQlGUSHZgFjb1jDnQxFVOTYrVNOdizfsmAjlvYbfs8pFU+d
-	q679f3WA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=XZf0Z4wsQKrjbyuSW1LBcTYNOGYseWYZTu52P9v01Mg=; b=dhIDVedNtvdgPK
+	DdOpjqRvKg0Ps3EbScSFpHxeb5em7bG9aItXuAHrk2WH21M9Du+PKF9gl7jKNMoHXwVHkckwRh/KI
+	3hDK1fE0X5hA+na5jHl1Lys/jpQOwhc3wi01NG9PlWiUX3ae02X/OeNAMQVjabTk5ozwzU/Q4Gb2H
+	/B3jBi+2e2fcPH51MXjjO2Fim847759G2lgqQA5W7B/uAo/7Ey52ojb/8sxzeqX3mMxDU9+dUvq+n
+	xyvnC/GB3/gaIWDX0mDm8xsYlM/COL3R/FV4VaYxpacr4NAl47WMo60+5sev2azArJovfgetnIew7
+	bthU9L18fY/dI1r9s/Sw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vKPha-0000000ECEr-23ik;
+	id 1vKPha-0000000ECFP-3N9T;
 	Sat, 15 Nov 2025 23:29:06 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vHKXt-0000000HCJg-2YAl;
-	Fri, 07 Nov 2025 11:22:22 +0000
+	id 1vImr5-000000076m0-0Q7s;
+	Tue, 11 Nov 2025 11:48:12 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id A00EC4450E;
-	Fri,  7 Nov 2025 11:22:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 45321C4CEF7;
-	Fri,  7 Nov 2025 11:22:20 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id A5F0242B45;
+	Tue, 11 Nov 2025 11:48:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3E74BC116D0;
+	Tue, 11 Nov 2025 11:47:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1762514540;
-	bh=WqJuyrothph0jJUBiuUUbS1FvhvPkDqkS2NhaeN0xV0=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=rImSqDdr0csAuwceoiZMORIrJXnobUCP+yoqx199IwW4RPtIeHWgGg8yhQ45V/D7R
-	 HxCBJlEMisUSTZWQ74AkbgFanp3OacerkO8+FsunvIN8Qv1PJjoKvEhbkIBisz2yNh
-	 fHEnA2G6Z+rnjMkyoYcahxv0PRsrM8NiFmSYDw5XFjOljLa3mMJnwZAikRLma8aHey
-	 0V3PWYoagJTX1nuIdJ2Oom+6PchZMhCgWc6c354u4h/wXc/BosroSeZA0hazMf3txS
-	 iSFPT4TBGUlSnwuvzF4pqevVMyluivzg/6sz2Tim0ZSb22VBqsrJyyImM6xekisJtj
-	 QhXJiXhB/cEDw==
-Date: Fri, 07 Nov 2025 05:22:18 -0600
-MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: linux-stm32@st-md-mailman.stormreply.com, 
- Eric Dumazet <edumazet@google.com>, Fabio Estevam <festevam@gmail.com>, 
- David Wu <david.wu@rock-chips.com>, 
- Geert Uytterhoeven <geert+renesas@glider.be>, 
- Samin Guo <samin.guo@starfivetech.com>, linux-amlogic@lists.infradead.org, 
- netdev@vger.kernel.org, imx@lists.linux.dev, 
- Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
- linux-renesas-soc@vger.kernel.org, Clark Wang <xiaoning.wang@nxp.com>, 
- Jerome Brunet <jbrunet@baylibre.com>, 
- Jernej Skrabec <jernej.skrabec@gmail.com>, Guo Ren <guoren@kernel.org>, 
- Jose Abreu <joabreu@synopsys.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>, 
- "G. Jaya Kumaran" <vineetha.g.jaya.kumaran@intel.com>, 
- Bjorn Andersson <andersson@kernel.org>, 
- Shuang Liang <liangshuang@eswincomputing.com>, 
- Nobuhiro Iwamatsu <nobuhiro.iwamatsu.x90@mail.toshiba>, 
- Swathi K S <swathi.ks@samsung.com>, linux-arm-msm@vger.kernel.org, 
- Giuseppe Cavallaro <peppe.cavallaro@st.com>, 
- linux-rockchip@lists.infradead.org, Frank Li <Frank.Li@nxp.com>, 
- Emil Renner Berthing <kernel@esmil.dk>, 
- Shangjuan Wei <weishangjuan@eswincomputing.com>, 
- Vinod Koul <vkoul@kernel.org>, Richard Cochran <richardcochran@gmail.com>, 
- Alexandre Torgue <alexandre.torgue@foss.st.com>, 
- Maxime Ripard <mripard@kernel.org>, linux-arm-kernel@lists.infradead.org, 
- Jan Petrous <jan.petrous@oss.nxp.com>, 
- Drew Fustini <dfustini@tenstorrent.com>, s32@nxp.com, 
- Conor Dooley <conor+dt@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Samuel Holland <samuel@sholland.org>, Kevin Hilman <khilman@baylibre.com>, 
- devicetree@vger.kernel.org, Chen-Yu Tsai <wens@kernel.org>, 
- linux-mips@vger.kernel.org, Konrad Dybcio <konradybcio@kernel.org>, 
- Matthew Gerlach <matthew.gerlach@altera.com>, 
- Zhi Li <lizhi2@eswincomputing.com>, linux-sunxi@lists.linux.dev, 
- Heiko Stuebner <heiko@sntech.de>, 
- Bartosz Golaszewski <bartosz.golaszewski@linaro.org>, 
- Fu Wei <wefu@redhat.com>, Linux Team <linux-imx@nxp.com>, 
- Christophe Roullier <christophe.roullier@foss.st.com>, 
- Pengutronix Kernel Team <kernel@pengutronix.de>, 
- Keguang Zhang <keguang.zhang@gmail.com>, 
- Sascha Hauer <s.hauer@pengutronix.de>, 
- Romain Gantois <romain.gantois@bootlin.com>, 
- Magnus Damm <magnus.damm@gmail.com>, Drew Fustini <fustini@kernel.org>, 
- Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Shawn Guo <shawnguo@kernel.org>, 
- linux-kernel@vger.kernel.org, Inochi Amaoto <inochiama@gmail.com>, 
- Jakub Kicinski <kuba@kernel.org>, sophgo@lists.linux.dev, 
- Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>, 
- Minda Chen <minda.chen@starfivetech.com>, linux-riscv@lists.infradead.org, 
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Chen Wang <unicorn_wang@outlook.com>
+	s=k20201202; t=1762861689;
+	bh=jxi1Gv6OcPtGGFXGFF2QxkwKjLaMbfnLeBrhrAyU/Tg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=U8wDzG2jhPfzS4KLy6BBXjLkq8tbdJdbZ2HLPt/oCduCWbREVPz6XahhQXZNBZvqk
+	 rL61nJbROp9KbKpanxP6Xm+RhhBC2JjGt3mq5g1Vt8UeeKM8gOKgcYiPO0I2jAA8oR
+	 2vP9zcZsjezzMSY7lXp0qcTehuQ5Bvcn5PLIyv21tVd9pJmlDNPzRzYLCVga+fJVZC
+	 exeLAcTwq2GZWVxiqi/O5Hs9YfEKaR3AZUbkmkVOA0uPAeCkVjy4pmp9+BXSwywuet
+	 qQS5xfNfqALbItTHOqCEixH82CxNQPweybJmarDGuJMjWDhzcw/4Ag1g8TdQPeJwJh
+	 M8yYB1Fdu26pw==
+Date: Tue, 11 Nov 2025 11:47:53 +0000
+From: Simon Horman <horms@kernel.org>
 To: Bartosz Golaszewski <brgl@bgdev.pl>
-In-Reply-To: <20251107-qcom-sa8255p-emac-v5-1-01d3e3aaf388@linaro.org>
+Cc: Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konradybcio@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Richard Cochran <richardcochran@gmail.com>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Vinod Koul <vkoul@kernel.org>,
+	Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+	Jose Abreu <joabreu@synopsys.com>, Chen-Yu Tsai <wens@kernel.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Matthew Gerlach <matthew.gerlach@altera.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	Keguang Zhang <keguang.zhang@gmail.com>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	Jan Petrous <jan.petrous@oss.nxp.com>, s32@nxp.com,
+	Romain Gantois <romain.gantois@bootlin.com>,
+	Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Chen Wang <unicorn_wang@outlook.com>,
+	Inochi Amaoto <inochiama@gmail.com>,
+	Emil Renner Berthing <kernel@esmil.dk>,
+	Minda Chen <minda.chen@starfivetech.com>,
+	Drew Fustini <fustini@kernel.org>, Guo Ren <guoren@kernel.org>,
+	Fu Wei <wefu@redhat.com>,
+	Nobuhiro Iwamatsu <nobuhiro.iwamatsu.x90@mail.toshiba>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Magnus Damm <magnus.damm@gmail.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Shuang Liang <liangshuang@eswincomputing.com>,
+	Zhi Li <lizhi2@eswincomputing.com>,
+	Shangjuan Wei <weishangjuan@eswincomputing.com>,
+	"G. Jaya Kumaran" <vineetha.g.jaya.kumaran@intel.com>,
+	Clark Wang <xiaoning.wang@nxp.com>, Linux Team <linux-imx@nxp.com>,
+	Frank Li <Frank.Li@nxp.com>, David Wu <david.wu@rock-chips.com>,
+	Samin Guo <samin.guo@starfivetech.com>,
+	Christophe Roullier <christophe.roullier@foss.st.com>,
+	Swathi K S <swathi.ks@samsung.com>, linux-arm-msm@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+	linux-arm-kernel@lists.infradead.org,
+	Drew Fustini <dfustini@tenstorrent.com>,
+	linux-sunxi@lists.linux.dev, linux-amlogic@lists.infradead.org,
+	linux-mips@vger.kernel.org, imx@lists.linux.dev,
+	linux-renesas-soc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, sophgo@lists.linux.dev,
+	linux-riscv@lists.infradead.org,
+	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+Subject: Re: [PATCH v5 8/8] net: stmmac: qcom-ethqos: add support for sa8255p
+Message-ID: <aRMiafCQNPVDOljU@horms.kernel.org>
 References: <20251107-qcom-sa8255p-emac-v5-0-01d3e3aaf388@linaro.org>
- <20251107-qcom-sa8255p-emac-v5-1-01d3e3aaf388@linaro.org>
-Message-Id: <176251453854.1709481.17350672291824662534.robh@kernel.org>
-Subject: Re: [PATCH v5 1/8] dt-bindings: net: qcom: document the ethqos
- device for SCMI-based systems
+ <20251107-qcom-sa8255p-emac-v5-8-01d3e3aaf388@linaro.org>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20251107-qcom-sa8255p-emac-v5-8-01d3e3aaf388@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251107_032221_687467_F7EBB6DA 
-X-CRM114-Status: GOOD (  12.28  )
+X-CRM114-CacheID: sfid-20251111_034811_202441_481F9095 
+X-CRM114-Status: GOOD (  23.42  )
 X-Mailman-Approved-At: Sat, 15 Nov 2025 15:29:00 -0800
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -122,71 +131,123 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-On Fri, 07 Nov 2025 11:29:51 +0100, Bartosz Golaszewski wrote:
+On Fri, Nov 07, 2025 at 11:29:58AM +0100, Bartosz Golaszewski wrote:
 > From: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
-> 
-> Describe the firmware-managed variant of the QCom DesignWare MAC. As the
-> properties here differ a lot from the HLOS-managed variant, lets put it
-> in a separate file. Since we need to update the maximum number of power
-> domains, let's update existing bindings referencing the top-level
-> snps,dwmac.yaml and limit their maxItems for power-domains to 1.
-> 
-> Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
-> ---
->  .../bindings/net/allwinner,sun7i-a20-gmac.yaml     |  3 +
->  .../bindings/net/altr,socfpga-stmmac.yaml          |  3 +
->  .../bindings/net/amlogic,meson-dwmac.yaml          |  3 +
->  .../devicetree/bindings/net/eswin,eic7700-eth.yaml |  3 +
->  .../devicetree/bindings/net/intel,dwmac-plat.yaml  |  3 +
->  .../bindings/net/loongson,ls1b-gmac.yaml           |  3 +
->  .../bindings/net/loongson,ls1c-emac.yaml           |  3 +
->  .../devicetree/bindings/net/nxp,dwmac-imx.yaml     |  3 +
->  .../devicetree/bindings/net/nxp,lpc1850-dwmac.yaml |  3 +
->  .../devicetree/bindings/net/nxp,s32-dwmac.yaml     |  3 +
->  .../devicetree/bindings/net/qcom,ethqos.yaml       |  3 +
->  .../bindings/net/qcom,sa8255p-ethqos.yaml          | 98 ++++++++++++++++++++++
->  .../devicetree/bindings/net/renesas,rzn1-gmac.yaml |  3 +
->  .../bindings/net/renesas,rzv2h-gbeth.yaml          |  3 +
->  .../devicetree/bindings/net/rockchip-dwmac.yaml    |  3 +
->  .../devicetree/bindings/net/snps,dwmac.yaml        |  5 +-
->  .../bindings/net/sophgo,cv1800b-dwmac.yaml         |  3 +
->  .../bindings/net/sophgo,sg2044-dwmac.yaml          |  3 +
->  .../bindings/net/starfive,jh7110-dwmac.yaml        |  3 +
->  .../devicetree/bindings/net/stm32-dwmac.yaml       |  3 +
->  .../devicetree/bindings/net/tesla,fsd-ethqos.yaml  |  3 +
->  .../devicetree/bindings/net/thead,th1520-gmac.yaml |  3 +
->  .../bindings/net/toshiba,visconti-dwmac.yaml       |  3 +
->  MAINTAINERS                                        |  1 +
->  24 files changed, 166 insertions(+), 1 deletion(-)
-> 
 
-My bot found errors running 'make dt_binding_check' on your patch:
+...
 
-yamllint warnings/errors:
+> +static int qcom_ethqos_pd_init(struct platform_device *pdev, void *priv)
+> +{
+> +	struct qcom_ethqos *ethqos = priv;
+> +	int ret;
+> +
+> +	/*
+> +	 * Enable functional clock to prevent DMA reset after timeout due
+> +	 * to no PHY clock being enabled after the hardware block has been
+> +	 * power cycled. The actual configuration will be adjusted once
+> +	 * ethqos_fix_mac_speed() is called.
+> +	 */
+> +	ethqos_set_func_clk_en(ethqos);
+> +
+> +	ret = qcom_ethqos_domain_on(ethqos, ETHQOS_PD_CORE);
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = qcom_ethqos_domain_on(ethqos, ETHQOS_PD_MDIO);
+> +	if (ret) {
+> +		qcom_ethqos_domain_off(ethqos, ETHQOS_PD_CORE);
+> +		return ret;
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +static void qcom_ethqos_pd_exit(struct platform_device *pdev, void *data)
+> +{
+> +	struct qcom_ethqos *ethqos = data;
+> +
+> +	qcom_ethqos_domain_off(ethqos, ETHQOS_PD_MDIO);
+> +	qcom_ethqos_domain_off(ethqos, ETHQOS_PD_CORE);
+> +}
+> +
+>  static void ethqos_ptp_clk_freq_config(struct stmmac_priv *priv)
+>  {
+>  	struct plat_stmmacenet_data *plat_dat = priv->plat;
 
-dtschema/dtc warnings/errors:
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/net/qcom,sa8255p-ethqos.yaml: $id: Cannot determine base path from $id, relative path/filename doesn't match actual path or filename
- 	 $id: http://devicetree.org/schemas/net/qcom,ethqos-scmi.yaml
- 	file: /builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/net/qcom,sa8255p-ethqos.yaml
+...
 
-doc reference errors (make refcheckdocs):
+> @@ -852,28 +993,63 @@ static int qcom_ethqos_probe(struct platform_device *pdev)
+>  	ethqos->rgmii_config_loopback_en = drv_data->rgmii_config_loopback_en;
+>  	ethqos->has_emac_ge_3 = drv_data->has_emac_ge_3;
+>  	ethqos->needs_sgmii_loopback = drv_data->needs_sgmii_loopback;
+> -
+> -	ethqos->pm.link_clk = devm_clk_get(dev, clk_name);
+> -	if (IS_ERR(ethqos->pm.link_clk))
+> -		return dev_err_probe(dev, PTR_ERR(ethqos->pm.link_clk),
+> -				     "Failed to get link_clk\n");
+> -
+> -	ret = ethqos_clks_config(ethqos, true);
+> -	if (ret)
+> -		return ret;
+> -
+> -	ret = devm_add_action_or_reset(dev, ethqos_clks_disable, ethqos);
+> -	if (ret)
+> -		return ret;
+> -
+> -	ethqos->pm.serdes_phy = devm_phy_optional_get(dev, "serdes");
+> -	if (IS_ERR(ethqos->pm.serdes_phy))
+> -		return dev_err_probe(dev, PTR_ERR(ethqos->pm.serdes_phy),
+> -				     "Failed to get serdes phy\n");
+> -
+> -	ethqos->set_serdes_speed = ethqos_set_serdes_speed_phy;
+>  	ethqos->serdes_speed = SPEED_1000;
+> -	ethqos_update_link_clk(ethqos, SPEED_1000);
+> +
+> +	if (pm_data && pm_data->use_domains) {
+> +		ethqos->set_serdes_speed = ethqos_set_serdes_speed_pd;
+> +
+> +		ret = devm_pm_domain_attach_list(dev, &pm_data->pd,
+> +						 &ethqos->pd.pd_list);
+> +		if (ret < 0)
+> +			return dev_err_probe(dev, ret, "Failed to attach power domains\n");
+> +
+> +		plat_dat->clks_config = ethqos_pd_clks_config;
+> +		plat_dat->serdes_powerup = qcom_ethqos_pd_serdes_powerup;
+> +		plat_dat->serdes_powerdown = qcom_ethqos_pd_serdes_powerdown;
+> +		plat_dat->exit = qcom_ethqos_pd_exit;
 
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20251107-qcom-sa8255p-emac-v5-1-01d3e3aaf388@linaro.org
+Hi Bartosz,
 
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
+It seems that the intention of this is to ensure
+that domains turned on by qcom_ethqos_pd_init()
+are turned off again on exit or clean-up in error paths.
 
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
+> +		plat_dat->init = qcom_ethqos_pd_init;
+> +		plat_dat->clk_ptp_rate = pm_data->clk_ptp_rate;
+> +
+> +		ret = qcom_ethqos_pd_init(pdev, ethqos);
+> +		if (ret)
+> +			return ret;
 
-pip3 install dtschema --upgrade
+And here those domains are turned on.
 
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
+> +
+> +		ret = qcom_ethqos_domain_on(ethqos, ETHQOS_PD_SERDES);
+> +		if (ret)
 
+But it seems that if we reach this error path then the cleanup is not
+performed. This is because plat_dat and thus it's exit callback are
+registered until the call to devm_stmmac_pltfr_probe() towards the end of
+this function.
+
+Sorry if I'm on the wrong track here. I did dig into it.
+But this was flagged by Claude Code running
+https://github.com/masoncl/review-prompts/
+
+> +			return dev_err_probe(dev, ret,
+> +					     "Failed to enable the serdes power domain\n");
+
+...
 
 _______________________________________________
 Linux-rockchip mailing list
