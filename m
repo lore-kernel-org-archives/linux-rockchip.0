@@ -4,87 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BECB6CCFA18
-	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Nov 2025 20:56:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 331D2CCFA18
+	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Nov 2025 21:43:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:From:CC:To:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=OYWmxZ9L446ClaRXQbpz4eMI3qYC9fDTSACJuVDlBb8=; b=Y14Z+m9tLGtM1/
-	DZ5h+8Z61n0KS9i0aMYeWju7QbB1mAJjL7dIiGrXxS+KrQ8J1uUg4kjmsb7aY8W7fiVdBG10LyqL9
-	p7H/jwA02TZyxyj/T6sMT71c493mwZ/L6R0ntFy1ojBTkwpudhCX8cDRITC0hSZy1x98iOm62RYJI
-	0KLhrHMMOJGAfOQu8/6IXFUPx7VIXD3PD/neTTqUBjtunoN12WQlrnG1LyNWbu8gzn3B844qxGKAD
-	1Rw4leAVDUOpBAcVkTOfryuxRnCjOJgQNJYCna+gPGhAt6mnZx8PGNCPI4zjWdE3F13qkZzCpN5cY
-	E18Wzxw2rG+ACGDVCMXg==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=mtILCq/AFxBbCssaQ+e6Xs3Y3PPzZfAaMbf0eEbMNVE=; b=ZfNztnYY0on5im
+	8tmegHTZRT0YPAapcyn+ag0B+y5sJdyuNzPAwkgWhzB2G387PT45WnUzQjIXxgq2JYuJvjLIratku
+	4LK/I8wd6UcyPNMPagdsF9BYPVmR4Vd1xG+vkGs07OJDKnZMFIo3WA84ymy1fS98Q3Wjln46SW7CU
+	q1l4BaAvITvOHuZMcsG7txv0TiOA98KuWY+UL21huyHvDm29XSJgBwsyppWr8o2JtQ0BAK6ZwhsOm
+	0rjqlWc2cNa3J72kIlPCoWyY3HJDvmVG1Yopdcz+S2oD1pJBOFUDifkHSpICKejP5t5mWHC+egIgB
+	3vvgSjFu8vxF8Hzw2tlQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIvQ1-00000007leh-0INp;
-	Tue, 11 Nov 2025 20:56:49 +0000
-Received: from mx01.omp.ru ([90.154.21.10])
+	id 1vIw9N-00000007oLw-1qnV;
+	Tue, 11 Nov 2025 21:43:41 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIvPu-00000007le6-0fY5;
-	Tue, 11 Nov 2025 20:56:47 +0000
-Received: from [192.168.2.104] (213.87.136.181) by msexch01.omp.ru
- (10.188.4.12) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.1258.12; Tue, 11 Nov
- 2025 23:56:21 +0300
-Message-ID: <40da59f8-10e9-49b0-9f25-1474067625f6@omp.ru>
-Date: Tue, 11 Nov 2025 23:56:19 +0300
+	id 1vIw9L-00000007oKc-1FFr;
+	Tue, 11 Nov 2025 21:43:40 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 2E52244071;
+	Tue, 11 Nov 2025 21:43:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D91EDC4CEF7;
+	Tue, 11 Nov 2025 21:43:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1762897418;
+	bh=BrVMOaDVyCaFwuLU2xGlgXvKEaAdQBM2gDIRbwlpENA=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=sNDC4Lju93urVAUKUTfmYYPoCAbyzJNyscqunfEGxAzUiWXuk69Oh3tCqcbEQtNog
+	 EL5EUfHxyJci9q6GXQ6FMmVEFGC66wdo0o1bkvERo8OpIuB73pntJm5uW2NBS9+BRA
+	 gz4JWOjBN297BL2+KPNS92L5qLDXbAMgCYFMwPmEMP5ftTYhL4yowjPmTLKyy4jo+/
+	 jeBj+u/DMKvp+ovtBwOKlIqquhe9A2Gnogp25YSy9N8fnWPwv8zz0EIw0BA6W0xeCH
+	 GYBYOxvLnLdMejVkEM3X2FlTkUUBx3wAXZaipvYqRkCcQ/S40YN4T0tIK2mXt9Y+yI
+	 sDV6ifo1bVQuA==
+Date: Tue, 11 Nov 2025 15:43:36 -0600
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Niklas Cassel <cassel@kernel.org>
+Cc: Manivannan Sadhasivam <mani@kernel.org>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Kever Yang <kever.yang@rock-chips.com>,
+	Simon Xue <xxm@rock-chips.com>, Damien Le Moal <dlemoal@kernel.org>,
+	Dragan Simic <dsimic@manjaro.org>, FUKAUMI Naoki <naoki@radxa.com>,
+	Diederik de Haas <diederik@cknow-tech.com>, stable@vger.kernel.org,
+	Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>,
+	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v3] PCI: dw-rockchip: Prevent advertising L1 Substates
+ support
+Message-ID: <20251111214336.GA2190667@bhelgaas>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Content-Language: en-US
-To: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
-	<heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, Maarten Lankhorst
-	<maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>, <dri-devel@lists.freedesktop.org>,
-	<linux-rockchip@lists.infradead.org>
-CC: Mark Yao <markyao0591@gmail.com>, <linux-arm-kernel@lists.infradead.org>,
-	Karina Yankevich <k.yankevich@omp.ru>, <lvc-project@linuxtesting.org>
-From: Sergey Shtylyov <s.shtylyov@omp.ru>
-Subject: [PATCH RFT] drm/rockchip: vop: fix simple case of window scaling
-Organization: Open Mobile Platform
-X-Originating-IP: [213.87.136.181]
-X-ClientProxiedBy: msexch01.omp.ru (10.188.4.12) To msexch01.omp.ru
- (10.188.4.12)
-X-KSE-ServerInfo: msexch01.omp.ru, 9
-X-KSE-AntiSpam-Interceptor-Info: scan successful
-X-KSE-AntiSpam-Version: 6.1.1, Database issued on: 11/11/2025 20:42:12
-X-KSE-AntiSpam-Status: KAS_STATUS_NOT_DETECTED
-X-KSE-AntiSpam-Method: none
-X-KSE-AntiSpam-Rate: 0
-X-KSE-AntiSpam-Info: Lua profiles 197978 [Nov 11 2025]
-X-KSE-AntiSpam-Info: Version: 6.1.1.11
-X-KSE-AntiSpam-Info: Envelope from: s.shtylyov@omp.ru
-X-KSE-AntiSpam-Info: LuaCore: 75 0.3.75
- aab2175a55dcbd410b25b8694e49bbee3c09cdde
-X-KSE-AntiSpam-Info: {rep_avail}
-X-KSE-AntiSpam-Info: {Tracking_uf_ne_domains}
-X-KSE-AntiSpam-Info: {Tracking_from_domain_doesnt_match_to}
-X-KSE-AntiSpam-Info: omp.ru:7.1.1;d41d8cd98f00b204e9800998ecf8427e.com:7.1.1;127.0.0.199:7.1.2
-X-KSE-AntiSpam-Info: {Tracking_ip_hunter}
-X-KSE-AntiSpam-Info: FromAlignment: s
-X-KSE-AntiSpam-Info: ApMailHostAddress: 213.87.136.181
-X-KSE-AntiSpam-Info: Rate: 0
-X-KSE-AntiSpam-Info: Status: not_detected
-X-KSE-AntiSpam-Info: Method: none
-X-KSE-AntiSpam-Info: Auth:dmarc=temperror header.from=omp.ru;spf=temperror
- smtp.mailfrom=omp.ru;dkim=none
-X-KSE-Antiphishing-Info: Clean
-X-KSE-Antiphishing-ScanningType: Heuristic
-X-KSE-Antiphishing-Method: None
-X-KSE-Antiphishing-Bases: 11/11/2025 20:44:00
-X-KSE-Antivirus-Interceptor-Info: scan successful
-X-KSE-Antivirus-Info: Clean, bases: 11/11/2025 7:32:00 PM
-X-KSE-Attachment-Filter-Triggered-Rules: Clean
-X-KSE-Attachment-Filter-Triggered-Filters: Clean
-X-KSE-BulkMessagesFiltering-Scan-Result: InTheLimit
+Content-Disposition: inline
+In-Reply-To: <aRM1VOodnSpaob3P@ryzen>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251111_125642_210780_88332461 
-X-CRM114-Status: UNSURE (   9.79  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251111_134339_355791_45C038ED 
+X-CRM114-Status: GOOD (  18.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,44 +82,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-In scl_cal_scale2(), if the dst parameter equals to 1, then division by
-0 will happen. Actually, the whole {src,dst} - 1 thing is caused by what
-seems to be an error in the Rockchip manuals which say that the window's
-width/height fields of the VOP_WIN<n>_{ACT,DSP}_INFO registers should be
-used for the division verbatim -- and those are actually 1 less than the
-window's real width/height; so scl_cal_scale2() returns expected result
-(0x1000) only when src equals dst...
+On Tue, Nov 11, 2025 at 02:08:36PM +0100, Niklas Cassel wrote:
+> On Tue, Oct 21, 2025 at 08:05:17AM +0530, Manivannan Sadhasivam wrote:
+> > On Fri, 17 Oct 2025 18:32:53 +0200, Niklas Cassel wrote:
+> > > The L1 substates support requires additional steps to work, namely:
+> > > -Proper handling of the CLKREQ# sideband signal. (It is mostly handled by
+> > >  hardware, but software still needs to set the clkreq fields in the
+> > >  PCIE_CLIENT_POWER_CON register to match the hardware implementation.)
+> > > -Program the frequency of the aux clock into the
+> > >  DSP_PCIE_PL_AUX_CLK_FREQ_OFF register. (During L1 substates the core_clk
+> > >  is turned off and the aux_clk is used instead.)
+> > > 
+> > > [...]
+> > 
+> > Applied, thanks!
+> > 
+> > [1/1] PCI: dw-rockchip: Prevent advertising L1 Substates support
+> >       commit: 40331c63e7901a2cc75ce6b5d24d50601efb833d
+> 
+> Last update in this thread was "Applied, thanks!"
+>
+> and the patch was applied to pci/controller/dw-rockchip
+> 
+> since then it seems to have been demoted to
+> pci/controller/dw-rockchip-pend
 
-Found by Linux Verification Center (linuxtesting.org) with the Svace static
-analysis tool.
+That was Oct 20, and we had some conversation about a more generic
+approach after that, so I moved it to dw-rockchip-pend while we worked
+that out.
 
-Fixes: 1194fffbb102 ("drm/rockchip: vop: spilt scale regsters")
-Signed-off-by: Sergey Shtylyov <s.shtylyov@omp.ru>
-
----
-The patch is against the drm-misc-fixes branch of the DRM kernel.git repo
-on gitlab.freedesktop.org.
-
-Note that scl_cal_scale() does look buggy as well, but I can't figure out
-(even having the RK3288 manual) how to properly fix that (it's only clear
-that -1 should be removed; perhaps Mark Yao can help there...
-
- drivers/gpu/drm/rockchip/rockchip_drm_vop.h |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-Index: kernel/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
-===================================================================
---- kernel.orig/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
-+++ kernel/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
-@@ -360,7 +360,7 @@ static inline uint16_t scl_cal_scale(int
- 
- static inline uint16_t scl_cal_scale2(int src, int dst)
- {
--	return ((src - 1) << 12) / (dst - 1);
-+	return (src << 12) / dst;
- }
- 
- #define GET_SCL_FT_BILI_DN(src, dst)	scl_cal_scale(src, dst, 12)
+I fleshed it out the generic approach and will post it soon.
 
 _______________________________________________
 Linux-rockchip mailing list
