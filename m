@@ -4,58 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A23FFCCFA1A
-	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Nov 2025 16:15:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D915CCFA1A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Nov 2025 16:56:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-ID:MIME-Version:To:Cc:
-	Date:References:In-Reply-To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2PQPUfVhsHGR7DImChdp1Nk6dwSPdH9CDxPFQHuf8sw=; b=MtICPzCt6Oc5hX
-	IgzB1hcGfsutYH7Xle5tO+1XM+LOoj+7XSYF7KCbYmN9VxjlX5H9IyattemS6cka5oPS2cniGZV45
-	gbXX7jkQBzoxih6u7N/hysTGAA3T0L1NerbwW3scnFw/iINfEpHkBiM10cEZf1Nuqa6Nsi6ud+BkZ
-	BFTElpaC4XF6ghwAMRMoEQmAUUgDwz10LGA6ESeJ6o9DSMTFSb24uIZDId9HUBwcp/8FrhaCMWowG
-	41J9BIoqGNuUitB2hSbex+/c6Tw9gQq6CfOXKz67htEQEn4lctxasDSPr3u+SCGraQUGnK3YkpPKY
-	JoV7Nk3TKZ4+WlXtbGIQ==;
+	List-Owner; bh=6sZI+u/00B1UlL2r4pAioARRmIo7zYW1ofnFlkTghMA=; b=wEQ8MkRnkENCNN
+	Os+DSskaKpklOmnYEmjPT9tMuHjeh9lW+nv/AFesdCGAqdzCCKC8uhzmgVH2IQqbMwB8XQDwOcSQT
+	5UIz6JIceGprym5abvqa8v+xrX4trhpT1URa2aOUwvxbS6NDvBzMR/iesOppQPEo98BqUggKbA+rN
+	oKAGlTTAzorfrW+gZRWbVW0E2XI8gu7jqIJ6CkiZ1s+c1Eb8zbXdpNVbrn11QOrujUdMeyHL2JLux
+	oOrBr2/zTepGab6K5cP2VP2FnOEuZB90GDVQwP+JJyqv+eHQxuBed4eRq4F2OYQQ80NGHWP/v2mw0
+	3YcIZ/4Getlc5Eaprb7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIr1X-00000007RGv-1NAA;
-	Tue, 11 Nov 2025 16:15:15 +0000
-Received: from mail1.manjaro.org ([2a01:4f8:c010:b6e8::1])
+	id 1vIrf7-00000007VCI-3zHh;
+	Tue, 11 Nov 2025 16:56:09 +0000
+Received: from mail-yw1-x1130.google.com ([2607:f8b0:4864:20::1130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIr1V-00000007RGS-1ptw
+	id 1vIrf3-00000007VBO-2TyB
 	for linux-rockchip@lists.infradead.org;
-	Tue, 11 Nov 2025 16:15:14 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPA id E73104103A;
-	Tue, 11 Nov 2025 17:14:59 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=dkim;
-	t=1762877709; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=ypK6JFMXH7rdUq8xKNFAFRuU1aci1uCJMB8XA5wcY0c=;
-	b=ni8QxMAcQLfsc4ybYFggj+QjnqvFDx+IyrNEnuiUgxSaku4Ib/W95NjOj4gBpeTsnxnttk
-	E1dEyU1mUzGNXJIFUvixOrqFQ5r2iyPpWcSNbfsxxbUtaG5gv37Ew6O1rOy1tnN0pCyFiY
-	iczdamJxxv16R3yvuUt6jJfUlW19Nw5UkacaGOjhTDXKRVKmu/kd/oUqebyjnWMDVc6tl5
-	jjhmkqNn5RhCwKogAS0gUirM7KhMUlx1mrojLNXDiadgS5DDNsQ54S7Ehvdhi1tJ7dNZF6
-	FvZ3E43RbB+4m05JiZ20rQsbd9U5+q/nFPUxod76t+LowU2DjN2qrt4yjZuSXQ==
-From: "Dragan Simic" <dsimic@manjaro.org>
-In-Reply-To: <B0C8C5A69B9F465E+ba0ad139-d3d9-4492-ac9a-cc58f8f35074@radxa.com>
-References: <20251111054112.55505-1-naoki@radxa.com>
- <DE5W0143QGG2.3C7SW89IJKZ4P@cknow-tech.com>
- <516e919a-42af-8707-4e75-a808df8971fd@manjaro.org> <B0C8C5A69B9F465E+ba0ad139-d3d9-4492-ac9a-cc58f8f35074@radxa.com>
-Date: Tue, 11 Nov 2025 17:14:59 +0100
-Cc: "Diederik de Haas" <diederik@cknow-tech.com>, heiko@sntech.de, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, jbx6244@gmail.com, pgwipeout@gmail.com, jonas@kwiboo.se, ziyao@disroot.org, amadeus@jmu.edu.cn, nicolas.frattaroli@collabora.com, pbrobinson@gmail.com, wens@kernel.org, detlev.casanova@collabora.com, stephen@radxa.com, sebastian.reichel@collabora.com, liujianfeng1994@gmail.com, andy.yan@rock-chips.com, damon.ding@rock-chips.com, kylepzak@projectinitiative.io, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, "Quentin Schulz" <quentin.schulz@cherry.de>
-To: "FUKAUMI Naoki" <naoki@radxa.com>
+	Tue, 11 Nov 2025 16:56:08 +0000
+Received: by mail-yw1-x1130.google.com with SMTP id 00721157ae682-7866c61a9bbso38759767b3.1
+        for <linux-rockchip@lists.infradead.org>; Tue, 11 Nov 2025 08:56:04 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1762880164; x=1763484964; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=/lkozkdwY8SKpZI3ECZUvG3SVnMfa32+h2Cja3WdtpQ=;
+        b=NID6PUTiAcfOR/N/derDXiucsjYxVKXg/4jEpJEkvC9KYKQUknmWjqPVLiDx3zxRfK
+         KJmD5/InZ/9zbqbvEJPRw6CU6b4Hb1TUHysTFtdE58pdUajMe0UwwffsEMNx2zqkKIKo
+         LqCQpeFy8iXE2sREO76RLuhM1bp/36DQhjLs5N2JpNAFD1COhof+Z7keu5tFvKXvF70W
+         FXMuWQm9T4enp6VOhFIfJB0YSjrLQ5MHDR82KLb4JnDAU6KKWr1IRPZJ2PtVda+D7eHy
+         UQ29z3dzYiio4OSr+L5tza34UTsGQlnpgKnV1L53YVw9FJWVdUSjY6L0VJ+eZFFcRIKZ
+         UdNw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1762880164; x=1763484964;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=/lkozkdwY8SKpZI3ECZUvG3SVnMfa32+h2Cja3WdtpQ=;
+        b=sBQwDavMXDoocaK+U+gwVrNPPoCDkFr1rdIsWZvEZUZjgItMSbEmKC5HqSG6MaEmIg
+         QOfxjcNsqQvPJoTZBvFgPSLDjjMVZ6jlDkEqggPYR6L11m7GpYh4mbWHwrpUA+6wP86Q
+         F8Tr4xrCC4k9CUGJnrUHbXzHAjFDYKDI9nrI0C/nRrPW/BayzQ4JFKO8TuIaORD3lQbp
+         IMafNxC/kTxZ8Bq7IQVJRcA3k3BpEcyqGpLfUa4HNjEzj6yVpWAjeH4x3veov3BoLMX2
+         McPAzjlKB3xW2kyFn2q9MLlQUl7YczxNX0TIpbgA/ok2inHACKVa/IcqUpjwCbEmJzRz
+         XKDA==
+X-Gm-Message-State: AOJu0YxHKWo75JC0H+D2Vi0Dj7qDVtrkWpHIhL+Rt2n8287XHfmYBIMk
+	yWSjudL8E7+NScsBxO+d6N7XNgBOFcHFPNdL/EhmP9YwpbQ2AATMVbGs9E4tiis3u0uuLUPkQMq
+	9Gfqv41la/ozjp/IOXBr6jYXHajcL7AbB1WVhh1F75XV83UFCJIYXpGg=
+X-Gm-Gg: ASbGncvi54+nmAivfZfua1HnhUwY8yaTFuvAsc6TfaPgmrvoWJZ0Wh8k2umykNcK34M
+	7hoBYIE19bw1AyLh5ze57YGvPEvsfWZ7kpKY1YSJil58Elb/V+6cjY6zPvvH5+p+dAhJXctgW/C
+	ABXmqtahF6GRCR3BkX19DVTTjDhNuO62b+BmIDU+x0MFaZFM0eZWF3JBp4/19qw+DgVD4kz0oez
+	KHxBlqYnQzxvEwtHcR6jYLILyyGuIruzxEyC0JwhSUX8mlyh1LO2DsG+KpHjthHMVwF9+iE
+X-Google-Smtp-Source: AGHT+IGvRCqd/OL63Rxlm4IFMcnUphHaaf/QtJsk/lkAsXIwq8+zXIkVaSNcI+uL08VDy46A0CBrAaEYCoBDes3EquU=
+X-Received: by 2002:a05:690c:9b06:b0:786:4fd5:e5de with SMTP id
+ 00721157ae682-787d54753b0mr125132587b3.67.1762880163893; Tue, 11 Nov 2025
+ 08:56:03 -0800 (PST)
 MIME-Version: 1.0
-Message-ID: <41275775-9e6e-9202-4c79-6140a56e41d5@manjaro.org>
-Subject: =?utf-8?q?Re=3A?= [PATCH v2] =?utf-8?q?arm64=3A?==?utf-8?q?_dts=3A?=
- =?utf-8?q?_rockchip=3A?= Turn all LEDs on at boot for Radxa boards
-User-Agent: SOGoMail 5.12.3
-X-Last-TLS-Session-Version: None
-X-Rspamd-Fuzzy: 353964b4aa81b40cd03c1b2d1c0fcc256fc021e471e67a0e96575b249708300ad6c39d864be65764762b049554b2d83e735ffeeff8b5106fb54ec43fc733ba8b
+References: <1762242094-55346-1-git-send-email-shawn.lin@rock-chips.com>
+In-Reply-To: <1762242094-55346-1-git-send-email-shawn.lin@rock-chips.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Tue, 11 Nov 2025 17:55:26 +0100
+X-Gm-Features: AWmQ_blPfWvVh-ptTSUET-1YXEua6fSi2bYi9nD74s6XK49CzD93AdBqSoGJklY
+Message-ID: <CAPDyKFpLp--cn4T3ifL8zB=GqptHZtnRH+V8Z370LNsj7n3wNA@mail.gmail.com>
+Subject: Re: [PATCH] mmc: dw_mmc-rockchip: Add memory clock auto-gating support
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: linux-rockchip@lists.infradead.org, linux-mmc@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251111_081513_731021_8A36F55C 
-X-CRM114-Status: GOOD (  24.30  )
+X-CRM114-CacheID: sfid-20251111_085605_655213_58229D71 
+X-CRM114-Status: GOOD (  18.70  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,69 +92,62 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello all,
+On Tue, 4 Nov 2025 at 08:41, Shawn Lin <shawn.lin@rock-chips.com> wrote:
+>
+> Per design recommendations, the memory clock can be gated when there
+> is no in-flight transfer, which helps save power. This feature is
+> introduced alongside internal phase support, and this patch enables it.
 
-(+ Quentin)
+Just to make sure, does this work if the controller is used for SDIO
+and has SDIO irqs enabled?
 
-On Tuesday, November 11, 2025 16:32 CET, FUKAUMI Naoki <naoki@radxa.com> wrote:
-> On 11/11/25 23:46, Dragan Simic wrote:
-> > On Tuesday, November 11, 2025 14:07 CET, "Diederik de Haas" <diederik@cknow-tech.com> wrote:
-> >> On Tue Nov 11, 2025 at 6:41 AM CET, FUKAUMI Naoki wrote:
-> >>> Radxa's boards turn all LEDs on at boot(loader), but some boards don't
-> >>> have `default-state` property in Linux kernel tree but have it in
-> >>> U-Boot tree instead[1].
-> >>>
-> >>> This patch adds `default-state = "on"` for (almost) all LEDs (with a
-> >>> few exceptions which should be "off" such as RGB LEDs on E25 and LAN/
-> >>> WAN LEDs on E20C/E52C).
-> >>
-> >> I'm missing the *why* these changes would be an improvement.
-> >>
-> >> Personally, for both 'heartbeat' and 'netdev' triggers, I want them to
-> >> be off by default and once it gets a 'heartbeat' or a 'netdev' trigger,
-> >> THEN I want the LED to be on/blinking.
-> > 
-> > That's a good question for Naoki.  My own preference would also
-> > be to have the device's power LED turned on by U-Boot as quickly
-> > as possible after supplying power to the board or turning it on
-> > by pressing the power button.  I'm actually not a big fan of
-> > having all the LEDs shining for a couple of seconds or so, which
-> > may actually look like some error condition to me.
-> > 
-> > Having all that in mind, I may suggest that just the U-Boot's
-> > behavior is changed to turn the power LEDs on only.
-> 
-> I can't quite explain it, but...
-> 
-> - 1st (Power) LED
-> 
-> The 1st (power) LED turns on automatically/immediately without software 
-> intervention. (On some boards, this LED cannot be controlled by software 
-> at all.)
-> 
-> In DTS, this should be described using `default-state = "on"`. The use 
-> of the Linux-specific property `linux,default-trigger = "default-on"` is 
-> unsuitable for non-Linux environments.
-> 
-> - 2nd (Heartbeat) LED
-> 
-> The 2nd (heartbeat) LED can be controlled by software. It should be lit 
-> up as quickly as possible to indicate that the very first software 
-> (e.g., the bootloader) is running.
-> 
-> On Linux, usually this is used as `linux,default-trigger = "heartbeat"`. 
-> It indicates that kernel is running (regardless of the `default-state` 
-> setting), and its behavior can be modified in user space.
+Or perhaps that is taken care of in dw_mci_prepare_sdio_irq()?
 
-As discussed already in the #linux-rockchip IRC channel, [1] perhaps
-the best option would be to have the power LEDs turned on as quickly
-upon powering on the board as possible, and to have U-Boot pulsate
-the heartbeat LEDs using the LED_BOOT feature.  In such a scenario,
-no other LEDs would be turned on early, and the LED-related DT parts
-specific to U-Boot would be migrated to the kernel DTs.
+>
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 
-[1] https://libera.catirclogs.org/linux-rockchip/2025-11-11#38997824;
+Kind regards
+Uffe
 
+> ---
+>
+>  drivers/mmc/host/dw_mmc-rockchip.c | 6 ++++++
+>  1 file changed, 6 insertions(+)
+>
+> diff --git a/drivers/mmc/host/dw_mmc-rockchip.c b/drivers/mmc/host/dw_mmc-rockchip.c
+> index 6813549..62c68cd 100644
+> --- a/drivers/mmc/host/dw_mmc-rockchip.c
+> +++ b/drivers/mmc/host/dw_mmc-rockchip.c
+> @@ -19,6 +19,8 @@
+>  #define RK3288_CLKGEN_DIV              2
+>  #define SDMMC_TIMING_CON0              0x130
+>  #define SDMMC_TIMING_CON1              0x134
+> +#define SDMMC_MISC_CON                 0x138
+> +#define MEM_CLK_AUTOGATE_ENABLE                BIT(5)
+>  #define ROCKCHIP_MMC_DELAY_SEL         BIT(10)
+>  #define ROCKCHIP_MMC_DEGREE_MASK       0x3
+>  #define ROCKCHIP_MMC_DEGREE_OFFSET     1
+> @@ -470,6 +472,7 @@ static int dw_mci_rk3576_parse_dt(struct dw_mci *host)
+>
+>  static int dw_mci_rockchip_init(struct dw_mci *host)
+>  {
+> +       struct dw_mci_rockchip_priv_data *priv = host->priv;
+>         int ret, i;
+>
+>         /* It is slot 8 on Rockchip SoCs */
+> @@ -494,6 +497,9 @@ static int dw_mci_rockchip_init(struct dw_mci *host)
+>                         dev_warn(host->dev, "no valid minimum freq: %d\n", ret);
+>         }
+>
+> +       if (priv->internal_phase)
+> +               mci_writel(host, MISC_CON, MEM_CLK_AUTOGATE_ENABLE);
+> +
+>         return 0;
+>  }
+>
+> --
+> 2.7.4
+>
 
 _______________________________________________
 Linux-rockchip mailing list
