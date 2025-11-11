@@ -4,128 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 220C2CCF9E3
-	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Nov 2025 11:09:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8300CCCFA1A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Nov 2025 11:44:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oMg6id6DMYFA+jX4QxOkFvskjfwpOBgIsxNUt94JoNI=; b=1P55i9DpEoMpwE
-	ove9+/oCCkgIHA+MjqytIUPvQlg5G8gOymxsy0CTrlINM/g5suXAI6bepdyuChYxlIqsQqt8z8CyH
-	XezeKs2IveJwUr5SXYCNVMey2dhI696lQ9mvPJazoQ+2oYXQbE8vZ0F2GAEO6A0/TZcVB7PS7GC2r
-	huf+uCxdDl6wZcPZIXjq+Ld26Sw00KklHrbt8huA7lGadHJMG2XGrlxPXvZYe9VaPBBLGlHiA/6VE
-	l7CFmDpsTsivxErU2hPI/qm4kTnPro8peREJnEP6o3eJ+UGSogT+xz0U6SFtjNdpiwgUAGNlWA5vW
-	qMHrsXGcK/2PdSHNV7JQ==;
+	List-Owner; bh=TkKtm01HoIg2nJuaCTz4/+xAI/rXmQqtyX2oUMcMnTg=; b=TACa1Q7TYYOBzR
+	GK90KtvFAaO0axik9+vd3ZtVy+BWsWxPx1H0oJNd/0/UX1OF8bjtob0z446LSvEQUtpdW6eIJuzji
+	a3UgjmIetRbHkaQlWnEbbJxHl6eIeyDFvnantmRqC20M2u2VWkt5Ai99wYxubAkFToO/zvd5ZHuls
+	s5e7ceLJ93VXqTOJvfRpXppI6v3kL3Z4k+f427oJLlUd7OdKCDorUz62OueWwAfWyGKzmIlukYiK8
+	1UelsvfqjfDGz1wH5AcYmjgM9YnnJtDvFL8SFnDchUoVE3IYK7DhpGV+vdvcLoMM54q8+aayCwfET
+	rVlGkBWXr1dcETkINJMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vImFT-000000072pW-28yO;
-	Tue, 11 Nov 2025 11:09:19 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vImmy-000000076U1-03qU;
+	Tue, 11 Nov 2025 11:43:56 +0000
+Received: from smtpbg151.qq.com ([18.169.211.239])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vImFQ-000000072oO-0qZG;
-	Tue, 11 Nov 2025 11:09:17 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 8508343476;
-	Tue, 11 Nov 2025 11:09:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B371EC4CEFB;
-	Tue, 11 Nov 2025 11:09:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1762859355;
-	bh=TR/fkQ0p2p14fGBt9Nac2pxvzRzI97bXfo2/pH+IohY=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=o0N9Q+rVN2t77ZW6ERu4GlKcgvjMcrJX+GcEe+CPr5SFZJQaP2XXH8u6e070tfLzy
-	 XCxN8Dmi+dhC19GYYH8RZpw/LtrgxdnkQBgTMdVhmsR08jgIE24XBD/rZwGEecUyHt
-	 Rqwb7wkgyC3dmpa90E+VLxE3MJcsRmgd+t7z4MjgGBfRZDUkcot3LX9Tik7R1uTYxU
-	 kwucZbiS9uYsSxahqbcmE1TxON/rn2M/i6J2ERQvgszuIxTZpo7MAJNuGLcXU2wpVm
-	 f0EHUOM5/CrmDXPRHNp/qUglMAvK0coSbkALs1jsOsQWqKVmnb7NIJKlQcXyk64yHa
-	 +xykadXOEfMIw==
-Message-ID: <868f09fd-8fe8-4c01-952f-6317604c43a3@kernel.org>
-Date: Tue, 11 Nov 2025 12:09:05 +0100
+	id 1vImmu-000000076Ri-32Fu
+	for linux-rockchip@lists.infradead.org;
+	Tue, 11 Nov 2025 11:43:55 +0000
+X-QQ-mid: zesmtpip4t1762861389t225b1ad2
+X-QQ-Originating-IP: CnFKXworqreyPgjtRRUIGo1/7hlQ0Xqt6xU26RYKeDs=
+Received: from [IPV6:240f:10b:7440:1:62e3:2c99 ( [localhost])
+	by bizesmtp.qq.com (ESMTP) with 
+	id ; Tue, 11 Nov 2025 19:43:06 +0800 (CST)
+X-QQ-SSF: 0000000000000000000000000000000
+X-QQ-GoodBg: 0
+X-BIZMAIL-ID: 4623093854345164356
+Message-ID: <FC06F2D88D1A6D6B+2515ff82-cd34-4f1d-8078-feb669912e41@radxa.com>
+Date: Tue, 11 Nov 2025 20:43:05 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v9 04/10] dt-bindings: phy: rockchip: rk3399-typec-phy:
- Support mode-switch
-To: Chaoyi Chen <kernel@airkyi.com>,
- Heikki Krogerus <heikki.krogerus@linux.intel.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
- Peter Chen <hzpeterchen@gmail.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
- Kishon Vijay Abraham I <kishon@kernel.org>, Heiko Stuebner
- <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>,
- Andy Yan <andy.yan@rock-chips.com>,
- Yubing Zhang <yubing.zhang@rock-chips.com>,
- Frank Wang <frank.wang@rock-chips.com>,
- Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Amit Sunil Dhamne <amitsd@google.com>,
- Chaoyi Chen <chaoyi.chen@rock-chips.com>, Dragan Simic <dsimic@manjaro.org>,
- Johan Jonker <jbx6244@gmail.com>, Diederik de Haas <didi.debian@cknow.org>,
- Peter Robinson <pbrobinson@gmail.com>
-Cc: linux-usb@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- dri-devel@lists.freedesktop.org
-References: <20251111105040.94-1-kernel@airkyi.com>
- <20251111105040.94-5-kernel@airkyi.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
+Subject: Re: [PATCH v7 04/14] arm64: dts: rockchip: Fix microSD card detect
+ for Radxa ROCK 5C
+To: heiko@sntech.de
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ dsimic@manjaro.org, alchark@gmail.com, devicetree@vger.kernel.org,
+ linux-rockchip@lists.infradead.org
+References: <20251109141859.206835-1-naoki@radxa.com>
+ <20251109141859.206835-5-naoki@radxa.com>
 Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <20251111105040.94-5-kernel@airkyi.com>
+From: FUKAUMI Naoki <naoki@radxa.com>
+In-Reply-To: <20251109141859.206835-5-naoki@radxa.com>
+X-QQ-SENDSIZE: 520
+Feedback-ID: zesmtpip:radxa.com:qybglogicsvrsz:qybglogicsvrsz4b-0
+X-QQ-XMAILINFO: NPR7uEA6bBho2vyFxAH/44d4hURMFkoPr9g1+PLwALB+a7Ud/0lJRJx1
+	NZwsWxLd892O/pChgcAklYB/010wj7p4lOmBZz6e+7cjV3dX7eVt5UJ8y11ygUlIwu1QpLU
+	UTDMwGslSMcAU3PKx8SlP5XZGBPvRcRZPPh+UgUVkPoE9BApcom72HCBkm7aNfqIx+7BXWC
+	KEEhSFCVJiv9Uzf+/fFf5v9FX3PWRTaOxaU/Y8Tc+aFQIGcqah3boThwqTnbZ5oQ/efRajH
+	TMB32oMcG1cgz5/5ymdGTYbfcvV7Emyg/2V1+Ug6G8zU8x1Xgm3PzNbS2Tv4noLCkWdmEUd
+	7NiI+eUL+AABv3a6LNx2aWhh1ald6aRPhiWpEIhzrzMjhAd/1YtGqLi67+EEZogM6KYfrAv
+	SmUgUsytc8vn9hB/3qiqcUd2F8tVqvRts5gGUHH51KItF0VoT3OD8RKbNqwQhNHAOtyg9Fb
+	gMgox5fnYDDHbROnFHGArz8hfL4fW7uMNFcLLhOmHhQgJcYfA4VGM0QbwMDeUSR0fyiHY5D
+	gHv/Anaq9U1nLScK+b1knAlAfoaRdKOBComRf12BYpgJzxjA5rUGAS+5UX2grA5k2vjiOjE
+	9TkaG1JtQEDYxpm3XgmlJ9h1o0yxuibkS04U/UfRHYB7RgFrAdOExnMqbkqXTlvGSwVBhBG
+	h+6P1AzCfDquWWtQRQOptIav+mB1vW21Oe27uEzXGRuPmUs4XHq0PoDRlyCHFMmrnmXOvuX
+	tjWk0/uSHxH065KLVbXEVornJgh3HwoTycKJkKd0h4szGGnNV2eHJcSqmck2JcbOXOkqGZT
+	wSiOp9Jf5PWF+he7eVWJlS36hqOFlakgSa4/Z66B7Oz81+ATdfqk2lwN4cTJnWLo4JtzA0X
+	jct/BSmu463nlUFlJhAcdO6p23v3T8mXtz/tqe8zNOmQSSTGzde+jwabKzgc0rA/ikZ6HHe
+	OXNx22+SkMLTk+V4HEAR40TFw8OQvumoSM+zdKPqtJkLxxfM2j4U0FIpc
+X-QQ-XMRINFO: Mp0Kj//9VHAxr69bL5MkOOs=
+X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251111_030916_292579_074602A5 
-X-CRM114-Status: UNSURE (   8.86  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251111_034353_698307_84FBFFB3 
+X-CRM114-Status: GOOD (  11.99  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -137,31 +83,67 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 11/11/2025 11:50, Chaoyi Chen wrote:
-> While an external Type-C controller is still required to detect cable
-> attachment and report USB PD events, the actual mode and orientation
-> switching is performed internally by the PHY through software
-> configuration. This allows the PHY to act as a Type-C multiplexer for
-> both data role and DP altmode configuration.
-> 
-> To reflect this hardware design, this patch introduces a new
-> "mode-switch" property for the dp-port node in the device tree bindings.
-> This property indicates that the connected PHY is capable of handling
-> Type-C mode switching itself.
-> 
-> Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-> 
-> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Hi,
 
-There are never blank lines between tags.
+I'll drop this on v8. This will be handled in
+  https://lore.kernel.org/linux-rockchip/20251111071730.126238-1-naoki@radxa.com/
 
 Best regards,
-Krzysztof
+
+--
+FUKAUMI Naoki
+Radxa Computer (Shenzhen) Co., Ltd.
+
+On 11/9/25 23:18, FUKAUMI Naoki wrote:
+> Due to the discussion about cd-gpios and sdmmmc_det pin
+> functionality[1], it would be better to use cd-gpios for now.
+> 
+> [1] https://lore.kernel.org/linux-rockchip/20240912152538.1.I858c2a0bf83606c8b59ba1ab6944978a398d2ac5@changeid/T/#u
+> 
+> Fixes: 3ddf5cdb77e6 ("arm64: dts: rockchip: add Radxa ROCK 5C")
+> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
+> ---
+> Changes in v7:
+> - Add pinctrl-*
+> - Reword commit message
+> Changes in v6:
+> - Reword commit message
+> Changes in v5:
+> - Reword commit message
+> Changes in v4:
+> - None
+> Changes in v3:
+> - None
+> Changes in v2:
+> - None
+> ---
+>   arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts | 3 +++
+>   1 file changed, 3 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
+> index 9a9430b2494b7..1257aaac8f350 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
+> @@ -510,9 +510,12 @@ &sdmmc {
+>   	bus-width = <4>;
+>   	cap-mmc-highspeed;
+>   	cap-sd-highspeed;
+> +	cd-gpios = <&gpio0 RK_PA4 GPIO_ACTIVE_LOW>;
+>   	disable-wp;
+>   	no-sdio;
+>   	no-mmc;
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&sdmmc_bus4 &sdmmc_clk &sdmmc_cmd>;
+>   	sd-uhs-sdr104;
+>   	vmmc-supply = <&vcc_3v3_s3>;
+>   	vqmmc-supply = <&vccio_sd_s0>;
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
