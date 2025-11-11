@@ -4,87 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FCAACCF9E3
-	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Nov 2025 02:11:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95417CCF9E3
+	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Nov 2025 02:58:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pLeQbSGDiV0DdZ4xgsY2FcC8jDSHnpWp/0VtJ8Ialkk=; b=41pr++an9tC9uj
-	0E87e+p+LYWZh/u5Ghj86UQTvt373GBCVF3lFpefxCK/Df/NUmmLIZMMPHGlgKlKMq25BeaRIkOQt
-	9pyIs0ftY57mSlxJ6/8HmRdnIsLDFVyLMRfSVOHfTlgNsrQNwsiyRd0hRSBC3s92+3CmV3jha35rH
-	SjETOY6/3nJgBA1zuOfkwop2MKG/wHCGVHbVwNQm4xkPVcSeEA9uEdhnOoRooWTIFAkZjpIfb1RIb
-	qjqmj4ieW45XN8fe4b5IZgXba8jV0rIFfV096Ixox2QYPhB+wLkOy6yD63F3VM3xVFKIVJO2o70u3
-	48I3vp2ZqF/pYEC5KVbw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=G6rPsDhKkFA6DuZC1CG6jb06+xHyYVWbK+pqgfgPR7k=; b=bgOTvMhwgy70TP
+	bDPZOkgmJ5N3VSNi6BotCNx0sKFgcLiRAcmNzL+j0fl/7I9l+87Zf8ud1OploTJASUR3vYQw28lWm
+	7HT3PV2+cop5GBGB2JKNRiTeN3Xsk7WCI0NuIlddi6DwHClA4oIjWBnAB/4lySlknuqak/4rtntOb
+	Ru4M6CSfakKgQ/W47buNNqKTJWiR1L5Ml610T8zfAKtIC9AgS3UooxpuwZD8HXrFUbsWTYa7aSzYv
+	cnfCv8D7xBuBQ4PTRscOgZ697Y0s8P1L7r5gNwhbvw1lRoJtW+IPR8yS3X/Pvb1HtBnPKak7RauKo
+	Y4YWpHqgau6jpORgA4kg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIdqZ-00000006NQz-49Zg;
-	Tue, 11 Nov 2025 02:11:03 +0000
-Received: from smtpbgeu1.qq.com ([52.59.177.22])
+	id 1vIeZv-00000006PJB-02Mo;
+	Tue, 11 Nov 2025 02:57:55 +0000
+Received: from mail-m32106.qiye.163.com ([220.197.32.106])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIdqT-00000006NNY-0h9h;
-	Tue, 11 Nov 2025 02:11:02 +0000
-X-QQ-mid: zesmtpip3t1762826986t355f97ce
-X-QQ-Originating-IP: Hiq+d1HFsdfBnF0CzHzpOopV81Jpt/t8pVjS27nsYIM=
-Received: from [IPV6:240f:10b:7440:1:62e3:2c99 ( [localhost])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Tue, 11 Nov 2025 10:09:42 +0800 (CST)
-X-QQ-SSF: 0000000000000000000000000000000
-X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 12658501094839713575
-Message-ID: <B721C8A516FDB604+a04b38d3-64ec-423f-9e4c-040c8d2aec76@radxa.com>
-Date: Tue, 11 Nov 2025 11:09:42 +0900
+	id 1vIeZr-00000006PHB-1HcY;
+	Tue, 11 Nov 2025 02:57:53 +0000
+Received: from rockchip.. (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 291f57b9a;
+	Tue, 11 Nov 2025 10:57:39 +0800 (GMT+08:00)
+From: Elaine Zhang <zhangqing@rock-chips.com>
+To: mturquette@baylibre.com,
+	sboyd@kernel.org,
+	zhangqing@rock-chips.com,
+	heiko@sntech.de,
+	robh@kernel.org,
+	p.zabel@pengutronix.de,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org
+Cc: devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-clk@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	finley.xiao@rock-chips.com,
+	sugar.zhang@rock-chips.com
+Subject: [PATCH v7 0/5] clk: rockchip: Add clock controller for the
+Date: Tue, 11 Nov 2025 10:57:33 +0800
+Message-Id: <20251111025738.869847-1-zhangqing@rock-chips.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RESEND] Re: [PATCH] PCI: dw-rockchip: Skip waiting for link up
-To: Niklas Cassel <cassel@kernel.org>, Manivannan Sadhasivam <mani@kernel.org>
-Cc: Shawn Lin <shawn.lin@rock-chips.com>, Damien Le Moal
- <dlemoal@kernel.org>, Anand Moon <linux.amoon@gmail.com>,
- linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- Dragan Simic <dsimic@manjaro.org>, Lorenzo Pieralisi
- <lpieralisi@kernel.org>, =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?=
- <kw@linux.com>, Rob Herring <robh@kernel.org>,
- Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>
-References: <55EB0E5F655F3AFC+136b89fd-98d4-42af-a99d-a0bb05cc93f3@radxa.com>
- <aRCI5kG16_1erMME@ryzen>
- <F8B2B6FA2884D69A+b7da13f2-0ffb-4308-b1ba-0549bc461be8@radxa.com>
- <780a4209-f89f-43a9-9364-331d3b77e61e@rock-chips.com>
- <4487DA40249CC821+19232169-a096-4737-bc6a-5cec9592d65f@radxa.com>
- <363d6b4d-c999-43d4-866e-880ef7d0dec3@rock-chips.com>
- <0C31787C387488ED+fd39bfe6-0844-4a87-bf48-675dd6d6a2df@radxa.com>
- <dc932773-af5b-4af7-a0d0-8cc72dfbd3c7@rock-chips.com>
- <aRHb4S40a7ZUDop1@ryzen>
- <2n3wamm3txxc6xbmvf3nnrvaqpgsck3w4a6omxnhex3mqeujib@2tb4svn5d3z6>
- <aRJEDEEJr9Ic-RKN@fedora>
-Content-Language: en-US
-From: FUKAUMI Naoki <naoki@radxa.com>
-In-Reply-To: <aRJEDEEJr9Ic-RKN@fedora>
-X-QQ-SENDSIZE: 520
-Feedback-ID: zesmtpip:radxa.com:qybglogicsvrsz:qybglogicsvrsz4b-0
-X-QQ-XMAILINFO: MX0ofXk2LYQCUdF/iD0ozdGip6CcWL19rTDxs1qdeA7+87oXmSdNaGQm
-	vT4YRv3rH4jp9/3aD+eYo4bvX9r87EFI7f2axjA10Zv04GbrpKtgOXqWsdXSAAoiboNryTj
-	MWHvWlFIFCHwKWgQdVWGJeOFQeFBJuVVSJSv4t4sv/24+bGEe8CLJtjA5wH2Bdk3DK844CS
-	eYd4QHpS3hqkIs7tYd40HY/WV8cywiOYUm6YGy3HN7abm8bk9OrVvpN432BPLcL0JopfUUp
-	ntYEgfoU9M0bTYazDoam35nKyyNd3x+UnXSt99fXF0vgm6Pl1eh3cDI36h2NfiKdp743qC6
-	pQ8wq9d0mw51vat8L/GaOSO9SNDMbuUaDmC/Th5uck/4bfPptoYoAsxqdWLD9FDfgiqcAqE
-	xZzyPriZYwGnt6hu4P+08iKKi+Yw8DOdpdc+lQkcm2ObPZ84pzXJ8u6O2fSxaoZtRmsMmXJ
-	ReVrBE90xs8OKE59+Yv86I3rDK68UpE7W7DN2jhGUEWHXpv/8k2PHkG7RlRk+lS+15EIPYx
-	lvo7ZXeedL62uwe6YYjxojnj1mi6FmqulOOEjDS9HA9YhDwPGafFioMIDa2+WVh/4XosmMX
-	wzZmpgJ9D9BMVLfklOBvQA+gmooXma0utnjhI3f501dK6hHop9mQlwzwmzwOd0Km79raECi
-	z49pv3UQ/9u03x7JnGLXYbjrl/cJr7IozjfRrd4Q9u1djaCVXwFwYPGuAr9ErS9cPQr+1uE
-	mIAbhbe4KP0ItfoQLb3AchEaoR7ozWWHqt3I/sPGsrxINC7r9rLIT8BvlUDRWzACqXqVoG7
-	PmiCBt0WqOzKuoa0UnFvm84gejT8l36Dp6brXQ3wJZAX5rTvSnt8JoEziMS5BsViA6hBcTH
-	3PSiTl4CUUkdTwzKH0omFmRWI+UKsbQ3i7IqCcTlwWW/rTxnaaxx9CmKfVQLPTBNPP8Rhtt
-	VFtkH7TUpG1X4wIvuh7Mwypw23erMsGeEMGvKZqdvvvyN+dHLfEDxYAYHlUFYpEcINqhVU3
-	5DqdaD71JxdwXYw6ke
-X-QQ-XMRINFO: Nq+8W0+stu50PRdwbJxPCL0=
-X-QQ-RECHKSPAM: 0
+X-HM-Tid: 0a9a70d8fa7903a3kunmb98a0103a12c3
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGUMdGlZPSxpOGEsaTE9LTUNWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=BCEcQnvZTFefkDLxzQaniJrq258kY0554HnhigINNs7nBJyYu3A2oWIE9PHJ8ZvA5l0JmdYw2ZGk/w0V/70KYnA+m8i+zklcnhGho1YnSUnrajnkirYkw5mql934QjVbXN0nEFpASFOvT4TfhNcVuUQ9DPAXs+QZ0rDet3ZcUew=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=pSFyV42fr1nsJZrV0lgQMM+Bu9D2LULWkHMNlTwXSkc=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251110_181057_723285_E521B16F 
-X-CRM114-Status: GOOD (  28.23  )
+X-CRM114-CacheID: sfid-20251110_185751_854801_B87163A2 
+X-CRM114-Status: UNSURE (   8.26  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,102 +75,98 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 11/11/25 04:59, Niklas Cassel wrote:
-> On Mon, Nov 10, 2025 at 09:23:02PM +0530, Manivannan Sadhasivam wrote:
->>>
->>> Considering what Shawn says, that the switch gets enumerated properly
->>> if we simply add a msleep() in ->start_link(), which will be called
->>> by dw_pcie_host_init() before pci_host_probe() is called...
->>>
->>
->> Yes, that delay probably gives enough time for the link up IRQ to kick in before
->> the initial bus scan happens.
-> 
-> I think that the problem is that even for platforms with link up IRQ,
-> we will always do:
-> 1) dw_pcie_start_link() (if (!dw_pcie_link_up()))
-> 2) pci_host_probe() from dw_pcie_host_init(), this will enumerate the bus
-> 3) pci_rescan_bus() from the Link Up IRQ handler
-> 
-> Thus, in 2, when enumerating the bus, without performing any of the delays
-> mandated by the PCIe spec, it still seems possible to detect a device (it
-> must have been really quick to initialize), and to communicate with that
-> device, however since we have not performed the delays mandated by the spec,
-> it appears that the device might not yet behave properly.
-> 
-> Hence my suggestion to never call pci_host_probe() in dw_pcie_host_init()
-> for platforms with Link Up IRQ.
-> 
-> At least for pcie-dw-rockchip.c, we only unmask the Link Up IRQ after
-> dw_pcie_host_init() has returned, so I think that your theory: that Shawn's
-> suggested delay causes the Link Up IRQ to kick in before the initial bus
-> scan, is incorrect. (Since the IRQ should not be able to trigger until
-> dw_pcie_host_init() has returned.)
-> 
-> 
->>
->>> ...we already have a delay in the link up IRQ handler, before calling
->>> pci_rescan_bus().
->>>
->>
->> That delay won't help in this case.
-> 
-> Sure, I was just saying that even though Shawn's patch made things work,
-> it seems incorrect, as we do not want to add "the same delay" that we
-> already have in the Link Up IRQ. (The delay in the Link Up IRQ should be
-> the only one.)
-> 
-> 
->>> I think a better solution would be something like:
-> 
-> (snip)
-> 
->> This solution will work as long as the PCIe device is powered ON before
->> start_link(). For CEM and M.2 Key M connectors, the host controller can power
->> manage the components. But for other specifications/keys requiring custom power
->> management, a separate driver would be needed.
->>
->> That's why I suggested using pwrctrl framework as it can satisfy both usecases.
->> However, as I said, it needs a bit of rework and I'm close to submitting it.
->>
->> But until that gets merged, either we need to revert your link up IRQ change or
->> have the below patch. IMO, the revert seems simple.
-> 
-> Using pwrctrl framework once it can handle this use case sounds good to me.
-> 
-> FUKAUMI, could you please send a revert of the two patches?
+Add yaml and dt-bindings for the RV1126B and RK3506.
+RK3506 depend on patches 1/5, so it is merged and submitted.
 
-Leaving the commit message aside, I'm currently testing with a revert of 
-the two patches.
+Change in V7:
+[PATCH v7 1/5]: No change
+[PATCH v7 2/5]: Redefine clk id(start at 0), drop RESETN for reset id.
+[PATCH v7 3/5]: Drop RESETN for reset id.
+[PATCH v7 4/5]: Fix "description: |", drop RESETN for reset id.
+[PATCH v7 5/5]: Drop RESETN for reset id.
 
-Vanilla v6.18-rc5, CONFIG_PCI_DYNAMIC_OF_NODES=y, revert ec9fd499b9c6, 
-revert 0e0b45ab5d77.
+Change in V6:
+Drop pvtpll, others no change.
+There are many questions about pvtpll and have some dependency issues.
+They will be submitted separately later.
 
-It works stably on the ROCK 5A. The link speed is 2Gb/s.
+Change in V5:
+[PATCH v5 1/7]: No change
+[PATCH v5 2/7]: No change
+[PATCH v5 3/7]: Drop RV1126B_GRF_SOC_STATUS0
+[PATCH v5 4/7]: Drop syscon
+[PATCH v5 5/7]: No change
+[PATCH v5 6/7]: Add clocks and clock-names, fix id define
+[PATCH v5 7/7]: Drop RK3506_GRF_SOC_STATUS
 
-The ROCK 5C is unstable. It initially worked with a link speed of 4Gb/s, 
-but eventually started showing kernel oops. The dts files for the 5A and 
-5C are compatible and interchangeable, but even using the 5A's dts on 
-the 5C, the operation remains unstable.
+Change in V4:
+[PATCH v4 1/7]: No change
+[PATCH v4 2/7]: remove label
+[PATCH v4 3/7]: No change
+[PATCH v4 4/7]: remove label,fix order
+[PATCH v4 5/7]: No change
+[PATCH v4 6/7]: Add yaml and dt-bindings for the RK3506
+[PATCH v4 7/7]: Add clock controller for the RK3506
 
-I plan to thoroughly investigate the ROCK 5C's behavior on v6.13, but 
-for now, I believe reverting the two patches is the correct action.
+Change in V3:
+[PATCH v3 1/5]: No change
+[PATCH v3 2/5]: Fix define error
+[PATCH v3 3/5]: update driver,fix errir
+[PATCH v3 4/5]: fix error
+[PATCH v3 5/5]: No change
 
-Best regards,
+Change in V2:
+[PATCH v2 1/5]: update commit message, rename v2 to multi_pll
+[PATCH v2 2/5]: Modify DT binding headers license
+[PATCH v2 3/5]: update driver
+[PATCH v2 4/5]: fix error
+[PATCH v2 5/5]: update commit message
 
---
-FUKAUMI Naoki
-Radxa Computer (Shenzhen) Co., Ltd.
+Elaine Zhang (4):
+  clk: rockchip: Implement rockchip_clk_register_armclk_multi_pll()
+  dt-bindings: clock, reset: Add support for rv1126b
+  clk: rockchip: Add clock controller for the RV1126B
+  clk: rockchip: Add clock and reset driver for RK3506
 
-> Kind regards,
-> Niklas
-> 
+Finley Xiao (1):
+  dt-bindings: clock: rockchip: Add RK3506 clock and reset unit
 
+ .../bindings/clock/rockchip,rk3506-cru.yaml   |   51 +
+ .../bindings/clock/rockchip,rv1126b-cru.yaml  |   52 +
+ drivers/clk/rockchip/Kconfig                  |   14 +
+ drivers/clk/rockchip/Makefile                 |    2 +
+ drivers/clk/rockchip/clk-cpu.c                |  165 +++
+ drivers/clk/rockchip/clk-rk3506.c             |  869 +++++++++++++
+ drivers/clk/rockchip/clk-rv1126b.c            | 1103 +++++++++++++++++
+ drivers/clk/rockchip/clk.c                    |   24 +
+ drivers/clk/rockchip/clk.h                    |   96 ++
+ drivers/clk/rockchip/rst-rk3506.c             |  226 ++++
+ drivers/clk/rockchip/rst-rv1126b.c            |  444 +++++++
+ .../dt-bindings/clock/rockchip,rk3506-cru.h   |  285 +++++
+ .../dt-bindings/clock/rockchip,rv1126b-cru.h  |  392 ++++++
+ .../dt-bindings/reset/rockchip,rk3506-cru.h   |  211 ++++
+ .../dt-bindings/reset/rockchip,rv1126b-cru.h  |  405 ++++++
+ 15 files changed, 4339 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3506-cru.yaml
+ create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rv1126b-cru.yaml
+ create mode 100644 drivers/clk/rockchip/clk-rk3506.c
+ create mode 100644 drivers/clk/rockchip/clk-rv1126b.c
+ create mode 100644 drivers/clk/rockchip/rst-rk3506.c
+ create mode 100644 drivers/clk/rockchip/rst-rv1126b.c
+ create mode 100644 include/dt-bindings/clock/rockchip,rk3506-cru.h
+ create mode 100644 include/dt-bindings/clock/rockchip,rv1126b-cru.h
+ create mode 100644 include/dt-bindings/reset/rockchip,rk3506-cru.h
+ create mode 100644 include/dt-bindings/reset/rockchip,rv1126b-cru.h
+
+
+base-commit: fb0a581e0696ccd994e27287941a2a25c58b2ccd
+-- 
+2.34.1
 
 
 _______________________________________________
