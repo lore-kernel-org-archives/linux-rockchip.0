@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B75FCCCF9E3
-	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Nov 2025 05:37:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EFA8CCFA18
+	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Nov 2025 05:38:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Subject:Message-ID:MIME-Version:To:Cc:
 	Date:References:In-Reply-To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Xkp57RMI1/U5qOs35IDlPQ+9U4aHDeq7TjJXufQVYew=; b=P6AfiLAgTpsiX6
-	Y/XRSjdF4CILll3yLmeacfmAfaEvYuvG6hHuX8jF2QOL61weMkKYRb/Wt3/BwWapphnAdwp0XlDYL
-	ZDz87F5Jb82/7swJtF5okY4IogFTtWlrREVjBnZAaljcp4j6qtA30AXwsgsJH0IzovzGSmhcmOqcv
-	b7tFiEjS07JJ/2dLwj0UkY6HL1MzqTINFgg3AST9nUVOhdbiO5iMw710TnVHpyA56IFFLDg4gopDe
-	57I6YPg8zC+3nTqsg6MnhGsCeV2gtvhJNbq//jTShurihsTgSEiPqudIdctkN7N7H7n5Q5ApHLuVB
-	dni5QUfGwIehHOfZWXHQ==;
+	List-Owner; bh=O5vfQXG6QvAmjkvwaU9n+7XvwmVKwNXNwq7RMOHNmto=; b=Nl+ITKFZPXx29I
+	TmeL3DNUq4HLWW5Qw/YHfU8pERg001BNhNyzEjNgLexr/iUh+F7EUEB7aXF6apj1DNXT37kzTHXS1
+	9vjiQnts7hXlpByLtqXyYPA+YAsKqieIZK0l2x4oFmrcNT9+5p98hZpALLn2JoUQNHcqe2IVE+HEK
+	OPsfTlim9OACO7eQZaqiIgBTq+zOo8AYAZDnMtbbaqBX90Ulyd/bNReCCYHUmEf/+9+AA1isIIoio
+	glh8J19+K01IUIcs92Nz0zYKsI2xX8TBRH4ccCWEEjrQrOCuP1Wp/SG1JtUS6Tu5PRY6RVEsJRsSn
+	YiN7YQ6uunftTaQinPIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIh4B-00000006ZNl-44L6;
-	Tue, 11 Nov 2025 05:37:19 +0000
-Received: from mail1.manjaro.org ([142.132.176.110])
+	id 1vIh5T-00000006ZTq-1e5a;
+	Tue, 11 Nov 2025 05:38:39 +0000
+Received: from mail1.manjaro.org ([2a01:4f8:c010:b6e8::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIh49-00000006ZNP-2Kn0
+	id 1vIh5Q-00000006ZTN-3UZv
 	for linux-rockchip@lists.infradead.org;
-	Tue, 11 Nov 2025 05:37:19 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPA id C3525404BB;
-	Tue, 11 Nov 2025 06:37:12 +0100 (CET)
+	Tue, 11 Nov 2025 05:38:38 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPA id B476B41031;
+	Tue, 11 Nov 2025 06:38:32 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=dkim;
-	t=1762839434; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	t=1762839514; h=from:subject:date:message-id:to:cc:mime-version:content-type:
 	 content-transfer-encoding:in-reply-to:references;
-	bh=qf/MrRR7g4WMSz/OzX2qYEW5Y+Z/pQl4c5xRFA4/jWM=;
-	b=wm+ldcssn6BdC3o7VWqTpteTSLg3pUTz+WA1VWPjIjBKwyOcJcUd/6Mte2pDId1CFf3avd
-	Z2DUuavT4b6dYUr5d8gEJNyjLzVOsat9JOmES/Ib+Xw+0H0Vbg5k12MHrExsrepjCQXDPk
-	kMOCBPX8jHD8OJ9UWN1uP2kALFYtwJdRHomOxpkw5/aCIIM2gWQwM0IHD0/6zYnOrNWK54
-	H3YsY2JiNwIQoAvB8Iwn1hlCM9H6cvIB+yfiVTIYC7k0X3BxzoqHj0Vlqi+LdMEbTG65k3
-	uVTbdLkJPy5P5Kf6o4oZsyUenRKX9YQ24kAf9TQT82j//6KKVJNPI0aeDDgU0Q==
+	bh=Sh+zGugTaQu4fEYhd2YCRoL/l8/rF3Awiro9HJ/Zy+c=;
+	b=nEwfy34XKA3FaJEwXylFCoQBSevIQri0SnmMaem9tsKxSEIB5g2NVdX63BRhkOlYA964xZ
+	LKMQX71BSBlxsoxiAGfWKD9T0w/y5xJvipwYzUEmmCw/TStB6NYO1YAr44aL9kkhppsfQR
+	jtgRDagAy/3GvaJ7Rkip1lOw+NgVdO5TSjhyr0foLTz4MyytOZGK/NDzD4EjkPTIYLk0do
+	Z13lMFNhRU76Zi2jBhwPqkWsbJyKmmoAw5lMFfXQTRUpaz5I93RFm19yH8tQIXlKQOSf8H
+	Eq9cU1rbVuXfvPUssEN3e33azVMNQPF0R268mFVRXY9S9VsiptaA7ZhHug/Ptg==
 From: "Dragan Simic" <dsimic@manjaro.org>
-In-Reply-To: <20251111050924.54880-4-naoki@radxa.com>
-References: <20251111050924.54880-1-naoki@radxa.com> <20251111050924.54880-4-naoki@radxa.com>
-Date: Tue, 11 Nov 2025 06:37:12 +0100
+In-Reply-To: <20251111050924.54880-5-naoki@radxa.com>
+References: <20251111050924.54880-1-naoki@radxa.com> <20251111050924.54880-5-naoki@radxa.com>
+Date: Tue, 11 Nov 2025 06:38:32 +0100
 Cc: heiko@sntech.de, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, jbx6244@gmail.com, pbrobinson@gmail.com, damon.ding@rock-chips.com, sebastian.reichel@collabora.com, kylepzak@projectinitiative.io, alchark@gmail.com, amadeus@jmu.edu.cn, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
 To: "FUKAUMI Naoki" <naoki@radxa.com>
 MIME-Version: 1.0
-Message-ID: <46ca3fd6-4513-0a0a-41b6-8fffae9b3242@manjaro.org>
-Subject: =?utf-8?q?Re=3A?= [PATCH 3/4] =?utf-8?q?arm64=3A?==?utf-8?q?_dts=3A?=
- =?utf-8?q?_rockchip=3A?= Add eeprom vcc-supply for Radxa ROCK 3C
+Message-ID: <4babaf00-19f5-1d0d-6359-7f98897ef18e@manjaro.org>
+Subject: =?utf-8?q?Re=3A?= [PATCH 4/4] =?utf-8?q?arm64=3A?==?utf-8?q?_dts=3A?=
+ =?utf-8?q?_rockchip=3A?= Make eeprom read-only for Radxa ROCK 3C/5A/5C
 User-Agent: SOGoMail 5.12.3
 X-Last-TLS-Session-Version: None
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251110_213717_812123_1E271286 
-X-CRM114-Status: GOOD (  11.47  )
+X-CRM114-CacheID: sfid-20251110_213837_066976_713F500F 
+X-CRM114-Status: GOOD (  11.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,36 +71,65 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Hello Naoki,
 
-Thanks for this patch.  Please, see a couple of remarks below.
+Thanks for this patch.  Please, see one remark below.
 
 On Tuesday, November 11, 2025 06:09 CET, FUKAUMI Naoki <naoki@radxa.com> wrote:
-> The VCC supply for the BL24C16 EEPROM chip found on Radxa ROCK 3C is
-> vcca1v8_pmu.
-
-There's no need for a line break here.
-
-> Describe this supply.
+> Make the BL24C16 EEPROM chips found on Radxa ROCK 3C, 5A and 5C SBCs
+> read-only, because they contain factory-programmed data that isn't
+> supposed to be modified by the end users.
 > 
 > Fixes: ee219017ddb50 ("arm64: dts: rockchip: Add Radxa ROCK 3C")
+> Fixes: 89c880808cff8 ("arm64: dts: rockchip: add I2C EEPROM to rock-5a")
+> Fixes: 3ddf5cdb77e6e ("arm64: dts: rockchip: add Radxa ROCK 5C")
 > Link: https://dl.radxa.com/rock3/docs/hw/3c/v1400/radxa_rock_3c_v1400_schematic.pdf p.13
+> Link: https://dl.radxa.com/rock5/5a/docs/hw/radxa_rock5a_V1.1_sch.pdf p.19
+> Link: https://dl.radxa.com/rock5/5c/docs/hw/v1100/radxa_rock_5c_schematic_v1100.pdf p.18
+> Link: https://github.com/radxa/u-boot/blob/next-dev-v2024.10/drivers/misc/radxa-i2c-eeprom.c
 
 The same suggestion about using explicitly placed references, from
 the patch 1/4 in this series, applies here as well.
 
 > Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
 > ---
->  arch/arm64/boot/dts/rockchip/rk3566-rock-3c.dts | 1 +
->  1 file changed, 1 insertion(+)
+>  arch/arm64/boot/dts/rockchip/rk3566-rock-3c.dts  | 1 +
+>  arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts | 1 +
+>  arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts | 1 +
+>  3 files changed, 3 insertions(+)
 > 
 > diff --git a/arch/arm64/boot/dts/rockchip/rk3566-rock-3c.dts b/arch/arm64/boot/dts/rockchip/rk3566-rock-3c.dts
-> index 6224d72813e59..80ac40555e023 100644
+> index 80ac40555e023..fa28b32f69108 100644
 > --- a/arch/arm64/boot/dts/rockchip/rk3566-rock-3c.dts
 > +++ b/arch/arm64/boot/dts/rockchip/rk3566-rock-3c.dts
 > @@ -466,6 +466,7 @@ eeprom: eeprom@50 {
 >  		compatible = "belling,bl24c16a", "atmel,24c16";
 >  		reg = <0x50>;
 >  		pagesize = <16>;
-> +		vcc-supply = <&vcca1v8_pmu>;
+> +		read-only;
+>  		vcc-supply = <&vcca1v8_pmu>;
+>  	};
+>  };
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
+> index 041a0fff22ccb..d844a842d4cce 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
+> @@ -233,6 +233,7 @@ eeprom: eeprom@50 {
+>  		compatible = "belling,bl24c16a", "atmel,24c16";
+>  		reg = <0x50>;
+>  		pagesize = <16>;
+> +		read-only;
+>  		vcc-supply = <&vcc_3v3_pmu>;
+>  	};
+>  };
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
+> index dd7317bab6135..665eecce063a8 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
+> @@ -325,6 +325,7 @@ eeprom@50 {
+>  		compatible = "belling,bl24c16a", "atmel,24c16";
+>  		reg = <0x50>;
+>  		pagesize = <16>;
+> +		read-only;
+>  		vcc-supply = <&vcc_3v3_pmu>;
 >  	};
 >  };
 
