@@ -4,91 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3EB27CD1297
-	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Nov 2025 10:42:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 831CECCF9E3
+	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Nov 2025 10:51:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4UToPMyBgatO+QB3ICCxVeJh8b91SkArV+0viMFzqBo=; b=gOv6vdzX0sNBRP
-	hmpP45ZSP/nAH1G3AgjcYlee2oYRvTIG6ySBA+jlEPpF6Qcf/TjP+bCllUvRBiEJtPSs3cbKsKlGA
-	vf/3AESo/032R04A6o+0Ts/tEcjSnt2Tu5SUs6nMhbU8szVM05EOR5sH/miV8wNoasWtQfdXrCgMs
-	B9YHai2soojvsJBYhq+eisDeoKosbT5tUnUh+nwUUJZknJv6WeobERId0C3d/tWa2EaBltCjv4/qj
-	raOFb7JfUd6TV1BkDSjXUl7SzEj6K+2/UQcN/ocIa/0hOMNfa/77YcYRLj78fsPQAHt9bi/UHiTxM
-	amj8bC06LFys/Wj/dZYQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=LUGvTY3JnCf0BOlcZPvWmvF+LefoMYj+oRIe0+sAma8=; b=ronqO6iz+5KlRX
+	Eu1moVGI5VM+8wRq03iWuAYN5bDC1/FwZXd4ourNNE/HJSL7830AzU7npKY4UMYVYZ3WV51TLgPjF
+	ZJkVLRkCuC6oS3WZ/A242rYTZgIpgEW4Onj3PLlLoIWRN/3AurQbl1EMcNdDN2MljbFCfg0Ls/5IM
+	dJfuuXCGD5s2/VXsuci43NCwzhUSEvzpSEpqG/pAOqLNAxQjS0TJxbSzPci9+4HcBG7oDKa0FsnF7
+	xw8V3WYoqhyvqcjQDhuwK3K7iNpmgmS/YvaRMNr7+TKx2J2GszjbhLVQ12vl0ZvU18ZYWmn7FT9qB
+	CP86bpMLcvZWqUeC77bQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIlpF-00000006yXG-23K0;
-	Tue, 11 Nov 2025 10:42:13 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vIlxy-00000006zlK-3fb4;
+	Tue, 11 Nov 2025 10:51:14 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIlpC-00000006yWL-32p9;
-	Tue, 11 Nov 2025 10:42:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1762857726;
-	bh=jJElLLmlTNOPMaQl1bcR+ybZDJWxkHdbChsUP8hGruA=;
-	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
-	b=l/94beWZkmZO79b/fiDDAu8zy1EAXp6k8Xlal0v33hcc3m4OYDM22+BhGtdRp4WAd
-	 lqrahqPCKy7CyekfNOjl/F3NLWhBHpe8mS7ljPJg3OoaLQwveWtCwNVhJ9ITLNroA0
-	 iWZioi10ZMhGFwCdpPSGx8PVfxn8bRQFCVdAKw4OxvRFFFKaJ+1b8z9LTDdjob7oVv
-	 Yf1q1t4MI8eHQ+3o7TtpvsjyWINctonT96daqcCoayLpvpHnQypXzNNILhCeLjSUQx
-	 46bwaWnMUIjyFEKttF0C/rNNmT4ApgcX6Uqn3KVC0XxXxzf7ggltmx/oScJnr9B1Fk
-	 TH/p7/lQRvjWQ==
-Received: from [10.40.0.100] (185-67-175-126.lampert.tv [185.67.175.126])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: mriesch)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9090017E1299;
-	Tue, 11 Nov 2025 11:42:05 +0100 (CET)
-Message-ID: <ea541696-40db-409e-955f-983723d42b79@collabora.com>
-Date: Tue, 11 Nov 2025 11:42:04 +0100
+	id 1vIlxw-00000006zku-3egA;
+	Tue, 11 Nov 2025 10:51:12 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 0175661907;
+	Tue, 11 Nov 2025 10:51:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BBA5EC2BCB0;
+	Tue, 11 Nov 2025 10:51:08 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1762858271;
+	bh=yF3LwFR3UteEXs0R1GhkOZ+SlpXP1QamBYPNI3i0IcY=;
+	h=From:To:Cc:Subject:Date:From;
+	b=A5WyiygAjAvJsU+uxfKwX/RBa16Igu09c3rbMJfzahbCwEl89D0RLqRW0Na82P3d3
+	 pciqRPjjNCIyg7sqzS1B3OxheyAG9SZjDdYtH5R6A+7lyDKfp0k+1VBXKG6Ci1H8CM
+	 iR6GMlGJF1AG5fqI8FXC+nPqCHDadsVME5n3SgSIjdxztnm3i0XIXPHlisBLlm+Xz+
+	 Wm/Phe8uSOctrR+TFCkjnym6X6NXvhaQmggdgiGiBlnH9Do8t1YJ7sDyPHX0iipRFB
+	 pWVbB39nFRyptmH2i0gahPDrI5xgkf+iJV9oulaua/dkgcNdEW5sEIBG2gk7lXbNX9
+	 S4JUCEF+ph2tw==
+From: Niklas Cassel <cassel@kernel.org>
+To: Jingoo Han <jingoohan1@gmail.com>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: Shawn Lin <shawn.lin@rock-chips.com>,
+	FUKAUMI Naoki <naoki@radxa.com>,
+	Krishna chaitanya chundru <quic_krichai@quicinc.com>,
+	Niklas Cassel <cassel@kernel.org>,
+	linux-pci@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org
+Subject: [PATCH 0/6] PCI: dwc: Revert Link Up IRQ support
+Date: Tue, 11 Nov 2025 11:51:00 +0100
+Message-ID: <20251111105100.869997-8-cassel@kernel.org>
+X-Mailer: git-send-email 2.51.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v14 00/18] media: rockchip: add a driver for the rockchip
- camera interface
-From: Michael Riesch <michael.riesch@collabora.com>
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: Sakari Ailus <sakari.ailus@linux.intel.com>,
- Mehdi Djait <mehdi.djait@linux.intel.com>,
- Maxime Chevallier <maxime.chevallier@bootlin.com>,
- =?UTF-8?Q?Th=C3=A9o_Lebrun?= <theo.lebrun@bootlin.com>,
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- Gerald Loacker <gerald.loacker@wolfvision.net>,
- Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
- Markus Elfring <Markus.Elfring@web.de>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Kever Yang <kever.yang@rock-chips.com>,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
- Collabora Kernel Team <kernel@collabora.com>,
- Paul Kocialkowski <paulk@sys-base.io>,
- Alexander Shiyan <eagle.alexander923@gmail.com>,
- Val Packett <val@packett.cool>, Rob Herring <robh@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- Mehdi Djait <mehdi.djait@bootlin.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Bryan O'Donoghue <bod@kernel.org>, Chen-Yu Tsai <wens@csie.org>
-References: <20240220-rk3568-vicap-v14-0-b38b6da0fc80@collabora.com>
- <aQ4tJg8r_j4NyKhv@kekkonen.localdomain>
- <074cd08e-0412-49f9-8dd9-b1f96eb11717@collabora.com>
- <20251107185441.GG5558@pendragon.ideasonboard.com>
- <13c43edb-9592-4779-a39a-7856bb0f964d@collabora.com>
- <aRGlvQRVoQs0WjyA@kekkonen.localdomain>
- <b89746e1-4574-4b65-af69-c533576ed185@collabora.com>
- <20251111000627.GA30837@pendragon.ideasonboard.com>
- <7266245d-46b8-4355-a966-654e816ec93c@collabora.com>
-Content-Language: en-US
-In-Reply-To: <7266245d-46b8-4355-a966-654e816ec93c@collabora.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251111_024210_954697_9FB3C0C3 
-X-CRM114-Status: GOOD (  52.81  )
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3673; i=cassel@kernel.org; h=from:subject; bh=yF3LwFR3UteEXs0R1GhkOZ+SlpXP1QamBYPNI3i0IcY=; b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGDKFRUUm7tLPDVxjMnfplsCDqi8v+cpmZL4s4F1+Up1bR fNI5xuLjlIWBjEuBlkxRRbfHy77i7vdpxxXvGMDM4eVCWQIAxenAEzk2GZGho6JxU2nNjPkHE/6 FPbf8T+/4/maGFkF3uk24T5M+bftHRj+Fwn1Oj5hZ2+NPrymbnNI+Z3iEpkw1p+FdrM33ozaf6K XEwA=
+X-Developer-Key: i=cassel@kernel.org; a=openpgp; fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,229 +80,68 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Laurent,
+Revert all patches related to pcie-designware Root Complex Link Up IRQ
+support.
 
-On 11/11/25 09:37, Michael Riesch wrote:
-> Hi Laurent,
-> 
-> On 11/11/25 01:06, Laurent Pinchart wrote:
->> On Mon, Nov 10, 2025 at 11:29:57AM +0100, Michael Riesch wrote:
->>> On 11/10/25 09:43, Sakari Ailus wrote:
->>>> On Fri, Nov 07, 2025 at 09:51:37PM +0100, Michael Riesch wrote:
->>>>> On 11/7/25 19:54, Laurent Pinchart wrote:
->>>>>> On Fri, Nov 07, 2025 at 07:41:59PM +0100, Michael Riesch wrote:
->>>>>>> On 11/7/25 18:32, Sakari Ailus wrote:
->>>>>>>> On Fri, Oct 24, 2025 at 02:51:29PM +0200, Michael Riesch via B4 Relay wrote:
->>>>>>>>> Habidere,
->>>>>>>>>
->>>>>>>>> This series introduces support for the Rockchip Camera Interface (CIF),
->>>>>>>>> which is featured in many Rockchip SoCs in different variations.
->>>>>>>>> For example, the PX30 Video Input Processor (VIP) is able to receive
->>>>>>>>> video data via the Digital Video Port (DVP, a parallel data interface)
->>>>>>>>> and transfer it into system memory using a double-buffering mechanism
->>>>>>>>> called ping-pong mode.
->>>>>>>>> The RK3568 Video Capture (VICAP) unit, on the other hand, features a
->>>>>>>>> DVP and a MIPI CSI-2 receiver that can receive video data independently
->>>>>>>>> (both using the ping-pong scheme).
->>>>>>>>> The different variants may have additional features, such as scaling
->>>>>>>>> and/or cropping.
->>>>>>>>> Finally, the RK3588 VICAP unit constitutes an essential piece of the
->>>>>>>>> camera interface with one DVP, six MIPI CSI-2 receivers, scale/crop
->>>>>>>>> units, and a data path multiplexer (to scaler units, to ISP, ...).
->>>>>>>>
->>>>>>>> I understand both RK3568 and RK3588 include an ISP. Do you have insight on
->>>>>>>> how would this work, should the support for the ISP be added later on?
->>>>>>>
->>>>>>> Short answer: Yes and yes.
->>>>>>>
->>>>>>> Long answer:
->>>>>>>
->>>>>>> The patch series at hand adds support for the PX30 VIP and the RK3568
->>>>>>> VICAP. I cannot really say something about the PX30, but on the RK3568
->>>>>>> VICAP and ISP are orthogonal (the ISP features its own MIPI CSI-2
->>>>>>> receiver, different from that introduced in this series). Thus, ISP
->>>>>>> support can be introduced anytime (whenever someone is motivated ;-)).
->>>>>>
->>>>>> Won't they both be connected to the same sensor though, and probably the
->>>>>> same D-PHY in the SoC ? They don't seem entirely separate to me.
->>>>>
->>>>> The MIPI CSI-2 DPHY is shared, indeed. Thus, they *maybe technically
->>>>> could be* connected to the same sensor, but I don't know whether that
->>>>> works and fail to see why anyone would to such a thing (if it is about
->>>>> raw capture, the MIPI CSI-2 receiver in the ISP can do that on its own).
->>>>>
->>>>> The DPHY can be operated in split mode, with two lanes for VICAP and two
->>>>> lanes for ISP. This is not implemented yet, but can be done at a later
->>>>> stage on PHY level (not media related). In this case, ISP and VICAP can
->>>>> receive data from different subdevices via CSI-2.
->>>>
->>>> The two would be part of the same media graph in that case and as there are
->>>> two CSI-2 receivers and a single PHY, the PHY would probably need to have a
->>>> sub-device as well, to allow link configuration to be used to select where
->>>> the PHY is connected.
->>>>
->>>> I don't think we have such a setup elsewhere, and supporting this would
->>>> require changes in the MC framework.
->>>
->>> What follows is a response that also addresses issues raised during our
->>> off-list discussion.
->>>
->>> First of all, I agree with you that the RK3568 HW is "a bit special" (to
->>> say the least) in that regard. Let's have an outlook to newer SoCs, such
->>> as the RK3588: Here, the MIPI CSI-2 DPHYs (there are two of them) with
->>> their split mode are present as well, but the assignment is fixed. For
->>> example, the RK3588 VICAP has six MIPI CSI-2 receiver units and six MIPI
->>> CSI-2 capture units. Units 1 and 2 handle a different MIPI PHY, units 3
->>> and 5 handle the DPHYs (without split mode), units 4 and/or 6 are active
->>> whenever DPHY 1 and/or 2 is in split mode.
->>>
->>> I would model this by adding support for more than one (logical) PHYs
->>> (phy-cells = <1>;) and assigning the logical PHYs to the MIPI CSI-2
->>> receivers. There is not really a possibility to route anything at this
->>> point (routing is done in a MUX unit that takes the different MIPI CSI-2
->>> receivers as inputs).
->>>
->>> Now back to the peculiar RK3568 situation: By default the split mode of
->>> the DPHY is off and both VICAP and ISP are able to receive the same data
->>> (from up to four lanes) with their MIPI CSI-2 receivers (not sure
->>> whether both can be active at the same time, though).
->>
->> A common use case for capturing data from the same sensor through both
->> ISP and VICAP would be routing image data to the ISP and embedded data
->> to VICAP. Assuming the hardware is able to do this, there will be users
->> interested in this feature.
-> 
-> VICAP and ISP would capture different CSI-2 links. AFAIK the embedded
-> data is usually transmitted on the same CSI-2 link but on a different
-> virtual channel. The MIPI CSI receiver in the ISP is capable of
-> capturing (up to three, I think) virtual channels and passing e.g. one
-> VC to the ISP and capturing another VC to memory.
-> 
->>> There are two bits
->>> in the GRF that define the lanes that ISP and VICAP receive in split
->>> mode (lane 0/1 or lane 2/3). Not sure whether these bits are supposed to
->>> be changed during runtime.
->>>
->>> I would suggest modelling this on PHY level in DT, e.g., by passing
->>> reasonable properties to the dphy node, such as
->>>     rockchip,dphy-split-mode;
->>
->> Split mode should indeed be conveyed through DT, as it's a property of
->> the hardware.
-> 
-> Ack!
-> 
->>
->>>     rockchip,dphy-split-invert;
->>> where the former activates the split mode and assigns lanes 0/1 to the
->>> ISP and lanes 2/3 to the VICAP, and the latter inverts this assignment
->>> (lanes 2/3 to the ISP and lanes 0/1 to the VICAP). This would facilitate
->>> the reasonable use cases with reasonable effort.
->>
->> This I'm less convinced about. The routing should be dynamic.
-> 
-> Ack.
-> 
->> How do you envision the connections to the CSI-2 sources to be modelled
->> in DT ? We need ports and endpoints, and data-lanes properties. Where
->> would those reside on the RK3568 side ?
-> 
-> Goto ASCII sketch below for that...
-> 
->>> Otherwise, to keep it perfectly general and most flexible and
->>> everything, we would have to introduce another subdevice indeed, which
->>> would be active on the RK3568 exclusively. Therefore, I don't see that
->>> the PHY driver introduces this subdevice, but a specialized (syscon?)
->>> MUX driver that deals with the RK3568 GRF bits. Something like this
->>>
->>>                            |----------------------|     |-------------|
->>>  Sensor A --- /2 lanes --- | lane 0/1      to ISP | --- | ISP MIPI RX |
->>>                            |                      |     |-------------|
->>>                            |                      |
->>>                            |                      |     |-------------|
->>>  Sensor B --- /2 lanes --- | lane 2/3    to VICAP | --- |VICAP MIPI RX|
->>>                            |----------------------|     |-------------|
->>>
->>> But IMHO this will be too much effort for corner use case that I doubt
->>> anyone will actually use.
->>>
->>> What do you think:
->>>  - Let's keep the PHYs out of V4L2/MC, ok?
->>>  - Let's model the reasonable use cases with device tree properties in
->>>    the dphy DT node, ok?
->>
->> I think the routing should be dynamic.
-> 
-> In this case, my suggestion would be the following:
-> 
->  - An additional MUX subdevice on the RK3568 only, see sketch above
->  - One or two input ports (depending on split mode being activated)
->  - Two output ports (to ISP MIPI RX, to VICAP MIPI RX)
->  - Routing possible 1:N (both input ports can be connected to one or two
->    output ports)
->  - The subdevice will have ports, endpoints, data-lanes properties on
->    both sides.
-> 
-> The nice thing about it is that the current state can be extended once
-> split mode is implemented, IOW patches 01/18 - 17/18 can be readily applied.
-> 
-> Patch 18/18 must not be applied at this time, as this would be the first
-> actual usage of the MIPI CSI-2 pipeline. I guess we need to implement
-> and insert the new subdevice first for the sake of uAPI compatibility.
-> 
-> So pretty-please-with-sugar-on-top can we merge 01-17 so that I don't
-> have to drag these patches along anymore?
+While this fake hotplugging was a nice idea, it has shown that this feature
+does not handle PCIe switches correctly:
+pci_bus 0004:43: busn_res: can not insert [bus 43-41] under [bus 42-41] (conflicts with (null) [bus 42-41])
+pci_bus 0004:43: busn_res: [bus 43-41] end is updated to 43
+pci_bus 0004:43: busn_res: can not insert [bus 43] under [bus 42-41] (conflicts with (null) [bus 42-41])
+pci 0004:42:00.0: devices behind bridge are unusable because [bus 43] cannot be assigned for them
+pci_bus 0004:44: busn_res: can not insert [bus 44-41] under [bus 42-41] (conflicts with (null) [bus 42-41])
+pci_bus 0004:44: busn_res: [bus 44-41] end is updated to 44
+pci_bus 0004:44: busn_res: can not insert [bus 44] under [bus 42-41] (conflicts with (null) [bus 42-41])
+pci 0004:42:02.0: devices behind bridge are unusable because [bus 44] cannot be assigned for them
+pci_bus 0004:45: busn_res: can not insert [bus 45-41] under [bus 42-41] (conflicts with (null) [bus 42-41])
+pci_bus 0004:45: busn_res: [bus 45-41] end is updated to 45
+pci_bus 0004:45: busn_res: can not insert [bus 45] under [bus 42-41] (conflicts with (null) [bus 42-41])
+pci 0004:42:06.0: devices behind bridge are unusable because [bus 45] cannot be assigned for them
+pci_bus 0004:46: busn_res: can not insert [bus 46-41] under [bus 42-41] (conflicts with (null) [bus 42-41])
+pci_bus 0004:46: busn_res: [bus 46-41] end is updated to 46
+pci_bus 0004:46: busn_res: can not insert [bus 46] under [bus 42-41] (conflicts with (null) [bus 42-41])
+pci 0004:42:0e.0: devices behind bridge are unusable because [bus 46] cannot be assigned for them
+pci_bus 0004:42: busn_res: [bus 42-41] end is updated to 46
+pci_bus 0004:42: busn_res: can not insert [bus 42-46] under [bus 41] (conflicts with (null) [bus 41])
+pci 0004:41:00.0: devices behind bridge are unusable because [bus 42-46] cannot be assigned for them
+pcieport 0004:40:00.0: bridge has subordinate 41 but max busn 46
 
-In an off-list chat with Sakari we found that it would make sense to
-leave patches 01 and 12 away as well, in order to avoid uAPI
-compatibility issues for good. The MIPI CSI-2 receiver bindings and
-driver can be merged, as the only difference in the new setup will be
-that on the RK3568 the receiver is connected to the new MUX subdevice,
-rather than to a sensor (as will be the case on e.g. the RK3588).
+During the initial scan, PCI core doesn't see the switch and since the Root
+Port is not hot plug capable, the secondary bus number gets assigned as the
+subordinate bus number. This means, the PCI core assumes that only one bus
+will appear behind the Root Port since the Root Port is not hot plug
+capable.
 
-Can we agree on the following plan:
- 1) You shall merge patches 02/18 - 11/18 + 13/18 - 17/18.
- 2) I shall add the MUX subdev and send a revised version of patches 01,
-    12, 18 along with it.
- 3) We shall have a solid basis to implement split mode in the DPHY
-    driver, RK3568 ISP support (if anyone has time for that), and RK3588
-    VICAP support.
+This works perfectly fine for PCIe endpoints connected to the Root Port,
+since they don't extend the bus. However, if a PCIe switch is connected,
+then there is a problem when the downstream busses starts showing up and
+the PCI core doesn't extend the subordinate bus number after initial scan
+during boot.
 
-OK for everyone? @Laurent: can we get an Ack from you?
+The long term plan is to migrate this driver to the pwrctrl framework,
+once it adds proper support for powering up and enumerating PCIe switches.
 
-Best regards,
-Michael
+Niklas Cassel (6):
+  Revert "PCI: dw-rockchip: Don't wait for link since we can detect Link
+    Up"
+  Revert "PCI: dw-rockchip: Enumerate endpoints based on dll_link_up
+    IRQ"
+  Revert "PCI: qcom: Don't wait for link if we can detect Link Up"
+  Revert "PCI: qcom: Enable MSI interrupts together with Link up if
+    'Global IRQ' is supported"
+  Revert "PCI: qcom: Enumerate endpoints based on Link up event in
+    'global_irq' interrupt"
+  Revert "PCI: dwc: Don't wait for link up if driver can detect Link Up
+    event"
 
-> 
-> Best regards,
-> Michael
-> 
->>
->>>> How does the media graph look like for the device at the moment?
->>>
->>> Please take a look at the media graph in the documentation patch (PATCH
->>> v14 01/18). This is without the ISP, but gives an overview of what the
->>> RK3568 VICAP is capable of.
->>>
->>> Best regards,
->>> Michael
->>>
->>>>> BTW the ISP is able to process the data captured by VICAP, but
->>>>> apparently this includes a RAM round trip (VICAP captures to memory, ISP
->>>>> operates in mem2mem mode).
->>>>>
->>>>>> A block diagram that shows connections between the CSI-2 pins, D-PHY,
->>>>>> CSI-2 receivers, VICAP and ISP could help.
->>>>>>
->>>>>>> Once this patch series is merged, I'll push out changes that introduce
->>>>>>> support for the RK3588 VICAP. We can discuss the integration of any
->>>>>>> RK3588 ISP in this scope then -- and there may be some things to discuss
->>>>>>> as there the VICAP and the ISP(s) are directly connected by means of a
->>>>>>> MUX unit in the VICAP.
->>>>>>>
->>>>>>> Alright?
->>
-> 
+ .../pci/controller/dwc/pcie-designware-host.c | 10 +--
+ drivers/pci/controller/dwc/pcie-designware.h  |  1 -
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c | 60 +-----------------
+ drivers/pci/controller/dwc/pcie-qcom.c        | 63 +------------------
+ 4 files changed, 6 insertions(+), 128 deletions(-)
+
+-- 
+2.51.1
 
 
 _______________________________________________
