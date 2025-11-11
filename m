@@ -4,57 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2A4ACCFA1A
-	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Nov 2025 10:52:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F617CCF9E3
+	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Nov 2025 10:53:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CXT9Crv7dFlMBWeCV8qV/oT1JaKxkaopBgR6XzKABzA=; b=aIatSABHl55hf2
-	osSraG6qNWV18rxdq7P/7rVGk/R+mOVzvaMGxqwKpvyQw0Dgo1KWOJ1MX5ZM73XqhjncyomA9fRp5
-	fsj2tiPjXPZS2/KgnRxi78+tsUMCIAdQMdRAlXvJ2b8NF0RvVZ/Uy5drf8Xg2MsWjactiwvi8qrW/
-	cCBb9akdqaOjy/GxOTdocI9vfHuR+f1CwgTt0j89h0M71OWJb33wCedfC9MtEV013TRTHPZSfgHtV
-	QZePWcmj/QAFrZtaVlVOaTIYWQgy4bKyFabAwF1i6Mta22iJHvHzlAvNWYaji0dh93RMDCxIPdori
-	NkWngD6KUtlT0WRDFmRg==;
+	List-Owner; bh=e4qSMia3052SGSHuAMoBB++ixm+nsuzZxr8F7hPp0cE=; b=qCauPeOOzHqDaW
+	jKyTZ88YpdOgJEqIVF1vb990D5WdVliTdnM57hDA5p6lWQ8loiHsJOsLgkqEMTFfhy+xRejUe1MH7
+	SY9BS3fSInQTNGZBDvW1XLUPFsLH/nzPffAzNxDlhgGx5Lg/E9phBoSK2PN79709+qXBdfuc1621c
+	U3W1enihNHnCcVIcvXVgD1bammeLOtSXJt/D00nKFGE/g+D+fGZB/qBpKPb//EAUNiIDX3QIfvWIe
+	/PtHZeWd3d/zVF4Yq3G1mdV99WQE/Qc79YktEGmJf4JOC5Si6pn7JfDuYCuK/ufmKecPo0sIf70g4
+	Occz06wAhD9WAT0s0QEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIlzL-0000000710B-027M;
-	Tue, 11 Nov 2025 10:52:39 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1vIm0E-000000071XL-3UBk;
+	Tue, 11 Nov 2025 10:53:34 +0000
+Received: from smtpbgjp3.qq.com ([54.92.39.34])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIlzK-000000070zC-0bCu;
-	Tue, 11 Nov 2025 10:52:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=References:In-Reply-To:Message-Id:Date
-	:Subject:Cc:To:From:Sender:Reply-To:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=pFI7M+6j2JewnD4BwkGRc0QPG+RPFm6rGXiCORxPrVE=; b=N5f4kfhBItzFLs9w3KkYfvxi9O
-	aA/wpQ9mtSgIsPnjsoJwrpw4Ns4rHOirNFNZklEAXgdipjPQaEbtaS2fNHG5dgoTD8P6J+pH/Ozkk
-	GgO0Kyn2wrzsWoJU4bu/uIzJq2ycXVmKaPxClm+FhjlhnlOL3gDagwrIX9s55DY9TW+GsUYed/Kho
-	DEEaZgotbdQBXl+OiXGSxXvLz+/HVfg6g+GaseS3irg49rUfIYhCLNiDg7uA13XgJujQ3N0D9GM/r
-	kG+nTjmFG7ALfVudQ9rqklD44Aa64BJnkDunU6znXC579XKqeSJtdYpmsF8ujmP7EsXYHjQO8SMe6
-	FFc0U+Sg==;
-Received: from smtpbguseast3.qq.com ([54.243.244.52])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIl7a-0000000CxjE-1QBx;
-	Tue, 11 Nov 2025 09:57:09 +0000
+	id 1vIm0B-000000071Ma-0rsA;
+	Tue, 11 Nov 2025 10:53:32 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
-	s=altu2504; t=1762858294;
-	bh=pFI7M+6j2JewnD4BwkGRc0QPG+RPFm6rGXiCORxPrVE=;
+	s=altu2504; t=1762858357;
+	bh=fg2TKuNBAB7TuYxIVNS/NsLi1w/3kkBrg4QejE4Xpiw=;
 	h=From:To:Subject:Date:Message-Id;
-	b=GuOEd/RzZKVauL9RE22Jun37P32CADUx8LslqLk68IcSmkIbcIKProj9OxzLUbfDV
-	 kWfwbRlOdU2EyMtP3GRd8mH2yRptWPuSn3OKzv4PaswoEfvzX36OGeRaic7ac4xOTa
-	 q/T864jm6PVFuZBpH5nUSkRfmqUIOdfB/IrobVWs=
-X-QQ-mid: zesmtpsz9t1762858287t5941ed20
-X-QQ-Originating-IP: oggRwoMydKBDH0LmcR8KzliYg47YhSd7rMeyclg9ztc=
+	b=ZOhriZKGuKyQTqx5/baZczgp0SHBpkpLVTxOTgN7zmx1UomZHFkVCPMaO30/Piehw
+	 dpU9jwhCRz+VOMwQpDIVkH0NgfzobMAErkhVnNVmZyBXoFWTo+Xe2PYYZQKYLKal/t
+	 oIa+hkO/i8xJA/2AL65gYOgZYHMbuqb2NjhvFkxc=
+X-QQ-mid: zesmtpsz9t1762858291te7294ff4
+X-QQ-Originating-IP: exeCqqoIeGySwZLpWAlGG7yGEO1UuQ9aEdXrUWr2v7o=
 Received: from DESKTOP-8BT1A2O.localdomain ( [58.22.7.114])
 	by bizesmtp.qq.com (ESMTP) with 
-	id ; Tue, 11 Nov 2025 18:51:24 +0800 (CST)
+	id ; Tue, 11 Nov 2025 18:51:28 +0800 (CST)
 X-QQ-SSF: 0000000000000000000000000000000
 X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 15062605320672791780
+X-BIZMAIL-ID: 3148432019982431225
 From: Chaoyi Chen <kernel@airkyi.com>
 To: Heikki Krogerus <heikki.krogerus@linux.intel.com>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
@@ -94,35 +80,35 @@ Cc: linux-usb@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	dri-devel@lists.freedesktop.org
-Subject: [PATCH v9 09/10] arm64: dts: rockchip: Add missing dp_out port for RK3399 CDN-DP
-Date: Tue, 11 Nov 2025 18:50:39 +0800
-Message-Id: <20251111105040.94-10-kernel@airkyi.com>
+Subject: [PATCH v9 10/10] arm64: dts: rockchip: rk3399-evb-ind: Add support for DisplayPort
+Date: Tue, 11 Nov 2025 18:50:40 +0800
+Message-Id: <20251111105040.94-11-kernel@airkyi.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20251111105040.94-1-kernel@airkyi.com>
 References: <20251111105040.94-1-kernel@airkyi.com>
 X-QQ-SENDSIZE: 520
 Feedback-ID: zesmtpsz:airkyi.com:qybglogicsvrgz:qybglogicsvrgz6b-0
-X-QQ-XMAILINFO: NJ8AO1QhldfJoDDr/XkLuMY1LVIRQJMBVyeMyuYgLts/HGgoS2B9NTnn
-	piM5XnUclVMh5nhEnK8Tb09cQ6ZyqrEHBH9aOrqV/aEb+rVBs0F9MtcsbeJtWuWfgSvnc8I
-	zyGlydbvwnQKn+01M1lYvAMB6cmocuIZG3oWp84rhMUB0Rvo8VCh2U1pFzt1nZ0KUntyGaD
-	XMxWwSx2sRvjWgT+wA9n4TbbV6bxeIaVr/rxcNoN5/h01nxWcKb3jy1hTXVmjx6uUaoUfXA
-	1GhCPd/BedyaozTr8D9QIpTt+rapaVGbr7eSK+bsORIAPPFDwPWMhLM4l8sRh0AnSG+3FH3
-	m/IT4njcE51xd1ScnL8/ZvGr4PPeecqh1GN+JIjoZ1Qp6iockS95vnY2fiYAcTSXRPq7xQO
-	AN0s+8WjNpl3aUD6+lamGmyjdilN2/Y+DgfFmKSQyjUOOqi+lXB03DZA7xyuzX1Bx4H2Q0b
-	GYkWmvA6wVRf0mFcSYlx7PvZBBq9HU9ngBmHv02mTEkoekL2+1tbGdLPSp50fzkFJtd2q0G
-	Pkg7rqKDv3h7lfDp6xkAP8YZH22WHh8tgcWXIBLFtX3xIyzrCVeRBt5YeM0se+0gI2dqroQ
-	hf1ODcoWPxs2cIjH4aXD2o7e0dH6UL6grfgCjDUk5CUhc3yrA0wLxtmIpEzOBZXU4A8SbS0
-	ED78B+yXgk6tKR0U7CT427A+4O/59pPeelGDYcOlKeXth27CrDkA572HESLHt23kvMwNTi4
-	G9xpIqrLxe/HKBYqwU0DGIOOtu2jnbAz1LDf2pMm6az016tWdvlBaRi7QhL6ovqxnLJ99LP
-	QYNwxrmflOpV8KyKqCMy3KnqbUv+pew0ajS/jdpgIrGM5C9tFl8SoD2fgGsSqaRP4CKPztZ
-	2ZbGcRXI8ytCMKOj5e1MxdFLoUJkraCqrKjLS4gmK6RmFjoHy41V/I0b6rj+RZVqr7PvJ3x
-	3iN16yJTpRk9ZRsldLZyYkf7dpendSO5RAl9qdogID2PG9bRInaeqjxMoZqHKMFgffQoYaa
-	qfl/YwhQ==
-X-QQ-XMRINFO: OD9hHCdaPRBwq3WW+NvGbIU=
+X-QQ-XMAILINFO: NOc1LUZ0GKQa5acaKcxIkj3MH9SnAJA42lvXmmQEjfIA44+IT1alBTIW
+	+Ja0T8eO8wOjxJXb7SvfvQLqCcE0rXBknt9yG+RDH5Vyf2jQNgdyJPwntUjixoQQMKOJxPz
+	ZV7NlsmbGRdsmlVNpagGA47DGh23RyRoxszCY62MnsARUXSNv3r1GFNr+pkwgBLx0mfFCAd
+	3vZVUVzu3UncwNaBkwMPggMpW+3x+CgvtviSsHDqNylbIpGrxpPNAI/L/pyZOOGAutC039C
+	5gFVbk7iSRRKWvmTj9ozoZwAUS11GkbDOZF7OzcXwDb37098IwrDTPpS6Voyzl6yKLRSctB
+	ohskkgEgc1vr4LDkZY71bodqoA0AWuTlQWzmIu2FZ7JJUXxVBr4z0q/nSnU3VGs4R+U/2nT
+	h6jFDvdw1htchc+DxudO/DGI/RJVDjhf75GA4ubipIKHGMv8UJjhqW4wGVHf3i747HIZGcN
+	bSlc3dbwZmC4nH9lmJU6q3ihLN7G7i/P2onA+E+mDKnhgYgt0gTDS5zCP6qDZQ879qnB5O+
+	e/DaGiX0NS4ghjYHcs7DNXVqgnYMSRoK6tPbpoQnBAQJt0FsybXVB9j4+RGoPyY0603W7yG
+	84SSWGVrtPte4kTHrB328KEK6LreFoh9PjihfdlW1zKpMUboSVAMUB4bibBPzz8NNgJx6/j
+	yNZr/rghnhpA/njPNCmweL2cVnCMiZ6gc+eSEp3D0HeyY0U8azULbAQGpd0agPBhfMNiWp/
+	hnX2JhblLqCTqjx/2g6gjPBnbfhxfX21C3Bq9AzwphykMBwzEBNnP/To8zS6hc4wVhoBxqh
+	YJzzaMv2nidjpXrkMGMeE6NmoddDoq4LLfzDInzf0OBot76NTvt4nf0kyBUgIzYOx5ZX1oZ
+	N6D0knxpSzcy+JIOEw6FL7celY6mdFsCnuOBNzXyi5clXjAnGoskNLtIn8a68PhAY/oJcxy
+	RAwZb5O0gvpZx6tPb7PkSN+GTohzaD4MlGGrbTtQ4Hpqzg/7l/UvYLXFwLFNCoGZ7bX0XR1
+	73zj5LBkq2vIx2yFclD5gAxWIjnCY2cTt0+3zjDw==
+X-QQ-XMRINFO: M/715EihBoGSf6IYSX1iLFg=
 X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251111_095707_043887_E5B3A6C9 
-X-CRM114-Status: GOOD (  10.48  )
+X-CRM114-CacheID: sfid-20251111_025331_535255_A2492EFF 
+X-CRM114-Status: GOOD (  11.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -142,50 +128,243 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
 
-Let's make the ports nodes of cdn_dp in the same style as the other
-display interface, and match the style of ports's yaml.
+The RK3399 EVB IND board has a Type-C interface DisplayPort.
+It use fusb302 chip as Type-C controller.
+
+fusb302 chip ---> USB/DP PHY0 <----> CDN-DP controller
 
 Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
 ---
 
-(no changes since v5)
+Changes in v9:
+- Add usb role switch for Type-C.
+- Remove USB2 PHY in Type-C connection.
 
-Changes in v4:
-- Remove unnecessary #address/#size-cells
+(no changes since v4)
 
-(no changes since v1)
+Changes in v3:
+- Fix wrong vdo value.
+- Fix port node in usb-c-connector.
 
- arch/arm64/boot/dts/rockchip/rk3399-base.dtsi | 10 +++++++++-
- 1 file changed, 9 insertions(+), 1 deletion(-)
+Changes in v2:
+- Add endpoint to link DP PHY and DP controller.
+- Fix devicetree coding style.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-base.dtsi
-index 4dcceb9136b7..93b42820998f 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-base.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-base.dtsi
-@@ -618,7 +618,11 @@ cdn_dp: dp@fec00000 {
- 		status = "disabled";
+ .../boot/dts/rockchip/rk3399-evb-ind.dts      | 147 ++++++++++++++++++
+ 1 file changed, 147 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-evb-ind.dts b/arch/arm64/boot/dts/rockchip/rk3399-evb-ind.dts
+index 70aee1ab904c..be1e90f7a453 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-evb-ind.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-evb-ind.dts
+@@ -4,6 +4,7 @@
+  */
  
- 		ports {
--			dp_in: port {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			dp_in: port@0 {
-+				reg = <0>;
- 				#address-cells = <1>;
- 				#size-cells = <0>;
+ /dts-v1/;
++#include <dt-bindings/usb/pd.h>
+ #include "rk3399.dtsi"
  
-@@ -632,6 +636,10 @@ dp_in_vopl: endpoint@1 {
- 					remote-endpoint = <&vopl_out_dp>;
- 				};
- 			};
-+
-+			dp_out: port@1 {
-+				reg = <1>;
-+			};
- 		};
+ / {
+@@ -19,6 +20,21 @@ chosen {
+ 		stdout-path = "serial2:1500000n8";
  	};
  
++	sound: sound {
++		compatible = "rockchip,rk3399-gru-sound";
++		rockchip,cpu = <&i2s0 &spdif>;
++	};
++
++	vbus_typec: regulator-vbus-typec {
++		compatible = "regulator-fixed";
++		enable-active-high;
++		gpio = <&gpio1 RK_PC2 GPIO_ACTIVE_HIGH>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&vcc5v0_typec0_en>;
++		regulator-name = "vbus_typec";
++		vin-supply = <&vcc5v0_sys>;
++	};
++
+ 	vcc5v0_sys: regulator-vcc5v0-sys {
+ 		compatible = "regulator-fixed";
+ 		enable-active-high;
+@@ -31,6 +47,11 @@ vcc5v0_sys: regulator-vcc5v0-sys {
+ 	};
+ };
+ 
++&cdn_dp {
++	phys = <&tcphy0_dp>;
++	status = "okay";
++};
++
+ &cpu_b0 {
+ 	cpu-supply = <&vdd_cpu_b>;
+ };
+@@ -55,6 +76,12 @@ &cpu_l3 {
+ 	cpu-supply = <&vdd_cpu_l>;
+ };
+ 
++&dp_out {
++	dp_controller_output: endpoint {
++		remote-endpoint = <&dp_phy_in>;
++	};
++};
++
+ &emmc_phy {
+ 	status = "okay";
+ };
+@@ -341,6 +368,71 @@ regulator-state-mem {
+ 	};
+ };
+ 
++&i2c4 {
++	i2c-scl-rising-time-ns = <475>;
++	i2c-scl-falling-time-ns = <26>;
++	status = "okay";
++
++	usbc0: typec-portc@22 {
++		compatible = "fcs,fusb302";
++		reg = <0x22>;
++		interrupt-parent = <&gpio1>;
++		interrupts = <RK_PA2 IRQ_TYPE_LEVEL_LOW>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&usbc0_int>;
++		vbus-supply = <&vbus_typec>;
++
++		usb_con: connector {
++			compatible = "usb-c-connector";
++			label = "USB-C";
++			data-role = "dual";
++			power-role = "dual";
++			try-power-role = "sink";
++			op-sink-microwatt = <1000000>;
++			sink-pdos =
++				<PDO_FIXED(5000, 2500, PDO_FIXED_USB_COMM)>;
++			source-pdos =
++				<PDO_FIXED(5000, 1500, PDO_FIXED_USB_COMM)>;
++
++			altmodes {
++				displayport {
++					svid = /bits/ 16 <0xff01>;
++					vdo = <0x00001c46>;
++				};
++			};
++
++			ports {
++				#address-cells = <1>;
++				#size-cells = <0>;
++
++				port@0 {
++					reg = <0>;
++
++					usbc0_orien_sw: endpoint {
++						remote-endpoint = <&tcphy0_orientation_switch>;
++					};
++				};
++
++				port@1 {
++					reg = <1>;
++
++					usbc0_role_sw: endpoint {
++						remote-endpoint = <&dwc3_0_role_switch>;
++					};
++				};
++
++				port@2 {
++					reg = <2>;
++
++					dp_altmode_mux: endpoint {
++						remote-endpoint = <&tcphy0_typec_dp>;
++					};
++				};
++			};
++		};
++	};
++};
++
+ &i2s2 {
+ 	status = "okay";
+ };
+@@ -354,6 +446,16 @@ &io_domains {
+ };
+ 
+ &pinctrl {
++	usb-typec {
++		usbc0_int: usbc0-int {
++			rockchip,pins = <1 RK_PA2 RK_FUNC_GPIO &pcfg_pull_up>;
++		};
++
++		vcc5v0_typec0_en: vcc5v0-typec0-en {
++			rockchip,pins = <1 RK_PC2 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
+ 	pmic {
+ 		pmic_int_l: pmic-int-l {
+ 			rockchip,pins = <1 RK_PC5 RK_FUNC_GPIO &pcfg_pull_up>;
+@@ -400,10 +502,48 @@ &sdmmc {
+ 	status = "okay";
+ };
+ 
++&sound {
++	rockchip,codec = <&cdn_dp>;
++	status = "okay";
++};
++
++&spdif {
++	status = "okay";
++};
++
+ &tcphy0 {
+ 	status = "okay";
+ };
+ 
++&tcphy0_dp {
++	mode-switch;
++
++	port {
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		tcphy0_typec_dp: endpoint@0 {
++			reg = <0>;
++			remote-endpoint = <&dp_altmode_mux>;
++		};
++
++		dp_phy_in: endpoint@1 {
++			reg = <1>;
++			remote-endpoint = <&dp_controller_output>;
++		};
++	};
++};
++
++&tcphy0_usb3 {
++	orientation-switch;
++
++	port {
++		tcphy0_orientation_switch: endpoint {
++			remote-endpoint = <&usbc0_orien_sw>;
++		};
++	};
++};
++
+ &tcphy1 {
+ 	status = "okay";
+ };
+@@ -461,7 +601,14 @@ &usb_host1_ohci {
+ };
+ 
+ &usbdrd_dwc3_0 {
++	usb-role-switch;
+ 	status = "okay";
++
++	port {
++		dwc3_0_role_switch: endpoint {
++			remote-endpoint = <&usbc0_role_sw>;
++		};
++	};
+ };
+ 
+ &usbdrd3_0 {
 -- 
 2.51.1
 
