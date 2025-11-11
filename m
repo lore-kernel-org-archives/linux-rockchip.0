@@ -4,53 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FCA5CCFA18
-	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Nov 2025 07:19:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD4C4CCFA1A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Nov 2025 08:05:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=m67fW3cKEZMPbxftyYW+Y2KYFRiYi9TfOCXeinQYMbg=; b=VQDMKGSrkaGrDR
-	gxus5TAB6AMrC7QUUyMes0V/RvbK0rqx0rbb63JxFjhnDi/kIJeyan2m+tm+V5zlV6bzr498FPv1S
-	GuYlMSCL2lVlFl8m3HgxZOA53AVHdBv89SBkl+QHGI0ySPBUHSC/Ip27DqEbmrEqypA7ASuSPytFA
-	1GceoUMCG4aG8nkvBOgcqP11MPK2nZ4beQKHLi8qAt0u/IhxLX/GKuXQBqvslt6cRNulanz9bddt0
-	GL0tOF75ee1XNP3TthCgJ0GZruHwGHahSihO/P7ov+oApW1hE1ck5SHWaQ6gF7q9O820i8un7fOJx
-	+k2wHzg4EO/8+3W6fbfA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=QDi5QX+jyvJRq0COLrphR0vAkMdai7Rx6o8OWh3K1CA=; b=Gs/Q0X8bUCWNoK
+	j4teo/1wYx9axkYfq4vN4PJc5LaXufeZTJjcoTZ7Rf8eA1/nVuXVyjQ8tWhM+N5pXfyzeBNHE7DPb
+	KFtKDfpRFw/Jxyud5Y0sa/MfDm0b73ac6WH0zyUgKNvT7y/a38IUKRhwF8RLWi1b8E2VxbsR8fR/I
+	9bWq8eiIIXmsbnO8w+znUs9e5ls6PQF/DgcfgNW6kOeQ0d0pa3V50zEToub9yJUNxeAU95VDATJe9
+	jVsCkzIT6gOSaC3aUQSYx2UbagTRVNx9mnh5Xoy0j8x5A3r0uBeoBu33MqymG5ZpJeM+2ACwzMFXm
+	/+JZpxy0jIFavoAtC5ug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIifA-00000006g77-1nRC;
-	Tue, 11 Nov 2025 07:19:36 +0000
-Received: from sakura.naobsd.org ([160.16.200.221] helo=mail.naobsd.org)
+	id 1vIjNQ-00000006jxG-3Lse;
+	Tue, 11 Nov 2025 08:05:20 +0000
+Received: from mail-m19731105.qiye.163.com ([220.197.31.105])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIif7-00000006g6c-2YSm
-	for linux-rockchip@lists.infradead.org;
-	Tue, 11 Nov 2025 07:19:35 +0000
-Received: from secure.fukaumi.org ([10.0.0.2])
-	by mail.naobsd.org (8.14.4/8.14.4/Debian-4.1ubuntu1.1) with ESMTP id 5AB7HYhU022271;
-	Tue, 11 Nov 2025 16:17:37 +0900
-From: FUKAUMI Naoki <naoki@radxa.com>
-To: heiko@sntech.de
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
-        liujianfeng1994@gmail.com, dmitry.baryshkov@oss.qualcomm.com,
-        sebastian.reichel@collabora.com, andy.yan@rock-chips.com,
-        nicolas.frattaroli@collabora.com, dmitry.osipenko@collabora.com,
-        detlev.casanova@collabora.com, didi.debian@cknow.org,
-        damon.ding@rock-chips.com, jbx6244@gmail.com,
-        kylepzak@projectinitiative.io, dsimic@manjaro.org, alchark@gmail.com,
-        devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
-        FUKAUMI Naoki <naoki@radxa.com>
-Subject: [PATCH v2 3/3] arm64: dts: rockchip: Remove sdmmc max-frequency for Radxa ROCK 5 ITX/5B/5B+/5T
-Date: Tue, 11 Nov 2025 07:17:30 +0000
-Message-ID: <20251111071730.126238-4-naoki@radxa.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20251111071730.126238-1-naoki@radxa.com>
-References: <20251111071730.126238-1-naoki@radxa.com>
+	id 1vIjNO-00000006jwi-1d6A;
+	Tue, 11 Nov 2025 08:05:20 +0000
+Received: from rockchip.. (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 292aa4268;
+	Tue, 11 Nov 2025 16:05:13 +0800 (GMT+08:00)
+From: Elaine Zhang <zhangqing@rock-chips.com>
+To: zhangqing@rock-chips.com,
+	mkl@pengutronix.de,
+	kernel@pengutronix.de,
+	mailhol.vincent@wanadoo.fr,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	heiko@sntech.de,
+	cl@rock-chips.com
+Cc: linux-can@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org
+Subject: [RESEND PATCH v8 1/4] dt-bindings: can: rockchip_canfd: add rk3576 CAN controller
+Date: Tue, 11 Nov 2025 16:05:11 +0800
+Message-Id: <20251111080511.2923069-1-zhangqing@rock-chips.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
+X-HM-Tid: 0a9a71f28fdc03a3kunmee592256114418
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQ0tJGlZMQ05CQxhLHR9LQh5WFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=VHrUP/C111FM7HuPElGhHEj2Gm15BC/PaE4hhAynibdjVRtkUQtBzCWkQtb7DfWCkHz0aOgKbq6DGJrz6aBZfyJ7WAxAPPVH+0ZbzoUHPniqW6ukp+yUMxaZqcvPcTQAk6WnnSKKWQ2Pn12J5r9JlpTXeJR5ipGjGLQXdG8EhbU=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=TzFB3ApKB9zrOotJbEs5MN7Ng0C5RnZ/+2zE1nfohi0=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251110_231933_889912_982D7EA7 
-X-CRM114-Status: UNSURE (   7.11  )
+X-CRM114-CacheID: sfid-20251111_000518_908350_CD91A1D1 
+X-CRM114-Status: UNSURE (   7.15  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -68,46 +79,92 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Default max-frequency for sdmmc is "200000000"[1]. Remove redundant
-definition.
+Add documentation for the rockchip rk3576 CAN controller.
 
-[1] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi?h=v6.17#n2013
-
-Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
+Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
 ---
-Changes in v2:
-- New
----
- arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts      | 1 -
- arch/arm64/boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi | 1 -
- 2 files changed, 2 deletions(-)
+ .../net/can/rockchip,rk3568v2-canfd.yaml      | 52 +++++++++++++++++--
+ 1 file changed, 48 insertions(+), 4 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts
-index 4c218ae6677ec..e9585cc84080e 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts
-@@ -803,7 +803,6 @@ &sdmmc {
- 	cap-sd-highspeed;
- 	cd-gpios = <&gpio0 RK_PA4 GPIO_ACTIVE_LOW>;
- 	disable-wp;
--	max-frequency = <200000000>;
- 	no-sdio;
- 	no-mmc;
- 	pinctrl-names = "default";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi
-index a35c9469a2574..b3e76ad2d8694 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi
-@@ -596,7 +596,6 @@ &sdhci {
- };
+diff --git a/Documentation/devicetree/bindings/net/can/rockchip,rk3568v2-canfd.yaml b/Documentation/devicetree/bindings/net/can/rockchip,rk3568v2-canfd.yaml
+index a077c0330013..30782218728e 100644
+--- a/Documentation/devicetree/bindings/net/can/rockchip,rk3568v2-canfd.yaml
++++ b/Documentation/devicetree/bindings/net/can/rockchip,rk3568v2-canfd.yaml
+@@ -10,13 +10,12 @@ title:
+ maintainers:
+   - Marc Kleine-Budde <mkl@pengutronix.de>
  
- &sdmmc {
--	max-frequency = <200000000>;
- 	no-sdio;
- 	no-mmc;
- 	bus-width = <4>;
+-allOf:
+-  - $ref: can-controller.yaml#
+-
+ properties:
+   compatible:
+     oneOf:
+-      - const: rockchip,rk3568v2-canfd
++      - enum:
++          - rockchip,rk3568v2-canfd
++          - rockchip,rk3576-can
+       - items:
+           - const: rockchip,rk3568v3-canfd
+           - const: rockchip,rk3568v2-canfd
+@@ -43,6 +42,33 @@ properties:
+       - const: core
+       - const: apb
+ 
++  dmas:
++    maxItems: 1
++
++  dma-names:
++    items:
++      - const: rx
++
++allOf:
++  - $ref: can-controller.yaml#
++  - if:
++      properties:
++        compatible:
++          contains:
++            const: rockchip,rk3576-can
++    then:
++      properties:
++        dmas:
++          minItems: 1
++          maxItems: 1
++        dma-names:
++          minItems: 1
++          maxItems: 1
++    else:
++      properties:
++        dmas: false
++        dma-names: false
++
+ required:
+   - compatible
+   - reg
+@@ -72,3 +98,21 @@ examples:
+             reset-names = "core", "apb";
+         };
+     };
++
++  - |
++    soc {
++        #address-cells = <2>;
++        #size-cells = <2>;
++
++        can@2ac00000 {
++            compatible = "rockchip,rk3576-can";
++            reg = <0x0 0x2ac00000 0x0 0x1000>;
++            interrupts = <GIC_SPI 121 IRQ_TYPE_LEVEL_HIGH>;
++            clocks = <&cru CLK_CAN0>, <&cru PCLK_CAN0>;
++            clock-names = "baud", "pclk";
++            resets = <&cru SRST_CAN0>, <&cru SRST_P_CAN0>;
++            reset-names = "core", "apb";
++            dmas = <&dmac0 20>;
++            dma-names = "rx";
++        };
++    };
 -- 
-2.43.0
+2.34.1
 
 
 _______________________________________________
