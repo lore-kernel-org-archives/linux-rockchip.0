@@ -4,83 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18014CCFA18
-	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Nov 2025 15:14:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA89ACCFA1A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Nov 2025 15:34:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:From:To:Cc:
-	Subject:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wyXoMXHcb70sFmDM3plpvHHmQn5AecyyH27n3nFoXxo=; b=Syi/rkdiDuo5Ro
-	fnWJhdP5q2zURIQXP80w74LLXtNFoUGv50zNQIJgS64mbouXMoO1e/xQZqpvqnp3OJ9rFRY/t7rFC
-	WyXzZ1FZ4shfQQwcHQ80kCkM3g2Oyqtddm+Ra0B/Olw5og+OwZPu0ntwk67D8dgEfDneGBoXlAAXu
-	GJeF6YIHO4rcIDLgY8mkbXb9KjguBkkeQzLVgBkinqbFgqNB/t6VonM0b3K62AcMi17lUqvt6DPTs
-	2+Kdx+becRAAo9oZMOqmFxyVrQd1fffFAHYcVsXhZOepV3UWgiFOAhUNTXqQBBguZ+pq89FzjeEaJ
-	mx6P5A2eLapfNWITocCA==;
+	List-Owner; bh=ZHFlI4/xnsGptI8tSpin/7atxdoElkMpu0AM2foKFB0=; b=GbzKWjPtB+RVZZ
+	tZm67G9pXas8Y6uxhFFSxdoX/SDwIGxaZE8xH6eQsn3CGMyz5pbp+EOa8qOjdZ8a49dfr1Nf014kI
+	tyaSj44kq+X2u8OkKFISyCjzZz0V1Sxm7iDEGTV1geCmcTVEfG6LFfxJMB0PLZbNbojULugUYKMwQ
+	WPG8VWv3JHktYaPmkdOA19GwSSxL9VhvUDjNeJiKDbmtbcNnXeKe7GrwYO0WyF4offBEaCeweNcjv
+	+R+A7vSuCJPdphCYfx3zgWpQH9oGBQl96511SgszLex3zpbYg6ravbCL5FsOaUXdrqtI34YjNA4PL
+	R6VQ1PcL9NcCtnF5gpgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIq4u-00000007Mj9-1xXU;
-	Tue, 11 Nov 2025 15:14:40 +0000
-Received: from smtpout-04.galae.net ([185.171.202.116])
+	id 1vIqNY-00000007O2W-2DWt;
+	Tue, 11 Nov 2025 15:33:56 +0000
+Received: from smtpbgjp3.qq.com ([54.92.39.34])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIq4p-00000007Mhm-2A4m;
-	Tue, 11 Nov 2025 15:14:38 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-04.galae.net (Postfix) with ESMTPS id 00994C0F54B;
-	Tue, 11 Nov 2025 15:14:05 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 6E0F9606FB;
-	Tue, 11 Nov 2025 15:14:26 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 92F4F102F24BC;
-	Tue, 11 Nov 2025 16:14:12 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1762874064; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=7R5SuVHot9CpoTkFcfHq9Yksdnr2wM0VbRyDn5Qi10s=;
-	b=dKOrlzauhoCSJVUKuaP9oTCZn7a/MbZ2YlAMNvicAOTuUkcvvFhCxjLV+bx9T1URMFX9KD
-	Xv0onrlrf4j+WXvPuJI65WpdzhDi9F7tNHHVCXx0I93YgctmEO807WWW6869g4FZ+Ptvtw
-	KPo8GugnqzYO6yONmOELShTim5/a0xN+uAVWe82MhZ185fsCPlzyX3yaECJWYx+O5v1WJe
-	zBiYw+Ry4+/Um2fMV7bWNqIO4F9pMfjJkICfM1An54gPdE9T6KJNLMtgiJJa+RPW1F5ZDo
-	llG8ee1T2LOVJ9ZudBWCv3C/RK73b1m+u+qdGUOusNITg3cZ1M7nnnM6LYvWRg==
-Mime-Version: 1.0
-Date: Tue, 11 Nov 2025 16:14:11 +0100
-Message-Id: <DE5YP3AVGOG3.OHP68Z0F6KBU@bootlin.com>
-Subject: Re: [PATCH v9 08/10] drm/rockchip: cdn-dp: Add multiple bridges to
- support PHY port selection
-Cc: <linux-usb@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-phy@lists.infradead.org>,
- <linux-arm-kernel@lists.infradead.org>,
- <linux-rockchip@lists.infradead.org>, <dri-devel@lists.freedesktop.org>
-To: "Chaoyi Chen" <kernel@airkyi.com>, "Heikki Krogerus"
- <heikki.krogerus@linux.intel.com>, "Greg Kroah-Hartman"
- <gregkh@linuxfoundation.org>, "Dmitry Baryshkov"
- <dmitry.baryshkov@oss.qualcomm.com>, "Peter Chen" <hzpeterchen@gmail.com>,
- "Rob Herring" <robh@kernel.org>, "Krzysztof Kozlowski"
- <krzk+dt@kernel.org>, "Conor Dooley" <conor+dt@kernel.org>, "Vinod Koul"
- <vkoul@kernel.org>, "Kishon Vijay Abraham I" <kishon@kernel.org>, "Heiko
- Stuebner" <heiko@sntech.de>, "Sandy Huang" <hjc@rock-chips.com>, "Andy Yan"
- <andy.yan@rock-chips.com>, "Yubing Zhang" <yubing.zhang@rock-chips.com>,
- "Frank Wang" <frank.wang@rock-chips.com>, "Andrzej Hajda"
- <andrzej.hajda@intel.com>, "Neil Armstrong" <neil.armstrong@linaro.org>,
- "Robert Foss" <rfoss@kernel.org>, "Laurent Pinchart"
- <Laurent.pinchart@ideasonboard.com>, "Jonas Karlman" <jonas@kwiboo.se>,
- "Jernej Skrabec" <jernej.skrabec@gmail.com>, "Maarten Lankhorst"
- <maarten.lankhorst@linux.intel.com>, "Maxime Ripard" <mripard@kernel.org>,
- "Thomas Zimmermann" <tzimmermann@suse.de>, "David Airlie"
- <airlied@gmail.com>, "Simona Vetter" <simona@ffwll.ch>, "Amit Sunil Dhamne"
- <amitsd@google.com>, "Chaoyi Chen" <chaoyi.chen@rock-chips.com>, "Dragan
- Simic" <dsimic@manjaro.org>, "Johan Jonker" <jbx6244@gmail.com>, "Diederik
- de Haas" <didi.debian@cknow.org>, "Peter Robinson" <pbrobinson@gmail.com>
-From: "Luca Ceresoli" <luca.ceresoli@bootlin.com>
-X-Mailer: aerc 0.20.1
-References: <20251111105040.94-1-kernel@airkyi.com>
- <20251111105040.94-9-kernel@airkyi.com>
-In-Reply-To: <20251111105040.94-9-kernel@airkyi.com>
-X-Last-TLS-Session-Version: TLSv1.3
+	id 1vIqNW-00000007NzG-1LBV
+	for linux-rockchip@lists.infradead.org;
+	Tue, 11 Nov 2025 15:33:55 +0000
+X-QQ-mid: zesmtpip3t1762875183td7307421
+X-QQ-Originating-IP: YibyIjh8rVjDnM8ye+fS4TkHJ33V/iHkoULZhIFa9Bc=
+Received: from [IPV6:240f:10b:7440:1:62e3:2c99 ( [localhost])
+	by bizesmtp.qq.com (ESMTP) with 
+	id ; Tue, 11 Nov 2025 23:32:57 +0800 (CST)
+X-QQ-SSF: 0000000000000000000000000000000
+X-QQ-GoodBg: 0
+X-BIZMAIL-ID: 14738721810001780121
+EX-QQ-RecipientCnt: 23
+Message-ID: <B0C8C5A69B9F465E+ba0ad139-d3d9-4492-ac9a-cc58f8f35074@radxa.com>
+Date: Wed, 12 Nov 2025 00:32:57 +0900
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] arm64: dts: rockchip: Turn all LEDs on at boot for
+ Radxa boards
+To: Dragan Simic <dsimic@manjaro.org>,
+ Diederik de Haas <diederik@cknow-tech.com>
+Cc: heiko@sntech.de, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, jbx6244@gmail.com, pgwipeout@gmail.com,
+ jonas@kwiboo.se, ziyao@disroot.org, amadeus@jmu.edu.cn,
+ nicolas.frattaroli@collabora.com, pbrobinson@gmail.com, wens@kernel.org,
+ detlev.casanova@collabora.com, stephen@radxa.com,
+ sebastian.reichel@collabora.com, liujianfeng1994@gmail.com,
+ andy.yan@rock-chips.com, damon.ding@rock-chips.com,
+ kylepzak@projectinitiative.io, devicetree@vger.kernel.org,
+ linux-rockchip@lists.infradead.org
+References: <20251111054112.55505-1-naoki@radxa.com>
+ <DE5W0143QGG2.3C7SW89IJKZ4P@cknow-tech.com>
+ <516e919a-42af-8707-4e75-a808df8971fd@manjaro.org>
+Content-Language: en-US
+From: FUKAUMI Naoki <naoki@radxa.com>
+In-Reply-To: <516e919a-42af-8707-4e75-a808df8971fd@manjaro.org>
+X-QQ-SENDSIZE: 520
+Feedback-ID: zesmtpip:radxa.com:qybglogicsvrsz:qybglogicsvrsz4b-0
+X-QQ-XMAILINFO: NojR6Ao/DkEDOzfxtENjUyR5ydpLQzDIDjVZNjyJyi1T78XT1dx4kcck
+	M4gPmeTpda1uX1OC5Y44hco3yIaC1D5uw9e1W6umQCmxqt+mb+XWxYz79Oqedh7ZZe5RQs7
+	oJyJCUD5TXifKHVm+W2ex9QtedlX8BAn7AcuMR32SwnbHOCdf90a7a9YuwoteHR5nUVqhtH
+	aIF5D9aGgErZNT68B0PRwotr4Svq/cno830kziRjXJPt3X7+H38QMEt5lQE+TA8KNQU8KrL
+	D6Ih2om751I4BClQ08I4RH6Kh+XUgyf82dJLQd2gDpiqJMRikvun0RarQIu4IbOVjMR927W
+	q9R19wJozLHghJhjHiPaNRCU8qvOPt62oRLp8Jud5lqi96HOb4kTbyt+zunxU42nW1o3QFc
+	FtGJfvT0cAWXxmRp0a1hKiWMB0s3Z/PVjjqksVil4ZyA05tb+f3BsJ5FsJXSLgyMm6DAPBp
+	20ljv4maxfJUz0PzkYcznrhRF1dl+5LBDFV2VpO+c65jJezlRPvJnq9AqVdOdTvyYBhXRba
+	IejIiP7MdIQeUe1Tx/0vk8n3b17UF4qfiu7mgmZOodxG0tmz6INl04aaeyUZOxovYZo/NC5
+	AeYqQUNGqbnXqjNeCt3RuOCHrfb24KtnocCpJBGv4/65Eoru0NhpHmeTs5q1i9vW01in8O1
+	NYNRjGRicpfIA7WtU0SNjytu7l0JecMlP6ObpKA8iMOJhoPMjt0lhkbJNmYz0YmHHHgTLym
+	/8Xqg736qvl/5EH96cvhsTQaiIxP98qtOf/i5vsnU56QTJ9G+sprLOue/RVezFnYLii35Kv
+	H+8dot27aa/gRfzuezs8SCrajlWHrQJKApDrkLlXqMtPf2UadX/5aRI5lJhHakMDKRX3VUD
+	jHNmEdbq+5tDsVSkc3E8qunSIoa4OJETJAG/iS8ZRtlsuPi3S9Bef93QY7OW0EIwjqA8vvT
+	Fd3RzxVQMC011YUNSrRG5mRpEGuxzdAZCGFrA9C2WVPDml9InhScwtbYbAfkx5HSf5Rc=
+X-QQ-XMRINFO: MPJ6Tf5t3I/ycC2BItcBVIA=
+X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251111_071436_310884_91486A00 
-X-CRM114-Status: GOOD (  44.62  )
+X-CRM114-CacheID: sfid-20251111_073354_644512_9FC72A51 
+X-CRM114-Status: GOOD (  15.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,266 +92,69 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Chaoyi,
+Hi Diederik, Dragan,
 
-On Tue Nov 11, 2025 at 11:50 AM CET, Chaoyi Chen wrote:
-> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
->
-> The RK3399 has two USB/DP combo PHY and one CDN-DP controller. And
-> the CDN-DP can be switched to output to one of the PHYs. If both ports
-> are plugged into DP, DP will select the first port for output.
->
-> This patch adds support for multiple bridges, enabling users to flexibly
-> select the output port. For each PHY port, a separate encoder and bridge
-> are registered.
->
-> The change is based on the DRM AUX HPD bridge, rather than the
-> extcon approach. This requires the DT to correctly describe the
-> connections between the first bridge in bridge chain and DP
-> controller. For example, the bridge chain may be like this:
->
-> PHY aux birdge -> fsa4480 analog audio switch bridge ->
-> onnn,nb7vpq904m USB reminder bridge -> USB-C controller AUX HPD bridge
->
-> In this case, the connection relationships among the PHY aux bridge
-> and the DP contorller need to be described in DT.
->
-> In addition, the cdn_dp_parse_next_bridge_dt() will parses it and
-> determines whether to register one or two bridges.
->
-> Since there is only one DP controller, only one of the PHY ports can
-> output at a time. The key is how to switch between different PHYs,
-> which is handled by cdn_dp_switch_port() and cdn_dp_enable().
->
-> There are two cases:
->
-> 1. Neither bridge is enabled. In this case, both bridges can
-> independently read the EDID, and the PHY port may switch before
-> reading the EDID.
->
-> 2. One bridge is already enabled. In this case, other bridges are not
-> allowed to read the EDID. So we will try to return the cached EDID.
->
-> Since the scenario of two ports plug in at the same time is rare,
-> I don't have a board which support two TypeC connector to test this.
-> Therefore, I tested forced switching on a single PHY port, as well as
-> output using a fake PHY port alongside a real PHY port.
->
-> Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+On 11/11/25 23:46, Dragan Simic wrote:
+> Hello Diederik,
+> 
+> On Tuesday, November 11, 2025 14:07 CET, "Diederik de Haas" <diederik@cknow-tech.com> wrote:
+>> On Tue Nov 11, 2025 at 6:41 AM CET, FUKAUMI Naoki wrote:
+>>> Radxa's boards turn all LEDs on at boot(loader), but some boards don't
+>>> have `default-state` property in Linux kernel tree but have it in
+>>> U-Boot tree instead[1].
+>>>
+>>> This patch adds `default-state = "on"` for (almost) all LEDs (with a
+>>> few exceptions which should be "off" such as RGB LEDs on E25 and LAN/
+>>> WAN LEDs on E20C/E52C).
+>>
+>> I'm missing the *why* these changes would be an improvement.
+>>
+>> Personally, for both 'heartbeat' and 'netdev' triggers, I want them to
+>> be off by default and once it gets a 'heartbeat' or a 'netdev' trigger,
+>> THEN I want the LED to be on/blinking.
+> 
+> That's a good question for Naoki.  My own preference would also
+> be to have the device's power LED turned on by U-Boot as quickly
+> as possible after supplying power to the board or turning it on
+> by pressing the power button.  I'm actually not a big fan of
+> having all the LEDs shining for a couple of seconds or so, which
+> may actually look like some error condition to me.
+> 
+> Having all that in mind, I may suggest that just the U-Boot's
+> behavior is changed to turn the power LEDs on only.
 
-[...]
+I can't quite explain it, but...
 
-> @@ -966,28 +1084,16 @@ static int cdn_dp_pd_event(struct notifier_block *nb,
->  	return NOTIFY_DONE;
->  }
->
-> -static int cdn_dp_bind(struct device *dev, struct device *master, void *data)
-> +static int cdn_bridge_add(struct device *dev,
-> +			  struct drm_bridge *bridge,
-> +			  struct drm_bridge *next_bridge,
-> +			  struct drm_encoder *encoder)
->  {
->  	struct cdn_dp_device *dp = dev_get_drvdata(dev);
-> -	struct drm_encoder *encoder;
-> +	struct drm_device *drm_dev = dp->drm_dev;
-> +	struct drm_bridge *last_bridge = NULL;
->  	struct drm_connector *connector;
-> -	struct cdn_dp_port *port;
-> -	struct drm_device *drm_dev = data;
-> -	int ret, i;
+- 1st (Power) LED
 
-[...]
+The 1st (power) LED turns on automatically/immediately without software 
+intervention. (On some boards, this LED cannot be controlled by software 
+at all.)
 
-> +	if (next_bridge) {
-> +		ret = drm_bridge_attach(encoder, next_bridge, bridge,
-> +					DRM_BRIDGE_ATTACH_NO_CONNECTOR);
-> +		if (ret)
-> +			return ret;
-> +
-> +		last_bridge = next_bridge;
-> +		while (drm_bridge_get_next_bridge(last_bridge))
-> +			last_bridge = drm_bridge_get_next_bridge(last_bridge);
+In DTS, this should be described using `default-state = "on"`. The use 
+of the Linux-specific property `linux,default-trigger = "default-on"` is 
+unsuitable for non-Linux environments.
 
-DRM bridges are now refcounted, and you are not calling drm_bridge_get()
-and drm_bridge_put() here. But here you can use
-drm_bridge_chain_get_last_bridge() which will simplify your job.
+- 2nd (Heartbeat) LED
 
-Don't forget to call drm_bridge_put() on the returned bridge when the
-bridge is not referenced anymore. This should be as easy as adding a
-cleanup action on the variable declaration above:
+The 2nd (heartbeat) LED can be controlled by software. It should be lit 
+up as quickly as possible to indicate that the very first software 
+(e.g., the bootloader) is running.
 
--	struct drm_bridge *last_bridge = NULL;
-+	struct drm_bridge *last_bridge __free(drm_bridge_put) = NULL;
-
-> @@ -1029,8 +1147,102 @@ static int cdn_dp_bind(struct device *dev, struct device *master, void *data)
->  		return ret;
->  	}
->
-> +	if (last_bridge)
-> +		connector->fwnode = fwnode_handle_get(of_fwnode_handle(last_bridge->of_node));
-> +
->  	drm_connector_attach_encoder(connector, encoder);
->
-> +	return 0;
-> +}
-> +
-> +static int cdn_dp_parse_next_bridge_dt(struct cdn_dp_device *dp)
-> +{
-> +	struct device_node *np = dp->dev->of_node;
-> +	struct device_node *port __free(device_node) = of_graph_get_port_by_id(np, 1);
-> +	struct drm_bridge *bridge;
-> +	int count = 0;
-> +	int ret = 0;
-> +	int i;
-> +
-> +	/* If device use extcon, do not use hpd bridge */
-> +	for (i = 0; i < dp->ports; i++) {
-> +		if (dp->port[i]->extcon) {
-> +			dp->bridge_count = 1;
-> +			return 0;
-> +		}
-> +	}
-> +
-> +
-> +	/* One endpoint may correspond to one next bridge. */
-> +	for_each_of_graph_port_endpoint(port, dp_ep) {
-> +		struct device_node *next_bridge_node __free(device_node) =
-> +			of_graph_get_remote_port_parent(dp_ep);
-> +
-> +		bridge = of_drm_find_bridge(next_bridge_node);
-> +		if (!bridge) {
-> +			ret = -EPROBE_DEFER;
-> +			goto out;
-> +		}
-> +
-> +		dp->next_bridge_valid = true;
-> +		dp->next_bridge_list[count].bridge = bridge;
-
-You are storing a reference to a drm_bridge, so have to increment the
-refcount:
-
-		dp->next_bridge_list[count].bridge = drm_bridge_get(bridge);
-		                                     ^^^^^^^^^^^^^^
-
-FYI there is a plan to replace of_drm_find_bridge() with a function that
-increases the bridge refcount before returning the bridge, but it's not
-there yet. When that will happen, the explicit drm_bridge_get() won't be
-needed anymore and this code can be updated accordingly.
-
-Also you have to call drm_bridge_put() to release that reference when the
-pointer goes away. I guess that should happen in cdn_dp_unbind().
-
-> +static int cdn_dp_bind(struct device *dev, struct device *master, void *data)
-> +{
-
-In this function you do:
-...(see below)...
-
-> +	struct cdn_dp_device *dp = dev_get_drvdata(dev);
-> +	struct drm_bridge *bridge, *next_bridge;
-> +	struct drm_encoder *encoder;
-> +	struct cdn_dp_port *port;
-> +	struct drm_device *drm_dev = data;
-> +	struct cdn_dp_bridge *dp_bridge;
-> +	int ret, i;
-> +
-> +	ret = cdn_dp_parse_dt(dp);
-> +	if (ret < 0)
-.> +		return ret;
-> +
-> +	ret = cdn_dp_parse_next_bridge_dt(dp);
-
-1. compute the next bridges and store them in dp->next_bridge_list[]
-...
-
-> +	if (ret)
-> +		return ret;
-> +
-> +	dp->drm_dev = drm_dev;
-> +	dp->connected = false;
-> +	dp->active = false;
-> +	dp->active_port = -1;
-> +	dp->fw_loaded = false;
-> +
-> +	for (i = 0; i < dp->bridge_count; i++) {
-> +		dp_bridge = devm_drm_bridge_alloc(dev, struct cdn_dp_bridge, bridge,
-> +						    &cdn_dp_bridge_funcs);
-> +		if (IS_ERR(dp_bridge))
-> +			return PTR_ERR(dp_bridge);
-> +		dp_bridge->id = i;
-> +		dp_bridge->parent = dp;
-> +		if (!dp->next_bridge_valid)
-> +			dp_bridge->connected = true;
-> +		dp->bridge_list[i] = dp_bridge;
-> +	}
-> +
-> +	for (i = 0; i < dp->bridge_count; i++) {
-> +		encoder = &dp->bridge_list[i]->encoder.encoder;
-> +		bridge = &dp->bridge_list[i]->bridge;
-> +		next_bridge = dp->next_bridge_list[i].bridge;
-> +		ret = cdn_bridge_add(dev, bridge, next_bridge, encoder);
-
-...
-2. pass the dp->next_bridge_list[i].bridge to cdn_bridge_add
-3. not use  dp->next_bridge_list[i] elsewhere
-
-So you may want to change this function to parse into a local array, with
-function scope. If you do this, the drm_bridge_get/put() I mentioned above
-should still exist, but would be localized to this function, thus even
-easier to handle.
-
-Even better, you can parse the DT one bridge at a time inside the for loop,
-so you don't need to store any next_bridge pointer array. This will need a
-bit of rework of cdn_dp_parse_next_bridge_dt() though, and I haven't
-checked in detail so it might be not worth.
-
-[...]
-
-> +struct cdn_dp_bridge {
-> +	struct cdn_dp_device *parent;
-> +	struct drm_bridge bridge;
-> +	struct rockchip_encoder encoder;
-> +	bool connected;
-> +	bool enabled;
-> +	int id;
-> +};
-> +
-> +struct cdn_dp_next_bridge {
-> +	struct cdn_dp_device *parent;
-> +	struct drm_bridge *bridge;
-> +	int id;
-
-The @parent and @id fields are unused if I'm not mistaken.
-
-If it is the case then you can... (see below)
-
->  struct cdn_dp_device {
->  	struct device *dev;
->  	struct drm_device *drm_dev;
-> -	struct drm_bridge bridge;
-> -	struct rockchip_encoder encoder;
-> +	int bridge_count;
-> +	struct cdn_dp_bridge *bridge_list[MAX_PHY];
-> +	struct cdn_dp_next_bridge next_bridge_list[MAX_PHY];
-
-...replace this line with:
-	struct drm_bridge *next_bridge[MAX_PHY];
-
-Unless of course you just don't store the next_bridge at all, as I
-suggested above, and which looks way easier and more efficient.
+On Linux, usually this is used as `linux,default-trigger = "heartbeat"`. 
+It indicates that kernel is running (regardless of the `default-state` 
+setting), and its behavior can be modified in user space.
 
 Best regards,
-Luca
 
 --
-Luca Ceresoli, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
+FUKAUMI Naoki
+Radxa Computer (Shenzhen) Co., Ltd.
 
 _______________________________________________
 Linux-rockchip mailing list
