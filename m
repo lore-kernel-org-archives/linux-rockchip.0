@@ -4,61 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 797F8CCF9F8
-	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Nov 2025 08:51:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B337CCFA1A
+	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Nov 2025 08:52:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ZNWJJiUMax8FzcmO3BBuVv6M0uBoSyg2jteY95Z3lVI=; b=BOMqbvwKtIujpn
-	2vnB5W0weacaH3cLrj3+c7GMCySROVh58mei8xZSRft7ec1sW3XRit87suAiw7xUbNTcOnhERiKWw
-	LKRvrei3WKL3CNxHym/7UqviJXHYgoErLaZmgZVJFwME/RMa0WCV6B3oMH65ZhbHLjlNcqnVVBs3W
-	qwYLN2evFbmH1A5cqofB8IUTmGgnRY+BSuJzM1/0OxnbOScKfXCITZd8AORhRNXHCibeC4YHg6GeG
-	rmNEV2Z6u5JKNx7kWj19Sd4V+hV5BgVlVVOykiW8k56soePPaeYe2LJ1oAZfx9wYLzAuCQfiURQL5
-	DEkuBIsMnGLO5/UnTyAw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=VpuEx/FIHz3kL9wj5rv28+tt69aQ56zz8iHYVikwvOQ=; b=m4KkQNdPmWvJACqL7CLg+Lq3ve
+	qwhQdIgMxbHoEFmnRUseTFyHA1ttqaxQ9//U4N740XNjp5TSpluy3pobJdPPNHzrQipjfcbCTPoo4
+	BhydLZTVEFty+YjeZGXsLwp1VAukeNTn/E7HFreL5NoqBt4M/eYBoU2n9+QwfXaNmtDeWoXSG/pNk
+	mVl3bdUgjUeoYC1eDWKpoEwMXhjUKI6MYh4fvd+5Uh9MwRTvA8iwZB57/zyzW7r9Ji9/DG5QpWmUm
+	Ap//IHiNq3q7IQiDbr7/CKTVtBckwnxmWK9HkFMRGSr+shY0u+VeVOzX8jkZLwTOcXw+COlsSxmB9
+	z/CgCZ/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJ6ZX-00000008OYa-416n;
-	Wed, 12 Nov 2025 08:51:23 +0000
-Received: from m16.mail.163.com ([220.197.31.3])
+	id 1vJ6ay-00000008OlS-1IA1;
+	Wed, 12 Nov 2025 08:52:52 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJ6ZV-00000008OXZ-215b;
-	Wed, 12 Nov 2025 08:51:23 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version; bh=cA
-	QkV4Rn8OyxFd/w7bQq0NVjuvpKHFncgfCz73Iu0H0=; b=o2ongftMKwj7pU/vbU
-	3hBq52DAkNgcOIpyHCe4EY8kSorZwUR3c9MAEjmmNrlNpKMuBpv+ejzZa6t8quH3
-	hkxoJ5MOhBrLJmbW/RmatjuiZNz4BUzW1sDRNhidMEOc5nvsJrPwTPteKheJ38D5
-	WvCmiigBIhLjCXjL1ASANFqw4=
-Received: from ProDesk.. (unknown [])
-	by gzsmtp1 (Coremail) with SMTP id PCgvCgD3P71SShRpSgG+DQ--.50080S2;
-	Wed, 12 Nov 2025 16:50:30 +0800 (CST)
-From: Andy Yan <andyshrk@163.com>
-To: heiko@sntech.de
-Cc: hjc@rock-chips.com,
-	diederik@cknow-tech.com,
-	dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Andy Yan <andy.yan@rock-chips.com>
-Subject: [PATCH] drm/rockchip: vop2: Use OVL_LAYER_SEL configuration instead of use win_mask calculate used layers
-Date: Wed, 12 Nov 2025 16:50:23 +0800
-Message-ID: <20251112085024.2480111-1-andyshrk@163.com>
-X-Mailer: git-send-email 2.43.0
+	id 1vJ6av-00000008OkO-1NaR
+	for linux-rockchip@lists.infradead.org;
+	Wed, 12 Nov 2025 08:52:50 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <mkl@pengutronix.de>)
+	id 1vJ6ao-00035C-Q6; Wed, 12 Nov 2025 09:52:42 +0100
+Received: from moin.white.stw.pengutronix.de ([2a0a:edc0:0:b01:1d::7b] helo=bjornoya.blackshift.org)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <mkl@pengutronix.de>)
+	id 1vJ6an-0003Ix-2E;
+	Wed, 12 Nov 2025 09:52:41 +0100
+Received: from pengutronix.de (p54b152ce.dip0.t-ipconnect.de [84.177.82.206])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(Client did not present a certificate)
+	(Authenticated sender: mkl-all@blackshift.org)
+	by smtp.blackshift.org (Postfix) with ESMTPSA id 6998949D946;
+	Wed, 12 Nov 2025 08:52:41 +0000 (UTC)
+Date: Wed, 12 Nov 2025 09:52:41 +0100
+From: Marc Kleine-Budde <mkl@pengutronix.de>
+To: Elaine Zhang <zhangqing@rock-chips.com>
+Cc: kernel@pengutronix.de, mailhol.vincent@wanadoo.fr, robh@kernel.org, 
+	krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de, cl@rock-chips.com, 
+	linux-can@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
+Subject: Re: [RESEND PATCH v8 0/4] rockchip: add can for RK3576 Soc
+Message-ID: <20251112-intrepid-toad-of-prestige-2e67d5-mkl@pengutronix.de>
+References: <20251112015940.3695638-1-zhangqing@rock-chips.com>
 MIME-Version: 1.0
-X-CM-TRANSID: PCgvCgD3P71SShRpSgG+DQ--.50080S2
-X-Coremail-Antispam: 1Uf129KBjvJXoWxWF45Wry3WrWDKr13Zw4xZwb_yoW5Kw4fpa
-	y5Zr15Kr4xXFs0qFs7JF48ur1Yyws7Aa17A393K3sFy34FgryqyrnFkrnIyry5CF9rKFy2
-	yrWDK3yDCrsFkFJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jx_-PUUUUU=
-X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbCxRcHZWkUSlf8WQAA31
+In-Reply-To: <20251112015940.3695638-1-zhangqing@rock-chips.com>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: mkl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251112_005121_889998_170A8A1A 
-X-CRM114-Status: GOOD (  19.40  )
+X-CRM114-CacheID: sfid-20251112_005249_360882_4178F653 
+X-CRM114-Status: GOOD (  14.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,120 +75,74 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============5336974247906099021=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Andy Yan <andy.yan@rock-chips.com>
 
-When there are multiple Video Ports, and only one of them is working
-(for example, VP1 is working while VP0 is not), in this case, the
-win_mask of VP0 is 0. However, we have already set the port mux for VP0
-according to vp0->nlayers, and at the same time, in the OVL_LAYER_SEL
-register, there are windows will also be assigned to layers which will
-map to the inactive VPs. In this situation, vp0->win_mask is zero as it
-now working, it is more reliable to calculate the used layers based on
-the configuration of the OVL_LAYER_SEL register.
+--===============5336974247906099021==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="tm5vc7kxorjsnqka"
+Content-Disposition: inline
 
-Note: as the configuration of OVL_LAYER_SEL is take effect when the
-vsync is come, so we use the value backup in vop2->old_layer_sel instead
-of read OVL_LAYER_SEL directly.
 
-Fixes: 3e89a8c68354 ("drm/rockchip: vop2: Fix the update of LAYER/PORT select registers when there are multi display output on rk3588/rk3568")
-Reported-by: Diederik de Haas <diederik@cknow-tech.com>
-Closes: https://bugs.kde.org/show_bug.cgi?id=511274
-Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
----
+--tm5vc7kxorjsnqka
+Content-Type: text/plain; protected-headers=v1; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [RESEND PATCH v8 0/4] rockchip: add can for RK3576 Soc
+MIME-Version: 1.0
 
- drivers/gpu/drm/rockchip/rockchip_vop2_reg.c | 49 +++++++++++++++++---
- 1 file changed, 42 insertions(+), 7 deletions(-)
+On 12.11.2025 09:59:36, Elaine Zhang wrote:
+> rk3576 can is a new controller,new register layout and Bit position
+> definition:
+> Support CAN protocol.
+> Support Dma.
+>
+> There are major differences from the previous rk3568.
+> All errata on the rk3568 have been fixed and redesigned.
+>
+> RK3576 CANFD requires authorization and permission. The software
+> code is not open by default and needs to be authorized separately.
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-index d22ce11a4235..f3950e8476a7 100644
---- a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-@@ -1369,6 +1369,25 @@ static const struct vop2_regs_dump rk3588_regs_dump[] = {
- 	},
- };
- 
-+/*
-+ * phys_id is used to identify a main window(Cluster Win/Smart Win, not
-+ * include the sub win of a cluster or the multi area) that can do overlay
-+ * in main overlay stage.
-+ */
-+static struct vop2_win *vop2_find_win_by_phys_id(struct vop2 *vop2, uint8_t phys_id)
-+{
-+	struct vop2_win *win;
-+	int i;
-+
-+	for (i = 0; i < vop2->data->win_size; i++) {
-+		win = &vop2->win[i];
-+		if (win->data->phys_id == phys_id)
-+			return win;
-+	}
-+
-+	return NULL;
-+}
-+
- static unsigned long rk3568_set_intf_mux(struct vop2_video_port *vp, int id, u32 polflags)
- {
- 	struct vop2 *vop2 = vp->vop2;
-@@ -1842,15 +1861,31 @@ static void vop2_parse_alpha(struct vop2_alpha_config *alpha_config,
- 	alpha->dst_alpha_ctrl.bits.factor_mode = ALPHA_SRC_INVERSE;
- }
- 
--static int vop2_find_start_mixer_id_for_vp(struct vop2 *vop2, u8 port_id)
-+static int vop2_find_start_mixer_id_for_vp(struct vop2_video_port *vp)
- {
--	struct vop2_video_port *vp;
--	int used_layer = 0;
-+	struct vop2 *vop2 = vp->vop2;
-+	struct vop2_win *win;
-+	u32 layer_sel = vop2->old_layer_sel;
-+	u32 used_layer = 0;
-+	unsigned long win_mask = vp->win_mask;
-+	unsigned long phys_id;
-+	bool match;
- 	int i;
- 
--	for (i = 0; i < port_id; i++) {
--		vp = &vop2->vps[i];
--		used_layer += hweight32(vp->win_mask);
-+	for (i = 0; i < 31; i += 4) {
-+		match = false;
-+		for_each_set_bit(phys_id, &win_mask, ROCKCHIP_VOP2_ESMART3) {
-+			win = vop2_find_win_by_phys_id(vop2, phys_id);
-+			if (win->data->layer_sel_id[vp->id] == ((layer_sel >> i) & 0xf)) {
-+				match = true;
-+				break;
-+			}
-+		}
-+
-+		if (!match)
-+			used_layer += 1;
-+		else
-+			break;
- 	}
- 
- 	return used_layer;
-@@ -1935,7 +1970,7 @@ static void vop2_setup_alpha(struct vop2_video_port *vp)
- 	u32 dst_global_alpha = DRM_BLEND_ALPHA_OPAQUE;
- 
- 	if (vop2->version <= VOP_VERSION_RK3588)
--		mixer_id = vop2_find_start_mixer_id_for_vp(vop2, vp->id);
-+		mixer_id = vop2_find_start_mixer_id_for_vp(vp);
- 	else
- 		mixer_id = 0;
- 
--- 
-2.43.0
+If you change your patches it's not a "RESEND", but a vN+1.
 
-base-commit: ded94ec6167e84195507237100f6278941e36fdd
-branch: drm-misc-next-2025-1016
+Marc
 
+--=20
+Pengutronix e.K.                 | Marc Kleine-Budde          |
+Embedded Linux                   | https://www.pengutronix.de |
+Vertretung N=C3=BCrnberg              | Phone: +49-5121-206917-129 |
+Amtsgericht Hildesheim, HRA 2686 | Fax:   +49-5121-206917-9   |
+
+--tm5vc7kxorjsnqka
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEn/sM2K9nqF/8FWzzDHRl3/mQkZwFAmkUStUACgkQDHRl3/mQ
+kZyukgf/byzx++cihi0V3YP/622WNyMq4kHAykcsrenUFbYIK6lcjLznqueFBqYI
+QFgSFML86Yfyw+jVB3UU4vXbP4Eq4qoqeppCzwQe4mOlYuoarCrjHEla8mtc/IY+
+6hzitJnPpN+aahQIDO4KupHNRWnRlJEPmwKLr1ZsjBRfOuG1znCeyKlOco7JKNPe
+yIqRdEk8DQcRcXiU8ycqn7/5a2cU25YRK4sdHqXQVLYbLbZ8rey095mIN8A4L5EY
+yQKDUcS5pQ/H4cxwPNahP3aDpxqmOO4ut0wAW5hvBaLkpuPwBiLTJ41Lg13rXwKA
+6SAfoIhar29+3EGW0YEDV+f6Js+JPg==
+=pjXs
+-----END PGP SIGNATURE-----
+
+--tm5vc7kxorjsnqka--
+
+
+--===============5336974247906099021==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============5336974247906099021==--
+
