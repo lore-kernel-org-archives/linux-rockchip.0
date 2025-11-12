@@ -4,57 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E29D0CCFA1A
-	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Nov 2025 08:24:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5990ECCFA1A
+	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Nov 2025 08:25:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hBjao45v69mQtVIzo53PeZZud7M/exW6Lu5nD07i774=; b=mBc+sxbuY6PYe3
-	8diKVzUShgSvqKc+Xm7QbpTWh92PIuE53mmJubtPdqShW04yWtnU2w8n572gJj/A2kqNuCoT9wIdS
-	F8iecSQiHKqAaWt8VyPLMLzFp8yxUqqlfNCmyj0CCJIf/BLTrG6SJMXNKJz6qqlVsYRAHUvN4OP6u
-	ezGnJSUsU3ie/S9yXls83phAEBVFxyEAT5MIhIVv5TsEbmcL11f16Lt8ATL/G0StIVEx99Pfbeb79
-	jU1n8GFytW61WM8aSo+3ouiXOCXhcgxU5Y29txbHehb3QGeeJcroezALpmu9MxIKoATsPfTSW/dks
-	EEypRc+e+dA+7TCB9Uow==;
+	List-Owner; bh=PRw36sdYfjzqy8Sg5GzNfZbHBJkxYJcitxzilGnoOIQ=; b=hkdT2I6bS/yzOt
+	PuH0nDjJ5Wb7N9FOiMt0uc8oBwZ7Z94JoOhqX2HvObSaOGHcDawvSAmzvQXNzuV0oeiw9D957bQts
+	rc4Lr9Q6CsI/HduwZ6j0yE9dGi/Av23LXKf2PGemyxFg8/6737zy0hij0r6wxJkE9OllhG0bWeoNm
+	MvpnO+48feoeH/9SHAWfaCl1TRzpVPnaJM9CU312Enffkg9XmiSj7WhokPY8k804H8Hg7miT0Mri3
+	zoGThN+E7NE25S2bd5eNlpW/SPjV/doVtqxsm6WkRNZNXcrK2QkU2fsBofIQbD3HNxGru+x1En7wE
+	fFPEq6WYvnXdwps5Qc6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJ69B-00000008Klb-2coc;
-	Wed, 12 Nov 2025 08:24:09 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vJ6A2-00000008KtZ-1I3Z;
+	Wed, 12 Nov 2025 08:25:02 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJ699-00000008Kkr-1win;
-	Wed, 12 Nov 2025 08:24:08 +0000
+	id 1vJ69z-00000008KsX-0LNr;
+	Wed, 12 Nov 2025 08:25:00 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id ACBD443E14;
-	Wed, 12 Nov 2025 08:24:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 381D5C116B1;
-	Wed, 12 Nov 2025 08:24:03 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 3F39443B59;
+	Wed, 12 Nov 2025 08:24:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E58ADC4CEF8;
+	Wed, 12 Nov 2025 08:24:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1762935846;
-	bh=nPgIElCsbpJYasIzjMJOq1v5dfPCNLHDI/7LeLitaKo=;
+	s=k20201202; t=1762935898;
+	bh=Q/QyHaLAgaVdBMtPSmk8J58WVVg01wAiuM4riboMwNE=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=NPlPq+RM0G7b72mCTTTtcouVS4XBtI33J8V715Lf4rY7WBJPYTlKN/gXhiIK8tfr0
-	 HfJoQUONE9Jhe65mDcTIJcXMunEVq/erqEbRui/nwWfvQyJOR1ci8zYuJ5UmJTfWNc
-	 1829z/qQewKmdDoxxwyh+OFtvkv8qUjZF2AHwWnOifG5bNRDtfRhphe3TfNS88B1a/
-	 sUiIVOmTcMJdJ3kQzKe3OLarcbZJemcs3kEhP84ts8lzGmD1GtsdfTGjij0Dp+jyNX
-	 7Z65OThEjRjA4yOu6stsirYiJaCMDRbKtn8bA37mBUSG0QwHVkfIJmbkVR4dTckhgY
-	 e7Y1/DTRjsmpg==
-Message-ID: <88893633-ca4f-42d2-8d69-7f065ea34bf0@kernel.org>
-Date: Wed, 12 Nov 2025 09:24:01 +0100
+	b=Bk1nBRkn4iZ264APmYkNPG3UpTT+VxqzQ3S7XK0HGOv8tN2fl5iuotfFGjNHHW898
+	 PYj2AtbbPEHsRbc//iachZqeHCqk2H07y7dVUcD+rXeWdB9Ab9xACldsCWHm5AY9gn
+	 +8ZLOtLorSQs7FhWmeoZeGyFi4RxfTuqI5NpOYY3yISH9IJw+CpQ0cmq6crBLX2J31
+	 pvdkARjyVsyTZZk2bZKr/eQZS2wriMZhfYdgrYDN5hYN75//NTd8wXeefcHpFiiL6o
+	 HHSJbWw7Nvj0kX69kA/dOF1PAvzwyW/nXbakvp4DTTVnWFLMxpDS16Iy8kuopL/Kdf
+	 rYxhfJ8VtVqKQ==
+Message-ID: <177ca4e1-fa11-4b24-b72d-1af6c7c2f1c6@kernel.org>
+Date: Wed, 12 Nov 2025 09:24:52 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RESEND PATCH v7 4/5] dt-bindings: clock: rockchip: Add RK3506
- clock and reset unit
-To: Elaine Zhang <zhangqing@rock-chips.com>, mturquette@baylibre.com,
- sboyd@kernel.org, heiko@sntech.de, robh@kernel.org, p.zabel@pengutronix.de,
- krzk+dt@kernel.org, conor+dt@kernel.org
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, finley.xiao@rock-chips.com,
- sugar.zhang@rock-chips.com
-References: <20251112022111.3828521-1-zhangqing@rock-chips.com>
+Subject: Re: [RESEND PATCH v8 0/4] rockchip: add can for RK3576 Soc
+To: Elaine Zhang <zhangqing@rock-chips.com>, mkl@pengutronix.de,
+ kernel@pengutronix.de, mailhol.vincent@wanadoo.fr, robh@kernel.org,
+ krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de, cl@rock-chips.com
+Cc: linux-can@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org
+References: <20251112015940.3695638-1-zhangqing@rock-chips.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -100,11 +98,10 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  jWt87ecuHlpL3uuQ0ZZNWqHgZoQLXoqC2ZV5KrtKWb/jyiFX/sxSrodALf0zf+tfHv0FZWT2
  zHjUqd0t4njD/UOsuIMOQn4Ig0SdivYPfZukb5cdasKJukG1NOpbW7yRNivaCnfZz6dTawXw
  XRIV/KDsHQiyVxKvN73bThKhONkcX2LWuD928tAR6XMM2G5ovxLe09vuOzzfTWQDsm++9UKF a/A=
-In-Reply-To: <20251112022111.3828521-1-zhangqing@rock-chips.com>
+In-Reply-To: <20251112015940.3695638-1-zhangqing@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251112_002407_549474_B1B7D651 
-X-CRM114-Status: UNSURE (   6.92  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251112_002459_164250_23492C1B 
+X-CRM114-Status: GOOD (  10.01  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,20 +118,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 12/11/2025 03:21, Elaine Zhang wrote:
-> From: Finley Xiao <finley.xiao@rock-chips.com>
+On 12/11/2025 02:59, Elaine Zhang wrote:
+> rk3576 can is a new controller,new register layout and Bit position
+> definition:
+> Support CAN protocol.
+> Support Dma.
 > 
-> Add device tree bindings for clock and reset unit on RK3506 SoC.
-> Add clock and reset IDs for RK3506 SoC.
+> There are major differences from the previous rk3568.
+> All errata on the rk3568 have been fixed and redesigned.
 > 
-> Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
-> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+> RK3576 CANFD requires authorization and permission. The software
+> code is not open by default and needs to be authorized separately.
+> 
+> Change in V8:
+> [PATCH v8 1/4]: Drop CANFD, correction format warning.
+> [PATCH v8 2/4]: Drop fifo_setup of rkcanfd_devtype_data.
+> [PATCH v8 3/4]: Drop CANFD.
+> [PATCH v8 4/4]: Drop CANFD.
 
 
-You just again ignored Conor's feedback and resent only this, so his
-questions are buried in the archives.
-
-NAK
+Please implement the feedback I asked at v8. Stop resending the same
+over and over, bypassing people's review.
 
 Best regards,
 Krzysztof
