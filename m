@@ -4,72 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28210CD3436
-	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Nov 2025 17:51:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D92ACD3440
+	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Nov 2025 19:04:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=s/4/sfO5OvJVpSuLF+fqRi1k2wF21bIpFcqtB9+gH8I=; b=abl66/Apr+QA9u
-	ErzZPeP49uMW48uZVgm70Sy3lW78STS0omEE0L+VXiF5ruoarwqJE94cSSWepsYbuZxVJc7H0otcG
-	sSHUX2GAEBY2DBdhl6yDHXQCAg1v9ncUdQnGrFKJh6ZpWDGC/JlD4OwVhtb8NedH/mXcqyKbnH40z
-	gcNHZ0EpOUtY/xs9Te3KmZZzYhKzbC85/PZxkj3jQwvIhZkAHI7vMS+N6V8jZIJDBvbTDZBd34Z5W
-	SXb+Tt7YRE20izB5/Jc3mvpa6r16yY8oYI/Do7uPcaS36lbM7/v/guaVugFQHrD+s/7VLB60yOdl4
-	W1Jc5Vs4bjZ0omcu+acw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=r8pp2qcSmSO7tGYL7jsXa6Tl6WSnlxC5nUxQXCPxn0w=; b=QLO50z1YV9ogaFT44wMDn0BwAh
+	d2rwW7e81eRqMwmUGQdjCfbLs2geaE7HjI2QSsy65RWf6WFBNna9ippLgBEXXWSIKsg9NZvnv+OFU
+	ggARsmhaWEtZBRZGvz+Pnx1C/gT2UNjeKnIUjWCtsocJ9rsFes8fG4NISGdjQvLlBdCkuk95LzW0b
+	c2V2rufX3n8HNktwxmDznszegWa46O7Ss3eRi0x0Nxvb7YY7ksc7xnrFLCedyIBfnY3SN435uQXLN
+	aIUJMlLgtDZ6o8ohtBpDzuqvunFnAdwOuZMky34I4pIuIxDOG9JvTEGf5tDOD1NjtDS0qsLmaOLYR
+	zQ7mNjqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJF0L-00000009H4K-1Df5;
-	Wed, 12 Nov 2025 17:51:37 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vJG8v-00000009Oo2-354B;
+	Wed, 12 Nov 2025 19:04:33 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJF0I-00000009H3l-1zNi;
-	Wed, 12 Nov 2025 17:51:35 +0000
+	id 1vJG8u-00000009Ono-1Jrx;
+	Wed, 12 Nov 2025 19:04:32 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 145EF44231;
-	Wed, 12 Nov 2025 17:51:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B4D3DC4CEF8;
-	Wed, 12 Nov 2025 17:51:18 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 67FE3601A5;
+	Wed, 12 Nov 2025 19:04:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6BDD9C4CEF5;
+	Wed, 12 Nov 2025 19:04:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1762969893;
-	bh=T7knzhZ/hAoWyK2lUxIZdB+Ka4TMwRh1ujkOMO4Lf04=;
+	s=k20201202; t=1762974271;
+	bh=OsZBDvzHWBseg3Knx1k9apRw+CVUYMUDRIxIjk6M13w=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=rO6Mud0EMKXzwiNc2bQlzO+QiF4pc3XFFext9cJ/t5Wa69rSTMlzvwp4mvrpz5ern
-	 1/w711HXbiu7bl1ydAB5DUdFcwgQ1lJWeN5IpVji2dEdgRtnIF2lrTd0he6MlSGbV+
-	 Zu6LUatZFmxfv4DqArs0FAoWQnazXwpImSlLMqQBPAtLcvSFfO6Qh9Ae3bcMYyPItL
-	 aHx51+xOY/Tg8XTyidCaat1h3AuReI9ji7hHyBaIaStsRhn2b+K5jgPh7En09xzheM
-	 0NaPZ/ftBPYlEZu+UPAyMN6G+DftPSkldBOvdcp8DKUWQSRJl+tUyr3vPq+x1twkib
-	 lhmGS0PYRvO5Q==
-Date: Wed, 12 Nov 2025 23:21:07 +0530
-From: Manivannan Sadhasivam <mani@kernel.org>
-To: Niklas Cassel <cassel@kernel.org>
-Cc: Bjorn Helgaas <helgaas@kernel.org>, 
-	Shawn Lin <shawn.lin@rock-chips.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>, Rob Herring <robh@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
-	Kever Yang <kever.yang@rock-chips.com>, Simon Xue <xxm@rock-chips.com>, 
-	Damien Le Moal <dlemoal@kernel.org>, Dragan Simic <dsimic@manjaro.org>, 
-	FUKAUMI Naoki <naoki@radxa.com>, Diederik de Haas <diederik@cknow-tech.com>, 
-	Richard Zhu <hongxing.zhu@nxp.com>, Frank Li <Frank.li@nxp.com>, 
-	Lucas Stach <l.stach@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
-	Conor Dooley <conor@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, 
-	Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
-	Hans Zhang <hans.zhang@cixtech.com>, linux-tegra@vger.kernel.org, linux-pci@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, kernel@pengutronix.de, 
-	Bjorn Helgaas <bhelgaas@google.com>
-Subject: Re: [PATCH 1/4] PCI: dwc: Advertise L1 PM Substates only if driver
- requests it
-Message-ID: <22srj63j7fzmsebwxwjnnxnpmdn2iwxo36gkrl36gdm7ge2xif@dmrdbfgu3hn3>
-References: <20251111221621.2208606-1-helgaas@kernel.org>
- <20251111221621.2208606-2-helgaas@kernel.org>
- <aRRDzKFVTFTIuvvh@ryzen>
+	b=EN1ilMGgWW8T6uXzRy1PpJ6wHDNYjkIgRF8C2S09QM6Pp9dTc64ppdgUJytGHFD9f
+	 c18leiGKUMZKJ6nA+8vHY5Ux8zQ45jfQRox2kXQo9HqKLBBfqVLTYI26r3GR6a4sFV
+	 rYtq0SqLkeF9ihQdQJycAlh16u09SIbV7B9cRgo4HINTUnsnUNzm2oe2ftrT+mJ3TH
+	 xaia2aPceqtEnq/hZryp5jnqH+9Gcr4IWlACvomiq48jDKc1xGXkkqHvv/PAgJI5kR
+	 Ys4Hk0KGfofvnbp9rP5+1Qqq+UfsNw8M4ABS7k6okOZPJduSN3NEyJp1qmnpPj0qr5
+	 cn7FxoPbcD0og==
+Date: Wed, 12 Nov 2025 19:04:26 +0000
+From: Conor Dooley <conor@kernel.org>
+To: Elaine Zhang <zhangqing@rock-chips.com>
+Cc: mkl@pengutronix.de, kernel@pengutronix.de, mailhol.vincent@wanadoo.fr,
+	robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+	heiko@sntech.de, cl@rock-chips.com, linux-can@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org
+Subject: Re: [RESEND PATCH v8 1/4] dt-bindings: can: rockchip_canfd: add
+ rk3576 CAN controller
+Message-ID: <20251112-surely-enroll-02a3a3646084@spud>
+References: <20251112015940.3695638-1-zhangqing@rock-chips.com>
+ <20251112015940.3695638-2-zhangqing@rock-chips.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <aRRDzKFVTFTIuvvh@ryzen>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251112_095134_579836_969AA3E3 
-X-CRM114-Status: GOOD (  16.38  )
+In-Reply-To: <20251112015940.3695638-2-zhangqing@rock-chips.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,42 +68,72 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============5075557408178752348=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkLCBOb3YgMTIsIDIwMjUgYXQgMDk6MjI6MzZBTSArMDEwMCwgTmlrbGFzIENhc3NlbCB3
-cm90ZToKPiBPbiBUdWUsIE5vdiAxMSwgMjAyNSBhdCAwNDoxNjowOFBNIC0wNjAwLCBCam9ybiBI
-ZWxnYWFzIHdyb3RlOgo+ID4gLS0tIGEvZHJpdmVycy9wY2kvY29udHJvbGxlci9kd2MvcGNpZS1k
-ZXNpZ253YXJlLWhvc3QuYwo+ID4gKysrIGIvZHJpdmVycy9wY2kvY29udHJvbGxlci9kd2MvcGNp
-ZS1kZXNpZ253YXJlLWhvc3QuYwo+ID4gQEAgLTEwNjAsNiArMTA2MCw4IEBAIGludCBkd19wY2ll
-X3NldHVwX3JjKHN0cnVjdCBkd19wY2llX3JwICpwcCkKPiA+ICAJCVBDSV9DT01NQU5EX01BU1RF
-UiB8IFBDSV9DT01NQU5EX1NFUlI7Cj4gPiAgCWR3X3BjaWVfd3JpdGVsX2RiaShwY2ksIFBDSV9D
-T01NQU5ELCB2YWwpOwo+ID4gIAo+ID4gKwlkd19wY2llX2NvbmZpZ19sMXNzKHBjaSk7Cj4gCj4g
-VGhlIG5hbWUgZHdfcGNpZV9jb25maWdfbDFzcygpIHNvdW5kcyBsaWtlIHdlIGFyZSBlbmFibGlu
-ZyBsMXNzLgo+IAo+IEkga25vdyBuYW1pbmcgaXMgaGFyZC4KPiAKPiBQZXJoYXBzIGR3X3BjaWVf
-ZGlzYWJsZV91bnN1cHBvcnRlZF9sMXNzKCkgPwo+IAo+IE9yIHNvbWV0aGluZyBzaW1pbGFyLgo+
-IAo+IAo+ID4gLS0tIGEvZHJpdmVycy9wY2kvY29udHJvbGxlci9kd2MvcGNpZS1xY29tLmMKPiA+
-ICsrKyBiL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvZHdjL3BjaWUtcWNvbS5jCj4gPiBAQCAtMTA2
-Nyw2ICsxMDY3LDggQEAgc3RhdGljIGludCBxY29tX3BjaWVfaW5pdF8yXzdfMChzdHJ1Y3QgcWNv
-bV9wY2llICpwY2llKQo+ID4gIAl2YWwgJj0gflJFUV9OT1RfRU5UUl9MMTsKPiA+ICAJd3JpdGVs
-KHZhbCwgcGNpZS0+cGFyZiArIFBBUkZfUE1fQ1RSTCk7Cj4gPiAgCj4gPiArCXBjaS0+bDFzc19z
-dXBwb3J0ID0gdHJ1ZTsKPiA+ICsKPiA+ICAJdmFsID0gcmVhZGwocGNpZS0+cGFyZiArIFBBUkZf
-QVhJX01TVFJfV1JfQUREUl9IQUxUX1YyKTsKPiA+ICAJdmFsIHw9IEVOOwo+ID4gIAl3cml0ZWwo
-dmFsLCBwY2llLT5wYXJmICsgUEFSRl9BWElfTVNUUl9XUl9BRERSX0hBTFRfVjIpOwo+IAo+IFdo
-aWxlIGl0IHNlZW1zIGxpa2Ugb3BzXzJfN18wIGlzIHRoZSBvbmx5IHR5cGUgdGhhdCBleHBsaWNp
-dGx5IGRvZXMgYQo+IHJlZ2lzdGVyIHdyaXRlIHRvIGVuYWJsZSBMMXNzLCBvdGhlciB2ZXJzaW9u
-cyBtaWdodCBoYXZlIHRoZSByZWdpc3Rlcgo+IGFzIGVuYWJsZWQgYnkgZGVmYXVsdCwgc28gaXQg
-d291bGQgYmUgbmljZSBpZiBNYW5pIGNvdWxkIGNvbmZpcm0gZXhhY3RseQo+IHdoaWNoIHZlcnNp
-b25zIHRoYXQgc2hvdWxkIHNldCBsMXNzX3N1cHBvcnQgPSB0cnVlLgo+IAoKWWVzLCBvbiB0aGUg
-cmVzdCBvZiB0aGUgcGxhdGZvcm1zLCB0aGlzIGJpdCBpcyBzdXBwb3NlZCB0byBiZSBlbmFibGVk
-IGJ5CmRlZmF1bHQuIEFGQUlLLCBhbGwgUWNvbSBwbGF0Zm9ybXMgc2hvdWxkIHN1cHBvcnQgTDFT
-UywgYXRsZWFzdCB0aGUKbm9uLUlQUS9BUFEgb25lcy4KCldlIHNob3VsZCBzZXQgaXQgZm9yIGJl
-bG93IGNmZ3M6CgpjZmdfZndfbWFuYWdlZApjZmdfc2M4MjgweHAKY2ZnXzFfMzRfMApjZmdfMV85
-XzAKY2ZnXzJfN18wCgpJIGV4Y2x1ZGVkIG1zbTg5OTYgZHVlIHRvIG9uZSByZWNlbnQgYnVnIHJl
-cG9ydC4KCi0gTWFuaQoKLS0gCuCuruCuo+Cuv+CuteCuo+CvjeCuo+CuqeCvjSDgrprgrqTgrr7g
-rprgrr/grrXgrq7gr40KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5p
-bmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8v
-bGludXgtcm9ja2NoaXAK
+
+--===============5075557408178752348==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="EQbl/SQeCGRxcKF0"
+Content-Disposition: inline
+
+
+--EQbl/SQeCGRxcKF0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Wed, Nov 12, 2025 at 09:59:37AM +0800, Elaine Zhang wrote:
+> Add documentation for the rockchip rk3576 CAN controller.
+>=20
+> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+> ---
+>  .../bindings/net/can/rockchip,rk3568v2-canfd.yaml  | 14 ++++++++++----
+>  1 file changed, 10 insertions(+), 4 deletions(-)
+>=20
+> diff --git a/Documentation/devicetree/bindings/net/can/rockchip,rk3568v2-=
+canfd.yaml b/Documentation/devicetree/bindings/net/can/rockchip,rk3568v2-ca=
+nfd.yaml
+> index a077c0330013..22e10494e7d1 100644
+> --- a/Documentation/devicetree/bindings/net/can/rockchip,rk3568v2-canfd.y=
+aml
+> +++ b/Documentation/devicetree/bindings/net/can/rockchip,rk3568v2-canfd.y=
+aml
+> @@ -10,13 +10,12 @@ title:
+>  maintainers:
+>    - Marc Kleine-Budde <mkl@pengutronix.de>
+> =20
+> -allOf:
+> -  - $ref: can-controller.yaml#
+
+Since in the other mail it was stated that this was removed in error
+pw-bot: changes-requested
+
+--EQbl/SQeCGRxcKF0
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaRTaOgAKCRB4tDGHoIJi
+0qoVAP4ySdGjjDkARJ7pR6fmuWavLo9sUrf8lfFCP/JEOD1eUgEApqQ3+nwlh4ab
+e8WwfeqUajB1sRAcrjGqY5QGC287OQY=
+=K1Vm
+-----END PGP SIGNATURE-----
+
+--EQbl/SQeCGRxcKF0--
+
+
+--===============5075557408178752348==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============5075557408178752348==--
+
