@@ -4,177 +4,139 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8B37CCF9F8
-	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Nov 2025 10:35:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 271FBCCF9F8
+	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Nov 2025 11:04:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Aux3YWQu1qCi+sbib9/3bvQfHxNv9lbQioI9hT/c10I=; b=F92Rf9VRYG8sGPODxgZl1Moq0u
-	65AjMsSRUr61RIaKQ9SNeKcYWebkdILa6CGOzy0kQyPctljJ3q9r4zuSKoZhJYVNNBZBZUoASWzWA
-	yPl7i5KwTBCjBuPh/qlRqjgxlD/iYAfUzSrkwVSDfV/eYjssApXfYGzofBSmJRXItIo3Qjz8Ol0bz
-	WvK6gtKszHPsOQdIOSPTlbQDJcDQo/DAuKYSFZEOynVRsbo6abU+rVELhb1U06sQ0STyLkIP57gFw
-	Pn1kQPv103xB35jtyHBXPO1PPJDwUNlaXU6xjTDF1BiepK29OLIfdvWmaUdbTxjzZ0vjKysfqBW1l
-	SMnUYhfg==;
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=1p+S4D3Q1M6wisnqBuX05a3emRsK6dNRSqX1Y210WKY=; b=YPUOyS7yUFLJHu
+	jihFs87h8zT0n5qj6fJ7EDqI8u2SWduPLKbzWV/n2ILf+t6gfhiAEPXJ+/tIfoa86vVrLMWDg9mzb
+	cfvdqLb0ZZ2PjyDfsWvrq3PkoJ42uBy64Dmm64sjHSQnbS9J3b5jfX4sYgcFtX4EVDRSErv2ZmvKP
+	hNG+8qti8BMX5/ed7JYU+RGOYn84HKck3mWI+7sH3WuN65NkFXkNFZSY3OI4xlWoTM4S6xMfxGpZR
+	2/f1/rW7g6li7URI97zd7XrjJ/QJ+7y/LommS0kZLF7oGF0rrxfwft1k4DkAWEOdqf51Gct+hRmBb
+	/CEYfY7jdx2m1h3kgJSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJ8C5-00000008aeR-172E;
-	Wed, 12 Nov 2025 10:35:17 +0000
-Received: from mail-swedencentralazlp170130007.outbound.protection.outlook.com ([2a01:111:f403:c202::7] helo=GVXPR05CU001.outbound.protection.outlook.com)
+	id 1vJ8eG-00000008d9p-1CJG;
+	Wed, 12 Nov 2025 11:04:24 +0000
+Received: from mail-japaneastazon11022120.outbound.protection.outlook.com ([52.101.126.120] helo=TYPPR03CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJ8Bz-00000008adg-0laW
-	for linux-rockchip@lists.infradead.org;
-	Wed, 12 Nov 2025 10:35:15 +0000
+	id 1vJ8eC-00000008d9K-4Bf4;
+	Wed, 12 Nov 2025 11:04:23 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=DEp7kJpN5ksWmEkBqWu1g+Y6j3SpZRBGxk5/3tN55FSjKY6q4ZpY2b2HAFEG41pNRppG77UzmZ7gD3rShC+qIbP0UHQX/5kVtkdGAGqSPu0B+77RM4IE8pKU3S58tbr9LKSp0MGXcc+xy0SQtKZA0bG5WEbDPYrojlw1vgicmA3jrLOx3rqGuRwQLw9yD1jYnBHdwtRwFBQ6TEkHQaHndTvfDaebSPRT0Gn28AcHalbfS0vPWmLOTGPSO1rm8M6Ryt+Qh7P/+SIkpUZgbkJuqwXV+nZEA+8E6laq6B3nhdZUmNmWIiGDuM52XpCgva6bedOVlpHEY4vA+I+JmfHD/w==
+ b=TWN2aHpk2T5k3GawjwPPmFplPP9R+pNNQXBDVh7uYzJc9c0vpzfYMXRs7dG1Uzhwh6Br5OGc+erDceoU1YIG3X6kAUnmgAJNW8bWVFp0jvJ4bkuAmS26H2BRg2SCe5O6mAwBQalPtaxWi2RifCQFl0ly6SCMRT9fNML+tlM4WDLhjFr0qUD7g4pvJjudwfl0EUqiNrSMesyaA01bVOj5pmmJBnM1K3pxtakoFqw9gI5dUTUAnOlGGdilKVArExMLsjnCJa6O4v6/q7VwdUNBAaZxwcc5zKgbWNQ1hpEwnHSdD0xNVIUJHrV8Ih+D1f8ozDL5nWro5hggctMSw1M/Ig==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=v2lw7NzGyGCSd8wz2Msi3Eh+UQwjvTTHxfqUt4DXFh0=;
- b=Opj0Vyuhxl9LEnZ8IA5iP6eH679j2MNlwOSymkVB3QmFghToicqN8f9VUcP9qVnAoXcSA2vgIfJgurPUjRMgpeRSYMj8CQYItjBBzVudQqcWjrKZswDVUFuJNWhl5KKV9gEqKc6hT8/Lr8O3NSiWOaf/otx4z2ntB+4AGiyWrQAoP+aSuc7jpclKG6Ppu9oKI0il2GCC9nEpE/junxJgeTOrHLCG+VVSxhWKZeEIE0J+U8BOZrpTjBpQqL668Ta4L9ndd6xcvuSWwHFEgahog/BxUsOAedKIJAEpfXk1EFLUUK3PnXzp5+Tw5z/U/w8fKQ+CTre8Cnica3rk3BEuIQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=cherry.de; dmarc=pass action=none header.from=cherry.de;
- dkim=pass header.d=cherry.de; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cherry.de;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=v2lw7NzGyGCSd8wz2Msi3Eh+UQwjvTTHxfqUt4DXFh0=;
- b=CirY+Lx8LtESH5C1QxATx8kmywz5MoiVi9dZpHAfrPCNCY2lWZTDOP2o+v7HuQwB/1cke8+/MJqI3kEfAzUjbi01bwCQqqNID48gav3772ceBFpi9zpYhNR5wt0w/2csSzQ2hMIwwlikk3+bWi9ReOq4a7HrU74Glu5GagsclPY=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=cherry.de;
-Received: from AS8PR04MB8897.eurprd04.prod.outlook.com (2603:10a6:20b:42c::20)
- by PAXPR04MB8080.eurprd04.prod.outlook.com (2603:10a6:102:1c9::21) with
+ bh=zA848SkabEn1QnVAIPBikXdCbqRN1MdWv+kVvgT+r5w=;
+ b=nvbaOx72e36jUgWyJZO8kH5vKrn+dSwe7ccYn2aO01wLWtxG9lawNcIW1ovkm9D1dv/lvqLVsPQdPEY6wJQShIewvsoDhCzs+Gwri42wftD8aX7GXWFgr3bbiC09BrqLA3v7E1P0Ng2QxkdZZvcJmx07Ae9rQyGqsQbgBm0zw5IufLmbtLYlgGXfa4DBYBBL0kgAq2UkB2dp8hS3HHwiqs9XlPVgcjyC2Qf52dcfe8YRcIWqGmqgEHTJDuOmVF6ObX0TfuqNimtduJ35ZYrQ8x9svcWObuAvXjQ2QBQjyeT85PjaYPpJ14HTB5ebUDxKklrLtr4PXCeF0+iEjk3opA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 222.71.101.198) smtp.rcpttodomain=163.com smtp.mailfrom=cixtech.com;
+ dmarc=bestguesspass action=none header.from=cixtech.com; dkim=none (message
+ not signed); arc=none (0)
+Received: from SI2PR04CA0014.apcprd04.prod.outlook.com (2603:1096:4:197::18)
+ by TY0PR06MB5756.apcprd06.prod.outlook.com (2603:1096:400:27e::5) with
  Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9320.16; Wed, 12 Nov
- 2025 10:34:41 +0000
-Received: from AS8PR04MB8897.eurprd04.prod.outlook.com
- ([fe80::5ee:7297:93b4:a8d1]) by AS8PR04MB8897.eurprd04.prod.outlook.com
- ([fe80::5ee:7297:93b4:a8d1%6]) with mapi id 15.20.9298.012; Wed, 12 Nov 2025
- 10:34:41 +0000
-Message-ID: <1459ebad-c087-49ac-a316-14436fac4bc6@cherry.de>
-Date: Wed, 12 Nov 2025 11:34:39 +0100
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] arm64: dts: rockchip: Turn all LEDs on at boot for
- Radxa boards
-To: Diederik de Haas <diederik@cknow-tech.com>,
- FUKAUMI Naoki <naoki@radxa.com>, Dragan Simic <dsimic@manjaro.org>
-Cc: heiko@sntech.de, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, jbx6244@gmail.com, pgwipeout@gmail.com,
- jonas@kwiboo.se, ziyao@disroot.org, amadeus@jmu.edu.cn,
- nicolas.frattaroli@collabora.com, pbrobinson@gmail.com, wens@kernel.org,
- detlev.casanova@collabora.com, stephen@radxa.com,
- sebastian.reichel@collabora.com, liujianfeng1994@gmail.com,
- andy.yan@rock-chips.com, damon.ding@rock-chips.com,
- kylepzak@projectinitiative.io, devicetree@vger.kernel.org,
- linux-rockchip@lists.infradead.org
-References: <20251111054112.55505-1-naoki@radxa.com>
- <DE5W0143QGG2.3C7SW89IJKZ4P@cknow-tech.com>
- <516e919a-42af-8707-4e75-a808df8971fd@manjaro.org>
- <B0C8C5A69B9F465E+ba0ad139-d3d9-4492-ac9a-cc58f8f35074@radxa.com>
- <41275775-9e6e-9202-4c79-6140a56e41d5@manjaro.org>
- <572f341f-a5fa-4f1c-ad60-a5fe3e046d6d@cherry.de>
- <774C3AB9F17BAE47+14f8b8ba-ba78-410e-b44c-4d077585d05a@radxa.com>
- <DE6M84A93WTV.O5IW3BG8TZRW@cknow-tech.com>
-Content-Language: en-US
-From: Quentin Schulz <quentin.schulz@cherry.de>
-In-Reply-To: <DE6M84A93WTV.O5IW3BG8TZRW@cknow-tech.com>
-X-ClientProxiedBy: WA2P291CA0029.POLP291.PROD.OUTLOOK.COM
- (2603:10a6:1d0:1f::29) To AS8PR04MB8897.eurprd04.prod.outlook.com
- (2603:10a6:20b:42c::20)
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9298.16; Wed, 12 Nov
+ 2025 11:04:13 +0000
+Received: from SG1PEPF000082E4.apcprd02.prod.outlook.com
+ (2603:1096:4:197:cafe::1d) by SI2PR04CA0014.outlook.office365.com
+ (2603:1096:4:197::18) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9320.16 via Frontend Transport; Wed,
+ 12 Nov 2025 11:04:13 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 222.71.101.198)
+ smtp.mailfrom=cixtech.com; dkim=none (message not signed)
+ header.d=none;dmarc=bestguesspass action=none header.from=cixtech.com;
+Received-SPF: Pass (protection.outlook.com: domain of cixtech.com designates
+ 222.71.101.198 as permitted sender) receiver=protection.outlook.com;
+ client-ip=222.71.101.198; helo=smtprelay.cixcomputing.com; pr=C
+Received: from smtprelay.cixcomputing.com (222.71.101.198) by
+ SG1PEPF000082E4.mail.protection.outlook.com (10.167.240.7) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.9320.13 via Frontend Transport; Wed, 12 Nov 2025 11:04:12 +0000
+Received: from [172.16.96.116] (unknown [172.16.96.116])
+	by smtprelay.cixcomputing.com (Postfix) with ESMTPSA id 23CB440A5BD4;
+	Wed, 12 Nov 2025 19:04:11 +0800 (CST)
+Message-ID: <6bd16478-4bf9-436a-b862-02d1ebac3d29@cixtech.com>
+Date: Wed, 12 Nov 2025 19:04:10 +0800
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6 1/2] PCI: Configure Root Port MPS during host probing
+To: Shawn Lin <shawn.lin@rock-chips.com>, Hans Zhang <18255117159@163.com>,
+ lpieralisi@kernel.org, kwilczynski@kernel.org, bhelgaas@google.com,
+ helgaas@kernel.org, heiko@sntech.de, mani@kernel.org, yue.wang@Amlogic.com
+Cc: pali@kernel.org, neil.armstrong@linaro.org, robh@kernel.org,
+ jingoohan1@gmail.com, khilman@baylibre.com, jbrunet@baylibre.com,
+ martin.blumenstingl@googlemail.com, cassel@kernel.org,
+ linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org,
+ linux-rockchip@lists.infradead.org
+References: <20251104165125.174168-1-18255117159@163.com>
+ <20251104165125.174168-2-18255117159@163.com>
+ <ef433574-3e81-4636-82c8-9bc3552addca@rock-chips.com>
+Content-Language: en-US
+From: Hans Zhang <hans.zhang@cixtech.com>
+In-Reply-To: <ef433574-3e81-4636-82c8-9bc3552addca@rock-chips.com>
+X-EOPAttributedMessage: 0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: AS8PR04MB8897:EE_|PAXPR04MB8080:EE_
-X-MS-Office365-Filtering-Correlation-Id: c224e484-c737-493f-f67e-08de21d71671
+X-MS-TrafficTypeDiagnostic: SG1PEPF000082E4:EE_|TY0PR06MB5756:EE_
+X-MS-Office365-Filtering-Correlation-Id: c57403e5-38e8-4caf-6227-08de21db369f
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|7416014|376014|1800799024|7053199007;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?OW51OVAwaUdLMWlqNU55TDdjSCtqT1JHT2VwVHgycGo5bS9IWnZUeW1tQ3Zt?=
- =?utf-8?B?TTdoT1UxNlhKS2tRWHRyM3BYZ00vdkVKUmMrMUk1eGJWSy9uZVhEck95UVY0?=
- =?utf-8?B?dVU5eGp0aFZyVGE1NmNhc0lXL2VhMzVIYWd0ditXclRqdTZOcWRQblhiRzZ1?=
- =?utf-8?B?SlpXUklWSmNxWTNUckdYR0tsb0tUTVZTSkd2eUpFYnBZZ1M4R3gzMW0xdmls?=
- =?utf-8?B?VmdmVW5TZU5xVjVqZjJ2VEcvSTMzVjBGTUkzQWZFWFh3cEx3M21FS2pCclVu?=
- =?utf-8?B?RTI0WG5oSGx3VGprMExDMGtoLzgvYjJuSU41RFpKQTJYTUFrcTR2Sm1GVTdH?=
- =?utf-8?B?OXVoVTJCL1orQ0ZlRW9wZjFXSmM2MDZVaTM0WWZrZ2ZzMTBySldnbCtVT3Za?=
- =?utf-8?B?K3o3ZFl3V2J3UGhJbjVvZUVUenZDZzRWZU5yUDRER1N2UGdnbzJVSXEyOEQ3?=
- =?utf-8?B?Y1Jjc1BYOU5ZNFFBYmhSb2s3Ky9KdnIxenVaYXl0REhSbjUwRHZvNVV4ZTZ4?=
- =?utf-8?B?WTR6MXU3YjJ5WEx5bUhwTFBTZU94YjdzaFN6MURIc2V4VzMvOFNMYW5SSHVB?=
- =?utf-8?B?Z09sL0JCeUhpM3llcDNDbmpTRUNHeFhLRHprVFlrakNYaHBvT1JXc0J0cWZj?=
- =?utf-8?B?ZUdNSFFKUjhldVpUVThLL3BWVFFycHkvaWlud0FYZXRGNHdrVGUwV0FZWDJl?=
- =?utf-8?B?UUZXcGIzN0RESE1rREFCK2U0K21hZEgySFJoZWpVS2NXWEpNU1RkbHVBWHFq?=
- =?utf-8?B?RUpLam8rUDJXbFYwOVkvOFd3R1BDcWFLT1BCalZ6WWJBZWtWa2xwV3YwTkZJ?=
- =?utf-8?B?VWVKa2pkS1NxTzA4aEJwanlBKzE3TVI0WUhrT2R2OXVuSjFoOVF3T0VINFRu?=
- =?utf-8?B?SFFNVGpZZFFmZlFqSFBxR0Rab0c3Q2EwNGVRR0IxRXpTQUFYOHpFS0VIVG5j?=
- =?utf-8?B?NEJlVE1yVmxMRzc1aTR6enhWZFhHeW9sb0hRUXk4TE1QZnZzekdiU2lxMWY1?=
- =?utf-8?B?dk1EeS8wa1QzeVNVUjNPQjhJZEVXbCs4SXV2NWJ0TXhsQXd6SkdUN3E2N1p6?=
- =?utf-8?B?S3U2WXpPTklMTFJYaVhoWGpYL3dZNERSYXAveVdtK2gvSWVtb0ZFYnd0UmF2?=
- =?utf-8?B?em1FTDRoYmlJdkd0bHVnUG5BeUJPb1hHZUtwMndDcVNPU2ZwanAwbHQvYjFF?=
- =?utf-8?B?d29XUklsdG53NEwvSTlxeUdNOXF2RTdWem5OYlBjTng2bmdMZTBUYzVkUTJE?=
- =?utf-8?B?VDkwYXUzOENTYjJMYTVvTHVuOWNZS0F4MHJpMGFNVTExQ05lZzAxbzdZWDl2?=
- =?utf-8?B?NkRPaVM3bFRmL0FRR2pUb244Sm8rZDFQMFFwMGdsMU9JanVuNTlCQWJxUWVk?=
- =?utf-8?B?a0l1T1c1aFMzYzlCL3l1WGtXNmcwTHZ0cE1UN0RpSDJhYlphVHorZWpIUlZG?=
- =?utf-8?B?RTE0ZnZCcjdzVWl4RHQyNDBUYXFBYUZaOTd2V1JIbkdoSGFGNkVraTFSRDlH?=
- =?utf-8?B?SCtjbUR4dWhVdFhQdDRpL1BvZ3lZa2JVRjhQQmFwenVsQTN4eGV0OElzaHNC?=
- =?utf-8?B?V3k2K1Vuek9nYWIwRDNmbGs2ZlBBTXhFeVo0NEs2aFZYTGswNzdIeTlPM0h6?=
- =?utf-8?B?RHJ3MXpJVmhKTFNWWlJ1Y1ZhaEpra3habTZ5YWl4RUVjT1BlS0VDcjZRRGxF?=
- =?utf-8?B?VE1QM1gvOHB4YjJCRzl6UCtzU1AyRXhiVjBmaU9zRkRmWlNJTWc1WGdtQTNV?=
- =?utf-8?B?SlpRanFrU0VqYzJUbkJuOWtJd1Y1Y1ltLzVoVFhFTHJrK05GMG8ydkJFUEtK?=
- =?utf-8?B?THVjY1hQZllqclFGUVV3bzlIK1NXRjdaRHd4amRGRTVwVFNNZ1gzTVd1NWZO?=
- =?utf-8?B?MjBMYlVtaU9GWU5nQXNYY0lDakFnTXZKMEpwbCtzSWNpSEE9PQ==?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AS8PR04MB8897.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(7416014)(376014)(1800799024)(7053199007);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?NmZySEhkbzA0dGpqalVGR1Q3REhucEIwdSs3VlpqTkJyWGEvRkxEdnNac3Rr?=
- =?utf-8?B?TTBxNmQzNzM1TVBoT2tmYjd1SDRFLzVSOVMvenJZVXJwYmI1bi91WGJhY1VM?=
- =?utf-8?B?Wm9XL21WK0FBdVppL1hvcHpSeCs4aHA3b3ZCUm8wb3JmRUtZWllNdkRoV3Q4?=
- =?utf-8?B?dGd1UVJXV2YvQk9TdWNkVHV3dnhvQ2lidjJBSWRkZXkwRzMyeVlOb0pLMHZ6?=
- =?utf-8?B?VENMbVJaeWhVaXFRalNyeGJNZmllYmx5d0pvNHdqbDkvZnpPcEZGbFhHZUNp?=
- =?utf-8?B?V3lweFdGVXdWZkNleEswMkdOcjQyRk9VTFkzcXYxaGJXUVA4Y29BSUx1akFp?=
- =?utf-8?B?YXlNdlNJTU0zajJoa2krK3UwTzV0aWw4aXRjTXpNa0FybVpzM3Z1aWFTZWtX?=
- =?utf-8?B?aVF5bys4K2EwdzArNDNYODNheUY2RFlMWTZKMkdYREc0VFRvVHoyN3lNRnEr?=
- =?utf-8?B?ZE1QN1JlVnZ6ZHlrbEtEaWFJdWJ2aDVaK1V1STlrZndseTNnUnJDOFBRaHhw?=
- =?utf-8?B?Y2I1cWphcW1ackQraStOU3BQUHVYbytBcUh4VjBFOGsvRE5XSkdvOEJ5elN5?=
- =?utf-8?B?d3lYaDJMNHNpWVdDeHUzS0dZbEh4eWV2ZU91cno3dGh4N01FZ0JhclNCMkpn?=
- =?utf-8?B?U3pqejZaRWJqbjFhY05VakFLcVpNYkxIWVBNaDVpMEZ3Q3dUcG5HQlpZUVlM?=
- =?utf-8?B?TTZhSzd2UENGMWMyTVJlT0lLMHF0MEtyMExvL2ZnbHFqV3I5NVFJTEtZalRv?=
- =?utf-8?B?M1hOV29KWWl2QzFpenAzRlRRSTBvZEVUUFAvMVFmd1hCc3NyeW1SZmxGWUFG?=
- =?utf-8?B?emFFeExYUk82MDhyaE85L3A2MjRLdVB1RjNnVVp6NFppWXdPbXd2cHJwaVVK?=
- =?utf-8?B?eCs3b1k3M3hVYUNVK0JKME15c1hyWGZCZkdDV1AydkFZNUVRcUtvRWtDOUR6?=
- =?utf-8?B?U05aMjZ0T1pFMjNJYzVCc0N0RjBvNUNLQkFiQkNYTE5DK2VNTVFzUWtXMzZW?=
- =?utf-8?B?Wk81SlJNWGpObTRDQ3YwN2p0azM0WEZCRzBCbmdCY1YyVGVLRHFXblBGMWZZ?=
- =?utf-8?B?SEs0Q24rSVd6TlA3MjM2RGROVVRqZ0U3Vk1pTnAxODB5dHZxSHVTRGk2Rkg5?=
- =?utf-8?B?VnVWZmk2V01HNktlRm1jaVpWMzBwNnVvUzVJRjN3ZWVyQlROdlprWk9WN0gw?=
- =?utf-8?B?ZEFCdGlqWFlMZ2ZyTjR2UkVBMWQza1MzV2hVdDRPNWw0blIwbUt1UjF6WjlP?=
- =?utf-8?B?QTNWMG13TUczZGxTT2NXVGR2dnRnN3lFMitLWC9kaVJHWUZIZmRzV3ZBRUFm?=
- =?utf-8?B?K0FaZ0ZyUXFORWFmbjh4K0p6aGl0SksrZm1xM2d0aTBrT0lqWGFmdkwxamFn?=
- =?utf-8?B?aWIxRlNmMHJnNzNZTWZXaVZaelRBbnNYbzNveXJhZUpqcDJIRGE3RjZiRXc2?=
- =?utf-8?B?SUFDSStaWlZBZ3ppNFBvNUpzZ0t2SytlZ3h4SzVtRThBS0RiUzBDRkI4RXRD?=
- =?utf-8?B?TzJxclNTMlJHbXQyUE8ydG5EM3EwQkorbUdBRnVnTkhoekI3M3JHOXlkY2wv?=
- =?utf-8?B?WUViZTdNT0RkOG13WlZ2QUhTRm5TMDJGSE93TGtmQ3JlcVd1T2wwMDQrUUV1?=
- =?utf-8?B?R2YwVFRDcXdTU01KN0VadVhla24zcWpUVXdIOWtyaVBZdU52RTM2dVJmSy9v?=
- =?utf-8?B?UzFFb1RaSGFLSyttY3gvUWovb21JMklucUZGYkxlRjd5dDMySGY2Y0VDV2pY?=
- =?utf-8?B?aDNwQmU3UENtQzNkcXFBa1BwNDVKTTVlRjRxaExuN3dEZnNlWTU5ZHNaeks3?=
- =?utf-8?B?MXhIaVZXYVp3NGp4aXVJMjdidW96YzlHT3Mvc2ttVGdkNTVPL01UdG9XbEpn?=
- =?utf-8?B?ZFUwYmZQbFowaE5DRit1d2JXdUI5NEEwdHBXcFAzWHB5VVlDK29xY1p3aEt2?=
- =?utf-8?B?TzJEeXdyOWY2VWMyTWhyOEdYNmZ6M0tkQ3VQdFJEa1JVQ3UwdjF5bHhTemxn?=
- =?utf-8?B?MEpYZDN3NFJiYk4yZkRCbDdRRTNFM09RMUxzSDVQV3IwbUExdElNS0FPQXhv?=
- =?utf-8?B?RTVFNVJRaDYvYkNVT2NyRWRWWHdXcEhmZko4UXI4T1RzaWMwcitwZTdic3Rs?=
- =?utf-8?B?VXZFZEhrcndTaEFSM29xeE5TZ3hoa1JReVpuaWxiVTZPTEN6VzhTaklmdnJU?=
- =?utf-8?B?TUE9PQ==?=
-X-OriginatorOrg: cherry.de
-X-MS-Exchange-CrossTenant-Network-Message-Id: c224e484-c737-493f-f67e-08de21d71671
-X-MS-Exchange-CrossTenant-AuthSource: AS8PR04MB8897.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Nov 2025 10:34:41.5749
+X-Microsoft-Antispam: BCL:0;ARA:13230040|82310400026|1800799024|36860700013|7416014|376014|7053199007;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?RmFBTlJiUlJzdnJzV2dqUkNjNjJmYk5UUklDVlRWL05kU0xLWXFhYWt2UjZw?=
+ =?utf-8?B?NHI2ZURTRlVTZ1pQeGFpL1VvcWdyeVZTdnRPTlV0L29lSDhxZ0kvbTRaNlBG?=
+ =?utf-8?B?aTRUOVRqNzgvWnFrNWwwN25CR2dSbmNVdVRtRzlaaFRxc3A5cllwT2htTjVo?=
+ =?utf-8?B?Y3ZiNHA4WVJGWUVUVXpERHUyWnlkVlV5SVdPNlhYVUlmaXQrZm9FdDRYS28w?=
+ =?utf-8?B?cWM3ZmFCZzZIVWN3aGZrandIK1FCa2pvdHl6Q0R2cTdpSlNMdWRoQjFIeHpM?=
+ =?utf-8?B?MDdmVldQcEo2MDNkUHhSYXFmV0FiZ1NVRWhVVTBDQWFaaXpSdFZYaHBKRkdD?=
+ =?utf-8?B?ZldvZDhpQTc1bysrbEJPV0lHUVdnT2ZCZjI5Wll1cTZwSnZWR0RFQXFpRXMz?=
+ =?utf-8?B?OUw1emc5cG5MczFVTEk0MFE5UGhaUUcxTExOaTltYjRYNVROMnp0ME50dHJH?=
+ =?utf-8?B?akF4aGQ1Q0R1cnRady9iT0U1UDZtOWtMNjNLUm1XZlAwVmJnaWhMZmZHWWZa?=
+ =?utf-8?B?T0JNZ2s4bStTdmpDb1BOZW5wQU5VZWNZbnljSll4cnhjUUFRYzVzTkVobGxS?=
+ =?utf-8?B?NEFzSFg4TXo0Nis0TERKQngwQ2xEd1p1b3NCaWZWaVN3Q29pRm1pL0VJdHJW?=
+ =?utf-8?B?VE9ENmx5bEh6aUt0cVl0Sjh3Rm1yVTY5YnBuaUdvSEh1aDN6Q1MySUd5eFQv?=
+ =?utf-8?B?OVFvSVAvVFZPRVVLWXVlN1dkVDM4Q1FtT1QzODRGdWxva0FjTU0zMHpMT0Uv?=
+ =?utf-8?B?Y2FYVFZUWmtQZmhOUVNUTG1hVDBPZVlOWVBockcxUCtDQThqaDZKK3Y3aXpW?=
+ =?utf-8?B?ZkFjSFFNU1ZRaHFMSmJIbmpKWmJ3aEl2UFdpMjJpU1cxL21HaEtIUUY0K2Fh?=
+ =?utf-8?B?NWFlNk9GMVFoZEtxTGhHbUEyckdJek1qaDlwT0FOeVd6VUpPK1NROWhRNHZP?=
+ =?utf-8?B?NmN3ZWpFdld1RXlFVytKTG9iVEV6MVZUT1VmMEp2d2lsb1c0TTFTUHNhOHJm?=
+ =?utf-8?B?SG5aalBoTWs1cGl4YW5YQkVQdXhpVkVUaENQMW16QXVackp2WThHZmpjc1h2?=
+ =?utf-8?B?aGFLMlYvQ2o2cGk3aEtScU5RVnhxa09pZThCQUVSVjRLMHFhNUhuaUljMXlp?=
+ =?utf-8?B?OGErVmxuSTVONlczRU02Sy9KbDZjZUJsbWlZU3RzdXhNbkFxNFArNldWbTZJ?=
+ =?utf-8?B?UjN5K0ZPaVIyYWo0N2svcDgzbE1zOWVkVFVOVlg3K0ZidkIvdm1WeGVwYXRG?=
+ =?utf-8?B?TVYxcXoyMCtKVTFwemJ0eWZTZlIwUzhqOWJVd2gyTG81THg4M3Y5empsSUtG?=
+ =?utf-8?B?RE01a2Y0U2RONmc4WXFmdzZpUnN5TytUUmQ1SEd3ekVSKy9jdnVqaTZPOTZT?=
+ =?utf-8?B?UlQ1R0l3TjY5b3R2cHh1N1RXbG4ySm9CUnBGUWpvMWZuVXhIRE5NZlNtNHJY?=
+ =?utf-8?B?WFFJTUoxNmY2Q0hWRTdMN3pldkcvYjJ0dGlseHY1YXAvYURvVkFLVlVydFVX?=
+ =?utf-8?B?dWZGUEgzTWp4WU5VTTgwL1NlOG5PaVVlQnFmbWpMdU1rOVVkR3U5emJZN3NL?=
+ =?utf-8?B?MWZwNGhlNWFKUmV5ZkMwUUtqSldHcnU5TTRlZE95b3ZVMjN2aDRzSktRSlAx?=
+ =?utf-8?B?aDZNWE16Z0JpcGEzNWkyOEw5VTBGWkd6RjZRQzlVc3NNQW5PSUtVNjgvNHho?=
+ =?utf-8?B?NFIycGNTbDVBT2FvYXc2V254Q3oyNURZKzdjUTJBVXdHSkJwdXk0ZjRGY2oz?=
+ =?utf-8?B?S0h2SXo0VGFIZmhkNWhyM1NGSmZjZnhlT0NhQVZOazhybjJtUlo5dE0xZWpV?=
+ =?utf-8?B?SFoxQStnVWVsMHY5c3R0eUZjOXpWSGZYMGZ6MEJrbS80cktzdjRic2lNNkY4?=
+ =?utf-8?B?OUlpY0pQb1N1dHBRd2x1dVpFNmR1MGltSjR2bUZkUm5RN00vNG5CT2Y0elJz?=
+ =?utf-8?B?VnpHREV3NkVjdGs2V0M5djlWTWtxbzdmK1lkdW1DSzZjemJFWXBKUEhjbEY0?=
+ =?utf-8?B?WGlueXpnNks5eG05SWVSVldoSmtYQ2tXdDhrbUx6dHNpc1lHbVZFUVlFdWUv?=
+ =?utf-8?B?SnFYZldTZVcwS1p4aklRMGx0TlFtWHBSTE1XaXREdk56b1B5aHhKbkd0VnZ4?=
+ =?utf-8?Q?pInQ=3D?=
+X-Forefront-Antispam-Report: CIP:222.71.101.198;CTRY:CN;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:smtprelay.cixcomputing.com;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230040)(82310400026)(1800799024)(36860700013)(7416014)(376014)(7053199007);DIR:OUT;SFP:1102;
+X-OriginatorOrg: cixtech.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Nov 2025 11:04:12.9423
  (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 9FRDJCOTCNDgcxwKOHm9uHQqbRp4dPmkCgfMwlL1Sc+aj6iaVm2IQQPYtrQMSHVJ561l7suZ/cjA3nST6nfYojGcdQeWt+RwXB+YPkzqiXA=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PAXPR04MB8080
+X-MS-Exchange-CrossTenant-Network-Message-Id: c57403e5-38e8-4caf-6227-08de21db369f
+X-MS-Exchange-CrossTenant-Id: 0409f77a-e53d-4d23-943e-ccade7cb4811
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=0409f77a-e53d-4d23-943e-ccade7cb4811;Ip=[222.71.101.198];Helo=[smtprelay.cixcomputing.com]
+X-MS-Exchange-CrossTenant-AuthSource: SG1PEPF000082E4.apcprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TY0PR06MB5756
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251112_023514_359041_B0CA0B8B 
-X-CRM114-Status: GOOD (  26.66  )
+X-CRM114-CacheID: sfid-20251112_030421_042763_BF9C4489 
+X-CRM114-Status: GOOD (  13.99  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -186,233 +148,59 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi all,
-
-On 11/12/25 10:40 AM, Diederik de Haas wrote:
-> [You don't often get email from diederik@cknow-tech.com. Learn why this is important at https://aka.ms/LearnAboutSenderIdentification ]
-> 
-> Hi Naoki,
-> 
-> On Wed Nov 12, 2025 at 12:42 AM CET, FUKAUMI Naoki wrote:
->> On 11/12/25 03:32, Quentin Schulz wrote:
->>> On 11/11/25 5:14 PM, Dragan Simic wrote:
->>>> On Tuesday, November 11, 2025 16:32 CET, FUKAUMI Naoki
->>>> <naoki@radxa.com> wrote:
->>>>> On 11/11/25 23:46, Dragan Simic wrote:
->>>>>> On Tuesday, November 11, 2025 14:07 CET, "Diederik de Haas"
->>>>>> <diederik@cknow-tech.com> wrote:
->>>>>>> On Tue Nov 11, 2025 at 6:41 AM CET, FUKAUMI Naoki wrote:
->>>>>>>> Radxa's boards turn all LEDs on at boot(loader), but some boards
->>>>>>>> don't have `default-state` property in Linux kernel tree but
->>>>>>>> have it in U-Boot tree instead[1].
->>>>>>>>
->>>>>>>> This patch adds `default-state = "on"` for (almost) all LEDs (with a
->>>>>>>> few exceptions which should be "off" such as RGB LEDs on E25 and LAN/
->>>>>>>> WAN LEDs on E20C/E52C).
->>>>>>>
->>>>>>> I'm missing the *why* these changes would be an improvement.
->>>>>>>
->>>>>>> Personally, for both 'heartbeat' and 'netdev' triggers, I want them to
->>>>>>> be off by default and once it gets a 'heartbeat' or a 'netdev'
->>>>>>> trigger, THEN I want the LED to be on/blinking.
->>>>>>
->>>>>> That's a good question for Naoki.  My own preference would also
->>>>>> be to have the device's power LED turned on by U-Boot as quickly
->>>>>> as possible after supplying power to the board or turning it on
->>>>>> by pressing the power button.  I'm actually not a big fan of
->>>>>> having all the LEDs shining for a couple of seconds or so, which
->>>>>> may actually look like some error condition to me.
->>>>>>
->>>>>> Having all that in mind, I may suggest that just the U-Boot's
->>>>>> behavior is changed to turn the power LEDs on only.
->>>>>
->>>>> I can't quite explain it, but...
->>>>>
->>>>> - 1st (Power) LED
->>>>>
->>>>> The 1st (power) LED turns on automatically/immediately without software
->>>>> intervention. (On some boards, this LED cannot be controlled by software
->>>>> at all.)
->>>>>
->>>>> In DTS, this should be described using `default-state = "on"`. The use
->>>>> of the Linux-specific property `linux,default-trigger = "default-on"` is
->>>>> unsuitable for non-Linux environments.
->>>>>
-
-I think the wording in the binding can be understood two ways.
-
-The binding says the following about the default-state property:
-
-"""
-       The initial state of the LED. If the LED is already on or off and the
-       default-state property is set the to same value, then no glitch 
-should be
-       produced where the LED momentarily turns off (or on). The "keep" 
-setting
-       will keep the LED at whatever its current state is, without 
-producing a
-       glitch.
-"""
-
-I think the issue here is around the meaning of "initial state". I 
-believe Naoki is probably thinking about the **HW** initial state of the 
-LED, which is whatever is the state of the LED without SW control. I 
-think Diederik is thinking about this being the state of the LED right 
-when the SW takes over and configures the LED before the trigger is setup.
-
-In the first interpretation, there's no need for an "improvement" for 
-the patches as they would just fix correctness of the DT wrt HW state at 
-boot.
-
-In the second interpretation, a change of this value must be justified 
-as people will simply disagree forever and we could end up with people 
-reverting other people's patches after each release. If it's just a 
-matter of taste, I believe the typical answer is keeping the status quo.
-
-We should find a way to make this binding not up to interpretation.
-
-Additionally, if the LED cannot be controlled on some boards, I don't 
-think it should be part of the DT.
-
->>>>> - 2nd (Heartbeat) LED
->>>>>
->>>>> The 2nd (heartbeat) LED can be controlled by software. It should be lit
->>>>> up as quickly as possible to indicate that the very first software
->>>>> (e.g., the bootloader) is running.
->>>>>
-
-My understanding is Naoki wants to use default-state = on, for the 
-bootloader to turn it on as soon as it takes over control of the LEDs.
-
->>>>> On Linux, usually this is used as `linux,default-trigger = "heartbeat"`.
->>>>> It indicates that kernel is running (regardless of the `default-state`
->>>>> setting), and its behavior can be modified in user space.
->>>>
->>>> As discussed already in the #linux-rockchip IRC channel, [1] perhaps
->>>> the best option would be to have the power LEDs turned on as quickly
->>>> upon powering on the board as possible, and to have U-Boot pulsate
->>>> the heartbeat LEDs using the LED_BOOT feature.  In such a scenario,
->>>> no other LEDs would be turned on early, and the LED-related DT parts
->>>> specific to U-Boot would be migrated to the kernel DTs.
->>>>
->>>> [1] https://libera.catirclogs.org/linux-rockchip/2025-11-11#38997824;
->>>
->>> The LED_BOOT feature (guarded by the Kconfig symbol of the same name) in
->>> U-Boot only applies if /options/u-boot/boot-led property is set.
->>
->> For the default state of the heartbeat LED, I'm thinking of using
->> LED_BOOT (/options/u-boot/boot-led), but I'm concerned that this is
->> U-Boot-specific.
-> 
-> If U-Boot wants to use the heartbeat LED to signal the *bootloader* is
-> running, I guess that's fine. And if you want to make it solid or
-> blinking, that seems best discussed on the U-Boot ML.
-> 
-
-The solution may still involve configuring the Device Tree, and we're 
-trying to have U-Boot-specific changes to the Device Tree in U-Boot 
-source tree to a minimum.
-
-> I still consider the bootloader and the kernel stages separate.
-
-They do however share most of their Device Tree (for Rockchip at least) 
-and the least (ideally no) changes we can have in U-Boot the better.
-
-> And I haven't seen an argument why I should change *my* opinion on the
-> heartbeat and netdev triggers (default-state) wrt the kernel.
-> 
-
-Device Tree is not kernel specific as you said already.
-
-> I don't think that what U-Boot does or doesn't do, should determine what
-> the Linux kernel does or doesn't do.
-
-It shouldn't, but (most of) the Device Tree is shared, so you cannot 
-just dismiss U-Boot behavior when talking about Linux behavior based on 
-Device Tree interpretation. We may have a need for a bootloader-specific 
-property. We have a Linux-specific one after all 
-(linux,default-trigger). Though... that does seem to be on the edge of 
-what the DT is made for (description of the HW, not logic/policy).
-
-> I have no plans to use another bootloader then U-Boot, but it's possible
-> that people do, so what the Linux kernel does should be independent from
-> what the/a specific bootloader does.
-> 
-
-Barebox also uses upstream DT as far as I know and supports some Radxa 
-products (Rock 5B/5T/..., CM3, Rock (RK3188), Rock 3A from the 
-arch/arm/boards/radxa-* directories). Zephyr has support for RK3568, 
-RK3588, and other SoCs, and uses upstream DT as well.
-
-Again, we're talking about modifications of the Device Tree here, so 
-typically I would expect all consumers of that DT to be interpreting the 
-properties the same way, except if you have OS-specific properties/nodes 
-(think u-boot,config-compatible nodes, linux, prefixed properties, 
-bootph- properties, ...).
-
-> And as I said before, *I* want LEDs with netdev and heartbeat triggers,
-> to be off (at the start, which is indeed the default value).
-> I use the heartbeat trigger to:
-> 1) See the kernel has started (and has gotten to the point the heartbeat
->     'infrastructure' has been set up
-> 2) Wait for the blinking to slow down as that (generally) means it's
->     pretty much done with the boot process and the SSH server should
->     probably be running then, so I can login
-> 3) When the heartbeat LED is solid, that means the system has crashed
->     (f.e. due to overheating ...)
-> 
-
-If the *HW* default state of the LED is off and the default-state 
-property is off, then you won't be able to tell apart a completely 
-bricked board and one that is stuck somewhere between U-Boot proper and 
-the Linux kernel taking over that LED.
-
-> And also, if you're going to change/override other people's choices, a
-> motivation as to why would be 'nice'.
-> 
->>> <more discussion about LED functionality in U-Boot ...>
->>
->> As you know, default "default-state" is "off".
->>    https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/leds/common.yaml?h=v6.17#n74
->>
->> As far as I understand, there should not be any workarounds for specific
->> implementations.
->>    https://lore.kernel.org/linux-rockchip/3389401.44csPzL39Z@phil/
->>
->> So removing `default-state = "off"` is acceptable, right?
-> 
-> I don't see/understand the connection with 'workarounds for specific
-> implementations' with removing ``default-state = "off"``.
-> 
-> IMO it's perfectly fine to remove ``default-state = "off"``, although
-> having it explicitly may be useful, especially if the commit that set
-> that property specified *why* it should be "off".
-> 
-
-The status property defaults to okay, and we do not want them to be 
-listed explicitly. Not sure if there's consensus on applying this to all 
-properties which have defaults, across all subsystems.
-
-> Relatedly, when a node does not have the 'default-state' property, I
-> would _assume_ the author wanted/intended it to be "off". Ideally it
-> would be described in the commit message, but that is optional.
-
-The lack of a property doesn't necessarily mean it was forgotten, agreed.
-
-> But if that is changed, then it should be motivated *why*.
-> 
-
-Agreed.
-
-Cheers,
-Quentin
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+CgpPbiAxMS8xMi8yMDI1IDQ6MzEgUE0sIFNoYXduIExpbiB3cm90ZToKPiBFWFRFUk5BTCBFTUFJ
+TAo+IAo+IOWcqCAyMDI1LzExLzA1IOaYn+acn+S4iSAwOjUxLCBIYW5zIFpoYW5nIOWGmemBkzoK
+Pj4gQ3VycmVudCBQQ0llIGluaXRpYWxpemF0aW9uIGxvZ2ljIG1heSBsZWF2ZSBSb290IFBvcnRz
+IChyb290IGJyaWRnZXMpCj4+IG9wZXJhdGluZyB3aXRoIG5vbi1vcHRpbWFsIE1heGltdW0gUGF5
+bG9hZCBTaXplIChNUFMpIHNldHRpbmdzLiBFeGlzdGluZwo+PiBjb2RlIGluIHBjaV9jb25maWd1
+cmVfbXBzKCkgcmV0dXJucyBlYXJseSBmb3IgZGV2aWNlcyB3aXRob3V0IGFuIHVwc3RyZWFtCj4+
+IGJyaWRnZSAoIWJyaWRnZSkgd2hpY2ggaW5jbHVkZXMgUm9vdCBQb3J0cywgc28gdGhlaXIgTVBT
+IHZhbHVlcyByZW1haW4KPj4gYXQgZmlybXdhcmUvaGFyZHdhcmUgZGVmYXVsdHMuIFRoaXMgZmFp
+bHMgdG8gdXRpbGl6ZSB0aGUgY29udHJvbGxlcidzIAo+PiBmdWxsCj4+IGNhcGFiaWxpdGllcywg
+bGVhZGluZyB0byBzdWJvcHRpbWFsIGRhdGEgdHJhbnNmZXIgZWZmaWNpZW5jeSBhY3Jvc3MgdGhl
+Cj4+IFBDSWUgaGllcmFyY2h5Lgo+Pgo+PiBXaXRoIHRoaXMgcGF0Y2gsIGR1cmluZyB0aGUgaG9z
+dCBjb250cm9sbGVyIHByb2JpbmcgcGhhc2U6Cj4+IC0gV2hlbiBQQ0llIGJ1cyB0dW5pbmcgaXMg
+ZW5hYmxlZCAobm90IFBDSUVfQlVTX1RVTkVfT0ZGKSwgYW5kCj4+IC0gVGhlIGRldmljZSBpcyBh
+IFJvb3QgUG9ydCB3aXRob3V0IGFuIHVwc3RyZWFtIGJyaWRnZSAoIWJyaWRnZSksCj4+IFRoZSBS
+b290IFBvcnQncyBNUFMgaXMgc2V0IHRvIGl0cyBoYXJkd2FyZS1zdXBwb3J0ZWQgbWF4aW11bSB2
+YWx1ZQo+PiAoMTI4IDw8IGRldi0+cGNpZV9tcHNzKS4KPj4KPj4gTm90ZSB0aGF0IHRoaXMgaW5p
+dGlhbCBtYXhpbXVtIE1QUyBzZXR0aW5nIG1heSBiZSByZWR1Y2VkIGxhdGVyLCBkdXJpbmcKPj4g
+ZG93bnN0cmVhbSBkZXZpY2UgZW51bWVyYXRpb24sIGlmIGFueSBkb3duc3RyZWFtIGRldmljZSBk
+b2VzIG5vdCBzdXBwb3IKPj4gdGhlIFJvb3QgUG9ydCdzIG1heGltdW0gTVBTLgo+Pgo+PiBUaGlz
+IGNoYW5nZSBlbnN1cmVzIFJvb3QgUG9ydHMgYXJlIHByb3Blcmx5IGluaXRpYWxpemVkIGJlZm9y
+ZSBkb3duc3RyZWFtCj4+IGRldmljZXMgbmVnb3RpYXRlIE1QUywgd2hpbGUgbWFpbnRhaW5pbmcg
+YmFja3dhcmQgY29tcGF0aWJpbGl0eSB2aWEgdGhlCj4+IFBDSUVfQlVTX1RVTkVfT0ZGIGNoZWNr
+Lgo+Pgo+IAo+IFRlc3RlZC1ieTogU2hhd24gTGluIDxzaGF3bi5saW5Acm9jay1jaGlwcy5jb20+
+CgpIaSBTaGF3biwKClRoYW5rIHlvdSBmb3IgeW91ciB0ZXN0LgoKQmVzdCByZWdhcmRzLApIYW5z
+Cgo+IAo+PiBTdWdnZXN0ZWQtYnk6IE5pa2xhcyBDYXNzZWwgPGNhc3NlbEBrZXJuZWwub3JnPgo+
+PiBTdWdnZXN0ZWQtYnk6IE1hbml2YW5uYW4gU2FkaGFzaXZhbSA8bWFuaUBrZXJuZWwub3JnPgo+
+PiBTaWduZWQtb2ZmLWJ5OiBIYW5zIFpoYW5nIDwxODI1NTExNzE1OUAxNjMuY29tPgo+PiAtLS0K
+Pj4gwqAgZHJpdmVycy9wY2kvcHJvYmUuYyB8IDEyICsrKysrKysrKysrKwo+PiDCoCAxIGZpbGUg
+Y2hhbmdlZCwgMTIgaW5zZXJ0aW9ucygrKQo+Pgo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9wY2kv
+cHJvYmUuYyBiL2RyaXZlcnMvcGNpL3Byb2JlLmMKPj4gaW5kZXggMGNlOThlMThiNWE4Li4yNDU5
+ZGVmM2FmOWIgMTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMvcGNpL3Byb2JlLmMKPj4gKysrIGIvZHJp
+dmVycy9wY2kvcHJvYmUuYwo+PiBAQCAtMjE5Niw2ICsyMTk2LDE4IEBAIHN0YXRpYyB2b2lkIHBj
+aV9jb25maWd1cmVfbXBzKHN0cnVjdCBwY2lfZGV2ICpkZXYpCj4+IMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgIHJldHVybjsKPj4gwqDCoMKgwqDCoCB9Cj4+Cj4+ICvCoMKgwqDCoCAvKgo+PiAr
+wqDCoMKgwqDCoCAqIFVubGVzcyBNUFMgc3RyYXRlZ3kgaXMgUENJRV9CVVNfVFVORV9PRkYgKGRv
+bid0IHRvdWNoIE1QUyBhdCAKPj4gYWxsKSwKPj4gK8KgwqDCoMKgwqAgKiBzdGFydCBvZmYgYnkg
+c2V0dGluZyBSb290IFBvcnRzJyBNUFMgdG8gTVBTUy4gVGhpcyBvbmx5IAo+PiBhcHBsaWVzIHRv
+Cj4+ICvCoMKgwqDCoMKgICogUm9vdCBQb3J0cyB3aXRob3V0IGFuIHVwc3RyZWFtIGJyaWRnZSAo
+cm9vdCBicmlkZ2VzKSwgYXMgCj4+IG90aGVyIFJvb3QKPj4gK8KgwqDCoMKgwqAgKiBQb3J0cyB3
+aWxsIGhhdmUgZG93bnN0cmVhbSBicmlkZ2VzLiBEZXBlbmRpbmcgb24gdGhlIE1QUyAKPj4gc3Ry
+YXRlZ3kKPj4gK8KgwqDCoMKgwqAgKiBhbmQgTVBTUyBvZiBkb3duc3RyZWFtIGRldmljZXMsIHRo
+ZSBSb290IFBvcnQncyBNUFMgbWF5IGJlCj4+ICvCoMKgwqDCoMKgICogb3ZlcnJpZGRlbiBsYXRl
+ci4KPj4gK8KgwqDCoMKgwqAgKi8KPj4gK8KgwqDCoMKgIGlmICghYnJpZGdlICYmIHBjaV9wY2ll
+X3R5cGUoZGV2KSA9PSBQQ0lfRVhQX1RZUEVfUk9PVF9QT1JUICYmCj4+ICvCoMKgwqDCoMKgwqDC
+oMKgIHBjaWVfYnVzX2NvbmZpZyAhPSBQQ0lFX0JVU19UVU5FX09GRikKPj4gK8KgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoCBwY2llX3NldF9tcHMoZGV2LCAxMjggPDwgZGV2LT5wY2llX21wc3MpOwo+
+PiArCj4+IMKgwqDCoMKgwqAgaWYgKCFicmlkZ2UgfHwgIXBjaV9pc19wY2llKGJyaWRnZSkpCj4+
+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHJldHVybjsKPj4KPiAKPiAKCgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWls
+aW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
+aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
