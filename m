@@ -4,78 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41B68CCF9F8
-	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Nov 2025 08:22:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E29D0CCFA1A
+	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Nov 2025 08:24:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DyfMkeBtYWuYTo4e1wv4xA0bq9+ZzfIWSHpCiG2neeU=; b=FI9wsOhXyMMPtp
-	L/T8wL+bFzE4c8uN4v3xOHlyABlYmaGV4v1eVP/VB7OmQLNuG0JkvUhUPt/DNHulDZ5QDaVYxnPBr
-	OynM5p35zqCYzwD+wmHkF2k/EOyGSvp8HVjYBcRybOj3PEAY7MQFAJPPZMs8LgFM3vspV0mXTQ/G2
-	X7iChIPkb90zoxMUzF5e2BgVKCyrK3BWXxJEe1AzmcoFn3CANjHE8VRVvZncVszn4RAwE/nPAz4oy
-	1gkc7cSa5dTvs8Nlm2giI0yuD60q2+OOZqlpC8itSjMjKPmhjVD2MfcfsBKmRgb5uVuHx15GpDYay
-	v/FnOufioC+N0glKqqJA==;
+	List-Owner; bh=hBjao45v69mQtVIzo53PeZZud7M/exW6Lu5nD07i774=; b=mBc+sxbuY6PYe3
+	8diKVzUShgSvqKc+Xm7QbpTWh92PIuE53mmJubtPdqShW04yWtnU2w8n572gJj/A2kqNuCoT9wIdS
+	F8iecSQiHKqAaWt8VyPLMLzFp8yxUqqlfNCmyj0CCJIf/BLTrG6SJMXNKJz6qqlVsYRAHUvN4OP6u
+	ezGnJSUsU3ie/S9yXls83phAEBVFxyEAT5MIhIVv5TsEbmcL11f16Lt8ATL/G0StIVEx99Pfbeb79
+	jU1n8GFytW61WM8aSo+3ouiXOCXhcgxU5Y29txbHehb3QGeeJcroezALpmu9MxIKoATsPfTSW/dks
+	EEypRc+e+dA+7TCB9Uow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJ67t-00000008KZl-0k5u;
-	Wed, 12 Nov 2025 08:22:49 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vJ69B-00000008Klb-2coc;
+	Wed, 12 Nov 2025 08:24:09 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJ67q-00000008KZ2-2BJz;
-	Wed, 12 Nov 2025 08:22:47 +0000
+	id 1vJ699-00000008Kkr-1win;
+	Wed, 12 Nov 2025 08:24:08 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 9A9C841573;
-	Wed, 12 Nov 2025 08:22:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A174BC4CEF8;
-	Wed, 12 Nov 2025 08:22:39 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id ACBD443E14;
+	Wed, 12 Nov 2025 08:24:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 381D5C116B1;
+	Wed, 12 Nov 2025 08:24:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1762935765;
-	bh=WHWCVmYt6UtQ3D5Ri8XoM/WvWGHNmlnb2EcUM8qufBk=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=kttxp00Xc7Q2NVR9zWtAQOW32+K5IUJtvvbjIacWFrREkJHKtXZvOqAE9Gua6PoGC
-	 Z0PWHqSpMfxReJv7iL5UYQPsbL046fDjJOWbbV4bdQ4pdjMz2nIzAIHZhMw7bzayUP
-	 y2Bv+7T/1TtBofUmqHq5O+CejsEDVgK3i6OQG2/ijVcXuHJBdoNk3MTvk2hn7OOdM5
-	 4L32vutb2OpX5twJ0FaMH2B6Hocia+8TeMb5mZAZkTeNOGVOALNy25ugZsQxFkScZ+
-	 F5ZGrNhFI8NY7qx2IFdGhctYLQpV0z7JBTaVUMm/cMNC1+rmxzdT6Bx+4s4v6urya+
-	 S/b1vretnjh2g==
-Date: Wed, 12 Nov 2025 09:22:36 +0100
-From: Niklas Cassel <cassel@kernel.org>
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: Shawn Lin <shawn.lin@rock-chips.com>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Rob Herring <robh@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
-	Kever Yang <kever.yang@rock-chips.com>,
-	Simon Xue <xxm@rock-chips.com>, Damien Le Moal <dlemoal@kernel.org>,
-	Dragan Simic <dsimic@manjaro.org>, FUKAUMI Naoki <naoki@radxa.com>,
-	Diederik de Haas <diederik@cknow-tech.com>,
-	Richard Zhu <hongxing.zhu@nxp.com>, Frank Li <Frank.li@nxp.com>,
-	Lucas Stach <l.stach@pengutronix.de>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>, Conor Dooley <conor@kernel.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Hans Zhang <hans.zhang@cixtech.com>, linux-tegra@vger.kernel.org,
-	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, kernel@pengutronix.de,
-	Bjorn Helgaas <bhelgaas@google.com>
-Subject: Re: [PATCH 1/4] PCI: dwc: Advertise L1 PM Substates only if driver
- requests it
-Message-ID: <aRRDzKFVTFTIuvvh@ryzen>
-References: <20251111221621.2208606-1-helgaas@kernel.org>
- <20251111221621.2208606-2-helgaas@kernel.org>
+	s=k20201202; t=1762935846;
+	bh=nPgIElCsbpJYasIzjMJOq1v5dfPCNLHDI/7LeLitaKo=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=NPlPq+RM0G7b72mCTTTtcouVS4XBtI33J8V715Lf4rY7WBJPYTlKN/gXhiIK8tfr0
+	 HfJoQUONE9Jhe65mDcTIJcXMunEVq/erqEbRui/nwWfvQyJOR1ci8zYuJ5UmJTfWNc
+	 1829z/qQewKmdDoxxwyh+OFtvkv8qUjZF2AHwWnOifG5bNRDtfRhphe3TfNS88B1a/
+	 sUiIVOmTcMJdJ3kQzKe3OLarcbZJemcs3kEhP84ts8lzGmD1GtsdfTGjij0Dp+jyNX
+	 7Z65OThEjRjA4yOu6stsirYiJaCMDRbKtn8bA37mBUSG0QwHVkfIJmbkVR4dTckhgY
+	 e7Y1/DTRjsmpg==
+Message-ID: <88893633-ca4f-42d2-8d69-7f065ea34bf0@kernel.org>
+Date: Wed, 12 Nov 2025 09:24:01 +0100
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20251111221621.2208606-2-helgaas@kernel.org>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RESEND PATCH v7 4/5] dt-bindings: clock: rockchip: Add RK3506
+ clock and reset unit
+To: Elaine Zhang <zhangqing@rock-chips.com>, mturquette@baylibre.com,
+ sboyd@kernel.org, heiko@sntech.de, robh@kernel.org, p.zabel@pengutronix.de,
+ krzk+dt@kernel.org, conor+dt@kernel.org
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, finley.xiao@rock-chips.com,
+ sugar.zhang@rock-chips.com
+References: <20251112022111.3828521-1-zhangqing@rock-chips.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <20251112022111.3828521-1-zhangqing@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251112_002246_579910_CA5C61C4 
-X-CRM114-Status: GOOD (  11.20  )
+X-CRM114-CacheID: sfid-20251112_002407_549474_B1B7D651 
+X-CRM114-Status: UNSURE (   6.92  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,44 +121,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Nov 11, 2025 at 04:16:08PM -0600, Bjorn Helgaas wrote:
-> --- a/drivers/pci/controller/dwc/pcie-designware-host.c
-> +++ b/drivers/pci/controller/dwc/pcie-designware-host.c
-> @@ -1060,6 +1060,8 @@ int dw_pcie_setup_rc(struct dw_pcie_rp *pp)
->  		PCI_COMMAND_MASTER | PCI_COMMAND_SERR;
->  	dw_pcie_writel_dbi(pci, PCI_COMMAND, val);
->  
-> +	dw_pcie_config_l1ss(pci);
-
-The name dw_pcie_config_l1ss() sounds like we are enabling l1ss.
-
-I know naming is hard.
-
-Perhaps dw_pcie_disable_unsupported_l1ss() ?
-
-Or something similar.
+On 12/11/2025 03:21, Elaine Zhang wrote:
+> From: Finley Xiao <finley.xiao@rock-chips.com>
+> 
+> Add device tree bindings for clock and reset unit on RK3506 SoC.
+> Add clock and reset IDs for RK3506 SoC.
+> 
+> Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
+> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
 
 
-> --- a/drivers/pci/controller/dwc/pcie-qcom.c
-> +++ b/drivers/pci/controller/dwc/pcie-qcom.c
-> @@ -1067,6 +1067,8 @@ static int qcom_pcie_init_2_7_0(struct qcom_pcie *pcie)
->  	val &= ~REQ_NOT_ENTR_L1;
->  	writel(val, pcie->parf + PARF_PM_CTRL);
->  
-> +	pci->l1ss_support = true;
-> +
->  	val = readl(pcie->parf + PARF_AXI_MSTR_WR_ADDR_HALT_V2);
->  	val |= EN;
->  	writel(val, pcie->parf + PARF_AXI_MSTR_WR_ADDR_HALT_V2);
+You just again ignored Conor's feedback and resent only this, so his
+questions are buried in the archives.
 
-While it seems like ops_2_7_0 is the only type that explicitly does a
-register write to enable L1ss, other versions might have the register
-as enabled by default, so it would be nice if Mani could confirm exactly
-which versions that should set l1ss_support = true.
+NAK
 
-
-Kind regards,
-Niklas
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
