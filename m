@@ -4,59 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42FE4CD13D3
-	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Nov 2025 13:24:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEBB9CCF9E3
+	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Nov 2025 15:02:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:From:Subject:Cc:
-	To:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ojHjdT0gLvg9gj6t9v734X4fVNDJBeqZllAEZXQpS/k=; b=D62bJauzyh4/jj
-	a+omvXz1mNSJSUYpm0GqULbmz0kvXAETYQiTgILS8XegNLJ4SG6Nid85fy+eP3lKJsnphjzUOkxpM
-	wiOkbFkDmQ6tCUPcW1YPRVXmdMSFl5idRAwozJztFUswh4JL24f/H99/3qD8by6Sq8txQigoX61SJ
-	r0s/6UYWH0eLXq2/DnLTt3jhA9njNmJP/AQsEvoSMMROzCnJ9OVtSp0Qtj38PlVwaJZ8Eku0vSSAk
-	uv13Ntr7dSx6x8K2sgbUMVRQopb57EEr6am6JOguuSef/Ak+moP7UKEBrkUq/7+vxv16c5sp2WvOk
-	sT8spdaeFQqw3xFWiEFg==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
+	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=xeejIAsfm13FVRXTk3elTPBYRHLZV2ja7LraR/3Z6u0=; b=r+1iXA2qfdWqhc
+	/7IM5rPEZWQA/+Vm/eHAGY+z9NAjO0bkgj2cl2y8HraWj9BXpDXjK8hlASke6y3sau5GcSspe2LLM
+	UMZvoRmqDAqkOTlFjZGYc2bLXMts6UxBfHI06xr3pPCSz4Mi6ohx/QXjWZEFfvf889bOI4xp89fsl
+	OlLoPj9PAiD+iKLV1rR69Wg+XpupHXzblWIrGXIq2tYfOJLD7pMKL4hpdKGWDTbseOh+0ySdfeFcv
+	LcwQCNgbxmr710WK2qg56IcYvXe1/x0lqx9NDoagXqbep7XfXPWfStZxMACQfKnAsvQIGl9900mT1
+	qFUult0MX4heUoOG5l+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJApI-00000008q9P-2FYX;
-	Wed, 12 Nov 2025 13:23:56 +0000
-Received: from out-184.mta0.migadu.com ([91.218.175.184])
+	id 1vJCMR-000000090Jb-22SK;
+	Wed, 12 Nov 2025 15:02:15 +0000
+Received: from smtp-190b.mail.infomaniak.ch ([185.125.25.11])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJApF-00000008q8h-33PS
+	id 1vJCMN-000000090I4-35Ua
 	for linux-rockchip@lists.infradead.org;
-	Wed, 12 Nov 2025 13:23:55 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow-tech.com;
-	s=key1; t=1762953831;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=FPEMzOztpJUvojsoCi0pzhR593btKmY4mmBboMedZFk=;
-	b=FUj2SeR3Zs+ZRsouks+uTMRzsGS/+tSLpSv253fR3UUjDL+BQ2S3m34Yh0dI7DCEZI7Cfu
-	55dAosTlW4PwMF/bGCNfazJAgDxKDz1/Il8+5JSJ3O0vfxl2CFzZuf2YOTPFJi3GCSeUvX
-	mJy2TTAxM593CxFrMyJbdyuKlCumHyAaHFJqlDw7SXhj54fcFzCcX2zRx6aUDOIwpI6ULo
-	bQ4aYDtlnPjSnv87GRO4e0QfCf8vPmrfw2jNGOEZFuE/syUzmA7B+lfpsIcits0RLGdQM2
-	MtRYv/ZXy837jnNB7kpR78SlcKgjvquiQDGJmXLH0n+2VW1X5ys7euxSSsrBUg==
-Date: Wed, 12 Nov 2025 14:23:49 +0100
-Message-Id: <DE6QZ4EILEX2.1MQSX07ZMQLCW@cknow-tech.com>
-To: "Andy Yan" <andyshrk@163.com>, <heiko@sntech.de>
-Cc: <hjc@rock-chips.com>, <diederik@cknow-tech.com>,
- <dri-devel@lists.freedesktop.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>, <linux-rockchip@lists.infradead.org>, "Andy
- Yan" <andy.yan@rock-chips.com>
-Subject: Re: [PATCH] drm/rockchip: vop2: Use OVL_LAYER_SEL configuration
- instead of use win_mask calculate used layers
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <diederik@cknow-tech.com>
-References: <20251112085024.2480111-1-andyshrk@163.com>
-In-Reply-To: <20251112085024.2480111-1-andyshrk@163.com>
-X-Migadu-Flow: FLOW_OUT
+	Wed, 12 Nov 2025 15:02:13 +0000
+Received: from smtp-4-0001.mail.infomaniak.ch (unknown [IPv6:2001:1600:7:10::a6c])
+	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4d667f66VszfD8;
+	Wed, 12 Nov 2025 16:02:06 +0100 (CET)
+Received: from unknown by smtp-4-0001.mail.infomaniak.ch (Postfix) with ESMTPA id 4d667f1jG9z2cg;
+	Wed, 12 Nov 2025 16:02:06 +0100 (CET)
+From: Quentin Schulz <foss+kernel@0leil.net>
+Date: Wed, 12 Nov 2025 16:01:53 +0100
+Subject: [PATCH] arm64: dts: rockchip: disable HS400 on RK3588 Tiger
+MIME-Version: 1.0
+Message-Id: <20251112-tiger-hs200-v1-1-b50adac107c0@cherry.de>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x3MOwqAMBBF0a2EqQ1kIoPiVsTCzzNOo5KICMG9G
+ yxPcW+mhKhI1JlMEbcmPfYCrgzN27gHWF2KyTsvzOztpQHRbsk7ZyFT24AhbS1UijNi1ee/9cP
+ 7fuJDspFdAAAA
+X-Change-ID: 20251112-tiger-hs200-e5b87e1e5835
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: Jakob Unterwurzacher <jakob.unterwurzacher@cherry.de>, 
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Quentin Schulz <quentin.schulz@cherry.de>
+X-Mailer: b4 0.14.3
+X-Infomaniak-Routing: alpha
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251112_052353_937625_DF278F8E 
-X-CRM114-Status: GOOD (  28.36  )
+X-CRM114-CacheID: sfid-20251112_070211_937460_143EBF8F 
+X-CRM114-Status: UNSURE (   9.50  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,119 +69,62 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Andy,
+From: Quentin Schulz <quentin.schulz@cherry.de>
 
-On Wed Nov 12, 2025 at 9:50 AM CET, Andy Yan wrote:
-> From: Andy Yan <andy.yan@rock-chips.com>
->
-> When there are multiple Video Ports, and only one of them is working
-> (for example, VP1 is working while VP0 is not), in this case, the
-> win_mask of VP0 is 0. However, we have already set the port mux for VP0
-> according to vp0->nlayers, and at the same time, in the OVL_LAYER_SEL
-> register, there are windows will also be assigned to layers which will
-> map to the inactive VPs. In this situation, vp0->win_mask is zero as it
-> now working, it is more reliable to calculate the used layers based on
-> the configuration of the OVL_LAYER_SEL register.
+We've had reports from the field that some RK3588 Tiger have random
+issues with eMMC errors.
 
-Thanks a lot for this patch!
-I've tested it on my PineTab2 and the 'black box under cursor' problem
-is now fixed :-) So feel free to add my
+Applying commit a28352cf2d2f ("mmc: sdhci-of-dwcmshc: Change
+DLL_STRBIN_TAPNUM_DEFAULT to 0x4") didn't help and seemed to have made
+things worse for our board.
 
-Tested-by: Diederik de Haas <diederik@cknow-tech.com>
+Our HW department checked the eMMC lines and reported that they are too
+long and don't look great so signal integrity is probably not the best.
 
-Cheers,
-  Diederik
+Note that not all Tigers with the same eMMC chip have errors, so the
+suspicion is that we're really on the edge in terms of signal integrity
+and only a handful devices are failing. Additionally, we have RK3588
+Jaguars with the same eMMC chip but the layout is different and we also
+haven't received reports about those so far.
 
-> Note: as the configuration of OVL_LAYER_SEL is take effect when the
-> vsync is come, so we use the value backup in vop2->old_layer_sel instead
-> of read OVL_LAYER_SEL directly.
->
-> Fixes: 3e89a8c68354 ("drm/rockchip: vop2: Fix the update of LAYER/PORT select registers when there are multi display output on rk3588/rk3568")
-> Reported-by: Diederik de Haas <diederik@cknow-tech.com>
-> Closes: https://bugs.kde.org/show_bug.cgi?id=511274
-> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
-> ---
->
->  drivers/gpu/drm/rockchip/rockchip_vop2_reg.c | 49 +++++++++++++++++---
->  1 file changed, 42 insertions(+), 7 deletions(-)
->
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-> index d22ce11a4235..f3950e8476a7 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-> @@ -1369,6 +1369,25 @@ static const struct vop2_regs_dump rk3588_regs_dump[] = {
->  	},
->  };
->  
-> +/*
-> + * phys_id is used to identify a main window(Cluster Win/Smart Win, not
-> + * include the sub win of a cluster or the multi area) that can do overlay
-> + * in main overlay stage.
-> + */
-> +static struct vop2_win *vop2_find_win_by_phys_id(struct vop2 *vop2, uint8_t phys_id)
-> +{
-> +	struct vop2_win *win;
-> +	int i;
-> +
-> +	for (i = 0; i < vop2->data->win_size; i++) {
-> +		win = &vop2->win[i];
-> +		if (win->data->phys_id == phys_id)
-> +			return win;
-> +	}
-> +
-> +	return NULL;
-> +}
-> +
->  static unsigned long rk3568_set_intf_mux(struct vop2_video_port *vp, int id, u32 polflags)
->  {
->  	struct vop2 *vop2 = vp->vop2;
-> @@ -1842,15 +1861,31 @@ static void vop2_parse_alpha(struct vop2_alpha_config *alpha_config,
->  	alpha->dst_alpha_ctrl.bits.factor_mode = ALPHA_SRC_INVERSE;
->  }
->  
-> -static int vop2_find_start_mixer_id_for_vp(struct vop2 *vop2, u8 port_id)
-> +static int vop2_find_start_mixer_id_for_vp(struct vop2_video_port *vp)
->  {
-> -	struct vop2_video_port *vp;
-> -	int used_layer = 0;
-> +	struct vop2 *vop2 = vp->vop2;
-> +	struct vop2_win *win;
-> +	u32 layer_sel = vop2->old_layer_sel;
-> +	u32 used_layer = 0;
-> +	unsigned long win_mask = vp->win_mask;
-> +	unsigned long phys_id;
-> +	bool match;
->  	int i;
->  
-> -	for (i = 0; i < port_id; i++) {
-> -		vp = &vop2->vps[i];
-> -		used_layer += hweight32(vp->win_mask);
-> +	for (i = 0; i < 31; i += 4) {
-> +		match = false;
-> +		for_each_set_bit(phys_id, &win_mask, ROCKCHIP_VOP2_ESMART3) {
-> +			win = vop2_find_win_by_phys_id(vop2, phys_id);
-> +			if (win->data->layer_sel_id[vp->id] == ((layer_sel >> i) & 0xf)) {
-> +				match = true;
-> +				break;
-> +			}
-> +		}
-> +
-> +		if (!match)
-> +			used_layer += 1;
-> +		else
-> +			break;
->  	}
->  
->  	return used_layer;
-> @@ -1935,7 +1970,7 @@ static void vop2_setup_alpha(struct vop2_video_port *vp)
->  	u32 dst_global_alpha = DRM_BLEND_ALPHA_OPAQUE;
->  
->  	if (vop2->version <= VOP_VERSION_RK3588)
-> -		mixer_id = vop2_find_start_mixer_id_for_vp(vop2, vp->id);
-> +		mixer_id = vop2_find_start_mixer_id_for_vp(vp);
->  	else
->  		mixer_id = 0;
->  
+Lowering the max-frequency to 150MHz from 200MHz instead of simply
+disabling HS400 was briefly tested and seem to work as well. We've
+disabled HS400 downstream and haven't received reports since so we'll go
+with that instead of lowering the max-frequency.
+
+Signed-off-by: Quentin Schulz <quentin.schulz@cherry.de>
+---
+ arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi
+index b44e89e1bb159..365c1d958f2d5 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi
+@@ -382,14 +382,12 @@ &sdhci {
+ 	cap-mmc-highspeed;
+ 	mmc-ddr-1_8v;
+ 	mmc-hs200-1_8v;
+-	mmc-hs400-1_8v;
+-	mmc-hs400-enhanced-strobe;
+ 	mmc-pwrseq = <&emmc_pwrseq>;
+ 	no-sdio;
+ 	no-sd;
+ 	non-removable;
+ 	pinctrl-names = "default";
+-	pinctrl-0 = <&emmc_bus8 &emmc_cmd &emmc_clk &emmc_data_strobe>;
++	pinctrl-0 = <&emmc_bus8 &emmc_cmd &emmc_clk>;
+ 	vmmc-supply = <&vcc_3v3_s3>;
+ 	vqmmc-supply = <&vcc_1v8_s3>;
+ 	status = "okay";
+
+---
+base-commit: 6bff916a7e9b6b7f6bd06eb5722e6dfbb777f13e
+change-id: 20251112-tiger-hs200-e5b87e1e5835
+
+Best regards,
+-- 
+Quentin Schulz <quentin.schulz@cherry.de>
 
 
 _______________________________________________
