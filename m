@@ -4,66 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF6CBCCFA18
-	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Nov 2025 02:00:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17E50CCFA18
+	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Nov 2025 02:21:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zgmajus7mjJnWBdRYSmsZnhMV2aQ3ZQDM5D2NpxAW14=; b=K1rkgInqGs6yh0
-	cJmf46Bo6YcojGrVJnR2FCU7RatQyGeZ1F5mcQPrbvN8RgjXJFFHHROdMLGoYLv1tABX6YsjxXcdd
-	D6r+zsM/j7R/GDMcNwBG7G0lOSzarVq/3ZOG9aXmeztMcshD/D8u6kpnnq9sYPmFeAA/0381Dx2MR
-	CrxHr/i/DciMb65fBdINpUAwzQFMJ80Yz4Tv6RaNhRXOLxNv9kgiaODhsbj2EJaPxaxhhiUnl8TsC
-	yIdfAJ9cazYDs5kglqD2CoVled+xPHmoTGHyPtjmEeNif1jXM3Lj8g+KnOb5WZhJMcq2XpQYZLfvj
-	QmrDWG045Vhtd6xLKX+w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=AxnjVvNaPtOxlzJ0Igs7Cc3+1AvNosNHq5V1JjBDCp0=; b=0KMppKT0vq3c9X
+	kJgyGM5f3Pt8ecceJQt9SRErtuW5hzUHBKCs2QMQfTmcM++9HqLkWKeuU4na3eHy5765w6r+R7I14
+	Ub9FrQ4SdILuhbyS1YodQxDqNVE9RJOmfezCrIWvSpQIqjjt1pjdifq+6RgP6UGJEiR4tRRuMH7Pq
+	Sf4ytnTaprmT8SLJz2tM/5L51f9hALXdGD9bytD0EWHxCbeIBc5CrsFQwIoLVj4VTK2eYNUHWGL6C
+	pGOgJ4p3yVg84x83dkXNShKJ83ks5jvbiFn3tHw/MnK4mdzjFi89HfkwkICdLQwJmw++n4x9G1S+q
+	sA1GXqx5SZVS+12294Pg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJ09P-00000007zl7-38sY;
-	Wed, 12 Nov 2025 01:59:59 +0000
-Received: from mail-m15589.qiye.163.com ([101.71.155.89])
+	id 1vJ0U5-000000081Lz-0eDj;
+	Wed, 12 Nov 2025 02:21:21 +0000
+Received: from mail-m15588.qiye.163.com ([101.71.155.88])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJ09G-00000007zaH-3eJJ;
-	Wed, 12 Nov 2025 01:59:56 +0000
+	id 1vJ0U1-000000081Kq-2Ezw;
+	Wed, 12 Nov 2025 02:21:19 +0000
 Received: from rockchip.. (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 2941ca625;
-	Wed, 12 Nov 2025 09:59:47 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 294288867;
+	Wed, 12 Nov 2025 10:21:13 +0800 (GMT+08:00)
 From: Elaine Zhang <zhangqing@rock-chips.com>
-To: zhangqing@rock-chips.com,
-	mkl@pengutronix.de,
-	kernel@pengutronix.de,
-	mailhol.vincent@wanadoo.fr,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
+To: mturquette@baylibre.com,
+	sboyd@kernel.org,
+	zhangqing@rock-chips.com,
 	heiko@sntech.de,
-	cl@rock-chips.com
-Cc: linux-can@vger.kernel.org,
+	robh@kernel.org,
+	p.zabel@pengutronix.de,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org
+Cc: devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
+	linux-clk@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org
-Subject: [RESEND PATCH v8 4/4] net: can: rockchip: support dma for rk3576 rx
-Date: Wed, 12 Nov 2025 09:59:40 +0800
-Message-Id: <20251112015940.3695638-5-zhangqing@rock-chips.com>
+	finley.xiao@rock-chips.com,
+	sugar.zhang@rock-chips.com
+Subject: [RESEND PATCH v7 4/5] dt-bindings: clock: rockchip: Add RK3506 clock and reset unit
+Date: Wed, 12 Nov 2025 10:21:11 +0800
+Message-Id: <20251112022111.3828521-1-zhangqing@rock-chips.com>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20251112015940.3695638-1-zhangqing@rock-chips.com>
-References: <20251112015940.3695638-1-zhangqing@rock-chips.com>
 MIME-Version: 1.0
-X-HM-Tid: 0a9a75ca5c7703a3kunm5e00f3261f077d
+X-HM-Tid: 0a9a75ddfa9503a3kunm6830aa801fa358
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGUhMTlZLQxpLTR5CSE0aTkJWFRQJFh
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGU5KHVZLQ01CHh1CSBpPGU9WFRQJFh
 	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpKQk
 	1VSktLVUpCWQY+
 DKIM-Signature: a=rsa-sha256;
-	b=MlPdQcBS++LtSRKkCsd6Mtelf7U/jEpRYJoER8sEQ/OUZEsdZtPImU7Jjw9TmWTLbWogMt3iPIRS+B3zuKZkZjbYOI+PGcYwJn3H7HMet9lxGJ4D7nSyOJh315kAiS+waagedwIuELgynsjHaJWYZI2kcwllICwUI0CFr9JkeQE=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=Gx1ZNKdQ6vm4QkQx+CizmRfGvSq5qGs0J5j5xTq7oJI=;
+	b=ZdHrdibq9Hfn8FHkfVVHS1Xsus5dspe6zuQvqMMzCPuGpqpLu+yYs+mFAI7aNfh0LXmpUTvDMk9lSEgEroPaYqfNrv0HH8BlWPfVpi2vBEpXsfnI0xYrc1tdmSWQJ6cJPKscBQsCa8nZ3vq9UXugorhJN64YdKJit4MGeSFHuIs=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=GNQ9loUKL6hh4i87QnwH29KaluitF11Bzb3qoAoQNbw=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251111_175951_183454_BD4FEADD 
-X-CRM114-Status: GOOD (  22.07  )
+X-CRM114-CacheID: sfid-20251111_182117_947732_CD8CD65F 
+X-CRM114-Status: GOOD (  11.68  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,298 +79,581 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The new can controller of rk3576 supports rx dma.
+From: Finley Xiao <finley.xiao@rock-chips.com>
 
+Add device tree bindings for clock and reset unit on RK3506 SoC.
+Add clock and reset IDs for RK3506 SoC.
+
+Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
 Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
 ---
- .../net/can/rockchip/rockchip_canfd-core.c    |  62 +++++++++-
- drivers/net/can/rockchip/rockchip_canfd-rx.c  | 109 ++++++++++++++++++
- drivers/net/can/rockchip/rockchip_canfd.h     |   9 ++
- 3 files changed, 178 insertions(+), 2 deletions(-)
+ .../bindings/clock/rockchip,rk3506-cru.yaml   |  45 +++
+ .../dt-bindings/clock/rockchip,rk3506-cru.h   | 285 ++++++++++++++++++
+ .../dt-bindings/reset/rockchip,rk3506-cru.h   | 211 +++++++++++++
+ 3 files changed, 541 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3506-cru.yaml
+ create mode 100644 include/dt-bindings/clock/rockchip,rk3506-cru.h
+ create mode 100644 include/dt-bindings/reset/rockchip,rk3506-cru.h
 
-diff --git a/drivers/net/can/rockchip/rockchip_canfd-core.c b/drivers/net/can/rockchip/rockchip_canfd-core.c
-index 58fffcf97b20..8284bf05efba 100644
---- a/drivers/net/can/rockchip/rockchip_canfd-core.c
-+++ b/drivers/net/can/rockchip/rockchip_canfd-core.c
-@@ -399,6 +399,9 @@ static void rk3576can_chip_start(struct rkcanfd_priv *priv)
- 		      RK3576CAN_REG_BRS_CFG_BRS_NEGSYNC_EN |
- 		      RK3576CAN_REG_BRS_CFG_BRS_POSSYNC_EN);
- 
-+	if (priv->dma_thr)
-+		rkcanfd_write(priv, RK3576CAN_REG_DMA_CTRL,
-+			      RK3576CAN_REG_DMA_CTRL_DMA_RX_EN | priv->dma_thr);
- 	rkcanfd_set_bittiming(priv);
- 
- 	priv->devtype_data.interrupts_disable(priv);
-@@ -1288,10 +1291,34 @@ static const struct of_device_id rkcanfd_of_match[] = {
- };
- MODULE_DEVICE_TABLE(of, rkcanfd_of_match);
- 
-+static int rk3576_canfd_dma_init(struct rkcanfd_priv *priv, struct resource *res)
-+{
-+	struct dma_slave_config rxconf = {
-+		.direction = DMA_DEV_TO_MEM,
-+		.src_addr = res->start + RK3576CAN_REG_RXFRD,
-+		.src_addr_width = 4,
-+		.dst_addr_width = 4,
-+		.src_maxburst = 9,
-+	};
+diff --git a/Documentation/devicetree/bindings/clock/rockchip,rk3506-cru.yaml b/Documentation/devicetree/bindings/clock/rockchip,rk3506-cru.yaml
+new file mode 100644
+index 000000000000..6b4234ee91ef
+--- /dev/null
++++ b/Documentation/devicetree/bindings/clock/rockchip,rk3506-cru.yaml
+@@ -0,0 +1,45 @@
++# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/clock/rockchip,rk3506-cru.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+	priv->dma_thr = rxconf.src_maxburst - 1;
-+	priv->dma_size = RK3576CAN_REG_STR_STATE_INTM_LEFT_CNT_UNIT * 4;
-+	priv->rxbuf = dma_alloc_coherent(priv->ndev->dev.parent,
-+					 priv->dma_size * RK3576CAN_SRAM_MAX_FIFO_CNT,
-+					 &priv->rx_dma_dst_addr, GFP_KERNEL);
-+	if (!priv->rxbuf) {
-+		priv->rxbuf = NULL;
-+		return -ENOMEM;
-+	}
-+	dmaengine_slave_config(priv->rxchan, &rxconf);
-+	return 0;
-+}
++title: Rockchip RK3506 Clock and Reset Unit (CRU)
 +
- static int rkcanfd_probe(struct platform_device *pdev)
- {
- 	struct rkcanfd_priv *priv;
- 	struct net_device *ndev;
-+	struct resource *res;
- 	const void *match;
- 	int err;
- 
-@@ -1313,7 +1340,7 @@ static int rkcanfd_probe(struct platform_device *pdev)
- 		goto out_free_candev;
- 	}
- 
--	priv->regs = devm_platform_ioremap_resource(pdev, 0);
-+	priv->regs = devm_platform_get_and_ioremap_resource(pdev, 0, &res);
- 	if (IS_ERR(priv->regs)) {
- 		err = PTR_ERR(priv->regs);
- 		goto out_free_candev;
-@@ -1348,10 +1375,22 @@ static int rkcanfd_probe(struct platform_device *pdev)
- 			priv->can.ctrlmode_supported |= CAN_CTRLMODE_FD;
- 	}
- 
-+	priv->rxchan = dma_request_chan(&pdev->dev, "rx");
-+	if (IS_ERR(priv->rxchan)) {
-+		netdev_warn(priv->ndev,
-+			    "Failed to request RX-DMA channel: %pe, continuing without DMA",
-+			    priv->rxchan);
-+		priv->rxchan = NULL;
-+	} else {
-+		err = rk3576_canfd_dma_init(priv, res);
-+		if (err)
-+			goto out_can_dma_rx_chan_del;
-+	}
++maintainers:
++  - Finley Xiao <finley.xiao@rock-chips.com>
++  - Heiko Stuebner <heiko@sntech.de>
 +
- 	err = can_rx_offload_add_manual(ndev, &priv->offload,
- 					RKCANFD_NAPI_WEIGHT);
- 	if (err)
--		goto out_free_candev;
-+		goto out_can_dma_rx_chan_del;
- 
- 	err = rkcanfd_register(priv);
- 	if (err)
-@@ -1361,6 +1400,15 @@ static int rkcanfd_probe(struct platform_device *pdev)
- 
- out_can_rx_offload_del:
- 	can_rx_offload_del(&priv->offload);
-+out_can_dma_rx_chan_del:
-+	if (priv->rxbuf) {
-+		dma_free_coherent(priv->ndev->dev.parent,
-+				  priv->dma_size * RK3576CAN_SRAM_MAX_FIFO_CNT,
-+				  priv->rxbuf, priv->rx_dma_dst_addr);
-+		priv->rxbuf = NULL;
-+	}
-+	if (priv->rxchan)
-+		dma_release_channel(priv->rxchan);
- out_free_candev:
- 	free_candev(ndev);
- 
-@@ -1372,6 +1420,16 @@ static void rkcanfd_remove(struct platform_device *pdev)
- 	struct rkcanfd_priv *priv = platform_get_drvdata(pdev);
- 	struct net_device *ndev = priv->ndev;
- 
-+	if (priv->rxbuf) {
-+		dma_free_coherent(priv->ndev->dev.parent,
-+				  priv->dma_size * RK3576CAN_SRAM_MAX_FIFO_CNT,
-+				  priv->rxbuf, priv->rx_dma_dst_addr);
-+		priv->rxbuf = NULL;
-+	}
++description:
++  The RK3506 CRU generates the clock and also implements reset for SoC
++  peripherals.
 +
-+	if (priv->rxchan)
-+		dma_release_channel(priv->rxchan);
++properties:
++  compatible:
++    const: rockchip,rk3506-cru
 +
- 	rkcanfd_unregister(priv);
- 	can_rx_offload_del(&priv->offload);
- 	free_candev(ndev);
-diff --git a/drivers/net/can/rockchip/rockchip_canfd-rx.c b/drivers/net/can/rockchip/rockchip_canfd-rx.c
-index 6bc4b0185502..e478b2b482c1 100644
---- a/drivers/net/can/rockchip/rockchip_canfd-rx.c
-+++ b/drivers/net/can/rockchip/rockchip_canfd-rx.c
-@@ -277,6 +277,71 @@ static int rk3576can_handle_rx_int_one(struct rkcanfd_priv *priv)
- 	return 0;
- }
- 
-+static int rk3576can_handle_rx_dma(struct rkcanfd_priv *priv, u32 addr)
-+{
-+	struct net_device_stats *stats = &priv->ndev->stats;
-+	struct canfd_frame *skb_cfd;
-+	struct sk_buff *skb;
-+	u32 frameinfo, id, data[16] = {0};
-+	u8 dlc;
-+	int i;
++  reg:
++    maxItems: 1
 +
-+	frameinfo = *(u32 *)(priv->rxbuf + addr * RK3576CAN_REG_STR_STATE_INTM_LEFT_CNT_UNIT);
-+	id = *(u32 *)(priv->rxbuf + 1 + addr * RK3576CAN_REG_STR_STATE_INTM_LEFT_CNT_UNIT);
-+	for (i = 0; i < (RK3576CAN_REG_STR_STATE_INTM_LEFT_CNT_UNIT - 2); i++)
-+		data[i] = *(u32 *)(priv->rxbuf + 2 + i +
-+				   addr * RK3576CAN_REG_STR_STATE_INTM_LEFT_CNT_UNIT);
++  "#clock-cells":
++    const: 1
 +
-+	if (frameinfo & RK3576CAN_REG_RXFRD_FRAMEINFO_FDF)
-+		skb = alloc_canfd_skb(priv->ndev, &skb_cfd);
-+	else
-+		skb = alloc_can_skb(priv->ndev, (struct can_frame **)&skb_cfd);
++  "#reset-cells":
++    const: 1
 +
-+	if (!skb) {
-+		stats->rx_dropped++;
++required:
++  - compatible
++  - reg
++  - "#clock-cells"
++  - "#reset-cells"
 +
-+		return 0;
-+	}
++additionalProperties: false
 +
-+	if (frameinfo & RK3576CAN_REG_RXFRD_FRAMEINFO_FRAME_FORMAT)
-+		skb_cfd->can_id = FIELD_GET(RKCANFD_REG_FD_ID_EFF, id) |
-+			CAN_EFF_FLAG;
-+	else
-+		skb_cfd->can_id = FIELD_GET(RKCANFD_REG_FD_ID_SFF, id);
++examples:
++  - |
++    clock-controller@ff9a0000 {
++      compatible = "rockchip,rk3506-cru";
++      reg = <0xff9a0000 0x20000>;
++      #clock-cells = <1>;
++      #reset-cells = <1>;
++    };
+diff --git a/include/dt-bindings/clock/rockchip,rk3506-cru.h b/include/dt-bindings/clock/rockchip,rk3506-cru.h
+new file mode 100644
+index 000000000000..71d7dda23cc9
+--- /dev/null
++++ b/include/dt-bindings/clock/rockchip,rk3506-cru.h
+@@ -0,0 +1,285 @@
++/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
++/*
++ * Copyright (c) 2023-2025 Rockchip Electronics Co., Ltd.
++ * Author: Finley Xiao <finley.xiao@rock-chips.com>
++ */
 +
-+	dlc = FIELD_GET(RK3576CAN_REG_RXFRD_FRAMEINFO_DATA_LENGTH,
-+			frameinfo);
++#ifndef _DT_BINDINGS_CLK_ROCKCHIP_RK3506_H
++#define _DT_BINDINGS_CLK_ROCKCHIP_RK3506_H
 +
-+	/* CAN-FD */
-+	if (frameinfo & RK3576CAN_REG_RXFRD_FRAMEINFO_FDF) {
-+		skb_cfd->len = can_fd_dlc2len(dlc);
++/* cru plls */
++#define PLL_GPLL			0
++#define PLL_V0PLL			1
++#define PLL_V1PLL			2
 +
-+		/* The cfd is not allocated by alloc_canfd_skb(), so
-+		 * set CANFD_FDF here.
-+		 */
-+		skb_cfd->flags |= CANFD_FDF;
++/* cru-clocks indices */
++#define ARMCLK				3
++#define CLK_DDR				4
++#define XIN24M_GATE			5
++#define CLK_GPLL_GATE			6
++#define CLK_V0PLL_GATE			7
++#define CLK_V1PLL_GATE			8
++#define CLK_GPLL_DIV			9
++#define CLK_GPLL_DIV_100M		10
++#define CLK_V0PLL_DIV			11
++#define CLK_V1PLL_DIV			12
++#define CLK_INT_VOICE_MATRIX0		13
++#define CLK_INT_VOICE_MATRIX1		14
++#define CLK_INT_VOICE_MATRIX2		15
++#define CLK_FRAC_UART_MATRIX0_MUX	16
++#define CLK_FRAC_UART_MATRIX1_MUX	17
++#define CLK_FRAC_VOICE_MATRIX0_MUX	18
++#define CLK_FRAC_VOICE_MATRIX1_MUX	19
++#define CLK_FRAC_COMMON_MATRIX0_MUX	20
++#define CLK_FRAC_COMMON_MATRIX1_MUX	21
++#define CLK_FRAC_COMMON_MATRIX2_MUX	22
++#define CLK_FRAC_UART_MATRIX0		23
++#define CLK_FRAC_UART_MATRIX1		24
++#define CLK_FRAC_VOICE_MATRIX0		25
++#define CLK_FRAC_VOICE_MATRIX1		26
++#define CLK_FRAC_COMMON_MATRIX0		27
++#define CLK_FRAC_COMMON_MATRIX1		28
++#define CLK_FRAC_COMMON_MATRIX2		29
++#define CLK_REF_USBPHY_TOP		30
++#define CLK_REF_DPHY_TOP		31
++#define ACLK_CORE_ROOT			32
++#define PCLK_CORE_ROOT			33
++#define PCLK_DBG			34
++#define PCLK_CORE_GRF			35
++#define PCLK_CORE_CRU			36
++#define CLK_CORE_EMA_DETECT		37
++#define CLK_REF_PVTPLL_CORE		38
++#define PCLK_GPIO1			39
++#define DBCLK_GPIO1			40
++#define ACLK_CORE_PERI_ROOT		41
++#define HCLK_CORE_PERI_ROOT		42
++#define PCLK_CORE_PERI_ROOT		43
++#define CLK_DSMC			44
++#define ACLK_DSMC			45
++#define PCLK_DSMC			46
++#define CLK_FLEXBUS_TX			47
++#define CLK_FLEXBUS_RX			48
++#define ACLK_FLEXBUS			49
++#define HCLK_FLEXBUS			50
++#define ACLK_DSMC_SLV			51
++#define HCLK_DSMC_SLV			52
++#define ACLK_BUS_ROOT			53
++#define HCLK_BUS_ROOT			54
++#define PCLK_BUS_ROOT			55
++#define ACLK_SYSRAM			56
++#define HCLK_SYSRAM			57
++#define ACLK_DMAC0			58
++#define ACLK_DMAC1			59
++#define HCLK_M0				60
++#define PCLK_BUS_GRF			61
++#define PCLK_TIMER			62
++#define CLK_TIMER0_CH0			63
++#define CLK_TIMER0_CH1			64
++#define CLK_TIMER0_CH2			65
++#define CLK_TIMER0_CH3			66
++#define CLK_TIMER0_CH4			67
++#define CLK_TIMER0_CH5			68
++#define PCLK_WDT0			69
++#define TCLK_WDT0			70
++#define PCLK_WDT1			71
++#define TCLK_WDT1			72
++#define PCLK_MAILBOX			73
++#define PCLK_INTMUX			74
++#define PCLK_SPINLOCK			75
++#define PCLK_DDRC			76
++#define HCLK_DDRPHY			77
++#define PCLK_DDRMON			78
++#define CLK_DDRMON_OSC			79
++#define PCLK_STDBY			80
++#define HCLK_USBOTG0			81
++#define HCLK_USBOTG0_PMU		82
++#define CLK_USBOTG0_ADP			83
++#define HCLK_USBOTG1			84
++#define HCLK_USBOTG1_PMU		85
++#define CLK_USBOTG1_ADP			86
++#define PCLK_USBPHY			87
++#define ACLK_DMA2DDR			88
++#define PCLK_DMA2DDR			89
++#define STCLK_M0			90
++#define CLK_DDRPHY			91
++#define CLK_DDRC_SRC			92
++#define ACLK_DDRC_0			93
++#define ACLK_DDRC_1			94
++#define CLK_DDRC			95
++#define CLK_DDRMON			96
++#define HCLK_LSPERI_ROOT		97
++#define PCLK_LSPERI_ROOT		98
++#define PCLK_UART0			99
++#define PCLK_UART1			100
++#define PCLK_UART2			101
++#define PCLK_UART3			102
++#define PCLK_UART4			103
++#define SCLK_UART0			104
++#define SCLK_UART1			105
++#define SCLK_UART2			106
++#define SCLK_UART3			107
++#define SCLK_UART4			108
++#define PCLK_I2C0			109
++#define CLK_I2C0			110
++#define PCLK_I2C1			111
++#define CLK_I2C1			112
++#define PCLK_I2C2			113
++#define CLK_I2C2			114
++#define PCLK_PWM1			115
++#define CLK_PWM1			116
++#define CLK_OSC_PWM1			117
++#define CLK_RC_PWM1			118
++#define CLK_FREQ_PWM1			119
++#define CLK_COUNTER_PWM1		120
++#define PCLK_SPI0			121
++#define CLK_SPI0			122
++#define PCLK_SPI1			123
++#define CLK_SPI1			124
++#define PCLK_GPIO2			125
++#define DBCLK_GPIO2			126
++#define PCLK_GPIO3			127
++#define DBCLK_GPIO3			128
++#define PCLK_GPIO4			129
++#define DBCLK_GPIO4			130
++#define HCLK_CAN0			131
++#define CLK_CAN0			132
++#define HCLK_CAN1			133
++#define CLK_CAN1			134
++#define HCLK_PDM			135
++#define MCLK_PDM			136
++#define CLKOUT_PDM			137
++#define MCLK_SPDIFTX			138
++#define HCLK_SPDIFTX			139
++#define HCLK_SPDIFRX			140
++#define MCLK_SPDIFRX			141
++#define MCLK_SAI0			142
++#define HCLK_SAI0			143
++#define MCLK_OUT_SAI0			144
++#define MCLK_SAI1			145
++#define HCLK_SAI1			146
++#define MCLK_OUT_SAI1			147
++#define HCLK_ASRC0			148
++#define CLK_ASRC0			149
++#define HCLK_ASRC1			150
++#define CLK_ASRC1			151
++#define PCLK_CRU			152
++#define PCLK_PMU_ROOT			153
++#define MCLK_ASRC0			154
++#define MCLK_ASRC1			155
++#define MCLK_ASRC2			156
++#define MCLK_ASRC3			157
++#define LRCK_ASRC0_SRC			158
++#define LRCK_ASRC0_DST			159
++#define LRCK_ASRC1_SRC			160
++#define LRCK_ASRC1_DST			161
++#define ACLK_HSPERI_ROOT		162
++#define HCLK_HSPERI_ROOT		163
++#define PCLK_HSPERI_ROOT		164
++#define CCLK_SRC_SDMMC			165
++#define HCLK_SDMMC			166
++#define HCLK_FSPI			167
++#define SCLK_FSPI			168
++#define PCLK_SPI2			169
++#define ACLK_MAC0			170
++#define ACLK_MAC1			171
++#define PCLK_MAC0			172
++#define PCLK_MAC1			173
++#define CLK_MAC_ROOT			174
++#define CLK_MAC0			175
++#define CLK_MAC1			176
++#define MCLK_SAI2			177
++#define HCLK_SAI2			178
++#define MCLK_OUT_SAI2			179
++#define MCLK_SAI3_SRC			180
++#define HCLK_SAI3			181
++#define MCLK_SAI3			182
++#define MCLK_OUT_SAI3			183
++#define MCLK_SAI4_SRC			184
++#define HCLK_SAI4			185
++#define MCLK_SAI4			186
++#define HCLK_DSM			187
++#define MCLK_DSM			188
++#define PCLK_AUDIO_ADC			189
++#define MCLK_AUDIO_ADC			190
++#define MCLK_AUDIO_ADC_DIV4		191
++#define PCLK_SARADC			192
++#define CLK_SARADC			193
++#define PCLK_OTPC_NS			194
++#define CLK_SBPI_OTPC_NS		195
++#define CLK_USER_OTPC_NS		196
++#define PCLK_UART5			197
++#define SCLK_UART5			198
++#define PCLK_GPIO234_IOC		199
++#define CLK_MAC_PTP_ROOT		200
++#define CLK_MAC0_PTP			201
++#define CLK_MAC1_PTP			202
++#define CLK_SPI2			203
++#define ACLK_VIO_ROOT			204
++#define HCLK_VIO_ROOT			205
++#define PCLK_VIO_ROOT			206
++#define HCLK_RGA			207
++#define ACLK_RGA			208
++#define CLK_CORE_RGA			209
++#define ACLK_VOP			210
++#define HCLK_VOP			211
++#define DCLK_VOP			212
++#define PCLK_DPHY			213
++#define PCLK_DSI_HOST			214
++#define PCLK_TSADC			215
++#define CLK_TSADC			216
++#define CLK_TSADC_TSEN			217
++#define PCLK_GPIO1_IOC			218
++#define PCLK_OTPC_S			219
++#define CLK_SBPI_OTPC_S			220
++#define CLK_USER_OTPC_S			221
++#define PCLK_OTP_MASK			222
++#define PCLK_KEYREADER			223
++#define HCLK_BOOTROM			224
++#define PCLK_DDR_SERVICE		225
++#define HCLK_CRYPTO_S			226
++#define HCLK_KEYLAD			227
++#define CLK_CORE_CRYPTO			228
++#define CLK_PKA_CRYPTO			229
++#define CLK_CORE_CRYPTO_S		230
++#define CLK_PKA_CRYPTO_S		231
++#define ACLK_CRYPTO_S			232
++#define HCLK_RNG_S			233
++#define CLK_CORE_CRYPTO_NS		234
++#define CLK_PKA_CRYPTO_NS		235
++#define ACLK_CRYPTO_NS			236
++#define HCLK_CRYPTO_NS			237
++#define HCLK_RNG			238
++#define CLK_PMU				239
++#define PCLK_PMU			240
++#define CLK_PMU_32K			241
++#define PCLK_PMU_CRU			242
++#define PCLK_PMU_GRF			243
++#define PCLK_GPIO0_IOC			244
++#define PCLK_GPIO0			245
++#define DBCLK_GPIO0			246
++#define PCLK_GPIO1_SHADOW		247
++#define DBCLK_GPIO1_SHADOW		248
++#define PCLK_PMU_HP_TIMER		249
++#define CLK_PMU_HP_TIMER		250
++#define CLK_PMU_HP_TIMER_32K		251
++#define PCLK_PWM0			252
++#define CLK_PWM0			253
++#define CLK_OSC_PWM0			254
++#define CLK_RC_PWM0			255
++#define CLK_MAC_OUT			256
++#define CLK_REF_OUT0			257
++#define CLK_REF_OUT1			258
++#define CLK_32K_FRAC			259
++#define CLK_32K_RC			260
++#define CLK_32K				261
++#define CLK_32K_PMU			262
++#define PCLK_TOUCH_KEY			263
++#define CLK_TOUCH_KEY			264
++#define CLK_REF_PHY_PLL			265
++#define CLK_REF_PHY_PMU_MUX		266
++#define CLK_WIFI_OUT			267
++#define CLK_V0PLL_REF			268
++#define CLK_V1PLL_REF			269
++#define CLK_32K_FRAC_MUX		270
 +
-+		if (frameinfo & RK3576CAN_REG_RXFRD_FRAMEINFO_BRS)
-+			skb_cfd->flags |= CANFD_BRS;
-+	} else {
-+		skb_cfd->len = can_cc_dlc2len(dlc);
++#endif
+diff --git a/include/dt-bindings/reset/rockchip,rk3506-cru.h b/include/dt-bindings/reset/rockchip,rk3506-cru.h
+new file mode 100644
+index 000000000000..31c0d4aa410f
+--- /dev/null
++++ b/include/dt-bindings/reset/rockchip,rk3506-cru.h
+@@ -0,0 +1,211 @@
++/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
++/*
++ * Copyright (c) 2023-2025 Rockchip Electronics Co., Ltd.
++ * Author: Finley Xiao <finley.xiao@rock-chips.com>
++ */
 +
-+		if (frameinfo & RK3576CAN_REG_RXFRD_FRAMEINFO_RTR)
-+			skb_cfd->can_id |= CAN_RTR_FLAG;
-+	}
-+	if (!(skb_cfd->can_id & CAN_RTR_FLAG)) {
-+		/* Change CANFD data format to SocketCAN data format */
-+		for (i = 0; i < skb_cfd->len; i += 4)
-+			*(u32 *)(skb_cfd->data + i) = data[i / 4];
-+	}
++#ifndef _DT_BINDINGS_REST_ROCKCHIP_RK3506_H
++#define _DT_BINDINGS_REST_ROCKCHIP_RK3506_H
 +
-+	stats->rx_packets++;
-+	stats->rx_bytes += skb_cfd->len;
-+	netif_rx(skb);
++/* CRU-->SOFTRST_CON00 */
++#define SRST_NCOREPORESET0_AC	0
++#define SRST_NCOREPORESET1_AC	1
++#define SRST_NCOREPORESET2_AC	2
++#define SRST_NCORESET0_AC	3
++#define SRST_NCORESET1_AC	4
++#define SRST_NCORESET2_AC	5
++#define SRST_NL2RESET_AC	6
++#define SRST_A_CORE_BIU_AC	7
++#define SRST_H_M0_AC		8
 +
-+	return 0;
-+}
++/* CRU-->SOFTRST_CON02 */
++#define SRST_NDBGRESET		9
++#define SRST_P_CORE_BIU		10
++#define SRST_PMU		11
 +
- static int rkcanfd_handle_rx_int_one(struct rkcanfd_priv *priv)
- {
- 	struct net_device_stats *stats = &priv->ndev->stats;
-@@ -372,6 +437,43 @@ rk3576can_rx_fifo_get_len(const struct rkcanfd_priv *priv)
- 	return DIV_ROUND_UP(val, RK3576CAN_REG_STR_STATE_INTM_LEFT_CNT_UNIT);
- }
- 
-+static void rk3576_can_rx_dma_callback(void *data)
-+{
-+	struct rkcanfd_priv *priv = data;
-+	int i;
++/* CRU-->SOFTRST_CON03 */
++#define SRST_P_DBG		12
++#define SRST_POT_DBG		13
++#define SRST_P_CORE_GRF		14
++#define SRST_CORE_EMA_DETECT	15
++#define SRST_REF_PVTPLL_CORE	16
++#define SRST_P_GPIO1		17
++#define SRST_DB_GPIO1		18
 +
-+	for (i = 0; i < priv->quota; i++)
-+		rk3576can_handle_rx_dma(priv, i);
++/* CRU-->SOFTRST_CON04 */
++#define SRST_A_CORE_PERI_BIU	19
++#define SRST_A_DSMC		20
++#define SRST_P_DSMC		21
++#define SRST_FLEXBUS		22
++#define SRST_A_FLEXBUS		23
++#define SRST_H_FLEXBUS		24
++#define SRST_A_DSMC_SLV		25
++#define SRST_H_DSMC_SLV		26
++#define SRST_DSMC_SLV		27
 +
-+	rkcanfd_write(priv, RK3576CAN_REG_INT_MASK, priv->reg_int_mask_default);
-+}
++/* CRU-->SOFTRST_CON05 */
++#define SRST_A_BUS_BIU		28
++#define SRST_H_BUS_BIU		29
++#define SRST_P_BUS_BIU		30
++#define SRST_A_SYSRAM		31
++#define SRST_H_SYSRAM		32
++#define SRST_A_DMAC0		33
++#define SRST_A_DMAC1		34
++#define SRST_H_M0		35
++#define SRST_M0_JTAG		36
++#define SRST_H_CRYPTO		37
 +
-+static int rk3576_can_rx_dma(struct rkcanfd_priv *priv)
-+{
-+	struct dma_async_tx_descriptor *rxdesc = NULL;
-+	const u32 reg = rkcanfd_read(priv, RK3576CAN_REG_STR_STATE);
-+	int quota = FIELD_GET(RK3576CAN_REG_STR_STATE_INTM_LEFT_CNT, reg);
++/* CRU-->SOFTRST_CON06 */
++#define SRST_H_RNG		38
++#define SRST_P_BUS_GRF		39
++#define SRST_P_TIMER0		40
++#define SRST_TIMER0_CH0		41
++#define SRST_TIMER0_CH1		42
++#define SRST_TIMER0_CH2		43
++#define SRST_TIMER0_CH3		44
++#define SRST_TIMER0_CH4		45
++#define SRST_TIMER0_CH5		46
++#define SRST_P_WDT0		47
++#define SRST_T_WDT0		48
++#define SRST_P_WDT1		49
++#define SRST_T_WDT1		50
++#define SRST_P_MAILBOX		51
++#define SRST_P_INTMUX		52
++#define SRST_P_SPINLOCK		53
 +
-+	quota = DIV_ROUND_UP(quota, RK3576CAN_REG_STR_STATE_INTM_LEFT_CNT_UNIT);
-+	priv->quota = quota;
-+	if (priv->quota == 0) {
-+		rkcanfd_write(priv, RK3576CAN_REG_INT_MASK, priv->reg_int_mask_default);
-+		return 0;
-+	}
++/* CRU-->SOFTRST_CON07 */
++#define SRST_P_DDRC		54
++#define SRST_H_DDRPHY		55
++#define SRST_P_DDRMON		56
++#define SRST_DDRMON_OSC		57
++#define SRST_P_DDR_LPC		58
++#define SRST_H_USBOTG0		59
++#define SRST_USBOTG0_ADP	60
++#define SRST_H_USBOTG1		61
++#define SRST_USBOTG1_ADP	62
++#define SRST_P_USBPHY		63
++#define SRST_USBPHY_POR		64
++#define SRST_USBPHY_OTG0	65
++#define SRST_USBPHY_OTG1	66
 +
-+	rxdesc = dmaengine_prep_slave_single(priv->rxchan, priv->rx_dma_dst_addr,
-+					     priv->dma_size * priv->quota, DMA_DEV_TO_MEM, 0);
-+	if (!rxdesc)
-+		return -ENOMSG;
++/* CRU-->SOFTRST_CON08 */
++#define SRST_A_DMA2DDR		67
++#define SRST_P_DMA2DDR		68
 +
-+	rxdesc->callback = rk3576_can_rx_dma_callback;
-+	rxdesc->callback_param = priv;
++/* CRU-->SOFTRST_CON09 */
++#define SRST_USBOTG0_UTMI	69
++#define SRST_USBOTG1_UTMI	70
 +
-+	dmaengine_submit(rxdesc);
-+	dma_async_issue_pending(priv->rxchan);
-+	return 0;
-+}
++/* CRU-->SOFTRST_CON10 */
++#define SRST_A_DDRC_0		71
++#define SRST_A_DDRC_1		72
++#define SRST_A_DDR_BIU		73
++#define SRST_DDRC		74
++#define SRST_DDRMON		75
 +
- int rkcanfd_handle_rx_int(struct rkcanfd_priv *priv)
- {
- 	unsigned int len;
-@@ -391,6 +493,13 @@ int rkcanfd_handle_rk3576_rx_int(struct rkcanfd_priv *priv)
- 	unsigned int len;
- 	int err;
- 
-+	if (priv->rxchan) {
-+		err = rk3576_can_rx_dma(priv);
-+		if (err)
-+			return err;
-+		else
-+			return 0;
-+	}
- 	while ((len = rk3576can_rx_fifo_get_len(priv))) {
- 		err = rk3576can_handle_rx_int_one(priv);
- 		if (err)
-diff --git a/drivers/net/can/rockchip/rockchip_canfd.h b/drivers/net/can/rockchip/rockchip_canfd.h
-index 77c673cfea3b..bdd01150d920 100644
---- a/drivers/net/can/rockchip/rockchip_canfd.h
-+++ b/drivers/net/can/rockchip/rockchip_canfd.h
-@@ -11,6 +11,8 @@
- #include <linux/can/dev.h>
- #include <linux/can/rx-offload.h>
- #include <linux/clk.h>
-+#include <linux/dma-mapping.h>
-+#include <linux/dmaengine.h>
- #include <linux/io.h>
- #include <linux/netdevice.h>
- #include <linux/reset.h>
-@@ -532,6 +534,7 @@
- #define RK3576CAN_ISM_WATERMASK_CANFD 0x6c /* word */
- 
- #define RK3576CAN_SRAM_MAX_DEPTH 256 /* word */
-+#define RK3576CAN_SRAM_MAX_FIFO_CNT (RK3576CAN_SRAM_MAX_DEPTH / 18)
- 
- #define RK3576CAN_CANFD_FILTER GENMASK(28, 0)
- 
-@@ -748,6 +751,12 @@ struct rkcanfd_priv {
- 	struct reset_control *reset;
- 	struct clk_bulk_data *clks;
- 	int clks_num;
-+	u32 dma_size;
-+	u32 dma_thr;
-+	int quota;
-+	struct dma_chan *rxchan;
-+	u32 *rxbuf;
-+	dma_addr_t rx_dma_dst_addr;
- };
- 
- static inline u32
++/* CRU-->SOFTRST_CON11 */
++#define SRST_H_LSPERI_BIU	76
++#define SRST_P_UART0		77
++#define SRST_P_UART1		78
++#define SRST_P_UART2		79
++#define SRST_P_UART3		80
++#define SRST_P_UART4		81
++#define SRST_UART0		82
++#define SRST_UART1		83
++#define SRST_UART2		84
++#define SRST_UART3		85
++#define SRST_UART4		86
++#define SRST_P_I2C0		87
++#define SRST_I2C0		88
++
++/* CRU-->SOFTRST_CON12 */
++#define SRST_P_I2C1		89
++#define SRST_I2C1		90
++#define SRST_P_I2C2		91
++#define SRST_I2C2		92
++#define SRST_P_PWM1		93
++#define SRST_PWM1		94
++#define SRST_P_SPI0		95
++#define SRST_SPI0		96
++#define SRST_P_SPI1		97
++#define SRST_SPI1		98
++#define SRST_P_GPIO2		99
++#define SRST_DB_GPIO2		100
++
++/* CRU-->SOFTRST_CON13 */
++#define SRST_P_GPIO3		101
++#define SRST_DB_GPIO3		102
++#define SRST_P_GPIO4		103
++#define SRST_DB_GPIO4		104
++#define SRST_H_CAN0		105
++#define SRST_CAN0		106
++#define SRST_H_CAN1		107
++#define SRST_CAN1		108
++#define SRST_H_PDM		109
++#define SRST_M_PDM		110
++#define SRST_PDM		111
++#define SRST_SPDIFTX		112
++#define SRST_H_SPDIFTX		113
++#define SRST_H_SPDIFRX		114
++#define SRST_SPDIFRX		115
++#define SRST_M_SAI0		116
++
++/* CRU-->SOFTRST_CON14 */
++#define SRST_H_SAI0		117
++#define SRST_M_SAI1		118
++#define SRST_H_SAI1		119
++#define SRST_H_ASRC0		120
++#define SRST_ASRC0		121
++#define SRST_H_ASRC1		122
++#define SRST_ASRC1		123
++
++/* CRU-->SOFTRST_CON17 */
++#define SRST_H_HSPERI_BIU	124
++#define SRST_H_SDMMC		125
++#define SRST_H_FSPI		126
++#define SRST_S_FSPI		127
++#define SRST_P_SPI2		128
++#define SRST_A_MAC0		129
++#define SRST_A_MAC1		130
++
++/* CRU-->SOFTRST_CON18 */
++#define SRST_M_SAI2		131
++#define SRST_H_SAI2		132
++#define SRST_H_SAI3		133
++#define SRST_M_SAI3		134
++#define SRST_H_SAI4		135
++#define SRST_M_SAI4		136
++#define SRST_H_DSM		137
++#define SRST_M_DSM		138
++#define SRST_P_AUDIO_ADC	139
++#define SRST_M_AUDIO_ADC	140
++
++/* CRU-->SOFTRST_CON19 */
++#define SRST_P_SARADC		141
++#define SRST_SARADC		142
++#define SRST_SARADC_PHY		143
++#define SRST_P_OTPC_NS		144
++#define SRST_SBPI_OTPC_NS	145
++#define SRST_USER_OTPC_NS	146
++#define SRST_P_UART5		147
++#define SRST_UART5		148
++#define SRST_P_GPIO234_IOC	149
++
++/* CRU-->SOFTRST_CON21 */
++#define SRST_A_VIO_BIU		150
++#define SRST_H_VIO_BIU		151
++#define SRST_H_RGA		152
++#define SRST_A_RGA		153
++#define SRST_CORE_RGA		154
++#define SRST_A_VOP		155
++#define SRST_H_VOP		156
++#define SRST_VOP		157
++#define SRST_P_DPHY		158
++#define SRST_P_DSI_HOST		159
++#define SRST_P_TSADC		160
++#define SRST_TSADC		161
++
++/* CRU-->SOFTRST_CON22 */
++#define SRST_P_GPIO1_IOC	162
++
++#endif
 -- 
 2.34.1
 
