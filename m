@@ -4,104 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5990ECCFA1A
-	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Nov 2025 08:25:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1143FCCFA1A
+	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Nov 2025 08:29:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PRw36sdYfjzqy8Sg5GzNfZbHBJkxYJcitxzilGnoOIQ=; b=hkdT2I6bS/yzOt
-	PuH0nDjJ5Wb7N9FOiMt0uc8oBwZ7Z94JoOhqX2HvObSaOGHcDawvSAmzvQXNzuV0oeiw9D957bQts
-	rc4Lr9Q6CsI/HduwZ6j0yE9dGi/Av23LXKf2PGemyxFg8/6737zy0hij0r6wxJkE9OllhG0bWeoNm
-	MvpnO+48feoeH/9SHAWfaCl1TRzpVPnaJM9CU312Enffkg9XmiSj7WhokPY8k804H8Hg7miT0Mri3
-	zoGThN+E7NE25S2bd5eNlpW/SPjV/doVtqxsm6WkRNZNXcrK2QkU2fsBofIQbD3HNxGru+x1En7wE
-	fFPEq6WYvnXdwps5Qc6g==;
+	List-Owner; bh=7V1yNy1G8Ja5q/PUHtZutBPYKk15ZjNESdVTnvB/V2E=; b=BNdETFOC6vppiD
+	vM75qEW1M+7AQ8C+Hjws43l8A00+UE5+39qoyw4/vqXk1W7ofKFNXhfg8IHy4Z9Y0F3MJP8ZsS2xB
+	Y/nVwcSplHINsfdQIla/+etnlTY1DI3ZXqydjBY393PRqDne6SKL94l7uqccB5wyuTt0Lkk78+7hz
+	Wtu0WUC+nJMfH67eyZ6sCeOv+Oo56oLWMdRBdrjcqXDbiZBKqhsztF+jtTYFbGKZNv/c1LT7MtG7O
+	V3vo//mgTJmL6JnazY+S/nlYXqABIuPVnFnkuvpF3PVxKnoew6DSw5xpRvhXz+Qy9iFLC4Gr3CD7A
+	fHuLK6ZyAmpzOP9sJWZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJ6A2-00000008KtZ-1I3Z;
-	Wed, 12 Nov 2025 08:25:02 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vJ6EP-00000008LRF-28A5;
+	Wed, 12 Nov 2025 08:29:33 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJ69z-00000008KsX-0LNr;
-	Wed, 12 Nov 2025 08:25:00 +0000
+	id 1vJ6EM-00000008LNy-3SkQ;
+	Wed, 12 Nov 2025 08:29:31 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 3F39443B59;
-	Wed, 12 Nov 2025 08:24:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E58ADC4CEF8;
-	Wed, 12 Nov 2025 08:24:54 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 0ED69406D7;
+	Wed, 12 Nov 2025 08:29:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 36568C4AF0F;
+	Wed, 12 Nov 2025 08:29:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1762935898;
-	bh=Q/QyHaLAgaVdBMtPSmk8J58WVVg01wAiuM4riboMwNE=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Bk1nBRkn4iZ264APmYkNPG3UpTT+VxqzQ3S7XK0HGOv8tN2fl5iuotfFGjNHHW898
-	 PYj2AtbbPEHsRbc//iachZqeHCqk2H07y7dVUcD+rXeWdB9Ab9xACldsCWHm5AY9gn
-	 +8ZLOtLorSQs7FhWmeoZeGyFi4RxfTuqI5NpOYY3yISH9IJw+CpQ0cmq6crBLX2J31
-	 pvdkARjyVsyTZZk2bZKr/eQZS2wriMZhfYdgrYDN5hYN75//NTd8wXeefcHpFiiL6o
-	 HHSJbWw7Nvj0kX69kA/dOF1PAvzwyW/nXbakvp4DTTVnWFLMxpDS16Iy8kuopL/Kdf
-	 rYxhfJ8VtVqKQ==
-Message-ID: <177ca4e1-fa11-4b24-b72d-1af6c7c2f1c6@kernel.org>
-Date: Wed, 12 Nov 2025 09:24:52 +0100
+	s=k20201202; t=1762936169;
+	bh=P/0U373DGH20CkAHJePNGHyKPPEzprJMAMaujhEWE3g=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=S6TTndyT/9VXKdEYPZNdVHH1e9mSNLLOM0nt2QNNuy2DF1zpJ7VX1W+XA8x8VBpFw
+	 0q6reZVdpYS5+XUTeIlSFeRx/5l+TKy5+5Rh3Jtxytgs3/FTaIUG4PY7L+PNR7D4PF
+	 wXiTYDw8GjkAr6Eq8wyo5PlZ5FKT6nEP5lRpV8aqYzrH0DwRY/S2dqMJrFElqiVqMn
+	 RIDq1wZTZe7QbeVDI+1y+p6nbUc9YUwzB9djea+Ku5JeccJn6zwmtExUdHKGhMMIZC
+	 bN3Wj70GJa9eWKC0+3SeaJ3f5uIehr962xnTbck2guqY5qREURZ8Vegcrhv4M/VpBo
+	 +fZ8lRpBqYwzw==
+Date: Wed, 12 Nov 2025 09:29:20 +0100
+From: Niklas Cassel <cassel@kernel.org>
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: Shawn Lin <shawn.lin@rock-chips.com>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Rob Herring <robh@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+	Kever Yang <kever.yang@rock-chips.com>,
+	Simon Xue <xxm@rock-chips.com>, Damien Le Moal <dlemoal@kernel.org>,
+	Dragan Simic <dsimic@manjaro.org>, FUKAUMI Naoki <naoki@radxa.com>,
+	Diederik de Haas <diederik@cknow-tech.com>,
+	Richard Zhu <hongxing.zhu@nxp.com>, Frank Li <Frank.li@nxp.com>,
+	Lucas Stach <l.stach@pengutronix.de>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>, Conor Dooley <conor@kernel.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Hans Zhang <hans.zhang@cixtech.com>, linux-tegra@vger.kernel.org,
+	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, kernel@pengutronix.de,
+	Bjorn Helgaas <bhelgaas@google.com>
+Subject: Re: [PATCH 2/4] PCI: tegra194: Remove unnecessary L1SS disable code
+Message-ID: <aRRFYEgBigYDlfQh@ryzen>
+References: <20251111221621.2208606-1-helgaas@kernel.org>
+ <20251111221621.2208606-3-helgaas@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RESEND PATCH v8 0/4] rockchip: add can for RK3576 Soc
-To: Elaine Zhang <zhangqing@rock-chips.com>, mkl@pengutronix.de,
- kernel@pengutronix.de, mailhol.vincent@wanadoo.fr, robh@kernel.org,
- krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de, cl@rock-chips.com
-Cc: linux-can@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org
-References: <20251112015940.3695638-1-zhangqing@rock-chips.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <20251112015940.3695638-1-zhangqing@rock-chips.com>
+Content-Disposition: inline
+In-Reply-To: <20251111221621.2208606-3-helgaas@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251112_002459_164250_23492C1B 
-X-CRM114-Status: GOOD (  10.01  )
+X-CRM114-CacheID: sfid-20251112_002930_932592_281B2293 
+X-CRM114-Status: GOOD (  12.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,30 +91,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 12/11/2025 02:59, Elaine Zhang wrote:
-> rk3576 can is a new controller,new register layout and Bit position
-> definition:
-> Support CAN protocol.
-> Support Dma.
+On Tue, Nov 11, 2025 at 04:16:09PM -0600, Bjorn Helgaas wrote:
+> From: Bjorn Helgaas <bhelgaas@google.com>
 > 
-> There are major differences from the previous rk3568.
-> All errata on the rk3568 have been fixed and redesigned.
+> The DWC core clears the L1 Substates Supported bits unless the driver sets
+> the "dw_pcie.l1ss_support" flag.
 > 
-> RK3576 CANFD requires authorization and permission. The software
-> code is not open by default and needs to be authorized separately.
+> The tegra194 init_host_aspm() sets "dw_pcie.l1ss_support" if the platform
+> has the "supports-clkreq" DT property.  If "supports-clkreq" is absent,
+> "dw_pcie.l1ss_support" is not set, and the DWC core will clear the L1
+> Substates Supported bits.
 > 
-> Change in V8:
-> [PATCH v8 1/4]: Drop CANFD, correction format warning.
-> [PATCH v8 2/4]: Drop fifo_setup of rkcanfd_devtype_data.
-> [PATCH v8 3/4]: Drop CANFD.
-> [PATCH v8 4/4]: Drop CANFD.
+> The tegra194 code to clear the L1 Substates Supported bits is unnecessary,
+> so remove it.
+> 
+> Signed-off-by: Bjorn Helgaas <bhelgaas@google.com>
+> ---
 
+Since init_host_aspm() is now the only place using struct tegra_pcie_dw
+struct member cfg_link_cap_l1sub, I think that you can remove this struct
+member, and instead make this a local variable in init_host_aspm().
 
-Please implement the feedback I asked at v8. Stop resending the same
-over and over, bypassing people's review.
-
-Best regards,
-Krzysztof
+Other than that, looks good to me:
+Reviewed-by: Niklas Cassel <cassel@kernel.org>
 
 _______________________________________________
 Linux-rockchip mailing list
