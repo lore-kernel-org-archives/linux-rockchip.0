@@ -4,104 +4,168 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D518CCFA1A
-	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Nov 2025 08:03:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E389CCFA1A
+	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Nov 2025 08:06:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zRWp865bXB3JaGZd9yps9S7zOo/K7zRdUj5FkXswhW0=; b=nqp2770QBkb1AC
-	CMOjoSmwhVWs5+eWk+xJcZoeSRMrK3RsV/ib1oq+N1EZ5BIOmrig0Bpkbv8rYHbQ+hZ4ZJ0UdFXqN
-	vMiKPF39AeHdoRDDpA1JOb1ADB/AItMYFJgcibk7IY4aITvGAW02jZKUIwdS2NYyyLWBhoHGrP+vZ
-	Z/p112cSGkC3Y3oCNMjsfwIhCPWKHyp/DeWoVE+NuPJyA94/tf8sGBIxdkXwUsDm/ZFEFkdCL9OX2
-	NSwtSJxT9s+rmvH/5PT/QArmXavKlq0OvHaHvM82M4UAdJYdHTdM7JMxbu7LWXv3bwIn+a+vFGCmp
-	m+5DBwZ+HJLwoKuU0nvw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3sEnnpLMbieugGOT/M/RUe1DP5vLD/q8mAf8KDJrQc4=; b=2NL1hGyjEHdnh9VCGYJJMrGLBK
+	SsSaLkdgXoBUf7ksc7CqN+Yk/FIDlOYRDwIrQ84oz4m535xAPM+AKnW95Q52oqQlhDbgktp5lnxQ7
+	Lh+pjfq1pVVX+evMNVzWJLKTreYioxlx1dAsZYVf/f66u+xKRrxWrtAp5nJu35VyFp79i9OMCS2JW
+	ODTymKMdaVFhCyoZtt7EQcXYPX1GI9MNRZJSc5FMTABS9XoyvkJ0qa0JNy2+oWUWbE3U7ycCEr3UO
+	SzTeOnBzoRIKVXVInFs1aojsRA1JqFNwnRIHVRzDcv/ZyGu7ubEULXwKDF6PGUx5BFxtLnhDFCptu
+	1VVDx6Jw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJ5pH-00000008J2u-0p87;
-	Wed, 12 Nov 2025 08:03:35 +0000
-Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
+	id 1vJ5sB-00000008JMH-46GY;
+	Wed, 12 Nov 2025 08:06:35 +0000
+Received: from mail-southcentralusazon11012009.outbound.protection.outlook.com ([40.93.195.9] helo=SN4PR2101CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJ5pF-00000008J2C-2IIh
-	for linux-rockchip@lists.infradead.org;
-	Wed, 12 Nov 2025 08:03:34 +0000
-Received: by mail-pl1-x631.google.com with SMTP id d9443c01a7336-298250d7769so3359925ad.0
-        for <linux-rockchip@lists.infradead.org>; Wed, 12 Nov 2025 00:03:32 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1762934612; x=1763539412; darn=lists.infradead.org;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=IOQ8gbWYR/8pIKJHHt25CkEHl+HOhDt/PI+YYG3jAcU=;
-        b=Xm4uSmPIy67p50Q2BwF/nusZz5S3fT67DxnAq9AxUVQ2c+6aqrqHEBumLMk8miYCVa
-         iPoaO3IYPRdvawxDC1rs9HY4W6oDdErfQld8pWsmb9uvFbIHlc9pP/Nu0ph8bV+r4rFr
-         NL3QLXlsgAtcITCtm/Mh/EZ23GJrccuRLjbYThR2vExY9brX4ay4KgbWzjaNMXcv87Wo
-         pJqCjd8PfMj+Em3oPTXQyfTiD68CxabPeSd6KN5fArsaYe55nD7tBe7a47cSgvkLFtZt
-         CnmBhA8GmJhVIH/y7jmTkYJT1GIm8ozgDNG5UKUFXg5qkS+qRa6izxrC/uhKVHOAhe/E
-         Nj/Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1762934612; x=1763539412;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=IOQ8gbWYR/8pIKJHHt25CkEHl+HOhDt/PI+YYG3jAcU=;
-        b=WFehkEVwYe7QIrdu0kRp8kgN3u5rl/4wBx+hJL6z0Cxk9Ahr33dmy1cAQUe+3w7dSC
-         TvmcwDjJMWR85m52RyehNTvdqwAoywduAYi/a4Su7cOHTbOiHsnWzasl1dYUXm1gmMBW
-         SMpcOh6Nw/V+DXYVzkj61j+oIr/pfiHM3+AQPp7+HZT7JYOd6qW0O6PMNNypARl1J0Oq
-         4BrE8LS6riKvCu6qsIXf7uI2irM7xrxPxy5LHkfCktS2k3MzrDp+2FwUokutav/4WYa7
-         Kfll6XOvWXAKOgdSlLDnyA0IqTSqnIh/WcoNYOEBzIDQnTcM3nmIN440K/2WxWhvlDOc
-         /Wng==
-X-Forwarded-Encrypted: i=1; AJvYcCWPMDvesBaKpRfKyX/5DCoALm+Pm+XHa5ckN9BMKXl/kWQxR8In1RjWL2veB2iURYjZo5nFaeX4YiKd46R9yA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxIypIZe+heVNdTlUIHmtF9I93T4W/jta45kzUP2TDJX8Bl2QHZ
-	YpsKUskyZnnfarxxssuEtLKag4uAFRBcVXdg2H3cH09kcMs1G34syPW9
-X-Gm-Gg: ASbGncuvStMgwtNJwBmw8p14TQtgq+NmJwnGDLfC0j2wZ6iu2jlQYBfXpwhTHhU3wf5
-	oh6gG3MaG7t1Iibn6p1slpoOFtaNSK7lPXgwQ4laK4X9fWD1DBl7iRHA3RE9gLlzQzENgGyL+4h
-	AtybCpCC8XL89OkS52RpoihIwj+2pUyOGMUuwF+WZAKTYjUwPgMnqdnrORn9neDGr9ArP5rHHbs
-	T2uR06QfCT3wb9GPo1cUghaRJtGXN7ZbK0FYgBFShoqvLHkFgXEwC06MsqSb9znw05+jNWD8IT4
-	YOuaIPh8q/GAcT7SKGdmXM3dJvCf3s2mHgVScRhJsdTbtlu/pD7tLA5j9VJfwEI+D7OvaBIqClt
-	1t47n4Tgq+HFf1I1dPv6iibEKMSCNxaffkaGzLdpA58xPNREoo6mcICzfiHEPZAcpqe8U8C50Pg
-	==
-X-Google-Smtp-Source: AGHT+IH+DPJMbQNSOGKgtCR72ZONR0AxugfjM0MLXwjdzOTvsq+YFq9t1EqGEJ/mZYCDIKH8bOXU0g==
-X-Received: by 2002:a17:902:e78b:b0:269:8d1b:40c3 with SMTP id d9443c01a7336-2984ed2b619mr28705965ad.12.1762934611984;
-        Wed, 12 Nov 2025 00:03:31 -0800 (PST)
-Received: from geday ([2804:7f2:800b:7c80::dead:c001])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2984dbdac10sm21286815ad.22.2025.11.12.00.03.26
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 12 Nov 2025 00:03:31 -0800 (PST)
-Date: Wed, 12 Nov 2025 05:03:19 -0300
-From: Geraldo Nascimento <geraldogabriel@gmail.com>
-To: =?utf-8?B?5byg54Oo?= <ye.zhang@rock-chips.com>
-Cc: Shawn Lin <shawn.lin@rock-chips.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	linux-pci <linux-pci@vger.kernel.org>,
-	linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
-	linux-kernel <linux-kernel@vger.kernel.org>,
-	devicetree <devicetree@vger.kernel.org>,
-	krzk+dt <krzk+dt@kernel.org>, conor+dt <conor+dt@kernel.org>,
-	Johan Jonker <jbx6244@gmail.com>,
-	linux-rockchip <linux-rockchip@lists.infradead.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: align bindings to PCIe spec
-Message-ID: <aRQ_R90S8T82th45@geday>
-References: <4b5ffcccfef2a61838aa563521672a171acb27b2.1762321976.git.geraldogabriel@gmail.com>
- <ba120577-42da-424d-8102-9d085c1494c8@rock-chips.com>
- <aQsIXcQzeYop6a0B@geday>
- <67b605b0-7046-448a-bc9b-d3ac56333809@rock-chips.com>
- <aQ1c7ZDycxiOIy8Y@geday>
- <d9e257bd-806c-48b4-bb22-f1342e9fc15a@rock-chips.com>
- <aRLEbfsmXnGwyigS@geday>
- <AGsAmwCFJj0ZQ4vKzrqC84rs.3.1762847224180.Hmail.ye.zhang@rock-chips.com>
+	id 1vJ5s7-00000008JKT-2u3r;
+	Wed, 12 Nov 2025 08:06:33 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=ZouAj7AhL/BkBx4cdt/c/JJ/Ncqv5WcHHKCP0X5bUUk0AZHUJQIiiAecbHuOcVdvdfYsUXR2uwYGbnZaljdvKLCDuC7BSXOj+1+3NRr4ItSnrdfgDRI0XE01bpEpeCHyJYvyQTQ9ohoL1IqnU0862M5dpUUL7+m5Sa8io+uRmwb/3RNGH9PiAJtFTtK8ZJnG6BcG3ysW3UwmDCw1pxbLWZZ4dI6cnwEOSJOn6haNtWL/BJuan3N9rbJbYvi5mK/WwkawvAJ+GT5PM4FlLJ72AcCnho+y7k7T4Kj3dXlCvT5mHb7JDmAtHiTAdiB1l7c0eOSveTyYQADEI1pbWR1t8w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=LKYmegH3ykHGiWV1hZKmrDw3+XreT4d7ug60Uik8NjY=;
+ b=zBXoC7ZiMa9ElI40t/wL59FujROvSr/vsVSUbHU8DMATZafQl1xzqIGwCY7ZvhjwIlIni/tg3cmfXxPLKSebpcBj6vqHeMpcDCJkRJU/giUEV8FkHIgOiS+80kts2q+TPpObOmCi204guKF429dGJWTKRz3Zj1TpENjWHwwAca73evg85WHjlHAqS3rqdq/s32v1i3Fb1KCvxTjG/dImT2Pn4cCmassW+bAudYvvyvYUoIM2e6NYBtVtNlrrDjy8nF/5GS7jYt2f4kIStmADApoTWKRUNTNCiTnccjkhrzO6/nXwNyrES5K4vcdXPZCCEsKKX/sN1euGydvC2Pt7uA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=altera.com; dmarc=pass action=none header.from=altera.com;
+ dkim=pass header.d=altera.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=altera.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=LKYmegH3ykHGiWV1hZKmrDw3+XreT4d7ug60Uik8NjY=;
+ b=ngzOWlR9HHenRcNT4vNyCG0iWzBW5wOfCf4vgi/9z+VmAry9jxiKcxAuofHbuxnRYyAG/0ggp2W1TwxZtnN1TBX9LCxs0yrDoPt2QAHhBo3ip3n6C6oElWIbyCF1OPJcAqFvmhRwjKrHixsea2IG+WeKuFQtjdwpmqShxUPvHQRZri+1Zb6k/Ouon1A6Tv3PYWy4PwK5lEbfjR1qWugV1zYAvmHglc1lb8KvzocMlCRHAfgcVydpHxtKFgkWNB/1DtIivQ3SjXrJUGwgCZ3W0SroOQeonZ383dr7D7KUGq+UW4QruJItm4n88WyE34lBenhgZaMuLsdGSoQrf+YFTA==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=altera.com;
+Received: from SA1PR03MB6498.namprd03.prod.outlook.com (2603:10b6:806:1c5::7)
+ by DM4PR03MB7000.namprd03.prod.outlook.com (2603:10b6:8:48::10) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9320.15; Wed, 12 Nov
+ 2025 08:06:25 +0000
+Received: from SA1PR03MB6498.namprd03.prod.outlook.com
+ ([fe80::feea:da58:faeb:9ebc]) by SA1PR03MB6498.namprd03.prod.outlook.com
+ ([fe80::feea:da58:faeb:9ebc%4]) with mapi id 15.20.9320.013; Wed, 12 Nov 2025
+ 08:06:24 +0000
+Message-ID: <e940eae5-16bb-46e1-83aa-47c6ff747083@altera.com>
+Date: Wed, 12 Nov 2025 13:36:09 +0530
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6 0/2] PCI: Configure Root Port MPS during host probing
+To: Hans Zhang <18255117159@163.com>, lpieralisi@kernel.org,
+ kwilczynski@kernel.org, bhelgaas@google.com, helgaas@kernel.org,
+ heiko@sntech.de, mani@kernel.org, yue.wang@Amlogic.com
+Cc: pali@kernel.org, neil.armstrong@linaro.org, robh@kernel.org,
+ jingoohan1@gmail.com, khilman@baylibre.com, jbrunet@baylibre.com,
+ martin.blumenstingl@googlemail.com, cassel@kernel.org,
+ linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org,
+ linux-rockchip@lists.infradead.org
+References: <20251104165125.174168-1-18255117159@163.com>
+Content-Language: en-US
+From: Mahesh Vaidya <mahesh.vaidya@altera.com>
+In-Reply-To: <20251104165125.174168-1-18255117159@163.com>
+X-ClientProxiedBy: MA5PR01CA0070.INDPRD01.PROD.OUTLOOK.COM
+ (2603:1096:a01:1b7::10) To SA1PR03MB6498.namprd03.prod.outlook.com
+ (2603:10b6:806:1c5::7)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <AGsAmwCFJj0ZQ4vKzrqC84rs.3.1762847224180.Hmail.ye.zhang@rock-chips.com>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SA1PR03MB6498:EE_|DM4PR03MB7000:EE_
+X-MS-Office365-Filtering-Correlation-Id: 55c0c3a0-5d68-48a4-a02d-08de21c25f1e
+X-MS-Exchange-AtpMessageProperties: SA
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|7416014|376014|366016|7053199007;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?TFRFRG5aY3JHOEZTMFlxZ3YxQTFNYlM2Vy9iaFh5MFhaNlkwWTNEWFduVlds?=
+ =?utf-8?B?ZndNS0Z3VEh3MDdYK1dqcTA2aC85QWE4OHlUTS9HN3pwSmdpT2F1eHRIM0Ru?=
+ =?utf-8?B?N1JCR2JpOXRLRjhISlpSeXdZejZ4VmlENHFncW9sRStqMVZBL0ZjenNnb3Fq?=
+ =?utf-8?B?WjlKUHJjNDdJWGQ5Qm95ZHdRUjc4TTVDUlRmb0tGSUh5MUV6akkwOVZxUDRW?=
+ =?utf-8?B?VnJNdXBoVmM0SHNXTElDQU9OVWZUdmk2eU1SaEZVYWJpbDFOeTJYSTA3OTJX?=
+ =?utf-8?B?RGh1WlBzOE1YSEFlbzdCeSt3UkZVTTlWQzBxeHF5OGNEVFhsZkhqeTNLbHJK?=
+ =?utf-8?B?WkpBWFlqSEJST0VqcDB4UWhVN2JQam00QVh0Sk9ldUQvcWR3Y3A3NXhlWnBT?=
+ =?utf-8?B?OVJNdkJVcEQ2UWk3SGY5OWhiaEoyb0lUcmRIS2JvT0VuZkJyeFRpaUg0OWRk?=
+ =?utf-8?B?RWZIOWRIY0oyTC9kVllpdDBJQkhUcGYvZmFsL0I4OEhkbTV4NUZIS0c1MTcz?=
+ =?utf-8?B?R21kNjd1ZVh2ME1sLzJsQ3pHYUNoOVNZNXdMOTF6cW1yUDJTRGlFUjNBOGl1?=
+ =?utf-8?B?MjVmL0VSQzRxTit6MWQvZW5yRWZxZ29Xazl0NHA3ejJYeDlWeE81VSs2akJr?=
+ =?utf-8?B?Qm10OUtreHF1RFJQVUNhMG40NmhtdE9CaVZhMHVrWW5QUElabktLZWhXa201?=
+ =?utf-8?B?UCtYWFYzV3pkWHIwUW1Xa0ZzdHVvbndZVlpDbTAxOC83ejNxR1JpMTY0ZUJo?=
+ =?utf-8?B?c0pPK1ptUWhLakNrRm1HT3FNSVl3S2NCcUEycytpV21BSmtDY2hzaFhmRDly?=
+ =?utf-8?B?NG9kRy9oMy9iNERKMVVqK0NDd0o5WXdiK0FEdXJ5QUhMdlc2YlVTbU53Zy9X?=
+ =?utf-8?B?bThJVVVZWDErMzFTcWZkUzRMSmZVSjhYWGZrc3NxeURuNDRPWFFZWnZNSGU3?=
+ =?utf-8?B?MExjMW5NTUdheEdKc09wejdiUXRPeVBCZHNyQ1B0TnRDeThZdXRxeGhRTlNO?=
+ =?utf-8?B?cXdmZUZRckxQUDBEeXhZbEdiOGNqOUdiMS9ERngrZzU5L2hIS3BaU2xieFZL?=
+ =?utf-8?B?c25SUEZjQ2YvRUhmTVpTSnBXYjc3UlNYUXJDMkNUUWFVOXR4S1h5elJpd3Vh?=
+ =?utf-8?B?bEErdEUxdE1SY2d4N3pZdkF6dCsweXdLN3FreEFDUzA0T2lzQlZrUHFYL2J0?=
+ =?utf-8?B?RmxyTzNXWjFBTkdWUXA4MkZEc2d4d2s0dDJ1V21vcURpcEExT3pMVml0clZq?=
+ =?utf-8?B?eG9tSHBjZHJFU0ZiMi9FcnpSUHByYzN2R1NMS3hHMWtEZTlvbmcvOGlXWUNN?=
+ =?utf-8?B?N1F6czdVSUI2YkZ2L1ordjdwUmcvMFJzTFo0TFV4ZWptTTYxNjg2c0ZPM3ZM?=
+ =?utf-8?B?NFpGc1c5WDc2SlRod1RBVTVaL1g0bG5GeGxkb3pHeFFuNWwrb1lrLzNJejFo?=
+ =?utf-8?B?TEZYallHU1Bsa2RmWnBaMzBFL2pPbFdCcnlOb0VXVTVTSjdVYnNkR3BvdFpU?=
+ =?utf-8?B?cVltYTYwZ3hoRjF1TXErN0RkWkVxbnJTaTFNRFBwODhEYnQ2NlVieG13cC8r?=
+ =?utf-8?B?K2JOZXV5M0JRV2NSd1U3a0lDdGRzQTlsSkUxN3dJMSt3dVpUK3hzQXhaVFBs?=
+ =?utf-8?B?eWxTcTh6aGZ1Wk93am1oOFl1NlhFYzVka2E2V01EUXJKdmNpWStvMEJtTkZU?=
+ =?utf-8?B?bGJwV3hMU0hSU3lBeVErRFVmTWN1OEg1eHk2UGJmN2ZPRldjWXRCTWg4ZytJ?=
+ =?utf-8?B?bHMwMzdrdy96SHdzczlkUHFMT2dmTzRxenI5OEJweGxWa1hjb3loY0h3SUlG?=
+ =?utf-8?B?cVlGUXA5YTg0dnFrRVpseGRNR2EvZTU5eW9jMnZSTU5tamt4TmpSdDhOVmNK?=
+ =?utf-8?B?Z0JMVjQ4YW5qaFVHR2l2OVNUM0NpaklFNmtuZk5oVWRuYUVBMCtBZHhZUm5q?=
+ =?utf-8?Q?g0P5lv7C+yNNPkEg1ILEZEk06OZFDG5N?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SA1PR03MB6498.namprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(7416014)(376014)(366016)(7053199007);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?NHdzYVBISWxjY2NlcThnOGVxcmJHWXhVdVhXZ2hNdTlCUThPWTBmUmFKdDYw?=
+ =?utf-8?B?Ti8wdzVmU3UrcGVSZFFtaFBqUnFsVG5laXFqVlI1V1EwbHpQcE81L0JwK2NW?=
+ =?utf-8?B?ZkRGOCtQTUY2UEVRbVh6QWZnOStEOTBuTUNnanpyaysvOS9xMmZ4Mm9Ed0la?=
+ =?utf-8?B?UkJTTnB6QmpRMTBlaGM4SVJZTVp5L0dYUzJ5aGdhM2E4ZVdUS0Roa1htZFZl?=
+ =?utf-8?B?MitoWkExWWhZRkhiTkxqZHhqbXZOQnFub1J3TWlnQjQwU0tLZDBFOVBzQ1lJ?=
+ =?utf-8?B?VWFxblBmRno2bFNYZkdqNzVMaytEZmtwM2M5dVNHSG5nTkx4TTZIUENTZHE1?=
+ =?utf-8?B?d1NrUW9Bam50WVhRQ3B4aCtZZ3ZvM2Mzalp5UVF0cW1zWEtLd3ZhcGdPUGlt?=
+ =?utf-8?B?djA0bVRQTVBFSjFhU1FrSG9MaEZpUm9IbDduRTVvelZsQ3FkazJQZ0dBRVpR?=
+ =?utf-8?B?N0FuV3l3REJhaFVBVkU0YXNoSFgvYURuRGhvQnlBMENiWEdDY2hDRkQ5NTNV?=
+ =?utf-8?B?ODhXS1BsZWpneitMSnc2YlFZQ3dyT3phSXNaWnNhQWFXbU93aGYxVThycFI4?=
+ =?utf-8?B?UVdsV00wWWtMcXk0ZkZqWmpVUCs4c2VMY0VKNjFkdTNJdy8wNEY0L2szczgv?=
+ =?utf-8?B?QWJjMEhwQldOc1VwRytHRzlabnIzazBVelhjTmJaVy9BTHNkUGJoVzYwckxx?=
+ =?utf-8?B?Mnl0cHpCc21YNVVwL3Y3dzZzSmR1d3p3MjJKaWxkWExzZnhWdkdOQlA5dU9R?=
+ =?utf-8?B?d2RCc2k4WWNweTU5ODNzZlhkOVZxWVdyL04xM2RLY2dBb0ZGZzZvVUZ4QUlX?=
+ =?utf-8?B?K21iUnNVbTNqMCtqQ1RlRVNKdlpWaHkyVE9aUUNWaTJrZmdqUGRKM2pITDVp?=
+ =?utf-8?B?SE1qY3FoeGxhU3QzSFFvSWhQZmVpbmh6MnBLKzNGOTV3bUdwV2I1cHpXQk5z?=
+ =?utf-8?B?U3grL0s1WlVlUGYvQWVWUDY0NDR1Mm1hdjVDdFZNVzJuWVhSU3REQXFTWDA4?=
+ =?utf-8?B?KzRYUEtES3NyRHl1ZzdPM2tXS3IzcytIeGFOMXlEUWtRMytWSjRPSjdUaUE4?=
+ =?utf-8?B?U2VsRnQvN0h4aU4zOUQzRjJjckdhR2RuSlRwOERJSzNLdG5JeTZFU25HcWFS?=
+ =?utf-8?B?d2ZrSUlYRmJKOUNGVThNTExoSmMvS3Y4bzZNQ2RrY1NxRVVWakFxN3VTZ2Rq?=
+ =?utf-8?B?VU5JVlYwb2syY1YzTzVQVExTVmZ3UXhYRzV4bEs2L1FoSnh6c0lkYzFscXNQ?=
+ =?utf-8?B?NldCZklVc3R3TWFHVTBWOEJXREhrZ2tKV1BzeUZ3SUpaZ3lLeEU0dEdQQzNs?=
+ =?utf-8?B?Y2NlYVRITHJxQXZXOVpWWHJaTkxldzFJLzZpRk42L29vSlVGZ2E3LzF5citl?=
+ =?utf-8?B?UkVvQklEeXpQRmtFS20yY1g2R0Y2T09xSWl3ZGNxMWFnNVFNOGhubjVsTnJL?=
+ =?utf-8?B?LzhVZjdUNmpnazNKNW9wN1gzOHlrSFFEbmZhZm80eWpxSG5CdlVQUlZuakRj?=
+ =?utf-8?B?UGpLVi9RY1IyL3RJalA1clY3bEROVHRRZXV5MUx3MVZDeUk3Z3NmazZYY09K?=
+ =?utf-8?B?eHJ0dUNYNTVMTi9sRUUrWXhGdE0yUkh3UTdVYW5MSnMwZzlidEZoeEpGNzR6?=
+ =?utf-8?B?TGZiaHBkck94Zll1UjlpYXVmekFlcnVrelhiOTFHdDJJK3B3V1Zqb1FDMGtj?=
+ =?utf-8?B?MDBXRTVnWkpremtBUmFjVGVMalNvamlvbXdRanNOa2xhVjczVzE3WldYRjIv?=
+ =?utf-8?B?YzkrVTZIZDlJNk94L1BVMFNNdTB6MU9JMlVSNW14YXNBb1liMm1UQmtKNjlE?=
+ =?utf-8?B?RktvdXF6YkxKWnJzWDAyczhvd3FabC9KY1JvWVlaWUdGcWN5ZlVUSW10K1ZT?=
+ =?utf-8?B?cURLdytiQWJRMmxaM3BKbFRMNjNJbUZlRWp5Z2w2Q2xhRG1HclJNUjhZbWhK?=
+ =?utf-8?B?QWpHV1RQUjlqelpHYVFFQ1NlaWpDd3pXeVAzWTZBSGxsUmV5ZG9XYWdXaFpB?=
+ =?utf-8?B?bjN2Tld2RGxEVENYUVcvYXNib2JXQ3FnZk9KVWJlL0JuWmNBTHlnaXl2WHUr?=
+ =?utf-8?B?elBYTWd6M1BCWkF4VGRFSlN6VllKRk1vSFdPa1R5bjg5WUQrTkR1SkQ4amVo?=
+ =?utf-8?B?RVpoK1h4dFVLZEwwSzU0VG5NdGJIbkZuOUc4T0x6UkgyeXBzMTU2QXlqYzlM?=
+ =?utf-8?B?OFE9PQ==?=
+X-OriginatorOrg: altera.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 55c0c3a0-5d68-48a4-a02d-08de21c25f1e
+X-MS-Exchange-CrossTenant-AuthSource: SA1PR03MB6498.namprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Nov 2025 08:06:24.4441
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: fbd72e03-d4a5-4110-adce-614d51f2077a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: ATzkl0ezhRH1rKwHFVjR6VvB2DeXAHGSVnh9bP9gySdrum6KjFHRLjh8ZSDLbIBMQylD0+piduR/16+6hgd8/w9M3WwfgKyOH7Nvu6GEXeQ=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR03MB7000
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251112_000333_592516_4E6E6880 
-X-CRM114-Status: GOOD (  16.34  )
+X-CRM114-CacheID: sfid-20251112_000631_755159_200AA41B 
+X-CRM114-Status: GOOD (  17.58  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,48 +177,87 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlLCBOb3YgMTEsIDIwMjUgYXQgMDM6NDc6MDRQTSArMDgwMCwg5byg54OoIHdyb3RlOgo+
-IEhpIEdlcmFsZG8sCj4gCj4gSW4gc3RhbmRhcmQgR1BJTyBvcGVyYXRpb25zLCB0aGUgdHlwaWNh
-bCBwcmFjdGljZSBpcyB0byBzZXQgdGhlIG91dHB1dCBsZXZlbCBmaXJzdCBiZWZvcmUgY29uZmln
-dXJpbmcgdGhlIGRpcmVjdGlvbiBhcyBvdXRwdXQuIFRoaXMgYXBwcm9hY2ggaGVscHMgYXZvaWQg
-b3V0cHV0dGluZyBhbiB1bmNlcnRhaW4gdm9sdGFnZSBsZXZlbCBhdCB0aGUgaW5zdGFudCB3aGVu
-IHRoZSBkaXJlY3Rpb24gc3dpdGNoZXMgZnJvbSBpbnB1dCB0byBvdXRwdXQuCgpUaGFua3MgZm9y
-IHRoZSBleHBsYW5hdGlvbiBZZSBaaGFuZywgaXQgbWFrZXMgc2Vuc2UgdG8gbWUuIEl0IGF2b2lk
-cyB0aGUKcGluIHRvIG5vdCBiZSBmbG9hdGluZyBzbyB0byBzcGVhay4gSSBrZXB0IGhhbW1lcmlu
-ZyBhdCB0aGlzIHByb2JsZW0sIGJ5CnRoZSB3YXkgaXMgUENJZSBQRVJTVCMgc2lkZS1iYW5kIHNp
-Z25hbCByZWZ1c2luZyB0byBjby1vcGVyYXRlIGFuZApmYWlsaW5nIFBDSWUgaW5pdGlhbCBsaW5r
-LXRyYWluaW5nLgoKWW91J3JlIG5vdCBnb2luZyB0byBsaWtlIHRoaXM6CgpkaWZmIC0tZ2l0IGEv
-ZHJpdmVycy9ncGlvL2dwaW8tcm9ja2NoaXAuYyBiL2RyaXZlcnMvZ3Bpby9ncGlvLXJvY2tjaGlw
-LmMKaW5kZXggNDcxNzRlYjNiYTc2Li5mZWEyYzU1OTkyZTggMTAwNjQ0Ci0tLSBhL2RyaXZlcnMv
-Z3Bpby9ncGlvLXJvY2tjaGlwLmMKKysrIGIvZHJpdmVycy9ncGlvL2dwaW8tcm9ja2NoaXAuYwpA
-QCAtMTgzLDExICsxODMsMTMgQEAgc3RhdGljIGludCByb2NrY2hpcF9ncGlvX3NldChzdHJ1Y3Qg
-Z3Bpb19jaGlwICpnYywgdW5zaWduZWQgaW50IG9mZnNldCwKIAlzdHJ1Y3Qgcm9ja2NoaXBfcGlu
-X2JhbmsgKmJhbmsgPSBncGlvY2hpcF9nZXRfZGF0YShnYyk7CiAJdW5zaWduZWQgbG9uZyBmbGFn
-czsKIAorCXJvY2tjaGlwX2dwaW9fc2V0X2RpcmVjdGlvbihnYywgb2Zmc2V0LCB0cnVlKTsKKwog
-CXJhd19zcGluX2xvY2tfaXJxc2F2ZSgmYmFuay0+c2xvY2ssIGZsYWdzKTsKIAlyb2NrY2hpcF9n
-cGlvX3dyaXRlbF9iaXQoYmFuaywgb2Zmc2V0LCB2YWx1ZSwgYmFuay0+Z3Bpb19yZWdzLT5wb3J0
-X2RyKTsKIAlyYXdfc3Bpbl91bmxvY2tfaXJxcmVzdG9yZSgmYmFuay0+c2xvY2ssIGZsYWdzKTsK
-IAotCXJldHVybiAwOworCXJldHVybiByb2NrY2hpcF9ncGlvX3NldF9kaXJlY3Rpb24oZ2MsIG9m
-ZnNldCwgZmFsc2UpOwogfQogCiBzdGF0aWMgaW50IHJvY2tjaGlwX2dwaW9fZ2V0KHN0cnVjdCBn
-cGlvX2NoaXAgKmdjLCB1bnNpZ25lZCBpbnQgb2Zmc2V0KQoKQnkgc2V0dGluZyBkaXJlY3Rpb24g
-SU5QVVQsIHRoZW4gd3JpdGluZyBvdXQsIHRoZW4gc2V0dGluZyBPVVRQVVQgYWdhaW4KbWlyYWN1
-bG91c2x5IGl0IGRvZXNuJ3QgZmFpbCBpbml0aWFsIGxpbmsgdHJhaW5pbmcsIHdpdGggbm8gb3Ro
-ZXIKY2hhbmdlcyB0aGF0IGFscmVhZHkgaGF2ZSBiZWVuIHJlamVjdGVkIGJ5IFBDSSBmb2xrcyBh
-bmQgU2hhd24gTGluLgoKRXZlcnl0aGluZyB3b3JrcyBhcyBleHBlY3RlZC4gSXMgdGhpcyBhbiBl
-eHBsYWluYWJsZSBiZWhhdmlvdXIgYnkKUm9ja2NoaXAgR1BJTyBjb3JlPwoKVGhlIHByb2JsZW0g
-SSBhbSBvYnNlcnZpbmcgaXMgdGhhdCBvbmNlIEkgc2V0IFBFUlNUIyBpdCBiZWNvbWVzCnVuc2V0
-dGFibGUgYWdhaW4uIFNvIHRoYXQncyB3aHkgdGhvc2Ugb3Blbi1kcmFpbi9vcGVuLXNvdXJjZSBo
-YWNrcwp3b3JrZWQgKGdwaW9saWIgd2lsbCBoYWNrIHRoZSBwdWxsIHBvbGFyaXR5IHRvIElOUFVU
-KS4KClRoYW5rcywKR2VyYWxkbyBOYXNjaW1lbnRvCgo+IAo+IEFkZGl0aW9uYWxseSwgZm9yIFJv
-Y2tjaGlwJ3MgR1BJTyBjb250cm9sbGVyIHNwZWNpZmljYWxseSwgc2V0dGluZyB0aGUgbGV2ZWwg
-dmFsdWUgc2hvdWxkIG5vdCBiZSBhZmZlY3RlZCBieSB0aGUgZGlyZWN0aW9uIHNldHRpbmcgLSB0
-aGUgZGF0YSByZWdpc3RlciB3cml0ZSBzaG91bGQgYmUgZWZmZWN0aXZlIHJlZ2FyZGxlc3Mgb2Yg
-d2hldGhlciB0aGUgcGluIGlzIGNvbmZpZ3VyZWQgYXMgaW5wdXQgb3Igb3V0cHV0LgoKX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAg
-bWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xp
-c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+
+On 04-11-2025 22:21, Hans Zhang wrote:
+> Current PCIe initialization exhibits a key optimization gap: Root Ports
+> may operate with non-optimal Maximum Payload Size (MPS) settings. While
+> downstream device configuration is handled during bus enumeration, Root
+> Port MPS values inherited from firmware or hardware defaults often fail
+> to utilize the full capabilities supported by controller hardware. This
+> results in suboptimal data transfer efficiency throughout the PCIe
+> hierarchy.
+>
+> This patch series addresses this by:
+>
+> 1.  Core PCI enhancement (Patch 1):
+> - Proactively configures Root Port MPS during host controller probing
+> - Sets initial MPS to hardware maximum (128 << dev->pcie_mpss)
+> - Conditional on PCIe bus tuning being enabled (PCIE_BUS_TUNE_OFF unset)
+> - Maintains backward compatibility via PCIE_BUS_TUNE_OFF check
+> - Preserves standard MPS negotiation during downstream enumeration
+>
+> 2.  Driver cleanup (Patch 2):
+> - Removes redundant MPS configuration from Meson PCIe controller driver
+> - Functionality is now centralized in PCI core
+> - Simplifies driver maintenance long-term
+>
+> ---
+> Changes for v6:
+> - Modify the commit message and comments. (Bjorn)
+> - Patch 1/2 code logic: Add !bridge check to configure MPS only for Root Ports
+>    without an upstream bridge (root bridges), avoiding incorrect handling of
+>    non-root-bridge Root Ports (Niklas).
+Tested this patch series on Agilex 7.
+
+Tested-by: Mahesh Vaidya <mahesh.vaidya@altera.com>
+
+>
+> Changes for v5:
+> https://patchwork.kernel.org/project/linux-pci/patch/20250620155507.1022099-1-18255117159@163.com/
+>
+> - Use pcie_set_mps directly instead of pcie_write_mps.
+> - The patch 1 commit message were modified.
+>
+> Changes for v4:
+> https://patchwork.kernel.org/project/linux-pci/patch/20250510155607.390687-1-18255117159@163.com/
+>
+> - The patch [v4 1/2] add a comment to explain why it was done this way.
+> - The patch [v4 2/2] have not been modified.
+> - Drop patch [v3 3/3]. The Maintainer of the pci-aardvark.c file suggests
+>    that this patch cannot be submitted. In addition, Mani also suggests
+>    dropping this patch until this series of issues is resolved.
+>
+> Changes for v3:
+> https://patchwork.kernel.org/project/linux-pci/patch/20250506173439.292460-1-18255117159@163.com/
+>
+> - The new split is patch 2/3 and 3/3.
+> - Modify the patch 1/3 according to Niklas' suggestion.
+>
+> Changes for v2:
+> https://patchwork.kernel.org/project/linux-pci/patch/20250425095708.32662-1-18255117159@163.com/
+>
+> - According to the Maintainer's suggestion, limit the setting of MPS
+>    changes to platforms with controller drivers.
+> - Delete the MPS code set by the SOC manufacturer.
+> ---
+>
+> Hans Zhang (2):
+>    PCI: Configure Root Port MPS during host probing
+>    PCI: dwc: Remove redundant MPS configuration
+>
+>   drivers/pci/controller/dwc/pci-meson.c | 17 -----------------
+>   drivers/pci/probe.c                    | 12 ++++++++++++
+>   2 files changed, 12 insertions(+), 17 deletions(-)
+>
+>
+> base-commit: 691d401c7e0e5ea34ac6f8151bc0696db1b2500a
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
