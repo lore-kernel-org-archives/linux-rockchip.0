@@ -4,70 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C88DBCCFA1A
-	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Nov 2025 08:40:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 797F8CCF9F8
+	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Nov 2025 08:51:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5hTPDN65UBH/OaNwf85jsgCcgwYE6NhxW1G76g5taDM=; b=KZHT/7prHwyrd1
-	CwE3hmzCPakkp2bBdDLyYFVx2UUrtksFz7JoQKtghLb9n8VaEKy6NQDVT6WXTRDInr1VYnR0/CUE8
-	yVznWTBzQYN+97yNJFedw68Iq42ffu+0gmDF+Vzd0Z9wCTmVJx3bLC/fALSG/8/WFaTZAdCgrpuyq
-	klX/3PUIy06K9ROgKnj3sM/w1AWTZWkk9WWVBdx8gOfghNH+OIKYDZlrl9U1cZxBFvIj4Ox85BraB
-	XMQ+M5KMLhpPboVwCjqUHHHQnZQFX4rRwg1cmOWw9OwN59PkNiMtIw/Ue0EwJ+RorkIuAC3eNqbLx
-	ba4kH5aViLV+snmRRk9w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ZNWJJiUMax8FzcmO3BBuVv6M0uBoSyg2jteY95Z3lVI=; b=BOMqbvwKtIujpn
+	2vnB5W0weacaH3cLrj3+c7GMCySROVh58mei8xZSRft7ec1sW3XRit87suAiw7xUbNTcOnhERiKWw
+	LKRvrei3WKL3CNxHym/7UqviJXHYgoErLaZmgZVJFwME/RMa0WCV6B3oMH65ZhbHLjlNcqnVVBs3W
+	qwYLN2evFbmH1A5cqofB8IUTmGgnRY+BSuJzM1/0OxnbOScKfXCITZd8AORhRNXHCibeC4YHg6GeG
+	rmNEV2Z6u5JKNx7kWj19Sd4V+hV5BgVlVVOykiW8k56soePPaeYe2LJ1oAZfx9wYLzAuCQfiURQL5
+	DEkuBIsMnGLO5/UnTyAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJ6Om-00000008N3s-2Ai7;
-	Wed, 12 Nov 2025 08:40:16 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vJ6ZX-00000008OYa-416n;
+	Wed, 12 Nov 2025 08:51:23 +0000
+Received: from m16.mail.163.com ([220.197.31.3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJ6Oj-00000008N3C-2xYr;
-	Wed, 12 Nov 2025 08:40:14 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id E22E9443C4;
-	Wed, 12 Nov 2025 08:40:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F370CC19421;
-	Wed, 12 Nov 2025 08:40:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1762936812;
-	bh=24AR814wLA55Qc7z3MU0tNwo9drr/C1xImdNGy5q2O0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=UvaW3kwlNSnW6HuOEIaJ/EsL2sNWRr/khWI8ueFg+45xLnNr6VEwJKymoqQcdxYcb
-	 NsrjK5c9QT0AJOITRlsKoSbw18w5uVEUKGPXCprJZylbKbkMPMHptIGkY/ru10J8o4
-	 AiogQZmLOHr0aOrDBK7NErbcj0SPg+I0w/rL/3ppYId+x0lIqyJPipebEW/xFYlWoI
-	 v9BKwVOWhQt1k6y8Eu1joGAUX28fQkfz3uNK4V3sHJpVJXL5fQuC3nB2WtfbVqt248
-	 gKp2uhiU1xgu7T6lyq8ayY/7rMCOkP8JMRq1cWbQcheQxa6WP+YYcPeOg9+ikgHm/Q
-	 QgqAGbyUxTCJA==
-Date: Wed, 12 Nov 2025 09:40:06 +0100
-From: Niklas Cassel <cassel@kernel.org>
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: Manivannan Sadhasivam <mani@kernel.org>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	Kever Yang <kever.yang@rock-chips.com>,
-	Simon Xue <xxm@rock-chips.com>, Damien Le Moal <dlemoal@kernel.org>,
-	Dragan Simic <dsimic@manjaro.org>, FUKAUMI Naoki <naoki@radxa.com>,
-	Diederik de Haas <diederik@cknow-tech.com>, stable@vger.kernel.org,
-	Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>,
-	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v3] PCI: dw-rockchip: Prevent advertising L1 Substates
- support
-Message-ID: <aRRH5i2oq1FBSs_7@ryzen>
-References: <aRM1VOodnSpaob3P@ryzen>
- <20251111214336.GA2190667@bhelgaas>
+	id 1vJ6ZV-00000008OXZ-215b;
+	Wed, 12 Nov 2025 08:51:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version; bh=cA
+	QkV4Rn8OyxFd/w7bQq0NVjuvpKHFncgfCz73Iu0H0=; b=o2ongftMKwj7pU/vbU
+	3hBq52DAkNgcOIpyHCe4EY8kSorZwUR3c9MAEjmmNrlNpKMuBpv+ejzZa6t8quH3
+	hkxoJ5MOhBrLJmbW/RmatjuiZNz4BUzW1sDRNhidMEOc5nvsJrPwTPteKheJ38D5
+	WvCmiigBIhLjCXjL1ASANFqw4=
+Received: from ProDesk.. (unknown [])
+	by gzsmtp1 (Coremail) with SMTP id PCgvCgD3P71SShRpSgG+DQ--.50080S2;
+	Wed, 12 Nov 2025 16:50:30 +0800 (CST)
+From: Andy Yan <andyshrk@163.com>
+To: heiko@sntech.de
+Cc: hjc@rock-chips.com,
+	diederik@cknow-tech.com,
+	dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	Andy Yan <andy.yan@rock-chips.com>
+Subject: [PATCH] drm/rockchip: vop2: Use OVL_LAYER_SEL configuration instead of use win_mask calculate used layers
+Date: Wed, 12 Nov 2025 16:50:23 +0800
+Message-ID: <20251112085024.2480111-1-andyshrk@163.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20251111214336.GA2190667@bhelgaas>
+X-CM-TRANSID: PCgvCgD3P71SShRpSgG+DQ--.50080S2
+X-Coremail-Antispam: 1Uf129KBjvJXoWxWF45Wry3WrWDKr13Zw4xZwb_yoW5Kw4fpa
+	y5Zr15Kr4xXFs0qFs7JF48ur1Yyws7Aa17A393K3sFy34FgryqyrnFkrnIyry5CF9rKFy2
+	yrWDK3yDCrsFkFJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jx_-PUUUUU=
+X-Originating-IP: [58.22.7.114]
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbCxRcHZWkUSlf8WQAA31
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251112_004013_784028_62EA2D3B 
-X-CRM114-Status: GOOD (  20.89  )
+X-CRM114-CacheID: sfid-20251112_005121_889998_170A8A1A 
+X-CRM114-Status: GOOD (  19.40  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,43 +75,113 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Nov 11, 2025 at 03:43:36PM -0600, Bjorn Helgaas wrote:
-> On Tue, Nov 11, 2025 at 02:08:36PM +0100, Niklas Cassel wrote:
-> > On Tue, Oct 21, 2025 at 08:05:17AM +0530, Manivannan Sadhasivam wrote:
-> > > On Fri, 17 Oct 2025 18:32:53 +0200, Niklas Cassel wrote:
-> > > > The L1 substates support requires additional steps to work, namely:
-> > > > -Proper handling of the CLKREQ# sideband signal. (It is mostly handled by
-> > > >  hardware, but software still needs to set the clkreq fields in the
-> > > >  PCIE_CLIENT_POWER_CON register to match the hardware implementation.)
-> > > > -Program the frequency of the aux clock into the
-> > > >  DSP_PCIE_PL_AUX_CLK_FREQ_OFF register. (During L1 substates the core_clk
-> > > >  is turned off and the aux_clk is used instead.)
-> > > > 
-> > > > [...]
-> > > 
-> > > Applied, thanks!
-> > > 
-> > > [1/1] PCI: dw-rockchip: Prevent advertising L1 Substates support
-> > >       commit: 40331c63e7901a2cc75ce6b5d24d50601efb833d
-> > 
-> > Last update in this thread was "Applied, thanks!"
-> >
-> > and the patch was applied to pci/controller/dw-rockchip
-> > 
-> > since then it seems to have been demoted to
-> > pci/controller/dw-rockchip-pend
-> 
-> That was Oct 20, and we had some conversation about a more generic
-> approach after that, so I moved it to dw-rockchip-pend while we worked
-> that out.
-> 
-> I fleshed it out the generic approach and will post it soon.
+From: Andy Yan <andy.yan@rock-chips.com>
 
-Ok, thank you!
+When there are multiple Video Ports, and only one of them is working
+(for example, VP1 is working while VP0 is not), in this case, the
+win_mask of VP0 is 0. However, we have already set the port mux for VP0
+according to vp0->nlayers, and at the same time, in the OVL_LAYER_SEL
+register, there are windows will also be assigned to layers which will
+map to the inactive VPs. In this situation, vp0->win_mask is zero as it
+now working, it is more reliable to calculate the used layers based on
+the configuration of the OVL_LAYER_SEL register.
 
+Note: as the configuration of OVL_LAYER_SEL is take effect when the
+vsync is come, so we use the value backup in vop2->old_layer_sel instead
+of read OVL_LAYER_SEL directly.
 
-Kind regards,
-Niklas
+Fixes: 3e89a8c68354 ("drm/rockchip: vop2: Fix the update of LAYER/PORT select registers when there are multi display output on rk3588/rk3568")
+Reported-by: Diederik de Haas <diederik@cknow-tech.com>
+Closes: https://bugs.kde.org/show_bug.cgi?id=511274
+Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+---
+
+ drivers/gpu/drm/rockchip/rockchip_vop2_reg.c | 49 +++++++++++++++++---
+ 1 file changed, 42 insertions(+), 7 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+index d22ce11a4235..f3950e8476a7 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
++++ b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+@@ -1369,6 +1369,25 @@ static const struct vop2_regs_dump rk3588_regs_dump[] = {
+ 	},
+ };
+ 
++/*
++ * phys_id is used to identify a main window(Cluster Win/Smart Win, not
++ * include the sub win of a cluster or the multi area) that can do overlay
++ * in main overlay stage.
++ */
++static struct vop2_win *vop2_find_win_by_phys_id(struct vop2 *vop2, uint8_t phys_id)
++{
++	struct vop2_win *win;
++	int i;
++
++	for (i = 0; i < vop2->data->win_size; i++) {
++		win = &vop2->win[i];
++		if (win->data->phys_id == phys_id)
++			return win;
++	}
++
++	return NULL;
++}
++
+ static unsigned long rk3568_set_intf_mux(struct vop2_video_port *vp, int id, u32 polflags)
+ {
+ 	struct vop2 *vop2 = vp->vop2;
+@@ -1842,15 +1861,31 @@ static void vop2_parse_alpha(struct vop2_alpha_config *alpha_config,
+ 	alpha->dst_alpha_ctrl.bits.factor_mode = ALPHA_SRC_INVERSE;
+ }
+ 
+-static int vop2_find_start_mixer_id_for_vp(struct vop2 *vop2, u8 port_id)
++static int vop2_find_start_mixer_id_for_vp(struct vop2_video_port *vp)
+ {
+-	struct vop2_video_port *vp;
+-	int used_layer = 0;
++	struct vop2 *vop2 = vp->vop2;
++	struct vop2_win *win;
++	u32 layer_sel = vop2->old_layer_sel;
++	u32 used_layer = 0;
++	unsigned long win_mask = vp->win_mask;
++	unsigned long phys_id;
++	bool match;
+ 	int i;
+ 
+-	for (i = 0; i < port_id; i++) {
+-		vp = &vop2->vps[i];
+-		used_layer += hweight32(vp->win_mask);
++	for (i = 0; i < 31; i += 4) {
++		match = false;
++		for_each_set_bit(phys_id, &win_mask, ROCKCHIP_VOP2_ESMART3) {
++			win = vop2_find_win_by_phys_id(vop2, phys_id);
++			if (win->data->layer_sel_id[vp->id] == ((layer_sel >> i) & 0xf)) {
++				match = true;
++				break;
++			}
++		}
++
++		if (!match)
++			used_layer += 1;
++		else
++			break;
+ 	}
+ 
+ 	return used_layer;
+@@ -1935,7 +1970,7 @@ static void vop2_setup_alpha(struct vop2_video_port *vp)
+ 	u32 dst_global_alpha = DRM_BLEND_ALPHA_OPAQUE;
+ 
+ 	if (vop2->version <= VOP_VERSION_RK3588)
+-		mixer_id = vop2_find_start_mixer_id_for_vp(vop2, vp->id);
++		mixer_id = vop2_find_start_mixer_id_for_vp(vp);
+ 	else
+ 		mixer_id = 0;
+ 
+-- 
+2.43.0
+
+base-commit: ded94ec6167e84195507237100f6278941e36fdd
+branch: drm-misc-next-2025-1016
+
 
 _______________________________________________
 Linux-rockchip mailing list
