@@ -4,58 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2394CD6E4D
-	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Nov 2025 13:00:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4B5DCD6E63
+	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Nov 2025 14:01:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ObyUBLDXkqFG+TiLvjOxeVRwZQT3a0kF7YfInF7Ekz4=; b=dA0fUSFfg6Ktcx
-	cluP9JdfhA1o3TZ42dv1W5+/j1APhutRkb6tqt/wNk91xoGjH0ZdwqoeZjiirnJPqZwf93aKja8X1
-	QtNlov5RDLBDA3KCe+FdB+ptk91w7M+pPK8DKv/1R/Ury+hk3W/4wlnXTtI5sXx94/j3jm3VrUHR7
-	3g+o74ECbjEWKY8ZjVbKIGbKl/0QoE6rgg2OyT+GTntbwCYcy2Uobrgmgg4cwIVqlh4XmDvS5I/h8
-	GmoHqFhXdvgXvBf13jYjiWoDXaw1UE3JYKipmus7Vd36evhiJe9s3bDzngrO0CCt5HaReLSt1d/Q4
-	fjUGfI5SfPc+QD61ZQyQ==;
+	List-Owner; bh=JTmYTOYJWDGX6n3rssPAwFwDMRB4QIy8GLOs80vLWXM=; b=zst4uOQs4fEwSx
+	ncUvtNBPIxjOHtkLmLHInH2XuymfZNU4/7SBk8K+L5r8B0TlWLpqDPyoNON9Av5htpSqbPrK8K2O5
+	vKRbcIC4H2EugtnNfxol3zplLsxGQ7H5Zoj6bvvah2bzw0ir64NFG5rHfYHE52T5ynHGpprb6euqo
+	Ni67bsomRoHl70ezq6CKYmaIE5weJ1hAOCecvLZ8ZY5zR4r7zC8OrjbLoQd+6GkPbH7PixNIF1tkx
+	WDN+Cyt4qZXJKWH4GeJ0sSbCj7ra0uxPLgKY17Izr5RT6PyfCOdw6lnpCRRfhI3mp2Q5zRMP6HBC+
+	+0c35rSyiUkmO0Q+nd2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJWwU-0000000AVPR-0DTm;
-	Thu, 13 Nov 2025 13:00:50 +0000
-Received: from mail-m49197.qiye.163.com ([45.254.49.197])
+	id 1vJXsy-0000000AaLY-2OO2;
+	Thu, 13 Nov 2025 14:01:16 +0000
+Received: from mail-m155101.qiye.163.com ([101.71.155.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJWwP-0000000AVOn-2lRy;
-	Thu, 13 Nov 2025 13:00:48 +0000
+	id 1vJXst-0000000AaL8-2WJ7
+	for linux-rockchip@lists.infradead.org;
+	Thu, 13 Nov 2025 14:01:15 +0000
 Received: from localhost.localdomain (unknown [58.61.140.134])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 297bea02c;
-	Thu, 13 Nov 2025 21:00:35 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 297cfdf04;
+	Thu, 13 Nov 2025 22:01:05 +0800 (GMT+08:00)
 From: Chukun Pan <amadeus@jmu.edu.cn>
-To: coiaprant@gmail.com
-Cc: amadeus@jmu.edu.cn,
+To: naoki@radxa.com
+Cc: alchark@gmail.com,
+	amadeus@jmu.edu.cn,
 	conor+dt@kernel.org,
 	devicetree@vger.kernel.org,
+	dsimic@manjaro.org,
 	heiko@sntech.de,
 	krzk+dt@kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	robh@kernel.org
-Subject: Re: [PATCH v5 3/3] arm64: dts: rockchip: Add devicetree for the 9Tripod X3568 v4
-Date: Thu, 13 Nov 2025 21:00:21 +0800
-Message-Id: <20251113130021.822765-1-amadeus@jmu.edu.cn>
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v2 4/4] arm64: dts: rockchip: Make eeprom read-only for Radxa ROCK 3C/5A/5C
+Date: Thu, 13 Nov 2025 22:00:20 +0800
+Message-Id: <20251113140020.919159-1-amadeus@jmu.edu.cn>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <6F2972A5-047F-48A5-B409-C3F3E71643AD@gmail.com>
-References: <6F2972A5-047F-48A5-B409-C3F3E71643AD@gmail.com>
+In-Reply-To: <20251112035133.28753-5-naoki@radxa.com>
+References: <20251112035133.28753-5-naoki@radxa.com>
 MIME-Version: 1.0
-X-HM-Tid: 0a9a7d4db1a103a2kunmc0f785fd12ff7c
+X-HM-Tid: 0a9a7d85162e03a2kunmbae28cdc135b3d
 X-HM-MType: 10
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlDQx9JVhpDGk5CQ0lPTEMeGlYeHw5VEwETFhoSFy
-	QUDg9ZV1kYEgtZQVlOQ1VNSlVKT0tVSkhPWVdZFhoPEhUdFFlBWU9LSFVKS0lCTUtKVUpLS1VLWQ
-	Y+
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlDGEpOVhlCQk4dQ0tLHk5JHlYeHw5VEwETFhoSFy
+	QUDg9ZV1kYEgtZQVlOQ1VNSlVKT0tVSkhPWVdZFhoPEhUdFFlBWU9LSFVKS0hKTkxOVUpLS1VKQk
+	tLWQY+
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251113_050045_881606_1AAE3659 
-X-CRM114-Status: UNSURE (   6.39  )
+X-CRM114-CacheID: sfid-20251113_060111_848572_444FC6DE 
+X-CRM114-Status: UNSURE (   5.74  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -75,19 +75,17 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Hi,
 
-> PCIe and MIC picked from OEM source codes.
+> Make the BL24C16 EEPROM chips found on Radxa ROCK 3C, 5A and 5C SBCs
+> read-only, [1] [2] [3] because they contain factory-programmed data
+> that isn't supposed to be modified by the end users. [4]
 
-I know it comes from BSP code, but it's not correct.
-A PCIe 3.3V power supply will not have a 0.1V situation.
-Rockchip fixed this in their kernel a long time ago:
-https://github.com/rockchip-linux/kernel/commit/17e9559f67d26f3c602e38a24feb5194e51ac782
+Is this true? I confirmed that the EEPROM was empty when I submitted
+the ROCK 3C support. Based on the Radxa boards I purchased, it seems
+that only the "Network Computer" series SBC (E20C, E24C, E52C, E54C)
+have production information in their EEPROM.
 
-> Since parts of the OEM source code are not available in mainline,
-> I refer to other boards (e.g. RK3568-EVB or RK3568-ROC-PC), but
-> I don't have a camera or screen to test, so I mark them as demo.
-
-These things may have been brought by rk3568-evbxxx.dtsi, and may
-not actually exist.
+Thanks,
+Chukun
 
 _______________________________________________
 Linux-rockchip mailing list
