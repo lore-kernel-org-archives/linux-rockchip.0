@@ -4,66 +4,169 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3F49CCFA18
-	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Nov 2025 07:59:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20AFECD4F57
+	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Nov 2025 08:19:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tpADHt4w2BOJjMM2mnPzFbYtKRePcO02bOdHX+8nAD0=; b=IOcxjwTbyh/HVI
-	z+sfgq0jLA2/PHUYpExhPzw8HHDQJGj7PRXglRxAk3Cm1gssKdaP43xG+V/Cfhqqf+p7f9hkTCoj1
-	bHrxBvvYLKs0Rzbc1Fux7XHbNQwu2wSUhBAV5sCJ1PAMFeJer8H1uJjXeIrs/r4BI+CayWWuEmJRV
-	FavBl7xeQDbrcAgGVra+sMkT5Q+McYmlSPS0sLEYt4y7M79AhWd4tmVz/OxhO7DCdAsY/M2rpC6bD
-	A1WuVOMnl9fRi6HOLsZj5IpCTEy8WnzOJtJpfYYB4/nbeHXXaDP8KkHEZ/vOuC8KS1yLEc+14qapV
-	OpMb+peVqG7geMf9grfw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=mDtqLvaQLXf50rif8m0Ah+v+ktYsqum0D+ku/B7rxa4=; b=INcWmoY6eNHc1cMzRI+Ib3xgBk
+	dUIVr6t0c16ArEsZI6SISnuVeHasJt0cZwiwuAVIXVyqwjFPS/qswbntMhXDu9aKpfkNOyfoY92Uy
+	aRWQtheLlVDZ8zqSADiAwhvlV2TRk24/XrKoJzcpp5Sp5WPiWejCOnmaGz9ZM6F2Y9cgOnhlWwn+f
+	B4fkOr9sTg8z5vi7krvSB6sdZ4gwUkDZwIIh6NYJVINoTNTDppCttERd3XBEX8Xh/xzHeDd4HQHVG
+	m8CWaofohw6YVqp1MAoYxY5X74Mywkijs0K/1KnSdLjDgAU2Ag+hr9oQAon1EvB0MxI4DX0Eo/ky4
+	cc29ARcQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJSEu-0000000A2Ic-39gu;
-	Thu, 13 Nov 2025 07:59:32 +0000
-Received: from mail-m3287.qiye.163.com ([220.197.32.87])
+	id 1vJSY6-0000000A5RI-1phf;
+	Thu, 13 Nov 2025 08:19:22 +0000
+Received: from mail-francesouthazlp170110003.outbound.protection.outlook.com ([2a01:111:f403:c207::3] helo=MRWPR03CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJSEs-0000000A2I1-17zk;
-	Thu, 13 Nov 2025 07:59:32 +0000
-Received: from rockchip.. (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 29728c01c;
-	Thu, 13 Nov 2025 15:54:25 +0800 (GMT+08:00)
-From: Elaine Zhang <zhangqing@rock-chips.com>
-To: zhangqing@rock-chips.com,
-	mkl@pengutronix.de,
-	kernel@pengutronix.de,
-	mailhol.vincent@wanadoo.fr,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	heiko@sntech.de,
-	cl@rock-chips.com
-Cc: linux-can@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org
-Subject: [PATCH v9 3/3] net: can: rockchip: add can for RK3576 Soc
-Date: Thu, 13 Nov 2025 15:54:19 +0800
-Message-Id: <20251113075419.482940-4-zhangqing@rock-chips.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20251113075419.482940-1-zhangqing@rock-chips.com>
-References: <20251113075419.482940-1-zhangqing@rock-chips.com>
+	id 1vJSY4-0000000A5QM-0PJc;
+	Thu, 13 Nov 2025 08:19:21 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=Kknl/du4PavK9g2JcjTOVx+OUEkUJPv0IS0dQa9DPWgJyFJWDzW7nonSghKYraI042TBiWcOdl1VkqCmawnMSWeQoDqiWmi0NeyZdaMIsEMYPrNyIpPRZyL5DaG4Of/Qz2MOr//IL69we8L8udg5+80tK9jFRH9uBFAvq3o+1eig7LdRR6svLT6YmuQaoioH8DvnVJiKWriU+sHbuOxWjIUxulExWGXWzf+zWTXKPNOlkG7q1dz3w7eF4oHmEMyxlBUlQfiNvFcmkqNgI9yBOqw/8kOdw5gQIXMYDeVbW8cD4VDVu3+zLZ11kLBJygfAVvyVpvSevMGXE3bdg4Q8+Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=9FdplCdlJl8pSjEoM7eeAjLoUFAm4Jtl/lN2P3mdIxQ=;
+ b=g5IzqR3GdxnOjcrzjs+ItwWBuas0CE2kHCmrT5uXafMLzJw8v3dqPmNzilcWjcbGyf96a+FHzlkVgdaUIDEffx2UtHHxXVg4zWG8MABdBloRarvNt0ItHMVZHV3ZRddUDQCeauHMzueHI1LUpsy2/VP0EtaSaR7fxopXVC5q4wYwzkEeXY7+Vb1jIdqoezPrrR1Qzme/VvSdCItZdp9r4QqEzY9AWG7o3nmrFnxTSqb6BtTzQtmKJG75dUvmymcoC92tYf9X9b/gu5PGN8PHOldPnXZBtzZpCQZ64nznXkLs1Xx0w8f7E04BNe16/m6+S3XRlmf+GC0LdmjPC1NMsA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=9FdplCdlJl8pSjEoM7eeAjLoUFAm4Jtl/lN2P3mdIxQ=;
+ b=HGiT3MNqTVRVXNpFeEDUNhVyEYX6bIaPLJJzF4sV52lFUDpNMRe/HgwYLV7+7WQ0DIRezNnIxhNK8WmPaidm5yvgRzlqxMceTlfRQaAmHwKCSYr11gSkGWheFJyjY4Q+h3AkwSyawcXhZyK2Z3sWptzkVsmKNyNUecGwYvjOjCX0sarezfJuH816VZ1OrBZ6UEZHSS68yf1Hvre7D3GRIdsYgJ/de4mNxbVrIi4BwZapJA3nG6uBSp+76tPK2079DsfUETX12BSq7l8Ji3y82fHH7S57uYuryw09hchTyB1fceGK0PNnsMfsx2mdAmKJDHopj+ixfa79kj6YYLtkog==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nxp.com;
+Received: from GVXPR04MB9831.eurprd04.prod.outlook.com (2603:10a6:150:11c::8)
+ by GVXPR04MB10136.eurprd04.prod.outlook.com (2603:10a6:150:1bc::9) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9320.16; Thu, 13 Nov
+ 2025 08:19:12 +0000
+Received: from GVXPR04MB9831.eurprd04.prod.outlook.com
+ ([fe80::4634:3d9c:c4a:641a]) by GVXPR04MB9831.eurprd04.prod.outlook.com
+ ([fe80::4634:3d9c:c4a:641a%6]) with mapi id 15.20.9320.013; Thu, 13 Nov 2025
+ 08:19:12 +0000
+Message-ID: <90267077-c74c-4e05-809d-94694d162e18@nxp.com>
+Date: Thu, 13 Nov 2025 09:19:10 +0100
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v8 5/8] media: v4l2-core: Introduce v4l2-isp.c
+To: Jacopo Mondi <jacopo.mondi@ideasonboard.com>,
+ Dafna Hirschfeld <dafna@fastmail.com>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Keke Li <keke.li@amlogic.com>, Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Heiko Stuebner <heiko@sntech.de>, Dan Scally <dan.scally@ideasonboard.com>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>
+Cc: linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
+ Michael Riesch <michael.riesch@collabora.com>
+References: <20251020-extensible-parameters-validation-v8-0-afba4ba7b42d@ideasonboard.com>
+ <20251020-extensible-parameters-validation-v8-5-afba4ba7b42d@ideasonboard.com>
+Content-Language: en-US
+From: Antoine Bouyer <antoine.bouyer@nxp.com>
+In-Reply-To: <20251020-extensible-parameters-validation-v8-5-afba4ba7b42d@ideasonboard.com>
+X-ClientProxiedBy: AM0P190CA0006.EURP190.PROD.OUTLOOK.COM
+ (2603:10a6:208:190::16) To GVXPR04MB9831.eurprd04.prod.outlook.com
+ (2603:10a6:150:11c::8)
 MIME-Version: 1.0
-X-HM-Tid: 0a9a7c35670703a3kunm5789752bf0413
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGU1CTlZMQ0hCGhhKHR5IHxhWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=Qt2lKj81I3wRBokCvJ+6RQB7jj2ZbK/yj9pX0nxeyvkf1LLpFICLoIgCIC1loZVmTqaxCE4X56UoZ2Yn2JXRoTSOO7vFWfYbkAU6XHLeCz6KhWc9AArBN5dKIql+Zqr3NMimao8GhLeSKofXrnZ6m+CRxvRljnq6RGe1Q0SV4/Q=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=YMqANe4mVSlbKgu++K2EGlIXWwnZ4HvK6BHeVi9MyQg=;
-	h=date:mime-version:subject:message-id:from;
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: GVXPR04MB9831:EE_|GVXPR04MB10136:EE_
+X-MS-Office365-Filtering-Correlation-Id: 25101d67-c0db-4fab-05fd-08de228d537b
+X-LD-Processed: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635,ExtAddr
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|19092799006|376014|7416014|366016|1800799024|7053199007;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?Y20zVjlTSTIyT2w4MC9BeEw3RVF2Y3lQN1dId0RPMXIvUmtPN2Q4YTJrY3dJ?=
+ =?utf-8?B?MUgrT0xCeDZnTjlDSWVQeGJGQUtjQ20zalcrdFc3L2dHQkltemh6U3IzLzdo?=
+ =?utf-8?B?RVpkaElFNVBDOEpza3p4RXlmblJWc2ZpYWphL2VnQ2xydDlrY2NjTFpOdWR2?=
+ =?utf-8?B?a24xUFZaUFhPVWtlWGliampmUmhTbXRtdFMxSVNTVjlmdU50TDdEK3JkRjc0?=
+ =?utf-8?B?WGxnWG1Zc1FsSVc3VFNYSWZrRmNJb2pkNlI2QnU3M3JueitCY2MzQmJBU3hL?=
+ =?utf-8?B?RzlIcEI0UWcxYXhnNkg2S1YxTW5DYVF6MzRKWFYwL1pmV0tZbDJmVElJa1Ra?=
+ =?utf-8?B?SktMN1hRb3o4ZXduQzVEMmFhMGFzQ2tlT0pnVlZBOXhVWjBZbHV0MGl1aUJ1?=
+ =?utf-8?B?Z2ZCakY1Q05YcU96Y1BlbjFJbjluVTl1NnhleHFxeU0yMGtFMnBTOTFEcXpM?=
+ =?utf-8?B?bk5XMVEvL2hZazJUT05JQm5HdjR1Ym94L3poNktQZEtud2JlcDNKMWVSQWk3?=
+ =?utf-8?B?eVgzNFNLaE5vMklNM0RiUHdUTG5WSWxTN2lSTERMMnhqSnNLUjYwQThNTUMv?=
+ =?utf-8?B?TlhCeFp2bnRvdVlsZXhIOFR6TGozemJENFYwTnZIZXMrSm5pVk0wWlByUXNz?=
+ =?utf-8?B?WkZVYVhuNVdmQ3VLenlRa0s3QTBHVmxoUCs5bnYyNkR2Z2dBaGxrb3FseWJU?=
+ =?utf-8?B?S21BcGVBS3ppcXZ2bktwZ2I1NFFEcUM5OS9nbWIwNy9RRUI2VHVBaGNuZ2do?=
+ =?utf-8?B?Y2crWHVkY0FTWTVtbmd3QXM5UElhVDZ5dWEzZTZ0WVVPTHNjaWdTT2RoaS9o?=
+ =?utf-8?B?VkhpQWJweDVNRmRRWGhHUzh3NTA4OWRBVUlRMWZZU3NELzlqM01uczdWdVh0?=
+ =?utf-8?B?SFVxV1BPbEp5WFg2dmJCZDJuT1hseFJJakNyaEtWWXN4NUhyeXhQbjk5Nlpa?=
+ =?utf-8?B?ZndzNWYyeE8vM2N0WVpJL1BUTkVqbnNyYkxUWmRzQTVKRFYxdkR1VTRWRWpG?=
+ =?utf-8?B?UFNsVnhFbWNnREV5bXBCTjcwVFZqYy9TNFRGY3hhb25UWFpGR1ZwTEM3T1dz?=
+ =?utf-8?B?cHJ3TVg5dzl0R2pEazJlMjBNb3RRamZWNmhrV05mN2pnUUdPQmMySWNFWkdH?=
+ =?utf-8?B?dDFjUGY0T2pNUEU2ODl3YXdrQ3BmN0tZakFHd2w0UWxOQTE3NWxXU1Y4K3Fq?=
+ =?utf-8?B?L281dk9weTNnRlFKanlGYk9BVlYrUmxERGQ2MTdiN1orVXJKL1N1Vk50Qkg1?=
+ =?utf-8?B?VlExT29RZExpRzJKbDFRbTgrQ3NxbW1uWEpmd0ZHV2kzaGo2UGNqTEFCbk9S?=
+ =?utf-8?B?Y0NZVHNXVnJhbWgxQUtqYitQd1V2NGtRaE1CNTc3dkVCeVFiVVJ5Zjl2bUVk?=
+ =?utf-8?B?M3VkdWszbWZuSTJVNVF3Vy9aVUVNS2lUQkc3d1dkTjFHM0dpYVBWMytmYmdk?=
+ =?utf-8?B?WEoxR1F1SVVidjJnQWF1MEZFb2d2SWhRNHZpTHhuQm9GUTFYYktVeFRFMlJy?=
+ =?utf-8?B?bUUvK0ZRbEsvT0lISGVwalJTN2srVWlDa3BOYlN3MUsvTjUvMTl5VDdXVjNs?=
+ =?utf-8?B?T3l1REVLaEYzTkw4c2R5UTB2Y0UrRTA4aTNJdEI5NTBOdnZzeXZ5a2lGck1o?=
+ =?utf-8?B?dk56eEFFU3QxMllidzMySlFsRzQvLzJkN0RnaS9rK1FHQ1FGN0J1a2FVS0dy?=
+ =?utf-8?B?dE12aFI4NFZOMlZxMTlYYURwSnlpYkdPZmZBYjQ0THF3cWJzbUtMVU5hRUlR?=
+ =?utf-8?B?Y1hWTStNMjFnQlVYUStZNG9sOWd1UVY2T3JGbjVIR05ud0loK2VvVnlXL01m?=
+ =?utf-8?B?TzNYMU5GL3NXdFJuY051K3VXVmZoUUNVL0gzbitKUjRKV2N3N1VhRDJwTmxR?=
+ =?utf-8?B?WjI0dURhS0R0UFB4eHloYzNRbmFDT2pCcUpjTXh6VTh3UndQaEhERjZ3WWYx?=
+ =?utf-8?Q?be9AQcTcg2WHXxKpctvVPk6n3sFYYQtl?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:GVXPR04MB9831.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(19092799006)(376014)(7416014)(366016)(1800799024)(7053199007);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?VXJQbnZKNk9SYm12UGxFSUlZZ2hVcTRpZFRyd3hsdjRGQTB2dVVkU1o5RHN4?=
+ =?utf-8?B?amxsczlvQVZ6cC9xVnhXZlIxdVJTTCtkMVZVSWVPbUNwdVJFcElOYXhmZFlM?=
+ =?utf-8?B?T2ttdXFjN2ZmU1pHWmhGM0NEdFFlZ0F0Y2poZ0NXRWVubjVEb0pweW5nSXJa?=
+ =?utf-8?B?SkNpT0FTNlV0ZGZWRVpkYnlzQXNUUkJrUmphbkw2Vms2blI4VkQ0Vm1jOU01?=
+ =?utf-8?B?L1dwbSt3Lzd0aUs4ZGQ5RktqeUNnYnloRGkzSk9LbnluZFZuSTFNM1N0Ymcx?=
+ =?utf-8?B?aDVFRjJnaUdyVjhNeDNELzJRSC9kcCtOUEdFTlBkdFRteDlZTnZCcTV6dlJo?=
+ =?utf-8?B?b0wwdXR2OUptRFhiR0RxdEtrTVBLZnBpeVM1ZUhzWWYyVTllS2pjT1JaUjBl?=
+ =?utf-8?B?NUFGUzFwQ3R4YUxjOWp4ZXVoRUsyNWEwemtZNjVuZm1lS3p0SXZXNzhadFhE?=
+ =?utf-8?B?T29vdmUrNnNnYXpkOTJPVXpVVGlLeFRBdjNIdDd1akhMNXNSR0pydVc0N3dP?=
+ =?utf-8?B?Ty9MNHN5WkhKMC9DUG4yY29JOTQ5R3IxT1ZqSTM3WEhOQXd6VFlwRVBoUlh4?=
+ =?utf-8?B?ZDloT1h2MVZ5Y3BjampGVEdqWm1KZWFDNGVZWkFRNGtQZFVjZ0RlQ05TTklY?=
+ =?utf-8?B?UTFyVFJoNGxHN2VzMDJlVndMSEVqcElHUFBjK0FHYmJodEJKZ3ljd0VDUlFL?=
+ =?utf-8?B?V1UvZDR4T0dYdkg1ZVJaeGNTMzlDWTJjYXZBaFhtL2FqZlk2RlBVT2o5NVp1?=
+ =?utf-8?B?N3VPVXBKSzZ0R01PeFZxTE5mY0FHcmpzaFQwMXk3Q0p4OStLMjBwNHVLNkpO?=
+ =?utf-8?B?NWd3aFlKemtRemc1bEIxTUFMSWcrQlE1cEJ2RHpMNHlqckdxazMvelM3aHFC?=
+ =?utf-8?B?aDg5ZTNQVko4eWVSYmczWFZxSlBBSFhrbjJGWUhQVC9nUlBSS1hlMllKMTRu?=
+ =?utf-8?B?dHdtcy9ZVzk1TWNQdWlQeGJiZXpOTUlXZ2Y0cUZXMVR5bmhxUjJGZ1puNFhQ?=
+ =?utf-8?B?eDl0UmoxVThBYmo2UU1VV2l2KzFHNEt4YmJKbUlLMjJYczRMZEY4aVFkZ21s?=
+ =?utf-8?B?Uzc0UUJERUE0RHlnTWZzYnhCWHN5ZGFaS01reXdsQTRZVnlhdXk2QUlnOTdt?=
+ =?utf-8?B?VkdCL1JGL0FtZXM2YmIrU1FtMVIrMi9iaEVtWVNsZzlPSGdKaTNCcEJnNXVm?=
+ =?utf-8?B?YkdxbC9OQVphQVhUVXZEREVIVUthQURvdVBxYkQ4MXlIdkM1VCtFY1VJRUVL?=
+ =?utf-8?B?UGQ1SVNXcTlQQTN5TEpZN1Y3SFYrWloyRm00eGd2U1VDRWI4a2QyeFVDbVJL?=
+ =?utf-8?B?bmMvVGtKRlliUFNUbk93dURjdWsxNlBJYWtHZFNvai9rTUlzc1pYelVwdE9E?=
+ =?utf-8?B?UEw5dkRQc1BzVlhLcWJOSWcrK1ZEQ25BV0lKeS91cDBXdTZJb2dXYzRnRGo1?=
+ =?utf-8?B?RkdDdnM0ZnFNM1I2a3NHcmc3NllpL0w4NnZZSGxWc3FZd1lkWWVNRXA1d2lT?=
+ =?utf-8?B?QkFRRVczeW52Vk5TeGdYYW1kWUhLcUg1MUFJVFJrRVBHUHVWTHZ1SFZab3Vq?=
+ =?utf-8?B?dWIyZXc5Q2hnZEptdHBPT1FxbmFMaHlWQ0VrNmIvTU1ybjdPRlVOS09DMHp0?=
+ =?utf-8?B?QlNlYitLSTZ2anNFSmdYMEJsb1YzSGRKZmh4QlB6TjNmR3c4NWhwKzNKdkQz?=
+ =?utf-8?B?K20xNlJCaGZCdTlUZzJvN2Z6YlROb1QrWHpaWDJ6OGpkMS8vSEw3TWw4TFVr?=
+ =?utf-8?B?UU9rdnhoRmNtRll1bWlUd0V2TDQ5UmRkTGwxSGgxdDB1dkNLZ2RkME1KL0NQ?=
+ =?utf-8?B?azhaMzRyTXYrWW1wOW9Dcno3WTRXOEpLc01LODYwcGNJMXBGalcwMHd4NGEw?=
+ =?utf-8?B?Q2lEMWtsclNIbWp3TW84enlKNnUyRVhvd2NMdWVnT1FUTXRvdE9UY05XNjlF?=
+ =?utf-8?B?eFZnLzNkd0JvWlpTdGpSU2IwQzJna2lWOWEwYTVUQm9iNzM1eDJvRDdmWHdI?=
+ =?utf-8?B?cFF4MW1IWUhNVjlGOVNzVkNhN2VKNWlkMnp4RHA5eVlUekU5R2ZPZ0JKTkVp?=
+ =?utf-8?B?aUdwdTZIWTJXekpZNXEybjJCTjJkdHVRempIVjFCc1lUeW0xV2ZFR1BIS3ht?=
+ =?utf-8?B?R3U4VWpiQXhqaEEzOWlTWDBtNnNkU3NXeklTQTR5YURyaktQMTN6dk56bGI5?=
+ =?utf-8?B?YkE9PQ==?=
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 25101d67-c0db-4fab-05fd-08de228d537b
+X-MS-Exchange-CrossTenant-AuthSource: GVXPR04MB9831.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Nov 2025 08:19:12.2225
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: ipO7BEJ5fkGjIY9vlM8wVNaM/B0Q7JeWUOdMe0JU5F6wrW6MUBIjkUTnjhoO2LKLOkh6KBBOGElj8Iy4s66VaA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: GVXPR04MB10136
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251112_235930_697548_A52197E5 
-X-CRM114-Status: GOOD (  18.13  )
+X-CRM114-CacheID: sfid-20251113_001920_332978_E4C1E51D 
+X-CRM114-Status: GOOD (  25.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,1011 +178,320 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Is new controller, new register layout and Bit position definition:
-Support CAN protocol, ISO 11898-1
-Support transmit or receive error count
-Support acceptance filter, more functional
-Support interrupt and all interrupt can be masked
-Support error code check
-Support self test\silent\loop-back mode
-Support auto retransmission mode
-Support auto bus on after bus-off state
-Support 2 transmit buffers
-Support Internal Storage Mode
 
-Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
----
- .../net/can/rockchip/rockchip_canfd-core.c    | 419 ++++++++++++++++++
- drivers/net/can/rockchip/rockchip_canfd-rx.c  | 103 +++++
- drivers/net/can/rockchip/rockchip_canfd-tx.c  |  20 +
- drivers/net/can/rockchip/rockchip_canfd.h     | 258 +++++++++++
- 4 files changed, 800 insertions(+)
+Hi Jacopo
 
-diff --git a/drivers/net/can/rockchip/rockchip_canfd-core.c b/drivers/net/can/rockchip/rockchip_canfd-core.c
-index 761cb36148ff..58fffcf97b20 100644
---- a/drivers/net/can/rockchip/rockchip_canfd-core.c
-+++ b/drivers/net/can/rockchip/rockchip_canfd-core.c
-@@ -31,6 +31,8 @@ static const char *__rkcanfd_get_model_str(enum rkcanfd_model model)
- 		return "rk3568v2";
- 	case RKCANFD_MODEL_RK3568V3:
- 		return "rk3568v3";
-+	case RKCAN_MODEL_RK3576:
-+		return "rk3576";
- 	}
- 
- 	return "<unknown>";
-@@ -176,6 +178,27 @@ static void rkcanfd_get_berr_counter_corrected(struct rkcanfd_priv *priv,
- 		    !!(reg_state & RKCANFD_REG_STATE_ERROR_WARNING_STATE));
- }
- 
-+static void rk3576can_get_berr_counter_corrected(struct rkcanfd_priv *priv,
-+						 struct can_berr_counter *bec)
-+{
-+	struct can_berr_counter bec_raw;
-+	u32 reg_state;
-+
-+	bec->rxerr = rkcanfd_read(priv, RK3576CAN_REG_RXERRORCNT);
-+	bec->txerr = rkcanfd_read(priv, RK3576CAN_REG_TXERRORCNT);
-+	bec_raw = *bec;
-+
-+	priv->bec = *bec;
-+
-+	reg_state = rkcanfd_read(priv, RKCANFD_REG_STATE);
-+	netdev_vdbg(priv->ndev,
-+		    "%s: Raw/Cor: txerr=%3u/%3u rxerr=%3u/%3u Bus Off=%u Warning=%u\n",
-+		    __func__,
-+		    bec_raw.txerr, bec->txerr, bec_raw.rxerr, bec->rxerr,
-+		    !!(reg_state & RK3576CAN_REG_STATE_BUS_OFF_STATE),
-+		    !!(reg_state & RK3576CAN_REG_STATE_ERROR_WARNING_STATE));
-+}
-+
- static int rkcanfd_get_berr_counter(const struct net_device *ndev,
- 				    struct can_berr_counter *bec)
- {
-@@ -206,6 +229,11 @@ static void rkcanfd_chip_interrupts_disable(const struct rkcanfd_priv *priv)
- 	rkcanfd_write(priv, RKCANFD_REG_INT_MASK, RKCANFD_REG_INT_ALL);
- }
- 
-+static void rk3576can_chip_interrupts_disable(const struct rkcanfd_priv *priv)
-+{
-+	rkcanfd_write(priv, RK3576CAN_REG_INT_MASK, RK3576CAN_REG_INT_ALL);
-+}
-+
- static void rkcanfd_chip_fifo_setup(struct rkcanfd_priv *priv)
- {
- 	u32 reg;
-@@ -220,6 +248,48 @@ static void rkcanfd_chip_fifo_setup(struct rkcanfd_priv *priv)
- 	netdev_reset_queue(priv->ndev);
- }
- 
-+static void rk3576can_chip_fifo_setup(struct rkcanfd_priv *priv)
-+{
-+	u32 reg_ism, reg_water;
-+
-+	reg_ism = FIELD_PREP(RK3576CAN_REG_STR_CTL_ISM_SEL,
-+			     RK3576CAN_REG_STR_CTL_ISM_SEL_CANFD_FIXED) |
-+		  RK3576CAN_REG_STR_CTL_STORAGE_TIMEOUT_MODE;
-+	reg_water = RK3576CAN_ISM_WATERMASK_CANFD;
-+
-+	/* internal sram mode */
-+	rkcanfd_write(priv, RK3576CAN_REG_STR_CTL, reg_ism);
-+	rkcanfd_write(priv, RK3576CAN_REG_STR_WTM, reg_water);
-+	WRITE_ONCE(priv->tx_head, 0);
-+	WRITE_ONCE(priv->tx_tail, 0);
-+	netdev_reset_queue(priv->ndev);
-+}
-+
-+static void rk3576can_atf_config(struct rkcanfd_priv *priv, int mode)
-+{
-+	int i;
-+
-+	switch (mode) {
-+	case RK3576CAN_REG_ATFM_MASK_SEL_MASK_MODE:
-+		for (i = 0; i < 5; i++) {
-+			rkcanfd_write(priv, RK3576CAN_REG_ATF(i), 0);
-+			rkcanfd_write(priv, RK3576CAN_REG_ATFM(i), RK3576CAN_REG_ATFM_ID);
-+		}
-+		break;
-+	case RK3576CAN_REG_ATFM_MASK_SEL_LIST_MODE:
-+		for (i = 0; i < 5; i++) {
-+			rkcanfd_write(priv, RK3576CAN_REG_ATF(i), 0);
-+			rkcanfd_write(priv, RK3576CAN_REG_ATFM(i), RK3576CAN_REG_ATFM_MASK_SEL);
-+		}
-+		break;
-+	default:
-+		rkcanfd_write(priv, RK3576CAN_REG_ATF_CTL, RK3576CAN_REG_ATF_CTL_ATF_DIS_ALL);
-+		return;
-+	}
-+
-+	rkcanfd_write(priv, RK3576CAN_REG_ATF_CTL, 0);
-+}
-+
- static void rkcanfd_chip_start(struct rkcanfd_priv *priv)
- {
- 	u32 reg;
-@@ -285,6 +355,61 @@ static void rkcanfd_chip_start(struct rkcanfd_priv *priv)
- 		   rkcanfd_read(priv, RKCANFD_REG_MODE));
- }
- 
-+static void rk3576can_chip_start(struct rkcanfd_priv *priv)
-+
-+{
-+	u32 reg;
-+
-+	rkcanfd_chip_set_reset_mode(priv);
-+
-+	/* Receiving Filter: accept all */
-+	rk3576can_atf_config(priv, RK3576CAN_REG_ATFM_MASK_SEL_MASK_MODE);
-+
-+	/* enable:
-+	 * - WORK_MODE: transition from reset to working mode
-+	 */
-+	reg = rkcanfd_read(priv, RKCANFD_REG_MODE);
-+	priv->reg_mode_default = reg | RKCANFD_REG_MODE_WORK_MODE;
-+
-+	if (priv->can.ctrlmode & CAN_CTRLMODE_LOOPBACK) {
-+		priv->reg_mode_default |= RKCANFD_REG_MODE_LBACK_MODE;
-+		rkcanfd_write(priv, RK3576CAN_REG_ERROR_MASK,
-+			      RK3576CAN_REG_ERROR_MASK_ACK_ERROR);
-+	}
-+
-+	/* mask, i.e. ignore:
-+	 * - RX_FINISH_INT - Rx finish interrupt
-+	 */
-+	priv->reg_int_mask_default = RK3576CAN_REG_INT_RX_FINISH_INT;
-+
-+	/* Do not mask the bus error interrupt if the bus error
-+	 * reporting is requested.
-+	 */
-+	if (!(priv->can.ctrlmode & CAN_CTRLMODE_BERR_REPORTING))
-+		priv->reg_int_mask_default |= RKCANFD_REG_INT_ERROR_INT;
-+
-+	memset(&priv->bec, 0x0, sizeof(priv->bec));
-+
-+	rk3576can_chip_fifo_setup(priv);
-+
-+	rkcanfd_write(priv, RK3576CAN_REG_AUTO_RETX_CFG,
-+		      RK3576CAN_REG_AUTO_RETX_CFG_AUTO_RETX_EN);
-+
-+	rkcanfd_write(priv, RK3576CAN_REG_BRS_CFG,
-+		      RK3576CAN_REG_BRS_CFG_BRS_NEGSYNC_EN |
-+		      RK3576CAN_REG_BRS_CFG_BRS_POSSYNC_EN);
-+
-+	rkcanfd_set_bittiming(priv);
-+
-+	priv->devtype_data.interrupts_disable(priv);
-+	rkcanfd_chip_set_work_mode(priv);
-+
-+	priv->can.state = CAN_STATE_ERROR_ACTIVE;
-+
-+	netdev_dbg(priv->ndev, "%s: reg_mode=0x%08x\n", __func__,
-+		   rkcanfd_read(priv, RKCANFD_REG_MODE));
-+}
-+
- static void __rkcanfd_chip_stop(struct rkcanfd_priv *priv, const enum can_state state)
- {
- 	priv->can.state = state;
-@@ -301,6 +426,13 @@ static void rkcanfd_chip_stop(struct rkcanfd_priv *priv, const enum can_state st
- 	__rkcanfd_chip_stop(priv, state);
- }
- 
-+static void rk3576can_chip_stop(struct rkcanfd_priv *priv, const enum can_state state)
-+{
-+	priv->can.state = state;
-+
-+	__rkcanfd_chip_stop(priv, state);
-+}
-+
- static void rkcanfd_chip_stop_sync(struct rkcanfd_priv *priv, const enum can_state state)
- {
- 	priv->can.state = state;
-@@ -309,6 +441,13 @@ static void rkcanfd_chip_stop_sync(struct rkcanfd_priv *priv, const enum can_sta
- 	__rkcanfd_chip_stop(priv, state);
- }
- 
-+static void rk3576can_chip_stop_sync(struct rkcanfd_priv *priv, const enum can_state state)
-+{
-+	priv->can.state = state;
-+
-+	__rkcanfd_chip_stop(priv, state);
-+}
-+
- static int rkcanfd_set_mode(struct net_device *ndev,
- 			    enum can_mode mode)
- {
-@@ -364,6 +503,9 @@ static const char *rkcanfd_get_error_type_str(unsigned int type)
- #define RKCAN_ERROR_CODE(reg_ec, code) \
- 	((reg_ec) & RKCANFD_REG_ERROR_CODE_##code ? __stringify(code) " " : "")
- 
-+#define RK3576CAN_ERROR_CODE(reg_ec, code) \
-+	((reg_ec) & RK3576CAN_REG_ERROR_CODE_##code ? __stringify(code) " " : "")
-+
- static void
- rkcanfd_handle_error_int_reg_ec(struct rkcanfd_priv *priv, struct can_frame *cf,
- 				const u32 reg_ec)
-@@ -493,6 +635,128 @@ rkcanfd_handle_error_int_reg_ec(struct rkcanfd_priv *priv, struct can_frame *cf,
- 	}
- }
- 
-+static void
-+rk3576can_handle_error_int_reg_ec(struct rkcanfd_priv *priv, struct can_frame *cf,
-+				  const u32 reg_ec)
-+{
-+	struct net_device_stats *stats = &priv->ndev->stats;
-+	unsigned int type;
-+	u32 reg_state, reg_cmd;
-+
-+	type = FIELD_GET(RK3576CAN_REG_ERROR_CODE_TYPE, reg_ec);
-+	reg_cmd = rkcanfd_read(priv, RK3576CAN_REG_CMD);
-+	reg_state = rkcanfd_read(priv, RK3576CAN_REG_STATE);
-+
-+	netdev_dbg(priv->ndev, "%s Error in %s %s Phase: %s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s(0x%08x) CMD=%u RX=%u TX=%u Error-Warning=%u Bus-Off=%u\n",
-+		   rkcanfd_get_error_type_str(type),
-+		   reg_ec & RK3576CAN_REG_ERROR_CODE_DIRECTION_RX ? "RX" : "TX",
-+		   reg_ec & RK3576CAN_REG_ERROR_CODE_PHASE ? "Data" : "Arbitration",
-+		   RK3576CAN_ERROR_CODE(reg_ec, TX_ACK_EOF),
-+		   RK3576CAN_ERROR_CODE(reg_ec, TX_CRC),
-+		   RK3576CAN_ERROR_CODE(reg_ec, TX_STUFF_COUNT),
-+		   RK3576CAN_ERROR_CODE(reg_ec, TX_DATA),
-+		   RK3576CAN_ERROR_CODE(reg_ec, TX_SOF_DLC),
-+		   RK3576CAN_ERROR_CODE(reg_ec, TX_IDLE),
-+		   RK3576CAN_ERROR_CODE(reg_ec, RX_ERROR),
-+		   RK3576CAN_ERROR_CODE(reg_ec, RX_OVERLOAD),
-+		   RK3576CAN_ERROR_CODE(reg_ec, RX_SPACE),
-+		   RK3576CAN_ERROR_CODE(reg_ec, RX_EOF),
-+		   RK3576CAN_ERROR_CODE(reg_ec, RX_ACK_LIM),
-+		   RK3576CAN_ERROR_CODE(reg_ec, RX_ACK),
-+		   RK3576CAN_ERROR_CODE(reg_ec, RX_CRC_LIM),
-+		   RK3576CAN_ERROR_CODE(reg_ec, RX_CRC),
-+		   RK3576CAN_ERROR_CODE(reg_ec, RX_STUFF_COUNT),
-+		   RK3576CAN_ERROR_CODE(reg_ec, RX_DATA),
-+		   RK3576CAN_ERROR_CODE(reg_ec, RX_DLC),
-+		   RK3576CAN_ERROR_CODE(reg_ec, RX_BRS_ESI),
-+		   RK3576CAN_ERROR_CODE(reg_ec, RX_RES),
-+		   RK3576CAN_ERROR_CODE(reg_ec, RX_FDF),
-+		   RK3576CAN_ERROR_CODE(reg_ec, RX_ID2_RTR),
-+		   RK3576CAN_ERROR_CODE(reg_ec, RX_SOF_IDE),
-+		   RK3576CAN_ERROR_CODE(reg_ec, RX_BUS_IDLE),
-+		   RK3576CAN_ERROR_CODE(reg_ec, RX_BUS_INT),
-+		   RK3576CAN_ERROR_CODE(reg_ec, RX_STOP),
-+		   reg_ec, reg_cmd,
-+		   !!(reg_state & RK3576CAN_REG_STATE_RX_PERIOD),
-+		   !!(reg_state & RK3576CAN_REG_STATE_TX_PERIOD),
-+		   !!(reg_state & RK3576CAN_REG_STATE_ERROR_WARNING_STATE),
-+		   !!(reg_state & RK3576CAN_REG_STATE_BUS_OFF_STATE));
-+
-+	priv->can.can_stats.bus_error++;
-+
-+	if (reg_ec & RK3576CAN_REG_ERROR_CODE_DIRECTION_RX)
-+		stats->rx_errors++;
-+	else
-+		stats->tx_errors++;
-+
-+	if (!cf)
-+		return;
-+
-+	if (reg_ec & RK3576CAN_REG_ERROR_CODE_DIRECTION_RX) {
-+		if (reg_ec & RK3576CAN_REG_ERROR_CODE_RX_SOF_IDE)
-+			cf->data[3] = CAN_ERR_PROT_LOC_SOF;
-+		else if (reg_ec & RK3576CAN_REG_ERROR_CODE_RX_ID2_RTR)
-+			cf->data[3] = CAN_ERR_PROT_LOC_RTR;
-+		/* RKCANFD_REG_ERROR_CODE_RX_FDF */
-+		else if (reg_ec & RK3576CAN_REG_ERROR_CODE_RX_RES)
-+			cf->data[3] = CAN_ERR_PROT_LOC_RES0;
-+		/* RKCANFD_REG_ERROR_CODE_RX_BRS_ESI */
-+		else if (reg_ec & RK3576CAN_REG_ERROR_CODE_RX_DLC)
-+			cf->data[3] = CAN_ERR_PROT_LOC_DLC;
-+		else if (reg_ec & RK3576CAN_REG_ERROR_CODE_RX_DATA)
-+			cf->data[3] = CAN_ERR_PROT_LOC_DATA;
-+		/* RKCANFD_REG_ERROR_CODE_RX_STUFF_COUNT */
-+		else if (reg_ec & RK3576CAN_REG_ERROR_CODE_RX_CRC)
-+			cf->data[3] = CAN_ERR_PROT_LOC_CRC_SEQ;
-+		else if (reg_ec & RK3576CAN_REG_ERROR_CODE_RX_CRC_LIM)
-+			cf->data[3] = CAN_ERR_PROT_LOC_ACK_DEL;
-+		else if (reg_ec & RK3576CAN_REG_ERROR_CODE_RX_ACK)
-+			cf->data[3] = CAN_ERR_PROT_LOC_ACK;
-+		else if (reg_ec & RK3576CAN_REG_ERROR_CODE_RX_ACK_LIM)
-+			cf->data[3] = CAN_ERR_PROT_LOC_ACK_DEL;
-+		else if (reg_ec & RK3576CAN_REG_ERROR_CODE_RX_EOF)
-+			cf->data[3] = CAN_ERR_PROT_LOC_EOF;
-+		else if (reg_ec & RK3576CAN_REG_ERROR_CODE_RX_SPACE)
-+			cf->data[3] = CAN_ERR_PROT_LOC_EOF;
-+	} else {
-+		cf->data[2] |= CAN_ERR_PROT_TX;
-+
-+		if (reg_ec & RK3576CAN_REG_ERROR_CODE_TX_SOF_DLC)
-+			cf->data[3] = CAN_ERR_PROT_LOC_SOF;
-+		else if (reg_ec & RK3576CAN_REG_ERROR_CODE_TX_DATA)
-+			cf->data[3] = CAN_ERR_PROT_LOC_DATA;
-+		/* RKCANFD_REG_ERROR_CODE_TX_STUFF_COUNT */
-+		else if (reg_ec & RK3576CAN_REG_ERROR_CODE_TX_CRC)
-+			cf->data[3] = CAN_ERR_PROT_LOC_CRC_SEQ;
-+		else if (reg_ec & RK3576CAN_REG_ERROR_CODE_TX_ACK_EOF)
-+			cf->data[3] = CAN_ERR_PROT_LOC_ACK_DEL;
-+	}
-+
-+	switch (reg_ec & RK3576CAN_REG_ERROR_CODE_TYPE) {
-+	case FIELD_PREP_CONST(RK3576CAN_REG_ERROR_CODE_TYPE,
-+			      RK3576CAN_REG_ERROR_CODE_TYPE_BIT):
-+
-+		cf->data[2] |= CAN_ERR_PROT_BIT;
-+		break;
-+	case FIELD_PREP_CONST(RK3576CAN_REG_ERROR_CODE_TYPE,
-+			      RK3576CAN_REG_ERROR_CODE_TYPE_STUFF):
-+		cf->data[2] |= CAN_ERR_PROT_STUFF;
-+		break;
-+	case FIELD_PREP_CONST(RK3576CAN_REG_ERROR_CODE_TYPE,
-+			      RK3576CAN_REG_ERROR_CODE_TYPE_FORM):
-+		cf->data[2] |= CAN_ERR_PROT_FORM;
-+		break;
-+	case FIELD_PREP_CONST(RK3576CAN_REG_ERROR_CODE_TYPE,
-+			      RK3576CAN_REG_ERROR_CODE_TYPE_ACK):
-+		cf->can_id |= CAN_ERR_ACK;
-+		break;
-+	case FIELD_PREP_CONST(RK3576CAN_REG_ERROR_CODE_TYPE,
-+			      RK3576CAN_REG_ERROR_CODE_TYPE_CRC):
-+		cf->data[3] = CAN_ERR_PROT_LOC_CRC_SEQ;
-+		break;
-+	}
-+}
-+
- static int rkcanfd_handle_error_int(struct rkcanfd_priv *priv)
- {
- 	struct net_device_stats *stats = &priv->ndev->stats;
-@@ -530,6 +794,41 @@ static int rkcanfd_handle_error_int(struct rkcanfd_priv *priv)
- 	return 0;
- }
- 
-+static int rkcanfd_handle_rk3576_error_int(struct rkcanfd_priv *priv)
-+{
-+	struct net_device_stats *stats = &priv->ndev->stats;
-+	struct can_frame *cf = NULL;
-+	u32 reg_ec;
-+	struct sk_buff *skb;
-+	int err;
-+
-+	reg_ec = rkcanfd_read(priv, RK3576CAN_REG_ERROR_CODE);
-+	if (!reg_ec)
-+		return 0;
-+
-+	if (priv->can.ctrlmode & CAN_CTRLMODE_BERR_REPORTING) {
-+		skb = alloc_can_err_skb(priv->ndev, &cf);
-+		if (cf) {
-+			struct can_berr_counter bec;
-+
-+			priv->devtype_data.get_berr_counter(priv, &bec);
-+			cf->can_id |= CAN_ERR_PROT | CAN_ERR_BUSERROR | CAN_ERR_CNT;
-+			cf->data[6] = bec.txerr;
-+			cf->data[7] = bec.rxerr;
-+		}
-+	}
-+
-+	rk3576can_handle_error_int_reg_ec(priv, cf, reg_ec);
-+	if (!cf)
-+		return 0;
-+
-+	err = can_rx_offload_queue_tail(&priv->offload, skb);
-+	if (err)
-+		stats->rx_fifo_errors++;
-+
-+	return 0;
-+}
-+
- static int rkcanfd_handle_state_error_int(struct rkcanfd_priv *priv)
- {
- 	struct net_device_stats *stats = &priv->ndev->stats;
-@@ -575,6 +874,50 @@ static int rkcanfd_handle_state_error_int(struct rkcanfd_priv *priv)
- 	return 0;
- }
- 
-+static int rkcanfd_handle_rk3576_state_error_int(struct rkcanfd_priv *priv)
-+{
-+	struct net_device_stats *stats = &priv->ndev->stats;
-+	enum can_state new_state, rx_state, tx_state;
-+	struct net_device *ndev = priv->ndev;
-+	struct can_berr_counter bec;
-+	struct can_frame *cf = NULL;
-+	struct sk_buff *skb;
-+	int err;
-+
-+	priv->devtype_data.get_berr_counter(priv, &bec);
-+	can_state_get_by_berr_counter(ndev, &bec, &tx_state, &rx_state);
-+
-+	new_state = max(tx_state, rx_state);
-+	if (new_state == priv->can.state)
-+		return 0;
-+
-+	/* The skb allocation might fail, but can_change_state()
-+	 * handles cf == NULL.
-+	 */
-+	skb = alloc_can_err_skb(priv->ndev, &cf);
-+	can_change_state(ndev, cf, tx_state, rx_state);
-+
-+	if (new_state == CAN_STATE_BUS_OFF) {
-+		priv->devtype_data.chip_stop(priv, CAN_STATE_BUS_OFF);
-+		can_bus_off(ndev);
-+	}
-+
-+	if (!skb)
-+		return 0;
-+
-+	if (new_state != CAN_STATE_BUS_OFF) {
-+		cf->can_id |= CAN_ERR_CNT;
-+		cf->data[6] = bec.txerr;
-+		cf->data[7] = bec.rxerr;
-+	}
-+
-+	err = can_rx_offload_queue_tail(&priv->offload, skb);
-+	if (err)
-+		stats->rx_fifo_errors++;
-+
-+	return 0;
-+}
-+
- static int
- rkcanfd_handle_rx_fifo_overflow_int(struct rkcanfd_priv *priv)
- {
-@@ -621,6 +964,55 @@ rkcanfd_handle_rx_fifo_overflow_int(struct rkcanfd_priv *priv)
- 	err; \
- })
- 
-+static irqreturn_t rk3576can_irq(int irq, void *dev_id)
-+{
-+	struct rkcanfd_priv *priv = dev_id;
-+	u32 reg_int_unmasked, reg_int;
-+
-+	reg_int_unmasked = rkcanfd_read(priv, RK3576CAN_REG_INT);
-+	reg_int = reg_int_unmasked & ~priv->reg_int_mask_default;
-+
-+	if (!reg_int)
-+		return IRQ_NONE;
-+
-+	rkcanfd_write(priv, RK3576CAN_REG_INT, reg_int);
-+
-+	if (reg_int & (RK3576CAN_REG_INT_RXSTR_TIMEOUT_INT |
-+		       RK3576CAN_REG_INT_ISM_WTM_INT |
-+		       RK3576CAN_REG_INT_RX_FIFO_FULL_INT)) {
-+		rkcanfd_write(priv, RK3576CAN_REG_INT_MASK,
-+			      priv->reg_int_mask_default | RK3576CAN_REG_INT_ISM_WTM_INT |
-+			      RK3576CAN_REG_INT_RXSTR_TIMEOUT_INT |
-+			      RK3576CAN_REG_INT_RX_FINISH_INT);
-+		rkcanfd_handle(priv, rk3576_rx_int);
-+	}
-+
-+	if (reg_int & RK3576CAN_REG_INT_TX_FINISH_INT)
-+		rkcanfd_handle(priv, rk3576_tx_int);
-+
-+	if (reg_int & RK3576CAN_REG_INT_ERROR_INT)
-+		rkcanfd_handle(priv, rk3576_error_int);
-+
-+	if (reg_int & (RK3576CAN_REG_INT_BUS_OFF_INT |
-+		       RK3576CAN_REG_INT_PASSIVE_ERROR_INT |
-+		       RK3576CAN_REG_INT_ERROR_WARNING_INT) ||
-+	    priv->can.state > CAN_STATE_ERROR_ACTIVE)
-+		rkcanfd_handle(priv, rk3576_state_error_int);
-+
-+	if (reg_int & RK3576CAN_REG_INT_WAKEUP_INT)
-+		netdev_info(priv->ndev, "%s: WAKEUP_INT\n", __func__);
-+
-+	if (reg_int & RK3576CAN_REG_INT_BUS_OFF_RECOVERY_INT)
-+		netdev_info(priv->ndev, "%s: BUS_OFF_RECOVERY_INT\n", __func__);
-+
-+	if (reg_int & RK3576CAN_REG_INT_OVERLOAD_INT)
-+		netdev_info(priv->ndev, "%s: OVERLOAD_INT\n", __func__);
-+
-+	can_rx_offload_irq_finish(&priv->offload);
-+
-+	return IRQ_HANDLED;
-+}
-+
- static irqreturn_t rkcanfd_irq(int irq, void *dev_id)
- {
- 	struct rkcanfd_priv *priv = dev_id;
-@@ -775,6 +1167,16 @@ static void rkcanfd_register_done(const struct rkcanfd_priv *priv)
- 			    RKCANFD_ERRATUM_5_SYSCLOCK_HZ_MIN / MEGA);
- }
- 
-+static void rk3576can_register_done(const struct rkcanfd_priv *priv)
-+{
-+	u32 dev_id;
-+
-+	dev_id = rkcanfd_read(priv, RK3576CAN_REG_RTL_VERSION);
-+	netdev_info(priv->ndev,
-+		    "Rockchip-CANFD %s rev%u.\n",
-+		    rkcanfd_get_model_str(priv), dev_id);
-+}
-+
- static int rkcanfd_register(struct rkcanfd_priv *priv)
- {
- 	struct net_device *ndev = priv->ndev;
-@@ -856,6 +1258,20 @@ static const struct rkcanfd_devtype_data rkcanfd_devtype_data_rk3568v3 = {
- 	.register_done = rkcanfd_register_done,
- };
- 
-+/* The rk3576 CAN-FD */
-+static const struct rkcanfd_devtype_data rkcan_devtype_data_rk3576 = {
-+	.model = RKCAN_MODEL_RK3576,
-+	.quirks = RKCANFD_QUIRK_CANFD_BROKEN,
-+	.get_berr_counter = rk3576can_get_berr_counter_corrected,
-+	.interrupts_enable = rkcanfd_chip_interrupts_enable,
-+	.interrupts_disable = rk3576can_chip_interrupts_disable,
-+	.chip_start = rk3576can_chip_start,
-+	.chip_stop = rk3576can_chip_stop,
-+	.chip_stop_sync = rk3576can_chip_stop_sync,
-+	.irq = rk3576can_irq,
-+	.register_done = rk3576can_register_done,
-+};
-+
- static const struct of_device_id rkcanfd_of_match[] = {
- 	{
- 		.compatible = "rockchip,rk3568v2-canfd",
-@@ -863,6 +1279,9 @@ static const struct of_device_id rkcanfd_of_match[] = {
- 	}, {
- 		.compatible = "rockchip,rk3568v3-canfd",
- 		.data = &rkcanfd_devtype_data_rk3568v3,
-+	},  {
-+		.compatible = "rockchip,rk3576-can",
-+		.data = &rkcan_devtype_data_rk3576,
- 	}, {
- 		/* sentinel */
- 	},
-diff --git a/drivers/net/can/rockchip/rockchip_canfd-rx.c b/drivers/net/can/rockchip/rockchip_canfd-rx.c
-index 475c0409e215..6bc4b0185502 100644
---- a/drivers/net/can/rockchip/rockchip_canfd-rx.c
-+++ b/drivers/net/can/rockchip/rockchip_canfd-rx.c
-@@ -91,6 +91,47 @@ rkcanfd_fifo_header_to_cfd_header(const struct rkcanfd_priv *priv,
- 	return len + cfd->len;
- }
- 
-+static unsigned int
-+rk3576can_fifo_header_to_cfd_header(const struct rkcanfd_priv *priv,
-+				    const struct rk3576can_fifo_header *header,
-+				    struct canfd_frame *cfd)
-+{
-+	unsigned int len = sizeof(*cfd) - sizeof(cfd->data);
-+	u8 dlc;
-+
-+	if (header->frameinfo & RK3576CAN_REG_RXFRD_FRAMEINFO_FRAME_FORMAT)
-+		cfd->can_id = FIELD_GET(RKCANFD_REG_FD_ID_EFF, header->id) |
-+			CAN_EFF_FLAG;
-+	else
-+		cfd->can_id = FIELD_GET(RKCANFD_REG_FD_ID_SFF, header->id);
-+
-+	dlc = FIELD_GET(RK3576CAN_REG_RXFRD_FRAMEINFO_DATA_LENGTH,
-+			header->frameinfo);
-+
-+	/* CAN-FD */
-+	if (header->frameinfo & RK3576CAN_REG_RXFRD_FRAMEINFO_FDF) {
-+		cfd->len = can_fd_dlc2len(dlc);
-+
-+		/* The cfd is not allocated by alloc_canfd_skb(), so
-+		 * set CANFD_FDF here.
-+		 */
-+		cfd->flags |= CANFD_FDF;
-+
-+		if (header->frameinfo & RK3576CAN_REG_RXFRD_FRAMEINFO_BRS)
-+			cfd->flags |= CANFD_BRS;
-+	} else {
-+		cfd->len = can_cc_dlc2len(dlc);
-+
-+		if (header->frameinfo & RK3576CAN_REG_RXFRD_FRAMEINFO_RTR) {
-+			cfd->can_id |= CAN_RTR_FLAG;
-+
-+			return len;
-+		}
-+	}
-+
-+	return len + cfd->len;
-+}
-+
- static int rkcanfd_rxstx_filter(struct rkcanfd_priv *priv,
- 				const struct canfd_frame *cfd_rx, const u32 ts,
- 				bool *tx_done)
-@@ -198,6 +239,44 @@ rkcanfd_fifo_header_empty(const struct rkcanfd_fifo_header *header)
- 		header->frameinfo == header->ts;
- }
- 
-+static int rk3576can_handle_rx_int_one(struct rkcanfd_priv *priv)
-+{
-+	struct net_device_stats *stats = &priv->ndev->stats;
-+	struct canfd_frame cfd[1] = { }, *skb_cfd;
-+	struct rk3576can_fifo_header header[1] = { };
-+	struct sk_buff *skb;
-+	unsigned int len;
-+	int err;
-+
-+	/* read header into separate struct and convert it later */
-+	rkcanfd_read_rep(priv, RKCANFD_REG_RX_FIFO_RDATA,
-+			 header, sizeof(*header));
-+	/* read data directly into cfd */
-+	rkcanfd_read_rep(priv, RKCANFD_REG_RX_FIFO_RDATA,
-+			 cfd->data, sizeof(cfd->data));
-+
-+	len = rk3576can_fifo_header_to_cfd_header(priv, header, cfd);
-+
-+	if (header->frameinfo & RK3576CAN_REG_RXFRD_FRAMEINFO_FDF)
-+		skb = alloc_canfd_skb(priv->ndev, &skb_cfd);
-+	else
-+		skb = alloc_can_skb(priv->ndev, (struct can_frame **)&skb_cfd);
-+
-+	if (!skb) {
-+		stats->rx_dropped++;
-+
-+		return 0;
-+	}
-+
-+	memcpy(skb_cfd, cfd, len);
-+
-+	err = can_rx_offload_queue_tail(&priv->offload, skb);
-+	if (err)
-+		stats->rx_fifo_errors++;
-+
-+	return 0;
-+}
-+
- static int rkcanfd_handle_rx_int_one(struct rkcanfd_priv *priv)
- {
- 	struct net_device_stats *stats = &priv->ndev->stats;
-@@ -284,6 +363,15 @@ rkcanfd_rx_fifo_get_len(const struct rkcanfd_priv *priv)
- 	return FIELD_GET(RKCANFD_REG_RX_FIFO_CTRL_RX_FIFO_CNT, reg);
- }
- 
-+static inline unsigned int
-+rk3576can_rx_fifo_get_len(const struct rkcanfd_priv *priv)
-+{
-+	const u32 reg = rkcanfd_read(priv, RK3576CAN_REG_STR_STATE);
-+	int val = FIELD_GET(RK3576CAN_REG_STR_STATE_INTM_LEFT_CNT, reg);
-+
-+	return DIV_ROUND_UP(val, RK3576CAN_REG_STR_STATE_INTM_LEFT_CNT_UNIT);
-+}
-+
- int rkcanfd_handle_rx_int(struct rkcanfd_priv *priv)
- {
- 	unsigned int len;
-@@ -297,3 +385,18 @@ int rkcanfd_handle_rx_int(struct rkcanfd_priv *priv)
- 
- 	return 0;
- }
-+
-+int rkcanfd_handle_rk3576_rx_int(struct rkcanfd_priv *priv)
-+{
-+	unsigned int len;
-+	int err;
-+
-+	while ((len = rk3576can_rx_fifo_get_len(priv))) {
-+		err = rk3576can_handle_rx_int_one(priv);
-+		if (err)
-+			return err;
-+	}
-+	rkcanfd_write(priv, RK3576CAN_REG_INT_MASK, priv->reg_int_mask_default);
-+	return 0;
-+}
-+
-diff --git a/drivers/net/can/rockchip/rockchip_canfd-tx.c b/drivers/net/can/rockchip/rockchip_canfd-tx.c
-index 12200dcfd338..de2f673c31ed 100644
---- a/drivers/net/can/rockchip/rockchip_canfd-tx.c
-+++ b/drivers/net/can/rockchip/rockchip_canfd-tx.c
-@@ -165,3 +165,23 @@ void rkcanfd_handle_tx_done_one(struct rkcanfd_priv *priv, const u32 ts,
- 							    frame_len_p);
- 	stats->tx_packets++;
- }
-+
-+int rkcanfd_handle_rk3576_tx_int(struct rkcanfd_priv *priv)
-+{
-+	struct net_device_stats *stats = &priv->ndev->stats;
-+	unsigned int tx_tail;
-+	unsigned int frame_len = 0;
-+
-+	tx_tail = rkcanfd_get_tx_tail(priv);
-+
-+	stats->tx_bytes +=
-+		can_rx_offload_get_echo_skb_queue_tail(&priv->offload,
-+						       tx_tail, &frame_len);
-+	stats->tx_packets++;
-+	WRITE_ONCE(priv->tx_tail, priv->tx_tail + 1);
-+	netif_subqueue_completed_wake(priv->ndev, 0, 1, frame_len,
-+				      rkcanfd_get_effective_tx_free(priv),
-+				      RKCANFD_TX_START_THRESHOLD);
-+	return 0;
-+}
-+
-diff --git a/drivers/net/can/rockchip/rockchip_canfd.h b/drivers/net/can/rockchip/rockchip_canfd.h
-index 72f26b96add0..77c673cfea3b 100644
---- a/drivers/net/can/rockchip/rockchip_canfd.h
-+++ b/drivers/net/can/rockchip/rockchip_canfd.h
-@@ -287,6 +287,256 @@
- #define RKCANFD_REG_RX_FIFO_RDATA 0x400
- #define RKCANFD_REG_TXE_FIFO_RDATA 0x500
- 
-+#define RK3576CAN_REG_MODE 0x000
-+#define RK3576CAN_REG_CMD 0x004
-+
-+#define RK3576CAN_REG_STATE 0x008
-+#define RK3576CAN_REG_STATE_SLEEP_STATE BIT(5)
-+#define RK3576CAN_REG_STATE_BUS_OFF_STATE BIT(4)
-+#define RK3576CAN_REG_STATE_ERROR_WARNING_STATE BIT(3)
-+#define RK3576CAN_REG_STATE_TX_PERIOD BIT(2)
-+#define RK3576CAN_REG_STATE_RX_PERIOD BIT(1)
-+#define RK3576CAN_REG_STATE_TX_BUFFER_FULL BIT(0)
-+
-+#define RK3576CAN_REG_INT 0x00c
-+#define RK3576CAN_REG_INT_BUSOFF_RCY_INT BIT(19)
-+#define RK3576CAN_REG_INT_ESM_WTM_INT BIT(18)
-+#define RK3576CAN_REG_INT_ISM_WTM_INT BIT(17)
-+#define RK3576CAN_REG_INT_BUSINT_INT BIT(16)
-+#define RK3576CAN_REG_INT_RXSTR_TIMEOUT_INT BIT(15)
-+#define RK3576CAN_REG_INT_MFI_TIMEOUT_INT BIT(14)
-+#define RK3576CAN_REG_INT_MFI_INT BIT(13)
-+#define RK3576CAN_REG_INT_AUTO_RETX_FAIL_INT BIT(12)
-+#define RK3576CAN_REG_INT_WAKEUP_INT BIT(11)
-+#define RK3576CAN_REG_INT_BUS_OFF_RECOVERY_INT BIT(10)
-+#define RK3576CAN_REG_INT_BUS_OFF_INT BIT(9)
-+#define RK3576CAN_REG_INT_RX_FIFO_OVERFLOW_INT BIT(8)
-+#define RK3576CAN_REG_INT_RX_FIFO_FULL_INT BIT(7)
-+#define RK3576CAN_REG_INT_ERROR_INT BIT(6)
-+#define RK3576CAN_REG_INT_TX_ARBIT_FAIL_INT BIT(5)
-+#define RK3576CAN_REG_INT_PASSIVE_ERROR_INT BIT(4)
-+#define RK3576CAN_REG_INT_OVERLOAD_INT BIT(3)
-+#define RK3576CAN_REG_INT_ERROR_WARNING_INT BIT(2)
-+#define RK3576CAN_REG_INT_TX_FINISH_INT BIT(1)
-+#define RK3576CAN_REG_INT_RX_FINISH_INT BIT(0)
-+
-+#define RK3576CAN_REG_INT_ALL \
-+	(RK3576CAN_REG_INT_BUSOFF_RCY_INT | \
-+	 RK3576CAN_REG_INT_ESM_WTM_INT | \
-+	 RK3576CAN_REG_INT_ISM_WTM_INT | \
-+	 RK3576CAN_REG_INT_BUSINT_INT | \
-+	 RK3576CAN_REG_INT_RXSTR_TIMEOUT_INT | \
-+	 RK3576CAN_REG_INT_MFI_TIMEOUT_INT | \
-+	 RK3576CAN_REG_INT_MFI_INT | \
-+	 RK3576CAN_REG_INT_AUTO_RETX_FAIL_INT | \
-+	 RK3576CAN_REG_INT_WAKEUP_INT | \
-+	 RK3576CAN_REG_INT_BUS_OFF_RECOVERY_INT | \
-+	 RK3576CAN_REG_INT_BUS_OFF_INT | \
-+	 RK3576CAN_REG_INT_RX_FIFO_OVERFLOW_INT | \
-+	 RK3576CAN_REG_INT_RX_FIFO_FULL_INT | \
-+	 RK3576CAN_REG_INT_ERROR_INT | \
-+	 RK3576CAN_REG_INT_TX_ARBIT_FAIL_INT | \
-+	 RK3576CAN_REG_INT_PASSIVE_ERROR_INT | \
-+	 RK3576CAN_REG_INT_OVERLOAD_INT | \
-+	 RK3576CAN_REG_INT_ERROR_WARNING_INT | \
-+	 RK3576CAN_REG_INT_TX_FINISH_INT | \
-+	 RK3576CAN_REG_INT_RX_FINISH_INT)
-+
-+#define RK3576CAN_REG_INT_ALL_ERROR \
-+	(RK3576CAN_REG_INT_BUS_OFF_INT | \
-+	 RK3576CAN_REG_INT_ERROR_INT | \
-+	 RK3576CAN_REG_INT_PASSIVE_ERROR_INT | \
-+	 RK3576CAN_REG_INT_ERROR_WARNING_INT)
-+
-+#define RK3576CAN_REG_INT_MASK 0x010
-+
-+#define RK3576CAN_REG_FD_NOMINAL_BITTIMING 0x100
-+#define RK3576CAN_REG_FD_NOMINAL_BITTIMING_SAMPLE_MODE BIT(31)
-+#define RK3576CAN_REG_FD_NOMINAL_BITTIMING_SJW GENMASK(30, 24)
-+#define RK3576CAN_REG_FD_NOMINAL_BITTIMING_BRP GENMASK(23, 16)
-+#define RK3576CAN_REG_FD_NOMINAL_BITTIMING_TSEG2 GENMASK(14, 8)
-+#define RK3576CAN_REG_FD_NOMINAL_BITTIMING_TSEG1 GENMASK(7, 0)
-+
-+#define RK3576CAN_REG_FD_DATA_BITTIMING 0x104
-+#define RK3576CAN_REG_FD_DATA_BITTIMING_BRS_TSEG1 GENMASK(31, 24)
-+#define RK3576CAN_REG_FD_DATA_BITTIMING_BRS_MODE BIT(23)
-+#define RK3576CAN_REG_FD_DATA_BITTIMING_ACKSLOT_SYNC_DIS BIT(22)
-+#define RK3576CAN_REG_FD_DATA_BITTIMING_SJW GENMASK(20, 17)
-+#define RK3576CAN_REG_FD_DATA_BITTIMING_BRP GENMASK(16, 9)
-+#define RK3576CAN_REG_FD_DATA_BITTIMING_TSEG2 GENMASK(8, 5)
-+#define RK3576CAN_REG_FD_DATA_BITTIMING_TSEG1 GENMASK(4, 0)
-+
-+#define RK3576CAN_REG_TRANSMIT_DELAY_COMPENSATION 0x108
-+#define RK3576CAN_REG_TRANSMIT_DELAY_COMPENSATION_TDC_OFFSET GENMASK(6, 1)
-+#define RK3576CAN_REG_TRANSMIT_DELAY_COMPENSATION_TDC_ENABLE BIT(0)
-+
-+#define RK3576CAN_REG_BRS_CFG 0x10c
-+#define RK3576CAN_REG_BRS_CFG_TRIPLE_SYNC_MODE BIT(31)
-+#define RK3576CAN_REG_BRS_CFG_SP2_DTSEG1 GENMASK(30, 26)
-+#define RK3576CAN_REG_BRS_CFG_SP2_NTSEG1 GENMASK(25, 18)
-+#define RK3576CAN_REG_BRS_CFG_SP1_DTSEG1 GENMASK(17, 13)
-+#define RK3576CAN_REG_BRS_CFG_SP1_NTSEG1 GENMASK(12, 5)
-+#define RK3576CAN_REG_BRS_CFG_RESYNC_MODE BIT(3)
-+#define RK3576CAN_REG_BRS_CFG_BRS_POSSYNC_EN BIT(1)
-+#define RK3576CAN_REG_BRS_CFG_BRS_NEGSYNC_EN BIT(0)
-+
-+#define RK3576CAN_REG_LOOP_CNT 0x110
-+
-+#define RK3576CAN_REG_DMA_CTRL 0x11c
-+#define RK3576CAN_REG_DMA_CTRL_DMA_RX_EN BIT(9)
-+#define RK3576CAN_REG_DMA_CTRL_DMA_THR GENMASK(8, 0)
-+
-+#define RK3576CAN_REG_FD_TXFRAMEINFO 0x200
-+
-+#define RK3576CAN_REG_FD_TXID 0x204
-+#define RK3576CAN_REG_FD_ID_EFF GENMASK(28, 0)
-+#define RK3576CAN_REG_FD_ID_SFF GENMASK(11, 0)
-+
-+#define RK3576CAN_REG_FD_TXDATA0 0x208
-+#define RK3576CAN_REG_FD_TXDATA1 0x20c
-+#define RK3576CAN_REG_FD_TXDATA2 0x210
-+#define RK3576CAN_REG_FD_TXDATA3 0x214
-+#define RK3576CAN_REG_FD_TXDATA4 0x218
-+#define RK3576CAN_REG_FD_TXDATA5 0x21c
-+#define RK3576CAN_REG_FD_TXDATA6 0x220
-+#define RK3576CAN_REG_FD_TXDATA7 0x224
-+#define RK3576CAN_REG_FD_TXDATA8 0x228
-+#define RK3576CAN_REG_FD_TXDATA9 0x22c
-+#define RK3576CAN_REG_FD_TXDATA10 0x230
-+#define RK3576CAN_REG_FD_TXDATA11 0x234
-+#define RK3576CAN_REG_FD_TXDATA12 0x238
-+#define RK3576CAN_REG_FD_TXDATA13 0x23c
-+#define RK3576CAN_REG_FD_TXDATA14 0x240
-+#define RK3576CAN_REG_FD_TXDATA15 0x244
-+
-+#define RK3576CAN_REG_RXFRD 0x400
-+#define RK3576CAN_REG_RXFRD_FRAMEINFO_FRAME_FORMAT BIT(23)
-+#define RK3576CAN_REG_RXFRD_FRAMEINFO_RTR BIT(22)
-+#define RK3576CAN_REG_RXFRD_FRAMEINFO_FDF BIT(21)
-+#define RK3576CAN_REG_RXFRD_FRAMEINFO_BRS BIT(20)
-+#define RK3576CAN_REG_RXFRD_FRAMEINFO_DATA_LENGTH GENMASK(27, 24)
-+
-+#define RK3576CAN_REG_STR_CTL 0x600
-+#define RK3576CAN_REG_STR_CTL_STORAGE_TIMEOUT_MODE BIT(8)
-+#define RK3576CAN_REG_STR_CTL_ESM_SEL_MASK GENMASK(7, 6)
-+#define RK3576CAN_REG_STR_CTL_RX_STORAGE_RESET BIT(4)
-+#define RK3576CAN_REG_STR_CTL_ISM_SEL GENMASK(3, 2)
-+#define RK3576CAN_REG_STR_CTL_ISM_SEL_FLEXIBLE 0x0
-+#define RK3576CAN_REG_STR_CTL_ISM_SEL_CAN_FIXED 0x1
-+#define RK3576CAN_REG_STR_CTL_ISM_SEL_CANFD_FIXED 0x2
-+#define RK3576CAN_REG_STR_CTL_EXT_STORAGE_MODE BIT(1)
-+#define RK3576CAN_REG_STR_CTL_BUFFER_MODE_ENABLE BIT(0)
-+
-+#define RK3576CAN_REG_STR_STATE 0x604
-+#define RK3576CAN_REG_STR_STATE_INTM_FRAME_CNT GENMASK(25, 17)
-+#define RK3576CAN_REG_STR_STATE_INTM_LEFT_CNT GENMASK(16, 8)
-+#define RK3576CAN_REG_STR_STATE_INTM_LEFT_CNT_UNIT 18
-+#define RK3576CAN_REG_STR_STATE_EXTM_FULL BIT(3)
-+#define RK3576CAN_REG_STR_STATE_EXTM_EMPTY BIT(2)
-+#define RK3576CAN_REG_STR_STATE_INTM_FULL BIT(1)
-+#define RK3576CAN_REG_STR_STATE_INTM_EMPTY BIT(0)
-+
-+#define RK3576CAN_REG_STR_TIMEOUT 0x608
-+
-+#define RK3576CAN_REG_STR_WTM 0x60c
-+#define RK3576CAN_REG_ATF(n) (0x700 + ((n) << 2))
-+#define RK3576CAN_REG_ATFM(n) (0x714 + ((n) << 2))
-+#define RK3576CAN_REG_ATFM_MASK_SEL BIT(31)
-+#define RK3576CAN_REG_ATFM_RTR_EN BIT(30)
-+#define RK3576CAN_REG_ATFM_RTR BIT(29)
-+#define RK3576CAN_REG_ATFM_MASK_SEL_MASK_MODE 0x0
-+#define RK3576CAN_REG_ATFM_MASK_SEL_LIST_MODE 0x1
-+#define RK3576CAN_REG_ATFM_ID GENMASK(28, 0)
-+
-+#define RK3576CAN_REG_ATF_DLC 0x728
-+#define RK3576CAN_REG_ATF_DLC_ATF_DLC_MODE BIT(5)
-+#define RK3576CAN_REG_ATF_DLC_ATF_DLC_EN BIT(4)
-+#define RK3576CAN_REG_ATF_DLC_ATF_DLC GENMASK(3, 0)
-+
-+#define RK3576CAN_REG_ATF_CTL 0x72c
-+#define RK3576CAN_REG_ATF_CTL_ATF_DIS(n) BIT(n)
-+#define RK3576CAN_REG_ATF_CTL_ATF_DIS_ALL GENMASK(15, 0)
-+
-+#define RK3576CAN_REG_SPACE_CTRL 0x800
-+
-+#define RK3576CAN_REG_AUTO_RETX_CFG 0x808
-+#define RK3576CAN_REG_AUTO_RETX_CFG_RETX_TIME_LIMIT GENMASK(18, 3)
-+#define RK3576CAN_REG_AUTO_RETX_CFG_RETX_LIMIT_EN BIT(1)
-+#define RK3576CAN_REG_AUTO_RETX_CFG_AUTO_RETX_EN BIT(0)
-+
-+#define RK3576CAN_REG_AUTO_RETX_STATE0 0x80c
-+#define RK3576CAN_REG_AUTO_RETX_STATE0_AUTO_RETX_CNT GENMASK(15, 0)
-+
-+#define RK3576CAN_REG_AUTO_RETX_STATE1 0x810
-+#define RK3576CAN_REG_OLF_CFG 0x814
-+#define RK3576CAN_REG_RXINT_CTRL 0x818
-+#define RK3576CAN_REG_RXINT_TIMEOUT 0x81c
-+#define RK3576CAN_REG_OTHER_CFG 0x820
-+#define RK3576CAN_REG_WAVE_FILTER_CFG 0x824
-+#define RK3576CAN_REG_RBC_CFG 0x828
-+#define RK3576CAN_REG_TXCRC_CFG 0x82c
-+
-+#define RK3576CAN_REG_BUSOFFRCY_CFG 0x830
-+#define RK3576CAN_REG_BUSOFF_RCY_THR 0x834
-+
-+#define RK3576CAN_REG_ERROR_CODE 0x900
-+#define RK3576CAN_REG_ERROR_MASK 0x904
-+#define RK3576CAN_REG_ERROR_MASK_ACK_ERROR BIT(4)
-+#define RK3576CAN_REG_ERROR_MASK_FORM_ERROR BIT(3)
-+#define RK3576CAN_REG_ERROR_MASK_CRC_ERROR BIT(2)
-+#define RK3576CAN_REG_ERROR_MASK_STUFF_ERROR BIT(1)
-+#define RK3576CAN_REG_ERROR_MASK_BIT_ERROR BIT(0)
-+
-+#define RK3576CAN_REG_RXERRORCNT 0x910
-+#define RK3576CAN_REG_TXERRORCNT 0x914
-+#define RK3576CAN_REG_RX_RXSRAM_RDATA 0xc00
-+#define RK3576CAN_REG_RTL_VERSION 0xf0c
-+
-+#define RK3576CAN_REG_ERROR_CODE_PHASE BIT(29)
-+#define RK3576CAN_REG_ERROR_CODE_TYPE GENMASK(28, 26)
-+#define RK3576CAN_REG_ERROR_CODE_TYPE_BIT 0x0
-+#define RK3576CAN_REG_ERROR_CODE_TYPE_STUFF 0x1
-+#define RK3576CAN_REG_ERROR_CODE_TYPE_FORM 0x2
-+#define RK3576CAN_REG_ERROR_CODE_TYPE_ACK 0x3
-+#define RK3576CAN_REG_ERROR_CODE_TYPE_CRC 0x4
-+#define RK3576CAN_REG_ERROR_CODE_DIRECTION_RX BIT(25)
-+#define RK3576CAN_REG_ERROR_CODE_TX GENMASK(24, 19)
-+#define RK3576CAN_REG_ERROR_CODE_TX_ACK_EOF BIT(24)
-+#define RK3576CAN_REG_ERROR_CODE_TX_CRC BIT(23)
-+#define RK3576CAN_REG_ERROR_CODE_TX_STUFF_COUNT BIT(22)
-+#define RK3576CAN_REG_ERROR_CODE_TX_DATA BIT(21)
-+#define RK3576CAN_REG_ERROR_CODE_TX_SOF_DLC BIT(20)
-+#define RK3576CAN_REG_ERROR_CODE_TX_IDLE BIT(19)
-+#define RK3576CAN_REG_ERROR_CODE_RX GENMASK(18, 0)
-+#define RK3576CAN_REG_ERROR_CODE_RX_ERROR BIT(18)
-+#define RK3576CAN_REG_ERROR_CODE_RX_OVERLOAD BIT(17)
-+#define RK3576CAN_REG_ERROR_CODE_RX_SPACE BIT(16)
-+#define RK3576CAN_REG_ERROR_CODE_RX_EOF BIT(15)
-+#define RK3576CAN_REG_ERROR_CODE_RX_ACK_LIM BIT(14)
-+#define RK3576CAN_REG_ERROR_CODE_RX_ACK BIT(13)
-+#define RK3576CAN_REG_ERROR_CODE_RX_CRC_LIM BIT(12)
-+#define RK3576CAN_REG_ERROR_CODE_RX_CRC BIT(11)
-+#define RK3576CAN_REG_ERROR_CODE_RX_STUFF_COUNT BIT(10)
-+#define RK3576CAN_REG_ERROR_CODE_RX_DATA BIT(9)
-+#define RK3576CAN_REG_ERROR_CODE_RX_DLC BIT(8)
-+#define RK3576CAN_REG_ERROR_CODE_RX_BRS_ESI BIT(7)
-+#define RK3576CAN_REG_ERROR_CODE_RX_RES BIT(6)
-+#define RK3576CAN_REG_ERROR_CODE_RX_FDF BIT(5)
-+#define RK3576CAN_REG_ERROR_CODE_RX_ID2_RTR BIT(4)
-+#define RK3576CAN_REG_ERROR_CODE_RX_SOF_IDE BIT(3)
-+#define RK3576CAN_REG_ERROR_CODE_RX_BUS_IDLE BIT(2)
-+#define RK3576CAN_REG_ERROR_CODE_RX_BUS_INT BIT(1)
-+#define RK3576CAN_REG_ERROR_CODE_RX_STOP BIT(0)
-+
-+#define RK3576CAN_ISM_WATERMASK_CAN 0x6c /* word */
-+#define RK3576CAN_ISM_WATERMASK_CANFD 0x6c /* word */
-+
-+#define RK3576CAN_SRAM_MAX_DEPTH 256 /* word */
-+
-+#define RK3576CAN_CANFD_FILTER GENMASK(28, 0)
-+
-+#define RK3576CAN_CANFD_FIFO_CNT GENMASK(7, 0)
-+
- #define DEVICE_NAME "rockchip_canfd"
- #define RKCANFD_NAPI_WEIGHT 32
- #define RKCANFD_TXFIFO_DEPTH 2
-@@ -434,6 +684,7 @@
- enum rkcanfd_model {
- 	RKCANFD_MODEL_RK3568V2 = 0x35682,
- 	RKCANFD_MODEL_RK3568V3 = 0x35683,
-+	RKCAN_MODEL_RK3576 = 0x3576,
- };
- 
- struct rkcanfd_priv;
-@@ -457,6 +708,11 @@ struct rkcanfd_fifo_header {
- 	u32 ts;
- };
- 
-+struct rk3576can_fifo_header {
-+	u32 frameinfo;
-+	u32 id;
-+};
-+
- struct rkcanfd_stats {
- 	struct u64_stats_sync syncp;
- 
-@@ -546,6 +802,8 @@ rkcanfd_get_tx_free(const struct rkcanfd_priv *priv)
- void rkcanfd_ethtool_init(struct rkcanfd_priv *priv);
- 
- int rkcanfd_handle_rx_int(struct rkcanfd_priv *priv);
-+int rkcanfd_handle_rk3576_tx_int(struct rkcanfd_priv *priv);
-+int rkcanfd_handle_rk3576_rx_int(struct rkcanfd_priv *priv);
- 
- void rkcanfd_skb_set_timestamp(const struct rkcanfd_priv *priv,
- 			       struct sk_buff *skb, const u32 timestamp);
--- 
-2.34.1
+On 10/20/25 10:24 AM, Jacopo Mondi wrote:
+> 
+> Add to the V4L2 framework helper functions to support drivers when
+> validating a buffer of V4L2 ISP parameters.
+> 
+> Driver shall use v4l2_isp_params_validate_buffer_size() to verify the
+> size correctness of the data received from userspace, and after having
+> copied the data to a kernel-only memory location, complete the
+> validation by calling v4l2_isp_params_validate_buffer().
+> 
+> Reviewed-by: Daniel Scally <dan.scally@ideasonboard.com>
+> Reviewed-by: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>
+> Reviewed-by: Michael Riesch <michael.riesch@collabora.com>
+> Acked-by: Sakari Ailus <sakari.ailus@linux.intel.com>
+> Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+> ---
+>   MAINTAINERS                        |   2 +
+>   drivers/media/v4l2-core/Kconfig    |   4 ++
+>   drivers/media/v4l2-core/Makefile   |   1 +
+>   drivers/media/v4l2-core/v4l2-isp.c | 128 +++++++++++++++++++++++++++++++++++++
+>   include/media/v4l2-isp.h           |  91 ++++++++++++++++++++++++++
+>   5 files changed, 226 insertions(+)
+> 
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index f52237d57710cadff78b297d2b4610b508f55092..5833f82caa7f2f734bb0e1be144ade2109b23988 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -26857,6 +26857,8 @@ M:      Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+>   L:     linux-media@vger.kernel.org
+>   S:     Maintained
+>   F:     Documentation/userspace-api/media/v4l/v4l2-isp.rst
+> +F:     drivers/media/v4l2-core/v4l2-isp.c
+> +F:     include/media/v4l2-isp.h
+>   F:     include/uapi/linux/media/v4l2-isp.h
+> 
+>   VF610 NAND DRIVER
+> diff --git a/drivers/media/v4l2-core/Kconfig b/drivers/media/v4l2-core/Kconfig
+> index 331b8e535e5bbf33f22638b2ae8bc764ad5fc407..d50ccac9733cc39a43426ae7e7996dd0b5b45186 100644
+> --- a/drivers/media/v4l2-core/Kconfig
+> +++ b/drivers/media/v4l2-core/Kconfig
+> @@ -82,3 +82,7 @@ config V4L2_CCI_I2C
+>          depends on I2C
+>          select REGMAP_I2C
+>          select V4L2_CCI
+> +
+> +config V4L2_ISP
+> +       tristate
+
+When configured as module, there's build error:
+
+ERROR: modpost: missing MODULE_LICENSE() in 
+drivers/media/v4l2-core/v4l2-isp.o
+WARNING: modpost: missing MODULE_DESCRIPTION() in 
+drivers/media/v4l2-core/v4l2-isp.o
+
+It happens when selected from an ISP driver, and ISP driver is a module. 
+Then module is applied to v4l2-isp too.
+
+> +       depends on VIDEOBUF2_CORE
+> diff --git a/drivers/media/v4l2-core/Makefile b/drivers/media/v4l2-core/Makefile
+> index 2177b9d63a8ffc1127c5a70118249a2ff63cd759..329f0eadce994cc1c8580beb435f68fa7e2a7aeb 100644
+> --- a/drivers/media/v4l2-core/Makefile
+> +++ b/drivers/media/v4l2-core/Makefile
+> @@ -29,6 +29,7 @@ obj-$(CONFIG_V4L2_CCI) += v4l2-cci.o
+>   obj-$(CONFIG_V4L2_FLASH_LED_CLASS) += v4l2-flash-led-class.o
+>   obj-$(CONFIG_V4L2_FWNODE) += v4l2-fwnode.o
+>   obj-$(CONFIG_V4L2_H264) += v4l2-h264.o
+> +obj-$(CONFIG_V4L2_ISP) += v4l2-isp.o
+>   obj-$(CONFIG_V4L2_JPEG_HELPER) += v4l2-jpeg.o
+>   obj-$(CONFIG_V4L2_MEM2MEM_DEV) += v4l2-mem2mem.o
+>   obj-$(CONFIG_V4L2_VP9) += v4l2-vp9.o
+> diff --git a/drivers/media/v4l2-core/v4l2-isp.c b/drivers/media/v4l2-core/v4l2-isp.c
+> new file mode 100644
+> index 0000000000000000000000000000000000000000..35f0b701f1729c3c0ccc34b1c89189b179e0b684
+> --- /dev/null
+> +++ b/drivers/media/v4l2-core/v4l2-isp.c
+> @@ -0,0 +1,128 @@
+> +// SPDX-License-Identifier: GPL-2.0-or-later
+> +/*
+> + * Video4Linux2 generic ISP parameters and statistics support
+> + *
+> + * Copyright (C) 2025 Ideas On Board Oy
+> + * Author: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+> + */
+> +
+> +#include <media/v4l2-isp.h>
+> +
+> +#include <linux/bitops.h>
+> +#include <linux/device.h>
+> +
+> +#include <media/videobuf2-core.h>
+> +
+> +int v4l2_isp_params_validate_buffer_size(struct device *dev,
+> +                                        struct vb2_buffer *vb,
+> +                                        size_t max_size)
+> +{
+> +       size_t header_size = offsetof(struct v4l2_isp_params_buffer, data);
+> +       size_t payload_size = vb2_get_plane_payload(vb, 0);
+> +
+> +       /* Payload size can't be greater than the destination buffer size */
+> +       if (payload_size > max_size) {
+> +               dev_dbg(dev, "Payload size is too large: %zu\n", payload_size);
+> +               return -EINVAL;
+> +       }
+> +
+> +       /* Payload size can't be smaller than the header size */
+> +       if (payload_size < header_size) {
+> +               dev_dbg(dev, "Payload size is too small: %zu\n", payload_size);
+> +               return -EINVAL;
+> +       }
+> +
+> +       return 0;
+> +}
+> +EXPORT_SYMBOL_GPL(v4l2_isp_params_validate_buffer_size);
+> +
+> +int v4l2_isp_params_validate_buffer(struct device *dev, struct vb2_buffer *vb,
+> +                                   const struct v4l2_isp_params_buffer *buffer,
+> +                                   const struct v4l2_isp_params_block_info *info,
+> +                                   size_t num_blocks)
+> +{
+> +       size_t header_size = offsetof(struct v4l2_isp_params_buffer, data);
+> +       size_t payload_size = vb2_get_plane_payload(vb, 0);
+> +       size_t block_offset = 0;
+> +       size_t buffer_size;
+> +
+> +       /*
+> +        * Currently only the first version of the V4L2 ISP parameters format is
+> +        * supported. We accept both V0 and V1 to support existing drivers
+> +        * compatible with V4L2 ISP that use either 0 or 1 as their "first
+> +        * version" identifiers.
+> +        */
+> +       if (buffer->version != V4L2_ISP_PARAMS_VERSION_V0 &&
+> +           buffer->version != V4L2_ISP_PARAMS_VERSION_V1) {
+> +               dev_dbg(dev,
+> +                       "Unsupported V4L2 ISP parameters format version: %u\n",
+> +                       buffer->version);
+> +               return -EINVAL;
+> +       }
+> +
+> +       /* Validate the size reported in the header */
+> +       buffer_size = header_size + buffer->data_size;
+> +       if (buffer_size != payload_size) {
+> +               dev_dbg(dev, "Data size %zu and payload size %zu are different\n",
+> +                       buffer_size, payload_size);
+> +               return -EINVAL;
+> +       }
+> +
+> +       /* Walk the list of ISP configuration blocks and validate them. */
+> +       buffer_size = buffer->data_size;
+> +       while (buffer_size >= sizeof(struct v4l2_isp_params_block_header)) {
+> +               const struct v4l2_isp_params_block_info *block_info;
+> +               const struct v4l2_isp_params_block_header *block;
+> +
+> +               block = (const struct v4l2_isp_params_block_header *)
+> +                       (buffer->data + block_offset);
+> +
+> +               if (block->type >= num_blocks) {
+> +                       dev_dbg(dev,
+> +                               "Invalid block type %u at offset %zu\n",
+> +                               block->type, block_offset);
+> +                       return -EINVAL;
+> +               }
+> +
+> +               if (block->size > buffer_size) {
+> +                       dev_dbg(dev, "Premature end of parameters data\n");
+> +                       return -EINVAL;
+> +               }
+> +
+> +               /* It's invalid to specify both ENABLE and DISABLE. */
+> +               if ((block->flags & (V4L2_ISP_PARAMS_FL_BLOCK_ENABLE |
+> +                                    V4L2_ISP_PARAMS_FL_BLOCK_DISABLE)) ==
+> +                    (V4L2_ISP_PARAMS_FL_BLOCK_ENABLE |
+> +                    V4L2_ISP_PARAMS_FL_BLOCK_DISABLE)) {
+> +                       dev_dbg(dev, "Invalid block flags %x at offset %zu\n",
+> +                               block->flags, block_offset);
+> +                       return -EINVAL;
+> +               }
+> +
+> +               /*
+> +                * Match the block reported size against the info provided
+> +                * one, but allow the block to only contain the header in
+> +                * case it is going to be disabled.
+> +                */
+> +               block_info = &info[block->type];
+> +               if (block->size != block_info->size &&
+> +                   (!(block->flags & V4L2_ISP_PARAMS_FL_BLOCK_DISABLE) ||
+> +                   block->size != sizeof(*block))) {
+> +                       dev_dbg(dev,
+> +                               "Invalid block size %u (expected %zu) at offset %zu\n",
+> +                               block->size, block_info->size, block_offset);
+> +                       return -EINVAL;
+> +               }
+> +
+> +               block_offset += block->size;
+> +               buffer_size -= block->size;
+> +       }
+> +
+> +       if (buffer_size) {
+> +               dev_dbg(dev, "Unexpected data after the parameters buffer end\n");
+> +               return -EINVAL;
+> +       }
+> +
+> +       return 0;
+> +}
+> +EXPORT_SYMBOL_GPL(v4l2_isp_params_validate_buffer);
+> diff --git a/include/media/v4l2-isp.h b/include/media/v4l2-isp.h
+> new file mode 100644
+> index 0000000000000000000000000000000000000000..8b4695663699e7f176384739cf54ed7fa2c578f8
+> --- /dev/null
+> +++ b/include/media/v4l2-isp.h
+> @@ -0,0 +1,91 @@
+> +/* SPDX-License-Identifier: GPL-2.0-or-later */
+> +/*
+> + * Video4Linux2 generic ISP parameters and statistics support
+> + *
+> + * Copyright (C) 2025 Ideas On Board Oy
+> + * Author: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+> + */
+> +
+> +#ifndef _V4L2_ISP_H_
+> +#define _V4L2_ISP_H_
+> +
+> +#include <linux/media/v4l2-isp.h>
+> +
+> +struct device;
+> +struct vb2_buffer;
+> +
+> +/**
+> + * v4l2_isp_params_buffer_size - Calculate size of v4l2_isp_params_buffer
+> + * @max_params_size: The total size of the ISP configuration blocks
+> + *
+> + * Users of the v4l2 extensible parameters will have differing sized data arrays
+> + * depending on their specific parameter buffers. Drivers and userspace will
+> + * need to be able to calculate the appropriate size of the struct to
+> + * accommodate all ISP configuration blocks provided by the platform.
+> + * This macro provides a convenient tool for the calculation.
+> + */
+> +#define v4l2_isp_params_buffer_size(max_params_size) \
+> +       (offsetof(struct v4l2_isp_params_buffer, data) + (max_params_size))
+> +
+> +/**
+> + * v4l2_isp_params_validate_buffer_size - Validate a V4L2 ISP buffer sizes
+> + * @dev: the driver's device pointer
+> + * @vb: the videobuf2 buffer
+> + * @max_size: the maximum allowed buffer size
+> + *
+> + * This function performs validation of the size of a V4L2 ISP parameters buffer
+> + * before the driver can access the actual data buffer content.
+> + *
+> + * After the sizes validation, drivers should copy the buffer content to a
+> + * kernel-only memory area to prevent userspace from modifying it,
+> + * before completing validation using v4l2_isp_params_validate_buffer().
+> + *
+> + * The @vb buffer as received from the vb2 .buf_prepare() operation is checked
+> + * against @max_size and it's validated to be large enough to accommodate at
+> + * least one ISP configuration block.
+> + */
+> +int v4l2_isp_params_validate_buffer_size(struct device *dev,
+> +                                        struct vb2_buffer *vb,
+> +                                        size_t max_size);
+> +
+> +/**
+> + * struct v4l2_isp_params_block_info - V4L2 ISP per-block info
+> + * @size: the block expected size
+> + *
+> + * The v4l2_isp_params_block_info collects information of the ISP configuration
+> + * blocks for validation purposes. It currently only contains the expected
+> + * block size.
+> + *
+> + * Drivers shall prepare a list of block info, indexed by block type, one for
+> + * each supported ISP block and correctly populate them with the expected block
+> + * size.
+> + */
+> +struct v4l2_isp_params_block_info {
+> +       size_t size;
+> +};
+> +
+> +/**
+> + * v4l2_isp_params_validate_buffer - Validate a V4L2 ISP parameters buffer
+> + * @dev: the driver's device pointer
+> + * @vb: the videobuf2 buffer
+> + * @buffer: the V4L2 ISP parameters buffer
+> + * @info: the list of per-block validation info
+> + * @num_blocks: the number of blocks
+> + *
+> + * This function completes the validation of a V4L2 ISP parameters buffer,
+> + * verifying each configuration block correctness before the driver can use
+> + * them to program the hardware.
+> + *
+> + * Drivers should use this function after having validated the correctness of
+> + * the vb2 buffer sizes by using the v4l2_isp_params_validate_buffer_size()
+> + * helper first. Once the buffer size has been validated, drivers should
+> + * perform a copy of the user provided buffer into a kernel-only memory buffer
+> + * to prevent userspace from modifying its content after it has been submitted
+> + * to the driver, and then call this function to complete validation.
+> + */
+> +int v4l2_isp_params_validate_buffer(struct device *dev, struct vb2_buffer *vb,
+> +                                   const struct v4l2_isp_params_buffer *buffer,
+> +                                   const struct v4l2_isp_params_block_info *info,
+> +                                   size_t num_blocks);
+> +
+> +#endif /* _V4L2_ISP_H_ */
+> 
+> --
+> 2.51.0
+> 
 
 
 _______________________________________________
