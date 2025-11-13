@@ -4,82 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 108A5CDB463
-	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Nov 2025 23:18:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EB83CD98F7
+	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Nov 2025 23:21:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8nl/n6KJJnqtej3aE5645dWpwybS3ifRs5t+7fMJUeM=; b=HZslrHMt++9gCG
-	bmBw79MjrcWhA2EvCRsx1jbgwLAjnaXhE79xxTxUFpZzQB7nqP1ATWqBqErn14FyeCpfIu9z3anGx
-	TC4+cyncVde3E8abRh/SXqOPkLSj35s6gq3phbKol3UJUBKKMOVRLFAU0t0GSrFVtcBg7h5XO7X8t
-	t3AS2nOc7B1gylzdnNQbfy5rRzhjsjiBciV9lMTy06TghbHj9PnpLHPRYR3Zt2wYM6LTDzNu1fVJ1
-	sGIv02I5z7K3+ukJX5UVIvr9L8RYjNgfhR45dfxPiu13g83FvjGh/EYUqhjpwqIUFhV8Hu/yRZrb+
-	qk780+OtxrneMU+phfTQ==;
+	List-Owner; bh=J5rQ/iLRyY8L13ROGGV6Kv14HbBbol7GGO3EPKpXzbs=; b=mz8TwCycdJxq9Z
+	mhjabOzLIW2nsVCDuqkWc4DdTNJ2/QSppBNznNUdWaASL4ws1BGVEYNiOkmoQrXH359MJq/Be6QNI
+	390ZQEnv1am9ujXdDGoON/Lkq9/Vgs9wa932tucRzz267/ZVImK48oOPigcAArbjXFfjeQP6ZAk8B
+	mA6tGO62pVVYxW+3TniRUPilAsBlia0akrZSQuVctpP6aTRyG1Z4u297Y7+kNxbpLa3QnNoN4BItQ
+	eWJiqiJiPoETjAxJ50tCt1qboDxxrK9m/JGhuM9nY+EDGjN74Hm30rtJYxffIOBl/vGPwMHuG90/u
+	xdM57oDooVT/N8FIepgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJgaD-0000000BFsZ-0F4P;
-	Thu, 13 Nov 2025 23:18:29 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJgaA-0000000BFrT-1riu;
-	Thu, 13 Nov 2025 23:18:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:Content-Type:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender
-	:Reply-To:Content-ID:Content-Description;
-	bh=riHuRM1k/DFvdlBRjwWTjBhHifAxIVebtaf9zUqQz1Y=; b=bqhkUYzbXASVj7s8KfMA53VDMl
-	W4RsuZa/eINItbpAFP1DGUvd3ssbzldYGRarJUe0/MM1z2Co6mAJZ8JBmW49dIdorpI+alcdgNiz7
-	8yJbLK016pqbMHX5KKHE0y0Ip14qfWsFZncUXtWABhsuCXACfiDepOBALJ/Hig1I0s65ZsmTbOuhG
-	KKKFVvNEyJ82N6+m8eRsGbOaxpOqFlpJav2FF+52FLTRnJBrzeyCXEBqW/msSeTImEzjjHR/8brwK
-	MCoIFcP7aUB9SfWidWvOrZmDrhm0JmgYwUFgqq90l1IGoTFn2NIY65+kn+SRiTqmSasqGJE43xllP
-	frPqcZTA==;
+	id 1vJgdO-0000000BG9Y-2FcW;
+	Thu, 13 Nov 2025 23:21:46 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
-	by casper.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJga7-00000008KDI-3KQL;
-	Thu, 13 Nov 2025 23:18:25 +0000
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vJgdL-0000000BG9B-2Pga
+	for linux-rockchip@lists.infradead.org;
+	Thu, 13 Nov 2025 23:21:44 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=riHuRM1k/DFvdlBRjwWTjBhHifAxIVebtaf9zUqQz1Y=; b=jPv47wxRaXGpcY/WjPo6mTDh5l
-	bN0pYUxMKtxtkmR3YaArdlw0XH9vswzuGChcKl+nFt1L3oyQS6/RuFaU8fvEItmEc+G0xJDxreKGZ
-	4S8qZcWy2SWIhf5iF93rd6C53lqibF2w1W7vaeKXmEUIfG7lpaJCNtQuML9wWl1uPPu2/5AJR/jfg
-	bju0WS6vz2Ho9/meXy2Tt4vwPFJhcb2mlAsqJ254Qt5nnCaO7IDG5mPA8fqz4PDMOVQkCTlnLpczn
-	u2aOiO67F3dEU9lnbJQnRFPqCkcQuTAcGpXCPzFeNIEvK6cuoEJnt+AT73z/JA1j6IrbqAwqLHTzD
-	bRBn8qxA==;
+	bh=MUCMochQrd1DfpxoWgDSOw9hEbqaoIKOIax/Q5hH7zc=; b=HSIzbNu6WDSeZZs1nCUH8/kupF
+	pWNShvr04SQpnuTi2V/8XmS9x74UV8cBytjaZtdZaoCLRnU/BqMAVFNDtcYsYucK/rV0XzQhNZ0o8
+	G6ED+pofk+Oc2XH/DMdHJ4LaxU/v85DxjnG+PCOuOa5ZaCfxwxJbh49hotxpdRozJ0fF4JmnR0P+B
+	iTjuQziQqRyIOQUTjFSummn4OjhqV/cBag+xOxudKUs9taiyNbZKuwUaqbWbwArTCQ2OaUO5gtD2S
+	tiiKp4c5zXZH8egdtlT6MwwHY2FNAFuOqNtpN3FkBeguqYpTzoX9m0XIIB+WQaxa2gvJq68IeX0Mr
+	3CHwgn1A==;
 Received: from i53875a11.versanet.de ([83.135.90.17] helo=phil..)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1vJga3-0005lz-FO; Fri, 14 Nov 2025 00:18:19 +0100
+	id 1vJgdB-0005o9-HN; Fri, 14 Nov 2025 00:21:33 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: Rob Herring <robh@kernel.org>,
+To: Adrian Hunter <adrian.hunter@intel.com>,
+	Ulf Hansson <ulf.hansson@linaro.org>,
+	Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
-	Johan Jonker <jbx6244@gmail.com>,
-	Michael Riesch <michael.riesch@collabora.com>,
-	=?UTF-8?q?Ond=C5=99ej=20Jirman?= <megi@xff.cz>,
-	Muhammed Efe Cetin <efectn@6tel.net>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Mykola Kvach <xakep.amatop@gmail.com>
+	Sebastian Reichel <sebastian.reichel@collabora.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
-	stable@vger.kernel.org
-Subject: Re: [PATCH v3] arm64: dts: rockchip: orangepi-5: fix PCIe 3.3V regulator voltage
-Date: Fri, 14 Nov 2025 00:18:16 +0100
-Message-ID: <176307584246.496508.12079514999315183214.b4-ty@sntech.de>
+	linux-mmc@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	kernel@collabora.com,
+	Yifeng Zhao <yifeng.zhao@rock-chips.com>
+Subject: Re: (subset) [PATCH v2 0/2] mmc: sdhci-of-dwcmshc: Add command queue support for Rockchip SOCs
+Date: Fri, 14 Nov 2025 00:21:31 +0100
+Message-ID: <176307608061.496957.2197880320790247592.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.2
-In-Reply-To: <cf6e08dfdfbf1c540685d12388baab1326f95d2c.1762165324.git.xakep.amatop@gmail.com>
-References: <cf6e08dfdfbf1c540685d12388baab1326f95d2c.1762165324.git.xakep.amatop@gmail.com>
+In-Reply-To: <20251031-rockchip-emmc-cqe-support-v2-0-958171f5edad@collabora.com>
+References: <20251031-rockchip-emmc-cqe-support-v2-0-958171f5edad@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251113_231823_855351_3762BEC7 
-X-CRM114-Status: UNSURE (   8.71  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251113_152143_617090_2BA59ACB 
+X-CRM114-Status: GOOD (  15.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,23 +82,24 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Mon, 03 Nov 2025 12:27:40 +0200, Mykola Kvach wrote:
-> The vcc3v3_pcie20 fixed regulator powers the PCIe device-side 3.3V rail
-> for pcie2x1l2 via vpcie3v3-supply. The DTS mistakenly set its
-> regulator-min/max-microvolt to 1800000 (1.8 V). Correct both to 3300000
-> (3.3 V) to match the rail name, the PCIe/M.2 power requirement, and the
-> actual hardware wiring on Orange Pi 5.
+On Fri, 31 Oct 2025 16:58:22 +0100, Sebastian Reichel wrote:
+> Right now at least the recent Rockchip SoCs do not support system
+> suspend with the mainline kernel. I'm currently looking into
+> improving support for the RK3576 platform.
 > 
+> On the Sige5 one of the issues is the eMMC controller, which fails
+> to suspend when trying to disable CQE support. While investigating
+> I found a missing Rockchip quirk in the Rockchip kernel, which is
+> needed for CQE. Since the RK3576 DT has been upstreamed with the
+> 'supports-cqe' property (RK3588 does not yet have it), we run into
+> this problem for that platform.
 > 
 > [...]
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: orangepi-5: fix PCIe 3.3V regulator voltage
-      commit: b5414520793e68d266fdd97a84989d9831156aad
-
-Please start new threads when sending version x+1 and don't append
-that new patch to the old thread (less confusing for tooling like b4).
+[2/2] arm64: dts: rockchip: add eMMC CQE support for rk3588
+      commit: 9d856aa1c81930a5d8df0e29d6cb0faa3fa87206
 
 Best regards,
 -- 
