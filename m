@@ -4,59 +4,164 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 387A7CD4F57
-	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Nov 2025 08:50:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23B72CD5BAD
+	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Nov 2025 09:57:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RPDT0VQwTpSs/IQsbeq5qsFj1efAbop56sM12lucZ04=; b=dCBj9y5h9ke2fF
-	N3hu85bBCKzrt9w8xnvSEYdu7X3dKuhxNB8aSlOyM/99ra78ML3XC6zrHYtCzBxCq1B7l6GY81pUc
-	rPsCcCGeRrIIQbxuXx9Q6Wn0OmVSLbMuV3vX5pyl9pBnC2ekdR0gx22Am4vXhcQAdUJaY7p2CCUeK
-	c9Z/841ymzoX5nBFGu3YW/zJpVdOb/lNSZTO0rV8Q/Y57EDD8Ha+8Oqw/7awKLFx+xL/ZGW9BLqb9
-	+cLsEN9mj+IjKDhYJMGZoqaZzzgrvrdFfc5ZgH09z0b5R+nHA6lw1weQFWcrZGiJhqv9wHqdw7W16
-	uU91STAmsB9syWTkWcOg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=EjR7LJvq20Xsz7dhbww2NeBuUqFxQvOAnrw8i1pDSoY=; b=pc+2oUMjG6flD++hLQFH5ExVRn
+	CGl4nc/sryG83v6pq582TlqiESAAB1+OCnVA6UBKe9Hzh3kH+ZmBS5TZuvSPkp99rhvrC9kndI46R
+	41ofK9Kxg3ECxb0gd5PUcmluKw4K3THLepcoET3M5RJqTf3DGbcczvWVeMXE1laWypH3aDG85+zRL
+	CkhIH66hlAV/m20mDh8cTpkx3wDP+kgJOTdOVLI1JMN4OkNrKLBr5xc+vUwqUkLS+7mkRl7Brcypt
+	9ZyBLz+ZoxOqpXodGL9iRz5FkTi6ScsVDzNGre+n/ncIG1PPXUib9aiiPUuPW5dmbfZpg1BfxsVdd
+	oc8NgyuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJT1h-0000000A883-2JHU;
-	Thu, 13 Nov 2025 08:49:57 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1vJU5A-0000000AF08-1WGH;
+	Thu, 13 Nov 2025 09:57:36 +0000
+Received: from mail-northeuropeazlp170120005.outbound.protection.outlook.com ([2a01:111:f403:c200::5] helo=DUZPR83CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJT1e-0000000A87E-2cMu;
-	Thu, 13 Nov 2025 08:49:56 +0000
-Received: from ideasonboard.com (93-61-96-190.ip145.fastwebnet.it [93.61.96.190])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 2F1AE446;
-	Thu, 13 Nov 2025 09:47:52 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1763023672;
-	bh=UOgTQkkkp1H2nG+lxAD2F3Vu4CDZrPn7c+/0lcsIlNY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=e2pNzDCPZIKDkyzxxq91fglySIFiWMthPLSV9LNF9lOz2dTDZQ+7V4oqcZ9G2AnCe
-	 edajj9I082V5AYHAVABC/+ZqUDMNrBU/NyWOOeQ7hrJBaWY9tpQucVXG8lTmkzlsSS
-	 QMfe83hwWI37FBkLqVqWhvQplapeLjWHEQyI7xWE=
-Date: Thu, 13 Nov 2025 09:49:49 +0100
-From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-To: Antoine Bouyer <antoine.bouyer@nxp.com>
-Cc: Jacopo Mondi <jacopo.mondi@ideasonboard.com>, 
-	Dafna Hirschfeld <dafna@fastmail.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
-	Keke Li <keke.li@amlogic.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Dan Scally <dan.scally@ideasonboard.com>, 
-	Sakari Ailus <sakari.ailus@linux.intel.com>, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, Michael Riesch <michael.riesch@collabora.com>
-Subject: Re: [PATCH v8 5/8] media: v4l2-core: Introduce v4l2-isp.c
-Message-ID: <mowumvzl6rk2st2lwdhqfuepwm6txxrmr7praxn43tski52xox@vvgr2hyllxgz>
-References: <20251020-extensible-parameters-validation-v8-0-afba4ba7b42d@ideasonboard.com>
- <20251020-extensible-parameters-validation-v8-5-afba4ba7b42d@ideasonboard.com>
- <90267077-c74c-4e05-809d-94694d162e18@nxp.com>
+	id 1vJU56-0000000AEyq-1qsp;
+	Thu, 13 Nov 2025 09:57:34 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=mqbqH36cNCNqTeKyHKi1QGUcSTIB8VDQyf4PYKssdOLO3LLdCCCYKaT6I4B8Ty54Ea8NUZVF1QWoMwu5SelrstLR/8qpOp+Uviy+1yDjuTDxKwDyHKNY2QJHiGTPZLoKTm8fN2nIMqjfYfAiqjQ9jEkJu/6CYkM6r0mQ3byRmfAFCEmuQ5+s4njTlaQKa5f9aTBN5hdpDWA2RWIY2/hXTtQxOKHxOCxAvtDiQmwlA3SHrKyxoUTKRAVe0S4/Z4hrO5c/5sZfoW+7yo7a+ZolkpXPPvZp43T/wR85EEN6zKV1lsmEnk/35e31hdijMyd8udxRRwqRwTGVKXPfSKBJBQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=5zm240b9LMkAwHDYzNatS3Zq5ccj4Se/T4wQKo0mTl0=;
+ b=jTNN5NHnz3uRtAzCMoEv6Bw+RlzNg729Peq0IATeA1eOwiJsqargXPwnBiTsZtcNpFd37NI0em5d3+4qrPH1VUq3+nENXV3OG3QiBLURpLGJrmdZw6mo9Hyt718jhboSeMPcDwhuBovnS2ykuHJRQc9p2Y86ZGewQikKtE4gD5YJJvU3m8UH0rc4Eid3b9JyTmlN6st6gULcWP1Axa3LrX+2tY63UU3qPzOyymS5TLDDwLp/K6m++sDE4SQvPpxcG1/mqPm/jzei0BTj6BQsXIL9djnn/fy3V3Vulj1XD3Y2k3D0pwMHlJ8MOHt0a3ZB78bGx9bJRZVNNcyL5RchUQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=cherry.de; dmarc=pass action=none header.from=cherry.de;
+ dkim=pass header.d=cherry.de; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cherry.de;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=5zm240b9LMkAwHDYzNatS3Zq5ccj4Se/T4wQKo0mTl0=;
+ b=ksoc4oY79pcR2ydntGbbzHhYI8gFfyH+RLR8U+cNt1WZXGmaepyvliL8bscuuGKOTpYRjPCGkv+r4Q3e6S4Q+18YfeHaKlETrezsGYkAZJUixelM7JBgcuMrWCmk10TiWVemUa6h0DmWPvQVpsYycAR+AwqzSL1g04AJ5z08GOI=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=cherry.de;
+Received: from AS8PR04MB8897.eurprd04.prod.outlook.com (2603:10a6:20b:42c::20)
+ by GVXPR04MB9804.eurprd04.prod.outlook.com (2603:10a6:150:114::6) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9320.16; Thu, 13 Nov
+ 2025 09:57:23 +0000
+Received: from AS8PR04MB8897.eurprd04.prod.outlook.com
+ ([fe80::5ee:7297:93b4:a8d1]) by AS8PR04MB8897.eurprd04.prod.outlook.com
+ ([fe80::5ee:7297:93b4:a8d1%6]) with mapi id 15.20.9320.013; Thu, 13 Nov 2025
+ 09:57:17 +0000
+Message-ID: <575fd825-5ee8-4a46-b9ef-2a16d9ce61b1@cherry.de>
+Date: Thu, 13 Nov 2025 10:57:16 +0100
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] arm64: dts: rockchip: disable HS400 on RK3588 Tiger
+To: Quentin Schulz <foss+kernel@0leil.net>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: Jakob Unterwurzacher <jakob.unterwurzacher@cherry.de>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20251112-tiger-hs200-v1-1-b50adac107c0@cherry.de>
+Content-Language: en-US
+From: Quentin Schulz <quentin.schulz@cherry.de>
+In-Reply-To: <20251112-tiger-hs200-v1-1-b50adac107c0@cherry.de>
+X-ClientProxiedBy: WA1P291CA0008.POLP291.PROD.OUTLOOK.COM
+ (2603:10a6:1d0:19::19) To AS8PR04MB8897.eurprd04.prod.outlook.com
+ (2603:10a6:20b:42c::20)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <90267077-c74c-4e05-809d-94694d162e18@nxp.com>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: AS8PR04MB8897:EE_|GVXPR04MB9804:EE_
+X-MS-Office365-Filtering-Correlation-Id: 43a561b3-7040-41fb-712f-08de229b075b
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|366016|376014;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?Y1lpNnZlZm1mNVZITGtiYWl5TzBIc1BocFpodlJYVTVMNC9pVFlmUklkYVRr?=
+ =?utf-8?B?TGRTRTl0QWFxeWJ4VXlpN2FsMlR0UDZ1VWVOVExvN09HeTlWdVpqYnJTZEwx?=
+ =?utf-8?B?Nm9sVzZRNmFVYjRGd1VZZ0l5ak5YYk1VSEZRbHVJYVdtbmRHZFZISWs3NlNn?=
+ =?utf-8?B?QnVHaXFDZlpsdEhvSkhaRkQ5bEpGbHdNdU1pcW1sS3BnanJEcUI5ci84YzBs?=
+ =?utf-8?B?NFcya0NXMk5uT0RjTWRZRVRFT3BUWHFwRHI5Nk0vMlZMcnpqczVvc2hlaVBG?=
+ =?utf-8?B?TDVqamZ1N3g4MHFVMXJQL2JKTnhxUFlTMnFuY0cwTDRQcVUraTVsQkNsa25j?=
+ =?utf-8?B?WkRuRTZqblRRUlU0QWo2UnNucVpxdThEcHZDVVBnOFBjam00UTZEQzZnNWF6?=
+ =?utf-8?B?YW85ZFZPOTB3b29SRUNGbnhEL1lZQW5RT3BNaFF4UjkrUDJkWk5jT29HOGgr?=
+ =?utf-8?B?bEVGUWpsS0ZLdWxiR0JabW1jUDRyM21NSldObTNGdFhxdlpHU1dIYTBGdlh0?=
+ =?utf-8?B?eFgzd1dDQjRDYzNsaGhvZXNacnc2a0hOa2dGM0RZU3V6YzVsVnMzNFNnR1lC?=
+ =?utf-8?B?OVQ1cnV4WnZvdDFBQWYyZzFFWWNNa2ZmY3pudkpZRUtQZGR0RlV1ckYzVGZn?=
+ =?utf-8?B?U0hxRzVCeWVlOVRrSnZSbCtPRlVtKyt2TmZHVnpaS1NWY0VtTkdkcnJpdHRE?=
+ =?utf-8?B?eEhia2VQd1RXS1RDeTBmakxGVWgxZ3FhY1NEMlFsTSszdUEwTnFvTzVVei9O?=
+ =?utf-8?B?R0puV0VKZE85SHprRXZySDRQQ1dDVnpUUDZnUU5PbmVoMnVlTDU1SERma2RR?=
+ =?utf-8?B?cXZwK2ZkRzMxZTlTZ3BPZzl1d2srcmpmZ1YzUmFHd2FGMlhnZzhwK2haOTBj?=
+ =?utf-8?B?RVduZzZvZm5vUXN4UkxRaGVRd0NTaTBGSjFVWE0xZmJibk1jVTQyTFFxNGdm?=
+ =?utf-8?B?dFVVZlNGUnBwTExnT3VOQ1dpSUpKM2twSkIvdTJ0OGFDTzNUc29USk1ZaTRK?=
+ =?utf-8?B?QWNOQXdGUm1jaEhKZU11aVlITWF5U0R1WHpDWS9WQ0xMRlo5aDlHdXRSZ2Y2?=
+ =?utf-8?B?RDZKalFmK3FSRnJKQXNPenlBZDRMMUszRXJQOCsxaXBFcElCZXBCR3B3MjJs?=
+ =?utf-8?B?NFd0N3NTa2tTQ2ZoL3p5NzRqY3l2L3B1QjhhQnh6Ri91dlBQMEVGRkF3b1RJ?=
+ =?utf-8?B?Um9BTE9reE5sRWVzUlU4bEdoRjlxZGxSRHJkOWZzMW1hc28raTdiaDNCMGlX?=
+ =?utf-8?B?enJ2cUZoT3ZTZjFPeTJETFhWc0hYUUFiOHFFNEozcmpHK2NJcjBHemo5RC9Q?=
+ =?utf-8?B?d0JOVGIwV21qVWRmMXQrcDI4TTRsZkg4TU1NL3VQcHFOa0hvMGN6bGdWOXQ4?=
+ =?utf-8?B?RGRMTnh4MXdabWxzZENsMWpTSTFyYjE5QXhHMDh3QzE0eGpNRk54dHlLYnAr?=
+ =?utf-8?B?T0tGUnd6ZnZCWnZWNTU4SHFpYmw3eDFJTFdydllhSk56Nmh4UWJBSmh5K1Rl?=
+ =?utf-8?B?ZVZ1SDJtekYrZ3BybXVvWGlwWkxkNVJUQi9BUmZWS0pWTDhHa3FaN284TFlE?=
+ =?utf-8?B?Y1NISG1scVd6R0s2ZTJHMmlwSXFUTXY0TXYvUUw4NXh4SHlobmEyN2lkcnZN?=
+ =?utf-8?B?b2RlbjNCZG5abnRsa1dpMGtXRDZucEVocmFkZmxQUFVtNlRIT2N0Qkc2MERC?=
+ =?utf-8?B?bWtSYWNVMlpUaHNsNXp0L2NHZnNlZ0ZDWHdQU3Z5eDlBU0lXVEJ6RkNQdlJx?=
+ =?utf-8?B?Um0rYlFuVXlMWGlsTytCaDRVSS9TTG1HV2ZSWktSVFBkaG8yUW5MRmp2NGht?=
+ =?utf-8?B?dExUMkdjZ3BjNXhUa2lTTklQeC9BNGNhaGh0b0FNcTVHc2R6S0xCMHgyRUhF?=
+ =?utf-8?B?YWsxcGl1V044eDRHWXU2WDRkOTFSUFdFZDFtR09DSGN5ckhaQVFZNEhGV2VT?=
+ =?utf-8?Q?ojWoEPJOjKqTvApvUZ3r4zkWDR86xne4?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AS8PR04MB8897.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(366016)(376014);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?Wlp0dmxJQ1o2T3Q3dTNZYXZsU1pMbUppUzBkcUZkSHlsQ1NxZVZBeGpIdngv?=
+ =?utf-8?B?SlJkcHQxSDlKZkdwUEYvRWhUdHNpcFpWVi9QZXVGNjJ2VExIVEFWNDhWR2pj?=
+ =?utf-8?B?ZnRZaHdtYVZSdUdyUlZvcW1FaE91V2s3bHpLYkVJbktFVDhwajB1bkNheU9w?=
+ =?utf-8?B?Zi9qSXNxYUY4U2xOTVBXVDVhVWJ1MEhoVUV6QUt0eFU0cmdPMDRDaUFKaytQ?=
+ =?utf-8?B?dGxMRHlhMlN4YVBOWURqeCtVQnZIc2ZvY09zNkZ6eE9TVGxic254eUc1Ky9x?=
+ =?utf-8?B?RU5US0VYNkZzM0p0KzBoWkpya3dzVWd1SEJEamZxU2VUM2c3Y2w1K2xrUHJ1?=
+ =?utf-8?B?bFV0dUdQR21ZVWl0OXFFajM1SkE4dHpScXlqaUQ1cTdmem5KSmtaZ3Z0UmhT?=
+ =?utf-8?B?Umprc1dOeDlHMkZocm5wcjdxQ3pBOS90SHJ1dWlPNTRaS0lhS3RlaGo2WXBP?=
+ =?utf-8?B?d2lvakVHODFqcFNKTW5RenpRTTFBTWZKL05NVFBqWjFsWmYrYW5LTGpDM3lL?=
+ =?utf-8?B?bENqdFpnQ2lJcmZsQUk3R2pCSnNCWlAzNjA1a0oxVFBwV0xSU3JZZkZFZlJS?=
+ =?utf-8?B?MG9QcncrNmlPMW5Mck5vMXlLM1l5eEZEdmhJNlVSeUk4dkJZSDFvR0d0ZkZr?=
+ =?utf-8?B?OFB3ekpiVnBhdUFhdzh2T0F2VnFPVzQ3djg3OEtsVCtTMi9CWCs2TG9mMHd2?=
+ =?utf-8?B?d2EyUUtCWDNsaXd6SGNlVkM5a1g0VWtYb3dxZm9sbzdjYW9uancyRlRjZVE0?=
+ =?utf-8?B?V1dWcFRoYzRnSitkdTZsNTIzUXlBMlpBUmlQcHhLN3l5ako2Qm4wVXFtdVBO?=
+ =?utf-8?B?R21qL1MyYkZ5RDQwUUk5SmNLTjA5bk0wRnNRWnZUWlBPakdRanp2Q2tvS2gv?=
+ =?utf-8?B?cHNBamtYOEs3THRrNnZVNDJYZlltejJLM1JIaXVsakNVZlBzeTgrbklvdCtL?=
+ =?utf-8?B?SyswemNQRUZocE9uUXlmeEduRjJGS0taMGhWbE1FVURUdmZtYVgwUy9heXVh?=
+ =?utf-8?B?QTFPdU4vYlNUZG0vWk9FZm5XbXMzWU9aRDJFMUhEdnN1eWs0SmxzQ2xyd3JC?=
+ =?utf-8?B?dnV6ajJnRDd4SmVuUENRTUtiL2tvM2R5U1FjeEF6dXE5UzdiN2pZcnkrR0Vh?=
+ =?utf-8?B?RHBrNWlXaE9kcVNhbWRVNjlwVWpXb1BQT2RlVkcyZkxxb2NlWm1PZHRRekpH?=
+ =?utf-8?B?RVNLTnI5QVZiWGhUdmVwdEx6Tk42Sk1UdHIrUWpsb2ExR3c2WlpncHpPcGJn?=
+ =?utf-8?B?YWwxc0UwSDhrYk9Bc25ScnFTanI1RmdOY0E0RnJxU3VSQXpYNGk3cjJDN2pN?=
+ =?utf-8?B?azAxenNzMlpZelVKTUNJNG5SR09JcDdzNFQ2QWkyMXArNXNuRFRxRTVhbVI4?=
+ =?utf-8?B?NDNwQUpLZHNpc2c0V3lkQXRaVW1BTWtiazRUbDhuQk9CT3BIdXlsbHRiT3hP?=
+ =?utf-8?B?dWpJck5kNWZSTW9tdEFsQ3I2dVRwTU1qZnFFSzhDRysySFlSNC9McFJGWlNu?=
+ =?utf-8?B?TVFRSDdrS3NNVmxSUVJLUjJtckdVRE1zUVlFS0cyaTQ4RmQ4b1RuVEhRL2s5?=
+ =?utf-8?B?Y09zMlVJSVVDY3lmMEMyc2lSTno0NFZSd3I3V29oMGtVY2daZ3pRTExSejQy?=
+ =?utf-8?B?a3ROb3ZJVU1mamdHSkZMeVdTb1lmb2p1ZVJrT3FQK3NZOHFpdC8wanRLd2Vq?=
+ =?utf-8?B?WkQrVG1sZFlHVU9sMlJOWWoweXFjcWx4M1EvMks0cVR3S1NKYTAvaUxZNVE4?=
+ =?utf-8?B?VGg5VjVva05TM2NuNGxzVi9tV3N6eFc5QzhkczJHNGpFK01WTldSNDBNQ2t1?=
+ =?utf-8?B?WWRxRlI0UE5IUjM5KzQvV1FLbTJTS2xRRjdZcURMbW9QT011YVJCSkhpVXZH?=
+ =?utf-8?B?anJoQ1RuWGpLQXRaY2NOYjIyekxRZjZBOWhLbGxvM0Rva2lSazBKWVBXb3FR?=
+ =?utf-8?B?YlJycE8ya0NwcWFzbTNPZFFScyt1VnVEZDY2UnZDZnFPRE84ZUthQ1NHVS9p?=
+ =?utf-8?B?QUI3R1B0ajZRTGJ1eFdZUk5PMXZxbnNZUFEybVQ5SWtlSjltbFp5K1I1Z3RU?=
+ =?utf-8?B?YlhqY3YwejZoeXBKUStkTE1NSUdIRXNTRXUyaTJtMnRjbnMxR2FzdEYwZnYz?=
+ =?utf-8?B?SmJLSUE1TjhzaXFGSER2UGdTTjFMMVdUSHJDNG1Va0ZhVnVSKzFROSthd2Jo?=
+ =?utf-8?B?cXc9PQ==?=
+X-OriginatorOrg: cherry.de
+X-MS-Exchange-CrossTenant-Network-Message-Id: 43a561b3-7040-41fb-712f-08de229b075b
+X-MS-Exchange-CrossTenant-AuthSource: AS8PR04MB8897.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Nov 2025 09:57:17.4287
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 5gGHT+gVZc4Dn420E2b65YY73/0VuCgKm63S95jR+cAxpa+d2Y2w40OZyHbZ7U6kBje70a9oiu9VpHyM7EmeXMGnEb8YFVL0t8pXw/I2Eiw=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: GVXPR04MB9804
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251113_004954_971698_A614BAC1 
-X-CRM114-Status: GOOD (  49.35  )
+X-CRM114-CacheID: sfid-20251113_015732_652842_BB944A83 
+X-CRM114-Status: GOOD (  14.65  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,342 +173,48 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-HI Antoine
+Hi all,
 
-On Thu, Nov 13, 2025 at 09:19:10AM +0100, Antoine Bouyer wrote:
->
-> Hi Jacopo
->
-> On 10/20/25 10:24 AM, Jacopo Mondi wrote:
-> >
-> > Add to the V4L2 framework helper functions to support drivers when
-> > validating a buffer of V4L2 ISP parameters.
-> >
-> > Driver shall use v4l2_isp_params_validate_buffer_size() to verify the
-> > size correctness of the data received from userspace, and after having
-> > copied the data to a kernel-only memory location, complete the
-> > validation by calling v4l2_isp_params_validate_buffer().
-> >
-> > Reviewed-by: Daniel Scally <dan.scally@ideasonboard.com>
-> > Reviewed-by: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>
-> > Reviewed-by: Michael Riesch <michael.riesch@collabora.com>
-> > Acked-by: Sakari Ailus <sakari.ailus@linux.intel.com>
-> > Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-> > ---
-> >   MAINTAINERS                        |   2 +
-> >   drivers/media/v4l2-core/Kconfig    |   4 ++
-> >   drivers/media/v4l2-core/Makefile   |   1 +
-> >   drivers/media/v4l2-core/v4l2-isp.c | 128 +++++++++++++++++++++++++++++++++++++
-> >   include/media/v4l2-isp.h           |  91 ++++++++++++++++++++++++++
-> >   5 files changed, 226 insertions(+)
-> >
-> > diff --git a/MAINTAINERS b/MAINTAINERS
-> > index f52237d57710cadff78b297d2b4610b508f55092..5833f82caa7f2f734bb0e1be144ade2109b23988 100644
-> > --- a/MAINTAINERS
-> > +++ b/MAINTAINERS
-> > @@ -26857,6 +26857,8 @@ M:      Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-> >   L:     linux-media@vger.kernel.org
-> >   S:     Maintained
-> >   F:     Documentation/userspace-api/media/v4l/v4l2-isp.rst
-> > +F:     drivers/media/v4l2-core/v4l2-isp.c
-> > +F:     include/media/v4l2-isp.h
-> >   F:     include/uapi/linux/media/v4l2-isp.h
-> >
-> >   VF610 NAND DRIVER
-> > diff --git a/drivers/media/v4l2-core/Kconfig b/drivers/media/v4l2-core/Kconfig
-> > index 331b8e535e5bbf33f22638b2ae8bc764ad5fc407..d50ccac9733cc39a43426ae7e7996dd0b5b45186 100644
-> > --- a/drivers/media/v4l2-core/Kconfig
-> > +++ b/drivers/media/v4l2-core/Kconfig
-> > @@ -82,3 +82,7 @@ config V4L2_CCI_I2C
-> >          depends on I2C
-> >          select REGMAP_I2C
-> >          select V4L2_CCI
-> > +
-> > +config V4L2_ISP
-> > +       tristate
->
-> When configured as module, there's build error:
->
-> ERROR: modpost: missing MODULE_LICENSE() in
-> drivers/media/v4l2-core/v4l2-isp.o
-> WARNING: modpost: missing MODULE_DESCRIPTION() in
-> drivers/media/v4l2-core/v4l2-isp.o
->
-> It happens when selected from an ISP driver, and ISP driver is a module.
-> Then module is applied to v4l2-isp too.
+On 11/12/25 4:01 PM, Quentin Schulz wrote:
+> From: Quentin Schulz <quentin.schulz@cherry.de>
+> 
+> We've had reports from the field that some RK3588 Tiger have random
+> issues with eMMC errors.
+> 
+> Applying commit a28352cf2d2f ("mmc: sdhci-of-dwcmshc: Change
+> DLL_STRBIN_TAPNUM_DEFAULT to 0x4") didn't help and seemed to have made
+> things worse for our board.
+> 
+> Our HW department checked the eMMC lines and reported that they are too
+> long and don't look great so signal integrity is probably not the best.
+> 
+> Note that not all Tigers with the same eMMC chip have errors, so the
+> suspicion is that we're really on the edge in terms of signal integrity
+> and only a handful devices are failing. Additionally, we have RK3588
+> Jaguars with the same eMMC chip but the layout is different and we also
+> haven't received reports about those so far.
+> 
+> Lowering the max-frequency to 150MHz from 200MHz instead of simply
+> disabling HS400 was briefly tested and seem to work as well. We've
+> disabled HS400 downstream and haven't received reports since so we'll go
+> with that instead of lowering the max-frequency.
+> 
+> Signed-off-by: Quentin Schulz <quentin.schulz@cherry.de>
 
-Thanks for reporting it! I was about to send a pull request -.-'
+Went too fast and forgot:
 
-I can reproduce locally
+Fixes: 6173ef24b35b ("arm64: dts: rockchip: add RK3588-Q7 (Tiger) SoM")
+Cc: stable@vger.kernel.org
 
-ERROR: modpost: missing MODULE_LICENSE() in drivers/media/v4l2-core/v4l2-isp.o
-WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/media/v4l2-core/v4l2-isp.o
-make[3]: *** [../scripts/Makefile.modpost:147: Module.symvers] Error 1
+Will give a few days for reviews and then send a v2 next week.
 
-And I've fixed it by adding:
-
-MODULE_LICENSE("GPL");
-MODULE_AUTHOR("Jacopo Mondi <jacopo.mondi@ideasonboard.com");
-MODULE_DESCRIPTION("V4L2 generic ISP parameters and statistics helpers");
-
-Thank you!
-
-
->
-> > +       depends on VIDEOBUF2_CORE
-> > diff --git a/drivers/media/v4l2-core/Makefile b/drivers/media/v4l2-core/Makefile
-> > index 2177b9d63a8ffc1127c5a70118249a2ff63cd759..329f0eadce994cc1c8580beb435f68fa7e2a7aeb 100644
-> > --- a/drivers/media/v4l2-core/Makefile
-> > +++ b/drivers/media/v4l2-core/Makefile
-> > @@ -29,6 +29,7 @@ obj-$(CONFIG_V4L2_CCI) += v4l2-cci.o
-> >   obj-$(CONFIG_V4L2_FLASH_LED_CLASS) += v4l2-flash-led-class.o
-> >   obj-$(CONFIG_V4L2_FWNODE) += v4l2-fwnode.o
-> >   obj-$(CONFIG_V4L2_H264) += v4l2-h264.o
-> > +obj-$(CONFIG_V4L2_ISP) += v4l2-isp.o
-> >   obj-$(CONFIG_V4L2_JPEG_HELPER) += v4l2-jpeg.o
-> >   obj-$(CONFIG_V4L2_MEM2MEM_DEV) += v4l2-mem2mem.o
-> >   obj-$(CONFIG_V4L2_VP9) += v4l2-vp9.o
-> > diff --git a/drivers/media/v4l2-core/v4l2-isp.c b/drivers/media/v4l2-core/v4l2-isp.c
-> > new file mode 100644
-> > index 0000000000000000000000000000000000000000..35f0b701f1729c3c0ccc34b1c89189b179e0b684
-> > --- /dev/null
-> > +++ b/drivers/media/v4l2-core/v4l2-isp.c
-> > @@ -0,0 +1,128 @@
-> > +// SPDX-License-Identifier: GPL-2.0-or-later
-> > +/*
-> > + * Video4Linux2 generic ISP parameters and statistics support
-> > + *
-> > + * Copyright (C) 2025 Ideas On Board Oy
-> > + * Author: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-> > + */
-> > +
-> > +#include <media/v4l2-isp.h>
-> > +
-> > +#include <linux/bitops.h>
-> > +#include <linux/device.h>
-> > +
-> > +#include <media/videobuf2-core.h>
-> > +
-> > +int v4l2_isp_params_validate_buffer_size(struct device *dev,
-> > +                                        struct vb2_buffer *vb,
-> > +                                        size_t max_size)
-> > +{
-> > +       size_t header_size = offsetof(struct v4l2_isp_params_buffer, data);
-> > +       size_t payload_size = vb2_get_plane_payload(vb, 0);
-> > +
-> > +       /* Payload size can't be greater than the destination buffer size */
-> > +       if (payload_size > max_size) {
-> > +               dev_dbg(dev, "Payload size is too large: %zu\n", payload_size);
-> > +               return -EINVAL;
-> > +       }
-> > +
-> > +       /* Payload size can't be smaller than the header size */
-> > +       if (payload_size < header_size) {
-> > +               dev_dbg(dev, "Payload size is too small: %zu\n", payload_size);
-> > +               return -EINVAL;
-> > +       }
-> > +
-> > +       return 0;
-> > +}
-> > +EXPORT_SYMBOL_GPL(v4l2_isp_params_validate_buffer_size);
-> > +
-> > +int v4l2_isp_params_validate_buffer(struct device *dev, struct vb2_buffer *vb,
-> > +                                   const struct v4l2_isp_params_buffer *buffer,
-> > +                                   const struct v4l2_isp_params_block_info *info,
-> > +                                   size_t num_blocks)
-> > +{
-> > +       size_t header_size = offsetof(struct v4l2_isp_params_buffer, data);
-> > +       size_t payload_size = vb2_get_plane_payload(vb, 0);
-> > +       size_t block_offset = 0;
-> > +       size_t buffer_size;
-> > +
-> > +       /*
-> > +        * Currently only the first version of the V4L2 ISP parameters format is
-> > +        * supported. We accept both V0 and V1 to support existing drivers
-> > +        * compatible with V4L2 ISP that use either 0 or 1 as their "first
-> > +        * version" identifiers.
-> > +        */
-> > +       if (buffer->version != V4L2_ISP_PARAMS_VERSION_V0 &&
-> > +           buffer->version != V4L2_ISP_PARAMS_VERSION_V1) {
-> > +               dev_dbg(dev,
-> > +                       "Unsupported V4L2 ISP parameters format version: %u\n",
-> > +                       buffer->version);
-> > +               return -EINVAL;
-> > +       }
-> > +
-> > +       /* Validate the size reported in the header */
-> > +       buffer_size = header_size + buffer->data_size;
-> > +       if (buffer_size != payload_size) {
-> > +               dev_dbg(dev, "Data size %zu and payload size %zu are different\n",
-> > +                       buffer_size, payload_size);
-> > +               return -EINVAL;
-> > +       }
-> > +
-> > +       /* Walk the list of ISP configuration blocks and validate them. */
-> > +       buffer_size = buffer->data_size;
-> > +       while (buffer_size >= sizeof(struct v4l2_isp_params_block_header)) {
-> > +               const struct v4l2_isp_params_block_info *block_info;
-> > +               const struct v4l2_isp_params_block_header *block;
-> > +
-> > +               block = (const struct v4l2_isp_params_block_header *)
-> > +                       (buffer->data + block_offset);
-> > +
-> > +               if (block->type >= num_blocks) {
-> > +                       dev_dbg(dev,
-> > +                               "Invalid block type %u at offset %zu\n",
-> > +                               block->type, block_offset);
-> > +                       return -EINVAL;
-> > +               }
-> > +
-> > +               if (block->size > buffer_size) {
-> > +                       dev_dbg(dev, "Premature end of parameters data\n");
-> > +                       return -EINVAL;
-> > +               }
-> > +
-> > +               /* It's invalid to specify both ENABLE and DISABLE. */
-> > +               if ((block->flags & (V4L2_ISP_PARAMS_FL_BLOCK_ENABLE |
-> > +                                    V4L2_ISP_PARAMS_FL_BLOCK_DISABLE)) ==
-> > +                    (V4L2_ISP_PARAMS_FL_BLOCK_ENABLE |
-> > +                    V4L2_ISP_PARAMS_FL_BLOCK_DISABLE)) {
-> > +                       dev_dbg(dev, "Invalid block flags %x at offset %zu\n",
-> > +                               block->flags, block_offset);
-> > +                       return -EINVAL;
-> > +               }
-> > +
-> > +               /*
-> > +                * Match the block reported size against the info provided
-> > +                * one, but allow the block to only contain the header in
-> > +                * case it is going to be disabled.
-> > +                */
-> > +               block_info = &info[block->type];
-> > +               if (block->size != block_info->size &&
-> > +                   (!(block->flags & V4L2_ISP_PARAMS_FL_BLOCK_DISABLE) ||
-> > +                   block->size != sizeof(*block))) {
-> > +                       dev_dbg(dev,
-> > +                               "Invalid block size %u (expected %zu) at offset %zu\n",
-> > +                               block->size, block_info->size, block_offset);
-> > +                       return -EINVAL;
-> > +               }
-> > +
-> > +               block_offset += block->size;
-> > +               buffer_size -= block->size;
-> > +       }
-> > +
-> > +       if (buffer_size) {
-> > +               dev_dbg(dev, "Unexpected data after the parameters buffer end\n");
-> > +               return -EINVAL;
-> > +       }
-> > +
-> > +       return 0;
-> > +}
-> > +EXPORT_SYMBOL_GPL(v4l2_isp_params_validate_buffer);
-> > diff --git a/include/media/v4l2-isp.h b/include/media/v4l2-isp.h
-> > new file mode 100644
-> > index 0000000000000000000000000000000000000000..8b4695663699e7f176384739cf54ed7fa2c578f8
-> > --- /dev/null
-> > +++ b/include/media/v4l2-isp.h
-> > @@ -0,0 +1,91 @@
-> > +/* SPDX-License-Identifier: GPL-2.0-or-later */
-> > +/*
-> > + * Video4Linux2 generic ISP parameters and statistics support
-> > + *
-> > + * Copyright (C) 2025 Ideas On Board Oy
-> > + * Author: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-> > + */
-> > +
-> > +#ifndef _V4L2_ISP_H_
-> > +#define _V4L2_ISP_H_
-> > +
-> > +#include <linux/media/v4l2-isp.h>
-> > +
-> > +struct device;
-> > +struct vb2_buffer;
-> > +
-> > +/**
-> > + * v4l2_isp_params_buffer_size - Calculate size of v4l2_isp_params_buffer
-> > + * @max_params_size: The total size of the ISP configuration blocks
-> > + *
-> > + * Users of the v4l2 extensible parameters will have differing sized data arrays
-> > + * depending on their specific parameter buffers. Drivers and userspace will
-> > + * need to be able to calculate the appropriate size of the struct to
-> > + * accommodate all ISP configuration blocks provided by the platform.
-> > + * This macro provides a convenient tool for the calculation.
-> > + */
-> > +#define v4l2_isp_params_buffer_size(max_params_size) \
-> > +       (offsetof(struct v4l2_isp_params_buffer, data) + (max_params_size))
-> > +
-> > +/**
-> > + * v4l2_isp_params_validate_buffer_size - Validate a V4L2 ISP buffer sizes
-> > + * @dev: the driver's device pointer
-> > + * @vb: the videobuf2 buffer
-> > + * @max_size: the maximum allowed buffer size
-> > + *
-> > + * This function performs validation of the size of a V4L2 ISP parameters buffer
-> > + * before the driver can access the actual data buffer content.
-> > + *
-> > + * After the sizes validation, drivers should copy the buffer content to a
-> > + * kernel-only memory area to prevent userspace from modifying it,
-> > + * before completing validation using v4l2_isp_params_validate_buffer().
-> > + *
-> > + * The @vb buffer as received from the vb2 .buf_prepare() operation is checked
-> > + * against @max_size and it's validated to be large enough to accommodate at
-> > + * least one ISP configuration block.
-> > + */
-> > +int v4l2_isp_params_validate_buffer_size(struct device *dev,
-> > +                                        struct vb2_buffer *vb,
-> > +                                        size_t max_size);
-> > +
-> > +/**
-> > + * struct v4l2_isp_params_block_info - V4L2 ISP per-block info
-> > + * @size: the block expected size
-> > + *
-> > + * The v4l2_isp_params_block_info collects information of the ISP configuration
-> > + * blocks for validation purposes. It currently only contains the expected
-> > + * block size.
-> > + *
-> > + * Drivers shall prepare a list of block info, indexed by block type, one for
-> > + * each supported ISP block and correctly populate them with the expected block
-> > + * size.
-> > + */
-> > +struct v4l2_isp_params_block_info {
-> > +       size_t size;
-> > +};
-> > +
-> > +/**
-> > + * v4l2_isp_params_validate_buffer - Validate a V4L2 ISP parameters buffer
-> > + * @dev: the driver's device pointer
-> > + * @vb: the videobuf2 buffer
-> > + * @buffer: the V4L2 ISP parameters buffer
-> > + * @info: the list of per-block validation info
-> > + * @num_blocks: the number of blocks
-> > + *
-> > + * This function completes the validation of a V4L2 ISP parameters buffer,
-> > + * verifying each configuration block correctness before the driver can use
-> > + * them to program the hardware.
-> > + *
-> > + * Drivers should use this function after having validated the correctness of
-> > + * the vb2 buffer sizes by using the v4l2_isp_params_validate_buffer_size()
-> > + * helper first. Once the buffer size has been validated, drivers should
-> > + * perform a copy of the user provided buffer into a kernel-only memory buffer
-> > + * to prevent userspace from modifying its content after it has been submitted
-> > + * to the driver, and then call this function to complete validation.
-> > + */
-> > +int v4l2_isp_params_validate_buffer(struct device *dev, struct vb2_buffer *vb,
-> > +                                   const struct v4l2_isp_params_buffer *buffer,
-> > +                                   const struct v4l2_isp_params_block_info *info,
-> > +                                   size_t num_blocks);
-> > +
-> > +#endif /* _V4L2_ISP_H_ */
-> >
-> > --
-> > 2.51.0
-> >
->
+Cheers,
+Quentin
 
 _______________________________________________
 Linux-rockchip mailing list
