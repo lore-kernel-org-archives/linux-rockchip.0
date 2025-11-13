@@ -4,55 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F771CD4F2F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Nov 2025 05:18:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B97FFCCFA18
+	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Nov 2025 07:54:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=5FG3X9Ja2HXhhpfY2ZeNb8teudlypoKVGCplClEZ2Mg=; b=eyWmDR8vbjSeFX
-	3KoL2a1laFBXFin9h3JHHRQSDCmDk7ummZXgvfUUtjZA71FeRVFmjHh9UAzrAS7AqPoT6DynjyJdz
-	rrjKThY6L+gioz4UyLU5iMvlhG+wn5kdOLVMhqwCJrsk3FWDl6utN0BL7v4TLAv3xdNbVpMgJiBlX
-	rIpyTruGluLHcObkfrK8IaC8/Ved3KGdWipa5XsgIXwrPjiQBxlsJa92D0w/fABRcC0Wl24lO7RSV
-	J2RGJsX+jR0/wtvWVR+hn7cwNFO7mQ/Q31vsMAXxZQEUPc8xncRH1X/q1iF6iIXr+/pgHxrpedVNR
-	BlutrAzMs+5aKFqFb73w==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=BkprPu6Sqwz4kCUqqvBU4BHv91+K00dkah2xrlfQySM=; b=0TqcuVH9sIpKBN
+	Zyqi0S9nLRihy6UuhZ3fz8ppmih9AvivcjjU4HFu+A8ZZcdkWZKm2NJdSTTvWFaUQSG2JjorJYi8A
+	F7COs+5K8Aqsjn8rXbSxtW/+QiyolzjVenNKcrCPRrWl1lhEIAK7Ap9j554Tey8cQX4Qd4p9LLzPH
+	4eyeAQJ/KgUXfHDNAQnxXYszWCvEFPwE3NnHvPAjmWGRTOUy3mwey/OnWcSWQ7HUId3p6JmCFB3Kl
+	9zA0WdtsKTOKAdChY85lk+YpmMYuy2MJJsU7QRi0bx4sU2y5M9kQt5XQqVHBhUA7v1wwxbTYOVjED
+	VyEtyS1hAjGR3iLsEiKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJPj1-00000009udI-2Y4m;
-	Thu, 13 Nov 2025 05:18:28 +0000
-Received: from mail-m49194.qiye.163.com ([45.254.49.194])
+	id 1vJSA3-0000000A1l0-3ImS;
+	Thu, 13 Nov 2025 07:54:31 +0000
+Received: from mail-m3289.qiye.163.com ([220.197.32.89])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJPiy-00000009ucu-0bNq
-	for linux-rockchip@lists.infradead.org;
-	Thu, 13 Nov 2025 05:18:26 +0000
-Received: from localhost.localdomain (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 296cb3bd9;
-	Thu, 13 Nov 2025 13:18:19 +0800 (GMT+08:00)
-From: Shawn Lin <shawn.lin@rock-chips.com>
-To: "James E . J . Bottomley" <James.Bottomley@HansenPartnership.com>,
-	"Martin K . Petersen" <martin.petersen@oracle.com>
-Cc: linux-scsi@vger.kernel.org,
+	id 1vJSA1-0000000A1j6-0IVD;
+	Thu, 13 Nov 2025 07:54:30 +0000
+Received: from rockchip.. (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 29728c005;
+	Thu, 13 Nov 2025 15:54:22 +0800 (GMT+08:00)
+From: Elaine Zhang <zhangqing@rock-chips.com>
+To: zhangqing@rock-chips.com,
+	mkl@pengutronix.de,
+	kernel@pengutronix.de,
+	mailhol.vincent@wanadoo.fr,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	heiko@sntech.de,
+	cl@rock-chips.com
+Cc: linux-can@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH] scsi: ufs: rockchip: Fix compile error without CONFIG_GPIOLIB
-Date: Thu, 13 Nov 2025 13:18:11 +0800
-Message-Id: <1763011091-243727-1-git-send-email-shawn.lin@rock-chips.com>
-X-Mailer: git-send-email 2.7.4
-X-HM-Tid: 0a9a7ba67a5e09cckunmbf7a407227c465
+	linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org
+Subject: [PATCH v9 1/3] dt-bindings: can: rockchip_canfd: add rk3576 CAN controller
+Date: Thu, 13 Nov 2025 15:54:17 +0800
+Message-Id: <20251113075419.482940-2-zhangqing@rock-chips.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20251113075419.482940-1-zhangqing@rock-chips.com>
+References: <20251113075419.482940-1-zhangqing@rock-chips.com>
+MIME-Version: 1.0
+X-HM-Tid: 0a9a7c355b8803a3kunm5789752bf03ab
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQkoaSFYYSRoZT05KT04eS0tWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpOTE
-	5VSktLVUpCS0tZBg++
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQ01KGVZLSUwZQxpJTU0aTE1WFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
 DKIM-Signature: a=rsa-sha256;
-	b=cGynuQmeo5r/pOMUg0L1MqV/sw2qlW5PE0tGU9SxRwTM9WSrlzA5dmoxKAJAoALSL44uZXFd/d+75xrpPaqIx1QEa8NLkiG6sRgs1IJ8t5bKuvLMeMCJiT6JRX6TlPvvnVT88CpgyM6bAz0jehhAUxDCWxYVTM9JFjTE4jKyC9s=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=EuHff+UzGclYinLMWG1EV1RQo36xlHX9LHPO+bIQJ+o=;
+	b=B1NZ1c94EwmBVPVRgqWDLvvlMCk6XKfixqX3LRH6ZycAUsxh/er7t9RtavM/kwYWkT4+hQs/kO6Neol+HmmhWUojCJ4/n5LL0VgddJQw0VEJvT1p3o6e37VDrWb+DDnqLjdyf0J5aTgC8QRfCvVlXAGXP6iowTN+mVarNMc6URA=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=/36RmqJt6eoRAK3D90At1Gpdeix6tGcnS2SxkFLWJps=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251112_211824_831497_AFCE793D 
-X-CRM114-Status: UNSURE (   6.97  )
+X-CRM114-CacheID: sfid-20251112_235429_283625_BFAB4539 
+X-CRM114-Status: UNSURE (   6.94  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -65,41 +76,35 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-drivers/ufs/host/ufs-rockchip.c:168:19: error: implicit declaration of function
-'devm_gpiod_get'; did you mean 'em_pd_get'? [-Werror=implicit-function-declaration]
+Add documentation for the rockchip rk3576 CAN controller.
 
-drivers/ufs/host/ufs-rockchip.c:214:2: error: implicit declaration of function
-'gpiod_set_value_cansleep'; did you mean 'gpio_set_value_cansleep'?
-[-Werror=implicit-function-declaration]
-
-Reported-by: kernel test robot <lkp@intel.com>
-Closes: https://lore.kernel.org/oe-kbuild-all/202511130238.LlA0MKxW-lkp@intel.com/
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
 ---
+ .../devicetree/bindings/net/can/rockchip,rk3568v2-canfd.yaml  | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
- drivers/ufs/host/ufs-rockchip.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/drivers/ufs/host/ufs-rockchip.c b/drivers/ufs/host/ufs-rockchip.c
-index 8cecb28..7fff345 100644
---- a/drivers/ufs/host/ufs-rockchip.c
-+++ b/drivers/ufs/host/ufs-rockchip.c
-@@ -7,6 +7,7 @@
- 
- #include <linux/clk.h>
- #include <linux/gpio.h>
-+#include <linux/gpio/consumer.h>
- #include <linux/mfd/syscon.h>
- #include <linux/of.h>
- #include <linux/platform_device.h>
+diff --git a/Documentation/devicetree/bindings/net/can/rockchip,rk3568v2-canfd.yaml b/Documentation/devicetree/bindings/net/can/rockchip,rk3568v2-canfd.yaml
+index a077c0330013..d63c8c8e3f45 100644
+--- a/Documentation/devicetree/bindings/net/can/rockchip,rk3568v2-canfd.yaml
++++ b/Documentation/devicetree/bindings/net/can/rockchip,rk3568v2-canfd.yaml
+@@ -16,7 +16,9 @@ allOf:
+ properties:
+   compatible:
+     oneOf:
+-      - const: rockchip,rk3568v2-canfd
++      - enum:
++          - rockchip,rk3568v2-canfd
++          - rockchip,rk3576-can
+       - items:
+           - const: rockchip,rk3568v3-canfd
+           - const: rockchip,rk3568v2-canfd
 -- 
-2.7.4
+2.34.1
 
 
 _______________________________________________
