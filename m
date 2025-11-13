@@ -4,55 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F113FCCFA18
-	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Nov 2025 04:58:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F771CD4F2F
+	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Nov 2025 05:18:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
 	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=XQWgv5l+jKQtqwJQZUAEn7AmoIs0UkxRjvZHhczwCIk=; b=r6VIJJ05H6QFNc
-	S3jidyo1swxL4r72IqP8Ja0PPuFIrOEcyJNSAojDApakbF/HMCfIYstUYoCaFSpbrb9cydRkFvFcX
-	2+HzwNbyweN4cfz5KCssEUOmCmQgjDrnNdzrVg3SszW3baxzuA1qOmVEV/7ahbnL7fVDr98cxf2qr
-	lA7t1o9JNAPfuIVUeByKlH8Rpc34qx+7u4AUJ2KikH/mRlkYFScSqC1L0ohweTV6eE2Ded7JObYyB
-	PCze//qKhM3MyOechZpTTQJo+ffeiEL8BJEDaLHxVjOfvLWPFj6t2dTsw14P12r0u40jnpoMAIzBm
-	TTyIPARHND9owzf2XPzA==;
+	List-Owner; bh=5FG3X9Ja2HXhhpfY2ZeNb8teudlypoKVGCplClEZ2Mg=; b=eyWmDR8vbjSeFX
+	3KoL2a1laFBXFin9h3JHHRQSDCmDk7ummZXgvfUUtjZA71FeRVFmjHh9UAzrAS7AqPoT6DynjyJdz
+	rrjKThY6L+gioz4UyLU5iMvlhG+wn5kdOLVMhqwCJrsk3FWDl6utN0BL7v4TLAv3xdNbVpMgJiBlX
+	rIpyTruGluLHcObkfrK8IaC8/Ved3KGdWipa5XsgIXwrPjiQBxlsJa92D0w/fABRcC0Wl24lO7RSV
+	J2RGJsX+jR0/wtvWVR+hn7cwNFO7mQ/Q31vsMAXxZQEUPc8xncRH1X/q1iF6iIXr+/pgHxrpedVNR
+	BlutrAzMs+5aKFqFb73w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJPPp-00000009twe-4Bgu;
-	Thu, 13 Nov 2025 04:58:38 +0000
-Received: from mail-m49221.qiye.163.com ([45.254.49.221])
+	id 1vJPj1-00000009udI-2Y4m;
+	Thu, 13 Nov 2025 05:18:28 +0000
+Received: from mail-m49194.qiye.163.com ([45.254.49.194])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJPPn-00000009tvo-0abZ
+	id 1vJPiy-00000009ucu-0bNq
 	for linux-rockchip@lists.infradead.org;
-	Thu, 13 Nov 2025 04:58:36 +0000
+	Thu, 13 Nov 2025 05:18:26 +0000
 Received: from localhost.localdomain (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 296bfa5cc;
-	Thu, 13 Nov 2025 12:53:27 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 296cb3bd9;
+	Thu, 13 Nov 2025 13:18:19 +0800 (GMT+08:00)
 From: Shawn Lin <shawn.lin@rock-chips.com>
 To: "James E . J . Bottomley" <James.Bottomley@HansenPartnership.com>,
 	"Martin K . Petersen" <martin.petersen@oracle.com>
 Cc: linux-scsi@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH] scsi: ufs: rockchip: Reset controller on PRE_CHANGE of hce enable notify
-Date: Thu, 13 Nov 2025 12:52:55 +0800
-Message-Id: <1763009575-237552-1-git-send-email-shawn.lin@rock-chips.com>
+Subject: [PATCH] scsi: ufs: rockchip: Fix compile error without CONFIG_GPIOLIB
+Date: Thu, 13 Nov 2025 13:18:11 +0800
+Message-Id: <1763011091-243727-1-git-send-email-shawn.lin@rock-chips.com>
 X-Mailer: git-send-email 2.7.4
-X-HM-Tid: 0a9a7b8fb58909cckunm46d766c72755ee
+X-HM-Tid: 0a9a7ba67a5e09cckunmbf7a407227c465
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGk8aS1YeTUpCHkpKGkkeSx5WFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQkoaSFYYSRoZT05KT04eS0tWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpOTE
+	5VSktLVUpCS0tZBg++
 DKIM-Signature: a=rsa-sha256;
-	b=J1XlFhEX2yFS7sC4gOYGGqYmfMuOVG92NPKwbE2CtnW49oKs/9NpZqWwiaqFcQLnE1dQHL5SrolvCFGrmcu2yxG1wxSue83TWZb5xFy53H/VoARY2o/c4w9OTh3Q9r4QpGhyiGvklHWBHk5qkp5vlFfL7NcM/5C3/As/zZCmc8U=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=N8ROXJH/S65qux5vKaPYPdwXagamfVXkgVOLDFKArRw=;
+	b=cGynuQmeo5r/pOMUg0L1MqV/sw2qlW5PE0tGU9SxRwTM9WSrlzA5dmoxKAJAoALSL44uZXFd/d+75xrpPaqIx1QEa8NLkiG6sRgs1IJ8t5bKuvLMeMCJiT6JRX6TlPvvnVT88CpgyM6bAz0jehhAUxDCWxYVTM9JFjTE4jKyC9s=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=EuHff+UzGclYinLMWG1EV1RQo36xlHX9LHPO+bIQJ+o=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251112_205835_607834_220C7D2A 
-X-CRM114-Status: GOOD (  10.55  )
+X-CRM114-CacheID: sfid-20251112_211824_831497_AFCE793D 
+X-CRM114-Status: UNSURE (   6.97  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,78 +71,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This fixes the dme-reset failed when doing recoverying, because device
-reset is not enough, we could occasionally see the error below:
+drivers/ufs/host/ufs-rockchip.c:168:19: error: implicit declaration of function
+'devm_gpiod_get'; did you mean 'em_pd_get'? [-Werror=implicit-function-declaration]
 
-ufshcd-rockchip 2a2d0000.ufs: uic cmd 0x14 with arg3 0x0 completion timeout
-ufshcd-rockchip 2a2d0000.ufs: dme-reset: error code -110
-ufshcd-rockchip 2a2d0000.ufs: DME_RESET failed
-ufshcd-rockchip 2a2d0000.ufs: ufshcd_host_reset_and_restore: Host init failed -110
+drivers/ufs/host/ufs-rockchip.c:214:2: error: implicit declaration of function
+'gpiod_set_value_cansleep'; did you mean 'gpio_set_value_cansleep'?
+[-Werror=implicit-function-declaration]
 
-Fix this by resetting the controller on PRE_CHANGE stage of hce enable
-notify.
-
-Fixes: d3cbe455d6eb ("scsi: ufs: rockchip: Initial support for UFS")
+Reported-by: kernel test robot <lkp@intel.com>
+Closes: https://lore.kernel.org/oe-kbuild-all/202511130238.LlA0MKxW-lkp@intel.com/
 Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 ---
 
- drivers/ufs/host/ufs-rockchip.c | 19 +++++++++++++------
- 1 file changed, 13 insertions(+), 6 deletions(-)
+ drivers/ufs/host/ufs-rockchip.c | 1 +
+ 1 file changed, 1 insertion(+)
 
 diff --git a/drivers/ufs/host/ufs-rockchip.c b/drivers/ufs/host/ufs-rockchip.c
-index 8754085..8cecb28 100644
+index 8cecb28..7fff345 100644
 --- a/drivers/ufs/host/ufs-rockchip.c
 +++ b/drivers/ufs/host/ufs-rockchip.c
-@@ -20,9 +20,17 @@
- #include "ufshcd-pltfrm.h"
- #include "ufs-rockchip.h"
+@@ -7,6 +7,7 @@
  
-+static void ufs_rockchip_controller_reset(struct ufs_rockchip_host *host)
-+{
-+	reset_control_assert(host->rst);
-+	udelay(1);
-+	reset_control_deassert(host->rst);
-+}
-+
- static int ufs_rockchip_hce_enable_notify(struct ufs_hba *hba,
- 					 enum ufs_notify_change_status status)
- {
-+	struct ufs_rockchip_host *host = ufshcd_get_variant(hba);
- 	int err = 0;
- 
- 	if (status == POST_CHANGE) {
-@@ -37,6 +45,9 @@ static int ufs_rockchip_hce_enable_notify(struct ufs_hba *hba,
- 		return ufshcd_vops_phy_initialization(hba);
- 	}
- 
-+	/* PRE_CHANGE */
-+	ufs_rockchip_controller_reset(host);
-+
- 	return 0;
- }
- 
-@@ -156,9 +167,7 @@ static int ufs_rockchip_common_init(struct ufs_hba *hba)
- 		return dev_err_probe(dev, PTR_ERR(host->rst),
- 				"failed to get reset control\n");
- 
--	reset_control_assert(host->rst);
--	udelay(1);
--	reset_control_deassert(host->rst);
-+	ufs_rockchip_controller_reset(host);
- 
- 	host->ref_out_clk = devm_clk_get_enabled(dev, "ref_out");
- 	if (IS_ERR(host->ref_out_clk))
-@@ -282,9 +291,7 @@ static int ufs_rockchip_runtime_resume(struct device *dev)
- 		return err;
- 	}
- 
--	reset_control_assert(host->rst);
--	udelay(1);
--	reset_control_deassert(host->rst);
-+	ufs_rockchip_controller_reset(host);
- 
- 	return ufshcd_runtime_resume(dev);
- }
+ #include <linux/clk.h>
+ #include <linux/gpio.h>
++#include <linux/gpio/consumer.h>
+ #include <linux/mfd/syscon.h>
+ #include <linux/of.h>
+ #include <linux/platform_device.h>
 -- 
 2.7.4
 
