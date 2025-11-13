@@ -4,71 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E18BCCD98CC
-	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Nov 2025 19:32:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E7E2CD98D3
+	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Nov 2025 19:32:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qQgFH5K9BNv1szZ8L5SLvmWeDbTLCnapmUsJ56hI8II=; b=ROagGtqeHWELSk
-	1eLTZj/cU2+p0yQzrH7VBHSLBu8GygUkpPI7ilPFTVELUAdFt7zv1BQ5DdE3DpY0fB329IWEb50lU
-	NC4npQ06iDTbQixRmL4I2UWdPVdbQli0lo6PCSeVBpWMCaMKhn6Dc/59kezfnJN0lGHnIf0C0U6zx
-	dAb8+J/CTrfEhY90LpRDG2zOIgclonKhiBp6BNZ3Dd4ON6ULcwcfXQctyirrM2sxNzizrCDHvHzEJ
-	XNMfN5K28MLLdUlX44qvQcrG3M5HmqCvynxcobpH7FrsIhe1hS4XEnIz75tiOnJIjpx+rsqz779Xn
-	2z+UEpOmdirDJldXd19g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=guQUKiQmmTpx8VH4Q7s1goxc0th3ETCyJuEsJu80Ra8=; b=2qxxpzw9UdqQ5X
+	akhmmU2rkx1lzYWT4Sb5ulNmpMX5ZVTV9cgDmEl7XV/OHaN3WH+f8/x2x80rbOoJH5tPjDpkA5uiJ
+	L/9rsvTY+xvEdmfaANMB8EHYw8dHsUqOqGXIvVm59+tfhn8mC9adjCniTmRhBtSvyWrLnWlTr0d2K
+	wOV1RiJdFRB3c9DQULjbDZWc5zT39CKk+Yg7r4yLqpoD3gaAQPff+08IiKIuLADH6MQY9KoVVOeH1
+	YlIn/j/4wYW+aTcGKENdr0hZP1RALD45thFeQC/6W9hcOZRs+GrXOXIQWuZvS2A4k2x5Atkplnb91
+	OsXXCEDj9YYIIb/mP8Vw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJd3E-0000000B0Sd-2Ifo;
+	id 1vJd3E-0000000B0ST-1B4k;
 	Thu, 13 Nov 2025 19:32:12 +0000
-Received: from mail-ot1-x331.google.com ([2607:f8b0:4864:20::331])
+Received: from mail-ot1-x32d.google.com ([2607:f8b0:4864:20::32d])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJd3D-0000000B0R6-0BRS
+	id 1vJd3B-0000000B0QI-1uBk
 	for linux-rockchip@lists.infradead.org;
-	Thu, 13 Nov 2025 19:32:12 +0000
-Received: by mail-ot1-x331.google.com with SMTP id 46e09a7af769-7c6ddd07c5dso324896a34.2
-        for <linux-rockchip@lists.infradead.org>; Thu, 13 Nov 2025 11:32:10 -0800 (PST)
+	Thu, 13 Nov 2025 19:32:10 +0000
+Received: by mail-ot1-x32d.google.com with SMTP id 46e09a7af769-7c70eae77d7so335069a34.2
+        for <linux-rockchip@lists.infradead.org>; Thu, 13 Nov 2025 11:32:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1763062329; x=1763667129; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ojyXh9J+hBwCNMVLciyvICBaCTIpiiyWT0C0jl060F0=;
-        b=JuJPeG+Q4UExWqiG10d+FOlRj2I3dEPoQPL3iKh4ZMbiEq7ZFFZMDfrFIU3RS1BP/v
-         CiYJsteF9PE/iwz3y11lK6+iDoRggo7Qm5ZQJJ6K8RDOOsgbC+4orGtfm/Ks7nBLzPUd
-         zaIXHKE+/0suV68BVfPqefeu3IdaGJ3oYEmi1821gAShhrsSl4O4jPZinnG39I4u/3al
-         /HirbAgviulDIcbPKDxdibTIlxL6jy6dfFKqFPYqW7kiME03L3VVoCi/u26f1NZ8QsAS
-         L6HBrWJtl+Bfz37wGIcLuXL4brZc75j80K9frD6OmE7OLfSQPh7eUAmllftbmZAhGdRD
-         GdKg==
+        d=gmail.com; s=20230601; t=1763062328; x=1763667128; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=Lw/U+z5I4kWuL5rL8h4E+nT2ml8zVb8Mlz2CECK2kyU=;
+        b=OHV03OBLf9AnDKlqRQhNb9V3+OIHNDrVGLAyvzVSomalSrCTuGf3H+5Epl3p6do1Zr
+         1WoKINkcy2edOl3yoyM8PMij809beuXBgIjf2n7cXdYTkswVIkGkhOOVtQkITkvtzTd5
+         wQE19CTaQ77j+6wdrsxjM9aHPNTmVg6auI6lI+nKnrjtts6DONXztpysMRHdrmEVGM4A
+         VpaKmiAhRrDlBFQI0HiF4F5FVpmIsbhv2lJVp1EGMdqAQ0xoO/vuTdZj3i5rc7cR1Hg9
+         PkQyRWCLk6nJYHAFezv3JopNKASjVF/K4W4HE2XOSoaVn64EYNEBQKE+EqS+KfAaeP9f
+         4apA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1763062329; x=1763667129;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=ojyXh9J+hBwCNMVLciyvICBaCTIpiiyWT0C0jl060F0=;
-        b=PembAD/avPewkflql8mMKZzAb2DPPyFvHBFMJGBCEAB/J3k4WOoovhGzBm4Elm/3Il
-         KZB0VncQEbeBAc4bAkwWdjmZcSr/wZtTqTzsYRq6UqQ7ZtH5mxNStBMiNIHJ+z+bGo3S
-         zQQu1LtvzkXciEepV4KA0bHDXL85ZwgkKkHvwWT/v0J/xSkirwG89Ma4NrL7o2I3rb5W
-         66ab7UHzmM4mhYru6kgxC+llSyrRchTwzkxxk9897VLC/2i2a8YQd4beWxrKhPjgG4Bd
-         exe33n3jMjZ8ABf9kJE+KvCVUUOs9v65LcsPo87ablnH3KGtY1ZlMRvvKASfbFuwK9P4
-         qXLg==
-X-Gm-Message-State: AOJu0YwaowOR6sy5RQ+C34KeQdsIASSNgGTECdMS0NGkD+Mow5dtjccb
-	hija1N2KbKNKOCIMPXaZ8n65+M0NMM62PncNe7D8MoOeil6bsOVGYcDU/B4Qmg==
-X-Gm-Gg: ASbGncuo4jtdWqZVDSYlepKa9D1x6UBbhSiJJMyJAn4lu5+WCNX7J4gNnIHEQFpCT90
-	z4FqoF1joADlnHvRKU9mf7Q6K5sJhjMxPxUxD9yzY/zjMPv/FmG0gUV8+i+PFKJ5xPzna1qxHVv
-	nR5SZGg2f9xVpeZxFk9YnGkZPefQhzEDJBOaYpzZsq+nJtUnxbAcsfRT5m9dogIMFtcwDCPgzbt
-	plnVWWCHgeQ21tBp2XQOxLU97ov/yx/32RlfRpROwb48LJibpxUICl82O1mqevFc0a8alb6acHa
-	hf8iGfUCgZ7KA2lP9IrYgelhN2tXlVkXUoY1KZT2jNrNuumCUPeQB4/MBnzjLZFXRAPvnw0Esnv
-	q3OzpciXHtVqD4JsorvBxCNPoI90F0q6+RUn0LU3HdPLlQhnWRIkAFhtD7k4hFPM3CWKvuAtM4n
-	M4h/GRnGiw
-X-Google-Smtp-Source: AGHT+IFxeDPnr+c8wuNGsY9u69U5OD00ERq1Zo4Tm+ccQl+K/E1e0bde7KqzTrSFky5MSRTost79jQ==
-X-Received: by 2002:a05:6830:348e:b0:745:9272:4a39 with SMTP id 46e09a7af769-7c7445506c0mr510040a34.25.1763062329639;
-        Thu, 13 Nov 2025 11:32:09 -0800 (PST)
+        d=1e100.net; s=20230601; t=1763062328; x=1763667128;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Lw/U+z5I4kWuL5rL8h4E+nT2ml8zVb8Mlz2CECK2kyU=;
+        b=fxqMoF7jXlc3RWPiEpjcc1Kh9PsgYn+9Ws/u2ChviK3sN5WxzkFfHbQrXZmPsJn4pw
+         9+W5y+/pycKh2v47pEN4yggL4iYDjLaD3D46jRInUCXhiyogI7Q5Q7IIPOZQOEnOI8GY
+         eeLRXwKSH+Gf3URYRqdTaE/ZZupQKcRBpnPPCFCOSDkFH7tyWyebvKgdAk0c4PBWLGIS
+         mQR59b/C2njev371+1JZY+dU7g7IW1+D0VnnRnDrYsV9VqFpzngTeJBb2aYIlJ+iNZv5
+         jSv9VLXYDp0dMrRR2jxh8YoADv/pJjzdEsF976WNTZWOl/1uV0BZvMiNYivdZhFg4eJr
+         pJWQ==
+X-Gm-Message-State: AOJu0Yyb4bH3xLlyfTrvZru63PirR6ch+neQ0NIV5aq6JyB6zKCXvBv9
+	50ZRhOEjKUvKC5eJ2Euu1SrRuZwILCJA3h9valo7R17Lwh/UBwalG13yGgUcZA==
+X-Gm-Gg: ASbGncsmcGGNcXrSafpbsiizKrheZ9SnJlFKXgI/UJGMYG1IqTEOVd0jMduhRuNfvea
+	8tdxy0F6k+uX+AIZT6A4ffW4bk9kah7SI5J2sgggyYXrM+f/UccCXfg+M6kzKjOMuUEUr29pxS9
+	Qj01mhTQ0fLyjjdh/qNP9Okfl8Oq90n29iMGNAkgyBZ+3t2T1CKXNqgdOGYpOsj617lYFDFba3t
+	8q4yMcH7bVGF0kgAZIrevqMK1qj5qID+5sWLOun5/MjEHuPxZQwdu5fdGzy4C4Ajzq1cvoKfZVz
+	4sIZG7EPEWnDKmVNuAhbaPd0f9xZuRYkw1fBLd2kwoWHSq8ndbxa5TTnkPyMpAsdC3i0nNBvxrM
+	yj9PsfVlrSUFWGo/LZHYhQr5ZNO6uyYSWi6tTse6sY3FByW/IZ7lLeCpgmYiNth4LzssVD5eoD5
+	4yEESh5vHk
+X-Google-Smtp-Source: AGHT+IFEgyX0ltKX3lDaJ+pACBb477rkzx0l2ZFB+JcPMhVtmDYkqFRhnbMiih50devZNHV+aa6GYw==
+X-Received: by 2002:a05:6830:25d6:b0:7aa:4e01:f57d with SMTP id 46e09a7af769-7c7444fe486mr424984a34.18.1763062327571;
+        Thu, 13 Nov 2025 11:32:07 -0800 (PST)
 Received: from localhost.localdomain ([2600:1700:fb0:1bc0::54])
-        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7c73a392fa5sm1693527a34.19.2025.11.13.11.32.07
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7c73a392fa5sm1693527a34.19.2025.11.13.11.32.06
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 13 Nov 2025 11:32:08 -0800 (PST)
+        Thu, 13 Nov 2025 11:32:06 -0800 (PST)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: linux-rockchip@lists.infradead.org
 Cc: mripard@kernel.org,
@@ -87,18 +86,16 @@ Cc: mripard@kernel.org,
 	andy.yan@rock-chips.com,
 	krzk+dt@kernel.org,
 	robh@kernel.org,
-	Laurent.pinchart@ideasonboard.com,
-	Conor Dooley <conor.dooley@microchip.com>
-Subject: [PATCH v2 1/3] dt-bindings: display: rockchip: Add no-hpd for dw-hdmi-qp controller
-Date: Thu, 13 Nov 2025 13:29:37 -0600
-Message-ID: <20251113192939.30031-2-macroalpha82@gmail.com>
+	Laurent.pinchart@ideasonboard.com
+Subject: [PATCH v2 0/3] Add HDMI for Gameforce Ace
+Date: Thu, 13 Nov 2025 13:29:36 -0600
+Message-ID: <20251113192939.30031-1-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20251113192939.30031-1-macroalpha82@gmail.com>
-References: <20251113192939.30031-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251113_113211_089063_C3E581C8 
-X-CRM114-Status: GOOD (  10.44  )
+X-CRM114-CacheID: sfid-20251113_113209_513869_99C7A3D8 
+X-CRM114-Status: UNSURE (   8.17  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,39 +114,24 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-Add an attribute of "no-hpd" for the Rockchip dw-hdmi-qp controller.
-This is used to describe implementations where the HPD pin is not
-connected or used for other purposes, such as in the RK3588S based
-Gameforce Ace which repurposed the GPIO for an additional face
-button.
+Add support for the micro HDMI port for the Gameforce Ace. This port does
+not have a HPD pin so it requires making changes to the HDMI controller
+to support this configuration.
 
-The "no-hpd" option was chosen to be consistent with other devices
-which already define this parameter for broken or missing hpd
-functionality.
+Changes since v1:
+ - Simplified checking of no-hpd parameter and changed to
+   device_property_read_bool() function.
 
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
-Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
----
- .../display/rockchip/rockchip,rk3588-dw-hdmi-qp.yaml        | 6 ++++++
- 1 file changed, 6 insertions(+)
+Chris Morgan (3):
+  dt-bindings: display: rockchip: Add no-hpd for dw-hdmi-qp controller
+  drm/bridge: dw-hdmi-qp: Add support for missing HPD
+  arm64: dts: rockchip: Add HDMI to Gameforce Ace
 
-diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3588-dw-hdmi-qp.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3588-dw-hdmi-qp.yaml
-index 96b4b088eebe..07342838cd52 100644
---- a/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3588-dw-hdmi-qp.yaml
-+++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3588-dw-hdmi-qp.yaml
-@@ -69,6 +69,12 @@ properties:
-       - const: main
-       - const: hpd
- 
-+  no-hpd:
-+    type: boolean
-+    description:
-+      The HPD pin is not present or used for another purpose, and the EDID
-+      must be polled instead to determine if a device is attached.
-+
-   phys:
-     maxItems: 1
-     description: The HDMI/eDP PHY
+ .../rockchip/rockchip,rk3588-dw-hdmi-qp.yaml  |  6 ++
+ .../dts/rockchip/rk3588s-gameforce-ace.dts    | 63 +++++++++++++++++++
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c  | 32 ++++++++--
+ 3 files changed, 97 insertions(+), 4 deletions(-)
+
 -- 
 2.43.0
 
