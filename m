@@ -4,52 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D85FCD6E4E
-	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Nov 2025 12:47:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2394CD6E4D
+	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Nov 2025 13:00:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ySqFDcfkO6JPksMydKqeLO7hRv+RA2VONpZwdLEm+Lo=; b=eH4w42V9esG8/u
-	iH4gso7NBIh6kM5YdDMmX0O/H7+Q4MoNhWeO+E1IBjbfhNegVfilage0PEbDenU6NbAS3LxISnCSs
-	bOJY/ZkwVpsOoui1Bz21ImlOoz/ROyodxLH7k1+gEGqiM8b5DuA8u8PbSY27LWW/gL1AXOfHwtNXF
-	9wx5iZgIJ4Rd658JT2R8ODmLH0V2MUj6XVD80jYAtJBFahzraN8Qb1c/F9+0cZydgcrEu8OeVpJqx
-	eTgUFLbT528iEjTLWOwLKKgAiofvqMC24bvN+RIEDB6MioMrfGxHWpaIz2bCdjpm8xJFHVlcTrFf6
-	/r+pb+uBfX9AZsmTK62w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ObyUBLDXkqFG+TiLvjOxeVRwZQT3a0kF7YfInF7Ekz4=; b=dA0fUSFfg6Ktcx
+	cluP9JdfhA1o3TZ42dv1W5+/j1APhutRkb6tqt/wNk91xoGjH0ZdwqoeZjiirnJPqZwf93aKja8X1
+	QtNlov5RDLBDA3KCe+FdB+ptk91w7M+pPK8DKv/1R/Ury+hk3W/4wlnXTtI5sXx94/j3jm3VrUHR7
+	3g+o74ECbjEWKY8ZjVbKIGbKl/0QoE6rgg2OyT+GTntbwCYcy2Uobrgmgg4cwIVqlh4XmDvS5I/h8
+	GmoHqFhXdvgXvBf13jYjiWoDXaw1UE3JYKipmus7Vd36evhiJe9s3bDzngrO0CCt5HaReLSt1d/Q4
+	fjUGfI5SfPc+QD61ZQyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJWjO-0000000AUlf-0BiS;
-	Thu, 13 Nov 2025 12:47:18 +0000
-Received: from sakura.naobsd.org ([160.16.200.221] helo=mail.naobsd.org)
+	id 1vJWwU-0000000AVPR-0DTm;
+	Thu, 13 Nov 2025 13:00:50 +0000
+Received: from mail-m49197.qiye.163.com ([45.254.49.197])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJWjL-0000000AUku-0UqK
-	for linux-rockchip@lists.infradead.org;
-	Thu, 13 Nov 2025 12:47:16 +0000
-Received: from secure.fukaumi.org ([10.0.0.2])
-	by mail.naobsd.org (8.14.4/8.14.4/Debian-4.1ubuntu1.1) with ESMTP id 5ADCgQXt030553;
-	Thu, 13 Nov 2025 21:42:27 +0900
-From: FUKAUMI Naoki <naoki@radxa.com>
-To: heiko@sntech.de
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
-        dsimic@manjaro.org, pgwipeout@gmail.com, didi.debian@cknow.org,
-        jonas@kwiboo.se, ziyao@disroot.org, amadeus@jmu.edu.cn,
-        nicolas.frattaroli@collabora.com, pbrobinson@gmail.com,
-        wens@kernel.org, detlev.casanova@collabora.com, stephen@radxa.com,
-        sebastian.reichel@collabora.com, liujianfeng1994@gmail.com,
-        andy.yan@rock-chips.com, dmitry.baryshkov@oss.qualcomm.com,
-        kuninori.morimoto.gx@renesas.com, damon.ding@rock-chips.com,
-        kylepzak@projectinitiative.io, devicetree@vger.kernel.org,
-        linux-rockchip@lists.infradead.org, FUKAUMI Naoki <naoki@radxa.com>
-Subject: [PATCH v3 0/3] Consolidate and clarify LED device tree descriptions on Radxa boards
-Date: Thu, 13 Nov 2025 12:42:19 +0000
-Message-ID: <20251113124222.4691-1-naoki@radxa.com>
-X-Mailer: git-send-email 2.43.0
+	id 1vJWwP-0000000AVOn-2lRy;
+	Thu, 13 Nov 2025 13:00:48 +0000
+Received: from localhost.localdomain (unknown [58.61.140.134])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 297bea02c;
+	Thu, 13 Nov 2025 21:00:35 +0800 (GMT+08:00)
+From: Chukun Pan <amadeus@jmu.edu.cn>
+To: coiaprant@gmail.com
+Cc: amadeus@jmu.edu.cn,
+	conor+dt@kernel.org,
+	devicetree@vger.kernel.org,
+	heiko@sntech.de,
+	krzk+dt@kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	robh@kernel.org
+Subject: Re: [PATCH v5 3/3] arm64: dts: rockchip: Add devicetree for the 9Tripod X3568 v4
+Date: Thu, 13 Nov 2025 21:00:21 +0800
+Message-Id: <20251113130021.822765-1-amadeus@jmu.edu.cn>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <6F2972A5-047F-48A5-B409-C3F3E71643AD@gmail.com>
+References: <6F2972A5-047F-48A5-B409-C3F3E71643AD@gmail.com>
 MIME-Version: 1.0
+X-HM-Tid: 0a9a7d4db1a103a2kunmc0f785fd12ff7c
+X-HM-MType: 10
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlDQx9JVhpDGk5CQ0lPTEMeGlYeHw5VEwETFhoSFy
+	QUDg9ZV1kYEgtZQVlOQ1VNSlVKT0tVSkhPWVdZFhoPEhUdFFlBWU9LSFVKS0lCTUtKVUpLS1VLWQ
+	Y+
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251113_044715_371690_2A8001CB 
-X-CRM114-Status: GOOD (  11.61  )
+X-CRM114-CacheID: sfid-20251113_050045_881606_1AAE3659 
+X-CRM114-Status: UNSURE (   6.39  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,68 +73,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Currently, on Radxa boards, the power LED is turned on immediately
-after power-up, independent of software control. The heartbeat LED and
-other available LEDs are subsequently turned on by the initial
-software, such as U-Boot, to indicate software is running.
+Hi,
 
-However, the device tree description for this behavior is inconsistent
-and fragmented, with definitions split between the main Linux DTS
-files and separate U-Boot files (u-boot/arch/arm/dts/*-u-boot.dtsi).
+> PCIe and MIC picked from OEM source codes.
 
-This patch series addresses this inconsistency and fragmentation by
-consolidating the description within the upstream device tree, thereby
-improving overall clarity.
+I know it comes from BSP code, but it's not correct.
+A PCIe 3.3V power supply will not have a 0.1V situation.
+Rockchip fixed this in their kernel a long time ago:
+https://github.com/rockchip-linux/kernel/commit/17e9559f67d26f3c602e38a24feb5194e51ac782
 
-Patch 1 addresses the inconsistency for the power LED by using
-default-state = "on" instead of linux,default-trigger = "default-on".
+> Since parts of the OEM source code are not available in mainline,
+> I refer to other boards (e.g. RK3568-EVB or RK3568-ROC-PC), but
+> I don't have a camera or screen to test, so I mark them as demo.
 
-Patch 2 addresses the description fragmentation for the heartbeat LED
-by consolidating its default-state = "on" definition from the U-Boot
-files into the main Linux DTS.
-
-Patch 3 addresses inconsistency by removing redundant default-state =
-"off" definitions, as this is already the default configuration.
-
-
-This patch series does not address some LEDs that are (implicitly)
-default-state = "off" at kernel but should be "on" at bootloader.
-These will be addressed separately.
-
-FUKAUMI Naoki (3):
-  arm64: dts: rockchip: Use default-state for power LED for Radxa boards
-  arm64: dts: rockchip: Turn on heartbeat LED at boot for Radxa boards
-  arm64: dts: rockchip: Remove default-state = "off" from LEDs for Radxa
-    boards
----
-Changes in v3:
-- Split into three patches
-- Reword commit message
-Changes in v2:
-- Add more URLs for reference
-- Reword commit message
----
- arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts    | 1 -
- arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts    | 1 +
- arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dts | 3 ++-
- arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi   | 1 +
- arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts   | 2 --
- arch/arm64/boot/dts/rockchip/rk3528-rock-2a.dts      | 1 -
- arch/arm64/boot/dts/rockchip/rk3566-radxa-cm3-io.dts | 1 +
- arch/arm64/boot/dts/rockchip/rk3566-rock-3c.dts      | 1 +
- arch/arm64/boot/dts/rockchip/rk3568-radxa-cm3i.dtsi  | 1 +
- arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts      | 1 +
- arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts      | 3 ++-
- arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dts   | 2 --
- arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts   | 2 +-
- arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dtsi     | 1 +
- arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts      | 1 +
- arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts     | 3 ++-
- 16 files changed, 15 insertions(+), 10 deletions(-)
-
--- 
-2.43.0
-
+These things may have been brought by rk3568-evbxxx.dtsi, and may
+not actually exist.
 
 _______________________________________________
 Linux-rockchip mailing list
