@@ -4,71 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7F5ECDE03B
-	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Nov 2025 08:29:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4116CDE032
+	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Nov 2025 08:32:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-ID:MIME-Version:To:Cc:
+	Date:References:In-Reply-To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3WV1eLqZrly4+YYbY7nhGx5KPoue97Lij8JJAGh7kTU=; b=rD6wgeV0wMGQ8k
-	XpXM+m1Ibtft7saoE/l4ZSmoZbn2hdwhazLA7f0yKv6eqviEhI+fKabwg+Yw7nAsor8fl2C1VEeWm
-	d7PHfuehC+2av9/jyaLGcN2iDj1A9IUeuvVaXptq8i/+9X8YTgkDT02rMWOWihrt+04tT+D1/wj5g
-	UdNw/HiLrSUOQGtZ0mREqtZaO82DCYx4LPlwTMnXf/9ICucJW3Xfw1CCjQahyMU+8z5gD+KADYPo9
-	XpKCqLVEaAcXKeODsvEhkw6uHwQ6XrGQFNEOvbJb3j6lJr7z2CR8wrLPOez+NZqy8lxa/AHy1ydeJ
-	ua88oKiIs2rFVAKMXukQ==;
+	List-Owner; bh=N4LPvgiORO3d6qP7hHyrMfxTKILbPlAvyB/7Uw4cPhY=; b=Z47Qqpi0N0Onzw
+	QfexPtcOzXQ6j3i8CLvl7DxtqoSyg5nHmzhp+BBwS7kxZFW/p1+VmUOt1HDFfhRAmrzUQrU+1WebT
+	wqVgjuhixOJyii1UQBZfTHUguQg0V5jiISTlJE9gOMv/E3CFaUu27b/AbP6MIv6gIQ5w2DhOWMLsA
+	vkUtFz7hgkJLYW/wE3LKxcMARFDOkSEw/wZnoiKeEY6lnApAkCVu3/6OxfwuUmV2X76fQzYOSxtUY
+	4K5i51p5hJy4VgyPC4ss2xUI3oUwzC+5fpvAN2lfYVJRy9iL3SbgCm/FJjRartgZ7fBZ5MmKwvwkJ
+	ovX75z5X0/C1ah38wz5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJpBW-0000000BoJT-0ng5;
-	Fri, 14 Nov 2025 08:29:34 +0000
-Received: from smtpout-04.galae.net ([185.171.202.116])
+	id 1vJpEY-0000000Bojj-2F04;
+	Fri, 14 Nov 2025 08:32:42 +0000
+Received: from mail1.manjaro.org ([142.132.176.110])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJpBT-0000000BoH0-2GCd
+	id 1vJpET-0000000Boia-31ey
 	for linux-rockchip@lists.infradead.org;
-	Fri, 14 Nov 2025 08:29:33 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-04.galae.net (Postfix) with ESMTPS id C28B5C10F60;
-	Fri, 14 Nov 2025 08:29:05 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 898016060E;
-	Fri, 14 Nov 2025 08:29:27 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 44280102F2A6F;
-	Fri, 14 Nov 2025 09:29:25 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1763108966; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:content-language:in-reply-to:references;
-	bh=oh1RyQ/hqshJv7h0FVQIWfm6iSSfXUFDQaBC2BpyrLY=;
-	b=Xy6P+Mw6G2wT0eFHTV033JAm0DBQfCqHl2xKim/dBNlR819Vbh1al1a2zHFAznFSICHH3i
-	4Yn0qL+x3DzONoMCF/K+Zfjq4CXiPLViizxq0suDxHgSbsEIq+1y5gPqulO+I2hW9Ko9tI
-	99JKCBCVXlleEU7ey/cEpZpHdM7KaYpjKloyuaRZFXSjttJJMJq3Nc+J0HALC321e2B0Dp
-	jopdsstPtKRkhz6Z40CB7vqysuF6yk9PsTvNUWFBs7Vxe5gdmh53nUJE6ICmMZkofJUK/M
-	ttQbu9oqvMPGSJV0rhGGaumTHcQmIDDMwganumgkm0tDFTzLvf8re8yrgUeY+w==
-Message-ID: <0937e9a9-f79f-42e6-ab28-7fec0623ffa4@bootlin.com>
-Date: Fri, 14 Nov 2025 09:29:24 +0100
+	Fri, 14 Nov 2025 08:32:41 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPA id BCD5A4109E;
+	Fri, 14 Nov 2025 09:32:29 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=dkim;
+	t=1763109154; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:in-reply-to:references;
+	bh=H7abZ3ZYaP2vBuHlUKqJanNr1i0yVWF/iFc+uzasKk0=;
+	b=sxk3nJWFscy/o5txYfy8tEv4VhvSemjxPn9yE9PaqeG6IM+EyEcP3+OJ/asIZ7u6WpioI4
+	QdYs0fg9fTT4v9XHhQFaXxnCuHVDtBUiCelYfpRtaJxRR3OZrWunvmdprbpoazq5jhmmfX
+	47JOUvnBRSKoaMRT1pm+KGsCtMXFfT6+J48EkwqNI3FMkJZoofV8reJiWjGAP1I5wjrGd4
+	IRIMTFDwr8ENfb2pA/ZUCoY1QNd9mm7NkuQJUyN/I9OZ0GaVPNHwEPVthqYUOIUW+Bn1Wr
+	AiP4P9bLM9xVz+otB9nzbKGS+ygFDOTT/4OWnZq8g3Ed5uUt9sUFtraz7We/sQ==
+From: "Dragan Simic" <dsimic@manjaro.org>
+In-Reply-To: <A3AD69295D2E2D65+db2dc8bd-054f-4dda-9dd1-3cc0c0feed35@radxa.com>
+References: <20251105051335.17652-1-naoki@radxa.com>
+ <20251105051335.17652-2-naoki@radxa.com>
+ <ce6e6369-a7e4-4a35-80f8-70ef41c3b877@kernel.org>
+ <A6C1199E2A0D3F37+f3fe0fd5-4ca5-4d3d-bc1d-45f46b48f89b@radxa.com>
+ <93deab54-bd5e-433e-acbc-13f6ead47f43@kernel.org>
+ <2177a0f0-68df-495c-b267-18e3d9b6ca80@kernel.org>
+ <D88EE9EEB2B37D36+361d448f-d260-4d78-ae6b-abf1caabb94b@radxa.com>
+ <b2833988-6319-4426-8a25-c0d34acffa47@kernel.org>
+ <B6224BD6578686FF+dc81e00c-46f6-4791-af8a-99cf8e880f0c@radxa.com>
+ <f112b806-b204-46b5-90b2-813ad5d0ceee@kernel.org> <A3AD69295D2E2D65+db2dc8bd-054f-4dda-9dd1-3cc0c0feed35@radxa.com>
+Date: Fri, 14 Nov 2025 09:32:29 +0100
+Cc: "Krzysztof Kozlowski" <krzk@kernel.org>, heiko@sntech.de, joseph.kogut@gmail.com, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, jonas@kwiboo.se, kever.yang@rock-chips.com, i@next.chainsx.cn, honyuenkwun@gmail.com, quentin.schulz@cherry.de, pbrobinson@gmail.com, amadeus@jmu.edu.cn, jbx6244@gmail.com, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
+To: "FUKAUMI Naoki" <naoki@radxa.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next 4/4] net: stmmac: rk: use PHY_INTF_SEL_x in
- functions
-To: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>,
- Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>
-Cc: Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Heiko Stuebner <heiko@sntech.de>, Jakub Kicinski <kuba@kernel.org>,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>, netdev@vger.kernel.org,
- Paolo Abeni <pabeni@redhat.com>
-References: <aRYZaKTIvfYoV3wE@shell.armlinux.org.uk>
- <E1vJbPG-0000000EBqb-2cF2@rmk-PC.armlinux.org.uk>
-From: Maxime Chevallier <maxime.chevallier@bootlin.com>
-Content-Language: en-US
-In-Reply-To: <E1vJbPG-0000000EBqb-2cF2@rmk-PC.armlinux.org.uk>
-X-Last-TLS-Session-Version: TLSv1.3
+Message-ID: <194908a1-f956-ba0a-656f-7b1e8456b51d@manjaro.org>
+Subject: =?utf-8?q?Re=3A?= [PATCH v6 1/3] =?utf-8?q?dt-bindings=3A?=
+ =?utf-8?q?_arm=3A?==?utf-8?q?_rockchip=3A?= Add Radxa CM5 IO Board
+User-Agent: SOGoMail 5.12.3
+X-Last-TLS-Session-Version: None
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251114_002932_152658_CD4BE68F 
-X-CRM114-Status: GOOD (  15.04  )
+X-CRM114-CacheID: sfid-20251114_003238_150516_17FF8CC3 
+X-CRM114-Status: GOOD (  22.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,370 +78,82 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-
-On 13/11/2025 18:46, Russell King (Oracle) wrote:
-> Rather than defining one xxx_GMAC_PHY_INTF_SEL_xxx() for each mode,
-> define xxx_GMAC_PHY_INTF_SEL() which takes the phy_intf_sel value.
-> Pass the appropriate value into these new macros in the set_to_xxx()
-> methods.
+On Friday, November 14, 2025 09:24 CET, FUKAUMI Naoki <naoki@radxa.com> wrote:
+> On 11/14/25 16:51, Krzysztof Kozlowski wrote:
+> > On 14/11/2025 08:47, FUKAUMI Naoki wrote:
+> >> On 11/14/25 16:42, Krzysztof Kozlowski wrote:
+> >>> On 14/11/2025 08:37, FUKAUMI Naoki wrote:
+> >>>> Hi Krzysztof,
+> >>>>
+> >>>> On 11/14/25 16:12, Krzysztof Kozlowski wrote:
+> >>>>> On 05/11/2025 08:08, Krzysztof Kozlowski wrote:
+> >>>>>> On 05/11/2025 07:57, FUKAUMI Naoki wrote:
+> >>>>>>> On 11/5/25 15:43, Krzysztof Kozlowski wrote:
+> >>>>>>>> On 05/11/2025 06:13, FUKAUMI Naoki wrote:
+> >>>>>>>>> Add device tree binding documentation for the Radxa CM5 IO Board.
+> >>>>>>>>>
+> >>>>>>>>> Link: https://dl.radxa.com/cm5/radxa_cm5_product_brief.pdf
+> >>>>>>>>> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
+> >>>>>>>>> Signed-off-by: Joseph Kogut <joseph.kogut@gmail.com>
+> >>>>>>>>
+> >>>>>>>> Wrong DCO chain.
+> >>>>>>>>
+> >>>>>>>>> ---
+> >>>>>>>>>      Documentation/devicetree/bindings/arm/rockchip.yaml | 7 +++++++
+> >>>>>>>>
+> >>>>>>>> NAK, you just stolen ownership of an already posted patch.
+> >>>>>>>
+> >>>>>>> Read "Changes in v6" and patches; my patches are not the same as v5.
+> >>>>>>> Your reply is totally inappropriate.
+> >>>>>>
+> >>>>>> Inappropriate is taking authorship of someone's patch, because we all
+> >>>>>> expect to preserve the original authorship. That's not only basic
+> >>>>>> decency but actually a standard.
+> >>>>>>
+> >>>>>> Additionally, read Joseph's reply that he wants to continue the work:
+> >>>>>> https://lore.kernel.org/all/CAMWSM7iHtAxewW4JkRqRsifVnccqeFviaCgeOyprKDr92FOurg@mail.gmail.com/
+> >>>>>>
+> >>>>>> You clearly do not understand how to continue with someone's work.
+> >>>>>>
+> >>>>>> It is still a NAK.
+> >>>>>
+> >>>>> And I still wait for justification why you took authorship of this
+> >>>>> patch, because to my eye you changed here nothing.
+> >>>>>
+> >>>>> So what did you change HERE that you think you are the author now?
+> >>>>
+> >>>> Changes in v6:
+> >>>> (Patch 1/3)
+> >>>> - Fix description; "Radxa CM5" is the correct name
+> >>>
+> >>> HERE, in this patch. Don't paste me hundreds of unrelated code. Write
+> >>> concise and precise answers/comments.
+> >>
+> >> https://lore.kernel.org/linux-rockchip/AE0735A6C797CCFF+10496d73-7c0a-4884-9561-24721305a24f@radxa.com/
+> >>
+> >> | By the way, at some point I switched from "continuing your work" to
+> >> | "recreating a new one based on my current work." The results of my
+> >> | current work(*3) have changed significantly.
+> > 
+> > So next time I will take your patch, your code, say "I recreated it" and
+> > submit under my authorship and for you it is fine?
 > 
-> No change to produced code on aarch64.
+> Regarding CM5 patches, I'm fine.
 > 
-> Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
-
-Reviewed-by: Maxime Chevallier <maxime.chevallier@bootlin.com>
-
-> ---
->  .../net/ethernet/stmicro/stmmac/dwmac-rk.c    | 91 +++++++++----------
->  1 file changed, 43 insertions(+), 48 deletions(-)
+> > Please take Joseph's patch instead. Read submitting patches doc to
+> > understand which one more tag has to be added when sending somoene
+> > else's work.
+> > 
+> > In the future, I sincerely suggest avoiding re-creating people's work
+> > but building on top, because you just duplicate the effort.
 > 
-> diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-> index 49076ee00877..6e75da577af5 100644
-> --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-> +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-> @@ -234,14 +234,14 @@ static void rk_gmac_integrated_fephy_powerdown(struct rk_priv_data *priv,
->  #define PX30_GRF_GMAC_CON1		0x0904
->  
->  /* PX30_GRF_GMAC_CON1 */
-> -#define PX30_GMAC_PHY_INTF_SEL_RMII	GRF_FIELD(6, 4, PHY_INTF_SEL_RMII)
-> +#define PX30_GMAC_PHY_INTF_SEL(val)	GRF_FIELD(6, 4, val)
->  #define PX30_GMAC_SPEED_10M		GRF_CLR_BIT(2)
->  #define PX30_GMAC_SPEED_100M		GRF_BIT(2)
->  
->  static void px30_set_to_rmii(struct rk_priv_data *bsp_priv)
->  {
->  	regmap_write(bsp_priv->grf, PX30_GRF_GMAC_CON1,
-> -		     PX30_GMAC_PHY_INTF_SEL_RMII);
-> +		     PX30_GMAC_PHY_INTF_SEL(PHY_INTF_SEL_RMII));
->  }
->  
->  static int px30_set_speed(struct rk_priv_data *bsp_priv,
-> @@ -290,8 +290,7 @@ static const struct rk_gmac_ops px30_ops = {
->  #define RK3128_GMAC_CLK_TX_DL_CFG(val) GRF_FIELD(6, 0, val)
->  
->  /* RK3128_GRF_MAC_CON1 */
-> -#define RK3128_GMAC_PHY_INTF_SEL_RGMII GRF_FIELD(8, 6, PHY_INTF_SEL_RGMII)
-> -#define RK3128_GMAC_PHY_INTF_SEL_RMII  GRF_FIELD(8, 6, PHY_INTF_SEL_RMII)
-> +#define RK3128_GMAC_PHY_INTF_SEL(val)  GRF_FIELD(8, 6, val)
->  #define RK3128_GMAC_FLOW_CTRL          GRF_BIT(9)
->  #define RK3128_GMAC_FLOW_CTRL_CLR      GRF_CLR_BIT(9)
->  #define RK3128_GMAC_SPEED_10M          GRF_CLR_BIT(10)
-> @@ -308,7 +307,7 @@ static void rk3128_set_to_rgmii(struct rk_priv_data *bsp_priv,
->  				int tx_delay, int rx_delay)
->  {
->  	regmap_write(bsp_priv->grf, RK3128_GRF_MAC_CON1,
-> -		     RK3128_GMAC_PHY_INTF_SEL_RGMII |
-> +		     RK3128_GMAC_PHY_INTF_SEL(PHY_INTF_SEL_RGMII) |
->  		     RK3128_GMAC_RMII_MODE_CLR);
->  	regmap_write(bsp_priv->grf, RK3128_GRF_MAC_CON0,
->  		     DELAY_ENABLE(RK3128, tx_delay, rx_delay) |
-> @@ -319,7 +318,8 @@ static void rk3128_set_to_rgmii(struct rk_priv_data *bsp_priv,
->  static void rk3128_set_to_rmii(struct rk_priv_data *bsp_priv)
->  {
->  	regmap_write(bsp_priv->grf, RK3128_GRF_MAC_CON1,
-> -		     RK3128_GMAC_PHY_INTF_SEL_RMII | RK3128_GMAC_RMII_MODE);
-> +		     RK3128_GMAC_PHY_INTF_SEL(PHY_INTF_SEL_RMII) |
-> +		     RK3128_GMAC_RMII_MODE);
->  }
->  
->  static const struct rk_reg_speed_data rk3128_reg_speed_data = {
-> @@ -353,8 +353,7 @@ static const struct rk_gmac_ops rk3128_ops = {
->  #define RK3228_GMAC_CLK_TX_DL_CFG(val)	GRF_FIELD(6, 0, val)
->  
->  /* RK3228_GRF_MAC_CON1 */
-> -#define RK3228_GMAC_PHY_INTF_SEL_RGMII	GRF_FIELD(6, 4, PHY_INTF_SEL_RGMII)
-> -#define RK3228_GMAC_PHY_INTF_SEL_RMII	GRF_FIELD(6, 4, PHY_INTF_SEL_RMII)
-> +#define RK3228_GMAC_PHY_INTF_SEL(val)	GRF_FIELD(6, 4, val)
->  #define RK3228_GMAC_FLOW_CTRL		GRF_BIT(3)
->  #define RK3228_GMAC_FLOW_CTRL_CLR	GRF_CLR_BIT(3)
->  #define RK3228_GMAC_SPEED_10M		GRF_CLR_BIT(2)
-> @@ -378,7 +377,7 @@ static void rk3228_set_to_rgmii(struct rk_priv_data *bsp_priv,
->  				int tx_delay, int rx_delay)
->  {
->  	regmap_write(bsp_priv->grf, RK3228_GRF_MAC_CON1,
-> -		     RK3228_GMAC_PHY_INTF_SEL_RGMII |
-> +		     RK3228_GMAC_PHY_INTF_SEL(PHY_INTF_SEL_RGMII) |
->  		     RK3228_GMAC_RMII_MODE_CLR |
->  		     DELAY_ENABLE(RK3228, tx_delay, rx_delay));
->  
-> @@ -390,7 +389,7 @@ static void rk3228_set_to_rgmii(struct rk_priv_data *bsp_priv,
->  static void rk3228_set_to_rmii(struct rk_priv_data *bsp_priv)
->  {
->  	regmap_write(bsp_priv->grf, RK3228_GRF_MAC_CON1,
-> -		     RK3228_GMAC_PHY_INTF_SEL_RMII |
-> +		     RK3228_GMAC_PHY_INTF_SEL(PHY_INTF_SEL_RMII) |
->  		     RK3228_GMAC_RMII_MODE);
->  
->  	/* set MAC to RMII mode */
-> @@ -432,8 +431,7 @@ static const struct rk_gmac_ops rk3228_ops = {
->  #define RK3288_GRF_SOC_CON3	0x0250
->  
->  /*RK3288_GRF_SOC_CON1*/
-> -#define RK3288_GMAC_PHY_INTF_SEL_RGMII	GRF_FIELD(8, 6, PHY_INTF_SEL_RGMII)
-> -#define RK3288_GMAC_PHY_INTF_SEL_RMII	GRF_FIELD(8, 6, PHY_INTF_SEL_RMII)
-> +#define RK3288_GMAC_PHY_INTF_SEL(val)	GRF_FIELD(8, 6, val)
->  #define RK3288_GMAC_FLOW_CTRL		GRF_BIT(9)
->  #define RK3288_GMAC_FLOW_CTRL_CLR	GRF_CLR_BIT(9)
->  #define RK3288_GMAC_SPEED_10M		GRF_CLR_BIT(10)
-> @@ -458,7 +456,7 @@ static void rk3288_set_to_rgmii(struct rk_priv_data *bsp_priv,
->  				int tx_delay, int rx_delay)
->  {
->  	regmap_write(bsp_priv->grf, RK3288_GRF_SOC_CON1,
-> -		     RK3288_GMAC_PHY_INTF_SEL_RGMII |
-> +		     RK3288_GMAC_PHY_INTF_SEL(PHY_INTF_SEL_RGMII) |
->  		     RK3288_GMAC_RMII_MODE_CLR);
->  	regmap_write(bsp_priv->grf, RK3288_GRF_SOC_CON3,
->  		     DELAY_ENABLE(RK3288, tx_delay, rx_delay) |
-> @@ -469,7 +467,8 @@ static void rk3288_set_to_rgmii(struct rk_priv_data *bsp_priv,
->  static void rk3288_set_to_rmii(struct rk_priv_data *bsp_priv)
->  {
->  	regmap_write(bsp_priv->grf, RK3288_GRF_SOC_CON1,
-> -		     RK3288_GMAC_PHY_INTF_SEL_RMII | RK3288_GMAC_RMII_MODE);
-> +		     RK3288_GMAC_PHY_INTF_SEL(PHY_INTF_SEL_RMII) |
-> +		     RK3288_GMAC_RMII_MODE);
->  }
->  
->  static const struct rk_reg_speed_data rk3288_reg_speed_data = {
-> @@ -496,7 +495,7 @@ static const struct rk_gmac_ops rk3288_ops = {
->  #define RK3308_GRF_MAC_CON0		0x04a0
->  
->  /* RK3308_GRF_MAC_CON0 */
-> -#define RK3308_GMAC_PHY_INTF_SEL_RMII	GRF_FIELD(4, 2, PHY_INTF_SEL_RMII)
-> +#define RK3308_GMAC_PHY_INTF_SEL(val)	GRF_FIELD(4, 2, val)
->  #define RK3308_GMAC_FLOW_CTRL		GRF_BIT(3)
->  #define RK3308_GMAC_FLOW_CTRL_CLR	GRF_CLR_BIT(3)
->  #define RK3308_GMAC_SPEED_10M		GRF_CLR_BIT(0)
-> @@ -505,7 +504,7 @@ static const struct rk_gmac_ops rk3288_ops = {
->  static void rk3308_set_to_rmii(struct rk_priv_data *bsp_priv)
->  {
->  	regmap_write(bsp_priv->grf, RK3308_GRF_MAC_CON0,
-> -		     RK3308_GMAC_PHY_INTF_SEL_RMII);
-> +		     RK3308_GMAC_PHY_INTF_SEL(PHY_INTF_SEL_RMII));
->  }
->  
->  static const struct rk_reg_speed_data rk3308_reg_speed_data = {
-> @@ -535,8 +534,7 @@ static const struct rk_gmac_ops rk3308_ops = {
->  #define RK3328_GMAC_CLK_TX_DL_CFG(val)	GRF_FIELD(6, 0, val)
->  
->  /* RK3328_GRF_MAC_CON1 */
-> -#define RK3328_GMAC_PHY_INTF_SEL_RGMII	GRF_FIELD(6, 4, PHY_INTF_SEL_RGMII)
-> -#define RK3328_GMAC_PHY_INTF_SEL_RMII	GRF_FIELD(6, 4, PHY_INTF_SEL_RMII)
-> +#define RK3328_GMAC_PHY_INTF_SEL(val)	GRF_FIELD(6, 4, val)
->  #define RK3328_GMAC_FLOW_CTRL		GRF_BIT(3)
->  #define RK3328_GMAC_FLOW_CTRL_CLR	GRF_CLR_BIT(3)
->  #define RK3328_GMAC_SPEED_10M		GRF_CLR_BIT(2)
-> @@ -558,7 +556,7 @@ static void rk3328_set_to_rgmii(struct rk_priv_data *bsp_priv,
->  				int tx_delay, int rx_delay)
->  {
->  	regmap_write(bsp_priv->grf, RK3328_GRF_MAC_CON1,
-> -		     RK3328_GMAC_PHY_INTF_SEL_RGMII |
-> +		     RK3328_GMAC_PHY_INTF_SEL(PHY_INTF_SEL_RGMII) |
->  		     RK3328_GMAC_RMII_MODE_CLR |
->  		     RK3328_GMAC_RXCLK_DLY_ENABLE |
->  		     RK3328_GMAC_TXCLK_DLY_ENABLE);
-> @@ -576,7 +574,7 @@ static void rk3328_set_to_rmii(struct rk_priv_data *bsp_priv)
->  		  RK3328_GRF_MAC_CON1;
->  
->  	regmap_write(bsp_priv->grf, reg,
-> -		     RK3328_GMAC_PHY_INTF_SEL_RMII |
-> +		     RK3328_GMAC_PHY_INTF_SEL(PHY_INTF_SEL_RMII) |
->  		     RK3328_GMAC_RMII_MODE);
->  }
->  
-> @@ -622,8 +620,7 @@ static const struct rk_gmac_ops rk3328_ops = {
->  #define RK3366_GRF_SOC_CON7	0x041c
->  
->  /* RK3366_GRF_SOC_CON6 */
-> -#define RK3366_GMAC_PHY_INTF_SEL_RGMII	GRF_FIELD(11, 9, PHY_INTF_SEL_RGMII)
-> -#define RK3366_GMAC_PHY_INTF_SEL_RMII	GRF_FIELD(11, 9, PHY_INTF_SEL_RMII)
-> +#define RK3366_GMAC_PHY_INTF_SEL(val)	GRF_FIELD(11, 9, val)
->  #define RK3366_GMAC_FLOW_CTRL		GRF_BIT(8)
->  #define RK3366_GMAC_FLOW_CTRL_CLR	GRF_CLR_BIT(8)
->  #define RK3366_GMAC_SPEED_10M		GRF_CLR_BIT(7)
-> @@ -648,7 +645,7 @@ static void rk3366_set_to_rgmii(struct rk_priv_data *bsp_priv,
->  				int tx_delay, int rx_delay)
->  {
->  	regmap_write(bsp_priv->grf, RK3366_GRF_SOC_CON6,
-> -		     RK3366_GMAC_PHY_INTF_SEL_RGMII |
-> +		     RK3366_GMAC_PHY_INTF_SEL(PHY_INTF_SEL_RGMII) |
->  		     RK3366_GMAC_RMII_MODE_CLR);
->  	regmap_write(bsp_priv->grf, RK3366_GRF_SOC_CON7,
->  		     DELAY_ENABLE(RK3366, tx_delay, rx_delay) |
-> @@ -659,7 +656,8 @@ static void rk3366_set_to_rgmii(struct rk_priv_data *bsp_priv,
->  static void rk3366_set_to_rmii(struct rk_priv_data *bsp_priv)
->  {
->  	regmap_write(bsp_priv->grf, RK3366_GRF_SOC_CON6,
-> -		     RK3366_GMAC_PHY_INTF_SEL_RMII | RK3366_GMAC_RMII_MODE);
-> +		     RK3366_GMAC_PHY_INTF_SEL(PHY_INTF_SEL_RMII) |
-> +		     RK3366_GMAC_RMII_MODE);
->  }
->  
->  static const struct rk_reg_speed_data rk3366_reg_speed_data = {
-> @@ -687,8 +685,7 @@ static const struct rk_gmac_ops rk3366_ops = {
->  #define RK3368_GRF_SOC_CON16	0x0440
->  
->  /* RK3368_GRF_SOC_CON15 */
-> -#define RK3368_GMAC_PHY_INTF_SEL_RGMII	GRF_FIELD(11, 9, PHY_INTF_SEL_RGMII)
-> -#define RK3368_GMAC_PHY_INTF_SEL_RMII	GRF_FIELD(11, 9, PHY_INTF_SEL_RMII)
-> +#define RK3368_GMAC_PHY_INTF_SEL(val)	GRF_FIELD(11, 9, val)
->  #define RK3368_GMAC_FLOW_CTRL		GRF_BIT(8)
->  #define RK3368_GMAC_FLOW_CTRL_CLR	GRF_CLR_BIT(8)
->  #define RK3368_GMAC_SPEED_10M		GRF_CLR_BIT(7)
-> @@ -713,7 +710,7 @@ static void rk3368_set_to_rgmii(struct rk_priv_data *bsp_priv,
->  				int tx_delay, int rx_delay)
->  {
->  	regmap_write(bsp_priv->grf, RK3368_GRF_SOC_CON15,
-> -		     RK3368_GMAC_PHY_INTF_SEL_RGMII |
-> +		     RK3368_GMAC_PHY_INTF_SEL(PHY_INTF_SEL_RGMII) |
->  		     RK3368_GMAC_RMII_MODE_CLR);
->  	regmap_write(bsp_priv->grf, RK3368_GRF_SOC_CON16,
->  		     DELAY_ENABLE(RK3368, tx_delay, rx_delay) |
-> @@ -724,7 +721,8 @@ static void rk3368_set_to_rgmii(struct rk_priv_data *bsp_priv,
->  static void rk3368_set_to_rmii(struct rk_priv_data *bsp_priv)
->  {
->  	regmap_write(bsp_priv->grf, RK3368_GRF_SOC_CON15,
-> -		     RK3368_GMAC_PHY_INTF_SEL_RMII | RK3368_GMAC_RMII_MODE);
-> +		     RK3368_GMAC_PHY_INTF_SEL(PHY_INTF_SEL_RMII) |
-> +		     RK3368_GMAC_RMII_MODE);
->  }
->  
->  static const struct rk_reg_speed_data rk3368_reg_speed_data = {
-> @@ -752,8 +750,7 @@ static const struct rk_gmac_ops rk3368_ops = {
->  #define RK3399_GRF_SOC_CON6	0xc218
->  
->  /* RK3399_GRF_SOC_CON5 */
-> -#define RK3399_GMAC_PHY_INTF_SEL_RGMII	GRF_FIELD(11, 9, PHY_INTF_SEL_RGMII)
-> -#define RK3399_GMAC_PHY_INTF_SEL_RMII	GRF_FIELD(11, 9, PHY_INTF_SEL_RMII)
-> +#define RK3399_GMAC_PHY_INTF_SEL(val)	GRF_FIELD(11, 9, val)
->  #define RK3399_GMAC_FLOW_CTRL		GRF_BIT(8)
->  #define RK3399_GMAC_FLOW_CTRL_CLR	GRF_CLR_BIT(8)
->  #define RK3399_GMAC_SPEED_10M		GRF_CLR_BIT(7)
-> @@ -778,7 +775,7 @@ static void rk3399_set_to_rgmii(struct rk_priv_data *bsp_priv,
->  				int tx_delay, int rx_delay)
->  {
->  	regmap_write(bsp_priv->grf, RK3399_GRF_SOC_CON5,
-> -		     RK3399_GMAC_PHY_INTF_SEL_RGMII |
-> +		     RK3399_GMAC_PHY_INTF_SEL(PHY_INTF_SEL_RGMII) |
->  		     RK3399_GMAC_RMII_MODE_CLR);
->  	regmap_write(bsp_priv->grf, RK3399_GRF_SOC_CON6,
->  		     DELAY_ENABLE(RK3399, tx_delay, rx_delay) |
-> @@ -789,7 +786,8 @@ static void rk3399_set_to_rgmii(struct rk_priv_data *bsp_priv,
->  static void rk3399_set_to_rmii(struct rk_priv_data *bsp_priv)
->  {
->  	regmap_write(bsp_priv->grf, RK3399_GRF_SOC_CON5,
-> -		     RK3399_GMAC_PHY_INTF_SEL_RMII | RK3399_GMAC_RMII_MODE);
-> +		     RK3399_GMAC_PHY_INTF_SEL(PHY_INTF_SEL_RMII) |
-> +		     RK3399_GMAC_RMII_MODE);
->  }
->  
->  static const struct rk_reg_speed_data rk3399_reg_speed_data = {
-> @@ -1015,8 +1013,7 @@ static const struct rk_gmac_ops rk3528_ops = {
->  #define RK3568_GRF_GMAC1_CON1		0x038c
->  
->  /* RK3568_GRF_GMAC0_CON1 && RK3568_GRF_GMAC1_CON1 */
-> -#define RK3568_GMAC_PHY_INTF_SEL_RGMII	GRF_FIELD(6, 4, PHY_INTF_SEL_RGMII)
-> -#define RK3568_GMAC_PHY_INTF_SEL_RMII	GRF_FIELD(6, 4, PHY_INTF_SEL_RMII)
-> +#define RK3568_GMAC_PHY_INTF_SEL(val)	GRF_FIELD(6, 4, val)
->  #define RK3568_GMAC_FLOW_CTRL			GRF_BIT(3)
->  #define RK3568_GMAC_FLOW_CTRL_CLR		GRF_CLR_BIT(3)
->  #define RK3568_GMAC_RXCLK_DLY_ENABLE		GRF_BIT(1)
-> @@ -1043,7 +1040,7 @@ static void rk3568_set_to_rgmii(struct rk_priv_data *bsp_priv,
->  		     RK3568_GMAC_CLK_TX_DL_CFG(tx_delay));
->  
->  	regmap_write(bsp_priv->grf, con1,
-> -		     RK3568_GMAC_PHY_INTF_SEL_RGMII |
-> +		     RK3568_GMAC_PHY_INTF_SEL(PHY_INTF_SEL_RGMII) |
->  		     RK3568_GMAC_RXCLK_DLY_ENABLE |
->  		     RK3568_GMAC_TXCLK_DLY_ENABLE);
->  }
-> @@ -1054,7 +1051,8 @@ static void rk3568_set_to_rmii(struct rk_priv_data *bsp_priv)
->  
->  	con1 = (bsp_priv->id == 1) ? RK3568_GRF_GMAC1_CON1 :
->  				     RK3568_GRF_GMAC0_CON1;
-> -	regmap_write(bsp_priv->grf, con1, RK3568_GMAC_PHY_INTF_SEL_RMII);
-> +	regmap_write(bsp_priv->grf, con1,
-> +		     RK3568_GMAC_PHY_INTF_SEL(PHY_INTF_SEL_RMII));
->  }
->  
->  static const struct rk_gmac_ops rk3568_ops = {
-> @@ -1208,10 +1206,8 @@ static const struct rk_gmac_ops rk3576_ops = {
->  #define RK3588_GRF_GMAC_CON0			0X0008
->  #define RK3588_GRF_CLK_CON1			0X0070
->  
-> -#define RK3588_GMAC_PHY_INTF_SEL_RGMII(id)	\
-> -	(GRF_FIELD(5, 3, PHY_INTF_SEL_RGMII) << ((id) * 6))
-> -#define RK3588_GMAC_PHY_INTF_SEL_RMII(id)	\
-> -	(GRF_FIELD(5, 3, PHY_INTF_SEL_RMII) << ((id) * 6))
-> +#define RK3588_GMAC_PHY_INTF_SEL(id, val)	\
-> +	(GRF_FIELD(5, 3, val) << ((id) * 6))
->  
->  #define RK3588_GMAC_CLK_RMII_MODE(id)		GRF_BIT(5 * (id))
->  #define RK3588_GMAC_CLK_RGMII_MODE(id)		GRF_CLR_BIT(5 * (id))
-> @@ -1241,7 +1237,7 @@ static void rk3588_set_to_rgmii(struct rk_priv_data *bsp_priv,
->  					 RK3588_GRF_GMAC_CON8;
->  
->  	regmap_write(bsp_priv->php_grf, RK3588_GRF_GMAC_CON0,
-> -		     RK3588_GMAC_PHY_INTF_SEL_RGMII(id));
-> +		     RK3588_GMAC_PHY_INTF_SEL(id, PHY_INTF_SEL_RGMII));
->  
->  	regmap_write(bsp_priv->php_grf, RK3588_GRF_CLK_CON1,
->  		     RK3588_GMAC_CLK_RGMII_MODE(id));
-> @@ -1258,7 +1254,7 @@ static void rk3588_set_to_rgmii(struct rk_priv_data *bsp_priv,
->  static void rk3588_set_to_rmii(struct rk_priv_data *bsp_priv)
->  {
->  	regmap_write(bsp_priv->php_grf, RK3588_GRF_GMAC_CON0,
-> -		     RK3588_GMAC_PHY_INTF_SEL_RMII(bsp_priv->id));
-> +		     RK3588_GMAC_PHY_INTF_SEL(bsp_priv->id, PHY_INTF_SEL_RMII));
->  
->  	regmap_write(bsp_priv->php_grf, RK3588_GRF_CLK_CON1,
->  		     RK3588_GMAC_CLK_RMII_MODE(bsp_priv->id));
-> @@ -1328,7 +1324,7 @@ static const struct rk_gmac_ops rk3588_ops = {
->  #define RV1108_GRF_GMAC_CON0		0X0900
->  
->  /* RV1108_GRF_GMAC_CON0 */
-> -#define RV1108_GMAC_PHY_INTF_SEL_RMII	GRF_FIELD(6, 4, PHY_INTF_SEL_RMII)
-> +#define RV1108_GMAC_PHY_INTF_SEL(val)	GRF_FIELD(6, 4, val)
->  #define RV1108_GMAC_FLOW_CTRL		GRF_BIT(3)
->  #define RV1108_GMAC_FLOW_CTRL_CLR	GRF_CLR_BIT(3)
->  #define RV1108_GMAC_SPEED_10M		GRF_CLR_BIT(2)
-> @@ -1339,7 +1335,7 @@ static const struct rk_gmac_ops rk3588_ops = {
->  static void rv1108_set_to_rmii(struct rk_priv_data *bsp_priv)
->  {
->  	regmap_write(bsp_priv->grf, RV1108_GRF_GMAC_CON0,
-> -		     RV1108_GMAC_PHY_INTF_SEL_RMII);
-> +		     RV1108_GMAC_PHY_INTF_SEL(PHY_INTF_SEL_RMII));
->  }
->  
->  static const struct rk_reg_speed_data rv1108_reg_speed_data = {
-> @@ -1364,8 +1360,7 @@ static const struct rk_gmac_ops rv1108_ops = {
->  #define RV1126_GRF_GMAC_CON2		0X0078
->  
->  /* RV1126_GRF_GMAC_CON0 */
-> -#define RV1126_GMAC_PHY_INTF_SEL_RGMII	GRF_FIELD(6, 4, PHY_INTF_SEL_RGMII)
-> -#define RV1126_GMAC_PHY_INTF_SEL_RMII	GRF_FIELD(6, 4, PHY_INTF_SEL_RMII)
-> +#define RV1126_GMAC_PHY_INTF_SEL(val)	GRF_FIELD(6, 4, val)
->  #define RV1126_GMAC_FLOW_CTRL			GRF_BIT(7)
->  #define RV1126_GMAC_FLOW_CTRL_CLR		GRF_CLR_BIT(7)
->  #define RV1126_GMAC_M0_RXCLK_DLY_ENABLE		GRF_BIT(1)
-> @@ -1388,7 +1383,7 @@ static void rv1126_set_to_rgmii(struct rk_priv_data *bsp_priv,
->  				int tx_delay, int rx_delay)
->  {
->  	regmap_write(bsp_priv->grf, RV1126_GRF_GMAC_CON0,
-> -		     RV1126_GMAC_PHY_INTF_SEL_RGMII |
-> +		     RV1126_GMAC_PHY_INTF_SEL(PHY_INTF_SEL_RGMII) |
->  		     RV1126_GMAC_M0_RXCLK_DLY_ENABLE |
->  		     RV1126_GMAC_M0_TXCLK_DLY_ENABLE |
->  		     RV1126_GMAC_M1_RXCLK_DLY_ENABLE |
-> @@ -1406,7 +1401,7 @@ static void rv1126_set_to_rgmii(struct rk_priv_data *bsp_priv,
->  static void rv1126_set_to_rmii(struct rk_priv_data *bsp_priv)
->  {
->  	regmap_write(bsp_priv->grf, RV1126_GRF_GMAC_CON0,
-> -		     RV1126_GMAC_PHY_INTF_SEL_RMII);
-> +		     RV1126_GMAC_PHY_INTF_SEL(PHY_INTF_SEL_RMII));
->  }
->  
->  static const struct rk_gmac_ops rv1126_ops = {
+> I understand that you don't understand how I made efforts to build my 
+> work on top of Joseph's patches.
+
+Maybe a solution for this huge mess could be that Naoki submits
+unmodified patches from Joseph first, using the standard procedure
+for that, and then the additional patch(es) that improve Joseph's
+work?  All that in the same series.
 
 
 _______________________________________________
