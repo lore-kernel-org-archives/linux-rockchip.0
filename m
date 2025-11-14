@@ -4,86 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57C6ACDE029
-	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Nov 2025 08:25:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B8B5CDE036
+	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Nov 2025 08:29:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=me8IPH80+IWuqql2m19ssgzvNr65iUPp2tLwmLma5EQ=; b=BvTTjzUQfdqCT1
-	Rhktyq8KDzRVPgTj2tnyqCKRSbn1MDFwYBfJFWHBYwzyKPUSht/eOcUoRRmm3G63eaUN6CxWTn5MW
-	cQUaFs1CVJvCrJyE14QBGQbDFcCkCzi09qx33pTD2n7P0Ql9QUtOYRwMRr/gd4zHhLe+nuwHEp6l7
-	PnZiVo2aYzPZ3pkMr2Koji8kOC3SkxhNj3hfW6fFYhSboCKJXIzNX9D3f2cq0dSQqgHTwnmYgZZcd
-	Yv8KF7Jqm3KDw0PmXfjNSAhJWFSF6i08E6fyVcgrKnOogTUhnN9aPd0tskMYoup4hsP2L3sEOfGlY
-	ZVd8Dri0F5R12uT3YtPw==;
+	List-Owner; bh=by1KB/1VfN0N9prYFvmiQTq1Jn63XsF17lpLIJcmeRY=; b=PM6m6PCqViuBGu
+	WPl4ZvYefagNr0xmOsdKeUy7L8qdh7auNkZVthc+tynYUD03WAX55MYyOxMa6iwmg7FJxUUmbGyw8
+	WKIZsdEaCKG7T3x+N4FLg24aE1L3PvOIG7pUIknwVts0GPwjIOOjqWz9NNzkz5soUncu7WsH0oURu
+	P5T+EQ1FlfoI/usyV3bVE0Tg5wXSj4HKpKTZLN6KhYNeg7eHS/zTSGzA5s2SH6NqpiNyug+UfWXh5
+	Im0I7vG064iYb+OI1lUPk+glUz7bFp72py+pe8/B3LEUmgJinfc/6hhUSYchv2AnOSkJyMnRB65+d
+	uxy5ks3m6zzcLXl8xYlg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJp7N-0000000Bnzi-1EDw;
-	Fri, 14 Nov 2025 08:25:17 +0000
-Received: from smtpbguseast3.qq.com ([54.243.244.52])
+	id 1vJpBI-0000000BoEU-0DHy;
+	Fri, 14 Nov 2025 08:29:20 +0000
+Received: from smtpout-02.galae.net ([185.246.84.56])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJp7H-0000000BnyJ-3KB2
-	for linux-rockchip@lists.infradead.org;
-	Fri, 14 Nov 2025 08:25:13 +0000
-X-QQ-mid: zesmtpip4t1763108683t9c3db234
-X-QQ-Originating-IP: 9ZyJDVQ4LZgPZiWZJnOW197GCaBeve2Kh6ODwksgxkU=
-Received: from [IPV6:240f:10b:7440:1:1ea:c5f5: ( [localhost])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Fri, 14 Nov 2025 16:24:38 +0800 (CST)
-X-QQ-SSF: 0000000000000000000000000000000
-X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 6090844107252938263
-Message-ID: <A3AD69295D2E2D65+db2dc8bd-054f-4dda-9dd1-3cc0c0feed35@radxa.com>
-Date: Fri, 14 Nov 2025 17:24:38 +0900
+	id 1vJpBE-0000000BoDU-0yNR;
+	Fri, 14 Nov 2025 08:29:17 +0000
+Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
+	by smtpout-02.galae.net (Postfix) with ESMTPS id 6A2501A1A97;
+	Fri, 14 Nov 2025 08:29:14 +0000 (UTC)
+Received: from mail.galae.net (mail.galae.net [212.83.136.155])
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 35E3B6060E;
+	Fri, 14 Nov 2025 08:29:14 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 25B27102F2A6F;
+	Fri, 14 Nov 2025 09:29:08 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
+	t=1763108953; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:content-language:in-reply-to:references;
+	bh=99kk6ADwJQVpoUomIiVZyb9IQT8Tsaq87p7nc251R2M=;
+	b=jpPHcEKCQrtR8y6CY6wYdKqj6q7qb2cEk3NzXb4OcB+qW5M7Hs4K6zaJlv4gkbIZqUGimS
+	78MiyWgBTTB9PJCA0Z/jZU1pspwIU9GxSY4RBxdgktj/26PeYtHirVXVY2hZ/guFmOim3P
+	c+51i59CrilfH97U+YbCY/KCfq7Z2AOO/K4qiQEI+3u9DsyaoJt9es1SO+gqaghtrOy7oA
+	7446BZKro+Pmrs2Y+a+ZoKe1sHRTUgDHmNdlu0flsw6K6dv6GYq24sKP0VF1oLA6ljsnPa
+	aH5FqRpcJG67fqQDgtUm8F27se7SAhVsHDpqLmivjfkts5ljP00V/XPh9/7O3A==
+Message-ID: <a9e9b465-9e27-479e-8230-ab4a7f6be5b3@bootlin.com>
+Date: Fri, 14 Nov 2025 09:29:08 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 1/3] dt-bindings: arm: rockchip: Add Radxa CM5 IO Board
-To: Krzysztof Kozlowski <krzk@kernel.org>, heiko@sntech.de
-Cc: joseph.kogut@gmail.com, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, jonas@kwiboo.se, kever.yang@rock-chips.com,
- i@next.chainsx.cn, honyuenkwun@gmail.com, quentin.schulz@cherry.de,
- dsimic@manjaro.org, pbrobinson@gmail.com, amadeus@jmu.edu.cn,
- jbx6244@gmail.com, devicetree@vger.kernel.org,
- linux-rockchip@lists.infradead.org
-References: <20251105051335.17652-1-naoki@radxa.com>
- <20251105051335.17652-2-naoki@radxa.com>
- <ce6e6369-a7e4-4a35-80f8-70ef41c3b877@kernel.org>
- <A6C1199E2A0D3F37+f3fe0fd5-4ca5-4d3d-bc1d-45f46b48f89b@radxa.com>
- <93deab54-bd5e-433e-acbc-13f6ead47f43@kernel.org>
- <2177a0f0-68df-495c-b267-18e3d9b6ca80@kernel.org>
- <D88EE9EEB2B37D36+361d448f-d260-4d78-ae6b-abf1caabb94b@radxa.com>
- <b2833988-6319-4426-8a25-c0d34acffa47@kernel.org>
- <B6224BD6578686FF+dc81e00c-46f6-4791-af8a-99cf8e880f0c@radxa.com>
- <f112b806-b204-46b5-90b2-813ad5d0ceee@kernel.org>
+Subject: Re: [PATCH net-next 3/4] net: stmmac: rk: use PHY_INTF_SEL_x
+ constants
+To: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>,
+ Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>
+Cc: Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Heiko Stuebner <heiko@sntech.de>, Jakub Kicinski <kuba@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, netdev@vger.kernel.org,
+ Paolo Abeni <pabeni@redhat.com>
+References: <aRYZaKTIvfYoV3wE@shell.armlinux.org.uk>
+ <E1vJbPB-0000000EBqV-27GS@rmk-PC.armlinux.org.uk>
+From: Maxime Chevallier <maxime.chevallier@bootlin.com>
 Content-Language: en-US
-From: FUKAUMI Naoki <naoki@radxa.com>
-In-Reply-To: <f112b806-b204-46b5-90b2-813ad5d0ceee@kernel.org>
-X-QQ-SENDSIZE: 520
-Feedback-ID: zesmtpip:radxa.com:qybglogicsvrsz:qybglogicsvrsz4b-0
-X-QQ-XMAILINFO: NjYyKOSR1rOTz3pOGbf6hIumy+AbiGnuN2GcsRKVBSsfIR7GRv6W/IUR
-	emSzFX81BsxACQcftfEVL8fp+bcpNuy/5k3EPZYRwokeDaCKMViQPMP7t4/GWQxIUxEtcup
-	G5SAf0Z0/PVESvOAQ18Sn5j1/UMPVW/upnMqEgBjHix5LieeUq/zt1+u2E6aN17fwew0FAK
-	F/7TYDBZk3uo3mT7+b1qa+uQOPpKOKWNgc0+7FdGwHw7K8p/7WXG+Ca3WUfnRfBm84yjTkQ
-	2YiYBx414OfUgDk9AEIjzmay7lgE8QwPHTHZnho2Q2+4Qx5gBTmNqiVmoXBOXsg9WqmQZ3a
-	1GSRR9NUZz9a3OIOTzL0FwUpuoyAB2G1BRWKmeQoCYFvy6qxfibeIqjqD/9cNWuBl1xy3oh
-	ndq1wVayzvZ0xRopFfpDwGhcfHnYnqcE2+5EQxU9ZlDDZUerMCR5Vmd0naQyYKgoaQuOwC7
-	izHjJ0Z/DrgS+oQ7lfX4xhhtxyitHQ9aF1u3xAQ2m9bylMbkyamWgPOAjiwtN/BwHPjKyES
-	3897x+H0OET747ObSNjuBo20s30InxqSwSCvm4bU0g28ZA+WXR+wRyzt3I7YtF3NDoczrey
-	RJ8aaKzOAycA7nF9T9OG5IdGwYoJ7vRusORzowx/buRnRMn0jSWHbEU0uwsLu+XpOWbu1+R
-	gxtknVMQvc+FHwaPXteWmF9qr7dnZ0eJo0qBc0c+jOPm54vN5e3/LwSLLhyJnCv6LhT2C60
-	4R2EpQ9R10O+3IjEdn7nytAVQCop8zT+1pPdm3zwowhO47oLsPM5art5+uZ2wm+WRRwxpwV
-	/4HbwMMTpKeS0zkGgACE7pS61qKrrHBbguE+FV245+AGLzpbfUc3Nwgcoz/K/TyGLIIDeel
-	DJJ3sJp2ijQVcri045rjiufyqn3gcANsQdWZwz8z6daxdLhjdNr3uiZna74f/xKTi0wfxs6
-	ELC5GoLAxugyzaNPCB1ogUlSQuSXW6uGEmFrUNcuwQIMdWO6Bz+GHoZNC2njBRBp8zssT+c
-	V3Aq3zAvwgueYVOZLSjRE5wivZutOn31QtVLEqU24GWDt4secrfmrBIpetq6WJOXx7Wb+zK
-	evUK4qmDvvydyVZuEFSPeJQQbeGi4trpA==
-X-QQ-XMRINFO: NS+P29fieYNw95Bth2bWPxk=
-X-QQ-RECHKSPAM: 0
+In-Reply-To: <E1vJbPB-0000000EBqV-27GS@rmk-PC.armlinux.org.uk>
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251114_002512_398287_EF2A05DD 
-X-CRM114-Status: GOOD (  15.26  )
+X-CRM114-CacheID: sfid-20251114_002916_408140_5411A808 
+X-CRM114-Status: GOOD (  12.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,93 +79,172 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 11/14/25 16:51, Krzysztof Kozlowski wrote:
-> On 14/11/2025 08:47, FUKAUMI Naoki wrote:
->> On 11/14/25 16:42, Krzysztof Kozlowski wrote:
->>> On 14/11/2025 08:37, FUKAUMI Naoki wrote:
->>>> Hi Krzysztof,
->>>>
->>>> On 11/14/25 16:12, Krzysztof Kozlowski wrote:
->>>>> On 05/11/2025 08:08, Krzysztof Kozlowski wrote:
->>>>>> On 05/11/2025 07:57, FUKAUMI Naoki wrote:
->>>>>>> On 11/5/25 15:43, Krzysztof Kozlowski wrote:
->>>>>>>> On 05/11/2025 06:13, FUKAUMI Naoki wrote:
->>>>>>>>> Add device tree binding documentation for the Radxa CM5 IO Board.
->>>>>>>>>
->>>>>>>>> Link: https://dl.radxa.com/cm5/radxa_cm5_product_brief.pdf
->>>>>>>>> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
->>>>>>>>> Signed-off-by: Joseph Kogut <joseph.kogut@gmail.com>
->>>>>>>>
->>>>>>>> Wrong DCO chain.
->>>>>>>>
->>>>>>>>> ---
->>>>>>>>>      Documentation/devicetree/bindings/arm/rockchip.yaml | 7 +++++++
->>>>>>>>
->>>>>>>> NAK, you just stolen ownership of an already posted patch.
->>>>>>>
->>>>>>> Read "Changes in v6" and patches; my patches are not the same as v5.
->>>>>>> Your reply is totally inappropriate.
->>>>>>
->>>>>> Inappropriate is taking authorship of someone's patch, because we all
->>>>>> expect to preserve the original authorship. That's not only basic
->>>>>> decency but actually a standard.
->>>>>>
->>>>>> Additionally, read Joseph's reply that he wants to continue the work:
->>>>>> https://lore.kernel.org/all/CAMWSM7iHtAxewW4JkRqRsifVnccqeFviaCgeOyprKDr92FOurg@mail.gmail.com/
->>>>>>
->>>>>> You clearly do not understand how to continue with someone's work.
->>>>>>
->>>>>> It is still a NAK.
->>>>>
->>>>> And I still wait for justification why you took authorship of this
->>>>> patch, because to my eye you changed here nothing.
->>>>>
->>>>> So what did you change HERE that you think you are the author now?
->>>>
->>>> Changes in v6:
->>>> (Patch 1/3)
->>>> - Fix description; "Radxa CM5" is the correct name
->>>
->>> HERE, in this patch. Don't paste me hundreds of unrelated code. Write
->>> concise and precise answers/comments.
->>
->> https://lore.kernel.org/linux-rockchip/AE0735A6C797CCFF+10496d73-7c0a-4884-9561-24721305a24f@radxa.com/
->>
->> | By the way, at some point I switched from "continuing your work" to
->> | "recreating a new one based on my current work." The results of my
->> | current work(*3) have changed significantly.
+
+
+On 13/11/2025 18:46, Russell King (Oracle) wrote:
+> The values used in the xxx_GMAC_PHY_INTF_SEL_xxx() macros are the
+> phy_intf_sel values used for the dwmac core. Use these to define these
+> constants.
 > 
-> So next time I will take your patch, your code, say "I recreated it" and
-> submit under my authorship and for you it is fine?
-
-Regarding CM5 patches, I'm fine.
-
-> Please take Joseph's patch instead. Read submitting patches doc to
-> understand which one more tag has to be added when sending somoene
-> else's work.
+> No change to produced code on aarch64.
 > 
-> In the future, I sincerely suggest avoiding re-creating people's work
-> but building on top, because you just duplicate the effort.
+> Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
 
-I understand that you don't understand how I made efforts to build my 
-work on top of Joseph's patches.
+Reviewed-by: Maxime Chevallier <maxime.chevallier@bootlin.com>
 
-Thank you for your attention.
+Maxime
 
-Best regards,
-
---
-FUKAUMI Naoki
-Radxa Computer (Shenzhen) Co., Ltd.
-
-> Best regards,
-> Krzysztof
+> ---
+>  .../net/ethernet/stmicro/stmmac/dwmac-rk.c    | 46 +++++++++----------
+>  1 file changed, 23 insertions(+), 23 deletions(-)
 > 
+> diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+> index 4257cc1f66e9..49076ee00877 100644
+> --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+> +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+> @@ -234,7 +234,7 @@ static void rk_gmac_integrated_fephy_powerdown(struct rk_priv_data *priv,
+>  #define PX30_GRF_GMAC_CON1		0x0904
+>  
+>  /* PX30_GRF_GMAC_CON1 */
+> -#define PX30_GMAC_PHY_INTF_SEL_RMII	GRF_FIELD(6, 4, 4)
+> +#define PX30_GMAC_PHY_INTF_SEL_RMII	GRF_FIELD(6, 4, PHY_INTF_SEL_RMII)
+>  #define PX30_GMAC_SPEED_10M		GRF_CLR_BIT(2)
+>  #define PX30_GMAC_SPEED_100M		GRF_BIT(2)
+>  
+> @@ -290,8 +290,8 @@ static const struct rk_gmac_ops px30_ops = {
+>  #define RK3128_GMAC_CLK_TX_DL_CFG(val) GRF_FIELD(6, 0, val)
+>  
+>  /* RK3128_GRF_MAC_CON1 */
+> -#define RK3128_GMAC_PHY_INTF_SEL_RGMII GRF_FIELD(8, 6, 1)
+> -#define RK3128_GMAC_PHY_INTF_SEL_RMII  GRF_FIELD(8, 6, 4)
+> +#define RK3128_GMAC_PHY_INTF_SEL_RGMII GRF_FIELD(8, 6, PHY_INTF_SEL_RGMII)
+> +#define RK3128_GMAC_PHY_INTF_SEL_RMII  GRF_FIELD(8, 6, PHY_INTF_SEL_RMII)
+>  #define RK3128_GMAC_FLOW_CTRL          GRF_BIT(9)
+>  #define RK3128_GMAC_FLOW_CTRL_CLR      GRF_CLR_BIT(9)
+>  #define RK3128_GMAC_SPEED_10M          GRF_CLR_BIT(10)
+> @@ -353,8 +353,8 @@ static const struct rk_gmac_ops rk3128_ops = {
+>  #define RK3228_GMAC_CLK_TX_DL_CFG(val)	GRF_FIELD(6, 0, val)
+>  
+>  /* RK3228_GRF_MAC_CON1 */
+> -#define RK3228_GMAC_PHY_INTF_SEL_RGMII	GRF_FIELD(6, 4, 1)
+> -#define RK3228_GMAC_PHY_INTF_SEL_RMII	GRF_FIELD(6, 4, 4)
+> +#define RK3228_GMAC_PHY_INTF_SEL_RGMII	GRF_FIELD(6, 4, PHY_INTF_SEL_RGMII)
+> +#define RK3228_GMAC_PHY_INTF_SEL_RMII	GRF_FIELD(6, 4, PHY_INTF_SEL_RMII)
+>  #define RK3228_GMAC_FLOW_CTRL		GRF_BIT(3)
+>  #define RK3228_GMAC_FLOW_CTRL_CLR	GRF_CLR_BIT(3)
+>  #define RK3228_GMAC_SPEED_10M		GRF_CLR_BIT(2)
+> @@ -432,8 +432,8 @@ static const struct rk_gmac_ops rk3228_ops = {
+>  #define RK3288_GRF_SOC_CON3	0x0250
+>  
+>  /*RK3288_GRF_SOC_CON1*/
+> -#define RK3288_GMAC_PHY_INTF_SEL_RGMII	GRF_FIELD(8, 6, 1)
+> -#define RK3288_GMAC_PHY_INTF_SEL_RMII	GRF_FIELD(8, 6, 4)
+> +#define RK3288_GMAC_PHY_INTF_SEL_RGMII	GRF_FIELD(8, 6, PHY_INTF_SEL_RGMII)
+> +#define RK3288_GMAC_PHY_INTF_SEL_RMII	GRF_FIELD(8, 6, PHY_INTF_SEL_RMII)
+>  #define RK3288_GMAC_FLOW_CTRL		GRF_BIT(9)
+>  #define RK3288_GMAC_FLOW_CTRL_CLR	GRF_CLR_BIT(9)
+>  #define RK3288_GMAC_SPEED_10M		GRF_CLR_BIT(10)
+> @@ -496,7 +496,7 @@ static const struct rk_gmac_ops rk3288_ops = {
+>  #define RK3308_GRF_MAC_CON0		0x04a0
+>  
+>  /* RK3308_GRF_MAC_CON0 */
+> -#define RK3308_GMAC_PHY_INTF_SEL_RMII	GRF_FIELD(4, 2, 4)
+> +#define RK3308_GMAC_PHY_INTF_SEL_RMII	GRF_FIELD(4, 2, PHY_INTF_SEL_RMII)
+>  #define RK3308_GMAC_FLOW_CTRL		GRF_BIT(3)
+>  #define RK3308_GMAC_FLOW_CTRL_CLR	GRF_CLR_BIT(3)
+>  #define RK3308_GMAC_SPEED_10M		GRF_CLR_BIT(0)
+> @@ -535,8 +535,8 @@ static const struct rk_gmac_ops rk3308_ops = {
+>  #define RK3328_GMAC_CLK_TX_DL_CFG(val)	GRF_FIELD(6, 0, val)
+>  
+>  /* RK3328_GRF_MAC_CON1 */
+> -#define RK3328_GMAC_PHY_INTF_SEL_RGMII	GRF_FIELD(6, 4, 1)
+> -#define RK3328_GMAC_PHY_INTF_SEL_RMII	GRF_FIELD(6, 4, 4)
+> +#define RK3328_GMAC_PHY_INTF_SEL_RGMII	GRF_FIELD(6, 4, PHY_INTF_SEL_RGMII)
+> +#define RK3328_GMAC_PHY_INTF_SEL_RMII	GRF_FIELD(6, 4, PHY_INTF_SEL_RMII)
+>  #define RK3328_GMAC_FLOW_CTRL		GRF_BIT(3)
+>  #define RK3328_GMAC_FLOW_CTRL_CLR	GRF_CLR_BIT(3)
+>  #define RK3328_GMAC_SPEED_10M		GRF_CLR_BIT(2)
+> @@ -622,8 +622,8 @@ static const struct rk_gmac_ops rk3328_ops = {
+>  #define RK3366_GRF_SOC_CON7	0x041c
+>  
+>  /* RK3366_GRF_SOC_CON6 */
+> -#define RK3366_GMAC_PHY_INTF_SEL_RGMII	GRF_FIELD(11, 9, 1)
+> -#define RK3366_GMAC_PHY_INTF_SEL_RMII	GRF_FIELD(11, 9, 4)
+> +#define RK3366_GMAC_PHY_INTF_SEL_RGMII	GRF_FIELD(11, 9, PHY_INTF_SEL_RGMII)
+> +#define RK3366_GMAC_PHY_INTF_SEL_RMII	GRF_FIELD(11, 9, PHY_INTF_SEL_RMII)
+>  #define RK3366_GMAC_FLOW_CTRL		GRF_BIT(8)
+>  #define RK3366_GMAC_FLOW_CTRL_CLR	GRF_CLR_BIT(8)
+>  #define RK3366_GMAC_SPEED_10M		GRF_CLR_BIT(7)
+> @@ -687,8 +687,8 @@ static const struct rk_gmac_ops rk3366_ops = {
+>  #define RK3368_GRF_SOC_CON16	0x0440
+>  
+>  /* RK3368_GRF_SOC_CON15 */
+> -#define RK3368_GMAC_PHY_INTF_SEL_RGMII	GRF_FIELD(11, 9, 1)
+> -#define RK3368_GMAC_PHY_INTF_SEL_RMII	GRF_FIELD(11, 9, 4)
+> +#define RK3368_GMAC_PHY_INTF_SEL_RGMII	GRF_FIELD(11, 9, PHY_INTF_SEL_RGMII)
+> +#define RK3368_GMAC_PHY_INTF_SEL_RMII	GRF_FIELD(11, 9, PHY_INTF_SEL_RMII)
+>  #define RK3368_GMAC_FLOW_CTRL		GRF_BIT(8)
+>  #define RK3368_GMAC_FLOW_CTRL_CLR	GRF_CLR_BIT(8)
+>  #define RK3368_GMAC_SPEED_10M		GRF_CLR_BIT(7)
+> @@ -752,8 +752,8 @@ static const struct rk_gmac_ops rk3368_ops = {
+>  #define RK3399_GRF_SOC_CON6	0xc218
+>  
+>  /* RK3399_GRF_SOC_CON5 */
+> -#define RK3399_GMAC_PHY_INTF_SEL_RGMII	GRF_FIELD(11, 9, 1)
+> -#define RK3399_GMAC_PHY_INTF_SEL_RMII	GRF_FIELD(11, 9, 4)
+> +#define RK3399_GMAC_PHY_INTF_SEL_RGMII	GRF_FIELD(11, 9, PHY_INTF_SEL_RGMII)
+> +#define RK3399_GMAC_PHY_INTF_SEL_RMII	GRF_FIELD(11, 9, PHY_INTF_SEL_RMII)
+>  #define RK3399_GMAC_FLOW_CTRL		GRF_BIT(8)
+>  #define RK3399_GMAC_FLOW_CTRL_CLR	GRF_CLR_BIT(8)
+>  #define RK3399_GMAC_SPEED_10M		GRF_CLR_BIT(7)
+> @@ -1015,8 +1015,8 @@ static const struct rk_gmac_ops rk3528_ops = {
+>  #define RK3568_GRF_GMAC1_CON1		0x038c
+>  
+>  /* RK3568_GRF_GMAC0_CON1 && RK3568_GRF_GMAC1_CON1 */
+> -#define RK3568_GMAC_PHY_INTF_SEL_RGMII	GRF_FIELD(6, 4, 1)
+> -#define RK3568_GMAC_PHY_INTF_SEL_RMII	GRF_FIELD(6, 4, 4)
+> +#define RK3568_GMAC_PHY_INTF_SEL_RGMII	GRF_FIELD(6, 4, PHY_INTF_SEL_RGMII)
+> +#define RK3568_GMAC_PHY_INTF_SEL_RMII	GRF_FIELD(6, 4, PHY_INTF_SEL_RMII)
+>  #define RK3568_GMAC_FLOW_CTRL			GRF_BIT(3)
+>  #define RK3568_GMAC_FLOW_CTRL_CLR		GRF_CLR_BIT(3)
+>  #define RK3568_GMAC_RXCLK_DLY_ENABLE		GRF_BIT(1)
+> @@ -1209,9 +1209,9 @@ static const struct rk_gmac_ops rk3576_ops = {
+>  #define RK3588_GRF_CLK_CON1			0X0070
+>  
+>  #define RK3588_GMAC_PHY_INTF_SEL_RGMII(id)	\
+> -	(GRF_FIELD(5, 3, 1) << ((id) * 6))
+> +	(GRF_FIELD(5, 3, PHY_INTF_SEL_RGMII) << ((id) * 6))
+>  #define RK3588_GMAC_PHY_INTF_SEL_RMII(id)	\
+> -	(GRF_FIELD(5, 3, 4) << ((id) * 6))
+> +	(GRF_FIELD(5, 3, PHY_INTF_SEL_RMII) << ((id) * 6))
+>  
+>  #define RK3588_GMAC_CLK_RMII_MODE(id)		GRF_BIT(5 * (id))
+>  #define RK3588_GMAC_CLK_RGMII_MODE(id)		GRF_CLR_BIT(5 * (id))
+> @@ -1328,7 +1328,7 @@ static const struct rk_gmac_ops rk3588_ops = {
+>  #define RV1108_GRF_GMAC_CON0		0X0900
+>  
+>  /* RV1108_GRF_GMAC_CON0 */
+> -#define RV1108_GMAC_PHY_INTF_SEL_RMII	GRF_FIELD(6, 4, 4)
+> +#define RV1108_GMAC_PHY_INTF_SEL_RMII	GRF_FIELD(6, 4, PHY_INTF_SEL_RMII)
+>  #define RV1108_GMAC_FLOW_CTRL		GRF_BIT(3)
+>  #define RV1108_GMAC_FLOW_CTRL_CLR	GRF_CLR_BIT(3)
+>  #define RV1108_GMAC_SPEED_10M		GRF_CLR_BIT(2)
+> @@ -1364,8 +1364,8 @@ static const struct rk_gmac_ops rv1108_ops = {
+>  #define RV1126_GRF_GMAC_CON2		0X0078
+>  
+>  /* RV1126_GRF_GMAC_CON0 */
+> -#define RV1126_GMAC_PHY_INTF_SEL_RGMII	GRF_FIELD(6, 4, 1)
+> -#define RV1126_GMAC_PHY_INTF_SEL_RMII	GRF_FIELD(6, 4, 4)
+> +#define RV1126_GMAC_PHY_INTF_SEL_RGMII	GRF_FIELD(6, 4, PHY_INTF_SEL_RGMII)
+> +#define RV1126_GMAC_PHY_INTF_SEL_RMII	GRF_FIELD(6, 4, PHY_INTF_SEL_RMII)
+>  #define RV1126_GMAC_FLOW_CTRL			GRF_BIT(7)
+>  #define RV1126_GMAC_FLOW_CTRL_CLR		GRF_CLR_BIT(7)
+>  #define RV1126_GMAC_M0_RXCLK_DLY_ENABLE		GRF_BIT(1)
 
 
 _______________________________________________
