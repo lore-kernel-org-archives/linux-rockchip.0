@@ -4,74 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48696CE7A9A
-	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Nov 2025 09:16:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47313CE7A9A
+	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Nov 2025 09:22:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fHqiE8WPSuHLq6uNg+/B42k9/zwa+OUz1PUO0mjmdUc=; b=wojyGl4Ka1vdEW
-	sBNFUToGh4t/odxAYFDdmGgX50E4pmon17oRbeStrgxh+QOp4hOFGBqkSSUXJoWrqdwlpwBiUFiww
-	wCuVrTlG/DwTr7czuDrcbzF85c+9hG1w8zjjxQmA3Z/6hdynLzBCG0p6hGXirbxCOgqx3t6Z7WkRB
-	ozoER+UQwRv5uwioy406/bjeaBBdeWivVp04FlAklX0da/RJWUuvf66m3kdCWEb1BIqtHDxwVQUFM
-	PVRitrBn5wK7prS1F7HBngplQ4hMhKMVxltSacXdg/VleGP2mj5uCtWU07Wd26w4gF6IJg9PctiLm
-	Mm1s6f/WlMgcfQdu7FIA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=FNSlIs8YamqVH7bQjQ/FsZqsUV2N0FOXhfK6kUxUmfk=; b=zBjyfM6lNEssFE
+	VEFuT85Mzm8RCzzuHOUzA5VXwwU5cZzboPA45/8HKY7l5bxXqrqD1KLKhSHL5pLU4PYwfhonNMTDr
+	S9R9k9NjyzsxyL7v6ap6jTBwCZrI8okOfZ0GZ8BpYQYc2mPug9mOJCe8O4wL1wGi38RNmDH/B2YTd
+	G4EFfBOWoo7onTBJURxvBuWGtLNSDjRgzzmg5lrq3wxmlYlVXTHo6GMlzB8gdOPM5jZXuPyTTaMdx
+	WDzzNeS13w7qqkh01iuGcW+kWlsqKvJweC1n+x4i+Mq858/yZmrwAsWBpcX8ZsL0hQKUpYGZj29Tk
+	CzfqgDrHhkcipHfQKIMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJpv2-0000000BstZ-0vWT;
-	Fri, 14 Nov 2025 09:16:36 +0000
-Received: from mail-m1973171.qiye.163.com ([220.197.31.71])
+	id 1vJq0G-0000000Bu1J-2hnq;
+	Fri, 14 Nov 2025 09:22:00 +0000
+Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJpuz-0000000Bspp-2T5V;
-	Fri, 14 Nov 2025 09:16:35 +0000
-Received: from [172.16.12.129] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 29992e5be;
-	Fri, 14 Nov 2025 17:16:22 +0800 (GMT+08:00)
-Message-ID: <e8524bf8-a90c-423f-8a58-9ef05a3db1dd@rock-chips.com>
-Date: Fri, 14 Nov 2025 17:16:21 +0800
+	id 1vJq0E-0000000Bu0u-0Zua
+	for linux-rockchip@lists.infradead.org;
+	Fri, 14 Nov 2025 09:21:59 +0000
+Received: by mail-pf1-x443.google.com with SMTP id d2e1a72fcca58-7b8bbf16b71so1997081b3a.2
+        for <linux-rockchip@lists.infradead.org>; Fri, 14 Nov 2025 01:21:57 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1763112116; x=1763716916; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=ogBfguXD7Ae9sdv5N65XJUo3sy7Qes6+8do/Cavegx8=;
+        b=cJ3SQpupRs9CaucqtXR5NQVHqApT0m40BAcpKFVgpCjRl5GrzrAmQxigyXxAuE6B5u
+         zn5HFqEzXtticcr0qAuUSJAp9TPLM7lkgVoNryEXwG6BxyYFbHfFd2445DVR55HZxZbU
+         PnxTyfqAw+Lw0rKaPUq/+LbUIc0dywliaZz9si4siMWPm8pMkXVEiMvm4u3cXHxRtSjN
+         rbsyiH6nF5hF3zfyRcDz7vX4nKwrKfia282f2Pf1WdOTGcl0M1eFaaSTdZ1VzZA3XNJy
+         kb5WNc00QsezKl8nl2FP35XbjpvUK4grJRuOttheOx1jDUgnoTJeQ2ErmbHfnlK8FpoO
+         l9jA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1763112116; x=1763716916;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=ogBfguXD7Ae9sdv5N65XJUo3sy7Qes6+8do/Cavegx8=;
+        b=jlYXMcszUWHdzo9JfsCG9e+ik2mZBiBzZi8Ue6WTiofr7nIyC6oi4IFCEueHSbyerj
+         qpU8/lK1HP9rak1xfC4fiekuviBxL/vUKIyKc3iZD1YmEArA3+0aOI77FP46DkDIVNqL
+         nDaxRUBU7/53v1wEmJt13/IGCoPTrb1oH5qSSr6buosqWBAwDXcT0O4d5/7OtSyhrJCN
+         pUmVAlSCij4Lm9oYa6I5fe2Cd2SWfGUFN728ec9P2oMRo+Jur9A9yPEGgSTT0VFryVva
+         5DJ65WDi/gdAmOUwgcKww2O0ZJxKYPkkxUbhEEe5gEEXXOuv2jLvL3Wygp+8D6SVu03a
+         PBhA==
+X-Gm-Message-State: AOJu0Yz58zf9AijQX8Hei34WSPeLPzGCIS+MNv/YLI1TrIaAcjc6sEOl
+	DNLQwcO74ZDLQFtkTtDdvHB957isMMMxcmt/mwk6WhIcBCFzrFwOE32c
+X-Gm-Gg: ASbGncsYSz2HvpoSFq+dRZF1vO5NCrSOC/1feJtZRRfKpogdLs1T+gdEQM0x1fxNyGi
+	s24jFLwXmd2VlmJhrnami/4U2SQuoaRcbE4xsDqn8NwKvdMta0dhkTR3uW+t+BTzoCcDPNViRb0
+	4fOOBh8R4qIxANlULnjfqcy4qhsfgruaTbzDoApT7mVHQa04AajfdhfJxb0VeMhQBLgxaMa+/Hs
+	MwzFml2bMpJK+sXnoKv2ma80wEGE/qmSmwHnT2NS/SBPI3roxlD5e0nVHjlekfnnHAYrHtZWV5k
+	6PNWrLMfgZ2Kd9mySTmO9rkAnQ2BaWFWrJw0KLWysmeEDvd2bZqhOvmgWBB+U2F/bcHRRGGxvQp
+	7si7+7R8n3p4alMZOfcevV/NeLtAwmqA0t9afkGoUoCzDu2TKkFrWuII7ScXICIaKTRGoHltaEV
+	myVxrsPFHjictKljB9N97Fw342lNyR7Y0=
+X-Google-Smtp-Source: AGHT+IEhsyOsCml87IDQ+/migcKkz7/6nfsGW9PsXw3MVrtaRXA9qORv9YMVhPaGW2b4NkVyDAjapw==
+X-Received: by 2002:a05:6a20:7484:b0:34f:7454:b977 with SMTP id adf61e73a8af0-35ba1d9c6dbmr3508359637.48.1763112116399;
+        Fri, 14 Nov 2025 01:21:56 -0800 (PST)
+Received: from server.lan ([150.230.217.250])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-7b9256b58dcsm4578400b3a.32.2025.11.14.01.21.49
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 14 Nov 2025 01:21:55 -0800 (PST)
+From: Coia Prant <coiaprant@gmail.com>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Coia Prant <coiaprant@gmail.com>
+Subject: [PATCH] arm64: dts: rockchip: fix PCIe 3.3V regulator voltage on 9Tripod X3568 v4
+Date: Fri, 14 Nov 2025 17:21:15 +0800
+Message-ID: <20251114092114.62664-2-coiaprant@gmail.com>
+X-Mailer: git-send-email 2.47.3
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Cc: shawn.lin@rock-chips.com, Lorenzo Pieralisi <lpieralisi@kernel.org>,
- =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
- Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>,
- Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>,
- linux-pci <linux-pci@vger.kernel.org>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
- linux-kernel <linux-kernel@vger.kernel.org>,
- devicetree <devicetree@vger.kernel.org>, krzk+dt <krzk+dt@kernel.org>,
- conor+dt <conor+dt@kernel.org>, Johan Jonker <jbx6244@gmail.com>,
- linux-rockchip <linux-rockchip@lists.infradead.org>,
- Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@vrull.eu>,
- Kever Yang <kever.yang@rock-chips.com>, Tom Rini <trini@konsulko.com>,
- u-boot@lists.denx.de, =?UTF-8?B?5byg54Oo?= <ye.zhang@rock-chips.com>
-Subject: Re: [PATCH] arm64: dts: rockchip: align bindings to PCIe spec
-To: Geraldo Nascimento <geraldogabriel@gmail.com>
-References: <4b5ffcccfef2a61838aa563521672a171acb27b2.1762321976.git.geraldogabriel@gmail.com>
- <ba120577-42da-424d-8102-9d085c1494c8@rock-chips.com>
- <aQsIXcQzeYop6a0B@geday>
- <67b605b0-7046-448a-bc9b-d3ac56333809@rock-chips.com>
- <aQ1c7ZDycxiOIy8Y@geday>
- <d9e257bd-806c-48b4-bb22-f1342e9fc15a@rock-chips.com>
- <aRLEbfsmXnGwyigS@geday>
- <AGsAmwCFJj0ZQ4vKzrqC84rs.3.1762847224180.Hmail.ye.zhang@rock-chips.com>
- <aRQ_R90S8T82th45@geday> <aRUvr0UggTYkkCZ_@geday> <aRazCssWVdAOmy7D@geday>
-From: Shawn Lin <shawn.lin@rock-chips.com>
-In-Reply-To: <aRazCssWVdAOmy7D@geday>
-X-HM-Tid: 0a9a81a6c7ff09cckunm83f5efda44ea74
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQhgYQlZCQx9JSU5DSkNPSh9WFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=OanU7ELuu0i6QxNwaBwYgLpQCUE6kBkXnosBpB5xJa+/1c8gaH9JjY3Crn4xM7igJavW9mLTplYkYMO2WXlXr40/yHnKDOGRpyQQRywI3wvtfothQLLLSpusqui0Vwx57upf1ejVQaFOQ/Bxnq8U70SFQxa91P3HMX8M5OD1UuE=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=pAiVqyQ+kiQN8Phi43cHK6Tl1rhV/2RbqIHqDBjVGzk=;
-	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251114_011634_080695_7AA14A8D 
-X-CRM114-Status: GOOD (  20.39  )
+X-CRM114-CacheID: sfid-20251114_012158_175757_E8840A42 
+X-CRM114-Status: UNSURE (   8.77  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,63 +93,55 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-5ZyoIDIwMjUvMTEvMTQg5pif5pyf5LqUIDEyOjQxLCBHZXJhbGRvIE5hc2NpbWVudG8g5YaZ6YGT
-Ogo+IE9uIFdlZCwgTm92IDEyLCAyMDI1IGF0IDEwOjA5OjE1UE0gLTAzMDAsIEdlcmFsZG8gTmFz
-Y2ltZW50byB3cm90ZToKPj4gSGkgWWUsIFNoYXduLAo+Pgo+PiBIZXJlJ3MgbW9yZSBjb250YWlu
-ZWQgd29ya2Fyb3VuZCB3aXRob3V0IHJlc29ydGluZyB0byBjbGVhcmluZyBERFIgdG8KPj4gSU5Q
-VVQgZm9yIGV2ZXJ5IEdQSU86Cj4+Cj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3BjaS9jb250cm9s
-bGVyL3BjaWUtcm9ja2NoaXAtaG9zdC5jIGIvZHJpdmVycy9wY2kvY29udHJvbGxlci9wY2llLXJv
-Y2tjaGlwLWhvc3QuYwo+PiBpbmRleCBlZTE4MjJjYTAxZGIuLjFkODkxMzFlYzZhYyAxMDA2NDQK
-Pj4gLS0tIGEvZHJpdmVycy9wY2kvY29udHJvbGxlci9wY2llLXJvY2tjaGlwLWhvc3QuYwo+PiAr
-KysgYi9kcml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaWUtcm9ja2NoaXAtaG9zdC5jCj4+IEBAIC0z
-MTUsNyArMzE1LDggQEAgc3RhdGljIGludCByb2NrY2hpcF9wY2llX2hvc3RfaW5pdF9wb3J0KHN0
-cnVjdCByb2NrY2hpcF9wY2llICpyb2NrY2hpcCkKPj4gICAJCQkgICAgUENJRV9DTElFTlRfQ09O
-RklHKTsKPj4gICAKPj4gICAJbXNsZWVwKFBDSUVfVF9QVlBFUkxfTVMpOwo+PiAtCWdwaW9kX3Nl
-dF92YWx1ZV9jYW5zbGVlcChyb2NrY2hpcC0+cGVyc3RfZ3BpbywgMSk7Cj4+ICsJZ3Bpb2RfZGly
-ZWN0aW9uX2lucHV0KHJvY2tjaGlwLT5wZXJzdF9ncGlvKTsKPj4gKwlncGlvZF9kaXJlY3Rpb25f
-b3V0cHV0KHJvY2tjaGlwLT5wZXJzdF9ncGlvLCAxKTsKPj4gICAKPj4gICAJbXNsZWVwKFBDSUVf
-UkVTRVRfQ09ORklHX1dBSVRfTVMpOwo+PiAgIAo+PiBUaGlzIHJlc3VsdHMgaW4gd29ya2luZyBQ
-Q0llIGZvciBtZSwgcGFzcyBpbml0aWFsIGxpbmsgdHJhaW5pbmcuCj4gCj4gU29ycnkgZm9yIHRo
-ZSBpbmNvbnZlbmllbmNlIG9mIG1vcmUgbWFpbCwgYnV0IEknbSBwcm92aWRpbmcgYXMgbXVjaAo+
-IGRldGFpbCBhcyBJIGNhbi4KPiAKCkRvbid0IHdvcnJ5LCBpdCdzIGhlbHBmdWwsIHNvIEkgdGhp
-bmsgWWUgY291bGQgaGF2ZSBhIGxvb2suCk1heSBJIGFzayBpZiB0aGUgZmFpbHVyZSBvbmx5IGhh
-cHBlbmVkIHRvIG9uZSBzcGVjaWZpYyBib2FyZD8KCkFub3RoZXIgdGhpbmcgSSBub3RpY2VkIGlz
-IGFib3V0IG9uZSBjb21taXQ6CjExNGIwNmVlMTA4YyAoIlBDSTogcm9ja2NoaXA6IFNldCBUYXJn
-ZXQgTGluayBTcGVlZCB0byA1LjAgR1QvcyBiZWZvcmUgCnJldHJhaW5pbmciKQoKSXQgc2FpZDog
-IlJvY2tjaGlwIGNvbnRyb2xsZXJzIGNhbiBzdXBwb3J0IHVwIHRvIDUuMCBHVC9zIGxpbmsgc3Bl
-ZWQuIgpCdXQgd2UgaXNzdWVkIGFuIGVycmF0YSBsb25nIHRpbWUgYWdvIHRvIGFubm91bmNlZCBp
-dCBkb2Vzbid0LCB5b3UgY291bGQKYWxzbyBjaGVjayB0aGUgUENJZSBwYXJ0IG9mIFJLMzM5OSBk
-YXRhc2hlZXQ6Cmh0dHBzOi8vb3BlbnNvdXJjZS5yb2NrLWNoaXBzLmNvbS9pbWFnZXMvZC9kNy9S
-b2NrY2hpcF9SSzMzOTlfRGF0YXNoZWV0X1YyLjEtMjAyMDAzMjMucGRmCgpBbHNvIHdlIHNldCBt
-YXgtbGluay1zcGVlZCB0byBPTkUgaW4gcmszMzk5LWJhc2UuZHRzaSBidXQgc2VlbXMgYW5vdGhl
-cgpwYXRjaCBzbGlwIGluOiA3NTVmZmY1MjhiMWIgKCJhcm02NDogZHRzOiByb2NrY2hpcDogYWRk
-IHZhcmlhYmxlcyBmb3IgCnBjaWUgY29tcGxldGlvbiB0byBoZWxpb3M2NCIpCgo+IFRoaXMgaGFj
-ayBoYXMgYmVlbiBjb25maXJtZWQgdG8gd29yayBpbiBVLWJvb3QgYWxzby4KPiAKPiBkaWZmIC0t
-Z2l0IGEvZHJpdmVycy9wY2kvcGNpZV9yb2NrY2hpcC5jIGIvZHJpdmVycy9wY2kvcGNpZV9yb2Nr
-Y2hpcC5jCj4gaW5kZXggMTlmOWU1OGE2NDAuLjU3MDJiNjA3ZWU2IDEwMDY0NAo+IC0tLSBhL2Ry
-aXZlcnMvcGNpL3BjaWVfcm9ja2NoaXAuYwo+ICsrKyBiL2RyaXZlcnMvcGNpL3BjaWVfcm9ja2No
-aXAuYwo+IEBAIC0zMjksOCArMzI5LDEwIEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfcGNpZV9pbml0
-X3BvcnQoc3RydWN0IHVkZXZpY2UgKmRldikKPiAgIAl3cml0ZWwoUENJRV9DTElFTlRfTElOS19U
-UkFJTl9FTkFCTEUsCj4gICAJICAgICAgIHByaXYtPmFwYl9iYXNlICsgUENJRV9DTElFTlRfQ09O
-RklHKTsKPiAgIAo+IC0JaWYgKGRtX2dwaW9faXNfdmFsaWQoJnByaXYtPmVwX2dwaW8pKQo+IC0J
-CWRtX2dwaW9fc2V0X3ZhbHVlKCZwcml2LT5lcF9ncGlvLCAxKTsKPiArCWlmIChkbV9ncGlvX2lz
-X3ZhbGlkKCZwcml2LT5lcF9ncGlvKSkgewo+ICsJCWRtX2dwaW9fc2V0X2Rpcl9mbGFncygmcHJp
-di0+ZXBfZ3BpbywgKHByaXYtPmVwX2dwaW8uZmxhZ3MgJiB+R1BJT0RfSVNfT1VUKSB8IEdQSU9E
-X0lTX0lOKTsKPiArCQlkbV9ncGlvX3NldF9kaXJfZmxhZ3MoJnByaXYtPmVwX2dwaW8sIChwcml2
-LT5lcF9ncGlvLmZsYWdzICYgfkdQSU9EX0lTX0lOKSB8IEdQSU9EX0lTX09VVCB8IEdQSU9EX0lT
-X09VVF9BQ1RJVkUpOwo+ICsJfQo+ICAgCj4gICAJcmV0ID0gcmVhZGxfcG9sbF9zbGVlcF90aW1l
-b3V0Cj4gICAJCQkocHJpdi0+YXBiX2Jhc2UgKyBQQ0lFX0NMSUVOVF9CQVNJQ19TVEFUVVMxLAo+
-IAo+IFNvIG15IHJlcG9ydCBzdWdnZXN0cyB0aGlzIGlzIG5vdCBzcGVjaWZpYyB0byBMaW51eCBh
-bmQgYmVjYXVzZSBzYW1lCj4gd29ya2Fyb3VuZCB3b3JrcyBpbiBVLWJvb3Qgc2ltcGxpZmllZCBk
-cml2ZXIgbW9kZWwgSSBzdWdnZXN0IHlvdSBjaGVjawo+IGZyb20geW91ciBzaWRlLgo+IAo+IFBy
-ZXZpb3VzbHkgUENJZSBsaW5rIHRyYWluaW5nIHRpbWVvdXQsIG5vdCB3b3JraW5nLiBOb3cgSSdt
-IHZlcnkgaGFwcHkKPiB3aXRoIHdvcmtpbmcgUENJZSBpbiBMaW51eCBhbmQgVS1ib290Lgo+IAo+
-IFRoYW5rcywKPiBHZXJhbGRvIE5hc2NpbWVudG8KPiAKCgpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGlu
-dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+The regulator type is "regulator-fixed" since its voltage always be
+3.3v, min and max should be 3300000 make the regulator has a voltage
+
+The regulator is supplied by dc_12v, so add the vin-supply.
+
+Link: https://github.com/rockchip-linux/kernel/commit/17e9559f67d26f3c602e38a24feb5194e51ac782
+Signed-off-by: Coia Prant <coiaprant@gmail.com>
+---
+ .../boot/dts/rockchip/rk3568-9tripod-x3568-v4.dts  | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568-9tripod-x3568-v4.dts b/arch/arm64/boot/dts/rockchip/rk3568-9tripod-x3568-v4.dts
+index ad4d62060..32fda9f5e 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3568-9tripod-x3568-v4.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3568-9tripod-x3568-v4.dts
+@@ -170,16 +170,16 @@ vcc3v3_sys: regulator-vcc3v3-sys {
+ 	};
+ 
+ 	vcc3v3_pcie: regulator-vcc3v3-pcie {
+-		compatible = "regulator-gpio";
+-		regulator-name = "vcc3v3_pcie";
+-		regulator-min-microvolt = <100000>;
+-		regulator-max-microvolt = <3300000>;
++		compatible = "regulator-fixed";
++		enable-active-high;
++		gpio = <&gpio3 RK_PC3 GPIO_ACTIVE_HIGH>;
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&vcc3v3_pcie_en_pin>;
+-		gpios = <&gpio3 RK_PC3 GPIO_ACTIVE_HIGH>;
+-		gpios-states = <1>;
+-		states = <100000 0>, <3300000 1>;
++		regulator-name = "vcc3v3_pcie";
++		regulator-min-microvolt = <3300000>;
++		regulator-max-microvolt = <3300000>;
+ 		startup-delay-us = <5000>;
++		vin-supply = <&dc_12v>;
+ 	};
+ 
+ 	vcc5v0_sys: regulator-vcc5v0-sys {
+-- 
+2.47.3
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
