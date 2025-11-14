@@ -4,66 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6C5ECE8D47
-	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Nov 2025 15:20:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1142CE8D4A
+	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Nov 2025 15:20:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=v0v9KIdvPWGCj6A0VczeukSyZYlB3fm3w+F/rhn+ufU=; b=pUhaXSsBgAflBD
-	4IKOwR01iMlsyPj73rvQEoncGryh0FiumziNMFeJeKgDXBdHiw38LQVwZw1vi8AVZYayvWB2j6rq1
-	shVjlr8vdkhMe0UP9jsukoKzmI7ponEY/aiEFA6UQGJM3sNamls1mFffteuly6C4mbrlovnFpNS/j
-	tlyGgVei0j+gXbw7TLXIylp9vEa6e6P1n0Ea5WN4QFP7z/LJBB490+ikN1bkcwN+drEYRtd1aClc+
-	ZCPT1N5RDrN6UTkcILwipbDrBufHK7sGv4bHGyD48aahhyKbyhyGIDVSxzshew46PxBOer+LoM/0K
-	9JRxOSDCY5dUElj3Q+IA==;
+	List-Owner; bh=bQqaDMeNqqYyIJLQ7rVNND0slJh0OsTmo0lOWQSkAo8=; b=xut1cgGlb4erjm
+	ZaaQ8TlJibDcyj0tqaeh255v8I9v16FII22D+lwseF4zDe56CIVqTRjz/VkEXNmk8xd/XS5jzcpuE
+	zrHeT2/6w3VfVhw8yj5ZSOxSGR8yI7qVN2GiLVuJjIbZYTqQLf8Tk/69q/JhKgUSoyJD3v+gbW8la
+	FRScO17HpPDHM/xFJMsr6/cxW0PENdIlK8NE0iRo6rcHdV9juWe7xlrYxkZA7nnUsD4afhdhNQNQO
+	+sUyi/dLCpjpAW3ACsARHUZUN837XaD8jLP94z3XQIIK6FekztISnklxX6KS/kwuL58TK2kugkMgf
+	Rsr6NcNSmkpS/Tmbommg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJvbH-0000000CWOU-0d2D;
-	Fri, 14 Nov 2025 15:20:35 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1vJvbJ-0000000CWTk-3dxP;
+	Fri, 14 Nov 2025 15:20:37 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJvbA-0000000CWFV-116g;
-	Fri, 14 Nov 2025 15:20:28 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Reply-To:Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Content-ID:Content-Description;
-	bh=m6d2YBVRAxsxtD7aavxLd6mWyhAION966pctRhNP1ms=; b=onVPbVE5DkIkF8ICd3BJWnrO/d
-	j8XxhNhyoeedXPTXnDHpM4U5SN0GSJXqFc/QCorIOg3MMyoJhIHipL7+/liThhQnAHoIPrnc8B4L+
-	1O2FAWp6xz4ORSJHjChraz8F9EkNk0JGlaumT0qpBJ8p4FhO27xt6rkZxJzBYnKri7Q/XTMtsLYXy
-	VxnnN66F6EDzSIR/FA7nzeDZbH0AhTdX0rB0hRikvoliWzm4aN1UCmCfqqE5yezGuHccCq44Ar5fL
-	q4zo4xQCcxmi4S2yACJJygUrjeE3G5OBtsQ/Q3YdaNs07xsxaI+jtCdVHZfuQ7xI9JSFzC/SvIFBk
-	SKqyLZDg==;
-Received: from sea.source.kernel.org ([172.234.252.31])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJujQ-00000002ndu-3fdj;
-	Fri, 14 Nov 2025 14:25:00 +0000
+	id 1vJvbA-0000000CWE0-0adw;
+	Fri, 14 Nov 2025 15:20:29 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 3950343C33;
+	by sea.source.kernel.org (Postfix) with ESMTP id 16E8D44427;
+	Fri, 14 Nov 2025 15:20:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id DB47AC116B1;
 	Fri, 14 Nov 2025 15:20:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id EE15FC4CEF8;
-	Fri, 14 Nov 2025 15:20:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1763133620;
-	bh=rtJkcFLFc1knvqExD8Pr/+VubLNDMv/tDbYdwMGF14s=;
+	bh=Tz6jnD4R99+sBwzNPFxbH438Jp+SLdj3TJqQrSpfSJg=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=J7NFc4Yyn/swMlV5tdQe49rvyHbSNNDpj9Xeit+RnxxiQH6Rssi/CnMnyLjRyZgsp
-	 rVE0Ak0prko9SwAGPhz9NFX6rpGPbIUM5cWpxcRpTRP0Lf922ew5VGPt0MGXgFxuHF
-	 /SfdYaHBDcUe8EtGxdGTUiJ1D7LUi/E+nmjWyCVrhBCaG0AeiJ0oLGvjvRcOPXe5SK
-	 Pm/QJMDz52N5Sz04Xz8C3IhfAAJgAJF/DhI0IpBMluJXEFbRV0SERYCrBp29DVQite
-	 lHEVJRNhkMu4HBWdrHfS07jsjY60FYDPdZRqHNNIXYHGbBy9KQhG7rMqtvSRsV0Y2D
-	 dRIOKEdWA2MfA==
+	b=fVO0Otfi9RhbTv0T3Rj8/5ng7Xbfwo2n5aNAogd8tph3A1k9goDWAfs4kFnkv+4Ro
+	 aPQrucbavcIzuxJFRtQM4JuZfTd8f6+nAZr1o3h4TqNyqSyzJUVTW2MlEE2PWBWNYl
+	 11j+gpMljeYSQ7yA5QE2t9L326o9oKr7EtGharlyo9IR+hIBb4do4DJrn1+mo7n+v+
+	 LJLzldix9RTMbLz7VhVSKVchY9jmFNtNQWao9r/NGag0vssj04z0mpOZkUsFabNIs1
+	 ofxUGbDWrBP1hOhHsgrk1IUChkUD76mJqoR00djwb5Ifc4LOa3ZG8wXTUPdoLiQ5Rm
+	 /4vgcJyl7of4A==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E0B88CE8D40;
-	Fri, 14 Nov 2025 15:20:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BD532CE8D44;
+	Fri, 14 Nov 2025 15:20:20 +0000 (UTC)
 From: Michael Riesch via B4 Relay <devnull+michael.riesch.collabora.com@kernel.org>
-Date: Fri, 14 Nov 2025 16:20:13 +0100
-Subject: [PATCH v15 02/14] media: dt-bindings: video-interfaces: add
- defines for sampling modes
+Date: Fri, 14 Nov 2025 16:20:23 +0100
+Subject: [PATCH v15 12/14] arm64: dts: rockchip: add the vip node to px30
 MIME-Version: 1.0
-Message-Id: <20240220-rk3568-vicap-v15-2-8f4915ee365d@collabora.com>
+Message-Id: <20240220-rk3568-vicap-v15-12-8f4915ee365d@collabora.com>
 References: <20240220-rk3568-vicap-v15-0-8f4915ee365d@collabora.com>
 In-Reply-To: <20240220-rk3568-vicap-v15-0-8f4915ee365d@collabora.com>
 To: Mehdi Djait <mehdi.djait@linux.intel.com>, 
@@ -90,21 +75,22 @@ Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
  linux-rockchip@lists.infradead.org, 
  Michael Riesch <michael.riesch@collabora.com>, 
- Michael Riesch <michael.riesch@collabora.com>
+ Michael Riesch <michael.riesch@collabora.com>, 
+ Mehdi Djait <mehdi.djait@bootlin.com>
 X-Mailer: b4 0.12.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1763133617; l=1070;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1763133617; l=1332;
  i=michael.riesch@collabora.com; s=20250410; h=from:subject:message-id;
- bh=i0G3bjQUxPWSrwDi2kbON/7nXKFuVdlWiYyEBIeG7YY=;
- b=FEHaSk1PIArT1EGJtvOkdAjeayF31//VdjN6qurt+Wg6fMxwQlvw1u+zXDSZXD6qxpK1/ot5A
- EN9R6q1+sDrCcgH/oLObU+xd/jKbd6iw0/amM6811QvlY72UHMfqDv9
+ bh=EwZeXY5MIObNAjpIDbc8b4sEOVnnQIy6dupHuKvt3ds=;
+ b=yTj4DVFxirwVerOWEvdCbH6wZTDT+jtu5Yo3ycIWwarsvwsL+a6tDK3PMthb6JO5coaAf6Yp2
+ ZW+8LJZhDwKC4pJi+U7UioHRSS9GWtY+aRLhDCPprXqfLYKu8iNCd3L
 X-Developer-Key: i=michael.riesch@collabora.com; a=ed25519;
  pk=+MWX1fffLFZtTPG/I6XdYm/+OSvpRE8D9evQaWbiN04=
 X-Endpoint-Received: by B4 Relay for michael.riesch@collabora.com/20250410
  with auth_id=371
 X-Original-From: Michael Riesch <michael.riesch@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251114_142457_330943_766F83F7 
-X-CRM114-Status: UNSURE (   9.77  )
+X-CRM114-CacheID: sfid-20251114_072028_284914_D6DFC953 
+X-CRM114-Status: UNSURE (   9.43  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -123,33 +109,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Michael Riesch <michael.riesch@collabora.com>
+From: Mehdi Djait <mehdi.djait@bootlin.com>
 
-Add defines for the pixel clock sampling modes (rising edge, falling edge,
-dual edge) for parallel video interfaces.
-This avoids hardcoded constants in device tree sources.
+Add the device tree node for the PX30 Video Input Processor (VIP).
 
-Acked-by: Rob Herring <robh@kernel.org>
+Signed-off-by: Mehdi Djait <mehdi.djait@bootlin.com>
+[added cosmetic changes]
 Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
 Reviewed-by: Bryan O'Donoghue <bryan.odonoghue@linaro.org>
 Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
 ---
- include/dt-bindings/media/video-interfaces.h | 4 ++++
- 1 file changed, 4 insertions(+)
+ arch/arm64/boot/dts/rockchip/px30.dtsi | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
-diff --git a/include/dt-bindings/media/video-interfaces.h b/include/dt-bindings/media/video-interfaces.h
-index 88b9d05d8075..0b19c9b2e627 100644
---- a/include/dt-bindings/media/video-interfaces.h
-+++ b/include/dt-bindings/media/video-interfaces.h
-@@ -20,4 +20,8 @@
- #define MEDIA_BUS_CSI2_CPHY_LINE_ORDER_CAB	4
- #define MEDIA_BUS_CSI2_CPHY_LINE_ORDER_CBA	5
+diff --git a/arch/arm64/boot/dts/rockchip/px30.dtsi b/arch/arm64/boot/dts/rockchip/px30.dtsi
+index 46f64cd33b9b..ef52879d6a73 100644
+--- a/arch/arm64/boot/dts/rockchip/px30.dtsi
++++ b/arch/arm64/boot/dts/rockchip/px30.dtsi
+@@ -1280,6 +1280,18 @@ isp_mmu: iommu@ff4a8000 {
+ 		#iommu-cells = <0>;
+ 	};
  
-+#define MEDIA_PCLK_SAMPLE_FALLING_EDGE		0
-+#define MEDIA_PCLK_SAMPLE_RISING_EDGE		1
-+#define MEDIA_PCLK_SAMPLE_DUAL_EDGE		2
++	cif: video-capture@ff490000 {
++		compatible = "rockchip,px30-vip";
++		reg = <0x0 0xff490000 0x0 0x200>;
++		interrupts = <GIC_SPI 69 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru ACLK_CIF>, <&cru HCLK_CIF>, <&cru PCLK_CIF>;
++		clock-names = "aclk", "hclk", "pclk";
++		power-domains = <&power PX30_PD_VI>;
++		resets = <&cru SRST_CIF_A>, <&cru SRST_CIF_H>, <&cru SRST_CIF_PCLKIN>;
++		reset-names = "axi", "ahb", "pclkin";
++		status = "disabled";
++	};
 +
- #endif /* __DT_BINDINGS_MEDIA_VIDEO_INTERFACES_H__ */
+ 	qos_gmac: qos@ff518000 {
+ 		compatible = "rockchip,px30-qos", "syscon";
+ 		reg = <0x0 0xff518000 0x0 0x20>;
 
 -- 
 2.39.5
