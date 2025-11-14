@@ -4,84 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47313CE7A9A
-	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Nov 2025 09:22:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77553CE7AA3
+	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Nov 2025 09:51:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=FNSlIs8YamqVH7bQjQ/FsZqsUV2N0FOXhfK6kUxUmfk=; b=zBjyfM6lNEssFE
-	VEFuT85Mzm8RCzzuHOUzA5VXwwU5cZzboPA45/8HKY7l5bxXqrqD1KLKhSHL5pLU4PYwfhonNMTDr
-	S9R9k9NjyzsxyL7v6ap6jTBwCZrI8okOfZ0GZ8BpYQYc2mPug9mOJCe8O4wL1wGi38RNmDH/B2YTd
-	G4EFfBOWoo7onTBJURxvBuWGtLNSDjRgzzmg5lrq3wxmlYlVXTHo6GMlzB8gdOPM5jZXuPyTTaMdx
-	WDzzNeS13w7qqkh01iuGcW+kWlsqKvJweC1n+x4i+Mq858/yZmrwAsWBpcX8ZsL0hQKUpYGZj29Tk
-	CzfqgDrHhkcipHfQKIMw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=wxO0zQqAHv3Lsb4vHeMlrszwA2dVS6Lwq9ME2FW1bAs=; b=eztVD8aXyf1WdpgGCTuEnX4dwo
+	tppswhU7fZrSU1iSHUAwtJkrUpyVrRjLX1czthwRttRThpLMp/q0mYAxhWhCcOGMa07G9pQb+6YrG
+	C4A9gqXoEtnkLOwLg1SWrZzhKQDAL9aSZgLTKuCIWPgx/gk+sNYzzDE4PCAYo1hS2DlrOsMLuUoQM
+	uMK6RyGV3k7FqhWgG2ldsyLV3OUK0zYjI2RhpDDQKW5X5QRlngWiWT1X0Z628WeNMmoMkUMr+EYWC
+	IrLIdsT1rPrAtaoc+nQHBS5PsBe+022HTwNRYYCgpjxjm97p6UTVFljBqiS5/sSfvlW4nu6VZE2xn
+	8rgt3HSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJq0G-0000000Bu1J-2hnq;
-	Fri, 14 Nov 2025 09:22:00 +0000
-Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443])
+	id 1vJqSq-0000000Bx5f-2M8n;
+	Fri, 14 Nov 2025 09:51:34 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJq0E-0000000Bu0u-0Zua
-	for linux-rockchip@lists.infradead.org;
-	Fri, 14 Nov 2025 09:21:59 +0000
-Received: by mail-pf1-x443.google.com with SMTP id d2e1a72fcca58-7b8bbf16b71so1997081b3a.2
-        for <linux-rockchip@lists.infradead.org>; Fri, 14 Nov 2025 01:21:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1763112116; x=1763716916; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=ogBfguXD7Ae9sdv5N65XJUo3sy7Qes6+8do/Cavegx8=;
-        b=cJ3SQpupRs9CaucqtXR5NQVHqApT0m40BAcpKFVgpCjRl5GrzrAmQxigyXxAuE6B5u
-         zn5HFqEzXtticcr0qAuUSJAp9TPLM7lkgVoNryEXwG6BxyYFbHfFd2445DVR55HZxZbU
-         PnxTyfqAw+Lw0rKaPUq/+LbUIc0dywliaZz9si4siMWPm8pMkXVEiMvm4u3cXHxRtSjN
-         rbsyiH6nF5hF3zfyRcDz7vX4nKwrKfia282f2Pf1WdOTGcl0M1eFaaSTdZ1VzZA3XNJy
-         kb5WNc00QsezKl8nl2FP35XbjpvUK4grJRuOttheOx1jDUgnoTJeQ2ErmbHfnlK8FpoO
-         l9jA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1763112116; x=1763716916;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ogBfguXD7Ae9sdv5N65XJUo3sy7Qes6+8do/Cavegx8=;
-        b=jlYXMcszUWHdzo9JfsCG9e+ik2mZBiBzZi8Ue6WTiofr7nIyC6oi4IFCEueHSbyerj
-         qpU8/lK1HP9rak1xfC4fiekuviBxL/vUKIyKc3iZD1YmEArA3+0aOI77FP46DkDIVNqL
-         nDaxRUBU7/53v1wEmJt13/IGCoPTrb1oH5qSSr6buosqWBAwDXcT0O4d5/7OtSyhrJCN
-         pUmVAlSCij4Lm9oYa6I5fe2Cd2SWfGUFN728ec9P2oMRo+Jur9A9yPEGgSTT0VFryVva
-         5DJ65WDi/gdAmOUwgcKww2O0ZJxKYPkkxUbhEEe5gEEXXOuv2jLvL3Wygp+8D6SVu03a
-         PBhA==
-X-Gm-Message-State: AOJu0Yz58zf9AijQX8Hei34WSPeLPzGCIS+MNv/YLI1TrIaAcjc6sEOl
-	DNLQwcO74ZDLQFtkTtDdvHB957isMMMxcmt/mwk6WhIcBCFzrFwOE32c
-X-Gm-Gg: ASbGncsYSz2HvpoSFq+dRZF1vO5NCrSOC/1feJtZRRfKpogdLs1T+gdEQM0x1fxNyGi
-	s24jFLwXmd2VlmJhrnami/4U2SQuoaRcbE4xsDqn8NwKvdMta0dhkTR3uW+t+BTzoCcDPNViRb0
-	4fOOBh8R4qIxANlULnjfqcy4qhsfgruaTbzDoApT7mVHQa04AajfdhfJxb0VeMhQBLgxaMa+/Hs
-	MwzFml2bMpJK+sXnoKv2ma80wEGE/qmSmwHnT2NS/SBPI3roxlD5e0nVHjlekfnnHAYrHtZWV5k
-	6PNWrLMfgZ2Kd9mySTmO9rkAnQ2BaWFWrJw0KLWysmeEDvd2bZqhOvmgWBB+U2F/bcHRRGGxvQp
-	7si7+7R8n3p4alMZOfcevV/NeLtAwmqA0t9afkGoUoCzDu2TKkFrWuII7ScXICIaKTRGoHltaEV
-	myVxrsPFHjictKljB9N97Fw342lNyR7Y0=
-X-Google-Smtp-Source: AGHT+IEhsyOsCml87IDQ+/migcKkz7/6nfsGW9PsXw3MVrtaRXA9qORv9YMVhPaGW2b4NkVyDAjapw==
-X-Received: by 2002:a05:6a20:7484:b0:34f:7454:b977 with SMTP id adf61e73a8af0-35ba1d9c6dbmr3508359637.48.1763112116399;
-        Fri, 14 Nov 2025 01:21:56 -0800 (PST)
-Received: from server.lan ([150.230.217.250])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-7b9256b58dcsm4578400b3a.32.2025.11.14.01.21.49
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 14 Nov 2025 01:21:55 -0800 (PST)
-From: Coia Prant <coiaprant@gmail.com>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Coia Prant <coiaprant@gmail.com>
-Subject: [PATCH] arm64: dts: rockchip: fix PCIe 3.3V regulator voltage on 9Tripod X3568 v4
-Date: Fri, 14 Nov 2025 17:21:15 +0800
-Message-ID: <20251114092114.62664-2-coiaprant@gmail.com>
-X-Mailer: git-send-email 2.47.3
+	id 1vJqSo-0000000Bx5D-3JHX;
+	Fri, 14 Nov 2025 09:51:30 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 375A160173;
+	Fri, 14 Nov 2025 09:51:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5B6F3C116D0;
+	Fri, 14 Nov 2025 09:51:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1763113889;
+	bh=O6LXDluXDEafQVVWq0RnhAB+p7afdg+5W2HmBgq2z8g=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=eOIHdJMQE0TDkiX7ARkxw5G2WdNrnktz7C93zfpLOjSLn1DGMqxCGRL2+H11VXA5t
+	 TAOlaPLd7XmgJ+NrCWHohiq4sDtyeWuovmYsxLE6NpZDcPacrgvR/xN/N5QBnZp7E0
+	 RllAb1nSls9OhiBIou1vVRW7VHcLKxVoN+cobTMUB8JTFrxeD8T3wLJ0OcXmalQAsP
+	 SGvrZFfnjccYHeBUeR7Fo73jBd6Y+o468gsooIAT788zEP9Zp52R8ccTrqslkPpBcF
+	 gIebxjHCKli7Z65Z1mWRmDJcA4xPW8Cr/Ra2MqmxiQGtOI/WdLa9Xo5nqkPOfDLcT3
+	 nZXpAlzBI8F8A==
+Date: Fri, 14 Nov 2025 10:51:27 +0100
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <ukleinek@kernel.org>
+To: Damon Ding <damon.ding@rock-chips.com>
+Cc: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Lee Jones <lee@kernel.org>, 
+	William Breathitt Gray <wbg@kernel.org>, kernel@collabora.com, Jonas Karlman <jonas@kwiboo.se>, 
+	Alexey Charkov <alchark@gmail.com>, linux-rockchip@lists.infradead.org, linux-pwm@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-iio@vger.kernel.org
+Subject: Re: [PATCH v3 3/5] pwm: Add rockchip PWMv4 driver
+Message-ID: <fgu42esufq2x4fcccncqs3hlotih2gqmws5atotlaznuahoslw@34vblr6vboze>
+References: <20251027-rk3576-pwm-v3-0-654a5cb1e3f8@collabora.com>
+ <20251027-rk3576-pwm-v3-3-654a5cb1e3f8@collabora.com>
+ <8a6e920b-9565-4161-9d71-63f924593c23@rock-chips.com>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251114_012158_175757_E8840A42 
-X-CRM114-Status: UNSURE (   8.77  )
-X-CRM114-Notice: Please train this message.
+In-Reply-To: <8a6e920b-9565-4161-9d71-63f924593c23@rock-chips.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,55 +69,260 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============3671552112291827882=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The regulator type is "regulator-fixed" since its voltage always be
-3.3v, min and max should be 3300000 make the regulator has a voltage
 
-The regulator is supplied by dc_12v, so add the vin-supply.
+--===============3671552112291827882==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="xfykpml5ewgt3ra3"
+Content-Disposition: inline
 
-Link: https://github.com/rockchip-linux/kernel/commit/17e9559f67d26f3c602e38a24feb5194e51ac782
-Signed-off-by: Coia Prant <coiaprant@gmail.com>
----
- .../boot/dts/rockchip/rk3568-9tripod-x3568-v4.dts  | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568-9tripod-x3568-v4.dts b/arch/arm64/boot/dts/rockchip/rk3568-9tripod-x3568-v4.dts
-index ad4d62060..32fda9f5e 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568-9tripod-x3568-v4.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3568-9tripod-x3568-v4.dts
-@@ -170,16 +170,16 @@ vcc3v3_sys: regulator-vcc3v3-sys {
- 	};
- 
- 	vcc3v3_pcie: regulator-vcc3v3-pcie {
--		compatible = "regulator-gpio";
--		regulator-name = "vcc3v3_pcie";
--		regulator-min-microvolt = <100000>;
--		regulator-max-microvolt = <3300000>;
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpio = <&gpio3 RK_PC3 GPIO_ACTIVE_HIGH>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&vcc3v3_pcie_en_pin>;
--		gpios = <&gpio3 RK_PC3 GPIO_ACTIVE_HIGH>;
--		gpios-states = <1>;
--		states = <100000 0>, <3300000 1>;
-+		regulator-name = "vcc3v3_pcie";
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
- 		startup-delay-us = <5000>;
-+		vin-supply = <&dc_12v>;
- 	};
- 
- 	vcc5v0_sys: regulator-vcc5v0-sys {
--- 
-2.47.3
+--xfykpml5ewgt3ra3
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v3 3/5] pwm: Add rockchip PWMv4 driver
+MIME-Version: 1.0
 
+On Tue, Oct 28, 2025 at 04:16:26PM +0800, Damon Ding wrote:
+> Hi Nicolas,
+>=20
+> On 10/28/2025 1:11 AM, Nicolas Frattaroli wrote:
+> > The Rockchip RK3576 brings with it a new PWM IP, in downstream code
+> > referred to as "v4". This new IP is different enough from the previous
+> > Rockchip IP that I felt it necessary to add a new driver for it, instead
+> > of shoehorning it in the old one.
+> >=20
+> > Add this new driver, based on the PWM core's waveform APIs. Its platform
+> > device is registered by the parent mfpwm driver, from which it also
+> > receives a little platform data struct, so that mfpwm can guarantee that
+> > all the platform device drivers spread across different subsystems for
+> > this specific hardware IP do not interfere with each other.
+> >=20
+> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> > ---
+> >   MAINTAINERS                   |   1 +
+> >   drivers/pwm/Kconfig           |  13 ++
+> >   drivers/pwm/Makefile          |   1 +
+> >   drivers/pwm/pwm-rockchip-v4.c | 353 +++++++++++++++++++++++++++++++++=
++++++++++
+> >   4 files changed, 368 insertions(+)
+> >=20
+>=20
+> > diff --git a/MAINTAINERS b/MAINTAINERS
+> > index 8f3235ba825e..2079c2d51d5c 100644
+> > --- a/MAINTAINERS
+> > +++ b/MAINTAINERS
+> > @@ -22372,6 +22372,7 @@ L:	linux-rockchip@lists.infradead.org
+> >   L:	linux-pwm@vger.kernel.org
+> >   S:	Maintained
+> >   F:	Documentation/devicetree/bindings/pwm/rockchip,rk3576-pwm.yaml
+> > +F:	drivers/pwm/pwm-rockchip-v4.c
+> >   F:	drivers/soc/rockchip/mfpwm.c
+> >   F:	include/soc/rockchip/mfpwm.h
+> > diff --git a/drivers/pwm/Kconfig b/drivers/pwm/Kconfig
+> > index c2fd3f4b62d9..b852a7b2a29d 100644
+> > --- a/drivers/pwm/Kconfig
+> > +++ b/drivers/pwm/Kconfig
+> > @@ -615,6 +615,19 @@ config PWM_ROCKCHIP
+> >   	  Generic PWM framework driver for the PWM controller found on
+> >   	  Rockchip SoCs.
+> > +config PWM_ROCKCHIP_V4
+> > +	tristate "Rockchip PWM v4 support"
+> > +	depends on ARCH_ROCKCHIP || COMPILE_TEST
+> > +	depends on HAS_IOMEM
+> > +	depends on MFD_ROCKCHIP_MFPWM
+> > +	help
+> > +	  Generic PWM framework driver for the PWM controller found on
+> > +	  later Rockchip SoCs such as the RK3576.
+> > +
+> > +	  Uses the Rockchip Multi-function PWM controller driver infrastructu=
+re
+> > +	  to guarantee fearlessly concurrent operation with other functions of
+> > +	  the same device implemented by drivers in other subsystems.
+> > +
+> >   config PWM_SAMSUNG
+> >   	tristate "Samsung PWM support"
+> >   	depends on PLAT_SAMSUNG || ARCH_S5PV210 || ARCH_EXYNOS || COMPILE_TE=
+ST
+> > diff --git a/drivers/pwm/Makefile b/drivers/pwm/Makefile
+> > index dfa8b4966ee1..fe0d16558d99 100644
+> > --- a/drivers/pwm/Makefile
+> > +++ b/drivers/pwm/Makefile
+> > @@ -55,6 +55,7 @@ obj-$(CONFIG_PWM_RENESAS_RZG2L_GPT)	+=3D pwm-rzg2l-gp=
+t.o
+> >   obj-$(CONFIG_PWM_RENESAS_RZ_MTU3)	+=3D pwm-rz-mtu3.o
+> >   obj-$(CONFIG_PWM_RENESAS_TPU)	+=3D pwm-renesas-tpu.o
+> >   obj-$(CONFIG_PWM_ROCKCHIP)	+=3D pwm-rockchip.o
+> > +obj-$(CONFIG_PWM_ROCKCHIP_V4)	+=3D pwm-rockchip-v4.o
+> >   obj-$(CONFIG_PWM_SAMSUNG)	+=3D pwm-samsung.o
+> >   obj-$(CONFIG_PWM_SIFIVE)	+=3D pwm-sifive.o
+> >   obj-$(CONFIG_PWM_SL28CPLD)	+=3D pwm-sl28cpld.o
+> > diff --git a/drivers/pwm/pwm-rockchip-v4.c b/drivers/pwm/pwm-rockchip-v=
+4.c
+> > new file mode 100644
+> > index 000000000000..7afa83f12b6a
+> > --- /dev/null
+> > +++ b/drivers/pwm/pwm-rockchip-v4.c
+> > @@ -0,0 +1,353 @@
+> > +// SPDX-License-Identifier: GPL-2.0-or-later
+> > +/*
+> > + * Copyright (c) 2025 Collabora Ltd.
+> > + *
+> > + * A Pulse-Width-Modulation (PWM) generator driver for the generators =
+found in
+> > + * Rockchip SoCs such as the RK3576, internally referred to as "PWM v4=
+". Uses
+> > + * the MFPWM infrastructure to guarantee exclusive use over the device=
+ without
+> > + * other functions of the device from different drivers interfering wi=
+th its
+> > + * operation while it's active.
+> > + *
+> > + * Technical Reference Manual: Chapter 31 of the RK3506 TRM Part 1, a =
+SoC which
+> > + * uses the same PWM hardware and has a publicly available TRM.
+> > + * https://opensource.rock-chips.com/images/3/36/Rockchip_RK3506_TRM_P=
+art_1_V1.2-20250811.pdf
+> > + *
+> > + * Authors:
+> > + *     Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> > + *
+> > + * Limitations:
+> > + * - When the output is disabled, it will end abruptly without letting=
+ the
+> > + *   current period complete.
+> > + *   TODO: This can be fixed in the driver in the future by having the=
+ enable-
+> > + *         to-disable transition switch to oneshot mode with one repet=
+ition,
+> > + *         and then disable the pwmclk and release mfpwm when the ones=
+hot
+> > + *         complete interrupt fires.
+> > + * - When the output is disabled, the pin will remain driven to whatev=
+er state
+> > + *   it last had.
+> > + * - Adjustments to the duty cycle will only take effect during the ne=
+xt period.
+> > + * - Adjustments to the period length will only take effect during the=
+ next
+> > + *   period.
+> > + * - offset should be between 0 and (period - duty)
+> > + */
+> > +
+> > +#include <linux/math64.h>
+> > +#include <linux/mfd/rockchip-mfpwm.h>
+> > +#include <linux/platform_device.h>
+> > +#include <linux/pwm.h>
+> > +
+> > +struct rockchip_pwm_v4 {
+> > +	struct rockchip_mfpwm_func *pwmf;
+> > +	struct pwm_chip chip;
+> > +};
+> > +
+> > +struct rockchip_pwm_v4_wf {
+> > +	u32 period;
+> > +	u32 duty;
+> > +	u32 offset;
+> > +	u8 enable;
+> > +};
+> > +
+>=20
+> ...
+>=20
+> > +
+> > +static int rockchip_pwm_v4_read_wf(struct pwm_chip *chip, struct pwm_d=
+evice *pwm,
+> > +				   void *_wfhw)
+> > +{
+> > +	struct rockchip_pwm_v4 *pc =3D to_rockchip_pwm_v4(chip);
+> > +	struct rockchip_pwm_v4_wf *wfhw =3D _wfhw;
+> > +	int ret =3D 0;
+> > +
+>=20
+> Redundant blank lin. ;-)
+>=20
+> > +
+> > +	ret =3D mfpwm_acquire(pc->pwmf);
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	wfhw->period =3D mfpwm_reg_read(pc->pwmf->base, PWMV4_REG_PERIOD);
+> > +	wfhw->duty =3D mfpwm_reg_read(pc->pwmf->base, PWMV4_REG_DUTY);
+> > +	wfhw->offset =3D mfpwm_reg_read(pc->pwmf->base, PWMV4_REG_OFFSET);
+> > +	wfhw->enable =3D mfpwm_reg_read(pc->pwmf->base, PWMV4_REG_ENABLE) & P=
+WMV4_EN_BOTH_MASK;
+> > +
+> > +	mfpwm_release(pc->pwmf);
+> > +
+> > +	return 0;
+> > +}
+> > +
+>=20
+> ...
+>=20
+> > +MODULE_AUTHOR("Nicolas Frattaroli <nicolas.frattaroli@collabora.com>");
+> > +MODULE_DESCRIPTION("Rockchip PWMv4 Driver");
+> > +MODULE_LICENSE("GPL");
+> > +MODULE_IMPORT_NS("ROCKCHIP_MFPWM");
+> > +MODULE_ALIAS("platform:pwm-rockchip-v4");
+> >=20
+>=20
+> Tested-by: Damon Ding <damon.ding@rock-chips.com>
+>=20
+> I have tested all the PWM channels in continuous mode on my RK3576-IOTEST
+> board.
+>=20
+> Test commands are like:
+>=20
+> cd /sys/class/pwm/pwmchip0/
+> echo 0 > export
+> cd pwm0
+> echo 10000 > period
+> echo 5000 > duty_cycle
+> echo normal > polarity
+> echo 1 > enable
+
+Thanks for the test, very appreciated.
+
+I wonder what made you test using sysfs instead of
+https://git.kernel.org/pub/scm/linux/kernel/git/ukleinek/libpwm.git/.
+Is it unknown? Too complicated? Other problems?
+
+Best regards
+Uwe
+
+--xfykpml5ewgt3ra3
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmkW+5wACgkQj4D7WH0S
+/k53tgf/ZFRrKZ3wCBT3fPYwc0esDlhE8SB04CeKkBuW/VIrFjkskcsGK2iJKR2r
+2bauJvrF4JaMaXzQb6gVZSdvirjIoNyObsUw1GcjndwxA18k+/7c2XPywT5JLtZ7
+c+OelHzh2dmXjDARoRMrHeUHIMMdTJIZZGtWl5mVNhoF/dwsbnw6ClUScmjrK/rs
+tcR6Mp6S9pWnYscxTq05ftyRClMflmU+FF7Svjq0ssoaZllI0W5KSUwAv9xOh1aO
+3LbRu0QVA9I0O5QKgJcIPjPbF14lBC2FFDSKJSAxTWVZLpzQtD3//phd42ktFrHr
+3kEGqi3j/uy7FRv8XWmKVGE2TfESaw==
+=aZBT
+-----END PGP SIGNATURE-----
+
+--xfykpml5ewgt3ra3--
+
+
+--===============3671552112291827882==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============3671552112291827882==--
+
