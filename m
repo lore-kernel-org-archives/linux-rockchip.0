@@ -4,76 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 606F9CDB475
-	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Nov 2025 03:01:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91B95CD4F49
+	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Nov 2025 04:00:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-ID:MIME-Version:To:Cc:
+	Date:References:In-Reply-To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+pjg68dvBr1GVNMAuFaI3cCz+puJGhIY+n/mp8LpiVg=; b=KcZXDpM2/BRUhj
-	jQ47+oVRINgEST4VmjBTpK8+XPG4Kx6L/3Qxvtx2KqdqWBRi5+ETaiVn8JALERjX/TFrJF64kIBeF
-	y/KQ6yZmn9XcT1HswADgSq0ke0875/AFxbkyS50ukniitOjXIndp9ksSdkWTJtEsvBlOXMgWJ3/0k
-	EUh1Docp3FlEt0K7eXjl7urjyXxwW8kWjFe1xqIF0T0Fkg51lEccGcC+KU99WGQi1L8rflZEtZ3jG
-	3lV9f2TAyeEeBzJEB5JPALtre6hht1rvyjMnZQ2cysbbCIjbSdwmuaM3fWVEfiDyvEwYdpTsv+EJp
-	66gfpxNsvd3yWeJdbCBA==;
+	List-Owner; bh=KRcXSfC6D5wyqYivKokSXKjynaod3+cBL8sgdLqM26c=; b=fuIa7nnX1cBe+b
+	rtYSG8xJegJqr+tx1uMncaQl0DCcBjMy/V5BqpxPqxjglS4apKuqFJNE5c78aE5xmzoQLs/pfbWcp
+	p8nK2iAwU6EPyMHmV+DTQliUl5eVxMP/SRqaANAue8WMBs1Q0iWixjeKD8Epm33l7AL1BVags7ZAw
+	l4zAXTlvouCqPLTnfLR9jlhtI9tUN255OgujRwSmn03vKc7ZGacQseBt+tI7OfPj4LD9GB4jDcCCU
+	4N4x4/vF6Gf3a2eDnd3+WXA8jeeIopslyAMJB29XfCGXgf7zDIWGRDVWM6mF8w2dpkOrAARIommnF
+	I+OO11fhYYbpT+Kd5xJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJk4K-0000000BRis-1vI8;
-	Fri, 14 Nov 2025 03:01:48 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vJkz2-0000000BWFP-3yeB;
+	Fri, 14 Nov 2025 04:00:24 +0000
+Received: from mail1.manjaro.org ([142.132.176.110])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJk4H-0000000BRdv-06gN;
-	Fri, 14 Nov 2025 03:01:46 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1763089301;
-	bh=fpctLSQF/NF2mNL/C7f8N8pXoyQ4/1yo7rKatwKgPTk=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=IatPK1vqv1b1q8n64yFCQuI0yv79iGGbsiUEU/je1ECOG+vnkFXT0JEHz7ItV3uBz
-	 Tdbhh3lXGTcM5Z+OW6DvI/h7U9Awch1yjEAIyVXvLTWH7kJfF4sRwY7/kIpGBzfX74
-	 40ZVJNsTc6JLAjbo0+N1kH79cEq6nKWE+pI5G6MBQOBUk2ymGgb7byaq6gJzKA0HYf
-	 l8878T31xEP741UUamsaaQBE5JazwHXHEDJvwA2UIdrJk7Luw+mMfJ7FLmPQyDMSJA
-	 +96deSWaB83IhKHKFc/J4uqAVHMiSx2OlCrYIHeiB32DmJ8PWljrrjWr9+eyiLVBkn
-	 jH0H9l5w+B/lw==
-Received: from debian (unknown [171.76.81.120])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: vignesh)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6D4A517E0E0A;
-	Fri, 14 Nov 2025 04:01:35 +0100 (CET)
-From: Vignesh Raman <vignesh.raman@collabora.com>
-To: dri-devel@lists.freedesktop.org
-Cc: daniels@collabora.com,
-	helen.fornazier@gmail.com,
-	airlied@gmail.com,
-	simona.vetter@ffwll.ch,
-	dmitry.baryshkov@oss.qualcomm.com,
-	lumag@kernel.org,
-	robdclark@gmail.com,
-	robin.clark@oss.qualcomm.com,
-	guilherme.gallo@collabora.com,
-	sergi.blanch.torne@collabora.com,
-	valentine.burley@collabora.com,
-	linux-mediatek@lists.infradead.org,
-	linux-amlogic@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	amd-gfx@lists.freedesktop.org,
-	linux-arm-msm@vger.kernel.org,
-	intel-gfx@lists.freedesktop.org,
-	virtualization@lists.linux.dev,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v1 2/2] drm/ci: Move qualcomm baremetal jobs to lava
-Date: Fri, 14 Nov 2025 08:30:51 +0530
-Message-ID: <20251114030056.1139570-3-vignesh.raman@collabora.com>
-X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20251114030056.1139570-1-vignesh.raman@collabora.com>
-References: <20251114030056.1139570-1-vignesh.raman@collabora.com>
+	id 1vJkz0-0000000BWEr-09at
+	for linux-rockchip@lists.infradead.org;
+	Fri, 14 Nov 2025 04:00:23 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPA id 1222140ECE;
+	Fri, 14 Nov 2025 05:00:07 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=dkim;
+	t=1763092818; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:in-reply-to:references;
+	bh=9/8XmcpVQphc5dDgFybboRJQnLNpfLDi8NoWEM3kTPY=;
+	b=WspfHvZcwKEBzzIhnKt1ORupe5QziflyhEsb+/jmcm2fEieJyGHZ+o4Ymv4klPBknZcQ3w
+	1Lorpd0BohQ6rZeRpHFYmwI0NUO0F1maOhbpG3B9957zlb1ur6ORWzBWuhdssf5J1Asvrg
+	R6fuPbWqva8O5l30MCM/cZcnWQaRO+sieNCorCQRfoD3JzGASceDgs4x9y/Xk8BtQ3ud/i
+	FhHqe7cI8EjPO4V/OfMwHWwHTOTcR7I8mNAMCafEzSVg8zvBifz5TRJQ8bCQfSRFFHr6Wm
+	i1ulR0fB8KiRZrtXOJisuD31KesJ1z8UFq3QRCM+qo5kKjr2oO6HCZgwjbHYEA==
+From: "Dragan Simic" <dsimic@manjaro.org>
+In-Reply-To: <20251113124222.4691-2-naoki@radxa.com>
+References: <20251113124222.4691-1-naoki@radxa.com> <20251113124222.4691-2-naoki@radxa.com>
+Date: Fri, 14 Nov 2025 05:00:07 +0100
+Cc: heiko@sntech.de, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, pgwipeout@gmail.com, didi.debian@cknow.org, jonas@kwiboo.se, ziyao@disroot.org, amadeus@jmu.edu.cn, nicolas.frattaroli@collabora.com, pbrobinson@gmail.com, wens@kernel.org, detlev.casanova@collabora.com, stephen@radxa.com, sebastian.reichel@collabora.com, liujianfeng1994@gmail.com, andy.yan@rock-chips.com, dmitry.baryshkov@oss.qualcomm.com, kuninori.morimoto.gx@renesas.com, damon.ding@rock-chips.com, kylepzak@projectinitiative.io, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
+To: "FUKAUMI Naoki" <naoki@radxa.com>
 MIME-Version: 1.0
+Message-ID: <b394e1a7-a53f-9303-495f-776da0ad3118@manjaro.org>
+Subject: =?utf-8?q?Re=3A?= [PATCH v3 1/3] =?utf-8?q?arm64=3A?==?utf-8?q?_dts=3A?=
+ =?utf-8?q?_rockchip=3A?= Use default-state for power LED for Radxa boards
+User-Agent: SOGoMail 5.12.3
+X-Last-TLS-Session-Version: None
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251113_190145_367424_CD1B588E 
-X-CRM114-Status: UNSURE (   9.67  )
+X-CRM114-CacheID: sfid-20251113_200022_328648_D0F33FE2 
+X-CRM114-Status: UNSURE (   9.31  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -91,148 +70,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Qualcomm apq8016 and apq8096 DUTS are moved to Collabora lava
-farm. So enable these jobs to use lava and update expectation
-files.
+Hello Naoki,
 
-Co-developed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
----
- drivers/gpu/drm/ci/arm64.config               |  1 +
- drivers/gpu/drm/ci/test.yml                   | 62 ++++++-------------
- .../gpu/drm/ci/xfails/msm-apq8016-fails.txt   |  4 ++
- .../gpu/drm/ci/xfails/msm-apq8096-fails.txt   |  2 +
- 4 files changed, 27 insertions(+), 42 deletions(-)
+On Thursday, November 13, 2025 13:42 CET, FUKAUMI Naoki <naoki@radxa.com> wrote:
+> Currently, on Radxa boards, the power LED is turned on immediately
+> after power-up, independent of software control. The heartbeat LED and
+> other available LEDs are subsequently turned on by the initial
+> software, such as U-Boot, to indicate software is running.
+> 
+> However, the device tree description for this behavior is inconsistent
+> and fragmented, with definitions split between the main Linux DTS
+> files and separate U-Boot files (u-boot/arch/arm/dts/*-u-boot.dtsi).
+> 
+> This patch addresses the inconsistency for the power LED by using
+> default-state = "on" instead of linux,default-trigger = "default-on".
+> 
+> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts    | 1 -
+>  arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dts | 2 +-
+>  arch/arm64/boot/dts/rockchip/rk3528-rock-2a.dts      | 1 -
+>  arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts      | 2 +-
+>  arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts   | 2 +-
+>  arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts     | 2 +-
+>  6 files changed, 4 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/gpu/drm/ci/arm64.config b/drivers/gpu/drm/ci/arm64.config
-index fddfbd4d2493..b850b88787ad 100644
---- a/drivers/gpu/drm/ci/arm64.config
-+++ b/drivers/gpu/drm/ci/arm64.config
-@@ -83,6 +83,7 @@ CONFIG_SC_DISPCC_7180=y
- CONFIG_SC_GPUCC_7180=y
- CONFIG_SM_GPUCC_8350=y
- CONFIG_QCOM_SPMI_ADC5=y
-+CONFIG_QCOM_SPMI_VADC=y
- CONFIG_DRM_PARADE_PS8640=y
- CONFIG_DRM_LONTIUM_LT9611UXC=y
- CONFIG_PHY_QCOM_USB_HS=y
-diff --git a/drivers/gpu/drm/ci/test.yml b/drivers/gpu/drm/ci/test.yml
-index e56895626500..42f75993e190 100644
---- a/drivers/gpu/drm/ci/test.yml
-+++ b/drivers/gpu/drm/ci/test.yml
-@@ -67,31 +67,6 @@
-     - testing:x86_64
-     - igt:x86_64
- 
--.baremetal-igt-arm64:
--  extends:
--    - .baremetal-test-arm64-gl
--    - .use-debian/baremetal_arm64_test-gl
--    - .allow_failure_lockdep
--  timeout: "1h30m"
--  rules:
--    - !reference [.scheduled_pipeline-rules, rules]
--    - !reference [.google-freedreno-farm-rules, rules]
--    - when: on_success
--  variables:
--    FDO_CI_CONCURRENT: 10
--    HWCI_TEST_SCRIPT: "/install/igt_runner.sh"
--    S3_ARTIFACT_NAME: "arm64/kernel-files"
--    BM_KERNEL: https://${PIPELINE_ARTIFACTS_BASE}/arm64/Image.gz
--    BM_CMDLINE: "ip=dhcp console=ttyMSM0,115200n8 $BM_KERNEL_EXTRA_ARGS root=/dev/nfs rw nfsrootdebug nfsroot=,tcp,nfsvers=4.2 init=/init $BM_KERNELARGS"
--    FARM: google
--  needs:
--    - debian/baremetal_arm64_test-gl
--    - job: testing:arm64
--      artifacts: false
--    - igt:arm64
--  tags:
--    - $RUNNER_TAG
--
- .software-driver:
-   stage: software-driver
-   extends:
-@@ -149,34 +124,37 @@ msm:sc7180-trogdor-kingoftown:
- 
- msm:apq8016:
-   extends:
--    - .baremetal-igt-arm64
-+    - .lava-igt:arm64
-   stage: msm
-+  parallel: 3
-   variables:
--    DEVICE_TYPE: apq8016-sbc-usb-host
-+    BOOT_METHOD: fastboot
-+    DEVICE_TYPE: dragonboard-410c
-     DRIVER_NAME: msm
--    BM_DTB: https://${PIPELINE_ARTIFACTS_BASE}/arm64/${DEVICE_TYPE}.dtb
-+    DTB: apq8016-sbc-usb-host
-+    FARM: collabora
-     GPU_VERSION: apq8016
--    # disabling unused clocks congests with the MDSS runtime PM trying to
--    # disable those clocks and causes boot to fail.
--    # Reproducer: DRM_MSM=y, DRM_I2C_ADV7511=m
--    BM_KERNEL_EXTRA_ARGS: clk_ignore_unused
--    RUNNER_TAG: google-freedreno-db410c
--  script:
--    - ./install/bare-metal/fastboot.sh || exit $?
-+    KERNEL_IMAGE_NAME: "Image.gz"
-+    KERNEL_IMAGE_TYPE: ""
-+    RUNNER_TAG: mesa-ci-x86-64-lava-dragonboard-410c
-+    LAVA_FIRMWARE: qcom-lava
- 
- msm:apq8096:
-   extends:
--    - .baremetal-igt-arm64
-+    - .lava-igt:arm64
-   stage: msm
-+  parallel: 3
-   variables:
--    DEVICE_TYPE: apq8096-db820c
-+    BOOT_METHOD: fastboot
-+    DEVICE_TYPE: dragonboard-820c
-     DRIVER_NAME: msm
--    BM_KERNEL_EXTRA_ARGS: maxcpus=2
--    BM_DTB: https://${PIPELINE_ARTIFACTS_BASE}/arm64/${DEVICE_TYPE}.dtb
-+    DTB: apq8096-db820c
-+    FARM: collabora
-     GPU_VERSION: apq8096
--    RUNNER_TAG: google-freedreno-db820c
--  script:
--    - ./install/bare-metal/fastboot.sh || exit $?
-+    KERNEL_IMAGE_NAME: "Image.gz"
-+    KERNEL_IMAGE_TYPE: ""
-+    RUNNER_TAG: mesa-ci-x86-64-lava-dragonboard-820c
-+    LAVA_FIRMWARE: qcom-lava
- 
- msm:sm8350-hdk:
-   extends:
-diff --git a/drivers/gpu/drm/ci/xfails/msm-apq8016-fails.txt b/drivers/gpu/drm/ci/xfails/msm-apq8016-fails.txt
-index 72c469021b66..4546363447ff 100644
---- a/drivers/gpu/drm/ci/xfails/msm-apq8016-fails.txt
-+++ b/drivers/gpu/drm/ci/xfails/msm-apq8016-fails.txt
-@@ -1,5 +1,9 @@
-+core_setmaster@master-drop-set-user,Fail
- kms_3d,Fail
-+kms_cursor_legacy@forked-move,Fail
-+kms_cursor_legacy@single-bo,Fail
- kms_force_connector_basic@force-edid,Fail
- kms_hdmi_inject@inject-4k,Fail
- kms_lease@lease-uevent,Fail
-+msm/msm_mapping@memptrs,Fail
- msm/msm_mapping@ring,Fail
-diff --git a/drivers/gpu/drm/ci/xfails/msm-apq8096-fails.txt b/drivers/gpu/drm/ci/xfails/msm-apq8096-fails.txt
-index 2893f98a6b97..0d5cb2a87e67 100644
---- a/drivers/gpu/drm/ci/xfails/msm-apq8096-fails.txt
-+++ b/drivers/gpu/drm/ci/xfails/msm-apq8096-fails.txt
-@@ -1,2 +1,4 @@
-+core_setmaster@master-drop-set-user,Fail
- kms_3d,Fail
- kms_lease@lease-uevent,Fail
-+msm/msm_mapping@memptrs,Fail
--- 
-2.51.0
+[snip]
+
+Thanks for this patch.  The introduces changes look consistent
+to me, so please feel free to include
+
+Reviewed-by: Dragan Simic <dsimic@manjaro.org>
 
 
 _______________________________________________
