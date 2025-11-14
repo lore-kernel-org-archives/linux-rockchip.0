@@ -4,107 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6327DCE8D46
-	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Nov 2025 15:21:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF38DCE8D49
+	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Nov 2025 15:46:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
-	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MaHgpliAVL4hGs38iYaCbYbkK4AJKsRAKK7r1voS1l8=; b=FtRoTg3OOWvBKJ
-	3MImnFcXIM8gtWHJjovH+AgmmrCHz4g65erwEc2WOvLMAF6wAj8ZCPdzzZgSqVqfENDRCTs34l/uq
-	HGZkGCRrQ1+s5VX54WLawu5nuRSxGyArmUa8+7kWgK7GRGoDkfC5i7l4TR+XrWDtSgxfDRjseKWL/
-	qfWxGPvQngMNa6q2MZdJuiuwTay5jGBOdLcBCUblpeVFzqNP9RfpdYDzOdwCtTMjgjUWhgdJLE5Ey
-	xsxO+rG4zJFeywlTmTZPCEGFn5MXSaeHgJimmq1XcMfFcBtkZ4SdyOstftJuHTxTGIEc/orv4GFg5
-	A/FAumKv7f//sdldCNdA==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Date:MIME-Version:Message-ID:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=DYkSqyl9zzFHEcz31sTQbrnKuK5jv6T01SwLQ74XNgs=; b=oSyaKJUBsMQCYu
+	2d8kARRYq3ZVXiM3gzayCtqS+phRiBt6Ia2M8JKdiKvq9y79LCaf4j1ug8pNxO7/yBicWV2h6C2oQ
+	PljpiZk6/eB5TrAInqevik/s1y48W54b/NZ0c5Pb7Y6GsbEgFZM4EX+tvQ2VRYrGVWifGMYxJEC2+
+	M1wr15ME7vc8y8useDYIDYvwueVfHr6YxQDs5Ve94lAWJaZkbGzZfqtN5Dojbg3IDo57h+y+X9gfg
+	4dsX15xzjSNldnxM8u3qUjEEIAiYplzd206zCQ5Bh6c9GNJ62GMhMbHxYas6mIvBfEbXi6CBZOERC
+	ot8nt3nixX7HucEav+7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJvbe-0000000CX07-3k36;
-	Fri, 14 Nov 2025 15:20:58 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1vJw0c-0000000Cbbx-0ge4;
+	Fri, 14 Nov 2025 15:46:46 +0000
+Received: from toucan.tulip.relay.mailchannels.net ([23.83.218.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJvbG-0000000CWLV-0b7Z;
-	Fri, 14 Nov 2025 15:20:34 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Reply-To:Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Content-ID:Content-Description;
-	bh=o02X2584/OamiPUswAywhaYcopxNCPv1y0uB0h6D8qY=; b=nz1iUxXFJXZBfBfn1sVL2Sz8l/
-	rOIdN58EL3KmkgioZk5JlqU+0Q2kmrkwqmrA/wrzUUW0721cWFThHR9NM9lUNWdZNTiwFQua/2G8U
-	nYK3RewwVEAU6/C9ESarRNGuia3i1emtl/aioNXqII7SoQDfO/00oK15p6JQWk1hCnulocst7ls7k
-	oz795sPUMwDkbx0zxiczBVvzO6PmR35UjHkVvCq31Wb/Q7FTRoIcE6RsdXqoFYTYTV/lgSDlj/PBv
-	ZI1ObTFbQp1Cbc8ZNqDFGGI4anqfBhDwZpsjwgyeFT1QyXcxOVaE3rXceVJZ+umaGHQ+dBYVcBPN7
-	6Yq6RjWQ==;
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJujV-00000002ngt-3zMp;
-	Fri, 14 Nov 2025 14:25:06 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id C713C445C1;
-	Fri, 14 Nov 2025 15:20:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 95F24C19421;
-	Fri, 14 Nov 2025 15:20:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1763133620;
-	bh=EegfNTCZJhyP93HUaasjodtMI5xO9jzjfI3ApbhM3Do=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=OAAS4H4A9ESW21dxqt4lPtrOFHcmD9M7yh6E0P+7E27C4iAs89+52K25rLtFCh1Bv
-	 ciCA9eZ3WmvFEKekuMJyTBDM/rTm5QCRkASHXvQpU+ly6MhwRRPpgF+qeAmawoKvEL
-	 DIRhIs6299TyLMOjGHfNWBuJAVI2suZioZ+/5sz8HHjopnYsW4phxXiTg3us+PM52G
-	 1B4cyYKaFKZw3my75HeizdS8h3l4thpt/d469f5jcf6JatP+HaFqfegklIIk5vR6/R
-	 pBIkntbI3KxHf7l+dcQdE41qn/xnQimGVgmjqHzrbeNRcYAnVT03G9JLEKJdwm2qhq
-	 XyTdqQ87ddgwQ==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8C221CE7B13;
-	Fri, 14 Nov 2025 15:20:20 +0000 (UTC)
-From: Michael Riesch via B4 Relay <devnull+michael.riesch.collabora.com@kernel.org>
-Date: Fri, 14 Nov 2025 16:20:20 +0100
-Subject: [PATCH v15 09/14] media: rockchip: rkcif: add support for rk3568
- vicap dvp capture
+	id 1vJw0X-0000000Cbas-3Xr0;
+	Fri, 14 Nov 2025 15:46:44 +0000
+X-Sender-Id: hostingeremail|x-authuser|michael.opdenacker@rootcommit.com
+Received: from relay.mailchannels.net (localhost [127.0.0.1])
+	by relay.mailchannels.net (Postfix) with ESMTP id 857E880118D;
+	Fri, 14 Nov 2025 15:46:39 +0000 (UTC)
+Received: from de-fra-smtpout10.hostinger.io (trex-green-7.trex.outbound.svc.cluster.local [100.98.37.69])
+	(Authenticated sender: hostingeremail)
+	by relay.mailchannels.net (Postfix) with ESMTPA id 39CFF801496;
+	Fri, 14 Nov 2025 15:46:37 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; d=mailchannels.net; s=arc-2022; cv=none;
+	t=1763135199;
+	b=TvWIJaJnpKnsR1x7CMAH/gXQryf4odxOMDBDGRwqSycrUf3HrTxiDRPy2yQfOhU9E+n/Np
+	dMSu9OuoLdTM1E3yyxOhZ6K9xY60rUEuavSTDjz9AmoxQiro9PoHoSE+feD7+kGNxick9W
+	woOP9wbSLnGJJ/nCVdC8VFMDcn6TVc/TcyVwPBKYd/0OyLYzSi7p4v2bqS1E26HMUdkFnu
+	3Uc+9ZYhwHYqU4sXN+/ookj3EH4O9N7RA/8q6KTKo/GUgP3+YK/bE+DDnrAEA35RUTJYf9
+	R2RKWdraUuQ4xN9MccNCwXHUS3NLLFH1TvlNHq50TFcvcD2ipPbYV6lnoRyyIg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mailchannels.net;
+	s=arc-2022; t=1763135199;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:dkim-signature;
+	bh=+uXlKFVYsVi4QBQJBJcUPmQbfV+T3GjdjzcWzMszYJM=;
+	b=rcG6rLBWjMqDkBN8m3qBqNVq7s8Bk9Dte96VgQ+pqUuUUY1JBh4q9BSXIbhq+vPLNY1vuV
+	RKKiXk28HicwNs6LuAgVJvdELKfMaeRph3lV8tyFYvA4FRvV2frpRs2o8hNu4mGGr+Apx+
+	5rz5riCsKSV8gr4rE38ShOtXyKoWDQTDnYQIKthJ5hHwq95uywAxqI8B1+6mviZcaGSkY3
+	H0BT5uk60LqqayfzrFxysyYVXmFCsH5Dh/ApvWttJsvk1A1nxLVnnQ8UpR9JpiCg1Xzr7l
+	zRV6K11ABj7FbMjs4fv60HnXL/8V8JLE2KRZEBB7bz2tSt0JhcqeSJ9Y2663Bw==
+ARC-Authentication-Results: i=1;
+	rspamd-dd986fb9b-jh4f5;
+	auth=pass smtp.auth=hostingeremail
+ smtp.mailfrom=michael.opdenacker@rootcommit.com
+X-Sender-Id: hostingeremail|x-authuser|michael.opdenacker@rootcommit.com
+X-MC-Relay: Neutral
+X-MailChannels-SenderId: hostingeremail|x-authuser|michael.opdenacker@rootcommit.com
+X-MailChannels-Auth-Id: hostingeremail
+X-Obese-Average: 3ed153fe0592a4ec_1763135199389_3135456890
+X-MC-Loop-Signature: 1763135199389:381336495
+X-MC-Ingress-Time: 1763135199389
+Received: from de-fra-smtpout10.hostinger.io (de-fra-smtpout10.hostinger.io
+ [148.222.55.9])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384)
+	by 100.98.37.69 (trex/7.1.3);
+	Fri, 14 Nov 2025 15:46:39 +0000
+Received: from dell2016.. (unknown [IPv6:2a04:cec0:122b:2b8b:6420:6800:bae7:cb5a])
+	(Authenticated sender: michael.opdenacker@rootcommit.com)
+	by smtp.hostinger.com (smtp.hostinger.com) with ESMTPSA id 4d7M221kWkz3yrT;
+	Fri, 14 Nov 2025 15:46:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=rootcommit.com;
+	s=hostingermail-a; t=1763135195;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=+uXlKFVYsVi4QBQJBJcUPmQbfV+T3GjdjzcWzMszYJM=;
+	b=TuBdUAPrdk7ie++Q/GRmovsHdYtY+3nid+IKt65m1xBlaf14wyY+8EBP+xw/y73PhDgCuI
+	nBVWx9NYVwfjQog73Wc1P3XkKhUnzqoNhrLb/YzJTaNWG247/ThlGB/xoHbcCkZ57XXsH4
+	nye0yP0TXEV0kAj3M3zJCj4+UYfeRGCr5DZ9RLIeuuT47Tpfkm3gLE007TiHAsCCCr/VS5
+	LwPthzn4UZprXx9w8A8Zpa6IZ3oY7oOupLbmqZfqTdsjVcT/+80xTboJVFiPjoGs4UgblT
+	xpJY7WZ/1nst/Urxs6ua5INuaOzC0ih8GA+S3zY8mIhixdmsOo2B87jhaGK+HQ==
+From: michael.opdenacker@rootcommit.com
+To: robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	heiko@sntech.de,
+	dsimic@manjaro.org
+Cc: devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Michael Opdenacker <michael.opdenacker@rootcommit.com>
+Subject: [PATCH v2 0/2] arm64: dts: rockchip: add Tinker Board 3 and 3S device tree
+Message-ID: <20251114154617.69950-1-michael.opdenacker@rootcommit.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Message-Id: <20240220-rk3568-vicap-v15-9-8f4915ee365d@collabora.com>
-References: <20240220-rk3568-vicap-v15-0-8f4915ee365d@collabora.com>
-In-Reply-To: <20240220-rk3568-vicap-v15-0-8f4915ee365d@collabora.com>
-To: Mehdi Djait <mehdi.djait@linux.intel.com>, 
- Maxime Chevallier <maxime.chevallier@bootlin.com>, 
- =?utf-8?q?Th=C3=A9o_Lebrun?= <theo.lebrun@bootlin.com>, 
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
- Gerald Loacker <gerald.loacker@wolfvision.net>, 
- Bryan O'Donoghue <bryan.odonoghue@linaro.org>, 
- Markus Elfring <Markus.Elfring@web.de>, 
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Kever Yang <kever.yang@rock-chips.com>, 
- Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
- Sebastian Reichel <sebastian.reichel@collabora.com>, 
- Collabora Kernel Team <kernel@collabora.com>, 
- Paul Kocialkowski <paulk@sys-base.io>, 
- Alexander Shiyan <eagle.alexander923@gmail.com>, 
- Val Packett <val@packett.cool>, Rob Herring <robh@kernel.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Sakari Ailus <sakari.ailus@linux.intel.com>
-Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, 
- Michael Riesch <michael.riesch@collabora.com>, 
- Michael Riesch <michael.riesch@collabora.com>
-X-Mailer: b4 0.12.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1763133617; l=10988;
- i=michael.riesch@collabora.com; s=20250410; h=from:subject:message-id;
- bh=zEP2Gc8wNycuvK3ypNJTSWlr0jpeC2f0fRQdULd72Ns=;
- b=K1inEkGJdPisVCfa9kAZacBCKJ+3qbWgshO32wiceNeMeKtP9xoiOp2oC337o4B+7XKGvXsON
- /iAfxNLpSn6AYfvOvZbTZfBuLIsz2+t2FLAHqBmq/hCHZdhCkuqJfmv
-X-Developer-Key: i=michael.riesch@collabora.com; a=ed25519;
- pk=+MWX1fffLFZtTPG/I6XdYm/+OSvpRE8D9evQaWbiN04=
-X-Endpoint-Received: by B4 Relay for michael.riesch@collabora.com/20250410
- with auth_id=371
-X-Original-From: Michael Riesch <michael.riesch@collabora.com>
+Date: Fri, 14 Nov 2025 15:46:34 +0000 (UTC)
+X-CM-Envelope: MS4xfETTUH3GdUq3Y8Kq2rjoVX8uNYXR6It/83zBTkd5djVFJjY0X2geMB9Txf4s8jm63l3iCIBs/6iYoz0R/hIOzuQubgfExWfxoJx9RMDjXhQ2rjXqM2Vp 4GbNUs4GDnYpFJkIaABB9+1fmW/lHhp30+pquMKLFlCJf/5yIUiux2KMuqOUvx7JgkGrWjV6pwvoyiCR4FeqgufPwLqxEZOY4mpyvw0MD9Fg3tUE/j324aMe j4cvqRYHX0kRUKtBxwEX+9daH7v4VuyOnkSI3JwbL2taoLPDQ3qsAMEh+dGcvEnTbficpnArPxZg6z1T+zuLVgb/v1r9+0/QD3lJRX6feutbK2+/oQlS5fx3 HKTtwojF9ZcgIhyMKavywQmzxB567sX37ljQY7Zx/KN6/Wv/ZLHoUEqvFEAJUc9SFtnO+mpwwmIIjb15eUS4NpnJ1bkgeLpLsL3hqUgkbesLypjP6L3xe1lJ xYac2+oD3AQ/uSSgyp1sANbWMU7OLst7FzYnGoj59B9M7madMw4Xiis8uizeSXt78e0V3DHo+c6iGZRxHsJ1WX8ej1P/2jQ0AXvEgVwQ47lwzqKNV9hpYqTe vHNiQ/y/N9f3JmhfnnWBnx37
+X-CM-Analysis: v=2.4 cv=etGNzZpX c=1 sm=1 tr=0 ts=69174edb a=xg8E7M7z/s+QKb9omSVFuA==:617 a=xqWC_Br6kY4A:10 a=-Yt9tNsTAAAA:8 a=d70CFdQeAAAA:8 a=LlwhRhX4rF0ufvdEZR0A:9 a=lqcHg5cX4UMA:10 a=qPQde0g9OtMA:10 a=HTceBwxjnJgA:10 a=NcxpMcIZDGm-g932nG_k:22
+X-AuthUser: michael.opdenacker@rootcommit.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251114_142502_639949_4E7E05BA 
-X-CRM114-Status: GOOD (  13.48  )
+X-CRM114-CacheID: sfid-20251114_074642_135331_835C9DED 
+X-CRM114-Status: GOOD (  10.63  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,343 +117,61 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: michael.riesch@collabora.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Michael Riesch <michael.riesch@collabora.com>
+From: Michael Opdenacker <michael.opdenacker@rootcommit.com>
 
-The RK3568 Video Capture (VICAP) unit features a Digital Video Port
-(DVP). Add support for it.
+Add initial device tree support for Asus Tinker Board 3 [1] and 3S [2],
+which are SBCs based on the Rockchip 3566 SoC.
 
-Tested-by: Gerald Loacker <gerald.loacker@wolfvision.net>
-Reviewed-by: Gerald Loacker <gerald.loacker@wolfvision.net>
-Reviewed-by: Bryan O'Donoghue <bryan.odonoghue@linaro.org>
-Reviewed-by: Mehdi Djait <mehdi.djait@linux.intel.com>
-Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
----
- .../platform/rockchip/rkcif/rkcif-capture-dvp.c    | 276 +++++++++++++++++++++
- .../platform/rockchip/rkcif/rkcif-capture-dvp.h    |   1 +
- drivers/media/platform/rockchip/rkcif/rkcif-dev.c  |   1 +
- 3 files changed, 278 insertions(+)
+The "3S" version ("S" for "storage") is just a regular Tinker Board 3
+fitted with a 16 GB eMMC and a "mask ROM" DIP switch
+(to mask the eMMC and enter "Mask ROM" mode for recovery).
 
-diff --git a/drivers/media/platform/rockchip/rkcif/rkcif-capture-dvp.c b/drivers/media/platform/rockchip/rkcif/rkcif-capture-dvp.c
-index b40135035ab8..dbaf7636aeeb 100644
---- a/drivers/media/platform/rockchip/rkcif/rkcif-capture-dvp.c
-+++ b/drivers/media/platform/rockchip/rkcif/rkcif-capture-dvp.c
-@@ -332,6 +332,282 @@ const struct rkcif_dvp_match_data rkcif_px30_vip_dvp_match_data = {
- 	},
- };
- 
-+static const struct rkcif_input_fmt rk3568_dvp_in_fmts[] = {
-+	{
-+		.mbus_code = MEDIA_BUS_FMT_YUYV8_2X8,
-+		.dvp_fmt_val = RKCIF_FORMAT_YUV_INPUT_422 |
-+			       RKCIF_FORMAT_YUV_INPUT_ORDER_YUYV,
-+		.fmt_type = RKCIF_FMT_TYPE_YUV,
-+		.field = V4L2_FIELD_NONE,
-+	},
-+	{
-+		.mbus_code = MEDIA_BUS_FMT_YUYV8_2X8,
-+		.dvp_fmt_val = RKCIF_FORMAT_YUV_INPUT_422 |
-+			       RKCIF_FORMAT_YUV_INPUT_ORDER_YUYV,
-+		.fmt_type = RKCIF_FMT_TYPE_YUV,
-+		.field = V4L2_FIELD_INTERLACED,
-+	},
-+	{
-+		.mbus_code = MEDIA_BUS_FMT_YVYU8_2X8,
-+		.dvp_fmt_val = RKCIF_FORMAT_YUV_INPUT_422 |
-+			       RKCIF_FORMAT_YUV_INPUT_ORDER_YVYU,
-+		.fmt_type = RKCIF_FMT_TYPE_YUV,
-+		.field = V4L2_FIELD_NONE,
-+	},
-+	{
-+		.mbus_code = MEDIA_BUS_FMT_YVYU8_2X8,
-+		.dvp_fmt_val = RKCIF_FORMAT_YUV_INPUT_422 |
-+			       RKCIF_FORMAT_YUV_INPUT_ORDER_YVYU,
-+		.fmt_type = RKCIF_FMT_TYPE_YUV,
-+		.field = V4L2_FIELD_INTERLACED,
-+	},
-+	{
-+		.mbus_code = MEDIA_BUS_FMT_UYVY8_2X8,
-+		.dvp_fmt_val = RKCIF_FORMAT_YUV_INPUT_422 |
-+			       RKCIF_FORMAT_YUV_INPUT_ORDER_UYVY,
-+		.fmt_type = RKCIF_FMT_TYPE_YUV,
-+		.field = V4L2_FIELD_NONE,
-+	},
-+	{
-+		.mbus_code = MEDIA_BUS_FMT_UYVY8_2X8,
-+		.dvp_fmt_val = RKCIF_FORMAT_YUV_INPUT_422 |
-+			       RKCIF_FORMAT_YUV_INPUT_ORDER_UYVY,
-+		.fmt_type = RKCIF_FMT_TYPE_YUV,
-+		.field = V4L2_FIELD_INTERLACED,
-+	},
-+	{
-+		.mbus_code = MEDIA_BUS_FMT_VYUY8_2X8,
-+		.dvp_fmt_val = RKCIF_FORMAT_YUV_INPUT_422 |
-+			       RKCIF_FORMAT_YUV_INPUT_ORDER_VYUY,
-+		.fmt_type = RKCIF_FMT_TYPE_YUV,
-+		.field = V4L2_FIELD_NONE,
-+	},
-+	{
-+		.mbus_code = MEDIA_BUS_FMT_VYUY8_2X8,
-+		.dvp_fmt_val = RKCIF_FORMAT_YUV_INPUT_422 |
-+			       RKCIF_FORMAT_YUV_INPUT_ORDER_VYUY,
-+		.fmt_type = RKCIF_FMT_TYPE_YUV,
-+		.field = V4L2_FIELD_INTERLACED,
-+	},
-+	{
-+		.mbus_code = MEDIA_BUS_FMT_YUYV8_1X16,
-+		.dvp_fmt_val = RKCIF_FORMAT_YUV_INPUT_422 |
-+			       RKCIF_FORMAT_YUV_INPUT_ORDER_YUYV |
-+			       RKCIF_FORMAT_INPUT_MODE_BT1120 |
-+			       RKCIF_FORMAT_BT1120_TRANSMIT_PROGRESS,
-+		.field = V4L2_FIELD_NONE,
-+	},
-+	{
-+		.mbus_code = MEDIA_BUS_FMT_YUYV8_1X16,
-+		.dvp_fmt_val = RKCIF_FORMAT_YUV_INPUT_422 |
-+			       RKCIF_FORMAT_YUV_INPUT_ORDER_YUYV |
-+			       RKCIF_FORMAT_INPUT_MODE_BT1120,
-+		.field = V4L2_FIELD_INTERLACED,
-+	},
-+	{
-+		.mbus_code = MEDIA_BUS_FMT_YVYU8_1X16,
-+		.dvp_fmt_val = RKCIF_FORMAT_YUV_INPUT_422 |
-+			       RKCIF_FORMAT_YUV_INPUT_ORDER_YVYU |
-+			       RKCIF_FORMAT_INPUT_MODE_BT1120 |
-+			       RKCIF_FORMAT_BT1120_TRANSMIT_PROGRESS,
-+		.field = V4L2_FIELD_NONE,
-+	},
-+	{
-+		.mbus_code = MEDIA_BUS_FMT_YVYU8_1X16,
-+		.dvp_fmt_val = RKCIF_FORMAT_YUV_INPUT_422 |
-+			       RKCIF_FORMAT_YUV_INPUT_ORDER_YVYU |
-+			       RKCIF_FORMAT_INPUT_MODE_BT1120,
-+		.field = V4L2_FIELD_INTERLACED,
-+	},
-+	{
-+		.mbus_code = MEDIA_BUS_FMT_UYVY8_1X16,
-+		.dvp_fmt_val = RKCIF_FORMAT_YUV_INPUT_422 |
-+			       RKCIF_FORMAT_YUV_INPUT_ORDER_YUYV |
-+			       RKCIF_FORMAT_INPUT_MODE_BT1120 |
-+			       RKCIF_FORMAT_BT1120_YC_SWAP |
-+			       RKCIF_FORMAT_BT1120_TRANSMIT_PROGRESS,
-+		.field = V4L2_FIELD_NONE,
-+	},
-+	{
-+		.mbus_code = MEDIA_BUS_FMT_UYVY8_1X16,
-+		.dvp_fmt_val = RKCIF_FORMAT_YUV_INPUT_422 |
-+			       RKCIF_FORMAT_YUV_INPUT_ORDER_YUYV |
-+			       RKCIF_FORMAT_BT1120_YC_SWAP |
-+			       RKCIF_FORMAT_INPUT_MODE_BT1120,
-+		.field = V4L2_FIELD_INTERLACED,
-+	},
-+	{
-+		.mbus_code = MEDIA_BUS_FMT_VYUY8_1X16,
-+		.dvp_fmt_val = RKCIF_FORMAT_YUV_INPUT_422 |
-+			       RKCIF_FORMAT_YUV_INPUT_ORDER_YVYU |
-+			       RKCIF_FORMAT_INPUT_MODE_BT1120 |
-+			       RKCIF_FORMAT_BT1120_YC_SWAP |
-+			       RKCIF_FORMAT_BT1120_TRANSMIT_PROGRESS,
-+		.field = V4L2_FIELD_NONE,
-+	},
-+	{
-+		.mbus_code = MEDIA_BUS_FMT_VYUY8_1X16,
-+		.dvp_fmt_val = RKCIF_FORMAT_YUV_INPUT_422 |
-+			       RKCIF_FORMAT_YUV_INPUT_ORDER_YVYU |
-+			       RKCIF_FORMAT_BT1120_YC_SWAP |
-+			       RKCIF_FORMAT_INPUT_MODE_BT1120,
-+		.field = V4L2_FIELD_INTERLACED,
-+	},
-+	{
-+		.mbus_code = MEDIA_BUS_FMT_SBGGR8_1X8,
-+		.dvp_fmt_val = RKCIF_FORMAT_INPUT_MODE_RAW |
-+			       RKCIF_FORMAT_RAW_DATA_WIDTH_8,
-+		.fmt_type = RKCIF_FMT_TYPE_RAW,
-+		.field = V4L2_FIELD_NONE,
-+	},
-+	{
-+		.mbus_code = MEDIA_BUS_FMT_SGBRG8_1X8,
-+		.dvp_fmt_val = RKCIF_FORMAT_INPUT_MODE_RAW |
-+			       RKCIF_FORMAT_RAW_DATA_WIDTH_8,
-+		.fmt_type = RKCIF_FMT_TYPE_RAW,
-+		.field = V4L2_FIELD_NONE,
-+	},
-+	{
-+		.mbus_code = MEDIA_BUS_FMT_SGRBG8_1X8,
-+		.dvp_fmt_val = RKCIF_FORMAT_INPUT_MODE_RAW |
-+			       RKCIF_FORMAT_RAW_DATA_WIDTH_8,
-+		.fmt_type = RKCIF_FMT_TYPE_RAW,
-+		.field = V4L2_FIELD_NONE,
-+	},
-+	{
-+		.mbus_code = MEDIA_BUS_FMT_SRGGB8_1X8,
-+		.dvp_fmt_val = RKCIF_FORMAT_INPUT_MODE_RAW |
-+			       RKCIF_FORMAT_RAW_DATA_WIDTH_8,
-+		.fmt_type = RKCIF_FMT_TYPE_RAW,
-+		.field = V4L2_FIELD_NONE,
-+	},
-+	{
-+		.mbus_code = MEDIA_BUS_FMT_SBGGR10_1X10,
-+		.dvp_fmt_val = RKCIF_FORMAT_INPUT_MODE_RAW |
-+			       RKCIF_FORMAT_RAW_DATA_WIDTH_10,
-+		.fmt_type = RKCIF_FMT_TYPE_RAW,
-+		.field = V4L2_FIELD_NONE,
-+	},
-+	{
-+		.mbus_code = MEDIA_BUS_FMT_SGBRG10_1X10,
-+		.dvp_fmt_val = RKCIF_FORMAT_INPUT_MODE_RAW |
-+			       RKCIF_FORMAT_RAW_DATA_WIDTH_10,
-+		.fmt_type = RKCIF_FMT_TYPE_RAW,
-+		.field = V4L2_FIELD_NONE,
-+	},
-+	{
-+		.mbus_code = MEDIA_BUS_FMT_SGRBG10_1X10,
-+		.dvp_fmt_val = RKCIF_FORMAT_INPUT_MODE_RAW |
-+			       RKCIF_FORMAT_RAW_DATA_WIDTH_10,
-+		.fmt_type = RKCIF_FMT_TYPE_RAW,
-+		.field = V4L2_FIELD_NONE,
-+	},
-+	{
-+		.mbus_code = MEDIA_BUS_FMT_SRGGB10_1X10,
-+		.dvp_fmt_val = RKCIF_FORMAT_INPUT_MODE_RAW |
-+			       RKCIF_FORMAT_RAW_DATA_WIDTH_10,
-+		.fmt_type = RKCIF_FMT_TYPE_RAW,
-+		.field = V4L2_FIELD_NONE,
-+	},
-+	{
-+		.mbus_code = MEDIA_BUS_FMT_SBGGR12_1X12,
-+		.dvp_fmt_val = RKCIF_FORMAT_INPUT_MODE_RAW |
-+			       RKCIF_FORMAT_RAW_DATA_WIDTH_12,
-+		.fmt_type = RKCIF_FMT_TYPE_RAW,
-+		.field = V4L2_FIELD_NONE,
-+	},
-+	{
-+		.mbus_code = MEDIA_BUS_FMT_SGBRG12_1X12,
-+		.dvp_fmt_val = RKCIF_FORMAT_INPUT_MODE_RAW |
-+			       RKCIF_FORMAT_RAW_DATA_WIDTH_12,
-+		.fmt_type = RKCIF_FMT_TYPE_RAW,
-+		.field = V4L2_FIELD_NONE,
-+	},
-+	{
-+		.mbus_code = MEDIA_BUS_FMT_SGRBG12_1X12,
-+		.dvp_fmt_val = RKCIF_FORMAT_INPUT_MODE_RAW |
-+			       RKCIF_FORMAT_RAW_DATA_WIDTH_12,
-+		.fmt_type = RKCIF_FMT_TYPE_RAW,
-+		.field = V4L2_FIELD_NONE,
-+	},
-+	{
-+		.mbus_code = MEDIA_BUS_FMT_SRGGB12_1X12,
-+		.dvp_fmt_val = RKCIF_FORMAT_INPUT_MODE_RAW |
-+			       RKCIF_FORMAT_RAW_DATA_WIDTH_12,
-+		.fmt_type = RKCIF_FMT_TYPE_RAW,
-+		.field = V4L2_FIELD_NONE,
-+	},
-+	{
-+		.mbus_code = MEDIA_BUS_FMT_RGB888_1X24,
-+		.field = V4L2_FIELD_NONE,
-+	},
-+	{
-+		.mbus_code = MEDIA_BUS_FMT_Y8_1X8,
-+		.dvp_fmt_val = RKCIF_FORMAT_INPUT_MODE_RAW |
-+			       RKCIF_FORMAT_RAW_DATA_WIDTH_8,
-+		.fmt_type = RKCIF_FMT_TYPE_RAW,
-+		.field = V4L2_FIELD_NONE,
-+	},
-+	{
-+		.mbus_code = MEDIA_BUS_FMT_Y10_1X10,
-+		.dvp_fmt_val = RKCIF_FORMAT_INPUT_MODE_RAW |
-+			       RKCIF_FORMAT_RAW_DATA_WIDTH_10,
-+		.fmt_type = RKCIF_FMT_TYPE_RAW,
-+		.field = V4L2_FIELD_NONE,
-+	},
-+	{
-+		.mbus_code = MEDIA_BUS_FMT_Y12_1X12,
-+		.dvp_fmt_val = RKCIF_FORMAT_INPUT_MODE_RAW |
-+			       RKCIF_FORMAT_RAW_DATA_WIDTH_12,
-+		.fmt_type = RKCIF_FMT_TYPE_RAW,
-+		.field = V4L2_FIELD_NONE,
-+	},
-+};
-+
-+static void rk3568_dvp_grf_setup(struct rkcif_device *rkcif)
-+{
-+	u32 con1 = RK3568_GRF_WRITE_ENABLE(RK3568_GRF_VI_CON1_CIF_DATAPATH |
-+					   RK3568_GRF_VI_CON1_CIF_CLK_DELAYNUM);
-+
-+	if (!rkcif->grf)
-+		return;
-+
-+	con1 |= rkcif->interfaces[RKCIF_DVP].dvp.dvp_clk_delay &
-+		RK3568_GRF_VI_CON1_CIF_CLK_DELAYNUM;
-+
-+	if (rkcif->interfaces[RKCIF_DVP].vep.bus.parallel.flags &
-+	    V4L2_MBUS_PCLK_SAMPLE_DUALEDGE)
-+		con1 |= RK3568_GRF_VI_CON1_CIF_DATAPATH;
-+
-+	regmap_write(rkcif->grf, RK3568_GRF_VI_CON1, con1);
-+}
-+
-+const struct rkcif_dvp_match_data rkcif_rk3568_vicap_dvp_match_data = {
-+	.in_fmts = rk3568_dvp_in_fmts,
-+	.in_fmts_num = ARRAY_SIZE(rk3568_dvp_in_fmts),
-+	.out_fmts = dvp_out_fmts,
-+	.out_fmts_num = ARRAY_SIZE(dvp_out_fmts),
-+	.setup = rk3568_dvp_grf_setup,
-+	.has_scaler = false,
-+	.regs = {
-+		[RKCIF_DVP_CTRL] = 0x00,
-+		[RKCIF_DVP_INTEN] = 0x04,
-+		[RKCIF_DVP_INTSTAT] = 0x08,
-+		[RKCIF_DVP_FOR] = 0x0c,
-+		[RKCIF_DVP_LINE_NUM_ADDR] = 0x2c,
-+		[RKCIF_DVP_FRM0_ADDR_Y] = 0x14,
-+		[RKCIF_DVP_FRM0_ADDR_UV] = 0x18,
-+		[RKCIF_DVP_FRM1_ADDR_Y] = 0x1c,
-+		[RKCIF_DVP_FRM1_ADDR_UV] = 0x20,
-+		[RKCIF_DVP_VIR_LINE_WIDTH] = 0x24,
-+		[RKCIF_DVP_SET_SIZE] = 0x28,
-+		[RKCIF_DVP_CROP] = 0x34,
-+		[RKCIF_DVP_FRAME_STATUS] = 0x3c,
-+		[RKCIF_DVP_LAST_LINE] = 0x44,
-+		[RKCIF_DVP_LAST_PIX] = 0x48,
-+	},
-+};
-+
- static inline unsigned int rkcif_dvp_get_addr(struct rkcif_device *rkcif,
- 					      unsigned int index)
- {
-diff --git a/drivers/media/platform/rockchip/rkcif/rkcif-capture-dvp.h b/drivers/media/platform/rockchip/rkcif/rkcif-capture-dvp.h
-index 7b2da11497c3..a4ed37833bd6 100644
---- a/drivers/media/platform/rockchip/rkcif/rkcif-capture-dvp.h
-+++ b/drivers/media/platform/rockchip/rkcif/rkcif-capture-dvp.h
-@@ -14,6 +14,7 @@
- #include "rkcif-common.h"
- 
- extern const struct rkcif_dvp_match_data rkcif_px30_vip_dvp_match_data;
-+extern const struct rkcif_dvp_match_data rkcif_rk3568_vicap_dvp_match_data;
- 
- int rkcif_dvp_register(struct rkcif_device *rkcif);
- 
-diff --git a/drivers/media/platform/rockchip/rkcif/rkcif-dev.c b/drivers/media/platform/rockchip/rkcif/rkcif-dev.c
-index 207802073fd3..addc118ff8bf 100644
---- a/drivers/media/platform/rockchip/rkcif/rkcif-dev.c
-+++ b/drivers/media/platform/rockchip/rkcif/rkcif-dev.c
-@@ -48,6 +48,7 @@ static const char *const rk3568_vicap_clks[] = {
- static const struct rkcif_match_data rk3568_vicap_match_data = {
- 	.clks = rk3568_vicap_clks,
- 	.clks_num = ARRAY_SIZE(rk3568_vicap_clks),
-+	.dvp = &rkcif_rk3568_vicap_dvp_match_data,
- };
- 
- static const struct of_device_id rkcif_plat_of_match[] = {
+This adds support for:
+- Debug UART (/dev/ttyS2)
+- SD card (/dev/mmcblk1)
+- eMMC (/dev/mmcblk0, only on Tinker Board 3S)
+- I2C:
+  - i2c0 (internal bus with a PMIC and regulators)
+  - i2c2 (internal bus with an at24 eeprom and an RTC device)
+- USB 2.0 ports
+- 2 GPIO LEDS
 
--- 
-2.39.5
+This code was tested on Tinker Board 3S using the "master"
+branch of the Linux kernel.
 
+[1] https://tinker-board.asus.com/series/tinker-board-3.html
+[2] https://tinker-board.asus.com/series/tinker-board-3s.html
+
+Changes in V2:
+- Rename "Tinker board" to "Tinker Board"
+  in commit messages and DT code
+- Insert "-board" in DT file names
+- Insert "-board" in new compatible string too
+- Commit messages: change the way the references are introduced
+  ("[1] https://..." instead of "Link: https://... [1]")
+- Reorder alias properties and node names
+- Add missing "cpu-supply" property to cpu nodes
+- Use standard "eeprom@addr" node name for at24 eeprom
+- DT commit message: add missing "Asus" before "Tinker"
+
+Michael Opdenacker (2):
+  dt-bindings: arm: rockchip: Add Asus Tinker Board 3 and 3S
+  arm64: dts: rockchip: Add Asus Tinker Board 3 and 3S device tree
+
+ .../devicetree/bindings/arm/rockchip.yaml     |  11 +
+ arch/arm64/boot/dts/rockchip/Makefile         |   2 +
+ .../dts/rockchip/rk3566-tinker-board-3.dts    |  14 +
+ .../dts/rockchip/rk3566-tinker-board-3.dtsi   | 280 ++++++++++++++++++
+ .../dts/rockchip/rk3566-tinker-board-3s.dts   |  30 ++
+ 5 files changed, 337 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-tinker-board-3.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-tinker-board-3.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-tinker-board-3s.dts
 
 
 _______________________________________________
