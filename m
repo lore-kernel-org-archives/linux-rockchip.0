@@ -4,53 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED9D1CEBF87
-	for <linux-rockchip@archiver.kernel.org>; Sat, 15 Nov 2025 23:29:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42BD7CEBF88
+	for <linux-rockchip@archiver.kernel.org>; Sat, 15 Nov 2025 23:43:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-ID:MIME-Version:To:Cc:
-	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=nQeSc197VEQ72RFc8bUI5kONC/XRGmooIbdxBuDEf7o=; b=ZRlfyupUJkz3vt
-	5or2b/jFGnqzv4nYxGy/jKiMpsbvSVnpqGuBmVQMZWinX5iCHDLNNH5g+/7VpH2MQ9p/+IJfC/JTr
-	bmWhJpB2DpOzvMgRtE6A2ZTrGFNb83GzTkKvnWXZQXa14X+97bcfHo0/Nxk6fskuuo3L/UR/S3msI
-	L+c8GeFqdn6V1W+aWcW/XtPIjfj/iqvpq987nOrhPDuAOJUYOczLBU2GJnsxBcH8XW3ilK57yW/X+
-	5HSRSjECKXx616MbllG3JJbxH6Hs30CXFvipzYVMm47zUlSQEAW+81Xw2Xg/ORJOHBJXv66UTydxt
-	WPGi//27bp/9TrA4epAg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=CQLzUpw+l2AUL88peR/+4DaZPCFXyTOan+mXTb4sCM8=; b=M1GkT1R2xwW27S
+	NrSrXZqCWF34SnZgTtpNMkR+TMbxtdCOfFLtSCPjB6EFS2lobeqayXbd+0bd6WXWvar1wBoDkSnsV
+	yVK7FtzNVtxgyTYIqHH0HKPgVmwfCwnSo/Oiq5RKDEmi3OZ/sPb97LDXGHKdD8/Cz3l/KjPKG2C/x
+	KbXstCIRgFv4hNcNJt0+5ixWMRCNifaYBDSeAYmU0WW6Lt9+JsVW1gazkcnVRh17p3Ad4yBMnzgBZ
+	VWg9DFNLodJpfT6CEKaSKEm9Q87AVuIJx0BnLXybpQLhk9U4tyEFc3MjYSpV0eaKjwqifQF4n2AEL
+	Zuzuud91DF8hzaT+WLxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vKPhx-0000000ECYE-0Qd9;
-	Sat, 15 Nov 2025 23:29:29 +0000
-Received: from mail1.manjaro.org ([142.132.176.110])
+	id 1vKPvq-0000000EDe1-2cmM;
+	Sat, 15 Nov 2025 23:43:50 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vK4Xa-0000000DJ22-2eB5;
-	Sat, 15 Nov 2025 00:53:24 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPA id B458140CFC;
-	Sat, 15 Nov 2025 01:53:19 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=dkim;
-	t=1763168000; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding; bh=pTTod1rI5CQ232hgj1u76/djAv0gQLeHyDWpYjiwYwQ=;
-	b=j7pniwSXR9lWzrkFPcwtfogT3myBfqLs8ynj6vtBu4Kd1BqmyzzR7oK+zIfpaUwoHlriXI
-	mPLUQHqNQWLolAVph5bkDqnkLDusZ5vdu1tBdv3+6NNloQZcsm15sSOXXrSIa0yLtFNyu7
-	N3RHOkgf7onfhsApLSMDCloBbvcUFmjqqWf8vlZn+BLNJhIJWNjMMqsnKnBt/fAWk9C8DR
-	Kw1la4bjOmcutP9FH4wwT9ETrXGGkarhRxGEmSw6F9TIMeGev02FbtVOb19Ad7QyPxY6Ms
-	OxLsaungRSe3sdBvuegxvw+dleDe24MzISvMJUs6Sraqeq3SAb3X0USVTph3Iw==
-From: "Dragan Simic" <dsimic@manjaro.org>
-Date: Sat, 15 Nov 2025 01:53:19 +0100
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-To: michael.opdenacker@rootcommit.com
+	id 1vKPvo-0000000EDdW-0XRh;
+	Sat, 15 Nov 2025 23:43:49 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=p2QaOkO8NjOGntm2KfoOJ04f8p6YfbVqlV+eGAe/YQo=; b=T7W1X8/VKMuVlBltXAxej69Ttz
+	RuhoComjszRwtfM2WRLudijqxYx8+iDpYVKRkjzAOeJ2+dzp/hIgsO4ouvdKVfdGyFNXNp/m6voi8
+	y712OG3Hn2bhgRTkA3m/P+ycUcJYGV3Z6f3S1VKon4otCRK35wNF7STP5wQTTx3aJETYob8/p8rOc
+	8++Wjxfe0mDHh/kpUpJd3V+HDyNTNZcB7h9xuTpi4weeY7h6j7ilSzsyEscPgANMx9D2hnoRotmfV
+	lAyrMTxiua92KOdCj7nX41M+MAE994s8pN348Eocq9pi3S48mS+rJeSjDKpbDmadqS+/+x77ZvwzF
+	5XyTT/Tw==;
+Received: from i53875bd0.versanet.de ([83.135.91.208] helo=phil..)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1vKPvO-00022c-4Q; Sun, 16 Nov 2025 00:43:22 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: Mehdi Djait <mehdi.djait@linux.intel.com>,
+	Maxime Chevallier <maxime.chevallier@bootlin.com>,
+	=?UTF-8?q?Th=C3=A9o=20Lebrun?= <theo.lebrun@bootlin.com>,
+	Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+	Gerald Loacker <gerald.loacker@wolfvision.net>,
+	Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
+	Markus Elfring <Markus.Elfring@web.de>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Kever Yang <kever.yang@rock-chips.com>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Collabora Kernel Team <kernel@collabora.com>,
+	Paul Kocialkowski <paulk@sys-base.io>,
+	Alexander Shiyan <eagle.alexander923@gmail.com>,
+	Val Packett <val@packett.cool>,
+	Rob Herring <robh@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	Michael Riesch <michael.riesch@collabora.com>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	linux-media@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	Mehdi Djait <mehdi.djait@bootlin.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: Re: (subset) [PATCH v15 00/14] media: rockchip: add a driver for the rockchip camera interface
+Date: Sun, 16 Nov 2025 00:43:19 +0100
+Message-ID: <176325011672.721648.2323929668705434904.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.47.2
+In-Reply-To: <20240220-rk3568-vicap-v15-0-8f4915ee365d@collabora.com>
+References: <20240220-rk3568-vicap-v15-0-8f4915ee365d@collabora.com>
 MIME-Version: 1.0
-Message-ID: <12d6e151-dfa0-ca0a-5888-ddffb2dbdec7@manjaro.org>
-Subject: =?utf-8?q?Re=3A?= [PATCH v2 2/2] =?utf-8?q?arm64=3A?==?utf-8?q?_dts=3A?=
- =?utf-8?q?_rockchip=3A?= Add Asus Tinker Board 3 and 3S device tree
-User-Agent: SOGoMail 5.12.3
-X-Last-TLS-Session-Version: None
-X-Bad-Reply: 'Re:' in Subject but no References or In-Reply-To headers
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251114_165322_856312_7B2C3B06 
-X-CRM114-Status: GOOD (  11.21  )
-X-Mailman-Approved-At: Sat, 15 Nov 2025 15:29:00 -0800
+X-CRM114-CacheID: sfid-20251115_154348_194541_0D5F32C3 
+X-CRM114-Status: GOOD (  15.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,51 +98,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Michael,
 
-Thanks for the v2!  Please, see one nitpick below.
-
-On Friday, November 14, 2025 16:46 CET, michael.opdenacker@rootcommit.com wrote:
-> From: Michael Opdenacker <michael.opdenacker@rootcommit.com>
-
-I'm sorry for not mentioning it in my earlier responses, but this
-line is redundant, because it duplicates the From value found in
-the actual email message.
-
-> Add initial device tree support for Asus Tinker Board 3 [1] and 3S [2],
-> which are SBCs based on the Rockchip 3566 SoC.
+On Fri, 14 Nov 2025 16:20:11 +0100, Michael Riesch wrote:
+> Habidere,
 > 
-> The "3S" version ("S" for "storage") just adds a 16 GB eMMC
-> and a "mask ROM" DIP switch (to mask the eMMC and enter "Mask ROM"
-> mode for recovery) to the "3" version.
+> This series introduces support for the Rockchip Camera Interface (CIF),
+> which is featured in many Rockchip SoCs in different variations.
+> The series has now been around for a while and has received many comments
+> and reviews. Thus, it should be ready for mainline by now.
 > 
-> This adds support for:
-> - Debug UART (/dev/ttyS2)
-> - SD card (/dev/mmcblk1)
-> - eMMC (/dev/mmcblk0, only on Tinker Board 3S)
-> - I2C:
->   - i2c0 (internal bus with a PMIC and regulators)
->   - i2c2 (internal bus with an at24 eeprom and an RTC device)
-> - USB 2.0 ports
-> - 2 GPIO LEDS
-> 
-> [1] https://tinker-board.asus.com/series/tinker-board-3.html
-> [2] https://tinker-board.asus.com/series/tinker-board-3s.html
-> 
-> Signed-off-by: Michael Opdenacker <michael.opdenacker@rootcommit.com>
-> ---
->  arch/arm64/boot/dts/rockchip/Makefile         |   2 +
->  .../dts/rockchip/rk3566-tinker-board-3.dts    |  14 +
->  .../dts/rockchip/rk3566-tinker-board-3.dtsi   | 280 ++++++++++++++++++
->  .../dts/rockchip/rk3566-tinker-board-3s.dts   |  30 ++
->  4 files changed, 326 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-tinker-board-3.dts
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-tinker-board-3.dtsi
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-tinker-board-3s.dts
+> [...]
 
-[snip]
+Applied, thanks!
+
+[11/14] arm64: defconfig: enable rockchip camera interface
+        commit: 60705b039f960378bb2a0a844f9378646bc0c6c8
+[12/14] arm64: dts: rockchip: add the vip node to px30
+        commit: d2da7e98c0bf7f75433809ad875c6e1ae57f0cea
+[13/14] arm64: dts: rockchip: add vicap node to rk356x
+        commit: 78f316e90906d54c8aa6029e5c19ae83e420e56a
 
 
+Not applied 
+    arm64: dts: rockchip: enable vicap dvp on wolfvision pf5 io expander
+
+because of
+Lexical error: ../arch/arm64/boot/dts/rockchip/rk3568-wolfvision-pf5-io-expander.dtso:149.18-45 Unexpected 'MEDIA_PCLK_SAMPLE_DUAL_EDGE'
+FATAL ERROR: Syntax error parsing input tree
+
+This likely will only work after the next merge window.
+
+So if you can live with that please resubmit that last patch individually.
+
+
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
