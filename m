@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 987B8CEB2C7
-	for <linux-rockchip@archiver.kernel.org>; Sat, 15 Nov 2025 09:51:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3F9DCEB2C7
+	for <linux-rockchip@archiver.kernel.org>; Sat, 15 Nov 2025 09:53:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=H1b6H4Hv1aYGrscke2iksazlr87uzNtP1xfNdQtkJ3Y=; b=koflbIqqJ/wL1s
-	LAVsYgiX/zXhvle+zV0kQ2ddEh8CuJ+T0W1Huk4IwC6/j/1qXmyS+aMXOMlRHWd/oSqV33NPWJwri
-	UqvmKk1GKQy9FcCyTKpeuOu7kPyVDHmAcPL2NF7c68a7h6soG8fo02sRU/jswdlx+oJ6XeNfofaLF
-	DxVZOHvbP9iemhaHwu159npwLhpt3/ESJYJaammPRhL9jSmuO0L+1YHPMhn0YUGyJKUq7rWeERLdn
-	6BdbpXQPU6eWoAQKCi7xKydP8Q5Ixbu3IzQYhBc8XRs+rvTb19xPQyos6wGO2vi2ml2mQ0hIhiIMg
-	DpAuSdXGb8Ps2AAN1row==;
+	List-Owner; bh=1UhnqRktIvq9UQVgb2ldICBJkTI0Q6Our3T8XaIWwZk=; b=0zSKsPR22Ad5vj
+	IlU7VZjJaWKOGh5kt7hBzVizmQnSdAmjpL9zpE6tJJ8YAMC4OjkcJ1YBbQOIDhd2NIn2iaqHhUb7G
+	K3Qh8L07MAmWD0UZfhlJRvMSlktpgiiMxx5lq+VnIGcpWBsF4xj6fGZAB5KSBEI6jANK6GCxOsLGP
+	XZte8WzNq+PDeh3sapp+Z5TAk/dXVFEhcdc+jjElvtCd8iv/XAEC9cuB+HXiid1qm++4XzOwTSwdj
+	Vs+/HKWBWTvbR5W215CVlcclW0rUja9YuhG7JxT37NCKnheqdOrZmS2JYN1QzdY9+FQIsJnWvUm9k
+	d0oMiGe7E+M9AahXJ91Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vKCwW-0000000DfTV-0MXP;
-	Sat, 15 Nov 2025 09:51:40 +0000
-Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
+	id 1vKCy7-0000000Dfrs-1EjC;
+	Sat, 15 Nov 2025 09:53:19 +0000
+Received: from mail-pj1-x1031.google.com ([2607:f8b0:4864:20::1031])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vKCwT-0000000DfSm-0kge
+	id 1vKCy3-0000000Dfqw-3rXC
 	for linux-rockchip@lists.infradead.org;
-	Sat, 15 Nov 2025 09:51:38 +0000
-Received: by mail-pl1-x62e.google.com with SMTP id d9443c01a7336-2981f9ce15cso33446085ad.1
-        for <linux-rockchip@lists.infradead.org>; Sat, 15 Nov 2025 01:51:36 -0800 (PST)
+	Sat, 15 Nov 2025 09:53:17 +0000
+Received: by mail-pj1-x1031.google.com with SMTP id 98e67ed59e1d1-3436cbb723fso2206806a91.2
+        for <linux-rockchip@lists.infradead.org>; Sat, 15 Nov 2025 01:53:15 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1763200296; x=1763805096; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1763200395; x=1763805195; darn=lists.infradead.org;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=7yRRIzPGF37+ZW/9QuVq1mSuHX636hF32XUa+RdwYXc=;
-        b=jiyGkYypF95th3o8rKWb3Dx8xdBr0FTz8yjWRoigduQJYtSKN5aJ67uBe2eXFIsa3J
-         WP0U51E9tcMkh42Z84TZ9A2ORW1y6XOZOmT4AEKpuFACbRauL/sLvQ5EAQI+LtQuCVI9
-         /NwYRld96pgbXAD3eNxbvtQsMTirG4JHAGJtqsO0oBWCvTwqmcu0i/iaxWTqT7SJ1edy
-         +NDLAzBpIBD06hVQTAOp6LDTk9stUBGsxRzrCnQNZoibhDjQsQ0u+VSIOK+jEH13UCdB
-         r2kdn2sQzZh+sGu0LIc1oxfVdS9WqEDFA+USx8jJUXLLAOQ3bpFYRurbupKBsZyYXE2c
-         Flfw==
+        bh=2Vqb7SuC6LdXp/wdF4JsayTM+a28625NUpBifotjx9o=;
+        b=abe3YKyu8BUWxKYmY5bZk8WIIfyGT+tCVWuu2qkSsSOOkxqmIWXu9930Of1AS6SBwt
+         CYAQuGR4PYOvkNFITCoJsjQQcLXeDx5hTerTec/6QbYsmtX841VNFUde622KQoiEv23I
+         VNG9ZVUsCEVajCI7P+uHJ0UjnKcQSyZcEAwzuMxZMuvW+Fsb4KGTH/zbdWDHYlWckthc
+         vukv+cCLefyRC2UdQYVS0MastmQRNXIx2+wtEx3tXw+C2a4GJT8DUhAcpprmx4ixmnIE
+         qhtH9vs0V5FaELQJnMhPWFMFValFnMAV+x0qZq/jWSHyliAY539spLkgMjZ1ZtDkrF0l
+         yoXw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1763200296; x=1763805096;
+        d=1e100.net; s=20230601; t=1763200395; x=1763805195;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=7yRRIzPGF37+ZW/9QuVq1mSuHX636hF32XUa+RdwYXc=;
-        b=d2BfMhd+nwzCV6jT13Hli2EH0r0vp9FD+SL42KoPSmTsc766S2eoFG3sG0FLfkb7kr
-         ztZbAqaXh6KcZDjbNHgK93y7gjnv79ovKfhuR+REtWJh3jcfj6VgjNKWEIdFgH71kUGb
-         R6BLh/IRjxOfxSJnGqBrsj9Z+SNdMTx7/6eHcR2ztv4c2OLgP2SACefpxJYNd/fpXIIb
-         EFiNzaLDLx1qk4BwK2QJX9t6B8UNc/UJIrF613kKZzTRc2CzTx1QmcIhd+OoO6Kju7g1
-         7aysC7fshobBFlEnZmSvT95RxiEoZDHdqRJBhBoHrU0Sb7p7fr3V7WkEBXM+SWI/5kzP
-         ESZg==
-X-Gm-Message-State: AOJu0YxCZVS18Fg9L1EhkkvjgNw8E2+K+KrLjT2+3Sq947Vpvsjiz7Wn
-	TvUcgL833o8Zr0Yj08mHtN+CL2asCgPlHuQoizFPaNPqiTECCX/vkB35
-X-Gm-Gg: ASbGncvguYcvex/rKzkE8gy7Ei1g8B1nZtTjnKy77JpEH+Tw0Ca0OsmJBqhkJnK4PYo
-	TP1G0hMlYg3AVxVD9nzhAWYpEwHvemgqy493RGzm4jwhbhyL1rTJT67bx+VjqgaGWyVn+R9weCW
-	uVckLgnkjUDGnlC+U4T6sPH6QcXg4RJqwakvYevWToG+pPeEu7T1a5HoV5MiQ2oPOoGl+jLhQfe
-	mN3SBodzBeuZh+ZI0E87w4mMtV6QYd/ItY5ps7iQTzgXaB33amaJWxpBpEUVp8qU39Jpm6UGWJC
-	Sd6gtSakg8q10BpE41eTnWPLdgHR1ALqtni5kAU7V8luyhFmF6ScgsUVsG9AoL8Scv/8GhBZbHq
-	mP6V+7WoQnuty/qgnu4udsO8eWxmag+PdvSYry0huqOsi5xarVfV9TrRFWFT0Vl8H+R+bkCai2g
+        bh=2Vqb7SuC6LdXp/wdF4JsayTM+a28625NUpBifotjx9o=;
+        b=OpvBlHT/XaEk/cm5qs8I7xpTCPd1L+jWliV78Tn9tUnuCyWbNI2wFZL9Bsp2vakKuI
+         DFnSjzWaYpXfOLF5UTq2XEwy9dKXG6FLAdmMZwAy0k0j6JYsZ5uA0m1UH2dBo4tZOgqa
+         Dkql0jcZ38ffhSKX6gGcjnAUd5lTSuqTjb9i5wwbCkerJZPBbAu3y51SlDLnB+DZ1jn/
+         LGcgYFurHED1hoWX1k8vhdYU82gas31bdKvwTAmI8J6ukwpPoWTfQFI/wUevFH6PlMio
+         o4T0yZeqkgFfMj9/uGSFznY2KGAlhbkb1gCgmkDmDn3BQwIrUXqwmNg0Pp/eUAoMnNUP
+         AxpQ==
+X-Gm-Message-State: AOJu0Yxisb+J9MfDhdUiSQ312CV4BpDaK8thMSJoMyiye+/AdZozqzIt
+	PwTdgg2gKyiWehy/0x4bSN8J63hdj+dwbU7HZaiCzYN44ueBL1KFMzcA
+X-Gm-Gg: ASbGncu4pM1jY8MvpvyEaE3eiq+N+Ucs+FkpuMYHIrCKAD7pLDwSwU7IEXmMc2Ob4tK
+	rLIk99ivFoBtRjUeFloKcyTq6cPrZGKjBODJb75L+If6wwwLAyNjCX6aHtTavK3Gfg3Dz4taPB1
+	X9Wz1Uodc6DpRemgYzv9+kdJ7CGpYltObGj9FbasHGYq+EBQoqtSy6Yyl011jdtfR+qrG2F7swt
+	+YcfXDqnc3Sj4v/9hj0m/wiXbwDkw+iTM23SFdHaNSy+ONjxCw+jXzQdeJP5zjo5mH4SPbaTtvC
+	SWaYH0Qs7PeIUwc6LXtwVv2kzNaYHSSByFjUF9cQsmj+rCSCzuM9cR6uAIILewtf/cIbTchFDBp
+	V99E4kYnEyeBwCfn+5prD7MF6SwZWaWQSn+1t2QqzwEIIC5Ij+sT+ArjxpH5tiw0ePxPxURNTAg
 	==
-X-Google-Smtp-Source: AGHT+IHDzihlPaHj5ciPC1avrMW/DUXWk3g/TfMMzpdbx9pWLRPYDr6Bl34n8EK+fex8PZCS0cSmgg==
-X-Received: by 2002:a05:701b:2803:b0:119:e569:fbad with SMTP id a92af1059eb24-11b411fd316mr1430818c88.28.1763200296250;
-        Sat, 15 Nov 2025 01:51:36 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEYodkeyJHv+xttwJ6T2c5dA0IZP7idIsWFckZLeRS6DJQ3X3PmhrR/pJfn24PkyDvZSHZZRg==
+X-Received: by 2002:a05:7022:5f14:b0:119:e55a:9bff with SMTP id a92af1059eb24-11b4120001bmr1447186c88.27.1763200394907;
+        Sat, 15 Nov 2025 01:53:14 -0800 (PST)
 Received: from geday ([2804:7f2:800b:a121::dead:c001])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-2a49db102f5sm16211340eec.4.2025.11.15.01.51.32
+        by smtp.gmail.com with ESMTPSA id a92af1059eb24-11b06088625sm20242225c88.8.2025.11.15.01.53.10
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 15 Nov 2025 01:51:35 -0800 (PST)
-Date: Sat, 15 Nov 2025 06:51:29 -0300
+        Sat, 15 Nov 2025 01:53:14 -0800 (PST)
+Date: Sat, 15 Nov 2025 06:53:08 -0300
 From: Geraldo Nascimento <geraldogabriel@gmail.com>
 To: Dragan Simic <dsimic@manjaro.org>
 Cc: linux-rockchip@lists.infradead.org,
@@ -83,17 +83,18 @@ Cc: linux-rockchip@lists.infradead.org,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
 	Johan Jonker <jbx6244@gmail.com>
-Subject: Re: [PATCH 2/3] PCI: rockchip-host: comment danger of 5.0 GT/s speed
-Message-ID: <aRhNIcGcQKp2ylqN@geday>
+Subject: Re: [PATCH 3/3] arm64: dts: rockchip: drop max-link-speed = <2> in
+ helios64 PCIe
+Message-ID: <aRhNhKjneo1Ny0O6@geday>
 References: <cover.1763197368.git.geraldogabriel@gmail.com>
- <b04ed0deb42c914847dd28233010f9573d6b5902.1763197368.git.geraldogabriel@gmail.com>
- <c8a6d165-2cdd-cd0d-4bed-95dfa5ff30d2@manjaro.org>
+ <53332edec449b84d8a962f2b5995667766359772.1763197368.git.geraldogabriel@gmail.com>
+ <3f13841d-030b-0202-61be-412c0ab9df6b@manjaro.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <c8a6d165-2cdd-cd0d-4bed-95dfa5ff30d2@manjaro.org>
+In-Reply-To: <3f13841d-030b-0202-61be-412c0ab9df6b@manjaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251115_015137_240625_53EAAE56 
-X-CRM114-Status: GOOD (  20.10  )
+X-CRM114-CacheID: sfid-20251115_015315_981859_435B49BD 
+X-CRM114-Status: GOOD (  20.77  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,54 +111,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, Nov 15, 2025 at 10:30:49AM +0100, Dragan Simic wrote:
+On Sat, Nov 15, 2025 at 10:36:17AM +0100, Dragan Simic wrote:
 > Hello Geraldo,
 > 
 > On Saturday, November 15, 2025 10:10 CET, Geraldo Nascimento <geraldogabriel@gmail.com> wrote:
-> > According to Rockchip sources, there is grave danger in enabling 5.0
-> > GT/s speed for this core. Add a comment documenting that danger and
-> > discouraging end-users from forcing higher speed through DT changes.
+> > Shawn Lin from Rockchip strongly discourages attempts to use their
+> > RK3399 PCIe core at 5.0 GT/s speed, citing concerns about catastrophic
+> > failures that may happen. Even if the odds are low, drop from last user
+> > of this property for the RK3399 platform, helios64.
 > > 
+> > Fixes: 755fff528b1b ("arm64: dts: rockchip: add variables for pcie completion to helios64")
 > > Link: https://lore.kernel.org/all/ffd05070-9879-4468-94e3-b88968b4c21b@rock-chips.com/
 > > Reported-by: Shawn Lin <shawn.lin@rock-chips.com>
 > > Signed-off-by: Geraldo Nascimento <geraldogabriel@gmail.com>
 > > ---
-> >  drivers/pci/controller/pcie-rockchip-host.c | 5 +++++
-> >  1 file changed, 5 insertions(+)
+> >  arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts | 1 -
+> >  1 file changed, 1 deletion(-)
 > > 
-> > diff --git a/drivers/pci/controller/pcie-rockchip-host.c b/drivers/pci/controller/pcie-rockchip-host.c
-> > index ee1822ca01db..7e6ff76466b7 100644
-> > --- a/drivers/pci/controller/pcie-rockchip-host.c
-> > +++ b/drivers/pci/controller/pcie-rockchip-host.c
-> > @@ -332,6 +332,11 @@ static int rockchip_pcie_host_init_port(struct rockchip_pcie *rockchip)
-> >  		/*
-> >  		 * Enable retrain for gen2. This should be configured only after
-> >  		 * gen1 finished.
-> > +		 *
-> > +		 * According to Rockchip this path is dangerous and may lead to
-> > +		 * catastrophic failure. Even if the odds are small, users are
-> > +		 * still discouraged to engage the corresponding DT option.
-> > +		 *
-> >  		 */
-> >  		status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_CR + PCI_EXP_LNKCTL2);
-> >  		status &= ~PCI_EXP_LNKCTL2_TLS;
+> > diff --git a/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts b/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
+> > index e7d4a2f9a95e..78a7775c3b22 100644
+> > --- a/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
+> > +++ b/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
+> > @@ -424,7 +424,6 @@ &pcie_phy {
+> >  
+> >  &pcie0 {
+> >  	ep-gpios = <&gpio2 RK_PD4 GPIO_ACTIVE_HIGH>;
+> > -	max-link-speed = <2>;
+> >  	num-lanes = <2>;
+> >  	pinctrl-names = "default";
+> >  	status = "okay";
 > 
-> Looking good to me, thanks for this patch!  There's no need
-> to emit warnings here, because they'd be emitted already in
-> the rockchip_pcie_parse_dt() function.
+> Looking good to me, this rounds up the prevention of issues
+> coming from buggy PCIe Gen2 on RK3399.
 > 
 > Please feel free to include
 > 
 > Reviewed-by: Dragan Simic <dsimic@manjaro.org>
+> 
+> Though, could you, please, add patch 4/3 to this series, which
+> would remove the redundant parameter "max-link-speed = <1>" from
+> rk3399-nanopi-r4s.dtsi?
 >
 
-I disagree, I think the comment stands.
+Thanks for catch, will certainly be included in v2 after I get a few
+more reviews.
 
-Even if we reduce to one line, ex:
-
-+ May cause damage
-
-Regards,
 Geraldo Nascimento
 
 _______________________________________________
