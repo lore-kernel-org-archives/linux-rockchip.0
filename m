@@ -4,119 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4649ACEBF91
-	for <linux-rockchip@archiver.kernel.org>; Sat, 15 Nov 2025 23:29:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A1B9CEBF86
+	for <linux-rockchip@archiver.kernel.org>; Sat, 15 Nov 2025 23:29:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Xqe3o0/dku8UKtzVjY1lmMeqngLO9K/NME5yQVIkJuo=; b=Rh8iKwZ8FduGbz
-	IO7dusHPa4hHOrBx4DefHhk/kFwOxSx5q2YojNKvB0rxBxjHxvhhqJh31FyLBYhLmETSlTmvAmvT/
-	U2fis3pi2KKipqd9n5xPEAxDDInH7BZ9edSnkkNPAgJzNXghaN0nToXN+4ccYQjG4X2YtG4Tfnmwu
-	umoCWWZPA6wP0OPjkT9piCg5cvWnMSDo3/JNzAkSMPMVHoxdkMoumFiL53t1D+cSDGRjG8WL1ZEe0
-	e6Pd+Ks2eimIcAaVSuu3cNZlu6J4Grqpb233m+c6/rY8UQ0IdpTkNqHDI1jPfkZSnFnVFBYcqbmqW
-	JGjS3aUicFKPrdKZiR/Q==;
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-ID:MIME-Version:To:Cc:
+	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=FAFLBxYZSx4XXtOdbY0wlxxYITXKNZ5OCqkdkbQPzwY=; b=aqJb98wMpqUF2L
+	V/uMMYplA4nEdtuONxy8hMXOlsOeyvtm+Y/zRdMA9eQKauN8dxWbvFQcUSh+LnO5sEkIVWMMzOvRp
+	R0ZqPkdfLqnuaGbIdYzCAzAdkY7LzFhYSC5zrfcj1khdghln0j2FT2ulg5fdE+62Rc6/L1LvR1kCU
+	GE2C1IxvWZduwh2BIAej5K/SxiMJo0meek12TGc4vK0Sc04Y3+x9BEfq1L0BqykzlBowy5HARIrMl
+	o4lORiK5ok7jPJhYKsycyW4VMDB23B/Oc3RqzENdRBqVdOUnpRPj7rnpuCasGb5W1JrIXU66wOqZY
+	cG0efbNMTNi5/mWhfbwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vKPhh-0000000ECOX-2J4n;
-	Sat, 15 Nov 2025 23:29:13 +0000
-Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
+	id 1vKPhu-0000000ECVX-26Ph;
+	Sat, 15 Nov 2025 23:29:26 +0000
+Received: from mail1.manjaro.org ([2a01:4f8:c010:b6e8::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJXcf-0000000AZFr-3UP4
-	for linux-rockchip@lists.infradead.org;
-	Thu, 13 Nov 2025 13:44:28 +0000
-Received: by mail-lf1-x12b.google.com with SMTP id 2adb3069b0e04-5957e017378so934885e87.3
-        for <linux-rockchip@lists.infradead.org>; Thu, 13 Nov 2025 05:44:25 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1763041464; x=1763646264; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=gHk2bNA1OTHNC9vr3z2H2JeUdyy+rk3RBEHgiTzG238=;
-        b=r0OImEBok1UuFplHqhgeRM2+x7KnItaIFt3z18Rum9gEc/9zgV9a+xiEnbTDbHq04I
-         rFdKkp9rpdOc9biWqIGz54KxyLHiCQlrdxdg57ZVSaAu8mLApWS0gASzSzqVsBRY8dp3
-         XQws++EJYXEQwrCfubUZ0e8wqo3H8gtrsEuWi0i3R5MpxLSXA3Yx5OWA0mOAUwO/o6Pb
-         IcB+qQwQVjAxg726VYwDoJJuusNZps9gkzZ5KMhaEEaXCIpjHutaZs8cHa8PK3tGvozX
-         +HRAgccGtRpQpBwjm3sgIgKhjB69jscQqWcgRTRckQUzwg/ae3EjpMkv8/9ddqJeMeSw
-         oylA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1763041464; x=1763646264;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=gHk2bNA1OTHNC9vr3z2H2JeUdyy+rk3RBEHgiTzG238=;
-        b=KMUXuo7pG5TeE6emX0kpewC8CglcSzacUlOv/sdj5Q9oIribTVSo5O6cWFplhh0YPe
-         PFGg2JImkmWHuEV2S/lQSp1VKKy5JNgz3/hTzNXoAzH2gRuJkcO7MmdH6Nyp/0iWaFUm
-         mGIsjIluPYL+GXLv1fEOhP79W6JcV2kMaENhqvx0UVe4f+IJJB7SxirGzVCJJU/mpfen
-         u/Jv6+Z/QJXXc65fKH+/5oVXE8IYhSDU75xw7UQrkWd9OJAVC98BhjhSGMUnQ/usLOs+
-         1e2ET+cfT/fN66hGVecxc2SYOKadeIe7WFaAyX8yldP+TaK4yBUNpDItw4MaY3ETOzgq
-         dVpw==
-X-Forwarded-Encrypted: i=1; AJvYcCVqAe018xrYgPRC55h30JzW4YBpn1oIVveFm0j8U6Lxi2mMNPSE8iINvbnesIVtilcOIv5fWRg+ZhD5osh+lQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yys432xp76N47GuP+hjmU8vqSJ0F7745oD+DptVckRGsc6E9SmK
-	au7nCXy/0KAc6QGZtUb5D7Cif5nI8/lDtEEPAtaWy3KFYOFX5DHxIYkdNsjYBAjPm/SpkSk4wpE
-	8FYmdHAqHngcq14XcUzs285zLNSlFvFj/JPf2W9bT3g==
-X-Gm-Gg: ASbGncsDsKTa+AzSEOJ0I55AteWA5BwTtAhYFMAgGNiZWyweLH/jShF1Xa76V/7BXDT
-	dXaliYgRnAQ3gd4ojCv/H2M5EdTYAVHlD77UV1QUc43uckI7P2W987I58tq97/IYFqMlUNrqWWB
-	7J2TFLIPtpnjBEThIuVi1TGwNRSbMjeYbogbLwRzRfz5AdJHUyXuwHZuxLR+gJRuSKnoqY2w9PX
-	ELn1o/POq9gfLUrQJxYhYbjPMlL8G/yLYZOFrJJ+wI2ddlkfyeVRZffaoHawOa4sVZXgBM9jLD4
-	xnvLKdhepM8L/Zxw
-X-Google-Smtp-Source: AGHT+IF9+pE/QXln9/ghLnXjpwA3j+ZQdhSMaqAds1VqCnmNiZvVcKXj+XjAJW9rczSh1FwGivl5ToawEe+J2/Cq7qU=
-X-Received: by 2002:a05:6512:6d4:b0:592:f7cf:9f6f with SMTP id
- 2adb3069b0e04-59576df5dfemr2184445e87.14.1763041463584; Thu, 13 Nov 2025
- 05:44:23 -0800 (PST)
+	id 1vK4X1-0000000DIzG-2slZ;
+	Sat, 15 Nov 2025 00:52:49 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPA id 7354C40CFC;
+	Sat, 15 Nov 2025 01:52:43 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=dkim;
+	t=1763167964; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding; bh=spTcZiqb4A5425RyOXmezQjUNlBYhLgtHwe9e0+p9NA=;
+	b=IJKQcBfpXOwKJTaIcBLEg4NTpmUc4cYkUWd5M4nz/rdv6KKy0M1FOXhXchOhtfsKfZy+uC
+	j0v6dTXiGIiLgy1UZDJLDE/IPGsg24eERd8bF3jQyWzKK9nJXBLOYOkYnvRhmep3Tb2dGC
+	9QfM+poNzIinWL1/6m7izlsTpe7yAOKOZ/ApLfNh/c8wDxCx9IaLpxuyMxmr+Dex2YA0UG
+	KV0IVRDNTD2nUXv33+i+nOP/yITriLaPho1rV4d/QY5PUaWp5OvyMY/u0PLckMxgxemin0
+	Yde3GArqfm/I9rZO2bLSjVcklVLZ7Oh9vBejYljq6wfULwYHcB8JbS0K3rXTnw==
+From: "Dragan Simic" <dsimic@manjaro.org>
+Date: Sat, 15 Nov 2025 01:52:43 +0100
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+To: michael.opdenacker@rootcommit.com
 MIME-Version: 1.0
-References: <20251107-qcom-sa8255p-emac-v5-0-01d3e3aaf388@linaro.org>
- <20251107-qcom-sa8255p-emac-v5-6-01d3e3aaf388@linaro.org> <14f95efb-0eb0-48ee-9132-df35abddfcc7@oss.qualcomm.com>
-In-Reply-To: <14f95efb-0eb0-48ee-9132-df35abddfcc7@oss.qualcomm.com>
-From: Bartosz Golaszewski <brgl@bgdev.pl>
-Date: Thu, 13 Nov 2025 14:44:12 +0100
-X-Gm-Features: AWmQ_blnqOG7JKELYBN2x3sW4StFzPpU8xniVnWCV7D_4z_I3CQNMw3VuWKeQ6A
-Message-ID: <CAMRc=Mf03rYoi-C+kMic9RYZdk2vtAW5LDMYNMqg-H5vJccUhA@mail.gmail.com>
-Subject: Re: [PATCH v5 6/8] net: stmmac: qcom-ethqos: split power management
- context into a separate struct
-To: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
-Cc: Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konradybcio@kernel.org>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Richard Cochran <richardcochran@gmail.com>, Andrew Lunn <andrew+netdev@lunn.ch>, 
-	"David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
-	Vinod Koul <vkoul@kernel.org>, Giuseppe Cavallaro <peppe.cavallaro@st.com>, 
-	Jose Abreu <joabreu@synopsys.com>, Chen-Yu Tsai <wens@kernel.org>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, 
-	Matthew Gerlach <matthew.gerlach@altera.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
-	Keguang Zhang <keguang.zhang@gmail.com>, Shawn Guo <shawnguo@kernel.org>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
-	Fabio Estevam <festevam@gmail.com>, Jan Petrous <jan.petrous@oss.nxp.com>, s32@nxp.com, 
-	Romain Gantois <romain.gantois@bootlin.com>, 
-	Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>, Heiko Stuebner <heiko@sntech.de>, 
-	Chen Wang <unicorn_wang@outlook.com>, Inochi Amaoto <inochiama@gmail.com>, 
-	Emil Renner Berthing <kernel@esmil.dk>, Minda Chen <minda.chen@starfivetech.com>, 
-	Drew Fustini <fustini@kernel.org>, Guo Ren <guoren@kernel.org>, Fu Wei <wefu@redhat.com>, 
-	Nobuhiro Iwamatsu <nobuhiro.iwamatsu.x90@mail.toshiba>, 
-	Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, 
-	Maxime Ripard <mripard@kernel.org>, Shuang Liang <liangshuang@eswincomputing.com>, 
-	Zhi Li <lizhi2@eswincomputing.com>, Shangjuan Wei <weishangjuan@eswincomputing.com>, 
-	"G. Jaya Kumaran" <vineetha.g.jaya.kumaran@intel.com>, Clark Wang <xiaoning.wang@nxp.com>, 
-	Linux Team <linux-imx@nxp.com>, Frank Li <Frank.Li@nxp.com>, David Wu <david.wu@rock-chips.com>, 
-	Samin Guo <samin.guo@starfivetech.com>, 
-	Christophe Roullier <christophe.roullier@foss.st.com>, Swathi K S <swathi.ks@samsung.com>, 
-	linux-arm-msm@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, netdev@vger.kernel.org, 
-	linux-stm32@st-md-mailman.stormreply.com, 
-	linux-arm-kernel@lists.infradead.org, Drew Fustini <dfustini@tenstorrent.com>, 
-	linux-sunxi@lists.linux.dev, linux-amlogic@lists.infradead.org, 
-	linux-mips@vger.kernel.org, imx@lists.linux.dev, 
-	linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	sophgo@lists.linux.dev, linux-riscv@lists.infradead.org, 
-	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+Message-ID: <e4cd11d0-463c-e707-5110-6b92899b1ba3@manjaro.org>
+Subject: =?utf-8?q?Re=3A?= [PATCH v2 1/2] =?utf-8?q?dt-bindings=3A?=
+ =?utf-8?q?_arm=3A?==?utf-8?q?_rockchip=3A?= Add Asus Tinker Board 3 and 3S
+User-Agent: SOGoMail 5.12.3
+X-Last-TLS-Session-Version: None
+X-Bad-Reply: 'Re:' in Subject but no References or In-Reply-To headers
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251113_054425_895935_83649A84 
-X-CRM114-Status: GOOD (  15.47  )
+X-CRM114-CacheID: sfid-20251114_165248_004053_5D2FC3DE 
+X-CRM114-Status: GOOD (  12.51  )
 X-Mailman-Approved-At: Sat, 15 Nov 2025 15:29:00 -0800
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -129,39 +62,75 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gRnJpLCBOb3YgNywgMjAyNSBhdCAxMjowMOKAr1BNIEtvbnJhZCBEeWJjaW8KPGtvbnJhZC5k
-eWJjaW9Ab3NzLnF1YWxjb21tLmNvbT4gd3JvdGU6Cj4KPiBPbiAxMS83LzI1IDExOjI5IEFNLCBC
-YXJ0b3N6IEdvbGFzemV3c2tpIHdyb3RlOgo+ID4gRnJvbTogQmFydG9zeiBHb2xhc3pld3NraSA8
-YmFydG9zei5nb2xhc3pld3NraUBsaW5hcm8ub3JnPgo+ID4KPiA+IFdpdGggbWF0Y2ggZGF0YSBz
-cGxpdCBpbnRvIGdlbmVyYWwgYW5kIHBvd2VyLW1hbmFnZW1lbnQgc2VjdGlvbnMsIGxldCdzCj4g
-PiBub3cgZG8gdGhlIHNhbWUgd2l0aCBydW50aW1lIGRldmljZSBkYXRhLgo+ID4KPiA+IFNpZ25l
-ZC1vZmYtYnk6IEJhcnRvc3ogR29sYXN6ZXdza2kgPGJhcnRvc3ouZ29sYXN6ZXdza2lAbGluYXJv
-Lm9yZz4KPiA+IC0tLQo+ID4gIC4uLi9ldGhlcm5ldC9zdG1pY3JvL3N0bW1hYy9kd21hYy1xY29t
-LWV0aHFvcy5jICAgIHwgNDYgKysrKysrKysrKysrLS0tLS0tLS0tLQo+ID4gIDEgZmlsZSBjaGFu
-Z2VkLCAyNSBpbnNlcnRpb25zKCspLCAyMSBkZWxldGlvbnMoLSkKPiA+Cj4gPiBkaWZmIC0tZ2l0
-IGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvc3RtaWNyby9zdG1tYWMvZHdtYWMtcWNvbS1ldGhxb3Mu
-YyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L3N0bWljcm8vc3RtbWFjL2R3bWFjLXFjb20tZXRocW9z
-LmMKPiA+IGluZGV4IDFmMDA1NTZiYmFkOTk3ZTJlYzc2YjUyMWNmZmUyZWIxNGZhYmI3OWUuLjA5
-ZjEyMjA2MmRlYzg3YWExMTgwNGFmMjc2OWRkZmY0OTY0ZTY1OTYgMTAwNjQ0Cj4gPiAtLS0gYS9k
-cml2ZXJzL25ldC9ldGhlcm5ldC9zdG1pY3JvL3N0bW1hYy9kd21hYy1xY29tLWV0aHFvcy5jCj4g
-PiArKysgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9zdG1pY3JvL3N0bW1hYy9kd21hYy1xY29tLWV0
-aHFvcy5jCj4gPiBAQCAtMTA1LDE3ICsxMDUsMjEgQEAgc3RydWN0IGV0aHFvc19lbWFjX21hdGNo
-X2RhdGEgewo+ID4gICAgICAgY29uc3Qgc3RydWN0IGV0aHFvc19lbWFjX3BtX2RhdGEgKnBtX2Rh
-dGE7Cj4gPiAgfTsKPiA+Cj4gPiArc3RydWN0IGV0aHFvc19lbWFjX3BtX2N0eCB7Cj4gPiArICAg
-ICBzdHJ1Y3QgY2xrICpsaW5rX2NsazsKPiA+ICsgICAgIHVuc2lnbmVkIGludCBsaW5rX2Nsa19y
-YXRlOwo+ID4gKyAgICAgc3RydWN0IHBoeSAqc2VyZGVzX3BoeTsKPgo+IFdoYXQgaXMgdGhlIGJl
-bmVmaXQgb2YgZG9pbmcgdGhpcz8gUEhZIEFQSXMgaGFwcGlseSBjb25zdW1lIGEgbnVsbHB0cgo+
-IGFuZCBOT1Agb3V0LCBhbmQgdGhlIFBIWSBpcyBhbHJlYWR5IHJldHJpZXZlZCB3aXRoIF9vcHRp
-b25hbCgpLAo+IHNpbWlsYXJseSB3aXRoIGNsawo+Cj4gS29ucmFkCgpCZWNhdXNlIGl0IGNsZWFy
-bHkgZGl2aWRlcyB0aGUgZHJpdmVyJ3MgbG9naWMgaW50byB0aGUgbWFudWFsIGFuZApmaXJtd2Fy
-ZS1kcml2ZW4gdmFyaWFudHMuIEp1c3QgYmVjYXVzZSB3ZSBjb3VsZCwgZG9lc24ndCBuZWNlc3Nh
-cmlseQptZWFuIHdlIHNob3VsZCBqdXN0IGNhbGwgUEhZIEFQSXMgd2l0aCBhIG51bGxwdHIgaWYg
-cmVhZGFiaWxpdHkgaXMKYmV0dGVyIHdoZW4gd2UgZG9uJ3QuCgpCYXJ0b3N6CgpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWls
-aW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
-aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Hello Michael,
+
+Thanks for the v2!  Please, see some remarks below.
+
+On Friday, November 14, 2025 16:46 CET, michael.opdenacker@rootcommit.com wrote:
+> From: Michael Opdenacker <michael.opdenacker@rootcommit.com>
+
+I'm sorry for not mentioning it in my earlier responses, but this
+line is redundant, because it duplicates the From value found in
+the actual email message.
+
+> Document the compatible strings for Asus Tinker Board 3 [1] and 3S [2],
+> which are SBCs based on the Rockchip 3566 SoC.
+> 
+> The "3S" version ("S" for "storage") just adds a 16 GB eMMC
+> and a "mask ROM" DIP switch to the "3" version.
+> 
+> [1] https://tinker-board.asus.com/series/tinker-board-3.html
+> [2] https://tinker-board.asus.com/series/tinker-board-3s.html
+> 
+> Signed-off-by: Michael Opdenacker <michael.opdenacker@rootcommit.com>
+> ---
+>  Documentation/devicetree/bindings/arm/rockchip.yaml | 11 +++++++++++
+>  1 file changed, 11 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+> index 6aceaa8acbb2..cd249325a4d9 100644
+> --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
+> +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+> @@ -86,6 +86,17 @@ properties:
+>            - const: asus,rk3288-tinker-s
+>            - const: rockchip,rk3288
+>  
+> +      - description: Asus Tinker Board 3
+> +        items:
+> +          - const: asus,rk3566-tinker-board-3
+> +          - const: rockchip,rk3566
+> +
+> +      - description: Asus Tinker Board 3S
+> +        items:
+> +          - const: asus,rk3566-tinker-board-3s
+> +          - const: asus,rk3566-tinker-board-3
+> +          - const: rockchip,rk3566
+> +
+>        - description: Beelink A1
+>          items:
+>            - const: azw,beelink-a1
+
+I'm sorry again for not mentioning it in my earlier responses, 
+but shouldn't this addition be specified like below:
+
+     - description: Asus Tinker Board 3/3S
+       items:
+         - enum:
+	   - asus,rk3566-tinker-board-3
+           - asus,rk3566-tinker-board-3s
+         - const: rockchip,rk3566
+
+... because the introduced .dts files define the actual board DTs,
+by descending from the common .dtsi file, while they're compatible
+in the sense of the 3S board variant extending the 3 variant.
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
