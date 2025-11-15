@@ -4,57 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB28ECEB2CE
-	for <linux-rockchip@archiver.kernel.org>; Sat, 15 Nov 2025 11:38:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2F11CEB2C6
+	for <linux-rockchip@archiver.kernel.org>; Sat, 15 Nov 2025 15:05:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NGwfXYPSFNj+esYkCFS9T7vw94tvga/iATsW6XJM0eE=; b=LDp7I9cs0Sq79e
-	xLUtuScQnx7tf6UvmmeJNVcRO4SGD5vU2b1Dkt5BLvdnoRMNklr7UYNPXJkiM9AfwgkaoZRcVO9C5
-	orNtz7BjJht+9HmF+9Mz5Fuh+oDnYDjTgimCAZt1Qb/7ISSfPawBMyh/Alv/pA3zMTf4rgQZUMf+p
-	eYYwcScX+idfUgO5NvXCQ3QUzFe/VUTBN+jDw8W/xDuLY0O7JLnJtXE/9VFZO3oQZCr9BkueKbyWo
-	RbDnMS3lC9H94OLUzGxCAB4p0Un0EwDCsIsrZpNbuTse9QtP5eN/t6+ZOeouVkISxe/R9umA3ouxN
-	PNbygC1STV3Gib5oF1vw==;
+	List-Owner; bh=ZFE1ExTac2fYQm0pUS8JcZtU5JQZIyRVaNFl7Buop9Y=; b=u4nKbM0GMkNR9q
+	meXz2H/UunubVvsGi1JNtYTQK5dG/4e7WdqMsdZXCdl4cql4rGXymRYZWog1Fpog4qW6rZywFLSrm
+	4FsbdwWUMuml84l7lyFv3s08KCy4eVXBVMqOH6fL9JqX1w7oGJGWt6NTfG5TXkWWMz8/ygj7TOeJ9
+	hzM3NVpiOjsEGed1qxbziNpOhP8mgv829FXkvquUZNVUSRogcGt3yv++duU8iNBN3ajs0ADKn8HzE
+	Mj7eprWY9pwO9g62zR7Hin44DNm5HytF5m7Lsj6VDkm7CAN2MtG93H31uDcWja3TCYoaZJpwXQDg4
+	Pw5Ks7CN1UC5R+W66IXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vKEbR-0000000DkDB-1yM5;
-	Sat, 15 Nov 2025 11:38:01 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vKHqJ-0000000Ds7b-0twC;
+	Sat, 15 Nov 2025 15:05:35 +0000
+Received: from mail-m49198.qiye.163.com ([45.254.49.198])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vKEbP-0000000DkCu-3ODv;
-	Sat, 15 Nov 2025 11:37:59 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id BBCE460053;
-	Sat, 15 Nov 2025 11:37:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DB5C2C4AF0B;
-	Sat, 15 Nov 2025 11:37:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1763206678;
-	bh=RyNJr6KEy/iMq/PeGlX/MfabCcw400KzLWVVXMt+6uI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=FfiHv6bgxlCivypemtSc4LdrcLrrKEFwqjnyJIDC/Iy6hRcqL7p3A+1oiH/KlOv8h
-	 sn5nkLj5VvSopnQuItaZ5KyscJPMVQaXz5lVxsdSzuV38nXf5uu9fjA25AeCMJP8xk
-	 ENtIz8uoP294Ws9sgTVowMrtucdPEnNeuyyISW7M1s6xh2BCeldt5l0Lh70jKVcBRJ
-	 T3tYQ97wtfHrV+oJI+jNpfu3rfydg3cOHvqCMSfyodcjfFLI6bNosErKX4bDzbl+l1
-	 fIC3fwYw5aPptZ8/WnLTGG99RZt+UTFY/miKy/qLJGB6ZyhoUGMq777T7w62DK7K3b
-	 CFmkRPGb2gAHg==
-Date: Sat, 15 Nov 2025 12:37:55 +0100
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: michael.opdenacker@rootcommit.com
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
-	heiko@sntech.de, dsimic@manjaro.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 1/2] dt-bindings: arm: rockchip: Add Asus Tinker Board
- 3 and 3S
-Message-ID: <20251115-dragonfly-of-fantastic-innovation-9e7f7d@kuoka>
-References: <20251114154617.69950-1-michael.opdenacker@rootcommit.com>
- <20251114154617.69950-2-michael.opdenacker@rootcommit.com>
+	id 1vKHqE-0000000Ds78-43Cq;
+	Sat, 15 Nov 2025 15:05:33 +0000
+Received: from localhost.localdomain (unknown [116.25.95.231])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 29b1c85f7;
+	Sat, 15 Nov 2025 23:00:21 +0800 (GMT+08:00)
+From: Chukun Pan <amadeus@jmu.edu.cn>
+To: heiko@sntech.de
+Cc: amadeus@jmu.edu.cn,
+	conor+dt@kernel.org,
+	devicetree@vger.kernel.org,
+	krzk+dt@kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	robh@kernel.org
+Subject: Re: (subset) [PATCH 1/6] arm64: dts: rockchip: add mmc aliases for 100ASK DshanPi A1
+Date: Sat, 15 Nov 2025 23:00:10 +0800
+Message-Id: <20251115150010.1052575-1-amadeus@jmu.edu.cn>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <176307502906.495066.9339764118786240746.b4-ty@sntech.de>
+References: <176307502906.495066.9339764118786240746.b4-ty@sntech.de>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20251114154617.69950-2-michael.opdenacker@rootcommit.com>
+X-HM-Tid: 0a9a8808101203a2kunmc099134524c7f0
+X-HM-MType: 10
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkaGkMZVkIfQx4aHksZSh0YSlYeHw5VEwETFhoSFy
+	QUDg9ZV1kYEgtZQVlKSk1VSU5VQk5VSUhKWVdZFhoPEhUdFFlBWU9LSFVKS0hKTkxOVUpLS1VKQk
+	tLWQY+
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251115_070531_229374_8ADBB01C 
+X-CRM114-Status: UNSURE (   4.92  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,41 +72,24 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Nov 14, 2025 at 03:46:42PM +0000, michael.opdenacker@rootcommit.com wrote:
-> From: Michael Opdenacker <michael.opdenacker@rootcommit.com>
-> 
-> Document the compatible strings for Asus Tinker Board 3 [1] and 3S [2],
-> which are SBCs based on the Rockchip 3566 SoC.
-> 
-> The "3S" version ("S" for "storage") just adds a 16 GB eMMC
-> and a "mask ROM" DIP switch to the "3" version.
-> 
-> [1] https://tinker-board.asus.com/series/tinker-board-3.html
-> [2] https://tinker-board.asus.com/series/tinker-board-3s.htm
+Hi,
 
-<form letter>
-This is a friendly reminder during the review process.
+> Applied, thanks!
 
-It looks like you received a tag and forgot to add it.
+> [4/6] arm64: dts: rockchip: fixes supply for 100ASK DshanPi A1
+>       commit: 621bb09a76fa12a9e61c9d745ae524db86abf781
 
-If you do not know the process, here is a short explanation:
-Please add Acked-by/Reviewed-by/Tested-by tags when posting new
-versions of patchset, under or above your Signed-off-by tag, unless
-patch changed significantly (e.g. new properties added to the DT
-bindings). Tag is "received", when provided in a message replied to you
-on the mailing list. Tools like b4 can help here. However, there's no
-need to repost patches *only* to add the tags. The upstream maintainer
-will do that for tags received on the version they apply.
+Sorry, I don't know if this is a problem:
 
-Please read:
-https://elixir.bootlin.com/linux/v6.12-rc3/source/Documentation/process/submitting-patches.rst#L577
+The commit message started with an extra ">".
 
-If a tag was not added on purpose, please state why and what changed.
-</form letter>
+>From the schematic, the supply of ES8388 chip and the vmmc-supply
+of SD card both originate from the VCC3V3_S0 regulator, fix it.
 
-Best regards,
-Krzysztof
+https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git/commit/?id=621bb09a76fa12a9e61c9d745ae524db86abf781
 
+Thanks,
+Chukun
 
 _______________________________________________
 Linux-rockchip mailing list
