@@ -4,54 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8614CEB2C1
-	for <linux-rockchip@archiver.kernel.org>; Sat, 15 Nov 2025 07:15:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45016CEB2C7
+	for <linux-rockchip@archiver.kernel.org>; Sat, 15 Nov 2025 09:10:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-ID:MIME-Version:To:Cc:
-	Date:References:In-Reply-To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MwcVE6f7JHjP5Z6Aa/QmZcVMEdbOHKO+DfgHl8CCyEQ=; b=rRXdJxVTPPFcoX
-	xfFOrLxaDFOQv/KNCOKmRw6oifJELO0lSXxPJToIvZBtIAXQnnDM+S/SLzHW6Ircl/I2rGTr/mRwb
-	uJ3mYrrYDzPFsjZDMV0WRrp33CdsWPmoepa3f6Q6NhaDzy0KcO5IYkup6ryes6xShL7uFiDo1uMR5
-	IB/vCCoB/zEOyYaLqczBEsGxIVFxBtMjcgdoYX+1FTVfOM/jurACXCEwedr6oYriYX2cXCVWgtEqR
-	05oSYOp0yxHY7merzOC2RftJcn6yvSITpythxgYh7k68bqEhurRrhmW9Hg3I+ZFwpS2R9znNjrKt7
-	Kff/lOz93u2b7Ji8e5YQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=YHe1aJxnfJuHFJmxB4hmUe/K6mzhgiKzjC7dzs4XC5c=; b=UCm+ZrsP/3ooRd
+	EPFcXMcXrFSAzZo5oBWa4plvYaLMFmgDqaKjUAEa5sddwTxx2KvBhcCn4Mk33b8VB8apSUftvJs5y
+	ddWkqD8X+kYq5Z9jN2+tUh9AGbWRW0H/l3gHpzMu+24ZJS2AxodPw4pJFOfN9cRwCrwAoACS2tgfN
+	RQEGh3mPlZ2rzhVMbFSHRO1qJIEygaNnDl9O4Vr6CL7SxsUESc+uzjd/J+nitcPZAy/PPdAdKTNVf
+	KB3O1Y0VfmZVVi6yl4IyxZXHqJhaaO+nMJqjHjfFbxtwoE6UGDXRdg3YIsdSmCknYcruOBBFQwLA8
+	EiWwr9QsUjHUBPCQBwsA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vKAV5-0000000DZBM-3d08;
-	Sat, 15 Nov 2025 07:15:11 +0000
-Received: from mail1.manjaro.org ([2a01:4f8:c010:b6e8::1])
+	id 1vKCIP-0000000Dd7q-3I23;
+	Sat, 15 Nov 2025 09:10:13 +0000
+Received: from mail-pg1-x531.google.com ([2607:f8b0:4864:20::531])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vKAV2-0000000DZAM-28Qc;
-	Sat, 15 Nov 2025 07:15:10 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPA id 1D9E540FDD;
-	Sat, 15 Nov 2025 08:14:58 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=dkim;
-	t=1763190900; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=RFjj/nmYrfHeiQliAIzx66lW/uKVowOIl76QQ6gErtU=;
-	b=DYq1aUGyBIz//RUO1UxSY34BPB+qUTKu0Q1lOfHllPQsR/SxH6rLoOtwjei2MRvVGVPMka
-	+ALnfePVaReR03oE/Udt3hNvydOenpGBneQbcHbE+2dGY4cb4BKb9oOLF5QE3J9hmiCqwa
-	AXdij9khhMj7faBdN4JPb88fEUaPm7hmjetXfq6hnp8m0WbK72gRBEkhWetEe0XMs8t+Fk
-	l2htDeQkJRZ+ChsW+pY7hahnWGF2wCyvrNT577OtH3AxSiVAGMscb8crmJ6Us5LHfBNtEI
-	Bv3Uo3szj7EnS7MHA52XkZkPko7rI0v4+B2wxxbGxmmO6Pw7GofyugaBMAmMyg==
-From: "Dragan Simic" <dsimic@manjaro.org>
-In-Reply-To: <bb74679a-ce21-4373-bcc5-1214e9bf832e@rootcommit.com>
-References: <12d6e151-dfa0-ca0a-5888-ddffb2dbdec7@manjaro.org> <bb74679a-ce21-4373-bcc5-1214e9bf832e@rootcommit.com>
-Date: Sat, 15 Nov 2025 08:14:58 +0100
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-To: "Michael Opdenacker" <michael.opdenacker@rootcommit.com>
+	id 1vKCIM-0000000Dd6b-2nwY
+	for linux-rockchip@lists.infradead.org;
+	Sat, 15 Nov 2025 09:10:12 +0000
+Received: by mail-pg1-x531.google.com with SMTP id 41be03b00d2f7-bc274b8b15bso2014006a12.1
+        for <linux-rockchip@lists.infradead.org>; Sat, 15 Nov 2025 01:10:10 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1763197810; x=1763802610; darn=lists.infradead.org;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=ADQAnSwvVC1ImIoBeUuLW2dj0lHsSmlBEy4wGW0y87o=;
+        b=c2UnbdOEx2XyKRoktMHYc0udbaooRzSZLHE8RYYl2VBGIluaD/PALtWRVH7Wr/MyAb
+         Fs9I788OQytYE9m2pejFHOfW9Aiu+Aw7hLHNigAOMt5s7QFqgBQADwaeypvKo9MG6t2i
+         16bzG1AfIUYY5f3HRISngBc3kDFBrC04/gHMhjbHJVs9gLJ6QuLA9q6Kmm9fTi9igv/6
+         hzunKwB9mg5xfAPSP/ckdJ/O+5n57U2xOCcJtaeaS6qr2+8dzdXyImvi11BQb1ulycP2
+         S8h+OfhZDmFs1SyeA8Z4S/P40RB/v9odM1tI7QUdI6rCFk+Bk4TkT/WaSy1169ljhVdn
+         PcNg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1763197810; x=1763802610;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=ADQAnSwvVC1ImIoBeUuLW2dj0lHsSmlBEy4wGW0y87o=;
+        b=aWrX+JQBl+KUVUEfXVTYSjkgZ5JUD9UQAcNU+G+hNyh4lvJdJ4QOP61JhJxKTd5AM+
+         VkS4zRuW6YIVA08mJ0tfCddcfkb8GNXnxNc59jy9hW8SWWtiPthXIXJFrSvkRpHMS30V
+         3AAsD9iQHuTk6kwJw6KXtL/0rHeD7hyAfKrTMtWKs6hV9Mq8ReD7BkDWERIiWTniBrtt
+         gC2cThDrrCSjfLGHuW3K9xOmSiasjmR+L4GDaR6FkGwnt5WpTdTWh7GLfORNCL3acdqn
+         ipvr4xBa9YA5b1AlRT79W4p9iw94IDGefrgXsXlAzGuwhFwz1fZmmOyfj9MX+//t2xWf
+         Ru9g==
+X-Gm-Message-State: AOJu0YzOfjL6dvwvJnKBa1oq9wBE+1CXhbdHZdM1W+yrwiAZ8PTCldmP
+	OJu0NrjGh8IUIOzz9zVsXhHGEiqSqTxplkylJ8TVU5AG5mi4HjvS+V0cAAcYDKVMX0a2ZSnZ
+X-Gm-Gg: ASbGncsLs2qU188xoQpB2LoC4J5RAQ65S9zPAXuUJIifO9T3KJVeDnAh3eBtn7etIua
+	RNxFDMxs/h6xgKm8gYImHST05yeeOOcfNDY7SNqPBwX+g2sw5cQEeo6eNlulyaEq9b2LBggrWCB
+	ajFFOaknThhHTbnSpofQmlYMMk7i1lgfrJqiIaK3BIe+m9QAMWX1MNhp4hRLVQdldx2YKNRUOpP
+	TBpENsUYC/4nYcf3/fIcgROFwKL/DOsqXtaT9lEuFud6mV4XI2FSrfRH4//4k5mE/vKZuSeuHV0
+	N97uN4e/I1CA9ELK1Lc7UASfVnx3vk3u9E5fuE1JmRoenTVB3jyFNUi0nboecLm3iBkxVEH07cs
+	C5CKRv2M2xV32X/Q75dpeCYBEATo3isS7bH2E5P22H6pFkjeCH9uhgJ98umgeUI037iBkFcsBJA
+	==
+X-Google-Smtp-Source: AGHT+IHdjP02d7ceK6K3dpKetL3hR+ZP5vYC0Jlsf4TI9ATvPdblwdLfXK7WX2I855lZDI3z3GpW8A==
+X-Received: by 2002:a05:7022:7e0c:b0:11b:9386:7ed1 with SMTP id a92af1059eb24-11b93868306mr476264c88.46.1763197809720;
+        Sat, 15 Nov 2025 01:10:09 -0800 (PST)
+Received: from geday ([2804:7f2:800b:a07a::dead:c001])
+        by smtp.gmail.com with ESMTPSA id a92af1059eb24-11b06088604sm20965645c88.7.2025.11.15.01.10.05
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 15 Nov 2025 01:10:08 -0800 (PST)
+Date: Sat, 15 Nov 2025 06:10:01 -0300
+From: Geraldo Nascimento <geraldogabriel@gmail.com>
+To: linux-rockchip@lists.infradead.org
+Cc: Shawn Lin <shawn.lin@rock-chips.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Johan Jonker <jbx6244@gmail.com>,
+	Geraldo Nascimento <geraldogabriel@gmail.com>,
+	Dragan Simic <dsimic@manjaro.org>
+Subject: [PATCH 0/3] PCI: rockchip: 5.0 GT/s speed may be dangerous
+Message-ID: <cover.1763197368.git.geraldogabriel@gmail.com>
 MIME-Version: 1.0
-Message-ID: <24561990-8293-0505-5837-eca416d01bb7@manjaro.org>
-Subject: =?utf-8?q?Re=3A?= [PATCH v2 2/2] =?utf-8?q?arm64=3A?==?utf-8?q?_dts=3A?=
- =?utf-8?q?_rockchip=3A?= Add Asus Tinker Board 3 and 3S device tree
-User-Agent: SOGoMail 5.12.3
-X-Last-TLS-Session-Version: None
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251114_231508_798511_3CFE5DF8 
-X-CRM114-Status: GOOD (  16.11  )
+X-CRM114-CacheID: sfid-20251115_011010_700209_C53C9398 
+X-CRM114-Status: UNSURE (   8.13  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,43 +108,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Michael,
+In recent interactions with Shawn Lin from Rockchip it came to my
+attention there's an unknown errata regarding 5.0 GT/s operational
+speed of their PCIe core. According to Shawn there's grave danger
+even if the odds are low. To contain any damage, let's cover the
+remaining corner-cases where the default would lead to 5.0 GT/s
+operation as well as add a comment to Root Complex driver core,
+documenting this danger.
 
-On Saturday, November 15, 2025 07:03 CET, Michael Opdenacker <michael.opdenacker@rootcommit.com> wrote:
-> On 11/15/25 01:53, Dragan Simic wrote:
-> > Thanks for the v2!  Please, see one nitpick below.
-> >
-> > On Friday, November 14, 2025 16:46 CET, michael.opdenacker@rootcommit.com wrote:
-> >> From: Michael Opdenacker <michael.opdenacker@rootcommit.com>
-> > I'm sorry for not mentioning it in my earlier responses, but this
-> > line is redundant, because it duplicates the From value found in
-> > the actual email message.
-> 
-> This actually comes from my Git settings. I need this when I send 
-> patches to the Yocto project and OpenEmbedded. That's because their 
-> mailing list server which alters the address of senders ("<sender> via 
-> lists.yoctoproject.org"), and ultimately the commit author identity in 
-> Git. See 
-> https://docs.yoctoproject.org/contributor-guide/submit-changes.html#fixing-your-from-identity
-> 
-> I've checked that my patches apply fine and that this "From:" line 
-> doesn't appear in the commits in the tree.
-> So, can I keep this?
+Geraldo Nascimento (3):
+  PCI: rockchip: warn of danger of 5.0 GT/s speeds
+  PCI: rockchip-host: comment danger of 5.0 GT/s speed
+  arm64: dts: rockchip: drop max-link-speed = <2> in helios64 PCIe
 
-Actually, I forgot to mention that the From headers in your patch
-submissions are a bit wrong by containing just the email address,
-without the first and last name.  That issue should be fixed first,
-regardless of the presence (or absence) of From tags.
+ arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts | 1 -
+ drivers/pci/controller/pcie-rockchip-host.c            | 5 +++++
+ drivers/pci/controller/pcie-rockchip.c                 | 8 ++++++--
+ 3 files changed, 11 insertions(+), 3 deletions(-)
 
-Thanks for clarifying what's the reason for having the From tags
-regardless of the actual need for having them.  Maybe setting Git's
-"format.from" option to true at the repository level could solve
-this nicely, while also exercising the Git-fu a bit? :)
-
-BTW, my responses are currently jailed by the linux-rockchip mailing
-list, requiring manual approval, as a result of the mail server I'm
-using sometimes inserting some strange invisible UTF-8 characters
-into the email subjects.  Oh well. :)
+-- 
+2.49.0
 
 
 _______________________________________________
