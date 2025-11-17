@@ -4,95 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40277CE8D6B
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Nov 2025 18:11:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44DD6CEBF8D
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Nov 2025 19:13:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Za3YX7HsR5WsTELzLVkAf5CS2HjarGQxzpAGz8B3gA8=; b=riSzO7evyGZ1jI
-	K0vEcLNBxnXPJXXoz4cfSLneXV+WAVws7LmVZmbPyOd6KqpPJe5Qj9vGed7w8nZBrcctfxhaz3jIg
-	fr1SzSGxpkdlN03vksKOyi5JV9Wc3zWw+CD5HwM+uBrzanywmqJe5cY0YTROc8y8vn0sstkZT4OlQ
-	uop5K4B36JEXyNNWznATS6qp/Rxvd41/U0A4vbMSjfgbEdxZhAEymvvvP7qghWad5hFfUAK6Q3gRH
-	U2DuyKFW0e9hjhF3ZXJKAJE/7CBMw4IYKRr3Tdru7Ruv3FGu74xPMLHU4r1pKfPx70B+YVffS9hVn
-	KVkWFipvTD9bTOmfP5Lw==;
+	List-Owner; bh=vfQg35khnQgEXc/CY40QjS9WqEfhlZx8KuD5+w88j70=; b=bIhjat2rzkPdO9
+	925MdXyCDsGbyFuFVtY8TcOlEJYZBp0hYl1dyUwd6+rjwapW48FUsFuIu93hi9TaJ1io2eJdleOGZ
+	at7qCJldi/+t04lWqszA8wVYIIvjoLyC6WS6d2CDw6XohKD8q2eT84RubbwMf68+Ty2v4nlIMkIUq
+	FAJOLZtfv70c82yBMdynTyE5sbWZ40vehnHCuoiwPCH6WwhLI1Q/tqV5hLJU3pfEWtKAHzcLlYS9m
+	JFfZWJZKkKr/s8FYIFcgxa5v1AYwjUGLKxTES8q//eVpXtn3NlJppWrCYjBzhp2Hd833ROuPJcxN3
+	5sd2LTN9aatIgYchlz3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vL3gu-0000000Gb4U-19vI;
-	Mon, 17 Nov 2025 18:11:04 +0000
-Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
+	id 1vL4f1-0000000Gi1L-1jac;
+	Mon, 17 Nov 2025 19:13:11 +0000
+Received: from sender3-pp-f112.zoho.com ([136.143.184.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vL3gq-0000000Gb0V-35bf
-	for linux-rockchip@lists.infradead.org;
-	Mon, 17 Nov 2025 18:11:02 +0000
-Received: by mail-pl1-x636.google.com with SMTP id d9443c01a7336-29555b384acso47459645ad.1
-        for <linux-rockchip@lists.infradead.org>; Mon, 17 Nov 2025 10:11:00 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1763403060; x=1764007860; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=gazcyDKCqVDM4NaE88dT10YpQkqHH5/XsZTj015pVas=;
-        b=CRcYmBOdgZsQxpuG0C2L38zuuDvivbdLuX4Q4MUmjlFB6DpN1Bmx4TtPcc1Xdksg8P
-         M16nTcx18TARGCqJgnVmHQ82i1D5dGZo/FeOq0bAYiHcI8V2GMT58OMy4idse0M/rQoZ
-         XzA8xD5eHFnaCvIsBLQ8987u5fTywvb9YEFxbaIN5kJqU4oIYAivIn1oBzBsxIyMArrQ
-         TKS8/y9gsWqfq33Rsdi/8VDtcws5GqFIT+laKnSl0Mm1JjBQ/RAvVqsTj1dUbsrvo+8T
-         BRcPGrrsnhJ8PpUFlwEFpVEuRjOvvDi5dYYAfYU5VcsU74xyvgPZ0vdaIJeQtLpt/W/O
-         t8mw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1763403060; x=1764007860;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=gazcyDKCqVDM4NaE88dT10YpQkqHH5/XsZTj015pVas=;
-        b=PMCerqb+mW2TcR0VVPiSEQZc4adGdWO/8VP9EE3R8Ll6vp2dI1VuF56vLYCY3hNpfV
-         S1vs3oozVQKThu7GyP+z8Q9JpVtaGW6r78s/L1UOdfO3NUERj3K/YOGIZnPDY728s1La
-         cP3olmeOO71h5mEBN8A2+GeSHAmDbjIYaw/pGgkNguFzdMBDSQ+UvjHKctlQUH0lcZ11
-         iuEFabjjMawSaUWgDKPbJf7DHf3J+auoEQLDeRTnKxRnibriKvD0TlbbyF/SOKUAxR+g
-         EejCIhobaaSEZINih5oPfc78rxIBwSczo9APMSua5I1BfAlOOyKXvFk4eFLA6CkBif1e
-         hT6w==
-X-Forwarded-Encrypted: i=1; AJvYcCVef512wyCTxRusX34T8DkGHHW/LlbMOw8QgaQaTVEqChpA0yyT3+++a+qh/18/nBXpteC7w6kOIWiwToEUgw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxaAggKt5i8guIJO8DitCo1DHidBxK+3mQP835bbdDAMZRRb97E
-	RqKSbRLlk3ojguHrWdEpp3aILVJin7XjWXaOtH8czT8AGrw36zgESnfuc3/pmg==
-X-Gm-Gg: ASbGncsi41cbhMcXJrh5OseAkrraFu/Y7eQOV7DFW17rU2ybHRi8L+UNZ31+KF1Alo/
-	wDlsfisecb4aF4+hmL3/IgHikMt6JhbTIdZgjwnIeLPS9MHRF7mq8zyUA8bivWtdZE7XPnZM6Ey
-	s6Cy2lHcsWMwEOs7LIsdLMoaGJcS1LN2fL7QRpMuTxEOBB4gRn5ogDjh84duRaI6/p18vBgnPml
-	C+cHeK2AJRmZWWHxzXhG8Vl1cGI5TiCYWERECV3aO/6KNxEEzmbWPLK+PfvHI1lefGNBjtwgKWW
-	jIHZYYjBhwkbJF976fW3RQmGcgMklx5r+talRRbR2mA0H8SRg/6MOMvo9/Yd+G8FcNJZxfpDB2X
-	NGarVnKSYjcmeT9aXlgzZlwboOJkJJdVu68OlLf7RALZBx8ZWe0qe/Mj17k+npIOgyDqpFxFG0C
-	+6l1WeshzAwwqbvOs7/J4=
-X-Google-Smtp-Source: AGHT+IEH430mBOahI/CtVHCqRSIqCGq9hYMzLu8e8nwRDN0slBe2X4NbiY309RgQgf9w07IlP9p0SA==
-X-Received: by 2002:a17:903:ac7:b0:295:557e:746a with SMTP id d9443c01a7336-2986a6d04femr131798225ad.13.1763403059763;
-        Mon, 17 Nov 2025 10:10:59 -0800 (PST)
-Received: from rockpi-5b ([45.112.0.172])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2985c245ecdsm147237955ad.32.2025.11.17.10.10.55
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 17 Nov 2025 10:10:59 -0800 (PST)
-From: Anand Moon <linux.amoon@gmail.com>
-To: Shawn Lin <shawn.lin@rock-chips.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	linux-pci@vger.kernel.org (open list:PCIE DRIVER FOR ROCKCHIP),
-	linux-rockchip@lists.infradead.org (open list:PCIE DRIVER FOR ROCKCHIP),
-	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Rockchip SoC support),
-	linux-kernel@vger.kernel.org (open list)
-Cc: Anand Moon <linux.amoon@gmail.com>
-Subject: [RFC v1 5/5] PCI: rockchip: Fix Linkwidth Control Register offset for Retrain Link
-Date: Mon, 17 Nov 2025 23:40:13 +0530
-Message-ID: <20251117181023.482138-6-linux.amoon@gmail.com>
-X-Mailer: git-send-email 2.50.1
-In-Reply-To: <20251117181023.482138-1-linux.amoon@gmail.com>
-References: <20251117181023.482138-1-linux.amoon@gmail.com>
+	id 1vL4ez-0000000Ghzf-10CQ;
+	Mon, 17 Nov 2025 19:13:10 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1763406762; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=hrm+qKgW/rySYKUswoBT/MbdkDO6GqmBUPMxXuPc4hiuAzKiKmQbzkZvPLN3d/o5mHPGZHyMWx7uFdr8CMRYp3Umha7Bt4btZM18IQpTpGCfXVO1xMD2C9pCJWLcselh40lw/n3tjDwA2wTbvMIksSTdqzRpwJ5yxeGIl8KD28w=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1763406762; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=Wl+Rgi87r48WhXQHR78kVLoSBu5iwS2wv+pKzPrF8ig=; 
+	b=F8dcbuaN3E6mgwEs42uhNTVYhp+Em/q41SIAemz7vPn0dn39KT4+AmzlfyeU5SNyYR+/APcvDdI35Mx19+SUTY3bUKKG5nyBEA08laItInIqOmDTR6jQdFOZMhIQjNHQsI0kdZk9/ktMFmHMjWOnXj5Ql3yzGsWrYqVTzs3w7z8=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1763406762;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
+	bh=Wl+Rgi87r48WhXQHR78kVLoSBu5iwS2wv+pKzPrF8ig=;
+	b=J7bMahNJZxwspv9ecDqh3gRSiMywGJUNMFlvEbFO6EWe0xu+m7PAIEd7b5gB+KJL
+	cxRrCU72paetabfqXpFuKi4QjSWmkSS7fX2h6NeM84Ywfdk0tewhsdVa3LPbs9VTM3n
+	HP3kq3F6rVEgvq7abK2Pc7v+Vk+Ys8tRTfy/KTmg=
+Received: by mx.zohomail.com with SMTPS id 1763406759575712.9921053494943;
+	Mon, 17 Nov 2025 11:12:39 -0800 (PST)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Date: Mon, 17 Nov 2025 20:11:47 +0100
+Subject: [PATCH v4 03/10] drm: Add enum conversion from/to HDMI_COLORSPACE
+ to DRM_COLOR_FORMAT
 MIME-Version: 1.0
+Message-Id: <20251117-color-format-v4-3-0ded72bd1b00@collabora.com>
+References: <20251117-color-format-v4-0-0ded72bd1b00@collabora.com>
+In-Reply-To: <20251117-color-format-v4-0-0ded72bd1b00@collabora.com>
+To: Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>, 
+ Rodrigo Siqueira <siqueira@igalia.com>, 
+ Alex Deucher <alexander.deucher@amd.com>, 
+ =?utf-8?q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>, 
+ Jani Nikula <jani.nikula@linux.intel.com>, 
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, 
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, 
+ Tvrtko Ursulin <tursulin@ursulin.net>
+Cc: kernel@collabora.com, amd-gfx@lists.freedesktop.org, 
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org, 
+ Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
+ Marius Vlad <marius.vlad@collabora.com>
+X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251117_101100_779960_A8D49BC3 
-X-CRM114-Status: GOOD (  13.95  )
+X-CRM114-CacheID: sfid-20251117_111309_373476_273B22F3 
+X-CRM114-Status: GOOD (  10.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,48 +98,64 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-As per 17.6.7.1.21 Linkwidth Control Register (PCIE_RC_CONFIG_LWC) reside
-at offset 0x50 within the Root Complex (RC) configuration space, not at
-the offset of the PCI Express Capability List (0xc0). Following changes
-corrects the register offset to use PCIE_RC_CONFIG_LWC (0x50) to configure
-Retrain link.
+From: Marius Vlad <marius.vlad@collabora.com>
 
-Signed-off-by: Anand Moon <linux.amoon@gmail.com>
+This would please the compiler to have a enum transformation from one to
+another even though the values are the same. It should also make things
+obvious that we use different enums.
+
+Signed-off-by: Marius Vlad <marius.vlad@collabora.com>
 ---
- drivers/pci/controller/pcie-rockchip-host.c | 4 ++--
- drivers/pci/controller/pcie-rockchip.h      | 1 +
- 2 files changed, 3 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/drm_connector.c | 18 ++++++++++++++++++
+ include/drm/drm_connector.h     |  3 +++
+ 2 files changed, 21 insertions(+)
 
-diff --git a/drivers/pci/controller/pcie-rockchip-host.c b/drivers/pci/controller/pcie-rockchip-host.c
-index b3c9b9cbeb8d..aae3def64bf0 100644
---- a/drivers/pci/controller/pcie-rockchip-host.c
-+++ b/drivers/pci/controller/pcie-rockchip-host.c
-@@ -338,9 +338,9 @@ static int rockchip_pcie_host_init_port(struct rockchip_pcie *rockchip)
- 		status &= ~PCI_EXP_LNKCTL2_TLS;
- 		status |= PCI_EXP_LNKCTL2_TLS_5_0GT;
- 		rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_LC2 + PCI_EXP_LNKCTL2);
--		status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_CR + PCI_EXP_LNKCTL);
-+		status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_LWC + PCI_EXP_LNKCTL);
- 		status |= PCI_EXP_LNKCTL_RL;
--		rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_CR + PCI_EXP_LNKCTL);
-+		rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_LWC + PCI_EXP_LNKCTL);
+diff --git a/drivers/gpu/drm/drm_connector.c b/drivers/gpu/drm/drm_connector.c
+index 0ad7be0a2d09..61c077b67ac3 100644
+--- a/drivers/gpu/drm/drm_connector.c
++++ b/drivers/gpu/drm/drm_connector.c
+@@ -1384,6 +1384,24 @@ drm_color_format_enum_to_color_format(enum drm_color_format_enum fmt_enum)
+ 	}
+ }
  
- 		err = readl_poll_timeout(rockchip->apb_base + PCIE_CORE_CTRL,
- 					 status, PCIE_LINK_IS_GEN2(status), 20,
-diff --git a/drivers/pci/controller/pcie-rockchip.h b/drivers/pci/controller/pcie-rockchip.h
-index a83ce7787466..5bcaef7bba4c 100644
---- a/drivers/pci/controller/pcie-rockchip.h
-+++ b/drivers/pci/controller/pcie-rockchip.h
-@@ -160,6 +160,7 @@
- #define PCIE_RC_CONFIG_DC		(PCIE_RC_CONFIG_BASE + 0xc8)
- #define PCIE_RC_CONFIG_LC		(PCIE_RC_CONFIG_BASE + 0xd0)
- #define PCIE_RC_CONFIG_SR		(PCIE_RC_CONFIG_BASE + 0xd4)
-+#define PCIE_RC_CONFIG_LWC		(PCIE_RC_CONFIG_BASE + 0x50)
- #define PCIE_RC_CONFIG_LC2		(PCIE_RC_CONFIG_BASE + 0xf0)
- #define PCIE_RC_CONFIG_L1_SUBSTATE_CTRL2 (PCIE_RC_CONFIG_BASE + 0x90c)
- #define PCIE_RC_CONFIG_THP_CAP		(PCIE_RC_CONFIG_BASE + 0x274)
++enum hdmi_colorspace
++color_format_to_hdmi_colorspace(enum drm_color_format fmt)
++{
++	switch (fmt) {
++	default:
++	case DRM_COLOR_FORMAT_AUTO:
++	case DRM_COLOR_FORMAT_RGB444:
++		return HDMI_COLORSPACE_RGB;
++	case DRM_COLOR_FORMAT_YCBCR444:
++		return HDMI_COLORSPACE_YUV444;
++	case DRM_COLOR_FORMAT_YCBCR422:
++		return HDMI_COLORSPACE_YUV422;
++	case DRM_COLOR_FORMAT_YCBCR420:
++		return HDMI_COLORSPACE_YUV420;
++	}
++}
++EXPORT_SYMBOL(color_format_to_hdmi_colorspace);
++
+ /**
+  * drm_get_color_format_name - return a string for color format
+  * @colorspace: color format to compute name of
+diff --git a/include/drm/drm_connector.h b/include/drm/drm_connector.h
+index a071079fd3ad..e044976c8d76 100644
+--- a/include/drm/drm_connector.h
++++ b/include/drm/drm_connector.h
+@@ -2586,6 +2586,9 @@ drm_color_format_to_color_format_enum(enum drm_color_format fmt);
+ u32
+ drm_color_format_enum_to_color_format(enum drm_color_format_enum fmt_enum);
+ 
++enum hdmi_colorspace
++color_format_to_hdmi_colorspace(enum drm_color_format fmt);
++
+ /**
+  * drm_for_each_connector_iter - connector_list iterator macro
+  * @connector: &struct drm_connector pointer used as cursor
+
 -- 
-2.50.1
+2.51.2
 
 
 _______________________________________________
