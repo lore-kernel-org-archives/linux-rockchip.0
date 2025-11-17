@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CF05CEACEF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Nov 2025 21:47:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02216CE8D6B
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Nov 2025 21:48:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OZzBi533OQ0bfghVzgpAADLvkuCDqVF7EOu42WXBd54=; b=SMRV9fBd0f6q5j
-	RfDyhCFIYQkt5OJGQQg+1ovKrISIjlCU7HB76asKYHtGKgt8usB6A89zj3sX5V0BVdR0m6hd7aLjx
-	hhtmig4SVYDyIcPIvYdsCWcHvvxiq0e8UjPpWrGVNqCpcMKJBZoSYCuPSKbt16kjlhqHMnmHy3s4N
-	oLMcxifByTA5PKHUS49pCouZxgpToL43dNRtwjd39JCyHekjHtP0v//PkK2U5YwQn20F2IV78JxXj
-	7IDDzNWWeXMjXEPCvEzDR0mCzIHZ8TiSnTnX9nyVb2fJ56vf/oOtcpGBYMrBB2V/wBNujoIQGN38f
-	00eLvBuH4ntbeDTGbgtw==;
+	List-Owner; bh=yOi2GWSCXZeTcs/LB5L86usUBlCGjcPo98s2DfroidE=; b=uvC2njzzRscAfY
+	JHl7r1YuZwuTUKRP6OqkQ7bi4XHO3EU0EFF7oki09GxPhy7tLY1lA7qI2ZNRrqVgwnvyFhBXWKkKv
+	DuM636RS5Lqfej1tJhLuv97VF4NoPc6a84IAl26EFS2G2L5oVM0aoImul13VyNZ9hGLo6Kwe7vjG6
+	9Tp9BF/d574Uv7U4aqnV8t9LJmuvOqNq6qpwTTDcbTcImcIpFB9sY8hqHirrMgnl5odxwsTD9vG/B
+	7NmCO5/WA/m9VIRnjAyk1/pRIAOfundkYSTkBjk/f1KNYK4yjIkFshGmgCzgeTYYUxuO6ZTGt6n3k
+	mp28TZlG57t/PGiGofug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vL74l-0000000Gtsj-3uEz;
-	Mon, 17 Nov 2025 21:47:55 +0000
-Received: from mail-ot1-x334.google.com ([2607:f8b0:4864:20::334])
+	id 1vL750-0000000Gu0X-2r1x;
+	Mon, 17 Nov 2025 21:48:10 +0000
+Received: from mail-oo1-xc29.google.com ([2607:f8b0:4864:20::c29])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vL74i-0000000Gtqf-3wtR
+	id 1vL74x-0000000Gtxq-2Kkq
 	for linux-rockchip@lists.infradead.org;
-	Mon, 17 Nov 2025 21:47:54 +0000
-Received: by mail-ot1-x334.google.com with SMTP id 46e09a7af769-7c75d0bda4aso1688755a34.2
-        for <linux-rockchip@lists.infradead.org>; Mon, 17 Nov 2025 13:47:52 -0800 (PST)
+	Mon, 17 Nov 2025 21:48:09 +0000
+Received: by mail-oo1-xc29.google.com with SMTP id 006d021491bc7-656de56ce7aso993531eaf.3
+        for <linux-rockchip@lists.infradead.org>; Mon, 17 Nov 2025 13:48:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1763416071; x=1764020871; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1763416086; x=1764020886; darn=lists.infradead.org;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=FztTc2k5M11TsDtaJ8wrSSkPXnje8lRDmvN72GDsbxs=;
-        b=LMgaEiD+Qf3FTWcFXgZ/4dM/khVEKP6Drc7T951TuEZehuY5BpdlF+kxDZTVsgN3IL
-         LzgD4VCVpJtxq2d+5w0rDgB847lik8GwTRxY2q0MDucUQJDT/KpN34mjPChp9a+Gda2G
-         B+0sPK+oEvbS4k1PrIU5SDfsggJ6agZmww3B+LmODie/hUjANRTtT8wuF3x8C2Wj/lEo
-         L+OWQgWtrBknR7aZSzjBNjnJe/dZ8/A4co5+n0P+gkePeXScrXtwsvxjKf+80Kfq/xxN
-         OggLofe8Ma0QSrKDSY82dY97N+ozuadSJcQW808Gq6N2O3u5an4fOpYgQNPIP5cgq5Ov
-         7+aQ==
+        bh=x6y/eRSxQiwoKH2ttdAfQIDdA/0Ls/cq+YnfjCvj2Xo=;
+        b=M4zjAoLInC7lmE9605TAxZQaJnOphuIqq+3AWHv7w9DJ9EQ1mDt6c4nC31JeHi9MBL
+         viqTIJSUeyFU3ukVumgSJtW6G+JvDhpbIBw2qrTp90GUpHXGDqBGUP8b/3xZ2P0L22gE
+         vdUlr0r6GpDLu73DEtpnRwp+HZbQ6caXRssTzSmNPwsRpSIMTC9mA7m/PKNFccaZjwix
+         mg54CqblruDXKqdpTlkt1P7E3F3yf0H5U+jqWrE1LdZu4GQhHGjGEM61DwV5pG2TTZ4U
+         QVEdPfpVEHuxyxxMI2nnZrA6umJ5My91j5q9zm1lsAB7lyV7WKViuqI32iuqsxWcye6A
+         AU+A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1763416071; x=1764020871;
+        d=1e100.net; s=20230601; t=1763416086; x=1764020886;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=FztTc2k5M11TsDtaJ8wrSSkPXnje8lRDmvN72GDsbxs=;
-        b=NflG2Chn39Amsj39o1DUHRfnG3Bpo1mfCCtHoPESlHXRkzrFP1FJ37RcjouRkUW3CR
-         940b5+tH8C9VMrynpgRLJiys2ExqO5Y+oUg38fDsxCx0S/SO+lLUozeqFvZ2kN9Uijcf
-         +Ttjez+0N8egiZ6DZbtRw8cxD3Adk5f2N7DVZ6nL0m6mTI4N6NX25ntiZI3nJtnxcPN0
-         M7hO1bIp+DQPGwWNG6Gd41/U94UJBld+Q6/S1NFRI/ERbYSfJJGTfMZJy+J0Q2MTSHZu
-         jTueWhpySPqp5sU6fukB+VJ/sP+5tpMejiflmCe2giZie3sEIgkmP27Bqe54yLoahMqL
-         PAFg==
-X-Gm-Message-State: AOJu0YxYoNeWW1TclW1qAdLDQbM/nBAlNNVX1KfBXY+Gjuo49inPhzHV
-	KifzIlZa9XK9zs5dszT61w63fOcabMQ5VZWqRH/B2IRmnGPkahwdrKU3
-X-Gm-Gg: ASbGncvkcYGXT2MJhM9kuJttNcJkxTCl/sD0hxJNDAO3QcmdO9imMHJugUtVy/1nV9b
-	2BG0f69CqYZs0aKqMQu1+BvfQUocEgFvwOhji50bsHBjyLIOaoIic4eEHSiyN5tmkosznvgLlUa
-	cal3TsShm6Edvz3QMTfuKEBWY1+fRXKS5biR/UkB9HbZsnS0cO43iAO7v6+XuU314CiCEe96+Dt
-	4Jcz0hiuxMD6m3/wh2dtIKaFW92s1v3tsYrdCmgAnhKHT0TTu87vVTdiQhZpRFTD2vIi0k6S18O
-	b4HldGTcNG6lYWCVJMphMvtVlpJFFRczW6CwILCL9OmMN5g1OED8uosAXDmBwmpjG15uEjSXIxF
-	jNN72bbetFA0h75027YEGAexvbvSW5DVDrpar9GBk2fdYjbMAMHeCWqwPg/VA/g4gZdBE+t4p7Q
+        bh=x6y/eRSxQiwoKH2ttdAfQIDdA/0Ls/cq+YnfjCvj2Xo=;
+        b=LzrL8s2dKei5yTvh575sTETsvyDSRsD0VDbrMR0oMlFMr0gSKvo1jS1qHcoM1TDATE
+         f1z4Qg0BuKbBFuH88mW56veovkbWV4UY09BtzlLsxem29d+2iQTuBM0ULahB1vB7ZDCX
+         Ych1Xq4U1+rUUB3AhRWD6q25thB07KQ4OjOh6Kd5sGhnwyBOom+xbBe2TGJOnlhVJRKP
+         PyB2rrqC/3WBUUPRZCjZp2mUOLNZT4ROy4RoIHtDw5MvmUdSU3sfxhRvS7PaObEuOSNB
+         d3pF/FmQicMjQik8Az1xfriW7Iuv/0WRDRdgG5V+IYhPvj6W5cH2dZ3rOcqnV7nyQeHq
+         Rswg==
+X-Gm-Message-State: AOJu0YzMlYSFrX+1iaunwHIky57HrP+2Lom8mhLq2+svMlxRqbgiKDMe
+	rDA2lWwPXEO2rk4YnV0FY1OTaWw3w1uOKHKmYvg17Orqd117s3ou9R4d
+X-Gm-Gg: ASbGnct5Mz8QuhSbKsS7Fwv6XeD0SiN47gBEVFLSDJuthna6PsuS4Ncp2QzG4AFETGj
+	3e8Xo2bct19/kDqASXeZswBsIbcCyn+k86PrZosANUqqMjy5yqvTWz93ay25Eue6jDSQ9T0unY3
+	n73xLxYgYMwsmrKZzDee7l7KEj3fjtqsyiNpGEl6v3h/UrVBf4atZj0FP4jcH69KbfBSDIB+pqg
+	jSM5ZVIkASNuC1upKqszX0kQXEFVfgkLFsRl13CgKJy6Q2Xe18lC8w1XuCZqt5nZHuZCffIBgex
+	hEy3ncq5duTywCHr5YAR9Hyh10n1lxy655Xsva1izJYUkAXn7jO8ZzNTh2LwFMVmb231X8mTQqj
+	JgC+JW0GYmw6YMQklEvMJh38Nteug0RppNGcMk6aa4jfVtNn99Vfz0/M0emgj/aP9/vxyflPtjA
 	==
-X-Google-Smtp-Source: AGHT+IGMYVYdHBolX/z6M9K3TLoZVSU9KkaoXZJ5KYuYSaivd49NkYuXdvP0LyKiiZfq9uKzciAXCQ==
-X-Received: by 2002:a05:6808:3a18:b0:44f:6d70:45af with SMTP id 5614622812f47-4509738e814mr6476179b6e.9.1763416071337;
-        Mon, 17 Nov 2025 13:47:51 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHrk3F7EjTrY16q42KIOsJoZ7DxS7LCW9UgjNx+oGF51fraAPigETXdAfIQtidOQRWCmx4LQA==
+X-Received: by 2002:a05:6808:80ac:b0:450:d1e8:6f5d with SMTP id 5614622812f47-450d1e881a4mr2055837b6e.5.1763416086240;
+        Mon, 17 Nov 2025 13:48:06 -0800 (PST)
 Received: from geday ([2804:7f2:800b:a807::dead:c001])
-        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-3e8522b268fsm6350105fac.18.2025.11.17.13.47.45
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7c73a283b3asm5938805a34.4.2025.11.17.13.48.02
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 17 Nov 2025 13:47:50 -0800 (PST)
-Date: Mon, 17 Nov 2025 18:47:43 -0300
+        Mon, 17 Nov 2025 13:48:05 -0800 (PST)
+Date: Mon, 17 Nov 2025 18:47:59 -0300
 From: Geraldo Nascimento <geraldogabriel@gmail.com>
 To: Shawn Lin <shawn.lin@rock-chips.com>,
 	Lorenzo Pieralisi <lpieralisi@kernel.org>,
@@ -84,16 +84,16 @@ To: Shawn Lin <shawn.lin@rock-chips.com>,
 Cc: linux-rockchip@lists.infradead.org, linux-pci@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
 	devicetree@vger.kernel.org
-Subject: [PATCH v2 3/4] arm64: dts: rockchip: remove dangerous max-link-speed
- from helios64
-Message-ID: <43bb639c120f599106fca2deee6c6599b2692c5c.1763415706.git.geraldogabriel@gmail.com>
+Subject: [PATCH v2 4/4] arm64: dts: rockchip: remove redundant max-link-speed
+ from nanopi-r4s
+Message-ID: <6694456a735844177c897581f785cc00c064c7d1.1763415706.git.geraldogabriel@gmail.com>
 References: <cover.1763415705.git.geraldogabriel@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
 In-Reply-To: <cover.1763415705.git.geraldogabriel@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251117_134753_285821_47E16FA6 
-X-CRM114-Status: GOOD (  11.68  )
+X-CRM114-CacheID: sfid-20251117_134807_593379_731CCE56 
+X-CRM114-Status: GOOD (  11.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,34 +110,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Shawn Lin from Rockchip strongly discourages attempts to use their
-RK3399 PCIe core at 5.0 GT/s speed, citing concerns about catastrophic
-failures that may happen. Even if the odds are low, drop from last user
-of this non-default property for the RK3399 platform, helios64 board
-dts.
+This is already the default in rk3399-base.dtsi, remove redundant
+declaration from rk3399-nanopi-r4s.dtsi.
 
-Fixes: 755fff528b1b ("arm64: dts: rockchip: add variables for pcie completion to helios64")
-Link: https://lore.kernel.org/all/e8524bf8-a90c-423f-8a58-9ef05a3db1dd@rock-chips.com/
+Fixes: db792e9adbf8 ("rockchip: rk3399: Add support for FriendlyARM NanoPi R4S")
 Cc: stable@vger.kernel.org
-Reported-by: Shawn Lin <shawn.lin@rock-chips.com>
+Reported-by: Dragan Simic <dsimic@manjaro.org>
 Reviewed-by: Dragan Simic <dsimic@manjaro.org>
 Signed-off-by: Geraldo Nascimento <geraldogabriel@gmail.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts | 1 -
+ arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dtsi | 1 -
  1 file changed, 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts b/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
-index e7d4a2f9a95e..78a7775c3b22 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
-@@ -424,7 +424,6 @@ &pcie_phy {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dtsi
+index 8d94d9f91a5c..3a9a10f531bd 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dtsi
+@@ -71,7 +71,6 @@ &i2c4 {
+ };
  
  &pcie0 {
- 	ep-gpios = <&gpio2 RK_PD4 GPIO_ACTIVE_HIGH>;
--	max-link-speed = <2>;
- 	num-lanes = <2>;
- 	pinctrl-names = "default";
- 	status = "okay";
+-	max-link-speed = <1>;
+ 	num-lanes = <1>;
+ 	vpcie3v3-supply = <&vcc3v3_sys>;
+ };
 -- 
 2.49.0
 
