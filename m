@@ -4,52 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A862CE8D6B
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64C00CEBF91
 	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Nov 2025 23:52:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1yMQEKAcn+yKndX7gqNCV9OVQBstP2LHNmotwnbbE/0=; b=STOHSRUlGc3Uw+
-	aq++B49cBo0dm1JpnX9vldRjDSVZXyB6ImJTUID8hwrWl+Sj6jTH2vYLI8vR0w7SFHn8DNCTYAKvF
-	0ci3yMSa3lj43E5aHE0XOoX2I/tuxx3+am5MJlAh449yiDcjRwWv2yDz9hZcXZo2jaT/3eUtRbKRQ
-	FagWRuC49zW2dX24y6avkMBpW0he0tXB7UzMSMCXefUQIY2zIFT/L4jCS8ThyBDZVksQeb7P1v+ES
-	dSgw2tjr883Ml7sbFXTc0uhEmw11IG+EPY4q92N7k9+N23YqJvmt1b1MmmUwpU90AvYFt9CRS2qje
-	M98OF4+ddUThtocctBsA==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=HPtjxmeuD0gmP8xsoOpL+6fVrViQ4G5nrn3r1uEoW3E=; b=oEaKNEorCEQCs5
+	mylA2j+rUnO11lJnCi+Ox7DPn5wMgtB2oXmTcwT2Mt5tvDXj/4bLJyHSvhKRXYvc7AdCU2jSO+FQQ
+	yfGgAbCNthqG6bzX5DGi6C4YEBEHPXLxjjpUcaL3TqkuqnBj1HTic/l6fMjK1sPwOPF026KCJ2hk/
+	BM+AHitPJtsa270MmLc/wBW2LX5fzhcib5K1fh/fmjMwuCuLoltWrv6WwORCLb8pbTOVDnuaWU5xZ
+	GZpp9Vb30lgYzsltYKSChV7XkRpoYu9BSBRf7dSz977bIX5mvBDQDDNSVDvosyF4yqGkelUQa82cQ
+	sW3eeKM4IbxoIw7kctgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vL91J-0000000H0yN-3c2R;
+	id 1vL91J-0000000H0y9-1C2g;
 	Mon, 17 Nov 2025 23:52:29 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vL91G-0000000H0vz-2L9e;
-	Mon, 17 Nov 2025 23:52:28 +0000
+	id 1vL91G-0000000H0vy-16p9;
+	Mon, 17 Nov 2025 23:52:27 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1763423543;
-	bh=+lxsf3OSskd50eKCDyensIyhpCWxmlJP/CpAxjesv3E=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=URzK9UyGZF6AiiIFblckM4+u31ZC9WG4xQg1l0Bh6kHlLBlS6vUAkXUzk4pCVTuVh
-	 WtMyWgujwPNcdNLvA3dkTHXtKcBW/IStI95wrI6fsVyerV+BnwFFbRv2qHteTYnaTT
-	 TDE7Bup+KICyEbdRWF9CLMPcwRzA4mfdEAYKRs7MtpARX3W6aDqnqGyeUI9J78nG+j
-	 swxw6CnAQQcRD99NsIO1aUCd2jAe8+j1XMzZZZ4WiT9QtTkBJf0vdwajPe7iErfuJJ
-	 epSrZSJHROAzVIokz8AHI9nGMHRDolTv2bV6OUb/jyq4SJsERWpifrlHDx8GN6Mu/Y
-	 /czw+VQF78qEw==
+	s=mail; t=1763423542;
+	bh=smDe7iZaNTeEZMAeqC1VMg7ernXF86ghORb8bmGZPKY=;
+	h=From:Subject:Date:To:Cc:From;
+	b=R7xl+c66pKCYxVqNmPaz6Fxv7XsNEs2LQ6O7BU5ZPj/D9rOPmBechDZtL4filkNP4
+	 a0whXlt5vciZn687K8FkXR2nUE/GhHx+dE/uExo4IntIuyR1ebXuGAaqLvx5FFIFNr
+	 eHUKp2KSQib4olM26jwE/cRaJWQrYRNBqzZN9HVoJeM+8yJ2gcwBmMkfigM4bUy1ZP
+	 VBeH3POm+7Cf8Fp7SCXpjBUT+9xdLhrh+tN/EpjKrrWKrE5Gq0lUA1PxBg4envvoGC
+	 fEIJjy+hz8OWk31gJETioTY/6lqo9FHFmcum732ZXDVR1YxKdlaTbGWZyzyZ4lVTs9
+	 6LOlqs9KNXiKA==
 Received: from localhost (unknown [82.79.138.145])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0EBAC17E110D;
-	Tue, 18 Nov 2025 00:52:23 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4419E17E10F3;
+	Tue, 18 Nov 2025 00:52:22 +0100 (CET)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Tue, 18 Nov 2025 01:51:59 +0200
-Subject: [PATCH v3 1/4] uapi: Provide DIV_ROUND_CLOSEST()
+Subject: [PATCH v3 0/4] Introduce BACKGROUND_COLOR DRM CRTC property
+Date: Tue, 18 Nov 2025 01:51:58 +0200
+Message-Id: <20251118-rk3588-bgcolor-v3-0-a2cc909428ea@collabora.com>
 MIME-Version: 1.0
-Message-Id: <20251118-rk3588-bgcolor-v3-1-a2cc909428ea@collabora.com>
-References: <20251118-rk3588-bgcolor-v3-0-a2cc909428ea@collabora.com>
-In-Reply-To: <20251118-rk3588-bgcolor-v3-0-a2cc909428ea@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAB61G2kC/2XM3wrCIByG4VsZHmf4B5l21H1EB/pTN2nN0JBie
+ O+5BR2sw/eD71lQdim4jE7dgpIrIYc4t+CHDsGo58HhYFsjRpggkimcblxIic0AcYoJA9W9UVq
+ Q3gBqp0dyPrw28HJtPYb8jOm9+YWu65dShO2pQjHB3qreekWtVP7c9kmbmPQR4h2tXGE/ghLK/
+ wjWCCYAuKTEaAl7otb6AVDxXiDzAAAA
+X-Change-ID: 20250829-rk3588-bgcolor-c1a7b9a507bc
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
  Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
  David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
@@ -61,11 +64,12 @@ To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
  Melissa Wen <melissa.srw@gmail.com>
 Cc: Robert Mader <robert.mader@collabora.com>, kernel@collabora.com, 
  dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ Matt Roper <matthew.d.roper@intel.com>
 X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251117_155226_755663_B1E1A8B3 
-X-CRM114-Status: GOOD (  11.97  )
+X-CRM114-CacheID: sfid-20251117_155226_494413_7DFB01DB 
+X-CRM114-Status: GOOD (  17.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,79 +86,190 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Currently DIV_ROUND_CLOSEST() is only available for the kernel via
-include/linux/math.h.
+Some display controllers can be hardware-configured to present non-black
+colors for pixels which are not covered by any plane (or are exposed
+through transparent regions of higher planes).
 
-Expose it to userland as well by adding __KERNEL_DIV_ROUND_CLOSEST() as
-a common definition in uapi.
+The 1st patch of the series provides DIV_ROUND_CLOSEST() to uapi, as a
+prerequisite to the 2nd patch introducing the BACKGROUND_COLOR DRM
+property that can be attached to a CRTC via a dedicated helper function.
+A 64-bit ARGB color value format is also defined and can be manipulated
+with the help of a few utility macros.
 
-Additionally, ensure it allows building ISO C applications by switching
-from the 'typeof' GNU extension to the ISO-friendly __typeof__.
+Note this is a reworked version of the patch [1] submitted (many) years
+ago by Matt Roper.  The main changes are:
+
+* Renamed DRM_ARGB_<COMP>() to DRM_ARGB64_GET<C>_BPC() while providing
+  convenience wrappers to extract all 16 bits of a specific color via
+  DRM_ARGB64_GET<C>()
+* Replaced drm_argb() function with DRM_ARGB64_PREP_BPC() macro, to
+  improve uAPI consistency and readability; additionally fixed a bug in
+  case of using bpc < 16: the unused least-significant bits of a given
+  component in the output value would contain the unused
+  most-significant bits of the following component in the input value,
+  instead of being set to 0
+* Replaced GENMASK_ULL(63, 0) with U64_MAX when calling
+  drm_property_create_range() to create the BACKGROUND_COLOR property
+* Moved crtc_state->bgcolor initialization from
+  __drm_atomic_helper_crtc_reset() to
+  __drm_atomic_helper_crtc_state_reset()
+* Replaced '*bgcolor*' occurrences to '*background_color*' for
+  consistency with the actual property name in both storage field and
+  helper functions names
+
+The subsequent patches add background color support to VKMS and the VOP2
+display controller used in the RK3568, RK3576, and RK3588 Rockchip SoC
+families.
+
+The validation has been done using a dedicated IGT test [2] - see the
+reported results below.
+
+On the userland side, a Weston merge request [3] is available, providing
+support for the BACKGROUND_COLOR CRTC property to the DRM backend.  It
+relies on the already existing background-color setting in weston.ini:
+
+  [shell]
+  background-color=0xAARRGGBB
+
+[1] https://lore.kernel.org/all/20190930224707.14904-2-matthew.d.roper@intel.com/
+[2] https://lore.kernel.org/all/20251118-crtc-bgcolor-v2-1-dce4063f85a9@collabora.com/
+[3] https://gitlab.freedesktop.org/wayland/weston/-/merge_requests/1845
+
+IGT kms_crtc_background_color test results
+==========================================
+
+* VKMS
+
+virtme-ng$ IGT_FORCE_DRIVER=vkms build/tests/kms_crtc_background_color
+
+IGT-Version: 2.2-gf50583245 (x86_64) (Linux: 6.18.0-rc5-next-20251111+ x86_64)
+Using IGT_SRANDOM=1763159189 for randomisation
+Opened device: /dev/dri/card0
+Starting subtest: background-color-red
+Starting dynamic subtest: pipe-A-Virtual-1
+Dynamic subtest pipe-A-Virtual-1: SUCCESS (0.071s)
+Subtest background-color-red: SUCCESS (0.072s)
+Starting subtest: background-color-green
+Starting dynamic subtest: pipe-A-Virtual-1
+Dynamic subtest pipe-A-Virtual-1: SUCCESS (0.072s)
+Subtest background-color-green: SUCCESS (0.072s)
+Starting subtest: background-color-blue
+Starting dynamic subtest: pipe-A-Virtual-1
+Dynamic subtest pipe-A-Virtual-1: SUCCESS (0.072s)
+Subtest background-color-blue: SUCCESS (0.072s)
+Starting subtest: background-color-yellow
+Starting dynamic subtest: pipe-A-Virtual-1
+Dynamic subtest pipe-A-Virtual-1: SUCCESS (0.073s)
+Subtest background-color-yellow: SUCCESS (0.073s)
+Starting subtest: background-color-purple
+Starting dynamic subtest: pipe-A-Virtual-1
+Dynamic subtest pipe-A-Virtual-1: SUCCESS (0.073s)
+Subtest background-color-purple: SUCCESS (0.073s)
+Starting subtest: background-color-cyan
+Starting dynamic subtest: pipe-A-Virtual-1
+Dynamic subtest pipe-A-Virtual-1: SUCCESS (0.073s)
+Subtest background-color-cyan: SUCCESS (0.073s)
+Starting subtest: background-color-black
+Starting dynamic subtest: pipe-A-Virtual-1
+Dynamic subtest pipe-A-Virtual-1: SUCCESS (0.073s)
+Subtest background-color-black: SUCCESS (0.073s)
+Starting subtest: background-color-white
+Starting dynamic subtest: pipe-A-Virtual-1
+Dynamic subtest pipe-A-Virtual-1: SUCCESS (0.072s)
+Subtest background-color-white: SUCCESS (0.072s)
+
+* Radxa ROCK 5B (RK3588)
+
+rock5b$ build/tests/kms_crtc_background_color --device drm:/dev/dri/card1
+
+IGT-Version: 2.2-g3e4ec308e (aarch64) (Linux: 6.18.0-rc1 aarch64)
+Using IGT_SRANDOM=1762774806 for randomisation
+Opened device: /dev/dri/card1
+Starting subtest: background-color-red
+Starting dynamic subtest: pipe-C-DP-1
+Dynamic subtest pipe-C-DP-1: SUCCESS (0.491s)
+Subtest background-color-red: SUCCESS (0.493s)
+Starting subtest: background-color-green
+Starting dynamic subtest: pipe-C-DP-1
+Dynamic subtest pipe-C-DP-1: SUCCESS (0.533s)
+Subtest background-color-green: SUCCESS (0.535s)
+Starting subtest: background-color-blue
+Starting dynamic subtest: pipe-C-DP-1
+Dynamic subtest pipe-C-DP-1: SUCCESS (0.541s)
+Subtest background-color-blue: SUCCESS (0.544s)
+Starting subtest: background-color-yellow
+Starting dynamic subtest: pipe-C-DP-1
+Dynamic subtest pipe-C-DP-1: SUCCESS (0.535s)
+Subtest background-color-yellow: SUCCESS (0.537s)
+Starting subtest: background-color-purple
+Starting dynamic subtest: pipe-C-DP-1
+Dynamic subtest pipe-C-DP-1: SUCCESS (0.536s)
+Subtest background-color-purple: SUCCESS (0.538s)
+Starting subtest: background-color-cyan
+Starting dynamic subtest: pipe-C-DP-1
+Dynamic subtest pipe-C-DP-1: SUCCESS (0.539s)
+Subtest background-color-cyan: SUCCESS (0.541s)
+Starting subtest: background-color-black
+Starting dynamic subtest: pipe-C-DP-1
+(kms_crtc_background_color:744) igt_pipe_crc-WARNING: Warning on condition all_zero in function crc_sanity_checks, file ../lib/igt_pipe_crc.c:475
+(kms_crtc_background_color:744) igt_pipe_crc-WARNING: Suspicious CRC: All values are 0.
+(kms_crtc_background_color:744) igt_pipe_crc-WARNING: Warning on condition all_zero in function crc_sanity_checks, file ../lib/igt_pipe_crc.c:475
+(kms_crtc_background_color:744) igt_pipe_crc-WARNING: Suspicious CRC: All values are 0.
+Dynamic subtest pipe-C-DP-1: SUCCESS (0.535s)
+Subtest background-color-black: SUCCESS (0.537s)
+Starting subtest: background-color-white
+Starting dynamic subtest: pipe-C-DP-1
+Dynamic subtest pipe-C-DP-1: SUCCESS (0.540s)
+Subtest background-color-white: SUCCESS (0.542s)
 
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- include/linux/math.h       | 18 +-----------------
- include/uapi/linux/const.h | 17 +++++++++++++++++
- 2 files changed, 18 insertions(+), 17 deletions(-)
+Changes in v3:
+- Added new patches:
+  * uapi: Provide DIV_ROUND_CLOSEST()
+  * drm/vkms: Support setting custom background color
+- Improved DRM_ARGB64_{PREP|GET}*() helpers by using a conversion ratio
+  for better color approximation when dealing with less than 16 bits of
+  precision
+- Mentioned the IGT test in the cover letter while documenting the
+  validation results; also dropped references to the now useless
+  modetest wrapper script and its generated report
+- Rebased series onto latest drm-misc-next
+- Link to v2: https://lore.kernel.org/r/20251013-rk3588-bgcolor-v2-0-25cc3810ba8c@collabora.com
 
-diff --git a/include/linux/math.h b/include/linux/math.h
-index 0198c92cbe3e..24bb868f971c 100644
---- a/include/linux/math.h
-+++ b/include/linux/math.h
-@@ -89,23 +89,7 @@
- }							\
- )
- 
--/*
-- * Divide positive or negative dividend by positive or negative divisor
-- * and round to closest integer. Result is undefined for negative
-- * divisors if the dividend variable type is unsigned and for negative
-- * dividends if the divisor variable type is unsigned.
-- */
--#define DIV_ROUND_CLOSEST(x, divisor)(			\
--{							\
--	typeof(x) __x = x;				\
--	typeof(divisor) __d = divisor;			\
--	(((typeof(x))-1) > 0 ||				\
--	 ((typeof(divisor))-1) > 0 ||			\
--	 (((__x) > 0) == ((__d) > 0))) ?		\
--		(((__x) + ((__d) / 2)) / (__d)) :	\
--		(((__x) - ((__d) / 2)) / (__d));	\
--}							\
--)
-+#define DIV_ROUND_CLOSEST __KERNEL_DIV_ROUND_CLOSEST
- /*
-  * Same as above but for u64 dividends. divisor must be a 32-bit
-  * number.
-diff --git a/include/uapi/linux/const.h b/include/uapi/linux/const.h
-index b8f629ef135f..471877322f47 100644
---- a/include/uapi/linux/const.h
-+++ b/include/uapi/linux/const.h
-@@ -50,4 +50,21 @@
- 
- #define __KERNEL_DIV_ROUND_UP(n, d) (((n) + (d) - 1) / (d))
- 
-+/*
-+ * Divide positive or negative dividend by positive or negative divisor
-+ * and round to closest integer. Result is undefined for negative
-+ * divisors if the dividend variable type is unsigned and for negative
-+ * dividends if the divisor variable type is unsigned.
-+ */
-+#define __KERNEL_DIV_ROUND_CLOSEST(x, divisor)(		\
-+{							\
-+	__typeof__(x) __x = x;				\
-+	__typeof__(divisor) __d = divisor;		\
-+	(((__typeof__(x))-1) > 0 ||			\
-+	 ((__typeof__(divisor))-1) > 0 ||		\
-+	 (((__x) > 0) == ((__d) > 0))) ?		\
-+		(((__x) + ((__d) / 2)) / (__d)) :	\
-+		(((__x) - ((__d) / 2)) / (__d));	\
-+}							\
-+)
- #endif /* _UAPI_LINUX_CONST_H */
+Changes in v2:
+- Improved uAPI consistency and readability by introducing
+  DRM_ARGB64_PREP*() and DRM_ARGB64_GET*() helper macros
+- Updated several code comment sections
+- Referenced the counterpart Weston support in the cover letter
+- Rebased series onto v6.18-rc1
+- Link to v1: https://lore.kernel.org/r/20250902-rk3588-bgcolor-v1-0-fd97df91d89f@collabora.com
 
--- 
-2.51.2
+---
+Cristian Ciocaltea (4):
+      uapi: Provide DIV_ROUND_CLOSEST()
+      drm: Add CRTC background color property
+      drm/vkms: Support setting custom background color
+      drm/rockchip: vop2: Support setting custom background color
+
+ drivers/gpu/drm/drm_atomic_state_helper.c    |  1 +
+ drivers/gpu/drm/drm_atomic_uapi.c            |  4 ++
+ drivers/gpu/drm/drm_blend.c                  | 39 ++++++++++++++--
+ drivers/gpu/drm/drm_mode_config.c            |  6 +++
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 13 +++++-
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.h |  4 ++
+ drivers/gpu/drm/vkms/vkms_composer.c         | 10 ++++-
+ drivers/gpu/drm/vkms/vkms_crtc.c             |  3 ++
+ include/drm/drm_blend.h                      |  4 +-
+ include/drm/drm_crtc.h                       | 12 +++++
+ include/drm/drm_mode_config.h                |  5 +++
+ include/linux/math.h                         | 18 +-------
+ include/uapi/drm/drm_mode.h                  | 67 ++++++++++++++++++++++++++++
+ include/uapi/linux/const.h                   | 17 +++++++
+ 14 files changed, 178 insertions(+), 25 deletions(-)
+---
+base-commit: 92c49b3f4df8f9acfa95551ef38fc00c675319fd
+change-id: 20250829-rk3588-bgcolor-c1a7b9a507bc
 
 
 _______________________________________________
