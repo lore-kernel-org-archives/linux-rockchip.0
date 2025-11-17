@@ -4,85 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CEABCE8D6B
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Nov 2025 19:14:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15703CEACEF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Nov 2025 21:47:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AN7EAhy1MMKTao/covGMJUpVGsQkwSbXdd8CIRoZbO8=; b=o9DDzC1r2QKkPW
-	KMP3Czl35tdAgsH3hw+PA9pHXFIaRtrPFCqkus+6i+DgzcXo/i44+vDp0UVNFHGsxZjlJouS06K3A
-	60wUge9PYZ70yMbPz46kg3JnF6T/L8CgIsQA0IJyE+dUYAJwbQT/2uAjxLuBemtYJSbwHeJa/EAhm
-	MwIQGrEU3Bx8c4B7kAw8EZwE0+UrD1yxs6VvmMt5R6j0FCAZnKx51jwlfbCKONChif8Wkwk7BiKeg
-	aSOulYUhqpRAdBU92fZd83lzZvIITf08gDCBuDy/BGIggXI9WYeJpRtAeo8S+X+24fn5SFkvPOCov
-	nhFOPDR7ERAKqhuwsa2w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ajk/4Gx1m2nXbVVVOP2cSs1BtVHfQhFfIsVbXhX1ouQ=; b=BrRPP08ntSYs5K
+	3tto+xZn6ZYLYcLyRAhpLX7YJknjPwPGfFk6kjImnlMFmTb/TqNO4oO8JewQxYtrlTz1gwOeE5V77
+	AKEW/KsSiWF211b76k9UZebic9ltP4sYiPHT6lLnyztyaj08TpdsjD7mnZdZv9SQ9B/bJBiF47cSG
+	fEX71ROJzkLGTjexxfMcdUFTCZJS1O/T+hn1TCjdJ/TXZT4HRgpp4dP77P2DCtO6ljjjl7zieZ2gh
+	N76Wd5kowETZNg660xC8U1v69vEZxVpm/SrA7/LeuQ2+T9cXkGHncGVdXBG6eKCxr6bbQ7jbFqoxl
+	oNpvcgGEe/A8VVJYQn1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vL4fo-0000000Giq8-0uLz;
-	Mon, 17 Nov 2025 19:14:00 +0000
-Received: from sender3-pp-f112.zoho.com ([136.143.184.112])
+	id 1vL73t-0000000GtZh-3vSx;
+	Mon, 17 Nov 2025 21:47:02 +0000
+Received: from mail-oi1-x232.google.com ([2607:f8b0:4864:20::232])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vL4fl-0000000GilZ-143p;
-	Mon, 17 Nov 2025 19:13:58 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1763406806; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=Z21pBSIEKUkTOJiB5hdGRgDrSUkip71Dp0v3zMyBa/QIV91Bd45ohaf2V25lHpjAFmJHncl76IBuNmkhzZGhIySDuo8NpWckdf43wSSTDwYbxBpobQrQ0eCc70k6STIuxKvZmsIe13NUrOIiOKK3rMgiGUwB8x+yVlIWzWlkhXk=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1763406806; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=Gs1lZySDkGpqwXxYZoOAuegaRpnGsTAvT6lpT/qhmRM=; 
-	b=cpYIuOBubqMBGCEVmD8BaEQzteCMEQ0+il35O/s8LJ5DUQNuwg8JeEkpfT5tICHbVUDfAHiX7vcmZqAkPhV+8tJJzLz8FqHpSFmstFY1oLNde4Vwq+tVCI3vJo+b4/m5fhQSmrSJOEOvXOEUKrDBCRpYhliRzW7xHwgcIZ8/APk=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1763406806;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=Gs1lZySDkGpqwXxYZoOAuegaRpnGsTAvT6lpT/qhmRM=;
-	b=EZq9WaACwM6nu+4207zjZ7BFLwIjrwdMyzWM0XlkTylKaYIqvf2uzfCzyI6nDfne
-	iyyXiO/WxV665oIWV+zsMZ4XXeYKTTO9yDhTPabVp4RTUEqBuBhlj5W5u6y4ODqPWAT
-	bAV3r+G3+tEMNB8rcuRWOCVuH2ry8WOtrCKrBhKg=
-Received: by mx.zohomail.com with SMTPS id 1763406804770398.6739711663877;
-	Mon, 17 Nov 2025 11:13:24 -0800 (PST)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Mon, 17 Nov 2025 20:11:54 +0100
-Subject: [PATCH v4 10/10] drm/rockchip: Implement "color format" DRM
- property
+	id 1vL73r-0000000GtYr-1Bcl
+	for linux-rockchip@lists.infradead.org;
+	Mon, 17 Nov 2025 21:47:00 +0000
+Received: by mail-oi1-x232.google.com with SMTP id 5614622812f47-450154aa53fso2053369b6e.2
+        for <linux-rockchip@lists.infradead.org>; Mon, 17 Nov 2025 13:46:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1763416018; x=1764020818; darn=lists.infradead.org;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=Ztw2S/9TdbV5pr9Z6JYx0AXFtBg6AP2dg0jB76kE09I=;
+        b=iSGTtOTuM/gMY4TT39dirltsbge2DYzQkNAEPKt53BFBU1GWIPUnTHuIVZCHw3bEjZ
+         5sxuSevijSoX/H6Kq1IZHKvZa4ijnlNZxgmBGA84crb4fHTHDPHdvj56f85vz4klAiB/
+         RxEHSHHCaSDmPuek2PLdrWhX6zdtKZlA1o1+CUhPGB0f7JRqKCcME+AufqrWsQkQm3Wa
+         3WiKpLXsayY4yC+l/l1pJXoy31x7Xi9VMW2cfI/YcUyxuZQYFfsmfuSUh2u1ye8Xg6uf
+         ASnp2wGgxYivGfAVpjkMnf0jXoX6PqFG38neorKqm3MufjaVwct/iQT5+pRuoyNzHX5p
+         rCKw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1763416018; x=1764020818;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=Ztw2S/9TdbV5pr9Z6JYx0AXFtBg6AP2dg0jB76kE09I=;
+        b=SBTfzN/H1Y3Azk6MbJaP03bbYaMG0vVm3HuYRZK4WNeTgBFOg7Tx77zVlUe924cVgS
+         cnsCNAELarNTGyvSlX9AwrbCwE+EsX62jYm5MDxEcKHCQQdj7LCEnhQSeekJ2vwqmOMF
+         jHgYyEKJA/6VVu8Sa7g0q7RrwiTQiaP7a4CxNmM2OnaEp8TGIwtIMTtErpiet8Qd2ZYW
+         vkIltrUWycClfPEbtGXrsME0ca82aodnt6gNIIGnFxHZKqRxrIUZE16OqL22nx9qfVRR
+         Dcdxw26wuvz6i6sElkUQrQnTd4D2UO8aPB4HadTVJu8bSP7i3HqprkcqsAPzlIhw3SGs
+         2aPA==
+X-Gm-Message-State: AOJu0YwlBxTtK0gix9/yFaCWmammC+CwfcK/9PverXehCItjQYkDyTIs
+	B+t/eI9Q+gaWKoA75GaywnBBueXTr///KD+Ia7VGH954zL06JqSWlMtm
+X-Gm-Gg: ASbGncur0gbetLH3MHYn2Xq3puh7pWYp0y4YY6FsKXkmXcdGKLcQzx8JUQUl+phPteW
+	PCLLCoF2DAdrcZLVA8PGGyxnIqzK3WBq6PkQx1uSOBB5OZmbcZGOxQbZVhF7WMts0vkanNeZiD4
+	8NgaK8kQ5bHLUJVi1tVx/q38ntZ2dNlL/aOx0GOXmAlwTiMT9ye2oPWhUFGl1j7xHoC+zDUdaH1
+	xCBmJ6PUmw8ILJtJHBjAvyJ1bMgVy6YCVA4J7aX1laaYfOY55nsWioNam5p0LHZy/j2yZ//CLma
+	PjTVHvJJiL0owoLTSvCGNdYJEeveeGRwOQMt0HydRrw4nYIHGb+EUBwHzHgpvwpPOXp1Ifw32fe
+	XQuSjjuI209UtYXPwr+g4nGhs64m7ykpQ6c14gcvXjhk/MGRhX9yI2JYOb3E1bGwRFI5C3cD9rj
+	5OYRv1gqz93xI1DemmuFg=
+X-Google-Smtp-Source: AGHT+IE2vvEkzYPE2YeNk5ikw8gx+yWVLzAS4i95En/N092Es//XEtJ9aw1jpXdrlGJlPu0ojIqUyQ==
+X-Received: by 2002:a05:6808:1b14:b0:441:8f74:fd3 with SMTP id 5614622812f47-45097637992mr6914942b6e.64.1763416018072;
+        Mon, 17 Nov 2025 13:46:58 -0800 (PST)
+Received: from geday ([2804:7f2:800b:a807::dead:c001])
+        by smtp.gmail.com with ESMTPSA id 5614622812f47-4508a6df248sm4594480b6e.22.2025.11.17.13.46.52
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 17 Nov 2025 13:46:57 -0800 (PST)
+Date: Mon, 17 Nov 2025 18:46:43 -0300
+From: Geraldo Nascimento <geraldogabriel@gmail.com>
+To: Shawn Lin <shawn.lin@rock-chips.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Johan Jonker <jbx6244@gmail.com>,
+	Geraldo Nascimento <geraldogabriel@gmail.com>,
+	Dragan Simic <dsimic@manjaro.org>
+Cc: linux-rockchip@lists.infradead.org, linux-pci@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org
+Subject: [PATCH v2 0/4] PCI: rockchip: 5.0 GT/s speed may be dangerous
+Message-ID: <cover.1763415705.git.geraldogabriel@gmail.com>
 MIME-Version: 1.0
-Message-Id: <20251117-color-format-v4-10-0ded72bd1b00@collabora.com>
-References: <20251117-color-format-v4-0-0ded72bd1b00@collabora.com>
-In-Reply-To: <20251117-color-format-v4-0-0ded72bd1b00@collabora.com>
-To: Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>, 
- Rodrigo Siqueira <siqueira@igalia.com>, 
- Alex Deucher <alexander.deucher@amd.com>, 
- =?utf-8?q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- Andrzej Hajda <andrzej.hajda@intel.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Andy Yan <andy.yan@rock-chips.com>, 
- Jani Nikula <jani.nikula@linux.intel.com>, 
- Rodrigo Vivi <rodrigo.vivi@intel.com>, 
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, 
- Tvrtko Ursulin <tursulin@ursulin.net>
-Cc: kernel@collabora.com, amd-gfx@lists.freedesktop.org, 
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org, 
- Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
- Derek Foreman <derek.foreman@collabora.com>, 
- Marius Vlad <marius.vlad@collabora.com>
-X-Mailer: b4 0.14.3
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251117_111357_388601_4EB0AEBB 
-X-CRM114-Status: GOOD (  13.60  )
+X-CRM114-CacheID: sfid-20251117_134659_327432_3913C0E5 
+X-CRM114-Status: GOOD (  10.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,115 +107,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Derek Foreman <derek.foreman@collabora.com>
+Dragan Simic already had warned me of potential issues with 5.0 GT/s
+speed operation in Rockchip PCIe. However, in recent interactions
+with Shawn Lin from Rockchip it came to my attention there's grave
+danger in the unknown errata regarding 5.0 GT/s operational speed
+of their PCIe core. Even if the odds are low, to contain any damage,
+let's cover the remaining corner-cases where the default would lead
+to 5.0 GT/s operation as well as add a comment to Root Complex driver
+core, documenting this danger. Furthermore, remove redundant
+declaration of max-link-speed from rk3399-nanopi-r4s.dtsi
 
-Register the color format property in the dw_hdmi_qp-rockchip driver,
-and act on requested format changes as part of the connector state in
-the vop2 video output driver.
+Signed-off-by: Geraldo Nascimento <geraldogabriel@gmail.com>
 
-Signed-off-by: Derek Foreman <derek.foreman@collabora.com>
-Signed-off-by: Marius Vlad <marius.vlad@collabora.com>
-Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
- drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c |  3 ++
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c   | 46 ++++++++++++++++++++++++++
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.h   |  2 ++
- 3 files changed, 51 insertions(+)
 
-diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-index 7c294751de19..7028166fdace 100644
---- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-@@ -635,6 +635,9 @@ static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
- 		return dev_err_probe(hdmi->dev, PTR_ERR(connector),
- 				     "Failed to init bridge connector\n");
- 
-+	if (!drm_mode_create_hdmi_color_format_property(connector, supported_colorformats))
-+		drm_connector_attach_color_format_property(connector);
-+
- 	return drm_connector_attach_encoder(connector, encoder);
- }
- 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index 498df0ce4680..2fc9b21c5522 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -1549,6 +1549,50 @@ static void vop2_dither_setup(struct drm_crtc *crtc, u32 *dsp_ctrl)
- 				DITHER_DOWN_ALLEGRO);
- }
- 
-+static void vop2_bcsh_config(struct drm_crtc *crtc, struct vop2_video_port *vp)
-+{
-+	struct drm_connector_list_iter conn_iter;
-+	struct drm_connector *connector;
-+	u32 format = 0;
-+	enum drm_colorspace colorspace = 0;
-+	u32 val = 0;
-+
-+	drm_connector_list_iter_begin(crtc->dev, &conn_iter);
-+	drm_for_each_connector_iter(connector, &conn_iter) {
-+		if (!(crtc->state->connector_mask & drm_connector_mask(connector)))
-+			continue;
-+
-+		format = connector->state->color_format;
-+		colorspace = connector->state->colorspace;
-+		break;
-+	}
-+	drm_connector_list_iter_end(&conn_iter);
-+
-+	if (format == DRM_COLOR_FORMAT_YCBCR420 ||
-+	    format == DRM_COLOR_FORMAT_YCBCR444 ||
-+	    format == DRM_COLOR_FORMAT_YCBCR422) {
-+		val = RK3568_VP_BCSH_CTRL__BCSH_R2Y_EN | BIT(7);
-+
-+		switch (colorspace) {
-+		case DRM_MODE_COLORIMETRY_BT2020_RGB:
-+		case DRM_MODE_COLORIMETRY_BT2020_YCC:
-+			val |= BIT(7) | BIT(6);
-+			break;
-+		case DRM_MODE_COLORIMETRY_BT709_YCC:
-+			val |= BIT(6);
-+			break;
-+		default:
-+			break;
-+		}
-+		if (colorspace == DRM_MODE_COLORIMETRY_BT2020_RGB ||
-+		    colorspace == DRM_MODE_COLORIMETRY_BT2020_YCC)
-+			val |= BIT(6);
-+	}
-+
-+	vop2_vp_write(vp, RK3568_VP_BCSH_CTRL, val);
-+	vop2_vp_write(vp, RK3568_VP_BCSH_COLOR_BAR, 0);
-+}
-+
- static void vop2_post_config(struct drm_crtc *crtc)
- {
- 	struct vop2_video_port *vp = to_vop2_video_port(crtc);
-@@ -1600,6 +1644,8 @@ static void vop2_post_config(struct drm_crtc *crtc)
- 	}
- 
- 	vop2_vp_write(vp, RK3568_VP_DSP_BG, 0);
-+
-+	vop2_bcsh_config(crtc, vp);
- }
- 
- static int us_to_vertical_line(struct drm_display_mode *mode, int us)
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-index 9124191899ba..33fdc9d8d819 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-@@ -637,6 +637,8 @@ enum dst_factor_mode {
- 
- #define RK3568_REG_CFG_DONE__GLB_CFG_DONE_EN		BIT(15)
- 
-+#define RK3568_VP_BCSH_CTRL__BCSH_R2Y_EN		BIT(4)
-+
- #define RK3568_VP_DSP_CTRL__STANDBY			BIT(31)
- #define RK3568_VP_DSP_CTRL__DSP_LUT_EN			BIT(28)
- #define RK3568_VP_DSP_CTRL__DITHER_DOWN_MODE		BIT(20)
+Changes in v2:
+- hard limit to 2.5 GT/s, not just warn
+- add Reported-by: and Reviewed-by: Dragan Simic
+- remove redundant declaration of max-link-speed from helios64 dts
+- fix Link: of helios64 patch
+- simplify RC mode comment
+- Link to v1: https://lore.kernel.org/all/aRhR79u5BPtRRFw3@geday/
+
+Geraldo Nascimento (4):
+  PCI: rockchip: limit RK3399 to 2.5 GT/s to prevent damage
+  PCI: rockchip-host: comment danger of 5.0 GT/s speed
+  arm64: dts: rockchip: remove dangerous max-link-speed from helios64
+  arm64: dts: rockchip: remove redundant max-link-speed from nanopi-r4s
+
+ arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts |  1 -
+ arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dtsi    |  1 -
+ drivers/pci/controller/pcie-rockchip-host.c            |  3 +++
+ drivers/pci/controller/pcie-rockchip.c                 | 10 ++++++++--
+ 4 files changed, 11 insertions(+), 4 deletions(-)
 
 -- 
-2.51.2
+2.49.0
 
 
 _______________________________________________
