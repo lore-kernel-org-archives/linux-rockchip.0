@@ -4,55 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00577CEACEF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Nov 2025 19:13:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8133ACEBF8D
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Nov 2025 19:13:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yXCC/EL0gZBwHZDwLZ+lA55qv1C4V7qp4BtbC+rzzAc=; b=D9y3SSV4St4LJl
-	8ws6Jd2ZdA9pkh+lAyqkK47vB6qsmCy/KtR1diImEMFlyp3PWxI3s+FssdjB8iI+2431/RCwo2eJV
-	3Sll/Sp4T7EguRTBEVf0FtTP59WHTOCwTzFlZ7Q6TvuiA/EkM8OvZqXxOACR0l4FyCXZ0djVgwtxf
-	0DCsFR3KiGmAwDr0gFLRe37+KRgm/rWk+Ae6njaQfYvYf82ML8NcavQVIsGXi9Y0/+JBd0RM6SgLU
-	HR3FSnep/naMn9fe1Z5HQZgdgsPz3ySjWptNtojq+jty1PJ+BwLub8vbzP9MGrh92xq8/mCwCLgn7
-	eOL66w2fC6f4MI0BsGXQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ISELvE03dwoabSZJBGU1j3jrAn6IeiPHV2gjECREosI=; b=XTZCXDS/kJLhyG
+	3x/IlkOB4boasm6xLRU6Z7Tf5xXxMoxgTNF6GVU8CyxhExHz44QJFgNDcjE8baMuOAhIRZi4Y3kuy
+	ocEGuJ99oRAH2QnqZ+veCWwUXd5tZk6UW5fwsuL0ts1vTVJPSCeVLzLIpuzxkwZG5fmnEIo8DOFRQ
+	yC/19VyVAvmI2mdWumIx2a/4gyIk0qK1KPdaDydk/UpitB5I7s/DuHfW69x3QjY/vCbedNZvxkTXE
+	dLLsJ1S9pUpEbXWI6lUnieOeUOwfhJ2i0V9hwQ8uYU5k1DwtXkgifsmbgrVEq1VjgSz5tqv/YX2G6
+	5OfIzjADyPCTdhnXT6Pw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vL4f8-0000000Gi5a-0tWl;
-	Mon, 17 Nov 2025 19:13:18 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1vL4f6-0000000Gi3i-439R;
+	Mon, 17 Nov 2025 19:13:16 +0000
+Received: from sender3-pp-f112.zoho.com ([136.143.184.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vL4f2-0000000Gi1e-3Znv;
-	Mon, 17 Nov 2025 19:13:14 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1763406754; cv=none; 
+	id 1vL4ey-0000000Ghze-49Go;
+	Mon, 17 Nov 2025 19:13:10 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1763406742; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=POVvlxYD/kw5kirO806RSeq3/x6kPHQXUz+Q0iQsAAemEyMzbPKwKmTb+N8EpH3dWIT9t6FgveFlLqhpNya6THOYJy2wX74l+xHr1uDzonm5RVisjjeeCaX+H1OBXmQjlZJctQNHfhdgqmVFDjGGHDfVuKMky3kaOy32Y2O/vUQ=
+	b=NCWTdtNC+fisIP93dT1WS7aZCKPch5isOjwAm1kMLYx4OASt3MsYJJDzkvwtV4vzvflS1UiqNH/02h5lqAMYPb/lx4I0Q5wdI/hSvBQL3mhxjBFdQp/SFIhui/cd4MF/mOP1jxTWqTy5Qf/ExmpX/dz2am7/Mz2PIvbRxcVLmiw=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1763406754; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=JDm4LO5yWJTcfID7mSjaqMJXnPJYGF2W6cLE9Z+G7NE=; 
-	b=Z9kvcT4CmOvpgYrXY/w/Okp4fjmC+IyT4d5t+MmtdrQ7Uf1YSRohLJjJh8EBran71OXdKbKk25FtokP8epT+fFuclLwTSZVO7u6EBt7M3dRnXESQyKgBC3/bTmJQvGR7Wz32Um2eypo4Prb2Z0pGtRhutph/gvJA4CQKg6/7JVo=
+	t=1763406742; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=fREpGjj4BJlCO6CnTMTzXHt6Fc6B8v1Yc8bWL/JsKdc=; 
+	b=QEpILz31RCkDOWoad3CTM5dI/yfff0j/51IlCReQI8R6qumGrkn8IQjtv0LNScvppPvMzUBMDXZwQv0wqmUHKvY3aoOrMXzkxZ+1nYFW7SYzymXqYzIvJeOYYynZSi9Ex8ez9Ip7XDL7yY592g2Y4PPk5nX4opprbnJV+2daea0=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1763406754;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1763406742;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=JDm4LO5yWJTcfID7mSjaqMJXnPJYGF2W6cLE9Z+G7NE=;
-	b=R2GDDudM34+KOSu+DJhACiYrzHUj81vcYt/fPc2mVrVfzlbjJ49h9MvP6Kq3pSXM
-	7TMc1hDSTDRV3paZcuqGIvocC25jMIO0ahlRKvSdWq26J/opy/e78UqlsG4GAgZNIft
-	EpqMgrmtgr4BaHdc0aeH3woQtCrEGv2LmUplQDIw=
-Received: by mx.zohomail.com with SMTPS id 1763406753246694.750073819096;
-	Mon, 17 Nov 2025 11:12:33 -0800 (PST)
+	h=From:From:Subject:Subject:Date:Date:Message-Id:Message-Id:MIME-Version:Content-Type:Content-Transfer-Encoding:To:To:Cc:Cc:Reply-To;
+	bh=fREpGjj4BJlCO6CnTMTzXHt6Fc6B8v1Yc8bWL/JsKdc=;
+	b=I6ZwQ/aPmG9kNPGaoep3dNYxPg8K1Oc14TM1KkA+xWQahOblNgyU/+F4silCzKjZ
+	k/f54GpIoYuBFxGdhQLoPm5FyVqnVxBpgjD1QBvqD/EKWAq2EaFJ1Be3ThOVi3hHcqu
+	NXTyG+lDlLz6julVZ6IHx/q8d5jkiyat1FT72NKc=
+Received: by mx.zohomail.com with SMTPS id 1763406739664491.33357196874965;
+	Mon, 17 Nov 2025 11:12:19 -0800 (PST)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Mon, 17 Nov 2025 20:11:46 +0100
-Subject: [PATCH v4 02/10] drm: Add new general DRM property "color format"
+Subject: [PATCH v4 00/10] Add new general DRM property "color format"
+Date: Mon, 17 Nov 2025 20:11:44 +0100
+Message-Id: <20251117-color-format-v4-0-0ded72bd1b00@collabora.com>
 MIME-Version: 1.0
-Message-Id: <20251117-color-format-v4-2-0ded72bd1b00@collabora.com>
-References: <20251117-color-format-v4-0-0ded72bd1b00@collabora.com>
-In-Reply-To: <20251117-color-format-v4-0-0ded72bd1b00@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAHBzG2kC/z2OwQqDMBAFf0VybiQxthpP/Y/iIeqmBoxpN1EE8
+ d+72NLj8HjD7CwCOoisyXaGsLrowkxQXjLWj2Z+AncDMStEcZWiqHkfpoDcBvQm8VLbgZaukrV
+ idHkhWLedukdLbDF4nkYE85cILaVUolI6L7W6ccm9QbfEfJ3McCf7ZLqAJu+D/xkR3gt1pa+Wd
+ SYCVXjvUpPNsCV+tklZsfY4Pk6wnlHRAAAA
+X-Change-ID: 20251028-color-format-49fd202b7183
 To: Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>, 
  Rodrigo Siqueira <siqueira@igalia.com>, 
  Alex Deucher <alexander.deucher@amd.com>, 
@@ -76,13 +79,13 @@ Cc: kernel@collabora.com, amd-gfx@lists.freedesktop.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
  intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org, 
  Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
- Andri Yngvason <andri@yngvason.is>, 
  Werner Sembach <wse@tuxedocomputers.com>, 
- Marius Vlad <marius.vlad@collabora.com>
+ Andri Yngvason <andri@yngvason.is>, Marius Vlad <marius.vlad@collabora.com>, 
+ Derek Foreman <derek.foreman@collabora.com>
 X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251117_111312_957884_904F576C 
-X-CRM114-Status: GOOD (  25.39  )
+X-CRM114-CacheID: sfid-20251117_111309_156143_5F349A26 
+X-CRM114-Status: GOOD (  29.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,385 +102,172 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Andri Yngvason <andri@yngvason.is>
+Hello,
 
-Adds a new general DRM property named "color format" which can be used by
-userspace to force the display driver output a particular color format.
+this is a follow-up to
+https://lore.kernel.org/all/20250911130739.4936-1-marius.vlad@collabora.com/
+which in of itself is a follow-up to
+https://lore.kernel.org/dri-devel/20240115160554.720247-1-andri@yngvason.is/ where
+a new DRM connector property has been added allowing users to
+force a particular color format.
 
-Possible options are:
-    - auto (setup by default, driver internally picks the color format)
-    - rgb
-    - ycbcr444
-    - ycbcr422
-    - ycbcr420
+That in turn was actually also a follow-up from Werner Sembach's posted at
+https://lore.kernel.org/dri-devel/20210630151018.330354-1-wse@tuxedocomputers.com/
 
-Drivers should advertise from this list the formats which they support.
-Together with this list and EDID data from the sink we should be able
-to relay a list of usable color formats to users to pick from.
+As the number of cooks have reached critical mass, I'm hoping I'll be
+the last person to touch this particular series.
 
-Signed-off-by: Werner Sembach <wse@tuxedocomputers.com>
-Signed-off-by: Andri Yngvason <andri@yngvason.is>
-Signed-off-by: Marius Vlad <marius.vlad@collabora.com>
+We have an implementation in Weston at
+https://gitlab.freedesktop.org/wayland/weston/-/merge_requests/1825 that
+adds support for this property. This patch series has been tested
+against that MR on i915 (HDMI, DP), amdgpu (HDMI, DP) and on rockchip
+(HDMI).
+
+You can also manually test this with modetest like so, but beware that
+this is a non-atomic invocation, so testing YUV420 like this will result
+in weird outcomes if only some of the modes support YUV420:
+
+  $ modetest -s 115:1920x1080-60@NV12 -w 115:'color format':4
+
+where 115 is the connector ID and '4' is the enum value for a particular
+color format.
+
+General notes on the approach taken by me: instead of silently switching
+to a different format than was explicitly requested, or even worse,
+outputting something to the sink the sink doesn't support, bubble up an
+error to userspace instead. "color format" is a "I want this" type
+property, not a "force this" type property, i.e. the kernel will respect
+the limits imposed by the hardware.
+
+I'm not sure if my drm_bridge change actually achieves what I want in a
+more complex bridge setup. I'd need to either come up with a virtual
+bridge to test these scenarios, or spend some time making a flat flex
+cable adapter for the DSI-HDMI bridge board I have here. Before I invest
+too much time into either of those, I'd like to get some feedback on
+this approach however.
+
+Things I've tested:
+- HDMI (YCbCr 4:4:4 + RGB + Auto) on RK3588
+- HDMI + DP (YCbCr 4:4:4, YCbCr 4:2:0, RGB, Auto) on Intel N97 (i915)
+  DP-MST is untested, but I expect it to work the same.
+- HDMI (YCbCr 4:4:4, YCbCr 4:2:2, YCbCr 4:2:0, RGB, Auto) + DP (YCbCr
+  4:4:4, RGB, Auto) on an AMD Radeon RX 550 (amdgpu). DP-MST is
+  untested.
+
+Changes in v4:
+- Rebase onto next-20251117
+- Get rid of HDMI_COLORSPACE_AUTO
+- Split hdmi_compute_config change into separate patch
+- Add missing symbol export for color_format_to_hdmi_colorspace to fix
+  builds in certain configurations
+- Drop "drm: Pass supported color formats straight onto drm_bridge"
+- Make dw-hdmi-qp set the platform data's supported color formats as
+  the bridge's supported HDMI color formats
+- drm_hdmi_state_helper: pass requested color format to
+  hdmi_compute_format_bpc if set.
+- drm_bridge: limit the bus formats to those explicitly requested with
+  the color format property during the atomic bridge check call,
+  specifically in drm_atomic_bridge_chain_select_bus_fmts.
+- i915: Remove INTEL_OUTPUT_FORMAT_AUTO, as automatic format selection
+  does not need to involve the hardware state
+- i915: Deduplicate ntel_output_format_to_drm_color_format code by
+  moving it as a static inline __pure function into a shared header
+- i915: rework logic in HDMI, DP and DP-MST output config functions to
+  remove redundant locals, simplify execution flow, and return an error
+  to userspace if an explicit color_format request can't be satisfied.
+- i915: assign myself as the author and make the others Co-developers,
+  so that they don't get the blame for any of my bugs.
+- amdgpu: refactor fill_stream_properties_from_drm_display_mode to
+  improve readability and ensure that impossible color format requests
+  get bubbled up to userspace as errors
+- amdgpu: don't pick YUV444 over RGB.
+- amdgpu: assign authorship to myself, with others as Co-developers, as
+  logic was modified and the blame should fall on me
+- dw_hdmi_qp-rockchip: set the supported color formats platform data
+  member
+- rockchip: remove drm property registration for rk3066_hdmi and
+  inno_hdmi. None of the platforms that use these use vop2 as the
+  video output processor.
+- Link to v3: https://lore.kernel.org/all/20250911130739.4936-1-marius.vlad@collabora.com/
+
+Changes in v3 by mvlad compared to Andri's v2 series:
+- renamed the property to just 'color format'
+- the property is added dynamically similar to the Colorspace property
+- a key point from previous comments was that drivers should advertise
+  the color formats they support and userspace would query EDID and
+  perform an intersection from those color formats which users can
+  further use. With this patch set each driver that adds this property
+  has such list of hard-coded color formats, but fundamentally the idea
+  is that driver can query the HW and do that on its own. The
+  infrastructure is now in place to allow to do that
+- by default the 'AUTO' color format is set. With this patch series that
+  has been introduced as a fallback to RGB. Drivers could further
+  customize this behavour and could perform additional checks on the sink
+  to pick another suitable color format they'd like for AUTO
+- drm_bridge bridge code has been improved to allow initialization with
+  the same color formats list as the DRM connector property. Similarly, bpc
+  pick-up now takes the color format into consideration when deciding
+  which bpc to choose from
+- The new DRM color format re-uses HDMI_COLORPSACE enum and provides an
+  enum translations between the two to avoid touching all other drivers that
+  use HDMI_COLORPSACE enum. I believe at this point that this allows the
+  least amount of disruption and avoids a massive bike shedding around
+  that part
+- a rockchip implementation has been by my colleague Derek Foreman
+- YUV444 color format has been added in i915
+- address comment about "Remove unnecessary SIGNAL_TYPE_HDMI_TYPE_A
+  check" where aconnector might be invalid
+- Link to v2: https://lore.kernel.org/dri-devel/20240115160554.720247-1-andri@yngvason.is/
+
+Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
- drivers/gpu/drm/drm_atomic_helper.c |   5 +
- drivers/gpu/drm/drm_atomic_uapi.c   |   4 +
- drivers/gpu/drm/drm_connector.c     | 180 ++++++++++++++++++++++++++++++++++++
- include/drm/drm_connector.h         |  54 ++++++++++-
- 4 files changed, 238 insertions(+), 5 deletions(-)
+Andri Yngvason (1):
+      drm: Add new general DRM property "color format"
 
-diff --git a/drivers/gpu/drm/drm_atomic_helper.c b/drivers/gpu/drm/drm_atomic_helper.c
-index e641fcf8c568..25f354b2cc0d 100644
---- a/drivers/gpu/drm/drm_atomic_helper.c
-+++ b/drivers/gpu/drm/drm_atomic_helper.c
-@@ -736,6 +736,11 @@ drm_atomic_helper_check_modeset(struct drm_device *dev,
- 			if (old_connector_state->max_requested_bpc !=
- 			    new_connector_state->max_requested_bpc)
- 				new_crtc_state->connectors_changed = true;
-+
-+			if (old_connector_state->color_format !=
-+			    new_connector_state->color_format)
-+				new_crtc_state->connectors_changed = true;
-+
- 		}
- 
- 		if (funcs->atomic_check)
-diff --git a/drivers/gpu/drm/drm_atomic_uapi.c b/drivers/gpu/drm/drm_atomic_uapi.c
-index b2cb5ae5a139..2f093b0d1628 100644
---- a/drivers/gpu/drm/drm_atomic_uapi.c
-+++ b/drivers/gpu/drm/drm_atomic_uapi.c
-@@ -784,6 +784,8 @@ static int drm_atomic_connector_set_property(struct drm_connector *connector,
- 		state->privacy_screen_sw_state = val;
- 	} else if (property == connector->broadcast_rgb_property) {
- 		state->hdmi.broadcast_rgb = val;
-+	} else if (property == connector->color_format_property) {
-+		state->color_format = drm_color_format_enum_to_color_format(val);
- 	} else if (connector->funcs->atomic_set_property) {
- 		return connector->funcs->atomic_set_property(connector,
- 				state, property, val);
-@@ -869,6 +871,8 @@ drm_atomic_connector_get_property(struct drm_connector *connector,
- 		*val = state->privacy_screen_sw_state;
- 	} else if (property == connector->broadcast_rgb_property) {
- 		*val = state->hdmi.broadcast_rgb;
-+	} else if (property == connector->color_format_property) {
-+		*val = drm_color_format_to_color_format_enum(state->color_format);
- 	} else if (connector->funcs->atomic_get_property) {
- 		return connector->funcs->atomic_get_property(connector,
- 				state, property, val);
-diff --git a/drivers/gpu/drm/drm_connector.c b/drivers/gpu/drm/drm_connector.c
-index 272d6254ea47..0ad7be0a2d09 100644
---- a/drivers/gpu/drm/drm_connector.c
-+++ b/drivers/gpu/drm/drm_connector.c
-@@ -1348,6 +1348,55 @@ static const char * const colorspace_names[] = {
- 	[DRM_MODE_COLORIMETRY_BT601_YCC] = "BT601_YCC",
- };
- 
-+u32
-+drm_color_format_to_color_format_enum(enum drm_color_format fmt)
-+{
-+	switch (fmt) {
-+	default:
-+	case DRM_COLOR_FORMAT_AUTO:
-+		return DRM_MODE_COLOR_FORMAT_AUTO;
-+	case DRM_COLOR_FORMAT_RGB444:
-+		return DRM_MODE_COLOR_FORMAT_RGB444;
-+	case DRM_COLOR_FORMAT_YCBCR444:
-+		return DRM_MODE_COLOR_FORMAT_YCBCR444;
-+	case DRM_COLOR_FORMAT_YCBCR422:
-+		return DRM_MODE_COLOR_FORMAT_YCBCR422;
-+	case DRM_COLOR_FORMAT_YCBCR420:
-+		return DRM_MODE_COLOR_FORMAT_YCBCR420;
-+	}
-+}
-+
-+u32
-+drm_color_format_enum_to_color_format(enum drm_color_format_enum fmt_enum)
-+{
-+	switch (fmt_enum) {
-+	default:
-+	case DRM_MODE_COLOR_FORMAT_RGB444:
-+		return DRM_COLOR_FORMAT_RGB444;
-+	case DRM_MODE_COLOR_FORMAT_AUTO:
-+		return DRM_COLOR_FORMAT_AUTO;
-+	case DRM_MODE_COLOR_FORMAT_YCBCR444:
-+		return DRM_COLOR_FORMAT_YCBCR444;
-+	case DRM_MODE_COLOR_FORMAT_YCBCR422:
-+		return DRM_COLOR_FORMAT_YCBCR422;
-+	case DRM_MODE_COLOR_FORMAT_YCBCR420:
-+		return DRM_COLOR_FORMAT_YCBCR420;
-+	}
-+}
-+
-+/**
-+ * drm_get_color_format_name - return a string for color format
-+ * @colorspace: color format to compute name of
-+ *
-+ */
-+const char *drm_get_color_format_name(enum drm_color_format color_fmt)
-+{
-+	u32 conv_color_fmt = drm_color_format_to_color_format_enum(color_fmt);
-+
-+	return drm_hdmi_connector_get_output_format_name(conv_color_fmt);
-+}
-+EXPORT_SYMBOL(drm_get_color_format_name);
-+
- /**
-  * drm_get_colorspace_name - return a string for color encoding
-  * @colorspace: color space to compute name of
-@@ -1377,6 +1426,22 @@ static const u32 hdmi_colorspaces =
- 	BIT(DRM_MODE_COLORIMETRY_DCI_P3_RGB_D65) |
- 	BIT(DRM_MODE_COLORIMETRY_DCI_P3_RGB_THEATER);
- 
-+/* already bit-shifted */
-+static const u32 hdmi_colorformats =
-+	DRM_COLOR_FORMAT_AUTO |
-+	DRM_COLOR_FORMAT_RGB444 |
-+	DRM_COLOR_FORMAT_YCBCR444 |
-+	DRM_COLOR_FORMAT_YCBCR422 |
-+	DRM_COLOR_FORMAT_YCBCR420;
-+
-+/* already bit-shifted */
-+static const u32 dp_colorformats =
-+	DRM_COLOR_FORMAT_AUTO |
-+	DRM_COLOR_FORMAT_RGB444 |
-+	DRM_COLOR_FORMAT_YCBCR444 |
-+	DRM_COLOR_FORMAT_YCBCR422 |
-+	DRM_COLOR_FORMAT_YCBCR420;
-+
- /*
-  * As per DP 1.4a spec, 2.2.5.7.5 VSC SDP Payload for Pixel Encoding/Colorimetry
-  * Format Table 2-120
-@@ -2628,6 +2693,101 @@ int drm_mode_create_hdmi_colorspace_property(struct drm_connector *connector,
- }
- EXPORT_SYMBOL(drm_mode_create_hdmi_colorspace_property);
- 
-+static int drm_mode_create_color_format_property(struct drm_connector *connector,
-+						 u32 supported_color_formats)
-+{
-+	struct drm_device *dev = connector->dev;
-+	struct drm_prop_enum_list enum_list[DRM_MODE_COLOR_FORMAT_COUNT];
-+	int i, len;
-+
-+	if (connector->color_format_property)
-+		return 0;
-+
-+	if (!supported_color_formats) {
-+		drm_err(dev, "No supported color formats provded on [CONNECTOR:%d:%s]\n",
-+			    connector->base.id, connector->name);
-+		return -EINVAL;
-+	}
-+
-+	if ((supported_color_formats & -BIT(DRM_MODE_COLOR_FORMAT_COUNT)) != 0) {
-+		drm_err(dev, "Unknown colorspace provded on [CONNECTOR:%d:%s]\n",
-+			    connector->base.id, connector->name);
-+		return -EINVAL;
-+	}
-+
-+	len = 0;
-+	for (i = 0; i < DRM_MODE_COLOR_FORMAT_COUNT; i++) {
-+		if (!(supported_color_formats & BIT(i)))
-+			continue;
-+
-+		enum_list[len].type = i;
-+		if (i != DRM_MODE_COLOR_FORMAT_AUTO)
-+			enum_list[len].name = output_format_str[i];
-+		else
-+			enum_list[len].name = "AUTO";
-+		len++;
-+	}
-+
-+	connector->color_format_property =
-+		drm_property_create_enum(dev, DRM_MODE_PROP_ENUM, "color format",
-+					enum_list, len);
-+
-+	if (!connector->color_format_property)
-+		return -ENOMEM;
-+
-+	return 0;
-+}
-+
-+/**
-+ * drm_mode_create_hdmi_color_format_property - create hdmi color format property
-+ * @connector: connector to create the color format property on.
-+ * @supported_color_formats: bitmap of supported color formats
-+ *
-+ * Called by a driver the first time it's needed, must be attached to desired
-+ * HDMI connectors.
-+ *
-+ * Returns:
-+ * Zero on success, negative errno on failure.
-+ */
-+int drm_mode_create_hdmi_color_format_property(struct drm_connector *connector,
-+					       u32 supported_color_formats)
-+{
-+	u32 color_formats;
-+
-+	if (supported_color_formats)
-+		color_formats = supported_color_formats & hdmi_colorformats;
-+	else
-+		color_formats = hdmi_colorformats;
-+
-+	return drm_mode_create_color_format_property(connector, color_formats);
-+}
-+EXPORT_SYMBOL(drm_mode_create_hdmi_color_format_property);
-+
-+/**
-+ * drm_mode_create_dp_color_format_property - create dp color format property
-+ * @connector: connector to create the Colorspace property on.
-+ * @supported_color_formats: bitmap of supported color formats
-+ *
-+ * Called by a driver the first time it's needed, must be attached to desired
-+ * DP connectors.
-+ *
-+ * Returns:
-+ * Zero on success, negative errno on failure.
-+ */
-+int drm_mode_create_dp_color_format_property(struct drm_connector *connector,
-+					     u32 supported_color_formats)
-+{
-+	u32 color_formats;
-+
-+	if (supported_color_formats)
-+		color_formats = supported_color_formats & dp_colorformats;
-+	else
-+		color_formats = dp_colorformats;
-+
-+	return drm_mode_create_color_format_property(connector, color_formats);
-+}
-+EXPORT_SYMBOL(drm_mode_create_dp_color_format_property);
-+
- /**
-  * drm_mode_create_dp_colorspace_property - create dp colorspace property
-  * @connector: connector to create the Colorspace property on.
-@@ -2845,6 +3005,26 @@ int drm_connector_attach_max_bpc_property(struct drm_connector *connector,
- }
- EXPORT_SYMBOL(drm_connector_attach_max_bpc_property);
- 
-+/**
-+ * drm_connector_attach_color_format_property - attach "force color format" property
-+ * @connector: connector to attach force color format property on.
-+ *
-+ * This is used to add support for selecting a color format on a connector.
-+ *
-+ * Returns:
-+ * Zero on success, negative errno on failure.
-+ */
-+int drm_connector_attach_color_format_property(struct drm_connector *connector)
-+{
-+	struct drm_property *prop = connector->color_format_property;
-+
-+	drm_object_attach_property(&connector->base, prop, DRM_COLOR_FORMAT_AUTO);
-+
-+	return 0;
-+}
-+EXPORT_SYMBOL(drm_connector_attach_color_format_property);
-+
-+
- /**
-  * drm_connector_attach_hdr_output_metadata_property - attach "HDR_OUTPUT_METADA" property
-  * @connector: connector to attach the property on.
-diff --git a/include/drm/drm_connector.h b/include/drm/drm_connector.h
-index 8f34f4b8183d..a071079fd3ad 100644
---- a/include/drm/drm_connector.h
-+++ b/include/drm/drm_connector.h
-@@ -556,6 +556,26 @@ enum drm_colorspace {
- 	DRM_MODE_COLORIMETRY_COUNT
- };
- 
-+enum drm_color_format_enum {
-+	DRM_MODE_COLOR_FORMAT_RGB444		= HDMI_COLORSPACE_RGB,
-+	DRM_MODE_COLOR_FORMAT_YCBCR422		= HDMI_COLORSPACE_YUV422,
-+	DRM_MODE_COLOR_FORMAT_YCBCR444		= HDMI_COLORSPACE_YUV444,
-+	DRM_MODE_COLOR_FORMAT_YCBCR420		= HDMI_COLORSPACE_YUV420,
-+	/* auto case, driver will set the color_format */
-+	DRM_MODE_COLOR_FORMAT_AUTO,
-+	DRM_MODE_COLOR_FORMAT_COUNT
-+};
-+
-+enum drm_color_format {
-+	DRM_COLOR_FORMAT_NONE			= 0,
-+	DRM_COLOR_FORMAT_RGB444			= (1 << 0),
-+	DRM_COLOR_FORMAT_YCBCR422		= (1 << 1),
-+	DRM_COLOR_FORMAT_YCBCR444		= (1 << 2),
-+	DRM_COLOR_FORMAT_YCBCR420		= (1 << 3),
-+	/* auto case, driver will set the color_format */
-+	DRM_COLOR_FORMAT_AUTO			= (1 << 4),
-+};
-+
- /**
-  * enum drm_bus_flags - bus_flags info for &drm_display_info
-  *
-@@ -699,11 +719,6 @@ struct drm_display_info {
- 	 */
- 	enum subpixel_order subpixel_order;
- 
--#define DRM_COLOR_FORMAT_RGB444		(1<<0)
--#define DRM_COLOR_FORMAT_YCBCR444	(1<<1)
--#define DRM_COLOR_FORMAT_YCBCR422	(1<<2)
--#define DRM_COLOR_FORMAT_YCBCR420	(1<<3)
--
- 	/**
- 	 * @panel_orientation: Read only connector property for built-in panels,
- 	 * indicating the orientation of the panel vs the device's casing.
-@@ -1107,6 +1122,13 @@ struct drm_connector_state {
- 	 */
- 	enum drm_colorspace colorspace;
- 
-+	/**
-+	 * @color_format: State variable for Connector property to request
-+	 * color format change on Sink. This is most commonly used to switch
-+	 * between RGB to YUV and vice-versa.
-+	 */
-+	enum drm_color_format color_format;
-+
- 	/**
- 	 * @writeback_job: Writeback job for writeback connectors
- 	 *
-@@ -2060,6 +2082,12 @@ struct drm_connector {
- 	 */
- 	struct drm_property *colorspace_property;
- 
-+	/**
-+	 * @color_format_property: Connector property to set the suitable
-+	 * color format supported by the sink.
-+	 */
-+	struct drm_property *color_format_property;
-+
- 	/**
- 	 * @path_blob_ptr:
- 	 *
-@@ -2461,6 +2489,12 @@ int drm_mode_create_dp_colorspace_property(struct drm_connector *connector,
- int drm_mode_create_content_type_property(struct drm_device *dev);
- int drm_mode_create_suggested_offset_properties(struct drm_device *dev);
- 
-+int drm_mode_create_hdmi_color_format_property(struct drm_connector *connector,
-+					       u32 supported_color_formats);
-+
-+int drm_mode_create_dp_color_format_property(struct drm_connector *connector,
-+					     u32 supported_color_formats);
-+
- int drm_connector_set_path_property(struct drm_connector *connector,
- 				    const char *path);
- int drm_connector_set_tile_property(struct drm_connector *connector);
-@@ -2542,6 +2576,16 @@ bool drm_connector_has_possible_encoder(struct drm_connector *connector,
- 					struct drm_encoder *encoder);
- const char *drm_get_colorspace_name(enum drm_colorspace colorspace);
- 
-+int drm_connector_attach_color_format_property(struct drm_connector *connector);
-+
-+const char *drm_get_color_format_name(enum drm_color_format color_fmt);
-+
-+u32
-+drm_color_format_to_color_format_enum(enum drm_color_format fmt);
-+
-+u32
-+drm_color_format_enum_to_color_format(enum drm_color_format_enum fmt_enum);
-+
- /**
-  * drm_for_each_connector_iter - connector_list iterator macro
-  * @connector: &struct drm_connector pointer used as cursor
+Derek Foreman (1):
+      drm/rockchip: Implement "color format" DRM property
 
+Marius Vlad (1):
+      drm: Add enum conversion from/to HDMI_COLORSPACE to DRM_COLOR_FORMAT
+
+Nicolas Frattaroli (6):
+      drm/bridge: Act on the DRM color format property
+      drm/bridge: dw-hdmi-qp: Set bridge supported_formats
+      drm/rockchip: dw_hdmi_qp: Set supported_formats platdata
+      drm/display: hdmi-state-helper: Act on color format DRM property
+      drm/i915: Implement the "color format" DRM property
+      drm/amdgpu: Implement "color format" DRM property
+
+Werner Sembach (1):
+      drm/amd/display: Remove unnecessary SIGNAL_TYPE_HDMI_TYPE_A check
+
+ drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c  |  93 ++++++++--
+ .../amd/display/amdgpu_dm/amdgpu_dm_mst_types.c    |  14 ++
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c       |   5 +
+ drivers/gpu/drm/display/drm_hdmi_state_helper.c    |   8 +-
+ drivers/gpu/drm/drm_atomic_helper.c                |   5 +
+ drivers/gpu/drm/drm_atomic_uapi.c                  |   4 +
+ drivers/gpu/drm/drm_bridge.c                       |  57 ++++++
+ drivers/gpu/drm/drm_connector.c                    | 198 +++++++++++++++++++++
+ drivers/gpu/drm/i915/display/intel_connector.c     |  19 ++
+ drivers/gpu/drm/i915/display/intel_connector.h     |   2 +
+ drivers/gpu/drm/i915/display/intel_display_types.h |  15 ++
+ drivers/gpu/drm/i915/display/intel_dp.c            |  42 ++++-
+ drivers/gpu/drm/i915/display/intel_dp.h            |   4 +
+ drivers/gpu/drm/i915/display/intel_dp_mst.c        |  37 +++-
+ drivers/gpu/drm/i915/display/intel_hdmi.c          |  40 ++++-
+ drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c     |  27 +++
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c       |  46 +++++
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.h       |   2 +
+ include/drm/drm_connector.h                        |  57 +++++-
+ 19 files changed, 637 insertions(+), 38 deletions(-)
+---
+base-commit: d1d18879e01e4c9efcb85a96d188a8e4326136dd
+change-id: 20251028-color-format-49fd202b7183
+
+Best regards,
 -- 
-2.51.2
+Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
 
 _______________________________________________
