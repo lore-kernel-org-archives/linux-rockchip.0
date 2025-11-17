@@ -4,55 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4489CEACEF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Nov 2025 22:21:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46FE6CEACEF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Nov 2025 22:22:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cGZKgq70Z/XTL1LxQlCrCu58ktTjroEg73wuke095lg=; b=nHB8UpLWx9IutX
-	druX5z1qDR0i3RNcgbr98NS+XTuhm4qNf4Qib7OGRjNjFA5jMaLssbE5riNxxBJChnG3awf4vxsO7
-	jYrsIcRhBdmD298+dMrNjJOz1g9kOCdOPfKSRJJ9m4SSNloMQRuOvd9kZmoU2ECXC0WokfAfKjiVE
-	4Mh8x5tEQQeDG+hRws0UXni0ePx4bYG2e97SfgCat8lkMV6D43nCApcLE9GL9sdoK2uGKu0iqFJes
-	sRf2g+L6Biciv4gE5pbeSIX9W17l/8BPW7O9AIqt+S2/vyhyBdviFs1WvkpamfpxDGFHntCciAWvI
-	6TvWZWkw3WDwtzVheKRg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=DFy5NEOkjkSyKWaXs62iwVlt1uscxWtMNTCQ3QWw8bk=; b=kqewPSrflLgYhV
+	I1cBS2dR60ZNl26Ci+P6nR7b/0sB57z/x5ud3Uu0PU98CySNhl1NT/HQDKqayziGyMKfRBCxCuu/Y
+	80pILoA0twNBvmYTUoU0tuN3nc9Ur2kYlmb1mc9DGqFOe/NAApIhkUhF7vLoDKGX4n6utIIGq+iUD
+	DcvNgWZAey4lITq8qEf4+7IgVxW/Q0Hc9S7sGPe+xSH9gi5/S9rlfjnYt2AYqVsU75h8s7glmeaZS
+	PDXtVQeFZSkdd+ZZHskAlFybbXwJcaUlFVx3fUwmdchjYFg7a45JINh5oW/UUQXNuXvlm7bRkpbXl
+	M5i2c8KoiBNTMZPgA4mw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vL7be-0000000Gwnn-48uB;
-	Mon, 17 Nov 2025 22:21:55 +0000
+	id 1vL7cR-0000000Gwvu-2Z4r;
+	Mon, 17 Nov 2025 22:22:43 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vL7bd-0000000GwnJ-04ip;
-	Mon, 17 Nov 2025 22:21:54 +0000
+	id 1vL7cO-0000000GwvE-0dq9;
+	Mon, 17 Nov 2025 22:22:42 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=MgLSx7e64sWUF9mZjgijgEncCA3Ifjs0gQT6anRu8Go=; b=tk6NOalizXnAmyQ7QCnKbfCYVl
-	yD8blSj86GmwPEJJ+W2g5TMggFbNvs9xpzRpEFkd4ttqZ6GJbstDzxWnPayyYyEtpW3ArUWpW1qKg
-	F3xiXxC8Q+cNyjJTVGm+uz8BgXdlcH/3sbF+prPJsjEJ/xv+/UEb2eqkbUYO9ei9gNYiMNTEyXBFE
-	X2CEQHxRY8XqBv9/D/NTnzE8TK0K/h3it4jEtpya16JSr3m4kL4KTDsdttvu24XxJ714KuQR23Rq9
-	YxTGZjRIF2m2J0xwaGqp0QosSjyD6TbsDtjO2RdXZ4LOMYJdKakw2zJOBL+qEVvNrf0plWccFiunX
-	eEf43V3g==;
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:In-Reply-To:References;
+	bh=o8tBdG1d0kXx0ruU+UfdbqfEhRqEOVLLuj+mA5TRVzc=; b=ee/2Qm1bFDdrGoY6saTjofHXiR
+	9oJa9nYtYAoi9ZD0pOBj1RUb7l5KRTvi+cDsBX2qtZO3pjf4OxPBTz5kjL3Ul3+zgiYnDF2h3b0bE
+	n6GQez0Mpny9goGYhCa106gZ5I/AbJsT9doUnwB7poavY9ApjD0xey9Qa8bIj4WO9pZew1veS3wcQ
+	QHrwDJ27yEsCPnig4KfJwUpOHU5n0uAcfg6mDRn61NxaGJEGW3gMTQpNyLX82itu91X5CwxbLjGdW
+	VlDeKVW9BUf3lAAwipvt78mtWc+795Zaz94VEZbHmZf4MWMoPuAkCwCNV4jmGKWZEmrTfqCB9t/AX
+	i7FT+s5w==;
 Received: from [31.12.4.86] (helo=phil.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1vL7bb-0001Qb-8j; Mon, 17 Nov 2025 23:21:51 +0100
+	id 1vL7cM-0001RA-FB; Mon, 17 Nov 2025 23:22:38 +0100
 From: Heiko Stuebner <heiko@sntech.de>
 To: arm@kernel.org
 Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org
-Subject: Re: [GIT PULL] Rockchip defconfig64 changes for 6.18 #1
-Date: Mon, 17 Nov 2025 23:21:50 +0100
-Message-ID: <2738363.Lt9SDvczpP@phil>
-In-Reply-To: <2101096.usQuhbGJ8B@phil>
-References: <2101096.usQuhbGJ8B@phil>
+Subject: [GIT PULL] Rockchip dts32 changes for 6.19 #1
+Date: Mon, 17 Nov 2025 23:22:37 +0100
+Message-ID: <2311720.Mh6RI2rZIc@phil>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251117_142153_054044_7AB1DED1 
-X-CRM114-Status: GOOD (  12.64  )
+X-CRM114-CacheID: sfid-20251117_142240_196097_DFD68849 
+X-CRM114-Status: UNSURE (   8.11  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,34 +63,44 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-QW0gTW9udGFnLCAxNy4gTm92ZW1iZXIgMjAyNSwgMjM6MTk6MzAgTWl0dGVsZXVyb3DDpGlzY2hl
-IE5vcm1hbHplaXQgc2NocmllYiBIZWlrbyBTdHVlYm5lcjoKPiBUaGUgZm9sbG93aW5nIGNoYW5n
-ZXMgc2luY2UgY29tbWl0IDNhODY2MDg3ODgzOWZhYWRiNGYxYTZkZDcyYzMxNzljMWRmNTY3ODc6
-CgpUaGlzIGlzIG1lYW50IGZvciA2LjE5IC4uLiBJIG1lc3NlZCB1cCB0aGUgc3ViamVjdCB3aXRo
-IHRoZSB3cm9uZyByZWxlYXNlLgoKU29ycnkgYWJvdXQgdGhhdApIZWlrbwoKCj4gCj4gICBMaW51
-eCA2LjE4LXJjMSAoMjAyNS0xMC0xMiAxMzo0MjozNiAtMDcwMCkKPiAKPiBhcmUgYXZhaWxhYmxl
-IGluIHRoZSBHaXQgcmVwb3NpdG9yeSBhdDoKPiAKPiAgIGdpdDovL2dpdC5rZXJuZWwub3JnL3B1
-Yi9zY20vbGludXgva2VybmVsL2dpdC9tbWluZC9saW51eC1yb2NrY2hpcC5naXQgdGFncy92Ni4x
-OS1yb2NrY2hpcC1kZWZjb25maWc2NC0xCj4gCj4gZm9yIHlvdSB0byBmZXRjaCBjaGFuZ2VzIHVw
-IHRvIDYwNzA1YjAzOWY5NjAzNzhiYjJhMGE4NDRmOTM3ODY0NmJjMGM2Yzg6Cj4gCj4gICBhcm02
-NDogZGVmY29uZmlnOiBlbmFibGUgcm9ja2NoaXAgY2FtZXJhIGludGVyZmFjZSAoMjAyNS0xMS0x
-NiAwMDozNDoyNyArMDEwMCkKPiAKPiAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCj4gUm9ja2NoaXAgc3VwcG9ydCBmb3IgYmFz
-aWMgY2FtZXJhIGludGVyZmFjZSAoQ0lGKSBhbmQgU3lub3BzaXMgRFctRFAKPiBkcml2ZXIsIGFz
-IHdlbGwgYXMgdGhlIENFQyBleHRlbnNpb24gdG8gdGhlIERXLUhETUktUVAgZHJpdmVyLgo+IAo+
-IC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0KPiBBbmR5IFlhbiAoMSk6Cj4gICAgICAgYXJtNjQ6IGRlZmNvbmZpZzogRW5hYmxl
-IFJvY2tjaGlwIGV4dGVuc2lvbnMgZm9yIFN5bm9wc3lzIERXIERQCj4gCj4gQ3Jpc3RpYW4gQ2lv
-Y2FsdGVhICgxKToKPiAgICAgICBhcm02NDogZGVmY29uZmlnOiBFbmFibGUgRFcgSERNSSBRUCBD
-RUMgc3VwcG9ydAo+IAo+IE1pY2hhZWwgUmllc2NoICgxKToKPiAgICAgICBhcm02NDogZGVmY29u
-ZmlnOiBlbmFibGUgcm9ja2NoaXAgY2FtZXJhIGludGVyZmFjZQo+IAo+ICBhcmNoL2FybTY0L2Nv
-bmZpZ3MvZGVmY29uZmlnIHwgMyArKysKPiAgMSBmaWxlIGNoYW5nZWQsIDMgaW5zZXJ0aW9ucygr
-KQo+IAoKCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-CkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRl
-YWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgt
-cm9ja2NoaXAK
+The following changes since commit 3a8660878839faadb4f1a6dd72c3179c1df56787:
+
+  Linux 6.18-rc1 (2025-10-12 13:42:36 -0700)
+
+are available in the Git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v6.19-rockchip-dts32-1
+
+for you to fetch changes up to 10712ce694a67304a99dbba20f8cb146ca5f4fd6:
+
+  ARM: dts: rockchip: move edp assigned-clocks to edp node on rk3288 (2025-11-13 23:52:04 +0100)
+
+----------------------------------------------------------------
+A number of cleanups for older socs.
+
+----------------------------------------------------------------
+Johan Jonker (4):
+      ARM: dts: rockchip: Adapt tps65910 nodes on RK3066 boards
+      ARM: dts: rockchip: Remove mshc aliases from RK3288
+      ARM: dts: rockchip: Add spi_flash label to rk3288-veyron
+      ARM: dts: rockchip: move edp assigned-clocks to edp node on rk3288
+
+ arch/arm/boot/dts/rockchip/rk3066a-bqcurie2.dts  | 34 +++++++++++++----------
+ arch/arm/boot/dts/rockchip/rk3066a-marsboard.dts | 34 +++++++++++++----------
+ arch/arm/boot/dts/rockchip/rk3066a-rayeager.dts  | 35 ++++++++++++++----------
+ arch/arm/boot/dts/rockchip/rk3288-veyron.dtsi    |  2 +-
+ arch/arm/boot/dts/rockchip/rk3288.dtsi           |  9 ++----
+ 5 files changed, 62 insertions(+), 52 deletions(-)
+
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
