@@ -4,80 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12D53CEBF61
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Nov 2025 08:47:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C994CEACEF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Nov 2025 10:01:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zv/B14B+LvUFHK1bwTdbvDFxgGzlMCinbTadduATYh8=; b=YB9J4M9V2ZZ+iT
-	OIyVAn/dv+AbgCOjWSUrmdyolFSQOArm4NTobpYMmV04GEcGsaZT2tiRh4iqQm/ALpyiyg5vb38t1
-	bs6CIVp1HxrYbQOAs0LAaXKhKljhwg8Io3fX2huS7gxYNQON299ai4eHq5UZKjLoDGQA/57XpJNsp
-	vr5Llx6GTKP2MTh7EdwuqKgKhRlPYfDri+0ywnNTfujxMobz5DnoQsPUlQLnFXEG+ZcvnSFzf8An5
-	Uxa2tOQ2jnlfA4NYdpbOrinOrsqnhao7PGfkpzWQpzf2WafGjhtz0at/nKWf3QHxSvk0zIJx2LvMs
-	h5KwjVIBiws/49Q/j+dw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id
+	:Date:Subject:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=y/Q0uPR6zTHBD6OGbnhUHTHcqyYl9nMq/ZsfmNwqpN8=; b=cVVCng9hSU6Bqm
+	hUd8hMnEFZgpxJzhloHW2o5cOGTiPJVJdiztO5kjjFuMB8hefMvZw1mggUHCXLmgQV3Sj/JCWxWEH
+	kzmMcoLYmX69BPwriUljiQKxfENOtancUsUYR+YP7OQj42IjXwxwtS/GfrGom4o46zhG0dbZ9W8s+
+	NRTkEiwQqcXzUWlMVkxbG9p8yI2eWo4xEoHoYp5EWZKDPdZP/0IlgHxaAJL7U3yZ62yJbCP+7TgNb
+	qRej/7rcShAcrIKVEfHEkvQ+6xOQmoCSvfWkWt55VeDGJDMGE5exADw4j7PNelH02yGW0mRbNyZyi
+	ZepMK/aIyH5bN7D6oRtQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vKutc-0000000FiI7-0Nvu;
-	Mon, 17 Nov 2025 08:47:36 +0000
-Received: from mail-m21470.qiye.163.com ([117.135.214.70])
+	id 1vKw39-0000000Fpty-0Xj7;
+	Mon, 17 Nov 2025 10:01:31 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vKutZ-0000000FiH0-2WUJ;
-	Mon, 17 Nov 2025 08:47:35 +0000
-Received: from [172.16.12.51] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 29d4759ae;
-	Mon, 17 Nov 2025 16:47:26 +0800 (GMT+08:00)
-Message-ID: <140cd555-d512-4712-9d71-2d7f188a74fb@rock-chips.com>
-Date: Mon, 17 Nov 2025 16:47:25 +0800
+	id 1vKw36-0000000FpsT-2UuB;
+	Mon, 17 Nov 2025 10:01:29 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 3BEAB41A31;
+	Mon, 17 Nov 2025 10:01:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 0C4A3C19422;
+	Mon, 17 Nov 2025 10:01:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1763373687;
+	bh=U7vRmfMxxu2hnBi8KL4uNoUJ2y6rwaX3sY9jqWizYHI=;
+	h=From:Subject:Date:To:Cc:Reply-To:From;
+	b=EgUVulQSk6IrjR49E250Z5eogUcv3NROnQ7dvGB4iEL+L79B5G2nXvNcmwlEZohY6
+	 rwfdAbtDo6+QFJL5/xmd0rPC3ap3ebl3rhE7AY2+MpafC+6yUIjNjp3NJHLi5LxRFP
+	 dP15sdMdHuhCI4EAfm7mK+BY27xcYtVyGUrZR2unuEbyzq+gBP6Pp5qiKdJHVGwLyV
+	 12l+yNFJVV/Or6G09EnaMR1cC0nkGYcLbJpdtGrpFsnSTQftLatiZmDTV5IgAoyBj1
+	 GpSMIOwc7OoSgknlBQIYHtmT5Jg9V5N20Pw8VgfsYU1rVM7i5lV34Sc74+S54l0Ydl
+	 O/0HUUdDF58rA==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EED66CEBF61;
+	Mon, 17 Nov 2025 10:01:26 +0000 (UTC)
+From: Michael Riesch via B4 Relay <devnull+michael.riesch.collabora.com@kernel.org>
+Subject: [PATCH 0/3] media: rockchip: add driver for the rockchip mipi
+ csi-2 receiver
+Date: Mon, 17 Nov 2025 11:01:08 +0100
+Message-Id: <20251114-rockchip-mipi-receiver-v1-0-d13086e810dd@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v9 03/10] drm/bridge: Implement generic USB Type-C DP HPD
- bridge
-To: Heikki Krogerus <heikki.krogerus@linux.intel.com>,
- Chaoyi Chen <kernel@airkyi.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
- Peter Chen <hzpeterchen@gmail.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
- Kishon Vijay Abraham I <kishon@kernel.org>, Heiko Stuebner
- <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>,
- Andy Yan <andy.yan@rock-chips.com>,
- Yubing Zhang <yubing.zhang@rock-chips.com>,
- Frank Wang <frank.wang@rock-chips.com>,
- Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Amit Sunil Dhamne <amitsd@google.com>, Dragan Simic <dsimic@manjaro.org>,
- Johan Jonker <jbx6244@gmail.com>, Diederik de Haas <didi.debian@cknow.org>,
- Peter Robinson <pbrobinson@gmail.com>, linux-usb@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
-References: <20251111105040.94-1-kernel@airkyi.com>
- <20251111105040.94-4-kernel@airkyi.com> <aRrffpTP5KyAFVnx@kuha.fi.intel.com>
-Content-Language: en-US
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-In-Reply-To: <aRrffpTP5KyAFVnx@kuha.fi.intel.com>
-X-HM-Tid: 0a9a90ff5e3f03abkunm2a6b77ad8f27ca
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQkpPQ1ZCHR0ZSE4ZGEkaS0tWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpPSE
-	xVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=TxAbeCZFY7eqkjxpcivUMqwOH8QFtRL/B2e4tf+GteqsvSZy467ZXu17S6C/ZqVYLBEPPxecTuUo+uZ16WS5iY68xy9ealSCVZp0U6FKLSNqzRNh1vr58YTSeVBSum2ZFTjltiUSSyEJsWu6PKSkNbO0JitC3s7a642vFVxtj4U=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=/VyBu/i0fSLSIZpB/cn2Lo04jmSlwZbXvvGuWwLCrig=;
-	h=date:mime-version:subject:message-id:from;
+X-B4-Tracking: v=1; b=H4sIAGTyGmkC/x2NwQrCMBAFf6Xs2YUmRFB/RTwk66tZrGnY0CKU/
+ rvB4wwMs1ODKRrdhp0MmzZdSgd3GkhyLC+wPjuTH/3ZORfYFnlL1sofrcoGgW4wHlOcfAhylQu
+ oxyk2cLJYJPe8rPPcZTVM+v3f7o/j+AFfc3NQfQAAAA==
+To: Michael Riesch <michael.riesch@collabora.com>, 
+ Mehdi Djait <mehdi.djait@linux.intel.com>, 
+ Bryan O'Donoghue <bryan.odonoghue@linaro.org>, 
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+ Hans Verkuil <hverkuil@kernel.org>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>, 
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
+ Collabora Kernel Team <kernel@collabora.com>, 
+ Sakari Ailus <sakari.ailus@linux.intel.com>
+Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, Bryan O'Donoghue <bod@kernel.org>, 
+ Michael Riesch <michael.riesch@collabora.com>
+X-Mailer: b4 0.12.0
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1763373685; l=1863;
+ i=michael.riesch@collabora.com; s=20250410; h=from:subject:message-id;
+ bh=U7vRmfMxxu2hnBi8KL4uNoUJ2y6rwaX3sY9jqWizYHI=;
+ b=V2eiFY6j5uhsHH4Fimug2DOFegD7zyJEBXg52CjTfy6OV7afZRNtTi0htq66yNivE1qw1k2Cy
+ VQwX9b1QOYrCH9yKNBffKHvefIt+KQX5yb7MHPqcjq8VRZeUAQyHwHs
+X-Developer-Key: i=michael.riesch@collabora.com; a=ed25519;
+ pk=+MWX1fffLFZtTPG/I6XdYm/+OSvpRE8D9evQaWbiN04=
+X-Endpoint-Received: by B4 Relay for michael.riesch@collabora.com/20250410
+ with auth_id=371
+X-Original-From: Michael Riesch <michael.riesch@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251117_004733_914801_23BFAC92 
-X-CRM114-Status: GOOD (  24.30  )
+X-CRM114-CacheID: sfid-20251117_020128_683139_27DE1553 
+X-CRM114-Status: GOOD (  10.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,161 +95,57 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Reply-To: michael.riesch@collabora.com
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 11/17/2025 4:40 PM, Heikki Krogerus wrote:
+Habidere,
 
-> Tue, Nov 11, 2025 at 06:50:33PM +0800, Chaoyi Chen kirjoitti:
->> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
->>
->> The HPD function of Type-C DP is implemented through
->> drm_connector_oob_hotplug_event(). For embedded DP, it is required
->> that the DRM connector fwnode corresponds to the Type-C port fwnode.
->>
->> To describe the relationship between the DP controller and the Type-C
->> port device, we usually using drm_bridge to build a bridge chain.
->>
->> Now several USB-C controller drivers have already implemented the DP
->> HPD bridge function provided by aux-hpd-bridge.c, it will build a DP
->> HPD bridge on USB-C connector port device.
->>
->> But this requires the USB-C controller driver to manually register the
->> HPD bridge. If the driver does not implement this feature, the bridge
->> will not be create.
->>
->> So this patch implements a generic DP HPD bridge based on
->> aux-hpd-bridge.c. It will monitor Type-C bus events, and when a
->> Type-C port device containing the DP svid is registered, it will
->> create an HPD bridge for it without the need for the USB-C controller
->> driver to implement it.
->>
->> Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-> Normally there is no "help" section for hidden config options. I
-> guess it can not cause any harm? It is a bit confusing, though. But
-> FWIW:
+This series adds support for the Rockchip MIPI CSI-2 Receiver that is
+integrated into recent Rockchip SoCs, such as the RK3568 and the RK3588.
 
-The hidden options "DRM_AUX_BRIDGE" and "DRM_AUX_HPD_BRIDGE" also have a help section.
+These changes have been discussed and reviewed thoroughly (see [0] and
+predecessors). As has been discussed in [0], it would be beneficial to
+add support for the split mode (a feature of the Rockchip CSI-2 DPHY)
+before integrating the MIPI CSI-2 Receiver into the respective SoC
+device tree includes. However, we can readily add the DT binding and
+the driver as I am positive they will not need to be changed when this
+feature is introduced.
 
-I think this is just for comment purposes :)
+This constitutes a small step towards mainline video capture and camera
+support on the Rockchip RK3588.
 
+Looking forward to your comments!
 
->
-> Reviewed-by: Heikki Krogerus <heikki.krogerus@linux.intel.com>
->
->> ---
->>
->> Changes in v9:
->> - Remove the exposed DRM_AUX_HPD_BRIDGE option, and select
->> DRM_AUX_HPD_TYPEC_BRIDGE when it is available.
->> - Add more commit comment about problem background.
->>
->> Changes in v8:
->> - Merge generic DP HPD bridge into one module.
->>
->>   drivers/gpu/drm/bridge/Kconfig                | 10 ++++
->>   drivers/gpu/drm/bridge/Makefile               |  1 +
->>   .../gpu/drm/bridge/aux-hpd-typec-dp-bridge.c  | 50 +++++++++++++++++++
->>   3 files changed, 61 insertions(+)
->>   create mode 100644 drivers/gpu/drm/bridge/aux-hpd-typec-dp-bridge.c
->>
->> diff --git a/drivers/gpu/drm/bridge/Kconfig b/drivers/gpu/drm/bridge/Kconfig
->> index a250afd8d662..559487aa09a9 100644
->> --- a/drivers/gpu/drm/bridge/Kconfig
->> +++ b/drivers/gpu/drm/bridge/Kconfig
->> @@ -30,6 +30,16 @@ config DRM_AUX_HPD_BRIDGE
->>   	  Simple bridge that terminates the bridge chain and provides HPD
->>   	  support.
->>   
->> +if DRM_AUX_HPD_BRIDGE
->> +config DRM_AUX_HPD_TYPEC_BRIDGE
->> +	tristate
->> +	depends on TYPEC || !TYPEC
->> +	default TYPEC
->> +	help
->> +	  Simple bridge that terminates the bridge chain and provides HPD
->> +	  support. It build bridge on each USB-C connector device node.
->> +endif
->> +
->>   menu "Display Interface Bridges"
->>   	depends on DRM && DRM_BRIDGE
->>   
->> diff --git a/drivers/gpu/drm/bridge/Makefile b/drivers/gpu/drm/bridge/Makefile
->> index c7dc03182e59..a3a0393d2e72 100644
->> --- a/drivers/gpu/drm/bridge/Makefile
->> +++ b/drivers/gpu/drm/bridge/Makefile
->> @@ -1,6 +1,7 @@
->>   # SPDX-License-Identifier: GPL-2.0
->>   obj-$(CONFIG_DRM_AUX_BRIDGE) += aux-bridge.o
->>   obj-$(CONFIG_DRM_AUX_HPD_BRIDGE) += aux-hpd-bridge.o
->> +obj-$(CONFIG_DRM_AUX_HPD_TYPEC_BRIDGE) += aux-hpd-typec-dp-bridge.o
->>   obj-$(CONFIG_DRM_CHIPONE_ICN6211) += chipone-icn6211.o
->>   obj-$(CONFIG_DRM_CHRONTEL_CH7033) += chrontel-ch7033.o
->>   obj-$(CONFIG_DRM_CROS_EC_ANX7688) += cros-ec-anx7688.o
->> diff --git a/drivers/gpu/drm/bridge/aux-hpd-typec-dp-bridge.c b/drivers/gpu/drm/bridge/aux-hpd-typec-dp-bridge.c
->> new file mode 100644
->> index 000000000000..9cb6a0cb0f0a
->> --- /dev/null
->> +++ b/drivers/gpu/drm/bridge/aux-hpd-typec-dp-bridge.c
->> @@ -0,0 +1,50 @@
->> +// SPDX-License-Identifier: GPL-2.0+
->> +#include <linux/of.h>
->> +#include <linux/usb/typec_altmode.h>
->> +#include <linux/usb/typec_dp.h>
->> +
->> +#include <drm/bridge/aux-bridge.h>
->> +
->> +static int drm_typec_bus_event(struct notifier_block *nb,
->> +			       unsigned long action, void *data)
->> +{
->> +	struct typec_altmode *alt = (struct typec_altmode *)data;
->> +
->> +	if (action != TYPEC_ALTMODE_REGISTERED)
->> +		goto done;
->> +
->> +	if (is_typec_partner(&alt->dev) || alt->svid != USB_TYPEC_DP_SID)
->> +		goto done;
->> +
->> +	/*
->> +	 * alt->dev.parent->parent : USB-C controller device
->> +	 * alt->dev.parent         : USB-C connector device
->> +	 */
->> +	drm_dp_hpd_bridge_register(alt->dev.parent->parent,
->> +				   to_of_node(alt->dev.parent->fwnode));
->> +
->> +done:
->> +	return NOTIFY_OK;
->> +}
->> +
->> +static struct notifier_block drm_typec_event_nb = {
->> +	.notifier_call = drm_typec_bus_event,
->> +};
->> +
->> +static void drm_aux_hpd_typec_dp_bridge_module_exit(void)
->> +{
->> +	typec_altmode_unregister_notify(&drm_typec_event_nb);
->> +}
->> +
->> +static int __init drm_aux_hpd_typec_dp_bridge_module_init(void)
->> +{
->> +	typec_altmode_register_notify(&drm_typec_event_nb);
->> +
->> +	return 0;
->> +}
->> +
->> +module_init(drm_aux_hpd_typec_dp_bridge_module_init);
->> +module_exit(drm_aux_hpd_typec_dp_bridge_module_exit);
->> +
->> +MODULE_DESCRIPTION("DRM TYPEC DP HPD BRIDGE");
->> +MODULE_LICENSE("GPL");
->> -- 
->> 2.51.1
+Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
 
+[0] https://lore.kernel.org/r/20240220-rk3568-vicap-v14-0-b38b6da0fc80@collabora.com
+
+---
+Michael Riesch (3):
+      media: dt-bindings: add rockchip mipi csi-2 receiver
+      media: rockchip: add driver for the rockchip mipi csi-2 receiver
+      arm64: defconfig: enable rockchip mipi csi-2 receiver
+
+ .../bindings/media/rockchip,rk3568-mipi-csi.yaml   | 146 ++++
+ MAINTAINERS                                        |   7 +
+ arch/arm64/configs/defconfig                       |   1 +
+ drivers/media/platform/rockchip/Kconfig            |   1 +
+ drivers/media/platform/rockchip/Makefile           |   1 +
+ drivers/media/platform/rockchip/rkcsi/Kconfig      |  16 +
+ drivers/media/platform/rockchip/rkcsi/Makefile     |   3 +
+ drivers/media/platform/rockchip/rkcsi/rkcsi.c      | 742 +++++++++++++++++++++
+ 8 files changed, 917 insertions(+)
+---
+base-commit: 1f2353f5a1af995efbf7bea44341aa0d03460b28
+change-id: 20251114-rockchip-mipi-receiver-0baf244c9c8e
+
+Best regards,
 -- 
-Best,
-Chaoyi
+Michael Riesch <michael.riesch@collabora.com>
+
 
 
 _______________________________________________
