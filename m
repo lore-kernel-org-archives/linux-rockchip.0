@@ -4,110 +4,204 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24491CEACEF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Nov 2025 10:09:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCC9CCE8D6B
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Nov 2025 10:22:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Date:In-Reply-To:From:References:To:Subject:Cc:
-	MIME-Version:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WscsFnAMLuna1KJ937PToXPI82hvfdJZ9jP89oVW6X0=; b=plgnAWtMq5WcL4ExrDHo49AVAn
-	t2H9KrpCyTuV80fq0Kz1Zikr7Cb9KF/OqLavxHHwUcWTLYVM4idvMijsZgmI/pK15uAVUzK5W4OLX
-	jdch1lWngNdivfuxV8kzAwKTyoEk/0uGOn+KT1tWk/fQwUPQOnu9+0duoL7qYRFfVlIdOSn7D/CZU
-	uSURKE7DYGjo4ZHioySLLbzPcQCfGE77cbULF9UQdkJb7YxLpxj6ky+4tUi+lb5j212+XPjiKsD6N
-	xAvUk+6V6kzLBlD+g56PuovdIK++hq5W6Wlsu7z0cQBExmgkoDZz4b0Ko02y8Fl3CEQsR6LNasHLU
-	+6O5wqzg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:
+	References:CC:To:Subject:Date:Message-ID:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=9Fy3ohACC6CPMc+xWPfsrVIgwEdDrXxj/bN6XqOOq2o=; b=D+XPQUOtlX1yAGjcavzHMzdQKv
+	BWgzvuwAGlD6rnXHsN6f9W8ns3WrA6BqTNtGXk2Qx5FPQ0Iku7Qn7O0Hx7W3uBZz8NzXA//Io+ghv
+	ak3u+mQ11xVBn+QFEsbulXiMUjRy3qpioY0Q4rVxapl2/KEXuLbJ0hIVD9lpiba0lDVqH1vOuH0Qn
+	JeNrZo0a0Q+e/fW4NpIrjQjboHrf2DtRvNtnEdA5V0RoFEo0CcQNFpZnhnrJDgQ3zuNiVmW02hukD
+	RYY7bN2EoEgUjB0Kqjm1K3dyneDmhA240i3DgZyxNpCyCA92sHl3w43DZMvaGkSBlnlFNqbHXMhgn
+	uYg4Fj1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vKwAf-0000000FqoO-3hVn;
-	Mon, 17 Nov 2025 10:09:17 +0000
-Received: from heron.birch.relay.mailchannels.net ([23.83.209.82])
+	id 1vKwNZ-0000000FsYg-3qCR;
+	Mon, 17 Nov 2025 10:22:37 +0000
+Received: from mgamail.intel.com ([192.198.163.18])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vKwAc-0000000Fqnj-1kKB;
-	Mon, 17 Nov 2025 10:09:16 +0000
-X-Sender-Id: hostingeremail|x-authuser|michael.opdenacker@rootcommit.com
-Received: from relay.mailchannels.net (localhost [127.0.0.1])
-	by relay.mailchannels.net (Postfix) with ESMTP id B6C5B441F40;
-	Mon, 17 Nov 2025 10:09:09 +0000 (UTC)
-Received: from fr-int-smtpout23.hostinger.io (100-96-47-41.trex-nlb.outbound.svc.cluster.local [100.96.47.41])
-	(Authenticated sender: hostingeremail)
-	by relay.mailchannels.net (Postfix) with ESMTPA id 37E4F441EF0;
-	Mon, 17 Nov 2025 10:09:07 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; d=mailchannels.net; s=arc-2022; cv=none;
-	t=1763374149;
-	b=4Q8Zdl8m8HE1nYIPPGRsZ1MwHeK1diG2jRCY5YonYBmK0at1Z67bh6TROdNV5v0z2a9Mfl
-	S10OLD2AyEy/pmK74RJKhRSBTiXuXMqKD7MYrW7fVPuP8VVq5Tz1k09B1D+vL0nVwpujfK
-	IeIfNHV95kpfeK+HbAhICB6TFjMyByAOcOOM9wdqBJsoaXyyZ8YNFYM+/85CZz5UnbOt8I
-	jGMcJ/WLTbq48hSNV8lJdHaUYlzXaprT83/HCpb9NNJ3ApP/fgRihMhnSJ5thv3qFi5Xjx
-	3+aDv3Nld3LpvcGdNY5IVTJOrwD8G0boG92vNB58oWvXge5Zythyp43ObQSxLw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mailchannels.net;
-	s=arc-2022; t=1763374149;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:dkim-signature;
-	bh=or9TE/WXMxaRvO5nkgFjtjb9eAmHp3uod9MKvZ2pF7k=;
-	b=UyUI/bArhctByQh6XJn2uMD4nfAzdPMei0JVKFMa80TdQmjMKeDYGVS1f5KRXzgtHi/Kt4
-	3A0uEznp7aDRhP3jOfxjjKkv8Cql5WYcrerDn9mIRQvv56KRfZGc1DHCPICL/vD+wRYz8/
-	ihRsp3+sZ8iVGXF34WYhwI1vfbarnDgX+sXd5cu36EJno2orNIBvstHoeC+6ywzheRqBsD
-	ivBYhVpuJhwrrXL8x3LvtoWUZh2jbVdaA0QYgO6n/Tf6jpMhBUGFfoI51TSkAYhK4UOQpU
-	S7uv851VUXM84R+HlTxp2AsDL/DfYj5RUQZyFX++KZSTAcYHH3VOsuS4McaQGg==
-ARC-Authentication-Results: i=1;
-	rspamd-5664d6b969-wh62h;
-	auth=pass smtp.auth=hostingeremail
- smtp.mailfrom=michael.opdenacker@rootcommit.com
-X-Sender-Id: hostingeremail|x-authuser|michael.opdenacker@rootcommit.com
-X-MC-Relay: Neutral
-X-MailChannels-SenderId: hostingeremail|x-authuser|michael.opdenacker@rootcommit.com
-X-MailChannels-Auth-Id: hostingeremail
-X-Obese-Broad: 180a49535d64369e_1763374149442_2762142324
-X-MC-Loop-Signature: 1763374149442:2388696190
-X-MC-Ingress-Time: 1763374149442
-Received: from fr-int-smtpout23.hostinger.io (fr-int-smtpout23.hostinger.io
- [148.222.54.29])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384)
-	by 100.96.47.41 (trex/7.1.3);
-	Mon, 17 Nov 2025 10:09:09 +0000
-Received: from [IPV6:2001:861:4450:d360:3526:db55:5924:f497] (unknown [IPv6:2001:861:4450:d360:3526:db55:5924:f497])
-	(Authenticated sender: michael.opdenacker@rootcommit.com)
-	by smtp.hostinger.com (smtp.hostinger.com) with ESMTPSA id 4d93PF0FD2z1y28;
-	Mon, 17 Nov 2025 10:09:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=rootcommit.com;
-	s=hostingermail-a; t=1763374145;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=or9TE/WXMxaRvO5nkgFjtjb9eAmHp3uod9MKvZ2pF7k=;
-	b=cUcOo77AzSqf4+AGeihiptlalB/HsPaeRfOhR11grfx04xOMKOmvgdwiN0uVv8EqkaedJI
-	qil07kXamJh1Tk1OLBXP9nhWUNKJZ0lNzvmDVl162cn+Vv1FOfD/16LBQWqVTTE9DcLDXS
-	4r/JDvBBnAke36rlt0VKLMMyMiijbT81Iw6gjVTmgk5LqPBK/9U2om9x3oYzE+xCVWHj/9
-	czHEmJOS3Vdiu1KKUpkjmxwaXLMOSr5k9ConQ8jCgnx8rxFdwDoDXMv6jS4plaUALLhKcH
-	juGwEEEWIfKznk7WllE9qjeHWIHFghrqpjKRjd6niUNyaydFAxu2Yp/mlcEkGA==
-Message-ID: <ae5c3bab-69fa-42c0-8beb-e5fdf0c95251@rootcommit.com>
-MIME-Version: 1.0
+	id 1vKwNX-0000000FsYC-2L5r
+	for linux-rockchip@lists.infradead.org;
+	Mon, 17 Nov 2025 10:22:36 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1763374955; x=1794910955;
+  h=message-id:date:subject:to:cc:references:from:
+   in-reply-to:content-transfer-encoding:mime-version;
+  bh=78hYZt0OGky7v50EoIt40qBolnxTglx5nRi0bihuo4g=;
+  b=Ha63C5JlvCnxxxwU3hjBT7b/YnLn89aYPBs+5ExC32Q3XTNR2hruHQoL
+   vnkOiW1ocO2T9eDgjlCJdbjnXem+9Jtfy7BL98LtlcE6FQvRamDqiHbV/
+   85I6UxUqh914kvwGoLFX8/Lg8bDIYhtUEmsC5jKrcl5cexLbEKPmsDQEK
+   nj9H3ITmqHrXIbpntHSiX8fsyOG1OOsZY3xELTi4E34lZ30fXItoVX9An
+   KypbUQp24fmwsFnkbDUK/gqv5WCv/UYHD0pRI/Kyek5oWQMATyo/ztp6m
+   sIcJoBz1GgB0i6c+iYHoCSgbnH3u40KvcVHBv9TQc2pMis68w2jMPOW4o
+   w==;
+X-CSE-ConnectionGUID: eek6acZASPGTTFPz0kL/jA==
+X-CSE-MsgGUID: v34NqkwpQ1O3QXt2UKk9kQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11615"; a="64574466"
+X-IronPort-AV: E=Sophos;i="6.19,311,1754982000"; 
+   d="scan'208";a="64574466"
+Received: from orviesa002.jf.intel.com ([10.64.159.142])
+  by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 17 Nov 2025 02:22:32 -0800
+X-CSE-ConnectionGUID: YQIF8Q7vQauWHBq7kg2LFA==
+X-CSE-MsgGUID: TO6iLPZ5TqqBZYM81T7KdQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.19,311,1754982000"; 
+   d="scan'208";a="221054821"
+Received: from fmsmsx903.amr.corp.intel.com ([10.18.126.92])
+  by orviesa002.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 17 Nov 2025 02:22:32 -0800
+Received: from FMSMSX903.amr.corp.intel.com (10.18.126.92) by
+ fmsmsx903.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.27; Mon, 17 Nov 2025 02:22:31 -0800
+Received: from fmsedg903.ED.cps.intel.com (10.1.192.145) by
+ FMSMSX903.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.27 via Frontend Transport; Mon, 17 Nov 2025 02:22:31 -0800
+Received: from CO1PR03CU002.outbound.protection.outlook.com (52.101.46.50) by
+ edgegateway.intel.com (192.55.55.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.27; Mon, 17 Nov 2025 02:22:31 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=huMLzoGq5+6rVux834+SDyJLpPW3GPDyJ6KnJ7LVAWBae1UrEROVR8brOyhK341tFcUuirRwY6PYDdHX7jg1oIRzhPYqX0oWjKH+D0Zn0D6qKETLhZy03i4c4tIbz21vkQzMaYi7Yf0oaZ49+rj0WWoeh5L1Gp4gYwTZciw1SJp33PmQReE7szSkErqJ86SFAAMZbCuDC7fUmi9rtLWVJspxd0u8EdHy3xxCt71B7YlyGePB0FbrnDnlt8lVp1r3EE7JONYz1SdoY+KYg8pd0jKfOyUgDtkYJH2XWYXTCygaPuJc2+6FEG3ontMmSZwsUYobIjbw40U9FKt6QK++aA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=aVPmeW73Mw/hl9msKz3xlMB1KzJ24IndgNUD6e5F598=;
+ b=cHpJR7qTaF4i8ODzYJ9K+Es7YR+UFMqgQLtITlwMJTKh0zcSkVFcBkpyYMmlJJYm4CSsf74ywUJESQGwlW9h2NnDrZc/EDnAbRa8Y5c+BtfTUtp2ZfMsjDnbv/tyzzRlXBQjqF2lJdcg/WpqtalYAwllVnsboS45M0bFsyZhN8ibl094i/S2fSOqocOWeakluBoEftP8U6Z5GRMdSl2z/mrQ5CdARz0W+md7iOHweiVQzOBLT96JbL34OwrQ0UpoKzrFB4JWlpEfBQI03PD3+LHv0i6pytbHT3LIs6+qCYMPczGrMsc+SfnTykviNtZFh1JWzgvzI94z2ojvnp9jkw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Received: from DS0PR11MB7215.namprd11.prod.outlook.com (2603:10b6:8:13a::13)
+ by PH3PPF55C5E51F2.namprd11.prod.outlook.com (2603:10b6:518:1::d20) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9320.19; Mon, 17 Nov
+ 2025 10:22:29 +0000
+Received: from DS0PR11MB7215.namprd11.prod.outlook.com
+ ([fe80::9201:63e9:3175:5392]) by DS0PR11MB7215.namprd11.prod.outlook.com
+ ([fe80::9201:63e9:3175:5392%5]) with mapi id 15.20.9320.021; Mon, 17 Nov 2025
+ 10:22:29 +0000
+Message-ID: <89415639-96a6-4d85-bdee-f7364e4d3354@intel.com>
+Date: Mon, 17 Nov 2025 12:22:23 +0200
 User-Agent: Mozilla Thunderbird
-Cc: michael.opdenacker@rootcommit.com, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, heiko@sntech.de, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 1/2] dt-bindings: arm: rockchip: Add Asus Tinker Board
- 3 and 3S
-To: Dragan Simic <dsimic@manjaro.org>
-References: <e4cd11d0-463c-e707-5110-6b92899b1ba3@manjaro.org>
-Content-Language: en-US, fr
-From: Michael Opdenacker <michael.opdenacker@rootcommit.com>
-Organization: Root Commit
-In-Reply-To: <e4cd11d0-463c-e707-5110-6b92899b1ba3@manjaro.org>
-Date: Mon, 17 Nov 2025 10:09:04 +0000 (UTC)
-X-CM-Analysis: v=2.4 cv=GbNFnhXL c=1 sm=1 tr=0 ts=691af441 a=D95WIxbnx4x5pebWhq/9KQ==:617 a=xqWC_Br6kY4A:10 a=IkcTkHD0fZMA:10 a=-Yt9tNsTAAAA:8 a=d70CFdQeAAAA:8 a=jC1VOAsHbhRqxSFWG6sA:9 a=QEXdDO2ut3YA:10 a=qPQde0g9OtMA:10 a=HTceBwxjnJgA:10 a=NcxpMcIZDGm-g932nG_k:22
-X-CM-Envelope: MS4xfGekBSnjOTcA9Vl9+rkSdQxhMfGCp4xR49C4DujOnhVa0EAN5xIj9Ao5FNEPnLrxMzfOJ4tkZuHRGqjcU74Xi4inVWYGKuH9kxoxFHyNq77v4xhNSae9 R5VEU7TXS0enfZr+2xluPL2/q7VfFD9fIszRR39oNpZXkeZDVDeCH8Ai6LM1giO+F8vSQ2w37/AaAOZ8jC6D2vVAUVSothQwaSSb3XUuCokuuevLayg3Md7a KvOSOqrdDDGXwVjN+lHuFflsqD6m2VQS1Flj/xxSjmexzFDBxdlvKp/2EgYzxIVEKlbQJ/Y/VoO4B6xC1ex5mP/lki5T1c93KHCUp4P7HhWj5MGrWtn5rUMH iH1FSnkI1jYYnmb6hCjAATN7b4cypcorKmDMPzETTIHkn/NPQI56sPLekVDClQd1l42lsx47El5wYmFYhTn8sNqfPSAqwzcG6SLt6zdzycQ27s+osBRoizG2 /gPr04yDlU1GszD+omCgbMLgXs0kiSvWsxEQGRLlpYfmjAn04wantR0FmoHFpdRto/E+fsva5+cnTEWIA+Duhk9kB6byntYIF/bkY7I3W81AVCSbPgRP+1Ji 7uk+cH2ABJjBSts0xfeSLyssH9MN1SX5uGUmpwQ6WDl6rUx/LijKYG9JQYMhxDZTqxg=
-X-AuthUser: michael.opdenacker@rootcommit.com
+Subject: Re: [PATCH 2/2] mmc: sdhci-of-dwcmshc: reduce CIT for better
+ performance
+To: Ulf Hansson <ulf.hansson@linaro.org>, Shawn Lin <shawn.lin@rock-chips.com>
+CC: <linux-rockchip@lists.infradead.org>, <linux-mmc@vger.kernel.org>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>, Asutosh Das
+	<quic_asutoshd@quicinc.com>, Ritesh Harjani <ritesh.list@gmail.com>
+References: <1762933460-204066-1-git-send-email-shawn.lin@rock-chips.com>
+ <1762933460-204066-2-git-send-email-shawn.lin@rock-chips.com>
+ <CAPDyKFqAwP=SDrQ_umkYk0qA50rVt=WJ5giDt8mt+RyBSCQDpQ@mail.gmail.com>
+Content-Language: en-US
+From: Adrian Hunter <adrian.hunter@intel.com>
+Organization: Intel Finland Oy, Registered Address: c/o Alberga Business Park,
+ 6 krs, Bertel Jungin Aukio 5, 02600 Espoo, Business Identity Code: 0357606 -
+ 4, Domiciled in Helsinki
+In-Reply-To: <CAPDyKFqAwP=SDrQ_umkYk0qA50rVt=WJ5giDt8mt+RyBSCQDpQ@mail.gmail.com>
+X-ClientProxiedBy: DU7P250CA0022.EURP250.PROD.OUTLOOK.COM
+ (2603:10a6:10:54f::6) To DS0PR11MB7215.namprd11.prod.outlook.com
+ (2603:10b6:8:13a::13)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DS0PR11MB7215:EE_|PH3PPF55C5E51F2:EE_
+X-MS-Office365-Filtering-Correlation-Id: fcb95507-7a81-492e-2772-08de25c335d4
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|366016|376014;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?UUZPNVJJZHc4MUhpdVRQUW5Td1ZYWllObTlzRW5FUmU3NHFTK2daMVl1eFFh?=
+ =?utf-8?B?bW0wbmozWXZnK3QwMWtFT1oxQ3poOWd4UGlPRG85YjlQREpieDJ2RlFXYmVp?=
+ =?utf-8?B?K3p1Nmtrbk40eXBUNUtHSG8reXlLdFowZms4aWFoaFJud2hTK29VUEEvcTUz?=
+ =?utf-8?B?MUdCaFhlbWtsZUFUU2pLSVNjUlJFTkFMMHBSdTJyMXFZbDNnNEJaWjdjdDZG?=
+ =?utf-8?B?NmpIYnc4S2VQZm9vT1dNckFjU2xPQm5sQ1pxOEZHR3Bxck1TQTlBTFVUZVlk?=
+ =?utf-8?B?ZVorczlOelZlOGZmSTRiTGlRTlBaN0c1OU5FWlFNNUV2VVVJOXIzb0NveEJK?=
+ =?utf-8?B?dUFleGR0dXlTV1hwTHpFVVo1VWtoWmVzclFuUWVYazA0NGZLMDFSdTkxNVRu?=
+ =?utf-8?B?TEhNYm9FMHJQR01Cd3BBZXdFbVNJTVdsRktuZEM0VVhCaGY1aXVvSy9MaXYr?=
+ =?utf-8?B?MVN0Z0VhZFV0ZkoxSXJ1Y2ZoMDBXdVA2WW5iTm5yVng1Y01mOXYzcVFraHFV?=
+ =?utf-8?B?aUk5R3hQWnNiNG5veEdlazhYSmRtaU40MGVVemsrbEFQeGNOQWNsbFplVFpo?=
+ =?utf-8?B?WkIrdTlrUXNCcFhKYXJqRTJ2Z3JGNTUweEFGekNTZEdJVE9KSko4VWgrVkZC?=
+ =?utf-8?B?YlUxVTJYV1UyL25UWGRmdHJtalJITDlnYVZyUm5nNnJLczExMUg2bW93Z05v?=
+ =?utf-8?B?RjA2OW1MemlhUm1YejhkdFVBdUxJNDFST0NvQVdUNHBubTR4eWI1M3UybUZ5?=
+ =?utf-8?B?S1daZHNnOXhXMjArUHU1Njl0WTUyaFpibWRMZ0ZsVllIUTNXNHlZVlhzR0JV?=
+ =?utf-8?B?WFp6cTBaSk1UUTk2Ujl5a1dsRGx4SytzQzAwL0JDOTl5dG9Ibk5YNFhka2Fn?=
+ =?utf-8?B?QlgyeWZScXRGb2xyWDlCQkFPNWdieWFiS3U0dGNiVEVFVy9FUEJXdldmTnRR?=
+ =?utf-8?B?WFZNVWRCdW9TWVpYdUVwSno0THhpK2hQS1JFVXhQdGNZaU80YVR6Z0hpWTQ5?=
+ =?utf-8?B?Z0xCWjFUUmNCQlNIcTc4Yk5QKytSUDE0Vm1aMGtJNnVneTUvVUVMRkVUVis5?=
+ =?utf-8?B?UVBJbHlBdGIzUC9zZzdMQjhCTG9HUUxEam05Q01ZbkpsSUYwQzBBRmlUL2xt?=
+ =?utf-8?B?Rm9Na1Y3QjgybmlOd1ZGYTlRNk9tRVR3YWI4UDM4RXZNWG9ta3JVbzdZUUdK?=
+ =?utf-8?B?cmxqZzJ4SmZCN2NUb2dBa0ViTkxteWU0WmNnVWM3NjJQZEV5Z2cweFFZdnY1?=
+ =?utf-8?B?MXV4ejg0VGpIWHdtS1VkN3NuTkNIM3JLdzI1MWVEMURSM1dPcmdFMGVVYTlj?=
+ =?utf-8?B?Rjl3MmVDSkpBSFk4WElveU1ha0ZnS3h0QnY1c3lXa1NiOHV0UjBweTdPNFBr?=
+ =?utf-8?B?MVZUR0N0WG5uQTNHS0U1Z3NpS2Jwa1d5K2szc3FkQWpWZDdpcC9TdktnZkl2?=
+ =?utf-8?B?WHRYeXp2cHNRUUJaY01mRmdjRCtDN0sycHhudHk0UmYzbHd4V3EyMjRwSWpD?=
+ =?utf-8?B?OGxRNU9oNXJyUDlKSG5Ja2xKdFpDT2tJUmNpNHhTWXJ5d2ZGcjVlTjhuaHZy?=
+ =?utf-8?B?U3Y4a3M2b3JYUm5aVHQ0TVZzNllwV2ZVN21tZnMrSmpWUWwvaWZWTk5lcXpr?=
+ =?utf-8?B?YUZKVERtMkt6QVN1SWE0eVU3UlBSZzBiSnZCZHdoZEJCTTY1WDVPQVpnanNq?=
+ =?utf-8?B?aHE5SmEvQUh0WmJyVXQ4Z0xHeDFCMjF3OFRnMUc3QW1sUEJqNS9QK0c3VDU1?=
+ =?utf-8?B?Mkl0cjhDU3FEU1ZORkMzdUl6a0tmc1FVZnBWQ0ZmUVRsMFIyU3kwaFN0ZC9Q?=
+ =?utf-8?B?QU9GRjdQRmkrVHpaeW45c2p0aWRJNWx1a0JRYjhwU1VRSk1ObW9lVmJycTBr?=
+ =?utf-8?B?cFpWQzNlV0RiR0hUbFJqZ0hFRERBUnQva0FCUVp0U3lXWjZJK2ovRzcwQTZL?=
+ =?utf-8?Q?fmG2dgcjijcgiqcC2OoZp0m2yuLkSs04?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DS0PR11MB7215.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(366016)(376014);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?WGE0MDJGSWxkdmRybFZnaU91eklzeUcvaEo2RFZBWFZUS0czR3EzMEprdHpP?=
+ =?utf-8?B?VUlHSWlock5kTUlrWlZZVmVBNFR2YkRucGN0bEdOS240K252WERoYWg3d1Vm?=
+ =?utf-8?B?ZVRGQWw1SU5jbTJRVmRoU21ReFdNYVZlY1B0MWFzakx5Qnd2a1Z3eXpRSmNL?=
+ =?utf-8?B?QitzUERUUXZiZjNNK1JKM2w5REtpKzBCSXJ5R01IdTFQMUo3T09aWnRTT1Jp?=
+ =?utf-8?B?MUdXKzIrSDlzRGxyYmthSnVhRXNIZmhhdUNrd2Y5T1BQa2JWNTJXZ2sydUcz?=
+ =?utf-8?B?emwrTFlSQ3ZCU01YclNvcXp2NHNkODVxWm4ycEF3ZVQ0WFNXSzNTMHp4eHBK?=
+ =?utf-8?B?KzRROHIrWVVDQ0RGa3N4VXFEUUZJZGFtcWtYbzBBQml3dE5BNHhYQzBEa081?=
+ =?utf-8?B?SW9IbU1vZlYzelN5dVAwZGFOQzVBU1AySm1yMER2YitZanJNU0UzZ3Q3Ny9C?=
+ =?utf-8?B?b2l1clpESmM5VWFBNjJzWHNBclRaTlFFZHFqK1poUmhjT3hTR0EybVJIWUlF?=
+ =?utf-8?B?ajFBNFpGOUlqR1gvcEsvN1RGL09OdzRNZmljVVU4ZU1jOGtPZ1V1TGVLM0NC?=
+ =?utf-8?B?Tmd2UmZKZUZMUW45SFY5RXZIY0dXeUtUakJTUDFWSXlSakpoWUttanhsNUxz?=
+ =?utf-8?B?U3p0YjBGa2dESFNxYXdQVHdOcWpzT3VSYmtMYVA5cTJCcG93VWhxZjN3amVH?=
+ =?utf-8?B?c2VNdGIvNHk0QVp0QlVqb3ZVcEczVVVudEpXTU5LNzkvVWhVUnp4dXNoT3Zs?=
+ =?utf-8?B?NkN5YXNDNjlMZ2tXektrNW84RVArbnpsbUgzMEFnZklxbEtvVGU5ck43WHhw?=
+ =?utf-8?B?WWJuTTVackJBZFIwWjkxWC9jbDVzT0tPVGtDNENHYWZwdG5tbUVMc2YwRlQz?=
+ =?utf-8?B?eUYxUzBDdVdVc21QemZTMmZTeWlMUFl2MXhORVoxamZIYTRXZytaWElGbnRh?=
+ =?utf-8?B?MWRocnBlUkc1MU5TbENBZXhiZkltdkxqM2s3SWVHQlRxbzg1Z0hsdVFxSmlq?=
+ =?utf-8?B?NVEyQmxKVk1YRE9PU2hVSWplYUxEUW1GV21mS3BpRnNOMEx4TGcyd0NCbjE1?=
+ =?utf-8?B?L256QWtXRlhTTGE1amdYOHZ2MHBqWlRYMGJiYWNQZWo3a2ZOSXJtdGlkaFkw?=
+ =?utf-8?B?dTJyRDFRckJqT3dZclFYaDRHU3FQWWNOaTFPZTQzVmZjb2ZxRlVwV2pCZU1w?=
+ =?utf-8?B?VmNtZkthUlN0ZHJrdWUwT29wbW94ZzlvWWV3VU1EUmMwZ0NsYlB3Sk5DemZD?=
+ =?utf-8?B?OERVOXQ1UU91d3dQSjRQZUgzZnBFbGZsV3lQUWU4elRXVzhsczEraVo5Vkg5?=
+ =?utf-8?B?cTFHYTVHVXVFZ2ZWZ0IxclpzMTc2b01Rb1U1akxiRVhPMlNjYWN2NE1EZk1w?=
+ =?utf-8?B?Y0NaUE5lMVJmenI5Ujl2M3h0Y0tGWFc4NUdndlRPMmdxRVM0Wk5iSUkrSnlG?=
+ =?utf-8?B?TkgxZWw1VXFNZEpqMzI3UjBuSFA4cU5JU2NzWk5lb0dOeW4rdUx1dlVrSVZy?=
+ =?utf-8?B?dEh1TTBnZkxvdlJ0bDVhdmJraXhtWkxOTHVEQ3pEdXlCYmoyMGtxV0Q4K2h1?=
+ =?utf-8?B?Uk9iOGwweFphL3EzZTl4UE8rRjhHMk9VNm95K0hwWk1HUlBDRHdnN1JBcHR1?=
+ =?utf-8?B?eVp2dk1vdzU4ODBIdVJobmpweHJmcUgwYWdOSWNKbzU1eW5kQjhlQ3NZOXBJ?=
+ =?utf-8?B?SDBpcy9QRHJrc0ZrWUFkbC9IdFpwNEE2R2pwNWUzYTIvR1VieThjcTRTOFY3?=
+ =?utf-8?B?cmZxTktKOUxYQjJrVXliRW93SnZ4TWlmQ1pZbGljaFZWWDBxSXJUTE9Cell3?=
+ =?utf-8?B?ZUxHeGl1cElXUVQwZEt0QzB5ZXluOHhDYThubTRWa0VzUDhXMmh6VUJtZEZ2?=
+ =?utf-8?B?L2lwNWJYd0RkenRzYkJmV2VFbTRZcE10UDJ0Sk10R0JrRGQyWXFRRjc1WkhD?=
+ =?utf-8?B?aTExTVhCeWgyZkRGZ1llZVBxVVdka1IvcHg2dDNZU3c1dlVUT1Vzbnp1Q1Vm?=
+ =?utf-8?B?b2J6Y043ZGNBS05NdnBSRklRZWhxUGpYQWp5bFZaZ2VxbnY2ZWpLQzRBQTl2?=
+ =?utf-8?B?RmlMZjk1OUJqOTJiQXJQS2dIVWRERjNEQnc0akhIbVR6VHRWdXZ6MWxkZW5w?=
+ =?utf-8?B?alUyVFIyNnVjVy9sM0ZUZU9iZldBTUdBTTRVeFVhcUhJbUhsV2pKY1E1SGRS?=
+ =?utf-8?B?dkE9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: fcb95507-7a81-492e-2772-08de25c335d4
+X-MS-Exchange-CrossTenant-AuthSource: DS0PR11MB7215.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Nov 2025 10:22:29.0512
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: EUPfL5ixAZZzC8AEOv80EpIZXLmAhPL0HU4ZH8nlYnGIyZemPc5EhhxF8LEoLVgd9plupvL+C7ZHbGRL3B/O6w==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH3PPF55C5E51F2
+X-OriginatorOrg: intel.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251117_020914_680093_2820C3CD 
-X-CRM114-Status: GOOD (  16.27  )
+X-CRM114-CacheID: sfid-20251117_022235_623746_D448E38E 
+X-CRM114-Status: GOOD (  15.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,90 +213,78 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Dragan
+On 12/11/2025 14:03, Ulf Hansson wrote:
+> + cqhci maintainers (Adrian, Asutosh, Ritesh)
+> 
+> On Wed, 12 Nov 2025 at 08:44, Shawn Lin <shawn.lin@rock-chips.com> wrote:
+>>
+>> CQHCI_SSC1.CIT indicates to the CQE the polling period to use for
+>> periodic SEND_QUEUE_STATUS (CMD13) polling. Some eMMCs have only one
+>> hardware queue, and CMD13 can only query one slot at a time for data
+>> transmission, which cannot be processed in parallel. Modifying the
+>> CMD13 query interval can increase the query frequency and improve
+>> random write performance.
+>>
+>> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> 
+> No strong opinion on this, but I looped in the cqhci maintainers to
+> allow them to chime in.
 
-Oops, indeed I overlooked this message!
+cqhci-core leaves CQHCI_SSC1 configuration to the default values
+or for drivers to set for themselves.  When it comes to timing
+values, eMMC has not really been one-size-fits-all, so that seems
+appropriate.
 
-On 11/15/25 01:52, Dragan Simic wrote:
-> Hello Michael,
->
-> Thanks for the v2!  Please, see some remarks below.
->
-> On Friday, November 14, 2025 16:46 CET, michael.opdenacker@rootcommit.com wrote:
->> From: Michael Opdenacker <michael.opdenacker@rootcommit.com>
-> I'm sorry for not mentioning it in my earlier responses, but this
-> line is redundant, because it duplicates the From value found in
-> the actual email message.
->
->> Document the compatible strings for Asus Tinker Board 3 [1] and 3S [2],
->> which are SBCs based on the Rockchip 3566 SoC.
->>
->> The "3S" version ("S" for "storage") just adds a 16 GB eMMC
->> and a "mask ROM" DIP switch to the "3" version.
->>
->> [1] https://tinker-board.asus.com/series/tinker-board-3.html
->> [2] https://tinker-board.asus.com/series/tinker-board-3s.html
->>
->> Signed-off-by: Michael Opdenacker <michael.opdenacker@rootcommit.com>
+So for both patches:
+
+Acked-by: Adrian Hunter <adrian.hunter@intel.com>
+
+> 
+> Kind regards
+> Uffe
+> 
 >> ---
->>   Documentation/devicetree/bindings/arm/rockchip.yaml | 11 +++++++++++
->>   1 file changed, 11 insertions(+)
 >>
->> diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
->> index 6aceaa8acbb2..cd249325a4d9 100644
->> --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
->> +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
->> @@ -86,6 +86,17 @@ properties:
->>             - const: asus,rk3288-tinker-s
->>             - const: rockchip,rk3288
->>   
->> +      - description: Asus Tinker Board 3
->> +        items:
->> +          - const: asus,rk3566-tinker-board-3
->> +          - const: rockchip,rk3566
+>>  drivers/mmc/host/cqhci.h            | 1 +
+>>  drivers/mmc/host/sdhci-of-dwcmshc.c | 5 +++++
+>>  2 files changed, 6 insertions(+)
+>>
+>> diff --git a/drivers/mmc/host/cqhci.h b/drivers/mmc/host/cqhci.h
+>> index ce189a1..3668856 100644
+>> --- a/drivers/mmc/host/cqhci.h
+>> +++ b/drivers/mmc/host/cqhci.h
+>> @@ -93,6 +93,7 @@
+>>  /* send status config 1 */
+>>  #define CQHCI_SSC1                     0x40
+>>  #define CQHCI_SSC1_CBC_MASK            GENMASK(19, 16)
+>> +#define CQHCI_SSC1_CIT_MASK            GENMASK(15, 0)
+>>
+>>  /* send status config 2 */
+>>  #define CQHCI_SSC2                     0x44
+>> diff --git a/drivers/mmc/host/sdhci-of-dwcmshc.c b/drivers/mmc/host/sdhci-of-dwcmshc.c
+>> index e276a4e..cad5165 100644
+>> --- a/drivers/mmc/host/sdhci-of-dwcmshc.c
+>> +++ b/drivers/mmc/host/sdhci-of-dwcmshc.c
+>> @@ -631,6 +631,11 @@ static void rk35xx_sdhci_cqe_pre_enable(struct mmc_host *mmc)
+>>         struct dwcmshc_priv *dwc_priv = sdhci_pltfm_priv(pltfm_host);
+>>         u32 reg;
+>>
+>> +       /* Set Send Status Command Idle Timer to 10.66us (256 * 1 / 24) */
+>> +       reg = sdhci_readl(host, dwc_priv->vendor_specific_area2 + CQHCI_SSC1);
+>> +       reg = (reg & ~CQHCI_SSC1_CIT_MASK) | 0x0100;
+>> +       sdhci_writel(host, reg, dwc_priv->vendor_specific_area2 + CQHCI_SSC1);
 >> +
->> +      - description: Asus Tinker Board 3S
->> +        items:
->> +          - const: asus,rk3566-tinker-board-3s
->> +          - const: asus,rk3566-tinker-board-3
->> +          - const: rockchip,rk3566
->> +
->>         - description: Beelink A1
->>           items:
->>             - const: azw,beelink-a1
-> I'm sorry again for not mentioning it in my earlier responses,
-> but shouldn't this addition be specified like below:
->
->       - description: Asus Tinker Board 3/3S
->         items:
->           - enum:
-> 	   - asus,rk3566-tinker-board-3
->             - asus,rk3566-tinker-board-3s
->           - const: rockchip,rk3566
->
-> ... because the introduced .dts files define the actual board DTs,
-> by descending from the common .dtsi file, while they're compatible
-> in the sense of the 3S board variant extending the 3 variant.
-
-Indeed, that's the way it should be, looking at the rest of the 
-rockchip.yaml file.
-
-I was too hypnotized by the section for the original Tinkerboard, which 
-doesn't follow this either (I'll send a separate patch).
-Thanks a lot!
-Cheers
-Michael.
-
--- 
-Michael Opdenacker
-Root Commit
-Yocto Project and OpenEmbedded Training course - Learn by doing:
-https://rootcommit.com/training/yocto/
+>>         reg = sdhci_readl(host, dwc_priv->vendor_specific_area2 + CQHCI_CFG);
+>>         reg |= CQHCI_ENABLE;
+>>         sdhci_writel(host, reg, dwc_priv->vendor_specific_area2 + CQHCI_CFG);
+>> --
+>> 2.7.4
+>>
 
 
 _______________________________________________
