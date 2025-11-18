@@ -4,72 +4,141 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14810CEE34D
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Nov 2025 20:31:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D7C3CEE351
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Nov 2025 20:36:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=1lQUPLvoYPqRteQwel0kSS2VpCV0K5SQwTjMgLUlybo=; b=MBSDTgdgNu0kwq
-	/LPRh9gl+qh3dkgR+g5rAvBzTsyspv8JcP7LKGjERw4Ia6KJqf628OKDnDl6NBKadCwqReNdb/cyC
-	gP9lrX2hTKfaQo7Debc78UaSoxLrWBFfWsLJyeq/tIJk88fKfOqVAOlbOZlX2ajVpgBgIiAALlpoj
-	0qpjIE6CHPYGUt5yod484vG2rVkM+YbpPA8sZ7tnTugEt/1fEd1pffsMstPmB7yapkKCSYEY6XR7d
-	EzU9zulsrezja+ckCYF339gIRzCI3bL0vRueLdtRFaCozU7/PMZga7yEHe5Z+9920RUoa3gbEEYQZ
-	Wa7z2oopJPGPEj2Q0qow==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=uKlthGPq+COiSa2lMHxFitAd31VK2o69C+JJZCr5W0o=; b=ub1nXb+6pZmAkn
+	USTVYtj2/miLpBEwQkotjUaSOIFzNN1Pu3/l+x9bITir5T1afePPLz+oV9jDgAoY61msE9CUkncpA
+	7dm/ut+x3mYuXZ6OOco+FP/lXL2UfNdpZRh5A4rZUQ74qfvszAQgnB9DW8FQ3w4C/zPewd3N4iGvW
+	NOs3fyxx24iZib4wSetHuzWwuG1M3gym1L2f9WAv5zh8DapmXlEVTfNxl/D1hOwq3rv4/Q89ZVl6e
+	dtbtj4JcXpXQicBvfE0ZSMcY+W4QTdngcgJBwtrXjbBCDFFEZnhUcjP4/XeXFkdV2YzF1mBaX+7zD
+	BtUgxPzXFYqM3w5IFDbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLSML-000000014vZ-0sYZ;
-	Tue, 18 Nov 2025 20:31:29 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vLSR2-000000015Jr-2UfA;
+	Tue, 18 Nov 2025 20:36:20 +0000
+Received: from mail-westcentralusazolkn19010023.outbound.protection.outlook.com ([52.103.7.23] helo=CY7PR03CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLSMH-000000014v1-2MMs;
-	Tue, 18 Nov 2025 20:31:25 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id B13816001A;
-	Tue, 18 Nov 2025 20:31:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D6310C116D0;
-	Tue, 18 Nov 2025 20:31:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1763497884;
-	bh=oqg+3OVFmaSRCjxZe5IOBVHsbxPuGIcActP9xjBwLek=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=JkK4SMgqrUOQr1yngEw3ygkBt7hsjFO2BfPlB7viBXZFEu/z2r1YAME19zoF5U3FI
-	 GtAk0VuOejJ+h09FjrXlv63p6udIMP8zR1Z7Eu2wpwxQ6wcKY4qd+JfPxOua73pDIU
-	 WoXYcnZ5Qur2PlfRQQShINDpOds3gQIsCJxR/LGPBHbAdBU+InGR0lwCgPT8HmwYVC
-	 KHrMJlZO1JvyKo9IyVXadOkLPcCrcVtSJ7fMLPW3jfbNKUa862NiHY5KGJd4QVWzcK
-	 7sWGYt9EVN/VdeTiCcDR+nRX8gT2+BndVhYP8IpEsUY06cM3WFOepTBXjCEbXgfHqO
-	 6BFXx/EywULbw==
-Date: Tue, 18 Nov 2025 14:31:21 -0600
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Niklas Cassel <cassel@kernel.org>
-Cc: Shawn Lin <shawn.lin@rock-chips.com>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Rob Herring <robh@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
-	Kever Yang <kever.yang@rock-chips.com>,
-	Simon Xue <xxm@rock-chips.com>, Damien Le Moal <dlemoal@kernel.org>,
-	Dragan Simic <dsimic@manjaro.org>, FUKAUMI Naoki <naoki@radxa.com>,
-	Diederik de Haas <diederik@cknow-tech.com>,
-	Richard Zhu <hongxing.zhu@nxp.com>, Frank Li <Frank.li@nxp.com>,
-	Lucas Stach <l.stach@pengutronix.de>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>, Conor Dooley <conor@kernel.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Hans Zhang <hans.zhang@cixtech.com>, linux-tegra@vger.kernel.org,
-	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, kernel@pengutronix.de,
-	Bjorn Helgaas <bhelgaas@google.com>
-Subject: Re: [PATCH 2/4] PCI: tegra194: Remove unnecessary L1SS disable code
-Message-ID: <20251118203121.GA2590423@bhelgaas>
-MIME-Version: 1.0
+	id 1vLSR0-000000015JG-2a1b
+	for linux-rockchip@lists.infradead.org;
+	Tue, 18 Nov 2025 20:36:19 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=NlSODr3/H+Ex6i8xO4k6my1pa1nsHOKaSknOLGsrQvt1GjDmyMow8TGh2Brsq4S6bCHZ9uQm1Ke8gcCeh3GcMHMOw3AgEfyFTDi34HyfpMEhKpS/j31DJyZCdyfYs2ydyXT2ICsNrg+DCY41vnmPIJIoMmvCQBxgUhlCusnXXreL8PX8sl8menuvZ8wSUWkt6KIm9d9BEaKGhuFG+6uNCvg9+4VL5yPAVkodLAqD0x1Bb4N5ExvWWSG2KENgFNYLiTTAe3dLZ+wb7/YlKBxhtKXZXT6fCB+H3dlrjfKnJvyjyD+Le4c5x//m15xckKU3xCpge2m7WaPzguyx2wuowA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=FPhvKVZqqjxun5rjmL7Pqu5ZdsG+wtUSjUpmra2wNME=;
+ b=ISbiWP1bl5z9OJ6JNuaICgKKt6vkARTLSwH2N+ccG0NRSO3AE6t1xbHdg/i9GAWpH621hui+w2SeynFBUEbGlji/Pwxj1uAJmCoWxSVZaHLRQh0CztzQ/8FtaPixcgdQdIxXFliw7/7nQdLacNzLB9qzOLmWg+H/ipWgkVdjKdGQGTLqqDr9km0tp/yRZ9kAIcD6lFYnWo34l0tjFH/9sXEwCAl2jDqiHwJA/qnI5/89JfdkDxyBlEaNypR0OXe3JehbiCRNrzhlTlzn/uRQeul/5y/cahGjyUupOhVBbsHQp/I6w7hUBN30XkaXpX3jsLYLstv59i/xNOMGnYkzhw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=FPhvKVZqqjxun5rjmL7Pqu5ZdsG+wtUSjUpmra2wNME=;
+ b=SqikhBTuldyMB5Cys7hr7WgWHbvP10NynMaMOL4qZ6BL6B3Prvp2xl5oavD7neUWuoXcI4IPs8LjqpxmkHog7Wa5/FNhEhz/sw51oE0RroLM3RaNkueFfD89tpN7WLRkPItBBt6vXcQRhSyzSOn3T5dD8SICNii2w73v6E+F9Qn4k4dD2mBaUwHZj9Xa4ZEFPWGkGxlq8mtDlETljpIjIbwJQb4LEkzLpqpqbeHnl0aEl2uMeNgXlbE3sdw2XCcutiHcKqEzAJJHVxrR6YZhD0G5SUpkWf/iUIR+bABd5KoTH+dY5XH9Xiw9S+cmDMqRQ09+tG1fCFbTKYifFaghgw==
+Received: from SN6PR1901MB4654.namprd19.prod.outlook.com (2603:10b6:805:b::18)
+ by SN7PR19MB4816.namprd19.prod.outlook.com (2603:10b6:806:107::19) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9343.10; Tue, 18 Nov
+ 2025 20:36:13 +0000
+Received: from SN6PR1901MB4654.namprd19.prod.outlook.com
+ ([fe80::7ffe:9f3a:678b:150]) by SN6PR1901MB4654.namprd19.prod.outlook.com
+ ([fe80::7ffe:9f3a:678b:150%5]) with mapi id 15.20.9320.018; Tue, 18 Nov 2025
+ 20:36:13 +0000
+Date: Tue, 18 Nov 2025 14:36:09 -0600
+From: Chris Morgan <macromorgan@hotmail.com>
+To: Maxime Ripard <mripard@kernel.org>
+Cc: Chris Morgan <macroalpha82@gmail.com>,
+	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+	conor+dt@kernel.org, rfoss@kernel.org, tzimmermann@suse.de,
+	jonas@kwiboo.se, neil.armstrong@linaro.org, heiko@sntech.de,
+	sebastian.reichel@collabora.com, jernej.skrabec@gmail.com,
+	dri-devel@lists.freedesktop.org, andrzej.hajda@intel.com,
+	andy.yan@rock-chips.com, krzk+dt@kernel.org, robh@kernel.org,
+	Laurent.pinchart@ideasonboard.com
+Subject: Re: [PATCH v2 2/3] drm/bridge: dw-hdmi-qp: Add support for missing
+ HPD
+Message-ID: <SN6PR1901MB46548ED8D4BA1184E0EA7DC3A5D6A@SN6PR1901MB4654.namprd19.prod.outlook.com>
+References: <20251113192939.30031-1-macroalpha82@gmail.com>
+ <20251113192939.30031-3-macroalpha82@gmail.com>
+ <avdnpwnxs6cql7eyckdt37szpcf5ztgxlc7juwu6tqj5xxu56a@nrwljig2p67i>
 Content-Disposition: inline
-In-Reply-To: <aRzRsFKkVouJDRRs@ryzen>
+In-Reply-To: <avdnpwnxs6cql7eyckdt37szpcf5ztgxlc7juwu6tqj5xxu56a@nrwljig2p67i>
+X-ClientProxiedBy: DS7PR03CA0264.namprd03.prod.outlook.com
+ (2603:10b6:5:3b3::29) To SN6PR1901MB4654.namprd19.prod.outlook.com
+ (2603:10b6:805:b::18)
+X-Microsoft-Original-Message-ID: <aRzYuVmlvO2KgCgu@wintermute.localhost.fail>
+MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SN6PR1901MB4654:EE_|SN7PR19MB4816:EE_
+X-MS-Office365-Filtering-Correlation-Id: 336a7350-26d7-430e-4f7a-08de26e21d14
+X-MS-Exchange-SLBlob-MailProps: Z68gl6A5j29nppRiBL+t9IooWqUrCzYHddIiby2hEGvt12PJ/v/e/tMSxxItcW8+gHGyxfcC8F93APSq+SbA2ex+/fc9BDgn7uVRCjNEucSTvdbXBDzQemr9MFg6hHg0Za+3Nk5srnGkVhokXvXvx+9T2fRdzLXSTrVwHJtXS16vtOxOkGvn2ro67hVywQvjTez8/mK/Drb+cPnnFayokmU6a62HCzqLhc8fTk3+mnWA8xp2r9w6CQIEm5BXSpJg8JsFAJSlMpSD2gam++A2OE1bPew/YYnG79i3GsDeYH+/Oo4g7e+wM9Cp9hCiXYsxIvEkhXuRJcBJUU/cruXvBqnqxF23q+vWSKcpuUvZZHWii1a/7HTWTALL01xv3Qkd5xBPEPy7AIlkYsZ76f5rRdaOH1QjQ2AORS+EA83spCbIgca+pIPGOvCCC6hVE2SrO5ocjee1f38WhMPmkeldkoqbM098PEHoALy2jVD6RZmdBVH6uD0BhUN0MtY1NBGBpUl2vFbtHMKOCCdtdJAUpkWbb1Jki9qUcIzhvOKhQ39bz456yKO0hw7vQQlh4+MV6dmttFgTcHRLRQvQ3sp8sfthsButBv3RwUoDEFpxfEVLpw3K8hN/KXHtoeBezeMWF7JsZRnCyCU5T9ihkC8CCVgbSirZk2KcuP3yDp9a8Wo10bZIZfBWvIhPU1Md6vXAPVLt0eP6Gzg5q6yza3NuazuyvPdcjHb1vf7MXhRxriTw2vZazVMS1iU+CO7RACj2IWVfEDQzECRp6/nW8xvEtkwDOOhh2zko6VcSXodRe319BzH4Ot1BE9jVkv7zbhdJ
+X-Microsoft-Antispam: BCL:0;ARA:14566002|5072599009|6090799003|15080799012|23021999003|19110799012|461199028|51005399006|21061999006|8060799015|13031999003|3412199025|440099028|10035399007|40105399003;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?V8xMUuy9PllZcmtMTVNg6r+5KbH/k5hdAx9BRowSONcXrj8W6XvstigzoP/f?=
+ =?us-ascii?Q?fPg/yCtUwKecIebSXge7gFX8H96HI7PEEBUPwwnKNwxZp83lBls/Tc7oG7bd?=
+ =?us-ascii?Q?+VGTha9hHYpiqE1J+BX6J+VkLRmiyoHAUDZQI6Avrz31IGIsrvWXvckVFUS3?=
+ =?us-ascii?Q?3yU969wGstTeFV2DikC3mlwE6QBpBW2BsUnmPFHytQGyPZgN8taMT6BLzGRw?=
+ =?us-ascii?Q?vndteVe8W/gaJp6g45GtlNqEA8vOZDKHENBV42h0sPEyH2J7glmFqk6eI6GJ?=
+ =?us-ascii?Q?TNrsRUiuny+AfrQYigztxGVnTYukpYtSzvUm2ywIqkTfLk+ePUse/r1/Fy1j?=
+ =?us-ascii?Q?4uAsloWXOIpDZgg57wUZQPVDT+u9hvcP036YlMXJ3rLTCPWdmObllHZsg9Zq?=
+ =?us-ascii?Q?7VxZN9cJkrEJIhS6wVRTe9kvOsPaRCHlzQwhXQ5jzds7U8g92evAdBf2iJgA?=
+ =?us-ascii?Q?SdU7dAaq3b0frVjYSOxChCK2s11XnnazaI/Hj3sv26UvuM0EkuOrw8M1nyag?=
+ =?us-ascii?Q?JOyMg5ZwNzggRJfseMULf34j1wPlEYug2/ziKrn8lKlgD9m8Psn1xe6hp3qX?=
+ =?us-ascii?Q?GRmILwWHmok0GNvapPO+uKyTvpKLz1yg2fu8YlJTtPTtd/nReaarx2pJIXyQ?=
+ =?us-ascii?Q?vvEXpZhwuwAVqhLTnxyST9rcfXTgQwqVJSF0fomOEA2N5CdWqsemax3RoXU4?=
+ =?us-ascii?Q?Z00Hb+B9B6K5TtghZKFrdT9GSrqv+bgpiq3lqNYIcBM80aCwVnGPP14xFOea?=
+ =?us-ascii?Q?1FddLKO9qwcASkRsV7co+9oxBIimda6CCtcblGieKLwLX0PVZqXy6kj7ALlR?=
+ =?us-ascii?Q?Fkf9DC9taS01jSjlW0l5iOnYCG2MavqSmoG84wo6gZwhuRjbHkSdSdzsf+Ne?=
+ =?us-ascii?Q?R7LzP0nZxbPMeJryeUlLEhbr3qUjE/Xn7QJRjmKdL7vvqpRtlQB8nPBZSwxs?=
+ =?us-ascii?Q?gZIuGneR69ZeH4a8qL800FVbzWmngZ59h37P6IrrX3ENyMNf1NR6jpyqHiNk?=
+ =?us-ascii?Q?/BwAVvzhtgDG5Oy1RwykgGsLDY+83aNAZK3qDXHx93WJJ98ZuV4wwp0CEZ3s?=
+ =?us-ascii?Q?WHwHOI3SE7m1Z3b5ezIe3lLC4nKcbGqB32/10ySqqt5TfVebKKNrkIkgQ6NS?=
+ =?us-ascii?Q?+IfcIdyLRJDEZYSClKjpOIhoi4RSVpPmFwXio6/J4uVT0TzkdhCMgj+g4wkX?=
+ =?us-ascii?Q?wnkYq981xrXxR3Fd8EI2uHv2oa+1lzZquCvvYflNo5ADcJ1jAijyoZoG+FO5?=
+ =?us-ascii?Q?Slh7f1dhLb55AxNeltmoblno6PDz/t7xSXQmBwrpqqSPhcEfTeZ0vvetZn0U?=
+ =?us-ascii?Q?B+6wOHUYx1rwGD/TQNCPYJVjItMPlhAz6CsjKArgUfi/kg=3D=3D?=
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?LW0dLENgQt/RxCWl45tNx78mJewELx+Hx9+Rw5gQciwyU+bNTLCgcy7MzSy9?=
+ =?us-ascii?Q?gCy6kcYgK6sN+wgVCuMpMjSeheOWB2mHYkXoEz55qog+EAz4vZXFvpWvbh/m?=
+ =?us-ascii?Q?jewoHq9734Ve2s1aJZQZr69R8RxkrI0LIJvyOYXoYwBuNUgHX56q2kTdF86t?=
+ =?us-ascii?Q?EvUBKzFwioNCwRprUMsTvIp+3zSgZj8uMDkPbqWCaSmxAhsyUhG/jtqvw2rH?=
+ =?us-ascii?Q?EUboT1wYxAga8Ody8lcFDiZuEes+UqIPKnbYGY/14cWoB7F/z82ivUjnp3YW?=
+ =?us-ascii?Q?80MiJl43n1vXf7mUdb4M+l82X2s6gLqluqsG9/7rEnuWtMjsGnAyjyjBxGnX?=
+ =?us-ascii?Q?IzfPNa0IWzODzDBt788XLi4wnkYSo7U7t3bbZGohXx5fppM0fOWqO/dCqhFK?=
+ =?us-ascii?Q?RjuKQZDcsSONCzUU+N8MTVRZMy4+b6G10c70SLhratvE88C5MqH61wuHSe5T?=
+ =?us-ascii?Q?hCfIHyGCeD/Q1paY9buevzan3Uqx1Cc7lynrXFojmbwRa3a5duc2H06DPGCD?=
+ =?us-ascii?Q?deT2Kksp4x84pFq92GGJZd4DzS63J0ePpJiUUWfnQXuUqwZNPfRnYSmghX4i?=
+ =?us-ascii?Q?JyJ64DWIT5LdiZUQptKIf1s/1dtcnSYpUX+B1auEIUFDFJtFbWI3DMMGTHXI?=
+ =?us-ascii?Q?bdrZH9BJ9MSTTNtqqzwfzVkJK+kqf4IiQ83iLgKe/GX3xnvjUI/+mLXc60LA?=
+ =?us-ascii?Q?/7MSRiTtZa6XqDRSg6oUOYo3DWBLT/lrqnNJJFsGJLEuHAIDlR1p300IGDzv?=
+ =?us-ascii?Q?md4vRY2/zq6/rBXbdBgKIJLbtUvWoIW17XLdnk7zg7FTYC32rPDDyE9aeVQD?=
+ =?us-ascii?Q?GpcBXVTpO2I/OWqzJR5g+aFD/de4hzCxfnisLTN6IbeN24cDGmj+NB2EQp8i?=
+ =?us-ascii?Q?8cHyv38bOVI5sgyOYIkiIJoYazU6Wwn7Mz4r0RwsA7Dfj9zClrs87ozCglgt?=
+ =?us-ascii?Q?PirUtAizsFYApipqWgEIMX7neTuDcEjPH/DcRB2uNtcyINtBySDcCSBBpciH?=
+ =?us-ascii?Q?okGiNGQdd5SAY4Ppnr4C1EuRXd7th97yImFnSn22Z+h8sTZ5xEjF/KsNevWC?=
+ =?us-ascii?Q?GCbUvfiIiejMOe9YoVUKSe0caZ2BKDrR26KgHSTKI5MtdkE2hd/WPFDXqs9A?=
+ =?us-ascii?Q?8evoOQ0PTGaIfjWLZ8uEw8a6i+ZCbMeqISn3VJ0Ou5kZOkQlrzoWro1V4364?=
+ =?us-ascii?Q?fvxE1UR9UkByml6iHzQzuwQ5US2uF62f33K/AVHRvwAw4Nq/0mFsWL0eCQde?=
+ =?us-ascii?Q?KsrfSfhUl8tH8stSs08UTbhwJ2UAG9t54/gxsWeAmg=3D=3D?=
+X-OriginatorOrg: sct-15-20-9115-0-msonline-outlook-15bf1.templateTenant
+X-MS-Exchange-CrossTenant-Network-Message-Id: 336a7350-26d7-430e-4f7a-08de26e21d14
+X-MS-Exchange-CrossTenant-AuthSource: SN6PR1901MB4654.namprd19.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 18 Nov 2025 20:36:13.3854
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN7PR19MB4816
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251118_123618_690310_03EE910F 
+X-CRM114-Status: GOOD (  18.89  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,65 +155,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Nov 18, 2025 at 09:06:08PM +0100, Niklas Cassel wrote:
-> On Tue, Nov 18, 2025 at 12:59:17PM -0600, Bjorn Helgaas wrote:
-> > On Wed, Nov 12, 2025 at 09:29:20AM +0100, Niklas Cassel wrote:
-> > > On Tue, Nov 11, 2025 at 04:16:09PM -0600, Bjorn Helgaas wrote:
-> > > > From: Bjorn Helgaas <bhelgaas@google.com>
-> > > >
-> > > > The DWC core clears the L1 Substates Supported bits unless the driver sets
-> > > > the "dw_pcie.l1ss_support" flag.
-> > > >
-> > > > The tegra194 init_host_aspm() sets "dw_pcie.l1ss_support" if the platform
-> > > > has the "supports-clkreq" DT property.  If "supports-clkreq" is absent,
-> > > > "dw_pcie.l1ss_support" is not set, and the DWC core will clear the L1
-> > > > Substates Supported bits.
-> > > >
-> > > > The tegra194 code to clear the L1 Substates Supported bits is unnecessary,
-> > > > so remove it.
-> > > >
-> > > > Signed-off-by: Bjorn Helgaas <bhelgaas@google.com>
-> > > > ---
-> > >
-> > > Since init_host_aspm() is now the only place using struct tegra_pcie_dw
-> > > struct member cfg_link_cap_l1sub, I think that you can remove this struct
-> > > member, and instead make this a local variable in init_host_aspm().
-> >
-> > It looks like tegra_pcie_ep_irq_thread() also uses it, although I'm
-> > dubious about that.
-> >
-> > It's odd that software would be responsible for sending LTR messages,
-> > but I guess this only happens for tegra194_pcie_dw_ep_of_data, and
-> > apparently it's fixed (".has_ltr_req_fix" for tegra234.
-> >
-> > And odd that we would read the capability register on every interrupt
-> > even though this driver is the only thing that can change it, so we
-> > should be able to cache the value in init_host_aspm().
+On Tue, Nov 18, 2025 at 09:46:04AM +0100, Maxime Ripard wrote:
+> Hi,
 > 
-> Yes, sorry, my thinking was that this code in tegra_pcie_ep_irq_thread():
+> On Thu, Nov 13, 2025 at 01:29:38PM -0600, Chris Morgan wrote:
+> > From: Chris Morgan <macromorgan@hotmail.com>
+> > 
+> > Add support for the dw-hdmi-qp driver to handle devices with missing
+> > HPD pins.
+> > 
+> > Since in this situation we are now polling for the EDID data via i2c
+> > change the error message to a debug message when we are unable to
+> > complete an i2c read, as a disconnected device would otherwise fill
+> > dmesg with i2c read errors.
+> > 
+> > Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
 > 
-> 	/* If EP doesn't advertise L1SS, just return */
-> 	val = dw_pcie_readl_dbi(pci, pcie->cfg_link_cap_l1sub);
-> 	if (!(val & (PCI_L1SS_CAP_ASPM_L1_1 | PCI_L1SS_CAP_ASPM_L1_2)))
-> 		return IRQ_HANDLED;
-> 
-> 
-> after your patch can be replaced with:
-> 
-> 	/* If EP doesn't advertise L1SS, just return */
-> 	if (!pci->l1ss_support)
-> 		return IRQ_HANDLED;
-> 
-> 
-> Since we already know that if !pci->l1ss_support,
-> these bits will be cleared by DWC common code.
-> 
-> 
-> So, after that, we could replace the struct tegra_pcie_dw
-> struct member cfg_link_cap_l1sub with a local variable in
-> init_host_aspm().
+> You must also disable any mode using the scrambler when there's no
+> hotplug interrupt available.
 
-Oh, of course, thanks!
+Is there a simple way to do that? I'm not seeing any references to
+scrambling in the current driver.
+
+Should I just limit the rate to HDMI14_MAX_TMDSCLK (340000000)  under
+dw_hdmi_qp_bridge_tmds_char_rate_valid() if using EDID polling? A
+document I found online from Synopsys [1] claims that scrambling is
+used by default at rates above 340 (if I'm reading it right) and used
+opportunistically at rates below 340.
+
+Thank you,
+Chris
+
+[1] https://www.synopsys.com/blogs/chip-design/hdmi-scrambling-higher-data-rates.html
+
+> 
+> Maxime
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
