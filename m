@@ -4,110 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC70ECEE331
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Nov 2025 15:57:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69C0BCEE33D
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Nov 2025 16:31:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Date:Cc:To:In-Reply-To:References:
-	Message-Id:MIME-Version:Subject:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=W67ieHW74bJQcP7fXs5Pino8rqIGpobrajm30MhZanY=; b=RpAJHO+rrY8/84
-	FD6LmbW9kDxvBvb3zQxCtWwOkOVZbWu9cL4JJzqsgzWQw+IX77JHXcuYxxLeaI75jtRL5WHo0S2QM
-	xcLO3yRpczbBvR8OKzOuLPz88zDpSSYft3CXAj0ZdQZMBMNZ6sWfjPtxSl5I6d7dtOtbz8QW9wAEN
-	1+Aa0CESaJ8vtfEwEWqD2c8SL+5SHgl6OHjBMy/q8kMmX0lhmGWycXq9FrgUbJn40tzWuxFNWYye+
-	iU0QdjXep/EdPx1dQwoajJI9QPChZciEhtWGCxHB61Z/xoNYnlKu3mkSolLH59J51a214zglKwjSG
-	QMBQuNeu/Qk/cppD5ArQ==;
+	List-Owner; bh=X8bAaBTZ56A3DaZq2n2v7+1ghvQfS33FMpGPjpEZkug=; b=JTK3uXs5DDvI2u
+	/dGPb7EMvy5dLvCn8bAWxNoKcWsAqo8QyE+fUEStrSIqtg3HuFIIsMIJ0M1OWWrmES5KDAZb4AA/F
+	oCDSL6JkyGcaMz4YdvSVSf4nzuMepjG2IpBhyBSPXN7Mi2ULQ6e0QMctRVD12qX0F9MWwnuxajpTX
+	Awdr7CdzS9EeB9TzNvtHg/U4IYI6KVSCOPSI1skxxa9I+DRGMmhAXVsm0/1nucMNnk5nMd2Az6doW
+	Cz0xQvh9jaTyGSBY1yYBLritGm64pb1CxFKrfpPIlf0p+HdCJthktsegbzfPdyTAuLtbyvwUUxrXl
+	NyBTEzN9GB4zvDpK01Sg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLO4k-00000000f3X-1di4;
-	Tue, 18 Nov 2025 15:57:02 +0000
-Received: from cyan.elm.relay.mailchannels.net ([23.83.212.47])
+	id 1vLObt-00000000kkz-3HJU;
+	Tue, 18 Nov 2025 16:31:17 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLO4a-00000000ezM-2AXq;
-	Tue, 18 Nov 2025 15:56:56 +0000
-X-Sender-Id: hostingeremail|x-authuser|michael.opdenacker@rootcommit.com
-Received: from relay.mailchannels.net (localhost [127.0.0.1])
-	by relay.mailchannels.net (Postfix) with ESMTP id 831FF92306F;
-	Tue, 18 Nov 2025 15:56:51 +0000 (UTC)
-Received: from de-fra-smtpout8.hostinger.io (100-96-202-58.trex-nlb.outbound.svc.cluster.local [100.96.202.58])
-	(Authenticated sender: hostingeremail)
-	by relay.mailchannels.net (Postfix) with ESMTPA id F196D923194;
-	Tue, 18 Nov 2025 15:56:44 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; d=mailchannels.net; s=arc-2022; cv=none;
-	t=1763481411;
-	b=WxQcU7pVGZT1/VhTgNg9S6PMtt+g2FvGp9/KY/As/4kWFBlKNfo3ZUYK1VBr5mYxErYhtr
-	uKlcxIMC0c4/f+kl9qyiB/OJ1rmgy382ECvymlxIcxHYX77r6zjIc/Ak9IgpQf9nXK6MrS
-	8z31Lvds1mWpV158cyw7Nth/yZUUJJ13fkugimAw1X5anGwsEVSv4MRo/xWCTAejLrXsZ9
-	tQEIWx+1Joyjvd3Bsq4g/TXEX8rkbWCWkTtxM0B/MHQsBFXJA4YAH93Aus2DHeUnd6MZWm
-	768/YOlOrhMHgnJ3QNFqIhP7kgNqdNbnD5FsgxfbDJfM4fCI96qeHUIp7cuiVw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mailchannels.net;
-	s=arc-2022; t=1763481411;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:dkim-signature;
-	bh=gq9UixTYOGF5lJMMtrTQ7J1H2j6p2P/BMXvvWlNxBtU=;
-	b=fELg2NyAIHOblqT/ynx81L6Fa0K6pgfjBHSgwtxYfsgEXxEcF7pL9Zqg8Wy1e+bIiC/wyD
-	SSLgC0WMcN/E6g+Jm+s/UNoakPBSqd5UiSxbBGBQ0MXRWLtoZdwWNCCWdzQpoY+WEGyp6i
-	UwuOF9H7sHomHQmsgaKjpcMLF4st8LG7IvMdYnsWb8m+r+VVo89BDW22w8H8wVsNZ4G/1s
-	7eA+iwLDQ3c3lqER/GH6ZgjuPc2iby3HeXZZL/og06Ufa7SuB0aN9z4RYqt+bakMzQWJVM
-	3hyPpnYyIyUelpWML1b4Ca7/4Qk8tJuvpJyDBteb68FF3QM7fXhDJcJuqUNo1A==
-ARC-Authentication-Results: i=1;
-	rspamd-55b59744f-dbrd8;
-	auth=pass smtp.auth=hostingeremail
- smtp.mailfrom=michael.opdenacker@rootcommit.com
-X-Sender-Id: hostingeremail|x-authuser|michael.opdenacker@rootcommit.com
-X-MC-Relay: Neutral
-X-MailChannels-SenderId: hostingeremail|x-authuser|michael.opdenacker@rootcommit.com
-X-MailChannels-Auth-Id: hostingeremail
-X-Trouble-Absorbed: 35d4bb854b23fe28_1763481411403_921510503
-X-MC-Loop-Signature: 1763481411403:1783158274
-X-MC-Ingress-Time: 1763481411403
-Received: from de-fra-smtpout8.hostinger.io (de-fra-smtpout8.hostinger.io
- [148.222.55.13])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384)
-	by 100.96.202.58 (trex/7.1.3);
-	Tue, 18 Nov 2025 15:56:51 +0000
-Received: from [127.0.1.1] (unknown [IPv6:2001:861:4450:d360:70a8:5f6b:5afe:c6b5])
-	(Authenticated sender: michael.opdenacker@rootcommit.com)
-	by smtp.hostinger.com (smtp.hostinger.com) with ESMTPSA id 4d9q3t6bHxz3wl4;
-	Tue, 18 Nov 2025 15:56:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=rootcommit.com;
-	s=hostingermail-a; t=1763481403;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=gq9UixTYOGF5lJMMtrTQ7J1H2j6p2P/BMXvvWlNxBtU=;
-	b=ANCwTTzEm+C4AARXO5+gHn+BG8kbd96cJEqfCl43J06Q9tyFAeesoMvsDmv9JdjB4beGbE
-	DwSWTJdoxI6NGri3MzEDg+6LJPhdigW/YzkucYXfJ3O/iLJeBOiqUDxIVjTWs2KJpRHWCT
-	T8/2nRV3Y61vrHDbaG8RSrBAtVJbD/wDTkIqm/N2dmwzDsUYR2yboOOEpFuieOuxraRM8J
-	5VgQTx1PUk2EbKJfVYpZIxV7JE9QulQPxy533Z9raAKKTokzkM9R6xTHvXoyWt8uaA0ysB
-	UcMlScc5WDZzMy3nkBC1xlyXyAp6P4txd25MyH+ffr3kMDPzC+x7yafPkw/T5g==
-From: Michael Opdenacker <michael.opdenacker@rootcommit.com>
-Subject: [PATCH v3 1/2] dt-bindings: arm: rockchip: Add Asus Tinker Board
- 3/3S
+	id 1vLObn-00000000kjk-2kb7;
+	Tue, 18 Nov 2025 16:31:16 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id F336F40378;
+	Tue, 18 Nov 2025 16:31:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A52AEC4CEFB;
+	Tue, 18 Nov 2025 16:31:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1763483469;
+	bh=JPNtQOhFCKFCcnR3lkjWb6RhaTsTuQxwjrgIPx5NUkk=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=SCy9bJy4pbTqL33vGMv6PTH3Mwh8yDs5A5+AIzRJfiEmnmGZzKPSm1VMTGFsJU0ae
+	 uTKOCiCv6WBqkPSY5E+jQrWKfOu3w1C7x0XXwpJUU0rgX/Vbd3Lyil7KGKt/nh/6eU
+	 HROQDuitt4sdHUdsmxgfEgGYP5jvDt2uDuOBev05HUqd8oish6GequBNGUAkpUdero
+	 7jDC6X3573teLEeP6sUOYipJ2Vk2BaHB7JHaJvqr93wn6AureOa40x2bl92FUCDxG4
+	 IHj0ETqLvoqKrsS98xu1Pl3IZ6CUaIKhWY3RzBhXO7fH4ogR50cpRD+JFQ/wckwVlq
+	 fFZ1ylYz4DCLg==
+Message-ID: <e134902e-e298-45d0-b94f-77748bb948c4@kernel.org>
+Date: Tue, 18 Nov 2025 17:31:03 +0100
 MIME-Version: 1.0
-Message-Id: <20251118-tinker3-v3-1-2903693f2ebb@rootcommit.com>
-References: <20251118-tinker3-v3-0-2903693f2ebb@rootcommit.com>
-In-Reply-To: <20251118-tinker3-v3-0-2903693f2ebb@rootcommit.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 1/2] dt-bindings: arm: rockchip: Add Asus Tinker Board
+ 3/3S
+To: Michael Opdenacker <michael.opdenacker@rootcommit.com>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
  Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
- Michael Opdenacker <michael.opdenacker@rootcommit.com>
-X-Mailer: b4 0.13.0
-Date: Tue, 18 Nov 2025 15:56:42 +0000 (UTC)
-X-CM-Envelope: MS4xfMFw51Stt3Un0K0zM4Z95zpqyol8woZIB9KlstAIWgIOX8YE2t4fZhchdppWT+ohAD8IPdS1SDL4/mjP7izHxmfuBTZHmUYRsgaJtDU7819imWnKzUqr 50UllCkp+x2/RJoeGotvEn9flb/Ispvg/rrQV5LIyIsmH2aNkOwOGmrtpf3TkrCKVWCS/7Y+xI6sp1qzdw1+ISeYQipWqDE+YXDylmFmUhj+MWDnMMODjJgn QftAYHRqw73rGGMdXzyluqVPYr5cO1MoQrQTG671u/InL+GUcPIHFVfJ5k7RECFRApgH/zr+oMV14kjtcaWh6iO1M7ohYtoylmTBTmz8njxmAvj69lkcW7NN y4fUy14AuOFJE4BNovcfokelgizJ92Fc5FVKT23g0jAp4sKNJ7FGlVDuMHbomtCxEl9U5TJj2/2EPeqDLxm6q9SPe4Xym4kbJzGhPMUGNxkSUsbw7yw6L/CL FYjpMND9xWxCLf2gRG81hBh9W9oXJKzQhdN2lBrOCWD1TXwbaAlJZosb9j102MUBW99NCY/cyZuLj6v1KOhLOWuDaabvFd8HXHm4nsNrw3y3e11Qgr6p2NC6 f1ifvAJ7Q22uWFEb/5dhBpv/mF3Gylm2bAakdt6BwTaN/A==
-X-CM-Analysis: v=2.4 cv=Ceda56rl c=1 sm=1 tr=0 ts=691c973b a=Ph0lQeLb5o4XXq6kAtNexw==:617 a=xqWC_Br6kY4A:10 a=IkcTkHD0fZMA:10 a=-Yt9tNsTAAAA:8 a=d70CFdQeAAAA:8 a=KKAkSRfTAAAA:8 a=3JIPYtb0mk-80_rjy1QA:9 a=QEXdDO2ut3YA:10 a=qPQde0g9OtMA:10 a=HTceBwxjnJgA:10 a=NcxpMcIZDGm-g932nG_k:22 a=cvBusfyB2V15izCimMoJ:22
-X-AuthUser: michael.opdenacker@rootcommit.com
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+References: <20251118-tinker3-v3-0-2903693f2ebb@rootcommit.com>
+ <20251118-tinker3-v3-1-2903693f2ebb@rootcommit.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <20251118-tinker3-v3-1-2903693f2ebb@rootcommit.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251118_075652_676241_C1B976D7 
-X-CRM114-Status: UNSURE (   7.66  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251118_083114_920900_CFD98FF6 
+X-CRM114-Status: GOOD (  11.45  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,49 +120,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Document the compatible strings for Asus Tinker Board 3 [1] and 3S [2],
-which are SBCs based on the Rockchip 3566 SoC.
+On 18/11/2025 16:56, Michael Opdenacker wrote:
+> Document the compatible strings for Asus Tinker Board 3 [1] and 3S [2],
+> which are SBCs based on the Rockchip 3566 SoC.
+> 
+> The "3S" version ("S" for "storage") just adds a 16 GB eMMC
+> and a "mask ROM" DIP switch to the "3" version.
+> 
+> [1] https://tinker-board.asus.com/series/tinker-board-3.html
+> [2] https://tinker-board.asus.com/series/tinker-board-3s.html
+> 
+> Signed-off-by: Michael Opdenacker <michael.opdenacker@rootcommit.com>
+> 
+> ---
+> 
+> Changes in V3:
+> 
+> - Remove this Acked-by as the binding code changed substantially:
+>   Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-The "3S" version ("S" for "storage") just adds a 16 GB eMMC
-and a "mask ROM" DIP switch to the "3" version.
+Above commit msg and DTS suggests they are pretty compatible with each
+other, so I don't quite get why this changed. Your changelog says
+"unexpectedly turns out to be compatible with 3 but not 3S.", but is
+this real or are you just guessing? I think you were tricked to change
+correct code into this.
 
-[1] https://tinker-board.asus.com/series/tinker-board-3.html
-[2] https://tinker-board.asus.com/series/tinker-board-3s.html
+Anyway, however odd this is, I don't care enough to stop this patchset, so:
 
-Signed-off-by: Michael Opdenacker <michael.opdenacker@rootcommit.com>
+Acked-by: Krzysztof Kozlowski <krzk@kernel.org>
 
----
 
-Changes in V3:
-
-- Remove this Acked-by as the binding code changed substantially:
-  Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
----
- Documentation/devicetree/bindings/arm/rockchip.yaml | 7 +++++++
- 1 file changed, 7 insertions(+)
-
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-index 6aceaa8acbb2..800c11323a4f 100644
---- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-+++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-@@ -86,6 +86,13 @@ properties:
-           - const: asus,rk3288-tinker-s
-           - const: rockchip,rk3288
- 
-+      - description: Asus Tinker Board 3/3S
-+        items:
-+          - enum:
-+              - asus,rk3566-tinker-board-3
-+              - asus,rk3566-tinker-board-3s
-+          - const: rockchip,rk3566
-+
-       - description: Beelink A1
-         items:
-           - const: azw,beelink-a1
-
--- 
-2.43.0
-
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
