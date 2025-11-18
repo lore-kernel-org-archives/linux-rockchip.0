@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0DA1CF2561
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Nov 2025 22:33:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70DE9CF2564
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Nov 2025 22:33:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1UOCetxP+Wpiv6CZTSTzPQz78c7i6Pu6+x1It3RIjqI=; b=lQmbQBl24oRAlg
-	TnaqLmmfNspRVr8FKyqDGOVyULRqr0dapMzkOnoGSJyR+YhlM4xRuMrvceMB7qrZS022x5WcP9qel
-	yLeokpqLTJC1xvFEiiLaA/ZCi/d1uL+3Bbs/dpPf3YIUlB2rvkTCsLEvbnkJMhusiwf6HqN1d05bz
-	flYCoS8bBAPC92NO+lcFy3i7dLFo4ww7Xb46mGNNWBzE7Us3IgZ6Yb8srKqT0GC85/Lsk+4YwOxCg
-	U3Xj89cSeWdb80OjnqOFlLnPt09pftKrQ+nhp7ItfD8PePB/qxV3dBnet+w3saHErYt0PoSnUaJf5
-	+jq8FJjgw6WGyGSqf/JQ==;
+	List-Owner; bh=3RCTUTZNMpKpxHL6a6ATOLnA/jLrSCnElvbYUZGbRjE=; b=eeO/c1C9HpkCOb
+	RGHVKV/1PSwbPNkzTWZCjFJDv+e4o1j0iE5aCI3y2dfgeF+QHZRBp1khvYIkJxKOZEOGkFOeCaU8A
+	oOrZAGoWgd1Hk3RVI9YUq/AYCUqGJps/dO/9dl96PrY+ycY8FuQviiQX+bBnrKtjjwvzBsZrBlqb5
+	DRZK6j+QhxnmTYMrOhsI8vLv0MLJZm+KrkWUMSMzqP1FALDOiHZT8DDl8O7MRML4jCXeBHy3M92to
+	xvLu4//QYlRGMiRvzYdjmdqPv4wbCnBXUno4rSeiQsDy4iEnEZMm7CLiDMVt3oG+3gpCYXWgvB44o
+	7q7pJE6OP0YMS4tDUiDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLUGG-00000001BUh-3vMt;
-	Tue, 18 Nov 2025 22:33:20 +0000
-Received: from mail-ot1-x331.google.com ([2607:f8b0:4864:20::331])
+	id 1vLUGI-00000001BVp-0nr2;
+	Tue, 18 Nov 2025 22:33:22 +0000
+Received: from mail-ot1-x334.google.com ([2607:f8b0:4864:20::334])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLUGD-00000001BSD-0e5x
+	id 1vLUGF-00000001BSp-0o3M
 	for linux-rockchip@lists.infradead.org;
-	Tue, 18 Nov 2025 22:33:18 +0000
-Received: by mail-ot1-x331.google.com with SMTP id 46e09a7af769-7c71cca8fc2so3823387a34.1
-        for <linux-rockchip@lists.infradead.org>; Tue, 18 Nov 2025 14:33:17 -0800 (PST)
+	Tue, 18 Nov 2025 22:33:20 +0000
+Received: by mail-ot1-x334.google.com with SMTP id 46e09a7af769-74526ca79beso4675197a34.0
+        for <linux-rockchip@lists.infradead.org>; Tue, 18 Nov 2025 14:33:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1763505196; x=1764109996; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1763505198; x=1764109998; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=nYjvYxfV5+RZeySdWRUiMPK8ycstukvx6z5qAN1mejI=;
-        b=RcoHetGiumO59O8orT8uBZ08S8ZWzdU2O+uzDmLJsG/T1l+jz9HGvANj6SSKsTK1JH
-         BaQuQ0wtdIja8vjPPuxWHoUnWEC61nioa8q3xzcrwZNn3hjPDmhz0wOuePWXcl1GkjTG
-         1vT7DXLw2DhSNCgvzxele8WPtyCgoROfxU/hdq0xnaEEgISqASaAJz2iG125e50pnNr8
-         8ogptKU34hCXwa/VAr7aNd69gLiNGUOG2kdN4BuNJzJpNY+tjC6iPWKPZmI62//57YJ0
-         /jGPa7mPyV7lifbRSOx5OTdVSpXs8JwJPF5cIK/6Sf97qdL1qPWKaRS0UCEw4ZkTCXee
-         hp3A==
+        bh=+mDRvRAZ914Ruy74VnImJGj9WAIWsIdFLFqnLvhLdMU=;
+        b=fJLIJNRPa0Uoxua3A+NHo79HZczDX811I6RllmN8NrEJ3nb1bYLH61FjyonnHRqVfz
+         aF3hZolI84QKPDmDCxfHtJcA8Q9ABrB5M8NKA+cbux5NEPWnjnL0GUDHSWzq7mkQM0k2
+         WVeui9lLXxC4na1pMVpxTgM7tUa2gR1GyOIGzejaV8bu3JeGkeBSSgNYRKd/aEDp3u+G
+         DgDPtjyh8d6bD4dgjH2ooW6ZMl30AU9Dv4ljd8CdGMCjGHuX+SeGThiNS5WxmsyKnMNk
+         lP87KaWbhJI+y/mnzYHksKEdgdmPnJ7LUHWUzz85j8s5Anvg0b1/6rWbPhm8Ofr8S5bT
+         DCrA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1763505196; x=1764109996;
+        d=1e100.net; s=20230601; t=1763505198; x=1764109998;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=nYjvYxfV5+RZeySdWRUiMPK8ycstukvx6z5qAN1mejI=;
-        b=I3HrtMGzk3mr+tV0AvkJUn8oMj9+GbdgFZymtGBeL3htyYUir8AndmwSTrvqUdN/ea
-         aL57VX/GqVIkhj6AvuuXHol7HBvp8dLazGXXyQemRNIOky2rJBH9STs/WQjIZAuxwreM
-         ltEKUfaqUXO+9Dzq+CiXXNpNdnzY+LqiBIuY2ZWPJ2gXB8EqGA2CbQigHty49E5RlRnp
-         2G2+cxNefxDLif/SrK0uEzmTCtHhM24o35H2+vKf+VEyMS0K+pmAHxtnUwnr+uPVnG40
-         /SIDAnP6BL3fEsB0TlQbzU1S7PpHc6Wbu9SXRRPEX8vaM17rg/YD7cMtJ0I46sr5V37+
-         WI1Q==
-X-Gm-Message-State: AOJu0YxAwOOL4UIR34niS2pKVMDdI6QO21rFrw6xZU/A01dK4l2eHJvV
-	tn8td73tgdvtiPeFQl/t1CIVNdPUezBKdanGURVh84ITPs86G8O0Blo743hQTw==
-X-Gm-Gg: ASbGncv9SzGuhCKSQAdySbF/YCn1zaMct8ZmWcTQInIO4hc1cETe+BnfhanLioEdgD6
-	bpbS2K+LGnx6M5sjUOX8f8WstXAhWEEIee5ouUF0r1Symia3W97OOYMmB95qm81QMHAm3hBwzSu
-	GA5AG3MwlZdSX2DSgcvC8/+9P7JyghwLoT1MPuAhPj/PX3r+0ZbOq3q+2jdtBhv3NT4ISRWuc0y
-	23/29nWZNgyNNwofCmywoVGrBU86cxQkFmQ/4C3z3LP5a/6XANkU0rx/oH8LA6oQH6p4zld/Vyh
-	f8kadjLy0bMaP1Llfj1f3tRQwRGEFvZ7vYZvKt2D7g3xzImUmlxz3FmiYipl5VhYrczn/J1X533
-	OEwglkQCDoBmdcJit48SxeVYsgaOzp0SnZDgGT9djczbHw30lK/BbiACriqcx5gdiiwI4fJF9Xo
-	+54u/6a/NN
-X-Google-Smtp-Source: AGHT+IGfOB+5AVQMdGMImDRmwBxYZjEKOF0RSGcutvp4vD0d3WB71GhxxZTBquvv4VAvc/4JPZW9/g==
-X-Received: by 2002:a05:6830:3509:b0:7c7:da3:ed27 with SMTP id 46e09a7af769-7c7445524b6mr9960558a34.35.1763505196250;
-        Tue, 18 Nov 2025 14:33:16 -0800 (PST)
+        bh=+mDRvRAZ914Ruy74VnImJGj9WAIWsIdFLFqnLvhLdMU=;
+        b=KWIeQ6VUhV/Ma87+iSrxYHz/pZ8m5Se2kc4b9izDmAUqK/n0kJ9xEuyPb5doeWhngO
+         WubUi8jituodgrwVTYr9eSfmKtcvcL/0HSmfGknvGIIAbFYuNmXRDUzVSYE+4LqBd7JB
+         c/DED7wttrntIXiJHjoKwkQKsYXT2tE2p1fWOkm+W3hgEsO+8vxmcrdlNJxPcR3kW+Bc
+         0eLMGKaWbwbNktvzGkBazITgHlbumuf7T+0j3Ev3EBTOX2kDF93RsofyqfcdXRULa8Xc
+         BCZzAglVxkIotcLVN9Wawmu9VbfaOwo722QPji9Ro1PhDsKAx2+MDx0MMpNE+ZoscqQh
+         nE2g==
+X-Gm-Message-State: AOJu0YxM5m1bMOOX7aJVVtEsj6SCmqvJZOhNUhZ40MOigP2QPfWRvtMe
+	hgDb54lUQM6IAxiVHiw2Y5rkpx3czhRXTnbEQnTulyKgw+xHoWaxF+wq4suP6w==
+X-Gm-Gg: ASbGncuIXBUgFBdlwiDxj35Uopdg0rMWgEKIGEWyL3XwFhC8s6CI33LM/MgCDGfiZvL
+	S6tgU0h6rp/l7pHNEKy8JZTXN/S6p/Bs+UUH/jDK9IXPiwIDxdSJsxzwDEKn8H8fS69XvPD8zUn
+	duo9tBEKzlNR2o6OVHaAkzmTav/uuGlm3rTFwhhk/WZPJCd6YSyPdFziRfsw8TbE3i5IMeKCF/c
+	ErzAI10lP0y9rR8+4lYdGMvN8VChNvJ/LhKgP8VArR2BZumduBhnCYBafohVC8jZjVSNBPj3vQL
+	Vn/2LCtHMt6q7YJZ6NCZcreNs/IqvUBMpZaPyR9dkUm59zE4S8DZ/+BP0PJ3RmPTS5Tk9oWW0oy
+	kbS/h+GETw745Bsbbc7WjfmOk3/F4tS52c48xgYChwn8nG2m2yYFsihbJt54aYWlvDNruse9CPv
+	oaxc4r50n8
+X-Google-Smtp-Source: AGHT+IE1kZ7VlWSJ7cAjxcfm1Utg0/toDq2y2/Ys8lMMnu7WXgG20PEyqdkaXDcxyN01DfwnSMdq+Q==
+X-Received: by 2002:a05:6830:3881:b0:7c7:61e1:444 with SMTP id 46e09a7af769-7c761e10626mr5268313a34.19.1763505197947;
+        Tue, 18 Nov 2025 14:33:17 -0800 (PST)
 Received: from localhost.localdomain ([2600:1700:fb0:1bc0::54])
-        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7c73a283b3asm7136960a34.4.2025.11.18.14.33.15
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7c73a283b3asm7136960a34.4.2025.11.18.14.33.16
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 18 Nov 2025 14:33:15 -0800 (PST)
+        Tue, 18 Nov 2025 14:33:16 -0800 (PST)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: linux-rockchip@lists.infradead.org
 Cc: devicetree@vger.kernel.org,
@@ -78,16 +78,16 @@ Cc: devicetree@vger.kernel.org,
 	krzk+dt@kernel.org,
 	robh@kernel.org,
 	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH V2 3/4] arm64: dts: rockchip: Correct pinctrl for pcie for Indiedroid Nova
-Date: Tue, 18 Nov 2025 16:30:47 -0600
-Message-ID: <20251118223048.4531-4-macroalpha82@gmail.com>
+Subject: [PATCH V2 4/4] arm64: dts: rockchip: Add host wake pin for wifi on Indiedroid Nova
+Date: Tue, 18 Nov 2025 16:30:48 -0600
+Message-ID: <20251118223048.4531-5-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20251118223048.4531-1-macroalpha82@gmail.com>
 References: <20251118223048.4531-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251118_143317_197364_488017D2 
-X-CRM114-Status: GOOD (  10.33  )
+X-CRM114-CacheID: sfid-20251118_143319_794950_4078FAA2 
+X-CRM114-Status: GOOD (  10.78  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,45 +106,81 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-Correct the pin definitions of the PCIE controller on the Indiedroid
-Nova according to the schematics. Since GPIO3 D1 is already defined
-as a reset pin in the rk3588-base-pinctrl.dtsi file we do not need
-a custom definition anymore.
+Add the pin definition for the host wake interrupt on the Indiedroid
+Nova. This necessitates adding a node for the wifi controller to
+properly define the interrupt. Additionally, we can consolidate both
+pinctrl definitions under a wifi node to note their common functionality.
 
 Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
 ---
- .../boot/dts/rockchip/rk3588s-indiedroid-nova.dts      | 10 +++-------
- 1 file changed, 3 insertions(+), 7 deletions(-)
+ .../dts/rockchip/rk3588s-indiedroid-nova.dts  | 30 ++++++++++++++-----
+ 1 file changed, 23 insertions(+), 7 deletions(-)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts b/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
-index 1562d02e85d6..7233e290d0cf 100644
+index 7233e290d0cf..174d299cc6bb 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
-@@ -483,8 +483,10 @@ &i2s5_8ch {
- };
- 
- &pcie2x1l2 {
--	pinctrl-0 = <&rtl8111_perstb>;
-+	pinctrl-0 = <&pcie20x1m0_perstn>, <&pcie20x1m0_clkreqn>,
-+		    <&pcie20x1m0_waken>;
- 	pinctrl-names = "default";
-+	reset-gpios = <&gpio3 RK_PD1 GPIO_ACTIVE_HIGH>;
- 	vpcie3v3-supply = <&vcc_3v3_s3>;
- 	status = "okay";
- };
-@@ -515,12 +517,6 @@ bt_wake_host: bt-wake-host {
+@@ -525,13 +525,6 @@ hym8563_int: hym8563-int {
  		};
  	};
  
--	ethernet-pins {
--		rtl8111_perstb: rtl8111-perstb {
--			rockchip,pins = <3 RK_PD1 RK_FUNC_GPIO &pcfg_pull_up>;
+-	sdio-pwrseq {
+-		wifi_enable_h: wifi-enable-h {
+-			rockchip,pins =
+-				<0 RK_PC7 RK_FUNC_GPIO &pcfg_pull_none>;
 -		};
 -	};
 -
- 	hym8563 {
+ 	usb-typec {
+ 		usbc0_int: usbc0-int {
+ 			rockchip,pins =
+@@ -543,6 +536,18 @@ typec5v_pwren: typec5v-pwren {
+ 				<4 RK_PA5 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
++
++	wifi {
++		wifi_enable_h: wifi-enable-h {
++			rockchip,pins =
++				<0 RK_PC7 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++
++		wifi_host_wake_irq: wifi-host-wake-irq {
++			rockchip,pins =
++				<0 RK_PA0 RK_FUNC_GPIO &pcfg_pull_down>;
++		};
++	};
+ };
  
- 		hym8563_int: hym8563-int {
+ &rknn_core_0 {
+@@ -593,6 +598,7 @@ &sdhci {
+ };
+ 
+ &sdio {
++	#address-cells = <1>;
+ 	bus-width = <4>;
+ 	cap-sd-highspeed;
+ 	cap-sdio-irq;
+@@ -604,9 +610,19 @@ &sdio {
+ 	no-sd;
+ 	non-removable;
+ 	sd-uhs-sdr104;
++	#size-cells = <0>;
+ 	vmmc-supply = <&vcc_3v3_s3>;
+ 	vqmmc-supply = <&vcc_1v8_s3>;
+ 	status = "okay";
++
++	sdio_wifi: wifi@1 {
++		reg = <1>;
++		interrupt-parent = <&gpio0>;
++		interrupts = <RK_PA0 IRQ_TYPE_LEVEL_LOW>;
++		interrupt-names = "host-wake";
++		pinctrl-0 = <&wifi_host_wake_irq>;
++		pinctrl-names = "default";
++	};
+ };
+ 
+ &sdmmc {
 -- 
 2.43.0
 
