@@ -4,95 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF60CCCD19A
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Nov 2025 07:17:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 584ADCCD19A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Nov 2025 08:46:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QlJ7AXsXBvARX1s0bVAODdxmbQ0sL42EQ/rgv5sYUn4=; b=4cFjn2pFQ2F+/H
-	ZtGfmJlmptzYa5v6sxozMkR3jIkIhBa02qpwAD8DTD6xJmy97nWfGUD4rRAgHKJDAGJOZJWAnT8Y1
-	CTklR4gA00D3Iws609kkLWjv1P1nJQJiAo//sNQdbBEgzimYqw1MV+s7rSg1OnaTmu7zfcTBt3Dqg
-	bW0GwwqDnk9PaLBEdVzLO9/cE8PIfvtQUsrHgS2wB5p3Md6a8ppBVloBsexrEy7y+LWXZdJIkINov
-	hNhxaghUA3q74CaM6Kv4SvxP5yiK2Z2pJVwJ7JvAcxf+gpRM8bmxed0CrwogmzeSqMx0Xp8IZk72j
-	CMIXqurLrgQrVv2Q9f1g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=P7NnTBJV5IQ04hUOsJbd5XS2+3XycoT/u/7ChPehwl4=; b=gWDh1ECrlNc9GwRgauL+I6181v
+	7aeib0CcqxCjILeMLxL+jTF7CcHguRxwv1zkZpdHHIQx9u0X8PlcZccqGlCo8GV8jDbM3T9wIM/vd
+	wkL5jj0l7Gs8AMxDLPxkAmBEGwD4gb2SYxakYO/5rT5ueQF5OGkirDFE6tD3tEqT8tPKKLg44SOVa
+	tIzHRxhyjMjqvOD9zKV1wZlHDImN+ct8rb49zeRUj1LN+Is27yQbwIPw83QVLhvtbCnZ2TWJFksok
+	QhgtRRCZfTeUQseVwAH1xp40P03oeKDm/EqgRuGz50C7IZrKuGZLITlV0GqP1uf1wOXXe/3fzPaw+
+	9bkpdl7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLFy4-0000000HXwF-1rJK;
-	Tue, 18 Nov 2025 07:17:36 +0000
-Received: from mail-pg1-x52c.google.com ([2607:f8b0:4864:20::52c])
+	id 1vLHLx-000000004nd-1Uuz;
+	Tue, 18 Nov 2025 08:46:21 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLFy1-0000000HXv2-3Tdn
+	id 1vLHLn-000000004l3-1iHt
 	for linux-rockchip@lists.infradead.org;
-	Tue, 18 Nov 2025 07:17:35 +0000
-Received: by mail-pg1-x52c.google.com with SMTP id 41be03b00d2f7-bc0e6d91222so3681662a12.2
-        for <linux-rockchip@lists.infradead.org>; Mon, 17 Nov 2025 23:17:33 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1763450252; x=1764055052; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=1h/LtINK8q4zriSv56jSMYuYj4wBO4XsX7/xajbaKQg=;
-        b=HayV3wRSSmvCmagaWzhp2p1S+AmyhUhI2uvB74jib93v1xnRRYM6PHSUDbwM4KAN/+
-         xCFd3Mket/EBcankl19qbRHPgb2XxGKF+wAfXnmSsKYuBWs/K/YL9OCLBmuiBUwhttAM
-         cl1fMTo5i0BgjQDwwwjEsLoO5czvanyIGrOZdz5Ai2AMO1DyO/0/QIWwf0DjvTPpYyGf
-         z8IVOs1jMcPTsvQHuPD/K05nsxSFFrX2jpFQp+XxdaC6ce2DqvHlNXc7OLcuDsuT3zaG
-         uqDelYqY77DFMXRK0SWu5cgAtZSWBE+Eub6zqGxuPdmrplqxpsjuBiSTTuc/VAeqOJyr
-         XDww==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1763450252; x=1764055052;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=1h/LtINK8q4zriSv56jSMYuYj4wBO4XsX7/xajbaKQg=;
-        b=Q8dBJb4HfL6sEyHleVdAZ8uZo5+N5HevfxR8R3VOZHg4UIDYHhhYJnZ/dctkkF0JsJ
-         iujAbducTlzQ69Lrvgi7UDvUJwloq/sjvdxOsGzyco4pt1Jy2ZR+xeP9Db9ulmRCmhQZ
-         jxBCtp61Lpbxe6rLVRH/Ivh42f2/qX5ni2dphk3VMxvJ9Y0gKbghbR585ca3DoWDv5x9
-         IjV/sUC0y1Er4galSnJTi9EUmBxTv2U6J5g/yaK/DQkhVPMxWfRaUKzUBGzw7IEIC9y3
-         5i1x2RxPuTbzIX6uoAro2qjMrdx7ZbOzKDujwCmWI3+hy/5hj4f/QO5z60yoSS74PdW+
-         1Mwg==
-X-Forwarded-Encrypted: i=1; AJvYcCU6OzgrK0dTvYh6vXCV6+LDMOdRPJhtbXy0bZnDXacUoIfoYZZydi1vbZNPmuGd5nmPpr9lUisDzvvltBTh2A==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwArI/frfXJOeBUvPfmy2Hej2RS/DIh3VGJydUcbl7BuTOQCdgg
-	B+Pa/1a87noYnIsoXGTWkuC4NIxNY2NqRCebclHYCwHpIPnIVtMoypaw
-X-Gm-Gg: ASbGncstubsNG+ZsohW8HuY0lewTeOHHN71fM8mB8i2fb+2xX8tvCggF/LV3419oI7g
-	mT8rx3zBwLUv22PeoPVKZ96Afl/gJgRJHc7sfS85QTKtQkQTyLhnVpkH22vUbyKdUA3TgB2EYuI
-	om3vnbBVAl/4ZUoSpTzzMKYR00FOdeapRjpQkA6V+Jzoi5di0dwCChmnAwzd4uCuc/hJ2g3aYnE
-	puFruLVU2YDoUkiaNNSSuRnh3dNiWAHgJ0GDEUgaOMi3XzjME4J9dyZ9iGz1VkPwl+hwEsnIbw+
-	fVSc1kYQrb4wvKrlKLiVkoWgSN0XgGQsabnddSFH8sIhTm1n9KlcOEk1+hj9k61/ntSjKRZUFc4
-	mSK1mevvbApZU1Hg9D5FM6FqK+yNM/Hv40z+YgOsnhCtccwyTUs9LJi258JsH0Hv7RM8qAjCgIg
-	==
-X-Google-Smtp-Source: AGHT+IF7vM7dWQA7a8j5a3/LMB+ij9tgBYk+NU42Vt0dswOO93rmrv5IDEUmNpYrednFhDvN1YDVVQ==
-X-Received: by 2002:a05:7300:ce8e:b0:2a4:3593:6453 with SMTP id 5a478bee46e88-2a4ab88119cmr5119698eec.3.1763450252407;
-        Mon, 17 Nov 2025 23:17:32 -0800 (PST)
-Received: from geday ([2804:7f2:800b:b822::dead:c001])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-2a49db7a753sm54420555eec.6.2025.11.17.23.17.28
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 17 Nov 2025 23:17:31 -0800 (PST)
-Date: Tue, 18 Nov 2025 04:17:25 -0300
-From: Geraldo Nascimento <geraldogabriel@gmail.com>
-To: Dragan Simic <dsimic@manjaro.org>
-Cc: Shawn Lin <shawn.lin@rock-chips.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Johan Jonker <jbx6244@gmail.com>,
-	linux-rockchip@lists.infradead.org, linux-pci@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org
-Subject: Re: [PATCH v2 0/4] PCI: rockchip: 5.0 GT/s speed may be dangerous
-Message-ID: <aRwdhbt0AcLQ1LgF@geday>
-References: <e5d5c0dc-81d6-ae0e-7552-c2e4fb39bb0a@manjaro.org>
+	Tue, 18 Nov 2025 08:46:18 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 4B531418DA;
+	Tue, 18 Nov 2025 08:46:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 62C75C16AAE;
+	Tue, 18 Nov 2025 08:46:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1763455568;
+	bh=YvYiPjHOM8NIfQlhPdCRp5N/8V+pXh6nu4IWU6ay+Gg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=h9BqL9sC7rSP2RImewjIFVoW79HEVhDLrOFjaKLV3WStkQLGIYKDw2gbRi4bHwzCv
+	 DX93oswySb5t3bTJ1i1EN7asT8ZVNrmhpXDyBD2ojzGAFCOzv9tkFeBB3e22n+ksTM
+	 gd0md+SdHFkFqaQxmSp/B16ihoP7zLogEsUDYF/tG2VEhH76wm1nDzNk0MMc0r7GPf
+	 t5D44hH7TrTQmhRR2ZUMGQf9HH1lTH+oAMahf2/R/d6x0u6Esn/A5Um87yvxNppur8
+	 b5PZD51EiTTEdxs5ZsQIsTq52QeWoUQbrL2KuSVsmfkuhYjwfam8bJ7fsDbWupfbTz
+	 df38LuO01hLyA==
+Date: Tue, 18 Nov 2025 09:46:04 +0100
+From: Maxime Ripard <mripard@kernel.org>
+To: Chris Morgan <macroalpha82@gmail.com>
+Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
+	conor+dt@kernel.org, Chris Morgan <macromorgan@hotmail.com>, rfoss@kernel.org, 
+	tzimmermann@suse.de, jonas@kwiboo.se, neil.armstrong@linaro.org, heiko@sntech.de, 
+	sebastian.reichel@collabora.com, jernej.skrabec@gmail.com, dri-devel@lists.freedesktop.org, 
+	andrzej.hajda@intel.com, andy.yan@rock-chips.com, krzk+dt@kernel.org, robh@kernel.org, 
+	Laurent.pinchart@ideasonboard.com
+Subject: Re: [PATCH v2 2/3] drm/bridge: dw-hdmi-qp: Add support for missing
+ HPD
+Message-ID: <avdnpwnxs6cql7eyckdt37szpcf5ztgxlc7juwu6tqj5xxu56a@nrwljig2p67i>
+References: <20251113192939.30031-1-macroalpha82@gmail.com>
+ <20251113192939.30031-3-macroalpha82@gmail.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <e5d5c0dc-81d6-ae0e-7552-c2e4fb39bb0a@manjaro.org>
+In-Reply-To: <20251113192939.30031-3-macroalpha82@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251117_231733_869315_8AD0BF83 
-X-CRM114-Status: GOOD (  11.48  )
+X-CRM114-CacheID: sfid-20251118_004616_947582_43C6FE85 
+X-CRM114-Status: GOOD (  11.91  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,34 +72,70 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============5576105900241487342=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Nov 18, 2025 at 07:45:45AM +0100, Dragan Simic wrote:
-> Technically, you shouldn't have included my Reviewed-by tags in some
-> of the patches in the v2 of this series, because the patches were
-> either modified significantly since I gave my Reviewed-by for them
-> in the v1, or they were actually introduced in the v2.
-> 
-> However, I checked all four patches in the v2 again and everything
-> is still fine, so just to make sure, please feel free to include for
-> the entire series:
-> 
-> Reviewed-by: Dragan Simic <dsimic@manjaro.org>
 
-Hi Dragan,
+--===============5576105900241487342==
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="vhhdw6enyjwagv75"
+Content-Disposition: inline
 
-Oops, sorry about that, and thanks for calling me out on this matter.
-I'll definitely bear this in mind for future submissions.
 
-Glad it worked out in the end.
+--vhhdw6enyjwagv75
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v2 2/3] drm/bridge: dw-hdmi-qp: Add support for missing
+ HPD
+MIME-Version: 1.0
 
-Regards,
-Geraldo Nascimento
+Hi,
+
+On Thu, Nov 13, 2025 at 01:29:38PM -0600, Chris Morgan wrote:
+> From: Chris Morgan <macromorgan@hotmail.com>
+>=20
+> Add support for the dw-hdmi-qp driver to handle devices with missing
+> HPD pins.
+>=20
+> Since in this situation we are now polling for the EDID data via i2c
+> change the error message to a debug message when we are unable to
+> complete an i2c read, as a disconnected device would otherwise fill
+> dmesg with i2c read errors.
+>=20
+> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+
+You must also disable any mode using the scrambler when there's no
+hotplug interrupt available.
+
+Maxime
+
+--vhhdw6enyjwagv75
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCaRwyRAAKCRAnX84Zoj2+
+dgS7AYDBkt3cBPdcMD/mu/EnEtZBCdmbK+q861NQ/ztfDgSf9WrJs+FyQ72/qz5L
+ahgVQHkBfi45ZGU7evYuDl47wxsJJd0obRVJDJlNk3eavEFouTcjjuIx3BjGwWhe
+Tm+tve3o3w==
+=LiPG
+-----END PGP SIGNATURE-----
+
+--vhhdw6enyjwagv75--
+
+
+--===============5576105900241487342==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============5576105900241487342==--
+
