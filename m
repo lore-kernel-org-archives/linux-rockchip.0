@@ -4,67 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8F85CEBF92
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Nov 2025 01:39:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E278CCD19A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Nov 2025 05:27:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yxw5PLcX92PWnOPNFl5n5NcCp11M/dHhFEzwV3e644k=; b=3bpIzItcPwFB4c
-	EiIA1ETtVEVF6TA1Zs53Ota6LBACsXK7+g9Lc8Dmhg2pX25d9862SbzEnROeDnugZduF7hRkEIO+D
-	29nTzwvzeoZelSmwTNdKwyoVtW0BOA011l5odjfZ1GuSnqrXn7jjgYlFylnIKFahSbdw0UmQ3L/g7
-	iicOBMA6Mi0R941CIO5n/qudMadlegia019e9zA1B5z0KleYv8gpkQMdW8cvli5hRfG3o1QHxzMgY
-	ZzaFRQSmbhrdnC5v6XzsWV98hsNW97iORwPr/iiwKrCe183abJwI2A+RA6tVRcSfNChR1hpf7pJ4r
-	QFQXRq1HlYo1aQATn8tQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Date:In-Reply-To:From:References:To:Subject:Cc:
+	MIME-Version:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=JovqxeCQZRma0SrzPhJhQ+XG3XDEw4EJ4nDvew7dpUY=; b=NHD79b5f1wWaGSi8PN8/hu5AAa
+	q9neXZHAMH7lOyMxyG469LAfvf3mRfmmV5NYiZT9A+CwateVf3fahLejv6ygGhMCC8DDcv0b1SlEE
+	l5dHiZwxj2ApxhsCrNpBVqF59FHYUVQZIRegKE9qgAGTgC4ljOWfkQ86fQBaPJne5x6KBDazA2Ca5
+	vrUodzeLcuhLdzD2EL3eFWkfA4XRFA0T/WNfdkH9EQaRi/1naZPxjpWo6HZQ3xyDJ09GxcZZbneUy
+	Zet6qpieRQ4XAWC48iVhtb7/DBmhcDYw3nEI2CbA19uur+d1DAsww3tugxmdfOE9B2LZpthhf6DmP
+	41lJHlBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLAhB-0000000H9LW-3Vxu;
-	Tue, 18 Nov 2025 01:39:52 +0000
-Received: from mail-m83132.xmail.ntesmail.com ([156.224.83.132])
+	id 1vLEFU-0000000HQkM-1lrQ;
+	Tue, 18 Nov 2025 05:27:28 +0000
+Received: from bumble.maple.relay.mailchannels.net ([23.83.214.25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLAh2-0000000H9EY-0yFw;
-	Tue, 18 Nov 2025 01:39:42 +0000
-Received: from rockchip.. (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 29e9c374b;
-	Tue, 18 Nov 2025 09:39:32 +0800 (GMT+08:00)
-From: Elaine Zhang <zhangqing@rock-chips.com>
-To: zhangqing@rock-chips.com,
-	mkl@pengutronix.de,
-	kernel@pengutronix.de,
-	mailhol.vincent@wanadoo.fr,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	heiko@sntech.de,
-	cl@rock-chips.com
-Cc: linux-can@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	Conor Dooley <conor.dooley@microchip.com>
-Subject: [PATCH v10 1/3] dt-bindings: can: rockchip_canfd: add rk3576 CAN controller
-Date: Tue, 18 Nov 2025 09:39:27 +0800
-Message-Id: <20251118013929.2697132-2-zhangqing@rock-chips.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20251118013929.2697132-1-zhangqing@rock-chips.com>
-References: <20251118013929.2697132-1-zhangqing@rock-chips.com>
+	id 1vLEFQ-0000000HQjd-0rHA;
+	Tue, 18 Nov 2025 05:27:27 +0000
+X-Sender-Id: hostingeremail|x-authuser|michael.opdenacker@rootcommit.com
+Received: from relay.mailchannels.net (localhost [127.0.0.1])
+	by relay.mailchannels.net (Postfix) with ESMTP id 549CC161D2D;
+	Tue, 18 Nov 2025 05:27:23 +0000 (UTC)
+Received: from de-fra-smtpout10.hostinger.io (trex-green-0.trex.outbound.svc.cluster.local [100.98.178.132])
+	(Authenticated sender: hostingeremail)
+	by relay.mailchannels.net (Postfix) with ESMTPA id 0DAC316270B;
+	Tue, 18 Nov 2025 05:27:20 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; d=mailchannels.net; s=arc-2022; cv=none;
+	t=1763443642;
+	b=d8NiZckuUTmtENzUS9A7/G97h6snHeV9d0r5N6QE3uII6cabCnRR5A1SpE5hqSeOG/2jH4
+	oPU8yA5fq9QusXNHZ3Mc+SL6TmtEGqjXnep/e1naRcsSnUtMotJ1AvJGJuqJirXAw6L0TW
+	+s/FUDBfzTniu+5wmFcPjyjrC1E7mW9RmYqAhASlDhCm666zj0gabk/mj6LjN+MdiRtDOQ
+	b4g0a52todUYiSKlKJtxqhBcjms90WQOAUU69/0+6sdYOt0ZguYWOWcl7zHKsRs7S9K9B0
+	kOFNQUc5MZ/ZHkeT3osPiN+pLLyHZiL5kfp4yl0ah0wluRJl9yfBsnNmnTGPNw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mailchannels.net;
+	s=arc-2022; t=1763443642;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:dkim-signature;
+	bh=79QY2zbPjct8a5PYToQ8bQ7v7KXz4YmkpWIvFX2JDyw=;
+	b=PXzcnj90+OZ0C4nz04bqKplEPDe2JhtZOLQ92mY5WMSUfbMeE6DUUUUw0ra/gSCRSWN+Od
+	SJPQOLqfllPpM1awadzeweZqebsYnisu13TFmgzdyyCpaUj+8VbTO5WCZ9NA9QvmWBxfxW
+	CcuapYRcbYCOakp4aJjzACXxVG/RoKUvDFeRsMgpYkLdfWAv3F+dSRE6r5trHDMPnWGHxy
+	MMop6RYViNqNQOlUNrk8pjas5n+4pl8HchwMqld6H242qnEsY8CuzO9XX9zdqTBkv9uUAL
+	ULt/QBIccUAbiUi2h5gdAJUJEyqZSuG2rW1vRHdN5YTSKdzViq9znLsiVGRnog==
+ARC-Authentication-Results: i=1;
+	rspamd-5ffd6989c9-rtptl;
+	auth=pass smtp.auth=hostingeremail
+ smtp.mailfrom=michael.opdenacker@rootcommit.com
+X-Sender-Id: hostingeremail|x-authuser|michael.opdenacker@rootcommit.com
+X-MC-Relay: Neutral
+X-MailChannels-SenderId: hostingeremail|x-authuser|michael.opdenacker@rootcommit.com
+X-MailChannels-Auth-Id: hostingeremail
+X-Attack-White: 2d7b2b2964c91d28_1763443643081_3621785217
+X-MC-Loop-Signature: 1763443643081:4046718970
+X-MC-Ingress-Time: 1763443643081
+Received: from de-fra-smtpout10.hostinger.io (de-fra-smtpout10.hostinger.io
+ [148.222.55.9])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384)
+	by 100.98.178.132 (trex/7.1.3);
+	Tue, 18 Nov 2025 05:27:23 +0000
+Received: from [IPV6:2001:861:4450:d360:58d4:4bb6:ecd1:1918] (unknown [IPv6:2001:861:4450:d360:58d4:4bb6:ecd1:1918])
+	(Authenticated sender: michael.opdenacker@rootcommit.com)
+	by smtp.hostinger.com (smtp.hostinger.com) with ESMTPSA id 4d9Y5b6Rc0z418m;
+	Tue, 18 Nov 2025 05:27:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=rootcommit.com;
+	s=hostingermail-a; t=1763443636;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=79QY2zbPjct8a5PYToQ8bQ7v7KXz4YmkpWIvFX2JDyw=;
+	b=gILU6ZmT+LlDjvY6kAog4t0qNPWKuzZ+NdqRvWHtPOF0m0AzJOMw1gYv4dD7L4Fcw5knum
+	19mlN1XfMjCKfIlixM+gM3P0OBgvLUytkDbPTritxuIEulCo13cZHlRWsDh7UBuFNYlE1V
+	dh5nL1XcA5cyxP4mcv+gE4W7OXP+8I1TentKuWCcaE+Zvj4tMdZ6ODdllpFWme7LlQ5Hc3
+	/hHfqQ2RHo9aMBGzYQ6xMlWGdi6c9Oc5/MEd+MKFcGitMpYLgzufPUFDPUwekCZ7juY0/E
+	1gx/QyNhvsfjuMJtN899j0QdPZr66+NcxSfO4UEIA2PeWhjIESsod2ZmzRvcfA==
+Message-ID: <0c224662-b3c2-4075-8b68-c0ae27421ba8@rootcommit.com>
 MIME-Version: 1.0
-X-HM-Tid: 0a9a949df9ae03a3kunm07a8ba9e476b5
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGU1NH1ZJHk5DSUNOS0IeSE1WFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=kD9D+0G31JBldVFzx/KZq6CFF8hCL6FQ6eZO85HYB5Z1XhOv1ciMKh9GyEa75QQFjJ9bYuJnPrnanI0YYhqDgfKQ+ZlI6GKb1CjiDGp1ons5h8s8JofTbzzG92Ok6QsBymIrp6U6rb2DFd1rij+sGkxElFTBBjSxHJRXFnVT+r0=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=n0nXALYficq2cYLdsPhzBWeGzcheK/HRmbHGFZXXVBQ=;
-	h=date:mime-version:subject:message-id:from;
+User-Agent: Mozilla Thunderbird
+Cc: michael.opdenacker@rootcommit.com, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, heiko@sntech.de, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 1/2] dt-bindings: arm: rockchip: Add Asus Tinker Board
+ 3 and 3S
+To: Dragan Simic <dsimic@manjaro.org>
+References: <e4cd11d0-463c-e707-5110-6b92899b1ba3@manjaro.org>
+Content-Language: en-US, fr
+From: Michael Opdenacker <michael.opdenacker@rootcommit.com>
+Organization: Root Commit
+In-Reply-To: <e4cd11d0-463c-e707-5110-6b92899b1ba3@manjaro.org>
+Date: Tue, 18 Nov 2025 05:27:15 +0000 (UTC)
+X-CM-Envelope: MS4xfJLqo7/gRzsBM5gglqfBElMacoghunKCV7PiG5Q9KaWvdsmLLHWorQ2d9kWzZGsbDOU9m1P9AFVxV9VEIUi1iqL9dCaeyrAUZGAhTrTctD1GtA67LiRd jxpaDXYYYBiJvyPWDmwScz5KeIigzW1FBNT8q3VnRbqjuQ6KS8iCVTfTfgkneZLUXaV+GQ2FMJd/QD7Zs9cjO810THpJpK5t3KQJCy8sfYQfo1BRitTYjxJO msA8awJ16SzOZ+T/9YaznJtC9p5fWtEprqYBDFwLzAoCeCAPkMwEOx85WPCLonQx1s3/mIqcXjD5P+62YO31fo15cW821alZ5N1MQBtfMn2p1xQJN5E3yOCz n3DAJSzg27Ob/yZ+DiZmzMkLY+z45e6aboGSRZWrZdMjFsqPyheQrScEOWTR57xVon9FVOcRw3S9zGw1SnWAy/qzKBgxAqQ/Fm5nwWnt1PS6xe0sZvZMVPj/ 8krMIKj9jjvI7Gp+JmJlnr4lY9Oqy5mgmKyEdxA1rPYvxBp+JP33LTPkxdp1PWy9OLNnO6uPP1lSh/M6qspDnpNngDAOKki/eUGS7YNUmQkz1a76S7S1oq7/ EGubvqZvUWMZIlMSQ7zntiYvTPW1X7AD0oeyJm9iT9iRfhA5F4/H0WfXNko75EM30U4=
+X-CM-Analysis: v=2.4 cv=Ceda56rl c=1 sm=1 tr=0 ts=691c03b4 a=RES+y31bSy/BcHStaSTKQg==:617 a=xqWC_Br6kY4A:10 a=IkcTkHD0fZMA:10 a=d70CFdQeAAAA:8 a=lefHfciQTmdIgl6NApMA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10 a=NcxpMcIZDGm-g932nG_k:22
+X-AuthUser: michael.opdenacker@rootcommit.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251117_173940_531551_C9DB5783 
-X-CRM114-Status: UNSURE (   7.79  )
+X-CRM114-CacheID: sfid-20251117_212725_722819_E5ADE1C6 
+X-CRM114-Status: UNSURE (   8.94  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -77,39 +120,47 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add documentation for the rockchip rk3576 CAN controller.
-
-Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
----
- .../devicetree/bindings/net/can/rockchip,rk3568v2-canfd.yaml  | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
-
-diff --git a/Documentation/devicetree/bindings/net/can/rockchip,rk3568v2-canfd.yaml b/Documentation/devicetree/bindings/net/can/rockchip,rk3568v2-canfd.yaml
-index a077c0330013..d63c8c8e3f45 100644
---- a/Documentation/devicetree/bindings/net/can/rockchip,rk3568v2-canfd.yaml
-+++ b/Documentation/devicetree/bindings/net/can/rockchip,rk3568v2-canfd.yaml
-@@ -16,7 +16,9 @@ allOf:
- properties:
-   compatible:
-     oneOf:
--      - const: rockchip,rk3568v2-canfd
-+      - enum:
-+          - rockchip,rk3568v2-canfd
-+          - rockchip,rk3576-can
-       - items:
-           - const: rockchip,rk3568v3-canfd
-           - const: rockchip,rk3568v2-canfd
--- 
-2.34.1
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgRHJhZ2FuCgpPbiAxMS8xNS8yNSAwMTo1MiwgRHJhZ2FuIFNpbWljIHdyb3RlOgo+IEknbSBz
+b3JyeSBhZ2FpbiBmb3Igbm90IG1lbnRpb25pbmcgaXQgaW4gbXkgZWFybGllciByZXNwb25zZXMs
+Cj4gYnV0IHNob3VsZG4ndCB0aGlzIGFkZGl0aW9uIGJlIHNwZWNpZmllZCBsaWtlIGJlbG93Ogo+
+Cj4gICAgICAgLSBkZXNjcmlwdGlvbjogQXN1cyBUaW5rZXIgQm9hcmQgMy8zUwo+ICAgICAgICAg
+aXRlbXM6Cj4gICAgICAgICAgIC0gZW51bToKPiAJICAgLSBhc3VzLHJrMzU2Ni10aW5rZXItYm9h
+cmQtMwo+ICAgICAgICAgICAgIC0gYXN1cyxyazM1NjYtdGlua2VyLWJvYXJkLTNzCj4gICAgICAg
+ICAgIC0gY29uc3Q6IHJvY2tjaGlwLHJrMzU2Ngo+Cj4gLi4uIGJlY2F1c2UgdGhlIGludHJvZHVj
+ZWQgLmR0cyBmaWxlcyBkZWZpbmUgdGhlIGFjdHVhbCBib2FyZCBEVHMsCj4gYnkgZGVzY2VuZGlu
+ZyBmcm9tIHRoZSBjb21tb24gLmR0c2kgZmlsZSwgd2hpbGUgdGhleSdyZSBjb21wYXRpYmxlCj4g
+aW4gdGhlIHNlbnNlIG9mIHRoZSAzUyBib2FyZCB2YXJpYW50IGV4dGVuZGluZyB0aGUgMyB2YXJp
+YW50LgoKQWN0dWFsbHksICJtYWtlIGR0YnNfY2hlY2siIGZhaWxzIGlmIHJrMzU2Ni10aW5rZXIt
+Ym9hcmQtM3MuZHRzIGhhczoKY29tcGF0aWJsZSA9ICJhc3VzLHJrMzU2Ni10aW5rZXItYm9hcmQt
+M3MiLCAKImFzdXMscmszNTY2LXRpbmtlci1ib2FyZC0zIiwgInJvY2tjaGlwLHJrMzU2NiI7CgpU
+aGUgZmFpbHVyZSBpczoKYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1NjYtdGlua2Vy
+LWJvYXJkLTNzLmR0YjogLyAKKGFzdXMscmszNTY2LXRpbmtlci1ib2FyZC0zcyk6IGNvbXBhdGli
+bGU6ICdvbmVPZicgY29uZGl0aW9uYWwgZmFpbGVkLCAKb25lIG11c3QgYmUgZml4ZWQ6CiDCoCDC
+oCBbJ2FzdXMscmszNTY2LXRpbmtlci1ib2FyZC0zcycsICdhc3VzLHJrMzU2Ni10aW5rZXItYm9h
+cmQtMycsIAoncm9ja2NoaXAscmszNTY2J10gaXMgdG9vIGxvbmcKIMKgIMKgIFsnYXN1cyxyazM1
+NjYtdGlua2VyLWJvYXJkLTNzJywgJ2FzdXMscmszNTY2LXRpbmtlci1ib2FyZC0zJywgCidyb2Nr
+Y2hpcCxyazM1NjYnXSBpcyB0b28gc2hvcnQKCklmIEkgdW5kZXJzdGFuZCBjb3JyZWN0bHksIHRv
+IGtlZXAgdGhlwqByazM1NjYtdGlua2VyLWJvYXJkLTNzLmR0cyBmaWxlIAphcyBpdCBpcywgeW91
+IG5lZWQgQXN1cyBUaW5rZXIgQm9hcmQgMyBhbmQgM1MgdG8gaGF2ZSB0d28gZGlmZmVyZW50IApk
+ZXNjcmlwdGlvbnMgYXMgaW4gVjI6CgotIGRlc2NyaXB0aW9uOiBBc3VzIFRpbmtlciBCb2FyZCAz
+IGl0ZW1zOiAtIGNvbnN0OiAKYXN1cyxyazM1NjYtdGlua2VyLWJvYXJkLTMgLSBjb25zdDogcm9j
+a2NoaXAscmszNTY2IC0gZGVzY3JpcHRpb246IEFzdXMgClRpbmtlciBCb2FyZCAzUyBpdGVtczog
+LSBjb25zdDogYXN1cyxyazM1NjYtdGlua2VyLWJvYXJkLTNzIC0gY29uc3Q6IAphc3VzLHJrMzU2
+Ni10aW5rZXItYm9hcmQtMyAtIGNvbnN0OiByb2NrY2hpcCxyazM1NjYKClRoZSBvdGhlciBzb2x1
+dGlvbiBpcyB0byByZW1vdmUgdGhlICJhc3VzLHJrMzU2Ni10aW5rZXItYm9hcmQtMyIgCmNvbXBh
+dGlibGUgZnJvbcKgcmszNTY2LXRpbmtlci1ib2FyZC0zcy5kdHMsIHdoaWNoIGlzIG5vdCBhIGJp
+ZyBkZWFsIGluIApteSBvcGluaW9uLiBJbiBhZGRpdGlvbiwgaWYgc29tZSBjb2RlIHR1cm5zIG91
+dCB0byB3b3JrIG9ubHkgb24gMyBidXQgCm5vdCBvbiAzUywgdGhvdWdoIHRoYXQncyBub3QgZXhw
+ZWN0ZWQgaWYgM1MgaXMgaW5kZWVkIGEgc3VwZXJzZXQgb2YgMywgCndlIHdvbid0IGJlIHN0dWNr
+LgoKSSBjYW4gc3VibWl0IGEgVjMgYWxvbmcgdGhlc2UgbGluZXMuCkNoZWVycwpNaWNoYWVsLgoK
+LS0gCk1pY2hhZWwgT3BkZW5hY2tlcgpSb290IENvbW1pdApZb2N0byBQcm9qZWN0IGFuZCBPcGVu
+RW1iZWRkZWQgVHJhaW5pbmcgY291cnNlIC0gTGVhcm4gYnkgZG9pbmc6Cmh0dHBzOi8vcm9vdGNv
+bW1pdC5jb20vdHJhaW5pbmcveW9jdG8vCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tj
+aGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1h
+bi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
