@@ -4,75 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D153CEE351
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Nov 2025 20:45:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9337CEE35F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Nov 2025 21:43:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bIKwIohH8Wkeq2rFOmKSBXrHy+UPxAdeFDgQUqeZiIE=; b=eaWV7xO32+j06v
-	8kuIJHBFdADGzYC/FBYgGGiJNc8f8/cPWckQwqdNFza9+Gn4MykJQ6yjRq6VSGuRYr49Lx8xgHGUl
-	uLrZIP2Q+D+ESnba+wmKOEhqUDvxvoTVDlwRCpsENm25EiHCBGCas0zrJmBcwIc8GONMIfHuiZLIR
-	lc0vCz9h3CYzpyzTDy0LMrFnnnby3wVMPh0xgRTNM8uw/NdEK2U6hXRoA1y7ArsvbSaKrlpZnQmF1
-	AK8R8wQHNb0IpnuIyBuYyBhyadH+RTMb4GIkYw8tEEexkLPRLnL3LBGpaAfzCA99G7foBG3Ju6V2G
-	ICXyDw6nhT1wQaD1MbIA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=dAXgsz7Eo/di1S07hoMUN8DVot90PGWWmY44uXdjk1Q=; b=HRTcTWUJZxw6nM
+	vPuJSQTHTOq+FO8POn6tZ0Pcv/l1sq5MfAgdMxTEWXlZvsgCg3Foc45IueIefzs9uTOUod8hQb8gP
+	EOVA1+Y5YkNbSyjDWWIoPljB0776Mm8R4TSEnmgEkKDFExBd2+jh4YsNp20BiUxf6Y03INpEkAh6N
+	GnZqU6ltZPLAZlUAjWwdy5zw7PkKvlrHUc5Z8xnp32MdksyIGcBpxUEEhl+SKN16ikIInGnI4J2xj
+	ILjs0cqPe0TFEC1jMF4oyMFoP3Nzb2ImkGFW/S2njK4zy/kfWBhKqeQWdWaMW1x1NDvuexSwEgro1
+	aIZF+ot55r4C9AIZKCJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLSa7-000000015y8-3fea;
-	Tue, 18 Nov 2025 20:45:43 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vLTTs-000000018N6-2zTv;
+	Tue, 18 Nov 2025 21:43:20 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLSa6-000000015xb-2LsY;
-	Tue, 18 Nov 2025 20:45:42 +0000
+	id 1vLTTr-000000018Mt-1tsJ;
+	Tue, 18 Nov 2025 21:43:19 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id A3511601BC;
-	Tue, 18 Nov 2025 20:45:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 32F59C2BCB3;
-	Tue, 18 Nov 2025 20:45:33 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 611756012B;
+	Tue, 18 Nov 2025 21:43:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7BA5EC116D0;
+	Tue, 18 Nov 2025 21:43:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1763498741;
-	bh=LrsefOmy8EGZJbBvhiH/EY4R37o/mLzhhIaUXiOgkgI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ZBNTS4dFeqs1FxFndbuiQs+P0fZn5Hw4UTyl3rTK+ReloR30FDw/Xxk8gH4fQQpsF
-	 GwZoCV9JcAUtQmYn170bze64xD2/1D8MUO1meUJ8qXd9NLZ77u+7dIMTcUFDE4SV+L
-	 lRlB2nMpf+fyuXhnqkEys4h4pN/+b+Zv3zfG2fjxtVhI8l7OMzddngHZkyio7ZVa9L
-	 NhFNrhYDRt7+lj0mhg/yarjQMG/1RM3w0lr15pXPSELHseWixdv4RsZDCEjJ1iF0Df
-	 WIKGjP8UwpA+NT3MigFbYOnUA0ddqkKduzZA/AM79ITWi0prkGNCj/CUrWuvujYr5B
-	 jGu5g4/hp5R1g==
-Date: Tue, 18 Nov 2025 21:45:30 +0100
-From: Niklas Cassel <cassel@kernel.org>
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: Shawn Lin <shawn.lin@rock-chips.com>,
-	Manivannan Sadhasivam <mani@kernel.org>,
+	s=k20201202; t=1763502197;
+	bh=/DccbKxo0GnChl0C4CIrCj7Yv1sCs/9h37/YbO1FOhc=;
+	h=From:To:Cc:Subject:Date:From;
+	b=Fyr+5b1ioHIeLhruTgMZkGBFVJxUB2oLgyjAaqAPof7E+l81wsBvvAgQXLALgur/G
+	 sdW6SzakuazlI7jfz2o5EuyliPlZI6jtYVOvzZeN5HKcGvTugn36M5q/fV5ryci2w6
+	 5MEx/1IFXpP79/mxWJmTYfsdqdQIvXT1GeqblkeXq0nC0x5jWRCUEfasZX8esesa1A
+	 V1BuZOGMemWf22F8MxLOrtf6WmBJzO2gnKNuCo8MoGgXZFYI2y5erH5z64T1PsSOl/
+	 QFA6uRjpV66DA7FnPvvxl3m4wRVtlU0o4aLqM/Kmra9OYsqFThkLSmuqfzTVaTNXLF
+	 VGTfqqAvccj4Q==
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Niklas Cassel <cassel@kernel.org>,
+	Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Manivannan Sadhasivam <mani@kernel.org>,
 	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Rob Herring <robh@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
 	Kever Yang <kever.yang@rock-chips.com>,
-	Simon Xue <xxm@rock-chips.com>, Damien Le Moal <dlemoal@kernel.org>,
-	Dragan Simic <dsimic@manjaro.org>, FUKAUMI Naoki <naoki@radxa.com>,
+	Simon Xue <xxm@rock-chips.com>,
+	Damien Le Moal <dlemoal@kernel.org>,
+	Dragan Simic <dsimic@manjaro.org>,
+	FUKAUMI Naoki <naoki@radxa.com>,
 	Diederik de Haas <diederik@cknow-tech.com>,
-	Richard Zhu <hongxing.zhu@nxp.com>, Frank Li <Frank.li@nxp.com>,
+	Richard Zhu <hongxing.zhu@nxp.com>,
+	Frank Li <Frank.li@nxp.com>,
 	Lucas Stach <l.stach@pengutronix.de>,
 	Shawn Guo <shawnguo@kernel.org>,
 	Sascha Hauer <s.hauer@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>, Conor Dooley <conor@kernel.org>,
+	Fabio Estevam <festevam@gmail.com>,
+	Conor Dooley <conor@kernel.org>,
 	Krzysztof Kozlowski <krzk@kernel.org>,
 	Thierry Reding <thierry.reding@gmail.com>,
 	Jonathan Hunter <jonathanh@nvidia.com>,
-	Hans Zhang <hans.zhang@cixtech.com>, linux-tegra@vger.kernel.org,
-	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, kernel@pengutronix.de,
+	Hans Zhang <hans.zhang@cixtech.com>,
+	linux-tegra@vger.kernel.org,
+	linux-pci@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	kernel@pengutronix.de,
 	Bjorn Helgaas <bhelgaas@google.com>
-Subject: Re: [PATCH 1/4] PCI: dwc: Advertise L1 PM Substates only if driver
- requests it
-Message-ID: <aRza6quobL4obC58@ryzen>
-References: <aRRDzKFVTFTIuvvh@ryzen>
- <20251118203638.GA2591575@bhelgaas>
+Subject: [PATCH v2 0/4] PCI: dwc: Advertise L1 PM Substates only if driver requests it
+Date: Tue, 18 Nov 2025 15:42:14 -0600
+Message-ID: <20251118214312.2598220-1-helgaas@kernel.org>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20251118203638.GA2591575@bhelgaas>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,36 +93,55 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Nov 18, 2025 at 02:36:38PM -0600, Bjorn Helgaas wrote:
-> On Wed, Nov 12, 2025 at 09:22:36AM +0100, Niklas Cassel wrote:
-> > On Tue, Nov 11, 2025 at 04:16:08PM -0600, Bjorn Helgaas wrote:
-> > > --- a/drivers/pci/controller/dwc/pcie-designware-host.c
-> > > +++ b/drivers/pci/controller/dwc/pcie-designware-host.c
-> > > @@ -1060,6 +1060,8 @@ int dw_pcie_setup_rc(struct dw_pcie_rp *pp)
-> > >  		PCI_COMMAND_MASTER | PCI_COMMAND_SERR;
-> > >  	dw_pcie_writel_dbi(pci, PCI_COMMAND, val);
-> > >  
-> > > +	dw_pcie_config_l1ss(pci);
-> > 
-> > The name dw_pcie_config_l1ss() sounds like we are enabling l1ss.
-> > 
-> > I know naming is hard.
-> > 
-> > Perhaps dw_pcie_disable_unsupported_l1ss() ?
-> > 
-> > Or something similar.
-> 
-> "disable" sounds like something we do with a control register, and
-> here we want to remove the advertised support from the capabilities
-> register.
-> 
-> Maybe dw_pcie_hide_unsupported_l1ss()?
+From: Bjorn Helgaas <bhelgaas@google.com>
 
-Sounds good to me :)
+This is a follow-up to Niklas's patch at
+https://lore.kernel.org/r/20251017163252.598812-2-cassel@kernel.org.  That
+patch clears the L1 PM Substate Supported bits for the dw-rockchip driver,
+which doesn't yet do the device configuration to support the L1 Substates.
+
+This series does the same thing, but in the DWC core so it applies to all
+DWC-based drivers.  Drivers that do support L1 Substates (currently
+tegra194 and qcom) indicate that by setting "dw_pcie.l1ss_support", and the
+DWC core will leave the L1 PM Substate Supported bits alone.
+
+This also includes Shawn's patches to add the dw-rockchip support for L1
+Substates.
+
+The problem this fixes is that users are currently able to enable L1
+Substates, e.g., by
+
+  - building with with CONFIG_PCIEASPM_POWER_SUPERSAVE=y
+  - booting with "pcie_aspm.policy=powersupersave"
+  - echo powersupersave > /sys/module/pcie_aspm/parameters/policy
+  - echo 1 > /sys/bus/pci/devices/.../link/l1_1_aspm
+
+but this breaks devices if the platform doesn't support CLKREQ# or lacks
+Root Port configuration.  This series avoids that problem by preventing the
+kernel from enabling L1.x in the first place.
 
 
-Kind regards,
-Niklas
+Bjorn Helgaas (2):
+  PCI: dwc: Advertise L1 PM Substates only if driver requests it
+  PCI: tegra194: Remove unnecessary L1SS disable code
+
+Shawn Lin (2):
+  PCI: dw-rockchip: Configure L1SS support
+  arm64: dts: rockchip: Add PCIe clkreq stuff for RK3588 EVB1
+
+ .../boot/dts/rockchip/rk3588-evb1-v10.dts     |  7 ++-
+ .../pci/controller/dwc/pcie-designware-ep.c   |  2 +
+ .../pci/controller/dwc/pcie-designware-host.c |  2 +
+ drivers/pci/controller/dwc/pcie-designware.c  | 24 ++++++++++
+ drivers/pci/controller/dwc/pcie-designware.h  |  2 +
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c | 40 ++++++++++++++++
+ drivers/pci/controller/dwc/pcie-qcom.c        |  2 +
+ drivers/pci/controller/dwc/pcie-tegra194.c    | 48 ++++---------------
+ 8 files changed, 85 insertions(+), 42 deletions(-)
+
+-- 
+2.43.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
