@@ -4,81 +4,163 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4499FCF2560
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Nov 2025 21:43:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09432CF2561
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Nov 2025 22:09:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=v7UZFwlAKuSf8YyIXtZX0zUcUVqNYGtQ2taHcHCCOQU=; b=08wYVTajDj2twS
-	xH2/e84qd/5Wfb2qejJXv9+QwO5+EsDOnkIylsFzs9dSelT44RcIp6/SdeKsty8zHUKt551j4AthW
-	Nmd8KWkHBkScft5HCI8rnGFk76uF8FGqqMM65jPI9phD5R5aFy+6+0tycTVSHDbLeyag0OUZV3Toq
-	ThlQfBaUSyjwFLfT6LuZcSvYvF2V+F3veC9M0nNyQeDRHTgVw4WZv6Z9D3ykBsOP/1tNH3volQNtZ
-	S7Bvf9NqkKjCD9PFUGx+NT84t2xcyezvXGI3XaI468XqtemGweEy0+weBJkrw1oIFiecWQKWfKddM
-	fkCnpUj6WBYclsA+kmwQ==;
+	List-Owner; bh=FvwDFAV6wrO6PIRzPKNoHfOEMtg3GHRzd266MOVxT4E=; b=aqQD+quGMxp5NB
+	Z+XcCsuP2bWhetPuOJCyu0IHhSSuFxGc/6wBxerYmjphNl7QN2JkcxCkqumvF4Rb00G9jHp52Zhg4
+	Mw+//RK6kI/gonzerTeBNa73/wqCByVTmyg6sEsln/CLkWWM0jvi8e9fO4FpChugPHBP+F2awLxie
+	LfUzX7cu/5XN7/OCNnPli0B8baL7itnGnhijEZ3GaTqII6+yoKqS2vErk5cSHFzGXX7SHyHYlZvkZ
+	/wUUKEiOWWFLyTltnChiYTF2RvHA+q/JXvAaYxDPqJg/4TuUr6y7Sf+Ddbukw7CcafM7y7kpyAbdP
+	v75SRAYzxfT+mTFQsHXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLTU5-000000018Uy-29HA;
-	Tue, 18 Nov 2025 21:43:33 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vLTsn-000000019z3-15PP;
+	Tue, 18 Nov 2025 22:09:05 +0000
+Received: from mail-francecentralazon11013002.outbound.protection.outlook.com ([40.107.162.2] helo=PA4PR04CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLTTy-000000018Pj-0gms;
-	Tue, 18 Nov 2025 21:43:26 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 8FFF5601DE;
-	Tue, 18 Nov 2025 21:43:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D1842C2BC86;
-	Tue, 18 Nov 2025 21:43:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1763502205;
-	bh=SuvClo8RiSU3x1wbrfjROlN5cIxIlnveUrYmq9+g6QI=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=EJACl60d2E4PwNBxdK5Kjl5uK7Nek+3HVy3C393Fr+9JK/CrowSSzl9D6Btz7M28p
-	 AgPto+yFv9378+8W3u6zhj/YO3Mm+Nn6flrg46zZPgatrWVC9xXVNkOwIfd+FVmu6E
-	 yyp10Q7UhVHwzqu4kC25bTFGenEUjVQ8cVnGQdMdl4Ed0Jj6f26wYgQICgkV1+HJX3
-	 NtYp3Xan5JPiz/RMYP5FgD5etuVKs+w6BTrhLEtAe/QFWT28/X/kAs6ExEWxrD/tI2
-	 BxUBZqZvlEZ2dKOni8SS3E9I3iHXgvPDGVaxzzcBkNoLcFs9+ZiQLlVMSbDfzJCITw
-	 hZ50fdN3/aZCQ==
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Niklas Cassel <cassel@kernel.org>,
-	Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Manivannan Sadhasivam <mani@kernel.org>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	id 1vLTsj-000000019yI-314Z;
+	Tue, 18 Nov 2025 22:09:03 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=dkBDDl9X/JfOCRNPFQaONcebd5RPfsfIoon3OTznprANeC/IBNE8PKH48TXNIPYzHtCv1ypLsRcF4l4HlfURnpiR6n6uBNL4QPZMJ0w0cHcOO/H4JtD0Bc+Z7/sG8RmC+u8gzY79xxk7tBaILgc54lRHayFZgq0KxK8qO+qtyXUdXpU/4esm+tFca+g93W88i00qAF+Zx5M5rX+AMS2gk78tYrhQHhSerDr54QiRm3DsAGANfaC8KVUCY4Fb3ZyzqgrC3ai5bJNFQnYKqhTskp1GDGaaWZKymCAQrk8WYhqcPtUMQxNfgmDoaBgRgR1OTpu1RJnxiPYJQDSZ8yxeTA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=X6mUgZ4ZevdFG3JLNBAo7BMj6krIfrMfU26sB0nVN5o=;
+ b=wkoHBG1SWhsubysZaJJCrABRHuqvwcg6i4gSnsCFgmEzJVShGbEcPdsd670whBbcAPdK/WIcWKXJs9gFsgApzE6lYF+bLTB2NmEMql0JQvLwKUooySeU61ak3VO+R/VembFKyAdgwTAl2mV7b13FGTPYIutyBId2jGzRgJarjEHW3NTyyifHzYkvZJPQMehbR+cPHJrorHiqTf588XESGwqZgEmuXD8qN49ReGOHQjIV6ar/2BOxgWPUNpbyBX8tl8M0JloawdIkzxoGBqKpFTGRIk9VCXwHNihlIFfi8prVJjZuPqMqnsDtk/JXPLw6XIbgD+cKzy769IfuL6+adA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=X6mUgZ4ZevdFG3JLNBAo7BMj6krIfrMfU26sB0nVN5o=;
+ b=guacJS7U2g/k9fRG4xYlAHqp4ZUitFD66fmGZ1pL4EzSldKaNdPAwYiwiUzUJQ1Y+z49OuJUz7FHmBH38DG14fNaRE5hxX9jMzqAcLqG0l38qz1mTWrxlErgbB2C9jfuyW+P+8j9hlFpjxJNtUWP8jXSjD5vm/2Mgyi4eC9MgmYzfvRNjylfu2JFSpuAOA8PJXuRActC5sXBY9uTmO/Aw4WyFm8bw32lCbc4A7fQBF1ryKGW6kuAIq/a8ZuiZvdCxHsE1mHzQp4auaml9wrQ24JO2xoYOAAO4SKLADyRarsArADDEzQjhwVUsuDCoStELuprxohwFmxl7MpJHICNww==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nxp.com;
+Received: from DB9PR04MB9626.eurprd04.prod.outlook.com (2603:10a6:10:309::18)
+ by MRWPR04MB11998.eurprd04.prod.outlook.com (2603:10a6:501:96::14) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9343.10; Tue, 18 Nov
+ 2025 22:08:56 +0000
+Received: from DB9PR04MB9626.eurprd04.prod.outlook.com
+ ([fe80::55ef:fa41:b021:b5dd]) by DB9PR04MB9626.eurprd04.prod.outlook.com
+ ([fe80::55ef:fa41:b021:b5dd%4]) with mapi id 15.20.9320.021; Tue, 18 Nov 2025
+ 22:08:56 +0000
+Date: Tue, 18 Nov 2025 17:08:47 -0500
+From: Frank Li <Frank.li@nxp.com>
+To: Michael Riesch <michael.riesch@collabora.com>
+Cc: Mehdi Djait <mehdi.djait@linux.intel.com>,
+	Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Hans Verkuil <hverkuil@kernel.org>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
 	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
 	Heiko Stuebner <heiko@sntech.de>,
-	Kever Yang <kever.yang@rock-chips.com>,
-	Simon Xue <xxm@rock-chips.com>,
-	Damien Le Moal <dlemoal@kernel.org>,
-	Dragan Simic <dsimic@manjaro.org>,
-	FUKAUMI Naoki <naoki@radxa.com>,
-	Diederik de Haas <diederik@cknow-tech.com>,
-	Richard Zhu <hongxing.zhu@nxp.com>,
-	Frank Li <Frank.li@nxp.com>,
-	Lucas Stach <l.stach@pengutronix.de>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	Conor Dooley <conor@kernel.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Hans Zhang <hans.zhang@cixtech.com>,
-	linux-tegra@vger.kernel.org,
-	linux-pci@vger.kernel.org,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Collabora Kernel Team <kernel@collabora.com>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	linux-media@vger.kernel.org, devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	kernel@pengutronix.de,
-	Bjorn Helgaas <bhelgaas@google.com>
-Subject: [PATCH v2 3/4] PCI: dw-rockchip: Configure L1SS support
-Date: Tue, 18 Nov 2025 15:42:17 -0600
-Message-ID: <20251118214312.2598220-4-helgaas@kernel.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20251118214312.2598220-1-helgaas@kernel.org>
-References: <20251118214312.2598220-1-helgaas@kernel.org>
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 2/3] media: rockchip: add driver for the rockchip mipi
+ csi-2 receiver
+Message-ID: <aRzub5Ak6DZpO5f/@lizhi-Precision-Tower-5810>
+References: <20251114-rockchip-mipi-receiver-v2-0-eb9b43377fc4@collabora.com>
+ <20251114-rockchip-mipi-receiver-v2-2-eb9b43377fc4@collabora.com>
+ <aRyplYZOrGsSxSlp@lizhi-Precision-Tower-5810>
+ <554971e1-6fde-4b2c-a2de-fe178358a4e3@collabora.com>
+Content-Disposition: inline
+In-Reply-To: <554971e1-6fde-4b2c-a2de-fe178358a4e3@collabora.com>
+X-ClientProxiedBy: BY3PR10CA0017.namprd10.prod.outlook.com
+ (2603:10b6:a03:255::22) To DB9PR04MB9626.eurprd04.prod.outlook.com
+ (2603:10a6:10:309::18)
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DB9PR04MB9626:EE_|MRWPR04MB11998:EE_
+X-MS-Office365-Filtering-Correlation-Id: 6859689e-1d42-49d6-f6e1-08de26ef114d
+X-LD-Processed: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635,ExtAddr
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|376014|52116014|19092799006|7416014|1800799024|38350700014|7053199007;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?7i0iB2zuOgtkoEihNVxR2gSFhB0eaTBjVdrb+S6eExC9TNMudUbUg8IOsMl2?=
+ =?us-ascii?Q?5psbeN/gU04GoshmFimKPvxYYzdmKUqpXK/HmsI3DBFIiB41vp8ttMKh3ZhF?=
+ =?us-ascii?Q?KqhHyVXbn/svAmS8geNm2YJi4CDgF83o+/HSHglwyePUBlGe91EdGAO0RvRm?=
+ =?us-ascii?Q?C2B8u8CFL/G+DRjrZwB+bUvin9NlZGctM+7HdeoOzWNXNGKmANcJF/zE/dTb?=
+ =?us-ascii?Q?BoGAv0tYNFL5emH5vgPWpmHCFrIBOn0JLinBA+C4zafNzX0EpRoCQCwNa8Jr?=
+ =?us-ascii?Q?xbrn3gnuX48hbs1zLfNy+vbOMDMTUGUzfo9O68M5x5LMNtvzkfTB0UWLdSTE?=
+ =?us-ascii?Q?00xvIv8LXVsk8Ry/yz9I3qAnooh/2NsyeLm6vVln0/1JL2/HqvCQVJA01ICd?=
+ =?us-ascii?Q?yHu3nQFXPaQ44hKvekGdRflj+nYP9CfirtVlTE6aW9nPyLT4AjHfBDTG27rN?=
+ =?us-ascii?Q?+qC3P1srlEDR3lwN+SYrHpfr9qb4AQGRw+zvaRhBi20237scuP2Wvlpg2yty?=
+ =?us-ascii?Q?fTwQWuLMHgcmVfiMDBH2LJsiZDxonCJi01y2LnkvAx/fe9XlaPlKI4+SLp1P?=
+ =?us-ascii?Q?21ZpMoc5H6y1pBdjAD+R2U85q6XP7WFcKWZXrRkbmsctwEqBJd9w1gy4koM7?=
+ =?us-ascii?Q?JtR2a85XW/jZ6YAQyUijKb4FapEETtkvqI0EP+ngrNL+//6xlmM+RG90Np0L?=
+ =?us-ascii?Q?T7dFnWNVSuylPlGW76RE/QtyYGJCK+v3JJrHYV0ienyv1gvESSMeDdc/bSjj?=
+ =?us-ascii?Q?P4AK1QYSSFkCL5MeeW/UM56QSEQRxx2Ks9lAhWfrOtuqYIb3KT6wz/+q772n?=
+ =?us-ascii?Q?8UEppJ7pGXBs9DvG6IMvv23U0JJCB8HvCuu9T6+XTDpgA6y71iflUCTthCd8?=
+ =?us-ascii?Q?TlVTd7X5M82U7bMsVguQ/tEp1eqYxMScw8Lt+JK3yyClR72fk8FwXqtrmR/9?=
+ =?us-ascii?Q?pReBzDDZYh57Vu/SxaxhY7tjY/kUqj1F03tgWGzJoctLIGoCd0y+iOgXOgA/?=
+ =?us-ascii?Q?tWrSl/WiExUsICx3sun42Gxmxt7vwzTEfqdfrUHI2zCyJmZO26GIPWrFvCJT?=
+ =?us-ascii?Q?MC8tu+MvQJ42e/4vPTFqQrYHXOUV5/NbJlsbUKzkLi28Nej5tyvVXZgVlToD?=
+ =?us-ascii?Q?SShifq00AnAazwNo9wsKdpsukdQ3LkHhrhALNJ7Eu6xY8ykGw/llrZYOg0xt?=
+ =?us-ascii?Q?Vk9MrsVnZq+IyDlh9qqsGD3W1MV4UX9PnJU7RoRiYkpPNVIKyiE2kwGh+pN7?=
+ =?us-ascii?Q?Ddc0SIhmPpRezM+wd9tfHfmzSFX4twlKVTgLM2IWqkjQEKrGOh8TX8qN4NBl?=
+ =?us-ascii?Q?Ke8mUmTeO9ot29uAfX0TVIQvnYmYHAmIS8rjZinpud5ArJw2XCcaJMdBv7tA?=
+ =?us-ascii?Q?uCE5APeQYxwLokqepP9RC4exLj7Zk1nmb/drz6+F4HfM9AofPk4j7mR91b0U?=
+ =?us-ascii?Q?Ul2wzj18AaUE5dwwe1daSZpBIc5wvzzCxtYiP5i64LBQRoS1OpMZbMH95zt8?=
+ =?us-ascii?Q?QZYKQExZA4oEYaeXCxrCgOawLsYL0Ih25uWpA/3NP0F40/xDcGLaGFT4Lg?=
+ =?us-ascii?Q?=3D=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DB9PR04MB9626.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(376014)(52116014)(19092799006)(7416014)(1800799024)(38350700014)(7053199007);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?5HwP99tZNpecWHMJfzv+EOTQE1llK8edy+OcXyhXFaDyf2k6ZiISBzXqSl8u?=
+ =?us-ascii?Q?z/b/GS4dQDOWGqc1NKpzbcbdgLochDESOvuUUScOLm12ATk1mKLIsK2ozmBg?=
+ =?us-ascii?Q?rxD5ytTCLTTiVTnsxYKRbvOyaLUcTeVXGKTCBjSluRY/aZq7Hyh+ZvViDaMB?=
+ =?us-ascii?Q?tOCAFV0tSAMS4ItOqFrtZKUz0CnGaFSVREAEKVk+CHI8OotHfn2Ho2YaMkLv?=
+ =?us-ascii?Q?hYDU+DLYcvZOmCCCxekhKh1Z5EWkqVwwzW89EVykgO6CAC2O7+CqKan4YwAp?=
+ =?us-ascii?Q?7wIoSrK+HCcEivSUnKXjAfCKpTDd8yXBrIt8pE7QZagrG0XJdhf53z0Xv6In?=
+ =?us-ascii?Q?zjnD6F4lsrkWTf2JxM4g2YeD3PsbZ2Fbx6XACpKCXtji7wL0EuFxNdmgVylZ?=
+ =?us-ascii?Q?NhnJZwQtEYq8RB8/BGhichbI7PfCUHLYHXDbwvdQJTzF1IDn7s9uxADAPSuK?=
+ =?us-ascii?Q?+bNMSbcIrWNpod34zUqmell1jsggracvXDrRg1ZxMz178LBS859EsH1KDNBk?=
+ =?us-ascii?Q?rxXxQFT10kA4JZjTaxC3wRI6P84cPJ+9xQAYe5iCooLDbslEftg2FHA0tDZg?=
+ =?us-ascii?Q?lOysKU2IJNTPn2HJkqUgpj8iji53XhSPgFDonn/0+4G6DI5hJxP31Fn9Ogw8?=
+ =?us-ascii?Q?RRoFxVurCDeNxA3qRSQgUG6Ov2xKmocQPwJCdBZ9XRkD9Ng93vPGKk25bW3y?=
+ =?us-ascii?Q?G48akEPWS3hqc8N1TMar7qGK33dYJXjgh1q+wrwzzFX+EuWhVthd+B/3/lpd?=
+ =?us-ascii?Q?jF1C9+B/CXopPHN4hFPpFW+dhUoIWNZF0rvEFzxzmWmhC/xyrPByJDFwvm1w?=
+ =?us-ascii?Q?/2Jz8oqkLMOxVOGVSuY9VfslSBy0+bSnEekHnflSv5yinNaYxBDjQ3LykdxW?=
+ =?us-ascii?Q?gYsHeV8bZz2WObCwxDBSZHT+yxordJJnQikciNsfCVxM33S0DOPHn4Vd6GPu?=
+ =?us-ascii?Q?3w3T57bw5gGvYWJ3R3wNgyR/4a3gbLdptBK3EW8RJ2XIhlcJf0GNodCrDDLa?=
+ =?us-ascii?Q?D1QR0JbTUxTyzMvAuJQFEcKhWFarpAa0Nd5nXYf4Iza+em8Bzooji1l9hgEd?=
+ =?us-ascii?Q?t8+F0zx/TcqrB98OiNeR47FRNUWJq6+z9XqEPWZyiqXFOiIWyQ+FHfblDIWY?=
+ =?us-ascii?Q?iyw8s/sqHSmSueOqcF6f+Vnb2iJGIpivhnlS0GQH8uuHdTNIOYBw0GzLYwnM?=
+ =?us-ascii?Q?DxzTYajqwFuIb+wL+Pn0nVWtlfpzyW5mNkvmUcyg4nZ+KdCf1YJCrOO9whEv?=
+ =?us-ascii?Q?V33xVjkyw/ZQ4/6eN2nGA9JNN5T9o2Xv4OHlJaLnI6J6sP+jN7gIKsrs3lHD?=
+ =?us-ascii?Q?wRZDPJxYhdW3Mjuico74zbGDE8onlI8YkLJax0gHLISylys0XtYv3+kGKOyp?=
+ =?us-ascii?Q?Bi6GyZJu7mDh+l7F623oZdtuHpPTQM5omo7PHzQiYuQ+qBxwraHrQVbwbCxB?=
+ =?us-ascii?Q?bFd5FeEax3/Y+TpUB5Y2yH2sNEv8FdjIByolmbdW/epjZPTTP1SJh2bvUd9B?=
+ =?us-ascii?Q?/N3zUsbwERC5RMT68l6TpuuYiAy9r12e2MXCpr2yjebq02Uetkx6HnhnfS4Q?=
+ =?us-ascii?Q?pccNoVLjG3swi61oFrY=3D?=
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6859689e-1d42-49d6-f6e1-08de26ef114d
+X-MS-Exchange-CrossTenant-AuthSource: DB9PR04MB9626.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 18 Nov 2025 22:08:56.5770
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: VKgsgrZINSNLlQPERyrIQd9Z62jQyST6neb1cMDx6Q0Ms5beOq2HUweCSXgDCiWf8/pdXIyDJ2nH2VgC2OHihA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MRWPR04MB11998
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251118_140901_784512_BB209A0D 
+X-CRM114-Status: GOOD (  19.90  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,108 +177,59 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Shawn Lin <shawn.lin@rock-chips.com>
+On Tue, Nov 18, 2025 at 07:59:14PM +0100, Michael Riesch wrote:
+> Hi Frank,
+>
+> On 11/18/25 18:15, Frank Li wrote:
+> > On Tue, Nov 18, 2025 at 12:12:26PM +0100, Michael Riesch via B4 Relay wrote:
+> >> From: Michael Riesch <michael.riesch@collabora.com>
+> >>
+> >>[...]
+> >> +#define CSI2HOST_N_LANES     0x04
+> >> +#define CSI2HOST_CSI2_RESETN 0x10
+> >> +#define CSI2HOST_PHY_STATE   0x14
+> >> +#define CSI2HOST_ERR1	     0x20
+> >> +#define CSI2HOST_ERR2	     0x24
+> >> +#define CSI2HOST_MSK1	     0x28
+> >> +#define CSI2HOST_MSK2	     0x2c
+> >> +#define CSI2HOST_CONTROL     0x40
+> >
+> > Look like that is designware CSI2 controller, can we build common library
+> > for all dwc csi2 controller, instead of every vendor create individual one.
+> >
+> > First try at
+> > https://lore.kernel.org/linux-media/20250821-95_cam-v3-21-c9286fbb34b9@nxp.com/
+> >
+> > Toshiba have similar patch
+> > https://lore.kernel.org/linux-media/aPZd39riAxqfw3mT@lizhi-Precision-Tower-5810/
+> >
+> > Frank
+>
+> This has been discussed already a while ago:
+> https://lore.kernel.org/all/20250507083837.GA11152@pendragon.ideasonboard.com/
 
-L1 PM Substates for RC mode require support in the dw-rockchip driver
-including proper handling of the CLKREQ# sideband signal. It is mostly
-handled by hardware, but software still needs to set the clkreq fields
-in the PCIE_CLIENT_POWER_CON register to match the hardware implementation.
+https://lore.kernel.org/all/20250702093806.GF16835@pendragon.ideasonboard.com/
 
-For more details, see section '18.6.6.4 L1 Substate' in the RK3568 TRM 1.1
-Part 2, or section '11.6.6.4 L1 Substate' in the RK3588 TRM 1.0 Part2.
+Laurent Pinchart prevent imx93 DWC CSI2 driver at Jul, your discussion at
+May, I think Laurent Pinchart change the mind.
 
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-[bhelgaas: set pci->l1ss_support so DWC core preserves L1SS Capability bits;
-drop corresponding code here, include updates from
-https://lore.kernel.org/r/aRRG8wv13HxOCqgA@ryzen]
-Signed-off-by: Bjorn Helgaas <bhelgaas@google.com>
-Link: https://patch.msgid.link/1761187883-150120-1-git-send-email-shawn.lin@rock-chips.com
----
- drivers/pci/controller/dwc/pcie-dw-rockchip.c | 40 +++++++++++++++++++
- 1 file changed, 40 insertions(+)
+We can choose not base on imx6, but we should create a standard dwc2 under
+drivers/media/platform/synopsys/
 
-diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-index 3e2752c7dd09..bcd3a28da650 100644
---- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-+++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-@@ -62,6 +62,12 @@
- /* Interrupt Mask Register Related to Miscellaneous Operation */
- #define PCIE_CLIENT_INTR_MASK_MISC	0x24
- 
-+/* Power Management Control Register */
-+#define PCIE_CLIENT_POWER_CON		0x2c
-+#define  PCIE_CLKREQ_READY		FIELD_PREP_WM16(BIT(0), 1)
-+#define  PCIE_CLKREQ_NOT_READY		FIELD_PREP_WM16(BIT(0), 0)
-+#define  PCIE_CLKREQ_PULL_DOWN		FIELD_PREP_WM16(GENMASK(13, 12), 1)
-+
- /* Hot Reset Control Register */
- #define PCIE_CLIENT_HOT_RESET_CTRL	0x180
- #define  PCIE_LTSSM_APP_DLY2_EN		BIT(1)
-@@ -85,6 +91,7 @@ struct rockchip_pcie {
- 	struct regulator *vpcie3v3;
- 	struct irq_domain *irq_domain;
- 	const struct rockchip_pcie_of_data *data;
-+	bool supports_clkreq;
- };
- 
- struct rockchip_pcie_of_data {
-@@ -200,6 +207,35 @@ static bool rockchip_pcie_link_up(struct dw_pcie *pci)
- 	return FIELD_GET(PCIE_LINKUP_MASK, val) == PCIE_LINKUP;
- }
- 
-+/*
-+ * See e.g. section '11.6.6.4 L1 Substate' in the RK3588 TRM V1.0 for the steps
-+ * needed to support L1 substates. Currently, just enable L1 substates for RC
-+ * mode if CLKREQ# is properly connected and supports-clkreq is present in DT.
-+ * For EP mode, there are more things should be done to actually save power in
-+ * L1 substates, so disable L1 substates until there is proper support.
-+ */
-+static void rockchip_pcie_configure_l1ss(struct dw_pcie *pci)
-+{
-+	struct rockchip_pcie *rockchip = to_rockchip_pcie(pci);
-+
-+	/* Enable L1 substates if CLKREQ# is properly connected */
-+	if (rockchip->supports_clkreq) {
-+		rockchip_pcie_writel_apb(rockchip, PCIE_CLKREQ_READY,
-+					 PCIE_CLIENT_POWER_CON);
-+		pci->l1ss_support = true;
-+		return;
-+	}
-+
-+	/*
-+	 * Otherwise, assert CLKREQ# unconditionally.  Since
-+	 * pci->l1ss_support is not set, the DWC core will prevent L1
-+	 * Substates support from being advertised.
-+	 */
-+	rockchip_pcie_writel_apb(rockchip,
-+				 PCIE_CLKREQ_PULL_DOWN | PCIE_CLKREQ_NOT_READY,
-+				 PCIE_CLIENT_POWER_CON);
-+}
-+
- static void rockchip_pcie_enable_l0s(struct dw_pcie *pci)
- {
- 	u32 cap, lnkcap;
-@@ -264,6 +300,7 @@ static int rockchip_pcie_host_init(struct dw_pcie_rp *pp)
- 	irq_set_chained_handler_and_data(irq, rockchip_pcie_intx_handler,
- 					 rockchip);
- 
-+	rockchip_pcie_configure_l1ss(pci);
- 	rockchip_pcie_enable_l0s(pci);
- 
- 	return 0;
-@@ -412,6 +449,9 @@ static int rockchip_pcie_resource_get(struct platform_device *pdev,
- 		return dev_err_probe(&pdev->dev, PTR_ERR(rockchip->rst),
- 				     "failed to get reset lines\n");
- 
-+	rockchip->supports_clkreq = of_property_read_bool(pdev->dev.of_node,
-+							  "supports-clkreq");
-+
- 	return 0;
- }
- 
--- 
-2.43.0
+Laurent Pinchart:
 
+	Can you provide direction?
+
+Frank
+
+>
+> Bottom line from Laurent:
+>
+> "Let's keep this driver Rockchip-specific then. Thanks for checking."
+>
+> >  [...]
+> Best regards,
+> Michael
 
 _______________________________________________
 Linux-rockchip mailing list
