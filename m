@@ -4,62 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 904C7CEBF61
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Nov 2025 00:54:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8734BCE8D6B
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Nov 2025 01:30:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=my0nf2bpY93+JeCQVlAaTH2ov/nR4MHH0X0jRGrhixU=; b=jBa9iGE/pFNeMT
-	LoU2btMGkyRijcr1zsj5IT1b8Sx8Fq+cnqL8TwEl0gRJjcw3cxwj/cvGS7qw6DCrKvNvyjIyH96Vh
-	SJRXBeYwb8TIcxOU0oo391+XcP4dxmNJnBKlJukSKUGE4KMYLdzqJIBB5DMrnpXm38rf9nFL0BoMY
-	GESvRtSliId7zlwLERaQYKe69NT1YgLVUC274YVuTKiOLFyRrnUg/OMIUqsrK4gkXSYzr2XrShKQi
-	mbZVzmU1Nhboss6hR1Tbw1Yz4d2PsTzqHq+R0vqi+2dR2dDCHHzT5EaEQxL2aa5Gg9gyvOva45Okd
-	sxdwEaVlA2znTzBjVp5A==;
+	List-Owner; bh=6jE2UdGwGIve1dtTM/L+ryOhJLa38/pPXFJzp6y2gBM=; b=IVSkL5FyQlNFWJ
+	oQmctbgrU81XXqRDJ9KlT4USIbhquXp+MmPHeyd0s/j4mT/IGpMmtRrfHfO+uN2mSd2NYCp2ZTFG0
+	wMy0GfkoUxurUqGJ3jFrxmTBFPrAV/mbG1VMcv5Pf26nEv2tEtLiU4jdqFa2gwAnXNxrn2fh0zcvv
+	FaryBVcQ5vEnp4CaOF9K6bkrXEc2EhloauNTeDwXTxr8q1ozP2ZxuR0VqfjV10ljhgsrHrNr9g29F
+	j8muW028ylgDKgGf8tLQamQTPhB63RaX7q/M7af3KX+ytVrvu9AVQtRQMXxyLnJK1Y4m/uAKG765j
+	hdrrRNp959GBoES65aIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vL9zT-0000000H6La-0x9n;
-	Tue, 18 Nov 2025 00:54:39 +0000
-Received: from mail-m155115.qiye.163.com ([101.71.155.115])
+	id 1vLAYN-0000000H8Lu-2G1K;
+	Tue, 18 Nov 2025 01:30:43 +0000
+Received: from mail-m3270.qiye.163.com ([220.197.32.70])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vL9zP-0000000H6JP-3QWy;
-	Tue, 18 Nov 2025 00:54:37 +0000
-Received: from [172.16.12.14] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 29e843e9e;
-	Tue, 18 Nov 2025 08:54:29 +0800 (GMT+08:00)
-Message-ID: <20d86c90-9066-4a44-8fff-f4e3edef256e@rock-chips.com>
-Date: Tue, 18 Nov 2025 08:54:26 +0800
+	id 1vLAYI-0000000H8L5-3jhZ;
+	Tue, 18 Nov 2025 01:30:41 +0000
+Received: from [172.16.12.51] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 29e9711a9;
+	Tue, 18 Nov 2025 09:30:31 +0800 (GMT+08:00)
+Message-ID: <26019e39-d36a-4290-ac80-c8b0b09104c8@rock-chips.com>
+Date: Tue, 18 Nov 2025 09:30:29 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Cc: shawn.lin@rock-chips.com, Lorenzo Pieralisi <lpieralisi@kernel.org>,
- open list <linux-kernel@vger.kernel.org>,
- =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
- Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>,
- Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>,
- "open list:PCIE DRIVER FOR ROCKCHIP" <linux-pci@vger.kernel.org>,
- "open list:PCIE DRIVER FOR ROCKCHIP" <linux-rockchip@lists.infradead.org>,
- "moderated list:ARM/Rockchip SoC support"
- <linux-arm-kernel@lists.infradead.org>
-Subject: Re: [RFC v1 0/5] Fix some register offset as per RK3399 TRM part 2
-To: Anand Moon <linux.amoon@gmail.com>
-References: <20251117181023.482138-1-linux.amoon@gmail.com>
-From: Shawn Lin <shawn.lin@rock-chips.com>
-In-Reply-To: <20251117181023.482138-1-linux.amoon@gmail.com>
-X-HM-Tid: 0a9a9474bc4909cckunma9a3e37740cfc
+Subject: Re: [PATCH v2 3/3] iommu: Allow drivers to say if they use
+ report_iommu_fault()
+To: Jason Gunthorpe <jgg@nvidia.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Christian Benvenuti <benve@cisco.com>, Heiko Stuebner <heiko@sntech.de>,
+ iommu@lists.linux.dev, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Joerg Roedel <joro@8bytes.org>, Leon Romanovsky <leon@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-rdma@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Nelson Escobar <neescoba@cisco.com>, Rob Clark
+ <robin.clark@oss.qualcomm.com>, Robin Murphy <robin.murphy@arm.com>,
+ Samuel Holland <samuel@sholland.org>,
+ Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
+ Chen-Yu Tsai <wens@csie.org>, Will Deacon <will@kernel.org>,
+ Yong Wu <yong.wu@mediatek.com>
+Cc: Lu Baolu <baolu.lu@linux.intel.com>, patches@lists.linux.dev
+References: <3-v2-25fc75484cab+ab-iommu_set_fault_jgg@nvidia.com>
+Content-Language: en-US
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+In-Reply-To: <3-v2-25fc75484cab+ab-iommu_set_fault_jgg@nvidia.com>
+X-HM-Tid: 0a9a9495ba3803abkunm15b0adc69f2477
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGUNDSFZKH01OGEwZSBkdHx5WFRQJFh
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGRkdHlYZGhhKTE4dT0kYQxhWFRQJFh
 	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
 	hVSktLVUpCS0tZBg++
 DKIM-Signature: a=rsa-sha256;
-	b=ZDj8c+t0H/ppLW12rpDdGxE+CcklsaHR0Rd2uwBf1hZX8AIYU+Oa5dYiiaT1g2ToLEpfU5V59tWZRVlanl/OJBzfZkMFaOEpjT4uJvMsV6lAexk7ovOhquNARon8M/qSR4rDyRx/lsPaPQUsIFq+WQ2EVUmikYiWUhfZK3LOPEc=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=9PXroKdeKungPKSuFMqQVLZ09bF3qbvunSo1wZ/xkxk=;
+	b=QRo1qMrOcfJjKh6zkNQm7Q+laoUJwAHpzYU+Kfpz2Zq1FQVguylVfS3NwtS9e2eavcEEnmDelf0Cvg+rdRCX0a5Ga6KMJ9m3Z32pyEpqYVaYKezexAoecIhCuJTveZ363vARWnJIw7yOvVgaM6baUYg4KhPn0q2mZr+M2K8HeyY=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=bxEjiiQIXypnGaMm2YV0gh5gU0/Rq/qPeCgs1Qr4rXw=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251117_165436_349452_497C032A 
-X-CRM114-Status: GOOD (  11.20  )
+X-CRM114-CacheID: sfid-20251117_173039_808915_43E02288 
+X-CRM114-Status: GOOD (  12.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,31 +79,43 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgQW5hbmQsCgrlnKggMjAyNS8xMS8xOCDmmJ/mnJ/kuowgMjoxMCwgQW5hbmQgTW9vbiDlhpnp
-gZM6Cj4gSW4gb3JkZXIgdG8gZW5hYmxlIEFTUE0gd2UgbmVlZCB0byBmaXggdGhlIHJlZ2lzdGVy
-IG9mZnNldCBhcwo+IFJLMzM5OSBUUk0gcGFydCAyIC0gUENJZSBDb250cm9sbGVyLgo+IAo+IFRl
-c3RlZCBvbiBSYWR4YSBSb2NrIFBpIDRiLgo+IAoKSSBjaGVja2VkIHlvdXIgcGF0Y2gsIGFuZCBp
-dCBsb29rcyBsaWtlIGluZGVlZCB3ZSBtYWRlIHNvbWUgbWlzdGFrZXMKaGVyZS4gQ291bGQgeW91
-IGFkZCBmaXhlcyB0YWcgZm9yIGVhY2g/CgpCVFcsIHJlZ2FyZGluZyB0byBwYXRjaCAxLCBJIHRo
-aW5rIHlvdSBzaG91bGQgbGVhdmUgb3V0IEFTUE0gcGFydCwgdGhhdApzaG91bGQgYmUgYW5vdGhl
-ciB0b3BpYyBhZnRlciB0aGVzZSBmaXhlcy4KCj4gVGhhbmtzCj4gLUFuYW5kCj4gCj4gQW5hbmQg
-TW9vbiAoNSk6Cj4gICAgUENJOiByb2NrY2hpcDogRml4IExpbmsgQ29udHJvbCByZWdpc3RlciBv
-ZmZzZXQgYW5kIGVuYWJsZSBBU1BNL0NMS1JFUQo+ICAgIFBDSTogcm9ja2NoaXA6IEZpeCBEZXZp
-Y2UgQ29udHJvbCByZWdpc3RlciBvZmZzZXQgZm9yIE1heCBwYXlsb2FkIHNpemUKPiAgICBQQ0k6
-IHJvY2tjaGlwOiBGaXggU2xvdCBDYXBhYmlsaXR5IFJlZ2lzdGVyIG9mZnNldCBmb3Igc2xvdCBw
-b3dlcgo+ICAgICAgbGltaXQKPiAgICBQQ0k6IHJvY2tjaGlwOiBGaXggTGluayBDb250cm9sIGFu
-ZCBTdGF0dXMgUmVnaXN0ZXIgMiBmb3IgdGFyZ2V0IGxpbmsKPiAgICAgIHNwZWVkCj4gICAgUENJ
-OiByb2NrY2hpcDogRml4IExpbmt3aWR0aCBDb250cm9sIFJlZ2lzdGVyIG9mZnNldCBmb3IgUmV0
-cmFpbiBMaW5rCj4gCj4gICBkcml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaWUtcm9ja2NoaXAtaG9z
-dC5jIHwgMzEgKysrKysrKysrKystLS0tLS0tLS0tCj4gICBkcml2ZXJzL3BjaS9jb250cm9sbGVy
-L3BjaWUtcm9ja2NoaXAuaCAgICAgIHwgIDUgKysrKwo+ICAgMiBmaWxlcyBjaGFuZ2VkLCAyMSBp
-bnNlcnRpb25zKCspLCAxNSBkZWxldGlvbnMoLSkKPiAKPiAKPiBiYXNlLWNvbW1pdDogZTdjMzc1
-YjE4MTYwMGNhZjEzNWNmZDAzZWFkYmM0NWViNTMwZjJjYgoKCl9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApM
-aW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQu
-b3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Hello Jason,
+
+On 11/7/2025 4:34 AM, Jason Gunthorpe wrote:
+> report_iommu_fault() is an older API that has been superseded by
+> iommu_report_device_fault() which is capable to support PRI.
+>
+> Only two external drivers consume this, drivers/remoteproc and
+> drivers/gpu/drm/msm. Ideally they would move over to the new APIs, but for
+> now protect against accidentally mix and matching the wrong components.
+>
+> The iommu drivers support either the old iommu_set_fault_handler() via the
+> driver calling report_iommu_fault(), or they are newer server focused
+> drivers that call iommu_report_device_fault().
+>
+> Include a flag in the iommu_ops if the driver calls report_iommu_fault()
+> and block iommu_set_fault_handler() for domain's of iommu drivers that
+> can't support it.
+>
+> Reviewed-by: Lu Baolu <baolu.lu@linux.intel.com>
+> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
+> Reviewed-by: Vasant Hegde <vasant.hegde@amd.com>
+> Reviewed-by: Kevin Tian <kevin.tian@intel.com>
+
+Sorry for the noise. Sometimes non-IOMMU drivers, such as DRM devices, also want to handle IOMMU fault events, so they might use iommu_set_fault_handler() before. What API should they use as an alternative now? Thank you.
+
+
+-- 
+Best,
+Chaoyi
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
