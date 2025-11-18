@@ -4,111 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E278CCD19A
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Nov 2025 05:27:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF60CCCD19A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Nov 2025 07:17:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Date:In-Reply-To:From:References:To:Subject:Cc:
-	MIME-Version:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JovqxeCQZRma0SrzPhJhQ+XG3XDEw4EJ4nDvew7dpUY=; b=NHD79b5f1wWaGSi8PN8/hu5AAa
-	q9neXZHAMH7lOyMxyG469LAfvf3mRfmmV5NYiZT9A+CwateVf3fahLejv6ygGhMCC8DDcv0b1SlEE
-	l5dHiZwxj2ApxhsCrNpBVqF59FHYUVQZIRegKE9qgAGTgC4ljOWfkQ86fQBaPJne5x6KBDazA2Ca5
-	vrUodzeLcuhLdzD2EL3eFWkfA4XRFA0T/WNfdkH9EQaRi/1naZPxjpWo6HZQ3xyDJ09GxcZZbneUy
-	Zet6qpieRQ4XAWC48iVhtb7/DBmhcDYw3nEI2CbA19uur+d1DAsww3tugxmdfOE9B2LZpthhf6DmP
-	41lJHlBA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=QlJ7AXsXBvARX1s0bVAODdxmbQ0sL42EQ/rgv5sYUn4=; b=4cFjn2pFQ2F+/H
+	ZtGfmJlmptzYa5v6sxozMkR3jIkIhBa02qpwAD8DTD6xJmy97nWfGUD4rRAgHKJDAGJOZJWAnT8Y1
+	CTklR4gA00D3Iws609kkLWjv1P1nJQJiAo//sNQdbBEgzimYqw1MV+s7rSg1OnaTmu7zfcTBt3Dqg
+	bW0GwwqDnk9PaLBEdVzLO9/cE8PIfvtQUsrHgS2wB5p3Md6a8ppBVloBsexrEy7y+LWXZdJIkINov
+	hNhxaghUA3q74CaM6Kv4SvxP5yiK2Z2pJVwJ7JvAcxf+gpRM8bmxed0CrwogmzeSqMx0Xp8IZk72j
+	CMIXqurLrgQrVv2Q9f1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLEFU-0000000HQkM-1lrQ;
-	Tue, 18 Nov 2025 05:27:28 +0000
-Received: from bumble.maple.relay.mailchannels.net ([23.83.214.25])
+	id 1vLFy4-0000000HXwF-1rJK;
+	Tue, 18 Nov 2025 07:17:36 +0000
+Received: from mail-pg1-x52c.google.com ([2607:f8b0:4864:20::52c])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLEFQ-0000000HQjd-0rHA;
-	Tue, 18 Nov 2025 05:27:27 +0000
-X-Sender-Id: hostingeremail|x-authuser|michael.opdenacker@rootcommit.com
-Received: from relay.mailchannels.net (localhost [127.0.0.1])
-	by relay.mailchannels.net (Postfix) with ESMTP id 549CC161D2D;
-	Tue, 18 Nov 2025 05:27:23 +0000 (UTC)
-Received: from de-fra-smtpout10.hostinger.io (trex-green-0.trex.outbound.svc.cluster.local [100.98.178.132])
-	(Authenticated sender: hostingeremail)
-	by relay.mailchannels.net (Postfix) with ESMTPA id 0DAC316270B;
-	Tue, 18 Nov 2025 05:27:20 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; d=mailchannels.net; s=arc-2022; cv=none;
-	t=1763443642;
-	b=d8NiZckuUTmtENzUS9A7/G97h6snHeV9d0r5N6QE3uII6cabCnRR5A1SpE5hqSeOG/2jH4
-	oPU8yA5fq9QusXNHZ3Mc+SL6TmtEGqjXnep/e1naRcsSnUtMotJ1AvJGJuqJirXAw6L0TW
-	+s/FUDBfzTniu+5wmFcPjyjrC1E7mW9RmYqAhASlDhCm666zj0gabk/mj6LjN+MdiRtDOQ
-	b4g0a52todUYiSKlKJtxqhBcjms90WQOAUU69/0+6sdYOt0ZguYWOWcl7zHKsRs7S9K9B0
-	kOFNQUc5MZ/ZHkeT3osPiN+pLLyHZiL5kfp4yl0ah0wluRJl9yfBsnNmnTGPNw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mailchannels.net;
-	s=arc-2022; t=1763443642;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:dkim-signature;
-	bh=79QY2zbPjct8a5PYToQ8bQ7v7KXz4YmkpWIvFX2JDyw=;
-	b=PXzcnj90+OZ0C4nz04bqKplEPDe2JhtZOLQ92mY5WMSUfbMeE6DUUUUw0ra/gSCRSWN+Od
-	SJPQOLqfllPpM1awadzeweZqebsYnisu13TFmgzdyyCpaUj+8VbTO5WCZ9NA9QvmWBxfxW
-	CcuapYRcbYCOakp4aJjzACXxVG/RoKUvDFeRsMgpYkLdfWAv3F+dSRE6r5trHDMPnWGHxy
-	MMop6RYViNqNQOlUNrk8pjas5n+4pl8HchwMqld6H242qnEsY8CuzO9XX9zdqTBkv9uUAL
-	ULt/QBIccUAbiUi2h5gdAJUJEyqZSuG2rW1vRHdN5YTSKdzViq9znLsiVGRnog==
-ARC-Authentication-Results: i=1;
-	rspamd-5ffd6989c9-rtptl;
-	auth=pass smtp.auth=hostingeremail
- smtp.mailfrom=michael.opdenacker@rootcommit.com
-X-Sender-Id: hostingeremail|x-authuser|michael.opdenacker@rootcommit.com
-X-MC-Relay: Neutral
-X-MailChannels-SenderId: hostingeremail|x-authuser|michael.opdenacker@rootcommit.com
-X-MailChannels-Auth-Id: hostingeremail
-X-Attack-White: 2d7b2b2964c91d28_1763443643081_3621785217
-X-MC-Loop-Signature: 1763443643081:4046718970
-X-MC-Ingress-Time: 1763443643081
-Received: from de-fra-smtpout10.hostinger.io (de-fra-smtpout10.hostinger.io
- [148.222.55.9])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384)
-	by 100.98.178.132 (trex/7.1.3);
-	Tue, 18 Nov 2025 05:27:23 +0000
-Received: from [IPV6:2001:861:4450:d360:58d4:4bb6:ecd1:1918] (unknown [IPv6:2001:861:4450:d360:58d4:4bb6:ecd1:1918])
-	(Authenticated sender: michael.opdenacker@rootcommit.com)
-	by smtp.hostinger.com (smtp.hostinger.com) with ESMTPSA id 4d9Y5b6Rc0z418m;
-	Tue, 18 Nov 2025 05:27:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=rootcommit.com;
-	s=hostingermail-a; t=1763443636;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=79QY2zbPjct8a5PYToQ8bQ7v7KXz4YmkpWIvFX2JDyw=;
-	b=gILU6ZmT+LlDjvY6kAog4t0qNPWKuzZ+NdqRvWHtPOF0m0AzJOMw1gYv4dD7L4Fcw5knum
-	19mlN1XfMjCKfIlixM+gM3P0OBgvLUytkDbPTritxuIEulCo13cZHlRWsDh7UBuFNYlE1V
-	dh5nL1XcA5cyxP4mcv+gE4W7OXP+8I1TentKuWCcaE+Zvj4tMdZ6ODdllpFWme7LlQ5Hc3
-	/hHfqQ2RHo9aMBGzYQ6xMlWGdi6c9Oc5/MEd+MKFcGitMpYLgzufPUFDPUwekCZ7juY0/E
-	1gx/QyNhvsfjuMJtN899j0QdPZr66+NcxSfO4UEIA2PeWhjIESsod2ZmzRvcfA==
-Message-ID: <0c224662-b3c2-4075-8b68-c0ae27421ba8@rootcommit.com>
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Cc: michael.opdenacker@rootcommit.com, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, heiko@sntech.de, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 1/2] dt-bindings: arm: rockchip: Add Asus Tinker Board
- 3 and 3S
+	id 1vLFy1-0000000HXv2-3Tdn
+	for linux-rockchip@lists.infradead.org;
+	Tue, 18 Nov 2025 07:17:35 +0000
+Received: by mail-pg1-x52c.google.com with SMTP id 41be03b00d2f7-bc0e6d91222so3681662a12.2
+        for <linux-rockchip@lists.infradead.org>; Mon, 17 Nov 2025 23:17:33 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1763450252; x=1764055052; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=1h/LtINK8q4zriSv56jSMYuYj4wBO4XsX7/xajbaKQg=;
+        b=HayV3wRSSmvCmagaWzhp2p1S+AmyhUhI2uvB74jib93v1xnRRYM6PHSUDbwM4KAN/+
+         xCFd3Mket/EBcankl19qbRHPgb2XxGKF+wAfXnmSsKYuBWs/K/YL9OCLBmuiBUwhttAM
+         cl1fMTo5i0BgjQDwwwjEsLoO5czvanyIGrOZdz5Ai2AMO1DyO/0/QIWwf0DjvTPpYyGf
+         z8IVOs1jMcPTsvQHuPD/K05nsxSFFrX2jpFQp+XxdaC6ce2DqvHlNXc7OLcuDsuT3zaG
+         uqDelYqY77DFMXRK0SWu5cgAtZSWBE+Eub6zqGxuPdmrplqxpsjuBiSTTuc/VAeqOJyr
+         XDww==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1763450252; x=1764055052;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=1h/LtINK8q4zriSv56jSMYuYj4wBO4XsX7/xajbaKQg=;
+        b=Q8dBJb4HfL6sEyHleVdAZ8uZo5+N5HevfxR8R3VOZHg4UIDYHhhYJnZ/dctkkF0JsJ
+         iujAbducTlzQ69Lrvgi7UDvUJwloq/sjvdxOsGzyco4pt1Jy2ZR+xeP9Db9ulmRCmhQZ
+         jxBCtp61Lpbxe6rLVRH/Ivh42f2/qX5ni2dphk3VMxvJ9Y0gKbghbR585ca3DoWDv5x9
+         IjV/sUC0y1Er4galSnJTi9EUmBxTv2U6J5g/yaK/DQkhVPMxWfRaUKzUBGzw7IEIC9y3
+         5i1x2RxPuTbzIX6uoAro2qjMrdx7ZbOzKDujwCmWI3+hy/5hj4f/QO5z60yoSS74PdW+
+         1Mwg==
+X-Forwarded-Encrypted: i=1; AJvYcCU6OzgrK0dTvYh6vXCV6+LDMOdRPJhtbXy0bZnDXacUoIfoYZZydi1vbZNPmuGd5nmPpr9lUisDzvvltBTh2A==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwArI/frfXJOeBUvPfmy2Hej2RS/DIh3VGJydUcbl7BuTOQCdgg
+	B+Pa/1a87noYnIsoXGTWkuC4NIxNY2NqRCebclHYCwHpIPnIVtMoypaw
+X-Gm-Gg: ASbGncstubsNG+ZsohW8HuY0lewTeOHHN71fM8mB8i2fb+2xX8tvCggF/LV3419oI7g
+	mT8rx3zBwLUv22PeoPVKZ96Afl/gJgRJHc7sfS85QTKtQkQTyLhnVpkH22vUbyKdUA3TgB2EYuI
+	om3vnbBVAl/4ZUoSpTzzMKYR00FOdeapRjpQkA6V+Jzoi5di0dwCChmnAwzd4uCuc/hJ2g3aYnE
+	puFruLVU2YDoUkiaNNSSuRnh3dNiWAHgJ0GDEUgaOMi3XzjME4J9dyZ9iGz1VkPwl+hwEsnIbw+
+	fVSc1kYQrb4wvKrlKLiVkoWgSN0XgGQsabnddSFH8sIhTm1n9KlcOEk1+hj9k61/ntSjKRZUFc4
+	mSK1mevvbApZU1Hg9D5FM6FqK+yNM/Hv40z+YgOsnhCtccwyTUs9LJi258JsH0Hv7RM8qAjCgIg
+	==
+X-Google-Smtp-Source: AGHT+IF7vM7dWQA7a8j5a3/LMB+ij9tgBYk+NU42Vt0dswOO93rmrv5IDEUmNpYrednFhDvN1YDVVQ==
+X-Received: by 2002:a05:7300:ce8e:b0:2a4:3593:6453 with SMTP id 5a478bee46e88-2a4ab88119cmr5119698eec.3.1763450252407;
+        Mon, 17 Nov 2025 23:17:32 -0800 (PST)
+Received: from geday ([2804:7f2:800b:b822::dead:c001])
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-2a49db7a753sm54420555eec.6.2025.11.17.23.17.28
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 17 Nov 2025 23:17:31 -0800 (PST)
+Date: Tue, 18 Nov 2025 04:17:25 -0300
+From: Geraldo Nascimento <geraldogabriel@gmail.com>
 To: Dragan Simic <dsimic@manjaro.org>
-References: <e4cd11d0-463c-e707-5110-6b92899b1ba3@manjaro.org>
-Content-Language: en-US, fr
-From: Michael Opdenacker <michael.opdenacker@rootcommit.com>
-Organization: Root Commit
-In-Reply-To: <e4cd11d0-463c-e707-5110-6b92899b1ba3@manjaro.org>
-Date: Tue, 18 Nov 2025 05:27:15 +0000 (UTC)
-X-CM-Envelope: MS4xfJLqo7/gRzsBM5gglqfBElMacoghunKCV7PiG5Q9KaWvdsmLLHWorQ2d9kWzZGsbDOU9m1P9AFVxV9VEIUi1iqL9dCaeyrAUZGAhTrTctD1GtA67LiRd jxpaDXYYYBiJvyPWDmwScz5KeIigzW1FBNT8q3VnRbqjuQ6KS8iCVTfTfgkneZLUXaV+GQ2FMJd/QD7Zs9cjO810THpJpK5t3KQJCy8sfYQfo1BRitTYjxJO msA8awJ16SzOZ+T/9YaznJtC9p5fWtEprqYBDFwLzAoCeCAPkMwEOx85WPCLonQx1s3/mIqcXjD5P+62YO31fo15cW821alZ5N1MQBtfMn2p1xQJN5E3yOCz n3DAJSzg27Ob/yZ+DiZmzMkLY+z45e6aboGSRZWrZdMjFsqPyheQrScEOWTR57xVon9FVOcRw3S9zGw1SnWAy/qzKBgxAqQ/Fm5nwWnt1PS6xe0sZvZMVPj/ 8krMIKj9jjvI7Gp+JmJlnr4lY9Oqy5mgmKyEdxA1rPYvxBp+JP33LTPkxdp1PWy9OLNnO6uPP1lSh/M6qspDnpNngDAOKki/eUGS7YNUmQkz1a76S7S1oq7/ EGubvqZvUWMZIlMSQ7zntiYvTPW1X7AD0oeyJm9iT9iRfhA5F4/H0WfXNko75EM30U4=
-X-CM-Analysis: v=2.4 cv=Ceda56rl c=1 sm=1 tr=0 ts=691c03b4 a=RES+y31bSy/BcHStaSTKQg==:617 a=xqWC_Br6kY4A:10 a=IkcTkHD0fZMA:10 a=d70CFdQeAAAA:8 a=lefHfciQTmdIgl6NApMA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10 a=NcxpMcIZDGm-g932nG_k:22
-X-AuthUser: michael.opdenacker@rootcommit.com
+Cc: Shawn Lin <shawn.lin@rock-chips.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Johan Jonker <jbx6244@gmail.com>,
+	linux-rockchip@lists.infradead.org, linux-pci@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org
+Subject: Re: [PATCH v2 0/4] PCI: rockchip: 5.0 GT/s speed may be dangerous
+Message-ID: <aRwdhbt0AcLQ1LgF@geday>
+References: <e5d5c0dc-81d6-ae0e-7552-c2e4fb39bb0a@manjaro.org>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <e5d5c0dc-81d6-ae0e-7552-c2e4fb39bb0a@manjaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251117_212725_722819_E5ADE1C6 
-X-CRM114-Status: UNSURE (   8.94  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251117_231733_869315_8AD0BF83 
+X-CRM114-Status: GOOD (  11.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,47 +104,34 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgRHJhZ2FuCgpPbiAxMS8xNS8yNSAwMTo1MiwgRHJhZ2FuIFNpbWljIHdyb3RlOgo+IEknbSBz
-b3JyeSBhZ2FpbiBmb3Igbm90IG1lbnRpb25pbmcgaXQgaW4gbXkgZWFybGllciByZXNwb25zZXMs
-Cj4gYnV0IHNob3VsZG4ndCB0aGlzIGFkZGl0aW9uIGJlIHNwZWNpZmllZCBsaWtlIGJlbG93Ogo+
-Cj4gICAgICAgLSBkZXNjcmlwdGlvbjogQXN1cyBUaW5rZXIgQm9hcmQgMy8zUwo+ICAgICAgICAg
-aXRlbXM6Cj4gICAgICAgICAgIC0gZW51bToKPiAJICAgLSBhc3VzLHJrMzU2Ni10aW5rZXItYm9h
-cmQtMwo+ICAgICAgICAgICAgIC0gYXN1cyxyazM1NjYtdGlua2VyLWJvYXJkLTNzCj4gICAgICAg
-ICAgIC0gY29uc3Q6IHJvY2tjaGlwLHJrMzU2Ngo+Cj4gLi4uIGJlY2F1c2UgdGhlIGludHJvZHVj
-ZWQgLmR0cyBmaWxlcyBkZWZpbmUgdGhlIGFjdHVhbCBib2FyZCBEVHMsCj4gYnkgZGVzY2VuZGlu
-ZyBmcm9tIHRoZSBjb21tb24gLmR0c2kgZmlsZSwgd2hpbGUgdGhleSdyZSBjb21wYXRpYmxlCj4g
-aW4gdGhlIHNlbnNlIG9mIHRoZSAzUyBib2FyZCB2YXJpYW50IGV4dGVuZGluZyB0aGUgMyB2YXJp
-YW50LgoKQWN0dWFsbHksICJtYWtlIGR0YnNfY2hlY2siIGZhaWxzIGlmIHJrMzU2Ni10aW5rZXIt
-Ym9hcmQtM3MuZHRzIGhhczoKY29tcGF0aWJsZSA9ICJhc3VzLHJrMzU2Ni10aW5rZXItYm9hcmQt
-M3MiLCAKImFzdXMscmszNTY2LXRpbmtlci1ib2FyZC0zIiwgInJvY2tjaGlwLHJrMzU2NiI7CgpU
-aGUgZmFpbHVyZSBpczoKYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1NjYtdGlua2Vy
-LWJvYXJkLTNzLmR0YjogLyAKKGFzdXMscmszNTY2LXRpbmtlci1ib2FyZC0zcyk6IGNvbXBhdGli
-bGU6ICdvbmVPZicgY29uZGl0aW9uYWwgZmFpbGVkLCAKb25lIG11c3QgYmUgZml4ZWQ6CiDCoCDC
-oCBbJ2FzdXMscmszNTY2LXRpbmtlci1ib2FyZC0zcycsICdhc3VzLHJrMzU2Ni10aW5rZXItYm9h
-cmQtMycsIAoncm9ja2NoaXAscmszNTY2J10gaXMgdG9vIGxvbmcKIMKgIMKgIFsnYXN1cyxyazM1
-NjYtdGlua2VyLWJvYXJkLTNzJywgJ2FzdXMscmszNTY2LXRpbmtlci1ib2FyZC0zJywgCidyb2Nr
-Y2hpcCxyazM1NjYnXSBpcyB0b28gc2hvcnQKCklmIEkgdW5kZXJzdGFuZCBjb3JyZWN0bHksIHRv
-IGtlZXAgdGhlwqByazM1NjYtdGlua2VyLWJvYXJkLTNzLmR0cyBmaWxlIAphcyBpdCBpcywgeW91
-IG5lZWQgQXN1cyBUaW5rZXIgQm9hcmQgMyBhbmQgM1MgdG8gaGF2ZSB0d28gZGlmZmVyZW50IApk
-ZXNjcmlwdGlvbnMgYXMgaW4gVjI6CgotIGRlc2NyaXB0aW9uOiBBc3VzIFRpbmtlciBCb2FyZCAz
-IGl0ZW1zOiAtIGNvbnN0OiAKYXN1cyxyazM1NjYtdGlua2VyLWJvYXJkLTMgLSBjb25zdDogcm9j
-a2NoaXAscmszNTY2IC0gZGVzY3JpcHRpb246IEFzdXMgClRpbmtlciBCb2FyZCAzUyBpdGVtczog
-LSBjb25zdDogYXN1cyxyazM1NjYtdGlua2VyLWJvYXJkLTNzIC0gY29uc3Q6IAphc3VzLHJrMzU2
-Ni10aW5rZXItYm9hcmQtMyAtIGNvbnN0OiByb2NrY2hpcCxyazM1NjYKClRoZSBvdGhlciBzb2x1
-dGlvbiBpcyB0byByZW1vdmUgdGhlICJhc3VzLHJrMzU2Ni10aW5rZXItYm9hcmQtMyIgCmNvbXBh
-dGlibGUgZnJvbcKgcmszNTY2LXRpbmtlci1ib2FyZC0zcy5kdHMsIHdoaWNoIGlzIG5vdCBhIGJp
-ZyBkZWFsIGluIApteSBvcGluaW9uLiBJbiBhZGRpdGlvbiwgaWYgc29tZSBjb2RlIHR1cm5zIG91
-dCB0byB3b3JrIG9ubHkgb24gMyBidXQgCm5vdCBvbiAzUywgdGhvdWdoIHRoYXQncyBub3QgZXhw
-ZWN0ZWQgaWYgM1MgaXMgaW5kZWVkIGEgc3VwZXJzZXQgb2YgMywgCndlIHdvbid0IGJlIHN0dWNr
-LgoKSSBjYW4gc3VibWl0IGEgVjMgYWxvbmcgdGhlc2UgbGluZXMuCkNoZWVycwpNaWNoYWVsLgoK
-LS0gCk1pY2hhZWwgT3BkZW5hY2tlcgpSb290IENvbW1pdApZb2N0byBQcm9qZWN0IGFuZCBPcGVu
-RW1iZWRkZWQgVHJhaW5pbmcgY291cnNlIC0gTGVhcm4gYnkgZG9pbmc6Cmh0dHBzOi8vcm9vdGNv
-bW1pdC5jb20vdHJhaW5pbmcveW9jdG8vCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tj
-aGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1h
-bi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+On Tue, Nov 18, 2025 at 07:45:45AM +0100, Dragan Simic wrote:
+> Technically, you shouldn't have included my Reviewed-by tags in some
+> of the patches in the v2 of this series, because the patches were
+> either modified significantly since I gave my Reviewed-by for them
+> in the v1, or they were actually introduced in the v2.
+> 
+> However, I checked all four patches in the v2 again and everything
+> is still fine, so just to make sure, please feel free to include for
+> the entire series:
+> 
+> Reviewed-by: Dragan Simic <dsimic@manjaro.org>
+
+Hi Dragan,
+
+Oops, sorry about that, and thanks for calling me out on this matter.
+I'll definitely bear this in mind for future submissions.
+
+Glad it worked out in the end.
+
+Regards,
+Geraldo Nascimento
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
