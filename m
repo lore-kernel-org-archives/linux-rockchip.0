@@ -4,87 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79D2BCED63B
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Nov 2025 13:48:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10C74CEDD8A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Nov 2025 13:50:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:Reply-To:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:
 	From:MIME-Version:Date:Message-ID:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=B4oD2blrGpGE62ggXk9Lyah2WxwLfP5jpWtZVduF0OM=; b=q7x4HALOaLOMSul3iX7IR+vDLF
-	SOFdYG2Ytvuv6jrqTS8R6FyrkxWtDh0AdRYMMpBPup86kD+fnfveB1QVqnWFNuySHEK5mvKW3Acbc
-	CqhEWkW/05cOEy+CBF3I5fHxP1YSw6FfVJ/2+thO8lREyOG/3KhfJiviJiEjITYLSEFuzR4s8QTdg
-	oiQzYLEApzvZs1K6c5qW0UYUSsUhtWweCg2dsJ23UhhcF+mEV0hKS2Fv0Cp5JHuB2UmH9n6hcOh1a
-	DH3pt45DfSpe+NGfGAMoIro4n7aL4uYLq5o706dLszkpbEkEgLWgvn5x28kaoxr2vFd9x20UPubwH
-	SqAqB5SQ==;
+	bh=OoOdg7+ycHz5cza6cHBndmx6URSz5X+RSjxhMM7qBnw=; b=vJPvNYBfty+xThEjr/VKlUKJM8
+	nzHefcLCoSZuWciX/Fa3EeS9z7jI67KooSBntSOX4Wn3xfAVwuGtv/faoTgS8inMjzqzX+Ur4Tqn9
+	XxW7qptsDiWDdkWzDC5ICD/Vn/tJkQKFcfPRRVxPhZKDn/1Xzheumi/qVPtR775lKZePAgLrWoz8F
+	ZyF1H4ploXjaOeAgPZ7e/haY8gxw37k86SNaXX6hff1zrKE6ftK7HhlISOCqV8pmgUWxaLjwBmCRA
+	BGbjUOZICZyQnurqXr/6ypuRHPOLMKv42kK+K+liw/xhHULYvuIC7NDERXJRhtrGbLftIcLMLikUX
+	Pzb8IB7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLM3e-00000000Tx1-0tCb;
-	Tue, 18 Nov 2025 13:47:46 +0000
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+	id 1vLM67-00000000UH1-2i65;
+	Tue, 18 Nov 2025 13:50:19 +0000
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLM3b-00000000TwH-33xB
+	id 1vLM64-00000000UFg-2L1b
 	for linux-rockchip@lists.infradead.org;
-	Tue, 18 Nov 2025 13:47:44 +0000
-Received: by mail-wm1-x332.google.com with SMTP id 5b1f17b1804b1-4779cc419b2so32158305e9.3
-        for <linux-rockchip@lists.infradead.org>; Tue, 18 Nov 2025 05:47:42 -0800 (PST)
+	Tue, 18 Nov 2025 13:50:17 +0000
+Received: by mail-wm1-x336.google.com with SMTP id 5b1f17b1804b1-47755a7652eso37682925e9.0
+        for <linux-rockchip@lists.infradead.org>; Tue, 18 Nov 2025 05:50:16 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1763473662; x=1764078462; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1763473815; x=1764078615; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:organization:autocrypt
          :content-language:references:cc:to:subject:reply-to:from:user-agent
          :mime-version:date:message-id:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=SOAQ2n6EEpjk8DTRUlw6XgNbg43EhpQzQqXyghLPIsg=;
-        b=C5j4ebJ/Q0Qs2TsImlZe9E8w3lx9u8SX5svYYHhAXUmSlyq6Jze8hFwMADg+VZix35
-         ke5VyKjamKtunLx0lsj52LDH8O9P2HbDUwKAc7nS6W8LTLpyJRjJqVO09iZrDDFmnrIk
-         WR4wUEn6fPQ2/1+XOMAtwyx2cEx1a7SaSB+ev5W7hQXnckbRpP+8zRSgMhvO4k5bLrqD
-         oqSTJ8ShgEGX6BhHxdL4UrnRag5IvR5HrslDBjYxYMeeYhE70cNqUcwQeBGIa6XQD+5Y
-         LZzXYJlnflXarsW37uSNxrRlGCyM8zNENNWLyUyhztf9XmZZHNUyq8AWURKn5VHisSrt
-         WTJg==
+        bh=sS1O37YoQ8ML4Scdituu7Y1fxQ5FsFsQTc7CjlszrQ0=;
+        b=Y28/D593REX+qmMNu329g7Ey0Hh7hhzfvmxHVDhB3KtieX7vkPP34zg7OcJxjFrCSD
+         GhTZMLGCXSC8ZABNPlxhwjZZIIZ4EZEpNPCx+KamtBEBS/iIq3gs5V6y7BnjIM02CvdR
+         BIapOOt9xvjJkqQaAm99V6gzdjDbrmrsDTC36XtakcjVIO/XlCvN0mDTATxlXUBSeDGA
+         +FcP9FDoOCNBx+i8Mtgv8JGoMUzpXMEDXGEUt3MDAVOijReBJWDz9rgfEHIlUJ0X92uF
+         QtObxI2XmlrwZbZTKlZEekJwNCZDLciaQOUSgOxrGoP7z1yoQyP9/PUHX9G99F22HG2T
+         CkEQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1763473662; x=1764078462;
+        d=1e100.net; s=20230601; t=1763473815; x=1764078615;
         h=content-transfer-encoding:in-reply-to:organization:autocrypt
          :content-language:references:cc:to:subject:reply-to:from:user-agent
          :mime-version:date:message-id:x-gm-gg:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=SOAQ2n6EEpjk8DTRUlw6XgNbg43EhpQzQqXyghLPIsg=;
-        b=UwMr+PPd7wvlJDSC+zpcOV2+5g9SMe9eZxpw194TOdXz7R7hwhWdk+91xkRB8cMWvR
-         lGROJRYtyKUvvpqKmzvsf0BKkfxBp187zrYK1z8A9MAbUwX4V8vjon0cgMommqBa6rGG
-         d6M/8OGMo4QPU6F4rpRTTgVVA8Ue0/BOiCnnsMQInXC6d/KxW2uzHx74IvF5tWg3oZvR
-         DavS9kWA+8ZEjirAPbzwn+tPk0kiovyVN3CAHGe6hF1mFaRT5OVQMO2xHa3NceHGvCKF
-         aa1MInRT/HUWliWpt4uHUBRBR8t9HXQHw3zQycBeN5Cp3vanAGWghklFaFUE57uHGEwU
-         4cdQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVDQnjIh4m1W7IUxErgRb6GClMc0I1VCFJq/ckUaqaKULBRWHqYLr+OuweZ7R/w+WpgFhbR/XSNQVQlii7j/Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyhKkcI5meoE7BRZ3Q/YjSI8a8S3S8H9zzcEJoxj6x1QmVmD6Qf
-	kpahALLNJxre+0cT1p1yb/nhJ/9xsy4vwrbo6RBqxqF/DUgFrJChWDiuy6Qf3BllhOg=
-X-Gm-Gg: ASbGncvfegfsq4B5Ot3QF7fZSTDY/07UJJfDWyM9o8WAhH5j0WBsojLLXfbTp0CT76t
-	qcbhWMcL3SxNOF58HaU2AEq+uBgG0yD94ziihNyat/lI/vustb78ym0TE0jGhxFVTKxbrU+MKa3
-	RMAsYM2SC5c1DNOj6WGcJR1mxIErPC0FifueDhS49+xnDNrj6tNlR1Ou9cMMAx9iAsPciGHMoml
-	RVgcqR1fxRbN0JYwNZu0usgGzuOyt4v0E1DRpGP2scJ1UBYFUyVwSs3DES2Gf+kO4VuAxaURoiB
-	zDSUJ4FAA6rIgSG0jIjOtn6ByGzC/b1h8J0+TVKB6ihhwL7DpWMy8yTaIkgrXAUi1FUze8JzWBU
-	XhN18waDKeiLQzfMBHVfaDB99B+pOao9UYJWc/V9jI/fN0GKH85/fLlq+5ebeCbpHk9hY/nKUkY
-	4GsSTeA07TFilbdPPvixybc+vOMoNCcxKslX7mJP2/kAtyu2cniQuBZDXicuR0yFsNx0PHGv1o6
-	w==
-X-Google-Smtp-Source: AGHT+IHStjCD11Ovvx/lChTWfDpyulB8oz3/xSa7FVs/MgoULLIe2WkcLzWewB9yyCcoEjbA2g4HEg==
-X-Received: by 2002:a05:600c:6289:b0:477:54cd:200a with SMTP id 5b1f17b1804b1-4778fe50f5emr147143385e9.6.1763473661641;
-        Tue, 18 Nov 2025 05:47:41 -0800 (PST)
+        bh=sS1O37YoQ8ML4Scdituu7Y1fxQ5FsFsQTc7CjlszrQ0=;
+        b=M646aAEutKfb75ewsdgMviWz5+K/UaWYKsRTIW7kTJMn+Xx9leSVF72ti7mx0uXnQY
+         loMo+uuxMfwY1FnTEjjGg1xvQE0VLsHtoWJqfAc8Bh4JaIKF7BtYa6I58gxGZFdaBOuL
+         /sX+vAUAeb8frgBNW1lbu7WhME1U0cZCzvieRc0/RE0HFPCku0z4aQqsYtWehkNC274m
+         j0NRA9JXYoDE9VjCB+hZnG6vSn4zJcwcjKN1zTGuHul+YagLph/+lrFE75tLai4OMdDd
+         af3OpIhms8LZlw022dWkIi2QoLjqhgCieMf+HQFrOCSD4uCDY6RvUlFukCC9OTKZCHwg
+         vR3A==
+X-Forwarded-Encrypted: i=1; AJvYcCXw+G1sgjc8ZyNsjntCPpFPXsNVf8CS7DO8o9e1LIWQ3DblL8GoVlFZiGgnXoFgWxhpf0bv4wE5bYZAxI6PCw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzBvVkhg53LbNW9qdM+GlElAM8e60ww0zo/N2Hn7hpei7HBlkLP
+	0Mtk90B3EotnNzd9usykjIJnCpNeyVTmDWncSSW4ILXMseKIefUqL3VLwTYnsEhEEtQ=
+X-Gm-Gg: ASbGncsnttdZYuKmQJHbh/S0GZOyjPaPVSg+/7tjhBz/rBGJZj+Zc1OGGqDIw/ECLGn
+	FjD7jMx5bm0Gqk5GWJWKDiRrvt0RRszHMwr/tethRh9AZr3QZR9aDCSYj1upv7r2Ou4Vu7C0AuC
+	Y0H7yab1c+amZsDlmkKfbTaAFL3gO0s4zCtp0NHOId0Ew98mZLUCpqoxd+IGm27tzVhGJzcevtf
+	C+4dYs0DM09nwdPF2Z7qHVGiZaugjiPXXJDKD+NH5sVVgH25nyGKCKf+dDPvYQfU/G5cqcxXZKO
+	7XfxBxsc/M9SopqRJUuh68eYJEQDQXN1Q+WJHuHsyCB0kF7mSTGfh25bWEAu62oNc1KATAyfOMZ
+	92Jo/gxsbPEtJv/PLTktM/VugpgeeqcWz5DyM9fCxzHbpnidITpQAoX8SVP4EP4SD1xnmYser3v
+	HKA0EzLQqD24LWgBGN/J05dE7DQob+UR9Hwuy8sDYT0GwggTvefdOmPAPkYk/8Uw3ryZGBtb3iO
+	A==
+X-Google-Smtp-Source: AGHT+IHqgJck/ttH3h1ZU/eKtDbxFFeFyaQE38hcB39zt7XFGfX1Rdi2YxyWRaxn0VdeitvcYaudzg==
+X-Received: by 2002:a05:600c:3105:b0:477:569c:34e9 with SMTP id 5b1f17b1804b1-4778fe95ff8mr157594985e9.23.1763473814678;
+        Tue, 18 Nov 2025 05:50:14 -0800 (PST)
 Received: from ?IPV6:2a01:e0a:3d9:2080:366e:5264:fffe:1c49? ([2a01:e0a:3d9:2080:366e:5264:fffe:1c49])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-42b53e84b12sm33751627f8f.15.2025.11.18.05.47.41
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-47787e36ca3sm393596255e9.5.2025.11.18.05.50.13
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 18 Nov 2025 05:47:41 -0800 (PST)
-Message-ID: <710f2b4a-b443-44cd-aec8-ce9a8630dfbc@linaro.org>
-Date: Tue, 18 Nov 2025 14:47:40 +0100
+        Tue, 18 Nov 2025 05:50:14 -0800 (PST)
+Message-ID: <96596cf7-4b19-4873-ba16-936e398e876f@linaro.org>
+Date: Tue, 18 Nov 2025 14:50:13 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 From: Neil Armstrong <neil.armstrong@linaro.org>
-Subject: Re: [PATCH v2 1/2] phy: rockchip: naneng-combphy: Fix PCIe L1ss
- support RK3528
-To: Shawn Lin <shawn.lin@rock-chips.com>, Vinod Koul <vkoul@kernel.org>
-Cc: Kishon Vijay Abraham I <kishon@kernel.org>,
- Heiko Stuebner <heiko@sntech.de>, linux-phy@lists.infradead.org,
- linux-rockchip@lists.infradead.org
-References: <1763459526-35004-1-git-send-email-shawn.lin@rock-chips.com>
+Subject: Re: [PATCH 6/9] phy: rockchip: inno-dsidphy: Add support for rk3506
+To: Chaoyi Chen <kernel@airkyi.com>,
+ Jessica Zhang <jessica.zhang@oss.qualcomm.com>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Sandy Huang <hjc@rock-chips.com>,
+ =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
+ Andy Yan <andy.yan@rock-chips.com>, Vinod Koul <vkoul@kernel.org>,
+ Kishon Vijay Abraham I <kishon@kernel.org>
+Cc: dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-phy@lists.infradead.org,
+ Chaoyi Chen <chaoyi.chen@rock-chips.com>,
+ Hongming Zou <hongming.zou@rock-chips.com>
+References: <20251106020632.92-1-kernel@airkyi.com>
+ <20251106020632.92-7-kernel@airkyi.com>
 Content-Language: en-US, fr
 Autocrypt: addr=neil.armstrong@linaro.org; keydata=
  xsBNBE1ZBs8BCAD78xVLsXPwV/2qQx2FaO/7mhWL0Qodw8UcQJnkrWmgTFRobtTWxuRx8WWP
@@ -111,10 +122,10 @@ Autocrypt: addr=neil.armstrong@linaro.org; keydata=
  4zcsPWvwnXgfe5tk680fEKZVwOZKIEuJC3v+/yZpQzDvGYJvbyix0lHnrCzq43WefRHI5XTT
  QbM0WUIBIcGmq38+OgUsMYu4NzLu7uZFAcmp6h8g
 Organization: Linaro
-In-Reply-To: <1763459526-35004-1-git-send-email-shawn.lin@rock-chips.com>
+In-Reply-To: <20251106020632.92-7-kernel@airkyi.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251118_054743_841940_C53476A6 
-X-CRM114-Status: GOOD (  15.62  )
+X-CRM114-CacheID: sfid-20251118_055016_652885_D2778207 
+X-CRM114-Status: GOOD (  21.55  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -132,49 +143,187 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 11/18/25 10:52, Shawn Lin wrote:
-> When PCIe link enters L1 PM substates, the PHY will turn off its
-> PLL for power-saving. However, it turns off the PLL too fast which
-> leads the PHY to be broken. According to the PHY document, we need
-> to delay PLL turnoff time.
+On 11/6/25 03:06, Chaoyi Chen wrote:
+> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
 > 
-> Fixes: bbcca4fac873 ("phy: rockchip: naneng-combphy: Add RK3528 support")
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> For MIPI mode, the inno-dsidphy found on RK3506 supports up to 2 lanes
+> and a maximum data rate of 1.5GHz.
+> 
+> Signed-off-by: Hongming Zou <hongming.zou@rock-chips.com>
+> Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
 > ---
+>   .../phy/rockchip/phy-rockchip-inno-dsidphy.c  | 91 ++++++++++++++++++-
+>   1 file changed, 88 insertions(+), 3 deletions(-)
 > 
-> Changes in v2:
-> - add more commit message
-> 
->   drivers/phy/rockchip/phy-rockchip-naneng-combphy.c | 7 +++++++
->   1 file changed, 7 insertions(+)
-> 
-> diff --git a/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c b/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
-> index a3ef198..e303bec 100644
-> --- a/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
-> +++ b/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
-> @@ -21,6 +21,9 @@
->   #define REF_CLOCK_100MHz		(100 * HZ_PER_MHZ)
+> diff --git a/drivers/phy/rockchip/phy-rockchip-inno-dsidphy.c b/drivers/phy/rockchip/phy-rockchip-inno-dsidphy.c
+> index d5b1a4e2f7d3..30d5e5ddff4a 100644
+> --- a/drivers/phy/rockchip/phy-rockchip-inno-dsidphy.c
+> +++ b/drivers/phy/rockchip/phy-rockchip-inno-dsidphy.c
+> @@ -99,10 +99,30 @@
+>   #define VOD_MID_RANGE				0x3
+>   #define VOD_BIG_RANGE				0x7
+>   #define VOD_MAX_RANGE				0xf
+> +/* Analog Register Part: reg18 */
+> +#define LANE0_PRE_EMPHASIS_ENABLE_MASK		BIT(6)
+> +#define LANE0_PRE_EMPHASIS_ENABLE		BIT(6)
+> +#define LANE0_PRE_EMPHASIS_DISABLE		0
+> +#define LANE1_PRE_EMPHASIS_ENABLE_MASK		BIT(5)
+> +#define LANE1_PRE_EMPHASIS_ENABLE		BIT(5)
+> +#define LANE1_PRE_EMPHASIS_DISABLE		0
+> +/* Analog Register Part: reg19 */
+> +#define PRE_EMPHASIS_RANGE_SET_MASK		GENMASK(7, 6)
+> +#define PRE_EMPHASIS_RANGE_SET(x)		UPDATE(x, 7, 6)
+>   /* Analog Register Part: reg1E */
+>   #define PLL_MODE_SEL_MASK			GENMASK(6, 5)
+>   #define PLL_MODE_SEL_LVDS_MODE			0
+>   #define PLL_MODE_SEL_MIPI_MODE			BIT(5)
+> +/* Analog Register Part: reg20 */
+> +#define LANE0_PRE_EMPHASIS_RANGE_SET_MASK	GENMASK(7, 6)
+> +#define LANE0_PRE_EMPHASIS_RANGE_SET(x)		UPDATE(x, 7, 6)
+> +/* Analog Register Part: reg21 */
+> +#define LANE1_PRE_EMPHASIS_RANGE_SET_MASK	GENMASK(7, 6)
+> +#define LANE1_PRE_EMPHASIS_RANGE_SET(x)		UPDATE(x, 7, 6)
+> +#define PRE_EMPHASIS_MIN_RANGE			0x0
+> +#define PRE_EMPHASIS_MID_RANGE			0x1
+> +#define PRE_EMPHASIS_MAX_RANGE			0x2
+> +#define PRE_EMPHASIS_RESERVED_RANGE		0x3
+>   /* Digital Register Part: reg00 */
+>   #define REG_DIG_RSTN_MASK			BIT(0)
+>   #define REG_DIG_RSTN_NORMAL			BIT(0)
+> @@ -193,6 +213,7 @@
 >   
->   /* RK3528 COMBO PHY REG */
-> +#define RK3528_PHYREG5				0x14
-> +#define RK3528_PHYREG5_GATE_TX_PCK_SEL		BIT(3)
-> +#define RK3528_PHYREG5_GATE_TX_PCK_DLY_PLL_OFF	BIT(3)
->   #define RK3528_PHYREG6				0x18
->   #define RK3528_PHYREG6_PLL_KVCO			GENMASK(12, 10)
->   #define RK3528_PHYREG6_PLL_KVCO_VALUE		0x2
-> @@ -504,6 +507,10 @@ static int rk3528_combphy_cfg(struct rockchip_combphy_priv *priv)
->   	case REF_CLOCK_100MHz:
->   		rockchip_combphy_param_write(priv->phy_grf, &cfg->pipe_clk_100m, true);
->   		if (priv->type == PHY_TYPE_PCIE) {
-> +			/* Gate_tx_pck_sel length select for L1ss support */
-> +			rockchip_combphy_updatel(priv, RK3528_PHYREG5_GATE_TX_PCK_SEL,
-> +						 RK3528_PHYREG5_GATE_TX_PCK_DLY_PLL_OFF, RK3528_PHYREG5);
+>   enum phy_max_rate {
+>   	MAX_1GHZ,
+> +	MAX_1_5GHZ,
+>   	MAX_2_5GHZ,
+>   };
+>   
+> @@ -200,6 +221,7 @@ struct inno_video_phy_plat_data {
+>   	const struct inno_mipi_dphy_timing *inno_mipi_dphy_timing_table;
+>   	const unsigned int num_timings;
+>   	enum phy_max_rate max_rate;
+> +	unsigned int max_lanes;
+>   };
+>   
+>   struct inno_dsidphy {
+> @@ -258,6 +280,24 @@ struct inno_mipi_dphy_timing inno_mipi_dphy_timing_table_max_1ghz[] = {
+>   	{1000000000, 0x0, 0x09, 0x20, 0x09, 0x27},
+>   };
+>   
+> +static const
+> +struct inno_mipi_dphy_timing inno_mipi_dphy_timing_table_max_1_5ghz[] = {
+> +	{ 110, 0x02, 0x7f, 0x16, 0x02, 0x02},
+> +	{ 150, 0x02, 0x7f, 0x16, 0x03, 0x02},
+> +	{ 200, 0x02, 0x7f, 0x17, 0x04, 0x02},
+> +	{ 250, 0x02, 0x7f, 0x17, 0x05, 0x04},
+> +	{ 300, 0x02, 0x7f, 0x18, 0x06, 0x04},
+> +	{ 400, 0x03, 0x7e, 0x19, 0x07, 0x04},
+> +	{ 500, 0x03, 0x7c, 0x1b, 0x07, 0x08},
+> +	{ 600, 0x03, 0x70, 0x1d, 0x08, 0x10},
+> +	{ 700, 0x05, 0x40, 0x1e, 0x08, 0x30},
+> +	{ 800, 0x05, 0x02, 0x1f, 0x09, 0x30},
+> +	{1000, 0x05, 0x08, 0x20, 0x09, 0x30},
+> +	{1200, 0x06, 0x03, 0x32, 0x14, 0x0f},
+> +	{1400, 0x09, 0x03, 0x32, 0x14, 0x0f},
+> +	{1500, 0x0d, 0x42, 0x36, 0x0e, 0x0f},
+> +};
 > +
->   			/* PLL KVCO tuning fine */
->   			val = FIELD_PREP(RK3528_PHYREG6_PLL_KVCO, RK3528_PHYREG6_PLL_KVCO_VALUE);
->   			rockchip_combphy_updatel(priv, RK3528_PHYREG6_PLL_KVCO, val,
-
-Thanks for updating, it's clearer now !
+>   static const
+>   struct inno_mipi_dphy_timing inno_mipi_dphy_timing_table_max_2_5ghz[] = {
+>   	{ 110000000, 0x02, 0x7f, 0x16, 0x02, 0x02},
+> @@ -372,6 +412,7 @@ static void inno_dsidphy_mipi_mode_enable(struct inno_dsidphy *inno)
+>   	u32 hs_exit, clk_post, clk_pre, wakeup, lpx, ta_go, ta_sure, ta_wait;
+>   	u32 hs_prepare, hs_trail, hs_zero, clk_lane_hs_zero, data_lane_hs_zero;
+>   	unsigned int i;
+> +	u32 val;
+>   
+>   	timings = inno->pdata->inno_mipi_dphy_timing_table;
+>   
+> @@ -393,6 +434,23 @@ static void inno_dsidphy_mipi_mode_enable(struct inno_dsidphy *inno)
+>   		phy_update_bits(inno, REGISTER_PART_ANALOG, 0x0b,
+>   				CLOCK_LANE_VOD_RANGE_SET_MASK,
+>   				CLOCK_LANE_VOD_RANGE_SET(VOD_MAX_RANGE));
+> +	} else if (inno->pdata->max_rate == MAX_1_5GHZ) {
+> +		phy_update_bits(inno, REGISTER_PART_ANALOG, 0x18,
+> +				LANE0_PRE_EMPHASIS_ENABLE_MASK, LANE0_PRE_EMPHASIS_ENABLE);
+> +		phy_update_bits(inno, REGISTER_PART_ANALOG, 0x18,
+> +				LANE1_PRE_EMPHASIS_ENABLE_MASK, LANE1_PRE_EMPHASIS_ENABLE);
+> +		phy_update_bits(inno, REGISTER_PART_ANALOG, 0x19,
+> +				PRE_EMPHASIS_RANGE_SET_MASK,
+> +				PRE_EMPHASIS_RANGE_SET(PRE_EMPHASIS_MID_RANGE));
+> +		phy_update_bits(inno, REGISTER_PART_ANALOG, 0x1a,
+> +				LANE0_PRE_EMPHASIS_RANGE_SET_MASK,
+> +				LANE0_PRE_EMPHASIS_RANGE_SET(PRE_EMPHASIS_MID_RANGE));
+> +		phy_update_bits(inno, REGISTER_PART_ANALOG, 0x1b,
+> +				LANE1_PRE_EMPHASIS_RANGE_SET_MASK,
+> +				LANE1_PRE_EMPHASIS_RANGE_SET(PRE_EMPHASIS_MID_RANGE));
+> +		phy_update_bits(inno, REGISTER_PART_ANALOG, 0x0b,
+> +				CLOCK_LANE_VOD_RANGE_SET_MASK,
+> +				CLOCK_LANE_VOD_RANGE_SET(VOD_MAX_RANGE));
+>   	}
+>   	/* Enable PLL and LDO */
+>   	phy_update_bits(inno, REGISTER_PART_ANALOG, 0x01,
+> @@ -518,10 +576,25 @@ static void inno_dsidphy_mipi_mode_enable(struct inno_dsidphy *inno)
+>   				T_TA_WAIT_CNT(ta_wait));
+>   	}
+>   
+> -	/* Enable all lanes on analog part */
+> +	/* Enable lanes on analog part */
+> +	switch (inno->pdata->max_lanes) {
+> +	case 1:
+> +		val =  LANE_EN_0;
+> +		break;
+> +	case 2:
+> +		val =  LANE_EN_0 | LANE_EN_1;
+> +		break;
+> +	case 3:
+> +		val = LANE_EN_0 | LANE_EN_1 | LANE_EN_2;
+> +		break;
+> +	case 4:
+> +	default:
+> +		val = LANE_EN_0 | LANE_EN_1 | LANE_EN_2 | LANE_EN_3;
+> +		break;
+> +	}
+> +
+>   	phy_update_bits(inno, REGISTER_PART_ANALOG, 0x00,
+> -			LANE_EN_MASK, LANE_EN_CK | LANE_EN_3 | LANE_EN_2 |
+> -			LANE_EN_1 | LANE_EN_0);
+> +			LANE_EN_MASK, LANE_EN_CK | val);
+>   }
+>   
+>   static void inno_dsidphy_lvds_mode_enable(struct inno_dsidphy *inno)
+> @@ -680,12 +753,21 @@ static const struct inno_video_phy_plat_data max_1ghz_video_phy_plat_data = {
+>   	.inno_mipi_dphy_timing_table = inno_mipi_dphy_timing_table_max_1ghz,
+>   	.num_timings = ARRAY_SIZE(inno_mipi_dphy_timing_table_max_1ghz),
+>   	.max_rate = MAX_1GHZ,
+> +	.max_lanes = 4,
+> +};
+> +
+> +static const struct inno_video_phy_plat_data max_1_5ghz_video_phy_plat_data = {
+> +	.inno_mipi_dphy_timing_table = inno_mipi_dphy_timing_table_max_1_5ghz,
+> +	.num_timings = ARRAY_SIZE(inno_mipi_dphy_timing_table_max_1_5ghz),
+> +	.max_rate = MAX_1_5GHZ,
+> +	.max_lanes = 2,
+>   };
+>   
+>   static const struct inno_video_phy_plat_data max_2_5ghz_video_phy_plat_data = {
+>   	.inno_mipi_dphy_timing_table = inno_mipi_dphy_timing_table_max_2_5ghz,
+>   	.num_timings = ARRAY_SIZE(inno_mipi_dphy_timing_table_max_2_5ghz),
+>   	.max_rate = MAX_2_5GHZ,
+> +	.max_lanes = 4,
+>   };
+>   
+>   static int inno_dsidphy_probe(struct platform_device *pdev)
+> @@ -767,6 +849,9 @@ static const struct of_device_id inno_dsidphy_of_match[] = {
+>   	}, {
+>   		.compatible = "rockchip,rk3368-dsi-dphy",
+>   		.data = &max_1ghz_video_phy_plat_data,
+> +	}, {
+> +		.compatible = "rockchip,rk3506-dsi-dphy",
+> +		.data = &max_1_5ghz_video_phy_plat_data,
+>   	}, {
+>   		.compatible = "rockchip,rk3568-dsi-dphy",
+>   		.data = &max_2_5ghz_video_phy_plat_data,
 
 Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
 
