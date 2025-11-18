@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CE2ACEE34D
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Nov 2025 20:36:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D153CEE351
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Nov 2025 20:45:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=9o/cYkRiBtpGIRDBSy0g+067xM0qUuicz0c3GOCiApc=; b=qYvmAQIXKUNGax
-	BPXuB3bMkzqohnMB0SUQ/6Oyc87fbHN+4eGFQYsCsHkkTAZ0WB4rN3Brr6tpTtOBADPpvQdg1I+Lw
-	iS67voOmyKYw3BHjyj89aE5RrtWifuheNDojAW4jfOfnhlXfsD94jjCC8wz6Yrx6FYFLz2Ged7jPC
-	cTNgbvtrqEhN3AykGNKPefQdBtS/pF5+V7Nzu8nY9rLq6gjBI8WyalwqZ4yxKMbos73wp2ybf9+R0
-	3ZMQn1iGR4Mm/DFbQqEk32uLUsy4Qk/2THk0wC/1v3iYPPky6HxOT+m0Mz4wxu6b0NKOQsHOX8EgH
-	5DFhDzXfBGkH/GphILCw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=bIKwIohH8Wkeq2rFOmKSBXrHy+UPxAdeFDgQUqeZiIE=; b=eaWV7xO32+j06v
+	8kuIJHBFdADGzYC/FBYgGGiJNc8f8/cPWckQwqdNFza9+Gn4MykJQ6yjRq6VSGuRYr49Lx8xgHGUl
+	uLrZIP2Q+D+ESnba+wmKOEhqUDvxvoTVDlwRCpsENm25EiHCBGCas0zrJmBcwIc8GONMIfHuiZLIR
+	lc0vCz9h3CYzpyzTDy0LMrFnnnby3wVMPh0xgRTNM8uw/NdEK2U6hXRoA1y7ArsvbSaKrlpZnQmF1
+	AK8R8wQHNb0IpnuIyBuYyBhyadH+RTMb4GIkYw8tEEexkLPRLnL3LBGpaAfzCA99G7foBG3Ju6V2G
+	ICXyDw6nhT1wQaD1MbIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLSRR-000000015N0-16iy;
-	Tue, 18 Nov 2025 20:36:45 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vLSa7-000000015y8-3fea;
+	Tue, 18 Nov 2025 20:45:43 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLSRO-000000015MA-1LUi;
-	Tue, 18 Nov 2025 20:36:43 +0000
+	id 1vLSa6-000000015xb-2LsY;
+	Tue, 18 Nov 2025 20:45:42 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 8911640C3F;
-	Tue, 18 Nov 2025 20:36:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AB59DC4AF0B;
-	Tue, 18 Nov 2025 20:36:40 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id A3511601BC;
+	Tue, 18 Nov 2025 20:45:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 32F59C2BCB3;
+	Tue, 18 Nov 2025 20:45:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1763498201;
-	bh=7+fzDFu+Xsrqk+asVMqRrwMUh6tY3yPTNkgieoOI/zM=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=YUKNJTdrgbSbMX3k+HhtPzZK7EHha3KqXakAdqfJuSLs3e1EuenP2tifpMHMuz+//
-	 60L/jEi9R9dpl8wIyag9yLxPtGq0zTZpKEgLH6hXcMG0qZbrpU5/EJQdr/oWBnMSdD
-	 Y5jrD4k4lBA0NE+z2nITN35iYooT8yy8YWTL4N9Elww8UNhtZOdhcEPpOzpCW5vUvK
-	 Po4zHQQQEzU12iE+do16kxdomaLNC5Q03u19JQrcG4D6V4woIP7u2chMFlEK8QfJBT
-	 5/sb9D1QRKk3MjjoVmBZSt6RA2AlSYOBCgdHf6q9TsCgelGKrQA3/os3D0WExgOB+Q
-	 4i3wUV1L9RXCw==
-Date: Tue, 18 Nov 2025 14:36:38 -0600
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Niklas Cassel <cassel@kernel.org>
+	s=k20201202; t=1763498741;
+	bh=LrsefOmy8EGZJbBvhiH/EY4R37o/mLzhhIaUXiOgkgI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=ZBNTS4dFeqs1FxFndbuiQs+P0fZn5Hw4UTyl3rTK+ReloR30FDw/Xxk8gH4fQQpsF
+	 GwZoCV9JcAUtQmYn170bze64xD2/1D8MUO1meUJ8qXd9NLZ77u+7dIMTcUFDE4SV+L
+	 lRlB2nMpf+fyuXhnqkEys4h4pN/+b+Zv3zfG2fjxtVhI8l7OMzddngHZkyio7ZVa9L
+	 NhFNrhYDRt7+lj0mhg/yarjQMG/1RM3w0lr15pXPSELHseWixdv4RsZDCEjJ1iF0Df
+	 WIKGjP8UwpA+NT3MigFbYOnUA0ddqkKduzZA/AM79ITWi0prkGNCj/CUrWuvujYr5B
+	 jGu5g4/hp5R1g==
+Date: Tue, 18 Nov 2025 21:45:30 +0100
+From: Niklas Cassel <cassel@kernel.org>
+To: Bjorn Helgaas <helgaas@kernel.org>
 Cc: Shawn Lin <shawn.lin@rock-chips.com>,
 	Manivannan Sadhasivam <mani@kernel.org>,
 	Lorenzo Pieralisi <lpieralisi@kernel.org>,
@@ -67,13 +67,12 @@ Cc: Shawn Lin <shawn.lin@rock-chips.com>,
 	Bjorn Helgaas <bhelgaas@google.com>
 Subject: Re: [PATCH 1/4] PCI: dwc: Advertise L1 PM Substates only if driver
  requests it
-Message-ID: <20251118203638.GA2591575@bhelgaas>
+Message-ID: <aRza6quobL4obC58@ryzen>
+References: <aRRDzKFVTFTIuvvh@ryzen>
+ <20251118203638.GA2591575@bhelgaas>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <aRRDzKFVTFTIuvvh@ryzen>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251118_123642_381074_9FF30D82 
-X-CRM114-Status: GOOD (  12.30  )
+In-Reply-To: <20251118203638.GA2591575@bhelgaas>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,31 +89,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Nov 12, 2025 at 09:22:36AM +0100, Niklas Cassel wrote:
-> On Tue, Nov 11, 2025 at 04:16:08PM -0600, Bjorn Helgaas wrote:
-> > --- a/drivers/pci/controller/dwc/pcie-designware-host.c
-> > +++ b/drivers/pci/controller/dwc/pcie-designware-host.c
-> > @@ -1060,6 +1060,8 @@ int dw_pcie_setup_rc(struct dw_pcie_rp *pp)
-> >  		PCI_COMMAND_MASTER | PCI_COMMAND_SERR;
-> >  	dw_pcie_writel_dbi(pci, PCI_COMMAND, val);
-> >  
-> > +	dw_pcie_config_l1ss(pci);
+On Tue, Nov 18, 2025 at 02:36:38PM -0600, Bjorn Helgaas wrote:
+> On Wed, Nov 12, 2025 at 09:22:36AM +0100, Niklas Cassel wrote:
+> > On Tue, Nov 11, 2025 at 04:16:08PM -0600, Bjorn Helgaas wrote:
+> > > --- a/drivers/pci/controller/dwc/pcie-designware-host.c
+> > > +++ b/drivers/pci/controller/dwc/pcie-designware-host.c
+> > > @@ -1060,6 +1060,8 @@ int dw_pcie_setup_rc(struct dw_pcie_rp *pp)
+> > >  		PCI_COMMAND_MASTER | PCI_COMMAND_SERR;
+> > >  	dw_pcie_writel_dbi(pci, PCI_COMMAND, val);
+> > >  
+> > > +	dw_pcie_config_l1ss(pci);
+> > 
+> > The name dw_pcie_config_l1ss() sounds like we are enabling l1ss.
+> > 
+> > I know naming is hard.
+> > 
+> > Perhaps dw_pcie_disable_unsupported_l1ss() ?
+> > 
+> > Or something similar.
 > 
-> The name dw_pcie_config_l1ss() sounds like we are enabling l1ss.
+> "disable" sounds like something we do with a control register, and
+> here we want to remove the advertised support from the capabilities
+> register.
 > 
-> I know naming is hard.
-> 
-> Perhaps dw_pcie_disable_unsupported_l1ss() ?
-> 
-> Or something similar.
+> Maybe dw_pcie_hide_unsupported_l1ss()?
 
-"disable" sounds like something we do with a control register, and
-here we want to remove the advertised support from the capabilities
-register.
+Sounds good to me :)
 
-Maybe dw_pcie_hide_unsupported_l1ss()?
 
-Bjorn
+Kind regards,
+Niklas
 
 _______________________________________________
 Linux-rockchip mailing list
