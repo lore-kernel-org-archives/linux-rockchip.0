@@ -4,68 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03F7BCEBF93
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Nov 2025 23:52:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AD1CCEBF92
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Nov 2025 00:44:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3j1UHs14AfKTsrJui8FDNVbbtUkbyd290A+Ksi9oOyQ=; b=2pKodlwTM7v+px
-	GZxey2c8COdUk3MtVQU2QkhdpS11LB2+Y2wEAwGRkX2CZft6aiXDw8t3XYVVEOwcDi72RGkNT/UYt
-	P0L5WL4p/QfYLVrlgmFfxAiYxYxG7+6ytJSyhXWM8Ezk9pk3vjGUWttkAReJg07sLvzgaq0Xunahx
-	jZQGMoFJMLCK6irTIh46Fb3VO0ZId35LpMwWFPfc4Ax29iLJHHwFJDb9d7boLltAgkFkjFO5HFk5f
-	LqjMaUJjTS35iH7jzcEWYAh4XT/4jB8xz6KA3BiaRI66e73U67J2rpdWDnAjQ2TBQHdsmT44QHf4N
-	Yn/RpJ9amwbXHHkezd7w==;
+	List-Owner; bh=bchKbhRqk6RPIulIJqaunnm+XgPIfOqXyQuOUFxqOJs=; b=ozcF5Ys0J3bHKp
+	5LQCHsfA8MWkA8iyydRV1B4ITQdmLBRDsTWruY7VbnYlbuiJKR2Y60yIPVLmjf4tslCSVHxMHqm6U
+	R89G60UQXe49/C1Um8PHE77JJ1QoEqLsPxCdy9CGavQp4FV1O/Z6GSyuXGwM+gYb1lffhvRCZ7yd6
+	rcJtF96fSKjlCcKWrWpMWUeVI1Iauz7OEMwMAcmHU5q0nXWgatjcap6u5kyfWjuEtvrtmdukO5j2a
+	xm4/JmtKwaCjtLL/Tha35QY1VWv6ktUsYNLpUnnO+ekqF9uRFeBEZs7MLePg67J1Bv+M6eApvjVEc
+	RloHy+OYQ5AetUU7QHwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vL91S-0000000H12D-2Uwt;
-	Mon, 17 Nov 2025 23:52:38 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vL9p6-0000000H3Os-17V1;
+	Tue, 18 Nov 2025 00:43:56 +0000
+Received: from mail-m49220.qiye.163.com ([45.254.49.220])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vL91H-0000000H0wQ-3Wif;
-	Mon, 17 Nov 2025 23:52:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1763423544;
-	bh=dIOwX9G/bnHkpO+u+K2WCU5k3EZnJIIE/FI3gW8sb58=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=IuePNmMzQ3tCwvsz+dDnjvkQF9cS/tX2c3nEN2IRp/vb6zjUDvDTaN/gsSSjTkQ+K
-	 Lx9NWNYtxwU1TP+VxHWI9HPgxeFjgdCoJ9xNOBkmL3oZ0l5vcmNQFY83pUyWAxicqC
-	 GC+lVBhsXt5M1xK97+iWEd49KM8LVUgpmM4kJmL5az1Cmlo7SZxDK1u4G/Rsx0+/Xi
-	 JPNgxU0Lo6dtw/iWH006DjNczyAQhJTy9fAqJrcKWIK4xG3/7v65/RynelegBdEqwI
-	 eX/MHvZgOVOjTe43vCTlh7VIJuzoOkMTHk9T/Q18sCmG7jrycQBBwkBRabUJrtn+Eo
-	 m0RygKFP/rzGg==
-Received: from localhost (unknown [82.79.138.145])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9A44917E13D0;
-	Tue, 18 Nov 2025 00:52:24 +0100 (CET)
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Tue, 18 Nov 2025 01:52:01 +0200
-Subject: [PATCH v3 3/4] drm/vkms: Support setting custom background color
+	id 1vL9p2-0000000H3OM-2iDn;
+	Tue, 18 Nov 2025 00:43:54 +0000
+Received: from [172.16.12.14] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 29e80519c;
+	Tue, 18 Nov 2025 08:43:45 +0800 (GMT+08:00)
+Message-ID: <7e050003-f4ea-4e89-8140-2159c670182f@rock-chips.com>
+Date: Tue, 18 Nov 2025 08:43:41 +0800
 MIME-Version: 1.0
-Message-Id: <20251118-rk3588-bgcolor-v3-3-a2cc909428ea@collabora.com>
-References: <20251118-rk3588-bgcolor-v3-0-a2cc909428ea@collabora.com>
-In-Reply-To: <20251118-rk3588-bgcolor-v3-0-a2cc909428ea@collabora.com>
-To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Andy Yan <andy.yan@rock-chips.com>, 
- Louis Chauvet <louis.chauvet@bootlin.com>, 
- Haneen Mohammed <hamohammed.sa@gmail.com>, 
- Melissa Wen <melissa.srw@gmail.com>
-Cc: Robert Mader <robert.mader@collabora.com>, kernel@collabora.com, 
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-X-Mailer: b4 0.14.3
+User-Agent: Mozilla Thunderbird
+Cc: shawn.lin@rock-chips.com, linux-rockchip@lists.infradead.org,
+ linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+ Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>,
+ Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Johan Jonker <jbx6244@gmail.com>,
+ Dragan Simic <dsimic@manjaro.org>
+Subject: Re: [PATCH v2 0/4] PCI: rockchip: 5.0 GT/s speed may be dangerous
+To: Geraldo Nascimento <geraldogabriel@gmail.com>
+References: <cover.1763415705.git.geraldogabriel@gmail.com>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+In-Reply-To: <cover.1763415705.git.geraldogabriel@gmail.com>
+X-HM-Tid: 0a9a946ae62e09cckunm57c232373f288
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQkoZTlYYSB9CQ09PSBpLQk1WFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=XlUMvPhbm3JQYF08zp7VfmtLoI5CPW40rJWIiWOOwW22Ofn4z9LH7QdQi8T8myJpAPlIZIntJgPnt1spqSnFcr6eoDbDWvCwxPzUOrQ3kJaJ034g0Zf/jWLilCXnSDKY0tJHyBdOPp2o9qilFekScxRVIefPavvgVb3hbrAi/lI=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=FeV+cp/B6o4d554Dl89hs7gOjhWAAS0EpuPZa0xZZIE=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251117_155228_041937_E89C6850 
-X-CRM114-Status: GOOD (  13.04  )
+X-CRM114-CacheID: sfid-20251117_164353_172640_C251AE76 
+X-CRM114-Status: GOOD (  13.21  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,76 +72,42 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Make use of the BACKGROUND_COLOR CRTC property when filling the
-background during blending.  It already defaults to solid black.
-
-Since the internal representation of the pixel color in VKMS relies on
-16 bits of precision, use the newly introduced DRM_ARGB64_GET{R|G|B}()
-helpers to access the individual components of the background color
-property, which is compliant with DRM_FORMAT_ARGB16161616.
-
-It's worth noting the alpha component is ignored, hence non-opaque
-background colors are not supported.
-
-Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
----
- drivers/gpu/drm/vkms/vkms_composer.c | 10 ++++++++--
- drivers/gpu/drm/vkms/vkms_crtc.c     |  3 +++
- 2 files changed, 11 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/gpu/drm/vkms/vkms_composer.c b/drivers/gpu/drm/vkms/vkms_composer.c
-index c1ab12a44621..19e73817bf78 100644
---- a/drivers/gpu/drm/vkms/vkms_composer.c
-+++ b/drivers/gpu/drm/vkms/vkms_composer.c
-@@ -373,8 +373,14 @@ static void blend(struct vkms_writeback_job *wb,
- {
- 	struct vkms_plane_state **plane = crtc_state->active_planes;
- 	u32 n_active_planes = crtc_state->num_active_planes;
--
--	const struct pixel_argb_u16 background_color = { .a = 0xffff };
-+	u64 bgcolor = crtc_state->base.background_color;
-+
-+	const struct pixel_argb_u16 background_color = {
-+		.a = 0xffff,
-+		.r = DRM_ARGB64_GETR(bgcolor),
-+		.g = DRM_ARGB64_GETG(bgcolor),
-+		.b = DRM_ARGB64_GETB(bgcolor),
-+	};
- 
- 	int crtc_y_limit = crtc_state->base.mode.vdisplay;
- 	int crtc_x_limit = crtc_state->base.mode.hdisplay;
-diff --git a/drivers/gpu/drm/vkms/vkms_crtc.c b/drivers/gpu/drm/vkms/vkms_crtc.c
-index 9a7db1d51022..2514c367f710 100644
---- a/drivers/gpu/drm/vkms/vkms_crtc.c
-+++ b/drivers/gpu/drm/vkms/vkms_crtc.c
-@@ -4,6 +4,7 @@
- 
- #include <drm/drm_atomic.h>
- #include <drm/drm_atomic_helper.h>
-+#include <drm/drm_blend.h>
- #include <drm/drm_managed.h>
- #include <drm/drm_print.h>
- #include <drm/drm_probe_helper.h>
-@@ -228,6 +229,8 @@ struct vkms_output *vkms_crtc_init(struct drm_device *dev, struct drm_plane *pri
- 
- 	drm_crtc_enable_color_mgmt(crtc, 0, false, VKMS_LUT_SIZE);
- 
-+	drm_crtc_attach_background_color_property(crtc);
-+
- 	spin_lock_init(&vkms_out->lock);
- 	spin_lock_init(&vkms_out->composer_lock);
- 
-
--- 
-2.51.2
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+5ZyoIDIwMjUvMTEvMTgg5pif5pyf5LqMIDU6NDYsIEdlcmFsZG8gTmFzY2ltZW50byDlhpnpgZM6
+Cj4gRHJhZ2FuIFNpbWljIGFscmVhZHkgaGFkIHdhcm5lZCBtZSBvZiBwb3RlbnRpYWwgaXNzdWVz
+IHdpdGggNS4wIEdUL3MKPiBzcGVlZCBvcGVyYXRpb24gaW4gUm9ja2NoaXAgUENJZS4gSG93ZXZl
+ciwgaW4gcmVjZW50IGludGVyYWN0aW9ucwo+IHdpdGggU2hhd24gTGluIGZyb20gUm9ja2NoaXAg
+aXQgY2FtZSB0byBteSBhdHRlbnRpb24gdGhlcmUncyBncmF2ZQo+IGRhbmdlciBpbiB0aGUgdW5r
+bm93biBlcnJhdGEgcmVnYXJkaW5nIDUuMCBHVC9zIG9wZXJhdGlvbmFsIHNwZWVkCj4gb2YgdGhl
+aXIgUENJZSBjb3JlLiBFdmVuIGlmIHRoZSBvZGRzIGFyZSBsb3csIHRvIGNvbnRhaW4gYW55IGRh
+bWFnZSwKPiBsZXQncyBjb3ZlciB0aGUgcmVtYWluaW5nIGNvcm5lci1jYXNlcyB3aGVyZSB0aGUg
+ZGVmYXVsdCB3b3VsZCBsZWFkCj4gdG8gNS4wIEdUL3Mgb3BlcmF0aW9uIGFzIHdlbGwgYXMgYWRk
+IGEgY29tbWVudCB0byBSb290IENvbXBsZXggZHJpdmVyCj4gY29yZSwgZG9jdW1lbnRpbmcgdGhp
+cyBkYW5nZXIuIEZ1cnRoZXJtb3JlLCByZW1vdmUgcmVkdW5kYW50Cj4gZGVjbGFyYXRpb24gb2Yg
+bWF4LWxpbmstc3BlZWQgZnJvbSByazMzOTktbmFub3BpLXI0cy5kdHNpCj4gCj4gU2lnbmVkLW9m
+Zi1ieTogR2VyYWxkbyBOYXNjaW1lbnRvIDxnZXJhbGRvZ2FicmllbEBnbWFpbC5jb20+Cj4gCgpU
+aGFua3MgZm9yIGZpeGluZyB0aGVzZS4KCkFja2VkLWJ5OiBTaGF3biBMaW4gPHNoYXduLmxpbkBy
+b2NrLWNoaXBzLmNvbT4KCj4gLS0tCj4gCj4gQ2hhbmdlcyBpbiB2MjoKPiAtIGhhcmQgbGltaXQg
+dG8gMi41IEdUL3MsIG5vdCBqdXN0IHdhcm4KPiAtIGFkZCBSZXBvcnRlZC1ieTogYW5kIFJldmll
+d2VkLWJ5OiBEcmFnYW4gU2ltaWMKPiAtIHJlbW92ZSByZWR1bmRhbnQgZGVjbGFyYXRpb24gb2Yg
+bWF4LWxpbmstc3BlZWQgZnJvbSBoZWxpb3M2NCBkdHMKPiAtIGZpeCBMaW5rOiBvZiBoZWxpb3M2
+NCBwYXRjaAo+IC0gc2ltcGxpZnkgUkMgbW9kZSBjb21tZW50Cj4gLSBMaW5rIHRvIHYxOiBodHRw
+czovL2xvcmUua2VybmVsLm9yZy9hbGwvYVJoUjc5dTVCUHRSUkZ3M0BnZWRheS8KPiAKPiBHZXJh
+bGRvIE5hc2NpbWVudG8gKDQpOgo+ICAgIFBDSTogcm9ja2NoaXA6IGxpbWl0IFJLMzM5OSB0byAy
+LjUgR1QvcyB0byBwcmV2ZW50IGRhbWFnZQo+ICAgIFBDSTogcm9ja2NoaXAtaG9zdDogY29tbWVu
+dCBkYW5nZXIgb2YgNS4wIEdUL3Mgc3BlZWQKPiAgICBhcm02NDogZHRzOiByb2NrY2hpcDogcmVt
+b3ZlIGRhbmdlcm91cyBtYXgtbGluay1zcGVlZCBmcm9tIGhlbGlvczY0Cj4gICAgYXJtNjQ6IGR0
+czogcm9ja2NoaXA6IHJlbW92ZSByZWR1bmRhbnQgbWF4LWxpbmstc3BlZWQgZnJvbSBuYW5vcGkt
+cjRzCj4gCj4gICBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1rb2JvbC1oZWxp
+b3M2NC5kdHMgfCAgMSAtCj4gICBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1u
+YW5vcGktcjRzLmR0c2kgICAgfCAgMSAtCj4gICBkcml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaWUt
+cm9ja2NoaXAtaG9zdC5jICAgICAgICAgICAgfCAgMyArKysKPiAgIGRyaXZlcnMvcGNpL2NvbnRy
+b2xsZXIvcGNpZS1yb2NrY2hpcC5jICAgICAgICAgICAgICAgICB8IDEwICsrKysrKysrLS0KPiAg
+IDQgZmlsZXMgY2hhbmdlZCwgMTEgaW5zZXJ0aW9ucygrKSwgNCBkZWxldGlvbnMoLSkKPiAKCgpf
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2Nr
+Y2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRw
+Oi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
