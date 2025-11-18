@@ -4,87 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A7B1CED60F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Nov 2025 11:17:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60CE5CED631
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Nov 2025 12:06:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lpDnczUx0l4eA7OAOtcmkM8lYfXyLbDhVAPEdS294/s=; b=X28fHs21NXo62G
-	Xe+TugUTq+XyoCOurGFLMOPJKOCsMPt9NUgB1bjmK5WYVuTqmEDc7htFdw6KAIuIg3Gl3xXbDvrhX
-	Z/LvSBD9zxSribMwch1ZIPbiv2CJMZJIa5h7zn6N/l5dVdau0SNsFHEj1Rfe0lIMHwxpeaHnUBPWi
-	V/b02zRUEpUracnTtUWeqaqLDyND7xFfkFuNqCaUoayejKvvL2xtZD5dl3Ku7Ae8VRd0H55xXKwAx
-	Cggbg0abKu0TJbMhzNJb51GPYyD6XokvH5a4rE6cfXLZJwsxoxpB/Gck/Bf838M8oGR7mox9W0uUZ
-	+T77ZQtzmd95sYSFy1nw==;
+	List-Owner; bh=zP5Lj/UWmYFSDtgyCcLabmExklCXsNpdo20Q6r9eyAY=; b=jngdtYdX9UUude
+	zF0IEVFSL+sS8f9a2RT6J4u8AaVEh1oCmFFL345QIDdk0JWy9VfiA1Tg+C0oIrYzQ7W1RCqRTsojf
+	4KsBM3yB8OdzwzMvk377+JMXe0xuzOtWC/tGQ60vz6/Tb5FtBC4D0t/NJZTyzglxaJB7hDqu35koS
+	yPfsaMxoIsxV+uv9EHsMEgW1Twcka1+qquR+Uafzhk8xcL5+g9jgsOoQyiUZOd4E63B+hUhKiVxsM
+	9LJlSWbTc1SD0us5rdGAgUodTYkpi/WrAchCo8G/3o4YmNOM/3XDJABGSvt8w3Gj+vAAsZjkhFOw/
+	1Gwxh0SO6yQ41DKJYF2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLJhc-00000000K6z-2lWI;
-	Tue, 18 Nov 2025 11:16:52 +0000
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+	id 1vLKTn-00000000Neh-400Y;
+	Tue, 18 Nov 2025 12:06:39 +0000
+Received: from mgamail.intel.com ([198.175.65.9])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLJhZ-00000000K5v-3LCl
-	for linux-rockchip@lists.infradead.org;
-	Tue, 18 Nov 2025 11:16:51 +0000
-Received: by mail-ed1-x534.google.com with SMTP id 4fb4d7f45d1cf-6419aaced59so7266465a12.0
-        for <linux-rockchip@lists.infradead.org>; Tue, 18 Nov 2025 03:16:49 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1763464608; x=1764069408; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=ICI58HqE+ly7YapWrb44Ml5uRJuKE+CUkOe4M7qjE5M=;
-        b=QOq9cbPRCTQE+iCuYos8DhOy7bZuXGcf8KJdKur5vsa4CZpcELkCDHghc1/46APfJZ
-         maYCNeT255v02uM3LsvHKNoya2kVCDTXL9nahSXBS5K77o/5M7hekoWZBeCoHxw+dOWS
-         ZECinoVqmpPQQ5I2bA0+BffTNihgTmF1gPFLzVGxWml3TwYbpGki+2nFRLBANG/6H+U1
-         qp9VY7bXWicHlx/tG4d1Bd9TgbLo7guJmK1QwkqLSkkKXPoqtOlprnkMKy4QRY8+6yVD
-         6ZS4rfvgzgF5OljAyhyfDRKZRjdfzW6MgEUulP0DMac4jXSaMd+jAsnA8jXUgB1VBTog
-         5PlA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1763464608; x=1764069408;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ICI58HqE+ly7YapWrb44Ml5uRJuKE+CUkOe4M7qjE5M=;
-        b=fYUmufoLJHPLqej0ImJxle1KdhTDY/H5U+r6VeMctDAMe7+FRoSiiYQtbw4dYNl5SI
-         FwwZyDUtHrEmqcay/TN5Avo9WepDg9PJs8Hkat/TYHjNHwDnCF67IxTK97lIuNfnfb5L
-         XUiKYvTr9YDYv5hqT3GjNvgK45LJYwiyOWTDVRdfqkgKphwUhLwiuCcerC35N4pAZoh+
-         UVxDagEPGUVUDZCZXrqYXdx7rrzFKhKmZqwWjgHwgVGHTEyKgS5NmyeJ/bojWNaAkGY8
-         NiowdTIVL0hu1CFGN83zRppf2u1cdUgPGEwlRG3BIhB0zTO+GFlhSh2MYFgCpac5+dQH
-         c8VQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXmzRSE9VEAbr8m0v10swuJlP8JSZnHaz1JoEx7EQWcqOLsDUKvUpXnDphtBqiJ0aFPE9mymtfrA3mfZtRHpA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzUILJ3QrQJH+OppGzjwYhG6zXah1M0twEDemZTF7dpEZBqa9ik
-	Q4Ookm/JqQTCSM2j5KkosSaZk5oUXs9T6WgjDM6sP1YXGo1GqB+Vzr0uOuZOMf0xotxdNkaVuX1
-	G+YfdNPx1WRSj3wsVpTo429dgZwOnSyc=
-X-Gm-Gg: ASbGncuzy0zlGlkIjVIBw/pWAnM+1f+XeISmoyxHBxpKG3vqP1FEGYGNA6HIEHZLSuk
-	+dGyL1MjXzVnhJRfeh0iSsfGZjLbIqzMk09AGHNa3Sf/dgadM6rtzC8vi7/CwlvYneQVq5iCcBI
-	1fmMeymOH9x9TB8fQ6WApNV3CzSfBvkEyVQ811MQN5xaFG8PG82Z6v44pEA3KlYBv6BD2KyXUvp
-	aNS6RBeLLfvqiJQ35p8ZKFRbaLh07YTmq4EEhZpLTfQx+kXTvU8+vMGrPlHTAbIRaeQDQ==
-X-Google-Smtp-Source: AGHT+IGk8eL0HoWbK04CZRhqLg9Zqyg4kUzMUvvqXtI9msvINBej1DvZVcQa01Y7VyQwGu9XDV2OL2RxowdJygXo/7w=
-X-Received: by 2002:a05:6402:26d1:b0:640:ecaa:1973 with SMTP id
- 4fb4d7f45d1cf-64350e8ccb6mr13827406a12.24.1763464607610; Tue, 18 Nov 2025
- 03:16:47 -0800 (PST)
+	id 1vLKTg-00000000NdW-0Wzy;
+	Tue, 18 Nov 2025 12:06:33 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1763467592; x=1795003592;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=+DBrnd0XnZ/3Kg4ybg+n7skOvNHN+05c3Za6EBwWRJ4=;
+  b=GlXNhvrYaFk/ou/ScCnzD5wUgjTP06vBlw74VAUafRwBF3tclsTblJAB
+   zl7Q3N6RpmrVSgSNA0rPUKSZphS2TRbi7vLVLyrI9nvK/qzcNhAs/hsuk
+   rHivZm5yY8t52JVNDoHgeThJPZdZKb0Vb5AeLcailIuD+HFPCkoUou7gH
+   VoQsnwXe5uJpU+5Tey+wBS2X19alhYZ0YmAv+SqrNiZjnsiEvVom5iTmY
+   p7xqQNrdpDVwWmhhifd+dPlDa/7depstqVHg9lvEVlseFIw0LsDgb7RPY
+   adwELKP8R1+X8yFmrqLMZc6dFGjdDjZNy8Yx8pVgI2uNL710HDuD9J7Pl
+   g==;
+X-CSE-ConnectionGUID: fTaLdj5gSB2ODWfktWmbzQ==
+X-CSE-MsgGUID: VsKTkj+eSyyGBoHhBFzQ/A==
+X-IronPort-AV: E=McAfee;i="6800,10657,11616"; a="88137033"
+X-IronPort-AV: E=Sophos;i="6.19,314,1754982000"; 
+   d="scan'208";a="88137033"
+Received: from fmviesa004.fm.intel.com ([10.60.135.144])
+  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Nov 2025 04:06:30 -0800
+X-CSE-ConnectionGUID: L4c+hRHQRGGzK2KKCLDfyA==
+X-CSE-MsgGUID: NrQ8Oj1vTh6ywIF05IjymQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.19,314,1754982000"; 
+   d="scan'208";a="195655072"
+Received: from lkp-server01.sh.intel.com (HELO adf6d29aa8d9) ([10.239.97.150])
+  by fmviesa004.fm.intel.com with ESMTP; 18 Nov 2025 04:06:23 -0800
+Received: from kbuild by adf6d29aa8d9 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1vLKTV-0001hf-11;
+	Tue, 18 Nov 2025 12:06:21 +0000
+Date: Tue, 18 Nov 2025 20:06:08 +0800
+From: kernel test robot <lkp@intel.com>
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
+	Harry Wentland <harry.wentland@amd.com>,
+	Leo Li <sunpeng.li@amd.com>, Rodrigo Siqueira <siqueira@igalia.com>,
+	Alex Deucher <alexander.deucher@amd.com>,
+	Christian =?iso-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>,
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	Andrzej Hajda <andrzej.hajda@intel.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Robert Foss <rfoss@kernel.org>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Sandy Huang <hjc@rock-chips.com>,
+	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Jani Nikula <jani.nikula@linux.intel.com>,
+	Rodrigo Vivi <rodrigo.vivi@intel.com>,
+	Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+	Tvrtko Ursulin <tursulin@ursulin.net>
+Cc: oe-kbuild-all@lists.linux.dev, kernel@collabora.com,
+	amd-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, intel-gfx@lists.freedesktop.org
+Subject: Re: [PATCH v4 02/10] drm: Add new general DRM property "color format"
+Message-ID: <202511181958.eS8Ctiow-lkp@intel.com>
+References: <20251117-color-format-v4-2-0ded72bd1b00@collabora.com>
 MIME-Version: 1.0
-References: <20251117181023.482138-3-linux.amoon@gmail.com> <20251118005056.GA2541796@bhelgaas>
-In-Reply-To: <20251118005056.GA2541796@bhelgaas>
-From: Anand Moon <linux.amoon@gmail.com>
-Date: Tue, 18 Nov 2025 16:46:30 +0530
-X-Gm-Features: AWmQ_bksxI4TM_0iWFBAZwf_P1h7XfT3sMIf2tlbZ560ebj9GBa7XRzaoXRCoWo
-Message-ID: <CANAwSgSMiRrPp5G+guGQSsqArz7M750NAg8SQoorUQ7gJhUxHQ@mail.gmail.com>
-Subject: Re: [RFC v1 2/5] PCI: rockchip: Fix Device Control register offset
- for Max payload size
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: Shawn Lin <shawn.lin@rock-chips.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
-	=?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
-	Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
-	Heiko Stuebner <heiko@sntech.de>, 
-	"open list:PCIE DRIVER FOR ROCKCHIP" <linux-pci@vger.kernel.org>, 
-	"open list:PCIE DRIVER FOR ROCKCHIP" <linux-rockchip@lists.infradead.org>, 
-	"moderated list:ARM/Rockchip SoC support" <linux-arm-kernel@lists.infradead.org>, 
-	open list <linux-kernel@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20251117-color-format-v4-2-0ded72bd1b00@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251118_031649_879922_A9EDA7FF 
-X-CRM114-Status: GOOD (  32.11  )
+X-CRM114-CacheID: sfid-20251118_040632_258199_F0CFA17F 
+X-CRM114-Status: GOOD (  12.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,149 +110,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Bjorn
+Hi Nicolas,
 
-Thanks for your review comments.
+kernel test robot noticed the following build warnings:
 
-On Tue, 18 Nov 2025 at 06:21, Bjorn Helgaas <helgaas@kernel.org> wrote:
->
-> On Mon, Nov 17, 2025 at 11:40:10PM +0530, Anand Moon wrote:
-> > As per 17.6.6.1.29 PCI Express Device Capabilities Register
-> > (PCIE_RC_CONFIG_DC) reside at offset 0xc8 within the Root Complex (RC)
-> > configuration space, not at the offset of the PCI Express Capability
-> > List (0xc0). Following changes corrects the register offset to use
-> > PCIE_RC_CONFIG_DC (0xc8) to configure Max Payload Size.
-> >
-> > Signed-off-by: Anand Moon <linux.amoon@gmail.com>
-> > ---
-> >  drivers/pci/controller/pcie-rockchip-host.c | 4 ++--
-> >  drivers/pci/controller/pcie-rockchip.h      | 1 +
-> >  2 files changed, 3 insertions(+), 2 deletions(-)
-> >
-> > diff --git a/drivers/pci/controller/pcie-rockchip-host.c b/drivers/pci/controller/pcie-rockchip-host.c
-> > index f0de5b2590c4..d51780f4a254 100644
-> > --- a/drivers/pci/controller/pcie-rockchip-host.c
-> > +++ b/drivers/pci/controller/pcie-rockchip-host.c
-> > @@ -382,10 +382,10 @@ static int rockchip_pcie_host_init_port(struct rockchip_pcie *rockchip)
-> >               rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_CR + PCI_EXP_LNKCAP);
-> >       }
-> >
-> > -     status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_CR + PCI_EXP_DEVCTL);
-> > +     status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_DC + PCI_EXP_DEVCTL);
-> >       status &= ~PCI_EXP_DEVCTL_PAYLOAD;
-> >       status |= PCI_EXP_DEVCTL_PAYLOAD_256B;
-> > -     rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_CR + PCI_EXP_DEVCTL);
-> > +     rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_DC + PCI_EXP_DEVCTL);
-> >
-> >       return 0;
-> >  err_power_off_phy:
-> > diff --git a/drivers/pci/controller/pcie-rockchip.h b/drivers/pci/controller/pcie-rockchip.h
-> > index 5d8a3ae38599..c0ec6c32ea16 100644
-> > --- a/drivers/pci/controller/pcie-rockchip.h
-> > +++ b/drivers/pci/controller/pcie-rockchip.h
-> > @@ -157,6 +157,7 @@
-> >  #define PCIE_EP_CONFIG_LCS           (PCIE_EP_CONFIG_BASE + 0xd0)
-> >  #define PCIE_RC_CONFIG_RID_CCR               (PCIE_RC_CONFIG_BASE + 0x08)
-> >  #define PCIE_RC_CONFIG_CR            (PCIE_RC_CONFIG_BASE + 0xc0)
-> > +#define PCIE_RC_CONFIG_DC            (PCIE_RC_CONFIG_BASE + 0xc8)
->
-> Per the RK3399 TRM:
->
->   DEVCAP              0xc4
->   DEVCTL and DEVSTA   0xc8
->   LNKCAP              0xcc
->   LNKCTL and LNKSTA   0xd0
->   SLTCAP              0xd4
->   SLTCTL and SLTSTA   0xd8
->
-> That all makes good sense and matches the relative offsets in the PCIe
-> Capability.
->
-> I have no idea how we got from that to the mind-bendingly obtuse
-> #defines here:
->
->   PCIE_RC_CONFIG_CR == PCIE_RC_CONFIG_BASE + 0xc0
->                     == 0xa00000 + 0xc0
->                     == 0xa000c0
->
->   PCIE_RC_CONFIG_DC == PCIE_RC_CONFIG_BASE + 0xc8
->                     == 0xa00000 + 0xc8
->                     == 0xa000c8
->
->   PCIE_RC_CONFIG_LC == PCIE_RC_CONFIG_BASE + 0xd0
->                     == 0xa00000 + 0xd0
->                     == 0xa000d0
->
->   PCIE_RC_CONFIG_SR == PCIE_RC_CONFIG_BASE + 0xd4
->                     == 0xa00000 + 0xd4
->                     == 0xa000d4
->
-> And they're used like this:
->
->   PCIE_RC_CONFIG_CR + PCI_EXP_LNKCAP == 0xa000c0 + 0x0c
->                                      == 0xa000cc
->
->   PCIE_RC_CONFIG_CR + PCI_EXP_LNKCTL == 0xa000c0 + 0x10
->                                      == 0xa000d0
->
->   PCIE_RC_CONFIG_DC + PCI_EXP_DEVCTL == 0xa000c8 + 0x08
->                                      == 0xa000d0     <-- same as LNKCTL?
->
->   PCIE_RC_CONFIG_SR + PCI_EXP_DEVCAP == 0xa000d4 + 0x04
->                                      == 0xa000d8     <--
->
->   PCIE_RC_CONFIG_LC + PCI_EXP_LNKCTL == 0xa000d0 + 0x10
->                                      == 0xa000e0     <-- but LNKCTL was at 0xa000d0 above?
->
-> And the mappings don't make any sense to me:
-You are correct, PCIE_RC_CONFIG_DC + PCI_EXP_DEVCTL  results in an
-incorrect offset.
+[auto build test WARNING on d1d18879e01e4c9efcb85a96d188a8e4326136dd]
 
-As per my understanding
-#define PCI_EXP_DEVCTL 0x08 /* Device Control */
-#define  PCI_EXP_DEVCTL_PAYLOAD 0x00e0 /* Max_Payload_Size */
-#define  PCI_EXP_DEVCTL_PAYLOAD_128B 0x0000 /* 128 Bytes */
-#define  PCI_EXP_DEVCTL_PAYLOAD_256B 0x0020 /* 256 Bytes */
-#define  PCI_EXP_DEVCTL_PAYLOAD_512B 0x0040 /* 512 Bytes */
-#define  PCI_EXP_DEVCTL_PAYLOAD_1024B 0x0060 /* 1024 Bytes */
+url:    https://github.com/intel-lab-lkp/linux/commits/Nicolas-Frattaroli/drm-amd-display-Remove-unnecessary-SIGNAL_TYPE_HDMI_TYPE_A-check/20251118-031440
+base:   d1d18879e01e4c9efcb85a96d188a8e4326136dd
+patch link:    https://lore.kernel.org/r/20251117-color-format-v4-2-0ded72bd1b00%40collabora.com
+patch subject: [PATCH v4 02/10] drm: Add new general DRM property "color format"
+config: arm-randconfig-001-20251118 (https://download.01.org/0day-ci/archive/20251118/202511181958.eS8Ctiow-lkp@intel.com/config)
+compiler: arm-linux-gnueabi-gcc (GCC) 8.5.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20251118/202511181958.eS8Ctiow-lkp@intel.com/reproduce)
 
-What I was thinking about was mapping it to a register to offset the
-Max_Payload_Size (7:5) at PCIE_RC_CONFIG_DC (0xa000c8).
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202511181958.eS8Ctiow-lkp@intel.com/
 
-Sorry for the noise.
->
->   CR -> LNKCAP & LNKCTL
->   DC -> DEVCTL (ok, this one makes a *little* sense)
->   SR -> DEVCAP
->   LC -> LNKCTL (would make some sense except that we have CR above)
->
-> This is all just really hard to read.  It looks like if we defined a
-> single base address for the PCIe Capability, we shouldn't need all the
-> _CR, _DC, _LC, _SR, etc #defines.  E.g., we could have
->
->   #define ROCKCHIP_RP_PCIE_CAP ...
-#define ROCKCHIP_RP_PCIE_CAP (PCIE_RC_CONFIG_BASE + 0xc0)
-Is this ok? But the current code uses the same.
->
->   rockchip_pcie_read(rockchip, ROCKCHIP_RP_PCIE_CAP + PCI_EXP_DEVCAP)
->   rockchip_pcie_read(rockchip, ROCKCHIP_RP_PCIE_CAP + PCI_EXP_LNKCTL)
->   ...
->
-> with maybe some minor adjustment for 16-bit registers since Rockchip
-> only seems to support 32-bit accesses (?)
->
-> None of these registers are *Root Complex* registers; they're all part
-> of a PCIe Capability, which applies to a Root *Port*.
->
-Ok, I understood
-> >  #define PCIE_RC_CONFIG_LC            (PCIE_RC_CONFIG_BASE + 0xd0)
-> >  #define PCIE_RC_CONFIG_L1_SUBSTATE_CTRL2 (PCIE_RC_CONFIG_BASE + 0x90c)
-> >  #define PCIE_RC_CONFIG_THP_CAP               (PCIE_RC_CONFIG_BASE + 0x274)
-> > --
-> > 2.50.1
-> >
-Thanks
--Anand
+All warnings (new ones prefixed by >>):
+
+>> Warning: drivers/gpu/drm/drm_connector.c:1392 function parameter 'color_fmt' not described in 'drm_get_color_format_name'
+>> Warning: drivers/gpu/drm/drm_connector.c:1392 function parameter 'color_fmt' not described in 'drm_get_color_format_name'
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
 _______________________________________________
 Linux-rockchip mailing list
