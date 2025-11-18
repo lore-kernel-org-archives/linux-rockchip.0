@@ -4,127 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 809C6CEDD8A
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Nov 2025 13:50:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0563ECEE327
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Nov 2025 15:57:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Reply-To:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:
-	From:MIME-Version:Date:Message-ID:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=liq/Ov9o5ZOSuKrapO5GrBMDnyTn9BC+DWtDvAyGd6c=; b=K8o7TBY5BnZ9RsRBI/1Um5deAv
-	NRrD8kVoE05oTsTIeACNZS167j6jf9SVLJnmNDl45E9Lo4Pei3OmXEfay16CDSHOA//K8Kcdf+YXb
-	D4pd24qnGEYN+XlRHoOfdnMgEJ7a5IqkWU2Jn/KQ93ll4c+KHRjFZ4SqmK+CDLKUVybq9ctJdWMzH
-	GCfhfGwl1QnoG0n6lii9OWFNWM7qfPri+yp+BcuU2l15FuAYiJ8gmTcb1egEO/ZZWQGXI1zhs+wli
-	VQ98B3lbfKyBc/uPuiZJEdnldba8dM6ACKr2H7YPBH1ZTSUm0VnFWV0NFEtD7xdE0L28vf7a4JMd2
-	QHPxFUyw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Date:Cc:To:MIME-Version:Message-Id:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ADtJtF8IDzIeyyPh1oQkee30MnuNWvQV2bvDs/aRvfY=; b=w6Pv65Z5xN2Kl+
+	cVimhwZF53CtNQSfa7huwW8ZJqY8RddkojN3QRvxdjsU666BqgV5NDzYmvpEAeIoh+hJQJzsNQOkq
+	ZLvza/LFb6kirmhIP4gGWkx3jBZpUjKWzpo4hoSS/snJVU2AInDVjrfeCfql9/22rH4w3d4horAL1
+	5u/O7xrxRBdVG3HSOFMXdDFbftvnqN+BdCVfHJZA/Qas/XMS2WdRcwjXxpTCQWOJPRCpkGaclkq7f
+	2lBFDIwK/epYiQsPTR3OhQ4SbS5cfCu5tkh1+RChbij8T86c2gppyblAjUQftBmTGR3gmkNk+IEl6
+	vaS+NAzu6FKvPhHoTpaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLM6a-00000000UTV-0HAn;
-	Tue, 18 Nov 2025 13:50:48 +0000
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+	id 1vLO4e-00000000f0T-2m6I;
+	Tue, 18 Nov 2025 15:56:56 +0000
+Received: from skyblue.cherry.relay.mailchannels.net ([23.83.223.167])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLM6T-00000000UPo-0iyR
-	for linux-rockchip@lists.infradead.org;
-	Tue, 18 Nov 2025 13:50:45 +0000
-Received: by mail-wr1-x431.google.com with SMTP id ffacd0b85a97d-42b31507ed8so4451559f8f.1
-        for <linux-rockchip@lists.infradead.org>; Tue, 18 Nov 2025 05:50:40 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1763473839; x=1764078639; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:organization:autocrypt
-         :content-language:references:cc:to:subject:reply-to:from:user-agent
-         :mime-version:date:message-id:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=dY87Qd6K9FmYpUIN2v9FDUk/qdoG5fxW/x7OSqsCn3w=;
-        b=lkJrogEx+owEeZPlwXICzFL7YWtKJ5mCyJ/EZ2+PXvAKg6xpVrqyLIzzl+6j7GRJ4f
-         r5aOOCsN0rNXk0cU2co7rKvzCDPyPpAdazdpaLVxegxOll5i9I2/ZuDRRNaR7c6C6mCR
-         j6gDP88VholnlbzfjN6CTpxQDyY2qF4duitnRwYhS0RYl+ERrao34L2p3P/RzxNBy6h6
-         KanBaJcYr8RwzE+o975LpBQ+DOKKo7STamrB+9L8bGTVT8LOxDdYxiIFq/48hmsn2tAB
-         x/lj/VWWVW9R/5s1y1b9OYFnHs8YZVTl2vmOz7Ws0bJWmzq2RWbBu9z1kiFp5Wl3UObp
-         a7vA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1763473839; x=1764078639;
-        h=content-transfer-encoding:in-reply-to:organization:autocrypt
-         :content-language:references:cc:to:subject:reply-to:from:user-agent
-         :mime-version:date:message-id:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=dY87Qd6K9FmYpUIN2v9FDUk/qdoG5fxW/x7OSqsCn3w=;
-        b=PJj2QaMO58TV9giiYVQLVZMWrV5IyU/11QXttApnwzlKKgOKmzldzHT2OzSrtYM6wj
-         dLNo3M1SXgcgohRrFv2ksd5YHOjdTmcSMfEb4mlFL2axUm0CgqrpF76nSs2KhEZAPYn8
-         cAuc/8S64qt4vZ5KkEH3TC9BEMluiJDJHuzsIWmcPezFVT0Rn17IPr5O2fb+3TNRV9re
-         6hT3JgkHqJva+0K987nx8pbrqpmGnEq5ZuSiiAe9bn9QMYxwVAJlpMRJr+CLcyleTrSK
-         WhTxP2N/wuplgM0RncAzua0Y2OUpfQiijVBTTgmo7R9vBkS0DMhNHy+gU7NfGGMyXVwC
-         CSVA==
-X-Forwarded-Encrypted: i=1; AJvYcCWy7kCvobc2m3895OIPKs1fM77xrKBOQvb5EIAuhSbhxPwcn9D8rPne2xFOxM2utu6Z6TVwYPym7/KFjWikxg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx+sf8NQveWr52GDume6Ek01HiVCRSEEUGvo1aqd7U5iA4yYcrk
-	pDSqtBXRsCGVgM2fTm/asHQaBMP3G6kt8hi23DggJRZXMsQ5lBYaV96y1KdZLx5bpEk=
-X-Gm-Gg: ASbGnctTenKKsPTKubNy2qFc5YKApiH6ERy8zXkfbTrDtbE6UMQ1ORRwDOg9EUFUH1k
-	tscF5DQb72B4HbhJ3S6Wt66nKES2K1RunCYPZCcDwHnt2jCQ7KA6fA98OYTBUamOkG2E6aTbdSO
-	krQARTqsrsyDkKrro/I+5nhI09folO6LBxELu4+ur5KEa34uVewQS0Tk0FnsCCCNwq/g/wiAxBS
-	LUdzj4g9hXZXnQbwB5fizjUJRQa3k+WA97BTiTLsCfXilUKHttNrCH+f2cyMTF86I9erT/arXgo
-	u21voBBPyespihNyJhb6gRXX1mVQzTvrOwfyApYLQLUAW+xpRJjjyLhbcdU935mX9WlLxYuZfPn
-	nYEnpo3DksT8pG34EYt7eVqPttCgDxg7uhg1XQors6FrOunt883W2xGWXNnUT2f6BJItCggylDv
-	YfHe8YWCHeG7oC/tnoVxK50ialyKN0dFSRXQi5uKUQW125HhmyWCbtQZq1J/W1clg=
-X-Google-Smtp-Source: AGHT+IHO7NgHAvMoNL+Vwr0gsrbLBbRzB68mfS+LYvq/Q1H/ixopITAemFG2PunekaEBn/eSbVurMg==
-X-Received: by 2002:a05:6000:24c7:b0:428:52c7:feae with SMTP id ffacd0b85a97d-42b593869b1mr16288107f8f.32.1763473839029;
-        Tue, 18 Nov 2025 05:50:39 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:3d9:2080:366e:5264:fffe:1c49? ([2a01:e0a:3d9:2080:366e:5264:fffe:1c49])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-42b53e85e6fsm32359458f8f.18.2025.11.18.05.50.37
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 18 Nov 2025 05:50:38 -0800 (PST)
-Message-ID: <e21760e8-4eaf-4181-a328-5d0d205b7ae0@linaro.org>
-Date: Tue, 18 Nov 2025 14:50:37 +0100
+	id 1vLO4Y-00000000eyh-3jXg;
+	Tue, 18 Nov 2025 15:56:52 +0000
+X-Sender-Id: hostingeremail|x-authuser|michael.opdenacker@rootcommit.com
+Received: from relay.mailchannels.net (localhost [127.0.0.1])
+	by relay.mailchannels.net (Postfix) with ESMTP id 307F74441EA;
+	Tue, 18 Nov 2025 15:56:47 +0000 (UTC)
+Received: from de-fra-smtpout8.hostinger.io (trex-green-2.trex.outbound.svc.cluster.local [100.127.171.17])
+	(Authenticated sender: hostingeremail)
+	by relay.mailchannels.net (Postfix) with ESMTPA id 819B34441CB;
+	Tue, 18 Nov 2025 15:56:44 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; d=mailchannels.net; s=arc-2022; cv=none;
+	t=1763481406;
+	b=yvDa/VvYmUSJvM7mnMULG0o+YDF5C82BGzEsr8+18Not+hMGPwKRv0xa2Vq//JjK4QPN1m
+	aGtgMGKxuD7p2jnHhuRExeq7oWqdy9hTakl0W59Kd4x06+sAxPza6m1ersBqJ4IsQrrRlC
+	JnRcfrbGqBcr7YlitH5XI/Z0rycKUBlUHC3Emj5c1IdXEKVGkvK5VLmhdxY2lwAWVoaQEY
+	mDhiJ/Dz7WZ8xYNBDcb7R6IZqRr6vcpzeuVdID3xPYjrm2dna78qrN7xezWDfFtxppgQd4
+	l55IAK3wB08tcXBSO57r+NFqcU7BzHDn8MyXTsmZFFKuzFQtSpgR6dL06AZWIw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mailchannels.net;
+	s=arc-2022; t=1763481406;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:dkim-signature;
+	bh=Ut3SuGRXcnqydzose6Th4hSHH5Fvmww3wK2Gga704mk=;
+	b=AUTll/DiTnjUmT6zmZVf4qz7HEOJrmtUC9N4PDMn1YpB6BvMs4SQhDknZKyTesbvFdQ38b
+	o12w8QosaJBXf+qvdW9sZojzlhfcyanxgSYkitGm+nrUmErmWyHwJHWDA9GXLEf982uRzE
+	bCHF3Fa/BNqYoTQXD4JcekuETQJR2jxoavYpYt1P25TnxaEF5jgF8oiWx8qxRcnkjqcJBQ
+	P4iqFDZ0kv0BzBLId62BaSfYlA9AfHT5Q8QcI1WfP1QnFTNWAUG06rAiaFLhF1/auzClJN
+	jgCP/HGwOVIWMt9bIgXHH1UJdrlQjMhXqfSOSnZcU3n/HRrg+7h5dwDmEcn84A==
+ARC-Authentication-Results: i=1;
+	rspamd-55b59744f-jl6rk;
+	auth=pass smtp.auth=hostingeremail
+ smtp.mailfrom=michael.opdenacker@rootcommit.com
+X-Sender-Id: hostingeremail|x-authuser|michael.opdenacker@rootcommit.com
+X-MC-Relay: Neutral
+X-MailChannels-SenderId: hostingeremail|x-authuser|michael.opdenacker@rootcommit.com
+X-MailChannels-Auth-Id: hostingeremail
+X-Tart-Lonely: 249516853e3aebaf_1763481406887_877732730
+X-MC-Loop-Signature: 1763481406887:1968770014
+X-MC-Ingress-Time: 1763481406887
+Received: from de-fra-smtpout8.hostinger.io (de-fra-smtpout8.hostinger.io
+ [148.222.55.13])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384)
+	by 100.127.171.17 (trex/7.1.3);
+	Tue, 18 Nov 2025 15:56:46 +0000
+Received: from [127.0.1.1] (unknown [IPv6:2001:861:4450:d360:70a8:5f6b:5afe:c6b5])
+	(Authenticated sender: michael.opdenacker@rootcommit.com)
+	by smtp.hostinger.com (smtp.hostinger.com) with ESMTPSA id 4d9q3t2v5hz42S4;
+	Tue, 18 Nov 2025 15:56:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=rootcommit.com;
+	s=hostingermail-a; t=1763481402;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=Ut3SuGRXcnqydzose6Th4hSHH5Fvmww3wK2Gga704mk=;
+	b=hLh7yH8CCt6qeUC5v9JL1d8OXDoHVsDXjT4QBxzJoLDlcuYaJu9yuGVj9bpEnoMilHbwia
+	JiKoD8vgrp0QMz8niT7N2jlMvyCPM4teDsnWekPuwBIHpNP1Eb1ZC0X293hAwNDlH5hSDf
+	S8kYnU0zmotThbdJxu4CBUwV9JWL+2t/xg0xwttmvmaUx+8Co+Pi0M1ZgG4hf6BCjPwJ7X
+	opKrYqOnLMpSg7KQ7N3F2B1hjBtnE4ftndaXgHKgA/ez9B3LFHg+xou3vMOEVFUILpRXRT
+	zLcWTwSqwZEChE0M6XygHnVUp4nY5Bt7nGUH3CNwOiOEk7QRJLTrJ+uZORM5oQ==
+From: Michael Opdenacker <michael.opdenacker@rootcommit.com>
+Subject: [PATCH v3 0/2] arm64: dts: rockchip: add Tinker Board 3 and 3S
+ device tree
+Message-Id: <20251118-tinker3-v3-0-2903693f2ebb@rootcommit.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-From: Neil Armstrong <neil.armstrong@linaro.org>
-Subject: Re: [PATCH 5/9] drm/panel: ilitek-ili9881d: Add support for
- Wanchanglong W552946AAA panel
-To: Chaoyi Chen <kernel@airkyi.com>,
- Jessica Zhang <jessica.zhang@oss.qualcomm.com>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Sandy Huang <hjc@rock-chips.com>,
- =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
- Andy Yan <andy.yan@rock-chips.com>, Vinod Koul <vkoul@kernel.org>,
- Kishon Vijay Abraham I <kishon@kernel.org>
-Cc: dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-phy@lists.infradead.org,
- Chaoyi Chen <chaoyi.chen@rock-chips.com>
-References: <20251106020632.92-1-kernel@airkyi.com>
- <20251106020632.92-6-kernel@airkyi.com>
-Content-Language: en-US, fr
-Autocrypt: addr=neil.armstrong@linaro.org; keydata=
- xsBNBE1ZBs8BCAD78xVLsXPwV/2qQx2FaO/7mhWL0Qodw8UcQJnkrWmgTFRobtTWxuRx8WWP
- GTjuhvbleoQ5Cxjr+v+1ARGCH46MxFP5DwauzPekwJUD5QKZlaw/bURTLmS2id5wWi3lqVH4
- BVF2WzvGyyeV1o4RTCYDnZ9VLLylJ9bneEaIs/7cjCEbipGGFlfIML3sfqnIvMAxIMZrvcl9
- qPV2k+KQ7q+aXavU5W+yLNn7QtXUB530Zlk/d2ETgzQ5FLYYnUDAaRl+8JUTjc0CNOTpCeik
- 80TZcE6f8M76Xa6yU8VcNko94Ck7iB4vj70q76P/J7kt98hklrr85/3NU3oti3nrIHmHABEB
- AAHNKk5laWwgQXJtc3Ryb25nIDxuZWlsLmFybXN0cm9uZ0BsaW5hcm8ub3JnPsLAkQQTAQoA
- OwIbIwULCQgHAwUVCgkICwUWAgMBAAIeAQIXgBYhBInsPQWERiF0UPIoSBaat7Gkz/iuBQJk
- Q5wSAhkBAAoJEBaat7Gkz/iuyhMIANiD94qDtUTJRfEW6GwXmtKWwl/mvqQtaTtZID2dos04
- YqBbshiJbejgVJjy+HODcNUIKBB3PSLaln4ltdsV73SBcwUNdzebfKspAQunCM22Mn6FBIxQ
- GizsMLcP/0FX4en9NaKGfK6ZdKK6kN1GR9YffMJd2P08EO8mHowmSRe/ExAODhAs9W7XXExw
- UNCY4pVJyRPpEhv373vvff60bHxc1k/FF9WaPscMt7hlkbFLUs85kHtQAmr8pV5Hy9ezsSRa
- GzJmiVclkPc2BY592IGBXRDQ38urXeM4nfhhvqA50b/nAEXc6FzqgXqDkEIwR66/Gbp0t3+r
- yQzpKRyQif3OwE0ETVkGzwEIALyKDN/OGURaHBVzwjgYq+ZtifvekdrSNl8TIDH8g1xicBYp
- QTbPn6bbSZbdvfeQPNCcD4/EhXZuhQXMcoJsQQQnO4vwVULmPGgtGf8PVc7dxKOeta+qUh6+
- SRh3vIcAUFHDT3f/Zdspz+e2E0hPV2hiSvICLk11qO6cyJE13zeNFoeY3ggrKY+IzbFomIZY
- 4yG6xI99NIPEVE9lNBXBKIlewIyVlkOaYvJWSV+p5gdJXOvScNN1epm5YHmf9aE2ZjnqZGoM
- Mtsyw18YoX9BqMFInxqYQQ3j/HpVgTSvmo5ea5qQDDUaCsaTf8UeDcwYOtgI8iL4oHcsGtUX
- oUk33HEAEQEAAcLAXwQYAQIACQUCTVkGzwIbDAAKCRAWmrexpM/4rrXiB/sGbkQ6itMrAIfn
- M7IbRuiSZS1unlySUVYu3SD6YBYnNi3G5EpbwfBNuT3H8//rVvtOFK4OD8cRYkxXRQmTvqa3
- 3eDIHu/zr1HMKErm+2SD6PO9umRef8V82o2oaCLvf4WeIssFjwB0b6a12opuRP7yo3E3gTCS
- KmbUuLv1CtxKQF+fUV1cVaTPMyT25Od+RC1K+iOR0F54oUJvJeq7fUzbn/KdlhA8XPGzwGRy
- 4zcsPWvwnXgfe5tk680fEKZVwOZKIEuJC3v+/yZpQzDvGYJvbyix0lHnrCzq43WefRHI5XTT
- QbM0WUIBIcGmq38+OgUsMYu4NzLu7uZFAcmp6h8g
-Organization: Linaro
-In-Reply-To: <20251106020632.92-6-kernel@airkyi.com>
+X-B4-Tracking: v=1; b=H4sIAB2XHGkC/02NSwrDMAxErxK0rkMU57/qPUoXJlEa0doOsimFk
+ LtXdNXV8GDmzQGJhCnBVBwg9ObEMSjYSwHz5sKDDC/KUFd1i4i9yRyeJNYMA9l6Wd2IdgBt70I
+ rf36m2115lehN3oTc/77BtumwL7txbCuDxrO+0KuM+0LBzWq+Sox5jt5zLjXgPL/VMIespAAAA
+ A==
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
+ Michael Opdenacker <michael.opdenacker@rootcommit.com>
+X-Mailer: b4 0.13.0
+Date: Tue, 18 Nov 2025 15:56:41 +0000 (UTC)
+X-CM-Envelope: MS4xfAf4PlmoqFM0KzB8lu67raFzxwPBycLgxOHv1meH4Qi1w/F31grhV6fvi0l9amO1mHVUQxA8YpD96ZDmOSSo5iWRhcDRjn65/HatOgYLXi5Q+9gbOfJp nndS31PO+fIP3izpPpd3NXtx1QA6sYweQmuBpKX1MSXf+MdhDqZ1h9N35LEYZ8rIN+TwIxIt+rZmpoTrLSx7oCt2Vx2O9IqGxUkxsKAh2hKDW8yLFEUv0Nhg t35MPrV+wpq7WSo1TKfD0EX4p7swxp7RSYh18xHOF4lh5Wi/BNor8I7844ieC8aLqWur3Q9gs/prkVy+Ak9qVy+zs1GiXJQdnG/HxFIiBd66jbOMJpDiqnGe ExdhONVY43KQEaSdm3UTzRiHJygrYW8sDU49kvubjERXKrRelypgztFbVbgQ0JxRCAW0r1b7cHwsaSClVOP2YeGQpToTcbaHViSXD7qM19X2/Uy83KXSdslc LcKh4ybeSza+iB5VVuyII2kJNktyeuJRrrTzruJveUiSzoZeumXPN/UsC8DSQnd6biwe+D7xoO/8fwjM46pUzIJL76jedFMwNQUXYDfKB0/r5gltJcvwumUE 8g2Nq+mS9smxpoVWwpjmivCptpQvDaU6z+GxplCIZc/lWw==
+X-CM-Analysis: v=2.4 cv=etGNzZpX c=1 sm=1 tr=0 ts=691c973a a=Ph0lQeLb5o4XXq6kAtNexw==:617 a=xqWC_Br6kY4A:10 a=IkcTkHD0fZMA:10 a=-Yt9tNsTAAAA:8 a=KKAkSRfTAAAA:8 a=d70CFdQeAAAA:8 a=Bb-50Za3bNL7VLoPKgYA:9 a=lqcHg5cX4UMA:10 a=QEXdDO2ut3YA:10 a=qPQde0g9OtMA:10 a=HTceBwxjnJgA:10 a=cvBusfyB2V15izCimMoJ:22 a=NcxpMcIZDGm-g932nG_k:22
+X-AuthUser: michael.opdenacker@rootcommit.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251118_055043_906590_CA7DBD2D 
-X-CRM114-Status: GOOD (  13.73  )
+X-CRM114-CacheID: sfid-20251118_075651_336176_C1D723AA 
+X-CRM114-Status: GOOD (  14.31  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -136,287 +118,89 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: Neil Armstrong <neil.armstrong@linaro.org>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 11/6/25 03:06, Chaoyi Chen wrote:
-> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-> 
-> W552946AAA is a panel by Wanchanglong. This panel utilizes the
-> Ilitek ILI9881D controller.
-> 
-> W552946AAA is similar to W552946ABA, but the W552946AAA only
-> uses 2 lanes.
-> 
-> Tested on rk3506g-evb1-v10.
-> 
-> Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-> ---
->   drivers/gpu/drm/panel/panel-ilitek-ili9881c.c | 225 ++++++++++++++++++
->   1 file changed, 225 insertions(+)
-> 
-> diff --git a/drivers/gpu/drm/panel/panel-ilitek-ili9881c.c b/drivers/gpu/drm/panel/panel-ilitek-ili9881c.c
-> index ad4993b2f92a..9b3e9450808d 100644
-> --- a/drivers/gpu/drm/panel/panel-ilitek-ili9881c.c
-> +++ b/drivers/gpu/drm/panel/panel-ilitek-ili9881c.c
-> @@ -820,6 +820,204 @@ static const struct ili9881c_instr tl050hdv35_init[] = {
->   	ILI9881C_COMMAND_INSTR(0xd3, 0x39),
->   };
->   
-> +static const struct ili9881c_instr w552946aaa_init[] = {
-> +	ILI9881C_SWITCH_PAGE_INSTR(3),
-> +	ILI9881C_COMMAND_INSTR(0x01, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0x02, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0x03, 0x53),
-> +	ILI9881C_COMMAND_INSTR(0x04, 0x53),
-> +	ILI9881C_COMMAND_INSTR(0x05, 0x13),
-> +	ILI9881C_COMMAND_INSTR(0x06, 0x04),
-> +	ILI9881C_COMMAND_INSTR(0x07, 0x02),
-> +	ILI9881C_COMMAND_INSTR(0x08, 0x02),
-> +	ILI9881C_COMMAND_INSTR(0x09, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0x0a, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0x0b, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0x0c, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0x0d, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0x0e, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0x0f, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0x10, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0x11, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0x12, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0x13, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0x14, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0x15, 0x08),
-> +	ILI9881C_COMMAND_INSTR(0x16, 0x10),
-> +	ILI9881C_COMMAND_INSTR(0x17, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0x18, 0x08),
-> +	ILI9881C_COMMAND_INSTR(0x19, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0x1a, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0x1b, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0x1c, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0x1d, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0x1e, 0xc0),
-> +	ILI9881C_COMMAND_INSTR(0x1f, 0x80),
-> +	ILI9881C_COMMAND_INSTR(0x20, 0x02),
-> +	ILI9881C_COMMAND_INSTR(0x21, 0x09),
-> +	ILI9881C_COMMAND_INSTR(0x22, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0x23, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0x24, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0x25, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0x26, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0x27, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0x28, 0x55),
-> +	ILI9881C_COMMAND_INSTR(0x29, 0x03),
-> +	ILI9881C_COMMAND_INSTR(0x2a, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0x2b, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0x2c, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0x2d, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0x2e, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0x2f, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0x30, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0x31, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0x32, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0x33, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0x34, 0x04),
-> +	ILI9881C_COMMAND_INSTR(0x35, 0x05),
-> +	ILI9881C_COMMAND_INSTR(0x36, 0x05),
-> +	ILI9881C_COMMAND_INSTR(0x37, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0x38, 0x3c),
-> +	ILI9881C_COMMAND_INSTR(0x39, 0x35),
-> +	ILI9881C_COMMAND_INSTR(0x3a, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0x3b, 0x40),
-> +	ILI9881C_COMMAND_INSTR(0x3c, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0x3d, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0x3e, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0x3f, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0x40, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0x41, 0x88),
-> +	ILI9881C_COMMAND_INSTR(0x42, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0x43, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0x44, 0x1f),
-> +	ILI9881C_COMMAND_INSTR(0x50, 0x01),
-> +	ILI9881C_COMMAND_INSTR(0x51, 0x23),
-> +	ILI9881C_COMMAND_INSTR(0x52, 0x45),
-> +	ILI9881C_COMMAND_INSTR(0x53, 0x67),
-> +	ILI9881C_COMMAND_INSTR(0x54, 0x89),
-> +	ILI9881C_COMMAND_INSTR(0x55, 0xab),
-> +	ILI9881C_COMMAND_INSTR(0x56, 0x01),
-> +	ILI9881C_COMMAND_INSTR(0x57, 0x23),
-> +	ILI9881C_COMMAND_INSTR(0x58, 0x45),
-> +	ILI9881C_COMMAND_INSTR(0x59, 0x67),
-> +	ILI9881C_COMMAND_INSTR(0x5a, 0x89),
-> +	ILI9881C_COMMAND_INSTR(0x5b, 0xab),
-> +	ILI9881C_COMMAND_INSTR(0x5c, 0xcd),
-> +	ILI9881C_COMMAND_INSTR(0x5d, 0xef),
-> +	ILI9881C_COMMAND_INSTR(0x5e, 0x03),
-> +	ILI9881C_COMMAND_INSTR(0x5f, 0x14),
-> +	ILI9881C_COMMAND_INSTR(0x60, 0x15),
-> +	ILI9881C_COMMAND_INSTR(0x61, 0x0c),
-> +	ILI9881C_COMMAND_INSTR(0x62, 0x0d),
-> +	ILI9881C_COMMAND_INSTR(0x63, 0x0e),
-> +	ILI9881C_COMMAND_INSTR(0x64, 0x0f),
-> +	ILI9881C_COMMAND_INSTR(0x65, 0x10),
-> +	ILI9881C_COMMAND_INSTR(0x66, 0x11),
-> +	ILI9881C_COMMAND_INSTR(0x67, 0x08),
-> +	ILI9881C_COMMAND_INSTR(0x68, 0x02),
-> +	ILI9881C_COMMAND_INSTR(0x69, 0x0a),
-> +	ILI9881C_COMMAND_INSTR(0x6a, 0x02),
-> +	ILI9881C_COMMAND_INSTR(0x6b, 0x02),
-> +	ILI9881C_COMMAND_INSTR(0x6c, 0x02),
-> +	ILI9881C_COMMAND_INSTR(0x6d, 0x02),
-> +	ILI9881C_COMMAND_INSTR(0x6e, 0x02),
-> +	ILI9881C_COMMAND_INSTR(0x6f, 0x02),
-> +	ILI9881C_COMMAND_INSTR(0x70, 0x02),
-> +	ILI9881C_COMMAND_INSTR(0x71, 0x02),
-> +	ILI9881C_COMMAND_INSTR(0x72, 0x06),
-> +	ILI9881C_COMMAND_INSTR(0x73, 0x02),
-> +	ILI9881C_COMMAND_INSTR(0x74, 0x02),
-> +	ILI9881C_COMMAND_INSTR(0x75, 0x14),
-> +	ILI9881C_COMMAND_INSTR(0x76, 0x15),
-> +	ILI9881C_COMMAND_INSTR(0x77, 0x0f),
-> +	ILI9881C_COMMAND_INSTR(0x78, 0x0e),
-> +	ILI9881C_COMMAND_INSTR(0x79, 0x0d),
-> +	ILI9881C_COMMAND_INSTR(0x7a, 0x0c),
-> +	ILI9881C_COMMAND_INSTR(0x7b, 0x11),
-> +	ILI9881C_COMMAND_INSTR(0x7c, 0x10),
-> +	ILI9881C_COMMAND_INSTR(0x7d, 0x06),
-> +	ILI9881C_COMMAND_INSTR(0x7e, 0x02),
-> +	ILI9881C_COMMAND_INSTR(0x7f, 0x0a),
-> +	ILI9881C_COMMAND_INSTR(0x80, 0x02),
-> +	ILI9881C_COMMAND_INSTR(0x81, 0x02),
-> +	ILI9881C_COMMAND_INSTR(0x82, 0x02),
-> +	ILI9881C_COMMAND_INSTR(0x83, 0x02),
-> +	ILI9881C_COMMAND_INSTR(0x84, 0x02),
-> +	ILI9881C_COMMAND_INSTR(0x85, 0x02),
-> +	ILI9881C_COMMAND_INSTR(0x86, 0x02),
-> +	ILI9881C_COMMAND_INSTR(0x87, 0x02),
-> +	ILI9881C_COMMAND_INSTR(0x88, 0x08),
-> +	ILI9881C_COMMAND_INSTR(0x89, 0x02),
-> +	ILI9881C_COMMAND_INSTR(0x8a, 0x02),
-> +	ILI9881C_SWITCH_PAGE_INSTR(4),
-> +	ILI9881C_COMMAND_INSTR(0x00, 0x80),
-> +	ILI9881C_COMMAND_INSTR(0x70, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0x71, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0x66, 0xfe),
-> +	ILI9881C_COMMAND_INSTR(0x82, 0x15),
-> +	ILI9881C_COMMAND_INSTR(0x84, 0x15),
-> +	ILI9881C_COMMAND_INSTR(0x85, 0x15),
-> +	ILI9881C_COMMAND_INSTR(0x3a, 0x24),
-> +	ILI9881C_COMMAND_INSTR(0x32, 0xac),
-> +	ILI9881C_COMMAND_INSTR(0x8c, 0x80),
-> +	ILI9881C_COMMAND_INSTR(0x3c, 0xf5),
-> +	ILI9881C_COMMAND_INSTR(0x88, 0x33),
-> +	ILI9881C_SWITCH_PAGE_INSTR(1),
-> +	ILI9881C_COMMAND_INSTR(0x22, 0x0a),
-> +	ILI9881C_COMMAND_INSTR(0x31, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0x53, 0x78),
-> +	ILI9881C_COMMAND_INSTR(0x55, 0x7b),
-> +	ILI9881C_COMMAND_INSTR(0x60, 0x20),
-> +	ILI9881C_COMMAND_INSTR(0x61, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0x62, 0x0d),
-> +	ILI9881C_COMMAND_INSTR(0x63, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0xa0, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0xa1, 0x10),
-> +	ILI9881C_COMMAND_INSTR(0xa2, 0x1c),
-> +	ILI9881C_COMMAND_INSTR(0xa3, 0x13),
-> +	ILI9881C_COMMAND_INSTR(0xa4, 0x15),
-> +	ILI9881C_COMMAND_INSTR(0xa5, 0x26),
-> +	ILI9881C_COMMAND_INSTR(0xa6, 0x1a),
-> +	ILI9881C_COMMAND_INSTR(0xa7, 0x1d),
-> +	ILI9881C_COMMAND_INSTR(0xa8, 0x67),
-> +	ILI9881C_COMMAND_INSTR(0xa9, 0x1c),
-> +	ILI9881C_COMMAND_INSTR(0xaa, 0x29),
-> +	ILI9881C_COMMAND_INSTR(0xab, 0x5b),
-> +	ILI9881C_COMMAND_INSTR(0xac, 0x26),
-> +	ILI9881C_COMMAND_INSTR(0xad, 0x28),
-> +	ILI9881C_COMMAND_INSTR(0xae, 0x5c),
-> +	ILI9881C_COMMAND_INSTR(0xaf, 0x30),
-> +	ILI9881C_COMMAND_INSTR(0xb0, 0x31),
-> +	ILI9881C_COMMAND_INSTR(0xb1, 0x32),
-> +	ILI9881C_COMMAND_INSTR(0xb2, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0xb1, 0x2e),
-> +	ILI9881C_COMMAND_INSTR(0xb2, 0x32),
-> +	ILI9881C_COMMAND_INSTR(0xb3, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0xb6, 0x02),
-> +	ILI9881C_COMMAND_INSTR(0xb7, 0x03),
-> +	ILI9881C_COMMAND_INSTR(0xc0, 0x00),
-> +	ILI9881C_COMMAND_INSTR(0xc1, 0x10),
-> +	ILI9881C_COMMAND_INSTR(0xc2, 0x1c),
-> +	ILI9881C_COMMAND_INSTR(0xc3, 0x13),
-> +	ILI9881C_COMMAND_INSTR(0xc4, 0x15),
-> +	ILI9881C_COMMAND_INSTR(0xc5, 0x26),
-> +	ILI9881C_COMMAND_INSTR(0xc6, 0x1a),
-> +	ILI9881C_COMMAND_INSTR(0xc7, 0x1d),
-> +	ILI9881C_COMMAND_INSTR(0xc8, 0x67),
-> +	ILI9881C_COMMAND_INSTR(0xc9, 0x1c),
-> +	ILI9881C_COMMAND_INSTR(0xca, 0x29),
-> +	ILI9881C_COMMAND_INSTR(0xcb, 0x5b),
-> +	ILI9881C_COMMAND_INSTR(0xcc, 0x26),
-> +	ILI9881C_COMMAND_INSTR(0xcd, 0x28),
-> +	ILI9881C_COMMAND_INSTR(0xce, 0x5c),
-> +	ILI9881C_COMMAND_INSTR(0xcf, 0x30),
-> +	ILI9881C_COMMAND_INSTR(0xd0, 0x31),
-> +	ILI9881C_COMMAND_INSTR(0xd1, 0x2e),
-> +	ILI9881C_COMMAND_INSTR(0xd2, 0x32),
-> +	ILI9881C_COMMAND_INSTR(0xd3, 0x00),
-> +	ILI9881C_SWITCH_PAGE_INSTR(0),
-> +};
-> +
->   static const struct ili9881c_instr w552946ab_init[] = {
->   	ILI9881C_SWITCH_PAGE_INSTR(3),
->   	ILI9881C_COMMAND_INSTR(0x01, 0x00),
-> @@ -1772,6 +1970,23 @@ static const struct drm_display_mode tl050hdv35_default_mode = {
->   	.height_mm	= 110,
->   };
->   
-> +static const struct drm_display_mode w552946aaa_default_mode = {
-> +	.clock		= 65000,
-> +
-> +	.hdisplay	= 720,
-> +	.hsync_start	= 720 + 52,
-> +	.hsync_end	= 720 + 52 + 8,
-> +	.htotal		= 720 + 52 + 8 + 48,
-> +
-> +	.vdisplay	= 1280,
-> +	.vsync_start	= 1280 + 16,
-> +	.vsync_end	= 1280 + 16 + 6,
-> +	.vtotal		= 1280 + 16 + 6 + 15,
-> +
-> +	.width_mm	= 68,
-> +	.height_mm	= 121,
-> +};
-> +
->   static const struct drm_display_mode w552946aba_default_mode = {
->   	.clock		= 64000,
->   
-> @@ -1983,6 +2198,15 @@ static const struct ili9881c_desc tl050hdv35_desc = {
->   	.default_address_mode = 0x03,
->   };
->   
-> +static const struct ili9881c_desc w552946aaa_desc = {
-> +	.init = w552946aaa_init,
-> +	.init_length = ARRAY_SIZE(w552946aaa_init),
-> +	.mode = &w552946aaa_default_mode,
-> +	.mode_flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_BURST |
-> +		      MIPI_DSI_MODE_LPM | MIPI_DSI_MODE_NO_EOT_PACKET,
-> +	.lanes = 2,
-> +};
-> +
->   static const struct ili9881c_desc w552946aba_desc = {
->   	.init = w552946ab_init,
->   	.init_length = ARRAY_SIZE(w552946ab_init),
-> @@ -2023,6 +2247,7 @@ static const struct of_device_id ili9881c_of_match[] = {
->   	{ .compatible = "feixin,k101-im2byl02", .data = &k101_im2byl02_desc },
->   	{ .compatible = "startek,kd050hdfia020", .data = &kd050hdfia020_desc },
->   	{ .compatible = "tdo,tl050hdv35", .data = &tl050hdv35_desc },
-> +	{ .compatible = "wanchanglong,w552946aaa", .data = &w552946aaa_desc },
->   	{ .compatible = "wanchanglong,w552946aba", .data = &w552946aba_desc },
->   	{ .compatible = "ampire,am8001280g", .data = &am8001280g_desc },
->   	{ .compatible = "raspberrypi,dsi-7inch", &rpi_7inch_desc },
+Add initial device tree support for Asus Tinker Board 3 [1] and 3S [2],
+which are SBCs based on the Rockchip 3566 SoC.
 
-Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
+The "3S" version ("S" for "storage") is just a regular Tinker Board 3
+fitted with a 16 GB eMMC and a "mask ROM" DIP switch
+(to mask the eMMC and enter "Mask ROM" mode for recovery).
+
+This adds support for:
+- Debug UART (/dev/ttyS2)
+- SD card (/dev/mmcblk1)
+- eMMC (/dev/mmcblk0, only on Tinker Board 3S)
+- I2C:
+  - i2c0 (internal bus with a PMIC and regulators)
+  - i2c2 (internal bus with an at24 eeprom and an RTC device)
+- USB 2.0 ports
+- 2 GPIO LEDS
+
+This code was tested on Tinker Board 3S using the "master"
+branch of the Linux kernel.
+
+[1] https://tinker-board.asus.com/series/tinker-board-3.html
+[2] https://tinker-board.asus.com/series/tinker-board-3s.html
+
+Changes in V3:
+- rockchip.yaml: group Tinker Board 3/3S in the same section
+- Remove this Acked-by as the code changed substantially:
+  Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+- Remove "asus,rk3566-tinker-board-3" from rk3566-tinker-board-3s.dts,
+  which conflicted with the change in rockchip.yaml and
+  could create an issue if some code unexpectedly turns out
+  to be compatible with 3 but not 3S.
+  If you don't agree, than we can keep V2.
+
+Changes in V2:
+- Rename "Tinker board" to "Tinker Board"
+  in commit messages and DT code
+- Insert "-board" in DT file names
+- Insert "-board" in new compatible string too
+- Commit messages: change the way the references are introduced
+  ("[1] https://..." instead of "Link: https://... [1]")
+- Reorder alias properties and node names
+- Add missing "cpu-supply" property to cpu nodes
+- Use standard "eeprom@addr" node name for at24 eeprom
+- DT commit message: add missing "Asus" before "Tinker"
+
+Michael Opdenacker (2):
+  dt-bindings: arm: rockchip: Add Asus Tinker Board 3 and 3S
+  arm64: dts: rockchip: Add Asus Tinker Board 3 and 3S device tree
+
+.../devicetree/bindings/arm/rockchip.yaml     |  11 +
+ arch/arm64/boot/dts/rockchip/Makefile         |   2 +
+ .../dts/rockchip/rk3566-tinker-board-3.dts    |  14 +
+ .../dts/rockchip/rk3566-tinker-board-3.dtsi   | 280 ++++++++++++++++++
+ .../dts/rockchip/rk3566-tinker-board-3s.dts   |  30 ++
+ 5 files changed, 337 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-tinker-board-3.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-tinker-board-3.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-tinker-board-3s.dts
+
+---
+Michael Opdenacker (2):
+      dt-bindings: arm: rockchip: Add Asus Tinker Board 3/3S
+      arm64: dts: rockchip: Add Asus Tinker Board 3 and 3S device tree
+
+ .../devicetree/bindings/arm/rockchip.yaml          |   7 +
+ arch/arm64/boot/dts/rockchip/Makefile              |   2 +
+ .../boot/dts/rockchip/rk3566-tinker-board-3.dts    |  14 ++
+ .../boot/dts/rockchip/rk3566-tinker-board-3.dtsi   | 280 +++++++++++++++++++++
+ .../boot/dts/rockchip/rk3566-tinker-board-3s.dts   |  30 +++
+ 5 files changed, 333 insertions(+)
+---
+base-commit: e7c375b181600caf135cfd03eadbc45eb530f2cb
+change-id: 20251117-tinker3-88e32dfa9138
+
+Best regards,
+-- 
+Michael Opdenacker <michael.opdenacker@rootcommit.com>
+
 
 _______________________________________________
 Linux-rockchip mailing list
