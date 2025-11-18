@@ -4,96 +4,118 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60CE5CED631
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Nov 2025 12:06:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 093D0CEDD8A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Nov 2025 13:48:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zP5Lj/UWmYFSDtgyCcLabmExklCXsNpdo20Q6r9eyAY=; b=jngdtYdX9UUude
-	zF0IEVFSL+sS8f9a2RT6J4u8AaVEh1oCmFFL345QIDdk0JWy9VfiA1Tg+C0oIrYzQ7W1RCqRTsojf
-	4KsBM3yB8OdzwzMvk377+JMXe0xuzOtWC/tGQ60vz6/Tb5FtBC4D0t/NJZTyzglxaJB7hDqu35koS
-	yPfsaMxoIsxV+uv9EHsMEgW1Twcka1+qquR+Uafzhk8xcL5+g9jgsOoQyiUZOd4E63B+hUhKiVxsM
-	9LJlSWbTc1SD0us5rdGAgUodTYkpi/WrAchCo8G/3o4YmNOM/3XDJABGSvt8w3Gj+vAAsZjkhFOw/
-	1Gwxh0SO6yQ41DKJYF2w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Reply-To:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:
+	From:MIME-Version:Date:Message-ID:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3yAyGUYrK5YDSpp+7f2xBgM+sWq9DiBcv2+DH26NGOI=; b=ES4pm1DnOZ9UfGIZfyWUqCBFA+
+	1+0MGtG5ERLqxa/7wW/k7KuloD1QjxREIQYp0UxtVa0+rtWXAck92xczwYW9asKqYKVD+5H0cE2/b
+	IpiFVyTuh4xAcLLoGS0ra16DB21zmiFHmHWDaX6xJYOo6FOztq0soGDrRCFlIZC2y1KrIH8uuQu2w
+	CA/Aa1vjVN3i0VpBzlrJxOjoMB+hW1Ty76fKs1JE3cC6lbzbvNwmyF3Itieki6yTvZEO3EpE4WPiz
+	k4AduZgKMhpQePg24LYCg4uZ2lEKibJEsO2Dwx5VyNfKEsCudTyWKFs5V7gLDRM8Li4yN8WclunwW
+	Nr5ZT80g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLKTn-00000000Neh-400Y;
-	Tue, 18 Nov 2025 12:06:39 +0000
-Received: from mgamail.intel.com ([198.175.65.9])
+	id 1vLM3r-00000000U00-2qCN;
+	Tue, 18 Nov 2025 13:47:59 +0000
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLKTg-00000000NdW-0Wzy;
-	Tue, 18 Nov 2025 12:06:33 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1763467592; x=1795003592;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=+DBrnd0XnZ/3Kg4ybg+n7skOvNHN+05c3Za6EBwWRJ4=;
-  b=GlXNhvrYaFk/ou/ScCnzD5wUgjTP06vBlw74VAUafRwBF3tclsTblJAB
-   zl7Q3N6RpmrVSgSNA0rPUKSZphS2TRbi7vLVLyrI9nvK/qzcNhAs/hsuk
-   rHivZm5yY8t52JVNDoHgeThJPZdZKb0Vb5AeLcailIuD+HFPCkoUou7gH
-   VoQsnwXe5uJpU+5Tey+wBS2X19alhYZ0YmAv+SqrNiZjnsiEvVom5iTmY
-   p7xqQNrdpDVwWmhhifd+dPlDa/7depstqVHg9lvEVlseFIw0LsDgb7RPY
-   adwELKP8R1+X8yFmrqLMZc6dFGjdDjZNy8Yx8pVgI2uNL710HDuD9J7Pl
-   g==;
-X-CSE-ConnectionGUID: fTaLdj5gSB2ODWfktWmbzQ==
-X-CSE-MsgGUID: VsKTkj+eSyyGBoHhBFzQ/A==
-X-IronPort-AV: E=McAfee;i="6800,10657,11616"; a="88137033"
-X-IronPort-AV: E=Sophos;i="6.19,314,1754982000"; 
-   d="scan'208";a="88137033"
-Received: from fmviesa004.fm.intel.com ([10.60.135.144])
-  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Nov 2025 04:06:30 -0800
-X-CSE-ConnectionGUID: L4c+hRHQRGGzK2KKCLDfyA==
-X-CSE-MsgGUID: NrQ8Oj1vTh6ywIF05IjymQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.19,314,1754982000"; 
-   d="scan'208";a="195655072"
-Received: from lkp-server01.sh.intel.com (HELO adf6d29aa8d9) ([10.239.97.150])
-  by fmviesa004.fm.intel.com with ESMTP; 18 Nov 2025 04:06:23 -0800
-Received: from kbuild by adf6d29aa8d9 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1vLKTV-0001hf-11;
-	Tue, 18 Nov 2025 12:06:21 +0000
-Date: Tue, 18 Nov 2025 20:06:08 +0800
-From: kernel test robot <lkp@intel.com>
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
-	Harry Wentland <harry.wentland@amd.com>,
-	Leo Li <sunpeng.li@amd.com>, Rodrigo Siqueira <siqueira@igalia.com>,
-	Alex Deucher <alexander.deucher@amd.com>,
-	Christian =?iso-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>,
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Sandy Huang <hjc@rock-chips.com>,
-	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Jani Nikula <jani.nikula@linux.intel.com>,
-	Rodrigo Vivi <rodrigo.vivi@intel.com>,
-	Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
-	Tvrtko Ursulin <tursulin@ursulin.net>
-Cc: oe-kbuild-all@lists.linux.dev, kernel@collabora.com,
-	amd-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, intel-gfx@lists.freedesktop.org
-Subject: Re: [PATCH v4 02/10] drm: Add new general DRM property "color format"
-Message-ID: <202511181958.eS8Ctiow-lkp@intel.com>
-References: <20251117-color-format-v4-2-0ded72bd1b00@collabora.com>
+	id 1vLM3o-00000000Tyq-2KAr
+	for linux-rockchip@lists.infradead.org;
+	Tue, 18 Nov 2025 13:47:58 +0000
+Received: by mail-wm1-x336.google.com with SMTP id 5b1f17b1804b1-4775e891b5eso29072605e9.2
+        for <linux-rockchip@lists.infradead.org>; Tue, 18 Nov 2025 05:47:56 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1763473675; x=1764078475; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:organization:autocrypt
+         :content-language:references:cc:to:subject:reply-to:from:user-agent
+         :mime-version:date:message-id:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=9zWMsWqR7g9/bro/jqzvtjPju/05qtW6o1cFZvse410=;
+        b=S/KcUuVdU98LWG2wxSZIWEag8wqcXkv2RcRD/tZsyK4Fp/OajPJ6PJ8SPSZ4N5qNp9
+         Q8eJfmXVut4IgAUkdZXfwEDpnFua+8OUMvpIhHYREzQVRF9n2P1QqSWEvGs5hAC1ljEe
+         qowMpuKqNdBGcu9N9IC6dS+rCIkOvtpeIo8ZEF6S/t5uUDkk7z8kBYgzdcdY6Howv3rH
+         vm3KTB+jC5M5XZBkHOoDEG+23ccaDQ3JQsY5r4a2vPPP8/v+G81RkrDyIkTpaS2myioe
+         moY2JA5PPMP9TXzRg2iCUbg8AI7kBoBi19c5laaY9/Whos7NiDPjez8Ig8rlMX26sDWP
+         HioA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1763473675; x=1764078475;
+        h=content-transfer-encoding:in-reply-to:organization:autocrypt
+         :content-language:references:cc:to:subject:reply-to:from:user-agent
+         :mime-version:date:message-id:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=9zWMsWqR7g9/bro/jqzvtjPju/05qtW6o1cFZvse410=;
+        b=S/D3PX1063aI5ZvMwwzFVRcZ6UGCGDKDsQCyspTHrwRoUgOB+i3/3q1jk8XgdO4YJ1
+         djXrs+Vl79WTOJt2aHKJIlnj7A+7XEKaqFS+gU1yqMLBz7GMo1iC91//Q/7FkYlbT5WL
+         IYeHfOtEoa4R6xim5qQZkAzuAGIDMaorc+kANm21bidniWYgjaQwKLTQBfxu61sRQMnD
+         bxvSc1o511a3stG+U1yKBi0FE8bdqDbJ8YCd9h9enui7sW7NF67RZZom3ol4ERjP+nv+
+         +GrbUOOm1fKKC4wRknF8nnLtN/sp1s5LZWCHgIE/pkZqo+ahtaboPA6PRbT469YthH7A
+         v2Kg==
+X-Forwarded-Encrypted: i=1; AJvYcCXnFMdTKBkbdbWmhtTJo4zHCYhySI6NSXT2rFfduMeCBzgZmN3lZGb6ft1QCM5msKhgCsLOVf6VVYiTOnEIJw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwkWLgLlUI1dTCT6p8tKHFHBYVZEqc6K5lecZk14twGA1qLaIRc
+	8xxuBhewDTM/teMCgsegopTcJuW+FN2hociJ/Gy7sTo7wwGTEPRj04Xps192m2i4XXY=
+X-Gm-Gg: ASbGncuivgexIHJPKc0r/tZ7ZV21TpaXvnGqkqDJvEUf4zIIzPlO9OLQKrZitVMrQr2
+	CaVMXtsjS5ydxctXEZb0bwID5fG19Y7p5cVKBoRkRGs21alYTlgcI7SOVfzauCAPTo4ymWRvcWN
+	qbGKyUAGw/spzms9Xz0dLSTt+IHdFdzon8LfxFYFwaVkchgQHwfPwuCmj4aDQLNQnN7FHH1TKRH
+	ECmn7ITEqFYBl/AmvsEpDWTJPh6gs7h6O2g3D2uufjcr98T37tZlwLfH0vwevAkqBlJevPeueRe
+	3fFB5YAkjveRWtMFeQTlHlE5OT7/Z9vKlRRWOB/VqhwBDmb3mUgI98dEWSCH6F380f7fz7O9snq
+	i6wbR4K4qH0A3j/mOZ4TnVHI7e2FmrfBJD81tfb0W7vPwWSTBoPKVDPDr4st9GXFeADF2tzty77
+	XEcbP2/ihqPeUoDHJcmu4AaV7kXC22VZ/iWNDGTmQNauYXNcdwrR968aa2pSmfz+NYrBVethQIE
+	Q==
+X-Google-Smtp-Source: AGHT+IGqfgOR82Uy2i1IiBEEfDoHNM7EiN7YLlgbDZ+Lf/4M0/HFhAKStzngiUha2MqfbrbaLWBF/A==
+X-Received: by 2002:a05:600c:a49:b0:477:55c9:c3ea with SMTP id 5b1f17b1804b1-4778feaa94amr139177665e9.35.1763473674740;
+        Tue, 18 Nov 2025 05:47:54 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:3d9:2080:366e:5264:fffe:1c49? ([2a01:e0a:3d9:2080:366e:5264:fffe:1c49])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4779b509a5esm189194275e9.2.2025.11.18.05.47.54
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 18 Nov 2025 05:47:54 -0800 (PST)
+Message-ID: <6e166ac1-6c36-482d-9d0d-1cb841f2286d@linaro.org>
+Date: Tue, 18 Nov 2025 14:47:53 +0100
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20251117-color-format-v4-2-0ded72bd1b00@collabora.com>
+User-Agent: Mozilla Thunderbird
+From: Neil Armstrong <neil.armstrong@linaro.org>
+Subject: Re: [PATCH v2 2/2] phy: rockchip: naneng-combphy: Fix PCIe L1ss
+ support RK3562
+To: Shawn Lin <shawn.lin@rock-chips.com>, Vinod Koul <vkoul@kernel.org>
+Cc: Kishon Vijay Abraham I <kishon@kernel.org>,
+ Heiko Stuebner <heiko@sntech.de>, linux-phy@lists.infradead.org,
+ linux-rockchip@lists.infradead.org
+References: <1763459526-35004-1-git-send-email-shawn.lin@rock-chips.com>
+ <1763459526-35004-2-git-send-email-shawn.lin@rock-chips.com>
+Content-Language: en-US, fr
+Autocrypt: addr=neil.armstrong@linaro.org; keydata=
+ xsBNBE1ZBs8BCAD78xVLsXPwV/2qQx2FaO/7mhWL0Qodw8UcQJnkrWmgTFRobtTWxuRx8WWP
+ GTjuhvbleoQ5Cxjr+v+1ARGCH46MxFP5DwauzPekwJUD5QKZlaw/bURTLmS2id5wWi3lqVH4
+ BVF2WzvGyyeV1o4RTCYDnZ9VLLylJ9bneEaIs/7cjCEbipGGFlfIML3sfqnIvMAxIMZrvcl9
+ qPV2k+KQ7q+aXavU5W+yLNn7QtXUB530Zlk/d2ETgzQ5FLYYnUDAaRl+8JUTjc0CNOTpCeik
+ 80TZcE6f8M76Xa6yU8VcNko94Ck7iB4vj70q76P/J7kt98hklrr85/3NU3oti3nrIHmHABEB
+ AAHNKk5laWwgQXJtc3Ryb25nIDxuZWlsLmFybXN0cm9uZ0BsaW5hcm8ub3JnPsLAkQQTAQoA
+ OwIbIwULCQgHAwUVCgkICwUWAgMBAAIeAQIXgBYhBInsPQWERiF0UPIoSBaat7Gkz/iuBQJk
+ Q5wSAhkBAAoJEBaat7Gkz/iuyhMIANiD94qDtUTJRfEW6GwXmtKWwl/mvqQtaTtZID2dos04
+ YqBbshiJbejgVJjy+HODcNUIKBB3PSLaln4ltdsV73SBcwUNdzebfKspAQunCM22Mn6FBIxQ
+ GizsMLcP/0FX4en9NaKGfK6ZdKK6kN1GR9YffMJd2P08EO8mHowmSRe/ExAODhAs9W7XXExw
+ UNCY4pVJyRPpEhv373vvff60bHxc1k/FF9WaPscMt7hlkbFLUs85kHtQAmr8pV5Hy9ezsSRa
+ GzJmiVclkPc2BY592IGBXRDQ38urXeM4nfhhvqA50b/nAEXc6FzqgXqDkEIwR66/Gbp0t3+r
+ yQzpKRyQif3OwE0ETVkGzwEIALyKDN/OGURaHBVzwjgYq+ZtifvekdrSNl8TIDH8g1xicBYp
+ QTbPn6bbSZbdvfeQPNCcD4/EhXZuhQXMcoJsQQQnO4vwVULmPGgtGf8PVc7dxKOeta+qUh6+
+ SRh3vIcAUFHDT3f/Zdspz+e2E0hPV2hiSvICLk11qO6cyJE13zeNFoeY3ggrKY+IzbFomIZY
+ 4yG6xI99NIPEVE9lNBXBKIlewIyVlkOaYvJWSV+p5gdJXOvScNN1epm5YHmf9aE2ZjnqZGoM
+ Mtsyw18YoX9BqMFInxqYQQ3j/HpVgTSvmo5ea5qQDDUaCsaTf8UeDcwYOtgI8iL4oHcsGtUX
+ oUk33HEAEQEAAcLAXwQYAQIACQUCTVkGzwIbDAAKCRAWmrexpM/4rrXiB/sGbkQ6itMrAIfn
+ M7IbRuiSZS1unlySUVYu3SD6YBYnNi3G5EpbwfBNuT3H8//rVvtOFK4OD8cRYkxXRQmTvqa3
+ 3eDIHu/zr1HMKErm+2SD6PO9umRef8V82o2oaCLvf4WeIssFjwB0b6a12opuRP7yo3E3gTCS
+ KmbUuLv1CtxKQF+fUV1cVaTPMyT25Od+RC1K+iOR0F54oUJvJeq7fUzbn/KdlhA8XPGzwGRy
+ 4zcsPWvwnXgfe5tk680fEKZVwOZKIEuJC3v+/yZpQzDvGYJvbyix0lHnrCzq43WefRHI5XTT
+ QbM0WUIBIcGmq38+OgUsMYu4NzLu7uZFAcmp6h8g
+Organization: Linaro
+In-Reply-To: <1763459526-35004-2-git-send-email-shawn.lin@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251118_040632_258199_F0CFA17F 
-X-CRM114-Status: GOOD (  12.14  )
+X-CRM114-CacheID: sfid-20251118_054756_628580_3FC05671 
+X-CRM114-Status: GOOD (  15.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,38 +127,56 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
+Reply-To: Neil Armstrong <neil.armstrong@linaro.org>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Nicolas,
+On 11/18/25 10:52, Shawn Lin wrote:
+> When PCIe link enters L1 PM substates, the PHY will turn off its
+> PLL for power-saving. However, it turns off the PLL too fast which
+> leads the PHY to be broken. According to the PHY document, we need
+> to delay PLL turnoff time.
+> 
+> Fixes: f13bff25161b ("phy: rockchip-naneng-combo: Support rk3562")
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> ---
+> 
+> Changes in v2:
+> - add more commit message
+> 
+>   drivers/phy/rockchip/phy-rockchip-naneng-combphy.c | 8 ++++++++
+>   1 file changed, 8 insertions(+)
+> 
+> diff --git a/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c b/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
+> index e303bec..7f8fc8e 100644
+> --- a/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
+> +++ b/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
+> @@ -106,6 +106,10 @@
+>   #define RK3568_PHYREG18				0x44
+>   #define RK3568_PHYREG18_PLL_LOOP		0x32
+>   
+> +#define RK3568_PHYREG30				0x74
+> +#define RK3568_PHYREG30_GATE_TX_PCK_SEL         BIT(7)
+> +#define RK3568_PHYREG30_GATE_TX_PCK_DLY_PLL_OFF BIT(7)
+> +
+>   #define RK3568_PHYREG32				0x7C
+>   #define RK3568_PHYREG32_SSC_MASK		GENMASK(7, 4)
+>   #define RK3568_PHYREG32_SSC_DIR_MASK		GENMASK(5, 4)
+> @@ -664,6 +668,10 @@ static int rk3562_combphy_cfg(struct rockchip_combphy_priv *priv)
+>   	case REF_CLOCK_100MHz:
+>   		rockchip_combphy_param_write(priv->phy_grf, &cfg->pipe_clk_100m, true);
+>   		if (priv->type == PHY_TYPE_PCIE) {
+> +			/* Gate_tx_pck_sel length select for L1ss support */
+> +			rockchip_combphy_updatel(priv, RK3568_PHYREG30_GATE_TX_PCK_SEL,
+> +						 RK3568_PHYREG30_GATE_TX_PCK_DLY_PLL_OFF,
+> +						 RK3568_PHYREG30);
+>   			/* PLL KVCO tuning fine */
+>   			val = FIELD_PREP(RK3568_PHYREG33_PLL_KVCO_MASK,
+>   					 RK3568_PHYREG33_PLL_KVCO_VALUE);
 
-kernel test robot noticed the following build warnings:
-
-[auto build test WARNING on d1d18879e01e4c9efcb85a96d188a8e4326136dd]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/Nicolas-Frattaroli/drm-amd-display-Remove-unnecessary-SIGNAL_TYPE_HDMI_TYPE_A-check/20251118-031440
-base:   d1d18879e01e4c9efcb85a96d188a8e4326136dd
-patch link:    https://lore.kernel.org/r/20251117-color-format-v4-2-0ded72bd1b00%40collabora.com
-patch subject: [PATCH v4 02/10] drm: Add new general DRM property "color format"
-config: arm-randconfig-001-20251118 (https://download.01.org/0day-ci/archive/20251118/202511181958.eS8Ctiow-lkp@intel.com/config)
-compiler: arm-linux-gnueabi-gcc (GCC) 8.5.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20251118/202511181958.eS8Ctiow-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202511181958.eS8Ctiow-lkp@intel.com/
-
-All warnings (new ones prefixed by >>):
-
->> Warning: drivers/gpu/drm/drm_connector.c:1392 function parameter 'color_fmt' not described in 'drm_get_color_format_name'
->> Warning: drivers/gpu/drm/drm_connector.c:1392 function parameter 'color_fmt' not described in 'drm_get_color_format_name'
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
 
 _______________________________________________
 Linux-rockchip mailing list
