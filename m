@@ -4,90 +4,143 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E363CF34D9
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Nov 2025 16:15:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62AB5CF3957
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Nov 2025 16:25:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=OJXEJeTwlHTtLDEnHTuZwVTxh90X1HBspXYkw+0NiRM=; b=ujgJcGpkJyf7WB
-	6hDy6/E/Y3aX+B1a0YSed1O0S7UeNM5HFHl/gcmcvB3n/mh/BvEehPvsNSzpkom0V6tIxYwvKXip5
-	aW/Of97amZBlEF0/wQZ7Rs4FGna/6/QEYp1PeJmRpimn5Z2WrWqpQFfCkkUmetnNx5XIIls9Nu2oG
-	Wrsery5jUMycqM0Rg1y38BKZ7Cv4hV1NwVH7zstBAVpD5dEZ33FT7TE2c/WAPOg0yqkNgFodksC/5
-	nV0upOgly7IoykDLOa6PWY5IBNyNNkLFVx0YvQuZMSjnrEtV7pHGBaVFir3c4hFB47gJ2JDRLv+7C
-	hXgJd1svf8mf2xbdH6xg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=6mlkJXvuWaS/rlZwzIbpINkk/iDLTaWyO5Boz4K0Xvg=; b=ZbwDY75NxSBVQj
+	mGZwcqOLDZoMEmbFbzWEaejwt4vCMaUC871phi3FzbU0OLUTv+q9E9fA+gS+GmbMDY0lFpOBmr7v2
+	l6OgKJCiqOEKNq2QHI8S16ItLBg3wf5EiRQykSo3poNrxdcJ2pRhzeBNw/5FlM4DVSI/dlLWSvKfH
+	AQIV9zInDN5QbuTd1SKelSOHIel86mGo/LmqTSqSgQIfHQKcYG3sQOVFfFwJ2vUBYmhyFNEESU7ix
+	pbvVjCXjDFXWIItIotG/1rGxjPKudfxFNslty9qmjVl6MZJH6MSFRTRBDLNcYvdpIYDJzklCPiYaH
+	QGjG5UnB9Wip0799eJjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLkpv-00000003eVB-31lQ;
-	Wed, 19 Nov 2025 16:15:15 +0000
-Received: from mail-oi1-x22d.google.com ([2607:f8b0:4864:20::22d])
+	id 1vLkzV-00000003hBo-0KNE;
+	Wed, 19 Nov 2025 16:25:09 +0000
+Received: from mail-westusazolkn19012052.outbound.protection.outlook.com ([52.103.2.52] helo=SJ2PR03CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLkpt-00000003eUN-04Bj
+	id 1vLkzS-00000003hBL-3B4w
 	for linux-rockchip@lists.infradead.org;
-	Wed, 19 Nov 2025 16:15:14 +0000
-Received: by mail-oi1-x22d.google.com with SMTP id 5614622812f47-450b3f60c31so1295738b6e.3
-        for <linux-rockchip@lists.infradead.org>; Wed, 19 Nov 2025 08:15:12 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1763568911; x=1764173711; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=e80F78tGX2LDToz7bK2BI34KnSoXvC0PlnH2InXNg1A=;
-        b=clLntixfdZCMaPbLNwMYzbbzdW9R/ugu3HJjXk2B1Kbe+KvtHkg6dmBMzgSG17I06n
-         b6QJOsQNmNhtZ3t4i1nMyL9n1tmdk2Z9cM3/87J8xYAvd0aFpbuXiaKMvF+dspkT+eQI
-         jQ8NxYD4VgDo2ulg+lD9B1FExyAv/JzBxuCJ55wfvkuCSouFsJfpPEadf66Im9hlnlQZ
-         YU+jriNvuWKb7XKV6UJOzUPjV5MgYYedSnmIqmmEhI+gSI11jezoPJDs1vHfS+m2sb4+
-         usf720VgpnYvAjHTKhCK9rZUGxr3axr0ecKTJgT9K3fX/hrQlLxdtB61jX2DHDxWxJaP
-         fjng==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1763568911; x=1764173711;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=e80F78tGX2LDToz7bK2BI34KnSoXvC0PlnH2InXNg1A=;
-        b=d8mxsN34s5y6zi6B0RA1YUul4P10KRQYsPy7MubPWWNhfy69cymdcNVcvR5Svdn9Cw
-         XhShx28V7/Qqa1Y0nQlZ7qGAdntvG125rNAinTY50mH6HU8y3h7Y1k+jM+ZVJ9mJvyg+
-         ny2cJzk4+YO+NrZ0sn7XVCNx+lefvq8JXonXjMEoRU1IvtUd48dRbthcJIZ4gl/mjG1A
-         x4ad/aqpSGIrQmPfm19e2vp2jcD9REiR9Ll0Z3HKsROFyfJupPJkhWa0QyycmymnKJ36
-         sk8g1A3N/o4VOanlNvs+o3ToHJ8flYfZykcT+hH1ca1ghRuepZqmP6R1iNz8ub3njsBb
-         4xZw==
-X-Gm-Message-State: AOJu0YypNkeigM2FjOWTcy0I+OYBFghrcWUvTWZjztyr07CaRp/Ss4z3
-	3fMDLHgN0bY3TLG5zlL1DoJdGWL6zHUhA+Gkp+IZVigJeL/Kk/1ombLjOFXwtA==
-X-Gm-Gg: ASbGnctyKp8Vw2/nP2KO121L2Ca+pTPiSI0O/iv3ORg5/MTm8Eod2oka3vNRvRLyimQ
-	3Kq2jIN64YvfJI9VGzINSAqzVSv7QCEFAJ/boaBXYKN6cXTvKGioSnXeo209b++OIWBt2K7DPkD
-	Mf1jjZK12tyW1dKOlPDI3evY3a1ztxMqPLKiViI6My3rFYh0j7Oyv9EUMnRsnZFL6Q1ULtg2rax
-	Hd9jwnrWfyeyccDTlh2875h4xgpNIlfj3JdI5kEvuw4PtK+imkyWZuTX0XNYDrPZZan0weZ17Mp
-	6V8iUSjL7mwMhQSpWKEKlbKiDSqtOUWCTXzLTUudUeCT5pNbelLCDBIt61x27crLTK6kmp7yBm5
-	TrYrf/ji8RYAVViz+3HG/eQgiJg8RdLwq0lxq1+UL/BD+niDv+4IilAIPgpoWZWg7gz6IfYCcXZ
-	3Mje3FIOKu
-X-Google-Smtp-Source: AGHT+IHmGw+4XAxkYHJ5VP5usTst8HwpuYqHgoe7VU2Udxe5jCgmbNdyEhAVl0n5UTd0Eq4ol2T7Jg==
-X-Received: by 2002:a05:6808:6706:b0:44f:e1af:21f4 with SMTP id 5614622812f47-450973be299mr8872450b6e.4.1763568911386;
-        Wed, 19 Nov 2025 08:15:11 -0800 (PST)
-Received: from localhost.localdomain ([2600:1700:fb0:1bc0::54])
-        by smtp.gmail.com with ESMTPSA id 006d021491bc7-65782831ed6sm11213eaf.0.2025.11.19.08.15.10
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 19 Nov 2025 08:15:10 -0800 (PST)
-From: Chris Morgan <macroalpha82@gmail.com>
-To: linux-rockchip@lists.infradead.org
-Cc: linux-pm@vger.kernel.org,
-	jonas@kwiboo.se,
-	pgwipeout@gmail.com,
-	finley.xiao@rock-chips.com,
-	kever.yang@rock-chips.com,
-	shawn.lin@rock-chips.com,
-	sebastian.reichel@collabora.com,
-	heiko@sntech.de,
-	ulf.hansson@linaro.org,
-	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH] pmdomain: rockchip: quiet regulator error on -EPROBE_DEFER
-Date: Wed, 19 Nov 2025 10:12:50 -0600
-Message-ID: <20251119161250.60885-1-macroalpha82@gmail.com>
-X-Mailer: git-send-email 2.43.0
+	Wed, 19 Nov 2025 16:25:07 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=fUQr2Xlt+pyZD8QUS6Orm6dOYOowRCUNkTVYVU7YQBBzE2obVVoZuTN6/qMBFtgHe9je3kJC0HG0KmCvg9DRBW36z/l3xf36c/T69Ne46psToL1eL4oFLrkmYcFPV0m0SHRq7ZN74sam2cNyW3O9jkdb/20AFm7dQz60k7e436VzG+eePfkCK3MiAiMAyyoFD+V8OM8v1bPflnIjNj/bPqJ3Z3lODGFJv1ZNxlx0x5Rpfa1AN7tmme38maoZ87noBZita46LFZzcjMeAGZDrQD8cAo3XIhzD4no//jlCptJvpfv1d49twLqLzu5eAK1Gj5XdpC1S5Y0f5Gy236n6MA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=kMtC3ESCvdOJStB2b2+VAiR698DtGmk0rJc0xDFkijo=;
+ b=Lfi6XQ5OjT6Dz/EG9ml34Z5G5URj8F3eWHdfHf+HhBlvGL9pJA14svUenqN0lJQ/Gh2YZ0jwZUb4xHt6kMWOzA1KrSDz9PIPsIrnAew5KeBEfC6uF8cCmuXX/j63rM9usY9j+SYG8/4/ohhqGwrlRklrbbdj+cvgPgxGLQo/Xg1Ll8WvtDp0j7249qNYGJJgtLHx/KlicFwEV8dcRWEahV7Kto9SiOudYZLdgiIgTDYT4Ic5VEv9c7PRHubhCuzMutnnUirtANpW4zI0yD0fhxlnwnOe+8KLOR8SJ2pvkLbuY1QTFOKsFhg4hOy8L3s+AUkTrWsLf3vy3w3wbrlvWQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=kMtC3ESCvdOJStB2b2+VAiR698DtGmk0rJc0xDFkijo=;
+ b=bWpNtSK0HYZOKXikgD7tKFvTlkG7Ug7IVomQmXUgP11pqQBfI8ZbrnjHDB1phi7fVRntPeGTuPppFl+U5QRTk8f5otZ8XGhozYTEj1dv6kCTkZ2EQrgpgQMhNvnWEjKdLXJi9LSAiWcVkDeD/4Sbp8hwvA2X7lF6s5fsSAqaY6eMvDuXi5A+SwWowdtk22zlX6A9zbtJVOskR2+qyJrEsqJIxa2mXDFXDCa+IFydC9uz0Fe4216BuC5KKOHR5Fb0hUo0FKgm/tdGjyOyD0HsFHe43X5fPwnH2uMcNu2vtOBWAyETFCky0WoN/yH2SdGwdx7ZNocuw/R0S+TxoTiPTw==
+Received: from SN6PR1901MB4654.namprd19.prod.outlook.com (2603:10b6:805:b::18)
+ by DS0PR19MB7790.namprd19.prod.outlook.com (2603:10b6:8:12f::20) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9343.10; Wed, 19 Nov
+ 2025 16:25:02 +0000
+Received: from SN6PR1901MB4654.namprd19.prod.outlook.com
+ ([fe80::7ffe:9f3a:678b:150]) by SN6PR1901MB4654.namprd19.prod.outlook.com
+ ([fe80::7ffe:9f3a:678b:150%5]) with mapi id 15.20.9320.018; Wed, 19 Nov 2025
+ 16:25:02 +0000
+Date: Wed, 19 Nov 2025 10:24:57 -0600
+From: Chris Morgan <macromorgan@hotmail.com>
+To: Maxime Ripard <mripard@kernel.org>
+Cc: Chris Morgan <macroalpha82@gmail.com>,
+	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+	conor+dt@kernel.org, rfoss@kernel.org, tzimmermann@suse.de,
+	jonas@kwiboo.se, neil.armstrong@linaro.org, heiko@sntech.de,
+	sebastian.reichel@collabora.com, jernej.skrabec@gmail.com,
+	dri-devel@lists.freedesktop.org, andrzej.hajda@intel.com,
+	andy.yan@rock-chips.com, krzk+dt@kernel.org, robh@kernel.org,
+	Laurent.pinchart@ideasonboard.com
+Subject: Re: [PATCH v2 2/3] drm/bridge: dw-hdmi-qp: Add support for missing
+ HPD
+Message-ID: <SN6PR1901MB46542ED12EF34220E3119460A5D7A@SN6PR1901MB4654.namprd19.prod.outlook.com>
+References: <20251113192939.30031-1-macroalpha82@gmail.com>
+ <20251113192939.30031-3-macroalpha82@gmail.com>
+ <avdnpwnxs6cql7eyckdt37szpcf5ztgxlc7juwu6tqj5xxu56a@nrwljig2p67i>
+ <SN6PR1901MB46548ED8D4BA1184E0EA7DC3A5D6A@SN6PR1901MB4654.namprd19.prod.outlook.com>
+ <hgwfztkwk4qgvefwo2cdedzas3rzlhx6yek6dgldkgaq2jskvw@exxqujjpa6bl>
+Content-Disposition: inline
+In-Reply-To: <hgwfztkwk4qgvefwo2cdedzas3rzlhx6yek6dgldkgaq2jskvw@exxqujjpa6bl>
+X-ClientProxiedBy: SN7PR18CA0004.namprd18.prod.outlook.com
+ (2603:10b6:806:f3::13) To SN6PR1901MB4654.namprd19.prod.outlook.com
+ (2603:10b6:805:b::18)
+X-Microsoft-Original-Message-ID: <aR3vWZcd8L1QOM3f@wintermute.localhost.fail>
 MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SN6PR1901MB4654:EE_|DS0PR19MB7790:EE_
+X-MS-Office365-Filtering-Correlation-Id: 7df532ed-5c63-4fc1-755a-08de27883063
+X-MS-Exchange-SLBlob-MailProps: znQPCv1HvwUhM6k1QWx02acDuEqXpbI5XaZTcwZwrRyW1DCOZU5y8G6uF3vkzVPzjSkQ1YE7fINN3G4HPDvz+vPlkRgWy4qXYr/JBDq9PMNSKnvu5HvO5ewEtPtyESuzYTMokA6chS+EB5tD62gu2kdABYMOk2QdN5CghEA/xl/aiYGXjDvPZfDVKexmXbWyxNjyhsiDXjV7tM3iFYByCSHDICxhM/ImjqNK+z01V3v8GUdS85z/RRuFV9CII6iHkwzMC+QKK1ZjqhaQsf44st5yp6byodTB5eRtqbxsUSypSndLmqYxGS6j0qkVg6XqjYuZetsk386BWt2yEXoyIsp73TYyabhR9h2PXgypCaPUtBiVFHm0LhwRKkJG1A7OUcMNqIMFAUbFJ5XhWcm/LVDDLNafJOe3vUoslfwhv8qGJcStoC2GqQOTwBKoPPjc7upZUt5Cf8bFQn4pVtq6vD38eCCezaAgCamKIvzmJnBaY946Qds/senF6caSlogyYOAc8bHdCBjzDptDUhLWUXdDUThOsSYmEes2F4fd11B518kNlw8sZrPOD032eX4djn7//Vh+hN2lkvGsu/CipeGqWlM6wAuOUbx3DNe3GrHFiqIMCYwzVUUgciyK8dH32dUWGZZAA7oWXeUWyPkALFba2LuhJSyAj7Bd/I09nUacjeGtFmv26EaXHO3k4AFJ5zXP1wP5ZrtClH6pQdajVOy9Zk/kICb27wktZ5nDN63ocAo+q9oB+bbNhupghX6ilXa7Mv6IZ0g=
+X-Microsoft-Antispam: BCL:0;ARA:14566002|21061999006|8060799015|19110799012|12121999013|23021999003|51005399006|13031999003|15080799012|461199028|6090799003|5072599009|40105399003|440099028|3412199025;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?Z6qzUgRnIRCLQrA/sXlopFMwYv7nH7bYMtkQ8GYK7z7bg4i8tHi1NU8y89XA?=
+ =?us-ascii?Q?qabJYv/PXn/+Yg+hVoH9MaiLKDOgUWHreE3zXZq78ZNnOuQ8N8NORiqdEU3u?=
+ =?us-ascii?Q?ZelK8IZcY23+9g3dgOQ8u7dAjrZ3LrF8VUdKbti4Pgf2lS1yzrtIdfsajz7o?=
+ =?us-ascii?Q?QELuQk3g5MIAFDfWaaXBP7+50wZejSy4SPr8agba8DBO+M0Mc6PQlBLb5fpU?=
+ =?us-ascii?Q?+8Nhma3XLFFKxXLqsoG5ra3RQPooEM5dWnfSYNCnkZIyvFHSpmiju/tprVtu?=
+ =?us-ascii?Q?KtE+AsJnuG4USRYgTzlInP7IfWeQOl/ZBMjftDOl8YX1gnn1cHRDxaDODkNf?=
+ =?us-ascii?Q?xcTI7yg4UbK3Zw7eloDPvfz159IDrmP+z4+m/ITyckyKwLc73FR56Gee/s9z?=
+ =?us-ascii?Q?rDccSQmqjEt1VEH7aprWxnutxnglI083Ri9sJxPHjrWCkg92krkijntw3jJs?=
+ =?us-ascii?Q?j9M9xrrA5YkuQ3NpUx1Cs6TOTUcmyKAGsmMqJvU0uUOH7QMVfAWEL5TaLcV+?=
+ =?us-ascii?Q?TKfW2tGk85QfuJUJhU1sQbuLF/ZtlOHSXGclD/zD5S34qwwqiqchHXgPd45k?=
+ =?us-ascii?Q?sHQ2vf9A2cXn2AUveqHRGFLWaACrxxHJ5s1OZfVgkBtXxhqP8CjfH/RVAmUD?=
+ =?us-ascii?Q?F2uCXRrKy80AWQmJOAIApGBGKn91rBSQFfU7V/1pAugEpa13/DKv0+E/Holf?=
+ =?us-ascii?Q?tM3TnMIJIXZkXa5Pai8bgAOADpUh9MeGsNUqaiHyf3orkKf03os4hvdtS5oV?=
+ =?us-ascii?Q?ZuUixc69bdoDfrXR3nk4aMJBlnckVGlnm0dQGXjD7AG+mNvSk5fsJ/d86Oj3?=
+ =?us-ascii?Q?RU7IsrEAB3sRJ4ltw81dAUBfA60ZGk6m0OnnBzQuMwLJLUTa81fe01aGwyA5?=
+ =?us-ascii?Q?VJQcuRfUBg1JhHLxvFa6i21bIms2R6Yh9mx0D2DcXnnW6Zs6NsiUIwmPRBLo?=
+ =?us-ascii?Q?uK38GrTWBn9zNll/BFK6o6EHS7fuVFo+0la/lbPGcWGjm7ehhjBl6D/KA50x?=
+ =?us-ascii?Q?RKNGeed4h/1yKyW+ddT4he6omIYqqAjcUCznnNPjKOKCkZq6urPL6Nuuz0YC?=
+ =?us-ascii?Q?bCgVeIQDB5q/H3ISn0m9tAh+WMqFgeDr9j/d/6KC0d1B6ZMGlB1beVT65YJ0?=
+ =?us-ascii?Q?BaXhVDCbyKqBkBRz1WIvyqF34RqHGruqcGc9mdoY31oX7TQC6qiqnyX2j5Pu?=
+ =?us-ascii?Q?4els3pJ0XWCbk4TMuOBfG25oDeWB8H1PbyDYdRTQnDr1sO61pJZiRMOXc1w6?=
+ =?us-ascii?Q?CXoo4x1oxkqDekGD2hAHSKFhG+RQ2Qbmpnp5XyUF+HS53seNUUv+3FgUhfAz?=
+ =?us-ascii?Q?SyE=3D?=
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?TYFlaEUvTfmYGQO2h6bYxu6z0xSgNkJ2uLMxsiSnrMJovkTb+kxbHr3teAPq?=
+ =?us-ascii?Q?gFuB8jh7LdBVJy/LChfOfpbcAyhOYq7PIHuEZWJ4PRahpzTX28c9BICsOcAG?=
+ =?us-ascii?Q?MTCPH8Ru3F6dKi/qSvNCjtPdg++DpBMzRNGwcd6g8PP8XLtGCuS+6o7S57VU?=
+ =?us-ascii?Q?8XmN13OgDDq4EBFqTzqqlIJoHsyrYoj3y982oOYpTjqjRIes4opP75f3kQLV?=
+ =?us-ascii?Q?K70861ozPlLrFUXNbGF3FtA3nrAAmTV/o417mA6t0719BweERQTYCH8HtjzE?=
+ =?us-ascii?Q?0jbIQgjnbkCXJVXeVaFO82dJvNHmZEBakVhLJD01pei5U5lB9DVh3U3KC43N?=
+ =?us-ascii?Q?u+TYkeGnLNJRWRPfrAIxfkFMZ/+N8Eh6lDQrDn0M0VEUccs3kUrORz3sX4Tt?=
+ =?us-ascii?Q?pljsUwcnS5z8msBu9ldo5vTAb3buO7Vvj0Hpl/ZT3y9fda1FxAzHUxG3g96U?=
+ =?us-ascii?Q?5OEsBQCjHOJ80fhZxwvLUrj2y05RCqkXt8adLbTD6rc500wnnZa92/diTGax?=
+ =?us-ascii?Q?iTUhFEmQ48NZ3ZBARwDYdp9blQnXaTn+FeSprwfH6kmVifU+9DVsIEGtxwJ6?=
+ =?us-ascii?Q?nKfmQn43uI1edxBiJlFXak4VMzvYRSz4zlG/DjjqldRGKZVnC3KOIsTYjmvr?=
+ =?us-ascii?Q?ll3gYKNYWP+S7si8opnOefUeXoLRCXXl5TmCjISPKKj07kHfi7mF59/szoI4?=
+ =?us-ascii?Q?1IrZND3VObMeevXQSam1DoZc3fefaFl7i2LvK5yqf//fEKvRW8cQXQZQe8i+?=
+ =?us-ascii?Q?pclhXHdhM8P6PLsYo6bPta6e7snvsSmYI8Z44gHB44yF4axMNS/fl5Dm7pW8?=
+ =?us-ascii?Q?CIU3/ftkpMRE68CwLx/4jms+uunNkSshoBPlKvq7/vwpUtF/jBXZHrt+21GV?=
+ =?us-ascii?Q?Iybnd//QBRHvPQYAQFIN89/Pa/nk2VXwGWPnDpz9zxC3xqqZcMK2x0Hxf6xe?=
+ =?us-ascii?Q?ORENFylzvgOcaRYgG+04B8uGWRug5rthjP2Fv+ZYBKrs3XM8IG/XjDix3TZS?=
+ =?us-ascii?Q?GOxfB1rgQTBpzbzExAX1On35ZJLI4hRTkjp8jL5OzjM3pR0kosUnVVj4dHVG?=
+ =?us-ascii?Q?asvUuLKm6fSGyMY6g0gcesGugu8pi7CGzsMVLp7eo+5O7ocjqgKQgzyYeIfr?=
+ =?us-ascii?Q?00+22sFdxiUaI/ik6FSfEeb/eKRzSPdEVYmGRSeeNAkN8BetrUGdn8/xXtQo?=
+ =?us-ascii?Q?DD1jyv1U47aEgkj8uel5qrjZhC5Im9VVMQqeygS/HPis2sKxSRAw5Aau7Jns?=
+ =?us-ascii?Q?jEdfMGXYclNUqsTWMPBevhHURbroWxV/6mddlD4P+A=3D=3D?=
+X-OriginatorOrg: sct-15-20-9115-0-msonline-outlook-15bf1.templateTenant
+X-MS-Exchange-CrossTenant-Network-Message-Id: 7df532ed-5c63-4fc1-755a-08de27883063
+X-MS-Exchange-CrossTenant-AuthSource: SN6PR1901MB4654.namprd19.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Nov 2025 16:25:01.9673
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR19MB7790
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251119_081513_083575_B3401A32 
-X-CRM114-Status: GOOD (  11.32  )
+X-CRM114-CacheID: sfid-20251119_082506_811395_519EF749 
+X-CRM114-Status: GOOD (  30.46  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,37 +157,50 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Chris Morgan <macromorgan@hotmail.com>
+On Wed, Nov 19, 2025 at 10:02:23AM +0100, Maxime Ripard wrote:
+> On Tue, Nov 18, 2025 at 02:36:09PM -0600, Chris Morgan wrote:
+> > On Tue, Nov 18, 2025 at 09:46:04AM +0100, Maxime Ripard wrote:
+> > > Hi,
+> > > 
+> > > On Thu, Nov 13, 2025 at 01:29:38PM -0600, Chris Morgan wrote:
+> > > > From: Chris Morgan <macromorgan@hotmail.com>
+> > > > 
+> > > > Add support for the dw-hdmi-qp driver to handle devices with missing
+> > > > HPD pins.
+> > > > 
+> > > > Since in this situation we are now polling for the EDID data via i2c
+> > > > change the error message to a debug message when we are unable to
+> > > > complete an i2c read, as a disconnected device would otherwise fill
+> > > > dmesg with i2c read errors.
+> > > > 
+> > > > Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+> > > 
+> > > You must also disable any mode using the scrambler when there's no
+> > > hotplug interrupt available.
+> > 
+> > Is there a simple way to do that? I'm not seeing any references to
+> > scrambling in the current driver.
+> > 
+> > Should I just limit the rate to HDMI14_MAX_TMDSCLK (340000000)  under
+> > dw_hdmi_qp_bridge_tmds_char_rate_valid() if using EDID polling? A
+> > document I found online from Synopsys [1] claims that scrambling is
+> > used by default at rates above 340 (if I'm reading it right) and used
+> > opportunistically at rates below 340.
+> 
+> Yep, that's what you should be testing for :)
+> 
+> Maxime
 
-Change the dev_err() to dev_err_probe() under rockchip_pd_power_on()
-to prevent errors early in the boot process when the requested
-regulator is not yet available. This converts errors like the following
-to debug messages:
+Thanks, though now that I dig into it I'm a bit more confused on the
+best way forward. It looks like for today the driver is hard-limited
+to HDMI14_MAX_TMDSCLK because scrambling isn't supported. I'm assuming
+it will be at some point, suggesting that we *will* need this in the
+future. Is it sufficient to just add a comment there noting we need
+to check, or should I add a check there (that does nothing today)
+to ensure when we do support faster rates we are ready?
 
-rockchip-pm-domain fd8d8000.power-management:power-controller: Failed to enable supply: -517
-
-Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
----
- drivers/pmdomain/rockchip/pm-domains.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/rockchip/pm-domains.c
-index 1955c6d453e4..3c84a65de1a5 100644
---- a/drivers/pmdomain/rockchip/pm-domains.c
-+++ b/drivers/pmdomain/rockchip/pm-domains.c
-@@ -688,7 +688,8 @@ static int rockchip_pd_power_on(struct generic_pm_domain *domain)
- 
- 	ret = rockchip_pd_regulator_enable(pd);
- 	if (ret) {
--		dev_err(pd->pmu->dev, "Failed to enable supply: %d\n", ret);
-+		dev_err_probe(pd->pmu->dev, ret,
-+			      "Failed to enable supply: %d\n", ret);
- 		return ret;
- 	}
- 
--- 
-2.43.0
-
+Thank you,
+Chris
 
 _______________________________________________
 Linux-rockchip mailing list
