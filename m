@@ -4,87 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7ABEECF31AD
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Nov 2025 11:36:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73143CF31BF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Nov 2025 12:42:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2+AUOogs8m1y+OpafbLQTHRlZkmIuMkmHCoptrP0xh4=; b=a30uwirklBEmKq
-	K0+dt4A+uPDIYpLALHZfIaiGt4djcM+ObuT9wr0fygkAZAycKUFfbJBIz8K2sd7KWovZOMpRDVJOY
-	7lX6PWo+pZxubt0xb7V4Gjbe+ZS/HGExvCQUj5Rsr5ka+QMXJR4IFCAkqKutJD/vzHwRD/PoXOX71
-	+oeiLDUYQegxkWBXZvvIXeIp6GR8vUiOIT1WlQ8CKveT3Exy4QG30EGBGYp1NX/jxnnuXipxGXlrf
-	Ma7SyuXveW6DkrYHcUoyf+FlxJKLVkld/gJ1v5CQS3iT79TBQqavMtEsSwCRaLy9j1yeQ3zNhdv25
-	t/riuUEtgOyhyMlioDrA==;
+	List-Owner; bh=ixFJiP37XGBSO6CvkqDDtG47jEFf40e1shPLJvGg0aM=; b=1PJ/3gsUNF1Z5I
+	AN0UU+6UhdWmE6Zw64B6Nv765i+QV2DHhV1GDF1GsfhMIPmJJyfhgicGx/nv94j48rz/ewY3fQvHS
+	k7bXUQXUBSWC2O/Ibu7Lz1IgKIdIzvybTMkwzcxyWQC1SlJLavN3Tsbm6FJ7GIx3mmNV3cg+DWxJZ
+	hs01Jf1ydwivC8W0Zziasu2ScMf4RsOoCBey62QlAuxyLWLW1z1Wbz11jNu8J9oArzqRI19uwUaLA
+	Nmk/uvJQA1I2MSEnSs4osS2XPgYptAZSfaL7sPd0J95LY9y1+KBgulBqtStbZIMgx4JjmRczBR+BX
+	VuYWU6Fqc16Oy6qRX6gQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLgTh-000000032cQ-1Qlb;
-	Wed, 19 Nov 2025 11:36:01 +0000
-Received: from mail-lj1-x232.google.com ([2a00:1450:4864:20::232])
+	id 1vLhVk-00000003BbN-3CyP;
+	Wed, 19 Nov 2025 12:42:12 +0000
+Received: from sender3-pp-f112.zoho.com ([136.143.184.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLgTe-000000032bF-1VKY
-	for linux-rockchip@lists.infradead.org;
-	Wed, 19 Nov 2025 11:35:59 +0000
-Received: by mail-lj1-x232.google.com with SMTP id 38308e7fff4ca-37ba781a6c3so49779971fa.0
-        for <linux-rockchip@lists.infradead.org>; Wed, 19 Nov 2025 03:35:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1763552155; x=1764156955; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=mOjKGZlnAXgjmbnxI7QvaAPBMson5j4nh4MkPbAPAEs=;
-        b=Y3T5/DweI9rOJGDgcO7unfiRndapxgXxFfksOOmvuabLPsBjN5erAO6LOuHsRNS+rs
-         SCI2kRuhS4TdmV7PhKQ7LAJh6krXkLzXz5kkV9WtGIX14vJXawCIc8Oz/Yfv2xK9UTmd
-         00o6fmIt48BNhDKaxZu3JR76rKoYricAuWBnbBPJepFhAqK9dZJT3HVhCJjdclGNU96l
-         dpJpYfOvJsHp8rqqG9kGLAeqWcIjt1BZ1nVy1LEk4ZBDW6wCuzOK7SoKrPei+xzvT58v
-         5CpTTcOI6W46gXkGBdi7Zkm2vjSKFDAR2s5k8jxu9EQVb6mhSxdk27M0dIwOMVy1XOd0
-         1ZIw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1763552155; x=1764156955;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=mOjKGZlnAXgjmbnxI7QvaAPBMson5j4nh4MkPbAPAEs=;
-        b=xUZ29byptixTmDUC8UhSu3Gd37sBNn4qA4Mc+Jp016Hp86VW4bzxIy2xNsHevS3GiS
-         aeBiJfhF8Ug0oOKGIV8a+6fQNFRhhHNUEBF5mcNeUFDtVMd7piizmeKqYXZMueJURUFR
-         HvUCaoIecHFAEMKmSqgf5bZH8QVmXvw1cP8JUOT6IP279LJEt26KuCXGMPX5HnwWCe+C
-         Vs2KGz7M7NQDm4Ew4eEAyxqMZk2jcYQpWKggix4JUpXwFjFr9aJWGzKyj/PVivA8Bu6U
-         s1kwZvr/x/SCbBypvZamJ9teDF2brSMhgd941WEyqNo5HAlLsottfSaHQYAJX/7+aeag
-         RfsA==
-X-Forwarded-Encrypted: i=1; AJvYcCVGdnhWF+K4zjfpdfLOqmBoD4GiboEicfcXy3oo0Gs7T1cU5QIIlKxSsp7e9EnaiEawUaBfXuGMYHeetweicg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzbgXUhHMkBSQxZXruzN1su1n+9SEAJzzzCDms73LmogexbNlil
-	LfdjCEMiJnHMppdf8TSEIH/Ytur4mZMLmezU/ItfrIInzc4pkI94/LNHezGfRhVRgx8q3qTmpV2
-	vduFY5eVinmJ3qpJaGpRKDKkmgGYSMAI=
-X-Gm-Gg: ASbGncsWggdYTtbmhhsif2p9sdCg0FkZxggla+Ja2TqXjQxHt+q7TZRZoGVTmdyOhrf
-	nFhfcQyvdhn+UPxl5KahHE/SP/gqRLKUtc13TaaUBxBKDP9ZnXEzbC6kP1XzlZaX8O4GWT2tcBl
-	FUODtB+H0y+1tA3wfHRK7LDODRV73AiFjQDE1v5I15Y4+ftvIqp7JA8uX9MDES6QSdAHlGZDD0I
-	0hKFrbw7c2FmZBsHa15PTPFmimzXsaI58pgTPoVO7N82LNF4ZjyvLtyTJNzfP26tk8IbQ==
-X-Google-Smtp-Source: AGHT+IGLB87l3c6YQaMAVvCIZHa9Iaw20ytZFxmWh7hR2zupdPWm65PeLgAMP+NHumhl01ckY9NXDPo9Y80ggn2lAT0=
-X-Received: by 2002:a05:651c:20c6:b0:36d:4e3b:f1e3 with SMTP id
- 38308e7fff4ca-37babb619famr41318181fa.13.1763552155407; Wed, 19 Nov 2025
- 03:35:55 -0800 (PST)
+	id 1vLhVh-00000003BaB-3ZWD;
+	Wed, 19 Nov 2025 12:42:10 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1763556090; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=efAGdgdlLCmUjUiCUN+88ikUtvP8E+gBXE8iOqgiH9/f4gYzd0gr8lweUEbd3ZFRD+ZiqSuuV6xP+sZGKES92se5zLTUVxCvnkOeLTgwKWwsrJetJMgUwELe/8/ll9gxR0l7fAMLpdu4UqFRY1E3v1MFP/e1FTQRkOHIX+/NYvg=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1763556090; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=qkp5pM4kPUn4Z6RS327lCOqrGmM6PpBeTOuTvzIeNwc=; 
+	b=OuztPRTlii3euM5FvuVgPFtTPcHctPj4sm+4mCNQmbk01+4clywpxZjFBSlRiHbmx9uqILeTnT1X+ErlmtVJcEszZ55rNhF5DH3cn96jNTMoMGvT2cNd/coVnVISVDDivzhjCgDfBhaKzsaVmfJYtWneNpj4czpNxuG7yhp9r8s=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1763556090;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=qkp5pM4kPUn4Z6RS327lCOqrGmM6PpBeTOuTvzIeNwc=;
+	b=Hvyo7taZPEolTW7Q7dLQLL/uX2K0MI7p7QAQJLQEAbXYw5eFq6ofNe5beUBpEd12
+	1/y0p4GyB6eSbpZp5CYbpjl3VeOiXJWyQF07RqM8SnEM91fxbYGFwkvPO+vEcfw7E6J
+	EjXEYgUF2NAl6dXlaOaFH32IGvWQZQLMQ964umEE=
+Received: by mx.zohomail.com with SMTPS id 1763556087174897.1379263947298;
+	Wed, 19 Nov 2025 04:41:27 -0800 (PST)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: Maxime Ripard <mripard@kernel.org>
+Cc: Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>,
+ Rodrigo Siqueira <siqueira@igalia.com>,
+ Alex Deucher <alexander.deucher@amd.com>,
+ Christian =?UTF-8?B?S8O2bmln?= <christian.koenig@amd.com>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Thomas Zimmermann <tzimmermann@suse.de>,
+ Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Sandy Huang <hjc@rock-chips.com>,
+ Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>,
+ Andy Yan <andy.yan@rock-chips.com>,
+ Jani Nikula <jani.nikula@linux.intel.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Tvrtko Ursulin <tursulin@ursulin.net>, kernel@collabora.com,
+ amd-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, intel-gfx@lists.freedesktop.org,
+ intel-xe@lists.freedesktop.org
+Subject: Re: [PATCH v4 07/10] drm/display: hdmi-state-helper: Act on color format DRM
+ property
+Date: Wed, 19 Nov 2025 13:41:18 +0100
+Message-ID: <7179523.lOV4Wx5bFT@workhorse>
+In-Reply-To: <4wt5dbvseauo2bvi66ohtk445zsfjtpjwgvochwwlyk4uugcmy@5ubwtkxyy2ax>
+References: <20251117-color-format-v4-0-0ded72bd1b00@collabora.com>
+ <20251117-color-format-v4-7-0ded72bd1b00@collabora.com>
+ <4wt5dbvseauo2bvi66ohtk445zsfjtpjwgvochwwlyk4uugcmy@5ubwtkxyy2ax>
 MIME-Version: 1.0
-References: <cf6e08dfdfbf1c540685d12388baab1326f95d2c.1762165324.git.xakep.amatop@gmail.com>
- <176307584246.496508.12079514999315183214.b4-ty@sntech.de>
-In-Reply-To: <176307584246.496508.12079514999315183214.b4-ty@sntech.de>
-From: Mykola Kvach <xakep.amatop@gmail.com>
-Date: Wed, 19 Nov 2025 13:35:43 +0200
-X-Gm-Features: AWmQ_bneNTA_MoPN6LwNuV_BB7nADqcezocvI0r4IOjj8wtQr6qn-bFxwXAym-o
-Message-ID: <CAGeoDV_R8GBSs9qjY4772ymU=LsLiP=LTTx2-4uBLkB2PAuVhQ@mail.gmail.com>
-Subject: Re: [PATCH v3] arm64: dts: rockchip: orangepi-5: fix PCIe 3.3V
- regulator voltage
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Johan Jonker <jbx6244@gmail.com>, 
-	Michael Riesch <michael.riesch@collabora.com>, =?UTF-8?Q?Ond=C5=99ej_Jirman?= <megi@xff.cz>, 
-	Muhammed Efe Cetin <efectn@6tel.net>, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, stable@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251119_033558_467622_68339F2A 
-X-CRM114-Status: GOOD (  12.83  )
+X-CRM114-CacheID: sfid-20251119_044209_948707_1DAEEBB1 
+X-CRM114-Status: GOOD (  23.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,27 +93,72 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gRnJpLCBOb3YgMTQsIDIwMjUgYXQgMToxOOKAr0FNIEhlaWtvIFN0dWVibmVyIDxoZWlrb0Bz
-bnRlY2guZGU+IHdyb3RlOgo+Cj4KPiBPbiBNb24sIDAzIE5vdiAyMDI1IDEyOjI3OjQwICswMjAw
-LCBNeWtvbGEgS3ZhY2ggd3JvdGU6Cj4gPiBUaGUgdmNjM3YzX3BjaWUyMCBmaXhlZCByZWd1bGF0
-b3IgcG93ZXJzIHRoZSBQQ0llIGRldmljZS1zaWRlIDMuM1YgcmFpbAo+ID4gZm9yIHBjaWUyeDFs
-MiB2aWEgdnBjaWUzdjMtc3VwcGx5LiBUaGUgRFRTIG1pc3Rha2VubHkgc2V0IGl0cwo+ID4gcmVn
-dWxhdG9yLW1pbi9tYXgtbWljcm92b2x0IHRvIDE4MDAwMDAgKDEuOCBWKS4gQ29ycmVjdCBib3Ro
-IHRvIDMzMDAwMDAKPiA+ICgzLjMgVikgdG8gbWF0Y2ggdGhlIHJhaWwgbmFtZSwgdGhlIFBDSWUv
-TS4yIHBvd2VyIHJlcXVpcmVtZW50LCBhbmQgdGhlCj4gPiBhY3R1YWwgaGFyZHdhcmUgd2lyaW5n
-IG9uIE9yYW5nZSBQaSA1Lgo+ID4KPiA+Cj4gPiBbLi4uXQo+Cj4gQXBwbGllZCwgdGhhbmtzIQo+
-Cj4gWzEvMV0gYXJtNjQ6IGR0czogcm9ja2NoaXA6IG9yYW5nZXBpLTU6IGZpeCBQQ0llIDMuM1Yg
-cmVndWxhdG9yIHZvbHRhZ2UKPiAgICAgICBjb21taXQ6IGI1NDE0NTIwNzkzZTY4ZDI2NmZkZDk3
-YTg0OTg5ZDk4MzExNTZhYWQKPgo+IFBsZWFzZSBzdGFydCBuZXcgdGhyZWFkcyB3aGVuIHNlbmRp
-bmcgdmVyc2lvbiB4KzEgYW5kIGRvbid0IGFwcGVuZAo+IHRoYXQgbmV3IHBhdGNoIHRvIHRoZSBv
-bGQgdGhyZWFkIChsZXNzIGNvbmZ1c2luZyBmb3IgdG9vbGluZyBsaWtlIGI0KS4KCkdvdCBpdCwg
-dGhhbmtzIGZvciB0aGUgZXhwbGFuYXRpb24uCgo+Cj4gQmVzdCByZWdhcmRzLAo+IC0tCj4gSGVp
-a28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4KCkJlc3QgcmVnYXJkcywKTXlrb2xhCgpfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hp
-cCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8v
-bGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+On Wednesday, 19 November 2025 10:09:12 Central European Standard Time Maxime Ripard wrote:
+> Hi,
+> 
+> On Mon, Nov 17, 2025 at 08:11:51PM +0100, Nicolas Frattaroli wrote:
+> > With the introduction of the "color format" DRM property, which allows
+> > userspace to request a specific color format, the HDMI state helper
+> > should implement this.
+> > 
+> > Implement it by checking whether the property is set and set to
+> > something other than auto. If so, pass the requested color format, and
+> > otherwise set RGB.
+> > 
+> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> > ---
+> >  drivers/gpu/drm/display/drm_hdmi_state_helper.c | 8 +++++++-
+> >  1 file changed, 7 insertions(+), 1 deletion(-)
+> > 
+> > diff --git a/drivers/gpu/drm/display/drm_hdmi_state_helper.c b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
+> > index a561f124be99..add0d51fce33 100644
+> > --- a/drivers/gpu/drm/display/drm_hdmi_state_helper.c
+> > +++ b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
+> > @@ -650,9 +650,15 @@ hdmi_compute_config(const struct drm_connector *connector,
+> >  				       conn_state->max_bpc,
+> >  				       8, connector->max_bpc);
+> >  	int ret;
+> > +	enum hdmi_colorspace hdmi_colorspace;
+> > +
+> > +	if (conn_state->color_format && conn_state->color_format != DRM_COLOR_FORMAT_AUTO)
+> > +		hdmi_colorspace = color_format_to_hdmi_colorspace(conn_state->color_format);
+> > +	else
+> > +		hdmi_colorspace = HDMI_COLORSPACE_RGB;
+> >  
+> >  	ret = hdmi_compute_format_bpc(connector, conn_state, mode, max_bpc,
+> > -				      HDMI_COLORSPACE_RGB);
+> > +				      hdmi_colorspace);
+> 
+> I don't think we want the fallback to yuv420 for anything but auto, so
+
+Okay. Changing all the non-hdmi-state-helper drivers (amdgpu, i915)
+to do this as well would require some more work however, especially
+in the case of amdgpu where the code flow is not always obvious.
+
+> I'd rather have something like
+> 
+> if (conn_state->color_format != DRM_COLOR_FORMAT_AUTO)
+>    return hdmi_compute_format_bpc(connector, conn_state, mode, max_bpc,
+>                                   color_format_to_hdmi_colorspace(conn_state->color_format))
+> 
+> We'll also need unit tests.
+
+Sure, am I guessing correctly that they'd go in
+drm_hdmi_state_helper_test.c?
+
+> Maxime
+> 
+
+
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
