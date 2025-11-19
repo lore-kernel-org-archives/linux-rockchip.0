@@ -4,101 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BA6FCF3185
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Nov 2025 10:12:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6BE3FCF319D
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Nov 2025 11:09:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=X25wqhGinVsaX5f2qNUpYpGRhAwi5znkTDV5YNQWsPs=; b=DQ59mp7J3YVC5F
-	iWROH31+MvN9w9kYsxjXwlUu2KTxYZ52ppcnmio7tRPCiK/kh1zqye7iWo5bWj3bqI+XvAcSXoOYI
-	ULcQLgM5puOAgVYdUxySXYdNjf0oFpS+1phykUiyw1PdiVXudH1steeatsGkkJOX2jeszbUFSNkr4
-	v4Ho2G/LcHZ/N63SyoI7/G5hPKPCcBZCFh9U1kufKMxTxR2h02oSqrwcQTJ8ltUa7Fh6OMTyD4n9h
-	SCxeltI5i7iE41TrQ7TR9vvk+oJ9nElz+VBzM9bVJ3JsmYIGJm3rWr2vwlG+doJLg4Czkij0SHJTi
-	fWxS91OhHEtHFCvQKRUQ==;
+	List-Owner; bh=EhZaO6b3rNtFvWY8vE6uFrU3ItCzQivU449O94/80ac=; b=zvIrwcBFa09tku
+	nHtXmxjyWPTrNaiO3TZCrqgPQDwZ8rY0lrD8cgYLLosy63+Cjio61V8kbFQyxLVmLESo0JR360qYN
+	UhFOewjJqO7RfKb0oPCZeP2mP1fbNqC1Uufvi/UEpjQRD768rgItA9TH7PuOYjtNrulthC7QhoKG+
+	NC6nkDYPmEoxNI/LCbdS9QVrwVbhF3Ek6BVsK8t2UvEpdJQxAW6ApyuiP2gPCB4AkLMR6QGvGJzdj
+	dSOwhsFTICvqx3fEGf7YwpP86MgdYVUgvp1ptDJsf0SHETp4rQE5TFN0yJ7BG8qLfHU1QQJTAXh8X
+	cI+R+phaJ13meB93ZGgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLfAO-00000002wOy-0wPQ;
-	Wed, 19 Nov 2025 10:12:00 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vLg3V-000000030eL-1uLn;
+	Wed, 19 Nov 2025 11:08:57 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLfAL-00000002wO5-3y1S;
-	Wed, 19 Nov 2025 10:11:58 +0000
+	id 1vLg3S-000000030df-0NXR;
+	Wed, 19 Nov 2025 11:08:55 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 56BE4601F1;
-	Wed, 19 Nov 2025 10:11:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 35DFBC2BCB0;
-	Wed, 19 Nov 2025 10:11:53 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 50F094356A;
+	Wed, 19 Nov 2025 11:08:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5474FC19421;
+	Wed, 19 Nov 2025 11:08:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1763547116;
-	bh=5IJcif5aQjGM+nqy25GZprs/eWri+Wf116zYCKPr8+A=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=oMptCL+9ndyRm4+m0V8+fQZW1CX45cPdxsIuIPkrxiMwCFPR7q3FIS8nNAvYFQoj1
-	 Gy6r7j94w1ku+/40MW1gH24wRdUUDF53Zm4JwdI/W8H31U55x4aGQSxHX3D9dcfyp5
-	 68roHmkaU6d/8h9zAMPeZxsEsqMrk44WARd6IUoRrmFBJcaPpRG7euklvz0LKJ4Tpe
-	 bXVWixiMuHd80JnV4UHv6wyrGo5qaneyDB/KNu0ckPVN10c9urkXRzT5+QX/uBZjv+
-	 xV61Cg9qZUaVNiZkiZ0ybRucPuVCuQ34n9FYws6nVm61EAd0oUKDTegFbB5VgeIcO/
-	 FT7A6QUPTutZQ==
-Message-ID: <ae967667-26db-41fd-8aec-bdb1f2cdffc8@kernel.org>
-Date: Wed, 19 Nov 2025 11:11:51 +0100
+	s=k20201202; t=1763550533;
+	bh=i9B40rXvO4To44vDLCPvVcioheN0Q6vh2sMRTqdfAAs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=gFbkS3ItMYkCvXQBowRYIX3QCL4BzIbk1Z/T4w+vthqVM7dO2duydfViADLoc+28z
+	 jAVLswki+uqnYk3baXc1/xCPjJfR5AAVkweeYyd74OzQFAuRatReJpfNOMwr6OrSsn
+	 t/ukjM48syDrh5wEAKKvmTrwPM3rKHGZu1DKQYu8DoEMLmPge4Ramv+COrtVKAQOnQ
+	 60K0dMSN27vkVmSXH4FkMkxJrjSJtmT8xMAoBi8xerAfNemTyR9dy2nc17hKwr6vOF
+	 p+m7U5E5v86hrPOipyimgLTfy261+7s1J3d77Xp1583aHJiGVx6/zZ2JYwCMv2/V0O
+	 wf1kQrOefETjg==
+Date: Wed, 19 Nov 2025 12:08:41 +0100
+From: Niklas Cassel <cassel@kernel.org>
+To: Frank Li <Frank.li@nxp.com>
+Cc: Bjorn Helgaas <helgaas@kernel.org>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Rob Herring <robh@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+	Kever Yang <kever.yang@rock-chips.com>,
+	Simon Xue <xxm@rock-chips.com>, Damien Le Moal <dlemoal@kernel.org>,
+	Dragan Simic <dsimic@manjaro.org>, FUKAUMI Naoki <naoki@radxa.com>,
+	Diederik de Haas <diederik@cknow-tech.com>,
+	Richard Zhu <hongxing.zhu@nxp.com>,
+	Lucas Stach <l.stach@pengutronix.de>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>, Conor Dooley <conor@kernel.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Hans Zhang <hans.zhang@cixtech.com>, linux-tegra@vger.kernel.org,
+	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, kernel@pengutronix.de,
+	Bjorn Helgaas <bhelgaas@google.com>
+Subject: Re: [PATCH v2 1/4] PCI: dwc: Advertise L1 PM Substates only if
+ driver requests it
+Message-ID: <aR2lOZDBEdGVd9On@ryzen>
+References: <20251118214312.2598220-1-helgaas@kernel.org>
+ <20251118214312.2598220-2-helgaas@kernel.org>
+ <aRz0ak6onKzZs2lY@lizhi-Precision-Tower-5810>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] dt-bindings: arm: rockchip: merge Asus Tinker and Tinker
- S
-To: Michael Opdenacker <michael.opdenacker@rootcommit.com>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20251119-merge-tinker-bindings-v1-1-4072b55750c1@rootcommit.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
- cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
- JMp7PSyMPzpUXfU12yfcRYVEMQrmplNZssmYhiTeVicuOOypWugZKVLGNm0IweVCaZ/DJDIH
- gNbpvVwjcKYrx85m9cBVEBUGaQP6AT7qlVCkrf50v8bofSIyVa2xmubbAwwFA1oxoOusjPIE
- J3iadrwpFvsZjF5uHAKS+7wHLoW9hVzOnLbX6ajk5Hf8Pb1m+VH/E8bPBNNYKkfTtypTDUCj
- NYcd27tjnXfG+SDs/EXNUAIRefCyvaRG7oRYF3Ec+2RgQDRnmmjCjoQNbFrJvJkFHlPeHaeS
- BosGY+XWKydnmsfY7SSnjAzLUGAFhLd/XDVpb1Een2XucPpKvt9ORF+48gy12FA5GduRLhQU
- vK4tU7ojoem/G23PcowM1CwPurC8sAVsQb9KmwTGh7rVz3ks3w/zfGBy3+WmLg++C2Wct6nM
- Pd8/6CBVjEWqD06/RjI2AnjIq5fSEH/BIfXXfC68nMp9BZoy3So4ZsbOlBmtAPvMYX6U8VwD
- TNeBxJu5Ex0Izf1NV9CzC3nNaFUYOY8KfN01X5SExAoVTr09ewARAQABzSVLcnp5c3p0b2Yg
- S296bG93c2tpIDxrcnprQGtlcm5lbC5vcmc+wsGVBBMBCgA/AhsDBgsJCAcDAgYVCAIJCgsE
- FgIDAQIeAQIXgBYhBJvQfg4MUfjVlne3VBuTQ307QWKbBQJoF1BKBQkWlnSaAAoJEBuTQ307
- QWKbHukP/3t4tRp/bvDnxJfmNdNVn0gv9ep3L39IntPalBFwRKytqeQkzAju0whYWg+R/rwp
- +r2I1Fzwt7+PTjsnMFlh1AZxGDmP5MFkzVsMnfX1lGiXhYSOMP97XL6R1QSXxaWOpGNCDaUl
- ajorB0lJDcC0q3xAdwzRConxYVhlgmTrRiD8oLlSCD5baEAt5Zw17UTNDnDGmZQKR0fqLpWy
- 786Lm5OScb7DjEgcA2PRm17st4UQ1kF0rQHokVaotxRM74PPDB8bCsunlghJl1DRK9s1aSuN
- hL1Pv9VD8b4dFNvCo7b4hfAANPU67W40AaaGZ3UAfmw+1MYyo4QuAZGKzaP2ukbdCD/DYnqi
- tJy88XqWtyb4UQWKNoQqGKzlYXdKsldYqrLHGoMvj1UN9XcRtXHST/IaLn72o7j7/h/Ac5EL
- 8lSUVIG4TYn59NyxxAXa07Wi6zjVL1U11fTnFmE29ALYQEXKBI3KUO1A3p4sQWzU7uRmbuxn
- naUmm8RbpMcOfa9JjlXCLmQ5IP7Rr5tYZUCkZz08LIfF8UMXwH7OOEX87Y++EkAB+pzKZNNd
- hwoXulTAgjSy+OiaLtuCys9VdXLZ3Zy314azaCU3BoWgaMV0eAW/+gprWMXQM1lrlzvwlD/k
- whyy9wGf0AEPpLssLVt9VVxNjo6BIkt6d1pMg6mHsUEVzsFNBFVDXDQBEADNkrQYSREUL4D3
- Gws46JEoZ9HEQOKtkrwjrzlw/tCmqVzERRPvz2Xg8n7+HRCrgqnodIYoUh5WsU84N03KlLue
- MNsWLJBvBaubYN4JuJIdRr4dS4oyF1/fQAQPHh8Thpiz0SAZFx6iWKB7Qrz3OrGCjTPcW6ei
- OMheesVS5hxietSmlin+SilmIAPZHx7n242u6kdHOh+/SyLImKn/dh9RzatVpUKbv34eP1wA
- GldWsRxbf3WP9pFNObSzI/Bo3kA89Xx2rO2roC+Gq4LeHvo7ptzcLcrqaHUAcZ3CgFG88CnA
- 6z6lBZn0WyewEcPOPdcUB2Q7D/NiUY+HDiV99rAYPJztjeTrBSTnHeSBPb+qn5ZZGQwIdUW9
- YegxWKvXXHTwB5eMzo/RB6vffwqcnHDoe0q7VgzRRZJwpi6aMIXLfeWZ5Wrwaw2zldFuO4Dt
- 91pFzBSOIpeMtfgb/Pfe/a1WJ/GgaIRIBE+NUqckM+3zJHGmVPqJP/h2Iwv6nw8U+7Yyl6gU
- BLHFTg2hYnLFJI4Xjg+AX1hHFVKmvl3VBHIsBv0oDcsQWXqY+NaFahT0lRPjYtrTa1v3tem/
- JoFzZ4B0p27K+qQCF2R96hVvuEyjzBmdq2esyE6zIqftdo4MOJho8uctOiWbwNNq2U9pPWmu
- 4vXVFBYIGmpyNPYzRm0QPwARAQABwsF8BBgBCgAmAhsMFiEEm9B+DgxR+NWWd7dUG5NDfTtB
- YpsFAmgXUF8FCRaWWyoACgkQG5NDfTtBYptO0w//dlXJs5/42hAXKsk+PDg3wyEFb4NpyA1v
- qmx7SfAzk9Hf6lWwU1O6AbqNMbh6PjEwadKUk1m04S7EjdQLsj/MBSgoQtCT3MDmWUUtHZd5
- RYIPnPq3WVB47GtuO6/u375tsxhtf7vt95QSYJwCB+ZUgo4T+FV4hquZ4AsRkbgavtIzQisg
- Dgv76tnEv3YHV8Jn9mi/Bu0FURF+5kpdMfgo1sq6RXNQ//TVf8yFgRtTUdXxW/qHjlYURrm2
- H4kutobVEIxiyu6m05q3e9eZB/TaMMNVORx+1kM3j7f0rwtEYUFzY1ygQfpcMDPl7pRYoJjB
- dSsm0ZuzDaCwaxg2t8hqQJBzJCezTOIkjHUsWAK+tEbU4Z4SnNpCyM3fBqsgYdJxjyC/tWVT
- AQ18NRLtPw7tK1rdcwCl0GFQHwSwk5pDpz1NH40e6lU+NcXSeiqkDDRkHlftKPV/dV+lQXiu
- jWt87ecuHlpL3uuQ0ZZNWqHgZoQLXoqC2ZV5KrtKWb/jyiFX/sxSrodALf0zf+tfHv0FZWT2
- zHjUqd0t4njD/UOsuIMOQn4Ig0SdivYPfZukb5cdasKJukG1NOpbW7yRNivaCnfZz6dTawXw
- XRIV/KDsHQiyVxKvN73bThKhONkcX2LWuD928tAR6XMM2G5ovxLe09vuOzzfTWQDsm++9UKF a/A=
-In-Reply-To: <20251119-merge-tinker-bindings-v1-1-4072b55750c1@rootcommit.com>
+Content-Disposition: inline
+In-Reply-To: <aRz0ak6onKzZs2lY@lizhi-Precision-Tower-5810>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251119_030854_170221_27A1980F 
+X-CRM114-Status: GOOD (  26.72  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,20 +94,71 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 19/11/2025 10:22, Michael Opdenacker wrote:
-> Merge sections for Asus Tinker Board and Asus Tinker Board S.
+On Tue, Nov 18, 2025 at 05:34:18PM -0500, Frank Li wrote:
+> On Tue, Nov 18, 2025 at 03:42:15PM -0600, Bjorn Helgaas wrote:
+> > From: Bjorn Helgaas <bhelgaas@google.com>
+> >
+> > L1 PM Substates require the CLKREQ# signal and may also require
+> > device-specific support.  If CLKREQ# is not supported or driver support is
+> > lacking, enabling L1.1 or L1.2 may cause errors when accessing devices,
+> > e.g.,
+> >
+> >   nvme nvme0: controller is down; will reset: CSTS=0xffffffff, PCI_STATUS=0x10
+> >
+> > If the kernel is built with CONFIG_PCIEASPM_POWER_SUPERSAVE=y or users
+> > enable L1.x via sysfs, users may trip over these errors even if L1
+> > Substates haven't been enabled by firmware or the driver.
+> >
+> > To prevent such errors, disable advertising the L1 PM Substates unless the
+> > driver sets "dw_pcie.l1ss_support" to indicate that it knows CLKREQ# is
+> > present and any device-specific configuration has been done.
+> >
+> > Set "dw_pcie.l1ss_support" in tegra194 (if DT includes the
+> > "supports-clkreq' property) and qcom (for cfg_2_7_0, cfg_1_9_0, cfg_1_34_0,
+> > and cfg_sc8280xp controllers) so they can continue to use L1 Substates.
+> >
+> > Based on Niklas's patch:
+> > https://patch.msgid.link/20251017163252.598812-2-cassel@kernel.org
+> >
+> > Signed-off-by: Bjorn Helgaas <bhelgaas@google.com>
+> > ---
+> >  .../pci/controller/dwc/pcie-designware-ep.c   |  2 ++
+> >  .../pci/controller/dwc/pcie-designware-host.c |  2 ++
+> >  drivers/pci/controller/dwc/pcie-designware.c  | 24 +++++++++++++++++++
+> >  drivers/pci/controller/dwc/pcie-designware.h  |  2 ++
+> >  drivers/pci/controller/dwc/pcie-qcom.c        |  2 ++
+> >  drivers/pci/controller/dwc/pcie-tegra194.c    |  3 +++
+> >  6 files changed, 35 insertions(+)
+> >
+> > diff --git a/drivers/pci/controller/dwc/pcie-designware-ep.c b/drivers/pci/controller/dwc/pcie-designware-ep.c
+> > index 7f2112c2fb21..ad6c0fd67a65 100644
+> > --- a/drivers/pci/controller/dwc/pcie-designware-ep.c
+> > +++ b/drivers/pci/controller/dwc/pcie-designware-ep.c
+> > @@ -966,6 +966,8 @@ int dw_pcie_ep_init_registers(struct dw_pcie_ep *ep)
+> >  	if (ep->ops->init)
+> >  		ep->ops->init(ep);
+> >
+> > +	dw_pcie_hide_unsupported_l1ss(pci);
+> > +
 > 
-> Asus Tinker Board S (Storage) is just a variant of Tinker Board
-> with an added eMMC chip.
-> 
-> Signed-off-by: Michael Opdenacker <michael.opdenacker@rootcommit.com>
-> ---
+> And, I don't think EP need clean L1SS CAP flags. If EP don't support L1SS,
+> it should be force pull down #clkreq.
+
+I think the problem is that we cannot force pull down CLKREQ# in a generic
+DWC function. That would have to be done in glue driver specific callbacks.
+
+Bjorn, perhaps we should simply drop the dw_pcie_hide_unsupported_l1ss()
+call from dw_pcie_ep_init_registers(), and consider hiding L1ss for EPs to
+be out of scope for this series.
+
+That way, we could still queue this series up for 6.19.
+
+Thoughts from everyone?
 
 
-Acked-by: Krzysztof Kozlowski <krzk@kernel.org>
 
-Best regards,
-Krzysztof
+Kind regards,
+Niklas
 
 _______________________________________________
 Linux-rockchip mailing list
