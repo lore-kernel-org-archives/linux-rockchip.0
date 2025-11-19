@@ -4,107 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C36FCF3182
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Nov 2025 09:22:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36B5BCF3186
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Nov 2025 10:04:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Date:Cc:To:Message-Id:MIME-Version:
-	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=72BP60gqPhz++9EZaSr50A9+Y2bsocflCYiU7XYY+18=; b=Y7k5Vf35PmAoFb
-	uhUA3OXNWsWqETV4zcDeU165GLls01rWNwLx7GarV5PTtQ0kG+V6wAsoyhircVNZCa1ct4YDGYBcw
-	noGTM5qgUuPlD4C+R6xp+45T1YPT+yKlMIfEiXRdLMgWFbippmcDaQgDwD1AM8aNr0AyRnRvU+yqx
-	a07mAEJ9rLuPn1BxCcqUgM0xTHqetqNzeGgdbZxmhd4dsZT165AfQSGE0OIK9tFO0TRmSiseVtDTX
-	de17OR+wRlnavx3VoczVer6F3vs/L94HRikAV7RBr8BcQr4FvRyWivT+bSxly2t7aHgTIIPuWxoYS
-	A/6kQteLGnWJVsONr8Bw==;
+	List-Owner; bh=C5LEiS0+4hmm3vJIqb//zbKHBnGDWrQczhkLkxOu3ys=; b=lnAVhJuxrGRC4K
+	nTtlsQZNF1nttBlmEP3vkOWjTHCpkxgcKw9e+wka6VtjtIyvGFWNLItKQn6EEBYYxGEqNB93DBBLL
+	W1cqnJwFlOEDvkOm/9AfeXlgoFW8vUD5I/CCVXh8xDjY425GBiaQI1bSS+T3TtceG08jBC4p2X6b/
+	zssH3jqfW5lkOf8tG5gC4/4cXfVI5YtmEbqHG2tqxGtHPZ85DXiS325hWkP6TbekBkX2fzaV6dBMh
+	4YvBXGvWoKZ901y+nSumwDqfukwExL5Tq+xcfCL8tZjH962h5u81WmEWxisCeiW3qZGLv3PjbKn2x
+	6DY1xTUQETHv/Wn+E7nw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLeOm-00000002rLD-3dwI;
-	Wed, 19 Nov 2025 09:22:48 +0000
-Received: from buffalo.birch.relay.mailchannels.net ([23.83.209.24])
+	id 1vLf2U-00000002uz5-1Wce;
+	Wed, 19 Nov 2025 10:03:50 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLeOj-00000002rKG-1KsK;
-	Wed, 19 Nov 2025 09:22:46 +0000
-X-Sender-Id: hostingeremail|x-authuser|michael.opdenacker@rootcommit.com
-Received: from relay.mailchannels.net (localhost [127.0.0.1])
-	by relay.mailchannels.net (Postfix) with ESMTP id 1BCAA822C12;
-	Wed, 19 Nov 2025 09:22:43 +0000 (UTC)
-Received: from fr-int-smtpout11.hostinger.io (100-96-202-146.trex-nlb.outbound.svc.cluster.local [100.96.202.146])
-	(Authenticated sender: hostingeremail)
-	by relay.mailchannels.net (Postfix) with ESMTPA id 37E1C822ACA;
-	Wed, 19 Nov 2025 09:22:41 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; d=mailchannels.net; s=arc-2022; cv=none;
-	t=1763544162;
-	b=J3XQZKS8ojSeJrb4xnBPhHETz4n14fbsQAQcphsJtN3ZUd36jdQUmdi2mQUk4Zhai+paGH
-	X1p0gpqSoxDHHo59KO7iLGOjNKnb95L269vWQRp9iLMf7eu3vJvuB8m96hmb94ZDJ5QRrQ
-	fiU9QDi2kjQTPZbg3/ve5jHYy4HhVzlCozd9QZiwwL+g9GAGb0z8xMsHsJaKG0/bmRgsMW
-	QN0ZlCrmyVjcn3uvJLONlOwiQ8fX84FFeNHIZRsxedq/4r8IIZoRvj8Iwg577DlG6Abo8n
-	RNO5nJ0sGJO2fruRr3f9aWkTirPuPxUfSWopt/6lHhRgIB+NmXBPft1XxKeBIg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mailchannels.net;
-	s=arc-2022; t=1763544162;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:dkim-signature;
-	bh=/XRIn0H1AG4nuUhyTwht3z9K/FpoOLrpMMRmMzDin1I=;
-	b=6IvWQnzz8oPDiJelyyvy3SIm9t6eJ8x//GezT3Hvn/+ENpUWB4z7dnzvaBImziR9DpRLQM
-	qTMWlOiEA1p74tYAtMraiUHflAofXNsZKcDWhDdlckb5yAJHC31guhrVHM1TfBABcshkOP
-	sVzvXUGi86BIXLa4d44TT7FPHoH3J5T0Nm1GNU2omtejjB+Y/+BNMh9jYU9g6IseyevDg/
-	Z2ujCWLUd57M/J8c9nIWvyenXxTldct5tLp4NKkMCEAnL/IC/76I48MivdcqpQarxBRLZ9
-	dHJRfTraQuyKUgx8t9YuE1r8QP/wXcxDqX+l9dA/iGoypNGu9Zfnp0ilbAdPGQ==
-ARC-Authentication-Results: i=1;
-	rspamd-55b59744f-wcs4q;
-	auth=pass smtp.auth=hostingeremail
- smtp.mailfrom=michael.opdenacker@rootcommit.com
-X-Sender-Id: hostingeremail|x-authuser|michael.opdenacker@rootcommit.com
-X-MC-Relay: Neutral
-X-MailChannels-SenderId: hostingeremail|x-authuser|michael.opdenacker@rootcommit.com
-X-MailChannels-Auth-Id: hostingeremail
-X-Madly-Scare: 4d0057c4265dbeaa_1763544162929_2054756046
-X-MC-Loop-Signature: 1763544162929:4277995882
-X-MC-Ingress-Time: 1763544162928
-Received: from fr-int-smtpout11.hostinger.io (fr-int-smtpout11.hostinger.io
- [148.222.54.47])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384)
-	by 100.96.202.146 (trex/7.1.3);
-	Wed, 19 Nov 2025 09:22:42 +0000
-Received: from [127.0.1.1] (unknown [IPv6:2001:861:4450:d360:b1d7:54a0:7227:532f])
-	(Authenticated sender: michael.opdenacker@rootcommit.com)
-	by smtp.hostinger.com (smtp.hostinger.com) with ESMTPSA id 4dBGGk6FBJz13PR;
-	Wed, 19 Nov 2025 09:22:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=rootcommit.com;
-	s=hostingermail-a; t=1763544159;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=/XRIn0H1AG4nuUhyTwht3z9K/FpoOLrpMMRmMzDin1I=;
-	b=Zyic3By8uTIiypEDvyl5z+3KuZRWv91cjx9MI+So9IUx389W51PzhM+U73Y8GdkfpEFs3w
-	ELKVcZRAsMXYuL1e8j5YVGaojgluUfgioPntVM+oAmhs6B8V4KcYaUpFETVINc/bwjTcFg
-	tQqlA33F0HAkqqfGE4hYWPcX9UDRcUJT/5QqQnYLbkzsV7EvlK7ZpHdokkbzaBevo/G3n4
-	7p5qwlSS2mMhR1YcrRw8s1Nv1PuS9YKiHNNGffQAdPPMrXHJ+O6qtpNvvnthOm7ANs1ecM
-	QYCdpqKHnrSXsqWQh7ob91R8ntOpVmK2+h2S5d3Uymd+zcPEKVQjYn5OUY76AQ==
-From: Michael Opdenacker <michael.opdenacker@rootcommit.com>
-Subject: [PATCH] dt-bindings: arm: rockchip: merge Asus Tinker and Tinker S
+	id 1vLf2P-00000002uxw-21Ho;
+	Wed, 19 Nov 2025 10:03:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=Y+sgIiXuLSX8878BXnZdAURbfpZ/7Ejmg1bqP8JP5ck=; b=kpFo9qM7iuPsdM+zYOjqS02txO
+	4M7kLehtYNmXBJfY73fpDpk3On1guAxfTdG3f4/+cB+hDWj4idMIug9TUrx8eqs7yy0IupTxLV2qG
+	D6959asz+TtdSGQiUzwGyJ4MlKUAo0S3goHu9FNs4pswpYkWgv/PECttzzMI6yzoyzHSjhKtgy2zE
+	u2QeQIJ7CmdDzj1QOIkaOS0RvSIGGF22MtkkLBSY9+bfqK+zczx8GFugnk1THmhmI88MPrFpWROJ9
+	lhZ220fN1y6GKdujBRN0FEIb8nFjbSX2LL3amzluVFeyhPXQB6rGX5QLGe0v3wHRI9GytQ6/g7Ouc
+	+KwYFJeg==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:52384)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.98.2)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1vLf1k-000000004QW-32gK;
+	Wed, 19 Nov 2025 10:03:04 +0000
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.98.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1vLf1d-000000003Ji-0q5P;
+	Wed, 19 Nov 2025 10:02:57 +0000
+Date: Wed, 19 Nov 2025 10:02:56 +0000
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>
+Cc: Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Andrew Lunn <andrew+netdev@lunn.ch>, Chen-Yu Tsai <wens@csie.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Drew Fustini <fustini@kernel.org>,
+	Eric Dumazet <edumazet@google.com>, Fu Wei <wefu@redhat.com>,
+	Guo Ren <guoren@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Jan Petrous <jan.petrous@oss.nxp.com>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Keguang Zhang <keguang.zhang@gmail.com>,
+	Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
+	linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org,
+	linux-renesas-soc@vger.kernel.org, linux-riscv@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-sunxi@lists.linux.dev,
+	Maxime Chevallier <maxime.chevallier@bootlin.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>, netdev@vger.kernel.org,
+	Paolo Abeni <pabeni@redhat.com>, s32@nxp.com,
+	Samuel Holland <samuel@sholland.org>
+Subject: [PATCH net-next 0/3] net: stmmac: pass struct device to init/exit
+Message-ID: <aR2V0Kib7j0L4FNN@shell.armlinux.org.uk>
 MIME-Version: 1.0
-Message-Id: <20251119-merge-tinker-bindings-v1-1-4072b55750c1@rootcommit.com>
-X-B4-Tracking: v=1; b=H4sIAFKMHWkC/x2MQQqAMAzAviI9O7AykfkV8aCum0Ws0okI4t8dH
- hNIHkikTAm64gGlixPvkgHLAuZllEiGfWaoq7pBRGc20ixPlpXUTCyeJSYTrJuqxrcYyEJuD6X
- A9//th/f9AIrpDwhnAAAA
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Michael Opdenacker <michael.opdenacker@rootcommit.com>
-X-Mailer: b4 0.13.0
-Date: Wed, 19 Nov 2025 09:22:38 +0000 (UTC)
-X-CM-Envelope: MS4xfOepRoEoSwH0tzVB+fQnJfXqumpnchZw7lejyHH785m0GvmpEsgenW78oaoQrooB4wC82wj2Pc04rse61YdUplgEIi0yz8pzFwCwvnfUEM9J5UtqPM1k cw3yQBB88/mIBf8Dukja5QlwqBBzd7SI/RmP4qmXfyYc853V3UJmJqrpotKKjVx3gFkWtRLI5aUPwcsm83vE3lGcGACXwPE/rVrYbLUcLIOhyVY29gt1LY+G YQR+aff7ME7DNiGIeBwrdT3XIk70+YNMIFdxUh4AI+FTE6wJ7+TzrIuTSMwN3CPThvIKX2eUk7TLG1eb92P3xJWFk3e00Psr52EdbzijRfpXv3Y7DuAb8RlM yXOd5HRSDLw7vTZchMqcPDRWF1TVebqNwetSRLhukx63gpd/YO3yYyzgCeQkdbrYE3wPE2kMPG3ReTNR2uEA97N3hbtAEwtcKttFi9kj4QAkFSB4BJIEpWmg RJ38fD1nZcOXPufJhBNSB1koU0k20QeSHHN6ifPL5sx1KwS/mmRe01faDTKCjIGErg3SLfhIHw+gj8Rpawf81+GWkFApo36vE9x/XTzXBMaTaj+tHnYj/oDN RE8=
-X-CM-Analysis: v=2.4 cv=Lflu6Sfi c=1 sm=1 tr=0 ts=691d8c5f a=XDzs+g99WxkrRRq8F21x+A==:617 a=xqWC_Br6kY4A:10 a=IkcTkHD0fZMA:10 a=d70CFdQeAAAA:8 a=Ewf7oWgYWxBXnD_q6CkA:9 a=QEXdDO2ut3YA:10 a=NcxpMcIZDGm-g932nG_k:22
-X-AuthUser: michael.opdenacker@rootcommit.com
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251119_012245_587464_196F11BE 
-X-CRM114-Status: UNSURE (   7.83  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251119_020345_805654_711CF9F3 
+X-CRM114-Status: GOOD (  10.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,45 +94,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Merge sections for Asus Tinker Board and Asus Tinker Board S.
+Rather than passing the platform device to the ->init() and ->exit()
+methods, make these methods useful for other devices by passing the
+struct device instead. Update the implementations appropriately for
+this change.
 
-Asus Tinker Board S (Storage) is just a variant of Tinker Board
-with an added eMMC chip.
+Move the calls for these methods into the core driver's probe and
+remove methods from the stmmac_platform layer.
 
-Signed-off-by: Michael Opdenacker <michael.opdenacker@rootcommit.com>
----
- Documentation/devicetree/bindings/arm/rockchip.yaml | 9 +++------
- 1 file changed, 3 insertions(+), 6 deletions(-)
+Convert dwmac-rk to use ->init() and ->exit().
 
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-index 6aceaa8acbb2..784089f1e245 100644
---- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-+++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-@@ -78,12 +78,9 @@ properties:
- 
-       - description: Asus Tinker board
-         items:
--          - const: asus,rk3288-tinker
--          - const: rockchip,rk3288
--
--      - description: Asus Tinker board S
--        items:
--          - const: asus,rk3288-tinker-s
-+          - enum:
-+              - asus,rk3288-tinker
-+              - asus,rk3288-tinker-s
-           - const: rockchip,rk3288
- 
-       - description: Beelink A1
+ .../net/ethernet/stmicro/stmmac/dwmac-anarion.c    |  4 +-
+ .../net/ethernet/stmicro/stmmac/dwmac-eic7700.c    |  4 +-
+ .../net/ethernet/stmicro/stmmac/dwmac-loongson1.c  | 12 +++---
+ .../ethernet/stmicro/stmmac/dwmac-renesas-gbeth.c  |  4 +-
+ drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c     | 47 +++++++++-------------
+ drivers/net/ethernet/stmicro/stmmac/dwmac-s32.c    | 14 +++----
+ .../net/ethernet/stmicro/stmmac/dwmac-socfpga.c    |  2 +-
+ drivers/net/ethernet/stmicro/stmmac/dwmac-sti.c    |  4 +-
+ drivers/net/ethernet/stmicro/stmmac/dwmac-sun8i.c  | 10 ++---
+ drivers/net/ethernet/stmicro/stmmac/dwmac-sunxi.c  |  4 +-
+ drivers/net/ethernet/stmicro/stmmac/dwmac-thead.c  |  2 +-
+ drivers/net/ethernet/stmicro/stmmac/stmmac_main.c  | 47 ++++++++++++++++------
+ .../net/ethernet/stmicro/stmmac/stmmac_platform.c  | 35 +++++-----------
+ include/linux/stmmac.h                             |  4 +-
+ 14 files changed, 94 insertions(+), 99 deletions(-)
 
----
-base-commit: e7c375b181600caf135cfd03eadbc45eb530f2cb
-change-id: 20251119-merge-tinker-bindings-f49b05d71fe4
-
-Best regards,
 -- 
-Michael Opdenacker <michael.opdenacker@rootcommit.com>
-
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
 
 _______________________________________________
 Linux-rockchip mailing list
