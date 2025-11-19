@@ -4,83 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42928CF34A1
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Nov 2025 13:38:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95E72CF34B5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Nov 2025 14:19:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7R2ivZ6GFZENQQSJ4DkwN4yj7kgLOmUSmKOhQqQNk8c=; b=Y0PAs6TvnmDO1N
-	EbKSi0uHtNJeUmlqP4LgHP3sFXCt9DKPw9Tdt7SU/6uk0H5JrfZMk9WUW9HxO8lo9rx7mHB33HE/Y
-	MEu+VQfxx8AoTcNf5bMxaJ/t95DybUONNBo2VOee/ARDOT7dkMMSdR0m3rg5Z597C2HLh/posBo8m
-	certwxtLhEu01L15PaNH9tSZ2vb16JdlM3zYpg5dbO/FXok9AulA1Uc+S8I3bjz2h8wxRw2Ct7wB1
-	KiRTR3w6FSN3PukaHktaWaxxLMA+3eKhfBBptKiTDhvT6OoEJji0p0UB7GOevfffyL3wQGHzmSl2J
-	S1bQ/yqIV/fEVK0w/TpQ==;
+	List-Owner; bh=noxNxd/5nxk+7ADO558+Fh3mE9sBzQNpTpBtyCDXUgY=; b=vR2VjmiO9N2SZX
+	Po2S7qPYRnYAxmBGx5j43h0W+W6XwhsGDCNPTOgxU7GfL7bH3GyzMr2SQ4h/1RBCJ+cQhVct31n7N
+	yKor4B8TVYxyD7PxEZG05OgeQjXKFroi9MKDuZzK+vG6aXrtyfsjLRsO9sGRcgOjehNG9Wk5nSBTI
+	bLHUQqE2s3itZ66ON5nkv1qoR0AxJGmE3JlGtShQT+BehGs5z8WU1FxmpiZQRo7Jq4Qal117FQ0ju
+	0QOnqEgaXXSdvcNGUcNGZa3gq9ST7RqIJgL63wBw4pT7wIvgmCLokuitpqnHsZqbVJ11QXqmEYRBs
+	2ja8oSGFuE8ABwZa/IQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLiOO-00000003Ik0-3gpK;
-	Wed, 19 Nov 2025 13:38:40 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1vLj1r-00000003MV4-0TB6;
+	Wed, 19 Nov 2025 14:19:27 +0000
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLiOL-00000003Ij9-47Nw;
-	Wed, 19 Nov 2025 13:38:39 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1763559482; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=CuwjR2h4Ha6FdX9YcmYJiHsMLW8UhFvlnuR8RsskwaZcOcgRJe+R6sdtnrxYVApCqwS/19y5nZYG42D9Zlo+RPeXtzzCIOhL7xTXZAz0qiAIUDj2DLaCrpAEizra3PiJFw6vLc/o5ZV1QnX+3YBSMP4wjqXjBkQgHjK505A5Xwg=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1763559482; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=7kLvj5qlOUkKcedzN+9zXzz8KHY8mPvxCmgiQNKASC0=; 
-	b=BCAuUf7lbq92vuxRMz/1dYjtXKeB4V2AgeLPbEvGKCNo1PsZBEWNnNL2rE/S5OB4m8uvbPJM+mIrekYRF4AgbS0ucOFBSaquhoFf6ZvIn81nZo5B/vh4I3TLFX7c9E3OjY6Hxu74BAGjUte++apzjOfX++EnahUAgYz5w6+dBmE=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1763559482;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=7kLvj5qlOUkKcedzN+9zXzz8KHY8mPvxCmgiQNKASC0=;
-	b=lOK0BGrsyBiEDevslzfJVvrHYzJKW5KQ4sVEUjGezcv3IIJHy5sc4MlGVNfICCIN
-	R0Bhi6yfEfVGmx5g0Y392pEDMHk0run1ePP/ik30HEqOq+cQIV0+Y3+9aOcBibP0RjH
-	aInqlNcei+5GnD4BbDSIMlOsR2qwk/3VOUtRhD1g=
-Received: by mx.zohomail.com with SMTPS id 1763559480451443.4437908471832;
-	Wed, 19 Nov 2025 05:38:00 -0800 (PST)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>,
- Rodrigo Siqueira <siqueira@igalia.com>,
- Alex Deucher <alexander.deucher@amd.com>,
- Christian =?UTF-8?B?S8O2bmln?= <christian.koenig@amd.com>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Sandy Huang <hjc@rock-chips.com>,
- Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>,
- Andy Yan <andy.yan@rock-chips.com>,
- Jani Nikula <jani.nikula@linux.intel.com>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Tvrtko Ursulin <tursulin@ursulin.net>,
- Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: kernel@collabora.com, amd-gfx@lists.freedesktop.org,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org
-Subject: Re: [PATCH v4 06/10] drm/rockchip: dw_hdmi_qp: Set supported_formats platdata
-Date: Wed, 19 Nov 2025 14:37:51 +0100
-Message-ID: <11723230.nUPlyArG6x@workhorse>
-In-Reply-To: <edc12051-6e50-4ef6-98cf-713abb49dd90@collabora.com>
-References: <20251117-color-format-v4-0-0ded72bd1b00@collabora.com>
- <20251117-color-format-v4-6-0ded72bd1b00@collabora.com>
- <edc12051-6e50-4ef6-98cf-713abb49dd90@collabora.com>
+	id 1vLj1o-00000003MTx-0vbo
+	for linux-rockchip@lists.infradead.org;
+	Wed, 19 Nov 2025 14:19:26 +0000
+Received: by mail-ed1-x534.google.com with SMTP id 4fb4d7f45d1cf-640d0ec9651so1982953a12.3
+        for <linux-rockchip@lists.infradead.org>; Wed, 19 Nov 2025 06:19:23 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1763561962; x=1764166762; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=vr1dpfGNw8l/5vNvUXIIntV65WtBCu9bD5JykGnKkMc=;
+        b=BRDp2b544F6bXtq9Y6iZQFgjVC19X/jtFiDizsFo2tsZx6ms3I4UOPpc725O3QBmDT
+         VBCw7kF44i4KO7zlmX/xUGo4oPEovCN48cP78X0qZSNNTkUIsBi+fG0YiL3cpag/ThQ9
+         0ozZFmQCe1gEbRZC2ptO+KN1LOv5+PWBRWBN+MtFz2bz6Vsi0rZ4RWxqs5dTWpER9Vvq
+         CKsQiwV6pni/gCIlS2BSeXHdju2SbH8dr3k4Ma6ugqO8WyoCLKipOmPagI1J/uwj+By+
+         uc5duwZ6vBJ1MgCofbSEn8eEolxv4NLgGSEmb2R2/HBGNrr3sQy3ALtqSlqGE/ichQgS
+         BbUA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1763561962; x=1764166762;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=vr1dpfGNw8l/5vNvUXIIntV65WtBCu9bD5JykGnKkMc=;
+        b=WVNKghVNhnbqB561USpGkDPF0e0BMOWQMWJ6v31k5Z+OlX+hYnVkcPaDpSt53B1rIN
+         H/ZU1Fl1bOZZiL+meDenVE7JAX+Tn/ln8rMPA7Hav4rTmQixaaD5F2C5tzoiIeerIVSi
+         MiYf1geiVopvczNFHlXny/tKUnFHO/EQRlD2CfXT2QDEyZP2jjPw58K3hfwVv7SqOO05
+         rJWoeMDzSDPucLRicBUwVVGFF9id5SQOUv2+xHhsXk6o7gwjb2e7Pb4n4ceYVesb2hJP
+         CdYCCRrlYQeBkwv2yhrE8K18+vl48asAOQSWr3rB/Es0/Osh00q3pHaW7jmZCGuYdpD5
+         XQ6Q==
+X-Forwarded-Encrypted: i=1; AJvYcCUTgo8xOiXOLJbwSOQQuuiaGhkDDqSTPuzVPnyKuGtFYH/cbxk8BeSlXw7kntTwztWy8fGik9q52Alfi0SH0w==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwMiBicQl8McceeEONjTnhyY8ppolCglPhq0v/Q9w0dhrPUgRdY
+	+PGkQMMXUQIO3UyN62zEH5JbaJdI3JQGao0v9uKT8gu/PUep86JtIxEvfGlTRsQMBA9nnYmGHy0
+	pba83gM686anpCQcrCNIIxcMBlxNGLn0=
+X-Gm-Gg: ASbGncs8H2VAFCV0ATLgCiY5MwQhmygoQZPgLNQ1GHU0Ygw1fIHMGdsCQA7i5lMQn+M
+	AeSL1fEzyOYmJcQtQeanPEWdvse+gleIuvl2Q34etFnHkG+7dMQAJ6u/xYnM0Fom+Ped0OWFagM
+	Z/8iBYyb0ARwskNDOZHMoOCDMHU/64hJfiDQxESSF6piCNm678IH6w2xzL2DrHOa01pvhpLthqH
+	QhHh8fMdVPpHJxT2UYREhhqQpiqBvMNiaX7wb0RiQlXrQCH3ke+1L+++G3+n1Wgvmm6l1seeUkp
+	gg7d
+X-Google-Smtp-Source: AGHT+IGBygbukpk6yduRHNozh26lUY1eqFn3jw+WTJaKmU8sdnCUFf/GONmfLjz9RpF1iPIA6SIUQM2yIzIvhwxifFM=
+X-Received: by 2002:a05:6402:518a:b0:641:2a61:7da8 with SMTP id
+ 4fb4d7f45d1cf-64350e21ae8mr21299288a12.15.1763561961633; Wed, 19 Nov 2025
+ 06:19:21 -0800 (PST)
 MIME-Version: 1.0
+References: <20251117181023.482138-2-linux.amoon@gmail.com> <20251118175010.GA2540980@bhelgaas>
+In-Reply-To: <20251118175010.GA2540980@bhelgaas>
+From: Anand Moon <linux.amoon@gmail.com>
+Date: Wed, 19 Nov 2025 19:49:06 +0530
+X-Gm-Features: AWmQ_bkeVnYjjZY7uh-tqm_7FCTPYOF6ZeL5xaIPxi_RSTSTk__wtl2eB_qRL6c
+Message-ID: <CANAwSgRHuwoQjr95sXp-X97=L-X3vqUPxjR5=2jNtFZA+4gnwQ@mail.gmail.com>
+Subject: Re: [RFC v1 1/5] PCI: rockchip: Fix Link Control register offset and
+ enable ASPM/CLKREQ
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: Shawn Lin <shawn.lin@rock-chips.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+	=?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
+	Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
+	Heiko Stuebner <heiko@sntech.de>, 
+	"open list:PCIE DRIVER FOR ROCKCHIP" <linux-pci@vger.kernel.org>, 
+	"open list:PCIE DRIVER FOR ROCKCHIP" <linux-rockchip@lists.infradead.org>, 
+	"moderated list:ARM/Rockchip SoC support" <linux-arm-kernel@lists.infradead.org>, 
+	open list <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251119_053838_072298_C72B9DB7 
-X-CRM114-Status: GOOD (  28.11  )
+X-CRM114-CacheID: sfid-20251119_061924_295060_DEF32F4F 
+X-CRM114-Status: GOOD (  31.95  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,94 +102,126 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tuesday, 18 November 2025 21:14:31 Central European Standard Time Cristian Ciocaltea wrote:
-> On 11/17/25 9:11 PM, Nicolas Frattaroli wrote:
-> > With the introduction of the supported_formats member in the
-> > dw-hdmi-qp platform data struct, drivers that have access to this
-> > information should now set it.
-> > 
-> > Set it in the rockchip dw_hdmi_qp glue driver, where such a bitmask of
-> > supported color formats already exists. It just needs to be converted to
-> > the appropriate HDMI_COLORSPACE_ mask.
-> > 
-> > This allows this information to be passed down to the dw-hdmi-qp core,
-> > which sets it in the bridge it creates, and consequently will allow the
-> > common HDMI bridge code to act on it.
-> > 
-> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> > ---
-> >  drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 24 ++++++++++++++++++++++++
-> >  1 file changed, 24 insertions(+)
-> > 
-> > diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-> > index c9fe6aa3e3e3..7c294751de19 100644
-> > --- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-> > +++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-> > @@ -468,6 +468,28 @@ static const struct of_device_id dw_hdmi_qp_rockchip_dt_ids[] = {
-> >  };
-> >  MODULE_DEVICE_TABLE(of, dw_hdmi_qp_rockchip_dt_ids);
-> >  
-> > +static const u32 supported_colorformats = DRM_COLOR_FORMAT_AUTO |
-> > +					  DRM_COLOR_FORMAT_RGB444 |
-> > +					  DRM_COLOR_FORMAT_YCBCR444;
-> > +
-> > +static unsigned int __pure drm_to_hdmi_fmts(const u32 fmt)
-> > +{
-> > +	unsigned int res = 0;
-> > +
-> > +	if (fmt & DRM_COLOR_FORMAT_AUTO)
-> > +		res |= BIT(HDMI_COLORSPACE_RGB);
-> > +	if (fmt & DRM_COLOR_FORMAT_RGB444)
-> > +		res |= BIT(HDMI_COLORSPACE_RGB);
-> > +	if (fmt & DRM_COLOR_FORMAT_YCBCR444)
-> > +		res |= BIT(HDMI_COLORSPACE_YUV444);
-> > +	if (fmt & DRM_COLOR_FORMAT_YCBCR422)
-> > +		res |= BIT(HDMI_COLORSPACE_YUV422);
-> > +	if (fmt & DRM_COLOR_FORMAT_YCBCR420)
-> > +		res |= BIT(HDMI_COLORSPACE_YUV420);
-> > +
-> > +	return res;
-> > +}
-> > +
-> >  static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
-> >  				    void *data)
-> >  {
-> > @@ -521,6 +543,8 @@ static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
-> >  	plat_data.phy_data = hdmi;
-> >  	plat_data.max_bpc = 10;
-> >  
-> > +	plat_data.supported_formats = drm_to_hdmi_fmts(supported_colorformats);
-> 
-> Any reason why this cannot be simply set as
-> 
->   BIT(HDMI_COLORSPACE_RGB) | BIT(HDMI_COLORSPACE_YUV444) | BIT(HDMI_COLORSPACE_YUV422)
-> 
-> and get rid of the unnecessary conversion?
+Hi Bjorn / Shwan
 
-My gut feeling lead me towards trying to have a single source of
-truth for the supported color formats, but upon further reflection
-this is indeed way too verbose and lead me to move the
-supported_colorformats definition into this patch rather than the
-one where it's needed for registering the property.
+Thanks for your review comments.
 
-So I agree with you here and will simplify this by just setting
-these as you described.
+On Tue, 18 Nov 2025 at 23:20, Bjorn Helgaas <helgaas@kernel.org> wrote:
+>
+> On Mon, Nov 17, 2025 at 11:40:09PM +0530, Anand Moon wrote:
+> > As per the RK3399 TRM (Part 2, 17.6.6.1.31), the Link Control register
+> > (RC_CONFIG_LC) resides at an offset of 0xd0 within the Root Complex (RC)
+> > configuration space, not at the offset of the PCI Express Capability List
+> > (0xc0). Following changes correct the register offset to use
+> > PCIE_RC_CONFIG_LC (0xd0) to configure link control.
+> >
+> > Additionally, this commit explicitly enables ASPM (Active State Power
+> > Management) control and the CLKREQ# (Clock Request) mechanism as part of
+> > the Link Control register programming when enabling bandwidth
+> > notifications.
+>
+> Don't do two things at once in the same patch.  Fix the register
+> offset in one patch.  Actually, as I mentioned at [1], there's a lot
+> of fixing to do there, and I'm not even going to consider other
+> changes until the #define mess is cleaned up.
+>
+Ok, got that.
+> What I'd really like to see is at least two patches here: one that
+> clearly makes no functional change -- don't try to fix anything, just
+> make it 100% obvious that all the offsets stay the same.  Then make a
+> separate patch that *only* changes any of the offsets that are wrong.
+>
+Ok, understood.
+> I don't think there should even be an ASPM change.  The PCI core
+> should be enabling L0s and L1 itself for DT systems like this.  And
+> ASPM needs to be enabled only when both ends of the link support it,
+> and only in a specific order.  The PCI core pays attention to that,
+> but this patch does not.
+>
+Ok, I get it.
 
-Kind regards,
-Nicolas Frattaroli
+> Bjorn
+>
+> [1] https://lore.kernel.org/r/20251118005056.GA2541796@bhelgaas
 
-> 
-> > +
-> >  	encoder = &hdmi->encoder.encoder;
-> >  	encoder->possible_crtcs = drm_of_find_possible_crtcs(drm, dev->of_node);
-> >  
-> > 
-> 
-> 
+According to the RK3399 Technical Reference Manual (TRM), and pci_regs.h
+already includes the correct, pre-defined offsets for all PCI Express
+device types
+and their capabilities registers. To avoid overlapping register mappings,
+we should explicitly remove the addition of manual offsets within the code.
 
+Thanks
+-Anand
 
+Here is the example. Is this the correct approach?
+---
+ drivers/pci/controller/pcie-rockchip-host.c | 12 ++++++------
+ drivers/pci/controller/pcie-rockchip.h      |  2 ++
+ 2 files changed, 8 insertions(+), 6 deletions(-)
 
+diff --git a/drivers/pci/controller/pcie-rockchip-host.c
+b/drivers/pci/controller/pcie-rockchip-host.c
+index ee1822ca01db..af438d59e788 100644
+--- a/drivers/pci/controller/pcie-rockchip-host.c
++++ b/drivers/pci/controller/pcie-rockchip-host.c
+@@ -32,18 +32,18 @@ static void rockchip_pcie_enable_bw_int(struct
+rockchip_pcie *rockchip)
+ {
+        u32 status;
 
+-       status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_CR +
+PCI_EXP_LNKCTL);
++       status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_LC);
+        status |= (PCI_EXP_LNKCTL_LBMIE | PCI_EXP_LNKCTL_LABIE);
+-       rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_CR +
+PCI_EXP_LNKCTL);
++       rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_LC);
+ }
+
+ static void rockchip_pcie_clr_bw_int(struct rockchip_pcie *rockchip)
+ {
+        u32 status;
+
+-       status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_CR +
+PCI_EXP_LNKCTL);
++       status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_LC);
+        status |= (PCI_EXP_LNKSTA_LBMS | PCI_EXP_LNKSTA_LABS) << 16;
+-       rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_CR +
+PCI_EXP_LNKCTL);
++       rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_LC);
+ }
+
+ static void rockchip_pcie_update_txcredit_mui(struct rockchip_pcie *rockchip)
+@@ -306,9 +306,9 @@ static int rockchip_pcie_host_init_port(struct
+rockchip_pcie *rockchip)
+        rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_CR +
+PCI_EXP_LNKCTL);
+
+        /* Set RC's RCB to 128 */
+-       status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_CR +
+PCI_EXP_LNKCTL);
++       status = rockchip_pcie_read(rockchip, PCIE_RC_CONFIG_LC);
+        status |= PCI_EXP_LNKCTL_RCB;
+-       rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_CR +
+PCI_EXP_LNKCTL);
++       rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_LC);
+
+        /* Enable Gen1 training */
+        rockchip_pcie_write(rockchip, PCIE_CLIENT_LINK_TRAIN_ENABLE,
+diff --git a/drivers/pci/controller/pcie-rockchip.h
+b/drivers/pci/controller/pcie-rockchip.h
+index 3e82a69b9c00..3313cd8c585f 100644
+--- a/drivers/pci/controller/pcie-rockchip.h
++++ b/drivers/pci/controller/pcie-rockchip.h
+@@ -157,6 +157,8 @@
+ #define PCIE_EP_CONFIG_LCS             (PCIE_EP_CONFIG_BASE + 0xd0)
+ #define PCIE_RC_CONFIG_RID_CCR         (PCIE_RC_CONFIG_BASE + 0x08)
+ #define PCIE_RC_CONFIG_CR              (PCIE_RC_CONFIG_BASE + 0xc0)
++/* Link Control and Status Register */
++#define PCIE_RC_CONFIG_LC              (PCIE_RC_CONFIG_BASE + 0xd0)
+ #define PCIE_RC_CONFIG_L1_SUBSTATE_CTRL2 (PCIE_RC_CONFIG_BASE + 0x90c)
+ #define PCIE_RC_CONFIG_THP_CAP         (PCIE_RC_CONFIG_BASE + 0x274)
+ #define   PCIE_RC_CONFIG_THP_CAP_NEXT_MASK     GENMASK(31, 20)
 
 _______________________________________________
 Linux-rockchip mailing list
