@@ -4,60 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73143CF31BF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Nov 2025 12:42:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C14A7CF34A9
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Nov 2025 12:49:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ixFJiP37XGBSO6CvkqDDtG47jEFf40e1shPLJvGg0aM=; b=1PJ/3gsUNF1Z5I
-	AN0UU+6UhdWmE6Zw64B6Nv765i+QV2DHhV1GDF1GsfhMIPmJJyfhgicGx/nv94j48rz/ewY3fQvHS
-	k7bXUQXUBSWC2O/Ibu7Lz1IgKIdIzvybTMkwzcxyWQC1SlJLavN3Tsbm6FJ7GIx3mmNV3cg+DWxJZ
-	hs01Jf1ydwivC8W0Zziasu2ScMf4RsOoCBey62QlAuxyLWLW1z1Wbz11jNu8J9oArzqRI19uwUaLA
-	Nmk/uvJQA1I2MSEnSs4osS2XPgYptAZSfaL7sPd0J95LY9y1+KBgulBqtStbZIMgx4JjmRczBR+BX
-	VuYWU6Fqc16Oy6qRX6gQ==;
+	List-Owner; bh=t8WsR8iiGeGbXr3KDSRzmjVVeyrpZ3q8frQD7aAGALw=; b=HZ2Hh/ad+wvyrw
+	t+keIvzlCWS2rOyY1gKQ9fIZpFXAhmoB7fbBAj53qKLd3KZgVES97xOx3g0hGlJVPB79NY1Up91+/
+	f1DqoTsgXYcvZbLPhyKqi8tD+rd4O8qf9WpCGFSryLJXpsQWTNquZojOA9gI/pJUM3A7bLQPcucUC
+	dWuBCZzxzyVo0fc5kVuHKz9sjLjRk8x1mxn7V0qH3SZKVzHxhtPuNTcJloUlod22jeYSt5B0IxcRu
+	/Zfge12kvoPyxM8avLRf9H2kyKPfRkY48AH9qNSBiU+ASdLQA4y1xGyo+tBtqjdPVdlYfJ2mbPKyV
+	UJFzDyLGSyNnHQ6AkHrg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLhVk-00000003BbN-3CyP;
-	Wed, 19 Nov 2025 12:42:12 +0000
+	id 1vLhcI-00000003C5O-1Lg9;
+	Wed, 19 Nov 2025 12:48:58 +0000
 Received: from sender3-pp-f112.zoho.com ([136.143.184.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLhVh-00000003BaB-3ZWD;
-	Wed, 19 Nov 2025 12:42:10 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1763556090; cv=none; 
+	id 1vLhcG-00000003C4h-1jbc;
+	Wed, 19 Nov 2025 12:48:57 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1763556504; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=efAGdgdlLCmUjUiCUN+88ikUtvP8E+gBXE8iOqgiH9/f4gYzd0gr8lweUEbd3ZFRD+ZiqSuuV6xP+sZGKES92se5zLTUVxCvnkOeLTgwKWwsrJetJMgUwELe/8/ll9gxR0l7fAMLpdu4UqFRY1E3v1MFP/e1FTQRkOHIX+/NYvg=
+	b=lGobB1qzJH7GzM6uI4HVkLOh1I8pze/y3j2P/PELoKydjwc5GfaMuw/8BCAe0HLK++VNtQlqzj9efmuG5+NNKhL+gyi2ygvlZuemgfuv2Md3+wMH0dacCKqc8Lk3P9mcxSgJHo99P/1gyvd3gjqKhhWlBK59ib36dJhrviZhSBI=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1763556090; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=qkp5pM4kPUn4Z6RS327lCOqrGmM6PpBeTOuTvzIeNwc=; 
-	b=OuztPRTlii3euM5FvuVgPFtTPcHctPj4sm+4mCNQmbk01+4clywpxZjFBSlRiHbmx9uqILeTnT1X+ErlmtVJcEszZ55rNhF5DH3cn96jNTMoMGvT2cNd/coVnVISVDDivzhjCgDfBhaKzsaVmfJYtWneNpj4czpNxuG7yhp9r8s=
+	t=1763556504; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=Uq6952CT/UldDXXHAirV2OkWzCY9Znw+41wgffkpeTY=; 
+	b=if/xx65+ObdoqBB2lsNN1N4+4YNqAMP+VFa6FpQ/bGv7q6FHapta/xqEHArWftd45ruq4dSHSRNOEYJrRqGBnLDr5ideAZxu1LJn0jZWH5xltlpA8wOHXz+b55xDImQkcuPfGqVFC6Tqdq8SgHNgMqLabGBL5WgZIPmrUR0L++w=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1763556090;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1763556504;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
 	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=qkp5pM4kPUn4Z6RS327lCOqrGmM6PpBeTOuTvzIeNwc=;
-	b=Hvyo7taZPEolTW7Q7dLQLL/uX2K0MI7p7QAQJLQEAbXYw5eFq6ofNe5beUBpEd12
-	1/y0p4GyB6eSbpZp5CYbpjl3VeOiXJWyQF07RqM8SnEM91fxbYGFwkvPO+vEcfw7E6J
-	EjXEYgUF2NAl6dXlaOaFH32IGvWQZQLMQ964umEE=
-Received: by mx.zohomail.com with SMTPS id 1763556087174897.1379263947298;
-	Wed, 19 Nov 2025 04:41:27 -0800 (PST)
+	bh=Uq6952CT/UldDXXHAirV2OkWzCY9Znw+41wgffkpeTY=;
+	b=bcd1jJVY9PbUn0eoEylRY9GWSd38DpOpFitmJI2vpk1U6RvTBVZ0FUvhhkbFBncg
+	n5i1ZsU3Ehq+ls857IUCPH5VjIjU7yC61XvEHXT1vGtswiEtoKU3+thvnl86IXwRl3q
+	c1Bjd+TkP3B9aOgqQMYCJqIAV2icQ3WaatJlraG0=
+Received: by mx.zohomail.com with SMTPS id 1763556502200169.8816814936023;
+	Wed, 19 Nov 2025 04:48:22 -0800 (PST)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: Maxime Ripard <mripard@kernel.org>
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 Cc: Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>,
  Rodrigo Siqueira <siqueira@igalia.com>,
  Alex Deucher <alexander.deucher@amd.com>,
  Christian =?UTF-8?B?S8O2bmln?= <christian.koenig@amd.com>,
  David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
  Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Thomas Zimmermann <tzimmermann@suse.de>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
  Andrzej Hajda <andrzej.hajda@intel.com>,
  Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
  Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
  Sandy Huang <hjc@rock-chips.com>,
  Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>,
@@ -69,19 +68,19 @@ Cc: Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>,
  amd-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, intel-gfx@lists.freedesktop.org,
- intel-xe@lists.freedesktop.org
-Subject: Re: [PATCH v4 07/10] drm/display: hdmi-state-helper: Act on color format DRM
- property
-Date: Wed, 19 Nov 2025 13:41:18 +0100
-Message-ID: <7179523.lOV4Wx5bFT@workhorse>
-In-Reply-To: <4wt5dbvseauo2bvi66ohtk445zsfjtpjwgvochwwlyk4uugcmy@5ubwtkxyy2ax>
+ intel-xe@lists.freedesktop.org, Marius Vlad <marius.vlad@collabora.com>
+Subject: Re: [PATCH v4 03/10] drm: Add enum conversion from/to HDMI_COLORSPACE to
+ DRM_COLOR_FORMAT
+Date: Wed, 19 Nov 2025 13:48:13 +0100
+Message-ID: <3356228.ElGaqSPkdT@workhorse>
+In-Reply-To: <20251119041648.GD10711@pendragon.ideasonboard.com>
 References: <20251117-color-format-v4-0-0ded72bd1b00@collabora.com>
- <20251117-color-format-v4-7-0ded72bd1b00@collabora.com>
- <4wt5dbvseauo2bvi66ohtk445zsfjtpjwgvochwwlyk4uugcmy@5ubwtkxyy2ax>
+ <20251117-color-format-v4-3-0ded72bd1b00@collabora.com>
+ <20251119041648.GD10711@pendragon.ideasonboard.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251119_044209_948707_1DAEEBB1 
-X-CRM114-Status: GOOD (  23.41  )
+X-CRM114-CacheID: sfid-20251119_044856_521177_2D41A8D6 
+X-CRM114-Status: GOOD (  25.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,60 +97,101 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wednesday, 19 November 2025 10:09:12 Central European Standard Time Maxime Ripard wrote:
-> Hi,
+On Wednesday, 19 November 2025 05:16:48 Central European Standard Time Laurent Pinchart wrote:
+> On Mon, Nov 17, 2025 at 08:11:47PM +0100, Nicolas Frattaroli wrote:
+> > From: Marius Vlad <marius.vlad@collabora.com>
+> > 
+> > This would please the compiler to have a enum transformation from one to
+> > another even though the values are the same. It should also make things
 > 
-> On Mon, Nov 17, 2025 at 08:11:51PM +0100, Nicolas Frattaroli wrote:
-> > With the introduction of the "color format" DRM property, which allows
-> > userspace to request a specific color format, the HDMI state helper
-> > should implement this.
+> The hdmi_colorspace enumerators are defined as (with comments added to
+> make the values explicit)
+> 
+> enum hdmi_colorspace {
+> 	HDMI_COLORSPACE_RGB,			/* 0 */
+> 	HDMI_COLORSPACE_YUV422,			/* 1 */
+> 	HDMI_COLORSPACE_YUV444,			/* 2 */
+> 	HDMI_COLORSPACE_YUV420,			/* 3 */
+> 	HDMI_COLORSPACE_RESERVED4,		/* 4 */
+> 	HDMI_COLORSPACE_RESERVED5,		/* 5 */
+> 	HDMI_COLORSPACE_RESERVED6,		/* 6 */
+> 	HDMI_COLORSPACE_IDO_DEFINED,		/* 7 */
+> };
+> 
+> and the DRM color formats as (after patch 02/10)
+> 
+> enum drm_color_format {
+> 	DRM_COLOR_FORMAT_NONE			= 0,		/* 0 */
+> 	DRM_COLOR_FORMAT_RGB444			= (1 << 0),	/* 1 */
+> 	DRM_COLOR_FORMAT_YCBCR422		= (1 << 1),	/* 2 */
+> 	DRM_COLOR_FORMAT_YCBCR444		= (1 << 2),	/* 4 */
+> 	DRM_COLOR_FORMAT_YCBCR420		= (1 << 3),	/* 8 */
+> 	/* auto case, driver will set the color_format */
+> 	DRM_COLOR_FORMAT_AUTO			= (1 << 4),	/* 16 */
+> };
+> 
+> Contrary to what is stated in the commit message, the values are not the
+> same. Maybe you confused DRM_COLOR_FORMAT_* with DRM_MODE_COLOR_FORMAT_*
+> ?
+
+It's possible the equality got lost during my refactor, but I think
+the needless enum conversions between like 4 different things should
+be minimised anyway, so I'll look into getting rid of as much of this
+as possible.
+
+> 
+> > obvious that we use different enums.
 > > 
-> > Implement it by checking whether the property is set and set to
-> > something other than auto. If so, pass the requested color format, and
-> > otherwise set RGB.
-> > 
-> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> > Signed-off-by: Marius Vlad <marius.vlad@collabora.com>
 > > ---
-> >  drivers/gpu/drm/display/drm_hdmi_state_helper.c | 8 +++++++-
-> >  1 file changed, 7 insertions(+), 1 deletion(-)
+> >  drivers/gpu/drm/drm_connector.c | 18 ++++++++++++++++++
+> >  include/drm/drm_connector.h     |  3 +++
+> >  2 files changed, 21 insertions(+)
 > > 
-> > diff --git a/drivers/gpu/drm/display/drm_hdmi_state_helper.c b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-> > index a561f124be99..add0d51fce33 100644
-> > --- a/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-> > +++ b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-> > @@ -650,9 +650,15 @@ hdmi_compute_config(const struct drm_connector *connector,
-> >  				       conn_state->max_bpc,
-> >  				       8, connector->max_bpc);
-> >  	int ret;
-> > +	enum hdmi_colorspace hdmi_colorspace;
-> > +
-> > +	if (conn_state->color_format && conn_state->color_format != DRM_COLOR_FORMAT_AUTO)
-> > +		hdmi_colorspace = color_format_to_hdmi_colorspace(conn_state->color_format);
-> > +	else
-> > +		hdmi_colorspace = HDMI_COLORSPACE_RGB;
+> > diff --git a/drivers/gpu/drm/drm_connector.c b/drivers/gpu/drm/drm_connector.c
+> > index 0ad7be0a2d09..61c077b67ac3 100644
+> > --- a/drivers/gpu/drm/drm_connector.c
+> > +++ b/drivers/gpu/drm/drm_connector.c
+> > @@ -1384,6 +1384,24 @@ drm_color_format_enum_to_color_format(enum drm_color_format_enum fmt_enum)
+> >  	}
+> >  }
 > >  
-> >  	ret = hdmi_compute_format_bpc(connector, conn_state, mode, max_bpc,
-> > -				      HDMI_COLORSPACE_RGB);
-> > +				      hdmi_colorspace);
+> > +enum hdmi_colorspace
+> > +color_format_to_hdmi_colorspace(enum drm_color_format fmt)
+> > +{
+> > +	switch (fmt) {
+> > +	default:
+> > +	case DRM_COLOR_FORMAT_AUTO:
+> > +	case DRM_COLOR_FORMAT_RGB444:
+> > +		return HDMI_COLORSPACE_RGB;
+> > +	case DRM_COLOR_FORMAT_YCBCR444:
+> > +		return HDMI_COLORSPACE_YUV444;
+> > +	case DRM_COLOR_FORMAT_YCBCR422:
+> > +		return HDMI_COLORSPACE_YUV422;
+> > +	case DRM_COLOR_FORMAT_YCBCR420:
+> > +		return HDMI_COLORSPACE_YUV420;
+> > +	}
+> > +}
+> > +EXPORT_SYMBOL(color_format_to_hdmi_colorspace);
+> > +
+> >  /**
+> >   * drm_get_color_format_name - return a string for color format
+> >   * @colorspace: color format to compute name of
+> > diff --git a/include/drm/drm_connector.h b/include/drm/drm_connector.h
+> > index a071079fd3ad..e044976c8d76 100644
+> > --- a/include/drm/drm_connector.h
+> > +++ b/include/drm/drm_connector.h
+> > @@ -2586,6 +2586,9 @@ drm_color_format_to_color_format_enum(enum drm_color_format fmt);
+> >  u32
+> >  drm_color_format_enum_to_color_format(enum drm_color_format_enum fmt_enum);
+> >  
+> > +enum hdmi_colorspace
+> > +color_format_to_hdmi_colorspace(enum drm_color_format fmt);
+> > +
+> >  /**
+> >   * drm_for_each_connector_iter - connector_list iterator macro
+> >   * @connector: &struct drm_connector pointer used as cursor
 > 
-> I don't think we want the fallback to yuv420 for anything but auto, so
-
-Okay. Changing all the non-hdmi-state-helper drivers (amdgpu, i915)
-to do this as well would require some more work however, especially
-in the case of amdgpu where the code flow is not always obvious.
-
-> I'd rather have something like
-> 
-> if (conn_state->color_format != DRM_COLOR_FORMAT_AUTO)
->    return hdmi_compute_format_bpc(connector, conn_state, mode, max_bpc,
->                                   color_format_to_hdmi_colorspace(conn_state->color_format))
-> 
-> We'll also need unit tests.
-
-Sure, am I guessing correctly that they'd go in
-drm_hdmi_state_helper_test.c?
-
-> Maxime
 > 
 
 
