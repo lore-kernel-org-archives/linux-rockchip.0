@@ -4,80 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6BE3FCF319D
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Nov 2025 11:09:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D00EFCF31A9
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Nov 2025 11:29:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EhZaO6b3rNtFvWY8vE6uFrU3ItCzQivU449O94/80ac=; b=zvIrwcBFa09tku
-	nHtXmxjyWPTrNaiO3TZCrqgPQDwZ8rY0lrD8cgYLLosy63+Cjio61V8kbFQyxLVmLESo0JR360qYN
-	UhFOewjJqO7RfKb0oPCZeP2mP1fbNqC1Uufvi/UEpjQRD768rgItA9TH7PuOYjtNrulthC7QhoKG+
-	NC6nkDYPmEoxNI/LCbdS9QVrwVbhF3Ek6BVsK8t2UvEpdJQxAW6ApyuiP2gPCB4AkLMR6QGvGJzdj
-	dSOwhsFTICvqx3fEGf7YwpP86MgdYVUgvp1ptDJsf0SHETp4rQE5TFN0yJ7BG8qLfHU1QQJTAXh8X
-	cI+R+phaJ13meB93ZGgw==;
+	List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:MIME-Version:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=egGyFJz4hepWfcWB7I6OKntpgrIa4SujC3YrNE7Fn4c=; b=4xIHiwVTddyzXz
+	/cHzP7jM9DBkXehxBiVQyDS53nRBqsBSqmB/5/4D521YNPh7YZxhdBhxC5cVoUyfhknMJcP/k+t4K
+	RNfmOQLdBLdCMABpKp2TZpcJ2f0q3s1SvL0a+W+htfT2yyqAe6EuAQi1MiRFUYhrKoSUWp1P6Eez7
+	6wtqlYMdUt5TULaUNRsiSHewEYcg6zPXvKYXxQRc63Xya4HtoEN52GwOETM/Gt7I8H1sOPhVeeict
+	eX/OFormUUOnKAt8yXEkIMMXTKmSILuQGWPOcXiURb0OtK+TOcOTYjmRtmfiyFmOzxHIeVQQ+rK0f
+	PDnU7qsEcmDgCzGiccSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLg3V-000000030eL-1uLn;
-	Wed, 19 Nov 2025 11:08:57 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vLgNM-000000031lQ-43aG;
+	Wed, 19 Nov 2025 11:29:28 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLg3S-000000030df-0NXR;
-	Wed, 19 Nov 2025 11:08:55 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 50F094356A;
-	Wed, 19 Nov 2025 11:08:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5474FC19421;
-	Wed, 19 Nov 2025 11:08:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1763550533;
-	bh=i9B40rXvO4To44vDLCPvVcioheN0Q6vh2sMRTqdfAAs=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=gFbkS3ItMYkCvXQBowRYIX3QCL4BzIbk1Z/T4w+vthqVM7dO2duydfViADLoc+28z
-	 jAVLswki+uqnYk3baXc1/xCPjJfR5AAVkweeYyd74OzQFAuRatReJpfNOMwr6OrSsn
-	 t/ukjM48syDrh5wEAKKvmTrwPM3rKHGZu1DKQYu8DoEMLmPge4Ramv+COrtVKAQOnQ
-	 60K0dMSN27vkVmSXH4FkMkxJrjSJtmT8xMAoBi8xerAfNemTyR9dy2nc17hKwr6vOF
-	 p+m7U5E5v86hrPOipyimgLTfy261+7s1J3d77Xp1583aHJiGVx6/zZ2JYwCMv2/V0O
-	 wf1kQrOefETjg==
-Date: Wed, 19 Nov 2025 12:08:41 +0100
-From: Niklas Cassel <cassel@kernel.org>
-To: Frank Li <Frank.li@nxp.com>
-Cc: Bjorn Helgaas <helgaas@kernel.org>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Rob Herring <robh@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
-	Kever Yang <kever.yang@rock-chips.com>,
-	Simon Xue <xxm@rock-chips.com>, Damien Le Moal <dlemoal@kernel.org>,
-	Dragan Simic <dsimic@manjaro.org>, FUKAUMI Naoki <naoki@radxa.com>,
-	Diederik de Haas <diederik@cknow-tech.com>,
-	Richard Zhu <hongxing.zhu@nxp.com>,
-	Lucas Stach <l.stach@pengutronix.de>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>, Conor Dooley <conor@kernel.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Hans Zhang <hans.zhang@cixtech.com>, linux-tegra@vger.kernel.org,
-	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, kernel@pengutronix.de,
-	Bjorn Helgaas <bhelgaas@google.com>
-Subject: Re: [PATCH v2 1/4] PCI: dwc: Advertise L1 PM Substates only if
- driver requests it
-Message-ID: <aR2lOZDBEdGVd9On@ryzen>
-References: <20251118214312.2598220-1-helgaas@kernel.org>
- <20251118214312.2598220-2-helgaas@kernel.org>
- <aRz0ak6onKzZs2lY@lizhi-Precision-Tower-5810>
+	id 1vLgNJ-000000031kl-2TGg;
+	Wed, 19 Nov 2025 11:29:26 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:Reply-To:Content-ID
+	:Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:
+	Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:
+	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=r2DrchsSMJsw6gBUK4BX08ZijAjAZGrjaBRDLmbqutk=; b=n81tuClDJ3OLrzVmm47rB823Ln
+	rFhLXfubGPK8H/auYA+vVqWctV+ZczPoFi9WHcgIg7kJbIAhqtDZ7+gRt6FRza06B0cXivW3EICJj
+	BZ4WnP2M37Xqra/HKxY1kt0GLR+4QCwrsWXcnEoA+kmcVjqdLkHMlhN6U+x+TYwROIdMWES9lb1kh
+	IYsvhlDXeN1HXQ40tpgF7L17JDgl1pY1HiVkmjo87bH9wf5L87B7ezIbEMg0P9C4fIOxvWBiMssQP
+	yvJtIXg8nQCKt1P0uATGCsmXdMu0RXXbFk36QGM8Nm2X+VXhcJKkBF6SfVI3pFrLW77E3ET1rVfM1
+	oNGzfMLw==;
+Received: from e0022681537dd.dyn.armlinux.org.uk ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:36016 helo=rmk-PC.armlinux.org.uk)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.98.2)
+	(envelope-from <rmk@armlinux.org.uk>)
+	id 1vLgNA-000000004aH-3K0b;
+	Wed, 19 Nov 2025 11:29:16 +0000
+Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.98.2)
+	(envelope-from <rmk@rmk-PC.armlinux.org.uk>)
+	id 1vLgNA-0000000FMjN-0DSS;
+	Wed, 19 Nov 2025 11:29:16 +0000
+From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
+To: Andrew Lunn <andrew@lunn.ch>,
+	Heiner Kallweit <hkallweit1@gmail.com>
+Cc: Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Jakub Kicinski <kuba@kernel.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	netdev@vger.kernel.org,
+	Paolo Abeni <pabeni@redhat.com>
+Subject: [PATCH net-next] net: stmmac: rk: use phylink's interface mode for
+ set_clk_tx_rate()
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <aRz0ak6onKzZs2lY@lizhi-Precision-Tower-5810>
+Message-Id: <E1vLgNA-0000000FMjN-0DSS@rmk-PC.armlinux.org.uk>
+Date: Wed, 19 Nov 2025 11:29:16 +0000
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251119_030854_170221_27A1980F 
-X-CRM114-Status: GOOD (  26.72  )
+X-CRM114-CacheID: sfid-20251119_032925_649753_40FC76DC 
+X-CRM114-Status: UNSURE (   9.86  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,71 +89,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Nov 18, 2025 at 05:34:18PM -0500, Frank Li wrote:
-> On Tue, Nov 18, 2025 at 03:42:15PM -0600, Bjorn Helgaas wrote:
-> > From: Bjorn Helgaas <bhelgaas@google.com>
-> >
-> > L1 PM Substates require the CLKREQ# signal and may also require
-> > device-specific support.  If CLKREQ# is not supported or driver support is
-> > lacking, enabling L1.1 or L1.2 may cause errors when accessing devices,
-> > e.g.,
-> >
-> >   nvme nvme0: controller is down; will reset: CSTS=0xffffffff, PCI_STATUS=0x10
-> >
-> > If the kernel is built with CONFIG_PCIEASPM_POWER_SUPERSAVE=y or users
-> > enable L1.x via sysfs, users may trip over these errors even if L1
-> > Substates haven't been enabled by firmware or the driver.
-> >
-> > To prevent such errors, disable advertising the L1 PM Substates unless the
-> > driver sets "dw_pcie.l1ss_support" to indicate that it knows CLKREQ# is
-> > present and any device-specific configuration has been done.
-> >
-> > Set "dw_pcie.l1ss_support" in tegra194 (if DT includes the
-> > "supports-clkreq' property) and qcom (for cfg_2_7_0, cfg_1_9_0, cfg_1_34_0,
-> > and cfg_sc8280xp controllers) so they can continue to use L1 Substates.
-> >
-> > Based on Niklas's patch:
-> > https://patch.msgid.link/20251017163252.598812-2-cassel@kernel.org
-> >
-> > Signed-off-by: Bjorn Helgaas <bhelgaas@google.com>
-> > ---
-> >  .../pci/controller/dwc/pcie-designware-ep.c   |  2 ++
-> >  .../pci/controller/dwc/pcie-designware-host.c |  2 ++
-> >  drivers/pci/controller/dwc/pcie-designware.c  | 24 +++++++++++++++++++
-> >  drivers/pci/controller/dwc/pcie-designware.h  |  2 ++
-> >  drivers/pci/controller/dwc/pcie-qcom.c        |  2 ++
-> >  drivers/pci/controller/dwc/pcie-tegra194.c    |  3 +++
-> >  6 files changed, 35 insertions(+)
-> >
-> > diff --git a/drivers/pci/controller/dwc/pcie-designware-ep.c b/drivers/pci/controller/dwc/pcie-designware-ep.c
-> > index 7f2112c2fb21..ad6c0fd67a65 100644
-> > --- a/drivers/pci/controller/dwc/pcie-designware-ep.c
-> > +++ b/drivers/pci/controller/dwc/pcie-designware-ep.c
-> > @@ -966,6 +966,8 @@ int dw_pcie_ep_init_registers(struct dw_pcie_ep *ep)
-> >  	if (ep->ops->init)
-> >  		ep->ops->init(ep);
-> >
-> > +	dw_pcie_hide_unsupported_l1ss(pci);
-> > +
-> 
-> And, I don't think EP need clean L1SS CAP flags. If EP don't support L1SS,
-> it should be force pull down #clkreq.
+rk_set_clk_tx_rate() is passed the interface mode from phylink which
+will be the same as bsp_priv->phy_iface. Use the passed-in interface
+mode rather than bsp_priv->phy_iface.
 
-I think the problem is that we cannot force pull down CLKREQ# in a generic
-DWC function. That would have to be done in glue driver specific callbacks.
+Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+---
+ drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-Bjorn, perhaps we should simply drop the dw_pcie_hide_unsupported_l1ss()
-call from dw_pcie_ep_init_registers(), and consider hiding L1ss for EPs to
-be out of scope for this series.
+diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+index 6bfe82d7001a..0a95f54e725e 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
++++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+@@ -1735,8 +1735,7 @@ static int rk_set_clk_tx_rate(void *bsp_priv_, struct clk *clk_tx_i,
+ 	struct rk_priv_data *bsp_priv = bsp_priv_;
+ 
+ 	if (bsp_priv->ops->set_speed)
+-		return bsp_priv->ops->set_speed(bsp_priv, bsp_priv->phy_iface,
+-						speed);
++		return bsp_priv->ops->set_speed(bsp_priv, interface, speed);
+ 
+ 	return -EINVAL;
+ }
+-- 
+2.47.3
 
-That way, we could still queue this series up for 6.19.
-
-Thoughts from everyone?
-
-
-
-Kind regards,
-Niklas
 
 _______________________________________________
 Linux-rockchip mailing list
