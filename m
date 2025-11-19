@@ -4,86 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 821DCCF58D2
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Nov 2025 19:50:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30CC9CF58F5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Nov 2025 21:09:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:Subject:From:
-	To:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MAypWmX4UBs1X0GADdmOdoOYyNpSNvAxXuiBEoLSw+0=; b=va66CojTEGy1sD
-	BA7sQSFyokYV39x5wNfLw+mCTlcHW7ebBoUxbKuPvpAbTOCls+GmO77Yag38BV9BuFjcdnF/SrIBS
-	7FshaF0d2DbiQkat3KjF8QimvesYEeBgKDx2peU4YpxKGhxUSMULEb+PJCom2yf2Anc1O7nFmzbUZ
-	AqlTPlJtH11YhM+1YSc3GURlt75iJemDO/ISEltvqhzJPMtocPnAEcKHtFGaDwrDFYOHJCC0iGGwN
-	JmesURUzm/ROjzE5fmjJwBLYo29Kw9/5M0IVbsy12aoPASSOssIgVYLt8NJRehE9HqOd5zphDVOrg
-	E3vcCeRBj5J3d5SoTiEQ==;
+	List-Owner; bh=/99nTfHyPpe7g44zm8Zl8mGo40lBBy6rf0T6k4Dix+0=; b=WXCZEfLX4n2qvy
+	CajAB6igZMYWl3Yf8Rn16p16ghkC46zmUnde1yUIaPVSnZu2jPXPfJdRziwcgI0quPQPtMAJp1qY3
+	cPZeOmSYxHYZj406G6ePSOw/rAbDUE7Sp2vIoxFoqzb9kEe8wEauIijjbC8Q8A+IkKA61IcVVmkOD
+	HTI4fNEduYhFCmwrDt1WVun6/Qe6fYylC7anKa5URGILnjpo0ixKmmfOjv278xzWwD7vxsY5NYUhU
+	tbaLYrBF9nV9WGFvv+qVLnk7VFILrbVbVZwTVHZWGCELOH9YKRwF29jZpB7NUBjA2KAfy2B0wcv3q
+	CQE5FQg2MbC9VgGHtC+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLoBl-00000005BlL-39HY;
-	Wed, 19 Nov 2025 19:50:01 +0000
-Received: from smtpout-03.galae.net ([185.246.85.4])
+	id 1vLpQl-00000005fUv-399v;
+	Wed, 19 Nov 2025 21:09:35 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLoBi-00000005Bik-1Gmc;
-	Wed, 19 Nov 2025 19:50:00 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-03.galae.net (Postfix) with ESMTPS id 3127A4E417A9;
-	Wed, 19 Nov 2025 19:49:56 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id D932060699;
-	Wed, 19 Nov 2025 19:49:55 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 9639A102F2165;
-	Wed, 19 Nov 2025 20:49:43 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1763581794; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=idyisNLwX/81MGmvTcXblC/vtIFhEqtsf+2ziThKUl0=;
-	b=JXf09Dz37KSxb84fPt0xCNsN6GavF6zxGYaDnAtetqDs1Km7Qg7tyl3ucVCrlP7/wI3vAH
-	Brt1JLyQr6Z57RRLIel57nTLTRpZp/sci2HRmjHC9IN8P66AnuvhSLwoAleU1e/B5bLIs9
-	iaCY9MyqzKGWVk2uTAulwuStyUlVPQz3dHD/IHrZ0mSJPM4G72sjQoDupWx8MFVv4jORI6
-	skNrYrosDF7JY6jIe6vF8gCgT7WtJ7AMpQezOWiZJq6UpmsLH1LyIMmlFoUNpI6slEiwTZ
-	GOY43hLWnRXakTMPShCKL/gGL2evdNlbs5ZmEWzSbKZqvB85NowHOsfPoUyZLA==
-Mime-Version: 1.0
-Date: Wed, 19 Nov 2025 20:49:42 +0100
-Message-Id: <DECXKE9A67HG.35AR5UZKKQ8A1@bootlin.com>
-To: "Chaoyi Chen" <chaoyi.chen@rock-chips.com>, "Chaoyi Chen"
- <kernel@airkyi.com>, "Heikki Krogerus" <heikki.krogerus@linux.intel.com>,
- "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>, "Dmitry Baryshkov"
- <dmitry.baryshkov@oss.qualcomm.com>, "Peter Chen" <hzpeterchen@gmail.com>,
- "Rob Herring" <robh@kernel.org>, "Krzysztof Kozlowski"
- <krzk+dt@kernel.org>, "Conor Dooley" <conor+dt@kernel.org>, "Vinod Koul"
- <vkoul@kernel.org>, "Kishon Vijay Abraham I" <kishon@kernel.org>, "Heiko
- Stuebner" <heiko@sntech.de>, "Sandy Huang" <hjc@rock-chips.com>, "Andy Yan"
- <andy.yan@rock-chips.com>, "Yubing Zhang" <yubing.zhang@rock-chips.com>,
- "Frank Wang" <frank.wang@rock-chips.com>, "Andrzej Hajda"
- <andrzej.hajda@intel.com>, "Neil Armstrong" <neil.armstrong@linaro.org>,
- "Robert Foss" <rfoss@kernel.org>, "Laurent Pinchart"
- <Laurent.pinchart@ideasonboard.com>, "Jonas Karlman" <jonas@kwiboo.se>,
- "Jernej Skrabec" <jernej.skrabec@gmail.com>, "Maarten Lankhorst"
- <maarten.lankhorst@linux.intel.com>, "Maxime Ripard" <mripard@kernel.org>,
- "Thomas Zimmermann" <tzimmermann@suse.de>, "David Airlie"
- <airlied@gmail.com>, "Simona Vetter" <simona@ffwll.ch>, "Amit Sunil Dhamne"
- <amitsd@google.com>, "Dragan Simic" <dsimic@manjaro.org>, "Johan Jonker"
- <jbx6244@gmail.com>, "Diederik de Haas" <didi.debian@cknow.org>, "Peter
- Robinson" <pbrobinson@gmail.com>
-From: "Luca Ceresoli" <luca.ceresoli@bootlin.com>
-Subject: Re: [PATCH v9 08/10] drm/rockchip: cdn-dp: Add multiple bridges to
- support PHY port selection
-Cc: <linux-usb@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-phy@lists.infradead.org>,
- <linux-arm-kernel@lists.infradead.org>,
- <linux-rockchip@lists.infradead.org>, <dri-devel@lists.freedesktop.org>
-X-Mailer: aerc 0.20.1
-References: <20251111105040.94-1-kernel@airkyi.com>
- <20251111105040.94-9-kernel@airkyi.com>
- <DE5YP3AVGOG3.OHP68Z0F6KBU@bootlin.com>
- <b1a339e7-a011-4b4b-8988-2e3768753c85@rock-chips.com>
- <2ebace6f-d3c4-4516-b6cb-4951de06b6c8@rock-chips.com>
-In-Reply-To: <2ebace6f-d3c4-4516-b6cb-4951de06b6c8@rock-chips.com>
-X-Last-TLS-Session-Version: TLSv1.3
+	id 1vLpQi-00000005fUP-2MHW
+	for linux-rockchip@lists.infradead.org;
+	Wed, 19 Nov 2025 21:09:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1763586568;
+	bh=LrJ1g/mq1v+P1H2W9YtowF9FN91OOwyC6sLp2U2TUlY=;
+	h=Date:Subject:To:References:From:In-Reply-To:From;
+	b=oBhzSkifGTm8y9o1E0H/MtIGYftr8h7ch5J+7dzvEVj8uqwXsN8cdElEYPWy6IZKA
+	 ziucCHlMQRH2RmQgCxhcJg2X1EI41OLdGH5vVIv9Gm4kMbEvwHxjV4MQd+sGLoOk/0
+	 c/7JavOLDHXljoeIcEP8VOC7FT5I88yu9XyNjoFoXbnlLLWVGYXva4nTSgk19s3SOQ
+	 xtlZ+h1pwXivLIMKPj/HQDaA5BJMDqhIAJI/kA+XNtPtZuOFufNsXX8yvvoGBGAztF
+	 I60+hlZKY/5+4Nh+19jvzjToJ3nRYdcD4+TkEdePoujy73ZDv3Vq4rDZgyFY03iBas
+	 gyyW4mRVW5iPg==
+Received: from [192.168.1.90] (unknown [82.79.138.145])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id CB80217E107C;
+	Wed, 19 Nov 2025 22:09:27 +0100 (CET)
+Message-ID: <dd1717b7-4e20-4ed7-ae08-7286713d4a71@collabora.com>
+Date: Wed, 19 Nov 2025 23:09:27 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH i-g-t] tests: (Re)add kms_crtc_background_color test
+To: Kamil Konieczny <kamil.konieczny@linux.intel.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>,
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+ Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
+ Simona Vetter <simona@ffwll.ch>, Sandy Huang <hjc@rock-chips.com>,
+ =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
+ Andy Yan <andy.yan@rock-chips.com>, igt-dev@lists.freedesktop.org,
+ dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
+ kernel@collabora.com, Juha-Pekka Heikkila <juhapekka.heikkila@gmail.com>,
+ Juha-Pekka Heikkila <juha-pekka.heikkila@intel.com>,
+ Karthik B S <karthik.b.s@intel.com>, Swati Sharma <swati2.sharma@intel.com>
+References: <20251110-crtc-bgcolor-v1-1-28669b692970@collabora.com>
+ <20251119132149.spbl5k3dmj2lwzon@kamilkon-DESK.igk.intel.com>
+Content-Language: en-US
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+In-Reply-To: <20251119132149.spbl5k3dmj2lwzon@kamilkon-DESK.igk.intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251119_114958_481327_BB493417 
-X-CRM114-Status: GOOD (  17.67  )
+X-CRM114-CacheID: sfid-20251119_130932_923252_A94BEE4B 
+X-CRM114-Status: GOOD (  26.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,70 +80,189 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGVsbG8gQ2hhb3lpLAoKT24gTW9uIE5vdiAxNywgMjAyNSBhdCAyOjMzIEFNIENFVCwgQ2hhb3lp
-IENoZW4gd3JvdGU6Ci4uLgo+Pj4+ICvCoMKgwqAgLyogT25lIGVuZHBvaW50IG1heSBjb3JyZXNw
-b25kIHRvIG9uZSBuZXh0IGJyaWRnZS4gKi8KPj4+PiArwqDCoMKgIGZvcl9lYWNoX29mX2dyYXBo
-X3BvcnRfZW5kcG9pbnQocG9ydCwgZHBfZXApIHsKPj4+PiArwqDCoMKgwqDCoMKgwqAgc3RydWN0
-IGRldmljZV9ub2RlICpuZXh0X2JyaWRnZV9ub2RlIF9fZnJlZShkZXZpY2Vfbm9kZSkgPQo+Pj4+
-ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIG9mX2dyYXBoX2dldF9yZW1vdGVfcG9ydF9wYXJlbnQo
-ZHBfZXApOwo+Pj4+ICsKPj4+PiArwqDCoMKgwqDCoMKgwqAgYnJpZGdlID0gb2ZfZHJtX2ZpbmRf
-YnJpZGdlKG5leHRfYnJpZGdlX25vZGUpOwo+Pj4+ICvCoMKgwqDCoMKgwqDCoCBpZiAoIWJyaWRn
-ZSkgewo+Pj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHJldCA9IC1FUFJPQkVfREVGRVI7Cj4+
-Pj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqAgZ290byBvdXQ7Cj4+Pj4gK8KgwqDCoMKgwqDCoMKg
-IH0KPj4+PiArCj4+Pj4gK8KgwqDCoMKgwqDCoMKgIGRwLT5uZXh0X2JyaWRnZV92YWxpZCA9IHRy
-dWU7Cj4+Pj4gK8KgwqDCoMKgwqDCoMKgIGRwLT5uZXh0X2JyaWRnZV9saXN0W2NvdW50XS5icmlk
-Z2UgPSBicmlkZ2U7Cj4+PiBZb3UgYXJlIHN0b3JpbmcgYSByZWZlcmVuY2UgdG8gYSBkcm1fYnJp
-ZGdlLCBzbyBoYXZlIHRvIGluY3JlbWVudCB0aGUKPj4+IHJlZmNvdW50Ogo+Pj4KPj4+IMKgwqDC
-oMKgwqDCoMKgIGRwLT5uZXh0X2JyaWRnZV9saXN0W2NvdW50XS5icmlkZ2UgPSBkcm1fYnJpZGdl
-X2dldChicmlkZ2UpOwo+Pj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBeXl5eXl5e
-Xl5eXl5eXgo+Pj4KPj4+IEZZSSB0aGVyZSBpcyBhIHBsYW4gdG8gcmVwbGFjZSBvZl9kcm1fZmlu
-ZF9icmlkZ2UoKSB3aXRoIGEgZnVuY3Rpb24gdGhhdAo+Pj4gaW5jcmVhc2VzIHRoZSBicmlkZ2Ug
-cmVmY291bnQgYmVmb3JlIHJldHVybmluZyB0aGUgYnJpZGdlLCBidXQgaXQncyBub3QKPj4+IHRo
-ZXJlIHlldC4gV2hlbiB0aGF0IHdpbGwgaGFwcGVuLCB0aGUgZXhwbGljaXQgZHJtX2JyaWRnZV9n
-ZXQoKSB3b24ndCBiZQo+Pj4gbmVlZGVkIGFueW1vcmUgYW5kIHRoaXMgY29kZSBjYW4gYmUgdXBk
-YXRlZCBhY2NvcmRpbmdseS4KPgo+IE91dCBvZiBjdXJpb3NpdHksIEkgY2hlY2tlZCB0aGUgY2Fs
-bGVycyBvZiBvZl9kcm1fZmluZF9icmlkZ2UoKSwgYW5kIGl0Cj4gc2VlbXMgdGhhdCB0aGUgdmFz
-dCBtYWpvcml0eSBvZiB0aGVtIGRvIG5vdCBwYXkgYXR0ZW50aW9uIHRvIHRoZSBpbmNyZWFzZQo+
-IG9yIGRlY3JlYXNlIG9mIHJlZmVyZW5jZSBjb3VudHMuCgpUaGV5IGRvIG5vdCBjYWxsIGRybV9i
-cmlkZ2VfcHV0KCkgdG8gZGVjcmVhc2UgdGhlIHJlZmNvdW50LCBhbmQgdGhhdCdzCiJjb3JyZWN0
-IiBiZWNhdXNlIG9mX2RybV9maW5kX2JyaWRnZSgpIGRvZXMgbm90IGluY3JlYXNlIGl0LiBUaGlz
-IHdhcwp0b3RhbGx5IGNvcnJlY3QgaW4gdGhlIHBhc3QgYmVjYXVzZSBEUk0gYnJpZGdlIHJlZmNv
-dW50aW5nIGRpZCBub3QgZXhpc3QuCgpSZWZjb3VudGluZyBoYXMgYmVlbiBhZGRlZCB0byBzdXBw
-b3J0IGhvdC1wbHVnZ2FibGUgYnJpZGdlcy4gSWYgeW91IHdhbnQKbW9yZSBpbmZvLCB0aGlzIHBy
-ZXNlbnRhdGlvbiBJIGdhdmUgYXQgRUxDRSAyMDI1IGlzIGEgZ29vZCBzdW1tYXJ5LCB3aXRoCmxp
-bmtzIHRvIHJlbGV2YW50IHBhdGNoZXM6CgogKiBWaWRlbyAoc3RhcnQgYXQgMTk6MzApOiBodHRw
-czovL3d3dy55b3V0dWJlLmNvbS93YXRjaD92PW1zbUJRQlN5Wlo0CiAqIFNsaWRlcyAoc3RhcnQg
-YXQgc2xpZGUgMjcpOgogICBodHRwczovL2Jvb3RsaW4uY29tL3B1Yi9jb25mZXJlbmNlcy8yMDI1
-L2VsY2UvY2VyZXNvbGktaG90cGx1Zy1zdGF0dXMucGRmCgo+IERvZXMgdGhpcyBtZWFuIHRoYXQg
-ZXZlbiBpZiB3ZSBhZGQgcmVmZXJlbmNlIGNvdW50aW5nIGluCj4gb2ZfZHJtX2ZpbmRfYnJpZGdl
-KCksIHdlIHN0aWxsIG5lZWQgdG8gbW9kaWZ5IHRoZSBjb3JyZXNwb25kaW5nIGZ1bmN0aW9ucwo+
-IG9mIHRoZWlyIGNhbGxlcnMgYW5kIGRlY3JlYXNlIHRoZSByZWZlcmVuY2UgY291bnQgYXQgdGhl
-IGFwcHJvcHJpYXRlCj4gdGltZT8KCkV4YWN0bHkuIEkgaGF2ZSBleHBsb3JlZCB0aGF0IGFwcHJv
-YWNoIGJ1dCBpdCB0dXJuZWQgb3V0IGJlaW5nIG5vdApyZWFzb25hYmx5IGRvYWJsZSBkdWUgdG8g
-dGhlIGxhcmdlIG51bWJlciBvZiAoZGlyZWN0ICsgaW5kaXJlY3QpIGNhbGxlcnMgb2YKb2ZfZHJt
-X2ZpbmRfYnJpZGdlKCkgYXMgd2VsbCBhcyB0aGUgdHJpY2tpbmVzcyBvZiB0aG9zZSBpbnZvbHZp
-bmd0aGUKcGFuZWxfYnJpZGdlLiBTbyBNYXhpbWUgcHJvcG9zZWQgYSBkaWZmZXJlbnQgYXBwcm9h
-Y2ggWzBdOiBkZXByZWNhdGUKb2ZfZHJtX2ZpbmRfYnJpZGdlKCkgYW5kIHJlcGxhY2UgaXQgd2l0
-aCBhIGZ1bmN0aW9uIHRoYXQgaW5jcmVtZW50cyB0aGUKcmVmY291bnQsIHRoZW4gbGV0IHRoZSB2
-YXJpb3VzIGNhbGxlcnMgbW92ZSB0byB0aGUgbmV3IGZ1bmN0aW9uIG92ZXIgdGltZS4KCkVhcmxp
-ZXIgdG9kYXkgSSBzZW50IGEgc2VyaWVzIGRvaW5nIHRoYXQsIGFuZCBjb252ZXJ0aW5nIGxvdHMg
-b2YgdXNlcnMKWzFdLiBJZi93aGVuIHRoYXQgYXBwcm9hY2ggd2lsbCBiZSBhY2NlcHRlZCwgeW91
-IGNhbiB1cGRhdGUgeW91ciBkcml2ZXIgdG8KdXNlIHRoZSBuZXcgZHJtX29mX2Z1bmRfYnJpZGdl
-KCkgYW5kIHRha2UgY2FyZSBvZiBwdXR0aW5nIHRoZSByZWZlcmVuY2UKd2hlbiBhcHByb3ByaWF0
-ZS4gQnV0IHlvdSBkb24ndCBuZWVkIHRvIGRvIGFueXRoaW5nIHVudGlsIHRoZW4uCgpbMF0gaHR0
-cHM6Ly9sb3JlLmtlcm5lbC5vcmcvZHJpLWRldmVsLzIwMjUwMzE5LXN0eWxpc2gtbGltZS1tb25n
-b29zZS0wYTE4YWRAaG91YXQvClsxXSBodHRwczovL2xvcmUua2VybmVsLm9yZy9sa21sLzIwMjUx
-MTE5LWRybS1icmlkZ2UtYWxsb2MtZ2V0cHV0LWRybV9vZl9maW5kX2JyaWRnZS12MS0wLTBkYjk4
-YTdmZTQ3NEBib290bGluLmNvbS8KCj4gVGhhbmsgeW91LgoKWW91J3JlIHdlbGNvbWUuIEkgaG9w
-ZSBpdCB3YXMgYSBjbGVhciBleHBsYW5hdGlvbi4KCkx1Y2EKCi0tCkx1Y2EgQ2VyZXNvbGksIEJv
-b3RsaW4KRW1iZWRkZWQgTGludXggYW5kIEtlcm5lbCBlbmdpbmVlcmluZwpodHRwczovL2Jvb3Rs
-aW4uY29tCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpM
-aW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFk
-Lm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJv
-Y2tjaGlwCg==
+Hi Kamil,
+
+On 11/19/25 3:21 PM, Kamil Konieczny wrote:
+> Hi Cristian,
+> On 2025-11-10 at 15:18:05 +0200, Cristian Ciocaltea wrote:
+>> Provide test to verify the behavior of BACKGROUND_COLOR DRM CRTC
+>> property.
+>>
+>> This is done by filling a full-screen primary plane with a given color
+>> and comparing the resulting CRC with the one obtained after turning off
+>> all planes while having the CRTC background set to the same color.
+>>
+>> It's worth noting this is a reworked version of the test that has been
+>> dropped over 5 years ago via commit 33f07391e5f6 ("tests: Remove
+>> kms_crtc_background_color test"), as the required kernel changes never
+>> landed because of missing userspace support.
+>>
+> +cc J-P, Karthik, Swati
+> Cc: Juha-Pekka Heikkila <juhapekka.heikkila@gmail.com>
+> Cc: Juha-Pekka Heikkila <juha-pekka.heikkila@intel.com>
+> Cc: Karthik B S <karthik.b.s@intel.com>
+> Cc: Swati Sharma <swati2.sharma@intel.com>
+> 
+> I have few nits, see below.
+> 
+>> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+>> ---
+>> This has been tested on a Radxa ROCK 5B board which is based on Rockchip
+>> RK3588 SoC.  It relies on the kernel series [1] introducing the
+>> BACKGROUND_COLOR CRTC property and a few additional patches from [2]
+>> enabling the required CRC functionality for the Rockchip platform (still
+>> require a bit more work before sending those upstream).
+>>
+>> It's worth noting CRC is only supported by the display controller (VOP2)
+>> present in the RK3576 SoC variant.  However, the computation is done by
+>> the hardware before applying the background color, hence it has limited
+>> usage in IGT testing.
+>>
+>> Luckily, the frame CRCs can be captured through DPCD, i.e. at
+>> DisplayPort AUX channel level, hence I used the USB-C DP AltMode capable
+>> port of the aforementioned board to perform the actual validation.
+>>
+>> [1] https://lore.kernel.org/all/20251013-rk3588-bgcolor-v2-0-25cc3810ba8c@collabora.com/
+>> [2] https://gitlab.collabora.com/hardware-enablement/rockchip-3588/linux/-/commits/cristicc/rk3588-vop2-crc
+>>
+
+[...]
+
+> Please add here:
+> 
+> /**
+>  * TEST: crtc background color
+>  * Category: Display
+>  * Description: Test background color feature with CRC at CRTC
+>  * Driver requirement: i915, xe
+>  * Mega feature: General Display Features
+>  */
+> 
+> Feel free to correct me with name and/or description.
+
+Ack.
+
+> Karthik or Swati, please also correct this if I made any
+> mistake here.
+> 
+>> +#include "igt.h"
+>> +
+>> +IGT_TEST_DESCRIPTION("Test crtc background color feature");
+>> +
+>> +typedef struct {
+>> +	int drm_fd;
+>> +	int debugfs;
+>> +	igt_display_t display;
+>> +} data_t;
+>> +
+>> +#define __DRM_ARGB64_PREP(c, shift, bpc)			\
+>> +	(((__u64)(c) << (16 - (bpc)) & 0xffffU) << (shift))
+>> +
+>> +#define DRM_ARGB64_PREP_BPC(alpha, red, green, blue, bpc)	\
+>> +	(__DRM_ARGB64_PREP(alpha, 48, bpc) |			\
+>> +	 __DRM_ARGB64_PREP(red,   32, bpc) |			\
+>> +	 __DRM_ARGB64_PREP(green, 16, bpc) |			\
+>> +	 __DRM_ARGB64_PREP(blue,   0, bpc))
+>> +
+>> +static void test_background(data_t *data, enum pipe pipe, igt_output_t *output,
+>> +			    __u16 red, __u16 green, __u16 blue)
+>> +{
+>> +	igt_display_t *display = &data->display;
+>> +	igt_crc_t plane_crc, bg_crc;
+>> +	igt_pipe_crc_t *pipe_crc;
+>> +	igt_plane_t *plane;
+>> +	drmModeModeInfo *mode;
+>> +	struct igt_fb fb;
+>> +
+>> +	igt_display_reset(display);
+>> +
+>> +	igt_output_set_pipe(output, pipe);
+>> +	mode = igt_output_get_mode(output);
+>> +
+>> +	plane = igt_output_get_plane_type(output, DRM_PLANE_TYPE_PRIMARY);
+>> +
+>> +	/* Fill the primary plane and set the background to the same color */
+>> +	igt_create_color_fb(data->drm_fd,
+>> +			    mode->hdisplay, mode->vdisplay,
+>> +			    DRM_FORMAT_XRGB8888,
+>> +			    DRM_FORMAT_MOD_NONE,
+>> +			    (double)red / 0xffff,
+>> +			    (double)green / 0xffff,
+>> +			    (double)blue / 0xffff,
+>> +			    &fb);
+>> +
+>> +	igt_plane_set_fb(plane, &fb);
+>> +	igt_pipe_set_prop_value(&data->display, pipe, IGT_CRTC_BACKGROUND,
+>> +				DRM_ARGB64_PREP_BPC(0xffff, red, green, blue, 8));
+>> +	igt_display_commit2(&data->display, COMMIT_ATOMIC);
+>> +
+>> +	pipe_crc = igt_pipe_crc_new(data->drm_fd, pipe, IGT_PIPE_CRC_SOURCE_AUTO);
+>> +	igt_pipe_crc_collect_crc(pipe_crc, &plane_crc);
+>> +
+>> +	/* Turn off the primary plane so that only the background is visible */
+>> +	igt_plane_set_fb(plane, NULL);
+>> +	igt_display_commit2(&data->display, COMMIT_ATOMIC);
+>> +	igt_pipe_crc_collect_crc(pipe_crc, &bg_crc);
+>> +
+>> +	/*
+>> +	 * The test assumes hardware is able to generate valid CRCs when setting
+>> +	 * the background color. Some platforms, e.g. Intel, might require at
+>> +	 * least one plane to be visible before reading the pipe-level ("dmux")
+>> +	 * CRC. Other platforms, e.g. Rockchip, do not take background color
+>> +	 * into account when computing CRC at CRTC level.
+>> +	 * A possible workaround would be to use alternative CRC sources, e.g.
+>> +	 * where computation is performed at encoder or sink level.
+>> +	 */
+>> +	igt_assert_crc_equal(&plane_crc, &bg_crc);
+>> +
+>> +	/* Clean-up */
+>> +	igt_pipe_set_prop_value(&data->display, pipe, IGT_CRTC_BACKGROUND,
+>> +				DRM_ARGB64_PREP_BPC(0xffff, 0, 0, 0, 8));
+>> +	igt_pipe_crc_free(pipe_crc);
+>> +	igt_output_set_pipe(output, PIPE_NONE);
+>> +	igt_display_commit(display);
+>> +	igt_remove_fb(data->drm_fd, &fb);
+>> +}
+>> +
+> 
+> Add here:
+> 
+> /**
+>  * SUBTEST: background-color-%s
+>  * Description: Tests %arg[1] in background color
+>  *
+>  * arg[1]:
+>  *
+>  * @red:      red
+>  * @green:    green
+>  * @blue:     blue
+>  * @yellow:   yellow
+>  * @purple:   purple
+>  * @cyan:     cyan
+>  * @black:    black
+>  * @white:    white
+>  */
+> 
+> With this it will compile and will be tested by Intel CI.
+
+Great!  Please note there's already a 2nd revision [1] available which might
+require adjusting your kernel driver due to the following change:
+
+- Set the value of the CRTC background color property with 16bpc instead
+  of 8bpc, to avoid CRC check failures because of framebuffer format
+  precision mismatch - display controller drivers shall convert it back
+  from 16bpc to their internal representation of the pixel color if
+  necessary, e.g. VKMS already uses 16bpc, hence no conversion is
+  required in that case
+
+[1] https://lore.kernel.org/all/20251118-crtc-bgcolor-v2-1-dce4063f85a9@collabora.com/
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
