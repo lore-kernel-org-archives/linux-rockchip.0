@@ -4,60 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB6C0CF258E
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Nov 2025 07:54:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CF24CF2599
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Nov 2025 08:10:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-ID:MIME-Version:To:Cc:
-	Date:References:In-Reply-To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1lRPbpXb56tOhK+C1KQGXSxhclCn1dqyVYaNyaRcvaM=; b=L0KWIwHHW00BEb
-	DKZs0YjS1rrhTRXC/upgff64e60aiBCoUPAQ7+SYjJw1gmFOc8CXJATv9pkAIb/LyOh35fTryH7f3
-	i1LR8KRYdDJqdT4UYoLiEar4GRXdj/i++DmdMTIzfU4EVkKrMJvMbusKj4pr1Q9C9Jzqh+ivE2npQ
-	hiJCzkqukyI5NrgFjCDNO21MJ9ULeXVvjcDjPQpIMei4lS8C9/yTu4hTe5egkoFZQNWT/JzPkvokH
-	WBu2KVUluVl2S0KR3mQtYBpr8JWACReOkNOG576S+sO+W1GjYVDKu2OfibHPvquaMNS5JKYMHsnNs
-	2UxFsPOpRO/YprqVchkA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=r6Bk/QRQORCXtwcOP8dd4K0APIbKaCfLaepbzMSfNY4=; b=0wse5/DW2wEQxj
+	z2nc+BcPV1PI/Qq/NGMEXaorkJ3mdbYaW4pj4otrwyloD53b7600e6Ds/yWmkBnKmxi82bFFukuC1
+	xewVSFzco/47bWE3IxSpviHycsVL5BMGLEgOViOisiBuG8mng0uFmUNvwmN1MJUIj6inapEQ9IxlT
+	vaYeO4nX2V+x3KnngqUIKQVcod1V329HdgRYM8JuDCvrdmSVDU2s5Zz2DQ3b4OcVYVpbYjtTgOw1W
+	Ni8IPBv+tTsJvlAahHqC+/HLt4uxOOKRgyQITrLrYxl1SDFNLyVLdoWhxMDLOEwKOFUPMbGniH5BM
+	5Fw2kp1kV3uWT4zs744g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLd18-00000002kJj-0BwE;
-	Wed, 19 Nov 2025 07:54:18 +0000
-Received: from mail1.manjaro.org ([142.132.176.110])
+	id 1vLdGN-00000002lcp-0T2F;
+	Wed, 19 Nov 2025 08:10:03 +0000
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLd15-00000002kJ5-0cPN;
-	Wed, 19 Nov 2025 07:54:16 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPA id 272CA41286;
-	Wed, 19 Nov 2025 08:54:11 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=dkim;
-	t=1763538852; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=FO6i4EJtflzh+RBm1bIZwxR02OjHW1gnYtKm7qHscDY=;
-	b=qOk6EkKfspC043mosDKndlKCCI3kXANFZl783HE31sunZP+QhGfBP8qIyFbH+hmGa/16cC
-	f7ocVn++TitoxWQeUNDhy7oqha2Wytdi0IKpN6dexNBlcecI3pCr3BTCCsNmfdlnABGbpD
-	KC7D8Cofr9MQT4me7EjdghgPKjB3NZqL2HbsrShu8tgWXOwm4pQNNaQ4C0X6Dkr+hqDUPh
-	WNNT1TeOtWKdhWJE+gzrcZ4lXadhmyJg5MAeUMfuQyaSBqKBDiDfjSAOPFD+DwZ/4Y+aW6
-	+EMFIfx+RlYP0gsTosQbF5l0V8OWkQNF2slXc1Q6k/sBIEw8a1O9EAoGj71oxA==
-From: "Dragan Simic" <dsimic@manjaro.org>
-In-Reply-To: <e1598abe-7a66-4808-82c7-2389ee2ea279@kernel.org>
-References: <20251118-tinker3-v3-0-2903693f2ebb@rootcommit.com>
- <20251118-tinker3-v3-1-2903693f2ebb@rootcommit.com>
- <155d3d05-49f8-a000-6939-1411917745bb@manjaro.org>
- <e7417a6e-3824-48f7-af56-eaf4bf097cb9@kernel.org>
- <b8e91b59-afb1-6d0d-4709-c7f76ded0e18@manjaro.org>
- <5bc642d3-fe05-4654-88c3-11c6534c5aa4@kernel.org>
- <b98e53ce-9c8c-c505-6097-0d22d0416e8e@manjaro.org> <e1598abe-7a66-4808-82c7-2389ee2ea279@kernel.org>
-Date: Wed, 19 Nov 2025 08:54:10 +0100
-Cc: "Michael Opdenacker" <michael.opdenacker@rootcommit.com>, "Rob Herring" <robh@kernel.org>, "Krzysztof Kozlowski" <krzk+dt@kernel.org>, "Conor Dooley" <conor+dt@kernel.org>, "Heiko Stuebner" <heiko@sntech.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, "Krzysztof Kozlowski" <krzysztof.kozlowski@linaro.org>
-To: "Krzysztof Kozlowski" <krzk@kernel.org>
+	id 1vLdGK-00000002lbK-3Hpk
+	for linux-rockchip@lists.infradead.org;
+	Wed, 19 Nov 2025 08:10:02 +0000
+Received: by mail-wr1-x434.google.com with SMTP id ffacd0b85a97d-42b3ac40ae4so3866092f8f.0
+        for <linux-rockchip@lists.infradead.org>; Wed, 19 Nov 2025 00:09:59 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1763539798; x=1764144598; darn=lists.infradead.org;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=FiIFVMX2MR+XXmvXnG9d1/8nmYiayzPl3ENasC1cOTY=;
+        b=A+HQS0ySoUj9QvVBNjtc3dNp8X0LMCWQU6DIQCxbGYaw95Wmc1YftUiwmvUuuC9WDD
+         CxJGhgQjTPGttHzklDD+Z5FnJ4fm537+pCccTZRD1J5dJ1mka0bWpBVLc6lbuOMXQyGV
+         TthXH7R/duMGlk3fIPT4cm4R24g2Yv9q0JQjACKLBxXwyuP212PSVxspqz7D/zJPYcNN
+         4aWzgRWxkBbB+J6mINtvmITu6O/EBiQe3c2eS0d0Oucdatg+t2k+qU8uVULWuVKAcqKk
+         8QNb7GtIgMS/yZEq8spgz+emZ0RU2DI1MKM3tUkoCQR/akMnAxeIsglmEaO8eNoqSrDa
+         /ntQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1763539798; x=1764144598;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=FiIFVMX2MR+XXmvXnG9d1/8nmYiayzPl3ENasC1cOTY=;
+        b=ren1TLDdBuycLsPFIRV6/F8V9tqONGqEl7hb9zee1XljaMiTF0A6KN1OxMqsrWGKsG
+         mxAxKbJL7Cmc36celFzzJe56HFhVw2CI/yG4ShzcXzmMA6Zd1atJ46AYWyCzApIC5xQa
+         ILAfuBSND13VxJM/ZjzSqeFE055sxNTT09fIvMckAi7X6BysGZYhuwnzVBMT1q1rkXJL
+         etrjP2nK1e73zbCsmPS/LHIzR0Uag3m798T0sYekJYhxNqpv+UioZcIuN1o21ABldYxP
+         UMKOYznxORKVEWJYBnYwMiPnKwCXfZhGybhV+qzyBiJCzzmf/k5u7FmEzLYl2BoBR/XQ
+         FbRQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXCwW69A0LEXbS0VMdpWwziQYmjgwt8qBZ0seepS1hTliREmK5jzZPuK8TqC3Y+lH+TdmVLPJsiI9+5sC8Lbw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxTaciBdM84hvlPnRe5tFRSCrqrmH5FTHnP+RB0eFTdf/BD5qsb
+	/mDSyMBNFv2wlAaTuDS04A39OWaCMDbcgwePdl5ddkqGrluKxLOL1Mt3VzhP+g5YhW4=
+X-Gm-Gg: ASbGncuMYXUFAqwsMz007i9RB+ztzMtvQsCucqzertg/vX/VJgj6k6nOQTz7i1L4cxe
+	lSy95hDTYTltgmJUQl2deNOOvD4Eu3vpsEq0aqkwqg2vvweSzA7krVw0B09+nQ77mGhnng8TSxc
+	/nSo5t6TNQqm01dmqbx4cKTANA1TaipIsWnw/c5ahEB6CVtEp+GA6+PuJ92Ke6tOI3SIYzzrfXw
+	s6j4KzeH3m18ayBotqmgUYdvyRK9i1tskPMRLxdDvjfLSe7QqxMeI8fiPi0SFzyBiOlP/SoTNlx
+	7NHx/Jp3LwCn3n7toZz65H/q1Nuy17Yezf5r+lQLeYWMwe2tiFqNvjDt/KBllNmisvHfHkB/cmv
+	Jv2QBVUTT3dTAToQLvAtwd5TV8nIQnEyM8LN6qObwutcXCMZ6ElT5d4h1lp78Q2rDHruzWE+zwl
+	LXwXFUls7U1t1HJJCojwiYOByJr4Q=
+X-Google-Smtp-Source: AGHT+IE1q82L18y3VRPhHfEId7f170t/V5fSl9Cnt7w8NWmAat0eSm35Q1/LPz22OoVfb8I/7QAR9w==
+X-Received: by 2002:a05:6000:4383:b0:42b:3c8d:1932 with SMTP id ffacd0b85a97d-42b59345301mr16798960f8f.23.1763539798470;
+        Wed, 19 Nov 2025 00:09:58 -0800 (PST)
+Received: from localhost ([196.207.164.177])
+        by smtp.gmail.com with UTF8SMTPSA id ffacd0b85a97d-42b53f0b60csm35501317f8f.22.2025.11.19.00.09.57
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 19 Nov 2025 00:09:58 -0800 (PST)
+Date: Wed, 19 Nov 2025 11:09:54 +0300
+From: Dan Carpenter <dan.carpenter@linaro.org>
+To: Michael Riesch <michael.riesch@collabora.com>
+Cc: Mehdi Djait <mehdi.djait@linux.intel.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	Hans Verkuil <hverkuil+cisco@kernel.org>,
+	Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
+	linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	kernel-janitors@vger.kernel.org
+Subject: [PATCH next] media: rockchip: rkcif: fix off by one bugs
+Message-ID: <aR17UkYsfAxCZ4fe@stanley.mountain>
 MIME-Version: 1.0
-Message-ID: <69de292c-af43-d202-72da-c7d3769d1799@manjaro.org>
-Subject: =?utf-8?q?Re=3A?= [PATCH v3 1/2] =?utf-8?q?dt-bindings=3A?=
- =?utf-8?q?_arm=3A?==?utf-8?q?_rockchip=3A?= Add Asus Tinker Board 3/3S
-User-Agent: SOGoMail 5.12.3
-X-Last-TLS-Session-Version: None
+Content-Disposition: inline
+X-Mailer: git-send-email haha only kidding
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251118_235415_435354_C57F7658 
-X-CRM114-Status: GOOD (  16.16  )
+X-CRM114-CacheID: sfid-20251119_001000_842227_3EA00640 
+X-CRM114-Status: GOOD (  12.49  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,56 +105,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wednesday, November 19, 2025 08:48 CET, Krzysztof Kozlowski <krzk@kernel.org> wrote:
-> On 19/11/2025 08:40, Dragan Simic wrote:
-> > On Wednesday, November 19, 2025 08:31 CET, Krzysztof Kozlowski <krzk@kernel.org> wrote:
-> >> On 19/11/2025 08:23, Dragan Simic wrote:
-> >>> On Wednesday, November 19, 2025 08:09 CET, Krzysztof Kozlowski <krzk@kernel.org> wrote:
-> >>>> Your reviews are not helpful. You nitpick irrelevant things and propose
-> >>>> solutions which later reverse leading to wasted effort on contributors side.
-> >>>>
-> >>>> Michael implemented what you asked here:
-> >>>>
-> >>>> https://lore.kernel.org/linux-rockchip/e4cd11d0-463c-e707-5110-6b92899b1ba3@manjaro.org/
-> >>>
-> >>> Not exactly, because I didn't ask for any compatibles to be removed
-> >>> from the new board dts files.
-> >>
-> >> Read your answer again. You wanted ENTIRE bindings, to be like this:
-> >>
-> >>      - description: Asus Tinker Board 3/3S
-> >>        items:
-> >>          - enum:
-> >> 	   - asus,rk3566-tinker-board-3
-> >>            - asus,rk3566-tinker-board-3s
-> >>          - const: rockchip,rk3566
-> >>
-> >> (skipping obvious indentation fixup)
-> >> There are exactly like this.
-> >>>
-> >>> In this case, we could also say that it was Michael's fault not to
-> >>> give enough time for the reviewers to respond.
-> >>
-> >> Michael implemented EXACTLY what you asked. Now, you ask to change it to
-> >> what Michael did BEFORE.
-> > 
-> > Not really, because it wasn't some kind of a request from my side,
-> > but merely a suggestion that was intended to be discussed further
-> > so the best possible solution is reached before v3 is submitted.
-> > 
-> >> Your reviews are completely irresponsible and incorrect.
-> > 
-> > Calling my reviews irresponsible hurts me a lot, really, but I'm
-> > unfortunately already used to hear hurtful things from your side.
-> 
-> You do not bear the cost of your reviews, so maybe that's why you think
-> nitpicking, poking around, pin pointing irrelevant things and adding 2
-> cents is okay, but that leads to additional effort on contributors and
-> reviewers. And not respecting total effort is irresponsible.
+Change these comparisons from > vs >= to avoid accessing one element
+beyond the end of the arrays.
 
-Thank you very much for finding additional ways to hurt my feelings.
-However, please think about how your unfriendly approach may or may
-not contribute to the overall effort.
+Fixes: 1f2353f5a1af ("media: rockchip: rkcif: add support for rk3568 vicap mipi capture")
+Signed-off-by: Dan Carpenter <dan.carpenter@linaro.org>
+---
+ .../media/platform/rockchip/rkcif/rkcif-capture-mipi.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/media/platform/rockchip/rkcif/rkcif-capture-mipi.c b/drivers/media/platform/rockchip/rkcif/rkcif-capture-mipi.c
+index 1b81bcc067ef..a933df682acc 100644
+--- a/drivers/media/platform/rockchip/rkcif/rkcif-capture-mipi.c
++++ b/drivers/media/platform/rockchip/rkcif/rkcif-capture-mipi.c
+@@ -489,8 +489,8 @@ static inline unsigned int rkcif_mipi_get_reg(struct rkcif_interface *interface,
+ 
+ 	block = interface->index - RKCIF_MIPI_BASE;
+ 
+-	if (WARN_ON_ONCE(block > RKCIF_MIPI_MAX - RKCIF_MIPI_BASE) ||
+-	    WARN_ON_ONCE(index > RKCIF_MIPI_REGISTER_MAX))
++	if (WARN_ON_ONCE(block >= RKCIF_MIPI_MAX - RKCIF_MIPI_BASE) ||
++	    WARN_ON_ONCE(index >= RKCIF_MIPI_REGISTER_MAX))
+ 		return RKCIF_REGISTER_NOTSUPPORTED;
+ 
+ 	offset = rkcif->match_data->mipi->blocks[block].offset;
+@@ -510,9 +510,9 @@ static inline unsigned int rkcif_mipi_id_get_reg(struct rkcif_stream *stream,
+ 	block = stream->interface->index - RKCIF_MIPI_BASE;
+ 	id = stream->id;
+ 
+-	if (WARN_ON_ONCE(block > RKCIF_MIPI_MAX - RKCIF_MIPI_BASE) ||
+-	    WARN_ON_ONCE(id > RKCIF_ID_MAX) ||
+-	    WARN_ON_ONCE(index > RKCIF_MIPI_ID_REGISTER_MAX))
++	if (WARN_ON_ONCE(block >= RKCIF_MIPI_MAX - RKCIF_MIPI_BASE) ||
++	    WARN_ON_ONCE(id >= RKCIF_ID_MAX) ||
++	    WARN_ON_ONCE(index >= RKCIF_MIPI_ID_REGISTER_MAX))
+ 		return RKCIF_REGISTER_NOTSUPPORTED;
+ 
+ 	offset = rkcif->match_data->mipi->blocks[block].offset;
+-- 
+2.51.0
 
 
 _______________________________________________
