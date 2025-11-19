@@ -4,198 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7B81CF2563
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Nov 2025 23:58:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6ACF3CF2562
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Nov 2025 00:13:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cBZqA63J6ZF0Qs700Nz5M1B7VMyKZg4RFw6hM0xiH58=; b=1V2iyd0Ekz9Bwk
-	rMoTFb8zI+/NEnkqObr+Zrj1QBYXzaY5uztCzjIs8OwLgh+5n8ISwgxom2spP++c/wK6W1aILypaF
-	jxyFo1hKN0ekq5aCqknjmrGtmuj1lFlNjO9NsSqbPHktlXRkOvQ4dv5u5FppnNPoWeOu7tlRuRC2f
-	DsX/u+qjdcUULcVfxmjeo6KOI4HZUwpVizyOQ/lPXmtLFAGIvF9Ti/zPlBF8EBhJbo+Q411q72e7B
-	M1cjp0g7TxE0UxUGL2FvnRJxd+gfFum0iNB16/Q8CWz2Tf0d//2DCcnL5Ph0bqB0JfP5cZ9G6ndtf
-	qiiem/H4aYUES/Qm+uMQ==;
+	List-Owner; bh=Sz0uSqHDAjOiD15vC0Tfrfs43BmAd8ktaTVOkR7mGfE=; b=CCbMcuNqhMp+kP
+	u4yaQTp0Zg6ZEhTucye3Nxj05k0yFBGNVS3X3Gj6t56SKZ1Eb4OTbCsdjFMky2hI+eBKlQoPiuvUU
+	6rsKAGjahTd272uclUTHZtQtw2xtrARLgg9QMEfodiR0u0yAOuuL4/L5sx7tiOhLwdbxbf+6wjnSH
+	pE8nbH2xBdcaiczvnDsSz3RIgTEfJ3phbSeBbt32viZ2FMMzb3CLc3b4iy4Bq0Mb6IeX+Ll79xfRf
+	IfDpvEDxb9zuoEhc8FzJmoWs3xyXMycTmc8vSnYnqzVRK4Iqs5l5lmHGf32p0+Evj8kP/PeDTVI37
+	6C+AI+56XSiLTEs9v7NA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLVay-00000001G21-0Euq;
-	Tue, 18 Nov 2025 23:58:48 +0000
-Received: from mgamail.intel.com ([192.198.163.7])
+	id 1vLVpO-00000001HC3-05Vn;
+	Wed, 19 Nov 2025 00:13:42 +0000
+Received: from smtpbgau1.qq.com ([54.206.16.166])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLVau-00000001G1G-3B8s;
-	Tue, 18 Nov 2025 23:58:45 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1763510325; x=1795046325;
-  h=from:to:cc:subject:date:message-id:references:
-   in-reply-to:content-transfer-encoding:mime-version;
-  bh=QnUJBPkM0aebrKHhvoCNi9yMbWYOohEEV1OWgWCRl94=;
-  b=XR9YbS7P0B86omuFvRAMLV9663oV3XCO1FE0K470tJbZA9S0GUTfKlg+
-   7+pJa29mtANjJHis33VKM54XMgVbP4isT/3bzBCqxDMeGKq0dNrxthOGv
-   m7huJdXLFUfMC+uEROVn5gaAq7ekzVOHBosZvprEV/yl9872sIlyHzmXW
-   0jZfD8NmswM0IrEGGD1TH3JSPgKycPSaJng/IWMj84AsCn/D5sklO8fvP
-   kgCo3lYB6wiGUmDo3r1iBBWGBAaR/jhOv18if5PVLse/iufs3OEF7FKRW
-   nrL7EpFyWuqJ+CFRGYsLfOA+x5vXRRBVGOvEIH9T4lI3N82demGKtYkah
-   Q==;
-X-CSE-ConnectionGUID: WJRpXm1+QVKun74xycP9uw==
-X-CSE-MsgGUID: 5tfZUEc0QkS9TgHqqxNnQA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11617"; a="91020889"
-X-IronPort-AV: E=Sophos;i="6.19,314,1754982000"; 
-   d="scan'208";a="91020889"
-Received: from orviesa008.jf.intel.com ([10.64.159.148])
-  by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Nov 2025 15:58:43 -0800
-X-CSE-ConnectionGUID: hsUvCZffQ16C4PL/7wej0g==
-X-CSE-MsgGUID: 5eJ9P+iuTHiqQd1WGHz84g==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.19,314,1754982000"; 
-   d="scan'208";a="191029564"
-Received: from fmsmsx902.amr.corp.intel.com ([10.18.126.91])
-  by orviesa008.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Nov 2025 15:58:42 -0800
-Received: from FMSMSX901.amr.corp.intel.com (10.18.126.90) by
- fmsmsx902.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.27; Tue, 18 Nov 2025 15:58:42 -0800
-Received: from fmsedg902.ED.cps.intel.com (10.1.192.144) by
- FMSMSX901.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.27 via Frontend Transport; Tue, 18 Nov 2025 15:58:42 -0800
-Received: from BYAPR05CU005.outbound.protection.outlook.com (52.101.85.15) by
- edgegateway.intel.com (192.55.55.82) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.27; Tue, 18 Nov 2025 15:58:41 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=vZYbADBS8bXhEd2KoC+Qym27MrQBmMD2YuDlqrLgbnKRuXAAg4bvv7KzTQwPYCVeubLh8B4GWSP1717l287/Jmk6O/grQO81vUWfLoUfW4mGtx26VRd+djoJd/b1h0pWokPP5FaKzV/d/+jhB2IZKb5tnN9OQhpU5EHw3xDmRKZ1Yr7aUw6sy/edAxJ6qIvcx/9db++p8AlAuW8eBA+dTxmnxIOUQH9DS3ZGFnhe1pEizYhJd0rVpx4d8uG6ER2ds28m+kJbsMQXBy3MTuLF+9QxbAFdsXubeUSK+Na6aj3YA+ajUSbPKiJ9Alg/184wc2IX1IgI8UnSABgHurwLHw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=QeSFdzDGIFBsG8WgjDbHnENMivkC89eWR+YmfgBG5MI=;
- b=Cj5YKv/sIbxP2bwVjKOxuG6/8x746EpDCB28OyHJfejYlGWVOl/iUAcVH7WbqNwWLqVrKsP8yG9XH9RwkrObXz2gmp0Q5EruCl34jVvUXSi+JDm+RDqiV3MDRcYAChBixbBi8aDjB7KnTaslOxY48GHqWwy5441SFRpUH37OiudJZDGV8oO7LQw08lRtmilYm3uMvA827myLOA0S6Q9lkBt+3Am8juSUmKmyfDwAzn+lp3+NxevsSF9HzgwoqqfZFlsVDGdAYAAV+EfASvB2GjFWI4DOZw7CHVqwh78ipFeZet6JTT/ZbPKbWmHhchhXSYBZTNFx8urRxRlZP0ZPrw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from BN9PR11MB5276.namprd11.prod.outlook.com (2603:10b6:408:135::18)
- by SA3PR11MB8045.namprd11.prod.outlook.com (2603:10b6:806:2fa::21) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9320.21; Tue, 18 Nov
- 2025 23:58:39 +0000
-Received: from BN9PR11MB5276.namprd11.prod.outlook.com
- ([fe80::b576:d3bd:c8e0:4bc1]) by BN9PR11MB5276.namprd11.prod.outlook.com
- ([fe80::b576:d3bd:c8e0:4bc1%5]) with mapi id 15.20.9343.009; Tue, 18 Nov 2025
- 23:58:39 +0000
-From: "Tian, Kevin" <kevin.tian@intel.com>
-To: Jason Gunthorpe <jgg@nvidia.com>
-CC: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Christian Benvenuti <benve@cisco.com>, Heiko Stuebner <heiko@sntech.de>,
-	"iommu@lists.linux.dev" <iommu@lists.linux.dev>, Jernej Skrabec
-	<jernej.skrabec@gmail.com>, Joerg Roedel <joro@8bytes.org>, Leon Romanovsky
-	<leon@kernel.org>, "linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-arm-msm@vger.kernel.org"
-	<linux-arm-msm@vger.kernel.org>, "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>, "linux-rdma@vger.kernel.org"
-	<linux-rdma@vger.kernel.org>, "linux-rockchip@lists.infradead.org"
-	<linux-rockchip@lists.infradead.org>, "linux-sunxi@lists.linux.dev"
-	<linux-sunxi@lists.linux.dev>, Matthias Brugger <matthias.bgg@gmail.com>,
-	Nelson Escobar <neescoba@cisco.com>, Rob Clark
-	<robin.clark@oss.qualcomm.com>, Robin Murphy <robin.murphy@arm.com>, "Samuel
- Holland" <samuel@sholland.org>, Suravee Suthikulpanit
-	<suravee.suthikulpanit@amd.com>, Chen-Yu Tsai <wens@csie.org>, Will Deacon
-	<will@kernel.org>, Yong Wu <yong.wu@mediatek.com>, Lu Baolu
-	<baolu.lu@linux.intel.com>, "patches@lists.linux.dev"
-	<patches@lists.linux.dev>
-Subject: RE: [PATCH v2 2/3] iommu/amd: Don't call report_iommu_fault()
-Thread-Topic: [PATCH v2 2/3] iommu/amd: Don't call report_iommu_fault()
-Thread-Index: AQHcT1zx1rq1OvEj8UmhXRdRHYnbsLT2epyAgAJhU4CAAFNZcA==
-Date: Tue, 18 Nov 2025 23:58:39 +0000
-Message-ID: <BN9PR11MB5276858062B57F944A7EBE778CD6A@BN9PR11MB5276.namprd11.prod.outlook.com>
-References: <0-v2-25fc75484cab+ab-iommu_set_fault_jgg@nvidia.com>
- <2-v2-25fc75484cab+ab-iommu_set_fault_jgg@nvidia.com>
- <BN9PR11MB5276EFE7D236FF918A79263C8CC9A@BN9PR11MB5276.namprd11.prod.outlook.com>
- <20251118185831.GQ10864@nvidia.com>
-In-Reply-To: <20251118185831.GQ10864@nvidia.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: BN9PR11MB5276:EE_|SA3PR11MB8045:EE_
-x-ms-office365-filtering-correlation-id: d458caf0-aa60-4f97-c91f-08de26fe6562
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;ARA:13230040|7416014|376014|366016|1800799024|38070700021;
-x-microsoft-antispam-message-info: =?us-ascii?Q?IQRMfLgj15b3mKlYab0VdhdTC7jV1u9MNj8nIX7y+f2zMF3Z6e+hqvKtzfjV?=
- =?us-ascii?Q?SdoevKPlTkHpW5Agaw4O8SHkVJTZQEJ25Fst7MeFF2pAhAykMLNefOck0mj+?=
- =?us-ascii?Q?JJq2TcZBzCBEIq73Xb+UywPkS7pf19dmxH0iv11eCLNAT41/iH6nTyYZ1fPm?=
- =?us-ascii?Q?WG3DLjo1vBKIQCXd4qCetp/Wre8++X/9ndsqduUpMo0CpCjOBvBKm8NhOtTA?=
- =?us-ascii?Q?qPBiuVnmiIX4+7eyedygMluwq6oZK5pFCoiogFjapr4PTOckaYHvi3ng3R5P?=
- =?us-ascii?Q?AjIIEongUkLbcpmKnLQxoCYDtAL+qjvurtki0KgpgdFrP+CPWXXrjYe8E9vn?=
- =?us-ascii?Q?gOBNk3d1+2uUPN9QrXcqqdVB+zHS/6XJJfw/4i/1LzlE4A+cG/QoadnmxMFa?=
- =?us-ascii?Q?DKBU0oVw8gSY1WCDzFsIl5+S6sE6j4uRbU+1aUZPqgvNHbb7YUUc6SgdrruD?=
- =?us-ascii?Q?ExF2s8nWeHD8lyRdJapzp49M/WAFMXbB8EsGQ1mhoSdhPG1Q46hqDtVHbdOQ?=
- =?us-ascii?Q?WVvTvx2NtnKAjMPjgBKhhoZG8UxtAjqLoEu0e7osltYBRz92h/vOX2v1GvTv?=
- =?us-ascii?Q?EFCoS2GjaV7d1sqr3Bargh+vghhmbO48CIH1nJzhnadXQxzn/g7S2rBhNi3c?=
- =?us-ascii?Q?1sCtKT77W6H5OsWni2Je2+n1PvXAruU2gT+o9iaCqimOvfDgXFOH6aogavmr?=
- =?us-ascii?Q?vXTTSV3jJjOqAhQjK0YLhxke/hr4MaHxcgX3xfzSLL2EYTzpHdDvUtOUYv47?=
- =?us-ascii?Q?ecEh0bzEv5xqiSfiz14ysyms3uEhx1/xMXG5i/+HGWhfrCyUJq7N6qmlkIIl?=
- =?us-ascii?Q?bg1qfe3PIaLQrPqMxqC86HwnumTPxXqR4yQl6AVMTWx3ThZkhIVL1hIl+NAd?=
- =?us-ascii?Q?8JSd6R/SzGUWX7oHq7Iz0gOsFWWTACscD+E+K4pqmFEFooUYn3Nv5++cW36O?=
- =?us-ascii?Q?5w9KeF5Qi+TgAnSVbU9BGKH3A+kNbm0AE6d1jq8DuMi0UrWL+x/8Cb7xdFOf?=
- =?us-ascii?Q?d3LQmcIhU+OmJmJ/j57Fy2DgZL8ilHOSiyhcZJDDkeMAjR1nD9tvbDFixwfz?=
- =?us-ascii?Q?dbQ+UPmx/eead2QuYsxwCcNbuyQ1oW9iYeCwWBpatF8b1GhIMALXqektrq8R?=
- =?us-ascii?Q?R3x46LzkgEx7EuVWAPF1jevo4fSsei8soqdyMI0fgcokVZIwmcb2Ivg2D8oT?=
- =?us-ascii?Q?GdBG9nR3yzx8C7cmPR12fL7ABm/Y2QXevqS7DUgiZ1wSDmeso7K4D8olawuN?=
- =?us-ascii?Q?Qw9pHYJqXeVuHkFAgf2pYJKdD14XMuThTRbBSx0bMoWV5zjYdzRDMiztV78Q?=
- =?us-ascii?Q?RmKu0J5vxtHMNSE6zbV0FC6DCGvV035gbOUE1FBLU2C4LSuksdLw8uCJvROP?=
- =?us-ascii?Q?eOecnROaXY7AC3IPDalElwtyLximYvGlVT9R8ZLs2baAEXAkbn9bFkksmo90?=
- =?us-ascii?Q?diu7HLyYLSayI5iuwWhAZQi0VwKJWLX+lGcIy0diwsvuuRNn9+E+GT/AexXg?=
- =?us-ascii?Q?eVgDawaaSphfEH+57ptNFL/KEJu3mbpcTpqe?=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:BN9PR11MB5276.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(7416014)(376014)(366016)(1800799024)(38070700021);DIR:OUT;SFP:1101;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?UHBTr1b/rAcbZnONhcdpo8fwj0o22jvK9PZz8Am435O2m0q8jabGwMHQCV03?=
- =?us-ascii?Q?YjmesUSfxZNrVDvqIB3qxySKAAp1JqO7MqYvcet1KnFKksmLrIvFeWwEAzDO?=
- =?us-ascii?Q?fVOIpE9pJG46ad0H7tzwabOzCGmtzs6A5aI+Xa7/TwgnAx1PAS4+Tp4YwFAM?=
- =?us-ascii?Q?l6oMh/zjwLc+4MuVqXptOyffV7UCZwNG9bFqAp+Phk0BBFRJ8rPl51oa1I51?=
- =?us-ascii?Q?+ObSzjKJkBGw7xBbBnXSs2cc7UYyRG+Xrw2FpdcuZG0EKn4FtkaT9KOHBgib?=
- =?us-ascii?Q?VSaaMm7kuk8wwf+CQApenwCa8oVB4Mwk90CgGDJrFD4QaIFdFeqPn2bFFDfV?=
- =?us-ascii?Q?JHN4omKgNJ5zncJNdIYZJP/++cOQ1KaFOy5gmbLOlQd0/fTwmM0bspBpi1UU?=
- =?us-ascii?Q?ByNG9hLA7OE0bGxsULwGsl2S0595sxILqVvRKSh+9tYZrqu7XGG6k0nT5cwu?=
- =?us-ascii?Q?Q+YtHzedcZlGfRq5RjP1t5KD4/svz4tU2UIGp0jZ4+4JkeGmzazEgwlSe1sc?=
- =?us-ascii?Q?t/ED6bIWDbBjSyBTRkUDl5o88g1gLIMrIT0GQXK02RbEdEWFdQ/kmzDx2rNE?=
- =?us-ascii?Q?3ukU/W74JFy+hW/5ELhTXPrGNT0wy1mkJwYSLvv7UjTvARuQCyuJ5+O7c40G?=
- =?us-ascii?Q?6f6Yrke0smc2HHi13i6I2A/Lz45KEMRxaAH0f0XWQpE+ggbxTBfwqOH9ttts?=
- =?us-ascii?Q?n8HUvfO6rGFaRgZlki/xeP6RDACl6P5iKfRivB/98fAoBgHpUC+uV1htA2th?=
- =?us-ascii?Q?LQbTUjN9EyU/2JYezh5rgnzaaDzXQv9cm1YsG2cPlH/U8m4a4uJhuobQEjcX?=
- =?us-ascii?Q?2JSc+QaVpl2R9nUoNs/Ln55n2wz4Uml0sI6GlTYt0K5a+hxYRFCrS5QSghYc?=
- =?us-ascii?Q?EYBw2JBdcaeVwfA7/khGa3u7QCMNjlD8hOvuqRHabvW4Dx/zyEnVoyRk9WdI?=
- =?us-ascii?Q?yBqiYkbXIZRNmfppGlG1rddxEiljeMq6gJmQsQ0ZRgnA9e18hjduFb5xqvyV?=
- =?us-ascii?Q?jdUVg9T2gLriCTgYNL8z7lZ4bigqadkBhriVl/ZCXtnMO0Or9FgW/dcRw0Im?=
- =?us-ascii?Q?pwPc546IlRDzFC0SWmuMMvt/jclT6uV0O29bSnJooeEMhVdrB4/J4LeJpMcT?=
- =?us-ascii?Q?QHwdPwyt1Y6gwjYipyEbblCPPuk64MgowU936KIzg8UX3w0xpxIfVBKFpxdm?=
- =?us-ascii?Q?8SyRcyinYfORLIQWwZyXyw/KwDUTzIANhIg+PqqB8IBVjupzIgUrKphjugxG?=
- =?us-ascii?Q?MtFFM+H5ERHKeRDzwMyyMBOputNivrgXhjj+uV5tChHOGWJIck2GbyJoSdWo?=
- =?us-ascii?Q?xdB4m88d+a6EWzG+qNwuM9LlEXOGAxA0yW2ecRrddJoO1HyMosYT9HeHTWuu?=
- =?us-ascii?Q?SObvvwp6iHIdEElU3ZuHxZUjbZQQ4s84tS9GmbyiMoZnGti5Y9XKonchO3di?=
- =?us-ascii?Q?+mfOs59uLKI/QQS5H+XSiVgjUUqkr5hE6gCHwIIxUHh7K00UBsJsUaEX7fWK?=
- =?us-ascii?Q?Q3wv9b9zKiOkuJJIWyxDkL6Jwxr9dGzFhgehf4Q4CU4swDJAeOeLYrVc/EW0?=
- =?us-ascii?Q?ef2jqegYT8u5WDArqIy1Iq3e1S7BB6bQWTfE0gu8?=
+	id 1vLVpK-00000001HB9-4AfX
+	for linux-rockchip@lists.infradead.org;
+	Wed, 19 Nov 2025 00:13:40 +0000
+X-QQ-mid: zesmtpgz8t1763511161tda318cee
+X-QQ-Originating-IP: WCyfxCkXQbLOI3rQhE9c7nxrHn2fqsWQwmCHFlbw4y8=
+Received: from [192.168.254.128] ( [106.150.157.243])
+	by bizesmtp.qq.com (ESMTP) with 
+	id ; Wed, 19 Nov 2025 08:12:38 +0800 (CST)
+X-QQ-SSF: 0000000000000000000000000000000
+X-QQ-GoodBg: 0
+X-BIZMAIL-ID: 8747622648211889514
+Message-ID: <77B4456916875131+5e15cfc7-61ef-4277-885e-f28f3f33380c@radxa.com>
+Date: Wed, 19 Nov 2025 09:12:37 +0900
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BN9PR11MB5276.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: d458caf0-aa60-4f97-c91f-08de26fe6562
-X-MS-Exchange-CrossTenant-originalarrivaltime: 18 Nov 2025 23:58:39.7452
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 1nVsPHHg5YFyiqu9uxtVQ/c0bNnjJI5AJqWGmW38r+Af11aUTJN/JfUiPQWh5F6+939B1YmXyvTc/0JT4Qp1XQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA3PR11MB8045
-X-OriginatorOrg: intel.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 4/4] arm64: dts: rockchip: Make eeprom read-only for
+ Radxa ROCK 3C/5A/5C
+To: Chukun Pan <amadeus@jmu.edu.cn>
+Cc: alchark@gmail.com, conor+dt@kernel.org, devicetree@vger.kernel.org,
+ dsimic@manjaro.org, heiko@sntech.de, krzk+dt@kernel.org,
+ linux-rockchip@lists.infradead.org
+References: <20251112035133.28753-5-naoki@radxa.com>
+ <20251113140020.919159-1-amadeus@jmu.edu.cn>
+Content-Language: en-US
+From: FUKAUMI Naoki <naoki@radxa.com>
+In-Reply-To: <20251113140020.919159-1-amadeus@jmu.edu.cn>
+X-QQ-SENDSIZE: 520
+Feedback-ID: zesmtpgz:radxa.com:qybglogicsvrsz:qybglogicsvrsz4b-0
+X-QQ-XMAILINFO: Ns5uoka424kMp4azHtaauTgrSlfx3MOH+MxTfFqT8buVllDVBcOJ0mQK
+	2biwZsnRyDOnQHZby+/mQ7LTZ994ScBza+mpYpqGZ5w7IZlmd4fWR2SXb92FBwi5J4mtAt2
+	TcCvRahfHHlOa15Qd2iiH9AzE4ZFIgQAqlNUufe3Q1oZwUDJd73aJ4gaPGGAWEYgxcLee9S
+	6r4/c5+9FUoZk1WeVU36JHSEm8Ds89qMptpNTz/S10JorKU6z6ovJeQQHv9CNqMhNLTdGvH
+	iQ5Zw+rTAfwtv54qcExQM3WDxFh8zdOMCJln9GF03BI6ZzZ11sU1ls/F13JB1s3rF0KPTSF
+	5Py0gbz0Jbu81GmxADjI828IFdnl4ybepesIYD4S+VlksqNNJJnbXfdIourIabprt2/OmXG
+	NgA/y1WMg+IGc68mDYBVureyzNpQGzw5cY1ZE4tGwMjfXCtCzCYbEapq9DI+G/FfuuS8LyL
+	sn8qOSdzbmhGU8SOjgJpQDk3nP022D0tCIgO+aRWFdMAT/K/82gPwom5RELpbz2iUoNEosZ
+	UG7q54/x9J7Bx+KzkTN84xDnu8xrw9dRbN7N7ht712EcVQOF44Clyb6ZOGtyMu3oRPL75lG
+	+hu8G/hzZBFKynKA4Iq8VIMBkaQcuvrvE0vYdZklNPP6VXnsv6tpz/tVPGPvmzP1SYmppsE
+	tQgtLk7XOmrtk0UXWUaR5OUzG7o49CDWRXv+F4ns3kswb4joQjNLdxg2mBNAuVRevUZq11G
+	toKIOode7nFO1OmIK3hSb6LAtXFwq1BaM7ydLq+WvYQvC5g/tdg0vdi3xJLntQSJ80dpzWy
+	VucWsE/Q4Cqt76724zFs0HUmnUHMlocomqqAuibTneKrGtF34LzJcOIbhN2vx38nQb87Vj9
+	CrWAFLoEWtSle8+hV51hHBotVu9YeDnt/8iijTd3TJJNDckWI+bDk20tPJycC7qbhNAFlmX
+	vgLA/dJh4PQUYBeYqtlsTaDc6yBkwQRd+81zwHeCuqa3t8w==
+X-QQ-XMRINFO: OWPUhxQsoeAVDbp3OJHYyFg=
+X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251118_155844_823082_DCAEE5BF 
-X-CRM114-Status: GOOD (  19.90  )
+X-CRM114-CacheID: sfid-20251118_161339_475261_60F04205 
+X-CRM114-Status: GOOD (  11.15  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -207,65 +83,44 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-> From: Jason Gunthorpe <jgg@nvidia.com>
-> Sent: Wednesday, November 19, 2025 2:59 AM
+Hi Chukun,
+
+On 11/13/25 23:00, Chukun Pan wrote:
+> Hi,
 > 
-> On Mon, Nov 17, 2025 at 06:38:51AM +0000, Tian, Kevin wrote:
-> > > From: Jason Gunthorpe <jgg@nvidia.com>
-> > > Sent: Friday, November 7, 2025 4:35 AM
-> > >
-> > > This old style API is only used by drivers/gpu/drm/msm,
-> > > drivers/remoteproc/omap_remoteproc.c, and
-> > > drivers/remoteproc/qcom_q6v5_adsp.c none are used on x86 HW.
-> > >
-> > > Remove the dead code to discourage new users.
-> > >
-> > > Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
-> > > ---
-> > >  drivers/iommu/amd/iommu.c | 7 -------
-> > >  1 file changed, 7 deletions(-)
-> > >
-> > > diff --git a/drivers/iommu/amd/iommu.c
-> b/drivers/iommu/amd/iommu.c
-> > > index 2e1865daa1cee8..d4d9a5dbfa6333 100644
-> > > --- a/drivers/iommu/amd/iommu.c
-> > > +++ b/drivers/iommu/amd/iommu.c
-> > > @@ -854,13 +854,6 @@ static void
-> amd_iommu_report_page_fault(struct
-> > > amd_iommu *iommu,
-> > >  						   PCI_FUNC(devid),
-> > > domain_id);
-> > >  				goto out;
-> > >  			}
-> > > -
-> > > -			if (!report_iommu_fault(&dev_data->domain-
-> > > >domain,
-> > > -						&pdev->dev, address,
-> > > -						IS_WRITE_REQUEST(flags) ?
-> > > -
-> > > 	IOMMU_FAULT_WRITE :
-> > > -
-> > > 	IOMMU_FAULT_READ))
-> > > -				goto out;
-> > >  		}
-> > >
-> > >  		if (__ratelimit(&dev_data->rs)) {
-> >
-> > Remove amd_iommu_report_page_fault() too?
+>> Make the BL24C16 EEPROM chips found on Radxa ROCK 3C, 5A and 5C SBCs
+>> read-only, [1] [2] [3] because they contain factory-programmed data
+>> that isn't supposed to be modified by the end users. [4]
 > 
-> I don't understand this remark?
-> 
-> amd_iommu_report_page_fault() generates the dmesg logging on iommu
-> faults?
+> Is this true? I confirmed that the EEPROM was empty when I submitted
+> the ROCK 3C support. Based on the Radxa boards I purchased, it seems
+> that only the "Network Computer" series SBC (E20C, E24C, E52C, E54C)
+> have production information in their EEPROM.
+
+I have confirmed with the Radxa internal team, and it is clear that for 
+"all" products, the EEPROM (regardless of whether data has been written 
+or not) is designated as: "The EEPROM is for factory data; users can 
+read it, but they are not expected to write to it." This confirms that 
+defining a read-only property is appropriate.
+
+I will be submitting a series of patches to add eeprom nodes for several 
+Radxa boards, and all of them will include the read-only property.
+
+Best regards,
+
+--
+FUKAUMI Naoki
+Radxa Computer (Shenzhen) Co., Ltd.
+
+> Thanks,
+> Chukun
 > 
 
-sorry I meant generating the dmesg logging same as other error
-types in iommu_print_event(). No need for a separate function.
 
 _______________________________________________
 Linux-rockchip mailing list
