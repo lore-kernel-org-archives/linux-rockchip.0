@@ -4,98 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B750CF394B
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Nov 2025 16:49:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86C68CF58C3
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Nov 2025 17:49:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=m7edaGQW+GVuBdFeJWAYsthtAH5vWbeInzMrADv2fno=; b=Zxj+5roh5NoYhm
-	a5CSMyGAK+WkdyBCCo0tsknAUdY0eWbt171tJ19/vte0lV93Sn7gYeuK4tMgOpeltdJfhm7Gct861
-	BSmNDZTDrrDJpFnf7CpptZXpkH231JhzxudkM1jtfKE4MqvPyTeAVPDZQUCdDIq6rOv3tvkSoXGaa
-	/vHK1D0QuDpQKUPtwMBnw0nDNeRpnj+eY5y3xg3/qqBf4itEW0p9aTVsecFRat9NxUYve4GBBLfzl
-	AfS6uvLpdZeER1ZNfK8Dn52qrdKYX8J9pWzazVjGx4sS/JUajdsorkB945yDpvQJCF1yyZSz5ZdJX
-	R7PYQYZThsfTVafTC3Xw==;
+	List-Owner; bh=yNQQBwoT7UMaBj+PJHq2ePTu+MBshTWTOVi64iJoV70=; b=zGoN5nNvPWgfZu
+	9JslQVu086RPrUu8DUnbYIjneynG7308y2IPEEJe/JAg2HbFeN3J5oLKJ6aMFwrOaFoDnjtavyH6e
+	eF1tqn25SXzHLMyPVWklbPytyUYYvx3q4lKsFlRzmCmBjPC+yjl4S8G7QibrXIC6KM6D+DncU99q5
+	1/V3f9n+9bDp8b2NFWLKPKTEEUsbZ22yryCzc20DPcz8EhQEHaJX5UfK4Ti9T2X2TPW1w8kRb2gVp
+	6PTqN8jC127St3+s/GsLGF22LeDZL+Q1pXzVPy94gbHEdn/CWBbLSvMH+JZ/JzzbZ2k3eBc7LD/T9
+	QVn+hJg+VxkFRprp+j5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLlMn-00000003jaY-2G1V;
-	Wed, 19 Nov 2025 16:49:13 +0000
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+	id 1vLmJ8-00000004HV9-1fXX;
+	Wed, 19 Nov 2025 17:49:30 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLlMk-00000003jZ3-4AAN
+	id 1vLmJ5-00000004HSB-0M8S
 	for linux-rockchip@lists.infradead.org;
-	Wed, 19 Nov 2025 16:49:12 +0000
-Received: by mail-wr1-x436.google.com with SMTP id ffacd0b85a97d-42b32a3e78bso5652298f8f.0
-        for <linux-rockchip@lists.infradead.org>; Wed, 19 Nov 2025 08:49:10 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1763570949; x=1764175749; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:date:message-id:subject
-         :references:in-reply-to:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=6AOLChH/q7xFQ5th9G1DIz4KNOULF7t5D3A23AyCZ4w=;
-        b=Unw392MNPOIXz8SZrCWTvnPbKCAx8HCOoL8pA4kieG3xNmsCLtvr4/9/kNAC+HaFBd
-         ZcRg1OOwAovr5fheIOKBBEbWHXr3A0NiQfSJ2+J9PDxfWMQ5WisWiZzJRgSjIjWwVf/Z
-         UmINQiQd8fyogBmrGYATnYLIFtRCPRubcx5b08vGHZ/TNaIYA+8de6ueyocfL6tN82DG
-         TdBL1+VScX34W/9asbNn91x/F7GcJHNA2I3bkBa84sP+d26L4zMVjpavvcETV/ycMOuE
-         vU+LJbDCs5smr4v0UY6c42D/Dib7+A46cj+N2cL5rEZqktwhgPxze7ET8f4S+i64IPSa
-         VXvg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1763570949; x=1764175749;
-        h=content-transfer-encoding:mime-version:date:message-id:subject
-         :references:in-reply-to:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=6AOLChH/q7xFQ5th9G1DIz4KNOULF7t5D3A23AyCZ4w=;
-        b=PjvxzXEeAYuKmw5vHt6ts9eOSBblbegfoHs9mNHw08pLTrowNcelZ3UCF8K0Towj7s
-         gC65gp+Hn0y/x/b13XpOCuKhry1k4L4lKwF8vPL2D9ne8tVhtPO60X7jGopGgs2IpmLD
-         MhZuvYfUsnAH0XUcmKhU+nIMdVm0ANeSbgAJY2B7TLN95seEzFg/X5NK/leU4uSycD0P
-         T0XlRngwMf7YwdU/xaoskek1/dN3nrjvOG3bW3LI8FVSNrRjlhsIKPxpqZmQjb3Pf+W4
-         V8tr7VhpEse3W8k5Tm4s5cMi3y+NEpoGjM2IsTGXskYlkb6r67t+AEl54dSzaS/C1cxw
-         trtA==
-X-Forwarded-Encrypted: i=1; AJvYcCU7EVtxxGG3ARtmwaoYXu+Q3jUYSbWUWdRBMDWYNisy7bAie27dKCTiaWdcOKzuiwoi89Iwq8wOXV3RcdonPA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwJm12lpW9R0Eu8KazmixE8rtxBAhkWJYW8sA5STrBgEb8q3hdv
-	lyU1wLoOfJub+3k5zqRBDDBemfIkmSgVHQucyRi+pvIyoeluWhbEWFy+oYTzErozBRs=
-X-Gm-Gg: ASbGncstIrnefXXaJx+zbO+Igg8wsnnfMMCZ9fYnAOyIFjT474UHN3SpnGSk0HSNZbs
-	WuVQoRLhNF5+5Nop2ZcumHSbAyZsQsCGkRQ/iJEj7ERLVUv9BMHIRZk6wmYc83DFG9emzmCe/wl
-	jLg0FlFesFKlbV/xxTvyxAnhgFnRJjA/drx3GskAfgja3Kz28fdMuBX1S/DjAlzeIsR9Qtfr4e7
-	BEakjgfvmLD0dSOkWBGA8rG0OQ3qm2HfBBbzLsA3VBvtXPEYA773PeSrpJ4+Y+tjw6Ta1h99AQr
-	Xzl3ylRdBwKC/2+rULMJeh0ApTLqFiGtl6aQosHtuSqV2+/eOvznc8ndhiLavD9MJ6BdV6V0N5k
-	39ETFaJ2AKnIgPCfzqkGH5sLsxOAWNjIIKZX9U/wHCY35yXULJ+S87fpEH6TcfEcRwrRdUQDfCq
-	K1Oyd+wz+psOzrCeNbN2TMknxXl8QfJqgZ+GcY99wMWQ==
-X-Google-Smtp-Source: AGHT+IEQBWB0Eg1zUiaC+C6Q6xYJagNpfFV4B79UXSjGVI8G4Xbkzgsvf6WhQGX2JHCRNzTrOV+mmw==
-X-Received: by 2002:a05:6000:1ace:b0:429:d33e:def1 with SMTP id ffacd0b85a97d-42b59378443mr21197697f8f.29.1763570949083;
-        Wed, 19 Nov 2025 08:49:09 -0800 (PST)
-Received: from arrakeen.starnux.net ([2a01:e0a:3d9:2080:52eb:f6ff:feb3:451a])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-42cb7fa3592sm117957f8f.21.2025.11.19.08.49.08
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 19 Nov 2025 08:49:08 -0800 (PST)
-From: Neil Armstrong <neil.armstrong@linaro.org>
-To: Jessica Zhang <jessica.zhang@oss.qualcomm.com>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Andy Yan <andy.yan@rock-chips.com>, Vinod Koul <vkoul@kernel.org>, 
- Kishon Vijay Abraham I <kishon@kernel.org>, Chaoyi Chen <kernel@airkyi.com>
-Cc: dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-phy@lists.infradead.org, 
- Chaoyi Chen <chaoyi.chen@rock-chips.com>
-In-Reply-To: <20251106020632.92-1-kernel@airkyi.com>
-References: <20251106020632.92-1-kernel@airkyi.com>
-Subject: Re: (subset) [PATCH 0/9] drm/rockchip: Introduce Rockchip RK3506
- VOP
-Message-Id: <176357094817.280640.17849339974679922280.b4-ty@linaro.org>
-Date: Wed, 19 Nov 2025 17:49:08 +0100
+	Wed, 19 Nov 2025 17:49:28 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1763574564;
+	bh=0pCFD5KvzUtit4qot1VdPXe6ibLJK2CITkuwqA5TScg=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=TrA8ZFroebQvyS5jU9CL/zRGJhsEpJo8D4mLi2orYcd3pgwklhxlmTC+IyC7Y8sJ0
+	 3FGQ1lfHcOg9+mFQT8Ty4/GEsAQSk9Pdi4llNmPp7nFd/y1RsiJLYFyetKugjJVh8W
+	 WOf7oKthWTrw7Uh9Q33s9BG/An5JOo9inkqcvRP4tGC1+qPXVrYG4BJ/qTDzt5/h+m
+	 NRFBPNTJEHMeZGwzYNgQc+C4h4+YlLqZF5X4ygz3L37hqoTnNhgFrnTrSMpEfXB32Y
+	 RxmZ33hDjpTksYZd4go/C4sRALybMV5mCH5t8/6298ffbhMNfYGPp5fV3A+5yoiQwK
+	 b8bxS41uNLgSA==
+Received: from [192.168.1.90] (unknown [82.79.138.145])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id C85FB17E0FFA;
+	Wed, 19 Nov 2025 18:49:23 +0100 (CET)
+Message-ID: <485c4a78-c20b-492a-8c27-07ef63323735@collabora.com>
+Date: Wed, 19 Nov 2025 19:49:23 +0200
 MIME-Version: 1.0
-X-Mailer: b4 0.14.3
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 2/3] drm/bridge: dw-hdmi-qp: Add support for missing
+ HPD
+To: Chris Morgan <macromorgan@hotmail.com>, Maxime Ripard <mripard@kernel.org>
+Cc: Chris Morgan <macroalpha82@gmail.com>,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ conor+dt@kernel.org, rfoss@kernel.org, tzimmermann@suse.de, jonas@kwiboo.se,
+ neil.armstrong@linaro.org, heiko@sntech.de, sebastian.reichel@collabora.com,
+ jernej.skrabec@gmail.com, dri-devel@lists.freedesktop.org,
+ andrzej.hajda@intel.com, andy.yan@rock-chips.com, krzk+dt@kernel.org,
+ robh@kernel.org, Laurent.pinchart@ideasonboard.com
+References: <20251113192939.30031-1-macroalpha82@gmail.com>
+ <20251113192939.30031-3-macroalpha82@gmail.com>
+ <avdnpwnxs6cql7eyckdt37szpcf5ztgxlc7juwu6tqj5xxu56a@nrwljig2p67i>
+ <SN6PR1901MB46548ED8D4BA1184E0EA7DC3A5D6A@SN6PR1901MB4654.namprd19.prod.outlook.com>
+ <hgwfztkwk4qgvefwo2cdedzas3rzlhx6yek6dgldkgaq2jskvw@exxqujjpa6bl>
+ <SN6PR1901MB46542ED12EF34220E3119460A5D7A@SN6PR1901MB4654.namprd19.prod.outlook.com>
+Content-Language: en-US
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+In-Reply-To: <SN6PR1901MB46542ED12EF34220E3119460A5D7A@SN6PR1901MB4654.namprd19.prod.outlook.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251119_084911_069765_48519C40 
-X-CRM114-Status: UNSURE (   7.98  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251119_094927_301249_5526653A 
+X-CRM114-Status: GOOD (  22.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,30 +86,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-On Thu, 06 Nov 2025 10:06:23 +0800, Chaoyi Chen wrote:
-> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+On 11/19/25 6:24 PM, Chris Morgan wrote:
+> On Wed, Nov 19, 2025 at 10:02:23AM +0100, Maxime Ripard wrote:
+>> On Tue, Nov 18, 2025 at 02:36:09PM -0600, Chris Morgan wrote:
+>>> On Tue, Nov 18, 2025 at 09:46:04AM +0100, Maxime Ripard wrote:
+>>>> Hi,
+>>>>
+>>>> On Thu, Nov 13, 2025 at 01:29:38PM -0600, Chris Morgan wrote:
+>>>>> From: Chris Morgan <macromorgan@hotmail.com>
+>>>>>
+>>>>> Add support for the dw-hdmi-qp driver to handle devices with missing
+>>>>> HPD pins.
+>>>>>
+>>>>> Since in this situation we are now polling for the EDID data via i2c
+>>>>> change the error message to a debug message when we are unable to
+>>>>> complete an i2c read, as a disconnected device would otherwise fill
+>>>>> dmesg with i2c read errors.
+>>>>>
+>>>>> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+>>>>
+>>>> You must also disable any mode using the scrambler when there's no
+>>>> hotplug interrupt available.
+>>>
+>>> Is there a simple way to do that? I'm not seeing any references to
+>>> scrambling in the current driver.
+>>>
+>>> Should I just limit the rate to HDMI14_MAX_TMDSCLK (340000000)  under
+>>> dw_hdmi_qp_bridge_tmds_char_rate_valid() if using EDID polling? A
+>>> document I found online from Synopsys [1] claims that scrambling is
+>>> used by default at rates above 340 (if I'm reading it right) and used
+>>> opportunistically at rates below 340.
+>>
+>> Yep, that's what you should be testing for :)
+>>
+>> Maxime
 > 
-> The VOP on rk3506:
-> - Support 2 lane MIPI DSI interface, 1.5Gbps/lane.
-> - Support RGB interface.
-> - Max output resolution is 1280x1280@60fps.
-> - WIN1 layer support RGB888/ARGB8888/RGB565.
-> - Support Gamma LUT.
-> 
-> [...]
+> Thanks, though now that I dig into it I'm a bit more confused on the
+> best way forward. It looks like for today the driver is hard-limited
+> to HDMI14_MAX_TMDSCLK because scrambling isn't supported. I'm assuming
+> it will be at some point, suggesting that we *will* need this in the
+> future. Is it sufficient to just add a comment there noting we need
+> to check, or should I add a check there (that does nothing today)
+> to ensure when we do support faster rates we are ready?
 
-Thanks, Applied to https://gitlab.freedesktop.org/drm/misc/kernel.git (drm-misc-next)
+I plan to work on upstreaming the scrambling support soon.  Adding a TODO
+comment would be enough for me to take care of the rest, but I'll still need
+your help to get that tested, though. :-)
 
-[1/9] dt-bindings: ili9881c: Add compatible string for Wanchanglong w552946aaa
-      https://gitlab.freedesktop.org/drm/misc/kernel/-/commit/15e794bcbc9527736d33c96412ce077bd817d9af
-[5/9] drm/panel: ilitek-ili9881d: Add support for Wanchanglong W552946AAA panel
-      https://gitlab.freedesktop.org/drm/misc/kernel/-/commit/89b34ebed02ee39ae02069dcf2e5728aceec9deb
-
--- 
-Neil
-
+Cristian
 
 _______________________________________________
 Linux-rockchip mailing list
