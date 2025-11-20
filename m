@@ -4,64 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DF11CF8549
-	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Nov 2025 17:11:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 390EBCF9C77
+	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Nov 2025 17:12:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
 	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tRSkmoh4JtMG3qJbxjAj0WKZvsgyLFUBAw7BqP7nOcU=; b=iKDNHYbz3UqAmq
-	UEPlq1RnYMS7l2WGGGw7ugvIfiNAbPShXUIfBiOzDSvZpsGnvUI5zF0BKKihYjp1x17aaeppeKfX7
-	CkyYAcyQWJdESb/uJYoaPRl2PlMgQGAll/a2ME7l1zwY5dieRd/AM0bMiDwMIYGeNEME526Wc4XgZ
-	DG3bY1T/0HLRaZst8JmHE7sqM5sHFL4gp9iPtu8oRP0h03z1yAMi348m9M5ohjyJTTfFBWyS8aSN6
-	ak4+cwkV5Gd4McbnSDGEsxtl69bbHxvJl09E3ZynGE1tkuVJKGecqLiFtQKX1WaM1jsPZIpwnyVw8
-	dmN8Waw6O+AQRQmaG1yw==;
+	List-Owner; bh=01q6MX3wdcL4BSs5Guex1NhabqEyJmibbt4dGt95JYY=; b=le0bfRW7BTcdKy
+	22a9tuvWoxrhjgRU/83u2+gkTi/B2sijRG88cUx90xaxHiXwllOY3Q7fFHyS5HYMn6INqX8Oet0OE
+	3teVDnTzYITmbIUhK+/ngqGnWIxi3P8gTbQ2rVPkeT/Rf8xhxP1FnPNcq3as7WCc/re69WhrXTjBj
+	lgBuqVN5VaXW84a3DjD99exLyIQ8Hr/yfsBEFAwJOwv8Ote0epE2pP4f12UW86U8FNGJHev1X/7or
+	7WZk5pZ2pVWWTD4vIrBDd8/QyWjt8tKdzYN2B/2+MK4o3ux+TDLv8hfTO6jD41kBGJaD3jrXDEx7P
+	j+8G79DEJag5ToxCbVpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vM8Bo-000000073wh-2KLh;
-	Thu, 20 Nov 2025 17:11:24 +0000
+	id 1vM8CR-000000074HJ-2vic;
+	Thu, 20 Nov 2025 17:12:03 +0000
 Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vM8Bm-000000073vI-1ohU;
-	Thu, 20 Nov 2025 17:11:22 +0000
+	id 1vM8CP-000000074FI-2Iqf;
+	Thu, 20 Nov 2025 17:12:01 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id D723B601D5;
-	Thu, 20 Nov 2025 17:11:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1CA96C4CEF1;
-	Thu, 20 Nov 2025 17:11:15 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 031BB601A2;
+	Thu, 20 Nov 2025 17:12:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A8D9CC116C6;
+	Thu, 20 Nov 2025 17:11:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1763658681;
-	bh=TfM2YGVstdUmq53j7IGiDD+amyYXGtUqIi5XE9Ifz5g=;
+	s=k20201202; t=1763658720;
+	bh=306eperlM4wCcbGW8nKxdjfPeNuuV0fZ9m1o8JhX/MQ=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=c5uFQpvh4EUbZUfHI+5dPnMVhzGhcSvQWpCEZdWd9vKaFLSpJcbsiNlywguxdr/3Q
-	 2pu7Pn2ytetA9M7shWSXDZfs/I5HVOtl/RQT/Dap0d0gjW/wnBVey2VN99wk3u+CVx
-	 +POI0wDOrFmOt5lpqkTxQh4eXMgNo+lB21aD2KkGPXOoMT3FCwG547zhHbTyjnwW/6
-	 5w/9/cnJDPUgPAZx0H4Zgu9G9yCkj3OdamRno+nFbXp1zU0EJDDuHhd3/foxfSH0wa
-	 MQlAwk7ObCBIBJuRIDY+VEnPTi5QhMCeQ3OlwUIXkAgK3DAkVOnzJpBIa2x9c5IWCH
-	 EPI5YSHLK0d4Q==
+	b=RIarhtuRylKTVhhYPhhuyippL3Niv51E7buXzAxQ3IoTW9Sqj5JbHJ3wlL6hJck42
+	 I4pMQkyPuJmoNrdGD0f2tQ1QPNvJwS+czhAn90atHO2A4SVGdSenez/rnlCi1yKVn8
+	 oe+Yqr/zPoobs4RvYo0tNYOgtAOdYNCpcISb/6sWl2eFI3wXFn2de5nzOuF9m5HEjM
+	 aXH34muDTqbLwtvJyZxG90lFLXvaxhjBIVCki040e4+EAX4li1+bf11S3Rdx/liChH
+	 O0qGeG4l2Q/Ihu/UTdBQLluVETuyOTL99Mq1W9rkmmsa1m0uqjOL7aZ5yZ2cEeW63Z
+	 Q5+lz/JuZZDDg==
 From: Vinod Koul <vkoul@kernel.org>
-To: Neil Armstrong <neil.armstrong@linaro.org>, 
- Jessica Zhang <jessica.zhang@oss.qualcomm.com>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Andy Yan <andy.yan@rock-chips.com>, 
- Kishon Vijay Abraham I <kishon@kernel.org>, Chaoyi Chen <kernel@airkyi.com>
-Cc: dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-phy@lists.infradead.org, 
- Chaoyi Chen <chaoyi.chen@rock-chips.com>
-In-Reply-To: <20251106020632.92-1-kernel@airkyi.com>
-References: <20251106020632.92-1-kernel@airkyi.com>
-Subject: Re: (subset) [PATCH 0/9] drm/rockchip: Introduce Rockchip RK3506
- VOP
-Message-Id: <176365867573.207696.11271190998956084830.b4-ty@kernel.org>
-Date: Thu, 20 Nov 2025 22:41:15 +0530
+To: Kishon Vijay Abraham I <kishon@kernel.org>, 
+ Heiko Stuebner <heiko@sntech.de>, Dmitry Baryshkov <lumag@kernel.org>, 
+ Algea Cao <algea.cao@rock-chips.com>, 
+ Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: kernel@collabora.com, linux-phy@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, Andy Yan <andy.yan@rock-chips.com>
+In-Reply-To: <20251028-phy-hdptx-fixes-v1-0-ecc642a59d94@collabora.com>
+References: <20251028-phy-hdptx-fixes-v1-0-ecc642a59d94@collabora.com>
+Subject: Re: [PATCH RESEND 0/3] Fixes for phy-rockchip-samsung-hdptx
+Message-Id: <176365871731.207696.6981124772253997386.b4-ty@kernel.org>
+Date: Thu, 20 Nov 2025 22:41:57 +0530
 MIME-Version: 1.0
 X-Mailer: b4 0.13.0
 X-BeenThere: linux-rockchip@lists.infradead.org
@@ -81,22 +73,24 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Thu, 06 Nov 2025 10:06:23 +0800, Chaoyi Chen wrote:
-> The VOP on rk3506:
-> - Support 2 lane MIPI DSI interface, 1.5Gbps/lane.
-> - Support RGB interface.
-> - Max output resolution is 1280x1280@60fps.
-> - WIN1 layer support RGB888/ARGB8888/RGB565.
-> - Support Gamma LUT.
+On Tue, 28 Oct 2025 10:00:53 +0200, Cristian Ciocaltea wrote:
+> These patches were initially part of the HDMI 2.1 FRL support series [1]
+> aiming to provide a few fixes for the Samsung HDMI/eDP Transmitter Combo
+> PHY.
+> 
+> I'm sending this as a distinct series right now, since the FRL part
+> might require additional time for review.
 > 
 > [...]
 
 Applied, thanks!
 
-[2/9] dt-bindings: phy: rockchip-inno-dsidphy: Add compatible for rk3506
-      commit: 323c5c05a0a07b931ede1fa0a3396a1a165ed798
-[6/9] phy: rockchip: inno-dsidphy: Add support for rk3506
-      commit: 785a9d5bb145109558063080ebc9a3e8be86471d
+[1/3] phy: rockchip: samsung-hdptx: Fix reported clock rate in high bpc mode
+      commit: 72126e9623e1696ea83c77ef6d0306a6263bdd6b
+[2/3] phy: rockchip: samsung-hdptx: Reduce ROPLL loop bandwidth
+      commit: 8daaced9f5eeb4a2c8ca08b0a8286b6a498a8387
+[3/3] phy: rockchip: samsung-hdptx: Prevent Inter-Pair Skew from exceeding the limits
+      commit: 51023cf6cc5db3423dea6620746d9087e336e024
 
 Best regards,
 -- 
