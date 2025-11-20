@@ -4,63 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7939CFA44A
-	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Nov 2025 22:23:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8F78CFA44D
+	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Nov 2025 22:23:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Yg7jeuyZXrp4jKc/JkHJwOOcjlWBNUD4u14CMqlO1rw=; b=AMJUdLCzTNvPZd
-	W4NutKYplcjZOHezy0tTVTsqLroP4fLfjzQPg1/qahHVeUfcCWdQj2MUpXRjJqtI0JSFyHJUrq4Ji
-	SeVveuLQUX6fqAnyh6qJoxg0djENAbcreHxYj+Mk4LWT04AU7DhZIfL8chimTn399s/D0+bJRHfXk
-	bHFibBVNt5SAoBA2kPklZ/rq276G3JbNsfjwAggMnUx5Yu02OZfD/PEGOgoNx0GrPMIRkFg6dJtM0
-	7Y6q7MOmAJDb8v7qsTGTqBT4d7DY/ti7nzcTmZvtyNbdg+65cBnxWBxCu7eaAtgq+jLtRJa3zuxXB
-	k5jPC2AoBRfbA4Su8nvQ==;
+	List-Owner; bh=0tXU6PC1ht66smaxf8E8+V0J4OuD2tELKYgvg5lZQLg=; b=NtDAUf3WACzniw
+	ylUF543PZB4exTqDLHg5rIB8wlUUGqY5/8y/F2avb2sVVEjjkHXgSAji5FI/Bo5edd+tyhF5pmQLP
+	ab1MVbnQOUlesU+tiAozfK/sU7C+qEZ9czn6Zw3zgKSpk/7Zdm81+BJLJAnHXtN+4n+fvTell7aaH
+	JwkptO8ID++S5iWFcEtqumoRn68bZTwZ6cM1FzLmKBtI83TRUbdUvcav09OUdgy7yXyijPZXoMh/c
+	ypXES7TnSzXkcdPtYBXUTjIvMV5jwQmrgAwy3A454U3bcwuxN8YE+Z9ErGaQFN+1r+8z2HFzgvfFm
+	E5l/+0yVeCKVdN6nxLJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vMD3k-00000007WBY-1JAr;
+	id 1vMD3k-00000007WBt-2Otl;
 	Thu, 20 Nov 2025 22:23:24 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vMD3e-00000007W8e-0Yx6;
+	id 1vMD3e-00000007W8f-0mJO;
 	Thu, 20 Nov 2025 22:23:21 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=DYW7+E3+ZRYpb0k1MxjDaTsNzXpLgps73MqJR9tSzS8=; b=czdiC1AKwdqmGufkwNpW4A0Sfu
-	BNNNTAeV9zqozraTg/kbe/5RfJaR13BJVm+mB8qU0Au9LnDbHIkrVrk0geh2mFdP8Kry1+MgcSZvl
-	dgjT/B/d+zwKTCwjGBV2WjiVaoFZ5ZWcIkHT5LJYUVMUgC2g1Oi5t4G1AkmIDlpH9m4toT+Z26cXi
-	OQnklGIBVzIaRudPTYTXHxJMcJ/0e16Axs5YktuBT/eXRl2PXlOGrr0PNR4x98NTl9/SKMLfXrg0j
-	e+dJwDXc1/U4qtCw9mu/E+t99Ii6IiiFlHlF7MPwA0aVcuyp9E9CUveruex2LyqXNwgQY10w1mRe+
-	Z2SFLWIA==;
+	bh=ay8G70TckXdWe0geBLoljoycveBYJmFxR6OBjgKDvCc=; b=GrDEL2lUZb+iMM2U6dyw1oWvgB
+	F6SkWcwJhO2331gNGz8Ujq9IJ1839/huZe55UrbsqN9ZbSIA/Qntx1EI8lj05BQk1Gg2ELNYSxQVH
+	a/ODTCDwU9CMDiaeshGJW1Mg1JHisdNLs8nkb5aNruyIeye+W2iUchlgWckP9ku89qC8kn6SfQ9qi
+	ptNwjKulD56Pm7Fr33LRmcz+AyYnjBXyXTlC8Y6CqjnLsW7oVwJ4G2z8Ke2mtKRux4ZWVjNgik/D9
+	M/dHQsu5vO0T4upaoRhXhuDw6H6J0qQET5ipKeTGTJrY7M0++rTpJNXr6xgYwG+TV01ihQOLJ98Xe
+	yhtknFVQ==;
 Received: from [213.192.12.196] (helo=phil..)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1vMD3Z-0007Je-5r; Thu, 20 Nov 2025 23:23:13 +0100
+	id 1vMD3a-0007Je-KO; Thu, 20 Nov 2025 23:23:14 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Michael Opdenacker <michael.opdenacker@rootcommit.com>
+To: mturquette@baylibre.com,
+	sboyd@kernel.org,
+	robh@kernel.org,
+	p.zabel@pengutronix.de,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	Elaine Zhang <zhangqing@rock-chips.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
+	linux-clk@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: Re: [PATCH v3 0/2] arm64: dts: rockchip: add Tinker Board 3 and 3S device tree
-Date: Thu, 20 Nov 2025 23:23:03 +0100
-Message-ID: <176367711163.9778.16671960189532919719.b4-ty@sntech.de>
+	finley.xiao@rock-chips.com,
+	sugar.zhang@rock-chips.com
+Subject: Re: (subset) [PATCH v7 0/5] clk: rockchip: Add clock controller for the
+Date: Thu, 20 Nov 2025 23:23:05 +0100
+Message-ID: <176367711155.9778.8068115837215397006.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20251118-tinker3-v3-0-2903693f2ebb@rootcommit.com>
-References: <20251118-tinker3-v3-0-2903693f2ebb@rootcommit.com>
+In-Reply-To: <20251111025738.869847-1-zhangqing@rock-chips.com>
+References: <20251111025738.869847-1-zhangqing@rock-chips.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251120_142320_053010_ED3EE70B 
-X-CRM114-Status: GOOD (  12.28  )
+X-CRM114-CacheID: sfid-20251120_142320_048123_1DFB4056 
+X-CRM114-Status: GOOD (  11.77  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,29 +83,31 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Tue, 18 Nov 2025 15:56:41 +0000, Michael Opdenacker wrote:
-> Add initial device tree support for Asus Tinker Board 3 [1] and 3S [2],
-> which are SBCs based on the Rockchip 3566 SoC.
+On Tue, 11 Nov 2025 10:57:33 +0800, Elaine Zhang wrote:
+> Add yaml and dt-bindings for the RV1126B and RK3506.
+> RK3506 depend on patches 1/5, so it is merged and submitted.
 > 
-> The "3S" version ("S" for "storage") is just a regular Tinker Board 3
-> fitted with a 16 GB eMMC and a "mask ROM" DIP switch
-> (to mask the eMMC and enter "Mask ROM" mode for recovery).
+> Change in V7:
+> [PATCH v7 1/5]: No change
+> [PATCH v7 2/5]: Redefine clk id(start at 0), drop RESETN for reset id.
+> [PATCH v7 3/5]: Drop RESETN for reset id.
+> [PATCH v7 4/5]: Fix "description: |", drop RESETN for reset id.
+> [PATCH v7 5/5]: Drop RESETN for reset id.
 > 
 > [...]
 
 Applied, thanks!
 
-[1/2] dt-bindings: arm: rockchip: Add Asus Tinker Board 3/3S
-      commit: f4e81d0b95f3257a2fcfdbfaa2d8ed41015c621b
-[2/2] arm64: dts: rockchip: Add Asus Tinker Board 3 and 3S device tree
-      commit: 9f80b3952318d7ef18573a5010f06118602f992e
+[1/5] clk: rockchip: Implement rockchip_clk_register_armclk_multi_pll()
+      commit: 826eaa8f5bac6e919cf7c0b4161b2d783fdc45b3
+[2/5] dt-bindings: clock, reset: Add support for rv1126b
+      commit: d0d9a9629f505ac70e1ffd172e092ff71f5d989a
+[3/5] clk: rockchip: Add clock controller for the RV1126B
+      commit: 652c108cc44cd961b58b2998ff429f11ee60c9fd
 
-Changed the property sorting of the RTC and also migrated all the
-pinctrl names to match the schematics.
-
-When creating pinctrl entries, please always _try_ to use the names
-found in the device schematics. This makes it way easier in the future
-to find one from the other :-)
+Please address the review comments received from the DT maintainers for
+the RK3506 binding - adding the xin24m supply clock, that is also
+present on that RK3506, as with all previous socs :-)
 
 
 Best regards,
