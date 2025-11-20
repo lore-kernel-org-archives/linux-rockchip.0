@@ -4,56 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 390EBCF9C77
-	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Nov 2025 17:12:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F29BACF8549
+	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Nov 2025 17:12:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
 	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=01q6MX3wdcL4BSs5Guex1NhabqEyJmibbt4dGt95JYY=; b=le0bfRW7BTcdKy
-	22a9tuvWoxrhjgRU/83u2+gkTi/B2sijRG88cUx90xaxHiXwllOY3Q7fFHyS5HYMn6INqX8Oet0OE
-	3teVDnTzYITmbIUhK+/ngqGnWIxi3P8gTbQ2rVPkeT/Rf8xhxP1FnPNcq3as7WCc/re69WhrXTjBj
-	lgBuqVN5VaXW84a3DjD99exLyIQ8Hr/yfsBEFAwJOwv8Ote0epE2pP4f12UW86U8FNGJHev1X/7or
-	7WZk5pZ2pVWWTD4vIrBDd8/QyWjt8tKdzYN2B/2+MK4o3ux+TDLv8hfTO6jD41kBGJaD3jrXDEx7P
-	j+8G79DEJag5ToxCbVpg==;
+	List-Owner; bh=EYR86GEvDTlJC/lw7yH0sRAU43RueCNVjhC3ZDLLQd8=; b=F6bF4wWh4a85oY
+	gMehJF7tjCx55tnK3CqPZDPNxT9eQhE8MXq/y/rUyU6MU2aXEHmYWH1ibJQ0hSvMs5c6PqIYIoLzg
+	tSNdhHcD9BqiXN/ySrIhTu2rzPy2M/W3y4UYLVy4NGkhlZChyTX4dzxCV+aC+0a1rANLiFbLm6kVb
+	sG4RPpIoyBwZTrZRcQFkSmYSB+2PGJZwA/OhBhlisKKSSwwRcKKQak52HoPmdWWFqqkpyL0h9rSnE
+	rnZqTi/B3tSiESyBz4La60FYE6qlXfKuxLrQSUFWI8VgV2ZpsO1G5vhEICS+Lp/nt+JK0yTNcvZpi
+	Bt8nau9Wu9YX2/huwElQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vM8CR-000000074HJ-2vic;
-	Thu, 20 Nov 2025 17:12:03 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vM8CU-000000074Jw-15gu;
+	Thu, 20 Nov 2025 17:12:06 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vM8CP-000000074FI-2Iqf;
-	Thu, 20 Nov 2025 17:12:01 +0000
+	id 1vM8CR-000000074Gy-3UaN;
+	Thu, 20 Nov 2025 17:12:03 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 031BB601A2;
+	by tor.source.kernel.org (Postfix) with ESMTP id 4583F601D9;
+	Thu, 20 Nov 2025 17:12:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5308DC116D0;
 	Thu, 20 Nov 2025 17:12:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A8D9CC116C6;
-	Thu, 20 Nov 2025 17:11:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1763658720;
-	bh=306eperlM4wCcbGW8nKxdjfPeNuuV0fZ9m1o8JhX/MQ=;
+	s=k20201202; t=1763658723;
+	bh=TZ7UcwAhWUQhR7KDTDdYhyKcJHFIZ+LO4pE367CenvU=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=RIarhtuRylKTVhhYPhhuyippL3Niv51E7buXzAxQ3IoTW9Sqj5JbHJ3wlL6hJck42
-	 I4pMQkyPuJmoNrdGD0f2tQ1QPNvJwS+czhAn90atHO2A4SVGdSenez/rnlCi1yKVn8
-	 oe+Yqr/zPoobs4RvYo0tNYOgtAOdYNCpcISb/6sWl2eFI3wXFn2de5nzOuF9m5HEjM
-	 aXH34muDTqbLwtvJyZxG90lFLXvaxhjBIVCki040e4+EAX4li1+bf11S3Rdx/liChH
-	 O0qGeG4l2Q/Ihu/UTdBQLluVETuyOTL99Mq1W9rkmmsa1m0uqjOL7aZ5yZ2cEeW63Z
-	 Q5+lz/JuZZDDg==
+	b=Md0EoynvvDdeTGZq18pbq4cD9xiTvbXkjXaJZDM36u78bNWkuxqljtBzo5SE2xr1W
+	 kKzI432byuixijVBvTpMvIkvP7Y8nt9fmo6leyCN1KtBEI/HJQ6xtQa2fbGGoN1Pk8
+	 y05+HRMdL91MIYagx4F5D5utpVC905C6lsgKIQwMqrbCQVWOhGtSAiF5jSVqVALay4
+	 ZJS2YPixFiypFBmHBmwKL1sKs3Et7VrOtHbGPftYxWJanx1TjvPZghJ9LyGKMdKuRS
+	 U6ttAX7Z8vSNsCFxN+ZqqfLJq9/R229ki4Bej2ih/4rEKXUNPOwGcBEXvb24l/9I5T
+	 XCjj2xKRZVdMg==
 From: Vinod Koul <vkoul@kernel.org>
-To: Kishon Vijay Abraham I <kishon@kernel.org>, 
- Heiko Stuebner <heiko@sntech.de>, Dmitry Baryshkov <lumag@kernel.org>, 
- Algea Cao <algea.cao@rock-chips.com>, 
- Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: kernel@collabora.com, linux-phy@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, Andy Yan <andy.yan@rock-chips.com>
-In-Reply-To: <20251028-phy-hdptx-fixes-v1-0-ecc642a59d94@collabora.com>
-References: <20251028-phy-hdptx-fixes-v1-0-ecc642a59d94@collabora.com>
-Subject: Re: [PATCH RESEND 0/3] Fixes for phy-rockchip-samsung-hdptx
-Message-Id: <176365871731.207696.6981124772253997386.b4-ty@kernel.org>
-Date: Thu, 20 Nov 2025 22:41:57 +0530
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Kishon Vijay Abraham I <kishon@kernel.org>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, 
+ Heiko Stuebner <heiko@sntech.de>, linux-phy@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org
+In-Reply-To: <1763459526-35004-1-git-send-email-shawn.lin@rock-chips.com>
+References: <1763459526-35004-1-git-send-email-shawn.lin@rock-chips.com>
+Subject: Re: [PATCH v2 1/2] phy: rockchip: naneng-combphy: Fix PCIe L1ss
+ support RK3528
+Message-Id: <176365872091.207696.17487424973195215305.b4-ty@kernel.org>
+Date: Thu, 20 Nov 2025 22:42:00 +0530
 MIME-Version: 1.0
 X-Mailer: b4 0.13.0
 X-BeenThere: linux-rockchip@lists.infradead.org
@@ -73,24 +72,20 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Tue, 28 Oct 2025 10:00:53 +0200, Cristian Ciocaltea wrote:
-> These patches were initially part of the HDMI 2.1 FRL support series [1]
-> aiming to provide a few fixes for the Samsung HDMI/eDP Transmitter Combo
-> PHY.
+On Tue, 18 Nov 2025 17:52:05 +0800, Shawn Lin wrote:
+> When PCIe link enters L1 PM substates, the PHY will turn off its
+> PLL for power-saving. However, it turns off the PLL too fast which
+> leads the PHY to be broken. According to the PHY document, we need
+> to delay PLL turnoff time.
 > 
-> I'm sending this as a distinct series right now, since the FRL part
-> might require additional time for review.
 > 
-> [...]
 
 Applied, thanks!
 
-[1/3] phy: rockchip: samsung-hdptx: Fix reported clock rate in high bpc mode
-      commit: 72126e9623e1696ea83c77ef6d0306a6263bdd6b
-[2/3] phy: rockchip: samsung-hdptx: Reduce ROPLL loop bandwidth
-      commit: 8daaced9f5eeb4a2c8ca08b0a8286b6a498a8387
-[3/3] phy: rockchip: samsung-hdptx: Prevent Inter-Pair Skew from exceeding the limits
-      commit: 51023cf6cc5db3423dea6620746d9087e336e024
+[1/2] phy: rockchip: naneng-combphy: Fix PCIe L1ss support RK3528
+      commit: a2a18e5da64f8da306fa97c397b4c739ea776f37
+[2/2] phy: rockchip: naneng-combphy: Fix PCIe L1ss support RK3562
+      commit: be866e68966d20bcc4a73708093d577176f99c0c
 
 Best regards,
 -- 
