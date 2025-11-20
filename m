@@ -4,107 +4,157 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E60DDCFA443
-	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Nov 2025 19:00:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA563CF9C7A
+	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Nov 2025 19:33:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Date:Cc:To:Message-Id:MIME-Version:
-	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=DBc6LLJIBPQV50V+EqJIAmNCjU6VJpc+EkmwzP8aeDU=; b=EKEPNDq1eRm5U3
-	2Ii+3oT/FC5kzzSwOsdioVnBlalcRVWkn7kkNMCuNvD1HBDfZm6f0Enew6Dochsy7aS7isVW3qYp1
-	jh1suwulw5qHgXpKPfMz+uuWTQV4vjjTJt3aZOEBNMm2pSq0yS8lP6iXb6KRmUE76ZOfDbA0ZhJbN
-	jJhxxsAVe5rvSeylW2CHfaMscuwSrYRKosxsaVoxbg58qR7RdqmDF4YArs/7GoOybGmuaBOCN6HCF
-	Os4ZiPXLZn3k7Dy2ZExLJtLSUMTxEG930vWg2ONLvSB/ffIYkbxpbgJC59czWynLDJQ+lyj2PRXsy
-	uNbEHFclcmGynCQNMQLg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=pNKtZKfL2EaxGdwriX0mSmzX1/PLYIS6+MKzhXghGQE=; b=BRL44NqEvcNumx
+	Z5n4BFCmXHInGzWXJhJfgd/ONFF9uJgRTIRFInORylg7r1L84s0ExdxsVXYOXQmTH08WW0I9PnF7D
+	khpGo10/8EcuVAHFNKCoa2AtM3mFxlMRQcgrDrm3SMeUpf+SeiYQgEi4+gvD5rWFt5cLjBhmF/mqR
+	v/LUzubgg8R4gGPWDeBEHaz4I9C/phafG4D/f8/Zro/UwZv5ZxjhA58JI1/Nt+BJi8qB4UxfywDqr
+	yK053lMqsV2C3y9keTeGzAgVBHMSIoo+i3kyiQh1mEhGSU0+feribg6/sTIopTYd9FUpylIapXERD
+	w09uLEu/U3nsDHgCAb4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vM9tf-00000007Ftp-1ItQ;
-	Thu, 20 Nov 2025 19:00:47 +0000
-Received: from hedgehog.cherry.relay.mailchannels.net ([23.83.223.81])
+	id 1vMAPe-00000007Hid-3BD1;
+	Thu, 20 Nov 2025 19:33:50 +0000
+Received: from mail-northcentralusazon11012030.outbound.protection.outlook.com ([40.107.200.30] helo=CH5PR02CU005.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vM9tb-00000007FtK-3zwV;
-	Thu, 20 Nov 2025 19:00:45 +0000
-X-Sender-Id: hostingeremail|x-authuser|michael.opdenacker@rootcommit.com
-Received: from relay.mailchannels.net (localhost [127.0.0.1])
-	by relay.mailchannels.net (Postfix) with ESMTP id 316AA8A16BC;
-	Thu, 20 Nov 2025 19:00:39 +0000 (UTC)
-Received: from de-fra-smtpout3.hostinger.io (100-98-121-252.trex-nlb.outbound.svc.cluster.local [100.98.121.252])
-	(Authenticated sender: hostingeremail)
-	by relay.mailchannels.net (Postfix) with ESMTPA id 390268A103B;
-	Thu, 20 Nov 2025 19:00:37 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; d=mailchannels.net; s=arc-2022; cv=none;
-	t=1763665238;
-	b=Pinu1RcfNLrxVbkFsgs/fr0F6O4bVKf2NMgdl3RRqRClEevkJXGYqtBTfQ7UgQzqjozbva
-	cEpwFe3jgX7Oprg8L67MWomD4m2mo8zj7sNX5roeiNk1JRdosOkjaJ3xpkywaLVDpw+hbe
-	iP4pLpCt9tb3mHTp+ESfm7+HDRzZR3XD9LRyhQM0SoaMchrehdQ7WLpkmsaxckCQ/z3gOw
-	WqX7CScx8XbnyNSvCF2ljV7s66v9t4wwxhTGXuJfH+V6Q73NP+lwFkZEwBWlWQrF7VsbLY
-	Wng4ceayU3b3NtGCQIDdA9vHtYZBhbW7TKZD715Clb0AMkBJ1ggqxqS2MHB7ng==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mailchannels.net;
-	s=arc-2022; t=1763665238;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:dkim-signature;
-	bh=GMZhcN2wxaEKVyD7wZBJpczX20+L4j02F2j/QYQHmSI=;
-	b=E/8+lqlf+TdlZESIRmIAWd4yeKS/CZ6iXBndssNtiDFxvKr4mstPh0PcmqkpJtaCwscqfp
-	b4MQGjT4kPcUyaEalfPWEIn0vwDRnSMLiQGhw75mf60CWjAjwvp3MkIuDF9XKhI10r4NLY
-	dI63RejyCRG9/82fYsXoYB6hpRCgcBMTxZfqL5+tV36h9wndXUOC39g1FYdxoE8x46y3yN
-	WL8z62YSSw97ChacfwcaH89MsC0gc/flQVGrS8pBrPspWDYBmQCA8/CoBLpMe8DQvC3blx
-	L0jRIGXYRUhNcpeOvrEIe4D0R6g6EEJuoKdxNljqN6l8h5msg543c3B6rlMIaQ==
-ARC-Authentication-Results: i=1;
-	rspamd-55b59744f-26rgb;
-	auth=pass smtp.auth=hostingeremail
- smtp.mailfrom=michael.opdenacker@rootcommit.com
-X-Sender-Id: hostingeremail|x-authuser|michael.opdenacker@rootcommit.com
-X-MC-Relay: Good
-X-MailChannels-SenderId: hostingeremail|x-authuser|michael.opdenacker@rootcommit.com
-X-MailChannels-Auth-Id: hostingeremail
-X-Interest-Hysterical: 22b0686558f57138_1763665239002_1388945392
-X-MC-Loop-Signature: 1763665239002:2199312045
-X-MC-Ingress-Time: 1763665239002
-Received: from de-fra-smtpout3.hostinger.io (de-fra-smtpout3.hostinger.io
- [148.222.55.15])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384)
-	by 100.98.121.252 (trex/7.1.3);
-	Thu, 20 Nov 2025 19:00:39 +0000
-Received: from [127.0.1.1] (unknown [IPv6:2001:861:4450:d360:c7dc:44be:8206:c29e])
-	(Authenticated sender: michael.opdenacker@rootcommit.com)
-	by smtp.hostinger.com (smtp.hostinger.com) with ESMTPSA id 4dC7365stJz3x6l;
-	Thu, 20 Nov 2025 19:00:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=rootcommit.com;
-	s=hostingermail-a; t=1763665235;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=GMZhcN2wxaEKVyD7wZBJpczX20+L4j02F2j/QYQHmSI=;
-	b=HWsP0ZYQsCCSTxee4G+n5ylXSOBS5OS8dqQ+DAtIhrb3YnslYCVaAFMWYDSMxFSXLq7bij
-	GYOAmbpyOp1W1HfDfx6ZicPRrdu6fKDSsSvzQ2GrU7cttk2SsxyZLOmHHVN5IB18l2qp6X
-	O3bcqrNjEeW8pnWHiqJiVPNNZ7xn9K2uMiY+wqgHLSHW09Jp2AkD3pI2KtY9ZOcH5lDn+W
-	0ekjeFEiqMTHwSOhwjWzdCQG+a2Z5n5Eniw5DQ3GpZ2CgyVfEFhVVquZ7xhgC28QGCpgBR
-	QLMis6e8RvKckcUNhTTAQ0HE0b0ARhBCqK1sd5q3luZCrmlCaAm2NiMG0TzDPQ==
-From: Michael Opdenacker <michael.opdenacker@rootcommit.com>
-Subject: [PATCH] arm64: dts: rockchip: Enable i2c2 on Orange Pi 3B
+	id 1vMAPb-00000007Hi7-3n0W;
+	Thu, 20 Nov 2025 19:33:49 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=InI+kTvTV1FJWPaA+wipBmVLvezrRxfmx4edUzg9DGD1egdIk020qcPLRO32nSApamqOvjKd/y6wuLxnnehvUMMvrnzzshkIA1TQiyrPH0RiAq2p7OK2gWM5r7Gu7j9OG5u9ouD8RwEXtKRutxRuCbqXrIitLy0TtdqKiwMIc1NyQWfLBFYlDhy1kvcvj848gTxvkPKBE6I1vAqLmOsC419GppzjDk7RPz52rcbvhqvZ/1WLiEXWzich8koFKKk9m7G+Kgt4a/yOFT0+Thy9bAVQyijN6iBraub3ujKje8Fvoonj3CtS3CGX/SrxHQj0FoyQkKF4bTMAJ01BxXyQGw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=fcSHzI1JdqqcC1AaBRRLRtWp8XGhOSL5mCVVFR2CxbU=;
+ b=hQSI2OUhou2HW4WCPuu17aJ5fdwvfFSfizKuO1aSstOPyKFcTbnMoMEnrH6HHYh45QdL4XFC9YWA9Ef5X8T0RKjT59/V+lbcRoyP/AGxmUOJ6kTpvniM1X/cbQRQI4V59UX2dbD3fSqdyc5mL6awgqI5Z7ecHEtEdYXyS2QREKAdHFNPoHTC2nfejwua2EbADQ9nggDeXgwIEOyvbRk8XTP3Dss0ZPfhyU1rcHN1EUT8bjGAVhRLOkWGZ5CuAk3nN7AHwllgZ6lMsQrOFDih4Ruu2AfPb/lnczP5RoIW8Dh1CvxeL1dj353ocG91WFWUVg7lsfG/chQu6qnQnzhBfQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=fcSHzI1JdqqcC1AaBRRLRtWp8XGhOSL5mCVVFR2CxbU=;
+ b=UWu8QjQYMLkYDa4Y1VQnIPW/fStDEt4ZAg3KoIYNlAA1HovO5QwbwYvlIQBaU7D4yz8yeQ2AywUq6PY4vnoW6xkkw6lLYJ3C//CKHjsv7u/RIRQEyf39bwKMjqujU/mPvds8k5QTZdD4B/UYrtF8cCBtLlJJg2VRA07t2ztY+u/+GDTr1lPE6UpLH6sACMnYrzfJ5D10/fLmLAq8dUlLZOCBK3tY8AcWpjdtYIZYNu4xvZ/pwMKleRaz69Wq8B2KJpWEEBxRXiJUfQVeI6FkAj5t2udcfYxKnq9NI6VRPMVyxoq37c2sGxn3GuD+PqWe1AN6bAkSwmFaHyEUc6Bh1A==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from MN2PR12MB3613.namprd12.prod.outlook.com (2603:10b6:208:c1::17)
+ by IA1PR12MB7709.namprd12.prod.outlook.com (2603:10b6:208:423::15) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9343.10; Thu, 20 Nov
+ 2025 19:33:39 +0000
+Received: from MN2PR12MB3613.namprd12.prod.outlook.com
+ ([fe80::1b3b:64f5:9211:608b]) by MN2PR12MB3613.namprd12.prod.outlook.com
+ ([fe80::1b3b:64f5:9211:608b%4]) with mapi id 15.20.9343.009; Thu, 20 Nov 2025
+ 19:33:39 +0000
+Date: Thu, 20 Nov 2025 15:26:12 -0400
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Robin Murphy <robin.murphy@arm.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Christian Benvenuti <benve@cisco.com>,
+	Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Joerg Roedel <joro@8bytes.org>, Leon Romanovsky <leon@kernel.org>,
+	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-rdma@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Nelson Escobar <neescoba@cisco.com>,
+	Rob Clark <robin.clark@oss.qualcomm.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
+	Chen-Yu Tsai <wens@csie.org>, Will Deacon <will@kernel.org>,
+	Yong Wu <yong.wu@mediatek.com>, patches@lists.linux.dev
+Subject: Re: [PATCH 2/3] iommu/amd: Don't call report_iommu_fault()
+Message-ID: <20251120192612.GA258497@nvidia.com>
+References: <2-v1-391058a85f30+14b-iommu_set_fault_jgg@nvidia.com>
+ <579bdc4e-ab71-4120-8991-34400d4bbf8d@arm.com>
+ <20251023142657.GH262900@nvidia.com>
+Content-Disposition: inline
+In-Reply-To: <20251023142657.GH262900@nvidia.com>
+X-ClientProxiedBy: BL1PR13CA0141.namprd13.prod.outlook.com
+ (2603:10b6:208:2bb::26) To MN2PR12MB3613.namprd12.prod.outlook.com
+ (2603:10b6:208:c1::17)
 MIME-Version: 1.0
-Message-Id: <20251120-orangepi3-enable-i2c2-v1-1-2e023a74012a@rootcommit.com>
-X-B4-Tracking: v=1; b=H4sIAEFlH2kC/x2MUQqAIBAFrxL7naAbSnSV6MN0rYWwUIhAvHvW5
- 7zhTYFMiSnD1BVIdHPmMzZQfQdut3Ejwb4xoEStFEpxpm+9eBAU7Xo0jw5FIONRkzOjstC+V6L
- Az9+dl1pfumRWW2cAAAA=
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Michael Opdenacker <michael.opdenacker@rootcommit.com>
-X-Mailer: b4 0.13.0
-Date: Thu, 20 Nov 2025 19:00:34 +0000 (UTC)
-X-CM-Envelope: MS4xfHb745rDjt/k1t+lwLX1j6r2lQ0FyP0JBNZJ9Rco4lVGhWAvkfCvrH+mu+i/HGCGMq6dKg5J231vsJISCX06IuIdpXLRN5pa6+A2ANlxOJAfp2oiXueM i4kiE8ZrScUheCyk3ivf+CCWSkF/dISuW/0DHRAjjMRZHmUch/yvM/LOki9/FSW1xXBN4WwpyufEVuTjcs0Y/DfUhmDgoW4yyYGGc1ZIO24RoVDMOJmQ8kXm 8I6E65Ms4WSGkDns114yDKPcMu61Zta1YCkWp4qdsOL8PJlhWuClrPCXZod8SNuqyg9+BCVOz+/LVDa+fzOjjfaxeMNaKwYu4FpJwAn/Ap6IBcvzTPppKJeN s5qA+v7LF/dXiBaC1dGoIVhhd6MdRez2QBIpm+n1xzs2DG4RAaEqXMCl7tZUw/p7HT2GrMTXVZnqe4/pizo4pjfI5xRRV4wuYcbuUqMiheZGpyTLkpBQAUM7 pjbQdtkl2Pn2R0j3VJOAM5G8f9h3YmJTL0mGdvrav1n71Mo06w1Ht02KjQYMqOHuAFDjGkP2IdR81lrzmwZZS6Y+eT3TAF+5w4v0B9DTuOJWp17n557WHNpI EN0=
-X-CM-Analysis: v=2.4 cv=etGNzZpX c=1 sm=1 tr=0 ts=691f6553 a=CjJ265PZljfpLgeKkM6P3g==:617 a=xqWC_Br6kY4A:10 a=IkcTkHD0fZMA:10 a=5dAzR5NRAAAA:8 a=d70CFdQeAAAA:8 a=vGUGW7KHnbn2mzzjei8A:9 a=QEXdDO2ut3YA:10 a=ZKAZAlVgJm32z6MX8p4a:22 a=NcxpMcIZDGm-g932nG_k:22
-X-AuthUser: michael.opdenacker@rootcommit.com
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: MN2PR12MB3613:EE_|IA1PR12MB7709:EE_
+X-MS-Office365-Filtering-Correlation-Id: f0e6c7a9-3a70-41fb-92ca-08de286bb46e
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|7416014|376014|1800799024;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?buiClKIDtZjXmPmwO1cblyZpH4NLrzB7VZUS+Ti/ebKmfkb230NLj89SPxpc?=
+ =?us-ascii?Q?Lo2oGgxXrtSSRCmZ6+HAmDLrAZrh5ZMMezOvqEz2Ir+kU4kllH1FaA0ZOYAq?=
+ =?us-ascii?Q?SaLZWCI7JNrYivDxI2oUbXIXC+ve49YG8bZmBXDotg1C5iCyNNaBSR1fei1s?=
+ =?us-ascii?Q?+8qSjmm1qdAMgUD/wFMI/CQ2uyPcPdJ2fGFCy9bcw9mPfVwQxitNP1S6laKM?=
+ =?us-ascii?Q?5WAMbiye5cRv8lO0NhUjKK1LXiw8o/qTff0A0gGz5mBGVjl05Py3XDwPUkp2?=
+ =?us-ascii?Q?13dHshgLZYRkZAQFGPSP/m4+DA7jUp2oZQckOfuRpxmbL4gPgPIlZ8JQ3kSD?=
+ =?us-ascii?Q?56Si7Z/Fz8i+sDPoas/HTVraxl5XAPFA5K1clRUg6VHfLFWsO0nfepUvSiuh?=
+ =?us-ascii?Q?z+wHkdhdgXj/DCAA/prNZgYAUZ5oczeE6TCnWTBX3kn6brmkVP34h8ABoRsm?=
+ =?us-ascii?Q?CQmftac+a07TdozXalEZ7HdW+o0f5zxojxoN5gBqt5YT6GC7N5PYmB6GRZgY?=
+ =?us-ascii?Q?ednS47+3M/H7XVUgGNm2m3ekFpm7W/uMt/Da5p6uRCBs8Se6+iPb8THDqXdR?=
+ =?us-ascii?Q?A64mSHC0AiM59YEKFeM0oX2rm4CpVCdhkoh0PJ5/5tsFFr6sb6sLwVSAZn2L?=
+ =?us-ascii?Q?DuuxaTG+aQMs5OgXeeYjBI6AtuuYd7G+Pnl5E8w6Wc4UDL3PycFAXEC4Jjrc?=
+ =?us-ascii?Q?Wpf4arNMQ8IMmZs9PmsBsgWugHQcOkVLHKacexVv2ILRBuKHiN1Q/8ef0Ro7?=
+ =?us-ascii?Q?l0K/snlFAKyAIfGx5n2Lsq8V1BfBwPprEGY5I4m5A/t9+pLX9jWRygirvjIx?=
+ =?us-ascii?Q?sqFdnr9MpJWNFW77IymTwpksEly8RKaHKCsEWoQuP8Hfx8My25LyNIY51BsJ?=
+ =?us-ascii?Q?j1bnDBu5YOBlxgPG2rm3x3gd17coiK2DVL7hZGLFs/IECksf20+JgF3RO4dJ?=
+ =?us-ascii?Q?BMdcOtapLKxKm4WXiDJ+3a+bO1Z+8olerVGQvv4CXEatEfpoEEafeUoTsbuI?=
+ =?us-ascii?Q?dFrnUg7PCoF0VEIY3/mMOdpoPqF+GjA2IxRWNS8MI9WXJmTRbbjJaP4lu9jp?=
+ =?us-ascii?Q?7VMkrCJU3qgEwpwtWw5Z/BgRAzUCNHQuWahgHdTnA71wxqbT9LAjb58cObwk?=
+ =?us-ascii?Q?OB/0EoEGkMOSYHC7pN7uPkgR3aiJEBLBxh+GCLkzgh2PgxwhScjzOy3vSSDH?=
+ =?us-ascii?Q?RqMmfjv5ognKbLZhWzkY48cQ0mtT70237tUs8uj5806yzsim8ET5evzxv9p1?=
+ =?us-ascii?Q?sgSjPkBWDRFvFA8RSHKyaapqCtUTyjhUx0YAUqLGnb1vlFSyBgKYezvAdovW?=
+ =?us-ascii?Q?7IxSal2Bgba7JBdr1DKeWEsK4eP0jJ2/xq35ktvT1T5LNegf+8YxtkV1l00h?=
+ =?us-ascii?Q?sxh0A30K0nCiLVQ89rEdbm/1T58xMS/vZhdhcJ2DP6LSWhzSjH5WgSlVwGp/?=
+ =?us-ascii?Q?IJtDUeHucB+im31jaH8bK+f0CsaHzNud?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MN2PR12MB3613.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(7416014)(376014)(1800799024);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?ySCzhZnpHxOWqPI/yflBssifJZdo+Q4GOHTvqiLmgjAL8b8ZfrHAJoMUSB7z?=
+ =?us-ascii?Q?xq/8qubLtMvbET/ufIu6o4jj3gL5cO0m4S+TMEp/eHVjPQzYkhZpl7hmMZMM?=
+ =?us-ascii?Q?bRCFk44q8sseuyxJcH9ezlmCiT7sqZa4OvX/xlHIduD+z1WLinZa6x2jVU2V?=
+ =?us-ascii?Q?qRDCWGdS/Qdv6RtBpqNtNciEbRpkah2gihPgwddXQjVY0nWoXaKtu7tG9rh9?=
+ =?us-ascii?Q?qKexBeMNUbfuyfGtS7URChx1F4pjIap/eHEMuabR6GUP+N9eRc0XOnTX0DVW?=
+ =?us-ascii?Q?G4CYS7uWT+wMcplvHIP0IEXKTQ6n1VOB7G/BWDyOBnRQp4LyyE0//nl88nlV?=
+ =?us-ascii?Q?SYyjUemajFEmk/3tUUBeCxIvWRXYMe4NI6hLyhW0gN1fwPhrE40y6FokjW/U?=
+ =?us-ascii?Q?BfllBxRUdOoH1bQr1BjWyICJN+ms4r2FgdEWloOI1JixUq3vzKj6P8wDIyhN?=
+ =?us-ascii?Q?6WMsXjowLydXLd1lnnMLYZ8HoHM1k2oVUtANhMavTmHlo3pml2JIu5YM45P4?=
+ =?us-ascii?Q?FL9I4z+ReSNgxRfPhEclEcpJsRPkZ4KK2HuR/AzY7+1Y980VpLcJZAFAl2q6?=
+ =?us-ascii?Q?3Vy0A/dj2FMtIzzwMk5KA9P8SXHg1eI33GcGOZ+04KfdfaMpOmOJgREbnZjz?=
+ =?us-ascii?Q?o0aIqxm18JKs/eRRrRek09OjpqlmygVb49ZaU3+vhbDWT2Yl3jakXhm9Kx+I?=
+ =?us-ascii?Q?dy/aWsbadrZU0z5RSEgBrvd2TYSbDeh1axww8/Cqh+sJxTbXOiUascrztriP?=
+ =?us-ascii?Q?OumHu1b5hztULJcqvW2OCVoPImRLYeJ2FqsrUBqNcA27fE7y7ymTrYSWEK08?=
+ =?us-ascii?Q?gFr1noDcGUQCYB9aLfHtoU/0zyH/aC45I456+u9veAl6XW6ELSM6YmiVJWjV?=
+ =?us-ascii?Q?q22GptSLjMxE7jpj3QKyVnP0EQar8YdOWxtofOXi3AvHybRPyqb7IPPHQaJV?=
+ =?us-ascii?Q?NN1huEPmQlMlJv7OmAU+GvAOx97MZ8MqYMCr3P+UAQG4ydNbkj73j6r7R9GK?=
+ =?us-ascii?Q?+XYJPnsBm1SYJvtSh5pZ6MN4isEXUIK8bY8FUKOgcx4FGMKsd13VNRFxmJvl?=
+ =?us-ascii?Q?tDDfMXQVL6aBKxCZBfiKfJNxVtETl8rkBS0GnNR6xBUsjrt/MLI0Eigkfwky?=
+ =?us-ascii?Q?5Z/bvfeZL0grGvMxmgPn64pezVtBfotbriDq7dO2u04umCy7Qq7jwBlG1Di4?=
+ =?us-ascii?Q?9noVFIjobLSdwkmKr8H/qpe9xGtfwABpqQhI8zrHC+AiUmmOXB9IDu8mTrTB?=
+ =?us-ascii?Q?Ly3xFJ9jnOIt5Aesv82LtttD9v3giCGWppo4+AIHijcotRymDdJ9tfQkc8NG?=
+ =?us-ascii?Q?nhjuCdWp3524BAhXZqx5xjzmm/sn2At4Dpls3TxCAo/bifDAfaOPXYzOVxOP?=
+ =?us-ascii?Q?8Xf4dn2I+WCK1nxKE+otod9U1eeB9gYAO3ibWVCh6UueNaD2oO30AMhhV+Ks?=
+ =?us-ascii?Q?9L6DhIELVC6oFpDFG/mdySdVMVy9XQDR6dLBGqmbGOniK6pNUjbAgTNsaKs9?=
+ =?us-ascii?Q?ETz7Jkaausn3CkzRziGkQeF3kUNODUCkpvvcNa5vw6Roz3+AvqiI/h29H9E3?=
+ =?us-ascii?Q?SUlkuE/JVTBhEAkyOyE=3D?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: f0e6c7a9-3a70-41fb-92ca-08de286bb46e
+X-MS-Exchange-CrossTenant-AuthSource: MN2PR12MB3613.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Nov 2025 19:33:38.9448
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 3E6T2HbLCadhRg05ogWH3sH4JtZMr/WAsgRI9TGrPFbqoQ/Ga2dOf1BMWQS+fdEX
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR12MB7709
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251120_110044_466613_1701C5A6 
-X-CRM114-Status: UNSURE (   7.40  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251120_113347_947768_55EE992F 
+X-CRM114-Status: GOOD (  19.15  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,43 +171,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Enable the "i2c2" bus on header pins 3 (I2C_SDA_M1)
-and 5 (I2C2_SCL_M1) of the Orange Pi 3B board.
+On Thu, Oct 23, 2025 at 11:26:57AM -0300, Jason Gunthorpe wrote:
+> > >   	if (dev_data) {
+> > > -		/*
+> > > -		 * If this is a DMA fault (for which the I(nterrupt)
+> > > -		 * bit will be unset), allow report_iommu_fault() to
+> > > -		 * prevent logging it.
+> > > -		 */
+> > > -		if (IS_IOMMU_MEM_TRANSACTION(flags)) {
+> > > -			/* Device not attached to domain properly */
+> > > -			if (dev_data->domain == NULL) {
+> > > -				pr_err_ratelimited("Event logged [Device not attached to domain properly]\n");
+> > > -				pr_err_ratelimited("  device=%04x:%02x:%02x.%x domain=0x%04x\n",
+> > > -						   iommu->pci_seg->id, PCI_BUS_NUM(devid), PCI_SLOT(devid),
+> > > -						   PCI_FUNC(devid), domain_id);
+> > > -				goto out;
+> > > -			}
+> > This part is unrelated to the report_iommu_fault() call - in fact it was
+> > specifically added even more recently.
+> 
+> Yeah, I'll fix it
 
-As documented on http://www.orangepi.org/img/pi3b/0719-pi3b-19.png,
-such pins are the only ones offering I2C functionality
-without conflicting with other SoC blocks.
+Coming back to this, it was right in the v1, it should be deleted.
 
-Signed-off-by: Michael Opdenacker <michael.opdenacker@rootcommit.com>
----
- arch/arm64/boot/dts/rockchip/rk3566-orangepi-3b.dtsi | 5 +++++
- 1 file changed, 5 insertions(+)
+The (dev_data->domain == NULL) test was added because calling
+report_iommu_fault() will crash if the domain is NULL. This removed
+that call it so we can't crash anymore.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-orangepi-3b.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-orangepi-3b.dtsi
-index d539570f531e..e2f0ccc6dbe7 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-orangepi-3b.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-orangepi-3b.dtsi
-@@ -435,6 +435,11 @@ regulator-state-mem {
- 	};
- };
- 
-+&i2c2 {
-+	pinctrl-0 = <&i2c2m1_xfer>;
-+	status = "okay";
-+};
-+
- &i2s0_8ch {
- 	status = "okay";
- };
+Instead we fall through to this:
 
----
-base-commit: 8e621c9a337555c914cf1664605edfaa6f839774
-change-id: 20251120-orangepi3-enable-i2c2-fe6d25ec681a
+		if (__ratelimit(&dev_data->rs)) {
+			pci_err(pdev, "Event logged [IO_PAGE_FAULT domain=0x%04x address=0x%llx flags=0x%04x]\n",
+				domain_id, address, flags);
+		}
 
-Best regards,
--- 
-Michael Opdenacker <michael.opdenacker@rootcommit.com>
+Which prints the same information, the "domain is null" is not
+especially useful. Further this only happens when dev_data is set it
+so is very unlikely to be NULL anyhow, there is only a short period
+after probe before the default domain is attached.
 
+I will add some remarks to the commit message since I forgot why I did
+it when you asked :\
+
+Jason
 
 _______________________________________________
 Linux-rockchip mailing list
