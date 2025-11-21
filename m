@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 982FACFA444
-	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Nov 2025 02:01:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80826CFA466
+	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Nov 2025 02:47:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Date:
-	Message-Id:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EbYKyGsgmc3mHcjKRdW2PWiJRxR+hcHcD52s+7Xpf4A=; b=aedgiP119ySvWQ
-	bM3b1uwgHeVfhvlNloEiL8G3doyKhbGOPiD8NcZfd1QwzXPxY9GE8G13u+dzII/cQ3US3PfVgDpbD
-	l6ZsaoLRHIIE0b473buNiRlhdAvWHrPjKXFYp4XsCxamMnnI4d+BHkhPxFGx6Ynz3nUIzKFRX3aHV
-	cTmoYSEo22OqMGLCcpj23pc6thONFzqPul51OGf8ad92pr7WHjE28XzizNMAU3YjbXQ/gp52dZwa1
-	QfeQqLPfKXRsZda6GkvQK7a3aoYJ84q0ONtIbqrpMzoJ4zM3fVWJrzTzrP0wd4YW5OI/1BOsonA+w
-	z78j9yJMlxner4Ni5B6Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=KOjyXn4z0Y/WQSAL1BLBCw1x5QFumNrwHz+7kFwTieI=; b=DRiqGV6818P1y/
+	Ym2JGY8LNNYSTRQQomRHktOrkMStfStRhdwkl+AGPfgRD/I+hZX+M+belGAevfYks3FdRt4BL/wPp
+	i5WQnSCuVR3uf2K7LDXrcG6J1H1qhlsVLPR2n2pwtjWPRQoGTgrW7883Em247Pmz1SNY8hDUGmvIP
+	qM6gxEuL1rtjGL/j51VJJbbHgAldkgKk2EGBSvXy6JJTV2Nk/fDVcoUzAY2IjFi+UpnyTWMJ95sRO
+	Ir0dLLQnyc7A6dUUU9tMcMBfGETwT0qkna3QWj4O6GVLzGfqo2mtnjX7cjGSQuDLYPggkceFmNQBX
+	ZaxhnI+6MOJe5yZ/DZGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vMGSK-00000007fKU-3GAV;
-	Fri, 21 Nov 2025 02:01:00 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vMHAr-00000007igL-19Eu;
+	Fri, 21 Nov 2025 02:47:01 +0000
+Received: from mail-m19731107.qiye.163.com ([220.197.31.107])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vMGSF-00000007fHU-1iIg;
-	Fri, 21 Nov 2025 02:00:56 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 96B6B43938;
-	Fri, 21 Nov 2025 02:00:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 74F45C116B1;
-	Fri, 21 Nov 2025 02:00:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1763690453;
-	bh=hUYp9odp8LoH/NylHXpnLHdk7Xwiaj3w0z4IGhqyrPM=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=PpA/sSIjvKeThEpQIhCsUR2N4PjbMwx6f8VlOYvBqqY/Whhx81eabU0qVtr44yf2d
-	 ss2k65SjW38/zWZQZO/lP/QEUmeYUUr4d+tezl4HeimJ8JiUZK1jwqmFfDjOkgAYhk
-	 PI3CmJaCu0z2odMbDQVApUYMYabS7TEMGhUROchEufoZKV84m6Te+VaTq8xVwwYHoV
-	 BWcEbpWar42vIOnF+NAT6P0RIkYLSUqmoBGyhzXhfT6lSocbkMgfXIg4gTrpp1GytL
-	 G1CClY2fVJF5p6X2f1gPMqbfCNEG6IcKZEmUwwmC0zZCbmVDej9BRDld3udcPy8z69
-	 Wf2Kf2/49lFPA==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id AEC4D3A41003;
-	Fri, 21 Nov 2025 02:00:19 +0000 (UTC)
+	id 1vMHAo-00000007ieo-2BYC;
+	Fri, 21 Nov 2025 02:47:00 +0000
+Received: from rockchip.. (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 2a5cdf301;
+	Fri, 21 Nov 2025 10:46:48 +0800 (GMT+08:00)
+From: Elaine Zhang <zhangqing@rock-chips.com>
+To: mturquette@baylibre.com,
+	sboyd@kernel.org,
+	zhangqing@rock-chips.com,
+	heiko@sntech.de,
+	robh@kernel.org,
+	p.zabel@pengutronix.de,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org
+Cc: devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-clk@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	finley.xiao@rock-chips.com
+Subject: [PATCH v8 0/2] clk: rockchip: Add clock controller for the RK3506
+Date: Fri, 21 Nov 2025 10:46:43 +0800
+Message-Id: <20251121024645.360615-1-zhangqing@rock-chips.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Subject: Re: [PATCH net-next] net: stmmac: rk: use phylink's interface mode
- for
- set_clk_tx_rate()
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <176369041825.1856901.6474170870442345383.git-patchwork-notify@kernel.org>
-Date: Fri, 21 Nov 2025 02:00:18 +0000
-References: <E1vLgNA-0000000FMjN-0DSS@rmk-PC.armlinux.org.uk>
-In-Reply-To: <E1vLgNA-0000000FMjN-0DSS@rmk-PC.armlinux.org.uk>
-To: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
-Cc: andrew@lunn.ch, hkallweit1@gmail.com, alexandre.torgue@foss.st.com,
- andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- heiko@sntech.de, kuba@kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com,
- mcoquelin.stm32@gmail.com, netdev@vger.kernel.org, pabeni@redhat.com
+X-HM-Tid: 0a9aa44ea4fd03a3kunm5f873c0f1ba297
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQ08dTlYdT0wYSUlLGkoZQ05WFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=Z74p3DZF2wn1qCFMHAjl+Gwb0C/ruJLkajUf/PJXymAMGEWwirnkdI9NrCObyFi37dS9SbmF5+7gDubCyHpAdVJ5EDDPqWVYVrTc3Z9qhcDFvybT/9ZxeL2IDF/A0K8yvSGZ3zkv5uHPM4ia3s1BtB4cT9twmkPXo51yQ7M9DV4=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=qwpUKm/T5N1XVGyOtAgJHx/jvuawl71cXH7S4pr1eec=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251120_180055_468671_1F07AEC0 
-X-CRM114-Status: UNSURE (   9.62  )
+X-CRM114-CacheID: sfid-20251120_184659_034821_203A8A85 
+X-CRM114-Status: UNSURE (   8.53  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -79,30 +79,81 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello:
+[PATCH 1/5] ~ [PATCH 3/5] has applied.
 
-This patch was applied to netdev/net-next.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
+Change in V8:
+[PATCH v8 1/2]: Add explanations for "clocks"
+[PATCH v8 2/2]: No change
 
-On Wed, 19 Nov 2025 11:29:16 +0000 you wrote:
-> rk_set_clk_tx_rate() is passed the interface mode from phylink which
-> will be the same as bsp_priv->phy_iface. Use the passed-in interface
-> mode rather than bsp_priv->phy_iface.
-> 
-> Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
-> ---
->  drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
+Change in V7:
+[PATCH v7 1/5]: No change
+[PATCH v7 2/5]: Redefine clk id(start at 0), drop RESETN for reset id.
+[PATCH v7 3/5]: Drop RESETN for reset id.
+[PATCH v7 4/5]: Fix "description: |", drop RESETN for reset id.
+[PATCH v7 5/5]: Drop RESETN for reset id.
 
-Here is the summary with links:
-  - [net-next] net: stmmac: rk: use phylink's interface mode for set_clk_tx_rate()
-    https://git.kernel.org/netdev/net-next/c/f15bcd071913
+Change in V6:
+Drop pvtpll, others no change.
+There are many questions about pvtpll and have some dependency issues.
+They will be submitted separately later.
 
-You are awesome, thank you!
+Change in V5:
+[PATCH v5 1/7]: No change
+[PATCH v5 2/7]: No change
+[PATCH v5 3/7]: Drop RV1126B_GRF_SOC_STATUS0
+[PATCH v5 4/7]: Drop syscon
+[PATCH v5 5/7]: No change
+[PATCH v5 6/7]: Add clocks and clock-names, fix id define
+[PATCH v5 7/7]: Drop RK3506_GRF_SOC_STATUS
+
+Change in V4:
+[PATCH v4 1/7]: No change
+[PATCH v4 2/7]: remove label
+[PATCH v4 3/7]: No change
+[PATCH v4 4/7]: remove label,fix order
+[PATCH v4 5/7]: No change
+[PATCH v4 6/7]: Add yaml and dt-bindings for the RK3506
+[PATCH v4 7/7]: Add clock controller for the RK3506
+
+Change in V3:
+[PATCH v3 1/5]: No change
+[PATCH v3 2/5]: Fix define error
+[PATCH v3 3/5]: update driver,fix errir
+[PATCH v3 4/5]: fix error
+[PATCH v3 5/5]: No change
+
+Change in V2:
+[PATCH v2 1/5]: update commit message, rename v2 to multi_pll
+[PATCH v2 2/5]: Modify DT binding headers license
+[PATCH v2 3/5]: update driver
+[PATCH v2 4/5]: fix error
+[PATCH v2 5/5]: update commit message
+
+Elaine Zhang (1):
+  clk: rockchip: Add clock and reset driver for RK3506
+
+Finley Xiao (1):
+  dt-bindings: clock: rockchip: Add RK3506 clock and reset unit
+
+ .../bindings/clock/rockchip,rk3506-cru.yaml   |  54 ++
+ drivers/clk/rockchip/Kconfig                  |   7 +
+ drivers/clk/rockchip/Makefile                 |   1 +
+ drivers/clk/rockchip/clk-rk3506.c             | 869 ++++++++++++++++++
+ drivers/clk/rockchip/clk.h                    |  13 +
+ drivers/clk/rockchip/rst-rk3506.c             | 226 +++++
+ .../dt-bindings/clock/rockchip,rk3506-cru.h   | 285 ++++++
+ .../dt-bindings/reset/rockchip,rk3506-cru.h   | 211 +++++
+ 8 files changed, 1666 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3506-cru.yaml
+ create mode 100644 drivers/clk/rockchip/clk-rk3506.c
+ create mode 100644 drivers/clk/rockchip/rst-rk3506.c
+ create mode 100644 include/dt-bindings/clock/rockchip,rk3506-cru.h
+ create mode 100644 include/dt-bindings/reset/rockchip,rk3506-cru.h
+
+
+base-commit: 4f0744c46de2c40e7a8f35d730e322bf33f2bb63
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+2.34.1
 
 
 _______________________________________________
