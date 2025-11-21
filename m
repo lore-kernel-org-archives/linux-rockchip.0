@@ -4,79 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2A32CFA447
-	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Nov 2025 22:23:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B66A4CFA444
+	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Nov 2025 02:01:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Date:
+	Message-Id:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xP3pDW4oYS5rYwdJnIOznamCZxPhNc7U2K3Fakgfj7k=; b=Av3rC9dIB0TaMR
-	WdZNcOspcizrz/txdzIr2s/+Sfq/wmMUFw79mYPZaM0LX6Ze6C7u0AKrZZJceqxricTu7CcplbA0K
-	oRm6CJvWAaBUiFeiAHy/paQDVWuT/zzsjN+EfEF1axnHQ68VzfD8jTC0AJLTRrtfnbEKr2z3Xv207
-	yzwn2miRK+W2TcUtw7L12eQLyMOuAL/vNsok4Q4tOPoWAjwPvjtfRUz+947VtmsGoSJ1hUyijhGZ1
-	bU/+zHxxhXV9Yi3+oA1HLMODkPnoh2fX/84A56U5ptlveCdFHdT6VIush68M/0WpZ7IQz7/8pHTgb
-	zzV/JxrUhskfAW5y6FuA==;
+	List-Owner; bh=Ag+Pa00rH/bgAboj6Xnj5gPJe3js/271v0lUmIGJlyc=; b=fOB1yi3/gxRvnk
+	GsKmixYUXKNKmTQxujk+NMr7sT/FlscJKnZE+7TEHJ4GPYIPoC/c0j4ZGLsUjP2rOXXQlBTb6k2uW
+	pTjWGfpbXUn0+I0Jt1IxJQ6O5J05PcNbkFLbCGRfd1M/3wspP+FdrcWB4XCofIdny2vBLPFXWL88u
+	IcvxSk+lgAN2PQZog52wZULqHaUCYysLKDs0snRlmTWCdV79v7r6O0lo1b5WoLDnw5NVnR1B9fXCC
+	ijlfjEaQfkO5rXLPeNTijpTC6SAzONaLrXap1H7iwrqhm/ghABhalUMLdGaGryBSuH1peFKP2ZLdq
+	pqUPyshKUoAYhTkPxjQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vMD47-00000007WVc-1inM;
-	Thu, 20 Nov 2025 22:23:47 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1vMGSD-00000007fHP-2BSo;
+	Fri, 21 Nov 2025 02:00:53 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vMD3y-00000007WNC-34ph
-	for linux-rockchip@lists.infradead.org;
-	Thu, 20 Nov 2025 22:23:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=bwxznhMq6xEErFPu2+B+diw5QbORrPtnVJP8dxJ7wuA=; b=IK0aoKtxCDr6DIZiVPIZLAmy6i
-	FxmVFlAvA/0A1eVM2tqj4eXzc30wsK2hXYK8zu4oWpUcJJg9jS5nV8qH6OBE3KlELRYlxgII7q+Xu
-	iv5xXBOECXLjwWarOJ1CnQFMkfqCD41CM8ksIf1PJ7+qqEymnHvihDFE9Zj0Ltit3eJZy1QaxIun9
-	4AED3p9AK1pRQ4+jg1PDi7av30h+RNKsxRca/ePse2Pm1Hjj61P+fB1LAZbaulBC/Dg49yUax9qX5
-	HACtnj47McMkCe7WRR5pKlEZvfPbbZBYGhd7GZJvVG9cEn2XMms3FPhveJFRr4Al+ecEcsvJ1ztSQ
-	WIYOqp/g==;
-Received: from [213.192.12.196] (helo=phil..)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1vMD3a-0007Je-2H; Thu, 20 Nov 2025 23:23:14 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: FUKAUMI Naoki <naoki@radxa.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	dsimic@manjaro.org,
-	pgwipeout@gmail.com,
-	didi.debian@cknow.org,
-	jonas@kwiboo.se,
-	ziyao@disroot.org,
-	amadeus@jmu.edu.cn,
-	nicolas.frattaroli@collabora.com,
-	pbrobinson@gmail.com,
-	wens@kernel.org,
-	detlev.casanova@collabora.com,
-	stephen@radxa.com,
-	sebastian.reichel@collabora.com,
-	liujianfeng1994@gmail.com,
-	andy.yan@rock-chips.com,
-	dmitry.baryshkov@oss.qualcomm.com,
-	kuninori.morimoto.gx@renesas.com,
-	damon.ding@rock-chips.com,
-	kylepzak@projectinitiative.io,
-	devicetree@vger.kernel.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: (subset) [PATCH v3 0/3] Consolidate and clarify LED device tree descriptions on Radxa boards
-Date: Thu, 20 Nov 2025 23:23:04 +0100
-Message-ID: <176367711181.9778.6379873847365673369.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20251113124222.4691-1-naoki@radxa.com>
-References: <20251113124222.4691-1-naoki@radxa.com>
+	id 1vMGSB-00000007fGg-3Ht5;
+	Fri, 21 Nov 2025 02:00:51 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id CCDFC60216;
+	Fri, 21 Nov 2025 02:00:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7D0F3C4CEF1;
+	Fri, 21 Nov 2025 02:00:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1763690450;
+	bh=oURpXBr3KdDn9PGKvZ71lA/uZ3b0bjDvzcwrD9A6oco=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=RDaxqjBXt1j3UIdjy7D7SVnLs8g7GgWn0u8nIwwGC1fkiNvamtVFDj/FQO/M8D/eh
+	 ZYIA8xclzKyMLPZroHugJ3RkCZs5j9pKq0uWtuDFi0aBxiZtSOUzYSr5VSAEob6tbA
+	 +24SZmZdWrSItahXVbfOjubhuO2Q9wBLd3uWK8Q1anPuB2bUlhg79qq/F3gvp3PXJe
+	 GCBA+D0/jJI9zu1fGsaJShWGCCkqQPKRf5p99z7rHol3XvaTdbp8EZvcxoMvleDjLd
+	 cvjpgHB4iUi5H3cdt7LM8reUKZkE25YppGHm/F3OQ8XDVF7CXgsxWVC/aJfF3PxY64
+	 b0Fp/3p8/tkTA==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id AE07F3A41003;
+	Fri, 21 Nov 2025 02:00:16 +0000 (UTC)
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251120_142338_820345_A90503A0 
-X-CRM114-Status: GOOD (  10.76  )
+Subject: Re: [PATCH net-next 0/3] net: stmmac: pass struct device to init/exit
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <176369041551.1856901.1355582687378802410.git-patchwork-notify@kernel.org>
+Date: Fri, 21 Nov 2025 02:00:15 +0000
+References: <aR2V0Kib7j0L4FNN@shell.armlinux.org.uk>
+In-Reply-To: <aR2V0Kib7j0L4FNN@shell.armlinux.org.uk>
+To: Russell King (Oracle) <linux@armlinux.org.uk>
+Cc: andrew@lunn.ch, hkallweit1@gmail.com, alexandre.torgue@foss.st.com,
+ andrew+netdev@lunn.ch, wens@csie.org, davem@davemloft.net,
+ fustini@kernel.org, edumazet@google.com, wefu@redhat.com, guoren@kernel.org,
+ heiko@sntech.de, kuba@kernel.org, jan.petrous@oss.nxp.com,
+ jernej.skrabec@gmail.com, keguang.zhang@gmail.com,
+ prabhakar.mahadev-lad.rj@bp.renesas.com,
+ linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org,
+ linux-renesas-soc@vger.kernel.org, linux-riscv@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com,
+ linux-sunxi@lists.linux.dev, maxime.chevallier@bootlin.com,
+ mcoquelin.stm32@gmail.com, netdev@vger.kernel.org, pabeni@redhat.com,
+ s32@nxp.com, samuel@sholland.org
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,27 +80,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hello:
 
-On Thu, 13 Nov 2025 12:42:19 +0000, FUKAUMI Naoki wrote:
-> Currently, on Radxa boards, the power LED is turned on immediately
-> after power-up, independent of software control. The heartbeat LED and
-> other available LEDs are subsequently turned on by the initial
-> software, such as U-Boot, to indicate software is running.
+This series was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
+
+On Wed, 19 Nov 2025 10:02:56 +0000 you wrote:
+> Rather than passing the platform device to the ->init() and ->exit()
+> methods, make these methods useful for other devices by passing the
+> struct device instead. Update the implementations appropriately for
+> this change.
 > 
-> However, the device tree description for this behavior is inconsistent
-> and fragmented, with definitions split between the main Linux DTS
-> files and separate U-Boot files (u-boot/arch/arm/dts/*-u-boot.dtsi).
+> Move the calls for these methods into the core driver's probe and
+> remove methods from the stmmac_platform layer.
 > 
 > [...]
 
-Applied, thanks!
+Here is the summary with links:
+  - [net-next,1/3] net: stmmac: pass struct device to init()/exit() methods
+    https://git.kernel.org/netdev/net-next/c/85081acc6b11
+  - [net-next,2/3] net: stmmac: move probe/remove calling of init/exit
+    https://git.kernel.org/netdev/net-next/c/32da89a840e8
+  - [net-next,3/3] net: stmmac: rk: convert to init()/exit() methods
+    https://git.kernel.org/netdev/net-next/c/1a62894e040d
 
-[1/3] arm64: dts: rockchip: Use default-state for power LED for Radxa boards
-      commit: 6ed597fdbcfa5ffc1a01c8740320c5a20093b863
-
-Best regards,
+You are awesome, thank you!
 -- 
-Heiko Stuebner <heiko@sntech.de>
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
