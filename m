@@ -4,81 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68635CFC28A
-	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Nov 2025 14:54:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99DCFCFC28B
+	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Nov 2025 14:54:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:Reply-To:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:
 	From:MIME-Version:Date:Message-ID:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=souSJZswmG1XaJn+Xwu3GnBFVH6dsrN1XLwFpyeOqJ8=; b=BwBxJe4fsxd/iM+JW+DgQjq/jz
-	tNz95mOxwERcxihu6mYFb6IrcxkrcLMOk1Yg8Hv2TiH4ScnbNR9/4/2zvcWjXu2tXlD2g/P3Qljom
-	7D651EzeTLGMNxW8IQ/2zjC3l6GVMv+NLFbDlnGzhP3F5UgmYSibbIhQJrD+wEFMAxeTo5exUWfLg
-	G0MW+GBULwfT78+Ydrkh4PFO57h7WfRN2OB3RcblXWHJfMshdVPVppiqgmIE00+IX/VVA3DFsnQj3
-	KD3KiThvRcqj3h+O4SbY3yYJjif+8BtDbRBUTuGDgeoN06JSb60OdfQg1ZwtbTDV4sen9pRDYWuSR
-	KzbO2WMw==;
+	bh=U2a95DnG3GelFIskJwN6EydvisxxEc2fT2od1lDzzIU=; b=O/25q6EfnZ/IeRTTupeXvTT1sW
+	DmVAvi4wE1CdhMbLMHeWC6GN4s+7ykOp3uBVZZwFO/jXhXUi18USuD7jLTdnTWrubAS5fkK6U8vzY
+	kRXipQvup+XcCVc9ioeOhvTLrFqDt5ow9XCN9ggVFwLexh1QGC1FlVVUwysuBhHyaRiqQjK7sgCFw
+	rKX2VXGRno3LK0cCDTwTbjtx8xmFBgySziNmU6ElBoTV04jlY6UwXlxFXd4c+qDj3wOUT05hHdpLB
+	2dB4K+A3X4/xXBgzMRhmqawIN16Y3w3JLXzJslePG3671HEbrsWIRf+QFZ+nEpeIQqSZhPB12KIll
+	6ALuNc0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vMSWm-00000008YLC-20Sm;
-	Fri, 21 Nov 2025 14:54:24 +0000
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+	id 1vMSX2-00000008YQG-2gMc;
+	Fri, 21 Nov 2025 14:54:40 +0000
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vMSWj-00000008YJx-3OCF
+	id 1vMSX0-00000008YOU-1DNw
 	for linux-rockchip@lists.infradead.org;
-	Fri, 21 Nov 2025 14:54:23 +0000
-Received: by mail-wm1-x329.google.com with SMTP id 5b1f17b1804b1-477b5e0323bso17372265e9.0
-        for <linux-rockchip@lists.infradead.org>; Fri, 21 Nov 2025 06:54:21 -0800 (PST)
+	Fri, 21 Nov 2025 14:54:39 +0000
+Received: by mail-wm1-x32d.google.com with SMTP id 5b1f17b1804b1-47796a837c7so14019825e9.0
+        for <linux-rockchip@lists.infradead.org>; Fri, 21 Nov 2025 06:54:37 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1763736860; x=1764341660; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1763736876; x=1764341676; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:organization:autocrypt
          :content-language:references:cc:to:subject:reply-to:from:user-agent
          :mime-version:date:message-id:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=ETN4gl1iZbhJeLn6OCDI+9u79qwxOMAaoq4ImqB9HJI=;
-        b=el6fFxeBIhECIp1WdMk0ohsmkhZ41j6JsvgoYS+w9EFItT7+MoPauQgX0cnT0a1sKR
-         60NRyn42nuEWKTAIQogtJTWes+WN1onUH0jmHBLNZtQw5wSACzIRRVU5Uz9CJPqzh6X5
-         kd/SBzWqhnig4ZYD+TMLhN/qWdSvDP8payLl9Su1QdpluXXJfblp2HCYlh7YAlpYEbnJ
-         eChNkTD2uxEKfOHoEWr9R2kywORrZTADUIfCPZLnHdRWfWSwQNiR+UH0Yv0V9TI6n+ge
-         SmaSIuY3shiXNEtR3aNhMrXONW/3rVAbebGj/CEKgfrFq9b8WsqleVVUweffWcP5YkZi
-         46mA==
+        bh=h3T53g7xBgvHEx7HfC5HSakwZWPWLNi811KzyB5b8Cc=;
+        b=B/X3ANfMZR5nraEgL0I1my+ohBZ4ZMit62aD4kEYs3bJQ7WeW2Cz+6sDNlFGER5MGc
+         1riK2G1ROJbs31tf7VT9aV51nWTeFxzyRFvULfeWBKBTxlLElFNqELezd+vml3ReSS5Z
+         pR+s6+1asr1W/VH2zIvnNSNNRPTtCuowvSptsXjYTtTFVaVjF59ojZff+MdeoKOeUWH8
+         G8z4MQ5KA3b9Rlsn2O62A6NW2ni2fnYufMfbaAYa/QVWo/Xzpg4M8MkZwLpz+qeq0H/o
+         xwF5TLL4zwZv7fsrOYnUTh4JLTGgP3o+wcU+Qqlhk7TNyWiLiQts5mj0akBeV54fZOoM
+         kfWg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1763736860; x=1764341660;
+        d=1e100.net; s=20230601; t=1763736876; x=1764341676;
         h=content-transfer-encoding:in-reply-to:organization:autocrypt
          :content-language:references:cc:to:subject:reply-to:from:user-agent
          :mime-version:date:message-id:x-gm-gg:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=ETN4gl1iZbhJeLn6OCDI+9u79qwxOMAaoq4ImqB9HJI=;
-        b=GOxGqeldk2g0UpEMcgakBYMFbWw1WAud8Wz1Xhlw47qHd2I5iNU0RJfqBls9N63Fll
-         XccnaD2GgGBn9nwbXfswihN/quf/o0SC3bTeMLWgMyI3Kqn9i4sUrYR6nRgOwPL4PkmI
-         s/J7/80gUESH+pVF9fec9zM1JNdnFXmXZcTp+TovAKhZinh9eHD7Jw2/FdmmRyNoPgbc
-         2qb9XdSRH5ducedfJZtMmlfYmcc4TxO/VCn10c5heUytrx0YWkCfgQwxaX1dORjCanSe
-         2FF7EFtJC03W4LimKPNDFk3fqr0EcDa5fVIpPalBKPi/I2282c3gZkcBs/jvnVzb/53R
-         Hr1g==
-X-Forwarded-Encrypted: i=1; AJvYcCVwx4GwWFRX0z1bvTuHM9+5DEEKfwjgGfQ0i2salhimpUKEs+4Ovyk887gtYStl2+KOVhZP7OwWRr20oOZUVQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzFxIbClvSLVZ9a5Mo6NY3nVF+ZW7kbT26VqxHC0P1BKPbLHcCH
-	tBF1VrEDvYOx7//7vLTefxM3hjsd7o9yDlUFuf5BCWsDBzncBcD3s/DJrywOih1SVFw=
-X-Gm-Gg: ASbGncs+DGryocBolRqINDPM/NJp5WnbNRPq5/jv+z4+5elJlmDTCj76R5PmbQgNUXL
-	/xsQTwTLO6DJxe/novkdE5/09FigIWKYW1YBRcNFttZlHbbJ9CtO9i87w0Uxsx2vI1MQgRR+FMB
-	ptj1fBJkHpob3zaxmN2pJCJS761Y+YRLiBOv0vuz9u9Blxw1imtY+9rprN16a60u+46pKSnOEHj
-	TCfNuwYst0+Y08grEeeplXwSD/xi9BQd1NIgAd9ewt6bx7QqPtb7U3ZtZvCx7ItbtueMC8h/aYx
-	jSLToOW9Ea3v1WoIna2hUDPp+M4j9EOEVgo/toknpOL0ugWoEfipvAntlsUY9C7iN2GO+gLiapL
-	juCt1gKTdytr8ostg3HxCVkpvrdnjmeZ0i9GR56fuqH7SxZonaABgEKR6chb34GyDqcm+/3iXwb
-	LM1XDdxwzkOx3FLH7tGwExdnA9318lflCvzJZ/lmAQEHbiqQT1oJqECt5M4xU+vdU=
-X-Google-Smtp-Source: AGHT+IEGzoj+G1XJyD7HRZUpDf/Nmo3R0LQETO+OA2bCF/axjJi8k5L8RSAIauSreqKt4GiwYJQXaA==
-X-Received: by 2002:a05:600c:1d14:b0:477:9d88:2da6 with SMTP id 5b1f17b1804b1-477c026ed62mr28503395e9.0.1763736859683;
-        Fri, 21 Nov 2025 06:54:19 -0800 (PST)
+        bh=h3T53g7xBgvHEx7HfC5HSakwZWPWLNi811KzyB5b8Cc=;
+        b=nJ7j2YqSjKOTC9KEYA2MxCqECtD1FzBwiZwoSKI5fMiO6VsX54ixjfQHzy+8gYsbdg
+         kbY4NMJLgGazmZMU+NfCvXPn+fleOzlYgUH7oypD0rtPNXQ1Xh4O3KXQ3POlVUcmXOmJ
+         P3V6jgELD745n5/ASiUa+HpKL0pbKYpGJ7DqxGjVhTkoDpfJWkm6rBzUgwpcR9ViRtdc
+         KgtOqipm9D6CodJWkhfeWwBLQ/bxke9/Bqt7lAegCcRiZZYFrYnRYJZ3oFmKsWADDmiV
+         EkD5HvD7MTYQ09l32QznDSgEeEfk4uJ6ixgwCFdxbmGTMBE97pxyqpJpvhvpi6X5x/Ha
+         JWbQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWqHRBtC58UdIBk4eFdMC8Qsih7csm4s7dMQ3xmk+VHb/jj9D6MT/tQ7fXo0sYmgFwsXh+BHavKe4LYVUhNzw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy9DK/TetCK1b/tvp+EA5xGc00wnw4LzFh118Lrh8I03Cll6VCT
+	8XfKHyrxeY6Z9HffdjMvyygT+W8pXtmYXVl/1zlqYve5nGRoWDFKEjjgg6UQqXUevDY=
+X-Gm-Gg: ASbGnctDrJtkHpUxs6Wf+7U9ImG0MoUmknXveI1STSp4nAoJXevMZWB/76l2iFsfX0C
+	0aZKEtihAHd2IaPuI+iI31sK4V7ff43Q2ecWacVnPgNzCisl05VwJSWE2m2bQsRFvNVfMRfmele
+	w24SvatMfIXFxZCDwTXo8W/96juoQsS06zMUio9zVMtVXV1iq2NucRReMn+4PgWtz+ePdtQRK0Y
+	GwVaexF8Eod6wkAE9/uR3qs425QZRN3zyfRvJ3jNpKvNR1yN0mjHROzVKzzDv73AI5f/OXLMmsh
+	Mr0xcLAYqG+83GAyld9XDnHBnymBtGxt9BbPzBcGAmI3/f11jXhhzchST8gEAcq81bMljHZXgGT
+	2fjAlp+WwK9S8Qecwuba4cEvbPSkHvFhXAtfalI62ohc+uKzXYCnmiRDN0VTfBfnnd8myj+QSze
+	aWosoI1jnHTk/7LXENlz+hVRoBrtfmb22Q4Bgejfs/Kdbmp27U6R6zSFRcUJq5u94XDnzMwWgq1
+	Q==
+X-Google-Smtp-Source: AGHT+IEzj6mKlAXc/f2f5s+FD/b07AX4yw2dXdDsDHdfncbSE2QSufZD0iTF+t3WaYL5TpdOFlDOEA==
+X-Received: by 2002:a05:600c:1f8f:b0:477:a0dd:b2af with SMTP id 5b1f17b1804b1-477c01ea502mr22713205e9.33.1763736876159;
+        Fri, 21 Nov 2025 06:54:36 -0800 (PST)
 Received: from ?IPV6:2a01:e0a:3d9:2080:159f:1839:bb92:1eca? ([2a01:e0a:3d9:2080:159f:1839:bb92:1eca])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-42cb7f3635bsm11604067f8f.17.2025.11.21.06.54.18
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-42cc231dc6esm3409457f8f.7.2025.11.21.06.54.34
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 21 Nov 2025 06:54:19 -0800 (PST)
-Message-ID: <cd200f33-dd6f-4eb3-b2d9-8f41d0dde992@linaro.org>
-Date: Fri, 21 Nov 2025 15:54:18 +0100
+        Fri, 21 Nov 2025 06:54:35 -0800 (PST)
+Message-ID: <326cd208-fcce-49d1-94ee-4913f85bffbf@linaro.org>
+Date: Fri, 21 Nov 2025 15:54:34 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 From: Neil Armstrong <neil.armstrong@linaro.org>
-Subject: Re: [PATCH v10 04/11] drm/bridge: aux: Add
- drm_aux_bridge_register_from_node()
+Subject: Re: [PATCH v10 07/11] phy: rockchip: phy-rockchip-typec: Add DRM AUX
+ bridge
 To: Chaoyi Chen <kernel@airkyi.com>,
  Heikki Krogerus <heikki.krogerus@linux.intel.com>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
@@ -107,7 +108,7 @@ Cc: linux-usb@vger.kernel.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  dri-devel@lists.freedesktop.org
 References: <20251120022343.250-1-kernel@airkyi.com>
- <20251120022343.250-5-kernel@airkyi.com>
+ <20251120022343.250-8-kernel@airkyi.com>
 Content-Language: en-US, fr
 Autocrypt: addr=neil.armstrong@linaro.org; keydata=
  xsBNBE1ZBs8BCAD78xVLsXPwV/2qQx2FaO/7mhWL0Qodw8UcQJnkrWmgTFRobtTWxuRx8WWP
@@ -134,10 +135,10 @@ Autocrypt: addr=neil.armstrong@linaro.org; keydata=
  4zcsPWvwnXgfe5tk680fEKZVwOZKIEuJC3v+/yZpQzDvGYJvbyix0lHnrCzq43WefRHI5XTT
  QbM0WUIBIcGmq38+OgUsMYu4NzLu7uZFAcmp6h8g
 Organization: Linaro
-In-Reply-To: <20251120022343.250-5-kernel@airkyi.com>
+In-Reply-To: <20251120022343.250-8-kernel@airkyi.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251121_065421_908941_0C2B86FE 
-X-CRM114-Status: GOOD (  21.79  )
+X-CRM114-CacheID: sfid-20251121_065438_354205_2A01AA0F 
+X-CRM114-Status: GOOD (  15.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -158,98 +159,62 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 On 11/20/25 03:23, Chaoyi Chen wrote:
 > From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
 > 
-> The drm_aux_bridge_register() uses the device->of_node as the
-> bridge->of_node.
-> 
-> This patch adds drm_aux_bridge_register_from_node() to allow
-> specifying the of_node corresponding to the bridge.
+> Using the DRM_AUX_BRIDGE helper to create the transparent DRM bridge
+> device.
 > 
 > Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
 > ---
->   drivers/gpu/drm/bridge/aux-bridge.c | 24 ++++++++++++++++++++++--
->   include/drm/bridge/aux-bridge.h     |  6 ++++++
->   2 files changed, 28 insertions(+), 2 deletions(-)
 > 
-> diff --git a/drivers/gpu/drm/bridge/aux-bridge.c b/drivers/gpu/drm/bridge/aux-bridge.c
-> index b3e4cdff61d6..52dff4601c2d 100644
-> --- a/drivers/gpu/drm/bridge/aux-bridge.c
-> +++ b/drivers/gpu/drm/bridge/aux-bridge.c
-> @@ -35,6 +35,7 @@ static void drm_aux_bridge_unregister_adev(void *_adev)
->   /**
->    * drm_aux_bridge_register - Create a simple bridge device to link the chain
->    * @parent: device instance providing this bridge
-> + * @np: device node pointer corresponding to this bridge instance
->    *
->    * Creates a simple DRM bridge that doesn't implement any drm_bridge
->    * operations. Such bridges merely fill a place in the bridge chain linking
-> @@ -42,7 +43,7 @@ static void drm_aux_bridge_unregister_adev(void *_adev)
->    *
->    * Return: zero on success, negative error code on failure
->    */
-> -int drm_aux_bridge_register(struct device *parent)
-> +int drm_aux_bridge_register_from_node(struct device *parent, struct device_node *np)
->   {
->   	struct auxiliary_device *adev;
->   	int ret;
-> @@ -62,7 +63,10 @@ int drm_aux_bridge_register(struct device *parent)
->   	adev->dev.parent = parent;
->   	adev->dev.release = drm_aux_bridge_release;
+> Changes in v10:
+> - Use drm_aux_bridge_register_from_node() instead.
+> 
+> (no changes since v7)
+> 
+> Changes in v6:
+> - Fix depend in Kconfig.
+> 
+>   drivers/phy/rockchip/Kconfig              | 2 ++
+>   drivers/phy/rockchip/phy-rockchip-typec.c | 5 +++++
+>   2 files changed, 7 insertions(+)
+> 
+> diff --git a/drivers/phy/rockchip/Kconfig b/drivers/phy/rockchip/Kconfig
+> index db4adc7c53da..bcb5476222fc 100644
+> --- a/drivers/phy/rockchip/Kconfig
+> +++ b/drivers/phy/rockchip/Kconfig
+> @@ -120,6 +120,8 @@ config PHY_ROCKCHIP_TYPEC
+>   	tristate "Rockchip TYPEC PHY Driver"
+>   	depends on OF && (ARCH_ROCKCHIP || COMPILE_TEST)
+>   	depends on TYPEC || TYPEC=n
+> +	depends on DRM || DRM=n
+> +	select DRM_AUX_BRIDGE if DRM_BRIDGE
+>   	select EXTCON
+>   	select GENERIC_PHY
+>   	select RESET_CONTROLLER
+> diff --git a/drivers/phy/rockchip/phy-rockchip-typec.c b/drivers/phy/rockchip/phy-rockchip-typec.c
+> index 1f5b4142cbe4..e31b778c3537 100644
+> --- a/drivers/phy/rockchip/phy-rockchip-typec.c
+> +++ b/drivers/phy/rockchip/phy-rockchip-typec.c
+> @@ -56,6 +56,7 @@
+>   #include <linux/phy/phy.h>
+>   #include <linux/usb/typec_dp.h>
+>   #include <linux/usb/typec_mux.h>
+> +#include <drm/bridge/aux-bridge.h>
 >   
-> -	device_set_of_node_from_dev(&adev->dev, parent);
-> +	if (np)
-> +		device_set_node(&adev->dev, of_fwnode_handle(np));
-> +	else
-> +		device_set_of_node_from_dev(&adev->dev, parent);
+>   #define CMN_SSM_BANDGAP			(0x21 << 2)
+>   #define CMN_SSM_BIAS			(0x22 << 2)
+> @@ -1312,6 +1313,10 @@ static int tcphy_setup_typec_mux(struct rockchip_typec_phy *tcphy)
+>   	if (!of_property_read_bool(np, "mode-switch"))
+>   		goto put_np;
 >   
->   	ret = auxiliary_device_init(adev);
->   	if (ret) {
-> @@ -80,6 +84,22 @@ int drm_aux_bridge_register(struct device *parent)
->   
->   	return devm_add_action_or_reset(parent, drm_aux_bridge_unregister_adev, adev);
->   }
-> +EXPORT_SYMBOL_GPL(drm_aux_bridge_register_from_node);
+> +	ret = drm_aux_bridge_register_from_node(tcphy->dev, np);
+> +	if (ret)
+> +		goto put_np;
 > +
-> +/**
-> + * drm_aux_bridge_register - Create a simple bridge device to link the chain
-> + * @parent: device instance providing this bridge
-> + *
-> + * Creates a simple DRM bridge that doesn't implement any drm_bridge
-> + * operations. Such bridges merely fill a place in the bridge chain linking
-> + * surrounding DRM bridges.
-> + *
-> + * Return: zero on success, negative error code on failure
-> + */
-> +int drm_aux_bridge_register(struct device *parent)
-> +{
-> +	return drm_aux_bridge_register_from_node(parent, NULL);
-> +}
->   EXPORT_SYMBOL_GPL(drm_aux_bridge_register);
->   
->   struct drm_aux_bridge_data {
-> diff --git a/include/drm/bridge/aux-bridge.h b/include/drm/bridge/aux-bridge.h
-> index c2f5a855512f..7dd1f17a1354 100644
-> --- a/include/drm/bridge/aux-bridge.h
-> +++ b/include/drm/bridge/aux-bridge.h
-> @@ -13,11 +13,17 @@ struct auxiliary_device;
->   
->   #if IS_ENABLED(CONFIG_DRM_AUX_BRIDGE)
->   int drm_aux_bridge_register(struct device *parent);
-> +int drm_aux_bridge_register_from_node(struct device *parent, struct device_node *np);
->   #else
->   static inline int drm_aux_bridge_register(struct device *parent)
->   {
->   	return 0;
->   }
-> +
-> +static inline int drm_aux_bridge_register_from_node(struct device *parent, struct device_node *np)
-> +{
-> +	return 0;
-> +}
->   #endif
->   
->   #if IS_ENABLED(CONFIG_DRM_AUX_HPD_BRIDGE)
+>   	mux_desc.drvdata = tcphy;
+>   	mux_desc.fwnode = device_get_named_child_node(tcphy->dev, "dp-port");
+>   	mux_desc.set = tcphy_typec_mux_set;
 
-Looks fine:
+Much better now !
 Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
 
 _______________________________________________
