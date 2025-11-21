@@ -4,66 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B66A4CFA444
-	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Nov 2025 02:01:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 982FACFA444
+	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Nov 2025 02:01:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Date:
 	Message-Id:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ag+Pa00rH/bgAboj6Xnj5gPJe3js/271v0lUmIGJlyc=; b=fOB1yi3/gxRvnk
-	GsKmixYUXKNKmTQxujk+NMr7sT/FlscJKnZE+7TEHJ4GPYIPoC/c0j4ZGLsUjP2rOXXQlBTb6k2uW
-	pTjWGfpbXUn0+I0Jt1IxJQ6O5J05PcNbkFLbCGRfd1M/3wspP+FdrcWB4XCofIdny2vBLPFXWL88u
-	IcvxSk+lgAN2PQZog52wZULqHaUCYysLKDs0snRlmTWCdV79v7r6O0lo1b5WoLDnw5NVnR1B9fXCC
-	ijlfjEaQfkO5rXLPeNTijpTC6SAzONaLrXap1H7iwrqhm/ghABhalUMLdGaGryBSuH1peFKP2ZLdq
-	pqUPyshKUoAYhTkPxjQg==;
+	List-Owner; bh=EbYKyGsgmc3mHcjKRdW2PWiJRxR+hcHcD52s+7Xpf4A=; b=aedgiP119ySvWQ
+	bM3b1uwgHeVfhvlNloEiL8G3doyKhbGOPiD8NcZfd1QwzXPxY9GE8G13u+dzII/cQ3US3PfVgDpbD
+	l6ZsaoLRHIIE0b473buNiRlhdAvWHrPjKXFYp4XsCxamMnnI4d+BHkhPxFGx6Ynz3nUIzKFRX3aHV
+	cTmoYSEo22OqMGLCcpj23pc6thONFzqPul51OGf8ad92pr7WHjE28XzizNMAU3YjbXQ/gp52dZwa1
+	QfeQqLPfKXRsZda6GkvQK7a3aoYJ84q0ONtIbqrpMzoJ4zM3fVWJrzTzrP0wd4YW5OI/1BOsonA+w
+	z78j9yJMlxner4Ni5B6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vMGSD-00000007fHP-2BSo;
-	Fri, 21 Nov 2025 02:00:53 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vMGSK-00000007fKU-3GAV;
+	Fri, 21 Nov 2025 02:01:00 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vMGSB-00000007fGg-3Ht5;
-	Fri, 21 Nov 2025 02:00:51 +0000
+	id 1vMGSF-00000007fHU-1iIg;
+	Fri, 21 Nov 2025 02:00:56 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id CCDFC60216;
-	Fri, 21 Nov 2025 02:00:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7D0F3C4CEF1;
-	Fri, 21 Nov 2025 02:00:50 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 96B6B43938;
+	Fri, 21 Nov 2025 02:00:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 74F45C116B1;
+	Fri, 21 Nov 2025 02:00:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1763690450;
-	bh=oURpXBr3KdDn9PGKvZ71lA/uZ3b0bjDvzcwrD9A6oco=;
+	s=k20201202; t=1763690453;
+	bh=hUYp9odp8LoH/NylHXpnLHdk7Xwiaj3w0z4IGhqyrPM=;
 	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=RDaxqjBXt1j3UIdjy7D7SVnLs8g7GgWn0u8nIwwGC1fkiNvamtVFDj/FQO/M8D/eh
-	 ZYIA8xclzKyMLPZroHugJ3RkCZs5j9pKq0uWtuDFi0aBxiZtSOUzYSr5VSAEob6tbA
-	 +24SZmZdWrSItahXVbfOjubhuO2Q9wBLd3uWK8Q1anPuB2bUlhg79qq/F3gvp3PXJe
-	 GCBA+D0/jJI9zu1fGsaJShWGCCkqQPKRf5p99z7rHol3XvaTdbp8EZvcxoMvleDjLd
-	 cvjpgHB4iUi5H3cdt7LM8reUKZkE25YppGHm/F3OQ8XDVF7CXgsxWVC/aJfF3PxY64
-	 b0Fp/3p8/tkTA==
+	b=PpA/sSIjvKeThEpQIhCsUR2N4PjbMwx6f8VlOYvBqqY/Whhx81eabU0qVtr44yf2d
+	 ss2k65SjW38/zWZQZO/lP/QEUmeYUUr4d+tezl4HeimJ8JiUZK1jwqmFfDjOkgAYhk
+	 PI3CmJaCu0z2odMbDQVApUYMYabS7TEMGhUROchEufoZKV84m6Te+VaTq8xVwwYHoV
+	 BWcEbpWar42vIOnF+NAT6P0RIkYLSUqmoBGyhzXhfT6lSocbkMgfXIg4gTrpp1GytL
+	 G1CClY2fVJF5p6X2f1gPMqbfCNEG6IcKZEmUwwmC0zZCbmVDej9BRDld3udcPy8z69
+	 Wf2Kf2/49lFPA==
 Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id AE07F3A41003;
-	Fri, 21 Nov 2025 02:00:16 +0000 (UTC)
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id AEC4D3A41003;
+	Fri, 21 Nov 2025 02:00:19 +0000 (UTC)
 MIME-Version: 1.0
-Subject: Re: [PATCH net-next 0/3] net: stmmac: pass struct device to init/exit
+Subject: Re: [PATCH net-next] net: stmmac: rk: use phylink's interface mode
+ for
+ set_clk_tx_rate()
 From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <176369041551.1856901.1355582687378802410.git-patchwork-notify@kernel.org>
-Date: Fri, 21 Nov 2025 02:00:15 +0000
-References: <aR2V0Kib7j0L4FNN@shell.armlinux.org.uk>
-In-Reply-To: <aR2V0Kib7j0L4FNN@shell.armlinux.org.uk>
-To: Russell King (Oracle) <linux@armlinux.org.uk>
+Message-Id: <176369041825.1856901.6474170870442345383.git-patchwork-notify@kernel.org>
+Date: Fri, 21 Nov 2025 02:00:18 +0000
+References: <E1vLgNA-0000000FMjN-0DSS@rmk-PC.armlinux.org.uk>
+In-Reply-To: <E1vLgNA-0000000FMjN-0DSS@rmk-PC.armlinux.org.uk>
+To: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
 Cc: andrew@lunn.ch, hkallweit1@gmail.com, alexandre.torgue@foss.st.com,
- andrew+netdev@lunn.ch, wens@csie.org, davem@davemloft.net,
- fustini@kernel.org, edumazet@google.com, wefu@redhat.com, guoren@kernel.org,
- heiko@sntech.de, kuba@kernel.org, jan.petrous@oss.nxp.com,
- jernej.skrabec@gmail.com, keguang.zhang@gmail.com,
- prabhakar.mahadev-lad.rj@bp.renesas.com,
- linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org,
- linux-renesas-soc@vger.kernel.org, linux-riscv@lists.infradead.org,
+ andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ heiko@sntech.de, kuba@kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com,
- linux-sunxi@lists.linux.dev, maxime.chevallier@bootlin.com,
- mcoquelin.stm32@gmail.com, netdev@vger.kernel.org, pabeni@redhat.com,
- s32@nxp.com, samuel@sholland.org
+ mcoquelin.stm32@gmail.com, netdev@vger.kernel.org, pabeni@redhat.com
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251120_180055_468671_1F07AEC0 
+X-CRM114-Status: UNSURE (   9.62  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,27 +81,22 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Hello:
 
-This series was applied to netdev/net-next.git (main)
+This patch was applied to netdev/net-next.git (main)
 by Jakub Kicinski <kuba@kernel.org>:
 
-On Wed, 19 Nov 2025 10:02:56 +0000 you wrote:
-> Rather than passing the platform device to the ->init() and ->exit()
-> methods, make these methods useful for other devices by passing the
-> struct device instead. Update the implementations appropriately for
-> this change.
+On Wed, 19 Nov 2025 11:29:16 +0000 you wrote:
+> rk_set_clk_tx_rate() is passed the interface mode from phylink which
+> will be the same as bsp_priv->phy_iface. Use the passed-in interface
+> mode rather than bsp_priv->phy_iface.
 > 
-> Move the calls for these methods into the core driver's probe and
-> remove methods from the stmmac_platform layer.
-> 
-> [...]
+> Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+> ---
+>  drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
 
 Here is the summary with links:
-  - [net-next,1/3] net: stmmac: pass struct device to init()/exit() methods
-    https://git.kernel.org/netdev/net-next/c/85081acc6b11
-  - [net-next,2/3] net: stmmac: move probe/remove calling of init/exit
-    https://git.kernel.org/netdev/net-next/c/32da89a840e8
-  - [net-next,3/3] net: stmmac: rk: convert to init()/exit() methods
-    https://git.kernel.org/netdev/net-next/c/1a62894e040d
+  - [net-next] net: stmmac: rk: use phylink's interface mode for set_clk_tx_rate()
+    https://git.kernel.org/netdev/net-next/c/f15bcd071913
 
 You are awesome, thank you!
 -- 
