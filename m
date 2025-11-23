@@ -4,63 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB040CFC50C
-	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Nov 2025 21:45:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16684CFC518
+	for <linux-rockchip@archiver.kernel.org>; Sun, 23 Nov 2025 09:29:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=239o/OaxKT7BksNGQqd7XKyK06ckXMAxhLceBCSsYWc=; b=2h+FCAzjFmA4EO
-	kBXXUwyiV5Dfn4VR1e2toLw8ox/GhxFRG93uUZyb81FUhf5f1eo4CwpIomNZ+/uwSNxzo2K7TCAU3
-	vPIoWDDd5nDWIBwNJqa3lkP1VHJF52Jmuz0E12bOlZMsDrqANb5OXp+woqqZOCJQw6ffO41YiaUpN
-	hu3GZYwLuVV8qMjABWkLsJbUdSTs/ZlNOQJc+jNsNaZ0GrHrUWo32q2w7W158tKlKl6LY2vQgy9ye
-	8jEJoJ13XNa1PViqUlUXNYAHRk99dUtPCRnqbUbDuiEesSkfyI5IZ2jby4B99Y9sLte+pV5dJ+Jxf
-	i3Yw8zMRSMk1KRuFJzOg==;
+	List-Owner; bh=69Eb/hqOsggx5yrCNju8KU86P4FdIEWuIK/nXf/dz3k=; b=TlcvoZQsaXnk4i
+	e6CXIBhSNZsxjnZp2+QDJnUWltWa6wv/PnUhDEOjlszJCKe9YQrM/IZ0Y4YAV5DTg13RHIHKW1It0
+	FsH4WR1mkIsyH21t8PSEYaW9IBin9gbUzHm8NZyut60J+iNpribcChOgHtTxetEK6yStaP1YMapGb
+	eQUmz77yjzqbVTYYjHRCg/Q6okKg7angkAV9Z+xUrmU7xVaOWA9Sl5+8wKpl4Yx1QA5Fhhi4rjNRu
+	8aUdM+VuJ+9P8kzJ+4mwGEHOepheAmEt/PhCZCqPoChynxyK6lVpnxWfXeZqOHNNvTMbL8B4gYLKS
+	U8jXyuJpW874EKU1uQZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vMYwv-000000090PU-16rc;
-	Fri, 21 Nov 2025 21:45:49 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1vN6PP-0000000AIyV-3uex;
+	Sun, 23 Nov 2025 09:29:27 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vMYwn-000000090Mr-0EyH;
-	Fri, 21 Nov 2025 21:45:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=c4dtC/m0OXwu0tkxgmw/ktEFXPVEOhpmsbD/MPB1w54=; b=0WbA8+bnPdkOjJxWsQUTK1OmJg
-	YjOKJV0ZI4ka7N2AEjoWq2qymAvVghMATvWtIGgIdmqhAOWxtnAyBig13z5yfQccfqWAZX0g2eZA7
-	aGVgtxnr+fL22wMb+ZdGX2CmZSwTD/j/sh22b62diYWxovrWKyDWhqDp6zjtiXaB2/Cgrkx0qv4NF
-	WGanm+px7agt5QlIJ9oV1oM0X+499ySK60AzSZwOA3s9L2S8E3HqurTKM4JzsBPrEUOCZke4LIq05
-	xWRw3iwPpT4wKfdSV+is+V4orl8w2wqg93PTP81GUoWRaYcZrgVebAuPUzYUroIAQ4d0LIE7+Ltou
-	TiGHud0Q==;
-Received: from [213.192.12.196] (helo=phil..)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1vMYwc-0001Qh-Vf; Fri, 21 Nov 2025 22:45:31 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: Chukun Pan <amadeus@jmu.edu.cn>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	Rob Herring <robh@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org
-Subject: Re: [PATCH v2 0/5] arm64: dts: rockchip: update 100ASK DshanPi A1 support
-Date: Fri, 21 Nov 2025 22:45:27 +0100
-Message-ID: <176376151911.52478.4773292492841717025.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20251120120011.279104-1-amadeus@jmu.edu.cn>
-References: <20251120120011.279104-1-amadeus@jmu.edu.cn>
+	id 1vN6PN-0000000AIxZ-2fHK;
+	Sun, 23 Nov 2025 09:29:25 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id C597860154;
+	Sun, 23 Nov 2025 09:29:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C0853C113D0;
+	Sun, 23 Nov 2025 09:29:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1763890164;
+	bh=2I+PL6KFXMf1ExzwcEo6rxHgBhtJ6ZnSKe1DUCdju6U=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=f7jifpVGDAqPpKDkZuO/QsfToNbQDpJa2kAFJZk4yAylfgk/MeL1ezsABScoWiTZO
+	 Ku+OXoOcjccsTnJNVU1zQf9yPlmKH06vJWutPJzn1yH3BptuD9feIUO/MnErEuPISq
+	 r5y6WFdsKU3khR65MZEj5AZhn/N47JUrWgdbQB0EVoDMyAI+E3GaUQJBay4euzi31x
+	 O2AVOrQYiTC2cLaDfjgimQSwJ6eL1aMJuZUtR1ois0Q7WcCFXdl75NooHFy9CX/xz8
+	 XRwqfzPfl99hPRywUKEZspXnVUBxauU8sJxNXjtiaWVG6jVwA0A0i8bA5DudifPBwP
+	 92yJNUREfDQWA==
+Date: Sun, 23 Nov 2025 11:29:20 +0200
+From: Leon Romanovsky <leon@kernel.org>
+To: Jason Gunthorpe <jgg@nvidia.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Christian Benvenuti <benve@cisco.com>,
+	Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Joerg Roedel <joro@8bytes.org>,
+	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-rdma@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Nelson Escobar <neescoba@cisco.com>,
+	Rob Clark <robin.clark@oss.qualcomm.com>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
+	Chen-Yu Tsai <wens@csie.org>, Will Deacon <will@kernel.org>,
+	Yong Wu <yong.wu@mediatek.com>, Lu Baolu <baolu.lu@linux.intel.com>,
+	Kevin Tian <kevin.tian@intel.com>, patches@lists.linux.dev,
+	Vasant Hegde <vasant.hegde@amd.com>
+Subject: Re: [PATCH v3 1/3] RDMA/usnic: Remove iommu_set_fault_handler()
+Message-ID: <20251123092920.GB16619@unreal>
+References: <0-v3-e5d08e2d551e+109-iommu_set_fault_jgg@nvidia.com>
+ <1-v3-e5d08e2d551e+109-iommu_set_fault_jgg@nvidia.com>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251121_134541_119652_6F62BC10 
-X-CRM114-Status: UNSURE (   9.72  )
-X-CRM114-Notice: Please train this message.
+Content-Disposition: inline
+In-Reply-To: <1-v3-e5d08e2d551e+109-iommu_set_fault_jgg@nvidia.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,37 +85,24 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-On Thu, 20 Nov 2025 20:00:06 +0800, Chukun Pan wrote:
-> Changed from v2:
->   Remove merged patches
->   Split patch for more details
+On Thu, Nov 20, 2025 at 03:46:22PM -0400, Jason Gunthorpe wrote:
+> The handler in usnic just prints a fault report message, the iommu drivers
+> all do a better job of that these days. Just remove the use of this old
+> API.
 > 
-> Chukun Pan (5):
->   arm64: dts: rockchip: remove mmc max-frequency for 100ASK DshanPi A1
->   arm64: dts: rockchip: add mmc aliases for 100ASK DshanPi A1
->   arm64: dts: rockchip: enable button for 100ASK DshanPi A1
->   arm64: dts: rockchip: enable USB for 100ASK DshanPi A1
->   arm64: dts: rockchip: enable RTC for 100ASK DshanPi A1
-> 
-> [...]
+> Reviewed-by: Lu Baolu <baolu.lu@linux.intel.com>
+> Reviewed-by: Kevin Tian <kevin.tian@intel.com>
+> Acked-by: Jason Gunthorpe <jgg@nvidia.com>
+> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
+> ---
+>  drivers/infiniband/hw/usnic/usnic_uiom.c | 13 -------------
+>  1 file changed, 13 deletions(-)
+>
 
-Applied, thanks!
+I imagine that you want to merge this patch through iommu tree.
 
-[1/5] arm64: dts: rockchip: remove mmc max-frequency for 100ASK DshanPi A1
-      commit: b120a9df264eab51952d0cf44c16f13f2606281d
-[2/5] arm64: dts: rockchip: add mmc aliases for 100ASK DshanPi A1
-      commit: 98461b5e3cdffd126aec610691078408c296d79f
-[3/5] arm64: dts: rockchip: enable button for 100ASK DshanPi A1
-      commit: 80ec14d1d2173cc3f225102a7db09a457541fe04
-[4/5] arm64: dts: rockchip: enable USB for 100ASK DshanPi A1
-      commit: d43935da2bfada9e83f5f7e46f7d72e5d4665bd6
-[5/5] arm64: dts: rockchip: enable RTC for 100ASK DshanPi A1
-      commit: e34003dd2fb05da8f420bbd7b8ec62ab88242c45
-
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
+Thanks,
+Reviewed-by: Leon Romanovsky <leonro@nvidia.com>
 
 _______________________________________________
 Linux-rockchip mailing list
