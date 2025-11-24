@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7EE0CFD364
-	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Nov 2025 21:56:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DC90CFD362
+	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Nov 2025 21:57:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=YsOQRXn3q8X8DgtISDiy6d3l/Tm8DV4jRPsLY+BWdgw=; b=aS5dTZ3BlFsRxI
-	nvxbjhEqaRuxzzSeKcrV6EEG2KZbznq4/fhSQCRL7MbpHjkJndrzf7odXbcdylQPQjPruGGGGb6he
-	CU5MWloyp0H3N7o0ByvMNgECpDR5wjoHVMm/HjTBktKuWPeSuE1hHWIO1bC75wltT/exjDG587dOs
-	r3sICUnTONQ1jki0e2pLODnOgNecR73e0Aw2dqLWnr1JkwT7Fez18CORJSHKXOKffQecwTPZW8WeM
-	yse4te86BOHLEgkQuAWn9Nc6qfP7M6CDwjK0K6MdvsUs6T/hw9n50kz4/5lfHFL2FhM8Yefgy0kgf
-	Q/dW+/ev3ZRlq7Cj+QBA==;
+	List-Owner; bh=8vIoSg3Ct3vlFEq7JDrkTzGnjS5EAmut6vHAAH/yE9E=; b=msPkhgPnX+nWR6
+	BQTnoexfePf31axAtieAA4Jlb3W4ElEbuwvMDwJ9TZZSZlqPkRSjAO7nyQr578o2d0IRwl3TG8PAo
+	Udh3X9Dfm7T7fwrdLccHOQcKZMNsWFrAuCy2MwHP8OOo5GN68lunmrnIaatRxQm7c9C99hEJpxScn
+	6LLdb6ibeDRqaFgFNIZhpT7QhyEJi8RoQk8Hi/gtxnRQSiKDjhTGzHvc+e0+UmlT+piSbXuY28Z/p
+	N01RJ29oZ4ckoT8KfLmWBBjzQcpoo7QtfSGlHXMVWLEvGIaeAP4ZlQr5QfR+o+PzbL2xuZJhdYuHL
+	4CAI+xw1mZAM+Qbiv++A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vNeXe-0000000CMzX-0n0Y;
-	Mon, 24 Nov 2025 21:56:14 +0000
+	id 1vNeYf-0000000CNC3-2ZEY;
+	Mon, 24 Nov 2025 21:57:17 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vNeXb-0000000CMz4-3Q08;
-	Mon, 24 Nov 2025 21:56:12 +0000
+	id 1vNeYd-0000000CNB5-28ra
+	for linux-rockchip@lists.infradead.org;
+	Mon, 24 Nov 2025 21:57:16 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:In-Reply-To:References;
-	bh=YGk5LrRjjNWp266IfkQTW7GlnTyeUi/G1mCLsjenO7A=; b=kBvBcq2CYjibiX4nk8fXrxwIvj
-	HMCZgq3ajUCpivUOywRObu7AEsiTpjD1YdMo48g9oYoNk42u4VWx00U40G04WvPwS5jK/TF06pSC2
-	GZ6p1TUiLkSiCbvKvpqTpcjSv0nrgY/G36bIdMB7VgsBofIW/Kg5nhVXDC54PRaLUt0NmvEtra1XT
-	4pC1JWR8UECA5moP0HoILidRwWYQyR9dS3xCeDYog688FrChw3g23meJ4Mz3nOPVM1t85C0pSlcWB
-	ioPaGLNxq75ihF/Nh+0FRIzPPGc+EWsol0PR06WBKaNxZulAotPNMEg/MIaV8fAgVhDP1sgJrux7z
-	bOEb4PWA==;
+	bh=KszSCRsCc5nIwYxSZxnDaIj65EFTsnch4XIdTt4IG+8=; b=wp/3dF2ZG/ZL9/g31KzMK6Ds0b
+	wl2TJgttXzFk/rRLuj8AG0DBPVxPQL5OAY6Ljjh38AZO/cpWdxvPWlRKlqzKFjzjxqOMHmNJfzxiy
+	iVtR54lAWUWhQG2mak/w42lKM8sMgMl5bDt6hkhYU6P50FmYWtHejd08hF+szmuXOEPPXEL7aayXg
+	MibDv/9P0n95/FD9P5bAIgCCO352JihwXItxCXL1k3UUA1mIiZSGknP9rbBfB28p1aHGDl5T916Zi
+	5Pjtkcxm9d/jENwpexzBU9/4C7gJ4T3uKFuqf8s5CDlMwrjI1i7aDEFdED/vbnU4Za+a7+YXIjcoA
+	glxLLbNA==;
 Received: from i53875be6.versanet.de ([83.135.91.230] helo=diego.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1vNeXX-0006N1-Am; Mon, 24 Nov 2025 22:56:07 +0100
+	id 1vNeYY-0006Nk-Bo; Mon, 24 Nov 2025 22:57:10 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: arm@kernel.org
-Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
-Subject: [GIT PULL] Rockchip dts64 changes for 6.19 #2
-Date: Mon, 24 Nov 2025 22:56:06 +0100
-Message-ID: <2244391.irdbgypaU6@diego>
+To: mturquette@baylibre.com, Stephen Boyd <sboyd@kernel.org>
+Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
+Subject: [GIT PULL] Rockchip clock changes for 6.19 #1
+Date: Mon, 24 Nov 2025 22:57:09 +0100
+Message-ID: <3018362.e9J7NaK4W3@diego>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251124_135611_911574_62CBB083 
-X-CRM114-Status: GOOD (  15.30  )
+X-CRM114-CacheID: sfid-20251124_135715_577500_6DD3A392 
+X-CRM114-Status: GOOD (  11.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,95 +67,75 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi soc maintainers,
+Hi Mike, Stephen,
 
-please find below some more Rockchip arm64 dts changes for for 6.19 
-on top of the previous changes.
+please find below a pull-request with Rockchip clock change for 6.19
 
 Please pull.
+
 Thanks
 Heiko
 
 
-The following changes since commit 78f316e90906d54c8aa6029e5c19ae83e420e56a:
+The following changes since commit 3a8660878839faadb4f1a6dd72c3179c1df56787:
 
-  arm64: dts: rockchip: add vicap node to rk356x (2025-11-16 00:39:47 +0100)
+  Linux 6.18-rc1 (2025-10-12 13:42:36 -0700)
 
 are available in the Git repository at:
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v6.19-rockchip-dts64-2
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v6.19-rockchip-clk1
 
-for you to fetch changes up to e34003dd2fb05da8f420bbd7b8ec62ab88242c45:
+for you to fetch changes up to 18191dd750e6c9e17fabefd09ff418dd587bcdb9:
 
-  arm64: dts: rockchip: enable RTC for 100ASK DshanPi A1 (2025-11-21 22:39:06 +0100)
-
-----------------------------------------------------------------
-New boards: QNAP TS233 (2-bay variant of the RK3568 NAS series) and
-Asus Tinkerboard 3 + 3S.
-Additional peripherals enabled on 100ASK DshanPi A1, Orange Pi 3B,
-Indiedroid Nova, QNAP-TSx33 series + LED states on Radxa boards,
-power-domains for the previously added RK3368 display components.
+  clk: rockchip: Add clock and reset driver for RK3506 (2025-11-23 22:56:49 +0100)
 
 ----------------------------------------------------------------
-Chris Morgan (4):
-      arm64: dts: rockchip: Add clk32k_in for Indiedroid Nova
-      arm64: dts: rockchip: Define regulator for pcie2x1l2 on Indiedroid Nova
-      arm64: dts: rockchip: Correct pinctrl for pcie for Indiedroid Nova
-      arm64: dts: rockchip: Add host wake pin for wifi on Indiedroid Nova
+SCMI clock-ids and max-clk-number removal from dt-binding on RK3568 as
+well as clock drivers for the new SoCs RV1126B and RK3506.
 
-Chukun Pan (5):
-      arm64: dts: rockchip: remove mmc max-frequency for 100ASK DshanPi A1
-      arm64: dts: rockchip: add mmc aliases for 100ASK DshanPi A1
-      arm64: dts: rockchip: enable button for 100ASK DshanPi A1
-      arm64: dts: rockchip: enable USB for 100ASK DshanPi A1
-      arm64: dts: rockchip: enable RTC for 100ASK DshanPi A1
+----------------------------------------------------------------
+Elaine Zhang (4):
+      clk: rockchip: Implement rockchip_clk_register_armclk_multi_pll()
+      dt-bindings: clock, reset: Add support for rv1126b
+      clk: rockchip: Add clock controller for the RV1126B
+      clk: rockchip: Add clock and reset driver for RK3506
 
-Coia Prant (1):
-      arm64: dts: rockchip: fix PCIe 3.3V regulator voltage on 9Tripod X3568 v4
+Finley Xiao (1):
+      dt-bindings: clock: rockchip: Add RK3506 clock and reset unit
 
-FUKAUMI Naoki (1):
-      arm64: dts: rockchip: Use default-state for power LED for Radxa boards
+Heiko Stuebner (3):
+      dt-bindings: clock: rk3568: Add SCMI clock ids
+      clk: rockchip: rk3568: Drop CLK_NR_CLKS usage
+      dt-bindings: clock: rk3568: Drop CLK_NR_CLKS define
 
-Heiko Stuebner (7):
-      arm64: dts: rockchip: move cpu_thermal node to the correct position
-      arm64: dts: rockchip: describe mcu eeprom cells on rk3568-ts433
-      arm64: dts: rockchip: move common qnap tsx33 parts to dtsi
-      dt-bindings: arm: rockchip: add TS233 to RK3568-based QNAP NAS devices
-      arm64: dts: rockchip: add QNAP TS233 devicetree
-      arm64: dts: rockchip: Add power-domain to RK3368 DSI controller
-      arm64: dts: rockchip: Add power-domain to RK3368 VOP controller
-
-Michael Opdenacker (4):
-      dt-bindings: arm: rockchip: merge Asus Tinker and Tinker S
-      dt-bindings: arm: rockchip: Add Asus Tinker Board 3/3S
-      arm64: dts: rockchip: Add Asus Tinker Board 3 and 3S device tree
-      arm64: dts: rockchip: Enable i2c2 on Orange Pi 3B
-
- .../devicetree/bindings/arm/rockchip.yaml          |  18 +-
- arch/arm64/boot/dts/rockchip/Makefile              |   3 +
- arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts  |   1 -
- arch/arm64/boot/dts/rockchip/rk3368.dtsi           |   2 +
- .../boot/dts/rockchip/rk3399-rock-4c-plus.dts      |   2 +-
- arch/arm64/boot/dts/rockchip/rk3528-rock-2a.dts    |   1 -
- .../boot/dts/rockchip/rk3566-orangepi-3b.dtsi      |   5 +
- .../boot/dts/rockchip/rk3566-tinker-board-3.dts    |  13 +
- .../boot/dts/rockchip/rk3566-tinker-board-3.dtsi   | 278 ++++++++++
- .../boot/dts/rockchip/rk3566-tinker-board-3s.dts   |  30 +
- .../boot/dts/rockchip/rk3568-9tripod-x3568-v4.dts  |  14 +-
- arch/arm64/boot/dts/rockchip/rk3568-qnap-ts233.dts | 131 +++++
- arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts | 604 ++------------------
- .../arm64/boot/dts/rockchip/rk3568-qnap-tsx33.dtsi | 608 +++++++++++++++++++++
- .../boot/dts/rockchip/rk3576-100ask-dshanpi-a1.dts |  93 +++-
- arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts    |   2 +-
- arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts |   2 +-
- .../boot/dts/rockchip/rk3588s-indiedroid-nova.dts  |  43 +-
- arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts   |   2 +-
- 19 files changed, 1249 insertions(+), 603 deletions(-)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-tinker-board-3.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-tinker-board-3.dtsi
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-tinker-board-3s.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-qnap-ts233.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-qnap-tsx33.dtsi
+ .../bindings/clock/rockchip,rk3506-cru.yaml        |   55 +
+ .../bindings/clock/rockchip,rv1126b-cru.yaml       |   52 +
+ drivers/clk/rockchip/Kconfig                       |   14 +
+ drivers/clk/rockchip/Makefile                      |    2 +
+ drivers/clk/rockchip/clk-cpu.c                     |  165 +++
+ drivers/clk/rockchip/clk-rk3506.c                  |  869 +++++++++++++++
+ drivers/clk/rockchip/clk-rk3568.c                  |    5 +-
+ drivers/clk/rockchip/clk-rv1126b.c                 | 1117 ++++++++++++++++++++
+ drivers/clk/rockchip/clk.c                         |   24 +
+ drivers/clk/rockchip/clk.h                         |   96 ++
+ drivers/clk/rockchip/rst-rk3506.c                  |  226 ++++
+ drivers/clk/rockchip/rst-rv1126b.c                 |  443 ++++++++
+ include/dt-bindings/clock/rk3568-cru.h             |    6 +-
+ include/dt-bindings/clock/rockchip,rk3506-cru.h    |  285 +++++
+ include/dt-bindings/clock/rockchip,rv1126b-cru.h   |  392 +++++++
+ include/dt-bindings/reset/rockchip,rk3506-cru.h    |  211 ++++
+ include/dt-bindings/reset/rockchip,rv1126b-cru.h   |  405 +++++++
+ 17 files changed, 4365 insertions(+), 2 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3506-cru.yaml
+ create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rv1126b-cru.yaml
+ create mode 100644 drivers/clk/rockchip/clk-rk3506.c
+ create mode 100644 drivers/clk/rockchip/clk-rv1126b.c
+ create mode 100644 drivers/clk/rockchip/rst-rk3506.c
+ create mode 100644 drivers/clk/rockchip/rst-rv1126b.c
+ create mode 100644 include/dt-bindings/clock/rockchip,rk3506-cru.h
+ create mode 100644 include/dt-bindings/clock/rockchip,rv1126b-cru.h
+ create mode 100644 include/dt-bindings/reset/rockchip,rk3506-cru.h
+ create mode 100644 include/dt-bindings/reset/rockchip,rv1126b-cru.h
 
 
 
