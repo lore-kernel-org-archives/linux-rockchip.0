@@ -4,63 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4826BCFA466
-	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Nov 2025 14:03:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEF93CFD318
+	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Nov 2025 16:33:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VNftdtfzO0IZ45WNMyv9FRwl46LYMxKKzqcTlaOk0Ns=; b=bYCi1Xk2eCCUfW
-	h1MBMjjbhPeCq8UyBxLiVYDa9NgqVnmvuSVGyJIpkArSszce7NSG6iHK4OvEnwRWOD3kSLMuxdo0T
-	HHneia6pwAhlp8u0KAxj8DaPjBjL6xzVfw1NjeCQo27lCrLkhDQeYZOckYwUfVTamIqY0CWxyYlrg
-	bzPMu1zbo5g/ApM3WJCY6qA2Y3e9yYcc6bR386z94LI4fZqo3JQEi1dVUfZnfJIMy3rLQFFoouDPa
-	QUs3a6tWl8k7fmbsX15XV0YmMIouszj06wytqQlyucKRPZmKbgnV2RHS6VWGCT4o3uYGfYPNCAvg2
-	XzcXhFWyrBLe98g3obRw==;
+	List-Owner; bh=EjXPtStplv2imvUDqlpMS8yBcTWDUj0riwLaxHzKCf8=; b=tA5uItElqWuDZu
+	jNoA2e3I4PY37yZ4LQuiyEWXwkBnuVEqG3UgV6LPjZTsrqnfNrxqh+1wnxcvx+vOgLgBW+6Fg/Eh/
+	fKEpVF+71MgX7rzjSwJzpLrbM9Y/TIveYWhSU1cWr5PDkZ1obHFVJMdhvZEtz6AeWNZy4zxDioUiW
+	nSW5gqqGGBtRiW/U51XFkS5GTMnJ9BhUJfDxkD8lG/ASrle0zuio0CC/5EdKeb2hcRAZDMsFhQeVT
+	3mDGv/OEYXtirdh8nq4nrI/tvVxzIzYDowoRUn/YZymso1wbu/byTXDKfxjBzM5HZtgY801/isGoj
+	HL/ZER+z7OdV2WOhCBFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vNX9e-0000000Bo1V-3La9;
-	Mon, 24 Nov 2025 14:02:58 +0000
+	id 1vNZVN-0000000C04e-3n0f;
+	Mon, 24 Nov 2025 16:33:33 +0000
 Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vNX9d-0000000Bo16-3khG;
-	Mon, 24 Nov 2025 14:02:57 +0000
+	id 1vNZVL-0000000C041-1rMD;
+	Mon, 24 Nov 2025 16:33:31 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 0EE2760167;
-	Mon, 24 Nov 2025 14:02:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DF81CC116C6;
-	Mon, 24 Nov 2025 14:02:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1763992976;
-	bh=a33jXfKWV+tqd3DAXr4TASNxV2asp4jDlbK8KxdNQOQ=;
+	by tor.source.kernel.org (Postfix) with ESMTP id 8E38D60173;
+	Mon, 24 Nov 2025 16:33:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B2D80C116C6;
+	Mon, 24 Nov 2025 16:33:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1764002010;
+	bh=b0HsFdIr9UYeg1Jbb+ezqHtOK4AZhADd9B70yMMGZFc=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=e/hgYIy5IZoVv36JC+jRAqpdwANOi0RBMs4xIVOj7TdREitlfpOcNyp1ih6Wu+6o+
-	 2Q/Cq8TiwmjUPhTdVruO8tJx7Oo4SKI30Ev7qqnSXz8tGpSumZU/E8QiYk+RFrOpyd
-	 oXf/14nxkqp/kLTv4peMcyYcOdSH4bLmJnmbtspZdvLnO1CzdgnDG63+PeWfdDbjY6
-	 D1/h34qRh0R4eVmBZwB8iY/7rCk/m2b48OA04YV2AnVQ4Y8fo4lxElUQnKQOfmgBS9
-	 ORMBPLITDD4RodCl94oRW4fD5Syw1ax/SOHg7e2RHCr+EJJU6C3QMhogwIJ9kfYsdS
-	 eyryjhyrdkoOw==
-Date: Mon, 24 Nov 2025 15:02:51 +0100
-From: Niklas Cassel <cassel@kernel.org>
-To: Manivannan Sadhasivam <mani@kernel.org>
-Cc: Jingoo Han <jingoohan1@gmail.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	FUKAUMI Naoki <naoki@radxa.com>,
-	Krishna chaitanya chundru <quic_krichai@quicinc.com>,
-	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org
-Subject: Re: [PATCH 0/6] PCI: dwc: Revert Link Up IRQ support
-Message-ID: <aSRli_Mb6qoQ9TZO@ryzen>
-References: <20251111105100.869997-8-cassel@kernel.org>
- <mt7miqkipr4dvxemftq6octxqzauueln252ncrcwy6i2t7wfhi@jtwokeilhwsi>
+	b=g+47ol/xVPKvHq8mO+c2fpgR8DW18YAaKTmijBBG2VtkLGfdTcX8n57jEGZgYFtXt
+	 DF01gZjsrt73ZFaL90qrJ9go9zBaa62onSiMzWQEv3i/waUjE3nOD4/TVDH9cmjl4K
+	 53oeGgUWsOdxH3qnIhbrSMDif3kOexD/8BLXzSs0=
+Date: Mon, 24 Nov 2025 17:33:27 +0100
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+Cc: Chaoyi Chen <kernel@airkyi.com>,
+	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+	Peter Chen <hzpeterchen@gmail.com>,
+	Luca Ceresoli <luca.ceresoli@bootlin.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Yubing Zhang <yubing.zhang@rock-chips.com>,
+	Frank Wang <frank.wang@rock-chips.com>,
+	Andrzej Hajda <andrzej.hajda@intel.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Robert Foss <rfoss@kernel.org>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+	Amit Sunil Dhamne <amitsd@google.com>,
+	Dragan Simic <dsimic@manjaro.org>, Johan Jonker <jbx6244@gmail.com>,
+	Diederik de Haas <didi.debian@cknow.org>,
+	Peter Robinson <pbrobinson@gmail.com>, linux-usb@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
+Subject: Re: [PATCH v10 01/11] usb: typec: Add notifier functions
+Message-ID: <2025112448-brush-porcupine-c851@gregkh>
+References: <20251120022343.250-1-kernel@airkyi.com>
+ <20251120022343.250-2-kernel@airkyi.com>
+ <2025112102-laurel-mulch-58e4@gregkh>
+ <462ad1bd-7eec-4f26-b383-96b049e14559@rock-chips.com>
+ <2025112402-unopposed-polio-e6e9@gregkh>
+ <a80483de-518d-45d5-b46a-9b70cca5b236@rock-chips.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <mt7miqkipr4dvxemftq6octxqzauueln252ncrcwy6i2t7wfhi@jtwokeilhwsi>
+In-Reply-To: <a80483de-518d-45d5-b46a-9b70cca5b236@rock-chips.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,44 +93,130 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Nov 24, 2025 at 06:07:44PM +0530, Manivannan Sadhasivam wrote:
-> While I suggested to revert the link up IRQ patch for rockchip earlier, I didn't
-> expect to drop the support for Qcom. The reason is, on Qcom SoCs, we have not
-> seen a case where people connect a random PCIe switch and saw failures. Most of
-> the Qcom usecases were around the M.2 and other proprietary connectors. There is
-> only one in-house PCIe switch that is being actively used in our products, but
-> so far, none of the bootloaders have turned them ON before kernel booting. So
-> kernel relies on the newly merged pwrctrl driver to do the job. Even though it
-> also suffers from the same resource allocation issue, this series won't help in
-> any way as pwrctrl core performs rescan after the switch power ON, and by that
-> time, it will be very late anyway.
-> 
-> So I'm happy to take the rockhip patches from this series as they fix the real
-> issue that people have reported. But once the pwrctrl rework series gets merged,
-> and the rockchip drivers support them, we can bring back the reverted changes.
+On Mon, Nov 24, 2025 at 04:05:53PM +0800, Chaoyi Chen wrote:
+> Hi Greg,
+> =
 
-FUKAUMI Naoki, just to confirm:
+> On 11/24/2025 3:10 PM, Greg Kroah-Hartman wrote:
+> =
 
-Neither my suggested approach:
-https://lore.kernel.org/linux-pci/aRHdeVCY3rRmxe80@ryzen/
+> > On Mon, Nov 24, 2025 at 09:40:03AM +0800, Chaoyi Chen wrote:
+> > > Hi Greg,
+> > > =
 
-nor Shawn's suggested approach:
-https://lore.kernel.org/linux-pci/dc932773-af5b-4af7-a0d0-8cc72dfbd3c7@rock-chips.com/
+> > > On 11/21/2025 10:07 PM, Greg Kroah-Hartman wrote:
+> > > > On Thu, Nov 20, 2025 at 10:23:33AM +0800, Chaoyi Chen wrote:
+> > > > > From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+> > > > > =
 
-worked for you?
+> > > > > Some other part of kernel may want to know the event of typec bus.
+> > > > Be specific, WHAT part of the kernel will need to know this?
+> > > For now, it is DRM.
+> > Then say this.
+> =
 
+> Okay, please refer to the discussion below.
+> =
 
-If so, I don't see many alternative but for Mani to apply patch 1 and
-patch 2 from this series.
+> > =
 
+> > > > And why a new notifier, why not just use the existing notifiers tha=
+t you
+> > > > already have?  And what is this going to be used for?
+> > > We have discussed this before, but the current bus notifier cannot ac=
+hieve the expected notification [0].
+> > > =
 
-Kind regards,
-Niklas
+> > > [0] https://lore.kernel.org/all/aPsuLREPS_FEV3DS@kuha.fi.intel.com/
+> > Then you need to document the heck out of this in the changelog text.
+> > But I'm still not quite understanding why the bus notifier does not work
+> > here, as you only want this information if the usb device is bound to
+> > the bus there, you do not want to know this if it did not complete.
+> > =
+
+> > That thread says you want this not "too late", but why?  What is the
+> > problem there, and how will you handle your code getting loaded after
+> > the typec code is loaded?  Notifier callbacks don't work for that
+> > situation, right?
+> =
+
+> In fact, the typec_register_altmode() function generates two
+> registered events.=A0The first one is the registered event of the port
+> device, and the second one is the registered event of the partner
+> device.=A0The second one event only occurs after a Type-C device is
+> inserted.
+> The bus notifier event does not actually take effect for the port
+> device, because it only sets the bus for the partner device:
+> =
+
+> =A0 =A0 /* The partners are bind to drivers */
+> =A0 =A0 if (is_typec_partner(parent))
+> =A0 =A0 =A0 =A0 alt->adev.dev.bus =3D &typec_bus;
+
+Setting the bus is correct, then it needs to be registered with the
+driver core so the bus link shows up (and a driver is bound to it.)
+That is when the bus notifier can happen, right?
+
+> I hope it's not too late. In fact, the notifier here will notify DRM to e=
+stablish a bridge chain.
+
+What is a "bridge chain"?
+
+> The downstream DP controller driver hopes to obtain the fwnode of the las=
+t-level Type-C device
+> through this bridge chain to create a DRM connector. And when a device is=
+ inserted,
+> drivers/usb/typec/altmodes/displayport.c can notify the HPD (Hot Plug Det=
+ect) event.
+
+But aren't you just the driver for the "partner device"?
+
+If not, why isn't a real device being created that you then bind to,
+what "fake" type of thing are you attempting to do here that would
+require you to do this out-of-band?
+
+> If relying on the second event, the bridge chain may never be established=
+, and the operations of the DP driver will be
+> always deferred. Furthermore, other parts of the display controller drive=
+r will also be deferred accordingly.
+
+What operations?  What exactly is delayed?  You should not be touching a
+device before you have it on your bus, right?
+
+> > > > Notifiers are a pain, and should almost never be added.  Use real
+> > > > function calls instead.
+> > > In v6, I used direct function calls, but had to switch to notifiers b=
+ecause couldn't resolve the dependencies between DRM and Type-C [1]. Do you=
+ have any good ideas? Thank you.
+> > Only allow this DRM code to be built if typec code is enabled, do NOT
+> > use a select, use a depends in the drm code.
+> =
+
+> Sorry, I didn't get your point. Does this mean that the current notifiers=
+ approach still needs to be changed to direct function calls?
+
+If you somehow convince me that the existing bus notifiers will not
+work, yes :)
+
+> If so, then based on the previous discussion, typec should not depend
+> on any DRM components. Does this mean that we should add the if
+> (IS_REACHABLE(CONFIG_DRM_AUX_BRIDGE)) before the direct function call?
+
+No, do it properly like any other function call to another subsystem.
+
+> Additionally, the current version of CONFIG_DRM_AUX_BRIDGE is selected
+> by the DP driver in patch9.
+
+Don't do "select" if at all possible, always try to do "depends on".
+
+thanks,
+
+greg k-h
 
 _______________________________________________
 Linux-rockchip mailing list
