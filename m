@@ -4,76 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2AA6CFD35A
-	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Nov 2025 21:22:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7EE0CFD364
+	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Nov 2025 21:56:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=S235pCzFwW4cu3CnY1JnvmGV/B/AwvMB0CYA+CW14lI=; b=JLWo/Qny0pdm6t
-	GhXK7kvIk3tREmeaeW5IJvddoX7sGaFLgBksAwkbZ4KaXZ+QsoETSGlp/RwBwA6B+QHYzAEIuseKw
-	wrXfc9NAgToBNRwaggFkMunuiwWvk0u1yf9hFQyNsH6Lag8iUdXraLkkkV+kQiZM/fgYOJCRNK3Mg
-	fFDEEfc2j+atOqqkU6ylS4oCGT7m8zul7DJ59waDvU3Y3MC5FtXYy4FEHUoNacPxmtkdoH3MpxSMu
-	vqj1HBr1ZbOJhbERYHoFm1BVYfikY/W4LXSVsny3SR4tZNbQTtrRhyv480ynMSO6LtaWcSUCeFiLL
-	xMVg4jy3XXvqyJ4i7+1w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=YsOQRXn3q8X8DgtISDiy6d3l/Tm8DV4jRPsLY+BWdgw=; b=aS5dTZ3BlFsRxI
+	nvxbjhEqaRuxzzSeKcrV6EEG2KZbznq4/fhSQCRL7MbpHjkJndrzf7odXbcdylQPQjPruGGGGb6he
+	CU5MWloyp0H3N7o0ByvMNgECpDR5wjoHVMm/HjTBktKuWPeSuE1hHWIO1bC75wltT/exjDG587dOs
+	r3sICUnTONQ1jki0e2pLODnOgNecR73e0Aw2dqLWnr1JkwT7Fez18CORJSHKXOKffQecwTPZW8WeM
+	yse4te86BOHLEgkQuAWn9Nc6qfP7M6CDwjK0K6MdvsUs6T/hw9n50kz4/5lfHFL2FhM8Yefgy0kgf
+	Q/dW+/ev3ZRlq7Cj+QBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vNe12-0000000CL24-1Z8a;
-	Mon, 24 Nov 2025 21:22:32 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vNeXe-0000000CMzX-0n0Y;
+	Mon, 24 Nov 2025 21:56:14 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vNe10-0000000CL1R-14bp;
-	Mon, 24 Nov 2025 21:22:31 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 2C11B43690;
-	Mon, 24 Nov 2025 21:22:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DDB27C4CEFB;
-	Mon, 24 Nov 2025 21:22:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1764019349;
-	bh=RgrwDiinUzSpRqOGQiyfN+hRdSZO/OtpULDIPl/RaxE=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=qUnwH3pWJBpE5n0hprzgUyQmQnyYDnqdsNL/7ivetkau8W72rzPw6TL6kyAZV06Cx
-	 EESXAQ4m3JglpM69+IQcbANa/HFyP8qH9IXLwafZrKq+OV8OsiNXw7UDN2s3xWfS86
-	 iq3U1hEgP0NdFE3xGqp8dkXzBpw21zocJN6AvpzNM2DQC4J5F8Y0wv+ajYA8mS1YIM
-	 NSphcDi7VxA//qJ0GbJa8B2of/bu+R600bs7kWLaj+FzTWGKztJcxFQqO5ST1vsMHv
-	 IH56mX+FT9s3Pcesq9w7rJJUrVxwhFgELcKZui4Ji52NlX0oO74l74Nq+azyLy8Ntb
-	 49DxDSoqMqi4A==
-Date: Mon, 24 Nov 2025 15:22:27 -0600
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Niklas Cassel <cassel@kernel.org>
-Cc: Frank Li <Frank.li@nxp.com>, Shawn Lin <shawn.lin@rock-chips.com>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Rob Herring <robh@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
-	Kever Yang <kever.yang@rock-chips.com>,
-	Simon Xue <xxm@rock-chips.com>, Damien Le Moal <dlemoal@kernel.org>,
-	Dragan Simic <dsimic@manjaro.org>, FUKAUMI Naoki <naoki@radxa.com>,
-	Diederik de Haas <diederik@cknow-tech.com>,
-	Richard Zhu <hongxing.zhu@nxp.com>,
-	Lucas Stach <l.stach@pengutronix.de>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>, Conor Dooley <conor@kernel.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Hans Zhang <hans.zhang@cixtech.com>, linux-tegra@vger.kernel.org,
-	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, kernel@pengutronix.de,
-	Bjorn Helgaas <bhelgaas@google.com>
-Subject: Re: [PATCH v2 1/4] PCI: dwc: Advertise L1 PM Substates only if
- driver requests it
-Message-ID: <20251124212227.GA2713330@bhelgaas>
+	id 1vNeXb-0000000CMz4-3Q08;
+	Mon, 24 Nov 2025 21:56:12 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:In-Reply-To:References;
+	bh=YGk5LrRjjNWp266IfkQTW7GlnTyeUi/G1mCLsjenO7A=; b=kBvBcq2CYjibiX4nk8fXrxwIvj
+	HMCZgq3ajUCpivUOywRObu7AEsiTpjD1YdMo48g9oYoNk42u4VWx00U40G04WvPwS5jK/TF06pSC2
+	GZ6p1TUiLkSiCbvKvpqTpcjSv0nrgY/G36bIdMB7VgsBofIW/Kg5nhVXDC54PRaLUt0NmvEtra1XT
+	4pC1JWR8UECA5moP0HoILidRwWYQyR9dS3xCeDYog688FrChw3g23meJ4Mz3nOPVM1t85C0pSlcWB
+	ioPaGLNxq75ihF/Nh+0FRIzPPGc+EWsol0PR06WBKaNxZulAotPNMEg/MIaV8fAgVhDP1sgJrux7z
+	bOEb4PWA==;
+Received: from i53875be6.versanet.de ([83.135.91.230] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1vNeXX-0006N1-Am; Mon, 24 Nov 2025 22:56:07 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: arm@kernel.org
+Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+Subject: [GIT PULL] Rockchip dts64 changes for 6.19 #2
+Date: Mon, 24 Nov 2025 22:56:06 +0100
+Message-ID: <2244391.irdbgypaU6@diego>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <aR2lOZDBEdGVd9On@ryzen>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251124_132230_354870_C6EC1E56 
-X-CRM114-Status: GOOD (  30.14  )
+X-CRM114-CacheID: sfid-20251124_135611_911574_62CBB083 
+X-CRM114-Status: GOOD (  15.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,71 +67,98 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Nov 19, 2025 at 12:08:41PM +0100, Niklas Cassel wrote:
-> On Tue, Nov 18, 2025 at 05:34:18PM -0500, Frank Li wrote:
-> > On Tue, Nov 18, 2025 at 03:42:15PM -0600, Bjorn Helgaas wrote:
-> > > From: Bjorn Helgaas <bhelgaas@google.com>
-> > >
-> > > L1 PM Substates require the CLKREQ# signal and may also require
-> > > device-specific support.  If CLKREQ# is not supported or driver support is
-> > > lacking, enabling L1.1 or L1.2 may cause errors when accessing devices,
-> > > e.g.,
-> > >
-> > >   nvme nvme0: controller is down; will reset: CSTS=0xffffffff, PCI_STATUS=0x10
-> > >
-> > > If the kernel is built with CONFIG_PCIEASPM_POWER_SUPERSAVE=y or users
-> > > enable L1.x via sysfs, users may trip over these errors even if L1
-> > > Substates haven't been enabled by firmware or the driver.
-> > >
-> > > To prevent such errors, disable advertising the L1 PM Substates unless the
-> > > driver sets "dw_pcie.l1ss_support" to indicate that it knows CLKREQ# is
-> > > present and any device-specific configuration has been done.
-> > >
-> > > Set "dw_pcie.l1ss_support" in tegra194 (if DT includes the
-> > > "supports-clkreq' property) and qcom (for cfg_2_7_0, cfg_1_9_0, cfg_1_34_0,
-> > > and cfg_sc8280xp controllers) so they can continue to use L1 Substates.
-> > >
-> > > Based on Niklas's patch:
-> > > https://patch.msgid.link/20251017163252.598812-2-cassel@kernel.org
-> > >
-> > > Signed-off-by: Bjorn Helgaas <bhelgaas@google.com>
-> > > ---
-> > >  .../pci/controller/dwc/pcie-designware-ep.c   |  2 ++
-> > >  .../pci/controller/dwc/pcie-designware-host.c |  2 ++
-> > >  drivers/pci/controller/dwc/pcie-designware.c  | 24 +++++++++++++++++++
-> > >  drivers/pci/controller/dwc/pcie-designware.h  |  2 ++
-> > >  drivers/pci/controller/dwc/pcie-qcom.c        |  2 ++
-> > >  drivers/pci/controller/dwc/pcie-tegra194.c    |  3 +++
-> > >  6 files changed, 35 insertions(+)
-> > >
-> > > diff --git a/drivers/pci/controller/dwc/pcie-designware-ep.c b/drivers/pci/controller/dwc/pcie-designware-ep.c
-> > > index 7f2112c2fb21..ad6c0fd67a65 100644
-> > > --- a/drivers/pci/controller/dwc/pcie-designware-ep.c
-> > > +++ b/drivers/pci/controller/dwc/pcie-designware-ep.c
-> > > @@ -966,6 +966,8 @@ int dw_pcie_ep_init_registers(struct dw_pcie_ep *ep)
-> > >  	if (ep->ops->init)
-> > >  		ep->ops->init(ep);
-> > >
-> > > +	dw_pcie_hide_unsupported_l1ss(pci);
-> > > +
-> > 
-> > And, I don't think EP need clean L1SS CAP flags. If EP don't support L1SS,
-> > it should be force pull down #clkreq.
-> 
-> I think the problem is that we cannot force pull down CLKREQ# in a generic
-> DWC function. That would have to be done in glue driver specific callbacks.
-> 
-> Bjorn, perhaps we should simply drop the dw_pcie_hide_unsupported_l1ss()
-> call from dw_pcie_ep_init_registers(), and consider hiding L1ss for EPs to
-> be out of scope for this series.
-> 
-> That way, we could still queue this series up for 6.19.
-> 
-> Thoughts from everyone?
+Hi soc maintainers,
 
-Good idea, done locally, thanks!
+please find below some more Rockchip arm64 dts changes for for 6.19 
+on top of the previous changes.
 
-Bjorn
+Please pull.
+Thanks
+Heiko
+
+
+The following changes since commit 78f316e90906d54c8aa6029e5c19ae83e420e56a:
+
+  arm64: dts: rockchip: add vicap node to rk356x (2025-11-16 00:39:47 +0100)
+
+are available in the Git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v6.19-rockchip-dts64-2
+
+for you to fetch changes up to e34003dd2fb05da8f420bbd7b8ec62ab88242c45:
+
+  arm64: dts: rockchip: enable RTC for 100ASK DshanPi A1 (2025-11-21 22:39:06 +0100)
+
+----------------------------------------------------------------
+New boards: QNAP TS233 (2-bay variant of the RK3568 NAS series) and
+Asus Tinkerboard 3 + 3S.
+Additional peripherals enabled on 100ASK DshanPi A1, Orange Pi 3B,
+Indiedroid Nova, QNAP-TSx33 series + LED states on Radxa boards,
+power-domains for the previously added RK3368 display components.
+
+----------------------------------------------------------------
+Chris Morgan (4):
+      arm64: dts: rockchip: Add clk32k_in for Indiedroid Nova
+      arm64: dts: rockchip: Define regulator for pcie2x1l2 on Indiedroid Nova
+      arm64: dts: rockchip: Correct pinctrl for pcie for Indiedroid Nova
+      arm64: dts: rockchip: Add host wake pin for wifi on Indiedroid Nova
+
+Chukun Pan (5):
+      arm64: dts: rockchip: remove mmc max-frequency for 100ASK DshanPi A1
+      arm64: dts: rockchip: add mmc aliases for 100ASK DshanPi A1
+      arm64: dts: rockchip: enable button for 100ASK DshanPi A1
+      arm64: dts: rockchip: enable USB for 100ASK DshanPi A1
+      arm64: dts: rockchip: enable RTC for 100ASK DshanPi A1
+
+Coia Prant (1):
+      arm64: dts: rockchip: fix PCIe 3.3V regulator voltage on 9Tripod X3568 v4
+
+FUKAUMI Naoki (1):
+      arm64: dts: rockchip: Use default-state for power LED for Radxa boards
+
+Heiko Stuebner (7):
+      arm64: dts: rockchip: move cpu_thermal node to the correct position
+      arm64: dts: rockchip: describe mcu eeprom cells on rk3568-ts433
+      arm64: dts: rockchip: move common qnap tsx33 parts to dtsi
+      dt-bindings: arm: rockchip: add TS233 to RK3568-based QNAP NAS devices
+      arm64: dts: rockchip: add QNAP TS233 devicetree
+      arm64: dts: rockchip: Add power-domain to RK3368 DSI controller
+      arm64: dts: rockchip: Add power-domain to RK3368 VOP controller
+
+Michael Opdenacker (4):
+      dt-bindings: arm: rockchip: merge Asus Tinker and Tinker S
+      dt-bindings: arm: rockchip: Add Asus Tinker Board 3/3S
+      arm64: dts: rockchip: Add Asus Tinker Board 3 and 3S device tree
+      arm64: dts: rockchip: Enable i2c2 on Orange Pi 3B
+
+ .../devicetree/bindings/arm/rockchip.yaml          |  18 +-
+ arch/arm64/boot/dts/rockchip/Makefile              |   3 +
+ arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts  |   1 -
+ arch/arm64/boot/dts/rockchip/rk3368.dtsi           |   2 +
+ .../boot/dts/rockchip/rk3399-rock-4c-plus.dts      |   2 +-
+ arch/arm64/boot/dts/rockchip/rk3528-rock-2a.dts    |   1 -
+ .../boot/dts/rockchip/rk3566-orangepi-3b.dtsi      |   5 +
+ .../boot/dts/rockchip/rk3566-tinker-board-3.dts    |  13 +
+ .../boot/dts/rockchip/rk3566-tinker-board-3.dtsi   | 278 ++++++++++
+ .../boot/dts/rockchip/rk3566-tinker-board-3s.dts   |  30 +
+ .../boot/dts/rockchip/rk3568-9tripod-x3568-v4.dts  |  14 +-
+ arch/arm64/boot/dts/rockchip/rk3568-qnap-ts233.dts | 131 +++++
+ arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts | 604 ++------------------
+ .../arm64/boot/dts/rockchip/rk3568-qnap-tsx33.dtsi | 608 +++++++++++++++++++++
+ .../boot/dts/rockchip/rk3576-100ask-dshanpi-a1.dts |  93 +++-
+ arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts    |   2 +-
+ arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts |   2 +-
+ .../boot/dts/rockchip/rk3588s-indiedroid-nova.dts  |  43 +-
+ arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts   |   2 +-
+ 19 files changed, 1249 insertions(+), 603 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-tinker-board-3.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-tinker-board-3.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-tinker-board-3s.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-qnap-ts233.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-qnap-tsx33.dtsi
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
