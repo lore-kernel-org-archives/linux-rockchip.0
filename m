@@ -4,67 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30D2DCFD2F6
-	for <linux-rockchip@archiver.kernel.org>; Sun, 23 Nov 2025 22:04:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65E84CFD313
+	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Nov 2025 00:54:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
+	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bH+wn27iJLApBs8w+DHxoJUO3L/s3t6+SBSyPvLDPMw=; b=q24/Bb+ALhlt9J
-	4lkK1fp6j8xjc0022XTCaHAUAMm7alUs9RJmS3YXJgdpokxxn56MUMd5hivIKStgOLWzOY1qsNr7n
-	yv4MInx0EnekPSAlZPH5YJ+jUbIweP82r75i9zVpzQ/asmoCNIIPUicgfb0XXn8oKPlXeSHiAAbvS
-	4f3vjVAuDLAWBZvN4VhHFRJigmyyMmiL45TI73hG0VzSxgLUHM0/eWekkvltkXuCzzfYni/h/DGa4
-	0ZJHcDXnZSD8u0BfgTRGbH/3eR9yEsedvZQ0j6OOvhH4FveLXsAl/9h2owqMbZlfw6I1wt2tSDoKp
-	nE2kJmUM7UXK3wmLqJrw==;
+	List-Owner; bh=vvNOwIXFY4OkEc3XInidJslhe3R7QDJOvG4lbeSfyYw=; b=kug+G2EqlS21O/
+	ajFFE0VmRWWizw9JjMZUDy5Dzrc3OAT06EkXRtVk4nOipSQRIMYULD/a9eENE+S/YwXWC/SGE97ia
+	3m3NKM8wQ/VYIQkT0GqxC9K+h6ZBG5DS09WQyoLijyhkeX3D8sXYidvtwPiM/3pX/uTRKaaGZpnRx
+	7bteeG2IB9YqM/98XFWd4dLdKxjQdeCckkCHQVqfppyVuzRRkaWi9VGR97E4c/asEhOnZn3driO0N
+	PfmQKBJ07enen8bJHHUJtwl2pQqaT8LShefDsWyw/JkOyv8tvWjaOTUFzpLscslKK9ElRtk++YTUz
+	tj4OZMEL/Kow6PgBnkJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vNIC8-0000000AjMK-1t3Q;
-	Sun, 23 Nov 2025 22:04:32 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1vNKq7-0000000At3H-1hqg;
+	Mon, 24 Nov 2025 00:53:59 +0000
+Received: from m16.mail.163.com ([117.135.210.4])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vNIC6-0000000AjLY-0GyW;
-	Sun, 23 Nov 2025 22:04:31 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=87aVKtphPmWH51C+RJV57IlAYwC+mC5UV6mscsFpSJ0=; b=RXXJTQXismvJyTDBN7rfBczTLa
-	F+XWpvrLeB3NEJsyf8s1Qg21HXFvIPhH+3iVpIwfDvSqKBuJ+AsT0uLEhdl54R0vt0Avm6aXzU8JS
-	vV3mfFidjuhfgXAmTSWVuECOY2Vg4Xcv9Mxm2zOgQncJxIBDtV+pe3QCbmnfBu6J1XOEY1Eocg3Py
-	FQ2DPIaTQDoeMLxoqGsOEtsDM7yz3KGcU0S6Y8Qy+Ph6uM6eRM42a3IjvIphoEpQkz4271+Cqtmyc
-	cCGUwqjZ5AT1FoewevopSrMfHFaPugrKKBB4nkK1ah1qWzznAFVel+4YmfSaMKkzxMXnhF8pgPaac
-	LHiHjRyw==;
-Received: from i53875bd2.versanet.de ([83.135.91.210] helo=phil..)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1vNIC0-00008P-9S; Sun, 23 Nov 2025 23:04:24 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: mturquette@baylibre.com,
-	sboyd@kernel.org,
-	robh@kernel.org,
-	p.zabel@pengutronix.de,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	Elaine Zhang <zhangqing@rock-chips.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-clk@vger.kernel.org,
+	id 1vNKq3-0000000At1v-1BST;
+	Mon, 24 Nov 2025 00:53:57 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=Date:From:To:Subject:Content-Type:MIME-Version:
+	Message-ID; bh=1ojNoYcSRgOUItS36fhXAjSvyt7+UNGNmIcHggvRc3w=; b=c
+	cQtoVBJuCsQ92yBqd5UX1B0lyf0g+pDfzW/dD/Yi8EJYfFOB2sa+bwy/hF/qTVrD
+	2KjU10veZsWvO1H6xjD7U1n1yLoVTjK8aIPPp+LNcLYvAPU9Vv4DJGx/Vy7RmvYn
+	wu0w+y6PxYjH2AfoV6eM5nmem3hCL627qDvjV4HTdY=
+Received: from andyshrk$163.com ( [58.22.7.114] ) by
+ ajax-webmail-wmsvr-40-144 (Coremail) ; Mon, 24 Nov 2025 08:52:47 +0800
+ (CST)
+X-Originating-IP: [58.22.7.114]
+Date: Mon, 24 Nov 2025 08:52:47 +0800 (CST)
+From: "Andy Yan" <andyshrk@163.com>
+To: "Heiko Stuebner" <heiko@sntech.de>
+Cc: dmitry.baryshkov@oss.qualcomm.com, neil.armstrong@linaro.org,
+	andrzej.hajda@intel.com, mripard@kernel.org,
+	jernej.skrabec@gmail.com, jonas@kwiboo.se,
+	Laurent.pinchart@ideasonboard.com, maarten.lankhorst@linux.intel.com,
+	rfoss@kernel.org, simona@ffwll.ch, tzimmermann@suse.de,
+	knaerzche@gmail.com, devicetree@vger.kernel.org,
+	dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	finley.xiao@rock-chips.com
-Subject: Re: [PATCH v9 0/2] clk: rockchip: Add clock controller for the RK3506
-Date: Sun, 23 Nov 2025 23:04:21 +0100
-Message-ID: <176393545901.212596.10640796816193748171.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20251121075350.2564860-1-zhangqing@rock-chips.com>
-References: <20251121075350.2564860-1-zhangqing@rock-chips.com>
+	"Andy Yan" <andy.yan@rock-chips.com>, m.wilczynski@samsung.com
+Subject: Re:Re: [PATCH v8 1/2] drm/rockchip: inno-hdmi: Convert to drm
+ bridge
+X-Priority: 3
+X-Mailer: Coremail Webmail Server Version 2023.4-cmXT build
+ 20250723(a044bf12) Copyright (c) 2002-2025 www.mailtech.cn 163com
+In-Reply-To: <8913609.MhkbZ0Pkbq@phil>
+References: <20251016083843.76675-1-andyshrk@163.com>
+ <20251016083843.76675-2-andyshrk@163.com> <8913609.MhkbZ0Pkbq@phil>
+X-CM-CTRLMSGS: ARNM03BsdXM9MTc2Mzk0NTU2Nzc2MF9mMWFkMThkZGU5MGVhNWVjOWMxY2Q4N
+ TIyODc1ODVlYw==
+X-NTES-SC: AL_Qu2dAfWfuk0t4SecYOkfmUgWjuw/WsG1v/Ul1YBSP556jC3r1gsLcEV5OV7n7/K1KhiBjx+mVR1uxOl/e7Rgbog6ztD4kGMVyG9OqD90thYGFw==
 MIME-Version: 1.0
+Message-ID: <7cc43fc7.843.19ab3595609.Coremail.andyshrk@163.com>
+X-Coremail-Locale: zh_CN
+X-CM-TRANSID: kCgvCgDnUTxfrCNpAWAoAA--.919W
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbCxR9lw2kjrF+srwAA3G
+X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251123_140430_147823_97828AD4 
-X-CRM114-Status: UNSURE (   9.90  )
+X-CRM114-CacheID: sfid-20251123_165355_731543_DA0EAFBF 
+X-CRM114-Status: UNSURE (   5.40  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -77,37 +81,25 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-On Fri, 21 Nov 2025 15:53:48 +0800, Elaine Zhang wrote:
-> [PATCH 1/5] ~ [PATCH 3/5] has applied.
-> 
-> Change in V9:
-> [PATCH v9 1/2]: Fix "clocks"
-> [PATCH v9 2/2]: No change
-> 
-> Change in V8:
-> [PATCH v8 1/2]: Add explanations for "clocks"
-> [PATCH v8 2/2]: No change
-> 
-> [...]
-
-Applied, thanks!
-
-[1/2] dt-bindings: clock: rockchip: Add RK3506 clock and reset unit
-      commit: 84898f8e9cea06f8178fc5ca53f068180f7bfba0
-[2/2] clk: rockchip: Add clock and reset driver for RK3506
-      commit: 18191dd750e6c9e17fabefd09ff418dd587bcdb9
-
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+CgpwaW5nLi4uLgoKQXQgMjAyNS0xMC0yMCAyMDo0NTozNCwgIkhlaWtvIFN0dWVibmVyIiA8aGVp
+a29Ac250ZWNoLmRlPiB3cm90ZToKPkFtIERvbm5lcnN0YWcsIDE2LiBPa3RvYmVyIDIwMjUsIDEw
+OjM4OjMxIE1pdHRlbGV1cm9ww6Rpc2NoZSBTb21tZXJ6ZWl0IHNjaHJpZWIgQW5keSBZYW46Cj4+
+IEZyb206IEFuZHkgWWFuIDxhbmR5LnlhbkByb2NrLWNoaXBzLmNvbT4KPj4gCj4+IENvbnZlcnQg
+aXQgdG8gZHJtIGJyaWRnZSBkcml2ZXIsIGl0IHdpbGwgYmUgY29udmVuaWVudCBmb3IgdXMgdG8K
+Pj4gbWlncmF0ZSB0aGUgY29ubmVjdG9yIHBhcnQgdG8gdGhlIGRpc3BsYXkgZHJpdmVyIGxhdGVy
+Lgo+PiAKPj4gU2lnbmVkLW9mZi1ieTogQW5keSBZYW4gPGFuZHkueWFuQHJvY2stY2hpcHMuY29t
+Pgo+Cj5SZXZpZXdlZC1ieTogSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4KPgo+QnV0
+IG9mIGNvdXJzZSBJIHdvdWxkIGJlIHJlYWxseSBoYXBweSBpZiBzb21lb25lIHdpdGggbW9yZSBl
+eHBlcmllbmNlCj5vbiBnZW5lcmFsIGJyaWRnZXMgY291bGQgYWxzbyB0YWtlIGEgbG9vay4KPgo+
+Cj5IZWlrbwo+Cj4KPgo+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX18KPkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdAo+TGludXgtcm9ja2NoaXBAbGlzdHMu
+aW5mcmFkZWFkLm9yZwo+aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5m
+by9saW51eC1yb2NrY2hpcApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMu
+aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
+L2xpbnV4LXJvY2tjaGlwCg==
