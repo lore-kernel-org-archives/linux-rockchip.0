@@ -4,65 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFFB4CFD317
-	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Nov 2025 09:50:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56E6CCFA466
+	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Nov 2025 09:50:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RDxR8gSmjDLLtSc3m8EtL0PLX6s4Mikp6zg0A+yJvuQ=; b=u05QDY0OhOzmsX
-	60uyznssj/AD1k/WtXNT2yVtMgQb4M93w0WlinOYNu96C75Yf88K0mJGpTixWPF7KIM/Ey+nQDBVH
-	neipXiY+cD0MoTRwGwkVQQK0XW+kLHg4OvseM9bo/9xAYV3Ijf4N5VLIfNaSJqCLQ54iqj3ngtcp/
-	1+xmoTPYbWZp8bYhUCe7PNnWTpKzarvAcWYxC6s7hX0RX5McGnn8NmvgHXD4arTQwqArYLbqms7Qd
-	zuipk+YjnTbdY3wW7G5/s2AW+LVbzgOpfIAyoVmvlG4tz8L8mArePN1ZwlVwj2+Ji/ejugp73sBfB
-	AUchjm5Qvx5gA5zp52jw==;
+	List-Owner; bh=9J/vXkOzPxcmJxsOcr2m1pRpdKrg1sQxjAJH8vWo7ys=; b=wa8NE8KCh3Bjn9
+	ilAuEXWIf+uSwMZxrGOeqBCfFDFiEOMAOCxkUaWUzVWjquA7/VyEMBP/1YzG70owfqZk5nPnBde8G
+	4thj3rxChX+da0XPcADjKFlvapENvIpbdGdAV988HLLJ3jS1IxkUwGl5sCl788pz3OK12BZPSj5Py
+	3kLlzFIFpAF22mFzgLp4FAej5XCBoNPbLAEGCvtPRYBo1ZDmKEx1FobeRBuzanJX/QsHgtPoFJUam
+	p13wPhKbDZHTOG+jZtUEF5DGDeg1/F9gluyXqeeCe6gBsZnSzBrBKKhLwqctZNYI1SXkuYdIfYbZm
+	Z0DR1k9u+TE1N4rVibcA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vNTCl-0000000BNQV-1me2;
-	Mon, 24 Nov 2025 09:49:55 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vNTDS-0000000BNdf-2Cbj;
+	Mon, 24 Nov 2025 09:50:38 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vNTCi-0000000BNPW-2FWo;
-	Mon, 24 Nov 2025 09:49:53 +0000
+	id 1vNTDQ-0000000BNce-2yFQ;
+	Mon, 24 Nov 2025 09:50:36 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 86F6443332;
-	Mon, 24 Nov 2025 09:49:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 165A9C4CEF1;
-	Mon, 24 Nov 2025 09:49:46 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id A18C460138;
+	Mon, 24 Nov 2025 09:50:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3F7DFC16AAE;
+	Mon, 24 Nov 2025 09:50:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1763977791;
-	bh=e0Rfgj366tJxe1xsMBXGVrkz7jJATsofvCJET5b+Jts=;
+	s=k20201202; t=1763977835;
+	bh=bASfff82Xxt7ngaVSFG9avx6FhFPZUj+QtmErTDg24A=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=CZQpsh8tusQGHYy87IQbB12/uZyISK2efxLt05bMvy6mIeMUIC1mBpVhhUFerRFB+
-	 018dT15yOy/onqeQ6NsERRsh0KnxXLUt/WDGf2qYEchZoF4d36nj6pi6BzcexdSgHK
-	 9Nj7vcHtBl7HieT4EBiuSEwooNsa6Xul+5g4gV+ZMshkEFu+BDKuaFLeJtH8clu+/O
-	 rtTTxpI+llZ3UZXD225zpleXnnVBGSqr13zMhFImf6b9YqKPkHgpxYuPcljEx3gXnB
-	 GLU1VtHBmF2V+ICTZWr/Qohw1/HQpts2pGKioMa6eKGGuvjUnBRE9DjwWJgBK8AIo7
-	 EvWRO7s/T7T1Q==
-Date: Mon, 24 Nov 2025 10:49:44 +0100
+	b=HIk56rAJr9IMPxcPnfspRsVoorSI+MPgdaWXBtVKQaAvYHbKilPtxBtq7HIU98Af2
+	 Ch8NHjhiC/ov16p7Elm9xxrUF4DxjKN0TvqJPhi1IXUImh+lizpdcRXSJKLFzpGKGF
+	 1z49l1fFp3XwmFqSYZ4n6I9TqgeYVvHhYiZCvEGZLs2aeULYk1b2WdTfialVG+Hk6S
+	 drKA1h4/bY21JL/GlwbbihAk1bDzWmZnptjcPdZPty7IoPEgWsrbW5GmAA8DcLWULO
+	 WS8+ZogLcVIET98ETRxt2WipNSx1ktLu6Dv0aCBkJVeE6UtrwiYQBJq5MA9d6uH+zc
+	 FLlRnE6UbIbYg==
+Date: Mon, 24 Nov 2025 10:50:29 +0100
 From: Niklas Cassel <cassel@kernel.org>
-To: Hans Zhang <18255117159@163.com>
-Cc: lpieralisi@kernel.org, kwilczynski@kernel.org, bhelgaas@google.com,
-	helgaas@kernel.org, heiko@sntech.de, mani@kernel.org,
-	yue.wang@amlogic.com, pali@kernel.org, neil.armstrong@linaro.org,
-	robh@kernel.org, jingoohan1@gmail.com, khilman@baylibre.com,
-	jbrunet@baylibre.com, martin.blumenstingl@googlemail.com,
-	linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-amlogic@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v6 0/2] PCI: Configure Root Port MPS during host probing
-Message-ID: <aSQqOHH2VLNNpX3D@ryzen>
-References: <20251104165125.174168-1-18255117159@163.com>
+To: Jingoo Han <jingoohan1@gmail.com>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: Shawn Lin <shawn.lin@rock-chips.com>, FUKAUMI Naoki <naoki@radxa.com>,
+	Krishna chaitanya chundru <quic_krichai@quicinc.com>,
+	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org
+Subject: Re: [PATCH 0/6] PCI: dwc: Revert Link Up IRQ support
+Message-ID: <aSQqZcW39Ze1IE74@ryzen>
+References: <20251111105100.869997-8-cassel@kernel.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20251104165125.174168-1-18255117159@163.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251124_014952_599949_DF9E87E6 
-X-CRM114-Status: UNSURE (   7.66  )
-X-CRM114-Notice: Please train this message.
+In-Reply-To: <20251111105100.869997-8-cassel@kernel.org>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,14 +75,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Nov 05, 2025 at 12:51:23AM +0800, Hans Zhang wrote:
-> Current PCIe initialization exhibits a key optimization gap: Root Ports
-> may operate with non-optimal Maximum Payload Size (MPS) settings. While
-> downstream device configuration is handled during bus enumeration, Root
-> Port MPS values inherited from firmware or hardware defaults often fail
-> to utilize the full capabilities supported by controller hardware. This
-> results in suboptimal data transfer efficiency throughout the PCIe
-> hierarchy.
+On Tue, Nov 11, 2025 at 11:51:00AM +0100, Niklas Cassel wrote:
+> Revert all patches related to pcie-designware Root Complex Link Up IRQ
+> support.
+> 
+> While this fake hotplugging was a nice idea, it has shown that this feature
+> does not handle PCIe switches correctly:
+> pci_bus 0004:43: busn_res: can not insert [bus 43-41] under [bus 42-41] (conflicts with (null) [bus 42-41])
+> pci_bus 0004:43: busn_res: [bus 43-41] end is updated to 43
+> pci_bus 0004:43: busn_res: can not insert [bus 43] under [bus 42-41] (conflicts with (null) [bus 42-41])
+> pci 0004:42:00.0: devices behind bridge are unusable because [bus 43] cannot be assigned for them
+> pci_bus 0004:44: busn_res: can not insert [bus 44-41] under [bus 42-41] (conflicts with (null) [bus 42-41])
+> pci_bus 0004:44: busn_res: [bus 44-41] end is updated to 44
+> pci_bus 0004:44: busn_res: can not insert [bus 44] under [bus 42-41] (conflicts with (null) [bus 42-41])
+> pci 0004:42:02.0: devices behind bridge are unusable because [bus 44] cannot be assigned for them
+> pci_bus 0004:45: busn_res: can not insert [bus 45-41] under [bus 42-41] (conflicts with (null) [bus 42-41])
+> pci_bus 0004:45: busn_res: [bus 45-41] end is updated to 45
+> pci_bus 0004:45: busn_res: can not insert [bus 45] under [bus 42-41] (conflicts with (null) [bus 42-41])
+> pci 0004:42:06.0: devices behind bridge are unusable because [bus 45] cannot be assigned for them
+> pci_bus 0004:46: busn_res: can not insert [bus 46-41] under [bus 42-41] (conflicts with (null) [bus 42-41])
+> pci_bus 0004:46: busn_res: [bus 46-41] end is updated to 46
+> pci_bus 0004:46: busn_res: can not insert [bus 46] under [bus 42-41] (conflicts with (null) [bus 42-41])
+> pci 0004:42:0e.0: devices behind bridge are unusable because [bus 46] cannot be assigned for them
+> pci_bus 0004:42: busn_res: [bus 42-41] end is updated to 46
+> pci_bus 0004:42: busn_res: can not insert [bus 42-46] under [bus 41] (conflicts with (null) [bus 41])
+> pci 0004:41:00.0: devices behind bridge are unusable because [bus 42-46] cannot be assigned for them
+> pcieport 0004:40:00.0: bridge has subordinate 41 but max busn 46
+> 
+> During the initial scan, PCI core doesn't see the switch and since the Root
+> Port is not hot plug capable, the secondary bus number gets assigned as the
+> subordinate bus number. This means, the PCI core assumes that only one bus
+> will appear behind the Root Port since the Root Port is not hot plug
+> capable.
+> 
+> This works perfectly fine for PCIe endpoints connected to the Root Port,
+> since they don't extend the bus. However, if a PCIe switch is connected,
+> then there is a problem when the downstream busses starts showing up and
+> the PCI core doesn't extend the subordinate bus number after initial scan
+> during boot.
+> 
+> The long term plan is to migrate this driver to the pwrctrl framework,
+> once it adds proper support for powering up and enumerating PCIe switches.
+
 
 Hello PCI maintainers,
 
