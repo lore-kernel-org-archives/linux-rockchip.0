@@ -4,84 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEF93CFD318
-	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Nov 2025 16:33:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC0CFCFD342
+	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Nov 2025 18:31:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EjXPtStplv2imvUDqlpMS8yBcTWDUj0riwLaxHzKCf8=; b=tA5uItElqWuDZu
-	jNoA2e3I4PY37yZ4LQuiyEWXwkBnuVEqG3UgV6LPjZTsrqnfNrxqh+1wnxcvx+vOgLgBW+6Fg/Eh/
-	fKEpVF+71MgX7rzjSwJzpLrbM9Y/TIveYWhSU1cWr5PDkZ1obHFVJMdhvZEtz6AeWNZy4zxDioUiW
-	nSW5gqqGGBtRiW/U51XFkS5GTMnJ9BhUJfDxkD8lG/ASrle0zuio0CC/5EdKeb2hcRAZDMsFhQeVT
-	3mDGv/OEYXtirdh8nq4nrI/tvVxzIzYDowoRUn/YZymso1wbu/byTXDKfxjBzM5HZtgY801/isGoj
-	HL/ZER+z7OdV2WOhCBFg==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:Subject:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ixiEPAaVFAL/7iWHe5TBnve0vnqvOAIDf3YlruxzSh4=; b=eOeysbjwXQa4MK
+	UdUqxdx2PDSE5vIcG7fTng13+cLqw76e+0mpqxAFnUWFnlcfke3s2JMvXQ0o9SDVGoVK/uYVZkDl/
+	Ww+va+Nd8ZyYGy9C/k6Z2d01oZJMoLCAT5v+9TauZ+V+VnU8bYRyYsRCUyx73sFLVdR/emf+EQEvB
+	+o5YNYMNnm5CxoOo7EHosbbyJqJSVD65MR86VzgANdNWuG3LaKCNLK2FGBAjWljYjYXInBdnoZnJB
+	c8AVM/9A8MAkvi77GnOp2xRKOpjzDu5ZLLmNuHyOoDxraNXbH/hKkLfzS245OxroWjnEU1ZcViZeb
+	XC2EPFLClD9CAjM4VCig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vNZVN-0000000C04e-3n0f;
-	Mon, 24 Nov 2025 16:33:33 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vNbLE-0000000CBZX-187z;
+	Mon, 24 Nov 2025 18:31:12 +0000
+Received: from verein.lst.de ([213.95.11.211])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vNZVL-0000000C041-1rMD;
-	Mon, 24 Nov 2025 16:33:31 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 8E38D60173;
-	Mon, 24 Nov 2025 16:33:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B2D80C116C6;
-	Mon, 24 Nov 2025 16:33:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1764002010;
-	bh=b0HsFdIr9UYeg1Jbb+ezqHtOK4AZhADd9B70yMMGZFc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=g+47ol/xVPKvHq8mO+c2fpgR8DW18YAaKTmijBBG2VtkLGfdTcX8n57jEGZgYFtXt
-	 DF01gZjsrt73ZFaL90qrJ9go9zBaa62onSiMzWQEv3i/waUjE3nOD4/TVDH9cmjl4K
-	 53oeGgUWsOdxH3qnIhbrSMDif3kOexD/8BLXzSs0=
-Date: Mon, 24 Nov 2025 17:33:27 +0100
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-Cc: Chaoyi Chen <kernel@airkyi.com>,
-	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
-	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
-	Peter Chen <hzpeterchen@gmail.com>,
-	Luca Ceresoli <luca.ceresoli@bootlin.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Yubing Zhang <yubing.zhang@rock-chips.com>,
-	Frank Wang <frank.wang@rock-chips.com>,
-	Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-	Amit Sunil Dhamne <amitsd@google.com>,
-	Dragan Simic <dsimic@manjaro.org>, Johan Jonker <jbx6244@gmail.com>,
-	Diederik de Haas <didi.debian@cknow.org>,
-	Peter Robinson <pbrobinson@gmail.com>, linux-usb@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
-Subject: Re: [PATCH v10 01/11] usb: typec: Add notifier functions
-Message-ID: <2025112448-brush-porcupine-c851@gregkh>
-References: <20251120022343.250-1-kernel@airkyi.com>
- <20251120022343.250-2-kernel@airkyi.com>
- <2025112102-laurel-mulch-58e4@gregkh>
- <462ad1bd-7eec-4f26-b383-96b049e14559@rock-chips.com>
- <2025112402-unopposed-polio-e6e9@gregkh>
- <a80483de-518d-45d5-b46a-9b70cca5b236@rock-chips.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <a80483de-518d-45d5-b46a-9b70cca5b236@rock-chips.com>
+	id 1vNbL7-0000000CBYk-3ajA;
+	Mon, 24 Nov 2025 18:31:10 +0000
+Received: by verein.lst.de (Postfix, from userid 2005)
+	id B853068C4E; Mon, 24 Nov 2025 19:30:56 +0100 (CET)
+From: Torsten Duwe <duwe@lst.de>
+To: Heiko Stuebner <heiko@sntech.de>, Conor Dooley <conor+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+    Rob Herring <robh@kernel.org>, Jianfeng Liu <liujianfeng1994@gmail.com>, Sebastian Reichel <sebastian.reichel@collabora.com>,
+    Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, Andy Yan <andy.yan@rock-chips.com>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+    linux-kernel@vger.kernel.org
+Subject: [PATCH] arm64: dts: rockchip: enable SPDIF audio on Rock 5 ITX
+Message-Id: <20251124183056.B853068C4E@verein.lst.de>
+Date: Mon, 24 Nov 2025 19:30:56 +0100 (CET)
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251124_103106_039075_0DDE14B8 
+X-CRM114-Status: UNSURE (   9.52  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,130 +52,73 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Nov 24, 2025 at 04:05:53PM +0800, Chaoyi Chen wrote:
-> Hi Greg,
-> =
+The Rock5 ITX has an S/PDIF (TOSLINK) socket in its I/O-shield, whose
+TX signal is wired to GPIO4 C1. Activate SPDIF TX unit 1 and select
+the proper pinmux (M2).
 
-> On 11/24/2025 3:10 PM, Greg Kroah-Hartman wrote:
-> =
+Signed-off-by: Torsten Duwe <duwe@lst.de>
+---
 
-> > On Mon, Nov 24, 2025 at 09:40:03AM +0800, Chaoyi Chen wrote:
-> > > Hi Greg,
-> > > =
+For Linux, activating spdif_tx1 only creates a "component", see
+/sys/kernel/debug/asoc/components. ALSA needs a "simple-audio-card"
+pseudo device wrapper along with a "dummy transmitter" (?!) in order
+to turn it into a functioning audio output. This is not really
+intuitive and IMHO does not belong in a hardware description.
+But well, so be it.
 
-> > > On 11/21/2025 10:07 PM, Greg Kroah-Hartman wrote:
-> > > > On Thu, Nov 20, 2025 at 10:23:33AM +0800, Chaoyi Chen wrote:
-> > > > > From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-> > > > > =
+	Torsten
 
-> > > > > Some other part of kernel may want to know the event of typec bus.
-> > > > Be specific, WHAT part of the kernel will need to know this?
-> > > For now, it is DRM.
-> > Then say this.
-> =
+---
+ rk3588-rock-5-itx.dts |   23 +++++++++++++++++++++++
+ 1 file changed, 23 insertions(+)
 
-> Okay, please refer to the discussion below.
-> =
-
-> > =
-
-> > > > And why a new notifier, why not just use the existing notifiers tha=
-t you
-> > > > already have?  And what is this going to be used for?
-> > > We have discussed this before, but the current bus notifier cannot ac=
-hieve the expected notification [0].
-> > > =
-
-> > > [0] https://lore.kernel.org/all/aPsuLREPS_FEV3DS@kuha.fi.intel.com/
-> > Then you need to document the heck out of this in the changelog text.
-> > But I'm still not quite understanding why the bus notifier does not work
-> > here, as you only want this information if the usb device is bound to
-> > the bus there, you do not want to know this if it did not complete.
-> > =
-
-> > That thread says you want this not "too late", but why?  What is the
-> > problem there, and how will you handle your code getting loaded after
-> > the typec code is loaded?  Notifier callbacks don't work for that
-> > situation, right?
-> =
-
-> In fact, the typec_register_altmode() function generates two
-> registered events.=A0The first one is the registered event of the port
-> device, and the second one is the registered event of the partner
-> device.=A0The second one event only occurs after a Type-C device is
-> inserted.
-> The bus notifier event does not actually take effect for the port
-> device, because it only sets the bus for the partner device:
-> =
-
-> =A0 =A0 /* The partners are bind to drivers */
-> =A0 =A0 if (is_typec_partner(parent))
-> =A0 =A0 =A0 =A0 alt->adev.dev.bus =3D &typec_bus;
-
-Setting the bus is correct, then it needs to be registered with the
-driver core so the bus link shows up (and a driver is bound to it.)
-That is when the bus notifier can happen, right?
-
-> I hope it's not too late. In fact, the notifier here will notify DRM to e=
-stablish a bridge chain.
-
-What is a "bridge chain"?
-
-> The downstream DP controller driver hopes to obtain the fwnode of the las=
-t-level Type-C device
-> through this bridge chain to create a DRM connector. And when a device is=
- inserted,
-> drivers/usb/typec/altmodes/displayport.c can notify the HPD (Hot Plug Det=
-ect) event.
-
-But aren't you just the driver for the "partner device"?
-
-If not, why isn't a real device being created that you then bind to,
-what "fake" type of thing are you attempting to do here that would
-require you to do this out-of-band?
-
-> If relying on the second event, the bridge chain may never be established=
-, and the operations of the DP driver will be
-> always deferred. Furthermore, other parts of the display controller drive=
-r will also be deferred accordingly.
-
-What operations?  What exactly is delayed?  You should not be touching a
-device before you have it on your bus, right?
-
-> > > > Notifiers are a pain, and should almost never be added.  Use real
-> > > > function calls instead.
-> > > In v6, I used direct function calls, but had to switch to notifiers b=
-ecause couldn't resolve the dependencies between DRM and Type-C [1]. Do you=
- have any good ideas? Thank you.
-> > Only allow this DRM code to be built if typec code is enabled, do NOT
-> > use a select, use a depends in the drm code.
-> =
-
-> Sorry, I didn't get your point. Does this mean that the current notifiers=
- approach still needs to be changed to direct function calls?
-
-If you somehow convince me that the existing bus notifiers will not
-work, yes :)
-
-> If so, then based on the previous discussion, typec should not depend
-> on any DRM components. Does this mean that we should add the if
-> (IS_REACHABLE(CONFIG_DRM_AUX_BRIDGE)) before the direct function call?
-
-No, do it properly like any other function call to another subsystem.
-
-> Additionally, the current version of CONFIG_DRM_AUX_BRIDGE is selected
-> by the DP driver in patch9.
-
-Don't do "select" if at all possible, always try to do "depends on".
-
-thanks,
-
-greg k-h
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts
+index bc8140883de4..6780fbb26efb 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts
+@@ -147,6 +147,24 @@ sdio_pwrseq: sdio-pwrseq {
+ 		reset-gpios = <&gpio0 RK_PC4 GPIO_ACTIVE_LOW>;
+ 	};
+ 
++	spdif_dit: spdif-dit {
++		compatible = "linux,spdif-dit";
++		#sound-dai-cells = <0>;
++	};
++
++	spdif_sound: spdif-sound {
++		compatible = "simple-audio-card";
++		simple-audio-card,name = "SPDIF";
++
++		simple-audio-card,cpu {
++			sound-dai = <&spdif_tx1>;
++		};
++
++		simple-audio-card,codec {
++			sound-dai = <&spdif_dit>;
++		};
++	};
++
+ 	typec_vin: regulator-typec-vin {
+ 		compatible = "regulator-fixed";
+ 		enable-active-high;
+@@ -839,6 +857,11 @@ spi_flash: flash@0 {
+ 	};
+ };
+ 
++&spdif_tx1 {
++	pinctrl-0 = <&spdif1m2_tx>;
++	status = "okay";
++};
++
+ &spi2 {
+ 	status = "okay";
+ 	assigned-clocks = <&cru CLK_SPI2>;
 
 _______________________________________________
 Linux-rockchip mailing list
