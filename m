@@ -4,62 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F3BDD0E6C4
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Nov 2025 10:55:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0E38D0E6C4
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Nov 2025 11:49:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mxv6AFPWuyapPd1LJTeQpVS91ojDKdP+1rNZepziZ0o=; b=pPHMAe7zVBICCF
-	T8M6GnFjrwIJf+YH4g68KV9gL4V0Q5NXbTqj970+/qPGNTJtRyDTcAFX8/3gbcJwfMlUkei0noFEX
-	+DovYHj2pl3ad90lu34gTA0o7RVV+EhwxyaKIJSCZY2RSNOy+4+lMazjmoy8iER4nO4mIC6uOY+L2
-	DblQ7rmtfHEHJpxN5y/pJZgb9JAwXjIwCaZHOxbcJpW2rDT/1oGs6gEri85x9/oNMPUo/c7W2rPH6
-	3K3e5QFWyUfUXnzlD6+PITAxodwhFLabUTY/nt3uVlfgh5H731W5VuA40QBUpeF3C49P3AnRItwZX
-	iwzOm/IYTTg6O9bvXTkw==;
+	List-Owner; bh=Shu2CipXVHfs4yzGdDMlmunuK9PLIA+gteA+jqHo3fA=; b=hrkv2+u/Ec09xU
+	EGNqC5hH7QsId+lAC4vTGr11URUfjxmlwAEmMjG1iQB27NdeaO3PVPGlfNdvzqxCishyT/CiDML0R
+	y/uyCS5jKu2L1yF9Td+NDgf6OxlNs+6EXR/XcflgQj0mVB70etuchNtHdbde6noE1YL0o+QUusKvE
+	/B7Qu+p0AUlkXDN/ZVMYwB6XnIPK6Mb3U56ONw7Z7L1Ull8h+LDaJR0vLtkr88cr5KnVINCGwNcRv
+	FZbxNN8agQD0fe2n9vR7Dg283MCRPn8kdBBDWruLxWoHUvVN5vihglo6f2Ti6PEmwiGuzMfiTEZvI
+	LPYNmxDcPXC582RnRtLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vNqhA-0000000D9qw-0hiT;
-	Tue, 25 Nov 2025 10:54:52 +0000
-Received: from mail-m158233.netease.com ([47.251.158.233])
+	id 1vNrY9-0000000DF0l-2UGT;
+	Tue, 25 Nov 2025 11:49:37 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vNqh4-0000000D9qE-1tdA;
-	Tue, 25 Nov 2025 10:54:49 +0000
-Received: from [127.0.0.1] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 2ad58d4a7;
-	Tue, 25 Nov 2025 18:54:38 +0800 (GMT+08:00)
-Message-ID: <d970873f-eb76-432e-a881-72b2c5cb2a9c@rock-chips.com>
-Date: Tue, 25 Nov 2025 18:54:37 +0800
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v10 01/11] usb: typec: Add notifier functions
+	id 1vNrY6-0000000DEzb-1XLI;
+	Tue, 25 Nov 2025 11:49:35 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 2FA9C40706;
+	Tue, 25 Nov 2025 11:49:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 82664C4CEF1;
+	Tue, 25 Nov 2025 11:49:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1764071373;
+	bh=kcfJPaV0RlJNuRv5orxjsEuIYQsBEO264pipegKAgKM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=RrRKFlYdNjpuJAzVmv+xPBFxiA66JbJHRfceWAvEnfly2ci3y3+LUqgq7ypKZ3EBu
+	 jCig9MZM3yIaUBXdD2UdwBQ+NXk4DQLPLPcSj7Zpz/ujmoxxNN0aoLYjvcXMfeqqDM
+	 7JpcLbcGUGvGymYalc0d08j3Mz81qcwvyaIUpz2o=
+Date: Tue, 25 Nov 2025 12:49:29 +0100
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 To: Heikki Krogerus <heikki.krogerus@linux.intel.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Chaoyi Chen <kernel@airkyi.com>,
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
- Peter Chen <hzpeterchen@gmail.com>, Luca Ceresoli
- <luca.ceresoli@bootlin.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
- Kishon Vijay Abraham I <kishon@kernel.org>, Heiko Stuebner
- <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>,
- Andy Yan <andy.yan@rock-chips.com>,
- Yubing Zhang <yubing.zhang@rock-chips.com>,
- Frank Wang <frank.wang@rock-chips.com>,
- Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Amit Sunil Dhamne <amitsd@google.com>, Dragan Simic <dsimic@manjaro.org>,
- Johan Jonker <jbx6244@gmail.com>, Diederik de Haas <didi.debian@cknow.org>,
- Peter Robinson <pbrobinson@gmail.com>, linux-usb@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
+Cc: Chaoyi Chen <chaoyi.chen@rock-chips.com>,
+	Chaoyi Chen <kernel@airkyi.com>,
+	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+	Peter Chen <hzpeterchen@gmail.com>,
+	Luca Ceresoli <luca.ceresoli@bootlin.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Yubing Zhang <yubing.zhang@rock-chips.com>,
+	Frank Wang <frank.wang@rock-chips.com>,
+	Andrzej Hajda <andrzej.hajda@intel.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Robert Foss <rfoss@kernel.org>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+	Amit Sunil Dhamne <amitsd@google.com>,
+	Dragan Simic <dsimic@manjaro.org>, Johan Jonker <jbx6244@gmail.com>,
+	Diederik de Haas <didi.debian@cknow.org>,
+	Peter Robinson <pbrobinson@gmail.com>, linux-usb@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
+Subject: Re: [PATCH v10 01/11] usb: typec: Add notifier functions
+Message-ID: <2025112554-uncaring-curator-642a@gregkh>
 References: <20251120022343.250-1-kernel@airkyi.com>
  <20251120022343.250-2-kernel@airkyi.com>
  <2025112102-laurel-mulch-58e4@gregkh>
@@ -67,23 +80,15 @@ References: <20251120022343.250-1-kernel@airkyi.com>
  <2025112402-unopposed-polio-e6e9@gregkh>
  <a80483de-518d-45d5-b46a-9b70cca5b236@rock-chips.com>
  <2025112448-brush-porcupine-c851@gregkh>
- <c9cb7b79-37c8-4fef-97a6-7d6b8898f9c4@rock-chips.com> <aSV_lQYJPxN7oBM-@kuha>
-Content-Language: en-US
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+ <c9cb7b79-37c8-4fef-97a6-7d6b8898f9c4@rock-chips.com>
+ <aSV_lQYJPxN7oBM-@kuha>
+MIME-Version: 1.0
+Content-Disposition: inline
 In-Reply-To: <aSV_lQYJPxN7oBM-@kuha>
-X-HM-Tid: 0a9abaa6b39603abkunmf8a5d99d4f8c0e
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQh1JGFYeTUJCGUIfHkxKSUpWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpPSE
-	xVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=JmPSKE0naaEWonVAqnH+ebFcZ8I+ZaubhDn1Lu1sJwZYovoWm9xlCD0EbQr1LZQl4bFixizGQ6l3gHP2TxaD3Zhphb10gZrS7e/ZMixDHMMTdbLuAApeD/UMfz1ch2jrJqkFmLpsQJTb1gQD3kuOJC3jC94P065Hy9hGENQlW/s=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=yI/hAgt1yN84sa7TO1laWAMsbF2HgT2Td6qWpvlvHjM=;
-	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251125_025447_594636_4C10A298 
-X-CRM114-Status: GOOD (  49.20  )
+X-CRM114-CacheID: sfid-20251125_034934_426347_F5F2F993 
+X-CRM114-Status: UNSURE (   7.03  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,170 +105,18 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 11/25/2025 6:06 PM, Heikki Krogerus wrote:
-> Tue, Nov 25, 2025 at 10:23:02AM +0800, Chaoyi Chen kirjoitti:
->> On 11/25/2025 12:33 AM, Greg Kroah-Hartman wrote:
->>> On Mon, Nov 24, 2025 at 04:05:53PM +0800, Chaoyi Chen wrote:
->>>> Hi Greg,
->>>>
->>>> On 11/24/2025 3:10 PM, Greg Kroah-Hartman wrote:
->>>>
->>>>> On Mon, Nov 24, 2025 at 09:40:03AM +0800, Chaoyi Chen wrote:
->>>>>> Hi Greg,
->>>>>>
->>>>>> On 11/21/2025 10:07 PM, Greg Kroah-Hartman wrote:
->>>>>>> On Thu, Nov 20, 2025 at 10:23:33AM +0800, Chaoyi Chen wrote:
->>>>>>>> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
->>>>>>>>
->>>>>>>> Some other part of kernel may want to know the event of typec bus.
->>>>>>> Be specific, WHAT part of the kernel will need to know this?
->>>>>> For now, it is DRM.
->>>>> Then say this.
->>>> Okay, please refer to the discussion below.
->>>>
->>>>>>> And why a new notifier, why not just use the existing notifiers that you
->>>>>>> already have?  And what is this going to be used for?
->>>>>> We have discussed this before, but the current bus notifier cannot achieve the expected notification [0].
->>>>>>
->>>>>> [0] https://lore.kernel.org/all/aPsuLREPS_FEV3DS@kuha.fi.intel.com/
->>>>> Then you need to document the heck out of this in the changelog text.
->>>>> But I'm still not quite understanding why the bus notifier does not work
->>>>> here, as you only want this information if the usb device is bound to
->>>>> the bus there, you do not want to know this if it did not complete.
->>>>>
->>>>> That thread says you want this not "too late", but why?  What is the
->>>>> problem there, and how will you handle your code getting loaded after
->>>>> the typec code is loaded?  Notifier callbacks don't work for that
->>>>> situation, right?
->>>> In fact, the typec_register_altmode() function generates two
->>>> registered events. The first one is the registered event of the port
->>>> device, and the second one is the registered event of the partner
->>>> device. The second one event only occurs after a Type-C device is
->>>> inserted.
->>>> The bus notifier event does not actually take effect for the port
->>>> device, because it only sets the bus for the partner device:
->>>>
->>>>      /* The partners are bind to drivers */
->>>>      if (is_typec_partner(parent))
->>>>          alt->adev.dev.bus = &typec_bus;
->>> Setting the bus is correct, then it needs to be registered with the
->>> driver core so the bus link shows up (and a driver is bound to it.)
->>> That is when the bus notifier can happen, right?
->> Yes, this is valid for the partner device. But for the port device, since the bus is not specified here, the corresponding bus notifier will not take effect.
-> 
-> Perhaps we should just fix this part and make also the port altmodes
-> part of the bus.
-> 
-> Some background, in case this is not clear; the port alternate mode
-> devices represent the capability of the ports to support specific
-> alternate modes. The partner alternate mode devices do the same
-> for the partner devices attached to the ports, but on top of the
-> showing the capability, they are also used for the alternate mode
-> specific communication using the USB Power Delivery VDM (vendor
-> defined messages). That's why only the partner altmodes are bound
-> to the generic alternate mode drivers.
-> 
-> And that's why the hack where the port altmodes are not added to the
-> bus. But maybe it's not needed.
-> 
-> Chaoyi, can you try the attached patch?
-> 
+> +static umode_t typec_is_visible(struct kobject *kobj, struct attribute *attr, int n)
+> +{
+> +	if (is_typec_port(kobj_to_dev(kobj)->parent))
 
-Thank you for providing the background information. Maybe this is what
-we really want. I will try this in v11 :)
+Why look at the parent?  Doesn't the device have a type that should show
+this?
 
->>>> I hope it's not too late. In fact, the notifier here will notify DRM to establish a bridge chain.
->>> What is a "bridge chain"?
->> In DRM, the bridge chain is often used to describe the chain connection relationship
->> of the output of multi level display conversion chips. The bridge chain we are referring to here
->> is actually a chain  structure formed by connecting various devices using a simple transparent bridge [0].
->>
->> For example, the schematic diagram of a bridge chain is as follows:
->>
->> DP controller bridge -> DP PHY bridge -> onnn,nb7vpq904m retimer bridge -> fsa4480 analog audio switch bridge -> fusb302 HPD bridge
->>
->> Here, apart from the DP controller bridge, the rest are transparent DRM bridges, which are used solely to
->> describe the link relationships between various devices.
->>
->>
->> [0] https://patchwork.freedesktop.org/patch/msgid/20231203114333.1305826-2-dmitry.baryshkov@linaro.org
->>>
->>>> The downstream DP controller driver hopes to obtain the fwnode of the last-level Type-C device
->>>> through this bridge chain to create a DRM connector. And when a device is inserted,
->>>> drivers/usb/typec/altmodes/displayport.c can notify the HPD (Hot Plug Detect) event.
->>> But aren't you just the driver for the "partner device"?
->>>
->>> If not, why isn't a real device being created that you then bind to,
->>> what "fake" type of thing are you attempting to do here that would
->>> require you to do this out-of-band?
->> The HPD event is pass by drm_connector_oob_hotplug_event(), which does not use the device in Type-C.
->> This function will find the corresponding DRM connector device, and the lookup of the DRM connector is
->> done through the fwnode.
->>
->> And the partner device and the port device have the same fwnode.
->>
->>>
->>>> If relying on the second event, the bridge chain may never be established, and the operations of the DP driver will be
->>>> always deferred. Furthermore, other parts of the display controller driver will also be deferred accordingly.
->>> What operations?  What exactly is delayed?  You should not be touching a
->>> device before you have it on your bus, right?
->> To complete the HPD operation, it is necessary to create a drm connector device that
->> has the appropriate fwnode. This operation will be carried out by the DP controller driver.
->>
->> As you can see, since it cross multiple devices, we need to set the fwnode to the last device fusb302.
->> This requires relying on the bridge chain. We can register bridges for multiple devices and then connect
->> them to form a chain. The connection process is completed through drm_bridge_attach().
->>
->> A brief example of the process of establishing a bridge chain is as follows, starting from the last bridge:
->>
->> step1: fusb302 HPD bridge
->> step2: fsa4480 analog audio switch bridge -> fusb302 HPD bridge
->> step3: onnn,nb7vpq904m retimer bridge -> fsa4480 analog audio switch bridge -> fusb302 HPD bridge
->> step4: DP PHY bridge -> onnn,nb7vpq904m retimer bridge -> fsa4480 analog audio switch bridge -> fusb302 HPD bridge
->> step5: DP controller bridge -> DP PHY bridge -> onnn,nb7vpq904m retimer bridge -> fsa4480 analog audio switch bridge -> fusb302 HPD bridge
->>
->> Step 1 is the most crucial, because essentially, regardless of whether we use notifiers or not, what we ultimately want to achieve is to create an HPD bridge.
->> The DP controller needs to wait for the subsequent bridge chain to be established because it needs to know the connection relationships of the devices.
->>
->> The question now is when to create the HPD bridge, during the registration of the port device or during the registration of the partner device.
->> If it's the latter, then the delay occurs here.
->>
->> And I don't think I'm touching the Type-C device here. I'm just using the bridge chain to get a suitable fwnode and create a suitable DRM connector device.
->> The subsequent Type-C HPD events will be on the DRM connector device.
->>
->> This solution is somewhat complex, and I apologize once again for any confusion caused earlier.
->>
->>>
->>>>>>> Notifiers are a pain, and should almost never be added.  Use real
->>>>>>> function calls instead.
->>>>>> In v6, I used direct function calls, but had to switch to notifiers because couldn't resolve the dependencies between DRM and Type-C [1]. Do you have any good ideas? Thank you.
->>>>> Only allow this DRM code to be built if typec code is enabled, do NOT
->>>>> use a select, use a depends in the drm code.
->>>> Sorry, I didn't get your point. Does this mean that the current notifiers approach still needs to be changed to direct function calls?
->>> If you somehow convince me that the existing bus notifiers will not
->>> work, yes :)
->>>
->>>> If so, then based on the previous discussion, typec should not depend
->>>> on any DRM components. Does this mean that we should add the if
->>>> (IS_REACHABLE(CONFIG_DRM_AUX_BRIDGE)) before the direct function call?
->>> No, do it properly like any other function call to another subsystem.
->>>
->>>> Additionally, the current version of CONFIG_DRM_AUX_BRIDGE is selected
->>>> by the DP driver in patch9.
->>> Don't do "select" if at all possible, always try to do "depends on".
->> Thank you for clarifying this. However, CONFIG_DRM_AUX_BRIDGE is not exposed in the menu, and it is not intended for the end user to select it by design. Therefore, I think there still needs to be some place to select it?
-> 
-> You don't "select TYPEC", you already "depend on TYPEC", so you are
-> all set with this one.
-> 
-> thanks,
-> 
+Otherwise, looks good to me.
 
-Ah, it is.
+thanks,
 
--- 
-Best, 
-Chaoyi
+greg k-h
 
 _______________________________________________
 Linux-rockchip mailing list
