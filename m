@@ -4,75 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0833ECFD365
-	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Nov 2025 22:50:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFA91CFD36C
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Nov 2025 01:54:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=yYU2YG693XODbCBuHQL5WnX1xQ6ikdPBQvL45IEbF/c=; b=wksAR09iegxrRH
-	+RGF7k4r7fK/ZLAkChPcF3iK8MGA44PhT5AvoZ2Z7bpfPSsELm8mNwhRLap132BZdMdV7mhP2Kxoh
-	2sLgjG/vz/JJlC7FSlHnQtnjJY3diulTyiuxNPM7RvnH1KN27XrjULF9c7flqSVHllkLMxEOmR/qb
-	755aYl9+11bEzSR9zbWQ7w5kaPae9WqDqrLPJLz25GEfgGUeGmhw722y2g9FTA3UD5QjzKLKgEyqj
-	emoR17pKLVfVAtTdOp9srwX+xhNOLnUhYLRxinW/sC1GIm9uGcpzpYEIVRCGJ6vL+59iSxSxNWoRg
-	xM4sa7ZUWNPFst4f82Sg==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=kvRyEaBTS+/nO96qGT9S6yWAHD2fU0c84AQhdAvB1AU=; b=c8ClY0a8lFiTju
+	TVqJxQzyTLN4i5VQxkuqLQbmaIIFqqzzLkpDz9UQTzjuWodLfWuQnjlCMTrcxU62HFLxN4QPRnkh6
+	emR/f1EX6cIGEjolmRafesyvYH88AJYYQfgFDp0qZU0KAjMvkyQJbOdNLwmukvgkba4Kf5QZGf32a
+	NdzuuuokfPynQdVayF7DArovJ3a3thX6k0z0a03GPO3WL2zPJN6K3rZR5VFoaasqEz5kAXFRhWG5f
+	WR9+LBvEVUDjP/aELP7RRXQ7TROxwJ7QQGQQP4VPlga3iU0dxfgjsNUdYQV25Ie1uAWE4RnbR1JXq
+	GdsRhig5/8/qZojOkNZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vNfOG-0000000CPvj-0lau;
-	Mon, 24 Nov 2025 22:50:36 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vNiG5-0000000CaM9-3NB2;
+	Tue, 25 Nov 2025 01:54:21 +0000
+Received: from mail-m21469.qiye.163.com ([117.135.214.69])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vNfOD-0000000CPv4-1Gq8;
-	Mon, 24 Nov 2025 22:50:34 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 7E05D4080C;
-	Mon, 24 Nov 2025 22:50:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 33DCFC4CEF1;
-	Mon, 24 Nov 2025 22:50:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1764024632;
-	bh=L9vxregCDQ2mkA1oTO/p4wTdwRK2bHafb670knLdCeI=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=c4X4KN3EdiwLBbtGn7PgXZnYSgyoNSzgxcz5NevhwkczGejGdZ0AFxz2+e9CVKVY/
-	 xZ8nrqYXcK29Er0/xWvywyxNy1FktZ33X1PITEPOA0SDI8EDfwTveqPWkS3CUh4tBU
-	 IuNU3Em4z6ZCaPeaaKU5ZLFVvG/S3rYij2zGTmiwxurIObDVX+2I73Zif5gakUuzdq
-	 wCjDZ15m/X9SZYDeLfys5ZdcB0OwmRgxjICh1zIuEExKgCyP68Jnb1EX/O+zRj8CVE
-	 UciEjUzm+bOsIxB/zSggy0Js1Opcw9zhZLYKQUv7zpq3EO2o21Z0ys+LSDv6xDMvyi
-	 2O5HZfBiEnyYA==
-Date: Mon, 24 Nov 2025 16:50:30 -0600
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Niklas Cassel <cassel@kernel.org>, Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Manivannan Sadhasivam <mani@kernel.org>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Rob Herring <robh@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
-	Kever Yang <kever.yang@rock-chips.com>,
-	Simon Xue <xxm@rock-chips.com>, Damien Le Moal <dlemoal@kernel.org>,
-	Dragan Simic <dsimic@manjaro.org>, FUKAUMI Naoki <naoki@radxa.com>,
-	Diederik de Haas <diederik@cknow-tech.com>,
-	Richard Zhu <hongxing.zhu@nxp.com>, Frank Li <Frank.li@nxp.com>,
-	Lucas Stach <l.stach@pengutronix.de>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>, Conor Dooley <conor@kernel.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Hans Zhang <hans.zhang@cixtech.com>, linux-tegra@vger.kernel.org,
-	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, kernel@pengutronix.de,
-	Bjorn Helgaas <bhelgaas@google.com>
-Subject: Re: [PATCH v2 0/4] PCI: dwc: Advertise L1 PM Substates only if
- driver requests it
-Message-ID: <20251124225030.GA2721839@bhelgaas>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20251118214312.2598220-1-helgaas@kernel.org>
+	id 1vNiG1-0000000CaKw-3jIa
+	for linux-rockchip@lists.infradead.org;
+	Tue, 25 Nov 2025 01:54:20 +0000
+Received: from localhost.localdomain (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 2ac10622e;
+	Tue, 25 Nov 2025 09:54:05 +0800 (GMT+08:00)
+From: Shawn Lin <shawn.lin@rock-chips.com>
+To: Bjorn Helgaas <bhelgaas@google.com>
+Cc: linux-rockchip@lists.infradead.org,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	linux-pci@vger.kernel.org,
+	Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [PATCH 1/2] PCI: dwc: Add L1ss context to ltssm_status of debugfs
+Date: Tue, 25 Nov 2025 09:53:51 +0800
+Message-Id: <1764035632-180821-1-git-send-email-shawn.lin@rock-chips.com>
+X-Mailer: git-send-email 2.7.4
+X-HM-Tid: 0a9ab8b7cf3409cckunmc92cec9842edfc
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGkJIS1ZCGUoYSxpLSR9CTk9WFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpOTE
+	pVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=Ltr4dsMh8wI/9sc7SmWE51Rge2BjwPSYVnyJWwUwPnGuhe+ntzNajECvRd5KVOPdNZ+AP2VVqOPydgMe61nAmuUlUx6WH1xGxncfnJZXj3il3qiFkVttcedopDr/lcJYAJl5iHg4htAp6aXjHA46YaH+5k2r2ptJf7TmkrmJ6i4=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=gnPCKZrubDiKp9Ce3hoVnypxFgyrp1MpSGv7XHiWqo8=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251124_145033_404255_6A93854F 
-X-CRM114-Status: GOOD (  21.72  )
+X-CRM114-CacheID: sfid-20251124_175418_294914_6E670D91 
+X-CRM114-Status: UNSURE (   9.24  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,66 +65,57 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Nov 18, 2025 at 03:42:14PM -0600, Bjorn Helgaas wrote:
-> From: Bjorn Helgaas <bhelgaas@google.com>
-> 
-> This is a follow-up to Niklas's patch at
-> https://lore.kernel.org/r/20251017163252.598812-2-cassel@kernel.org.  That
-> patch clears the L1 PM Substate Supported bits for the dw-rockchip driver,
-> which doesn't yet do the device configuration to support the L1 Substates.
-> 
-> This series does the same thing, but in the DWC core so it applies to all
-> DWC-based drivers.  Drivers that do support L1 Substates (currently
-> tegra194 and qcom) indicate that by setting "dw_pcie.l1ss_support", and the
-> DWC core will leave the L1 PM Substate Supported bits alone.
-> 
-> This also includes Shawn's patches to add the dw-rockchip support for L1
-> Substates.
-> 
-> The problem this fixes is that users are currently able to enable L1
-> Substates, e.g., by
-> 
->   - building with with CONFIG_PCIEASPM_POWER_SUPERSAVE=y
->   - booting with "pcie_aspm.policy=powersupersave"
->   - echo powersupersave > /sys/module/pcie_aspm/parameters/policy
->   - echo 1 > /sys/bus/pci/devices/.../link/l1_1_aspm
-> 
-> but this breaks devices if the platform doesn't support CLKREQ# or lacks
-> Root Port configuration.  This series avoids that problem by preventing the
-> kernel from enabling L1.x in the first place.
-> 
-> 
-> Bjorn Helgaas (2):
->   PCI: dwc: Advertise L1 PM Substates only if driver requests it
->   PCI: tegra194: Remove unnecessary L1SS disable code
-> 
-> Shawn Lin (2):
->   PCI: dw-rockchip: Configure L1SS support
->   arm64: dts: rockchip: Add PCIe clkreq stuff for RK3588 EVB1
+dwc core couldn't distinguish ltssm status among L1.0, L1.1 and L1.2.
+But the variant driver may implement additional register to tell them
+apart. So this patch adds two pseudo definitions for variant drivers to
+transltae their internal L1 substates for debugfs to show.
 
-I applied these (except for the arm64: dts: patch) to
-pci/controller/dwc, planned for v6.19.  Same as posted here except I
-dropped dw_pcie_hide_unsupported_l1ss() from
-dw_pcie_ep_init_registers().
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+---
+This patch is based on latest pci controller/dwc branch given that L1ss support
+for Rockchip has been applied.
 
->  .../boot/dts/rockchip/rk3588-evb1-v10.dts     |  7 ++-
->  .../pci/controller/dwc/pcie-designware-ep.c   |  2 +
->  .../pci/controller/dwc/pcie-designware-host.c |  2 +
->  drivers/pci/controller/dwc/pcie-designware.c  | 24 ++++++++++
->  drivers/pci/controller/dwc/pcie-designware.h  |  2 +
->  drivers/pci/controller/dwc/pcie-dw-rockchip.c | 40 ++++++++++++++++
->  drivers/pci/controller/dwc/pcie-qcom.c        |  2 +
->  drivers/pci/controller/dwc/pcie-tegra194.c    | 48 ++++---------------
->  8 files changed, 85 insertions(+), 42 deletions(-)
-> 
-> -- 
-> 2.43.0
-> 
+ drivers/pci/controller/dwc/pcie-designware-debugfs.c | 2 ++
+ drivers/pci/controller/dwc/pcie-designware.h         | 4 ++++
+ 2 files changed, 6 insertions(+)
+
+diff --git a/drivers/pci/controller/dwc/pcie-designware-debugfs.c b/drivers/pci/controller/dwc/pcie-designware-debugfs.c
+index 0fbf86c0b97e..df98fee69892 100644
+--- a/drivers/pci/controller/dwc/pcie-designware-debugfs.c
++++ b/drivers/pci/controller/dwc/pcie-designware-debugfs.c
+@@ -485,6 +485,8 @@ static const char *ltssm_status_string(enum dw_pcie_ltssm ltssm)
+ 	DW_PCIE_LTSSM_NAME(DW_PCIE_LTSSM_RCVRY_EQ1);
+ 	DW_PCIE_LTSSM_NAME(DW_PCIE_LTSSM_RCVRY_EQ2);
+ 	DW_PCIE_LTSSM_NAME(DW_PCIE_LTSSM_RCVRY_EQ3);
++	DW_PCIE_LTSSM_NAME(DW_PCIE_LTSSM_L1_1);
++	DW_PCIE_LTSSM_NAME(DW_PCIE_LTSSM_L1_2);
+ 	default:
+ 		str = "DW_PCIE_LTSSM_UNKNOWN";
+ 		break;
+diff --git a/drivers/pci/controller/dwc/pcie-designware.h b/drivers/pci/controller/dwc/pcie-designware.h
+index d3dc0cd8e7b5..3f4611882e29 100644
+--- a/drivers/pci/controller/dwc/pcie-designware.h
++++ b/drivers/pci/controller/dwc/pcie-designware.h
+@@ -380,6 +380,10 @@ enum dw_pcie_ltssm {
+ 	DW_PCIE_LTSSM_RCVRY_EQ2 = 0x22,
+ 	DW_PCIE_LTSSM_RCVRY_EQ3 = 0x23,
+ 
++	/* Variant drivers provide pseudo L1 substates from get_ltssm()*/
++	DW_PCIE_LTSSM_L1_1 = 0x141,
++	DW_PCIE_LTSSM_L1_2 = 0x142,
++
+ 	DW_PCIE_LTSSM_UNKNOWN = 0xFFFFFFFF,
+ };
+ 
+-- 
+2.43.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
