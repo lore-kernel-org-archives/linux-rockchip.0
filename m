@@ -4,81 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89BF4D116E0
-	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Nov 2025 23:36:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9064DD116E2
+	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Nov 2025 23:54:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kYxzhF0K8R0LmtoxsSvpRJxXyCgmkFsWZEUgegB8QUM=; b=AykcTcKaLorB0V
-	b4vQeT4fFQbR/V+zIDoU3mZoxYVqmXHsvxVu4W/hgTodp29KExryT1E6+hGGLB/kSb/FaIjJAvTFZ
-	0RExNhe07xV8ZS4V3wdw45+ICjZQpPESwOT+rYJMtRo54NU2/EImdN24Yd/chW7cGwqZcViu7GuG0
-	7t35z8oHlOXCfmJ9EcIKULzzkAeH+MtEbFZGb6mlVQFXLA+WtXI4bAkYqkZl1isEIms1KaKCvOYLm
-	fDnlLFtBTrKhc2/6FKiKGy9dkQJ3HHljgJNE6lQnHnu1YCDvtiY5nPhTh3IZBSmjOcS/C/p8pzXWL
-	kM5e9QGzFaCXKQUTRz1A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=aa3KSm0G+R1WdFD7QhNUsnbSSPA62+zzKJOyyJawS6s=; b=J2vHm+YOYl9vUV
+	lNY8M3RRDMniS+FBnjl2j9rFduTXqJfzf50N5gfulyEHWOoPSNuhjfsSYIIA2RcN3SIbiBNyLolgR
+	8kbh5NYB90Clvpe+sH09hV/fLS+82R1GmkzYGiiFyUBMnjXGa1cseSzANcmhr0e0FsIWbl1iOD+R+
+	IuTFHeazG5BJarIasmKI/+O5kIlfDkT5gYpInRcr6WF0gORJTwKh2i2upFVsBgpMnZTSVciyaPu50
+	ns7UfZKgh1GaS+qh0qoxMtElRGp7Q/8zvguOTZmGdamXyDiWeIPmBymxxGYzDjwjI9y8s8RUJRPoX
+	gIY2WYO+6GqoXmYdnNLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vOP3p-0000000FliK-4ANS;
-	Wed, 26 Nov 2025 23:36:33 +0000
-Received: from smtpbgau1.qq.com ([54.206.16.166])
+	id 1vOPLJ-0000000FmRZ-40pJ;
+	Wed, 26 Nov 2025 23:54:37 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vOP3m-0000000Flh2-0oMM;
-	Wed, 26 Nov 2025 23:36:31 +0000
-X-QQ-mid: zesmtpip3t1764200140t26c1d66f
-X-QQ-Originating-IP: hgMl6M65ccjvhNfvtBjTl6QJMNwIooehNHyypEk8E9k=
-Received: from [IPV6:240f:10b:7440:1:c95a:801a ( [localhost])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Thu, 27 Nov 2025 07:35:37 +0800 (CST)
-X-QQ-SSF: 0000000000000000000000000000000
-X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 3508264673174158136
-Message-ID: <A528C970F1441854+e82f1fbb-b82e-436c-9336-7b34f515b67b@radxa.com>
-Date: Thu, 27 Nov 2025 08:35:37 +0900
+	id 1vOPLG-0000000FmQy-3mFr;
+	Wed, 26 Nov 2025 23:54:36 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 027DE4197D;
+	Wed, 26 Nov 2025 23:54:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A5A68C4CEF7;
+	Wed, 26 Nov 2025 23:54:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1764201273;
+	bh=g9nM4cO2Nu/TJJjgqtJ77MJB0fTDSxhxd0RQ+LzrMi4=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=RQCfpfeZnsMlL2sUCsmFtjvqUATIhGbpQyu2dIi70gm8+BkN4dpSOM8JiXvAM5ZkP
+	 BoBfquJLzroZc5wGIAhoeSIkCUnY0qS/5icO4JnicFJ0PPsD5DfEBBC7hBmvplQj5F
+	 ri2lDTXygjlNAnWYiAyrbQd22ZR9ML4QDBiPfJIqcB9nPwDfqKnpAU2yVmhPKxrPRg
+	 2EumjNk/YuuXvFGVk84zVWHzVu4QY6ZGevOp5ULfj/A+7wtKaM0W8Gbch+y00woMe/
+	 yBcP4f8YtTSAWZMVLl6ZP0I+y/MtkKXo+hfPfxFy9bKI4FmbV42CSLYgrYvTEV6ahp
+	 pmVD44qu7aO0w==
+Date: Wed, 26 Nov 2025 17:54:32 -0600
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Hans Zhang <18255117159@163.com>
+Cc: lpieralisi@kernel.org, kwilczynski@kernel.org, bhelgaas@google.com,
+	heiko@sntech.de, mani@kernel.org, yue.wang@amlogic.com,
+	pali@kernel.org, neil.armstrong@linaro.org, robh@kernel.org,
+	jingoohan1@gmail.com, khilman@baylibre.com, jbrunet@baylibre.com,
+	martin.blumenstingl@googlemail.com, cassel@kernel.org,
+	linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-amlogic@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v6 1/2] PCI: Configure Root Port MPS during host probing
+Message-ID: <20251126235432.GA2726707@bhelgaas>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/6] PCI: dwc: Revert Link Up IRQ support
-To: Manivannan Sadhasivam <mani@kernel.org>
-Cc: Niklas Cassel <cassel@kernel.org>, Jingoo Han <jingoohan1@gmail.com>,
- Lorenzo Pieralisi <lpieralisi@kernel.org>,
- =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
- Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
- Heiko Stuebner <heiko@sntech.de>, Shawn Lin <shawn.lin@rock-chips.com>,
- Krishna chaitanya chundru <quic_krichai@quicinc.com>,
- linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org
-References: <20251111105100.869997-8-cassel@kernel.org>
- <mt7miqkipr4dvxemftq6octxqzauueln252ncrcwy6i2t7wfhi@jtwokeilhwsi>
- <aSRli_Mb6qoQ9TZO@ryzen>
- <7667E818D7D31A4E+cf7c83d4-b99c-469d-8d46-588fc95b843f@radxa.com>
- <pbcemex3hdu4ryw2r7iy6xxt3chwaytlm2eina7mm4ukjfcagt@x4777z7ral26>
-Content-Language: en-US
-From: FUKAUMI Naoki <naoki@radxa.com>
-In-Reply-To: <pbcemex3hdu4ryw2r7iy6xxt3chwaytlm2eina7mm4ukjfcagt@x4777z7ral26>
-X-QQ-SENDSIZE: 520
-Feedback-ID: zesmtpip:radxa.com:qybglogicsvrsz:qybglogicsvrsz4b-0
-X-QQ-XMAILINFO: N0mS+7D7RQfjFYYGJptHmc9BX10V8/GiKGnkFoMyqJq3T/FWSSBisagX
-	UDta+xTFuX9m+ncgk+oglFqAJ1E8Yq2IdnpxtreKYOqjdEjytpC78BAXPRfAIyB+X111Dyy
-	8pMZ1vSD5RArFx0OoZa/9ACQmopa1R6iPdpQmG7vK0VYLvfzzCCh9JgqjFtiKHyxOm6Tlk5
-	3pj/ws7aeyOj4iuOYUPjgKsr/J6IpZnT57neijWcn/JvA/IuH01wn1Gf/QhYswQUJ05NvZ6
-	zicSaBPrs/JYuyXtPGGlmGWMUBfS0fihXKjINFolqMM4KjtNe1/fM2jP/DbhZcANZjbsDMU
-	Rp5NFCt55Y3doM9xSZaA3ckxfcZD9zgKRjuuWxRsIm876nepQ/4KuLdQCc2gJw1yj1hnlZ+
-	FL6gFEWMAcdmewLj98figUNn1x10mFyQHL0wzvd1NxLHYjsBu0aIOj/o/+LN7bZkWkvRprt
-	zygFKiNkoH321ZKlvYUx1w7oiWqdTE32LO+9AJOPkZc7BUuVWoqf72SAKO5guoRSgdWDr+B
-	O58Xuj41xsGCJOxaUqtlRnNdX4twjFKdHbPJXnOFvWKj953wgj/K4Q6viwIHRLvNtFWaOlE
-	yp0xBRYZcD921M7o+enVGKTAdEmOTHCk5Sm67kTaLlsiLlMByajHhfyLf+CtB+iOsfy1+VS
-	MPwGOHP4OxN8AjX7r5EnO3CcNy5dZ+N+a3Br5XyW1sDRfM2omcMq9OPXN+tbv66t5RctJ9u
-	BJw1uokOm/3O/Jmv7lEob5u4bk/g5IFjvWJJiM/VMvOLQymJ8VzXrFmfVp6VRcXExHdIGde
-	Vpwe40plfglZIR5fQKInfcTaj6SAbOEpP8Y1Uy2thLWbB/6Y2KbtrhnsPhm19j2bzrtIByy
-	zf3qFi5dixqqpLM75IMELwse2F3cAQ29sre9tJDJWEApW6v2Ty9dsOnd0EvFWqS0tW0/0BO
-	sMNx4u3FiSTwWFi59vOm3OczPmrQvRGeDLTGvtCt68WHMWtHsIrxtn70DE+baKf6qrNt5j/
-	N4qa7i+Q==
-X-QQ-XMRINFO: MSVp+SPm3vtS1Vd6Y4Mggwc=
-X-QQ-RECHKSPAM: 0
+Content-Disposition: inline
+In-Reply-To: <20251104165125.174168-2-18255117159@163.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251126_153630_704061_8B7C694C 
-X-CRM114-Status: GOOD (  21.92  )
+X-CRM114-CacheID: sfid-20251126_155434_983171_AC023225 
+X-CRM114-Status: GOOD (  22.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,93 +72,88 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Mani,
-
-On 11/26/25 22:54, Manivannan Sadhasivam wrote:
-> On Wed, Nov 26, 2025 at 10:30:06PM +0900, FUKAUMI Naoki wrote:
->> Hi Niklas,
->>
->> I apologize for the delayed response.
->>
->> On 11/24/25 23:02, Niklas Cassel wrote:
->>> On Mon, Nov 24, 2025 at 06:07:44PM +0530, Manivannan Sadhasivam wrote:
->>>> While I suggested to revert the link up IRQ patch for rockchip earlier, I didn't
->>>> expect to drop the support for Qcom. The reason is, on Qcom SoCs, we have not
->>>> seen a case where people connect a random PCIe switch and saw failures. Most of
->>>> the Qcom usecases were around the M.2 and other proprietary connectors. There is
->>>> only one in-house PCIe switch that is being actively used in our products, but
->>>> so far, none of the bootloaders have turned them ON before kernel booting. So
->>>> kernel relies on the newly merged pwrctrl driver to do the job. Even though it
->>>> also suffers from the same resource allocation issue, this series won't help in
->>>> any way as pwrctrl core performs rescan after the switch power ON, and by that
->>>> time, it will be very late anyway.
->>>>
->>>> So I'm happy to take the rockhip patches from this series as they fix the real
->>>> issue that people have reported. But once the pwrctrl rework series gets merged,
->>>> and the rockchip drivers support them, we can bring back the reverted changes.
->>>
->>> FUKAUMI Naoki, just to confirm:
->>>
->>> Neither my suggested approach:
->>> https://lore.kernel.org/linux-pci/aRHdeVCY3rRmxe80@ryzen/
->>>
->>> nor Shawn's suggested approach:
->>> https://lore.kernel.org/linux-pci/dc932773-af5b-4af7-a0d0-8cc72dfbd3c7@rock-chips.com/
->>>
->>> worked for you?
->>
->> Yes, I re-tested the two methods mentioned above, separately, on v6.18-rc7,
->> but neither of them resolved the issue in my environment (ROCK 5C +
->> ASM2806).
->>
->>> If so, I don't see many alternative but for Mani to apply patch 1 and
->>> patch 2 from this series.
->>
->> I believe applying patch 1 and patch 2 should be sufficient.
->>
->> ----
->>
->> Incidentally, (probably) while applying patch 1 and patch 2, I have
->> encountered the following issue several times:
->>
+On Wed, Nov 05, 2025 at 12:51:24AM +0800, Hans Zhang wrote:
+> Current PCIe initialization logic may leave Root Ports (root bridges)
+> operating with non-optimal Maximum Payload Size (MPS) settings. Existing
+> code in pci_configure_mps() returns early for devices without an upstream
+> bridge (!bridge) which includes Root Ports, so their MPS values remain
+> at firmware/hardware defaults. This fails to utilize the controller's full
+> capabilities, leading to suboptimal data transfer efficiency across the
+> PCIe hierarchy.
 > 
-> Do you see the below issue *after* applying the patches? I don't know how to
-> interpret "while applying".
->   
->> [    1.709614] pcieport 0004:41:00.0: of_irq_parse_pci: failed with rc=134
->> [    1.710208] pcieport 0004:41:00.0: Unable to change power state from
->> D3cold to D0, device inaccessible
->>
+> With this patch, during the host controller probing phase:
+> - When PCIe bus tuning is enabled (not PCIE_BUS_TUNE_OFF), and
+> - The device is a Root Port without an upstream bridge (!bridge),
+> The Root Port's MPS is set to its hardware-supported maximum value
+> (128 << dev->pcie_mpss).
 > 
-> Looks like the device was seen during bus scan, but then it went down
-> afterwards.
-
-Sorry, I meant "after". But I guess it occurred with vanilla kernel in 
-the past:
-
-  https://lore.kernel.org/linux-pci/4487DA40249CC821+19232169-a096-4737-bc6a-5cec9592d65f@radxa.com/
-  https://gist.github.com/RadxaNaoki/b42252ce3209d9f6bc2d4c90c71956ae#file-gistfile1-txt-L551
-
-This time I unset CONFIG_PCI_DYNAMIC_OF_NODES, but this error occurred 
-at same location when kernel oops occurred.
-
-It might be a problem with ROCK 5C, (or *my* ROCK 5C), so I'll test 
-again with ROCK 5B.
-
-Best regards,
-
---
-FUKAUMI Naoki
-Radxa Computer (Shenzhen) Co., Ltd.
-
-> - Mani
+> Note that this initial maximum MPS setting may be reduced later, during
+> downstream device enumeration, if any downstream device does not suppor
+> the Root Port's maximum MPS.
 > 
+> This change ensures Root Ports are properly initialized before downstream
+> devices negotiate MPS, while maintaining backward compatibility via the
+> PCIE_BUS_TUNE_OFF check.
 
+"Properly" is sort of a junk word for me because all it really says is
+we were stupid before, and we're smarter now, but it doesn't explain
+exactly *what* was wrong and why this new thing is "proper."
+
+It's obvious that the Max_Payload_Size power-on default (128 bytes) is
+suboptimal in some situations, so you don't even need to say that.
+And I think 128 bytes *is* optimal in the PCIE_BUS_PEER2PEER case.
+
+s/Root Ports (root bridges)/Root Ports/
+s/bridge (!bridge)/bridge/     # a couple times
+s/hardware-supported//         # unnecessary
+s/(128 << dev->pcie_mpss)//    # we can read the spec
+s/suppor/support/
+
+> Suggested-by: Niklas Cassel <cassel@kernel.org>
+> Suggested-by: Manivannan Sadhasivam <mani@kernel.org>
+> Signed-off-by: Hans Zhang <18255117159@163.com>
+> ---
+>  drivers/pci/probe.c | 12 ++++++++++++
+>  1 file changed, 12 insertions(+)
+> 
+> diff --git a/drivers/pci/probe.c b/drivers/pci/probe.c
+> index 0ce98e18b5a8..2459def3af9b 100644
+> --- a/drivers/pci/probe.c
+> +++ b/drivers/pci/probe.c
+> @@ -2196,6 +2196,18 @@ static void pci_configure_mps(struct pci_dev *dev)
+>  		return;
+>  	}
+>  
+> +	/*
+> +	 * Unless MPS strategy is PCIE_BUS_TUNE_OFF (don't touch MPS at all),
+> +	 * start off by setting Root Ports' MPS to MPSS. This only applies to
+> +	 * Root Ports without an upstream bridge (root bridges), as other Root
+> +	 * Ports will have downstream bridges.
+
+I can't parse this sentence.  *No* Root Port has an upstream bridge.
+So I don't know what "other Root Ports" would be or why they would
+have downstream bridges (any Root Port is likely to have downstream
+endpoints or bridges).
+
+> +	   ... Depending on the MPS strategy
+> +	 * and MPSS of downstream devices, the Root Port's MPS may be
+> +	 * overridden later.
+> +	 */
+> +	if (!bridge && pci_pcie_type(dev) == PCI_EXP_TYPE_ROOT_PORT &&
+> +	    pcie_bus_config != PCIE_BUS_TUNE_OFF)
+> +		pcie_set_mps(dev, 128 << dev->pcie_mpss);
+> +
+>  	if (!bridge || !pci_is_pcie(bridge))
+>  		return;
+>  
+> -- 
+> 2.34.1
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
