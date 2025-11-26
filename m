@@ -4,65 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F224D1118E
-	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Nov 2025 20:28:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 536CED111A3
+	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Nov 2025 20:57:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=J6qqhCM+UcnkGqiBciQAISen5u+grp1yWT06c86szs8=; b=U3/0lDJeV3g30l
-	srbp1LHea3nQBMvIrZSImAEkUkmadD6JTbGVrsOmEUYUzD3FWVTgJBQrxQs8qEsELD2DHClHQLgwd
-	4FKyAD8bbinliLg4IwAHtGhOKivZW+95rC8upQn0Co/hOV62Y85hS36pkRIY00XxffWMKo3EE3vz9
-	LT7GDSSKdp7pHpu1Uob8CWtSaMopA6EnWyUzIGGTfBP/Nm0mb6S+izoX7TDfEBmHq3FeGM6DFfcYp
-	j47U0uHmYQHAilEGfNeCpQ31B6iGBxif7Cc9LewzHBfpDbO532XjVqFLrrpAzF3MuCwI2vrDPb4Gn
-	5ioDhpQ77o1W59bT8BMg==;
+	List-Owner; bh=9CZ+xIszqnMUz7tBXVoZsfW/9aiF9mvGSX2kZMFY7Rg=; b=i+uTVuOX+QlaAS
+	4xJfPU3xMI9qY79JeIETtV7rwqWq7v9hlbx6/qfbhceXxg2ki4wCfXceEnAgC4Jvol+WMipO7BfBp
+	JmqK35LTYbHpvUcdhYDKOUXXUm4FxY268A+yqbuoq55OR82PtZoxQ8vpl2EilLoKJYVlEM3ZqwJhQ
+	lGYd5lEE6sKZX3/sSn/jNnRpwfSc8znnl4V7Xv63qDKs7GRU4Gha2xrMs8U7jxxl9zJorHYTGwSoR
+	d8++jgIgU+Yr5Iv2U6MSHqiRXbNPLKJ5v8ZhYaNYBosZ6jVzmdCenZPn3y8646ZfZ4jdAupRn2Ioj
+	hW3H57T3sQ1YT6MYvVxQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vOM71-0000000FcIP-0kbh;
-	Wed, 26 Nov 2025 20:27:39 +0000
+	id 1vOMa3-0000000Fe3G-0V49;
+	Wed, 26 Nov 2025 20:57:39 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vOM6x-0000000FcGY-3dXT;
-	Wed, 26 Nov 2025 20:27:37 +0000
+	id 1vOMa0-0000000Fe2n-2QF0;
+	Wed, 26 Nov 2025 20:57:38 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1764188851;
-	bh=OpcbLyKYxZlxHhsaZdpZh0uLt6gJOnXWPmZWcJ0p0KY=;
+	s=mail; t=1764190653;
+	bh=VgKQqCzbrBVjIoPtkM4peyHjuiSnnuxQpPfmCkt5H8g=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=ok95PXRf1zTCFm0YnE0co+79ZEXCN6iHKtdfeBvVFGEnFfol70oUDdzQnxPoNtNhA
-	 4vgiQgF8zBakJ4YELldWOM95ZlndMvGGD6x9j6wPtfZqb0VQM7QS0ZfQYA4Zq2aAZg
-	 B9VNerwVPKXD2Isn7jYFoVYmkbVLzAvmDo5AGTYlgMgiqqIi4wWYdJp0nIWMuAundz
-	 GBE34vN2Borx3yFEHTqArWTmMki2+u09xe+JI123WkPlp0YFyHt6i6W6PtO1FO48Ci
-	 TT/dGWd1oEhVvzp7yJxUPwhCPH5O0eV3b2mb7Gf79I6HsLVJKpvrX7/ENQ1NyaHeU+
-	 ehucfjHs5TzgQ==
+	b=AK+cQKal//7op9uk7mWZA/RS+U/uLhe06dbOACt+KmYYf/INHmiu6KGNsEZ5opcnE
+	 FrmzEqCgPLU59sPxYobIkVgzHUCRW413uwe7423r0ReSYJQDSw7bRTgg/GKg0uPbon
+	 BUjaspa1qhS5+sbSonDwO8opoVAqmcXEf3ntee2BXcqyhORnds6T0dFTLC6GFW2ISI
+	 so0C1ngzO8qetp8KgT0nVYT9pZQ1UInsa5EHbYvcAHcVQ24pBwb51WRTa1+tWr7ATy
+	 MMGUA7AmXGKsnWLd6/2AyEYbDnhaH20d5SJ6XoplqPnm1At6up9uHKZltLyMfxHJqX
+	 0XvRnVe/QXCDg==
 Received: from [10.40.0.100] (185-67-175-126.lampert.tv [185.67.175.126])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: mriesch)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7E64117E101A;
-	Wed, 26 Nov 2025 21:27:30 +0100 (CET)
-Message-ID: <f53af05d-ac10-43d5-8563-dadafbeb2379@collabora.com>
-Date: Wed, 26 Nov 2025 21:27:29 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 707DE17E0EDB;
+	Wed, 26 Nov 2025 21:57:32 +0100 (CET)
+Message-ID: <87049b4c-df7d-454b-a7f4-073975a7ee94@collabora.com>
+Date: Wed, 26 Nov 2025 21:57:31 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH next] media: rockchip: rkcif: fix off by one bugs
-To: Dan Carpenter <dan.carpenter@linaro.org>
+Subject: Re: [PATCH v2 2/3] media: rockchip: add driver for the rockchip mipi
+ csi-2 receiver
+To: Frank Li <Frank.li@nxp.com>
 Cc: Mehdi Djait <mehdi.djait@linux.intel.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner
- <heiko@sntech.de>, Sakari Ailus <sakari.ailus@linux.intel.com>,
- Hans Verkuil <hverkuil+cisco@kernel.org>,
- Bryan O'Donoghue <bryan.odonoghue@linaro.org>, linux-media@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org
-References: <aR17UkYsfAxCZ4fe@stanley.mountain>
+ Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Hans Verkuil <hverkuil@kernel.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ Collabora Kernel Team <kernel@collabora.com>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20251114-rockchip-mipi-receiver-v2-0-eb9b43377fc4@collabora.com>
+ <20251114-rockchip-mipi-receiver-v2-2-eb9b43377fc4@collabora.com>
+ <aRyplYZOrGsSxSlp@lizhi-Precision-Tower-5810>
+ <554971e1-6fde-4b2c-a2de-fe178358a4e3@collabora.com>
+ <aRzub5Ak6DZpO5f/@lizhi-Precision-Tower-5810>
 Content-Language: en-US
 From: Michael Riesch <michael.riesch@collabora.com>
-In-Reply-To: <aR17UkYsfAxCZ4fe@stanley.mountain>
+In-Reply-To: <aRzub5Ak6DZpO5f/@lizhi-Precision-Tower-5810>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251126_122736_061340_B1A6648F 
-X-CRM114-Status: GOOD (  15.72  )
+X-CRM114-CacheID: sfid-20251126_125736_829434_58C451AA 
+X-CRM114-Status: GOOD (  17.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,54 +91,75 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Dan,
+Hi Frank,
 
-Thanks for the patch, good catch!
-
-On 11/19/25 09:09, Dan Carpenter wrote:
-> Change these comparisons from > vs >= to avoid accessing one element
-> beyond the end of the arrays.
+On 11/18/25 23:08, Frank Li wrote:
+> On Tue, Nov 18, 2025 at 07:59:14PM +0100, Michael Riesch wrote:
+>> Hi Frank,
+>>
+>> On 11/18/25 18:15, Frank Li wrote:
+>>> On Tue, Nov 18, 2025 at 12:12:26PM +0100, Michael Riesch via B4 Relay wrote:
+>>>> From: Michael Riesch <michael.riesch@collabora.com>
+>>>>
+>>>> [...]
+>>>> +#define CSI2HOST_N_LANES     0x04
+>>>> +#define CSI2HOST_CSI2_RESETN 0x10
+>>>> +#define CSI2HOST_PHY_STATE   0x14
+>>>> +#define CSI2HOST_ERR1	     0x20
+>>>> +#define CSI2HOST_ERR2	     0x24
+>>>> +#define CSI2HOST_MSK1	     0x28
+>>>> +#define CSI2HOST_MSK2	     0x2c
+>>>> +#define CSI2HOST_CONTROL     0x40
+>>>
+>>> Look like that is designware CSI2 controller, can we build common library
+>>> for all dwc csi2 controller, instead of every vendor create individual one.
+>>>
+>>> First try at
+>>> https://lore.kernel.org/linux-media/20250821-95_cam-v3-21-c9286fbb34b9@nxp.com/
+>>>
+>>> Toshiba have similar patch
+>>> https://lore.kernel.org/linux-media/aPZd39riAxqfw3mT@lizhi-Precision-Tower-5810/
+>>>
+>>> Frank
+>>
+>> This has been discussed already a while ago:
+>> https://lore.kernel.org/all/20250507083837.GA11152@pendragon.ideasonboard.com/
 > 
-> Fixes: 1f2353f5a1af ("media: rockchip: rkcif: add support for rk3568 vicap mipi capture")
-> Signed-off-by: Dan Carpenter <dan.carpenter@linaro.org>
+> https://lore.kernel.org/all/20250702093806.GF16835@pendragon.ideasonboard.com/
+> 
+> Laurent Pinchart prevent imx93 DWC CSI2 driver at Jul, your discussion at
+> May, I think Laurent Pinchart change the mind.
+> 
+> We can choose not base on imx6, but we should create a standard dwc2 under
+> drivers/media/platform/synopsys/
 
-Reviewed-by: Michael Riesch <michael.riesch@collabora.com>
+In principle, I agree with refactoring out common code. However, I am
+not sure how similar these IP cores really are. Again, the answer I
+received from Rockchip states that this is *not* a Synopsys IP core.
+
+Can you maybe test whether the Rockchip MIPI CSI-2 Receiver driver in
+this series works on your hardware? Then we will know if (and what)
+parts can be shared.
 
 Best regards,
 Michael
 
-> ---
->  .../media/platform/rockchip/rkcif/rkcif-capture-mipi.c | 10 +++++-----
->  1 file changed, 5 insertions(+), 5 deletions(-)
+
 > 
-> diff --git a/drivers/media/platform/rockchip/rkcif/rkcif-capture-mipi.c b/drivers/media/platform/rockchip/rkcif/rkcif-capture-mipi.c
-> index 1b81bcc067ef..a933df682acc 100644
-> --- a/drivers/media/platform/rockchip/rkcif/rkcif-capture-mipi.c
-> +++ b/drivers/media/platform/rockchip/rkcif/rkcif-capture-mipi.c
-> @@ -489,8 +489,8 @@ static inline unsigned int rkcif_mipi_get_reg(struct rkcif_interface *interface,
->  
->  	block = interface->index - RKCIF_MIPI_BASE;
->  
-> -	if (WARN_ON_ONCE(block > RKCIF_MIPI_MAX - RKCIF_MIPI_BASE) ||
-> -	    WARN_ON_ONCE(index > RKCIF_MIPI_REGISTER_MAX))
-> +	if (WARN_ON_ONCE(block >= RKCIF_MIPI_MAX - RKCIF_MIPI_BASE) ||
-> +	    WARN_ON_ONCE(index >= RKCIF_MIPI_REGISTER_MAX))
->  		return RKCIF_REGISTER_NOTSUPPORTED;
->  
->  	offset = rkcif->match_data->mipi->blocks[block].offset;
-> @@ -510,9 +510,9 @@ static inline unsigned int rkcif_mipi_id_get_reg(struct rkcif_stream *stream,
->  	block = stream->interface->index - RKCIF_MIPI_BASE;
->  	id = stream->id;
->  
-> -	if (WARN_ON_ONCE(block > RKCIF_MIPI_MAX - RKCIF_MIPI_BASE) ||
-> -	    WARN_ON_ONCE(id > RKCIF_ID_MAX) ||
-> -	    WARN_ON_ONCE(index > RKCIF_MIPI_ID_REGISTER_MAX))
-> +	if (WARN_ON_ONCE(block >= RKCIF_MIPI_MAX - RKCIF_MIPI_BASE) ||
-> +	    WARN_ON_ONCE(id >= RKCIF_ID_MAX) ||
-> +	    WARN_ON_ONCE(index >= RKCIF_MIPI_ID_REGISTER_MAX))
->  		return RKCIF_REGISTER_NOTSUPPORTED;
->  
->  	offset = rkcif->match_data->mipi->blocks[block].offset;
+> Laurent Pinchart:
+> 
+> 	Can you provide direction?
+> 
+> Frank
+> 
+>>
+>> Bottom line from Laurent:
+>>
+>> "Let's keep this driver Rockchip-specific then. Thanks for checking."
+>>
+>>>  [...]
+>> Best regards,
+>> Michael
 
 
 _______________________________________________
