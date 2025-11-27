@@ -4,66 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42E9BD116F3
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Nov 2025 07:43:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F920CFD2F6
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Nov 2025 07:49:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NPGzoGU0iq//zIWPS3xSPMF2+L5XcASdxxStSrb4Fls=; b=r7uEHR6Cktbxvh
-	HPVUpPB88GN7YA8SYFBWn2JK57U+DYhoGGFyzjRUjGRhD6WqmUjKJVJbWocjpAQ3UgsQnk+b1BBvv
-	NIu/w187zin/k2JGZowaZdYmXi/Fs2DoPEE62C7t65ZEel312nKs3Fi9yUm5O1vJJ8QUUbUCIARNu
-	D4n6gOD4kDc6N6uUwjF0gx8I7wxitL3jbyeaAbV6zOFvsZheVt6+1VWx5z6wUSKfDgc9wwsIyGo1M
-	3gNxEpyywVeKlJnFi+4t/4z3T4Z+kn9plBrJAxoPYRVALJFHpyj3OvOmamPUBrkemQcaDQlr8WXHi
-	yUovCN/VUUs6Bt++Omog==;
+	List-Owner; bh=5yHxKf/YZ3fDuzw/A17syGixg/rOpF1Pmy/0vOxTxiw=; b=z63xxcyjT65n8q
+	Rv4tKUXl1ODDfx6jJC2f6EcoInXMM0pWQG7tmoIrwtFYITFnBfVm4KhoPZXcdUvLVum8SIJ6RhJtO
+	Hyhe/uEXYMkmff4o8qh7uKQ88w6NHTpb5oe5KNUhTCibiGHbzQvinuQKOXZr7DjiigaRPyK3UA/6v
+	UX53wTspxW6GCRUq5qB02UxbKZHfH0Zn0gXXRh7lc+qC5u+n+u9LsgjQm412YsCzrkC540SqMU9Pg
+	Pm0n6JbQ+wJz1HSj81E9ux5kn/VYdn3ivaVwGvJKtSrLjjSnyGC0fyd//EMhctOLiGqPBklnAz322
+	pGIhyiVUecHwoSL4xrgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vOWfN-0000000G98H-1Z80;
-	Thu, 27 Nov 2025 07:43:49 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vOWkb-0000000G9gj-0AaA;
+	Thu, 27 Nov 2025 07:49:13 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vOWfM-0000000G97a-23MR;
-	Thu, 27 Nov 2025 07:43:48 +0000
+	id 1vOWkY-0000000G9fF-0kEv;
+	Thu, 27 Nov 2025 07:49:11 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 95E8F60178;
-	Thu, 27 Nov 2025 07:43:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2C097C4CEF8;
-	Thu, 27 Nov 2025 07:43:43 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id D4D1240029;
+	Thu, 27 Nov 2025 07:49:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2CF33C4CEF8;
+	Thu, 27 Nov 2025 07:49:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1764229427;
-	bh=stfZYo+TOb5/udfo8Ni52S3dEgdKEJoaTftGPEkaTEk=;
+	s=k20201202; t=1764229749;
+	bh=xCHxcpEIdv+cYmEpWP1sxWzNhSIiDpBmJZwuNZkMZtk=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=n2qhreBZ6hx5qKaCQD/Ummy08gyYqCO2jKo6y4KlAWs6fsaomo28Rkfmj8hLIA7Ro
-	 ua3cW71SxmOAIGMzNb+r/J73tDPM0Jb3kHqqC+Ek6jHOhtj94HTgQ7ZHjJJeBuY3fK
-	 8L2DRE+BkndgKHhIDgVfwtVNbHlSya8cCZwdkV4iKC1Ii75+ISf+nxYHzWhAc4ld31
-	 EQQRHl+kbzAhd89CDlVtnrDnMFc28chxSunAM/vnmu9Xu3QUsrTI+ksnEP7mOWaNwB
-	 U7on4MYwJ/qEX92ONC+CrvivQHzi3tOqNaQs0SzMFnlE1cKMCF+4WgEhB/0tdw7Qtq
-	 suC8JCokvLrfA==
-Date: Thu, 27 Nov 2025 08:43:41 +0100
-From: Niklas Cassel <cassel@kernel.org>
-To: FUKAUMI Naoki <naoki@radxa.com>
-Cc: Manivannan Sadhasivam <mani@kernel.org>,
-	Jingoo Han <jingoohan1@gmail.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	Krishna chaitanya chundru <quic_krichai@quicinc.com>,
-	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org
-Subject: Re: [PATCH 0/6] PCI: dwc: Revert Link Up IRQ support
-Message-ID: <aSgBLQ7rDOiEFhMB@ryzen>
-References: <20251111105100.869997-8-cassel@kernel.org>
- <mt7miqkipr4dvxemftq6octxqzauueln252ncrcwy6i2t7wfhi@jtwokeilhwsi>
- <aSRli_Mb6qoQ9TZO@ryzen>
- <7667E818D7D31A4E+cf7c83d4-b99c-469d-8d46-588fc95b843f@radxa.com>
- <F11F0D13437B012D+0c15c5ca-f64f-49f1-9ff5-26b88d59ff59@radxa.com>
+	b=FQwfqP/QVZii9l8ecWYPqL+DhTc2gEZKdzPKZe3sPat/h7wPoswC6nqt25oEbfI6X
+	 AJ9VlIQp7MkXckUpVg5sf4thLKbOR7D3ncXL+cVNTd+jA8GfsXMxp3q6k0kLGeGKBq
+	 wZc50SuOI2+9aJI4j7aHrVGZWcKj1uAMfWyTlw8AL3zaR++iE5651KdiynSbupz92T
+	 HrG6MpTWaGD8bmDZWJgP0HebESgwtDG8TVq9izwQYCdI8EEIKH1ECFhPfOZPFmPsNG
+	 mnZcOker27snb9SaAQYHemgr/fRGAD9Eehoxe5gVmiSoZ33k9LM03qHOMYL2vYP4eH
+	 Qw8fNHFSpnFmQ==
+Date: Thu, 27 Nov 2025 08:49:07 +0100
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Chaoyi Chen <kernel@airkyi.com>
+Cc: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>, 
+	Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	Chaoyi Chen <chaoyi.chen@rock-chips.com>
+Subject: Re: [PATCH 1/2] dt-bindings: iommu: rockchip: Add support for
+ multiple interface clocks
+Message-ID: <20251127-enigmatic-faithful-viper-baefa2@kuoka>
+References: <20251126083345.88-1-kernel@airkyi.com>
+ <20251126083345.88-2-kernel@airkyi.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <F11F0D13437B012D+0c15c5ca-f64f-49f1-9ff5-26b88d59ff59@radxa.com>
+In-Reply-To: <20251126083345.88-2-kernel@airkyi.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251126_234910_232236_3D169DB6 
+X-CRM114-Status: UNSURE (   8.83  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,27 +78,18 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello FUKAUMI Naoki,
-
-On Thu, Nov 27, 2025 at 04:34:53PM +0900, FUKAUMI Naoki wrote:
-> Hi all,
+On Wed, Nov 26, 2025 at 04:33:44PM +0800, Chaoyi Chen wrote:
+> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
 > 
-> I'm very sorry, but my ROCK 5C appears to be unreliable. (It worked fine
-> with vanilla v6.13, so I thought it was fine.)
-> 
-> I replaced it with another 5C (Lite), and now every method (Niklas's patch,
-> Shawn's patch, and applying patch 1 and 2) seems to work.
+> The iommu found on RK3576 NPU/RKVDEC may contains more than one
+> interface clock.
 
-Could you please give us some more information.
+So you need to restrict this per each variant. See writign schema doc in
+DT dir.
 
-Does the Rock 5C Lite have a PCIe switch?
+Best regards,
+Krzysztof
 
-Does Rock 5C Lite work fine with the current code in mainline?
-(i.e. with bus enumeration when Link Up IRQ is triggered).
-
-
-Kind regards,
-Niklas
 
 _______________________________________________
 Linux-rockchip mailing list
