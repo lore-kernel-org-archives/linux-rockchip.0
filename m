@@ -4,106 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6C70D116F5
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Nov 2025 15:53:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E7C4D116F3
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Nov 2025 16:59:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/+s3wFnEn/+/c7cax+9N356tzGj/liMzU+QqdQLsomM=; b=cCmOacPbDWS13R
-	79KvrxmlIZeJtfk+x3i2aeXniLcwp5M7eo0tlRk/BPqEm9tZUC6Y64+Nq3wIURRhdM3vYkH7deceJ
-	9z3KpsUbeP34wZkuokapJlaz3ymLNS+5x1FMxfqobsn/epVNNx4tJ+DaVgTEfPoLsLeU1YnCICqgF
-	V5qW3j6yQT8xGU9jIIA5/mXLmGaSuOkioxpyNkulMXwdtvQJHeB/X0hK8AWfX0FpinrwJf+t9BY+/
-	kdgkrL/7axtc676XKgPfGBKi+S68vPKJuQu6S+hj7WC3tOCkwpZpFwjSFcovLlGIU74xyuqWfOKCQ
-	lcOPB3Gj7wnXttQh6N3Q==;
+	List-Owner; bh=MpKk/IHhr0/mZ4lOR3xgxToBkjxKbyOeMgNijPZv0BY=; b=MeTJIGYNw5KtzS
+	jO6NArKKTsatn7PK0C3HusUTNOCXyGd8e/5qzy4L7CaVOj2pMCPz4yldMLpuL3RsDU6tPDeE+3iHM
+	BXi7PU2OPEgS+URDxVwJz/COvTKu81mucfeftZ2Pu8ldmVZKpoXlFye1ET7Tyo1VxsbGAEwWhn6yn
+	0Pm11Xh2V6zRDwgeKa9uGvW6gyV7TcAJMuN2B0P6cQyRB5HnT+WbFBFRxOyKcDwD1NQ8IyTZzGvAA
+	txkby4LiEIC+IJdewVftG55FRWHTYeWJ37YBldrXu5KsYlrInyGW4dzosOi2aGabuW1s0/TvFMPzG
+	RWQHzYtPTi4HmuaeBlQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vOeIi-0000000Gs3d-05mF;
-	Thu, 27 Nov 2025 15:52:56 +0000
-Received: from smtp-relay-internal-0.canonical.com ([185.125.188.122])
+	id 1vOfKj-0000000Gx6s-40qN;
+	Thu, 27 Nov 2025 16:59:05 +0000
+Received: from m16.mail.163.com ([117.135.210.3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vOeIf-0000000Gs2v-04dd
-	for linux-rockchip@lists.infradead.org;
-	Thu, 27 Nov 2025 15:52:55 +0000
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com [209.85.128.71])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by smtp-relay-internal-0.canonical.com (Postfix) with ESMTPS id D17373FCED
-	for <linux-rockchip@lists.infradead.org>; Thu, 27 Nov 2025 15:52:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
-	s=20251003; t=1764258766;
-	bh=7YwSquvmhmm6ufwqm2v8LP2/Ib5+ORpnGFBYFfFEi6Y=;
-	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
-	 In-Reply-To:Content-Type;
-	b=W2bIgsOnXid5u4g5TdmX29Rqf/x6pHJsmoDBJcIcpmCp+pwyaawi+RDfjCICF5Ur8
-	 XUT141qYIYiW1DMJ79HOmu4AxscsckWeOjNDC3cApDRVcfocliK+AkTcuR1ixRYZw2
-	 1Hsxp03eXjZ/PGKQ/zWUOft2mN5wZcxhQcEjQNfwLnY5aOYEEtk72cFb36HA2qyllF
-	 br/rKGdjFxO3rPn8bZqaSgP8/Og3ixZp/jmrsDPZY/+pxLDixsV0LQzPDgOxLwusmz
-	 OQKRHu8evMnlhp3fNFRXDu2j0Xx4IqoiI/Kb7GicFBntj+oH7/jqNpkJhizDjdgm8J
-	 6E4ODNkVxeo4qNbzpfYjYc/o92eXTeuSagu/8amQvdzTLlQ2MjGvrZGwDiIQFxbGE8
-	 56zqtBFn6tEuN3y1t7oZw4lssa63RAFoL5zUVQkZ+2bueOhASnJ2tUe+UGT+t+pMot
-	 eCPkXvjRV6Sn3z+HhpMKu/uUoaZFUHrf6hbDcPedZBPkC6jcjLDtVKLjoch4ReFa/b
-	 8A0DMidO1HAPLIlwMw3CPT/JlGnlRF+uqIbgR0m+Mt223tW2i7MSrPT7ecFOeb/IQ8
-	 OJ2H5DbK0zMCAhQSFyzOxMEP5g8SW593ybjSuv97EQG5QD6sEeTK1UUy1hq3iSvme/
-	 1ws69nsH+zVL/wSxy7yEA9ZM=
-Received: by mail-wm1-f71.google.com with SMTP id 5b1f17b1804b1-477964c22e0so5839165e9.0
-        for <linux-rockchip@lists.infradead.org>; Thu, 27 Nov 2025 07:52:46 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1764258766; x=1764863566;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=7YwSquvmhmm6ufwqm2v8LP2/Ib5+ORpnGFBYFfFEi6Y=;
-        b=Ve7WLZ5setCj1dvgo2ju1mc3t/tjksBKtRev9bDd6Us7SByKi0nAOHaolJl1jlTbje
-         zAZVcmH4mzQ9MjML3VIIGvmGoTgP5WJ0B0x2w6deR/jF4mk96DhTKWWLobDQazA0FVVD
-         nROmXiHn8Bf1rtv3nTXL9bO14TSYIVbtGvevK21jKP+mxf1Y2pG5Sw/dJh35V70u56Vy
-         3LCLa/iNz8rzjKIxNg2e2R+iWlQleAaKE78vDggYzuiJGCPFcFACAVWnsaMdoUE/QWbI
-         2hQs/Zk6WHXdSTZTYZ6CAt4QI3tEbb8DhAuSTO+O7eDWa82FSsyOfXdfIxyKFfutV0aX
-         CIDw==
-X-Forwarded-Encrypted: i=1; AJvYcCVMEYfgujZ1szBw6X8nW3q7HytMSjRLl5aN2sg8y6fsTXvF297iz8wkCXLpi8cf4/z56CjArXhSbL73xL1vVQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yybfv6T//Pg5+NvcRUooOYSPxZgUjm79zl7v/ZFw4VsOyBbCyoA
-	MeGVzZXaWxztHJgBmHYGS0wfKhk/ksvzOpoTyV1htj9ihxg3cQ3we4P64WO8ieI8n6ZXYumvyX3
-	i2VEBx23myD+PYFQf2N5hb3rxqarbrKVjzmGI43UnalhQBkomPpX/T9rOsTnzijBQY3O0ys4zo2
-	XfHBSqYre+DD+5Cg==
-X-Gm-Gg: ASbGncuAXGWduH3j5J8Y3X187GpxdkIGC+a73puNMg/dshGfQp4usuCtstFmS6ZmJIK
-	uADjofemJkBU5ybJaQM4dB/TCAbreUY6A5uQE4DTZBhgW270acZ13cJKwnBDwD08igIQHZdNbEM
-	6OWDi8FtOZU/gSfvgWDpkKWSMr1aSafdMCuL8xPk12DWfh0Zdic8wSXUYcdYugO3IHj2dwPqs1D
-	WDSuQA8bHbQTvAbSbAFLUt5/mM+V4MCBN7IMpUUSc4Q9inc+ejWPHvsgY3r3jjbWjafwhMHaivl
-	donPeB2o1zj972GQ+9zmgmuk730z3rVEvgppbLSaVFj+6/K1+Y2g01aLYUbJbt8Jox5Bih5ZodW
-	xxxPQ2MF2z0sj7g6z6KIX0e8mhXV7jHxxsEhm62x64Xndm7Wxu6CxuC1PMdqfvlSPJaLpZ9/KCi
-	qP
-X-Received: by 2002:a05:600c:6d52:b0:475:dadd:c474 with SMTP id 5b1f17b1804b1-477b9ee479dmr174427685e9.10.1764258766362;
-        Thu, 27 Nov 2025 07:52:46 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEhvJmXv4OEoT29/EJo9o8QGCSRXDm1sI+3moy9VScmLoc1+QzReBPmK7lGblaQxdCtRpMOwA==
-X-Received: by 2002:a05:600c:6d52:b0:475:dadd:c474 with SMTP id 5b1f17b1804b1-477b9ee479dmr174427525e9.10.1764258765965;
-        Thu, 27 Nov 2025 07:52:45 -0800 (PST)
-Received: from ?IPV6:2a02:3035:6e0:95a4:4529:9906:9f64:f864? ([2a02:3035:6e0:95a4:4529:9906:9f64:f864])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-47913870b38sm8453535e9.15.2025.11.27.07.52.44
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 27 Nov 2025 07:52:45 -0800 (PST)
-Message-ID: <87d6ce91-b2c5-4e96-8103-31df9802786c@canonical.com>
-Date: Thu, 27 Nov 2025 16:52:43 +0100
+	id 1vOfKg-0000000Gx4U-13Bi;
+	Thu, 27 Nov 2025 16:59:04 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=Message-ID:Date:MIME-Version:Subject:To:From:
+	Content-Type; bh=2B76zoWhuwGSjr962yskSX1jRYL5m0tGEi12IlYEVJk=;
+	b=p12BYw7GqhcWlruCyHJfO0Xy44NJmi/ED79T7wyquR1xxPay+JyFOr977QRovt
+	FlxvGdxydBCzFARzCPv+HHBWCOYKhsRYEW6vshFlRNeUpv4rTb+fgRM5y97KVcQd
+	6J48vx8tu+Csg6wBGQG76gJs+4ae+Dhws6WYwI9vdm1H0=
+Received: from [IPV6:240e:b8f:927e:1000:9218:e74d:98cf:7e7c] (unknown [])
+	by gzga-smtp-mtada-g0-2 (Coremail) with SMTP id _____wAHwIcfgyhpz7drCg--.4876S2;
+	Fri, 28 Nov 2025 00:58:08 +0800 (CST)
+Message-ID: <74a61ccd-c694-44d7-a54c-a40da2df823e@163.com>
+Date: Fri, 28 Nov 2025 00:58:07 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: rockchip: Fix audio-supply for ROCK Pi 4
-To: FUKAUMI Naoki <naoki@radxa.com>
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- knaerzche@gmail.com, devicetree@vger.kernel.org,
- linux-rockchip@lists.infradead.org, Quentin Schulz
- <quentin.schulz@cherry.de>, Jonas Karlman <jonas@kwiboo.se>,
- Heiko Stuebner <heiko@sntech.de>, Jagan Teki <jagan@amarulasolutions.com>,
- U-Boot Mailing List <u-boot@lists.denx.de>
-References: <20251027005220.22298-1-naoki@radxa.com>
+Subject: Re: [PATCH v6 1/2] PCI: Configure Root Port MPS during host probing
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: lpieralisi@kernel.org, kwilczynski@kernel.org, bhelgaas@google.com,
+ heiko@sntech.de, mani@kernel.org, yue.wang@amlogic.com, pali@kernel.org,
+ neil.armstrong@linaro.org, robh@kernel.org, jingoohan1@gmail.com,
+ khilman@baylibre.com, jbrunet@baylibre.com,
+ martin.blumenstingl@googlemail.com, cassel@kernel.org,
+ linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org,
+ linux-rockchip@lists.infradead.org
+References: <20251126235432.GA2726707@bhelgaas>
 Content-Language: en-US
-From: Heinrich Schuchardt <heinrich.schuchardt@canonical.com>
-In-Reply-To: <20251027005220.22298-1-naoki@radxa.com>
+From: Hans Zhang <18255117159@163.com>
+In-Reply-To: <20251126235432.GA2726707@bhelgaas>
+X-CM-TRANSID: _____wAHwIcfgyhpz7drCg--.4876S2
+X-Coremail-Antispam: 1Uf129KBjvJXoWxGryUXry7CFW3CFW5CFy8Krg_yoW5trWxpa
+	yUXa1FyFs3WryfZayDZ3W5CFy5tayvy3y5tr98trW0vFs8ZFyDJFyqyFZ5G3s7CrWfXw1a
+	vFn8X34xAFn8ZFJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07UszVnUUUUU=
+X-Originating-IP: [240e:b8f:927e:1000:9218:e74d:98cf:7e7c]
+X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/1tbiOgITo2kofAzE7wAAsS
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251127_075253_460108_C836C59A 
-X-CRM114-Status: GOOD (  20.63  )
+X-CRM114-CacheID: sfid-20251127_085902_730667_B69329B5 
+X-CRM114-Status: GOOD (  21.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,63 +79,93 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 10/27/25 01:52, FUKAUMI Naoki wrote:
-> This reverts commit 8240e87f16d17 ("arm64: dts: rockchip: fix
-> audio-supply for Rock Pi 4").
-> 
-> Fix the APIO5_VDD power supply to vcc_3v0 as per the schematics[1][2]
-> [3][4][5].
-> 
-> This fixes the SPI-NOR flash probe failure when the blue LED is on[6],
-> and the garbled serial console output on Linux.
-> 
-> The ES8316 headphone and microphone are confirmed to work correctly
-> after this fix.
-> 
-> [1] https://dl.radxa.com/rockpi4/docs/hw/rockpi4/4a/ROCK_4A_V1.52_SCH.pdf p.14
-> [2] https://dl.radxa.com/rockpi4/docs/hw/rockpi4/4ap/radxa_rock_4ap_v1730_schematic.pdf p.14
-> [3] https://dl.radxa.com/rockpi4/docs/hw/rockpi4/4b/ROCK_4B_v1.52_SCH.pdf p.14
-> [4] https://dl.radxa.com/rockpi4/docs/hw/rockpi4/4bp/radxa_rock_4bp_v1730_schematic.pdf p.14
-> [5] https://dl.radxa.com/rockpi4/docs/hw/rockpi4/ROCK-4-SE-V1.53-SCH.pdf p.14
-> 
-> [6]
-> => led blue:status off
-> => sf probe
-> SF: Detected w25q128 with page size 256 Bytes, erase size 4 KiB, total 16 MiB
-> => led blue:status on
-> => sf probe
-> jedec_spi_nor flash@0: unrecognized JEDEC id bytes: ff, ff, ff
-> Failed to initialize SPI flash at 1:0 (error -2)
-> 
-> Fixes: 7ebfd4f6b52a6 ("arm64: dts: rockchip: add LED for ROCK Pi 4A/B/C/A+/B+")
-> Fixes: 8240e87f16d17 ("arm64: dts: rockchip: fix audio-supply for Rock Pi 4")
-> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
-> ---
->   arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
-> index 046dbe3290178..fda7ea87e4efc 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
-> @@ -516,7 +516,7 @@ &i2s2 {
->   };
->   
->   &io_domains {
-> -	audio-supply = <&vcca1v8_codec>;
-> +	audio-supply = <&vcc_3v0>;
->   	bt656-supply = <&vcc_3v0>;
->   	gpio1830-supply = <&vcc_3v0>;
->   	sdmmc-supply = <&vcc_sdio>;
+Hi Bjorn,
 
+Thank you very much for your reply and the problems you pointed out. The 
+next version will modify it.
 
-U-Boot uses the same device-tree as Linux. I applied the change in 
-U-Boot and it fixes the following problems in U-Boot for me:
+Best regards,
+Hans
 
-* The serial console is not usable after the supply voltages are set.
-* Early initialization of the video output fails.
+On 2025/11/27 07:54, Bjorn Helgaas wrote:
+> On Wed, Nov 05, 2025 at 12:51:24AM +0800, Hans Zhang wrote:
+>> Current PCIe initialization logic may leave Root Ports (root bridges)
+>> operating with non-optimal Maximum Payload Size (MPS) settings. Existing
+>> code in pci_configure_mps() returns early for devices without an upstream
+>> bridge (!bridge) which includes Root Ports, so their MPS values remain
+>> at firmware/hardware defaults. This fails to utilize the controller's full
+>> capabilities, leading to suboptimal data transfer efficiency across the
+>> PCIe hierarchy.
+>>
+>> With this patch, during the host controller probing phase:
+>> - When PCIe bus tuning is enabled (not PCIE_BUS_TUNE_OFF), and
+>> - The device is a Root Port without an upstream bridge (!bridge),
+>> The Root Port's MPS is set to its hardware-supported maximum value
+>> (128 << dev->pcie_mpss).
+>>
+>> Note that this initial maximum MPS setting may be reduced later, during
+>> downstream device enumeration, if any downstream device does not suppor
+>> the Root Port's maximum MPS.
+>>
+>> This change ensures Root Ports are properly initialized before downstream
+>> devices negotiate MPS, while maintaining backward compatibility via the
+>> PCIE_BUS_TUNE_OFF check.
+> 
+> "Properly" is sort of a junk word for me because all it really says is
+> we were stupid before, and we're smarter now, but it doesn't explain
+> exactly *what* was wrong and why this new thing is "proper."
+> 
+> It's obvious that the Max_Payload_Size power-on default (128 bytes) is
+> suboptimal in some situations, so you don't even need to say that.
+> And I think 128 bytes *is* optimal in the PCIE_BUS_PEER2PEER case.
+> 
+> s/Root Ports (root bridges)/Root Ports/
+> s/bridge (!bridge)/bridge/     # a couple times
+> s/hardware-supported//         # unnecessary
+> s/(128 << dev->pcie_mpss)//    # we can read the spec
+> s/suppor/support/
+> 
+>> Suggested-by: Niklas Cassel <cassel@kernel.org>
+>> Suggested-by: Manivannan Sadhasivam <mani@kernel.org>
+>> Signed-off-by: Hans Zhang <18255117159@163.com>
+>> ---
+>>   drivers/pci/probe.c | 12 ++++++++++++
+>>   1 file changed, 12 insertions(+)
+>>
+>> diff --git a/drivers/pci/probe.c b/drivers/pci/probe.c
+>> index 0ce98e18b5a8..2459def3af9b 100644
+>> --- a/drivers/pci/probe.c
+>> +++ b/drivers/pci/probe.c
+>> @@ -2196,6 +2196,18 @@ static void pci_configure_mps(struct pci_dev *dev)
+>>   		return;
+>>   	}
+>>   
+>> +	/*
+>> +	 * Unless MPS strategy is PCIE_BUS_TUNE_OFF (don't touch MPS at all),
+>> +	 * start off by setting Root Ports' MPS to MPSS. This only applies to
+>> +	 * Root Ports without an upstream bridge (root bridges), as other Root
+>> +	 * Ports will have downstream bridges.
+> 
+> I can't parse this sentence.  *No* Root Port has an upstream bridge.
+> So I don't know what "other Root Ports" would be or why they would
+> have downstream bridges (any Root Port is likely to have downstream
+> endpoints or bridges).
+> 
+>> +	   ... Depending on the MPS strategy
+>> +	 * and MPSS of downstream devices, the Root Port's MPS may be
+>> +	 * overridden later.
+>> +	 */
+>> +	if (!bridge && pci_pcie_type(dev) == PCI_EXP_TYPE_ROOT_PORT &&
+>> +	    pcie_bus_config != PCIE_BUS_TUNE_OFF)
+>> +		pcie_set_mps(dev, 128 << dev->pcie_mpss);
+>> +
+>>   	if (!bridge || !pci_is_pcie(bridge))
+>>   		return;
+>>   
+>> -- 
+>> 2.34.1
+>>
 
-Tested-by: Heinrich Schuchardt <heinrich.schuchardt@canonical.com>
 
 _______________________________________________
 Linux-rockchip mailing list
