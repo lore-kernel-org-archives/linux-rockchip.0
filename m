@@ -4,81 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90099CFD2F6
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Nov 2025 11:03:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DD98D11183
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Nov 2025 11:46:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zc6+lbNqO4UgfXSwjCz45uPTbxT7EdVbCudcoRv8QfY=; b=oYABxpVPnFOjLN
-	/4mKmZa2lm2hlSo7v4qDOuG3iD1nVnydS2EwVst4QJA7Na7FonDdJsxYRl4KR0LwWO4GT8GEUCyIq
-	2Mu6DfvwKRrVMKbydBd+BBjFbYRc+TXtOB5h+mFecGoTyHTF4Z0UXkkHdFC5fLqUpHNTyz7CtmTxx
-	c/reD4MPdHYeimLLinoK9nhTeK3nEeqRCmxhXHSA3NVN+Ye/V0KmQK4lWZ5B3bvzNoo+GJm7ncCGP
-	I0bQ+6vY30vjRMgPtuzrWaF0NZO2S4p7uMWqpGvAYDxAJT6aRvbxta8+770m+bF5E9NrqVEyAH/6g
-	i19Qg22sDS6QaDGQ00Xw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
+	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=plxCWWIdCDCs+r2tv7IqP3WHGK1+1Q9YAKqhnbpL/Rk=; b=CqG0Qdwmv+s0vo
+	NIGBxOWcziII8BQIGU9uakVmuwwwtyfd0XcG5T4CZzw2ZoRJRs51ofJ+1kcpYOIHXwVkG1qpUbwmD
+	gym6WRGeKBGVa5dmtiBUe+tyR/tUP90SCLypCwGvtIIXpJZXaZw8Y4RaUL95/avxVKuN+mTgaYIT3
+	0Bbwj6E/94esVl/xGdwNoNo0LuueHoelO/m3ueBky3pDmkGi8bfLS1X9blii0BWOaP49A5ocnQQMX
+	BcYNj8eG2ICOch41HLaKLAL1k4BNgvYG/q2ullUT4GY4IyvjeIR4n18G9mpbWEMMqoLeBRvdrB6Md
+	ryxQx2rmL17idjAFYl1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vOZmd-0000000GQIg-0t5I;
-	Thu, 27 Nov 2025 11:03:31 +0000
-Received: from smtpbg151.qq.com ([18.169.211.239])
+	id 1vOaSO-0000000GTzN-2k8o;
+	Thu, 27 Nov 2025 11:46:40 +0000
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vOZma-0000000GQGD-0MYA;
-	Thu, 27 Nov 2025 11:03:29 +0000
-X-QQ-mid: zesmtpip3t1764241347t78aa8971
-X-QQ-Originating-IP: jkDH227WqUwOoFTBtC1hwDrWemoF+qI3vLMPnvs0/lI=
-Received: from [IPV6:240f:10b:7440:1:c95a:801a ( [localhost])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Thu, 27 Nov 2025 19:02:23 +0800 (CST)
-X-QQ-SSF: 0000000000000000000000000000000
-X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 10963241468344092550
-Message-ID: <53C4D04AE30D7004+12cd5747-7bde-409d-bc02-fcf86a47cc44@radxa.com>
-Date: Thu, 27 Nov 2025 20:02:23 +0900
+	id 1vOaSM-0000000GTyj-14sc
+	for linux-rockchip@lists.infradead.org;
+	Thu, 27 Nov 2025 11:46:39 +0000
+Received: by mail-wm1-x335.google.com with SMTP id 5b1f17b1804b1-477ba2c1ca2so8358965e9.2
+        for <linux-rockchip@lists.infradead.org>; Thu, 27 Nov 2025 03:46:37 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1764243996; x=1764848796; darn=lists.infradead.org;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=ahwfLc2OR0WyJJiUqyrz44j0I6pa73iQ662MFA3AWnQ=;
+        b=CiSEarLicz/AMUvRytc1KzdUO3beBm5VWz4mPFRrPFt8tfC2qKbeTt5zrCsB/Rk4lv
+         feKM2JLUm+ODgPe5gg8RxmTaMjjRWrNUJp8yPehx4pwsi3UXOhSPCqP6B/hdFChLyzuh
+         TRN+51vFDL8tYnPbiK8mPY+c9do25esxTX2/8X8teA7YIjqRyyOR3eGx9J46VgI2Rd8w
+         lwyr9+jFDuRu03Pq6+6wwUiHV01Yl3/4i6yIPVqwEtTnHzLf+jmeqrwwKYMMFhWZVYS8
+         nNPmpobOiT+Ph1c6Y7rHiWO7XKMPKSb3H2K1UKvsEnV/mh9yTbpak/GSsaBoBtHrePK9
+         Ba9g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1764243996; x=1764848796;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=ahwfLc2OR0WyJJiUqyrz44j0I6pa73iQ662MFA3AWnQ=;
+        b=NGV7fp1XCFeOpdPZjCKuEmMk5D+4hybr0mrPjy7S7CnxLmAJVNkAv8nRCQGOJFAwtz
+         1APKav6b/f+Hnn+fEiRVAg/qhf1rV+9JmL2/xObDJ6rBa5xyW1HG0HpXyNxUTF8wAGw7
+         nLvjnujL8i3pKHEfBDqXXDDHnaKJqtfaj3UCmddUe0LVWQ1Vyu7E9MMwADxxIivF3kYZ
+         mGRO5D9/6T3w4RxAUFWF/V5MsYKfVS9qHHIiEO29MSTdHhAggFBH7W09nafh7SSEfoTJ
+         N4mRXCJbdMSdnFOumvM3TDnnZkSwOubR/8hcL4qCkH45bsXvoxyOOwdXjnrtzkWXekv7
+         kNig==
+X-Forwarded-Encrypted: i=1; AJvYcCVqRiZE/73sUoxRGOPbiwIwkE4G+fgmNPmlnM5X+5LX/mLAYSygHyQbpEOWy/8eVEc9esKRFMKY2bNPZlFdUg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyqIRucJO2i3lvs1fd5lPlWde4hKlIRGfNZFNbZTIJR0wst1CwH
+	Q0C3fZqoUMG6ptMjVlg8fjRICm9deer9u6uJt8+0G8DajOGIg56mq0OD
+X-Gm-Gg: ASbGncvirWJOBfyMLruHJcs9IpVhCAPYiKS5zlE+RH6Tf5YT6lRmMChPMacU5mxbWwG
+	bRZ3/ShBuVImy0kNnYwBuj8b21BqB0L/aC6usnfKdpBnk9gYqf5aRb4ksQZSsvj1ifQr6Gh4+XG
+	pTHxu2f+hIhEP8s8q3F5fRHY+2bKyKTewQK8FmL7s2CgvqimBkKNshpbwhhbb2mtJYUTVmUjl5G
+	g3Kp53tF6V52kkLFSZqUg6feYF5twp7rqSdfSD8aY3hG2mfwAyQJvW8YkzTjOXPeNJl/mLzTa6W
+	WCaoGo/qHMSkPl7M5R8WUfNkDJhHvCHkuzfKsCuFOg3tdh3M3dZjfSJgP1En8AggxsJ679dcLrS
+	iKbpoH2bTlrhfGoMGR0nEEh6xa3+pbKaA8YUL7rAGxrW2ThagxYU0Twu62WSw6dv3LbVtaRal2r
+	Ir/TtGMNP7pkQVh2atCSGqh2yLdaKtvH/i21eAzyDanwJ0AtA+NRKwZIKnCOERzWw=
+X-Google-Smtp-Source: AGHT+IFSDmImo8FEnvAge2+dTux+Ghzkun3vGhivmqn4fQ1ZLuGZNmj5Qn5XXFyek5kNknVA8eGNFA==
+X-Received: by 2002:a05:600c:3541:b0:477:7991:5d1e with SMTP id 5b1f17b1804b1-47904b24871mr105857425e9.25.1764243995812;
+        Thu, 27 Nov 2025 03:46:35 -0800 (PST)
+Received: from alchark-surface.localdomain (bba-92-99-175-128.alshamil.net.ae. [92.99.175.128])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-42e1caa5d02sm3011816f8f.36.2025.11.27.03.46.33
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 27 Nov 2025 03:46:35 -0800 (PST)
+From: Alexey Charkov <alchark@gmail.com>
+Date: Thu, 27 Nov 2025 15:46:30 +0400
+Subject: [PATCH] arm64: dts: rockchip: enable UFS controller on
+ FriendlyElec NanoPi M5
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/6] PCI: dwc: Revert Link Up IRQ support
-To: Niklas Cassel <cassel@kernel.org>
-Cc: Manivannan Sadhasivam <mani@kernel.org>, Jingoo Han
- <jingoohan1@gmail.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>,
- =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
- Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
- Heiko Stuebner <heiko@sntech.de>, Shawn Lin <shawn.lin@rock-chips.com>,
- Krishna chaitanya chundru <quic_krichai@quicinc.com>,
- linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org
-References: <20251111105100.869997-8-cassel@kernel.org>
- <mt7miqkipr4dvxemftq6octxqzauueln252ncrcwy6i2t7wfhi@jtwokeilhwsi>
- <aSRli_Mb6qoQ9TZO@ryzen>
- <7667E818D7D31A4E+cf7c83d4-b99c-469d-8d46-588fc95b843f@radxa.com>
- <F11F0D13437B012D+0c15c5ca-f64f-49f1-9ff5-26b88d59ff59@radxa.com>
- <aSgBLQ7rDOiEFhMB@ryzen>
-Content-Language: en-US
-From: FUKAUMI Naoki <naoki@radxa.com>
-In-Reply-To: <aSgBLQ7rDOiEFhMB@ryzen>
-X-QQ-SENDSIZE: 520
-Feedback-ID: zesmtpip:radxa.com:qybglogicsvrsz:qybglogicsvrsz4b-0
-X-QQ-XMAILINFO: NbLMjDNEDlGtzPHyvsnFLwRWanjn7xRp8z1LRylheb1EYNHWahdNky6H
-	J2NRH0JaPBU/gqfabk9hf+xV6yrWl44Xn0vn4PG26NJxLvcFd1Y9tjqKL7qeLGOFjhVOAgF
-	uOPMXRK1RPCldrJg/F4xnZt+81HG+Ku1NvCJv71RIBfnJ6Z4+xPGY4wqCYfUmXqYc5UcmvV
-	ErNm7+UYPiTxVB/U5/AqLhdFYkpILkLpDv3Q3Rn9ZCVdDyda1LbVHVyoMv5nfru4GFZfpvB
-	IpMP6OxHctgSOygGghhPBRarJd1abJR1qcNAXna6ZXoIKKGNSyInX/vR0Uot8/+L6KIh41J
-	9dMKSD6MK3RHL2+FTNN+UjIyJOOAoapWdyhRR7Y+w2Q+qYkWbwVaXaGRkfP+F9CvuKI/8VR
-	iy6NvCWrV8vOGd1lXPdU0/PjYsofIVQEBwxb9LJzpuimtn2T3w1kkTrWoZXObjq7yxUICV0
-	5sVZZfEOZzzgtaNoyJpEo4HiiGv5Daye9iarCTfWw3ZT+LvGQQmYuH/C8sABmCkC7HntH0o
-	vTwCGO8fG8qGdd/ZFzY1BYrAEreZLN0G8VzLypCeCxV9JDy4I4asnqio4DV47ficwrXf0dC
-	TpDOFeT3ak+6s4oA5NlwYw2B5Xf7NzbzUCKyL1Iz8d1hCAyYaLNnsz3g4xnlhoIuxoZfRtJ
-	gzt0FIHyYtyXFUxB1BwAb3rVEz8Zp4LJQ47DtaqWN/Zn2IafNKzAifIHsK38wY96aX+AE18
-	DmzjQcku7YB/cIYUwjBN5rg61L2c5Aa+Tnc4NaaDYLVLXFOHNi/coM+RJrhlvmMC8xd0llm
-	dIptVAfpHzaVvQ6YNGuDrCG29P3UgrwKyBFvPYU7aZ5mKet5LxHmZtRoo+I3GKPAV6s7eFQ
-	Z2DN/Y1CrOlBu9N+ZuM5I2tkxe/aZhvQWHv4/HSIHsCwGKI1+NTKmewdQFIc7NdyXfbpS1+
-	6TG5pi+JhL4uDrDBkYvZRBoBL035wJVU84LfIKWWGmrkGDg==
-X-QQ-XMRINFO: NS+P29fieYNw95Bth2bWPxk=
-X-QQ-RECHKSPAM: 0
+Message-Id: <20251127-nanopi-m5-ufs-v1-1-0d28d157712c@gmail.com>
+X-B4-Tracking: v=1; b=H4sIABU6KGkC/x3MQQqAIBBA0avIrBvQARO6SrSQGmsWqShFEN49a
+ fkW/79QuQhXmNQLhW+pkmKHGRSsh487o2zdQJqsMeQw+piy4GnxChUtBVqtdtqMDnqTCwd5/t+
+ 8tPYBn6J8218AAAA=
+X-Change-ID: 20251127-nanopi-m5-ufs-52f2c5070167
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Alexey Charkov <alchark@gmail.com>
+X-Mailer: b4 0.14.3
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1011; i=alchark@gmail.com;
+ h=from:subject:message-id; bh=36GSySHVmu4BNGGfVtnH9eM5F228bXeFUWmPc8A0OvE=;
+ b=owGbwMvMwCW2adGNfoHIK0sZT6slMWRqWMmkHYu+dCJU8YVEUP5919+NCWHrLxRxTLv73y1Jd
+ atm85GwjlIWBjEuBlkxRZa535bYTjXim7XLw+MrzBxWJpAhDFycAjCR5ScYGR7JR6pmmv73+eve
+ o3HE++UfP9fe3v/JW67X2ZbP5jP+LcjwV7BBw+Wt50TuQPn/jhytlbNeu+7mndxR/FxUMTsu7ut
+ pVgA=
+X-Developer-Key: i=alchark@gmail.com; a=openpgp;
+ fpr=9DF6A43D95320E9ABA4848F5B2A2D88F1059D4A5
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251127_030328_622394_E6E76B9C 
-X-CRM114-Status: GOOD (  11.46  )
+X-CRM114-CacheID: sfid-20251127_034638_473386_7333069C 
+X-CRM114-Status: UNSURE (   8.35  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,53 +108,47 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Niklas,
+The NanoPi M5 board supports pluggable UFS modules using the UFSHC
+inside its Rockchip RK3576 SoC.
 
-On 11/27/25 16:43, Niklas Cassel wrote:
-> Hello FUKAUMI Naoki,
-> 
-> On Thu, Nov 27, 2025 at 04:34:53PM +0900, FUKAUMI Naoki wrote:
->> Hi all,
->>
->> I'm very sorry, but my ROCK 5C appears to be unreliable. (It worked fine
->> with vanilla v6.13, so I thought it was fine.)
->>
->> I replaced it with another 5C (Lite), and now every method (Niklas's patch,
->> Shawn's patch, and applying patch 1 and 2) seems to work.
-> 
-> Could you please give us some more information.
+Enable the respective devicetree node.
 
-Sorry for the confusion.
+Board specific supply regulators are not added, because they are all
+non-gateable descendants of other regulators marked always-on.
 
-> Does the Rock 5C Lite have a PCIe switch?
+Signed-off-by: Alexey Charkov <alchark@gmail.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3576-nanopi-m5.dts | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-ROCK 5C and 5C Lite use the same board design, only SoC is different, 
-but there is no difference regarding PCIe functionality.
+diff --git a/arch/arm64/boot/dts/rockchip/rk3576-nanopi-m5.dts b/arch/arm64/boot/dts/rockchip/rk3576-nanopi-m5.dts
+index cce34c541f7c..6b8518c49835 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3576-nanopi-m5.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3576-nanopi-m5.dts
+@@ -906,6 +906,10 @@ &uart0 {
+ 	status = "okay";
+ };
+ 
++&ufshc {
++	status = "okay";
++};
++
+ &usbdp_phy {
+ 	status = "okay";
+ };
 
-They have a PCIe 2.1 connector, and I've been testing a HAT with ASM2806 
-via PCIe 2.1 connector.
-
-> Does Rock 5C Lite work fine with the current code in mainline?
-> (i.e. with bus enumeration when Link Up IRQ is triggered).
-
-No, bus enumeration behind ASM2806 on ROCK 5C Lite (and any other 
-RK358x-based boards I have) is not working with vanilla kernel.
+---
+base-commit: 663d0d1af3faefe673cabf4b6b077149a87ad71f
+change-id: 20251127-nanopi-m5-ufs-52f2c5070167
 
 Best regards,
-
---
-FUKAUMI Naoki
-Radxa Computer (Shenzhen) Co., Ltd.
-
-> Kind regards,
-> Niklas
-> 
-
+-- 
+Alexey Charkov <alchark@gmail.com>
 
 
 _______________________________________________
