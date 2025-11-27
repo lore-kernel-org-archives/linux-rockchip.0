@@ -4,72 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7A70D11183
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Nov 2025 10:26:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90099CFD2F6
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Nov 2025 11:03:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EY2K/42w5VWUHNqG/8mMB0zjckpXzrUOAgi/9HomA3I=; b=4I3xdAet4RYXYD
-	J6vTaotMRwXukIw/3/gaoTCHcsGZRW4Nx60h9YBlFCbJ0S3veR62H2Yw+TyDPLxZhwjHjm4rFk/Rp
-	ho3xsM+vbQX0WyzxEyhyd1IjhXxwAY+kc8KxVdl9OBlrZx3Oc3mBzUuBpF83B179wGGyp89DCusOT
-	7MOhfM9x6biusPi8C7RNrBb1pqDUFiX76PGp1MZoVK1DYm4hXWt9WUy9hJTqcTlTxPCfG/LQ2GySM
-	gy6ATBI6sNgTNOJ1QGCUlDVNi0/67P634IBkDSPWPnYEc25cLIFT1veC0+p7ruVfvpL+Z5nG/73iL
-	MKjzE6RGC/aj9JL0Z9gg==;
+	List-Owner; bh=zc6+lbNqO4UgfXSwjCz45uPTbxT7EdVbCudcoRv8QfY=; b=oYABxpVPnFOjLN
+	/4mKmZa2lm2hlSo7v4qDOuG3iD1nVnydS2EwVst4QJA7Na7FonDdJsxYRl4KR0LwWO4GT8GEUCyIq
+	2Mu6DfvwKRrVMKbydBd+BBjFbYRc+TXtOB5h+mFecGoTyHTF4Z0UXkkHdFC5fLqUpHNTyz7CtmTxx
+	c/reD4MPdHYeimLLinoK9nhTeK3nEeqRCmxhXHSA3NVN+Ye/V0KmQK4lWZ5B3bvzNoo+GJm7ncCGP
+	I0bQ+6vY30vjRMgPtuzrWaF0NZO2S4p7uMWqpGvAYDxAJT6aRvbxta8+770m+bF5E9NrqVEyAH/6g
+	i19Qg22sDS6QaDGQ00Xw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vOZD7-0000000GNPS-0VnR;
-	Thu, 27 Nov 2025 10:26:49 +0000
-Received: from smtpout-04.galae.net ([185.171.202.116])
+	id 1vOZmd-0000000GQIg-0t5I;
+	Thu, 27 Nov 2025 11:03:31 +0000
+Received: from smtpbg151.qq.com ([18.169.211.239])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vOZD3-0000000GNM4-1PeY;
-	Thu, 27 Nov 2025 10:26:46 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-04.galae.net (Postfix) with ESMTPS id 33335C16A1C;
-	Thu, 27 Nov 2025 10:26:20 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 708376072A;
-	Thu, 27 Nov 2025 10:26:35 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 4C0F0102F275A;
-	Thu, 27 Nov 2025 11:26:32 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1764239194; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=lFvV4pIsDLWnAbmZyAdOTJZYJAocNppm+NL9MdS0/y0=;
-	b=lWPPtEyMjs2+lAQ/ndRPyoApXSxEuBSRuO5MvPTgTBY/+XSq1eerRt7s6xaVmkjelp7W1f
-	416ddSEWPnyfxy4eSHgieZcESh1ye8Jjzs4dxgw8CjIVnCZKAHqwlY7fkvF//WZhv8F2Ad
-	wA6bfpUEykr7Oz+av1gpGrfAq6flT3j41e7Gts9tO4cXi/sh+GmQ0o/AhaQ4PPArA7xqUO
-	Gy4X6znMCIR/9+FIqxfI8hJd/loPoc2HvirkiHOUiIzqEALJ8WZ3eq4eJtN218LFOy1++a
-	qUAILd+aYh5OyQwTdP381XxKUcDw3FicZEA7AbqpgFrAdiaBpKByeF+ffzBmjw==
-From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Date: Thu, 27 Nov 2025 11:26:17 +0100
-Subject: [PATCH v2 2/2] phy: rockchip: inno-usb2: fix communication
- disruption in gadget mode
+	id 1vOZma-0000000GQGD-0MYA;
+	Thu, 27 Nov 2025 11:03:29 +0000
+X-QQ-mid: zesmtpip3t1764241347t78aa8971
+X-QQ-Originating-IP: jkDH227WqUwOoFTBtC1hwDrWemoF+qI3vLMPnvs0/lI=
+Received: from [IPV6:240f:10b:7440:1:c95a:801a ( [localhost])
+	by bizesmtp.qq.com (ESMTP) with 
+	id ; Thu, 27 Nov 2025 19:02:23 +0800 (CST)
+X-QQ-SSF: 0000000000000000000000000000000
+X-QQ-GoodBg: 0
+X-BIZMAIL-ID: 10963241468344092550
+Message-ID: <53C4D04AE30D7004+12cd5747-7bde-409d-bc02-fcf86a47cc44@radxa.com>
+Date: Thu, 27 Nov 2025 20:02:23 +0900
 MIME-Version: 1.0
-Message-Id: <20251127-rk3308-fix-usb-gadget-phy-disconnect-v2-2-dac8a02cd2ca@bootlin.com>
-References: <20251127-rk3308-fix-usb-gadget-phy-disconnect-v2-0-dac8a02cd2ca@bootlin.com>
-In-Reply-To: <20251127-rk3308-fix-usb-gadget-phy-disconnect-v2-0-dac8a02cd2ca@bootlin.com>
-To: Vinod Koul <vkoul@kernel.org>, 
- Kishon Vijay Abraham I <kishon@kernel.org>, 
- Heiko Stuebner <heiko@sntech.de>, William Wu <wulf@rock-chips.com>
-Cc: Kever Yang <kever.yang@rock-chips.com>, 
- Minas Harutyunyan <Minas.Harutyunyan@synopsys.com>, 
- Alan Stern <stern@rowland.harvard.edu>, 
- Louis Chauvet <louis.chauvet@bootlin.com>, 
- =?utf-8?q?Herv=C3=A9_Codina?= <herve.codina@bootlin.com>, 
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
- =?utf-8?q?Th=C3=A9o_Lebrun?= <theo.lebrun@bootlin.com>, 
- linux-phy@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-kernel@vger.kernel.org, Luca Ceresoli <luca.ceresoli@bootlin.com>, 
- stable@vger.kernel.org
-X-Mailer: b4 0.14.3
-X-Last-TLS-Session-Version: TLSv1.3
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 0/6] PCI: dwc: Revert Link Up IRQ support
+To: Niklas Cassel <cassel@kernel.org>
+Cc: Manivannan Sadhasivam <mani@kernel.org>, Jingoo Han
+ <jingoohan1@gmail.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+ Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+ Heiko Stuebner <heiko@sntech.de>, Shawn Lin <shawn.lin@rock-chips.com>,
+ Krishna chaitanya chundru <quic_krichai@quicinc.com>,
+ linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org
+References: <20251111105100.869997-8-cassel@kernel.org>
+ <mt7miqkipr4dvxemftq6octxqzauueln252ncrcwy6i2t7wfhi@jtwokeilhwsi>
+ <aSRli_Mb6qoQ9TZO@ryzen>
+ <7667E818D7D31A4E+cf7c83d4-b99c-469d-8d46-588fc95b843f@radxa.com>
+ <F11F0D13437B012D+0c15c5ca-f64f-49f1-9ff5-26b88d59ff59@radxa.com>
+ <aSgBLQ7rDOiEFhMB@ryzen>
+Content-Language: en-US
+From: FUKAUMI Naoki <naoki@radxa.com>
+In-Reply-To: <aSgBLQ7rDOiEFhMB@ryzen>
+X-QQ-SENDSIZE: 520
+Feedback-ID: zesmtpip:radxa.com:qybglogicsvrsz:qybglogicsvrsz4b-0
+X-QQ-XMAILINFO: NbLMjDNEDlGtzPHyvsnFLwRWanjn7xRp8z1LRylheb1EYNHWahdNky6H
+	J2NRH0JaPBU/gqfabk9hf+xV6yrWl44Xn0vn4PG26NJxLvcFd1Y9tjqKL7qeLGOFjhVOAgF
+	uOPMXRK1RPCldrJg/F4xnZt+81HG+Ku1NvCJv71RIBfnJ6Z4+xPGY4wqCYfUmXqYc5UcmvV
+	ErNm7+UYPiTxVB/U5/AqLhdFYkpILkLpDv3Q3Rn9ZCVdDyda1LbVHVyoMv5nfru4GFZfpvB
+	IpMP6OxHctgSOygGghhPBRarJd1abJR1qcNAXna6ZXoIKKGNSyInX/vR0Uot8/+L6KIh41J
+	9dMKSD6MK3RHL2+FTNN+UjIyJOOAoapWdyhRR7Y+w2Q+qYkWbwVaXaGRkfP+F9CvuKI/8VR
+	iy6NvCWrV8vOGd1lXPdU0/PjYsofIVQEBwxb9LJzpuimtn2T3w1kkTrWoZXObjq7yxUICV0
+	5sVZZfEOZzzgtaNoyJpEo4HiiGv5Daye9iarCTfWw3ZT+LvGQQmYuH/C8sABmCkC7HntH0o
+	vTwCGO8fG8qGdd/ZFzY1BYrAEreZLN0G8VzLypCeCxV9JDy4I4asnqio4DV47ficwrXf0dC
+	TpDOFeT3ak+6s4oA5NlwYw2B5Xf7NzbzUCKyL1Iz8d1hCAyYaLNnsz3g4xnlhoIuxoZfRtJ
+	gzt0FIHyYtyXFUxB1BwAb3rVEz8Zp4LJQ47DtaqWN/Zn2IafNKzAifIHsK38wY96aX+AE18
+	DmzjQcku7YB/cIYUwjBN5rg61L2c5Aa+Tnc4NaaDYLVLXFOHNi/coM+RJrhlvmMC8xd0llm
+	dIptVAfpHzaVvQ6YNGuDrCG29P3UgrwKyBFvPYU7aZ5mKet5LxHmZtRoo+I3GKPAV6s7eFQ
+	Z2DN/Y1CrOlBu9N+ZuM5I2tkxe/aZhvQWHv4/HSIHsCwGKI1+NTKmewdQFIc7NdyXfbpS1+
+	6TG5pi+JhL4uDrDBkYvZRBoBL035wJVU84LfIKWWGmrkGDg==
+X-QQ-XMRINFO: NS+P29fieYNw95Bth2bWPxk=
+X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251127_022645_673288_90CFFDD0 
-X-CRM114-Status: GOOD (  16.95  )
+X-CRM114-CacheID: sfid-20251127_030328_622394_E6E76B9C 
+X-CRM114-Status: GOOD (  11.46  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,69 +90,56 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-V2hlbiB0aGUgT1RHIFVTQiBwb3J0IGlzIHVzZWQgdG8gcG93ZXIgdG8gU29DLCBjb25maWd1cmVk
-IGFzIHBlcmlwaGVyYWwgYW5kCnVzZWQgaW4gZ2FkZ2V0IG1vZGUsIGNvbW11bmljYXRpb24gc3Rv
-cHMgd2l0aG91dCBub3RpY2UgYWJvdXQgNiBzZWNvbmRzCmFmdGVyIHRoZSBnYWRnZXQgaXMgY29u
-ZmlndXJlZCBhbmQgZW51bWVyYXRlZC4KClRoZSBwcm9ibGVtIHdhcyBvYnNlcnZlZCBvbiBhIFJh
-ZHhhIFJvY2sgUGkgUyBib2FyZCwgd2hpY2ggY2FuIG9ubHkgYmUKcG93ZXJlZCBieSB0aGUgb25s
-eSBVU0ItQyBjb25uZWN0b3IuIFRoYXQgY29ubmVjdG9yIGlzIHRoZSBvbmx5IG9uZSB1c2FibGUK
-aW4gZ2FkZ2V0IG1vZGUuIFRoaXMgaW1wbGllcyB0aGUgVVNCIGNhYmxlIGlzIGNvbm5lY3RlZCBm
-cm9tIGJlZm9yZSBib290CmFuZCBuZXZlciBkaXNjb25uZWN0cyB3aGlsZSB0aGUga2VybmVsIHJ1
-bnMuCgpUaGUgcmVsYXRlZCBjb2RlIGZsb3cgaW4gdGhlIFBIWSBkcml2ZXIgY29kZSBjYW4gYmUg
-c3VtbWFyaXplZCBhczoKCiAqIHRoZSBmaXJzdCB0aW1lIGNoZ19kZXRlY3Rfd29yayBzdGFydHMg
-KDYgc2Vjb25kcyBhZnRlciBnYWRnZXQgaXMKICAgY29uZmlndXJlZCBhbmQgZW51bWVyYXRlZCkK
-ICAgLT4gcm9ja2NoaXBfY2hnX2RldGVjdF93b3JrKCk6CiAgICAgICBpZiBjaGdfc3RhdGUgaXMg
-VU5ERUZJTkVEOgogICAgICAgICAgcHJvcGVydHlfZW5hYmxlKGJhc2UsICZycGh5LT5waHlfY2Zn
-LT5jaGdfZGV0Lm9wbW9kZSwgZmFsc2UpOyBbWV0KCiAqIHJvY2tjaGlwX2NoZ19kZXRlY3Rfd29y
-aygpIGNoYW5nZXMgc3RhdGUgYW5kIHJlLXRyaWdnZXJzIGl0c2VsZiBhIGZldwogICB0aW1lcyB1
-bnRpbCBpdCByZWFjaGVzIHRoZSBERVRFQ1RFRCBzdGF0ZToKICAgLT4gcm9ja2NoaXBfY2hnX2Rl
-dGVjdF93b3JrKCk6CiAgICAgICBpZiBjaGdfc3RhdGUgaXMgREVURUNURUQ6CiAgICAgICAgICBw
-cm9wZXJ0eV9lbmFibGUoYmFzZSwgJnJwaHktPnBoeV9jZmctPmNoZ19kZXQub3Btb2RlLCB0cnVl
-KTsgW1pdCgpBdCBbWV0gYWxsIGV4aXN0aW5nIGNvbW11bmljYXRpb25zIHN0b3AuIEUuZy4gdXNp
-bmcgYSBDREMgc2VyaWFsIGdhZGdldCwKdGhlIC9kZXYvdHR5KiBkZXZpY2VzIGFyZSBzdGlsbCBw
-cmVzZW50IG9uIGJvdGggaG9zdCBhbmQgZGV2aWNlLCBidXQgbm8KZGF0YSBpcyB0cmFuc2ZlcnJl
-ZCBhbnltb3JlLiBUaGUgbGF0ZXIgY2FsbCB3aXRoIGEgJ3RydWUnIGFyZ3VtZW50IGF0IFtaXQpk
-b2VzIG5vdCByZXN0b3JlIGl0LgoKRHVlIHRvIHRoZSBsYWNrIG9mIGRvY3VtZW50YXRpb24sIHdo
-YXQgY2hnX2RldC5vcG1vZGUgZG9lcyBleGFjdGx5IGlzIG5vdApjbGVhciwgaG93ZXZlciBieSBj
-b2RlIGluc3BlY3Rpb24gaXQgc2VlbXMgcmVhc29uYWJsZSB0aGF0IGlzIGRpc2FibGVzCnNvbWV0
-aGluZyBuZWVkZWQgdG8ga2VlcCB0aGUgY29tbXVuaWNhdGlvbiB3b3JraW5nLCBhbmQgdGVzdGlu
-ZyBwcm92ZXMgdGhhdApkaXNhYmxpbmcgdGhlc2UgbGluZXMgbGV0cyBnYWRnZXQgbW9kZSBrZWVw
-IHdvcmtpbmcuIFNvIHByZXZlbnQgY2hhbmdlcyB0bwpjaGdfZGV0Lm9wbW9kZSB3aGVuIHRoZXJl
-IGlzIGEgY2FibGUgY29ubmVjdGVkIChWQlVTIHByZXNlbnQpLgoKRml4ZXM6IDk4ODk4ZjNiYzgz
-YyAoInBoeTogcm9ja2NoaXAtaW5uby11c2IyOiBzdXBwb3J0IG90Zy1wb3J0IGZvciByazMzOTki
-KQpDYzogc3RhYmxlQHZnZXIua2VybmVsLm9yZwpDbG9zZXM6IGh0dHBzOi8vbG9yZS5rZXJuZWwu
-b3JnL2xrbWwvMjAyNTA0MTQxODU0NTguNzc2N2FhYmNAYm9vdHkvClNpZ25lZC1vZmYtYnk6IEx1
-Y2EgQ2VyZXNvbGkgPGx1Y2EuY2VyZXNvbGlAYm9vdGxpbi5jb20+ClJldmlld2VkLWJ5OiBUaMOp
-byBMZWJydW4gPHRoZW8ubGVicnVuQGJvb3RsaW4uY29tPgotLS0KIGRyaXZlcnMvcGh5L3JvY2tj
-aGlwL3BoeS1yb2NrY2hpcC1pbm5vLXVzYjIuYyB8IDYgKysrKy0tCiAxIGZpbGUgY2hhbmdlZCwg
-NCBpbnNlcnRpb25zKCspLCAyIGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvcGh5
-L3JvY2tjaGlwL3BoeS1yb2NrY2hpcC1pbm5vLXVzYjIuYyBiL2RyaXZlcnMvcGh5L3JvY2tjaGlw
-L3BoeS1yb2NrY2hpcC1pbm5vLXVzYjIuYwppbmRleCAwMTA2ZDdiN2FlMjQuLmU1ZWZhZTdiMDEz
-NSAxMDA2NDQKLS0tIGEvZHJpdmVycy9waHkvcm9ja2NoaXAvcGh5LXJvY2tjaGlwLWlubm8tdXNi
-Mi5jCisrKyBiL2RyaXZlcnMvcGh5L3JvY2tjaGlwL3BoeS1yb2NrY2hpcC1pbm5vLXVzYjIuYwpA
-QCAtODMzLDcgKzgzMyw4IEBAIHN0YXRpYyB2b2lkIHJvY2tjaGlwX2NoZ19kZXRlY3Rfd29yayhz
-dHJ1Y3Qgd29ya19zdHJ1Y3QgKndvcmspCiAJCWlmICghcnBvcnQtPnN1c3BlbmRlZCAmJiAhdmJ1
-c19hdHRhY2gpCiAJCQlyb2NrY2hpcF91c2IycGh5X3Bvd2VyX29mZihycG9ydC0+cGh5KTsKIAkJ
-LyogcHV0IHRoZSBjb250cm9sbGVyIGluIG5vbi1kcml2aW5nIG1vZGUgKi8KLQkJcHJvcGVydHlf
-ZW5hYmxlKGJhc2UsICZycGh5LT5waHlfY2ZnLT5jaGdfZGV0Lm9wbW9kZSwgZmFsc2UpOworCQlp
-ZiAoIXZidXNfYXR0YWNoKQorCQkJcHJvcGVydHlfZW5hYmxlKGJhc2UsICZycGh5LT5waHlfY2Zn
-LT5jaGdfZGV0Lm9wbW9kZSwgZmFsc2UpOwogCQkvKiBTdGFydCBEQ0QgcHJvY2Vzc2luZyBzdGFn
-ZSAxICovCiAJCXJvY2tjaGlwX2NoZ19lbmFibGVfZGNkKHJwaHksIHRydWUpOwogCQlycGh5LT5j
-aGdfc3RhdGUgPSBVU0JfQ0hHX1NUQVRFX1dBSVRfRk9SX0RDRDsKQEAgLTg5Niw3ICs4OTcsOCBA
-QCBzdGF0aWMgdm9pZCByb2NrY2hpcF9jaGdfZGV0ZWN0X3dvcmsoc3RydWN0IHdvcmtfc3RydWN0
-ICp3b3JrKQogCQlmYWxsdGhyb3VnaDsKIAljYXNlIFVTQl9DSEdfU1RBVEVfREVURUNURUQ6CiAJ
-CS8qIHB1dCB0aGUgY29udHJvbGxlciBpbiBub3JtYWwgbW9kZSAqLwotCQlwcm9wZXJ0eV9lbmFi
-bGUoYmFzZSwgJnJwaHktPnBoeV9jZmctPmNoZ19kZXQub3Btb2RlLCB0cnVlKTsKKwkJaWYgKCF2
-YnVzX2F0dGFjaCkKKwkJCXByb3BlcnR5X2VuYWJsZShiYXNlLCAmcnBoeS0+cGh5X2NmZy0+Y2hn
-X2RldC5vcG1vZGUsIHRydWUpOwogCQlyb2NrY2hpcF91c2IycGh5X290Z19zbV93b3JrKCZycG9y
-dC0+b3RnX3NtX3dvcmsud29yayk7CiAJCWRldl9kYmcoJnJwb3J0LT5waHktPmRldiwgImNoYXJn
-ZXIgPSAlc1xuIiwKIAkJCSBjaGdfdG9fc3RyaW5nKHJwaHktPmNoZ190eXBlKSk7CgotLSAKMi41
-MS4xCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGlu
-dXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5v
-cmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2Nr
-Y2hpcAo=
+Hi Niklas,
+
+On 11/27/25 16:43, Niklas Cassel wrote:
+> Hello FUKAUMI Naoki,
+> 
+> On Thu, Nov 27, 2025 at 04:34:53PM +0900, FUKAUMI Naoki wrote:
+>> Hi all,
+>>
+>> I'm very sorry, but my ROCK 5C appears to be unreliable. (It worked fine
+>> with vanilla v6.13, so I thought it was fine.)
+>>
+>> I replaced it with another 5C (Lite), and now every method (Niklas's patch,
+>> Shawn's patch, and applying patch 1 and 2) seems to work.
+> 
+> Could you please give us some more information.
+
+Sorry for the confusion.
+
+> Does the Rock 5C Lite have a PCIe switch?
+
+ROCK 5C and 5C Lite use the same board design, only SoC is different, 
+but there is no difference regarding PCIe functionality.
+
+They have a PCIe 2.1 connector, and I've been testing a HAT with ASM2806 
+via PCIe 2.1 connector.
+
+> Does Rock 5C Lite work fine with the current code in mainline?
+> (i.e. with bus enumeration when Link Up IRQ is triggered).
+
+No, bus enumeration behind ASM2806 on ROCK 5C Lite (and any other 
+RK358x-based boards I have) is not working with vanilla kernel.
+
+Best regards,
+
+--
+FUKAUMI Naoki
+Radxa Computer (Shenzhen) Co., Ltd.
+
+> Kind regards,
+> Niklas
+> 
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
