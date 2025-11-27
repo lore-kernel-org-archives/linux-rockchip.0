@@ -4,162 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC6BFD11183
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Nov 2025 13:30:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9FBBCFD2F6
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Nov 2025 13:43:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NRxajFeyuVjHYlXpgZXLI5PAs1zuPVzLhveKxcDFKXY=; b=w+2hxQsjlU273JnmENY/o4b9rD
-	3EqeBwMlugXbnkG5/QoDFWS466xkCHgMmu95ZSXlysXEzEbm+RmjY98IXDbFaKVX+4HkBDInQB3At
-	WlwLot4N6hMODQHdri5gTJq81NguFBsiim5vNMOQaMWexLyFKl0kyKRibWAnQrsnLlg24t4+2gBeH
-	F1+afwHfrKBKpIltc3rELaboqwMa0w8bsl9oKbiNmr64oY/mcbJPIQg8xi0LPt7ZlNjQFGZ3v/fVH
-	3L4rW3nsXs89e7Nuw9ruP2Yztgj4rp2O53Fh4zLKldp/Ecki76xuIDj6pP53IwHLZDDrrHm2po9VL
-	xJhxiWLA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=GnGzIdesVyEbs6F/hJ51bxitgnh08jCiQp/DCdNtYsA=; b=eYR7Gu2J0b3U3f
+	GAJoTGu/Ebina8FMm2Rr6X+0i7V/TKdgKmn7JZxbUj1FLEUShGQoG3Fjrx82kfR6rS3vPn6dP/rbH
+	KrWYL+kK5TqIbqP9ZMbeHIHnzPs6ic4kUmCysf8z0RQI7s6mwPAQ4xwUfg4hrHa+6FtTWcLP+mFNQ
+	FPptE4KSifSdktmOfUhfuxRfSK2bY/oXb1+DvXUUu4Vzkvdsof9dQye/JC53DVhKFBN1B8G347s/Y
+	OuWsLD48yeBOPsoD+ydd75bynulNukSmxg8/bpKUajcJ/Hkg4M1DwlvyzOtGMYVszBoFqntj1oJlz
+	PKXOZdeEY2K+3KJ+GKfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vOc4a-0000000GgQ8-2MGv;
-	Thu, 27 Nov 2025 13:30:12 +0000
-Received: from mail-northeuropeazlp170100001.outbound.protection.outlook.com ([2a01:111:f403:c200::1] helo=DB3PR0202CU003.outbound.protection.outlook.com)
+	id 1vOcHR-0000000Ghmj-46Tn;
+	Thu, 27 Nov 2025 13:43:29 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vOc4Q-0000000GgKI-2JVD;
-	Thu, 27 Nov 2025 13:30:05 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=T/ZIQfabgSAE3dE4LAj+D2qefV+g5rfMgY758C6OyhtPr8+jijDczNnpF088W+4Z+dIhcVOKNxKTliNCUsHpI8D4d/pO6Fk1e+LakSzCkLXzRXQguAt9Y9JHIuoQevpS2yArgTSbdXZDkeI9NUyMx+2Fnv8m5+ZktynDvxgIq6giu5jH87A6lHlnBhLBjH5ZC1hoDxrU/eKVQYvJ6QAE7PRoaakW0+8TnZpBo5chi5+HK/BzAWYYybtQ9ZpVj/5q4jpYAQoVcbLRsTZT0uv46TjB+CdTmzyJiOe3ih+0lgihfeBq6RaN9O8I6d+Z08hTv0m6+IXEQSDN51AC5fR4gw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=OZ39ofMa8MhTZXs17kpz1A7DljYWWuD2BuUAJsrmUM8=;
- b=Yvymrfva2pJjk8V1Fjt1rJJ/6GFVxSro/JZVRJJETq1sEX8++qkO9/qymogICzM9SsTIKtCZHQPCu5ah/R3XeoL1g3fKVqWxn14SMcYe/Cv5r5vuXOnp2X+1s2X44MAh74u1IsqbuZIc9tbZAgoSawGxKLQFgpfus0mvKVUPJ9DMI2rpLOOLP832nOWidEMzclF6sYL4iG4jTPr1sA06jJTntIAtUsslj5qK6p7QcqB7g6XqDpHNsKh47BKzKUxP0CbHOx4gJbrChqOa+EYNR58/UdCBNDFpgoxFXOEt5JAMZbHX2Y6qo9YiMlb0bQP/8JhhaptCpeM1tsmfddR0ng==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=cherry.de; dmarc=pass action=none header.from=cherry.de;
- dkim=pass header.d=cherry.de; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cherry.de;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=OZ39ofMa8MhTZXs17kpz1A7DljYWWuD2BuUAJsrmUM8=;
- b=m72ZuD/qkWUIW64onE1ntiS927GlRUOWnQbZ6j1naf8X0LoPQvNU8ExClXRY6etJ0zzoS6y8y7W56cnELWp667rd41mAXyzFXmWpZDoEzrK489/Ys/zXsqoV5bqssyW5J59G4wGIyTzQnXieXt3v2iEL+nhbpPRsVbQNA5VFVKQ=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=cherry.de;
-Received: from GVXPR04MB12038.eurprd04.prod.outlook.com (2603:10a6:150:2be::5)
- by PA1PR04MB10117.eurprd04.prod.outlook.com (2603:10a6:102:454::13) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9366.12; Thu, 27 Nov
- 2025 13:29:49 +0000
-Received: from GVXPR04MB12038.eurprd04.prod.outlook.com
- ([fe80::1033:5a9a:dc18:dad]) by GVXPR04MB12038.eurprd04.prod.outlook.com
- ([fe80::1033:5a9a:dc18:dad%4]) with mapi id 15.20.9366.012; Thu, 27 Nov 2025
- 13:29:48 +0000
-Message-ID: <3d9ef351-9eb9-41b1-beff-7a1deb73927b@cherry.de>
-Date: Thu, 27 Nov 2025 14:28:58 +0100
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] arm64: dts: rockchip: enable NPU on rk3588-jaguar
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, Heiko Stuebner <heiko.stuebner@cherry.de>
-References: <20250812085213.1071106-1-heiko@sntech.de>
- <20250812085213.1071106-2-heiko@sntech.de>
-Content-Language: en-US
-From: Quentin Schulz <quentin.schulz@cherry.de>
-In-Reply-To: <20250812085213.1071106-2-heiko@sntech.de>
-X-ClientProxiedBy: WA2P291CA0027.POLP291.PROD.OUTLOOK.COM
- (2603:10a6:1d0:1f::18) To GVXPR04MB12038.eurprd04.prod.outlook.com
- (2603:10a6:150:2be::5)
+	id 1vOcHP-0000000Ghm0-3UGl;
+	Thu, 27 Nov 2025 13:43:27 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id E43E76014D;
+	Thu, 27 Nov 2025 13:43:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E7252C4CEF8;
+	Thu, 27 Nov 2025 13:43:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1764251006;
+	bh=bTValxf+f2qX5cdb/j1rGGZlwo5p3B9YvqSqzKFNiXc=;
+	h=From:To:Cc:Subject:Date:From;
+	b=ZOIE5ZQ3CIeVYkCDllBpS+JRDy7GFUQxtgUJkgpV06AekofaBN+c43mmesS/9OapK
+	 DeTT8sNVUNL+SCN0IjRrWkZH2Rglr9vYbz8I2D3tO4F3SQUyxEIkJ9Zzb7VcA/d3m+
+	 bgsn0hUqF6DPWolgPro8idyHQdz8RID5QQekvvb6HbC8vLVvJOQrbzm/fZ1Htdwntn
+	 QQOMf/IgoHmcjKtZEa69W7z6Eg2JNLXFcjcktpok9TSVuKuTv67gCUPFF8Xi2EYraR
+	 /Hhphbp3NrU5fGa4+08Pwe785AE0n5DOVhGJ/rXB3u/xda3F6P6QJU70VjTlTwip0x
+	 hZfnN60qg0uuQ==
+From: Niklas Cassel <cassel@kernel.org>
+To: Jingoo Han <jingoohan1@gmail.com>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Niklas Cassel <cassel@kernel.org>
+Cc: FUKAUMI Naoki <naoki@radxa.com>,
+	linux-pci@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org
+Subject: [PATCH] PCI: dwc: Make Link Up IRQ logic handle already powered on PCIe switches
+Date: Thu, 27 Nov 2025 14:43:18 +0100
+Message-ID: <20251127134318.3655052-2-cassel@kernel.org>
+X-Mailer: git-send-email 2.52.0
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: GVXPR04MB12038:EE_|PA1PR04MB10117:EE_
-X-MS-Office365-Filtering-Correlation-Id: a9c8e058-9812-479b-56eb-08de2db90999
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|1800799024|366016;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?NkZ1RVZJbWZ0dlpVTk12TnFTcXRlZVJGeklkeDMxZ2o0Umg1c0YvV2czSG1x?=
- =?utf-8?B?MWVnQmIxOE55d2hoaEdaRXlvWUNlU2d2K1pxT0dROW1WeGxvSmI3cXQ3MVlK?=
- =?utf-8?B?R0NXZGpiNUl2cytOczBNUENFZWsvQkhDMUpVRzVXRVJWNGdHK0FQTy9OZURX?=
- =?utf-8?B?Vi8yWG9ycWgzcU4vaUNYcXQxdzR5eHJoaUdFblZYNzlRL2tTd0tUcjZjS09E?=
- =?utf-8?B?U0xSRSsrc3lnT2RCNUp2ZVQ0VkZYQ1h0OUVaWS92WW5Kb0VZTnBBVU5jbFkr?=
- =?utf-8?B?TWVjd3hMbFVFd05rRUh0MjFpcmVaS0x1aEdXS3QvYmMzWDAzZ2gvQnBtb3Jx?=
- =?utf-8?B?SVllOVYwQzZDdGZSYkxrYnBKazZ6YW50OUdIR3dWb0JjUTArbjdWV3RMZVVu?=
- =?utf-8?B?SUpaUWhKZVkzRnNtbjExenJ3cTQvYTBEay8zcEg1S1ZOcllZZURyRXVEYlpv?=
- =?utf-8?B?ZTl1T0J5S29TSm5TNExzYW1JQVNEUWtBRmJBUERFY1BhM3h2cE9PSUVva0xk?=
- =?utf-8?B?Wjh1anB0cXBvaVFFSDVrekR1NmhIeDI3MTRzdlRKQjl1UUZQbERnL0RXaTZ2?=
- =?utf-8?B?cEtKM21jWkxzM2dXdXlxaUY1WnZqRzFPMVhDcCtCWjNKSkNoMml4eDRyMFgz?=
- =?utf-8?B?Y1JaNGtWdGJuMkRCSVg1MXpTWU9wajhtMlN3Q0V1UEJJdnh0ajRIa0daMzhE?=
- =?utf-8?B?NTN1cWRFSWtiYjlzY1BZcUdBTzdiT3ZHUmluUEZGWEFCWDdOOGM1TWY5MGdv?=
- =?utf-8?B?bHBtZ2RVZmZaYUs0STE2U0JFdm81cEIyTG5FeGk5MkIzTDJtWnZoR0s2eTky?=
- =?utf-8?B?WkVuSWRXanNwVW1WNXd1Tng3WWVINWN2eUNFOUpWVjlRc0pZVUhnSHFxQ21X?=
- =?utf-8?B?cys2UHR1TFlKalE5UU1oakRJRFdEMkExbkRNWmhESnlsN250QStIdjFQV3lQ?=
- =?utf-8?B?V2RnUzU4RUh1dGRVcDdvQm9kak5TeUxyZm9TWVZVMXdHTDVQRkIyemRWNXlK?=
- =?utf-8?B?bTU1a0RENXB6V0NvQjdyR0FFaXZLazVUamFMQzMyR3lDekQxMGZoU3lsNWJz?=
- =?utf-8?B?TGM2MEhlOVdpWDFjL011cnAwOGZsblJYcmk3dGpUdlcvQ1ZRSW9rU1RpNEhB?=
- =?utf-8?B?SURQTkxUZTBMRFByUlpGb0YwN3JQTHVOMDhrZEVYRHhCQ1hpQTNuL1VaS1ps?=
- =?utf-8?B?dTltdHVQTjM3L0RiNnVxVk1CeVVLRWViUkU3WWxBVTJhcjdsQjJJaG1YUUZq?=
- =?utf-8?B?SmxBbEM1cGdMT0hKalFTaDlhZGx3dFI2L3dDai9JV0dCcG1vclgySFhvYUl5?=
- =?utf-8?B?UUh5YUxRMmdWSGFta0cyNEppWXVDNHFORXNVWmlHdEtFY1F3eVhhUXB6OUNS?=
- =?utf-8?B?OHM5VE44VnFhQ0pmL2JlTlRuNzlBRDRLaU1zcWt6QlRoTndpeldaKzh6VGJU?=
- =?utf-8?B?a1FlMk51aXhhMW10ajlOSlFjK2gwcEp4eitZUWJua2oxQVNmMXozTDB6MHZh?=
- =?utf-8?B?b29ra3dQTFlXd20wcU40Y2tTc1BadERDTExGalpEeHdNSjRlMWlEK0tab2dY?=
- =?utf-8?B?c0tERE9ycFhMYUMyVFJzQ2ZNd0xFSUhlTkcvQy9rVTZiUlpvOGIrTS9OczN5?=
- =?utf-8?B?Z0ZNSmVmZGZsb1ZoeEpZa2E3Z3VJZlRNaERyMDBGZk9kUDl1aHhaMW4yV2x0?=
- =?utf-8?B?UThBNzRuRU00UFFoeG9CVGNUQkR5citlOEF3ZUtRajMvYm8wTm93ZmVnNVFm?=
- =?utf-8?B?NWpTR2pZOTgxSlZEQzA1U3JOblM4Yk01bVl6SlV3SlVYMjIwbnNSeCt4dmp3?=
- =?utf-8?B?UEY1bjJoY1h4RU11NEhSS0U0VHpGOHExWStlNHBvd1ZwNmFXY2QzMHJPTk1P?=
- =?utf-8?B?UEFGT08wcWp1Z05rTDIyczdzMlRnNENzaHFJTExhandnUlNWRmNpQWJYVW0z?=
- =?utf-8?Q?7FziK2IufKsEN7OWHDZb7K4/nhwYsL4k?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:GVXPR04MB12038.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(1800799024)(366016);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?TnVqemJjd3FvVVAzUnhnQlhCd0RzWHhQM0F1ak9BdXZTYnR1cTFZN2hqVk1s?=
- =?utf-8?B?RGs1TmhXTDJKRUdlaVZGNi9rOThIR0pMa3dDclg3dEptQmN1VlQwb09ybk95?=
- =?utf-8?B?aFhsb2o0SGpEdU9TNzYvcTUxY1pJaDF5SE5ENmVUWmRab3RjYTNEQXFWWWJ4?=
- =?utf-8?B?SW1ESFZXSWVZYmRMZk1XcHZka3VXeStwWTNsdFFPZVNRandKbzFNVkg1cVBX?=
- =?utf-8?B?ZG1EUXF2T3c1K3kxVzFnYUhnNENEdk1aejhrNXJxMElxQXh2S0x1N2NnK1hS?=
- =?utf-8?B?RERvMmJ0K2pTazFFeUgxVW5IYmo1YzdUeWhjakRMd1pIQUpwTU1JV3o5SFIr?=
- =?utf-8?B?dlJWYUNnUXNROE14RWk4WmtpYm92dDFvaDh1SjFoN1NLa0VPb2dyRzFmK2dU?=
- =?utf-8?B?Qm1Vc0lGenVnQVorVmYxOXVxQ1hNbFBCN0YweGpOYWlMZ2VDOWxlQTc2V1lO?=
- =?utf-8?B?NmNwSlhGOWpEc1hyV2xBallaU0JwREd1OGY5dHpmbWFaRm9JdzRadktxeDl3?=
- =?utf-8?B?K3RDYVQ5SzVJVkRtWHgxR05pZHRlQ1FMQTZERmRpMmVGb01ya055b1BoSkk1?=
- =?utf-8?B?aFMzR0cyS0tJWVdkYzFFOUExL1ZZQjd0T2RwNHRjb0IwS0Q0NUIxdGZNbGdN?=
- =?utf-8?B?L0lnY3JoaHoxOXFWWUZDa3JVSTYvd1gvbjhsZmlUbFdQR3BJem1DcmxpZlc5?=
- =?utf-8?B?RXlJbzBvREFRYnFTZkRXVm1ZTmNFYW42dUd2SFhPcnFDYkJoOUd3VFFLWTNi?=
- =?utf-8?B?ajNmKzNsL25LaHZBZWpQRU9TMjdWQ0RyR0VVQVFWcTFxTm53bHlrREtKdW8y?=
- =?utf-8?B?cDdkUjl3KzhTdnhoY1VyTGRlcURwTmJ6ZmorK1lTTm4yZmhlRFdvMDdiRnAw?=
- =?utf-8?B?dFFsY25YMU9zQ1ByaDVEYXBQTXFhQmVtbnM2bDJuUnAwTk84dHUvU3VIV05a?=
- =?utf-8?B?aW91UGFjV2M0VU5tczN3cGF4cGw0WU5rTGFQU1VTTjFyWVBuREtXa3VQYk9G?=
- =?utf-8?B?UzFyUHl0YVdsUkNLdThVeTU0Z0ZUc3NnUlNJMDlQVkRjR0RIVFByQWwvUHJx?=
- =?utf-8?B?ZFQ1TEgxaW1pdktjb1lnUEh3OGpxUmcxQ3R0UUN2dFhLWnlOMFlpY1hsOUZT?=
- =?utf-8?B?RDZ6NHZUQUd4TkdQUi83UkQzQW1yL1oyZWZUbWhQZXRVclVHQWlrT1lmd1Z5?=
- =?utf-8?B?alIzQ1FCTnZRcEZLVXpMV0JPS0NUQWdlekNsc1FhLy9IOVNMV3NqRXRSakRU?=
- =?utf-8?B?SjN4eEJNWU9Qdy90cWIvb0dqOU50RUt2R2Ewb3RXcnJ3Syt4cEJYaW9iODlq?=
- =?utf-8?B?WXhTM2tVUDlHTjdVSTJ0UkZVbGk1TGgwbFZwVUhWcHpwRVRLR2RXVk9Ldzht?=
- =?utf-8?B?dlErTFk5SEtvdmsrYUlTWlIxdVZqOFZFRjA3aXRGRkY4NlN4Ulg5UW8rcTJr?=
- =?utf-8?B?cm5naVR5MDBDNGdMU1FnWXdOblR0cHRUSHQxNStzRVRRbDZOdGFOemdIS2E3?=
- =?utf-8?B?dHNEUnFYU0JWbEg4N1hoVWFVQnFSckVKZXk4cnk0V3FiUVA5MzROZzNMZFE1?=
- =?utf-8?B?SmJ4S2lFOGFWM0RIVWVxQnhUWm1ySFIrTFhNRFlZd200aTFmU0JmUzFieDNs?=
- =?utf-8?B?a213dVIxK3BMd21Bc2FJdkd3akZ3QnB6N2oxMVY0QUEvS2tLeWJFQVJBTU8r?=
- =?utf-8?B?N2FrSG0xQWRZYVlvY1l5bWIxWUdyUFZleXJQL2JPZWs3ZDV5RXd4T21NRDB3?=
- =?utf-8?B?SmM5N01wd25NZGQrN2pQYlIrQktUNmM2NWJML1IvZ0lSZVoxRlZTUm9JSmpa?=
- =?utf-8?B?Yy9aelJQMy9YbmRuU3B5R08yeTR6S0E1UlIzU1UxTHdSZlI3bDBZODFyQ3hk?=
- =?utf-8?B?QjROa2RBK0RSaFdOcU83cmltU2EyZlhGWmtkQm10dWVZRy9NOU1wVStXWFJC?=
- =?utf-8?B?OVVzWTRIUzR2MUFuclprcXBoeUgwYkJEaTluREljV0NNWGRNSTNQRW9yYzhU?=
- =?utf-8?B?NERtbE8xdW5XSlBUd0dZRHpXYTZ6Z25lVG4vc1JMbitjTDR5LzNyWmxkeHBL?=
- =?utf-8?B?cXVEc01wWDZyZW1SZmtOaWZGTnlsb1JyQWthU1BQRFJHSFJkd0hnUnhSQ1lG?=
- =?utf-8?B?NHJYNXhjMG90S0poY1BsUnNSdVVZbGVXQjl1dWVncGN6Z1dsRG9tVFQyRmlR?=
- =?utf-8?B?QUE9PQ==?=
-X-OriginatorOrg: cherry.de
-X-MS-Exchange-CrossTenant-Network-Message-Id: a9c8e058-9812-479b-56eb-08de2db90999
-X-MS-Exchange-CrossTenant-AuthSource: GVXPR04MB12038.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Nov 2025 13:29:48.7750
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: vwzWoSo36X17HmWqWP+LWgwL1e0lZYn2sWBRUffMdbLuUvISus3NfGTIa/Ri3BIcCv79d3N+Mz1xVzVxAg+Hrm+GIUKoUvnJ/LAMvnI85zw=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PA1PR04MB10117
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251127_053002_629000_3A74BAF9 
-X-CRM114-Status: GOOD (  12.44  )
+X-Developer-Signature: v=1; a=openpgp-sha256; l=9552; i=cassel@kernel.org; h=from:subject; bh=bTValxf+f2qX5cdb/j1rGGZlwo5p3B9YvqSqzKFNiXc=; b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGDI1Qst0Sybb2N2/zfne8XPhEgcejniJ5Xy3LHZvWWAf8 bTi1N66jlIWBjEuBlkxRRbfHy77i7vdpxxXvGMDM4eVCWQIAxenAEzkfz3Df/8jD/6na3tGVe27 IZP+tXqx0br5Vx0vPRDi2pi/4Ugw50ZGhgPvjoqxLJxpw85ydlJiZceq/CkSkhtVP27aHnEzxuP kb34A
+X-Developer-Key: i=cassel@kernel.org; a=openpgp; fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -171,43 +73,238 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Heiko,
+The DWC glue drivers always call pci_host_probe() during probe(), which
+will allocate upstream bridge resources and enumerate the bus.
 
-On 8/12/25 10:52 AM, Heiko Stuebner wrote:
-> From: Heiko Stuebner <heiko.stuebner@cherry.de>
-> 
-> Enable the NPU cores and their mmus and wire up the supply-regulator.
-> The regulator itself was already defined, but it does not need to be
-> always on - the npu can control it.
-> 
+For controllers without Link Up IRQ support, pci_host_probe() is called
+after dw_pcie_wait_for_link(), which will also wait the time required by
+the PCIe specification before performing PCI Configuration Space reads.
 
-My apologies for the time it took me to review and test this.
+For controllers with Link Up IRQ support, the pci_host_probe() call (which
+will perform PCI Configuration Space reads) is done without any of the
+delays mandated by the PCIe specification.
 
-I tested with aarch64 defconfig + DRM_ACCEL_ROCKET=m loosely following 
-the instructions from https://docs.mesa3d.org/teflon.html and the script 
-finishes, so I guess that means it works.
+For controllers with Link Up IRQ support, since the pci_host_probe() call
+is done without any delay (link training might still be ongoing), it is
+very unlikely that this scan will find any devices. Once the Link Up IRQ
+triggers, the Link Up IRQ handler will call pci_rescan_bus().
 
-I have managed to get an Oops with another defconfig, but that is not 
-related to DT so not a blocker for merging this.
+This works fine for PCIe endpoints connected to the Root Port, since they
+don't extend the bus. However, if the pci_rescan_bus() call detects a PCIe
+switch, then there will be a problem when the downstream busses starts
+showing up, because the PCIe controller is not hotplug capable, so we are
+not allowed to extend the subordinate bus number after the initial scan,
+resulting in error messages such as:
 
-Thus:
+pci_bus 0004:43: busn_res: can not insert [bus 43-41] under [bus 42-41] (conflicts with (null) [bus 42-41])
+pci_bus 0004:43: busn_res: [bus 43-41] end is updated to 43
+pci_bus 0004:43: busn_res: can not insert [bus 43] under [bus 42-41] (conflicts with (null) [bus 42-41])
+pci 0004:42:00.0: devices behind bridge are unusable because [bus 43] cannot be assigned for them
+pci_bus 0004:44: busn_res: can not insert [bus 44-41] under [bus 42-41] (conflicts with (null) [bus 42-41])
+pci_bus 0004:44: busn_res: [bus 44-41] end is updated to 44
+pci_bus 0004:44: busn_res: can not insert [bus 44] under [bus 42-41] (conflicts with (null) [bus 42-41])
+pci 0004:42:02.0: devices behind bridge are unusable because [bus 44] cannot be assigned for them
+pci_bus 0004:45: busn_res: can not insert [bus 45-41] under [bus 42-41] (conflicts with (null) [bus 42-41])
+pci_bus 0004:45: busn_res: [bus 45-41] end is updated to 45
+pci_bus 0004:45: busn_res: can not insert [bus 45] under [bus 42-41] (conflicts with (null) [bus 42-41])
+pci 0004:42:06.0: devices behind bridge are unusable because [bus 45] cannot be assigned for them
+pci_bus 0004:46: busn_res: can not insert [bus 46-41] under [bus 42-41] (conflicts with (null) [bus 42-41])
+pci_bus 0004:46: busn_res: [bus 46-41] end is updated to 46
+pci_bus 0004:46: busn_res: can not insert [bus 46] under [bus 42-41] (conflicts with (null) [bus 42-41])
+pci 0004:42:0e.0: devices behind bridge are unusable because [bus 46] cannot be assigned for them
+pci_bus 0004:42: busn_res: [bus 42-41] end is updated to 46
+pci_bus 0004:42: busn_res: can not insert [bus 42-46] under [bus 41] (conflicts with (null) [bus 41])
+pci 0004:41:00.0: devices behind bridge are unusable because [bus 42-46] cannot be assigned for them
+pcieport 0004:40:00.0: bridge has subordinate 41 but max busn 46
 
-Reviewed-by: Quentin Schulz <quentin.schulz@cherry.de>
-Tested-by: Quentin Schulz <quentin.schulz@cherry.de>
+While we would like to set the is_hotplug_bridge flag
+(quirk_hotplug_bridge()), many embedded SoCs that use the DWC controller
+have synthesized the controller without hot-plug support.
+Thus, the Link Up IRQ logic is only mimicking hot-plug functionality, i.e.
+it is not compliant with the PCI Hot-Plug Specification, so we cannot make
+use of the is_hotplug_bridge flag.
 
-Note that I have the same remark about regulator-boot-on property in 
-vdd_npu_s0 I made[1] for Tiger here.
+In order to let the Link Up IRQ logic handle PCIe switches that are already
+powered on (PCIe switches that not powered on already need to implement a
+pwrctrl driver), don't perform a pci_host_probe() call during probe()
+(which disregards the delays required by the PCIe specification).
 
-[1] 
-https://lore.kernel.org/linux-rockchip/d784230e-49f4-49e9-be4a-bc7c00020cfb@cherry.de/
+Instead let the first Link Up IRQ call pci_host_probe(). Any follow up
+Link Up IRQ will call pci_rescan_bus().
 
-Thanks!
-Quentin
+Fixes: ec9fd499b9c6 ("PCI: dw-rockchip: Don't wait for link since we can detect Link Up")
+Fixes: 0e0b45ab5d77 ("PCI: dw-rockchip: Enumerate endpoints based on dll_link_up IRQ")
+Reported-by: FUKAUMI Naoki <naoki@radxa.com>
+Closes: https://lore.kernel.org/linux-pci/1E8E4DB773970CB5+5a52c9e1-01b8-4872-99b7-021099f04031@radxa.com/
+Signed-off-by: Niklas Cassel <cassel@kernel.org>
+---
+ .../pci/controller/dwc/pcie-designware-host.c | 70 ++++++++++++++++---
+ drivers/pci/controller/dwc/pcie-designware.h  |  5 ++
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c |  5 +-
+ drivers/pci/controller/dwc/pcie-qcom.c        |  5 +-
+ 4 files changed, 68 insertions(+), 17 deletions(-)
+
+diff --git a/drivers/pci/controller/dwc/pcie-designware-host.c b/drivers/pci/controller/dwc/pcie-designware-host.c
+index e92513c5bda51..8654346729574 100644
+--- a/drivers/pci/controller/dwc/pcie-designware-host.c
++++ b/drivers/pci/controller/dwc/pcie-designware-host.c
+@@ -565,6 +565,59 @@ static int dw_pcie_host_get_resources(struct dw_pcie_rp *pp)
+ 	return 0;
+ }
+ 
++static int dw_pcie_host_initial_scan(struct dw_pcie_rp *pp)
++{
++	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
++	struct pci_host_bridge *bridge = pp->bridge;
++	int ret;
++
++	ret = pci_host_probe(bridge);
++	if (ret)
++		return ret;
++
++	if (pp->ops->post_init)
++		pp->ops->post_init(pp);
++
++	dwc_pcie_debugfs_init(pci, DW_PCIE_RC_TYPE);
++
++	return 0;
++}
++
++void dw_pcie_handle_link_up_irq(struct dw_pcie_rp *pp)
++{
++	if (!pp->initial_linkup_irq_done) {
++		int ret;
++
++		ret = dw_pcie_host_initial_scan(pp);
++		if (ret) {
++			struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
++			struct device *dev = pci->dev;
++
++			dev_err(dev, "Initial scan from IRQ failed: %d\n", ret);
++
++			dw_pcie_stop_link(pci);
++
++			dw_pcie_edma_remove(pci);
++
++			if (pp->has_msi_ctrl)
++				dw_pcie_free_msi(pp);
++
++			if (pp->ops->deinit)
++				pp->ops->deinit(pp);
++
++			if (pp->cfg)
++				pci_ecam_free(pp->cfg);
++		} else {
++			pp->initial_linkup_irq_done = true;
++		}
++	} else {
++		/* Rescan the bus to enumerate endpoint devices */
++		pci_lock_rescan_remove();
++		pci_rescan_bus(pp->bridge->bus);
++		pci_unlock_rescan_remove();
++	}
++}
++
+ int dw_pcie_host_init(struct dw_pcie_rp *pp)
+ {
+ 	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
+@@ -669,18 +722,17 @@ int dw_pcie_host_init(struct dw_pcie_rp *pp)
+ 	 * If there is no Link Up IRQ, we should not bypass the delay
+ 	 * because that would require users to manually rescan for devices.
+ 	 */
+-	if (!pp->use_linkup_irq)
++	if (!pp->use_linkup_irq) {
+ 		/* Ignore errors, the link may come up later */
+ 		dw_pcie_wait_for_link(pci);
+ 
+-	ret = pci_host_probe(bridge);
+-	if (ret)
+-		goto err_stop_link;
+-
+-	if (pp->ops->post_init)
+-		pp->ops->post_init(pp);
+-
+-	dwc_pcie_debugfs_init(pci, DW_PCIE_RC_TYPE);
++		/*
++		 * For platforms with Link Up IRQ, initial scan will be done
++		 * on first Link Up IRQ.
++		 */
++		if (dw_pcie_host_initial_scan(pp))
++			goto err_stop_link;
++	}
+ 
+ 	return 0;
+ 
+diff --git a/drivers/pci/controller/dwc/pcie-designware.h b/drivers/pci/controller/dwc/pcie-designware.h
+index e995f692a1ecd..a31bd93490dcd 100644
+--- a/drivers/pci/controller/dwc/pcie-designware.h
++++ b/drivers/pci/controller/dwc/pcie-designware.h
+@@ -427,6 +427,7 @@ struct dw_pcie_rp {
+ 	int			msg_atu_index;
+ 	struct resource		*msg_res;
+ 	bool			use_linkup_irq;
++	bool			initial_linkup_irq_done;
+ 	struct pci_eq_presets	presets;
+ 	struct pci_config_window *cfg;
+ 	bool			ecam_enabled;
+@@ -807,6 +808,7 @@ void dw_pcie_msi_init(struct dw_pcie_rp *pp);
+ int dw_pcie_msi_host_init(struct dw_pcie_rp *pp);
+ void dw_pcie_free_msi(struct dw_pcie_rp *pp);
+ int dw_pcie_setup_rc(struct dw_pcie_rp *pp);
++void dw_pcie_handle_link_up_irq(struct dw_pcie_rp *pp);
+ int dw_pcie_host_init(struct dw_pcie_rp *pp);
+ void dw_pcie_host_deinit(struct dw_pcie_rp *pp);
+ int dw_pcie_allocate_domains(struct dw_pcie_rp *pp);
+@@ -844,6 +846,9 @@ static inline int dw_pcie_setup_rc(struct dw_pcie_rp *pp)
+ 	return 0;
+ }
+ 
++static inline void dw_pcie_handle_link_up_irq(struct dw_pcie_rp *pp)
++{ }
++
+ static inline int dw_pcie_host_init(struct dw_pcie_rp *pp)
+ {
+ 	return 0;
+diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+index 3e2752c7dd096..8f2cc1ef25e3d 100644
+--- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
++++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+@@ -466,10 +466,7 @@ static irqreturn_t rockchip_pcie_rc_sys_irq_thread(int irq, void *arg)
+ 		if (rockchip_pcie_link_up(pci)) {
+ 			msleep(PCIE_RESET_CONFIG_WAIT_MS);
+ 			dev_dbg(dev, "Received Link up event. Starting enumeration!\n");
+-			/* Rescan the bus to enumerate endpoint devices */
+-			pci_lock_rescan_remove();
+-			pci_rescan_bus(pp->bridge->bus);
+-			pci_unlock_rescan_remove();
++			dw_pcie_handle_link_up_irq(pp);
+ 		}
+ 	}
+ 
+diff --git a/drivers/pci/controller/dwc/pcie-qcom.c b/drivers/pci/controller/dwc/pcie-qcom.c
+index c48a20602d7fa..2d8aca6630949 100644
+--- a/drivers/pci/controller/dwc/pcie-qcom.c
++++ b/drivers/pci/controller/dwc/pcie-qcom.c
+@@ -1617,10 +1617,7 @@ static irqreturn_t qcom_pcie_global_irq_thread(int irq, void *data)
+ 	if (FIELD_GET(PARF_INT_ALL_LINK_UP, status)) {
+ 		msleep(PCIE_RESET_CONFIG_WAIT_MS);
+ 		dev_dbg(dev, "Received Link up event. Starting enumeration!\n");
+-		/* Rescan the bus to enumerate endpoint devices */
+-		pci_lock_rescan_remove();
+-		pci_rescan_bus(pp->bridge->bus);
+-		pci_unlock_rescan_remove();
++		dw_pcie_handle_link_up_irq(pp);
+ 
+ 		qcom_pcie_icc_opp_update(pcie);
+ 	} else {
+-- 
+2.52.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
