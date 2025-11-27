@@ -4,63 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9064DD116E2
-	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Nov 2025 23:54:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F5DDCFD2F6
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Nov 2025 04:33:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=aa3KSm0G+R1WdFD7QhNUsnbSSPA62+zzKJOyyJawS6s=; b=J2vHm+YOYl9vUV
-	lNY8M3RRDMniS+FBnjl2j9rFduTXqJfzf50N5gfulyEHWOoPSNuhjfsSYIIA2RcN3SIbiBNyLolgR
-	8kbh5NYB90Clvpe+sH09hV/fLS+82R1GmkzYGiiFyUBMnjXGa1cseSzANcmhr0e0FsIWbl1iOD+R+
-	IuTFHeazG5BJarIasmKI/+O5kIlfDkT5gYpInRcr6WF0gORJTwKh2i2upFVsBgpMnZTSVciyaPu50
-	ns7UfZKgh1GaS+qh0qoxMtElRGp7Q/8zvguOTZmGdamXyDiWeIPmBymxxGYzDjwjI9y8s8RUJRPoX
-	gIY2WYO+6GqoXmYdnNLA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=5iDB6Eabpo/SvdqJA/SuN1EzfR0fWV2Da1AbmJgdIRI=; b=lZz8waouxKUTJ2
+	9wNUT9akPFItmo/ACIpoozi17DQethJ8EcDiXmwZ9u8aoUE62nnh8AMO5JgYOFzef/wqBb+/KYYaM
+	6YOCYDOE2AKwFI1CuqQlS4E9c8k6mHC8SRcwOIJeo+reQJk2wVol5OZMIRt6WYezQLesKrqFKbyYl
+	329AJS24rymN0dQ1ENfBNHGYBtHh+oqvWPajI3VyOy+Jek3rN5L6pFt4uF741P2hPUHBm+LeRZvzC
+	SRKLAiMuVgkKsY9YvSrjVfFY2tyyU3CTDj4UWn9Waxw2JSk4vd2StdjLCIZ+Iw0JOd4OYUz4jWxT8
+	4ZIJKFeNchpW8+Qr7gNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vOPLJ-0000000FmRZ-40pJ;
-	Wed, 26 Nov 2025 23:54:37 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vOTgg-0000000Fy9E-2GDX;
+	Thu, 27 Nov 2025 04:32:58 +0000
+Received: from mail-m49221.qiye.163.com ([45.254.49.221])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vOPLG-0000000FmQy-3mFr;
-	Wed, 26 Nov 2025 23:54:36 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 027DE4197D;
-	Wed, 26 Nov 2025 23:54:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A5A68C4CEF7;
-	Wed, 26 Nov 2025 23:54:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1764201273;
-	bh=g9nM4cO2Nu/TJJjgqtJ77MJB0fTDSxhxd0RQ+LzrMi4=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=RQCfpfeZnsMlL2sUCsmFtjvqUATIhGbpQyu2dIi70gm8+BkN4dpSOM8JiXvAM5ZkP
-	 BoBfquJLzroZc5wGIAhoeSIkCUnY0qS/5icO4JnicFJ0PPsD5DfEBBC7hBmvplQj5F
-	 ri2lDTXygjlNAnWYiAyrbQd22ZR9ML4QDBiPfJIqcB9nPwDfqKnpAU2yVmhPKxrPRg
-	 2EumjNk/YuuXvFGVk84zVWHzVu4QY6ZGevOp5ULfj/A+7wtKaM0W8Gbch+y00woMe/
-	 yBcP4f8YtTSAWZMVLl6ZP0I+y/MtkKXo+hfPfxFy9bKI4FmbV42CSLYgrYvTEV6ahp
-	 pmVD44qu7aO0w==
-Date: Wed, 26 Nov 2025 17:54:32 -0600
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Hans Zhang <18255117159@163.com>
-Cc: lpieralisi@kernel.org, kwilczynski@kernel.org, bhelgaas@google.com,
-	heiko@sntech.de, mani@kernel.org, yue.wang@amlogic.com,
-	pali@kernel.org, neil.armstrong@linaro.org, robh@kernel.org,
-	jingoohan1@gmail.com, khilman@baylibre.com, jbrunet@baylibre.com,
-	martin.blumenstingl@googlemail.com, cassel@kernel.org,
-	linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-amlogic@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v6 1/2] PCI: Configure Root Port MPS during host probing
-Message-ID: <20251126235432.GA2726707@bhelgaas>
+	id 1vOTgc-0000000Fy8B-2Z8Y;
+	Thu, 27 Nov 2025 04:32:56 +0000
+Received: from [192.168.61.151] (unknown [110.83.51.2])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 2b1179e84;
+	Thu, 27 Nov 2025 12:32:45 +0800 (GMT+08:00)
+Message-ID: <075100c0-b4af-4077-bd3c-dd9407524671@rock-chips.com>
+Date: Thu, 27 Nov 2025 12:32:44 +0800
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20251104165125.174168-2-18255117159@163.com>
+User-Agent: Mozilla Thunderbird
+Cc: shawn.lin@rock-chips.com, iommu@lists.linux.dev,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Simon Xue <xxm@rock-chips.com>,
+ kernel@pengutronix.de
+Subject: Re: [PATCH] iommu/rockchip: disable fetch dte time limit
+To: =?UTF-8?Q?Sven_P=C3=BCschel?= <s.pueschel@pengutronix.de>,
+ Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
+ Robin Murphy <robin.murphy@arm.com>, Heiko Stuebner <heiko@sntech.de>
+References: <20251126-spu-iommudtefix-v1-1-f90003dbfcc4@pengutronix.de>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+In-Reply-To: <20251126-spu-iommudtefix-v1-1-f90003dbfcc4@pengutronix.de>
+X-HM-Tid: 0a9ac395cbcb09cckunm7f6f53a15f3a0c
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlDSE9CVkIYQhpNTkkfSUtDHlYVFAkWGhdVEwETFh
+	oSFyQUDg9ZV1kYEgtZQVlKSktVQ0hVTkpVSVlXWRYaDxIVHRRZQVlPS0hVSktJT09PSFVKS0tVSk
+	JLS1kG
+DKIM-Signature: a=rsa-sha256;
+	b=eQP9SGLqV2ppZ/YwPz3e2r8dHL9TDguKTD8HJIs+TWpIAeYRQE4xRVZf8ErbAJ+F/vUCPNZ2DzNq5pG/r11S0Se3XvEI7had5VkA3lz9lbuGkNG1AQqx4C0MFBna63eggrBNyRALz4GyVMUTK+kRjQCNm+TQNuRwjl48SDNwMAI=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=CPMwb3T+SE4qsqbo/CfyQHn/8u+JJB3BBnhM5wlyZok=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251126_155434_983171_AC023225 
-X-CRM114-Status: GOOD (  22.11  )
+X-CRM114-CacheID: sfid-20251126_203255_256879_940EA520 
+X-CRM114-Status: GOOD (  29.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,90 +68,90 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Nov 05, 2025 at 12:51:24AM +0800, Hans Zhang wrote:
-> Current PCIe initialization logic may leave Root Ports (root bridges)
-> operating with non-optimal Maximum Payload Size (MPS) settings. Existing
-> code in pci_configure_mps() returns early for devices without an upstream
-> bridge (!bridge) which includes Root Ports, so their MPS values remain
-> at firmware/hardware defaults. This fails to utilize the controller's full
-> capabilities, leading to suboptimal data transfer efficiency across the
-> PCIe hierarchy.
-> 
-> With this patch, during the host controller probing phase:
-> - When PCIe bus tuning is enabled (not PCIE_BUS_TUNE_OFF), and
-> - The device is a Root Port without an upstream bridge (!bridge),
-> The Root Port's MPS is set to its hardware-supported maximum value
-> (128 << dev->pcie_mpss).
-> 
-> Note that this initial maximum MPS setting may be reduced later, during
-> downstream device enumeration, if any downstream device does not suppor
-> the Root Port's maximum MPS.
-> 
-> This change ensures Root Ports are properly initialized before downstream
-> devices negotiate MPS, while maintaining backward compatibility via the
-> PCIE_BUS_TUNE_OFF check.
-
-"Properly" is sort of a junk word for me because all it really says is
-we were stupid before, and we're smarter now, but it doesn't explain
-exactly *what* was wrong and why this new thing is "proper."
-
-It's obvious that the Max_Payload_Size power-on default (128 bytes) is
-suboptimal in some situations, so you don't even need to say that.
-And I think 128 bytes *is* optimal in the PCIE_BUS_PEER2PEER case.
-
-s/Root Ports (root bridges)/Root Ports/
-s/bridge (!bridge)/bridge/     # a couple times
-s/hardware-supported//         # unnecessary
-s/(128 << dev->pcie_mpss)//    # we can read the spec
-s/suppor/support/
-
-> Suggested-by: Niklas Cassel <cassel@kernel.org>
-> Suggested-by: Manivannan Sadhasivam <mani@kernel.org>
-> Signed-off-by: Hans Zhang <18255117159@163.com>
-> ---
->  drivers/pci/probe.c | 12 ++++++++++++
->  1 file changed, 12 insertions(+)
-> 
-> diff --git a/drivers/pci/probe.c b/drivers/pci/probe.c
-> index 0ce98e18b5a8..2459def3af9b 100644
-> --- a/drivers/pci/probe.c
-> +++ b/drivers/pci/probe.c
-> @@ -2196,6 +2196,18 @@ static void pci_configure_mps(struct pci_dev *dev)
->  		return;
->  	}
->  
-> +	/*
-> +	 * Unless MPS strategy is PCIE_BUS_TUNE_OFF (don't touch MPS at all),
-> +	 * start off by setting Root Ports' MPS to MPSS. This only applies to
-> +	 * Root Ports without an upstream bridge (root bridges), as other Root
-> +	 * Ports will have downstream bridges.
-
-I can't parse this sentence.  *No* Root Port has an upstream bridge.
-So I don't know what "other Root Ports" would be or why they would
-have downstream bridges (any Root Port is likely to have downstream
-endpoints or bridges).
-
-> +	   ... Depending on the MPS strategy
-> +	 * and MPSS of downstream devices, the Root Port's MPS may be
-> +	 * overridden later.
-> +	 */
-> +	if (!bridge && pci_pcie_type(dev) == PCI_EXP_TYPE_ROOT_PORT &&
-> +	    pcie_bus_config != PCIE_BUS_TUNE_OFF)
-> +		pcie_set_mps(dev, 128 << dev->pcie_mpss);
-> +
->  	if (!bridge || !pci_is_pcie(bridge))
->  		return;
->  
-> -- 
-> 2.34.1
-> 
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+5ZyoIDIwMjUvMTEvMjYg5pif5pyf5LiJIDE5OjQ1LCBTdmVuIFDDvHNjaGVsIOWGmemBkzoKPiBG
+cm9tOiBTaW1vbiBYdWUgPHh4bUByb2NrLWNoaXBzLmNvbT4KPiAKPiBEaXNhYmxlIHRoZSBCaXQg
+MzEgb2YgdGhlIEFVVE9fR0FUSU5HIGlvbW11IHJlZ2lzdGVyLCBhcyBpdCBjYXVzZXMKPiBoYW5n
+dXBzIHdpdGggdGhlIFJHQTMgKFJhc3RlciBHcmFwaGljcyBBY2NlbGVyYXRpb24gMykgcGVyaXBo
+ZXJhbC4KPiBUaGUgUkdBMyByZWdpc3RlciBkZXNjcmlwdGlvbiBvZiB0aGUgVFJNIGFscmVhZHkg
+c3RhdGVzIHRoYXQgdGhlIGJpdAo+IG11c3QgYmUgc2V0IHRvIDEuIFRoZSB2ZW5kb3Iga2VybmVs
+IHNldHMgdGhlIGJpdCB1bmNvbmRpdGlvbmFsbHkgdG8KPiAxIHRvIGZpeCBWT1AgKFZpZGVvIE91
+dHB1dCBQcm9jZXNzb3IpIHNjcmVlbiBibGFjayBpc3N1ZXMuIFRoaXMgcGF0Y2gKPiBzcXVhc2hl
+cyB0aGUgMiB2ZW5kb3Iga2VybmVsIGNvbW1pdHMgd2l0aCB0aGUgZm9sbG93aW5nIGNvbW1pdCBt
+ZXNzYWdlczoKPiAKPiBNYXN0ZXIgZmV0Y2ggZGF0YSBhbmQgY3B1IHVwZGF0ZSBwYWdlIHRhYmxl
+IG1heSB3b3JrIGluIHBhcmFsbGVsLCBtYXkKPiBoYXZlIHRoZSBmb2xsb3dpbmcgcHJvY2VkdXJl
+Ogo+IAo+IAltYXN0ZXIgICAgICAgICAgICAgICAgICBjcHUKPiAJZmV0Y2ggZHRlICAgICAgICAg
+ICAgICAgdXBkYXRlIHBhZ2UgdGFibAo+IAkgICAgICAgIHwgICAgICAgICAgICAgICAgICAgICAg
+IHwKPiAJKG1ha2UgZHRlIGludmFsaWQpICA8LSAgemFwIGlvdGxiIGVudHJ5Cj4gCSAgICAgICAg
+fCAgICAgICAgICAgICAgICAgICAgICAgfAo+IAlmZXRjaCBkdGUgYWdhaW4KPiAJKG1ha2UgZHRl
+IGludmFsaWQpICA8LSAgemFwIGlvdGxiIGVudHJ5Cj4gCSAgICAgICAgfCAgICAgICAgICAgICAg
+ICAgICAgICAgfAo+IAlmZXRjaCBkdGUgYWdhaW4KPiAJKG1ha2UgZHRlIGludmFsaWQpICA8LSAg
+emFwIGlvdGxiIGVudHJ5Cj4gCSAgICAgICAgfCAgICAgICAgICAgICAgICAgICAgICAgfAo+IAlm
+ZXRjaCBkdGUgYWdhaW4KPiAJKG1ha2UgaW9tbXUgYmxvY2spICA8LSAgemFwIGlvdGxiIGVudHJ5
+Cj4gCj4gTmV3IGlvbW11IHZlcnNpb24gaGFzIHRoZSBhYm92ZSBidWcsIGlmIGZldGNoIGR0ZSBj
+b25zZWN1dGl2ZWx5IGZvdXIKPiB0aW1lcywgdGhlbiBpdCB3aWxsIGJlIGJsb2NrZWQuIEZvcnR1
+bmF0ZWx5LCB3ZSBjYW4gc2V0IGJpdCAzMSBvZgo+IHJlZ2lzdGVyIE1NVV9BVVRPX0dBVElORyB0
+byAxIHRvIG1ha2UgaXQgd29yayBhcyBvbGQgdmVyc2lvbiB3aGljaCBkb2VzCj4gbm90IGhhdmUg
+dGhpcyBpc3N1ZS4KPiAKPiBUaGlzIGlzc3VlIG9ubHkgYXBwZWFycyBvbiBSVjExMjYgc28gZmFy
+LCBzbyBtYWtlIGEgd29ya2Fyb3VuZCBkZWRpY2F0ZWQKPiB0byAicm9ja2NoaXAscnYxMTI2IiBt
+YWNoaW5lIHR5cGUuCj4gCj4gaW9tbXUvcm9ja2NoaXA6IGZpeCB2b3AgYmxvY2tlZCBhbmQgc2Ny
+ZWVuIGJsYWNrIG9uIFJLMzU2WCBhbmQgUkszNTg4Cj4gCj4gUkszNTY4IGFuZCBSSzM1ODggaGFz
+IHRoZSBzYW1lIGlzc3VlIGFzIFJWMTEyNi9SVjExMDkgdGhhdCBjYXVzZWQgYnkKPiBkdGUgZmV0
+Y2ggdGltZSBsaW1pdCwgU28gd2UgY2FuIHNldCBCSVQoMzEpIG9mIHJlZ2lzdGVyIDB4MjQgZGVm
+YXVsdAo+IHRvIDEgYXMgYSB3b3JrYXJvdW5kLgo+IAo+IFNpZ25lZC1vZmYtYnk6IFNpbW9uIFh1
+ZSA8eHhtQHJvY2stY2hpcHMuY29tPgo+IFNpZ25lZC1vZmYtYnk6IFN2ZW4gUMO8c2NoZWwgPHMu
+cHVlc2NoZWxAcGVuZ3V0cm9uaXguZGU+Cj4gLS0tCj4gRHVyaW5nIHRlc3Rpbmcgb2YgYSBuZXds
+eSBkZXZlbG9wZWQgZHJpdmVyIGZvciB0aGUgUkdBMyBwZXJpcGhlcmFsIFsxXQo+IChSYXN0ZXIg
+R3JhcGhpYyBBY2NlbGVyYXRpb24gMykgb2YgdGhlIFJLMzU4OCBzb21lIHNwb3JhZGljIGhhbmdz
+Cj4gaGF2ZSBiZWVuIG9ic2VydmVkLiBUaGUgdXBzdHJlYW0gcm9ja2NoaXAtaW9tbXUgZHJpdmVy
+IGlzIHVzZWQgdG8gaGFuZGxlCj4gdGhlIFJHQTMgSU9NTVUgcmVnaXN0ZXIgc3BhY2UuCj4gCj4g
+QWZ0ZXIgYSBjbG9zZXIgbG9vayBhdCB0aGUgVFJNIGZvciB0aGUgUkszNTg4LCB0aGUgUkdBMyBp
+b21tdSByZWdpc3Rlcgo+IGRlc2NyaXB0aW9uIG9mIHRoZSBSR0EzX01NVV9BVVRPX0dBVElORyBy
+ZWdpc3RlciAob2Zmc2V0IDB4MjQpIG1lbnRpb25zCgpJdCdzIDB4RjI0IHBlciBSR0EzIGNoYXB0
+ZXIuCgo+IGEgbW11X2J1Z19maXhlZF9kaXNhYmxlIGJpdCwgd2hpY2ggbXVzdCBiZSBzZXQgdG8g
+MSBidXQgZGVmYXVsdHMgdG8gMC4KPiAKPiBMb29raW5nIGF0IHRoZSBjb21taXRzIGluIHRoZSB2
+ZW5kb3Iga2VybmVsLCB0aGUgYml0IGlzIHVuY29uZGl0aW9uYWxseQo+IHNldCB0byAxIGFuZCBt
+ZW50aW9ucyB0aGF0IGl0IGZpeGVzIGEgYmxvY2tlZCBWT1AgKFZpZGVvIE91dHB1dAo+IFByb2Nl
+c3NvcikgWzNdLiBUaGVyZWZvcmUgc3F1YXNoIHRoZSByZWxldmFudCB2ZW5kb3IgY29tbWl0cwo+
+IFsyXSBhbmQgWzNdIGludG8gYSBzaW5nbGUgcGF0Y2gsIGNvbWJpbmUgdGhlIGNvbW1pdCBtZXNz
+YWdlcyBhbmQga2VlcAo+IHRoZSBTaWduZWQtb2ZmLWJ5IGxpbmUgZnJvbSB0aGUgb3JpZ2luYWwg
+YXV0aG9yLgo+IAo+IFsxXSBodHRwczovL2xvcmUua2VybmVsLm9yZy9hbGwvMjAyNTEwMDctc3B1
+LXJnYTMtdjEtMC0zNmFkODU1NzA0MDJAcGVuZ3V0cm9uaXguZGUvCj4gWzJdIGh0dHBzOi8vZ2l0
+aHViLmNvbS9yb2NrY2hpcC1saW51eC9rZXJuZWwvY29tbWl0LzdmODE1OGZiNDFiNWNjOGU3Mzhh
+YWVlYmMzNjM3YzUwZWJkNzRjYWUKPiBbM10gaHR0cHM6Ly9naXRodWIuY29tL3JvY2tjaGlwLWxp
+bnV4L2tlcm5lbC9jb21taXQvNmEzNTVlNWY5YTIwNjlhMjMwOWUyNDA3OTFiYzNhYWQ2M2I3MzI0
+ZQo+IC0tLQo+ICAgZHJpdmVycy9pb21tdS9yb2NrY2hpcC1pb21tdS5jIHwgOCArKysrKysrKwo+
+ICAgMSBmaWxlIGNoYW5nZWQsIDggaW5zZXJ0aW9ucygrKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2
+ZXJzL2lvbW11L3JvY2tjaGlwLWlvbW11LmMgYi9kcml2ZXJzL2lvbW11L3JvY2tjaGlwLWlvbW11
+LmMKPiBpbmRleCAwODYxZGQ0NjliZDg2Li4yZDBkYWJiMGQxMDFhIDEwMDY0NAo+IC0tLSBhL2Ry
+aXZlcnMvaW9tbXUvcm9ja2NoaXAtaW9tbXUuYwo+ICsrKyBiL2RyaXZlcnMvaW9tbXUvcm9ja2No
+aXAtaW9tbXUuYwo+IEBAIC03Niw2ICs3Niw4IEBACj4gICAjZGVmaW5lIFNQQUdFX09SREVSIDEy
+Cj4gICAjZGVmaW5lIFNQQUdFX1NJWkUgKDEgPDwgU1BBR0VfT1JERVIpCj4gICAKPiArI2RlZmlu
+ZSBESVNBQkxFX0ZFVENIX0RURV9USU1FX0xJTUlUIEJJVCgzMSkKPiArCj4gICAgLyoKPiAgICAg
+KiBTdXBwb3J0IG1hcHBpbmcgYW55IHNpemUgdGhhdCBmaXRzIGluIG9uZSBwYWdlIHRhYmxlOgo+
+ICAgICAqICAgNCBLaUIgdG8gNCBNaUIKPiBAQCAtOTMwLDYgKzkzMiw3IEBAIHN0YXRpYyBpbnQg
+cmtfaW9tbXVfZW5hYmxlKHN0cnVjdCBya19pb21tdSAqaW9tbXUpCj4gICAJc3RydWN0IGlvbW11
+X2RvbWFpbiAqZG9tYWluID0gaW9tbXUtPmRvbWFpbjsKPiAgIAlzdHJ1Y3QgcmtfaW9tbXVfZG9t
+YWluICpya19kb21haW4gPSB0b19ya19kb21haW4oZG9tYWluKTsKPiAgIAlpbnQgcmV0LCBpOwo+
+ICsJdTMyIGF1dG9fZ2F0ZTsKPiAgIAo+ICAgCXJldCA9IGNsa19idWxrX2VuYWJsZShpb21tdS0+
+bnVtX2Nsb2NrcywgaW9tbXUtPmNsb2Nrcyk7Cj4gICAJaWYgKHJldCkKPiBAQCAtOTQ4LDYgKzk1
+MSwxMSBAQCBzdGF0aWMgaW50IHJrX2lvbW11X2VuYWJsZShzdHJ1Y3QgcmtfaW9tbXUgKmlvbW11
+KQo+ICAgCQkJICAgICAgIHJrX29wcy0+bWtfZHRlbnRyaWVzKHJrX2RvbWFpbi0+ZHRfZG1hKSk7
+Cj4gICAJCXJrX2lvbW11X2Jhc2VfY29tbWFuZChpb21tdS0+YmFzZXNbaV0sIFJLX01NVV9DTURf
+WkFQX0NBQ0hFKTsKPiAgIAkJcmtfaW9tbXVfd3JpdGUoaW9tbXUtPmJhc2VzW2ldLCBSS19NTVVf
+SU5UX01BU0ssIFJLX01NVV9JUlFfTUFTSyk7Cj4gKwo+ICsJCS8qIFdvcmthcm91bmQgZm9yIGlv
+bW11IGJsb2NrZWQsIEJJVCgzMSkgZGVmYXVsdCB0byAxICovCj4gKwkJYXV0b19nYXRlID0gcmtf
+aW9tbXVfcmVhZChpb21tdS0+YmFzZXNbaV0sIFJLX01NVV9BVVRPX0dBVElORyk7Cj4gKwkJYXV0
+b19nYXRlIHw9IERJU0FCTEVfRkVUQ0hfRFRFX1RJTUVfTElNSVQ7Cj4gKwkJcmtfaW9tbXVfd3Jp
+dGUoaW9tbXUtPmJhc2VzW2ldLCBSS19NTVVfQVVUT19HQVRJTkcsIGF1dG9fZ2F0ZSk7Cj4gICAJ
+fQo+ICAgCj4gICAJcmV0ID0gcmtfaW9tbXVfZW5hYmxlX3BhZ2luZyhpb21tdSk7Cj4gCj4gLS0t
+Cj4gYmFzZS1jb21taXQ6IDMwZjA5MjAwY2M0YWVmYmQ4Mzg1YjAxZTQxYmRlMmU0NTY1YTZmMGUK
+PiBjaGFuZ2UtaWQ6IDIwMjUxMTI2LXNwdS1pb21tdWR0ZWZpeC1jZDBjNTI0NGM3NGEKPiAKPiBC
+ZXN0IHJlZ2FyZHMsCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmlu
+ZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9s
+aW51eC1yb2NrY2hpcAo=
