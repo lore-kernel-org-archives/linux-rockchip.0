@@ -4,62 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 939CCCFD2F6
-	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Nov 2025 01:06:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BC5FCFD2F6
+	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Nov 2025 02:05:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=k82mUjTQ9+nQOg7m35x48NcLwj0yd9EIIIOPdVIfgDo=; b=oIhCO5KNDmMJbj
-	1BJT3cIElPrAnT9pDxqPGuTnwqgaQaETOFdFM+SlBDGZBllly0fPu/1gz6m1i7mPs2CBL0ObZNScV
-	HAPd3EjPlDrLMcrp3ZodykFF1MXVEfPksPZKiD/UU4qbAwEBQ2QBViDmdlfH3xSnBU9mDoMaaJRVY
-	7zs9FWrLqZdXYngyZYCSQ+KfvYJTBB/8sg2XjbWR7h5iwD6CicTZHHGsbQwnPhGDZdG1Wx7gpYahN
-	6pkTFkPCpTyoF8NOTpPj5YtypRFcFQ2MDc+1chsbnnnu5iIK7mdLYqpA8+zq57mVmbGbEUD6duF7t
-	1DjZNuT05cUwxpDYllng==;
+	List-Owner; bh=OWFl+ZCKelmwhmx1rso5SIyGEiGdRCWXY4I9ik3Xt8g=; b=zZ3l2Dv8j1xBfu
+	7tTk/NtJeOSBgi20c3nJ6TyIAF59GohPtvH79ODTyC0WhteSLrKlygjLKiUAXxG6IaTH4Q/QR41Md
+	VYgOUuFuRtperqPGsx2b2JU8mSHSjHowgfvU6YCh4TC6EKLQWPTmjW4QAx6j17bSiZy4Iz3Rj59nE
+	GTdHwkZFjx8LIYuuN0h7nKgjqGVSnGqkejVaF8L29R8zOhQFAR3mEGcrcFNp+OpWWg8GkkctR4e9Q
+	DRfFULeF5vqvmnhpQAEvbkzCI5WDz42HJunO3KloAg5y69UFaxxm96kuqUNfUIX7rOt4hz82SBn5d
+	UP2Dhq+uSoRkckjj1xgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vOmwO-0000000HNNM-3Bdv;
-	Fri, 28 Nov 2025 01:06:28 +0000
-Received: from mail-m19731112.qiye.163.com ([220.197.31.112])
+	id 1vOnrI-0000000HQJM-3MDL;
+	Fri, 28 Nov 2025 02:05:16 +0000
+Received: from smtpbgsg2.qq.com ([54.254.200.128])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vOmwL-0000000HNMI-0qmf;
-	Fri, 28 Nov 2025 01:06:27 +0000
-Received: from [172.16.12.14] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 2b2e92628;
-	Fri, 28 Nov 2025 09:06:16 +0800 (GMT+08:00)
-Message-ID: <dbe6975d-9b99-4493-9145-b2db382fd468@rock-chips.com>
-Date: Fri, 28 Nov 2025 09:06:13 +0800
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Cc: shawn.lin@rock-chips.com, FUKAUMI Naoki <naoki@radxa.com>,
- linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org
-Subject: Re: [PATCH] PCI: dwc: Make Link Up IRQ logic handle already powered
- on PCIe switches
-To: Niklas Cassel <cassel@kernel.org>, Jingoo Han <jingoohan1@gmail.com>,
- Manivannan Sadhasivam <mani@kernel.org>,
- Lorenzo Pieralisi <lpieralisi@kernel.org>,
- =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
- Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
- Heiko Stuebner <heiko@sntech.de>
-References: <20251127134318.3655052-2-cassel@kernel.org>
-From: Shawn Lin <shawn.lin@rock-chips.com>
-In-Reply-To: <20251127134318.3655052-2-cassel@kernel.org>
-X-HM-Tid: 0a9ac7ff1dd209cckunmb69f50316946c2
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQklMTVYYSExOHkxKTEsaTBlWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=FmbyETUih0zC01PvdaA7bUcXVK9lGATf0na3P/WE2HDqlcEHBgkENNEJDTNEXHOPEV7T8YcLkLJj/UuZg+eJsI4jI9+Ve6zNR+eO5KE9Vvmy+nRGtk4Rmj6K6oEXy7S8/3vhuaKXAy1NHx/MZxRm8SVoLqpnf0HgUMle4FsWG4o=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=cbz0T3Pb1Oli5KHPUp2Dx7P8QO+RzTOk0Et4ZiYbRK8=;
-	h=date:mime-version:subject:message-id:from;
+	id 1vOnrF-0000000HQH8-0699;
+	Fri, 28 Nov 2025 02:05:14 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
+	s=altu2504; t=1764295463;
+	bh=HACn86zdCcEj7sYdICgJjI01+m/bWEVtdDOphGhu1lA=;
+	h=From:To:Subject:Date:Message-Id;
+	b=dqFJQ1Nn1CioFKveMvr7yho7FOu7pKGnXzn98QdFT1ayywap6wUQg+1PfFLdZFLZN
+	 DZbNKE0WD7hGz0twSkFJTApCatQSqSDABnfm3QWFW6CikDvizD2NjDEZ8YwnYISoqQ
+	 8CB3S5TJ+eIWT5VVUCmi5s0/a4b3GcR2d4bdIdzo=
+X-QQ-mid: esmtpsz21t1764295461t91f06378
+X-QQ-Originating-IP: fhbY41yQeB4lJVNR28w6HWtzkSKTp8yaiorSXifwU2Q=
+Received: from DESKTOP-8BT1A2O.localdomain ( [58.22.7.114])
+	by bizesmtp.qq.com (ESMTP) with 
+	id ; Fri, 28 Nov 2025 10:04:18 +0800 (CST)
+X-QQ-SSF: 0000000000000000000000000000000
+X-QQ-GoodBg: 0
+X-BIZMAIL-ID: 8558268278780288437
+From: Chaoyi Chen <kernel@airkyi.com>
+To: Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+	Peter Chen <hzpeterchen@gmail.com>,
+	Luca Ceresoli <luca.ceresoli@bootlin.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Sandy Huang <hjc@rock-chips.com>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Yubing Zhang <yubing.zhang@rock-chips.com>,
+	Frank Wang <frank.wang@rock-chips.com>,
+	Andrzej Hajda <andrzej.hajda@intel.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Robert Foss <rfoss@kernel.org>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>,
+	Amit Sunil Dhamne <amitsd@google.com>,
+	Chaoyi Chen <chaoyi.chen@rock-chips.com>,
+	Dragan Simic <dsimic@manjaro.org>,
+	Johan Jonker <jbx6244@gmail.com>,
+	Diederik de Haas <didi.debian@cknow.org>,
+	Peter Robinson <pbrobinson@gmail.com>
+Cc: linux-usb@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-phy@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	dri-devel@lists.freedesktop.org
+Subject: [PATCH v11 01/11] usb: typec: Set the bus also for the port and plug altmodes
+Date: Fri, 28 Nov 2025 10:03:55 +0800
+Message-Id: <20251128020405.90-2-kernel@airkyi.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20251128020405.90-1-kernel@airkyi.com>
+References: <20251128020405.90-1-kernel@airkyi.com>
+X-QQ-SENDSIZE: 520
+Feedback-ID: esmtpsz:airkyi.com:qybglogicsvrgz:qybglogicsvrgz6b-0
+X-QQ-XMAILINFO: N8i9SvusUD3b9+mNTDQX3Fe3Gutepg0o7kEdOVU1N7Gh0NoE7O6H4u87
+	+PzDqM+hgY4lHSMpnKvFOL8wnkognLeXenCn/9KpLHi7DgTF9R3dLCQ4ug3/6I7+2iqqvca
+	afh36BI1eOtZcmbllT98Kv5BNuh5NZVJTWo505LaxVn0q6OPTeoDPNIqxz48xToiFX5R1vq
+	t2ooUBErtKRPbCjTVYvDV0GYMXnGiGuaWQl7eNIcvnFkt3tIBzfK+1xqrASE4/a1ThgtpIG
+	X6TY45655Ue3iNtzI1nJd5LwxR3O07o2IL6ItQrv52FdWFYqEwLj6BtkCN5EyS6yCzyL168
+	Fu4zO4xIQO9v+fddBFxdkCEvoJUHzPlE4NrAvsP9TjQbihQ/j/U0rDch011umYrgQle0oE1
+	uA/mNT0KzyeBqWwC/oiaHClBQmUFCzj2cEY0q4GTtBFu7XGsHcpn9Kyz856c6TwwPharysQ
+	yEC9nJgK/3Dgc4uFTz9dOpWXG8K2DsESeEoy4UFf2VqMLmJak/LNos/1Ad0AUzt4sk7OOGG
+	jFNCLjwuLhwQOuMAmnKRO5HPc6mY3IeVRqA2FpHlfzgKgmNpbM9hvMOWuuP1vWZtv2Ci2JM
+	CtsWGonH91sNvTe5f0D1V86XzwAL4yd56wQcJ9dS+XvltQJkZSDpP/vvo3YYpCDa+mmUVGb
+	Y0DvCFqKFcUwHm86cy0QBH4I3PvA4/oPgoH/gcJL78mPPf8IwHGQr+R6TEBwqJ9CXQogISW
+	CuapsSV/FwTXbXfNySsfA3KsuHDy42+Q2u8Nj8OgBIjwOkrl9WV4xbjvGceN2vrZQHNm/HI
+	NiLOEeyJ9xPyP6+Qjnq6cE0tbcC4rkxi5SadoWiftnKYcw58quueolfXRq+8JCZ5KGw+rpO
+	5TigvZw4YoGuR6oF2eyjEgaW2K2eqWfei28w4+HDtMh5KlFf44vM/lVXyoZ/13bphxsw4Y/
+	PuWiVzGENAKz4RlQxTky/20C7SjmQziA6DDe+nc3Duv3CL2x2/aoN5wrDwl5PghVxsDWbkL
+	XoJvYOtACwnWQxFuods2yAvRqwPzBwAr51me2GLapw8N+KAEFAY+dh/eodIZs=
+X-QQ-XMRINFO: Mp0Kj//9VHAxr69bL5MkOOs=
+X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251127_170625_750520_82630701 
-X-CRM114-Status: GOOD (  38.02  )
+X-CRM114-CacheID: sfid-20251127_180513_467856_D72AB802 
+X-CRM114-Status: GOOD (  17.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,188 +121,197 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-5ZyoIDIwMjUvMTEvMjcg5pif5pyf5ZubIDIxOjQzLCBOaWtsYXMgQ2Fzc2VsIOWGmemBkzoKPiBU
-aGUgRFdDIGdsdWUgZHJpdmVycyBhbHdheXMgY2FsbCBwY2lfaG9zdF9wcm9iZSgpIGR1cmluZyBw
-cm9iZSgpLCB3aGljaAo+IHdpbGwgYWxsb2NhdGUgdXBzdHJlYW0gYnJpZGdlIHJlc291cmNlcyBh
-bmQgZW51bWVyYXRlIHRoZSBidXMuCj4gCj4gRm9yIGNvbnRyb2xsZXJzIHdpdGhvdXQgTGluayBV
-cCBJUlEgc3VwcG9ydCwgcGNpX2hvc3RfcHJvYmUoKSBpcyBjYWxsZWQKPiBhZnRlciBkd19wY2ll
-X3dhaXRfZm9yX2xpbmsoKSwgd2hpY2ggd2lsbCBhbHNvIHdhaXQgdGhlIHRpbWUgcmVxdWlyZWQg
-YnkKPiB0aGUgUENJZSBzcGVjaWZpY2F0aW9uIGJlZm9yZSBwZXJmb3JtaW5nIFBDSSBDb25maWd1
-cmF0aW9uIFNwYWNlIHJlYWRzLgo+IAo+IEZvciBjb250cm9sbGVycyB3aXRoIExpbmsgVXAgSVJR
-IHN1cHBvcnQsIHRoZSBwY2lfaG9zdF9wcm9iZSgpIGNhbGwgKHdoaWNoCj4gd2lsbCBwZXJmb3Jt
-IFBDSSBDb25maWd1cmF0aW9uIFNwYWNlIHJlYWRzKSBpcyBkb25lIHdpdGhvdXQgYW55IG9mIHRo
-ZQo+IGRlbGF5cyBtYW5kYXRlZCBieSB0aGUgUENJZSBzcGVjaWZpY2F0aW9uLgo+IAo+IEZvciBj
-b250cm9sbGVycyB3aXRoIExpbmsgVXAgSVJRIHN1cHBvcnQsIHNpbmNlIHRoZSBwY2lfaG9zdF9w
-cm9iZSgpIGNhbGwKPiBpcyBkb25lIHdpdGhvdXQgYW55IGRlbGF5IChsaW5rIHRyYWluaW5nIG1p
-Z2h0IHN0aWxsIGJlIG9uZ29pbmcpLCBpdCBpcwo+IHZlcnkgdW5saWtlbHkgdGhhdCB0aGlzIHNj
-YW4gd2lsbCBmaW5kIGFueSBkZXZpY2VzLiBPbmNlIHRoZSBMaW5rIFVwIElSUQo+IHRyaWdnZXJz
-LCB0aGUgTGluayBVcCBJUlEgaGFuZGxlciB3aWxsIGNhbGwgcGNpX3Jlc2Nhbl9idXMoKS4KPiAK
-PiBUaGlzIHdvcmtzIGZpbmUgZm9yIFBDSWUgZW5kcG9pbnRzIGNvbm5lY3RlZCB0byB0aGUgUm9v
-dCBQb3J0LCBzaW5jZSB0aGV5Cj4gZG9uJ3QgZXh0ZW5kIHRoZSBidXMuIEhvd2V2ZXIsIGlmIHRo
-ZSBwY2lfcmVzY2FuX2J1cygpIGNhbGwgZGV0ZWN0cyBhIFBDSWUKPiBzd2l0Y2gsIHRoZW4gdGhl
-cmUgd2lsbCBiZSBhIHByb2JsZW0gd2hlbiB0aGUgZG93bnN0cmVhbSBidXNzZXMgc3RhcnRzCj4g
-c2hvd2luZyB1cCwgYmVjYXVzZSB0aGUgUENJZSBjb250cm9sbGVyIGlzIG5vdCBob3RwbHVnIGNh
-cGFibGUsIHNvIHdlIGFyZQo+IG5vdCBhbGxvd2VkIHRvIGV4dGVuZCB0aGUgc3Vib3JkaW5hdGUg
-YnVzIG51bWJlciBhZnRlciB0aGUgaW5pdGlhbCBzY2FuLAo+IHJlc3VsdGluZyBpbiBlcnJvciBt
-ZXNzYWdlcyBzdWNoIGFzOgo+IAo+IHBjaV9idXMgMDAwNDo0MzogYnVzbl9yZXM6IGNhbiBub3Qg
-aW5zZXJ0IFtidXMgNDMtNDFdIHVuZGVyIFtidXMgNDItNDFdIChjb25mbGljdHMgd2l0aCAobnVs
-bCkgW2J1cyA0Mi00MV0pCj4gcGNpX2J1cyAwMDA0OjQzOiBidXNuX3JlczogW2J1cyA0My00MV0g
-ZW5kIGlzIHVwZGF0ZWQgdG8gNDMKPiBwY2lfYnVzIDAwMDQ6NDM6IGJ1c25fcmVzOiBjYW4gbm90
-IGluc2VydCBbYnVzIDQzXSB1bmRlciBbYnVzIDQyLTQxXSAoY29uZmxpY3RzIHdpdGggKG51bGwp
-IFtidXMgNDItNDFdKQo+IHBjaSAwMDA0OjQyOjAwLjA6IGRldmljZXMgYmVoaW5kIGJyaWRnZSBh
-cmUgdW51c2FibGUgYmVjYXVzZSBbYnVzIDQzXSBjYW5ub3QgYmUgYXNzaWduZWQgZm9yIHRoZW0K
-PiBwY2lfYnVzIDAwMDQ6NDQ6IGJ1c25fcmVzOiBjYW4gbm90IGluc2VydCBbYnVzIDQ0LTQxXSB1
-bmRlciBbYnVzIDQyLTQxXSAoY29uZmxpY3RzIHdpdGggKG51bGwpIFtidXMgNDItNDFdKQo+IHBj
-aV9idXMgMDAwNDo0NDogYnVzbl9yZXM6IFtidXMgNDQtNDFdIGVuZCBpcyB1cGRhdGVkIHRvIDQ0
-Cj4gcGNpX2J1cyAwMDA0OjQ0OiBidXNuX3JlczogY2FuIG5vdCBpbnNlcnQgW2J1cyA0NF0gdW5k
-ZXIgW2J1cyA0Mi00MV0gKGNvbmZsaWN0cyB3aXRoIChudWxsKSBbYnVzIDQyLTQxXSkKPiBwY2kg
-MDAwNDo0MjowMi4wOiBkZXZpY2VzIGJlaGluZCBicmlkZ2UgYXJlIHVudXNhYmxlIGJlY2F1c2Ug
-W2J1cyA0NF0gY2Fubm90IGJlIGFzc2lnbmVkIGZvciB0aGVtCj4gcGNpX2J1cyAwMDA0OjQ1OiBi
-dXNuX3JlczogY2FuIG5vdCBpbnNlcnQgW2J1cyA0NS00MV0gdW5kZXIgW2J1cyA0Mi00MV0gKGNv
-bmZsaWN0cyB3aXRoIChudWxsKSBbYnVzIDQyLTQxXSkKPiBwY2lfYnVzIDAwMDQ6NDU6IGJ1c25f
-cmVzOiBbYnVzIDQ1LTQxXSBlbmQgaXMgdXBkYXRlZCB0byA0NQo+IHBjaV9idXMgMDAwNDo0NTog
-YnVzbl9yZXM6IGNhbiBub3QgaW5zZXJ0IFtidXMgNDVdIHVuZGVyIFtidXMgNDItNDFdIChjb25m
-bGljdHMgd2l0aCAobnVsbCkgW2J1cyA0Mi00MV0pCj4gcGNpIDAwMDQ6NDI6MDYuMDogZGV2aWNl
-cyBiZWhpbmQgYnJpZGdlIGFyZSB1bnVzYWJsZSBiZWNhdXNlIFtidXMgNDVdIGNhbm5vdCBiZSBh
-c3NpZ25lZCBmb3IgdGhlbQo+IHBjaV9idXMgMDAwNDo0NjogYnVzbl9yZXM6IGNhbiBub3QgaW5z
-ZXJ0IFtidXMgNDYtNDFdIHVuZGVyIFtidXMgNDItNDFdIChjb25mbGljdHMgd2l0aCAobnVsbCkg
-W2J1cyA0Mi00MV0pCj4gcGNpX2J1cyAwMDA0OjQ2OiBidXNuX3JlczogW2J1cyA0Ni00MV0gZW5k
-IGlzIHVwZGF0ZWQgdG8gNDYKPiBwY2lfYnVzIDAwMDQ6NDY6IGJ1c25fcmVzOiBjYW4gbm90IGlu
-c2VydCBbYnVzIDQ2XSB1bmRlciBbYnVzIDQyLTQxXSAoY29uZmxpY3RzIHdpdGggKG51bGwpIFti
-dXMgNDItNDFdKQo+IHBjaSAwMDA0OjQyOjBlLjA6IGRldmljZXMgYmVoaW5kIGJyaWRnZSBhcmUg
-dW51c2FibGUgYmVjYXVzZSBbYnVzIDQ2XSBjYW5ub3QgYmUgYXNzaWduZWQgZm9yIHRoZW0KPiBw
-Y2lfYnVzIDAwMDQ6NDI6IGJ1c25fcmVzOiBbYnVzIDQyLTQxXSBlbmQgaXMgdXBkYXRlZCB0byA0
-Ngo+IHBjaV9idXMgMDAwNDo0MjogYnVzbl9yZXM6IGNhbiBub3QgaW5zZXJ0IFtidXMgNDItNDZd
-IHVuZGVyIFtidXMgNDFdIChjb25mbGljdHMgd2l0aCAobnVsbCkgW2J1cyA0MV0pCj4gcGNpIDAw
-MDQ6NDE6MDAuMDogZGV2aWNlcyBiZWhpbmQgYnJpZGdlIGFyZSB1bnVzYWJsZSBiZWNhdXNlIFti
-dXMgNDItNDZdIGNhbm5vdCBiZSBhc3NpZ25lZCBmb3IgdGhlbQo+IHBjaWVwb3J0IDAwMDQ6NDA6
-MDAuMDogYnJpZGdlIGhhcyBzdWJvcmRpbmF0ZSA0MSBidXQgbWF4IGJ1c24gNDYKPiAKPiBXaGls
-ZSB3ZSB3b3VsZCBsaWtlIHRvIHNldCB0aGUgaXNfaG90cGx1Z19icmlkZ2UgZmxhZwo+IChxdWly
-a19ob3RwbHVnX2JyaWRnZSgpKSwgbWFueSBlbWJlZGRlZCBTb0NzIHRoYXQgdXNlIHRoZSBEV0Mg
-Y29udHJvbGxlcgo+IGhhdmUgc3ludGhlc2l6ZWQgdGhlIGNvbnRyb2xsZXIgd2l0aG91dCBob3Qt
-cGx1ZyBzdXBwb3J0Lgo+IFRodXMsIHRoZSBMaW5rIFVwIElSUSBsb2dpYyBpcyBvbmx5IG1pbWlj
-a2luZyBob3QtcGx1ZyBmdW5jdGlvbmFsaXR5LCBpLmUuCj4gaXQgaXMgbm90IGNvbXBsaWFudCB3
-aXRoIHRoZSBQQ0kgSG90LVBsdWcgU3BlY2lmaWNhdGlvbiwgc28gd2UgY2Fubm90IG1ha2UKPiB1
-c2Ugb2YgdGhlIGlzX2hvdHBsdWdfYnJpZGdlIGZsYWcuCj4gCj4gSW4gb3JkZXIgdG8gbGV0IHRo
-ZSBMaW5rIFVwIElSUSBsb2dpYyBoYW5kbGUgUENJZSBzd2l0Y2hlcyB0aGF0IGFyZSBhbHJlYWR5
-Cj4gcG93ZXJlZCBvbiAoUENJZSBzd2l0Y2hlcyB0aGF0IG5vdCBwb3dlcmVkIG9uIGFscmVhZHkg
-bmVlZCB0byBpbXBsZW1lbnQgYQo+IHB3cmN0cmwgZHJpdmVyKSwgZG9uJ3QgcGVyZm9ybSBhIHBj
-aV9ob3N0X3Byb2JlKCkgY2FsbCBkdXJpbmcgcHJvYmUoKQo+ICh3aGljaCBkaXNyZWdhcmRzIHRo
-ZSBkZWxheXMgcmVxdWlyZWQgYnkgdGhlIFBDSWUgc3BlY2lmaWNhdGlvbikuCj4gCj4gSW5zdGVh
-ZCBsZXQgdGhlIGZpcnN0IExpbmsgVXAgSVJRIGNhbGwgcGNpX2hvc3RfcHJvYmUoKS4gQW55IGZv
-bGxvdyB1cAo+IExpbmsgVXAgSVJRIHdpbGwgY2FsbCBwY2lfcmVzY2FuX2J1cygpLgo+IAoKVGhh
-bmtzIGZvciBmaXhpbmcgdGhpcywgSSd2IHRlc3RlZCBpdCBvbiBSSzM1ODhTLUVWQjEgd2l0aCBi
-b3RoIG9mIFBDSWUKc3dpdGNoICsgMiBOVk1lIGFuZCBOVk1lIGRpcmVjdGx5IGNvbm5lY3RlZC4K
-CkZXSVcsClRlc3RlZC1ieTogU2hhd24gTGluIDxzaGF3bi5saW5Acm9jay1jaGlwcy5jb20+Cgo+
-IEZpeGVzOiBlYzlmZDQ5OWI5YzYgKCJQQ0k6IGR3LXJvY2tjaGlwOiBEb24ndCB3YWl0IGZvciBs
-aW5rIHNpbmNlIHdlIGNhbiBkZXRlY3QgTGluayBVcCIpCj4gRml4ZXM6IDBlMGI0NWFiNWQ3NyAo
-IlBDSTogZHctcm9ja2NoaXA6IEVudW1lcmF0ZSBlbmRwb2ludHMgYmFzZWQgb24gZGxsX2xpbmtf
-dXAgSVJRIikKPiBSZXBvcnRlZC1ieTogRlVLQVVNSSBOYW9raSA8bmFva2lAcmFkeGEuY29tPgo+
-IENsb3NlczogaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbGludXgtcGNpLzFFOEU0REI3NzM5NzBD
-QjUrNWE1MmM5ZTEtMDFiOC00ODcyLTk5YjctMDIxMDk5ZjA0MDMxQHJhZHhhLmNvbS8KPiBTaWdu
-ZWQtb2ZmLWJ5OiBOaWtsYXMgQ2Fzc2VsIDxjYXNzZWxAa2VybmVsLm9yZz4KPiAtLS0KPiAgIC4u
-Li9wY2kvY29udHJvbGxlci9kd2MvcGNpZS1kZXNpZ253YXJlLWhvc3QuYyB8IDcwICsrKysrKysr
-KysrKysrKystLS0KPiAgIGRyaXZlcnMvcGNpL2NvbnRyb2xsZXIvZHdjL3BjaWUtZGVzaWdud2Fy
-ZS5oICB8ICA1ICsrCj4gICBkcml2ZXJzL3BjaS9jb250cm9sbGVyL2R3Yy9wY2llLWR3LXJvY2tj
-aGlwLmMgfCAgNSArLQo+ICAgZHJpdmVycy9wY2kvY29udHJvbGxlci9kd2MvcGNpZS1xY29tLmMg
-ICAgICAgIHwgIDUgKy0KPiAgIDQgZmlsZXMgY2hhbmdlZCwgNjggaW5zZXJ0aW9ucygrKSwgMTcg
-ZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvZHdj
-L3BjaWUtZGVzaWdud2FyZS1ob3N0LmMgYi9kcml2ZXJzL3BjaS9jb250cm9sbGVyL2R3Yy9wY2ll
-LWRlc2lnbndhcmUtaG9zdC5jCj4gaW5kZXggZTkyNTEzYzViZGE1MS4uODY1NDM0NjcyOTU3NCAx
-MDA2NDQKPiAtLS0gYS9kcml2ZXJzL3BjaS9jb250cm9sbGVyL2R3Yy9wY2llLWRlc2lnbndhcmUt
-aG9zdC5jCj4gKysrIGIvZHJpdmVycy9wY2kvY29udHJvbGxlci9kd2MvcGNpZS1kZXNpZ253YXJl
-LWhvc3QuYwo+IEBAIC01NjUsNiArNTY1LDU5IEBAIHN0YXRpYyBpbnQgZHdfcGNpZV9ob3N0X2dl
-dF9yZXNvdXJjZXMoc3RydWN0IGR3X3BjaWVfcnAgKnBwKQo+ICAgCXJldHVybiAwOwo+ICAgfQo+
-ICAgCj4gK3N0YXRpYyBpbnQgZHdfcGNpZV9ob3N0X2luaXRpYWxfc2NhbihzdHJ1Y3QgZHdfcGNp
-ZV9ycCAqcHApCj4gK3sKPiArCXN0cnVjdCBkd19wY2llICpwY2kgPSB0b19kd19wY2llX2Zyb21f
-cHAocHApOwo+ICsJc3RydWN0IHBjaV9ob3N0X2JyaWRnZSAqYnJpZGdlID0gcHAtPmJyaWRnZTsK
-PiArCWludCByZXQ7Cj4gKwo+ICsJcmV0ID0gcGNpX2hvc3RfcHJvYmUoYnJpZGdlKTsKPiArCWlm
-IChyZXQpCj4gKwkJcmV0dXJuIHJldDsKPiArCj4gKwlpZiAocHAtPm9wcy0+cG9zdF9pbml0KQo+
-ICsJCXBwLT5vcHMtPnBvc3RfaW5pdChwcCk7Cj4gKwo+ICsJZHdjX3BjaWVfZGVidWdmc19pbml0
-KHBjaSwgRFdfUENJRV9SQ19UWVBFKTsKPiArCj4gKwlyZXR1cm4gMDsKPiArfQo+ICsKPiArdm9p
-ZCBkd19wY2llX2hhbmRsZV9saW5rX3VwX2lycShzdHJ1Y3QgZHdfcGNpZV9ycCAqcHApCj4gK3sK
-PiArCWlmICghcHAtPmluaXRpYWxfbGlua3VwX2lycV9kb25lKSB7Cj4gKwkJaW50IHJldDsKPiAr
-Cj4gKwkJcmV0ID0gZHdfcGNpZV9ob3N0X2luaXRpYWxfc2NhbihwcCk7Cj4gKwkJaWYgKHJldCkg
-ewo+ICsJCQlzdHJ1Y3QgZHdfcGNpZSAqcGNpID0gdG9fZHdfcGNpZV9mcm9tX3BwKHBwKTsKPiAr
-CQkJc3RydWN0IGRldmljZSAqZGV2ID0gcGNpLT5kZXY7Cj4gKwo+ICsJCQlkZXZfZXJyKGRldiwg
-IkluaXRpYWwgc2NhbiBmcm9tIElSUSBmYWlsZWQ6ICVkXG4iLCByZXQpOwo+ICsKPiArCQkJZHdf
-cGNpZV9zdG9wX2xpbmsocGNpKTsKPiArCj4gKwkJCWR3X3BjaWVfZWRtYV9yZW1vdmUocGNpKTsK
-PiArCj4gKwkJCWlmIChwcC0+aGFzX21zaV9jdHJsKQo+ICsJCQkJZHdfcGNpZV9mcmVlX21zaShw
-cCk7Cj4gKwo+ICsJCQlpZiAocHAtPm9wcy0+ZGVpbml0KQo+ICsJCQkJcHAtPm9wcy0+ZGVpbml0
-KHBwKTsKPiArCj4gKwkJCWlmIChwcC0+Y2ZnKQo+ICsJCQkJcGNpX2VjYW1fZnJlZShwcC0+Y2Zn
-KTsKPiArCQl9IGVsc2Ugewo+ICsJCQlwcC0+aW5pdGlhbF9saW5rdXBfaXJxX2RvbmUgPSB0cnVl
-Owo+ICsJCX0KPiArCX0gZWxzZSB7Cj4gKwkJLyogUmVzY2FuIHRoZSBidXMgdG8gZW51bWVyYXRl
-IGVuZHBvaW50IGRldmljZXMgKi8KPiArCQlwY2lfbG9ja19yZXNjYW5fcmVtb3ZlKCk7Cj4gKwkJ
-cGNpX3Jlc2Nhbl9idXMocHAtPmJyaWRnZS0+YnVzKTsKPiArCQlwY2lfdW5sb2NrX3Jlc2Nhbl9y
-ZW1vdmUoKTsKPiArCX0KPiArfQo+ICsKPiAgIGludCBkd19wY2llX2hvc3RfaW5pdChzdHJ1Y3Qg
-ZHdfcGNpZV9ycCAqcHApCj4gICB7Cj4gICAJc3RydWN0IGR3X3BjaWUgKnBjaSA9IHRvX2R3X3Bj
-aWVfZnJvbV9wcChwcCk7Cj4gQEAgLTY2OSwxOCArNzIyLDE3IEBAIGludCBkd19wY2llX2hvc3Rf
-aW5pdChzdHJ1Y3QgZHdfcGNpZV9ycCAqcHApCj4gICAJICogSWYgdGhlcmUgaXMgbm8gTGluayBV
-cCBJUlEsIHdlIHNob3VsZCBub3QgYnlwYXNzIHRoZSBkZWxheQo+ICAgCSAqIGJlY2F1c2UgdGhh
-dCB3b3VsZCByZXF1aXJlIHVzZXJzIHRvIG1hbnVhbGx5IHJlc2NhbiBmb3IgZGV2aWNlcy4KPiAg
-IAkgKi8KPiAtCWlmICghcHAtPnVzZV9saW5rdXBfaXJxKQo+ICsJaWYgKCFwcC0+dXNlX2xpbmt1
-cF9pcnEpIHsKPiAgIAkJLyogSWdub3JlIGVycm9ycywgdGhlIGxpbmsgbWF5IGNvbWUgdXAgbGF0
-ZXIgKi8KPiAgIAkJZHdfcGNpZV93YWl0X2Zvcl9saW5rKHBjaSk7Cj4gICAKPiAtCXJldCA9IHBj
-aV9ob3N0X3Byb2JlKGJyaWRnZSk7Cj4gLQlpZiAocmV0KQo+IC0JCWdvdG8gZXJyX3N0b3BfbGlu
-azsKPiAtCj4gLQlpZiAocHAtPm9wcy0+cG9zdF9pbml0KQo+IC0JCXBwLT5vcHMtPnBvc3RfaW5p
-dChwcCk7Cj4gLQo+IC0JZHdjX3BjaWVfZGVidWdmc19pbml0KHBjaSwgRFdfUENJRV9SQ19UWVBF
-KTsKPiArCQkvKgo+ICsJCSAqIEZvciBwbGF0Zm9ybXMgd2l0aCBMaW5rIFVwIElSUSwgaW5pdGlh
-bCBzY2FuIHdpbGwgYmUgZG9uZQo+ICsJCSAqIG9uIGZpcnN0IExpbmsgVXAgSVJRLgo+ICsJCSAq
-Lwo+ICsJCWlmIChkd19wY2llX2hvc3RfaW5pdGlhbF9zY2FuKHBwKSkKPiArCQkJZ290byBlcnJf
-c3RvcF9saW5rOwo+ICsJfQo+ICAgCj4gICAJcmV0dXJuIDA7Cj4gICAKPiBkaWZmIC0tZ2l0IGEv
-ZHJpdmVycy9wY2kvY29udHJvbGxlci9kd2MvcGNpZS1kZXNpZ253YXJlLmggYi9kcml2ZXJzL3Bj
-aS9jb250cm9sbGVyL2R3Yy9wY2llLWRlc2lnbndhcmUuaAo+IGluZGV4IGU5OTVmNjkyYTFlY2Qu
-LmEzMWJkOTM0OTBkY2QgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9wY2kvY29udHJvbGxlci9kd2Mv
-cGNpZS1kZXNpZ253YXJlLmgKPiArKysgYi9kcml2ZXJzL3BjaS9jb250cm9sbGVyL2R3Yy9wY2ll
-LWRlc2lnbndhcmUuaAo+IEBAIC00MjcsNiArNDI3LDcgQEAgc3RydWN0IGR3X3BjaWVfcnAgewo+
-ICAgCWludAkJCW1zZ19hdHVfaW5kZXg7Cj4gICAJc3RydWN0IHJlc291cmNlCQkqbXNnX3JlczsK
-PiAgIAlib29sCQkJdXNlX2xpbmt1cF9pcnE7Cj4gKwlib29sCQkJaW5pdGlhbF9saW5rdXBfaXJx
-X2RvbmU7Cj4gICAJc3RydWN0IHBjaV9lcV9wcmVzZXRzCXByZXNldHM7Cj4gICAJc3RydWN0IHBj
-aV9jb25maWdfd2luZG93ICpjZmc7Cj4gICAJYm9vbAkJCWVjYW1fZW5hYmxlZDsKPiBAQCAtODA3
-LDYgKzgwOCw3IEBAIHZvaWQgZHdfcGNpZV9tc2lfaW5pdChzdHJ1Y3QgZHdfcGNpZV9ycCAqcHAp
-Owo+ICAgaW50IGR3X3BjaWVfbXNpX2hvc3RfaW5pdChzdHJ1Y3QgZHdfcGNpZV9ycCAqcHApOwo+
-ICAgdm9pZCBkd19wY2llX2ZyZWVfbXNpKHN0cnVjdCBkd19wY2llX3JwICpwcCk7Cj4gICBpbnQg
-ZHdfcGNpZV9zZXR1cF9yYyhzdHJ1Y3QgZHdfcGNpZV9ycCAqcHApOwo+ICt2b2lkIGR3X3BjaWVf
-aGFuZGxlX2xpbmtfdXBfaXJxKHN0cnVjdCBkd19wY2llX3JwICpwcCk7Cj4gICBpbnQgZHdfcGNp
-ZV9ob3N0X2luaXQoc3RydWN0IGR3X3BjaWVfcnAgKnBwKTsKPiAgIHZvaWQgZHdfcGNpZV9ob3N0
-X2RlaW5pdChzdHJ1Y3QgZHdfcGNpZV9ycCAqcHApOwo+ICAgaW50IGR3X3BjaWVfYWxsb2NhdGVf
-ZG9tYWlucyhzdHJ1Y3QgZHdfcGNpZV9ycCAqcHApOwo+IEBAIC04NDQsNiArODQ2LDkgQEAgc3Rh
-dGljIGlubGluZSBpbnQgZHdfcGNpZV9zZXR1cF9yYyhzdHJ1Y3QgZHdfcGNpZV9ycCAqcHApCj4g
-ICAJcmV0dXJuIDA7Cj4gICB9Cj4gICAKPiArc3RhdGljIGlubGluZSB2b2lkIGR3X3BjaWVfaGFu
-ZGxlX2xpbmtfdXBfaXJxKHN0cnVjdCBkd19wY2llX3JwICpwcCkKPiAreyB9Cj4gKwo+ICAgc3Rh
-dGljIGlubGluZSBpbnQgZHdfcGNpZV9ob3N0X2luaXQoc3RydWN0IGR3X3BjaWVfcnAgKnBwKQo+
-ICAgewo+ICAgCXJldHVybiAwOwo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3BjaS9jb250cm9sbGVy
-L2R3Yy9wY2llLWR3LXJvY2tjaGlwLmMgYi9kcml2ZXJzL3BjaS9jb250cm9sbGVyL2R3Yy9wY2ll
-LWR3LXJvY2tjaGlwLmMKPiBpbmRleCAzZTI3NTJjN2RkMDk2Li44ZjJjYzFlZjI1ZTNkIDEwMDY0
-NAo+IC0tLSBhL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvZHdjL3BjaWUtZHctcm9ja2NoaXAuYwo+
-ICsrKyBiL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvZHdjL3BjaWUtZHctcm9ja2NoaXAuYwo+IEBA
-IC00NjYsMTAgKzQ2Niw3IEBAIHN0YXRpYyBpcnFyZXR1cm5fdCByb2NrY2hpcF9wY2llX3JjX3N5
-c19pcnFfdGhyZWFkKGludCBpcnEsIHZvaWQgKmFyZykKPiAgIAkJaWYgKHJvY2tjaGlwX3BjaWVf
-bGlua191cChwY2kpKSB7Cj4gICAJCQltc2xlZXAoUENJRV9SRVNFVF9DT05GSUdfV0FJVF9NUyk7
-Cj4gICAJCQlkZXZfZGJnKGRldiwgIlJlY2VpdmVkIExpbmsgdXAgZXZlbnQuIFN0YXJ0aW5nIGVu
-dW1lcmF0aW9uIVxuIik7Cj4gLQkJCS8qIFJlc2NhbiB0aGUgYnVzIHRvIGVudW1lcmF0ZSBlbmRw
-b2ludCBkZXZpY2VzICovCj4gLQkJCXBjaV9sb2NrX3Jlc2Nhbl9yZW1vdmUoKTsKPiAtCQkJcGNp
-X3Jlc2Nhbl9idXMocHAtPmJyaWRnZS0+YnVzKTsKPiAtCQkJcGNpX3VubG9ja19yZXNjYW5fcmVt
-b3ZlKCk7Cj4gKwkJCWR3X3BjaWVfaGFuZGxlX2xpbmtfdXBfaXJxKHBwKTsKPiAgIAkJfQo+ICAg
-CX0KPiAgIAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3BjaS9jb250cm9sbGVyL2R3Yy9wY2llLXFj
-b20uYyBiL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvZHdjL3BjaWUtcWNvbS5jCj4gaW5kZXggYzQ4
-YTIwNjAyZDdmYS4uMmQ4YWNhNjYzMDk0OSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL3BjaS9jb250
-cm9sbGVyL2R3Yy9wY2llLXFjb20uYwo+ICsrKyBiL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvZHdj
-L3BjaWUtcWNvbS5jCj4gQEAgLTE2MTcsMTAgKzE2MTcsNyBAQCBzdGF0aWMgaXJxcmV0dXJuX3Qg
-cWNvbV9wY2llX2dsb2JhbF9pcnFfdGhyZWFkKGludCBpcnEsIHZvaWQgKmRhdGEpCj4gICAJaWYg
-KEZJRUxEX0dFVChQQVJGX0lOVF9BTExfTElOS19VUCwgc3RhdHVzKSkgewo+ICAgCQltc2xlZXAo
-UENJRV9SRVNFVF9DT05GSUdfV0FJVF9NUyk7Cj4gICAJCWRldl9kYmcoZGV2LCAiUmVjZWl2ZWQg
-TGluayB1cCBldmVudC4gU3RhcnRpbmcgZW51bWVyYXRpb24hXG4iKTsKPiAtCQkvKiBSZXNjYW4g
-dGhlIGJ1cyB0byBlbnVtZXJhdGUgZW5kcG9pbnQgZGV2aWNlcyAqLwo+IC0JCXBjaV9sb2NrX3Jl
-c2Nhbl9yZW1vdmUoKTsKPiAtCQlwY2lfcmVzY2FuX2J1cyhwcC0+YnJpZGdlLT5idXMpOwo+IC0J
-CXBjaV91bmxvY2tfcmVzY2FuX3JlbW92ZSgpOwo+ICsJCWR3X3BjaWVfaGFuZGxlX2xpbmtfdXBf
-aXJxKHBwKTsKPiAgIAo+ICAgCQlxY29tX3BjaWVfaWNjX29wcF91cGRhdGUocGNpZSk7Cj4gICAJ
-fSBlbHNlIHsKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-XwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFk
-ZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4
-LXJvY2tjaGlwCg==
+From: Heikki Krogerus <heikki.krogerus@linux.intel.com>
+
+The port and plug altmodes can't be bound to the altmode
+drivers because the altmode drivers are meant for partner
+communication using the VDM (vendor defined messages), but
+they can still be part of the bus. The bus will make sure
+that the normal bus notifications are available also with
+the port altmodes.
+
+The previously used common device type for all alternate
+modes is replaced with separate dedicated device types for
+port, plug, and partner alternate modes.
+
+Signed-off-by: Heikki Krogerus <heikki.krogerus@linux.intel.com>
+---
+ drivers/usb/typec/bus.c   | 24 +++++++++++++++++++++++-
+ drivers/usb/typec/bus.h   |  8 ++++++--
+ drivers/usb/typec/class.c | 33 ++++++++++++++++++++++-----------
+ 3 files changed, 51 insertions(+), 14 deletions(-)
+
+diff --git a/drivers/usb/typec/bus.c b/drivers/usb/typec/bus.c
+index a884cec9ab7e..a33da7f458a5 100644
+--- a/drivers/usb/typec/bus.c
++++ b/drivers/usb/typec/bus.c
+@@ -445,7 +445,23 @@ static struct attribute *typec_attrs[] = {
+ 	&dev_attr_description.attr,
+ 	NULL
+ };
+-ATTRIBUTE_GROUPS(typec);
++
++static umode_t typec_is_visible(struct kobject *kobj, struct attribute *attr, int n)
++{
++	if (is_typec_partner_altmode(kobj_to_dev(kobj)))
++		return attr->mode;
++	return 0;
++}
++
++static const struct attribute_group typec_group = {
++	.is_visible = typec_is_visible,
++	.attrs = typec_attrs,
++};
++
++static const struct attribute_group *typec_groups[] = {
++	&typec_group,
++	NULL
++};
+ 
+ static int typec_match(struct device *dev, const struct device_driver *driver)
+ {
+@@ -453,6 +469,9 @@ static int typec_match(struct device *dev, const struct device_driver *driver)
+ 	struct typec_altmode *altmode = to_typec_altmode(dev);
+ 	const struct typec_device_id *id;
+ 
++	if (!is_typec_partner_altmode(dev))
++		return 0;
++
+ 	for (id = drv->id_table; id->svid; id++)
+ 		if (id->svid == altmode->svid)
+ 			return 1;
+@@ -463,6 +482,9 @@ static int typec_uevent(const struct device *dev, struct kobj_uevent_env *env)
+ {
+ 	const struct typec_altmode *altmode = to_typec_altmode(dev);
+ 
++	if (!is_typec_partner_altmode(dev))
++		return 0;
++
+ 	if (add_uevent_var(env, "SVID=%04X", altmode->svid))
+ 		return -ENOMEM;
+ 
+diff --git a/drivers/usb/typec/bus.h b/drivers/usb/typec/bus.h
+index 643b8c81786d..b58e131450d1 100644
+--- a/drivers/usb/typec/bus.h
++++ b/drivers/usb/typec/bus.h
+@@ -29,8 +29,12 @@ struct altmode {
+ #define to_altmode(d) container_of(d, struct altmode, adev)
+ 
+ extern const struct bus_type typec_bus;
+-extern const struct device_type typec_altmode_dev_type;
++extern const struct device_type typec_port_altmode_dev_type;
++extern const struct device_type typec_plug_altmode_dev_type;
++extern const struct device_type typec_partner_altmode_dev_type;
+ 
+-#define is_typec_altmode(_dev_) (_dev_->type == &typec_altmode_dev_type)
++#define is_typec_port_altmode(dev) ((dev)->type == &typec_port_altmode_dev_type)
++#define is_typec_plug_altmode(dev) ((dev)->type == &typec_plug_altmode_dev_type)
++#define is_typec_partner_altmode(dev) ((dev)->type == &typec_partner_altmode_dev_type)
+ 
+ #endif /* __USB_TYPEC_ALTMODE_H__ */
+diff --git a/drivers/usb/typec/class.c b/drivers/usb/typec/class.c
+index 9b2647cb199b..d6b88317f8a4 100644
+--- a/drivers/usb/typec/class.c
++++ b/drivers/usb/typec/class.c
+@@ -235,7 +235,7 @@ static int altmode_match(struct device *dev, const void *data)
+ 	struct typec_altmode *adev = to_typec_altmode(dev);
+ 	const struct typec_device_id *id = data;
+ 
+-	if (!is_typec_altmode(dev))
++	if (!is_typec_port_altmode(dev))
+ 		return 0;
+ 
+ 	return (adev->svid == id->svid);
+@@ -532,15 +532,28 @@ static void typec_altmode_release(struct device *dev)
+ 	kfree(alt);
+ }
+ 
+-const struct device_type typec_altmode_dev_type = {
+-	.name = "typec_alternate_mode",
++const struct device_type typec_port_altmode_dev_type = {
++	.name = "typec_port_alternate_mode",
++	.groups = typec_altmode_groups,
++	.release = typec_altmode_release,
++};
++
++const struct device_type typec_plug_altmode_dev_type = {
++	.name = "typec_plug_alternate_mode",
++	.groups = typec_altmode_groups,
++	.release = typec_altmode_release,
++};
++
++const struct device_type typec_partner_altmode_dev_type = {
++	.name = "typec_partner_alternate_mode",
+ 	.groups = typec_altmode_groups,
+ 	.release = typec_altmode_release,
+ };
+ 
+ static struct typec_altmode *
+ typec_register_altmode(struct device *parent,
+-		       const struct typec_altmode_desc *desc)
++		       const struct typec_altmode_desc *desc,
++		       const struct device_type *type)
+ {
+ 	unsigned int id = altmode_id_get(parent);
+ 	bool is_port = is_typec_port(parent);
+@@ -575,7 +588,7 @@ typec_register_altmode(struct device *parent,
+ 
+ 	alt->adev.dev.parent = parent;
+ 	alt->adev.dev.groups = alt->groups;
+-	alt->adev.dev.type = &typec_altmode_dev_type;
++	alt->adev.dev.type = type;
+ 	dev_set_name(&alt->adev.dev, "%s.%u", dev_name(parent), id);
+ 
+ 	get_device(alt->adev.dev.parent);
+@@ -584,9 +597,7 @@ typec_register_altmode(struct device *parent,
+ 	if (!is_port)
+ 		typec_altmode_set_partner(alt);
+ 
+-	/* The partners are bind to drivers */
+-	if (is_typec_partner(parent))
+-		alt->adev.dev.bus = &typec_bus;
++	alt->adev.dev.bus = &typec_bus;
+ 
+ 	/* Plug alt modes need a class to generate udev events. */
+ 	if (is_typec_plug(parent))
+@@ -963,7 +974,7 @@ struct typec_altmode *
+ typec_partner_register_altmode(struct typec_partner *partner,
+ 			       const struct typec_altmode_desc *desc)
+ {
+-	return typec_register_altmode(&partner->dev, desc);
++	return typec_register_altmode(&partner->dev, desc, &typec_partner_altmode_dev_type);
+ }
+ EXPORT_SYMBOL_GPL(typec_partner_register_altmode);
+ 
+@@ -1193,7 +1204,7 @@ struct typec_altmode *
+ typec_plug_register_altmode(struct typec_plug *plug,
+ 			    const struct typec_altmode_desc *desc)
+ {
+-	return typec_register_altmode(&plug->dev, desc);
++	return typec_register_altmode(&plug->dev, desc, &typec_plug_altmode_dev_type);
+ }
+ EXPORT_SYMBOL_GPL(typec_plug_register_altmode);
+ 
+@@ -2493,7 +2504,7 @@ typec_port_register_altmode(struct typec_port *port,
+ 		return ERR_CAST(retimer);
+ 	}
+ 
+-	adev = typec_register_altmode(&port->dev, desc);
++	adev = typec_register_altmode(&port->dev, desc, &typec_port_altmode_dev_type);
+ 	if (IS_ERR(adev)) {
+ 		typec_retimer_put(retimer);
+ 		typec_mux_put(mux);
+-- 
+2.51.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
