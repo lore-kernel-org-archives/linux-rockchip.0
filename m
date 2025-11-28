@@ -4,167 +4,159 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1493CFD376
-	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Nov 2025 12:34:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36BB9D116EA
+	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Nov 2025 18:43:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FGpBHJjf5Afa5xcdP2TX8Ueig9p2B4JtL7XsLDakErg=; b=W3ZxrRt3SWQlzVBslp57Si8mEc
-	zhbfMLLtZ40qS0oQwe5GCJMJAJCCcqIDj7HAyCAQGdH8N1T8QUbotq2o76RY34cQ2NKZhqVxqD+5S
-	RtN5uVWdbsoF0/YJiA/yM1d0iEn4NWtFlIkdXn9YHN9HPLK5Vx2O0Cz5rVk6spDtB7nDjH2onFa0l
-	8c/Km2chz/8iA+1TZU1fd7d5GBnMJcDsqm3u3ye6jyxQrDPSkyFoj+/noXoOYZ6Maf2KjjFfyOJZM
-	PFC4AnEOq0O+fvjWKXLv0eIG3BvC+axedp/FWuuN56KIDf72HAoUIkRzTpw3j3eIIRYh71rljxRXY
-	E30fMLMA==;
+	List-Unsubscribe:List-Id:MIME-Version:Cc:To:Subject:From:Date:Message-ID:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=GOV1ifhTvIotqg99TraTBR7rcTQTOxKtcDBdC1rELTU=; b=mvbfsIdvyt/CoGNVk1Afd9N6Sj
+	juEGgop5muOktertsYJ7ZYDjxjCC3YHGuJ+RiUBLSb3f5tJ+WLWpfbDEs1XXG0+rP3Fqm0VQUWlpT
+	H4pxSDRNnKduMEFLkZwDkUAUwAW6maymGn9a1jahaTHBGGDUYx/8TQeSyRGtCq1Is3j2+Bi/5yAd2
+	dVCyRn/j9E/VELJI0EEZBmTQvgXPgPtkSSphxTywjmezuCroQf85aTEpS1v7MrQXkq9YiW89ZcQs3
+	RvX4owG7kYJWUJP6C9SellLmi060vnAlrzTu8arCbMlWemxZgXrLkzP8nDN8sEciF/VWpJq8FPFVm
+	Rz3Wo8Aw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vOxgT-00000000Qqq-1WrB;
-	Fri, 28 Nov 2025 12:34:45 +0000
-Received: from mail-northeuropeazlp170100001.outbound.protection.outlook.com ([2a01:111:f403:c200::1] helo=DB3PR0202CU003.outbound.protection.outlook.com)
+	id 1vP3Qu-00000000mZA-467b;
+	Fri, 28 Nov 2025 18:43:05 +0000
+Received: from mail-westeuropeazon11011020.outbound.protection.outlook.com ([52.101.70.20] helo=AS8PR04CU009.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vOxgR-00000000QqV-0eaN
-	for linux-rockchip@lists.infradead.org;
-	Fri, 28 Nov 2025 12:34:44 +0000
+	id 1vP3Qr-00000000mYQ-1lTh;
+	Fri, 28 Nov 2025 18:43:03 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=Aoxlxig2NlRMxlKsudtVI6AKUlgK8UzDHtQsZv6ou57CtZ2NEpZkod2rwFGxRQ1sMP0o3k0IODyRc+1qEcvGsApXvRCwWTNhdHI//gzMPzlDLeQ8ji/oVZcYMWPPfGcerr5qCTI0iPDihehaPKMIFJI9hu7JFA/z0UFFAZ8FA5Vi4aIEiFlBGkJi079nnYef3pY01rxNeSjy2lGRzjqSHLXRjj5JK4dZzdBeHvULp2m231E1klt9frnVOo2eMv3gftZweqMe7RDBSXmgcRQFUIxlmN7ewSeiSw3fk0BLFPBhU/RcaDaDSHETHuzq9Gs2YuGK1hgVui2cRBU3bBDJsg==
+ b=kV9I2bmoF6011rLzvEomIv79RvfT7lFb4JyS6qqieZOFIQ34/wUWeqZ3eDyYlsXGDyZlkNhg1i2VH8oPCXEgf4cQhDD3R/L3xlc6jTSKd5x5GXaz2j7keonisbe30TBGVPNlBXnppEFkYJd8OopEORfPpJ8pKJiQ1d5VVWEOuXXdcdxvfu0ly/ST7SKNuZPu6AKLKyILYXLUpCZQeQuHdwhbaTI8q7eh3H/W067oNlOD9wXM+o4E1/NW2+VCYA7e5pYLos1R60i/QDWSE+/x1Fx3cwH7FrtANG/nGYDoTYi/uu7UZX5rWpg9OtoOxWYh25a+DWq8MmPZLLIJTf9cog==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=cXMP9Yi2It1jezvWlLJfF7viDbAFxjuqIQePiOvdTD0=;
- b=vE0pcesIQFKZgvgxQqMBSt/oOehL704S1LSS91NguBY4QgZsgKzQ/UXEdzYyMCbw7mTKabitHl1iRLzxMVSFgu/YSRAAN4AKZh5Boi0m5rwzW/92QeE7LZe6d2N3CSxutageD26z934JYhjnvvSp+/dh94yW7txGuOwNjw219DrUyEEb1tbl6x+WvUsTJMvmlpjLX++pPq0+mjGuX56iLUcqoc3xSxjHWuAytlGmcrG/MqfwmtvM2u8ITmd3RocpdEBtZ1VwATb6mrp/mRaOW3kqoxhRc8TZnMDSatq3zjSWiVqeEndH/f6FbbyCHgdRvQkaW6DHNNrb+NSS8P50oQ==
+ bh=wbTyLj5bss0VjZ4Zc+iBPs7aeqlVIts3Gs+PRO+gzAg=;
+ b=otq+0pxadHDAidn4zzCcExw+sha3UqTZ7OWRRVbUuOGweaO8B+3D9p+90OA5IkbR2OtJh7n4pgeNMaRddL9wwpsqeP/J87IsO7PHpvtpndMgUIfhExDM/8ivkntp9UFEwV3pKEMipgNEYYk0IYCflZp2ZdZpN6v5GwSRQIC7oR2B6pJt2+6lzHJs86JUS281uzcQuLN5zlplxGMo+kdmFx69O9oo8xPhVQ8GwclJXyhdFZon4MEr5u4DW4oTHgPvUFUcZHtA0xgcaF08N47jONmy69Sp+prqD7GRPaaVei3w9f6AJ01Fqq7Ij6Vjz1ub0ecoPTIaJzY09eNwoK7vjg==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=cherry.de; dmarc=pass action=none header.from=cherry.de;
  dkim=pass header.d=cherry.de; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cherry.de;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=cXMP9Yi2It1jezvWlLJfF7viDbAFxjuqIQePiOvdTD0=;
- b=Yo7ZNFooWvI8lRSK0vHeQKnV2+ZgGAiFwTXWL9/6gLAh217AxMIsSQQk/nsgtGM+imrmvfEUOFkYVLNjtJ6modxLy4ZsIdBQ9yZoHnKlwy5rYSnvGLcj1PHuK70+EouEVMmrrCHKVCn0SliOc/zvG9JiBf1US3cgsUxGniVxPh0=
+ bh=wbTyLj5bss0VjZ4Zc+iBPs7aeqlVIts3Gs+PRO+gzAg=;
+ b=cj+NPVuuX9BiM9GQgleyzckQirkyfTDajlJVwp+mdxndmU+F38MA34/DS0GgKRr8LBWVxd/fogyfkAc9ZQegjG7izVxrWBvxm/TuTEeKoRRENAoAf0auqE+h0VMboNcq8CWGcl4YwZ+vRhvG9+8ns6SSthWKzNg+XHuBQ1P2nlQ=
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=cherry.de;
 Received: from GVXPR04MB12038.eurprd04.prod.outlook.com (2603:10a6:150:2be::5)
- by GVXPR04MB10706.eurprd04.prod.outlook.com (2603:10a6:150:219::14) with
+ by DB9PR04MB9578.eurprd04.prod.outlook.com (2603:10a6:10:305::16) with
  Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9366.15; Fri, 28 Nov
- 2025 12:34:37 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9366.16; Fri, 28 Nov
+ 2025 18:42:53 +0000
 Received: from GVXPR04MB12038.eurprd04.prod.outlook.com
  ([fe80::1033:5a9a:dc18:dad]) by GVXPR04MB12038.eurprd04.prod.outlook.com
  ([fe80::1033:5a9a:dc18:dad%4]) with mapi id 15.20.9366.012; Fri, 28 Nov 2025
- 12:34:36 +0000
-Message-ID: <ffe5e4d1-49d8-4075-a5c4-6f27dda7f35a@cherry.de>
-Date: Fri, 28 Nov 2025 13:33:55 +0100
+ 18:42:53 +0000
+Message-ID: <0b20d760-ad4f-41c0-b733-39db10d6cc41@cherry.de>
+Date: Fri, 28 Nov 2025 19:41:34 +0100
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: rockchip: Fix audio-supply for ROCK Pi 4
-To: FUKAUMI Naoki <naoki@radxa.com>, heiko@sntech.de,
- Alex Bee <knaerzche@gmail.com>
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- knaerzche@gmail.com, devicetree@vger.kernel.org,
- linux-rockchip@lists.infradead.org, Heinrich Schuchardt <xypron.glpk@gmx.de>
-References: <20251027005220.22298-1-naoki@radxa.com>
- <acfc2185-0cb9-4620-abdb-ee25028e8374@cherry.de>
- <a93ace02-a952-4727-957b-0ed790b47676@cherry.de>
- <20486653DCCA80ED+7f87a03c-519e-4d6a-a47c-7670e5ae502c@radxa.com>
 Content-Language: en-US
 From: Quentin Schulz <quentin.schulz@cherry.de>
-In-Reply-To: <20486653DCCA80ED+7f87a03c-519e-4d6a-a47c-7670e5ae502c@radxa.com>
-X-ClientProxiedBy: WA2P291CA0016.POLP291.PROD.OUTLOOK.COM
- (2603:10a6:1d0:1e::12) To GVXPR04MB12038.eurprd04.prod.outlook.com
+Subject: Issues with DRM_ACCEL_ROCKET (Oops, power-domain, probe-ordering)
+To: Tomeu Vizoso <tomeu@tomeuvizoso.net>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Heiko Stuebner <heiko@sntech.de>
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+X-ClientProxiedBy: WA1P291CA0002.POLP291.PROD.OUTLOOK.COM
+ (2603:10a6:1d0:19::26) To GVXPR04MB12038.eurprd04.prod.outlook.com
  (2603:10a6:150:2be::5)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: GVXPR04MB12038:EE_|GVXPR04MB10706:EE_
-X-MS-Office365-Filtering-Correlation-Id: 5347e42d-caa0-47c9-34c2-08de2e7a7de2
+X-MS-TrafficTypeDiagnostic: GVXPR04MB12038:EE_|DB9PR04MB9578:EE_
+X-MS-Office365-Filtering-Correlation-Id: 4cc1e95b-4e8b-4236-adf4-08de2eadf093
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;ARA:13230040|10070799003|1800799024|376014|366016;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?NkNJU2lmRlJpTHBGeHplYklUSElqc2lIWm1QUHlxRTNVSzB5OG0xT3p0VmhE?=
- =?utf-8?B?MmtsTThvL0J0N1J6NVBDd2tsQUNjWmJpYXdoZm54MzFlVHU3djdPZHltTnJI?=
- =?utf-8?B?MXFzZmRzNEhCUTdqRjhvbHpQeUVPcU5PZHUySW05dElweDBPQXJMWDVhZU1t?=
- =?utf-8?B?QzZGWVlvUWRvMWF3c0I5aWR1QlYrbkF6cUZFZEhHMnZNWXdCQUFrbCt5aWFr?=
- =?utf-8?B?dlJyMHQ1V1AyMTJNbGNzL0YrQW5IL1RsZFB4ZjRjVWcyTkNBSUZVNnlEWjhy?=
- =?utf-8?B?eXdNTHBlK3pMcThQQkRGWmgxc2ZnMno4VHVWaE8yMms1R1JKWDBVd0I0cW9i?=
- =?utf-8?B?ZlBMNi9KNUh4clRXSlBGZ204eUlLQVQzZXIwTmc4YzgyalNWM3lSY0o2WU94?=
- =?utf-8?B?U1hGSzdLbTdWdlBpSlJYR0tTODRnUm1zVjJSaHlQYkdvaXdzSVIvSGV5N2kv?=
- =?utf-8?B?V1pHdWllZGFYZCtmZTBQeGQxNEVjeGhxY2plSGJwWWZIVzJ3STdWbG0zcHNs?=
- =?utf-8?B?azE1d3dDVDRKNVJIMEZOQmYweEN4cVlhTEdnbU5OdTVSNEFmcXp5ekFzZTlt?=
- =?utf-8?B?c2VrUkxlRmw1RDFOdjhUMWNEdjNVM2tuUmRjZnRmOXFaV1FXWXhPUXlRaFc0?=
- =?utf-8?B?YlZ4MGxGTGF5bkZ0eXhwdy9nKzJnMStxRkdGc01FcU5wV0VUMTdCbEdiQmF2?=
- =?utf-8?B?c2VTL1ViTWsyUmkyeWdOWjV6OGJjbzhqUHdpSW9PaVBCL051SkFXUGdaWU1w?=
- =?utf-8?B?c1p2eFpaM2Ftb25TVjMvZXFHTktZRzhkY1FWUGRGV29MVnBLWFhDbXRPbUNr?=
- =?utf-8?B?YzROMEtHUUJZL3ZCWnJPVFNQK1BUK0h4NVZ3TlVDU0ZnSXBEbWhoMVBVY2hQ?=
- =?utf-8?B?aFEwN3RwbXd4Q0kvSzRXUFdneEs3aUljd3U2eDJhcmgzOHN0UHUzQzlvWklV?=
- =?utf-8?B?UTFFM3I5RmkxaTFscDh5S05YZitnRGZQSG9uUWxvWXJkNXhWa05sMnV4V1FD?=
- =?utf-8?B?bWQwODY5dUtlN1pLbHBWTlpXL3BSTWFKalZRU3d3dU9uUzZneTN6YzJNaUJV?=
- =?utf-8?B?RlFtc05ob2xHS0c1d1hjTTNmbkJpbHYzUk5OTW5iOFIyY0J6dmZXcXZub0Ey?=
- =?utf-8?B?WHVYNHc5eE5DUXZuVHNjcjFKZGVVQllZcDBHaG9ESGJLYUptUU9CYlBiWGY2?=
- =?utf-8?B?TGVnaklMYWFnbmRiTjJGbC9XVEpLNkZPS1o1M1lKYkQzcDZjOU5rTU9Ga3RU?=
- =?utf-8?B?V2lNd3IrM0VOeG5xVzNWSlBPT3VLUTVnL2tYcDZWNGEzZzlRRW45REhVdS9o?=
- =?utf-8?B?Y25NNkJOeGIrWUIvbTYyKzJJNlBNS2ZLT1NQR2NrODc1VEFoeldLTERaWnJo?=
- =?utf-8?B?VXNuNzFaVi9hVEtqU3g2ZnZwanJmY2pBL3lPTU41aGpOTEJqYURJRW1aQ0R0?=
- =?utf-8?B?Y3lTYTlweXErY0xzYm1EYTR0NXZ3QWZyNk5XdXBBbzZVRXJwNktuaElXWUpm?=
- =?utf-8?B?cFhlKzJ3MXA2TmdvZi9YVk0xNDhvVVpxSlRqZFhoS3c1OFBUQThhYWpDWlFF?=
- =?utf-8?B?UkxLbDllVVJoVWJYUW5KOTZ6UU9UZUt3N2lwT0RkV0lDdmk3M0NsaUhtRmtR?=
- =?utf-8?B?MFNrVXlpYTdzQ25SL2o4bDZHSFpGUDBWLzNKTk9OUi9KTnJkM2xGNy9nbWRk?=
- =?utf-8?B?UEZqY3lrZUxaSzR2MTNjYmxxeTVMYVhEVEM1RnNiS21KRHdzK201Rmc4eTZT?=
- =?utf-8?B?V0ZMb3hObDlFTHhaKytQRnA0TlJiR2NSUmsybk9QWjF5bnlaakhDZ0NnUUh1?=
- =?utf-8?B?dW5JMnZTNUJFTlJHTEVDZFNFUDl1VHRHZkt2Mk9Yb05OWUhBL2FJTG1FZy9H?=
- =?utf-8?B?azU2RGRJWG9rZ2J3eTVjZEVkbzhsUm9lYjlXS250YVFaSHhrVldFY0tlYnlI?=
- =?utf-8?Q?PkRf/jI5q+uHO+TDJBcEalzCpnURcN1z?=
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?Z2lUcEtCVE8rcCsyRE51UTRWVGVyVVZZWTEyaWtnbHFKRy9IakhtRDF0MkhP?=
+ =?utf-8?B?d1RoZkptVVBwbGJHbUpuTzl4YUE3UytCMFJiRDliekhKeURjZDBFR0xsRlg1?=
+ =?utf-8?B?UWRXMzdKanhyLzRXOFZzdlZ4bzhhekxvall2YWhaM0dUU1pBK0VKdHU5OVE5?=
+ =?utf-8?B?aS8xcjd6bUNJMWIyMjBLOURYQ3FLaFhYeWs5alJSVUJxd0xIMWZIWHNRTDJT?=
+ =?utf-8?B?MUd1UEJpY04wUHBvNlU1eWo2MGhrWjNYQVVqc1MwbG5KWmREQVJnc2VSZVgx?=
+ =?utf-8?B?V1VlVTl5Tm5HNUFmU3RMRTFhcWRRV0NUTDJkZFppb2NrYllvc2I0bjFNRmNh?=
+ =?utf-8?B?OTNwYldYWnB3em5OS0lzc1J5aFJnc3V6bmJsZUJyc0hQek1BNmtjSkhmd1dy?=
+ =?utf-8?B?QmN2YTRkejRCODNySWk4RGE1a1BCaUFzbFc5Z1pqTldkM2NwOUhncGl1RTRD?=
+ =?utf-8?B?VGo1c0RSakNkSWNPcFJFUlJIZEozZmk1UVZmMG5JREc1eHF6MlV2TlRuNW5T?=
+ =?utf-8?B?MndhSnhzd3VnTTJpUU4rcmFTbzJKQnZ6VXhDdVo1c1cvZnZBMnV0U1JKVHhF?=
+ =?utf-8?B?THc0SDkxOVA0YzIwMmJJRHR3YXkrMjRBQzAvWCt1K29QRWZublIvejB1a25j?=
+ =?utf-8?B?ZnczOHRtZzF4YTRhMGFQNXV5em94K2pGQ1p4NHFSNFVEcUtHUlFFV3ZwSG5u?=
+ =?utf-8?B?aFhTeTlieE55RUVLMzdBMEloOVh0VjkwOTg1OGJwQlFMRHlmdGJ1TXExYVg1?=
+ =?utf-8?B?aE1QRlJPb1BCMzk2QmNTRHo4YmJoN1NlWWFnaXkwYVZLTUQ3R1BDNVlWS09N?=
+ =?utf-8?B?bWJUQVlIWWF5dW1ZTjFueDNZSTdEeEt1STNrOVFtamlTZU12bDdZMGV4N1ZB?=
+ =?utf-8?B?L0tWRjlmaXpScVBZOWlCdUhLdXlwQ2p2NmVraEFQN2duSFlIdmdMdEpzM3N5?=
+ =?utf-8?B?SFd2WE9yUHdZN0pjNjIxbmUvTHJCMngxZDVFSlMvb0dsV3kwRkxUUld5MVNQ?=
+ =?utf-8?B?eHUxNEpsQUNPN2JsSzcxU0IxelJsRzlpK1hldGxIZ2Vzd05TWUZvdzNkdUpQ?=
+ =?utf-8?B?emZxWWpjWkIzUm9mNUxxcDFEblVoOWE1U1FiWW5RS0hGRG84M0EvOW16R2Rw?=
+ =?utf-8?B?dGxNc1ZGQkZzQnRBZExjNzM2Nkk3bXBaWDBwZ3NFZXlUUmE5SUZEM3dpZmkz?=
+ =?utf-8?B?a01Lbk12NkJUQVZLU3l2RGVWWkFrejlWZm9DMThGTkFJUnFicVRwSDdTYzVu?=
+ =?utf-8?B?ZUw2eWxQOGhraTNlcVQ0QjJJeEhORU1yR3JROUs3akVJTHNxdkVsbzVJOXdS?=
+ =?utf-8?B?eWh6MFVyWDJ3a3dYUmdBaldWcy9WUFU1TFhTMWVXejRKZmRRU0NabDJUYnF0?=
+ =?utf-8?B?Qkt3Nm5lNklob3lmS1V3U0hINkR1Q1lHWm9SMnRUSVhuNVBLQlJWOEpZY2pa?=
+ =?utf-8?B?Wi9pLzhKRm96ZHZ3UUM0aytIUzVxZFpDUUNmbGJjSHJGRFNONzl4UFZnVVpa?=
+ =?utf-8?B?dXg5dzVBNE9pSjUzRHdxR0EzMlNHQWpEMngyQXNJU2tGekx4S1o2NlNvV2Mz?=
+ =?utf-8?B?Y1pNYk5HeTBmWEhISGtDOTc2Lzd0V1RDS2Y0RExoeXUvWFc3d1RWTXdKSzBF?=
+ =?utf-8?B?OFdEWjhiaS9XUWJ6Ty9LQnhZNjRlZU9sR2Nrd0V6U2drUmVSdlZQdkxBRVV0?=
+ =?utf-8?B?YXo5VlJmWkFRRXIvdWJhb3gya1VpTnY4TnVxd0tqdUNxcHhKL24zNDdvaS9v?=
+ =?utf-8?B?ZkhZZVAvaFRMelcvNnd1SGQ2Ykd0dDNrU3lEbzMvY1Zua3hiTGxkOTVLYVdG?=
+ =?utf-8?B?NFRFM1NJRk5KUGNYN0YyRUVneVc1NElVZGk0R0VUK3JXaXYyV3BQOWlvdTYr?=
+ =?utf-8?B?MEtLWm9Fd2tJejd5Q01hMm1nQXVoU3d0TTJBTG5uNkF2WFE9PQ==?=
 X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:GVXPR04MB12038.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(10070799003)(1800799024)(376014)(366016);DIR:OUT;SFP:1101;
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?VHRDdldwd083cnROUmJNSGxLME1EU1VKNjJFWS8weWh2eUJ5a00wODNJSzVY?=
- =?utf-8?B?Zis0RUtmTnhPaW5ob1RTelZZWTFXYTVhRDNMZEc1ejFQaU5rYjNDOEFBZlNX?=
- =?utf-8?B?a0dyVGl1ZTk4aDdMb2dTTXpCaWl4UnlKOUxlZGtwdDQ1eTVjTkdIejFobFZE?=
- =?utf-8?B?QVBnNUZMQTJpRnNnL2h1Y3hQOEhXSFFkRlJ5WkdVbzJNQTJvbUpKSE9HSEdV?=
- =?utf-8?B?V2FBUUc3NGFtbVF5akErZ1luQnREM2VQSklHRWRCdi84ZFdibENNMmRtVnJm?=
- =?utf-8?B?ZWdzNUNqVlg2RFl2VHBFQnh0MmROZlhuZ0RHMHpkTlBmVGlWaHFIK0lQYlN5?=
- =?utf-8?B?a2NsYVZPZ3ZoYVBrRDMxMEZOS2RkdWRWeUdGK3JCeEh1bFBKems3MXk5L0tS?=
- =?utf-8?B?R3JiSU1Mb3lHMG52YlM3TkpVSDlFZHcyd0JPY1JXRG9FOEtzbEhDTU5MRDVo?=
- =?utf-8?B?M2VhVXMzNllvR0V0VWV5SnVkbGN3VWt6SmFoelhJMWM5VTcrK2c3UFIwS0JR?=
- =?utf-8?B?SFJBYndLcGxDRGdYQk1EaTRBTmFpTnNkNXoyMzNnbUljVlRaYmwzd2hkZEV3?=
- =?utf-8?B?cTFTWDlQTmZic1VxZUVlYVpjaEt0MlVqamdzRDNGQ1B2ZlFQcHpEOWFGNkp0?=
- =?utf-8?B?T0djZFpoaFg1QzRGc2Roa3k0Q0xnb1ljMmZFOU1BejJzcTQxWXYxczFZMnRM?=
- =?utf-8?B?VmlXUmt3b1NUaGlPQXJoYi9Xdm1HbGl0YkVEQWFoWUp0QU9NaUR5K1ZwWVJu?=
- =?utf-8?B?cTlzLzBpd1pvOXNpMnppdG0zQTIxZ2gyK21ldHJkSnZ2U3hyMnEraGhnT0JL?=
- =?utf-8?B?Nll6NHg5ZkYyMTdudDhLdXVEaUZlTU1YdXJqUDJPMzI2KzFEYVFYNFMyOGhw?=
- =?utf-8?B?YnJHNW13UlNFd2xKMysreFRKRE5jTXVrd0ZFNCtXLzdacU1lZkVhK25Id1dW?=
- =?utf-8?B?UWQ2MHFOdURudTVkZVdNTDl4L1RLbExKaUZPOEx5ZjVtWGNIZ3IwZnhqTms2?=
- =?utf-8?B?bEN5UXdCcWJVUzJaQjVwbW55REFqN1pCVXJ6T3B2VzU1c0Eyamhhc0pBdXpF?=
- =?utf-8?B?bDd5SUZob0lELzNtU1d2YlRUTUVpKzhHT3hKOW56YW9acW1Vd1VobHJremkv?=
- =?utf-8?B?NHJ4OGsreWZHZE5RYnRYRjFzVmhhY2FwRzZOaTM0M3Z2bEVyQTJLZ1UvUW9w?=
- =?utf-8?B?alZ3SmZVcUhRYzhQRmI3K0tVTlVTV0xGVjlBdHJib1o0WXNJTzNESVdueUJW?=
- =?utf-8?B?UzF5REozazhFcE83VnpKS25OZ0txcEsydFdxWUpsb1pROXJJbDZMTWhwSXlR?=
- =?utf-8?B?bjdUczBRekZKUkY3MDYxeElkWXpFVmN2Nm1wV3Q3Q0xNSkJ0TVZETzgxOUpq?=
- =?utf-8?B?bHp2Q05lUUJMeDJucGltS1lFZldxSU8wT2k5S0ZJeTNiODZhTlVKQ1VNYWVr?=
- =?utf-8?B?UGtrNlVuQlpZZEMrRjQ4QVJXRytxSzBnRkNzRnZGb043dFJlRmNCS0lTbHkr?=
- =?utf-8?B?OEptTGlqL1pmZXBadXNCNEI3QmlvdmR6UVN2NU83M05kcC9IVTJpUXNzL3VK?=
- =?utf-8?B?Wk0rZ1JYVlZZaWljbjBPZnRWNG9JbHJzZzRKRUIvekU2cXlSM0xlYTV3dVc2?=
- =?utf-8?B?M1dhbFh0dkNoNkphYng0Rm9YV2drcHlPNy9uNWE0TTRyODdQcXA0aUFGTXpx?=
- =?utf-8?B?LzlXdHJPZUNYM0JRMjcvZzZ5Z2RoMXVLdFBKY3k0bmx5STRVSkppZG9pVzFl?=
- =?utf-8?B?Nmo3TGtQRytEQnZVY0tQUmRuS3Y1UkxmUmRMRythZTZoayt4ZnlSMUVENFRW?=
- =?utf-8?B?VGh1MHA3a2g0QnExVXloU3pCcWlWdHZ4U3Z1WW1pbVV1OGRwV09Mb3lVOHBT?=
- =?utf-8?B?MU1IN0xwR280aDFFNTVCMEtNdHdOYWd6Rk9BbGlzeFdGcGVzckdVSXRWZXZk?=
- =?utf-8?B?ZE5uR0lDeEN3ZlVWc1ZpMWNpOEY4U01reFluem5ZVHhTNHZVKzZvMjFPNjAr?=
- =?utf-8?B?NklORGM3aHlKaDR0TG9jV21QRC81VmRFOHdVUWVKYTRhTTE4K3kxZjg3REdo?=
- =?utf-8?B?Nkt1dVFsajNhMjZBc2xtRHFjQ1NJajZmVWlraTJXaGFxSE1MVjVtNzdualVM?=
- =?utf-8?B?cWNvWXBQWVNaTjdTYXhhUHpSTy91czAweE9nTTcrcG1uZUptZkJRWkNLRlVJ?=
- =?utf-8?Q?ldx3nxepNhLap6GgnSP7TkQ=3D?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?bFFXWXpJczJqUDROTGZXdWFOQ2ZUNW9uSUZBaTNNZjlBdElyTXZ5cTdCU3h4?=
+ =?utf-8?B?RkliUm9uYTlWc0JyNW56T0RBR3FReElHYW9iZkZXMEN5N1pIVHduM2RaS2dW?=
+ =?utf-8?B?Y0hKekRYQkZ1LzlXQnAzQWVVN1VMTE1WZDFwck1kUkc1cmFNd2orOXlYdk5s?=
+ =?utf-8?B?WmYyV3kvWUU4Yjgyd2lZMVhxQWJBOUxVeGZiSCt2V1Y1aUI5SU01aVpFWDVL?=
+ =?utf-8?B?djFxOVdHUmRrbkVtTk9GaTIzckowd2FxWUFGZytDYS9YakptL0p1bzRWeUxZ?=
+ =?utf-8?B?L3NRUE93VzFqc0IyZjJWWVZvNG53cXc5Q0Jndi85YVkzZ3Ewcm1Oc205T0xw?=
+ =?utf-8?B?SC82OG4zaEJmemhNU3NCNUNpRFdtUlRsU0FCMythQzRIRDJRaG8wNnpQakZF?=
+ =?utf-8?B?ZmpOdVlYSXMzejBXUnZCL2dnVXJmSkUvU3lBNkxmNlREZ3hSa2w1TWVDWEpw?=
+ =?utf-8?B?L1YrcjlnMDBNUXZmajZoMHduYk9Rc1JUWmIyeDZCaHVaN3YxTEZWMVpjOG8y?=
+ =?utf-8?B?YU9FSXllN3pvQ1hMT1ZVSWwrMUM5UXJ3UkxRK0NteXVnOEt0NS9YbjJwSWg3?=
+ =?utf-8?B?bXJMTVBIVVcvellvRWoycFFicE50YnhubG0zTmg5QndlQXZkRWd6VzhGdXcz?=
+ =?utf-8?B?ZUMwOXBHQlY1ZlE1aVFRNmF1UkVjOUxKS2ZaZGZwNXZHNG5KUlI5SzBsR3pE?=
+ =?utf-8?B?aDRyM2xhT3NmSXhYbS9icHEwWkszVHEzOVl1YnJRc2VWS2JJQXgxQ2c3bzJ2?=
+ =?utf-8?B?OEFFVEdadFBreXR4U0RpZy9Da2hRcUp6QUdVT2I4VWplTWNJelJZUkZzdkMv?=
+ =?utf-8?B?M1prK0ZVdElsWE1Rby92bVJrTDdvb3VCb0NDZk51T1RvNjNUUGlHa3htY21M?=
+ =?utf-8?B?QzVLYkVOOE1SOFFDcndya0RYSmxYdVRiOVlrRi91QnQ3L2pNbjcxMURjUXVk?=
+ =?utf-8?B?VmtYU0hTNk91MDRwWjU5aFVaQlVUeE96UXAxNFJxaXVGT2F4bjc3L3FFRlZ2?=
+ =?utf-8?B?Q2drVXRiUnJwanJVcHBlcXBLWXhGRjhZSVYvd1JhckNzRXp6NkhOeWZqMGVG?=
+ =?utf-8?B?ejEvYlUxb3NROTM2aUdsTTUyekhRZG9kZFZYL29UMTJaU0RXSytjSzF0Zlhv?=
+ =?utf-8?B?ZlFDT3lUcjV0QmdNSjl4US9qR09FR0RyZHc4SSt5SUorZDZxOTZjZ2xBeUx0?=
+ =?utf-8?B?UEpsYzBWcEx5c0xsTjQ4b3pscmdBWjJxQzEzbEhKSjBDTXNraWFVMVNxbE84?=
+ =?utf-8?B?MFZ6REpEMXhEOUs5N1MyYmRmR2x4RkxpYmYvRDY5dTNFd3ZsYlAvbFFhR3dZ?=
+ =?utf-8?B?Q1ZKUVF6Qmk0dmFLZC9FRkZSQTVaZXpkUFNrUmpLN0ZEZ2NtdUJzcEJ0VDBr?=
+ =?utf-8?B?NU5nTUdib2xvZERrM0ltZkNQdzJEK2hvSDR6dTA2dCtCTC9zR0IxK1FwcHJs?=
+ =?utf-8?B?dFhJeS9yTytHS1lKV2xnQjIrb3JDRUJoSUVoU1RmaUZYV0tqNkIvYU5aVmhh?=
+ =?utf-8?B?SHY1bWQ1RmVrc0RJS0ZHUElSZ09vcVJrZTdWVWhWalpoQXhqMWhmTk92MkJs?=
+ =?utf-8?B?dDNSSWVlMmswMm5XOG1oSkoyR1Z5eTUzMGxoTnNMUFdLZW1ZRmFDdzFUTWVO?=
+ =?utf-8?B?WUxRTVJDcEpEbTMrOFJKcVM0SHZGUzNBS3MyaFZoSFhDYVJlandrbWRUQXcv?=
+ =?utf-8?B?a004K0pJNWxoSnBpOG1wMDd3TVd5c05oWGZXMmIzMEFHVzVySlhZYkZwbnlG?=
+ =?utf-8?B?bFFMbzJSRnBLWFJNdG5mL3hqOTZwdEU4UVlUU21ZRDJEWkNjclZFUncrQ3Q3?=
+ =?utf-8?B?NE1pZk9wQ3ltbzZwMXVVakVRUHRaQVRSNDNXQUNpTzVPRElINTRUbjQrSXJO?=
+ =?utf-8?B?ZzdqbkZaZUtaTGtqclRiN2F0VmpkRkNEZUlYMGdMQVMvU3lEVjJxNnJ2M3FE?=
+ =?utf-8?B?SGF1cnBHeGRFYzRvK24xOUdlc1FORzkxMmNTbFNQczUzei9TYUROMlpXQjN3?=
+ =?utf-8?B?NElYcUNuUmlIYjdUN0dDTVAzdldlaVUzendwQmdveVd6Vkx2WTRhQmQ1Ylpm?=
+ =?utf-8?B?TUU5THZncVI4U1lZTkNrRmR3a0hmU1Npc0YrSXlSa0w1QVJ6Vm5QS0lqZFRU?=
+ =?utf-8?B?WkdMWXFTWFQ5ckN3MWdnQzViWHUxMlRqUXlCUnlZMVhYRGpkRkkzdnJtQWM1?=
+ =?utf-8?Q?pfzJAC9W6XveP8mSbqQbTY8=3D?=
 X-OriginatorOrg: cherry.de
-X-MS-Exchange-CrossTenant-Network-Message-Id: 5347e42d-caa0-47c9-34c2-08de2e7a7de2
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4cc1e95b-4e8b-4236-adf4-08de2eadf093
 X-MS-Exchange-CrossTenant-AuthSource: GVXPR04MB12038.eurprd04.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Nov 2025 12:34:36.7508
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Nov 2025 18:42:53.5219
  (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: D6FbrRlezjInQFWdBzzzHlreQ+Mfl7DV43JDOgPCoq8MzBZHRucIqpXNCWDWAN1vOl1yv9ZgUzmJs0Pc6ZFjAHBUUbBFnuJpHP69lskVoPU=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: GVXPR04MB10706
+X-MS-Exchange-CrossTenant-UserPrincipalName: doD6cN3Hl0G75K+CJ78W3VXihGdX6YVpcKJqLS0PNoNr2PmGOahZ9UZyFQ3G0fHowejWdgF9S2KV5MYaIq7y7P0zFaVOkDlqDSvh1uvPrAY=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB9PR04MB9578
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251128_043443_229631_A64ED61A 
-X-CRM114-Status: GOOD (  18.26  )
+X-CRM114-CacheID: sfid-20251128_104301_793413_27B98BC2 
+X-CRM114-Status: GOOD (  27.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -176,58 +168,228 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgTmFva2ksCgpPbiAxMS8yOC8yNSAxOjA5IFBNLCBGVUtBVU1JIE5hb2tpIHdyb3RlOgo+IEhp
-IFF1ZW50aW4sCj4gCj4gT24gMTEvMjgvMjUgMTk6MjQsIFF1ZW50aW4gU2NodWx6IHdyb3RlOgo+
-PiBIaSBOYW9raSwKPj4KPj4gT24gMTEvMjcvMjUgNDoyMCBQTSwgUXVlbnRpbiBTY2h1bHogd3Jv
-dGU6Cj4+PiBIaSBOYW9raSwKPj4+Cj4+PiBPbiAxMC8yNy8yNSAxOjUyIEFNLCBGVUtBVU1JIE5h
-b2tpIHdyb3RlOgo+Pj4+IFRoaXMgcmV2ZXJ0cyBjb21taXQgODI0MGU4N2YxNmQxNyAoImFybTY0
-OiBkdHM6IHJvY2tjaGlwOiBmaXgKPj4+PiBhdWRpby1zdXBwbHkgZm9yIFJvY2sgUGkgNCIpLgo+
-Pj4+Cj4+Pj4gRml4IHRoZSBBUElPNV9WREQgcG93ZXIgc3VwcGx5IHRvIHZjY18zdjAgYXMgcGVy
-IHRoZSBzY2hlbWF0aWNzWzFdWzJdCj4+Pj4gWzNdWzRdWzVdLgo+Pj4+Cj4+Pj4gVGhpcyBmaXhl
-cyB0aGUgU1BJLU5PUiBmbGFzaCBwcm9iZSBmYWlsdXJlIHdoZW4gdGhlIGJsdWUgTEVEIGlzIG9u
-WzZdLAo+Pj4+IGFuZCB0aGUgZ2FyYmxlZCBzZXJpYWwgY29uc29sZSBvdXRwdXQgb24gTGludXgu
-Cj4+Pj4KPj4+PiBUaGUgRVM4MzE2IGhlYWRwaG9uZSBhbmQgbWljcm9waG9uZSBhcmUgY29uZmly
-bWVkIHRvIHdvcmsgY29ycmVjdGx5Cj4+Pj4gYWZ0ZXIgdGhpcyBmaXguCj4+Pj4KPj4KPj4gUGxl
-YXNlIHRlc3QgdGhlIEVTODMxNiB3b3JrcyB3aGVuIGJvb3RpbmcgTGludXggZnJvbSBhIFUtQm9v
-dCB3aGVyZSAKPj4gUk9DS0NISVBfSU9ET01BSU4gYW5kIFNQTF9ST0NLQ0hJUF9JT0RPTUFJTiBp
-cyAqZGlzYWJsZWQqLgo+IAo+IEkgdHJpZWQgYmVsb3csIGFuZCBjb25maXJtZWQgdGhhdCBFUzgz
-MTYgaXMgc3RpbGwgd29ya2luZy4KPiAKPiBkaWZmIC0tZ2l0IGEvY29uZmlncy9yb2NrLXBpLTQt
-cmszMzk5X2RlZmNvbmZpZyBiL2NvbmZpZ3Mvcm9jay1waS00LSAKPiByazMzOTlfZGVmY29uZmln
-Cj4gaW5kZXggMjE5ZjQyYmM3ZDQuLjI3NmNhOTYxYzEwIDEwMDY0NAo+IC0tLSBhL2NvbmZpZ3Mv
-cm9jay1waS00LXJrMzM5OV9kZWZjb25maWcKPiArKysgYi9jb25maWdzL3JvY2stcGktNC1yazMz
-OTlfZGVmY29uZmlnCj4gQEAgLTUzLDYgKzUzLDcgQEAgQ09ORklHX1JPQ0tDSElQX0dQSU89eQo+
-ICDCoENPTkZJR19TWVNfSTJDX1JPQ0tDSElQPXkKPiAgwqBDT05GSUdfTEVEPXkKPiAgwqBDT05G
-SUdfTEVEX0dQSU89eQo+ICsjIENPTkZJR19ST0NLQ0hJUF9JT0RPTUFJTiBpcyBub3Qgc2V0Cj4g
-IMKgQ09ORklHX01NQ19EVz15Cj4gIMKgQ09ORklHX01NQ19EV19ST0NLQ0hJUD15Cj4gIMKgQ09O
-RklHX01NQ19TREhDST15Cj4gZGlmZiAtLWdpdCBhL2R0cy91cHN0cmVhbS9zcmMvYXJtNjQvcm9j
-a2NoaXAvcmszMzk5LXJvY2stcGktNC5kdHNpIGIvIAo+IGR0cy91cHN0cmVhbS9zcmMvYXJtNjQv
-cm9ja2NoaXAvcmszMzk5LXJvY2stcGktNC5kdHNpCj4gaW5kZXggMDQ2ZGJlMzI5MDEuLmM3MzRm
-NzgyNGMwIDEwMDY0NAo+IC0tLSBhL2R0cy91cHN0cmVhbS9zcmMvYXJtNjQvcm9ja2NoaXAvcmsz
-Mzk5LXJvY2stcGktNC5kdHNpCj4gKysrIGIvZHRzL3Vwc3RyZWFtL3NyYy9hcm02NC9yb2NrY2hp
-cC9yazMzOTktcm9jay1waS00LmR0c2kKPiBAQCAtNTEsNyArNTEsNyBAQAo+IAo+ICDCoMKgwqDC
-oMKgwqDCoCBzb3VuZDogc291bmQgewo+ICDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAg
-Y29tcGF0aWJsZSA9ICJhdWRpby1ncmFwaC1jYXJkIjsKPiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoCBsYWJlbCA9ICJBbmFsb2ciOwo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-IGxhYmVsID0gInJrMzU4OC1lczgzMTYiOwo+ICDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqAgZGFpcyA9IDwmaTJzMF9wMD47Cj4gIMKgwqDCoMKgwqDCoMKgIH07Cj4gCj4gQEAgLTUxNiw3
-ICs1MTYsNyBAQAo+ICDCoH07Cj4gCj4gIMKgJmlvX2RvbWFpbnMgewo+IC3CoMKgwqDCoMKgwqAg
-YXVkaW8tc3VwcGx5ID0gPCZ2Y2NhMXY4X2NvZGVjPjsKPiArwqDCoMKgwqDCoMKgIGF1ZGlvLXN1
-cHBseSA9IDwmdmNjXzN2MD47Cj4gIMKgwqDCoMKgwqDCoMKgIGJ0NjU2LXN1cHBseSA9IDwmdmNj
-XzN2MD47Cj4gIMKgwqDCoMKgwqDCoMKgIGdwaW8xODMwLXN1cHBseSA9IDwmdmNjXzN2MD47Cj4g
-IMKgwqDCoMKgwqDCoMKgIHNkbW1jLXN1cHBseSA9IDwmdmNjX3NkaW8+Owo+IAo+IE5vdGVzOgo+
-IC0gU1BMX1JPQ0tDSElQX0lPRE9NQUlOIGlzIG5vdCBzZXQgYnkgZGVmYXVsdAo+IC0gSSBkb24n
-dCB1bmRlcnN0YW5kIGFsc2EgdWNtMiA7KSBzbyBJIG1vZGlmaWVkIC9zb3VuZC9sYWJlbAo+IAoK
-VGhhbmtzIGZvciB0ZXN0aW5nLiBMZXQncyBob3BlIHRoZSBvcmlnaW5hbCBpc3N1ZSBkb2Vzbid0
-IGFwcGVhciBmb3IgCipzb21lKiBib290cyAoZGVwZW5kaW5nIG9uIHByb2JlIG9yZGVyIG9yIHNv
-bWUgdGltaW5nIGZvciBleGFtcGxlKS4gRm9yIApub3cgSSBndWVzcyB0aGlzIHdpbGwgZG8uIEFk
-ZGluZyBBbGV4IGluIENjIG1heWJlIHRoZXkgYXJlIGFibGUgdG8gCnJlcHJvZHVjZSB0aGUgaXNz
-dWUgdGhleSBoYWQgNCB5ZWFycyBhZ28gd2l0aCB0aGVpciBib2FyZD8KCkNoZWVycywKUXVlbnRp
-bgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgt
-cm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcK
-aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hp
-cAo=
+Hi all,
+
+I've finally found the time to test the RK3588 NPU (aka Rocket, 
+upstream) on our products and I've been hit with Oopses when loosely 
+following the instructions from https://docs.mesa3d.org/teflon.html. 
+After debugging for a while this is often (not always!) reproducible 
+when DRM_ACCEL_ROCKET=y (but not when built as a module!). The fact it's 
+"not always" is a dead giveaway timing or probe order is involved, more 
+later on that.
+
+I don't think the Oops is important as I believe it's a symptom of other 
+issues, so I won't post it.
+
+I'll list the issue I've identified so far, some seem easier to fix than 
+others (the biggest issue of course being the hardest to fix).
+
+1. 
+https://elixir.bootlin.com/linux/v6.18-rc7/source/drivers/accel/rocket/rocket_core.c#L79
+
+The error path after a failed pm_runtime_resume_and_get() probably 
+should be calling rocket_core_fini(core) and not rocket_job_fini() (the 
+former calls the latter) as to unwind everything that's been done in 
+rocket_core_init() before this failed.
+
+The PM core complains about unbalanced something when the core fails to 
+init and is retried later.
+
+I suggest the following:
+
+"""
+diff --git a/drivers/accel/rocket/rocket_core.c 
+b/drivers/accel/rocket/rocket_core.c
+index abe7719c1db46..95a732ab418c3 100644
+--- a/drivers/accel/rocket/rocket_core.c
++++ b/drivers/accel/rocket/rocket_core.c
+@@ -76,7 +76,7 @@ int rocket_core_init(struct rocket_core *core)
+
+  	err = pm_runtime_resume_and_get(dev);
+  	if (err) {
+-		rocket_job_fini(core);
++		rocket_core_fini(core);
+  		return err;
+  	}
+
+"""
+
+I can send a patch for that.
+
+2. rocket_probe() 
+(https://elixir.bootlin.com/linux/v6.18-rc7/source/drivers/accel/rocket/rocket_drv.c#L159) 
+can result in out-of-bounds access when rocket_core_init() fails as rdev 
+is a global variable (so rdev->num_cores persists between tries). 
+Considering rdev->cores is allocated based on the number of available 
+nodes in the DTB with the rknn compatible, if rocket_probe() is called 
+more than the number of available nodes, rdev->cores[core] will result 
+in out-of-bounds access.
+
+I believe we could do:
+
+"""
+diff --git a/drivers/accel/rocket/rocket_drv.c 
+b/drivers/accel/rocket/rocket_drv.c
+index 5c0b63f0a8f00..ad602ebd17c44 100644
+--- a/drivers/accel/rocket/rocket_drv.c
++++ b/drivers/accel/rocket/rocket_drv.c
+@@ -158,6 +158,8 @@ static const struct drm_driver rocket_drm_driver = {
+
+  static int rocket_probe(struct platform_device *pdev)
+  {
++	int ret;
++
+  	if (rdev == NULL) {
+  		/* First core probing, initialize DRM device. */
+  		rdev = rocket_device_init(drm_dev, &rocket_drm_driver);
+@@ -177,7 +179,15 @@ static int rocket_probe(struct platform_device *pdev)
+
+  	rdev->num_cores++;
+
+-	return rocket_core_init(&rdev->cores[core]);
++	ret = rocket_core_init(&rdev->cores[core]);
++	if (ret) {
++		rdev->num_cores--;
++		if (rdev->num_cores == 0) {
++			rocket_device_fini(rdev);
++		}
++	}
++
++	return ret;
+  }
+
+  static void rocket_remove(struct platform_device *pdev)
+
+"""
+
+I can send a patch for that.
+
+3. I believe (but I may be wrong) that core 0 is special (do we need to 
+schedule through core 0 maybe?). There's a hardcoded fetch of the device 
+associated with core 0 via 
+rocket_iommu_domain_create(rdev->cores[0].dev); 
+(https://elixir.bootlin.com/linux/v6.18-rc7/source/drivers/accel/rocket/rocket_drv.c#L88). 
+The issue is that this assumes that core 0 is always rdev->cores[0], 
+which may not be true as it depends on the probe order (which is not 
+guaranteed), which can be exacerbated by core 0 (HW index) probe being 
+deferred for some reason. Is it necessary for core 0 to be the one 
+initializing the DRM device or could we simply use any core for that 
+(just the first to probe, whichever it actually is HW-wise)?
+
+If there's a need to know which of the three cores is core 0, we can 
+have a vendor property for it or maybe aliases for the cores? We can 
+also do a check on the base register address of the core in DT and then 
+do a mapping in the driver. Any other suggestion?
+
+4. The actual issue I'm unable to suggest something for comes now. The 
+following is all happening in the context of DRM_ACCEL_ROCKET being 
+built-in (that is DRM_ACCEL_ROCKET=y). You can use aarch64's default 
+defconfig, then DRM=y, DRM_ACCEL=y and DRM_ACCEL_ROCKET=y via 
+menuconfig. Remember that this is not 100% reproducible (more often 
+happening than not).
+
+Points 1, 2 and 3 only are an issue if you hit some error-path during 
+the probe of one of the cores, which is triggered by this point 4 here.
+
+rknn_core_0 depends on rknn_mmu_0 as highlighted by the iommus phandle 
+property. rknn_mmu_0 depends on RK3588_PD_NPUTOP power-domain. The 
+parent domain (RK3588_PD_NPU) of RK3588_PD_NPUTOP power-domain has a 
+domain-supply on a regulator on i2c (i2c0@42 for Jaguar, patches on the 
+ML at 
+https://lore.kernel.org/linux-rockchip/20250812085213.1071106-2-heiko@sntech.de/). 
+When the rocket driver calls platform_driver_register() in its 
+module_init() function, the kernel core will try to probe the associated 
+device, via driver_probe_device(), then __driver_probe_device() and more 
+specifically pm_runtime_get_suppliers(dev) in there 
+(https://elixir.bootlin.com/linux/v6.18-rc7/source/drivers/base/dd.c#L793). 
+Then this calls pm_runtime_get_sync() on all links, c.f. 
+https://elixir.bootlin.com/linux/v6.18-rc7/source/drivers/base/power/runtime.c#L1914. 
+Note that pm_runtime_get_suppliers() returns void. One of the links is 
+the rknn_mmu_0.
+
+Follow the next series of function calls, pm_runtime_get_sync() on 
+rknn_mmu_0, rpm_resume(), rpm_callback(), __rpm_callback(). This then 
+calls cb(). cb() is set via RPM_GET_CALLBACK(dev, runtime_resume). Due 
+to rknn_mmu_0 device being probed with dev_pm_domain_attach() attaching 
+the power-domain device to iommu via the pm_domain member, 
+genpd_runtime_resume() (which goes to rockchip_pd_power_on()) is 
+actually called. This then calls rockchip_pd_regulator_enable() which 
+returns -EPROBE_DEFER. Going up in the call stack up to rpm_callback() 
+you can see that retval = __rpm_callback(cb, dev); now is EPROBE_DEFER 
+and thus, dev->power.runtime_error = EPROBE_DEFER at the end of the 
+function.
+
+Then once pm_runtime_resume_and_get(dev); is called in 
+rocket_core_init() during probe of the rocket device, it'll call into 
+rpm_get_suppliers() in __rpm_callback() which in turn will call 
+pm_runtime_get_sync() on rknn_mmu_0 which will go up to rpm_resume() 
+where dev->power.runtime_error will be checked and if non-zero will 
+return -EINVAL, effectively eating -EPROBE_DEFER and failing the probe 
+of the rocket device instead of deferring the probe.
+
+Applying the below patch:
+
+"""
+diff --git a/drivers/accel/rocket/rocket_core.c 
+b/drivers/accel/rocket/rocket_core.c
+index abe7719c1db46..c4692189bbfc6 100644
+--- a/drivers/accel/rocket/rocket_core.c
++++ b/drivers/accel/rocket/rocket_core.c
+@@ -72,22 +72,9 @@ int rocket_core_init(struct rocket_core *core)
+  	 */
+  	pm_runtime_set_autosuspend_delay(dev, 50);
+
++	pm_runtime_set_suspended(dev);
+  	pm_runtime_enable(dev);
+
+-	err = pm_runtime_resume_and_get(dev);
+-	if (err) {
+-		rocket_job_fini(core);
+-		return err;
+-	}
+-
+-	version = rocket_pc_readl(core, VERSION);
+-	version += rocket_pc_readl(core, VERSION_NUM) & 0xffff;
+-
+-	pm_runtime_mark_last_busy(dev);
+-	pm_runtime_put_autosuspend(dev);
+-
+-	dev_info(dev, "Rockchip NPU core %d version: %d\n", core->index, version);
+-
+  	return 0;
+  }
+
+"""
+
+seems to make it possible to run mesa's example. If 
+pm_runtime_set_suspended(dev); isn't added, we'll only ever get job 
+timeouts.
+
+Note that I'm pretty sure this isn't the proper way to do it but wanted 
+to give some of my debugging attempts at that.
+
+I'm not sure how much further I can go and specifically I have no clue 
+how to handle that properly. Please also verify all the claims I'm 
+making, I'm not entirely sure I got every call stack right, it is quite 
+convoluted and I don't have experience with those frameworks.
+
+Does anyone have a clue how we can deal with that?
+
+The driver built as a module doesn't have this issue because the 
+regulator has enough time to probe so that PD doesn't return 
+EPROBE_DEFER when the rocket device gets probed once reaching userspace 
+(where the module is). I'm not entirely sure if this could be reproduced 
+by having the regulator driver as a module too for example?
+
+Cheers,
+Quentin
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
