@@ -4,60 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BCE8CFD376
-	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Nov 2025 08:18:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A5AACFD376
+	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Nov 2025 08:47:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
-	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=SbSOd614g7o0Lws4HBOsqqLDOiFLBHmMw7g+rBGIk6g=; b=FaavugT5I2uuUhjod3JWIGKduc
-	ss9fkNkTO2h74Tpn10326w0/AQuwrjthMJaaUs8S1xVVqwAOxv2vxUR/som7Iz87XvGYIGdDNrobf
-	xrum8am5Ptlw2d6UiC6GUl3Vk9wiB0SuhwUq3Hv0BHLjlL4kESAQdhHDqUEx46m9Dps0pzQPXlrtv
-	FK6WAxr4ZUu20eNqjAdG3ZtWCOWFyEjHXeCXrqvWUJL/3nJRVxfVvEtt1czHCgAX/yFyIqIahRWBr
-	BRbeQY5z1plTyjPO6ZdS0uTOwXCqi+SUPtFj0oxdQfMDykvI3L48/QkeIpnFyzd4bSlBLlrDAaMWi
-	8t46uNBg==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=5HCFhziTc/Kvo/Vuk7qEyLdv6DeTFJpp0aBjSNJHjG0=; b=Hr2fII/z16kpp9
+	wRMTqyeD2aGypHDXVhIu55Kk43p4DLUJeXHAx4Tbb4wNKe90h2MELknuzNje0YYrP9K+Tfpxwl0Sr
+	a4Idm5Ghl31SpJhfMdXuK3CwxMSCKQJCq6MklaJdGNWTeCx+7mKeDg1nyVajCrmCNY9jQ92fqbgyw
+	CYxBKUtI/evT5DuZ5pDkmYlMMBbebDBTVOjXF0my8ujFflSPDT+95SruZse7VQCsOpIuDOfvlXSjn
+	dInCZZsPq3ojx01wyljcT+I6BtRBOEyc+O6jApoexhECQtLnX7Y19H2Hi9Xgyu4Jidn6XnD8A3/r/
+	Aed5fQIOqSaPDnc2hjJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vOtgD-000000008S3-1ck0;
-	Fri, 28 Nov 2025 08:18:13 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vOu7z-00000000But-1EvD;
+	Fri, 28 Nov 2025 08:46:55 +0000
+Received: from mail-m3291.qiye.163.com ([220.197.32.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vOtgB-000000008Re-09Z6;
-	Fri, 28 Nov 2025 08:18:11 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id C1154602BA;
-	Fri, 28 Nov 2025 08:18:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 42062C4CEF1;
-	Fri, 28 Nov 2025 08:18:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1764317889;
-	bh=Oycb6ot6Iyhsttxtig2/z+FAxLCxcG3XAiysNbp4Vdw=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=D2UPU2kIouxukoByIRpHeE7yB9hi0j1p5g3O4zP4ENqRSX/Z8+pl1Mm3LrvHm5thq
-	 tB+erSWVHiFBi468A5rhzTTijwcJRvjThyH25MuhVCTYf/clYHKWKVm3lh1V72qlXG
-	 2vZtDiEQt0ztKR4wv1qVGsVxzE9eapDp4spc713WubXGWJ/X8zAV59AXLP7MS3xhmJ
-	 CyXloozgNe7Z+dQyhjfh5tnCWIjJFFm61r3UAhsZ5pw4XAkGBrFB3EYSXIE88gH2zA
-	 QLMsACSuWwqig8N/ShJdPcSX+Zl9vqxavU1nWZLOSOObZYkUbgnqtI0JBsTvrKVHuR
-	 7UgUFLawaXy+w==
-Date: Fri, 28 Nov 2025 02:18:07 -0600
+	id 1vOu7w-00000000BuP-3JGq;
+	Fri, 28 Nov 2025 08:46:54 +0000
+Received: from [172.16.12.51] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 2b402a864;
+	Fri, 28 Nov 2025 16:46:46 +0800 (GMT+08:00)
+Message-ID: <0ed71b8d-5a2e-4213-bd2f-7ba317d1e4cb@rock-chips.com>
+Date: Fri, 28 Nov 2025 16:46:46 +0800
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, 
- Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, 
- Will Deacon <will@kernel.org>, linux-rockchip@lists.infradead.org, 
- iommu@lists.linux.dev, Chaoyi Chen <chaoyi.chen@rock-chips.com>, 
- Joerg Roedel <joro@8bytes.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- linux-arm-kernel@lists.infradead.org, Robin Murphy <robin.murphy@arm.com>
-To: Chaoyi Chen <kernel@airkyi.com>
-In-Reply-To: <20251128071322.92-2-kernel@airkyi.com>
-References: <20251128071322.92-1-kernel@airkyi.com>
- <20251128071322.92-2-kernel@airkyi.com>
-Message-Id: <176431788757.1500601.18210148365739838676.robh@kernel.org>
-Subject: Re: [PATCH v2 1/2] dt-bindings: iommu: rockchip: Add support for
- multiple interface clocks
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 4/4] drm/rockchip: vop2: Support setting custom
+ background color
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
+ <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
+ Louis Chauvet <louis.chauvet@bootlin.com>,
+ Haneen Mohammed <hamohammed.sa@gmail.com>,
+ Melissa Wen <melissa.srw@gmail.com>
+Cc: Robert Mader <robert.mader@collabora.com>, kernel@collabora.com,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+References: <20251118-rk3588-bgcolor-v3-0-a2cc909428ea@collabora.com>
+ <20251118-rk3588-bgcolor-v3-4-a2cc909428ea@collabora.com>
+Content-Language: en-US
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+In-Reply-To: <20251118-rk3588-bgcolor-v3-4-a2cc909428ea@collabora.com>
+X-HM-Tid: 0a9ac9a4b85703abkunm11421f537af6fa
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGU5LT1ZLTEkYQ05MT0NNGktWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=EkSe98ZCaMWUeYJWp7XkH1NrLpxTWcBUuZ5/ZMa2t6hgO7fIBoBI7bhabX0N7JKE+CGGs15C9bG4dNFtrOGp1A4uPgc3UwN7O1zAxrxJvwTAbjSgobcIVchpTCb2zb7Gk7oqG5zxYWUxQc99Wdsk9g823t58tn/7Lv5rHHw84ao=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=NXIQw8wTklQzICYSBWsCIghl/AUSAsiExXTZ+MWpvQM=;
+	h=date:mime-version:subject:message-id:from;
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251128_004653_304852_56ECD50B 
+X-CRM114-Status: GOOD (  18.65  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,53 +81,96 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hello Cristian,
 
-On Fri, 28 Nov 2025 15:13:21 +0800, Chaoyi Chen wrote:
-> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+On 11/18/2025 7:52 AM, Cristian Ciocaltea wrote:
+> The Rockchip VOP2 display controller allows configuring the background
+> color of each video output port.
 > 
-> The iommu found on RK3576 NPU and RK3576 RKVDEC have 4 clock instead of
-> 2 clock. Their clock names might differ, but I don't think that matters
-> much.
+> Since a previous patch introduced the BACKGROUND_COLOR CRTC property,
+> which defaults to solid black, make use of it when programming the
+> hardware.
 > 
-> Add support for them.
+> Note the maximum precision allowed by the display controller is 10bpc,
+> while the alpha component is not supported, hence ignored.
 > 
-> Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 > ---
+>  drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 13 ++++++++++++-
+>  drivers/gpu/drm/rockchip/rockchip_drm_vop2.h |  4 ++++
+>  2 files changed, 16 insertions(+), 1 deletion(-)
 > 
-> Changes in v2:
-> - Rewrite dt binding.
-> 
->  .../bindings/iommu/rockchip,iommu.yaml        | 52 ++++++++++++++++---
->  1 file changed, 46 insertions(+), 6 deletions(-)
-> 
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> index 498df0ce4680..87110beba366 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> @@ -1554,6 +1554,7 @@ static void vop2_post_config(struct drm_crtc *crtc)
+>  	struct vop2_video_port *vp = to_vop2_video_port(crtc);
+>  	struct vop2 *vop2 = vp->vop2;
+>  	struct drm_display_mode *mode = &crtc->state->adjusted_mode;
+> +	u64 bgcolor = crtc->state->background_color;
+>  	u16 vtotal = mode->crtc_vtotal;
+>  	u16 hdisplay = mode->crtc_hdisplay;
+>  	u16 hact_st = mode->crtc_htotal - mode->crtc_hsync_start;
+> @@ -1599,7 +1600,11 @@ static void vop2_post_config(struct drm_crtc *crtc)
+>  		vop2_vp_write(vp, RK3568_VP_POST_DSP_VACT_INFO_F1, val);
+>  	}
+>  
+> -	vop2_vp_write(vp, RK3568_VP_DSP_BG, 0);
+> +	/* Background color is programmed with 10 bits of precision */
+> +	val = FIELD_PREP(RK3568_VP_DSP_BG__DSP_BG_RED, DRM_ARGB64_GETR_BPC(bgcolor, 10));
+> +	val |= FIELD_PREP(RK3568_VP_DSP_BG__DSP_BG_GREEN, DRM_ARGB64_GETG_BPC(bgcolor, 10));
+> +	val |= FIELD_PREP(RK3568_VP_DSP_BG__DSP_BG_BLUE, DRM_ARGB64_GETB_BPC(bgcolor, 10));
 
-My bot found errors running 'make dt_binding_check' on your patch:
+Division is expensive. If we convert a 16 bpc value to 10 bpc using
+direct bit-shifts, that is "DRM_ARGB64_GETX(bgcolor) >> 6" will
+keep the relative error within 1 compared to DIV_ROUND_CLOSEST().
 
-yamllint warnings/errors:
+Should we be concerned about the precision problem here?
 
-dtschema/dtc warnings/errors:
-Documentation/devicetree/bindings/thermal/thermal-sensor.example.dtb: /example-0/soc/thermal-sensor@c263000: failed to match any schema with compatible: ['qcom,sdm845-tsens', 'qcom,tsens-v2']
-Documentation/devicetree/bindings/thermal/thermal-sensor.example.dtb: /example-0/soc/thermal-sensor@c263000: failed to match any schema with compatible: ['qcom,sdm845-tsens', 'qcom,tsens-v2']
-Documentation/devicetree/bindings/thermal/thermal-sensor.example.dtb: /example-0/soc/thermal-sensor@c265000: failed to match any schema with compatible: ['qcom,sdm845-tsens', 'qcom,tsens-v2']
-Documentation/devicetree/bindings/thermal/thermal-sensor.example.dtb: /example-0/soc/thermal-sensor@c265000: failed to match any schema with compatible: ['qcom,sdm845-tsens', 'qcom,tsens-v2']
+> +	vop2_vp_write(vp, RK3568_VP_DSP_BG, val);
+>  }
+>  
+>  static int us_to_vertical_line(struct drm_display_mode *mode, int us)
+> @@ -1984,6 +1989,10 @@ static int vop2_crtc_state_dump(struct drm_crtc *crtc, struct seq_file *s)
+>  		   drm_get_bus_format_name(vcstate->bus_format));
+>  	seq_printf(s, "\toutput_mode[%x]", vcstate->output_mode);
+>  	seq_printf(s, " color_space[%d]\n", vcstate->color_space);
+> +	seq_printf(s, "\tbackground color (10bpc): r=0x%x g=0x%x b=0x%x\n",
+> +		   DRM_ARGB64_GETR_BPC(cstate->background_color, 10),
+> +		   DRM_ARGB64_GETG_BPC(cstate->background_color, 10),
+> +		   DRM_ARGB64_GETB_BPC(cstate->background_color, 10));
+>  	seq_printf(s, "    Display mode: %dx%d%s%d\n",
+>  		   mode->hdisplay, mode->vdisplay, interlaced ? "i" : "p",
+>  		   drm_mode_vrefresh(mode));
+> @@ -2473,6 +2482,8 @@ static int vop2_create_crtcs(struct vop2 *vop2)
+>  			return dev_err_probe(drm->dev, ret,
+>  					     "crtc init for video_port%d failed\n", i);
+>  
+> +		drm_crtc_attach_background_color_property(&vp->crtc);
+> +
+>  		drm_crtc_helper_add(&vp->crtc, &vop2_crtc_helper_funcs);
+>  		if (vop2->lut_regs) {
+>  			const struct vop2_video_port_data *vp_data = &vop2_data->vp[vp->id];
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+> index 9124191899ba..37722652844a 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+> @@ -658,6 +658,10 @@ enum dst_factor_mode {
+>  #define RK3588_VP_CLK_CTRL__DCLK_OUT_DIV		GENMASK(3, 2)
+>  #define RK3588_VP_CLK_CTRL__DCLK_CORE_DIV		GENMASK(1, 0)
+>  
+> +#define RK3568_VP_DSP_BG__DSP_BG_RED			GENMASK(29, 20)
+> +#define RK3568_VP_DSP_BG__DSP_BG_GREEN			GENMASK(19, 10)
+> +#define RK3568_VP_DSP_BG__DSP_BG_BLUE			GENMASK(9, 0)
+> +
+>  #define RK3568_VP_POST_SCL_CTRL__VSCALEDOWN		BIT(1)
+>  #define RK3568_VP_POST_SCL_CTRL__HSCALEDOWN		BIT(0)
+>  
 
-doc reference errors (make refcheckdocs):
-
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20251128071322.92-2-kernel@airkyi.com
-
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
-
+-- 
+Best, 
+Chaoyi
 
 _______________________________________________
 Linux-rockchip mailing list
