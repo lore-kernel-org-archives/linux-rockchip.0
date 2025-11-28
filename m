@@ -4,84 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C99BCCFD376
-	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Nov 2025 07:49:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BCE8CFD376
+	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Nov 2025 08:18:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1maTbFwFK2/VyPAUj1HX2E4k0Qf7u0eEWSfJyC7ZQoA=; b=iY6hD1/ot5mV99
-	K9PWhOqkCc+yUFBRAZlw84EwGvRJ4sUOPkdFI2yTnpzkydZurCrzf/HbYIInQJElLfQeMv9lZ4W02
-	W2iNXO5kQFXdyVhAVAGXI2B2aaLFoPCcZhsqfiIgqNGV4iunKBa5fBGQbfyWPKek7BW5uyqwDRAh9
-	q6Mnw/dbHIzoLzu4cLlBMaIm0bxkSwPaJOgRP+uDJWsGCisrxNIKF8kZQqcK5wa949IO5DFKKD09t
-	KGTE6OqlCoJUE6PaXhzv936dijsBfXnJ/dPu8sE6TSPER5Z/z9v7h0ltbIje2qlR2rMt282aM34LU
-	qSeGRSshwMzqdGq3qpwA==;
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
+	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=SbSOd614g7o0Lws4HBOsqqLDOiFLBHmMw7g+rBGIk6g=; b=FaavugT5I2uuUhjod3JWIGKduc
+	ss9fkNkTO2h74Tpn10326w0/AQuwrjthMJaaUs8S1xVVqwAOxv2vxUR/som7Iz87XvGYIGdDNrobf
+	xrum8am5Ptlw2d6UiC6GUl3Vk9wiB0SuhwUq3Hv0BHLjlL4kESAQdhHDqUEx46m9Dps0pzQPXlrtv
+	FK6WAxr4ZUu20eNqjAdG3ZtWCOWFyEjHXeCXrqvWUJL/3nJRVxfVvEtt1czHCgAX/yFyIqIahRWBr
+	BRbeQY5z1plTyjPO6ZdS0uTOwXCqi+SUPtFj0oxdQfMDykvI3L48/QkeIpnFyzd4bSlBLlrDAaMWi
+	8t46uNBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vOtEd-000000006wW-1psj;
-	Fri, 28 Nov 2025 07:49:43 +0000
-Received: from mail-qk1-x72a.google.com ([2607:f8b0:4864:20::72a])
+	id 1vOtgD-000000008S3-1ck0;
+	Fri, 28 Nov 2025 08:18:13 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vOtEa-000000006vk-2I9H
-	for linux-rockchip@lists.infradead.org;
-	Fri, 28 Nov 2025 07:49:42 +0000
-Received: by mail-qk1-x72a.google.com with SMTP id af79cd13be357-8b2ea2b9631so148874285a.3
-        for <linux-rockchip@lists.infradead.org>; Thu, 27 Nov 2025 23:49:40 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1764316179; x=1764920979; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Xzb4o6woI0sKd6leSwCGnufqfj0RdO1VKVEpocSGcGU=;
-        b=gIIGgszseYVldLj0Xm0V3N/g+B1H40yixnZLV7ffi6UfGdFWIuB2ZQxH4BxS+yTgEg
-         1QTW9XacpBKtWx6Zecg7ASN1+DR08+B5/7+uHtYyYqlwN6XHg52jVHUIJIDGVUyJYX7a
-         uRuwHjxRpQ8ECyEqybwCvZotHRI8zYhcmoUazf17QHQd47nTGz2ZIOPxdmMYsSj3XMtI
-         K5z6ddPVgPMQnmYSVHlGjTe7pSYvZjR5Y9UF+mjwdpBXQLtJlPgT02fXAg2iuYI24lOb
-         7CkZ52zb7ou1cpMYgS4UfJF359D6/cInEbFdTA2JMygiYEFgbf4DzVTks55yS/4FXnsW
-         wS1A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1764316179; x=1764920979;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=Xzb4o6woI0sKd6leSwCGnufqfj0RdO1VKVEpocSGcGU=;
-        b=oeq90gDc4TNfgQ51mCHonhtT9I5vLL+e/tFinm9CXshzOn7jlvCeamOS+RmghTg5nN
-         24dYQ7VBl2ZWjgBJC45RX0JqXf9Z3wni+C4gOEgamMWQ+j5IcvjPKqrqetY2A4n523/q
-         E3a3qycRb0JzBM5yV3gWZFRTCYRWsh3npvnYej2sDUmNdHpgH9l4cFt+/iA+bLZvUpJB
-         aV7t29NVF/K45kY2YiZr7VyMb2XnE2LmCmkThMDGr8rJYgu/WQHyftIeBGalKOMnX0rP
-         T9wMEg1froSfoAff0XwhdSBfDrrpsNjYC1fbMig8UVc+yVTKGuAi0Tpb0F5d385Z/hZC
-         JNGg==
-X-Forwarded-Encrypted: i=1; AJvYcCWIFW71abrkCZl8dquXkNoCEEe3G73r6F1D8ZiDRxZ/2WQ1gANs44XruVwL6h084gErBkM46rNWguKUaSjaPw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx++Yhbv9Ag4CCfdLuHavH42mky/DPsTcaA+IuJP6kI4DilN0pw
-	FYvXNCbIsUE8CJ/TqCCqUFqy1C/fOqhCDRVFbGDkUJ2LlAk23rbi7cWmoS79zIpwUEovc+m24e8
-	tImEJzbBJj+7acAjgpPzWbSRQ+iSuf28=
-X-Gm-Gg: ASbGncs1XCW/bsrwnR/yd7fXFBkUDis0xCvSSIjk90ocXfVe5assO7xvlnELHw14WYR
-	zIp4SHAqKiFqxYkujaDvlp1nmCD1hN91sU8801ETvnNWyZg6eHV6ljTKL8Ymobg/zUAKhQAaR0X
-	EptmX+XmCWZ3yrh6rOvBdm8ZXr1d7sqF4Fy00zDLo9pLqcbOZPr7jx3ZG8u01bbkzC0rqoqp5sI
-	Ovbm8K+2KRN8DSWrFVft4i4ICwdbffvuY2fhpomFX2Ovyu2bIISVL/szjavvba2h+bKo2goGkjM
-	tmOGm8lo0HMo4BA8ER3QGallrSvS
-X-Google-Smtp-Source: AGHT+IHYzLcGh+cWGpJkei51y/kYklMPmBU3wbElTrGhOhOpPSp6GAM0EV8iuyukCLvsobhwpt+JVDig/00Wu3PpzZo=
-X-Received: by 2002:a05:622a:4d4b:b0:4e8:aff9:a7a8 with SMTP id
- d75a77b69052e-4efc3f2a0efmr187482101cf.52.1764316179224; Thu, 27 Nov 2025
- 23:49:39 -0800 (PST)
+	id 1vOtgB-000000008Re-09Z6;
+	Fri, 28 Nov 2025 08:18:11 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id C1154602BA;
+	Fri, 28 Nov 2025 08:18:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 42062C4CEF1;
+	Fri, 28 Nov 2025 08:18:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1764317889;
+	bh=Oycb6ot6Iyhsttxtig2/z+FAxLCxcG3XAiysNbp4Vdw=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=D2UPU2kIouxukoByIRpHeE7yB9hi0j1p5g3O4zP4ENqRSX/Z8+pl1Mm3LrvHm5thq
+	 tB+erSWVHiFBi468A5rhzTTijwcJRvjThyH25MuhVCTYf/clYHKWKVm3lh1V72qlXG
+	 2vZtDiEQt0ztKR4wv1qVGsVxzE9eapDp4spc713WubXGWJ/X8zAV59AXLP7MS3xhmJ
+	 CyXloozgNe7Z+dQyhjfh5tnCWIjJFFm61r3UAhsZ5pw4XAkGBrFB3EYSXIE88gH2zA
+	 QLMsACSuWwqig8N/ShJdPcSX+Zl9vqxavU1nWZLOSOObZYkUbgnqtI0JBsTvrKVHuR
+	 7UgUFLawaXy+w==
+Date: Fri, 28 Nov 2025 02:18:07 -0600
 MIME-Version: 1.0
-References: <20251127-nanopi-m5-ufs-v1-1-0d28d157712c@gmail.com>
-In-Reply-To: <20251127-nanopi-m5-ufs-v1-1-0d28d157712c@gmail.com>
-From: Alexey Charkov <alchark@gmail.com>
-Date: Fri, 28 Nov 2025 11:49:31 +0400
-X-Gm-Features: AWmQ_bnfm67nHyppKcn_WewzrQOH_TFdC0fMKR8wgi2rranNPLttVu9G4ijWIFw
-Message-ID: <CABjd4Yx0wJG-RjbGo1EZXK=bDp0sBJvcwA8tJ5jNOZRmGq3r3g@mail.gmail.com>
-Subject: Re: [PATCH] arm64: dts: rockchip: enable UFS controller on
- FriendlyElec NanoPi M5
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251127_234940_614895_8EF03900 
-X-CRM114-Status: GOOD (  11.34  )
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, 
+ Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, 
+ Will Deacon <will@kernel.org>, linux-rockchip@lists.infradead.org, 
+ iommu@lists.linux.dev, Chaoyi Chen <chaoyi.chen@rock-chips.com>, 
+ Joerg Roedel <joro@8bytes.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ linux-arm-kernel@lists.infradead.org, Robin Murphy <robin.murphy@arm.com>
+To: Chaoyi Chen <kernel@airkyi.com>
+In-Reply-To: <20251128071322.92-2-kernel@airkyi.com>
+References: <20251128071322.92-1-kernel@airkyi.com>
+ <20251128071322.92-2-kernel@airkyi.com>
+Message-Id: <176431788757.1500601.18210148365739838676.robh@kernel.org>
+Subject: Re: [PATCH v2 1/2] dt-bindings: iommu: rockchip: Add support for
+ multiple interface clocks
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,37 +69,60 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCBOb3YgMjcsIDIwMjUgYXQgMzo0NuKAr1BNIEFsZXhleSBDaGFya292IDxhbGNoYXJr
-QGdtYWlsLmNvbT4gd3JvdGU6Cj4KPiBUaGUgTmFub1BpIE01IGJvYXJkIHN1cHBvcnRzIHBsdWdn
-YWJsZSBVRlMgbW9kdWxlcyB1c2luZyB0aGUgVUZTSEMKPiBpbnNpZGUgaXRzIFJvY2tjaGlwIFJL
-MzU3NiBTb0MuCj4KPiBFbmFibGUgdGhlIHJlc3BlY3RpdmUgZGV2aWNldHJlZSBub2RlLgo+Cj4g
-Qm9hcmQgc3BlY2lmaWMgc3VwcGx5IHJlZ3VsYXRvcnMgYXJlIG5vdCBhZGRlZCwgYmVjYXVzZSB0
-aGV5IGFyZSBhbGwKPiBub24tZ2F0ZWFibGUgZGVzY2VuZGFudHMgb2Ygb3RoZXIgcmVndWxhdG9y
-cyBtYXJrZWQgYWx3YXlzLW9uLgoKT24gYSBzZWNvbmQgdGhvdWdodCwgSSdsbCBhZGQgdGhvc2Ug
-cmVndWxhdG9ycyBpbiB2MiwgYW5kIGFsc28gaW5jbHVkZQphIGxpbmsgdG8gdGhlIHJlbGV2YW50
-IHNjaGVtYXRpYyBbMV0uIEV4cGxpY2l0bHkgbGlzdGluZyB0aGUKcmVndWxhdG9ycyBoYXMgYSBz
-bGlnaHQgYmVuZWZpdCBvZiBmZXdlciBjb21wbGFpbnRzIGZyb20gdGhlIGRyaXZlciBhdApib290
-IHRpbWUsIGFuZCBtYXliZSBhdCBzb21lIHBvaW50IHdlJ2xsIHdhbnQgdG8gdHJ5IGFuZCByZW1v
-dmUgc29tZQpvZiB0aGUgImFsd2F5cy1vbiIgbWFya2luZ3MgKHdoaWNoIHdvdWxkIHJlcXVpcmUg
-YSByZWFzb25hYmx5IGNvbXBsZXRlCmRlc2NyaXB0aW9uIG9mIHRoZSBwb3dlciBncmFwaCBpbnNp
-ZGUgdGhlIGRldmljZSB0cmVlKS4gVGhleSBhcmUgYWxzbwphY3R1YWwgZGV2aWNlcyBvbiBib2Fy
-ZCBhbmQgbm90IHB1cmUgYWxpYXNlcyBvZiBvdGhlciBleGlzdGluZyBwb3dlcgpsaW5lcywgd2hp
-Y2ggSU1PIHF1YWxpZmllcyB0aGVtIGZvciBpbmNsdXNpb24gaW4gdGhlIERULgoKRlRSOgpWQ0Nf
-VUZTIGlzIGRpcmVjdGx5IGZlZCBieSBWQ0NfM1YzX1MzLCBubyBmYW5jeSBjaXJjdWl0cnkgaW4g
-YmV0d2VlbgpWQ0MxVjJfVUZTX1ZDQ1EgaXMgZmVkIGJ5IFZDQzVWMF9TWVNfUzUgdmlhIGEgRENE
-QyBidWNrIGNvbnZlcnRlciwKd2hvc2UgRU4gcGluIGlzIGRyaXZlbiBieSBWQ0NfM1YzX1MzClZD
-QzFWOF9VRlNfVkNDUTIgaXMgZmVkIGJ5IFZDQ18xVjhfUzMgdmlhIGEgTU9TRkVUIGdhdGVkIGJ5
-IHZvbHRhZ2Ugb24KVkREQV8xVjJfUzAKVUZTIGhvc3QgY29udHJvbGxlciBpdHNlbGYgaXMgcGFy
-dCBvZiB0aGUgVkNDSU83IGRvbWFpbiwgd2hvc2UgbG9naWMKaXMgZHJpdmVuIGJ5IFZERF8wVjc1
-X1MzIGFuZCB3aG9zZSBWQ0MgaXMgZmVkIGJ5IFZEREFfMVYyX1MwCgpXaWxsIHdhaXQgZm9yIDI0
-aCB0byBlbGFwc2Ugc2luY2UgdjEgc3VibWlzc2lvbiBhbmQgc2VuZCBhIHYyIGxhdGVyIHRvZGF5
-LgoKQmVzdCByZWdhcmRzLApBbGV4ZXkKClsxXSBodHRwczovL3dpa2kuZnJpZW5kbHllbGVjLmNv
-bS93aWtpL2ltYWdlcy85Lzk3L05hbm9QaV9NNV9MUDVfMjQxMV9TQ0gucGRmCgpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWls
-aW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
-aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+
+On Fri, 28 Nov 2025 15:13:21 +0800, Chaoyi Chen wrote:
+> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+> 
+> The iommu found on RK3576 NPU and RK3576 RKVDEC have 4 clock instead of
+> 2 clock. Their clock names might differ, but I don't think that matters
+> much.
+> 
+> Add support for them.
+> 
+> Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+> ---
+> 
+> Changes in v2:
+> - Rewrite dt binding.
+> 
+>  .../bindings/iommu/rockchip,iommu.yaml        | 52 ++++++++++++++++---
+>  1 file changed, 46 insertions(+), 6 deletions(-)
+> 
+
+My bot found errors running 'make dt_binding_check' on your patch:
+
+yamllint warnings/errors:
+
+dtschema/dtc warnings/errors:
+Documentation/devicetree/bindings/thermal/thermal-sensor.example.dtb: /example-0/soc/thermal-sensor@c263000: failed to match any schema with compatible: ['qcom,sdm845-tsens', 'qcom,tsens-v2']
+Documentation/devicetree/bindings/thermal/thermal-sensor.example.dtb: /example-0/soc/thermal-sensor@c263000: failed to match any schema with compatible: ['qcom,sdm845-tsens', 'qcom,tsens-v2']
+Documentation/devicetree/bindings/thermal/thermal-sensor.example.dtb: /example-0/soc/thermal-sensor@c265000: failed to match any schema with compatible: ['qcom,sdm845-tsens', 'qcom,tsens-v2']
+Documentation/devicetree/bindings/thermal/thermal-sensor.example.dtb: /example-0/soc/thermal-sensor@c265000: failed to match any schema with compatible: ['qcom,sdm845-tsens', 'qcom,tsens-v2']
+
+doc reference errors (make refcheckdocs):
+
+See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20251128071322.92-2-kernel@airkyi.com
+
+The base for the series is generally the latest rc1. A different dependency
+should be noted in *this* patch.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit after running the above command yourself. Note
+that DT_SCHEMA_FILES can be set to your schema file to speed up checking
+your schema. However, it must be unset to test all examples with your schema.
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
