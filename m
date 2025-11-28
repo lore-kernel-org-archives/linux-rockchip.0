@@ -4,81 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E5F7CFD376
-	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Nov 2025 03:17:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4854CFD376
+	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Nov 2025 05:16:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
-	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=MjMypW4wXBWCLkGkyGdxhW0JcH4Kk6UcOjccAVthBSI=; b=lgSSFb0vHm9mhCdmdRPyj5lBTj
-	5GdGr32ZvV0rd47ynocm74WHvG+ni/t1fGpSaSlKYQh2HKhfx5x/ynT37pfbRGL7w72QJQt71XCYG
-	W8Cg/MIdBrkVGwkki5a+ZCXOtlTjTAQOv+D23+bB2ffDzZYjTHLE8ObyMl9UDi9A38Bl6OW+l0fI/
-	LNjA3b0MPg9yd6bo2CTE5PE79iHHGnzhmgCfzyBB5+trQYg0lBejxjOteFgKV2cT+79iMNvZ7d7fJ
-	rYBs1QdRzHoCjeSh+eGSyWsZwyRwfMcVCgZYz0xE/tGOslez6LwN61Zu/TxXX3xnVU0xUg3sBsbOo
-	JTLdM8HA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=c+eqslLJ11Jk121PQkpo9BAF33GNxha/pUMDyvzqlRo=; b=cZ+YpANO0y0wTg
+	7sha544jcJRbgJmY/KGm3d4BMe6LkZcI0e2ih9AAhs2WtaU3fVX8awK7uMwdTkBfS/BLBhvEtCHH9
+	vGCF8eoS84i1BNU860Z8Y8FjscZ818iQvnIERvm7Zrsmy8kAkHEhJcrNsT8vwh/5NiRF1xgobsqe6
+	rigN15cEKaF7Lt0BYw8LRW3P0WQNUkYek+PCBIV59ggov864EInoov5ekGDV8nBJdeCQ5C728SRI8
+	x9Xk35wYvZMGGjvFmvsBEbtJRf92KgrOoye/MgBURaoONbtAM7u1oO468sVEzOALUHl5c6x9C1a9I
+	79WMplIiySV+LesO/8Sg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vOozC-0000000HVru-2jCZ;
-	Fri, 28 Nov 2025 03:17:30 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vOqqM-0000000HaZt-37zN;
+	Fri, 28 Nov 2025 05:16:30 +0000
+Received: from smtpbgjp3.qq.com ([54.92.39.34])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vOozA-0000000HVqx-2PYw;
-	Fri, 28 Nov 2025 03:17:28 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 8655D6013C;
-	Fri, 28 Nov 2025 03:17:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 04DF0C4CEF8;
-	Fri, 28 Nov 2025 03:17:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1764299847;
-	bh=ryPXwfuMaZzBXoYMo/9eVTKnHFtI3lVtoZXMBixOIc4=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=R1Ec+14ZjpPF5TvGD5MwhTACaQKRf4CPFDQlWnS3iKcnA8nYJoHgtULZac5QL0R8e
-	 ONuNr0QhVzGQQpBd9bAMc1HDkJTHGmkM+T4u3EYEry/bXjqhlfnzkJ148xc96GDTWS
-	 9m44RRHE9/pa6qqT19+hA/3uKMQ2VlMa/O1lNQSYr2D7vVq8xL5+nhR0SPDO0iTntq
-	 f/ldas7ZXnM+NMMiIVPZ0xtlmSLav22QSnLLOw/JE1y6uSSXurk3KHRR9Zrbm1mnqz
-	 R9TMfNxqW8aiwae9iBkcsN7xtjhBhTn7smCfb7sO/wYSYR0TxnNyu3olV+kHpfMGwO
-	 8NTnuNSIdcdtA==
-Date: Thu, 27 Nov 2025 21:17:25 -0600
+	id 1vOqqJ-0000000HaXk-012S;
+	Fri, 28 Nov 2025 05:16:28 +0000
+X-QQ-mid: zesmtpip2t1764306931t09c9b483
+X-QQ-Originating-IP: xUrhIoZX/6tn9sXRO/7GnvHddUx4UhJcB3arw2WWo4s=
+Received: from [IPV6:240f:10b:7440:1:54db:6346 ( [localhost])
+	by bizesmtp.qq.com (ESMTP) with 
+	id ; Fri, 28 Nov 2025 13:15:28 +0800 (CST)
+X-QQ-SSF: 0000000000000000000000000000000
+X-QQ-GoodBg: 0
+X-BIZMAIL-ID: 11110066794902672146
+Message-ID: <585D6D29DF1A6436+9b5db091-8d6e-42a5-ab8f-4b152f82ac54@radxa.com>
+Date: Fri, 28 Nov 2025 14:15:28 +0900
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: Sandy Huang <hjc@rock-chips.com>, 
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
- Diederik de Haas <didi.debian@cknow.org>, Dragan Simic <dsimic@manjaro.org>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- linux-phy@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Johan Jonker <jbx6244@gmail.com>, 
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
- Robert Foss <rfoss@kernel.org>, 
- Heikki Krogerus <heikki.krogerus@linux.intel.com>, 
- Heiko Stuebner <heiko@sntech.de>, 
- Kishon Vijay Abraham I <kishon@kernel.org>, 
- Neil Armstrong <neil.armstrong@linaro.org>, 
- linux-rockchip@lists.infradead.org, 
- Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Maxime Ripard <mripard@kernel.org>, Jonas Karlman <jonas@kwiboo.se>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Chaoyi Chen <chaoyi.chen@rock-chips.com>, 
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
- Amit Sunil Dhamne <amitsd@google.com>, linux-kernel@vger.kernel.org, 
- dri-devel@lists.freedesktop.org, Conor Dooley <conor+dt@kernel.org>, 
- Vinod Koul <vkoul@kernel.org>, Peter Chen <hzpeterchen@gmail.com>, 
- Luca Ceresoli <luca.ceresoli@bootlin.com>, 
- Peter Robinson <pbrobinson@gmail.com>, 
- Yubing Zhang <yubing.zhang@rock-chips.com>, Simona Vetter <simona@ffwll.ch>, 
- linux-arm-kernel@lists.infradead.org, 
- Frank Wang <frank.wang@rock-chips.com>, linux-usb@vger.kernel.org, 
- devicetree@vger.kernel.org, Andrzej Hajda <andrzej.hajda@intel.com>
-To: Chaoyi Chen <kernel@airkyi.com>
-In-Reply-To: <20251128020405.90-6-kernel@airkyi.com>
-References: <20251128020405.90-1-kernel@airkyi.com>
- <20251128020405.90-6-kernel@airkyi.com>
-Message-Id: <176429984551.1030074.10716294618988682110.robh@kernel.org>
-Subject: Re: [PATCH v11 05/11] dt-bindings: phy: rockchip:
- rk3399-typec-phy: Support mode-switch
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 0/6] PCI: dwc: Revert Link Up IRQ support
+To: Niklas Cassel <cassel@kernel.org>, Manivannan Sadhasivam <mani@kernel.org>
+Cc: Jingoo Han <jingoohan1@gmail.com>,
+ Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+ Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+ Heiko Stuebner <heiko@sntech.de>, Shawn Lin <shawn.lin@rock-chips.com>,
+ Krishna chaitanya chundru <quic_krichai@quicinc.com>,
+ linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org
+References: <20251111105100.869997-8-cassel@kernel.org>
+ <mt7miqkipr4dvxemftq6octxqzauueln252ncrcwy6i2t7wfhi@jtwokeilhwsi>
+ <aSRli_Mb6qoQ9TZO@ryzen>
+Content-Language: en-US
+From: FUKAUMI Naoki <naoki@radxa.com>
+In-Reply-To: <aSRli_Mb6qoQ9TZO@ryzen>
+X-QQ-SENDSIZE: 520
+Feedback-ID: zesmtpip:radxa.com:qybglogicsvrsz:qybglogicsvrsz4b-0
+X-QQ-XMAILINFO: NyuCELaSACDhe27yPH8syQNwE/GIHnbaQx/Li9kExZexeMyuifZGQPn4
+	9TdY8w4ZjRG9BzBEe5dCYQ3LHFidtlda+DKxAQkNAOEP3vX9RM6PY1vEPcglZmf8j56neRI
+	BERt6wzpgQV2RxE6lSJSulgwxD03/gpd9QDAcuvJXlkNIDrGalMzJKxy7fk0GL09/KYag6c
+	4M/h6LDAZhUAky2BVxO0cGSAv4dhcz8u9pgwBi2DCdKouZDeYYKyaxuvO//ynRPTR9xanYU
+	LzrIIiweLwOv7vu2zQypkOfi+p7R9U6qgk6hgsJCwopOxtFUOHu1dfZepFOz+ZKwyZRBXXg
+	cTWgRD6P5+bDAN0djmcUjUMtk3qwKteZ4d7sqTM8WzfwHZfvYaQxfNsM6jYnNc1KseHwZOH
+	xG0PTWMh/eMXV7sJ1Xv+OMgwEO6m952++WJh52Hf+IxNyjc/6uXkGBcYE9Vlh7UW4RkLD8S
+	GYsGek5nz/kRPsL/D6RODK/q7XV3TQtKDHxIoZOXUGdFdwegLzSO8g/51Vla/ZvfgEX9Osu
+	Zvg2aCSI20f1dbIxGBW90S3ZR0rAGHBkA3iryBxJCidz/zJYzgZlTLf8k8AeX8YK69FGZHN
+	6cZlXtuFdxhDk39Bc+cPlj/ys9N7JbgOSgShs381y32ztj91+NUnToFUwN434/1hLD1QVD8
+	3JyecM+fcw9PL/u9K9BoYOXgrdAH0vvsntBtLWu9GGSlcBu5h/NkHkFSCM6jkwWg0kFU5/s
+	F1ymydk4xPNaBIZ5QPEucxmXaUX8CkW+7cqs5r+CAnDxmBXjmyu4jIXbSOYgVYj3lDuAOMj
+	cf2GtaqD90WWxkMhxPIDDs2hQ0ERNpnIPWIQfLDqfuCaUfsfhiQ2+VQ0jGLam10Hqyu54gv
+	rEwCoJpWTWIC6ANbO/2Dhq8B6CVE19wBk8jOkh2kGu+eM0t2muimT1647Va8gA0qCLJlH38
+	2TFTnGJRfSZUQCsEn+NYw1xZEMTD/slJmkONIOnHIbC1nZ1K2xHHPLlfwKXqRN962erowAO
+	51RGPNhaBHHhmai1qIteHMia+HIZA=
+X-QQ-XMRINFO: Mp0Kj//9VHAxr69bL5MkOOs=
+X-QQ-RECHKSPAM: 0
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251127_211627_345968_FF4C703C 
+X-CRM114-Status: GOOD (  16.49  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,85 +88,60 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Niklas,
 
-On Fri, 28 Nov 2025 10:03:59 +0800, Chaoyi Chen wrote:
-> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+On 11/24/25 23:02, Niklas Cassel wrote:
+> On Mon, Nov 24, 2025 at 06:07:44PM +0530, Manivannan Sadhasivam wrote:
+>> While I suggested to revert the link up IRQ patch for rockchip earlier, I didn't
+>> expect to drop the support for Qcom. The reason is, on Qcom SoCs, we have not
+>> seen a case where people connect a random PCIe switch and saw failures. Most of
+>> the Qcom usecases were around the M.2 and other proprietary connectors. There is
+>> only one in-house PCIe switch that is being actively used in our products, but
+>> so far, none of the bootloaders have turned them ON before kernel booting. So
+>> kernel relies on the newly merged pwrctrl driver to do the job. Even though it
+>> also suffers from the same resource allocation issue, this series won't help in
+>> any way as pwrctrl core performs rescan after the switch power ON, and by that
+>> time, it will be very late anyway.
+>>
+>> So I'm happy to take the rockhip patches from this series as they fix the real
+>> issue that people have reported. But once the pwrctrl rework series gets merged,
+>> and the rockchip drivers support them, we can bring back the reverted changes.
 > 
-> The RK3399 SoC integrates two USB/DP combo PHYs, each of which
-> supports software-configurable pin mapping and DisplayPort lane
-> assignment. These capabilities enable the PHY itself to handle both
-> mode switching and orientation switching, based on the Type-C plug
-> orientation and USB PD negotiation results.
+> FUKAUMI Naoki, just to confirm:
+
+Should I try
+  "PCI: dwc: Make Link Up IRQ logic handle already powered on PCIe switches"
+  https://lore.kernel.org/r/20251127134318.3655052-2-cassel@kernel.org
+
+instead of below approaches/patches?
+
+> Neither my suggested approach:
+> https://lore.kernel.org/linux-pci/aRHdeVCY3rRmxe80@ryzen/
 > 
-> While an external Type-C controller is still required to detect cable
-> attachment and report USB PD events, the actual mode and orientation
-> switching is performed internally by the PHY through software
-> configuration. This allows the PHY to act as a Type-C multiplexer for
-> both data role and DP altmode configuration.
+> nor Shawn's suggested approach:
+> https://lore.kernel.org/linux-pci/dc932773-af5b-4af7-a0d0-8cc72dfbd3c7@rock-chips.com/
 > 
-> To reflect this hardware design, this patch introduces a new
-> "mode-switch" property for the dp-port node in the device tree bindings.
-> This property indicates that the connected PHY is capable of handling
-> Type-C mode switching itself.
+> worked for you?
 > 
-> Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> ---
 > 
-> (no changes since v5)
-> 
-> Changes in v4:
-> - Remove "|" in description.
-> 
-> Changes in v3:
-> - Add more descriptions to clarify the role of the PHY in switching.
-> 
-> Changes in v2:
-> - Reuse dp-port/usb3-port in rk3399-typec-phy binding.
-> 
->  .../devicetree/bindings/phy/rockchip,rk3399-typec-phy.yaml  | 6 ++++++
->  1 file changed, 6 insertions(+)
+> If so, I don't see many alternative but for Mani to apply patch 1 and
+> patch 2 from this series.
+
+Best regards,
+
+--
+FUKAUMI Naoki
+Radxa Computer (Shenzhen) Co., Ltd.
+
+> Kind regards,
+> Niklas
 > 
 
-My bot found errors running 'make dt_binding_check' on your patch:
-
-yamllint warnings/errors:
-
-dtschema/dtc warnings/errors:
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/slimbus/slimbus.example.dtb: slim@28080000 (qcom,slim-ngd-v1.5.0): 'audio-codec@1,0' does not match any of the regexes: '^pinctrl-[0-9]+$', '^slim@[0-9a-f]+$'
-	from schema $id: http://devicetree.org/schemas/slimbus/qcom,slim-ngd.yaml
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/slimbus/slimbus.example.dtb: slim@28080000 (qcom,slim-ngd-v1.5.0): #address-cells: 1 was expected
-	from schema $id: http://devicetree.org/schemas/slimbus/qcom,slim-ngd.yaml
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/slimbus/slimbus.example.dtb: slim@28080000 (qcom,slim-ngd-v1.5.0): 'dmas' is a required property
-	from schema $id: http://devicetree.org/schemas/slimbus/qcom,slim-ngd.yaml
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/slimbus/slimbus.example.dtb: slim@28080000 (qcom,slim-ngd-v1.5.0): 'dma-names' is a required property
-	from schema $id: http://devicetree.org/schemas/slimbus/qcom,slim-ngd.yaml
-Documentation/devicetree/bindings/thermal/thermal-sensor.example.dtb: /example-0/soc/thermal-sensor@c263000: failed to match any schema with compatible: ['qcom,sdm845-tsens', 'qcom,tsens-v2']
-Documentation/devicetree/bindings/thermal/thermal-sensor.example.dtb: /example-0/soc/thermal-sensor@c263000: failed to match any schema with compatible: ['qcom,sdm845-tsens', 'qcom,tsens-v2']
-Documentation/devicetree/bindings/thermal/thermal-sensor.example.dtb: /example-0/soc/thermal-sensor@c265000: failed to match any schema with compatible: ['qcom,sdm845-tsens', 'qcom,tsens-v2']
-Documentation/devicetree/bindings/thermal/thermal-sensor.example.dtb: /example-0/soc/thermal-sensor@c265000: failed to match any schema with compatible: ['qcom,sdm845-tsens', 'qcom,tsens-v2']
-
-doc reference errors (make refcheckdocs):
-
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20251128020405.90-6-kernel@airkyi.com
-
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
 
 
 _______________________________________________
