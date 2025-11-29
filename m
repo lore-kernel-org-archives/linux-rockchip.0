@@ -4,81 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F94AD116EA
-	for <linux-rockchip@archiver.kernel.org>; Sat, 29 Nov 2025 06:52:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AECCCFD2F6
+	for <linux-rockchip@archiver.kernel.org>; Sat, 29 Nov 2025 09:50:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NJPJmQcvG0h1m3pxHtdM0ZZTHL0cnpEacVmenqKa+UA=; b=N0p4DzC2AXM6GX
-	Sa340k67W+hZaJGEduLvUPbNEaogEsPCjqTbTEftIHnG+5CKH/YIF+WGM2gUuL3LwimDTV5wdS8MN
-	HLJAzMj4OPVDlAOCTvDupB1PWHvlYhUN+n7cpkiyZcA6EbnRFwgYayt6CA79PjSAR7La++UiCJOf8
-	R+rwXp/ZF5wj6IEoivmHZu/TTc0BFMOe/LjXJ25RXUmuB6Dc191T9sB49wZD/JT7rdUgpIIuVzTPk
-	aQzK9EQst7wu90T/tuYU3kFlYuNAV7OQE8PH7GOjhxR/GPh8I7v+oImm7pkQcXwppqhQN++uSgtv3
-	orU/tqbJKg5hmreb6lkQ==;
+	List-Owner; bh=MVanN511lWIcSwMxkYj/wNuaZYJXMXAkfnbXCPpMA8I=; b=FqGvylnjtASirc
+	vXhkdPMqNCECbhMYqsRAe8RWCSt3oTcVAUodaYejsAZrM4NGqOfchYKrUpr0f1MlXHztp6Zcqb+B1
+	84vzxA5rteAv0A7Y7h9FBNJivtRCNHIsd3s5CXKFbMV1YpH9gHsaBG/042+hX26bolTwBDCqGXP4N
+	PJvwm5+K/fGZE666Yv8NP2ndnsP4tUcQgWPkAUk7072NsxAiwKCypSfc9yrpuV0QGNAK8Klo4YXoN
+	NUwP3vEw5YN5G2tl6e7E2DXH/MICMiOoTAMVLaKoMZAVNYPFGIt2ONFYMfwOq8aOfJX3yjhTVH2Px
+	S7BA0pYU8dMmb/SykIlA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vPEof-00000001KX5-2AIH;
-	Sat, 29 Nov 2025 06:52:21 +0000
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+	id 1vPHb1-00000001RV5-3HTd;
+	Sat, 29 Nov 2025 09:50:27 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vPEoc-00000001KWe-1cIS
-	for linux-rockchip@lists.infradead.org;
-	Sat, 29 Nov 2025 06:52:19 +0000
-Received: by mail-ed1-x532.google.com with SMTP id 4fb4d7f45d1cf-640a503fbe8so4773971a12.1
-        for <linux-rockchip@lists.infradead.org>; Fri, 28 Nov 2025 22:52:17 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1764399136; x=1765003936; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=mY57t/v7l7+q+SXGdGf8+i198PFB2EV4ssC0luXesUA=;
-        b=I7sVmNiR6UMamd92nzKl2dX6gWWEhrYtD/kW4x0O+k+D3OE+CZCNVGESWPSTYUHDBc
-         wsBJsrruJd8Gz6+Av0ISP4GbpBI80DPBuSYHuWr5y9RMQIDk0ISukiU0WPHH1/p/jY04
-         54hIwGTIMV4E2HPffpmkwJURVjd5+TDtzcv+FDcns1yN132K2vtV8/6qXPQ9nJK1Wndl
-         2hXLT6mKvqCtlIhqx6Hl3T4D3/jZs46ixPSBr7TVQELAJZpEviw9BfywK9clmisO6Yfr
-         jyhtS3KcDPWyHoBG0CZSlR5SBNfHWvJIv91IlOxpTg0VV4hZwp7nftkvQnon+uY9gy/i
-         UoTQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1764399136; x=1765003936;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=mY57t/v7l7+q+SXGdGf8+i198PFB2EV4ssC0luXesUA=;
-        b=fF2yt29Nl4BBkHCYwOMbPR+n19lAiEKQJwZ2HGlncwMiniDpG+/8D+6Rzr5uMnsM3g
-         ywmUM8ciPKfQzS37NYJDQxvulgQ/hRqRM5KKOQIoYW9Gh0WwdN5ags7Ky7//AzM9zo+C
-         T9t37qMxg2wpOGTW1yb9Bn+BGLno1x7qHOMpZ/xZ1npWo6vlO4WvBl8mMNNSLbBMavID
-         xrhYvQK7zh8KTPNEeHo5lYiowH8t5p0GRsT5wxmBcANuKAle/NHbMJiCRXxqrZ7lY8ch
-         aI8kON9RDWF5Z+syqZZmFyMceKZYq+wBZXBd7bRK2uaYLtHQZhjghx4FUDw8nR2N2Ei/
-         UWDg==
-X-Forwarded-Encrypted: i=1; AJvYcCVb68zGLk9guO3Pg6H+n2ScXvKb8TqKYbjLSahof94d0efv1XSLUFlWDLti47IRzdpSgIeFekoVj4NxlDDpIw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzA14Jpn55XKNmWCIo+S8fpXk/yOxNjYaKTLx6ZuGIuVwqzPpGU
-	DvGN58OX0X6mM365MucqySS1/DK0gqGAuTkAClwCCRXmbecZuh4ZNZHfn974dy5NBcrv/v7Ku9k
-	6wWMFc38utoc/g2RAZLvscR86qrdvLXAvnYVb
-X-Gm-Gg: ASbGnct6m329Pl6fMq11Qzw/YijJNAVT2HqvdgLCWiJo/Gi9NshSswhqCJtusbvF+AX
-	1QK/9h8Xzvx9oQBw8C3lSEURheNuulFFq7CAXKUgFS802MsQ8Ga07ul1+HJUlqKUXaafv58sfpW
-	g3xonvs7rdYsTBeSu5HuL/KaTpx8aivFag2tjK0QjoI7mVI6c9LycdN/Ws9LEGW5Xi3T/E0R/JL
-	aS5Jij/ww/DYKFIWJuIeG0o9PaImW13Chcd1xRmq08qFjwvLjBGRf7Lwc1VzLTDwVC2Ug==
-X-Google-Smtp-Source: AGHT+IEWbCpvWmUs2vHbk6WH4VEpZA3VDYQCv5LZHzbValWzg3sRI2GhxxXJjnqqkRLwKiso/m6RqBqq2D87EH2dXfM=
-X-Received: by 2002:a05:6402:26c1:b0:647:5c87:8668 with SMTP id
- 4fb4d7f45d1cf-6475c8786c8mr5315010a12.14.1764399135812; Fri, 28 Nov 2025
- 22:52:15 -0800 (PST)
+	id 1vPHav-00000001RUB-3i05;
+	Sat, 29 Nov 2025 09:50:26 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1764409817;
+	bh=MmXzVJ5MoVP8VbuSvcRf5Cd6FU2Boz+4Je345xBRang=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=mWum973oC9Cc3v/JpWaj+y+bA86DwJ7gSSSecrKm9oRtJXaZEuAdCYMuM0DWgjD1P
+	 5U1s1i230v+rCAw8qZcP3wkUtUVZEWqXRnV7JjWyPQzTI+pY9UCi9mJK7XV3Rm7D/U
+	 tMnPsBic37kmOut/GD5QLOsZ7oRNojsLwLXxr1SMTG5l4Rp+VZ4uA7ywtK0yvs3Uh/
+	 AsHH2uEObJnWsg7bUyjJM00FGHm384j9W8TnxzDmadBAHKqBCSt1bJVapZ6Tg9UX11
+	 noiuxv8yOBLePzsHJHhOAZr59WfU0rcsqzHnR4PIowuyg6dGWcSMqo3LLE+lxzNnXS
+	 A4bjyTGgGkItw==
+Received: from [192.168.1.90] (unknown [82.79.138.145])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B623A17E0330;
+	Sat, 29 Nov 2025 10:50:16 +0100 (CET)
+Message-ID: <058027df-1b1b-4c46-b8e1-ec53fc809e82@collabora.com>
+Date: Sat, 29 Nov 2025 11:50:16 +0200
 MIME-Version: 1.0
-References: <20251027005220.22298-1-naoki@radxa.com>
-In-Reply-To: <20251027005220.22298-1-naoki@radxa.com>
-From: Anand Moon <linux.amoon@gmail.com>
-Date: Sat, 29 Nov 2025 12:21:58 +0530
-X-Gm-Features: AWmQ_bmJZvas800HhmEpnUFfX62SZoRx2KXDDiwowp2UV_htK6hrUPjWWrOs7bw
-Message-ID: <CANAwSgS-OxBoRy4jwb+XkuxYwws3P97eAFaOJAPBvK5gtgHuLg@mail.gmail.com>
-Subject: Re: [PATCH] arm64: dts: rockchip: Fix audio-supply for ROCK Pi 4
-To: FUKAUMI Naoki <naoki@radxa.com>
-Cc: heiko@sntech.de, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
-	knaerzche@gmail.com, devicetree@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 4/4] drm/rockchip: vop2: Support setting custom
+ background color
+To: Chaoyi Chen <chaoyi.chen@rock-chips.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
+ <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
+ Louis Chauvet <louis.chauvet@bootlin.com>,
+ Haneen Mohammed <hamohammed.sa@gmail.com>,
+ Melissa Wen <melissa.srw@gmail.com>
+Cc: Robert Mader <robert.mader@collabora.com>, kernel@collabora.com,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+References: <20251118-rk3588-bgcolor-v3-0-a2cc909428ea@collabora.com>
+ <20251118-rk3588-bgcolor-v3-4-a2cc909428ea@collabora.com>
+ <0ed71b8d-5a2e-4213-bd2f-7ba317d1e4cb@rock-chips.com>
+ <4a6443b8-d440-4921-8a43-7c20e4e265e7@collabora.com>
+ <b8819463-cc61-432f-b451-db90e3b43884@rock-chips.com>
+Content-Language: en-US
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+In-Reply-To: <b8819463-cc61-432f-b451-db90e3b43884@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251128_225218_434029_AAA397DB 
-X-CRM114-Status: GOOD (  12.40  )
+X-CRM114-CacheID: sfid-20251129_015025_044343_406EE2F9 
+X-CRM114-Status: GOOD (  19.55  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,47 +88,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi FUKAUMI,
+Hi Chaoyi,
 
-On Mon, 27 Oct 2025 at 06:24, FUKAUMI Naoki <naoki@radxa.com> wrote:
->
-> This reverts commit 8240e87f16d17 ("arm64: dts: rockchip: fix
-> audio-supply for Rock Pi 4").
->
-> Fix the APIO5_VDD power supply to vcc_3v0 as per the schematics[1][2]
-> [3][4][5].
->
-> This fixes the SPI-NOR flash probe failure when the blue LED is on[6],
-> and the garbled serial console output on Linux.
->
-> The ES8316 headphone and microphone are confirmed to work correctly
-> after this fix.
->
-> [1] https://dl.radxa.com/rockpi4/docs/hw/rockpi4/4a/ROCK_4A_V1.52_SCH.pdf p.14
-> [2] https://dl.radxa.com/rockpi4/docs/hw/rockpi4/4ap/radxa_rock_4ap_v1730_schematic.pdf p.14
-> [3] https://dl.radxa.com/rockpi4/docs/hw/rockpi4/4b/ROCK_4B_v1.52_SCH.pdf p.14
-> [4] https://dl.radxa.com/rockpi4/docs/hw/rockpi4/4bp/radxa_rock_4bp_v1730_schematic.pdf p.14
-> [5] https://dl.radxa.com/rockpi4/docs/hw/rockpi4/ROCK-4-SE-V1.53-SCH.pdf p.14
->
-> [6]
-> => led blue:status off
-> => sf probe
-> SF: Detected w25q128 with page size 256 Bytes, erase size 4 KiB, total 16 MiB
-> => led blue:status on
-> => sf probe
-> jedec_spi_nor flash@0: unrecognized JEDEC id bytes: ff, ff, ff
-> Failed to initialize SPI flash at 1:0 (error -2)
->
-> Fixes: 7ebfd4f6b52a6 ("arm64: dts: rockchip: add LED for ROCK Pi 4A/B/C/A+/B+")
-> Fixes: 8240e87f16d17 ("arm64: dts: rockchip: fix audio-supply for Rock Pi 4")
-> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
+On 11/29/25 5:49 AM, Chaoyi Chen wrote:
+> Hello Cristian, 
+> 
+> On 11/28/2025 5:44 PM, Cristian Ciocaltea wrote:
+>> The precision was something I initially looked into for CRC verification, in the
+>> context of the related IGT test.  But since I've added the VKMS support, I think
+>> we should not worry about that anymore. 
+>>
+>> Moreover, as already pointed out in [1], only RK3576 supports CRC generation at
+>> display controller level, and that is not particularly useful because it doesn't
+> 
+> I believe you can get the CRTC CRC on the RK3576, even when only the 
+> background is visible and all plane is disabled. Feel free to let me
+> know if you run into any issues :)
 
-Tested-by: Anand Moon <linux.amoon@gmail.com>
+Yes, CRTC CRC works on RK3576 for the planes, but not for the background, i.e.
+the CRC is not updated when setting a different background color.  Unless
+there's a way to change this default behavior, which I'm not aware of. 
 
-With this patch applied,  I can get my console working.
+My current understanding is that the background color is applied at a later
+stage in the display pipeline, *after* blending the planes and computing CRC.
 
-Thanks
--Anand
+>> take the background color into account.  Therefore I had to capture the frame
+>> CRCs at DisplayPort AUX channel level, by using the USB-C DP AltMode capable
+> 
+> Oh that sounds interesting! I'm not sure how complex it would be to
+> implement.
+
+That's already implemented, I plan to submit the patches soon.
+
+> 
+>> port of my RK3588-based board.  However, that solution is not yet available
+>> upstream, as it requires further work for cleanup and improving the overall
+>> USB-C reliability. 
+>>
+>> Hence I'll move on with your suggestion and switch to the simple bit-shifting
+>> approach for the next revision.
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
