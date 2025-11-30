@@ -4,71 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8E5ED116E2
-	for <linux-rockchip@archiver.kernel.org>; Sun, 30 Nov 2025 03:02:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 176A0CFD376
+	for <linux-rockchip@archiver.kernel.org>; Sun, 30 Nov 2025 16:14:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DgzUWprm9uJacfOLowU9BrGregY/1q811BR2eFlN2B8=; b=z0Trrs7B3Zbzq5
-	Cplb9TwOsqTap6CnxbhClUgJ7E4dQpxKAUPmGdo4gM3VSHEAYSfl6gHFf6z4r1urRCGuvz3mYUNaN
-	tUUUzXAUed4kScmqw8Pbo15SMgoUYak1WL7ol8JsUr5oAp/SDwRJo4TS5IQmf3nzT0TQ8NDg7ohxP
-	9RUrqPf0v2WNdmJDMw2zN1wNDOBDheN6xJJjuWqBW59I7TWYYRO3n6/2LQw16F1Kq6lC3mY9czob1
-	gyAkoAuJWxmeZnxIsU1+u4JStwCT9DjdWx97Ql1a6r/w6GzEd1Lky2fnJIaT8EB+v8c+MSxAoiX4l
-	0u7ELyTUDR6PeLpvLmRA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=0pkp/EQJmTRSph76Ck7uDIvi3kTK7d2FFcod/SIy15U=; b=Zwz82jPT91L/e8
+	W4O54QDZSyzLYa28c+9WN9nYGQ2PQFbLq2bwNMfWRcruTnH1Zu8W48bGfNqUv8cXUoR2rPfuMQ/7X
+	t7KBmSnefkXa2VOfnkRRxxUV9XmzNis0Fr4NRslqTwG4LhR7Mvn5ko95zX85wNts3lhmYFO/Y6h+Q
+	EvmtHWGvDO8zijqqBn1+UmnOkkzEAIwpsRfbV8DJ3JkFvEkDABS7/dSLH2vWbKmeZMDSFZN8t5+G6
+	kGpBGcLjUhDhNK1MRPChVtj6S1srbMKam3mT53IXEVlDfSU4ex0QumuDR5FUZe5X9YUENbhMZzeVM
+	GwZDQzjRvEIa1xCaUrfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vPXhF-00000001yrX-1MrZ;
-	Sun, 30 Nov 2025 03:01:57 +0000
-Received: from mail-m1973186.qiye.163.com ([220.197.31.86])
+	id 1vPk3q-00000002Pgf-15qB;
+	Sun, 30 Nov 2025 16:14:06 +0000
+Received: from mail.jakse.fr ([45.81.62.48])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vPXhC-00000001yqm-2KWF;
-	Sun, 30 Nov 2025 03:01:56 +0000
-Received: from [172.16.12.51] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 2b6289cd3;
-	Sun, 30 Nov 2025 11:01:44 +0800 (GMT+08:00)
-Message-ID: <292ed476-2b5a-4b61-97e5-3b8d8a24c324@rock-chips.com>
-Date: Sun, 30 Nov 2025 11:01:42 +0800
+	id 1vPk3m-00000002Pft-3iOg;
+	Sun, 30 Nov 2025 16:14:04 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jakse.fr; s=default;
+	t=1764519230; bh=1Y5LGb3g31rjjIXxiw5Jdr35UaFiGP0OuDnqqXz+mjE=;
+	h=From:To:Cc:Subject:Date:From;
+	b=LuiDZvuuhNnGg0sLq1wfUtOo/qR/8tevJmuGB8ogaSX7N8Wl8iSvIJSMM9YcR8YWw
+	 sVb2IZqacR9cRCL5mD+Tf6pJU1ircz/soUQPv206H1tyr2cedv+2mETHsLSYBH7bnV
+	 Lpt2/E+/LBN5B7ldPqMKN/mRB9HRX+7Kn9aISmXQ=
+Received: from rigel.lan (rigel.lan [IPv6:2001:912:1ac0:2e00::9bd])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature ECDSA (secp384r1) server-digest SHA384)
+	(No client certificate requested)
+	by mail.jakse.fr (Postfix) with ESMTPSA id 8B83EEA12BF;
+	Sun, 30 Nov 2025 17:13:50 +0100 (CET)
+From: =?UTF-8?q?Rapha=C3=ABl=20Jakse?= <raphael.kernel@jakse.fr>
+To: robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	heiko@sntech.de
+Cc: devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	=?UTF-8?q?Rapha=C3=ABl=20Jakse?= <raphael.kernel@jakse.fr>
+Subject: [PATCH] arm64: dts: rockchip: Fix Bluetooth on the RockPro64 board
+Date: Sun, 30 Nov 2025 17:12:59 +0100
+Message-ID: <20251130161259.9828-1-raphael.kernel@jakse.fr>
+X-Mailer: git-send-email 2.52.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 4/4] drm/rockchip: vop2: Support setting custom
- background color
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
- Louis Chauvet <louis.chauvet@bootlin.com>,
- Haneen Mohammed <hamohammed.sa@gmail.com>,
- Melissa Wen <melissa.srw@gmail.com>
-Cc: Robert Mader <robert.mader@collabora.com>, kernel@collabora.com,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-References: <20251118-rk3588-bgcolor-v3-0-a2cc909428ea@collabora.com>
- <20251118-rk3588-bgcolor-v3-4-a2cc909428ea@collabora.com>
- <0ed71b8d-5a2e-4213-bd2f-7ba317d1e4cb@rock-chips.com>
- <4a6443b8-d440-4921-8a43-7c20e4e265e7@collabora.com>
- <b8819463-cc61-432f-b451-db90e3b43884@rock-chips.com>
- <058027df-1b1b-4c46-b8e1-ec53fc809e82@collabora.com>
-Content-Language: en-US
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-In-Reply-To: <058027df-1b1b-4c46-b8e1-ec53fc809e82@collabora.com>
-X-HM-Tid: 0a9ad2b589cb03abkunm5eeeb88f8ed4b9
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQhhCGFZIGhoZHk5IGUxJS0tWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=bH/DhNXZCVB1zKfiCE5dEAYOh7uxtj5ddQ6V4/zaMqiqir/IW+gdaMZh6nW7aqjG/6xmGCvE2YU+2nIotPNCJCa1Ht1KhfqZOJjg3yAQZfQ4OXYOGjiYXLOontJO1/bsw9UI3ZZ2TEQAVMjsmXLMyflFtAQU3vihIOip6TrbuSY=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=HW1WlL6Uj6bnxN8ctCilm30KNiqpcPz8FkdMjNtQbFI=;
-	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251129_190155_157110_7CE1FFB0 
-X-CRM114-Status: GOOD (  20.37  )
+X-CRM114-CacheID: sfid-20251130_081403_386171_B4127E8F 
+X-CRM114-Status: UNSURE (   8.55  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,64 +68,34 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 11/29/2025 5:50 PM, Cristian Ciocaltea wrote:
-> Hi Chaoyi,
-> 
-> On 11/29/25 5:49 AM, Chaoyi Chen wrote:
->> Hello Cristian, 
->>
->> On 11/28/2025 5:44 PM, Cristian Ciocaltea wrote:
->>> The precision was something I initially looked into for CRC verification, in the
->>> context of the related IGT test.  But since I've added the VKMS support, I think
->>> we should not worry about that anymore. 
->>>
->>> Moreover, as already pointed out in [1], only RK3576 supports CRC generation at
->>> display controller level, and that is not particularly useful because it doesn't
->>
->> I believe you can get the CRTC CRC on the RK3576, even when only the 
->> background is visible and all plane is disabled. Feel free to let me
->> know if you run into any issues :)
-> 
-> Yes, CRTC CRC works on RK3576 for the planes, but not for the background, i.e.
-> the CRC is not updated when setting a different background color.  Unless
-> there's a way to change this default behavior, which I'm not aware of. 
-> 
-> My current understanding is that the background color is applied at a later
-> stage in the display pipeline, *after* blending the planes and computing CRC.
-> 
-
-Which CRTC are you using? If you're using VP0, you might run into this
-problem. Please try VP1 instead.
-
->>> take the background color into account.  Therefore I had to capture the frame
->>> CRCs at DisplayPort AUX channel level, by using the USB-C DP AltMode capable
->>
->> Oh that sounds interesting! I'm not sure how complex it would be to
->> implement.
-> 
-> That's already implemented, I plan to submit the patches soon.
-> 
->>
->>> port of my RK3588-based board.  However, that solution is not yet available
->>> upstream, as it requires further work for cleanup and improving the overall
->>> USB-C reliability. 
->>>
->>> Hence I'll move on with your suggestion and switch to the simple bit-shifting
->>> approach for the next revision.
->>
-> 
-> 
-
--- 
-Best, 
-Chaoyi
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+VGhlIFJvY2tQcm82NCBib2FyZCBoYXMgYW4gb3B0aW9uYWwgQkNNNDM0NUM1IEJsdWV0b290aCBk
+ZXZpY2Ugb24gVUFSVDAuCgpUaGlzIHBhdGNoIGZpeGVzIGF1ZGlvIHN0dXR0ZXJzIGJ5IHNldHRp
+bmcgaXRzIGNvcnJlY3QgbWF4LXNwZWVkIGFuZApjb21wYXRpYmxlIHByb3BlcnRpZXMuCgpTaWdu
+ZWQtb2ZmLWJ5OiBSYXBoYcOrbCBKYWtzZSA8cmFwaGFlbC5rZXJuZWxAamFrc2UuZnI+Ci0tLQog
+YXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktcm9ja3BybzY0LXYyLmR0cyB8IDcg
+KysrKysrKwogYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktcm9ja3BybzY0LmR0
+cyAgICB8IDcgKysrKysrKwogMiBmaWxlcyBjaGFuZ2VkLCAxNCBpbnNlcnRpb25zKCspCgpkaWZm
+IC0tZ2l0IGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktcm9ja3BybzY0LXYy
+LmR0cyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LXJvY2twcm82NC12Mi5k
+dHMKaW5kZXggMzA0ZTNjNTEzOTFjLi44ODNkOWJjZmU3OTIgMTAwNjQ0Ci0tLSBhL2FyY2gvYXJt
+NjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LXJvY2twcm82NC12Mi5kdHMKKysrIGIvYXJjaC9h
+cm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktcm9ja3BybzY0LXYyLmR0cwpAQCAtMjgsMyAr
+MjgsMTAgQEAgZXM4MzE2X3AwXzA6IGVuZHBvaW50IHsKIAkJfTsKIAl9OwogfTsKKworJnVhcnQw
+IHsKKwlibHVldG9vdGggeworCQljb21wYXRpYmxlID0gImJyY20sYmNtNDM0NWM1IjsKKwkJbWF4
+LXNwZWVkID0gPDE1MDAwMDA+OworCX07Cit9OwpkaWZmIC0tZ2l0IGEvYXJjaC9hcm02NC9ib290
+L2R0cy9yb2NrY2hpcC9yazMzOTktcm9ja3BybzY0LmR0cyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMv
+cm9ja2NoaXAvcmszMzk5LXJvY2twcm82NC5kdHMKaW5kZXggNGI0MjcxNzgwMGY3Li5hZTNlZTkx
+ZGJhMmYgMTAwNjQ0Ci0tLSBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LXJv
+Y2twcm82NC5kdHMKKysrIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktcm9j
+a3BybzY0LmR0cwpAQCAtMjgsMyArMjgsMTAgQEAgZXM4MzE2X3AwXzA6IGVuZHBvaW50IHsKIAkJ
+fTsKIAl9OwogfTsKKworJnVhcnQwIHsKKwlibHVldG9vdGggeworCQljb21wYXRpYmxlID0gImJy
+Y20sYmNtNDM0NWM1IjsKKwkJbWF4LXNwZWVkID0gPDE1MDAwMDA+OworCX07Cit9OwotLSAKMi41
+Mi4wCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGlu
+dXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5v
+cmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2Nr
+Y2hpcAo=
