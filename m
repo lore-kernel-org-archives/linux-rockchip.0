@@ -4,72 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A297D116F5
-	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Dec 2025 16:44:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50285D116F1
+	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Dec 2025 17:02:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=E/XvJMfaafFm72a+EaJ5+r+9DF9JEOVuYn92EvFA3Sw=; b=iannjmSg/XSSHu
-	rS3V3ysOUuU6OJ5arvA4q1/RxAecZXob6IQHggDbyM7EYjj1yud1YEXKwm7YP/EXNt7rIj8dZJhxD
-	mMKI1aafYWYjpy+X1+YThI9HEubHPp1JenG80MnqZSzjSUi4GXF3mBAHcYEzavo6N6uZCEcyafZKP
-	+UTpIQXlhPwnHUfZn8DWCLOJHHKleND3H5YjE+DfdsglKsNmtPm39y6FFhnoQ1rmsm1JAeRCZOdyQ
-	QP3p4t/m2P332qgTyye99rJ/TEbCsNiK82CRBnh2HtgHYJNgkCKeBCC5vJlcz4qS4ZFvpUS7rfogU
-	xSkCgPiOJTkNBJdE7f5A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=c4z/RznsU9nT46FyVtoCDPgBoegWM7Vla14Y/cE4vGI=; b=E8qh0w/vDecvSZ9uWytoU3FaZF
+	7VW5bX+HdIefJpg8jV0vkjoZGCqZerxOqsjAcHxmSuiRVkgxowyWcyFEyM9zkzwQflV6kZdBT8OTu
+	u5gEcCxbc28zX7zHDeYTO+MCYFN8h9m7A4ga/gcaabvYALzDG0iNgalPoMH1jTCnu2wYvqf9z6z4A
+	N+qN6ANjOv4IorbggJt7df1EN89sWH6/PWmJPi46H+X3cnkvjQYMOnAMpeDOdtTKm25wQ0uOgN3I5
+	2QBTu92n9rx94rP3dyt8QemifTyMxcSF+yZKjTAItug5p1+fUzfDjQBndvInZvdIFMuw1nJLVHAZW
+	qF0bNJSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vQ70k-00000004IyT-3Yva;
-	Mon, 01 Dec 2025 16:44:26 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1vQ7Hn-00000004KGY-0Lw0;
+	Mon, 01 Dec 2025 17:02:03 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vQ70h-00000004Ixi-3sL7;
-	Mon, 01 Dec 2025 16:44:25 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=9B4YRl3TorPvS722yi6u0HbgMUIMrg45Xx3TtSQO0lM=; b=09ZvPPTd8oDr63PRmscNOob3iT
-	5hwbjTsQ9/7JnoXjei2tyMUdZ1ZFoDesVnleQGCbrKGvbiG2NCGjNsnH2JqvFiZ9F8NlPbOrOtr40
-	XFKt9zFsZImMCoCWcyRSgXKzTu4xY0fHupFWHBBuwU8UmqmK3e2elQzbj8mdRszxO43nXYRpdVxZS
-	UPhO0UDYgZvFwpWIOfEM/tpMhbFIZBHSgg+n80tbiKDKVm66wIKcgi/q/R7yiK47uUa3xbqYbGdIU
-	/7XottCXSw2ZtyMlU3MnNTwpXUmwDlVfk15E64vVkyCGhaRagqMtNf2oEXIQhogQwmYEd6TCSO6DG
-	VusJjTsA==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:40600)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.98.2)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1vQ70b-000000000qV-42rK;
-	Mon, 01 Dec 2025 16:44:18 +0000
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.98.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1vQ70Z-000000006ck-2heB;
-	Mon, 01 Dec 2025 16:44:15 +0000
-Date: Mon, 1 Dec 2025 16:44:15 +0000
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>
-Cc: Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Heiko Stuebner <heiko@sntech.de>, Jakub Kicinski <kuba@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>, netdev@vger.kernel.org,
-	Paolo Abeni <pabeni@redhat.com>
-Subject: Re: [PATCH RFC net-next 00/15] net: stmmac: rk: cleanups galore
-Message-ID: <aS3F36UAkeLfFeHx@shell.armlinux.org.uk>
-References: <aS2rFBlz1jdwXaS8@shell.armlinux.org.uk>
+	id 1vQ7Hk-00000004KG9-2rMf;
+	Mon, 01 Dec 2025 17:02:00 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id A07CE6014A;
+	Mon,  1 Dec 2025 17:01:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C5905C116C6;
+	Mon,  1 Dec 2025 17:01:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1764608519;
+	bh=bmyTq2q+hM5yLfaOwvV4mt3DtxhrkyZjZ87SLQzIRvc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=jr7StedPEyC4/M1t7fb11w5L7eX7EwY91G07P7AMGijfckxto+L1WhwGZsjlsXYIY
+	 oPOBlsHBliJM+a+Ck+s95tJX7dUkcTP5pveCNFp/krPg4vR0LXWKAYEHPMZFH7BnSa
+	 w/jmhdgHtlBNuR767BlzygS7X3PXNC6OjSXYaqFQBISNpnI6dO3zRh4SkdSFewBq7X
+	 zREFhG+p8OGRGjPPiSi80gwvkw0y85GNS/W5tNjwqV7H9L1DBf2eLGS8ArX4PFGdca
+	 NRClciXygKLJ3Mf0U36BtEe3k+YhGpk6jI8Jy8BC6oYJJRGMbYG05OQchgkdz3i2TA
+	 5RsxeDtcuuY4Q==
+Date: Mon, 1 Dec 2025 18:01:56 +0100
+From: Maxime Ripard <mripard@kernel.org>
+To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+Cc: Daniel Stone <daniel@fooishbar.org>, 
+	Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
+	Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann <tzimmermann@suse.de>, 
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+	Sandy Huang <hjc@rock-chips.com>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, 
+	Andy Yan <andy.yan@rock-chips.com>, Chen-Yu Tsai <wens@csie.org>, 
+	Samuel Holland <samuel@sholland.org>, Dave Stevenson <dave.stevenson@raspberrypi.com>, 
+	=?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, 
+	Liu Ying <victor.liu@nxp.com>, Rob Clark <robin.clark@oss.qualcomm.com>, 
+	Dmitry Baryshkov <lumag@kernel.org>, Abhinav Kumar <abhinav.kumar@linux.dev>, 
+	Jessica Zhang <jessica.zhang@oss.qualcomm.com>, Sean Paul <sean@poorly.run>, 
+	Marijn Suijten <marijn.suijten@somainline.org>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, 
+	linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org
+Subject: Re: [PATCH v3 00/11] drm/connector: hdmi: limit infoframes per
+ driver capabilities
+Message-ID: <20251201-enlightened-zebu-from-asgard-5a20be@houat>
+References: <20250925-fervent-merry-beagle-2baba3@penduick>
+ <qx5ashx62pufott6hnsfna3qntnoyvxwxze4rihhuxcsdxi37s@bbdvc3sfsgne>
+ <20250929-gregarious-worm-of-memory-c5354d@houat>
+ <itgffxygopi7etkt7xhvmyuvyl5ad3k43nsxvjzw3ubtwiikn7@ocugfdaigtu7>
+ <20251003-uptight-echidna-of-stamina-815305@houat>
+ <zpygq4kapil3swsmhhqkdwny4ry2dznnzixsw5rkza5p2kqnvp@abvf2vxlbwif>
+ <2a5fitdzr2bz235fj6rvqzxr6ckszkjbazjfszlvnizdh2cvbt@w3ypjo7vahhs>
+ <pibxhl5hlcpuk3zsgyienfdlda5cwuxrnofwlw356scuzzplqy@zw3ofelgvwik>
+ <bsoqyzxi45i67jpzhwr2d4illufa5ghqf25z6flbp67lsbvh22@rrlcihp2oxea>
+ <cgzclxjubj5oca3rdnv44qwrkmpddxve4tlz76cc6p3b4hz3oc@3l7mt5ha7do6>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <aS2rFBlz1jdwXaS8@shell.armlinux.org.uk>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251201_084423_985024_A2092052 
-X-CRM114-Status: GOOD (  25.92  )
+In-Reply-To: <cgzclxjubj5oca3rdnv44qwrkmpddxve4tlz76cc6p3b4hz3oc@3l7mt5ha7do6>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,73 +86,94 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============7754991245054743032=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Dec 01, 2025 at 02:49:56PM +0000, Russell King (Oracle) wrote:
-> This is work in progress, cleaning up the excessively large Rockchip
-> glue driver somewhat. This series as it currently stands removes
-> approximately 200 lines from this file, while adding slightly to its
-> flexibility.
-> 
-> A brief overview of the changes:
-> 
-> - similar to previous commits, it seems the RGMII clock field follows
->   a common pattern irrespective of the SoC.
-> - update rk3328 to use the ->id mechanism rather than guessing from
->   the PHY interface mode and whether the PHY is integrated.
-> - switch to wm16 based masking, providing the lower-16 bits of the
->   mask to indicate appropriate fields, and use this to construct the
->   values to write to the registers.
-> - convert px30 to these methods.
-> - since many set_to_rmii() methods are now empty, add flags to indicate
->   whether RMII / RGMII are supported.
-> - clear RGMII where the specific SoC's GMAC instance doesn't support
->   this.
-> 
-> I've spent quite a while mulling over how to deal with these "wm16"
-> registers, none of the kernel bitfield macros (not even the
-> hw_bitfield.h macros) allow for what I present here, because the
-> masks are not constant.
-> 
-> One of the interesting things is that this appears to deal with RGMII
-> delays at the MAC end of the link, but there's no way to tell phylib
-> that's the case. I've not looked deeply into what is going on there,
-> but it is surprising that the driver insists that the delays (in
-> register values?) are provided, but then ignores them depending on the
-> exact RGMII mode selected.
-> 
-> One outstanding issue with these patches: RK3528_GMAC0_CLK_RMII_DIV2
-> remains, although I deleted its definition, so there's build errors
-> in this series. Before I do anything about that, I would like to hear
-> from the Rockchip guys whether it is necessary for rk3528_set_to_rmii()
-> to set the clock rate, given that rk_set_clk_tx_rate() will do this
-> when the link comes up. Does it matter whether it was set to 2.5MHz
-> (/ 20) or 25MHz (/ 2) when we switch to RMII mode?
 
-Another issue has come up while looking at this driver -
-gmac_clk_enable() is buggy.
+--===============7754991245054743032==
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="nhtgib353qneclwb"
+Content-Disposition: inline
 
-If clk_bulk_prepare_enable() succeeds, but then the following
-clk_prepare_enable() fails, we simply return its error code, failing
-gmac_clk_enable(, true), leaving the bulk clocks prepared and enabled.
 
-Calling this with "false" to disable clocks won't - because we never
-get as far as setting bsp_priv->clk_enabled, and even if we did, we'd
-disable and unprepare clk_phy which failed to prepare/enable.
+--nhtgib353qneclwb
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v3 00/11] drm/connector: hdmi: limit infoframes per
+ driver capabilities
+MIME-Version: 1.0
 
-Again, I don't like this foo_enable() / foo_power_on() pattern with
-a true/false argument - when false, the function is not enabling
-nor "on"-ing, but disabling or "off"-ing. So, gmac_clk_enable() is
-going to get split up and renamed.
+On Fri, Nov 21, 2025 at 07:09:01PM +0200, Dmitry Baryshkov wrote:
+> > So it's not really impossible, you just need some hardware and a day's
+> > worth of work.
+> >=20
+> > There's no reason these should get a pass, it's breaking the spec for no
+> > reason.
+> >=20
+> > > > For SPD, It's really not clear to me why atomic_check should do tha=
+t in
+> > > > the first place. Your initial concern was about exposing infoframes=
+ in
+> > > > debugfs that wouldn't be used by the driver.
+> > > >=20
+> > > > If the driver doesn't register a debugfs file for SPD, and ignores
+> > > > whatever is in the atomic state, what's should we force drivers to =
+do
+> > > > that?
+> > >=20
+> > > I really don't think that drivers should mess up with debugfs on their
+> > > own. Making atomic_check() disable the unsupported InfoFrames makes t=
+he
+> > > picture perfect: the DRM no longer tries to program them to the
+> > > hardware, DebugFS files stay empty, so the whole state becomes
+> > > consistent.
+> >=20
+> > In the "bridge has no access to infoframes" case, there's really no
+> > infoframe. An empty file is "the infoframe can be there but isn't used",
+> > not "we don't have access to it and can't report them". Only drivers
+> > have those infos.
+> >=20
+> > If we do split up write_infoframe into multiple functions though, I
+> > guess we could create the debugfs file only if the function pointer is
+> > set, which removes drivers' involvement if you don't like that.
+>=20
+> I'm fine with not using HDMI connector framework for lt9611uxc.
+> Likewise, I think, it's fine to have empty files for the infoframes
+> which are not being sent over the wire for any reason (hw not supporting
+> it is one of the reasons).
 
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+I can't think of any other example in the kernel where an empty file
+means that the driver doesn't support something.
+
+Maxime
+
+--nhtgib353qneclwb
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCaS3KBAAKCRAnX84Zoj2+
+dpehAX9df8UFvZVN58dQXWwnBnuke2vOU1UxT4zbhxIdR/6V/O2rER74TkmbviQv
+h0HIhF0BgLOgEP5gmSlL9xZCFl5EWhJpy16T7ozKZGULaHEy/3NJR+/SzYOZmLZ5
+yR5aU4SDRQ==
+=m4w1
+-----END PGP SIGNATURE-----
+
+--nhtgib353qneclwb--
+
+
+--===============7754991245054743032==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============7754991245054743032==--
+
