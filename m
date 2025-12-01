@@ -4,54 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 958B3D116F1
-	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Dec 2025 08:39:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F02B0D111A8
+	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Dec 2025 08:54:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hl4IsSSr9d+VW8Ucj/vcXOrd4vTGcYSuYESoC4ECl80=; b=gwWGhdmH7N7j9o
-	aqWPZ7t0mcSY8xpG7QmZh4mnRfYIlP2jX7dzzq6+IXW4HJFL+bCfgjm4/IDUxMFmKDOOoiTFQRqAe
-	17/ZeTzN9sPbFMfwH6zo/CbYz1Bqmm21T+Y1nep8A2Y/4aWoCOkgWmZCehVbAGFuf1FVkeZXzeuUn
-	bZ8hOxXRLZyB4lHLsOug+JqysXNPS5025c555SyzrbxEXt7Bbh5oZyz3BbKNa/ul3nk8HCKRUHxbT
-	k/9XPDUII3xpprlwCNSKIj3+OhxdsWrRtMynd8ksukXx15kyaGbrjbwxtfvwC2fMTLQi8t1k6CEvX
-	CFlcZj3hXQB+QKo4O6SQ==;
+	List-Owner; bh=nou8xuS/WE2W3XnY6jHw3zwNPwcuWZxSb3Ex0ejyn5o=; b=lW6OjKBA7UqsNn
+	usC6hGe3/1QoLwJWtKI3vCYCtIBQQ+RcIlq/37L7gMQCXde00+PbfDwr35BGlfKld9nH5632SEbU4
+	++efsyzYfh5DOdQgCrJqS1aT56A5MmYAhY2Q/prQq46YUPeMD5XaSpjj39FZyjxpFPIfhIt8eYPU8
+	O7idHARyPP8GDrRq88o7C5rXMltirwOtuu/gn5/uXBEauofVqZ44NKeJaQ7vSNhWXhyQiYz7wVxLx
+	d/NA/pUDcatGbvatH5FfHCEOgrK5RU2ozbZ9vbab+Ze6jQybewoGPhqSeN8209k+j5EqsP0bYBO/E
+	k0U9SvE4inoqnQ1QcUsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vPzRF-000000037ql-0W8H;
-	Mon, 01 Dec 2025 08:39:17 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vPzfy-00000003ARr-1mZF;
+	Mon, 01 Dec 2025 08:54:30 +0000
+Received: from mail-m3284.qiye.163.com ([220.197.32.84])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vPzRC-000000037q2-1pPD;
-	Mon, 01 Dec 2025 08:39:15 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 1F05D4172A;
-	Mon,  1 Dec 2025 08:39:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BDF93C4CEF1;
-	Mon,  1 Dec 2025 08:39:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1764578354;
-	bh=3sJ+H4Wmct5s2XmC9zTvhNk2LFQ225kv2to609V53pU=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=u2RXyHtQ5gzPP7NpNFfQw8hjmV+VSWf9bwRv0qU+NVi6rVI2huxuObUP3735wEa6Z
-	 ldcePP8CtP3UYRFy4C1UfpbIL2JtozGsdnIblVxndqZEei1ByAsAADPAamQM44RIcY
-	 EWd3bRR7qnY5YWnXw0Zd+RxXwXGenyNJeus/UO0KMnc763WNZZN4nhvxs8RmEZ1i6L
-	 tKWredBawcHG2b0uyCIItZyI+xbYZjP2HvB/EdyVK6ZTKio0CqIJOZxfNUoA9I8L+e
-	 KpUA3S37RQ5Civ8ynneNqZcF8xTMoz+43cH4WY3EtNep5XFMvAqNoqVv2CA68m9iCC
-	 a34XhHmbcP4iw==
-Message-ID: <491560f1-ee50-43ef-b258-adb5859cb05a@kernel.org>
-Date: Mon, 1 Dec 2025 09:39:09 +0100
+	id 1vPzfu-00000003ARA-4BHQ;
+	Mon, 01 Dec 2025 08:54:28 +0000
+Received: from [172.16.12.51] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 2b8268f6e;
+	Mon, 1 Dec 2025 16:54:21 +0800 (GMT+08:00)
+Message-ID: <8ac259e2-c075-4a29-827e-315ad84c6363@rock-chips.com>
+Date: Mon, 1 Dec 2025 16:54:20 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v2 1/2] dt-bindings: iommu: rockchip: Add support for
  multiple interface clocks
-To: Chaoyi Chen <chaoyi.chen@rock-chips.com>, Chaoyi Chen
- <kernel@airkyi.com>, Joerg Roedel <joro@8bytes.org>,
- Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+To: Krzysztof Kozlowski <krzk@kernel.org>, Chaoyi Chen <kernel@airkyi.com>,
+ Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
+ Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
 Cc: iommu@lists.linux.dev, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org
@@ -59,56 +47,23 @@ References: <20251128071322.92-1-kernel@airkyi.com>
  <20251128071322.92-2-kernel@airkyi.com>
  <96958186-0e46-4606-ae36-239112eb31ea@kernel.org>
  <98a847f7-0880-4e5b-a946-26dc81fde5d2@rock-chips.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
+ <491560f1-ee50-43ef-b258-adb5859cb05a@kernel.org>
 Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <98a847f7-0880-4e5b-a946-26dc81fde5d2@rock-chips.com>
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+In-Reply-To: <491560f1-ee50-43ef-b258-adb5859cb05a@kernel.org>
+X-HM-Tid: 0a9ad91ebc9f03abkunm0983dea69e84a6
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQx5NTFZJHU9PGU8dSEtJGEtWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=M9saWfPcwmCgvCUeKRaAFxKgt02jlM09r19UmbH+tO5Vh9xp+DZUinmwH87OwuvOv7ArvxSu26Q2PGUWibZoa2eqv1u+tJBntgnKHci8pj9M0HzAWvuG/G1NEwv+jnOMDlsOBdlu+dm3tqXnPqdyfBzNR+nbXinw18D0jtUQZHU=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=QPt7Lzjv5NOO9AmXGaEbndBUfDWG3N+K6MGje1fGLfs=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251201_003914_522450_CC7D950C 
-X-CRM114-Status: UNSURE (   9.79  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251201_005427_561749_29E17ADC 
+X-CRM114-Status: GOOD (  13.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,34 +80,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 01/12/2025 09:10, Chaoyi Chen wrote:
->>> +  - if:
->>> +      properties:
->>> +        compatible:
->>> +          items:
->>> +            - const: rockchip,iommu
->>> +            - const: rockchip,rk3568-iommu
->>> +    then:
->>> +      properties:
->>> +        clocks:
->>> +          maxItems: 2
+On 12/1/2025 4:39 PM, Krzysztof Kozlowski wrote:
+> On 01/12/2025 09:10, Chaoyi Chen wrote:
+>>>> +  - if:
+>>>> +      properties:
+>>>> +        compatible:
+>>>> +          items:
+>>>> +            - const: rockchip,iommu
+>>>> +            - const: rockchip,rk3568-iommu
+>>>> +    then:
+>>>> +      properties:
+>>>> +        clocks:
+>>>> +          maxItems: 2
+>>>
+>>> Why this is unspecific now? Please look at other examples how it is
+>>> done, e.g. Samsung clocks.
 >>
->> Why this is unspecific now? Please look at other examples how it is
->> done, e.g. Samsung clocks.
+>> I looked at some examples. Maybe it need to set both minItems and 
+>> maxItems here? I'm not sure I understood your point.
 > 
-> I looked at some examples. Maybe it need to set both minItems and 
-> maxItems here? I'm not sure I understood your point.
+> Individual items were described before. Now they are not, so first item
+> can be anything.
+> 
+> You need to define the list. If the devices have completely different
+> clocks, then you would go with Samsung approach. But devices should not
+> have completely different clocks, so you should define common parts in
+> top-level and just narrow number of items here. maxItems is enough in
+> such case.
 
-Individual items were described before. Now they are not, so first item
-can be anything.
+Ah, it looks like Samsung's clock bindings rarely have common parts.
+At present, there are indeed some common parts for the IOMMU clock,
+but I'm not sure how other variants will change. 
 
-You need to define the list. If the devices have completely different
-clocks, then you would go with Samsung approach. But devices should not
-have completely different clocks, so you should define common parts in
-top-level and just narrow number of items here. maxItems is enough in
-such case.
-Best regards,
-Krzysztof
+I'll give this a try, thank you!
+
+-- 
+Best, 
+Chaoyi
 
 _______________________________________________
 Linux-rockchip mailing list
