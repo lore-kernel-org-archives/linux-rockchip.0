@@ -4,66 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F02B0D111A8
-	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Dec 2025 08:54:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67FE0D116F1
+	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Dec 2025 10:01:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nou8xuS/WE2W3XnY6jHw3zwNPwcuWZxSb3Ex0ejyn5o=; b=lW6OjKBA7UqsNn
-	usC6hGe3/1QoLwJWtKI3vCYCtIBQQ+RcIlq/37L7gMQCXde00+PbfDwr35BGlfKld9nH5632SEbU4
-	++efsyzYfh5DOdQgCrJqS1aT56A5MmYAhY2Q/prQq46YUPeMD5XaSpjj39FZyjxpFPIfhIt8eYPU8
-	O7idHARyPP8GDrRq88o7C5rXMltirwOtuu/gn5/uXBEauofVqZ44NKeJaQ7vSNhWXhyQiYz7wVxLx
-	d/NA/pUDcatGbvatH5FfHCEOgrK5RU2ozbZ9vbab+Ze6jQybewoGPhqSeN8209k+j5EqsP0bYBO/E
-	k0U9SvE4inoqnQ1QcUsw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=rpKfUl02V/yJBt/j96csOQe5je9ULK7pwdpuA6ewzcI=; b=HTFDus3OZzBKRt
+	xHD51HAZcbsfNL4EvulvP5rJ8HMB+x57Zjij1NEauMRnu/29NYrn5yY8kFnuhM1cImYdRxNmiN83u
+	6bTtv+MvRkoFp2NB16WmfmHw69/olBqLolllTK9Z9+sKeYmmzTphA9woE4j57aE85easN2Wjb7xhY
+	SJpg9LVBJAfeZAWRLnPjf5rXMiZzXyYUmWZeguZGoNVFyxPn9P0fXEfehqE1K28wVH61TXI9byNVZ
+	qsOiO30st2O7NM3WlcTLT3LUNsVMEkozpZPyP6+sgVF2ZP5GX/5nshm3C+LHsN4ESt3LNd/oxi/Xr
+	V5hwvtBOYBPMAArYC4hw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vPzfy-00000003ARr-1mZF;
-	Mon, 01 Dec 2025 08:54:30 +0000
-Received: from mail-m3284.qiye.163.com ([220.197.32.84])
+	id 1vQ0ic-00000003GFS-3dfo;
+	Mon, 01 Dec 2025 10:01:18 +0000
+Received: from mail-m155101.qiye.163.com ([101.71.155.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vPzfu-00000003ARA-4BHQ;
-	Mon, 01 Dec 2025 08:54:28 +0000
-Received: from [172.16.12.51] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 2b8268f6e;
-	Mon, 1 Dec 2025 16:54:21 +0800 (GMT+08:00)
-Message-ID: <8ac259e2-c075-4a29-827e-315ad84c6363@rock-chips.com>
-Date: Mon, 1 Dec 2025 16:54:20 +0800
+	id 1vQ0ia-00000003GEc-1BAm;
+	Mon, 01 Dec 2025 10:01:18 +0000
+Received: from localhost.localdomain (unknown [119.122.215.79])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 2b846f22b;
+	Mon, 1 Dec 2025 18:01:05 +0800 (GMT+08:00)
+From: Chukun Pan <amadeus@jmu.edu.cn>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh@kernel.org>,
+	Chukun Pan <amadeus@jmu.edu.cn>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org
+Subject: [PATCH 0/4] arm64: dts: rockchip: Add H28K and M28K
+Date: Mon,  1 Dec 2025 18:00:04 +0800
+Message-Id: <20251201100008.206524-1-amadeus@jmu.edu.cn>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/2] dt-bindings: iommu: rockchip: Add support for
- multiple interface clocks
-To: Krzysztof Kozlowski <krzk@kernel.org>, Chaoyi Chen <kernel@airkyi.com>,
- Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
- Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: iommu@lists.linux.dev, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20251128071322.92-1-kernel@airkyi.com>
- <20251128071322.92-2-kernel@airkyi.com>
- <96958186-0e46-4606-ae36-239112eb31ea@kernel.org>
- <98a847f7-0880-4e5b-a946-26dc81fde5d2@rock-chips.com>
- <491560f1-ee50-43ef-b258-adb5859cb05a@kernel.org>
-Content-Language: en-US
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-In-Reply-To: <491560f1-ee50-43ef-b258-adb5859cb05a@kernel.org>
-X-HM-Tid: 0a9ad91ebc9f03abkunm0983dea69e84a6
-X-HM-MType: 1
+X-HM-Tid: 0a9ad95bd53203a2kunm919d19c13679d8
+X-HM-MType: 10
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQx5NTFZJHU9PGU8dSEtJGEtWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=M9saWfPcwmCgvCUeKRaAFxKgt02jlM09r19UmbH+tO5Vh9xp+DZUinmwH87OwuvOv7ArvxSu26Q2PGUWibZoa2eqv1u+tJBntgnKHci8pj9M0HzAWvuG/G1NEwv+jnOMDlsOBdlu+dm3tqXnPqdyfBzNR+nbXinw18D0jtUQZHU=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=QPt7Lzjv5NOO9AmXGaEbndBUfDWG3N+K6MGje1fGLfs=;
-	h=date:mime-version:subject:message-id:from;
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlCGhpOVh1DTE5KHRgZTE5JGVYeHw5VEwETFhoSFy
+	QUDg9ZV1kYEgtZQVlKSkJVSklJVUlKTlVMQllXWRYaDxIVHRRZQVlPS0hVSktISk5MTlVKS0tVSk
+	JLS1kG
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251201_005427_561749_29E17ADC 
-X-CRM114-Status: GOOD (  13.69  )
+X-CRM114-CacheID: sfid-20251201_020116_486413_9B4C9702 
+X-CRM114-Status: UNSURE (   8.92  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,43 +70,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 12/1/2025 4:39 PM, Krzysztof Kozlowski wrote:
-> On 01/12/2025 09:10, Chaoyi Chen wrote:
->>>> +  - if:
->>>> +      properties:
->>>> +        compatible:
->>>> +          items:
->>>> +            - const: rockchip,iommu
->>>> +            - const: rockchip,rk3568-iommu
->>>> +    then:
->>>> +      properties:
->>>> +        clocks:
->>>> +          maxItems: 2
->>>
->>> Why this is unspecific now? Please look at other examples how it is
->>> done, e.g. Samsung clocks.
->>
->> I looked at some examples. Maybe it need to set both minItems and 
->> maxItems here? I'm not sure I understood your point.
-> 
-> Individual items were described before. Now they are not, so first item
-> can be anything.
-> 
-> You need to define the list. If the devices have completely different
-> clocks, then you would go with Samsung approach. But devices should not
-> have completely different clocks, so you should define common parts in
-> top-level and just narrow number of items here. maxItems is enough in
-> such case.
+Both the HINLINK H28K and MangoPi M28K are development boards based
+on the Rockchip RK3528 SoC, and their configurations are similar.
 
-Ah, it looks like Samsung's clock bindings rarely have common parts.
-At present, there are indeed some common parts for the IOMMU clock,
-but I'm not sure how other variants will change. 
+The U-Boot patch will be sent after the kernel device tree is merged.
 
-I'll give this a try, thank you!
+There is a version that SeeedStudio distributes called LinkStar-H28K.
+It's no different from the HINLINK H28K. The schematic can be found here:
+
+https://www.hinlink.cn/wp-content/uploads/2024/03/20240428015024130824.pdf
+https://files.seeedstudio.com/wiki/H28K/Open_source/H28K-SCH.zip
+
+Information about the MangoPi M28K is here: https://widora.cn/m28k
+
+MangoPi also has a version called "M28K Pro", which replaces the
+RTL8111H with the RTL8125B.
+
+Chukun Pan (4):
+  dt-bindings: arm: rockchip: Add HINLINK H28K
+  arm64: dts: rockchip: Add HINLINK H28K
+  dt-bindings: arm: rockchip: Add MangoPi M28K
+  arm64: dts: rockchip: Add MangoPi M28K
+
+ .../devicetree/bindings/arm/rockchip.yaml     |  10 +
+ arch/arm64/boot/dts/rockchip/Makefile         |   2 +
+ .../boot/dts/rockchip/rk3528-hinlink-h28k.dts | 301 ++++++++++++++
+ .../boot/dts/rockchip/rk3528-mangopi-m28k.dts | 381 ++++++++++++++++++
+ 4 files changed, 694 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-hinlink-h28k.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-mangopi-m28k.dts
 
 -- 
-Best, 
-Chaoyi
+2.25.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
