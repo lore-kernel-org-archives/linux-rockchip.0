@@ -4,77 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50285D116F1
-	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Dec 2025 17:02:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CC6BD116F3
+	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Dec 2025 17:35:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=c4z/RznsU9nT46FyVtoCDPgBoegWM7Vla14Y/cE4vGI=; b=E8qh0w/vDecvSZ9uWytoU3FaZF
-	7VW5bX+HdIefJpg8jV0vkjoZGCqZerxOqsjAcHxmSuiRVkgxowyWcyFEyM9zkzwQflV6kZdBT8OTu
-	u5gEcCxbc28zX7zHDeYTO+MCYFN8h9m7A4ga/gcaabvYALzDG0iNgalPoMH1jTCnu2wYvqf9z6z4A
-	N+qN6ANjOv4IorbggJt7df1EN89sWH6/PWmJPi46H+X3cnkvjQYMOnAMpeDOdtTKm25wQ0uOgN3I5
-	2QBTu92n9rx94rP3dyt8QemifTyMxcSF+yZKjTAItug5p1+fUzfDjQBndvInZvdIFMuw1nJLVHAZW
-	qF0bNJSA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=DondVjDKt/tIFnjKs2neJUs71WaLKPdEj4yFhjNc82g=; b=CBn+BWncUhB8i3
+	EW9yqX6nNHvSz3AqLBp0/0pObXh/GBFtIzJ731kM1Cykyjj0pCiLn/rxc3vyxwkcJhVEfrC4g+CXO
+	bYurDUg0UEoRRe4bIAXHdE1axPghVA9nd8OIFM0mUXnOaeG47uU7utxrrv+SrsB3B99jxXu8xiDjq
+	aE/l2hBgCJohN8WtiAKSEO0dt+OO8+UMHjulceqgDGG30J5q2PuNFOyn1d+IqFx+o9F8JLENI2gty
+	jg3WEUNQUxTwLp8CEK8ksz5fSnSRO9w8U+UbrnANwWvn+KvYgQGEG35B24Db9zwiKB29Dn46vX9WP
+	BDR3nb5agywDNaLiSdkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vQ7Hn-00000004KGY-0Lw0;
-	Mon, 01 Dec 2025 17:02:03 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vQ7o2-00000004MeM-1bgr;
+	Mon, 01 Dec 2025 17:35:22 +0000
+Received: from mail-qk1-x72f.google.com ([2607:f8b0:4864:20::72f])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vQ7Hk-00000004KG9-2rMf;
-	Mon, 01 Dec 2025 17:02:00 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id A07CE6014A;
-	Mon,  1 Dec 2025 17:01:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C5905C116C6;
-	Mon,  1 Dec 2025 17:01:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1764608519;
-	bh=bmyTq2q+hM5yLfaOwvV4mt3DtxhrkyZjZ87SLQzIRvc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=jr7StedPEyC4/M1t7fb11w5L7eX7EwY91G07P7AMGijfckxto+L1WhwGZsjlsXYIY
-	 oPOBlsHBliJM+a+Ck+s95tJX7dUkcTP5pveCNFp/krPg4vR0LXWKAYEHPMZFH7BnSa
-	 w/jmhdgHtlBNuR767BlzygS7X3PXNC6OjSXYaqFQBISNpnI6dO3zRh4SkdSFewBq7X
-	 zREFhG+p8OGRGjPPiSi80gwvkw0y85GNS/W5tNjwqV7H9L1DBf2eLGS8ArX4PFGdca
-	 NRClciXygKLJ3Mf0U36BtEe3k+YhGpk6jI8Jy8BC6oYJJRGMbYG05OQchgkdz3i2TA
-	 5RsxeDtcuuY4Q==
-Date: Mon, 1 Dec 2025 18:01:56 +0100
-From: Maxime Ripard <mripard@kernel.org>
-To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-Cc: Daniel Stone <daniel@fooishbar.org>, 
-	Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
-	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Sandy Huang <hjc@rock-chips.com>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, 
-	Andy Yan <andy.yan@rock-chips.com>, Chen-Yu Tsai <wens@csie.org>, 
-	Samuel Holland <samuel@sholland.org>, Dave Stevenson <dave.stevenson@raspberrypi.com>, 
-	=?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, 
-	Liu Ying <victor.liu@nxp.com>, Rob Clark <robin.clark@oss.qualcomm.com>, 
-	Dmitry Baryshkov <lumag@kernel.org>, Abhinav Kumar <abhinav.kumar@linux.dev>, 
-	Jessica Zhang <jessica.zhang@oss.qualcomm.com>, Sean Paul <sean@poorly.run>, 
-	Marijn Suijten <marijn.suijten@somainline.org>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, 
-	linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org
-Subject: Re: [PATCH v3 00/11] drm/connector: hdmi: limit infoframes per
- driver capabilities
-Message-ID: <20251201-enlightened-zebu-from-asgard-5a20be@houat>
-References: <20250925-fervent-merry-beagle-2baba3@penduick>
- <qx5ashx62pufott6hnsfna3qntnoyvxwxze4rihhuxcsdxi37s@bbdvc3sfsgne>
- <20250929-gregarious-worm-of-memory-c5354d@houat>
- <itgffxygopi7etkt7xhvmyuvyl5ad3k43nsxvjzw3ubtwiikn7@ocugfdaigtu7>
- <20251003-uptight-echidna-of-stamina-815305@houat>
- <zpygq4kapil3swsmhhqkdwny4ry2dznnzixsw5rkza5p2kqnvp@abvf2vxlbwif>
- <2a5fitdzr2bz235fj6rvqzxr6ckszkjbazjfszlvnizdh2cvbt@w3ypjo7vahhs>
- <pibxhl5hlcpuk3zsgyienfdlda5cwuxrnofwlw356scuzzplqy@zw3ofelgvwik>
- <bsoqyzxi45i67jpzhwr2d4illufa5ghqf25z6flbp67lsbvh22@rrlcihp2oxea>
- <cgzclxjubj5oca3rdnv44qwrkmpddxve4tlz76cc6p3b4hz3oc@3l7mt5ha7do6>
+	id 1vQ7nz-00000004Mdg-39JA
+	for linux-rockchip@lists.infradead.org;
+	Mon, 01 Dec 2025 17:35:20 +0000
+Received: by mail-qk1-x72f.google.com with SMTP id af79cd13be357-8b1f2fbaed7so406770285a.2
+        for <linux-rockchip@lists.infradead.org>; Mon, 01 Dec 2025 09:35:19 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1764610518; x=1765215318; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=HUy9/tMpZEG+dMBQoKUGEIkUyG26fQzLzLoG5fd72og=;
+        b=czPi0kAaJZh70/R+gx8/sBoB/B2mBxDIa+YguRX5nCPJMqTq0ndpc0+qrLnJVtKjG1
+         LrNd6YejSI2gxHsAAS2jbuWs9a2f0xWhLuJDQ2qLgEv7H5bj5Ch9mQ/o1RKm02PgeVSL
+         AcdtuxtLFgiXa/P3/XQjer5I5RZPwAcfZrzLd2wL2IBzjqWJ0KhNR/GC/kwh+uCj+ZTK
+         Pszi2v11fpwweu7DFZirYI4rwkQ+AdaRJpwtKUyh9kiYpELTqVP/ysFTQQes1mAMPKh3
+         TOhwTQnJegx/3SKpNK7kU580wA86i/YuAdHTw5NQJZUPeSye2BZIAszCy/WY4rbe6Kv+
+         zv5Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1764610518; x=1765215318;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=HUy9/tMpZEG+dMBQoKUGEIkUyG26fQzLzLoG5fd72og=;
+        b=jwDSq9Z9gVr/CqYZIVynkPvMC1VXbhe45jbW/FrHOzIsH4RX/JSxw2Z5z14Ksz0+ie
+         XlSmUjO/J3J9oAIkVPCZk0+QIzfPkjzxcnvHw8hj7h04cgIUhbEs4CG3I/hrUkuYOni3
+         FKN4vpSm3SDUsNipcXQ/yXJoF1+2nYlK+5KWSHytiJSVcTCgxuKXhsn5c9PH4qnaolaq
+         75IwKySN0+UTmLeJSt1Ygl+oou97qdYXkjDczGxo3AsJOLTtxR9zOJdMQkNzmqerxNwq
+         +UpPWVtWGbHdeuyiAuVn7OZuMvbPMQVd9FwnkdMchWQUdKVFzD/bY1EWp33SM7qCHT4T
+         k7Pg==
+X-Forwarded-Encrypted: i=1; AJvYcCXocvALinw23eBSj3OZkyKamk6v+gkGfviiWTIZofoXj4pPyUclVFssIBZcHqVa+WcFehepY5jBPDhh0BvldA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyFDaQQkjPvmTyTL5NHiBTlSN/G+HegqGk9Gkdln1Zi515pkRSq
+	llu303iRhytbc2GEWoUoTe4IH3P3YSzskKBIOc9cLpCYTvGzG3uBNoQz3rpECZI5q8gK0oheiwO
+	lgw2wUTIQDnGQ83tW708OOroVeUJ00Yk=
+X-Gm-Gg: ASbGncvwfcndRQtGA7gYIkSFFHl0gDLgJ+lSvboDQqhDwPX0b1cSrDDbnYrTN+Juk6k
+	oy2uMtQNgetbUwReKgDIOQxBpaQZ9I8Ws6EjqlKMjRMJgz6tbgniuXfng39rWXRdzvxau7WQvjy
+	VqZmorUm2rCJkYOxBO3E7DzA3DpQrzTELptVbUjtOmSLjwQR6Dmxuj5zdfdbJDgjnKADp5yodVG
+	ZjfvMQIKpKVA4ulD6TdT6a9Ck+KhI2rWu+9z1c+p7vQPzUj3fNmJJXoKuEfstHNUk0G7UxjZSY9
+	qegQQfvTWxIR/xVnQqjOh9JE4dZQVsBL/uANDz8=
+X-Google-Smtp-Source: AGHT+IG9z48YMtq1Hoc/6GZ1Q2125xNYsRwXEceD8NyRrDRi12uj4aXH0Nvq70m/GP3MOT/fvQpHE0zCpZJfWXVma+M=
+X-Received: by 2002:a05:620a:1a25:b0:8b1:f2cd:76ad with SMTP id
+ af79cd13be357-8b33d5ffadamr5603990885a.89.1764610518305; Mon, 01 Dec 2025
+ 09:35:18 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <cgzclxjubj5oca3rdnv44qwrkmpddxve4tlz76cc6p3b4hz3oc@3l7mt5ha7do6>
+References: <20251201-evb1-pcie1-v1-1-c62bba5c1167@gmail.com>
+In-Reply-To: <20251201-evb1-pcie1-v1-1-c62bba5c1167@gmail.com>
+From: Alexey Charkov <alchark@gmail.com>
+Date: Mon, 1 Dec 2025 21:35:07 +0400
+X-Gm-Features: AWmQ_bkh-_4MrBD8Z1igFWdl8lWvuEpvTQY628KgzrJmFFeIaNlOE_zlYPP9A-Y
+Message-ID: <CABjd4YxiOsw0_vR=igLhGkXUp4kSfx_eWv6j=FrsX-qo5sR2hw@mail.gmail.com>
+Subject: Re: [PATCH] arm64: dts: rockchip: Add overlay for the PCIe slot on
+ RK3576 EVB1
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251201_093519_804047_60B8C27B 
+X-CRM114-Status: GOOD (  16.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,94 +93,42 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7754991245054743032=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
---===============7754991245054743032==
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="nhtgib353qneclwb"
-Content-Disposition: inline
-
-
---nhtgib353qneclwb
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v3 00/11] drm/connector: hdmi: limit infoframes per
- driver capabilities
-MIME-Version: 1.0
-
-On Fri, Nov 21, 2025 at 07:09:01PM +0200, Dmitry Baryshkov wrote:
-> > So it's not really impossible, you just need some hardware and a day's
-> > worth of work.
-> >=20
-> > There's no reason these should get a pass, it's breaking the spec for no
-> > reason.
-> >=20
-> > > > For SPD, It's really not clear to me why atomic_check should do tha=
-t in
-> > > > the first place. Your initial concern was about exposing infoframes=
- in
-> > > > debugfs that wouldn't be used by the driver.
-> > > >=20
-> > > > If the driver doesn't register a debugfs file for SPD, and ignores
-> > > > whatever is in the atomic state, what's should we force drivers to =
-do
-> > > > that?
-> > >=20
-> > > I really don't think that drivers should mess up with debugfs on their
-> > > own. Making atomic_check() disable the unsupported InfoFrames makes t=
-he
-> > > picture perfect: the DRM no longer tries to program them to the
-> > > hardware, DebugFS files stay empty, so the whole state becomes
-> > > consistent.
-> >=20
-> > In the "bridge has no access to infoframes" case, there's really no
-> > infoframe. An empty file is "the infoframe can be there but isn't used",
-> > not "we don't have access to it and can't report them". Only drivers
-> > have those infos.
-> >=20
-> > If we do split up write_infoframe into multiple functions though, I
-> > guess we could create the debugfs file only if the function pointer is
-> > set, which removes drivers' involvement if you don't like that.
->=20
-> I'm fine with not using HDMI connector framework for lt9611uxc.
-> Likewise, I think, it's fine to have empty files for the infoframes
-> which are not being sent over the wire for any reason (hw not supporting
-> it is one of the reasons).
-
-I can't think of any other example in the kernel where an empty file
-means that the driver doesn't support something.
-
-Maxime
-
---nhtgib353qneclwb
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCaS3KBAAKCRAnX84Zoj2+
-dpehAX9df8UFvZVN58dQXWwnBnuke2vOU1UxT4zbhxIdR/6V/O2rER74TkmbviQv
-h0HIhF0BgLOgEP5gmSlL9xZCFl5EWhJpy16T7ozKZGULaHEy/3NJR+/SzYOZmLZ5
-yR5aU4SDRQ==
-=m4w1
------END PGP SIGNATURE-----
-
---nhtgib353qneclwb--
-
-
---===============7754991245054743032==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============7754991245054743032==--
-
+T24gTW9uLCBEZWMgMSwgMjAyNSBhdCA0OjM34oCvUE0gQWxleGV5IENoYXJrb3YgPGFsY2hhcmtA
+Z21haWwuY29tPiB3cm90ZToKPgo+IFJvY2tjaGlwIFJLMzU3NiBFVkIxIGhhcyBhbiBvbmJvYXJk
+IFBDSWUgc2xvdCAoUENJZSAyLjEsIHg0IG1lY2hhbmljYWxseSwKPiB4MSBlbGVjdHJpY2FsbHkp
+LCBidXQgaXQgc2hhcmVzIHBpbnMgYW5kIFBIWSB3aXRoIHRoZSBvbmx5IFVTQjMgVHlwZS1BCj4g
+cG9ydC4KPgo+IFRoZXJlIGlzIGEgcGh5c2ljYWwgc3dpdGNoIG5leHQgdG8gdGhlIHNsb3QgdG8g
+dHJhbnNmZXIgcmVzcGVjdGl2ZSBwaW5zCj4gY29ubmVjdGlvbiBmcm9tIHRoZSBVU0IzIHBvcnQg
+dG8gdGhlIFBDSWUgc2xvdCwgYnV0IGFwYXJ0IGZyb20gZmxpcHBpbmcKPiB0aGUgc3dpdGNoIG9u
+ZSBtdXN0IGFsc28gZGlzYWJsZSB0aGUgVVNCMyBob3N0IGNvbnRyb2xsZXIgdG8gcHJldmVudCBp
+dAo+IGZyb20gY2xhaW1pbmcgdGhlIFBIWSBiZWZvcmUgdGhlIFBDSWUgc2xvdCBjYW4gYmVjb21l
+IHVzYWJsZS4KPgo+IEFkZCBhbiBvdmVybGF5IHRvIGRpc2FibGUgdGhlIFVTQjMgaG9zdCBwb3J0
+IGFuZCBpbnN0ZWFkIGVuYWJsZSB0aGUKPiBQQ0llIHNsb3QsIGFsb25nIHdpdGggaXRzIHBpbiBj
+b25maWdzLiBUaGUgcGh5c2ljYWwgc3dpdGNoIG11c3Qgc3RpbGwgYmUKPiBmbGlwcGVkIHRvIHRo
+ZSAiT04gLSBQQ0llMSIgcG9zaXRpb24gZm9yIHRoaXMgdG8gd29yay4KPgo+IFNpZ25lZC1vZmYt
+Ynk6IEFsZXhleSBDaGFya292IDxhbGNoYXJrQGdtYWlsLmNvbT4KPiAtLS0KPiAgYXJjaC9hcm02
+NC9ib290L2R0cy9yb2NrY2hpcC9NYWtlZmlsZSAgICAgICAgICAgICAgfCAgNCArKysKPiAgLi4u
+L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU3Ni1ldmIxLXYxMC1wY2llMS5kdHNvICAgfCAzMSArKysr
+KysrKysrKysrKysrKysrKysrCj4gIDIgZmlsZXMgY2hhbmdlZCwgMzUgaW5zZXJ0aW9ucygrKQo+
+Cj4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvTWFrZWZpbGUgYi9h
+cmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL01ha2VmaWxlCj4gaW5kZXggYWQ2ODRlMzgzMWJj
+Li42MzE5OGE2MThhMmIgMTAwNjQ0Cj4gLS0tIGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hp
+cC9NYWtlZmlsZQo+ICsrKyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvTWFrZWZpbGUK
+PiBAQCAtMjUyLDYgKzI1MiwxMCBAQCBkdGItJChDT05GSUdfQVJDSF9ST0NLQ0hJUCkgKz0gcmsz
+NTc2LWFybXNvbS1zaWdlNS12MS4yLXdpZmlidC5kdGIKPiAgcmszNTc2LWFybXNvbS1zaWdlNS12
+MS4yLXdpZmlidC1kdGJzIDo9IHJrMzU3Ni1hcm1zb20tc2lnZTUuZHRiIFwKPiAgICAgICAgIHJr
+MzU3Ni1hcm1zb20tc2lnZTUtdjEuMi13aWZpYnQuZHRibwo+Cj4gK2R0Yi0kKENPTkZJR19BUkNI
+X1JPQ0tDSElQKSArPSByazM1NzYtZXZiMS12MTAtcGNpZTEuZHRiCj4gK3JrMzU3Ni1ldmIxLXYx
+MC1wY2llMS1kdGJzIDo9IHJrMzU3Ni1ldmIxLXYxMC5kdGIgXAo+ICsgICAgICAgcmszNTc2LWV2
+YjEtdjEwLXBjaWUxLmR0Ym8KCk1pc3NlZCB0aGUgc2VwYXJhdGUgLmR0Ym8gdGFyZ2V0LiBXaWxs
+IGFtZW5kIGluIHYyLiBTaG91bGQgaGF2ZQpzb21ldGhpbmcgbGlrZSB0aGlzIGZ1cnRoZXIgdXAg
+aW4gdGhlIE1ha2VmaWxlOgpkdGItJChDT05GSUdfQVJDSF9ST0NLQ0hJUCkgKz0gcmszNTc2LWV2
+YjEtdjEwLXBjaWUxLmR0Ym8KCkJlc3QgcmVnYXJkcywKQWxleGV5CgpfX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxp
+c3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFk
+ZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
