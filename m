@@ -4,48 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48D39D116F3
-	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Dec 2025 14:47:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A403CD116F3
+	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Dec 2025 14:50:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=zflhAT496CxHwOvl11/cRkgXEJrJPJ9JGhd2g9LtPac=; b=ND5/q8Uw1MohlF
-	qxSdBiq2kq7fyXx5tmcLt1/1fu/WlcVLxk1UrpzeX8lXlZdFTMOmgg9fS/pV5+5BxKaqSQlgV07xH
-	BK+8gQ4CXQV48ve4vbEdPf7D9hiNxGjFNI4lpPHdXfQ3ymWzaAS4iKOCo069ETCBx0gPiSnZl/oKg
-	uezoRje3+b/hqI0HVQsqMWPkJyA7J/7WUSioB1ua1YAfLxl7RosKAPAFy7OaW7PEJvHm8ImufxyfZ
-	vXPN19CO8YZSS9shov36joLzl76KQIvaRqklksC076fgUrWvhpE2Q/2VeYSUbo3kwRew4+rDGI6fA
-	681OMTOoUAQvLZHf0pnA==;
+	List-Owner; bh=winWUHFjQZPKkcoTJ+8Dp29iOt2N9k6R0XhFtv2VxYA=; b=IQtGH3dQemp+hr
+	fimWhTtKk+Zs4dctUJNoNAcG2DDaonELSEbbxtZFAq6iV9yx17Px3Ftk/v4dpYtPK9H+4DjoT9DjS
+	l1i7flSOdrrwjq3tuKfNp2slExrh9NhwaQRZjCgRl5EpphuGx6ApdlvkOsKSp8aHHSWrcmqG0/ZEk
+	7IdS78GE5LfBvXnwC+12SsHwE/t+qF4PedjkBVpzg6Lird6frM4x2+72R+b3JSEwVg2YoXgihzE/r
+	VXXzShl/+WLAdJxA9En8KKp+RKU1aNPLeeRdMZsvtYy+g3Xqd9OrTZrpbyCdjsiaGBDJn2xlpSQcQ
+	kLiQbER181dYVJm/udzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vQ5BE-000000046Jc-0oMN;
-	Mon, 01 Dec 2025 14:47:08 +0000
-Received: from sakura.naobsd.org ([160.16.200.221] helo=mail.naobsd.org)
+	id 1vQ5EG-000000046WL-11Nt;
+	Mon, 01 Dec 2025 14:50:16 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vQ5BB-000000046J4-1pWz
-	for linux-rockchip@lists.infradead.org;
-	Mon, 01 Dec 2025 14:47:06 +0000
-Received: from secure.fukaumi.org ([10.0.0.2])
-	by mail.naobsd.org (8.14.4/8.14.4/Debian-4.1ubuntu1.1) with ESMTP id 5B1EkXia004690;
-	Mon, 1 Dec 2025 23:46:33 +0900
-From: FUKAUMI Naoki <naoki@radxa.com>
-To: heiko@sntech.de
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
-        pbrobinson@gmail.com, damon.ding@rock-chips.com, dsimic@manjaro.org,
-        kylepzak@projectinitiative.io, sebastian.reichel@collabora.com,
-        alchark@gmail.com, amadeus@jmu.edu.cn, devicetree@vger.kernel.org,
-        linux-rockchip@lists.infradead.org, FUKAUMI Naoki <naoki@radxa.com>
-Subject: [PATCH v3] arm64: dts: rockchip: Make eeprom read-only for Radxa ROCK 3C/5A/5C
-Date: Mon,  1 Dec 2025 14:46:29 +0000
-Message-ID: <20251201144629.135570-1-naoki@radxa.com>
-X-Mailer: git-send-email 2.43.0
+	id 1vQ5EC-000000046Vf-3Cfg;
+	Mon, 01 Dec 2025 14:50:14 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=eU9psOUffFFLH8iXGGNckKFSi0N1lnrRVekGn56l2Oo=; b=eJa7casIJQrMJzBa++zmER07wC
+	E2rt0q800czairfx7haxMsd4cNy3BmusqoGQGNs/B5xhYVipNpJvAM+c/FyGH2TMmd6O93JSb+n0C
+	VqTmHZoMboC5yxCti8kfhAmm7+Pah6vqDwTvD0zxb+WgBpZHU7su1aOYSmjmbYw+IT+gEDCMAGYWB
+	qc3wGqo2wNKSQYMT4mFqsYDTEfmMLOtPeyC7BVx0zmgefyyuzSTSWu9c139/ngksUpnrfwsaJM2NA
+	718tAVPDRrh9rNP5/sHAhW/UvK5SEKE+GK9sTmCqwoEyXELA1ceGyPga/roDkXku/hssrxgA5j22T
+	ExlEcVZQ==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:59362)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.98.2)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1vQ5E1-000000000ei-0iY7;
+	Mon, 01 Dec 2025 14:50:01 +0000
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.98.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1vQ5Dw-000000006Y9-3GUO;
+	Mon, 01 Dec 2025 14:49:56 +0000
+Date: Mon, 1 Dec 2025 14:49:56 +0000
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>
+Cc: Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Heiko Stuebner <heiko@sntech.de>, Jakub Kicinski <kuba@kernel.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>, netdev@vger.kernel.org,
+	Paolo Abeni <pabeni@redhat.com>
+Subject: [PATCH RFC net-next 00/15] net: stmmac: rk: cleanups galore
+Message-ID: <aS2rFBlz1jdwXaS8@shell.armlinux.org.uk>
 MIME-Version: 1.0
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251201_064705_689539_5ED7143F 
-X-CRM114-Status: UNSURE (   8.56  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251201_065013_101533_ADB50165 
+X-CRM114-Status: GOOD (  15.94  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -62,71 +84,52 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The BL24C16 EEPROM implemented on the Radxa ROCK 3C, 5A, and 5C [1]
-[2] [3] is designed to have data written during factory programming
-(regardless of whether data is actually written or not), and we at
-Radxa permit users to read the data but not write to it. [4]
-Therefore, we will add a read-only property to the eeprom node.
+This is work in progress, cleaning up the excessively large Rockchip
+glue driver somewhat. This series as it currently stands removes
+approximately 200 lines from this file, while adding slightly to its
+flexibility.
 
-[1] https://dl.radxa.com/rock3/docs/hw/3c/v1400/radxa_rock_3c_v1400_schematic.pdf p.13
-[2] https://dl.radxa.com/rock5/5a/docs/hw/radxa_rock5a_V1.1_sch.pdf p.19
-[3] https://dl.radxa.com/rock5/5c/docs/hw/v1100/radxa_rock_5c_schematic_v1100.pdf p.18
-[4] https://github.com/radxa/u-boot/blob/next-dev-v2024.10/drivers/misc/radxa-i2c-eeprom.c
+A brief overview of the changes:
 
-Fixes: ee219017ddb50 ("arm64: dts: rockchip: Add Radxa ROCK 3C")
-Fixes: 89c880808cff8 ("arm64: dts: rockchip: add I2C EEPROM to rock-5a")
-Fixes: 3ddf5cdb77e6e ("arm64: dts: rockchip: add Radxa ROCK 5C")
-Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
----
-Changes in v3:
-- Reword commit message
-Changes in v2:
-- Reword commit message (Dragan Simic)
----
- arch/arm64/boot/dts/rockchip/rk3566-rock-3c.dts  | 1 +
- arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts | 1 +
- arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts | 1 +
- 3 files changed, 3 insertions(+)
+- similar to previous commits, it seems the RGMII clock field follows
+  a common pattern irrespective of the SoC.
+- update rk3328 to use the ->id mechanism rather than guessing from
+  the PHY interface mode and whether the PHY is integrated.
+- switch to wm16 based masking, providing the lower-16 bits of the
+  mask to indicate appropriate fields, and use this to construct the
+  values to write to the registers.
+- convert px30 to these methods.
+- since many set_to_rmii() methods are now empty, add flags to indicate
+  whether RMII / RGMII are supported.
+- clear RGMII where the specific SoC's GMAC instance doesn't support
+  this.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-rock-3c.dts b/arch/arm64/boot/dts/rockchip/rk3566-rock-3c.dts
-index 80ac40555e02..fa28b32f6910 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-rock-3c.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-rock-3c.dts
-@@ -466,6 +466,7 @@ eeprom: eeprom@50 {
- 		compatible = "belling,bl24c16a", "atmel,24c16";
- 		reg = <0x50>;
- 		pagesize = <16>;
-+		read-only;
- 		vcc-supply = <&vcca1v8_pmu>;
- 	};
- };
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
-index 045a853d39ec..0991f6a21190 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
-@@ -233,6 +233,7 @@ eeprom: eeprom@50 {
- 		compatible = "belling,bl24c16a", "atmel,24c16";
- 		reg = <0x50>;
- 		pagesize = <16>;
-+		read-only;
- 		vcc-supply = <&vcc_3v3_pmu>;
- 	};
- };
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
-index b837c4e08cec..7fe42f4ff827 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
-@@ -325,6 +325,7 @@ eeprom@50 {
- 		compatible = "belling,bl24c16a", "atmel,24c16";
- 		reg = <0x50>;
- 		pagesize = <16>;
-+		read-only;
- 		vcc-supply = <&vcc_3v3_pmu>;
- 	};
- };
+I've spent quite a while mulling over how to deal with these "wm16"
+registers, none of the kernel bitfield macros (not even the
+hw_bitfield.h macros) allow for what I present here, because the
+masks are not constant.
+
+One of the interesting things is that this appears to deal with RGMII
+delays at the MAC end of the link, but there's no way to tell phylib
+that's the case. I've not looked deeply into what is going on there,
+but it is surprising that the driver insists that the delays (in
+register values?) are provided, but then ignores them depending on the
+exact RGMII mode selected.
+
+One outstanding issue with these patches: RK3528_GMAC0_CLK_RMII_DIV2
+remains, although I deleted its definition, so there's build errors
+in this series. Before I do anything about that, I would like to hear
+from the Rockchip guys whether it is necessary for rk3528_set_to_rmii()
+to set the clock rate, given that rk_set_clk_tx_rate() will do this
+when the link comes up. Does it matter whether it was set to 2.5MHz
+(/ 20) or 25MHz (/ 2) when we switch to RMII mode?
+
+ drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c | 968 ++++++++++---------------
+ 1 file changed, 382 insertions(+), 586 deletions(-)
+
 -- 
-2.43.0
-
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
 
 _______________________________________________
 Linux-rockchip mailing list
