@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B7E6D116F1
-	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Dec 2025 14:52:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BE97D11700
+	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Dec 2025 14:52:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:MIME-Version:Subject:Cc
 	:To:From:References:In-Reply-To:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/ZePLFt/CA+QUEL+otOMKlVzB55vCwiU65i0y/6iPWM=; b=nTpHRxeQ/7T5bb
-	BUArQQasB6WrrmUEU+lRyJG43VYr+cIjp97fuaR56a1opycpzVe/gITUbyCVhM4xegb21BzvqVC0M
-	ZrJ8ZHqEYVrxFUaGfcc03HteXpOlSqpCJE+yxEpBzbglNcjOoRAES5PYatch9WEaRx79LKgpia/PJ
-	dHWYapO1SRHp9WVV+t6aOatcofaX1WnPGpTZYpErH5YKZsJGMbdE6WuXRyW28ITniXcRkcAVmbocI
-	8RL0l3BJVgoEHkKB622d6d10YOUNKuGbVy47nRVxcEgkGAjYUd2VIVxK7DI/WAfwHXcNXiqlHfOhU
-	lrw4C6XyhKVZBj/UjarA==;
+	List-Owner; bh=oxqgZr+lVRNi3sJjd3ZP2ZFZD9qegrjUuRcOv44wDVE=; b=aU3yfiNfysD4Q+
+	ap037PWuD8ErFWPt9xBPrzQwMqvKjM2/ztnmQKqTh/7GRDuf8AuWRJQ3G6nmruRHR/vFqUdj964dv
+	uPBjiZ01tA4AWuHNxm9U+s7URYf0wZ7VXsapPvpWiDjUhOJp8GCMyv7gfDIPwUGZZvI9idVJdx7sK
+	PZ9k4x8H4EkBSgqSDADnelxmgP5LWXu0ramHKGaUx0PLYVq9Do9KsvfKTOXoVf0xPZuGPulkDvf2e
+	+M7NeSb1/4h2tk1Oy8jb/NTAY4r7+iCtZThNs6Iog1hLmzFN/Ejs4W6+eq8bp3GzG+hJnCsm9z+yG
+	VA/+Sd3p6tnLn6djqJVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vQ5GJ-000000047nO-13AP;
-	Mon, 01 Dec 2025 14:52:23 +0000
+	id 1vQ5GL-000000047ps-15Mb;
+	Mon, 01 Dec 2025 14:52:25 +0000
 Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vQ5GE-000000047hz-3X0z;
-	Mon, 01 Dec 2025 14:52:20 +0000
+	id 1vQ5GG-000000047jP-1KlB;
+	Mon, 01 Dec 2025 14:52:22 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
 	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
 	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=eFOskbUwm0fPWhzGP4f7FXT0H9qDoZ8nRAhr5ePVCIY=; b=ffqi2pQj6r1TeInhkYYP5R8gdg
-	KK/hAw6UziM6aCDGs9RIKd6hmw+YAOiRzcBPe2bhZQlMec3uMP+FTc/Ja2ZBcWxZVwWshDrX3Ebz8
-	yOqW8sXSM5RP9z57zlVEbLMiy/AvYaKdPEqCEPxcD8RxxVoq15TK6lgOdrVdbSayGwCayH82tIFR4
-	F8ykDTiW1pHhdP0caaOyAmTvcG3DbYGL51ict1xF8aWORp5WZlIA9azwPrtpyeq2LGoAuzpyif5rO
-	rGpK1POfrCuNcVj3JkXA+xgfZDHDcq1Qh7phDOxA2dqGF76xyZscaRBYH2Cq47ijQ4OGO6ZvN4qq3
-	bd4wf4MA==;
-Received: from e0022681537dd.dyn.armlinux.org.uk ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:49784 helo=rmk-PC.armlinux.org.uk)
+	bh=fWbyBP63uvCTssWzZZ2tOggk/sZ4stCJWuHR4DBcl2M=; b=PL9UgYn9Y1fpsv/YH5p1RcJPlB
+	0vP1B7PV892h7IIHSdksFtTL67trIJ5hum3N462aYcfm5WBMx/QEGfhiVgv7dYIVHCseLazkr0yTW
+	v5SqDL5/uWhsmY9uK/NzLfG1X7VNdAvwg1qaJ3o4qb4sf3J3I4IsaIJdSAQKdrqcs+xcpzvfPSFIZ
+	pf/p0/SkB/W56Z/T6CRXXi51SXS08M0tCu9SGNCMKiaJ0fQxMbBDsNlSppNeGLfkNQjUNKioFyUQ2
+	fWsBFyvcBJKtEDdtTUdRWJtjRb7CyRH19U4+VMTqTnNWVNV1OyUO8gD1cTIvvReNSAgxvNNhIbNaH
+	Q22uelKw==;
+Received: from e0022681537dd.dyn.armlinux.org.uk ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:49796 helo=rmk-PC.armlinux.org.uk)
 	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.98.2)
 	(envelope-from <rmk@armlinux.org.uk>)
-	id 1vQ5Fi-000000000hn-0Bxs;
-	Mon, 01 Dec 2025 14:51:46 +0000
+	id 1vQ5Fl-000000000hr-1b36;
+	Mon, 01 Dec 2025 14:51:49 +0000
 Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.98.2)
 	(envelope-from <rmk@rmk-PC.armlinux.org.uk>)
-	id 1vQ5Fa-0000000GNwT-48iR;
-	Mon, 01 Dec 2025 14:51:39 +0000
+	id 1vQ5Fg-0000000GNwZ-0aYc;
+	Mon, 01 Dec 2025 14:51:44 +0000
 In-Reply-To: <aS2rFBlz1jdwXaS8@shell.armlinux.org.uk>
 References: <aS2rFBlz1jdwXaS8@shell.armlinux.org.uk>
 From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
@@ -65,14 +65,15 @@ Cc: Alexandre Torgue <alexandre.torgue@foss.st.com>,
 	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
 	netdev@vger.kernel.org,
 	Paolo Abeni <pabeni@redhat.com>
-Subject: [PATCH RFC net-next 11/15] net: stmmac: rk: convert px30
+Subject: [PATCH RFC net-next 12/15] net: stmmac: rk: introduce flags
+ indicating support for RGMII/RMII
 MIME-Version: 1.0
 Content-Disposition: inline
-Message-Id: <E1vQ5Fa-0000000GNwT-48iR@rmk-PC.armlinux.org.uk>
-Date: Mon, 01 Dec 2025 14:51:38 +0000
+Message-Id: <E1vQ5Fg-0000000GNwZ-0aYc@rmk-PC.armlinux.org.uk>
+Date: Mon, 01 Dec 2025 14:51:44 +0000
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251201_065218_905103_E199F52B 
-X-CRM114-Status: GOOD (  10.37  )
+X-CRM114-CacheID: sfid-20251201_065220_391896_BFCBF02B 
+X-CRM114-Status: GOOD (  12.99  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,69 +90,118 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Introduce two boolean flags into struct rk_priv_data indicating
+whether RGMII and/or RMII is supported for this instance. Use these
+to configure the supported_interfaces mask for phylink, validate the
+interface mode. Initialise these from equivalent flags in the
+rk_gmac_ops or depending on the presence of the ops->set_to_rgmii and
+ops->set_to_mii methods. Finally, make ops->set_to_* optional.
+
+This will allow us to get rid of empty set_to_rmii() methods.
+
 Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
 ---
- .../net/ethernet/stmicro/stmmac/dwmac-rk.c    | 38 ++-----------------
- 1 file changed, 4 insertions(+), 34 deletions(-)
+ .../net/ethernet/stmicro/stmmac/dwmac-rk.c    | 35 +++++++++++++------
+ 1 file changed, 25 insertions(+), 10 deletions(-)
 
 diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-index c26bd22658c6..4c80a73bbf74 100644
+index 4c80a73bbf74..fbc0e50519f6 100644
 --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
 +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-@@ -237,49 +237,19 @@ static void rk_gmac_integrated_fephy_powerdown(struct rk_priv_data *priv,
+@@ -48,6 +48,8 @@ struct rk_gmac_ops {
+ 	u16 mac_speed_mask;
  
- #define PX30_GRF_GMAC_CON1		0x0904
+ 	bool speed_reg_php_grf;
++	bool supports_rgmii;
++	bool supports_rmii;
+ 	bool php_grf_required;
+ 	bool regs_valid;
+ 	u32 regs[];
+@@ -81,6 +83,8 @@ struct rk_priv_data {
+ 	bool clk_enabled;
+ 	bool clock_input;
+ 	bool integrated_phy;
++	bool supports_rgmii;
++	bool supports_rmii;
  
--/* PX30_GRF_GMAC_CON1 */
--#define PX30_GMAC_SPEED_10M		GRF_CLR_BIT(2)
--#define PX30_GMAC_SPEED_100M		GRF_BIT(2)
--
- static void px30_set_to_rmii(struct rk_priv_data *bsp_priv)
+ 	struct clk_bulk_data *clks;
+ 	int num_clks;
+@@ -1387,6 +1391,9 @@ static struct rk_priv_data *rk_gmac_setup(struct platform_device *pdev,
+ 	bsp_priv->rmii_clk_sel_mask = ops->rmii_clk_sel_mask;
+ 	bsp_priv->mac_speed_mask = ops->mac_speed_mask;
+ 
++	bsp_priv->supports_rgmii = ops->supports_rgmii || !!ops->set_to_rgmii;
++	bsp_priv->supports_rmii = ops->supports_rmii || !!ops->set_to_rmii;
++
+ 	if (ops->init) {
+ 		ret = ops->init(bsp_priv);
+ 		if (ret) {
+@@ -1405,11 +1412,11 @@ static int rk_gmac_check_ops(struct rk_priv_data *bsp_priv)
+ 	case PHY_INTERFACE_MODE_RGMII_ID:
+ 	case PHY_INTERFACE_MODE_RGMII_RXID:
+ 	case PHY_INTERFACE_MODE_RGMII_TXID:
+-		if (!bsp_priv->ops->set_to_rgmii)
++		if (!bsp_priv->supports_rgmii)
+ 			return -EINVAL;
+ 		break;
+ 	case PHY_INTERFACE_MODE_RMII:
+-		if (!bsp_priv->ops->set_to_rmii)
++		if (!bsp_priv->supports_rmii)
+ 			return -EINVAL;
+ 		break;
+ 	default:
+@@ -1455,24 +1462,32 @@ static int rk_gmac_powerup(struct rk_priv_data *bsp_priv)
+ 	switch (bsp_priv->phy_iface) {
+ 	case PHY_INTERFACE_MODE_RGMII:
+ 		dev_info(dev, "init for RGMII\n");
+-		bsp_priv->ops->set_to_rgmii(bsp_priv, bsp_priv->tx_delay,
+-					    bsp_priv->rx_delay);
++		if (bsp_priv->ops->set_to_rgmii)
++			bsp_priv->ops->set_to_rgmii(bsp_priv,
++						    bsp_priv->tx_delay,
++						    bsp_priv->rx_delay);
+ 		break;
+ 	case PHY_INTERFACE_MODE_RGMII_ID:
+ 		dev_info(dev, "init for RGMII_ID\n");
+-		bsp_priv->ops->set_to_rgmii(bsp_priv, 0, 0);
++		if (bsp_priv->ops->set_to_rgmii)
++			bsp_priv->ops->set_to_rgmii(bsp_priv, 0, 0);
+ 		break;
+ 	case PHY_INTERFACE_MODE_RGMII_RXID:
+ 		dev_info(dev, "init for RGMII_RXID\n");
+-		bsp_priv->ops->set_to_rgmii(bsp_priv, bsp_priv->tx_delay, 0);
++		if (bsp_priv->ops->set_to_rgmii)
++			bsp_priv->ops->set_to_rgmii(bsp_priv,
++						    bsp_priv->tx_delay, 0);
+ 		break;
+ 	case PHY_INTERFACE_MODE_RGMII_TXID:
+ 		dev_info(dev, "init for RGMII_TXID\n");
+-		bsp_priv->ops->set_to_rgmii(bsp_priv, 0, bsp_priv->rx_delay);
++		if (bsp_priv->ops->set_to_rgmii)
++			bsp_priv->ops->set_to_rgmii(bsp_priv,
++						    0, bsp_priv->rx_delay);
+ 		break;
+ 	case PHY_INTERFACE_MODE_RMII:
+ 		dev_info(dev, "init for RMII\n");
+-		bsp_priv->ops->set_to_rmii(bsp_priv);
++		if (bsp_priv->ops->set_to_rmii)
++			bsp_priv->ops->set_to_rmii(bsp_priv);
+ 		break;
+ 	default:
+ 		dev_err(dev, "NO interface defined!\n");
+@@ -1508,10 +1523,10 @@ static void rk_get_interfaces(struct stmmac_priv *priv, void *bsp_priv,
  {
+ 	struct rk_priv_data *rk = bsp_priv;
+ 
+-	if (rk->ops->set_to_rgmii)
++	if (rk->supports_rgmii)
+ 		phy_interface_set_rgmii(interfaces);
+ 
+-	if (rk->ops->set_to_rmii)
++	if (rk->supports_rmii)
+ 		__set_bit(PHY_INTERFACE_MODE_RMII, interfaces);
  }
  
--static int px30_set_speed(struct rk_priv_data *bsp_priv,
--			  phy_interface_t interface, int speed)
--{
--	struct clk *clk_mac_speed = bsp_priv->clks[RK_CLK_MAC_SPEED].clk;
--	struct device *dev = bsp_priv->dev;
--	unsigned int con1;
--	long rate;
--
--	if (!clk_mac_speed) {
--		dev_err(dev, "%s: Missing clk_mac_speed clock\n", __func__);
--		return -EINVAL;
--	}
--
--	if (speed == 10) {
--		con1 = PX30_GMAC_SPEED_10M;
--		rate = 2500000;
--	} else if (speed == 100) {
--		con1 = PX30_GMAC_SPEED_100M;
--		rate = 25000000;
--	} else {
--		dev_err(dev, "unknown speed value for RMII! speed=%d", speed);
--		return -EINVAL;
--	}
--
--	regmap_write(bsp_priv->grf, PX30_GRF_GMAC_CON1, con1);
--
--	return clk_set_rate(clk_mac_speed, rate);
--}
--
- static const struct rk_gmac_ops px30_ops = {
- 	.set_to_rmii = px30_set_to_rmii,
--	.set_speed = px30_set_speed,
-+	.set_speed = rk_set_clk_mac_speed,
- 
- 	.phy_intf_sel_grf_reg = PX30_GRF_GMAC_CON1,
- 	.phy_intf_sel_mask = GENMASK_U16(6, 4),
-+
-+	.speed_grf_reg = PX30_GRF_GMAC_CON1,
-+	.mac_speed_mask = BIT_U16(2),
- };
- 
- #define RK3128_GRF_MAC_CON0	0x0168
 -- 
 2.47.3
 
