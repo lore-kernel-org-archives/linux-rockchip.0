@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBA9BD116F6
-	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Dec 2025 20:54:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 724D5D116F1
+	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Dec 2025 01:51:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2LJnK7hZchMqBWFCyxa/YUfZekUZi0homa+ojk/nqVw=; b=fGT9wwaN2C10c4
-	x+vOb7TVa2q65U7mm4Ha1N42pINVG4VlqkN0exZ/HTyBVNJezTf4IZfBb2YCCoz9geA8w8WGwuytU
-	ZpJLqoa8ggRlBWOx759jMS62IfR5PFgMuIkhS1E58Im7U3MnVDWoNvQ+GjJpxaT92hrKns2iY6DbO
-	KIhY1sy1LBs7D0O8176acdytOlw+MVLNO+gLTDP+eV8lHzXFrQhFkG97u91zuT9RljiVWMMIILoaJ
-	pViNQC1fgWPOtpEdkOpmwoqpPXUsPW6ojxEREQgkG9IRPcAZBDUwKZALv6QJxS/bvilVFvztuKBnI
-	OPue5TqCdg1QNKapyp4w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=TMDO4etyGHF4fAAggGtGgd0rQMf/WylUzwawurjSQg8=; b=qO2YrsZ6Z90hEH
+	zaDsZZa9PMxYb+4qfk0FWKvwWh+HJrINb86r8WDcQKcovWNogaz1+cc2RWKp1Cs4OhdKuyr+Fk23S
+	fA2SV8Bs246fsXmq/X67LVF4xckgp7DBbt52aLC9jreRqfTPM8o0B/pW/iqlCK9kMCqxC/lJPicvX
+	11gbQ0+P8T9wIIfzWX768GQZV7/cwm+yJL6XuiD7mguSfCYDkVrDXSAMj3xKBqXhfvYADDdHbSURa
+	OKmrZQHDB5PFcocMw6sO2ZC+L4Gcsvj+6feuPZ+Fz1Y2NqW49Pmaf86GYwx4Q5frVH7mJXI4VyT+K
+	ONCLArmAJnb7LiPC7neg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vQAuW-00000004Vu4-3ZQO;
-	Mon, 01 Dec 2025 20:54:16 +0000
+	id 1vQFXU-00000004hVD-3Fne;
+	Tue, 02 Dec 2025 01:50:48 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vQAuU-00000004Vsr-13F2;
-	Mon, 01 Dec 2025 20:54:15 +0000
+	id 1vQFXR-00000004hUg-31Zs;
+	Tue, 02 Dec 2025 01:50:46 +0000
 Received: from rui-Precision-7560.local (unknown [209.216.103.65])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 0E84BC6E;
-	Mon,  1 Dec 2025 21:51:57 +0100 (CET)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 5CA30A06;
+	Tue,  2 Dec 2025 02:48:27 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1764622319;
-	bh=arZO94CvoyZJrbIODUiQ/h4kmJbICjOtXQI878yFKyc=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=QqsGdDCbf4exnH8iWwBFwGlQbobzgdVvTZIXcaCrUJKggRf2rRUZbkZymoDmoLVX4
-	 DHFtFYs0StN15cw6ZAFXnlG41Lierzavtw2+gzbyDQjspoai+X8awbr677oMzd59gX
-	 uPYxtfQKT/2N+iLht4TyJACP1WdQS7oqNsllL974=
+	s=mail; t=1764640108;
+	bh=KnRyxlWiYmitQ1tAEkHqz9bq2NDqcaHpHmYcf0N+xgI=;
+	h=From:To:Cc:Subject:Date:From;
+	b=NA66SOYjcfVhIlIUb0rmTNDc3aWKdtrv18zLMqbe4SV5Xzubqf88AzE69rovmFT5w
+	 wO1wJJMNbF9Ryi4uzL7SWR9+vUmER3LpedSw+vM1FhVEnqlm7DBLXf4IxrRiYDuGCb
+	 jOGyvOaFfW8HBrwZMivkc7dlfaQK/X1EGh1LoKmI=
 From: Rui Wang <rui.wang@ideasonboard.com>
 To: linux-media@vger.kernel.org,
 	dafna@fastmail.com,
@@ -47,16 +47,14 @@ To: linux-media@vger.kernel.org,
 	linux-kernel@vger.kernel.org
 Cc: libcamera-devel@lists.libcamera.org,
 	Rui Wang <rui.wang@ideasonboard.com>
-Subject: [PATCH v3] media: rkisp1: Fix filter mode register configuration
-Date: Mon,  1 Dec 2025 15:50:55 -0500
-Message-ID: <20251201205309.528858-2-rui.wang@ideasonboard.com>
+Subject: [PATCH v1 0/1] Fix filter mode register issue
+Date: Mon,  1 Dec 2025 20:50:24 -0500
+Message-ID: <20251202015025.601549-1-rui.wang@ideasonboard.com>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20251201205309.528858-1-rui.wang@ideasonboard.com>
-References: <20251201205309.528858-1-rui.wang@ideasonboard.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251201_125414_430413_2E15A5E5 
-X-CRM114-Status: UNSURE (   8.78  )
+X-CRM114-CacheID: sfid-20251201_175045_920956_8E21C335 
+X-CRM114-Status: UNSURE (   8.28  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -74,40 +72,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The rkisp1_flt_config() function performs an initial direct write to
-RKISP1_CIF_ISP_FILT_MODE without including the RKISP1_CIF_ISP_FLT_ENA
-bit, which clears the filter enable bit in the hardware.
+Hi,
 
-The subsequent read/modify/write sequence then reads back the register
-with the enable bit already cleared and cannot restore it, resulting in
-the filter being inadvertently disabled.
+This series contains a single patch that fixes an issue in the rkisp1
+filter mode configuration logic.
 
-Remove the redundant direct write. The read/modify/write sequence alone
-correctly preserves the existing enable bit state while updating the
-DNR mode and filter configuration bits.
+The rkisp1_flt_config() function performs a direct write to the
+FILT_MODE register before the read/modify/write update. This write
+does not include the RKISP1_CIF_ISP_FLT_ENA bit, which clears the
+enable bit in hardware. After that, the read/modify/write sequence
+cannot restore the original enable state, causing the filter to be
+disabled unintentionally.
 
-Signed-off-by: Rui Wang <rui.wang@ideasonboard.com>
----
+The patch removes the redundant direct write. The remaining
+read/modify/write sequence correctly updates the mode fields while
+preserving the existing enable bit.
+
+Please review.
+
+Thanks,
+Rui Wang
+
+Rui Wang (1):
+  media: rkisp1: Fix filter mode register configuration
+
  drivers/media/platform/rockchip/rkisp1/rkisp1-params.c | 6 ------
  1 file changed, 6 deletions(-)
 
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-index c9f88635224c..6442436a5e42 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-@@ -411,12 +411,6 @@ static void rkisp1_flt_config(struct rkisp1_params *params,
- 	rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_FILT_LUM_WEIGHT,
- 		     arg->lum_weight);
- 
--	rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_FILT_MODE,
--		     (arg->mode ? RKISP1_CIF_ISP_FLT_MODE_DNR : 0) |
--		     RKISP1_CIF_ISP_FLT_CHROMA_V_MODE(arg->chr_v_mode) |
--		     RKISP1_CIF_ISP_FLT_CHROMA_H_MODE(arg->chr_h_mode) |
--		     RKISP1_CIF_ISP_FLT_GREEN_STAGE1(arg->grn_stage1));
--
- 	/* avoid to override the old enable value */
- 	filt_mode = rkisp1_read(params->rkisp1, RKISP1_CIF_ISP_FILT_MODE);
- 	filt_mode &= RKISP1_CIF_ISP_FLT_ENA;
 -- 
 2.43.0
 
