@@ -4,62 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01D1CCFD2F6
-	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Dec 2025 09:01:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FD2ECFD376
+	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Dec 2025 09:54:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/jfymM7kSDjutvOv477MLxNAChjs9Oh/xngYuPspdd4=; b=YUctszRrnnMYYw
-	sXa7FSPnBFXtvDmz9gtwTRmbxPNOQPIaQyvfVD4k6wm73LTg39E+ESXB/Gf0Kw0ZtRDRPTgHZPkcj
-	1GE18slB+ECNpoOsXiVEkCQSMKXTkkP3GhdUFkmiHoeporOGkKeEJX9LMrGBeHoF9KWdAnsY8oqSk
-	UFLceLWe+HoHQM/+b2farMdff/r8SGmHex6CBfbwvAIIHbUzd/9/0N+uDCUF3jfnN4ZhBRiW5PZif
-	cMeQeLwdYZ72Y7eVXuikctjXexwrHC1HwEEDXhnyhJeSAloT4HRlHg+5IXsMaJ1kqFDTonNHqk8aL
-	CNDHF0AgDXUTO8MK+KsQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
+	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=aqqYjI7e/kFfiHlsIUxki3gyzqe4vLnzMpNaJp5AQEQ=; b=OInOi2zeTeZdGp
+	bm/Jde4rejvyZkb2+1WGndhzLce0UHSxdvyVK3eKszrZLmLM79Hn+R594oFUv1SR/V0F/MbElfbN9
+	HTHjHwLOFAn91S02J+MxF7BWtRXGR4hgsSy1t8iDkwWHR9h9Db1nST/SgKs3NwqNO5qfPQHtgyvwg
+	71eCghbqF2h6bu4DglDY5/zqK2bsT8Asl9hFgui0WZXbn1jdTb8I3VzJeaN+S6ylsAaMU2QfQUFGW
+	UsbQSSgvefYxiEYZcJskJrG3Cqdi78hQ+P0MW82kmBBRXVEzrUC5kCpbXjyf27NO0Uf3d/SCWymp4
+	hWwG8UMtLqDBVbyIwB+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vQMFq-000000054z2-373r;
-	Tue, 02 Dec 2025 09:01:02 +0000
-Received: from mail-m15567.qiye.163.com ([101.71.155.67])
+	id 1vQN5l-00000005CzO-0umx;
+	Tue, 02 Dec 2025 09:54:41 +0000
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vQMFi-000000054xq-2bAg
+	id 1vQN5i-00000005Cyd-3Agj
 	for linux-rockchip@lists.infradead.org;
-	Tue, 02 Dec 2025 09:01:01 +0000
-Received: from [172.16.12.14] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 2bab20bb6;
-	Tue, 2 Dec 2025 17:00:45 +0800 (GMT+08:00)
-Message-ID: <69a3de19-2aa2-48a7-8d8d-abc6efa3f2ce@rock-chips.com>
-Date: Tue, 2 Dec 2025 17:00:44 +0800
+	Tue, 02 Dec 2025 09:54:40 +0000
+Received: by mail-ej1-x62f.google.com with SMTP id a640c23a62f3a-b762de65c07so196342966b.2
+        for <linux-rockchip@lists.infradead.org>; Tue, 02 Dec 2025 01:54:38 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1764669277; x=1765274077; darn=lists.infradead.org;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=fmcXNUEO80mXAVYkIIIRpgbvGeVPZ2JwOkqQjxC/qNM=;
+        b=U5nrKEHQ3j6ZsCXzT7sVvq+3dh78duQPfZZExPPOAHrgxOTRgVq0ZOdvhGJQ7CA95u
+         mhRIaM2LnPcKJwF1LNgdo5bgycfxJkNTQRSA4XUhs3tXnqaor28TJyAXsu35PrPi4uZf
+         +E4Z4UFLSfJCHiXWN3yl1J228hcpKmv1ewBzAyq+29rg1Zbtf7c4uPWm+P+Ilwqp64/m
+         XvTaFtfJ0cG0/f38l6nXCY4+AItIloD/MUaKWjWpSsL+xujhsA2PSlgAofF5rWot5kAW
+         EnYCXIZR++63hVTjrP7gRAnUl2B1wBI1L7XdcCd2xzUt6XH10tdi5wAEXCK6Mt7dVd5g
+         mCmA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1764669277; x=1765274077;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=fmcXNUEO80mXAVYkIIIRpgbvGeVPZ2JwOkqQjxC/qNM=;
+        b=L//GxW8NEt8JBcToHra8mNWpToeb1V9BvRx9UyFi8h9FLJSOdXIRbtLZGudMXwPPP9
+         TCsfpuURrj4s3fdKyJUq2n4xQLyGay+vpcnmCJb5+VKJhY7V8sdBPdE55rrBeRqjs4P7
+         eZqF69scBC+EwUsxpabbnWuPW1o4SB8X4qdJFpH7Tk5LX/NidUmcecfdsd/tMgqCgiCT
+         6fNNkgMIohB+0HuNKGewIexv+ZAJMRGCyzhBZ2cmfJEtrPgT+l9i8I2HpJyw98l5I2hw
+         Qnu01CPhFLep1gfdoiKGXjXhsW5imNQqXnpr3ggBSubRRqBWgk8v1nWN2dD1quBNzPqJ
+         joag==
+X-Forwarded-Encrypted: i=1; AJvYcCUV6K2sJWpqThXZlME59mCoLP9sS5Zaqgxelrij2YTiuvd5y08lkG30KKInKTR6+egkauGTUfwSs4iometToQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwiI9jx3SgVIViWXKENPiWoaamK2j1HvphMDmKqOCrisJoN5Ypn
+	ks6ALsVU/WP+hirLtVKr7gZLlAFWHF/s8zQlx1UmiQXWDW6hqHm0j9tr
+X-Gm-Gg: ASbGncty/RXZ9Kobyi9ucrSpq6u+BfIJQ5arRi7NZXkfsUi53TO6ELvD6KlF5NCkBEZ
+	dVOoaKavRDT3Lzf0N7dC9ZZ1qsbJlk+OScvcd0pd5exQinnVFs3ejr1JGOrBzMQFmARIUvw993n
+	/OF8Ij+TT/bsFiIH9VcdIYkON/1vzeFTZsG4fXl4jcUs4mtt6wKVjylHE8XsU3206wBzKx5XVEI
+	zcSw7YO2IrE2xH31URUni0XIqVHgz9UG34f0N/r/CLWUf/MuFNHjn4qwl/ueet5GqKc0ZehEcot
+	bcuXAB0UmVAypoIQkkQ16RMTFomXg1j+ONe1dXlsk/m0oU/rSA6BSIPr9I6zXV7kCEPjpCOXOdm
+	s/X7pUKuCfnLWq7lizzgUGMk8sqJ3jFrAuwuKfUZosUbWFD5UIVc4VEBmgNsjY/DSyvrSjT4eWO
+	kx9yknj5ZE9cb4pc5QwFU4fKllz7J3
+X-Google-Smtp-Source: AGHT+IFJ63lxp3eqfF6B3HqtZfdhy6bpjHT9zOV3GMz4SeDzpuMwc0q+BDsBTOMbJgg/CZ2xByTBig==
+X-Received: by 2002:a17:906:c10e:b0:b73:2df0:9fa9 with SMTP id a640c23a62f3a-b76c566bccamr3151399066b.59.1764669276496;
+        Tue, 02 Dec 2025 01:54:36 -0800 (PST)
+Received: from alchark-surface.localdomain ([185.209.196.169])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-b76f51a9819sm1494466566b.25.2025.12.02.01.54.34
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 02 Dec 2025 01:54:36 -0800 (PST)
+From: Alexey Charkov <alchark@gmail.com>
+Date: Tue, 02 Dec 2025 13:54:31 +0400
+Subject: [PATCH v2] arm64: dts: rockchip: Add overlay for the PCIe slot on
+ RK3576 EVB1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Cc: shawn.lin@rock-chips.com, joseph.kogut@gmail.com, robh@kernel.org,
- krzk+dt@kernel.org, conor+dt@kernel.org, quentin.schulz@cherry.de,
- jonas@kwiboo.se, kever.yang@rock-chips.com, i@next.chainsx.cn,
- honyuenkwun@gmail.com, inindev@gmail.com, michael.opdenacker@rootcommit.com,
- dsimic@manjaro.org, pbrobinson@gmail.com, devicetree@vger.kernel.org,
- linux-rockchip@lists.infradead.org, heiko@sntech.de
-Subject: Re: [RESEND2 PATCH v5 3/3] arm64: dts: rockchip: Add support for CM5
- IO carrier
-To: FUKAUMI Naoki <naoki@radxa.com>
-References: <20251202084052.1517-1-naoki@radxa.com>
- <20251202084052.1517-4-naoki@radxa.com>
-From: Shawn Lin <shawn.lin@rock-chips.com>
-In-Reply-To: <20251202084052.1517-4-naoki@radxa.com>
-X-HM-Tid: 0a9ade4af3de09cckunm5fb5af4dde417
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGUNLSlYdQ09ITB5OSxlJGR5WFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=Ur6jIKnGwNYQvQc2Y5N/bD3LjLR28BSbx5tAbwvkl6yjCbptAAaToMwqROvJuIWJN+g1phqNHN82fohmV0bRbjh8e7+1z3/wf9VUnbVhY0Eiw7Ce9wkY/NYmV9TpbUZ97JlrDMxjQAxlAZK5yey90r2LhssY/q1txJ3QDRqoho8=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=RgIxXPjK0U7hr4J+W/CQgt75rLi4nOWKEnxS0nvGRw4=;
-	h=date:mime-version:subject:message-id:from;
+Message-Id: <20251202-evb1-pcie1-v2-1-810693b1b72f@gmail.com>
+X-B4-Tracking: v=1; b=H4sIAFa3LmkC/03Myw6CMBCF4Vchs7amUwWBle9hWPQywiRCSWsaD
+ em7W3Hj8j/J+TaIFJgi9NUGgRJH9ksJdajATnoZSbArDUqqGlG1gpJBsVomFNrRqe302dWdhHJ
+ YA935tWO3ofTE8enDe7cTftcfoyT+MwkFCtsoY3RtEZvLdZw1P47WzzDknD9VrquJpAAAAA==
+X-Change-ID: 20251128-evb1-pcie1-ade389a4d590
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Alexey Charkov <alchark@gmail.com>
+X-Mailer: b4 0.14.3
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3470; i=alchark@gmail.com;
+ h=from:subject:message-id; bh=EiXesyPMoSc0xu7TjPVo5wefAUNtnNky3tjqoIW+AFk=;
+ b=owGbwMvMwCW2adGNfoHIK0sZT6slMWTqbY/lOdT+2f7X5obnj38bezgrMH3WFfszl68h9d+Jg
+ 3G+035N7ShlYRDjYpAVU2SZ+22J7VQjvlm7PDy+wsxhZQIZwsDFKQATkbvHyDD565v1+aeZN6gq
+ BIqeDb5mNnP5NPFfR7OK0sJdar+Ze9xkZJi31pDL3qBQ8tc3n9Ptv75NXSP3KtTp24Moni6xqPL
+ bM5gA
+X-Developer-Key: i=alchark@gmail.com; a=openpgp;
+ fpr=9DF6A43D95320E9ABA4848F5B2A2D88F1059D4A5
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251202_010055_202410_E58D8996 
-X-CRM114-Status: GOOD (  12.63  )
+X-CRM114-CacheID: sfid-20251202_015438_826496_7AD467A4 
+X-CRM114-Status: GOOD (  15.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,142 +107,105 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgRnVrYXVtaQoK5ZyoIDIwMjUvMTIvMDIg5pif5pyf5LqMIDE2OjQwLCBGVUtBVU1JIE5hb2tp
-IOWGmemBkzoKPiBGcm9tOiBKb3NlcGggS29ndXQgPGpvc2VwaC5rb2d1dEBnbWFpbC5jb20+Cj4g
-Cj4gU3BlY2lmaWNhdGlvbjoKPiAtIDF4IEhETUkKPiAtIDJ4IE1JUEkgRFNJCj4gLSAyeCBNSVBJ
-IENTSQo+IC0gMXggZURQCj4gLSAxeCBNLjIgRSBrZXkKPiAtIDF4IFVTQiAzLjAgSG9zdAo+IC0g
-MXggVVNCIDMuMCBPVEcKPiAtIDJ4IFVTQiAyLjAgSG9zdAo+IC0gSGVhZHBob25lIGphY2sgdy8g
-bWljcm9waG9uZQo+IC0gR2lnYWJpdCBFdGhlcm5ldCB3LyBQb0UKPiAtIG1pY3JvU0Qgc2xvdAo+
-IC0gNDAtcGluIGV4cGFuc2lvbiBoZWFkZXIKPiAtIDEyViBEQwo+IAo+IFNpZ25lZC1vZmYtYnk6
-IEpvc2VwaCBLb2d1dCA8am9zZXBoLmtvZ3V0QGdtYWlsLmNvbT4KPiBTaWduZWQtb2ZmLWJ5OiBG
-VUtBVU1JIE5hb2tpIDxuYW9raUByYWR4YS5jb20+Cj4gLS0tCj4gUmViYXNlZCBvbiBsaW51eC1u
-ZXh0IDIwMjUxMjAxLCBubyBjaGFuZ2UuCj4gLS0tCj4gICBhcmNoL2FybTY0L2Jvb3QvZHRzL3Jv
-Y2tjaGlwL01ha2VmaWxlICAgICAgICAgfCAgIDEgKwo+ICAgLi4uL2R0cy9yb2NrY2hpcC9yazM1
-ODhzLXJhZHhhLWNtNS1pby5kdHMgICAgIHwgNDg2ICsrKysrKysrKysrKysrKysrKwo+ICAgMiBm
-aWxlcyBjaGFuZ2VkLCA0ODcgaW5zZXJ0aW9ucygrKQo+ICAgY3JlYXRlIG1vZGUgMTAwNjQ0IGFy
-Y2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4cy1yYWR4YS1jbTUtaW8uZHRzCj4gCj4g
-ZGlmZiAtLWdpdCBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvTWFrZWZpbGUgYi9hcmNo
-L2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL01ha2VmaWxlCj4gaW5kZXggZGJkZGE5NzgzZTkzLi42
-OTllZDM4MjM1ZmUgMTAwNjQ0Cj4gLS0tIGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9N
-YWtlZmlsZQoKLi4uCgo+ICsJCXJlZ3VsYXRvci1tYXgtbWljcm92b2x0ID0gPDUwMDAwMDA+Owo+
-ICsJCXZpbi1zdXBwbHkgPSA8JnZjYzV2MF9zeXM+Owo+ICsJfTsKPiArCj4gKwl2Y2MzdjNfcGNp
-ZTogcmVndWxhdG9yLTN2My12Y2MtcGNpZSB7Cj4gKwkJY29tcGF0aWJsZSA9ICJyZWd1bGF0b3It
-Zml4ZWQiOwo+ICsJCXJlZ3VsYXRvci1uYW1lID0gInZjYzN2M19wY2llMngxbDAiOwo+ICsJCXJl
-Z3VsYXRvci1taW4tbWljcm92b2x0ID0gPDMzMDAwMDA+Owo+ICsJCXJlZ3VsYXRvci1tYXgtbWlj
-cm92b2x0ID0gPDMzMDAwMDA+Owo+ICsJCWVuYWJsZS1hY3RpdmUtaGlnaDsKPiArCQlyZWd1bGF0
-b3ItYm9vdC1vbjsKPiArCQlyZWd1bGF0b3ItYWx3YXlzLW9uOwoKRG9uJ3Qgc2V0IHBjaWUgc2xv
-dCBwb3dlciBhcyBib290LW9uL2Fsd2F5cy1vbiB1bmxlc3MKeW91IGhhdmUgc3BlY2lhbCByZWFz
-b25zLiBCZWNhdXNlIHRoZSBwb3dlci9QRVJTVCMvY2xvY2sKaXMgY29udHJvbGxlZCBieSBwY2ll
-IGhvc3QgZHJpdmVyIHRvIG1ha2Ugc3VyZSB0aGUgdGltaW5nCmZpdCBQQ0llIENFTSBzcGVjIGZv
-ciBiZXR0ZXIgY29tcGF0aWJpbGl0eS4KCj4gKwkJZ3Bpb3MgPSA8JmdwaW8xIFJLX1BEMyBHUElP
-X0FDVElWRV9ISUdIPjsKPiArCQlzdGFydHVwLWRlbGF5LXVzID0gPDUwMDAwPjsKPiArCQl2aW4t
-c3VwcGx5ID0gPCZ2Y2M1djBfc3lzPjsKPiArCX07Cj4gKwo+ICsJdmNjXzN2M19zMDogcGxkby1y
-ZWc0IHsKPiArCQljb21wYXRpYmxlID0gInJlZ3VsYXRvci1maXhlZCI7Cj4gKwkJcmVndWxhdG9y
-LW5hbWUgPSAidmNjXzN2M19zMCI7Cj4gKwkJcmVndWxhdG9yLWFsd2F5cy1vbjsKPiArCQlyZWd1
-bGF0b3ItYm9vdC1vbjsKPiArCQlyZWd1bGF0b3ItbWluLW1pY3Jvdm9sdCA9IDwzMzAwMDAwPjsK
-PiArCQlyZWd1bGF0b3ItbWF4LW1pY3Jvdm9sdCA9IDwzMzAwMDAwPjsKCi4uLgoKPiArfTsKPiAr
-Cj4gKyZzZG1tYyB7Cj4gKwlidXMtd2lkdGggPSA8ND47Cj4gKwljYXAtbW1jLWhpZ2hzcGVlZDsK
-PiArCWNhcC1zZC1oaWdoc3BlZWQ7Cj4gKwlkaXNhYmxlLXdwOwo+ICsJbWF4LWZyZXF1ZW5jeSA9
-IDwyMDAwMDAwMDA+OwoKQ291bGQgYmUgcmVtb3ZlZCBmcm9tIGJvYXJkJ3MgZHRzIHVubGVzcyB5
-b3Ugd2FudCB0byBsb3dlciBpdC4KCj4gKwluby1zZGlvOwo+ICsJbm8tbW1jOwo+ICsJc2QtdWhz
-LXNkcjEwNDsKPiArCXBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7Cj4gKwlwaW5jdHJsLTAgPSA8
-JnNkbW1jX2J1czQgJnNkbW1jX2NsayAmc2RtbWNfY21kICZzZG1tY19kZXQ+Owo+ICsJdm1tYy1z
-dXBwbHkgPSA8JnZjY18zdjNfczM+Owo+ICsJdnFtbWMtc3VwcGx5ID0gPCZ2Y2Npb19zZF9zMD47
-Cj4gKwlzdGF0dXMgPSAib2theSI7Cj4gK307Cj4gKwo+ICsmc3BpMiB7Cj4gKwlhc3NpZ25lZC1j
-bG9ja3MgPSA8JmNydSBDTEtfU1BJMj47Cj4gKwlhc3NpZ25lZC1jbG9jay1yYXRlcyA9IDwyMDAw
-MDAwMDA+Owo+ICsJbnVtLWNzID0gPDE+Owo+ICsJcGluY3RybC1uYW1lcyA9ICJkZWZhdWx0IjsK
-PiArCXBpbmN0cmwtMCA9IDwmc3BpMm0yX2NzMCAmc3BpMm0yX3BpbnM+Owo+ICsJc3RhdHVzID0g
-Im9rYXkiOwo+ICsKPiArCXBtaWNAMCB7Cj4gKwkJY29tcGF0aWJsZSA9ICJyb2NrY2hpcCxyazgw
-NiI7Cj4gKwkJcmVnID0gPDB4MD47Cj4gKwkJaW50ZXJydXB0LXBhcmVudCA9IDwmZ3BpbzA+Owo+
-ICsJCWludGVycnVwdHMgPSA8NyBJUlFfVFlQRV9MRVZFTF9MT1c+Owo+ICsJCXBpbmN0cmwtbmFt
-ZXMgPSAiZGVmYXVsdCI7Cj4gKwkJcGluY3RybC0wID0gPCZwbWljX3BpbnM+LCA8JnJrODA2X2R2
-czFfbnVsbD4sCj4gKwkJCSAgICA8JnJrODA2X2R2czJfbnVsbD4sIDwmcms4MDZfZHZzM19udWxs
-PjsKPiArCQlzcGktbWF4LWZyZXF1ZW5jeSA9IDwxMDAwMDAwPjsKPiArCQlzeXN0ZW0tcG93ZXIt
-Y29udHJvbGxlcjsKPiArCj4gKwkJdmNjMS1zdXBwbHkgPSA8JnZjYzV2MF9zeXM+Owo+ICsJCXZj
-YzItc3VwcGx5ID0gPCZ2Y2M1djBfc3lzPjsKPiArCQl2Y2MzLXN1cHBseSA9IDwmdmNjNXYwX3N5
-cz47Cj4gKwkJdmNjNC1zdXBwbHkgPSA8JnZjYzV2MF9zeXM+Owo+ICsJCXZjYzUtc3VwcGx5ID0g
-PCZ2Y2M1djBfc3lzPjsKPiArCQl2Y2M2LXN1cHBseSA9IDwmdmNjNXYwX3N5cz47Cj4gKwkJdmNj
-Ny1zdXBwbHkgPSA8JnZjYzV2MF9zeXM+Owo+ICsJCXZjYzgtc3VwcGx5ID0gPCZ2Y2M1djBfc3lz
-PjsKPiArCQl2Y2M5LXN1cHBseSA9IDwmdmNjNXYwX3N5cz47Cj4gKwkJdmNjMTAtc3VwcGx5ID0g
-PCZ2Y2M1djBfc3lzPjsKPiArCQl2Y2MxMS1zdXBwbHkgPSA8JnZjY18ydjBfcGxkb19zMz47Cj4g
-KwkJdmNjMTItc3VwcGx5ID0gPCZ2Y2M1djBfc3lzPjsKPiArCQl2Y2MxMy1zdXBwbHkgPSA8JnZk
-ZDJfZGRyX3MzPjsKPiArCQl2Y2MxNC1zdXBwbHkgPSA8JnZkZDJfZGRyX3MzPjsKPiArCQl2Y2Nh
-LXN1cHBseSA9IDwmdmNjNXYwX3N5cz47Cj4gKwo+ICsJCWdwaW8tY29udHJvbGxlcjsKPiArCQkj
-Z3Bpby1jZWxscyA9IDwyPjsKPiArCj4gKwkJcms4MDZfZHZzMV9udWxsOiBkdnMxLW51bGwtcGlu
-cyB7Cj4gKwkJCXBpbnMgPSAiZ3Bpb19wd3JjdHJsMSI7Cj4gKwkJCWZ1bmN0aW9uID0gInBpbl9m
-dW4wIjsKPiArCQl9Owo+ICsKPiArCQlyazgwNl9kdnMyX251bGw6IGR2czItbnVsbC1waW5zIHsK
-PiArCQkJcGlucyA9ICJncGlvX3B3cmN0cmwyIjsKPiArCQkJZnVuY3Rpb24gPSAicGluX2Z1bjAi
-Owo+ICsJCX07Cj4gKwo+ICsJCXJrODA2X2R2czNfbnVsbDogZHZzMy1udWxsLXBpbnMgewo+ICsJ
-CQlwaW5zID0gImdwaW9fcHdyY3RybDMiOwo+ICsJCQlmdW5jdGlvbiA9ICJwaW5fZnVuMCI7Cj4g
-KwkJfTsKPiArCj4gKwkJcmVndWxhdG9ycyB7Cj4gKwkJCXZkZF9ncHVfczA6IGRjZGMtcmVnMSB7
-Cj4gKwkJCQlyZWd1bGF0b3ItbmFtZSA9ICJ2ZGRfZ3B1X3MwIjsKPiArCQkJCXJlZ3VsYXRvci1i
-b290LW9uOwo+ICsJCQkJcmVndWxhdG9yLWVuYWJsZS1yYW1wLWRlbGF5ID0gPDQwMD47Cj4gKwkJ
-CQlyZWd1bGF0b3ItbWluLW1pY3Jvdm9sdCA9IDw1NTAwMDA+Owo+ICsJCQkJcmVndWxhdG9yLW1h
-eC1taWNyb3ZvbHQgPSA8OTUwMDAwPjsKPiArCQkJCXJlZ3VsYXRvci1yYW1wLWRlbGF5ID0gPDEy
-NTAwPjsKPiArCj4gKwkJCQlyZWd1bGF0b3Itc3RhdGUtbWVtIHsKPiArCQkJCQlyZWd1bGF0b3It
-b2ZmLWluLXN1c3BlbmQ7Cj4gKwkJCQl9Owo+ICsJCQl9Owo+ICsKPiArCQkJdmRkX2NwdV9saXRf
-czA6IGRjZGMtcmVnMiB7Cj4gKwkJCQlyZWd1bGF0b3ItbmFtZSA9ICJ2ZGRfY3B1X2xpdF9zMCI7
-Cj4gKwkJCQlyZWd1bGF0b3ItYWx3YXlzLW9uOwo+ICsJCQkJcmVndWxhdG9yLWJvb3Qtb247Cj4g
-KwkJCQlyZWd1bGF0b3ItbWluLW1pY3Jvdm9sdCA9IDw1NTAwMDA+Owo+ICsJCQkJcmVndWxhdG9y
-LW1heC1taWNyb3ZvbHQgPSA8OTUwMDAwPjsKPiArCQkJCXJlZ3VsYXRvci1yYW1wLWRlbGF5ID0g
-PDEyNTAwPjsKPiArCj4gKwkJCQlyZWd1bGF0b3Itc3RhdGUtbWVtIHsKPiArCQkJCQlyZWd1bGF0
-b3Itb2ZmLWluLXN1c3BlbmQ7Cj4gKwkJCQl9Owo+ICsJCQl9Owo+ICsKPiArCQkJdmNjaW9fc2Rf
-czA6IHBsZG8tcmVnNSB7Cj4gKwkJCQlyZWd1bGF0b3ItYWx3YXlzLW9uOwo+ICsJCQkJcmVndWxh
-dG9yLWJvb3Qtb247Cj4gKwkJCQlyZWd1bGF0b3ItbWluLW1pY3Jvdm9sdCA9IDwxODAwMDAwPjsK
-PiArCQkJCXJlZ3VsYXRvci1tYXgtbWljcm92b2x0ID0gPDMzMDAwMDA+Owo+ICsJCQkJcmVndWxh
-dG9yLW5hbWUgPSAidmNjaW9fc2RfczAiOwo+ICsKPiArCQkJCXJlZ3VsYXRvci1zdGF0ZS1tZW0g
-ewo+ICsJCQkJCXJlZ3VsYXRvci1vZmYtaW4tc3VzcGVuZDsKPiArCQkJCX07Cj4gKwkJCX07Cj4g
-Kwo+ICsJCQl2ZGQyX2Rkcl9zMzogZGNkYy1yZWc2IHsKPiArCQkJCXJlZ3VsYXRvci1uYW1lID0g
-InZkZDJfZGRyX3MzIjsKPiArCQkJCXJlZ3VsYXRvci1hbHdheXMtb247Cj4gKwkJCQlyZWd1bGF0
-b3ItYm9vdC1vbjsKPiArCj4gKwkJCQlyZWd1bGF0b3Itc3RhdGUtbWVtIHsKPiArCQkJCQlyZWd1
-bGF0b3Itb24taW4tc3VzcGVuZDsKPiArCQkJCX07Cj4gKwkJCX07Cj4gKwo+ICsJCQl2Y2NfMnYw
-X3BsZG9fczM6IGRjZGMtcmVnNyB7Cj4gKwkJCQlyZWd1bGF0b3ItbmFtZSA9ICJ2ZGRfMnYwX3Bs
-ZG9fczMiOwo+ICsJCQkJcmVndWxhdG9yLWFsd2F5cy1vbjsKPiArCQkJCXJlZ3VsYXRvci1ib290
-LW9uOwo+ICsJCQkJcmVndWxhdG9yLW1pbi1taWNyb3ZvbHQgPSA8MjAwMDAwMD47Cj4gKwkJCQly
-ZWd1bGF0b3ItbWF4LW1pY3Jvdm9sdCA9IDwyMDAwMDAwPjsKPiArCQkJCXJlZ3VsYXRvci1yYW1w
-LWRlbGF5ID0gPDEyNTAwPjsKPiArCj4gKwkJCQlyZWd1bGF0b3Itc3RhdGUtbWVtIHsKPiArCQkJ
-CQlyZWd1bGF0b3Itb24taW4tc3VzcGVuZDsKPiArCQkJCQlyZWd1bGF0b3Itc3VzcGVuZC1taWNy
-b3ZvbHQgPSA8MjAwMDAwMD47Cj4gKwkJCQl9Owo+ICsJCQl9Owo+ICsKPiArCQkJdmNjXzN2M19z
-MzogZGNkYy1yZWc4IHsKPiArCQkJCXJlZ3VsYXRvci1uYW1lID0gInZjY18zdjNfczMiOwo+ICsJ
-CQkJcmVndWxhdG9yLWFsd2F5cy1vbjsKPiArCQkJCXJlZ3VsYXRvci1ib290LW9uOwo+ICsJCQkJ
-cmVndWxhdG9yLW1pbi1taWNyb3ZvbHQgPSA8MzMwMDAwMD47Cj4gKwkJCQlyZWd1bGF0b3ItbWF4
-LW1pY3Jvdm9sdCA9IDwzMzAwMDAwPjsKPiArCj4gKwkJCQlyZWd1bGF0b3Itc3RhdGUtbWVtIHsK
-PiArCQkJCQlyZWd1bGF0b3Itb24taW4tc3VzcGVuZDsKPiArCQkJCQlyZWd1bGF0b3Itc3VzcGVu
-ZC1taWNyb3ZvbHQgPSA8MzMwMDAwMD47Cj4gKwkJCQl9Owo+ICsJCQl9Owo+ICsJCX07Cj4gKwl9
-Owo+ICt9Owo+ICsKPiArJnUycGh5MCB7Cj4gKwlzdGF0dXMgPSAib2theSI7Cj4gK307Cj4gKwo+
-ICsmdTJwaHkwX290ZyB7Cj4gKwlzdGF0dXMgPSAib2theSI7Cj4gK307Cj4gKwo+ICsmdTJwaHky
-IHsKPiArCXN0YXR1cyA9ICJva2F5IjsKPiArfTsKPiArCj4gKyZ1MnBoeTJfaG9zdCB7Cj4gKwlz
-dGF0dXMgPSAib2theSI7Cj4gK307Cj4gKwo+ICsmdTJwaHkzIHsKPiArCXN0YXR1cyA9ICJva2F5
-IjsKPiArfTsKPiArCj4gKyZ1MnBoeTNfaG9zdCB7Cj4gKwlzdGF0dXMgPSAib2theSI7Cj4gK307
-Cj4gKwo+ICsmdWFydDIgewo+ICsJcGluY3RybC1uYW1lcyA9ICJkZWZhdWx0IjsKPiArCXBpbmN0
-cmwtMCA9IDwmdWFydDJtMF94ZmVyPjsKPiArCXN0YXR1cyA9ICJva2F5IjsKPiArfTsKPiArCj4g
-KyZ1c2JfaG9zdDBfZWhjaSB7Cj4gKwlzdGF0dXMgPSAib2theSI7Cj4gK307Cj4gKwo+ICsmdXNi
-X2hvc3QwX29oY2kgewo+ICsJc3RhdHVzID0gIm9rYXkiOwo+ICt9Owo+ICsKPiArJnVzYl9ob3N0
-MF94aGNpIHsKPiArCWRyX21vZGUgPSAib3RnIjsKPiArCXVzYi1yb2xlLXN3aXRjaDsKPiArCXN0
-YXR1cyA9ICJva2F5IjsKPiArCj4gKwlwb3J0IHsKPiArCQl1c2JfaG9zdDBfeGhjaV9yb2xlX3N3
-aXRjaDogZW5kcG9pbnQgewo+ICsJCQlyZW1vdGUtZW5kcG9pbnQgPSA8JnVzYmMwX3JvbGVfc3dp
-dGNoPjsKPiArCQl9Owo+ICsJfTsKPiArfTsKPiArCj4gKyZ1c2JfaG9zdDFfZWhjaSB7Cj4gKwlz
-dGF0dXMgPSAib2theSI7Cj4gK307Cj4gKwo+ICsmdXNiX2hvc3QxX29oY2kgewo+ICsJc3RhdHVz
-ID0gIm9rYXkiOwo+ICt9Owo+ICsKPiArJnVzYl9ob3N0Ml94aGNpIHsKPiArCXN0YXR1cyA9ICJv
-a2F5IjsKPiArfTsKPiArCj4gKyZ1c2JkcF9waHkwIHsKPiArCW1vZGUtc3dpdGNoOwo+ICsJb3Jp
-ZW50YXRpb24tc3dpdGNoOwo+ICsJc2J1MS1kYy1ncGlvcyA9IDwmZ3BpbzMgUktfUEM0IEdQSU9f
-QUNUSVZFX0hJR0g+Owo+ICsJc2J1Mi1kYy1ncGlvcyA9IDwmZ3BpbzMgUktfUEQ0IEdQSU9fQUNU
-SVZFX0hJR0g+Owo+ICsJc3RhdHVzID0gIm9rYXkiOwo+ICsKPiArCXBvcnQgewo+ICsJCSNhZGRy
-ZXNzLWNlbGxzID0gPDE+Owo+ICsJCSNzaXplLWNlbGxzID0gPDA+Owo+ICsKPiArCQl1c2JkcF9w
-aHkwX29yaWVudGF0aW9uX3N3aXRjaDogZW5kcG9pbnRAMCB7Cj4gKwkJCXJlZyA9IDwwPjsKPiAr
-CQkJcmVtb3RlLWVuZHBvaW50ID0gPCZ1c2JjMF9vcmllbnRhdGlvbl9zd2l0Y2g+Owo+ICsJCX07
-Cj4gKwo+ICsJCXVzYmRwX3BoeTBfZHBfYWx0bW9kZV9tdXg6IGVuZHBvaW50QDEgewo+ICsJCQly
-ZWcgPSA8MT47Cj4gKwkJCXJlbW90ZS1lbmRwb2ludCA9IDwmdXNiYzBfZHBfYWx0bW9kZV9tdXg+
-Owo+ICsJCX07Cj4gKwl9Owo+ICt9Owo+ICsKPiArJnZvcCB7Cj4gKwlzdGF0dXMgPSAib2theSI7
-Cj4gK307Cj4gKwo+ICsmdm9wX21tdSB7Cj4gKwlzdGF0dXMgPSAib2theSI7Cj4gK307Cj4gKwo+
-ICsmdnAwIHsKPiArCXZwMF9vdXRfaGRtaTA6IGVuZHBvaW50QFJPQ0tDSElQX1ZPUDJfRVBfSERN
-STAgewo+ICsJCXJlZyA9IDxST0NLQ0hJUF9WT1AyX0VQX0hETUkwPjsKPiArCQlyZW1vdGUtZW5k
-cG9pbnQgPSA8JmhkbWkwX2luX3ZwMD47Cj4gKwl9Owo+ICt9OwoKCl9fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlz
-dApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRl
-YWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Rockchip RK3576 EVB1 has an onboard PCIe slot (PCIe 2.1, x4 mechanically,
+x1 electrically), but it shares pins and PHY with the only USB3 Type-A
+port.
+
+There is a physical switch next to the slot to transfer respective pins
+connection from the USB3 port to the PCIe slot, but apart from flipping
+the switch one must also disable the USB3 host controller to prevent it
+from claiming the PHY before the PCIe slot can become usable.
+
+Add an overlay to disable the USB3 host port and instead enable the
+PCIe slot, along with its pin configs. The physical switch must still be
+flipped to the "ON - PCIe1" position for this to work.
+
+Signed-off-by: Alexey Charkov <alchark@gmail.com>
+---
+Changes in v2:
+- Added the standalone .dtbo Makefile target forgotten in v1
+- Link to v1: https://lore.kernel.org/r/20251201-evb1-pcie1-v1-1-c62bba5c1167@gmail.com
+---
+ arch/arm64/boot/dts/rockchip/Makefile              |  5 ++++
+ .../boot/dts/rockchip/rk3576-evb1-v10-pcie1.dtso   | 31 ++++++++++++++++++++++
+ 2 files changed, 36 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+index ad684e3831bc..ecd2dd365e97 100644
+--- a/arch/arm64/boot/dts/rockchip/Makefile
++++ b/arch/arm64/boot/dts/rockchip/Makefile
+@@ -153,6 +153,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-wolfvision-pf5-io-expander.dtbo
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-armsom-sige5.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-armsom-sige5-v1.2-wifibt.dtbo
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-evb1-v10.dtb
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-evb1-v10-pcie1.dtbo
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-luckfox-omni3576.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-nanopi-m5.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-roc-pc.dtb
+@@ -252,6 +253,10 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-armsom-sige5-v1.2-wifibt.dtb
+ rk3576-armsom-sige5-v1.2-wifibt-dtbs := rk3576-armsom-sige5.dtb \
+ 	rk3576-armsom-sige5-v1.2-wifibt.dtbo
+ 
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-evb1-v10-pcie1.dtb
++rk3576-evb1-v10-pcie1-dtbs := rk3576-evb1-v10.dtb \
++	rk3576-evb1-v10-pcie1.dtbo
++
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-edgeble-neu6a-wifi.dtb
+ rk3588-edgeble-neu6a-wifi-dtbs := rk3588-edgeble-neu6a-io.dtb \
+ 	rk3588-edgeble-neu6a-wifi.dtbo
+diff --git a/arch/arm64/boot/dts/rockchip/rk3576-evb1-v10-pcie1.dtso b/arch/arm64/boot/dts/rockchip/rk3576-evb1-v10-pcie1.dtso
+new file mode 100644
+index 000000000000..dccf4a5debdb
+--- /dev/null
++++ b/arch/arm64/boot/dts/rockchip/rk3576-evb1-v10-pcie1.dtso
+@@ -0,0 +1,31 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++/*
++ * DT-overlay to enable the onboard PCIe x1 slot, which shares pins and the PHY
++ * with the USB3 host port.
++ * To use the PCIe slot, apply this overlay and flip the Dial_Switch_1 right
++ * next to the PCIe slot to low state (labeled "ON - PCIe1"). USB3 host port
++ * will be unusable (not even in 2.0 mode)
++ */
++
++/dts-v1/;
++/plugin/;
++
++#include <dt-bindings/pinctrl/rockchip.h>
++
++&pcie1 {
++	pinctrl-0 = <&pcie1m0_pins &pcie1_rst>;
++	pinctrl-names = "default";
++	status = "okay";
++};
++
++&pinctrl {
++	pcie1 {
++		pcie1_rst: pcie1-rst {
++			rockchip,pins = <4 RK_PC4 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++};
++
++&usb_drd1_dwc3 {
++	status = "disabled";
++};
+
+---
+base-commit: 7d0a66e4bb9081d75c82ec4957c50034cb0ea449
+change-id: 20251128-evb1-pcie1-ade389a4d590
+
+Best regards,
+-- 
+Alexey Charkov <alchark@gmail.com>
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
