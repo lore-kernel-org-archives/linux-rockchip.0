@@ -4,32 +4,32 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12BB7CFD376
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFC94D116FE
 	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Dec 2025 08:50:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=F2BwotaTaxsHCM9EVwtAxxagC7XHMcPb6XN/D+9DYCY=; b=SmQl+KhU6v1a0j
-	cNwXoVH0DvgjcD5tqj/iKXuU8dKwjXcL3xrHNmtuVTyJZnIrlrDuGowkp4LmD+FZvVWCqFEUoO0rI
-	zgbifjVJsKuwuI8S2LOWslUVO7oZ/KNNbF/u85hUL5RcMXq+mMEbmmn9PIW/XHKlQoBIlDabwxcBw
-	AKVpd/bgg43kjpyvNWSGqGVH4cWrNNR9mr19PSJfJ3HXTGjoj11wmLqQGr0nrxbscO8HsOuuXa6Mo
-	ZPUOPGNfuYVkMzGS7lqEtH9O9Sr1XVvxS4l3O09VtPawjdNvHQ24DANjWQhxgTFKebE7kC8G0t9Tv
-	EM0uOOrxUQuTMBFgBbGw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=daP8P3jMFchiDs6WL1P2CbwYwGP9C2u5RbApvkUvx70=; b=B1F+j/4YseaSlV
+	zcGYaCdMsPM7ZdVEWXfLXlC1t6rsW1F3NGspr+fEtXIsQQFzvRJ6pDj1yI0uk0V87DUcf/GleT2UT
+	25VegRKeWLYMYWzCxq5nsrvEg9it/lra3QweCVNGj+L+W0D4fRDVEtp6fdVGccSsahAwkZtiSMT9E
+	DcT51KaWjbLmOG6psZ7/e9OLx8oh7gBMXaTsSesvuCPcxrGGQ9V54tx6x+7/mtzON6JKhlQtvK+jY
+	Zs5vYdwu4VKJEdgq2Xf0sXqnbr2SSp7gILaxmF48wglSchSzW/KSR75y02etVmF1DxfhH5jQFdAyf
+	PKXNFTC7BeYNrDrv1HXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vQM5J-000000054R7-2EYU;
-	Tue, 02 Dec 2025 08:50:09 +0000
+	id 1vQM5I-000000054Qz-124z;
+	Tue, 02 Dec 2025 08:50:08 +0000
 Received: from sakura.naobsd.org ([160.16.200.221] helo=mail.naobsd.org)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vQM5G-000000054Q2-2dAW
+	id 1vQM5F-000000054Q1-3KkJ
 	for linux-rockchip@lists.infradead.org;
-	Tue, 02 Dec 2025 08:50:08 +0000
+	Tue, 02 Dec 2025 08:50:07 +0000
 Received: from secure.fukaumi.org ([10.0.0.2])
-	by mail.naobsd.org (8.14.4/8.14.4/Debian-4.1ubuntu1.1) with ESMTP id 5B28noM5008635;
-	Tue, 2 Dec 2025 17:49:52 +0900
+	by mail.naobsd.org (8.14.4/8.14.4/Debian-4.1ubuntu1.1) with ESMTP id 5B28noM3008635;
+	Tue, 2 Dec 2025 17:49:50 +0900
 From: FUKAUMI Naoki <naoki@radxa.com>
 To: heiko@sntech.de
 Cc: brgl@kernel.org, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
@@ -38,16 +38,15 @@ Cc: brgl@kernel.org, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
         stephen@radxa.com, sebastian.reichel@collabora.com,
         linux-i2c@vger.kernel.org, devicetree@vger.kernel.org,
         linux-rockchip@lists.infradead.org, FUKAUMI Naoki <naoki@radxa.com>
-Subject: [RESEND PATCH 2/3] arm64: dts: rockchip: Add EEPROMs for Radxa ROCK 4 boards
-Date: Tue,  2 Dec 2025 08:49:40 +0000
-Message-ID: <20251202084941.1785-3-naoki@radxa.com>
+Subject: [RESEND PATCH 0/3] Add Belling EEPROMs found in Radxa boards
+Date: Tue,  2 Dec 2025 08:49:38 +0000
+Message-ID: <20251202084941.1785-1-naoki@radxa.com>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20251202084941.1785-1-naoki@radxa.com>
-References: <20251202084941.1785-1-naoki@radxa.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251202_005006_875943_678F0438 
-X-CRM114-Status: GOOD (  10.35  )
+X-CRM114-CacheID: sfid-20251202_005006_048514_572CF50D 
+X-CRM114-Status: UNSURE (   5.71  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,108 +63,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The BL24C04A EEPROM is found in the schematics for Radxa ROCK Pi 4A+
-and 4B+. [1] [2]
+This patch series adds Belling BL24C04A, BL24C16A, and BL24C16F EEPROM
+found in Radxa boards.
 
-The BL24C16A EEPROM is found in the schematics for Radxa ROCK 4C+, 4SE,
-Radxa ROCK Pi 4A, 4B, and 4C. [3] [4] [5] [6] [7]
+FUKAUMI Naoki (3):
+  dt-bindings: eeprom: at24: Add compatible for Belling
+    BL24C04A/BL24C16F
+  arm64: dts: rockchip: Add EEPROMs for Radxa ROCK 4 boards
+  arm64: dts: rockchip: Add EEPROMs for Radxa boards
 
-However, newer boards/batches should have the BL24C16A, but older ones
-may have the BL24C04A. (the ROCK Pi 4B+ I own has a 16Kb EEPROM)
+ Documentation/devicetree/bindings/eeprom/at24.yaml |  2 ++
+ .../boot/dts/rockchip/rk3399-rock-4c-plus.dts      |  8 ++++++++
+ arch/arm64/boot/dts/rockchip/rk3399-rock-4se.dts   | 12 ++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi |  8 ++++++++
+ .../arm64/boot/dts/rockchip/rk3568-radxa-cm3i.dtsi | 10 +++++++++-
+ arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts    |  8 ++++++++
+ arch/arm64/boot/dts/rockchip/rk3568-rock-3b.dts    |  8 ++++++++
+ arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts    | 14 ++++++++++++++
+ .../boot/dts/rockchip/rk3588-rock-5b-plus.dts      | 10 ++++++++++
+ arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts    | 10 ++++++++++
+ 10 files changed, 89 insertions(+), 1 deletion(-)
 
-For the ROCK Pi 4s (except the relatively new ROCK 4SE), add the
-BL24C04A eeprom node for backward compatibility.
-For the ROCK 4SE, add the BL24C16A eeprom node.
-
-These are designed to have data written during factory programming
-(regardless of whether data is actually written or not), and we at
-Radxa permit users to read the data but not write to it. [8]
-Therefore, we will add a read-only property to the eeprom node.
-
-[1] https://dl.radxa.com/rockpi4/docs/hw/rockpi4/4ap/radxa_rock_4ap_v1730_schematic.pdf p.17
-[2] https://dl.radxa.com/rockpi4/docs/hw/rockpi4/4bp/radxa_rock_4bp_v1730_schematic.pdf p.17
-[3] https://dl.radxa.com/rockpi4/docs/hw/rockpi4/ROCK-4C+-V1.411-SCH.pdf p.22
-[4] https://dl.radxa.com/rockpi4/docs/hw/rockpi4/ROCK-4-SE-V1.53-SCH.pdf p.17
-[5] https://dl.radxa.com/rockpi4/docs/hw/rockpi4/4a/ROCK_4A_V1.52_SCH.pdf p.17
-[6] https://dl.radxa.com/rockpi4/docs/hw/rockpi4/4b/ROCK_4B_v1.52_SCH.pdf p.17
-[7] https://dl.radxa.com/rockpi4/docs/hw/rockpi4/rockpi4c_v12_sch_20200620.pdf p.17
-[8] https://github.com/radxa/u-boot/blob/next-dev-v2024.10/drivers/misc/radxa-i2c-eeprom.c
-
-Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
----
- arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dts |  8 ++++++++
- arch/arm64/boot/dts/rockchip/rk3399-rock-4se.dts     | 12 ++++++++++++
- arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi   |  8 ++++++++
- 3 files changed, 28 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dts b/arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dts
-index 74160cf89188..f95fd92d58ba 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dts
-@@ -453,6 +453,14 @@ regulator-state-mem {
- 			regulator-off-in-suspend;
- 		};
- 	};
-+
-+	eeprom@50 {
-+		compatible = "belling,bl24c04a", "atmel,24c04";
-+		reg = <0x50>;
-+		pagesize = <16>;
-+		read-only;
-+		vcc-supply = <&vcc_3v0_s0>;
-+	};
- };
- 
- &i2c3 {
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-4se.dts b/arch/arm64/boot/dts/rockchip/rk3399-rock-4se.dts
-index a8b8d4acc337..c0b931b3c640 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-rock-4se.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-4se.dts
-@@ -8,6 +8,8 @@
- #include "rk3399-t.dtsi"
- #include "rk3399-rock-pi-4.dtsi"
- 
-+/delete-node/ &eeprom;
-+
- / {
- 	model = "Radxa ROCK 4SE";
- 	compatible = "radxa,rock-4se", "rockchip,rk3399";
-@@ -17,6 +19,16 @@ aliases {
- 	};
- };
- 
-+&i2c0 {
-+	eeprom@50 {
-+		compatible = "belling,bl24c16a", "atmel,24c16";
-+		reg = <0x50>;
-+		pagesize = <16>;
-+		read-only;
-+		vcc-supply = <&vcc_3v0>;
-+	};
-+};
-+
- &sdio0 {
- 	status = "okay";
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
-index 046dbe329017..a8ab043e4062 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
-@@ -456,6 +456,14 @@ regulator-state-mem {
- 			regulator-off-in-suspend;
- 		};
- 	};
-+
-+	eeprom: eeprom@50 {
-+		compatible = "belling,bl24c04a", "atmel,24c04";
-+		reg = <0x50>;
-+		pagesize = <16>;
-+		read-only;
-+		vcc-supply = <&vcc_3v0>;
-+	};
- };
- 
- &i2c1 {
 -- 
 2.43.0
 
