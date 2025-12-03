@@ -4,83 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36375D12D4C
-	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Dec 2025 11:52:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 044A4D12D4E
+	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Dec 2025 12:00:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=9TXa9rDJP3o5PTVPugpxdc/xuS+ovUw8ARgwtkp+GGU=; b=sLW3uVoKRcFWTi
-	Ro4BFg1me9DIvvy1a+v4rzD2nSwhtfA2hX6rdGvAjZpETcNv1EvwO6NyVIvQUpsz0DqpdTdWwhsz2
-	ocTmI3EFo+VOwY95cPQqXqC/f/hP07BgAGIFDQYDDUxW17u0sDTeEQ5naEnWQEkxfDZC495emYL40
-	M1YSF4035aqzQAKDpS2MS8DOee74H0PXduBniIkr7XJy8OsSPfEhTWmxSvvT1JZV4h4HxWVHEBSzv
-	MoNRZkXCtJDXvvAlSr0vWp+sVfNp4MCIJwpt4vKdbWPMqUvJQZPzkmgJfAUy1cF9MdazYSHr3fqn7
-	OaHspzWyW4RNdSR+Rkyw==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=H1gE+TuycRhaJe8EBweUHruzAPhICHL4EiXi2b44ZDg=; b=eGUr3u0FxE2pV1
+	Tw9DSEMHJCiAEw9AkbrbXxa+PAUPph48yBNDe3N92StQRDThw3E5DXMIiHozvW6/r9/2Sqf+dFO+E
+	ByfGa+EdGdJVmPaku061zLYdsVfxaC0JY3UtqoadRWMLZDRWjNTFyXCXLDkIut1G9Gi34t2zohGM6
+	kD3TRo+4EHp9mCd0vLq2hsDczm7c1v+WCwm17y7XHOCkB8P4mmoOL/2EDP7/E/8wqfZC/a5RBqkyJ
+	hA8raKz+qzjyxkjRcq1mh8+Bv+40v6Q9bmaoOUkmj8BiW/+6G7kxHAUvHObhL/05oLjWHg7a904vy
+	kSBC2uVN9QCJoFTVhTSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vQlOW-00000006Wk9-2xr0;
-	Wed, 03 Dec 2025 11:51:40 +0000
-Received: from smtpbgsg2.qq.com ([54.254.200.128])
+	id 1vQlWi-00000006X7t-3tWK;
+	Wed, 03 Dec 2025 12:00:08 +0000
+Received: from mail-m1973190.qiye.163.com ([220.197.31.90])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vQlOU-00000006Wiv-0N6o
+	id 1vQlWg-00000006X74-0KJV
 	for linux-rockchip@lists.infradead.org;
-	Wed, 03 Dec 2025 11:51:39 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
-	s=altu2504; t=1764762636;
-	bh=p/JhfQ/5mVmqehnjvRE1UyHQbPCzKtTccLmDH7YWYKE=;
-	h=From:To:Subject:Date:Message-Id;
-	b=WdrQQunRC6miA7a8WBfxuuiqDbwiaYGKwU8kAbvzi9et+VvuTC93krsEi3QVJVkFi
-	 ozbSXg6n6D847fbeUURk6pAR4dwfMZoDNsxy3T3I7DPBNvXWz9mBekDaQXIJtU6+5l
-	 S+bViNuJxdogGUeB6jtbI6Bz537aEQ93RuF9zH8A=
-X-QQ-mid: zesmtpsz9t1764762634t4ecda2a1
-X-QQ-Originating-IP: hmKrqfeMcwbdBdJxRwrYyzP1oSeWYkJShvR6sCH86u4=
-Received: from DESKTOP-8BT1A2O.localdomain ( [58.22.7.114])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Wed, 03 Dec 2025 19:50:32 +0800 (CST)
-X-QQ-SSF: 0000000000000000000000000000000
-X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 653531030055881594
-From: Chaoyi Chen <kernel@airkyi.com>
-To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
-	Sandy Huang <hjc@rock-chips.com>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Chaoyi Chen <chaoyi.chen@rock-chips.com>
-Subject: [PATCH] drm/mipi-dsi: Only remove child devices that match the dsi device type
-Date: Wed,  3 Dec 2025 19:50:28 +0800
-Message-Id: <20251203115028.133-1-kernel@airkyi.com>
-X-Mailer: git-send-email 2.17.1
-X-QQ-SENDSIZE: 520
-Feedback-ID: zesmtpsz:airkyi.com:qybglogicsvrgz:qybglogicsvrgz6b-0
-X-QQ-XMAILINFO: MD5XEDocxEOL+DzPtHJQllrrrm3kZdcABL+nj5QkMWc1JpWqK1+lSszu
-	gQUg9Y0tALGkQG9SiD/QGEnEFvG6dg3mQNWdsiBqiqFL2mEa2bW/ibZT2j68gauNBX1n6j3
-	Vsd+s/hwymidiv56pz2X0Zl8PNzgI2eRrSc6WJiYzMauVRysW+xRe3HFcl5MJ24PdaINyUa
-	XLa3+qRObBRCbZdt2MjA2HOhHeaumsaGmbqWqs6CWsAmnlFAvrnX0zgZdtvrO4PIY5jU9Jc
-	C7gdGwUwaGmjyw7YBm2DSLvb5DLqeqw75AAqv4t80IbimZBNvb9xcFfS/acJgdt9+hiCpHU
-	+i2EzsngN3iZLohNyncL1TShel6dLW72wKdATy9ZkU6xI6m0mvaKd1gabmyV+7sbhlx5xC0
-	TfKdf9pMp51JfioVRUHAD/6718n+k/E8ftapqgNSJALZwleYgoIL4DcukQkDRtOvEi39PMx
-	KOHUmX/Di+ILrL9VYyeXx94EosMxnEGKo3GWmHLu7g7Z7G4nj4NfvJkzemtOt9xeNlp9hR9
-	wdjnVaxqWWs9XOdQmonHEYbu39qd2nSvJkWqhYMQSArnQy7g6ipDQFUpubMGQGidi9jNgbl
-	XE2oR65rONeGL7oMnDCpX3iOT5VjUfJ6qZc3lanSROS5XDDcGrQaaKI/WgozoJH72zuGpTx
-	88QBPxbjKfzkDp30vTulaXBdlsbjtVzObCNfYME+lkYGMBAhvTySqQKNlLelRsWEUph3tpd
-	gplnB8XMqT3YslLHfutWMAvguW3vun10Clt3U1WUv5iPqCoNge9zTNsneQ7tAhHCry8hhb/
-	yo4q44v9W8ZtsFw8DY/PVcBUbgKCmS/uawCDmQsLSz42OS61ikD1AGvguPEpAAZnsTVqGQ1
-	HkKo1C9T9hBNtPZHX9zuoDftBajXWxT0oMmdcz1IBMOSi+YlNQT0vUgAqxeUHYK5LK2164b
-	e33XQTXpNRlwi1q/P7Tm0lPD8kaMfhbOr3YSGKfrs6rn/eg==
-X-QQ-XMRINFO: M/715EihBoGSf6IYSX1iLFg=
-X-QQ-RECHKSPAM: 0
+	Wed, 03 Dec 2025 12:00:08 +0000
+Received: from [127.0.0.1] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 2bd94477e;
+	Wed, 3 Dec 2025 19:59:56 +0800 (GMT+08:00)
+Message-ID: <31c64e8f-3129-4766-b735-84a26198e6d0@rock-chips.com>
+Date: Wed, 3 Dec 2025 19:59:53 +0800
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6 4/4] RFT: drm/rockchip: Create custom commit tail
+To: Linus Walleij <linus.walleij@linaro.org>
+Cc: Linus Walleij <linusw@kernel.org>, Vicente Bergas <vicencb@gmail.com>,
+ Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
+ Marek Vasut <marek.vasut+renesas@mailbox.org>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
+ Tomi Valkeinen <tomi.valkeinen+renesas@ideasonboard.com>,
+ Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Magnus Damm <magnus.damm@gmail.com>, Aradhya Bhatia <a-bhatia1@ti.com>,
+ Dmitry Baryshkov <lumag@kernel.org>, Sandy Huang <hjc@rock-chips.com>,
+ =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
+ Andy Yan <andy.yan@rock-chips.com>, dri-devel@lists.freedesktop.org,
+ linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ Aradhya Bhatia <aradhya.bhatia@linux.dev>
+References: <20251202-mcde-drm-regression-thirdfix-v6-0-f1bffd4ec0fa@kernel.org>
+ <20251202-mcde-drm-regression-thirdfix-v6-4-f1bffd4ec0fa@kernel.org>
+ <5d6e8e0e-3129-49f1-8c5f-c2f837a36139@rock-chips.com>
+ <CACRpkdZwgsbVezfQBRP6pX-o8TLvtFMt+M+rL7GrTmeuzN8xvQ@mail.gmail.com>
+Content-Language: en-US
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+In-Reply-To: <CACRpkdZwgsbVezfQBRP6pX-o8TLvtFMt+M+rL7GrTmeuzN8xvQ@mail.gmail.com>
+X-HM-Tid: 0a9ae4155c6103abkunmdafda06941e8a2
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQk0eSFZPH0lKSE0ZShgdSkxWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=YAU3GdhcWgxEahXohg2T2PUXRrn7FEt4Pfj+0ryOWfo7paJh/sIHpwHv6eZGbRXhxOxqdKJ2csyeFBoVy4+DZvLN5e3fDu7EvsYzNoPJtnG8EXFOKZJpuxA1KGru6m6E+nXvtJFz0oqk2zPGjL9J8SiX0NwsHgxamdtZgnPSwQk=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=2d07mvFdS01wxsxr01fOMc8tzwEqyFdVB0HHl3Od8g0=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251203_035138_542484_9B203A9F 
-X-CRM114-Status: GOOD (  11.95  )
+X-CRM114-CacheID: sfid-20251203_040006_609925_97635C89 
+X-CRM114-Status: GOOD (  11.52  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,57 +83,27 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-
-This patch checks whether the device is a valid mipi_dsi_device before
-accessing it in mipi_dsi_remove_device_fn().
-
-The mipi_dsi_host_unregister() assumes that all child devices of the
-host device are mipi_dsi_devices and uses mipi_dsi_remove_device_fn()
-to perform subsequent operations specific to mipi_dsi_device.
-
-In rockchip platform, for dw-mipi-dsi-rockchip.c, it creates a dphy
-device, and it use the dsi host device as its parent device.
-
-And when we call dw_mipi_dsi_remove() in
-dw_mipi_dsi_rockchip_remove(), mipi_dsi_host_unregister() will get
-such a dphy child device and treat it as an mipi_dsi_device, which
-will lead to a further panic.
-
-Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
----
- drivers/gpu/drm/drm_mipi_dsi.c | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/gpu/drm/drm_mipi_dsi.c b/drivers/gpu/drm/drm_mipi_dsi.c
-index a712e177b350..5b9cc799eb87 100644
---- a/drivers/gpu/drm/drm_mipi_dsi.c
-+++ b/drivers/gpu/drm/drm_mipi_dsi.c
-@@ -349,7 +349,12 @@ EXPORT_SYMBOL(mipi_dsi_host_register);
- 
- static int mipi_dsi_remove_device_fn(struct device *dev, void *priv)
- {
--	struct mipi_dsi_device *dsi = to_mipi_dsi_device(dev);
-+	struct mipi_dsi_device *dsi;
-+
-+	if (!dev_is_mipi_dsi(dev))
-+		return 0;
-+
-+	dsi = to_mipi_dsi_device(dev);
- 
- 	if (dsi->attached)
- 		mipi_dsi_detach(dsi);
--- 
-2.51.1
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gMTIvMy8yMDI1IDU6NTQgUE0sIExpbnVzIFdhbGxlaWogd3JvdGU6Cj4gT24gV2VkLCBEZWMg
+MywgMjAyNSBhdCA0OjEw4oCvQU0gQ2hhb3lpIENoZW4gPGNoYW95aS5jaGVuQHJvY2stY2hpcHMu
+Y29tPiB3cm90ZToKPiAKPj4gSXQgc2VlbXMgdGhhdCBtdWx0aXBsZSBkcml2ZXJzIGN1cnJlbnRs
+eSBkZXBlbmQgb24gdGhlIENSVEMgYmVpbmcKPj4gZW5hYmxlZCBhbmQgdGhleSBpbXBsZW1lbnQg
+dGhlIHNhbWUgYXRvbWljX2NvbW1pdF90YWlsKCkuCj4+Cj4+IFdoeSBub3QgaW1wbGVtZW50IHRo
+aXMgaW4gZHJtX2F0b21pY19oZWxwZXJfY29tbWl0X3RhaWxfcnBtKCkgaW5zdGVhZD8KPj4gT3Ig
+d2h5IG5vdCB1c2UgYW5vdGhlciBjb21tb24gaGVscGVyIGZ1bmN0aW9uIGZvciB0aGlzPwo+IAo+
+IFNvIG15IHYyIHZlcnNpb24gb2YgdGhlIHBhdGNoIHNlcmllcyBhZGRlZCBhIG5ldyBzcGVjaWFs
+IGNhc2UKPiBoZWxwZXIgdGFpbCBmdW5jdGlvbiB0byBkbyB0aGF0Ogo+IGh0dHBzOi8vbG9yZS5r
+ZXJuZWwub3JnL2RyaS1kZXZlbC8yMDI1MTExOC1tY2RlLWRybS1yZWdyZXNzaW9uLXYyLTMtNGZl
+ZGYxMGIxOGY2QGxpbmFyby5vcmcvCj4gCj4gSXQgd2FzIHBvbGl0ZWx5IE5BQ0tlZCBmb3IgY29t
+cGxpY2F0aW5nIHRoZSBoZWxwZXJzIGxpYnJhcnkgKHNob3J0IHN0b3J5KS4KPiAKPiBJdCdzIHBh
+cnQgb2YgdGhlIHRyYWlsIG9mIGhvdyB3ZSBnb3QgdG8gdGhpcyBjdXJyZW50IHBhdGNoIHNlcmll
+cy4KPgoKQWgsIGdvdCBpdC4gUGxlYXNlIHRha2UgYSBsb29rIGF0IG15IG90aGVyIGNvbW1lbnRz
+IHRvIHNlZSBpZiB0aGVyZSdzCmEgY2hhbmNlIHRvIGNoYW5nZSB0aGUgYnJpZGdlIGZ1bmN0aW9u
+cyB0byBhY2hpZXZlIHRoaXMuIFRoYW5rIHlvdS4KCi0tIApCZXN0LCAKQ2hhb3lpCgpfX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBt
+YWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlz
+dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
