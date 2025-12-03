@@ -4,52 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15075D12D7A
-	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Dec 2025 16:21:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCB5ED15DB4
+	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Dec 2025 16:50:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:To:From:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aeFQgfT+XK0Rbn6lrypGoLzNuYgrerpSb5Vi4rMBKAE=; b=WR7XFWNgrX8pMz
-	98nm05UXM24errFuPmBiD45VM1IWg7CLsfLluayuD1wKS9x6D4txW1LqOUvKncE/5LaCONZpl7T2q
-	hqk9hgkrFec8+Clha7h+dUW7nIEp3MeMdIQ1CgT3dx+51M1wgpK32rMPjX/F2zNIuvWxnblMkgOqW
-	7an17vOlPqlwa4wqiaK7aw0Xcg94ZLxaHUO3E1YJsay92/E/cRgIIUcE/0/BV2BBOId0WAOiEVANy
-	rsIb7QEkgN8bNPP/RE0zY8H7CGeYy+vCirwpUtELEwUJnl3AfSQaID51dBTW+h76nRVQLZeYf3rts
-	//svPh9d38wkJtCaVvGw==;
+	List-Owner; bh=mUk08H03Dymr5NqTmh/GY4Xhr9ACoz1e2lTRmCp85Cc=; b=b/c4Qx3JYTv4cY
+	uLCUuK6LiUuaUctnrDqQh1IN1z9KeH2/CxqwShg1CjGD/7I4L1VdtXrtUhYG76PFVbbkFJ1EHyt8e
+	PIWP7ZEqHEbvcWdxQJSUd0AouFxKS8KDwlhMKpJyUCSZExIT63VdKXLMWwG4FvbY4XkZvTaiWbwH8
+	r3tcnelmbb3NNa4zW+Eyz7m3GCdLKDyGkq/ZuM0t1jIQsBWd7axpOsnazNMXgxY1cgUhwRS8A9Wr+
+	AKH9xmGRnzlVi5i0dTueXGlEWSg2jV+4t3YawXCvgK3mSzo44K3Lcj8gF8bLD8Jro4namWVxeVUfn
+	fJAIn4tsoNmiKs/W2c9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vQpbi-00000006nPv-3K6s;
-	Wed, 03 Dec 2025 16:21:34 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vQpbg-00000006nOl-1zBl;
-	Wed, 03 Dec 2025 16:21:33 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 76FBF339;
-	Wed,  3 Dec 2025 08:21:24 -0800 (PST)
-Received: from [10.57.45.67] (unknown [10.57.45.67])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id E5CB43F66E;
-	Wed,  3 Dec 2025 08:21:29 -0800 (PST)
-Message-ID: <66ae20b3-3316-4ec2-9c51-8414c053dc32@arm.com>
-Date: Wed, 3 Dec 2025 16:21:25 +0000
+	id 1vQq3L-00000006pH7-3NgF;
+	Wed, 03 Dec 2025 16:50:07 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vQq3J-00000006pGI-33DB;
+	Wed, 03 Dec 2025 16:50:05 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 94C76601D5;
+	Wed,  3 Dec 2025 16:50:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C21D4C4CEF5;
+	Wed,  3 Dec 2025 16:50:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1764780604;
+	bh=WE/MGjDXYkfLp/ASxbUyC53LMNdsfobdCP7BxApY2r0=;
+	h=From:To:In-Reply-To:References:Subject:Date:From;
+	b=kOSDsoBa4+of4dbFUeN3S+S0nuqVts/bOkUwD16XwQbjzVTj+NhYD0LIkxhGFWfm0
+	 LHzLg4Lifd5kiuroMAtL4WmHEdGD+YAL3dHVIa7frayQuQO71IkhZzMpkHsQYrudGo
+	 ZlVONlj3lmqwTjyJqgLLB35t9c7ZMyWsyknuCS2O1NBjhbCVPNc7XGO/rDPZz4YlPb
+	 HjRpjmwl1C+zTO2EuQw4+DSnaDLHt1+DmRmzvS8nCUZfN+X+tUal9mwxUFTnzp19x8
+	 C1DhWNMXK9YLwFFuFv46gAZaGCczke3v0ca5vq8FgRWm7Nu9Fwf++Fnfn5BSsNGTDM
+	 QevwICvNEOOFw==
+From: Mark Brown <broonie@kernel.org>
+To: Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, 
+ Takashi Iwai <tiwai@suse.com>, Heiko Stuebner <heiko@sntech.de>, 
+ Nathan Chancellor <nathan@kernel.org>, 
+ Nick Desaulniers <nick.desaulniers+lkml@gmail.com>, 
+ Bill Wendling <morbo@google.com>, Justin Stitt <justinstitt@google.com>, 
+ linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ llvm@lists.linux.dev, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+In-Reply-To: <20251203141644.106459-2-krzysztof.kozlowski@oss.qualcomm.com>
+References: <20251203141644.106459-2-krzysztof.kozlowski@oss.qualcomm.com>
+Subject: Re: [PATCH] ASoC: rockchip: Fix Wvoid-pointer-to-enum-cast warning
+ (again)
+Message-Id: <176478060152.99790.2704238708778622367.b4-ty@kernel.org>
+Date: Wed, 03 Dec 2025 16:50:01 +0000
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: rockchip: add SPDIF audio to Beelink A1
-To: Christian Hewitt <christianshewitt@gmail.com>,
- Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Cc: Alex Bee <knaerzche@gmail.com>
-References: <20250828164300.3829488-1-christianshewitt@gmail.com>
-From: Robin Murphy <robin.murphy@arm.com>
-Content-Language: en-GB
-In-Reply-To: <20250828164300.3829488-1-christianshewitt@gmail.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251203_082132_556013_E27929E5 
-X-CRM114-Status: GOOD (  13.79  )
+X-Mailer: b4 0.15-dev-88d78
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -61,72 +70,51 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-[ Just noticed this... ]
-
-On 2025-08-28 5:43 pm, Christian Hewitt wrote:
-> From: Alex Bee <knaerzche@gmail.com>
+On Wed, 03 Dec 2025 15:16:45 +0100, Krzysztof Kozlowski wrote:
+> 'version' is an enum, thus cast of pointer on 64-bit compile test with
+> clang W=1 causes:
 > 
-> Add the required nodes to enable SPDIF audio output on
-> the Beelink A1 set-top-box.
+>   rockchip_pdm.c:583:17: error: cast to smaller integer type 'enum rk_pdm_version' from 'const void *' [-Werror,-Wvoid-pointer-to-enum-cast]
+> 
+> This was already fixed in commit 49a4a8d12612 ("ASoC: rockchip: Fix
+> Wvoid-pointer-to-enum-cast warning") but then got bad in
+> commit 9958d85968ed ("ASoC: Use device_get_match_data()").
+> 
+> [...]
 
-But the A1 doesn't have S/PDIF? Only HDMI plus a 3.5mm jack connected to 
-the analog audio codec (and possibly the composite TV out) :/
+Applied to
+
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+
+Thanks!
+
+[1/1] ASoC: rockchip: Fix Wvoid-pointer-to-enum-cast warning (again)
+      commit: 57d508b5f718730f74b11e0dc9609ac7976802d1
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
 
 Thanks,
-Robin.
+Mark
 
-> Signed-off-by: Alex Bee <knaerzche@gmail.com>
-> Signed-off-by: Christian Hewitt <christianshewitt@gmail.com>
-> ---
->   arch/arm64/boot/dts/rockchip/rk3328-a1.dts | 23 ++++++++++++++++++++++
->   1 file changed, 23 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3328-a1.dts b/arch/arm64/boot/dts/rockchip/rk3328-a1.dts
-> index f7c4578865c5..b276a29bdd85 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3328-a1.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3328-a1.dts
-> @@ -58,6 +58,24 @@ ir-receiver {
->   		gpios = <&gpio2 RK_PA2 GPIO_ACTIVE_LOW>;
->   		linux,rc-map-name = "rc-beelink-gs1";
->   	};
-> +
-> +	spdif_sound: spdif-sound {
-> +		compatible = "simple-audio-card";
-> +		simple-audio-card,name = "SPDIF";
-> +
-> +		simple-audio-card,cpu {
-> +			sound-dai = <&spdif>;
-> +		};
-> +
-> +		simple-audio-card,codec {
-> +			sound-dai = <&spdif_dit>;
-> +		};
-> +	};
-> +
-> +	spdif_dit: spdif-dit {
-> +		compatible = "linux,spdif-dit";
-> +		#sound-dai-cells = <0>;
-> +	};
->   };
->   
->   &analog_sound {
-> @@ -325,6 +343,11 @@ &sdmmc {
->   	status = "okay";
->   };
->   
-> +&spdif {
-> +	pinctrl-0 = <&spdifm0_tx>;
-> +	status = "okay";
-> +};
-> +
->   &tsadc {
->   	rockchip,hw-tshut-mode = <0>;
->   	rockchip,hw-tshut-polarity = <0>;
 
 _______________________________________________
 Linux-rockchip mailing list
