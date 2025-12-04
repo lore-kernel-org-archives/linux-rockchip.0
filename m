@@ -4,100 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7973D20694
-	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Dec 2025 13:42:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90C84D2069A
+	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Dec 2025 13:55:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MUmK1+4LiTj+1sUl7fIJfzAQWbG5uo7nHi+dgm+SRNc=; b=LnIeRP6YxmUPx0
-	oEmhk1Hw35DoR+qiulTB/fJZNGQJA1xNAOlYOt9HY/beIydotPIh0d8rZQZh3qz9LTZl6iDUM4Ltw
-	+22npa2zNrD7XzXAgBQPu4dCLRPGbqGo3I+49+Z8hl/GbVSJXi3e6SwVKdh/Ip/MGEMBnB3IcEBSw
-	5ItErE++WKgU6BcnY/DDGnaTQMy9NRukg7FIc2iTtajdOYNEEl48Sp5EJb1VjRz5RrVc7g/wDkjVT
-	E8waeD2tfWRjxvwWRsUBCVlN1H1SH9vJ+3HJNnrAwKrqbnRHdLZh2pttcXcMPJ0Inr7aHxiwvv8gR
-	YBj7H92INuooZ0c8pAgg==;
+	List-Owner; bh=YyhNwZV6kdTbYv96EttxHJI0Oi934fsc4eZAGS+vBSM=; b=kHY/Cf2bNDdTPZ
+	ssauOHqS73PSLagdDgRPNUEUnrQc8qneHIWrnM4WyFt9us2J7H5ohWIO6+LvGaUWVLU6DB/oNAbD/
+	Una6hDcL3x+l2cUrclzKHFvqbHqtRc8SIGe69R7VnaYTbLbjO+eaBCK7xSshPUDMJhnamBAh8Ikcr
+	rpfFEna0sKCYYbaSmlZSexYnm1PNje6R1eT5ql8HMdimID4UUuDZfUd8JNdr6Hgw+BjzClOdXNzIp
+	3dXk2CSigQuYJYwwDw8kf7Yz7ih2Rva9GrxEU7LuJwlUtsaq9r7ORBA7xuiTl2NtZ4OZrY/Oq3W7y
+	rJ7rlAXykxzvhKAD/TXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vR9bE-000000084P8-1rxG;
-	Thu, 04 Dec 2025 13:42:24 +0000
-Received: from mgamail.intel.com ([192.198.163.14])
+	id 1vR9nX-000000085cg-2j4Y;
+	Thu, 04 Dec 2025 13:55:07 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vR9b9-000000084Nw-2hAj;
-	Thu, 04 Dec 2025 13:42:23 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1764855739; x=1796391739;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=30wP0TX1VK3UbNCz19GHE9bCOLKLD8pr5Gzk2VuxvGw=;
-  b=J7OdXf88VyB6clJ4hxA884AlVbem4J/36zELpUTUsx2ijzaaLFdQ76Aq
-   Y79iBGYKWX7fMJkm9Mke+XENN8f1GzDZrqXeJoYI4I0jnK49FhvwW5iQp
-   3aJfqeOhaNFbbSWHViBXRxP3Nl9umH6EApoKeuICF1r/RKU5tfCwz0azw
-   C6XrxAxqrlUOfT4pXb62Ls1SND/XqGHcnbDfaBDUQ7qhq+nU0zyHi5gtV
-   Sdxzu215tt3yUwzC/h+hp9yHPDpjz2YFKpASLBUxgbNATh7b/a6HGCgKZ
-   jhPcbt59Zd1N7eNRiNPFovFZneaWsFJJIkw71M8Rq1nbJK/SDr0fdv3vY
-   g==;
-X-CSE-ConnectionGUID: NwMioDJ2SEW5Q/KTl+h45g==
-X-CSE-MsgGUID: 5l76NYeUTuO+er16hLYgtg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11632"; a="66911018"
-X-IronPort-AV: E=Sophos;i="6.20,248,1758610800"; 
-   d="scan'208";a="66911018"
-Received: from orviesa003.jf.intel.com ([10.64.159.143])
-  by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Dec 2025 05:42:18 -0800
-X-CSE-ConnectionGUID: DxyftxzaSmuGPOccXE4iKQ==
-X-CSE-MsgGUID: kBWCfuAfTk6HBNfipdewYA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.20,248,1758610800"; 
-   d="scan'208";a="199164378"
-Received: from rfrazer-mobl3.amr.corp.intel.com (HELO kuha) ([10.124.220.149])
-  by orviesa003.jf.intel.com with SMTP; 04 Dec 2025 05:42:05 -0800
-Received: by kuha (sSMTP sendmail emulation); Thu, 04 Dec 2025 15:41:56 +0200
-Date: Thu, 4 Dec 2025 15:41:56 +0200
-From: Heikki Krogerus <heikki.krogerus@linux.intel.com>
-To: Chaoyi Chen <kernel@airkyi.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
-	Peter Chen <hzpeterchen@gmail.com>,
-	Luca Ceresoli <luca.ceresoli@bootlin.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Yubing Zhang <yubing.zhang@rock-chips.com>,
-	Frank Wang <frank.wang@rock-chips.com>,
-	Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-	Amit Sunil Dhamne <amitsd@google.com>,
-	Chaoyi Chen <chaoyi.chen@rock-chips.com>,
-	Dragan Simic <dsimic@manjaro.org>, Johan Jonker <jbx6244@gmail.com>,
-	Diederik de Haas <didi.debian@cknow.org>,
-	Peter Robinson <pbrobinson@gmail.com>, linux-usb@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
-Subject: Re: [RESEND PATCH v11 02/11] usb: typec: Export typec bus and typec
- altmode device type
-Message-ID: <aTGPpInIEzFhftf4@kuha>
-References: <20251204063109.104-1-kernel@airkyi.com>
- <20251204063109.104-3-kernel@airkyi.com>
+	id 1vR9nU-000000085bt-2Q7h
+	for linux-rockchip@lists.infradead.org;
+	Thu, 04 Dec 2025 13:55:06 +0000
+Received: from [192.168.88.20] (91-158-153-178.elisa-laajakaista.fi [91.158.153.178])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id D23F5C9;
+	Thu,  4 Dec 2025 14:52:41 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1764856363;
+	bh=6RVJucSY4PA5+Z+A/36xeUwsXCqs6UT18ddB2t9zMds=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=XW+9Tbc3ZlGQqYTSmJbvplyXRy/npm3W2CNYfjtdUf/EmpKU2cY5mljNOsAOAePwi
+	 uLcDh2ya6SMLbcUr3EFUhkkTWjiRfM2awiXr1mJWqGboOQ7u7Lhnr2kz9OEW/3nwA+
+	 KPxo6blAsguKn/+7Mn6RYaCLtKlV+8z2vANvwFgk=
+Message-ID: <2661e992-2233-4c30-b636-a21ad9c21f30@ideasonboard.com>
+Date: Thu, 4 Dec 2025 15:54:54 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20251204063109.104-3-kernel@airkyi.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6 2/4] drm/mcde: Create custom commit tail
+To: Chaoyi Chen <chaoyi.chen@rock-chips.com>,
+ Linus Walleij <linusw@kernel.org>
+Cc: dri-devel@lists.freedesktop.org, linux-renesas-soc@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, Vicente Bergas <vicencb@gmail.com>,
+ Marek Vasut <marek.vasut+renesas@mailbox.org>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
+ Tomi Valkeinen <tomi.valkeinen+renesas@ideasonboard.com>,
+ Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Magnus Damm <magnus.damm@gmail.com>, Aradhya Bhatia <a-bhatia1@ti.com>,
+ Dmitry Baryshkov <lumag@kernel.org>, Linus Walleij
+ <linus.walleij@linaro.org>, Sandy Huang <hjc@rock-chips.com>,
+ =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
+ Andy Yan <andy.yan@rock-chips.com>
+References: <20251202-mcde-drm-regression-thirdfix-v6-0-f1bffd4ec0fa@kernel.org>
+ <20251202-mcde-drm-regression-thirdfix-v6-2-f1bffd4ec0fa@kernel.org>
+ <c3c5f62f-98fd-49a7-9b39-c4c4f798ad2c@rock-chips.com>
+ <CAD++jLmzkmZAgwbahKDnasj3dDpG4RBggoZfhPiEHj9rb09+eQ@mail.gmail.com>
+ <1284bf23-1069-4d54-b259-7b40271f8e0e@rock-chips.com>
+From: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
+Content-Language: en-US
+Autocrypt: addr=tomi.valkeinen@ideasonboard.com; keydata=
+ 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
+In-Reply-To: <1284bf23-1069-4d54-b259-7b40271f8e0e@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251204_054219_697065_0FF367DA 
-X-CRM114-Status: GOOD (  20.54  )
+X-CRM114-CacheID: sfid-20251204_055504_779279_D46B3260 
+X-CRM114-Status: GOOD (  22.98  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,146 +124,69 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Thu, Dec 04, 2025 at 02:31:00PM +0800, Chaoyi Chen kirjoitti:
-> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-> 
-> The DRM may want to register a notifier on the typec bus to know when
-> a typec altmode device is added, and distinguish between different
-> types of typec altmode device.
-> 
-> Export these things.
-> 
-> Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-
-Reviewed-by: Heikki Krogerus <heikki.krogerus@linux.intel.com>
-
-> ---
-> 
-> Changes in v11:
-> - Also export typec bus.
-> - Add more detailed comments.
-> 
-> (no changes since v9)
-> 
->  drivers/usb/typec/bus.c           |  1 +
->  drivers/usb/typec/bus.h           | 10 ----------
->  drivers/usb/typec/class.c         |  3 +++
->  include/linux/usb/typec.h         |  3 +++
->  include/linux/usb/typec_altmode.h |  8 ++++++++
->  5 files changed, 15 insertions(+), 10 deletions(-)
-> 
-> diff --git a/drivers/usb/typec/bus.c b/drivers/usb/typec/bus.c
-> index a33da7f458a5..e84b134a3381 100644
-> --- a/drivers/usb/typec/bus.c
-> +++ b/drivers/usb/typec/bus.c
-> @@ -569,3 +569,4 @@ const struct bus_type typec_bus = {
->  	.probe = typec_probe,
->  	.remove = typec_remove,
->  };
-> +EXPORT_SYMBOL_GPL(typec_bus);
-> diff --git a/drivers/usb/typec/bus.h b/drivers/usb/typec/bus.h
-> index b58e131450d1..7df5deb1dd3a 100644
-> --- a/drivers/usb/typec/bus.h
-> +++ b/drivers/usb/typec/bus.h
-> @@ -5,7 +5,6 @@
->  
->  #include <linux/usb/typec_altmode.h>
->  
-> -struct bus_type;
->  struct typec_mux;
->  struct typec_retimer;
->  
-> @@ -28,13 +27,4 @@ struct altmode {
->  
->  #define to_altmode(d) container_of(d, struct altmode, adev)
->  
-> -extern const struct bus_type typec_bus;
-> -extern const struct device_type typec_port_altmode_dev_type;
-> -extern const struct device_type typec_plug_altmode_dev_type;
-> -extern const struct device_type typec_partner_altmode_dev_type;
-> -
-> -#define is_typec_port_altmode(dev) ((dev)->type == &typec_port_altmode_dev_type)
-> -#define is_typec_plug_altmode(dev) ((dev)->type == &typec_plug_altmode_dev_type)
-> -#define is_typec_partner_altmode(dev) ((dev)->type == &typec_partner_altmode_dev_type)
-> -
->  #endif /* __USB_TYPEC_ALTMODE_H__ */
-> diff --git a/drivers/usb/typec/class.c b/drivers/usb/typec/class.c
-> index d6b88317f8a4..c4ff4310ff58 100644
-> --- a/drivers/usb/typec/class.c
-> +++ b/drivers/usb/typec/class.c
-> @@ -537,18 +537,21 @@ const struct device_type typec_port_altmode_dev_type = {
->  	.groups = typec_altmode_groups,
->  	.release = typec_altmode_release,
->  };
-> +EXPORT_SYMBOL_GPL(typec_port_altmode_dev_type);
->  
->  const struct device_type typec_plug_altmode_dev_type = {
->  	.name = "typec_plug_alternate_mode",
->  	.groups = typec_altmode_groups,
->  	.release = typec_altmode_release,
->  };
-> +EXPORT_SYMBOL_GPL(typec_plug_altmode_dev_type);
->  
->  const struct device_type typec_partner_altmode_dev_type = {
->  	.name = "typec_partner_alternate_mode",
->  	.groups = typec_altmode_groups,
->  	.release = typec_altmode_release,
->  };
-> +EXPORT_SYMBOL_GPL(typec_partner_altmode_dev_type);
->  
->  static struct typec_altmode *
->  typec_register_altmode(struct device *parent,
-> diff --git a/include/linux/usb/typec.h b/include/linux/usb/typec.h
-> index 309251572e2e..c6fd46902fce 100644
-> --- a/include/linux/usb/typec.h
-> +++ b/include/linux/usb/typec.h
-> @@ -20,12 +20,15 @@ struct typec_port;
->  struct typec_altmode_ops;
->  struct typec_cable_ops;
->  
-> +struct bus_type;
->  struct fwnode_handle;
->  struct device;
->  
->  struct usb_power_delivery;
->  struct usb_power_delivery_desc;
->  
-> +extern const struct bus_type typec_bus;
-> +
->  enum typec_port_type {
->  	TYPEC_PORT_SRC,
->  	TYPEC_PORT_SNK,
-> diff --git a/include/linux/usb/typec_altmode.h b/include/linux/usb/typec_altmode.h
-> index f7db3bd4c90e..9197a4637a93 100644
-> --- a/include/linux/usb/typec_altmode.h
-> +++ b/include/linux/usb/typec_altmode.h
-> @@ -9,6 +9,14 @@
->  
->  #define MODE_DISCOVERY_MAX	6
->  
-> +extern const struct device_type typec_port_altmode_dev_type;
-> +extern const struct device_type typec_plug_altmode_dev_type;
-> +extern const struct device_type typec_partner_altmode_dev_type;
-> +
-> +#define is_typec_port_altmode(dev) ((dev)->type == &typec_port_altmode_dev_type)
-> +#define is_typec_plug_altmode(dev) ((dev)->type == &typec_plug_altmode_dev_type)
-> +#define is_typec_partner_altmode(dev) ((dev)->type == &typec_partner_altmode_dev_type)
-> +
->  struct typec_altmode_ops;
->  
->  /**
-> -- 
-> 2.51.1
-
--- 
-heikki
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGksCgpPbiAwNC8xMi8yMDI1IDA0OjA3LCBDaGFveWkgQ2hlbiB3cm90ZToKPiBPbiAxMi80LzIw
+MjUgNzoxMyBBTSwgTGludXMgV2FsbGVpaiB3cm90ZToKPj4gT24gV2VkLCBEZWMgMywgMjAyNSBh
+dCA3OjI34oCvQU0gQ2hhb3lpIENoZW4gPGNoYW95aS5jaGVuQHJvY2stY2hpcHMuY29tPiB3cm90
+ZToKPj4KPj4+IFRoZSBicmlkZ2UgZG9jdW1lbnQgc2F5czogIlRoZSBkaXNwbGF5IHBpcGUgKGku
+ZS4gY2xvY2tzIGFuZCB0aW1pbmcKPj4+IHNpZ25hbHMpIGZlZWRpbmcgdGhpcyBicmlkZ2Ugd2ls
+bCBub3QgeWV0IGJlIHJ1bm5pbmcgd2hlbiB0aGUKPj4+IEBhdG9taWNfcHJlX2VuYWJsZSBpcyBj
+YWxsZWQuIgo+Pj4KPj4+IFRoZXJlZm9yZSwgeW91ciBhcHByb2FjaCBzZWVtcyB0byBiZSBtZXJl
+bHkgYSB3b3JrYXJvdW5kIGFuZCBkb2VzIG5vdAo+Pj4gbWVldCB0aGUgY3VycmVudCByZXF1aXJl
+bWVudHMgb2YgdGhlIGJyaWRnZS4KPj4+Cj4+PiBBbmQgZG9jdW1lbnQgYWxzbyBzYXlzOiAiVGhl
+IGJyaWRnZSBjYW4gYXNzdW1lIHRoYXQgdGhlIGRpc3BsYXkgcGlwZQo+Pj4gKGkuZS4gY2xvY2tz
+IGFuZCB0aW1pbmcgc2lnbmFscykgZmVlZGluZyBpdCBpcyBydW5uaW5nIHdoZW4KPj4+IEBhdG9t
+aWNfZW5hYmxlIGNhbGxiYWNrIGlzIGNhbGxlZC4iCj4+Pgo+Pj4gSWYgRFNJIGNvbW1hbmRzIG5l
+ZWQgdG8gd2FpdCBmb3IgdGhlIGRpc3BsYXkgcGlwZSAoQ1JUQykgdG8gYmUgcmVhZHksCj4+PiB3
+aHkgbm90IHBlcmZvcm0gdGhlbSBpbnNpZGUgQGF0b21pY19lbmFibGUgaW5zdGVhZCBvZiBAYXRv
+bWljX3ByZV9lbmFibGU/Cj4+Cj4+IFRoYXQgd2FzIGV4YWN0bHkgd2hhdCB0aGUgdjEgYW5kIHYy
+IHZlcnNpb25zIG9mIHRoaXMgcGF0Y2ggc2V0IHdhcwo+PiBkb2luZywgYW5kIGl0IHdhcyAocG9s
+aXRlbHkpIE5BQ0tlZCwgYW5kIHRoYXQgaXMgd2h5IHdlIGFyZQo+PiBoZXJlLgo+PiBodHRwczov
+L2xvcmUua2VybmVsLm9yZy9kcmktZGV2ZWwvMjAyNTEwMjMtZml4LW1jZGUtZHJtLXJlZ3Jlc3Np
+b24tdjEtMC1lZDlhOTI1ZGI4YzdAbGluYXJvLm9yZy8KPj4gaHR0cHM6Ly9sb3JlLmtlcm5lbC5v
+cmcvZHJpLWRldmVsLzIwMjUxMDI2LWZpeC1tY2RlLWRybS1yZWdyZXNzaW9uLXYyLTAtOGQ3OTll
+NDg4Y2Y5QGxpbmFyby5vcmcvCj4+Cj4gCj4gSG1tLCBJJ20gYWZyYWlkIHRoZXJlIHJlYWxseSBp
+c24ndCBhIGNvbW1vbiBzb2x1dGlvbiBhdCB0aGlzIHBvaW50Lgo+IAo+IFRoZSBsb2dpY2FsIGVu
+YWJsZSBvcmRlciBvZiB0aGUgQ1JUQywgYnJpZGdlLCBhbmQgcGFuZWwgbWF5IGJlCj4gZGlmZmVy
+ZW50IGZyb20gdGhlIGFjdHVhbCBwaHlzaWNhbCBlbmFibGUgb3JkZXIuIEFuZCB0aGVyZSBpcyBu
+bwo+IG1lY2hhbmlzbSB0byBjaGFuZ2UgdGhpcyBvcmRlciA6KAoKSSdtIG5vdCBzdXJlIHdoYXQg
+eW91IG1lYW4gd2l0aCBsb2dpY2FsIGFuZCBwaHlzaWNhbCBlbmFibGUgb3JkZXJzLi4uCkJ1dCB0
+aGUgZmFjdCBzZWVtcyB0byBiZSB0aGF0IGR1cmluZyBlbmFibGUgc2VxdWVuY2UgZGlmZmVyZW50
+CnBsYXRmb3JtcywgYnJpZGdlcyBhbmQgcGFuZWxzIGVpdGhlciAxKSBzcGVjaWZpY2FsbHkgcmVx
+dWlyZSBhbiBpbmNvbWluZwpzdHJlYW0gZnJvbSB0aGUgY3J0YyAyKSBzcGVjaWZpY2FsbHkgcHJv
+aGliaXQgdGhhdCwgb3IgMykgZG9uJ3QgY2FyZS4KQW5kIHdlIGRvbid0IGhhdmUgYW55IG1lYW5z
+IHRvIGRlYWwgd2l0aCB0aGlzLgoKSW4gdGhpcyBzZXJpZXMgTGludXMgY2hhbmdlcyB0aGUgcGxh
+dGZvcm1zJyBjcnRjIHRvIGJlaGF2ZSBpbiBhCnBhcnRpY3VsYXIgd2F5LiBCdXQgaWYgeW91IHdv
+dWxkIGNvbm5lY3QgYSBicmlkZ2Ugb3IgcGFuZWwgdG8gdGhvc2UKcGxhdGZvcm1zLCB3aGljaCBz
+cGVjaWZpY2FsbHkgZG9lcyBub3Qgd2FudCBpbmNvbWluZyBzdHJlYW0gZHVyaW5nCnByZV9lbmFi
+bGUsIHRob3NlIHdvdWxkbid0IHdvcmsuCgpJbiBhbnkgY2FzZSwgd2UgbmVlZCB0byBnZXQgdGhl
+IGN1cnJlbnQgc2V0dXBzIHdvcmtpbmcuIEkgbWFkZSBhIHF1aWNrCnRlc3Qgc2VyaWVzIHdoaWNo
+OgotIFJldmVydHMgYzliMTE1MGE2OGQ5MzYyYTA4Mjc2MDlmYzBkYzE2NjRjMGQ4YmZlMQotIEFw
+cGxpZXMgcGF0Y2ggMSBmcm9tIHRoaXMgc2VyaWVzICh3aXRoIHNvbWUgY29uZmxpY3QgZml4ZXMg
+ZHVlIHRvIHRoZQphYm92ZSByZXZlcnQpCi0gSW1wbGVtZW50cyAicHJlLWVuYWJsZS1iZWZvcmUt
+Y3J0Yy1lbmFibGUiIGZvciB0aWRzcwoKVGhpcyB3b3JrcyBvaywgYWZhaWNzLCBhbmQgcmVzZW1i
+bGVzIHZlcnkgbXVjaCB0aGUgcGxhdGZvcm0gcGF0Y2hlcyBpbgp0aGlzIHNlcmllcy4KClRoYXQg
+aXMgYSBzbWFsbGVyIHNlcmllcywgYW5kIGhhcyB0aGUgcG90ZW50aWFsIGJlbmVmaXQgdGhhdCBp
+ZiB0aGVyZQphcmUgb3RoZXIgcGxhdGZvcm1zIHRoYXQgaGF2ZSBnb3R0ZW4gYnJva2VuIGJ1dCBu
+byBvbmUgaGFzIG5vdGljZWQsIHRoZXkKd291bGQgYWdhaW4gZ2V0IGZpeGVkLgoKVGhvdWdodHM/
+IFNoYWxsIEkgc2VuZCBpdCwgb3Igc2hhbGwgd2UganVzdCBnbyB3aXRoIHRoaXMgc2VyaWVzPwoK
+T25lIG1vcmUgcG9pbnQ6IGV2ZW4gaWYgdGhlIHBsYXRmb3JtcyBpbiB0aGlzIHNlcmllcyBnZXQg
+Zml4ZWQgYnkKZW5hYmxpbmcgdGhlIGNydGMgZmlyc3QsIEknbSBub3Qgc3VyZSBpZiBhbnlvbmUg
+ZWxzZSBidXQgTGludXMgc3R1ZGllZAp0aGUgcGxhdGZvcm1zIHRvIHNlZSBpZiBpdCB3b3VsZCBi
+ZSBwb3NzaWJsZSBmb3IgdGhlIERTSSAob3IgRFAgaW4gb25lCmNhc2UsIGlmIEkgcmVjYWxsIHJp
+Z2h0KSB0byB3b3JrIHdpdGhvdXQgZW5hYmxpbmcgdGhlIERSTSBjcnRjLgoKSSB0aGluayBvcHRp
+bWFsbHkgdGhlIGNvbnRyb2wgYnVzIHNob3VsZCB3b3JrIGluZGVwZW5kZW50bHkgZnJvbSB0aGUK
+dmlkZW8gZGF0YSBidXMuIEUuZy4gb25lIHNob3VsZCBiZSBhYmxlIHRvIGRvIERTSSBjb21tYW5k
+cyBhbnkgdGltZQphZnRlciB0aGUgRFNJIHBlcmlwaGVyYWwgaGFzIGJlZW4gYXR0YWNoZWQgdG8g
+dGhlIGJyaWRnZSwgZXZlbiBvdXRzaWRlCnRoZSBlbmFibGUgc2VxdWVuY2UuCgpUaGlzIGNvdWxk
+IGJlIHBvc3NpYmxlIGJ5IGp1c3QgZW5hYmxpbmcgc29tZSBjbG9jayBvbiB0aGUgY3J0YyBzaWRl
+LCBvcgpwZXJoYXBzIGVuYWJsaW5nIHNvbWUgYnlwYXNzIGNsb2NrIG1vZGUuCgpPZiBjb3Vyc2Us
+IHRoZXJlIGNvdWxkIGFsc28gYmUgb3RoZXIgcmVhc29ucyB0byByZXF1aXJlL3Byb2hpYml0IHRo
+ZQp2aWRlbyBzdHJlYW0uLi4KCiBUb21pCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tj
+aGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1h
+bi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
