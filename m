@@ -4,96 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B9F7D21687
-	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Dec 2025 15:20:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7AA8D2168E
+	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Dec 2025 15:40:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:
-	References:Cc:To:Subject:Date:Message-ID:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=Zhj5ozpRzoOrrJqXweRF6M65FU8u130trVOd3CebBaU=; b=hgG4FqkD4Xt/DvJ+y2UQCB27iV
-	9vdgqPjK6c96dj3TfGi1QjdltzQqINyyraAmktwp1CVi0ENcHgwBvpPSZW75/pN0YsQDiNcSkFvPR
-	oyFa4ra5KGKMcgW+8oKHO1DcUqBRoSiWrA7PizK9VG25gjyoYD/QQ8Fttq8798toQoQY2EbY9U6hf
-	26bp+b1MhASKUSWx1KaH9pl5HXYDBSh2a+LbjZtAw6TpZCH34svE8UjZCablG9YD875fw/lIK5DOd
-	eOFVq5t0ElqO9dvpjmIBYcNLS+F5F+mxk0JV1Erc6dyt0/OU6kl+Wc0xc658UhwZKredTfWZT05Bq
-	CQm3X+9A==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=7XSBwPPuvDowfy4VdbhSVcf2PZriKge1AbZnmpR+hOo=; b=ZnogRGeGwN0IRt
+	ERG41TtRAXOMchgV6gzB+DFR+EYAOh6i0jN5N/QL+0+7sy6qWJkz4iz+12++QxnwO8LQcF+g8O28r
+	goS9snusFr4PxFDOT62EUFNTq14ohNrAZQq4Va6kp/rUR2Ke33b0kRk4HY1WMaIapcqJVX7Cab0Fu
+	r5Os/+Q2uzPcBojKD0llO8KAHNerMyZZXA1OGiRzbM8jqx5+wiZj6YUOxjYasq1+s4FyTQH+mLIQd
+	MUQjEHKIX4qsuDUv4ZzXdIt7BkqSvtiiVecj4fm3GSQtIrlkfXDZHkc3vJ+tt0jY3X2I9KOYuGg+j
+	UScFefN+I4PX2dGyIX6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vRB8P-00000008CZl-0Yaz;
-	Thu, 04 Dec 2025 15:20:45 +0000
-Received: from mail-northeuropeazlp170100001.outbound.protection.outlook.com ([2a01:111:f403:c200::1] helo=DB3PR0202CU003.outbound.protection.outlook.com)
+	id 1vRBRp-00000008DnK-2UXV;
+	Thu, 04 Dec 2025 15:40:49 +0000
+Received: from out-177.mta1.migadu.com ([2001:41d0:203:375::b1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vRB8M-00000008CYx-1PES
+	id 1vRBRn-00000008Dmr-17pE
 	for linux-rockchip@lists.infradead.org;
-	Thu, 04 Dec 2025 15:20:43 +0000
-ARC-Seal: i=2; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=pass;
- b=gzNunFyX3eLF5NECzn9JxlfrByNSp8y0Y4rbI/vjyVk60Vzn3ReZ8L/gyfIWm67UNMvMdFUdknYMEmCWTOkaoWtMk6Rr5jOQZqGFzRWQ0YT/Ka+1KEpB4tvLaxH+1s+WRG+pLldIddMH7J1PkBR3kMXRonlAyfXzL98vGPkgJBFXARqpLWrDKP8L3npWkb24gxa0PJqI2mnqgYJ47keUFnzzY9ZHuEEpPersezpeVj/iuXgP4h89Hc3t6td/urbcVPwMmDe5oYw68EUsEeUGfh5A7b74IatQ2waa27cqfq5wq2vHAWi4NcrIuWv+0MpdnDzC5CeHR7/JywoNl7lhJQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=9fnembkVEEDhOuZIXW2Z8rntda6BnxuiIQu+AOaXMyk=;
- b=QSvLEUUNbqULnJ+pDWfualFO/puspYeKp7I7GjsaPBh6uXyoS5M7MAatuzeF20cgae1PhTfYk05L9FPHQEsFbVI/0odx3Q3O3PQT+FEAEHQl4m/fVedS/wMyjrbC9JBU26yZJXkjggtjuMvml/e2IPBVlUZMrXdxkGPTlHSyph/CWCNB+L3fb2cYtIY2LZkqRm0ByHVS/+bHRlrcXkgUF0r1ISKYhDoPzD4lAbuVs5a5a0od4NdO/ckJTTx4p/CEu6Ucn0B1vL3caWHLtTrunek9Uafia8x5C2cCsn1ZVl8/osNTV20cfXeu5ZhYmWHwx/TMxCGf7+l86wARPioYKA==
-ARC-Authentication-Results: i=2; mx.microsoft.com 1; spf=pass (sender ip is
- 4.158.2.129) smtp.rcpttodomain=kernel.org smtp.mailfrom=arm.com; dmarc=pass
- (p=none sp=none pct=100) action=none header.from=arm.com; dkim=pass
- (signature was verified) header.d=arm.com; arc=pass (0 oda=1 ltdi=1
- spf=[1,1,smtp.mailfrom=arm.com] dkim=[1,1,header.d=arm.com]
- dmarc=[1,1,header.from=arm.com])
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arm.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=9fnembkVEEDhOuZIXW2Z8rntda6BnxuiIQu+AOaXMyk=;
- b=r8G/RaJ8L9DN+7i7aTFuCWC6xltvn5jTQjhh4abF75nc/sZqTVdQm+u4TKRFEDi6jFt19xLdwoU+OZ10E72z7pyYxhyknGPR7u7Fyla/XCNQSqwvNZ/a8MOvh/Bd9SibCh2SnuAUHNvCySBgbHnCpjUD8PPgvze5YYaoVTzxAqA=
-Received: from CWLP123CA0205.GBRP123.PROD.OUTLOOK.COM (2603:10a6:400:19d::7)
- by AS8PR08MB6582.eurprd08.prod.outlook.com (2603:10a6:20b:339::7) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9388.9; Thu, 4 Dec
- 2025 15:20:33 +0000
-Received: from AM1PEPF000252E1.eurprd07.prod.outlook.com
- (2603:10a6:400:19d:cafe::8) by CWLP123CA0205.outlook.office365.com
- (2603:10a6:400:19d::7) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.9388.9 via Frontend Transport; Thu, 4
- Dec 2025 15:20:31 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 4.158.2.129)
- smtp.mailfrom=arm.com; dkim=pass (signature was verified)
- header.d=arm.com;dmarc=pass action=none header.from=arm.com;
-Received-SPF: Pass (protection.outlook.com: domain of arm.com designates
- 4.158.2.129 as permitted sender) receiver=protection.outlook.com;
- client-ip=4.158.2.129; helo=outbound-uk1.az.dlp.m.darktrace.com; pr=C
-Received: from outbound-uk1.az.dlp.m.darktrace.com (4.158.2.129) by
- AM1PEPF000252E1.mail.protection.outlook.com (10.167.16.59) with Microsoft
- SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9388.8
- via Frontend Transport; Thu, 4 Dec 2025 15:20:32 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=MZuM8GSTDoUcdThzA3iRT9U5hWhfb2kBjN7cSZUMV4jYLDfCd1fBERyvgCYwCraEQsF0NGnXjBUcYrShIdyfZR6+xC6oyEziAeoVMEuX/8c6gZe+i9OEs8gyP3OFV+uwuq6o0BKyIRA5GIj350iE0zSXmsjMBzSyZW6hbha4CyN+fdnZsFqHsLQ1lfrEaSAxa81RCyCKGKaSkbDEZsyXiTyGH8ix/pbphjILIcu3sIfFpreauG/nFLFcyRuMhjibJxapSuNfyC5Wb48odjt/BuLA8UKOwR/SKqh5n9T+C2ywK8ZHIlcz9CYefojmMcX55WK1Jr6cQHcoQEnjP282QQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=9fnembkVEEDhOuZIXW2Z8rntda6BnxuiIQu+AOaXMyk=;
- b=ENXtcb6AWU0Efke5pY0J66IYLJpIosO0R7WWcLKSsadfN5H1srWfYQIVnAIQKepoDZK4C/gdUFis9Qey3nBee1HqvnhbY+KKYMTJX7LeZooxHzqqcSeCTHPz7prX256SGbRTDPe5gh1SMA+UF33AOqvcxSd6sZp34q2OTz3nJcKvnqogI+Hfr/tQFio2NpuM2fWDJuz06eVrJU7aP9z2IbhWMnzOE/0HuV3dbTm6W+HLD2J2c0j958ndAmwl95z92hOOgOx77An3YCi8bxwhS+tGRn2+KXtU79gY9MqheeO405St0w0q8NJUf7jAROufY9U32zPzxpquNhBxeWM+8A==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=arm.com; dmarc=pass action=none header.from=arm.com; dkim=pass
- header.d=arm.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arm.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=9fnembkVEEDhOuZIXW2Z8rntda6BnxuiIQu+AOaXMyk=;
- b=r8G/RaJ8L9DN+7i7aTFuCWC6xltvn5jTQjhh4abF75nc/sZqTVdQm+u4TKRFEDi6jFt19xLdwoU+OZ10E72z7pyYxhyknGPR7u7Fyla/XCNQSqwvNZ/a8MOvh/Bd9SibCh2SnuAUHNvCySBgbHnCpjUD8PPgvze5YYaoVTzxAqA=
-Authentication-Results-Original: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=arm.com;
-Received: from GV2PR08MB8368.eurprd08.prod.outlook.com (2603:10a6:150:bb::7)
- by VI1PR08MB5341.eurprd08.prod.outlook.com (2603:10a6:803:135::20) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9366.17; Thu, 4 Dec
- 2025 15:19:27 +0000
-Received: from GV2PR08MB8368.eurprd08.prod.outlook.com
- ([fe80::f88b:b5a0:3f87:e5a]) by GV2PR08MB8368.eurprd08.prod.outlook.com
- ([fe80::f88b:b5a0:3f87:e5a%7]) with mapi id 15.20.9388.009; Thu, 4 Dec 2025
- 15:19:27 +0000
-Message-ID: <b0a801b9-5d09-466f-af20-46bb136d75dd@arm.com>
-Date: Thu, 4 Dec 2025 15:19:18 +0000
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 3/4] drm/rcar-du: Modify custom commit tail
+	Thu, 04 Dec 2025 15:40:48 +0000
+Message-ID: <e46f5376-6ec2-41dd-a536-125ff51fd5d5@linux.dev>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
+	t=1764862843;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=6mtncvbK5kK9osOeRblxF2+16bxpTOg5JufwUEhd5uo=;
+	b=fXeFGKpTl1Cb6hiHT37NJyy3pEAORUdfRzJSh24lyjmktZ7Whvq3cBukQPC5ET73tPWWdY
+	AzAS+FL5JTPYxvOHp8OKN1C7gSNpJHo/LCClDlnyhwAhVP2hVprcl8SDPnV/XcFyV92N+r
+	/7ddRFibh0ZlZ79NgnYZmZOjsW9cpUA=
+Date: Thu, 4 Dec 2025 15:40:13 +0000
+MIME-Version: 1.0
+Subject: Re: [PATCH v6 4/4] RFT: drm/rockchip: Create custom commit tail
 To: Linus Walleij <linusw@kernel.org>, Vicente Bergas <vicencb@gmail.com>,
  Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
  Marek Vasut <marek.vasut+renesas@mailbox.org>,
@@ -110,116 +57,17 @@ To: Linus Walleij <linusw@kernel.org>, Vicente Bergas <vicencb@gmail.com>,
  =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
  Andy Yan <andy.yan@rock-chips.com>
 Cc: dri-devel@lists.freedesktop.org, linux-renesas-soc@vger.kernel.org,
- linux-rockchip@lists.infradead.org, Geert Uytterhoeven <geert@linux-m68k.org>
+ linux-rockchip@lists.infradead.org
 References: <20251202-mcde-drm-regression-thirdfix-v6-0-f1bffd4ec0fa@kernel.org>
- <20251202-mcde-drm-regression-thirdfix-v6-3-f1bffd4ec0fa@kernel.org>
+ <20251202-mcde-drm-regression-thirdfix-v6-4-f1bffd4ec0fa@kernel.org>
 Content-Language: en-US
-From: Aradhya Bhatia <aradhya.bhatia@arm.com>
-In-Reply-To: <20251202-mcde-drm-regression-thirdfix-v6-3-f1bffd4ec0fa@kernel.org>
-X-ClientProxiedBy: LO4P123CA0185.GBRP123.PROD.OUTLOOK.COM
- (2603:10a6:600:1a4::10) To GV2PR08MB8368.eurprd08.prod.outlook.com
- (2603:10a6:150:bb::7)
-MIME-Version: 1.0
-X-MS-TrafficTypeDiagnostic: GV2PR08MB8368:EE_|VI1PR08MB5341:EE_|AM1PEPF000252E1:EE_|AS8PR08MB6582:EE_
-X-MS-Office365-Filtering-Correlation-Id: f9f40130-8898-433b-16eb-08de3348aa5e
-x-checkrecipientrouted: true
-NoDisclaimer: true
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam-Untrusted: BCL:0;ARA:13230040|376014|366016|1800799024|7416014|921020|7053199007;
-X-Microsoft-Antispam-Message-Info-Original: =?utf-8?B?QWl0WG1YelFTaGNPMS90VDdLNDY2MlBxNHRJb1BkS0FYdjR0UERBRGgrUEZ3?=
- =?utf-8?B?Z0FSaGQvMXR5QjdmV2R5ZUdZbzFpTzhzL0VtVnJZOUUxcWlsSmhtc2o2cXFU?=
- =?utf-8?B?T3NCOEpUQ2ZnNVpiaWw2TStkYk5vZGJQcVdBWnZCdnU3cC9ZN1RYZ3RrVEsv?=
- =?utf-8?B?ZGNZRXh0RzdhQVBFWG00RWhaclYzakRCTWJQT3V2L2ZqdUxqRmZFMnd5SHFa?=
- =?utf-8?B?UFVITkRVUUVHQ2pQZklScEFpVVJBbnBERHVVVlY1VVp2RmhtQkk3Wm9mUVlS?=
- =?utf-8?B?bDI3R0h4ZU9WVUFXa0trWktvdlZsVWREZlM4aVEwZWFLb3pKMFVVU3UvQ3h2?=
- =?utf-8?B?cU1JU1JZUzM4cGtLNzlSaTJkV3JXd1JqOHJUZ3VBUFgvTlhIRHJIbmhUZWV4?=
- =?utf-8?B?ZWQ0K2VhMGlFVXRmSlJYYzh0SzY0K1BuOUVidU96bFgrV0g1a0JDMkdLMnB6?=
- =?utf-8?B?V0hJRDdrUTNWV3dMbXM5RXBONlJmdDV6c3o4SFNDWUFGM21GNUlER0NRbW9H?=
- =?utf-8?B?WGxVY1RPQWxSWVFVUWw5YXJmMHNrQjhRa2hsWlE5YWplZmg4TVlJSjBPeThQ?=
- =?utf-8?B?Uk04RG0xaVIyeHgxaGZEcnl1NkExVE1rZmFNeDNGMWlxRnE4eU9wVFdTeXJy?=
- =?utf-8?B?UE9zamtOcUl3ZUUyZUFnaFUvTVZWbFFrOWdMUGZqQ1QrbmhIYlJaYjNRT0xi?=
- =?utf-8?B?V1dudkRxekZ1ajVXRFhra2h2SEFZWTN6YjJ1S0pwQzViZGhmZjB4VW9NdjZQ?=
- =?utf-8?B?MGtUWmtNUVdJcXJYSUJxOFZUQXFXcWpoZEhJaEZPMTFDM1dqb252blNrOXl5?=
- =?utf-8?B?VEFOWTdlQ1FRanBMMzFQU1FQS3RRN1Btak1RTlpHenlJeitwMWhxaXRZaTRu?=
- =?utf-8?B?eXFML2FZeVY0MW9KRTduTnh2TWk4K3RRNnk0MGl6Zi9QMWo3WlZlRS9FTkNw?=
- =?utf-8?B?d1dLRGlSdDZFU0JtbEJuODNocjFrQWNJekxOcHJLcXBXdFR1ZkZlWk15RitP?=
- =?utf-8?B?M3ZJclNYdTV2cjE4TXdKVlFGQ0lDRXhNdTJ6ZzRTV29JTGdnZXdnQ3dQZVMy?=
- =?utf-8?B?UWhUT0RPQ3UwY01WWHQvbC85MlhjMlN5QlJUOWpoYi9Pc0VWSkxacTczZ24z?=
- =?utf-8?B?eTA2TFdyMlJiOS8vbnVTeTd1S0h6TVFBZE81ZGdvempENktlTFhUUWwzNEpD?=
- =?utf-8?B?TzZ6RGFZL3VSMmhBcWZTaDhMNTVTWXhyaFB4cFo1L3FkYVMwVDU1cmJIdGRK?=
- =?utf-8?B?S01hQUxIZE9RcURFWVBWcmhHVkhrUDhtRFBrL2dZWHpzeVFOelNaeWUyZkFs?=
- =?utf-8?B?dm1UQzc0YzdXTlpVVDhYamY2YXowOTE5Q3NqVGZlWlZrenpaeHQvd0NRcCtz?=
- =?utf-8?B?czJ6ZEVOQUNmY1JacVprRGZnQmNhSUY1VVhNRzgxNnRKeFlQOFpLcEVDMEdN?=
- =?utf-8?B?KzBUdkNXODEzSWxJWnMzR04rS04zdm1XQ3NITzIxbkZreFpRYlVNTjNmaCt4?=
- =?utf-8?B?ZThwd3hvektYOXFwUnhRNjJUWDVwT05zMjhMTXRyZVpBSk55eTJwNm9JQXZ6?=
- =?utf-8?B?MTF1K0gvYkhNTjFZeHRicStDTG5ORTM2RkdKN2d0TGpLVFBLZWtPaFZOMFd5?=
- =?utf-8?B?c2hPMWpab09tMVVQRTUrUXRYY0cwcy9RSC9XY3BNZytJa2pVTHNQZGVzZlZ2?=
- =?utf-8?B?R0U1ZjFxU3IyOVlnVUFvcW1oYU1YS2Y4WEROc2g3M29Jc1prbHkzRGVvWE1B?=
- =?utf-8?B?L2JhRE1BaUQ4L3Vwdk9vWWdQNEtEelQxa3Zwb0RjSnM5RlBQUGxMbkZJc1gy?=
- =?utf-8?B?ampoTFFlR01xaHBoWHhGMW82VEcrNnAwVnRmbjl3emxKOWJnaHJsVTRMeVFs?=
- =?utf-8?B?OFdIZGtnOHdsRUlqeW52V0FSY3g1Rkhhc2lkU2FQc1UybWEydWlRajJIeldr?=
- =?utf-8?B?WW94d08rRDZiTTRXVDNFRDJ1OHV3MWhNOUFPOXVjQmtLNVJqTEJqeTIxYllQ?=
- =?utf-8?B?dFdUaVo0WFBUeG12eE1RcENxMXY2Y3gwZGljTklNS1UrYXYyTGZrRENrd29H?=
- =?utf-8?Q?XKbvXw?=
-X-Forefront-Antispam-Report-Untrusted: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:GV2PR08MB8368.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(366016)(1800799024)(7416014)(921020)(7053199007);DIR:OUT;SFP:1101;
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR08MB5341
-X-EOPAttributedMessage: 0
-X-MS-Exchange-Transport-CrossTenantHeadersStripped: AM1PEPF000252E1.eurprd07.prod.outlook.com
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id-Prvs: 4fc37009-5913-4a36-3bc4-08de334883a7
-X-Microsoft-Antispam: BCL:0;ARA:13230040|14060799003|36860700013|7416014|376014|35042699022|82310400026|1800799024|7053199007|13003099007|921020;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?VWpqZFVLUGFzamRWd2dKRU5NR2MvK2FiNUxGL0pQVDlaNXhjT3dZL1FTaWZ2?=
- =?utf-8?B?OHQ5a0s5SHJEOFpYZnpZOVpUcEY2ZjRwaCtKK1Bvck1CcjdvdkNYNzdURlRO?=
- =?utf-8?B?Mmp3V0ozbHpFU0lEQ3ZCN2hSV1RoUzFMTG5OMUFkamhQbFFYQlBrSW41dXo3?=
- =?utf-8?B?aGNubFBnalJHRXp5aHBBdlBJUWMwVEpDb3UrZU5pZUhWcmIzb1owZVBzZEV2?=
- =?utf-8?B?ZHh6ZXQzRytzcEpjbFQ3Zi9mOHY0WEYrQlVJYUZVUVpCalpvQ3BmTmJmem9q?=
- =?utf-8?B?d3F6UmhjMDRWbGJja2tWcldtSm02bEFLTTg5a0hOTWZ6VmxHTnRkdm9wMm1t?=
- =?utf-8?B?TGRUYTdSTnIrT3BTZkc2M3JwSXZoU090cVlLOGJjYy9TUUJ1Z0RueG5jOXJw?=
- =?utf-8?B?VVdWcXNaT2FoVDlTdVBSS3lzL1JuT1pRblFRbmF1K25uUDhpeGtzazQxdk9T?=
- =?utf-8?B?MWdwaTJrZ3lSU285Rk4yUGtSOE5ETDdrYURzYlgyMTBmQVhsV1RnYk1Gb1kv?=
- =?utf-8?B?ZFI0YUFNYmNzTG9Obm1SQnFrTFpHYTRYT2Q2cENrdVVYSkhwSFZad3VFa25w?=
- =?utf-8?B?b2tYc0ROYTdWNklENEZuNStzbkU3STYxb1JWOTNpWmt5RVZ2a05DN21kYUM2?=
- =?utf-8?B?QXo5c0pRTGZGTDlUeWp0SytrY3JpdmNiSURoVnRIcllMdVo5WjVlUFRlMlFp?=
- =?utf-8?B?NVJjL0VhWGNkZU5mVUd1MmlFNzBGM0c1SVVMcFM2N2pHVVhiYVRjVUdUZzNO?=
- =?utf-8?B?Uk5ZNkJxakVJZ09SdDExT2V5MGpMbVFheld6emFJTm9ldXdRMk43dEYrdEEr?=
- =?utf-8?B?ZWd1SE9jTjlva1h3U0U3RDlWa3NCUklpdGR1WjV5aDBaRGFGTEV0U2gxRVlQ?=
- =?utf-8?B?WTJtbGZYTDdpSHF2T0R3YUhxelUxUHRzTWdnOFpEQ3phc2tnSXRyR2RqSjVr?=
- =?utf-8?B?dWhyOU1TR2dVOEVjQWo1VnZkbTNEZmFhWXo2aVRRczNZVVBhRmtsWjcrWk5Z?=
- =?utf-8?B?QlZxMk9qMmYxN3poamhrdXlFdUVHeDhlRk1xVFNqbWM1NnYvK3cwSXc5U2tK?=
- =?utf-8?B?dEdCL0xFTVY5amtodU1TK1lTbThseTNHdStueGFLaDROZVV0QjFKc0tjNTFW?=
- =?utf-8?B?aUNKbkl1S2ZxR0RDYjhYSFpTVHhvaWt1QW1HSXpVUXhuUmpVb1piOWxQY2tN?=
- =?utf-8?B?TUY4QmljVjNIY096MGY4akRwWUNyVEZJZmJSQWJZaWF1ZTJBQUwxRUlKZ1Ft?=
- =?utf-8?B?Yk5HL0JWMi9KK3NXS0JZbURYUWJaOTByOHYwYTNUVEJZbFlHOU9QUUo1VnBo?=
- =?utf-8?B?MEN0a3BFUmRvS2NjNWxWR3ZuNHRXL3RySmhkaURSbXhlVTRRSy9aZWpzcTFk?=
- =?utf-8?B?RUgwMkgzY3FQK1Foako3TEZ5UVdtdjh3dFhvaUtqeUNRUFluRWVrOWR3OTAv?=
- =?utf-8?B?R2w4MmpmN095WUpGWWxTT1RnZktCdjNHRGd3b25aYVdZbXN6NWN1cldvTWhv?=
- =?utf-8?B?NWJCbEMra2JmaitFanVSamdoMkREQjNDNHhmQWkxYVZrN3FuY0duWE4vZlRK?=
- =?utf-8?B?blZzdmdCdEZ2SGdYalR0d2o2ZWVGRGtGNE5RYnEwVFA4R2c2VWRUZjdKR2tt?=
- =?utf-8?B?L1Vyd3VyWWp1NUJuN2JyS2ZSbEpDOWNXWDY2OXBQTjdyRWdLQzdVNmFQOWFW?=
- =?utf-8?B?Nm5DTm1wRkdqWklKQXJCbzZyYTExdzR4RzhUbGhmNWhrditaam93M2FDbzIy?=
- =?utf-8?B?VDV0S0FBZE5rRHFiRWtaR29JTHlVb0FPNEo5MkljanhuTW0rb3RDUUY5aUZQ?=
- =?utf-8?B?S1pjL1JHZUJUUmt4Q29oUnBCY3JkTnBlSnFPb1BWclkvaTBNOFgzSkZsU0gx?=
- =?utf-8?B?OWROeHZyRFJYMGorQWpKR2pHdTR2WEZSZk95RWFUc1dieE94K0NlN2NtTTZz?=
- =?utf-8?B?bWdMQkQvTVNRWWxILy9LbmF0eTlWNXVJaFYvMnp2RUowK0RxUWhFd1ZxTDVa?=
- =?utf-8?B?cElIODA4b3ZwS1FLNzJRS1Y2MFhTQ0JDbSt6QThEc3RQUFNBL0pqdVhodHgw?=
- =?utf-8?B?ME5CMnlJSmxiUHFNWkhYa0NKREF2ME9KUk81UnlTZVBsSzZUSU84M2NmMjVZ?=
- =?utf-8?Q?gqnYNIy/gC0mTUVRWAwEMrh/L?=
-X-Forefront-Antispam-Report: CIP:4.158.2.129;CTRY:GB;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:outbound-uk1.az.dlp.m.darktrace.com;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230040)(14060799003)(36860700013)(7416014)(376014)(35042699022)(82310400026)(1800799024)(7053199007)(13003099007)(921020);DIR:OUT;SFP:1101;
-X-OriginatorOrg: arm.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Dec 2025 15:20:32.1142
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: f9f40130-8898-433b-16eb-08de3348aa5e
-X-MS-Exchange-CrossTenant-Id: f34e5979-57d9-4aaa-ad4d-b122a662184d
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=f34e5979-57d9-4aaa-ad4d-b122a662184d;Ip=[4.158.2.129];Helo=[outbound-uk1.az.dlp.m.darktrace.com]
-X-MS-Exchange-CrossTenant-AuthSource: AM1PEPF000252E1.eurprd07.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS8PR08MB6582
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: Aradhya Bhatia <aradhya.bhatia@linux.dev>
+In-Reply-To: <20251202-mcde-drm-regression-thirdfix-v6-4-f1bffd4ec0fa@kernel.org>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251204_072042_519439_5DB03F5C 
-X-CRM114-Status: UNSURE (   9.62  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251204_074047_604976_D97CC48E 
+X-CRM114-Status: GOOD (  17.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -241,39 +89,39 @@ Hi,
 On 02/12/2025 21:02, Linus Walleij wrote:
 > commit c9b1150a68d9362a0827609fc0dc1664c0d8bfe1
 > "drm/atomic-helper: Re-order bridge chain pre-enable and post-disable"
-> caused regressions in all bridges that e.g. send DSI commands in
-> their .prepare() and .unprepare() callbacks when used with R-Car DU.
->
-> This is needed on R-Car DU, where the CRTC provides clock to LVDS
-> and DSI, and has to be started before a bridge may call .prepare,
-> which may trigger e.g. a DSI transfer.
->
-> This specifically fixes the case where ILI9881C is connected to R-Car
-> DU DSI. The ILI9881C panel driver does DSI command transfer in its
-> struct drm_panel_funcs .prepare function, which is currently called
-> before R-Car DU rcar_du_crtc_atomic_enable() rcar_mipi_dsi_pclk_enable()
-> and the DSI command transfer times out.
->
-> Fixes: c9b1150a68d9 ("drm/atomic-helper: Re-order bridge chain pre-enable and post-disable")
-> Link: https://lore.kernel.org/all/20251107230517.471894-1-marek.vasut%2Brenesas%40mailbox.org/
-> Tested-by: Geert Uytterhoeven <geert@linux-m68k.org>
-> Co-developed-by: Marek Vasut <marek.vasut+renesas@mailbox.org>
-> Signed-off-by: Marek Vasut <marek.vasut+renesas@mailbox.org>
-> Tested-by: Marek Vasut <marek.vasut+renesas@mailbox.org>
-> Reviewed-by: Maxime Ripard <mripard@kernel.org>
+> caused a series of regressions in all panels that send
+> DSI commands in their .prepare() and .unprepare()
+> callbacks when used with the Rockchip driver.
+> 
+> As the CRTC is no longer online at bridge_pre_enable()
+> and gone at brige_post_disable() which maps to the panel
+> bridge .prepare()/.unprepare() callbacks, any CRTC that
+> enable/disable the DSI transmitter in it's enable/disable
+> callbacks will be unable to send any DSI commands in the
+> .prepare() and .unprepare() callbacks.
+> 
+> However the Rockchip driver definitely need the CRTC to be
+> enabled during .prepare()/.unprepare().
+> 
+> Solve this by implementing a custom commit tail function
+> in the Rockchip driver that always enables the CRTC first
+> and disables it last, using the newly exported helpers.
+> 
+> This patch is an edited carbon-copy of the same patch to
+> the ST-Ericsson MCDE driver.
+> 
+> Link: https://lore.kernel.org/all/CAAMcf8Di8sc_XVZAnzQ9sUiUf-Ayvg2yjhx2dWmvvCnfF3pBRA@mail.gmail.com/
+> Reported-by: Aradhya Bhatia <aradhya.bhatia@linux.dev>
+> Reported-by: Vicente Bergas <vicencb@gmail.com>
 > Signed-off-by: Linus Walleij <linusw@kernel.org>
 > ---
-> This is a modified version of Marek's patch using the approach
-> from MCDE. I'm pretty sure this driver also needs the original
-> semantic ording during disablement, and it surely doesn't hurt
-> to restore it too.
+> Rockchip people: can you please test this patch (along
+> with patch 1 of course).
 > ---
->  drivers/gpu/drm/renesas/rcar-du/rcar_du_kms.c | 33 ++++++++++++++++++++++++---
->  1 file changed, 30 insertions(+), 3 deletions(-)
->
-
+>  drivers/gpu/drm/rockchip/rockchip_drm_fb.c | 50 +++++++++++++++++++++++++++++-
+>  1 file changed, 49 insertions(+), 1 deletion(-)
+> 
 Acked-by: Aradhya Bhatia <aradhya.bhatia@linux.dev>
-IMPORTANT NOTICE: The contents of this email and any attachments are confidential and may also be privileged. If you are not the intended recipient, please notify the sender immediately and do not disclose the contents to any other person, use it for any purpose, or store or copy the information in any medium. Thank you.
 
 _______________________________________________
 Linux-rockchip mailing list
