@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F40C8D1D862
-	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Dec 2025 06:32:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E83F1D1D870
+	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Dec 2025 06:32:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kA7BISTB6iE4y+rja5f2d77eAjYYjP0/y+8lpf9UR+k=; b=IxRsDA1tDW9LnL
-	Vo708I/4KzLmXQVRwT1t2KsTn0F9Rz/icmreXsKGd8FNpI9LkKA3zqcPtzHSYDd29175LEdf+xjPb
-	j34AelihbLX14eRTmIhb6IPBLbdKwkmNN1GfpseZcjoQJpd185I5y4DRXIBAOFDX/0Zs3dnwJ0xiE
-	942qIa9mElXA5WrdXhOTD383pEUPlH12K0+bA7APtkYCsNtcXGG1nvbpi+iyjIVAzNPspt8ch9KJg
-	MTYcTgMCohhp9a7tfJPjJhewVenGggseGlJmGy8nFmfoSSAh0T/NTjIaqia5roC/M1rFm98rv1uOZ
-	NZ2EtxM2ECiF0osfKXIA==;
+	List-Owner; bh=647m1WaVfuHc9wwaN9ydSpVHZ4b8DfTloy33by5lbJc=; b=NNKKRh/UKvMRWl
+	iP6oe0CwXZEBn0Kn8br51BH3cFjbKVQ6dkDRsxaxFojtZVkFjoKJiKFxoWo2lXMAPpREZC454nIgq
+	nhk6+7UQJ77JLTb4M5HipWKm8XUiir2KIDg37hDaPwjToD8bQ5HFdbFuDx1YfTIRByksFEeu67IRu
+	xvl0tytsYRtduZYtxIYQUvtogRNxGY8T8+NIg7vDcUZWAMWPr/Oq8dDMIbi6+3vQWLQcHZ33aIBRr
+	CmkaRu0w2Sdwp2F0Qp0RRilJXjsZAIGxfucpYIuYSkzwgqswCr5thdNIgG7Aj0/eUkkKUv6gU5HOn
+	5mLfSU3afgr6/bh2B07A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vR2tB-00000007YDr-05Ln;
-	Thu, 04 Dec 2025 06:32:29 +0000
-Received: from smtpbg154.qq.com ([15.184.224.54])
+	id 1vR2tG-00000007YLa-0QlE;
+	Thu, 04 Dec 2025 06:32:34 +0000
+Received: from smtpbgeu2.qq.com ([18.194.254.142])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vR2t5-00000007Y3U-3hFM;
-	Thu, 04 Dec 2025 06:32:27 +0000
+	id 1vR2t9-00000007Y3i-3ani;
+	Thu, 04 Dec 2025 06:32:32 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
-	s=altu2504; t=1764829891;
-	bh=9oGlaHNtIhbTx7QkJKVpo4Ol7UjzU3rpuzSq9kjRP4w=;
+	s=altu2504; t=1764829899;
+	bh=RCoApW58uwU2PDY/YzjUBVlUXFHY8idxqTE/wHC6S8g=;
 	h=From:To:Subject:Date:Message-Id;
-	b=eeMnGU3jK8jtn9w8UQOkBCGqSy2kaUb2KZDynNxn5Gk9u87Zuu0fRZWtHflPr2pXa
-	 eGdJMVVrlyDoeCdqG9FxKIgYYzsb4vIl/eQ3KMmOl1FiPDDtiYnwVSACWiYIf+lsIX
-	 tF8coF75Py/S/8Xp2QOH6qLFaqXrj8PcpA9kf7IM=
-X-QQ-mid: esmtpsz21t1764829888t35ff679a
-X-QQ-Originating-IP: kpCg3rmbDMu7YW/T8tSReERndLggkBplSug+8Go0WqA=
+	b=qNccVOBWQol9V0edeDUVs3mW4awCJD66okSBs7bqqfk5ToVoDZJ+iUwmmQIfTbG6v
+	 y6qVynSsDhTkJI3wwvvtDVm7BE0Ufvxt9da+PEO6s2jNqhvZZH6ZgSjAtoq/f0C+cy
+	 4xMDE2sovdIN5fvcIHnNeOg1YzXT9lNfpTB1Lq7E=
+X-QQ-mid: esmtpsz21t1764829897t315fc6bd
+X-QQ-Originating-IP: 8xj2EBC2OrSdr2vMc6zndzxvKdFt5qIneZrq+PewvGw=
 Received: from DESKTOP-8BT1A2O.localdomain ( [58.22.7.114])
 	by bizesmtp.qq.com (ESMTP) with 
-	id ; Thu, 04 Dec 2025 14:31:25 +0800 (CST)
+	id ; Thu, 04 Dec 2025 14:31:34 +0800 (CST)
 X-QQ-SSF: 0000000000000000000000000000000
 X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 17088035227337033504
+X-BIZMAIL-ID: 17481815092374181840
 From: Chaoyi Chen <kernel@airkyi.com>
 To: Heikki Krogerus <heikki.krogerus@linux.intel.com>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
@@ -81,34 +81,35 @@ Cc: linux-usb@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	dri-devel@lists.freedesktop.org
-Subject: [RESEND PATCH v11 02/11] usb: typec: Export typec bus and typec altmode device type
-Date: Thu,  4 Dec 2025 14:31:00 +0800
-Message-Id: <20251204063109.104-3-kernel@airkyi.com>
+Subject: [RESEND PATCH v11 04/11] drm/bridge: aux: Add drm_aux_bridge_register_from_node()
+Date: Thu,  4 Dec 2025 14:31:02 +0800
+Message-Id: <20251204063109.104-5-kernel@airkyi.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20251204063109.104-1-kernel@airkyi.com>
 References: <20251204063109.104-1-kernel@airkyi.com>
 X-QQ-SENDSIZE: 520
 Feedback-ID: esmtpsz:airkyi.com:qybglogicsvrgz:qybglogicsvrgz6b-0
-X-QQ-XMAILINFO: Mo8ayuSLF3j9QxrZKtGk6kKkW/H+u39FFu7es7peju+Vts8wBr0hUV+3
-	N29zGWHkJfBV69U3GKlDPBv1ItUf8BWF10zjDUyDeaT7JNFEWMiKAZIgVgZpyUg3/eWK2Qi
-	RaMlKeekZfGu8n4bDlUEZBq/cKD1t/z+rhiJTyBSoGIsdP6cn/Nykuzqc6NtcHqrzM8uDj6
-	CPKbEGUNO1oDyQfmskjsTcQ+MU4rasi2uoIAVUOvxGRMQyPKRKhxdcYcpUncgL4DfLaYIDu
-	QjkOHhpCvPPOKtkft2jpERXO7eQoU0SkusZoIk3TrVylFpAGBtCgC+JFLqA18ZwPpkVuJFt
-	bl1GCOaVf79BHXENSgs7nfcM2yZrJUJl67AbqauExJc2pVXXBMWkYkBGO7j+xYFy9pJraMO
-	vq0mE99bwlBHe7BDPeZ8ViJWj0n9u4U7B0YFS8No7ZRIpFNh1rNTKZrLFTFNHFNqnl6TMzk
-	Xo2F0ysYvsNCGZPGX1vMk9vBeNHVcCGq4g9Yt46UEDz67VqmrGJnG9k5DP33lmGjPolnnU4
-	eERFPSexlCdTdbwmvxUKEIv4rAYl8uRSR9FD+yXQgarsOdEmJ3eFXila72wy/6mGv01AJxx
-	HLZHmlsq34+aoegzmKZhrrIeYDy3iSXb34He41qMAsm96uRtj6w1N0DnikatGJBiSMd0hEE
-	qTX+2nawJsIAs4g2zSFolScQT7fv9Xa/p6vj13dj+N+3W2IyG0T/mMTUZTxgY/Z5Fax7A8O
-	/E1ogTziceJOhUo8LS3G4OasH0NoAhg/EQNYHnGhxbgjIcYSISIw3wiPZa9ZnI0AZmdjy9N
-	OeSk4YxCb0RqV7bGp1GvYmKtrJuHNCqGTTW3pJY0hkqWz6mtqNdNpC/DpNwQhOAqLgiUVMB
-	bmMMBL1yT6tQzesGaLVbkoZQMIKEexYiDK1JT/ecMXlSLD2/u2VUNwvE/oBFL8EmaOoCZrC
-	PnTmb3cfWy+q787DO6cwbhJSv9Sd6G8Px2opgkIRF0KTmM4CL7zulMyvCc4TVUOK/rAU=
-X-QQ-XMRINFO: Nq+8W0+stu50PRdwbJxPCL0=
+X-QQ-XMAILINFO: NEaes6yu2o+mFnx7+1TQr1UIMOVJYmUAEUlrMPCY5/Zbw/99H7lxyqYu
+	Xce7TznBk0lRFxNGP0ux3N0T1T/2pdorqz38OXY2cCSE57Q8ch+LwAXDVFDBl+nka4fF0o2
+	xGBmFAspAqIGd+D6hAtd9H+KHBBCWxvdKlR8WuZSN/hn3Hu6C9YHV4iFToanKBtVaWPlCQP
+	43WCjBlzIRIO2bJeHn6RMRXvxIdwISJRNOa/VVZWj+1JRr4RJIn/j+YWG5LXCTpyo7Mozo1
+	3pJ1TZFx+ugPFitRGIzJr4scX8UOCNTd+f8LNK8BXt2n2bACqHCVMQ+UcManZ8bz0sgocmK
+	yz+m45jrnUgzOW/HpCwtOb1toIsWVAIbThuL5Fbp80k+xzEseZKgUlM3fb5KcCLqLR+OUBT
+	dfjRnbMwPK9LcKi41kzacuomV4nDgFR+HNwwIFezBgJIhMkmxslVMFwONsourpIGPjM2LEG
+	MhpK8OQqxQIoU+D9HuJjpnpcqhiAP91xSiQZT2UrXn9wWqlzyoiV546fWeQW3eBYv6EY2ag
+	gNae2800g7RPgcPD63rYFmK91zYj2fvQR/LmF+jXPal/lAQSftYYKRY4FQfJMwSKUzzTALN
+	N4+jnFlUC8THnsAG9pJ2I+8AffwWbb62PcGNqCeEgVx36v+Cq8HsdlcwCzY5Rw4Jw48a4HT
+	EVDUfx99QVkphKsuIxs+Sj3rSmVXpDCAQZLJ1Nfyw1PD+FGIWhWM6XZ+CzHifnC/jCjXO9S
+	j/QhC7ivdH45pvPBu//Rl09gfI04Wyd8V83NRTiNW8x+uh+qlgHEXnwT6+jIAuKRKPYnYUQ
+	51ZdUPRKSjVgEB4lTQOq6o1Dfw+KBGbAljoT47zAXXvSnHczyYVTM7Sdu/fqZer6Fo7sm/I
+	0uIaaHbMFzhXmxdBkLVquWipPDV4yZH7+/z9qEAN0uwUEAB7Lmkfx0XdNZwHqNP4Q0kPyB1
+	i3s3MdETs7VaPVr3dAaQMx1y99EdDiajA+0RwIYxlWEcWmhxEgi4J+uL7GmL/s/1yBr1yTX
+	OdN02r0g==
+X-QQ-XMRINFO: OWPUhxQsoeAVDbp3OJHYyFg=
 X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251203_223225_671633_9902C4CF 
-X-CRM114-Status: GOOD (  13.28  )
+X-CRM114-CacheID: sfid-20251203_223228_414495_B67BEBFB 
+X-CRM114-Status: GOOD (  14.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -128,128 +129,100 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
 
-The DRM may want to register a notifier on the typec bus to know when
-a typec altmode device is added, and distinguish between different
-types of typec altmode device.
+The drm_aux_bridge_register() uses the device->of_node as the
+bridge->of_node.
 
-Export these things.
+This patch adds drm_aux_bridge_register_from_node() to allow
+specifying the of_node corresponding to the bridge.
 
 Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
 ---
 
-Changes in v11:
-- Also export typec bus.
-- Add more detailed comments.
+(no changes since v11)
 
-(no changes since v9)
+ drivers/gpu/drm/bridge/aux-bridge.c | 24 ++++++++++++++++++++++--
+ include/drm/bridge/aux-bridge.h     |  6 ++++++
+ 2 files changed, 28 insertions(+), 2 deletions(-)
 
- drivers/usb/typec/bus.c           |  1 +
- drivers/usb/typec/bus.h           | 10 ----------
- drivers/usb/typec/class.c         |  3 +++
- include/linux/usb/typec.h         |  3 +++
- include/linux/usb/typec_altmode.h |  8 ++++++++
- 5 files changed, 15 insertions(+), 10 deletions(-)
-
-diff --git a/drivers/usb/typec/bus.c b/drivers/usb/typec/bus.c
-index a33da7f458a5..e84b134a3381 100644
---- a/drivers/usb/typec/bus.c
-+++ b/drivers/usb/typec/bus.c
-@@ -569,3 +569,4 @@ const struct bus_type typec_bus = {
- 	.probe = typec_probe,
- 	.remove = typec_remove,
- };
-+EXPORT_SYMBOL_GPL(typec_bus);
-diff --git a/drivers/usb/typec/bus.h b/drivers/usb/typec/bus.h
-index b58e131450d1..7df5deb1dd3a 100644
---- a/drivers/usb/typec/bus.h
-+++ b/drivers/usb/typec/bus.h
-@@ -5,7 +5,6 @@
- 
- #include <linux/usb/typec_altmode.h>
- 
--struct bus_type;
- struct typec_mux;
- struct typec_retimer;
- 
-@@ -28,13 +27,4 @@ struct altmode {
- 
- #define to_altmode(d) container_of(d, struct altmode, adev)
- 
--extern const struct bus_type typec_bus;
--extern const struct device_type typec_port_altmode_dev_type;
--extern const struct device_type typec_plug_altmode_dev_type;
--extern const struct device_type typec_partner_altmode_dev_type;
--
--#define is_typec_port_altmode(dev) ((dev)->type == &typec_port_altmode_dev_type)
--#define is_typec_plug_altmode(dev) ((dev)->type == &typec_plug_altmode_dev_type)
--#define is_typec_partner_altmode(dev) ((dev)->type == &typec_partner_altmode_dev_type)
--
- #endif /* __USB_TYPEC_ALTMODE_H__ */
-diff --git a/drivers/usb/typec/class.c b/drivers/usb/typec/class.c
-index d6b88317f8a4..c4ff4310ff58 100644
---- a/drivers/usb/typec/class.c
-+++ b/drivers/usb/typec/class.c
-@@ -537,18 +537,21 @@ const struct device_type typec_port_altmode_dev_type = {
- 	.groups = typec_altmode_groups,
- 	.release = typec_altmode_release,
- };
-+EXPORT_SYMBOL_GPL(typec_port_altmode_dev_type);
- 
- const struct device_type typec_plug_altmode_dev_type = {
- 	.name = "typec_plug_alternate_mode",
- 	.groups = typec_altmode_groups,
- 	.release = typec_altmode_release,
- };
-+EXPORT_SYMBOL_GPL(typec_plug_altmode_dev_type);
- 
- const struct device_type typec_partner_altmode_dev_type = {
- 	.name = "typec_partner_alternate_mode",
- 	.groups = typec_altmode_groups,
- 	.release = typec_altmode_release,
- };
-+EXPORT_SYMBOL_GPL(typec_partner_altmode_dev_type);
- 
- static struct typec_altmode *
- typec_register_altmode(struct device *parent,
-diff --git a/include/linux/usb/typec.h b/include/linux/usb/typec.h
-index 309251572e2e..c6fd46902fce 100644
---- a/include/linux/usb/typec.h
-+++ b/include/linux/usb/typec.h
-@@ -20,12 +20,15 @@ struct typec_port;
- struct typec_altmode_ops;
- struct typec_cable_ops;
- 
-+struct bus_type;
- struct fwnode_handle;
- struct device;
- 
- struct usb_power_delivery;
- struct usb_power_delivery_desc;
- 
-+extern const struct bus_type typec_bus;
-+
- enum typec_port_type {
- 	TYPEC_PORT_SRC,
- 	TYPEC_PORT_SNK,
-diff --git a/include/linux/usb/typec_altmode.h b/include/linux/usb/typec_altmode.h
-index f7db3bd4c90e..9197a4637a93 100644
---- a/include/linux/usb/typec_altmode.h
-+++ b/include/linux/usb/typec_altmode.h
-@@ -9,6 +9,14 @@
- 
- #define MODE_DISCOVERY_MAX	6
- 
-+extern const struct device_type typec_port_altmode_dev_type;
-+extern const struct device_type typec_plug_altmode_dev_type;
-+extern const struct device_type typec_partner_altmode_dev_type;
-+
-+#define is_typec_port_altmode(dev) ((dev)->type == &typec_port_altmode_dev_type)
-+#define is_typec_plug_altmode(dev) ((dev)->type == &typec_plug_altmode_dev_type)
-+#define is_typec_partner_altmode(dev) ((dev)->type == &typec_partner_altmode_dev_type)
-+
- struct typec_altmode_ops;
- 
+diff --git a/drivers/gpu/drm/bridge/aux-bridge.c b/drivers/gpu/drm/bridge/aux-bridge.c
+index b3e4cdff61d6..52dff4601c2d 100644
+--- a/drivers/gpu/drm/bridge/aux-bridge.c
++++ b/drivers/gpu/drm/bridge/aux-bridge.c
+@@ -35,6 +35,7 @@ static void drm_aux_bridge_unregister_adev(void *_adev)
  /**
+  * drm_aux_bridge_register - Create a simple bridge device to link the chain
+  * @parent: device instance providing this bridge
++ * @np: device node pointer corresponding to this bridge instance
+  *
+  * Creates a simple DRM bridge that doesn't implement any drm_bridge
+  * operations. Such bridges merely fill a place in the bridge chain linking
+@@ -42,7 +43,7 @@ static void drm_aux_bridge_unregister_adev(void *_adev)
+  *
+  * Return: zero on success, negative error code on failure
+  */
+-int drm_aux_bridge_register(struct device *parent)
++int drm_aux_bridge_register_from_node(struct device *parent, struct device_node *np)
+ {
+ 	struct auxiliary_device *adev;
+ 	int ret;
+@@ -62,7 +63,10 @@ int drm_aux_bridge_register(struct device *parent)
+ 	adev->dev.parent = parent;
+ 	adev->dev.release = drm_aux_bridge_release;
+ 
+-	device_set_of_node_from_dev(&adev->dev, parent);
++	if (np)
++		device_set_node(&adev->dev, of_fwnode_handle(np));
++	else
++		device_set_of_node_from_dev(&adev->dev, parent);
+ 
+ 	ret = auxiliary_device_init(adev);
+ 	if (ret) {
+@@ -80,6 +84,22 @@ int drm_aux_bridge_register(struct device *parent)
+ 
+ 	return devm_add_action_or_reset(parent, drm_aux_bridge_unregister_adev, adev);
+ }
++EXPORT_SYMBOL_GPL(drm_aux_bridge_register_from_node);
++
++/**
++ * drm_aux_bridge_register - Create a simple bridge device to link the chain
++ * @parent: device instance providing this bridge
++ *
++ * Creates a simple DRM bridge that doesn't implement any drm_bridge
++ * operations. Such bridges merely fill a place in the bridge chain linking
++ * surrounding DRM bridges.
++ *
++ * Return: zero on success, negative error code on failure
++ */
++int drm_aux_bridge_register(struct device *parent)
++{
++	return drm_aux_bridge_register_from_node(parent, NULL);
++}
+ EXPORT_SYMBOL_GPL(drm_aux_bridge_register);
+ 
+ struct drm_aux_bridge_data {
+diff --git a/include/drm/bridge/aux-bridge.h b/include/drm/bridge/aux-bridge.h
+index c2f5a855512f..7dd1f17a1354 100644
+--- a/include/drm/bridge/aux-bridge.h
++++ b/include/drm/bridge/aux-bridge.h
+@@ -13,11 +13,17 @@ struct auxiliary_device;
+ 
+ #if IS_ENABLED(CONFIG_DRM_AUX_BRIDGE)
+ int drm_aux_bridge_register(struct device *parent);
++int drm_aux_bridge_register_from_node(struct device *parent, struct device_node *np);
+ #else
+ static inline int drm_aux_bridge_register(struct device *parent)
+ {
+ 	return 0;
+ }
++
++static inline int drm_aux_bridge_register_from_node(struct device *parent, struct device_node *np)
++{
++	return 0;
++}
+ #endif
+ 
+ #if IS_ENABLED(CONFIG_DRM_AUX_HPD_BRIDGE)
 -- 
 2.51.1
 
