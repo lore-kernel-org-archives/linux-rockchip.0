@@ -4,70 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B122D2F7EF
-	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Dec 2025 13:53:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1D62D2F7F8
+	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Dec 2025 14:11:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=A36AdCCAuSZfPJ0z2pNZlf47u1+p8mWypLBLqKZ5/ho=; b=or2XIjCKHhOrtw877n1/AsYxAk
-	dtl3efjzMc4UsPne/Ujgg71iwhMXClk1bauPwRQqWFa/a41Mci47Cm0wP3nJYVn+sWEy92utWpGKk
-	S3oNEAIokSnrwSi7DIJ2FnjRuCGa6z5TFdBS88LMaY0FuJ4wJs+Djky1DCnkTS1HYK3ium8dPIqrB
-	6Y3AgnD2/+KnravQX5LQG5+TDQqLLM86ZkiCiI2OAupkpsYpxhUQ1CXNv6toMnOf9GFjHOp4lyjVz
-	3ELrNgtfywc57dw9la+M1p6fC680uzidJoq2wKC6MdRwBpg8uUs9YbWx1VT07rTsdIS58SVuIUlFe
-	G4xEH0XQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=mAn4jYwBoUfAs6C4XlP7n4LulKgs75KawWScaHrDpGo=; b=mKoh/mojb7x/bO
+	4FsAwMjlx1E/GUqtcXsMPeqBlD0nENQ5Hp5D++NlqpIoj250GaQLRkHolofWRCapkucjZy22xaXEF
+	0UyPn7gBqM4Q6/dPGlESI/fO5wT1W3oJ3s4GnhMEAj1L2r270KnpX2wXpzut+IfxCZObLMDZOGDob
+	iBPHcg/GGGxluVFK0g0ezBBnWL8S+YKLykN3r7aJnFV45nmoTJPB/u8NMHtHV04VjftG+3BcuzyPt
+	qe1lyXv5arLGbdHivljygiLWw+LhOcehDDgo2+gZzhxTa/8zfPQ2TsYIClbvnRnvH+nEf10JaArWt
+	YS5QDB/TaK0EEswiW7Zw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vRWFf-00000009YAO-3kJe;
-	Fri, 05 Dec 2025 13:53:39 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vRWWm-00000009Z3V-0L4f;
+	Fri, 05 Dec 2025 14:11:20 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vRWFd-00000009Y9q-3fye
+	id 1vRWWl-00000009Z3N-007p
 	for linux-rockchip@lists.infradead.org;
-	Fri, 05 Dec 2025 13:53:39 +0000
+	Fri, 05 Dec 2025 14:11:19 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 52B9440210;
-	Fri,  5 Dec 2025 13:53:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D1585C4CEF1;
-	Fri,  5 Dec 2025 13:53:35 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 28041601F3
+	for <linux-rockchip@lists.infradead.org>; Fri,  5 Dec 2025 14:11:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CA673C19425
+	for <linux-rockchip@lists.infradead.org>; Fri,  5 Dec 2025 14:11:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1764942816;
-	bh=/hC7rd6Y9Vayemn+Pbfyjg5j0j2kUQXBmQlPRF88pv8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=cE6wwOerfX3UoSj7qH/joVItak7wgZUJHkz4saNXDBRE68r3bpyMVs9MIGAaG5gGK
-	 kVSCHiFU5FQp0Hwq++iZuDsjk+oWuCPESMy0RTWg7XlgbnGeUWcXJaGShs3fjOQY8X
-	 v34WXO7ugfQxY1V3adH6MYyqnmsy+c3rg+d/Fjyx03qZv952LRGyIZTXlE/ZVhgHXO
-	 USllvUH/wYi7aZr+n7cAtLR4HDblMEfc6GcHTMKHylhDS8k8a0XbK/zpPIG+j5GR4s
-	 F2keNltKuktIqOn0mzCAE+Ce/ds71Ig1Z+9OZbE//S0+984Y1fNJ51XvNnjfdoDe4I
-	 I/SLuRHZHf75g==
-Date: Fri, 5 Dec 2025 14:53:33 +0100
-From: Maxime Ripard <mripard@kernel.org>
-To: Linus Walleij <linus.walleij@linaro.org>
-Cc: Chaoyi Chen <chaoyi.chen@rock-chips.com>, 
-	Linus Walleij <linusw@kernel.org>, Vicente Bergas <vicencb@gmail.com>, 
-	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, Marek Vasut <marek.vasut+renesas@mailbox.org>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, Tomi Valkeinen <tomi.valkeinen+renesas@ideasonboard.com>, 
-	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, Geert Uytterhoeven <geert+renesas@glider.be>, 
-	Magnus Damm <magnus.damm@gmail.com>, Aradhya Bhatia <a-bhatia1@ti.com>, 
-	Dmitry Baryshkov <lumag@kernel.org>, Sandy Huang <hjc@rock-chips.com>, 
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
-	dri-devel@lists.freedesktop.org, linux-renesas-soc@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, Aradhya Bhatia <aradhya.bhatia@linux.dev>
-Subject: Re: [PATCH v6 4/4] RFT: drm/rockchip: Create custom commit tail
-Message-ID: <20251205-strong-dandelion-newt-a776af@houat>
+	s=k20201202; t=1764943877;
+	bh=ZMCm7W6YKxTJT59+fIMuX3/S1J4Ngcse8UNpCxHCdqM=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=mpn7+3GUJWOLIo6G0WA39on4/7X3i64R1qKnP37EhtEVpuMwpK8CtoXM63HejKTy8
+	 9mqfRySr+b2S9fWVlgZcCCYHKrI7/Ce7sKtNxicMMPtZoHJW9+sUf3vmgNPPh0IbUI
+	 B3ih2abaQqnvLOiOAJvfaZYpNDAV2iru3mYNkSs02rsRCBtKUN736wPZVEkcYIWioC
+	 Ci1ucR01Ixq5cLjt4USfu0MPI+nKaQea+frZP5IyHtYTU8AVAhjdkQwfNLgFxGWCla
+	 9tXxV//zK9TXO3OGzlxI/G1Udu2NDeJZRajVYpE9f0lmNnabA6/NPZm9d9FhqYusz3
+	 qrArgB8Tol9EA==
+Received: by mail-yx1-f42.google.com with SMTP id 956f58d0204a3-6420c08f886so2457363d50.3
+        for <linux-rockchip@lists.infradead.org>; Fri, 05 Dec 2025 06:11:17 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCXzSlKqE4MQ2zJz8CtUBqD+Cq7Vsvz9eL9Tk+2PCYAMF8brRsHtonadEjVuebWagGpO8dUdFKrPXDWoug/FFg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzOq3JPSNOYCvP9aB0uGTi/qhAd7vY48JOLIpQ4/Uc8Xj5Rw2zg
+	e5uzN+OLFMOCDh5E04LwC+hY84R6sDrJ8/XGSte+syRHSFqpeFH/u1prXWTEGapnutW/X9EjEH0
+	4HyPs1r+jZLOmQvhGQT8H5XHAdzIrMCs=
+X-Google-Smtp-Source: AGHT+IEIfvC759yuVcH02RE4GW4qH2Ys7uHp2NQ72HenyKnTBQYRbNArLc/QN0zNZJGg6Ck/JosV6/HWxtziBHNuB3Y=
+X-Received: by 2002:a05:690e:13cf:b0:63f:aef7:d01b with SMTP id
+ 956f58d0204a3-64436f96e35mr6953289d50.8.1764943877033; Fri, 05 Dec 2025
+ 06:11:17 -0800 (PST)
+MIME-Version: 1.0
 References: <20251202-mcde-drm-regression-thirdfix-v6-0-f1bffd4ec0fa@kernel.org>
  <20251202-mcde-drm-regression-thirdfix-v6-4-f1bffd4ec0fa@kernel.org>
- <5d6e8e0e-3129-49f1-8c5f-c2f837a36139@rock-chips.com>
- <CACRpkdZwgsbVezfQBRP6pX-o8TLvtFMt+M+rL7GrTmeuzN8xvQ@mail.gmail.com>
-MIME-Version: 1.0
-In-Reply-To: <CACRpkdZwgsbVezfQBRP6pX-o8TLvtFMt+M+rL7GrTmeuzN8xvQ@mail.gmail.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251205_055337_954083_80BDA35C 
-X-CRM114-Status: GOOD (  17.16  )
+ <5d6e8e0e-3129-49f1-8c5f-c2f837a36139@rock-chips.com> <CACRpkdZwgsbVezfQBRP6pX-o8TLvtFMt+M+rL7GrTmeuzN8xvQ@mail.gmail.com>
+ <20251205-strong-dandelion-newt-a776af@houat>
+In-Reply-To: <20251205-strong-dandelion-newt-a776af@houat>
+From: Linus Walleij <linusw@kernel.org>
+Date: Fri, 5 Dec 2025 15:11:06 +0100
+X-Gmail-Original-Message-ID: <CAD++jLkjMRQ3piayZYdKEMDmiwzARfxY36b3=PVUepw0PqUyTA@mail.gmail.com>
+X-Gm-Features: AQt7F2ooVl-aRLrmmqtuqQJpJ731dmMHgmyyfa05zyP1eQASt7uZOJRtxkCEx78
+Message-ID: <CAD++jLkjMRQ3piayZYdKEMDmiwzARfxY36b3=PVUepw0PqUyTA@mail.gmail.com>
+Subject: Re: [PATCH v6 4/4] RFT: drm/rockchip: Create custom commit tail
+To: Maxime Ripard <mripard@kernel.org>
+Cc: Linus Walleij <linus.walleij@linaro.org>, Chaoyi Chen <chaoyi.chen@rock-chips.com>, 
+	Vicente Bergas <vicencb@gmail.com>, Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, 
+	Marek Vasut <marek.vasut+renesas@mailbox.org>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann <tzimmermann@suse.de>, 
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+	Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, 
+	Tomi Valkeinen <tomi.valkeinen+renesas@ideasonboard.com>, 
+	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, 
+	Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, 
+	Aradhya Bhatia <a-bhatia1@ti.com>, Dmitry Baryshkov <lumag@kernel.org>, Sandy Huang <hjc@rock-chips.com>, 
+	=?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+	Andy Yan <andy.yan@rock-chips.com>, dri-devel@lists.freedesktop.org, 
+	linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	Aradhya Bhatia <aradhya.bhatia@linux.dev>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,86 +90,29 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3436001345821546050=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
---===============3436001345821546050==
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="iiu34guk5mzq376l"
-Content-Disposition: inline
-
-
---iiu34guk5mzq376l
-Content-Type: text/plain; protected-headers=v1; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v6 4/4] RFT: drm/rockchip: Create custom commit tail
-MIME-Version: 1.0
-
-On Wed, Dec 03, 2025 at 10:54:45AM +0100, Linus Walleij wrote:
-> On Wed, Dec 3, 2025 at 4:10=E2=80=AFAM Chaoyi Chen <chaoyi.chen@rock-chip=
-s.com> wrote:
->=20
-> > It seems that multiple drivers currently depend on the CRTC being
-> > enabled and they implement the same atomic_commit_tail().
-> >
-> > Why not implement this in drm_atomic_helper_commit_tail_rpm() instead?
-> > Or why not use another common helper function for this?
->=20
-> So my v2 version of the patch series added a new special case
-> helper tail function to do that:
-> https://lore.kernel.org/dri-devel/20251118-mcde-drm-regression-v2-3-4fedf=
-10b18f6@linaro.org/
->=20
-> It was politely NACKed for complicating the helpers library (short story).
-
-The longer story is that it wasn't NACKed at all, but if we want to do that:
-
-- We need to figure out the bridge ordering mess in the first place
-
-- Improve the commit_tail helpers doc to make it clearer what each are
-  doing
-
-- Probably change their name too, since the rpm suffix is a gross
-  simplification of what is happening
-
-- Create a few kunit tests to make sure whatever order they guarantee is
-  properly implemented
-
-- And maybe create a few helpers and convert drivers to that.
-
-None of that have any place for a regression fix, so it wasn't a
-reasonable ask.
-
-Maxime
-
---iiu34guk5mzq376l
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCaTLj1wAKCRAnX84Zoj2+
-dtfvAYCK0e7SvjMsHWvvtqMA8laxNk1TCzat/WvSag5cJ2DIKG3nBapeYk829dYp
-QxYNjv4BgNoX6fyZdnio672A2YVqlQlALPbN3Vl1yb6/Z0LaoBMuBgYSg1VnIeut
-gSBrugWVcg==
-=dmYT
------END PGP SIGNATURE-----
-
---iiu34guk5mzq376l--
-
-
---===============3436001345821546050==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============3436001345821546050==--
-
+T24gRnJpLCBEZWMgNSwgMjAyNSBhdCAyOjUz4oCvUE0gTWF4aW1lIFJpcGFyZCA8bXJpcGFyZEBr
+ZXJuZWwub3JnPiB3cm90ZToKCj4gLSBXZSBuZWVkIHRvIGZpZ3VyZSBvdXQgdGhlIGJyaWRnZSBv
+cmRlcmluZyBtZXNzIGluIHRoZSBmaXJzdCBwbGFjZQoKSSB3YXMgdGhpbmtpbmcgYWJvdXQgd2hh
+dCB3ZSBjYW4gZG8gaGVyZSwgYWRkaW5nIHZhcmlvdXMgZmxhZ3Mgd2FzCmRpc2N1c3NlZCBhbmQg
+ZGVlbWVkIHRvbyBrbHVkZ3kuCgpXaGF0IGV4aXN0cyBpbiB0aGUga2VybmVsIGFyZSB0aGluZ3Mg
+c3VjaCBhcyB0aGUgTU1DIHBvd2VyIHNlcXVlbmNlcgp3aGljaCBjYW4gYmUgZm91bmQgaW4KCmRy
+aXZlcnMvbW1jL2NvcmUvcHdyc2VxX3NpbXBsZS5jCmRyaXZlcnMvbW1jL2NvcmUvcHdyc2VxX2Vt
+bWMuYwpkcml2ZXJzL21tYy9jb3JlL3B3cnNlcV9zZDg3ODcuYwoKd2l0aCBzb21lIERUIGJpbmRp
+bmdzIGluCgpEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbW1jL21tYy1wd3JzZXEt
+c2ltcGxlLnlhbWwKRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21tYy9tbWMtcHdy
+c2VxLWVtbWMueWFtbApEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbW1jL21tYy1w
+d3JzZXEtc2Q4Nzg3LnlhbWwKClNvIGhlcmUgdGhlIGFwcHJvYWNoIGlzIHRoYXQgdGhlIHNwZWNp
+ZmljIHNlcXVlbmNpbmcgcmVxdWlyZW1lbnRzCmFyZSBhZGRlZCB0byB0aGUgaGFyZHdhcmUgZGVz
+Y3JpcHRpb24gKHRoZSBkZXZpY2UgdHJlZSkgYnV0IHRoZXJlIHRoZQpyZXNvdXJjZXMgYXJlIHJl
+YWxseSBmbGF0LCB0aGVuIHRoZSBkcml2ZXIgZm9yIGVhY2ggdHlwZSBvZiBzZXF1ZW5jZQp0YWtl
+cyBjYXJlIG9mIHRoZSBzZW1hbnRpY3MsIGkuZS4gdGhlIGFjdHVhbCBzZXF1ZW5jaW5nIGFuZCBv
+cmRlcmluZy4KCk1heWJlIHdlIHdhbnQgdG8gbG9vayBpbnRvIHNvbWV0aGluZyBsaWtlIHRoaXM/
+CgpZb3VycywKTGludXMgV2FsbGVpagoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlw
+QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9s
+aXN0aW5mby9saW51eC1yb2NrY2hpcAo=
