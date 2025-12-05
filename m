@@ -4,81 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D28B0D2CE0B
-	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Dec 2025 02:27:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4395BD2E00C
+	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Dec 2025 06:48:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+RT8mHmu58tfMKLrBZAV/2+Qnli0Yy1VBrH4UfqGu0I=; b=AtAIq8SW5MfryA
-	q/miKSw4hOmHAo+dhoouZepyYpoWHXWdlpWu/T12neg57orq6ZUwSzXAdIsCXUO0wjIG2wioYQxPB
-	qEiYkKggSF2Xoe+LGsAhIGNBp3G0DYu+47+dk0R99Htwbvp77qJjHn1KGk3LoqdEnl0j7uGxfyNb2
-	+JR/XeNV4gG0wzIsJXB0rZk6J/SDBTh9hZYzXySGEQYnkyFLz1BdkMy5f0AmvHuZDFMFfMektN0D4
-	QkcINw1Pck+ejeebq3XZsQIJP+XlkiZyvjNqQuJi3QblVQxbcg9092zIooWImmET5MJ6V32LSDGPG
-	lt/EGjbFovLv/lgWy3mg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=vaExEDFomsPEQwgKQGMGHUgWo/JmxHpARD5JIFl6V4k=; b=aRlFMERdwOsNGU
+	SB3ppo9fynrcL1t9VQWNucUJvdGEmbA5/qyjBiRsWlUZ8r1fZIbSsYgKa0wbHZBMXm3EwXSv/twOr
+	kUY9yz8fXBL5bvdvTptAxsWyBHMNOvDt8lQnbxkzR/HPgAZm4YKVJKCqhB4R1VxKDFctvT0M0EexQ
+	n7AGKr27FB3T0HlceOf20Quz/Gmj+Ayis0FWk7uOfFNtu0tbi4SXvxmtTQchHDp4q5mq5eeC7bw39
+	0lZLnsrFmtRo1ly6cAf0EFgHjkgckEtr3fdL7sTGWNmE85C/G2vfqk+xpmC9K94FUT1IJpH821Be1
+	t3vOcKdy4NhMyYREK8UQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vRLWr-00000008ujD-2hRJ;
-	Fri, 05 Dec 2025 02:26:41 +0000
-Received: from mail-m19731112.qiye.163.com ([220.197.31.112])
+	id 1vRPbc-000000096tF-2bw9;
+	Fri, 05 Dec 2025 06:47:52 +0000
+Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vRLWl-00000008uiT-24UW;
-	Fri, 05 Dec 2025 02:26:37 +0000
-Received: from [127.0.0.1] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 2c1095715;
-	Fri, 5 Dec 2025 10:26:26 +0800 (GMT+08:00)
-Message-ID: <84f06c0f-3ec7-4a43-bba2-1979c3a07127@rock-chips.com>
-Date: Fri, 5 Dec 2025 10:26:20 +0800
+	id 1vRPba-000000096se-169B
+	for linux-rockchip@lists.infradead.org;
+	Fri, 05 Dec 2025 06:47:51 +0000
+Received: by mail-pl1-x632.google.com with SMTP id d9443c01a7336-295395ceda3so3152245ad.2
+        for <linux-rockchip@lists.infradead.org>; Thu, 04 Dec 2025 22:47:49 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1764917269; x=1765522069; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=cQCqvOs+rmxg5luABnNgFbGK2aNywkYQWiXVFeR2OFE=;
+        b=mV9U/iXMTnNq6X0Lon4b3qlBQWl4rSUzl5QQ8WSeQAaOw6mw5MoDgYhQZ4J9svA/t4
+         tvoS9Cyv/VhYyovYPfiC0DGOqgAimEb065AnAMATRmtnHxAWkrN23UWyCjILltGjmXfS
+         xaJuVg0TGetZ9OeA5r5wFRvCzuFsZZyOCzfpVAAH0wzZWBi4gNyZr4Qs3M2w4k6UoxS0
+         5y5c4m+zsCmDJpEmbd+F04K3iAnQBXaveEbnW+fzOJTnrmcD6UMlM0biL3XmotFqelNx
+         +1wrXiAWAL9+YbObwg5kA3FkUNlhSruZnnd3fhn+JKKfQbd46S79s6MkkIdn+XprJ4jm
+         TDow==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1764917269; x=1765522069;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=cQCqvOs+rmxg5luABnNgFbGK2aNywkYQWiXVFeR2OFE=;
+        b=NOm9WMR9+2WFFUSAdQL1yIFhJkLHmM0SieC2m5fp2+iXvzsewpv/8U2ZTmakxQopKm
+         drGODhcugHQhFafyGqH0O2udjVSKURRPXWvWaPqXM1XfBM9LO1fp7ofOpTLJSESjAlIn
+         90kS2Pwok36uHjzUX4hFrA4+w8RMQ8cTn/6+nGg8DOog9nxZQSvOnnUIWN0CHARcjNB2
+         8GM9EBfD4mgmghv37m5k0pIQR1L0X32xONR4y9Dl1U3VOSooBR87q8paQLPhcNXMFab4
+         8euFGTfZZXJRLcOcLDG9+U0ASd8PNj0EQn2u2G4eldvVZStN/BM7EKxHUOTdpvOfHRyr
+         ddMw==
+X-Gm-Message-State: AOJu0Yy14PyAxL+3y1YfPJflzRKDzvYNIFSqsgr52UZUwjuPLx3kmo+z
+	6D/Sc/NMmk8nKGGpBZKGl8ldl7h99ORZ1JYjWZhDZH4TidaEGOX17TcvUMX7J+1C/JL5Yg==
+X-Gm-Gg: ASbGnctaOfipt+j76YoblHAyx+yTA/RE48zcPNXq8lfvE7QrbiuqzsQPgQ0pwsoqnoK
+	jHG+2KLtunYrw6kv84W4eP+EcCkaQt4yV1cx6eTD80V4hZLYJeaNcIVYEb/RxO8MoIRnwpB6fxx
+	YfCQUg/GNR+jsDgVk8DZki06jVo8RR0oNGWWEs5S5IKFz8FKBnX+n4fvfzywSM1zF1+UrNwLh7E
+	filQdLvBBY4OsitGt7Aw8gnAJBIJj3HvDAUSEIPlSGkV6g+9WIUsUanRM6q3cvsvm+/xq1NijZc
+	is1Uaz7zEUfle0erb4AR1Kv927SQQYjFKE1At5h9fR5RlNWGS59qtGYxuvqw7UZp3DKzWBidRfE
+	USy3Q4C8EyROqcpc1H6mjxsiYbPwEHJt1KoaTYdgm3i1N2jxJEC1vL5cUx5NcuE9SCPLsQduT5z
+	tvuw2F8bYTP48YF91Wf7upHJr8Weq81zkjTY0cDpA=
+X-Google-Smtp-Source: AGHT+IGRKM8BQrG2ZI8dHPnVSfWZ2b0YQ8no5vBvlYxduzRFOFHV5uKsY+yIJjsLzz4NB9mnoBzUQg==
+X-Received: by 2002:a05:7022:252a:b0:119:e55a:95a3 with SMTP id a92af1059eb24-11df25cac52mr5909504c88.5.1764917268841;
+        Thu, 04 Dec 2025 22:47:48 -0800 (PST)
+Received: from localhost.localdomain ([183.14.133.3])
+        by smtp.gmail.com with ESMTPSA id a92af1059eb24-11df749f8ddsm10664692c88.0.2025.12.04.22.47.46
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 04 Dec 2025 22:47:48 -0800 (PST)
+From: Frank Zhang <rmxpzlb@gmail.com>
+To: ulf.hansson@linaro.org,
+	heiko@sntech.de
+Cc: linux-rockchip@lists.infradead.org,
+	linux-pm@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	Frank Zhang <rmxpzlb@gmail.com>
+Subject: [PATCH] pmdomain:rockchip: Fix init genpd as GENPD_STATE_ON before regulator ready
+Date: Fri,  5 Dec 2025 14:47:39 +0800
+Message-ID: <20251205064739.20270-1-rmxpzlb@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RESEND PATCH v11 03/11] drm/bridge: Implement generic USB Type-C
- DP HPD bridge
-To: Heikki Krogerus <heikki.krogerus@linux.intel.com>,
- Chaoyi Chen <kernel@airkyi.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
- Peter Chen <hzpeterchen@gmail.com>, Luca Ceresoli
- <luca.ceresoli@bootlin.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
- Kishon Vijay Abraham I <kishon@kernel.org>, Heiko Stuebner
- <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>,
- Andy Yan <andy.yan@rock-chips.com>,
- Yubing Zhang <yubing.zhang@rock-chips.com>,
- Frank Wang <frank.wang@rock-chips.com>,
- Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Amit Sunil Dhamne <amitsd@google.com>, Dragan Simic <dsimic@manjaro.org>,
- Johan Jonker <jbx6244@gmail.com>, Diederik de Haas <didi.debian@cknow.org>,
- Peter Robinson <pbrobinson@gmail.com>, linux-usb@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
-References: <20251204063109.104-1-kernel@airkyi.com>
- <20251204063109.104-4-kernel@airkyi.com> <aTGPaJmwd7uHfrnV@kuha>
-Content-Language: en-US
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-In-Reply-To: <aTGPaJmwd7uHfrnV@kuha>
-X-HM-Tid: 0a9aec5504a403abkunm9ee3fce2af812e
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQk1NH1ZPHkhJTkMfTR5JSx9WFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSUJNS0
-	pVSktLVUtZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=dsPsGNd5e897H3fkHx9JCGvZRm2YiJCFhvaP+jw00pxK222QJL0XiP31/eVLZJlPrKbaJjN00u9w23Xj3Uw4IfNFQ/6SaZ4EwtVpGeZp74TgSbKhAJMmi/wQoPo9/wpRg3t9Rqmf/pKCfLKP+Rx212Jo9299la1sGPByNezAavk=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=VtwmAIo0SaGp/QXNcsjM3U1Vr4tjF0Aq/LuKxWtI5aQ=;
-	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251204_182636_021775_729CF995 
-X-CRM114-Status: GOOD (  15.38  )
+X-CRM114-CacheID: sfid-20251204_224750_304135_60A4C919 
+X-CRM114-Status: UNSURE (   8.92  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,92 +100,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Heikki,
+RK3588_PD_NPU initialize as GENPD_STATE_ON before regulator ready.
+rknn_iommu initlized success and suspend RK3588_PD_NPU. When rocket
+driver register, it will resume rknn_iommu.
 
-On 12/4/2025 9:40 PM, Heikki Krogerus wrote:
-> Hi,
-> 
-> I don't know what's going on here - this series is the 12th?
-> In any case, you need to fix this..
-> 
+If regulator is still not ready at this point, rknn_iommu resume fail,
+pm runtime status will be error: -EPROBE_DEFER.
 
-It is 11th. Patch 1 was missing the Signed-off-by line, so I've resent
-it. Sorry for the confusion.
+This patch check regulator when pmdomain init, if regulator is not ready
+or not enabled, power off pmdomain. Consumer device can power on it's
+pmdomain after regulator ready
 
->> diff --git a/drivers/gpu/drm/bridge/aux-hpd-typec-dp-bridge.c b/drivers/gpu/drm/bridge/aux-hpd-typec-dp-bridge.c
->> new file mode 100644
->> index 000000000000..94be3d5f69e9
->> --- /dev/null
->> +++ b/drivers/gpu/drm/bridge/aux-hpd-typec-dp-bridge.c
->> @@ -0,0 +1,51 @@
->> +// SPDX-License-Identifier: GPL-2.0+
->> +#include <linux/of.h>
->> +#include <linux/usb/typec_altmode.h>
->> +#include <linux/usb/typec_dp.h>
->> +
->> +#include <drm/bridge/aux-bridge.h>
->> +
->> +static int drm_typec_bus_event(struct notifier_block *nb,
->> +			       unsigned long action, void *data)
->> +{
->> +	struct device *dev = (struct device *)data;
->> +	struct typec_altmode *alt = to_typec_altmode(dev);
->> +
->> +	if (action != BUS_NOTIFY_ADD_DEVICE)
->> +		goto done;
->> +
->> +	if (is_typec_partner_altmode(&alt->dev) || alt->svid != USB_TYPEC_DP_SID)
->> +		goto done;
-> 
-> That's still not enough because of the plug altmodes. You need to
-> check that it's a port altmode:
-> 
->         if (is_typec_port_altmode(&alt->dev) && alt->svid == USB_TYPEC_DP_SID)
->         	drm_dp_hpd_bridge_register(alt->dev.parent->parent,
->         				   to_of_node(alt->dev.parent->fwnode));
->
+Signed-off-by: Frank Zhang <rmxpzlb@gmail.com>
+---
+ drivers/pmdomain/rockchip/pm-domains.c | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
-Oh, it is. Will fix in v12. Thank you.
-
->> +	/*
->> +	 * alt->dev.parent->parent : USB-C controller device
->> +	 * alt->dev.parent         : USB-C connector device
->> +	 */
->> +	drm_dp_hpd_bridge_register(alt->dev.parent->parent,
->> +				   to_of_node(alt->dev.parent->fwnode));
->> +
->> +done:
->> +	return NOTIFY_OK;
->> +}
->> +
->> +static struct notifier_block drm_typec_event_nb = {
->> +	.notifier_call = drm_typec_bus_event,
->> +};
->> +
->> +static void drm_aux_hpd_typec_dp_bridge_module_exit(void)
->> +{
->> +	bus_unregister_notifier(&typec_bus, &drm_typec_event_nb);
->> +}
->> +
->> +static int __init drm_aux_hpd_typec_dp_bridge_module_init(void)
->> +{
->> +	bus_register_notifier(&typec_bus, &drm_typec_event_nb);
->> +
->> +	return 0;
->> +}
->> +
->> +module_init(drm_aux_hpd_typec_dp_bridge_module_init);
->> +module_exit(drm_aux_hpd_typec_dp_bridge_module_exit);
->> +
->> +MODULE_DESCRIPTION("DRM TYPEC DP HPD BRIDGE");
->> +MODULE_LICENSE("GPL");
-> 
-> thanks,
-> 
-
--- 
-Best, 
-Chaoyi
+diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/rockchip/pm-domains.c
+index 1955c6d453e4..bc69f5d840e6 100644
+--- a/drivers/pmdomain/rockchip/pm-domains.c
++++ b/drivers/pmdomain/rockchip/pm-domains.c
+@@ -659,6 +659,11 @@ static int rockchip_pd_power(struct rockchip_pm_domain *pd, bool power_on)
+ 	return ret;
+ }
+ 
++static bool rockchip_pd_regulator_is_enabled(struct rockchip_pm_domain *pd)
++{
++	return IS_ERR_OR_NULL(pd->supply) ? false : regulator_is_enabled(pd->supply);
++}
++
+ static int rockchip_pd_regulator_disable(struct rockchip_pm_domain *pd)
+ {
+ 	return IS_ERR_OR_NULL(pd->supply) ? 0 : regulator_disable(pd->supply);
+@@ -861,6 +866,15 @@ static int rockchip_pm_add_one_domain(struct rockchip_pmu *pmu,
+ 		pd->genpd.name = pd->info->name;
+ 	else
+ 		pd->genpd.name = kbasename(node->full_name);
++
++	if (pd->info->need_regulator) {
++		if (IS_ERR_OR_NULL(pd->supply))
++			pd->supply = devm_of_regulator_get(pmu->dev, pd->node, "domain");
++
++		if (!rockchip_pd_regulator_is_enabled(pd))
++			rockchip_pd_power(pd, false);
++	}
++
+ 	pd->genpd.power_off = rockchip_pd_power_off;
+ 	pd->genpd.power_on = rockchip_pd_power_on;
+ 	pd->genpd.attach_dev = rockchip_pd_attach_dev;
 
 _______________________________________________
 Linux-rockchip mailing list
