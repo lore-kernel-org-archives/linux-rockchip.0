@@ -4,75 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 021BCD2F7EA
-	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Dec 2025 12:11:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B122D2F7EF
+	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Dec 2025 13:53:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rwIArRD8yACI9JKFCbiH4Z0MhhvWRrjVdKWnn32nPu4=; b=UXd4nQegHpi6+1
-	r/dC/0D9u9kGx6X2zelgOZhqmUxiDKWKGVqb+qv3gJGiV9IdeNFVRTlcVWDjPyad2gGawPR8myR9R
-	ruTG0s0MLZSSi/kITannpfjvR4+/6+gpqlYrBh0sY8i6cfml+suq0q1KmHabEp/mC//7CrzrrhYov
-	h+1QRufDQ9LFqeKFchhoAwsx5YUSzTomPBuzY2fuLJPnLeDGSs+DktZEFd0Xsp/Vfv3KvOVkWjr0P
-	NzvGG8IkFo5nqWdH2A93dv/VhP1FeyNjCm5Ki29/vs6eUenfTYrgi/eEOcG+hA2m9lMg+BV6XcTPU
-	1lgXp0TSNjwjiYHG3RfQ==;
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=A36AdCCAuSZfPJ0z2pNZlf47u1+p8mWypLBLqKZ5/ho=; b=or2XIjCKHhOrtw877n1/AsYxAk
+	dtl3efjzMc4UsPne/Ujgg71iwhMXClk1bauPwRQqWFa/a41Mci47Cm0wP3nJYVn+sWEy92utWpGKk
+	S3oNEAIokSnrwSi7DIJ2FnjRuCGa6z5TFdBS88LMaY0FuJ4wJs+Djky1DCnkTS1HYK3ium8dPIqrB
+	6Y3AgnD2/+KnravQX5LQG5+TDQqLLM86ZkiCiI2OAupkpsYpxhUQ1CXNv6toMnOf9GFjHOp4lyjVz
+	3ELrNgtfywc57dw9la+M1p6fC680uzidJoq2wKC6MdRwBpg8uUs9YbWx1VT07rTsdIS58SVuIUlFe
+	G4xEH0XQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vRUeo-00000009SVV-0UcC;
-	Fri, 05 Dec 2025 12:11:30 +0000
-Received: from smtpbgbr1.qq.com ([54.207.19.206])
+	id 1vRWFf-00000009YAO-3kJe;
+	Fri, 05 Dec 2025 13:53:39 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vRUek-00000009SUI-2aJB
+	id 1vRWFd-00000009Y9q-3fye
 	for linux-rockchip@lists.infradead.org;
-	Fri, 05 Dec 2025 12:11:28 +0000
-X-QQ-mid: zesmtpip3t1764936631td6d3ad0f
-X-QQ-Originating-IP: IuPkPR/GVZYSZMUt/AhHb+HEMP3OnTaGUzX2t+S9HLk=
-Received: from [IPV6:240f:10b:7440:1:17ae:8f83 ( [localhost])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Fri, 05 Dec 2025 20:10:28 +0800 (CST)
-X-QQ-SSF: 0000000000000000000000000000000
-X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 2528925561383847697
-Message-ID: <2CE13C2293B6BD8E+94a46e0f-f6ad-4c41-a14f-880476f0744b@radxa.com>
-Date: Fri, 5 Dec 2025 21:10:28 +0900
+	Fri, 05 Dec 2025 13:53:39 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 52B9440210;
+	Fri,  5 Dec 2025 13:53:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D1585C4CEF1;
+	Fri,  5 Dec 2025 13:53:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1764942816;
+	bh=/hC7rd6Y9Vayemn+Pbfyjg5j0j2kUQXBmQlPRF88pv8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=cE6wwOerfX3UoSj7qH/joVItak7wgZUJHkz4saNXDBRE68r3bpyMVs9MIGAaG5gGK
+	 kVSCHiFU5FQp0Hwq++iZuDsjk+oWuCPESMy0RTWg7XlgbnGeUWcXJaGShs3fjOQY8X
+	 v34WXO7ugfQxY1V3adH6MYyqnmsy+c3rg+d/Fjyx03qZv952LRGyIZTXlE/ZVhgHXO
+	 USllvUH/wYi7aZr+n7cAtLR4HDblMEfc6GcHTMKHylhDS8k8a0XbK/zpPIG+j5GR4s
+	 F2keNltKuktIqOn0mzCAE+Ce/ds71Ig1Z+9OZbE//S0+984Y1fNJ51XvNnjfdoDe4I
+	 I/SLuRHZHf75g==
+Date: Fri, 5 Dec 2025 14:53:33 +0100
+From: Maxime Ripard <mripard@kernel.org>
+To: Linus Walleij <linus.walleij@linaro.org>
+Cc: Chaoyi Chen <chaoyi.chen@rock-chips.com>, 
+	Linus Walleij <linusw@kernel.org>, Vicente Bergas <vicencb@gmail.com>, 
+	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, Marek Vasut <marek.vasut+renesas@mailbox.org>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann <tzimmermann@suse.de>, 
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+	Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, Tomi Valkeinen <tomi.valkeinen+renesas@ideasonboard.com>, 
+	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, Geert Uytterhoeven <geert+renesas@glider.be>, 
+	Magnus Damm <magnus.damm@gmail.com>, Aradhya Bhatia <a-bhatia1@ti.com>, 
+	Dmitry Baryshkov <lumag@kernel.org>, Sandy Huang <hjc@rock-chips.com>, 
+	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
+	dri-devel@lists.freedesktop.org, linux-renesas-soc@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, Aradhya Bhatia <aradhya.bhatia@linux.dev>
+Subject: Re: [PATCH v6 4/4] RFT: drm/rockchip: Create custom commit tail
+Message-ID: <20251205-strong-dandelion-newt-a776af@houat>
+References: <20251202-mcde-drm-regression-thirdfix-v6-0-f1bffd4ec0fa@kernel.org>
+ <20251202-mcde-drm-regression-thirdfix-v6-4-f1bffd4ec0fa@kernel.org>
+ <5d6e8e0e-3129-49f1-8c5f-c2f837a36139@rock-chips.com>
+ <CACRpkdZwgsbVezfQBRP6pX-o8TLvtFMt+M+rL7GrTmeuzN8xvQ@mail.gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3] arm64: dts: rockchip: Make eeprom read-only for Radxa
- ROCK 3C/5A/5C
-From: FUKAUMI Naoki <naoki@radxa.com>
-To: heiko@sntech.de, Chukun Pan <amadeus@jmu.edu.cn>
-Cc: conor+dt@kernel.org, devicetree@vger.kernel.org, dsimic@manjaro.org,
- krzk+dt@kernel.org, linux-rockchip@lists.infradead.org
-References: <20251201144629.135570-1-naoki@radxa.com>
- <20251202135008.513685-1-amadeus@jmu.edu.cn>
- <A665FF5170FE9550+0e1d2609-454b-4a82-9e52-2d167e351187@radxa.com>
-Content-Language: en-US
-In-Reply-To: <A665FF5170FE9550+0e1d2609-454b-4a82-9e52-2d167e351187@radxa.com>
-X-QQ-SENDSIZE: 520
-Feedback-ID: zesmtpip:radxa.com:qybglogicsvrsz:qybglogicsvrsz4b-0
-X-QQ-XMAILINFO: Nwz8Cs33/LprQ8POHVw2TfB018lSRJKn3f37Lg4LOymXb0wQH1mSiwpT
-	KxWrHUA4DMqOB4NqhcsjbqUjPqI1P4tMtylL7OBgIoe7LKPXYv66T29TeMf86LRuwbGluf+
-	lLIM2JROng1jVUVKZcuJUuj9QIVCXquqYXQJcYTkOyneA3SOeszlFs/WgyVElxlW5ERvg11
-	DjO5IruZuawr4QVifEcCRaPa6WwLv3KSfSRyhil1EeW+A+ZSsMQOCMO1+7bnCKDXvrxKys3
-	qfkgDUbIaQYiuEQhnS9YkjT3uObWqNXKVGFXjo1LEdRO8eyry+LysQ3LHv14mwDkPYSwkUF
-	ssaGgyCIdNre1p4oHaL8k3eAICI6Fj18l/eCadFdK842fSqlnlD+88POEHVSqsFx5qIPzz5
-	psvHI33tEvSlfNT/FMYR1zIyOI02WliDlfOFR2IXU9ZRVXlm5BM34XtM9z2ba1iRDHlx2Vy
-	s37U4hCkkaCdbW3AlGUqnwerOc9gAA9x/1p9ViZXviWSPaoIwkhhci8gWT1+e+9Q/BHVkxc
-	iPSFSbhvTsTbSGSFHMwA35yb538Vi+LdTPb4AZDpvSMWg2atHLMskCRBzo6Jk0Q0ScF57Y/
-	MjYWfFNK1+p3SldavDk33fL6xppV+juRwi8d8imqvtnhFmHqrBROsb3tVzOj57FV/Z/z+lr
-	yWsnpFvAHl+X7ONefrWA7hjhYxUZqOt23cHpMwQ2ExweA2eVdq9sxeGFofjjUxwJhVkeFVZ
-	DKcFrp7YHVQrkKHpe7QAuXR7eGiD2CMx+1MJgQAx/p7PNIQeFhXhGLVW1P+JVsRIPq1Weke
-	V+CX+gn/ET/TnA6rDivgK0YQZIHzpRcTys6J9oMlk10IxsJktlGaasDnJ+LwqyfEcVf/QbJ
-	vRJKP/ef/XkT6y7jWWSL3rFlDNjDyjXPMQmCyaM7a0sXbwgzc1iTWxbRYIoR6gof09Rq1Tz
-	Oi2pCRXN0YRsWdEqYUQ1PihyyK8YBsUjwqWc=
-X-QQ-XMRINFO: M/715EihBoGSf6IYSX1iLFg=
-X-QQ-RECHKSPAM: 0
+In-Reply-To: <CACRpkdZwgsbVezfQBRP6pX-o8TLvtFMt+M+rL7GrTmeuzN8xvQ@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251205_041127_743215_91103DC2 
-X-CRM114-Status: UNSURE (   8.80  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251205_055337_954083_80BDA35C 
+X-CRM114-Status: GOOD (  17.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,52 +79,86 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: multipart/mixed; boundary="===============3436001345821546050=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Heiko,
 
-Should I send v4 just for removing Fixes tags?
-
-Best regards,
-
---
-FUKAUMI Naoki
-Radxa Computer (Shenzhen) Co., Ltd.
-
-On 12/2/25 22:53, FUKAUMI Naoki wrote:
-> Hi Chukun,
-> 
-> On 12/2/25 22:50, Chukun Pan wrote:
->> Hi,
->>
->>> Fixes: ee219017ddb50 ("arm64: dts: rockchip: Add Radxa ROCK 3C")
->>> Fixes: 89c880808cff8 ("arm64: dts: rockchip: add I2C EEPROM to rock-5a")
->>> Fixes: 3ddf5cdb77e6e ("arm64: dts: rockchip: add Radxa ROCK 5C")
->>
->> Since the EEPROM on these boards are empty, this patch doesn't
->> fix anything, so the Fixes tag is not needed here. If you want
->> it to be backported, you can add "Cc: stable@vger.kernel.org"
-> 
-> Ah, sure, Fixes tags are not needed. Thank you for pointing that out.
-> 
-> Best regards,
-> 
-> -- 
-> FUKAUMI Naoki
-> Radxa Computer (Shenzhen) Co., Ltd.
-> 
->> Thanks,
->> Chukun
->>
-> 
-> 
+--===============3436001345821546050==
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="iiu34guk5mzq376l"
+Content-Disposition: inline
 
 
+--iiu34guk5mzq376l
+Content-Type: text/plain; protected-headers=v1; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v6 4/4] RFT: drm/rockchip: Create custom commit tail
+MIME-Version: 1.0
+
+On Wed, Dec 03, 2025 at 10:54:45AM +0100, Linus Walleij wrote:
+> On Wed, Dec 3, 2025 at 4:10=E2=80=AFAM Chaoyi Chen <chaoyi.chen@rock-chip=
+s.com> wrote:
+>=20
+> > It seems that multiple drivers currently depend on the CRTC being
+> > enabled and they implement the same atomic_commit_tail().
+> >
+> > Why not implement this in drm_atomic_helper_commit_tail_rpm() instead?
+> > Or why not use another common helper function for this?
+>=20
+> So my v2 version of the patch series added a new special case
+> helper tail function to do that:
+> https://lore.kernel.org/dri-devel/20251118-mcde-drm-regression-v2-3-4fedf=
+10b18f6@linaro.org/
+>=20
+> It was politely NACKed for complicating the helpers library (short story).
+
+The longer story is that it wasn't NACKed at all, but if we want to do that:
+
+- We need to figure out the bridge ordering mess in the first place
+
+- Improve the commit_tail helpers doc to make it clearer what each are
+  doing
+
+- Probably change their name too, since the rpm suffix is a gross
+  simplification of what is happening
+
+- Create a few kunit tests to make sure whatever order they guarantee is
+  properly implemented
+
+- And maybe create a few helpers and convert drivers to that.
+
+None of that have any place for a regression fix, so it wasn't a
+reasonable ask.
+
+Maxime
+
+--iiu34guk5mzq376l
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCaTLj1wAKCRAnX84Zoj2+
+dtfvAYCK0e7SvjMsHWvvtqMA8laxNk1TCzat/WvSag5cJ2DIKG3nBapeYk829dYp
+QxYNjv4BgNoX6fyZdnio672A2YVqlQlALPbN3Vl1yb6/Z0LaoBMuBgYSg1VnIeut
+gSBrugWVcg==
+=dmYT
+-----END PGP SIGNATURE-----
+
+--iiu34guk5mzq376l--
+
+
+--===============3436001345821546050==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============3436001345821546050==--
+
