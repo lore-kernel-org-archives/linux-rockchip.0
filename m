@@ -4,73 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7140D3ABF4
-	for <linux-rockchip@archiver.kernel.org>; Sat,  6 Dec 2025 09:35:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAB49D3B7D1
+	for <linux-rockchip@archiver.kernel.org>; Sat,  6 Dec 2025 09:52:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0P+8Q90aGNfC4XdgNELMgeY/NtyoaPkV6GuKjQUJ3fc=; b=CWJVkxepBfNtFk
-	EXxaWOwYB9cKEre0IRAktVFOCWouW6wSdpiq5VPzTamFqJx9Sa5MK3Mtv0ABVYRtod8nXdvIX3UiP
-	N387ACNUyKzsc196uaRgVR7qpS4NPQAPrYup0PsWdUwX591OI/EukbCeAWSe80E2w+OApe0r185x/
-	u/vITd0nmLmPaRgtKJutJQq3xLNfYSFNW7xh55dN2uzmHzjhG4tJ3hh94nl639jxZ+H/SSCiXzHGt
-	2ZIu7RuHFuTe3wbQRn3x4gjBbsFV1T96d8GWri3vy9iSs9xYWrR7yh7X3PQyvKD/ssF+EwxBVnKd5
-	3VUWP1eqBhtVWZi119Cw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=+SkXTVWuXeydCjP0aXKNgxHknEUj/vd+8VQ31Z/262M=; b=mHd87OZILKfKAC
+	+z7mvuM4k7mEvo9ekq14p7L9za+rjl7Gs6VDhKrzwt+Ch0OJeVFh9XdKc1VmClYjYZjHlBgs1kpyI
+	1WstNNeHJn/x5LVQJl8YhInTEaqucDv4TlvR244iMQJ0Vueb2PGJyyYNuXdHPr0qBmP3w5zTOxfN1
+	9r3cFDPYf1hgrUyIl5lRCzSPUnVsYtW7j5AYIji5fYL2SCR6+QmeB36828WGMZc1I86NZesh/lwZU
+	n1bE1Z1wSxJOEBpCw8NLR8N935ifB5ifQT/4fyx+IrWTPSdyTm0SzQKD6tzdOZgACqCcPS3nxV3la
+	FXwdG2dJEMaYIWQrbcwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vRogs-0000000Amci-3FZ5;
-	Sat, 06 Dec 2025 09:34:58 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vRoxs-0000000AnFU-1B2e;
+	Sat, 06 Dec 2025 09:52:32 +0000
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vRogo-0000000Amc5-0oXJ;
-	Sat, 06 Dec 2025 09:34:56 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id E0BE2434A6;
-	Sat,  6 Dec 2025 09:34:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3542CC4CEF5;
-	Sat,  6 Dec 2025 09:34:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1765013676;
-	bh=LVpVlpi6OB57YEEuOdpQyyiZg0u6TcCf1CGA1h9vpBg=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=bx700QVJbLTGUIeKm0O22TtLPhUtMrkFcl7fdbcJZVOwdiqeLbjF5hrQeiOdJCXdC
-	 krutnylAbtSh9mi3fVU7U3Zf94ROz3cOezsxTnOp72rIOV1wxreOzIlSI3LBBeD3LU
-	 PO4RKzI66ic6zAclhP+WlgH+vrzyXwxUkL21B+JxTy1WI87F8DejeP0TQie8riE1A1
-	 G16crdFM3HpnnxUV/C4lSxpuDXimp0B9gJ+5vmkqIsU2HJGuob8KsyEnqSiWRlzeyZ
-	 OdncME6viW0HhYT7EVURDb4SvohUqn4RP4h0A9yO8gWT3ZsGeoDPZNjQ2cBW8dTAYb
-	 TYbJ2kwZIcq4g==
-From: William Breathitt Gray <wbg@kernel.org>
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: William Breathitt Gray <wbg@kernel.org>,
-	=?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <ukleinek@kernel.org>,
+	id 1vRoxo-0000000AnF1-1S26
+	for linux-rockchip@lists.infradead.org;
+	Sat, 06 Dec 2025 09:52:30 +0000
+Received: by mail-wm1-x32d.google.com with SMTP id 5b1f17b1804b1-477a2ab455fso36031495e9.3
+        for <linux-rockchip@lists.infradead.org>; Sat, 06 Dec 2025 01:52:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1765014746; x=1765619546; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:to
+         :from:from:to:cc:subject:date:message-id:reply-to;
+        bh=iiDwBzndnl96hSb/q/NLb44uNYBwPkjb4oD5H7teprs=;
+        b=nRtNgN6IR0YQXJLb6vgnyurAod9bGmSwOen506ppN7hiQ9fyUemecCZBz0PGIDE46k
+         4IiF9g/4n7w/69qKD+C3gNHaaV5A8yaXLvzm75ArC9zZP1TWbOXwCAoD8f2jhNUOvi5P
+         5Qi/F56mB82ezQuDrq4FmtdHVV/6Q3azmvX5vJ0O5Tu6vgQK0iUcaiw/vNUgz3UdYrPJ
+         78D2LZehs03JBQt735Qw6gMAIYk5iE0LxQioytNAoymHsvalLADRmcktKfOltRgg0pfa
+         dApOYy7KpvhTOx+C8vJHUJ9hmAgSY1AXqqfNcc8c5szNx8+TtD8u+dRbCnH71eNkePUf
+         pq+w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1765014746; x=1765619546;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:to
+         :from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=iiDwBzndnl96hSb/q/NLb44uNYBwPkjb4oD5H7teprs=;
+        b=ct63WN3t3KqDL+vGNU54MjbzQ/OMBpMIGZafkrGyXFBjNJfkwbvlK4RP3FpA+rVaBE
+         0DcbJlPRlvadYzN85/oNXx749jDIyiamxv5dITZn2NUvc7h+irwPQAltH5aTikAcIOxZ
+         rXlVQbh1fei3r64lRg3yzDRMRmZ4QpXm7e7MPniSLhe4yLlTQUsyWPI/F4jrZUvVChNd
+         qPVo/NL63fqqHzS03sG1DHfHn8SlToKjHtPRqUiQdCV8TzE30Ow8flMvTRhj0sFyq/At
+         6YeuSJfYsg9da0EyvpsQLJNrIOsLFVuV4tQYqkE+huaebdM55fT1CUaY4dDKbvJuu2d5
+         rYig==
+X-Forwarded-Encrypted: i=1; AJvYcCVwus9nOFqIvMtih90+j7SIzaeTrSKg13g5FrUedrBu1xGoDJ7GDHM6gWtugnEnqG3DG3SNl1tJk396+TpozA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxRBjAdJSEc55ivQmkAPaN/XrgutHzLBPwmeBgRToMMrVTQrRX3
+	9s7R5nZCTRQvuaYIdKEZXDrsHfv7KlZMyuB16+SY5cnvG+Kyf8hDhkSP65i7eP8kIl4=
+X-Gm-Gg: ASbGncuoJ3kVUW0BeoFBI7yWWvL/+RZBIEkRjPigTGn2Mq/7z7jsh9ngbAf0FhZaVCy
+	XX0qOCzQSh+vt1tnACAugWT/o4yFCgzytdt1vn3+Kyf0o0Y4u9PPbPNjEsBCqTDntHMB1YiBwRD
+	OFtEQZUn9Oh8agCUbwR1HcMlIBbA32pOZcZBJFRGzlTxpmYhYP13UYU0GwhrqVNaz1iYhFf6HaS
+	0fIhtXCtTqnwK/pH3ANe9lMsyO/xPgV1YKfmPP/wfO9k2GiMIqdNaXWH/TcH8ik1S28wrfAncyA
+	g4aq4+zM/+S/1J4igmVAzQdQBGg393kyv2wUUmM3lprncSVICKsOmZeNR3PzNXLgAB8D9ZLgrSH
+	TcyNq5hNacqrVrYALndV6/EVqza71eZ4jfvivSG01heRLnDg46qPD57V4YzMwqHffPEgaMPV6sQ
+	7bLYxIQLO6fW03TIM=
+X-Google-Smtp-Source: AGHT+IHCCSKpPzDS66jMH4ALE7X9BZR5z4AUj5KRqSpHUrEc/DwbowSb3EPWCQS5cwLW9Z47DlGV3A==
+X-Received: by 2002:a05:600c:1c0c:b0:477:5cc6:7e44 with SMTP id 5b1f17b1804b1-47939dfa46dmr19757195e9.11.1765009694011;
+        Sat, 06 Dec 2025 00:28:14 -0800 (PST)
+Received: from toolbox.. ([87.200.95.144])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-479310a6d9dsm123094705e9.2.2025.12.06.00.28.10
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 06 Dec 2025 00:28:13 -0800 (PST)
+From: Christian Hewitt <christianshewitt@gmail.com>
+To: Detlev Casanova <detlev.casanova@collabora.com>,
+	=?UTF-8?q?Olivier=20Cr=C3=AAte?= <olivier.crete@collabora.com>,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
 	Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
 	Heiko Stuebner <heiko@sntech.de>,
-	Lee Jones <lee@kernel.org>,
-	kernel@collabora.com,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Alexey Charkov <alchark@gmail.com>,
+	Diederik de Haas <diederik@cknow-tech.com>,
+	Dmitry Osipenko <dmitry.osipenko@collabora.com>,
+	Thomas Gleixner <tglx@linutronix.de>,
+	Dragan Simic <dsimic@manjaro.org>,
+	Chukun Pan <amadeus@jmu.edu.cn>,
+	linux-media@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	linux-pwm@vger.kernel.org,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-iio@vger.kernel.org
-Subject: Re: [PATCH v3 4/5] counter: Add rockchip-pwm-capture driver
-Date: Sat,  6 Dec 2025 18:34:17 +0900
-Message-ID: <20251206093419.40067-1-wbg@kernel.org>
-X-Mailer: git-send-email 2.52.0
-In-Reply-To: <20251027-rk3576-pwm-v3-4-654a5cb1e3f8@collabora.com>
-References: <20251027-rk3576-pwm-v3-4-654a5cb1e3f8@collabora.com>
+	linux-kernel@vger.kernel.org
+Subject: [PATCH 0/4] media: rockchip: rkvdec: add support for the VDPU346 variant
+Date: Sat,  6 Dec 2025 08:28:05 +0000
+Message-Id: <20251206082809.2040679-1-christianshewitt@gmail.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=5608; i=wbg@kernel.org; h=from:subject; bh=LVpVlpi6OB57YEEuOdpQyyiZg0u6TcCf1CGA1h9vpBg=; b=owGbwMvMwCW21SPs1D4hZW3G02pJDJnGPyYceT6/uuOowkeJzKMXdru+8oyTXW/9KnZb0Npb5 7YnyTsHdJSyMIhxMciKKbL0mp+9++CSqsaPF/O3wcxhZQIZwsDFKQATKctj+B/fezxbrcnBZa22 wAYGEZnP65yLGeM210wtSArdtY9jiTYjwy/3uODLKTURuz+fPbGii+Pa+yd/Tl7sa/pnEH5pndn eClYA
-X-Developer-Key: i=wbg@kernel.org; a=openpgp; fpr=8D37CDDDE0D22528F8E89FB6B54856CABE12232B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251206_013454_305617_0F82141E 
-X-CRM114-Status: GOOD (  26.15  )
+X-CRM114-CacheID: sfid-20251206_015229_019212_11A798BE 
+X-CRM114-Status: GOOD (  15.39  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,175 +107,63 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-> +struct rockchip_pwm_capture {
-> +	struct rockchip_mfpwm_func *pwmf;
-> +	struct counter_device *counter;
-
-Is this structure member used at all? If not, you should just remove it.
-
-> +	bool is_enabled;
-
-Does this device offer some way to probe whether PWM capture mode is
-enabled? I suspect so, because I see PWM_ENABLE.pwm_en enables the
-channel and PWM_CTRL.pwm_mode selects capture mode, so perhaps we're
-able to read the current state of those registers. If you're able to
-read those registers to determine the enable state, I'd suggest wrapping
-that into a helper function and calling it when you need to determine
-whether the capture mode is currently enabled.
-
-If we're not able to probe the enable state, is it safe to assume we're
-in a disabled state when the module loads, or should we ensure it by
-unconditionally disabling PWM capture mode during
-rockchip_pwm_capture_probe()?
-
-> +	spinlock_t enable_lock;
-> +};
-> +
-> +/*
-> + * Channel 0 receives a state changed notification whenever the LPC interrupt
-> + * fires.
-> + *
-> + * Channel 1 receives a state changed notification whenever the HPC interrupt
-> + * fires.
-> + */
-> +static struct counter_signal rkpwmc_signals[] = {
-> +	{
-> +		.id = 0,
-> +		.name = "Channel 0"
-> +	},
-> +	{
-> +		.id = 1,
-> +		.name = "Channel 1"
-> +	},
-> +};
-
-From "31.3.1 Capture Mode" of the Rockchip RK3506 Technical Reference
-Manual[^1], it looks like "clk_pwm" is the only signal that is counted
-for PWM_HPC AND PWM_LPC. So instead of two Signals, you would have just
-one Signal named "PWM Clock" which sources your two Synapses defined below.
-
-Technically, "pwm_in" is also a signal evaluated (its polarity is used
-to determine whether we're counting for PWM_HPC or PWM_LPC) but the
-respective Synapse would be COUNTER_SYNAPSE_ACTION_NONE because this
-signal not actually triggering the change in the count value. You're
-welcome to add the "pwm_in" signal here if you like, but I'd say it's
-optional if you actually want to expose it here.
-
-> +static const enum counter_synapse_action rkpwmc_hpc_lpc_actions[] = {
-> +	COUNTER_SYNAPSE_ACTION_BOTH_EDGES,
-> +
-> +};
-
-Add COUNTER_SYNAPSE_ACTION_NONE to this array. When the polarity is
-high, the Synapse for PWM_HPC will be active with
-COUNTER_SYNAPSE_ACTION_BOTH_EDGES, while the Synapse for PWM_LPC will be
-inactive with COUNTER_SYNAPSE_ACTION_NONE; the inverse occurs when the
-polarity switches to low.
-
-> +static struct counter_synapse rkpwmc_pwm_synapses[] = {
-> +	{
-> +		.actions_list = rkpwmc_hpc_lpc_actions,
-> +		.num_actions = ARRAY_SIZE(rkpwmc_hpc_lpc_actions),
-> +		.signal = &rkpwmc_signals[0]
-> +	},
-> +	{
-> +		.actions_list = rkpwmc_hpc_lpc_actions,
-> +		.num_actions = ARRAY_SIZE(rkpwmc_hpc_lpc_actions),
-> +		.signal = &rkpwmc_signals[1]
-> +	},
-> +};
-
-Both Synapses are sourced by the same single Signal ("PWM Clock") so set
-both "signal" members to &rkpwmc_signals[0].
-
-> +enum rkpwmc_count_id {
-> +	COUNT_LPC = 0,
-> +	COUNT_HPC = 1,
-> +};
-> +
-> +static struct counter_count rkpwmc_counts[] = {
-> +	{
-> +		.id = COUNT_LPC,
-> +		.name = "PWM core clock cycles during which the signal was low",
-> +		.functions_list = rkpwmc_functions,
-> +		.num_functions = ARRAY_SIZE(rkpwmc_functions),
-> +		.synapses = rkpwmc_pwm_synapses,
-> +		.num_synapses = ARRAY_SIZE(rkpwmc_pwm_synapses),
-> +		.ext = rkpwmc_ext,
-> +		.num_ext = ARRAY_SIZE(rkpwmc_ext),
-> +	},
-> +	{
-> +		.id = COUNT_HPC,
-> +		.name = "PWM core clock cycles during which the signal was high",
-> +		.functions_list = rkpwmc_functions,
-> +		.num_functions = ARRAY_SIZE(rkpwmc_functions),
-> +		.synapses = rkpwmc_pwm_synapses,
-> +		.num_synapses = ARRAY_SIZE(rkpwmc_pwm_synapses),
-> +		.ext = rkpwmc_ext,
-> +		.num_ext = ARRAY_SIZE(rkpwmc_ext),
-> +	},
-> +};
-
-Count names should be short and descriptive. I think the RK3506 manual
-section "31.4.2 Registers Summary" description for the PWM_HPC and
-PWM_LPC register do a pretty good job of that:
-
-* Low Polarity Capture
-* High Polarity Capture
-
-How about changing the two Count names to those respectively?
-
-> +static int rkpwmc_count_read(struct counter_device *counter,
-> +			     struct counter_count *count, u64 *value)
-> +{
-> +	struct rockchip_pwm_capture *pc = counter_priv(counter);
-> +
-> +	guard(spinlock)(&pc->enable_lock);
-> +
-> +	if (!pc->is_enabled) {
-> +		*value = 0;
-> +		return 0;
-> +	}
-
-I don't think there's a need to check whether capture mode is disabled.
-The user should be aware of the enable state of the Count by checking
-the respective "enable" attribute; and if they ignore that, a value of
-"0" doesn't inherently tell them that the Count is disabled which makes
-it moot to do so. I'd suggest just removing this check entirely and
-returning the register values unconditionally.
-
-> +
-> +	switch (count->id) {
-> +	case COUNT_LPC:
-> +		*value = mfpwm_reg_read(pc->pwmf->base, PWMV4_REG_LPC);
-> +		return 0;
-> +	case COUNT_HPC:
-> +		*value = mfpwm_reg_read(pc->pwmf->base, PWMV4_REG_HPC);
-> +		return 0;
-> +	default:
-> +		return -EINVAL;
-> +	}
-> +}
-> +
-> +static const struct counter_ops rkpwmc_ops = {
-> +	.count_read = rkpwmc_count_read,
-> +};
-
-You should implement a signal_read() callback if its possible to probe
-the current state of PWM Clock. You should implement action_read() if
-its possible to probe the current polarity of "pwm_in" in order to set
-which Synapse is currently active.
-
-William Breathitt Gray
-
-[^1] https://opensource.rock-chips.com/images/3/36/Rockchip_RK3506_TRM_Part_1_V1.2-20250811.pdf
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+VGhpcyBzZXJpZXMgZGVwZW5kcyB1cG9uIERldGxldiBDYXNhbm92YSdzIGN1cnJlbnQgdjUgc2Vy
+aWVzIGZvciBWRFBVMzgxIGFuZApWRFBVMzgzIHN1cHBvcnQgWzBdLiBQYXRjaCAxIGlzIG1hcmtl
+ZCBETy1OT1QtTUVSR0UgYXMgaXQgY29udGFpbnMgZml4dXBzCmZvciBtaW5vciBuaXRzIHNwb3R0
+ZWQgaW4gRGV0bGV2J3Mgc2VyaWVzLiBJJ3ZlIGZsYWdnZWQgdGhlbSBvbiBJUkMgYWZ0ZXIgdjIK
+YnV0IHRoZSBtZXNzYWdlcyBtYXkgaGF2ZSBiZWVuIG1pc3NlZCBhcyB0aGV5IGFyZSBzdGlsbCBw
+cmVzZW50IGluIHY1LgoKUGF0Y2hlcyAyLzMvNCBhZGQgc3VwcG9ydCBmb3IgdGhlIFZEUFUzNDYg
+SVAgYmxvY2sgdXNlZCBmb3IgSDI2NCwgSEVWQyBhbmQKKGluIGZ1dHVyZSB3b3JrKSBWUDkgb24g
+dGhlIFJLMzU2WCBib2FyZHMuIFZEUFUzNDYgYXBwZWFycyB0byBiZSBhIGNsb3NlCnJlbGF0aW9u
+IHRvIFZEUFUzODEgdXNlZCB3aXRoIFJLMzU4OCwgZXhjZXB0IHdpdGggYSBzaW5nbGUgY29yZSwg
+b3V0cHV0CmxpbWl0ZWQgdG8gNEssIGFuZCBtaW5vciBmZWF0dXJlIGRpZmZlcmVuY2VzLCBlLmcu
+IEhFVkMgbGV2ZWwgNS4xIG9uIFZEUFUzNDYKdnMgNi4xIG9uIFZEUFUzODEuIFRvIGhhbmRsZSBk
+aWZmZXJlbmNlcyB3ZSBkZWNsYXJlIGEgbmV3IGNvbXBhdGlibGUuCgpUaGUgZGV2aWNlLXRyZWUg
+Y2hhbmdlcyBhcmUgZGVyaXZlZCBmcm9tIHByaW9yLWFydCBpbiBEZXRsZXYncyBwYXRjaGVzIGZv
+cgpSSzM1NzYgYW5kIFJLMzU4OCwgdGhlIHZlbmRvciBrZXJuZWwgWzFdLCBhbmQgc29tZSBlYXJs
+aWVyIHBhdGNoIGF0dGVtcHRzCmZyb20gUGlvdHIgT25pc3pjenVrIGFuZCBEaWVkZXJpayBkZSBI
+YWFzLgoKVGhlIHJlZ2lzdGVyIGRpZmZlcmVuY2VzIGJldHdlZW4gVkRQVTM0NiBhbmQgVkRQVTM4
+MSBhcHBlYXIgdG8gYmUgbWluaW1hbCBzbwp3ZSBjdXJyZW50bHkgYW5kIGludGVudGlvbmFsbHkg
+cmV1c2UgdGhlIFZEUFUzODEgaDI2NCwgaGV2YywgYW5kIHJlZ3MgZmlsZXMKdG8gYXZvaWQgZHVw
+bGljYXRpbmcgY29kZS4gSWYgZnVydGhlciByZWdpc3RlciBhbmFseXNpcyByZXF1aXJlcyBzZXBh
+cmF0ZQpmaWxlcyBmb3IgVkRQVTM0NiB0aGUgcmVmYWN0b3JpbmcgdG8gRGV0bGV2J3MgZHJpdmVy
+cyBpcyBhIGxpdHRsZSBiZXlvbmQgbXkKY3VycmVudCBiZWdpbm5lciBsZXZlbCBjIHNraWxscy4g
+QXMgdGhlIG92ZXJhbGwgbWlub3IgY2hhbmdlc2V0IHRvIFZEUFUzODEKaXQgd291bGQgYmUgYXdl
+c29tZSBpZiB0aGlzIHNlcmllcyBjb3VsZCBiZSBhYnNvcmJlZC4gSSBoYWQgc29tZSBkaXNjdXNz
+aW9uCndpdGggT2xpdmllciBDcsOqdGUgZHVyaW5nIFZpZGVvTGFuIERldiBEYXlzIGxhc3QgbW9u
+dGggdGhhdCBzdWdnZXN0ZWQgdGhpcwptaWdodCBiZSBwb3NzaWJsZT8gLSBoZW5jZSBzZW5kaW5n
+IG5vdy4gSWYgbm90LCBJJ2xsIHdhaXQgdW50aWwgRGV0bGV2J3MKc2VyaWVzIGhhcyBiZWVuIG1l
+cmdlZCBiZWZvcmUgc2VuZGluZyBhIG5leHQgaXRlcmF0aW9uIG9mIHRoZXNlIHBhdGNoZXMuCgpU
+ZXN0aW5nIHdpdGggSmVsbHlmaXNoIGZpbGVzIG9mIHZhcnlpbmcgYml0cmF0ZXMgc2hvd3MgdGhh
+dCBSSzM1Nlggc3RhcnRzCnRvIGV4cGVyaWVuY2UgamVya3kgcGxheWJhY2sgYWJvdmUgMTBtYnBz
+LCB3aGljaCBzZWVtcyByYXRoZXIgbG93IGNvbXBhcmVkCnRvIFJLMzU4OCB3aGljaCBjYW4gcGxh
+eSAzMDBtYnBzIG1lZGlhIHdpdGhvdXQgaXNzdWVzLiBUaGUgdmVuZG9yIGtlcm5lbApkb2N1bWVu
+dHMgJ2FkdmFuY2VkJyBhc3NpZ25lZC1jbG9jay1yYXRlcyBidXQgaW5jcmVhc2luZyB0aGVtIGRv
+ZXMgbm90IGhhdmUKYW55IG9idmlvdXMgaW1wYWN0IHNvIHRoZSBkaWZmZXJlbmNlIGxvb2tzIHRv
+IGJlIHNvbWV0aGluZyBkZWVwZXIuIE5COiBUaGUKc2FtZSBpcyBhbHNvIHNlZW4gd2l0aCBEZXRs
+ZXYncyBwYXRjaGVzIGZvciBSSzM1NzYgKG1heCAxNW1wYnMpIHNvIGZ1cnRoZXIKb3IgZm9sbG93
+LXVwIHdvcmsgaXMgbGlrZWx5IHJlcXVpcmVkLiBEZXNwaXRlIHRoZSBhcHBhcmVudCBsaW1pdGF0
+aW9uIHJlYWwtCndvcmxkIG1lZGlhIGZyb20gbXkgY29sbGVjdGlvbiBwbGF5cyB3ZWxsLgoKWzBd
+IGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcHJvamVjdC9saW51eC1yb2NrY2hpcC9saXN0
+Lz9zZXJpZXM9MTAxNTIyMQpbMV0gaHR0cHM6Ly9naXRodWIuY29tL3JvY2tjaGlwLWxpbnV4L2tl
+cm5lbC9ibG9iL2RldmVsb3AtNi42L2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTZ4
+LmR0c2kjTDE1MzkKCkNocmlzdGlhbiBIZXdpdHQgKDQpOgogIG1lZGlhOiBya3ZkZWM6IG1pbm9y
+IGZpeGVzIGZvciBjdXJyZW50IERFVExFViBwYXRjaGVzCiAgbWVkaWE6IGR0LWJpbmRpbmdzOiBy
+b2NrY2hpcDogQWRkIFJLMzU2OCBWaWRlbyBEZWNvZGVyIGJpbmRpbmdzCiAgbWVkaWE6IHJrdmRl
+YzogQWRkIHN1cHBvcnQgZm9yIHRoZSBWRFBVMzQ2IHZhcmlhbnQKICBhcm02NDogZHRzOiByb2Nr
+Y2hpcDogQWRkIHRoZSB2ZHB1MzQ2IFZpZGVvIERlY29kZXJzIG9uIFJLMzU2WAoKIC4uLi9iaW5k
+aW5ncy9tZWRpYS9yb2NrY2hpcCx2ZGVjLnlhbWwgICAgICAgICB8ICAgMiArCiBhcmNoL2FybTY0
+L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU2eC1iYXNlLmR0c2kgfCAgNDkgKysrKysrKysKIC4uLi9y
+b2NrY2hpcC9ya3ZkZWMvcmt2ZGVjLXZkcHUzODEtcmVncy5oICAgICB8ICAgNCArLQogLi4uL3Jv
+Y2tjaGlwL3JrdmRlYy9ya3ZkZWMtdmRwdTM4My1oZXZjLmMgICAgIHwgICA2ICstCiAuLi4vbWVk
+aWEvcGxhdGZvcm0vcm9ja2NoaXAvcmt2ZGVjL3JrdmRlYy5jICAgfCAxMTAgKysrKysrKysrKysr
+KysrKysrCiA1IGZpbGVzIGNoYW5nZWQsIDE2NiBpbnNlcnRpb25zKCspLCA1IGRlbGV0aW9ucygt
+KQoKLS0gCjIuMzQuMQoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5p
+bmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8v
+bGludXgtcm9ja2NoaXAK
