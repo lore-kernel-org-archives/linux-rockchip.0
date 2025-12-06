@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9B52D3ABF8
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE4FCD3ABF5
 	for <linux-rockchip@archiver.kernel.org>; Sat,  6 Dec 2025 05:09:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,23 +12,23 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9kTNQAZ8ln+9V+J9mrJn6y51NdQvDE8CdYWccsATdqU=; b=aARiuh8WJ8v4RG
-	TJaZc8eYXCKqXrzkLQiDxrXYN88IhpLIlcCTjnSySBHH7NrQGbc3/fLiJ26Id/Wpo5omgHRT6aG4h
-	xE3eOapf5CjiI+7SoyLV4P+0qDnjQYGkl+/QnBKGDs0zccqHrI4Y9oGBK+eLzg14R8KxOy6DpFgJt
-	3MJ2n17p/T7mwGcNGE8vTG+CdkcSFdMetYMiH279DwNN8G/aTpqNVDlOFsiAqXqAsZ1hmwTHwa6cO
-	NOnYeEqp46ReXlmMSnxP6HpUHMbNqMPGSZfHazmVCfFiwCIT+HZtdkhgpoYMqMP7MfN2Lp9yro0zI
-	P7GsZ5Vv8y52jLCuoq+A==;
+	List-Owner; bh=+v+mo/GG6mTd4KU1GTM9Jv0RiFH5AwPBX2S4QEYJnPY=; b=uzdYioGjwSOj6i
+	jRNw3FFOKm1AZN+0r1IioGG+UpwcrVgDMFCkTn73Eln8xH8WacfpPk49Kk9+J+NWdBR4p75C4eLui
+	eIcCdYFo1mDHzCC+jMRuGMWzTySYJ2+8CUQWrKtEtPRhhUOUQ3DxIyTKfKtgmO2FrQTXkr00+Jpqc
+	+bmbQ3+p1vBEN8Zspr8zHBaNOtpN3OmxD/niJ9lPuSz2Jt7v4wwzcNrN4prpuAXtvzQ80oDYZe3BO
+	OyHpZFZi2xdpU42gTP/kWh0+Vuo5tINlxqpqHBEz16UI19tFEAUDFHTNeh8SBzVRVEztF89Y4bnl5
+	4Y3PpX7R09epXON9Q16w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vRkXZ-0000000AdI7-1tlV;
-	Sat, 06 Dec 2025 05:09:05 +0000
-Received: from mail-m3271.qiye.163.com ([220.197.32.71])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vRkXU-0000000AdBg-1Hlj;
+	id 1vRkXV-0000000AdDu-2ItX;
 	Sat, 06 Dec 2025 05:09:01 +0000
+Received: from mail-m49207.qiye.163.com ([45.254.49.207])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vRkXR-0000000AdBZ-2xFv;
+	Sat, 06 Dec 2025 05:08:59 +0000
 Received: from rockchip.. (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 2c3493a70;
-	Sat, 6 Dec 2025 13:08:55 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 2c3493a61;
+	Sat, 6 Dec 2025 13:08:47 +0800 (GMT+08:00)
 From: Ye Zhang <ye.zhang@rock-chips.com>
 To: Ye Zhang <ye.zhang@rock-chips.com>,
 	Linus Walleij <linus.walleij@linaro.org>,
@@ -42,27 +42,29 @@ Cc: Bartosz Golaszewski <brgl@bgdev.pl>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	tao.huang@rock-chips.com
-Subject: [PATCH v2 7/8] dt-bindings: pinctrl: rockchip: Add RMIO controller binding
-Date: Sat,  6 Dec 2025 13:08:43 +0800
-Message-Id: <20251206050844.402958-8-ye.zhang@rock-chips.com>
+	tao.huang@rock-chips.com,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: [PATCH v2 1/8] dt-bindings: pinctrl: Add rk3506 pinctrl support
+Date: Sat,  6 Dec 2025 13:08:37 +0800
+Message-Id: <20251206050844.402958-2-ye.zhang@rock-chips.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20251206050844.402958-1-ye.zhang@rock-chips.com>
 References: <20251206050844.402958-1-ye.zhang@rock-chips.com>
 MIME-Version: 1.0
-X-HM-Tid: 0a9af210229409d8kunmae94618c4ed3f36
+X-HM-Tid: 0a9af21006a009d8kunmae94618c4ed3ae7
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGhkaS1ZIHUxPTBlKTBhITB1WFRQJFh
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGRkdHVZJGBhDGU9MQk1IGE5WFRQJFh
 	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
 	hVSktLVUpCS0tZBg++
 DKIM-Signature: a=rsa-sha256;
-	b=Nahoi33a9W7LKo9zBZsKTBZmqp6NoX79vHrjDvTS7bhW0RXV/xE8MzpUWWK+x16thFH0Zj18qnxkaLMNOZfwhCz89tX4j4xtL4hcnuIidmUY9ytLTBlXBE81klggfepXLlIUgBmyWi9mQHQQSOPAByDC4et3+FZrW1EKeuJS0NU=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=B8Pv8F+oXHHjCE0zxtFanqIKrinBiYf5cSRDVL4WFrI=;
+	b=bG+/oVHC+FD2dNeKBHi7ZwwuxQRf9EpErKon41AD7ic+dUl+vm7z44dwS/EnRlYYtxLLGWyrErjWN0O2iH6pJ+20tb1tlfYNuJ+vVmIQRiQLQyYfZHHz3DK3JlhmWwr9ZleG1iyr1xA5+bDGNX0pRX5lXQurCrOCcBL+j292TRs=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=0Db2q6dT/j6RKhINW0J1Xu2aTYUEmZfbY9ZOLYGcFW8=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251205_210900_546027_A8B15CEC 
-X-CRM114-Status: GOOD (  13.77  )
+X-CRM114-CacheID: sfid-20251205_210858_160415_F5BD5C8B 
+X-CRM114-Status: UNSURE (   6.36  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,172 +81,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add device tree binding for the RMIO (Rockchip Matrix I/O) controller
-which is a sub-device of the main pinctrl on some Rockchip SoCs.
+Add the compatible string for the rk3506 SoC.
 
 Signed-off-by: Ye Zhang <ye.zhang@rock-chips.com>
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
- .../bindings/pinctrl/rockchip,pinctrl.yaml    |   9 ++
- .../bindings/pinctrl/rockchip,rmio.yaml       | 130 ++++++++++++++++++
- 2 files changed, 139 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/pinctrl/rockchip,rmio.yaml
+ Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
 diff --git a/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml
-index 93bf8f352e48..01df0a51ff83 100644
+index 125af766b992..76e607281716 100644
 --- a/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml
 +++ b/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml
-@@ -83,6 +83,15 @@ required:
-   - rockchip,grf
- 
- patternProperties:
-+  "rmio[0-9]*$":
-+    type: object
-+
-+    $ref: "/schemas/pinctrl/rockchip,rmio.yaml#"
-+
-+    description:
-+      The RMIO (Rockchip Matrix I/O) controller node which functions as a
-+      sub-device of the main pinctrl to handle flexible function routing.
-+
-   "gpio@[0-9a-f]+$":
-     type: object
- 
-diff --git a/Documentation/devicetree/bindings/pinctrl/rockchip,rmio.yaml b/Documentation/devicetree/bindings/pinctrl/rockchip,rmio.yaml
-new file mode 100644
-index 000000000000..28ec5ad62061
---- /dev/null
-+++ b/Documentation/devicetree/bindings/pinctrl/rockchip,rmio.yaml
-@@ -0,0 +1,130 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/pinctrl/rockchip,rmio.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: RMIO (Rockchip Matrix I/O) Controller
-+
-+maintainers:
-+  - Heiko Stuebner <heiko@sntech.de>
-+
-+description: |
-+  The RMIO controller provides a flexible routing matrix that allows mapping
-+  various internal peripheral functions (UART, SPI, PWM, etc.) to specific
-+  physical pins. This block is typically a sub-block of the GRF
-+  (General Register Files).
-+
-+properties:
-+  compatible:
-+    enum:
-+      - rockchip,rmio
-+
-+  rockchip,grf:
-+    $ref: /schemas/types.yaml#/definitions/phandle
-+    description:
-+      The phandle of the syscon node for the GRF registers.
-+
-+  rockchip,offset:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    description:
-+      The offset of the RMIO configuration registers within the GRF.
-+
-+  rockchip,pins-num:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    description:
-+      The number of physical pins supported by this RMIO instance.
-+      Used for boundary checking and driver initialization.
-+
-+additionalProperties:
-+  type: object
-+  additionalProperties:
-+    type: object
-+    properties:
-+      rockchip,rmio:
-+        $ref: "/schemas/types.yaml#/definitions/uint32-matrix"
-+        description: |
-+          A list of pin-function pairs. The format is <pin_id function_id>.
-+          - pin_id: The index of the RMIO pin (0 to pins-num - 1).
-+          - function_id: The mux value selecting the peripheral function.
-+        minItems: 1
-+        items:
-+          items:
-+            - minimum: 0
-+              maximum: 31
-+              description:
-+                RMIO Pin ID.
-+            - minimum: 0
-+              maximum: 98
-+              description:
-+                Function ID.
-+
-+    required:
-+      - rockchip,rmio
-+
-+    additionalProperties: false
-+
-+  additionalProperties: false
-+
-+required:
-+  - compatible
-+  - rockchip,grf
-+  - rockchip,offset
-+  - rockchip,pins-num
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+    #include <dt-bindings/pinctrl/rockchip.h>
-+    #include <dt-bindings/pinctrl/rockchip,rk3506-rmio.h>
-+
-+    pinctrl {
-+        #address-cells = <1>;
-+        #size-cells = <1>;
-+        ranges;
-+
-+        rmio {
-+            compatible = "rockchip,rmio";
-+            rockchip,grf = <&grf_pmu>;
-+            rockchip,offset = <0x80>;
-+            rockchip,pins-num = <32>;
-+
-+            rmio-uart {
-+                rmio_pin27_uart1_tx: rmio-pin27-uart1-tx {
-+                    rockchip,rmio = <RMIO_PIN27 RMIO_UART1_TX>;
-+                };
-+
-+                rmio_pin28_uart1_rx: rmio-pin28-uart1-rx {
-+                    rockchip,rmio = <RMIO_PIN28 RMIO_UART1_RX>;
-+                };
-+            };
-+        };
-+
-+        pcfg_pull_default: pcfg-pull-default {
-+          bias-pull-pin-default;
-+        };
-+
-+        rm {
-+          rmio_pin27_pins: rmio-pin27-pins {
-+            rockchip,pins = <1 RK_PC2 7 &pcfg-pull-default>;
-+          };
-+
-+          rmio_pin28_pins: rmio-pin28-pins {
-+            rockchip,pins = <1 RK_PC3 7 &pcfg-pull-default>;
-+          };
-+        };
-+    };
-+
-+    uart1: serial@20064000 {
-+      compatible = "snps,dw-apb-uart";
-+      reg = <0x20064000 0x400>;
-+      interrupts = <GIC_SPI 36 IRQ_TYPE_LEVEL_HIGH>;
-+      clocks = <&mux_uart2>;
-+      pinctrl-0 = <&rmio_pin27_pins &rmio_pin27_uart1_tx
-+                   &rmio_pin28_pins &rmio_pin28_uart1_rx>;
-+      pinctrl-names = "default";
-+      reg-io-width = <1>;
-+      reg-shift = <2>;
-+    };
+@@ -44,6 +44,7 @@ properties:
+       - rockchip,rk3328-pinctrl
+       - rockchip,rk3368-pinctrl
+       - rockchip,rk3399-pinctrl
++      - rockchip,rk3506-pinctrl
+       - rockchip,rk3528-pinctrl
+       - rockchip,rk3562-pinctrl
+       - rockchip,rk3568-pinctrl
 -- 
 2.34.1
 
