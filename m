@@ -4,31 +4,31 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83E43D3ABF6
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB5C9D3ABFD
 	for <linux-rockchip@archiver.kernel.org>; Sat,  6 Dec 2025 05:09:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3v3opPULM9mWf+brt1kjS0HoSw4kEBuac24HIYrG/Ew=; b=lg+rcxiiyzgG9F
-	Fx4OxsNIBI4dQJPT9dhXowiBU2Dc5MDPHfkAVV0HjpuThTx2SxxGw/XuffhXujLcf4QOwo4HKkOWS
-	z+Iecn2jzFMhl7VKWwl0GRDg2FgrxwfKr/+k9ZkHsebxJG3+Shj4Umh4XtL9+Azg6dtrChFYhASOt
-	BJjIttlovjnjwdtadAQhNumCuOjNZDWlXntXMsvqvhoCkLoYubaehzpykTLgNH0s8URawRk9k2lAj
-	dzgWakpp/CmPI28k9KFAvu3XuTbMnVrzhhtz86F4te++wz1/BehH0NuZXQAmBEf9i2Da6kHhGlg6B
-	4qeK5CFT7Iec8npa0q2w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=lZE2GHO3ymttpltJuhzjMS2FRJfUXiK/IINgycPVYyM=; b=eCgt+CP39dclkA
+	pFy3arXQrXl0Jxp192oz7dJvlbTerA+0h/d8hNXZmY2nhlJjD+u5vePd9nNN3v8KgbrXxVtadIdWg
+	GVmV27hQW7bY/ygFVLAGu1yZWPsIw52aePVal2MQkFj6Xa2snMm/MPOYP082P/GdoqZmKFgNey4cf
+	Qv8KJHqxxzlcUzE0Kwi6fXPBVoGAwtVijWSry8kEOyhqUuXhMZQ7EA+Zzl3Ci+iDDS4ClUOeO8hkj
+	KgjvMXCaDukVRDLFiuyJ58Zhco8+dvG31O9+mAKw6gxUyCqmMJ8gFlhmqmZVsUYXP+ABqX6KFR5pb
+	sGyLf4ElHUVHaXc2bPZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vRkXY-0000000AdH9-3SPr;
-	Sat, 06 Dec 2025 05:09:04 +0000
-Received: from mail-m15597.qiye.163.com ([101.71.155.97])
+	id 1vRkXW-0000000AdEQ-0gO0;
+	Sat, 06 Dec 2025 05:09:02 +0000
+Received: from mail-m49226.qiye.163.com ([45.254.49.226])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vRkXS-0000000AdBf-1aal;
-	Sat, 06 Dec 2025 05:09:01 +0000
+	id 1vRkXR-0000000AdBa-31YN;
+	Sat, 06 Dec 2025 05:09:00 +0000
 Received: from rockchip.. (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 2c3493a6f;
-	Sat, 6 Dec 2025 13:08:53 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 2c3493a5c;
+	Sat, 6 Dec 2025 13:08:46 +0800 (GMT+08:00)
 From: Ye Zhang <ye.zhang@rock-chips.com>
 To: Ye Zhang <ye.zhang@rock-chips.com>,
 	Linus Walleij <linus.walleij@linaro.org>,
@@ -43,26 +43,24 @@ Cc: Bartosz Golaszewski <brgl@bgdev.pl>,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	tao.huang@rock-chips.com
-Subject: [PATCH v2 6/8] dt-bindings: pinctrl: Add header for Rockchip RK3506 RMIO
-Date: Sat,  6 Dec 2025 13:08:42 +0800
-Message-Id: <20251206050844.402958-7-ye.zhang@rock-chips.com>
+Subject: [PATCH v2 0/8] pinctrl: rockchip: Add RK3506 and RV1126B pinctrl and RMIO support
+Date: Sat,  6 Dec 2025 13:08:36 +0800
+Message-Id: <20251206050844.402958-1-ye.zhang@rock-chips.com>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20251206050844.402958-1-ye.zhang@rock-chips.com>
-References: <20251206050844.402958-1-ye.zhang@rock-chips.com>
 MIME-Version: 1.0
-X-HM-Tid: 0a9af2101e1a09d8kunmae94618c4ed3eaf
+X-HM-Tid: 0a9af21001f509d8kunmae94618c4ed3a4a
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGhhNTlZMGh1MSEJCTk9NTUxWFRQJFh
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQk9OTVZOSUJDS09DTRpOGUJWFRQJFh
 	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
 	hVSktLVUpCS0tZBg++
 DKIM-Signature: a=rsa-sha256;
-	b=Kb8TLkq1VYYEi5HZUftNqJWCUIeHSXocCTRrgo8kcUJ0OpwF42usAMDns9nwJ/LsXGWVpHG2x3YiSO+pnYkQ6tKDBJ429orJhIlDs7P7ohrsj93ll0A7qWNm0eaUXUWTKb6ru02BJQCMh0Blxc0zvTgFAMdWsdbsTd2FvxbPJWY=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=gcDxCT/vnr2dTxZ7y5r6e88qG/0XM0v8Hk5zok5szB8=;
+	b=JEhU243hs2yTG3n07dQ+K0RqbAKotLONHLm9cSoLpH6dyWIvZj2U2443n1vSlVf5wbTLG+pH6MVU3UNS6uyEJkvwOd2wrxBfpET851E/MD/XDViqGq5KFSK/Odknwms1t0HQ7hVgQt1AYtFztnEOfe89NRCuLkRwaACtv/Jm8xU=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=iD8eYq5ib5hN+a0GTaQhiJrNeylujhiGQE5LdxAwJmw=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251205_210858_679449_D5F6076D 
-X-CRM114-Status: UNSURE (   9.44  )
+X-CRM114-CacheID: sfid-20251205_210858_158424_C87A67A2 
+X-CRM114-Status: UNSURE (   9.30  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -80,164 +78,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add header file with constants for RMIO pin and function IDs for the
-Rockchip RK3506 SoC.
+This series adds pinctrl support for the Rockchip RK3506 and RV1126B SoC,
+and adds support for RMIO (Rockchip Matrix I/O).
 
-Signed-off-by: Ye Zhang <ye.zhang@rock-chips.com>
----
- .../pinctrl/rockchip,rk3506-rmio.h            | 143 ++++++++++++++++++
- 1 file changed, 143 insertions(+)
+The series includes:
+- RK3506 pinctrl driver implementation
+- RV1126B pinctrl driver implementation
+- RMIO controller binding and driver support
+- GPIO driver update to support new version GPIO
+
+Changes in v2:
+- Added RV1126B pinctrl support (patches 3 and 4)
+- Updated GPIO driver to support new version GPIO (patch 5)
+- Added header file for RK3506 RMIO (patch 6)
+- RMIO is now implemented as a separate pinctrl device (patches 7, 8)
+
+Ye Zhang (8):
+  dt-bindings: pinctrl: Add rk3506 pinctrl support
+  pinctrl: rockchip: Add rk3506 pinctrl support
+  dt-bindings: pinctrl: Add rv1126b pinctrl support
+  pinctrl: rockchip: Add rv1126b pinctrl support
+  gpio: rockchip: support new version GPIO
+  dt-bindings: pinctrl: Add header for Rockchip RK3506 RMIO
+  dt-bindings: pinctrl: rockchip: Add RMIO controller binding
+  pinctrl: rockchip: add rmio support
+
+ .../bindings/pinctrl/rockchip,pinctrl.yaml    |   11 +
+ .../bindings/pinctrl/rockchip,rmio.yaml       |  130 ++
+ drivers/gpio/gpio-rockchip.c                  |    2 +
+ drivers/pinctrl/pinctrl-rockchip.c            | 1188 +++++++++++++++--
+ drivers/pinctrl/pinctrl-rockchip.h            |   47 +
+ .../pinctrl/rockchip,rk3506-rmio.h            |  143 ++
+ 6 files changed, 1427 insertions(+), 94 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/pinctrl/rockchip,rmio.yaml
  create mode 100644 include/dt-bindings/pinctrl/rockchip,rk3506-rmio.h
 
-diff --git a/include/dt-bindings/pinctrl/rockchip,rk3506-rmio.h b/include/dt-bindings/pinctrl/rockchip,rk3506-rmio.h
-new file mode 100644
-index 000000000000..5d39690a0b28
---- /dev/null
-+++ b/include/dt-bindings/pinctrl/rockchip,rk3506-rmio.h
-@@ -0,0 +1,143 @@
-+/* SPDX-License-Identifier: (GPL-2.0 OR MIT) */
-+/*
-+ * Copyright (c) 2025 Rockchip Electronics Co., Ltd.
-+ */
-+
-+#ifndef __DT_BINDINGS_PINCTRL_ROCKCHIP_RK3506_RMIO_H
-+#define __DT_BINDINGS_PINCTRL_ROCKCHIP_RK3506_RMIO_H
-+
-+/* RMIO pins definetion */
-+#define RMIO_PIN0				0
-+#define RMIO_PIN1				1
-+#define RMIO_PIN2				2
-+#define RMIO_PIN3				3
-+#define RMIO_PIN4				4
-+#define RMIO_PIN5				5
-+#define RMIO_PIN6				6
-+#define RMIO_PIN7				7
-+#define RMIO_PIN8				8
-+#define RMIO_PIN9				9
-+#define RMIO_PIN10				10
-+#define RMIO_PIN11				11
-+#define RMIO_PIN12				12
-+#define RMIO_PIN13				13
-+#define RMIO_PIN14				14
-+#define RMIO_PIN15				15
-+#define RMIO_PIN16				16
-+#define RMIO_PIN17				17
-+#define RMIO_PIN18				18
-+#define RMIO_PIN19				19
-+#define RMIO_PIN20				20
-+#define RMIO_PIN21				21
-+#define RMIO_PIN22				22
-+#define RMIO_PIN23				23
-+#define RMIO_PIN24				24
-+#define RMIO_PIN25				25
-+#define RMIO_PIN26				26
-+#define RMIO_PIN27				27
-+#define RMIO_PIN28				28
-+#define RMIO_PIN29				29
-+#define RMIO_PIN30				30
-+#define RMIO_PIN31				31
-+
-+/* RMIO function definetion */
-+#define RMIO_UART1_TX			1
-+#define RMIO_UART1_RX			2
-+#define RMIO_UART2_TX			3
-+#define RMIO_UART2_RX			4
-+#define RMIO_UART3_TX			5
-+#define RMIO_UART3_RX			6
-+#define RMIO_UART3_CTSN			7
-+#define RMIO_UART3_RTSN			8
-+#define RMIO_UART4_TX			9
-+#define RMIO_UART4_RX			10
-+#define RMIO_UART4_CTSN			11
-+#define RMIO_UART4_RTSN			12
-+#define RMIO_MIPITE			13
-+#define RMIO_CLK_32K			14
-+#define RMIO_I2C0_SCL			15
-+#define RMIO_I2C0_SDA			16
-+#define RMIO_I2C1_SCL			17
-+#define RMIO_I2C1_SDA			18
-+#define RMIO_I2C2_SCL			19
-+#define RMIO_I2C2_SDA			20
-+#define RMIO_PDM_CLK0			21
-+#define RMIO_PDM_SDI0			22
-+#define RMIO_PDM_SDI1			23
-+#define RMIO_PDM_SDI2			24
-+#define RMIO_PDM_SDI3			25
-+#define RMIO_CAN1_TX			26
-+#define RMIO_CAN1_RX			27
-+#define RMIO_CAN0_TX			28
-+#define RMIO_CAN0_RX			29
-+#define RMIO_PWM0_CH0			30
-+#define RMIO_PWM0_CH1			31
-+#define RMIO_PWM0_CH2			32
-+#define RMIO_PWM0_CH3			33
-+#define RMIO_PWM1_CH0			34
-+#define RMIO_PWM1_CH1			35
-+#define RMIO_PWM1_CH2			36
-+#define RMIO_PWM1_CH3			37
-+#define RMIO_PWM1_CH4			38
-+#define RMIO_PWM1_CH5			39
-+#define RMIO_PWM1_CH6			40
-+#define RMIO_PWM1_CH7			41
-+#define RMIO_TOUCH_KEY_DRIVE		42
-+#define RMIO_TOUCH_KEY_IN0		43
-+#define RMIO_TOUCH_KEY_IN1		44
-+#define RMIO_TOUCH_KEY_IN2		45
-+#define RMIO_TOUCH_KEY_IN3		46
-+#define RMIO_TOUCH_KEY_IN4		47
-+#define RMIO_TOUCH_KEY_IN5		48
-+#define RMIO_TOUCH_KEY_IN6		49
-+#define RMIO_TOUCH_KEY_IN7		50
-+#define RMIO_SAI0_MCLK			51
-+#define RMIO_SAI0_SCLK			52
-+#define RMIO_SAI0_LRCK			53
-+#define RMIO_SAI0_SDI0			54
-+#define RMIO_SAI0_SDI1			55
-+#define RMIO_SAI0_SDI2			56
-+#define RMIO_SAI0_SDI3			57
-+#define RMIO_SAI0_SDO			58
-+#define RMIO_SAI1_MCLK			59
-+#define RMIO_SAI1_SCLK			60
-+#define RMIO_SAI1_LRCK			61
-+#define RMIO_SAI1_SDI			62
-+#define RMIO_SAI1_SDO0			63
-+#define RMIO_SAI1_SDO1			64
-+#define RMIO_SAI1_SDO2			65
-+#define RMIO_SAI1_SDO3			66
-+#define RMIO_SPI0_CLK			67
-+#define RMIO_SPI0_MOSI			68
-+#define RMIO_SPI0_MISO			69
-+#define RMIO_SPI0_CSN0			70
-+#define RMIO_SPI0_CSN1			71
-+#define RMIO_SPI1_CLK			72
-+#define RMIO_SPI1_MOSI			73
-+#define RMIO_SPI1_MISO			74
-+#define RMIO_SPI1_CSN0			75
-+#define RMIO_SPI1_CSN1			76
-+#define RMIO_WDT_TSADC_SHUT		77
-+#define RMIO_PMU_SLEEP			78
-+#define RMIO_CORE_POWER_OFF		79
-+#define RMIO_SPDIF_TX			80
-+#define RMIO_SPDIF_RX			81
-+#define RMIO_PWM1_BIP_CNTR_A0		82
-+#define RMIO_PWM1_BIP_CNTR_A1		83
-+#define RMIO_PWM1_BIP_CNTR_A2		84
-+#define RMIO_PWM1_BIP_CNTR_A3		85
-+#define RMIO_PWM1_BIP_CNTR_A4		86
-+#define RMIO_PWM1_BIP_CNTR_A5		87
-+#define RMIO_PWM1_BIP_CNTR_B0		88
-+#define RMIO_PWM1_BIP_CNTR_B1		89
-+#define RMIO_PWM1_BIP_CNTR_B2		90
-+#define RMIO_PWM1_BIP_CNTR_B3		91
-+#define RMIO_PWM1_BIP_CNTR_B4		92
-+#define RMIO_PWM1_BIP_CNTR_B5		93
-+#define RMIO_PDM_CLK1			94
-+#define RMIO_ETH_RMII0_PPSCLK		95
-+#define RMIO_ETH_RMII0_PPSTRIG		96
-+#define RMIO_ETH_RMII1_PPSCLK		97
-+#define RMIO_ETH_RMII1_PPSTRIG		98
-+
-+#endif /* __DT_BINDINGS_PINCTRL_ROCKCHIP_RK3506_RMIO_H */
 -- 
 2.34.1
 
