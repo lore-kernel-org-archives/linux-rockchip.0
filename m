@@ -4,64 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51F57D3ABF5
-	for <linux-rockchip@archiver.kernel.org>; Sat,  6 Dec 2025 05:10:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE093D3ABFA
+	for <linux-rockchip@archiver.kernel.org>; Sat,  6 Dec 2025 08:28:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=lZE2GHO3ymttpltJuhzjMS2FRJfUXiK/IINgycPVYyM=; b=BDoxoAIFZNAW/3
-	39pdENBhXJ7OSRrE8CLtOYDHXFCrDmIynRDKpKhJ7tbFDvDNUintD91YB6G7efSgQptUr6s+0wdS3
-	PSAMKdpLboHAS/Iif0emSVQ8iT8PKNSglUw9FRwNI2+J5vXdRNiGUf1xsNbvKHQKjRQn7kRM8eZ+V
-	Qb9Prq15GVg/BQbnrpyHccYS4gGh8909BLxP6adM7jI638rwa8wYMMytBzr0cAjEAfucBI+kU74ux
-	01jpwdmYl4WN7nhrAGAwTuwg1FVAdMtXhWACYCw85oIEtl3St6ROpi/rZoeo867zWuzJSzTH1deVu
-	hoBo9v7DR4rTVNo25mMQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=7p3pixO/RPOZaMQinDOTO6fvrA0kmFmFiTjTE3mjMXQ=; b=LtPARdqe2tt/ih
+	is6D5cHvCJ0AIhaas+pm6nr+UHAKFgn62XWBQHhKFu9LmUVyiqqgYzW7CF29RFIXVxWrWjDSLkUWz
+	rPzMJoOYvVFrPK9+DI8dBWcmxO+/PSVhCMUuWVC3KOP7fXJrLN4zDojHa1bMJ0YFM9ucHAqFt7iSc
+	wDuttAZ3tuJeFD0plH2cqOEdqB9FyMZL81FkYW4ZOtgD/C5ME5toDYnvywsCOfFG7xzxitDCB/2Am
+	HqYT0Nomg8EeCHs+wU+LZlHrifNGb1A3q15UkP19a3Tkl2xB7WAN24ThtUWIAD+zNAPVTeZgLEVCs
+	El5FtGwOqBB4QsntZtSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vRkYx-0000000AeAv-0oUo;
-	Sat, 06 Dec 2025 05:10:31 +0000
-Received: from mail-m19731118.qiye.163.com ([220.197.31.118])
+	id 1vRneT-0000000AkRv-2p7A;
+	Sat, 06 Dec 2025 08:28:25 +0000
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vRkYm-0000000Ae3A-1lRG;
-	Sat, 06 Dec 2025 05:10:21 +0000
-Received: from rockchip.. (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 2c3493adc;
-	Sat, 6 Dec 2025 13:10:05 +0800 (GMT+08:00)
-From: Ye Zhang <ye.zhang@rock-chips.com>
-To: Ye Zhang <ye.zhang@rock-chips.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Bartosz Golaszewski <brgl@bgdev.pl>,
+	id 1vRneQ-0000000AkQH-2Pxr
+	for linux-rockchip@lists.infradead.org;
+	Sat, 06 Dec 2025 08:28:24 +0000
+Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-477563e28a3so21043735e9.1
+        for <linux-rockchip@lists.infradead.org>; Sat, 06 Dec 2025 00:28:22 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1765009701; x=1765614501; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=j4FBci3+O4afQtw23umY0BKlPjTmvjUx0lyWZ4/itP0=;
+        b=DzuuJGF+kfMZ09zZusfXmYsfOzGMd2vUur+vP3NR0g8oY91zRo22xMWGUQPgzpYVo6
+         7sz3IGlrw/DVanFCMruOAyq+AU5J/3RAFlC3RnHgHagX5mhVOrEWLv11tWNL5c5p3qZV
+         9fDHD5zfyKEmU4Jtpdzam6/Rodw49JAo4VJ+SjCqWPeoVgQxw8LpdBeUYUCBBc0Co7+i
+         5a8LiYolJG2z5UdckL3xT2c9ATzCw8GS02vbRgGrAVeutjUpvIF+j7x++f4QQx8oNDQI
+         Ktb+PSFz0fqCxcZdXhxnYGljn7T0C2BeS7UHoJ0loRDmisbjkwqAZbMnNuZB9Y/3VVGZ
+         cZ7Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1765009701; x=1765614501;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=j4FBci3+O4afQtw23umY0BKlPjTmvjUx0lyWZ4/itP0=;
+        b=iwgf/KpwAiY0aHkzcfT1jiykDFprZsPX2V+QU6QIO4vwYtVwuPWaoXlO94jLFvVFlQ
+         rvgkEJLqaE3RSWUjR4KJWrFuluSNUhs5aaB+4/NdIZol+cRyuDtGHrDB5CWZGmtJGlWm
+         1Fmpvo6HYKrgQDd6grp261azcWBO4Lv4NHTNSmlslK4i7nobZ2JdiiFRUlnOTPpVnWae
+         00MVD25gPR/RQ6YEg5BoMkUBt4fxLnY22hw7rvxg268LgjENXIBqOHRwX0CqrK4btg6q
+         fXRys1GxjCq7Fw9aFTC0EpkSslrktANX/vpeXiaNn7GGGKexkMggGw6UFqZMCmI3SVFA
+         M0pg==
+X-Forwarded-Encrypted: i=1; AJvYcCVCcnYj48JR5PZtDYAAIAfBbdF87q4LffCus80v2QHOSrZIa9BrJNqn0eoqyVhjGfJ6SMcTnqY4Wh4huO+Iyg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxtkNrUkRuWoUr5C2Q+PaImvuFkbUWgA/TuueEg/IRvfAE3loD9
+	hk1PLHGBlU8TxOmBdSH1mEqIqfMK0LxVSVN8C6H8j3Ew1Qk9TaRk3n/5
+X-Gm-Gg: ASbGnct1I57TPZVTRh/MTqEMXfDFF6NkNCQd/s5q9qyuePGfV9NGl1eKswaqBDiyaVB
+	Vo2woBm6LoxCco18Q/LcFKSvYi342LTFB08HpllrQgjzrIrPVVWmqhWMVyFc/HeFxvq1ef+U9KX
+	qdfPMAtpfu/HIjk5ZBPoDRjek7oLYATyXFa/d7yrI1fcuzU2+0eJ79gBYG9HWq6sf7Uzzt8CkR4
+	ec2wCH7FA93kduvdCzChTqG462sSZW8jwKyAGa9bKA0DCnQ6HB9xmQ3Zy7Yiyk9boMxOMQssq2t
+	QZZV/4Re2VFUMqmoubgcfHXQveLJV3MLUu6ESbf7wRNRGqtX/1AtiFZeVMAgOQ5WI5hiovYpLqz
+	/rt0IsrpiEcGPmmrZ4/K3G1daJS2XJPyEkwjdcLxT0+Yx8lLRLvmCZFmXEb6PZNoHyCc7IFG0Zk
+	Nlj3MEsR9gsvRxYNQ=
+X-Google-Smtp-Source: AGHT+IGduH610rn5UO5W1I+quoffTQLyEbtEowPhpEB04wS1de/RlDICAj847j9oMdvdQqNq4Iisag==
+X-Received: by 2002:a05:600c:a08:b0:471:5c0:94fc with SMTP id 5b1f17b1804b1-47939dfa053mr22028575e9.6.1765009700413;
+        Sat, 06 Dec 2025 00:28:20 -0800 (PST)
+Received: from toolbox.. ([87.200.95.144])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-479310a6d9dsm123094705e9.2.2025.12.06.00.28.17
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 06 Dec 2025 00:28:20 -0800 (PST)
+From: Christian Hewitt <christianshewitt@gmail.com>
+To: Detlev Casanova <detlev.casanova@collabora.com>,
+	=?UTF-8?q?Olivier=20Cr=C3=AAte?= <olivier.crete@collabora.com>,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
 	Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
-	linux-gpio@vger.kernel.org,
+	Heiko Stuebner <heiko@sntech.de>,
+	Diederik de Haas <diederik@cknow-tech.com>,
+	Dmitry Osipenko <dmitry.osipenko@collabora.com>,
+	Thomas Gleixner <tglx@linutronix.de>,
+	Dragan Simic <dsimic@manjaro.org>,
+	Chukun Pan <amadeus@jmu.edu.cn>,
+	linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	tao.huang@rock-chips.com
-Subject: [PATCH v2 0/8] pinctrl: rockchip: Add RK3506 and RV1126B pinctrl and RMIO support
-Date: Sat,  6 Dec 2025 13:09:56 +0800
-Message-Id: <20251206051004.402991-1-ye.zhang@rock-chips.com>
+	linux-kernel@vger.kernel.org
+Subject: [PATCH 2/4] media: dt-bindings: rockchip: Add RK3568 Video Decoder bindings
+Date: Sat,  6 Dec 2025 08:28:07 +0000
+Message-Id: <20251206082809.2040679-3-christianshewitt@gmail.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20251206082809.2040679-1-christianshewitt@gmail.com>
+References: <20251206082809.2040679-1-christianshewitt@gmail.com>
 MIME-Version: 1.0
-X-HM-Tid: 0a9af21133e609d8kunm8b6279c54ed7196
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGkkaSFYeSUhNSkIaTBhKTBhWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=NaovzkR4KMrY9nx/tVOzTiX/RH+8mefCfW5jw2qi3dA1MEoxVNdpbqcCswYn8ct8MSN7gT7eulnpNT88uT/NwaBzqmpWrG5QDzvH2rSiYWKmC08o9WbblWsRELqy3vGREPNpliVUkSfF0hCZ/IUJ+JpwvF3z5QBMdVK5qVIhyrU=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=iD8eYq5ib5hN+a0GTaQhiJrNeylujhiGQE5LdxAwJmw=;
-	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251205_211020_641579_527B80CB 
-X-CRM114-Status: UNSURE (   9.30  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251206_002822_655487_97A02F89 
+X-CRM114-Status: GOOD (  10.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,41 +115,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This series adds pinctrl support for the Rockchip RK3506 and RV1126B SoC,
-and adds support for RMIO (Rockchip Matrix I/O).
+The video decoder in RK356X (vdpu346) is described in the same way as
+the one in RK3588 (vdpu381). A new compatible is added as the decoder
+capabilities are a subset of the vdpu381 capabilities.
 
-The series includes:
-- RK3506 pinctrl driver implementation
-- RV1126B pinctrl driver implementation
-- RMIO controller binding and driver support
-- GPIO driver update to support new version GPIO
+Signed-off-by: Christian Hewitt <christianshewitt@gmail.com>
+---
+nb: I've chosen to us rk3568-vdec not rk356x-vdec as other compatibles
+for these chips are using rk3568.
 
-Changes in v2:
-- Added RV1126B pinctrl support (patches 3 and 4)
-- Updated GPIO driver to support new version GPIO (patch 5)
-- Added header file for RK3506 RMIO (patch 6)
-- RMIO is now implemented as a separate pinctrl device (patches 7, 8)
+ Documentation/devicetree/bindings/media/rockchip,vdec.yaml | 2 ++
+ 1 file changed, 2 insertions(+)
 
-Ye Zhang (8):
-  dt-bindings: pinctrl: Add rk3506 pinctrl support
-  pinctrl: rockchip: Add rk3506 pinctrl support
-  dt-bindings: pinctrl: Add rv1126b pinctrl support
-  pinctrl: rockchip: Add rv1126b pinctrl support
-  gpio: rockchip: support new version GPIO
-  dt-bindings: pinctrl: Add header for Rockchip RK3506 RMIO
-  dt-bindings: pinctrl: rockchip: Add RMIO controller binding
-  pinctrl: rockchip: add rmio support
-
- .../bindings/pinctrl/rockchip,pinctrl.yaml    |   11 +
- .../bindings/pinctrl/rockchip,rmio.yaml       |  130 ++
- drivers/gpio/gpio-rockchip.c                  |    2 +
- drivers/pinctrl/pinctrl-rockchip.c            | 1188 +++++++++++++++--
- drivers/pinctrl/pinctrl-rockchip.h            |   47 +
- .../pinctrl/rockchip,rk3506-rmio.h            |  143 ++
- 6 files changed, 1427 insertions(+), 94 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/pinctrl/rockchip,rmio.yaml
- create mode 100644 include/dt-bindings/pinctrl/rockchip,rk3506-rmio.h
-
+diff --git a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml b/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
+index 809fda45b3bd..656ceb1f116e 100644
+--- a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
++++ b/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
+@@ -18,6 +18,7 @@ properties:
+     oneOf:
+       - const: rockchip,rk3288-vdec
+       - const: rockchip,rk3399-vdec
++      - const: rockchip,rk3568-vdec
+       - const: rockchip,rk3576-vdec
+       - const: rockchip,rk3588-vdec
+       - items:
+@@ -107,6 +108,7 @@ allOf:
+         compatible:
+           contains:
+             enum:
++              - rockchip,rk3568-vdec
+               - rockchip,rk3576-vdec
+               - rockchip,rk3588-vdec
+     then:
 -- 
 2.34.1
 
