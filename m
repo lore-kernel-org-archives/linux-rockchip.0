@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABA67D3ABF9
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9B52D3ABF8
 	for <linux-rockchip@archiver.kernel.org>; Sat,  6 Dec 2025 05:09:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,23 +12,23 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gLgRpQibmNs+jvMO4DSfnUUP1071sQpZ7GdBKXqv91o=; b=Za0gM1su4gM7pi
-	gPUiJFWLHs4oNhBKlTwpeXhYTqBmANWOzwFrxdW9+60Moq/4DwmKCM6e2J6zIYlOCnTkR1eNghKfd
-	eH2I53ooQyxsH/QkJ+d2Y3uBZqv0jaoeSVQLn+W/wVG1OzyXzkwenCaII83uk2rVUcT4plf18gO6B
-	7585agzzSIAxI36eTlBIsaXIrjrcyISHIOPhGegz4H/5IWqJVDUytpaRJZpryobz4GMKDx9CLrGBT
-	ak3ZzuJYNpasITTwrcyjL2Fn4DL37AHjCncATczZrwrj6dY449MOHaAO40A/BalCBBOyUnNeqYJRZ
-	j6gvziDBPjlzjMhhR+UA==;
+	List-Owner; bh=9kTNQAZ8ln+9V+J9mrJn6y51NdQvDE8CdYWccsATdqU=; b=aARiuh8WJ8v4RG
+	TJaZc8eYXCKqXrzkLQiDxrXYN88IhpLIlcCTjnSySBHH7NrQGbc3/fLiJ26Id/Wpo5omgHRT6aG4h
+	xE3eOapf5CjiI+7SoyLV4P+0qDnjQYGkl+/QnBKGDs0zccqHrI4Y9oGBK+eLzg14R8KxOy6DpFgJt
+	3MJ2n17p/T7mwGcNGE8vTG+CdkcSFdMetYMiH279DwNN8G/aTpqNVDlOFsiAqXqAsZ1hmwTHwa6cO
+	NOnYeEqp46ReXlmMSnxP6HpUHMbNqMPGSZfHazmVCfFiwCIT+HZtdkhgpoYMqMP7MfN2Lp9yro0zI
+	P7GsZ5Vv8y52jLCuoq+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vRkXX-0000000AdFJ-1TM8;
-	Sat, 06 Dec 2025 05:09:03 +0000
-Received: from mail-m49251.qiye.163.com ([45.254.49.251])
+	id 1vRkXZ-0000000AdI7-1tlV;
+	Sat, 06 Dec 2025 05:09:05 +0000
+Received: from mail-m3271.qiye.163.com ([220.197.32.71])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vRkXR-0000000AdBb-2kSS;
-	Sat, 06 Dec 2025 05:09:00 +0000
+	id 1vRkXU-0000000AdBg-1Hlj;
+	Sat, 06 Dec 2025 05:09:01 +0000
 Received: from rockchip.. (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 2c3493a69;
-	Sat, 6 Dec 2025 13:08:51 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 2c3493a70;
+	Sat, 6 Dec 2025 13:08:55 +0800 (GMT+08:00)
 From: Ye Zhang <ye.zhang@rock-chips.com>
 To: Ye Zhang <ye.zhang@rock-chips.com>,
 	Linus Walleij <linus.walleij@linaro.org>,
@@ -43,26 +43,26 @@ Cc: Bartosz Golaszewski <brgl@bgdev.pl>,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	tao.huang@rock-chips.com
-Subject: [PATCH v2 4/8] pinctrl: rockchip: Add rv1126b pinctrl support
-Date: Sat,  6 Dec 2025 13:08:40 +0800
-Message-Id: <20251206050844.402958-5-ye.zhang@rock-chips.com>
+Subject: [PATCH v2 7/8] dt-bindings: pinctrl: rockchip: Add RMIO controller binding
+Date: Sat,  6 Dec 2025 13:08:43 +0800
+Message-Id: <20251206050844.402958-8-ye.zhang@rock-chips.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20251206050844.402958-1-ye.zhang@rock-chips.com>
 References: <20251206050844.402958-1-ye.zhang@rock-chips.com>
 MIME-Version: 1.0
-X-HM-Tid: 0a9af210147c09d8kunmae94618c4ed3d4a
+X-HM-Tid: 0a9af210229409d8kunmae94618c4ed3f36
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQk1PTlZDS01OGB1OQkNMGU1WFRQJFh
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGhkaS1ZIHUxPTBlKTBhITB1WFRQJFh
 	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
 	hVSktLVUpCS0tZBg++
 DKIM-Signature: a=rsa-sha256;
-	b=H43ZHYD8fDk8kT50ItKRRNdKbWNyX2JIKe+arOzPfrT3kU63TSEyoJfnjKb7KREfiJ1uYgNFvWh0iRLa54HP7EGpnhHiQmEaUXsivTL+LFzeH8p1rjTuoQn8S9yDHLwrxeLvBsw7fCRZpIQY96sKS5viKWKwKjd38LZC9eMwIyc=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=DZ6xry1g/zBse0eKoeaEsKtLVjuDD8R4dy+lNZCkoC8=;
+	b=Nahoi33a9W7LKo9zBZsKTBZmqp6NoX79vHrjDvTS7bhW0RXV/xE8MzpUWWK+x16thFH0Zj18qnxkaLMNOZfwhCz89tX4j4xtL4hcnuIidmUY9ytLTBlXBE81klggfepXLlIUgBmyWi9mQHQQSOPAByDC4et3+FZrW1EKeuJS0NU=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=B8Pv8F+oXHHjCE0zxtFanqIKrinBiYf5cSRDVL4WFrI=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251205_210858_170204_FE9B3C99 
-X-CRM114-Status: GOOD (  14.86  )
+X-CRM114-CacheID: sfid-20251205_210900_546027_A8B15CEC 
+X-CRM114-Status: GOOD (  13.77  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,267 +79,172 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add support for the 8 rv1126b GPIO banks.
+Add device tree binding for the RMIO (Rockchip Matrix I/O) controller
+which is a sub-device of the main pinctrl on some Rockchip SoCs.
 
 Signed-off-by: Ye Zhang <ye.zhang@rock-chips.com>
 ---
- drivers/pinctrl/pinctrl-rockchip.c | 181 ++++++++++++++++++++++++++++-
- drivers/pinctrl/pinctrl-rockchip.h |   1 +
- 2 files changed, 181 insertions(+), 1 deletion(-)
+ .../bindings/pinctrl/rockchip,pinctrl.yaml    |   9 ++
+ .../bindings/pinctrl/rockchip,rmio.yaml       | 130 ++++++++++++++++++
+ 2 files changed, 139 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/pinctrl/rockchip,rmio.yaml
 
-diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
-index e44ef262beec..dc7ef12dfcb0 100644
---- a/drivers/pinctrl/pinctrl-rockchip.c
-+++ b/drivers/pinctrl/pinctrl-rockchip.c
-@@ -307,6 +307,20 @@
- #define RK3588_PIN_BANK_FLAGS(ID, PIN, LABEL, M, P)			\
- 	PIN_BANK_IOMUX_FLAGS_PULL_FLAGS(ID, PIN, LABEL, M, M, M, M, P, P, P, P)
+diff --git a/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml
+index 93bf8f352e48..01df0a51ff83 100644
+--- a/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml
++++ b/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml
+@@ -83,6 +83,15 @@ required:
+   - rockchip,grf
  
-+#define PIN_BANK_IOMUX_4_OFFSET_DRV_8(id, pins, label, offset0,		\
-+				      offset1, offset2, offset3)	\
-+	PIN_BANK_IOMUX_FLAGS_OFFSET_DRV_FLAGS(id, pins, label,		\
-+					      IOMUX_WIDTH_4BIT,		\
-+					      IOMUX_WIDTH_4BIT,		\
-+					      IOMUX_WIDTH_4BIT,		\
-+					      IOMUX_WIDTH_4BIT,		\
-+					      offset0, offset1,		\
-+					      offset2, offset3,		\
-+					      DRV_TYPE_IO_LEVEL_8_BIT,	\
-+					      DRV_TYPE_IO_LEVEL_8_BIT,	\
-+					      DRV_TYPE_IO_LEVEL_8_BIT,	\
-+					      DRV_TYPE_IO_LEVEL_8_BIT)
+ patternProperties:
++  "rmio[0-9]*$":
++    type: object
 +
- static struct regmap_config rockchip_regmap_config = {
- 	.reg_bits = 32,
- 	.val_bits = 32,
-@@ -1701,6 +1715,136 @@ static int rv1126_calc_schmitt_reg_and_bit(struct rockchip_pin_bank *bank,
- 	return 0;
- }
++    $ref: "/schemas/pinctrl/rockchip,rmio.yaml#"
++
++    description:
++      The RMIO (Rockchip Matrix I/O) controller node which functions as a
++      sub-device of the main pinctrl to handle flexible function routing.
++
+   "gpio@[0-9a-f]+$":
+     type: object
  
-+#define RV1126B_DRV_BITS_PER_PIN		8
-+#define RV1126B_DRV_PINS_PER_REG		2
-+#define RV1126B_DRV_GPIO0_A_OFFSET		0x100
-+#define RV1126B_DRV_GPIO0_C_OFFSET		0x8120
-+#define RV1126B_DRV_GPIO_OFFSET(GPION)		(0x8100 + GPION * 0x8040)
+diff --git a/Documentation/devicetree/bindings/pinctrl/rockchip,rmio.yaml b/Documentation/devicetree/bindings/pinctrl/rockchip,rmio.yaml
+new file mode 100644
+index 000000000000..28ec5ad62061
+--- /dev/null
++++ b/Documentation/devicetree/bindings/pinctrl/rockchip,rmio.yaml
+@@ -0,0 +1,130 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/pinctrl/rockchip,rmio.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+static int rv1126b_calc_drv_reg_and_bit(struct rockchip_pin_bank *bank,
-+				       int pin_num, struct regmap **regmap,
-+				       int *reg, u8 *bit)
-+{
-+	struct rockchip_pinctrl *info = bank->drvdata;
++title: RMIO (Rockchip Matrix I/O) Controller
 +
-+	*regmap = info->regmap_base;
-+	switch (bank->bank_num) {
-+	case 0:
-+		if (pin_num < 16)
-+			*reg = RV1126B_DRV_GPIO0_A_OFFSET;
-+		else
-+			*reg = RV1126B_DRV_GPIO0_C_OFFSET - 0x20;
-+		break;
++maintainers:
++  - Heiko Stuebner <heiko@sntech.de>
 +
-+	case 1:
-+	case 2:
-+	case 3:
-+	case 4:
-+	case 5:
-+	case 6:
-+	case 7:
-+		*reg = RV1126B_DRV_GPIO_OFFSET(bank->bank_num);
-+		break;
++description: |
++  The RMIO controller provides a flexible routing matrix that allows mapping
++  various internal peripheral functions (UART, SPI, PWM, etc.) to specific
++  physical pins. This block is typically a sub-block of the GRF
++  (General Register Files).
 +
-+	default:
-+		dev_err(info->dev, "unsupported bank_num %d\n", bank->bank_num);
-+		break;
-+	}
++properties:
++  compatible:
++    enum:
++      - rockchip,rmio
 +
-+	*reg += ((pin_num / RV1126B_DRV_PINS_PER_REG) * 4);
-+	*bit = pin_num % RV1126B_DRV_PINS_PER_REG;
-+	*bit *= RV1126B_DRV_BITS_PER_PIN;
++  rockchip,grf:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description:
++      The phandle of the syscon node for the GRF registers.
 +
-+	return 0;
-+}
++  rockchip,offset:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    description:
++      The offset of the RMIO configuration registers within the GRF.
 +
-+#define RV1126B_PULL_BITS_PER_PIN		2
-+#define RV1126B_PULL_PINS_PER_REG		8
-+#define RV1126B_PULL_GPIO0_A_OFFSET		0x300
-+#define RV1126B_PULL_GPIO0_C_OFFSET		0x8308
-+#define RV1126B_PULL_GPIO_OFFSET(GPION)		(0x8300 + GPION * 0x8010)
++  rockchip,pins-num:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    description:
++      The number of physical pins supported by this RMIO instance.
++      Used for boundary checking and driver initialization.
 +
-+static int rv1126b_calc_pull_reg_and_bit(struct rockchip_pin_bank *bank,
-+					int pin_num, struct regmap **regmap,
-+					int *reg, u8 *bit)
-+{
-+	struct rockchip_pinctrl *info = bank->drvdata;
++additionalProperties:
++  type: object
++  additionalProperties:
++    type: object
++    properties:
++      rockchip,rmio:
++        $ref: "/schemas/types.yaml#/definitions/uint32-matrix"
++        description: |
++          A list of pin-function pairs. The format is <pin_id function_id>.
++          - pin_id: The index of the RMIO pin (0 to pins-num - 1).
++          - function_id: The mux value selecting the peripheral function.
++        minItems: 1
++        items:
++          items:
++            - minimum: 0
++              maximum: 31
++              description:
++                RMIO Pin ID.
++            - minimum: 0
++              maximum: 98
++              description:
++                Function ID.
 +
-+	*regmap = info->regmap_base;
-+	switch (bank->bank_num) {
-+	case 0:
-+		if (pin_num < 16)
-+			*reg = RV1126B_PULL_GPIO0_A_OFFSET;
-+		else
-+			*reg = RV1126B_PULL_GPIO0_C_OFFSET - 0x8;
-+		break;
++    required:
++      - rockchip,rmio
 +
-+	case 1:
-+	case 2:
-+	case 3:
-+	case 4:
-+	case 5:
-+	case 6:
-+	case 7:
-+		*reg = RV1126B_PULL_GPIO_OFFSET(bank->bank_num);
-+		break;
++    additionalProperties: false
 +
-+	default:
-+		dev_err(info->dev, "unsupported bank_num %d\n", bank->bank_num);
-+		break;
-+	}
++  additionalProperties: false
 +
-+	*reg += ((pin_num / RV1126B_PULL_PINS_PER_REG) * 4);
-+	*bit = pin_num % RV1126B_PULL_PINS_PER_REG;
-+	*bit *= RV1126B_PULL_BITS_PER_PIN;
++required:
++  - compatible
++  - rockchip,grf
++  - rockchip,offset
++  - rockchip,pins-num
 +
-+	return 0;
-+}
++additionalProperties: false
 +
-+#define RV1126B_SMT_BITS_PER_PIN		1
-+#define RV1126B_SMT_PINS_PER_REG		8
-+#define RV1126B_SMT_GPIO0_A_OFFSET		0x500
-+#define RV1126B_SMT_GPIO0_C_OFFSET		0x8508
-+#define RV1126B_SMT_GPIO_OFFSET(GPION)		(0x8500 + GPION * 0x8010)
++examples:
++  - |
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/pinctrl/rockchip.h>
++    #include <dt-bindings/pinctrl/rockchip,rk3506-rmio.h>
 +
-+static int rv1126b_calc_schmitt_reg_and_bit(struct rockchip_pin_bank *bank,
-+					   int pin_num,
-+					   struct regmap **regmap,
-+					   int *reg, u8 *bit)
-+{
-+	struct rockchip_pinctrl *info = bank->drvdata;
++    pinctrl {
++        #address-cells = <1>;
++        #size-cells = <1>;
++        ranges;
 +
-+	*regmap = info->regmap_base;
-+	switch (bank->bank_num) {
-+	case 0:
-+		if (pin_num < 16)
-+			*reg = RV1126B_SMT_GPIO0_A_OFFSET;
-+		else
-+			*reg = RV1126B_SMT_GPIO0_C_OFFSET - 0x8;
-+		break;
++        rmio {
++            compatible = "rockchip,rmio";
++            rockchip,grf = <&grf_pmu>;
++            rockchip,offset = <0x80>;
++            rockchip,pins-num = <32>;
 +
-+	case 1:
-+	case 2:
-+	case 3:
-+	case 4:
-+	case 5:
-+	case 6:
-+	case 7:
-+		*reg = RV1126B_SMT_GPIO_OFFSET(bank->bank_num);
-+		break;
++            rmio-uart {
++                rmio_pin27_uart1_tx: rmio-pin27-uart1-tx {
++                    rockchip,rmio = <RMIO_PIN27 RMIO_UART1_TX>;
++                };
 +
-+	default:
-+		dev_err(info->dev, "unsupported bank_num %d\n", bank->bank_num);
-+		break;
-+	}
++                rmio_pin28_uart1_rx: rmio-pin28-uart1-rx {
++                    rockchip,rmio = <RMIO_PIN28 RMIO_UART1_RX>;
++                };
++            };
++        };
 +
-+	*reg += ((pin_num / RV1126B_SMT_PINS_PER_REG) * 4);
-+	*bit = pin_num % RV1126B_SMT_PINS_PER_REG;
-+	*bit *= RV1126B_SMT_BITS_PER_PIN;
++        pcfg_pull_default: pcfg-pull-default {
++          bias-pull-pin-default;
++        };
 +
-+	return 0;
-+}
++        rm {
++          rmio_pin27_pins: rmio-pin27-pins {
++            rockchip,pins = <1 RK_PC2 7 &pcfg-pull-default>;
++          };
 +
- #define RK3308_SCHMITT_PINS_PER_REG		8
- #define RK3308_SCHMITT_BANK_STRIDE		16
- #define RK3308_SCHMITT_GRF_OFFSET		0x1a0
-@@ -3071,7 +3215,8 @@ static int rockchip_set_drive_perpin(struct rockchip_pin_bank *bank,
- 		rmask_bits = RK3588_DRV_BITS_PER_PIN;
- 		ret = strength;
- 		goto config;
--	} else if (ctrl->type == RK3506 ||
-+	} else if (ctrl->type == RV1126B ||
-+		   ctrl->type == RK3506 ||
- 		   ctrl->type == RK3528 ||
- 		   ctrl->type == RK3562 ||
- 		   ctrl->type == RK3568) {
-@@ -3237,6 +3382,7 @@ static int rockchip_get_pull(struct rockchip_pin_bank *bank, int pin_num)
- 				: PIN_CONFIG_BIAS_DISABLE;
- 	case PX30:
- 	case RV1108:
-+	case RV1126B:
- 	case RK3188:
- 	case RK3288:
- 	case RK3308:
-@@ -3299,6 +3445,7 @@ static int rockchip_set_pull(struct rockchip_pin_bank *bank,
- 	case PX30:
- 	case RV1108:
- 	case RV1126:
-+	case RV1126B:
- 	case RK3188:
- 	case RK3288:
- 	case RK3308:
-@@ -3582,6 +3729,7 @@ static bool rockchip_pinconf_pull_valid(struct rockchip_pin_ctrl *ctrl,
- 	case PX30:
- 	case RV1108:
- 	case RV1126:
-+	case RV1126B:
- 	case RK3188:
- 	case RK3288:
- 	case RK3308:
-@@ -4386,6 +4534,35 @@ static struct rockchip_pin_ctrl rv1126_pin_ctrl = {
- 	.schmitt_calc_reg	= rv1126_calc_schmitt_reg_and_bit,
- };
- 
-+static struct rockchip_pin_bank rv1126b_pin_banks[] = {
-+	PIN_BANK_IOMUX_4_OFFSET_DRV_8(0, 32, "gpio0",
-+				      0x0, 0x8, 0x8010, 0x8018),
-+	PIN_BANK_IOMUX_4_OFFSET_DRV_8(1, 32, "gpio1",
-+				      0x10020, 0x10028, 0x10030, 0x10038),
-+	PIN_BANK_IOMUX_4_OFFSET_DRV_8(2, 32, "gpio2",
-+				      0x18040, 0x18048, 0x18050, 0x18058),
-+	PIN_BANK_IOMUX_4_OFFSET_DRV_8(3, 32, "gpio3",
-+				      0x20060, 0x20068, 0x20070, 0x20078),
-+	PIN_BANK_IOMUX_4_OFFSET_DRV_8(4, 32, "gpio4",
-+				      0x28080, 0x28088, 0x28090, 0x28098),
-+	PIN_BANK_IOMUX_4_OFFSET_DRV_8(5, 32, "gpio5",
-+				      0x300a0, 0x300a8, 0x300b0, 0x300b8),
-+	PIN_BANK_IOMUX_4_OFFSET_DRV_8(6, 32, "gpio6",
-+				      0x380c0, 0x380c8, 0x380d0, 0x380d8),
-+	PIN_BANK_IOMUX_4_OFFSET_DRV_8(7, 32, "gpio7",
-+				      0x400e0, 0x400e8, 0x400f0, 0x400f8),
-+};
++          rmio_pin28_pins: rmio-pin28-pins {
++            rockchip,pins = <1 RK_PC3 7 &pcfg-pull-default>;
++          };
++        };
++    };
 +
-+static struct rockchip_pin_ctrl rv1126b_pin_ctrl __maybe_unused = {
-+	.pin_banks		= rv1126b_pin_banks,
-+	.nr_banks		= ARRAY_SIZE(rv1126b_pin_banks),
-+	.label			= "RV1126B-GPIO",
-+	.type			= RV1126B,
-+	.pull_calc_reg		= rv1126b_calc_pull_reg_and_bit,
-+	.drv_calc_reg		= rv1126b_calc_drv_reg_and_bit,
-+	.schmitt_calc_reg	= rv1126b_calc_schmitt_reg_and_bit,
-+};
-+
- static struct rockchip_pin_bank rk2928_pin_banks[] = {
- 	PIN_BANK(0, 32, "gpio0"),
- 	PIN_BANK(1, 32, "gpio1"),
-@@ -4960,6 +5137,8 @@ static const struct of_device_id rockchip_pinctrl_dt_match[] = {
- 		.data = &rv1108_pin_ctrl },
- 	{ .compatible = "rockchip,rv1126-pinctrl",
- 		.data = &rv1126_pin_ctrl },
-+	{ .compatible = "rockchip,rv1126b-pinctrl",
-+		.data = &rv1126b_pin_ctrl },
- 	{ .compatible = "rockchip,rk2928-pinctrl",
- 		.data = &rk2928_pin_ctrl },
- 	{ .compatible = "rockchip,rk3036-pinctrl",
-diff --git a/drivers/pinctrl/pinctrl-rockchip.h b/drivers/pinctrl/pinctrl-rockchip.h
-index 4f4aff42a80a..fe18b62ed994 100644
---- a/drivers/pinctrl/pinctrl-rockchip.h
-+++ b/drivers/pinctrl/pinctrl-rockchip.h
-@@ -187,6 +187,7 @@ enum rockchip_pinctrl_type {
- 	PX30,
- 	RV1108,
- 	RV1126,
-+	RV1126B,
- 	RK2928,
- 	RK3066B,
- 	RK3128,
++    uart1: serial@20064000 {
++      compatible = "snps,dw-apb-uart";
++      reg = <0x20064000 0x400>;
++      interrupts = <GIC_SPI 36 IRQ_TYPE_LEVEL_HIGH>;
++      clocks = <&mux_uart2>;
++      pinctrl-0 = <&rmio_pin27_pins &rmio_pin27_uart1_tx
++                   &rmio_pin28_pins &rmio_pin28_uart1_rx>;
++      pinctrl-names = "default";
++      reg-io-width = <1>;
++      reg-shift = <2>;
++    };
 -- 
 2.34.1
 
