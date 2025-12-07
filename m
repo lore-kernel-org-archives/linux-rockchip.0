@@ -4,80 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 101AAD2CE17
-	for <linux-rockchip@archiver.kernel.org>; Sun,  7 Dec 2025 07:51:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C23B0D1CDC6
+	for <linux-rockchip@archiver.kernel.org>; Sun,  7 Dec 2025 13:16:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:Subject:References:Cc:To:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=geshtkGoaN5PR3Xw+Y0IS5x3jHdiYhC7v67U6mRIme8=; b=jgYhlZV3YSWW96
-	u+8OUv9HmNFYbzKGTn6XK/XAGumd1lqcJRoJ6PTzVoQaZKkx1pCpjBoVC5Iu7FuJPTuEpmn8s5JhV
-	DVYs8utBawkx402mijIIlRk30vqZTnD09gLnBLZ1Gwqihbibs1G/OWH2pZrXeHOtGZXmM7nkRPZIi
-	68xAMoA1k4aXJI81bJ+lilk0bY550P5tR+zoUZG0aiqwf8jCa1wAz2i5mTG83LApLB529JB/FKUnY
-	/XY2x/PlyokXCF+Ym3i+0706dlHf6luyvCBbcBuA5qQOB1uQSkT/Tds9PsLOeAvudyAN+d4FF10pi
-	1IEk0LBgp0nfTYpSrfKg==;
+	List-Owner; bh=QvUCqER2DFz3Jorv2p017h93iFvnrxwZ5sWoBPXYQfo=; b=Yp4rTXk4tfoILv
+	dNwcDwz9sx5A9byBNi1cnLif2cXqCUeqP+kawNJO8yyHdWKTmdFlY9QI3MXkOwNTXg19npaDTyyoN
+	jyhPt4a+O15Kt6Q7uY4KAUaO25GpF3ePUE8QDpGTPCv2KQ+9/rEX160PvDy4be9J3cGgbwq10LSuG
+	LAfpTaiaYS29CpzcYKENE3uULoh/vfZFUE7Ciy2btj9G2cjjwNGSISJlfbEhmg7fHWH7BDdttTNJo
+	2RhulL7cb4Jqco2gJq9JJynhPL1sY4jVkx/0zOO7nPk08rcC20hRZy8vIXopA40l+6SmPeouOsRLT
+	PQp5haX8g7FJLw/60//A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vS9Xt-0000000BZam-2YVC;
-	Sun, 07 Dec 2025 07:51:05 +0000
-Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
+	id 1vSEcx-0000000Bx6E-2se7;
+	Sun, 07 Dec 2025 13:16:39 +0000
+Received: from mail3.ecloud.global ([135.181.139.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vS9Xq-0000000BZaH-1pBH
-	for linux-rockchip@lists.infradead.org;
-	Sun, 07 Dec 2025 07:51:04 +0000
-Received: by mail-ej1-x62d.google.com with SMTP id a640c23a62f3a-b79b9113651so553226866b.3
-        for <linux-rockchip@lists.infradead.org>; Sat, 06 Dec 2025 23:51:01 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1765093860; x=1765698660; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=/6HjmBwKx9RHsKdictkxKGMKvEW4KqB7I2ntbk5moRQ=;
-        b=k5owb4W+6lQS2erCj1Cj9pbe12bI+jj0NT+cJtgI666NTesGXrlCXGfFb8iz86ublp
-         THV+Qy6EUk+Y1/wb0elde3WsELEPkDUapZ58qbofY88BpFD9Rs4f/5nwmYY9ahwLhjyU
-         gqf9Bv6BUuvw5nTm2CDQtNJmwek5bwEQ3MlsV9C9ksFLO7askmXEQ7SnPfc1fMPEaIS0
-         qmXnmqwkneGQl1kcoA0CdOnvAkNeZsjM2XvEoEBcLDJKYIidOEd4c6+KUSWBnxa12Umn
-         wIRAIA0fhb+gf5RvPSvZoocefBhaImjd6EJ693X7EJIE0YHjUKyNFI6gapk4M1gRLSr6
-         8VJA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1765093860; x=1765698660;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=/6HjmBwKx9RHsKdictkxKGMKvEW4KqB7I2ntbk5moRQ=;
-        b=BTBS0HAq3gbALsjUCV2+x+EIuB6iLVgJtNq/ZRjrhkkrUjMcHkBLdtsRV/kCn8I4uD
-         L92cAPY8Sumq/iC0tHTbQwCpnYEGQXVIgBITpy9ljASOF/IDUNopKdoKbE03nNdsam0i
-         UIVdDQtQ16OkpiWA7K4bNq7j+/EbvGdY5LzBO34RZipal5gj0R8ePq+J4phXdY/BMtAG
-         sghDEQFCmL8/fDnnOmYoEHhqxKdY4dM5jSrd+YjVmFsxkSUHScnrJc8jEIR4lcZqYr2p
-         uxSuDKSrwBIbryK9dI9ihmpLzsMS5o2yxjUCzToixCBVYeFsWmUqSNqXx2s+waeo8Ai6
-         BhhA==
-X-Forwarded-Encrypted: i=1; AJvYcCVhvgddr9Sel9vzixC1v/VsuMQVSs0zUOfx0peroTATVBvTdNs/hrJhf0d0uGJig8aHfdt97il1Cy14nSucSw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Ywk7szKhRVwefOaglKSoHUnI61vox77gh88DvTi6AEVXmYydYLx
-	UB+6JTC0/P9ysJ85xLaNEkM6w5TJTKSUtyB6YpQSQzaId8VLSv8fYJsQR+6ZVg1s6B8JqPWpqRU
-	AizzmgpbVkQ2Y1QnqIIqmELT4qaYbAXE=
-X-Gm-Gg: ASbGncuToZCw9/TnAwKnc6Ge/z5nydLznHTh1lqHgTFFCfTA4EBnOO/aS3JfjhOe4Gd
-	z4LpdEMy1W9+y7XYA5r9jHEOjV/QbCLRuND3KyEwOr8eSLnD0kWR89/sd9s+Xu0aGhPJCr+sown
-	CwpCKW9cLEqr7rLvpgndP6wHmYzgzY+aTIpZrdgqk+Df3d9O/kkUgNqgk6IglJEcAZp7+gu1ZF4
-	P/Ez6pehZ0iFju1mU2lVefXUdehuliRyUTGsVVAo8lt8y8NJ/R7MGPClz1qS9D5L1ODUw==
-X-Google-Smtp-Source: AGHT+IGk8+T7H+GuNusI/FR7C0nUTfMeK8sMlbisuGybJ8C75u/fNDxhnMLp8v9UaI8jcD3KVtzvbuAlMDLgfoc82tM=
-X-Received: by 2002:a17:907:3ea3:b0:b70:b700:df98 with SMTP id
- a640c23a62f3a-b7a242efe10mr423357466b.5.1765093859430; Sat, 06 Dec 2025
- 23:50:59 -0800 (PST)
+	id 1vSEcu-0000000Bx5W-1eYD;
+	Sun, 07 Dec 2025 13:16:38 +0000
+Received: from authenticated-user (mail3.ecloud.global [127.0.0.1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mail3.ecloud.global (Postfix) with ESMTPSA id A9C4888A4FD;
+	Sun,  7 Dec 2025 13:16:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=murena.io; s=mail3;
+	t=1765113393;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=d0IbB4IpT2dhEZpT6CaDcHvBq0pv4VvNOc552hzZKFw=;
+	b=9PJS8J3KiYwGjrzjnyvJj/Wju65uEr/T7O6SNiRoctM41u2iwXEQe/hrMjfashVRh5gZ4S
+	SzqtOgrrh4Wd6kRM5XGPzq8A3KgQR9aMeLdKTfCWOQGhlCWTTdZkCddit/0pOoFkep75z7
+	5GkqLqGm5JF953YWgwSwgbUNzjgn+aw=
+ARC-Seal: i=1; s=mail3; d=murena.io; t=1765113393; a=rsa-sha256; cv=none;
+	b=hwZ1FpDC7gjiD1v+0BN+zKNNdXOTQAoRseG4tf8dTWmT/t7Nxczb2086lF4np1TFeSrpol
+	HQxmrOvXohepCNsCdGFEGZCJ/EG5ar9X1U3nQXZd4aURPet1IGALQLZo9HRDDgZASowlyh
+	NoQtfcc3+jU7ofOQy8LC7ATPslQSbgY=
+ARC-Authentication-Results: i=1;
+	mail3.ecloud.global;
+	auth=pass smtp.mailfrom=maud_spierings@murena.io
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=murena.io;
+	s=mail3; t=1765113393;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=d0IbB4IpT2dhEZpT6CaDcHvBq0pv4VvNOc552hzZKFw=;
+	b=S3oXMaax5JrDFkjCRm2vN6zoxq52asX6UADz4fXgY1KdE6uXAVmBoc0ux9MEfE7te37kVq
+	YfUL0pFa/rD7UwDElrl8pw9hF9eS8txaqNHia4ewb70rizDkihQeiAN0ECtzDOAdrrMuoz
+	nHLcAYorXVLJ3da5IYEKFHiPjxyv0pw=
+Message-ID: <4ec78537-5184-4e6b-9ada-ff268fbe9c3e@murena.io>
+Date: Sun, 7 Dec 2025 14:16:32 +0100
 MIME-Version: 1.0
-References: <1764809428-183623-1-git-send-email-shawn.lin@rock-chips.com>
-In-Reply-To: <1764809428-183623-1-git-send-email-shawn.lin@rock-chips.com>
-From: Anand Moon <linux.amoon@gmail.com>
-Date: Sun, 7 Dec 2025 13:20:43 +0530
-X-Gm-Features: AQt7F2qnZjImmge44gJ3dCMPIWRFLa2Z9SmGfhvqctrOQ-Ll_Kah1Lo2eMbTnvU
-Message-ID: <CANAwSgSn_6g1a=LYqKGom+FyhJ+qqbi5qRMKCxAoe5Q2nsN5sQ@mail.gmail.com>
-Subject: Re: [RESEND PATCH v3] arm64: dts: rockchip: Add PCIe clkreq stuff for
- RK3588 EVB1
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org
+To: cristian.ciocaltea@collabora.com
+Cc: Laurent.pinchart@ideasonboard.com, airlied@gmail.com,
+ andrzej.hajda@intel.com, andy.yan@rock-chips.com,
+ dri-devel@lists.freedesktop.org, heiko@sntech.de, hjc@rock-chips.com,
+ jernej.skrabec@gmail.com, jonas@kwiboo.se, kernel@collabora.com,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, maarten.lankhorst@linux.intel.com,
+ mripard@kernel.org, neil.armstrong@linaro.org, rfoss@kernel.org,
+ simona@ffwll.ch, tzimmermann@suse.de
+References: <20251203-dw-hdmi-qp-scramb-v1-0-836fe7401a69@collabora.com>
+Subject: Re: [PATCH 0/4] Add HDMI 2.0 support to DW HDMI QP TX
+Content-Language: en-US
+From: Maud Spierings <maud_spierings@murena.io>
+In-Reply-To: <20251203-dw-hdmi-qp-scramb-v1-0-836fe7401a69@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251206_235102_604163_D85380BB 
-X-CRM114-Status: GOOD (  19.07  )
+X-CRM114-CacheID: sfid-20251207_051636_656265_D901C705 
+X-CRM114-Status: GOOD (  13.70  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,74 +90,50 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Shawn,
+Awesome work! I've been waiting for this feature!
 
-On Thu, 4 Dec 2025 at 06:21, Shawn Lin <shawn.lin@rock-chips.com> wrote:
+I can now actually get 1440p100 on my display and 4k60 on my tv over HDMI.
+
+Tested-by: Maud Spierings <maud_spierings@hotmail.com>
+
+Kind regards,
+Maud
+
+> This patch series provides the missing support for high TMDS clock ratio
+> and scrambling to DW HDMI QP TX library, required for handling HDMI 2.0
+> display modes on RK3576 & RK3588 SoCs.
 >
-> Add supports-clkreq and pinmux for PCIe ASPM L1 substates.
+> In order to allow addressing the SCDC status lost on sink disconnects,
+> it adds an atomic variant of the drm_bridge_funcs.detect callback and a
+> new drm_bridge_detect_ctx() helper, which is further used in
+> drm_bridge_connector to switch to ->detect_ctx hook.
 >
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-> Acked-by: Manivannan Sadhasivam <mani@kernel.org>
-> Reviewed-by: Hans Zhang <hans.zhang@cixtech.com>
+> Furthermore, optimize HPD event handling in dw_hdmi_qp Rockchip platform
+> driver to run the detect cycle on the affected connector only.
+>
+> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 > ---
-Thanks, are there plans to support this feature on the remaining
-RK356x and RK3588 SBCs?
+> Cristian Ciocaltea (4):
+>        drm/bridge: Add ->detect_ctx hook and drm_bridge_detect_ctx()
+>        drm/bridge-connector: Switch to using ->detect_ctx hook
+>        drm/bridge: dw-hdmi-qp: Add high TMDS clock ratio and scrambling support
+>        drm/rockchip: dw_hdmi_qp: Do not send HPD events for all connectors
+>
+>   drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c   | 174 +++++++++++++++++++++++--
+>   drivers/gpu/drm/display/drm_bridge_connector.c |  73 ++++++-----
+>   drivers/gpu/drm/drm_bridge.c                   |  58 +++++++++
+>   drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c |  44 +++----
+>   include/drm/drm_bridge.h                       |  30 +++++
+>   5 files changed, 308 insertions(+), 71 deletions(-)
+> ---
+> base-commit: ac5b392a8c355001c4c3f230a0e4b1f904e359ca
+> change-id: 20251203-dw-hdmi-qp-scramb-cdbd8b57ccf9
 
-Thanks
--Anand
->
-> It belongs to a series that adding L1ss support for Rockchip platforms.
-> The driver changes has been in mainline via 6.19 merge window, so just
-> resent this patch with collecting tags.
->
->  arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts | 7 +++++--
->  1 file changed, 5 insertions(+), 2 deletions(-)
->
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts b/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
-> index ff1ba5e..c9d284c 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
-> @@ -522,6 +522,7 @@
->         pinctrl-names = "default";
->         pinctrl-0 = <&pcie2_0_rst>, <&pcie2_0_wake>, <&pcie2_0_clkreq>, <&wifi_host_wake_irq>;
->         reset-gpios = <&gpio4 RK_PA5 GPIO_ACTIVE_HIGH>;
-> +       supports-clkreq;
->         vpcie3v3-supply = <&vcc3v3_wlan>;
->         status = "okay";
->
-> @@ -545,7 +546,8 @@
->  &pcie2x1l1 {
->         reset-gpios = <&gpio4 RK_PA2 GPIO_ACTIVE_HIGH>;
->         pinctrl-names = "default";
-> -       pinctrl-0 = <&pcie2_1_rst>, <&rtl8111_isolate>;
-> +       pinctrl-0 = <&pcie2_1_rst>, <&rtl8111_isolate>, <&pcie30x1m1_1_clkreqn>;
-> +       supports-clkreq;
->         status = "okay";
->  };
->
-> @@ -555,7 +557,8 @@
->
->  &pcie3x4 {
->         pinctrl-names = "default";
-> -       pinctrl-0 = <&pcie3_reset>;
-> +       pinctrl-0 = <&pcie3_reset>, <&pcie30x4m1_clkreqn>;
-> +       supports-clkreq;
->         reset-gpios = <&gpio4 RK_PB6 GPIO_ACTIVE_HIGH>;
->         vpcie3v3-supply = <&vcc3v3_pcie30>;
->         status = "okay";
-> --
-> 2.7.4
->
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
 _______________________________________________
 Linux-rockchip mailing list
