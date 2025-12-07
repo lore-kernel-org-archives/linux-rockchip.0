@@ -4,69 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 211C3D3B7D8
-	for <linux-rockchip@archiver.kernel.org>; Sat,  6 Dec 2025 20:46:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 101AAD2CE17
+	for <linux-rockchip@archiver.kernel.org>; Sun,  7 Dec 2025 07:51:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hEF9IvUK3fK9kiru4k1Hyay5/BQOMtyEnIOwmXUy02M=; b=XH1T+YYQ1uHNHT
-	2ON4dWHFFmwVZlAG4zDQXdRJkn3Aclse9cQK+bWgRG72z/2rHMuDmAq/2YImz0CecogQflkpMmBiX
-	7+5GwIkVnykbFECMIr0MG2NxzRueCNKubBDDhpLKb58/g4gcZ3e7BZsnfYaRx3Bn/7WcMIwV8Rb/f
-	xduhYDn0PxYgE7oyOaBRYNN9arQcm3o9Jzla7nsnzvzTGrBD1TnaZSxutYvkPZvUT2ZQTkaS41qwm
-	lKKjSXsVCa5W9KFhZo2STlBtg0x3AXhJGebBft0y90WPfbTbqfhuw/ou4ju0baHMF6L5Y2tx3wq9F
-	h4bMo7PXjGeHIs/pf3MQ==;
+	List-Owner; bh=geshtkGoaN5PR3Xw+Y0IS5x3jHdiYhC7v67U6mRIme8=; b=jgYhlZV3YSWW96
+	u+8OUv9HmNFYbzKGTn6XK/XAGumd1lqcJRoJ6PTzVoQaZKkx1pCpjBoVC5Iu7FuJPTuEpmn8s5JhV
+	DVYs8utBawkx402mijIIlRk30vqZTnD09gLnBLZ1Gwqihbibs1G/OWH2pZrXeHOtGZXmM7nkRPZIi
+	68xAMoA1k4aXJI81bJ+lilk0bY550P5tR+zoUZG0aiqwf8jCa1wAz2i5mTG83LApLB529JB/FKUnY
+	/XY2x/PlyokXCF+Ym3i+0706dlHf6luyvCBbcBuA5qQOB1uQSkT/Tds9PsLOeAvudyAN+d4FF10pi
+	1IEk0LBgp0nfTYpSrfKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vRzAm-0000000BDcZ-2IDt;
-	Sat, 06 Dec 2025 20:46:32 +0000
-Received: from sender3-pp-f112.zoho.com ([136.143.184.112])
+	id 1vS9Xt-0000000BZam-2YVC;
+	Sun, 07 Dec 2025 07:51:05 +0000
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vRzAg-0000000BDWG-2z9y;
-	Sat, 06 Dec 2025 20:46:30 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1765053966; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=SCXAXr/cKQbkSyJnnQXhGEPv/m23oTHp8CWgP1tF44rfkuHDgXOsyrZVwO+eKblk/1Afxs8YnNq9w8uZQMg2pnlyC6eUljkAfEL/ONqk4MG7E/rVjnK9YKwIlECx5RV7SIqoWEn8VXfZTAOSEcjMBPinpv0awvMxj3EYPPyVcqs=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1765053966; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=WG+GHNTWtRkRqPw9OJ3qyQ3Y1/EgQPS3VRAq88dpP+c=; 
-	b=LWMtKmu+64R4kU5hzDnePL+jdUksC2xkmjRvRI+IUIkeySsWZuqJPBsUcPQ5P1BChUquw9Z6CpjaSk1LD57OSbNwmpJKCiXIsNl5QuqGXS/XfieyQLTHgN7xNKCUOfx75VOwPCySTi3HtyKpknraHhcpGFF/YwdDQzjnzWNi8cE=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1765053966;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=WG+GHNTWtRkRqPw9OJ3qyQ3Y1/EgQPS3VRAq88dpP+c=;
-	b=EArln9hX6OPnWX+9bZ/pxKal2jooKwQSEvgJUjkh+X2VI0XWBFqxQxwiIjvBft5O
-	gymMK3i3uiclaljpoFqlp3xh1FdnbTHEDY6HZW1nCU3+cJHwIpqx2ZRvIkqQ9DjSAO5
-	EkiG5T0JG59wk0aEWAulgvM5acWIfQ3nG6/ZeQhg=
-Received: by mx.zohomail.com with SMTPS id 1765053965442536.5205499796182;
-	Sat, 6 Dec 2025 12:46:05 -0800 (PST)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Sat, 06 Dec 2025 21:45:18 +0100
-Subject: [PATCH v2 8/8] drm/rockchip: vop2: Simplify format_mod_supported
+	id 1vS9Xq-0000000BZaH-1pBH
+	for linux-rockchip@lists.infradead.org;
+	Sun, 07 Dec 2025 07:51:04 +0000
+Received: by mail-ej1-x62d.google.com with SMTP id a640c23a62f3a-b79b9113651so553226866b.3
+        for <linux-rockchip@lists.infradead.org>; Sat, 06 Dec 2025 23:51:01 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1765093860; x=1765698660; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=/6HjmBwKx9RHsKdictkxKGMKvEW4KqB7I2ntbk5moRQ=;
+        b=k5owb4W+6lQS2erCj1Cj9pbe12bI+jj0NT+cJtgI666NTesGXrlCXGfFb8iz86ublp
+         THV+Qy6EUk+Y1/wb0elde3WsELEPkDUapZ58qbofY88BpFD9Rs4f/5nwmYY9ahwLhjyU
+         gqf9Bv6BUuvw5nTm2CDQtNJmwek5bwEQ3MlsV9C9ksFLO7askmXEQ7SnPfc1fMPEaIS0
+         qmXnmqwkneGQl1kcoA0CdOnvAkNeZsjM2XvEoEBcLDJKYIidOEd4c6+KUSWBnxa12Umn
+         wIRAIA0fhb+gf5RvPSvZoocefBhaImjd6EJ693X7EJIE0YHjUKyNFI6gapk4M1gRLSr6
+         8VJA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1765093860; x=1765698660;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=/6HjmBwKx9RHsKdictkxKGMKvEW4KqB7I2ntbk5moRQ=;
+        b=BTBS0HAq3gbALsjUCV2+x+EIuB6iLVgJtNq/ZRjrhkkrUjMcHkBLdtsRV/kCn8I4uD
+         L92cAPY8Sumq/iC0tHTbQwCpnYEGQXVIgBITpy9ljASOF/IDUNopKdoKbE03nNdsam0i
+         UIVdDQtQ16OkpiWA7K4bNq7j+/EbvGdY5LzBO34RZipal5gj0R8ePq+J4phXdY/BMtAG
+         sghDEQFCmL8/fDnnOmYoEHhqxKdY4dM5jSrd+YjVmFsxkSUHScnrJc8jEIR4lcZqYr2p
+         uxSuDKSrwBIbryK9dI9ihmpLzsMS5o2yxjUCzToixCBVYeFsWmUqSNqXx2s+waeo8Ai6
+         BhhA==
+X-Forwarded-Encrypted: i=1; AJvYcCVhvgddr9Sel9vzixC1v/VsuMQVSs0zUOfx0peroTATVBvTdNs/hrJhf0d0uGJig8aHfdt97il1Cy14nSucSw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywk7szKhRVwefOaglKSoHUnI61vox77gh88DvTi6AEVXmYydYLx
+	UB+6JTC0/P9ysJ85xLaNEkM6w5TJTKSUtyB6YpQSQzaId8VLSv8fYJsQR+6ZVg1s6B8JqPWpqRU
+	AizzmgpbVkQ2Y1QnqIIqmELT4qaYbAXE=
+X-Gm-Gg: ASbGncuToZCw9/TnAwKnc6Ge/z5nydLznHTh1lqHgTFFCfTA4EBnOO/aS3JfjhOe4Gd
+	z4LpdEMy1W9+y7XYA5r9jHEOjV/QbCLRuND3KyEwOr8eSLnD0kWR89/sd9s+Xu0aGhPJCr+sown
+	CwpCKW9cLEqr7rLvpgndP6wHmYzgzY+aTIpZrdgqk+Df3d9O/kkUgNqgk6IglJEcAZp7+gu1ZF4
+	P/Ez6pehZ0iFju1mU2lVefXUdehuliRyUTGsVVAo8lt8y8NJ/R7MGPClz1qS9D5L1ODUw==
+X-Google-Smtp-Source: AGHT+IGk8+T7H+GuNusI/FR7C0nUTfMeK8sMlbisuGybJ8C75u/fNDxhnMLp8v9UaI8jcD3KVtzvbuAlMDLgfoc82tM=
+X-Received: by 2002:a17:907:3ea3:b0:b70:b700:df98 with SMTP id
+ a640c23a62f3a-b7a242efe10mr423357466b.5.1765093859430; Sat, 06 Dec 2025
+ 23:50:59 -0800 (PST)
 MIME-Version: 1.0
-Message-Id: <20251206-vop2-atomic-fixups-v2-8-7fb45bbfbebd@collabora.com>
-References: <20251206-vop2-atomic-fixups-v2-0-7fb45bbfbebd@collabora.com>
-In-Reply-To: <20251206-vop2-atomic-fixups-v2-0-7fb45bbfbebd@collabora.com>
-To: Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Andy Yan <andy.yan@rock-chips.com>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>
-Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, Daniel Stone <daniels@collabora.com>, 
- Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-X-Mailer: b4 0.14.3
+References: <1764809428-183623-1-git-send-email-shawn.lin@rock-chips.com>
+In-Reply-To: <1764809428-183623-1-git-send-email-shawn.lin@rock-chips.com>
+From: Anand Moon <linux.amoon@gmail.com>
+Date: Sun, 7 Dec 2025 13:20:43 +0530
+X-Gm-Features: AQt7F2qnZjImmge44gJ3dCMPIWRFLa2Z9SmGfhvqctrOQ-Ll_Kah1Lo2eMbTnvU
+Message-ID: <CANAwSgSn_6g1a=LYqKGom+FyhJ+qqbi5qRMKCxAoe5Q2nsN5sQ@mail.gmail.com>
+Subject: Re: [RESEND PATCH v3] arm64: dts: rockchip: Add PCIe clkreq stuff for
+ RK3588 EVB1
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251206_124628_142308_D253DF28 
-X-CRM114-Status: GOOD (  14.34  )
+X-CRM114-CacheID: sfid-20251206_235102_604163_D85380BB 
+X-CRM114-Status: GOOD (  19.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,107 +94,69 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Daniel Stone <daniels@collabora.com>
+Hi Shawn,
 
-Make it a little less convoluted, and just directly check if the
-combination of plane + format + modifier is supported.
+On Thu, 4 Dec 2025 at 06:21, Shawn Lin <shawn.lin@rock-chips.com> wrote:
+>
+> Add supports-clkreq and pinmux for PCIe ASPM L1 substates.
+>
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> Acked-by: Manivannan Sadhasivam <mani@kernel.org>
+> Reviewed-by: Hans Zhang <hans.zhang@cixtech.com>
+> ---
+Thanks, are there plans to support this feature on the remaining
+RK356x and RK3588 SBCs?
 
-Signed-off-by: Daniel Stone <daniels@collabora.com>
-Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
----
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 56 +++++++++++-----------------
- 1 file changed, 22 insertions(+), 34 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index 8e0727c3523f..10b59487019c 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -367,59 +367,47 @@ static bool is_yuv_output(u32 bus_format)
- 	}
- }
- 
--static bool rockchip_afbc(struct drm_plane *plane, u64 modifier)
--{
--	int i;
--
--	if (modifier == DRM_FORMAT_MOD_LINEAR)
--		return false;
--
--	for (i = 0 ; i < plane->modifier_count; i++)
--		if (plane->modifiers[i] == modifier)
--			return true;
--
--	return false;
--}
--
- static bool rockchip_vop2_mod_supported(struct drm_plane *plane, u32 format,
- 					u64 modifier)
- {
- 	struct vop2_win *win = to_vop2_win(plane);
- 	struct vop2 *vop2 = win->vop2;
-+	int i;
- 
-+	/* No support for implicit modifiers */
- 	if (modifier == DRM_FORMAT_MOD_INVALID)
- 		return false;
- 
--	if (vop2->version == VOP_VERSION_RK3568) {
--		if (vop2_cluster_window(win)) {
--			if (modifier == DRM_FORMAT_MOD_LINEAR) {
--				drm_dbg_kms(vop2->drm,
--					    "Cluster window only supports format with afbc\n");
--				return false;
--			}
--		}
-+	/* The cluster window on 3568 is AFBC-only */
-+	if (vop2->version == VOP_VERSION_RK3568 && vop2_cluster_window(win) &&
-+	    !drm_is_afbc(modifier)) {
-+		drm_dbg_kms(vop2->drm,
-+			    "Cluster window only supports format with afbc\n");
-+		return false;
- 	}
- 
--	if (format == DRM_FORMAT_XRGB2101010 || format == DRM_FORMAT_XBGR2101010) {
--		if (vop2->version == VOP_VERSION_RK3588) {
--			if (!rockchip_afbc(plane, modifier)) {
--				drm_dbg_kms(vop2->drm, "Only support 32 bpp format with afbc\n");
--				return false;
--			}
--		}
-+	/* 10bpc formats on 3588 are AFBC-only */
-+	if (vop2->version == VOP_VERSION_RK3588 && !drm_is_afbc(modifier) &&
-+	    (format == DRM_FORMAT_XRGB2101010 || format == DRM_FORMAT_XBGR2101010)) {
-+		drm_dbg_kms(vop2->drm, "Only support 10bpc format with afbc\n");
-+		return false;
- 	}
- 
-+	/* Linear is otherwise supported everywhere */
- 	if (modifier == DRM_FORMAT_MOD_LINEAR)
- 		return true;
- 
--	if (!rockchip_afbc(plane, modifier)) {
--		drm_dbg_kms(vop2->drm, "Unsupported format modifier 0x%llx\n",
--			    modifier);
--
-+	/* Not all format+modifier combinations are allowable */
-+	if (vop2_convert_afbc_format(format) == VOP2_AFBC_FMT_INVALID)
- 		return false;
-+
-+	/* Different windows have different format/modifier support */
-+	for (i = 0; i < plane->modifier_count; i++) {
-+		if (plane->modifiers[i] == modifier)
-+			return true;
- 	}
- 
--	return vop2_convert_afbc_format(format) >= 0;
-+	return false;
- }
- 
- /*
-
--- 
-2.52.0
-
+Thanks
+-Anand
+>
+> It belongs to a series that adding L1ss support for Rockchip platforms.
+> The driver changes has been in mainline via 6.19 merge window, so just
+> resent this patch with collecting tags.
+>
+>  arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts | 7 +++++--
+>  1 file changed, 5 insertions(+), 2 deletions(-)
+>
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts b/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
+> index ff1ba5e..c9d284c 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
+> @@ -522,6 +522,7 @@
+>         pinctrl-names = "default";
+>         pinctrl-0 = <&pcie2_0_rst>, <&pcie2_0_wake>, <&pcie2_0_clkreq>, <&wifi_host_wake_irq>;
+>         reset-gpios = <&gpio4 RK_PA5 GPIO_ACTIVE_HIGH>;
+> +       supports-clkreq;
+>         vpcie3v3-supply = <&vcc3v3_wlan>;
+>         status = "okay";
+>
+> @@ -545,7 +546,8 @@
+>  &pcie2x1l1 {
+>         reset-gpios = <&gpio4 RK_PA2 GPIO_ACTIVE_HIGH>;
+>         pinctrl-names = "default";
+> -       pinctrl-0 = <&pcie2_1_rst>, <&rtl8111_isolate>;
+> +       pinctrl-0 = <&pcie2_1_rst>, <&rtl8111_isolate>, <&pcie30x1m1_1_clkreqn>;
+> +       supports-clkreq;
+>         status = "okay";
+>  };
+>
+> @@ -555,7 +557,8 @@
+>
+>  &pcie3x4 {
+>         pinctrl-names = "default";
+> -       pinctrl-0 = <&pcie3_reset>;
+> +       pinctrl-0 = <&pcie3_reset>, <&pcie30x4m1_clkreqn>;
+> +       supports-clkreq;
+>         reset-gpios = <&gpio4 RK_PB6 GPIO_ACTIVE_HIGH>;
+>         vpcie3v3-supply = <&vcc3v3_pcie30>;
+>         status = "okay";
+> --
+> 2.7.4
+>
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
 _______________________________________________
 Linux-rockchip mailing list
