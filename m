@@ -4,71 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1220BD3B7DD
-	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Dec 2025 07:25:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60971D3B7DE
+	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Dec 2025 09:52:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YG1K3HG9Lw4/9srpLE5ZXcizbhe33r70cRXPpCA3twg=; b=gcrLm7cZhbAfOd
-	yn5x1RAr7fmXbyicYOONvAGq4wu1Ov2S11gPUS9f8jd7d3ri+sETs9x0w7Ntp1rGe+YIM7pTSCMCw
-	eus/YjZmnthSceBECXNLBHJAsd76tQ+QrnyIrhLjfjWIUpWE/gMpRtqGmsdDNiJd+KBFLWnCO3aEZ
-	LVDLea1/rd6oKmgLGe/Bv75KSrYIZB86YE7mBd5xE7xtRO6PYfPQUegNnofGU8SkHYgHCpHbdLpHG
-	HcV7g2ZCHVOrx8TJYx+p96cNgPKzH+AEG6OlEV/Iq/NqDXvwqUQLxexHXQQjxifOEwiPwCOTGJvtY
-	DAViGSypkjFbJVmEOEXQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=7N5ESVVAtnHzIJunIu4Vl9p6ZBJPE6194YQWGw5RMTw=; b=KXAm6ofc0lNAfT
+	xBYn4Bwr9GY3fkTGslh4glm8AOTtJsg7VcX0zrDjnBQphBjjY0BnDF0bwUKt5k5Nt/1c9OwpIefOi
+	BpQUD3wTJKRiJ7kAlVXU3VivOQQJrZcxAr9MBtFT9MkwbbhYbXHMjlWMq2T3f+aJeP9zG550bQLvO
+	KKKszPOmCq6Wl1B1cViI0NwilA3OXyA97v/bn0FLOsTRlKcDlNwGq2cqbRS+DJysoDczJ6eNrEpOM
+	inLsJe5W4OBQvzlWib67C0ONKvt6sA2lbDjXO2kDo7yXIslGePgWhvg0XtqAbNgV5eg8zEUvxYoYp
+	NVr+vSp8C/ASql1GKkTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vSVcd-0000000CkCw-1asU;
-	Mon, 08 Dec 2025 07:25:27 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1vSXv7-0000000Cuwh-0ODd;
+	Mon, 08 Dec 2025 09:52:41 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vSVcZ-0000000CkCE-063G;
-	Mon, 08 Dec 2025 07:25:24 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1765178700; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=ewJI6knbGrlnaZl7umoObm8pr5FJX3RNMkdDxMFQAT6f1kzqNGKD/bUVRmCBXWD3p0URdBZe9HxfTndO+dQl6Vcc18P2RAXPRfGqLeGhP6fnJsUvkQctn1i0j1HnJKSd9GubC/p8JMcsJ8vHfZVaRkcjSA1Rfm8Oc0AAyCQG3Sc=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1765178700; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=lJPHCHT+6fsyjs+1ZZbsqkGYN8B/qM5j+hb/xUt2r6Y=; 
-	b=GofoYoYdlC0Mv14fJn6E+evn9e2Xg0mpNaUK3TqSzgb33EUkrzfviyeJw0Sn/Hting1M3ws25eoYkWqvIs87cRA/DaGEZXnnWgZcpIkInyJaptE/yfsiqQ8eXeGvx+7qIVzKLLpNpVVnb8euAAXc9wFzEaGrSMec5XWejTvqAp4=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1765178700;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=lJPHCHT+6fsyjs+1ZZbsqkGYN8B/qM5j+hb/xUt2r6Y=;
-	b=RwecaA6Pm538t7uoLW7pbZlSdnrB9lY85dulpDlsxp89dWzPSGLUTg3X1kD3XeB3
-	hsS7Gwgfl5DyEGk9Q7cDmSxQHQq858TDzAiTndgcOagIbX2O8TRumYfiUIk3vbXzutv
-	xRtUGiVY4h5d6HuXfXdQYcVK8L3LB0lAiVgN9T7k=
-Received: by mx.zohomail.com with SMTPS id 1765178699286809.6705037383997;
-	Sun, 7 Dec 2025 23:24:59 -0800 (PST)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: Sandy Huang <hjc@rock-chips.com>,
- Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>,
- Andy Yan <andy.yan@rock-chips.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Chaoyi Chen <chaoyi.chen@rock-chips.com>
-Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, Daniel Stone <daniels@collabora.com>
-Subject: Re: [PATCH v2 5/8] drm/rockchip: vop2: Enforce AFBC source alignment in
- plane_check
-Date: Mon, 08 Dec 2025 08:24:52 +0100
-Message-ID: <4696988.LvFx2qVVIh@workhorse>
-In-Reply-To: <f9f7b446-8575-4f16-aa96-5197b22846e3@rock-chips.com>
-References: <20251206-vop2-atomic-fixups-v2-0-7fb45bbfbebd@collabora.com>
- <20251206-vop2-atomic-fixups-v2-5-7fb45bbfbebd@collabora.com>
- <f9f7b446-8575-4f16-aa96-5197b22846e3@rock-chips.com>
+	id 1vSXv4-0000000Cuvg-0OrA;
+	Mon, 08 Dec 2025 09:52:39 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1765187555;
+	bh=bA+q+Yi8Osgb3E8rTTeSZMrghpJv7Hc1ZPkVJR6ZoG4=;
+	h=From:To:Cc:Subject:Date:From;
+	b=MrLOPValK8BZHH9ppnq4ze3WD+B/pEBdXvmySMreAB1HExjKACxyUVWH6DHuajtUJ
+	 ab4zNuKw2gMQTIzK4/PibHBoT8bSvcUeaEF1pLHnAl9eLjB6UXNqC9u2+ZxpJEKFut
+	 Cgz3zHhMS/HLpS5rgeVDL85hJD0p92KtqXeSFuNM54JX0PProUwV5ne/qBWWvlxeTB
+	 HG3MyzzLVoti3O0WFQl8EYM3D7MB1i36nYih5Vhk8AMwAQgw7eE/G2Qk56N8sf4nFM
+	 1f9ebGzpA+xfRgnc436+5YrvpgHKVI3fW92REXLx1ijkSWGluaNA+U4bc+9B71hCdG
+	 moSdqe9/gI4Og==
+Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:e493:1c28:b2b2:21dc])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: benjamin.gaignard)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id BC31A17E0EFA;
+	Mon,  8 Dec 2025 10:52:34 +0100 (CET)
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: nicolas.dufresne@collabora.com,
+	p.zabel@pengutronix.de,
+	mchehab@kernel.org,
+	heiko@sntech.de,
+	hverkuil@kernel.org
+Cc: linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	kernel@collabora.com,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: [PATCH] media: verisilicon: AV1: Fix enable cdef computation
+Date: Mon,  8 Dec 2025 10:52:26 +0100
+Message-ID: <20251208095227.19720-1-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251207_232523_154657_64A3EBEB 
-X-CRM114-Status: GOOD (  22.34  )
+X-CRM114-CacheID: sfid-20251208_015238_331094_DC762AAE 
+X-CRM114-Status: UNSURE (   9.35  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,78 +80,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Monday, 8 December 2025 03:48:24 Central European Standard Time Chaoyi Chen wrote:
-> Hello Nicolas, Daniel,
-> 
-> On 12/7/2025 4:45 AM, Nicolas Frattaroli wrote:
-> > From: Daniel Stone <daniels@collabora.com>
-> > 
-> > Planes can only source AFBC framebuffers at multiples of 4px wide on
-> > RK3566/RK3568. Instead of clipping on all SoCs when the user asks for an
-> > unaligned source rectangle, reject the configuration in the plane's
-> > atomic check on RK3566/RK3568 only.
-> > 
-> > Signed-off-by: Daniel Stone <daniels@collabora.com>
-> > [Make RK3566/RK3568 specific, reword message]
-> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> > ---
-> >  drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 14 +++++++++-----
-> >  1 file changed, 9 insertions(+), 5 deletions(-)
-> > 
-> > diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> > index bc1ed0ffede0..e23213337104 100644
-> > --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> > +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> > @@ -1076,6 +1076,13 @@ static int vop2_plane_atomic_check(struct drm_plane *plane,
-> >  		return -EINVAL;
-> >  	}
-> >  
-> > +	if (vop2->version == VOP_VERSION_RK3568 && drm_is_afbc(fb->modifier) && src_w % 4) {
-> > +		drm_dbg_kms(vop2->drm,
-> > +			    "AFBC source rectangles must be 4-byte aligned; is %d\n",
-> > +			    src_w);
-> > +		return -EINVAL;
-> > +	}
-> > +
-> >  	return 0;
-> >  }
-> >  
-> > @@ -1237,11 +1244,8 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
-> >  	WARN_ON(src_w < 4);
-> >  	WARN_ON(src_h < 4);
-> >  
-> > -	if (afbc_en && src_w % 4) {
-> > -		drm_dbg_kms(vop2->drm, "vp%d %s src_w[%d] not 4 pixel aligned\n",
-> > -			    vp->id, win->data->name, src_w);
-> > -		src_w = ALIGN_DOWN(src_w, 4);
-> > -	}
-> > +	if (vop2->version == VOP_VERSION_RK3568 && drm_is_afbc(fb->modifier))
-> > +		WARN_ON(src_w % 4);
-> >  
-> >  	act_info = (src_h - 1) << 16 | ((src_w - 1) & 0xffff);
-> >  	dsp_info = (dsp_h - 1) << 16 | ((dsp_w - 1) & 0xffff);
-> > 
-> 
-> You haven't replied to Andy's comment yet [0].
-> 
-> [0] https://lore.kernel.org/dri-devel/7b4e26ec.75f3.19a77276b53.Coremail.andyshrk@163.com/
-> 
+Testing V4L2_AV1_SEQUENCE_FLAG_ENABLE_CDEF flag isn't enough
+to know if cdef bit has to be set.
+If any of the used cdef fields isn't zero then we must enable
+cdef feature on the hardware.
 
-Hello,
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Fixes: 727a400686a2c ("media: verisilicon: Add Rockchip AV1 decoder")
+---
+ .../platform/verisilicon/rockchip_vpu981_hw_av1_dec.c  | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
 
-I addressed the follow-ups where it was clarified that the 4 pixel
-limitation was RK3566/RK3568-only. I'm not going to bring back the
-post-atomic_check modification for a fast path, but I'm open to
-suggestions on how to do this differently.
-
-One solution might be to modify the state with the ALIGN_DOWN stuff
-in atomic_check instead, where userspace is then aware of the change
-being done to its requested parameters. I'll need to double-check
-whether this is in line with atomic modesetting's design.
-
-Kind regards,
-Nicolas Frattaroli
-
+diff --git a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
+index e4703bb6be7c..f4f7cb45b1f1 100644
+--- a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
++++ b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
+@@ -1396,8 +1396,16 @@ static void rockchip_vpu981_av1_dec_set_cdef(struct hantro_ctx *ctx)
+ 	u16 luma_sec_strength = 0;
+ 	u32 chroma_pri_strength = 0;
+ 	u16 chroma_sec_strength = 0;
++	bool enable_cdef;
+ 	int i;
+ 
++	enable_cdef = !(cdef->bits == 0 &&
++			cdef->damping_minus_3 == 0 &&
++			cdef->y_pri_strength[0] == 0 &&
++			cdef->y_sec_strength[0] == 0 &&
++			cdef->uv_pri_strength[0] == 0 &&
++			cdef->uv_sec_strength[0] == 0);
++	hantro_reg_write(vpu, &av1_enable_cdef, enable_cdef);
+ 	hantro_reg_write(vpu, &av1_cdef_bits, cdef->bits);
+ 	hantro_reg_write(vpu, &av1_cdef_damping, cdef->damping_minus_3);
+ 
+@@ -1953,8 +1961,6 @@ static void rockchip_vpu981_av1_dec_set_parameters(struct hantro_ctx *ctx)
+ 			 !!(ctrls->frame->flags & V4L2_AV1_FRAME_FLAG_SHOW_FRAME));
+ 	hantro_reg_write(vpu, &av1_switchable_motion_mode,
+ 			 !!(ctrls->frame->flags & V4L2_AV1_FRAME_FLAG_IS_MOTION_MODE_SWITCHABLE));
+-	hantro_reg_write(vpu, &av1_enable_cdef,
+-			 !!(ctrls->sequence->flags & V4L2_AV1_SEQUENCE_FLAG_ENABLE_CDEF));
+ 	hantro_reg_write(vpu, &av1_allow_masked_compound,
+ 			 !!(ctrls->sequence->flags
+ 			    & V4L2_AV1_SEQUENCE_FLAG_ENABLE_MASKED_COMPOUND));
+-- 
+2.43.0
 
 
 _______________________________________________
