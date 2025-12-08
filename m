@@ -4,60 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8667ED3ABEF
-	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Dec 2025 06:30:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1220BD3B7DD
+	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Dec 2025 07:25:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IrIFS9//wuz3RbJoAEN5lQ1yxtBNETLyv8GBgSni89A=; b=nF6rVHfoDbKtiI
-	Veb7zAyR0tRfqVhH26JKtyTRyALQntghKU1CyTUVHj5P0NC54h89g1Nfr5gDoPrQffRdHsbh0Aic2
-	6k8T7bCCUltR+9HyhuiTaeJAp9Q5T2Y/ltzMQ8EupZ55Km+WHy2igzPSKcXLj+qhusYOai/iudkGR
-	1WaD/62uM2xx+4c4Zeon92fFI7Q8TMsZYcw4N1JArBGTGUnJl6opKuwyaynw5UBxYMC4lfhsxgBqk
-	NTDXCJmUyfuMX2I1X3VC6BXuiNo7yaRIjflcm/33VTC12+AK6SKrkyXDpUVLs/Gwx9QTm6HMx6ApT
-	fWzVlWXlW8FT4Pm0DPHg==;
+	List-Owner; bh=YG1K3HG9Lw4/9srpLE5ZXcizbhe33r70cRXPpCA3twg=; b=gcrLm7cZhbAfOd
+	yn5x1RAr7fmXbyicYOONvAGq4wu1Ov2S11gPUS9f8jd7d3ri+sETs9x0w7Ntp1rGe+YIM7pTSCMCw
+	eus/YjZmnthSceBECXNLBHJAsd76tQ+QrnyIrhLjfjWIUpWE/gMpRtqGmsdDNiJd+KBFLWnCO3aEZ
+	LVDLea1/rd6oKmgLGe/Bv75KSrYIZB86YE7mBd5xE7xtRO6PYfPQUegNnofGU8SkHYgHCpHbdLpHG
+	HcV7g2ZCHVOrx8TJYx+p96cNgPKzH+AEG6OlEV/Iq/NqDXvwqUQLxexHXQQjxifOEwiPwCOTGJvtY
+	DAViGSypkjFbJVmEOEXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vSUku-0000000Cgsr-0SK9;
-	Mon, 08 Dec 2025 06:29:56 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vSVcd-0000000CkCw-1asU;
+	Mon, 08 Dec 2025 07:25:27 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vSUks-0000000CgsL-1EqA;
-	Mon, 08 Dec 2025 06:29:54 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 7A06C6013F;
-	Mon,  8 Dec 2025 06:29:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D03D0C4CEF1;
-	Mon,  8 Dec 2025 06:29:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1765175393;
-	bh=BNL8+owLhbO9teOYyNVriq9viH9YuOxeblnmtV4NFco=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Adp7hNF8uf+sca8VaTE6dkzXOihGGqJBrNksUNoNA5ao9JDXdYwvTUB6u/nJTBuFE
-	 Yp34u8aXIE2zd/nPu4Q4kATUtCUULw7f6qn50NnYEb8Y9UP9RwCVTVLjP46/rZVL+W
-	 I2bAU0j+2YotigSlLJoWWf8hr5C2uESoLToaTRuKW52bUM5LPCg6mPns9Yqx7pPp9D
-	 TyVtmDTaVM4u00yHu/sn66vv4l66FQSEex3jsmhz7grRJghQeJG+sCUeC5xMgWe263
-	 EaRlVCD9DGRpWwgCb7YQkPLO8mO4qkjVx11IZS0gwYeQTPLZM7mfYTRGBZcmbGneYm
-	 GS0IvVXtW0nUA==
-Date: Mon, 8 Dec 2025 07:29:50 +0100
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Ye Zhang <ye.zhang@rock-chips.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Bartosz Golaszewski <brgl@bgdev.pl>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	tao.huang@rock-chips.com
-Subject: Re: [PATCH v2 7/8] dt-bindings: pinctrl: rockchip: Add RMIO
- controller binding
-Message-ID: <20251208-invisible-crazy-squirrel-bb3af0@quoll>
-References: <20251206050844.402958-1-ye.zhang@rock-chips.com>
- <20251206050844.402958-8-ye.zhang@rock-chips.com>
+	id 1vSVcZ-0000000CkCE-063G;
+	Mon, 08 Dec 2025 07:25:24 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1765178700; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=ewJI6knbGrlnaZl7umoObm8pr5FJX3RNMkdDxMFQAT6f1kzqNGKD/bUVRmCBXWD3p0URdBZe9HxfTndO+dQl6Vcc18P2RAXPRfGqLeGhP6fnJsUvkQctn1i0j1HnJKSd9GubC/p8JMcsJ8vHfZVaRkcjSA1Rfm8Oc0AAyCQG3Sc=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1765178700; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=lJPHCHT+6fsyjs+1ZZbsqkGYN8B/qM5j+hb/xUt2r6Y=; 
+	b=GofoYoYdlC0Mv14fJn6E+evn9e2Xg0mpNaUK3TqSzgb33EUkrzfviyeJw0Sn/Hting1M3ws25eoYkWqvIs87cRA/DaGEZXnnWgZcpIkInyJaptE/yfsiqQ8eXeGvx+7qIVzKLLpNpVVnb8euAAXc9wFzEaGrSMec5XWejTvqAp4=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1765178700;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=lJPHCHT+6fsyjs+1ZZbsqkGYN8B/qM5j+hb/xUt2r6Y=;
+	b=RwecaA6Pm538t7uoLW7pbZlSdnrB9lY85dulpDlsxp89dWzPSGLUTg3X1kD3XeB3
+	hsS7Gwgfl5DyEGk9Q7cDmSxQHQq858TDzAiTndgcOagIbX2O8TRumYfiUIk3vbXzutv
+	xRtUGiVY4h5d6HuXfXdQYcVK8L3LB0lAiVgN9T7k=
+Received: by mx.zohomail.com with SMTPS id 1765178699286809.6705037383997;
+	Sun, 7 Dec 2025 23:24:59 -0800 (PST)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: Sandy Huang <hjc@rock-chips.com>,
+ Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>,
+ Andy Yan <andy.yan@rock-chips.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Chaoyi Chen <chaoyi.chen@rock-chips.com>
+Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Daniel Stone <daniels@collabora.com>
+Subject: Re: [PATCH v2 5/8] drm/rockchip: vop2: Enforce AFBC source alignment in
+ plane_check
+Date: Mon, 08 Dec 2025 08:24:52 +0100
+Message-ID: <4696988.LvFx2qVVIh@workhorse>
+In-Reply-To: <f9f7b446-8575-4f16-aa96-5197b22846e3@rock-chips.com>
+References: <20251206-vop2-atomic-fixups-v2-0-7fb45bbfbebd@collabora.com>
+ <20251206-vop2-atomic-fixups-v2-5-7fb45bbfbebd@collabora.com>
+ <f9f7b446-8575-4f16-aa96-5197b22846e3@rock-chips.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20251206050844.402958-8-ye.zhang@rock-chips.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251207_232523_154657_64A3EBEB 
+X-CRM114-Status: GOOD (  22.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,183 +85,78 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, Dec 06, 2025 at 01:08:43PM +0800, Ye Zhang wrote:
-> Add device tree binding for the RMIO (Rockchip Matrix I/O) controller
-> which is a sub-device of the main pinctrl on some Rockchip SoCs.
+On Monday, 8 December 2025 03:48:24 Central European Standard Time Chaoyi Chen wrote:
+> Hello Nicolas, Daniel,
 > 
-> Signed-off-by: Ye Zhang <ye.zhang@rock-chips.com>
-> ---
->  .../bindings/pinctrl/rockchip,pinctrl.yaml    |   9 ++
->  .../bindings/pinctrl/rockchip,rmio.yaml       | 130 ++++++++++++++++++
->  2 files changed, 139 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/pinctrl/rockchip,rmio.yaml
+> On 12/7/2025 4:45 AM, Nicolas Frattaroli wrote:
+> > From: Daniel Stone <daniels@collabora.com>
+> > 
+> > Planes can only source AFBC framebuffers at multiples of 4px wide on
+> > RK3566/RK3568. Instead of clipping on all SoCs when the user asks for an
+> > unaligned source rectangle, reject the configuration in the plane's
+> > atomic check on RK3566/RK3568 only.
+> > 
+> > Signed-off-by: Daniel Stone <daniels@collabora.com>
+> > [Make RK3566/RK3568 specific, reword message]
+> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> > ---
+> >  drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 14 +++++++++-----
+> >  1 file changed, 9 insertions(+), 5 deletions(-)
+> > 
+> > diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> > index bc1ed0ffede0..e23213337104 100644
+> > --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> > +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> > @@ -1076,6 +1076,13 @@ static int vop2_plane_atomic_check(struct drm_plane *plane,
+> >  		return -EINVAL;
+> >  	}
+> >  
+> > +	if (vop2->version == VOP_VERSION_RK3568 && drm_is_afbc(fb->modifier) && src_w % 4) {
+> > +		drm_dbg_kms(vop2->drm,
+> > +			    "AFBC source rectangles must be 4-byte aligned; is %d\n",
+> > +			    src_w);
+> > +		return -EINVAL;
+> > +	}
+> > +
+> >  	return 0;
+> >  }
+> >  
+> > @@ -1237,11 +1244,8 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
+> >  	WARN_ON(src_w < 4);
+> >  	WARN_ON(src_h < 4);
+> >  
+> > -	if (afbc_en && src_w % 4) {
+> > -		drm_dbg_kms(vop2->drm, "vp%d %s src_w[%d] not 4 pixel aligned\n",
+> > -			    vp->id, win->data->name, src_w);
+> > -		src_w = ALIGN_DOWN(src_w, 4);
+> > -	}
+> > +	if (vop2->version == VOP_VERSION_RK3568 && drm_is_afbc(fb->modifier))
+> > +		WARN_ON(src_w % 4);
+> >  
+> >  	act_info = (src_h - 1) << 16 | ((src_w - 1) & 0xffff);
+> >  	dsp_info = (dsp_h - 1) << 16 | ((dsp_w - 1) & 0xffff);
+> > 
 > 
-> diff --git a/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml
-> index 93bf8f352e48..01df0a51ff83 100644
-> --- a/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml
-> +++ b/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml
-> @@ -83,6 +83,15 @@ required:
->    - rockchip,grf
->  
->  patternProperties:
-> +  "rmio[0-9]*$":
-> +    type: object
-> +
-> +    $ref: "/schemas/pinctrl/rockchip,rmio.yaml#"
-> +
-> +    description:
-> +      The RMIO (Rockchip Matrix I/O) controller node which functions as a
-> +      sub-device of the main pinctrl to handle flexible function routing.
-> +
->    "gpio@[0-9a-f]+$":
->      type: object
->  
-> diff --git a/Documentation/devicetree/bindings/pinctrl/rockchip,rmio.yaml b/Documentation/devicetree/bindings/pinctrl/rockchip,rmio.yaml
-> new file mode 100644
-> index 000000000000..28ec5ad62061
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/pinctrl/rockchip,rmio.yaml
-> @@ -0,0 +1,130 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/pinctrl/rockchip,rmio.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: RMIO (Rockchip Matrix I/O) Controller
-> +
-> +maintainers:
-> +  - Heiko Stuebner <heiko@sntech.de>
-> +
-> +description: |
-> +  The RMIO controller provides a flexible routing matrix that allows mapping
-> +  various internal peripheral functions (UART, SPI, PWM, etc.) to specific
-> +  physical pins. This block is typically a sub-block of the GRF
-> +  (General Register Files).
-> +
-> +properties:
-> +  compatible:
-> +    enum:
-> +      - rockchip,rmio
+> You haven't replied to Andy's comment yet [0].
+> 
+> [0] https://lore.kernel.org/dri-devel/7b4e26ec.75f3.19a77276b53.Coremail.andyshrk@163.com/
+> 
 
-Nope, you need Soc specific compatibles. Please see writing bindings
-doc first.
+Hello,
 
+I addressed the follow-ups where it was clarified that the 4 pixel
+limitation was RK3566/RK3568-only. I'm not going to bring back the
+post-atomic_check modification for a fast path, but I'm open to
+suggestions on how to do this differently.
 
-> +
-> +  rockchip,grf:
-> +    $ref: /schemas/types.yaml#/definitions/phandle
-> +    description:
+One solution might be to modify the state with the ALIGN_DOWN stuff
+in atomic_check instead, where userspace is then aware of the change
+being done to its requested parameters. I'll need to double-check
+whether this is in line with atomic modesetting's design.
 
-Huh? That's already in the parent, no?
+Kind regards,
+Nicolas Frattaroli
 
-> +      The phandle of the syscon node for the GRF registers.
-> +
-> +  rockchip,offset:
-> +    $ref: /schemas/types.yaml#/definitions/uint32
-> +    description:
-> +      The offset of the RMIO configuration registers within the GRF.
-> +
-> +  rockchip,pins-num:
-> +    $ref: /schemas/types.yaml#/definitions/uint32
-> +    description:
-> +      The number of physical pins supported by this RMIO instance.
-> +      Used for boundary checking and driver initialization.
-> +
-> +additionalProperties:
-> +  type: object
-> +  additionalProperties:
-> +    type: object
-> +    properties:
-> +      rockchip,rmio:
-> +        $ref: "/schemas/types.yaml#/definitions/uint32-matrix"
-> +        description: |
-> +          A list of pin-function pairs. The format is <pin_id function_id>.
-> +          - pin_id: The index of the RMIO pin (0 to pins-num - 1).
-> +          - function_id: The mux value selecting the peripheral function.
-> +        minItems: 1
-> +        items:
-> +          items:
-> +            - minimum: 0
-> +              maximum: 31
-> +              description:
-> +                RMIO Pin ID.
-> +            - minimum: 0
-> +              maximum: 98
-> +              description:
-> +                Function ID.
-> +
-> +    required:
-> +      - rockchip,rmio
-> +
-> +    additionalProperties: false
-> +
-> +  additionalProperties: false
-> +
-> +required:
-> +  - compatible
-> +  - rockchip,grf
-> +  - rockchip,offset
-> +  - rockchip,pins-num
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +    #include <dt-bindings/pinctrl/rockchip.h>
-> +    #include <dt-bindings/pinctrl/rockchip,rk3506-rmio.h>
-> +
-> +    pinctrl {
-> +        #address-cells = <1>;
-> +        #size-cells = <1>;
-
-Drop all this and below. Parent node should have complete example.
-
-> +        ranges;
-> +
-> +        rmio {
-> +            compatible = "rockchip,rmio";
-> +            rockchip,grf = <&grf_pmu>;
-> +            rockchip,offset = <0x80>;
-> +            rockchip,pins-num = <32>;
-> +
-> +            rmio-uart {
-> +                rmio_pin27_uart1_tx: rmio-pin27-uart1-tx {
-> +                    rockchip,rmio = <RMIO_PIN27 RMIO_UART1_TX>;
-> +                };
-> +
-> +                rmio_pin28_uart1_rx: rmio-pin28-uart1-rx {
-> +                    rockchip,rmio = <RMIO_PIN28 RMIO_UART1_RX>;
-> +                };
-> +            };
-> +        };
-> +
-> +        pcfg_pull_default: pcfg-pull-default {
-> +          bias-pull-pin-default;
-> +        };
-> +
-> +        rm {
-> +          rmio_pin27_pins: rmio-pin27-pins {
-> +            rockchip,pins = <1 RK_PC2 7 &pcfg-pull-default>;
-> +          };
-> +
-> +          rmio_pin28_pins: rmio-pin28-pins {
-> +            rockchip,pins = <1 RK_PC3 7 &pcfg-pull-default>;
-> +          };
-> +        };
-> +    };
-> +
-> +    uart1: serial@20064000 {
-> +      compatible = "snps,dw-apb-uart";
-
-Do not add irrelevant examples. Please read carefully writing bindings,
-writing schema and for example by talk for beginners in DT.
-
-This patchset does not make me happy, too many trivial issues.
-
-Best regards,
-Krzysztof
 
 
 _______________________________________________
