@@ -4,112 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D9BAD3B7E7
-	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Dec 2025 01:57:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FE96D1CDC6
+	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Dec 2025 02:48:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZHeTo/j/2bN7Wltw/TqZAJ2Iv8SzniNXAiYYrRHeon8=; b=iHzax4HEfVI+Tv
-	Y99Rge8tt9FKzwp3I8jQ80yhBeBLBoD2z8MOZ8tNBdLBV/Qh8SIFTQWbMXRtNF0Yq5gqHtvnM3/5B
-	GtKkj+2KDMlLsptx12YNFtgP1q2T6Q9nZrkkqXesWEt1Rbhthm5Yp/6liAFA4t1MY5RpL3MHurOyd
-	WvE4kWNPEq+seQUNiLCOBh5G3n5hIb7RMQ7LOYI9AoNTHIEqv55JREeXuiob9BMc2FodcfCKqkliH
-	PwrnTd7TQNHloColzgE8CFAD2zMl/1IkufogpS/DGOLM8h8ZolmRI4viVebFRQTEAKCdQvnmUvYf5
-	NDXIFsDRHAh9Wj/D2ydA==;
+	List-Owner; bh=Gl65j9K706Ogoo+cTYitVl3blF2Vl1JSpRqxX1p0rso=; b=g/6aAfUoUaSSc6
+	U4h3/iy27XOcXf8WuVBFXVIfcxVyo0/1aPV0MC9DZBRkTHO3UChhWSHzlEoiQovNZPtXQi0c6AWH/
+	VfRgLWOwm9NUk9iCw/KKtAtBdaPogxc/+qHsuVl28M3lBy9xvtE9ODZZDm8h3xaERdXpZBHJ0pFn0
+	pLHv33jd2+OHKEHEk/NHjM4t9a/9MaejsOti7CQRn4aPUn1vF6WXg/5s2GCSTD2aKT25dHxhgiwnF
+	tDejzOpt5g/RTRAJSx4Nly6H8WFS30EQB0AYyEcSN42cbwbo40HRhuRLQM+sLt2bP4undsjCb1Un7
+	oSuJ+mIy9I2gscJWHBBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vSQVG-0000000CR57-4Bb7;
-	Mon, 08 Dec 2025 01:57:31 +0000
-Received: from smtpbg151.qq.com ([18.169.211.239])
+	id 1vSRIp-0000000CVES-3Bn3;
+	Mon, 08 Dec 2025 02:48:43 +0000
+Received: from mail-m21469.qiye.163.com ([117.135.214.69])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vSQVB-0000000CQkT-0IEh;
-	Mon, 08 Dec 2025 01:57:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
-	s=altu2504; t=1765159006;
-	bh=Xn5Sqf6jlBXaETnSdjcUsZQPPZf1EW7Rcj8pIik+fGE=;
-	h=From:To:Subject:Date:Message-Id;
-	b=XOxwGbQsI9SLaG6qVWAcZh4S1Gek2wmuQlxjF/nBvoPE4EZ1C/qb6N/DZT6ktL6l2
-	 5UPOhOqxlhufJE8226GZzcS8d6z+Qv/lvdj/GM/gwJbytG8cAqJE2UclF9dgdzpYhI
-	 JUacXf0b5encViRVQaFkimTbgA75rPuiMjyLVShg=
-X-QQ-mid: esmtpsz19t1765158957t8b042638
-X-QQ-Originating-IP: 0VDHYm/TNOZJ8x5lMA+cNxsISV6uedyVhGjPFC9wx+4=
-Received: from DESKTOP-8BT1A2O.localdomain ( [58.22.7.114])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Mon, 08 Dec 2025 09:55:54 +0800 (CST)
-X-QQ-SSF: 0000000000000000000000000000000
-X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 6033129153185589897
-From: Chaoyi Chen <kernel@airkyi.com>
-To: Heikki Krogerus <heikki.krogerus@linux.intel.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
-	Peter Chen <hzpeterchen@gmail.com>,
-	Luca Ceresoli <luca.ceresoli@bootlin.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Sandy Huang <hjc@rock-chips.com>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Yubing Zhang <yubing.zhang@rock-chips.com>,
-	Frank Wang <frank.wang@rock-chips.com>,
-	Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
-	Amit Sunil Dhamne <amitsd@google.com>,
-	Chaoyi Chen <chaoyi.chen@rock-chips.com>,
-	Dragan Simic <dsimic@manjaro.org>,
-	Johan Jonker <jbx6244@gmail.com>,
-	Diederik de Haas <didi.debian@cknow.org>,
-	Peter Robinson <pbrobinson@gmail.com>
-Cc: linux-usb@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-phy@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	dri-devel@lists.freedesktop.org
-Subject: [PATCH v13 11/11] arm64: dts: rockchip: rk3399-evb-ind: Add support for DisplayPort
-Date: Mon,  8 Dec 2025 09:55:00 +0800
-Message-Id: <20251208015500.94-12-kernel@airkyi.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20251208015500.94-1-kernel@airkyi.com>
-References: <20251208015500.94-1-kernel@airkyi.com>
-X-QQ-SENDSIZE: 520
-Feedback-ID: esmtpsz:airkyi.com:qybglogicsvrgz:qybglogicsvrgz6b-0
-X-QQ-XMAILINFO: M4b27U8Z+D/nr7vh4Qi2T0vbngHT+dCTUkfjBngPAvz+amYOOV/GhNg+
-	YyxMZF45CUgA6NNxhndSElD/DqBMCX43pZ+abBkRwcNEMpBTld+ZIMkVUlh8sfPfHD6TSse
-	QOE9vJeNrQG+zB0pRbQP5xTBlR6fjOPlccUoTGtOx8k4iQIwbjf96KcnuhSOFNXgdurarNU
-	SQn+J1Ys2jKAOCeWMSbDTTExdoxy3tSbhY5hbmXL5VWxY8kCCE/OBH2mTngTSciIaD+tRZ2
-	qPbvcAZNMUrmZV+qow4Qbr2cW59IxO1KDRac3C52dpZQkpKcdUIWYv4gzVFnGUhnxmChFdA
-	EDwl9oi70HKCybL34E/qwT1DFoThV3lE+5tn8Q+C0iwouZDRLXUPCFFS1/JMww2zsOOkoVF
-	iKXOSzxMmb6ACcJltyMQNcPbR0Ysr4UGOg6a8qQwpp/Ge8jI8L/pDSJnQblGE1zyRfa1l9Z
-	RrTr4UjNr88NcHvn18QzFBqxGgcEdpSyRKVpiwWveTRlUiZgDr17XQm4rzwOvvUUkGGNuXS
-	Xx1+O7veoG5zFhYDfyXJXZ0aaKxw+GCF+ugaCOsmBDwLvVykoRqexaxvIjxFSwsV5XN5NyP
-	BbR19ltZCMmHSaUwJG2zxaEqDvcr6UuQgZ9ATq15nQ9APu4QeOGe7ZV0gxL3GjpGVdzZXLY
-	C6jJYEiI7+C1CRNbV0En67xPlKcxUm86pRQ9WLD2QcXGZtCHis/kPMu1I3KaJg2Bo1gItU2
-	WJ0+6TOSB2MB25DdYOZn62lulYXFP2ERNZuLc817TMn4s1n9sArlDNdBL/8t0Ew0BMP4qSr
-	6vb9aVpJqqxFeY9kGrDG0bG0HuLF4o0Pvf6ExZM93ZJLUePebzWnbhc1XCrCbn9ql0MByG9
-	23PUK2XNfufX06Qd78+SXipxGlz6cvC1kb2E7O8cEeZdcU+NvaOf768si4h81tqR5S/6qWM
-	43CTjvvAAXxnO81fgj+hQIeYlpNfH9siLp2YjlZ0PFhir+MlzMprSfJZpqs9tWsRH5krOtM
-	PXqJvQfvvHqCP/ZydUmCllypyplso0JUejkcDs1A==
-X-QQ-XMRINFO: Mp0Kj//9VHAxr69bL5MkOOs=
-X-QQ-RECHKSPAM: 0
+	id 1vSRIm-0000000CVCz-2CBa;
+	Mon, 08 Dec 2025 02:48:42 +0000
+Received: from [172.16.12.51] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 2c54a2597;
+	Mon, 8 Dec 2025 10:48:27 +0800 (GMT+08:00)
+Message-ID: <f9f7b446-8575-4f16-aa96-5197b22846e3@rock-chips.com>
+Date: Mon, 8 Dec 2025 10:48:24 +0800
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 5/8] drm/rockchip: vop2: Enforce AFBC source alignment
+ in plane_check
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
+ Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
+ <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>
+Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Daniel Stone <daniels@collabora.com>
+References: <20251206-vop2-atomic-fixups-v2-0-7fb45bbfbebd@collabora.com>
+ <20251206-vop2-atomic-fixups-v2-5-7fb45bbfbebd@collabora.com>
+Content-Language: en-US
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+In-Reply-To: <20251206-vop2-atomic-fixups-v2-5-7fb45bbfbebd@collabora.com>
+X-HM-Tid: 0a9afbdc40e803abkunme8c07999276ba1c
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQhhISlZJS01CH0xNSUhIQkNWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=cecY6BMMm/6gQ/2K1RDh5tRiWZKU8O38FISd7rFWq0WnaAzGqbnG74DYW/5OX76YyJibVgxlKUeGLqykw3YxcmsttDzLWEiHTXe6IUFJgUa6FeaW3BIXEZgQvOpXS5Ur6s/5zek/X261ZJ0Ct245V+GgUw3u/kOSfOEZF7DJc+Q=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=++V9Ih2XOWHzt8kN5tDYhc2K8I+ECObECwQKC4d5xqk=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251207_175725_621387_890C99C5 
-X-CRM114-Status: GOOD (  10.91  )
+X-CRM114-CacheID: sfid-20251207_184841_203927_B40412A7 
+X-CRM114-Status: GOOD (  16.01  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,256 +73,69 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+Hello Nicolas, Daniel,
 
-The RK3399 EVB IND board has a Type-C interface DisplayPort.
-It use fusb302 chip as Type-C controller.
+On 12/7/2025 4:45 AM, Nicolas Frattaroli wrote:
+> From: Daniel Stone <daniels@collabora.com>
+> 
+> Planes can only source AFBC framebuffers at multiples of 4px wide on
+> RK3566/RK3568. Instead of clipping on all SoCs when the user asks for an
+> unaligned source rectangle, reject the configuration in the plane's
+> atomic check on RK3566/RK3568 only.
+> 
+> Signed-off-by: Daniel Stone <daniels@collabora.com>
+> [Make RK3566/RK3568 specific, reword message]
+> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> ---
+>  drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 14 +++++++++-----
+>  1 file changed, 9 insertions(+), 5 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> index bc1ed0ffede0..e23213337104 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> @@ -1076,6 +1076,13 @@ static int vop2_plane_atomic_check(struct drm_plane *plane,
+>  		return -EINVAL;
+>  	}
+>  
+> +	if (vop2->version == VOP_VERSION_RK3568 && drm_is_afbc(fb->modifier) && src_w % 4) {
+> +		drm_dbg_kms(vop2->drm,
+> +			    "AFBC source rectangles must be 4-byte aligned; is %d\n",
+> +			    src_w);
+> +		return -EINVAL;
+> +	}
+> +
+>  	return 0;
+>  }
+>  
+> @@ -1237,11 +1244,8 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
+>  	WARN_ON(src_w < 4);
+>  	WARN_ON(src_h < 4);
+>  
+> -	if (afbc_en && src_w % 4) {
+> -		drm_dbg_kms(vop2->drm, "vp%d %s src_w[%d] not 4 pixel aligned\n",
+> -			    vp->id, win->data->name, src_w);
+> -		src_w = ALIGN_DOWN(src_w, 4);
+> -	}
+> +	if (vop2->version == VOP_VERSION_RK3568 && drm_is_afbc(fb->modifier))
+> +		WARN_ON(src_w % 4);
+>  
+>  	act_info = (src_h - 1) << 16 | ((src_w - 1) & 0xffff);
+>  	dsp_info = (dsp_h - 1) << 16 | ((dsp_w - 1) & 0xffff);
+> 
 
-fusb302 chip ---> USB/DP PHY0 <----> CDN-DP controller
+You haven't replied to Andy's comment yet [0].
 
-Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
----
+[0] https://lore.kernel.org/dri-devel/7b4e26ec.75f3.19a77276b53.Coremail.andyshrk@163.com/
 
-(no changes since v10)
-
-Changes in v9:
-- Add usb role switch for Type-C.
-- Remove USB2 PHY in Type-C connection.
-
-(no changes since v4)
-
-Changes in v3:
-- Fix wrong vdo value.
-- Fix port node in usb-c-connector.
-
-Changes in v2:
-- Add endpoint to link DP PHY and DP controller.
-- Fix devicetree coding style.
-
- .../boot/dts/rockchip/rk3399-evb-ind.dts      | 147 ++++++++++++++++++
- 1 file changed, 147 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-evb-ind.dts b/arch/arm64/boot/dts/rockchip/rk3399-evb-ind.dts
-index 70aee1ab904c..be1e90f7a453 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-evb-ind.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-evb-ind.dts
-@@ -4,6 +4,7 @@
-  */
- 
- /dts-v1/;
-+#include <dt-bindings/usb/pd.h>
- #include "rk3399.dtsi"
- 
- / {
-@@ -19,6 +20,21 @@ chosen {
- 		stdout-path = "serial2:1500000n8";
- 	};
- 
-+	sound: sound {
-+		compatible = "rockchip,rk3399-gru-sound";
-+		rockchip,cpu = <&i2s0 &spdif>;
-+	};
-+
-+	vbus_typec: regulator-vbus-typec {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpio = <&gpio1 RK_PC2 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&vcc5v0_typec0_en>;
-+		regulator-name = "vbus_typec";
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+
- 	vcc5v0_sys: regulator-vcc5v0-sys {
- 		compatible = "regulator-fixed";
- 		enable-active-high;
-@@ -31,6 +47,11 @@ vcc5v0_sys: regulator-vcc5v0-sys {
- 	};
- };
- 
-+&cdn_dp {
-+	phys = <&tcphy0_dp>;
-+	status = "okay";
-+};
-+
- &cpu_b0 {
- 	cpu-supply = <&vdd_cpu_b>;
- };
-@@ -55,6 +76,12 @@ &cpu_l3 {
- 	cpu-supply = <&vdd_cpu_l>;
- };
- 
-+&dp_out {
-+	dp_controller_output: endpoint {
-+		remote-endpoint = <&dp_phy_in>;
-+	};
-+};
-+
- &emmc_phy {
- 	status = "okay";
- };
-@@ -341,6 +368,71 @@ regulator-state-mem {
- 	};
- };
- 
-+&i2c4 {
-+	i2c-scl-rising-time-ns = <475>;
-+	i2c-scl-falling-time-ns = <26>;
-+	status = "okay";
-+
-+	usbc0: typec-portc@22 {
-+		compatible = "fcs,fusb302";
-+		reg = <0x22>;
-+		interrupt-parent = <&gpio1>;
-+		interrupts = <RK_PA2 IRQ_TYPE_LEVEL_LOW>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&usbc0_int>;
-+		vbus-supply = <&vbus_typec>;
-+
-+		usb_con: connector {
-+			compatible = "usb-c-connector";
-+			label = "USB-C";
-+			data-role = "dual";
-+			power-role = "dual";
-+			try-power-role = "sink";
-+			op-sink-microwatt = <1000000>;
-+			sink-pdos =
-+				<PDO_FIXED(5000, 2500, PDO_FIXED_USB_COMM)>;
-+			source-pdos =
-+				<PDO_FIXED(5000, 1500, PDO_FIXED_USB_COMM)>;
-+
-+			altmodes {
-+				displayport {
-+					svid = /bits/ 16 <0xff01>;
-+					vdo = <0x00001c46>;
-+				};
-+			};
-+
-+			ports {
-+				#address-cells = <1>;
-+				#size-cells = <0>;
-+
-+				port@0 {
-+					reg = <0>;
-+
-+					usbc0_orien_sw: endpoint {
-+						remote-endpoint = <&tcphy0_orientation_switch>;
-+					};
-+				};
-+
-+				port@1 {
-+					reg = <1>;
-+
-+					usbc0_role_sw: endpoint {
-+						remote-endpoint = <&dwc3_0_role_switch>;
-+					};
-+				};
-+
-+				port@2 {
-+					reg = <2>;
-+
-+					dp_altmode_mux: endpoint {
-+						remote-endpoint = <&tcphy0_typec_dp>;
-+					};
-+				};
-+			};
-+		};
-+	};
-+};
-+
- &i2s2 {
- 	status = "okay";
- };
-@@ -354,6 +446,16 @@ &io_domains {
- };
- 
- &pinctrl {
-+	usb-typec {
-+		usbc0_int: usbc0-int {
-+			rockchip,pins = <1 RK_PA2 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+
-+		vcc5v0_typec0_en: vcc5v0-typec0-en {
-+			rockchip,pins = <1 RK_PC2 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
- 	pmic {
- 		pmic_int_l: pmic-int-l {
- 			rockchip,pins = <1 RK_PC5 RK_FUNC_GPIO &pcfg_pull_up>;
-@@ -400,10 +502,48 @@ &sdmmc {
- 	status = "okay";
- };
- 
-+&sound {
-+	rockchip,codec = <&cdn_dp>;
-+	status = "okay";
-+};
-+
-+&spdif {
-+	status = "okay";
-+};
-+
- &tcphy0 {
- 	status = "okay";
- };
- 
-+&tcphy0_dp {
-+	mode-switch;
-+
-+	port {
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+
-+		tcphy0_typec_dp: endpoint@0 {
-+			reg = <0>;
-+			remote-endpoint = <&dp_altmode_mux>;
-+		};
-+
-+		dp_phy_in: endpoint@1 {
-+			reg = <1>;
-+			remote-endpoint = <&dp_controller_output>;
-+		};
-+	};
-+};
-+
-+&tcphy0_usb3 {
-+	orientation-switch;
-+
-+	port {
-+		tcphy0_orientation_switch: endpoint {
-+			remote-endpoint = <&usbc0_orien_sw>;
-+		};
-+	};
-+};
-+
- &tcphy1 {
- 	status = "okay";
- };
-@@ -461,7 +601,14 @@ &usb_host1_ohci {
- };
- 
- &usbdrd_dwc3_0 {
-+	usb-role-switch;
- 	status = "okay";
-+
-+	port {
-+		dwc3_0_role_switch: endpoint {
-+			remote-endpoint = <&usbc0_role_sw>;
-+		};
-+	};
- };
- 
- &usbdrd3_0 {
 -- 
-2.51.1
-
+Best, 
+Chaoyi
 
 _______________________________________________
 Linux-rockchip mailing list
