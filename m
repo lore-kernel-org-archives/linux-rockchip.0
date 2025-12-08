@@ -4,60 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3741DD2CE17
-	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Dec 2025 03:18:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F25DD3ABEF
+	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Dec 2025 05:46:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3HNEG/XcXLtC/iQYhJupi6t4MlVCmJUFxnvfqyV7Myw=; b=4elJ4WwBBAXL20
-	giR2uWBjCSAANRP4/v5AOXoj3gkmE7YlfFqDa0DNzxmtw0LI67+gtL0x1RA2pJdxuewEIii1yy/1r
-	WnDG0EDIPltS6L5LddSyegHNfT1f4emn+Pbf5XzYHGGqmIWVJZSb2ObbYOuxdWzRnb5TIrjgneJQ4
-	/PvaE46UHLtaGpzmHKGVNySLkX5OawIvgmit9j7vojMDfdjjo6uljnfsj77SGoADUiueEW1PFwzI9
-	15uckZDfIFDOj1wlPCkJ2JqfIHNitB1f5opN5LKsypW1KwneEYs0g90i8oUpaojFkSxBuXnmZnl4x
-	rxspELvrV4hMoYvuMqcA==;
+	List-Owner; bh=YtIRZ98g9gSWIjmNUxTzaxGLj6tlZ3sb0yvrtwdhxoM=; b=Z9P6+ICbIqlZYV
+	vsObIwI4jCHNpdmF2yYLIRllnOv+0XGM8TCGYXQQrUZAPAOoJFUB145W2IxqcyR1VKr3m2aMcWVDO
+	Bm93B1WKeHRbD5aTSOqA0qa5MZqq8yysqDA4NPcsPDz49hizH/jByjYcmFvobbNZkmP8MflQpgpdv
+	3IQUll8+W+Jo4jZUCoLnEmgu+yqrst1woh6ZGBX82my4C6Uf5urH8bZol8lxvkd823pTI5O/9JbAQ
+	GhgFTogdlJK43cZPlxGDXYfMV/3O/MAp+DiWIYNki3QLpyXXuuhqSWdv7l2Cwd9bXv3qT/jk355xn
+	fALqQaZMhihpG6B8kjrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vSRlH-0000000CWbr-2wkj;
-	Mon, 08 Dec 2025 03:18:07 +0000
-Received: from mail-m49251.qiye.163.com ([45.254.49.251])
+	id 1vSU4a-0000000CdbE-1h5B;
+	Mon, 08 Dec 2025 05:46:12 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vSRlD-0000000CWbM-28ZD
-	for linux-rockchip@lists.infradead.org;
-	Mon, 08 Dec 2025 03:18:06 +0000
-Received: from [172.16.12.51] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 2c55f01cb;
-	Mon, 8 Dec 2025 11:17:59 +0800 (GMT+08:00)
-Message-ID: <27dff4a5-1e9d-458d-936a-941c3f10c139@rock-chips.com>
-Date: Mon, 8 Dec 2025 11:17:56 +0800
+	id 1vSU4U-0000000CdaN-2iP9;
+	Mon, 08 Dec 2025 05:46:10 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id C17B641698;
+	Mon,  8 Dec 2025 05:46:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2C384C4CEF1;
+	Mon,  8 Dec 2025 05:46:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1765172764;
+	bh=4oPFnaKOuwa795QouzAkLdFmxipO+zRI6ijexJF2Dxw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=lCUkO5wHsKZaS1oV3YA4xJ+CuE3qQlV6O/izT24g2LwTzWQM0yWZDfrfXf8XszMZM
+	 pU7zjfUPgjvYmGK5EGD/fuhch+Ncj7uAQH/atF4qnUZpN/Zgfb5MtnJAPYXmYWlGdR
+	 ecR1dkvQK7j0zb22jeMacLyxp0uqmxqs8jS333sRUmep9+h4otHPN2oyZdOtsai0+P
+	 6fOmtKSOJ6BRwDZxmrNJb6jFgjopig9uDBC7tMPvRkQA7r4poQaIWDEur1i4fx9W84
+	 hsb5RlkxjqfzLp/7IylsogbO5hf7pae/x2S4Zlba4P+0aiJ+uDNLuNM3jR6xIJKzbM
+	 L3Rhlaf8d62oQ==
+Date: Mon, 8 Dec 2025 06:45:59 +0100
+From: Niklas Cassel <cassel@kernel.org>
+To: Jingoo Han <jingoohan1@gmail.com>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: FUKAUMI Naoki <naoki@radxa.com>, linux-pci@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org
+Subject: Re: [PATCH v2] PCI: dwc: Make Link Up IRQ logic handle already
+ powered on PCIe switches
+Message-ID: <aTZmF5AEJQhQld4Y@ryzen>
+References: <20251201063634.4115762-2-cassel@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] pmdomain:rockchip: Fix init genpd as GENPD_STATE_ON
- before regulator ready
-To: Frank Zhang <rmxpzlb@gmail.com>
-Cc: ulf.hansson@linaro.org, heiko@sntech.de,
- Quentin Schulz <quentin.schulz@cherry.de>,
- linux-rockchip@lists.infradead.org, linux-pm@vger.kernel.org,
- linux-kernel@vger.kernel.org
-References: <20251205064739.20270-1-rmxpzlb@gmail.com>
-Content-Language: en-US
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-In-Reply-To: <20251205064739.20270-1-rmxpzlb@gmail.com>
-X-HM-Tid: 0a9afbf74a8003abkunm5f783d0527a9bb2
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQhkZQlZCHx4fTRgdSUNNH0lWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=AGBNPbqC2bNDmPm7K0v/fuotV9dWhP34C9k6XFs0UxgTlVR0ZgpTogpHzatNY5iVXPAKXBO26ueuwrHui7Mtsf9GYPD+W8644XOs2H0u8fMMgDbBcx3PCXmbi1myE8KsN2LMw2kvfzhO9ctVpkQWQgCYnSHttxxr2vMgtAkTmc4=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=1Hv4tC4zreaZB0KkuD0NA2HKLqwbNxwKjVQcNBrPpT4=;
-	h=date:mime-version:subject:message-id:from;
+Content-Disposition: inline
+In-Reply-To: <20251201063634.4115762-2-cassel@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251207_191804_950564_7A07B253 
-X-CRM114-Status: GOOD (  15.27  )
+X-CRM114-CacheID: sfid-20251207_214606_707894_7627E373 
+X-CRM114-Status: UNSURE (   8.56  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,66 +79,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 12/5/2025 2:47 PM, Frank Zhang wrote:
-> RK3588_PD_NPU initialize as GENPD_STATE_ON before regulator ready.
-> rknn_iommu initlized success and suspend RK3588_PD_NPU. When rocket
-> driver register, it will resume rknn_iommu.
-> 
-> If regulator is still not ready at this point, rknn_iommu resume fail,
-> pm runtime status will be error: -EPROBE_DEFER.
-> 
-> This patch check regulator when pmdomain init, if regulator is not ready
-> or not enabled, power off pmdomain. Consumer device can power on it's
-> pmdomain after regulator ready
-> 
-> Signed-off-by: Frank Zhang <rmxpzlb@gmail.com>
-> ---
->  drivers/pmdomain/rockchip/pm-domains.c | 14 ++++++++++++++
->  1 file changed, 14 insertions(+)
-> 
-> diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/rockchip/pm-domains.c
-> index 1955c6d453e4..bc69f5d840e6 100644
-> --- a/drivers/pmdomain/rockchip/pm-domains.c
-> +++ b/drivers/pmdomain/rockchip/pm-domains.c
-> @@ -659,6 +659,11 @@ static int rockchip_pd_power(struct rockchip_pm_domain *pd, bool power_on)
->  	return ret;
->  }
->  
-> +static bool rockchip_pd_regulator_is_enabled(struct rockchip_pm_domain *pd)
-> +{
-> +	return IS_ERR_OR_NULL(pd->supply) ? false : regulator_is_enabled(pd->supply);
-> +}
-> +
->  static int rockchip_pd_regulator_disable(struct rockchip_pm_domain *pd)
->  {
->  	return IS_ERR_OR_NULL(pd->supply) ? 0 : regulator_disable(pd->supply);
-> @@ -861,6 +866,15 @@ static int rockchip_pm_add_one_domain(struct rockchip_pmu *pmu,
->  		pd->genpd.name = pd->info->name;
->  	else
->  		pd->genpd.name = kbasename(node->full_name);
-> +
-> +	if (pd->info->need_regulator) {
-> +		if (IS_ERR_OR_NULL(pd->supply))
-> +			pd->supply = devm_of_regulator_get(pmu->dev, pd->node, "domain");
-> +
-> +		if (!rockchip_pd_regulator_is_enabled(pd))
-> +			rockchip_pd_power(pd, false);
-> +	}
-> +
->  	pd->genpd.power_off = rockchip_pd_power_off;
->  	pd->genpd.power_on = rockchip_pd_power_on;
->  	pd->genpd.attach_dev = rockchip_pd_attach_dev;
-> 
+On Mon, Dec 01, 2025 at 07:36:35AM +0100, Niklas Cassel wrote:
 
-@Quentin, Could you please try this patch? This should resolve the
-problem you're currently facing where the NPU fails to work in
-built-in module.
+Mani, could you perhaps try this series on Qcom?
 
-Tested-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+I personally prefer this series over a revert because:
+It allows to us to still use a PCIe endpoint that comes up after the
+main system has booted, e.g. when the PCIe endpoint is a board running
+pci-epf-test, without the need for a manual rescan on be bus.
 
--- 
-Best, 
-Chaoyi
+If we go with revert instead, this very nice feature would be gone,
+and the user would need to do a manual rescan of the bus.
+
+One could even argue that that is a user visible regression.
+
+
+Kind regards,
+Niklas
 
 _______________________________________________
 Linux-rockchip mailing list
