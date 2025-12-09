@@ -4,61 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 973C2D1CDC6
-	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Dec 2025 09:31:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7F37D3B7EA
+	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Dec 2025 10:34:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ld4SCr6d0QTHtBI1oARmvAk0Ln73zjfbDBhBBn2Bd+k=; b=z8BHgFNetRzEIa
-	NdxGgkUr3AAWxbSxLoCPEKgRYn4kDoDN9JczCDHzq9oVs+++Pxkwhi+Hw3XLQTSeDhcxRSWPbUeBD
-	Vya0gj3/lj/1nhuiJHqZs5O8Z9rzl5R7BDmCtJc4d5vfkR+RZBdAOjCintkB3+qfewG86Ox+QFh2R
-	0YPy3zdTkc0pEMcbtPL7aN1Z5dHO9YL4a3EFg84mZDlneXPMgqVLahZ5BqUx8BNIXJbQCkgloTVK0
-	0jdnP7i3WpWAGYEKHPUTpOhoV/zBFJTlosF3HdQN1LGS2Taj6k+KVtnMZ2fTpdDhjXugvDVpXwGDL
-	F0YEp2WGGx+lhM5d1QBA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=xCWzPxN0LJr74cCu/HuuIgYeu0Eb7t2IRHioaexrkl4=; b=3Y5CXpvOJ3/HdP
+	cwEX7EwnK/lt9OEofcE15u7fZuTCn85exobZYKuNBzAJiA9KkiD/tEyDDh4RA6XljT4GWyMNWToJX
+	rdMtkq3JWTZogB5h+nPYFQb/RQIMnz+Ry/LRBYCu2PA5n2VWwIEJr/86GogUqc4SQTSZ+gwCdZ4zW
+	uxeUtb24jQrQ2IsDsZ5G2DiUM1u4OJRzHsdsJ0fH144uo7+GqMzXlesrv2rApmlJ/ElP0VUQ2raU4
+	zl6nhVBlo7RWvb1vOcAja+jySYXSXPhDdJZSNPkFNfwV6NbETvei/Xnj6jKdKoNXpfZ0onia0AFll
+	ZydEtZ7Y1K0YSV9UtxcQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vSu3y-0000000E2n7-37zF;
-	Tue, 09 Dec 2025 09:31:18 +0000
-Received: from mail-m155110.qiye.163.com ([101.71.155.110])
+	id 1vSv2r-0000000E7AJ-46TS;
+	Tue, 09 Dec 2025 10:34:14 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vSu3v-0000000E2mO-3nSc;
-	Tue, 09 Dec 2025 09:31:17 +0000
-Received: from [172.16.12.51] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 2c8cc602d;
-	Tue, 9 Dec 2025 17:31:03 +0800 (GMT+08:00)
-Message-ID: <75166475-d6a8-45b8-8092-f31d292d4206@rock-chips.com>
-Date: Tue, 9 Dec 2025 17:31:02 +0800
+	id 1vSv2o-0000000E79d-3upr;
+	Tue, 09 Dec 2025 10:34:12 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1765276446;
+	bh=Q2dXtR2D1boXS39jDjWL1hbt8apwzkSNEh5YyxFa0Bs=;
+	h=From:To:Cc:Subject:Date:From;
+	b=Pn8XU/OUEiW9tIQe6KZn6ZTy4uOrbGn5nfEzjyHUNRTeRxJGcqrdO3ZZdkE6DEH1p
+	 0U8sNjEJaBIFxFV62E/j4Yye5myk8+jyAiotvr2okQCSLgUYxh5akP8mh8zKdglQd3
+	 sSymLjzOziTXiFdQN6Dns5fGwVRuPBsDGkuMTMtjrI9vrXx1kByd9G1YMIuWhLjFOR
+	 QuTabJPc/WqN/llsOP6d62N33Dw065daEPSAT4uIKA11KMOIfI8sPnNg2yWq/QJWng
+	 mLCQ5pwJ3Sj/JLsRQM6z2QNzjpavuMBNQCFgcz4AC3oRORfrxwvieMb2dAkXDMNJSU
+	 QaIPAkMurLUiw==
+Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:2285:5e2d:9392:bcdf])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: benjamin.gaignard)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 47B4A17E1155;
+	Tue,  9 Dec 2025 11:34:06 +0100 (CET)
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: nicolas.dufresne@collabora.com,
+	p.zabel@pengutronix.de,
+	mchehab@kernel.org,
+	heiko@sntech.de,
+	hverkuil@kernel.org
+Cc: linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	kernel@collabora.com,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+	Jianfeng Liu <liujianfeng1994@gmail.com>
+Subject: [PATCH v2] media: verisilicon: AV1: Fix enable cdef computation
+Date: Tue,  9 Dec 2025 11:34:01 +0100
+Message-ID: <20251209103401.21943-1-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: Issues with DRM_ACCEL_ROCKET (Oops, power-domain, probe-ordering)
-To: Tomeu Vizoso <tomeu@tomeuvizoso.net>
-Cc: Quentin Schulz <quentin.schulz@cherry.de>,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
- Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org
-References: <0b20d760-ad4f-41c0-b733-39db10d6cc41@cherry.de>
- <77685900-2c34-49b8-8c7e-14718841ef17@rock-chips.com>
- <fa82d11f-ce11-4feb-bdb4-c31d360a2a62@rock-chips.com>
- <CAAObsKDYLXVf1GdYUNeaOya+pWD4jTOEf55ouXAL9iM_kWCcMw@mail.gmail.com>
-Content-Language: en-US
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-In-Reply-To: <CAAObsKDYLXVf1GdYUNeaOya+pWD4jTOEf55ouXAL9iM_kWCcMw@mail.gmail.com>
-X-HM-Tid: 0a9b027335b403abkunm41f438e635d96c8
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGkxKT1ZDTkNLQ0seTkxKGUJWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUJCSU5LVU
-	pLS1VKQktCWQY+
-DKIM-Signature: a=rsa-sha256;
-	b=hiq+HVmS9ouBOLn5EdNKviGgYRYZJB/DNQU9P+jo5nnuhLcGwb7VK051dApOrw1EwxmRKa22tJkf88lu4fr8Q7ioJAYxel45NfV/+6phYFrPS2oyFpWn0cnJFnCdakabtFAI+0ptoEgdywXNiU5S1Fb/Kh+dii8zMDZjsr/GvLg=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=vKvhbBj92/QPwk0Jc3NX9v7/0BjdeDe2DFhKcDpoywI=;
-	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251209_013116_112945_936779B3 
-X-CRM114-Status: GOOD (  12.49  )
+X-CRM114-CacheID: sfid-20251209_023411_161000_6FE61966 
+X-CRM114-Status: UNSURE (   9.86  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,27 +76,59 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGVsbG8gVG9tZXUsCgpPbiAxMi85LzIwMjUgMjo1NSBQTSwgVG9tZXUgVml6b3NvIHdyb3RlOgo+
-IE9uIFR1ZSwgRGVjIDIsIDIwMjUgYXQgODowMOKAr0FNIENoYW95aSBDaGVuIDxjaGFveWkuY2hl
-bkByb2NrLWNoaXBzLmNvbT4gd3JvdGU6CgpbLi4uXQoKPiAKPiBUaGlzIG5lZWQgd2FzIHF1ZXN0
-aW9uZWQgZHVyaW5nIHRoZSByZXZpZXcgcHJvY2VzcywgYW5kIGR1cmluZyBteQo+IHN0cmVzcyB0
-ZXN0aW5nIEkgZGlkbid0IGZpbmQgYSBuZWVkIGZvciBjb3JlIDAgdG8gYmUgdHJlYXRlZAo+IHNw
-ZWNpYWxseS4gU28gaXQgd2FzIGNvbnNpZGVyZWQgdW5uZWVkZWQgY29tcGxleGl0eSBhbmQgdGhl
-IGNvZGUgd2FzCj4gZHJvcHBlZC4KPgoKT2gsIEkganVzdCBub3RpY2VkIHRoYXQgdGhlIGNvbW1p
-dCBjb21tZW50IGluIHRoZSBkZXZpY2V0cmVlIHN0aWxsCmNvbnRhaW5zIGEgcmVsZXZhbnQgZGVz
-Y3JpcHRpb24uCgo+IE15IHRlc3RpbmcgaW52b2x2ZXMgcnVubmluZyB0aGUgc3VwcG9ydGVkIG1v
-ZGVscyBhcyBhIHdob2xlLCBhbmQgYWxzbwo+IHRoZWlyIGluZGl2aWR1YWwgb3BlcmF0aW9ucyBh
-cyBpbmRpdmlkdWFsIHRlc3RzLiBJIHJ1biB0aGVtIGluIDgKPiBwYXJhbGxlbCBwcm9jZXNzZXMs
-IGluIGJhdGNoZXMgc28gd2UgaGF2ZSBjb250aW51b3VzIGJyaW5nIHVwIGFuZCBkb3duCj4gb2Yg
-Y2xpZW50cy4KPiAKPiBJJ20gYSBiaXQgc3VycHJpc2VkIHRoYXQgdGhhdCB0ZXN0aW5nIHdvcmtl
-ZCBzdGFibHkgYnV0IHdlIGhhdmUgc3RpbGwKPiBmYWlsdXJlcyBpbiBzb21lIHNldHVwcy4KCkNv
-dWxkIHlvdSBwbGVhc2UgZGVzY3JpYmUgdGhlIGZhaWx1cmVzIHRoYXQgc3RpbGwgZXhpc3Q/IFRo
-YW5rIHlvdS4KCi0tIApCZXN0LCAKQ2hhb3lpCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9j
-a2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+If all the fields of the CDEF parameters are zero (which is the default),
+then av1_enable_cdef register needs to be unset
+(despite the V4L2_AV1_SEQUENCE_FLAG_ENABLE_CDEF possibly being set).
+
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Fixes: 727a400686a2c ("media: verisilicon: Add Rockchip AV1 decoder")
+Reported-by: Jianfeng Liu <liujianfeng1994@gmail.com>
+Closes: https://gitlab.freedesktop.org/gstreamer/gstreamer/-/issues/4786
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+---
+ .../platform/verisilicon/rockchip_vpu981_hw_av1_dec.c  | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
+index e4703bb6be7c..f4f7cb45b1f1 100644
+--- a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
++++ b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
+@@ -1396,8 +1396,16 @@ static void rockchip_vpu981_av1_dec_set_cdef(struct hantro_ctx *ctx)
+ 	u16 luma_sec_strength = 0;
+ 	u32 chroma_pri_strength = 0;
+ 	u16 chroma_sec_strength = 0;
++	bool enable_cdef;
+ 	int i;
+ 
++	enable_cdef = !(cdef->bits == 0 &&
++			cdef->damping_minus_3 == 0 &&
++			cdef->y_pri_strength[0] == 0 &&
++			cdef->y_sec_strength[0] == 0 &&
++			cdef->uv_pri_strength[0] == 0 &&
++			cdef->uv_sec_strength[0] == 0);
++	hantro_reg_write(vpu, &av1_enable_cdef, enable_cdef);
+ 	hantro_reg_write(vpu, &av1_cdef_bits, cdef->bits);
+ 	hantro_reg_write(vpu, &av1_cdef_damping, cdef->damping_minus_3);
+ 
+@@ -1953,8 +1961,6 @@ static void rockchip_vpu981_av1_dec_set_parameters(struct hantro_ctx *ctx)
+ 			 !!(ctrls->frame->flags & V4L2_AV1_FRAME_FLAG_SHOW_FRAME));
+ 	hantro_reg_write(vpu, &av1_switchable_motion_mode,
+ 			 !!(ctrls->frame->flags & V4L2_AV1_FRAME_FLAG_IS_MOTION_MODE_SWITCHABLE));
+-	hantro_reg_write(vpu, &av1_enable_cdef,
+-			 !!(ctrls->sequence->flags & V4L2_AV1_SEQUENCE_FLAG_ENABLE_CDEF));
+ 	hantro_reg_write(vpu, &av1_allow_masked_compound,
+ 			 !!(ctrls->sequence->flags
+ 			    & V4L2_AV1_SEQUENCE_FLAG_ENABLE_MASKED_COMPOUND));
+-- 
+2.43.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
