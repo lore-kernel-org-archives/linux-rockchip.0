@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6056FD3B7F3
-	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Dec 2025 12:32:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DA66D3B7EA
+	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Dec 2025 12:32:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8b9SJc6w0GMcGTpePi7QA77cUCHIM2zOxhBlVo8jy0w=; b=WRZFXWLD6cbHVk
-	sj+AD32dfEZO5GwsHpPVzq0naYVX+go4tca0pj6Ng07D89hXh9bYW8hgIc/s27VCOSKPz9OD5YYWV
-	2Aceq4k87aU8MH9zrp/2SuKGa0kN0oCKWAQGs+rdtYxADeBhLGqbqJS1CUvgNQIXdxp4/mnaajSNe
-	DLLIpoYcsEbCwU6ue16faBEuNYcOQ7TJ8uP3sUAtUEjlxZiw5S9YjE9jmR6SKsjO/fwU1RrDsiVrc
-	/R4nRgDr54zD0u2nqIXXmvNCtuUkzgxlyZ5ft/ZHPiK+vbjWfQNmykaJB/aOTyoWP2HkdnxPnM1je
-	5ggDcbykTcgAaZZEAK9Q==;
+	List-Owner; bh=LSlntB8sQSnbX/lNkk+ln17rmHThX/vw5y5oL5uINEw=; b=Q5IVljYm5GrnyM
+	aHTNvyNNZyeFU5kj58cxxEUMP1IJYRCMhre5hH+s5jHvxgToExfZkyokSH5mk73Si4LC3hMSFXYFK
+	OzHDTsCSXHb45HAAZ5TGDQNKXyKbPBsLFJOcI/z40efNBMZoCbULW6gjygxAcgNvhgQGfxZvqjMvc
+	K4Mx4TmKbJbltCuYTYUq7bzR1TRQoClxruc7ul2IRWBDoZIJuPZVygOhW1pQ0WZDefAxSJL1OS8gr
+	3W1EoERKccL9/WzFc9QbKK67nXzrpiYeJ41Xdty1MXt637di5yO1fperKVRqnRiUf9RJwyka79psN
+	iExkgpTlq+FzuIbTtedA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vSwsp-0000000EFLo-1Ee4;
-	Tue, 09 Dec 2025 12:31:59 +0000
+	id 1vSwss-0000000EFPn-3iNg;
+	Tue, 09 Dec 2025 12:32:02 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vSwsl-0000000EFHj-4AlA;
+	id 1vSwsm-0000000EFI0-3DVY;
 	Tue, 09 Dec 2025 12:31:57 +0000
 Received: from isaac-ThinkPad-T16-Gen-2.infra.iob (cpc89244-aztw30-2-0-cust6594.18-1.cable.virginm.net [86.31.185.195])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 65D4D7E6;
-	Tue,  9 Dec 2025 13:31:52 +0100 (CET)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 25841833;
+	Tue,  9 Dec 2025 13:31:54 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1765283512;
-	bh=ug/J00ml0noX1QaBJY7xGdOLjc/+Nt6LtyzhtftDOg4=;
+	s=mail; t=1765283514;
+	bh=NyyRdDX2WZbA0znUhmAwrClOIgKwPmzzc+lI7uMT9ME=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=f0Vs0DS6nae9owtOW6VdF8WiVnVEs02qu663ORQS8Xgcf1Myj/zs8vHshUjISmkMw
-	 12TlLsuHy659AwoR23hrV3ay7W8QGWEMbhSXPE0IWsSgQEm3lFuUsHhf4aMRFfWXb2
-	 4Ir4WNgu0J+SpINBGa6QnC0twBCexnTws0ZGm+OE=
+	b=LbGvufnGVH2wQu9qgZByAVecRcIA5mdtZAPfjoOssxgDH+TdY+/N1Le8aNXN5TUoW
+	 bcOO4u0kBROqsaO+C9mHd5MU+m/zy+B/FCDLUTv6uV9HwA5P+yaxhmHeVf5UnGuszA
+	 F+9UQlZvYiWKPXZuoT+OeKML/OD1VjJCP4CUUcyM=
 From: Isaac Scott <isaac.scott@ideasonboard.com>
 To: dafna@fastmail.com
 Cc: laurent.pinchart@ideasonboard.com,
@@ -46,16 +46,16 @@ Cc: laurent.pinchart@ideasonboard.com,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Isaac Scott <isaac.scott@ideasonboard.com>
-Subject: [RFC PATCH 2/6] media: rkisp1-isp: Add in_bypass flag for YUV bypass
-Date: Tue,  9 Dec 2025 12:31:32 +0000
-Message-ID: <20251209123136.273938-3-isaac.scott@ideasonboard.com>
+Subject: [RFC PATCH 3/6] media: rkisp1-isp: Add target_format
+Date: Tue,  9 Dec 2025 12:31:33 +0000
+Message-ID: <20251209123136.273938-4-isaac.scott@ideasonboard.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20251209123136.273938-1-isaac.scott@ideasonboard.com>
 References: <20251209123136.273938-1-isaac.scott@ideasonboard.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251209_043156_177501_E30DDFCD 
-X-CRM114-Status: GOOD (  11.90  )
+X-CRM114-CacheID: sfid-20251209_043156_960656_BF324BBD 
+X-CRM114-Status: GOOD (  10.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,56 +72,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The rkisp1 features a 'bypass' mode for RAW and YUV formats. This
-disables all ISP blocks, and makes the rkisp1 display input data from
-the mipi csi receiver at the output, unmodified.
-
-To determine whether we can activate bypass, we can detect whether both
-the source and sink formats are YUV. If they are, we can set a new
-in_bypass flag.
+In passthough mode, we want to make sure the output format of the ISP is
+identical to the input format. Add logic to ensure the format we
+configure the output of the ISP with is the sink format when we are in
+bypass, and the source format if we are not.
 
 Signed-off-by: Isaac Scott <isaac.scott@ideasonboard.com>
 ---
- drivers/media/platform/rockchip/rkisp1/rkisp1-common.h | 1 +
- drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c    | 6 +++++-
- 2 files changed, 6 insertions(+), 1 deletion(-)
+ drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-index 5e6a4d5f6fd1..d90233e31ad3 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-@@ -532,6 +532,7 @@ struct rkisp1_device {
- 	struct rkisp1_debug debug;
- 	const struct rkisp1_info *info;
- 	int irqs[RKISP1_NUM_IRQS];
-+	bool in_bypass;
- 	bool irqs_enabled;
- };
- 
 diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-index 2311672cedb1..7f0802ae3dcc 100644
+index 7f0802ae3dcc..7c844e00808a 100644
 --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
 +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-@@ -212,6 +212,8 @@ static int rkisp1_config_isp(struct rkisp1_isp *isp,
- 	const struct v4l2_mbus_framefmt *sink_frm;
- 	const struct v4l2_rect *sink_crop;
+@@ -175,9 +175,10 @@ static void rkisp1_gasket_disable(struct rkisp1_device *rkisp1)
+ static void rkisp1_config_ism(struct rkisp1_isp *isp,
+ 			      const struct v4l2_subdev_state *sd_state)
+ {
+-	const struct v4l2_rect *src_crop =
++	const struct v4l2_rect *target_crop =
+ 		v4l2_subdev_state_get_crop(sd_state,
+-					   RKISP1_ISP_PAD_SOURCE_VIDEO);
++			(isp->rkisp1->in_bypass ?
++				RKISP1_ISP_PAD_SINK_VIDEO : RKISP1_ISP_PAD_SOURCE_VIDEO));
+ 	struct rkisp1_device *rkisp1 = isp->rkisp1;
+ 	u32 val;
  
-+	rkisp1->in_bypass = false;
-+
- 	sink_frm = v4l2_subdev_state_get_format(sd_state,
- 						RKISP1_ISP_PAD_SINK_VIDEO);
- 	sink_crop = v4l2_subdev_state_get_crop(sd_state,
-@@ -240,7 +242,9 @@ static int rkisp1_config_isp(struct rkisp1_isp *isp,
- 		}
- 	} else if (sink_fmt->pixel_enc == V4L2_PIXEL_ENC_YUV) {
- 		acq_mult = 2;
--		if (mbus_type == V4L2_MBUS_CSI2_DPHY) {
-+		if (src_fmt->pixel_enc == V4L2_PIXEL_ENC_YUV) {
-+			rkisp1->in_bypass = true;
-+		} else if (mbus_type == V4L2_MBUS_CSI2_DPHY) {
- 			isp_ctrl = RKISP1_CIF_ISP_CTRL_ISP_MODE_ITU601;
- 		} else {
- 			if (mbus_type == V4L2_MBUS_BT656)
+@@ -185,10 +186,10 @@ static void rkisp1_config_ism(struct rkisp1_isp *isp,
+ 	rkisp1_write(rkisp1, RKISP1_CIF_ISP_IS_MAX_DX, 0);
+ 	rkisp1_write(rkisp1, RKISP1_CIF_ISP_IS_MAX_DY, 0);
+ 	rkisp1_write(rkisp1, RKISP1_CIF_ISP_IS_DISPLACE, 0);
+-	rkisp1_write(rkisp1, RKISP1_CIF_ISP_IS_H_OFFS, src_crop->left);
+-	rkisp1_write(rkisp1, RKISP1_CIF_ISP_IS_V_OFFS, src_crop->top);
+-	rkisp1_write(rkisp1, RKISP1_CIF_ISP_IS_H_SIZE, src_crop->width);
+-	rkisp1_write(rkisp1, RKISP1_CIF_ISP_IS_V_SIZE, src_crop->height);
++	rkisp1_write(rkisp1, RKISP1_CIF_ISP_IS_H_OFFS, target_crop->left);
++	rkisp1_write(rkisp1, RKISP1_CIF_ISP_IS_V_OFFS, target_crop->top);
++	rkisp1_write(rkisp1, RKISP1_CIF_ISP_IS_H_SIZE, target_crop->width);
++	rkisp1_write(rkisp1, RKISP1_CIF_ISP_IS_V_SIZE, target_crop->height);
+ 
+ 	/* IS(Image Stabilization) is always on, working as output crop */
+ 	rkisp1_write(rkisp1, RKISP1_CIF_ISP_IS_CTRL, 1);
 -- 
 2.43.0
 
