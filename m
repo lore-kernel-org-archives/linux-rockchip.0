@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA572D3B7F8
-	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Dec 2025 12:32:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC058D3B7EA
+	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Dec 2025 12:32:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FuuiSGRNW4W4mfyZf06iCi7uRVcsjD8zp0LpUKPS++4=; b=JL6WY7S8juQLyq
-	cZqIFEZanuO4TGe3WzEXj6+aPXQiLc3j1jxzY0z83pRTDx2SsWanX89iWtuAYjRxFhxp4H6pXaC4Y
-	rhFPrzEZrIGNIcikwtLEoy//VHKyPaqCBPDAqWKoY/vxnn/+62nGu5jKzGwb3spXuFXbYoJ04Ivzm
-	tLCu3U2j7nNvmYwhSUmaaDLDG0IshuiWirV00D0N+wd1Bht5ot4o39yZ0ht0JEuDS+v96DlFeI3At
-	gUpWAr1AaE1LgAjsmmWXbTnhavENosPgKhOt2n8sHrK4PsVLjLDZ9RPgTNRCz8Rwo2/MiOBkra7uI
-	lcToHNje1DD/VoMRR5ew==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=XyAOfj4ktHIeUHd5C/ZlnKR+rXoPLSiD2aN7Ca2kFrA=; b=NjCGNY0l0KeZKE
+	tw2u2oL/Ll0HGH17Hdew+HxVQeckXfr747Yq8LPgdg0cHuBQ7XKrtgeO9KmFQGhN9iRrCpWWMEo7H
+	4ddvwrA6sB8MmrdP13rgbyHiH4vMz/ouxqRbN2ApHAAc0HIYLHjpQEfthMVJI3QyXiZ4tUJ8rzkhM
+	4zHBPdqRVEFZAvd9lEI9i0XPakQIc/wW2wOEpM8CNPtKQt8RnfZOrE66har4QNxJzsU7TI3xGo1se
+	v7i5ObHmg9N+suM/itoeSsz0AJmbrx0Jb5uNyuFyUy/PIfJXY6seTCMEmJUFW5DEY4DBd8MYUj5WL
+	Yjqz6xcbK+q0rTgJIM7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vSwso-0000000EFKq-2uQG;
-	Tue, 09 Dec 2025 12:31:58 +0000
+	id 1vSwsm-0000000EFId-0P5z;
+	Tue, 09 Dec 2025 12:31:56 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vSwsj-0000000EFHA-3sXQ;
+	id 1vSwsj-0000000EFGx-3Njp;
 	Tue, 09 Dec 2025 12:31:55 +0000
 Received: from isaac-ThinkPad-T16-Gen-2.infra.iob (cpc89244-aztw30-2-0-cust6594.18-1.cable.virginm.net [86.31.185.195])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 4A876110;
-	Tue,  9 Dec 2025 13:31:50 +0100 (CET)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id BC3FB667;
+	Tue,  9 Dec 2025 13:31:46 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1765283510;
-	bh=j28mLh9q2tWJK/jNy6SAvZiExT86p8zYwA+dXzqMg/A=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=UC6XkpBcUdYSatNLI0/s6EEbyUbijDZ1iqX7vSVaYspUU952VshKv+MTI1TI6JvRf
-	 GcbhAmRjH94ytPFuvJfgTe3CPK5RycuF2pVkzvZ4FFuWQcf+8qFi4eulGvDsUrhFJn
-	 YruMcU09mcVe/mDRR7bCtVGXzCRykW/PFGXs0Qtk=
+	s=mail; t=1765283507;
+	bh=6nkPAaFnJtZWqHjfWRExA7w5rIBqcrVJKOcMVmoZAco=;
+	h=From:To:Cc:Subject:Date:From;
+	b=JUxqUeoWHQEzltin3ct5hFJ7jAkR+R1h1zg5u1N2eDxMa1RczSFmwUF0cXsIMH943
+	 JFOAq/BZaybEL8nD1+a4+KOrWNRV7kiisVCfeNmU2ELWVdptbPA3tpbFDtgj9D935K
+	 05ovnCbcFDSpLpmOn36lAY3HFI3vM15EWef5LMeA=
 From: Isaac Scott <isaac.scott@ideasonboard.com>
 To: dafna@fastmail.com
 Cc: laurent.pinchart@ideasonboard.com,
@@ -46,17 +46,14 @@ Cc: laurent.pinchart@ideasonboard.com,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Isaac Scott <isaac.scott@ideasonboard.com>
-Subject: [RFC PATCH 1/6] media: rkisp1-resizer: Add YUV source formats to resizer
-Date: Tue,  9 Dec 2025 12:31:31 +0000
-Message-ID: <20251209123136.273938-2-isaac.scott@ideasonboard.com>
+Subject: [RFC PATCH 0/6] media: rkisp1: Add YUV bypass support for rkisp1 
+Date: Tue,  9 Dec 2025 12:31:30 +0000
+Message-ID: <20251209123136.273938-1-isaac.scott@ideasonboard.com>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20251209123136.273938-1-isaac.scott@ideasonboard.com>
-References: <20251209123136.273938-1-isaac.scott@ideasonboard.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251209_043154_099380_AE9F1C92 
-X-CRM114-Status: UNSURE (   9.82  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251209_043153_985145_FAEAE047 
+X-CRM114-Status: GOOD (  12.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,41 +70,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-To be able to use YUV bypass, YUV formats need to be available on the
-source pad of the rkisp1 resizer. Add them.
+Hi All,
 
-Signed-off-by: Isaac Scott <isaac.scott@ideasonboard.com>
----
- .../platform/rockchip/rkisp1/rkisp1-resizer.c    | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
+The rkisp1 features the capability to use YUV bypass, which lets input
+YUV streams to bypass all ISP blocks, and be presented at the output of
+the ISP without being modified. This functionality is uimplemented
+currently.
 
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
-index 8e6b753d3081..447adec8589b 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
-@@ -33,6 +33,22 @@ static const struct rkisp1_rsz_yuv_mbus_info rkisp1_rsz_yuv_src_formats[] = {
- 		.hdiv		= 2,
- 		.vdiv		= 2,
- 	},
-+	{
-+		.mbus_code	= MEDIA_BUS_FMT_YUYV8_2X8, /* YUV420 */
-+		.hdiv		= 1,
-+		.vdiv		= 1,
-+	},
-+	{
-+		.mbus_code	= MEDIA_BUS_FMT_VYUY8_2X8, /* YUV420 */
-+		.hdiv		= 1,
-+		.vdiv		= 1,
-+	},
-+	{
-+		.mbus_code	= MEDIA_BUS_FMT_UYVY8_2X8, /* YUV420 */
-+		.hdiv		= 1,
-+		.vdiv		= 1,
-+	},
-+
- };
- 
- static const struct rkisp1_rsz_yuv_mbus_info *rkisp1_rsz_get_yuv_mbus_info(u32 mbus_code)
+At the moment, it is possible to get YUV streams at the output of the
+rkisp1, but only if the input is a bayer format. This series allows
+YUV to be accepted as both an input and output format, when the YUV data
+contains embedded H/VSYNC signals, which are interpreted as the data
+start/stop signals for frame data.
+
+This series is tested and works on the Debix Model A iMX8 MPlus with a
+GC2145 camera sensor outputting UYVY8_1X16, compiled on top of
+media/next.
+
+I am marking this series as RFC because I am keen to know if any other
+developers have any ideas on how to improve the series, or if there are
+other considerations / edge cases that I need to address.
+
+Thank you very much!
+
+Best wishes,
+Isaac
+
+Isaac Scott (6):
+  media: rkisp1-resizer: Add YUV source formats to resizer
+  media: rkisp1-isp: Add in_bypass flag for YUV bypass
+  media: rkisp1-isp: Add target_format
+  media: rkisp1: Set input configuration to data mode in bypass
+  media: Propagate sink -> source format in YUV passthough
+  media: rkisp1: Give buffers back instead of dropping in bypass mode
+
+ .../platform/rockchip/rkisp1/rkisp1-capture.c |  5 ++++
+ .../platform/rockchip/rkisp1/rkisp1-common.h  |  1 +
+ .../platform/rockchip/rkisp1/rkisp1-isp.c     | 25 +++++++++++++------
+ .../platform/rockchip/rkisp1/rkisp1-resizer.c | 16 ++++++++++++
+ 4 files changed, 40 insertions(+), 7 deletions(-)
+
 -- 
 2.43.0
 
