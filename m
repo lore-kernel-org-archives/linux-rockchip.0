@@ -4,54 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2115BD3B7FB
-	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Dec 2025 11:15:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F1CBD1CDC6
+	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Dec 2025 11:15:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TYLD3GrJGGwj1fCxjlAUqmkNg0gh0/jO7VfTTg5WzWE=; b=c5b2ifL8bjaHVE
-	dD6d7G9TDQ0b5B32A40DLE8fCnRF2shdClwoxEUQcmaSypjhnuEVAkt1a+FJuP1UhLbEUizYonnRt
-	si+rg/b+AezQ6oTCv9vn1KtqR2yjPDyL2jWLV/ilfDCtytAofGwz27gY8IhkJVXffcLIl5L0XTcCx
-	JE5U8nqKa7UKTELzdC6ieDULgy9YCe0LsRR7jjLKIe1jxyRy/wtbh6ncIqqHWgbd0euvCtRjwgGkE
-	jOetyCNT14/So9aRH3NGXEUme+4DpwxKlzlghqpNS69JkaZgPn4cOCYmFGB8Ax9lEz8SHnTeTo8jW
-	u748UkgFosk5hTfzpibQ==;
+	List-Owner; bh=30NPTLwijgnn5vUcH6f5pdVaiNs1PhjVgsXPF9ageZA=; b=1qbr23Lj4dmCw8
+	YBABQ0yk4HMO+O8c8CFv76K0BthJgXaJpu7yeG8HW7+VW7v6AQXiqmKxQKHUbTx8BWl6qOhYilWQH
+	b65FkNnXfwdwF4i1dD+db5gFpv83wmH5XYp19xTZOA3KWCOOKJpeaVr3H9SKwMrCdZmGUsOLMXI/x
+	Ks8A6pSjv1XJSuzL3U/kbMgzyWC9svbcbq34vZqF4Fzfw8jDPqjnuWFrroHB9u0QXD93qQKTGEDc7
+	TraI/twB9vnq5GCk9w+aZx9WtVFaPx1ylgodRzzgMmD9pRC9ec5DzlXSOwcpx82nE69TQrR1SxVQL
+	ZKNzJPrnCRlNiq3PN3og==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vSvh6-0000000EAEQ-3f7S;
-	Tue, 09 Dec 2025 11:15:48 +0000
+	id 1vSvh8-0000000EAH0-425k;
+	Tue, 09 Dec 2025 11:15:50 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vSvh0-0000000EA6D-2ySY;
-	Tue, 09 Dec 2025 11:15:44 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1765278914; cv=none; 
+	id 1vSvh1-0000000EA6e-0HVQ;
+	Tue, 09 Dec 2025 11:15:46 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1765278902; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=VRwlubZnlCsEB3gByVYJMAVc9MPJeR8jF9uHx+qhzrzu6qaSAwt3APM+nFxJ9Cc27WssQwl0aDTiVPySbNdJRbLDzqrRMIr8LtolyFwYlZrNsKY9Igmoq5gMRe0gIsIca3oemHFsUj6YeDrFTGyvNkisJBXRe0j4SWPpcYzuIOw=
+	b=XC4SC3KkKQ7GO3dIKZW6VrkIe5LB95jLxGpeMIq18SM3ZtChpHATaju+CTP+QRZ4mHgQqaIOX6lSOO+EBhKmR+hFdrgIozll6wtPMzj+gfUwLqf9gPYunNtJlPBor2RA2lomDipvREAgb1hIdi0Oz6BygQAT1euBfIUNsA/qD5A=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1765278914; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=Dc/9047WZIfthGrC5w9XvBmK2nntzK36OcINQIL7+aQ=; 
-	b=OEnnukIzUPUdcrateJRpJN1F87/btsJ8w65xaf/ig2hgK7nIgDh80IZ4+ffuxzGwLWoqu1prSXqm6Nqxamwe4lTMnUBRmLpfVPCd9TZhVvwoR3AWN66FIt0THx+pjj8lRJJZ0/hm1zqnEWGzYScr6nB9BTftwWOwlpvQ+Hi5s3o=
+	t=1765278902; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=Yix2VtVAthNOkhvZWCl2bJyUJbLX6oYb/22YOA7QIzE=; 
+	b=OTs1CxtkcufyquRlMA3AhY4I/ehCeO8a77ex6dECwBRISDWtDwMTUTKevCghOje3b6F7GsxEA82+HmIxIYFVov8Ts7oa5IT0oINklAD4YrReKq99NQxkGMrcgxoggqECn3JLvk1QcXAWv6nPhEGOx9Uj/86BqCsRaA5ZbNH4WNQ=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1765278914;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1765278902;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
 	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=Dc/9047WZIfthGrC5w9XvBmK2nntzK36OcINQIL7+aQ=;
-	b=BepV4pyNErFKMl+Bpo87+6PAVX5DCwibNKEiHV02sHM6Vm0+MFZ5B60AeCwzMbjN
-	imFPUAK/f1ByOltqyPUyBcA6VKlBLqore8T2bjo2/vspKBwpGDAg6A82Ydp4rpHgKQt
-	SAwpRtspcFvWaFGGNcKtY9UQvav+Y9D1F/15ehxQ=
-Received: by mx.zohomail.com with SMTPS id 1765278913254748.0512620367256;
-	Tue, 9 Dec 2025 03:15:13 -0800 (PST)
+	bh=Yix2VtVAthNOkhvZWCl2bJyUJbLX6oYb/22YOA7QIzE=;
+	b=hgfjnUwKg4ZYtlC9LS6jxO/Qe9EYMeD+GLooSCAcVT65Ywz65E6T6IM/gmlj6pnj
+	XZAw1w58abuhIGuIxy3Hl+2vj/UdDTdk/oyqX9kypzHB5jT7OensadB3VBFj3ITu8K6
+	iZiayudZcqRaQlCM4Fbl5cpEIgDwzWghtWidITKw=
+Received: by mx.zohomail.com with SMTPS id 1765278900902951.2741005817111;
+	Tue, 9 Dec 2025 03:15:00 -0800 (PST)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Tue, 09 Dec 2025 12:14:19 +0100
-Subject: [PATCH v3 6/8] drm/rockchip: vop2: Enforce AFBC transform stride
- align in plane_check
+Date: Tue, 09 Dec 2025 12:14:16 +0100
+Subject: [PATCH v3 3/8] drm/rockchip: vop2: Fix Esmart test condition
 MIME-Version: 1.0
-Message-Id: <20251209-vop2-atomic-fixups-v3-6-07c48f0f1f0d@collabora.com>
+Message-Id: <20251209-vop2-atomic-fixups-v3-3-07c48f0f1f0d@collabora.com>
 References: <20251209-vop2-atomic-fixups-v3-0-07c48f0f1f0d@collabora.com>
 In-Reply-To: <20251209-vop2-atomic-fixups-v3-0-07c48f0f1f0d@collabora.com>
 To: Chaoyi Chen <chaoyi.chen@rock-chips.com>, 
@@ -67,8 +66,8 @@ Cc: Daniel Stone <daniels@collabora.com>, dri-devel@lists.freedesktop.org,
  Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251209_031542_838147_4A0A3A45 
-X-CRM114-Status: GOOD (  10.06  )
+X-CRM114-CacheID: sfid-20251209_031543_264632_A7B32EC9 
+X-CRM114-Status: GOOD (  10.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,45 +86,38 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Daniel Stone <daniels@collabora.com>
 
-Make sure we can't break the hardware by requesting an unsupported
-configuration.
+If we want to find out if a window is Esmart or not, test for not being
+a cluster window, rather than AFBDC presence.
+
+No functional effect as only cluster windows support AFBC decode.
 
 Signed-off-by: Daniel Stone <daniels@collabora.com>
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 12 +++++++++---
- 1 file changed, 9 insertions(+), 3 deletions(-)
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 10 ++++------
+ 1 file changed, 4 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index a029ed73dda7..337b01ed29a6 100644
+index 81b3eba07095..9d715d7659af 100644
 --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
 +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -1083,6 +1083,15 @@ static int vop2_plane_atomic_check(struct drm_plane *plane,
- 		return -EINVAL;
+@@ -1230,12 +1230,10 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
+ 	 * This is workaround solution for IC design:
+ 	 * esmart can't support scale down when src_w % 16 == 1.
+ 	 */
+-	if (!(win->data->feature & WIN_FEATURE_AFBDC)) {
+-		if (src_w > dsp_w && (src_w & 0xf) == 1) {
+-			drm_dbg_kms(vop2->drm, "vp%d %s act_w[%d] MODE 16 == 1\n",
+-				    vp->id, win->data->name, src_w);
+-			src_w -= 1;
+-		}
++	if (!vop2_cluster_window(win) && src_w > dsp_w && (src_w & 1)) {
++		drm_dbg_kms(vop2->drm, "vp%d %s act_w[%d] MODE 16 == 1\n",
++			    vp->id, win->data->name, src_w);
++		src_w -= 1;
  	}
  
-+	if (drm_is_afbc(fb->modifier) &&
-+	    pstate->rotation &
-+		(DRM_MODE_REFLECT_X | DRM_MODE_ROTATE_90 | DRM_MODE_ROTATE_270) &&
-+	    (fb->pitches[0] << 3) / vop2_get_bpp(fb->format) % 64) {
-+		drm_dbg_kms(vop2->drm,
-+			    "AFBC buffers must be 64-byte aligned for horizontal rotation or mirroring\n");
-+		return -EINVAL;
-+	}
-+
- 	return 0;
- }
- 
-@@ -1290,9 +1299,6 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
- 		 * with WIN_VIR_STRIDE.
- 		 */
- 		stride = (fb->pitches[0] << 3) / bpp;
--		if ((stride & 0x3f) && (xmirror || rotate_90 || rotate_270))
--			drm_dbg_kms(vop2->drm, "vp%d %s stride[%d] not 64 pixel aligned\n",
--				    vp->id, win->data->name, stride);
- 
- 		 /* It's for head stride, each head size is 16 byte */
- 		stride = ALIGN(stride, block_w) / block_w * 16;
+ 	if (afbc_en && src_w % 4) {
 
 -- 
 2.52.0
