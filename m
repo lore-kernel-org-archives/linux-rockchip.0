@@ -4,70 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C4A5D3B7F3
-	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Dec 2025 11:15:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E482CD1CDC6
+	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Dec 2025 11:34:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Q/HrwO7XuqZU7UKqCEdxEZIVtnZ/Cn8kHvlEg4u1sug=; b=1/aA9fPLxmyrXF
-	+4W/5Lyf/pNlRz+5eo6n07iqgni6NDkSypOsf6ZSt3lHaEkhdP2ihIWV6EuTguNDtNwJuhtPltDQa
-	pwSF2Z7B/FBWWtOykhawUDpFcMv0And50o79HkXk+KsL4VCHAeI4fuQueGh3ZFFs13X+Cz13QjP0o
-	J59oEf2zT4CUJGXELAe/93c1RQJc1eWPWSLTVwjiSQPCKuUJf9+MQSUMDNPVu359kl7LfZQ6uVpbV
-	mope6UiJsHPi18GEY4irzNLoUK0c0do4m3CoaL+Zwyxv32sIOl2ZX1ugBO+MrTkc+kJJED9AqDO4b
-	EFaU5NDq5+jalWBlGN/g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=EAP9Lr8TMsAatFbAmzgCvYfU07BYIL8WbkreCaKngDc=; b=OngKNUWjIh0WFd
+	7C5GOJj5+ocO3r0EtGbsp7qnH6XOsBWgylXNK671rJc76sJTZqubLRoJiwg0+TonJULxRJRop7Y2r
+	nV476BxnF0Kv5MOuSkMrA5GqS4sOOCXOtH7wqLkQ+Vowl6+7mvE8p9SFUGShU7QX29KnYIq4Nlq+w
+	CD/moHvngDmU9yjS4gG5+Fl5stpVrUqgA06C6deL6WfWLh7PlTk6Xaw0IuxWXk9rRpqLwz386AAO7
+	oSHKoWGKxGVApJaOxc/ka1toNm9AQHTCs/vUQd7IMbsJJESQl5+INzuqbzB4Vx0BP3u4571NXlqnC
+	KLD184vvw4IxzeZDPEpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vSvh9-0000000EAHc-1Xgd;
-	Tue, 09 Dec 2025 11:15:51 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1vSvyv-0000000EBvW-2c5w;
+	Tue, 09 Dec 2025 11:34:13 +0000
+Received: from smtp21.cstnet.cn ([159.226.251.21] helo=cstnet.cn)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vSvh2-0000000EA8J-056k;
-	Tue, 09 Dec 2025 11:15:46 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1765278918; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=M/O43k2hYGpfnvnTH3+QLd+z/1WOPyPdc8xtPcABXMwiYkaq1g9SqQEaquGczbpdeL2uKrjarGrx4MAU1Pavo7YZ48dj6GcLyP652BVHlS1Nl4PZz8/UHfHQQwYl/b58Qy2Dz20KgbfEUDaBLytPOW8kGtT6lT1Q9skhmuC8yOg=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1765278918; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=CS0QxKNP3vOnv8q3yaF11BPDVZZzculrxSbgljutXxk=; 
-	b=YbVx0fTb121vjUNWXOPU4JAHzUqTS51aW2mXln7st6qrYiOQwaHcNqwSXyZfJXrovZFW4qIagRZ9KRKY38S+fRIh/cNrcKsQ+y0NV3EchdfLYHJgADAct4HKQHywG95QUBtHdJyn7qBjL7lkr/1oCbK9iaR5SBbCiHiz2Akq1Fs=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1765278918;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=CS0QxKNP3vOnv8q3yaF11BPDVZZzculrxSbgljutXxk=;
-	b=jSBSe9/bwG0kWjdRrLCBGvuWjTMaTDv9/2AGOnZiW6rT7zcKnH217cm32MPYKOdO
-	4AsftTnRt1S4CaVYdm8ZYe0DiUUtuuQb/n/LIuQlwCYfNmgd4bfE/mdvH1cQx70JD/7
-	M3QrWRPqliYlyc5eH5xt3VUvpPA13/gZ3N0mfjQg=
-Received: by mx.zohomail.com with SMTPS id 1765278917298884.6425701616823;
-	Tue, 9 Dec 2025 03:15:17 -0800 (PST)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Tue, 09 Dec 2025 12:14:20 +0100
-Subject: [PATCH v3 7/8] drm/rockchip: vop2: Use drm_is_afbc helper function
+	id 1vSvyr-0000000EBuN-07mH;
+	Tue, 09 Dec 2025 11:34:11 +0000
+Received: from DESKTOP-L0HPE2S (unknown [124.16.141.245])
+	by APP-01 (Coremail) with SMTP id qwCowAAn0m0kCThpIsQYAA--.10785S2;
+	Tue, 09 Dec 2025 19:33:58 +0800 (CST)
+From: Haotian Zhang <vulab@iscas.ac.cn>
+To: Joerg Roedel <joro@8bytes.org>,
+	Will Deacon <will@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: Robin Murphy <robin.murphy@arm.com>,
+	iommu@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Haotian Zhang <vulab@iscas.ac.cn>
+Subject: [PATCH] iommu/rockchip: Check of_find_device_by_node() return value
+Date: Tue,  9 Dec 2025 19:33:32 +0800
+Message-ID: <20251209113333.1086-1-vulab@iscas.ac.cn>
+X-Mailer: git-send-email 2.50.1.windows.1
 MIME-Version: 1.0
-Message-Id: <20251209-vop2-atomic-fixups-v3-7-07c48f0f1f0d@collabora.com>
-References: <20251209-vop2-atomic-fixups-v3-0-07c48f0f1f0d@collabora.com>
-In-Reply-To: <20251209-vop2-atomic-fixups-v3-0-07c48f0f1f0d@collabora.com>
-To: Chaoyi Chen <chaoyi.chen@rock-chips.com>, 
- Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Andy Yan <andy.yan@rock-chips.com>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>
-Cc: Daniel Stone <daniels@collabora.com>, dri-devel@lists.freedesktop.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, kernel@collabora.com, 
- Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-X-Mailer: b4 0.14.3
+X-CM-TRANSID: qwCowAAn0m0kCThpIsQYAA--.10785S2
+X-Coremail-Antispam: 1UD129KBjvdXoWrZw47tw4xWF1xXr45JFW5KFg_yoWDGrXEgw
+	18ZrnxXr40yFsYkw1qq3429r90kwnFvF13XFWxKw1rtr4DWr4xuryF9rn8XrWUWa12kFy7
+	tFy29a1fCa4UWjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+	9fnUUIcSsGvfJTRUUUbcAFF20E14v26r4j6ryUM7CY07I20VC2zVCF04k26cxKx2IYs7xG
+	6rWj6s0DM7CIcVAFz4kK6r1j6r18M28lY4IEw2IIxxk0rwA2F7IY1VAKz4vEj48ve4kI8w
+	A2z4x0Y4vE2Ix0cI8IcVAFwI0_Xr0_Ar1l84ACjcxK6xIIjxv20xvEc7CjxVAFwI0_Gr0_
+	Cr1l84ACjcxK6I8E87Iv67AKxVW0oVCq3wA2z4x0Y4vEx4A2jsIEc7CjxVAFwI0_GcCE3s
+	1le2I262IYc4CY6c8Ij28IcVAaY2xG8wAqx4xG64xvF2IEw4CE5I8CrVC2j2WlYx0E2Ix0
+	cI8IcVAFwI0_Jr0_Jr4lYx0Ex4A2jsIE14v26r1j6r4UMcvjeVCFs4IE7xkEbVWUJVW8Jw
+	ACjcxG0xvY0x0EwIxGrwACjI8F5VA0II8E6IAqYI8I648v4I1lc7CjxVAaw2AFwI0_Jw0_
+	GFyl42xK82IYc2Ij64vIr41l4I8I3I0E4IkC6x0Yz7v_Jr0_Gr1lx2IqxVAqx4xG67AKxV
+	WUJVWUGwC20s026x8GjcxK67AKxVWUGVWUWwC2zVAF1VAY17CE14v26r1q6r43MIIYrxkI
+	7VAKI48JMIIF0xvE2Ix0cI8IcVAFwI0_Jr0_JF4lIxAIcVC0I7IYx2IY6xkF7I0E14v26r
+	1j6r4UMIIF0xvE42xK8VAvwI8IcIk0rVWUJVWUCwCI42IY6I8E87Iv67AKxVWUJVW8JwCI
+	42IY6I8E87Iv6xkF7I0E14v26r4j6r4UJbIYCTnIWIevJa73UjIFyTuYvjfUonmRUUUUU
+X-Originating-IP: [124.16.141.245]
+X-CM-SenderInfo: pyxotu46lvutnvoduhdfq/1tbiBwoLA2k35vdwGgAAsg
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251209_031544_202444_A5922584 
-X-CRM114-Status: UNSURE (   9.86  )
+X-CRM114-CacheID: sfid-20251209_033409_449321_55AB9A29 
+X-CRM114-Status: UNSURE (   7.90  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -85,33 +82,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Daniel Stone <daniels@collabora.com>
+rk_iommu_of_xlate() calls of_find_device_by_node() without
+verifying it is non-NULL, which can lead to a NULL pointer
+dereference and crash.
 
-We don't need to do a long open-coded walk here; we can simply check the
-modifier value.
+Add a check for a NULL return from of_find_device_by_node()
+and return -ENODEV upon failure.
 
-Signed-off-by: Daniel Stone <daniels@collabora.com>
-Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Fixes: 5fd577c3eac3 ("iommu/rockchip: Use OF_IOMMU to attach devices automatically")
+Signed-off-by: Haotian Zhang <vulab@iscas.ac.cn>
 ---
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/iommu/rockchip-iommu.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index 337b01ed29a6..ea84aa5c625e 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -1207,7 +1207,7 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
- 		return;
- 	}
+diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
+index 0861dd469bd8..e59d0617574b 100644
+--- a/drivers/iommu/rockchip-iommu.c
++++ b/drivers/iommu/rockchip-iommu.c
+@@ -1153,6 +1153,8 @@ static int rk_iommu_of_xlate(struct device *dev,
+ 	struct rk_iommudata *data;
  
--	afbc_en = rockchip_afbc(plane, fb->modifier);
-+	afbc_en = drm_is_afbc(fb->modifier);
+ 	iommu_dev = of_find_device_by_node(args->np);
++	if (!iommu_dev)
++		return -ENODEV;
  
- 	offset = (src->x1 >> 16) * fb->format->cpp[0];
- 
-
+ 	data = devm_kzalloc(&iommu_dev->dev, sizeof(*data), GFP_KERNEL);
+ 	if (!data)
 -- 
-2.52.0
+2.50.1.windows.1
 
 
 _______________________________________________
