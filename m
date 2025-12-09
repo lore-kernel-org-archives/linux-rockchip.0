@@ -4,71 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB44FD3B7EA
-	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Dec 2025 14:27:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60C1CD1CDC6
+	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Dec 2025 15:04:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=D5FNEmBeqghLuChN9eygdikdDbz4O4yh/9U7DWa+SHI=; b=ahGFWCylzey3VdnXip2AlR+q/X
-	l0ZBGCdCYNT/2Gl66ytnejfeaRhlxVdQc8kZsipqnuR0BF7VG4sBwBqcco4kEmtOrZiBkGa52YoxO
-	+qrDKGGzdOXI0RZSrd401hjfovP+5U/swaLVOkFMZghtN1Pu7+cC0dOXlI45vY73bk9qlEIoj8sKQ
-	fIfafMnAuzJkqhLrpg0G3PZbQ5NzB3Ddtjr4xSIehMin31d/Qj7BY2/rlZSqjLB+KeOUfgKVaUDjj
-	275YJ/S2aquUlHZL7cxyjF6iahhIi2DZ/6QexFPwQF4WWlIg9/yEffdnlXR7SOzM4r3hI8U3ERYSj
-	INWYmhGA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=f0lzbbt61BdQXkI+rJYHfH9khSLE+SPn0Vh8k34eyYQ=; b=tgl/nJv4c5VzJm
+	z3mf2PheEkpizT7D9jF+I4JXeSA7apZmRP9PHpjHnBSXGGn2Uu9cGDeGqNeYk5fTXX/m2HZKCdFaG
+	T4ryWvidB4Tryez6FM7gRIBuhuPj3G6rsDL9Pp+yrh7M1xiO7amuwgL6QihdEhA+nDGDlY3l3hWDL
+	aLXZdXqQmEZt0vO5hEC7gn5O7zK3bi6Fldn5dqf9+8/lJQ6Yxvi7C+ZvmAo0T8T89by5ouvyM073e
+	cXI8AIAiAmgGiJY0Snw42R68Ae29Zl/dunQdHIjgecDHGG3b2w6yhmZrhR7lTjdx/p7GUDEdDaLJg
+	bPN6L/YwVvUz4rl1+KxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vSygg-0000000EP7U-3MtU;
-	Tue, 09 Dec 2025 14:27:34 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vSzGU-0000000EQzw-01VJ;
+	Tue, 09 Dec 2025 15:04:34 +0000
+Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vSygd-0000000EP6s-46dv;
-	Tue, 09 Dec 2025 14:27:33 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 7476843A63;
-	Tue,  9 Dec 2025 14:27:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D0555C4CEF5;
-	Tue,  9 Dec 2025 14:27:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1765290451;
-	bh=+lPRgnywG6DZojNgtg/w1EUgAWRizPCecjzEhDomM3s=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=SRtov+UnCMmffLoCrIS4i3rDRT4jcz+QLcw3NrHCLRnXPGNf1byxWeiSl2eogVxma
-	 r+raXHakZJMJsgoqW9kr6R9waCWB6qY/4XMqZcOj4R6RjgNeuWG+f2Lm9aEZlBfUCw
-	 KLHcoeYAyfv8VBvC9vYuxQvaoIWXIALfwKGFIp9wbP+aZFbbiHk/6IPUm6K/i5QmoX
-	 kKf3umBTwAhvT4a0ULSXFhXNQgEkVkbKlGKh2mWA+megTCQe8ul02RMn63lBaCpYrr
-	 He+mCx0tE1uAYY/8j8ydJaUSmAqRiF+FASTPOsNDzACALIBR0q/Gpm7h9RqDKk1dFh
-	 ZKfL+LRCT6e9A==
-Date: Tue, 9 Dec 2025 15:27:28 +0100
-From: Maxime Ripard <mripard@kernel.org>
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>, 
-	Rodrigo Siqueira <siqueira@igalia.com>, Alex Deucher <alexander.deucher@amd.com>, 
-	Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>, David Airlie <airlied@gmail.com>, 
-	Simona Vetter <simona@ffwll.ch>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, Andrzej Hajda <andrzej.hajda@intel.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Sandy Huang <hjc@rock-chips.com>, 
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
-	Jani Nikula <jani.nikula@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>, 
-	Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, Tvrtko Ursulin <tursulin@ursulin.net>, 
-	Dmitry Baryshkov <lumag@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
-	Rob Herring <robh@kernel.org>, kernel@collabora.com, amd-gfx@lists.freedesktop.org, 
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org
-Subject: Re: [PATCH v5 04/17] drm/bridge: Act on the DRM color format property
-Message-ID: <20251209-smart-oarfish-of-wind-0c1c8b@houat>
-References: <20251128-color-format-v5-0-63e82f1db1e1@collabora.com>
- <20251128-color-format-v5-4-63e82f1db1e1@collabora.com>
+	id 1vSzGR-0000000EQzX-44g2
+	for linux-rockchip@lists.infradead.org;
+	Tue, 09 Dec 2025 15:04:33 +0000
+Received: by mail-pf1-x429.google.com with SMTP id d2e1a72fcca58-7d481452588so443103b3a.3
+        for <linux-rockchip@lists.infradead.org>; Tue, 09 Dec 2025 07:04:31 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1765292671; x=1765897471; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=PfnacZa7lQk1UkoU+10PADVx4NiV/d9RSz8Lvu845xI=;
+        b=f2EL2WCeelo+kHEhO1op9LzkwolO8CD1CUr24AIC2kHmF76qp3Auv/jLCpxC/6YDmS
+         GKJCzdTQ6cdYvMLTAeOFSQv4KHWmhim4MrxeuHAIZ9JarevXsJ8i5nESiSHDI+WoUyeA
+         /wv56YExhcwimyHLfWJ3wPMR5L+SRRNmAuAu5tJC4pNGC99diVWrt2yGhWyp21tfw0e6
+         aYyWSCaa8UyvVPfJ2ViSH7VVm81LeIOIj/2cwoAzNLkDTq00XNDLZchW7MN3EIQzw+tS
+         8XHWbvvOxPcvgk26w/q+ujwv/7MNAYfdCif5/wfq4dnLmKa2wOpHTsyjgB2WW/RifCX/
+         M8nA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1765292671; x=1765897471;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=PfnacZa7lQk1UkoU+10PADVx4NiV/d9RSz8Lvu845xI=;
+        b=VU+Dy9LROYPEMUi4Q0nDet8+Rc1czqwPFzmcAbl6Tmm/O1yvQdWCywTFadkn5WrZY4
+         B4MBSfT38kOYX9P5iFj3vSt8l32/nJb8YUhwq3GG8pFKHV6KhlJB8IwJmpzkbYOVY8CW
+         KI2wN2wFmwmJyYgwMpYJjXKz3GCJObXYQxwPUAco2wgTlFp7vJvgEdNdnUD2gVzPeRsi
+         EX5cxYeDSAphX5j2sJd+gCLZ+Hbm6TWueWt5C0c9L8rpZmLJEq2r7MXR9rfrdO7MFcC7
+         IALwjdPTJWtiP2s6zI9H/n6sxf34UGX8CY2du+13j346byf8oquzqK8urONFfYqsjOdP
+         XpQw==
+X-Forwarded-Encrypted: i=1; AJvYcCXKkvu64snLCXJwS2X+k2bXn4aZnJZAYhcFlheMMjAVEbdJi/ewjdC8mxWzmJ5ql4j2xI497TRn4LJfpMDVcA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwlDMuIknle2U1aAiHzkAF64m+7jkKRIepaDdqiqbqOJ9YEXagE
+	Ey7wSZWPQjqovDlqx5SQyh5K+udZJxcAKNu0crY6Ywz7oE+ggi7M3Ow1
+X-Gm-Gg: ASbGncsIwrGdz/qejnVDrI5LXAs3jwhs25gxR3xnazp/li0yYZJ+1eUf4nanh87/5G6
+	Ytlz/VBav2P52/m3qmT93+rWBXwhYmQDg0uLZPmWbur2Pt52NUSYp9WKPI4tjBJ7m5dqmws5+la
+	3N1Xe4UN85C2KcEfvnYBhMHOJcwn9sHIsK2HhYvCIbBS73To2USmGqC8amNZwYCUYxoST4UF/RI
+	bXMnjaIdqShg1vAoe5ZqKl1qO0Jd4VjcLRjXCZua+fk7qC0xah0cgpnoZL7LcEvQc4KSHIQlici
+	Pe2zmR4qub8GEd//DbZD39OAyr53RMVCIwA/TSnM6r7gSTWKSnGTXehdGXn/5rtzNPWDjXuSwkl
+	ZM6lhJrANMggBRvYhhVUciGWVv7c8xvDd1OROtAPLiBtX0soQgBaI3iUSCPH+/mLrww+xfaVIvP
+	2eLMDiWvI/BrIPc9P1ddE=
+X-Google-Smtp-Source: AGHT+IH6fU4r16kU8MAxX63Y2MbZhh1Vkb7M4IyVPwitFIhNynOKo+wM4p1RzfclauryAhGCHkY8BA==
+X-Received: by 2002:a05:6a00:240f:b0:7ba:13f4:a992 with SMTP id d2e1a72fcca58-7e8c68c6d04mr6571572b3a.5.1765292670382;
+        Tue, 09 Dec 2025 07:04:30 -0800 (PST)
+Received: from ArchLinux ([240e:47e:2e50:e3f:8b77:7554:2025:6aac])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-7e2a0a008e2sm16396684b3a.28.2025.12.09.07.04.25
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 09 Dec 2025 07:04:29 -0800 (PST)
+From: rmxpzlb <rmxpzlb@gmail.com>
+To: sebastian.reichel@collabora.com
+Cc: heiko@sntech.de,
+	linux-kernel@vger.kernel.org,
+	linux-pm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	rmxpzlb@gmail.com,
+	ulf.hansson@linaro.org
+Subject: Re: [PATCH] pmdomain:rockchip: Fix init genpd as GENPD_STATE_ON before regulator ready
+Date: Tue,  9 Dec 2025 23:04:21 +0800
+Message-ID: <20251209150421.2229-1-rmxpzlb@gmail.com>
+X-Mailer: git-send-email 2.52.0
+In-Reply-To: <nokcp3ky37sdonx2kaqnmtr2pdqwoifrtpam7tqqygldl32tec@y2p3tcnd3bxa>
+References: <nokcp3ky37sdonx2kaqnmtr2pdqwoifrtpam7tqqygldl32tec@y2p3tcnd3bxa>
 MIME-Version: 1.0
-In-Reply-To: <20251128-color-format-v5-4-63e82f1db1e1@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251209_062732_077855_55EF1E5B 
-X-CRM114-Status: GOOD (  22.81  )
+X-CRM114-CacheID: sfid-20251209_070432_016056_1CBF0C37 
+X-CRM114-Status: GOOD (  18.15  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,138 +99,92 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0365526906450567879=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+>Hi,
+>> On Fri, Dec 05, 2025 at 02:47:39PM +0800, Frank Zhang wrote:
+>> RK3588_PD_NPU initialize as GENPD_STATE_ON before regulator ready.
+>> rknn_iommu initlized success and suspend RK3588_PD_NPU. When rocket
+>> driver register, it will resume rknn_iommu.
+>> 
+>> If regulator is still not ready at this point, rknn_iommu resume fail,
+>> pm runtime status will be error: -EPROBE_DEFER.
+>> 
+>> This patch check regulator when pmdomain init, if regulator is not ready
+>> or not enabled, power off pmdomain. Consumer device can power on it's
+>> pmdomain after regulator ready
+>> 
+>> Signed-off-by: Frank Zhang <rmxpzlb@gmail.com>
+>> ---
+>>  drivers/pmdomain/rockchip/pm-domains.c | 14 ++++++++++++++
+>>  1 file changed, 14 insertions(+)
+>> 
+>> diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/rockchip/pm-domains.c
+>> index 1955c6d453e4..bc69f5d840e6 100644
+>> --- a/drivers/pmdomain/rockchip/pm-domains.c
+>> +++ b/drivers/pmdomain/rockchip/pm-domains.c
+>> @@ -659,6 +659,11 @@ static int rockchip_pd_power(struct rockchip_pm_domain *pd, bool power_on)
+>>  	return ret;
+>>  }
+>>  
+>> +static bool rockchip_pd_regulator_is_enabled(struct rockchip_pm_domain *pd)
+>> +{
+>> +	return IS_ERR_OR_NULL(pd->supply) ? false : regulator_is_enabled(pd->supply);
+>> +}
+>> +
+>>  static int rockchip_pd_regulator_disable(struct rockchip_pm_domain *pd)
+>>  {
+>>  	return IS_ERR_OR_NULL(pd->supply) ? 0 : regulator_disable(pd->supply);
+>> @@ -861,6 +866,15 @@ static int rockchip_pm_add_one_domain(struct rockchip_pmu *pmu,
+>>  		pd->genpd.name = pd->info->name;
+>>  	else
+>>  		pd->genpd.name = kbasename(node->full_name);
+>> +
+>> +	if (pd->info->need_regulator) {
+>> +		if (IS_ERR_OR_NULL(pd->supply))
+>> +			pd->supply = devm_of_regulator_get(pmu->dev, pd->node, "domain");
+>> +
+>> +		if (!rockchip_pd_regulator_is_enabled(pd))
+>> +			rockchip_pd_power(pd, false);
+>> +	}
+>
+>It is extremly unlikely, that you will be able to get the regulator
+>at driver probe time. The typical regulator for NPU or GPU is
+>connected via SPI or I2C, which will only be available after the
+>power domain driver has been probed. So I suppose this could be
+>simplified as:
+>
+>--------------------------------------------
+>/*
+> * power domain's needing a regulator should default to off, since
+> * the regulator state is unknown at probe time. Also the regulator
+> * state cannot be checked, since that usually requires IP needing
+> * (a different) power domain.
+> */
+>if (pd->info->need_regulator)
+>    rockchip_pd_power(pd, false);
+>--------------------------------------------
+>
+>I think the proper fix would be to add support for registering the
+>regulator needing power-domain's delayed and then enforce requesting
+>the regulator at probe time. That's not trivial to implement, though.
+>
+>Greetings,
+>
+>-- Sebastian
+>
+>> +
+>>  	pd->genpd.power_off = rockchip_pd_power_off;
+>>  	pd->genpd.power_on = rockchip_pd_power_on;
+>>  	pd->genpd.attach_dev = rockchip_pd_attach_dev;
 
---===============0365526906450567879==
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="6swa32l4wvcewsqj"
-Content-Disposition: inline
-
-
---6swa32l4wvcewsqj
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v5 04/17] drm/bridge: Act on the DRM color format property
-MIME-Version: 1.0
-
-Hi,
-
-On Fri, Nov 28, 2025 at 10:05:40PM +0100, Nicolas Frattaroli wrote:
-> The new DRM color format property allows userspace to request a specific
-> color format on a connector. In turn, this fills the connector state's
-> color_format member to switch color formats.
->=20
-> Make drm_bridges consider the color_format set in the connector state
-> during the atomic bridge check. Specifically, reject any output bus
-> formats that do not correspond to the requested color format.
->=20
-> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> ---
->  drivers/gpu/drm/drm_bridge.c | 45 ++++++++++++++++++++++++++++++++++++++=
-++++++
->  1 file changed, 45 insertions(+)
->=20
-> diff --git a/drivers/gpu/drm/drm_bridge.c b/drivers/gpu/drm/drm_bridge.c
-> index 8f355df883d8..8aac9747f35e 100644
-> --- a/drivers/gpu/drm/drm_bridge.c
-> +++ b/drivers/gpu/drm/drm_bridge.c
-> @@ -1052,6 +1052,47 @@ static int select_bus_fmt_recursive(struct drm_bri=
-dge *first_bridge,
->  	return ret;
->  }
-> =20
-> +static bool __pure bus_format_is_color_fmt(u32 bus_fmt, enum drm_color_f=
-ormat fmt)
-> +{
-> +	if (fmt =3D=3D DRM_COLOR_FORMAT_AUTO)
-> +		return true;
-> +
-> +	switch (bus_fmt) {
-> +	case MEDIA_BUS_FMT_FIXED:
-> +		return true;
-> +	case MEDIA_BUS_FMT_RGB888_1X24:
-> +	case MEDIA_BUS_FMT_RGB101010_1X30:
-> +	case MEDIA_BUS_FMT_RGB121212_1X36:
-> +	case MEDIA_BUS_FMT_RGB161616_1X48:
-> +		return fmt =3D=3D DRM_COLOR_FORMAT_RGB444;
-> +	case MEDIA_BUS_FMT_YUV8_1X24:
-> +	case MEDIA_BUS_FMT_YUV10_1X30:
-> +	case MEDIA_BUS_FMT_YUV12_1X36:
-> +	case MEDIA_BUS_FMT_YUV16_1X48:
-> +		return fmt =3D=3D DRM_COLOR_FORMAT_YCBCR444;
-> +	case MEDIA_BUS_FMT_UYVY8_1X16:
-> +	case MEDIA_BUS_FMT_VYUY8_1X16:
-> +	case MEDIA_BUS_FMT_YUYV8_1X16:
-> +	case MEDIA_BUS_FMT_YVYU8_1X16:
-> +	case MEDIA_BUS_FMT_UYVY10_1X20:
-> +	case MEDIA_BUS_FMT_YUYV10_1X20:
-> +	case MEDIA_BUS_FMT_VYUY10_1X20:
-> +	case MEDIA_BUS_FMT_YVYU10_1X20:
-> +	case MEDIA_BUS_FMT_UYVY12_1X24:
-> +	case MEDIA_BUS_FMT_VYUY12_1X24:
-> +	case MEDIA_BUS_FMT_YUYV12_1X24:
-> +	case MEDIA_BUS_FMT_YVYU12_1X24:
-> +		return fmt =3D=3D DRM_COLOR_FORMAT_YCBCR422;
-> +	case MEDIA_BUS_FMT_UYYVYY8_0_5X24:
-> +	case MEDIA_BUS_FMT_UYYVYY10_0_5X30:
-> +	case MEDIA_BUS_FMT_UYYVYY12_0_5X36:
-> +	case MEDIA_BUS_FMT_UYYVYY16_0_5X48:
-> +		return fmt =3D=3D DRM_COLOR_FORMAT_YCBCR420;
-> +	default:
-> +		return false;
-> +	}
-> +}
-> +
->  /*
->   * This function is called by &drm_atomic_bridge_chain_check() just befo=
-re
->   * calling &drm_bridge_funcs.atomic_check() on all elements of the chain.
-> @@ -1137,6 +1178,10 @@ drm_atomic_bridge_chain_select_bus_fmts(struct drm=
-_bridge *bridge,
->  	}
-> =20
->  	for (i =3D 0; i < num_out_bus_fmts; i++) {
-> +		if (!bus_format_is_color_fmt(out_bus_fmts[i], conn_state->color_format=
-)) {
-> +			ret =3D -ENOTSUPP;
-> +			continue;
-> +		}
-
-Sorry, I'm struggling a bit to understand how this would work if a bridge b=
-oth supports the bus
-format selection and HDMI state helpers? Can you expand on it?
-
-Maxime
-
---6swa32l4wvcewsqj
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCaTgx0AAKCRAnX84Zoj2+
-dn+pAXoCEBIzb4PrpgMd2asQag4DZBJm2omA/DY2ArLCM7xiNnTD+fG+t5BxdhGx
-GQRfoUIBfAgis2VsEMDW4zY+ZyEGiWuYG8gnFhPFvpM4lZ57Re+WJ6smQKDAUbwk
-gtuqKr0cjA==
-=HGyp
------END PGP SIGNATURE-----
-
---6swa32l4wvcewsqj--
-
-
---===============0365526906450567879==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Thanks for your comment. This simplification is OK for me.
+I will test and send new patch.
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============0365526906450567879==--
-
