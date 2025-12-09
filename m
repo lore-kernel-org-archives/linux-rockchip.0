@@ -4,68 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E482CD1CDC6
-	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Dec 2025 11:34:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20C9FD3B7EA
+	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Dec 2025 11:44:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=EAP9Lr8TMsAatFbAmzgCvYfU07BYIL8WbkreCaKngDc=; b=OngKNUWjIh0WFd
-	7C5GOJj5+ocO3r0EtGbsp7qnH6XOsBWgylXNK671rJc76sJTZqubLRoJiwg0+TonJULxRJRop7Y2r
-	nV476BxnF0Kv5MOuSkMrA5GqS4sOOCXOtH7wqLkQ+Vowl6+7mvE8p9SFUGShU7QX29KnYIq4Nlq+w
-	CD/moHvngDmU9yjS4gG5+Fl5stpVrUqgA06C6deL6WfWLh7PlTk6Xaw0IuxWXk9rRpqLwz386AAO7
-	oSHKoWGKxGVApJaOxc/ka1toNm9AQHTCs/vUQd7IMbsJJESQl5+INzuqbzB4Vx0BP3u4571NXlqnC
-	KLD184vvw4IxzeZDPEpg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=80RmX7gbdW2RU/rz73TkDoZkQNpsBNFNu3szOFil8JE=; b=CnCSWOualoPSoi
+	yeu6S9IfX5BBdytSiuXX4AIeF0roOVNY4X0NJDQrWtAVnT8i8EDtdS/7aVzDiDPvvjX1d6QimFgah
+	jo0nl+YMZ52oPMFS2/UgYwIjkEJ6l1RAI+hcQFjDGezztqoC2Zshoaes48D3zmwYj7UNHBFbZmQrh
+	xPitnJ19IFTmxoRwYsraerZNpZe7zd5jbYlLz9znxt2qoVmMdy14wBifpNJr6Lwo4+79zzOQoSe1E
+	HR/hBNHojKHbCiGZTOOLYMLgpPDUnKNUCdswXJxwQfnbhNYK4rQB9TtzK7ymz5/F5M5Km1CgN/R+3
+	/u9Ccun97n8s1+AmWrAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vSvyv-0000000EBvW-2c5w;
-	Tue, 09 Dec 2025 11:34:13 +0000
-Received: from smtp21.cstnet.cn ([159.226.251.21] helo=cstnet.cn)
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vSvyr-0000000EBuN-07mH;
-	Tue, 09 Dec 2025 11:34:11 +0000
-Received: from DESKTOP-L0HPE2S (unknown [124.16.141.245])
-	by APP-01 (Coremail) with SMTP id qwCowAAn0m0kCThpIsQYAA--.10785S2;
-	Tue, 09 Dec 2025 19:33:58 +0800 (CST)
-From: Haotian Zhang <vulab@iscas.ac.cn>
-To: Joerg Roedel <joro@8bytes.org>,
-	Will Deacon <will@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Robin Murphy <robin.murphy@arm.com>,
-	iommu@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Haotian Zhang <vulab@iscas.ac.cn>
-Subject: [PATCH] iommu/rockchip: Check of_find_device_by_node() return value
-Date: Tue,  9 Dec 2025 19:33:32 +0800
-Message-ID: <20251209113333.1086-1-vulab@iscas.ac.cn>
-X-Mailer: git-send-email 2.50.1.windows.1
+	id 1vSw8R-0000000ECkt-2P4v;
+	Tue, 09 Dec 2025 11:44:03 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vSw8O-0000000ECkB-3rQc;
+	Tue, 09 Dec 2025 11:44:02 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 1583A1691;
+	Tue,  9 Dec 2025 03:43:52 -0800 (PST)
+Received: from [10.57.46.210] (unknown [10.57.46.210])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id D19653F762;
+	Tue,  9 Dec 2025 03:43:57 -0800 (PST)
+Message-ID: <e22ea775-84e3-4116-a81a-52031be9f176@arm.com>
+Date: Tue, 9 Dec 2025 11:43:55 +0000
 MIME-Version: 1.0
-X-CM-TRANSID: qwCowAAn0m0kCThpIsQYAA--.10785S2
-X-Coremail-Antispam: 1UD129KBjvdXoWrZw47tw4xWF1xXr45JFW5KFg_yoWDGrXEgw
-	18ZrnxXr40yFsYkw1qq3429r90kwnFvF13XFWxKw1rtr4DWr4xuryF9rn8XrWUWa12kFy7
-	tFy29a1fCa4UWjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
-	9fnUUIcSsGvfJTRUUUbcAFF20E14v26r4j6ryUM7CY07I20VC2zVCF04k26cxKx2IYs7xG
-	6rWj6s0DM7CIcVAFz4kK6r1j6r18M28lY4IEw2IIxxk0rwA2F7IY1VAKz4vEj48ve4kI8w
-	A2z4x0Y4vE2Ix0cI8IcVAFwI0_Xr0_Ar1l84ACjcxK6xIIjxv20xvEc7CjxVAFwI0_Gr0_
-	Cr1l84ACjcxK6I8E87Iv67AKxVW0oVCq3wA2z4x0Y4vEx4A2jsIEc7CjxVAFwI0_GcCE3s
-	1le2I262IYc4CY6c8Ij28IcVAaY2xG8wAqx4xG64xvF2IEw4CE5I8CrVC2j2WlYx0E2Ix0
-	cI8IcVAFwI0_Jr0_Jr4lYx0Ex4A2jsIE14v26r1j6r4UMcvjeVCFs4IE7xkEbVWUJVW8Jw
-	ACjcxG0xvY0x0EwIxGrwACjI8F5VA0II8E6IAqYI8I648v4I1lc7CjxVAaw2AFwI0_Jw0_
-	GFyl42xK82IYc2Ij64vIr41l4I8I3I0E4IkC6x0Yz7v_Jr0_Gr1lx2IqxVAqx4xG67AKxV
-	WUJVWUGwC20s026x8GjcxK67AKxVWUGVWUWwC2zVAF1VAY17CE14v26r1q6r43MIIYrxkI
-	7VAKI48JMIIF0xvE2Ix0cI8IcVAFwI0_Jr0_JF4lIxAIcVC0I7IYx2IY6xkF7I0E14v26r
-	1j6r4UMIIF0xvE42xK8VAvwI8IcIk0rVWUJVWUCwCI42IY6I8E87Iv67AKxVWUJVW8JwCI
-	42IY6I8E87Iv6xkF7I0E14v26r4j6r4UJbIYCTnIWIevJa73UjIFyTuYvjfUonmRUUUUU
-X-Originating-IP: [124.16.141.245]
-X-CM-SenderInfo: pyxotu46lvutnvoduhdfq/1tbiBwoLA2k35vdwGgAAsg
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] iommu/rockchip: Check of_find_device_by_node() return
+ value
+To: Haotian Zhang <vulab@iscas.ac.cn>, Joerg Roedel <joro@8bytes.org>,
+ Will Deacon <will@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: iommu@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20251209113333.1086-1-vulab@iscas.ac.cn>
+From: Robin Murphy <robin.murphy@arm.com>
+Content-Language: en-GB
+In-Reply-To: <20251209113333.1086-1-vulab@iscas.ac.cn>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251209_033409_449321_55AB9A29 
-X-CRM114-Status: UNSURE (   7.90  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251209_034401_010972_B027CE1A 
+X-CRM114-Status: GOOD (  14.94  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,39 +60,48 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-rk_iommu_of_xlate() calls of_find_device_by_node() without
-verifying it is non-NULL, which can lead to a NULL pointer
-dereference and crash.
+On 2025-12-09 11:33 am, Haotian Zhang wrote:
+> rk_iommu_of_xlate() calls of_find_device_by_node() without
+> verifying it is non-NULL, which can lead to a NULL pointer
+> dereference and crash.
 
-Add a check for a NULL return from of_find_device_by_node()
-and return -ENODEV upon failure.
+No, it can't. Please look at how of_xlate is called - at this point we 
+are looking up the IOMMU device, which has a driver bound to it, which 
+has registered ops against this of_node that are the only way to reach 
+this function in the first place. If the device could have somehow 
+disappeared from underneath an active driver, this potential crash is 
+the least of the kernel's worries...
 
-Fixes: 5fd577c3eac3 ("iommu/rockchip: Use OF_IOMMU to attach devices automatically")
-Signed-off-by: Haotian Zhang <vulab@iscas.ac.cn>
----
- drivers/iommu/rockchip-iommu.c | 2 ++
- 1 file changed, 2 insertions(+)
+Thanks,
+Robin.
 
-diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
-index 0861dd469bd8..e59d0617574b 100644
---- a/drivers/iommu/rockchip-iommu.c
-+++ b/drivers/iommu/rockchip-iommu.c
-@@ -1153,6 +1153,8 @@ static int rk_iommu_of_xlate(struct device *dev,
- 	struct rk_iommudata *data;
- 
- 	iommu_dev = of_find_device_by_node(args->np);
-+	if (!iommu_dev)
-+		return -ENODEV;
- 
- 	data = devm_kzalloc(&iommu_dev->dev, sizeof(*data), GFP_KERNEL);
- 	if (!data)
--- 
-2.50.1.windows.1
+> Add a check for a NULL return from of_find_device_by_node()
+> and return -ENODEV upon failure.
+> 
+> Fixes: 5fd577c3eac3 ("iommu/rockchip: Use OF_IOMMU to attach devices automatically")
+> Signed-off-by: Haotian Zhang <vulab@iscas.ac.cn>
+> ---
+>   drivers/iommu/rockchip-iommu.c | 2 ++
+>   1 file changed, 2 insertions(+)
+> 
+> diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
+> index 0861dd469bd8..e59d0617574b 100644
+> --- a/drivers/iommu/rockchip-iommu.c
+> +++ b/drivers/iommu/rockchip-iommu.c
+> @@ -1153,6 +1153,8 @@ static int rk_iommu_of_xlate(struct device *dev,
+>   	struct rk_iommudata *data;
+>   
+>   	iommu_dev = of_find_device_by_node(args->np);
+> +	if (!iommu_dev)
+> +		return -ENODEV;
+>   
+>   	data = devm_kzalloc(&iommu_dev->dev, sizeof(*data), GFP_KERNEL);
+>   	if (!data)
 
 
 _______________________________________________
