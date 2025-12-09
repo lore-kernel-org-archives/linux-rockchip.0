@@ -4,76 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55919D3B7EA
-	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Dec 2025 19:45:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A936D3B7EA
+	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Dec 2025 05:13:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=91i0dZ4vvuuXjGr8OxNeDvA/vn7NiYanOFCvYO9P0nM=; b=snQSz/I1L17uI3HTUifhiMFGQC
-	GjUQe7uFzXnfvIwNZekAhiXP8h2yKo8UYom8E31IUGNUMpqXPae13bCeotAC+ijLP+NvIMdcMU5lD
-	wBekfui1k/HlDc7HydzX0LB1gRtgw5EU3Nl63fQ5bvzSNHSySAxgDDqg+iKeSPNypYYBk6Q02NBv5
-	GWi9is99WnTR5z+71HrVE6wnKEmeRxG/opFwoQaUOCua23ATf1bY/m3gduRfkYE9yFCEG2I3DtTYC
-	kQl/6VsZWolbsVPshpDCu4XhkCXIsFTrbbjFfw5TnnViju9t/e2v2y7HMe974y8Pybizd1JCzKe30
-	A+DbJmqQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=uiVWKsjnsUPjXtLvQfJSMrkLOuJpASZoV/sJfFos9XA=; b=SoiRqKhICiUO5J
+	ZSQ2BO5tJ6p5ZeegMsRuJNxjdgubwDIoy0W9ZA5bIWJgKKXxSMZKZZA+Tm1WrMVJMGoIbJKjaL9II
+	7TzOziVdDeV7AEf6bMtLSU+h4Y+o6SxvGwCGepPtaSJ4YEncdr/XbQ9qZypKUqQxipQbsyHLJ/mvs
+	gna9YoPZAegGZYKwH1MQ9vuIsnXd03E8tcEKWK8fKjsdbHlB8npUdd4bJ1johBKjAbpo/Akjo4VDV
+	2otQKPYGA1j73zUYktmnuy/KZKDLXZjxqCFDS4IG4lCpLiqVBE+1WLmzfHz3OrYbUgpO3OzHBxQWS
+	/JLvokqAsX/uEssR3mbQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vShAX-0000000DTz5-33da;
-	Mon, 08 Dec 2025 19:45:13 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vSq27-0000000Dphs-04iC;
+	Tue, 09 Dec 2025 05:13:07 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vShAU-0000000DTxy-11Yh;
-	Mon, 08 Dec 2025 19:45:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1765223106;
-	bh=L2dBgg6dJCDDUuZT2kYorlZ02Sm9yxKoUY6fnAroN5U=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=P8+erOnT63XjOq/fKJgUKRW2DYiHThMh33+RMHxkAvxW4MUrM2wYH8s5JkIX4fsE8
-	 UZZBCD/DIReeqaG1C7Q24e6hEfYWfMeHbu1RlZ/ly7xFXDyR2l+SQNFDYXQooh0hYu
-	 EVvY7sXAPf4VpXDnLe5hOZP+GnXy68tixssORNwJ2ZBMterYNnTKx4ohWVapTl0QDx
-	 mbbK754PUsRkImPLtmXFh1nJKUdeBquIoFqlrwvRaJiCuqVCcH1+7JKtR20C++bsif
-	 4eoaaWFtgEKfshJDKAajZLFJcnMyFz5CDs1bUEkSU/Ib8xcRktOXluheYAG2HefmEr
-	 e4MZhE1rA0wTQ==
-Received: from [IPv6:2606:6d00:17:7b4b::c41] (unknown [IPv6:2606:6d00:17:7b4b::c41])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2F54817E0E30;
-	Mon,  8 Dec 2025 20:45:04 +0100 (CET)
-Message-ID: <4545bc3df2592965388aee3f170cce577d8cf538.camel@collabora.com>
-Subject: Re: [PATCH] media: verisilicon: AV1: Fix enable cdef computation
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
-	p.zabel@pengutronix.de, mchehab@kernel.org, heiko@sntech.de,
- hverkuil@kernel.org
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	kernel@collabora.com, amazingfate <liujianfeng1994@gmail.com>
-Date: Mon, 08 Dec 2025 14:45:02 -0500
-In-Reply-To: <20251208095227.19720-1-benjamin.gaignard@collabora.com>
-References: <20251208095227.19720-1-benjamin.gaignard@collabora.com>
-Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
- keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
- /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
- cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
- CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
- abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
- nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
- AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
- smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
- AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
- iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
- ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
- bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
-Organization: Collabora Canada
-User-Agent: Evolution 3.58.2 (3.58.2-1.fc43) 
+	id 1vSq24-0000000DphD-1RS0;
+	Tue, 09 Dec 2025 05:13:05 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id B3D5C41A72;
+	Tue,  9 Dec 2025 05:13:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A6F5DC4CEF5;
+	Tue,  9 Dec 2025 05:13:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1765257183;
+	bh=0UpfkC2c4D2AjDkEHDoWovoe4wrrk4/oR22Da28ye+c=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=sazKFdSWa0wMtDxy+VTYLX992oV+EjaZ4V9qMKEdH/u2iWcnXKlaN3QOSLdC3rTXS
+	 V7i/ydbAZEOzKSABfnWoTg3t5CAD17TT79+d+YZt3Y48MEWjg9BXyRHGyEZ7aPm08f
+	 jS3CnhgQVfhoNBApnFvzWyIAyetvMFf1xi967Bhocjm8A9EgdcJyUDij7x8/EbN1LG
+	 DjBx+gElwCa29Z1FOOUKV1r/Qi83i3DOZY7wDSFg8CXDc7+VcMvyYPt/gPgfVSYTam
+	 ja22DJiLlZ9b+6oRfO0VGbQndTjI4i3+zW6dNr689TKzCpPL1/F/B53fmjVteea7AA
+	 Wc7tfA5ejyUZw==
+Date: Tue, 9 Dec 2025 14:12:59 +0900
+From: Niklas Cassel <cassel@kernel.org>
+To: Krishna Chaitanya Chundru <krishna.chundru@oss.qualcomm.com>
+Cc: Jingoo Han <jingoohan1@gmail.com>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>, FUKAUMI Naoki <naoki@radxa.com>,
+	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org
+Subject: Re: [PATCH v2] PCI: dwc: Make Link Up IRQ logic handle already
+ powered on PCIe switches
+Message-ID: <aTev28wihes6iJqs@dhcp-10-89-81-223>
+References: <20251201063634.4115762-2-cassel@kernel.org>
+ <f1059d5d-3fa5-423a-8093-0e99b65d5f4c@oss.qualcomm.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <f1059d5d-3fa5-423a-8093-0e99b65d5f4c@oss.qualcomm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251208_114510_456981_9FB303EB 
-X-CRM114-Status: GOOD (  17.53  )
+X-CRM114-CacheID: sfid-20251208_211304_424714_528B5153 
+X-CRM114-Status: GOOD (  11.93  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,123 +74,69 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============5926376881931735039=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hello Krishna,
 
---===============5926376881931735039==
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-CybO3avH1GlETVvMet9Z"
+Currently:
+For controllers with Link Up IRQ support, the pci_host_probe() call (which
+will perform PCI Configuration Space reads) is done without any of the
+delays mandated by the PCIe specification.
 
+This seems quite bad.
 
---=-CybO3avH1GlETVvMet9Z
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+A device might not be fully initialized during during the time of these
+PCI Configuration Space reads, but might still return some bogus values
+that are actually different from the Configuration Space reads if done
+after respecting the delays mandated by the PCIe specification.
 
-Hi,
-
-Le lundi 08 d=C3=A9cembre 2025 =C3=A0 10:52 +0100, Benjamin Gaignard a =C3=
-=A9crit=C2=A0:
-> Testing V4L2_AV1_SEQUENCE_FLAG_ENABLE_CDEF flag isn't enough
-> to know if cdef bit has to be set.
-> If any of the used cdef fields isn't zero then we must enable
-> cdef feature on the hardware.
-
-I think the problem goes the other way around.
-
-   If all the fields of the CDEF parameters are zero (which is the default)=
-, then
-   av1_enable_cdef register needs to be unset (despite the
-   V4L2_AV1_SEQUENCE_FLAG_ENABLE_CDEF possibly being set).
-
-Its interesting to note that the other AV1 decoder also ignores this flag.
-Though, I don't have enough data to add something to the doc to try and con=
-vince
-future driver writers to not use it.
-
->=20
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> Fixes: 727a400686a2c ("media: verisilicon: Add Rockchip AV1 decoder")
-
-This is missing:
-
-Reported-by: Jianfeng Liu <liujianfeng1994@gmail.com>
-Link: https://gitlab.freedesktop.org/gstreamer/gstreamer/-/issues/4786
-
-Please also include my Rb in v2 with correct commit message.
-
-Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-
-Nicolas
-
-> ---
-> =C2=A0.../platform/verisilicon/rockchip_vpu981_hw_av1_dec.c=C2=A0 | 10 ++=
-++++++--
-> =C2=A01 file changed, 8 insertions(+), 2 deletions(-)
->=20
-> diff --git a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_de=
-c.c b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
-> index e4703bb6be7c..f4f7cb45b1f1 100644
-> --- a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
-> +++ b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
-> @@ -1396,8 +1396,16 @@ static void rockchip_vpu981_av1_dec_set_cdef(struc=
-t hantro_ctx *ctx)
-> =C2=A0	u16 luma_sec_strength =3D 0;
-> =C2=A0	u32 chroma_pri_strength =3D 0;
-> =C2=A0	u16 chroma_sec_strength =3D 0;
-> +	bool enable_cdef;
-> =C2=A0	int i;
-> =C2=A0
-> +	enable_cdef =3D !(cdef->bits =3D=3D 0 &&
-> +			cdef->damping_minus_3 =3D=3D 0 &&
-> +			cdef->y_pri_strength[0] =3D=3D 0 &&
-> +			cdef->y_sec_strength[0] =3D=3D 0 &&
-> +			cdef->uv_pri_strength[0] =3D=3D 0 &&
-> +			cdef->uv_sec_strength[0] =3D=3D 0);
-> +	hantro_reg_write(vpu, &av1_enable_cdef, enable_cdef);
-> =C2=A0	hantro_reg_write(vpu, &av1_cdef_bits, cdef->bits);
-> =C2=A0	hantro_reg_write(vpu, &av1_cdef_damping, cdef->damping_minus_3);
-> =C2=A0
-> @@ -1953,8 +1961,6 @@ static void rockchip_vpu981_av1_dec_set_parameters(=
-struct hantro_ctx *ctx)
-> =C2=A0			 !!(ctrls->frame->flags & V4L2_AV1_FRAME_FLAG_SHOW_FRAME));
-> =C2=A0	hantro_reg_write(vpu, &av1_switchable_motion_mode,
-> =C2=A0			 !!(ctrls->frame->flags & V4L2_AV1_FRAME_FLAG_IS_MOTION_MODE_SWI=
-TCHABLE));
-> -	hantro_reg_write(vpu, &av1_enable_cdef,
-> -			 !!(ctrls->sequence->flags & V4L2_AV1_SEQUENCE_FLAG_ENABLE_CDEF));
-> =C2=A0	hantro_reg_write(vpu, &av1_allow_masked_compound,
-> =C2=A0			 !!(ctrls->sequence->flags
-> =C2=A0			=C2=A0=C2=A0=C2=A0 & V4L2_AV1_SEQUENCE_FLAG_ENABLE_MASKED_COMPOU=
-ND));
-
---=-CybO3avH1GlETVvMet9Z
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaTcqvgAKCRDZQZRRKWBy
-9Fw5AP92k7QgfKSlxgl6L6eRxBXYU6QZgMFyDbQPvvbAgb1rDAD+J+m7WUxbqCaM
-mvebRnyiQRPjZgOBMwr76Ftkov64/Ag=
-=H8+3
------END PGP SIGNATURE-----
-
---=-CybO3avH1GlETVvMet9Z--
+I think the options are:
+1) Keep the pci_host_probe() call in dw_pcie_host_init() for controllers
+   with Link Up IRQ support, but make sure that we respect the delays also
+   in this case.
+or
+2) Remove the pci_host_probe() call from dw_pcie_host_init(), and make sure
+   that pci_host_probe() is done by the first Link Up IRQ
+   (i.e. what this patch does).
 
 
---===============5926376881931735039==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+One big thing with using the Link Up IRQ is to not do any delay during PCIe
+controller driver's probe(), which reduces startup time, exactly as your
+commit message in commit 36971d6c5a9a ("PCI: qcom: Don't wait for link if
+we can detect Link Up") explains.
+Therefore, I don't think that 1) is a good solution, so that leaves us with
+2).
+
+
+If pwrctrl drivers are created as part of the pci_host_probe() call,
+I think that perhaps an alternative would be to create an explict
+pwrctrl_init() function, and let the PCI controller drivers that actually
+use pwrctrl call that from their probe().
+(And just remove the same from pci_host_probe() ?)
+
+In fact, looking at your suggested patches (that hasn't landed yet):
+[PATCH 3/5] PCI/pwrctrl: Add APIs for explicitly creating and destroying pwrctrl devices
+[PATCH 5/5] PCI/pwrctrl: Switch to the new pwrctrl APIs
+
+https://lore.kernel.org/linux-pci/20251124-pci-pwrctrl-rework-v1-5-78a72627683d@oss.qualcomm.com/
+https://lore.kernel.org/linux-pci/20251124-pci-pwrctrl-rework-v1-3-78a72627683d@oss.qualcomm.com/
+
+Seem to do exactly that:
+Call pci_pwrctrl_create_devices() explicitly from the PCIe controller drivers
+directly, and removes the pci_pwrctrl_create_device() call from pci_host_probe().
+
+So I don't really understand your concern with this series, at least not if
+it goes on top of your series:
+https://lore.kernel.org/linux-pci/20251124-pci-pwrctrl-rework-v1-0-78a72627683d@oss.qualcomm.com/
+
+
+Kind regards,
+Niklas
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============5926376881931735039==--
-
