@@ -4,71 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5909CD1CDC6
-	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Dec 2025 10:59:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 926E6D1CDC6
+	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Dec 2025 11:15:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=x3OLwF4esndUg72Td5VcLJUxTLx7wBwemF717LLR81Y=; b=L4vZVt+Bl+dAK7
-	bp3wVYknwXzR/k2AZRDRjSYNhJnj8ppH0RzAXLMs7RabVDoc/lUAy5fZdLYmzHAMab/el3bTiA6dG
-	PRv84BJarcA2u69BI/R0zW4bj4vuSRNGeR5Wtpg/i9d28vQZd3mx/aOD8m5S+VBN4Rsgr7M1YNEEh
-	8xHLGd5hqnv0/T38u3fe+vH5fMUMJMaV275OqM3bSg66nmiXEUnqIjEeet3PakK8WN7Bs/Db4buGh
-	EsaYnT9229z9PPL6vsOU2ndqIAt5PqWw6erWBioIifxvxs+dVFRtrgT2tXgzhF80MDemiv3irpm8H
-	6i4jFx9q9NobZSFCZ4KQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=cJbuWzaWZrHBY5215FTIH493wakL8RMZaOHD80Nuq8E=; b=QAjUUcgtMWhjiV
+	GkqzJEga45tvZRafmzGDaKUjhEX7N040Kr6In2CopD4pdgxbYpB9p3qKVdJlqb43BPFqN3Qedy0WI
+	uQlMgGlMStPiBNiMCnrxROWsq5lDqDnaUFCFyoIwS63XVcmWnqGNjJMojDqprMuWotfTeZtL9zTfc
+	boY+2pD131cLAecOc8yp4kAar/f/VKSizQZEfD7JkMIVCJ4ektqr2mlibOGq5T28tC43xFWkpw33b
+	8fl+08cHjHgm5WxG3wgcNOpD5to9sMAXjsei6ylVSTdA5wp/6INv0TCgJ5B/vnPgw0brhbj4emoFi
+	DcUmc3uDX8zG9YIVhmsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vSvQs-0000000E8zw-2Xfz;
-	Tue, 09 Dec 2025 10:59:02 +0000
+	id 1vSvgQ-0000000E9t5-3S3X;
+	Tue, 09 Dec 2025 11:15:06 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vSvQp-0000000E8z1-1Zyi;
-	Tue, 09 Dec 2025 10:59:00 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1765277916; cv=none; 
+	id 1vSvgP-0000000E9sd-0N4A;
+	Tue, 09 Dec 2025 11:15:06 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1765278889; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=lTcSUhwM9bSPYwqWhozKXBINV++FZt2VyJhf8bJt42ZsifrbktMSA5v72qJyGZ5G3SzuJVQT+1bWJtPfOblAZI4TE2OwlUtofvpPVSDpSjAHUd7fcpgzY+Ez8jvDRcbjNOY7N15uvIw0hH7Yiq5kR73oFCHlzexEXYjoh9bjazs=
+	b=VhnsPR1rvAoVGWxtOAyZq1HIJCg2B1KjEIpPcmDWwu9iiHNEFksb0RIHkEFzII/DVDkXLLSlKwyw56/r2sEbHvG3EnOcY1gdsM3W6p14tYlkLY/EiBMy+3jZ7LVih8ol2JisVmboNHSzMe+pMy3UE+TYbI8O6MdO691+u69QfJU=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1765277916; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=ZhZ+DMaVFnsaAoNn1u9s946/IX2aY4shp0I0o4Xsl6E=; 
-	b=l92y3mYpv8+dkteFWAOUIWyKoht7QpiuX78ujH21kW14/26WaeOoZBW/Zwl9DEdvJ1g+oR3FFakCVFh6n1xO/jpZdmAo9viaAb7jC1r8Tvvj9ig9Gcth1kSKY8xGYNPHpTCzPRsokUDzbRrAU/e804m6LzSiGhRO5LkHohR+VYo=
+	t=1765278889; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=6/8dkdH3MgNUPOg0FM5uypg5HfcPpMsGkm1+bpgmHdQ=; 
+	b=N4QuVvGYAtYVCh4EPxfd94UptzBXUW62ffbRe5ZZtPPEMnrXh/hxRF+4g2/BlxNtBbepnxMnsVMUazY8l+1SJYU1DbtFxBQIVuAtplJ4iQvIP8I3nOFEYxxOxFJsUiTGnUV3ZtcGa+/y6SFb3/lpErhjVX65KolNMTHCTmQkHWY=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1765277916;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1765278889;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=ZhZ+DMaVFnsaAoNn1u9s946/IX2aY4shp0I0o4Xsl6E=;
-	b=j/29xTmzKJ6tZOl1wo+QnYi+H7Jj84UVpnU2yzjUyxclrWqmOYVp+9H46pB5SSMV
-	0x9DFomx5pT8tBKxJAAGZLH6+S76vMXNJnYU2J5rlKlJvCpIA+gxQulGA0X+ou+cXTQ
-	Oj15G7YM1EDPURUUmsiN8Rso56fanRTYKGm6XOhY=
-Received: by mx.zohomail.com with SMTPS id 1765277913550726.3974170059719;
-	Tue, 9 Dec 2025 02:58:33 -0800 (PST)
+	h=From:From:Subject:Subject:Date:Date:Message-Id:Message-Id:MIME-Version:Content-Type:Content-Transfer-Encoding:To:To:Cc:Cc:Reply-To;
+	bh=6/8dkdH3MgNUPOg0FM5uypg5HfcPpMsGkm1+bpgmHdQ=;
+	b=YdIEMjnYpE3y5Sfui5dALLct/hVlm/SKgagA0xTfOCT66mhSV9PME6EMa5zT+jVF
+	WM1e9uay5ppaJyZ99LDlVhnNWaFyGPOeJUltlTCxSRgPnnvKCrPCAJeeVlTaRjzNk76
+	XKIKcgT8ZzLcQzEkW7aT5UzJzueF5c7LWYKMgC4g=
+Received: by mx.zohomail.com with SMTPS id 1765278888611450.7794900965429;
+	Tue, 9 Dec 2025 03:14:48 -0800 (PST)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: Sandy Huang <hjc@rock-chips.com>,
- Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>,
- Andy Yan <andy.yan@rock-chips.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Chaoyi Chen <chaoyi.chen@rock-chips.com>
-Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, Daniel Stone <daniels@collabora.com>
-Subject: Re: [PATCH v2 5/8] drm/rockchip: vop2: Enforce AFBC source alignment in
- plane_check
-Date: Tue, 09 Dec 2025 11:58:26 +0100
-Message-ID: <8655687.NyiUUSuA9g@workhorse>
-In-Reply-To: <4696988.LvFx2qVVIh@workhorse>
-References: <20251206-vop2-atomic-fixups-v2-0-7fb45bbfbebd@collabora.com>
- <f9f7b446-8575-4f16-aa96-5197b22846e3@rock-chips.com>
- <4696988.LvFx2qVVIh@workhorse>
+Subject: [PATCH v3 0/8] drm/rockchip: No more post-atomic_check fixups
+Date: Tue, 09 Dec 2025 12:14:13 +0100
+Message-Id: <20251209-vop2-atomic-fixups-v3-0-07c48f0f1f0d@collabora.com>
 MIME-Version: 1.0
+X-B4-Tracking: v=1; b=H4sIAIYEOGkC/32OQQ6CMBBFr0Jm7ZharCIr72FYtGWQJkCxLQ2Gc
+ HcruHb5/+S9Pwt4coY8lNkCjqLxxg4p5IcMdCuHJ6GpUwbOuDhxdsFoR44y2N5obMw8jR6Zzhm
+ xW8GaQkACR0fpskkf1Z4dvabkDnsJSnpCbfvehDIbaA748wv4Aq3xwbr39lTkG/FvP3JkeG3UW
+ SjVKFL1Xduuk8o6eUwjUK3r+gHUl+3O6QAAAA==
+X-Change-ID: 20251206-vop2-atomic-fixups-0c30e0980f85
+To: Chaoyi Chen <chaoyi.chen@rock-chips.com>, 
+ Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>
+Cc: Daniel Stone <daniels@collabora.com>, dri-devel@lists.freedesktop.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, kernel@collabora.com, 
+ Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251209_025859_455038_1B072584 
-X-CRM114-Status: GOOD (  33.24  )
+X-CRM114-CacheID: sfid-20251209_031505_175383_6DA9E0F7 
+X-CRM114-Status: GOOD (  20.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,117 +87,83 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Chaoyi Chen, Andy Yan,
+I'm taking over this series to get it across the finish line. Original
+cover letter from Daniel Stone on v1:
 
-On Monday, 8 December 2025 08:24:52 Central European Standard Time Nicolas Frattaroli wrote:
-> On Monday, 8 December 2025 03:48:24 Central European Standard Time Chaoyi Chen wrote:
-> > Hello Nicolas, Daniel,
-> > 
-> > On 12/7/2025 4:45 AM, Nicolas Frattaroli wrote:
-> > > From: Daniel Stone <daniels@collabora.com>
-> > > 
-> > > Planes can only source AFBC framebuffers at multiples of 4px wide on
-> > > RK3566/RK3568. Instead of clipping on all SoCs when the user asks for an
-> > > unaligned source rectangle, reject the configuration in the plane's
-> > > atomic check on RK3566/RK3568 only.
-> > > 
-> > > Signed-off-by: Daniel Stone <daniels@collabora.com>
-> > > [Make RK3566/RK3568 specific, reword message]
-> > > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> > > ---
-> > >  drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 14 +++++++++-----
-> > >  1 file changed, 9 insertions(+), 5 deletions(-)
-> > > 
-> > > diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> > > index bc1ed0ffede0..e23213337104 100644
-> > > --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> > > +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> > > @@ -1076,6 +1076,13 @@ static int vop2_plane_atomic_check(struct drm_plane *plane,
-> > >  		return -EINVAL;
-> > >  	}
-> > >  
-> > > +	if (vop2->version == VOP_VERSION_RK3568 && drm_is_afbc(fb->modifier) && src_w % 4) {
-> > > +		drm_dbg_kms(vop2->drm,
-> > > +			    "AFBC source rectangles must be 4-byte aligned; is %d\n",
-> > > +			    src_w);
-> > > +		return -EINVAL;
-> > > +	}
-> > > +
-> > >  	return 0;
-> > >  }
-> > >  
-> > > @@ -1237,11 +1244,8 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
-> > >  	WARN_ON(src_w < 4);
-> > >  	WARN_ON(src_h < 4);
-> > >  
-> > > -	if (afbc_en && src_w % 4) {
-> > > -		drm_dbg_kms(vop2->drm, "vp%d %s src_w[%d] not 4 pixel aligned\n",
-> > > -			    vp->id, win->data->name, src_w);
-> > > -		src_w = ALIGN_DOWN(src_w, 4);
-> > > -	}
-> > > +	if (vop2->version == VOP_VERSION_RK3568 && drm_is_afbc(fb->modifier))
-> > > +		WARN_ON(src_w % 4);
-> > >  
-> > >  	act_info = (src_h - 1) << 16 | ((src_w - 1) & 0xffff);
-> > >  	dsp_info = (dsp_h - 1) << 16 | ((dsp_w - 1) & 0xffff);
-> > > 
-> > 
-> > You haven't replied to Andy's comment yet [0].
-> > 
-> > [0] https://lore.kernel.org/dri-devel/7b4e26ec.75f3.19a77276b53.Coremail.andyshrk@163.com/
-> > 
+> Hi,
+> This series is a pretty small and consistent one for VOP2. The atomic
+> uAPI very clearly specifies that drivers should either do what userspace
+> requested (on a successful commit), or fail atomic_check if it is not
+> for any reason possible to do what userspace requested.
 > 
-> Hello,
+> VOP2 is unfortunately littered with a bunch of cases where it will apply
+> fixups after atomic_check - doing something different to what userspace
+> requested, e.g. clipping or aligning regions - or throw error messages
+> into the log when userspace does request a condition which can't be met.
 > 
-> I addressed the follow-ups where it was clarified that the 4 pixel
-> limitation was RK3566/RK3568-only. I'm not going to bring back the
-> post-atomic_check modification for a fast path, but I'm open to
-> suggestions on how to do this differently.
+> Doing something different to what was requested is bad because it
+> results in unexpected visual output which can look like artifacts.
+> Throwing errors into the log is bad because generic userspace will
+> reasonably attempt to try any configuration it can. For example,
+> throwing an error message on a plane not being aligned to a 16 pixel
+> boundary can result in 15 frames' worth of error output in the log when
+> a window is being animated across a screen.
 > 
-> One solution might be to modify the state with the ALIGN_DOWN stuff
-> in atomic_check instead, where userspace is then aware of the change
-> being done to its requested parameters. I'll need to double-check
-> whether this is in line with atomic modesetting's design.
+> This series removes all post-check fixups - failing the check if the
+> configuration cannot be applied - and also demotes all messages about
+> unsupported configurations to DEBUG_KMS.
 > 
-> Kind regards,
-> Nicolas Frattaroli
+> Cheers,
+> Daniel
 
-Okay, so I've asked internally, and atomic_check isn't allowed to
-modify any of the parameters either. There's efforts [0] underway
-to allow error codes to be more specific, so that userspace knows
-which constraint is being violated. That would allow userspace
-applications to react by either adjusting their size or turning
-off AFBC in this case. Turning off AFBC seems more generally
-applicable here, since it means it won't need to resize the plane
-and it'll save more than enough memory bandwidth by not going
-through the GPU.
+Changes in v3:
+- Change the AFBC source rectangle debug message to talk about 4-pixel
+  alignment instead of 4-byte alignment.
+- Fix another eSmart->Esmart casing case in a debug message
+- Link to v2: https://lore.kernel.org/r/20251206-vop2-atomic-fixups-v2-0-7fb45bbfbebd@collabora.com
 
-On that note: Andy, I didn't find a weston-simple-egl test in the
-Weston 14.0.2 or git test suite, and weston-simple-egl itself does
-not tell me whether GPU compositing is being used or not. Do you
-have more information on how to test for this? I'd like to know
-for when we have the necessary functionality in place to make
-userspace smart enough to pick the fast path again.
+Changes in v2:
+- Dropped patches [1, 5] as they were already applied.
+- Changed the patch subject to use prefix "drm/rockchip: vop2:" for the
+  remaining ones.
+- Fixed a checkpatch nag about commenting style in "Switch impossible
+  pos conditional to WARN_ON".
+- Reworded "eSmart" to "Esmart" for consistency, and to avoid drawing
+  Tim Apple's ire.
+- Make the hopefully impossible WARN_ON format conditional in
+  vop2_plane_atomic_check still bubble the error up to userspace,
+  instead of continuing on.
+- Use dest_w instead of dsp_w in patch "Enforce scaling workaround
+  in plane_check", to avoid a compiler error.
+- Only reject non-multiple-of-4-pixel-wide framebuffers on
+  RK3566/RK3568, as the other SoCs have no such limitation. (Thank you
+  to Andy Yan for doing the research to confirm this!)
+- Consequently also only WARN_ON if this condition is violated in
+  atomic_update on those SoCs.
+- Link to v1: https://lore.kernel.org/dri-devel/20251015110042.41273-1-daniels@collabora.com/
 
-In either case, I think adhering to the atomic API to ensure
-artifact-free presentation is more important here than enabling
-a fast-path on RK3568. I do think in most real-world use case
-scenarios, the fallback won't degrade user experience, because
-almost everything performance intensive I can think of (video
-playback, games) will likely already use a plane geometry
-where the width is divisible by 4. 800, 1024, 1280, 1600, 1920,
-2560, 3840 are all divisible by 4, so a window or full-screen
-playback of common content won't need to fall back to GPU
-compositing.
+Signed-off-by: Daniel Stone <daniels@collabora.com>
+Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+---
+Daniel Stone (8):
+      drm/rockchip: vop2: Switch impossible format conditional to WARN_ON
+      drm/rockchip: vop2: Switch impossible pos conditional to WARN_ON
+      drm/rockchip: vop2: Fix Esmart test condition
+      drm/rockchip: vop2: Enforce scaling workaround in plane_check
+      drm/rockchip: vop2: Enforce AFBC source alignment in plane_check
+      drm/rockchip: vop2: Enforce AFBC transform stride align in plane_check
+      drm/rockchip: vop2: Use drm_is_afbc helper function
+      drm/rockchip: vop2: Simplify format_mod_supported
 
-I'll send a v2 to fix another instance of "eSmart" left in a
-message, but beyond that I think we should be good.
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 137 ++++++++++++---------------
+ 1 file changed, 62 insertions(+), 75 deletions(-)
+---
+base-commit: 4e5a9b630580faea139e9837b4fba666db6bd728
+change-id: 20251206-vop2-atomic-fixups-0c30e0980f85
 
-Kind regards,
-Nicolas Frattaroli
-
-https://lore.kernel.org/dri-devel/20251009-atomic-v6-0-d209709cc3ba@intel.com/ [0]
-
+Best regards,
+-- 
+Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
 
 _______________________________________________
