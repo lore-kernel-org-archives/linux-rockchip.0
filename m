@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3A35D3B7F3
-	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Dec 2025 12:32:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EAAEAD3B7EA
+	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Dec 2025 12:32:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ecsARE9Wavvv1aTPpQ5lHAtWARiNPxU0r7vVq3CGEQQ=; b=J9xILiokG3AK1D
-	TyVeKkIQNjKY5hDVV1aKzGt8KHb6sMokvC+viIP8HC1zdw/TEK8wO68pT2/TK1FeuL/E6yQzxxtCP
-	sgA58LenVVuiVzd45ySyGdGPXne2oesaBfLOD5ZezwhjKdWkBfAT+xmj65OXAEFeGzCXoMhDJOGUq
-	bIL4vZ3D4OaIEX1tMz8/0O1A83zjWCDw+/2CtUvt/G0JOLE8dJPO0hJPmx21cCgGhD6EvVrFvizz4
-	dE+PxDAXlIFn8QAFf6nLnP31qelYRI9Bjbh4RSlg0kKXQNJ6F8MsDdUkStnRcXGRj8M6ZdUIdMfzn
-	hk7Le4Gw8AqPxVxqb6iA==;
+	List-Owner; bh=VDtrbPPRRGQEljZHhhVwPgJ1VaECCim6XoB6ay2sQk0=; b=zrzmVJCeX2FWsW
+	F9IJiT9p+mcoVvgN75U6FpUbqCgv8Jxb7cGrKVnFFp5xD8g/xpbNtEuMyfZR4tf4Y6DRH7gO+AxvR
+	ka8O7voTQDYUOI5EHEbCvNJQtoRNCia+fKFPVvy0Wl/OoXXjzWT7FLNY5Lil85YCUwoChnNKMWExv
+	eGMaL12iNDTJW+oWApusiIxJ73pJA88UMr3MDYxKU8OkMnGshjWQ9gvqwsweIV+DqiFcuGufKhkbc
+	L1kC3UupvHOgOhw6xLNAHYFr2tP0vB1/YaTuQEe/w9AWyQltsT566OikvczZYZoYj0iCU5QY17AVO
+	4kC0pZntr+H3+tepI3Qw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vSwst-0000000EFRS-2bbm;
-	Tue, 09 Dec 2025 12:32:03 +0000
+	id 1vSwsv-0000000EFTu-0xmK;
+	Tue, 09 Dec 2025 12:32:05 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vSwso-0000000EFJ1-06YT;
-	Tue, 09 Dec 2025 12:31:59 +0000
+	id 1vSwsp-0000000EFKI-2ro4;
+	Tue, 09 Dec 2025 12:32:00 +0000
 Received: from isaac-ThinkPad-T16-Gen-2.infra.iob (cpc89244-aztw30-2-0-cust6594.18-1.cable.virginm.net [86.31.185.195])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id ABD5B89A;
-	Tue,  9 Dec 2025 13:31:55 +0100 (CET)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 53F63A30;
+	Tue,  9 Dec 2025 13:31:57 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1765283516;
-	bh=JrLzcV4fJeWZQJDh36e6v9O37lwUmXTAldwPVMcCne8=;
+	s=mail; t=1765283517;
+	bh=uT+0UkAjXO177URXDBOJe4n6IOs5odTKgpgqrzkTy60=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=voxqRvEOPLyxl/KvsDCbOG8uoQUOODnWQGsOjOUs0rInZP0AfNOkYWXNHw3Isii/M
-	 NSboeL9cqaWny7iBDXM4vA90UrScx5QvTS+xO28HLk6BA3CRGz6UQ0EFmM4i7nyshs
-	 PhANWt8wB905Hs+CPY8D4SheuoUhfnM2C8/x5tPU=
+	b=VWaHCQ/b99ZxsDrWxwWtGnomlXayB3t/iT+Dt9D14rTCdjVx0A6r+Eb0+jAYejmM3
+	 37vg3Bl697mI9qdQzqz7r7z0Z1MRxpn0eoxp7kfMbWzy3EE+/bijEdloqTlGGE6sXW
+	 BKwZ3DIkXSoKsMIfhuuJna++gfqFyqQ8adFXze30=
 From: Isaac Scott <isaac.scott@ideasonboard.com>
 To: dafna@fastmail.com
 Cc: laurent.pinchart@ideasonboard.com,
@@ -46,17 +46,16 @@ Cc: laurent.pinchart@ideasonboard.com,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Isaac Scott <isaac.scott@ideasonboard.com>
-Subject: [RFC PATCH 4/6] media: rkisp1: Set input configuration to data mode in bypass
-Date: Tue,  9 Dec 2025 12:31:34 +0000
-Message-ID: <20251209123136.273938-5-isaac.scott@ideasonboard.com>
+Subject: [RFC PATCH 5/6] media: Propagate sink -> source format in YUV passthough
+Date: Tue,  9 Dec 2025 12:31:35 +0000
+Message-ID: <20251209123136.273938-6-isaac.scott@ideasonboard.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20251209123136.273938-1-isaac.scott@ideasonboard.com>
 References: <20251209123136.273938-1-isaac.scott@ideasonboard.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251209_043158_210534_0548026D 
-X-CRM114-Status: UNSURE (   8.75  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251209_043159_874995_09FFF414 
+X-CRM114-Status: GOOD (  10.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,26 +72,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-For YUV bypass, we should configure the ISP input to interpret incoming
-H/VSYNC signals as data enable / disable. Add this.
+If we are in bypass mode, we should propagate the sink format of the ISP
+to the source format to ensure the pipeline is valid.
 
 Signed-off-by: Isaac Scott <isaac.scott@ideasonboard.com>
 ---
- drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
 diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-index 7c844e00808a..716bd7f3c66d 100644
+index 716bd7f3c66d..c457593526c5 100644
 --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
 +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-@@ -244,6 +244,7 @@ static int rkisp1_config_isp(struct rkisp1_isp *isp,
- 	} else if (sink_fmt->pixel_enc == V4L2_PIXEL_ENC_YUV) {
- 		acq_mult = 2;
- 		if (src_fmt->pixel_enc == V4L2_PIXEL_ENC_YUV) {
-+			isp_ctrl = RKISP1_CIF_ISP_CTRL_ISP_MODE_DATA_MODE;
- 			rkisp1->in_bypass = true;
- 		} else if (mbus_type == V4L2_MBUS_CSI2_DPHY) {
- 			isp_ctrl = RKISP1_CIF_ISP_CTRL_ISP_MODE_ITU601;
+@@ -630,6 +630,11 @@ static void rkisp1_isp_set_src_fmt(struct rkisp1_isp *isp,
+ 	 */
+ 	sink_info = rkisp1_mbus_info_get_by_code(sink_fmt->code);
+ 
++	if (sink_info->pixel_enc == V4L2_PIXEL_ENC_YUV) {
++		format->code = sink_fmt->code;
++		dev_dbg(isp->rkisp1->dev, "ISP sink pad is YUV");
++	}
++
+ 	src_fmt->code = format->code;
+ 	src_info = rkisp1_mbus_info_get_by_code(src_fmt->code);
+ 	if (!src_info || !(src_info->direction & RKISP1_ISP_SD_SRC)) {
 -- 
 2.43.0
 
