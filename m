@@ -4,63 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 628A1D2CE17
-	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Dec 2025 10:48:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 479B9D3C922
+	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Dec 2025 16:01:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GNdmKUgFR70xK2YgIedUFHxSOmvpHgZYGa1LLUc5AcU=; b=hbp3NLeuJdQCpZ
-	q8yZFo8SROHJ4yqfYNk3Iicke3LAxr1ds/TRQm+yequ2UjIVznFrH9WVGnSqUq1ua9lnOx0iBVe47
-	WTe1eSrqUoONvmqpeJcxs3ozfWXsalaUmas1wNmaFvIvwVmppgIv+C6vbhNR6tXCtTMjcG8J1iG4N
-	8hpqOObWqmePI6Ai/A2XXYcIzuqGcP0iBuiUeRFzLPc1hGLl0KPi74uhm3MB76zGh4zSpcpYjynY9
-	NwvZxIUpAuH/pA9n8lAT8kBdQLVnmcVx7DYHs0dQVSIkz2C9O8dAZKfrOl+JaIG6FSgY+BRH7a8CG
-	/XaTsL1274faRjebckBQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=vnYG9psWYIVH/hl9Kc3gOMbHKdX5kPrcaxH31Zhtw2E=; b=HQsQSL6Hir5qX6
+	KFL1Gp5jHLScepFHUi/oEwNoYiwr7o8mk1j1ixFK2DGWSzFEDEbZw8Qm5mhkm8f9V7JmZYJd1D6TG
+	qfv/FWCLsDV+f5S9puEa6yus3FAX4b9T+zkd6VIK65OO6tKfQr64iSZallGRAgcUR0/5CpZG/6zEG
+	bU0Q6hyHR/qczEjJYj6WS78nSBvUlXNiyUF/YOQH/+0pH89L77f9HdaYI6wd+Q81+XCz8ko9qYPQQ
+	x3cYIF6Scq+5j3rzpuJM5032C9prFObNNFxJgZJ/ZWymuWQyLl3xlBGl+GiS5onq2RtHJo0aD7zCD
+	SzNa4Zsw3N8xDWUojwzQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vTHjj-0000000FLfX-0w5I;
-	Wed, 10 Dec 2025 10:47:59 +0000
-Received: from mail-m32101.qiye.163.com ([220.197.32.101])
+	id 1vTMcO-0000000Fb4f-2Jdj;
+	Wed, 10 Dec 2025 16:00:44 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vTHjg-0000000FLey-1sfw;
-	Wed, 10 Dec 2025 10:47:58 +0000
-Received: from [172.16.12.51] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 2cb688fed;
-	Wed, 10 Dec 2025 18:47:43 +0800 (GMT+08:00)
-Message-ID: <e7b2ceaf-1fbd-4f02-9d75-be4feab724e3@rock-chips.com>
-Date: Wed, 10 Dec 2025 18:47:42 +0800
+	id 1vTMcM-0000000Fb45-0SdG
+	for linux-rockchip@lists.infradead.org;
+	Wed, 10 Dec 2025 16:00:43 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1765382430; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=kSHy13hAwgpa/5ZJSYe6IGxE2tt3qAGUaTlZYC9fG3Xj/dzFq8Og3HnX2Xog06Td4B3kKsf7HaIyWFiNDU6963tt1IynW3E58AdTRj3injHhQ41qUcc0Nreciobk5Cs5m/ingwOS2VgWWjP/uaVOvPR2vC8mLyWNlMS9pKQ+X6s=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1765382430; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=QIHlXyZ9eSlbG2IaJDRO0O2znKkeqfI3nu17FC9NmwA=; 
+	b=M3jcY2q20BHi1f0Vy27RBAnOLX0N9OVUaCemcN2J2Wq9aPkvlrXtYao8I0756M1QgC8C5GxWcsBODj5JTR5sQ2ak8gea+B1XXSLjwHX3pM0JLV6Bb5XXfdf+TGmj8EoIy049Gqrui1uWdEwGkDJevoB/BjC3E+bnbilJtKArFSk=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=dmitry.osipenko@collabora.com;
+	dmarc=pass header.from=<dmitry.osipenko@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1765382430;
+	s=zohomail; d=collabora.com; i=dmitry.osipenko@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:MIME-Version:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=QIHlXyZ9eSlbG2IaJDRO0O2znKkeqfI3nu17FC9NmwA=;
+	b=QCgaLdqQoehU0jvTx1d1WjuKcRoZb/j26YTpmhn8hcwR3drY4gIJs8z/YzGnf/t0
+	aXi0xdYGOJ6Tfr2kMbHJ0mLzpPY+vPIwLiUQGLZRmO+lhP5XCukj09SVxxJFWrgRNcu
+	+QjVJf0alIASJ5ST6rV7GmVzds7eJuoiOdQhWh5E=
+Received: by mx.zohomail.com with SMTPS id 1765382427995508.4432954640066;
+	Wed, 10 Dec 2025 08:00:27 -0800 (PST)
+From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Hans Verkuil <hverkuil@xs4all.nl>,
+	jose.abreu@synopsys.com,
+	nelson.costa@synopsys.com,
+	shawn.wen@rock-chips.com,
+	nicolas.dufresne@collabora.com,
+	Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: kernel@collabora.com,
+	linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH v3] media: synopsys: hdmirx: Detect broken interrupt
+Date: Wed, 10 Dec 2025 19:00:06 +0300
+Message-ID: <20251210160006.528997-1-dmitry.osipenko@collabora.com>
+X-Mailer: git-send-email 2.51.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: Issues with DRM_ACCEL_ROCKET (Oops, power-domain, probe-ordering)
-To: Tomeu Vizoso <tomeu@tomeuvizoso.net>
-Cc: Quentin Schulz <quentin.schulz@cherry.de>,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
- Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org
-References: <0b20d760-ad4f-41c0-b733-39db10d6cc41@cherry.de>
- <77685900-2c34-49b8-8c7e-14718841ef17@rock-chips.com>
- <fa82d11f-ce11-4feb-bdb4-c31d360a2a62@rock-chips.com>
- <CAAObsKDYLXVf1GdYUNeaOya+pWD4jTOEf55ouXAL9iM_kWCcMw@mail.gmail.com>
- <75166475-d6a8-45b8-8092-f31d292d4206@rock-chips.com>
- <CAAObsKABYQnw9rUfxwTS-yiQSoH9rdxZ_ffUBtp2H3tMJqMb7w@mail.gmail.com>
-Content-Language: en-US
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-In-Reply-To: <CAAObsKABYQnw9rUfxwTS-yiQSoH9rdxZ_ffUBtp2H3tMJqMb7w@mail.gmail.com>
-X-HM-Tid: 0a9b07dfc1c103abkunmca64904d3d50d50
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQ0kdQ1ZOH0tPTE1DSEtJGR1WFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUJCSU5LVU
-	pLS1VKQktCWQY+
-DKIM-Signature: a=rsa-sha256;
-	b=TTsBySDauc4RTbYe5EhC7K4j01jlT2OcKOuh76Zuc/ZPet61WIaJ88X+kag1tWleJLVww49BC54QA5br0pqv/bKHzLKy/86Hqnle+NKezwlRI/URbqHBwZPOU4TjKGrDvzTuJDXLcEjj7kitByinbmnqyShuhKN72nDZD1oDo/Q=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=RTBglI0YGfawGwb4/35MKrAl87UMJbCIeSXIoQF2HDk=;
-	h=date:mime-version:subject:message-id:from;
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251210_024756_989907_6D909549 
-X-CRM114-Status: GOOD (  14.77  )
+X-CRM114-CacheID: sfid-20251210_080042_209714_1FE300E4 
+X-CRM114-Status: GOOD (  16.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,40 +79,213 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGVsbG8gVG9tZXUsCgpPbiAxMi8xMC8yMDI1IDI6NTAgUE0sIFRvbWV1IFZpem9zbyB3cm90ZToK
-PiBPbiBUdWUsIERlYyA5LCAyMDI1IGF0IDEwOjMx4oCvQU0gQ2hhb3lpIENoZW4gPGNoYW95aS5j
-aGVuQHJvY2stY2hpcHMuY29tPiB3cm90ZToKPj4KPj4gSGVsbG8gVG9tZXUsCj4+Cj4+IE9uIDEy
-LzkvMjAyNSAyOjU1IFBNLCBUb21ldSBWaXpvc28gd3JvdGU6Cj4+PiBPbiBUdWUsIERlYyAyLCAy
-MDI1IGF0IDg6MDDigK9BTSBDaGFveWkgQ2hlbiA8Y2hhb3lpLmNoZW5Acm9jay1jaGlwcy5jb20+
-IHdyb3RlOgo+Pgo+PiBbLi4uXQo+Pgo+Pj4KPj4+IFRoaXMgbmVlZCB3YXMgcXVlc3Rpb25lZCBk
-dXJpbmcgdGhlIHJldmlldyBwcm9jZXNzLCBhbmQgZHVyaW5nIG15Cj4+PiBzdHJlc3MgdGVzdGlu
-ZyBJIGRpZG4ndCBmaW5kIGEgbmVlZCBmb3IgY29yZSAwIHRvIGJlIHRyZWF0ZWQKPj4+IHNwZWNp
-YWxseS4gU28gaXQgd2FzIGNvbnNpZGVyZWQgdW5uZWVkZWQgY29tcGxleGl0eSBhbmQgdGhlIGNv
-ZGUgd2FzCj4+PiBkcm9wcGVkLgo+Pj4KPj4KPj4gT2gsIEkganVzdCBub3RpY2VkIHRoYXQgdGhl
-IGNvbW1pdCBjb21tZW50IGluIHRoZSBkZXZpY2V0cmVlIHN0aWxsCj4+IGNvbnRhaW5zIGEgcmVs
-ZXZhbnQgZGVzY3JpcHRpb24uCj4+Cj4+PiBNeSB0ZXN0aW5nIGludm9sdmVzIHJ1bm5pbmcgdGhl
-IHN1cHBvcnRlZCBtb2RlbHMgYXMgYSB3aG9sZSwgYW5kIGFsc28KPj4+IHRoZWlyIGluZGl2aWR1
-YWwgb3BlcmF0aW9ucyBhcyBpbmRpdmlkdWFsIHRlc3RzLiBJIHJ1biB0aGVtIGluIDgKPj4+IHBh
-cmFsbGVsIHByb2Nlc3NlcywgaW4gYmF0Y2hlcyBzbyB3ZSBoYXZlIGNvbnRpbnVvdXMgYnJpbmcg
-dXAgYW5kIGRvd24KPj4+IG9mIGNsaWVudHMuCj4+Pgo+Pj4gSSdtIGEgYml0IHN1cnByaXNlZCB0
-aGF0IHRoYXQgdGVzdGluZyB3b3JrZWQgc3RhYmx5IGJ1dCB3ZSBoYXZlIHN0aWxsCj4+PiBmYWls
-dXJlcyBpbiBzb21lIHNldHVwcy4KPj4KPj4gQ291bGQgeW91IHBsZWFzZSBkZXNjcmliZSB0aGUg
-ZmFpbHVyZXMgdGhhdCBzdGlsbCBleGlzdD8gVGhhbmsgeW91Lgo+IAo+IEkgd2FzIHJlZmVycmlu
-ZyB0byB0aGUgb25lcyB0aGF0IFF1ZW50aW4gcmVwb3J0ZWQgd2hlbiBzdGFydGluZyB0aGlzIHRo
-cmVhZC4KPiAKCkkgYmVsaWV2ZSB0aGlzIHBtZG9tYWluIHBhdGNoIGNhbiBhbGxldmlhdGUgc29t
-ZSBvZiB0aGUgcHJvYmxlbXMgWzBdLiAKCkhvd2V2ZXIsIHRoZSBwcm9ibGVtIFF1ZW50aW4gbWVu
-dGlvbmVkIHN0aWxsIGV4aXN0cy4gRm9yIGV4YW1wbGUsIGlmCnRoZXJlIGlzIGFuIGludmFsaWQg
-ZGV2aWNlIG9uIGNvcmUwLCB3aGlsZSBjb3JlMSBhbmQgY29yZTIgYXJlIHZhbGlkLCAKYWNjZXNz
-aW5nIHRoZSByZWxldmFudCBkYXRhIG9uIGNvcmUwIHdpbGwgY2F1c2UgcHJvYmxlbXMuIFF1ZW50
-aW4ncwpwYXRjaCBjYW4gZml4IHRoaXMsIGJ1dCBoZSBkb2Vzbid0IHNlZW0gdG8gaGF2ZSB0aW1l
-IGZvciBpdCBsYXRlbHkuLi4KClswXSBodHRwczovL2xvcmUua2VybmVsLm9yZy9hbGwvMjAyNTEy
-MDUwNjQ3MzkuMjAyNzAtMS1ybXhwemxiQGdtYWlsLmNvbS8KCj4gUmVnYXJkcywKPiAKPiBUb21l
-dQo+IAo+IAoKLS0gCkJlc3QsIApDaGFveWkKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2Nr
-Y2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
-YW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Downstream version of RK3588 U-Boot uses customized TF-A that remaps
+HDMIRX hardware interrupt, routing it via firmware that isn't supported
+by upstream driver.
+
+Detect broken interrupt and print a clarifying error message about a need
+to use open-source TF-A with this driver.
+
+Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+Signed-off-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+---
+
+Changelog:
+
+v3: - Added r-b from Sebastian Reichel.
+
+v2: - Added PHY r/w lock and moved the clarifying error message as
+      was suggested by Sebastian Reichel.
+
+ .../platform/synopsys/hdmirx/snps_hdmirx.c    | 90 ++++++++++++++++++-
+ .../platform/synopsys/hdmirx/snps_hdmirx.h    |  2 +
+ 2 files changed, 90 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c b/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c
+index c3007e09bc9f..9cceffa4ce25 100644
+--- a/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c
++++ b/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c
+@@ -132,12 +132,14 @@ struct snps_hdmirx_dev {
+ 	struct delayed_work delayed_work_hotplug;
+ 	struct delayed_work delayed_work_res_change;
+ 	struct hdmirx_cec *cec;
++	struct mutex phy_rw_lock; /* to protect phy r/w configuration */
+ 	struct mutex stream_lock; /* to lock video stream capture */
+ 	struct mutex work_lock; /* to lock the critical section of hotplug event */
+ 	struct reset_control_bulk_data resets[HDMIRX_NUM_RST];
+ 	struct clk_bulk_data *clks;
+ 	struct regmap *grf;
+ 	struct regmap *vo1_grf;
++	struct completion cr_read_done;
+ 	struct completion cr_write_done;
+ 	struct completion timer_base_lock;
+ 	struct completion avi_pkt_rcv;
+@@ -796,11 +798,50 @@ static int wait_reg_bit_status(struct snps_hdmirx_dev *hdmirx_dev, u32 reg,
+ 	return 0;
+ }
+ 
++static int hdmirx_phy_register_read(struct snps_hdmirx_dev *hdmirx_dev,
++				    u32 phy_reg, u32 *val)
++{
++	struct device *dev = hdmirx_dev->dev;
++	u32 status;
++
++	guard(mutex)(&hdmirx_dev->phy_rw_lock);
++
++	reinit_completion(&hdmirx_dev->cr_read_done);
++	/* clear irq status */
++	hdmirx_clear_interrupt(hdmirx_dev, MAINUNIT_2_INT_CLEAR, 0xffffffff);
++	/* en irq */
++	hdmirx_update_bits(hdmirx_dev, MAINUNIT_2_INT_MASK_N,
++			   PHYCREG_CR_READ_DONE, PHYCREG_CR_READ_DONE);
++	/* write phy reg addr */
++	hdmirx_writel(hdmirx_dev, PHYCREG_CONFIG1, phy_reg);
++	/* config read enable */
++	hdmirx_writel(hdmirx_dev, PHYCREG_CONTROL, PHYCREG_CR_PARA_READ_P);
++
++	if (!wait_for_completion_timeout(&hdmirx_dev->cr_read_done,
++					 msecs_to_jiffies(20))) {
++		dev_err(dev, "%s wait cr read done failed\n", __func__);
++		return -ETIMEDOUT;
++	}
++
++	/* read phy reg value */
++	status = hdmirx_readl(hdmirx_dev, PHYCREG_STATUS);
++	if (!(status & PHYCREG_CR_PARA_DATAVALID)) {
++		dev_err(dev, "%s cr read failed\n", __func__);
++		return -EINVAL;
++	}
++
++	*val = status & PHYCREG_CR_PARA_RD_DATA_MASK;
++
++	return 0;
++}
++
+ static int hdmirx_phy_register_write(struct snps_hdmirx_dev *hdmirx_dev,
+ 				     u32 phy_reg, u32 val)
+ {
+ 	struct device *dev = hdmirx_dev->dev;
+ 
++	guard(mutex)(&hdmirx_dev->phy_rw_lock);
++
+ 	reinit_completion(&hdmirx_dev->cr_write_done);
+ 	/* clear irq status */
+ 	hdmirx_clear_interrupt(hdmirx_dev, MAINUNIT_2_INT_CLEAR, 0xffffffff);
+@@ -1814,6 +1855,13 @@ static void mainunit_2_int_handler(struct snps_hdmirx_dev *hdmirx_dev,
+ 		*handled = true;
+ 	}
+ 
++	if (status & PHYCREG_CR_READ_DONE) {
++		hdmirx_update_bits(hdmirx_dev, MAINUNIT_2_INT_MASK_N,
++				   PHYCREG_CR_READ_DONE, 0);
++		complete(&hdmirx_dev->cr_read_done);
++		*handled = true;
++	}
++
+ 	if (status & TMDSVALID_STABLE_CHG) {
+ 		process_signal_change(hdmirx_dev);
+ 		v4l2_dbg(2, debug, v4l2_dev, "%s: TMDSVALID_STABLE_CHG\n", __func__);
+@@ -2313,18 +2361,51 @@ static void hdmirx_disable_all_interrupts(struct snps_hdmirx_dev *hdmirx_dev)
+ 	hdmirx_clear_interrupt(hdmirx_dev, CEC_INT_CLEAR, 0xffffffff);
+ }
+ 
+-static void hdmirx_init(struct snps_hdmirx_dev *hdmirx_dev)
++static int hdmirx_detect_broken_interrupt(struct snps_hdmirx_dev *hdmirx_dev)
+ {
++	int ret;
++	u32 val;
++
++	enable_irq(hdmirx_dev->hdmi_irq);
++
++	hdmirx_writel(hdmirx_dev, PHYCREG_CONFIG0, 0x3);
++
++	ret = hdmirx_phy_register_read(hdmirx_dev,
++				       HDMIPCS_DIG_CTRL_PATH_MAIN_FSM_FSM_CONFIG,
++				       &val);
++
++	disable_irq(hdmirx_dev->hdmi_irq);
++
++	return ret;
++}
++
++static int hdmirx_init(struct snps_hdmirx_dev *hdmirx_dev)
++{
++	int ret;
++
+ 	hdmirx_update_bits(hdmirx_dev, PHY_CONFIG, PHY_RESET | PHY_PDDQ, 0);
+ 
+ 	regmap_write(hdmirx_dev->vo1_grf, VO1_GRF_VO1_CON2,
+ 		     (HDMIRX_SDAIN_MSK | HDMIRX_SCLIN_MSK) |
+ 		     ((HDMIRX_SDAIN_MSK | HDMIRX_SCLIN_MSK) << 16));
++
++	/*
++	 * RK3588 downstream version of TF-A remaps HDMIRX interrupt and
++	 * requires use of a vendor-specific FW API that we don't support
++	 * in this driver.
++	 */
++	ret = hdmirx_detect_broken_interrupt(hdmirx_dev);
++	if (ret)
++		dev_err_probe(hdmirx_dev->dev, ret,
++			      "interrupt not functioning, open-source TF-A is required by this driver\n");
++
+ 	/*
+ 	 * Some interrupts are enabled by default, so we disable
+ 	 * all interrupts and clear interrupts status first.
+ 	 */
+ 	hdmirx_disable_all_interrupts(hdmirx_dev);
++
++	return ret;
+ }
+ 
+ /* hdmi-4k-300mhz EDID produced by v4l2-ctl tool */
+@@ -2606,10 +2687,12 @@ static int hdmirx_probe(struct platform_device *pdev)
+ 		return dev_err_probe(dev, PTR_ERR(hdmirx_dev->regs),
+ 				     "failed to remap regs resource\n");
+ 
++	mutex_init(&hdmirx_dev->phy_rw_lock);
+ 	mutex_init(&hdmirx_dev->stream_lock);
+ 	mutex_init(&hdmirx_dev->work_lock);
+ 	spin_lock_init(&hdmirx_dev->rst_lock);
+ 
++	init_completion(&hdmirx_dev->cr_read_done);
+ 	init_completion(&hdmirx_dev->cr_write_done);
+ 	init_completion(&hdmirx_dev->timer_base_lock);
+ 	init_completion(&hdmirx_dev->avi_pkt_rcv);
+@@ -2623,7 +2706,10 @@ static int hdmirx_probe(struct platform_device *pdev)
+ 	hdmirx_dev->timings = cea640x480;
+ 
+ 	hdmirx_enable(dev);
+-	hdmirx_init(hdmirx_dev);
++
++	ret = hdmirx_init(hdmirx_dev);
++	if (ret)
++		goto err_pm;
+ 
+ 	v4l2_dev = &hdmirx_dev->v4l2_dev;
+ 	strscpy(v4l2_dev->name, dev_name(dev), sizeof(v4l2_dev->name));
+diff --git a/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.h b/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.h
+index b13f58e31944..31b887e94e87 100644
+--- a/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.h
++++ b/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.h
+@@ -116,6 +116,8 @@
+ #define PHYCREG_CR_PARA_WRITE_P			BIT(1)
+ #define PHYCREG_CR_PARA_READ_P			BIT(0)
+ #define PHYCREG_STATUS				0x00f4
++#define PHYCREG_CR_PARA_DATAVALID		BIT(24)
++#define PHYCREG_CR_PARA_RD_DATA_MASK		GENMASK(15, 0)
+ 
+ #define MAINUNIT_STATUS				0x0150
+ #define TMDSVALID_STABLE_ST			BIT(1)
+-- 
+2.51.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
