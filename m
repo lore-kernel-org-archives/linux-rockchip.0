@@ -4,76 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38605D3E78C
-	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Dec 2025 03:46:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 666E7D41C21
+	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Dec 2025 11:07:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
-	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=z+Fnt3VHvZ4K+1zM4HtnGBV/M6e/RyTD+XNWaEbicTo=; b=owt51XWq4KpxH6
-	P3Zmk3SDjUGAP9KMrdzYXL58tTWNhs0bsr2ChTEpdg956AZlQQ47UYQjCcikaikZW+rvHB7bI/ZZL
-	lt8XoH9KMrcBtsx607sPABQE6kkB66keX2t2iveARj3eMEYkUhf/+v80HYvtBeNeSB8ROac53g2W9
-	wMEAe23XStmtZXKE8R2fchL4v8Uk83oBQgqWx/FkXRbvy+Y2i41fkJMR3ITBez1mFFLzcw0R7mBdt
-	8LkXlfx+36rdVDXGG/Fi06/xqcdQqLIXctkG1+UzRTb5z7cF0ogqI10wXfzLwyNn4B+D6phGE63LR
-	d35ZROVcrenzIrT4N9WQ==;
+	List-Owner; bh=II2GPqFai4ZZYzsrjtyxjhlm/BYzV8YK76R4fdQcCBE=; b=tX+KL9ZpBk3q4g
+	yLAe5Zvd35tho7PsExG26vSgiOuV8g97YW8VZyrgkM16SijbM3TuZIAJIQN7yznZqf9hgKy3BQHnl
+	Hin52cyEHMMXNSH8CW0A+TK5x/+Sw1zAwuJU4AhsIGsareAKgH1vXhBrr5rGGklIrEmy3zcc+TNFQ
+	nVMeaGFIiRKQJ4r/v4xE5HHrd/vSUD/r0/tvfzPJcYqBSmuPuC5A7wn2qLFz/OZ6cF8xXx6bFeBv9
+	H/V+DRIg+/Bnd/1ZwvtAUX6OANMB8+p845z9TPCmi/Lu5C8SM4X7iOIXWoS7GMARZUAcBYb0oSYOG
+	zsCfRdzw0YNSuGPfet0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vTXdP-0000000GBBh-0oGu;
-	Thu, 11 Dec 2025 03:46:31 +0000
-Received: from m16.mail.163.com ([220.197.31.4])
+	id 1vTeVY-0000000GWWH-3Xbd;
+	Thu, 11 Dec 2025 11:06:52 +0000
+Received: from mail-m155116.qiye.163.com ([101.71.155.116])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vTXdM-0000000GB9x-1P9D;
-	Thu, 11 Dec 2025 03:46:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Date:From:To:Subject:Content-Type:MIME-Version:
-	Message-ID; bh=ZSCsNDXRTbhutBX9NCXK3CKOOwqTbSlygnCMk74EA64=; b=W
-	S3mN0nH12O/E1MsYSOL05QamwOXwXdowXkXmwtDDyQwCY6mzLo+1hPTA47QTWh9K
-	RVm9hGQ1j2P30bwwA0Lfv7Dq26SfisS4ocJgI2DDqOsVzgdf3TnM6+T1zL7zTN0s
-	CQyAEnsEEN9Hr3NYM+L3z6EE+ytraUlhWbScKP6vgA=
-Received: from andyshrk$163.com ( [58.22.7.114] ) by
- ajax-webmail-wmsvr-40-144 (Coremail) ; Thu, 11 Dec 2025 11:45:31 +0800
- (CST)
-X-Originating-IP: [58.22.7.114]
-Date: Thu, 11 Dec 2025 11:45:31 +0800 (CST)
-From: "Andy Yan" <andyshrk@163.com>
-To: "Nicolas Frattaroli" <nicolas.frattaroli@collabora.com>
-Cc: "Chaoyi Chen" <chaoyi.chen@rock-chips.com>,
-	"Sandy Huang" <hjc@rock-chips.com>,
-	=?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
-	"Andy Yan" <andy.yan@rock-chips.com>,
-	"Maarten Lankhorst" <maarten.lankhorst@linux.intel.com>,
-	"Maxime Ripard" <mripard@kernel.org>,
-	"Thomas Zimmermann" <tzimmermann@suse.de>,
-	"David Airlie" <airlied@gmail.com>,
-	"Simona Vetter" <simona@ffwll.ch>,
-	"Daniel Stone" <daniels@collabora.com>,
-	dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	kernel@collabora.com, "Diederik de Haas" <diederik@cknow-tech.com>
-Subject: Re:[PATCH v3 6/8] drm/rockchip: vop2: Enforce AFBC transform stride
- align in plane_check
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version 2023.4-cmXT build
- 20250723(a044bf12) Copyright (c) 2002-2025 www.mailtech.cn 163com
-In-Reply-To: <20251209-vop2-atomic-fixups-v3-6-07c48f0f1f0d@collabora.com>
-References: <20251209-vop2-atomic-fixups-v3-0-07c48f0f1f0d@collabora.com>
- <20251209-vop2-atomic-fixups-v3-6-07c48f0f1f0d@collabora.com>
-X-CM-CTRLMSGS: s1eSsnBsdXM9MTc2NTQyNDczMDczMl83M2ZiZjMzMmY4Y2E0MmRmM2ZhNWMwN
- zFmM2NmMDlmMQ==
-X-NTES-SC: AL_Qu2dB/iZu08o5yaebOkfmUgWjuw/WsG1v/Ul1YBSP556jC3r8wYiVlR5P2XTzf6vNiCitTmzciJJ8dxKdqZYY4Q6oqQFipl1U2BrZmZoBYWT4Q==
+	id 1vTeVV-0000000GWUe-32np;
+	Thu, 11 Dec 2025 11:06:51 +0000
+Received: from [172.16.12.51] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 2cdc4d36a;
+	Thu, 11 Dec 2025 19:06:39 +0800 (GMT+08:00)
+Message-ID: <fdd333ac-0542-4312-8ec0-22fded3b1ce0@rock-chips.com>
+Date: Thu, 11 Dec 2025 19:06:38 +0800
 MIME-Version: 1.0
-Message-ID: <6aed0bff.3ccf.19b0b839621.Coremail.andyshrk@163.com>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: kCgvCgD3vwtbPjpp_oU2AA--.1214W
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbCxRuO7Gk6PlvzeQAA3A
-X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 5/8] drm/rockchip: vop2: Enforce AFBC source alignment
+ in plane_check
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
+ Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
+ <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>
+Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Daniel Stone <daniels@collabora.com>
+References: <20251206-vop2-atomic-fixups-v2-0-7fb45bbfbebd@collabora.com>
+ <f9f7b446-8575-4f16-aa96-5197b22846e3@rock-chips.com>
+ <4696988.LvFx2qVVIh@workhorse> <8655687.NyiUUSuA9g@workhorse>
+Content-Language: en-US
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+In-Reply-To: <8655687.NyiUUSuA9g@workhorse>
+X-HM-Tid: 0a9b0d1771e803abkunm50152fe2115a8d
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQ0lIHVZJTh4ZS0pMGR5ITEtWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpOTE
+	5VSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=SiRUC79WbAVbCar94Hz/l0hwS+ckaDYSZAqcra50MkjyB8xo7OSuo2+VE9HHt7/cFzuKJXLskRNb73d0g35VrWPlXjruR0hDbg01mexXyRCcyOr1TZhYJiQ4WaCV0d12X43FIz6SvqWz/nJGeEjQUosuEoyXHPuX9Y2Kso4Pj3M=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=BnBEF6LrWFIGkywzce9cwqFmUT3UEuCa3O6j8eqOGZQ=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251210_194628_747557_FF976EC7 
-X-CRM114-Status: UNSURE (   6.67  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251211_030650_281543_D7441AD6 
+X-CRM114-Status: GOOD (  31.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,42 +74,145 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CkhlbGxvIE5pY29sYXPvvIwKCkF0IDIwMjUtMTItMDkgMTk6MTQ6MTksICJOaWNvbGFzIEZyYXR0
-YXJvbGkiIDxuaWNvbGFzLmZyYXR0YXJvbGlAY29sbGFib3JhLmNvbT4gd3JvdGU6Cj5Gcm9tOiBE
-YW5pZWwgU3RvbmUgPGRhbmllbHNAY29sbGFib3JhLmNvbT4KPgo+TWFrZSBzdXJlIHdlIGNhbid0
-IGJyZWFrIHRoZSBoYXJkd2FyZSBieSByZXF1ZXN0aW5nIGFuIHVuc3VwcG9ydGVkCj5jb25maWd1
-cmF0aW9uLgo+Cj5TaWduZWQtb2ZmLWJ5OiBEYW5pZWwgU3RvbmUgPGRhbmllbHNAY29sbGFib3Jh
-LmNvbT4KPlNpZ25lZC1vZmYtYnk6IE5pY29sYXMgRnJhdHRhcm9saSA8bmljb2xhcy5mcmF0dGFy
-b2xpQGNvbGxhYm9yYS5jb20+Cj4tLS0KPiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2No
-aXBfZHJtX3ZvcDIuYyB8IDEyICsrKysrKysrKy0tLQo+IDEgZmlsZSBjaGFuZ2VkLCA5IGluc2Vy
-dGlvbnMoKyksIDMgZGVsZXRpb25zKC0pCj4KPmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0v
-cm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcDIuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9y
-b2NrY2hpcF9kcm1fdm9wMi5jCj5pbmRleCBhMDI5ZWQ3M2RkYTcuLjMzN2IwMWVkMjlhNiAxMDA2
-NDQKPi0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wMi5jCj4r
-KysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcDIuYwo+QEAgLTEw
-ODMsNiArMTA4MywxNSBAQCBzdGF0aWMgaW50IHZvcDJfcGxhbmVfYXRvbWljX2NoZWNrKHN0cnVj
-dCBkcm1fcGxhbmUgKnBsYW5lLAo+IAkJcmV0dXJuIC1FSU5WQUw7Cj4gCX0KPiAKPisJaWYgKGRy
-bV9pc19hZmJjKGZiLT5tb2RpZmllcikgJiYKPisJICAgIHBzdGF0ZS0+cm90YXRpb24gJgo+KwkJ
-KERSTV9NT0RFX1JFRkxFQ1RfWCB8IERSTV9NT0RFX1JPVEFURV85MCB8IERSTV9NT0RFX1JPVEFU
-RV8yNzApICYmCj4rCSAgICAoZmItPnBpdGNoZXNbMF0gPDwgMykgLyB2b3AyX2dldF9icHAoZmIt
-PmZvcm1hdCkgJSA2NCkgewo+KwkJZHJtX2RiZ19rbXModm9wMi0+ZHJtLAo+KwkJCSAgICAiQUZC
-QyBidWZmZXJzIG11c3QgYmUgNjQtYnl0ZSBhbGlnbmVkIGZvciBob3Jpem9udGFsIHJvdGF0aW9u
-IG9yIG1pcnJvcmluZ1xuIik7Cj4rCQlyZXR1cm4gLUVJTlZBTDsKPisJfQoKQXMgRGllZGVyaWsg
-cHJldmlvdXNseSBwb2ludGVkIG91dO+8jHMvNjQtYnl0ZS82NCBwaXhlbC8gCgo+Kwo+IAlyZXR1
-cm4gMDsKPiB9Cj4gCj5AQCAtMTI5MCw5ICsxMjk5LDYgQEAgc3RhdGljIHZvaWQgdm9wMl9wbGFu
-ZV9hdG9taWNfdXBkYXRlKHN0cnVjdCBkcm1fcGxhbmUgKnBsYW5lLAo+IAkJICogd2l0aCBXSU5f
-VklSX1NUUklERS4KPiAJCSAqLwo+IAkJc3RyaWRlID0gKGZiLT5waXRjaGVzWzBdIDw8IDMpIC8g
-YnBwOwo+LQkJaWYgKChzdHJpZGUgJiAweDNmKSAmJiAoeG1pcnJvciB8fCByb3RhdGVfOTAgfHwg
-cm90YXRlXzI3MCkpCj4tCQkJZHJtX2RiZ19rbXModm9wMi0+ZHJtLCAidnAlZCAlcyBzdHJpZGVb
-JWRdIG5vdCA2NCBwaXhlbCBhbGlnbmVkXG4iLAo+LQkJCQkgICAgdnAtPmlkLCB3aW4tPmRhdGEt
-Pm5hbWUsIHN0cmlkZSk7Cj4gCj4gCQkgLyogSXQncyBmb3IgaGVhZCBzdHJpZGUsIGVhY2ggaGVh
-ZCBzaXplIGlzIDE2IGJ5dGUgKi8KPiAJCXN0cmlkZSA9IEFMSUdOKHN0cmlkZSwgYmxvY2tfdykg
-LyBibG9ja193ICogMTY7Cj4KPi0tIAo+Mi41Mi4wCl9fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1y
-b2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
-aWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Hello Nicolas,
+
+On 12/9/2025 6:58 PM, Nicolas Frattaroli wrote:
+> Hi Chaoyi Chen, Andy Yan,
+> 
+> On Monday, 8 December 2025 08:24:52 Central European Standard Time Nicolas Frattaroli wrote:
+>> On Monday, 8 December 2025 03:48:24 Central European Standard Time Chaoyi Chen wrote:
+>>> Hello Nicolas, Daniel,
+>>>
+>>> On 12/7/2025 4:45 AM, Nicolas Frattaroli wrote:
+>>>> From: Daniel Stone <daniels@collabora.com>
+>>>>
+>>>> Planes can only source AFBC framebuffers at multiples of 4px wide on
+>>>> RK3566/RK3568. Instead of clipping on all SoCs when the user asks for an
+>>>> unaligned source rectangle, reject the configuration in the plane's
+>>>> atomic check on RK3566/RK3568 only.
+>>>>
+>>>> Signed-off-by: Daniel Stone <daniels@collabora.com>
+>>>> [Make RK3566/RK3568 specific, reword message]
+>>>> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+>>>> ---
+>>>>  drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 14 +++++++++-----
+>>>>  1 file changed, 9 insertions(+), 5 deletions(-)
+>>>>
+>>>> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+>>>> index bc1ed0ffede0..e23213337104 100644
+>>>> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+>>>> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+>>>> @@ -1076,6 +1076,13 @@ static int vop2_plane_atomic_check(struct drm_plane *plane,
+>>>>  		return -EINVAL;
+>>>>  	}
+>>>>  
+>>>> +	if (vop2->version == VOP_VERSION_RK3568 && drm_is_afbc(fb->modifier) && src_w % 4) {
+>>>> +		drm_dbg_kms(vop2->drm,
+>>>> +			    "AFBC source rectangles must be 4-byte aligned; is %d\n",
+>>>> +			    src_w);
+>>>> +		return -EINVAL;
+>>>> +	}
+>>>> +
+>>>>  	return 0;
+>>>>  }
+>>>>  
+>>>> @@ -1237,11 +1244,8 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
+>>>>  	WARN_ON(src_w < 4);
+>>>>  	WARN_ON(src_h < 4);
+>>>>  
+>>>> -	if (afbc_en && src_w % 4) {
+>>>> -		drm_dbg_kms(vop2->drm, "vp%d %s src_w[%d] not 4 pixel aligned\n",
+>>>> -			    vp->id, win->data->name, src_w);
+>>>> -		src_w = ALIGN_DOWN(src_w, 4);
+>>>> -	}
+>>>> +	if (vop2->version == VOP_VERSION_RK3568 && drm_is_afbc(fb->modifier))
+>>>> +		WARN_ON(src_w % 4);
+>>>>  
+>>>>  	act_info = (src_h - 1) << 16 | ((src_w - 1) & 0xffff);
+>>>>  	dsp_info = (dsp_h - 1) << 16 | ((dsp_w - 1) & 0xffff);
+>>>>
+>>>
+>>> You haven't replied to Andy's comment yet [0].
+>>>
+>>> [0] https://lore.kernel.org/dri-devel/7b4e26ec.75f3.19a77276b53.Coremail.andyshrk@163.com/
+>>>
+>>
+>> Hello,
+>>
+>> I addressed the follow-ups where it was clarified that the 4 pixel
+>> limitation was RK3566/RK3568-only. I'm not going to bring back the
+>> post-atomic_check modification for a fast path, but I'm open to
+>> suggestions on how to do this differently.
+>>
+>> One solution might be to modify the state with the ALIGN_DOWN stuff
+>> in atomic_check instead, where userspace is then aware of the change
+>> being done to its requested parameters. I'll need to double-check
+>> whether this is in line with atomic modesetting's design.
+>>
+>> Kind regards,
+>> Nicolas Frattaroli
+> 
+> Okay, so I've asked internally, and atomic_check isn't allowed to
+> modify any of the parameters either. There's efforts [0] underway
+> to allow error codes to be more specific, so that userspace knows
+> which constraint is being violated. That would allow userspace
+> applications to react by either adjusting their size or turning
+> off AFBC in this case. Turning off AFBC seems more generally
+> applicable here, since it means it won't need to resize the plane
+> and it'll save more than enough memory bandwidth by not going
+> through the GPU.
+> 
+> On that note: Andy, I didn't find a weston-simple-egl test in the
+> Weston 14.0.2 or git test suite, and weston-simple-egl itself does
+> not tell me whether GPU compositing is being used or not. Do you
+> have more information on how to test for this? I'd like to know
+> for when we have the necessary functionality in place to make
+> userspace smart enough to pick the fast path again.
+> 
+
+I think weston-simple-egl is part of the weston client. When you build
+weston from source, you should obtain it. Just run `weston-simple-egl` 
+after compile and install weston.
+
+And I guess you're using Debian... The weston package there also ships
+with a weston-simple-egl binary [2].
+
+[1]: https://gitlab.freedesktop.org/wayland/weston/-/blob/main/clients/simple-egl.c
+[2]: https://packages.debian.org/sid/arm64/weston/filelist
+
+> In either case, I think adhering to the atomic API to ensure
+> artifact-free presentation is more important here than enabling
+> a fast-path on RK3568. I do think in most real-world use case
+> scenarios, the fallback won't degrade user experience, because
+> almost everything performance intensive I can think of (video
+> playback, games) will likely already use a plane geometry
+> where the width is divisible by 4. 800, 1024, 1280, 1600, 1920,
+> 2560, 3840 are all divisible by 4, so a window or full-screen
+> playback of common content won't need to fall back to GPU
+> compositing.
+> 
+> I'll send a v2 to fix another instance of "eSmart" left in a
+> message, but beyond that I think we should be good.
+> 
+> Kind regards,
+> Nicolas Frattaroli
+> 
+> https://lore.kernel.org/dri-devel/20251009-atomic-v6-0-d209709cc3ba@intel.com/ [0]
+> 
+> 
+> 
+> 
+
+-- 
+Best, 
+Chaoyi
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
