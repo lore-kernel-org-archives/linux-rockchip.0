@@ -4,85 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C6CCD41D7E
-	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Dec 2025 20:00:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00BDCD43354
+	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Dec 2025 20:41:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kU7Fq6omzAXe2Aa0MMYxHMIarshQ/jX6u7XHqt/D0fA=; b=srl5pUnk5jop/Q
-	F31qGAx9DZ1uAdy794lvVhIVKnreflStgSxIfeoqV8rCYoUF+10l9W09Zofd+b0Idhx8lcPOelPPk
-	tJDmBVqeeub+8piYIdGCKsqOMz4gWfFqBmVP4q0VWYPkaUXKSic6d0Xx6aoszqZTmcxDYA6Tn2LME
-	kE/38zNsbusFgUzeP3wh/H0GcZr13GslXt/gOrVM7YUqom40nrqGQ5c6lkZIJwi6pv561wml6kRGf
-	TOZ1uLdsmt3rI5ZUHpa8qZHJnIgmMR/24/iV4536u6HI7r6JQkXEZCjYoBVY0bLhqnWUgXom8/CFM
-	KXmKbz4MEb+kStVdUUuA==;
+	List-Owner; bh=xhDPn99urf1JEYMnPLCYFpbGnwqFa6jTNM7a9iA3QeY=; b=UeNHUB/tk8mat7
+	s90HaY2lG+D0wxF4yEidZFgfmv0VfCssibej/gJo3ALEgXqIj4l6G+i1z0DQXIMzTl0BF/neBACdZ
+	YzsTIorNk7oGGXA4PdKaMigQJ8LUs3VIRQsSzoNS4GpdbG0LGYN6LjIVYNoja3OYDN3kMcBoRMw1P
+	IikwOYItgivIP/muFKxt+Nykm8S/ooX9Vn7JJkm1FMKcXwK+1qLyyqwpcfXGDYLKcRkNgrqvCc+RE
+	ifc9t4+lKukYq6pXIn1tJB9n8Y11/Jib8sLlsgBGhKd572nqUibVF5fmYZxE/bVICEml/oZdKlh/I
+	zwmqHqH+jdC1LeY0VFJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vTmpb-0000000HC3H-0Na3;
-	Thu, 11 Dec 2025 20:00:09 +0000
+	id 1vTnTQ-0000000HG1v-0L2u;
+	Thu, 11 Dec 2025 20:41:16 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vTmpU-0000000HBxy-3Zvq;
-	Thu, 11 Dec 2025 20:00:02 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1765483166; cv=none; 
+	id 1vTnTL-0000000HFzq-3oZm;
+	Thu, 11 Dec 2025 20:41:12 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1765485657; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=PapCYrGOA0DdMdEGqYe8wSbVIMgmWtTx9Ajd3S+/lPqhJQ/Tpj8uBEwf+hBtuyHSFC/706YpOtQ6gsr8LHXYsIb1Yb9TlGNzvX4TItjetl7m/Y14QiE77f5CcqVB9hnnQbYK/SqjO4gxHLNKl3eEoMSr40w2cXD7hIERrS5pKRU=
+	b=WBkitdwJz9dfAeHGANV0qWkGie5Q52vUHt2nYnvJ5NzD5JtU/j3I+x1F57yCc5clt97Q/eOTynuGHIhIKA5+gxyxMYwbqYRHdNKaywy1PNnh/RHZHWdBbICjUxHF0430pC4WDEoKjnMFFOhCoAmOnPwvYVDvCPWGsofEsFrmOQ0=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1765483166; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=1Dh7aECitOB9k9I8NTgAp9Wi9RahEZHruitjqRy2ayc=; 
-	b=BKn84KfImSg64WEv/gHkaFqxl2XbwOYSVlJj6kC7tLzf4FfvHc0KAXPiaQWvFG22irZUtesPQHpS6atOwKkKwVimS5tFUrVDABB1JJJbs94pGfkSJSItfFaDs0VRCQ0URWX9aHNinF7QbpqAkZRhIpdt6xDuiFjgD2itpWr4Q6Y=
+	t=1765485657; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=Cg4WUfMDQUwvwvbTJsa9XBH4T44qYNwtUMAw30CfLvQ=; 
+	b=Qeh1WLcmAkJBifekdvlq3k0MXXut5K3NiKTb4EhtSQHlR/GkH6arYl5rPgPd0NSkWEehpQn1kUF0cMgMi7bKu4auKM5FjwfdVDXfzluJX8GTxAbbYfDF+FsMA5em3g+FgLhETxrdHvQvFcxLUQx/ZsT49R5e99bKwkv9tqG4kQs=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1765483166;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1765485657;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=1Dh7aECitOB9k9I8NTgAp9Wi9RahEZHruitjqRy2ayc=;
-	b=U5toQvtRKHWzGyOiOOT0n9f8hMBVqtET17wX+Ha5qp60DmHE0JxiLQ+B05LilYa5
-	/cVsZJEEwURhPFX+3AF4ZuqBtma4nmBCO9IHA1HSsKx6CBuEcNlNXlJvkB7GL0rHiRI
-	G4GFL8yY4SMgQHfu9hAz/6+OC2BxiK+5FRPy94O4=
-Received: by mx.zohomail.com with SMTPS id 1765483163864458.18267084626757;
-	Thu, 11 Dec 2025 11:59:23 -0800 (PST)
+	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
+	bh=Cg4WUfMDQUwvwvbTJsa9XBH4T44qYNwtUMAw30CfLvQ=;
+	b=i5H8CIpHjYGxo7s5vL60QrceF/q6gP8ijx93fnfxAOiuJYj0wd3ylce+eEfl4fkn
+	x5kGwXr017YJnJL7RqyxCBigVkDjOffWHhpTzb6UqFLFfOvFmS7hXo534rT8YF0/2jm
+	a8o0/3wvhxRiRUVdFQRFLPZHkZq+EPdXwTPN8eHo=
+Received: by mx.zohomail.com with SMTPS id 1765485655793219.61784133741503;
+	Thu, 11 Dec 2025 12:40:55 -0800 (PST)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: Maxime Ripard <mripard@kernel.org>
-Cc: Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>,
- Rodrigo Siqueira <siqueira@igalia.com>,
- Alex Deucher <alexander.deucher@amd.com>,
- Christian =?UTF-8?B?S8O2bmln?= <christian.koenig@amd.com>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Thomas Zimmermann <tzimmermann@suse.de>,
- Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Sandy Huang <hjc@rock-chips.com>,
- Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>,
- Andy Yan <andy.yan@rock-chips.com>,
- Jani Nikula <jani.nikula@linux.intel.com>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Tvrtko Ursulin <tursulin@ursulin.net>, Dmitry Baryshkov <lumag@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>, Rob Herring <robh@kernel.org>,
- kernel@collabora.com, amd-gfx@lists.freedesktop.org,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org
-Subject: Re: [PATCH v5 06/17] drm/display: hdmi-state-helper: Try subsampling in
- mode_valid
-Date: Thu, 11 Dec 2025 20:59:14 +0100
-Message-ID: <9409315.NyiUUSuA9g@workhorse>
-In-Reply-To: <20251209-dramatic-caiman-of-luck-db9d0f@houat>
-References: <20251128-color-format-v5-0-63e82f1db1e1@collabora.com>
- <20251128-color-format-v5-6-63e82f1db1e1@collabora.com>
- <20251209-dramatic-caiman-of-luck-db9d0f@houat>
+Date: Thu, 11 Dec 2025 21:40:31 +0100
+Subject: [PATCH v4 1/8] drm/rockchip: vop2: Switch impossible format
+ conditional to WARN_ON
 MIME-Version: 1.0
+Message-Id: <20251211-vop2-atomic-fixups-v4-1-5d50eda26bf8@collabora.com>
+References: <20251211-vop2-atomic-fixups-v4-0-5d50eda26bf8@collabora.com>
+In-Reply-To: <20251211-vop2-atomic-fixups-v4-0-5d50eda26bf8@collabora.com>
+To: Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Chaoyi Chen <chaoyi.chen@rock-chips.com>
+Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Daniel Stone <daniels@collabora.com>, kernel@collabora.com, 
+ Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251211_120000_958484_FC55DE92 
-X-CRM114-Status: GOOD (  33.80  )
+X-CRM114-CacheID: sfid-20251211_124111_987619_184132E9 
+X-CRM114-Status: GOOD (  11.95  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,81 +85,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tuesday, 9 December 2025 15:18:25 Central European Standard Time Maxime Ripard wrote:
-> On Fri, Nov 28, 2025 at 10:05:42PM +0100, Nicolas Frattaroli wrote:
-> > drm_hdmi_connector_mode_valid assumes modes are only valid if they work
-> > with RGB. The reality is more complex however: YCbCr 4:2:0
-> > chroma-subsampled modes only require half the pixel clock that the same
-> > mode would require in RGB.
-> > 
-> > This leads to drm_hdmi_connector_mode_valid rejecting perfectly valid
-> > 420-only modes.
-> > 
-> > Fix this by checking whether the mode is 420-only first. If so, then
-> > proceed by checking it with HDMI_COLORSPACE_YUV420 so long as the
-> > connector has legalized 420, otherwise error out. If the mode is not
-> > 420-only, check with RGB as was previously always the case.
-> > 
-> > Fixes: 47368ab437fd ("drm/display: hdmi: add generic mode_valid helper")
-> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> > ---
-> >  drivers/gpu/drm/display/drm_hdmi_state_helper.c | 12 +++++++++++-
-> >  1 file changed, 11 insertions(+), 1 deletion(-)
-> > 
-> > diff --git a/drivers/gpu/drm/display/drm_hdmi_state_helper.c b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-> > index 5da956bdd68c..1800e00b30c5 100644
-> > --- a/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-> > +++ b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-> > @@ -892,8 +892,18 @@ drm_hdmi_connector_mode_valid(struct drm_connector *connector,
-> >  			      const struct drm_display_mode *mode)
-> >  {
-> >  	unsigned long long clock;
-> > +	enum hdmi_colorspace fmt;
-> > +
-> > +	if (drm_mode_is_420_only(&connector->display_info, mode)) {
-> > +		if (connector->ycbcr_420_allowed)
-> > +			fmt = HDMI_COLORSPACE_YUV420;
-> > +		else
-> > +			return MODE_NO_420;
-> > +	} else {
-> > +		fmt = HDMI_COLORSPACE_RGB;
-> > +	}
-> >  
-> > -	clock = drm_hdmi_compute_mode_clock(mode, 8, HDMI_COLORSPACE_RGB);
-> > +	clock = drm_hdmi_compute_mode_clock(mode, 8, fmt);
-> 
-> I agree on principle, but we need to have a test for this.
+From: Daniel Stone <daniels@collabora.com>
 
-I'd like to change `drm_mode_is_420_only` to `drm_mode_is_420` in
-the next revision, and modify the control flow to work correctly
-in this case, because rejecting 420-also modes on the basis that
-we can't do them in RGB isn't correct either.
+We should never be able to create a framebuffer with an unsupported
+format, so throw a warning if this ever happens, instead of attempting
+to stagger on.
 
-But my concern with adding yet more tests is that I found this bug
-in a function unrelated to the series while adding tests you asked
-for, because the tests relied on this function to not be broken as
-part of the test setup. Yes, I was not be able to get any 4:2:0
-modes on the test connector in the kunit tests because
-drm_hdmi_connector_mode_valid helpfully discarded all of them.
+Signed-off-by: Daniel Stone <daniels@collabora.com>
+Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-So now I am wondering whether adding yet more tests will uncover
-more bugs in functions unrelated to implementing the "color format"
-property, that were only called because the new test required them
-to set up some test fixture. And then I have to add another fix and
-another test to this series, rinse and repeat.
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+index 498df0ce4680..20b49209ddcd 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+@@ -1030,7 +1030,8 @@ static int vop2_plane_atomic_check(struct drm_plane *plane,
+ 		return 0;
+ 
+ 	format = vop2_convert_format(fb->format->format);
+-	if (format < 0)
++	/* We shouldn't be able to create a fb for an unsupported format */
++	if (WARN_ON(format < 0))
+ 		return format;
+ 
+ 	/* Co-ordinates have now been clipped */
 
-Can we just agree that I am not going to expand the scope of this
-series any further? If you want me to send a follow-up series that
-adds tests to some of the hdmi state helper functions, then I can
-do that, but I don't want to do it as a precondition for the 17
-other patches in this series to get merged.
-
-> 
-> Maxime
-> 
-
-
-
+-- 
+2.52.0
 
 
 _______________________________________________
