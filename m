@@ -4,69 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 190D5D44145
-	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Dec 2025 08:52:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCBC6D4414A
+	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Dec 2025 09:19:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oDG1wGI4YqcBTPMxWkaIiNjldnve29/bylvqdg4uZnI=; b=JGPhvdWExUMX7k
-	Tns3t5yj9PxLuFQROln66iXx2Yi2abpei/LoYDfoFS9KizByg7BG/WaXLGR3UEsO65j9zOzzoX8Ph
-	mf32DLTj7YqHIC144sr9sXLxHMjwjuGhLQhEMpWgL8UtfDrvaGiwgTsgOy84ap/ILH7GLUpqxrmIN
-	1kISKw5abIbV8JM6Q+hIQhe+RRExyGbbSnHmiNTW+F7J9HmVzaS5f6Z0tsIESSlOoRFKubU0oZVYR
-	mFg+5dXWPp1pygO37BYVhoOqyT/TKJbmbD1hvCZ7umr7NpebYs1DoVrmzknuXOzLN3Iaj9LtZBLOz
-	5mpHQztUj0mXxjJxR5Qg==;
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=JWIkAFnOh7OymlsufSjy8mJv9J96fAsE4SiGKtwspS4=; b=zLp2GswkDkwuHZ/2Gz1TI29o1R
+	dXz9e2WDwoDw0ZIRfsUisFvFnFAswMjiaDgfr+M1/enQZcouZok9qoDKT0Jqf3iqCpcuwsdErCDVs
+	X0cwjPPXA/lWBXX12Emi8ZQ8mMYuyBFiwJB/h7VIEd0Yyxhz0HgS8WQPFkj+Q2ILp+Z82Rn5DBdnf
+	3TK5iG3veIKumTN3/AXx7+/zcIl3X6EvLRrar2Kw291wKlVQ2CtuCLE3jg7smah6z6IwRnotxbDNh
+	TDlcfZUgSSutoVaAW6+y3A1M/OzZLCD5MDiHAmzKa8GJT0RNGdy7SXNx3H9JhqXV7sLLArhEgjMFH
+	DvfdMoFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vTysx-00000000HoQ-2set;
-	Fri, 12 Dec 2025 08:52:23 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1vTzJ2-00000000L34-1gTo;
+	Fri, 12 Dec 2025 09:19:20 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vTysv-00000000Hnx-0QsE;
-	Fri, 12 Dec 2025 08:52:22 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1765529517; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=G2a/yMRoNYEYX32qsSh9klxJhkz42oM/Rs6xEqUkj0GCib3cTPtgakDODcACfn3fPOSdTjp5nCQ4HrmJngxT8hhyZf7P9E6vA3a5QwC4fSg7T189qetTRc0W3hnqp3yRgbsWkW2LxdAe1R679CZ3AROCYtTbM3vG2pMgTd1muF8=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1765529517; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=xnItVhoY0Lh4ZLV1sF8rYZtnMRWqPjsgUKn0khqX+aY=; 
-	b=BI76Zs6kc6v3+Stj5VlhmI+2TOP8RS8JG2lFviNZwApLZgZGTiGjkPb3B23h98BKyjHhWOwR5elzisMyHTr9GLo9tG3k6uQhHC4Zpk8IjIMrPvqVV99Ra4CWOpcZwPRvjoLuY6va0bntFhXR45YVOngOmGaOFbGTDj19AAmBGEE=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=benjamin.gaignard@collabora.com;
-	dmarc=pass header.from=<benjamin.gaignard@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1765529517;
-	s=zohomail; d=collabora.com; i=benjamin.gaignard@collabora.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=xnItVhoY0Lh4ZLV1sF8rYZtnMRWqPjsgUKn0khqX+aY=;
-	b=frIILijI+V7VsU7x9gFc0FgCtswAJVCRHVYaKIzxLkHrpO68qTVpwrcmRFR3+WkL
-	mt4ffUw6Br0SsK57xAw4CqvUYtbl0gczF3m/vK4EvR/LI05DhyHqQ76aHxc/37MVr5V
-	VI/8jNg2/7GGPYhGECQCln5VIG2Jznk0GfV7S9cA=
-Received: by mx.zohomail.com with SMTPS id 1765529515530660.6512833937438;
-	Fri, 12 Dec 2025 00:51:55 -0800 (PST)
-Message-ID: <ea3241f1-14a4-44a0-9d85-3fa2a2f6f1ae@collabora.com>
-Date: Fri, 12 Dec 2025 09:51:50 +0100
+	id 1vTzJ0-00000000L2L-02kU;
+	Fri, 12 Dec 2025 09:19:19 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 71E02418B3;
+	Fri, 12 Dec 2025 09:19:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C05CDC4CEF1;
+	Fri, 12 Dec 2025 09:19:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1765531156;
+	bh=rTVFEIXlAg4LKVZxNm5Zj42H5X95E6SJwUkQ3nsB4/c=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=WxUHWMzf+cKqrT/hmU19HU6p9JKSZpHCh0Vh9QdfCoh2bxafgcT3npLlPcUEV2xUp
+	 1OLeISnrsthiDXk7NmXqos5Wh2OTLSa5DhrIJ/gX7NrQUHlGkylNTyqRbgfTmWOcWP
+	 yhOHPIRC3ffNYfwJESW5hsnEXBYHuV8i+V9MFWlo5PCn9Kahza4Q9w8cOdKqD6iHhF
+	 uucV7m+wdXGTqr9aK2Q1bTFLo93QK0jWShlYUKFLkypQuOCzvY6pJYB0fpRf8TkljL
+	 5NQu8NDLNXcK0wQ6dzCc9Ftgtky/5+7UpTBJpa4dMlju1E9F9zpSzpOMhNIPsOEEaa
+	 0YEULTJDFf+QA==
+Date: Fri, 12 Dec 2025 10:19:13 +0100
+From: Maxime Ripard <mripard@kernel.org>
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Cc: Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>, 
+	Rodrigo Siqueira <siqueira@igalia.com>, Alex Deucher <alexander.deucher@amd.com>, 
+	Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>, David Airlie <airlied@gmail.com>, 
+	Simona Vetter <simona@ffwll.ch>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, Andrzej Hajda <andrzej.hajda@intel.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Sandy Huang <hjc@rock-chips.com>, 
+	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
+	Jani Nikula <jani.nikula@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>, 
+	Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, Tvrtko Ursulin <tursulin@ursulin.net>, 
+	Dmitry Baryshkov <lumag@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	Rob Herring <robh@kernel.org>, kernel@collabora.com, amd-gfx@lists.freedesktop.org, 
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org
+Subject: Re: [PATCH v5 17/17] drm/tests: hdmi: Add tests for the color_format
+ property
+Message-ID: <20251212-discreet-wisteria-perch-edccad@penduick>
+References: <20251128-color-format-v5-0-63e82f1db1e1@collabora.com>
+ <20251128-color-format-v5-17-63e82f1db1e1@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v9 3/7] iommu: Add verisilicon IOMMU driver
-To: Jianfeng Liu <liujianfeng1994@gmail.com>
-Cc: conor+dt@kernel.org, devicetree@vger.kernel.org, heiko@sntech.de,
- iommu@lists.linux.dev, jgg@ziepe.ca, joro@8bytes.org, kernel@collabora.com,
- krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org, mchehab@kernel.org,
- nicolas.dufresne@collabora.com, p.zabel@pengutronix.de, robh@kernel.org,
- robin.murphy@arm.com
-References: <20250911155720.180465-4-benjamin.gaignard@collabora.com>
- <20251212033157.3036182-1-liujianfeng1994@gmail.com>
-Content-Language: en-US
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-In-Reply-To: <20251212033157.3036182-1-liujianfeng1994@gmail.com>
+In-Reply-To: <20251128-color-format-v5-17-63e82f1db1e1@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251212_005221_199431_192E924A 
-X-CRM114-Status: GOOD (  10.36  )
+X-CRM114-CacheID: sfid-20251212_011918_089436_B86B564C 
+X-CRM114-Status: GOOD (  31.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,33 +81,215 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: multipart/mixed; boundary="===============6293837941602085423=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CkxlIDEyLzEyLzIwMjUgw6AgMDQ6MzEsIEppYW5mZW5nIExpdSBhIMOpY3JpdMKgOgo+IEhpLAo+
-Cj4gT24gVGh1LCAxMSBTZXAgMjAyNSAxNzo1NzoxMyArMDIwMCwgQmVuamFtaW4gR2FpZ25hcmQg
-d3JvdGU6Cj4+ICsjaWZkZWYgQ09ORklHX1ZTSV9JT01NVQo+PiArdm9pZCB2c2lfaW9tbXVfcmVz
-dG9yZV9jdHgoc3RydWN0IGlvbW11X2RvbWFpbiAqZG9tYWluKTsKPj4gKyNlbHNlCj4+ICtzdGF0
-aWMgaW5saW5lIHZvaWQgdnNpX2lvbW11X3Jlc3RvcmVfY3R4KHN0cnVjdCBpb21tdV9kb21haW4g
-KmRvbWFpbikge30KPj4gKyNlbmRpZgo+IEFmdGVyIGFwcGx5aW5nIHRoaXMgcGF0Y2ggdG8gdjYu
-MTgsIEkgZ2V0IGVycm9yIHdoZW4gYnVpbGRpbmcgdGhpcyBkcml2ZXIKPiBhcyBtb2R1bGU6Cj4K
-PiBkcml2ZXJzL2lvbW11L3ZzaS1pb21tdS5jOjU0MTo2OiBlcnJvcjogcmVkZWZpbml0aW9uIG9m
-ICd2c2lfaW9tbXVfcmVzdG9yZV9jdHgnCj4gICAgNTQxIHwgdm9pZCB2c2lfaW9tbXVfcmVzdG9y
-ZV9jdHgoc3RydWN0IGlvbW11X2RvbWFpbiAqZG9tYWluKQo+ICAgICB8ICAgICAgXn5+fn5+fn5+
-fn5+fn5+fn5+fn5+Cj4gSW4gZmlsZSBpbmNsdWRlZCBmcm9tIGRyaXZlcnMvaW9tbXUvdnNpLWlv
-bW11LmM6MzE6Cj4gLi9pbmNsdWRlL2xpbnV4L3ZzaS1pb21tdS5oOjE4OjIwOiBub3RlOiBwcmV2
-aW91cyBkZWZpbml0aW9uIG9mICd2c2lfaW9tbXVfcmVzdG9yZV9jdHgnIHdpdGggdHlwZSAndm9p
-ZChzdHJ1Y3QgaW9tbXVfZG9tYWluICopJwo+IDE4IHwgc3RhdGljIGlubGluZSB2b2lkIHZzaV9p
-b21tdV9yZXN0b3JlX2N0eChzdHJ1Y3QgaW9tbXVfZG9tYWluICpkb21haW4pIHt9Cj4gICAgIHwg
-ICAgICAgICAgICAgICAgICAgIF5+fn5+fn5+fn5+fn5+fn5+fn5+fgo+Cj4gSSBoYXZlIHRvIHVz
-ZToKPiAjaWYgSVNfRU5BQkxFRChDT05GSUdfVlNJX0lPTU1VKQo+IGluc3RlYWQuCgpJIGhhdmUg
-Zml4IGluIG15IGludGVybmFsIHYxMCBicmFuY2g6Cmh0dHBzOi8vZ2l0bGFiLmNvbGxhYm9yYS5j
-b20vbGludXgvZm9yLXVwc3RyZWFtLy0vY29tbWl0cy92ZXJpc2lsaWNvbl9tbXVfdjEwCkkgZG9u
-J3QgcGxhbiB0byBzZW5kIHRoaXMgdXBkYXRlIGJlY2F1c2UgdGhhdCB3aWxsIGNoYW5nZSBub3Ro
-aW5nIGFib3V0IGNvZGUgZHVwbGljYXRpb24gcmVtYXJrcy4KClRoYW5rcyBmb3IgdGhlIHJlcG9y
-dC4KUmVnYXJkcywKQmVuamFtaW4KCj4gQmVzdCByZWdhcmRzLAo+IEppYW5mZW5nCj4KCl9fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlw
-IG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9s
-aXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+
+--===============6293837941602085423==
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="7b5r3ycny55zq4mq"
+Content-Disposition: inline
+
+
+--7b5r3ycny55zq4mq
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v5 17/17] drm/tests: hdmi: Add tests for the color_format
+ property
+MIME-Version: 1.0
+
+On Fri, Nov 28, 2025 at 10:05:53PM +0100, Nicolas Frattaroli wrote:
+> Add some KUnit tests to check the color_format property is working as
+> expected with the HDMI state helper.
+>=20
+> The added tests check that AUTO results in RGB, and the YCBCR modes
+> result in the corresponding YUV modes. An additional test ensures that
+> only DRM_COLOR_FORMAT_AUTO falls back to YUV420 with a YUV420-only mode,
+> and RGB errors out instead, while explicitly asking for YUV420 still
+> works.
+>=20
+> This requires exporting hdmi_compute_config, so that it is accessible
+> from the tests.
+>=20
+> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> ---
+>  drivers/gpu/drm/display/drm_hdmi_state_helper.c    |   3 +-
+>  drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c | 109 +++++++++++++++=
+++++++
+>  include/drm/display/drm_hdmi_state_helper.h        |   4 +
+>  3 files changed, 115 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/drivers/gpu/drm/display/drm_hdmi_state_helper.c b/drivers/gp=
+u/drm/display/drm_hdmi_state_helper.c
+> index 1800e00b30c5..e86fb837ceaf 100644
+> --- a/drivers/gpu/drm/display/drm_hdmi_state_helper.c
+> +++ b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
+> @@ -641,7 +641,7 @@ hdmi_compute_format_bpc(const struct drm_connector *c=
+onnector,
+>  	return -EINVAL;
+>  }
+> =20
+> -static int
+> +int
+>  hdmi_compute_config(const struct drm_connector *connector,
+>  		    struct drm_connector_state *conn_state,
+>  		    const struct drm_display_mode *mode)
+> @@ -680,6 +680,7 @@ hdmi_compute_config(const struct drm_connector *conne=
+ctor,
+> =20
+>  	return ret;
+>  }
+> +EXPORT_SYMBOL(hdmi_compute_config);
+
+I don't think we need to export hdmi_compute_config directly, and if we
+do, it shouldn't be named that way.
+
+The rest of the tests in the suite manage to test everything fine
+without exporting it. Is there any reason you can't do it for these
+tests?
+
+>  static int hdmi_generate_avi_infoframe(const struct drm_connector *conne=
+ctor,
+>  				       struct drm_connector_state *conn_state)
+> diff --git a/drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c b/drivers=
+/gpu/drm/tests/drm_hdmi_state_helper_test.c
+> index 8bd412735000..e7050cd9cb12 100644
+> --- a/drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c
+> +++ b/drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c
+> @@ -55,6 +55,23 @@ static struct drm_display_mode *find_preferred_mode(st=
+ruct drm_connector *connec
+>  	return preferred;
+>  }
+> =20
+> +static struct drm_display_mode *find_420_only_mode(struct drm_connector =
+*connector)
+> +{
+> +	struct drm_device *drm =3D connector->dev;
+> +	struct drm_display_mode *mode;
+> +
+> +	mutex_lock(&drm->mode_config.mutex);
+> +	list_for_each_entry(mode, &connector->modes, head) {
+> +		if (drm_mode_is_420_only(&connector->display_info, mode)) {
+> +			mutex_unlock(&drm->mode_config.mutex);
+> +			return mode;
+> +		}
+> +	}
+> +	mutex_unlock(&drm->mode_config.mutex);
+> +
+> +	return NULL;
+> +}
+> +
+>  static int set_connector_edid(struct kunit *test, struct drm_connector *=
+connector,
+>  			      const void *edid, size_t edid_len)
+>  {
+> @@ -1999,6 +2016,95 @@ static void drm_test_check_disable_connector(struc=
+t kunit *test)
+>  	drm_modeset_acquire_fini(&ctx);
+>  }
+> =20
+> +struct color_format_test_param {
+> +	enum drm_color_format fmt;
+> +	enum hdmi_colorspace expected;
+> +	const char *desc;
+> +};
+> +
+> +/* Test that AUTO results in RGB, and explicit choices result in those */
+
+We need a bit more details. Which EDID are you using, with which monitor
+capabilities?
+
+IIRC, we already have tests to make sure that the fallback happens and
+only when it's supposed to. We just need to make sure we have asserts on
+the property being auto for those.
+
+This means we only need to test the !auto values, but we need to test it
+both ways: that when the property is set and the display supports it,
+the format chosen is indeed the one we asked for, but also that when the
+property is set but the display doesn't support it, we get an error.
+
+> +static void drm_test_check_hdmi_color_format(struct kunit *test)
+> +{
+> +	const struct color_format_test_param *param =3D test->param_value;
+> +	struct drm_atomic_helper_connector_hdmi_priv *priv;
+> +	struct drm_connector_state *conn_state;
+> +	struct drm_display_info *info;
+> +	struct drm_display_mode *preferred;
+> +	int ret;
+> +
+> +	priv =3D drm_kunit_helper_connector_hdmi_init_with_edid_funcs(test,
+> +				BIT(HDMI_COLORSPACE_RGB) |
+> +				BIT(HDMI_COLORSPACE_YUV422) |
+> +				BIT(HDMI_COLORSPACE_YUV420) |
+> +				BIT(HDMI_COLORSPACE_YUV444),
+> +				12,
+> +				&dummy_connector_hdmi_funcs,
+> +				test_edid_hdmi_4k_rgb_yuv420_dc_max_340mhz);
+> +	KUNIT_ASSERT_NOT_NULL(test, priv);
+> +
+> +	conn_state =3D priv->connector.state;
+> +	info =3D &priv->connector.display_info;
+> +	conn_state->color_format =3D param->fmt;
+> +	KUNIT_ASSERT_TRUE(test, priv->connector.ycbcr_420_allowed);
+> +
+> +	preferred =3D find_preferred_mode(&priv->connector);
+> +	KUNIT_ASSERT_TRUE(test, drm_mode_is_420(info, preferred));
+> +
+> +	ret =3D hdmi_compute_config(&priv->connector, conn_state, preferred);
+> +	KUNIT_EXPECT_EQ(test, ret, 0);
+> +	KUNIT_EXPECT_EQ(test, conn_state->hdmi.output_format, param->expected);
+> +}
+> +
+> +static const struct color_format_test_param hdmi_color_format_params[] =
+=3D {
+> +	{ DRM_COLOR_FORMAT_AUTO, HDMI_COLORSPACE_RGB, "AUTO -> RGB" },
+> +	{ DRM_COLOR_FORMAT_YCBCR422, HDMI_COLORSPACE_YUV422, "YCBCR422 -> YUV42=
+2" },
+> +	{ DRM_COLOR_FORMAT_YCBCR420, HDMI_COLORSPACE_YUV420, "YCBCR420 -> YUV42=
+0" },
+> +	{ DRM_COLOR_FORMAT_YCBCR444, HDMI_COLORSPACE_YUV444, "YCBCR444 -> YUV44=
+4" },
+> +	{ DRM_COLOR_FORMAT_RGB444, HDMI_COLORSPACE_RGB, "RGB -> RGB" },
+> +};
+> +
+> +KUNIT_ARRAY_PARAM_DESC(check_hdmi_color_format,
+> +		  hdmi_color_format_params, desc);
+> +
+> +
+> +/* Test that AUTO falls back to YUV420, and that RGB does not, but YUV42=
+0 works */
+
+Same thing, the description needs to be improved here.
+
+Maxime
+
+--7b5r3ycny55zq4mq
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCaTveEAAKCRAnX84Zoj2+
+dhf5AX0axu9eaz5PUFxm9wL8Scfvc12z75lvKpvF0Wa+0bZkHwFULJ8HlYvqkr0u
+oaYG9h0Bf0ZRw+vCCL1izypO7FHFjavaMv/SjEhLVwTma92SorSqBsGraXbbXej1
+NHkfv9J3OA==
+=9ejj
+-----END PGP SIGNATURE-----
+
+--7b5r3ycny55zq4mq--
+
+
+--===============6293837941602085423==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============6293837941602085423==--
+
