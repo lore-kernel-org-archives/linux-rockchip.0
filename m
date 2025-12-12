@@ -4,70 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98131D4415D
-	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Dec 2025 09:50:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63D6DD4415D
+	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Dec 2025 10:00:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UEL/S6QPgEwPpSrrj58r/XOTjJ5vUcUGnFcy8Haah8A=; b=sOGQWsRmq3O7oReCbW1ho6jTpx
-	8oO609B97JqP2XtCNucG9y5Ai4E5qn5Q9LAMUVO/K3kTghfNVf10JlfzBubtU/v/9TUrx94NXXjld
-	Q1Btl9E4Lolpmp8zN4o4p5WfkTU8inFEGhqGtlkB6Rt38uzPuc8ZAan8QFbaSCsSsQ/F8diysJM7N
-	28wK95uzCjisRo6XDBz5fM66NkWyuUb8ZVmxHI99Rn+vE6kPvKOAvu5HNcvVTmobVihQqiGDmSixb
-	UDU26omXgktiuBtRYSh6a6GMQ3bED3NjwAG7LGLG1BspJ2QBfYwO4WUYxeDVKdbnea57CLr1DRFW8
-	C+gek5/A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=hsLPkxUhD6xwaYv0BVHv8VX1YjGH110RXkv/6mWXQYc=; b=AeFlP7UuwE+Mic
+	AXhj8WWKD6h0MyWCCXD0KjojqUxwD2RPSbP0uYqcUz8CjTRqB4GG4fpjUd+dFLu32/hV1FGIsnqfW
+	VvRITmKCr7WbeJzWRisrMoeFrtImeXaGS8qTMV22cFW1H43TpjI1SQGBSVqrEkGfK36xucYm3OE8r
+	B6RurP8Bkr/Ipap1YLcTN03/fE3ZJmlnaGlv/jQYHA4lsyvmX2oQ0FrNuPqoloT20+Xjd9BnB2CTg
+	AyQmIjO8oEzFdPN/uNgDmMmrQjWdKgah6v++DlWLeK8ucKjZZ+tMQZSSKtmk8wdthYvUN+tdEED6R
+	K+GQvPMsmPNOZdv2wXJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vTznG-00000000NMN-3BVk;
-	Fri, 12 Dec 2025 09:50:35 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vTzwD-00000000OZh-1C3H;
+	Fri, 12 Dec 2025 09:59:49 +0000
+Received: from mail-m1973174.qiye.163.com ([220.197.31.74])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vTznC-00000000NLr-3vKZ;
-	Fri, 12 Dec 2025 09:50:31 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id C1BCE600C3;
-	Fri, 12 Dec 2025 09:50:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DA246C4CEF1;
-	Fri, 12 Dec 2025 09:50:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1765533029;
-	bh=BbMk3VZO8JSPX3mqFQ3xSr2dm1e9Voyl+YIkL1dgU30=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=P83BBtcwn8VRMW8mrTMtnelM8ub8sDcdXaW1Wrl+3Vnd0frCRvdKHolhpr5F1IoVU
-	 PuvKvLZg4jsnrBK851fJ44pF9CJsoiyukT/iCuHdS9Mh8+onaR23JD6gz0plDVaX+d
-	 PGEAdqiy4UzxDLpF5I+2TdGsA9OJAPdpRrFCoDX6hPuz/rvaEqx6BdtXgeMRJJ8+YH
-	 jJ3U+c2jemjYTAs1NJedrPjBYip9TLW8dFAJk/3N7Au+8bVJxxwfENwFrXXdxz2M6T
-	 bJgww4x2Lyx+IppbJyLrwVs3/cpHGzEPtgENaZ0oOHsCHB2k1dANt7oQ5ChQAl3WMB
-	 QEMERfbBkCWDQ==
-Date: Fri, 12 Dec 2025 10:50:26 +0100
-From: Maxime Ripard <mripard@kernel.org>
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>, 
-	Rodrigo Siqueira <siqueira@igalia.com>, Alex Deucher <alexander.deucher@amd.com>, 
-	Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>, David Airlie <airlied@gmail.com>, 
-	Simona Vetter <simona@ffwll.ch>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, Andrzej Hajda <andrzej.hajda@intel.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Sandy Huang <hjc@rock-chips.com>, 
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
-	Jani Nikula <jani.nikula@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>, 
-	Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, Tvrtko Ursulin <tursulin@ursulin.net>, 
-	Dmitry Baryshkov <lumag@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
-	Rob Herring <robh@kernel.org>, kernel@collabora.com, amd-gfx@lists.freedesktop.org, 
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org
-Subject: Re: [PATCH v5 04/17] drm/bridge: Act on the DRM color format property
-Message-ID: <20251212-hidden-armored-mule-66dd32@penduick>
-References: <20251128-color-format-v5-0-63e82f1db1e1@collabora.com>
- <20251128-color-format-v5-4-63e82f1db1e1@collabora.com>
- <20251209-smart-oarfish-of-wind-0c1c8b@houat>
- <3772903.e9J7NaK4W3@workhorse>
+	id 1vTzw8-00000000OWx-1c7q;
+	Fri, 12 Dec 2025 09:59:48 +0000
+Received: from [172.16.12.51] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 2d014e111;
+	Fri, 12 Dec 2025 17:59:35 +0800 (GMT+08:00)
+Message-ID: <72e06301-5f3e-4ea8-a9af-f3b1f0b329aa@rock-chips.com>
+Date: Fri, 12 Dec 2025 17:59:34 +0800
 MIME-Version: 1.0
-In-Reply-To: <3772903.e9J7NaK4W3@workhorse>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 5/8] drm/rockchip: vop2: Enforce AFBC source alignment
+ in plane_check
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
+ Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
+ <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>
+Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Daniel Stone <daniels@collabora.com>
+References: <20251206-vop2-atomic-fixups-v2-0-7fb45bbfbebd@collabora.com>
+ <8655687.NyiUUSuA9g@workhorse>
+ <fdd333ac-0542-4312-8ec0-22fded3b1ce0@rock-chips.com>
+ <3520923.e9J7NaK4W3@workhorse>
+Content-Language: en-US
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+In-Reply-To: <3520923.e9J7NaK4W3@workhorse>
+X-HM-Tid: 0a9b120067a703abkunm2ec5dd2c240e97
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGU4aSFYaThpIGUMeGUhITR9WFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpOTE
+	9VSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=BKk3fA9Q32JxLs2aqr2gPKhNMrysYabNjwTIQ1sIruxP0tJFfBHMurTxG7S3cse5kiOO8s2ETV04+LPJhlRwqZ07h/Q5eyv+vk2rN7CT3KCBatwm25FoD5nxqLVO/FWaEmOi1CaTV20NxZKpy0s3Gl7jIQUZG9tu8qXWYhg5mtg=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=H+Gezl1CPLlvzUhhdf55qTX8HyGsiw0g/7H6h/twsWg=;
+	h=date:mime-version:subject:message-id:from;
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251212_015944_911701_424423B0 
+X-CRM114-Status: GOOD (  37.49  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,206 +75,243 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6902544454417913339=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Nicolas,
 
---===============6902544454417913339==
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="djhkclvbsznn62pt"
-Content-Disposition: inline
+On 12/11/2025 10:16 PM, Nicolas Frattaroli wrote:
+> On Thursday, 11 December 2025 12:06:38 Central European Standard Time Chaoyi Chen wrote:
+>> Hello Nicolas,
+>>
+>> On 12/9/2025 6:58 PM, Nicolas Frattaroli wrote:
+>>> Hi Chaoyi Chen, Andy Yan,
+>>>
+>>> On Monday, 8 December 2025 08:24:52 Central European Standard Time Nicolas Frattaroli wrote:
+>>>> On Monday, 8 December 2025 03:48:24 Central European Standard Time Chaoyi Chen wrote:
+>>>>> Hello Nicolas, Daniel,
+>>>>>
+>>>>> On 12/7/2025 4:45 AM, Nicolas Frattaroli wrote:
+>>>>>> From: Daniel Stone <daniels@collabora.com>
+>>>>>>
+>>>>>> Planes can only source AFBC framebuffers at multiples of 4px wide on
+>>>>>> RK3566/RK3568. Instead of clipping on all SoCs when the user asks for an
+>>>>>> unaligned source rectangle, reject the configuration in the plane's
+>>>>>> atomic check on RK3566/RK3568 only.
+>>>>>>
+>>>>>> Signed-off-by: Daniel Stone <daniels@collabora.com>
+>>>>>> [Make RK3566/RK3568 specific, reword message]
+>>>>>> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+>>>>>> ---
+>>>>>>  drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 14 +++++++++-----
+>>>>>>  1 file changed, 9 insertions(+), 5 deletions(-)
+>>>>>>
+>>>>>> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+>>>>>> index bc1ed0ffede0..e23213337104 100644
+>>>>>> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+>>>>>> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+>>>>>> @@ -1076,6 +1076,13 @@ static int vop2_plane_atomic_check(struct drm_plane *plane,
+>>>>>>  		return -EINVAL;
+>>>>>>  	}
+>>>>>>  
+>>>>>> +	if (vop2->version == VOP_VERSION_RK3568 && drm_is_afbc(fb->modifier) && src_w % 4) {
+>>>>>> +		drm_dbg_kms(vop2->drm,
+>>>>>> +			    "AFBC source rectangles must be 4-byte aligned; is %d\n",
+>>>>>> +			    src_w);
+>>>>>> +		return -EINVAL;
+>>>>>> +	}
+>>>>>> +
+>>>>>>  	return 0;
+>>>>>>  }
+>>>>>>  
+>>>>>> @@ -1237,11 +1244,8 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
+>>>>>>  	WARN_ON(src_w < 4);
+>>>>>>  	WARN_ON(src_h < 4);
+>>>>>>  
+>>>>>> -	if (afbc_en && src_w % 4) {
+>>>>>> -		drm_dbg_kms(vop2->drm, "vp%d %s src_w[%d] not 4 pixel aligned\n",
+>>>>>> -			    vp->id, win->data->name, src_w);
+>>>>>> -		src_w = ALIGN_DOWN(src_w, 4);
+>>>>>> -	}
+>>>>>> +	if (vop2->version == VOP_VERSION_RK3568 && drm_is_afbc(fb->modifier))
+>>>>>> +		WARN_ON(src_w % 4);
+>>>>>>  
+>>>>>>  	act_info = (src_h - 1) << 16 | ((src_w - 1) & 0xffff);
+>>>>>>  	dsp_info = (dsp_h - 1) << 16 | ((dsp_w - 1) & 0xffff);
+>>>>>>
+>>>>>
+>>>>> You haven't replied to Andy's comment yet [0].
+>>>>>
+>>>>> [0] https://lore.kernel.org/dri-devel/7b4e26ec.75f3.19a77276b53.Coremail.andyshrk@163.com/
+>>>>>
+>>>>
+>>>> Hello,
+>>>>
+>>>> I addressed the follow-ups where it was clarified that the 4 pixel
+>>>> limitation was RK3566/RK3568-only. I'm not going to bring back the
+>>>> post-atomic_check modification for a fast path, but I'm open to
+>>>> suggestions on how to do this differently.
+>>>>
+>>>> One solution might be to modify the state with the ALIGN_DOWN stuff
+>>>> in atomic_check instead, where userspace is then aware of the change
+>>>> being done to its requested parameters. I'll need to double-check
+>>>> whether this is in line with atomic modesetting's design.
+>>>>
+>>>> Kind regards,
+>>>> Nicolas Frattaroli
+>>>
+>>> Okay, so I've asked internally, and atomic_check isn't allowed to
+>>> modify any of the parameters either. There's efforts [0] underway
+>>> to allow error codes to be more specific, so that userspace knows
+>>> which constraint is being violated. That would allow userspace
+>>> applications to react by either adjusting their size or turning
+>>> off AFBC in this case. Turning off AFBC seems more generally
+>>> applicable here, since it means it won't need to resize the plane
+>>> and it'll save more than enough memory bandwidth by not going
+>>> through the GPU.
+>>>
+>>> On that note: Andy, I didn't find a weston-simple-egl test in the
+>>> Weston 14.0.2 or git test suite, and weston-simple-egl itself does
+>>> not tell me whether GPU compositing is being used or not. Do you
+>>> have more information on how to test for this? I'd like to know
+>>> for when we have the necessary functionality in place to make
+>>> userspace smart enough to pick the fast path again.
+>>>
+>>
+>> I think weston-simple-egl is part of the weston client. When you build
+>> weston from source, you should obtain it. Just run `weston-simple-egl` 
+>> after compile and install weston.
+>>
+>> And I guess you're using Debian... The weston package there also ships
+>> with a weston-simple-egl binary [2].
+> 
+> Yeah, I know there's a tool called that, but I'm specifically curious
+> about how to determine whether it's using GPU compositing or what I
+> presume is fixed-function compositing.
+> 
+> When I enable some more logging with
+> 
+>   weston -l log,drm-backend,gl-renderer
+> 
+> and also some kms debug messages with
+> 
+>   echo 4 > /sys/module/drm/parameters/debug
+> 
+> then I see weston outputting
+> 
+> [atomic] drmModeAtomicCommit
+>         [repaint] Using mixed state composition
+>         [repaint] view 0xaaab18c00c10 using renderer composition
+>         [repaint] view 0xaaab18b68f00 using renderer composition
+>         [repaint] view 0xaaab18c00ec0 using renderer composition
+> 
+> regardless of whether the size is 250x250 or fullscreen. With
+> 250x250, I know we're failing the plane check, because I see
+> 
+>   [  776.160101] rockchip-drm display-subsystem: [drm:vop2_plane_atomic_check
+>                  [rockchipdrm]] AFBC source rectangles must be 4-pixel
+>                  aligned; is 250
+> 
+> on the console, but with fullscreen I don't see any errors from plane-check
+> as the src_w is now divisible by 4, yet it's also "using renderer composition"
+> for all views.
+> 
+> Same goes for using `weston-simple-dmabuf-egl` (which is 256x256) instead of
+> the fullscreen simple-egl.
+> 
+> So basically, I need to know where a change in behaviour is actually
+> observed.
+> 
 
+Hmm, I don't think weston logs make this obvious. We also need the drm kms logs.
 
---djhkclvbsznn62pt
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v5 04/17] drm/bridge: Act on the DRM color format property
-MIME-Version: 1.0
+Test results may vary across different platforms. But it's certain that 
+fullscreen and non-fullscreen modes are identical in the following respects:
 
-On Thu, Dec 11, 2025 at 08:34:22PM +0100, Nicolas Frattaroli wrote:
-> On Tuesday, 9 December 2025 15:27:28 Central European Standard Time Maxim=
-e Ripard wrote:
-> > On Fri, Nov 28, 2025 at 10:05:40PM +0100, Nicolas Frattaroli wrote:
-> > > The new DRM color format property allows userspace to request a speci=
-fic
-> > > color format on a connector. In turn, this fills the connector state's
-> > > color_format member to switch color formats.
-> > >=20
-> > > Make drm_bridges consider the color_format set in the connector state
-> > > during the atomic bridge check. Specifically, reject any output bus
-> > > formats that do not correspond to the requested color format.
-> > >=20
-> > > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> > > ---
-> > >  drivers/gpu/drm/drm_bridge.c | 45 ++++++++++++++++++++++++++++++++++=
-++++++++++
-> > >  1 file changed, 45 insertions(+)
-> > >=20
-> > > diff --git a/drivers/gpu/drm/drm_bridge.c b/drivers/gpu/drm/drm_bridg=
-e.c
-> > > index 8f355df883d8..8aac9747f35e 100644
-> > > --- a/drivers/gpu/drm/drm_bridge.c
-> > > +++ b/drivers/gpu/drm/drm_bridge.c
-> > > @@ -1052,6 +1052,47 @@ static int select_bus_fmt_recursive(struct drm=
-_bridge *first_bridge,
-> > >  	return ret;
-> > >  }
-> > > =20
-> > > +static bool __pure bus_format_is_color_fmt(u32 bus_fmt, enum drm_col=
-or_format fmt)
-> > > +{
-> > > +	if (fmt =3D=3D DRM_COLOR_FORMAT_AUTO)
-> > > +		return true;
-> > > +
-> > > +	switch (bus_fmt) {
-> > > +	case MEDIA_BUS_FMT_FIXED:
-> > > +		return true;
-> > > +	case MEDIA_BUS_FMT_RGB888_1X24:
-> > > +	case MEDIA_BUS_FMT_RGB101010_1X30:
-> > > +	case MEDIA_BUS_FMT_RGB121212_1X36:
-> > > +	case MEDIA_BUS_FMT_RGB161616_1X48:
-> > > +		return fmt =3D=3D DRM_COLOR_FORMAT_RGB444;
-> > > +	case MEDIA_BUS_FMT_YUV8_1X24:
-> > > +	case MEDIA_BUS_FMT_YUV10_1X30:
-> > > +	case MEDIA_BUS_FMT_YUV12_1X36:
-> > > +	case MEDIA_BUS_FMT_YUV16_1X48:
-> > > +		return fmt =3D=3D DRM_COLOR_FORMAT_YCBCR444;
-> > > +	case MEDIA_BUS_FMT_UYVY8_1X16:
-> > > +	case MEDIA_BUS_FMT_VYUY8_1X16:
-> > > +	case MEDIA_BUS_FMT_YUYV8_1X16:
-> > > +	case MEDIA_BUS_FMT_YVYU8_1X16:
-> > > +	case MEDIA_BUS_FMT_UYVY10_1X20:
-> > > +	case MEDIA_BUS_FMT_YUYV10_1X20:
-> > > +	case MEDIA_BUS_FMT_VYUY10_1X20:
-> > > +	case MEDIA_BUS_FMT_YVYU10_1X20:
-> > > +	case MEDIA_BUS_FMT_UYVY12_1X24:
-> > > +	case MEDIA_BUS_FMT_VYUY12_1X24:
-> > > +	case MEDIA_BUS_FMT_YUYV12_1X24:
-> > > +	case MEDIA_BUS_FMT_YVYU12_1X24:
-> > > +		return fmt =3D=3D DRM_COLOR_FORMAT_YCBCR422;
-> > > +	case MEDIA_BUS_FMT_UYYVYY8_0_5X24:
-> > > +	case MEDIA_BUS_FMT_UYYVYY10_0_5X30:
-> > > +	case MEDIA_BUS_FMT_UYYVYY12_0_5X36:
-> > > +	case MEDIA_BUS_FMT_UYYVYY16_0_5X48:
-> > > +		return fmt =3D=3D DRM_COLOR_FORMAT_YCBCR420;
-> > > +	default:
-> > > +		return false;
-> > > +	}
-> > > +}
-> > > +
-> > >  /*
-> > >   * This function is called by &drm_atomic_bridge_chain_check() just =
-before
-> > >   * calling &drm_bridge_funcs.atomic_check() on all elements of the c=
-hain.
-> > > @@ -1137,6 +1178,10 @@ drm_atomic_bridge_chain_select_bus_fmts(struct=
- drm_bridge *bridge,
-> > >  	}
-> > > =20
-> > >  	for (i =3D 0; i < num_out_bus_fmts; i++) {
-> > > +		if (!bus_format_is_color_fmt(out_bus_fmts[i], conn_state->color_fo=
-rmat)) {
-> > > +			ret =3D -ENOTSUPP;
-> > > +			continue;
-> > > +		}
-> >=20
-> > Sorry, I'm struggling a bit to understand how this would work if a brid=
-ge both supports the bus
-> > format selection and HDMI state helpers? Can you expand on it?
->=20
-> I have very little idea of whether this makes conceptual sense.
+- fullscreen: Try to use only one plane (may be AFBC) .
+- non fullscreen: Try to use 2 plane (may be AFBC) .
 
-=2E. I wasn't asking you if it makes sense, I was asking you to explain
-how you wanted it to work.
+- On the RK3588, we won't get two planes without modifying the code, because
+the primary plane is already assign to AFBC background plane.
+- On the RK356x, we'll get a primary plane in linear format, while
+weston-simple-egl will use an overlay plane with AFBC format.
+- On the RK3576, we should be able to obtain an AFBC primary plane and an AFBC
+overlay plane.
 
-> The hope is that by working backwards from the last bridge and only
-> accepting either fixed formats or something that corresponds to the
-> target color format, we don't claim that a setup can do a colour
-> format if the whole bridge chain isn't able to do it.
->=20
-> Of course, format conversions along the bridge chain where one
-> input format can be converted to a set of output formats by some
-> bridge will throw a massive wrench into this. And this is all
-> assuming that the bus format is in any way related to the color
-> format that will be sent out on the wire.
+Try to set env `export WESTON_LIBINPUT_LOG_PRIORITY=debug` and you will see
+these log in non fullscreen mode:
 
-I'm not really concerned about this. As we move more and more bridges to
-the state helpers, we can always fix it, but it needs at the very least
-to document how you envision the whole thing to work, and ideally have
-bunch of tests to make sure it still does.
+```
+Layer 5 (pos 0x50000000):
+        View 0 (role xdg_toplevel, PID 686, surface ID 14, top-level window 'simple-egl' of org.freedesktop.weston.simple-egl, 0xaaaae61a62d0):
 
-> In practice, I don't have any hardware where whatever counts as
-> a "bridge" is an actually more involved setup than just the TX
-> controller. I tried looking into getting a board with one of the
-> supported DSI-to-HDMI bridge chips so I can at least test how it
-> would work in such a scenario, and I got one, but I'd need to make
-> my own flat flex PCB to adapt it to the pinout of my SBC's DSI
-> port.
->=20
-> So yeah I don't know how it's supposed to work, I just know this
-> works for the case I'm working with, and any more complex case
-> is literally unobtanium hardware which I'm not going to bother
-> blowing days on maybe making a cable for when I'm already touching
-> three different GPU drivers here and the intel-gfx-ci is screaming
-> into my inbox about vague failures in unrelated codepaths in its
-> native language, Klingon.
+...
 
-That's uncalled for.
+                        [view] evaluating view 0xaaaae61a62d0 for plane assignment on output HDMI-A-1 (0)
+                        [plane] started with zpos 18446744073709551615
+                                [primary] not assigning view 0xaaaae61a62d0 on primary, plane 33 (format ARGB8888 (0x34325241) with modifier 0x800000000000051) not supported
+                                [primary] not assigning view 0xaaaae61a62d0 on primary, plane 39 (format ARGB8888 (0x34325241) with modifier 0x800000000000051) not supported
+                                [overlay] not assigning view 0xaaaae61a62d0 on overlay, plane 63 (format ARGB8888 (0x34325241) with modifier 0x800000000000051) not supported
+                                [overlay] not assigning view 0xaaaae61a62d0 on overlay, plane 69 (format ARGB8888 (0x34325241) with modifier 0x800000000000051) not supported
+                                [overlay] not assigning view 0xaaaae61a62d0 on overlay, plane 75 (format ARGB8888 (0x34325241) with modifier 0x800000000000051) not supported
+                        [view] view 0xaaaae61a62d0 format: ARGB8888
+                                [plane] plane 51 picked from candidate list, type: overlay
+```
 
-> Which is all to say: is there a virtual drm bridge driver that
-> exists, where I can set what formats it supports on the input
-> and on the output, so that I can actually get a feel for how this
-> is conceptually supposed to work without needing special hardware?
+When vop2_plane_atomic_check() fails, in addition to the above logs, you will
+also get the following log:
 
-If your question is "do we have a way to replicate and test an arbitrary
-setup to check how it behaves?", then yes, we do, it's what we're doing
-in kunit. But you don't seem too fond of those.
+```
+[view] not placing view 0xaaaad9ec8e40 on plane 51: atomic test failed
+```
 
-> Better yet: do you have a specific setup in mind where you know
-> this approach does not work?
+I don't think there's any more log information that can indicate the error here.
+The relevant code is here [3].
 
-Look. I was asking a genuine question. If you want to get all defensive
-about it, go ahead. But sending a series implementing something with a
-lot of history, complex interactions, etc. and then expecting it to be a
-breeze that will get merged in a few revisions is not going to work.
+[3]: https://gitlab.freedesktop.org/wayland/weston/-/blob/main/libweston/backend-drm/state-propose.c?ref_type=heads#L181
 
-Pushing back when asked to follow our documented rules, or being
-dismissive when asked design questions is not going to help you push
-this forward. If anything, and because it's complex, the more tests you
-add the better because we A) know it works in a specific set of cases,
-and B) know it will still work going forward.
+>>
+>> [1]: https://gitlab.freedesktop.org/wayland/weston/-/blob/main/clients/simple-egl.c
+>> [2]: https://packages.debian.org/sid/arm64/weston/filelist
+>>
+>>> In either case, I think adhering to the atomic API to ensure
+>>> artifact-free presentation is more important here than enabling
+>>> a fast-path on RK3568. I do think in most real-world use case
+>>> scenarios, the fallback won't degrade user experience, because
+>>> almost everything performance intensive I can think of (video
+>>> playback, games) will likely already use a plane geometry
+>>> where the width is divisible by 4. 800, 1024, 1280, 1600, 1920,
+>>> 2560, 3840 are all divisible by 4, so a window or full-screen
+>>> playback of common content won't need to fall back to GPU
+>>> compositing.
+>>>
+>>> I'll send a v2 to fix another instance of "eSmart" left in a
+>>> message, but beyond that I think we should be good.
+>>>
+>>> Kind regards,
+>>> Nicolas Frattaroli
+>>>
+>>> https://lore.kernel.org/dri-devel/20251009-atomic-v6-0-d209709cc3ba@intel.com/ [0]
+>>>
+>>>
+>>>
+>>>
+>>
+>>
+> 
+> 
+> 
+> 
+> 
+> 
 
-I'm sure you know what you're doing, but so do we.
-
-Maxime
-
---djhkclvbsznn62pt
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCaTvlYQAKCRAnX84Zoj2+
-ds9AAYDpOz10nKcMKLPyibtdEtuyeNgvyiyX8WQbWHjsrkDdfOtvubUe7UL7QZyF
-z6LSrbIBfiVlJYqUrlofT80/bn/ebB/XyO+7ZvgSHoVicdQmR+HGHYkOnC9I7W5s
-3S7XAmFmBQ==
-=a739
------END PGP SIGNATURE-----
-
---djhkclvbsznn62pt--
-
-
---===============6902544454417913339==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+-- 
+Best, 
+Chaoyi
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============6902544454417913339==--
-
