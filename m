@@ -4,117 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EA9FD4335F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Dec 2025 23:17:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89A77D4335B
+	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Dec 2025 01:34:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0vRQIOOY/YdaoKVXwaJRX2CVGO6hZgcywsx2GWYFIws=; b=q3NDofhUxwHZxI
-	N3rgF5Fydwe5wQmarE823SHT8xLBOt2depcZw9Kz7rRtV1MC6aSmQ6iVbtxoCyg/ueVkz3wEmf4aI
-	6yyFFJ08FalXLAE7sy4wY7bQRvAfvhL4n0rVdxB9BB5bGSO+IbHo/ug8Mv1hw0IeogeQe9fcihjgg
-	kUBvhN9c5sXwau3+PYxegAlFfhbR2KjKeYh5b0+bN+tO4PjUGdy1W4Rb3sp+GUAwBoxdnCiZ1OzVY
-	2gBTECVU1qUSoJtfsbYtvXjWtD6cDwDV5Qnfj3IUUnwsGIuC2Bj6a3zbNEMW5vqV5Zpd82XtiMdLG
-	H7y/+DrJ65+vQ2DF8B4A==;
+	List-Owner; bh=X3m9kvK64ipu4ZGb1sIE0yzggxMK8UMmUgJC9JM7B0o=; b=VyUxJPwn7QsQdY
+	KZX4P5zVrg0fPnZ7BcVIN9pYJz6wMvh59PwwnQj2+MSinNlxga5RmDe5evsgxcrTo3aSIJOzBKMhj
+	hvIQglGt1YX93sXZ6PbzRtN28DzqfXe909vJAGbQycSyLiWp6U+mwZgGj0/iByKsJRj0c5UjNzsgk
+	SdXYBWfu4obpetqLUjol/xMIUiNg/MMrEKsoLZ/CBUKd9jTrLBCMEJwwtFjMBjM6ZPYaYHrTpqtf3
+	awwbEEJiXM1UPE/amXcqiptQX4Sww+c492ssFxeetK2pj3HKrYdPDZiBht+LPLFlpc+DswCyDDf23
+	Uv0SiAq3WLdgeRkBO7JQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vTpv0-0000000HPZC-1MbR;
-	Thu, 11 Dec 2025 23:17:54 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1vTs2Y-0000000HUPZ-2l3R;
+	Fri, 12 Dec 2025 01:33:50 +0000
+Received: from mail-m49211.qiye.163.com ([45.254.49.211])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vTput-0000000HPQA-3nND
+	id 1vTs2V-0000000HUOR-0ocP
 	for linux-rockchip@lists.infradead.org;
-	Thu, 11 Dec 2025 23:17:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1765495066;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=WSMzcnKfH5zogbN6xIJkP7sWMqF2vATubBjeteI/qGc=;
-	b=A5OL6V7vr/Gn/Kx8sIwBSz1T4nXxTeSlN3VSVTcrVcwVtK9/9p7t03j6v8JwuFnjNsI2QN
-	R7jHqyVG9ZaipW8RFKT1MscjvbWg56NLjOh+s1zPXeSPl9P4kKDPKTFf2FVcfiRmKGLsIY
-	QwxwWbcR8nXqVJRWndeEhqEYqb7aoTY=
-Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
- [209.85.222.197]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-408-boC4XBLFP8OnBerkobaAPA-1; Thu, 11 Dec 2025 18:17:45 -0500
-X-MC-Unique: boC4XBLFP8OnBerkobaAPA-1
-X-Mimecast-MFC-AGG-ID: boC4XBLFP8OnBerkobaAPA_1765495065
-Received: by mail-qk1-f197.google.com with SMTP id af79cd13be357-8b24383b680so191489085a.0
-        for <linux-rockchip@lists.infradead.org>; Thu, 11 Dec 2025 15:17:45 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1765495065; x=1766099865;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=WSMzcnKfH5zogbN6xIJkP7sWMqF2vATubBjeteI/qGc=;
-        b=jCFVCN8jy5ZQbI9g5vsh681Xqy0HZZ+IwaPrmmw+NhfTASko3I0gUSPmZJ1pM/KWfP
-         Hb//P0YmlvP4ZGDXR57Uaj9snJByXZFP4JKwJBfnXdH3pG2pvdKm6PNHe6t/sAXtcrk6
-         dTtmaE/hgzMi+n4PzZVutGz3+a+uDvLLN+C053Unwx04qAXaMbyFWTPW1QWFYQbc/RWa
-         Y+2kfKrP0bAmiQU64169RSHnePITwfSqnljYfYxS2sgOSjoVCVOeu+H109oeWsL4Pil6
-         bfDI3kjha2m6Fkz+ofb6i+o7gJXlZaqPuyWwL8nRh1QOCXUOB0Uq2M0LT1gRiCqigD7Q
-         2EKw==
-X-Forwarded-Encrypted: i=1; AJvYcCUHxblBIgjxF8BkH0/V+J+kBUZKI0mgL8ZFYx+6n08gELI00jwg6k7WDgmPhb5cwWoQb6OcoA/h3lE15ku7AA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxdcGOGzqNrY8pOPjqCCO2mgGoGoCjcCYhC+LE3VY1EfLFPjprQ
-	8ait03I2XuElMixZpkpTPojZRoe1rnKeIC3HpKQ1SMm/KgWFDG9bEaPzepHapypVdnruNro3LXE
-	z5aOd6pbavI8J50VA/suZfPau6eQs+pYYQMqnDkz7Sbw972G7CvYVHWAvNFv57doyWPw5pqD0aQ
-	==
-X-Gm-Gg: AY/fxX6jLPNN6Kl93KjGApR0Tyt76eQ/HT8POBFfqRq4tL3bGsrwO0qBVPS7fw6K4XI
-	P4IAwBbf/FFuxkOAc9ShA0sKTa01GMghZkHUtxH2VXSt+x+27/B2TTVnF0cH5SSIgCnwPIXuf6B
-	is7UKfMOnPp2YSrMjZCtJqvScqjLchBp44fMSkomiZm1uToLTWfn8N+guqCy965dR+FqqPIzZeY
-	t6eKfgscID6PS8q+jtneqvebjDWs92AuNY3ZTsFgeRxOKa/VJ+1ClVjA5w1DhKZ9LrQ2tCIvCtC
-	zdV37Jo41IhoOggnvzKlzZLZ33wBOnGCRpZlrFr+d9rRIpXk2W3bVwFltbHoOdWsE09fF+AwMxO
-	iC4C+wUWE/aSyhMZA44yy3fhHSnloxQt1Pk07YUHCdYHo7q96/H6n7A==
-X-Received: by 2002:a05:620a:4416:b0:89e:c659:3f99 with SMTP id af79cd13be357-8bb398d703bmr36054085a.6.1765495065354;
-        Thu, 11 Dec 2025 15:17:45 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHLYKRP7lHhgawU3OEaYHk6OghheRQMM/cwXxtpO8QhTtXeryEcvWYjXWc+lMjIJt9Bnf4lfQ==
-X-Received: by 2002:a05:620a:4416:b0:89e:c659:3f99 with SMTP id af79cd13be357-8bb398d703bmr36048785a.6.1765495064870;
-        Thu, 11 Dec 2025 15:17:44 -0800 (PST)
-Received: from [192.168.101.129] (c-73-183-52-120.hsd1.pa.comcast.net. [73.183.52.120])
-        by smtp.gmail.com with ESMTPSA id af79cd13be357-8bab5d4edbasm317873585a.51.2025.12.11.15.17.37
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 11 Dec 2025 15:17:44 -0800 (PST)
-From: Brian Masney <bmasney@redhat.com>
-Date: Fri, 12 Dec 2025 08:16:27 +0900
-Subject: [PATCH v3 9/9] phy: ti: phy-j721e-wiz: convert from round_rate()
- to determine_rate()
-MIME-Version: 1.0
-Message-Id: <20251212-phy-clk-round-rate-v3-9-beae3962f767@redhat.com>
-References: <20251212-phy-clk-round-rate-v3-0-beae3962f767@redhat.com>
-In-Reply-To: <20251212-phy-clk-round-rate-v3-0-beae3962f767@redhat.com>
-To: Vinod Koul <vkoul@kernel.org>, 
- Kishon Vijay Abraham I <kishon@kernel.org>, 
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Chunfeng Yun <chunfeng.yun@mediatek.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Heiko Stuebner <heiko@sntech.de>, 
- Neil Armstrong <neil.armstrong@linaro.org>, Stephen Boyd <sboyd@kernel.org>, 
- Maxime Ripard <mripard@kernel.org>
-Cc: linux-clk@vger.kernel.org, linux-phy@lists.infradead.org, 
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, Brian Masney <bmasney@redhat.com>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1629; i=bmasney@redhat.com;
- s=20250903; h=from:subject:message-id;
- bh=NfOJan9Myaz8PWi/tdBEvmDwiM4IlBdU+UqmIR/UHpw=;
- b=owGbwMvMwCW2/dJd9di6A+2Mp9WSGDKtAy71PRfV83r1eE1XcMbr4193OXztck+aIzTF0fIwx
- 8OmyOXFHaUsDGJcDLJiiixLco0KIlJX2d67o8kCM4eVCWQIAxenAEzkcBnDT8bgg94/bv76LP98
- asNWnk3r2i7mlX2fL39CbHOvzuf29BCGP/wVmU95Y0IeCWi+VV+bOlm/YtKFpXbSLZp8AR0a0lV
- hPAA=
-X-Developer-Key: i=bmasney@redhat.com; a=openpgp;
- fpr=A46D32705865AA3DDEDC2904B7D2DD275D7EC087
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: FxsQVdJYgEQYvdr4JCvwVNzPBQ8CgGx8TofF2oYFgwA_1765495065
-X-Mimecast-Originator: redhat.com
+	Fri, 12 Dec 2025 01:33:49 +0000
+Received: from localhost.localdomain (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 2ced0dd4b;
+	Fri, 12 Dec 2025 09:33:41 +0800 (GMT+08:00)
+From: Shawn Lin <shawn.lin@rock-chips.com>
+To: Manivannan Sadhasivam <mani@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>
+Cc: linux-rockchip@lists.infradead.org,
+	linux-pci@vger.kernel.org,
+	Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [PATCH v2 2/2] PCI: dw-rockchip: Change get_ltssm() to provide L1 Substates info
+Date: Fri, 12 Dec 2025 09:33:25 +0800
+Message-Id: <1765503205-22184-2-git-send-email-shawn.lin@rock-chips.com>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1765503205-22184-1-git-send-email-shawn.lin@rock-chips.com>
+References: <1765503205-22184-1-git-send-email-shawn.lin@rock-chips.com>
+X-HM-Tid: 0a9b10313f1309cckunm8cda450e102e7a
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGh5MT1YaTEsYGUlJGRpIGENWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=ajQUAVgH8Ox37c0AT3i2esq/AcI/Z8PID6uXJQhx5hO8Pror4pLqOvoEyzWPtxDmTs/uLC02hQ8PPrSW78eSrntRBNh+ldOyVl9Zm8Q1nGDyG6mFJg/AxOR3LG4Enlb603XD0QcgiA6OTYHepHnfF8SP5lKd2FM6lEME1SwdNKs=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=bjvekfuXKUY/QHrOhNIiT7hEMtDBUtJGLlM17jv1XzM=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251211_151748_137959_9DDCFF69 
-X-CRM114-Status: GOOD (  11.61  )
+X-CRM114-CacheID: sfid-20251211_173347_733219_0A8FA64B 
+X-CRM114-Status: GOOD (  13.72  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,55 +66,112 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The round_rate() clk ops is deprecated, so migrate this driver from
-round_rate() to determine_rate() using the Coccinelle semantic patch
-on the cover letter of this series.
+Rename rockchip_pcie_get_ltssm() to rockchip_pcie_get_ltssm_reg() and add
+rockchip_pcie_get_ltssm() to get_ltssm() callback in order to show the
+proper L1 Substates. The PCIE_CLIENT_LTSSM_STATUS[5:0] register returns
+the same LTSSM layout as enum dw_pcie_ltssm. So we only need to tell L1 PM
+Substates apart and return the proper value defined in pcie-designware.h.
 
-Signed-off-by: Brian Masney <bmasney@redhat.com>
+  cat /sys/kernel/debug/dwc_pcie_a40000000.pcie/ltssm_status
+  L1_2 (0x142)
+
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 ---
- drivers/phy/ti/phy-j721e-wiz.c | 11 +++++++----
- 1 file changed, 7 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/phy/ti/phy-j721e-wiz.c b/drivers/phy/ti/phy-j721e-wiz.c
-index a8b440c6c46bb0c754845655f9c2c0ba6b435b8d..cbc98d4dec74560e6403fb899ebe2bb916440f45 100644
---- a/drivers/phy/ti/phy-j721e-wiz.c
-+++ b/drivers/phy/ti/phy-j721e-wiz.c
-@@ -934,12 +934,15 @@ static unsigned long wiz_clk_div_recalc_rate(struct clk_hw *hw,
- 	return divider_recalc_rate(hw, parent_rate, val, div->table, 0x0, 2);
- }
+Changes in v2:
+- fix commit log and subject(Bjorn)
+- remove "else" and wrap to fit in 80 columns(Bjorn)
+
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c | 29 +++++++++++++++++++++++----
+ 1 file changed, 25 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+index f8605fe..8c1c922 100644
+--- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
++++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+@@ -68,6 +68,11 @@
+ #define  PCIE_CLKREQ_NOT_READY		FIELD_PREP_WM16(BIT(0), 0)
+ #define  PCIE_CLKREQ_PULL_DOWN		FIELD_PREP_WM16(GENMASK(13, 12), 1)
  
--static long wiz_clk_div_round_rate(struct clk_hw *hw, unsigned long rate,
--				   unsigned long *prate)
-+static int wiz_clk_div_determine_rate(struct clk_hw *hw,
-+				      struct clk_rate_request *req)
- {
- 	struct wiz_clk_divider *div = to_wiz_clk_div(hw);
- 
--	return divider_round_rate(hw, rate, prate, div->table, 2, 0x0);
-+	req->rate = divider_round_rate(hw, req->rate, &req->best_parent_rate,
-+				       div->table, 2, 0x0);
++/* RASDES TBA information */
++#define PCIE_CLIENT_CDM_RASDES_TBA_INFO_CMN	0x154
++#define  PCIE_CLIENT_CDM_RASDES_TBA_L1_1	BIT(4)
++#define  PCIE_CLIENT_CDM_RASDES_TBA_L1_2	BIT(5)
 +
-+	return 0;
+ /* Hot Reset Control Register */
+ #define PCIE_CLIENT_HOT_RESET_CTRL	0x180
+ #define  PCIE_LTSSM_APP_DLY2_EN		BIT(1)
+@@ -181,11 +186,26 @@ static int rockchip_pcie_init_irq_domain(struct rockchip_pcie *rockchip)
+ 	return 0;
  }
  
- static int wiz_clk_div_set_rate(struct clk_hw *hw, unsigned long rate,
-@@ -958,7 +961,7 @@ static int wiz_clk_div_set_rate(struct clk_hw *hw, unsigned long rate,
+-static u32 rockchip_pcie_get_ltssm(struct rockchip_pcie *rockchip)
++static u32 rockchip_pcie_get_ltssm_reg(struct rockchip_pcie *rockchip)
+ {
+ 	return rockchip_pcie_readl_apb(rockchip, PCIE_CLIENT_LTSSM_STATUS);
+ }
  
- static const struct clk_ops wiz_clk_div_ops = {
- 	.recalc_rate = wiz_clk_div_recalc_rate,
--	.round_rate = wiz_clk_div_round_rate,
-+	.determine_rate = wiz_clk_div_determine_rate,
- 	.set_rate = wiz_clk_div_set_rate,
++static enum dw_pcie_ltssm rockchip_pcie_get_ltssm(struct dw_pcie *pci)
++{
++	struct rockchip_pcie *rockchip = to_rockchip_pcie(pci);
++	u32 val = rockchip_pcie_readl_apb(rockchip,
++			PCIE_CLIENT_CDM_RASDES_TBA_INFO_CMN);
++
++	if (val & PCIE_CLIENT_CDM_RASDES_TBA_L1_1)
++		return DW_PCIE_LTSSM_L1_1;
++
++	if (val & PCIE_CLIENT_CDM_RASDES_TBA_L1_2)
++		return DW_PCIE_LTSSM_L1_2;
++
++	return rockchip_pcie_get_ltssm_reg(rockchip) & PCIE_LTSSM_STATUS_MASK;
++}
++
+ static void rockchip_pcie_enable_ltssm(struct rockchip_pcie *rockchip)
+ {
+ 	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_ENABLE_LTSSM,
+@@ -201,7 +221,7 @@ static void rockchip_pcie_disable_ltssm(struct rockchip_pcie *rockchip)
+ static bool rockchip_pcie_link_up(struct dw_pcie *pci)
+ {
+ 	struct rockchip_pcie *rockchip = to_rockchip_pcie(pci);
+-	u32 val = rockchip_pcie_get_ltssm(rockchip);
++	u32 val = rockchip_pcie_get_ltssm_reg(rockchip);
+ 
+ 	return FIELD_GET(PCIE_LINKUP_MASK, val) == PCIE_LINKUP;
+ }
+@@ -485,6 +505,7 @@ static const struct dw_pcie_ops dw_pcie_ops = {
+ 	.link_up = rockchip_pcie_link_up,
+ 	.start_link = rockchip_pcie_start_link,
+ 	.stop_link = rockchip_pcie_stop_link,
++	.get_ltssm = rockchip_pcie_get_ltssm,
  };
  
-
+ static irqreturn_t rockchip_pcie_rc_sys_irq_thread(int irq, void *arg)
+@@ -499,7 +520,7 @@ static irqreturn_t rockchip_pcie_rc_sys_irq_thread(int irq, void *arg)
+ 	rockchip_pcie_writel_apb(rockchip, reg, PCIE_CLIENT_INTR_STATUS_MISC);
+ 
+ 	dev_dbg(dev, "PCIE_CLIENT_INTR_STATUS_MISC: %#x\n", reg);
+-	dev_dbg(dev, "LTSSM_STATUS: %#x\n", rockchip_pcie_get_ltssm(rockchip));
++	dev_dbg(dev, "LTSSM_STATUS: %#x\n", rockchip_pcie_get_ltssm_reg(rockchip));
+ 
+ 	if (reg & PCIE_RDLH_LINK_UP_CHGED) {
+ 		if (rockchip_pcie_link_up(pci)) {
+@@ -526,7 +547,7 @@ static irqreturn_t rockchip_pcie_ep_sys_irq_thread(int irq, void *arg)
+ 	rockchip_pcie_writel_apb(rockchip, reg, PCIE_CLIENT_INTR_STATUS_MISC);
+ 
+ 	dev_dbg(dev, "PCIE_CLIENT_INTR_STATUS_MISC: %#x\n", reg);
+-	dev_dbg(dev, "LTSSM_STATUS: %#x\n", rockchip_pcie_get_ltssm(rockchip));
++	dev_dbg(dev, "LTSSM_STATUS: %#x\n", rockchip_pcie_get_ltssm_reg(rockchip));
+ 
+ 	if (reg & PCIE_LINK_REQ_RST_NOT_INT) {
+ 		dev_dbg(dev, "hot reset or link-down reset\n");
 -- 
-2.52.0
+2.7.4
 
 
 _______________________________________________
