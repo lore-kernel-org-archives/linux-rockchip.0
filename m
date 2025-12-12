@@ -4,63 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4C60D59F44
-	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Dec 2025 22:02:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 092D0D59F44
+	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Dec 2025 22:26:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=R2P/K6khhorWwuhZ6uuMUD61L2frZVAHY8F82wYL3QY=; b=e8S99IY2hOFWIv
-	Yh1ffaxCl+EeBGMj7sZ/Ayzj4ozw9RmQila2nkUvNa8XfwGZF0TKURzxtrXhA2f+ypcyfxZchhOQ1
-	HcnvhZ1qQws2dFypYh4xMWOEXFb8yOt2JLPm6nRpjgBvavchpXtoiC0EvjcNvASh1LyS0w+DFA21N
-	O5ZthybBhYDoswg436d1IxndEguu86VIxYwoM5EFU1OX0kZEqBBeqXjMMJnZKxcCMEMhtIkw0XXbs
-	411IbmJfy5zo8TAYYd26pKQ2GPI071Z709BQBngerXzTBsQhWlnWCnrXZQvxcjztBhUZjpS+kLBsJ
-	TgVWDoqOEPKGeN/Bla9g==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=xH8nFVdQsCxA3R5yiBQyQlxzG071XVuxPLWk3zeUOYM=; b=zSol2cYLVFLcQ+
+	A9niyhPtMgQAdytJOV+hupCrW5/meEG7NI1inV2BVlejxkOMeO3/lE6nBMklqW6+vCE0uEz47aMj1
+	ROeokHzWh4poxbI5yGGONHtko55gWW15x2ekcJnpD5a533MqZEjlgF95phEFGfHkd0IcdM7wuTXba
+	QwqDIXZN3eoPRJv4RING9C7FPh6VAZbarutGvSY+6IOQX6nJi1r104zV3uF8zniNyPtgE5fDsKXuS
+	ASGXriKY4aotP5u89OE1e+TxjcyPbhjdcCVOuonMQjhZ7o+uRmVvwDvvsgZ1pZJgoXOKc9qEjaJp3
+	ks6OGLXNCPkBaxRQvwmA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vUBDb-000000018TA-1gIp;
-	Fri, 12 Dec 2025 22:02:31 +0000
-Received: from mout01.posteo.de ([185.67.36.65])
+	id 1vUBaC-000000019nF-22pT;
+	Fri, 12 Dec 2025 22:25:52 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vUBDY-000000018SJ-3qvd
-	for linux-rockchip@lists.infradead.org;
-	Fri, 12 Dec 2025 22:02:30 +0000
-Received: from submission (posteo.de [185.67.36.169]) 
-	by mout01.posteo.de (Postfix) with ESMTPS id 7EA96240028
-	for <linux-rockchip@lists.infradead.org>; Fri, 12 Dec 2025 23:02:24 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=posteo.de; s=2017;
-	t=1765576945; bh=750ln4d5IZ+5twsG5klcrtotTQHvrYbgJe5RP9Qdpfk=;
-	h=From:To:Cc:Subject:Date:Message-ID:MIME-Version:
-	 Content-Transfer-Encoding:From;
-	b=OOCVLMyJ27bdtBJOhWq2K+khLTGgFuAebQ7Fp0HIbBinl5PGTt/vFBZam9hbHF51g
-	 Vr8yeRC1bCTdksm1E9fbSXhHfnnAmxmcp33vDVYUZ9YoVnnfcbQTHwsEJp8UD+NeFs
-	 yh03FKdeXvlpPbrVN+Q8Tun1jgq9SXpdPlt2Wi56NeEjC5dZ5xolfM/jFlB9hzGZmW
-	 /us2e1ohgO13JcncZ0A01CKHZW6MemwTiCOtBWLXKO21OIsCpcvFYn1u4XimQcWdJg
-	 PCij4Ng3xcihBMT3nzOOPbk7BLM1UjW9X/ysGTovU92ZdugRqoz2ZO19ZGQ+9mfALO
-	 9DppwCkQ1BT+Q==
-Received: from customer (localhost [127.0.0.1])
-	by submission (posteo.de) with ESMTPSA id 4dSk2l69Nsz9rxL;
-	Fri, 12 Dec 2025 23:02:23 +0100 (CET)
-From: Adrian Kossmann <adrian.kossmann@posteo.de>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	id 1vUBa5-000000019cj-2OfF;
+	Fri, 12 Dec 2025 22:25:48 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=5hB/xgi8wkQ2IXSB8CEixUZsLKng335tdHLW4IL6cEQ=; b=bRf38v9Dq/IgsTZNH8Cr1xcg3k
+	REVAA7pjWYHtSUB6SkUzsiynj/AUL6jb7xfjL0VbUktp3EPYh7s4uu9e/snOX1MrJzkMNeU0btS+d
+	XePz/oFfZfKwLwMcg4HA7X84G6rNUqL4Qcl54d4gBTp4s0hQPwEYpvEVa7oH5oxyA2Os=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1vUBZv-00Go4B-8Q; Fri, 12 Dec 2025 23:25:35 +0100
+Date: Fri, 12 Dec 2025 23:25:35 +0100
+From: Andrew Lunn <andrew@lunn.ch>
+To: Adrian Kossmann <adrian.kossmann@posteo.de>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Adrian Kossmann <adrian.kossmann@posteo.de>,
-	devicetree@vger.kernel.org,
+	Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v2] arm64: dts: rockchip: Adjust RGMII TXD/RXD delays for the Rock Pi E
-Date: Fri, 12 Dec 2025 22:02:24 +0000
-Message-ID: <20251212220151.574860-1-adrian.kossmann@posteo.de>
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2] arm64: dts: rockchip: Adjust RGMII TXD/RXD delays for
+ the Rock Pi E
+Message-ID: <57e99fa1-0e59-4129-bcae-b94df46447e7@lunn.ch>
+References: <20251212220151.574860-1-adrian.kossmann@posteo.de>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20251212220151.574860-1-adrian.kossmann@posteo.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251212_140229_086680_6A7531CF 
-X-CRM114-Status: UNSURE (   8.62  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251212_142546_639231_D8DF761C 
+X-CRM114-Status: GOOD (  17.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,41 +71,55 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Current RGMII TXD/RXD delay results in link instability
-under load, with throughput eventually dropping to zero.
-Adjust the RGMII TXD/RXD delay values for stable link
-under load and stable Gigabit throughput
+On Fri, Dec 12, 2025 at 10:02:24PM +0000, Adrian Kossmann wrote:
+> Current RGMII TXD/RXD delay results in link instability
+> under load, with throughput eventually dropping to zero.
+> Adjust the RGMII TXD/RXD delay values for stable link
+> under load and stable Gigabit throughput
+> 
+> Signed-off-by: Adrian Kossmann <adrian.kossmann@posteo.de>
+> ---
+> Changes in v2:
+> - Changed the patch subject as the last one contained
+>   incorrect changes
+> - Drop incorrect PHY compatible string change from v1
+> - Adjustments to RGMII RX/TX delay values
+> - Link to v1: https://lore.kernel.org/linux-rockchip/20251209210658.458506-2-adrian.kossmann@posteo.de/
+> 
+>  arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts b/arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts
+> index a4bdd87d0729..29ff0b8b8f18 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts
+> @@ -153,8 +153,8 @@ &gmac2io {
+>  	phy-supply = <&vcc_io>;
+>  	pinctrl-names = "default";
+>  	pinctrl-0 = <&rgmiim1_pins>;
+> -	tx_delay = <0x26>;
+> -	rx_delay = <0x11>;
+> +	tx_delay = <0x1a>;
+> +	rx_delay = <0x14>;
+>  	status = "okay";
 
-Signed-off-by: Adrian Kossmann <adrian.kossmann@posteo.de>
----
-Changes in v2:
-- Changed the patch subject as the last one contained
-  incorrect changes
-- Drop incorrect PHY compatible string change from v1
-- Adjustments to RGMII RX/TX delay values
-- Link to v1: https://lore.kernel.org/linux-rockchip/20251209210658.458506-2-adrian.kossmann@posteo.de/
+You cannot see it here, it appears before this context:
 
- arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+&gmac2io {
+        assigned-clocks = <&cru SCLK_MAC2IO>, <&cru SCLK_MAC2IO_EXT>;
+        assigned-clock-parents = <&gmac_clkin>, <&gmac_clkin>;
+        clock_in_out = "input";
+        phy-handle = <&rtl8211>;
+        phy-mode = "rgmii";
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts b/arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts
-index a4bdd87d0729..29ff0b8b8f18 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts
-@@ -153,8 +153,8 @@ &gmac2io {
- 	phy-supply = <&vcc_io>;
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&rgmiim1_pins>;
--	tx_delay = <0x26>;
--	rx_delay = <0x11>;
-+	tx_delay = <0x1a>;
-+	rx_delay = <0x14>;
- 	status = "okay";
- 
- 	mdio {
--- 
-2.52.0
+rgmii means the PCB provides the delay. I doubt that is the
+case. Please try changing this to rgmii-id, as recommended here:
 
+https://elixir.bootlin.com/linux/v6.15/source/Documentation/devicetree/bindings/net/ethernet-controller.yaml#L287
+
+and then try out different rx_delay and tx_delay values.
+
+    Andrew
 
 _______________________________________________
 Linux-rockchip mailing list
