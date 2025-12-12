@@ -4,72 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD22AD4921F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Dec 2025 12:46:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 815B7D49232
+	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Dec 2025 14:46:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ykyc6MHFDf8YqAo1694rdKHGUCmnyG3MPw9Wg+x5Nbg=; b=vF12GKlinlBdWQ
-	/wFPb1fyEPVsJ35oypoC/O7RFyhAHHR2DM77QlHZT8yN+4TV84wg1EV380h/GEz9k14fBIVyMrLbG
-	cRObVQMHffW5zvVP6PzOK59r470uqy+IbY7nKqZIGbvQ6lTGlQYGr8by7ndKLHbSfpecWhbROo+xp
-	CPIsb4pXFZGdn/D+S5TKQwhfXk1WwMhJyPREGhFKaF+BTppo3MLO6sHzSa/lRmUm5WFDEUm/pnMEP
-	6PFQV8xVtFNek8D47kVcWEDpyihgLIW3w4hgJJX73/hhcmtIADPl/FSCQlXXHJPQn7EEOXXcoI02G
-	hlmgZpIchz9vvnjRt6KA==;
+	List-Owner; bh=Y2LiBnwftB9UCESxZw4NXVVEybW7Q/ERpSuasR7lMnM=; b=yWR4dXKgTWuNvy
+	rTxYbPomCz5RJ1wqDPv6/bUl3Q/E2WCSBvYQHGTP+smycm3Iytpyj0/4rivCd+tJTzWEOYTDgLUjo
+	aOl47JyhiJKwqMlU2nwKDUV5DuguSIBqD0tMlJhEVK+J6jTOZjhwZyUH6H7z7VYDiLbtMrfQ50MQM
+	bGg9nRq8P92ryczZ9tP6UPjX2ChE4lNjvWWGRK9CfavngQspV/OPHTE1s7dmG2wJek8eB7STEo1ZE
+	MkOs1MQ46jTemIxVNoT9I29DLiiuojILL6CMWzX0bNVGi1wJxR7dJUeB7sl6gaZiG4Qgc7Sqlg3J7
+	tbxmYVG6tcPTWkDly8ig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vU2XD-00000000XZb-2b6w;
-	Fri, 12 Dec 2025 12:46:11 +0000
+	id 1vU4P6-00000000d4x-34fJ;
+	Fri, 12 Dec 2025 14:45:56 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vU2X9-00000000XYl-3zNz;
-	Fri, 12 Dec 2025 12:46:09 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1765543444; cv=none; 
+	id 1vU4P4-00000000d4E-2Lol;
+	Fri, 12 Dec 2025 14:45:55 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1765550718; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=Weu0CDwZIa4DQj4+JZX7MHkwLnD7GMhEeDpXz4JwPDXJ+UweHch98irmB8CPR62O81T234en7sTKdqH1muGOKJYGWf7qc0It4VziJ5ozii+mCR6bI0fO7BT/8fRA2e5z4g9Pno9dv1wIv0W2bJaQUuAu8Xvc/VM5HuF+tA9S9lM=
+	b=mLYsCPIEoEc8Cr72RwqmUED2y0IXBvLk3iq9bbiio6n2klgz6hEBIjz3kpqd7wHuZ1YcxGGeQqUFqba6E2wOQcQ0M8Rgk4paK7ECbcW9QBMJ4ywUee3U/WxHzRfjNuGcJ79pi5vf6nZKpSzvCn6BsHTi2aBvt3oAH3vjdPB/cy4=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1765543444; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=NCtTFdAR550Ro/EK0CpnBBWGB4plAQMacluoc0gbQ24=; 
-	b=KSsna4+V13P+LGlIn1om0lqh6qg30/GXTjbn8HKEMH+IVBlsdFMlEJYO1Y9qxFAFq+rSPdT4kmuzmvJzZb1+dHchXqHq/fYLqqf1kjehS++1gKhHu/RllM31AeVlRaw/9K4wTN5Tb9bT2B0utx4fDrPRj69IoA1I8iPpXcyJ7PE=
+	t=1765550718; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=yLCbjxHd3JePZY9d0bk2dJVpott5rtOluFwDLG0JMHY=; 
+	b=Pw0qhXc+MK5uCnO8utL49AHHfFeDH/mN7oFHwYjWNA8NY/s7/oDtaJdZhYdFEm65T3KtvOf2afds8WXu2hEEGVBeFfzk8XYskr5oPbgxuX54KM0JJp9Y3Z/21IbOO8AVLW0SvFZv8Ye0ad2TOM5S4kI5IZ0drHpvh8MDFJUnyvo=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1765543444;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1765550718;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
 	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=NCtTFdAR550Ro/EK0CpnBBWGB4plAQMacluoc0gbQ24=;
-	b=Y/hAqvQKLHS0IpK+77z+Oa5HaISq+OWT8kgiCPMRfk9ZhuFlyxQN9I708ZrRgHmd
-	KeELLl4Uxm8q7qeY5lBzkUREGDOJLMty6wC42IB+2RbWzEU1mGOl/Q7jrb/esrpKlQi
-	kNlTHiTDSV8hSOA/Py7ngJPYTtIf00XGdYNQI/Zk=
-Received: by mx.zohomail.com with SMTPS id 1765543441860202.14133912038153;
-	Fri, 12 Dec 2025 04:44:01 -0800 (PST)
+	bh=yLCbjxHd3JePZY9d0bk2dJVpott5rtOluFwDLG0JMHY=;
+	b=WEURroe4KzFmp3qtxUJtYQ2//qLd5ebc0POtVGlpLyhvI+2Ddi4KiJCUnFY8q9Me
+	Ge2SGeJTmZkER1OsM1YUb2VMBkAN4a829RqFOmBWG/WYSSOu97vwoWQ7oURVV1Yqg2Q
+	ousABi9E/4SBqBnjXpfnbZSmw3bsoWCXUFHXAw4Q=
+Received: by mx.zohomail.com with SMTPS id 17655507158241002.007523871685;
+	Fri, 12 Dec 2025 06:45:15 -0800 (PST)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: David Laight <david.laight.linux@gmail.com>
-Cc: Sandy Huang <hjc@rock-chips.com>,
+To: Maxime Ripard <mripard@kernel.org>
+Cc: Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>,
+ Rodrigo Siqueira <siqueira@igalia.com>,
+ Alex Deucher <alexander.deucher@amd.com>,
+ Christian =?UTF-8?B?S8O2bmln?= <christian.koenig@amd.com>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Thomas Zimmermann <tzimmermann@suse.de>,
+ Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Sandy Huang <hjc@rock-chips.com>,
  Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>,
  Andy Yan <andy.yan@rock-chips.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Chaoyi Chen <chaoyi.chen@rock-chips.com>, dri-devel@lists.freedesktop.org,
+ Jani Nikula <jani.nikula@linux.intel.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Tvrtko Ursulin <tursulin@ursulin.net>, Dmitry Baryshkov <lumag@kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>, Rob Herring <robh@kernel.org>,
+ kernel@collabora.com, amd-gfx@lists.freedesktop.org,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, Daniel Stone <daniels@collabora.com>,
- kernel@collabora.com
-Subject: Re: [PATCH v4 1/8] drm/rockchip: vop2: Switch impossible format conditional
- to WARN_ON
-Date: Fri, 12 Dec 2025 13:43:55 +0100
-Message-ID: <14738785.uLZWGnKmhe@workhorse>
-In-Reply-To: <20251211223822.6eeabb4d@pumpkin>
-References: <20251211-vop2-atomic-fixups-v4-0-5d50eda26bf8@collabora.com>
- <20251211-vop2-atomic-fixups-v4-1-5d50eda26bf8@collabora.com>
- <20251211223822.6eeabb4d@pumpkin>
+ intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org
+Subject: Re: [PATCH v5 04/17] drm/bridge: Act on the DRM color format property
+Date: Fri, 12 Dec 2025 15:45:05 +0100
+Message-ID: <2747638.atdPhlSkOF@workhorse>
+In-Reply-To: <20251212-hidden-armored-mule-66dd32@penduick>
+References: <20251128-color-format-v5-0-63e82f1db1e1@collabora.com>
+ <3772903.e9J7NaK4W3@workhorse> <20251212-hidden-armored-mule-66dd32@penduick>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251212_044608_616567_6E7B506B 
-X-CRM114-Status: GOOD (  25.84  )
+X-CRM114-CacheID: sfid-20251212_064554_661094_3EC590BE 
+X-CRM114-Status: GOOD (  68.49  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,65 +97,252 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thursday, 11 December 2025 23:38:22 Central European Standard Time David Laight wrote:
-> On Thu, 11 Dec 2025 21:40:31 +0100
-> Nicolas Frattaroli <nicolas.frattaroli@collabora.com> wrote:
-> 
-> > From: Daniel Stone <daniels@collabora.com>
+On Friday, 12 December 2025 10:50:26 Central European Standard Time Maxime Ripard wrote:
+> On Thu, Dec 11, 2025 at 08:34:22PM +0100, Nicolas Frattaroli wrote:
+> > On Tuesday, 9 December 2025 15:27:28 Central European Standard Time Maxime Ripard wrote:
+> > > On Fri, Nov 28, 2025 at 10:05:40PM +0100, Nicolas Frattaroli wrote:
+> > > > The new DRM color format property allows userspace to request a specific
+> > > > color format on a connector. In turn, this fills the connector state's
+> > > > color_format member to switch color formats.
+> > > > 
+> > > > Make drm_bridges consider the color_format set in the connector state
+> > > > during the atomic bridge check. Specifically, reject any output bus
+> > > > formats that do not correspond to the requested color format.
+> > > > 
+> > > > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> > > > ---
+> > > >  drivers/gpu/drm/drm_bridge.c | 45 ++++++++++++++++++++++++++++++++++++++++++++
+> > > >  1 file changed, 45 insertions(+)
+> > > > 
+> > > > diff --git a/drivers/gpu/drm/drm_bridge.c b/drivers/gpu/drm/drm_bridge.c
+> > > > index 8f355df883d8..8aac9747f35e 100644
+> > > > --- a/drivers/gpu/drm/drm_bridge.c
+> > > > +++ b/drivers/gpu/drm/drm_bridge.c
+> > > > @@ -1052,6 +1052,47 @@ static int select_bus_fmt_recursive(struct drm_bridge *first_bridge,
+> > > >  	return ret;
+> > > >  }
+> > > >  
+> > > > +static bool __pure bus_format_is_color_fmt(u32 bus_fmt, enum drm_color_format fmt)
+> > > > +{
+> > > > +	if (fmt == DRM_COLOR_FORMAT_AUTO)
+> > > > +		return true;
+> > > > +
+> > > > +	switch (bus_fmt) {
+> > > > +	case MEDIA_BUS_FMT_FIXED:
+> > > > +		return true;
+> > > > +	case MEDIA_BUS_FMT_RGB888_1X24:
+> > > > +	case MEDIA_BUS_FMT_RGB101010_1X30:
+> > > > +	case MEDIA_BUS_FMT_RGB121212_1X36:
+> > > > +	case MEDIA_BUS_FMT_RGB161616_1X48:
+> > > > +		return fmt == DRM_COLOR_FORMAT_RGB444;
+> > > > +	case MEDIA_BUS_FMT_YUV8_1X24:
+> > > > +	case MEDIA_BUS_FMT_YUV10_1X30:
+> > > > +	case MEDIA_BUS_FMT_YUV12_1X36:
+> > > > +	case MEDIA_BUS_FMT_YUV16_1X48:
+> > > > +		return fmt == DRM_COLOR_FORMAT_YCBCR444;
+> > > > +	case MEDIA_BUS_FMT_UYVY8_1X16:
+> > > > +	case MEDIA_BUS_FMT_VYUY8_1X16:
+> > > > +	case MEDIA_BUS_FMT_YUYV8_1X16:
+> > > > +	case MEDIA_BUS_FMT_YVYU8_1X16:
+> > > > +	case MEDIA_BUS_FMT_UYVY10_1X20:
+> > > > +	case MEDIA_BUS_FMT_YUYV10_1X20:
+> > > > +	case MEDIA_BUS_FMT_VYUY10_1X20:
+> > > > +	case MEDIA_BUS_FMT_YVYU10_1X20:
+> > > > +	case MEDIA_BUS_FMT_UYVY12_1X24:
+> > > > +	case MEDIA_BUS_FMT_VYUY12_1X24:
+> > > > +	case MEDIA_BUS_FMT_YUYV12_1X24:
+> > > > +	case MEDIA_BUS_FMT_YVYU12_1X24:
+> > > > +		return fmt == DRM_COLOR_FORMAT_YCBCR422;
+> > > > +	case MEDIA_BUS_FMT_UYYVYY8_0_5X24:
+> > > > +	case MEDIA_BUS_FMT_UYYVYY10_0_5X30:
+> > > > +	case MEDIA_BUS_FMT_UYYVYY12_0_5X36:
+> > > > +	case MEDIA_BUS_FMT_UYYVYY16_0_5X48:
+> > > > +		return fmt == DRM_COLOR_FORMAT_YCBCR420;
+> > > > +	default:
+> > > > +		return false;
+> > > > +	}
+> > > > +}
+> > > > +
+> > > >  /*
+> > > >   * This function is called by &drm_atomic_bridge_chain_check() just before
+> > > >   * calling &drm_bridge_funcs.atomic_check() on all elements of the chain.
+> > > > @@ -1137,6 +1178,10 @@ drm_atomic_bridge_chain_select_bus_fmts(struct drm_bridge *bridge,
+> > > >  	}
+> > > >  
+> > > >  	for (i = 0; i < num_out_bus_fmts; i++) {
+> > > > +		if (!bus_format_is_color_fmt(out_bus_fmts[i], conn_state->color_format)) {
+> > > > +			ret = -ENOTSUPP;
+> > > > +			continue;
+> > > > +		}
+> > > 
+> > > Sorry, I'm struggling a bit to understand how this would work if a bridge both supports the bus
+> > > format selection and HDMI state helpers? Can you expand on it?
 > > 
-> > We should never be able to create a framebuffer with an unsupported
-> > format, so throw a warning if this ever happens, instead of attempting
-> > to stagger on.
+> > I have very little idea of whether this makes conceptual sense.
 > 
-> It doesn't look like you've changed the behaviour.
-
-Yes, the commit message needs to be adjusted.
-
-> Except that all the systems with PANIC_ON_WARN set will panic.
-> I believe that is somewhere over 90% of systems.
-
-I also like making up statistics. Warning here is the correct move
-in my opinion because this warning being triggered indicates a bug
-in the kernel code, and with PANIC_ON_WARN the user explicitly says
-they would rather panic in such a case than treat it as an abnormal
-condition that is recoverable.
-
-The reason why this condition ever occurring should be treated as an
-abnormal condition is because the DRM subsystem should guarantee we
-don't get a framebuffer of a format we didn't explicitly declare
-support for in the first place. So this condition being hit either
-means drm_universal_plane_init is broken, or the array of formats
-that's passed to it is out of sync with the conversion code, which
-is also a bug. Or someone managed to thoroughly hose DRM's internal
-kernel-side data structures, which is precisely the kind of thing
-PANIC_ON_WARN users want to abort for.
-
+> .. I wasn't asking you if it makes sense, I was asking you to explain
+> how you wanted it to work.
 > 
-> 	David
-> 
+> > The hope is that by working backwards from the last bridge and only
+> > accepting either fixed formats or something that corresponds to the
+> > target color format, we don't claim that a setup can do a colour
+> > format if the whole bridge chain isn't able to do it.
 > > 
-> > Signed-off-by: Daniel Stone <daniels@collabora.com>
-> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> > ---
-> >  drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 3 ++-
-> >  1 file changed, 2 insertions(+), 1 deletion(-)
-> > 
-> > diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> > index 498df0ce4680..20b49209ddcd 100644
-> > --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> > +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> > @@ -1030,7 +1030,8 @@ static int vop2_plane_atomic_check(struct drm_plane *plane,
-> >  		return 0;
-> >  
-> >  	format = vop2_convert_format(fb->format->format);
-> > -	if (format < 0)
-> > +	/* We shouldn't be able to create a fb for an unsupported format */
-> > +	if (WARN_ON(format < 0))
-> >  		return format;
-> >  
-> >  	/* Co-ordinates have now been clipped */
-> > 
+> > Of course, format conversions along the bridge chain where one
+> > input format can be converted to a set of output formats by some
+> > bridge will throw a massive wrench into this. And this is all
+> > assuming that the bus format is in any way related to the color
+> > format that will be sent out on the wire.
 > 
+> I'm not really concerned about this. As we move more and more bridges to
+> the state helpers, we can always fix it, but it needs at the very least
+> to document how you envision the whole thing to work, and ideally have
+> bunch of tests to make sure it still does.
+
+Where should I document the intended behavior? A code comment here is
+probably not visible to people implementing new bridge drivers, so I
+imagine there's a place in the docs?
+
+On the drm-kms docs page, I see:
+
+  Note that currently the bridge chaining and interactions with
+  connectors and panels are still in-flux and not really fully
+  sorted out yet.
+
+Which means maybe adding a sub-heading for DRM bridge there might
+make sense.
+
+For a complete solution, it should probably do a graph traversal
+starting from the last bridge's output format, and then looking
+to reach the first bridge output format in the chain in any way
+possible over a DAG where edges connect from input formats of
+the next bridge to the output formats of the previous bridge,
+and the output format of each bridge connects to whichever
+of its input formats can convert to this output format.
+
+Here's a diagram of what I mean:
+
+    .-----------------------------------.
+    |       SoC Video Processor         |
+    |-----------------------------------|
+    | out rgb | out yuv444 | out yuv420 |
+    '---------|------------|------------'
+        ^
+        |
+    .---------|------.
+    | in  rgb |      |
+    |---------| MIPI |
+    |    ^    | DSI  |
+    |    |    | TX   |
+    |---------|      |
+    | out rgb |      |
+    '---------|------'
+        ^
+        |
+        '----------.
+                    |
+    .----------|---------|-----------|----------------------------.
+    |          | in  rgb | in yuv444 |               |            |
+    |----------|---------|-----------|---------------|   BOB'S    |
+    |              ^   ^    ^  ^                     |  BARGAIN   |
+    |              |   |    |  '--------------.      |  MIPI DSI  |
+    |    .---------'   |    '----.            |      |  TO HDMI   |
+    |    |          .--'         |            |      |  BRIDGE    |
+    |---------|------------|------------|------------|            |
+    | out rgb | out yuv444 | out yuv422 | out yuv420 |            |
+    '---------|------------|------------|------------|------------'
+        ^           ^            ^
+        |           |            |
+    .---------|------------|------------.
+    | in  rgb | in  yuv444 | in  yuv422 |
+    |-----------------------------------|
+    |          HDMI CONNECTOR           |
+    '-----------------------------------'
+
+In this case, the MIPI DSI to HDMI bridge isn't very good so it can
+only convert YUV444 to YUV422 and YUV420, despite being able to
+convert RGB to YUV444 as well. The important bit is that there is
+a path back from "out yuv444" on the "HDMI CONNECTOR" all the way
+to the "SoC Video Processor", even though the processor's only going
+to be outputting RGB. So setting color_format to yuv444 should be
+possible in this case.
+
+My current code doesn't handle this case. It only works if bridges
+that convert can convert to any of their output formats regardless
+of the input format. Additionally, I don't think I'd have a good
+time if the SoC's video output processor sets the bus format to
+"fixed", because if everyone along the chain says they can do
+fixed formats then the output is going to claim it can do anything,
+which isn't the case.
+
+> 
+> > In practice, I don't have any hardware where whatever counts as
+> > a "bridge" is an actually more involved setup than just the TX
+> > controller. I tried looking into getting a board with one of the
+> > supported DSI-to-HDMI bridge chips so I can at least test how it
+> > would work in such a scenario, and I got one, but I'd need to make
+> > my own flat flex PCB to adapt it to the pinout of my SBC's DSI
+> > port.
+> > 
+> > So yeah I don't know how it's supposed to work, I just know this
+> > works for the case I'm working with, and any more complex case
+> > is literally unobtanium hardware which I'm not going to bother
+> > blowing days on maybe making a cable for when I'm already touching
+> > three different GPU drivers here and the intel-gfx-ci is screaming
+> > into my inbox about vague failures in unrelated codepaths in its
+> > native language, Klingon.
+> 
+> That's uncalled for.
+> 
+> > Which is all to say: is there a virtual drm bridge driver that
+> > exists, where I can set what formats it supports on the input
+> > and on the output, so that I can actually get a feel for how this
+> > is conceptually supposed to work without needing special hardware?
+> 
+> If your question is "do we have a way to replicate and test an arbitrary
+> setup to check how it behaves?", then yes, we do, it's what we're doing
+> in kunit. But you don't seem too fond of those.
+
+Okay, I will look into virtual bridge tests in kunit.
+
+> 
+> > Better yet: do you have a specific setup in mind where you know
+> > this approach does not work?
+> 
+> Look. I was asking a genuine question. If you want to get all defensive
+> about it, go ahead. But sending a series implementing something with a
+> lot of history, complex interactions, etc. and then expecting it to be a
+> breeze that will get merged in a few revisions is not going to work.
+> 
+> Pushing back when asked to follow our documented rules, or being
+> dismissive when asked design questions is not going to help you push
+> this forward. If anything, and because it's complex, the more tests you
+> add the better because we A) know it works in a specific set of cases,
+> and B) know it will still work going forward.
+> 
+> I'm sure you know what you're doing, but so do we.
+
+I worked under the assumption that the general vagueness of the
+questions were part of some elaborate dt-bindings-esque hazing
+ritual, and not that I was literally the first person to try and
+specify how drm bridge bus format selection should work. I apologise
+for my tone in light of that.
+
+I'm not convinced unit tests that test whether a single pre-defined
+mode is valid, as the existing mode_valid one does, have any value
+though. I'll comply however and add another with a yuv420-only mode,
+and another with a yuv420-also mode. My criticism is that in a
+scenario like this where "working" vs "broken" is highly dependent
+on the result based on the input data, the coverage of taken code
+branches is mostly irrelevant, and the real information comes from
+comprehensive testing of a wide set of inputs with attention paid
+to edge cases, verifying that they match the expected outputs.
+
+Kind regards,
+Nicolas Frattaroli
+
+> 
+> Maxime
 > 
 
 
