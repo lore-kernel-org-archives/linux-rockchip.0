@@ -4,63 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABBE0D43369
-	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Dec 2025 03:53:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 540D9D4336B
+	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Dec 2025 06:37:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WEUocP+cyt0OaMaGAAiit04DhekLEIpsgjY4aiB/OJc=; b=i6eVmD17FK8Sky
-	oANX803Oq2yasitPoEOdfhiCqKx6oeXilDdKTY1V0+VDDRwYN1PDhDqE3X5QW4OGa7rTBy8X8tC2E
-	zIW3LFGlE8PuZH6lTRaMWEjjw3fh//4NwO3qRt7ULWh1h0MgOozzCqGjwmkmvpVic/WPRJdXvj3aI
-	RMBM33jeLUhGO56kgyu7GPsjPow1Tm3mfJwChmgRRYhol2kRK8rN0D6fdq3S2n5VLn/QLVbY1GuJG
-	yA97/dWo8AKevkFC5At/kN0wOgRRBiy3xL1b1II2VMXBsW8s82EbwmUiR61ZADZzOUTDfhlYAbLzn
-	RI4KZns/D/hNr3Hh4egg==;
+	List-Owner; bh=h24hZ7whCj2rDTbZPbSUpWKE7/Gv/rMIf8+weTIXVgI=; b=tyAcgbOvT14dV/
+	axJsVK4U64Pn1R6/Px5h3Zqzu/yZ1Qwoq7/alx3voEh7K16BZ96FUXo2xJ4n8g6/oUEd/D4MNpp1o
+	tjoNX83gw6U/p+FxFBGUg/zpDwmcfwHqgE9KYwII4eBq/n/NsYVEUv2JsRbqbvzbZ7qGIfDroIJ/d
+	p5yGw3o4uPifvGO4uUkw83BkFARtjvDcvOL6qipYeV8Ot0iQXCE0AUYgCAewpL0/yNK9xwUqD4nMP
+	EFN/eo8D6B9fCntSwj9A1PW/10wePFojy+OiLfH4MlWMZKcMBgJTi6VcE4RZoyuIQaRGst1VKz7C5
+	wOUOvtGMjcWbZ3Qi6K4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vTuD4-000000002bM-2E2c;
-	Fri, 12 Dec 2025 03:52:50 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vTwmV-00000000AHB-20cM;
+	Fri, 12 Dec 2025 06:37:35 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vTuD2-000000002aq-1rP4;
-	Fri, 12 Dec 2025 03:52:48 +0000
+	id 1vTwmT-00000000AGU-1CrW;
+	Fri, 12 Dec 2025 06:37:33 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 7B8D260121;
-	Fri, 12 Dec 2025 03:52:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6E70FC4CEF1;
-	Fri, 12 Dec 2025 03:52:39 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 6E907600C3;
+	Fri, 12 Dec 2025 06:37:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 26324C4CEF1;
+	Fri, 12 Dec 2025 06:37:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1765511567;
-	bh=4aNjpdLHQX5WPy6vwTgIkcZd5b8rix/rORP2xiTO8Ko=;
+	s=k20201202; t=1765521452;
+	bh=CljOmxvU25QjtRs5y/lM3NXwAA/cz01Tq61VK0RzWJI=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=sB+P7XpkJ1Dp/PpeK2FJ2O+T82CuOhDGaBXmo7cR0B8RkuP36VrBm4Uyip/QaW3nl
-	 Nz8BbXrZzSOv2bJ2nZF/plsvKTfrPge0t49z0FlNLioys59JM9vRci5O3RXq9zE+O8
-	 yz9siG0TBbYh3amgXggAN5QqXyxwe24HBeYCJxy1iALO2RgC8itcWQy7GWzVs/e+AV
-	 sbCDJv4CSM8AGQB40OnlutDHJYA5NzA0yjQ6xPL96KNZUE8JHnLHTfIoELzgDlHAkK
-	 dmaOwrweQcn2rTWhQQGpb2a8HbGD7iyovS39KVSX3NimvFxoWz4RtGBk4N9JdDEeuK
-	 Ssab2LJW4WeFw==
-Date: Fri, 12 Dec 2025 12:52:35 +0900
-From: Manivannan Sadhasivam <mani@kernel.org>
-To: Niklas Cassel <cassel@kernel.org>
-Cc: Krishna Chaitanya Chundru <krishna.chundru@oss.qualcomm.com>, 
-	Jingoo Han <jingoohan1@gmail.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>, Rob Herring <robh@kernel.org>, 
-	Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, 
-	FUKAUMI Naoki <naoki@radxa.com>, linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	b=rM/JbITFT/eEnaHoT230alIn2hsNTXGJZwHNJwtCMLun+SxiLGLBFOdCqoa3J3HRv
+	 ZY/jzHbrgVujYTvzIXx6ufU/jFkLa2zM9b2F01TJS4oUTtP9oA1Z3DrFqU9mHtAZ24
+	 3F/m5RaWoppfzzfX+MtQJAhDh1D+vtU20Jvh3Lc1nNwWKf9tiCCM3aO27GOEcu+8ZB
+	 6CVeteThfOkNiSr0fBO0m4ZFXiNLghPkFxkISAWRzQgaefi+O0zxoMB84S/zGFjzsQ
+	 GSvMgwaAkOB0LU8igwAsLXoyCUyvBs3+dqvwTLOHM+mAdZuAiD/R2RyiMAY23F+/4P
+	 A7PTw78NB7NJQ==
+Date: Fri, 12 Dec 2025 15:37:26 +0900
+From: Niklas Cassel <cassel@kernel.org>
+To: Manivannan Sadhasivam <mani@kernel.org>
+Cc: Krishna Chaitanya Chundru <krishna.chundru@oss.qualcomm.com>,
+	Jingoo Han <jingoohan1@gmail.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>, FUKAUMI Naoki <naoki@radxa.com>,
+	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org
 Subject: Re: [PATCH v2] PCI: dwc: Make Link Up IRQ logic handle already
  powered on PCIe switches
-Message-ID: <pjn2gs43rqbe3odh6zvh4qaftxxl6qvdzpm6pgpadxeeid42ko@4a2qradscaqd>
+Message-ID: <aTu4JgDcfb_58qBK@fedora>
 References: <20251201063634.4115762-2-cassel@kernel.org>
  <f1059d5d-3fa5-423a-8093-0e99b65d5f4c@oss.qualcomm.com>
  <aTev28wihes6iJqs@dhcp-10-89-81-223>
  <dad4957c-ca13-4742-b46d-03f0478911d5@oss.qualcomm.com>
  <aTe1bA7lcVzFD5L7@dhcp-10-89-81-223>
+ <pjn2gs43rqbe3odh6zvh4qaftxxl6qvdzpm6pgpadxeeid42ko@4a2qradscaqd>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <aTe1bA7lcVzFD5L7@dhcp-10-89-81-223>
+In-Reply-To: <pjn2gs43rqbe3odh6zvh4qaftxxl6qvdzpm6pgpadxeeid42ko@4a2qradscaqd>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,34 +75,44 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlLCBEZWMgMDksIDIwMjUgYXQgMDI6MzY6NDRQTSArMDkwMCwgTmlrbGFzIENhc3NlbCB3
-cm90ZToKPiBPbiBUdWUsIERlYyAwOSwgMjAyNSBhdCAxMDo1NzoxOEFNICswNTMwLCBLcmlzaG5h
-IENoYWl0YW55YSBDaHVuZHJ1IHdyb3RlOgo+ID4gT24gMTIvOS8yMDI1IDEwOjQyIEFNLCBOaWts
-YXMgQ2Fzc2VsIHdyb3RlOgo+ID4gPiAKPiA+ID4gU28gSSBkb24ndCByZWFsbHkgdW5kZXJzdGFu
-ZCB5b3VyIGNvbmNlcm4gd2l0aCB0aGlzIHNlcmllcywgYXQgbGVhc3Qgbm90IGlmCj4gPiA+IGl0
-IGdvZXMgb24gdG9wIG9mIHlvdXIgc2VyaWVzOgo+ID4gPiBodHRwczovL2xvcmUua2VybmVsLm9y
-Zy9saW51eC1wY2kvMjAyNTExMjQtcGNpLXB3cmN0cmwtcmV3b3JrLXYxLTAtNzhhNzI2Mjc2ODNk
-QG9zcy5xdWFsY29tbS5jb20vCj4gPiBIaSBOaWtsYXMsCj4gPiAKPiA+IElmIHRoaXMgc2VyaWVz
-IGdvZXMgb24gdG9wIG9mIHRoZSBvdXIgc2VyaWVzIGkuZSBwd3JjdHJsIHJld29yayBzZXJpZXMs
-IEkKPiA+IGRvbid0IGhhdmUgYW55IGNvbmNlcm5zLgo+ID4gTXkgb25seSBjb25jZXJuIGlzIGxp
-bmsgdXAgSVJRIG5ldmVyIGZpcmVzIGlmIHRoaXMgcGF0Y2ggZ29lcyBiZWZvcmUgc2VyaWVzLgo+
-ID4gCj4gPiAtIEtyaXNobmEgQ2hhaXRhbnlhLgo+IAo+IFRoaXMgcGF0Y2ggbWlzc2VkIHRoZSB2
-Ni4xOSBtZXJnZSB3aW5kb3cgKGFuZCBzbyBkaWQgdGhlIHB3cmN0cmwgcmV3b3JrCj4gc2VyaWVz
-KSwgc28gYXMgbG9uZyBhcyBNYW5pIHF1ZXVlcyB1cCBib3RoIGZvciB2Ni4yMCAod2l0aCB0aGUg
-cHdyY3RybAo+IHJld29yayBzZXJpZXMgZ2V0dGluZyBhcHBsaWVkIGZpcnN0KSwgSSB0aGluayB3
-ZSBhcmUgZ29vZC4KPiAKClRoZSBwbGFuIGlzIHRvIG1lcmdlIHB3cmN0cmwgc2VyaWVzIHRvIHY2
-LjIwICh1bmxlc3Mgd2UgZ2V0IHN0cm9uZyBvYmplY3Rpb25zKSwKYnV0IG9uY2UgdGhhdCBoYXBw
-ZW5zLCBRY29tIGRvZXNuJ3QgbmVlZCB0aGlzIHBhdGNoLgoKU28gaXQnZCBiZSBnb29kIGlmIHlv
-dSBjYW4ganVzdCBsaW1pdCB0aGlzIHBhdGNoIHRvIGp1c3QgUm9ja2NoaXAuIFRoZW4gb25jZSB0
-aGUKUm9ja2NoaXAgYWxzbyBtb3ZlcyB0byBwd3JjdHJsLCB3ZSBjYW4gcmV2ZXJ0IHRoaXMgcGF0
-Y2ggKGFsc28gdGhlIHdob2xlIElSUQpiYXNlZCBsaW5rIHVwIHNpbmNlIHRoZSBSb290IFBvcnQg
-aXMgbm90IGhvdHBsdWcgY2FwYWJsZSkuCgotIE1hbmkKCi0tIArgrq7grqPgrr/grrXgrqPgr43g
-rqPgrqngr40g4K6a4K6k4K6+4K6a4K6/4K614K6u4K+NCgpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGlu
-dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Hello Mani,
+
+On Fri, Dec 12, 2025 at 12:52:35PM +0900, Manivannan Sadhasivam wrote:
+> > This patch missed the v6.19 merge window (and so did the pwrctrl rework
+> > series), so as long as Mani queues up both for v6.20 (with the pwrctrl
+> > rework series getting applied first), I think we are good.
+> > 
+> 
+> The plan is to merge pwrctrl series to v6.20 (unless we get strong objections),
+> but once that happens, Qcom doesn't need this patch.
+> 
+> So it'd be good if you can just limit this patch to just Rockchip. Then once the
+> Rockchip also moves to pwrctrl, we can revert this patch (also the whole IRQ
+> based link up since the Root Port is not hotplug capable).
+
+The main reason why I did not like a revert, was because it would remove
+the nice feature where the bus is enumerated automatically on link up.
+
+I assumed that the plan was to add Link Up IRQ support in pwrctrl in the
+future.
+
+If that is not the case, and the plan is instead to eventually remove the
+existing Link Up IRQ support, then perhaps you could simply apply patches
+from:
+https://lore.kernel.org/linux-pci/20251111105100.869997-8-cassel@kernel.org/
+
+Either the whole series or just patch 1 and 2, maintainer's choice :)
+
+
+Kind regards,
+Niklas
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
