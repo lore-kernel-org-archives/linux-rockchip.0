@@ -4,102 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3AF19D3B7E2
-	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Dec 2025 03:34:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABBE0D43369
+	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Dec 2025 03:53:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BpimL51N89sVxiN2JkTU5q5JaJNDmBmrHWUgJ8mVqs0=; b=JjvqoEgCoSneFJ
-	UqqF3Ndc33Qw4P0IFcaW1gYiwmURC/jY8RSfUNTV+JjGWgf0+AMDXUsJ9kFEnCDMxhb0GIM5EpUih
-	AYBBv937sqDuWOSAgWDYuVHmQ5yuviCCJKiKosqlP1KVZ+893jibJodGCQdR+PS8riiom5XHM1HvG
-	5voh3BXHfKjkkixPUp+DebLI6wv47MLRWLLN5fjzT+e5sZcSyY+d5j9Lr30f8IURVm/h18L/EIx0e
-	4jDDQJiw8sZttRsN9zF8dDE9yWy4yZEiFb+Cb3wK7b5Kb7BVoY/qAoRxKeJcd666sCKE/qjN7ijzg
-	8bzSdrKo3++OQ9GrHJ2Q==;
+	List-Owner; bh=WEUocP+cyt0OaMaGAAiit04DhekLEIpsgjY4aiB/OJc=; b=i6eVmD17FK8Sky
+	oANX803Oq2yasitPoEOdfhiCqKx6oeXilDdKTY1V0+VDDRwYN1PDhDqE3X5QW4OGa7rTBy8X8tC2E
+	zIW3LFGlE8PuZH6lTRaMWEjjw3fh//4NwO3qRt7ULWh1h0MgOozzCqGjwmkmvpVic/WPRJdXvj3aI
+	RMBM33jeLUhGO56kgyu7GPsjPow1Tm3mfJwChmgRRYhol2kRK8rN0D6fdq3S2n5VLn/QLVbY1GuJG
+	yA97/dWo8AKevkFC5At/kN0wOgRRBiy3xL1b1II2VMXBsW8s82EbwmUiR61ZADZzOUTDfhlYAbLzn
+	RI4KZns/D/hNr3Hh4egg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vTtv2-000000001O2-3hAL;
-	Fri, 12 Dec 2025 03:34:12 +0000
-Received: from mail-pj1-x1031.google.com ([2607:f8b0:4864:20::1031])
+	id 1vTuD4-000000002bM-2E2c;
+	Fri, 12 Dec 2025 03:52:50 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vTtv0-000000001NO-3F2V
-	for linux-rockchip@lists.infradead.org;
-	Fri, 12 Dec 2025 03:34:11 +0000
-Received: by mail-pj1-x1031.google.com with SMTP id 98e67ed59e1d1-34a47daf077so111685a91.2
-        for <linux-rockchip@lists.infradead.org>; Thu, 11 Dec 2025 19:34:10 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1765510449; x=1766115249; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=DI+KXchmH44mUxxpsbUV6PudffQTHA3dEjh5VjxDDHg=;
-        b=coF3Laik2qG8v0HZmAzshyRn0xRlgQxutJO5NMJapUUV2iDZhMbe03P5HK40ekjeVE
-         BZmplkR8TLVQo8iKjyd4sJL2lMGmzDc/OJY+DDLW/sw5kAgIM5cM9INGLjeK4ZdB4fQ7
-         oRzlMgz6MfXA9FmXWauysdvlfq8rLOKpwuse+sDNsDY6lY90ft6oGx80qWfqIt9iKFYk
-         BO3VFSVg7KBZWOPm/kcUQ89xO7OQ+pLyYgDdRklzxn4eiWjNB4dBr9kzpA0mlVFFzrqW
-         fC7Lo47lZGvkaDk5VOE2rDyfeY6TIOu4DJLAYiMY+11mZgxDr3EcGY8lFKzAja/QaDDg
-         hB+Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1765510449; x=1766115249;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=DI+KXchmH44mUxxpsbUV6PudffQTHA3dEjh5VjxDDHg=;
-        b=NmX70wiqCDVuikRGEJJE0VSAagFQEl/vfDCz48qTusilXucfKgmCBvY/Mq8ztNabdZ
-         7bp5Uiu2Y7MFh57FrvDqoSq536pQw6QghnV7ZAAj6vLom9MIabQgWF6u1F2yTu73M0D+
-         z5y6oqMPmE26QOBsz9FvdCYfmlXuSOfzQF26STS6U5rj4DuPFlaEYiTCj52S5LX1wjNl
-         t1C81ct1bUhaZ2nLNdx6CsMY6OOXe3ADLV7AwZafyHZLOofc/F+TNKDeEWRSqV0Oreka
-         /4vblD5LmzRJdLDph77cbBV0lL75I7qLVbhbiuTa9oacBH5Y0sr5RPLerdzotT0APXL9
-         SKog==
-X-Forwarded-Encrypted: i=1; AJvYcCWXhnOXFt33GODxHfwE21hcnBOfhPl7pj6FgiR6ISMHHcynmmn6Qm4Nf6KlLY7D2lYXChhzZQQOvYXnsiHMjw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwEb1iGnYLpRjWM450BTmiBDyktxCU+2q7AFvcFqELzJZfWehMs
-	+2RhEoYTv6tmGDmPtLcRzorcZ7U0GrEWLcH02BOd5eFsMyoFW032udKt
-X-Gm-Gg: AY/fxX6gsiYel5+4GecUA2MOjFtDJY7q6LY4yc2NKlj5QmdBOiPQFTJjYEIV2u/fqA1
-	YC0XdaxfFJYLy/AaLjnQ+aJke8kas1K3dNeeiKRrmCquWlLcXY09pMDwXUN6koQQrzj2R9+zmIa
-	EDdbX73h4Wzcr5p5u43EaHpbW5nMzEJ+6ZYrwjqJ16bZrIjvXLfdb74qrjOi4djymEiiWaue/S5
-	d4+9gZC+Y1TqwaWAhaGkyIuIHBpmDnaNc20RSDCyGi2XcAGQ9ZAtv5i3LeGXbMPpDdg3JYCPAAO
-	3RkXWMeUPN12jLRgbnxb4Ub72ozPIyBSxv3VV1i9xMiFO1t9P1giDPhYXt/q2XsRiylT5028g9s
-	QQJbcabA4mshf4RRN+hjNZ1qIODXXrVioeVi/BeGeND7ulhBSWyqHEXgSI8an0SeAxmH410LiYy
-	5PpM/XYfKIY4r7HEs=
-X-Google-Smtp-Source: AGHT+IEq2LErwdAEYXkfS1MvdZpjTJctOQkyTkNrB4+pZbLaSSuDnUfhZAotu6OCfqjLgju1qwGSvQ==
-X-Received: by 2002:a05:6a21:3397:b0:342:d1c5:491 with SMTP id adf61e73a8af0-369aab23434mr604352637.0.1765510449357;
-        Thu, 11 Dec 2025 19:34:09 -0800 (PST)
-Received: from rock-5b.. ([27.17.162.110])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-c0c2ad5996fsm3575764a12.22.2025.12.11.19.34.03
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 11 Dec 2025 19:34:08 -0800 (PST)
-From: Jianfeng Liu <liujianfeng1994@gmail.com>
-To: benjamin.gaignard@collabora.com
-Cc: conor+dt@kernel.org,
-	devicetree@vger.kernel.org,
-	heiko@sntech.de,
-	iommu@lists.linux.dev,
-	jgg@ziepe.ca,
-	joro@8bytes.org,
-	kernel@collabora.com,
-	krzk+dt@kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	mchehab@kernel.org,
-	nicolas.dufresne@collabora.com,
-	p.zabel@pengutronix.de,
-	robh@kernel.org,
-	robin.murphy@arm.com
-Subject: Re: [PATCH v9 3/7] iommu: Add verisilicon IOMMU driver
-Date: Fri, 12 Dec 2025 11:31:57 +0800
-Message-ID: <20251212033157.3036182-1-liujianfeng1994@gmail.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250911155720.180465-4-benjamin.gaignard@collabora.com>
-References: <20250911155720.180465-4-benjamin.gaignard@collabora.com>
+	id 1vTuD2-000000002aq-1rP4;
+	Fri, 12 Dec 2025 03:52:48 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 7B8D260121;
+	Fri, 12 Dec 2025 03:52:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6E70FC4CEF1;
+	Fri, 12 Dec 2025 03:52:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1765511567;
+	bh=4aNjpdLHQX5WPy6vwTgIkcZd5b8rix/rORP2xiTO8Ko=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=sB+P7XpkJ1Dp/PpeK2FJ2O+T82CuOhDGaBXmo7cR0B8RkuP36VrBm4Uyip/QaW3nl
+	 Nz8BbXrZzSOv2bJ2nZF/plsvKTfrPge0t49z0FlNLioys59JM9vRci5O3RXq9zE+O8
+	 yz9siG0TBbYh3amgXggAN5QqXyxwe24HBeYCJxy1iALO2RgC8itcWQy7GWzVs/e+AV
+	 sbCDJv4CSM8AGQB40OnlutDHJYA5NzA0yjQ6xPL96KNZUE8JHnLHTfIoELzgDlHAkK
+	 dmaOwrweQcn2rTWhQQGpb2a8HbGD7iyovS39KVSX3NimvFxoWz4RtGBk4N9JdDEeuK
+	 Ssab2LJW4WeFw==
+Date: Fri, 12 Dec 2025 12:52:35 +0900
+From: Manivannan Sadhasivam <mani@kernel.org>
+To: Niklas Cassel <cassel@kernel.org>
+Cc: Krishna Chaitanya Chundru <krishna.chundru@oss.qualcomm.com>, 
+	Jingoo Han <jingoohan1@gmail.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, 
+	FUKAUMI Naoki <naoki@radxa.com>, linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org
+Subject: Re: [PATCH v2] PCI: dwc: Make Link Up IRQ logic handle already
+ powered on PCIe switches
+Message-ID: <pjn2gs43rqbe3odh6zvh4qaftxxl6qvdzpm6pgpadxeeid42ko@4a2qradscaqd>
+References: <20251201063634.4115762-2-cassel@kernel.org>
+ <f1059d5d-3fa5-423a-8093-0e99b65d5f4c@oss.qualcomm.com>
+ <aTev28wihes6iJqs@dhcp-10-89-81-223>
+ <dad4957c-ca13-4742-b46d-03f0478911d5@oss.qualcomm.com>
+ <aTe1bA7lcVzFD5L7@dhcp-10-89-81-223>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251211_193410_801004_690F2E60 
-X-CRM114-Status: UNSURE (   6.10  )
-X-CRM114-Notice: Please train this message.
+Content-Disposition: inline
+In-Reply-To: <aTe1bA7lcVzFD5L7@dhcp-10-89-81-223>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,39 +72,34 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-On Thu, 11 Sep 2025 17:57:13 +0200, Benjamin Gaignard wrote:
->+#ifdef CONFIG_VSI_IOMMU
->+void vsi_iommu_restore_ctx(struct iommu_domain *domain);
->+#else
->+static inline void vsi_iommu_restore_ctx(struct iommu_domain *domain) {}
->+#endif
-
-After applying this patch to v6.18, I get error when building this driver
-as module:
-
-drivers/iommu/vsi-iommu.c:541:6: error: redefinition of 'vsi_iommu_restore_ctx'
-  541 | void vsi_iommu_restore_ctx(struct iommu_domain *domain)
-   |      ^~~~~~~~~~~~~~~~~~~~~
-In file included from drivers/iommu/vsi-iommu.c:31:
-./include/linux/vsi-iommu.h:18:20: note: previous definition of 'vsi_iommu_restore_ctx' with type 'void(struct iommu_domain *)'
-18 | static inline void vsi_iommu_restore_ctx(struct iommu_domain *domain) {}
-   |                    ^~~~~~~~~~~~~~~~~~~~~
-
-I have to use:
-#if IS_ENABLED(CONFIG_VSI_IOMMU)
-instead.
-
-Best regards,
-Jianfeng
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gVHVlLCBEZWMgMDksIDIwMjUgYXQgMDI6MzY6NDRQTSArMDkwMCwgTmlrbGFzIENhc3NlbCB3
+cm90ZToKPiBPbiBUdWUsIERlYyAwOSwgMjAyNSBhdCAxMDo1NzoxOEFNICswNTMwLCBLcmlzaG5h
+IENoYWl0YW55YSBDaHVuZHJ1IHdyb3RlOgo+ID4gT24gMTIvOS8yMDI1IDEwOjQyIEFNLCBOaWts
+YXMgQ2Fzc2VsIHdyb3RlOgo+ID4gPiAKPiA+ID4gU28gSSBkb24ndCByZWFsbHkgdW5kZXJzdGFu
+ZCB5b3VyIGNvbmNlcm4gd2l0aCB0aGlzIHNlcmllcywgYXQgbGVhc3Qgbm90IGlmCj4gPiA+IGl0
+IGdvZXMgb24gdG9wIG9mIHlvdXIgc2VyaWVzOgo+ID4gPiBodHRwczovL2xvcmUua2VybmVsLm9y
+Zy9saW51eC1wY2kvMjAyNTExMjQtcGNpLXB3cmN0cmwtcmV3b3JrLXYxLTAtNzhhNzI2Mjc2ODNk
+QG9zcy5xdWFsY29tbS5jb20vCj4gPiBIaSBOaWtsYXMsCj4gPiAKPiA+IElmIHRoaXMgc2VyaWVz
+IGdvZXMgb24gdG9wIG9mIHRoZSBvdXIgc2VyaWVzIGkuZSBwd3JjdHJsIHJld29yayBzZXJpZXMs
+IEkKPiA+IGRvbid0IGhhdmUgYW55IGNvbmNlcm5zLgo+ID4gTXkgb25seSBjb25jZXJuIGlzIGxp
+bmsgdXAgSVJRIG5ldmVyIGZpcmVzIGlmIHRoaXMgcGF0Y2ggZ29lcyBiZWZvcmUgc2VyaWVzLgo+
+ID4gCj4gPiAtIEtyaXNobmEgQ2hhaXRhbnlhLgo+IAo+IFRoaXMgcGF0Y2ggbWlzc2VkIHRoZSB2
+Ni4xOSBtZXJnZSB3aW5kb3cgKGFuZCBzbyBkaWQgdGhlIHB3cmN0cmwgcmV3b3JrCj4gc2VyaWVz
+KSwgc28gYXMgbG9uZyBhcyBNYW5pIHF1ZXVlcyB1cCBib3RoIGZvciB2Ni4yMCAod2l0aCB0aGUg
+cHdyY3RybAo+IHJld29yayBzZXJpZXMgZ2V0dGluZyBhcHBsaWVkIGZpcnN0KSwgSSB0aGluayB3
+ZSBhcmUgZ29vZC4KPiAKClRoZSBwbGFuIGlzIHRvIG1lcmdlIHB3cmN0cmwgc2VyaWVzIHRvIHY2
+LjIwICh1bmxlc3Mgd2UgZ2V0IHN0cm9uZyBvYmplY3Rpb25zKSwKYnV0IG9uY2UgdGhhdCBoYXBw
+ZW5zLCBRY29tIGRvZXNuJ3QgbmVlZCB0aGlzIHBhdGNoLgoKU28gaXQnZCBiZSBnb29kIGlmIHlv
+dSBjYW4ganVzdCBsaW1pdCB0aGlzIHBhdGNoIHRvIGp1c3QgUm9ja2NoaXAuIFRoZW4gb25jZSB0
+aGUKUm9ja2NoaXAgYWxzbyBtb3ZlcyB0byBwd3JjdHJsLCB3ZSBjYW4gcmV2ZXJ0IHRoaXMgcGF0
+Y2ggKGFsc28gdGhlIHdob2xlIElSUQpiYXNlZCBsaW5rIHVwIHNpbmNlIHRoZSBSb290IFBvcnQg
+aXMgbm90IGhvdHBsdWcgY2FwYWJsZSkuCgotIE1hbmkKCi0tIArgrq7grqPgrr/grrXgrqPgr43g
+rqPgrqngr40g4K6a4K6k4K6+4K6a4K6/4K614K6u4K+NCgpfX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGlu
+dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
+Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
