@@ -4,65 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23A9AD59F52
-	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Dec 2025 23:50:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4ECE7D59F6C
+	for <linux-rockchip@archiver.kernel.org>; Sat, 13 Dec 2025 05:51:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gm1mPbQR7Ha3aJwRQSgqDdwR0EyuPGAJZHV6pu/rBwU=; b=JTKRJyc/HODg9L
-	t4RiWcsvDNBlJ6gBpm0gXyVAWXjbYqwI3nCr/W0X5qj7i8Ep3pqFb/MLeSI+7ygkkM/zr4mxZ4U8s
-	RaXkzrLtNT2Htjt4a4T4UDZCjAMkasLnfjda8x9XwdXR/mi9kuuO8BaV63WJ84xecxGUJ1QLDHoad
-	jJKd1tvuLtYv/jNEp0jqj9HK2z+uIOjZOvR83m2NXRQi5pfsdsreAtDFDF7bz3u+sCwoLpD7HM01j
-	IktWePWzPsHxnaf8EkneTzrQdJGvRWjtX3hwANcwx1ahFcazYwjYXHeRGhUB9E8ywtAOAvyoCbptC
-	qsP14olCPkJ0Er/il81g==;
+	List-Owner; bh=aH2BCbOaXVcuBt6INHKkN/o2SwrZ58XEZWVcq3aNSv4=; b=0naLVaJTf8Xu/f
+	LQfqM0VB7Pb4L0akV+17VwoDSQU0cm6iALon3j1G3H4j4aS9jQxzLFlOawd5cZXcQW/Hx8OP5bP2t
+	rKygjFiHA+a7Fs/t6HZ0Y/SZxKYKfgUzQPMGWfwhy00fcRxNlNQoeZMRWuDsmE8q2q8WR2ft3Kp98
+	67SYJRugq0EmLF5wriD1a5QagE+0ziNHIshzgaZNT3EK9E+iF5O9eOMF+ldAXcmhJSZCwXZagStGy
+	S9ZaaUTnfjtmZnxOVdLT3HqrkH0v95WIjV5lCqy9glGvRXiFJfgXmPS4/w5amjPHZDXtHWghbtKg/
+	06GlMfBjL0SSNiiGkvxg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vUCu0-00000001Dub-28GH;
-	Fri, 12 Dec 2025 23:50:24 +0000
-Received: from mout01.posteo.de ([185.67.36.65])
+	id 1vUIXE-00000001Qwg-1rtE;
+	Sat, 13 Dec 2025 05:51:16 +0000
+Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vUCtv-00000001Dtl-39FS
+	id 1vUIXA-00000001Qvv-3gUl
 	for linux-rockchip@lists.infradead.org;
-	Fri, 12 Dec 2025 23:50:23 +0000
-Received: from submission (posteo.de [185.67.36.169]) 
-	by mout01.posteo.de (Postfix) with ESMTPS id 2757F240028
-	for <linux-rockchip@lists.infradead.org>; Sat, 13 Dec 2025 00:50:13 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=posteo.de; s=2017;
-	t=1765583414; bh=DhnIQJhYt6frMQDEzUl2UnGpUcZg2IdR59Af7tBLeXk=;
-	h=From:To:Cc:Subject:Date:Message-ID:MIME-Version:
-	 Content-Transfer-Encoding:From;
-	b=IQHN9NBqH6XoW0ZtNjeZi1wjZRQmZ0qBi+JbzV8txcZT0MHwez4fkIPDH3Ld7GLwT
-	 LfRcOcJIksGMHkiqhPOYE319K2+pTe4U9803UB4hpZo/c4dzV7ZS46VMbu3+ZHW4TM
-	 GtWmV3md6VFarlCun5jqMJ5h9j0Y4HLzWiOCe+QsZuB0E7CyY0Xg/62zzZWbyMyj4d
-	 jWMJsRfDKYhs645LqijG/tEWooDsJOkWAXbn4Lvv6aWLFhjs6qEQZsJoR8V8JDVUGa
-	 eG2rO5Lknm2vHULNhE5IKNtq3fg89b4jNlge3AvXxq64N8BFdqNZ4ciJgJbod7WCzB
-	 VbIvaLcvNF8rg==
-Received: from customer (localhost [127.0.0.1])
-	by submission (posteo.de) with ESMTPSA id 4dSmR85RRtz9rxD;
-	Sat, 13 Dec 2025 00:50:12 +0100 (CET)
-From: Adrian Kossmann <adrian.kossmann@posteo.de>
-To: andrew@lunn.ch
-Cc: adrian.kossmann@posteo.de,
-	conor+dt@kernel.org,
-	devicetree@vger.kernel.org,
+	Sat, 13 Dec 2025 05:51:14 +0000
+Received: by mail-pl1-x630.google.com with SMTP id d9443c01a7336-29f2d829667so2148205ad.0
+        for <linux-rockchip@lists.infradead.org>; Fri, 12 Dec 2025 21:51:11 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1765605071; x=1766209871; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Ucg9q3D0v6rAtcTIoC3bcbK6UjxarZfs96WicJi60fE=;
+        b=bFUSGx9DDh8NzLdHKVzgz1YZMl8jMb5T8A/XAmZ2l3ga8yMnBYa0Kh5kM2bf3AgIyG
+         ehSMHeFt1ZLI6ZIQHFHwK6jm1Ut8zLmvs6ObR1KhKMh+zOOLKZo6hAq/mc2HtVxb5Fkf
+         xihekh7UcezxajSS07qAn0BpKDIwrCfU+0lZd/qolEPmB7eOu86mkIieP5hLXNnq03ep
+         qWqRV6DwyXDV9BqDHVO4jUJxh6kGBEcqZgSBnVRNYGRzZjv4CGquEE3j4v+sVE66EvD7
+         ZF60fMxCOIlqQoHFXm0LVpGMh1KX+sDRxLYKnAjMTgvJT7IbANqdUxCssv93aWiPRE+4
+         w+dA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1765605071; x=1766209871;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=Ucg9q3D0v6rAtcTIoC3bcbK6UjxarZfs96WicJi60fE=;
+        b=jglorBkQ/dqXKn0khs5O7xadjq3gUC7AWSpMbLa1RFoP9iICKIGXq2lNl2LLK+CNvC
+         jE9Xl4v0vMOQiGJCWC+c0NEzUwLe0YcQGtUYs64dgiRrxWjvMLwkdFkq5uV++Oxim3M/
+         z6QkWN3De0Sc/BYhXUfZQljJmZf9lZLeki+bN6RpvYsao4WsKbkuxwJZDXFwEg+Yy1bP
+         kpcWouzqwpg5ghMcg1nIiawcaeJW3Y5toTa2egb44pLnphJV6swGITEV6nI8qlxKTSQ5
+         FSdAyBUP6VtWj+BaX2BlUg7XOII65pckO0Lzv80rt/GJwNpzI9idBlQI+NYUeImkbsTg
+         9Iaw==
+X-Forwarded-Encrypted: i=1; AJvYcCU618/zx6PgEzC0C4pkrfaNJvYVVG9mwvBtrrXJot5UL0DkGdOapuNkVZXkjul0YiBC9YPYoGgrJXZi9j6RiQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzbt+L8XPXPjUK6b65qWVyp15ABHlgVk0ZE/1gYbauApTIqcCkO
+	07dkL0P2XZHjBqxxeWoDvWV13PqatuYAudWDyw+uISGYYr96d0PLp2rW
+X-Gm-Gg: AY/fxX7JBrYwKxZTsL00UNh7gf4HLpPBb5lCvRe7herWAPZBg7vtI8GM8uG6HajcFsL
+	cN47MME2ppohgiq0vDuEY/VCM0t9crN6Nn4wxHa/TwZrkmXNxN0AaPVgvGDOa7G3wSeWyhGBCeF
+	jB3kJooR0hE1SbZVxyooOd4LBhofI15aGzFMClkCre8F4pFcg+2ZprjOIdZuu7J03rxvbvhOGiE
+	1h9D1oFDpWnbtebPYC76rw74HCWZ40nTVN0Wzr08M02ZV6Dw150/X9XgcOcevC6Zc1DP6NcQhLo
+	jG7GfaqaxOw/4ywQtrxXduHhVzdCjyWnrnFEII6y0no4QjLJzeGnJ5BE4fDCdOtcwgiG3+IN64r
+	aia72VG3vpln6oh8WSPmu+PHYYo6mt1RvLrLfUwE3sfByA3tRz1plaYJmzbG0b+VeMlF0ElTlP0
+	oS6dXD1+REuUqwZMEt7QYMOQ==
+X-Google-Smtp-Source: AGHT+IEVdF3D+n6cGQxNGJqnrYCRTg/VLTUaOirWaicTa+47OE5NWo1Zj/EmbxRkTtSFJrNN1gu79A==
+X-Received: by 2002:a17:903:2cd:b0:297:df7c:ed32 with SMTP id d9443c01a7336-29f237bac9dmr25852125ad.0.1765605070738;
+        Fri, 12 Dec 2025 21:51:10 -0800 (PST)
+Received: from rock-5b.. ([45.32.55.39])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-29eea043d62sm69743215ad.82.2025.12.12.21.51.01
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 12 Dec 2025 21:51:10 -0800 (PST)
+From: Jianfeng Liu <liujianfeng1994@gmail.com>
+To: jonas@kwiboo.se
+Cc: detlev.casanova@collabora.com,
+	ezequiel@vanguardiasur.com.ar,
 	heiko@sntech.de,
-	krzk+dt@kernel.org,
+	hverkuil@kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
+	linux-media@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	robh@kernel.org
-Subject: Re: [PATCH v2] arm64: dts: rockchip: Adjust RGMII TXD/RXD delays for the Rock Pi E
-Date: Fri, 12 Dec 2025 23:50:13 +0000
-Message-ID: <20251212234957.591812-1-adrian.kossmann@posteo.de>
-In-Reply-To: <57e99fa1-0e59-4129-bcae-b94df46447e7@lunn.ch>
-References: <57e99fa1-0e59-4129-bcae-b94df46447e7@lunn.ch>
+	liujianfeng1994@gmail.com,
+	mchehab@kernel.org,
+	nicolas.dufresne@collabora.com
+Subject: Re: [PATCH] media: rkvdec: set ctx->image_fmt in rkvdec_s_capture_fmt
+Date: Sat, 13 Dec 2025 13:50:52 +0800
+Message-ID: <20251213055052.3046554-1-liujianfeng1994@gmail.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <5c2dec91-667f-48f6-b958-e0cf81cab569@kwiboo.se>
+References: <5c2dec91-667f-48f6-b958-e0cf81cab569@kwiboo.se>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251212_155022_062032_B5AD6812 
-X-CRM114-Status: GOOD (  10.27  )
+X-CRM114-CacheID: sfid-20251212_215112_923991_60718597 
+X-CRM114-Status: UNSURE (   4.28  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,35 +110,16 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Andrew,
+On Fri, 12 Dec 2025 17:43:35 +0100, Jonas Karlman wrote:
+>Chromium should be fixed to follow spec at 4.5.3.2. Initialization [1]:
 
-> rgmii means the PCB provides the delay. I doubt that is the
-> case.
+Hi Jonas,
 
-Yes, however, to my understanding, there are two kinds of delays that
-influence RGMII timing: Delays that are added onto the clock signal 
-(TXC/RXC) and delays added to the data signal (TXD/RXD) by the GMAC.
-The link provided by you describes delays that are either introduced by 
-longer clock traces  on the PCB (rgmii phy-mode) or by programmable clock delays 
-(rgmii-id phy-mode). Delays for TXD timing and RXD timing are described in [1] 
-and are implemented by the Rockchip Ethernet driver which is bound to node 
-gmac2io according to [2]. The example DT binding in [1] as well as other 
-mainline DTS of devices that use the RK3328 seem to adjust RGMII timing 
-via TXD and RXD delays and setting phy-mode to rgmii, despite having 
-programmable TXC/RXC delays, at least according to the technical 
-manual of the RK3328. So, in this case this may be an exception
-from the usual convention that any RGMII phy mode other than 
-'rgmii-id' is probably wrong.
+Thank you for guiding me to the spec, I will look into chromium and try
+to fix it.
 
-Of course, I may have overlooked something or misunderstood, and I 
-would appreciate further guidance in this case.
-
-[1] https://www.kernel.org/doc/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
-[2] https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git/tree/arch/arm64/boot/dts/rockchip/rk3328.dtsi#n982
-
-
-      Adrian
-
+Best regards,
+Jianfeng
 
 _______________________________________________
 Linux-rockchip mailing list
