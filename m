@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CB53D5B170
-	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Dec 2025 08:54:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D173D5B173
+	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Dec 2025 08:54:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Hiz7fZ3JzkPJGnJmnyoNMfsEwrAQ5qei+d6HYqFpCnY=; b=h/QGgEPVO952+h
-	GNX5Isf7Zof3GNqbVAApLplDxFtZaT4O/oio0Ttn8tg7AdddAFYf5LiDEUIzNvQJrih1s8LlNwfM/
-	T12tcAHr8z+NzGrUutXKub/KfSs/woxMqGhvFWiR3hELMfyqX+YbQXH6eJfRDA0RNtZOQ8b7k6fo5
-	t0nbcHxM8wORERwPujOnTNdbo9MgTR+0gZ4A3pQxuJZENCMQ+K6WEJDcyz5AnK0zsiRwHpNoK85jR
-	7UeWapmkk70Jag9Y1zA59FKtspmphLbND/45ryeszjGL/FYR+9xdQDVXCpjxCKgt5ivA+rG3W0VYk
-	zwZhfiBls7Ky9GUJQPvw==;
+	List-Owner; bh=6PnEX+RKOtDsdHNxOrsZb5CWUQHLBsfBNHBoqHQyIUU=; b=BJd9vG4K84q+iY
+	YSFXOXFcIBw/wQ3sj5CGuOe3MRSS1WRWccfKLXb/RxUtwkqbHnWsZu96KWJqYjzUfixGrIyHJW7H+
+	D/t4YJ8bPI++XAMnVhAsWkANhZ2HF4FaoJxXrioDVMbg1NXlax3h2eHxqlj5zmwiNfYkEivk8yQ96
+	rjw/ZMBBdP4kB3W1uGOXl7SlWI6nnuBUsFyox/1dY54s5/OKjyAqSsTUMWnDRMngBKu0jvfSRkEYp
+	wmumg2jAreGriaK6SQSdzjewc9qB12N/4sPW/arwxofkMUJGKL73XWZJvLacBXSNx3DUaE0MfafRX
+	BKYPzpygwvnDpz3Y2mfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vV4LI-00000003J9X-02HX;
-	Mon, 15 Dec 2025 08:54:08 +0000
+	id 1vV4LK-00000003JDI-2Ovt;
+	Mon, 15 Dec 2025 08:54:10 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vV4LC-00000003J0c-12eu;
-	Mon, 15 Dec 2025 08:54:03 +0000
+	id 1vV4LC-00000003J0d-1t95;
+	Mon, 15 Dec 2025 08:54:04 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1765788839;
-	bh=dFDb+uXCI5iHJKzZgaeokj2YXCnxjmhPbpePbOplK+M=;
+	s=mail; t=1765788838;
+	bh=eRnEvjh2q0SJ1Tg1mygUFwm603wsxCDIEZ3pEp2Tr80=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=gYNYswpU9s2BmDrBPZKR//toSLSx6/pobaSwsrc3HzdoQ1De5M+OfiTAQQwnf1bw6
-	 5m6E2fL9dj2spSHpzk8o31PZ9QvDVCfDx45YoyhdsdW3cvv7VfuIX0981gbHCpKnWg
-	 Mgd+JNqM/Vv9aaxhE5Z2M73URLNOJuZSdvYOAL1vzi35ax8kY9HAUvQ+IIWWJkCkH7
-	 BkVzAp3HTyBrKyeP3hG1XZVa8xe7DOct++ZlQX0fa7qzdEzCGsY2e9crwkv5HasP6t
-	 Aq9yLt3JXKh++pt4Z4S6zBupxL4pFdQvLDZJJo8Puv7EXTtRED/BWNGLAXwvlclRjN
-	 xou7nu+XZjMrg==
+	b=WULtIqpzXb7kyp4msQmiZqtbhI97nPFoup0q3fbiZzeO+JjiT0ZPVNerF8/crRanC
+	 ZgT8s/K1xbo2zZsIEEJJWDAkWhn6+Y/bi9TRQbYy2KrkNDLOAK6OP+6aVBpjkbUuXi
+	 xrlf/0S3uXoKy8H4HZdEORxfF+OtErjqU0Im0QsyePDqIqt8T/+JDGsri1BgULp+8+
+	 jl8mesumAvlIsD/ba8r+h2Wxe0Tke7EU8nw/8725PU5GskZv1lsCOCrdoE9eZ9Rno4
+	 oeDUCPooRLSA9vIiRYbrdhfHAb4h/hAAMGFz4A30InYiDpKOknxZLVbxPbrq8aslan
+	 KBTNeiIi9wW/g==
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:c17e:135b:5095:83a8])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id ADE8817E1517;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1BB1717E1513;
 	Mon, 15 Dec 2025 09:53:58 +0100 (CET)
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: joro@8bytes.org,
@@ -62,17 +62,16 @@ Cc: iommu@lists.linux.dev,
 	linux-media@vger.kernel.org,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v10 6/7] arm64: dts: rockchip: Add verisilicon IOMMU node on RK3588
-Date: Mon, 15 Dec 2025 09:53:43 +0100
-Message-ID: <20251215085349.10155-7-benjamin.gaignard@collabora.com>
+Subject: [PATCH v10 5/7] media: verisilicon: AV1: Restore IOMMU context before decoding a frame
+Date: Mon, 15 Dec 2025 09:53:42 +0100
+Message-ID: <20251215085349.10155-6-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20251215085349.10155-1-benjamin.gaignard@collabora.com>
 References: <20251215085349.10155-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251215_005402_443612_D2B0B60C 
-X-CRM114-Status: UNSURE (   9.27  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251215_005402_662900_04282A26 
+X-CRM114-Status: GOOD (  10.90  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,37 +88,71 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add the device tree node for the Verisilicon IOMMU present
-in the RK3588 SoC.
-This IOMMU handles address translation for the VPU hardware blocks.
+AV1 is a stateless decoder which means multiple AV1 bitstreams could be
+decoded at the same time using the same hardware block. Before decoding
+a frame it is needed to restore the iommu tables to avoid mixing decode
+contexts.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 11 +++++++++++
- 1 file changed, 11 insertions(+)
+changes in version 10:
+- Fix build as module issue when Verisilicon video decoder is built-in.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-index 2a7921793020..acff8bb3a612 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-@@ -1364,6 +1364,17 @@ av1d: video-codec@fdc70000 {
- 		clock-names = "aclk", "hclk";
- 		power-domains = <&power RK3588_PD_AV1>;
- 		resets = <&cru SRST_A_AV1>, <&cru SRST_P_AV1>, <&cru SRST_A_AV1_BIU>, <&cru SRST_P_AV1_BIU>;
-+		iommus = <&av1d_mmu>;
-+	};
-+
-+	av1d_mmu: iommu@fdca0000 {
-+		compatible = "rockchip,rk3588-av1-iommu", "verisilicon,iommu-1.2";
-+		reg = <0x0 0xfdca0000 0x0 0x600>;
-+		interrupts = <GIC_SPI 109 IRQ_TYPE_LEVEL_HIGH 0>;
-+		clocks = <&cru ACLK_AV1>, <&cru PCLK_AV1>;
-+		clock-names = "core", "iface";
-+		#iommu-cells = <0>;
-+		power-domains = <&power RK3588_PD_AV1>;
- 	};
+ drivers/media/platform/verisilicon/Kconfig        |  1 +
+ .../verisilicon/rockchip_vpu981_hw_av1_dec.c      | 15 +++++++++++++++
+ 2 files changed, 16 insertions(+)
+
+diff --git a/drivers/media/platform/verisilicon/Kconfig b/drivers/media/platform/verisilicon/Kconfig
+index 3272a24db71d..e64bc8b55235 100644
+--- a/drivers/media/platform/verisilicon/Kconfig
++++ b/drivers/media/platform/verisilicon/Kconfig
+@@ -49,6 +49,7 @@ config VIDEO_HANTRO_ROCKCHIP
+ 	bool "Hantro VPU Rockchip support"
+ 	depends on VIDEO_HANTRO
+ 	depends on ARCH_ROCKCHIP || COMPILE_TEST
++	select VSI_IOMMU
+ 	default y
+ 	help
+ 	  Enable support for RK3288, RK3328, and RK3399 SoCs.
+diff --git a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
+index e4703bb6be7c..d9e68e0ded68 100644
+--- a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
++++ b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
+@@ -5,6 +5,9 @@
+  * Author: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+  */
  
- 	vop: vop@fdd90000 {
++#include <linux/iommu.h>
++#include <linux/vsi-iommu.h>
++
+ #include <media/v4l2-mem2mem.h>
+ #include "hantro.h"
+ #include "hantro_v4l2.h"
+@@ -2095,12 +2098,24 @@ rockchip_vpu981_av1_dec_set_output_buffer(struct hantro_ctx *ctx)
+ 	hantro_write_addr(vpu, AV1_TILE_OUT_MV, mv_addr);
+ }
+ 
++static void rockchip_vpu981_av1_restore_iommu(struct hantro_ctx *ctx)
++{
++	struct iommu_domain *domain;
++
++	/* Before decoding any frame iommu context need to be restored */
++	domain = iommu_get_domain_for_dev(ctx->dev->v4l2_dev.dev);
++	if (domain)
++		vsi_iommu_restore_ctx(domain);
++}
++
+ int rockchip_vpu981_av1_dec_run(struct hantro_ctx *ctx)
+ {
+ 	struct hantro_dev *vpu = ctx->dev;
+ 	struct vb2_v4l2_buffer *vb2_src;
+ 	int ret;
+ 
++	rockchip_vpu981_av1_restore_iommu(ctx);
++
+ 	hantro_start_prepare_run(ctx);
+ 
+ 	ret = rockchip_vpu981_av1_dec_prepare_run(ctx);
 -- 
 2.43.0
 
