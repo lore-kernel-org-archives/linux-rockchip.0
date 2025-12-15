@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 966E8D5B16C
-	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Dec 2025 14:12:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72E63D5B16E
+	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Dec 2025 14:12:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=16vBnbcWaI+KZWzHq/+cuoVzwKqZJSmM8/KPsyR1Sow=; b=OK4Vq6gpgAMNMu
-	vNlrGd8ZrJJ0BjV33aeLJOdgYkEy0K1UdicrT3bO5dF15K6tVN7cVm411A4uJibTSRGFe/vjKROGM
-	KAy34KLHJlLtL5710Qdl05DPyluwm61OulVyDebuhMpu8U4S9yURRxm5lQUD+HmEvp1cP2A5OZEHM
-	j4zTagsFc/N5KQsodAMwqFK+Yl5L+VR8NMBdla1YhJG8vBVJnXE223mcOWEIWAb0xjvljenNBtnwg
-	LwHZ6nqK3hcJBY5YDfZ/IG4z1APObJ8Jx0LgvuueOiab7KoTFa8/jukN4aR/5N2rMKq8u6S7MEeVp
-	r+IwKxVZEqz6fpwlg+Pw==;
+	List-Owner; bh=rnQfBnY9PoQ93Ywc+p6WurjlJz0TYUVk+zbXC4Npcfs=; b=waZmsErvUvInon
+	vtbX3yZkpz54UVCUL1y1Ev4k6w0dleLo3XZtHWiTeqAPEZsxyFp83YQRhGPvBsLGiBo5QPRQu6xsB
+	cgUeUyJYX+JJZ5eISwQMlfs0NsGvYNNj8APmZan+AR3rXw7nqYlkV/+maP9VhiF6mZk+KVpm0IYBw
+	5wdaBap2dwOVjzss1/1NbOIAZvObaF59pIyBXVrNI2KdvZyu9ZAuXZr+WLmH4QlTlo2Ftg+8Jj8Q8
+	yQc/mJw6r2lumKM2nMyVYb+mGBe5LMAKtoHDnvUd6IWLPtxv8EppDV4zDxvL26xYD6hXKv5X5iyBo
+	166xgW00Ole4IVZaKsDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vV9JQ-00000003lOR-3yx2;
-	Mon, 15 Dec 2025 14:12:32 +0000
+	id 1vV9Jg-00000003lXP-4Bda;
+	Mon, 15 Dec 2025 14:12:49 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vV9JN-00000003lMh-2bzW;
-	Mon, 15 Dec 2025 14:12:30 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1765807912; cv=none; 
+	id 1vV9Je-00000003lVj-2UCi;
+	Mon, 15 Dec 2025 14:12:47 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1765807930; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=Pe5zEGen7DWMIxa0od2V27KaZd5+IYdcsbmA109St1b4Tma8sLq/nrWMj+pK4uYwDZdpkmOoFUsuFE579SDvm13+7leM3eeELm4eMNSI4yJa7lWF8dpZONizF/rgv4vVfeWE+xY+67aV84AIH1S5hQ5w3vXTvaXWCPl19OUzajo=
+	b=lZ8rFTdi8PmRu+tQO4v+O0xTqoaSQ5nX2ukgNBUgnpyhoezI3uS+dsp8CoozRDgHdDDaUGcRdDeA91/OrPXL8+XRVRdwcvO6eVJVUDuTuIaVR0XU9XVGgAk+yYtcKU+sEig7SF66so6asE08Cd4oNWkGh9kHXHW5o9Q8UOzZx8s=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1765807912; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=p065Ctfv0+YZkVudNfEaBaJuLCONxpch52O21i+TW98=; 
-	b=l39otskCqJRUucKHJXIrtcgsQwwak6Jpfxgi4eNObTAEFpGM7Ebp/fyVJsSHDY3L9MQCGl+IllVUhvKfQ9CPpmQQf7uzACKXZPkROzTp7evXYNaptubrIi2VEZk7N9wgScdjQH0giJj+S1AhFagT1Crw6BAlckbGKQyEDrwHgRo=
+	t=1765807930; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=BrCltiwnJeJBxnCzg3Wzx1kxB2QTTch2UaqTtqQ6q/I=; 
+	b=heM+3J9JMnuPyDuF1y/G3JzsOcw6MZBRIVfPFAB5/gjJg4mCugQGvOLxgz/xbKUFgHNVYkWbtndeHjZbf/6Mu3esIJqwwn2zgAXt3a2vt3zZB1W5CjZXEJNY2a3Q+FKNmdjD29c782wZLCjHNqrqZPIKqlMhaoE3VJ++WEgj1e4=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1765807912;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1765807930;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
 	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=p065Ctfv0+YZkVudNfEaBaJuLCONxpch52O21i+TW98=;
-	b=d9lZdGCXn+1rU5HzZhl0hdtdnqfneWhgLdqRxMqHXX/AyhNVd3bu+MmX0o/wsYII
-	q7XzwADK0RkiHmRCiZ5osIZHFzDuqx/8TmEdb3Wg/TEcvjc+FWorWA02yH4tbvLAvnT
-	mkGyloQ3O+cP4sWYa4jwwbKg6XaA1qr1DoDHuh6M=
-Received: by mx.zohomail.com with SMTPS id 1765807906487314.75561026470734;
-	Mon, 15 Dec 2025 06:11:46 -0800 (PST)
+	bh=BrCltiwnJeJBxnCzg3Wzx1kxB2QTTch2UaqTtqQ6q/I=;
+	b=jOIq6HiDjqQ5IHAZXt/4jCuh0XQxPka8HHLJ5oGn3m0UZZTVstqXXEBPkI3EDQnq
+	mMz8IasfLT+h7wjJwuquHYF9TACbep3QXiZJSEFSGdCEAZRQV7bGo1IK7K9RI883KK4
+	iCc1CAVs0b2B7HtEI2HcZ8nxQfFz8M28s7F46ygg=
+Received: by mx.zohomail.com with SMTPS id 1765807924696668.2202797637121;
+	Mon, 15 Dec 2025 06:12:04 -0800 (PST)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Mon, 15 Dec 2025 15:09:23 +0100
-Subject: [PATCH v5 7/8] drm/rockchip: vop2: Use drm_is_afbc helper function
+Date: Mon, 15 Dec 2025 15:09:24 +0100
+Subject: [PATCH v5 8/8] drm/rockchip: vop2: Simplify format_mod_supported
 MIME-Version: 1.0
-Message-Id: <20251215-vop2-atomic-fixups-v5-7-83463c075a8d@collabora.com>
+Message-Id: <20251215-vop2-atomic-fixups-v5-8-83463c075a8d@collabora.com>
 References: <20251215-vop2-atomic-fixups-v5-0-83463c075a8d@collabora.com>
 In-Reply-To: <20251215-vop2-atomic-fixups-v5-0-83463c075a8d@collabora.com>
 To: Sandy Huang <hjc@rock-chips.com>, 
@@ -67,8 +67,8 @@ Cc: David Laight <david.laight.linux@gmail.com>,
  Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251215_061229_722934_481DC625 
-X-CRM114-Status: GOOD (  10.30  )
+X-CRM114-CacheID: sfid-20251215_061246_664205_47CEDDE4 
+X-CRM114-Status: GOOD (  15.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,28 +87,101 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Daniel Stone <daniels@collabora.com>
 
-We don't need to do a long open-coded walk here; we can simply check the
-modifier value.
+Make it a little less convoluted, and just directly check if the
+combination of plane + format + modifier is supported.
 
 Signed-off-by: Daniel Stone <daniels@collabora.com>
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 56 +++++++++++-----------------
+ 1 file changed, 22 insertions(+), 34 deletions(-)
 
 diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index 7591a34ba912..707b48c7e9d8 100644
+index 707b48c7e9d8..a0099e4dd4ea 100644
 --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
 +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -1207,7 +1207,7 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
- 		return;
+@@ -367,59 +367,47 @@ static bool is_yuv_output(u32 bus_format)
+ 	}
+ }
+ 
+-static bool rockchip_afbc(struct drm_plane *plane, u64 modifier)
+-{
+-	int i;
+-
+-	if (modifier == DRM_FORMAT_MOD_LINEAR)
+-		return false;
+-
+-	for (i = 0 ; i < plane->modifier_count; i++)
+-		if (plane->modifiers[i] == modifier)
+-			return true;
+-
+-	return false;
+-}
+-
+ static bool rockchip_vop2_mod_supported(struct drm_plane *plane, u32 format,
+ 					u64 modifier)
+ {
+ 	struct vop2_win *win = to_vop2_win(plane);
+ 	struct vop2 *vop2 = win->vop2;
++	int i;
+ 
++	/* No support for implicit modifiers */
+ 	if (modifier == DRM_FORMAT_MOD_INVALID)
+ 		return false;
+ 
+-	if (vop2->version == VOP_VERSION_RK3568) {
+-		if (vop2_cluster_window(win)) {
+-			if (modifier == DRM_FORMAT_MOD_LINEAR) {
+-				drm_dbg_kms(vop2->drm,
+-					    "Cluster window only supports format with afbc\n");
+-				return false;
+-			}
+-		}
++	/* The cluster window on 3568 is AFBC-only */
++	if (vop2->version == VOP_VERSION_RK3568 && vop2_cluster_window(win) &&
++	    !drm_is_afbc(modifier)) {
++		drm_dbg_kms(vop2->drm,
++			    "Cluster window only supports format with afbc\n");
++		return false;
  	}
  
--	afbc_en = rockchip_afbc(plane, fb->modifier);
-+	afbc_en = drm_is_afbc(fb->modifier);
+-	if (format == DRM_FORMAT_XRGB2101010 || format == DRM_FORMAT_XBGR2101010) {
+-		if (vop2->version == VOP_VERSION_RK3588) {
+-			if (!rockchip_afbc(plane, modifier)) {
+-				drm_dbg_kms(vop2->drm, "Only support 32 bpp format with afbc\n");
+-				return false;
+-			}
+-		}
++	/* 10bpc formats on 3588 are AFBC-only */
++	if (vop2->version == VOP_VERSION_RK3588 && !drm_is_afbc(modifier) &&
++	    (format == DRM_FORMAT_XRGB2101010 || format == DRM_FORMAT_XBGR2101010)) {
++		drm_dbg_kms(vop2->drm, "Only support 10bpc format with afbc\n");
++		return false;
+ 	}
  
- 	offset = (src->x1 >> 16) * fb->format->cpp[0];
++	/* Linear is otherwise supported everywhere */
+ 	if (modifier == DRM_FORMAT_MOD_LINEAR)
+ 		return true;
  
+-	if (!rockchip_afbc(plane, modifier)) {
+-		drm_dbg_kms(vop2->drm, "Unsupported format modifier 0x%llx\n",
+-			    modifier);
+-
++	/* Not all format+modifier combinations are allowable */
++	if (vop2_convert_afbc_format(format) == VOP2_AFBC_FMT_INVALID)
+ 		return false;
++
++	/* Different windows have different format/modifier support */
++	for (i = 0; i < plane->modifier_count; i++) {
++		if (plane->modifiers[i] == modifier)
++			return true;
+ 	}
+ 
+-	return vop2_convert_afbc_format(format) >= 0;
++	return false;
+ }
+ 
+ /*
 
 -- 
 2.52.0
