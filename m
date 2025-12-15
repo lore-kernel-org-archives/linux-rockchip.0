@@ -4,66 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACC33D59D99
-	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Dec 2025 11:48:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D183FD59D99
+	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Dec 2025 12:30:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HcW0QjQDMgoqYcsg68o8A93bnwHvvAlknWVP/U+BAPY=; b=DwoDHVAEro21oC
-	pcWVsECsKJJJyQgOxZyMBpzBFav9k6fWwSFq0iCrLbaKwOzVRMIVypcS8aLwD416QQh21Z2HZ2CYY
-	zc0MTHdDCidtWd9/gluvgch7kkmmwH3ACPBzBi6Qey8dzCb/+r1kx7PG9XDZCb8bAo8iFH5GQ+kWw
-	WesLq4nzkF1Sqq1xpkIvwoz10he44dlZ3voILGKD2J6bySaAVmOnGcFSHlW+d/9OFMk42cBWRzWms
-	2MORX3kCC3iFrBFm0+SqsilXrTlSqdoRzwI5o7rCuYlxpYDzu/EZCWMJZ1EW8mrunRPQEm8pldx97
-	jB2WRYlGqH7OnCFBz1SQ==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:MIME-Version:Message-Id:Date:Subject
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=17zrCBd3xQY8nt3oxkKjn+3JVZ0gEHnExESgqmsEbBU=; b=Tq0C5W4sEfB6Nn
+	ZOCrxLdFOpGQv1dEdBY/CS7N8L+MZG11oo06O6BAreqLA/ZZotLy2VyKlapMnC0RsKAVwwvLdN/Pv
+	yO6hV4Q6Fcl0LtFxZgQ0qC55DHYjysK2rqnPQTcwN4opoP8hUnXOel7f28+V+eKiXRZep6gFAW7tl
+	NO/IEnl5yO3SL0ohvynbHF34RTEgMaMtxsFR7bMBNc2dto4B+Fi+kF6Dn13nsafLCsUYsYRCT/9Ip
+	rQDKuNYtwSHWfXWPvBBuWb+AfPtXcg1kclnC89HKZ3/xsvbNdgazGLgqH5lDsth346UXy81YHyF9H
+	OhnXx9zoQ9eJu5sKSlDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vV73Y-00000003Yjk-212D;
-	Mon, 15 Dec 2025 11:48:00 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1vV7iN-00000003cft-0s9e;
+	Mon, 15 Dec 2025 12:30:11 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vV73S-00000003Yf5-3zA1;
-	Mon, 15 Dec 2025 11:47:56 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=Zn/uhcRYE9P5t+xoL0MI1jmstVKavxgMn3GHiQkhybw=; b=hud35EViFGxZ44fZq/v+HIIQPc
-	dTRWejKOXGyjBVZYEnUaTWVXrXqNNvaXb0ZOjA9g56ZKi0xzkx3dU0esoYNKQQMZfZdcX4c8xIYQE
-	qiaoTd+1Ed94OHM37OruzmwCxKQPmc5FDDKsC65nkd4K72GpiHX/8mkrMFWQdLm4KEFjaazyDYCLR
-	fwHjpWRGKy9Az61I/7fQ12RroiyyZDrNYwwu5O9UnAzxLDR6nmVPbuQNo6NHS4UxKLYo2cfawOxme
-	M1X7l8myTK0zzAYxzRKaJjrUwcHm35eqrsvmJ+zWnfkVzFnumdBzKA+t8t3i+3YhlXxnUW7fbzps/
-	faLM5GlQ==;
-Received: from [192.76.154.237] (helo=phil.dip.tu-dresden.de)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1vV73A-0000On-2C; Mon, 15 Dec 2025 12:47:36 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: Conor Dooley <conor+dt@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Jianfeng Liu <liujianfeng1994@gmail.com>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Torsten Duwe <duwe@lst.de>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] arm64: dts: rockchip: enable SPDIF audio on Rock 5 ITX
-Date: Mon, 15 Dec 2025 12:47:31 +0100
-Message-ID: <176579924017.1404176.3512598682044953071.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20251124183056.B853068C4E@verein.lst.de>
-References: <20251124183056.B853068C4E@verein.lst.de>
+	id 1vV7iK-00000003cfF-35nH;
+	Mon, 15 Dec 2025 12:30:10 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1765801796; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=Je1nxOP1Dfsjeh7PQbSGDw5GZEWWv7yyb2BAfvx6nHclb1zZk//RR8yaH03KOJJKoaJxzd7Mgxiv6qvgCAHAqWMGfpXskRJL3drB5Rtyl3kO/6RGMgPg3NOXWjf7isV7JI3x6W6o1ycYorVOwjcgN700Elv/7rv2ayISvDHrwfA=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1765801796; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=juPpp4zwMaR29F4s6SX8P4Y9o0HZhkn1aHpIS5UX6nc=; 
+	b=aEpUbidBM5btDVfhTkZMODBOEgCNPsjjoMvJp8Qj1Qj/cUpd6rQ5ebJQKP3jj2gkUak0WqhUhSFvC8BrPZXHuvQ+JH5UdBhVx9tWd5AFigP4/ECaDXI4/gZQMN4ZU3OemEWgYOLRW09PuGMNxSSGpRn0eUR5eZkaS38MV1AimEU=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1765801796;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:Subject:Subject:Date:Date:Message-Id:Message-Id:MIME-Version:Content-Type:Content-Transfer-Encoding:To:To:Cc:Cc:Reply-To;
+	bh=juPpp4zwMaR29F4s6SX8P4Y9o0HZhkn1aHpIS5UX6nc=;
+	b=LuJ7FXfUDrJoKmushT0WrJRcHjoGiVwwFaaOSN88sKmj4Yc9QnpPucMmPy15z1KR
+	mqzUx/oYYc2Jjdcje7MYiYDmL5SGHfqguGv7/ABUecwqhh6Hjb1Sno4Xdcf6e39QJ5Z
+	a3dkLQ2XGna6zVlw5qnb2JYO7dUlbymPS9vlVWKk=
+Received: by mx.zohomail.com with SMTPS id 1765801793005302.7427697539812;
+	Mon, 15 Dec 2025 04:29:53 -0800 (PST)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Subject: [PATCH v2 0/4] ROCK 4D audio enablement
+Date: Mon, 15 Dec 2025 13:29:28 +0100
+Message-Id: <20251215-rock4d-audio-v2-0-82a61de39b4c@collabora.com>
 MIME-Version: 1.0
+X-B4-Tracking: v=1; b=H4sIACj/P2kC/1WOQQ6DIBBFr2JmXQxgq+iq92hc4ACVVKUFJW2Md
+ y/VVZdv8v/7s0LQ3uoATbaC19EG66YE/JQB9nK6a2JVYuCUX2jJK+IdPs6KyEVZR9AgrQwrhaQ
+ CUuXptbHvXXdrD/b6tSTrfByhk0ETdONo5yaLZc5q4pHBL9zbMDv/2V+JbE8fqwX9X42MUEK7A
+ oUWRskar+iGQXbOyzypod227Qvmaucf2QAAAA==
+X-Change-ID: 20250627-rock4d-audio-cfc07f168a08
+To: Dmitry Torokhov <dmitry.torokhov@gmail.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Alexandre Belloni <alexandre.belloni@bootlin.com>, 
+ Heiko Stuebner <heiko@sntech.de>
+X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251215_034755_047411_1EC3E9CD 
-X-CRM114-Status: GOOD (  10.27  )
+X-CRM114-CacheID: sfid-20251215_043008_836585_C3F2F803 
+X-CRM114-Status: GOOD (  13.93  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,27 +76,64 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-input@vger.kernel.org, kernel@collabora.com, Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+The ROCK 4D uses an ADC input to distinguish between a headphone (i.e.,
+no mic) and a headset (i.e., with mic). After some searching, it appears
+that the closest we can get to modelling this is by sending a particular
+switch input event.
 
-On Mon, 24 Nov 2025 19:30:56 +0100, Torsten Duwe wrote:
-> The Rock5 ITX has an S/PDIF (TOSLINK) socket in its I/O-shield, whose
-> TX signal is wired to GPIO4 C1. Activate SPDIF TX unit 1 and select
-> the proper pinmux (M2).
-> 
-> 
+So this series modifies the adc-keys bindings, extends the adc-keys
+driver to allow sending other input types as well, and then adds the
+analog audio nodes to ROCK 4D's device tree.
 
-Applied, thanks!
+It should be noted that analog capture from the TRRS jack currently
+results in completely digitally silent audio for me, i.e. no data other
+than 0xFF. There's a few reasons why this could happen, chief among them
+that my SAI driver is broken or that the ES8328 codec driver is once
+again broken. The DAPM routes when graphed out look fine though. So the
+DTS part is correct, and I can fix the broken capture in a separate
+follow-up patch that doesn't have to include DT people.
 
-[1/1] arm64: dts: rockchip: enable SPDIF audio on Rock 5 ITX
-      commit: 2cc30da80a28a8a5d1337230c3586eb2f9580120
+Another possibility is that my phone headset, despite being 4 rings and
+having a little pin hole at the back of the volume doodad, does not
+actually have a microphone, but in that case I'd still expect some noise
+in the PCM. Maybe it's just shy.
+
+Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+---
+Changes in v2:
+- Drop HDMI audio patch, as it was already merged.
+- adc-keys: rename "keycode" to "code".
+- adc-keys: make the keycode (now "code") local a u32 instead of an int
+- adc-keys: only allow EV_KEY and EV_SW for now. Rename patch
+  accordingly.
+- adc-keys: Add another patch to rework probe function error logging.
+- Link to v1: https://lore.kernel.org/r/20250630-rock4d-audio-v1-0-0b3c8e8fda9c@collabora.com
+
+---
+Nicolas Frattaroli (4):
+      dt-bindings: input: adc-keys: allow linux,input-type property
+      Input: adc-keys - support EV_SW as well, not just EV_KEY.
+      Input: adc-keys - Use dev_err_probe in probe function
+      arm64: dts: rockchip: add analog audio to ROCK 4D
+
+ .../devicetree/bindings/input/adc-keys.yaml        |  3 +
+ arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts    | 90 ++++++++++++++++++++++
+ drivers/input/keyboard/adc-keys.c                  | 88 ++++++++++-----------
+ 3 files changed, 138 insertions(+), 43 deletions(-)
+---
+base-commit: 3e7f562e20ee87a25e104ef4fce557d39d62fa85
+change-id: 20250627-rock4d-audio-cfc07f168a08
 
 Best regards,
 -- 
-Heiko Stuebner <heiko@sntech.de>
+Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+
 
 _______________________________________________
 Linux-rockchip mailing list
