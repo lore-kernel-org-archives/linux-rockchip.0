@@ -4,98 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82FB6D5B862
-	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Dec 2025 18:16:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B116BD5B871
+	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Dec 2025 21:48:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mfpiRWdacZmUNuRdxW9gGnUKKzA9gWUMj5MrdZ8oyLo=; b=O4oTnmJniEfcfS
-	wLj++Xtk+3Cg6uY/Gvu67xcDOIJSkDKEAXYoZMXm7OCyrOP2iTIB9FchDYVd4DvfD5ZVAN/ggy0cK
-	PyDy2mP//blDoyu07AiDWRpW2asZNUuLhIoCagSW7wxV8wO6uayu2oRZZ/yigeR8NOmnYEV8TiARu
-	oaqEp0PCMPehfxlBSrLE4NpGvVpgJbNOelttwkQ1uTNxAKs3uL/ATLZQcpduc/7DJnjhFbaGckEjM
-	EZmDQF2YrNV782qd6th2WbGKoOuU0t4jI8pX5ms5L1kztyJC/G0F+rsxT33yaX9cFVD9Zj7V7XBn/
-	ZMR0WjyMiifDbYL4l/gA==;
+	List-Owner; bh=kCjNqID0RD6+fnzuutdrwMcdf5iMQOjQaTvnuJfGeHY=; b=qokd4h3tzlCI90
+	5vUvDofRzV9RmyeJM+eW521dt3lK6UaDfrKMukOIPrCIN1wdA4S9u+SuyYNoHR/vj3EouBKU+MNta
+	ZowRdAR8/gO/UmoV++Ov8OSbIflp1LotKUlGSjc7YJPRru1kbE8xNNaplLKf+MN3GDIzIjILkczMA
+	eX6XB6hZCk0JyqMeM3m25zcFKwGR+WNSnV6U9XwArGZnYK0CgvjUDH+h7dJ4FsQPNSOI9lE+OYV2Z
+	YXKzYSY1dfcg/EXpRA8D/LLXIXAtRD10aJZRPav1TbiToBwQvleowGIBBuzF5nkLzO0AdR80SgXAF
+	4q481PdbtjfG1ShmCmiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vVD7I-000000047Rl-165P;
-	Mon, 15 Dec 2025 18:16:16 +0000
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+	id 1vVGQE-00000004KVb-3Cl5;
+	Mon, 15 Dec 2025 21:48:02 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vVD7F-000000047Qp-059C
-	for linux-rockchip@lists.infradead.org;
-	Mon, 15 Dec 2025 18:16:14 +0000
-Received: by mail-wm1-x329.google.com with SMTP id 5b1f17b1804b1-4779a637712so25645195e9.1
-        for <linux-rockchip@lists.infradead.org>; Mon, 15 Dec 2025 10:16:11 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1765822571; x=1766427371; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=mgNHGQuNqJYS8SDNw0YQDcQ0j9dj4XHzKQA/e9DbvTI=;
-        b=WE2QQakDIx1e5qZVLlecHn+E/pdxhios8CZfoACrMZD98EjDh+3K/40kyxvtnVVqMY
-         E3kE/SGqYOwMKZm2ZGZ8q0Jr30ZJvnwUACn3JLpq5jUvGxgnlA3o41SrtySp/9Bbxuoy
-         xTUkNHzyFciMcZu+UmoBvGWVKA4K3zcmufv91CA8mki93ZCOt9/ptlrqmgyTq76YQoJB
-         i5820UcWvgDsSxASUdTnOruTm30klVX7z7T5oykNdRjp9y8958YLvHahRjqPZUKsnK/G
-         8I//7ytINic42THdWR9eU+ry9bkCK/yaVd7O59VVThzeZ7s209FmoOs+gNXaRl1B/xhZ
-         LgBA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1765822571; x=1766427371;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=mgNHGQuNqJYS8SDNw0YQDcQ0j9dj4XHzKQA/e9DbvTI=;
-        b=RkgU9aDKZGvOjF9Ud3qHr1QU9M4VJEI5WpNlPaKlvGN72MdEAdcyQURQFuBnnfQSIO
-         DGMuNqMQcL4nrzsxiWyZmnjn9RvUMEgdpHyPjhgNSbOaxET6AIy6W4mphIKNyZuvt+Br
-         fX9o0kwnmuJMoUC0MHDE7h7MFvZ4jgRPsGWzmlDiA+KPcGL93sycn55rnnCLcK1IOLLg
-         N7z0Q3kgVyiKHm5uMbF/49Y02iW84RPGIO8MJA9zenLxy58E4A2HxrYrCOprNKZS6xrX
-         xxhBK4SeJgaMEjNJaeRAJl6BHT9ZSMObehnS62E0Sx2kNlykI0/dKfxKlJmWjpPG2p9r
-         4NdQ==
-X-Forwarded-Encrypted: i=1; AJvYcCV0Ka2VbwDpiLkN2iyhDKOpHuFczFstqPVbLWZCSDoIneIRonAL1I3fhExfrySQcljrVJdaT0jDLVY8sKjckg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxgZf0zTH12GW8pzjeNZJP3fmFrGgwfDL195Vl5t3Mi8qXeSc6+
-	Xf5h3ZVty6fvQ10A7ka+7U1sSxNDHWdPUbpEZuSgr2SuUWThR7XKQG3fYklYHA==
-X-Gm-Gg: AY/fxX6omujTJZTt9FLE/zFLtWhBbmidpTSIFces/0qDCdqxcB9tGfbK7gxhbVArxFa
-	HiNNFmYx7YqiB9+0WP6fMcUEkk1O4+MEja4QNvcUnyHzuUmw3LIfRf+pgrOJ/pqosxCozUAMu5N
-	Ln2yo/wgfpvWFag/bYzOhB1LmH+RvII+GdodFQk1LdWQR6E8Lx3ZIhy2kqY1XLn9pJe/N9JJmXM
-	xAZezwog/KyR6pE4Y14jaMQor0bEE7xXa5vysW4m+3/g/CsIULol8cZjCcKXuEg6LowY1QoUlOs
-	AiP1zoIk66IorUVe6tGashjUuRjT0qSxy1NM485fBhI+Q+Y/ljgmZTi6A4/BMweWYt6m0Vf/k9M
-	4Okw/s21DrlwInusfpV7grqwKgLg17A2ewhWpDZ+BMRX+JTWjgc7urSDOaiYOk3Jqdmw3DXemDU
-	T4VW8CRc+VV4BGT257c5KxZU/GnYXc9v5N1c2/RHd9Xn0Sp6YtlZgpPgnZHg80avg=
-X-Google-Smtp-Source: AGHT+IHyDJpQHBms/ienI8KAmWZu5MhqukBnjyYtenMu2CYLWW1CjFUhtTLo4yMnCvX9Pd/MmTJfXQ==
-X-Received: by 2002:a5d:6643:0:b0:42f:bad9:20c9 with SMTP id ffacd0b85a97d-42fbad92628mr9345753f8f.19.1765822570360;
-        Mon, 15 Dec 2025 10:16:10 -0800 (PST)
-Received: from pumpkin (82-69-66-36.dsl.in-addr.zen.co.uk. [82.69.66.36])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-430f9339d86sm11129355f8f.29.2025.12.15.10.16.09
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 15 Dec 2025 10:16:10 -0800 (PST)
-Date: Mon, 15 Dec 2025 18:16:05 +0000
-From: David Laight <david.laight.linux@gmail.com>
-To: Daniel Stone <daniel@fooishbar.org>
-Cc: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, Sandy Huang
- <hjc@rock-chips.com>, Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>,
- Andy Yan <andy.yan@rock-chips.com>, Maarten Lankhorst
- <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
- Simona Vetter <simona@ffwll.ch>, Chaoyi Chen <chaoyi.chen@rock-chips.com>,
- dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Daniel
- Stone <daniels@collabora.com>, kernel@collabora.com
-Subject: Re: [PATCH v4 1/8] drm/rockchip: vop2: Switch impossible format
- conditional to WARN_ON
-Message-ID: <20251215181605.29f6afcc@pumpkin>
-In-Reply-To: <CAPj87rMeJWLm9J=7kMrEvbpzVOMiQc-TThSNE-Gfac7nhUB3bw@mail.gmail.com>
-References: <20251211-vop2-atomic-fixups-v4-0-5d50eda26bf8@collabora.com>
-	<20251211-vop2-atomic-fixups-v4-1-5d50eda26bf8@collabora.com>
-	<20251211223822.6eeabb4d@pumpkin>
-	<14738785.uLZWGnKmhe@workhorse>
-	<CAPj87rMeJWLm9J=7kMrEvbpzVOMiQc-TThSNE-Gfac7nhUB3bw@mail.gmail.com>
-X-Mailer: Claws Mail 4.1.1 (GTK 3.24.38; arm-unknown-linux-gnueabihf)
+	id 1vVGQC-00000004KUr-19VH;
+	Mon, 15 Dec 2025 21:48:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=OI1MY4kOzgLcU2iIDea7bQ2I0yRp8F1R+dwEE1LToL8=; b=qtsMobJ81loav8R/ZLTl3g8U1R
+	L2p+F7xhPDfocdnt+ksIho08Wf/uA8kiKZoc9oe+GmwipM8X4W/cOGhVhXb/TxLCdS44J3cbq3HdL
+	wU9DU4mrnDwLovhiHhVDAlziOkk30fvlqhYskGn2HIwN5ExSSokSJRP959789FdLPOf5MInF5i6JA
+	fbIlsb6GrPBhrRg0a+9V3ZMz1ut2RGdejRQR89FtifAaFIMNRahTtxwRJRA1gii+Bb+Z+aW+5V6Kw
+	DiRYPdNFKgnsMT+CcXTTfeZcDxTX3GMWr0x6C9zKuYQujZ+jAK+i5wS4Y/H1WOhhD4AEyturWb5eC
+	oBnGTi2Q==;
+Received: from i53875adc.versanet.de ([83.135.90.220] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1vVGQ8-0006sg-2B; Mon, 15 Dec 2025 22:47:56 +0100
+From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
+To: Martin =?UTF-8?B?SG9sb3Zza8O9IChQcm9iYWJseSBOb3RoaW5nIHMuci5vLiAp?=
+ <mh@probably.group>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] arm64: dts: rockchip: enable dual 2.5GbE on Rock 5T
+Date: Mon, 15 Dec 2025 22:47:55 +0100
+Message-ID: <2080394.PIDvDuAF1L@diego>
+In-Reply-To: <176580661874.1441131.12947657582985645446.b4-ty@sntech.de>
+References: <96516D1F-9787-47FE-A67E-4745D11D9207@probably.group>
+ <176580661874.1441131.12947657582985645446.b4-ty@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251215_101613_089672_AF5EABBF 
-X-CRM114-Status: GOOD (  26.18  )
+X-CRM114-CacheID: sfid-20251215_134800_339635_5211B939 
+X-CRM114-Status: GOOD (  15.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,64 +68,32 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 15 Dec 2025 17:55:13 +0000
-Daniel Stone <daniel@fooishbar.org> wrote:
-
-> Hi,
-> 
-> On Fri, 12 Dec 2025 at 12:46, Nicolas Frattaroli
-> <nicolas.frattaroli@collabora.com> wrote:
-> > On Thursday, 11 December 2025 23:38:22 Central European Standard Time David Laight wrote:  
-> > > Except that all the systems with PANIC_ON_WARN set will panic.
-> > > I believe that is somewhere over 90% of systems.  
-> >
-> > I also like making up statistics. Warning here is the correct move
-> > in my opinion because this warning being triggered indicates a bug
-> > in the kernel code, and with PANIC_ON_WARN the user explicitly says
-> > they would rather panic in such a case than treat it as an abnormal
-> > condition that is recoverable.
-> >
-> > The reason why this condition ever occurring should be treated as an
-> > abnormal condition is because the DRM subsystem should guarantee we
-> > don't get a framebuffer of a format we didn't explicitly declare
-> > support for in the first place. So this condition being hit either
-> > means drm_universal_plane_init is broken, or the array of formats
-> > that's passed to it is out of sync with the conversion code, which
-> > is also a bug. Or someone managed to thoroughly hose DRM's internal
-> > kernel-side data structures, which is precisely the kind of thing
-> > PANIC_ON_WARN users want to abort for.  
-> 
-> Yes, that's exactly it. We make all kinds of load-bearing assumptions
-> everywhere: that PM code won't pass in a NULL struct device pointer to
-> the resume handler, that our driver callbacks won't get called whilst
-> the device is runtime-suspended, etc. We could try to handle every
-> single one of those with if (clk == NULL) return 0; /* ??? */, or we
-> could not.
-> 
-> If you'd like, we could just delete every one of these checks and
-> replace them with comments, explaining what we assume the invariants
-> to be, and wait for an OOPS due to dereferencing invalid pointers. But
-> the MISRA style of 'handling' every possible impossible case is not
-> tractable.
-
-Especially since it is often easier to debug the NULL pointer reference
-that the work out why a BUG_ON(!ptr) happened.
-(In the former case you should have the contents of all the registers
-making it easier to backtrack to where the NULL came from.)
-
-	David
-
-> 
-> Cheers,
-> Daniel
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+QW0gTW9udGFnLCAxNS4gRGV6ZW1iZXIgMjAyNSwgMTQ6NTE6MDMgTWl0dGVsZXVyb3DDpGlzY2hl
+IE5vcm1hbHplaXQgc2NocmllYiBIZWlrbyBTdHVlYm5lcjoKPiAKPiBPbiBGcmksIDEyIERlYyAy
+MDI1IDE3OjIzOjM1ICswMTAwLCAiTWFydGluIEhvbG92c2vDvSAoUHJvYmFibHkgTm90aGluZyBz
+LnIuby4gKSIgd3JvdGU6Cj4gPiBUaGUgUmFkeGEgUm9jayA1VCBib2FyZCBmZWF0dXJlcyB0d28g
+UlRMODEyNUIgMi41R2JFIEV0aGVybmV0IGNvbnRyb2xsZXJzCj4gPiBjb25uZWN0ZWQgdmlhIFBD
+SWUgbGFuZXMgcGNpZTJ4MWwwIChmZTE3MDAwMCkgYW5kIHBjaWUyeDFsMiAoZmUxOTAwMDApLgo+
+ID4gQ3VycmVudGx5IG9ubHkgb25lIGludGVyZmFjZSBpcyBmdW5jdGlvbmFsIGJlY2F1c2UgdGhl
+IFBDSWUgY29udHJvbGxlcgo+ID4gbm9kZXMgbGFjayB0aGUgbmVjZXNzYXJ5IHJlc2V0IEdQSU8g
+Y29uZmlndXJhdGlvbi4KPiA+IAo+ID4gV2l0aG91dCB0aGUgcmVzZXQtZ3Bpb3MgcHJvcGVydHks
+IHRoZSBSVEw4MTI1QiBQSFlzIHJlbWFpbiBpbiByZXNldCBzdGF0ZQo+ID4gYW5kIGFyZSBub3Qg
+ZW51bWVyYXRlZCBieSB0aGUgUENJZSBidXMuIFRoaXMgcmVzdWx0cyBpbiBvbmx5IG9uZSBFdGhl
+cm5ldAo+ID4gaW50ZXJmYWNlIGJlaW5nIGRldGVjdGVkLCBvciBub25lIGF0IGFsbCBkZXBlbmRp
+bmcgb24gVS1Cb290IGluaXRpYWxpemF0aW9uLgo+ID4gCj4gPiBbLi4uXQo+IAo+IEFwcGxpZWQs
+IHRoYW5rcyEKPiAKPiBbMS8xXSBhcm02NDogZHRzOiByb2NrY2hpcDogZW5hYmxlIGR1YWwgMi41
+R2JFIG9uIFJvY2sgNVQKPiAgICAgICBjb21taXQ6IDk2MDI5ZmZlY2NmNjc3YjFlNGJhYTk4ZjMw
+OTA5YTgzYTQ4NWI2ZDcKPiAKPiBJJ3ZlIHJlc29ydGVkIGJvdGggdGhlIHBjaWUgcGhhbmRsZXMg
+YXMgd2VsbCBhcyB0aGUgcGluY3RybCBlbnRyaWVzCj4gcGNpZTItMCBjb21lcyBiZWZvcmUgcGNp
+ZTItMSBldGMgOi0pIC4KCmFuZCBkcm9wcGVkIGFnYWluLgoKUGxlYXNlIHJlc2VuZCB0aGlzIHBh
+dGNoIHdpdGggYSBwcm9wZXIgU2lnbmVkLW9mZi1ieSBsaW5lLCBhcyBzdGF0ZWQKYnkgdGhlIGRl
+dmVsb3BlcnMgY2VydGlmaWNhdGUgb2Ygb3JpZ2luLgoKQWxzbywgd2hhdCBpcyB0aGlzIHByb2Jh
+Ymx5IG5vdGhpbmcgcy5yLm8/CgpIZWlrbwoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9j
+a2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWls
+bWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
