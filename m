@@ -4,68 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B1AFD41D74
-	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Dec 2025 11:47:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72F51D41D74
+	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Dec 2025 11:47:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NMlrhfKl2aQwltP2ryjRJG39mcdMXrKYUvDFCKwyzFU=; b=2RUsg1ptBIsdyR
-	y9gDBdDCp0dCgaq2sOXDj3Ea0AOheVxLk2VaAe6YkFZZA1PrLg3aLWpnAE7uUk8jeXdKOEBGyRccT
-	kO4tD5jy5yWlATpmvwTuPGh+4+kr9Ljz+IeUWsjy4vRDwoKtXHGQghv2vtz08Ql/uil8aJkcRRykG
-	b0NV5W+CWT4A1X0xsnUMf2mTRgMQaO6jnTE6W6j8EkJNat1OcyPgPlyytJNM7zj1NUk+WaAYtVe52
-	b6DIyIzNk9CUsTvPCHwaW0gk12h1VqAb0S9xadzi5qHTuvCduhrB0SeMBPRRBdjKWFCYGhvVQw46z
-	u6mjSBMa7vEN5sRSwPeA==;
+	List-Owner; bh=lgkSMTwQrBDbw5I26o0V3E1ii/BOe/7z+hpEAmzF1hE=; b=DbF/N3xutkrXV3
+	CEQZ3yCLiZACHnEQFEftT5Cut28ckn7ci8UM1q2UsBY4eYDYE6fEwteOTeJ22ikjpbTjF8cyAu/zG
+	gyMUYVofY6RncxStmMEwf+5mezdU/CQJGgx2HLXxoeewaFDH+NyEgoXcwT3UQ50uKJGpETh1IXhl5
+	gSMlT0E9M7Il5osys/F7gJyooKOxWhYCOj64EZ4PicLIN8DsJqqholWDqOT3nc3mjjS0u7/cFc5lN
+	fyfBcWqWoGEHgoMMSg1REttkkiYFP3iszKoktrMkej6Kh/kqIaZEYAv/vZyecTNV49oyn+HqIFo3T
+	3tU6KpZGkq6YAD87L8Aw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vV73F-00000003YYr-2w0h;
-	Mon, 15 Dec 2025 11:47:41 +0000
+	id 1vV73L-00000003Ybr-0NJ3;
+	Mon, 15 Dec 2025 11:47:47 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vV73C-00000003YXB-2ntZ;
-	Mon, 15 Dec 2025 11:47:40 +0000
+	id 1vV73G-00000003YYs-3rfk;
+	Mon, 15 Dec 2025 11:47:45 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=qChWII7YU0dPGLuhGx6Hi0lLzxxkedT+0cFWcFxavFw=; b=0s8PwH+oYvtcbINmpprf+s+aF/
-	ET2F7leFesp+2r4coEj3JIW7NhD17zLVhJnZ4Pc71HnOjQmv1R4Ir+yTNJK+iBbk3U0SCgx/81Hn/
-	WWx6L+N6f6UwLjDHPjZR0E1Wj4ZQoz+qKXwGCroTfOZMWsFOc0yq7YBNpBhST3h8HDv6gxcYPJZJk
-	/UQgrJcHwJ08ACoHBcIQL/p8sbSSNfJLmt2nQiFtnzT3vjJfysShvFsH0+jhLXnbA0L102LYFFbRv
-	6nK8UwS5imdNlvNqiiD7QH7kGpZzvrX+bIePchMh9hChgik8v/Cx77O59FNJW8tpIPfRURtNzyz7X
-	wSkOIevg==;
+	bh=cDCAdTgs2P3VG3lCGDQQe/McF+oPTUo+A/A40/PgerU=; b=2Dzjn248o/8afFCxkZtum0p2YK
+	UeeI0k6+K3TX+bhvV4nXMAl0Tdupum+oSRjVFAuyILhnSbylG2RUPmjGTz1JRGzgkaLAyZ8nlHNLr
+	E74vxWg27sFGhmXD/VpHmzqNH/yZ8uBUu+mZQLihafhQANSQUkJZo6x14UOUrXXd6XspUqwOganxy
+	ITCUq33LKI2lNOrCCGmUb8UCYqpLMPCjkh9Rln6ogMG5UpRE1k4xalNHY58Og9p5LCM1aOyaHBdVT
+	Dv2Dvd69Cs/qhMiGIN0xfFRR6SDPzAh09oS7S9Ybbem3rPaKdGJw4mUis4QjL/clKv9spKBeEa598
+	dMRqw7JA==;
 Received: from [192.76.154.237] (helo=phil.dip.tu-dresden.de)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1vV73A-0000On-Er; Mon, 15 Dec 2025 12:47:36 +0100
+	id 1vV73A-0000On-Pb; Mon, 15 Dec 2025 12:47:36 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Rudraksha Gupta <guptarud@gmail.com>
+To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Detlev Casanova <detlev.casanova@collabora.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Jonas Karlman <jonas@kwiboo.se>
 Cc: Heiko Stuebner <heiko@sntech.de>,
+	Alex Bee <knaerzche@gmail.com>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	phone-devel@vger.kernel.org,
-	Ondrej Jirman <megi@xff.cz>,
-	Martijn Braam <martijn@brixit.nl>,
-	=?UTF-8?q?Kamil=20Trzci=C5=84ski?= <ayufan@ayufan.eu>,
-	Pavel Machek <pavel@ucw.cz>,
-	"Leonardo G. Trombetta" <lgtrombetta@gmx.com>
-Subject: Re: (subset) [PATCH v5 0/4] Upstreaming Pinephone Pro Patches
-Date: Mon, 15 Dec 2025 12:47:32 +0100
-Message-ID: <176579924023.1404176.12391640220645132527.b4-ty@sntech.de>
+	linux-kernel@vger.kernel.org
+Subject: Re: (subset) [PATCH v3 0/7] media: rkvdec: Add HEVC backend
+Date: Mon, 15 Dec 2025 12:47:33 +0100
+Message-ID: <176579924020.1404176.16613704782665436214.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20251124-ppp_light_accel_mag_vol-down-v5-0-f9a10a0a50eb@gmail.com>
-References: <20251124-ppp_light_accel_mag_vol-down-v5-0-f9a10a0a50eb@gmail.com>
+In-Reply-To: <20250905161942.3759717-1-jonas@kwiboo.se>
+References: <20250905161942.3759717-1-jonas@kwiboo.se>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251215_034738_819498_0F4F957D 
-X-CRM114-Status: GOOD (  11.36  )
+X-CRM114-CacheID: sfid-20251215_034744_374410_DF7853FD 
+X-CRM114-Status: GOOD (  12.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,32 +80,20 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Mon, 24 Nov 2025 19:46:59 -0800, Rudraksha Gupta wrote:
-> Throughout the years, many have contributed to the Pinephone Pro (ppp)
-> development. Unfortunately, these patches are scattered around various
-> repositories in different states.
+On Fri, 05 Sep 2025 16:19:18 +0000, Jonas Karlman wrote:
+> This series add a HEVC backend to the Rockchip Video Decoder driver.
 > 
-> I will be attempting to upstream these patches. I will start off with the
-> following small series:
-> - Add light/proximity sensor support
->   - Link: https://codeberg.org/megi/linux/commit/f171bc7013bc7ad3de9af817bfbcbfa548ebe01c
-> - Add accelerometer sensor support
->   - Link: https://codeberg.org/megi/linux/commit/b0bb7633e073a6760fa213b8c4a78ea2e73c7bf1
-> - Add magnetometer sensor support
->   - Link: https://codeberg.org/megi/linux/commit/2f7e67f451f16eaf15b81aa1dbdf126d54927d35
-> - Add mount-matrix for magnetometer
->   - Link: https://codeberg.org/megi/linux/commit/d7cd2eab931e32fa94408a96d73b4e6c0616107a
-> - Fix voltage threshold for volume down key
->   - Link: https://codeberg.org/megi/linux/commit/7c496a5cc27ed4e38b740f36c2d8b2c62f80ae54
+> With the dependent H.264 High 10 and 4:2:2 profile support series
+> finally merged there is finally time to send a v2 with minor changes and
+> a suggested code style fix of this series. v1 of this series has been
+> fully functional up until recent unstaging of the rkvdec driver.
 > 
 > [...]
 
 Applied, thanks!
 
-[2/4] arm64: dts: rockchip: Add accelerometer sensor to Pinephone Pro
-      commit: abd9bb7ad5bdbbf76316013cda3812c2719a0210
-[4/4] arm64: dts: rockchip: Fix voltage threshold for volume keys for Pinephone Pro
-      commit: 5497ffe305b2ea31ae62d4a311d7cabfb671f54a
+[7/7] ARM: dts: rockchip: Add vdec node for RK3288
+      commit: e74470cf3101da79666f20186c9406192223e9a8
 
 Best regards,
 -- 
