@@ -4,55 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8272ED5B84D
-	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Dec 2025 16:46:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54765D5B857
+	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Dec 2025 17:08:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
 	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=XEBxnWWqG2s5a2QqOtoPfi3FhRZQpcbDdctex+Jegy8=; b=VXb8bA/KAn6fhc
-	8LqjZCA74yJsJOnqWcZtcI4RAZIinACydBBx0YVsUZ9ns6i1Sv2JsHJCIKflnS1vEP3WEn/yVRqmW
-	zDBTw3BbBDXxfbb1xIjJm16L6f69uNsAwchO39qbZ7kq9mD+QcoVi6irs6dWjnrbZWTSLkhyboqK1
-	iR4ufq5xlfi3KSe+yqf7MVs9u2kxvnAY9H6iGurxVChakyyi9t15b19Sl1PaHR61mYwkiPX4WECID
-	8m8HyeEihIrFBpkzW+w1pgj9Pp4x1MwDApeTw34Sb4kPrSxratjyVj/hkp6j/jWWkHq75rIIYoF0f
-	YVDqiaXuDX4UFVmr6iTQ==;
+	List-Owner; bh=c/E3Rnj2FA8BGHx6jOnhCn002AS+yPaHBba4D9Iid7U=; b=JUe5hAhXigSt3X
+	GgBlLNlJdfual4WEEe0d2ELv4/jpNaqDI0K3zT1xFVEnoNSZYNhNQwEn2NPYAWn328C/zk7xjO1XK
+	ne8kkEAwqurkfa/OCKeqcmt/4Gdq0CzkYU7E2rIB0Zul8a6jeOYm8jyWx7Dq7VwV49v68s6t+atA3
+	gXQRaRmOuwzEYSji0gquuqAdvPed0tHGbTtiPvjZxZEjzXvZXsyLYrhOsPcGgIvogO9qS7vest2v0
+	GbqYCxRp+PsZQ7LhEjPgYSbZe/YF3F2yMERcaWr7EVHFVrgU+xSYbRsh++dYsGPDmQ3/7ui2r9StH
+	6rTtDAbkfhkaAd+Re6Cg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vVBiK-0000000411W-33p5;
-	Mon, 15 Dec 2025 16:46:25 +0000
-Received: from smtp-42a8.mail.infomaniak.ch ([84.16.66.168])
+	id 1vVC3i-000000042wG-0A1J;
+	Mon, 15 Dec 2025 17:08:30 +0000
+Received: from smtp-8fa9.mail.infomaniak.ch ([2001:1600:7:10::8fa9])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vVBiH-0000000410M-3Did
+	id 1vVC3f-000000042vn-0aQL
 	for linux-rockchip@lists.infradead.org;
-	Mon, 15 Dec 2025 16:46:23 +0000
-Received: from smtp-3-0000.mail.infomaniak.ch (unknown [IPv6:2001:1600:4:17::246b])
-	by smtp-3-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4dVQtf6cv1zTkg;
-	Mon, 15 Dec 2025 17:46:18 +0100 (CET)
-Received: from unknown by smtp-3-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4dVQtf0KpFz6NJ;
-	Mon, 15 Dec 2025 17:46:17 +0100 (CET)
+	Mon, 15 Dec 2025 17:08:28 +0000
+Received: from smtp-4-0001.mail.infomaniak.ch (smtp-4-0001.mail.infomaniak.ch [10.7.10.108])
+	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4dVRN82ltkzPZS;
+	Mon, 15 Dec 2025 18:08:24 +0100 (CET)
+Received: from unknown by smtp-4-0001.mail.infomaniak.ch (Postfix) with ESMTPA id 4dVRN61zzfzF7B;
+	Mon, 15 Dec 2025 18:08:22 +0100 (CET)
 From: Quentin Schulz <foss+kernel@0leil.net>
-Date: Mon, 15 Dec 2025 17:45:56 +0100
-Subject: [PATCH] arm64: dts: rockchip: fix unit-address for RK3588 NPU's
- core1 and core2's IOMMU
+Date: Mon, 15 Dec 2025 18:07:56 +0100
+Subject: [PATCH] accel/rocket: factor out code with find_core_for_dev in
+ rocket_remove
 MIME-Version: 1.0
-Message-Id: <20251215-npu-dt-node-address-v1-1-840093e8a2bf@cherry.de>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x3MQQqFMAxF0a1Ixj9giyK6FXFQzVMzqdLoRxD3b
- nF4BvfeZEgKo664KeGvplvMcL+CpjXEBaySTb70tfOu5rifLAfHTcBBJMGMm3FGGCsvAS3lck+
- Y9fqu/fA8L8QN/89lAAAA
-X-Change-ID: 20251215-npu-dt-node-address-7bfeab42dae9
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Tomeu Vizoso <tomeu@tomeuvizoso.net>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Quentin Schulz <quentin.schulz@cherry.de>, stable@vger.kernel.org
+Message-Id: <20251215-rocket-reuse-find-core-v1-1-be86a1d2734c@cherry.de>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x3MQQqDMBBG4avIrDtgQkXxKsWFTn51EJIysVIQ7
+ 25w+S3eOynDFJn66iTDoVlTLHCvimQd4wLWUEy+9o3zrmFLsmFnwy+DZ42BJRm4g0wtgn/LOFG
+ Jv4ZZ/8/4M1zXDRIOJDFoAAAA
+X-Change-ID: 20251215-rocket-reuse-find-core-8ecb7ed24cab
+To: Tomeu Vizoso <tomeu@tomeuvizoso.net>, Oded Gabbay <ogabbay@kernel.org>
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+ linux-rockchip@lists.infradead.org, 
+ Quentin Schulz <quentin.schulz@cherry.de>
 X-Mailer: b4 0.14.3
 X-Infomaniak-Routing: alpha
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251215_084621_938377_00D572B3 
-X-CRM114-Status: GOOD (  11.80  )
+X-CRM114-CacheID: sfid-20251215_090827_330863_660E1DEA 
+X-CRM114-Status: GOOD (  12.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,58 +69,56 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Quentin Schulz <quentin.schulz@cherry.de>
 
-The Device Tree specification specifies[1] that
+There already is a function to return the offset of the core for a given
+struct device, so let's reuse that function instead of reimplementing
+the same logic.
 
-"""
-Each node in the devicetree is named according to the following
-convention:
-	node-name@unit-address
-[...]
-The unit-address must match the first address specified in the reg
-property of the node.
-"""
+There's one change in behavior when a struct device is passed which
+doesn't match any core's. Before, we would continue through
+rocket_remove() but now we exit early, to match what other callers of
+find_core_for_dev() (rocket_device_runtime_resume/suspend()) are doing.
+This however should never happen. Aside from that, no intended change in
+behavior.
 
-The first address in the reg property is fdaXa000 and not fdaX9000. This
-is likely a copy-paste error as the IOMMU for core0 has two entries in
-the reg property, the first one being fdab9000 and the second fdaba000.
-
-Let's fix this oversight to match what the spec is expecting.
-
-[1] https://github.com/devicetree-org/devicetree-specification/releases/download/v0.4/devicetree-specification-v0.4.pdf 2.2.1 Node Names
-
-Fixes: a31dfc060a74 ("arm64: dts: rockchip: Add nodes for NPU and its MMU to rk3588-base")
-Cc: stable@vger.kernel.org
 Signed-off-by: Quentin Schulz <quentin.schulz@cherry.de>
 ---
- arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/accel/rocket/rocket_drv.c | 15 ++++++++-------
+ 1 file changed, 8 insertions(+), 7 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-index 2a79217930206..7ab12d1054a73 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-@@ -1200,7 +1200,7 @@ rknn_core_1: npu@fdac0000 {
- 		status = "disabled";
- 	};
+diff --git a/drivers/accel/rocket/rocket_drv.c b/drivers/accel/rocket/rocket_drv.c
+index 5c0b63f0a8f00..28bf6c602f802 100644
+--- a/drivers/accel/rocket/rocket_drv.c
++++ b/drivers/accel/rocket/rocket_drv.c
+@@ -180,17 +180,18 @@ static int rocket_probe(struct platform_device *pdev)
+ 	return rocket_core_init(&rdev->cores[core]);
+ }
  
--	rknn_mmu_1: iommu@fdac9000 {
-+	rknn_mmu_1: iommu@fdaca000 {
- 		compatible = "rockchip,rk3588-iommu", "rockchip,rk3568-iommu";
- 		reg = <0x0 0xfdaca000 0x0 0x100>;
- 		interrupts = <GIC_SPI 111 IRQ_TYPE_LEVEL_HIGH 0>;
-@@ -1230,7 +1230,7 @@ rknn_core_2: npu@fdad0000 {
- 		status = "disabled";
- 	};
++static int find_core_for_dev(struct device *dev);
++
+ static void rocket_remove(struct platform_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
++	int core = find_core_for_dev(dev);
  
--	rknn_mmu_2: iommu@fdad9000 {
-+	rknn_mmu_2: iommu@fdada000 {
- 		compatible = "rockchip,rk3588-iommu", "rockchip,rk3568-iommu";
- 		reg = <0x0 0xfdada000 0x0 0x100>;
- 		interrupts = <GIC_SPI 112 IRQ_TYPE_LEVEL_HIGH 0>;
+-	for (unsigned int core = 0; core < rdev->num_cores; core++) {
+-		if (rdev->cores[core].dev == dev) {
+-			rocket_core_fini(&rdev->cores[core]);
+-			rdev->num_cores--;
+-			break;
+-		}
+-	}
++	if (core < 0)
++		return;
++
++	rocket_core_fini(&rdev->cores[core]);
++	rdev->num_cores--;
+ 
+ 	if (rdev->num_cores == 0) {
+ 		/* Last core removed, deinitialize DRM device. */
 
 ---
 base-commit: a619746d25c8adafe294777cc98c47a09759b3ed
-change-id: 20251215-npu-dt-node-address-7bfeab42dae9
+change-id: 20251215-rocket-reuse-find-core-8ecb7ed24cab
 
 Best regards,
 -- 
