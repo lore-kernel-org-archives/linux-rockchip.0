@@ -4,44 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FB71D5B84C
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD1D2D5B857
 	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Dec 2025 16:36:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
-	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=paLu2ScxJ1H7oNET2y6E1qEM2QoOxU9zmGu1qQxt5c8=; b=D6ovVTuGF+ag6K
-	kVZnWPSXS7q2NRfwHFfsCZHk4uAO2wfn097nsofKEhmvBQ/ZPg3doTitlCCTg+mJh5TfFSbms6dD2
-	RdLjNvnZrg4a57UIk64+IBy4zxOp2YcZg0504iVqbuqST5E4nU4LKjv22O16WYTDybBhHgrSFaPLE
-	Q3UjGL5AMry9LP6x90FfH4sEjQihS7jTrVevWe01ZPBQtrAgY0vqYjRqw2pRjqXGVixj4IxjkwUj3
-	WgPYAqgilXsb/Zx9Ay1xlyKCTYqVTC8ecsyvBsy3fNhHxPAJVfXh63+saBGDcu6IdZ2gIrJU/j/jP
-	VLPBc8DmGNSTyiA4k+5A==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=hlFR5rrGc3ssp7CD+Yee3syr9ZzZW5cuVWsbTm0OSfI=; b=Xw6JHKLYA7Eq+g
+	43zy1XJRbA+s+/q1lMh5++Sx+yiKvuJHs/ClqbHuL+Rw8G6Aj8iO6u10FNXGXTq3x+IRd1Bv3yfx5
+	q2sJ8dzTFjlhX5FVM6FMG+l2I0WjmEAEjf7azgaYl81DRZGezhmfpblP0AYiZQyKfLx1nsddmjGlh
+	M8ZGdcBcSTX+Md4FcQNB/5/XukPQ81JO2Qjpc+PY8UTFUwm5QzO00S3qxI7/ppee9CEY6MHFZ2cJY
+	QkzMdPHdZHGIVjv92nRdLRKoL+ut3/VipzMjOTTtfeCbvTbzf4JFqEoD274L89u2ZR0hAO2q7DKh0
+	s0K4g/g0eLYW5WluqSrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vVBZ1-0000000404P-23m6;
-	Mon, 15 Dec 2025 16:36:47 +0000
-Received: from smtp-42ab.mail.infomaniak.ch ([84.16.66.171])
+	id 1vVBYy-00000004030-46Eh;
+	Mon, 15 Dec 2025 16:36:44 +0000
+Received: from smtp-bc0b.mail.infomaniak.ch ([2001:1600:7:10::bc0b])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vVBYu-00000003zzH-2IIQ
+	id 1vVBYu-00000003zzM-2JGL
 	for linux-rockchip@lists.infradead.org;
 	Mon, 15 Dec 2025 16:36:44 +0000
-Received: from smtp-4-0000.mail.infomaniak.ch (unknown [IPv6:2001:1600:7:10::a6b])
-	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4dVQgP6vGkz7BQ;
-	Mon, 15 Dec 2025 17:36:33 +0100 (CET)
-Received: from unknown by smtp-4-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4dVQgM0sMnzD5S;
-	Mon, 15 Dec 2025 17:36:31 +0100 (CET)
+Received: from smtp-4-0000.mail.infomaniak.ch (smtp-4-0000.mail.infomaniak.ch [10.7.10.107])
+	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4dVQgQ4pTnz6Cy;
+	Mon, 15 Dec 2025 17:36:34 +0100 (CET)
+Received: from unknown by smtp-4-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4dVQgQ0R3wzCMS;
+	Mon, 15 Dec 2025 17:36:34 +0100 (CET)
 From: Quentin Schulz <foss+kernel@0leil.net>
-Subject: [PATCH 0/2] accel/rocket: fix unwinding in error paths of two
- functions
-Date: Mon, 15 Dec 2025 17:36:13 +0100
-Message-Id: <20251215-rocket-error-path-v1-0-eec3bf29dc3b@cherry.de>
+Date: Mon, 15 Dec 2025 17:36:14 +0100
+Subject: [PATCH 1/2] accel/rocket: fix unwinding in error path in
+ rocket_core_init
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x3MTQqAIBBA4avErBtI0/6uEi3EphqCjFEiiO6et
- PwW7z0QSZgiDMUDQhdHDkeGKgvwmztWQp6zQVfaKq00SvA7JSSRIHi6tOHSt53xpnG2qiF3p9D
- C9/8cp/f9ABGdXABjAAAA
-X-Change-ID: 20251212-rocket-error-path-f9784c46a503
+Message-Id: <20251215-rocket-error-path-v1-1-eec3bf29dc3b@cherry.de>
+References: <20251215-rocket-error-path-v1-0-eec3bf29dc3b@cherry.de>
+In-Reply-To: <20251215-rocket-error-path-v1-0-eec3bf29dc3b@cherry.de>
 To: Tomeu Vizoso <tomeu@tomeuvizoso.net>, Oded Gabbay <ogabbay@kernel.org>, 
  Jeff Hugo <jeff.hugo@oss.qualcomm.com>
 Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
@@ -50,8 +48,8 @@ Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
 X-Mailer: b4 0.14.3
 X-Infomaniak-Routing: alpha
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251215_083640_736375_FB9E584E 
-X-CRM114-Status: UNSURE (   9.73  )
+X-CRM114-CacheID: sfid-20251215_083640_736126_AA1375F0 
+X-CRM114-Status: UNSURE (   9.56  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -69,44 +67,56 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-As reported[1], in the current state of master (that is, *without*
-that[2] patch, yet unmerged), it is possible to trigger
-Oops/out-of-bounds errors/unbalanced runtime PM by simply compiling
-DRM_ACCEL_ROCKET built-in (=y) instead of as a module (=m).
+From: Quentin Schulz <quentin.schulz@cherry.de>
 
-This fixes points 1 and 2 reported here[1] by fixing the unwinding in
-two functions to properly undo everything done in the same function
-prior to the error.
+When rocket_job_init() is called, iommu_group_get() has already been
+called, therefore we should call iommu_group_put() and make the
+iommu_group pointer NULL. This aligns with what's done in
+rocket_core_fini().
 
-Note that this doesn't mean the Rocket device is usable if one core is
-missing. In fact, it seems it doesn't as I'm hit with many
-rocket fdac0000.npu: NPU job timed out
-followed by one
-rocket fdad0000.npu: NPU job timed out
-(and that, five times) whenever core0 (fdab0000.npu) fails to probe and
-I'm running the example from
-https://docs.mesa3d.org/teflon.html#do-some-inference-with-mobilenetv1
-so something else probably needs some additional love.
+If pm_runtime_resume_and_get() somehow fails, not only should
+rocket_job_fini() be called but we should also unwind everything done
+before that, that is, disable PM, put the iommu_group, NULLify it and
+then call rocket_job_fini(). This is exactly what's done in
+rocket_core_fini() so let's call that function instead of duplicating
+the code.
 
-[1] https://lore.kernel.org/linux-rockchip/0b20d760-ad4f-41c0-b733-39db10d6cc41@cherry.de/
-[2] https://lore.kernel.org/linux-rockchip/20251205064739.20270-1-rmxpzlb@gmail.com/
-
+Fixes: 0810d5ad88a1 ("accel/rocket: Add job submission IOCTL")
+Cc: stable@vger.kernel.org
 Signed-off-by: Quentin Schulz <quentin.schulz@cherry.de>
 ---
-Quentin Schulz (2):
-      accel/rocket: fix unwinding in error path in rocket_core_init
-      accel/rocket: fix unwinding in error path in rocket_probe
+ drivers/accel/rocket/rocket_core.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
- drivers/accel/rocket/rocket_core.c |  7 +++++--
- drivers/accel/rocket/rocket_drv.c  | 15 ++++++++++++++-
- 2 files changed, 19 insertions(+), 3 deletions(-)
----
-base-commit: a619746d25c8adafe294777cc98c47a09759b3ed
-change-id: 20251212-rocket-error-path-f9784c46a503
+diff --git a/drivers/accel/rocket/rocket_core.c b/drivers/accel/rocket/rocket_core.c
+index abe7719c1db46..b3b2fa9ba645a 100644
+--- a/drivers/accel/rocket/rocket_core.c
++++ b/drivers/accel/rocket/rocket_core.c
+@@ -59,8 +59,11 @@ int rocket_core_init(struct rocket_core *core)
+ 	core->iommu_group = iommu_group_get(dev);
+ 
+ 	err = rocket_job_init(core);
+-	if (err)
++	if (err) {
++		iommu_group_put(core->iommu_group);
++		core->iommu_group = NULL;
+ 		return err;
++	}
+ 
+ 	pm_runtime_use_autosuspend(dev);
+ 
+@@ -76,7 +79,7 @@ int rocket_core_init(struct rocket_core *core)
+ 
+ 	err = pm_runtime_resume_and_get(dev);
+ 	if (err) {
+-		rocket_job_fini(core);
++		rocket_core_fini(core);
+ 		return err;
+ 	}
+ 
 
-Best regards,
 -- 
-Quentin Schulz <quentin.schulz@cherry.de>
+2.52.0
 
 
 _______________________________________________
