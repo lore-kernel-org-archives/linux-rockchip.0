@@ -4,79 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDA92D5B85E
-	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Dec 2025 17:55:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C6C3D5B85E
+	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Dec 2025 17:57:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=n9QLAt+aykhNaYvhyapB+vvfTqCpBlDGF6yGAMZvjtA=; b=eoO0uUeCTyPeOV
-	YRXGSrrMuRH8hzvaPjWqBVI2wJfQ+l4IAq3l8KfO2kbUZSO+uQy11i59BsoDFvhGieDBdbemP7hrr
-	s3SzK7KFyZcs5rBf5ZPpw3KznvQ+erwVh1MRY1bbcjzlwKnHBnO8CYhIZOcl+kkrFrubdfS+6aK8A
-	EGxmKk7BPGxw9RvC14u6Voqdx2ninZ2QtwA51zFLO0g11gT2NN/uWZ6b6PklOGqRqpnR1GyqaMjgJ
-	NoikaNNI2w4y4gVgq+a4QAzldBnqzVjYOINt4GNNfevixhGujtTgsWMosMLLIiAT64ZRGEyAtkkn9
-	2wrBYhqHS77q5OqGCAZA==;
+	List-Owner; bh=3ODXIZJQiGyXsz/a01Bsgq0qr03FzAefsr/XZKvvUDo=; b=bgnkTtcu6qP7Ge
+	S2lc/oJEvYvfShwEOh6e6EJwbPijQwMBRuG0jy3wc6DmkBRPKvysv2WG6Evf5JosXOn/58AtR2/6f
+	QUVTIoOYv/E/QWx1fO4jGlglRqx9bK61tQONIS1lORd3PsyT3WcVuborkeEpSN0t/zHUrbsj5Lb71
+	3lYlZAonvebFjM6fmPfrV/JOgMjUEhoBUuGfzGFvpvzFaBXuBUt/9epjgDjNWNdCiKJ/K+kfTykpS
+	I5JdrBsGd2p6s9VtVnc67rU84EEVwJ1cL8XlAPmlNqdh3S8bHBDi10Y+UsqDae0mR4yKhupOkhyGA
+	t6tsFjZUQ8My9RLXK1Hg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vVCnE-000000045rH-0SSS;
-	Mon, 15 Dec 2025 17:55:32 +0000
+	id 1vVCp1-0000000466f-1Ztc;
+	Mon, 15 Dec 2025 17:57:23 +0000
 Received: from mail-qt1-x82d.google.com ([2607:f8b0:4864:20::82d])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vVCn9-000000045pt-36Si
+	id 1vVCox-0000000465t-3VzI
 	for linux-rockchip@lists.infradead.org;
-	Mon, 15 Dec 2025 17:55:30 +0000
-Received: by mail-qt1-x82d.google.com with SMTP id d75a77b69052e-4ee2014c228so27256491cf.2
-        for <linux-rockchip@lists.infradead.org>; Mon, 15 Dec 2025 09:55:25 -0800 (PST)
+	Mon, 15 Dec 2025 17:57:20 +0000
+Received: by mail-qt1-x82d.google.com with SMTP id d75a77b69052e-4eda057f3c0so34910591cf.2
+        for <linux-rockchip@lists.infradead.org>; Mon, 15 Dec 2025 09:57:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=fooishbar.org; s=google; t=1765821324; x=1766426124; darn=lists.infradead.org;
+        d=fooishbar.org; s=google; t=1765821439; x=1766426239; darn=lists.infradead.org;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=8aCiihqyfBhDBvKtwXzCvq/yRXu9gmrOv+bogwSRfMI=;
-        b=fIP3npMMtfICRTATFHQp8z+8eoqsGvxjMOluD5ghgdnc/0tLXvCmMEPBxF8jtpA2o3
-         OMA8OEpjVrYDNIP9rlvCwkDyoic8iHxnl7yMu5yC8qK/qJTUBvVYoS8+wo3CjSc4sNcb
-         G53aCAgIws73x4DC7281bM3xbroi72mHQw+20ysHmjxXCSb8bSfQ8tscjStvFhlnsaDh
-         7/yYmcdIXshcQqjzu9kriBplNNGZw/WpPYfafqxM3ynnDAsnJj1t+SD7kFE3842xw2s5
-         5sPG2A8VhHy5V+8CbQPyrswxm/3K9jSLgbnBsFquLZRHuopz4GS4nqJgQciPFWHm3hWT
-         EVUg==
+        bh=JrDNYX4hqSI6y4PGIj6+dxdIojaAEYXvHqNt+FhuuhY=;
+        b=iubR99S11MXFCXOneKzN1xeZq1cjGsUWI2aC1UqO5nwpZraufEG0uoOkstKeh5Mv88
+         LuR3hL4suQ8b6/Ath8NAb1dphefM8PV45sbU04M6Lv7QJK3wtg5O54iiFA3H/mWr6mHx
+         w0uiRFjuZZIHCumZ9oWjDjaASD66jclK2PGfCdF6ewBEGXlWBAA1wmTYp0x4fSh4zYlr
+         3ZUfqlMkhJfqKyqfiH5di3gcnFcmrYzG+NusZ8hZEQ3ouWHTpByY7hjV7nvPhAUGlMlP
+         3nJ4deEqmWERAMQFK5JIApntrqRNRFirVHwNAbYrrF3IkQWnzbeIUuYKnMxobSbU2IkN
+         VVtg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1765821324; x=1766426124;
+        d=1e100.net; s=20230601; t=1765821439; x=1766426239;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=8aCiihqyfBhDBvKtwXzCvq/yRXu9gmrOv+bogwSRfMI=;
-        b=biVJAzSCgwUjXNm2DWA17U2s2wQuYGU2R6ONajQ3MNAtezgDWlG28vAWdJjr6g3L69
-         pnADadH3r98/Ay6ri9ws3/vR+ifc9aLcluXnAw5rG6K4h9PtFMo7N7Gkp4axk1qTxfcd
-         tm5ZmxzNFC1iZwW0ym+8cRDGWT7JqfvqSGckPhcCTwntufCId+DT5j3f8uTNm31uOKMQ
-         5HbZp5bGu36UpKQOK5Nzk6L8Br1iTRnS0pU336QcdhbQZMJWadN1e7Rey9yxA6HdvwBJ
-         UZ530fOQajlbwnWoM80TwcizOH7/A/MlS1hTkzLB8hCXzlkWSbUu0Zwc26VH9zvu68K4
-         CQpA==
-X-Forwarded-Encrypted: i=1; AJvYcCVByEG8FAip/XfNYfzyBMc+0QGb8ctYmbwn4L9bqqw0du8Mi2059CmyMrzDV0lBJRW6ZDJtGaJY7yUwohNA6Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwcRuWjV6XeIawYYKk7VixvhVG4wphoKp9/0U0E7xzJJ1WrsYHJ
-	vHgFpePOu3DVucAmUQX83zlcLx0sO2bkbtHeqL+smb7laY0nxW9KvlUszckh/53HM/fDjqd4UBG
-	iy7bq2Fo3h6gYQ2IbhIcMFAgy81hpd888PNRuVyPNeA==
-X-Gm-Gg: AY/fxX5zP+4I6Ztp8pe0P7KOgDLlJVFjUk+06bwaVg2vfnFJYZYDz2W47Z+6pAlYWtK
-	5tCRixg07QICq/YSUB2KCCO/FgU2JzbZ+MzQDm+urowsU9eD3xdRA28iK+oAowwwXKuDpwonLmx
-	9GDjWxLm3PYUWpsckgF6b0VO2eA+jHDceRxXxrFFn5cPpnG/Zl5jXlzgpN4i553iYpn6Yg2DyQq
-	1+8YiqZ+uWsUgQexTLWoZjrqwmOI4RPwBXJWtmy0LMHASsIiGE+FeV9GqIHTvsIgRBkjuk=
-X-Google-Smtp-Source: AGHT+IEquHwQ+urOMR2ohVWjSdQ8ANcymdBrTg3QcyuKio1k3FljEQrqH2T2Tn3/APITsfhyN5lzUFG1dY78glwUVow=
-X-Received: by 2002:a05:622a:1e96:b0:4ee:12e0:f071 with SMTP id
- d75a77b69052e-4f1d04a585cmr184413841cf.20.1765821324595; Mon, 15 Dec 2025
- 09:55:24 -0800 (PST)
+        bh=JrDNYX4hqSI6y4PGIj6+dxdIojaAEYXvHqNt+FhuuhY=;
+        b=vkU6UY3LTjrR1FF5MuXytepimy73xcaM3yCkja6kEJdmwDf73jvfaCdo17S/XBW7c5
+         n/zpLbOFDweP6AU2ZIGxWV80XZqBIciF+9jbLJC9fIR3+tVhNLYsuQMlJF3UkYbo4kN6
+         y5HVoNVTSt19Ccux8j/BlY8aEQhplMRBFxqleAR/6Op4uuHgTaOhRlTNFMRlXGJ+OcPh
+         iPklEk/hkbMcLbm2+yborzwOFVh+lWsFdtJYIafx+GD3rzk17cTbwVYnwufHCeRnnPHJ
+         8erNosbTl6OAgnDKOccEIwlvHZN3Y6+auTJjFa9AXOS2voxNXXyGMy3ml7tvfePJXjVO
+         s/QA==
+X-Forwarded-Encrypted: i=1; AJvYcCXDprrci/XgSaxHUyidEctxXlz64R/j3pSrZYz0s7So+QhTgcjHB1K82bi/E8pf5TT6u1Mb/KXVqWynIlcU9w==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwsyO+0yEiYj0jBY5A4YoGpL9v4Fxhcq3heUCuvlYzjn4QrMaiv
+	sylNVz2WC12KtbsM7j7h61mfZ7T0c6W40OxfgedOErRf07vch3uGwJomE6ZZ6D1xkl3SKv81JzW
+	rCBP7U+FF8QTDSkKPkofWSVEG3mpeCYMqDE8dXSzgzw==
+X-Gm-Gg: AY/fxX7pNEfaTP/Bl0rmTD11fONzubvE3VJgsONju/x0J/XUPMbtJbX+w4tRxzgz1TZ
+	YEAFFq+uJ6Q77hgc5JMv75AwK9fcKeVP+mz/sOf6g6FdLCY6sR29sQ98IAd1PXGZ3R7QQHaB7iX
+	f2Q7Aq07Nwf57FHiosHNgmIKMz+KOvOHKlJPLyaxf5LiKA5u4PSxyghwrNF6R10VS7BTmKLWAtW
+	8Ou3CJfPgV+yh20dj95EP7Qyw6J+xXmIiKWl4BCDD5C63VPeNukvvUbzGqH555OmuKcgGc=
+X-Google-Smtp-Source: AGHT+IGFC2JQ4V1SECaV//h1EmhEsxokdnKGAqKcXjQqd+tP6HAhA9hYS9lkjNvisVQC+6Z2K5Vl/WM78Ka8I+v/P7A=
+X-Received: by 2002:a05:622a:481a:b0:4ee:213b:3391 with SMTP id
+ d75a77b69052e-4f1d049ff6dmr180679491cf.20.1765821438771; Mon, 15 Dec 2025
+ 09:57:18 -0800 (PST)
 MIME-Version: 1.0
 References: <20251211-vop2-atomic-fixups-v4-0-5d50eda26bf8@collabora.com>
- <20251211-vop2-atomic-fixups-v4-1-5d50eda26bf8@collabora.com>
- <20251211223822.6eeabb4d@pumpkin> <14738785.uLZWGnKmhe@workhorse>
-In-Reply-To: <14738785.uLZWGnKmhe@workhorse>
+ <20251211-vop2-atomic-fixups-v4-2-5d50eda26bf8@collabora.com> <20251211224102.5e079d70@pumpkin>
+In-Reply-To: <20251211224102.5e079d70@pumpkin>
 From: Daniel Stone <daniel@fooishbar.org>
-Date: Mon, 15 Dec 2025 17:55:13 +0000
-X-Gm-Features: AQt7F2oTFN8HvvMalRt84ZK6fte07GmPQ77VoQFhH6nEJYL6l1qYY_efw-Mj3bQ
-Message-ID: <CAPj87rMeJWLm9J=7kMrEvbpzVOMiQc-TThSNE-Gfac7nhUB3bw@mail.gmail.com>
-Subject: Re: [PATCH v4 1/8] drm/rockchip: vop2: Switch impossible format
+Date: Mon, 15 Dec 2025 17:57:07 +0000
+X-Gm-Features: AQt7F2oFXSBO4SC0UxvNyq3w7s43LPnK4r_t9yQh-dyuuj24u5z5H133-vHKl9M
+Message-ID: <CAPj87rO45oAihxRhshwvP=9N6oDtd+yRN-R4M3=TsFYmwjr1cA@mail.gmail.com>
+Subject: Re: [PATCH v4 2/8] drm/rockchip: vop2: Switch impossible pos
  conditional to WARN_ON
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: David Laight <david.laight.linux@gmail.com>, Sandy Huang <hjc@rock-chips.com>, 
+To: David Laight <david.laight.linux@gmail.com>
+Cc: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, Sandy Huang <hjc@rock-chips.com>, 
 	=?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
 	Andy Yan <andy.yan@rock-chips.com>, 
 	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
@@ -85,8 +84,8 @@ Cc: David Laight <david.laight.linux@gmail.com>, Sandy Huang <hjc@rock-chips.com
 	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
 	linux-kernel@vger.kernel.org, Daniel Stone <daniels@collabora.com>, kernel@collabora.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251215_095527_958232_B182E601 
-X-CRM114-Status: GOOD (  17.04  )
+X-CRM114-CacheID: sfid-20251215_095719_882064_F168EECC 
+X-CRM114-Status: GOOD (  11.70  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,40 +104,39 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Hi,
 
-On Fri, 12 Dec 2025 at 12:46, Nicolas Frattaroli
-<nicolas.frattaroli@collabora.com> wrote:
-> On Thursday, 11 December 2025 23:38:22 Central European Standard Time David Laight wrote:
-> > Except that all the systems with PANIC_ON_WARN set will panic.
-> > I believe that is somewhere over 90% of systems.
+On Thu, 11 Dec 2025 at 22:41, David Laight <david.laight.linux@gmail.com> wrote:
+> On Thu, 11 Dec 2025 21:40:32 +0100
+> Nicolas Frattaroli <nicolas.frattaroli@collabora.com> wrote:
+> > -     if (dest->y1 + dsp_h > adjusted_mode->vdisplay) {
+> > -             drm_dbg_kms(vop2->drm,
+> > -                         "vp%d %s dest->y1[%d] + dsp_h[%d] exceed mode vdisplay[%d]\n",
+> > -                         vp->id, win->data->name, dest->y1, dsp_h, adjusted_mode->vdisplay);
+> > -             dsp_h = adjusted_mode->vdisplay - dest->y1;
+> > -             if (dsp_h < 4)
+> > -                     dsp_h = 4;
+> > -             src_h = dsp_h * src_h / drm_rect_height(dest);
+> > -     }
+> > +     /* drm_atomic_helper_check_plane_state calls drm_rect_clip_scaled for
+> > +      * us, which keeps our planes bounded within the CRTC active area
+> > +      */
+> > +     WARN_ON(dest->x1 + dsp_w > adjusted_mode->hdisplay);
+> > +     WARN_ON(dest->y1 + dsp_h > adjusted_mode->vdisplay);
+> > +     WARN_ON(dsp_w < 4);
+> > +     WARN_ON(dsp_h < 4);
+> > +     WARN_ON(src_w < 4);
+> > +     WARN_ON(src_h < 4);
 >
-> I also like making up statistics. Warning here is the correct move
-> in my opinion because this warning being triggered indicates a bug
-> in the kernel code, and with PANIC_ON_WARN the user explicitly says
-> they would rather panic in such a case than treat it as an abnormal
-> condition that is recoverable.
->
-> The reason why this condition ever occurring should be treated as an
-> abnormal condition is because the DRM subsystem should guarantee we
-> don't get a framebuffer of a format we didn't explicitly declare
-> support for in the first place. So this condition being hit either
-> means drm_universal_plane_init is broken, or the array of formats
-> that's passed to it is out of sync with the conversion code, which
-> is also a bug. Or someone managed to thoroughly hose DRM's internal
-> kernel-side data structures, which is precisely the kind of thing
-> PANIC_ON_WARN users want to abort for.
+> You need to do something when the tests fail.
+> Carrying on regardless is never right.
 
-Yes, that's exactly it. We make all kinds of load-bearing assumptions
-everywhere: that PM code won't pass in a NULL struct device pointer to
-the resume handler, that our driver callbacks won't get called whilst
-the device is runtime-suspended, etc. We could try to handle every
-single one of those with if (clk == NULL) return 0; /* ??? */, or we
-could not.
+When we arrive at this point, because the load-bearing assumption in
+the comment has not been met, our options would be:
+* display random incorrect content, and hope that we aren't reading
+out of bounds from a buffer that's too small
+* turn the display off
+* there is no third option
 
-If you'd like, we could just delete every one of these checks and
-replace them with comments, explaining what we assume the invariants
-to be, and wait for an OOPS due to dereferencing invalid pointers. But
-the MISRA style of 'handling' every possible impossible case is not
-tractable.
+Which are you suggesting?
 
 Cheers,
 Daniel
