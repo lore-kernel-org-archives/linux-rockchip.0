@@ -4,71 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72E63D5B16E
-	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Dec 2025 14:12:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FB71D5B84C
+	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Dec 2025 16:36:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rnQfBnY9PoQ93Ywc+p6WurjlJz0TYUVk+zbXC4Npcfs=; b=waZmsErvUvInon
-	vtbX3yZkpz54UVCUL1y1Ev4k6w0dleLo3XZtHWiTeqAPEZsxyFp83YQRhGPvBsLGiBo5QPRQu6xsB
-	cgUeUyJYX+JJZ5eISwQMlfs0NsGvYNNj8APmZan+AR3rXw7nqYlkV/+maP9VhiF6mZk+KVpm0IYBw
-	5wdaBap2dwOVjzss1/1NbOIAZvObaF59pIyBXVrNI2KdvZyu9ZAuXZr+WLmH4QlTlo2Ftg+8Jj8Q8
-	yQc/mJw6r2lumKM2nMyVYb+mGBe5LMAKtoHDnvUd6IWLPtxv8EppDV4zDxvL26xYD6hXKv5X5iyBo
-	166xgW00Ole4IVZaKsDQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=paLu2ScxJ1H7oNET2y6E1qEM2QoOxU9zmGu1qQxt5c8=; b=D6ovVTuGF+ag6K
+	kVZnWPSXS7q2NRfwHFfsCZHk4uAO2wfn097nsofKEhmvBQ/ZPg3doTitlCCTg+mJh5TfFSbms6dD2
+	RdLjNvnZrg4a57UIk64+IBy4zxOp2YcZg0504iVqbuqST5E4nU4LKjv22O16WYTDybBhHgrSFaPLE
+	Q3UjGL5AMry9LP6x90FfH4sEjQihS7jTrVevWe01ZPBQtrAgY0vqYjRqw2pRjqXGVixj4IxjkwUj3
+	WgPYAqgilXsb/Zx9Ay1xlyKCTYqVTC8ecsyvBsy3fNhHxPAJVfXh63+saBGDcu6IdZ2gIrJU/j/jP
+	VLPBc8DmGNSTyiA4k+5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vV9Jg-00000003lXP-4Bda;
-	Mon, 15 Dec 2025 14:12:49 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1vVBZ1-0000000404P-23m6;
+	Mon, 15 Dec 2025 16:36:47 +0000
+Received: from smtp-42ab.mail.infomaniak.ch ([84.16.66.171])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vV9Je-00000003lVj-2UCi;
-	Mon, 15 Dec 2025 14:12:47 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1765807930; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=lZ8rFTdi8PmRu+tQO4v+O0xTqoaSQ5nX2ukgNBUgnpyhoezI3uS+dsp8CoozRDgHdDDaUGcRdDeA91/OrPXL8+XRVRdwcvO6eVJVUDuTuIaVR0XU9XVGgAk+yYtcKU+sEig7SF66so6asE08Cd4oNWkGh9kHXHW5o9Q8UOzZx8s=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1765807930; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=BrCltiwnJeJBxnCzg3Wzx1kxB2QTTch2UaqTtqQ6q/I=; 
-	b=heM+3J9JMnuPyDuF1y/G3JzsOcw6MZBRIVfPFAB5/gjJg4mCugQGvOLxgz/xbKUFgHNVYkWbtndeHjZbf/6Mu3esIJqwwn2zgAXt3a2vt3zZB1W5CjZXEJNY2a3Q+FKNmdjD29c782wZLCjHNqrqZPIKqlMhaoE3VJ++WEgj1e4=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1765807930;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=BrCltiwnJeJBxnCzg3Wzx1kxB2QTTch2UaqTtqQ6q/I=;
-	b=jOIq6HiDjqQ5IHAZXt/4jCuh0XQxPka8HHLJ5oGn3m0UZZTVstqXXEBPkI3EDQnq
-	mMz8IasfLT+h7wjJwuquHYF9TACbep3QXiZJSEFSGdCEAZRQV7bGo1IK7K9RI883KK4
-	iCc1CAVs0b2B7HtEI2HcZ8nxQfFz8M28s7F46ygg=
-Received: by mx.zohomail.com with SMTPS id 1765807924696668.2202797637121;
-	Mon, 15 Dec 2025 06:12:04 -0800 (PST)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Mon, 15 Dec 2025 15:09:24 +0100
-Subject: [PATCH v5 8/8] drm/rockchip: vop2: Simplify format_mod_supported
+	id 1vVBYu-00000003zzH-2IIQ
+	for linux-rockchip@lists.infradead.org;
+	Mon, 15 Dec 2025 16:36:44 +0000
+Received: from smtp-4-0000.mail.infomaniak.ch (unknown [IPv6:2001:1600:7:10::a6b])
+	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4dVQgP6vGkz7BQ;
+	Mon, 15 Dec 2025 17:36:33 +0100 (CET)
+Received: from unknown by smtp-4-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4dVQgM0sMnzD5S;
+	Mon, 15 Dec 2025 17:36:31 +0100 (CET)
+From: Quentin Schulz <foss+kernel@0leil.net>
+Subject: [PATCH 0/2] accel/rocket: fix unwinding in error paths of two
+ functions
+Date: Mon, 15 Dec 2025 17:36:13 +0100
+Message-Id: <20251215-rocket-error-path-v1-0-eec3bf29dc3b@cherry.de>
 MIME-Version: 1.0
-Message-Id: <20251215-vop2-atomic-fixups-v5-8-83463c075a8d@collabora.com>
-References: <20251215-vop2-atomic-fixups-v5-0-83463c075a8d@collabora.com>
-In-Reply-To: <20251215-vop2-atomic-fixups-v5-0-83463c075a8d@collabora.com>
-To: Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Andy Yan <andy.yan@rock-chips.com>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Chaoyi Chen <chaoyi.chen@rock-chips.com>
-Cc: David Laight <david.laight.linux@gmail.com>, 
- dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Daniel Stone <daniels@collabora.com>, kernel@collabora.com, 
- Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x3MTQqAIBBA4avErBtI0/6uEi3EphqCjFEiiO6et
+ PwW7z0QSZgiDMUDQhdHDkeGKgvwmztWQp6zQVfaKq00SvA7JSSRIHi6tOHSt53xpnG2qiF3p9D
+ C9/8cp/f9ABGdXABjAAAA
+X-Change-ID: 20251212-rocket-error-path-f9784c46a503
+To: Tomeu Vizoso <tomeu@tomeuvizoso.net>, Oded Gabbay <ogabbay@kernel.org>, 
+ Jeff Hugo <jeff.hugo@oss.qualcomm.com>
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+ linux-rockchip@lists.infradead.org, 
+ Quentin Schulz <quentin.schulz@cherry.de>, stable@vger.kernel.org
 X-Mailer: b4 0.14.3
+X-Infomaniak-Routing: alpha
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251215_061246_664205_47CEDDE4 
-X-CRM114-Status: GOOD (  15.00  )
+X-CRM114-CacheID: sfid-20251215_083640_736375_FB9E584E 
+X-CRM114-Status: UNSURE (   9.73  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,106 +69,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Daniel Stone <daniels@collabora.com>
+As reported[1], in the current state of master (that is, *without*
+that[2] patch, yet unmerged), it is possible to trigger
+Oops/out-of-bounds errors/unbalanced runtime PM by simply compiling
+DRM_ACCEL_ROCKET built-in (=y) instead of as a module (=m).
 
-Make it a little less convoluted, and just directly check if the
-combination of plane + format + modifier is supported.
+This fixes points 1 and 2 reported here[1] by fixing the unwinding in
+two functions to properly undo everything done in the same function
+prior to the error.
 
-Signed-off-by: Daniel Stone <daniels@collabora.com>
-Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Note that this doesn't mean the Rocket device is usable if one core is
+missing. In fact, it seems it doesn't as I'm hit with many
+rocket fdac0000.npu: NPU job timed out
+followed by one
+rocket fdad0000.npu: NPU job timed out
+(and that, five times) whenever core0 (fdab0000.npu) fails to probe and
+I'm running the example from
+https://docs.mesa3d.org/teflon.html#do-some-inference-with-mobilenetv1
+so something else probably needs some additional love.
+
+[1] https://lore.kernel.org/linux-rockchip/0b20d760-ad4f-41c0-b733-39db10d6cc41@cherry.de/
+[2] https://lore.kernel.org/linux-rockchip/20251205064739.20270-1-rmxpzlb@gmail.com/
+
+Signed-off-by: Quentin Schulz <quentin.schulz@cherry.de>
 ---
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 56 +++++++++++-----------------
- 1 file changed, 22 insertions(+), 34 deletions(-)
+Quentin Schulz (2):
+      accel/rocket: fix unwinding in error path in rocket_core_init
+      accel/rocket: fix unwinding in error path in rocket_probe
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index 707b48c7e9d8..a0099e4dd4ea 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -367,59 +367,47 @@ static bool is_yuv_output(u32 bus_format)
- 	}
- }
- 
--static bool rockchip_afbc(struct drm_plane *plane, u64 modifier)
--{
--	int i;
--
--	if (modifier == DRM_FORMAT_MOD_LINEAR)
--		return false;
--
--	for (i = 0 ; i < plane->modifier_count; i++)
--		if (plane->modifiers[i] == modifier)
--			return true;
--
--	return false;
--}
--
- static bool rockchip_vop2_mod_supported(struct drm_plane *plane, u32 format,
- 					u64 modifier)
- {
- 	struct vop2_win *win = to_vop2_win(plane);
- 	struct vop2 *vop2 = win->vop2;
-+	int i;
- 
-+	/* No support for implicit modifiers */
- 	if (modifier == DRM_FORMAT_MOD_INVALID)
- 		return false;
- 
--	if (vop2->version == VOP_VERSION_RK3568) {
--		if (vop2_cluster_window(win)) {
--			if (modifier == DRM_FORMAT_MOD_LINEAR) {
--				drm_dbg_kms(vop2->drm,
--					    "Cluster window only supports format with afbc\n");
--				return false;
--			}
--		}
-+	/* The cluster window on 3568 is AFBC-only */
-+	if (vop2->version == VOP_VERSION_RK3568 && vop2_cluster_window(win) &&
-+	    !drm_is_afbc(modifier)) {
-+		drm_dbg_kms(vop2->drm,
-+			    "Cluster window only supports format with afbc\n");
-+		return false;
- 	}
- 
--	if (format == DRM_FORMAT_XRGB2101010 || format == DRM_FORMAT_XBGR2101010) {
--		if (vop2->version == VOP_VERSION_RK3588) {
--			if (!rockchip_afbc(plane, modifier)) {
--				drm_dbg_kms(vop2->drm, "Only support 32 bpp format with afbc\n");
--				return false;
--			}
--		}
-+	/* 10bpc formats on 3588 are AFBC-only */
-+	if (vop2->version == VOP_VERSION_RK3588 && !drm_is_afbc(modifier) &&
-+	    (format == DRM_FORMAT_XRGB2101010 || format == DRM_FORMAT_XBGR2101010)) {
-+		drm_dbg_kms(vop2->drm, "Only support 10bpc format with afbc\n");
-+		return false;
- 	}
- 
-+	/* Linear is otherwise supported everywhere */
- 	if (modifier == DRM_FORMAT_MOD_LINEAR)
- 		return true;
- 
--	if (!rockchip_afbc(plane, modifier)) {
--		drm_dbg_kms(vop2->drm, "Unsupported format modifier 0x%llx\n",
--			    modifier);
--
-+	/* Not all format+modifier combinations are allowable */
-+	if (vop2_convert_afbc_format(format) == VOP2_AFBC_FMT_INVALID)
- 		return false;
-+
-+	/* Different windows have different format/modifier support */
-+	for (i = 0; i < plane->modifier_count; i++) {
-+		if (plane->modifiers[i] == modifier)
-+			return true;
- 	}
- 
--	return vop2_convert_afbc_format(format) >= 0;
-+	return false;
- }
- 
- /*
+ drivers/accel/rocket/rocket_core.c |  7 +++++--
+ drivers/accel/rocket/rocket_drv.c  | 15 ++++++++++++++-
+ 2 files changed, 19 insertions(+), 3 deletions(-)
+---
+base-commit: a619746d25c8adafe294777cc98c47a09759b3ed
+change-id: 20251212-rocket-error-path-f9784c46a503
 
+Best regards,
 -- 
-2.52.0
+Quentin Schulz <quentin.schulz@cherry.de>
 
 
 _______________________________________________
