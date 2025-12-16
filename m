@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B80E5D609A2
-	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Dec 2025 15:07:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB464D609A2
+	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Dec 2025 15:08:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
 	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=jl6oaHHg1EFgMdG784762JYvP0S4AGGxhTT/a6ZQErA=; b=lRM0DDsOwqB2tS
-	ZZTLvPfcxaQRZXEWxriBwqcWt2G3SBwmpFRdxa1cMbBFdwWPx5TN3xypXyzDGH5NrRVmh1eLiRvdz
-	F821FggnxBpMETF5dohxC1Ldj3v6XCsfGzELVPuk2CuxEVdQIW/zdfat6vrsc1bBHcB6UnpMAjC5b
-	CePPEwIMZ72XIxFNNBZ0963fwP1uQZURaZ04egmfVGI5m8g7AzQ7QzuxBzIecyZTAmQ3f3GvCWE4T
-	txF3iyk8vFbmKUlakjcIYmglNxW7+xjoBUOki67zkTjKkWgwWpVFYjUp/2EBnHh/cHhi3HjcVYH1g
-	LQ5SiId7mNOHdIXcVSDQ==;
+	List-Owner; bh=NGOal/T2Cdj8DhmAJGWKbR7Dl6hetzQuJxqQThLOgXA=; b=M2bbtJHbKSCGJ6
+	oFB5SIBKIUH7xURPhT/31MJIo+l+rMeAJdcfdd97M29qyrcpYV9TlD7Gw/doxMXhMvrYStfG0jhL5
+	PCmm6SsB1913+2PtTszbacYQ/g+fOAtRgH1qKZz236Ic1556WxiyN8y42GwoGo3yW/SqkiRfHdkmC
+	jVFKSe72bCarKuRdlE3nilJ+W9YHMYYApbSgt46NBuiZLJEC6e7yzGSVHnFfJh7xrGCVY7MJDwlta
+	JYhcaEchymsprpq9nHTXBCYmkN15P4PcXqCQMkZLHujc2ln0o3bREiksJwkLqbKnkdKQ7B3yNJ17I
+	fNsd2invM3SIPrrB1wkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vVWeB-00000005PYr-39Mj;
-	Tue, 16 Dec 2025 15:07:31 +0000
-Received: from m16.mail.163.com ([117.135.210.5])
+	id 1vVWej-00000005Pgf-0AeN;
+	Tue, 16 Dec 2025 15:08:05 +0000
+Received: from m16.mail.163.com ([220.197.31.5])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vVWe8-00000005PXQ-387n;
-	Tue, 16 Dec 2025 15:07:30 +0000
+	id 1vVWee-00000005PeM-2MOl;
+	Tue, 16 Dec 2025 15:08:01 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:To:Subject:Date:Message-Id; bh=wg9Xf8V8em1zSRB
-	5KPAJPFBdeTO21Kdvkx26K1bPMoE=; b=TytGPF1YqVKWl4BoIq5EE8XbYRAQ7LM
-	ZOYiYT9hIFOq4ZeqQdQRn66lpVV2V6mmUGAKCOuJQT/bSB4bzbX+/GGRWPG8vxYd
-	eTnrY0Dn5/jmRwjGk8TT7zvFL9R5n9Ta0NFrThm6kH4UCjOogKEYcBqxBWuFwHm+
-	o52c5miM5uls=
+	s=s110527; h=From:To:Subject:Date:Message-Id; bh=LFrFoKsKHi5MKf5
+	l5656b7lBtyZwulDZhSgVO40faJg=; b=FQiBv0oU4iOMxeVwCtJMGf2KyQSORP2
+	gHvglybFUQQoljHVroWHfpdTXJ3JvlhKMzwFvobSwi4xzFRiMrZ3AsRTLbyCpeu4
+	zvdj9OV98YqVPqrjZNZwizTrK8KJU73ihYkavw2Stxadnzc88H2fxyiwiht0fs+5
+	aJ49EBKvt00k=
 Received: from localhost.localdomain (unknown [])
-	by gzsmtp2 (Coremail) with SMTP id PSgvCgDnD+lkdUFpZsvsIQ--.30056S2;
-	Tue, 16 Dec 2025 23:06:28 +0800 (CST)
+	by gzsmtp1 (Coremail) with SMTP id PCgvCgD3X_ukdUFptVRoHQ--.1199S2;
+	Tue, 16 Dec 2025 23:07:31 +0800 (CST)
 From: Lizhe <sensor1010@163.com>
 To: heiko@sntech.de,
 	andrew+netdev@lunn.ch,
@@ -50,20 +50,20 @@ Cc: linux-arm-kernel@lists.infradead.org,
 	linux-stm32@st-md-mailman.stormreply.com,
 	linux-kernel@vger.kernel.org,
 	Lizhe <sensor1010@163.com>
-Subject: [PATCH 1/2] [PATCH net-next v2 1/2] net: stmmac: dwmac-rk: rename phy_power_on to avoid conflict
-Date: Tue, 16 Dec 2025 07:06:11 -0800
-Message-Id: <20251216150611.3616-1-sensor1010@163.com>
+Subject: [PATCH 2/2] [PATCH net-next v2 2/2] net: stmmac: dwmac-rk:return actual error from phy_power_on
+Date: Tue, 16 Dec 2025 07:07:15 -0800
+Message-Id: <20251216150715.3672-1-sensor1010@163.com>
 X-Mailer: git-send-email 2.17.1
-X-CM-TRANSID: PSgvCgDnD+lkdUFpZsvsIQ--.30056S2
-X-Coremail-Antispam: 1Uf129KBjvJXoW7tFW5Xw4xCrWfXFyDurWrAFb_yoW8Xr47pa
-	97AF9Fyw1kJryxGa12qFsrZa45Cw47try0gF1xZ34fuF13u34qqr10yrW0yF1UKrWkWF9I
-	yF4UA3Z7C3W7CrUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0piG2NtUUUUU=
+X-CM-TRANSID: PCgvCgD3X_ukdUFptVRoHQ--.1199S2
+X-Coremail-Antispam: 1Uf129KBjvdXoWrZF47Ww4UKr43Zw1UCw48WFg_yoWfCFX_W3
+	WjvFnaqa1UtFW0yrn8Aa13ZryS9Fs8WrZ3ArsFga93Cay7uw1DA34DurZxAr4DWw40vF9r
+	Gr13tF4Iyw1xJjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7sRMOzVUUUUUU==
 X-Originating-IP: [223.65.97.179]
-X-CM-SenderInfo: 5vhq20jurqiii6rwjhhfrp/xtbC3RQl0GlBdXRpeQAA3F
+X-CM-SenderInfo: 5vhq20jurqiii6rwjhhfrp/xtbC3RQ14GlBdbRwhAAA3B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251216_070729_140640_3D103D13 
-X-CRM114-Status: UNSURE (   9.16  )
+X-CRM114-CacheID: sfid-20251216_070800_965762_BA182FBB 
+X-CRM114-Status: UNSURE (   9.98  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -82,45 +82,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Rename local function 'phy_power_on' to 'rk_phy_power_set' to avoid
-conflict with PHY subsystem function. Keep original error handling.
+The function phy_power_on currently always returns 0, even when
+regulator operations fail. This patch modifies it to return the
+actual error code from regulator_enable/disable operations
 
 Signed-off-by: Lizhe <sensor1010@163.com>
 ---
- drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-index 0a95f54e725e..2f5a65c235aa 100644
+index 2f5a65c235aa..fa989cb96714 100644
 --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
 +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-@@ -1498,7 +1498,7 @@ static int gmac_clk_enable(struct rk_priv_data *bsp_priv, bool enable)
- 	return 0;
- }
- 
--static int phy_power_on(struct rk_priv_data *bsp_priv, bool enable)
-+static int rk_phy_power_set(struct rk_priv_data *bsp_priv, bool enable)
- {
- 	struct regulator *ldo = bsp_priv->regulator;
- 	struct device *dev = bsp_priv->dev;
-@@ -1692,7 +1692,7 @@ static int rk_gmac_powerup(struct rk_priv_data *bsp_priv)
- 		dev_err(dev, "NO interface defined!\n");
+@@ -1514,7 +1514,7 @@ static int rk_phy_power_set(struct rk_priv_data *bsp_priv, bool enable)
+ 			dev_err(dev, "fail to disable phy-supply\n");
  	}
  
--	ret = phy_power_on(bsp_priv, true);
-+	ret = rk_phy_power_set(bsp_priv, true);
- 	if (ret) {
- 		gmac_clk_enable(bsp_priv, false);
- 		return ret;
-@@ -1713,7 +1713,7 @@ static void rk_gmac_powerdown(struct rk_priv_data *gmac)
- 
- 	pm_runtime_put_sync(gmac->dev);
- 
--	phy_power_on(gmac, false);
-+	rk_phy_power_set(gmac, false);
- 	gmac_clk_enable(gmac, false);
+-	return 0;
++	return ret;
  }
  
+ static struct rk_priv_data *rk_gmac_setup(struct platform_device *pdev,
 -- 
 2.17.1
 
