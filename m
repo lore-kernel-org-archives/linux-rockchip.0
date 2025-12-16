@@ -4,63 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E01F7D5E133
-	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Dec 2025 11:21:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85B8AD5E156
+	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Dec 2025 13:49:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=JULoN1aCCu8SPjou69j2sdmAYHQhAAqJa4Ou24EjQSA=; b=OAxUnfeHOWjZqQ
-	2kgH+C0HDATcZRoqKZMmRCpUmq6HcAikC3vlBnYiiyZ8KPZlQTfgk96xocr9mlcokQNQRvcy24gK6
-	MBN3JnG4lE+MOKRdVT4sVRgXb06+LE3setlizMMkUEFQsIxfJi81WZvYug6j+FjAydHWz2/0uNWPc
-	+ICp6eoYSRst5AVHbh6pDj7buZ4ePF9Gwqgtox1x5nhMmcWfkaXV06aFdlNFBv0TaRnPnKdMKHWPU
-	mepro6Ec9iGxgV/9Lr2uTLqEPjxNnJqRI95axCR5igmlPa2MFgR10B3xqet6aLkNQEA4bkkjPcEp0
-	B0k82apCvpRpz1QbLxeg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=MwWWbG7C5sYpidj8czNKOdr9SC5r1XYbDEZVXzDQbVE=; b=j7QZzkRNkShbW6
+	5YIuPLNHSmP9oXpg21J2/83Tru5PNwB5kLmP4m2KDiuK9EW+6jmlajjVdXua3lDfW2Mcnej9rCfKZ
+	TGrqxcmXDc1vGS/anRW85svxt/Vo7SVcSMjiER5Z4RZTSw6oGl9onodN9oWDvCdNpmhld75QMvTvR
+	Vi3v9xmgFC2RkkoHY+6M91s6VzpjmUoHXnlKEEWJJTDfCTJaNTnyawhjhaMKTOQKimK7x04+2IAYO
+	jZD+gixvpvmkiL2epmtRKdLnli3JB0I0s6Dv/y2VHCThYzxGtH8t2geikrGj7/zlnLXE58P7Yt4+6
+	5XrrXKTsZtlowjJvhJYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vVT7h-0000000577A-363G;
-	Tue, 16 Dec 2025 11:21:45 +0000
-Received: from mail-m49222.qiye.163.com ([45.254.49.222])
+	id 1vVVQZ-00000005INE-3YWO;
+	Tue, 16 Dec 2025 13:49:23 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vVT7d-000000056ga-3m5W;
-	Tue, 16 Dec 2025 11:21:44 +0000
-Received: from rockchip.. (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 2d6ee1f8a;
-	Tue, 16 Dec 2025 19:20:54 +0800 (GMT+08:00)
-From: Ye Zhang <ye.zhang@rock-chips.com>
-To: Ye Zhang <ye.zhang@rock-chips.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Bartosz Golaszewski <brgl@bgdev.pl>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	linux-gpio@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	tao.huang@rock-chips.com
-Subject: [PATCH v3 0/7] pinctrl: rockchip: Add RK3506 and RV1126B pinctrl and RMIO support
-Date: Tue, 16 Dec 2025 19:20:46 +0800
-Message-Id: <20251216112053.1927852-1-ye.zhang@rock-chips.com>
-X-Mailer: git-send-email 2.34.1
+	id 1vVVQW-00000005IMH-0UBi;
+	Tue, 16 Dec 2025 13:49:21 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=sFLsYOIToyI1CYsLfOe9PNPAZa7SMcZGDRLeye3TkV4=; b=1cVIG/eg7I6sS8hSAue2feSosa
+	fs9JYZLPNZbpWOz+5uum2rewSRjwJieZr8xzpUV4bVReoRWYTT+mHCMkrJwoHhPQSGGR4sPYkzGME
+	RDsFsScNiP6CEnjPay7NzFuwIgrFnlWdjIBcjNaVq8fDUXuIaKOW1yPFJct87k4LnqJiex01iAtJC
+	+Fz+7SV96+v9afwrM24tqAFdJ6qSg/CFjF9ANZ2MwSKnE6OQY6GWDS9sX+mM66a1RGHlrF4XCy4eq
+	tmRZp4LuDiR8emPv9NnninxunaM3+fUtsB+aMFPl4oLO0sv1kYMOkT8HpqoosgGfpuXJ0fkaxQjwv
+	m+v2sXhw==;
+Received: from [141.76.253.243] (helo=phil.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1vVVPc-0004Lk-DA; Tue, 16 Dec 2025 14:48:24 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: Luca Ceresoli <luca.ceresoli@bootlin.com>, andrzej.hajda@intel.com,
+ neil.armstrong@linaro.org, rfoss@kernel.org,
+ Damon Ding <damon.ding@rock-chips.com>
+Cc: Laurent.pinchart@ideasonboard.com, jonas@kwiboo.se,
+ jernej.skrabec@gmail.com, maarten.lankhorst@linux.intel.com,
+ mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch,
+ shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de,
+ festevam@gmail.com, inki.dae@samsung.com, sw0312.kim@samsung.com,
+ kyungmin.park@samsung.com, krzk@kernel.org, alim.akhtar@samsung.com,
+ jingoohan1@gmail.com, p.zabel@pengutronix.de, hjc@rock-chips.com,
+ andy.yan@rock-chips.com, dmitry.baryshkov@oss.qualcomm.com,
+ dianders@chromium.org, m.szyprowski@samsung.com, jani.nikula@intel.com,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
+ linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v7 01/18] drm/display: bridge_connector: Ensure last bridge
+ determines EDID/modes detection capabilities
+Date: Tue, 16 Dec 2025 14:48:23 +0100
+Message-ID: <3351986.usQuhbGJ8B@phil>
+In-Reply-To: <ff65f453-68a9-41fc-b9e3-02733bba96e3@rock-chips.com>
+References: <20251021023130.1523707-1-damon.ding@rock-chips.com>
+ <DDNXIYL494D2.2N8L1J7XTBT4S@bootlin.com>
+ <ff65f453-68a9-41fc-b9e3-02733bba96e3@rock-chips.com>
 MIME-Version: 1.0
-X-HM-Tid: 0a9b26e44a7f09d8kunm7ab62e1d2a7b102
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQ0xCGVYfHhpPQ01MTUNDTRpWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=PM3HT6vHKkrd+ZNtMf38L3ESv1LeBysidyL+GMMd2Wouwm5QLl8Fl1HG1+mFbEPzsqqWdHX4T18bVniz4uD4j3BNjt+G8KqByc9x7RXrKtYsBnqEUmq5N4SbuZJ85eTgdWvI9zFhwQRzw9suBIzC5zM5vLQvz0wIO+MiJMwNH1k=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=4kLGH3W9CRPvlSHMuYo7bafMtREMUmy74t3ou4jJCw4=;
-	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251216_032143_092879_99AD89F0 
-X-CRM114-Status: GOOD (  12.42  )
+X-CRM114-CacheID: sfid-20251216_054920_276799_22E4DBE4 
+X-CRM114-Status: GOOD (  18.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,67 +79,34 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This series adds pinctrl support for the Rockchip RK3506 and RV1126B SoC,
-and adds support for RMIO (Rockchip Matrix I/O).
-
-The series includes:
-- RK3506 pinctrl driver implementation
-- RV1126B pinctrl driver implementation
-- RMIO controller binding and driver support
-- GPIO driver update to support new version GPIO
-
-Note on grouping:
-The RV1126B support patches are included in this series because the RV1126B
-pinctrl driver implementation depends on the PIN_BANK_IOMUX_FLAGS_OFFSET_DRV_FLAGS
-macro, which is introduced in the RK3506 support patches. Splitting these
-patches into separate series would break the build for RV1126B if applied
-independently.
-
-Changes in v3:
-- Drop already merged patches (rk3506 basic support).
-- Remove unhelpful mappings in rockchip,rk3506-rmio.h
-- Improve YAML schema: fix constraints and examples for RMIO.
-
-Changes in v2:
-- Added RV1126B pinctrl support (patches 3 and 4)
-- Updated GPIO driver to support new version GPIO (patch 5)
-- Added header file for RK3506 RMIO (patch 6)
-- RMIO is now implemented as a separate pinctrl device (patches 7, 8)
-
-Ye Zhang (7):
-  pinctrl: rockchip: Add rk3506 pinctrl support
-  dt-bindings: pinctrl: Add rv1126b pinctrl support
-  pinctrl: rockchip: Add rv1126b pinctrl support
-  arm64: dts: rockchip: rv1126b: Add pinconf and pinctrl dtsi for
-    rv1126b
-  gpio: rockchip: support new version GPIO
-  dt-bindings: pinctrl: rockchip: Add RMIO controller binding
-  pinctrl: rockchip: add rmio support
-
- .../bindings/pinctrl/rockchip,pinctrl.yaml    |   10 +
- .../bindings/pinctrl/rockchip,rmio.yaml       |  106 +
- .../boot/dts/rockchip/rv1126b-pinconf.dtsi    |  660 ++++
- .../boot/dts/rockchip/rv1126b-pinctrl.dtsi    | 3218 +++++++++++++++++
- drivers/gpio/gpio-rockchip.c                  |    2 +
- drivers/pinctrl/pinctrl-rockchip.c            | 1192 +++++-
- drivers/pinctrl/pinctrl-rockchip.h            |   47 +
- .../pinctrl/rockchip,rk3506-rmio.h            |  109 +
- 8 files changed, 5250 insertions(+), 94 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/pinctrl/rockchip,rmio.yaml
- create mode 100644 arch/arm64/boot/dts/rockchip/rv1126b-pinconf.dtsi
- create mode 100644 arch/arm64/boot/dts/rockchip/rv1126b-pinctrl.dtsi
- create mode 100644 include/dt-bindings/pinctrl/rockchip,rk3506-rmio.h
-
--- 
-2.34.1
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+QW0gTWl0dHdvY2gsIDIyLiBPa3RvYmVyIDIwMjUsIDAzOjE1OjUyIE1pdHRlbGV1cm9ww6Rpc2No
+ZSBOb3JtYWx6ZWl0IHNjaHJpZWIgRGFtb24gRGluZzoKPiBIaSBMdWNhLAo+IAo+IE9uIDEwLzIx
+LzIwMjUgNjozMSBQTSwgTHVjYSBDZXJlc29saSB3cm90ZToKPiA+IEhlbGxvIERhbW9uLAo+ID4g
+Cj4gPiBPbiBUdWUgT2N0IDIxLCAyMDI1IGF0IDQ6MzEgQU0gQ0VTVCwgRGFtb24gRGluZyB3cm90
+ZToKCj4gPiAKPiA+IFRoaXMgZG9lcyBub3QgYXBwbHkgb24gY3VycmVudCBkcm0tbWlzYy1uZXh0
+LCBkdWUgdG8gdGhlIHBhdGNoIEkgbWVudGlvbmVkCj4gPiBpbiBhIHByZXZpb3VzIGl0ZXJhdGlv
+biwgbm93IGFwcGxpZWQgYXMgY29tbWl0IDJiZTMwMGY5YTBiNiAoImRybS9kaXNwbGF5Ogo+ID4g
+YnJpZGdlX2Nvbm5lY3RvcjogZ2V0L3B1dCB0aGUgc3RvcmVkIGJyaWRnZXMiKS4KPiA+IAo+ID4g
+SG93ZXZlciBJJ20gc29ycnkgSSBoYXZlIHRvIG1lbnRpb24gdGhhdCBwYXRjaCB0dXJuZWQgb3V0
+IGJlaW5nIGJ1Z2d5LCBzbwo+ID4gSSd2ZSBzZW50IGEgc2VyaWVzIHRvIGFwcGx5IGEgY29ycmVj
+dGVkIHZlcnNpb24gWzBdLiBJIHN1Z2dlc3Qgd2F0Y2hpbmcgdGhlCj4gPiBkaXN1Y3NzaW9uIGFi
+b3V0IHRoZSBmaXggc2VyaWVzLCBhbmQgaWYgdGhhdCBnZXRzIGFwcHJvdmVkIHJlYmFzZSBvbiB0
+b3Agb2YKPiA+IHRoYXQgYW5kIGFkYXB0IHlvdXIgY2hhbmdlcy4KPiA+IAo+ID4gU29ycnkgYWJv
+dXQgdGhlIG1lc3MuIDooCj4gPiAKPiA+IFswXSBodHRwczovL2xvcmUua2VybmVsLm9yZy9yLzIw
+MjUxMDE3LWRybS1icmlkZ2UtYWxsb2MtZ2V0cHV0LWJyaWRnZS1jb25uZWN0b3ItZml4LWhkbWlf
+Y2VjLXYyLTAtNjY3YWJmNmQ0N2MwQGJvb3RsaW4uY29tCj4gPiAKPiA+IAo+IAo+IEkgc2F3IHlv
+dXIgZml4IHBhdGNoZXMgYmVmb3JlIHNlbmRpbmcgdGhpcyBzZXJpZXMuIEkgdGhpbmsgeW91ciBw
+YXRjaGVzIAo+IHdpbGwgbGlrZWx5IGJlIG1lcmdlZCByZWxhdGl2ZWx5IHF1aWNrbHksIHNvIEkg
+cGxhbiB0byB3YWl0IHVudGlsIHRoZSAKPiBvdGhlciBwYXRjaGVzIGluIG15IHBhdGNoIHNlcmll
+cyBhcmUgY29uZmlybWVkIHRvIGJlIGZpbmUsIHRoZW4gc3VibWl0IAo+IHY4IHZlcnNpb24gYmFz
+ZWQgb24gdGhlIGxhdGVzdCBicmlkZ2VfY29ubmVjdG9yIGRyaXZlci4gOi0pCgpJIHRoaW5rIHdp
+dGggNi4xOS1yYzEgb3V0LCBub3cgaXMgYSBncmVhdCB0aW1lIGZvciB2OD8gOi0pCgpIZWlrbwoK
+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1y
+b2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpo
+dHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlw
+Cg==
