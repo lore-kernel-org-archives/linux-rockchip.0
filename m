@@ -4,70 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85B8AD5E156
-	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Dec 2025 13:49:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B80E5D609A2
+	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Dec 2025 15:07:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MwWWbG7C5sYpidj8czNKOdr9SC5r1XYbDEZVXzDQbVE=; b=j7QZzkRNkShbW6
-	5YIuPLNHSmP9oXpg21J2/83Tru5PNwB5kLmP4m2KDiuK9EW+6jmlajjVdXua3lDfW2Mcnej9rCfKZ
-	TGrqxcmXDc1vGS/anRW85svxt/Vo7SVcSMjiER5Z4RZTSw6oGl9onodN9oWDvCdNpmhld75QMvTvR
-	Vi3v9xmgFC2RkkoHY+6M91s6VzpjmUoHXnlKEEWJJTDfCTJaNTnyawhjhaMKTOQKimK7x04+2IAYO
-	jZD+gixvpvmkiL2epmtRKdLnli3JB0I0s6Dv/y2VHCThYzxGtH8t2geikrGj7/zlnLXE58P7Yt4+6
-	5XrrXKTsZtlowjJvhJYQ==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=jl6oaHHg1EFgMdG784762JYvP0S4AGGxhTT/a6ZQErA=; b=lRM0DDsOwqB2tS
+	ZZTLvPfcxaQRZXEWxriBwqcWt2G3SBwmpFRdxa1cMbBFdwWPx5TN3xypXyzDGH5NrRVmh1eLiRvdz
+	F821FggnxBpMETF5dohxC1Ldj3v6XCsfGzELVPuk2CuxEVdQIW/zdfat6vrsc1bBHcB6UnpMAjC5b
+	CePPEwIMZ72XIxFNNBZ0963fwP1uQZURaZ04egmfVGI5m8g7AzQ7QzuxBzIecyZTAmQ3f3GvCWE4T
+	txF3iyk8vFbmKUlakjcIYmglNxW7+xjoBUOki67zkTjKkWgwWpVFYjUp/2EBnHh/cHhi3HjcVYH1g
+	LQ5SiId7mNOHdIXcVSDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vVVQZ-00000005INE-3YWO;
-	Tue, 16 Dec 2025 13:49:23 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1vVWeB-00000005PYr-39Mj;
+	Tue, 16 Dec 2025 15:07:31 +0000
+Received: from m16.mail.163.com ([117.135.210.5])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vVVQW-00000005IMH-0UBi;
-	Tue, 16 Dec 2025 13:49:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=sFLsYOIToyI1CYsLfOe9PNPAZa7SMcZGDRLeye3TkV4=; b=1cVIG/eg7I6sS8hSAue2feSosa
-	fs9JYZLPNZbpWOz+5uum2rewSRjwJieZr8xzpUV4bVReoRWYTT+mHCMkrJwoHhPQSGGR4sPYkzGME
-	RDsFsScNiP6CEnjPay7NzFuwIgrFnlWdjIBcjNaVq8fDUXuIaKOW1yPFJct87k4LnqJiex01iAtJC
-	+Fz+7SV96+v9afwrM24tqAFdJ6qSg/CFjF9ANZ2MwSKnE6OQY6GWDS9sX+mM66a1RGHlrF4XCy4eq
-	tmRZp4LuDiR8emPv9NnninxunaM3+fUtsB+aMFPl4oLO0sv1kYMOkT8HpqoosgGfpuXJ0fkaxQjwv
-	m+v2sXhw==;
-Received: from [141.76.253.243] (helo=phil.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1vVVPc-0004Lk-DA; Tue, 16 Dec 2025 14:48:24 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: Luca Ceresoli <luca.ceresoli@bootlin.com>, andrzej.hajda@intel.com,
- neil.armstrong@linaro.org, rfoss@kernel.org,
- Damon Ding <damon.ding@rock-chips.com>
-Cc: Laurent.pinchart@ideasonboard.com, jonas@kwiboo.se,
- jernej.skrabec@gmail.com, maarten.lankhorst@linux.intel.com,
- mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch,
- shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de,
- festevam@gmail.com, inki.dae@samsung.com, sw0312.kim@samsung.com,
- kyungmin.park@samsung.com, krzk@kernel.org, alim.akhtar@samsung.com,
- jingoohan1@gmail.com, p.zabel@pengutronix.de, hjc@rock-chips.com,
- andy.yan@rock-chips.com, dmitry.baryshkov@oss.qualcomm.com,
- dianders@chromium.org, m.szyprowski@samsung.com, jani.nikula@intel.com,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
- linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v7 01/18] drm/display: bridge_connector: Ensure last bridge
- determines EDID/modes detection capabilities
-Date: Tue, 16 Dec 2025 14:48:23 +0100
-Message-ID: <3351986.usQuhbGJ8B@phil>
-In-Reply-To: <ff65f453-68a9-41fc-b9e3-02733bba96e3@rock-chips.com>
-References: <20251021023130.1523707-1-damon.ding@rock-chips.com>
- <DDNXIYL494D2.2N8L1J7XTBT4S@bootlin.com>
- <ff65f453-68a9-41fc-b9e3-02733bba96e3@rock-chips.com>
-MIME-Version: 1.0
+	id 1vVWe8-00000005PXQ-387n;
+	Tue, 16 Dec 2025 15:07:30 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:To:Subject:Date:Message-Id; bh=wg9Xf8V8em1zSRB
+	5KPAJPFBdeTO21Kdvkx26K1bPMoE=; b=TytGPF1YqVKWl4BoIq5EE8XbYRAQ7LM
+	ZOYiYT9hIFOq4ZeqQdQRn66lpVV2V6mmUGAKCOuJQT/bSB4bzbX+/GGRWPG8vxYd
+	eTnrY0Dn5/jmRwjGk8TT7zvFL9R5n9Ta0NFrThm6kH4UCjOogKEYcBqxBWuFwHm+
+	o52c5miM5uls=
+Received: from localhost.localdomain (unknown [])
+	by gzsmtp2 (Coremail) with SMTP id PSgvCgDnD+lkdUFpZsvsIQ--.30056S2;
+	Tue, 16 Dec 2025 23:06:28 +0800 (CST)
+From: Lizhe <sensor1010@163.com>
+To: heiko@sntech.de,
+	andrew+netdev@lunn.ch,
+	davem@davemloft.net,
+	edumazet@google.com,
+	kuba@kernel.org,
+	pabeni@redhat.com,
+	mcoquelin.stm32@gmail.com,
+	alexandre.torgue@foss.st.com
+Cc: linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	netdev@vger.kernel.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-kernel@vger.kernel.org,
+	Lizhe <sensor1010@163.com>
+Subject: [PATCH 1/2] [PATCH net-next v2 1/2] net: stmmac: dwmac-rk: rename phy_power_on to avoid conflict
+Date: Tue, 16 Dec 2025 07:06:11 -0800
+Message-Id: <20251216150611.3616-1-sensor1010@163.com>
+X-Mailer: git-send-email 2.17.1
+X-CM-TRANSID: PSgvCgDnD+lkdUFpZsvsIQ--.30056S2
+X-Coremail-Antispam: 1Uf129KBjvJXoW7tFW5Xw4xCrWfXFyDurWrAFb_yoW8Xr47pa
+	97AF9Fyw1kJryxGa12qFsrZa45Cw47try0gF1xZ34fuF13u34qqr10yrW0yF1UKrWkWF9I
+	yF4UA3Z7C3W7CrUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0piG2NtUUUUU=
+X-Originating-IP: [223.65.97.179]
+X-CM-SenderInfo: 5vhq20jurqiii6rwjhhfrp/xtbC3RQl0GlBdXRpeQAA3F
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251216_054920_276799_22E4DBE4 
-X-CRM114-Status: GOOD (  18.69  )
+X-CRM114-CacheID: sfid-20251216_070729_140640_3D103D13 
+X-CRM114-Status: UNSURE (   9.16  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,34 +76,56 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-QW0gTWl0dHdvY2gsIDIyLiBPa3RvYmVyIDIwMjUsIDAzOjE1OjUyIE1pdHRlbGV1cm9ww6Rpc2No
-ZSBOb3JtYWx6ZWl0IHNjaHJpZWIgRGFtb24gRGluZzoKPiBIaSBMdWNhLAo+IAo+IE9uIDEwLzIx
-LzIwMjUgNjozMSBQTSwgTHVjYSBDZXJlc29saSB3cm90ZToKPiA+IEhlbGxvIERhbW9uLAo+ID4g
-Cj4gPiBPbiBUdWUgT2N0IDIxLCAyMDI1IGF0IDQ6MzEgQU0gQ0VTVCwgRGFtb24gRGluZyB3cm90
-ZToKCj4gPiAKPiA+IFRoaXMgZG9lcyBub3QgYXBwbHkgb24gY3VycmVudCBkcm0tbWlzYy1uZXh0
-LCBkdWUgdG8gdGhlIHBhdGNoIEkgbWVudGlvbmVkCj4gPiBpbiBhIHByZXZpb3VzIGl0ZXJhdGlv
-biwgbm93IGFwcGxpZWQgYXMgY29tbWl0IDJiZTMwMGY5YTBiNiAoImRybS9kaXNwbGF5Ogo+ID4g
-YnJpZGdlX2Nvbm5lY3RvcjogZ2V0L3B1dCB0aGUgc3RvcmVkIGJyaWRnZXMiKS4KPiA+IAo+ID4g
-SG93ZXZlciBJJ20gc29ycnkgSSBoYXZlIHRvIG1lbnRpb24gdGhhdCBwYXRjaCB0dXJuZWQgb3V0
-IGJlaW5nIGJ1Z2d5LCBzbwo+ID4gSSd2ZSBzZW50IGEgc2VyaWVzIHRvIGFwcGx5IGEgY29ycmVj
-dGVkIHZlcnNpb24gWzBdLiBJIHN1Z2dlc3Qgd2F0Y2hpbmcgdGhlCj4gPiBkaXN1Y3NzaW9uIGFi
-b3V0IHRoZSBmaXggc2VyaWVzLCBhbmQgaWYgdGhhdCBnZXRzIGFwcHJvdmVkIHJlYmFzZSBvbiB0
-b3Agb2YKPiA+IHRoYXQgYW5kIGFkYXB0IHlvdXIgY2hhbmdlcy4KPiA+IAo+ID4gU29ycnkgYWJv
-dXQgdGhlIG1lc3MuIDooCj4gPiAKPiA+IFswXSBodHRwczovL2xvcmUua2VybmVsLm9yZy9yLzIw
-MjUxMDE3LWRybS1icmlkZ2UtYWxsb2MtZ2V0cHV0LWJyaWRnZS1jb25uZWN0b3ItZml4LWhkbWlf
-Y2VjLXYyLTAtNjY3YWJmNmQ0N2MwQGJvb3RsaW4uY29tCj4gPiAKPiA+IAo+IAo+IEkgc2F3IHlv
-dXIgZml4IHBhdGNoZXMgYmVmb3JlIHNlbmRpbmcgdGhpcyBzZXJpZXMuIEkgdGhpbmsgeW91ciBw
-YXRjaGVzIAo+IHdpbGwgbGlrZWx5IGJlIG1lcmdlZCByZWxhdGl2ZWx5IHF1aWNrbHksIHNvIEkg
-cGxhbiB0byB3YWl0IHVudGlsIHRoZSAKPiBvdGhlciBwYXRjaGVzIGluIG15IHBhdGNoIHNlcmll
-cyBhcmUgY29uZmlybWVkIHRvIGJlIGZpbmUsIHRoZW4gc3VibWl0IAo+IHY4IHZlcnNpb24gYmFz
-ZWQgb24gdGhlIGxhdGVzdCBicmlkZ2VfY29ubmVjdG9yIGRyaXZlci4gOi0pCgpJIHRoaW5rIHdp
-dGggNi4xOS1yYzEgb3V0LCBub3cgaXMgYSBncmVhdCB0aW1lIGZvciB2OD8gOi0pCgpIZWlrbwoK
-CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1y
-b2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpo
-dHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlw
-Cg==
+Rename local function 'phy_power_on' to 'rk_phy_power_set' to avoid
+conflict with PHY subsystem function. Keep original error handling.
+
+Signed-off-by: Lizhe <sensor1010@163.com>
+---
+ drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+index 0a95f54e725e..2f5a65c235aa 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
++++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+@@ -1498,7 +1498,7 @@ static int gmac_clk_enable(struct rk_priv_data *bsp_priv, bool enable)
+ 	return 0;
+ }
+ 
+-static int phy_power_on(struct rk_priv_data *bsp_priv, bool enable)
++static int rk_phy_power_set(struct rk_priv_data *bsp_priv, bool enable)
+ {
+ 	struct regulator *ldo = bsp_priv->regulator;
+ 	struct device *dev = bsp_priv->dev;
+@@ -1692,7 +1692,7 @@ static int rk_gmac_powerup(struct rk_priv_data *bsp_priv)
+ 		dev_err(dev, "NO interface defined!\n");
+ 	}
+ 
+-	ret = phy_power_on(bsp_priv, true);
++	ret = rk_phy_power_set(bsp_priv, true);
+ 	if (ret) {
+ 		gmac_clk_enable(bsp_priv, false);
+ 		return ret;
+@@ -1713,7 +1713,7 @@ static void rk_gmac_powerdown(struct rk_priv_data *gmac)
+ 
+ 	pm_runtime_put_sync(gmac->dev);
+ 
+-	phy_power_on(gmac, false);
++	rk_phy_power_set(gmac, false);
+ 	gmac_clk_enable(gmac, false);
+ }
+ 
+-- 
+2.17.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
