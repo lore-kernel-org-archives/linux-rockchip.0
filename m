@@ -4,88 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9E02D5B87C
-	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Dec 2025 05:53:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D76C7D5C0C2
+	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Dec 2025 08:46:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=R0+SjJzk2hqKItaNIU1rLz4Y1i15L24oofooHI0mojc=; b=b0BgQpQ88pgmex
-	jAANkmkJGIuaSeID08A18epPNi+7jAcF8w7geiq/kRPYRM3uAxvMnrWZL1K2dWknOYw4WvRYpFZ1c
-	s9MZ2AbbvuXzU7hyq8qzBHyTm6wyco0j+0hHHL+dA+2uNnQ6fzTtVOg9q6uYARqewsu+X37nkly13
-	ejgLmE/y+EA2PFDTqXEbA6ti2/jtxKWhiuoFtSMMkNMWW+lUhwb4E2+tx4+OifAGO/5fS6o/oOnCG
-	+g3JraIry0ApNRvSa5dD9y8KjtHHAJjvNMNHqM+nB9CHx/xe7Oz8ymryU8r2l5jIkBA2lcAtYzYwO
-	53Mb5ltwSU6yEaUaNtxQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=9o+MWMhnkK48HGFC2mUGSMUyiZjk7cli6L0Brbx4iPY=; b=0PF0xnJ22GJhIz
+	f18M0aXYVEyELWMEDiaHbpMsWLfQqdgLRGJVtnlslApb0ztY5xRSPmb0Wuthv3b1CYobDkwtQ/gN9
+	p97DPX7OFYM0TlueOspwgb8qvmIlrVa7wpGtTM2NBD3dmfUhiykuMlL6+0HeDznRx/9MUv3gPWWKJ
+	OOP2cnz12muj8tflpDWkGPXXXea6pl5Ho1MRD8lI5/UIl8EeJM6XoZY3dmuEr56tA7mHf+9m3WvOI
+	s3z8vf14nZqdc0MNeFII4mi4lxm7nzQJFvWAJHsRuBa5Ta4RXeEqMjl6fP65bVAVpPb33stHBdTuP
+	OxZqbbUQlj9NdNMWRzZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vVO0A-00000004jWI-0l0g;
-	Tue, 16 Dec 2025 05:53:38 +0000
-Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
+	id 1vVQgo-00000004wRh-1nTk;
+	Tue, 16 Dec 2025 08:45:50 +0000
+Received: from smtpout-03.galae.net ([185.246.85.4])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vVO07-00000004jVt-0j31
-	for linux-rockchip@lists.infradead.org;
-	Tue, 16 Dec 2025 05:53:36 +0000
-Received: by mail-pl1-x631.google.com with SMTP id d9443c01a7336-2a097cc08d5so5815785ad.0
-        for <linux-rockchip@lists.infradead.org>; Mon, 15 Dec 2025 21:53:33 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1765864412; x=1766469212; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=MncoL4J5El8AvquNiDQs2cAUbtdq/qB67h41aRjACM0=;
-        b=Zl9qVQFqkWNH0u+10VwDf5jo6++zVgy0PfkMaDQ0dA8WdAJKQIRMmPQpfWwO6W/XaK
-         s1gX52HVhnwpPag/w5OhcDt1qUVQM8OnYbXPMPsIm+RFELSkkfa+QYxVVElnWXookR1P
-         XLXqSx4MZJk32l5TJLF8rYTERB22L6hwmXcLMkLJ3JrjWoy/0Kq2ZNvhUipx89beJEaG
-         tAcUMpK2uQC92X/+9MajlxXSJELYnO9Vr3INkHTKCGgGkIGkXz8HO41fywsMz7vIaPAE
-         K2HEPN+lTsVdhbKEQBepjPAwXIgo8k8lW+TzigxcmqPnrPG08bhehspF4bU9OGJSphXZ
-         f9zQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1765864412; x=1766469212;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=MncoL4J5El8AvquNiDQs2cAUbtdq/qB67h41aRjACM0=;
-        b=RHr4ikaO23PPlJIG4qyDp3cyKdmlP7Dq5v29iWN9zeFssGIWhlsnWMdZDt3qX0Ku/6
-         0AVYjpxUc37G08+InwA5ta974emg6MV/zmD5UuhOU9RvM1EKbYsldijfzmXIKNXrxeZk
-         VciqrFpsOdOm+LqjA89VlGpbNougyvEdi1bpxhvT0dM5XbT0CBdEEfxeeIAztBzhP7jx
-         v28dkdBZpk5NmzQNCeUG30PL8WBSdpPwep/5ntBiIsEH7iOjJXckUw/kBE3Zid/Pa7R7
-         RVVSF9ekFUrrSWTq+rTO3gZCCl1LjeXi/Gi8WnugKzZeNc8q5BKiWfwpVA5i9G7P3yTu
-         wEiQ==
-X-Gm-Message-State: AOJu0YxkpTBsg3aq6Y3ZEJk4DaIondj+pYnIprqFqudf9r1zC9SXGDKt
-	4t7lN7t9X0wiIyl0PbCYgqcMqA1Eo2nQDGqW1hd0jgQ6SjXDoA6+Ewhc
-X-Gm-Gg: AY/fxX5Z2SUMvlmYYaiX4tR7QwgJYSjY/O2F4WvOcyVRvbFk1W94tfCnbw6j5UUdK+3
-	nmVRxuDgnLcUlunijQ9qhYkvWnpX33Yr/tkLr2GpKgDFYlu91/jiIfZObFZ8oQaahuFdzHMQ/ox
-	sTZNvcOLAVv089pqLqdOAYjKdFS5y4KQXHE+/m4H9Dg3u/d27xeSD4tRWhvNNvzav/6g1qfhs66
-	m5deHr1h8bUxvCJmHf/BTSzX/5NSUVoRjXiq/59n04SiffSNIrFvm8CdR4XpZMzhoqDtJtxW9DH
-	F/Kx6WBOxru+SCUXE25p4IY8CVpHZ8ZKeMDhALUwT/nEiRYRmoE5SxuhLzmxdNx1cqX/iQENkbR
-	O/DXI1NeNVpgD0C+lWDYWZVyiQgiMDT/TmSKGz4cRbTYBOlYcIZA4nXHp77Say6pg2dD6lnHb/R
-	PVgG9jKnJIsUNzKtz0KfG1
-X-Google-Smtp-Source: AGHT+IHlO9dTRrnnOwgtEjc9dR0KmxJlpQDIlf7LaY+F28cguSQy75elhq/r7OBkP4FdWFKAp6P0sg==
-X-Received: by 2002:a05:7301:4d0d:b0:2a6:cb65:1974 with SMTP id 5a478bee46e88-2ac2f8b2b5amr3472470eec.1.1765864412245;
-        Mon, 15 Dec 2025 21:53:32 -0800 (PST)
-Received: from localhost.localdomain ([183.14.133.101])
-        by smtp.gmail.com with ESMTPSA id a92af1059eb24-11f392500cdsm33433791c88.7.2025.12.15.21.53.26
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 15 Dec 2025 21:53:31 -0800 (PST)
-From: Frank Zhang <rmxpzlb@gmail.com>
-To: heiko@sntech.de,
-	ulf.hansson@linaro.org
-Cc: linux-rockchip@lists.infradead.org,
-	linux-pm@vger.kernel.org,
-	chaoyi.chen@rock-chips.com,
-	sebastian.reichel@collabora.com,
-	quentin.schulz@cherry.de,
-	Frank Zhang <rmxpzlb@gmail.com>
-Subject: [PATCH v2] pmdomain:rockchip: Fix init genpd as GENPD_STATE_ON before regulator ready
-Date: Tue, 16 Dec 2025 13:52:47 +0800
-Message-ID: <20251216055247.13150-1-rmxpzlb@gmail.com>
-X-Mailer: git-send-email 2.43.0
+	id 1vVQgk-00000004wQB-2xSz;
+	Tue, 16 Dec 2025 08:45:48 +0000
+Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
+	by smtpout-03.galae.net (Postfix) with ESMTPS id 29D184E41C1D;
+	Tue, 16 Dec 2025 08:45:42 +0000 (UTC)
+Received: from mail.galae.net (mail.galae.net [212.83.136.155])
+	by smtpout-01.galae.net (Postfix) with ESMTPS id EAFA16071C;
+	Tue, 16 Dec 2025 08:45:41 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 9815D119431B1;
+	Tue, 16 Dec 2025 09:45:33 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
+	t=1765874737; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 in-reply-to:references; bh=0i+PsZJan5460ifQCnMp834OOI47NDVIUR3zefRz6YY=;
+	b=xYYUtRHs7TJgRw+tsLJcv3cjv2Ty1F1reYk7QEUZlEKhayOJYyDkMqf44Jv3JCIytIRoyN
+	RvoCCnd9KqTevyLBNsn8TK/gY5cLNaCevOm0BLa2KMhoyPq8grs0kpsI/jdqCpZpa0wyz0
+	/YAEQ2ALx/5ywgDN5PBhEUTYVOHqJ+qczQGggQovANYC19RcGHTHxdHvHwT3D2ktSi48oH
+	5cbdiFXMizWwqMhDCGUib0+AkZGC+xzRrFXBSiTo3yfzvrwwmvhlHhPwejMEHY3W5CW+68
+	VUaaPQU6GYXOA5qHCm7hepYG5+Jk/BnKay3gQiIRG7AdIAuKsiG0UcrMbIbh1g==
+Date: Tue, 16 Dec 2025 09:45:33 +0100
+From: Alexandre Belloni <alexandre.belloni@bootlin.com>
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Cc: Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, kernel@collabora.com,
+	linux-input@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v2 3/4] Input: adc-keys - Use dev_err_probe in probe
+ function
+Message-ID: <20251216084533c8786b5d@mail.local>
+References: <20251215-rock4d-audio-v2-0-82a61de39b4c@collabora.com>
+ <20251215-rock4d-audio-v2-3-82a61de39b4c@collabora.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20251215-rock4d-audio-v2-3-82a61de39b4c@collabora.com>
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251215_215335_211720_17176A46 
-X-CRM114-Status: UNSURE (   9.67  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251216_004546_883998_A7D05A91 
+X-CRM114-Status: GOOD (  23.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,48 +81,140 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RK3588_PD_NPU initialize as GENPD_STATE_ON before regulator ready.
-rknn_iommu initlized success and suspend RK3588_PD_NPU. When rocket
-driver register, it will resume rknn_iommu.
+On 15/12/2025 13:29:31+0100, Nicolas Frattaroli wrote:
+> Rework the probe function, and functions called by the probe function,
+> to use dev_err_probe for error logging.
+> 
+> While at it, also do some minor style cleanups, like not error logging
+> on -ENOMEM and using ! instead of == 0.
+> 
+> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
-If regulator is still not ready at this point, rknn_iommu resume fail,
-pm runtime status will be error: -EPROBE_DEFER.
+Reviewed-by: Alexandre Belloni <alexandre.belloni@bootlin.com>
 
-This patch set pmdomain to off if it need regulator during probe,
-consumer device can power on pmdomain after regulator ready.
+> ---
+>  drivers/input/keyboard/adc-keys.c | 53 ++++++++++++++++-----------------------
+>  1 file changed, 21 insertions(+), 32 deletions(-)
+> 
+> diff --git a/drivers/input/keyboard/adc-keys.c b/drivers/input/keyboard/adc-keys.c
+> index 62376f34f7d0..6f2ddcecea99 100644
+> --- a/drivers/input/keyboard/adc-keys.c
+> +++ b/drivers/input/keyboard/adc-keys.c
+> @@ -74,10 +74,8 @@ static int adc_keys_load_keymap(struct device *dev, struct adc_keys_state *st)
+>  	int i;
+>  
+>  	st->num_keys = device_get_child_node_count(dev);
+> -	if (st->num_keys == 0) {
+> -		dev_err(dev, "keymap is missing\n");
+> -		return -EINVAL;
+> -	}
+> +	if (!st->num_keys)
+> +		return dev_err_probe(dev, -EINVAL, "keymap is missing\n");
+>  
+>  	map = devm_kmalloc_array(dev, st->num_keys, sizeof(*map), GFP_KERNEL);
+>  	if (!map)
+> @@ -86,17 +84,16 @@ static int adc_keys_load_keymap(struct device *dev, struct adc_keys_state *st)
+>  	i = 0;
+>  	device_for_each_child_node_scoped(dev, child) {
+>  		if (fwnode_property_read_u32(child, "press-threshold-microvolt",
+> -					     &map[i].voltage)) {
+> -			dev_err(dev, "Key with invalid or missing voltage\n");
+> -			return -EINVAL;
+> -		}
+> +					     &map[i].voltage))
+> +			return dev_err_probe(dev, -EINVAL,
+> +					     "Key with invalid or missing voltage\n");
+> +
+>  		map[i].voltage /= 1000;
+>  
+>  		if (fwnode_property_read_u32(child, "linux,code",
+> -					     &map[i].code)) {
+> -			dev_err(dev, "Key with invalid or missing linux,code\n");
+> -			return -EINVAL;
+> -		}
+> +					     &map[i].code))
+> +			return dev_err_probe(dev, -EINVAL,
+> +					     "Key with invalid or missing linux,code\n");
+>  
+>  		if (fwnode_property_read_u32(child, "linux,input-type",
+>  					     &map[i].type))
+> @@ -129,7 +126,8 @@ static int adc_keys_probe(struct platform_device *pdev)
+>  
+>  	st->channel = devm_iio_channel_get(dev, "buttons");
+>  	if (IS_ERR(st->channel))
+> -		return PTR_ERR(st->channel);
+> +		return dev_err_probe(dev, PTR_ERR(st->channel),
+> +				     "Could not get iio channel\n");
+>  
+>  	if (!st->channel->indio_dev)
+>  		return -ENXIO;
+> @@ -138,16 +136,13 @@ static int adc_keys_probe(struct platform_device *pdev)
+>  	if (error < 0)
+>  		return error;
+>  
+> -	if (type != IIO_VOLTAGE) {
+> -		dev_err(dev, "Incompatible channel type %d\n", type);
+> -		return -EINVAL;
+> -	}
+> +	if (type != IIO_VOLTAGE)
+> +		return dev_err_probe(dev, -EINVAL, "Incompatible channel type %d\n", type);
+>  
+>  	if (device_property_read_u32(dev, "keyup-threshold-microvolt",
+> -				     &st->keyup_voltage)) {
+> -		dev_err(dev, "Invalid or missing keyup voltage\n");
+> -		return -EINVAL;
+> -	}
+> +				     &st->keyup_voltage))
+> +		return dev_err_probe(dev, -EINVAL, "Invalid or missing keyup voltage\n");
+> +
+>  	st->keyup_voltage /= 1000;
+>  
+>  	error = adc_keys_load_keymap(dev, st);
+> @@ -155,10 +150,8 @@ static int adc_keys_probe(struct platform_device *pdev)
+>  		return error;
+>  
+>  	input = devm_input_allocate_device(dev);
+> -	if (!input) {
+> -		dev_err(dev, "failed to allocate input device\n");
+> +	if (!input)
+>  		return -ENOMEM;
+> -	}
+>  
+>  	input_set_drvdata(input, st);
+>  
+> @@ -178,19 +171,15 @@ static int adc_keys_probe(struct platform_device *pdev)
+>  
+>  
+>  	error = input_setup_polling(input, adc_keys_poll);
+> -	if (error) {
+> -		dev_err(dev, "Unable to set up polling: %d\n", error);
+> -		return error;
+> -	}
+> +	if (error)
+> +		return dev_err_probe(dev, error, "Unable to set up polling\n");
+>  
+>  	if (!device_property_read_u32(dev, "poll-interval", &value))
+>  		input_set_poll_interval(input, value);
+>  
+>  	error = input_register_device(input);
+> -	if (error) {
+> -		dev_err(dev, "Unable to register input device: %d\n", error);
+> -		return error;
+> -	}
+> +	if (error)
+> +		return dev_err_probe(dev, error, "Unable to register input device\n");
+>  
+>  	return 0;
+>  }
+> 
+> -- 
+> 2.52.0
+> 
 
-Signed-off-by: Frank Zhang <rmxpzlb@gmail.com>
-Tested-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-Tested-by: Quentin Schulz <quentin.schulz@cherry.de>
----
-Changes in v2:
-- Simplified the regulator check logic, trun off pmdomain if need
-  regulator.
----
- drivers/pmdomain/rockchip/pm-domains.c | 10 ++++++++++
- 1 file changed, 10 insertions(+)
-
-diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/rockchip/pm-domains.c
-index 4f1336a0f49a..997e93c12951 100644
---- a/drivers/pmdomain/rockchip/pm-domains.c
-+++ b/drivers/pmdomain/rockchip/pm-domains.c
-@@ -879,6 +879,16 @@ static int rockchip_pm_add_one_domain(struct rockchip_pmu *pmu,
- 		pd->genpd.name = pd->info->name;
- 	else
- 		pd->genpd.name = kbasename(node->full_name);
-+
-+	/*
-+	 * power domain's needing a regulator should default to off, since
-+	 * the regulator state is unknown at probe time. Also the regulator
-+	 * state cannot be checked, since that usually requires IP needing
-+	 * (a different) power domain.
-+	 */
-+	if (pd->info->need_regulator)
-+		rockchip_pd_power(pd, false);
-+
- 	pd->genpd.power_off = rockchip_pd_power_off;
- 	pd->genpd.power_on = rockchip_pd_power_on;
- 	pd->genpd.attach_dev = rockchip_pd_attach_dev;
+-- 
+Alexandre Belloni, co-owner and COO, Bootlin
+Embedded Linux and Kernel engineering
+https://bootlin.com
 
 _______________________________________________
 Linux-rockchip mailing list
