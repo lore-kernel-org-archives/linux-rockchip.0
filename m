@@ -4,75 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB439D637AE
-	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Dec 2025 20:49:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEC75D637DA
+	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Dec 2025 22:03:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Z4H9gsWp4jAuODs0bmooWKbT76KOyTHANZwNHdGFT74=; b=zMIltFfcmpg/4e
-	gxLctBCBxwYYcUk18LFgFOy6iTkE9r+44Pzq6E8GmRaBXRoap3/XxxsXqQCHBcHdogTS7tnySRKmD
-	nMTo/5PKiTAFLJMcV8RGE4i0NIEDtFIKla+ZGSuLHWuUCO/l8zZRw037Lh6zhg1t6RuLNPLiayaUC
-	WOWXBRFfMXvMlbEqyBjj3udBcAY25ZfKvS1OUdWrhSOuwBkh2nknSWGv/yF90azB9wd+3xllV/Glx
-	4AgNOG6wK8QsCEtD2VYqmpgnBn0JgWys9G2EGw76wjhKsP3rDkH1aN/Mcp3RKfhYmcphRTMLQF/Ou
-	d09g6t7hfVfZ05qa5CRg==;
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=y9e7yBgd3KUbDARNcGzsJSR8E7xNFv7XM7ifC0k2xpc=; b=QCq4JDk38waTHcpNFb4EX0v8vN
+	wV4xj7nwqTfH97rtmvkOle85zJ5js4HP60x80WPXc2yNgI9lfNe1pT6TeMs2jFq7Boh5/oxEqLiJ2
+	28GHMyU5M0quCUThY6TPb2bT9WqU2MoQilaK1wgMFHNnS3naVnQ0KOJXzKJPY9EIu+ju6XAsE2xLT
+	9fqJRaiprnblAy2BIuaYuqILAZ6kwbJcEk7NuOdRIFvTFH7D0ThDg0yd/OdJWA1+KKGRrXS6A7Hyc
+	gkh5vTqWjOb+58HQ2B3/ZA7A4aidJbfdJf9EO28M05FjQajTgc4QfG/Pe50VaIVK/H579WvsKGZz+
+	mnWQBAxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vVbyt-00000005o5L-0vHo;
-	Tue, 16 Dec 2025 20:49:15 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1vVd87-00000005sMa-1ytu;
+	Tue, 16 Dec 2025 22:02:51 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vVbyr-00000005o4u-1owP;
-	Tue, 16 Dec 2025 20:49:14 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1765918131; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=PWaVYsnoiZji0m2Vak4l2GrTUxoYt4kMHURmwjMjZguN7UWa59kydpjQsG8/mKjUo7tBa2IRkWyGvn3osGnQtysH22zg0z0gPvDLk11dN1t8OIVWMcjFNhIj5z4D2/RVShSp6GLIvRV7GUK1qxD7oqVYfOjI2yDzzQFtV/FjIb8=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1765918131; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=ca75mjl2ylCa0bxIWbc8enL9XzPv7wMBHz9lP28nTcA=; 
-	b=iz1+RkKe76OYgFc+4x90CG7/JNEo+qjeBULdrVd98VaeDlbOTS9HkTTGbX3vGUbXE6peyXxQWNDHt2N0hOlGKrYXDV/tREjcVvLD80QuuH5Kzt08+uapiKD8I211EaRZ0QeInDtrW9BlWURE9FQaE4onedCohFGAV9P/mGub2Ic=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
-	dmarc=pass header.from=<detlev.casanova@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1765918131;
-	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=ca75mjl2ylCa0bxIWbc8enL9XzPv7wMBHz9lP28nTcA=;
-	b=a1tIKX9L+xVzbyG57TB4ApRpWDthyRhwKsQJ7HkIT8WPogciDBoSctMIEPAuFV/p
-	z60f2A0v3saJAjWok8CugoEtdYvFnlbn6RsjSBaZ/fGkfOFN2valBWilUvpkhslB4lj
-	8Mrv80gmZ9qCkywpn36KArj9AZqfVVffEll65/7g=
-Received: by mx.zohomail.com with SMTPS id 1765918128524840.1763123080524;
-	Tue, 16 Dec 2025 12:48:48 -0800 (PST)
-Message-ID: <37da2fe3-41bd-470e-bb6c-93fe35ee1528@collabora.com>
-Date: Tue, 16 Dec 2025 15:48:45 -0500
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+	id 1vVd83-00000005sLO-43NT;
+	Tue, 16 Dec 2025 22:02:49 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1765922563;
+	bh=v1pRSjTzwbmQL1hsDfF9eqLJi60pl/WRvFfhhQUSjj8=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=p46/GdG1x4W/qnRWPwhZbouSnGZCj3wxbqDjCdH2LryI/gC33rvKZqtTGBxUo/yPJ
+	 8QDiWPcndi2DvF0o0n1TFhREuSCLA5t2YvzGbFnEB/but7gw4EwXg4dyXI0FqyN4S8
+	 Sn4RxzS80Wiit/L7Aio4I8S8qJ9+X/QuYj7ITUVhr0a+EoCwokCLjsSbdF3L50wfC0
+	 pbO6zyYTNBdzknloDXFqW1MZAEGAi2Pp4iOLElL1cJIxX7FZfzeTRi8E6lKqs8jVq3
+	 lwXIIminq1LrApT7AVZVArkYAnCpsiUiKXP0uUOEPNPKVnHg0yD51+yt888b03w3T/
+	 Ta2vZamQA3GZA==
+Received: from [IPv6:2606:6d00:17:7b4b::c41] (unknown [IPv6:2606:6d00:17:7b4b::c41])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 41DAC17E12FE;
+	Tue, 16 Dec 2025 23:02:41 +0100 (CET)
+Message-ID: <bcbf8247a778c0a179cef2e0338acb2266c18809.camel@collabora.com>
 Subject: Re: [PATCH v5 01/15] media: uapi: HEVC: Add
  v4l2_ctrl_hevc_ext_sps_[ls]t_rps controls
-To: Hans Verkuil <hverkuil+cisco@kernel.org>, linux-kernel@vger.kernel.org
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Heiko Stuebner <heiko@sntech.de>, Ricardo Ribalda <ribalda@chromium.org>,
- Hans Verkuil <hverkuil@kernel.org>, Hans de Goede <hansg@kernel.org>,
- Yunke Cao <yunkec@google.com>, Jonathan Corbet <corbet@lwn.net>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Sakari Ailus <sakari.ailus@linux.intel.com>,
- James Cowgill <james.cowgill@blaize.com>, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- kernel@collabora.com, Nicolas Dufresne <nicolas.dufresne@collabora.com>
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Detlev Casanova <detlev.casanova@collabora.com>, Hans Verkuil
+	 <hverkuil+cisco@kernel.org>, linux-kernel@vger.kernel.org
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Ezequiel Garcia	
+ <ezequiel@vanguardiasur.com.ar>, Heiko Stuebner <heiko@sntech.de>, Ricardo
+ Ribalda <ribalda@chromium.org>, Hans Verkuil <hverkuil@kernel.org>, Hans de
+ Goede <hansg@kernel.org>,  Yunke Cao <yunkec@google.com>, Jonathan Corbet
+ <corbet@lwn.net>, Laurent Pinchart	 <laurent.pinchart@ideasonboard.com>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>,  James Cowgill
+ <james.cowgill@blaize.com>, linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, 	linux-arm-kernel@lists.infradead.org,
+ kernel@collabora.com
+Date: Tue, 16 Dec 2025 17:02:39 -0500
+In-Reply-To: <37da2fe3-41bd-470e-bb6c-93fe35ee1528@collabora.com>
 References: <20251023214247.459931-1-detlev.casanova@collabora.com>
- <20251023214247.459931-2-detlev.casanova@collabora.com>
- <d8ef0f88-e81d-4159-8945-52197cbc95ba@kernel.org>
-Content-Language: en-US
-From: Detlev Casanova <detlev.casanova@collabora.com>
-In-Reply-To: <d8ef0f88-e81d-4159-8945-52197cbc95ba@kernel.org>
-X-ZohoMailClient: External
+	 <20251023214247.459931-2-detlev.casanova@collabora.com>
+	 <d8ef0f88-e81d-4159-8945-52197cbc95ba@kernel.org>
+	 <37da2fe3-41bd-470e-bb6c-93fe35ee1528@collabora.com>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+Organization: Collabora Canada
+User-Agent: Evolution 3.58.2 (3.58.2-1.fc43) 
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251216_124913_533937_278F583A 
-X-CRM114-Status: GOOD (  28.72  )
+X-CRM114-CacheID: sfid-20251216_140248_382527_D83A3E37 
+X-CRM114-Status: GOOD (  35.63  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,223 +94,359 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: multipart/mixed; boundary="===============0212427818705160576=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Hans,
 
-On 10/24/25 03:55, Hans Verkuil wrote:
-> On 23/10/2025 23:42, Detlev Casanova wrote:
->> Some hardware (e.g.: Rockchip's rk3588 hevc decoder) need the
->> long and short term reference information for HEVC decoding.
->>
->> Add controls to provide it as the raw data form the stream.
->>
->> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
->> ---
->>   .../media/v4l/ext-ctrls-codec-stateless.rst   | 114 ++++++++++++++++++
->>   .../media/v4l/videodev2.h.rst.exceptions      |   2 +
->>   .../media/v4l/vidioc-queryctrl.rst            |  12 ++
->>   3 files changed, 128 insertions(+)
->>
->> diff --git a/Documentation/userspace-api/media/v4l/ext-ctrls-codec-stateless.rst b/Documentation/userspace-api/media/v4l/ext-ctrls-codec-stateless.rst
->> index 497ae74379f6..7b18e12fafbb 100644
->> --- a/Documentation/userspace-api/media/v4l/ext-ctrls-codec-stateless.rst
->> +++ b/Documentation/userspace-api/media/v4l/ext-ctrls-codec-stateless.rst
->> @@ -2959,6 +2959,120 @@ This structure contains all loop filter related parameters. See sections
->>         - 0x00000004
->>         -
->>   
->> +``V4L2_CID_STATELESS_HEVC_EXT_SPS_LT_RPS (struct)``
->> +    Specifies the list of Long-Term reference sets parameters from the SPS.
->> +    These parameters are defined according to :ref:`hevc`.
->> +    They are described in section 7.4.3.2.1 "General sequence parameter set
->> +    RBSP semantics" of the specification.
->> +    This control is a dynamically sized 1-dimensional array,
->> +    V4L2_CTRL_FLAG_DYNAMIC_ARRAY flag must be set when using it.
-> I'd drop this last sentence. It suggests that the application has to set it,
-> but is it set by the kernel.
->
-> Same for the next control below.
->
-> I noticed that this is probably a copy-and-paste from the V4L2_CID_STATELESS_HEVC_SLICE_PARAMS
-> documentation: can you post a separate patch removing that same line from the description of
-> that control? I think it is a confusing line, and we missed it during the original review
-> of V4L2_CID_STATELESS_HEVC_SLICE_PARAMS.
->
-> I have another question about these two controls: currently dynamic controls have always at
-> least one element. I have been working on supporting zero-sized dynamic controls. Would
-> that make sense here? Or will these two controls - if present - always have one element or
-> more?
->
-> If zero-length dynamic array controls are useful here, then I can clean up my patches and
-> post them so you can use it.
+--===============0212427818705160576==
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-j2Yu32W+NlJeaG5ToHIu"
 
-I guess that could happen depending on what userspace does, but the size 
-of the array is determined by num_long_term_ref_pics_sps and 
-num_short_term_ref_pic_sets from v4l2_ctrl_hevc_sps respectively.
 
-If that value is 0, there is no point in setting the (respective) 
-control, except for simplifying userspace code I suppose.
+--=-j2Yu32W+NlJeaG5ToHIu
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-So 0-length support is avoidable.
+Hi,
 
-Detlev.
+Le mardi 16 d=C3=A9cembre 2025 =C3=A0 15:48 -0500, Detlev Casanova a =C3=A9=
+crit=C2=A0:
+> Hi Hans,
+>=20
+> On 10/24/25 03:55, Hans Verkuil wrote:
+> > On 23/10/2025 23:42, Detlev Casanova wrote:
+> > > Some hardware (e.g.: Rockchip's rk3588 hevc decoder) need the
+> > > long and short term reference information for HEVC decoding.
+> > >=20
+> > > Add controls to provide it as the raw data form the stream.
+> > >=20
+> > > Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+> > > ---
+> > > =C2=A0 .../media/v4l/ext-ctrls-codec-stateless.rst=C2=A0=C2=A0 | 114 =
+++++++++++++++++++
+> > > =C2=A0 .../media/v4l/videodev2.h.rst.exceptions=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0 |=C2=A0=C2=A0 2 +
+> > > =C2=A0 .../media/v4l/vidioc-queryctrl.rst=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0 12 ++
+> > > =C2=A0 3 files changed, 128 insertions(+)
+> > >=20
+> > > diff --git a/Documentation/userspace-api/media/v4l/ext-ctrls-codec-st=
+ateless.rst b/Documentation/userspace-api/media/v4l/ext-ctrls-codec-statele=
+ss.rst
+> > > index 497ae74379f6..7b18e12fafbb 100644
+> > > --- a/Documentation/userspace-api/media/v4l/ext-ctrls-codec-stateless=
+.rst
+> > > +++ b/Documentation/userspace-api/media/v4l/ext-ctrls-codec-stateless=
+.rst
+> > > @@ -2959,6 +2959,120 @@ This structure contains all loop filter relat=
+ed parameters. See sections
+> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - 0x00000004
+> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 -
+> > > =C2=A0=20
+> > > +``V4L2_CID_STATELESS_HEVC_EXT_SPS_LT_RPS (struct)``
+> > > +=C2=A0=C2=A0=C2=A0 Specifies the list of Long-Term reference sets pa=
+rameters from the SPS.
+> > > +=C2=A0=C2=A0=C2=A0 These parameters are defined according to :ref:`h=
+evc`.
+> > > +=C2=A0=C2=A0=C2=A0 They are described in section 7.4.3.2.1 "General =
+sequence parameter set
+> > > +=C2=A0=C2=A0=C2=A0 RBSP semantics" of the specification.
+> > > +=C2=A0=C2=A0=C2=A0 This control is a dynamically sized 1-dimensional=
+ array,
+> > > +=C2=A0=C2=A0=C2=A0 V4L2_CTRL_FLAG_DYNAMIC_ARRAY flag must be set whe=
+n using it.
+> > I'd drop this last sentence. It suggests that the application has to se=
+t it,
+> > but is it set by the kernel.
+> >=20
+> > Same for the next control below.
+> >=20
+> > I noticed that this is probably a copy-and-paste from the V4L2_CID_STAT=
+ELESS_HEVC_SLICE_PARAMS
+> > documentation: can you post a separate patch removing that same line fr=
+om the description of
+> > that control? I think it is a confusing line, and we missed it during t=
+he original review
+> > of V4L2_CID_STATELESS_HEVC_SLICE_PARAMS.
+> >=20
+> > I have another question about these two controls: currently dynamic con=
+trols have always at
+> > least one element. I have been working on supporting zero-sized dynamic=
+ controls. Would
+> > that make sense here? Or will these two controls - if present - always =
+have one element or
+> > more?
+> >=20
+> > If zero-length dynamic array controls are useful here, then I can clean=
+ up my patches and
+> > post them so you can use it.
+>=20
+> I guess that could happen depending on what userspace does, but the size=
+=20
+> of the array is determined by num_long_term_ref_pics_sps and=20
+> num_short_term_ref_pic_sets from v4l2_ctrl_hevc_sps respectively.
+>=20
+> If that value is 0, there is no point in setting the (respective)=20
+> control, except for simplifying userspace code I suppose.
+>=20
+> So 0-length support is avoidable.
 
-> Regards,
->
-> 	Hans
->
->> +
->> +.. c:type:: v4l2_ctrl_hevc_ext_sps_lt_rps
->> +
->> +.. cssclass:: longtable
->> +
->> +.. flat-table:: struct v4l2_ctrl_hevc_ext_sps_lt_rps
->> +    :header-rows:  0
->> +    :stub-columns: 0
->> +    :widths:       1 1 2
->> +
->> +    * - __u16
->> +      - ``lt_ref_pic_poc_lsb_sps``
->> +      - Long term reference picture order count as described in section 7.4.3.2.1
->> +        "General sequence parameter set RBSP semantics" of the specification.
->> +    * - __u8
->> +      - ``flags``
->> +      - See :ref:`Extended Long-Term RPS Flags <hevc_ext_sps_lt_rps_flags>`
->> +
->> +.. _hevc_ext_sps_lt_rps_flags:
->> +
->> +``Extended SPS Long-Term RPS Flags``
->> +
->> +.. cssclass:: longtable
->> +
->> +.. flat-table::
->> +    :header-rows:  0
->> +    :stub-columns: 0
->> +    :widths:       1 1 2
->> +
->> +    * - ``V4L2_HEVC_EXT_SPS_LT_RPS_FLAG_USED_LT``
->> +      - 0x00000001
->> +      - Specifies if the long-term reference picture is used 7.4.3.2.1 "General sequence parameter
->> +        set RBSP semantics" of the specification.
->> +
->> +``V4L2_CID_STATELESS_HEVC_EXT_SPS_ST_RPS (struct)``
->> +    Specifies the list of Short-Term reference sets parameters from the SPS.
->> +    These parameters are defined according to :ref:`hevc`.
->> +    They are described in section 7.4.8 "Short-term reference picture set
->> +    semantics" of the specification.
->> +    This control is a dynamically sized 1-dimensional array,
->> +    V4L2_CTRL_FLAG_DYNAMIC_ARRAY flag must be set when using it.
->> +
->> +.. c:type:: v4l2_ctrl_hevc_ext_sps_st_rps
->> +
->> +.. cssclass:: longtable
->> +
->> +.. flat-table:: struct v4l2_ctrl_hevc_ext_sps_st_rps
->> +    :header-rows:  0
->> +    :stub-columns: 0
->> +    :widths:       1 1 2
->> +
->> +    * - __u8
->> +      - ``delta_idx_minus1``
->> +      - Specifies the delta compare to the index. See details in section 7.4.8 "Short-term
->> +        reference picture set semantics" of the specification.
->> +    * - __u8
->> +      - ``delta_rps_sign``
->> +      - Sign of the delta as specified in section 7.4.8 "Short-term reference picture set
->> +        semantics" of the specification.
->> +    * - __u16
->> +      - ``abs_delta_rps_minus1``
->> +      - Absolute delta RPS as specified in section 7.4.8 "Short-term reference picture set
->> +        semantics" of the specification.
->> +    * - __u8
->> +      - ``num_negative_pics``
->> +      - Number of short-term RPS entries that have picture order count values less than the
->> +        picture order count value of the current picture.
->> +    * - __u8
->> +      - ``num_positive_pics``
->> +      - Number of short-term RPS entries that have picture order count values greater than the
->> +        picture order count value of the current picture.
->> +    * - __u32
->> +      - ``used_by_curr_pic``
->> +      - Bit i specifies if short-term RPS i is used by the current picture.
->> +    * - __u32
->> +      - ``use_delta_flag``
->> +      - Bit i specifies if short-term RPS i is included in the short-term RPS entries.
->> +    * - __u16
->> +      - ``delta_poc_s0_minus1[16]``
->> +      - Specifies the negative picture order count delta for the i-th entry in the short-term RPS.
->> +        See details in section 7.4.8 "Short-term reference picture set semantics" of the
->> +        specification.
->> +    * - __u16
->> +      - ``delta_poc_s1_minus1[16]``
->> +      - Specifies the positive picture order count delta for the i-th entry in the short-term RPS.
->> +        See details in section 7.4.8 "Short-term reference picture set semantics" of the
->> +        specification.
->> +    * - __u8
->> +      - ``flags``
->> +      - See :ref:`Extended Short-Term RPS Flags <hevc_ext_sps_st_rps_flags>`
->> +
->> +.. _hevc_ext_sps_st_rps_flags:
->> +
->> +``Extended SPS Short-Term RPS Flags``
->> +
->> +.. cssclass:: longtable
->> +
->> +.. flat-table::
->> +    :header-rows:  0
->> +    :stub-columns: 0
->> +    :widths:       1 1 2
->> +
->> +    * - ``V4L2_HEVC_EXT_SPS_ST_RPS_FLAG_INTER_REF_PIC_SET_PRED``
->> +      - 0x00000001
->> +      - Specifies if the short-term RPS is predicted from another short term RPS. See details in
->> +        section 7.4.8 "Short-term reference picture set semantics" of the specification.
->> +
->>   .. _v4l2-codec-stateless-av1:
->>   
->>   ``V4L2_CID_STATELESS_AV1_SEQUENCE (struct)``
->> diff --git a/Documentation/userspace-api/media/v4l/videodev2.h.rst.exceptions b/Documentation/userspace-api/media/v4l/videodev2.h.rst.exceptions
->> index c41693115db6..6182b4e2d2ee 100644
->> --- a/Documentation/userspace-api/media/v4l/videodev2.h.rst.exceptions
->> +++ b/Documentation/userspace-api/media/v4l/videodev2.h.rst.exceptions
->> @@ -150,6 +150,8 @@ replace symbol V4L2_CTRL_TYPE_H264_SCALING_MATRIX :c:type:`V4L.v4l2_ctrl_type`
->>   replace symbol V4L2_CTRL_TYPE_H264_PRED_WEIGHTS :c:type:`V4L.v4l2_ctrl_type`
->>   replace symbol V4L2_CTRL_TYPE_H264_SLICE_PARAMS :c:type:`V4L.v4l2_ctrl_type`
->>   replace symbol V4L2_CTRL_TYPE_H264_DECODE_PARAMS :c:type:`V4L.v4l2_ctrl_type`
->> +replace symbol V4L2_CTRL_TYPE_HEVC_EXT_SPS_ST_RPS :c:type:`V4L.v4l2_ctrl_type`
->> +replace symbol V4L2_CTRL_TYPE_HEVC_EXT_SPS_LT_RPS :c:type:`V4L.v4l2_ctrl_type`
->>   replace symbol V4L2_CTRL_TYPE_HEVC_SPS :c:type:`V4L.v4l2_ctrl_type`
->>   replace symbol V4L2_CTRL_TYPE_HEVC_PPS :c:type:`V4L.v4l2_ctrl_type`
->>   replace symbol V4L2_CTRL_TYPE_HEVC_SLICE_PARAMS :c:type:`V4L.v4l2_ctrl_type`
->> diff --git a/Documentation/userspace-api/media/v4l/vidioc-queryctrl.rst b/Documentation/userspace-api/media/v4l/vidioc-queryctrl.rst
->> index c8baa9430c14..82c8b52e771c 100644
->> --- a/Documentation/userspace-api/media/v4l/vidioc-queryctrl.rst
->> +++ b/Documentation/userspace-api/media/v4l/vidioc-queryctrl.rst
->> @@ -531,6 +531,18 @@ See also the examples in :ref:`control`.
->>         - n/a
->>         - A struct :c:type:`v4l2_ctrl_hevc_decode_params`, containing HEVC
->>   	decoding parameters for stateless video decoders.
->> +    * - ``V4L2_CTRL_TYPE_HEVC_EXT_SPS_LT_RPS``
->> +      - n/a
->> +      - n/a
->> +      - n/a
->> +      - A struct :c:type:`v4l2_ctrl_hevc_ext_sps_lt_rps`, containing HEVC
->> +	extended Long-Term RPS for stateless video decoders.
->> +    * - ``V4L2_CTRL_TYPE_HEVC_EXT_SPS_ST_RPS``
->> +      - n/a
->> +      - n/a
->> +      - n/a
->> +      - A struct :c:type:`v4l2_ctrl_hevc_ext_sps_st_rps`, containing HEVC
->> +	extended Short-Term RPS for stateless video decoders.
->>       * - ``V4L2_CTRL_TYPE_VP9_COMPRESSED_HDR``
->>         - n/a
->>         - n/a
+With our rule of keeping controls as consistent as possible, we'd need a ze=
+ro
+length array here since key frame have zero long and short references.
+
+Basically, we should be able to clear that control when
+long_term_ref_pics_present_flag is not set, or num_short_term_ref_pic_sets =
+is
+zero.
+
+Feel free to send an update anyway, since I don't expect Hans to be able to
+provide this code now, would have been better to reply earlier. In fact, I =
+agree
+we can probably move on without the zero-length immediately added and add i=
+t
+later.
+
+Before going that route, how big are these two arrays ? Short term can be 6=
+4
+ref, long term 32, how big in bytes that is ? Was is worth goign with dynam=
+ic
+array ? Its not like slices, where we can have 600 or more.
+
+Nicolas
+
+>=20
+> Detlev.
+>=20
+> > Regards,
+> >=20
+> > 	Hans
+> >=20
+> > > +
+> > > +.. c:type:: v4l2_ctrl_hevc_ext_sps_lt_rps
+> > > +
+> > > +.. cssclass:: longtable
+> > > +
+> > > +.. flat-table:: struct v4l2_ctrl_hevc_ext_sps_lt_rps
+> > > +=C2=A0=C2=A0=C2=A0 :header-rows:=C2=A0 0
+> > > +=C2=A0=C2=A0=C2=A0 :stub-columns: 0
+> > > +=C2=A0=C2=A0=C2=A0 :widths:=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 1 1 =
+2
+> > > +
+> > > +=C2=A0=C2=A0=C2=A0 * - __u16
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - ``lt_ref_pic_poc_lsb_sps``
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - Long term reference picture order c=
+ount as described in section 7.4.3.2.1
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "General sequence paramet=
+er set RBSP semantics" of the specification.
+> > > +=C2=A0=C2=A0=C2=A0 * - __u8
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - ``flags``
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - See :ref:`Extended Long-Term RPS Fl=
+ags <hevc_ext_sps_lt_rps_flags>`
+> > > +
+> > > +.. _hevc_ext_sps_lt_rps_flags:
+> > > +
+> > > +``Extended SPS Long-Term RPS Flags``
+> > > +
+> > > +.. cssclass:: longtable
+> > > +
+> > > +.. flat-table::
+> > > +=C2=A0=C2=A0=C2=A0 :header-rows:=C2=A0 0
+> > > +=C2=A0=C2=A0=C2=A0 :stub-columns: 0
+> > > +=C2=A0=C2=A0=C2=A0 :widths:=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 1 1 =
+2
+> > > +
+> > > +=C2=A0=C2=A0=C2=A0 * - ``V4L2_HEVC_EXT_SPS_LT_RPS_FLAG_USED_LT``
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - 0x00000001
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - Specifies if the long-term referenc=
+e picture is used 7.4.3.2.1 "General sequence parameter
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 set RBSP semantics" of th=
+e specification.
+> > > +
+> > > +``V4L2_CID_STATELESS_HEVC_EXT_SPS_ST_RPS (struct)``
+> > > +=C2=A0=C2=A0=C2=A0 Specifies the list of Short-Term reference sets p=
+arameters from the SPS.
+> > > +=C2=A0=C2=A0=C2=A0 These parameters are defined according to :ref:`h=
+evc`.
+> > > +=C2=A0=C2=A0=C2=A0 They are described in section 7.4.8 "Short-term r=
+eference picture set
+> > > +=C2=A0=C2=A0=C2=A0 semantics" of the specification.
+> > > +=C2=A0=C2=A0=C2=A0 This control is a dynamically sized 1-dimensional=
+ array,
+> > > +=C2=A0=C2=A0=C2=A0 V4L2_CTRL_FLAG_DYNAMIC_ARRAY flag must be set whe=
+n using it.
+> > > +
+> > > +.. c:type:: v4l2_ctrl_hevc_ext_sps_st_rps
+> > > +
+> > > +.. cssclass:: longtable
+> > > +
+> > > +.. flat-table:: struct v4l2_ctrl_hevc_ext_sps_st_rps
+> > > +=C2=A0=C2=A0=C2=A0 :header-rows:=C2=A0 0
+> > > +=C2=A0=C2=A0=C2=A0 :stub-columns: 0
+> > > +=C2=A0=C2=A0=C2=A0 :widths:=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 1 1 =
+2
+> > > +
+> > > +=C2=A0=C2=A0=C2=A0 * - __u8
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - ``delta_idx_minus1``
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - Specifies the delta compare to the =
+index. See details in section 7.4.8 "Short-term
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 reference picture set sem=
+antics" of the specification.
+> > > +=C2=A0=C2=A0=C2=A0 * - __u8
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - ``delta_rps_sign``
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - Sign of the delta as specified in s=
+ection 7.4.8 "Short-term reference picture set
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 semantics" of the specifi=
+cation.
+> > > +=C2=A0=C2=A0=C2=A0 * - __u16
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - ``abs_delta_rps_minus1``
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - Absolute delta RPS as specified in =
+section 7.4.8 "Short-term reference picture set
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 semantics" of the specifi=
+cation.
+> > > +=C2=A0=C2=A0=C2=A0 * - __u8
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - ``num_negative_pics``
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - Number of short-term RPS entries th=
+at have picture order count values less than the
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 picture order count value=
+ of the current picture.
+> > > +=C2=A0=C2=A0=C2=A0 * - __u8
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - ``num_positive_pics``
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - Number of short-term RPS entries th=
+at have picture order count values greater than the
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 picture order count value=
+ of the current picture.
+> > > +=C2=A0=C2=A0=C2=A0 * - __u32
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - ``used_by_curr_pic``
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - Bit i specifies if short-term RPS i=
+ is used by the current picture.
+> > > +=C2=A0=C2=A0=C2=A0 * - __u32
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - ``use_delta_flag``
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - Bit i specifies if short-term RPS i=
+ is included in the short-term RPS entries.
+> > > +=C2=A0=C2=A0=C2=A0 * - __u16
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - ``delta_poc_s0_minus1[16]``
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - Specifies the negative picture orde=
+r count delta for the i-th entry in the short-term RPS.
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 See details in section 7.=
+4.8 "Short-term reference picture set semantics" of the
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 specification.
+> > > +=C2=A0=C2=A0=C2=A0 * - __u16
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - ``delta_poc_s1_minus1[16]``
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - Specifies the positive picture orde=
+r count delta for the i-th entry in the short-term RPS.
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 See details in section 7.=
+4.8 "Short-term reference picture set semantics" of the
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 specification.
+> > > +=C2=A0=C2=A0=C2=A0 * - __u8
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - ``flags``
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - See :ref:`Extended Short-Term RPS F=
+lags <hevc_ext_sps_st_rps_flags>`
+> > > +
+> > > +.. _hevc_ext_sps_st_rps_flags:
+> > > +
+> > > +``Extended SPS Short-Term RPS Flags``
+> > > +
+> > > +.. cssclass:: longtable
+> > > +
+> > > +.. flat-table::
+> > > +=C2=A0=C2=A0=C2=A0 :header-rows:=C2=A0 0
+> > > +=C2=A0=C2=A0=C2=A0 :stub-columns: 0
+> > > +=C2=A0=C2=A0=C2=A0 :widths:=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 1 1 =
+2
+> > > +
+> > > +=C2=A0=C2=A0=C2=A0 * - ``V4L2_HEVC_EXT_SPS_ST_RPS_FLAG_INTER_REF_PIC=
+_SET_PRED``
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - 0x00000001
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - Specifies if the short-term RPS is =
+predicted from another short term RPS. See details in
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 section 7.4.8 "Short-term=
+ reference picture set semantics" of the specification.
+> > > +
+> > > =C2=A0 .. _v4l2-codec-stateless-av1:
+> > > =C2=A0=20
+> > > =C2=A0 ``V4L2_CID_STATELESS_AV1_SEQUENCE (struct)``
+> > > diff --git a/Documentation/userspace-api/media/v4l/videodev2.h.rst.ex=
+ceptions b/Documentation/userspace-api/media/v4l/videodev2.h.rst.exceptions
+> > > index c41693115db6..6182b4e2d2ee 100644
+> > > --- a/Documentation/userspace-api/media/v4l/videodev2.h.rst.exception=
+s
+> > > +++ b/Documentation/userspace-api/media/v4l/videodev2.h.rst.exception=
+s
+> > > @@ -150,6 +150,8 @@ replace symbol V4L2_CTRL_TYPE_H264_SCALING_MATRIX=
+ :c:type:`V4L.v4l2_ctrl_type`
+> > > =C2=A0 replace symbol V4L2_CTRL_TYPE_H264_PRED_WEIGHTS :c:type:`V4L.v=
+4l2_ctrl_type`
+> > > =C2=A0 replace symbol V4L2_CTRL_TYPE_H264_SLICE_PARAMS :c:type:`V4L.v=
+4l2_ctrl_type`
+> > > =C2=A0 replace symbol V4L2_CTRL_TYPE_H264_DECODE_PARAMS :c:type:`V4L.=
+v4l2_ctrl_type`
+> > > +replace symbol V4L2_CTRL_TYPE_HEVC_EXT_SPS_ST_RPS :c:type:`V4L.v4l2_=
+ctrl_type`
+> > > +replace symbol V4L2_CTRL_TYPE_HEVC_EXT_SPS_LT_RPS :c:type:`V4L.v4l2_=
+ctrl_type`
+> > > =C2=A0 replace symbol V4L2_CTRL_TYPE_HEVC_SPS :c:type:`V4L.v4l2_ctrl_=
+type`
+> > > =C2=A0 replace symbol V4L2_CTRL_TYPE_HEVC_PPS :c:type:`V4L.v4l2_ctrl_=
+type`
+> > > =C2=A0 replace symbol V4L2_CTRL_TYPE_HEVC_SLICE_PARAMS :c:type:`V4L.v=
+4l2_ctrl_type`
+> > > diff --git a/Documentation/userspace-api/media/v4l/vidioc-queryctrl.r=
+st b/Documentation/userspace-api/media/v4l/vidioc-queryctrl.rst
+> > > index c8baa9430c14..82c8b52e771c 100644
+> > > --- a/Documentation/userspace-api/media/v4l/vidioc-queryctrl.rst
+> > > +++ b/Documentation/userspace-api/media/v4l/vidioc-queryctrl.rst
+> > > @@ -531,6 +531,18 @@ See also the examples in :ref:`control`.
+> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - n/a
+> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - A struct :c:type:`v4l2_c=
+trl_hevc_decode_params`, containing HEVC
+> > > =C2=A0=C2=A0	decoding parameters for stateless video decoders.
+> > > +=C2=A0=C2=A0=C2=A0 * - ``V4L2_CTRL_TYPE_HEVC_EXT_SPS_LT_RPS``
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - n/a
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - n/a
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - n/a
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - A struct :c:type:`v4l2_ctrl_hevc_ex=
+t_sps_lt_rps`, containing HEVC
+> > > +	extended Long-Term RPS for stateless video decoders.
+> > > +=C2=A0=C2=A0=C2=A0 * - ``V4L2_CTRL_TYPE_HEVC_EXT_SPS_ST_RPS``
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - n/a
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - n/a
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - n/a
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - A struct :c:type:`v4l2_ctrl_hevc_ex=
+t_sps_st_rps`, containing HEVC
+> > > +	extended Short-Term RPS for stateless video decoders.
+> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 * - ``V4L2_CTRL_TYPE_VP9_COMPRESSED_HD=
+R``
+> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - n/a
+> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - n/a
+
+--=-j2Yu32W+NlJeaG5ToHIu
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaUHXAAAKCRDZQZRRKWBy
+9N5pAQDw36UxG6/tFUkRej1+ngQLHpNN64KxopMOLHv6Q/rZZQEAsJCRhm8QdSUp
+keRUSwqcponKn9oaTWFDPXPlm167fgM=
+=fUye
+-----END PGP SIGNATURE-----
+
+--=-j2Yu32W+NlJeaG5ToHIu--
+
+
+--===============0212427818705160576==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============0212427818705160576==--
+
