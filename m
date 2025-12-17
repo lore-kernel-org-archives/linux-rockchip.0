@@ -4,98 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10D0AD68BC2
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Dec 2025 23:31:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48CF9D66BBB
+	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Dec 2025 23:37:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Cc:Date:
-	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=v0dQ4qmK28/TQ6laUXqyQW6ax/cLjAhIimuXAJmS3Zs=; b=v3Spu1yIHuH68M
-	snZAEj0OGJKQmy6KK/QThHmnv2XsDhS/cbTadIE8R4PGa8vCREBy5m15IIHycR3ad7ALUvTZMWddw
-	c3O+4oSdOODrc8RMIT9iBoXPSUy6ch4Myg/3kmAmhiyND1cE/GIEgzCWsCCZK2eriBXh63MvjLgcM
-	jGkrEY3OkNcOtmNvNfn1hoWiO6OQZVIySLSRD2Ty9nZ4VEGzurrxrHeeAtxyqamZJiloh/SC5fYcB
-	WImkAdiQ8jOrRQJX5kPW3tTzr+4vmshUBazRVQ0xoxjC0ZhafeVDQx0tPzKbSgC55M461t2O/kVzq
-	0zhTJC9hsUo5Z2BGsU4Q==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=oAlQAAagrwdZGfmrsxSpJ/zGWYurdeR4oXScUKCQnoI=; b=umitEKnXJWXkZP
+	B2fxTtlcC8oHbn9cnvIUVRTzvy8YMJ793FVzfFsjAkRb3daUrJroMqONFM9Tsu7ukobm0/ZP2sD0n
+	WHcTxsEe/v/QndXLsgVOnVX0AtarYh8slmsqCyV6lUXi85K8emzmRypTJHSoNl/cLuZLxkNToVs3B
+	d8SeDjCVEFWxzphZFFOYRGGqLiZrgE7rXXOnd1ApjiQzC85L2ImKUih/dgcN4v6EteAXtC15yZrdy
+	04ggDTQ/I5H8lC9b3enbKUJpEGUTu/mGe5wV/w+xmmyJS7KyC4a+/tq7jKA6S7dkCgoABAaX8bFMh
+	rXVEuhwPnLKbxEDRw3iw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vW0zc-00000007Xr5-2Pkg;
-	Wed, 17 Dec 2025 23:31:40 +0000
-Received: from m1-out-mua-15.websupport.sk ([2a00:4b40:aaaa:2101:45:13:137:24])
+	id 1vW15N-00000007YYJ-1Fa6;
+	Wed, 17 Dec 2025 23:37:37 +0000
+Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vW0zZ-00000007XqY-0UW1;
-	Wed, 17 Dec 2025 23:31:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=probably.group;
-	s=mail; t=1766014290;
-	bh=N2mq0Gx7GZeTynP2HqywdZDBMJbkGwWK5LlhAShzLmQ=;
-	h=Subject:From:In-Reply-To:Date:Cc:References:To:From;
-	b=aH9uNQNkP+QzUUguji0xI1K+VchucuyeSDKy/54IGGTCPJC2kPIDnxalJ+VxlrCDy
-	 1UR5LDchY6sRTknWwHKo9UKeCM8BSqkV5doFIsRvsd0Zqp9UeV3eOkUv2bR67bQrim
-	 cv5+ObQZntiuEtbW4yeGhw3Lax1q6VADwJp1LxDuX5P/NnhJsrLyp4d7HYAwd+pdp7
-	 I0mM8VOsOLFD5HivqkwVN8fKz1D3Ivp9qvnfdsSh2pxKtKXHh83splYpjoZpfN0mcG
-	 bymuITuTmDGwXf/PdwTU8MqAtdIrFgQ3ElS5bth7/+g4FSGrPf0DLSeFhwaqs40c/u
-	 OB0I/7mjG4UuQ==
-Received: from m1-u6-ing.websupport.sk (unknown [10.30.6.2])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	by m1-out-mua-15.websupport.sk (Postfix) with ESMTPS id 4dWqnG2CSGz1Md5;
-	Thu, 18 Dec 2025 00:31:30 +0100 (CET)
-X-Authenticated-Sender: mh@probably.group
-Authentication-Results: m1-u6-ing.websupport.sk;
-	auth=pass smtp.auth=mh@probably.group smtp.mailfrom=mh@probably.group
-Received: from smtpclient.apple (unknown [109.164.127.134])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	(Authenticated sender: mh@probably.group)
-	by m1-u6-ing.websupport.sk (Postfix) with ESMTPSA id 4dWqnF0STBzdMvK;
-	Thu, 18 Dec 2025 00:31:28 +0100 (CET)
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.300.41.1.7\))
-Subject: Re: [PATCH] arm64: dts: rockchip: enable dual 2.5GbE on Rock 5T
-From: =?utf-8?B?Ik1hcnRpbiBIb2xvdnNrw70gKFByb2JhYmx5IE5vdGhpbmcgcy5yLm8u?=
- =?utf-8?B?KSI=?= <mh@probably.group>
-In-Reply-To: <176580661874.1441131.12947657582985645446.b4-ty@sntech.de>
-Date: Thu, 18 Dec 2025 00:31:18 +0100
-Cc: Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>,
- devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org,
+	id 1vW15K-00000007YWq-3liH
+	for linux-rockchip@lists.infradead.org;
+	Wed, 17 Dec 2025 23:37:36 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
+ Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
+ s=fe-e1b5cab7be; t=1766014654;
+ bh=9V+YJ4gG6ljXsDx4ZRidny7LTj0Q5gQ27k2c7thZUTw=;
+ b=pNtAN9zngTsNSTSvpMZQb+wNO5WMji3XSjKsO96JJAmWereW209Bi5RKgJiKKvajae+7/zg5/
+ Jb1rJx9Rdse/hqIb0sppw6vcWI4mQN1b9c8k60KXpu4w800kmHXXklx4HZIbDowjyHsZVwCn2ws
+ f1/N8oc55GXqKzmaw7p8lX6/xxBFY14oJEZHju3D6TAJ456+t6qOcsrEFiocPKBNZj1l+ny5/LL
+ b9bvahIRLbbcPVzQ283rkqLmgEP5gSGdY0tQo6S6c0n0OLwtoX6tgwDbsKL44TStelCoNJEMtko
+ 8E2y5hM8kJnQPSHlHOUfsSCefsG1xToxI9IUo5AzZXxQ==
+X-Forward-Email-ID: 69433eb547898a7fd2fef4db
+X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 149.28.215.223
+X-Forward-Email-Version: 2.0.6
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+Message-ID: <47729359-6eb4-494d-9e21-4a3c34cba324@kwiboo.se>
+Date: Thu, 18 Dec 2025 00:37:20 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6 09/17] media: rkvdec: Add variant specific coded
+ formats list
+To: Detlev Casanova <detlev.casanova@collabora.com>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Heiko Stuebner <heiko@sntech.de>,
+ Daniel Almeida <daniel.almeida@collabora.com>,
+ Jonathan Corbet <corbet@lwn.net>, Ricardo Ribalda <ribalda@chromium.org>,
+ Hans Verkuil <hverkuil@kernel.org>, Yunke Cao <yunkec@google.com>,
+ Hans de Goede <hansg@kernel.org>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Pavan Bobba <opensource206@gmail.com>,
+ James Cowgill <james.cowgill@blaize.com>, linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ kernel@collabora.com, Diederik de Haas <didi.debian@cknow.org>,
  linux-kernel@vger.kernel.org
-Message-Id: <7A2ADADA-3FD8-4AAE-B7D8-9137399FBE6E@probably.group>
-References: <96516D1F-9787-47FE-A67E-4745D11D9207@probably.group>
- <176580661874.1441131.12947657582985645446.b4-ty@sntech.de>
-To: Heiko Stuebner <heiko@sntech.de>
-X-Mailer: Apple Mail (2.3864.300.41.1.7)
-X-Out-Spamd-Result: default: False [0.40 / 1000.00];
-	MV_CASE(0.50)[];
-	MIME_GOOD(-0.10)[text/plain];
-	MID_RHS_MATCH_FROM(0.00)[];
-	TAGGED_RCPT(0.00)[dt];
-	FROM_HAS_DN(0.00)[];
-	ASN(0.00)[asn:44489, ipnet:109.164.0.0/17, country:CZ];
-	ARC_NA(0.00)[];
-	RCVD_COUNT_ZERO(0.00)[0];
-	RCPT_COUNT_SEVEN(0.00)[8];
-	HAS_X_AS(0.00)[];
-	TO_DN_SOME(0.00)[];
-	FROM_EQ_ENVFROM(0.00)[];
-	TO_MATCH_ENVRCPT_ALL(0.00)[];
-	MIME_TRACE(0.00)[0:+]
-X-Out-Rspamd-Queue-Id: 4dWqnF0STBzdMvK
-X-Rspamd-Action: no action
-X-Out-Rspamd-Server: m1-rspamd-out-5
-X-purgate-type: clean
-X-purgate-Ad: Categorized by eleven eXpurgate (R) https://www.eleven.de
-X-purgate: This mail is considered clean (visit https://www.eleven.de for further information)
-X-purgate: clean
-X-purgate-size: 1109
-X-purgate-ID: 155908::1766014290-C0FE6043-56D75A65/0/0
+References: <20251217174059.1341784-1-detlev.casanova@collabora.com>
+ <20251217174059.1341784-10-detlev.casanova@collabora.com>
+Content-Language: en-US
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <20251217174059.1341784-10-detlev.casanova@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251217_153137_438291_CE6ECCDF 
-X-CRM114-Status: GOOD (  12.88  )
+X-CRM114-CacheID: sfid-20251217_153734_946085_DC24D76F 
+X-CRM114-Status: GOOD (  19.68  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,30 +86,143 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-UGVyZmVjdCwgdGhhbmtzIGEgbG90IQoKPiBPbiAxNS4gMTIuIDIwMjUsIGF0IDE0OjUxLCBIZWlr
-byBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPiB3cm90ZToKPiAKPiAKPiBPbiBGcmksIDEyIERl
-YyAyMDI1IDE3OjIzOjM1ICswMTAwLCAiTWFydGluIEhvbG92c2vDvSAoUHJvYmFibHkgTm90aGlu
-ZyBzLnIuby4gKSIgd3JvdGU6Cj4+IFRoZSBSYWR4YSBSb2NrIDVUIGJvYXJkIGZlYXR1cmVzIHR3
-byBSVEw4MTI1QiAyLjVHYkUgRXRoZXJuZXQgY29udHJvbGxlcnMKPj4gY29ubmVjdGVkIHZpYSBQ
-Q0llIGxhbmVzIHBjaWUyeDFsMCAoZmUxNzAwMDApIGFuZCBwY2llMngxbDIgKGZlMTkwMDAwKS4K
-Pj4gQ3VycmVudGx5IG9ubHkgb25lIGludGVyZmFjZSBpcyBmdW5jdGlvbmFsIGJlY2F1c2UgdGhl
-IFBDSWUgY29udHJvbGxlcgo+PiBub2RlcyBsYWNrIHRoZSBuZWNlc3NhcnkgcmVzZXQgR1BJTyBj
-b25maWd1cmF0aW9uLgo+PiAKPj4gV2l0aG91dCB0aGUgcmVzZXQtZ3Bpb3MgcHJvcGVydHksIHRo
-ZSBSVEw4MTI1QiBQSFlzIHJlbWFpbiBpbiByZXNldCBzdGF0ZQo+PiBhbmQgYXJlIG5vdCBlbnVt
-ZXJhdGVkIGJ5IHRoZSBQQ0llIGJ1cy4gVGhpcyByZXN1bHRzIGluIG9ubHkgb25lIEV0aGVybmV0
-Cj4+IGludGVyZmFjZSBiZWluZyBkZXRlY3RlZCwgb3Igbm9uZSBhdCBhbGwgZGVwZW5kaW5nIG9u
-IFUtQm9vdCBpbml0aWFsaXphdGlvbi4KPj4gCj4+IFsuLi5dCj4gCj4gQXBwbGllZCwgdGhhbmtz
-IQo+IAo+IFsxLzFdIGFybTY0OiBkdHM6IHJvY2tjaGlwOiBlbmFibGUgZHVhbCAyLjVHYkUgb24g
-Um9jayA1VAo+ICAgICAgY29tbWl0OiA5NjAyOWZmZWNjZjY3N2IxZTRiYWE5OGYzMDkwOWE4M2E0
-ODViNmQ3Cj4gCj4gSSd2ZSByZXNvcnRlZCBib3RoIHRoZSBwY2llIHBoYW5kbGVzIGFzIHdlbGwg
-YXMgdGhlIHBpbmN0cmwgZW50cmllcwo+IHBjaWUyLTAgY29tZXMgYmVmb3JlIHBjaWUyLTEgZXRj
-IDotKSAuCj4gCj4gQmVzdCByZWdhcmRzLAo+IC0tIAo+IEhlaWtvIFN0dWVibmVyIDxoZWlrb0Bz
-bnRlY2guZGU+CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJh
-ZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51
-eC1yb2NrY2hpcAo=
+Hi Detlev,
+
+On 12/17/2025 6:40 PM, Detlev Casanova wrote:
+> Prepare for adding new variants of the decoder and support specific
+> formats and format ops per variant.
+> 
+> Tested-by: Diederik de Haas <didi.debian@cknow.org>  # Rock 5B
+> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+> ---
+>  .../media/platform/rockchip/rkvdec/rkvdec.c   | 35 ++++++++++++-------
+>  .../media/platform/rockchip/rkvdec/rkvdec.h   |  2 ++
+>  2 files changed, 24 insertions(+), 13 deletions(-)
+> 
+> diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.c b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
+> index 776149f871b0..968982f6e62c 100644
+> --- a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
+> +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
+> @@ -373,15 +373,16 @@ static bool rkvdec_is_capable(struct rkvdec_ctx *ctx, unsigned int capability)
+>  static const struct rkvdec_coded_fmt_desc *
+>  rkvdec_enum_coded_fmt_desc(struct rkvdec_ctx *ctx, int index)
+>  {
+> +	const struct rkvdec_variant *variant = ctx->dev->variant;
+>  	int fmt_idx = -1;
+>  	unsigned int i;
+>  
+> -	for (i = 0; i < ARRAY_SIZE(rkvdec_coded_fmts); i++) {
+> -		if (!rkvdec_is_capable(ctx, rkvdec_coded_fmts[i].capability))
+> +	for (i = 0; i < variant->num_coded_fmts; i++) {
+> +		if (!rkvdec_is_capable(ctx, variant->coded_fmts[i].capability))
+>  			continue;
+>  		fmt_idx++;
+>  		if (index == fmt_idx)
+> -			return &rkvdec_coded_fmts[i];
+> +			return &variant->coded_fmts[i];
+>  	}
+>  
+>  	return NULL;
+> @@ -390,12 +391,13 @@ rkvdec_enum_coded_fmt_desc(struct rkvdec_ctx *ctx, int index)
+>  static const struct rkvdec_coded_fmt_desc *
+>  rkvdec_find_coded_fmt_desc(struct rkvdec_ctx *ctx, u32 fourcc)
+>  {
+> +	const struct rkvdec_variant *variant = ctx->dev->variant;
+>  	unsigned int i;
+>  
+> -	for (i = 0; i < ARRAY_SIZE(rkvdec_coded_fmts); i++) {
+> -		if (rkvdec_is_capable(ctx, rkvdec_coded_fmts[i].capability) &&
+> -		    rkvdec_coded_fmts[i].fourcc == fourcc)
+> -			return &rkvdec_coded_fmts[i];
+> +	for (i = 0; i < variant->num_coded_fmts; i++) {
+> +		if (rkvdec_is_capable(ctx, variant->coded_fmts[i].capability) &&
+> +		    variant->coded_fmts[i].fourcc == fourcc)
+> +			return &variant->coded_fmts[i];
+>  	}
+>  
+>  	return NULL;
+> @@ -1014,18 +1016,19 @@ static int rkvdec_add_ctrls(struct rkvdec_ctx *ctx,
+>  
+>  static int rkvdec_init_ctrls(struct rkvdec_ctx *ctx)
+>  {
+> +	const struct rkvdec_variant *variant = ctx->dev->variant;
+>  	unsigned int i, nctrls = 0;
+>  	int ret;
+>  
+> -	for (i = 0; i < ARRAY_SIZE(rkvdec_coded_fmts); i++)
+> -		if (rkvdec_is_capable(ctx, rkvdec_coded_fmts[i].capability))
+> -			nctrls += rkvdec_coded_fmts[i].ctrls->num_ctrls;
+> +	for (i = 0; i < variant->num_coded_fmts; i++)
+> +		if (rkvdec_is_capable(ctx, variant->coded_fmts[i].capability))
+> +			nctrls += variant->coded_fmts[i].ctrls->num_ctrls;
+>  
+>  	v4l2_ctrl_handler_init(&ctx->ctrl_hdl, nctrls);
+>  
+> -	for (i = 0; i < ARRAY_SIZE(rkvdec_coded_fmts); i++) {
+> -		if (rkvdec_is_capable(ctx, rkvdec_coded_fmts[i].capability)) {
+> -			ret = rkvdec_add_ctrls(ctx, rkvdec_coded_fmts[i].ctrls);
+> +	for (i = 0; i < variant->num_coded_fmts; i++) {
+> +		if (rkvdec_is_capable(ctx, variant->coded_fmts[i].capability)) {
+> +			ret = rkvdec_add_ctrls(ctx, variant->coded_fmts[i].ctrls);
+>  			if (ret)
+>  				goto err_free_handler;
+>  		}
+> @@ -1242,11 +1245,15 @@ static void rkvdec_watchdog_func(struct work_struct *work)
+>  
+>  static const struct rkvdec_variant rk3288_rkvdec_variant = {
+>  	.num_regs = 68,
+> +	.coded_fmts = rkvdec_coded_fmts,
+> +	.num_coded_fmts = ARRAY_SIZE(rkvdec_coded_fmts),
+>  	.capabilities = RKVDEC_CAPABILITY_HEVC,
+
+Looks like we could drop the capabilities flags handling now that we
+use a per variant coded_fmts ?
+
+Maybe a rk3288_coded_fmts should be added and used here, or in a cleanup
+patch that drops the capabilities flag handling.
+
+Regards,
+Jonas
+
+>  };
+>  
+>  static const struct rkvdec_variant rk3328_rkvdec_variant = {
+>  	.num_regs = 109,
+> +	.coded_fmts = rkvdec_coded_fmts,
+> +	.num_coded_fmts = ARRAY_SIZE(rkvdec_coded_fmts),
+>  	.capabilities = RKVDEC_CAPABILITY_HEVC |
+>  			RKVDEC_CAPABILITY_H264 |
+>  			RKVDEC_CAPABILITY_VP9,
+> @@ -1255,6 +1262,8 @@ static const struct rkvdec_variant rk3328_rkvdec_variant = {
+>  
+>  static const struct rkvdec_variant rk3399_rkvdec_variant = {
+>  	.num_regs = 78,
+> +	.coded_fmts = rkvdec_coded_fmts,
+> +	.num_coded_fmts = ARRAY_SIZE(rkvdec_coded_fmts),
+>  	.capabilities = RKVDEC_CAPABILITY_HEVC |
+>  			RKVDEC_CAPABILITY_H264 |
+>  			RKVDEC_CAPABILITY_VP9,
+> diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.h b/drivers/media/platform/rockchip/rkvdec/rkvdec.h
+> index f35f6e80ea2e..aac6cba4c623 100644
+> --- a/drivers/media/platform/rockchip/rkvdec/rkvdec.h
+> +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.h
+> @@ -71,6 +71,8 @@ vb2_to_rkvdec_decoded_buf(struct vb2_buffer *buf)
+>  
+>  struct rkvdec_variant {
+>  	unsigned int num_regs;
+> +	const struct rkvdec_coded_fmt_desc *coded_fmts;
+> +	size_t num_coded_fmts;
+>  	unsigned int capabilities;
+>  	unsigned int quirks;
+>  };
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
