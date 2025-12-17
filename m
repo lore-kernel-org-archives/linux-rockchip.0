@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00E8AD66B80
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Dec 2025 17:42:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28C13D65C7B
+	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Dec 2025 17:42:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XFBht1vw47D7dA+BA4cDxMaLAit/OBVUZkapB3QTWR0=; b=wxRYrxoH23q1+t
-	hFsxDBi9HfM2Pp3zK2ZW6DlB04q0sdDo36cWNGkECknP0cC8XdnJq4UgeT7h9UpuVqWPu1bl4T3fk
-	ra/3UNB0CzLSmyd/BElR1xyhd0l+ma5Qo4lefbIpk4W5oAo02Aw1pq4BjTy0QIwzkXzAa2bB9AWHe
-	B2vLSN51L4ZK6cKR18KcCLY2ft0KJez5z9YCSuSLYyg2kAAdQnnRn7qDjB1yYL/uenLL1YWPVcygt
-	jPqLOl7/IcwhKbtcUitER5EpEIEIJ7SvEx/0cfaw0cICZAQgzTQMLQ/8om8IQNSmexKyLHFUJYoxn
-	gPSt1y1uDKCq11++EADw==;
+	List-Owner; bh=pi+U6VciKUGgTlb/4WEdx6afKbUHuBZB7eTh3SybvR4=; b=v7A9EPUPYa7xSc
+	g6kw0j4/Z7D9EysLaSOncXPUU91P0X+E5N4PmWvVwCT0owhgBv/nzMdOalUKTKdhEA8fh5eKci7e9
+	s8Z6NJ/liLL1EhvZEJBL7GytgCboz/V3efTV4U9WMI/ScQHvx9rCbTzKC087CbmNrQy5MeACCNgHJ
+	V3O+Gtej7O8CKOqeqGpUcpUNBOWcO5VUW9zCT4KbjEhGTgAH1vfuGdOtHaKqE82sGUK31R8OPfTbI
+	Olf36ByowuU3/Y398hbq6iyhDPb0/WT7UaFxxFljT39EJliDwP3Zck9IzO0sssZwBhsZgt1LJ8ZNB
+	Ys58UxxRPvDLoSorQBbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vVvXt-00000007CfY-442d;
-	Wed, 17 Dec 2025 17:42:41 +0000
+	id 1vVvXw-00000007Cib-0IVM;
+	Wed, 17 Dec 2025 17:42:44 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vVvXW-00000007CBv-3lbz;
-	Wed, 17 Dec 2025 17:42:21 +0000
+	id 1vVvXZ-00000007CEz-3snH;
+	Wed, 17 Dec 2025 17:42:23 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1765993336;
-	bh=+TRiYgl08rNkFaM3t42YMlGvmtQjNcHF4oNn/XuyM/w=;
+	s=mail; t=1765993339;
+	bh=8TXVTg4eUC99XcZbYLNYfqlAjxV3itLtwsdCHBdEN2c=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=RlAvrCVJ17ApUaYSDtskrdL6cTsjIRpLCecaNnT83RAP1ISJJ97tkdWsCmrtjM/1D
-	 /HmrGPN4+mFCTtCBZUkRk4AzCieYaMQL2Xd6O1rs1siMjhc/w8Pzg7cUynaDBPoALn
-	 xfohn8cnXMZjd1exAi8BTJh0DW7wTWiP80NtlN64z9avOX1gEB2NT824BaygMrHoCB
-	 4Y7hI/lgikNa68x6odcLq+29dBs1PK0frnm7uA59J7xjKeOnzctu7gvR/sKOA9blxM
-	 9kqWrMqcbECN2GNX/cpR0wlrc8Ht4hv7NPRVEp25s89pkVPRAZrZKiMxZuTpdLj3Xs
-	 Vs1WS3SbCBACw==
+	b=UgY+Uq2BNTB022vu/CEhLHKYTBhUdD8sk36KUdvHF2qgOw9QqoMAqHUlQ+0+kHpGt
+	 I+tCVXp2egcZZ/LfWgUy1mPmcrlsogNG40Y90plWjxfNgO01eShCvYDdqMKZiShsmV
+	 Fo7A85MHF6X4WL5FFPWbYgB+W3iLjvofe4uUCod3k0bN7wHntZVtJM+Bth9sk/UqIo
+	 ZQAF/oMKCWp1gHWN4gCcjCWf7Q8Hvps5sA4/zslYJDinua3n/jhPuq0q8SQ8A7XRBF
+	 v2dXfOdWq4gmVoO4FK2LXMJt6HxMXzfaWlVCarJyJKALfoHjZH/1TSAFfxGZ56EFJi
+	 hNSiQhofa7k/w==
 Received: from trenzalore (modemcable014.2-22-96.mc.videotron.ca [96.22.2.14])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: detlev)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3A2D017E1520;
-	Wed, 17 Dec 2025 18:42:14 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 299E117E1523;
+	Wed, 17 Dec 2025 18:42:17 +0100 (CET)
 From: Detlev Casanova <detlev.casanova@collabora.com>
 To: linux-kernel@vger.kernel.org
 Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
@@ -65,16 +65,16 @@ Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
 	linux-arm-kernel@lists.infradead.org,
 	kernel@collabora.com,
 	Diederik de Haas <didi.debian@cknow.org>
-Subject: [PATCH v6 11/17] media: rkvdec: Support per-variant interrupt handler
-Date: Wed, 17 Dec 2025 12:40:48 -0500
-Message-ID: <20251217174059.1341784-12-detlev.casanova@collabora.com>
+Subject: [PATCH v6 12/17] media: rkvdec: Enable all clocks without naming them
+Date: Wed, 17 Dec 2025 12:40:49 -0500
+Message-ID: <20251217174059.1341784-13-detlev.casanova@collabora.com>
 X-Mailer: git-send-email 2.52.0
 In-Reply-To: <20251217174059.1341784-1-detlev.casanova@collabora.com>
 References: <20251217174059.1341784-1-detlev.casanova@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251217_094219_135694_0154888E 
-X-CRM114-Status: GOOD (  12.72  )
+X-CRM114-CacheID: sfid-20251217_094222_176719_73172F88 
+X-CRM114-Status: GOOD (  17.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,106 +91,94 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Prepare for supporting different variants with different interrupt
-managers.
+For other variants, the clock names and number will differ.
 
-To support other variants specific function type later, introduce the
-rkvdec_variant_ops struct.
+There is no need to keep track of the clock names in the driver so drop
+them to avoid having a list for each variant.
 
 Tested-by: Diederik de Haas <didi.debian@cknow.org>  # Rock 5B
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
 ---
- .../media/platform/rockchip/rkvdec/rkvdec.c   | 21 ++++++++++++++++---
- .../media/platform/rockchip/rkvdec/rkvdec.h   |  5 +++++
- 2 files changed, 23 insertions(+), 3 deletions(-)
+ .../media/platform/rockchip/rkvdec/rkvdec.c   | 26 +++++--------------
+ .../media/platform/rockchip/rkvdec/rkvdec.h   |  1 +
+ 2 files changed, 7 insertions(+), 20 deletions(-)
 
 diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.c b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-index 028ce8e1c4ca..87373a6d9573 100644
+index 87373a6d9573..9bd98b6a6be7 100644
 --- a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
 +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-@@ -1218,10 +1218,9 @@ static void rkvdec_iommu_restore(struct rkvdec_dev *rkvdec)
- 	}
- }
- 
--static irqreturn_t rkvdec_irq_handler(int irq, void *priv)
-+static irqreturn_t rk3399_irq_handler(struct rkvdec_ctx *ctx)
- {
--	struct rkvdec_dev *rkvdec = priv;
--	struct rkvdec_ctx *ctx = v4l2_m2m_get_curr_priv(rkvdec->m2m_dev);
-+	struct rkvdec_dev *rkvdec = ctx->dev;
- 	enum vb2_buffer_state state;
- 	u32 status;
- 
-@@ -1242,6 +1241,15 @@ static irqreturn_t rkvdec_irq_handler(int irq, void *priv)
- 	return IRQ_HANDLED;
- }
- 
-+static irqreturn_t rkvdec_irq_handler(int irq, void *priv)
-+{
-+	struct rkvdec_dev *rkvdec = priv;
-+	struct rkvdec_ctx *ctx = v4l2_m2m_get_curr_priv(rkvdec->m2m_dev);
-+	const struct rkvdec_variant *variant = rkvdec->variant;
-+
-+	return variant->ops->irq_handler(ctx);
-+}
-+
- static void rkvdec_watchdog_func(struct work_struct *work)
- {
- 	struct rkvdec_dev *rkvdec;
-@@ -1257,10 +1265,15 @@ static void rkvdec_watchdog_func(struct work_struct *work)
- 	}
- }
- 
-+static const struct rkvdec_variant_ops rk3399_variant_ops = {
-+	.irq_handler = rk3399_irq_handler,
-+};
-+
- static const struct rkvdec_variant rk3288_rkvdec_variant = {
- 	.num_regs = 68,
- 	.coded_fmts = rkvdec_coded_fmts,
- 	.num_coded_fmts = ARRAY_SIZE(rkvdec_coded_fmts),
-+	.ops = &rk3399_variant_ops,
- 	.capabilities = RKVDEC_CAPABILITY_HEVC,
+@@ -1315,15 +1315,10 @@ static const struct of_device_id of_rkvdec_match[] = {
  };
+ MODULE_DEVICE_TABLE(of, of_rkvdec_match);
  
-@@ -1268,6 +1281,7 @@ static const struct rkvdec_variant rk3328_rkvdec_variant = {
- 	.num_regs = 109,
- 	.coded_fmts = rkvdec_coded_fmts,
- 	.num_coded_fmts = ARRAY_SIZE(rkvdec_coded_fmts),
-+	.ops = &rk3399_variant_ops,
- 	.capabilities = RKVDEC_CAPABILITY_HEVC |
- 			RKVDEC_CAPABILITY_H264 |
- 			RKVDEC_CAPABILITY_VP9,
-@@ -1278,6 +1292,7 @@ static const struct rkvdec_variant rk3399_rkvdec_variant = {
- 	.num_regs = 78,
- 	.coded_fmts = rkvdec_coded_fmts,
- 	.num_coded_fmts = ARRAY_SIZE(rkvdec_coded_fmts),
-+	.ops = &rk3399_variant_ops,
- 	.capabilities = RKVDEC_CAPABILITY_HEVC |
- 			RKVDEC_CAPABILITY_H264 |
- 			RKVDEC_CAPABILITY_VP9,
+-static const char * const rkvdec_clk_names[] = {
+-	"axi", "ahb", "cabac", "core"
+-};
+-
+ static int rkvdec_probe(struct platform_device *pdev)
+ {
+ 	const struct rkvdec_variant *variant;
+ 	struct rkvdec_dev *rkvdec;
+-	unsigned int i;
+ 	int ret, irq;
+ 
+ 	variant = of_device_get_match_data(&pdev->dev);
+@@ -1340,19 +1335,12 @@ static int rkvdec_probe(struct platform_device *pdev)
+ 	mutex_init(&rkvdec->vdev_lock);
+ 	INIT_DELAYED_WORK(&rkvdec->watchdog_work, rkvdec_watchdog_func);
+ 
+-	rkvdec->clocks = devm_kcalloc(&pdev->dev, ARRAY_SIZE(rkvdec_clk_names),
+-				      sizeof(*rkvdec->clocks), GFP_KERNEL);
+-	if (!rkvdec->clocks)
+-		return -ENOMEM;
+-
+-	for (i = 0; i < ARRAY_SIZE(rkvdec_clk_names); i++)
+-		rkvdec->clocks[i].id = rkvdec_clk_names[i];
+-
+-	ret = devm_clk_bulk_get(&pdev->dev, ARRAY_SIZE(rkvdec_clk_names),
+-				rkvdec->clocks);
+-	if (ret)
++	ret = devm_clk_bulk_get_all_enabled(&pdev->dev, &rkvdec->clocks);
++	if (ret < 0)
+ 		return ret;
+ 
++	rkvdec->num_clocks = ret;
++
+ 	rkvdec->regs = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(rkvdec->regs))
+ 		return PTR_ERR(rkvdec->regs);
+@@ -1430,16 +1418,14 @@ static int rkvdec_runtime_resume(struct device *dev)
+ {
+ 	struct rkvdec_dev *rkvdec = dev_get_drvdata(dev);
+ 
+-	return clk_bulk_prepare_enable(ARRAY_SIZE(rkvdec_clk_names),
+-				       rkvdec->clocks);
++	return clk_bulk_prepare_enable(rkvdec->num_clocks, rkvdec->clocks);
+ }
+ 
+ static int rkvdec_runtime_suspend(struct device *dev)
+ {
+ 	struct rkvdec_dev *rkvdec = dev_get_drvdata(dev);
+ 
+-	clk_bulk_disable_unprepare(ARRAY_SIZE(rkvdec_clk_names),
+-				   rkvdec->clocks);
++	clk_bulk_disable_unprepare(rkvdec->num_clocks, rkvdec->clocks);
+ 	return 0;
+ }
+ #endif
 diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.h b/drivers/media/platform/rockchip/rkvdec/rkvdec.h
-index 77c0950a465d..12e53d591362 100644
+index 12e53d591362..75a9ba988794 100644
 --- a/drivers/media/platform/rockchip/rkvdec/rkvdec.h
 +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.h
-@@ -71,12 +71,17 @@ vb2_to_rkvdec_decoded_buf(struct vb2_buffer *buf)
- 			    base.vb.vb2_buf);
- }
- 
-+struct rkvdec_variant_ops {
-+	irqreturn_t (*irq_handler)(struct rkvdec_ctx *ctx);
-+};
-+
- struct rkvdec_variant {
- 	unsigned int num_regs;
- 	const struct rkvdec_coded_fmt_desc *coded_fmts;
- 	size_t num_coded_fmts;
- 	const struct rcb_size_info *rcb_sizes;
- 	size_t num_rcb_sizes;
-+	const struct rkvdec_variant_ops *ops;
- 	unsigned int capabilities;
- 	unsigned int quirks;
- };
+@@ -131,6 +131,7 @@ struct rkvdec_dev {
+ 	struct v4l2_m2m_dev *m2m_dev;
+ 	struct device *dev;
+ 	struct clk_bulk_data *clocks;
++	unsigned int num_clocks;
+ 	void __iomem *regs;
+ 	struct mutex vdev_lock; /* serializes ioctls */
+ 	struct delayed_work watchdog_work;
 -- 
 2.52.0
 
