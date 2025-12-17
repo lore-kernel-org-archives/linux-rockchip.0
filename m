@@ -4,70 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B2CFD65C44
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Dec 2025 12:58:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18D54D65C47
+	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Dec 2025 13:34:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=spLxvCCbVcPsmds7/R969YUjxjC0rdFAs9guL/rz2p4=; b=txCQ7MOliUJWyo
-	GtmkmnedBdDfCRY6uA3KmpQvoUQs03Ve90Bgv0sxtBpwGNjIg9R3Cs8zFsTw+WIYdAE8Tti9pALEl
-	VDfZQB5aRmZxmr1J1Ekf7DL2v9Jr+asBjxfEsce2iBvmdMV4oBF6UpwE2dNw44cikMQtNa/5TvOjz
-	FuFYRZgSp/08URWQoq0KrY80wlktyYiewtZL2ytcobzAQUi1qbJXoWf3WNWTKPU3w8pL1w0RiqvMX
-	uRJEx3JPj+/mBAD4fTkpwWMcZEpMRlgFeL9qEtwyoJ1uQDzKXJiZpc7DUGm0ez7gLXP/XoEE1XLDw
-	m/2O/f0UB8rR3Il7zOnQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=351r64UvAfxp5wPzmetgu0DY0BgmRkzMhAdPGaw8FXs=; b=AFY+3TO3PnTQbNzCJfOjs4StvH
+	Lh4msYtj6wBqEKqBw50FvyJpd2ZCB6q87ic0Agm66Cb7wb5ejfggShYO+2i4Hv7HNYRlA4cb5hcvl
+	Js+m7Q8k3KpSripE0qsTnUWUQvSvzZ0R4k4GM9byhteu/BfeZpoejmcw8fk3zde/UUMPylKKwNeEv
+	FTNFVdwbXARNPX/rXc3BnhczKxX7dX4AfU3fNJxBfQ5YVGgzs1yADKAKUJ4BUHCvtIr3CeOK28+Ta
+	02pXXrHITvzcvLeJXT4nAM2EqcVBy+z6MRZ2FKBi2LawhLfTUDM1a8N30zeeB/BWexzu5mF2mZ5M7
+	nxKPm18g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vVr6U-00000006pCN-04Fg;
-	Wed, 17 Dec 2025 12:58:06 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1vVrfx-00000006rec-2qWc;
+	Wed, 17 Dec 2025 13:34:45 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vVr6S-00000006pBY-01DS;
-	Wed, 17 Dec 2025 12:58:05 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1765976272; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=FoqdNb4g5Gtkd8jGGwm/maHLrre5WN7i25q/udEcMHPG48TC9bLlCuMRzI/R2OL3+rZ5wyKhHhUFtGYvFGHyO7iOVxPzUsmzICdTrehXVXBXpZwAhTbhMad58FSf8ph3Bz/MCwLEsuNAGxWP8a6P7SFuBa/i9PVoaKWyF9m+u7Q=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1765976272; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=LrvfmBmzDcA3GwDRV7f9xZnGQTMmRHRy9Ho1m8R+Wok=; 
-	b=eh9MgmX/bEjXh147aGbIug8Y9zOvoJ6XmSyCwjAocNyXKnExbeCLAO4y7axvDxOwHbLzV1/iK57cBwhIJFU5mBUo1VpdlrXK1PlMiyxSi/ZnbGjMy9nwanRPOh506t0BoGAc+xxaq+GVaKVFIcpUNpk4WEX/CsfNeoxDcz3fwos=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1765976272;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=LrvfmBmzDcA3GwDRV7f9xZnGQTMmRHRy9Ho1m8R+Wok=;
-	b=foeIRv8TCls/G5ux4frn10VOXe7im29PLKscuAUx8H/eXtXbu12qaJwIrkzY+Bw8
-	SK5/4DflcoPyCMD0aCdHI8guUqFPK2B1uCoirliEZxH8z1JCp4A+T9DcnN3RlGPnVzt
-	iTidSd6zWY1Ti8lK+kar6VvLQCR3nLR4mS7Dc/lI=
-Received: by mx.zohomail.com with SMTPS id 1765976271997185.16439333799497;
-	Wed, 17 Dec 2025 04:57:51 -0800 (PST)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Dmitry Torokhov <dmitry.torokhov@gmail.com>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Heiko Stuebner <heiko@sntech.de>, kernel@collabora.com,
- linux-input@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v2 1/4] dt-bindings: input: adc-keys: allow linux,input-type
- property
-Date: Wed, 17 Dec 2025 13:57:46 +0100
-Message-ID: <6778765.lOV4Wx5bFT@workhorse>
-In-Reply-To: <20251217-tough-ultra-junglefowl-f1a9ae@quoll>
-References: <20251215-rock4d-audio-v2-0-82a61de39b4c@collabora.com>
- <20251215-rock4d-audio-v2-1-82a61de39b4c@collabora.com>
- <20251217-tough-ultra-junglefowl-f1a9ae@quoll>
+	id 1vVrfs-00000006rde-2FNa;
+	Wed, 17 Dec 2025 13:34:44 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1765978477;
+	bh=tCIxJNLWcIU2TjDVqmnt1h0tCwLC0XUxy/MtT8w/Hpw=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=d+1j1d9zjTT0M1ZAHDWdZcQBLAZ0jUo76R2g68OKWsVIny5JoICl0hvi7nc6fetLT
+	 mUfee6SJPrC/t8mhJJLyEa1iW4Y/UszNDWXW6L1gb1/hU12dtIqWQho0L5qR8Q45dJ
+	 ZrncfPTAYlt8i97fR4YHA2CMUYfbStzNgiG5dKyh3FPurzt0BX/9+fntuuZWAitptU
+	 GH9ES5FMV9lpvzZD8wE4nciBTpLWJjDCvnaKJn1EjEI9MJg8YcXMIE4VxAfid9Uawu
+	 /pUOZ/yhYn2AVxmaeDSwx83WnetnXaI6p4YZmcHbZntDd2r8mUKNnYsEdPxj75Kd8z
+	 fFU+hsjldkFYA==
+Received: from [IPv6:2606:6d00:17:7b4b::5ac] (unknown [IPv6:2606:6d00:17:7b4b::5ac])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 80A4917E127F;
+	Wed, 17 Dec 2025 14:34:35 +0100 (CET)
+Message-ID: <0482b76919217cf007d0abe1c683e862903a1a40.camel@collabora.com>
+Subject: Re: [PATCH v5 01/15] media: uapi: HEVC: Add
+ v4l2_ctrl_hevc_ext_sps_[ls]t_rps controls
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Detlev Casanova <detlev.casanova@collabora.com>, Hans Verkuil
+	 <hverkuil+cisco@kernel.org>, linux-kernel@vger.kernel.org
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Ezequiel Garcia	
+ <ezequiel@vanguardiasur.com.ar>, Heiko Stuebner <heiko@sntech.de>, Ricardo
+ Ribalda <ribalda@chromium.org>, Hans Verkuil <hverkuil@kernel.org>, Hans de
+ Goede <hansg@kernel.org>,  Yunke Cao <yunkec@google.com>, Jonathan Corbet
+ <corbet@lwn.net>, Laurent Pinchart	 <laurent.pinchart@ideasonboard.com>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>,  James Cowgill
+ <james.cowgill@blaize.com>, linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, 	linux-arm-kernel@lists.infradead.org,
+ kernel@collabora.com
+Date: Wed, 17 Dec 2025 08:34:33 -0500
+In-Reply-To: <e88eb64e-ae47-4c70-87af-44c8f0371be9@collabora.com>
+References: <20251023214247.459931-1-detlev.casanova@collabora.com>
+	 <20251023214247.459931-2-detlev.casanova@collabora.com>
+	 <d8ef0f88-e81d-4159-8945-52197cbc95ba@kernel.org>
+	 <37da2fe3-41bd-470e-bb6c-93fe35ee1528@collabora.com>
+	 <bcbf8247a778c0a179cef2e0338acb2266c18809.camel@collabora.com>
+	 <e88eb64e-ae47-4c70-87af-44c8f0371be9@collabora.com>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+Organization: Collabora Canada
+User-Agent: Evolution 3.58.2 (3.58.2-1.fc43) 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251217_045804_097794_BFFCB7D3 
-X-CRM114-Status: GOOD (  14.64  )
+X-CRM114-CacheID: sfid-20251217_053442_944832_4A0D22D5 
+X-CRM114-Status: GOOD (  12.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,37 +96,69 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============3655180654255447213=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkbmVzZGF5LCAxNyBEZWNlbWJlciAyMDI1IDA5OjMxOjE1IENlbnRyYWwgRXVyb3BlYW4g
-U3RhbmRhcmQgVGltZSBLcnp5c3p0b2YgS296bG93c2tpIHdyb3RlOgo+IE9uIE1vbiwgRGVjIDE1
-LCAyMDI1IGF0IDAxOjI5OjI5UE0gKzAxMDAsIE5pY29sYXMgRnJhdHRhcm9saSB3cm90ZToKPiA+
-IGFkYy1rZXlzLCB1bmxpa2UgZ3Bpby1rZXlzLCBkb2VzIG5vdCBhbGxvdyBsaW51eCxpbnB1dC10
-eXBlIGFzIGEgdmFsaWQKPiA+IHByb3BlcnR5LiBUaGlzIG1ha2VzIGl0IGltcG9zc2libGUgdG8g
-bW9kZWwgZGV2aWNlcyB0aGF0IGhhdmUgQURDIGlucHV0cwo+ID4gdGhhdCBzaG91bGQgZ2VuZXJh
-dGUgc3dpdGNoIGV2ZW50cy4KPiAKPiBUaGUgc29sdXRpb24gaXMgdG8gdXNlIHVuZXZhbHVhdGVk
-UHJvcHMgaW5zdGVhZCwgd2hpY2ggYWxzbyBhbGxvd3MKPiBkcm9wcGluZyBvdGhlciBwcm9wZXJ0
-aWVzLgo+IAo+IEJlc3QgcmVnYXJkcywKPiBLcnp5c3p0b2YKPiAKPiAKCkhpIEtyenlzenRvZiwK
-CnRvIHVuZGVyc3RhbmQgdGhlIG1vdGl2YXRpb24gYmVoaW5kIHRoaXMgc3VnZ2VzdGlvbiBjb3Jy
-ZWN0bHk6CmFyZSB0aGUgImxpbnV4LCIgdmVuZG9yIHByZWZpeGVkIHByb3BlcnRpZXMsIGVzcGVj
-aWFsbHkgd2l0aCByZWdhcmRzCnRvIGtleSBjb2RlcywgZ2VuZXJhbGx5IGEgYml0IG9mIGEgdGhv
-cm4gaW4gdGhlIHNpZGUgb2YgRFQgYmluZGluZ3MKbWFpbnRhaW5lcnM/CgpJJ2QgaW1hZ2luZSBz
-byBzaW5jZSB0aGV5IHRlY2huaWNhbGx5IHRpZSB0aGUgRFQgdG8gYSBzcGVjaWZpYyBPUwprZXJu
-ZWwgKHRob3VnaCBvZiBjb3Vyc2UsIG90aGVycyBhcmUgZnJlZSB0byB0cmFuc2xhdGUgdGhvc2Ug
-a2V5CmNvZGVzKS4gQW5kIHRoZSB3aG9sZSBpZGVhIG9mIGNvbmZpZ3VyaW5nIHdoaWNoIGNvZGUg
-aXMgZW1pdHRlZApmcm9tIHNvbWV0aGluZyBpcyBiYXNpY2FsbHkgYWJ1c2luZyBEVCBmb3IgY29u
-ZmlndXJpbmcgc29mdHdhcmUKcmF0aGVyIHRoYW4gZGVzY3JpYmluZyBoYXJkd2FyZS4KCkknbSBt
-YWlubHkgaW50ZXJlc3RlZCBiZWNhdXNlIHRoaXMgaXMgYSB0aG91Z2h0IHRoYXQgaGFzIGJlZW4g
-aW4KdGhlIGJhY2sgb2YgbXkgbWluZCBmb3IgYSB3aGlsZSBub3csIGFuZCBJJ20gY3VyaW91cyBp
-ZiB0aGUgRFQKYmluZGluZyBtYWludGFpbmVycyBoYXBwZW4gdG8gaGF2ZSBhcnJpdmVkIGF0IHRo
-ZSBzYW1lIGltcGFzc8OpLAp3aGVyZSBsaW51eCxpbnB1dC10eXBlIGV0IGFsIGFidXNlIHRoZSBE
-VCBtb2RlbCBmb3Igc29tZXRoaW5nIHdlCndvdWxkIHRlbGwgYW55IG90aGVyIHZlbmRvciBub3Qg
-dG8gYWJ1c2UgaXQgZm9yLCBidXQgbm8gYmV0dGVyCnNvbHV0aW9uIGV4aXN0cyByaWdodCBub3cg
-dG8gYWNoaWV2ZSB0aGUgc2FtZSB0aGluZy4KCktpbmQgcmVnYXJkcywKTmljb2xhcyBGcmF0dGFy
-b2xpCgoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpM
-aW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFk
-Lm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJv
-Y2tjaGlwCg==
+
+--===============3655180654255447213==
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-L53cNKzQuROd39WEVXeE"
+
+
+--=-L53cNKzQuROd39WEVXeE
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hi,
+
+Le mardi 16 d=C3=A9cembre 2025 =C3=A0 17:18 -0500, Detlev Casanova a =C3=A9=
+crit=C2=A0:
+> > Before going that route, how big are these two arrays ? Short term can =
+be 64
+> > ref, long term 32, how big in bytes that is ? Was is worth goign with
+> > dynamic
+> > array ? Its not like slices, where we can have 600 or more.
+>=20
+> The short term one can still be quite big, it's about 80 bytes per=20
+> element, so 5120 bytes for the 64.
+>=20
+> I don't know how often we go that high, I've seen around 10 short term=
+=20
+> ref sets in test videos.
+
+We've never defined a threshold, so its hard to just define which direction=
+ to
+go. I generally think using dynamic array was logical thing to do though.
+
+Nicolas
+
+--=-L53cNKzQuROd39WEVXeE
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaUKxaQAKCRDZQZRRKWBy
+9DvsAP0Q2NNHxc8jrYFvxcg9jsWj09g2eOj92V1QsYgjR4pNVQEA2eK88BefxbvK
+v1zF5F4ZJe7rb2RMaHpvkmxnnK28cww=
+=3ld5
+-----END PGP SIGNATURE-----
+
+--=-L53cNKzQuROd39WEVXeE--
+
+
+--===============3655180654255447213==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============3655180654255447213==--
+
