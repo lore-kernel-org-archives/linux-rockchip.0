@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63F61D65C7B
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Dec 2025 17:42:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED6B4D66B80
+	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Dec 2025 17:42:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Ht6tVjE5tykeMGkKiHw4090B+RRhZf+oLMu6RhrxECs=; b=Q626WydFvAtgwr
-	O4k/My1l3T/n9auCELSvlYrrPZs44J+LSTCcAlB+480NUfEWDLDbiB2hkbIbeKxwfvKfQzXn+ONLO
-	XDJPwCCaKfF+4WBwYP4u4eh+ge+iy42Ody9xxc9ku0l3PK9hg3c62+Ps8K+IHn4k7Vak3I1e777z8
-	8UYEWFD7F7QFJLMmvyumXKsqMIcyBGvYzItPecTDtXADo5A2KU1QQ3CLiPdPE1U5HqdHY4/exUw5m
-	SKpWSPj9e+jOdIupE9+fK0Evx2XdQBx/n5YuP5Z6+mdX2QLIwC4SxKAlOxdga3LII0BKmkT0FTq4x
-	+4csI/L+LkGQd9bOZuAQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=KQ9HhmHo1Cjn+b1Vz8t8eM4mV6ImDKY5nqm40/JdB4w=; b=Nvjes53Kis9Tox
+	dSyRkc6rvfTrNN8cB5weFsxsgcO0Nz0m/3siL9Q8Umq+f9D0WFDHkVSqmcJ6SkMKQuD2rUEDtPblc
+	5nFaF1wZRF1zsPicGlAqgkP68ZCsx70QeQ2MuSDOzpw+rSM/cH/uJdgtkNdtNekSwextCgxV+/oHm
+	TexRHT9xSnCrcbLC0wtmKFLrjBsxgeWGmRbkno6a1NsqUgiO5AEnMWJuwBAbwQLTnh/yRKVtJDnjU
+	hFhODu9D3DQWDrXjRgby+/Gts/dBz8IXK+xHgqhX8S1cG0+roLJpD5S4x6OK4/wCfDH+TokC8Z26S
+	2jSG0jAJk9o1Ar0mC3uw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vVvX5-00000007Bne-1LIA;
-	Wed, 17 Dec 2025 17:41:51 +0000
+	id 1vVvXC-00000007Brb-3qQo;
+	Wed, 17 Dec 2025 17:41:58 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vVvX1-00000007Bmj-2tJb;
-	Wed, 17 Dec 2025 17:41:49 +0000
+	id 1vVvX5-00000007BnV-4Bxx;
+	Wed, 17 Dec 2025 17:41:54 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1765993304;
-	bh=uIx6rpuY349cjHZs9AppHINVb5Am8ttDplbT+JXUw2o=;
-	h=From:To:Cc:Subject:Date:From;
-	b=prUebE5K7LuqqRwFXAkRvqbt5ufMeQZR2EgSBoZbtiYg6ZDgiscpoN27cfSQDUYvT
-	 DFyy4zcK+caT0xRqQ2wrXjLwYhxUBICVDrjQzb0gmB4+e6j0pg/mnpGFa8zlo8CLJb
-	 /oD1hJE4RQQdX6F68RNj6dkeUsTV4CqkNBk9l9EFdWkJhSF64PFFj42O4mFjcWSBwj
-	 h1orBUGtj6qbmtCsN4oNBj889NSVEpDQuTWL0o7yjdK1XMsr0yfdqbRF1tSJE5D2t0
-	 /4vFY6dcCvn35BNnWTNbHc2TJNYQnErjne0uO4jqH7nxyF4N43OOEEvPsTDJiKePon
-	 /8EfOOKOu1sYA==
+	s=mail; t=1765993310;
+	bh=Sa/VjM/KZ9jAThGl1We6tM8KCFSvVQkMC7R1+/6lI8o=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=ifsfwLmKj7XVmIaUMT71RVIKlDa/JUoMQJ99EjUE60/MuCaXPEKBhvhpaU3fpAQ7N
+	 LEgmmam5vVy248Av8hhz4/vtcE8hYfiVq4MiREN6/fIixfW8CWOz6JGDQn8TOk7WGT
+	 nW/bjGQxexMDp8MyFJHzJ+ZG7hXFEaMOMwyrD1DiHsIfewh7bOWv7wMf/TCmOurQPX
+	 gkyzqtj0uESDeDP7TCvkgmSMpv6CRNDLC5xtqNW5eOB2D13wYcUT59zo9Mol4/Tw5S
+	 jqD1p+00RDwt1xbW8G99SvfbikQ/fk65z2srcLcXYstXNCAUitfe3sIlnc3gfZaZZH
+	 t+0pW/v883+HA==
 Received: from trenzalore (modemcable014.2-22-96.mc.videotron.ca [96.22.2.14])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: detlev)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id EF04D17E1321;
-	Wed, 17 Dec 2025 18:41:41 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9FBA617E13C3;
+	Wed, 17 Dec 2025 18:41:47 +0100 (CET)
 From: Detlev Casanova <detlev.casanova@collabora.com>
 To: linux-kernel@vger.kernel.org
 Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
@@ -64,14 +64,16 @@ Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
 	linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
 	kernel@collabora.com
-Subject: [PATCH v6 00/17] media: rkvdec: Add support for VDPU381 and VDPU383 
-Date: Wed, 17 Dec 2025 12:40:37 -0500
-Message-ID: <20251217174059.1341784-1-detlev.casanova@collabora.com>
+Subject: [PATCH v6 02/17] media: v4l2-ctrls: Add hevc_ext_sps_[ls]t_rps controls
+Date: Wed, 17 Dec 2025 12:40:39 -0500
+Message-ID: <20251217174059.1341784-3-detlev.casanova@collabora.com>
 X-Mailer: git-send-email 2.52.0
+In-Reply-To: <20251217174059.1341784-1-detlev.casanova@collabora.com>
+References: <20251217174059.1341784-1-detlev.casanova@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251217_094147_902298_9E30EF97 
-X-CRM114-Status: GOOD (  19.78  )
+X-CRM114-CacheID: sfid-20251217_094152_323591_4CAFBA39 
+X-CRM114-Status: GOOD (  18.15  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,132 +90,206 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-These variants are found respectively in the RK3588 and RK3576 SoCs.
-This patch only adds support for H264 and H265 in both variants.
+The vdpu381 decoder found on newer Rockchip SoC need the information
+from the long term and short term ref pic sets from the SPS.
 
-As there is a considerable part of the code that can be shared with the
-already supported rkvdec decoder driver, the support for these variants
-is added here rather than writing a new driver.
+So far, it wasn't included in the v4l2 API, so add it with new dynamic
+sized controls.
 
-This patch set uses the newly introduced hevc_ext_sps_[ls]t_rps v4l2
-controls for HEVC.
-Therefore, a patched version of userpace tools is needed for HEVC
-support (added for GStreamer[1] and in an early stage for FFmpeg[2]).
+Each element of the hevc_ext_sps_lt_rps array contains the long term ref
+pic set at that index.
+Each element of the hevc_ext_sps_st_rps contains the short term ref pic
+set at that index, as the raw data.
+It is the role of the drivers to calculate the reference sets values.
 
-The DTS changes can be found in another patch set: [3]
+Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+---
+ drivers/media/v4l2-core/v4l2-ctrls-core.c | 28 +++++++++++
+ drivers/media/v4l2-core/v4l2-ctrls-defs.c | 10 ++++
+ include/uapi/linux/v4l2-controls.h        | 61 +++++++++++++++++++++++
+ include/uapi/linux/videodev2.h            |  2 +
+ 4 files changed, 101 insertions(+)
 
-[1]: https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/9355
-[2]: https://gitlab.collabora.com/detlev/ffmpeg
-[3]: https://lore.kernel.org/all/20251020212009.8852-1-detlev.casanova@collabora.com/
-
-Changes since v5:
-- Extract multicore management in separate commit
-- Move variant specific functions to an ops struct
-- Fix a typo and "h264" -> "hevc" copy/paste mistakes
-- Move RKVDEC_*_PIXELS to rkvdec.h
-- Drop VDPU383_*_PIXELS, use the the RKVDEC ones instead
-- Change RKVDEC_1080P_PIXELS value to 1920 * 1088
-- Long and short term ref sets extend controls:
-  - Add them in visl traces
-  - Reword documentation to specify SPS extension and use
-  - Mention Vulkan Video API similarity
-  - Specify behavior for empty array values
-  - Reorder struct fields to ensure fixed compiled size
-  - Remove the mention of V4L2_CTRL_FLAG_DYNAMIC_ARRAY flag
-
-Changes since v4:
- - Add basic ext_sps_[ls]t_rps validation (flags only)
- - Add missing copyright in new common files
- - Rename num_coded_fmts, rcb_num, clk_count
- - Avoid allocating RCB config when not needed
- - Merge rkvdec_config into rkvdec_variant
- - Keep rkvdec_hevc_get_image_fmt per variant
-
-Changes since v3:
- - Rebased on latest next (ea299a216426) + HEVC support for rk3399
-
-Changes since v2:
- - Rebased on Kwiboo's HEVC support for rk3399
- - Include hevc_ext_sps_[ls]t_rps v4l2 controls commits
- - Remove empty lines at end of files
- - Rename RKVDEC2_ALLOC_* to RKVDEC_ALLOC_*
- - Set min_with and min_height to 64
- - Remove vdpu38x_fill_pixfmt_mp() function
- - Handle userspace not supporting hevc_ext_sps_[ls]t_rps
- - Make all config structs static const
-
-Changes since v1:
- - Add parsing of the short and long term ref frame sets from the new v4l2
-   controls
- - Add RPS cache to avoid parsing the same data again
- - Fix HEVC pixel formats selection
- - Fix multiple indentation errors
-
-Detlev Casanova (17):
-  media: uapi: HEVC: Add v4l2_ctrl_hevc_ext_sps_[ls]t_rps controls
-  media: v4l2-ctrls: Add hevc_ext_sps_[ls]t_rps controls
-  media: visl: Add HEVC short and long term RPS sets
-  media: rkvdec: Switch to using structs instead of writel
-  media: rkvdec: Move cabac tables to their own source file
-  media: rkvdec: Use structs to represent the HW RPS
-  media: rkvdec: Move h264 functions to common file
-  media: rkvdec: Move hevc functions to common file
-  media: rkvdec: Add variant specific coded formats list
-  media: rkvdec: Add RCB and SRAM support
-  media: rkvdec: Support per-variant interrupt handler
-  media: rkvdec: Enable all clocks without naming them
-  media: rkvdec: Disable multicore support
-  media: rkvdec: Add H264 support for the VDPU381 variant
-  media: rkvdec: Add H264 support for the VDPU383 variant
-  media: rkvdec: Add HEVC support for the VDPU381 variant
-  media: rkvdec: Add HEVC support for the VDPU383 variant
-
- .../media/v4l/ext-ctrls-codec-stateless.rst   | 120 +++
- .../media/v4l/videodev2.h.rst.exceptions      |   2 +
- .../media/v4l/vidioc-queryctrl.rst            |  12 +
- .../media/platform/rockchip/rkvdec/Kconfig    |   1 +
- .../media/platform/rockchip/rkvdec/Makefile   |  14 +-
- .../{rkvdec-hevc-data.c => rkvdec-cabac.c}    | 506 +++++++++-
- .../rockchip/rkvdec/rkvdec-h264-common.c      | 258 +++++
- .../rockchip/rkvdec/rkvdec-h264-common.h      |  89 ++
- .../platform/rockchip/rkvdec/rkvdec-h264.c    | 891 ++----------------
- .../rockchip/rkvdec/rkvdec-hevc-common.c      | 488 ++++++++++
- .../rockchip/rkvdec/rkvdec-hevc-common.h      | 108 +++
- .../platform/rockchip/rkvdec/rkvdec-hevc.c    | 257 +----
- .../platform/rockchip/rkvdec/rkvdec-rcb.c     | 178 ++++
- .../platform/rockchip/rkvdec/rkvdec-rcb.h     |  29 +
- .../platform/rockchip/rkvdec/rkvdec-regs.h    | 571 +++++++----
- .../rockchip/rkvdec/rkvdec-vdpu381-h264.c     | 469 +++++++++
- .../rockchip/rkvdec/rkvdec-vdpu381-hevc.c     | 641 +++++++++++++
- .../rockchip/rkvdec/rkvdec-vdpu381-regs.h     | 424 +++++++++
- .../rockchip/rkvdec/rkvdec-vdpu383-h264.c     | 582 ++++++++++++
- .../rockchip/rkvdec/rkvdec-vdpu383-hevc.c     | 736 +++++++++++++++
- .../rockchip/rkvdec/rkvdec-vdpu383-regs.h     | 281 ++++++
- .../platform/rockchip/rkvdec/rkvdec-vp9.c     | 231 ++---
- .../media/platform/rockchip/rkvdec/rkvdec.c   | 542 ++++++++++-
- .../media/platform/rockchip/rkvdec/rkvdec.h   |  43 +
- drivers/media/test-drivers/visl/visl-dec.c    |   7 +
- drivers/media/test-drivers/visl/visl-dec.h    |   3 +
- .../media/test-drivers/visl/visl-trace-hevc.h |  59 ++
- drivers/media/v4l2-core/v4l2-ctrls-core.c     |  28 +
- drivers/media/v4l2-core/v4l2-ctrls-defs.c     |  10 +
- include/uapi/linux/v4l2-controls.h            |  61 ++
- include/uapi/linux/videodev2.h                |   2 +
- 31 files changed, 6230 insertions(+), 1413 deletions(-)
- rename drivers/media/platform/rockchip/rkvdec/{rkvdec-hevc-data.c => rkvdec-cabac.c} (86%)
- create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-h264-common.c
- create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-h264-common.h
- create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-hevc-common.c
- create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-hevc-common.h
- create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-rcb.c
- create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-rcb.h
- create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-h264.c
- create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-hevc.c
- create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-regs.h
- create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-h264.c
- create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-hevc.c
- create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-regs.h
-
+diff --git a/drivers/media/v4l2-core/v4l2-ctrls-core.c b/drivers/media/v4l2-core/v4l2-ctrls-core.c
+index 209bc05883bb..f11255255c74 100644
+--- a/drivers/media/v4l2-core/v4l2-ctrls-core.c
++++ b/drivers/media/v4l2-core/v4l2-ctrls-core.c
+@@ -424,6 +424,12 @@ void v4l2_ctrl_type_op_log(const struct v4l2_ctrl *ctrl)
+ 	case V4L2_CTRL_TYPE_HEVC_SLICE_PARAMS:
+ 		pr_cont("HEVC_SLICE_PARAMS");
+ 		break;
++	case V4L2_CTRL_TYPE_HEVC_EXT_SPS_ST_RPS:
++		pr_cont("HEVC_EXT_SPS_ST_RPS");
++		break;
++	case V4L2_CTRL_TYPE_HEVC_EXT_SPS_LT_RPS:
++		pr_cont("HEVC_EXT_SPS_LT_RPS");
++		break;
+ 	case V4L2_CTRL_TYPE_HEVC_SCALING_MATRIX:
+ 		pr_cont("HEVC_SCALING_MATRIX");
+ 		break;
+@@ -961,6 +967,8 @@ static int std_validate_compound(const struct v4l2_ctrl *ctrl, u32 idx,
+ 	struct v4l2_ctrl_h264_pred_weights *p_h264_pred_weights;
+ 	struct v4l2_ctrl_h264_slice_params *p_h264_slice_params;
+ 	struct v4l2_ctrl_h264_decode_params *p_h264_dec_params;
++	struct v4l2_ctrl_hevc_ext_sps_lt_rps *p_hevc_lt_rps;
++	struct v4l2_ctrl_hevc_ext_sps_st_rps *p_hevc_st_rps;
+ 	struct v4l2_ctrl_hevc_sps *p_hevc_sps;
+ 	struct v4l2_ctrl_hevc_pps *p_hevc_pps;
+ 	struct v4l2_ctrl_hdr10_mastering_display *p_hdr10_mastering;
+@@ -1254,6 +1262,20 @@ static int std_validate_compound(const struct v4l2_ctrl *ctrl, u32 idx,
+ 	case V4L2_CTRL_TYPE_HEVC_SLICE_PARAMS:
+ 		break;
+ 
++	case V4L2_CTRL_TYPE_HEVC_EXT_SPS_ST_RPS:
++		p_hevc_st_rps = p;
++
++		if (p_hevc_st_rps->flags & ~V4L2_HEVC_EXT_SPS_ST_RPS_FLAG_INTER_REF_PIC_SET_PRED)
++			return -EINVAL;
++		break;
++
++	case V4L2_CTRL_TYPE_HEVC_EXT_SPS_LT_RPS:
++		p_hevc_lt_rps = p;
++
++		if (p_hevc_lt_rps->flags & ~V4L2_HEVC_EXT_SPS_LT_RPS_FLAG_USED_LT)
++			return -EINVAL;
++		break;
++
+ 	case V4L2_CTRL_TYPE_HDR10_CLL_INFO:
+ 		break;
+ 
+@@ -2006,6 +2028,12 @@ static struct v4l2_ctrl *v4l2_ctrl_new(struct v4l2_ctrl_handler *hdl,
+ 	case V4L2_CTRL_TYPE_HEVC_SLICE_PARAMS:
+ 		elem_size = sizeof(struct v4l2_ctrl_hevc_slice_params);
+ 		break;
++	case V4L2_CTRL_TYPE_HEVC_EXT_SPS_ST_RPS:
++		elem_size = sizeof(struct v4l2_ctrl_hevc_ext_sps_st_rps);
++		break;
++	case V4L2_CTRL_TYPE_HEVC_EXT_SPS_LT_RPS:
++		elem_size = sizeof(struct v4l2_ctrl_hevc_ext_sps_lt_rps);
++		break;
+ 	case V4L2_CTRL_TYPE_HEVC_SCALING_MATRIX:
+ 		elem_size = sizeof(struct v4l2_ctrl_hevc_scaling_matrix);
+ 		break;
+diff --git a/drivers/media/v4l2-core/v4l2-ctrls-defs.c b/drivers/media/v4l2-core/v4l2-ctrls-defs.c
+index ad41f65374e2..167286c9e424 100644
+--- a/drivers/media/v4l2-core/v4l2-ctrls-defs.c
++++ b/drivers/media/v4l2-core/v4l2-ctrls-defs.c
+@@ -1233,6 +1233,8 @@ const char *v4l2_ctrl_get_name(u32 id)
+ 	case V4L2_CID_STATELESS_HEVC_DECODE_MODE:		return "HEVC Decode Mode";
+ 	case V4L2_CID_STATELESS_HEVC_START_CODE:		return "HEVC Start Code";
+ 	case V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS:	return "HEVC Entry Point Offsets";
++	case V4L2_CID_STATELESS_HEVC_EXT_SPS_ST_RPS:		return "HEVC Short Term Ref Sets";
++	case V4L2_CID_STATELESS_HEVC_EXT_SPS_LT_RPS:		return "HEVC Long Term Ref Sets";
+ 	case V4L2_CID_STATELESS_AV1_SEQUENCE:			return "AV1 Sequence Parameters";
+ 	case V4L2_CID_STATELESS_AV1_TILE_GROUP_ENTRY:		return "AV1 Tile Group Entry";
+ 	case V4L2_CID_STATELESS_AV1_FRAME:			return "AV1 Frame Parameters";
+@@ -1578,6 +1580,14 @@ void v4l2_ctrl_fill(u32 id, const char **name, enum v4l2_ctrl_type *type,
+ 		*type = V4L2_CTRL_TYPE_U32;
+ 		*flags |= V4L2_CTRL_FLAG_DYNAMIC_ARRAY;
+ 		break;
++	case V4L2_CID_STATELESS_HEVC_EXT_SPS_ST_RPS:
++		*type = V4L2_CTRL_TYPE_HEVC_EXT_SPS_ST_RPS;
++		*flags |= V4L2_CTRL_FLAG_DYNAMIC_ARRAY;
++		break;
++	case V4L2_CID_STATELESS_HEVC_EXT_SPS_LT_RPS:
++		*type = V4L2_CTRL_TYPE_HEVC_EXT_SPS_LT_RPS;
++		*flags |= V4L2_CTRL_FLAG_DYNAMIC_ARRAY;
++		break;
+ 	case V4L2_CID_STATELESS_VP9_COMPRESSED_HDR:
+ 		*type = V4L2_CTRL_TYPE_VP9_COMPRESSED_HDR;
+ 		break;
+diff --git a/include/uapi/linux/v4l2-controls.h b/include/uapi/linux/v4l2-controls.h
+index f84ed133a6c9..e9f1fcc4f840 100644
+--- a/include/uapi/linux/v4l2-controls.h
++++ b/include/uapi/linux/v4l2-controls.h
+@@ -2099,6 +2099,8 @@ struct v4l2_ctrl_mpeg2_quantisation {
+ #define V4L2_CID_STATELESS_HEVC_DECODE_MODE	(V4L2_CID_CODEC_STATELESS_BASE + 405)
+ #define V4L2_CID_STATELESS_HEVC_START_CODE	(V4L2_CID_CODEC_STATELESS_BASE + 406)
+ #define V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS (V4L2_CID_CODEC_STATELESS_BASE + 407)
++#define V4L2_CID_STATELESS_HEVC_EXT_SPS_ST_RPS  (V4L2_CID_CODEC_STATELESS_BASE + 408)
++#define V4L2_CID_STATELESS_HEVC_EXT_SPS_LT_RPS  (V4L2_CID_CODEC_STATELESS_BASE + 409)
+ 
+ enum v4l2_stateless_hevc_decode_mode {
+ 	V4L2_STATELESS_HEVC_DECODE_MODE_SLICE_BASED,
+@@ -2554,6 +2556,65 @@ struct v4l2_ctrl_hevc_scaling_matrix {
+ 	__u8	scaling_list_dc_coef_32x32[2];
+ };
+ 
++#define V4L2_HEVC_EXT_SPS_ST_RPS_FLAG_INTER_REF_PIC_SET_PRED	0x1
++
++/*
++ * struct v4l2_ctrl_hevc_ext_sps_st_rps - HEVC short term RPS parameters
++ *
++ * Dynamic size 1-dimension array for short term RPS. The number of elements
++ * is v4l2_ctrl_hevc_sps::num_short_term_ref_pic_sets. It can contain up to 65 elements.
++ *
++ * @delta_idx_minus1: Specifies the delta compare to the index. See details in section 7.4.8
++ *                    "Short-term reference picture set semantics" of the specification.
++ * @delta_rps_sign: Sign of the delta as specified in section 7.4.8 "Short-term reference picture
++ *                  set semantics" of the specification.
++ * @abs_delta_rps_minus1: Absolute delta RPS as specified in section 7.4.8 "Short-term reference
++ *                        picture set semantics" of the specification.
++ * @num_negative_pics: Number of short-term RPS entries that have picture order count values less
++ *                     than the picture order count value of the current picture.
++ * @num_positive_pics: Number of short-term RPS entries that have picture order count values
++ *                     greater than the picture order count value of the current picture.
++ * @used_by_curr_pic: Bit j specifies if short-term RPS j is used by the current picture.
++ * @use_delta_flag: Bit j equals to 1 specifies that the j-th entry in the source candidate
++ *                  short-term RPS is included in this candidate short-term RPS.
++ * @delta_poc_s0_minus1: Specifies the negative picture order count delta for the i-th entry in
++ *                       the short-term RPS. See details in section 7.4.8 "Short-term reference
++ *                       picture set semantics" of the specification.
++ * @delta_poc_s1_minus1: Specifies the positive picture order count delta for the i-th entry in
++ *                       the short-term RPS. See details in section 7.4.8 "Short-term reference
++ *                       picture set semantics" of the specification.
++ * @flags: See V4L2_HEVC_EXT_SPS_ST_RPS_FLAG_{}
++ */
++struct v4l2_ctrl_hevc_ext_sps_st_rps {
++	__u8	delta_idx_minus1;
++	__u8	delta_rps_sign;
++	__u8	num_negative_pics;
++	__u8	num_positive_pics;
++	__u32	used_by_curr_pic;
++	__u32	use_delta_flag;
++	__u16	abs_delta_rps_minus1;
++	__u16	delta_poc_s0_minus1[16];
++	__u16	delta_poc_s1_minus1[16];
++	__u16	flags;
++};
++
++#define V4L2_HEVC_EXT_SPS_LT_RPS_FLAG_USED_LT		0x1
++
++/*
++ * struct v4l2_ctrl_hevc_ext_sps_lt_rps - HEVC long term RPS parameters
++ *
++ * Dynamic size 1-dimension array for long term RPS. The number of elements
++ * is v4l2_ctrl_hevc_sps::num_long_term_ref_pics_sps. It can contain up to 65 elements.
++ *
++ * @lt_ref_pic_poc_lsb_sps: picture order count modulo MaxPicOrderCntLsb of the i-th candidate
++ *                          long-term reference picture.
++ * @flags: See V4L2_HEVC_EXT_SPS_LT_RPS_FLAG_{}
++ */
++struct v4l2_ctrl_hevc_ext_sps_lt_rps {
++	__u16	lt_ref_pic_poc_lsb_sps;
++	__u16	flags;
++};
++
+ /* Stateless VP9 controls */
+ 
+ #define V4L2_VP9_LOOP_FILTER_FLAG_DELTA_ENABLED	0x1
+diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
+index add08188f068..5efaeb74ef92 100644
+--- a/include/uapi/linux/videodev2.h
++++ b/include/uapi/linux/videodev2.h
+@@ -1985,6 +1985,8 @@ enum v4l2_ctrl_type {
+ 	V4L2_CTRL_TYPE_HEVC_SLICE_PARAMS	= 0x0272,
+ 	V4L2_CTRL_TYPE_HEVC_SCALING_MATRIX	= 0x0273,
+ 	V4L2_CTRL_TYPE_HEVC_DECODE_PARAMS	= 0x0274,
++	V4L2_CTRL_TYPE_HEVC_EXT_SPS_ST_RPS	= 0x0275,
++	V4L2_CTRL_TYPE_HEVC_EXT_SPS_LT_RPS	= 0x0276,
+ 
+ 	V4L2_CTRL_TYPE_AV1_SEQUENCE	    = 0x280,
+ 	V4L2_CTRL_TYPE_AV1_TILE_GROUP_ENTRY = 0x281,
 -- 
 2.52.0
 
