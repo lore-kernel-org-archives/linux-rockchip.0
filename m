@@ -4,134 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EC66D6409F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Dec 2025 09:22:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE7F5D64099
+	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Dec 2025 09:33:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3z4Vvr5yLhyFFeNV1o7LtVMRy0FoMFNmbW5VNvJEw18=; b=uLhFv2JX4ABNRJ
-	xzBZ06FYbdyjCTsW1VL7Qy+xzNTlTgWkZlzIDfZDo5kXx98Y0TBZv8QqSRwe1FwoMoeLT1w58LG/4
-	5uHTKKP516mi40lrEpiUVZTAgbOQ3pvjYpayyU7pNpaA5m2uOwk6XStoKfMY2KiRWywHhAJypUYzt
-	0LCt6zWX1V2PQ4R6j4mm/nTY5skDF5IZ//nIffDVNznOIQU1Xcfxxa5NqebvUfQIsm5FKN8RaBw+o
-	U3ghHwzZJ3gxZjjhz0MC8f4e6SchvdxNa4YcsxCJYcozgty2YnjpgnGT57RdJVfXwe0aOfMJa1m2a
-	pGOkx3Fz/m8ZbgS2rrSw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=yGPt7nNjjJrV9HcmHmwjgrf6qbUL89Y13hkZctspOIE=; b=MACY75W6dZNonR
+	dHJc5LM5Fss825RuJAUJnruFKyPFY0RsPfJ0bCXKeIHFIl0Z7r6xuvfX44+KfozgJyQVSq08k/PpB
+	hUVAES5hcTc6KYHAdbvehd3vwo6Ij+OjB3XpQ2UZlEvHxMsNZ407ne4b2BmWkkG+P18mbhGPz+jBZ
+	oRbxPJ5DJmNAmaREDhM/V7SHmbdhYCHv0HMz7Ac1N7m7ntConBH5UklSip27d0j7xiFbrK5Ug53Nd
+	rEJrlWwrX0h/CpuWhZKeCY0d6uKA5gw7EliFH+udAJkRpP013vjnuGYLmQXXHIBc6QUkdfPVH5uEd
+	41Pfhg8Xjtnbsg3fmLPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vVnk9-00000006PQ3-1ohZ;
-	Wed, 17 Dec 2025 09:22:49 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1vVnuk-00000006Q7g-39KU;
+	Wed, 17 Dec 2025 09:33:46 +0000
+Received: from mail-m49247.qiye.163.com ([45.254.49.247])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vVnk6-00000006PPi-3mVb
-	for linux-rockchip@lists.infradead.org;
-	Wed, 17 Dec 2025 09:22:48 +0000
-Received: from pps.filterd (m0279866.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 5BH3Ewaf869122
-	for <linux-rockchip@lists.infradead.org>; Wed, 17 Dec 2025 09:22:46 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	O1NeNX279JdFE7q7QJbtFEwg7PguF0oSBvL+VDxy4RI=; b=DrbrJrYBRXrneJ3r
-	x3s7eiNZOfsRm2KraHwWCXB+BVsPGIkFtKkXD8c6Ziqq/FFz+l/FUUNPnFgAUNu0
-	qfnVZGvekn6FWDn11E7RibHic+0BD97g3wWO4Ms6vYKSTGiS5Dbdle9uRwzFRGVk
-	ROR/47pjtm1vJ/G4UNFsM9DfFNZzU+YtfNX8CmMpyRZse4LmYXRSsEFRDYh1i8M3
-	spdBmM+fqwZtsbaC/lPjB+aMHgppsY4/v00EYaHfcPm5AKkbcAu9+bJ2sO4AuNa4
-	daFqbYOd7Sgmehl1VoHo39v4WEDDOBHTmdEBrjd7JSR5nPzOermdvwV4dLiK/LU0
-	cm08Pg==
-Received: from mail-qt1-f198.google.com (mail-qt1-f198.google.com [209.85.160.198])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4b3fj1stsp-1
-	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-rockchip@lists.infradead.org>; Wed, 17 Dec 2025 09:22:46 +0000 (GMT)
-Received: by mail-qt1-f198.google.com with SMTP id d75a77b69052e-4f1d26abbd8so41043761cf.1
-        for <linux-rockchip@lists.infradead.org>; Wed, 17 Dec 2025 01:22:45 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1765963365; x=1766568165; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=O1NeNX279JdFE7q7QJbtFEwg7PguF0oSBvL+VDxy4RI=;
-        b=DU+eKPmeZDRjsjBcFbEobMvP+pYdtxSdrOCGgtLC1tyDC1R9H17UzNtsT01ribo+sz
-         jT9m6Y0GMyFMTHktfeXTOkNEavZe0wF1KLt1serczkKt/r9E+GoOa3dpDrVKaW5RyhyI
-         IYtoBzPrHfdTx6FTECD6ZpWeCoJyiXn9PLFV86OaKLJxVH0b4mbfIE+DHlMJosFtnICo
-         13GQCE70yytwN/GgheCcIM4iqXYdz4VPvTWd6DL1qfv3hUgSI2vRgsQHb3tmsxdVZIyC
-         leeQoTZnK3bJ2Iy6pHal0bHUhShsYjYoWvDZVI97QMoyi2nlpuueQ1TtIWk98rHVg0bW
-         qsIw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1765963365; x=1766568165;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=O1NeNX279JdFE7q7QJbtFEwg7PguF0oSBvL+VDxy4RI=;
-        b=Xtc0wIoytUy4DIRY+3HOseOb0LZpk8goG+W1HDT+ViqVjSvXlLtSBrDdsXqvGwNbcl
-         jbFXt8HLRG1M1PNZKyjd1gqqAER8/AnhtMBkcolqf5ohppMaGg26eF5YwF1dN8PZZlSv
-         QL2U6mwhA4xKaT/YK1KF0yvmL82DF3a3Z989/sohWwbdsYIqcSmNcK7RyIRxYN7S6Rq0
-         qBrfCkeJcMWvUOKER9wMyq2da8CPhWa4mysdlbp6GBIybTKObzVUhOe81Rjzo6t0IjBj
-         Ru059RgFfnse3i5hZy2V1s3FzSGJiAPga/AraPM4UyQegqZS+qZkZLieoGguW972H9m7
-         IWOw==
-X-Forwarded-Encrypted: i=1; AJvYcCX5NRDylC+pD4jcr0hQFQEEu0x096Cglc9YRS1JeFnHHruMftxY36IN520dTZZFQkeDNG2j5FqJPGezWFG5PA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxGtbL3WwhyLXvn6iBUbViWQAmLuHRNVbn3HtgBGU2PFRyE4XsW
-	slnwS2beweQfymG5S6fArO8EoVsnXoWYSr2zVp4sc2fRm9oKs/mmgobPiD+DZpVl3Kaget0tAe2
-	41KA2tK5kpHEwaM37+iKUkekfop62wEx5Qh/PafbOkkFeZrPwE6vaI0/wBKcvkIjH0LkC1AsOZ5
-	4=
-X-Gm-Gg: AY/fxX5ASu5vvefZ/hWe8TrdVFpzAz0ESsHwDlXKJwkmpKRD/A0RoHutbUMkZgOhsh+
-	zXWhuivx6LQczzc/G2F+qPTGWD74XG0Eu27ZKkXuMxA9gdIaEtdHy067pzZvXLcUCiszlb4/uY5
-	Ea9pfB/7OJrzLTL3EtBMw8mARFqyA3UlgIaLf/kLcrYEfW+1bIYZJga7710+xceQB18ovN4uZwX
-	vaYOWJlpJfj7sxKVnb5DMX8r5Erh2E4pRynfQ6zBU15r60js6d8L04wbmI2i9Mmejc6NUfHREwc
-	iePcLqLWovQ3HnQLWLu6fBqDlECsc2RX+WrKR9Y6loNThy4nSNsdKjyHJVISOjdUxfXx4U/fjnO
-	vJmKmzahGcBVjO9sEfQ3SuVQ8HLXH1pRXc58E
-X-Received: by 2002:a05:622a:5c92:b0:4ee:ce1:ed8a with SMTP id d75a77b69052e-4f1d0467092mr292274581cf.16.1765963364362;
-        Wed, 17 Dec 2025 01:22:44 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHVBSY9HrSb1eG5s6bXREmAEodgYzRbN7yCm6OS3ggMYrPH6PAG+bx1I0UwAuuLj2N34mfyKA==
-X-Received: by 2002:a05:622a:5c92:b0:4ee:ce1:ed8a with SMTP id d75a77b69052e-4f1d0467092mr292274271cf.16.1765963363886;
-        Wed, 17 Dec 2025 01:22:43 -0800 (PST)
-Received: from brgl-qcom.home ([2a01:cb1d:dc:7e00:594b:272:c2fd:21e])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-4310ade7bf9sm3806668f8f.24.2025.12.17.01.22.42
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 17 Dec 2025 01:22:43 -0800 (PST)
-From: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
-To: heiko@sntech.de, FUKAUMI Naoki <naoki@radxa.com>
-Cc: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>,
-        brgl@kernel.org, robh@kernel.org, krzk+dt@kernel.org,
-        conor+dt@kernel.org, dsimic@manjaro.org, didi.debian@cknow.org,
-        wens@kernel.org, nicolas.frattaroli@collabora.com,
-        detlev.casanova@collabora.com, stephen@radxa.com,
-        sebastian.reichel@collabora.com, linux-i2c@vger.kernel.org,
-        devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
-Subject: Re: (subset) [RESEND PATCH 0/3] Add Belling EEPROMs found in Radxa boards
-Date: Wed, 17 Dec 2025 10:22:37 +0100
-Message-ID: <176596335025.7296.12753500067667593056.b4-ty@oss.qualcomm.com>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20251202084941.1785-1-naoki@radxa.com>
-References: <20251202084941.1785-1-naoki@radxa.com>
+	id 1vVnuh-00000006Q6d-2GZx;
+	Wed, 17 Dec 2025 09:33:45 +0000
+Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 2d931e49e;
+	Wed, 17 Dec 2025 17:33:35 +0800 (GMT+08:00)
+From: Damon Ding <damon.ding@rock-chips.com>
+To: andrzej.hajda@intel.com,
+	neil.armstrong@linaro.org,
+	rfoss@kernel.org
+Cc: Laurent.pinchart@ideasonboard.com,
+	jonas@kwiboo.se,
+	jernej.skrabec@gmail.com,
+	maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org,
+	tzimmermann@suse.de,
+	airlied@gmail.com,
+	simona@ffwll.ch,
+	shawnguo@kernel.org,
+	s.hauer@pengutronix.de,
+	kernel@pengutronix.de,
+	festevam@gmail.com,
+	inki.dae@samsung.com,
+	sw0312.kim@samsung.com,
+	kyungmin.park@samsung.com,
+	krzk@kernel.org,
+	alim.akhtar@samsung.com,
+	jingoohan1@gmail.com,
+	p.zabel@pengutronix.de,
+	hjc@rock-chips.com,
+	heiko@sntech.de,
+	andy.yan@rock-chips.com,
+	dmitry.baryshkov@oss.qualcomm.com,
+	dianders@chromium.org,
+	m.szyprowski@samsung.com,
+	luca.ceresoli@bootlin.com,
+	jani.nikula@intel.com,
+	linux-kernel@vger.kernel.org,
+	dri-devel@lists.freedesktop.org,
+	imx@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	Damon Ding <damon.ding@rock-chips.com>
+Subject: [PATCH v8 00/18] Apply drm_bridge_connector and panel_bridge helper for the Analogix DP driver
+Date: Wed, 17 Dec 2025 17:33:03 +0800
+Message-Id: <20251217093321.3108939-1-damon.ding@rock-chips.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMjE3MDA3NCBTYWx0ZWRfX0NgIhmcWGkc3
- /c/mz4pdz0UfQX7OjxoWZNgSSCw6GcjcCJZRMImxykDLvWyRK/O//XPqzQ0j3X2vb3yR0jp+YT1
- tXu23gJp+oi5cdeTtQwV1+kl804o4UVYIpy2GqVXineU8Lx8dKD+2463NnVk+YqlKGLvMSxLJya
- 1kAFrEFBEkow2abhdEnRg7V4louFC0dC49OTpsdbOoNfEC2fEUdhn+jywBrB8EropC1mfWHJz+5
- 9X/1LzCHwcXI+LOZ3NXvtZhNS5CTkJHoziUaEpk1CedAy83upuAgHOOoFNvT/hVQvlsuklJKpRt
- /nSg7DSgKeTV68cVPC0UB+Cr6mjmXDiZbvS5Y4jPyvZmtB9pUmfwMxSFbRKLfI8Ics1YRQ1K7Uy
- YX7PlK6PUCgFdnhoO/ssmXe7bR14ug==
-X-Proofpoint-ORIG-GUID: efLqbV-XXeQYpYY4nyc6W92OEXq_6zF6
-X-Proofpoint-GUID: efLqbV-XXeQYpYY4nyc6W92OEXq_6zF6
-X-Authority-Analysis: v=2.4 cv=edgwvrEH c=1 sm=1 tr=0 ts=69427666 cx=c_pps
- a=mPf7EqFMSY9/WdsSgAYMbA==:117 a=xqWC_Br6kY4A:10 a=IkcTkHD0fZMA:10
- a=wP3pNCr1ah4A:10 a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=EUspDBNiAAAA:8 a=x5VBOJNiEakZfNYY35cA:9 a=NqO74GWdXPXpGKcKHaDJD/ajO6k=:19
- a=QEXdDO2ut3YA:10 a=dawVfQjAaf238kedN5IG:22
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
- definitions=2025-12-17_01,2025-12-16_05,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- suspectscore=0 spamscore=0 lowpriorityscore=0 clxscore=1011 impostorscore=0
- adultscore=0 priorityscore=1501 phishscore=0 bulkscore=0 malwarescore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2510240001 definitions=main-2512170074
+X-HM-Tid: 0a9b2ba8676303a3kunma9c945a29ed6d
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGktJGlZPSU9LGRkfTkNLGEtWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpKQk
+	1VSktLVUpCWQY+
+DKIM-Signature: a=rsa-sha256;
+	b=NtWSB/KOLelUDre7LHu05JouZqsgWuMjjuU6TRqsFSuaU7yKx2UfOQnxHGHna0FTCPdfu1ju6+XUhZ8R+Jct4f8eplgUo+P/du5UguE1ODlME+Xj5AOlqUVhaDAPz0eHRi0MMDgTyClFLW4y5rWbfby+qStuVbfGQ7ZtuoGEv6A=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=E+VaPm/yqw4QSciorj38SCg03o5AGDHPzyOXLKjx1+c=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251217_012246_949026_B5E8F839 
-X-CRM114-Status: UNSURE (   9.88  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251217_013344_035615_4790CDAD 
+X-CRM114-Status: GOOD (  17.78  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -148,27 +101,153 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+PATCH 1 is to ensure the last bridge declares OP_EDID or OP_MODES or both.
+PATCH 2 is a small format optimization for struct analogid_dp_device.
+PATCH 3 is to perform mode setting in &drm_bridge_funcs.atomic_enable.
+PATCH 4 is to add a new parameter to store the point of next bridge.
+PATCH 5 is to make legacy bridge driver more universal.
+PATCH 6-11 are preparations for apply drm_bridge_connector helper.
+PATCH 12 is to apply the drm_bridge_connector helper.
+PATCH 13-15 are to move the panel/bridge parsing to the Analogix side.
+PATCH 16 is to attach the next bridge on Analogix side uniformly.
+PATCH 17-18 are to apply the panel_bridge helper.
 
-On Tue, 02 Dec 2025 08:49:38 +0000, FUKAUMI Naoki wrote:
-> This patch series adds Belling BL24C04A, BL24C16A, and BL24C16F EEPROM
-> found in Radxa boards.
-> 
-> FUKAUMI Naoki (3):
->   dt-bindings: eeprom: at24: Add compatible for Belling
->     BL24C04A/BL24C16F
->   arm64: dts: rockchip: Add EEPROMs for Radxa ROCK 4 boards
->   arm64: dts: rockchip: Add EEPROMs for Radxa boards
-> 
-> [...]
+The following reviewed commits, which to make codes more concise, are
+rebased to the front of this patch series:
 
-Applied, thanks!
+https://lore.kernel.org/all/20251110085823.1197472-1-damon.ding@rock-chips.com/
+https://lore.kernel.org/all/20251111022103.1350183-1-damon.ding@rock-chips.com/
 
-[1/3] dt-bindings: eeprom: at24: Add compatible for Belling BL24C04A/BL24C16F
-      commit: 41acc4dd8a04af332416b59a4cdb4780b7716ff1
+Damon Ding (18):
+  drm/display: bridge_connector: Ensure last bridge determines
+    EDID/modes detection capabilities
+  drm/bridge: analogix_dp: Formalize the struct analogix_dp_device
+  drm/bridge: analogix_dp: Move &drm_bridge_funcs.mode_set to
+    &drm_bridge_funcs.atomic_enable
+  drm/bridge: analogix_dp: Add &analogix_dp_plat_data.next_bridge
+  drm/bridge: Move legacy bridge driver out of imx directory for
+    multi-platform use
+  drm/exynos: exynos_dp: Remove &exynos_dp_device.ptn_bridge
+  drm/exynos: exynos_dp: Remove unused &exynos_dp_device.connector
+  drm/exynos: exynos_dp: Apply of-display-mode-bridge to parse the
+    display-timings node
+  drm/bridge: analogix_dp: Remove redundant
+    &analogix_dp_plat_data.skip_connector
+  drm/bridge: analogix_dp: Move the color format check to
+    .atomic_check() for Rockchip platforms
+  drm/bridge: analogix_dp: Remove unused
+    &analogix_dp_plat_data.get_modes()
+  drm/bridge: analogix_dp: Apply drm_bridge_connector helper
+  drm/bridge: analogix_dp: Add new API analogix_dp_finish_probe()
+  drm/rockchip: analogix_dp: Apply analogix_dp_finish_probe()
+  drm/exynos: exynos_dp: Apply analogix_dp_finish_probe()
+  drm/bridge: analogix_dp: Attach the next bridge in
+    analogix_dp_bridge_attach()
+  drm/bridge: analogix_dp: Remove bridge disabing and panel unpreparing
+    in analogix_dp_unbind()
+  drm/bridge: analogix_dp: Apply panel_bridge helper
 
-Best regards,
+ drivers/gpu/drm/bridge/Kconfig                |  10 +
+ drivers/gpu/drm/bridge/Makefile               |   1 +
+ drivers/gpu/drm/bridge/analogix/Kconfig       |   1 +
+ .../drm/bridge/analogix/analogix_dp_core.c    | 395 +++++++++---------
+ .../drm/bridge/analogix/analogix_dp_core.h    |   5 +-
+ drivers/gpu/drm/bridge/imx/Kconfig            |  10 -
+ drivers/gpu/drm/bridge/imx/Makefile           |   1 -
+ .../gpu/drm/bridge/imx/imx-legacy-bridge.c    |  91 ----
+ .../gpu/drm/bridge/of-display-mode-bridge.c   |  93 +++++
+ .../gpu/drm/display/drm_bridge_connector.c    |  18 +-
+ drivers/gpu/drm/exynos/Kconfig                |   2 +
+ drivers/gpu/drm/exynos/exynos_dp.c            | 110 ++---
+ drivers/gpu/drm/imx/ipuv3/Kconfig             |   4 +-
+ drivers/gpu/drm/imx/ipuv3/imx-ldb.c           |   6 +-
+ drivers/gpu/drm/imx/ipuv3/parallel-display.c  |   5 +-
+ drivers/gpu/drm/rockchip/Kconfig              |   1 +
+ .../gpu/drm/rockchip/analogix_dp-rockchip.c   |  67 +--
+ include/drm/bridge/analogix_dp.h              |   8 +-
+ include/drm/bridge/imx.h                      |  17 -
+ include/drm/bridge/of-display-mode-bridge.h   |  17 +
+ 20 files changed, 391 insertions(+), 471 deletions(-)
+ delete mode 100644 drivers/gpu/drm/bridge/imx/imx-legacy-bridge.c
+ create mode 100644 drivers/gpu/drm/bridge/of-display-mode-bridge.c
+ delete mode 100644 include/drm/bridge/imx.h
+ create mode 100644 include/drm/bridge/of-display-mode-bridge.h
+
+---
+
+Changes in v2:
+- Update Exynos DP driver synchronously.
+- Move the panel/bridge parsing to the Analogix side.
+
+Changes in v3:
+- Rebase for the existing devm_drm_bridge_alloc() applying commit.
+- Fix the typographical error of panel/bridge check in exynos_dp_bind().
+- Squash all commits related to skip_connector deletion in both Exynos and
+  Analogix code into one.
+- Apply panel_bridge helper to make the codes more concise.
+- Fix the handing of bridge in analogix_dp_bridge_get_modes().
+- Remove unnecessary parameter struct drm_connector* for callback
+  &analogix_dp_plat_data.attach().
+- In order to decouple the connector driver and the bridge driver, move
+  the bridge connector initilization to the Rockchip and Exynos sides.
+
+Changes in v4:
+- Rebase for the applied &drm_bridge_funcs.detect() modification commit.
+- Rename analogix_dp_find_panel_or_bridge() to analogix_dp_finish_probe().
+- Drop the drmm_encoder_init() modification commit.
+- Rename the &analogix_dp_plat_data.bridge to
+  &analogix_dp_plat_data.next_bridge.
+
+Changes in v5:
+- Add legacy bridge to parse the display-timings node under the dp node
+  for Exynos side.
+- Move color format check to &drm_connector_helper_funcs.atomic_check()
+  in order to get rid of &analogix_dp_plat_data.get_modes().
+- Remove unused callback &analogix_dp_plat_data.get_modes().
+- Distinguish the &drm_bridge->ops of Analogix bridge based on whether
+  the downstream device is a panel, a bridge or neither.
+- Select DRM_DISPLAY_DP_AUX_BUS for DRM_ANALOGIX_DP, and remove it for
+  ROCKCHIP_ANALOGIX_DP.
+- Apply rockchip_dp_attach() to support the next bridge attachment for
+  the Rockchip side.
+- Move next_bridge attachment from Analogix side to Rockchip/Exynos sides.
+
+Changes in v6:
+- Move legacy bridge driver out of imx directory for multi-platform use.
+- Apply DRM legacy bridge to parse display timings intead of implementing
+  the same codes only for Exynos DP.
+- Ensure last bridge determines EDID/modes detection capabilities in DRM
+  bridge_connector driver.
+- Remove unnecessary drm_bridge_get_modes() in
+  analogix_dp_bridge_get_modes().
+- Simplify analogix_dp_bridge_edid_read().
+- If the next is a bridge, set DRM_BRIDGE_OP_DETECT and return
+  connector_status_connected in analogix_dp_bridge_detect().
+- Set flag DRM_BRIDGE_ATTACH_NO_CONNECTOR for bridge attachment while
+  binding. Meanwhile, make DRM_BRIDGE_ATTACH_NO_CONNECTOR unsuppported
+  in analogix_dp_bridge_attach().
+- Move the next bridge attachment to the Analogix side rather than
+  scattered on Rockchip and Exynos sides.
+- Remove the unnecessary analogix_dp_bridge_get_modes().
+- Squash [PATCH v5 15/17] into [PATCH v5 17/17].
+- Fix the &drm_bridge->ops to DRM_BRIDGE_OP_EDID | DRM_BRIDGE_OP_DETECT.
+
+Changes in v7:
+- As Luca suggested, simplify the code and related comment for bridge_connector
+  modifications. Additionally, move the commit related to bridge_connector to
+  the top of this patch series.
+- Rename legacy-bridge driver to of-display-mode-bridge driver.
+- Remove unnecessary API drm_bridge_is_legacy() and apply a temporary flag
+  &exynos_dp_device.has_of_bridge instead, which will be removed finally.
+- Remove exynos_dp_legacy_bridge_init() and inline API
+  devm_drm_of_display_mode_bridge().
+
+Changes in v8:
+- Adapt the related modifications to the newest bridge_connector driver.
+
 -- 
-Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+2.34.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
