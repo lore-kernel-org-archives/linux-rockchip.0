@@ -4,90 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62C97D65528
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Dec 2025 10:01:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6E1BD6554E
+	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Dec 2025 11:27:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CmAf++JbQcVqm9no+Xr8vHj96VIfaLvQX0uMNd0kPis=; b=OU4wJUleHh2D6G
-	85C0UtkuTTALvUeWemjhd5SOKDVIsMTgds4ePCNFrjTpVfxf8c26la4jy+kSbfYUy1pNQVNzCcj3K
-	/JRfCbPFc7VFGDA4Ep+AiJ2HVLAXmMTXAn5KQJqTSltyqhPEwWL6aeJdYuhtvnI5EawCeAs0WnL+e
-	7CHYMJ6vfwdw+Q8olB0NXragChPLz4MAm1D7yZMX5r7SEhUQjt+iA3lvDP2snlMjIyyOtZKneDYB3
-	VBhGW9H3ZDHePm/Jq7k7ZmpB/q42vIyYWfi7PMTCRcMaN8HYy9hwlrfEkqzpiD9ybFpXavKlgHR5S
-	NCvUdm46J89ERIOtzd+w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=xy15+yS/tnBBIp2Fl8TDZJ2LgXPja358M1zlyusc9YY=; b=uMjxKeZuuP1s7+
+	nG8E1J3BN8VdTRecQ/jQQSH6L6kVik/m5k+m7jpVOuE/2/E0El51krD/KlH6CnbgwlVqNZe0qo2W5
+	/pM4a3Rc0JCQMDPX/UpXleedXKR93pwYid2EU8BaCyuZPILyiJQdgAk5KIm+VE4xQNo778LQVCl/W
+	kEuY5PeVK8fXj5DBZpbRe+PcVE/dbUYXcD3usOSho76Hu0LcjBfFiLJIpEvWy92litxkEk3AvZTES
+	Nn/eSefxzaLdtFdbUG9NcDpKYvY/1LUk11BPEHhq8R5fa3JMyyzr7Gt070JChfkSFnrOWasPPUFf/
+	bRZBRl/E1It/atv4v7Rg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vVoKy-00000006UVF-34h9;
-	Wed, 17 Dec 2025 10:00:52 +0000
-Received: from mail-m19731119.qiye.163.com ([220.197.31.119])
+	id 1vVpgF-00000006iHe-14f5;
+	Wed, 17 Dec 2025 11:26:55 +0000
+Received: from fout-b3-smtp.messagingengine.com ([202.12.124.146])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vVoKu-00000006UQV-49dc;
-	Wed, 17 Dec 2025 10:00:50 +0000
-Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 2d942d6b2;
-	Wed, 17 Dec 2025 18:00:44 +0800 (GMT+08:00)
-From: Damon Ding <damon.ding@rock-chips.com>
-To: andrzej.hajda@intel.com,
-	neil.armstrong@linaro.org,
-	rfoss@kernel.org
-Cc: Laurent.pinchart@ideasonboard.com,
-	jonas@kwiboo.se,
-	jernej.skrabec@gmail.com,
-	maarten.lankhorst@linux.intel.com,
-	mripard@kernel.org,
-	tzimmermann@suse.de,
-	airlied@gmail.com,
-	simona@ffwll.ch,
-	shawnguo@kernel.org,
-	s.hauer@pengutronix.de,
-	kernel@pengutronix.de,
-	festevam@gmail.com,
-	inki.dae@samsung.com,
-	sw0312.kim@samsung.com,
-	kyungmin.park@samsung.com,
-	krzk@kernel.org,
-	alim.akhtar@samsung.com,
-	jingoohan1@gmail.com,
-	p.zabel@pengutronix.de,
-	hjc@rock-chips.com,
-	heiko@sntech.de,
-	andy.yan@rock-chips.com,
-	dmitry.baryshkov@oss.qualcomm.com,
-	dianders@chromium.org,
-	m.szyprowski@samsung.com,
-	luca.ceresoli@bootlin.com,
-	jani.nikula@intel.com,
-	linux-kernel@vger.kernel.org,
-	dri-devel@lists.freedesktop.org,
-	imx@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Damon Ding <damon.ding@rock-chips.com>
-Subject: [PATCH v8 18/18] drm/bridge: analogix_dp: Apply panel_bridge helper
-Date: Wed, 17 Dec 2025 17:59:12 +0800
-Message-Id: <20251217095912.3109103-5-damon.ding@rock-chips.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20251217095912.3109103-1-damon.ding@rock-chips.com>
-References: <20251217093321.3108939-1-damon.ding@rock-chips.com>
- <20251217095912.3109103-1-damon.ding@rock-chips.com>
+	id 1vVpgC-00000006iHJ-19Ck
+	for linux-rockchip@lists.infradead.org;
+	Wed, 17 Dec 2025 11:26:54 +0000
+Received: from phl-compute-03.internal (phl-compute-03.internal [10.202.2.43])
+	by mailfout.stl.internal (Postfix) with ESMTP id E755B1D000DD;
+	Wed, 17 Dec 2025 06:26:48 -0500 (EST)
+Received: from phl-frontend-04 ([10.202.2.163])
+  by phl-compute-03.internal (MEProxy); Wed, 17 Dec 2025 06:26:49 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fastmail.com; h=
+	cc:cc:content-type:content-type:date:date:from:from:in-reply-to
+	:message-id:mime-version:reply-to:subject:subject:to:to; s=fm1;
+	 t=1765970808; x=1766057208; bh=DE5Bvhxhc1rgAK67jZ1MRYKyF9U9W66g
+	zdVfZbVHM7M=; b=R9qP/nIvPjGh1mx0PQnFG0fc8lXNqSt9wTcb80vkLlAEzwNN
+	vZpTisoER9CmVmABxzjHXlIJGG0VbnqEPMBB1cwGB9OiDBJ2ad7J7iS3VYlNPVQs
+	ThNuC0kUKACTPR3+o21OheOEUaBQIUmjTR2nALGIAMrQZe1jfu9ikGB1dv7ThqcG
+	psRmDwGTw6ZDVSpb66r0KGGDRNQ28ey9bgnXF/2Gx/Zdy6jsIf0HTEPliaLrUVd6
+	w69Ad0Byvg7Fjx+nMBsrHFn/LPHfPMbgGCvFesF50KtiXSZ7xIepWxJ9PehiTXJF
+	AoP9iWMYIRNSvm8jlEHUJZXHmPNOPyRavTKJPg==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-type:content-type:date:date
+	:feedback-id:feedback-id:from:from:in-reply-to:message-id
+	:mime-version:reply-to:subject:subject:to:to:x-me-proxy
+	:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1765970808; x=
+	1766057208; bh=DE5Bvhxhc1rgAK67jZ1MRYKyF9U9W66gzdVfZbVHM7M=; b=B
+	ILGBxIJAMcWXp0/BKe3zaC6zA/7dr7Jc3oc9Fg+T1n0hJqCSqfrjsJfrRawuTuD6
+	G0YaFMoWUjiYjqXHySWpzd7EInFvG9q485ZbWbfy5LDtpUy6D9NW1roXfjSOO3bY
+	Gep/Kyy/Gpro6wP26jAQruuwXpCPINBtxPDl77jrILRydUCstbvJDwrbl2H3t/K8
+	9pCVlrVTavvJ2J852XEpD3YxdZfqfNmp5j3DQhdjXXOKFeJEEiJr5rpQIbT54HI/
+	OuuwlitbIuRBwFrlyCzUyXLLHvl8gzmGT58duQkTbd1+XVx6ZzX0JeHS28A1U5id
+	i0/yW3EbwSTdRQWLGvQOQ==
+X-ME-Sender: <xms:eJNCad_HGsj4HD0Z04hi0x9KwkXcTt2lGCbYDR3X4XVN2pwr0S1J4g>
+    <xme:eJNCafiBrb82rO7NYtAGuFQU6os3_gdcgufRM21SFXb0USxJdIA5VXBwDWe9dWJ5N
+    R6V1sPD_fuM4lJ0gKAYMZ6tPIP34V5KI_fmONx2LyoJGV5cWWJDfQ>
+X-ME-Received: <xmr:eJNCaVdchg2fc81VNiKoCXuSUzWtDRVG59Q64qpfAo26AOPmYPnCzosECFfw8KKCOzGQkcrYfmcqik-tIwiMvqUMjg-gFYAlKA>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefgedrtddtgdegvdeggecutefuodetggdotefrod
+    ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpuffrtefokffrpgfnqfghnecuuegr
+    ihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjug
+    hrpeffhffvvefukfggtggufgesthdtredttderjeenucfhrhhomheplfgrnhcurfgrlhhu
+    shcuoehjphgrlhhushesfhgrshhtmhgrihhlrdgtohhmqeenucggtffrrghtthgvrhhnpe
+    efjeeuveejueejledvteekieevueeffeevkeffkefhvefhuddvjedvudffgfeuvdenucff
+    ohhmrghinhepkhgvrhhnvghlrdhorhhgnecuvehluhhsthgvrhfuihiivgeptdenucfrrg
+    hrrghmpehmrghilhhfrhhomhepjhhprghluhhssehfrghsthhmrghilhdrtghomhdpnhgs
+    pghrtghpthhtohepgedpmhhouggvpehsmhhtphhouhhtpdhrtghpthhtoheplhhinhhugi
+    dqrhhotghktghhihhpsehlihhsthhsrdhinhhfrhgruggvrggurdhorhhgpdhrtghpthht
+    ohepphgsrhhosghinhhsohhnsehgmhgrihhlrdgtohhmpdhrtghpthhtohephhgvihhkoh
+    esshhnthgvtghhrdguvgdprhgtphhtthhopehrvghgrhgvshhsihhonhhssehlihhsthhs
+    rdhlihhnuhigrdguvghv
+X-ME-Proxy: <xmx:eJNCaerI9VlT1LS6t-L2CGkHOLQ8DfqoTyrATa6aK7dIZx8zVq6Jbg>
+    <xmx:eJNCaSDby8vxCQZtxgAXZOaRVPFECyQwXojF2YMDOCtkoKJ0Ufv-xw>
+    <xmx:eJNCaTbzV8mJAg4SrFrN_V0j_lKb2rB4ihIRULAJFCXVKseFH8H2lw>
+    <xmx:eJNCad6kz2vZvZtQ6nHEyUkNI7DgGhZRUiaohw5kTrojPSqvdeCcRA>
+    <xmx:eJNCafPSEQeyJyH-ulyzUyuJxv5QQF0eW7hZ4s12U2o3W5Cbolbf8gYi>
+Feedback-ID: i01894241:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
+ 17 Dec 2025 06:26:48 -0500 (EST)
+Date: Wed, 17 Dec 2025 12:26:46 +0100
+From: Jan Palus <jpalus@fastmail.com>
+To: linux-rockchip@lists.infradead.org
+Cc: Peter Robinson <pbrobinson@gmail.com>, 
+	Heiko Stuebner <heiko@sntech.de>, regressions@lists.linux.dev
+Subject: [REGRESSION][BISECTED] wifi broken on pinebook pro
+Message-ID: <aUKOlj-RvTYlrpiS@rock.grzadka>
 MIME-Version: 1.0
-X-HM-Tid: 0a9b2bc1410403a3kunm23626673a4428
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGU9LTlZOSUlPT0IaH0hMQ09WFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpKQk
-	1VSktLVUpCWQY+
-DKIM-Signature: a=rsa-sha256;
-	b=dEzH4MdbX2Ic3ZujDvwF8yY5J/C4YNJMJI4IprKXaI0TcA8V2v43npOXco2ZW5skxH01s1i6RJ92qqzV9cekHPH5bTml4uSRQnLOJtZpzuQgAftcuvq87OtB8NQW23PV6FQMvpRMZ4YSN+YPZEZZ+dm8wbj+aaIEwF4hyvaXvlk=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=6UvZjfZZmEIshg80bXUbC+uz2GS4ovT+vz4BXH8QlXg=;
-	h=date:mime-version:subject:message-id:from;
+Content-Disposition: inline
+User-Agent: NeoMutt/20251211
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251217_020049_251719_225722EB 
-X-CRM114-Status: GOOD (  15.88  )
+X-CRM114-CacheID: sfid-20251217_032652_878694_BDE0E94C 
+X-CRM114-Status: UNSURE (   8.51  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,158 +109,60 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-In order to unify the handling of the panel and bridge, apply
-panel_bridge helpers for Analogix DP driver. With this patch, the
-bridge support will also become available.
+WiFi no longer works on Pinebook Pro after upgrade to kernel 6.18. It
+appears firmware fails to load:
 
-The following changes have ben made:
-- Apply plane_bridge helper to wrap the panel as the bridge.
-- Remove the explicit panel APIs calls, which can be replaced with
-  the automic bridge APIs calls wrapped by the panel.
-- Remove the unnecessary analogix_dp_bridge_get_modes().
+...
+mmc_host mmc0: card is non-removable.
+mmc_host mmc0: Bus speed (slot 0) = 400000Hz (slot req 400000Hz, actual 400000HZ div = 0)
+Bluetooth: hci0: BCM: features 0x0f
+Bluetooth: hci0: BCM4345C5 Ampak_CL1 UART 37.4 MHz BT 5.0 [Version: Version: 0039.0089]
+Bluetooth: hci0: BCM4345C5 (003.006.006) build 0089
+mmc_host mmc0: Bus speed (slot 0) = 148500000Hz (slot req 150000000Hz, actual 148500000HZ div = 0)
+dwmmc_rockchip fe310000.mmc: Successfully tuned phase to 55
+mmc0: new UHS-I speed SDR104 SDIO card at address 0001
+brcmfmac: brcmf_fw_alloc_request: using brcm/brcmfmac43456-sdio for chip BCM4345/9
+usbcore: registered new interface driver brcmfmac
+brcmfmac mmc0:0001:1: Direct firmware load for brcm/brcmfmac43456-sdio.pine64,pinebook-pro.bin failed with error -2
+brcmfmac: brcmf_sdio_bus_rxctl: resumed on timeout
+ieee80211 phy0: brcmf_bus_started: failed: -110
+ieee80211 phy0: brcmf_attach: dongle is not responding: err=-110
+brcmfmac: brcmf_sdio_firmware_callback: brcmf_attach failed
 
-Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
-Tested-by: Marek Szyprowski <m.szyprowski@samsung.com>
-Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+compared to 6.17 instead of last 4 lines with errors there's single one
+with info about loaded firmware:
 
----
+brcmfmac: brcmf_c_preinit_dcmds: Firmware: BCM4345/9 wl0: May 14 2020 17:26:08 version 7.84.17.1 (r871554) FWID 01-3d9e1d87
 
-Changes in v4:
-- Rename the &analogix_dp_plat_data.bridge to
-  &analogix_dp_plat_data.next_bridge.
+Bisected to:
 
-Changes in v5:
-- Move panel_bridge addition a little forward.
-- Move next_bridge attachment from Analogix side to Rockchip/Exynos
-  side.
+6d54d935062e2d4a7d3f779ceb9eeff108d0535d is the first new commit
+commit 6d54d935062e2d4a7d3f779ceb9eeff108d0535d (HEAD)
+Author: Peter Robinson <pbrobinson@gmail.com>
+Date:   Wed Aug 27 16:30:37 2025
 
-Changes in v6
-- Remove the unnecessary analogix_dp_bridge_get_modes().
-- Not to set DRM_BRIDGE_OP_MODES if the next is a panel.
-- Squash [PATCH v5 15/17]drm/bridge: analogix_dp: Remove panel
-  disabling and enabling in analogix_dp_set_bridge() into this
-  commit.
-- Fix the &drm_bridge->ops to DRM_BRIDGE_OP_EDID | DRM_BRIDGE_OP_DETECT.
----
- .../drm/bridge/analogix/analogix_dp_core.c    | 41 +++++--------------
- 1 file changed, 11 insertions(+), 30 deletions(-)
+    arm64: dts: rockchip: Further describe the WiFi for the Pinebook Pro
+    
+    Update the wake-up pin and associated interupt details for the
+    Pinebook Pro WiFi module.
+    
+    Signed-off-by: Peter Robinson <pbrobinson@gmail.com>
+    Link: https://lore.kernel.org/r/20250827143040.1644867-1-pbrobinson@gmail.com
+    Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index 7e3e9d4f4ea2..d2ea93e1c9a3 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -749,9 +749,6 @@ static int analogix_dp_commit(struct analogix_dp_device *dp)
- {
- 	int ret;
- 
--	/* Keep the panel disabled while we configure video */
--	drm_panel_disable(dp->plat_data->panel);
--
- 	ret = analogix_dp_train_link(dp);
- 	if (ret) {
- 		dev_err(dp->dev, "unable to do link train, ret=%d\n", ret);
-@@ -771,9 +768,6 @@ static int analogix_dp_commit(struct analogix_dp_device *dp)
- 		return ret;
- 	}
- 
--	/* Safe to enable the panel now */
--	drm_panel_enable(dp->plat_data->panel);
--
- 	/* Check whether panel supports fast training */
- 	ret = analogix_dp_fast_link_train_detection(dp);
- 	if (ret)
-@@ -858,17 +852,6 @@ static int analogix_dp_disable_psr(struct analogix_dp_device *dp)
- 	return analogix_dp_send_psr_spd(dp, &psr_vsc, true);
- }
- 
--static int analogix_dp_bridge_get_modes(struct drm_bridge *bridge, struct drm_connector *connector)
--{
--	struct analogix_dp_device *dp = to_dp(bridge);
--	int num_modes = 0;
--
--	if (dp->plat_data->panel)
--		num_modes += drm_panel_get_modes(dp->plat_data->panel, connector);
--
--	return num_modes;
--}
--
- static const struct drm_edid *analogix_dp_bridge_edid_read(struct drm_bridge *bridge,
- 							   struct drm_connector *connector)
- {
-@@ -909,7 +892,7 @@ analogix_dp_bridge_detect(struct drm_bridge *bridge, struct drm_connector *conne
- 	struct analogix_dp_device *dp = to_dp(bridge);
- 	enum drm_connector_status status = connector_status_disconnected;
- 
--	if (dp->plat_data->panel || dp->plat_data->next_bridge)
-+	if (dp->plat_data->next_bridge)
- 		return connector_status_connected;
- 
- 	if (!analogix_dp_detect_hpd(dp))
-@@ -995,8 +978,6 @@ static void analogix_dp_bridge_atomic_pre_enable(struct drm_bridge *bridge,
- 	/* Don't touch the panel if we're coming back from PSR */
- 	if (old_crtc_state && old_crtc_state->self_refresh_active)
- 		return;
--
--	drm_panel_prepare(dp->plat_data->panel);
- }
- 
- static int analogix_dp_set_bridge(struct analogix_dp_device *dp)
-@@ -1168,16 +1149,12 @@ static void analogix_dp_bridge_disable(struct drm_bridge *bridge)
- 	if (dp->dpms_mode != DRM_MODE_DPMS_ON)
- 		return;
- 
--	drm_panel_disable(dp->plat_data->panel);
--
- 	disable_irq(dp->irq);
- 
- 	analogix_dp_set_analog_power_down(dp, POWER_ALL, 1);
- 
- 	pm_runtime_put_sync(dp->dev);
- 
--	drm_panel_unprepare(dp->plat_data->panel);
--
- 	dp->fast_train_enable = false;
- 	dp->psr_supported = false;
- 	dp->dpms_mode = DRM_MODE_DPMS_OFF;
-@@ -1252,7 +1229,6 @@ static const struct drm_bridge_funcs analogix_dp_bridge_funcs = {
- 	.atomic_post_disable = analogix_dp_bridge_atomic_post_disable,
- 	.atomic_check = analogix_dp_bridge_atomic_check,
- 	.attach = analogix_dp_bridge_attach,
--	.get_modes = analogix_dp_bridge_get_modes,
- 	.edid_read = analogix_dp_bridge_edid_read,
- 	.detect = analogix_dp_bridge_detect,
- };
-@@ -1498,17 +1474,22 @@ int analogix_dp_bind(struct analogix_dp_device *dp, struct drm_device *drm_dev)
- 		return ret;
- 	}
- 
--	if (dp->plat_data->panel)
--		bridge->ops = DRM_BRIDGE_OP_MODES | DRM_BRIDGE_OP_DETECT;
--	else
--		bridge->ops = DRM_BRIDGE_OP_EDID | DRM_BRIDGE_OP_DETECT;
--
-+	bridge->ops = DRM_BRIDGE_OP_EDID | DRM_BRIDGE_OP_DETECT;
- 	bridge->of_node = dp->dev->of_node;
- 	bridge->type = DRM_MODE_CONNECTOR_eDP;
- 	ret = devm_drm_bridge_add(dp->dev, &dp->bridge);
- 	if (ret)
- 		goto err_unregister_aux;
- 
-+	if (dp->plat_data->panel) {
-+		dp->plat_data->next_bridge = devm_drm_panel_bridge_add(dp->dev,
-+								       dp->plat_data->panel);
-+		if (IS_ERR(dp->plat_data->next_bridge)) {
-+			ret = PTR_ERR(bridge);
-+			goto err_unregister_aux;
-+		}
-+	}
-+
- 	ret = drm_bridge_attach(dp->encoder, bridge, NULL, DRM_BRIDGE_ATTACH_NO_CONNECTOR);
- 	if (ret) {
- 		DRM_ERROR("failed to create bridge (%d)\n", ret);
--- 
-2.34.1
+ arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
 
+
+With this commit reverted on top of 6.18.1 wireless connection works
+fine.
+
+Not sure what could be relevant but:
+- it's an early model, I think second batch, delivered end of 2019
+- mainline uboot 2025.10 is used
+
+
+#regzbot introduced: 6d54d93506
 
 _______________________________________________
 Linux-rockchip mailing list
