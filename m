@@ -4,65 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2934FD6E2B1
-	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Dec 2025 16:42:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BF04D711CD
+	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Dec 2025 23:28:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MAzLC+pUVWBRaQ4Tgu+spePxyLu9nVd5/ZGVDiRnBiE=; b=Vz4QukMCNWsOXL
-	Rvz+QOMJT3gimKPN0PQZsHVPtdeA4K8U9rEJYUZg1QMS67FBVM9v8S4yktcYjJiDLNZJX0sy/tehQ
-	afwgUZbEdQKjayI0la5wq3xtyoaOa9lh+jzDTViChnyKGHoCdmoOmGyJMOteVVN6UH6VA2Spzwstv
-	h7c9nxyxg6nVK5oBnky3FAalIQ95Aae/mClweJ6V0PD9OlT/iXfGlnS8Tnzqi65bgGnQTL3RmRixy
-	ZBxNBFyEwMktmPlNhJq+SRf3PcciYYKuQ2l4h1Em3WCo8SBAzCh+GWaUO/F9mt4c62IGnxhJ1EMNv
-	GHwe65ukGXyX1g6nEUJw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=+ulIH5iegd+rSs0J3KNUIPTCz0VVolf9+TWV9ou9eYI=; b=K3p0MV0KytTSWi
+	WuPQYrCzBmCnwQ+W0gophkJ07srQyknf/jxUigAZRJ+SirHTo/Wu6R1wli78sCOLS23l/QpssMtnS
+	vaJmg7o9LlSMRz1jFcFI6gtJ91h8TfTbmDj95xVIlKepZnIW4jtB147EG7xXl4MLS/UMAF9xi1CeS
+	oLoZun+BmERtuB0ENvEolyWRsmBv2dp1GKVtM4jblHcyD9tXJRR0jIU0rgxtRt6nGx87Yh7iSuh/R
+	VTVJgmphXTVzdh9DS7Zi+yE1qOFHJaGC/3/eaxkQOCZYaiFVhjIEchggS5UBq2MDKyCL2iRiOwZjj
+	m2gYWYGLpnrYyWsm2tZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vWH4j-00000008qNS-46J2;
-	Thu, 18 Dec 2025 16:42:01 +0000
-Received: from sender4-of-o55.zoho.com ([136.143.188.55])
+	id 1vWNQH-00000009JiF-3ARj;
+	Thu, 18 Dec 2025 23:28:41 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vWH4h-00000008qMk-1W4d;
-	Thu, 18 Dec 2025 16:42:00 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1766076111; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=VZVOXfhWO2+fL3tvJ5QOL4osPgh7YsMea6XvxbjjozEGSb6nxNaEqqLi+nw6IcZ/H/6OcLzAnBW7XO6HlbDzo/XAFIib/sMnkuPZFRMgCSQxhMrRhm1nsbV9s/DTydKdgYz/um6pcPSZ+Yzcf7E+XyH6+vP5QiVNPhmPLGfnXl0=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1766076111; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=flkwXIsuycmRFZwE+EeysAAbLRNI56VtCwdtbrplhks=; 
-	b=GaJtf7mT2vNoxFDQZGUEdHFDATd4AG/OYcg9V8887rYefRL2plW6CTJYplnG3qiLzgSZVin5hVt/gsXfUiyY1a+7rQRmn13XHljYVhfL4U5RP6sKC5T4XCUkZOmksb/4LAubtGx2A5077GMZaDnI/QnryFhW6eiceFM1/EeW9Ro=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	spf=pass  smtp.mailfrom=thesnowfield@sakurapi.org;
-	dmarc=pass header.from=<thesnowfield@sakurapi.org>
-Received: by mx.zohomail.com with SMTPS id 1766076108310603.0329261278846;
-	Thu, 18 Dec 2025 08:41:48 -0800 (PST)
-From: Chiyuki Akatsuki <thesnowfield@sakurapi.org>
-To: krzysztof.kozlowski@oss.qualcomm.com
-Cc: conor+dt@kernel.org,
-	devicetree@vger.kernel.org,
-	heiko@sntech.de,
-	i@chainsx.cn,
-	krzk+dt@kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
+	id 1vWNQD-00000009Jgt-3dPg;
+	Thu, 18 Dec 2025 23:28:39 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1766100514;
+	bh=QAz1zIcyjXHBrwVCRlamgURA1cGxUXS5UptDm2nar4g=;
+	h=From:To:Cc:Subject:Date:From;
+	b=aiKpEHjDIVHISynVzlR0l10TtC1WEZQmYcJOZpOUYX9Kif/ZYWEJG2m5p7Z4ouZXW
+	 Qeuh3XD4gx35GgL2/xL0qesK/8zX8en82WvYWCRLhmDfQSq5lTKqJ6nfecT/yil4uW
+	 r392qcsq1cCPleh4WxSci5rdf6s2EQg484yXJ9ljixcIuoQQSrI5T6buS6bm+18Xlz
+	 lNoD0T8TUe8JioOZHszMH/WmkVIzUAAzMZsjfen67irtBLfFo1tPmo5ojXstOWtm6c
+	 6+yc3gPVceoMuuiWDIEsMFmfnvMXWyQ6WSMYZqMjuUhTvAockGugUKtHqgIHFT/BR2
+	 cZIJpyFDJNbaw==
+Received: from earth.mtl.collabora.ca (mtl.collabora.ca [66.171.169.34])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: detlev)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id C76D217E110D;
+	Fri, 19 Dec 2025 00:28:31 +0100 (CET)
+From: Detlev Casanova <detlev.casanova@collabora.com>
+To: linux-kernel@vger.kernel.org
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Detlev Casanova <detlev.casanova@collabora.com>,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Daniel Almeida <daniel.almeida@collabora.com>,
+	Jonathan Corbet <corbet@lwn.net>,
+	Ricardo Ribalda <ribalda@chromium.org>,
+	Hans Verkuil <hverkuil@kernel.org>,
+	Yunke Cao <yunkec@google.com>,
+	Hans de Goede <hansg@kernel.org>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Pavan Bobba <opensource206@gmail.com>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	James Cowgill <james.cowgill@blaize.com>,
+	linux-media@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	robh@kernel.org,
-	stable+noautosel@kernel.org,
-	Chiyuki Akatsuki <thesnowfield@sakurapi.org>
-Subject: Re: [PATCH RESEND] arm64: dts: rockchip: Fix wifi interrupts flag on Sakura Pi RK3308B
-Date: Fri, 19 Dec 2025 00:40:21 +0800
-Message-Id: <20251218164021.495-1-thesnowfield@sakurapi.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20251217091808.38253-2-krzysztof.kozlowski@oss.qualcomm.com>
-References: <20251217091808.38253-2-krzysztof.kozlowski@oss.qualcomm.com>
+	linux-arm-kernel@lists.infradead.org,
+	kernel@collabora.com,
+	Jonas Karlman <jonas@kwiboo.se>
+Subject: [PATCH v7 00/17] media: rkvdec: Add support for VDPU381 and VDPU383
+Date: Thu, 18 Dec 2025 18:28:10 -0500
+Message-ID: <20251218232829.337811-1-detlev.casanova@collabora.com>
+X-Mailer: git-send-email 2.52.0
 MIME-Version: 1.0
-X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251218_084159_467525_0D379002 
-X-CRM114-Status: UNSURE (   4.34  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251218_152838_072211_E11777F6 
+X-CRM114-Status: GOOD (  20.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,12 +89,146 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Thanks for the patch.
+These variants are found respectively in the RK3588 and RK3576 SoCs.
+This patch only adds support for H264 and H265 in both variants.
 
-Confirmed that the interrupt flags should use IRQ_TYPE_LEVEL_xxx,
-and tested on the SakuraPi RK3308B board, works fine.
+As there is a considerable part of the code that can be shared with the
+already supported rkvdec decoder driver, the support for these variants
+is added here rather than writing a new driver.
 
-Acked-by: Chiyuki Akatsuki <thesnowfield@sakurapi.org>
+This patch set uses the newly introduced hevc_ext_sps_[ls]t_rps v4l2
+controls for HEVC.
+Therefore, a patched version of userpace tools is needed for HEVC
+support (added for GStreamer[1] and in an early stage for FFmpeg[2]).
+
+The DTS changes can be found in another patch set: [3]
+
+[1]: https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/9355
+[2]: https://gitlab.collabora.com/detlev/ffmpeg
+[3]: https://lore.kernel.org/all/20251020212009.8852-1-detlev.casanova@collabora.com/
+
+Changes since v6:
+ - Remove coded_fmts capabilities
+ - Remove inexistant V4L2_HEVC kconfig dependency
+ - Add missing rkvdec registers
+ - Fix memcpy sizes
+ - Remove non-necessary name and style changes
+ - Use common get_image_fmt
+ - Do not validate sps in start()
+ - Remove unused variable
+ - Change named_regs to has_single_reg_region
+ - Compared to v6, I didn't use a union for the ref addr and flags
+   registers, as I find the flat struct more readable.
+
+Changes since v5:
+- Extract multicore management in separate commit
+- Move variant specific functions to an ops struct
+- Fix a typo and "h264" -> "hevc" copy/paste mistakes
+- Move RKVDEC_*_PIXELS to rkvdec.h
+- Drop VDPU383_*_PIXELS, use the the RKVDEC ones instead
+- Change RKVDEC_1080P_PIXELS value to 1920 * 1088
+- Long and short term ref sets extend controls:
+  - Add them in visl traces
+  - Reword documentation to specify SPS extension and use
+  - Mention Vulkan Video API similarity
+  - Specify behavior for empty array values
+  - Reorder struct fields to ensure fixed compiled size
+  - Remove the mention of V4L2_CTRL_FLAG_DYNAMIC_ARRAY flag
+
+Changes since v4:
+ - Add basic ext_sps_[ls]t_rps validation (flags only)
+ - Add missing copyright in new common files
+ - Rename num_coded_fmts, rcb_num, clk_count
+ - Avoid allocating RCB config when not needed
+ - Merge rkvdec_config into rkvdec_variant
+ - Keep rkvdec_hevc_get_image_fmt per variant
+
+Changes since v3:
+ - Rebased on latest next (ea299a216426) + HEVC support for rk3399
+
+Changes since v2:
+ - Rebased on Kwiboo's HEVC support for rk3399
+ - Include hevc_ext_sps_[ls]t_rps v4l2 controls commits
+ - Remove empty lines at end of files
+ - Rename RKVDEC2_ALLOC_* to RKVDEC_ALLOC_*
+ - Set min_with and min_height to 64
+ - Remove vdpu38x_fill_pixfmt_mp() function
+ - Handle userspace not supporting hevc_ext_sps_[ls]t_rps
+ - Make all config structs static const
+
+Changes since v1:
+ - Add parsing of the short and long term ref frame sets from the new v4l2
+   controls
+ - Add RPS cache to avoid parsing the same data again
+ - Fix HEVC pixel formats selection
+ - Fix multiple indentation errors
+
+Detlev Casanova (17):
+  media: uapi: HEVC: Add v4l2_ctrl_hevc_ext_sps_[ls]t_rps controls
+  media: v4l2-ctrls: Add hevc_ext_sps_[ls]t_rps controls
+  media: visl: Add HEVC short and long term RPS sets
+  media: rkvdec: Switch to using structs instead of writel
+  media: rkvdec: Move cabac tables to their own source file
+  media: rkvdec: Use structs to represent the HW RPS
+  media: rkvdec: Move h264 functions to common file
+  media: rkvdec: Move hevc functions to common file
+  media: rkvdec: Add variant specific coded formats list
+  media: rkvdec: Add RCB and SRAM support
+  media: rkvdec: Support per-variant interrupt handler
+  media: rkvdec: Enable all clocks without naming them
+  media: rkvdec: Disable multicore support
+  media: rkvdec: Add H264 support for the VDPU381 variant
+  media: rkvdec: Add H264 support for the VDPU383 variant
+  media: rkvdec: Add HEVC support for the VDPU381 variant
+  media: rkvdec: Add HEVC support for the VDPU383 variant
+
+ .../media/v4l/ext-ctrls-codec-stateless.rst   | 120 +++
+ .../media/v4l/videodev2.h.rst.exceptions      |   2 +
+ .../media/v4l/vidioc-queryctrl.rst            |  12 +
+ .../media/platform/rockchip/rkvdec/Makefile   |  14 +-
+ .../{rkvdec-hevc-data.c => rkvdec-cabac.c}    | 506 +++++++++-
+ .../rockchip/rkvdec/rkvdec-h264-common.c      | 258 +++++
+ .../rockchip/rkvdec/rkvdec-h264-common.h      |  89 ++
+ .../platform/rockchip/rkvdec/rkvdec-h264.c    | 892 ++----------------
+ .../rockchip/rkvdec/rkvdec-hevc-common.c      | 512 ++++++++++
+ .../rockchip/rkvdec/rkvdec-hevc-common.h      | 109 +++
+ .../platform/rockchip/rkvdec/rkvdec-hevc.c    | 281 +-----
+ .../platform/rockchip/rkvdec/rkvdec-rcb.c     | 179 ++++
+ .../platform/rockchip/rkvdec/rkvdec-rcb.h     |  29 +
+ .../platform/rockchip/rkvdec/rkvdec-regs.h    | 586 ++++++++----
+ .../rockchip/rkvdec/rkvdec-vdpu381-h264.c     | 465 +++++++++
+ .../rockchip/rkvdec/rkvdec-vdpu381-hevc.c     | 621 ++++++++++++
+ .../rockchip/rkvdec/rkvdec-vdpu381-regs.h     | 424 +++++++++
+ .../rockchip/rkvdec/rkvdec-vdpu383-h264.c     | 578 ++++++++++++
+ .../rockchip/rkvdec/rkvdec-vdpu383-hevc.c     | 720 ++++++++++++++
+ .../rockchip/rkvdec/rkvdec-vdpu383-regs.h     | 281 ++++++
+ .../platform/rockchip/rkvdec/rkvdec-vp9.c     | 232 ++---
+ .../media/platform/rockchip/rkvdec/rkvdec.c   | 572 +++++++++--
+ .../media/platform/rockchip/rkvdec/rkvdec.h   |  49 +-
+ drivers/media/test-drivers/visl/visl-dec.c    |   7 +
+ drivers/media/test-drivers/visl/visl-dec.h    |   3 +
+ .../media/test-drivers/visl/visl-trace-hevc.h |  59 ++
+ drivers/media/v4l2-core/v4l2-ctrls-core.c     |  28 +
+ drivers/media/v4l2-core/v4l2-ctrls-defs.c     |  10 +
+ include/uapi/linux/v4l2-controls.h            |  61 ++
+ include/uapi/linux/videodev2.h                |   2 +
+ 30 files changed, 6238 insertions(+), 1463 deletions(-)
+ rename drivers/media/platform/rockchip/rkvdec/{rkvdec-hevc-data.c => rkvdec-cabac.c} (86%)
+ create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-h264-common.c
+ create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-h264-common.h
+ create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-hevc-common.c
+ create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-hevc-common.h
+ create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-rcb.c
+ create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-rcb.h
+ create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-h264.c
+ create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-hevc.c
+ create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-regs.h
+ create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-h264.c
+ create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-hevc.c
+ create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-regs.h
+
+-- 
+2.52.0
 
 
 _______________________________________________
