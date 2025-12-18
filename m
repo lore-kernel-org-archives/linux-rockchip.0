@@ -4,60 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F225BD68BC9
-	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Dec 2025 00:48:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C1E3D68BE2
+	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Dec 2025 06:27:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=A/Ey7ZHPqNg9/ccWxvXxr485AYdjMVOSU/6FC1Fl4vQ=; b=vNyJwVr0mikHrK
-	RYeyBZcqAxU1WTYBOFhFPdB5+bmERlJI2jT61bYohg/sPvAwtx9wJ39i5UQ/jjsaB5YuuuriM4w/3
-	Fh77wNSIptvnNar2j+QR2wNc8p+5gOO0AFn+YrlKYjTMRnLv8/krE1GcM+tpmXFkFvJvjU+rjcI4p
-	70S2yYf1JdrcL8BgqbWCGqMC3sKXOll10iPzo88F0lNnf1JVsFdbOrKNAUTBV/ZpfV/LCtcRwTdRP
-	TIlDq2whY58shDdnINZ1kKmdmFdCEdvw60+eVqkGWMWerfv+mv9RH6yFB2bRDm1wOfBjMfPhAIDFG
-	G3i2gnrjkQMuN4JS0xSQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Cc:Date:
+	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=VjR5RoC/ctUkoytjbvvvdzWv6nlvKfKyOD4BQzNNEkI=; b=A7kpBTxsqJLNxc
+	KnR1SrrNeJsKhCEhepFrVjyfswxPWYb0+x8aqONhaBnNm7eAxdxMqYvLfGzFe6+yfeAhWyz6QJ4CU
+	ZBPDb+aoknIeRHeyV3qynT5G88AP+LlxotGMROwokH8les4Ob3Ck98akv9tnV1u3ikPS4QI/Ml0fd
+	UVh6acfnJMQEoTJv7VwDPP7HEy0y/xkm0/ZgL1jGMxbyjLytziQf3V2aqZtmBik5AJB+oB9TDbnzp
+	b+dqpOxhcsDCSnUKfOwD+hyjWaUV7CKEqxf2qxRRR1MbadNo+knZCAZ41Senzh4Tl6NMC8CF7fO9O
+	ibtUSsGEsEGv9lMaMzug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vW2C7-00000007cmy-0dsQ;
-	Thu, 18 Dec 2025 00:48:39 +0000
-Received: from mail-m25468.xmail.ntesmail.com ([103.129.254.68])
+	id 1vW7Ty-00000007tZH-3dxM;
+	Thu, 18 Dec 2025 06:27:26 +0000
+Received: from m1-out-mua-15.websupport.sk ([2a00:4b40:aaaa:2101:45:13:137:24])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vW2C3-00000007clo-1iGi
-	for linux-rockchip@lists.infradead.org;
-	Thu, 18 Dec 2025 00:48:37 +0000
-Received: from [172.16.12.14] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 2da8294be;
-	Thu, 18 Dec 2025 08:48:32 +0800 (GMT+08:00)
-Message-ID: <d839e402-f961-4848-a2c5-3bdf1640682e@rock-chips.com>
-Date: Thu, 18 Dec 2025 08:48:31 +0800
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Cc: shawn.lin@rock-chips.com, Heiko Stuebner <heiko@sntech.de>,
- linux-rockchip@lists.infradead.org
-Subject: Re: [RESEND PATCH v3] arm64: dts: rockchip: Add PCIe clkreq stuff for
- RK3588 EVB1
-To: Anand Moon <linux.amoon@gmail.com>
-References: <1764809428-183623-1-git-send-email-shawn.lin@rock-chips.com>
- <CANAwSgSn_6g1a=LYqKGom+FyhJ+qqbi5qRMKCxAoe5Q2nsN5sQ@mail.gmail.com>
- <951049c1-231b-4e40-9a00-7daef5a73fad@rock-chips.com>
- <CANAwSgSo_mkaQrHmpq+7qUgpZtAgFboKK96LYbaL_WrPu=Xr6A@mail.gmail.com>
-From: Shawn Lin <shawn.lin@rock-chips.com>
-In-Reply-To: <CANAwSgSo_mkaQrHmpq+7qUgpZtAgFboKK96LYbaL_WrPu=Xr6A@mail.gmail.com>
-X-HM-Tid: 0a9b2eee101f09cckunmea9119724efede
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQh5KTVZDQ00dH0JOGR8ZGhpWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUJCSU5LVU
-	pLS1VKQktCWQY+
-DKIM-Signature: a=rsa-sha256;
-	b=bbhqfpBJxM8ftivBIblla1Eu+7331TttTL42C7QLbXOA9lfWQCz6igImBKyWUJ+Jf5kpKVJ/VHIHcb68wupP1S1X1W0xGjq5RMO5jIv+oe30alwu2C++SSP0MArGs1UoJBUftUaBF1OY8D7wrHDHFke1l6ke9008JiA5yNm82D0=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=a6prkxTOIIX17+3pMnLORK8RX03g4jROMxmgL7eJ1Nw=;
-	h=date:mime-version:subject:message-id:from;
+	id 1vW7Tv-00000007tYU-0gtn;
+	Thu, 18 Dec 2025 06:27:24 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=probably.group;
+	s=mail; t=1766039238;
+	bh=0K5thqygFNUnlh3TDoVpOgAhWKXcZiSM57Y+EGgftQo=;
+	h=Subject:From:In-Reply-To:Date:Cc:References:To:From;
+	b=lwKEqJFjIZmIbk37J8NRtyUTxGYvi9cCJ+ynGX+KsVZRlaLp/H3qDSwRdlmXxWSui
+	 Z8pj+SlI8SswrvXLaoiY8HPurPphwKISYoddSBiQ2exsmZyziOD0NkfSrYCG1AhTPd
+	 LkJULwH/z+9UghQ2oy2kiW9lG5VADkJX/h/SIli/wgNyvvDS7HXDcfcbB9cAJ7reTh
+	 /yCr6rk/KqTa+SnuEm6I2K1TQNJ2Tb6ttuE1vgsHuMCSpbqj7pvxjylvvAzldAg79M
+	 urkKW1e1TFl3biaPPE6ugZPeLaeGS/0fxbzuMabNqlknZtn+TNSm02EiOJEeTOv1HO
+	 /VMTs9UJSUSDQ==
+Received: from m1-u5-ing.websupport.sk (unknown [10.30.5.2])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	by m1-out-mua-15.websupport.sk (Postfix) with ESMTPS id 4dX1125dHhz1hcs;
+	Thu, 18 Dec 2025 07:27:18 +0100 (CET)
+X-Authenticated-Sender: mh@probably.group
+Authentication-Results: m1-u5-ing.websupport.sk;
+	auth=pass smtp.auth=mh@probably.group smtp.mailfrom=mh@probably.group
+Received: from smtpclient.apple (unknown [109.164.127.134])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	(Authenticated sender: mh@probably.group)
+	by m1-u5-ing.websupport.sk (Postfix) with ESMTPSA id 4dX11105CKzX0gf;
+	Thu, 18 Dec 2025 07:27:16 +0100 (CET)
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.300.41.1.7\))
+Subject: [PATCH v2] arm64: dts: rockchip: enable both 2.5GbE ports on Rock 5T
+From: =?utf-8?B?Ik1hcnRpbiBIb2xvdnNrw70gKFByb2JhYmx5IE5vdGhpbmcgcy5yLm8u?=
+ =?utf-8?B?KSI=?= <mh@probably.group>
+In-Reply-To: <96516D1F-9787-47FE-A67E-4745D11D9207@probably.group>
+Date: Thu, 18 Dec 2025 07:27:06 +0100
+Cc: Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>,
+ devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Message-Id: <034BDB37-34FB-441F-B79E-1631CA501576@probably.group>
+References: <96516D1F-9787-47FE-A67E-4745D11D9207@probably.group>
+To: Heiko Stuebner <heiko@sntech.de>
+X-Mailer: Apple Mail (2.3864.300.41.1.7)
+X-Out-Rspamd-Queue-Id: 4dX11105CKzX0gf
+X-Out-Rspamd-Server: m1-rspamd-out-4
+X-Rspamd-Action: no action
+X-Out-Spamd-Result: default: False [0.40 / 1000.00];
+	MV_CASE(0.50)[];
+	MIME_GOOD(-0.10)[text/plain];
+	MID_RHS_MATCH_FROM(0.00)[];
+	TAGGED_RCPT(0.00)[dt];
+	FROM_HAS_DN(0.00)[];
+	ASN(0.00)[asn:44489, ipnet:109.164.0.0/17, country:CZ];
+	ARC_NA(0.00)[];
+	RCVD_COUNT_ZERO(0.00)[0];
+	RCPT_COUNT_SEVEN(0.00)[8];
+	HAS_X_AS(0.00)[];
+	TO_DN_SOME(0.00)[];
+	FROM_EQ_ENVFROM(0.00)[];
+	TO_MATCH_ENVRCPT_ALL(0.00)[];
+	MIME_TRACE(0.00)[0:+]
+X-purgate-type: clean
+X-purgate-Ad: Categorized by eleven eXpurgate (R) https://www.eleven.de
+X-purgate: This mail is considered clean (visit https://www.eleven.de for further information)
+X-purgate: clean
+X-purgate-size: 2447
+X-purgate-ID: 155908::1766039238-C07E5043-356BB542/0/0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251217_164835_659023_1635067F 
-X-CRM114-Status: GOOD (  11.67  )
+X-CRM114-CacheID: sfid-20251217_222723_485556_7D9A0A53 
+X-CRM114-Status: GOOD (  13.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,38 +106,85 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-5ZyoIDIwMjUvMTIvMDkg5pif5pyf5LqMIDE1OjAxLCBBbmFuZCBNb29uIOWGmemBkzoKPiBIaSBT
-aGF3biwKPiAKPiBPbiBNb24sIDggRGVjIDIwMjUgYXQgMDU6NTUsIFNoYXduIExpbiA8c2hhd24u
-bGluQHJvY2stY2hpcHMuY29tPiB3cm90ZToKPj4KPj4g5ZyoIDIwMjUvMTIvMDcg5pif5pyf5pel
-IDE1OjUwLCBBbmFuZCBNb29uIOWGmemBkzoKPj4+IEhpIFNoYXduLAo+Pj4KPj4+IE9uIFRodSwg
-NCBEZWMgMjAyNSBhdCAwNjoyMSwgU2hhd24gTGluIDxzaGF3bi5saW5Acm9jay1jaGlwcy5jb20+
-IHdyb3RlOgo+Pj4+Cj4+Pj4gQWRkIHN1cHBvcnRzLWNsa3JlcSBhbmQgcGlubXV4IGZvciBQQ0ll
-IEFTUE0gTDEgc3Vic3RhdGVzLgo+Pj4+Cj4+Pj4gU2lnbmVkLW9mZi1ieTogU2hhd24gTGluIDxz
-aGF3bi5saW5Acm9jay1jaGlwcy5jb20+Cj4+Pj4gQWNrZWQtYnk6IE1hbml2YW5uYW4gU2FkaGFz
-aXZhbSA8bWFuaUBrZXJuZWwub3JnPgo+Pj4+IFJldmlld2VkLWJ5OiBIYW5zIFpoYW5nIDxoYW5z
-LnpoYW5nQGNpeHRlY2guY29tPgo+Pj4+IC0tLQo+Pj4gVGhhbmtzLCBhcmUgdGhlcmUgcGxhbnMg
-dG8gc3VwcG9ydCB0aGlzIGZlYXR1cmUgb24gdGhlIHJlbWFpbmluZwo+Pj4gUkszNTZ4IGFuZCBS
-SzM1ODggU0JDcz8KPj4KPj4gSXQgbmVlZHMgdG8gYmUgY2hlY2tlZCBvbiBhIHBlci1ib2FyZCBi
-YXNpcy4KPj4KPiBBY2NvcmRpbmcgdG8gdGhlIHNjaGVtYXRpY3MsIGFsbCBSb2NrY2hpcCBQQ0ll
-IGludGVyZmFjZXMgaW5jbHVkZSB0aGUKPiBDTEtSRVEjIGFuZCBXQUtFIyBHUElPIHBpbnMuCj4g
-Cj4gWzFdIGh0dHBzOi8vZGwucmFkeGEuY29tL3JvY2s1LzViKy9kb2NzL2h3L3JhZHhhX3JvY2s1
-YnBfdjEuMl9zY2hlbWF0aWMucGRmCj4gWzJdIGh0dHBzOi8vd2lraS5vZHJvaWQuY29tL19tZWRp
-YS9vZHJvaWQtbTEvaGFyZHdhcmUvbTFfbWFpbl9yZXYxLjAucGRmCj4gWzNdIGh0dHBzOi8vd2lr
-aS5vZHJvaWQuY29tL19tZWRpYS9vZHJvaWQtbTIvaGFyZHdhcmUvbTJfbWFpbl9yZXYxLjBfMjQw
-NjExLnBkZgo+IAo+PiBXZSdyZSBoYXBweSBmb3IgZm9sa3MgdG8gYWRkIGl0IHRoZW1zZWx2ZXMg
-Zm9yIHRoZWlyIGJvYXJkcyBvbmNlIHRoZXkndmUKPj4gdmVyaWZpZWQgdGhlIGNsa3JlcXBpbiBv
-biB0aGVpciBoYXJkd2FyZS4KPiAKPiBUaGUgY29tbWl0IDQyOTRlMzIxMTE3OCAo4oCcYXJtNjQ6
-IGR0czogcm9ja2NoaXA6IFNwbGl0IHVwIFJLMzU4OOKAmXMgUENJZQo+IHBpbmN0cmxz4oCdKQo+
-IHNlcGFyYXRlcyB0aGUgQ0xLUkVRIywgUEVSU1QjLCBhbmQgV0FLRSMgcGluY3RybCBzaWduYWxz
-IGZvciB0aGUKPiBSSzM1ODggcGxhdGZvcm0uCj4gU2hvdWxkIHdlIGFwcGx5IGEgc2ltaWxhciBz
-cGxpdCBmb3IgdGhlIFJLMzU2eCBwaW5jdHJsIGRlZmluaXRpb25zIGFzIHdlbGw/Cj4gCgpZZXMs
-IGNvdWxkIGRvIGEgc2ltaWxhciBjaGFuZ2UgaWYgbmVlZGVkLgoKPiBUaGFua3MKPiAtQW5hbmQK
-PiAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51
-eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9y
-ZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tj
-aGlwCg==
+The Radxa Rock 5T board features two RTL8125B 2.5GbE Ethernet controllers
+connected via PCIe lanes pcie2x1l0 (fe170000) and pcie2x1l2 (fe190000).
+Currently only one interface is functional because the PCIe controller
+nodes lack the necessary reset GPIO configuration.
+
+Without the reset-gpios property, the RTL8125B PHYs remain in reset state
+and are not enumerated by the PCIe bus. This results in only one Ethernet
+interface being detected, or none at all depending on U-Boot initialization.
+
+This patch adds the missing configuration for both PCIe controllers:
+- Enables both pcie2x1l0 and pcie2x1l2 nodes (status = "okay")
+- Configures reset GPIOs (GPIO4_PA5 and GPIO3_PB0 respectively)
+- Adds corresponding pinctrl definitions
+
+With this change, both 2.5GbE interfaces are properly detected and
+functional on the Rock 5T.
+
+Tested on Radxa Rock 5T v1.2 running Linux 6.12.
+
+Signed-off-by: Martin Holovsky <mh@probably.group>
+---
+Changes in v2:
+- Sorted pcie nodes alphanumerically
+- Sorted pinctrl nodes alphanumerically
+- Added Signed-off-by line
+
+ .../boot/dts/rockchip/rk3588-rock-5t.dts      | 28 +++++++++++++++++++
+ 1 file changed, 28 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts
+index 0dd90c744380..aeb8e0d42f09 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts
+@@ -68,10 +68,24 @@ &pcie2x1l1 {
+ 	reset-gpios = <&gpio4 RK_PA2 GPIO_ACTIVE_HIGH>;
+ 	status = "okay";
+ };
+ 
++&pcie2x1l0 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&pcie2_0_rst>;
++	reset-gpios = <&gpio4 RK_PA5 GPIO_ACTIVE_HIGH>;
++	status = "okay";
++};
++
++&pcie2x1l2 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&pcie2_2_rst>;
++	reset-gpios = <&gpio3 RK_PB0 GPIO_ACTIVE_HIGH>;
++	status = "okay";
++};
++
+ &pcie30phy {
+ 	data-lanes = <1 1 2 2>;
+ };
+@@ -101,6 +115,14 @@ pcie2 {
++		pcie2_0_rst: pcie2-0-rst {
++			rockchip,pins = <4 RK_PA5 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++
+ 		pcie2_1_rst: pcie2-1-rst {
+ 			rockchip,pins = <4 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
++
++		pcie2_2_rst: pcie2-2-rst {
++			rockchip,pins = <3 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++
+ 		pcie2_0_vcc3v3_en: pcie2-0-vcc-en {
+ 			rockchip,pins = <2 RK_PC0 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+-- 
+2.52.0
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
