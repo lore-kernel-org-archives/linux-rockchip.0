@@ -4,67 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80D67D68BF6
-	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Dec 2025 08:46:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6EDAD6ACDA
+	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Dec 2025 09:47:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:To:From:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=m4ImZxyeDg6/TwT+VOSviUdK4GemfPhay0WdeZWvpig=; b=lvBwkzLIsUMgGi
-	6bLug4XesRqS4C6g0BOn5Btts4f1qiBOmEwqNZakCttme6lsh5tmiIH4w8YcklWMmtRFaL42FSQXV
-	3/yTbt47n2665oJwx/C/M9FJa5Ve8T9w+R/ZJEDcKxTWX4VN5I3CPg9vOZ71g6eNAxYkH+EwMhCsn
-	nk0lRIE/IeIF7Eb8BmABIq0S4JpGEyUfbgV6Z9ey4R+4UTnWbLtZDnfomoOk3B0BInSh4ukhsBkPf
-	0nVmiz+Vnqsfp8Ie3ZxAZsiFAHjBcnyaFPbmEpw4JSh8Y4sJNH13UDOBJnqYvUXYcoTQxDEm1ss1u
-	66Gc4igLda9gg0zayIEQ==;
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-ID:MIME-Version:To:Cc:
+	Date:References:In-Reply-To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=rQb4ZpPsMBdnSWyJJolSSMcbzCXU+3rpGvaaqob8Egg=; b=PrvOVeoeT3URm1
+	LEoHNEpYDG6gZbsJBSjMnuSHhfLgADwGneAySFEjFA3D2x5Q20o1/NFjW63RSsF38/O6PegE1u+mb
+	nCM/SpPOwraRPOvnO/mI0BsBrZeATFZ4FW/jLGT0J4AI2gBXhNPoZWX4kSH7IZOPHaYdMi8FvKys+
+	Ala04aIdvvVMK2MBniieYsxW8Des1/+ZeoYkX2CH+5WMXntYqvLF4zSJAs3EJbDE47mXhl32UR1tU
+	eDW9qvbpcW4fVUpxvDfFPNfwpy3lyKsckQiyosnDiSuTwIsRxi7s09eDwMkfrdefdIP9Ha1AnfWNs
+	hXatMa1tGOCo1Mf0IKGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vW9eK-000000085Ic-1VGd;
-	Thu, 18 Dec 2025 08:46:16 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1vWAbT-00000008AsR-1QV8;
+	Thu, 18 Dec 2025 09:47:23 +0000
+Received: from mail1.manjaro.org ([142.132.176.110])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vW9eJ-000000085IB-1D5C
-	for linux-rockchip@bombadil.infradead.org;
-	Thu, 18 Dec 2025 08:46:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:MIME-Version:Subject:To:From:Date:Message-ID:Sender:Reply-To:Cc:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=g+bJVIpt0gfvrKpvvpbdhzaZrLDQ51BQvCd8rNT5zDA=; b=aQkL+kbpTIewt1Brf55jAf/Fc6
-	4We2qz2Z2PFcv1xOlM0Ge0kc4xExrd1YWiDo3D7wNeYseTk/y+0upTfU3IHC/avZeu3eiXUqJT9G1
-	KE/HRdiq59IKKlYeZsA4lgaCjBDR1t6zTwJ9asZvi6Hjvw6Oq9HnuAcWtGrkAuN/VEyx1jcsZ3C9B
-	wBnyowJKrrSaMG22Q8XyCE9RanOIRCbWXBy+iKRYXhg+D9CeJ1eGxRauvVd4WwGhkIQYjUG7II5Ai
-	WuWlOQrbR9Adso2g4f3zt7usIJoVDCHhcLLLq06HFFeS44Iv5Onhlx0Go1z84H/uvXfjcxZGyaCBG
-	hPyJwy/Q==;
-Received: from mail.torqly.pl ([51.38.112.117])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vW8mm-00000008Nwv-2xTk
-	for linux-rockchip@lists.infradead.org;
-	Thu, 18 Dec 2025 07:50:59 +0000
-Received: by mail.torqly.pl (Postfix, from userid 1002)
-	id B7865A9F3E; Thu, 18 Dec 2025 09:46:03 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=torqly.pl; s=mail;
-	t=1766047567; bh=g+bJVIpt0gfvrKpvvpbdhzaZrLDQ51BQvCd8rNT5zDA=;
-	h=Date:From:To:Subject:From;
-	b=PbtJi2mFzUikeh9C5efxhVw2SwjwZv7+bYBOYin7N1jWNQKb6UbBWHa6eNJhGR5Xu
-	 cp/+NSnah1YjzxjLXjSynQ5684eQtvKtlvZu0h23oYoUL+DpFqzq9PjZIq1RF2Ztnm
-	 5M53Na1mfZ8IK/jX+ICs8RZVFUOAkiUlqSr+Zx1MwnL99D2Kj3i3Ul8R4QLGKwOANO
-	 K4uZuibPQ6ZVb/cuOY8QshMVU4XpT9C+RqFASz5rrLnHDbJ1ZLRy7KDsjP/kC3n2bk
-	 jvRx971+n722nEyNJz4Za8g2s/N+NnS/Xjomy1D4EthlzB8tdZvrYN1HD8Au7W09q2
-	 mpx2ZyP7wmJRg==
-Received: by mail.torqly.pl for <linux-rockchip@lists.infradead.org>; Thu, 18 Dec 2025 08:46:01 GMT
-Message-ID: <20251218084500-0.1.tu.d9imq.0.1lepc14owy@torqly.pl>
-Date: Thu, 18 Dec 2025 08:46:01 GMT
-From: "Tomasz Jaworski" <tomasz.jaworski@torqly.pl>
-To: <linux-rockchip@lists.infradead.org>
-Subject: =?UTF-8?Q?Ulga_na_sk=C5=82adki_ZUS?=
-X-Mailer: mail.torqly.pl
+	id 1vWAbQ-00000008ArS-02Hq;
+	Thu, 18 Dec 2025 09:47:21 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPA id 5F6C441852;
+	Thu, 18 Dec 2025 10:47:06 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=dkim;
+	t=1766051230; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:in-reply-to:references;
+	bh=1UqjWK7oBLcZrh20BDC54sz2OeZlyVX9cKtnx5NbnNE=;
+	b=iudcplOSX3AtnLLvOh3Jnas+BrNMsdrg50pEojgEtg7XMX9/Olz7HsTSiuBwem+B3/CFsB
+	Ci4d3PX2umna6Un0JpVwclWwNGuzUyqDveFPX+GOVmqlv5WBebcjn0gI3NtBqtc4lswvCK
+	N7pYjQbcyYnsWY8Udj4/eQxW5ubp9X5eEhxH9iXagp6NHQFVqRvV32ELPkeoMGDIz0HSVq
+	1tl01uBJHxKTuHykI8k3E4izLUNdPkRzQEgS7RgLuBdJvnH10cuL9kCRBPe4kvdzFfDVDI
+	MtnjnNUqZoWw0o1MUo7gj2c7aKN9GgBH2RoQdKYB/Ku6kSK183dfzjRHjLpHLw==
+From: "Dragan Simic" <dsimic@manjaro.org>
+In-Reply-To: <qncj72c3owrw7rvnj6jit2sbn4ojyr3kztcjailfxtdboan6sy@ddh5g7v4fcvt>
+References: <cover.1763415705.git.geraldogabriel@gmail.com>
+ <eaa9c75ca02a53f8bcc293b8bc73d013e26ec253.1763415706.git.geraldogabriel@gmail.com> <qncj72c3owrw7rvnj6jit2sbn4ojyr3kztcjailfxtdboan6sy@ddh5g7v4fcvt>
+Date: Thu, 18 Dec 2025 10:47:06 +0100
+Cc: "Geraldo Nascimento" <geraldogabriel@gmail.com>, "Shawn Lin" <shawn.lin@rock-chips.com>, "Lorenzo Pieralisi" <lpieralisi@kernel.org>, =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, "Rob Herring" <robh@kernel.org>, "Bjorn Helgaas" <bhelgaas@google.com>, "Heiko Stuebner" <heiko@sntech.de>, "Krzysztof Kozlowski" <krzk+dt@kernel.org>, "Conor Dooley" <conor+dt@kernel.org>, "Johan Jonker" <jbx6244@gmail.com>, linux-rockchip@lists.infradead.org, linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
+To: "Manivannan Sadhasivam" <mani@kernel.org>
 MIME-Version: 1.0
+Message-ID: <3ea8ac20-6332-0c0c-645b-36ca4231c109@manjaro.org>
+Subject: =?utf-8?q?Re=3A?= [PATCH v2 1/4] =?utf-8?q?PCI=3A?==?utf-8?q?_rockchip=3A?= 
+ limit RK3399 to =?utf-8?q?2=2E5?= GT/s to prevent damage
+User-Agent: SOGoMail 5.12.3
+X-Last-TLS-Session-Version: None
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251218_075058_003415_6B7B388F 
-X-CRM114-Status: UNSURE (   0.94  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251218_014720_275400_28C80A1C 
+X-CRM114-Status: GOOD (  20.68  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,23 +64,66 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RHppZcWEIGRvYnJ5LCAKCmNoY2lhxYJieW0gd3NrYXphxIcgUGHFhHN0d3UgbW/FvGxpd2/Fm8SH
-IHphcnrEhWR6YW5pYSBiZW5lZml0YW1pIHcgxYJhdHd5IHNwb3PDs2IsIHBvcHJ6ZXogbmFzemUg
-aW50dWljeWpuZSBuYXJ6xJlkemllLCBqYWtpbSBqZXN0IGthcnRhIGx1bmNob3dhLiAKCk5hc3pl
-IGthcnR5IG9mZXJ1asSFIHd5Z29kxJksIG9zemN6xJlkbm/Fm2NpIGkgemRyb3dlIHd5Ym9yeSDF
-vHl3aWVuaW93ZS4gRG9maW5hbnNvd2FuaWUgcG9zacWCa8OzdyBqZXN0IGtvcnp5c3RuZSBkbGEg
-b2J1IHN0cm9uLiBLYXJ0eSBsdW5jaCB0byBkbGEgcHJhY29kYXdjeSByZWFsbmUgb3N6Y3rEmWRu
-b8WbY2kgdyBwb3N0YWNpIHp3b2xuaWVuaWEgeiBaVVMgZG8gNDUwIHrFgiBtaWVzacSZY3puaWUg
-bmEgcHJhY293bmlrYS4gCgpLYXJ0xJkgbW/FvG5hIGRvxYJhZG93YcSHIGRvd29sbsSFIGt3b3TE
-hSwgYSBuaWV3eWtvcnp5c3RhbmUgxZtyb2RraSBuaWUgcHJ6ZXBhZGFqxIUsIGxlY3ogcHJ6ZWNo
-b2R6xIUgbmEga29sZWpueSBtaWVzacSFYy4gCgpNb2fEmSBwcnplZHN0YXdpxIcgb2ZlcnTEmSwg
-a3TDs3JhIHBvendvbGkgem9wdHltYWxpem93YcSHIGtvc3p0eSBpIHphcGV3bmnEhyBwcmFjb3du
-aWtvbSBwb8W8xIVkYW55IGJlbmVmaXQ/CgoKUG96ZHJhd2lhbQpUb21hc3ogSmF3b3Jza2kKCl9f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tj
-aGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6
-Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Heello Manivannan and Geraldo,
+
+On Thursday, December 18, 2025 09:05 CET, Manivannan Sadhasivam <mani@kernel.org> wrote:
+> On Mon, Nov 17, 2025 at 06:47:05PM -0300, Geraldo Nascimento wrote:
+> > Shawn Lin from Rockchip has reiterated that there may be danger in using
+> > their PCIe with 5.0 GT/s speeds. Warn the user if they make a DT change
+> > from the default and drive at 2.5 GT/s only, even if the DT
+> > max-link-speed property is invalid or inexistent.
+> > 
+> > This change is corroborated by RK3399 official datasheet [1], which
+> > says maximum link speed for this platform is 2.5 GT/s.
+> > 
+> > [1] https://opensource.rock-chips.com/images/d/d7/Rockchip_RK3399_Datasheet_V2.1-20200323.pdf
+> > 
+> > Fixes: 956cd99b35a8 ("PCI: rockchip: Separate common code from RC driver")
+> > Link: https://lore.kernel.org/all/ffd05070-9879-4468-94e3-b88968b4c21b@rock-chips.com/
+> > Cc: stable@vger.kernel.org
+> > Reported-by: Dragan Simic <dsimic@manjaro.org>
+> > Reported-by: Shawn Lin <shawn.lin@rock-chips.com>
+> > Reviewed-by: Dragan Simic <dsimic@manjaro.org>
+> > Signed-off-by: Geraldo Nascimento <geraldogabriel@gmail.com>
+> > ---
+> >  drivers/pci/controller/pcie-rockchip.c | 10 ++++++++--
+> >  1 file changed, 8 insertions(+), 2 deletions(-)
+> > 
+> > diff --git a/drivers/pci/controller/pcie-rockchip.c b/drivers/pci/controller/pcie-rockchip.c
+> > index 0f88da378805..992ccf4b139e 100644
+> > --- a/drivers/pci/controller/pcie-rockchip.c
+> > +++ b/drivers/pci/controller/pcie-rockchip.c
+> > @@ -66,8 +66,14 @@ int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip)
+> >  	}
+> >  
+> >  	rockchip->link_gen = of_pci_get_max_link_speed(node);
+> > -	if (rockchip->link_gen < 0 || rockchip->link_gen > 2)
+> > -		rockchip->link_gen = 2;
+> > +	if (rockchip->link_gen < 0 || rockchip->link_gen > 2) {
+> > +		rockchip->link_gen = 1;
+> > +		dev_warn(dev, "invalid max-link-speed, set to 2.5 GT/s\n");
+> > +	}
+> > +	else if (rockchip->link_gen == 2) {
+> > +		rockchip->link_gen = 1;
+> > +		dev_warn(dev, "5.0 GT/s is dangerous, set to 2.5 GT/s\n");
+> 
+> What does 'danger' really mean here? Link instability or something else?
+> Error messages should be precise and not fearmongering.
+
+I agree that the original wording is a bit suboptimal, and I'd suggest
+to Geraldo that the produced warning message is changed to
+
+  "5.0 GT/s may cause data corruption, limited to to 2.5 GT/s\n"
+
+or something similar, to better reflect the actual underlying issue.
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
