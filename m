@@ -4,74 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5B60D6ACDC
-	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Dec 2025 10:09:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66677D68BDA
+	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Dec 2025 10:12:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:From:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cG2q9nvK9RkzTXaJoX5swiiDw/a6sFj69NYmSCSRQlk=; b=dTxmoD2yZ+Wblj
-	8L5j8VhiBS6mDhtd3kKp9iGeSUTkeu4HD+cD6M17bJKQGnVNoccFNKTZ3BWMOXpIed/GpbGt0d3V5
-	gNh8IrKdX52H51tuSAP4oJDFqo1mBTGvJgNSx0DEefcvUDSxr7jYNgCzm2Kuu8sCjWHEXBFiZDNuL
-	XI7MxFC+9r0i48H+d96oI76E+n0RPvs/O7fGBC6HXr06w6ZaxfdF2t8pL3AdhsYvdki8E0qq+rzWi
-	qGiFMJR+JVrBQoGn3/uwMRS+B65AlgTL4VOMEJPe6a+KJDVpafzjpmk5v5teW1karBkLBtXDgo//H
-	PJN4dJaYNFYCXaFGyrXA==;
+	List-Owner; bh=g0IUAlZOjThr3T8TS/WMY1M4JnyHq1Cp3x2q1+2BNeM=; b=i5CRJio/yYoQvg
+	olsgRZBUbLAOQcdsWtpxt8O1SRG1M/z1j5eXYftNx+y7VmIvItQ73Zbjl8nTJTNJ8od9kilYiF3s6
+	alfZ8bExr7q/udQBbNry/F0MwEcibY3iVbFcFEWfyiFNy2qJz9g/SlMy6V7YAWpmg4EcuIGq8jLiX
+	HYhwFKEVfM9sldC8ijXDelam0oYV7LmiiAav7rw6WFq3hNHXe8mYK16DP31qSH+AJZmS5zBP1QVIf
+	8poS8h9ZT9GgKfcSg/cXYKDuS4R9FMcGUUIkeS+mRhpGQ/6UAFNH7J6N4nMeWzfQlyQCm0woE/YZ/
+	JXzq/PsJxi0LAtOczYpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vWAws-00000008CNS-1y6q;
-	Thu, 18 Dec 2025 10:09:30 +0000
-Received: from mailout1.w1.samsung.com ([210.118.77.11])
+	id 1vWAzm-00000008CZS-2lVv;
+	Thu, 18 Dec 2025 10:12:30 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vWAwo-00000008CL7-0ZUz
-	for linux-rockchip@lists.infradead.org;
-	Thu, 18 Dec 2025 10:09:29 +0000
-Received: from eucas1p2.samsung.com (unknown [182.198.249.207])
-	by mailout1.w1.samsung.com (KnoxPortal) with ESMTP id 20251218100916euoutp01690c1ad9c03c47da04c855f4e0a958b2~CR3F2oHEw3031430314euoutp01f
-	for <linux-rockchip@lists.infradead.org>; Thu, 18 Dec 2025 10:09:16 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout1.w1.samsung.com 20251218100916euoutp01690c1ad9c03c47da04c855f4e0a958b2~CR3F2oHEw3031430314euoutp01f
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
-	s=mail20170921; t=1766052556;
-	bh=+w78iIycq5xjJBsbNLCYPskBo2lk3lb6WPHKN2TyWMQ=;
-	h=Date:Subject:To:Cc:From:In-Reply-To:References:From;
-	b=nbMLs1ci6VDM/rmb4+xahQ6z9scpAyHlW6hgHw3K5RWSC+PiZj/oBs+EEvuwmKiXe
-	 Co3NnWP5cVlZRo8KqySr0QgL+P87PD38l8hU5OsJhKOl7QuxK1ysNKEXYOkxPdXQt+
-	 GVAiRlfcnrNQ2wumykhVyM4IexTfNWqrDIyI3ohQ=
-Received: from eusmtip2.samsung.com (unknown [203.254.199.222]) by
-	eucas1p2.samsung.com (KnoxPortal) with ESMTPA id
-	20251218100916eucas1p2258bd5447be988f61f3358963de1cebf~CR3FhxWTB1589015890eucas1p2t;
-	Thu, 18 Dec 2025 10:09:16 +0000 (GMT)
-Received: from [106.210.134.192] (unknown [106.210.134.192]) by
-	eusmtip2.samsung.com (KnoxPortal) with ESMTPA id
-	20251218100914eusmtip20ed75045bfb25b9db7146e239780129f~CR3EBwJJN1362113621eusmtip2H;
-	Thu, 18 Dec 2025 10:09:14 +0000 (GMT)
-Message-ID: <a6150003-7f87-4f24-9156-bec10dfb70ce@samsung.com>
-Date: Thu, 18 Dec 2025 11:09:13 +0100
-MIME-Version: 1.0
-User-Agent: Betterbird (Windows)
-Subject: Re: [PATCH 4/5] sched: Add assertions to QUEUE_CLASS
-To: Peter Zijlstra <peterz@infradead.org>, mingo@kernel.org,
-	vincent.guittot@linaro.org
-Cc: linux-kernel@vger.kernel.org, juri.lelli@redhat.com,
+	id 1vWAzl-00000008CZM-3U55
+	for linux-rockchip@bombadil.infradead.org;
+	Thu, 18 Dec 2025 10:12:29 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=cFttlWF0jgG52QNDRCCrAUH/tOMpNN661+8S5v4EyIc=; b=ocVfmz9AGIaeIiqfBMe8QGL8IF
+	fdCF7zrB/ULoBVkSLspw2aRhZJxuWViuH7yUPuGHQQX6R9tBpfWkGHeN8uaK5PrQkvoNwNOZKJVrs
+	0VKxXsZAd7lGMOyYakJr+s5hRYWiklMm6WAT81qm2YNwzDpYjr5A54dwIhZuPXPOMKp5Q7XYXMrHe
+	LSB3aRJ0cuEVAzJdBpo15FLjGynOBxpDrps5qKp36AICSfXnUQNplTRnkWqFZ83vgTkgZMNRRtSj+
+	aQbpNUtBL8RCPMEghDvfQEJS+ptJMx5DS0jL1vXRiYDhomOuyZVob7H+SDxnpAmPqeMRPZwmHHtge
+	RN9p4vPg==;
+Received: from 77-249-17-252.cable.dynamic.v4.ziggo.nl ([77.249.17.252] helo=noisy.programming.kicks-ass.net)
+	by casper.infradead.org with esmtpsa (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vWAzh-00000005yLv-0o7c;
+	Thu, 18 Dec 2025 10:12:25 +0000
+Received: by noisy.programming.kicks-ass.net (Postfix, from userid 1000)
+	id 2E388300578; Thu, 18 Dec 2025 11:12:24 +0100 (CET)
+Date: Thu, 18 Dec 2025 11:12:24 +0100
+From: Peter Zijlstra <peterz@infradead.org>
+To: Marek Szyprowski <m.szyprowski@samsung.com>
+Cc: mingo@kernel.org, vincent.guittot@linaro.org,
+	linux-kernel@vger.kernel.org, juri.lelli@redhat.com,
 	dietmar.eggemann@arm.com, rostedt@goodmis.org, bsegall@google.com,
-	mgorman@suse.de, vschneid@redhat.com, tj@kernel.org, void@manifault.com,
-	arighi@nvidia.com, changwoo@igalia.com, sched-ext@lists.linux.dev, Heiko
-	Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org
-Content-Language: en-US
-From: Marek Szyprowski <m.szyprowski@samsung.com>
-In-Reply-To: <20251127154725.771691954@infradead.org>
-X-CMS-MailID: 20251218100916eucas1p2258bd5447be988f61f3358963de1cebf
-X-Msg-Generator: CA
-X-RootMTR: 20251218100916eucas1p2258bd5447be988f61f3358963de1cebf
-X-EPHeader: CA
-X-CMS-RootMailID: 20251218100916eucas1p2258bd5447be988f61f3358963de1cebf
+	mgorman@suse.de, vschneid@redhat.com, tj@kernel.org,
+	void@manifault.com, arighi@nvidia.com, changwoo@igalia.com,
+	sched-ext@lists.linux.dev, Heiko Stuebner <heiko@sntech.de>,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 4/5] sched: Add assertions to QUEUE_CLASS
+Message-ID: <20251218101224.GN3707891@noisy.programming.kicks-ass.net>
 References: <20251127153943.696191429@infradead.org>
-	<20251127154725.771691954@infradead.org>
-	<CGME20251218100916eucas1p2258bd5447be988f61f3358963de1cebf@eucas1p2.samsung.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251218_020926_757841_92C79289 
-X-CRM114-Status: GOOD (  19.28  )
+ <20251127154725.771691954@infradead.org>
+ <CGME20251218100916eucas1p2258bd5447be988f61f3358963de1cebf@eucas1p2.samsung.com>
+ <a6150003-7f87-4f24-9156-bec10dfb70ce@samsung.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <a6150003-7f87-4f24-9156-bec10dfb70ce@samsung.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,86 +73,33 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMjcuMTEuMjAyNSAxNjozOSwgUGV0ZXIgWmlqbHN0cmEgd3JvdGU6Cj4gQWRkIHNvbWUgY2hl
-Y2tzIHRvIHRoZSBzY2hlZF9jaGFuZ2UgcGF0dGVybiB0byB2YWxpZGF0ZSBhc3N1bXB0aW9ucwo+
-IGFyb3VuZCBjaGFuZ2luZyBjbGFzc2VzLgo+Cj4gU2lnbmVkLW9mZi1ieTogUGV0ZXIgWmlqbHN0
-cmEgKEludGVsKSA8cGV0ZXJ6QGluZnJhZGVhZC5vcmc+CgoKVGhpcyBwYXRjaCBsYW5kZWQgcmVj
-ZW50bHkgaW4gbGludXgtbmV4dCBhcyBjb21taXQgNDdlZmUyZGRjY2IxIAooInNjaGVkL2NvcmU6
-IEFkZCBhc3NlcnRpb25zIHRvIFFVRVVFX0NMQVNTIikuIEluIG15IHRlc3RzIGl0IHR1cm5lZCBv
-dXQgCnRoYXQgaXQgdHJpZ2dlcnMgdGhlIGZvbGxvd2luZyB3YXJuaW5nIGR1cmluZyBzaW1wbGUg
-J3J0Y3dha2UnIHRlc3Qgb24gCkhhcmRrZXJuZWwncyBPZHJvaWQtTTEgYm9hcmQgCihhcmNoL2Fy
-bTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU2OC1vZHJvaWQtbTEuZHRzKToKCnJvb3RAdGFyZ2V0
-On4jIHRpbWUgcnRjd2FrZSAtczUgLW1vbgpydGN3YWtlOiB3YWtldXAgdXNpbmcgL2Rldi9ydGMw
-IGF0IFRodSBEZWMgMTggMTA6MDE6MjggMjAyNQotLS0tLS0tLS0tLS1bIGN1dCBoZXJlIF0tLS0t
-LS0tLS0tLS0KV0FSTklORzoga2VybmVsL3NjaGVkL2NvcmUuYzoxMDgzNyBhdCBzY2hlZF9jaGFu
-Z2VfZW5kKzB4MTYwLzB4MTY4LCAKQ1BVIzA6IGlycS8zOC1yazgxNy83OQpNb2R1bGVzIGxpbmtl
-ZCBpbjogc25kX3NvY19oZG1pX2NvZGVjIGR3X2hkbWlfaTJzX2F1ZGlvIGR3X2hkbWlfY2VjIApz
-bmRfc29jX3NpbXBsZV9jYXJkIHNuZF9zb2Nfcms4MTcgc25kX3NvY19zaW1wbGVfY2FyZF91dGls
-cyAKc25kX3NvY19yb2NrY2hpcF9pMnNfdGRtIHNuZF9zb2NfY29yZSBoYW50cm9fdnB1IHJvY2tj
-aGlwX3JnYSB2NGwyX3ZwOSAKdjRsMl9oMjY0IHNuZF9jb21wcmVzcyB2NGwyX2pwZWcgdmlkZW9i
-dWYyX2RtYV9zZyB2aWRlb2J1ZjJfZG1hX2NvbnRpZyAKdjRsMl9tZW0ybWVtIHZpZGVvYnVmMl9t
-ZW1vcHMgc25kX3BjbV9kbWFlbmdpbmUgdmlkZW9idWYyX3Y0bDIgc25kX3BjbSAKZ3Bpb19pcl9y
-ZWN2IGR3bWFjX3JrIGRpc3BsYXlfY29ubmVjdG9yIHN0bW1hY19wbGF0Zm9ybSByb2NrY2hpcF9z
-YXJhZGMgCnJvY2tjaGlwZHJtIHNuZF90aW1lciB2aWRlb2RldiBzbmQgc3RtbWFjIGluZHVzdHJp
-YWxpb190cmlnZ2VyZWRfYnVmZmVyIAprZmlmb19idWYgcm9ja2NoaXBfdGhlcm1hbCBwaHlfcm9j
-a2NoaXBfbmFuZW5nX2NvbWJwaHkgdmlkZW9idWYyX2NvbW1vbiAKc3BpX3JvY2tjaGlwX3NmYyBz
-b3VuZGNvcmUgcms4MTdfY2hhcmdlciByb2NrY2hpcF9kZmkgcnRjX3JrODA4IApyazgwNV9wd3Jr
-ZXkgcGNzX3hwY3MgcGFuZnJvc3QgZHdfaGRtaV9xcCBhbmFsb2dpeF9kcCBkd19kcCAKZHJtX3No
-bWVtX2hlbHBlciBkd19taXBpX2RzaSBkcm1fZHBfYXV4X2J1cyBncHVfc2NoZWQgZHdfaGRtaSBt
-YyAKZHJtX2Rpc3BsYXlfaGVscGVyIGFoY2lfZHdjIGlwdjYgbGlic2hhMQpDUFU6IDAgVUlEOiAw
-IFBJRDogNzkgQ29tbTogaXJxLzM4LXJrODE3IE5vdCB0YWludGVkIDYuMTkuMC1yYzErICMxNjI4
-OCAKUFJFRU1QVApIYXJkd2FyZSBuYW1lOiBIYXJka2VybmVsIE9EUk9JRC1NMSAoRFQpCnBzdGF0
-ZTogNDA0MDAwYzkgKG5aY3YgZGFJRiArUEFOIC1VQU8gLVRDTyAtRElUIC1TU0JTIEJUWVBFPS0t
-KQpwYyA6IHNjaGVkX2NoYW5nZV9lbmQrMHgxNjAvMHgxNjgKbHIgOiBzY2hlZF9jaGFuZ2VfZW5k
-KzB4YjAvMHgxNjgKLi4uCkNhbGwgdHJhY2U6CiDCoHNjaGVkX2NoYW5nZV9lbmQrMHgxNjAvMHgx
-NjggKFApCiDCoHJ0X211dGV4X3NldHByaW8rMHhjOC8weDNhOAogwqBtYXJrX3dha2V1cF9uZXh0
-X3dhaXRlcisweGMwLzB4MjU4CiDCoHJ0X211dGV4X3VubG9jaysweDg4LzB4MTQ4CiDCoGkyY19h
-ZGFwdGVyX3VubG9ja19idXMrMHgxNC8weDIwCiDCoGkyY190cmFuc2ZlcisweGFjLzB4ZjAKIMKg
-cmVnbWFwX2kyY19yZWFkKzB4NWMvMHhhMAogwqBfcmVnbWFwX3Jhd19yZWFkKzB4ZWMvMHgxNmMK
-IMKgX3JlZ21hcF9idXNfcmVhZCsweDQ0LzB4N2MKIMKgX3JlZ21hcF9yZWFkKzB4NjQvMHhmNAog
-wqByZWdtYXBfcmVhZCsweDRjLzB4NzgKIMKgcmVhZF9pcnFfZGF0YSsweDljLzB4NDYwCiDCoHJl
-Z21hcF9pcnFfdGhyZWFkKzB4NjQvMHgyZjAKIMKgaXJxX3RocmVhZF9mbisweDJjLzB4YTgKIMKg
-aXJxX3RocmVhZCsweDFhNC8weDM3OAogwqBrdGhyZWFkKzB4MTNjLzB4MjE0CiDCoHJldF9mcm9t
-X2ZvcmsrMHgxMC8weDIwCi0tLVsgZW5kIHRyYWNlIDAwMDAwMDAwMDAwMDAwMDAgXS0tLQoKcmVh
-bMKgwqDCoCAwbTUuNTQ3cwp1c2VywqDCoMKgIDBtMC4wMDRzCnN5c8KgwqDCoMKgIDBtMC4wMTFz
-CnJvb3RAdGFyZ2V0On4jCgpJIGRvbid0IHNlZSBhbnl0aGluZyBzdXNwaWNpb3VzIGluIHRoaXMg
-c3RhY2t0cmFjZS4gTGV0IG1lIGtub3cgaG93IEkgCmNhbiBoZWxwIGRlYnVnZ2luZyB0aGlzIGlz
-c3VlLiBUaGlzIGJvYXJkIGlzIHRoZSBvbmx5IG9uZSBpbiBteSB0ZXN0IApmYXJtIHdoaWNoIHRy
-aWdnZXJzIHN1Y2ggd2FybmluZy4KCgo+IC0tLQo+ICAga2VybmVsL3NjaGVkL2NvcmUuYyAgfCAg
-IDEzICsrKysrKysrKysrKysKPiAgIGtlcm5lbC9zY2hlZC9zY2hlZC5oIHwgICAgMSArCj4gICAy
-IGZpbGVzIGNoYW5nZWQsIDE0IGluc2VydGlvbnMoKykKPgo+IC0tLSBhL2tlcm5lbC9zY2hlZC9j
-b3JlLmMKPiArKysgYi9rZXJuZWwvc2NoZWQvY29yZS5jCj4gQEAgLTEwODA2LDYgKzEwODA2LDcg
-QEAgc3RydWN0IHNjaGVkX2NoYW5nZV9jdHggKnNjaGVkX2NoYW5nZV9iZQo+ICAgCj4gICAJKmN0
-eCA9IChzdHJ1Y3Qgc2NoZWRfY2hhbmdlX2N0eCl7Cj4gICAJCS5wID0gcCwKPiArCQkuY2xhc3Mg
-PSBwLT5zY2hlZF9jbGFzcywKPiAgIAkJLmZsYWdzID0gZmxhZ3MsCj4gICAJCS5xdWV1ZWQgPSB0
-YXNrX29uX3JxX3F1ZXVlZChwKSwKPiAgIAkJLnJ1bm5pbmcgPSB0YXNrX2N1cnJlbnRfZG9ub3Io
-cnEsIHApLAo+IEBAIC0xMDgzNiw2ICsxMDgzNywxMSBAQCB2b2lkIHNjaGVkX2NoYW5nZV9lbmQo
-c3RydWN0IHNjaGVkX2NoYW5nCj4gICAKPiAgIAlsb2NrZGVwX2Fzc2VydF9ycV9oZWxkKHJxKTsK
-PiAgIAo+ICsJLyoKPiArCSAqIENoYW5naW5nIGNsYXNzIHdpdGhvdXQgKlFVRVVFX0NMQVNTIGlz
-IGJhZC4KPiArCSAqLwo+ICsJV0FSTl9PTl9PTkNFKHAtPnNjaGVkX2NsYXNzICE9IGN0eC0+Y2xh
-c3MgJiYgIShjdHgtPmZsYWdzICYgRU5RVUVVRV9DTEFTUykpOwo+ICsKPiAgIAlpZiAoKGN0eC0+
-ZmxhZ3MgJiBFTlFVRVVFX0NMQVNTKSAmJiBwLT5zY2hlZF9jbGFzcy0+c3dpdGNoaW5nX3RvKQo+
-ICAgCQlwLT5zY2hlZF9jbGFzcy0+c3dpdGNoaW5nX3RvKHJxLCBwKTsKPiAgIAo+IEBAIC0xMDg0
-Nyw2ICsxMDg1MywxMyBAQCB2b2lkIHNjaGVkX2NoYW5nZV9lbmQoc3RydWN0IHNjaGVkX2NoYW5n
-Cj4gICAJaWYgKGN0eC0+ZmxhZ3MgJiBFTlFVRVVFX0NMQVNTKSB7Cj4gICAJCWlmIChwLT5zY2hl
-ZF9jbGFzcy0+c3dpdGNoZWRfdG8pCj4gICAJCQlwLT5zY2hlZF9jbGFzcy0+c3dpdGNoZWRfdG8o
-cnEsIHApOwo+ICsKPiArCQkvKgo+ICsJCSAqIElmIHRoaXMgd2FzIGEgZGVncmFkYXRpb24gaW4g
-Y2xhc3Mgc29tZW9uZSBzaG91bGQgaGF2ZSBzZXQKPiArCQkgKiBuZWVkX3Jlc2NoZWQgYnkgbm93
-Lgo+ICsJCSAqLwo+ICsJCVdBUk5fT05fT05DRShzY2hlZF9jbGFzc19hYm92ZShjdHgtPmNsYXNz
-LCBwLT5zY2hlZF9jbGFzcykgJiYKPiArCQkJICAgICAhdGVzdF90c2tfbmVlZF9yZXNjaGVkKHAp
-KTsKPiAgIAl9IGVsc2Ugewo+ICAgCQlwLT5zY2hlZF9jbGFzcy0+cHJpb19jaGFuZ2VkKHJxLCBw
-LCBjdHgtPnByaW8pOwo+ICAgCX0KPiAtLS0gYS9rZXJuZWwvc2NoZWQvc2NoZWQuaAo+ICsrKyBi
-L2tlcm5lbC9zY2hlZC9zY2hlZC5oCj4gQEAgLTQwMjcsNiArNDAyNyw3IEBAIGV4dGVybiB2b2lk
-IGJhbGFuY2VfY2FsbGJhY2tzKHN0cnVjdCBycQo+ICAgc3RydWN0IHNjaGVkX2NoYW5nZV9jdHgg
-ewo+ICAgCXU2NAkJCXByaW87Cj4gICAJc3RydWN0IHRhc2tfc3RydWN0CSpwOwo+ICsJY29uc3Qg
-c3RydWN0IHNjaGVkX2NsYXNzICpjbGFzczsKPiAgIAlpbnQJCQlmbGFnczsKPiAgIAlib29sCQkJ
-cXVldWVkOwo+ICAgCWJvb2wJCQlydW5uaW5nOwo+Cj4KPgpCZXN0IHJlZ2FyZHMKLS0gCk1hcmVr
-IFN6eXByb3dza2ksIFBoRApTYW1zdW5nIFImRCBJbnN0aXR1dGUgUG9sYW5kCgoKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFp
-bGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
-LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+On Thu, Dec 18, 2025 at 11:09:13AM +0100, Marek Szyprowski wrote:
+> On 27.11.2025 16:39, Peter Zijlstra wrote:
+> > Add some checks to the sched_change pattern to validate assumptions
+> > around changing classes.
+> >
+> > Signed-off-by: Peter Zijlstra (Intel) <peterz@infradead.org>
+> 
+> 
+> This patch landed recently in linux-next as commit 47efe2ddccb1 
+> ("sched/core: Add assertions to QUEUE_CLASS"). In my tests it turned out 
+> that it triggers the following warning during simple 'rtcwake' test on 
+> Hardkernel's Odroid-M1 board 
+> (arch/arm64/boot/dts/rockchip/rk3568-odroid-m1.dts):
+> 
+> root@target:~# time rtcwake -s5 -mon
+> rtcwake: wakeup using /dev/rtc0 at Thu Dec 18 10:01:28 2025
+> ------------[ cut here ]------------
+> WARNING: kernel/sched/core.c:10837 at sched_change_end+0x160/0x168, 
+
+https://lkml.kernel.org/r/176596899373.510.17191516261088315233.tip-bot2@tip-bot2
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
