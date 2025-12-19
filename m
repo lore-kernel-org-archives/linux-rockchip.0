@@ -4,78 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A986AD711CC
-	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Dec 2025 23:30:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2BB7D74961
+	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Dec 2025 08:13:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Date:
+	Message-Id:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WJSw4K7d5L7Yn/7cOvDuUMUPBHq68hyz6Lxu2takTJA=; b=nC/iFHN/MZWLK9
-	qvPIfbPschG74tvKKt1RiUO+mz9VDPL+ADUtGYPxfCx9jzQJ3M0L7rOF1wRyw6LY57hyDEphMJxXE
-	asDAQoISjjbEWymFoTN10pL2xXGt4H7etQihTa+0DSN/fkR5nvsDr/rtnSg2kBNCs92KPIW7fiO3Q
-	q2aHXgheVipjNcVPECgshcMIJUhQJUmW2IdRrqIvk17EU2TJmdL+Q4QZF1UXFNckDr0X59k+6sQ2r
-	DkFs4Nlk6g/zNvNTYWa5oUQHL29eohXlV6q8Ry12JdIuX5hmTxkUO1n5R/W/Z63eDCT6zqmA2MZUM
-	20TiFIINFoSz+cz6R+CQ==;
+	List-Owner; bh=2dTkuKQMolI45d4vu47zh99vbfYo4Ef1Panq4Fy0Wrg=; b=BI+agkv5CzGg1g
+	SYiiSQ3iAq/jWgbpIUEBsyGxGPJ12qMdcUyCncOOV2Qwm4s8S3OV7kLRMKsotCHDE4zGa5XfHFNQS
+	mEQThn3dkSltjBf/GD55PtG3di8BukkYtEhKbyGwvl8ikvwKe9DNN6fS1c67NiEHWpv7fjU86gbPo
+	tm169DLxaS2iuxEeB4yLostsueKFtE/dWRmswhbr2JoYUjy5nJ6Xm3/iu3DhwhyUGECFgbov1p59N
+	6CvQsmZQ1RhnpTYeIKl+PmMfoM/wstpz8J7xps8vWlrX0dzgp+HAiLdxlKMepT/rX7Lb4VUQggqRs
+	jNLvVZcNvYXnA2Z29t1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vWNRx-00000009LQt-41UQ;
-	Thu, 18 Dec 2025 23:30:25 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vWVcC-00000009pCU-3KEW;
+	Fri, 19 Dec 2025 08:13:32 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vWNRi-00000009Jnn-1aLi;
-	Thu, 18 Dec 2025 23:30:23 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1766100530;
-	bh=ysnLg7XcbLUG+pEfPcs8iI3XF5Q2cZW8GRIDia1EWfE=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=qrzbh8PVhX4zpYLpsb5xk4vBmxInjDJdAUvH0GrYxKdHWhTayiT3dySKRz7L9G19J
-	 VoU9ILnjj1gkpnuRCotorfVmtA1/fQJtjnMiIXRa7ZRYorVX3zitMUqgZxlWMtOU2W
-	 ke7c04C1y42mQi3NqzQZk8jCwgqWGgvWr3OMIWHq3P1epSDB5DdMSK48qy91RW1mQU
-	 1YBD6BIk9GgUANmuPwDYxbOVluearmVPaw9kAhZf5bIVQUQIZQ2UgVfYSZmt1H6HVG
-	 AwbYsi01kFfMTz37HhQLOTeg4608xsrK5BAS/q7hVIw5i58iLg84+o3FLW6O5IC65Q
-	 +CPGd0h+aZDtw==
-Received: from earth.mtl.collabora.ca (mtl.collabora.ca [66.171.169.34])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: detlev)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9C52217E110D;
-	Fri, 19 Dec 2025 00:28:47 +0100 (CET)
-From: Detlev Casanova <detlev.casanova@collabora.com>
-To: linux-kernel@vger.kernel.org
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Detlev Casanova <detlev.casanova@collabora.com>,
-	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Daniel Almeida <daniel.almeida@collabora.com>,
-	Jonathan Corbet <corbet@lwn.net>,
-	Ricardo Ribalda <ribalda@chromium.org>,
-	Hans Verkuil <hverkuil@kernel.org>,
-	Yunke Cao <yunkec@google.com>,
-	Hans de Goede <hansg@kernel.org>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Pavan Bobba <opensource206@gmail.com>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	James Cowgill <james.cowgill@blaize.com>,
-	linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	kernel@collabora.com,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Diederik de Haas <didi.debian@cknow.org>
-Subject: [PATCH v7 06/17] media: rkvdec: Use structs to represent the HW RPS
-Date: Thu, 18 Dec 2025 18:28:16 -0500
-Message-ID: <20251218232829.337811-7-detlev.casanova@collabora.com>
-X-Mailer: git-send-email 2.52.0
-In-Reply-To: <20251218232829.337811-1-detlev.casanova@collabora.com>
-References: <20251218232829.337811-1-detlev.casanova@collabora.com>
+	id 1vWVc2-00000009oxO-0MQ4;
+	Fri, 19 Dec 2025 08:13:22 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 61E2B6014A;
+	Fri, 19 Dec 2025 08:13:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 12A1FC4CEF1;
+	Fri, 19 Dec 2025 08:13:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1766132001;
+	bh=lvn+iw5IxWpNsx5ppx7UaT4z6tDEmv9IRQkqRmBQGQc=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=M/IUrif+d4VKn/MpBzO8oXg7fyF4udbLWjFGC+kaeTKXVdK9pnVZSk9qfn61Oncpi
+	 GhR5l8VAZ4IA86aoju4qY4COjaufMk77R9+qzFfwAZOU9Mv14DiZsPZrAzz0fP8C8O
+	 RVHu5dAXut9fzq8uA8rHcl2hgk3qtCR3o7FIhbbxw1etaHqlACnKIZpUTGy4fOBicw
+	 mUDSllG1LCmoO9eVDdYT7nQEkxN8ixdDPeXlwtWDpLBykJTtiH2K8RTzj7p3zgR18A
+	 EftOxjTcUmtQ5u7Eo9SivKx97gnYTIzCDyvlh8FtZdCb56p0NX1TrxQ6CjwLInTtmr
+	 ati6fNfjsc4FQ==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 3BBE4380AA50;
+	Fri, 19 Dec 2025 08:10:11 +0000 (UTC)
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251218_153010_766479_57BF3A0E 
-X-CRM114-Status: GOOD (  14.46  )
+Subject: Re: [PATCH v2 0/6] iommu: Pass in old_domain pointer to attach_dev
+From: patchwork-bot+linux-riscv@kernel.org
+Message-Id: <176613180983.3684357.11179224135837486617.git-patchwork-notify@kernel.org>
+Date: Fri, 19 Dec 2025 08:10:09 +0000
+References: <cover.1761017765.git.nicolinc@nvidia.com>
+In-Reply-To: <cover.1761017765.git.nicolinc@nvidia.com>
+To: Nicolin Chen <nicolinc@nvidia.com>
+Cc: linux-riscv@lists.infradead.org, joro@8bytes.org, jgg@nvidia.com,
+ kevin.tian@intel.com, suravee.suthikulpanit@amd.com, will@kernel.org,
+ robin.murphy@arm.com, sven@kernel.org, j@jannau.net,
+ robin.clark@oss.qualcomm.com, m.szyprowski@samsung.com, krzk@kernel.org,
+ dwmw2@infradead.org, baolu.lu@linux.intel.com, yong.wu@mediatek.com,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ tjeznach@rivosinc.com, pjw@kernel.org, palmer@dabbelt.com,
+ aou@eecs.berkeley.edu, heiko@sntech.de, schnelle@linux.ibm.com,
+ mjrosato@linux.ibm.com, orsonzhai@gmail.com, baolin.wang@linux.alibaba.com,
+ wens@csie.org, jernej.skrabec@gmail.com, samuel@sholland.org,
+ thierry.reding@gmail.com, jonathanh@nvidia.com, jean-philippe@linaro.org,
+ iommu@lists.linux.dev, linux-kernel@vger.kernel.org, asahi@lists.linux.dev,
+ linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-s390@vger.kernel.org,
+ linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
+ virtualization@lists.linux.dev, patches@lists.linux.dev
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,168 +85,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This is in preparation to add support for other variants of the decoder.
+Hello:
 
-Moving to struct representation is mainly to prepare for multicore
-support that is present in e.g. rk3588.
+This series was applied to riscv/linux.git (fixes)
+by Joerg Roedel <joerg.roedel@amd.com>:
 
-Tested-by: Diederik de Haas <didi.debian@cknow.org>  # Rock 5B
-Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
----
- .../platform/rockchip/rkvdec/rkvdec-h264.c    | 93 +++++++++++++++++--
- 1 file changed, 84 insertions(+), 9 deletions(-)
+On Wed, 22 Oct 2025 19:21:03 -0700 you wrote:
+> Tidy the release_device callbacks in the drivers and switch to the core
+> managed release_domain.
+> 
+> This allows the core further to pass in the old domain pointer into the
+> attach_dev callbacks to reduce the use of iommu_get_domain_for_dev().
+> 
+> This is a preparatory series for new iommu_dev_reset APIs:
+> https://lore.kernel.org/all/cover.1756682135.git.nicolinc@nvidia.com/
+> 
+> [...]
 
-diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-h264.c b/drivers/media/platform/rockchip/rkvdec/rkvdec-h264.c
-index 088840248a76b..fd941e9262796 100644
---- a/drivers/media/platform/rockchip/rkvdec/rkvdec-h264.c
-+++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-h264.c
-@@ -19,7 +19,6 @@ extern const s8 rkvdec_h264_cabac_table[4][464][2];
- 
- /* Size with u32 units. */
- #define RKV_CABAC_INIT_BUFFER_SIZE	(3680 + 128)
--#define RKV_RPS_SIZE			((128 + 128) / 4)
- #define RKV_ERROR_INFO_SIZE		(256 * 144 * 4)
- 
- #define RKVDEC_NUM_REFLIST		3
-@@ -34,6 +33,40 @@ struct rkvdec_sps_pps_packet {
- 	u32 info[8];
- };
- 
-+struct rkvdec_rps_entry {
-+	u32 dpb_info0:          5;
-+	u32 bottom_flag0:       1;
-+	u32 view_index_off0:    1;
-+	u32 dpb_info1:          5;
-+	u32 bottom_flag1:       1;
-+	u32 view_index_off1:    1;
-+	u32 dpb_info2:          5;
-+	u32 bottom_flag2:       1;
-+	u32 view_index_off2:    1;
-+	u32 dpb_info3:          5;
-+	u32 bottom_flag3:       1;
-+	u32 view_index_off3:    1;
-+	u32 dpb_info4:          5;
-+	u32 bottom_flag4:       1;
-+	u32 view_index_off4:    1;
-+	u32 dpb_info5:          5;
-+	u32 bottom_flag5:       1;
-+	u32 view_index_off5:    1;
-+	u32 dpb_info6:          5;
-+	u32 bottom_flag6:       1;
-+	u32 view_index_off6:    1;
-+	u32 dpb_info7:          5;
-+	u32 bottom_flag7:       1;
-+	u32 view_index_off7:    1;
-+} __packed;
-+
-+struct rkvdec_rps {
-+	u16 frame_num[16];
-+	u32 reserved0;
-+	struct rkvdec_rps_entry entries[12];
-+	u32 reserved1[66];
-+} __packed;
-+
- struct rkvdec_ps_field {
- 	u16 offset;
- 	u8 len;
-@@ -94,7 +127,7 @@ struct rkvdec_ps_field {
- struct rkvdec_h264_priv_tbl {
- 	s8 cabac_table[4][464][2];
- 	struct rkvdec_h264_scaling_list scaling_list;
--	u32 rps[RKV_RPS_SIZE];
-+	struct rkvdec_rps rps;
- 	struct rkvdec_sps_pps_packet param_set[256];
- 	u8 err_info[RKV_ERROR_INFO_SIZE];
- };
-@@ -260,6 +293,51 @@ static void lookup_ref_buf_idx(struct rkvdec_ctx *ctx,
- 	}
- }
- 
-+static void set_dpb_info(struct rkvdec_rps_entry *entries,
-+			 u8 reflist,
-+			 u8 refnum,
-+			 u8 info,
-+			 bool bottom)
-+{
-+	struct rkvdec_rps_entry *entry = &entries[(reflist * 4) + refnum / 8];
-+	u8 idx = refnum % 8;
-+
-+	switch (idx) {
-+	case 0:
-+		entry->dpb_info0 = info;
-+		entry->bottom_flag0 = bottom;
-+		break;
-+	case 1:
-+		entry->dpb_info1 = info;
-+		entry->bottom_flag1 = bottom;
-+		break;
-+	case 2:
-+		entry->dpb_info2 = info;
-+		entry->bottom_flag2 = bottom;
-+		break;
-+	case 3:
-+		entry->dpb_info3 = info;
-+		entry->bottom_flag3 = bottom;
-+		break;
-+	case 4:
-+		entry->dpb_info4 = info;
-+		entry->bottom_flag4 = bottom;
-+		break;
-+	case 5:
-+		entry->dpb_info5 = info;
-+		entry->bottom_flag5 = bottom;
-+		break;
-+	case 6:
-+		entry->dpb_info6 = info;
-+		entry->bottom_flag6 = bottom;
-+		break;
-+	case 7:
-+		entry->dpb_info7 = info;
-+		entry->bottom_flag7 = bottom;
-+		break;
-+	}
-+}
-+
- static void assemble_hw_rps(struct rkvdec_ctx *ctx,
- 			    struct v4l2_h264_reflist_builder *builder,
- 			    struct rkvdec_h264_run *run)
-@@ -269,11 +347,10 @@ static void assemble_hw_rps(struct rkvdec_ctx *ctx,
- 	struct rkvdec_h264_ctx *h264_ctx = ctx->priv;
- 	struct rkvdec_h264_priv_tbl *priv_tbl = h264_ctx->priv_tbl.cpu;
- 
--	u32 *hw_rps = priv_tbl->rps;
-+	struct rkvdec_rps *hw_rps = &priv_tbl->rps;
- 	u32 i, j;
--	u16 *p = (u16 *)hw_rps;
- 
--	memset(hw_rps, 0, sizeof(priv_tbl->rps));
-+	memset(hw_rps, 0, sizeof(*hw_rps));
- 
- 	/*
- 	 * Assign an invalid pic_num if DPB entry at that position is inactive.
-@@ -285,7 +362,7 @@ static void assemble_hw_rps(struct rkvdec_ctx *ctx,
- 		if (!(dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_ACTIVE))
- 			continue;
- 
--		p[i] = builder->refs[i].frame_num;
-+		hw_rps->frame_num[i] = builder->refs[i].frame_num;
- 	}
- 
- 	for (j = 0; j < RKVDEC_NUM_REFLIST; j++) {
-@@ -312,9 +389,7 @@ static void assemble_hw_rps(struct rkvdec_ctx *ctx,
- 			dpb_valid = run->ref_buf[ref->index] != NULL;
- 			bottom = ref->fields == V4L2_H264_BOTTOM_FIELD_REF;
- 
--			set_ps_field(hw_rps, DPB_INFO(i, j),
--				     ref->index | dpb_valid << 4);
--			set_ps_field(hw_rps, BOTTOM_FLAG(i, j), bottom);
-+			set_dpb_info(hw_rps->entries, j, i, ref->index | (dpb_valid << 4), bottom);
- 		}
- 	}
- }
+Here is the summary with links:
+  - [v2,1/6] iommu: Generic support for RMRs during device release
+    https://git.kernel.org/riscv/c/e94160488e65
+  - [v2,2/6] iommu/arm-smmu-v3: Set release_domain to arm_smmu_blocked_domain
+    https://git.kernel.org/riscv/c/52f77fb176ec
+  - [v2,3/6] iommu/exynos-iommu: Set release_domain to exynos_identity_domain
+    https://git.kernel.org/riscv/c/680a6a60fc08
+  - [v2,4/6] iommu/amd: Set release_domain to blocked_domain
+    https://git.kernel.org/riscv/c/c21b34762e2f
+  - [v2,5/6] iommu: Do not revert set_domain for the last gdev
+    https://git.kernel.org/riscv/c/2b33598e666d
+  - [v2,6/6] iommu: Pass in old domain to attach_dev callback functions
+    (no matching commit)
+
+You are awesome, thank you!
 -- 
-2.52.0
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
 
 
 _______________________________________________
