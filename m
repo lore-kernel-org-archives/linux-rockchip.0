@@ -4,69 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4A7CD7497F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Dec 2025 16:34:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C601E66884
+	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Dec 2025 21:31:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:From:Subject:Cc:
-	To:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SLdBdSK9xG48giRPtS+2eDSIUvrKKp/rZJTrwauAMlc=; b=ye9GdsREwXxcvg
-	POMD0Z5/Fgu2fgtkUC3zZbArvZjcKYLlO5MYtvymw6Fsm0RQsxraUkKfgPQkflnddGZuzcSsOXc2j
-	FmydZdquGc6ZOekIiHpQ1bnNO65/4/4jjPako1XJ5zeyZk8yRCU7v3okCWUOxmbuZFnqLXkItuRKs
-	FQt/FYRMvyq2YrGGydfDWTRLH1hzsjTxvJC59Zf0IrsmY6INlkbOVgxNySwiuRsZ2OfkB6Uw9pMMN
-	SxP15it5WSDsVhmqN30AMPT22Yi1hipeA6BY/MvMMY34EvZ/5q5ZEFVUwUBkShnRRbEvuslD6dN2G
-	eTKDsfoBHNrUjVSvX5SQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
+	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=D3CyD0IvDGs5Vm+GoyMeA9Tl+Y9QZiy/R8BoMtTtWhc=; b=MC0lELRcjhq7EL
+	jHxcrsSynDuptJfHdNIrcTQz1nO7Bq+YVcBwj/A4Abzrsq+gilJKgY1U+F+iYAl90aKL3KmWMnyzt
+	GESm7hhrAU3uM1RXPIlIFqTdLTzqOoIFoUX9FGMfZB4ENjQwL925rWkQJelImH/x5Rcrkc1affk13
+	q48WBsTMHv5dCSW4Sur9RZmZh6u5h24hCaZaJCZCuzd67VSHtHwTr8Gfpu2EgWvdODeMr9cysuRcY
+	pApbS7tKqqW1TB22uRyxz+2mRjDXHXXX1oG3etxztd1gyIzOvxL2TsMCTrLvkm+szBIpCwhlbij+a
+	lXsPMUIW1Fgk3xiJ2oGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vWdQh-0000000AehP-0R0j;
-	Fri, 19 Dec 2025 16:34:11 +0000
-Received: from out-179.mta1.migadu.com ([2001:41d0:203:375::b3])
+	id 1vWi4S-0000000B0Ka-0lUp;
+	Fri, 19 Dec 2025 21:31:32 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vWdQd-0000000AefY-0IVB
-	for linux-rockchip@lists.infradead.org;
-	Fri, 19 Dec 2025 16:34:09 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow-tech.com;
-	s=key1; t=1766162034;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=SCAf3OQBTLbJmwTjw1GZBkfCXiN/cefxebdZHxAOFbc=;
-	b=GLXujHKLcpoHilftToei9KcI/mEXCKNwBtOoK93XKyXZI+niHmGWNrlaITkoAwvY6XXSSo
-	UjTs8cnfd0dokRPig+rSnGqNV2BoH1q2c5sJMxFmaRK3cupdfM1yZO674igMFisRO5UVJ+
-	cZp6TLWCkM6YmDLamCb1LVCMIW4YxvSmh1ydDssEmaQ/UWdVXNsMQRTS/0XKTtiULOVvoM
-	vTbBdtJXl65Eyz3xu6k0JWNUQe6R+/WKAL79vzh6m/sDwPtaVIbehxhZTK47iQwg1l0H3R
-	WOLtKoFb83/X0LlG2xIe9UePR6ZC/0LDFITO6EehU2PDH5jdlIaiA6whVQj87g==
-Date: Fri, 19 Dec 2025 17:33:31 +0100
-Message-Id: <DF2C6J4R30IJ.30D8549V3ML48@cknow-tech.com>
-To: "Detlev Casanova" <detlev.casanova@collabora.com>,
- <linux-kernel@vger.kernel.org>
-Cc: "Mauro Carvalho Chehab" <mchehab@kernel.org>, "Ezequiel Garcia"
- <ezequiel@vanguardiasur.com.ar>, "Heiko Stuebner" <heiko@sntech.de>,
- "Daniel Almeida" <daniel.almeida@collabora.com>, "Jonathan Corbet"
- <corbet@lwn.net>, "Ricardo Ribalda" <ribalda@chromium.org>, "Hans Verkuil"
- <hverkuil@kernel.org>, "Yunke Cao" <yunkec@google.com>, "Hans de Goede"
- <hansg@kernel.org>, "Laurent Pinchart" <laurent.pinchart@ideasonboard.com>,
- "Nicolas Dufresne" <nicolas.dufresne@collabora.com>, "Pavan Bobba"
- <opensource206@gmail.com>, "Sakari Ailus" <sakari.ailus@linux.intel.com>,
- "James Cowgill" <james.cowgill@blaize.com>, <linux-media@vger.kernel.org>,
- <linux-rockchip@lists.infradead.org>,
- <linux-arm-kernel@lists.infradead.org>, <kernel@collabora.com>, "Jonas
- Karlman" <jonas@kwiboo.se>, "Diederik de Haas" <diederik@cknow-tech.com>
-Subject: Re: [PATCH v7 14/17] media: rkvdec: Add H264 support for the
- VDPU381 variant
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <diederik@cknow-tech.com>
-References: <20251218232829.337811-1-detlev.casanova@collabora.com>
- <20251218232829.337811-15-detlev.casanova@collabora.com>
-In-Reply-To: <20251218232829.337811-15-detlev.casanova@collabora.com>
-X-Migadu-Flow: FLOW_OUT
+	id 1vWi4P-0000000B0K8-11sX;
+	Fri, 19 Dec 2025 21:31:31 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1766179883;
+	bh=kAdbuGzTo4qVO4VAnrYdAE1DVQRXSzK5HOCSNqyMoeo=;
+	h=From:Date:Subject:To:Cc:From;
+	b=F/qsotH4kBRr+1clLWcZTFypr5v9DC4Bpuh+ic3P7fxgWvUp27c/gCcV+YPxdahlY
+	 JdGKOk2wScIUoo0VtF7QQT35HwT6Sktrh7CkJ/YuROlZkAxvwRGvurZmTtfWJ76YdH
+	 G86RbzgZS1HZ6eEPVwt1dqXdLPTv7ueZnCI6XcmIPvUei9F8uGQl9QeSutmW/1duxG
+	 4MiIbsaHwQfB1Gy1JD21HzL8udaC9foZrR1DirH9Z0l0Z9Sssmgy5z9wne4hxxm3cF
+	 X3iOf0m6X/xAYs1q+tnEgphWa6oTTPimccG65Oyt/oqm6bqYtEfseVpC6zRGLUQ7zP
+	 D58wwGuFUE/7w==
+Received: from localhost (unknown [82.79.138.145])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8AE9E17E0181;
+	Fri, 19 Dec 2025 22:31:23 +0100 (CET)
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Date: Fri, 19 Dec 2025 23:27:58 +0200
+Subject: [PATCH i-g-t v3] tests: (Re)add kms_crtc_background_color test
+MIME-Version: 1.0
+Message-Id: <20251219-crtc-bgcolor-v3-1-31b589911588@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAF3DRWkC/23NQQ7CIBAF0KuYWTsGqMXiynsYF0CHlqQWAw3RN
+ L27hJVpXP4/+W9WSBQ9JbgeVoiUffJhLqE5HsCOeh4IfV8yCCZazjlDGxeLZrBhChGdpF7ptiN
+ mHJTJK5Lz78rdweOACzxKPfq0hPipTzKvx/9e5shRdFIqI5VQF3Yr/aRNiPpkw7NiWfwC3Q4QB
+ egtnZlsXNdqtQe2bfsClogIE/QAAAA=
+X-Change-ID: 20251110-crtc-bgcolor-f6ed9a58e0bf
+To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, 
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
+ Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+ Simona Vetter <simona@ffwll.ch>, Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>, 
+ Louis Chauvet <louis.chauvet@bootlin.com>, 
+ Haneen Mohammed <hamohammed.sa@gmail.com>, 
+ Melissa Wen <melissa.srw@gmail.com>, 
+ Kamil Konieczny <kamil.konieczny@linux.intel.com>, 
+ Juha-Pekka Heikkila <juhapekka.heikkila@gmail.com>, 
+ Juha-Pekka Heikkila <juha-pekka.heikkila@intel.com>, 
+ Karthik B S <karthik.b.s@intel.com>, Swati Sharma <swati2.sharma@intel.com>
+Cc: igt-dev@lists.freedesktop.org, dri-devel@lists.freedesktop.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, kernel@collabora.com
+X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251219_083407_403248_A76C155B 
-X-CRM114-Status: GOOD (  27.60  )
+X-CRM114-CacheID: sfid-20251219_133129_718201_88F6568F 
+X-CRM114-Status: GOOD (  28.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,1191 +85,251 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Detlev,
-
-On Fri Dec 19, 2025 at 12:28 AM CET, Detlev Casanova wrote:
-> This decoder variant is found in Rockchip RK3588 SoC family.
->
-> Like for rkvdec on rk3399, it supports the NV12, NV15, NV16 and NV20
-> output formats and level up to 5.1.
-
-Minor nit: It actually supports up to level 6.0.
-See page 367 and/or 374 of RK3588 TRM Part 1.
-(RK3568 supports up to level 5.1 (page 463/469 of RK3568 TRM Part 2)
-
-Cheers,
-  Diederik
-
-> The maximum width and height have been significantly increased
-> supporting up to 65520 pixels for both.
->
-> Support for named register sections is added for this variant and future
-> ones.
->
-> Fluster score for JVT-AVC_V1 is 129/135.
->
-> Tested-by: Diederik de Haas <didi.debian@cknow.org>  # Rock 5B
-> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
-> ---
->  .../media/platform/rockchip/rkvdec/Makefile   |   1 +
->  .../rockchip/rkvdec/rkvdec-h264-common.h      |   2 +
->  .../rockchip/rkvdec/rkvdec-vdpu381-h264.c     | 465 ++++++++++++++++++
->  .../rockchip/rkvdec/rkvdec-vdpu381-regs.h     | 424 ++++++++++++++++
->  .../media/platform/rockchip/rkvdec/rkvdec.c   |  97 +++-
->  .../media/platform/rockchip/rkvdec/rkvdec.h   |  11 +
->  6 files changed, 997 insertions(+), 3 deletions(-)
->  create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-h264.c
->  create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-regs.h
->
-> diff --git a/drivers/media/platform/rockchip/rkvdec/Makefile b/drivers/media/platform/rockchip/rkvdec/Makefile
-> index 3d75103e536d2..7bfd95151e404 100644
-> --- a/drivers/media/platform/rockchip/rkvdec/Makefile
-> +++ b/drivers/media/platform/rockchip/rkvdec/Makefile
-> @@ -8,4 +8,5 @@ rockchip-vdec-y += \
->  		   rkvdec-hevc.o \
->  		   rkvdec-hevc-common.o \
->  		   rkvdec-rcb.o \
-> +		   rkvdec-vdpu381-h264.o \
->  		   rkvdec-vp9.o
-> diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-h264-common.h b/drivers/media/platform/rockchip/rkvdec/rkvdec-h264-common.h
-> index bd0c0081365b1..3be6cea3a7585 100644
-> --- a/drivers/media/platform/rockchip/rkvdec/rkvdec-h264-common.h
-> +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-h264-common.h
-> @@ -74,6 +74,8 @@ struct rkvdec_rps {
->  	u32 reserved1[66];
->  } __packed;
->  
-> +extern const s8 rkvdec_h264_cabac_table[4][464][2];
-> +
->  void lookup_ref_buf_idx(struct rkvdec_ctx *ctx, struct rkvdec_h264_run *run);
->  void assemble_hw_rps(struct v4l2_h264_reflist_builder *builder,
->  		     struct rkvdec_h264_run *run,
-> diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-h264.c b/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-h264.c
-> new file mode 100644
-> index 0000000000000..eaa0f7aac08e3
-> --- /dev/null
-> +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-h264.c
-> @@ -0,0 +1,465 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Rockchip VDPU381 Video Decoder H264 backend
-> + *
-> + * Copyright (C) 2024 Collabora, Ltd.
-> + *  Detlev Casanova <detlev.casanova@collabora.com>
-> + */
-> +
-> +#include <media/v4l2-h264.h>
-> +#include <media/v4l2-mem2mem.h>
-> +
-> +#include "rkvdec.h"
-> +#include "rkvdec-rcb.h"
-> +#include "rkvdec-h264-common.h"
-> +#include "rkvdec-vdpu381-regs.h"
-> +
-> +struct rkvdec_sps {
-> +	u16 seq_parameter_set_id:			4;
-> +	u16 profile_idc:				8;
-> +	u16 constraint_set3_flag:			1;
-> +	u16 chroma_format_idc:				2;
-> +	u16 bit_depth_luma:				3;
-> +	u16 bit_depth_chroma:				3;
-> +	u16 qpprime_y_zero_transform_bypass_flag:	1;
-> +	u16 log2_max_frame_num_minus4:			4;
-> +	u16 max_num_ref_frames:				5;
-> +	u16 pic_order_cnt_type:				2;
-> +	u16 log2_max_pic_order_cnt_lsb_minus4:		4;
-> +	u16 delta_pic_order_always_zero_flag:		1;
-> +	u16 pic_width_in_mbs:				12;
-> +	u16 pic_height_in_mbs:				12;
-> +	u16 frame_mbs_only_flag:			1;
-> +	u16 mb_adaptive_frame_field_flag:		1;
-> +	u16 direct_8x8_inference_flag:			1;
-> +	u16 mvc_extension_enable:			1;
-> +	u16 num_views:					2;
-> +
-> +	u16 reserved_bits:				12;
-> +	u16 reserved[11];
-> +} __packed;
-> +
-> +struct rkvdec_pps {
-> +	u16 pic_parameter_set_id:				8;
-> +	u16 pps_seq_parameter_set_id:				5;
-> +	u16 entropy_coding_mode_flag:				1;
-> +	u16 bottom_field_pic_order_in_frame_present_flag:	1;
-> +	u16 num_ref_idx_l0_default_active_minus1:		5;
-> +	u16 num_ref_idx_l1_default_active_minus1:		5;
-> +	u16 weighted_pred_flag:					1;
-> +	u16 weighted_bipred_idc:				2;
-> +	u16 pic_init_qp_minus26:				7;
-> +	u16 pic_init_qs_minus26:				6;
-> +	u16 chroma_qp_index_offset:				5;
-> +	u16 deblocking_filter_control_present_flag:		1;
-> +	u16 constrained_intra_pred_flag:			1;
-> +	u16 redundant_pic_cnt_present:				1;
-> +	u16 transform_8x8_mode_flag:				1;
-> +	u16 second_chroma_qp_index_offset:			5;
-> +	u16 scaling_list_enable_flag:				1;
-> +	u32 scaling_list_address;
-> +	u16 is_longterm;
-> +
-> +	u8 reserved[3];
-> +} __packed;
-> +
-> +struct rkvdec_sps_pps {
-> +	struct rkvdec_sps sps;
-> +	struct rkvdec_pps pps;
-> +} __packed;
-> +
-> +/* Data structure describing auxiliary buffer format. */
-> +struct rkvdec_h264_priv_tbl {
-> +	s8 cabac_table[4][464][2];
-> +	struct rkvdec_h264_scaling_list scaling_list;
-> +	struct rkvdec_sps_pps param_set[256];
-> +	struct rkvdec_rps rps;
-> +};
-> +
-> +struct rkvdec_h264_ctx {
-> +	struct rkvdec_aux_buf priv_tbl;
-> +	struct rkvdec_h264_reflists reflists;
-> +	struct rkvdec_vdpu381_regs_h264 regs;
-> +};
-> +
-> +static void assemble_hw_pps(struct rkvdec_ctx *ctx,
-> +			    struct rkvdec_h264_run *run)
-> +{
-> +	struct rkvdec_h264_ctx *h264_ctx = ctx->priv;
-> +	const struct v4l2_ctrl_h264_sps *sps = run->sps;
-> +	const struct v4l2_ctrl_h264_pps *pps = run->pps;
-> +	const struct v4l2_ctrl_h264_decode_params *dec_params = run->decode_params;
-> +	const struct v4l2_h264_dpb_entry *dpb = dec_params->dpb;
-> +	struct rkvdec_h264_priv_tbl *priv_tbl = h264_ctx->priv_tbl.cpu;
-> +	struct rkvdec_sps_pps *hw_ps;
-> +	dma_addr_t scaling_list_address;
-> +	u32 scaling_distance;
-> +	u32 i;
-> +
-> +	/*
-> +	 * HW read the SPS/PPS information from PPS packet index by PPS id.
-> +	 * offset from the base can be calculated by PPS_id * 32 (size per PPS
-> +	 * packet unit). so the driver copy SPS/PPS information to the exact PPS
-> +	 * packet unit for HW accessing.
-> +	 */
-> +	hw_ps = &priv_tbl->param_set[pps->pic_parameter_set_id];
-> +	memset(hw_ps, 0, sizeof(*hw_ps));
-> +
-> +	/* write sps */
-> +	hw_ps->sps.seq_parameter_set_id = sps->seq_parameter_set_id;
-> +	hw_ps->sps.profile_idc = sps->profile_idc;
-> +	hw_ps->sps.constraint_set3_flag = !!(sps->constraint_set_flags & (1 << 3));
-> +	hw_ps->sps.chroma_format_idc = sps->chroma_format_idc;
-> +	hw_ps->sps.bit_depth_luma = sps->bit_depth_luma_minus8;
-> +	hw_ps->sps.bit_depth_chroma = sps->bit_depth_chroma_minus8;
-> +	hw_ps->sps.qpprime_y_zero_transform_bypass_flag =
-> +		!!(sps->flags & V4L2_H264_SPS_FLAG_QPPRIME_Y_ZERO_TRANSFORM_BYPASS);
-> +	hw_ps->sps.log2_max_frame_num_minus4 = sps->log2_max_frame_num_minus4;
-> +	hw_ps->sps.max_num_ref_frames = sps->max_num_ref_frames;
-> +	hw_ps->sps.pic_order_cnt_type = sps->pic_order_cnt_type;
-> +	hw_ps->sps.log2_max_pic_order_cnt_lsb_minus4 =
-> +		sps->log2_max_pic_order_cnt_lsb_minus4;
-> +	hw_ps->sps.delta_pic_order_always_zero_flag =
-> +		!!(sps->flags & V4L2_H264_SPS_FLAG_DELTA_PIC_ORDER_ALWAYS_ZERO);
-> +	hw_ps->sps.mvc_extension_enable = 1;
-> +	hw_ps->sps.num_views = 1;
-> +
-> +	/*
-> +	 * Use the SPS values since they are already in macroblocks
-> +	 * dimensions, height can be field height (halved) if
-> +	 * V4L2_H264_SPS_FLAG_FRAME_MBS_ONLY is not set and also it allows
-> +	 * decoding smaller images into larger allocation which can be used
-> +	 * to implementing SVC spatial layer support.
-> +	 */
-> +	hw_ps->sps.pic_width_in_mbs = sps->pic_width_in_mbs_minus1 + 1;
-> +	hw_ps->sps.pic_height_in_mbs = sps->pic_height_in_map_units_minus1 + 1;
-> +	hw_ps->sps.frame_mbs_only_flag =
-> +		!!(sps->flags & V4L2_H264_SPS_FLAG_FRAME_MBS_ONLY);
-> +	hw_ps->sps.mb_adaptive_frame_field_flag =
-> +		!!(sps->flags & V4L2_H264_SPS_FLAG_MB_ADAPTIVE_FRAME_FIELD);
-> +	hw_ps->sps.direct_8x8_inference_flag =
-> +		!!(sps->flags & V4L2_H264_SPS_FLAG_DIRECT_8X8_INFERENCE);
-> +
-> +	/* write pps */
-> +	hw_ps->pps.pic_parameter_set_id = pps->pic_parameter_set_id;
-> +	hw_ps->pps.pps_seq_parameter_set_id = pps->seq_parameter_set_id;
-> +	hw_ps->pps.entropy_coding_mode_flag =
-> +		!!(pps->flags & V4L2_H264_PPS_FLAG_ENTROPY_CODING_MODE);
-> +	hw_ps->pps.bottom_field_pic_order_in_frame_present_flag =
-> +		!!(pps->flags & V4L2_H264_PPS_FLAG_BOTTOM_FIELD_PIC_ORDER_IN_FRAME_PRESENT);
-> +	hw_ps->pps.num_ref_idx_l0_default_active_minus1 =
-> +		pps->num_ref_idx_l0_default_active_minus1;
-> +	hw_ps->pps.num_ref_idx_l1_default_active_minus1 =
-> +		pps->num_ref_idx_l1_default_active_minus1;
-> +	hw_ps->pps.weighted_pred_flag =
-> +		!!(pps->flags & V4L2_H264_PPS_FLAG_WEIGHTED_PRED);
-> +	hw_ps->pps.weighted_bipred_idc = pps->weighted_bipred_idc;
-> +	hw_ps->pps.pic_init_qp_minus26 = pps->pic_init_qp_minus26;
-> +	hw_ps->pps.pic_init_qs_minus26 = pps->pic_init_qs_minus26;
-> +	hw_ps->pps.chroma_qp_index_offset = pps->chroma_qp_index_offset;
-> +	hw_ps->pps.deblocking_filter_control_present_flag =
-> +		!!(pps->flags & V4L2_H264_PPS_FLAG_DEBLOCKING_FILTER_CONTROL_PRESENT);
-> +	hw_ps->pps.constrained_intra_pred_flag =
-> +		!!(pps->flags & V4L2_H264_PPS_FLAG_CONSTRAINED_INTRA_PRED);
-> +	hw_ps->pps.redundant_pic_cnt_present =
-> +		!!(pps->flags & V4L2_H264_PPS_FLAG_REDUNDANT_PIC_CNT_PRESENT);
-> +	hw_ps->pps.transform_8x8_mode_flag =
-> +		!!(pps->flags & V4L2_H264_PPS_FLAG_TRANSFORM_8X8_MODE);
-> +	hw_ps->pps.second_chroma_qp_index_offset = pps->second_chroma_qp_index_offset;
-> +	hw_ps->pps.scaling_list_enable_flag =
-> +		!!(pps->flags & V4L2_H264_PPS_FLAG_SCALING_MATRIX_PRESENT);
-> +
-> +	/*
-> +	 * To be on the safe side, program the scaling matrix address
-> +	 */
-> +	scaling_distance = offsetof(struct rkvdec_h264_priv_tbl, scaling_list);
-> +	scaling_list_address = h264_ctx->priv_tbl.dma + scaling_distance;
-> +	hw_ps->pps.scaling_list_address = scaling_list_address;
-> +
-> +	for (i = 0; i < ARRAY_SIZE(dec_params->dpb); i++) {
-> +		if (dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM)
-> +			hw_ps->pps.is_longterm |= (1 << i);
-> +	}
-> +}
-> +
-> +static void rkvdec_write_regs(struct rkvdec_ctx *ctx)
-> +{
-> +	struct rkvdec_dev *rkvdec = ctx->dev;
-> +	struct rkvdec_h264_ctx *h264_ctx = ctx->priv;
-> +
-> +	rkvdec_memcpy_toio(rkvdec->regs + OFFSET_COMMON_REGS,
-> +			   &h264_ctx->regs.common,
-> +			   sizeof(h264_ctx->regs.common));
-> +	rkvdec_memcpy_toio(rkvdec->regs + OFFSET_CODEC_PARAMS_REGS,
-> +			   &h264_ctx->regs.h264_param,
-> +			   sizeof(h264_ctx->regs.h264_param));
-> +	rkvdec_memcpy_toio(rkvdec->regs + OFFSET_COMMON_ADDR_REGS,
-> +			   &h264_ctx->regs.common_addr,
-> +			   sizeof(h264_ctx->regs.common_addr));
-> +	rkvdec_memcpy_toio(rkvdec->regs + OFFSET_CODEC_ADDR_REGS,
-> +			   &h264_ctx->regs.h264_addr,
-> +			   sizeof(h264_ctx->regs.h264_addr));
-> +	rkvdec_memcpy_toio(rkvdec->regs + OFFSET_POC_HIGHBIT_REGS,
-> +			   &h264_ctx->regs.h264_highpoc,
-> +			   sizeof(h264_ctx->regs.h264_highpoc));
-> +}
-> +
-> +static void config_registers(struct rkvdec_ctx *ctx,
-> +			     struct rkvdec_h264_run *run)
-> +{
-> +	const struct v4l2_ctrl_h264_decode_params *dec_params = run->decode_params;
-> +	const struct v4l2_h264_dpb_entry *dpb = dec_params->dpb;
-> +	struct rkvdec_h264_ctx *h264_ctx = ctx->priv;
-> +	dma_addr_t priv_start_addr = h264_ctx->priv_tbl.dma;
-> +	const struct v4l2_pix_format_mplane *dst_fmt;
-> +	struct vb2_v4l2_buffer *src_buf = run->base.bufs.src;
-> +	struct vb2_v4l2_buffer *dst_buf = run->base.bufs.dst;
-> +	struct rkvdec_vdpu381_regs_h264 *regs = &h264_ctx->regs;
-> +	const struct v4l2_format *f;
-> +	dma_addr_t rlc_addr;
-> +	dma_addr_t dst_addr;
-> +	u32 hor_virstride;
-> +	u32 ver_virstride;
-> +	u32 y_virstride;
-> +	u32 offset;
-> +	u32 pixels;
-> +	u32 i;
-> +
-> +	memset(regs, 0, sizeof(*regs));
-> +
-> +	/* Set H264 mode */
-> +	regs->common.reg009.dec_mode = VDPU381_MODE_H264;
-> +
-> +	/* Set config */
-> +	regs->common.reg011.buf_empty_en = 1;
-> +	regs->common.reg011.dec_clkgate_e = 1;
-> +	regs->common.reg011.dec_timeout_e = 1;
-> +	regs->common.reg011.pix_range_detection_e = 1;
-> +
-> +	/*
-> +	 * Even though the scan list address can be set in RPS,
-> +	 * with some frames, it will try to use the address set in the register.
-> +	 */
-> +	regs->common.reg012.scanlist_addr_valid_en = 1;
-> +
-> +	/* Set IDR flag */
-> +	regs->common.reg013.cur_pic_is_idr =
-> +		!!(dec_params->flags & V4L2_H264_DECODE_PARAM_FLAG_IDR_PIC);
-> +
-> +	/* Set input stream length */
-> +	regs->common.stream_len = vb2_get_plane_payload(&src_buf->vb2_buf, 0);
-> +
-> +	/* Set max slice number */
-> +	regs->common.reg017.slice_num = MAX_SLICE_NUMBER;
-> +
-> +	/* Set strides */
-> +	f = &ctx->decoded_fmt;
-> +	dst_fmt = &f->fmt.pix_mp;
-> +	hor_virstride = dst_fmt->plane_fmt[0].bytesperline;
-> +	ver_virstride = dst_fmt->height;
-> +	y_virstride = hor_virstride * ver_virstride;
-> +
-> +	pixels = dst_fmt->height * dst_fmt->width;
-> +
-> +	regs->common.reg018.y_hor_virstride = hor_virstride / 16;
-> +	regs->common.reg019.uv_hor_virstride = hor_virstride / 16;
-> +	regs->common.reg020.y_virstride = y_virstride / 16;
-> +
-> +	/* Activate block gating */
-> +	regs->common.reg026.swreg_block_gating_e = 0xfffef;
-> +	regs->common.reg026.reg_cfg_gating_en = 1;
-> +
-> +	/* Set timeout threshold */
-> +	if (pixels < RKVDEC_1080P_PIXELS)
-> +		regs->common.timeout_threshold = RKVDEC_TIMEOUT_1080p;
-> +	else if (pixels < RKVDEC_4K_PIXELS)
-> +		regs->common.timeout_threshold = RKVDEC_TIMEOUT_4K;
-> +	else if (pixels < RKVDEC_8K_PIXELS)
-> +		regs->common.timeout_threshold = RKVDEC_TIMEOUT_8K;
-> +	else
-> +		regs->common.timeout_threshold = RKVDEC_TIMEOUT_MAX;
-> +
-> +	/* Set TOP and BOTTOM POCs */
-> +	regs->h264_param.cur_top_poc = dec_params->top_field_order_cnt;
-> +	regs->h264_param.cur_bot_poc = dec_params->bottom_field_order_cnt;
-> +
-> +	/* Set ref pic address & poc */
-> +	for (i = 0; i < ARRAY_SIZE(dec_params->dpb); i++) {
-> +		struct vb2_buffer *vb_buf = run->ref_buf[i];
-> +		dma_addr_t buf_dma;
-> +
-> +		/*
-> +		 * If a DPB entry is unused or invalid, address of current destination
-> +		 * buffer is returned.
-> +		 */
-> +		if (!vb_buf)
-> +			vb_buf = &dst_buf->vb2_buf;
-> +
-> +		buf_dma = vb2_dma_contig_plane_dma_addr(vb_buf, 0);
-> +
-> +		/* Set reference addresses */
-> +		regs->h264_addr.ref_base[i] = buf_dma;
-> +
-> +		/* Set COLMV addresses */
-> +		regs->h264_addr.colmv_base[i] = buf_dma + ctx->colmv_offset;
-> +
-> +		struct rkvdec_vdpu381_h264_ref_info *ref_info =
-> +			&regs->h264_param.ref_info_regs[i / 4].ref_info[i % 4];
-> +
-> +		ref_info->ref_field =
-> +			!!(dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_FIELD);
-> +		ref_info->ref_colmv_use_flag =
-> +			!!(dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_ACTIVE);
-> +		ref_info->ref_topfield_used =
-> +			!!(dpb[i].fields & V4L2_H264_TOP_FIELD_REF);
-> +		ref_info->ref_botfield_used =
-> +			!!(dpb[i].fields & V4L2_H264_BOTTOM_FIELD_REF);
-> +
-> +		regs->h264_param.ref_pocs[i * 2] =
-> +			dpb[i].top_field_order_cnt;
-> +		regs->h264_param.ref_pocs[i * 2 + 1] =
-> +			dpb[i].bottom_field_order_cnt;
-> +	}
-> +
-> +	/* Set rlc base address (input stream) */
-> +	rlc_addr = vb2_dma_contig_plane_dma_addr(&src_buf->vb2_buf, 0);
-> +	regs->common_addr.rlc_base = rlc_addr;
-> +	regs->common_addr.rlcwrite_base = rlc_addr;
-> +
-> +	/* Set output base address */
-> +	dst_addr = vb2_dma_contig_plane_dma_addr(&dst_buf->vb2_buf, 0);
-> +	regs->common_addr.decout_base = dst_addr;
-> +	regs->common_addr.error_ref_base = dst_addr;
-> +
-> +	/* Set colmv address */
-> +	regs->common_addr.colmv_cur_base = dst_addr + ctx->colmv_offset;
-> +
-> +	/* Set RCB addresses */
-> +	for (i = 0; i < rkvdec_rcb_buf_count(ctx); i++)
-> +		regs->common_addr.rcb_base[i] = rkvdec_rcb_buf_dma_addr(ctx, i);
-> +
-> +	/* Set hw pps address */
-> +	offset = offsetof(struct rkvdec_h264_priv_tbl, param_set);
-> +	regs->h264_addr.pps_base = priv_start_addr + offset;
-> +
-> +	/* Set hw rps address */
-> +	offset = offsetof(struct rkvdec_h264_priv_tbl, rps);
-> +	regs->h264_addr.rps_base = priv_start_addr + offset;
-> +
-> +	/* Set cabac table */
-> +	offset = offsetof(struct rkvdec_h264_priv_tbl, cabac_table);
-> +	regs->h264_addr.cabactbl_base = priv_start_addr + offset;
-> +
-> +	offset = offsetof(struct rkvdec_h264_priv_tbl, scaling_list);
-> +	regs->h264_addr.scanlist_addr = priv_start_addr + offset;
-> +
-> +	rkvdec_write_regs(ctx);
-> +}
-> +
-> +static int rkvdec_h264_start(struct rkvdec_ctx *ctx)
-> +{
-> +	struct rkvdec_dev *rkvdec = ctx->dev;
-> +	struct rkvdec_h264_priv_tbl *priv_tbl;
-> +	struct rkvdec_h264_ctx *h264_ctx;
-> +	struct v4l2_ctrl *ctrl;
-> +	int ret;
-> +
-> +	ctrl = v4l2_ctrl_find(&ctx->ctrl_hdl,
-> +			      V4L2_CID_STATELESS_H264_SPS);
-> +	if (!ctrl)
-> +		return -EINVAL;
-> +
-> +	h264_ctx = kzalloc(sizeof(*h264_ctx), GFP_KERNEL);
-> +	if (!h264_ctx)
-> +		return -ENOMEM;
-> +
-> +	priv_tbl = dma_alloc_coherent(rkvdec->dev, sizeof(*priv_tbl),
-> +				      &h264_ctx->priv_tbl.dma, GFP_KERNEL);
-> +	if (!priv_tbl) {
-> +		ret = -ENOMEM;
-> +		goto err_free_ctx;
-> +	}
-> +
-> +	h264_ctx->priv_tbl.size = sizeof(*priv_tbl);
-> +	h264_ctx->priv_tbl.cpu = priv_tbl;
-> +	memcpy(priv_tbl->cabac_table, rkvdec_h264_cabac_table,
-> +	       sizeof(rkvdec_h264_cabac_table));
-> +
-> +	ctx->priv = h264_ctx;
-> +	return 0;
-> +
-> +err_free_ctx:
-> +	kfree(h264_ctx);
-> +	return ret;
-> +}
-> +
-> +static void rkvdec_h264_stop(struct rkvdec_ctx *ctx)
-> +{
-> +	struct rkvdec_h264_ctx *h264_ctx = ctx->priv;
-> +	struct rkvdec_dev *rkvdec = ctx->dev;
-> +
-> +	dma_free_coherent(rkvdec->dev, h264_ctx->priv_tbl.size,
-> +			  h264_ctx->priv_tbl.cpu, h264_ctx->priv_tbl.dma);
-> +	kfree(h264_ctx);
-> +}
-> +
-> +static int rkvdec_h264_run(struct rkvdec_ctx *ctx)
-> +{
-> +	struct v4l2_h264_reflist_builder reflist_builder;
-> +	struct rkvdec_dev *rkvdec = ctx->dev;
-> +	struct rkvdec_h264_ctx *h264_ctx = ctx->priv;
-> +	struct rkvdec_h264_priv_tbl *tbl = h264_ctx->priv_tbl.cpu;
-> +	struct rkvdec_h264_run run;
-> +	u32 watchdog_time;
-> +
-> +	rkvdec_h264_run_preamble(ctx, &run);
-> +
-> +	/* Build the P/B{0,1} ref lists. */
-> +	v4l2_h264_init_reflist_builder(&reflist_builder, run.decode_params,
-> +				       run.sps, run.decode_params->dpb);
-> +	v4l2_h264_build_p_ref_list(&reflist_builder, h264_ctx->reflists.p);
-> +	v4l2_h264_build_b_ref_lists(&reflist_builder, h264_ctx->reflists.b0,
-> +				    h264_ctx->reflists.b1);
-> +
-> +	assemble_hw_scaling_list(&run, &tbl->scaling_list);
-> +	assemble_hw_pps(ctx, &run);
-> +	lookup_ref_buf_idx(ctx, &run);
-> +	assemble_hw_rps(&reflist_builder, &run, &h264_ctx->reflists, &tbl->rps);
-> +
-> +	config_registers(ctx, &run);
-> +
-> +	rkvdec_run_postamble(ctx, &run.base);
-> +
-> +	/* Set watchdog at 2 times the hardware timeout threshold */
-> +	u64 timeout_threshold = h264_ctx->regs.common.timeout_threshold;
-> +	unsigned long axi_rate = clk_get_rate(rkvdec->axi_clk);
-> +
-> +	if (axi_rate)
-> +		watchdog_time = 2 * (1000 * timeout_threshold) / axi_rate;
-> +	else
-> +		watchdog_time = 2000;
-> +	schedule_delayed_work(&rkvdec->watchdog_work,
-> +			      msecs_to_jiffies(watchdog_time));
-> +
-> +	/* Start decoding! */
-> +	writel(VDPU381_DEC_E_BIT, rkvdec->regs + VDPU381_REG_DEC_E);
-> +
-> +	return 0;
-> +}
-> +
-> +static int rkvdec_h264_try_ctrl(struct rkvdec_ctx *ctx, struct v4l2_ctrl *ctrl)
-> +{
-> +	if (ctrl->id == V4L2_CID_STATELESS_H264_SPS)
-> +		return rkvdec_h264_validate_sps(ctx, ctrl->p_new.p_h264_sps);
-> +
-> +	return 0;
-> +}
-> +
-> +const struct rkvdec_coded_fmt_ops rkvdec_vdpu381_h264_fmt_ops = {
-> +	.adjust_fmt = rkvdec_h264_adjust_fmt,
-> +	.get_image_fmt = rkvdec_h264_get_image_fmt,
-> +	.start = rkvdec_h264_start,
-> +	.stop = rkvdec_h264_stop,
-> +	.run = rkvdec_h264_run,
-> +	.try_ctrl = rkvdec_h264_try_ctrl,
-> +};
-> diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-regs.h b/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-regs.h
-> new file mode 100644
-> index 0000000000000..a9a2daa24048b
-> --- /dev/null
-> +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-regs.h
-> @@ -0,0 +1,424 @@
-> +/* SPDX-License-Identifier: GPL-2.0 */
-> +/*
-> + * Rockchip VDPU381 Video Decoder driver registers description
-> + *
-> + * Copyright (C) 2024 Collabora, Ltd.
-> + *  Detlev Casanova <detlev.casanova@collabora.com>
-> + */
-> +
-> +#include <linux/types.h>
-> +
-> +#ifndef _RKVDEC_REGS_H_
-> +#define _RKVDEC_REGS_H_
-> +
-> +#define OFFSET_COMMON_REGS		(8 * sizeof(u32))
-> +#define OFFSET_CODEC_PARAMS_REGS	(64 * sizeof(u32))
-> +#define OFFSET_COMMON_ADDR_REGS		(128 * sizeof(u32))
-> +#define OFFSET_CODEC_ADDR_REGS		(160 * sizeof(u32))
-> +#define OFFSET_POC_HIGHBIT_REGS		(200 * sizeof(u32))
-> +
-> +#define VDPU381_MODE_HEVC	0
-> +#define VDPU381_MODE_H264	1
-> +#define VDPU381_MODE_VP9	2
-> +#define VDPU381_MODE_AVS2	3
-> +
-> +#define MAX_SLICE_NUMBER	0x3fff
-> +
-> +#define RKVDEC_TIMEOUT_1080p		(0xefffff)
-> +#define RKVDEC_TIMEOUT_4K		(0x2cfffff)
-> +#define RKVDEC_TIMEOUT_8K		(0x4ffffff)
-> +#define RKVDEC_TIMEOUT_MAX		(0xffffffff)
-> +
-> +#define VDPU381_REG_DEC_E		0x028
-> +#define VDPU381_DEC_E_BIT		1
-> +
-> +#define VDPU381_REG_IMPORTANT_EN	0x02c
-> +#define VDPU381_DEC_IRQ_DISABLE	BIT(4)
-> +
-> +#define VDPU381_REG_STA_INT		0x380
-> +#define VDPU381_STA_INT_DEC_RDY_STA	BIT(2)
-> +#define VDPU381_STA_INT_ERROR		BIT(4)
-> +#define VDPU381_STA_INT_TIMEOUT		BIT(5)
-> +#define VDPU381_STA_INT_SOFTRESET_RDY	BIT(9)
-> +
-> +/* base: OFFSET_COMMON_REGS */
-> +struct rkvdec_vdpu381_regs_common {
-> +	struct rkvdec_vdpu381_in_out {
-> +		u32 in_endian		: 1;
-> +		u32 in_swap32_e		: 1;
-> +		u32 in_swap64_e		: 1;
-> +		u32 str_endian		: 1;
-> +		u32 str_swap32_e	: 1;
-> +		u32 str_swap64_e	: 1;
-> +		u32 out_endian		: 1;
-> +		u32 out_swap32_e	: 1;
-> +		u32 out_cbcr_swap	: 1;
-> +		u32 out_swap64_e	: 1;
-> +		u32 reserved		: 22;
-> +	} reg008;
-> +
-> +	struct rkvdec_vdpu381_dec_mode {
-> +		u32 dec_mode	: 10;
-> +		u32 reserved	: 22;
-> +	} reg009;
-> +
-> +	struct rkvdec_vdpu381_dec_e {
-> +		u32 dec_e	: 1;
-> +		u32 reserved	: 31;
-> +	} reg010;
-> +
-> +	struct rkvdec_vdpu381_important_en {
-> +		u32 reserved			: 1;
-> +		u32 dec_clkgate_e		: 1;
-> +		u32 dec_e_strmd_clkgate_dis	: 1;
-> +		u32 reserved0			: 1;
-> +
-> +		u32 dec_irq_dis			: 1;
-> +		u32 dec_timeout_e		: 1;
-> +		u32 buf_empty_en		: 1;
-> +		u32 reserved1			: 3;
-> +
-> +		u32 dec_e_rewrite_valid		: 1;
-> +		u32 reserved2			: 9;
-> +		u32 softrst_en_p		: 1;
-> +		u32 force_softreset_valid	: 1;
-> +		u32 reserved3			: 2;
-> +		u32 pix_range_detection_e	: 1;
-> +		u32 reserved4			: 7;
-> +	} reg011;
-> +
-> +	struct rkvdec_vdpu381_secondary_en {
-> +		u32 wr_ddr_align_en		: 1;
-> +		u32 colmv_compress_en		: 1;
-> +		u32 fbc_e			: 1;
-> +		u32 reserved0			: 1;
-> +
-> +		u32 buspr_slot_disable		: 1;
-> +		u32 error_info_en		: 1;
-> +		u32 info_collect_en		: 1;
-> +		u32 wait_reset_en		: 1;
-> +
-> +		u32 scanlist_addr_valid_en	: 1;
-> +		u32 scale_down_en		: 1;
-> +		u32 error_cfg_wr_disable	: 1;
-> +		u32 reserved1			: 21;
-> +	} reg012;
-> +
-> +	struct rkvdec_vdpu381_en_mode_set {
-> +		u32 timeout_mode		: 1;
-> +		u32 req_timeout_rst_sel		: 1;
-> +		u32 reserved0			: 1;
-> +		u32 dec_commonirq_mode		: 1;
-> +		u32 reserved1			: 2;
-> +		u32 stmerror_waitdecfifo_empty	: 1;
-> +		u32 reserved2			: 2;
-> +		u32 h26x_streamd_error_mode	: 1;
-> +		u32 reserved3			: 2;
-> +		u32 allow_not_wr_unref_bframe	: 1;
-> +		u32 fbc_output_wr_disable	: 1;
-> +		u32 reserved4			: 1;
-> +		u32 colmv_error_mode		: 1;
-> +
-> +		u32 reserved5			: 2;
-> +		u32 h26x_error_mode		: 1;
-> +		u32 reserved6			: 2;
-> +		u32 ycacherd_prior		: 1;
-> +		u32 reserved7			: 2;
-> +		u32 cur_pic_is_idr		: 1;
-> +		u32 reserved8			: 1;
-> +		u32 right_auto_rst_disable	: 1;
-> +		u32 frame_end_err_rst_flag	: 1;
-> +		u32 rd_prior_mode		: 1;
-> +		u32 rd_ctrl_prior_mode		: 1;
-> +		u32 reserved9			: 1;
-> +		u32 filter_outbuf_mode		: 1;
-> +	} reg013;
-> +
-> +	struct rkvdec_vdpu381_fbc_param_set {
-> +		u32 fbc_force_uncompress	: 1;
-> +
-> +		u32 reserved0			: 2;
-> +		u32 allow_16x8_cp_flag		: 1;
-> +		u32 reserved1			: 2;
-> +
-> +		u32 fbc_h264_exten_4or8_flag	: 1;
-> +		u32 reserved2			: 25;
-> +	} reg014;
-> +
-> +	struct rkvdec_vdpu381_stream_param_set {
-> +		u32 rlc_mode_direct_write	: 1;
-> +		u32 rlc_mode			: 1;
-> +		u32 reserved0			: 3;
-> +
-> +		u32 strm_start_bit		: 7;
-> +		u32 reserved1			: 20;
-> +	} reg015;
-> +
-> +	u32 stream_len;
-> +
-> +	struct rkvdec_vdpu381_slice_number {
-> +		u32 slice_num	: 25;
-> +		u32 reserved	: 7;
-> +	} reg017;
-> +
-> +	struct rkvdec_vdpu381_y_hor_stride {
-> +		u32 y_hor_virstride	: 16;
-> +		u32 reserved		: 16;
-> +	} reg018;
-> +
-> +	struct rkvdec_vdpu381_uv_hor_stride {
-> +		u32 uv_hor_virstride	: 16;
-> +		u32 reserved		: 16;
-> +	} reg019;
-> +
-> +	struct rkvdec_vdpu381_y_stride {
-> +		u32 y_virstride		: 28;
-> +		u32 reserved		: 4;
-> +	} reg020;
-> +
-> +	struct rkvdec_vdpu381_error_ctrl_set {
-> +		u32 inter_error_prc_mode		: 1;
-> +		u32 error_intra_mode			: 1;
-> +		u32 error_deb_en			: 1;
-> +		u32 picidx_replace			: 5;
-> +		u32 error_spread_e			: 1;
-> +		u32 reserved0				: 3;
-> +		u32 error_inter_pred_cross_slice	: 1;
-> +		u32 reserved1				: 11;
-> +		u32 roi_error_ctu_cal_en		: 1;
-> +		u32 reserved2				: 7;
-> +	} reg021;
-> +
-> +	struct rkvdec_vdpu381_err_roi_ctu_offset_start {
-> +		u32 roi_x_ctu_offset_st	: 12;
-> +		u32 reserved0		: 4;
-> +		u32 roi_y_ctu_offset_st	: 12;
-> +		u32 reserved1		: 4;
-> +	} reg022;
-> +
-> +	struct rkvdec_vdpu381_err_roi_ctu_offset_end {
-> +		u32 roi_x_ctu_offset_end	: 12;
-> +		u32 reserved0			: 4;
-> +		u32 roi_y_ctu_offset_end	: 12;
-> +		u32 reserved1			: 4;
-> +	} reg023;
-> +
-> +	struct rkvdec_vdpu381_cabac_error_en_lowbits {
-> +		u32 cabac_err_en_lowbits	: 32;
-> +	} reg024;
-> +
-> +	struct rkvdec_vdpu381_cabac_error_en_highbits {
-> +		u32 cabac_err_en_highbits	: 30;
-> +		u32 reserved			: 2;
-> +	} reg025;
-> +
-> +	struct rkvdec_vdpu381_block_gating_en {
-> +		u32 swreg_block_gating_e	: 20;
-> +		u32 reserved			: 11;
-> +		u32 reg_cfg_gating_en		: 1;
-> +	} reg026;
-> +
-> +	struct SW027_CORE_SAFE_PIXELS {
-> +		u32 core_safe_x_pixels	: 16;
-> +		u32 core_safe_y_pixels	: 16;
-> +	} reg027;
-> +
-> +	struct rkvdec_vdpu381_multiply_core_ctrl {
-> +		u32 swreg_vp9_wr_prob_idx	: 3;
-> +		u32 reserved0			: 1;
-> +		u32 swreg_vp9_rd_prob_idx	: 3;
-> +		u32 reserved1			: 1;
-> +
-> +		u32 swreg_ref_req_advance_flag	: 1;
-> +		u32 sw_colmv_req_advance_flag	: 1;
-> +		u32 sw_poc_only_highbit_flag	: 1;
-> +		u32 sw_poc_arb_flag		: 1;
-> +
-> +		u32 reserved2			: 4;
-> +		u32 sw_film_idx			: 10;
-> +		u32 reserved3			: 2;
-> +		u32 sw_pu_req_mismatch_dis	: 1;
-> +		u32 sw_colmv_req_mismatch_dis	: 1;
-> +		u32 reserved4			: 2;
-> +	} reg028;
-> +
-> +	struct SW029_SCALE_DOWN_CTRL {
-> +		u32 scale_down_hor_ratio	: 2;
-> +		u32 reserved0			: 6;
-> +		u32 scale_down_vrz_ratio	: 2;
-> +		u32 reserved1			: 22;
-> +	} reg029;
-> +
-> +	struct SW032_Y_SCALE_DOWN_TILE8x8_HOR_STRIDE {
-> +		u32 y_scale_down_hor_stride	: 20;
-> +		u32 reserved0			: 12;
-> +	} reg030;
-> +
-> +	struct SW031_UV_SCALE_DOWN_TILE8x8_HOR_STRIDE {
-> +		u32 uv_scale_down_hor_stride	: 20;
-> +		u32 reserved0			: 12;
-> +	} reg031;
-> +
-> +	u32 timeout_threshold;
-> +} __packed;
-> +
-> +/* base: OFFSET_COMMON_ADDR_REGS */
-> +struct rkvdec_vdpu381_regs_common_addr {
-> +	u32 rlc_base;
-> +	u32 rlcwrite_base;
-> +	u32 decout_base;
-> +	u32 colmv_cur_base;
-> +	u32 error_ref_base;
-> +	u32 rcb_base[10];
-> +} __packed;
-> +
-> +struct rkvdec_vdpu381_h26x_set {
-> +	u32 h26x_frame_orslice		: 1;
-> +	u32 h26x_rps_mode		: 1;
-> +	u32 h26x_stream_mode		: 1;
-> +	u32 h26x_stream_lastpacket	: 1;
-> +	u32 h264_firstslice_flag	: 1;
-> +	u32 reserved			: 27;
-> +} __packed;
-> +
-> +/* base: OFFSET_CODEC_PARAMS_REGS */
-> +struct rkvdec_vdpu381_regs_h264_params {
-> +	struct rkvdec_vdpu381_h26x_set reg064;
-> +
-> +	u32 cur_top_poc;
-> +	u32 cur_bot_poc;
-> +	u32 ref_pocs[32];
-> +
-> +	struct rkvdec_vdpu381_h264_info {
-> +		struct rkvdec_vdpu381_h264_ref_info {
-> +			u32 ref_field		: 1;
-> +			u32 ref_topfield_used	: 1;
-> +			u32 ref_botfield_used	: 1;
-> +			u32 ref_colmv_use_flag	: 1;
-> +			u32 ref_reserved	: 4;
-> +		} __packed ref_info[4];
-> +	} __packed ref_info_regs[4];
-> +
-> +	u32 reserved_103_111[9];
-> +
-> +	struct rkvdec_vdpu381_error_ref_info {
-> +		u32 avs2_ref_error_field	: 1;
-> +		u32 avs2_ref_error_topfield	: 1;
-> +		u32 ref_error_topfield_used	: 1;
-> +		u32 ref_error_botfield_used	: 1;
-> +		u32 reserved			: 28;
-> +	} reg112;
-> +} __packed;
-> +
-> +struct rkvdec_vdpu381_regs_hevc_params {
-> +	struct rkvdec_vdpu381_h26x_set reg064;
-> +
-> +	u32 cur_top_poc;
-> +	u32 cur_bot_poc;
-> +
-> +	u32 reg067_082_ref_poc[16];
-> +
-> +	u32 reserved_083_098[16];
-> +
-> +	struct rkvdec_vdpu381_hevc_ref_valid {
-> +		u32 hevc_ref_valid_0    : 1;
-> +		u32 hevc_ref_valid_1    : 1;
-> +		u32 hevc_ref_valid_2    : 1;
-> +		u32 hevc_ref_valid_3    : 1;
-> +		u32 reserve0            : 4;
-> +		u32 hevc_ref_valid_4    : 1;
-> +		u32 hevc_ref_valid_5    : 1;
-> +		u32 hevc_ref_valid_6    : 1;
-> +		u32 hevc_ref_valid_7    : 1;
-> +		u32 reserve1            : 4;
-> +		u32 hevc_ref_valid_8    : 1;
-> +		u32 hevc_ref_valid_9    : 1;
-> +		u32 hevc_ref_valid_10   : 1;
-> +		u32 hevc_ref_valid_11   : 1;
-> +		u32 reserve2            : 4;
-> +		u32 hevc_ref_valid_12   : 1;
-> +		u32 hevc_ref_valid_13   : 1;
-> +		u32 hevc_ref_valid_14   : 1;
-> +		u32 reserve3            : 5;
-> +	} reg099;
-> +
-> +	u32 reserved_100_102[3];
-> +
-> +	struct rkvdec_vdpu381_hevc_mvc0 {
-> +		u32 ref_pic_layer_same_with_cur : 16;
-> +		u32 reserve                     : 16;
-> +	} reg103;
-> +
-> +	struct rkvdec_vdpu381_hevc_mvc1 {
-> +		u32 poc_lsb_not_present_flag        : 1;
-> +		u32 num_direct_ref_layers           : 6;
-> +		u32 reserve0                        : 1;
-> +
-> +		u32 num_reflayer_pics               : 6;
-> +		u32 default_ref_layers_active_flag  : 1;
-> +		u32 max_one_active_ref_layer_flag   : 1;
-> +
-> +		u32 poc_reset_info_present_flag     : 1;
-> +		u32 vps_poc_lsb_aligned_flag        : 1;
-> +		u32 mvc_poc15_valid_flag            : 1;
-> +		u32 reserve1                        : 13;
-> +	} reg104;
-> +
-> +	u32 reserved_105_111[7];
-> +
-> +	struct rkvdec_vdpu381_hevc_ref_info {
-> +		u32 avs2_ref_error_field        : 1;
-> +		u32 avs2_ref_error_topfield     : 1;
-> +		u32 ref_error_topfield_used     : 1;
-> +		u32 ref_error_botfield_used     : 1;
-> +		u32 reserve                     : 28;
-> +	} reg112;
-> +
-> +} __packed;
-> +
-> +/* base: OFFSET_CODEC_ADDR_REGS */
-> +struct rkvdec_vdpu381_regs_h26x_addr {
-> +	u32 reserved_160;
-> +	u32 pps_base;
-> +	u32 reserved_162;
-> +	u32 rps_base;
-> +	u32 ref_base[16];
-> +	u32 scanlist_addr;
-> +	u32 colmv_base[16];
-> +	u32 cabactbl_base;
-> +} __packed;
-> +
-> +struct rkvdec_vdpu381_regs_h26x_highpoc {
-> +	struct rkvdec_vdpu381_ref_poc_highbit {
-> +		u32 ref0_poc_highbit	: 4;
-> +		u32 ref1_poc_highbit	: 4;
-> +		u32 ref2_poc_highbit	: 4;
-> +		u32 ref3_poc_highbit	: 4;
-> +		u32 ref4_poc_highbit	: 4;
-> +		u32 ref5_poc_highbit	: 4;
-> +		u32 ref6_poc_highbit	: 4;
-> +		u32 ref7_poc_highbit	: 4;
-> +	} reg200[4];
-> +	struct rkvdec_vdpu381_cur_poc_highbit {
-> +		u32 cur_poc_highbit	: 4;
-> +		u32 reserved		: 28;
-> +	} reg204;
-> +} __packed;
-> +
-> +struct rkvdec_vdpu381_regs_h264 {
-> +	struct rkvdec_vdpu381_regs_common		common;
-> +	struct rkvdec_vdpu381_regs_h264_params		h264_param;
-> +	struct rkvdec_vdpu381_regs_common_addr		common_addr;
-> +	struct rkvdec_vdpu381_regs_h26x_addr		h264_addr;
-> +	struct rkvdec_vdpu381_regs_h26x_highpoc		h264_highpoc;
-> +} __packed;
-> +
-> +struct rkvdec_vdpu381_regs_hevc {
-> +	struct rkvdec_vdpu381_regs_common		common;
-> +	struct rkvdec_vdpu381_regs_hevc_params		hevc_param;
-> +	struct rkvdec_vdpu381_regs_common_addr		common_addr;
-> +	struct rkvdec_vdpu381_regs_h26x_addr		hevc_addr;
-> +	struct rkvdec_vdpu381_regs_h26x_highpoc		hevc_highpoc;
-> +} __packed;
-> +
-> +#endif /* __RKVDEC_REGS_H__ */
-> diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.c b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-> index af2eced900269..3d243b6e11445 100644
-> --- a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-> +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-> @@ -29,6 +29,7 @@
->  
->  #include "rkvdec.h"
->  #include "rkvdec-regs.h"
-> +#include "rkvdec-vdpu381-regs.h"
->  #include "rkvdec-rcb.h"
->  
->  static bool rkvdec_image_fmt_match(enum rkvdec_image_fmt fmt1,
-> @@ -90,6 +91,9 @@ static void rkvdec_fill_decoded_pixfmt(struct rkvdec_ctx *ctx,
->  {
->  	v4l2_fill_pixfmt_mp(pix_mp, pix_mp->pixelformat,
->  			    pix_mp->width, pix_mp->height);
-> +
-> +	ctx->colmv_offset = pix_mp->plane_fmt[0].sizeimage;
-> +
->  	pix_mp->plane_fmt[0].sizeimage += 128 *
->  		DIV_ROUND_UP(pix_mp->width, 16) *
->  		DIV_ROUND_UP(pix_mp->height, 16);
-> @@ -382,6 +386,25 @@ static const struct rkvdec_coded_fmt_desc rk3288_coded_fmts[] = {
->  	}
->  };
->  
-> +static const struct rkvdec_coded_fmt_desc vdpu381_coded_fmts[] = {
-> +	{
-> +		.fourcc = V4L2_PIX_FMT_H264_SLICE,
-> +		.frmsize = {
-> +			.min_width = 64,
-> +			.max_width =  65520,
-> +			.step_width = 64,
-> +			.min_height = 64,
-> +			.max_height =  65520,
-> +			.step_height = 16,
-> +		},
-> +		.ctrls = &rkvdec_h264_ctrls,
-> +		.ops = &rkvdec_vdpu381_h264_fmt_ops,
-> +		.num_decoded_fmts = ARRAY_SIZE(rkvdec_h264_decoded_fmts),
-> +		.decoded_fmts = rkvdec_h264_decoded_fmts,
-> +		.subsystem_flags = VB2_V4L2_FL_SUPPORTS_M2M_HOLD_CAPTURE_BUF,
-> +	},
-> +};
-> +
->  static const struct rkvdec_coded_fmt_desc *
->  rkvdec_enum_coded_fmt_desc(struct rkvdec_ctx *ctx, int index)
->  {
-> @@ -1245,6 +1268,35 @@ static irqreturn_t rk3399_irq_handler(struct rkvdec_ctx *ctx)
->  	return IRQ_HANDLED;
->  }
->  
-> +static irqreturn_t vdpu381_irq_handler(struct rkvdec_ctx *ctx)
-> +{
-> +	struct rkvdec_dev *rkvdec = ctx->dev;
-> +	enum vb2_buffer_state state;
-> +	bool need_reset = 0;
-> +	u32 status;
-> +
-> +	status = readl(rkvdec->regs + VDPU381_REG_STA_INT);
-> +	writel(0, rkvdec->regs + VDPU381_REG_STA_INT);
-> +
-> +	if (status & VDPU381_STA_INT_DEC_RDY_STA) {
-> +		state = VB2_BUF_STATE_DONE;
-> +	} else {
-> +		state = VB2_BUF_STATE_ERROR;
-> +		if (status & (VDPU381_STA_INT_SOFTRESET_RDY |
-> +			      VDPU381_STA_INT_TIMEOUT |
-> +			      VDPU381_STA_INT_ERROR))
-> +			rkvdec_iommu_restore(rkvdec);
-> +	}
-> +
-> +	if (need_reset)
-> +		rkvdec_iommu_restore(rkvdec);
-> +
-> +	if (cancel_delayed_work(&rkvdec->watchdog_work))
-> +		rkvdec_job_finish(ctx, state);
-> +
-> +	return IRQ_HANDLED;
-> +}
-> +
->  static irqreturn_t rkvdec_irq_handler(int irq, void *priv)
->  {
->  	struct rkvdec_dev *rkvdec = priv;
-> @@ -1321,6 +1373,7 @@ static const struct rkvdec_variant rk3288_rkvdec_variant = {
->  	.coded_fmts = rk3288_coded_fmts,
->  	.num_coded_fmts = ARRAY_SIZE(rk3288_coded_fmts),
->  	.ops = &rk3399_variant_ops,
-> +	.has_single_reg_region = true,
->  };
->  
->  static const struct rkvdec_variant rk3328_rkvdec_variant = {
-> @@ -1328,6 +1381,7 @@ static const struct rkvdec_variant rk3328_rkvdec_variant = {
->  	.coded_fmts = rkvdec_coded_fmts,
->  	.num_coded_fmts = ARRAY_SIZE(rkvdec_coded_fmts),
->  	.ops = &rk3399_variant_ops,
-> +	.has_single_reg_region = true,
->  	.quirks = RKVDEC_QUIRK_DISABLE_QOS,
->  };
->  
-> @@ -1336,6 +1390,32 @@ static const struct rkvdec_variant rk3399_rkvdec_variant = {
->  	.coded_fmts = rkvdec_coded_fmts,
->  	.num_coded_fmts = ARRAY_SIZE(rkvdec_coded_fmts),
->  	.ops = &rk3399_variant_ops,
-> +	.has_single_reg_region = true,
-> +};
-> +
-> +static const struct rcb_size_info vdpu381_rcb_sizes[] = {
-> +	{6,	PIC_WIDTH},	// intrar
-> +	{1,	PIC_WIDTH},	// transdr (Is actually 0.4*pic_width)
-> +	{1,	PIC_HEIGHT},	// transdc (Is actually 0.1*pic_height)
-> +	{3,	PIC_WIDTH},	// streamdr
-> +	{6,	PIC_WIDTH},	// interr
-> +	{3,	PIC_HEIGHT},	// interc
-> +	{22,	PIC_WIDTH},	// dblkr
-> +	{6,	PIC_WIDTH},	// saor
-> +	{11,	PIC_WIDTH},	// fbcr
-> +	{67,	PIC_HEIGHT},	// filtc col
-> +};
-> +
-> +static const struct rkvdec_variant_ops vdpu381_variant_ops = {
-> +	.irq_handler = vdpu381_irq_handler,
-> +};
-> +
-> +static const struct rkvdec_variant vdpu381_variant = {
-> +	.coded_fmts = vdpu381_coded_fmts,
-> +	.num_coded_fmts = ARRAY_SIZE(vdpu381_coded_fmts),
-> +	.rcb_sizes = vdpu381_rcb_sizes,
-> +	.num_rcb_sizes = ARRAY_SIZE(vdpu381_rcb_sizes),
-> +	.ops = &vdpu381_variant_ops,
->  };
->  
->  static const struct of_device_id of_rkvdec_match[] = {
-> @@ -1351,6 +1431,10 @@ static const struct of_device_id of_rkvdec_match[] = {
->  		.compatible = "rockchip,rk3399-vdec",
->  		.data = &rk3399_rkvdec_variant,
->  	},
-> +	{
-> +		.compatible = "rockchip,rk3588-vdec",
-> +		.data = &vdpu381_variant,
-> +	},
->  	{ /* sentinel */ }
->  };
->  MODULE_DEVICE_TABLE(of, of_rkvdec_match);
-> @@ -1384,10 +1468,17 @@ static int rkvdec_probe(struct platform_device *pdev)
->  		return ret;
->  
->  	rkvdec->num_clocks = ret;
-> +	rkvdec->axi_clk = devm_clk_get(&pdev->dev, "axi");
->  
-> -	rkvdec->regs = devm_platform_ioremap_resource(pdev, 0);
-> -	if (IS_ERR(rkvdec->regs))
-> -		return PTR_ERR(rkvdec->regs);
-> +	if (rkvdec->variant->has_single_reg_region) {
-> +		rkvdec->regs = devm_platform_ioremap_resource(pdev, 0);
-> +		if (IS_ERR(rkvdec->regs))
-> +			return PTR_ERR(rkvdec->regs);
-> +	} else {
-> +		rkvdec->regs = devm_platform_ioremap_resource_byname(pdev, "function");
-> +		if (IS_ERR(rkvdec->regs))
-> +			return PTR_ERR(rkvdec->regs);
-> +	}
->  
->  	ret = dma_set_coherent_mask(&pdev->dev, DMA_BIT_MASK(32));
->  	if (ret) {
-> diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.h b/drivers/media/platform/rockchip/rkvdec/rkvdec.h
-> index 7766a79caf68b..401221061e081 100644
-> --- a/drivers/media/platform/rockchip/rkvdec/rkvdec.h
-> +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.h
-> @@ -25,6 +25,10 @@
->  
->  #define RKVDEC_QUIRK_DISABLE_QOS	BIT(0)
->  
-> +#define RKVDEC_1080P_PIXELS		(1920 * 1088)
-> +#define RKVDEC_4K_PIXELS		(4096 * 2304)
-> +#define RKVDEC_8K_PIXELS		(7680 * 4320)
-> +
->  struct rkvdec_ctx;
->  struct rkvdec_rcb_config;
->  
-> @@ -78,6 +82,7 @@ struct rkvdec_variant {
->  	const struct rcb_size_info *rcb_sizes;
->  	size_t num_rcb_sizes;
->  	const struct rkvdec_variant_ops *ops;
-> +	bool has_single_reg_region;
->  	unsigned int quirks;
->  };
->  
-> @@ -126,6 +131,7 @@ struct rkvdec_dev {
->  	struct device *dev;
->  	struct clk_bulk_data *clocks;
->  	unsigned int num_clocks;
-> +	struct clk *axi_clk;
->  	void __iomem *regs;
->  	struct mutex vdev_lock; /* serializes ioctls */
->  	struct delayed_work watchdog_work;
-> @@ -144,6 +150,7 @@ struct rkvdec_ctx {
->  	struct rkvdec_dev *dev;
->  	enum rkvdec_image_fmt image_fmt;
->  	struct rkvdec_rcb_config *rcb_config;
-> +	u32 colmv_offset;
->  	void *priv;
->  };
->  
-> @@ -170,8 +177,12 @@ void rkvdec_memcpy_toio(void __iomem *dst, void *src, size_t len);
->  
->  void rkvdec_quirks_disable_qos(struct rkvdec_ctx *ctx);
->  
-> +/* RKVDEC ops */
->  extern const struct rkvdec_coded_fmt_ops rkvdec_h264_fmt_ops;
->  extern const struct rkvdec_coded_fmt_ops rkvdec_hevc_fmt_ops;
->  extern const struct rkvdec_coded_fmt_ops rkvdec_vp9_fmt_ops;
->  
-> +/* VDPU381 ops */
-> +extern const struct rkvdec_coded_fmt_ops rkvdec_vdpu381_h264_fmt_ops;
-> +
->  #endif /* RKVDEC_H_ */
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+UHJvdmlkZSB0ZXN0IHRvIHZlcmlmeSB0aGUgYmVoYXZpb3Igb2YgQkFDS0dST1VORF9DT0xPUiBE
+Uk0gQ1JUQwpwcm9wZXJ0eS4KClRoaXMgaXMgYWNoaWV2ZWQgYnkgZmlsbGluZyBhIGZ1bGwtc2Ny
+ZWVuIHByaW1hcnkgcGxhbmUgd2l0aCBhIGdpdmVuCmNvbG9yIGFuZCBjb21wYXJpbmcgdGhlIHJl
+c3VsdGluZyBDUkMgd2l0aCB0aGUgb25lIG9idGFpbmVkIGFmdGVyCnR1cm5pbmcgb2ZmIGFsbCBw
+bGFuZXMgd2hpbGUgaGF2aW5nIHRoZSBDUlRDIGJhY2tncm91bmQgc2V0IHRvIHRoZSBzYW1lCmNv
+bG9yLgoKQWxzbyBub3RlIHRoaXMgaXMgYSByZXdvcmtlZCB2ZXJzaW9uIG9mIHRoZSB0ZXN0IHRo
+YXQgaGFzIGJlZW4gZHJvcHBlZApvdmVyIDUgeWVhcnMgYWdvIHZpYSBjb21taXQgMzNmMDczOTFl
+NWY2ICgidGVzdHM6IFJlbW92ZQprbXNfY3J0Y19iYWNrZ3JvdW5kX2NvbG9yIHRlc3QiKSwgYXMg
+dGhlIHJlcXVpcmVkIGtlcm5lbCBjaGFuZ2VzIG5ldmVyCmxhbmRlZCBiZWNhdXNlIG9mIG1pc3Np
+bmcgc3VwcG9ydCBpbiB1c2VybGFuZC4KClNpZ25lZC1vZmYtYnk6IENyaXN0aWFuIENpb2NhbHRl
+YSA8Y3Jpc3RpYW4uY2lvY2FsdGVhQGNvbGxhYm9yYS5jb20+Ci0tLQpUaGlzIGhhcyBiZWVuIHRl
+c3RlZCBvbiBib3RoIFZLTVMgYW5kIHRoZSBSb2NrY2hpcCBSSzM1ODggU29DIGJhc2VkClJhZHhh
+IFJPQ0sgNUIgYm9hcmQuICBJdCByZWxpZXMgb24gdGhlIGtlcm5lbCBzZXJpZXMgWzFdIGludHJv
+ZHVjaW5nIHRoZQpCQUNLR1JPVU5EX0NPTE9SIENSVEMgcHJvcGVydHkgYW5kIGEgZmV3IGFkZGl0
+aW9uYWwgcGF0Y2hlcyBmcm9tIFsyXQplbmFibGluZyB0aGUgcmVxdWlyZWQgQ1JDIGZ1bmN0aW9u
+YWxpdHkgZm9yIHRoZSBSb2NrY2hpcCBwbGF0Zm9ybS4KCkl0J3Mgd29ydGggbm90aW5nIENSQyBp
+cyBvbmx5IHN1cHBvcnRlZCBieSB0aGUgZGlzcGxheSBjb250cm9sbGVyIChWT1AyKQpwcmVzZW50
+IGluIHRoZSBSSzM1NzYgU29DIHZhcmlhbnQuICBIb3dldmVyLCB0aGUgY29tcHV0YXRpb24gaXMg
+ZG9uZSBieQp0aGUgaGFyZHdhcmUgYmVmb3JlIGFwcGx5aW5nIHRoZSBiYWNrZ3JvdW5kIGNvbG9y
+LCBoZW5jZSBpdCBoYXMgbGltaXRlZAp1c2FnZSBpbiBJR1QgdGVzdGluZy4KCkx1Y2tpbHksIHRo
+ZSBmcmFtZSBDUkNzIGNhbiBiZSBjYXB0dXJlZCB0aHJvdWdoIERQQ0QsIGkuZS4gYXQKRGlzcGxh
+eVBvcnQgQVVYIGNoYW5uZWwgbGV2ZWwsIGhlbmNlIEkgdXNlZCB0aGUgVVNCLUMgRFAgQWx0TW9k
+ZSBjYXBhYmxlCnBvcnQgb2YgdGhlIGFmb3JlbWVudGlvbmVkIGJvYXJkIHRvIHBlcmZvcm0gdGhl
+IGFjdHVhbCB2YWxpZGF0aW9uLgoKWzFdIGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2FsbC8yMDI1
+MTExOC1yazM1ODgtYmdjb2xvci12My0wLWEyY2M5MDk0MjhlYUBjb2xsYWJvcmEuY29tLwpbMl0g
+aHR0cHM6Ly9naXRsYWIuY29sbGFib3JhLmNvbS9oYXJkd2FyZS1lbmFibGVtZW50L3JvY2tjaGlw
+LTM1ODgvbGludXgvLS9jb21taXRzL2NyaXN0aWNjL3JrMzU4OC12b3AyLWNyYwoKKiBUZXN0IHJl
+c3VsdHMgb24gVktNUwoKdmlydG1lLW5nJCBJR1RfRk9SQ0VfRFJJVkVSPXZrbXMgYnVpbGQvdGVz
+dHMva21zX2NydGNfYmFja2dyb3VuZF9jb2xvcgoKSUdULVZlcnNpb246IDIuMi1nZjUwNTgzMjQ1
+ICh4ODZfNjQpIChMaW51eDogNi4xOC4wLXJjNS1uZXh0LTIwMjUxMTExKyB4ODZfNjQpClVzaW5n
+IElHVF9TUkFORE9NPTE3NjMxNTkxODkgZm9yIHJhbmRvbWlzYXRpb24KT3BlbmVkIGRldmljZTog
+L2Rldi9kcmkvY2FyZDAKU3RhcnRpbmcgc3VidGVzdDogYmFja2dyb3VuZC1jb2xvci1yZWQKU3Rh
+cnRpbmcgZHluYW1pYyBzdWJ0ZXN0OiBwaXBlLUEtVmlydHVhbC0xCkR5bmFtaWMgc3VidGVzdCBw
+aXBlLUEtVmlydHVhbC0xOiBTVUNDRVNTICgwLjA3MXMpClN1YnRlc3QgYmFja2dyb3VuZC1jb2xv
+ci1yZWQ6IFNVQ0NFU1MgKDAuMDcycykKU3RhcnRpbmcgc3VidGVzdDogYmFja2dyb3VuZC1jb2xv
+ci1ncmVlbgpTdGFydGluZyBkeW5hbWljIHN1YnRlc3Q6IHBpcGUtQS1WaXJ0dWFsLTEKRHluYW1p
+YyBzdWJ0ZXN0IHBpcGUtQS1WaXJ0dWFsLTE6IFNVQ0NFU1MgKDAuMDcycykKU3VidGVzdCBiYWNr
+Z3JvdW5kLWNvbG9yLWdyZWVuOiBTVUNDRVNTICgwLjA3MnMpClN0YXJ0aW5nIHN1YnRlc3Q6IGJh
+Y2tncm91bmQtY29sb3ItYmx1ZQpTdGFydGluZyBkeW5hbWljIHN1YnRlc3Q6IHBpcGUtQS1WaXJ0
+dWFsLTEKRHluYW1pYyBzdWJ0ZXN0IHBpcGUtQS1WaXJ0dWFsLTE6IFNVQ0NFU1MgKDAuMDcycykK
+U3VidGVzdCBiYWNrZ3JvdW5kLWNvbG9yLWJsdWU6IFNVQ0NFU1MgKDAuMDcycykKU3RhcnRpbmcg
+c3VidGVzdDogYmFja2dyb3VuZC1jb2xvci15ZWxsb3cKU3RhcnRpbmcgZHluYW1pYyBzdWJ0ZXN0
+OiBwaXBlLUEtVmlydHVhbC0xCkR5bmFtaWMgc3VidGVzdCBwaXBlLUEtVmlydHVhbC0xOiBTVUND
+RVNTICgwLjA3M3MpClN1YnRlc3QgYmFja2dyb3VuZC1jb2xvci15ZWxsb3c6IFNVQ0NFU1MgKDAu
+MDczcykKU3RhcnRpbmcgc3VidGVzdDogYmFja2dyb3VuZC1jb2xvci1wdXJwbGUKU3RhcnRpbmcg
+ZHluYW1pYyBzdWJ0ZXN0OiBwaXBlLUEtVmlydHVhbC0xCkR5bmFtaWMgc3VidGVzdCBwaXBlLUEt
+VmlydHVhbC0xOiBTVUNDRVNTICgwLjA3M3MpClN1YnRlc3QgYmFja2dyb3VuZC1jb2xvci1wdXJw
+bGU6IFNVQ0NFU1MgKDAuMDczcykKU3RhcnRpbmcgc3VidGVzdDogYmFja2dyb3VuZC1jb2xvci1j
+eWFuClN0YXJ0aW5nIGR5bmFtaWMgc3VidGVzdDogcGlwZS1BLVZpcnR1YWwtMQpEeW5hbWljIHN1
+YnRlc3QgcGlwZS1BLVZpcnR1YWwtMTogU1VDQ0VTUyAoMC4wNzNzKQpTdWJ0ZXN0IGJhY2tncm91
+bmQtY29sb3ItY3lhbjogU1VDQ0VTUyAoMC4wNzNzKQpTdGFydGluZyBzdWJ0ZXN0OiBiYWNrZ3Jv
+dW5kLWNvbG9yLWJsYWNrClN0YXJ0aW5nIGR5bmFtaWMgc3VidGVzdDogcGlwZS1BLVZpcnR1YWwt
+MQpEeW5hbWljIHN1YnRlc3QgcGlwZS1BLVZpcnR1YWwtMTogU1VDQ0VTUyAoMC4wNzNzKQpTdWJ0
+ZXN0IGJhY2tncm91bmQtY29sb3ItYmxhY2s6IFNVQ0NFU1MgKDAuMDczcykKU3RhcnRpbmcgc3Vi
+dGVzdDogYmFja2dyb3VuZC1jb2xvci13aGl0ZQpTdGFydGluZyBkeW5hbWljIHN1YnRlc3Q6IHBp
+cGUtQS1WaXJ0dWFsLTEKRHluYW1pYyBzdWJ0ZXN0IHBpcGUtQS1WaXJ0dWFsLTE6IFNVQ0NFU1Mg
+KDAuMDcycykKU3VidGVzdCBiYWNrZ3JvdW5kLWNvbG9yLXdoaXRlOiBTVUNDRVNTICgwLjA3MnMp
+CgoqIFRlc3QgcmVzdWx0cyBvbiBST0NLNUIKCnJvY2s1YiQgY2F0IC9zeXMva2VybmVsL2RlYnVn
+L2RyaS8xL3ZvcDIvc3VtbWFyeQoKVmlkZW8gUG9ydDA6IERJU0FCTEVEClZpZGVvIFBvcnQxOiBE
+SVNBQkxFRApWaWRlbyBQb3J0MjogQUNUSVZFCiAgICBDb25uZWN0b3I6IERQLTEKCWJ1c19mb3Jt
+YXRbMTAxOF06IFJHQjEwMTAxMF8xWDMwCglvdXRwdXRfbW9kZVtmXSBjb2xvcl9zcGFjZVswXQoJ
+YmFja2dyb3VuZCBjb2xvciAoMTBicGMpOiByPTB4MCBnPTB4MCBiPTB4MAogICAgRGlzcGxheSBt
+b2RlOiAzODQweDIxNjBwNjAKCWNsa1s1OTQwMDBdIHJlYWxfY2xrWzU5NDAwMF0gdHlwZVs0OF0g
+ZmxhZ1s5XQoJSDogMzg0MCA0MDE2IDQxMDQgNDQwMAoJVjogMjE2MCAyMTY0IDIxNzQgMjI1MAog
+ICAgQ2x1c3RlcjItd2luMDogQUNUSVZFCgl3aW5faWQ6IDIKCWZvcm1hdDogWFIyNCBsaXR0bGUt
+ZW5kaWFuICgweDM0MzI1MjU4KSBnbGJfYWxwaGFbMHhmZl0KCXJvdGF0ZTogeG1pcnJvcjogMCB5
+bWlycm9yOiAwIHJvdGF0ZV85MDogMCByb3RhdGVfMjcwOiAwCgl6cG9zOiAwCglzcmM6IHBvc1sw
+LCAwXSByZWN0WzM4NDAgeCAyMTYwXQoJZHN0OiBwb3NbMCwgMF0gcmVjdFszODQwIHggMjE2MF0K
+CWJ1ZlswXTogYWRkcjogMHgwMDAwMDAwMDAwMDAwMDAwIHBpdGNoOiAxNTM2MCBvZmZzZXQ6IDAK
+CnJvY2s1YiQgYnVpbGQvdGVzdHMva21zX2NydGNfYmFja2dyb3VuZF9jb2xvciAtLWRldmljZSBk
+cm06L2Rldi9kcmkvY2FyZDEKCklHVC1WZXJzaW9uOiAyLjItZzNlNGVjMzA4ZSAoYWFyY2g2NCkg
+KExpbnV4OiA2LjE4LjAtcmMxIGFhcmNoNjQpClVzaW5nIElHVF9TUkFORE9NPTE3NjI3NzQ4MDYg
+Zm9yIHJhbmRvbWlzYXRpb24KT3BlbmVkIGRldmljZTogL2Rldi9kcmkvY2FyZDEKU3RhcnRpbmcg
+c3VidGVzdDogYmFja2dyb3VuZC1jb2xvci1yZWQKU3RhcnRpbmcgZHluYW1pYyBzdWJ0ZXN0OiBw
+aXBlLUMtRFAtMQpEeW5hbWljIHN1YnRlc3QgcGlwZS1DLURQLTE6IFNVQ0NFU1MgKDAuNDkxcykK
+U3VidGVzdCBiYWNrZ3JvdW5kLWNvbG9yLXJlZDogU1VDQ0VTUyAoMC40OTNzKQpTdGFydGluZyBz
+dWJ0ZXN0OiBiYWNrZ3JvdW5kLWNvbG9yLWdyZWVuClN0YXJ0aW5nIGR5bmFtaWMgc3VidGVzdDog
+cGlwZS1DLURQLTEKRHluYW1pYyBzdWJ0ZXN0IHBpcGUtQy1EUC0xOiBTVUNDRVNTICgwLjUzM3Mp
+ClN1YnRlc3QgYmFja2dyb3VuZC1jb2xvci1ncmVlbjogU1VDQ0VTUyAoMC41MzVzKQpTdGFydGlu
+ZyBzdWJ0ZXN0OiBiYWNrZ3JvdW5kLWNvbG9yLWJsdWUKU3RhcnRpbmcgZHluYW1pYyBzdWJ0ZXN0
+OiBwaXBlLUMtRFAtMQpEeW5hbWljIHN1YnRlc3QgcGlwZS1DLURQLTE6IFNVQ0NFU1MgKDAuNTQx
+cykKU3VidGVzdCBiYWNrZ3JvdW5kLWNvbG9yLWJsdWU6IFNVQ0NFU1MgKDAuNTQ0cykKU3RhcnRp
+bmcgc3VidGVzdDogYmFja2dyb3VuZC1jb2xvci15ZWxsb3cKU3RhcnRpbmcgZHluYW1pYyBzdWJ0
+ZXN0OiBwaXBlLUMtRFAtMQpEeW5hbWljIHN1YnRlc3QgcGlwZS1DLURQLTE6IFNVQ0NFU1MgKDAu
+NTM1cykKU3VidGVzdCBiYWNrZ3JvdW5kLWNvbG9yLXllbGxvdzogU1VDQ0VTUyAoMC41MzdzKQpT
+dGFydGluZyBzdWJ0ZXN0OiBiYWNrZ3JvdW5kLWNvbG9yLXB1cnBsZQpTdGFydGluZyBkeW5hbWlj
+IHN1YnRlc3Q6IHBpcGUtQy1EUC0xCkR5bmFtaWMgc3VidGVzdCBwaXBlLUMtRFAtMTogU1VDQ0VT
+UyAoMC41MzZzKQpTdWJ0ZXN0IGJhY2tncm91bmQtY29sb3ItcHVycGxlOiBTVUNDRVNTICgwLjUz
+OHMpClN0YXJ0aW5nIHN1YnRlc3Q6IGJhY2tncm91bmQtY29sb3ItY3lhbgpTdGFydGluZyBkeW5h
+bWljIHN1YnRlc3Q6IHBpcGUtQy1EUC0xCkR5bmFtaWMgc3VidGVzdCBwaXBlLUMtRFAtMTogU1VD
+Q0VTUyAoMC41MzlzKQpTdWJ0ZXN0IGJhY2tncm91bmQtY29sb3ItY3lhbjogU1VDQ0VTUyAoMC41
+NDFzKQpTdGFydGluZyBzdWJ0ZXN0OiBiYWNrZ3JvdW5kLWNvbG9yLWJsYWNrClN0YXJ0aW5nIGR5
+bmFtaWMgc3VidGVzdDogcGlwZS1DLURQLTEKKGttc19jcnRjX2JhY2tncm91bmRfY29sb3I6NzQ0
+KSBpZ3RfcGlwZV9jcmMtV0FSTklORzogV2FybmluZyBvbiBjb25kaXRpb24gYWxsX3plcm8gaW4g
+ZnVuY3Rpb24gY3JjX3Nhbml0eV9jaGVja3MsIGZpbGUgLi4vbGliL2lndF9waXBlX2NyYy5jOjQ3
+NQooa21zX2NydGNfYmFja2dyb3VuZF9jb2xvcjo3NDQpIGlndF9waXBlX2NyYy1XQVJOSU5HOiBT
+dXNwaWNpb3VzIENSQzogQWxsIHZhbHVlcyBhcmUgMC4KKGttc19jcnRjX2JhY2tncm91bmRfY29s
+b3I6NzQ0KSBpZ3RfcGlwZV9jcmMtV0FSTklORzogV2FybmluZyBvbiBjb25kaXRpb24gYWxsX3pl
+cm8gaW4gZnVuY3Rpb24gY3JjX3Nhbml0eV9jaGVja3MsIGZpbGUgLi4vbGliL2lndF9waXBlX2Ny
+Yy5jOjQ3NQooa21zX2NydGNfYmFja2dyb3VuZF9jb2xvcjo3NDQpIGlndF9waXBlX2NyYy1XQVJO
+SU5HOiBTdXNwaWNpb3VzIENSQzogQWxsIHZhbHVlcyBhcmUgMC4KRHluYW1pYyBzdWJ0ZXN0IHBp
+cGUtQy1EUC0xOiBTVUNDRVNTICgwLjUzNXMpClN1YnRlc3QgYmFja2dyb3VuZC1jb2xvci1ibGFj
+azogU1VDQ0VTUyAoMC41MzdzKQpTdGFydGluZyBzdWJ0ZXN0OiBiYWNrZ3JvdW5kLWNvbG9yLXdo
+aXRlClN0YXJ0aW5nIGR5bmFtaWMgc3VidGVzdDogcGlwZS1DLURQLTEKRHluYW1pYyBzdWJ0ZXN0
+IHBpcGUtQy1EUC0xOiBTVUNDRVNTICgwLjU0MHMpClN1YnRlc3QgYmFja2dyb3VuZC1jb2xvci13
+aGl0ZTogU1VDQ0VTUyAoMC41NDJzKQotLS0KQ2hhbmdlcyBpbiB2MzoKLSBBZGRlZCBURVNUICYg
+U1VCVEVTVCBjb21tZW50IGJsb2NrcyB0byBlbmFibGUgSW50ZWwgQ0kgdGVzdGluZyAoS2FtaWwp
+Ci0gVXBkYXRlZCBjb3ZlciBsZXR0ZXIgdG8gcmVmZXJlbmNlIGEgbmV3ZXIgcmV2aXNpb24gb2Yg
+dGhlIGtlcm5lbAogIHNlcmllcyBbMV0gd2hpY2ggaW5jbHVkZXMgVktNUyBzdXBwb3J0Ci0gUmVi
+YXNlZCBvbnRvIGxhdGVzdCB1cHN0cmVhbSBjaGFuZ2VzCiAgKiBNYWRlIGlndF9maXh0dXJlIGxv
+b2sgbGlrZSBhbiBpdGVyYXRvcgogICogTWFkZSBpZ3RfbWFpbigpIGxvb2sgbGlrZSBub3JtYWwg
+ZnVuY3Rpb24gZGVmaW5pdGlvbgogICogRHJvcHBlZCBpZ3RfcGlwZV9oYXNfcHJvcCgpCiAgKiBS
+ZXBsYWNlZCBpZ3Rfb3V0cHV0X3NldF9waXBlKCkgd2l0aCBpZ3Rfb3V0cHV0X3NldF9jcnRjKCkK
+LSBMaW5rIHRvIHYyOiBodHRwczovL2xvcmUua2VybmVsLm9yZy9yLzIwMjUxMTE4LWNydGMtYmdj
+b2xvci12Mi0xLWRjZTQwNjNmODVhOUBjb2xsYWJvcmEuY29tCgpDaGFuZ2VzIGluIHYyOgotIEFk
+ZGVkIFZLTVMgdGVzdCByZXBvcnQKLSBTZXQgdGhlIHZhbHVlIG9mIHRoZSBDUlRDIGJhY2tncm91
+bmQgY29sb3IgcHJvcGVydHkgd2l0aCAxNmJwYyBpbnN0ZWFkCiAgb2YgOGJwYywgdG8gYXZvaWQg
+Q1JDIGNoZWNrIGZhaWx1cmVzIGJlY2F1c2Ugb2YgZnJhbWVidWZmZXIgZm9ybWF0CiAgcHJlY2lz
+aW9uIG1pc21hdGNoIC0gZGlzcGxheSBjb250cm9sbGVyIGRyaXZlcnMgc2hhbGwgY29udmVydCBp
+dCBiYWNrCiAgZnJvbSAxNmJwYyB0byB0aGVpciBpbnRlcm5hbCByZXByZXNlbnRhdGlvbiBvZiB0
+aGUgcGl4ZWwgY29sb3IgaWYKICBuZWNlc3NhcnksIGUuZy4gVktNUyBhbHJlYWR5IHVzZXMgMTZi
+cGMsIGhlbmNlIG5vIGNvbnZlcnNpb24gaXMKICByZXF1aXJlZCBpbiB0aGF0IGNhc2UKLSBSZXBs
+YWNlZCBkZXByZWNhdGVkIERSTV9GT1JNQVRfTU9EX05PTkUgd2l0aCBEUk1fRk9STUFUX01PRF9M
+SU5FQVIKLSBVcGRhdGVkIGNvcHlyaWdodCBzZWN0aW9uCi0gTGluayB0byB2MTogaHR0cHM6Ly9s
+b3JlLmtlcm5lbC5vcmcvci8yMDI1MTExMC1jcnRjLWJnY29sb3ItdjEtMS0yODY2OWI2OTI5NzBA
+Y29sbGFib3JhLmNvbQotLS0KIGxpYi9pZ3Rfa21zLmMgICAgICAgICAgICAgICAgICAgICB8ICAg
+MSArCiBsaWIvaWd0X2ttcy5oICAgICAgICAgICAgICAgICAgICAgfCAgIDMgKy0KIHRlc3RzL2tt
+c19jcnRjX2JhY2tncm91bmRfY29sb3IuYyB8IDE2MyArKysrKysrKysrKysrKysrKysrKysrKysr
+KysrKysrKysrKysrKwogdGVzdHMvbWVzb24uYnVpbGQgICAgICAgICAgICAgICAgIHwgICAxICsK
+IDQgZmlsZXMgY2hhbmdlZCwgMTY3IGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24oLSkKCmRpZmYg
+LS1naXQgYS9saWIvaWd0X2ttcy5jIGIvbGliL2lndF9rbXMuYwppbmRleCBlM2U5YmY5YmNlMDcu
+LjU0NmJiM2RjMTA0NyAxMDA2NDQKLS0tIGEvbGliL2lndF9rbXMuYworKysgYi9saWIvaWd0X2tt
+cy5jCkBAIC03MTgsNiArNzE4LDcgQEAgY29uc3QgY2hhciAqIGNvbnN0IGlndF9jb2xvcm9wX3By
+b3BfbmFtZXNbSUdUX05VTV9DT0xPUk9QX1BST1BTXSA9IHsKIH07CiAKIGNvbnN0IGNoYXIgKiBj
+b25zdCBpZ3RfY3J0Y19wcm9wX25hbWVzW0lHVF9OVU1fQ1JUQ19QUk9QU10gPSB7CisJW0lHVF9D
+UlRDX0JBQ0tHUk9VTkRdID0gIkJBQ0tHUk9VTkRfQ09MT1IiLAogCVtJR1RfQ1JUQ19DVE1dID0g
+IkNUTSIsCiAJW0lHVF9DUlRDX0dBTU1BX0xVVF0gPSAiR0FNTUFfTFVUIiwKIAlbSUdUX0NSVENf
+R0FNTUFfTFVUX1NJWkVdID0gIkdBTU1BX0xVVF9TSVpFIiwKZGlmZiAtLWdpdCBhL2xpYi9pZ3Rf
+a21zLmggYi9saWIvaWd0X2ttcy5oCmluZGV4IGIwMDg4NDY0MGUxNi4uOGMxYWM1YTU0NWE3IDEw
+MDY0NAotLS0gYS9saWIvaWd0X2ttcy5oCisrKyBiL2xpYi9pZ3Rfa21zLmgKQEAgLTE1NCw3ICsx
+NTQsOCBAQCB2b2lkIGttc3Rlc3RfcmVzdG9yZV92dF9tb2RlKHZvaWQpOwogdm9pZCBrbXN0ZXN0
+X3NldF92dF90ZXh0X21vZGUodm9pZCk7CiAKIGVudW0gaWd0X2F0b21pY19jcnRjX3Byb3BlcnRp
+ZXMgewotICAgICAgIElHVF9DUlRDX0NUTSA9IDAsCisgICAgICAgSUdUX0NSVENfQkFDS0dST1VO
+RCA9IDAsCisgICAgICAgSUdUX0NSVENfQ1RNLAogICAgICAgIElHVF9DUlRDX0dBTU1BX0xVVCwK
+ICAgICAgICBJR1RfQ1JUQ19HQU1NQV9MVVRfU0laRSwKICAgICAgICBJR1RfQ1JUQ19ERUdBTU1B
+X0xVVCwKZGlmZiAtLWdpdCBhL3Rlc3RzL2ttc19jcnRjX2JhY2tncm91bmRfY29sb3IuYyBiL3Rl
+c3RzL2ttc19jcnRjX2JhY2tncm91bmRfY29sb3IuYwpuZXcgZmlsZSBtb2RlIDEwMDY0NAppbmRl
+eCAwMDAwMDAwMDAwMDAuLmIxODU5OTY0MjkxZgotLS0gL2Rldi9udWxsCisrKyBiL3Rlc3RzL2tt
+c19jcnRjX2JhY2tncm91bmRfY29sb3IuYwpAQCAtMCwwICsxLDE2MyBAQAorLy8gU1BEWC1MaWNl
+bnNlLUlkZW50aWZpZXI6IE1JVAorLyoKKyAqIENvcHlyaWdodCDCqSAyMDEzLDIwMTQgSW50ZWwg
+Q29ycG9yYXRpb24KKyAqIENvcHlyaWdodCDCqSAyMDI1IEFtYXpvbi5jb20sIEluYy4gb3IgaXRz
+IGFmZmlsaWF0ZXMuCisgKiBDb3B5cmlnaHQgwqkgMjAyNSBDb2xsYWJvcmEsIEx0ZC4KKyAqLwor
+CisvKioKKyAqIFRFU1Q6IGNydGMgYmFja2dyb3VuZCBjb2xvcgorICogQ2F0ZWdvcnk6IERpc3Bs
+YXkKKyAqIERlc2NyaXB0aW9uOiBUZXN0IGJhY2tncm91bmQgY29sb3IgZmVhdHVyZSB3aXRoIENS
+QyBhdCBDUlRDCisgKiBEcml2ZXIgcmVxdWlyZW1lbnQ6IGk5MTUsIHhlCisgKiBNZWdhIGZlYXR1
+cmU6IEdlbmVyYWwgRGlzcGxheSBGZWF0dXJlcworICovCisKKyNpbmNsdWRlICJpZ3QuaCIKKwor
+SUdUX1RFU1RfREVTQ1JJUFRJT04oIlRlc3QgY3J0YyBiYWNrZ3JvdW5kIGNvbG9yIGZlYXR1cmUi
+KTsKKwordHlwZWRlZiBzdHJ1Y3QgeworCWludCBkcm1fZmQ7CisJaW50IGRlYnVnZnM7CisJaWd0
+X2Rpc3BsYXlfdCBkaXNwbGF5OworfSBkYXRhX3Q7CisKKyNkZWZpbmUgX19EUk1fQVJHQjY0X1BS
+RVAoYywgc2hpZnQpCQkJCQlcCisJKCgoX191NjQpKGMpICYgMHhmZmZmVSkgPDwgKHNoaWZ0KSkK
+KworI2RlZmluZSBEUk1fQVJHQjY0X1BSRVAoYWxwaGEsIHJlZCwgZ3JlZW4sIGJsdWUpCQkJXAor
+CShfX0RSTV9BUkdCNjRfUFJFUChhbHBoYSwgNDgpIHwJCQkJCVwKKwkgX19EUk1fQVJHQjY0X1BS
+RVAocmVkLCAgIDMyKSB8CQkJCQlcCisJIF9fRFJNX0FSR0I2NF9QUkVQKGdyZWVuLCAxNikgfAkJ
+CQkJXAorCSBfX0RSTV9BUkdCNjRfUFJFUChibHVlLCAgIDApKQorCitzdGF0aWMgdm9pZCB0ZXN0
+X2JhY2tncm91bmQoZGF0YV90ICpkYXRhLCBlbnVtIHBpcGUgcGlwZSwgaWd0X291dHB1dF90ICpv
+dXRwdXQsCisJCQkgICAgX191MTYgcmVkLCBfX3UxNiBncmVlbiwgX191MTYgYmx1ZSkKK3sKKwlp
+Z3RfZGlzcGxheV90ICpkaXNwbGF5ID0gJmRhdGEtPmRpc3BsYXk7CisJaWd0X2NyY190IHBsYW5l
+X2NyYywgYmdfY3JjOworCWlndF9waXBlX2NyY190ICpwaXBlX2NyYzsKKwlpZ3RfcGxhbmVfdCAq
+cGxhbmU7CisJZHJtTW9kZU1vZGVJbmZvICptb2RlOworCXN0cnVjdCBpZ3RfZmIgZmI7CisKKwlp
+Z3RfZGlzcGxheV9yZXNldChkaXNwbGF5KTsKKworCWlndF9vdXRwdXRfc2V0X2NydGMob3V0cHV0
+LCBpZ3RfY3J0Y19mb3JfcGlwZShvdXRwdXQtPmRpc3BsYXksIHBpcGUpKTsKKwltb2RlID0gaWd0
+X291dHB1dF9nZXRfbW9kZShvdXRwdXQpOworCisJcGxhbmUgPSBpZ3Rfb3V0cHV0X2dldF9wbGFu
+ZV90eXBlKG91dHB1dCwgRFJNX1BMQU5FX1RZUEVfUFJJTUFSWSk7CisKKwkvKiBGaWxsIHRoZSBw
+cmltYXJ5IHBsYW5lIGFuZCBzZXQgdGhlIGJhY2tncm91bmQgdG8gdGhlIHNhbWUgY29sb3IgKi8K
+KwlpZ3RfY3JlYXRlX2NvbG9yX2ZiKGRhdGEtPmRybV9mZCwKKwkJCSAgICBtb2RlLT5oZGlzcGxh
+eSwgbW9kZS0+dmRpc3BsYXksCisJCQkgICAgRFJNX0ZPUk1BVF9YUkdCODg4OCwKKwkJCSAgICBE
+Uk1fRk9STUFUX01PRF9MSU5FQVIsCisJCQkgICAgKGRvdWJsZSlyZWQgLyAweGZmZmYsCisJCQkg
+ICAgKGRvdWJsZSlncmVlbiAvIDB4ZmZmZiwKKwkJCSAgICAoZG91YmxlKWJsdWUgLyAweGZmZmYs
+CisJCQkgICAgJmZiKTsKKworCWlndF9wbGFuZV9zZXRfZmIocGxhbmUsICZmYik7CisJaWd0X3Bp
+cGVfc2V0X3Byb3BfdmFsdWUoJmRhdGEtPmRpc3BsYXksIHBpcGUsIElHVF9DUlRDX0JBQ0tHUk9V
+TkQsCisJCQkJRFJNX0FSR0I2NF9QUkVQKDB4ZmZmZiwgcmVkLCBncmVlbiwgYmx1ZSkpOworCWln
+dF9kaXNwbGF5X2NvbW1pdDIoJmRhdGEtPmRpc3BsYXksIENPTU1JVF9BVE9NSUMpOworCisJcGlw
+ZV9jcmMgPSBpZ3RfcGlwZV9jcmNfbmV3KGRhdGEtPmRybV9mZCwgcGlwZSwgSUdUX1BJUEVfQ1JD
+X1NPVVJDRV9BVVRPKTsKKwlpZ3RfcGlwZV9jcmNfY29sbGVjdF9jcmMocGlwZV9jcmMsICZwbGFu
+ZV9jcmMpOworCisJLyogVHVybiBvZmYgdGhlIHByaW1hcnkgcGxhbmUgc28gdGhhdCBvbmx5IHRo
+ZSBiYWNrZ3JvdW5kIGlzIHZpc2libGUgKi8KKwlpZ3RfcGxhbmVfc2V0X2ZiKHBsYW5lLCBOVUxM
+KTsKKwlpZ3RfZGlzcGxheV9jb21taXQyKCZkYXRhLT5kaXNwbGF5LCBDT01NSVRfQVRPTUlDKTsK
+KwlpZ3RfcGlwZV9jcmNfY29sbGVjdF9jcmMocGlwZV9jcmMsICZiZ19jcmMpOworCisJLyoKKwkg
+KiBUaGUgdGVzdCBhc3N1bWVzIGhhcmR3YXJlIGlzIGFibGUgdG8gZ2VuZXJhdGUgdmFsaWQgQ1JD
+cyB3aGVuIHNldHRpbmcKKwkgKiB0aGUgYmFja2dyb3VuZCBjb2xvci4gU29tZSBwbGF0Zm9ybXMs
+IGUuZy4gSW50ZWwsIG1pZ2h0IHJlcXVpcmUgYXQKKwkgKiBsZWFzdCBvbmUgcGxhbmUgdG8gYmUg
+dmlzaWJsZSBiZWZvcmUgcmVhZGluZyB0aGUgcGlwZS1sZXZlbCAoImRtdXgiKQorCSAqIENSQy4g
+T3RoZXIgcGxhdGZvcm1zLCBlLmcuIFJvY2tjaGlwLCBkbyBub3QgdGFrZSBiYWNrZ3JvdW5kIGNv
+bG9yCisJICogaW50byBhY2NvdW50IHdoZW4gY29tcHV0aW5nIENSQyBhdCBDUlRDIGxldmVsLgor
+CSAqIEEgcG9zc2libGUgd29ya2Fyb3VuZCB3b3VsZCBiZSB0byB1c2UgYWx0ZXJuYXRpdmUgQ1JD
+IHNvdXJjZXMsIGUuZy4KKwkgKiB3aGVyZSBjb21wdXRhdGlvbiBpcyBwZXJmb3JtZWQgYXQgZW5j
+b2RlciBvciBzaW5rIGxldmVsLgorCSAqLworCWlndF9hc3NlcnRfY3JjX2VxdWFsKCZwbGFuZV9j
+cmMsICZiZ19jcmMpOworCisJLyogQ2xlYW4tdXAgKi8KKwlpZ3RfcGlwZV9zZXRfcHJvcF92YWx1
+ZSgmZGF0YS0+ZGlzcGxheSwgcGlwZSwgSUdUX0NSVENfQkFDS0dST1VORCwKKwkJCQlEUk1fQVJH
+QjY0X1BSRVAoMHhmZmZmLCAwLCAwLCAwKSk7CisJaWd0X3BpcGVfY3JjX2ZyZWUocGlwZV9jcmMp
+OworCWlndF9vdXRwdXRfc2V0X2NydGMob3V0cHV0LCBOVUxMKTsKKwlpZ3RfZGlzcGxheV9jb21t
+aXQoZGlzcGxheSk7CisJaWd0X3JlbW92ZV9mYihkYXRhLT5kcm1fZmQsICZmYik7Cit9CisKKy8q
+KgorICogU1VCVEVTVDogYmFja2dyb3VuZC1jb2xvci0lcworICogRGVzY3JpcHRpb246IFRlc3Rz
+ICVhcmdbMV0gaW4gYmFja2dyb3VuZCBjb2xvcgorICoKKyAqIGFyZ1sxXToKKyAqCisgKiBAcmVk
+OiAgICAgIHJlZAorICogQGdyZWVuOiAgICBncmVlbgorICogQGJsdWU6ICAgICBibHVlCisgKiBA
+eWVsbG93OiAgIHllbGxvdworICogQHB1cnBsZTogICBwdXJwbGUKKyAqIEBjeWFuOiAgICAgY3lh
+bgorICogQGJsYWNrOiAgICBibGFjaworICogQHdoaXRlOiAgICB3aGl0ZQorICovCisKK2ludCBp
+Z3RfbWFpbigpCit7CisJaWd0X291dHB1dF90ICpvdXRwdXQ7CisJZGF0YV90IGRhdGEgPSB7fTsK
+KwllbnVtIHBpcGUgcGlwZTsKKwlpbnQgaTsKKworCXN0cnVjdCB7CisJCWNvbnN0IGNoYXIgKmNv
+bG9yOworCQlfX3UxNiByZWQ7CisJCV9fdTE2IGdyZWVuOworCQlfX3UxNiBibHVlOworCX0gdGVz
+dHNbXSA9IHsKKwkJeyAicmVkIiwgICAgMHhmZmZmLCAweDAwMDAsIDB4MDAwMCwgfSwKKwkJeyAi
+Z3JlZW4iLCAgMHgwMDAwLCAweGZmZmYsIDB4MDAwMCwgfSwKKwkJeyAiYmx1ZSIsICAgMHgwMDAw
+LCAweDAwMDAsIDB4ZmZmZiwgfSwKKwkJeyAieWVsbG93IiwgMHhmZmZmLCAweGZmZmYsIDB4MDAw
+MCwgfSwKKwkJeyAicHVycGxlIiwgMHhmZmZmLCAweDAwMDAsIDB4ZmZmZiwgfSwKKwkJeyAiY3lh
+biIsICAgMHgwMDAwLCAweGZmZmYsIDB4ZmZmZiwgfSwKKwkJeyAiYmxhY2siLCAgMHgwMDAwLCAw
+eDAwMDAsIDB4MDAwMCwgfSwKKwkJeyAid2hpdGUiLCAgMHhmZmZmLCAweGZmZmYsIDB4ZmZmZiwg
+fSwKKwl9OworCisJaWd0X2ZpeHR1cmUoKSB7CisJCWRhdGEuZHJtX2ZkID0gZHJtX29wZW5fZHJp
+dmVyX21hc3RlcihEUklWRVJfQU5ZKTsKKworCQlrbXN0ZXN0X3NldF92dF9ncmFwaGljc19tb2Rl
+KCk7CisKKwkJaWd0X2Rpc3BsYXlfcmVxdWlyZSgmZGF0YS5kaXNwbGF5LCBkYXRhLmRybV9mZCk7
+CisJCWlndF9kaXNwbGF5X3JlcXVpcmVfb3V0cHV0KCZkYXRhLmRpc3BsYXkpOworCQlpZ3RfcmVx
+dWlyZV9waXBlX2NyYyhkYXRhLmRybV9mZCk7CisKKwkJZGF0YS5kZWJ1Z2ZzID0gaWd0X2RlYnVn
+ZnNfZGlyKGRhdGEuZHJtX2ZkKTsKKwl9CisKKwlmb3IgKGkgPSAwOyBpIDwgQVJSQVlfU0laRSh0
+ZXN0cyk7IGkrKykgeworCQlpZ3RfZGVzY3JpYmVfZigiVGVzdCBjcnRjIGJhY2tncm91bmQgY29s
+b3IgJXMiLCB0ZXN0c1tpXS5jb2xvcik7CisJCWlndF9zdWJ0ZXN0X3dpdGhfZHluYW1pY19mKCJi
+YWNrZ3JvdW5kLWNvbG9yLSVzIiwgdGVzdHNbaV0uY29sb3IpIHsKKwkJCWZvcl9lYWNoX3BpcGVf
+d2l0aF9zaW5nbGVfb3V0cHV0KCZkYXRhLmRpc3BsYXksIHBpcGUsIG91dHB1dCkgeworCQkJCWln
+dF9yZXF1aXJlKGRhdGEuZGlzcGxheS5waXBlc1twaXBlXS5wcm9wc1tJR1RfQ1JUQ19CQUNLR1JP
+VU5EXSk7CisKKwkJCQlpZ3RfZHluYW1pY19mKCJwaXBlLSVzLSVzIiwga21zdGVzdF9waXBlX25h
+bWUocGlwZSksIG91dHB1dC0+bmFtZSkKKwkJCQkJdGVzdF9iYWNrZ3JvdW5kKCZkYXRhLCBwaXBl
+LCBvdXRwdXQsIHRlc3RzW2ldLnJlZCwKKwkJCQkJCQl0ZXN0c1tpXS5ncmVlbiwgdGVzdHNbaV0u
+Ymx1ZSk7CisJCQl9CisJCX0KKwl9CisKKwlpZ3RfZml4dHVyZSgpIHsKKwkJaWd0X2Rpc3BsYXlf
+ZmluaSgmZGF0YS5kaXNwbGF5KTsKKwkJZHJtX2Nsb3NlX2RyaXZlcihkYXRhLmRybV9mZCk7CisJ
+fQorfQpkaWZmIC0tZ2l0IGEvdGVzdHMvbWVzb24uYnVpbGQgYi90ZXN0cy9tZXNvbi5idWlsZApp
+bmRleCA4ODQ3MDcwMjUyY2UuLjA0NWFjYjU5NzNmZCAxMDA2NDQKLS0tIGEvdGVzdHMvbWVzb24u
+YnVpbGQKKysrIGIvdGVzdHMvbWVzb24uYnVpbGQKQEAgLTI4LDYgKzI4LDcgQEAgdGVzdF9wcm9n
+cyA9IFsKIAkna21zX2NvbmN1cnJlbnQnLAogCSdrbXNfY29sb3JvcCcsCiAJJ2ttc19jb250ZW50
+X3Byb3RlY3Rpb24nLAorCSdrbXNfY3J0Y19iYWNrZ3JvdW5kX2NvbG9yJywKIAkna21zX2N1cnNv
+cl9jcmMnLAogCSdrbXNfY3Vyc29yX2VkZ2Vfd2FsaycsCiAJJ2ttc19jdXJzb3JfbGVnYWN5JywK
+Ci0tLQpiYXNlLWNvbW1pdDogZjM4ZjRkOGU5YzY1YWZmNDVhYzgwN2U2NDZkMDZlMzhiYzMxOTNh
+MgpjaGFuZ2UtaWQ6IDIwMjUxMTEwLWNydGMtYmdjb2xvci1mNmVkOWE1OGUwYmYKCgpfX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBt
+YWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlz
+dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
