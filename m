@@ -4,31 +4,31 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D528AE668B3
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B606CE668AF
 	for <linux-rockchip@archiver.kernel.org>; Sat, 20 Dec 2025 10:00:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VYrTOldThlGmo8D5V1UsbgteohSDFJOr/ouopubcQp4=; b=YJI6nB5HJKDto0
-	lsfMvOX1NW7PWXbtFz0TZPyMfIP3VK1lXTf5T6KqdGdYE1d1RrokvfTnqc+oee5F1MF909frDXyxD
-	xZPMkKn4Yhf+jHKgT7tfDqk/c1IaPqjk6FL5fD2HJxC0jO67BVMV0sey/8M4peHeJzPwUF+crYmCi
-	YGnb5jqlk9fM9TkQ475yu2nm4+b9liIB1sA1OyrDoO4i6MDY0ubaE0j19EJehO8fq+N/7yAl5G9Hj
-	E9ApSK/VotPcxTOOIZoBM2MPZxGifoQlY0U/5peplGetj2TQkrIFduFGWG38xduiK01/fwoTeFgjW
-	457qHPXAkuY8h40YQs6g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=9jlmFGUPeYX0TcZ/NEp4lEtZhqsES98Fc35wiajnlOs=; b=F9Ner5zuK+nRx3
+	4n8vLgFA8wlp3wiW/hWkkvjSHLVcfQODQFzuqK9hwO+iMx5PVMBlOeshjx6J0pyaehSbe82D4b6OL
+	zgB7vXCX40vRTx0XpBm1pouKvTJ1M3U6uVJzO6XrysXr0/csmeabf6CPF6At3/lUSZ180ndzSDqZx
+	L6mpIJtuJOomolHNJVehvJAicElFB/Od4bKD6lLf2+LIIM+Y9d8pxCnjTTBakRPYuL+YrYzEvwLsY
+	zaYhbZ36FFGkDNSI2j/+S8aajQZQtJ8jmJDy5sqPLGdAFUOiMp4nf5vZ7eB8ckqApoEoCRjZle8Ds
+	eaTn6GcgNDFcrnGes7/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vWtlN-0000000BTqt-22zO;
-	Sat, 20 Dec 2025 10:00:37 +0000
+	id 1vWtlM-0000000BTqZ-40tb;
+	Sat, 20 Dec 2025 10:00:36 +0000
 Received: from mail-m49197.qiye.163.com ([45.254.49.197])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vWtlK-0000000BTp6-0tUe;
-	Sat, 20 Dec 2025 10:00:35 +0000
+	id 1vWtlI-0000000BTp4-2P25;
+	Sat, 20 Dec 2025 10:00:34 +0000
 Received: from localhost.localdomain (unknown [119.122.214.229])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 2df715fa4;
-	Sat, 20 Dec 2025 18:00:24 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 2df715f9e;
+	Sat, 20 Dec 2025 18:00:18 +0800 (GMT+08:00)
 From: Chukun Pan <amadeus@jmu.edu.cn>
 To: Heiko Stuebner <heiko@sntech.de>
 Cc: Rob Herring <robh@kernel.org>,
@@ -39,22 +39,20 @@ Cc: Rob Herring <robh@kernel.org>,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	devicetree@vger.kernel.org
-Subject: [PATCH 3/3] arm64: dts: rockchip: enable saradc for ArmSoM Sige5
-Date: Sat, 20 Dec 2025 18:00:10 +0800
-Message-Id: <20251220100010.26643-3-amadeus@jmu.edu.cn>
+Subject: [PATCH 1/3] arm64: dts: rockchip: remove rtc regulator for ArmSoM Sige5
+Date: Sat, 20 Dec 2025 18:00:08 +0800
+Message-Id: <20251220100010.26643-1-amadeus@jmu.edu.cn>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20251220100010.26643-1-amadeus@jmu.edu.cn>
-References: <20251220100010.26643-1-amadeus@jmu.edu.cn>
 MIME-Version: 1.0
-X-HM-Tid: 0a9b3b340a4703a2kunmb12117682b90b9
+X-HM-Tid: 0a9b3b33f23803a2kunmb12117682b9085
 X-HM-MType: 10
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlCTUMfVk8YHR0dGEtNQkoZS1YeHw5VEwETFhoSFy
-	QUDg9ZV1kYEgtZQVlKSkJVSklJVUlKT1VJSUJZV1kWGg8SFR0UWUFZT0tIVUpLSEpOTE5VSktLVU
-	pCS0tZBg++
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkZGkxLVk5CGEsYQh1LSUIaHlYeHw5VEwETFhoSFy
+	QUDg9ZV1kYEgtZQVlKSkJVSklJVUlKT1VJSUJZV1kWGg8SFR0UWUFZT0tIVUpLSUJDQ0xVSktLVU
+	tZBg++
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251220_020034_403482_D0E79F76 
-X-CRM114-Status: UNSURE (   7.01  )
+X-CRM114-CacheID: sfid-20251220_020032_771839_75C28643 
+X-CRM114-Status: UNSURE (   6.62  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -72,29 +70,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add ADC support to ArmSoM Sige5 board.
+According to the schematic, RTC is powered by vcc_3v3_s3.
+The vcc_3v3_rtc_s5 regulator does not exist, remove it.
 
 Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
 ---
- arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts | 5 +++++
- 1 file changed, 5 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts | 10 ----------
+ 1 file changed, 10 deletions(-)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts b/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
-index a0d8f52a706f..d372ba252af8 100644
+index 3386084f6318..392ba83ab05a 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
-@@ -897,6 +897,11 @@ &sai6 {
- 	status = "okay";
- };
+@@ -156,16 +156,6 @@ vcc_3v3_pcie: regulator-vcc-3v3-pcie {
+ 		vin-supply = <&vcc_5v0_sys>;
+ 	};
  
-+&saradc {
-+	vref-supply = <&vcca_1v8_s0>;
-+	status = "okay";
-+};
-+
- &sdhci {
- 	bus-width = <8>;
- 	full-pwr-cycle-in-suspend;
+-	vcc_3v3_rtc_s5: regulator-vcc-3v3-rtc-s5 {
+-		compatible = "regulator-fixed";
+-		regulator-name = "vcc_3v3_rtc_s5";
+-		regulator-boot-on;
+-		regulator-always-on;
+-		regulator-min-microvolt = <3300000>;
+-		regulator-max-microvolt = <3300000>;
+-		vin-supply = <&vcc_5v0_sys>;
+-	};
+-
+ 	vcc_3v3_s0: regulator-vcc-3v3-s0 {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "vcc_3v3_s0";
 -- 
 2.25.1
 
