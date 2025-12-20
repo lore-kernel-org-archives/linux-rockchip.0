@@ -4,76 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51F31E668A4
-	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Dec 2025 22:42:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 619F0D637B2
+	for <linux-rockchip@archiver.kernel.org>; Sat, 20 Dec 2025 10:00:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FILjIm2YPVcJQh7box0CZoQN6mnkrO8Ybusx07OcK4s=; b=ruL58uVC6JhnZx
-	e5UFVrCqkjVOgoVU0oRZqIRwF/7V/bsk8OMq7WQloGsv5U0NdxktI7kYeWIB+Rt70N3zsuye16N5Y
-	DY+V4wc4nasPo2i8Oeses8SrYySGhqbqo/T5Ex4mXZj2z8qZvYrmmEliYUKWY966o/4wp3wAy0S7F
-	ZDlxt8s6kCdaGpYb/yJm4cDyKHtWNPqEtnPBAvQGfsnU3lMSgdM/+zOWfqbVqXonTZUi+sArwDO/N
-	UqCrToiQnDp5Fye/WaKmAUHRAWvao66kFcviNn5fhgURMkiMN1nFMXJbarawW+eTGc04rTxs2rUJ0
-	ZOtCyiL/sj1exU6ic5RA==;
+	List-Owner; bh=bLAy5548bQUfM/TlgzID+MTXC7Ey9DCyLdPS06uOd4s=; b=YSCcBldbpALegl
+	zHt4CSQDFpwBCxCzyiKB5r9HHxNelGQ7HEnYXPqscjWzUj9IwN7B6Wti35RqBkZe7u5zik85WMQ5w
+	+9brPBfNr1r/i0GfR+tL+80ACUcOcSIGM+XUQB49LNXFTSCmE/kahp2tcd0rOpy/kfmAZ6fNn68OR
+	uYDRI8VZikFAkBo5/6FLyORxWJ/ZNcjYfv5g3pGg7EL5Qg1C6KMCBh+xbGjF0jeGPL4kWnVTrKKRQ
+	s4eI6lZqELYtwzoTlzR/ns8TUKooodiYQzPyyOyQtJi6YsHnwZtqBUaiytxeca4pYP7WjKqgtZzs/
+	xHO6jmbdORN3g8viPV4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vWjAq-0000000B3Sp-2XDz;
-	Fri, 19 Dec 2025 22:42:12 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vWtlM-0000000BTqF-1jmu;
+	Sat, 20 Dec 2025 10:00:36 +0000
+Received: from mail-m49198.qiye.163.com ([45.254.49.198])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vWjAn-0000000B3Rr-2wsI;
-	Fri, 19 Dec 2025 22:42:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1766184126;
-	bh=dOBesZiZkvcbsrlIE1HpTeKXvjg0FO6Vfqc3uFf9vyw=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=jpkHXg32VP1Om8nTwThFfO8jZpKksYrc/8u4nki4rh0tRzgmaLNFyoc4P/KgmwyEs
-	 Z83vsMSmf+VzwznJuB+/N3W0r1bqKev4P5MdzBU55+5NCMOgLUDStbhscExkPzjnSj
-	 fmp7Z80dCFe9I7xlwWRoOaklUvaiZVMc/x8x0yB1nt9cVROglVympfizNzjyZLzXZc
-	 mH946p3K2sd1g3R/GjQx5PZSOHlGlGLcjQYa5sz7ZN2a8zMR07SWOFmCINsB3OXU0A
-	 FJbABuZ22kbOGnvfTxQh8u4beZyCIGoLn/wfaKSNhYzm7tUdFWcBlQmHx766czhKGe
-	 yKscYz7payrKw==
-Received: from [192.168.1.90] (unknown [82.79.138.145])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9D1E017E0181;
-	Fri, 19 Dec 2025 23:42:05 +0100 (CET)
-Message-ID: <012994e7-0e69-4885-8050-a404b7ae7608@collabora.com>
-Date: Sat, 20 Dec 2025 00:42:05 +0200
+	id 1vWtlI-0000000BTp5-2Xbi;
+	Sat, 20 Dec 2025 10:00:34 +0000
+Received: from localhost.localdomain (unknown [119.122.214.229])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 2df715fa0;
+	Sat, 20 Dec 2025 18:00:21 +0800 (GMT+08:00)
+From: Chukun Pan <amadeus@jmu.edu.cn>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh@kernel.org>,
+	Chukun Pan <amadeus@jmu.edu.cn>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org
+Subject: [PATCH 2/3] arm64: dts: rockchip: fix hp-det pin for ArmSoM Sige5
+Date: Sat, 20 Dec 2025 18:00:09 +0800
+Message-Id: <20251220100010.26643-2-amadeus@jmu.edu.cn>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20251220100010.26643-1-amadeus@jmu.edu.cn>
+References: <20251220100010.26643-1-amadeus@jmu.edu.cn>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 4/4] drm/rockchip: vop2: Support setting custom
- background color
-To: Chaoyi Chen <chaoyi.chen@rock-chips.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
- Louis Chauvet <louis.chauvet@bootlin.com>,
- Haneen Mohammed <hamohammed.sa@gmail.com>,
- Melissa Wen <melissa.srw@gmail.com>
-Cc: Robert Mader <robert.mader@collabora.com>, kernel@collabora.com,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-References: <20251118-rk3588-bgcolor-v3-0-a2cc909428ea@collabora.com>
- <20251118-rk3588-bgcolor-v3-4-a2cc909428ea@collabora.com>
- <0ed71b8d-5a2e-4213-bd2f-7ba317d1e4cb@rock-chips.com>
- <4a6443b8-d440-4921-8a43-7c20e4e265e7@collabora.com>
- <b8819463-cc61-432f-b451-db90e3b43884@rock-chips.com>
- <058027df-1b1b-4c46-b8e1-ec53fc809e82@collabora.com>
- <292ed476-2b5a-4b61-97e5-3b8d8a24c324@rock-chips.com>
-Content-Language: en-US
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-In-Reply-To: <292ed476-2b5a-4b61-97e5-3b8d8a24c324@rock-chips.com>
+X-HM-Tid: 0a9b3b33fc1703a2kunmb12117682b909b
+X-HM-MType: 10
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkaTRpMVh5DGB9CTRkaQklPTVYeHw5VEwETFhoSFy
+	QUDg9ZV1kYEgtZQVlKSkJVSklJVUlKT1VJSUJZV1kWGg8SFR0UWUFZT0tIVUpLSUJDQ0xVSktLVU
+	tZBg++
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251219_144209_902069_30981316 
-X-CRM114-Status: GOOD (  14.96  )
+X-CRM114-CacheID: sfid-20251220_020032_822264_E77250F0 
+X-CRM114-Status: UNSURE (   8.97  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,38 +72,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 11/30/25 5:01 AM, Chaoyi Chen wrote:
-> On 11/29/2025 5:50 PM, Cristian Ciocaltea wrote:
->> Hi Chaoyi,
->>
->> On 11/29/25 5:49 AM, Chaoyi Chen wrote:
->>> Hello Cristian, 
->>>
->>> On 11/28/2025 5:44 PM, Cristian Ciocaltea wrote:
->>>> The precision was something I initially looked into for CRC verification, in the
->>>> context of the related IGT test.  But since I've added the VKMS support, I think
->>>> we should not worry about that anymore. 
->>>>
->>>> Moreover, as already pointed out in [1], only RK3576 supports CRC generation at
->>>> display controller level, and that is not particularly useful because it doesn't
->>>
->>> I believe you can get the CRTC CRC on the RK3576, even when only the 
->>> background is visible and all plane is disabled. Feel free to let me
->>> know if you run into any issues :)
->>
->> Yes, CRTC CRC works on RK3576 for the planes, but not for the background, i.e.
->> the CRC is not updated when setting a different background color.  Unless
->> there's a way to change this default behavior, which I'm not aware of. 
->>
->> My current understanding is that the background color is applied at a later
->> stage in the display pipeline, *after* blending the planes and computing CRC.
->>
-> 
-> Which CRTC are you using? If you're using VP0, you might run into this
-> problem. Please try VP1 instead.
+Although the hp_det pin is not used, according to the schematic,
+the headphone detection pin is GPIO4_B0. Fix the incorrect pin.
 
-Yeah, that's VP0 as there's only one HDMI output port on my Radxa ROCK 4D board.
-I'll check if it's possible to switch to VP1.
+Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
+---
+ arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts b/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
+index 392ba83ab05a..a0d8f52a706f 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
+@@ -812,8 +812,8 @@ gmac1_rst: gmac1-rst {
+ 	};
+ 
+ 	headphone {
+-		hp_det: hp-det {
+-			rockchip,pins = <0 RK_PD3 RK_FUNC_GPIO &pcfg_pull_up>;
++		hp_det_l: hp-det-l {
++			rockchip,pins = <4 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+-- 
+2.25.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
