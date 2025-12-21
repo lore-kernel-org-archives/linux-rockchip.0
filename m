@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 251FCE67498
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9A16E67499
 	for <linux-rockchip@archiver.kernel.org>; Sun, 21 Dec 2025 10:47:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,43 +12,43 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DqSMhjmD1PSOKRcTefll0k4EhIwgMUIWosm1j6d8z/I=; b=dWkx3dAtdgF2Ys
-	tgf1Cl6F8SLYyAKaIeyO+A9FRJC2qXMjBS+JqIilBdSSF16+KI8uw1n6sBDBft51YLCrkC+5l9q6+
-	nXKoMOShh0kRLh8gVqKcBf3nCXRxWqYsePzOA13eeoysbY9PF59eMqdmFd7O349GblvZVrtUj6xxO
-	Ga+SpzKuYdn9VMKW+VO1ofbxHcJ8Hk2bCi503NAEvT4aYb38QIyb30X0+vIvLlsVEwqRloKP/kLRC
-	82niq39jNzLxE3HZbm7JT8gXYiufuv4S78EqmGWRReipNqiJ5XOgKBVwkKQtyv3IF0uwZ+bvGcI3B
-	f79LXq6EpMHkn8NVTdOg==;
+	List-Owner; bh=E9yCKBe+S79JpsfV5/JOjZyxRg4ktvdIJ0Cr7/yeP6Q=; b=zW51L7TDYW7A8Q
+	OBDU/xzmukF9KdDb6by6Liy20xnA90swU3HqchG1A/DG88wMnS37SOMNXr6Z37Lrl8iLXif7Fad6a
+	Gav1GH0oaXaDJJbu8gA0qrPbIV19DOAJjcLGknS29Hf4kEvaTkLGQT8M/Aj9s27gtnP0MV4pjTSR9
+	W3j6CrvsGF971GJ8jC734AtTJZJAAhD5L3JPHF0iNthTtw3ffTqZDYzkNiMwTTnhGN3+WcjY40KWf
+	z4sQzAjdKXRCcv3Egjvws9iIlNezSnFPRxfYQ7031T23t+qhObgIH8TlMuty4C2IIYXajjlluvDT4
+	qmNNmfYWvelVSpmmICMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vXGyB-0000000CLCF-06zq;
-	Sun, 21 Dec 2025 10:47:23 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vXGy8-0000000CL7u-1VcQ;
+	Sun, 21 Dec 2025 10:47:20 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vXGxx-0000000CKvF-1nkW;
-	Sun, 21 Dec 2025 10:47:12 +0000
+	id 1vXGxv-0000000CKuZ-3Wty;
+	Sun, 21 Dec 2025 10:47:11 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1766314026;
-	bh=5rfOgISBLmyjOyZ8Fnzh3ZfSqcWEflITTY4405YuFVU=;
+	s=mail; t=1766314025;
+	bh=79zd8d916l3WthpQL0m/XMMHpm7xM3ah6UhD55Gl+6A=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=d5H4MfiGdzom97xzQ4YgHlIohQCyes8i2J0KQ8gBcZrhq45thA8Ky8mWHdlouAMG4
-	 FFLFBxR0Msqa+6sOnAjjsr83ktrTbWZL94tKbrDFrD/1Xo0FdC7NzFv7kZNiS2W7cJ
-	 K5axVl67BkFeLOl6Kx/gmAH04PfUqEevQ4l9MJWScIEDTjHAHow/xrwDAp8dN9T3+P
-	 GlbnVJ7UgCAp5wAv7RzeUu9DBd8OiiVTuvsiSOrgtWPCjp+mbMUijk9dGEVraXG0C4
-	 5K1YmFdVk4xvfIOlfXyz1WmeGlA8w2arXw4t9YRMCt4NOXTF0Zb+8LQt6OKHvyAssC
-	 1qukXoA278LNA==
+	b=UkDanOOFNh0rVoLCvqTo9/q21NeA5YIvjkXE7lvPqghVQ8y1g1LVhFW0qNRpv1S4M
+	 VH7m9J0ooYYz2Azh65HZqhDtcE1PczeeXxH53Air7uPlrnwUT0w2Ti1XvnvqKQtyHj
+	 E1tD9dBb7F6vZczIyM8r30VDvg6b0y2/X/ITiQYwwKd3RptRRojNJqTdj+XOe4F83Y
+	 w2Mgz10lwgnDtvb36T6vo8Dn0Fkx066qZUKNABaT43oTdl6Xj5CYavKAcpxvjz/SlA
+	 lkhmpUp2a1RwYAgGT2bqQlfnOx1IAqOKIhHRi7B2gsTHH+ntrAV5ty/xhoQOoRiBVV
+	 fh1TeeSVMr4Zg==
 Received: from localhost (unknown [82.79.138.145])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id EC53717E13D0;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0CF1C17E1340;
 	Sun, 21 Dec 2025 11:47:05 +0100 (CET)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Sun, 21 Dec 2025 12:46:52 +0200
-Subject: [PATCH v5 05/11] phy: rockchip: samsung-hdptx: Enable lane output
- in common helper
+Date: Sun, 21 Dec 2025 12:46:51 +0200
+Subject: [PATCH v5 04/11] phy: rockchip: samsung-hdptx: Consistently use
+ [rk_]hdptx_[tmds_] prefixes
 MIME-Version: 1.0
-Message-Id: <20251221-phy-hdptx-frl-v5-5-dac390a780be@collabora.com>
+Message-Id: <20251221-phy-hdptx-frl-v5-4-dac390a780be@collabora.com>
 References: <20251221-phy-hdptx-frl-v5-0-dac390a780be@collabora.com>
 In-Reply-To: <20251221-phy-hdptx-frl-v5-0-dac390a780be@collabora.com>
 To: Vinod Koul <vkoul@kernel.org>, 
@@ -61,9 +61,8 @@ Cc: kernel@collabora.com, linux-phy@lists.infradead.org,
  linux-rockchip@lists.infradead.org
 X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251221_024711_687801_53BC0D9A 
-X-CRM114-Status: UNSURE (   8.94  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251221_024708_049769_A0D56C67 
+X-CRM114-Status: GOOD (  15.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,44 +79,223 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-In preparation to support FRL mode, move the PHY lane output enablement
-from the TMDS specific configuration to the common *_post_enable_lane()
-helper and make sure it gets turned off in *_phy_disable().
+Fix the naming inconsistencies for some of the functions and global
+variables:
+
+* Add the missing 'rk_hdptx_' prefix to ropll_tmds_cfg variable
+* Replace '_ropll_tmds_' with '_tmds_ropll_' globally
+* Replace 'hdtpx' with 'hdptx' globally
 
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 62 +++++++++++------------
+ 1 file changed, 31 insertions(+), 31 deletions(-)
 
 diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-index ac315061b6ee..7e5e0332f3bf 100644
+index b2c9df761861..ac315061b6ee 100644
 --- a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
 +++ b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-@@ -797,6 +797,8 @@ static int rk_hdptx_post_enable_lane(struct rk_hdptx_phy *hdptx)
- 	       HDPTX_I_BIAS_EN | HDPTX_I_BGR_EN;
- 	regmap_write(hdptx->grf, GRF_HDPTX_CON0, val);
+@@ -32,17 +32,17 @@
+ #define HDPTX_O_PHY_RDY			BIT(1)
+ #define HDPTX_O_SB_RDY			BIT(0)
  
-+	regmap_write(hdptx->regmap, LNTOP_REG(0207), 0x0f);
-+
- 	ret = regmap_read_poll_timeout(hdptx->grf, GRF_HDPTX_STATUS, val,
- 				       (val & HDPTX_O_PHY_RDY) &&
- 				       (val & HDPTX_O_PLL_LOCK_DONE),
-@@ -850,6 +852,7 @@ static void rk_hdptx_phy_disable(struct rk_hdptx_phy *hdptx)
- 	usleep_range(20, 30);
- 	reset_control_deassert(hdptx->rsts[RST_APB].rstc);
+-#define HDTPX_REG(_n, _min, _max)				\
++#define HDPTX_REG(_n, _min, _max)				\
+ 	(							\
+ 		BUILD_BUG_ON_ZERO((0x##_n) < (0x##_min)) +	\
+ 		BUILD_BUG_ON_ZERO((0x##_n) > (0x##_max)) +	\
+ 		((0x##_n) * 4)					\
+ 	)
  
-+	regmap_write(hdptx->regmap, LNTOP_REG(0207), 0x0);
- 	regmap_write(hdptx->regmap, LANE_REG(0300), 0x82);
- 	regmap_write(hdptx->regmap, SB_REG(010f), 0xc1);
- 	regmap_write(hdptx->regmap, SB_REG(0110), 0x1);
-@@ -1027,7 +1030,6 @@ static int rk_hdptx_tmds_ropll_mode_config(struct rk_hdptx_phy *hdptx)
+-#define CMN_REG(n)			HDTPX_REG(n, 0000, 00a7)
+-#define SB_REG(n)			HDTPX_REG(n, 0100, 0129)
+-#define LNTOP_REG(n)			HDTPX_REG(n, 0200, 0229)
+-#define LANE_REG(n)			HDTPX_REG(n, 0300, 062d)
++#define CMN_REG(n)			HDPTX_REG(n, 0000, 00a7)
++#define SB_REG(n)			HDPTX_REG(n, 0100, 0129)
++#define LNTOP_REG(n)			HDPTX_REG(n, 0200, 0229)
++#define LANE_REG(n)			HDPTX_REG(n, 0300, 062d)
+ 
+ /* CMN_REG(0008) */
+ #define OVRD_LCPLL_EN_MASK		BIT(7)
+@@ -397,7 +397,7 @@ struct rk_hdptx_phy {
+ 	unsigned int lanes;
+ };
+ 
+-static const struct ropll_config ropll_tmds_cfg[] = {
++static const struct ropll_config rk_hdptx_tmds_ropll_cfg[] = {
+ 	/*             |              pms             |        sdm         |     sdc     | */
+ 	/*        rate, mdiv, mdafc, pdiv, rdiv, sdiv, en, deno, nsig, num,  n, num, deno, */
+ 	{ 594000000ULL,  124,   124,    1,    1,    0,  1,   62,    1,  16,  5,   0,    1, },
+@@ -424,7 +424,7 @@ static const struct ropll_config ropll_tmds_cfg[] = {
+ 	{  25175000ULL,   84,    84,    1,    1,   15,  1,  168,    1,  16,  4,   1,    1, },
+ };
+ 
+-static const struct reg_sequence rk_hdtpx_common_cmn_init_seq[] = {
++static const struct reg_sequence rk_hdptx_common_cmn_init_seq[] = {
+ 	REG_SEQ0(CMN_REG(0009), 0x0c),
+ 	REG_SEQ0(CMN_REG(000a), 0x83),
+ 	REG_SEQ0(CMN_REG(000b), 0x06),
+@@ -514,7 +514,7 @@ static const struct reg_sequence rk_hdtpx_common_cmn_init_seq[] = {
+ 	REG_SEQ0(CMN_REG(009b), 0x10),
+ };
+ 
+-static const struct reg_sequence rk_hdtpx_tmds_cmn_init_seq[] = {
++static const struct reg_sequence rk_hdptx_tmds_cmn_init_seq[] = {
+ 	REG_SEQ0(CMN_REG(0008), 0x00),
+ 	REG_SEQ0(CMN_REG(0011), 0x01),
+ 	REG_SEQ0(CMN_REG(0017), 0x20),
+@@ -556,14 +556,14 @@ static const struct reg_sequence rk_hdtpx_tmds_cmn_init_seq[] = {
+ 	REG_SEQ0(CMN_REG(009b), 0x00),
+ };
+ 
+-static const struct reg_sequence rk_hdtpx_common_sb_init_seq[] = {
++static const struct reg_sequence rk_hdptx_common_sb_init_seq[] = {
+ 	REG_SEQ0(SB_REG(0114), 0x00),
+ 	REG_SEQ0(SB_REG(0115), 0x00),
+ 	REG_SEQ0(SB_REG(0116), 0x00),
+ 	REG_SEQ0(SB_REG(0117), 0x00),
+ };
+ 
+-static const struct reg_sequence rk_hdtpx_tmds_lntop_highbr_seq[] = {
++static const struct reg_sequence rk_hdptx_tmds_lntop_highbr_seq[] = {
+ 	REG_SEQ0(LNTOP_REG(0201), 0x00),
+ 	REG_SEQ0(LNTOP_REG(0202), 0x00),
+ 	REG_SEQ0(LNTOP_REG(0203), 0x0f),
+@@ -571,7 +571,7 @@ static const struct reg_sequence rk_hdtpx_tmds_lntop_highbr_seq[] = {
+ 	REG_SEQ0(LNTOP_REG(0205), 0xff),
+ };
+ 
+-static const struct reg_sequence rk_hdtpx_tmds_lntop_lowbr_seq[] = {
++static const struct reg_sequence rk_hdptx_tmds_lntop_lowbr_seq[] = {
+ 	REG_SEQ0(LNTOP_REG(0201), 0x07),
+ 	REG_SEQ0(LNTOP_REG(0202), 0xc1),
+ 	REG_SEQ0(LNTOP_REG(0203), 0xf0),
+@@ -579,7 +579,7 @@ static const struct reg_sequence rk_hdtpx_tmds_lntop_lowbr_seq[] = {
+ 	REG_SEQ0(LNTOP_REG(0205), 0x1f),
+ };
+ 
+-static const struct reg_sequence rk_hdtpx_common_lane_init_seq[] = {
++static const struct reg_sequence rk_hdptx_common_lane_init_seq[] = {
+ 	REG_SEQ0(LANE_REG(0303), 0x0c),
+ 	REG_SEQ0(LANE_REG(0307), 0x20),
+ 	REG_SEQ0(LANE_REG(030a), 0x17),
+@@ -634,7 +634,7 @@ static const struct reg_sequence rk_hdtpx_common_lane_init_seq[] = {
+ 	REG_SEQ0(LANE_REG(0620), 0xa0),
+ };
+ 
+-static const struct reg_sequence rk_hdtpx_tmds_lane_init_seq[] = {
++static const struct reg_sequence rk_hdptx_tmds_lane_init_seq[] = {
+ 	REG_SEQ0(LANE_REG(0312), 0x00),
+ 	REG_SEQ0(LANE_REG(0412), 0x00),
+ 	REG_SEQ0(LANE_REG(0512), 0x00),
+@@ -938,7 +938,7 @@ static bool rk_hdptx_phy_clk_pll_calc(unsigned long long rate,
+ 	return true;
+ }
+ 
+-static int rk_hdptx_ropll_tmds_cmn_config(struct rk_hdptx_phy *hdptx)
++static int rk_hdptx_tmds_ropll_cmn_config(struct rk_hdptx_phy *hdptx)
+ {
+ 	const struct ropll_config *cfg = NULL;
+ 	struct ropll_config rc = {0};
+@@ -947,9 +947,9 @@ static int rk_hdptx_ropll_tmds_cmn_config(struct rk_hdptx_phy *hdptx)
+ 	if (!hdptx->hdmi_cfg.tmds_char_rate)
+ 		return 0;
+ 
+-	for (i = 0; i < ARRAY_SIZE(ropll_tmds_cfg); i++)
+-		if (hdptx->hdmi_cfg.tmds_char_rate == ropll_tmds_cfg[i].rate) {
+-			cfg = &ropll_tmds_cfg[i];
++	for (i = 0; i < ARRAY_SIZE(rk_hdptx_tmds_ropll_cfg); i++)
++		if (hdptx->hdmi_cfg.tmds_char_rate == rk_hdptx_tmds_ropll_cfg[i].rate) {
++			cfg = &rk_hdptx_tmds_ropll_cfg[i];
+ 			break;
+ 		}
+ 
+@@ -969,8 +969,8 @@ static int rk_hdptx_ropll_tmds_cmn_config(struct rk_hdptx_phy *hdptx)
+ 
+ 	rk_hdptx_pre_power_up(hdptx);
+ 
+-	rk_hdptx_multi_reg_write(hdptx, rk_hdtpx_common_cmn_init_seq);
+-	rk_hdptx_multi_reg_write(hdptx, rk_hdtpx_tmds_cmn_init_seq);
++	rk_hdptx_multi_reg_write(hdptx, rk_hdptx_common_cmn_init_seq);
++	rk_hdptx_multi_reg_write(hdptx, rk_hdptx_tmds_cmn_init_seq);
+ 
+ 	regmap_write(hdptx->regmap, CMN_REG(0051), cfg->pms_mdiv);
+ 	regmap_write(hdptx->regmap, CMN_REG(0055), cfg->pms_mdiv_afc);
+@@ -1012,25 +1012,25 @@ static int rk_hdptx_ropll_tmds_cmn_config(struct rk_hdptx_phy *hdptx)
+ 	return ret;
+ }
+ 
+-static int rk_hdptx_ropll_tmds_mode_config(struct rk_hdptx_phy *hdptx)
++static int rk_hdptx_tmds_ropll_mode_config(struct rk_hdptx_phy *hdptx)
+ {
+-	rk_hdptx_multi_reg_write(hdptx, rk_hdtpx_common_sb_init_seq);
++	rk_hdptx_multi_reg_write(hdptx, rk_hdptx_common_sb_init_seq);
+ 
+ 	regmap_write(hdptx->regmap, LNTOP_REG(0200), 0x06);
+ 
+ 	if (hdptx->hdmi_cfg.tmds_char_rate > HDMI14_MAX_RATE) {
+ 		/* For 1/40 bitrate clk */
+-		rk_hdptx_multi_reg_write(hdptx, rk_hdtpx_tmds_lntop_highbr_seq);
++		rk_hdptx_multi_reg_write(hdptx, rk_hdptx_tmds_lntop_highbr_seq);
+ 	} else {
+ 		/* For 1/10 bitrate clk */
+-		rk_hdptx_multi_reg_write(hdptx, rk_hdtpx_tmds_lntop_lowbr_seq);
++		rk_hdptx_multi_reg_write(hdptx, rk_hdptx_tmds_lntop_lowbr_seq);
  	}
  
  	regmap_write(hdptx->regmap, LNTOP_REG(0206), 0x07);
--	regmap_write(hdptx->regmap, LNTOP_REG(0207), 0x0f);
+ 	regmap_write(hdptx->regmap, LNTOP_REG(0207), 0x0f);
  
- 	rk_hdptx_multi_reg_write(hdptx, rk_hdptx_common_lane_init_seq);
- 	rk_hdptx_multi_reg_write(hdptx, rk_hdptx_tmds_lane_init_seq);
+-	rk_hdptx_multi_reg_write(hdptx, rk_hdtpx_common_lane_init_seq);
+-	rk_hdptx_multi_reg_write(hdptx, rk_hdtpx_tmds_lane_init_seq);
++	rk_hdptx_multi_reg_write(hdptx, rk_hdptx_common_lane_init_seq);
++	rk_hdptx_multi_reg_write(hdptx, rk_hdptx_tmds_lane_init_seq);
+ 
+ 	return rk_hdptx_post_enable_lane(hdptx);
+ }
+@@ -1089,7 +1089,7 @@ static int rk_hdptx_phy_consumer_get(struct rk_hdptx_phy *hdptx)
+ 	if (mode == PHY_MODE_DP) {
+ 		rk_hdptx_dp_reset(hdptx);
+ 	} else {
+-		ret = rk_hdptx_ropll_tmds_cmn_config(hdptx);
++		ret = rk_hdptx_tmds_ropll_cmn_config(hdptx);
+ 		if (ret)
+ 			goto dec_usage;
+ 	}
+@@ -1436,7 +1436,7 @@ static int rk_hdptx_phy_power_on(struct phy *phy)
+ 		regmap_write(hdptx->grf, GRF_HDPTX_CON0,
+ 			     HDPTX_MODE_SEL << 16 | FIELD_PREP(HDPTX_MODE_SEL, 0x0));
+ 
+-		ret = rk_hdptx_ropll_tmds_mode_config(hdptx);
++		ret = rk_hdptx_tmds_ropll_mode_config(hdptx);
+ 		if (ret)
+ 			rk_hdptx_phy_consumer_put(hdptx, true);
+ 	}
+@@ -1459,11 +1459,11 @@ static int rk_hdptx_phy_verify_hdmi_config(struct rk_hdptx_phy *hdptx,
+ 	if (!hdmi->tmds_char_rate || hdmi->tmds_char_rate > HDMI20_MAX_RATE)
+ 		return -EINVAL;
+ 
+-	for (i = 0; i < ARRAY_SIZE(ropll_tmds_cfg); i++)
+-		if (hdmi->tmds_char_rate == ropll_tmds_cfg[i].rate)
++	for (i = 0; i < ARRAY_SIZE(rk_hdptx_tmds_ropll_cfg); i++)
++		if (hdmi->tmds_char_rate == rk_hdptx_tmds_ropll_cfg[i].rate)
+ 			break;
+ 
+-	if (i == ARRAY_SIZE(ropll_tmds_cfg) &&
++	if (i == ARRAY_SIZE(rk_hdptx_tmds_ropll_cfg) &&
+ 	    !rk_hdptx_phy_clk_pll_calc(hdmi->tmds_char_rate, NULL))
+ 		return -EINVAL;
+ 
+@@ -1888,7 +1888,7 @@ static int rk_hdptx_phy_clk_set_rate(struct clk_hw *hw, unsigned long rate,
+ 	 * while the latter being executed only once, i.e. when clock remains
+ 	 * in the prepared state during rate changes.
+ 	 */
+-	return rk_hdptx_ropll_tmds_cmn_config(hdptx);
++	return rk_hdptx_tmds_ropll_cmn_config(hdptx);
+ }
+ 
+ static const struct clk_ops hdptx_phy_clk_ops = {
 
 -- 
 2.51.2
