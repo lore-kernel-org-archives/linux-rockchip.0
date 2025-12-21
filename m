@@ -4,50 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E17AE67495
-	for <linux-rockchip@archiver.kernel.org>; Sun, 21 Dec 2025 10:47:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F487E66886
+	for <linux-rockchip@archiver.kernel.org>; Sun, 21 Dec 2025 10:47:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Xaf4/9g7nwfRnMBvG+C6aNkqjD8uhFGfE6g7b8tjy1o=; b=bNI5G3GZsONLmx
-	F1uBJ+faFkl1tFF1rpsSAhPhiMpNhHGTIFhxWop5DhbZsD3I4PwugNtIXv5UxdVYekw/wUvtq7uIC
-	ZmtIM9WFrupXcCgfjvwvCDrWq12fHeydDi0LYWA4VgT1H9DYMA3IDg9YfuZP2y4bt1U8tSgYwHKjn
-	73gdABAszJvm0mFvl8G3dQcpavKBNxwynscHgj1EJXDD+E2criuOIdhDweAgHx9QvAtg709cBtLYA
-	UrR9NVG6rRIUWWM2sgUNKiuF97E6gl0nEhAUYyZKa0FkIS4y28LPKP4C/tNrNUfbNSMlPGEFbU82p
-	ToJ6Yc9V79CtWdcZ93AQ==;
+	List-Owner; bh=xqlfwFom+XHnYllv31qCq2dRlxPLOKGExLjHtF6x8MM=; b=T8M8iMIFZnzF78
+	dDq8V1JJHt6mhT1yvWbtBXurPpentsA1wXEXmbLdE6s63K+PJTXtpfXoxG54oZCfmxe3ksNvY4Pqc
+	kvAkBo+or/c4aOFnFzUEbATkBTE/wdDgqaM2va+jdVldNCoBJzkIKqJllcRsAexFtsl+vqrh16Tqw
+	EyFG7zoP3PE8xGVzlzb8OkI4d/sj+fQBCl8TWnT4pw49GVfbA9Fz8ZGjaBO+HYrgTKJgHD6x/P75D
+	0m5M+eIcpxUY7+EiAR5nUWLgUVyTimxbS7CEmsE8XNneXsDuF1RxUbeFOn5yvjuI2hw5ovyg8Wpt6
+	cFy9CUUd0vYq8XqG4L/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vXGy0-0000000CKzg-1Jn6;
-	Sun, 21 Dec 2025 10:47:12 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vXGy6-0000000CL4y-2bFd;
+	Sun, 21 Dec 2025 10:47:18 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vXGxt-0000000CKty-3bT9;
-	Sun, 21 Dec 2025 10:47:07 +0000
+	id 1vXGxu-0000000CKu0-2vSz;
+	Sun, 21 Dec 2025 10:47:08 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1766314022;
-	bh=Z9aStTjQ5oTuRN0GPLQ6iWNOlIGeZuaICw+hagAkRZs=;
+	s=mail; t=1766314023;
+	bh=i3Gw9Sac+Z2pq57AbgEFnTYEU8tyfk0Z8DX5cPEHcPE=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=e/Oze/4D5QeRBg3BHXvISMij0YsDU2wWaO9WOK5yrAxtASFnerasKC4ONsWtucvdC
-	 hocuotpVjef4hRnecUrjlGQb0+PlB8jDLFVF3rEK0QaGH4agMTANsSWn9K+WhQEEHl
-	 OFuWoWVRVVxBrq/wNHVTY33bGlgm7f8RVO+wswxH4CkFxIvHRu7QFV42QW52CLnBuO
-	 /nHVeRcY4gz0aJrrZokDIirXNmD+33QbpQgcMzhSVyebI9fvS9rkKr9tdnhD+Trdo0
-	 yuxr4hAzcmIIbTsodNcorfYd8sqPv28IamtuZIXg9iT6zS+XoGmQBZWEjaxZemh9Tb
-	 KIsKKbOF1fseA==
+	b=NJSQ9bbGLCT0KBBXwCNqPCcuYonYOby3UGeC649qbc7GQlq5SrOA9iUxB9hMTXeEQ
+	 Aer0rYOiirSt/2UzvvBY4LTLkPOcUHinQohLHjZVoraV2bRb2DU6klTXxuDkYNMxI7
+	 IX7GxcMkbvjNGNySYXAdLCTiqOMFMg+/zHKBzs/W8QK8mFil7sqMoAmgK+prD8TVQZ
+	 Vo3bwsZPx+ByTWMI8RW0XmZc5zoNMTx0Jdq7cZeVgfFSG0oKztHWiYIixsPmLoestD
+	 wH400GOZfNk2Xb1u49q0cyaBcgyYX+FDPYszMWsB/LishnNDQePlFdRu4JZ6EVLySZ
+	 BC61c0b6xN9vw==
 Received: from localhost (unknown [82.79.138.145])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7F32E17E0506;
-	Sun, 21 Dec 2025 11:47:02 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 620B017E12E8;
+	Sun, 21 Dec 2025 11:47:03 +0100 (CET)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Sun, 21 Dec 2025 12:46:48 +0200
-Subject: [PATCH v5 01/11] phy: hdmi: Add HDMI 2.1 FRL configuration options
+Date: Sun, 21 Dec 2025 12:46:49 +0200
+Subject: [PATCH v5 02/11] phy: rockchip: samsung-hdptx: Use usleep_range()
+ instead of udelay()
 MIME-Version: 1.0
-Message-Id: <20251221-phy-hdptx-frl-v5-1-dac390a780be@collabora.com>
+Message-Id: <20251221-phy-hdptx-frl-v5-2-dac390a780be@collabora.com>
 References: <20251221-phy-hdptx-frl-v5-0-dac390a780be@collabora.com>
 In-Reply-To: <20251221-phy-hdptx-frl-v5-0-dac390a780be@collabora.com>
 To: Vinod Koul <vkoul@kernel.org>, 
@@ -60,8 +61,9 @@ Cc: kernel@collabora.com, linux-phy@lists.infradead.org,
  linux-rockchip@lists.infradead.org
 X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251221_024706_074493_CF40949F 
-X-CRM114-Status: GOOD (  11.47  )
+X-CRM114-CacheID: sfid-20251221_024706_898919_864AF0E5 
+X-CRM114-Status: UNSURE (   8.68  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,62 +80,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The HDMI 2.1 specification introduced the Fixed Rate Link (FRL) mode,
-aiming to replace the older Transition-Minimized Differential Signaling
-(TMDS) mode used in previous HDMI versions to support much higher
-bandwidths (up to 48 Gbps) for modern video and audio formats.
-
-FRL has been designed to support ultra high resolution formats at high
-refresh rates like 8K@60Hz or 4K@120Hz, and eliminates the need for
-dynamic bandwidth adjustments, which reduces latency.  It operates with
-3 or 4 lanes at different link rates: 3Gbps, 6Gbps, 8Gbps, 10Gbps or
-12Gbps.
-
-Add support for configuring the FRL mode for HDMI PHYs.
+rk_hdptx_dp_reset() is allowed to sleep, hence replace the busy waiting
+with usleep_range(), to allow other threads to run.
 
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- include/linux/phy/phy-hdmi.h | 19 +++++++++++++++++--
- 1 file changed, 17 insertions(+), 2 deletions(-)
+ drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/include/linux/phy/phy-hdmi.h b/include/linux/phy/phy-hdmi.h
-index f0ec963c6e84..d4cf4430ee8f 100644
---- a/include/linux/phy/phy-hdmi.h
-+++ b/include/linux/phy/phy-hdmi.h
-@@ -6,16 +6,31 @@
- #ifndef __PHY_HDMI_H_
- #define __PHY_HDMI_H_
+diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
+index e3d817e81d6d..a6981b222c8b 100644
+--- a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
++++ b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
+@@ -1042,7 +1042,7 @@ static void rk_hdptx_dp_reset(struct rk_hdptx_phy *hdptx)
+ 	reset_control_assert(hdptx->rsts[RST_INIT].rstc);
  
-+#include <linux/types.h>
-+
-+enum phy_hdmi_mode {
-+	PHY_HDMI_MODE_TMDS,
-+	PHY_HDMI_MODE_FRL,
-+};
-+
- /**
-  * struct phy_configure_opts_hdmi - HDMI configuration set
-- * @tmds_char_rate: HDMI TMDS Character Rate in Hertz.
-  * @bpc: Bits per color channel.
-+ * @tmds_char_rate: HDMI TMDS Character Rate in Hertz.
-+ * @frl.rate_per_lane: HDMI FRL Rate per Lane in Gbps.
-+ * @frl.lanes: HDMI FRL lanes count.
-  *
-  * This structure is used to represent the configuration state of a HDMI phy.
-  */
- struct phy_configure_opts_hdmi {
--	unsigned long long tmds_char_rate;
- 	unsigned int bpc;
-+	union {
-+		unsigned long long tmds_char_rate;
-+		struct {
-+			u8 rate_per_lane;
-+			u8 lanes;
-+		} frl;
-+	};
- };
+ 	reset_control_assert(hdptx->rsts[RST_APB].rstc);
+-	udelay(10);
++	usleep_range(10, 15);
+ 	reset_control_deassert(hdptx->rsts[RST_APB].rstc);
  
- #endif /* __PHY_HDMI_H_ */
+ 	regmap_update_bits(hdptx->regmap, LANE_REG(0301),
 
 -- 
 2.51.2
