@@ -4,91 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A9F8E6748D
-	for <linux-rockchip@archiver.kernel.org>; Sun, 21 Dec 2025 14:26:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07DE5E67482
+	for <linux-rockchip@archiver.kernel.org>; Sun, 21 Dec 2025 14:26:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=n1TDcnh5UliJjw/YDsH9Ec/QB55sfZN9kM10APl1qW8=; b=3BvSV+/uUb3kpq
-	l/UnGn0FsY6PUusV4Xd0ZLXKHGiEs+JkrQOf9pRflIO+xIfoW/cif5or4O88pJn777TdsQHl7OzBW
-	qGlEZfZu8R6+SCjEMprYde1tsWpcNEg8/XS36coLXrSF/jF9S5HyLZCrK8EKW3pJiYS0eQAfgF3Op
-	hvSsnxB3+U6uvKsmb/VFaGjype4tU+Bn8Pw4gnrya320A8ZhH/E2TY7Gu7wQp8pOs4DWB2XzjOB7T
-	WfnrvMDJPbe2t06piMzKm4pEqFd3UUpSqcn2W+BvCtOOyUCJb4L0ku1DgOHblwzIHBS28BTvFt7Av
-	xOgMwBQoJzkuViKSEhYg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=0RoyhljUhr6KL+w+SGSNPx5czIF+w8tjrQffeg2y1gI=; b=EmPocMpKh/FHmJ
+	nZabUg3N921MiGQus88HdIUyXZWcw0jeG496f3TkXcfSW7FhGAyMBReKvhHMqRNxvmZO90xCr175S
+	YdsZ3c8DkJ3LHW99yfR/PQpo/GgBM5acw7OQUaCTBwJmIz80URbPxXeJ3cIdzOcXsJ97iywezkT25
+	WTmHRjxWsOXiH4UcIL1gDajD9ECZy6+eJiEG7c8LJbKesXXT526jTWSJVl6IQIKX3CB81OAx953hR
+	8JF5msxBDlo+rhHu067KjjWf9jXSFazzNyGuPueJknG1Tnp4anKSaMDJCRGjlTdKXjvF8+NDfkSR0
+	//EeoJOndo4bQgcF7ALw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vXKOF-0000000CVaE-3wKJ;
-	Sun, 21 Dec 2025 14:26:31 +0000
+	id 1vXKOE-0000000CVZR-2oa2;
+	Sun, 21 Dec 2025 14:26:30 +0000
 Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vXKOC-0000000CVYX-3uwS
+	id 1vXKOB-0000000CVXz-2Che
 	for linux-rockchip@lists.infradead.org;
-	Sun, 21 Dec 2025 14:26:30 +0000
-Received: from pps.filterd (m0279873.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 5BL9GoUr1783581
-	for <linux-rockchip@lists.infradead.org>; Sun, 21 Dec 2025 14:26:28 GMT
+	Sun, 21 Dec 2025 14:26:29 +0000
+Received: from pps.filterd (m0279869.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 5BLEF1px3414186
+	for <linux-rockchip@lists.infradead.org>; Sun, 21 Dec 2025 14:26:26 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-transfer-encoding:date:from:in-reply-to:message-id
-	:mime-version:references:subject:to; s=qcppdkim1; bh=cXrQ0eZNLwv
-	aZ+XYDJE/L7mMaZiYna99KUBbaqbUVsU=; b=ESqqQSPkedBLhNq/E4CyZq1vCkD
-	mpS6lcHajHlLLq/IzjSJkGONW3Tznz5HDQnY+sJEDU44RT5HXK84eRAg4auDDsZt
-	zLLXjBpYr1sqVkGKeMxBfU+iRF0ltmCP7OorhTUfUIrexKTjYOhdgXO1uRnmTTOo
-	RYs66G5eVwg5VkaTjWa76ONagbOYxuX7LJ8ZseR6gac0w1VDbJtk+0tn2mZnS/p9
-	RtpsflX7YiFYyf4JPZCHTg4e78dvWbgGf9ImF6xO9beP6TCqGEwd8DVsqpquJ/2m
-	X42Ay2Vjkaz7PLsknBt5NgF2+BFa5mxDqxmuCUkOgnZuaWs4fT77J2KgHDA==
-Received: from mail-qt1-f199.google.com (mail-qt1-f199.google.com [209.85.160.199])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4b5mtqjdm1-1
+	cc:content-transfer-encoding:date:from:message-id:mime-version
+	:subject:to; s=qcppdkim1; bh=hgLU28eZkGhuvXnuaKPXbCVu7AuMcgJfWMs
+	7HupizkM=; b=m8EUpWtXl3yU9Rj8JAnOwV47nrwluO7hLjeBfomTh99Rg6v1FVH
+	7lAbOiiTId8JG875n/CBetzVQxZEHKmAMdJET8z4HgZVPs7bISugR6zXg3fFhal2
+	a2UIH3pS28Yv9WxloIjcXIPDcn0gBraDLP0+7emj/amIHKMcjaK9OMFHYI+eau/j
+	g3dnQQ+6l7Xi2Qg6Gm6zL2tYxBiP0vzYnwJx0KXBO/kWCqlomOL72jkz03dBO/bA
+	m4GRGIlJM0YgE+6i1SPaC097B1CIf1vxFfh5mjzJ4/uXgfMt8rC2QepxY0l8jZjx
+	uGgk+5Nia8r/IT/KjxAfK2djdBySTQC9QYA==
+Received: from mail-qv1-f72.google.com (mail-qv1-f72.google.com [209.85.219.72])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4b5mubjdut-1
 	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-rockchip@lists.infradead.org>; Sun, 21 Dec 2025 14:26:27 +0000 (GMT)
-Received: by mail-qt1-f199.google.com with SMTP id d75a77b69052e-4f4a5dba954so74342591cf.0
-        for <linux-rockchip@lists.infradead.org>; Sun, 21 Dec 2025 06:26:27 -0800 (PST)
+	for <linux-rockchip@lists.infradead.org>; Sun, 21 Dec 2025 14:26:26 +0000 (GMT)
+Received: by mail-qv1-f72.google.com with SMTP id 6a1803df08f44-8888a6cb328so84338976d6.0
+        for <linux-rockchip@lists.infradead.org>; Sun, 21 Dec 2025 06:26:26 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1766327187; x=1766931987; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=cXrQ0eZNLwvaZ+XYDJE/L7mMaZiYna99KUBbaqbUVsU=;
-        b=biSV7DQLngO0r4Pc1rNfpJfcIQhXTfziHmO9i/vG3b5vHpzxJcfTNMjYWtYLFsEFpa
-         XV6eMm/5KrZUPO9NbRHIoo3K/K2nJZ5k02rzxq5FdUhXudMjAoSxZ/7OIpwDXhlGRwUz
-         qQSx6JXRHKWdgwkbyaRyBz6B9+j7CI+rd0fnZapoDGSfp/s1DQ9DUsd+AoX7RkF9C4TP
-         Qk58SDZ5vikxiB4kSon1um0DwluV/I+KGxNEkYH4Sg+iEhtIkKrRLCaB0i3y6OVor9Ju
-         g42rIxPlC4Hzv+UhRQ0gj2X3e1xdxotsG3ahNZreDH+iE2jVTigApRAGrlRze9iEesZR
-         2SMQ==
+        d=oss.qualcomm.com; s=google; t=1766327185; x=1766931985; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=hgLU28eZkGhuvXnuaKPXbCVu7AuMcgJfWMs7HupizkM=;
+        b=QlZ1n3aqYUdokEcKrNXVFNlhZUSFPeVuCEOxP9jF49dbI3CmXHhfWzqupWwSNFe0xM
+         tlEetFphlBgWchW9wj/MfKg3OVZay78bdrA9aVwudjo3vttsV3/k5HoAx31YOe4ceDqi
+         oefXz0+iT9uxXgPSYXjyW8ypX53WLBGsPxWNoUmkAen2fOb1ggQccksZJywIgFE+BnN3
+         tNXD0Ne/M65O8bUVwPaVFEnxccAqjh54BzjJ/JdD65Sd6Zxnd7nCyMXn0X2QbISlKtOK
+         792auUO3is4nZIHB2rR6kE7f5Nh3BQPYYL9/MGlU06YQPoAgL+8qJSU8OhQeOAYMsjCA
+         fRcA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1766327187; x=1766931987;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=cXrQ0eZNLwvaZ+XYDJE/L7mMaZiYna99KUBbaqbUVsU=;
-        b=c/vCI9NgpXrtf+J5Er21I3Nguxp69Azb1WH1wwhG7182pyVEoXFFj2/8A5WjuQ174U
-         7H/goq+QSaY79pLzFAjhaMVNPSaFn6EWneFuk9IFKP8MT4HtCTnwNNnLRGUWngyQLY+7
-         vpbVGfrRp+a1YOyNu0OqZDrDOkvWk7z7K/+s5CHot3znIPf/rTKyZeshyvNmzr3dhp1Y
-         D9foR4c21uvGLHPGzpJ2/P2FHYPaxL54KpnhN2qsPfUszZ0PRXvCSSGxBY/zrss86A9e
-         mehyGumXPYfbeST2dmgM6sY9wufe3m5ZjjgiyC822GpTHDQs1frJ9LN96/FlDz2Jijxo
-         PblA==
-X-Forwarded-Encrypted: i=1; AJvYcCXQgO/c4ZF4v9MYKp3rlz1k83qmUSdjSzlnc4PMCoG9y35/0kVQTq14b7QK5glongUgGw2m8kfCOgjZa7ZyQA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwfiZJwBYzR9xew9is1DkAERjpw+dIEaBjFfdORfKLCENGhscyq
-	peoQotksx41MnRDvCRMh7guszievCrjdelz+uOoa4y+uw54cfBDaHuGQbBW+KzAnwtAIovW+pyQ
-	QUkYhsvm1vmC8YA1uvKixfiuVYpAhKkXYzELa8L11FgEyN2KRjhdVKyH0E3SFaSP0hfTFEhpqL0
-	Q=
-X-Gm-Gg: AY/fxX6eKinNDw4N4PJ8sG668Vz/qRhG1Giuq1VnYzD1csiNVR0FdJ0TAe52glguzx2
-	WATnq4AIg0IOGytEKD0E6l/OVyMJiaKEH1ougU0LE9oIjYeHAgKKq18++xFkMNzBAoeE/4tulY7
-	jUAWa9evqQlDBzttbVs1Ohs1KfVQ+149QAqEn1blOgNL50a9lOPP/ab3Y4Qv7S1V7nJcGN7NY5X
-	5n8uNig26FYYjfSJU/Q22vKDku3z0yWo+b8IssTho4tebEB5qe2+nZEFVw/dk4sn9dU1LN0zZ5k
-	iC5RPOji36FjtotzMxrE5TsN6DRM1L3DwQw6lBwpJEI5SR0LtNWva2cEGNv4OSKtUg+6RKk3VGJ
-	cI5g+GHEy7Qisd1VDHncrgfOp+Q1SeV57YHPH9tNJYhQVDzPsJPja4z+Bxq0GgaLY4EM=
-X-Received: by 2002:ac8:6f07:0:b0:4f1:83e3:bb1a with SMTP id d75a77b69052e-4f4abcf86abmr121194991cf.31.1766327187406;
-        Sun, 21 Dec 2025 06:26:27 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IG4X1T9bdZZS/qvpRUsFhD2vRTGIBwr1akucMiS/SqlqEtSXJi9+JqEGzxWGbwmBgDxvbN0gQ==
-X-Received: by 2002:ac8:6f07:0:b0:4f1:83e3:bb1a with SMTP id d75a77b69052e-4f4abcf86abmr121194621cf.31.1766327186904;
-        Sun, 21 Dec 2025 06:26:26 -0800 (PST)
-Received: from quoll.home (83.31.98.88.ipv4.supernova.orange.pl. [83.31.98.88])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-b80620c4520sm211742666b.28.2025.12.21.06.26.25
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        d=1e100.net; s=20230601; t=1766327185; x=1766931985;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=hgLU28eZkGhuvXnuaKPXbCVu7AuMcgJfWMs7HupizkM=;
+        b=C2RGxLxxt9QlZLvbzdFdA+B8gbUqXs46yzPOJIy1dRUZOSM8Hh43QPtbLiFa2sP0AM
+         +dFL+DYMW9iQ/BxplZk57W7uLsUXv40bBYxt3n7zLZbuWjXEYy74lKu5NDzK8wNeHfFm
+         IrL4ocGWa4GLL23CcPK8alTbWhgfn3L5l4H5IScsKK6D7xZzXeRuJPSOopkB7o7IjgAJ
+         2wGQ1SBUZFpP0sZQkvGnv5qjnCwFDy6iYplDmc55+kC5HSSm3ccDJd/PAHAVpLJx8ipW
+         WcS6SXgf1xThcsSTfxJ+PsYiOzgyHoUsyJ9/K1YuJY5plOKG6QvUBpI/E9w869py2BHc
+         lNvA==
+X-Forwarded-Encrypted: i=1; AJvYcCV9SQdn1+Z2hk+PKjY5b10HPmwxtR+UmdzkwV/UIvxzdhi1cjWNJ861UvGsV1jUjxmJoPbqnMtYKVHm3ql24g==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxbiIkoXtJ/5rp0VSjU/IUQKEmMDUkr2RWs8i/lVyl+lq+jewZ2
+	BfBNiDsKA88M8dfd/8GEEtmhW5e83JMXnVpOfksgu27/Vxw6ZQQB3sMftDr/t645JMurW18hrt7
+	kxGayo89qIt+h4lXkWOG1fKmOJQXv5PbqQgxKdmFEsAtkcxmf5qTDGm+Qx7ap+74YdaVjtRiEIF
+	A=
+X-Gm-Gg: AY/fxX6T3vFVKdkGXSyz8sor+4mkdny4WlBMrKf+MoGt8SgvQKPe/PzGhT4nt0eiOCV
+	XlN1vlT6Z/FpYYHtsOELIoUDtRyunjELdfZrSvTOC3c+hwzqHV3KAQbf0+24tRXTBGGPaNQ0Gud
+	8ZqcbG/8NIiAooR3f6gobunLuQ4Wd8e0bFjw7FIT/IOCwakY3KgHF8+k2z0JPRBvBqYMpEwZ0ws
+	vziD2H5pcrYjEHfT/m5HNwwg8i9rpqKaILwBCaXWOgq5kP8yDOUZ5UAGt4nAWY2zwrWwP0e1hlH
+	t+MuEzWKgVdEqfUbZ2YjGLZa8R5nJysrQHgqqQrj4xl0tbH3wl6KY1QptLl/cZhBlSJhMwzcl+W
+	oxRk2eM1Qe8XcPawsi538qJk/wKcl9Zty7owsz/D/jiQZDFdacP4m+tczGRd27wtFLOk=
+X-Received: by 2002:ac8:7c4d:0:b0:4f1:ea37:cc6c with SMTP id d75a77b69052e-4f4abccef5cmr121973701cf.1.1766327185423;
         Sun, 21 Dec 2025 06:26:25 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IE1Ewwu8jx2ZwPNq71Z/1YkKihvuGLTgnEvdj7fUV4p110jAK9fWg0mU4MzcCWC6pVFe4KQUw==
+X-Received: by 2002:ac8:7c4d:0:b0:4f1:ea37:cc6c with SMTP id d75a77b69052e-4f4abccef5cmr121973401cf.1.1766327184948;
+        Sun, 21 Dec 2025 06:26:24 -0800 (PST)
+Received: from quoll.home (83.31.98.88.ipv4.supernova.orange.pl. [83.31.98.88])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-b80620c4520sm211742666b.28.2025.12.21.06.26.22
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 21 Dec 2025 06:26:24 -0800 (PST)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 To: Jonathan Cameron <jic23@kernel.org>, David Lechner <dlechner@baylibre.com>,
         =?UTF-8?q?Nuno=20S=C3=A1?= <nuno.sa@analog.com>,
@@ -102,52 +101,51 @@ To: Jonathan Cameron <jic23@kernel.org>, David Lechner <dlechner@baylibre.com>,
         linux-kernel@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
         linux-rockchip@lists.infradead.org
 Cc: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-Subject: [PATCH 2/3] iio: adc: exynos: Simplify probe() with local 'dev' and 'np'
-Date: Sun, 21 Dec 2025 15:26:04 +0100
-Message-ID: <20251221142602.47368-5-krzysztof.kozlowski@oss.qualcomm.com>
+Subject: [PATCH 1/3] iio: adc: aspeed: Simplify probe() with local 'dev' and 'np'
+Date: Sun, 21 Dec 2025 15:26:03 +0100
+Message-ID: <20251221142602.47368-4-krzysztof.kozlowski@oss.qualcomm.com>
 X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20251221142602.47368-4-krzysztof.kozlowski@oss.qualcomm.com>
-References: <20251221142602.47368-4-krzysztof.kozlowski@oss.qualcomm.com>
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=4355; i=krzysztof.kozlowski@oss.qualcomm.com;
- h=from:subject; bh=K0IQtqWX619jZ9YkzBmDaKMoDdmrpKcT02lv7CF+pGE=;
- b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBpSAN7uXaCJu7ZGPqhfs4R9Ef5h9276gYJLaLUY
- YKtXtzQRLGJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCaUgDewAKCRDBN2bmhouD
- 1zfqD/wIktSEHD3nlDu4v1bjhJA+iTTRm5qqTc01Jd3T7PEFYcGXDQQwVYANojieNLNhQux9H/p
- NFLX3aSMRGGDEtulqa8DTrHo70IujJZnb2VvTTwdsT1tLHm2e3cIJu2tEdsuSICwS/NYNbpJahV
- BwjaeUk3isJfSeqXAP6Csj3zU4RfoaB92oRmTYaBj3eORohYq6iX/4Aau7uY4KTPR/L2Q979/L2
- oK46pTx6bcGRSMxerNyqWfkY7wFEnldgowWv+xTWy8+zUeEttz+1RTfu/TZN3KMTkwPJo6EQNHU
- cYv/XezRWPAZdmSeVmsNQARSPCZoXtMw8kY5rq3m6NdJaGe/epLes9YKEEVao3TqboDYEtFGpws
- +N1kQjjwOjdRLTBufFRlH7Srs3LK7s7fliDsvr4QC+Ds6HVcj9VQ629ELMv7HOVj5z1L6xtGB4/
- 2uHJWxzoPAY0CvX1tuyVHtvXrc9W4i4hAe/dNXmPpkgY4sndzLGcjsLtfZNNSHzRozcPVo3LRmQ
- QEsDz+N1VL2jw2fvLPTeV4GlwIFvlwXk9g+Tp7XFsQroqX6D4OTzxudmqlMPnjJcrcF0tvZMlol
- mMO9nAe9r45SZ0mNUNB+DdalACiMKdZxySYOp6/HwvPbxNagKQxBEAAnkQS2cnW/OIZdKLBHhdD StOStPPzq1Gm0FA==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=5796; i=krzysztof.kozlowski@oss.qualcomm.com;
+ h=from:subject; bh=4memX5LYrUSHkpPHO9rC17xhoMrrygUhrVZmB+X+Pes=;
+ b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBpSAN6XXbmliCtMd47o2Ukt4Nzqp5wMfuT7YMpn
+ B0bxk6i8+iJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCaUgDegAKCRDBN2bmhouD
+ 1+QUD/4h6/Z/xjzwuixOi8qQKqxnJhDBq0SFL89uOLzuKcSdkerG6kIqP7Ohf+mL8qJq4iT9ZiK
+ VsdrgMQA3s3wVXAXqMBkdCK4e9csD8bF2MAUKIb6+HbFsphWegKqmDsL43IPwZx9/Jnhc8ju4xg
+ oxISsYHMxi+Lj+hZLswy7fJuPV/rlT4xRCfpnYaEaHrxzE0DHOdYw9VFuch6FLzt/KI5dJB+0rq
+ 7bqm2523WSW2EJ4qQhN0AIfkGnn7aQS8WFdQ9JgjvYolDnqxLqRTskV+aTUh77WY2ryH27Z/qSm
+ cHHcsvZ4+knptjeLzi7tuaHR6Fm1a4PV9q1Cf6nvm2G8XflIX9mk9xTUCzqz5uFkJx4p/hW2n5R
+ 6owLdaaAFn3fweGPPh56+M388RM89VLo3lkF1W0ElrbFdySTYlWn00GU1nS90KlKf7MxrsWOoSS
+ RaSroRmjHzXefIK6ze3kbvtJE6WWl4yhFfauKQea7oj8F2bPFtXX966l/rAm3hf2dxd1CrYdOCE
+ RksgInFqSNWHu3uv+A5FBHnK3AqjapgI4O0rjglPxs4M65UEZ/Y7wJDZtriE0TYjiDNFIxl4lo2
+ njHCvzlwf61GZw/aZas9Y1KQrIPiEYJeCBOcCv49+k/V6Q8WWZUJtdkLDLvBbHNzeL+MeN/gb4A JQzD7dXuG8fDQ9A==
 X-Developer-Key: i=krzysztof.kozlowski@oss.qualcomm.com; a=openpgp; fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
-X-Proofpoint-GUID: u4vRHLyZPsU6OSC9bB3ROJ6V9CsRjgsI
-X-Authority-Analysis: v=2.4 cv=dPWrWeZb c=1 sm=1 tr=0 ts=69480393 cx=c_pps
- a=WeENfcodrlLV9YRTxbY/uA==:117 a=qe4J/qXhiWkb1JZGYKbLYA==:17
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMjIxMDEzNSBTYWx0ZWRfXyMJLHtpce2ch
+ PZTEzXVFEKODdb0xwh98incg0iToAXSjQoGlvWW6YbuXxOtoXGye85kbl+DoihAJBD1hc1u7hqF
+ 7Puw8yavlhrMZKOITU5fBbX6ajKtYREts0/au/jThEiAHCQp0qKxyb8fKvLa3v6D9F/+bEfuApC
+ +EBHhb50B6TMX4ECSxOuzTBLZdzVuafKJDnXY7oKy5uWR2JY3CShuJIfME0VX0R7IfVgvGzPT/f
+ SjO5PAyn8tR9ZKPoag6o7DI6MMvrj5DobF0qQ6QrB0rysRlBu+OWIfJV0pFRkYsZovrbWwjn7Pf
+ MUxkEHA+luBr2etpOBAfGmnlOnN8Nid8X8ut/C6ePcdNWGr1hUH0CC0DF+Lnn22A7P3qQs6fT45
+ BF+bSX2Kg50LLVQYYehbxnXCHFAKTiBgy9f8Q4C0CnBMhBNQySMVX2Ibh410NNNxm7EvcRjHkMV
+ d0HGlZ9NXaIv53HNSBQ==
+X-Proofpoint-GUID: nw_olLhCqNTaeeJL8ZFVZBI-hbqbfCsc
+X-Proofpoint-ORIG-GUID: nw_olLhCqNTaeeJL8ZFVZBI-hbqbfCsc
+X-Authority-Analysis: v=2.4 cv=KYbfcAYD c=1 sm=1 tr=0 ts=69480392 cx=c_pps
+ a=7E5Bxpl4vBhpaufnMqZlrw==:117 a=qe4J/qXhiWkb1JZGYKbLYA==:17
  a=wP3pNCr1ah4A:10 a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=EUspDBNiAAAA:8 a=XA6BSOE7zRTYN9-09qgA:9 a=kacYvNCVWA4VmyqE58fU:22
-X-Proofpoint-ORIG-GUID: u4vRHLyZPsU6OSC9bB3ROJ6V9CsRjgsI
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMjIxMDEzNSBTYWx0ZWRfX8CpVVKr9PF1e
- DS7G0uNoG7w8q2GRMRLY78E2IVLcDwH5UqYQDjDpd5LIRqJi5vNQrulW7xW3vP1ldaNzjp23zC3
- zxY07AUrotMp18DDvpHocFxtGIIBx0dwtyJ/5xx2S19BBk52cEHSpY3zQF3r8C/k6FVjPh1iRy4
- 5rrT/XkDH54Nev3jxAEgVm+smMye6xCchnj/KZoxk03a1cYZHejrUvdenfRsdLzuuAw7t++6kc3
- SupRyaoSmzpmsDjc1AJpx2YnKZDj77Def9rmC1+rLwTz2KCQ/kkLGaM19AafpnZFrAeWJtn0LXt
- 2CQ253EmT6+pD08XQ+asrPvaMCzV9YIitWrVeUCKhlQzyHDSIE69k0goLcrsMcnWgIKBV8rpqjU
- 5geUxZukjKJSqVDW2n1s0Il9onYaSmqhUkBB8aod07Z0tZLK2y9reM/oayGp+m+Ei2rJzjrMm1M
- DZ3z55EBwXu2m4b0anA==
+ a=EUspDBNiAAAA:8 a=Nk-rwAvTYNLgZ8AtZ6UA:9 a=pJ04lnu7RYOZP9TFuWaZ:22
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
  definitions=2025-12-21_04,2025-12-19_02,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0 spamscore=0 bulkscore=0 suspectscore=0 priorityscore=1501
- adultscore=0 lowpriorityscore=0 clxscore=1015 phishscore=0 malwarescore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2512120000 definitions=main-2512210135
+ adultscore=0 suspectscore=0 phishscore=0 malwarescore=0 spamscore=0
+ priorityscore=1501 clxscore=1015 bulkscore=0 lowpriorityscore=0
+ impostorscore=0 classifier=typeunknown authscore=0 authtc= authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2512120000
+ definitions=main-2512210135
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251221_062629_110975_233E8380 
-X-CRM114-Status: GOOD (  14.37  )
+X-CRM114-CacheID: sfid-20251221_062627_685098_08A4821B 
+X-CRM114-Status: GOOD (  15.95  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -166,120 +164,146 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Simplify the probe function by using local 'dev' and 'np' variables
 instead of full pointer dereferences.  This makes several lines shorter,
-which allows to avoid wrapping making code more readable.
+which allows to avoid wrapping making code more readable.  While
+touching the return line, simplify by avoiding unnecessary 'ret'
+assignment.
 
 Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 ---
- drivers/iio/adc/exynos_adc.c | 36 ++++++++++++++++--------------------
- 1 file changed, 16 insertions(+), 20 deletions(-)
+ drivers/iio/adc/aspeed_adc.c | 42 ++++++++++++++++--------------------
+ 1 file changed, 19 insertions(+), 23 deletions(-)
 
-diff --git a/drivers/iio/adc/exynos_adc.c b/drivers/iio/adc/exynos_adc.c
-index 491e8dcfd91e..aa287132a369 100644
---- a/drivers/iio/adc/exynos_adc.c
-+++ b/drivers/iio/adc/exynos_adc.c
-@@ -552,12 +552,13 @@ static int exynos_adc_remove_devices(struct device *dev, void *c)
- static int exynos_adc_probe(struct platform_device *pdev)
- {
- 	struct exynos_adc *info = NULL;
-+	struct device *dev = &pdev->dev;
- 	struct device_node *np = pdev->dev.of_node;
- 	struct iio_dev *indio_dev = NULL;
+diff --git a/drivers/iio/adc/aspeed_adc.c b/drivers/iio/adc/aspeed_adc.c
+index 1ae45fe90e6c..4be44c524b4d 100644
+--- a/drivers/iio/adc/aspeed_adc.c
++++ b/drivers/iio/adc/aspeed_adc.c
+@@ -472,16 +472,18 @@ static int aspeed_adc_probe(struct platform_device *pdev)
+ 	struct aspeed_adc_data *data;
  	int ret;
- 	int irq;
+ 	u32 adc_engine_control_reg_val;
++	struct device *dev = &pdev->dev;
++	struct device_node *np = dev_of_node(dev);
+ 	unsigned long scaler_flags = 0;
+ 	char clk_name[32], clk_parent_name[32];
  
--	indio_dev = devm_iio_device_alloc(&pdev->dev, sizeof(struct exynos_adc));
-+	indio_dev = devm_iio_device_alloc(dev, sizeof(struct exynos_adc));
+-	indio_dev = devm_iio_device_alloc(&pdev->dev, sizeof(*data));
++	indio_dev = devm_iio_device_alloc(dev, sizeof(*data));
  	if (!indio_dev)
  		return -ENOMEM;
  
-@@ -565,7 +566,7 @@ static int exynos_adc_probe(struct platform_device *pdev)
- 
- 	info->data = exynos_adc_get_data(pdev);
- 	if (!info->data)
--		return dev_err_probe(&pdev->dev, -EINVAL, "failed getting exynos_adc_data\n");
-+		return dev_err_probe(dev, -EINVAL, "failed getting exynos_adc_data\n");
- 
- 	info->regs = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(info->regs))
-@@ -573,11 +574,9 @@ static int exynos_adc_probe(struct platform_device *pdev)
- 
- 
- 	if (info->data->needs_adc_phy) {
--		info->pmu_map = syscon_regmap_lookup_by_phandle(
--					pdev->dev.of_node,
--					"samsung,syscon-phandle");
-+		info->pmu_map = syscon_regmap_lookup_by_phandle(np, "samsung,syscon-phandle");
- 		if (IS_ERR(info->pmu_map))
--			return dev_err_probe(&pdev->dev, PTR_ERR(info->pmu_map),
-+			return dev_err_probe(dev, PTR_ERR(info->pmu_map),
- 					     "syscon regmap lookup failed.\n");
- 	}
- 
-@@ -585,25 +584,24 @@ static int exynos_adc_probe(struct platform_device *pdev)
- 	if (irq < 0)
- 		return irq;
- 	info->irq = irq;
--	info->dev = &pdev->dev;
-+	info->dev = dev;
- 
- 	init_completion(&info->completion);
- 
--	info->clk = devm_clk_get(&pdev->dev, "adc");
-+	info->clk = devm_clk_get(dev, "adc");
- 	if (IS_ERR(info->clk))
--		return dev_err_probe(&pdev->dev, PTR_ERR(info->clk), "failed getting clock\n");
-+		return dev_err_probe(dev, PTR_ERR(info->clk), "failed getting clock\n");
- 
- 	if (info->data->needs_sclk) {
--		info->sclk = devm_clk_get(&pdev->dev, "sclk");
-+		info->sclk = devm_clk_get(dev, "sclk");
- 		if (IS_ERR(info->sclk))
--			return dev_err_probe(&pdev->dev, PTR_ERR(info->sclk),
-+			return dev_err_probe(dev, PTR_ERR(info->sclk),
- 					     "failed getting sclk clock\n");
- 	}
- 
--	info->vdd = devm_regulator_get(&pdev->dev, "vdd");
-+	info->vdd = devm_regulator_get(dev, "vdd");
- 	if (IS_ERR(info->vdd))
--		return dev_err_probe(&pdev->dev, PTR_ERR(info->vdd),
--				     "failed getting regulator");
-+		return dev_err_probe(dev, PTR_ERR(info->vdd), "failed getting regulator");
- 
- 	ret = regulator_enable(info->vdd);
- 	if (ret)
-@@ -619,7 +617,7 @@ static int exynos_adc_probe(struct platform_device *pdev)
- 
+ 	data = iio_priv(indio_dev);
+-	data->dev = &pdev->dev;
+-	data->model_data = of_device_get_match_data(&pdev->dev);
++	data->dev = dev;
++	data->model_data = of_device_get_match_data(dev);
  	platform_set_drvdata(pdev, indio_dev);
  
--	indio_dev->name = dev_name(&pdev->dev);
-+	indio_dev->name = dev_name(dev);
- 	indio_dev->info = &exynos_adc_iio_info;
- 	indio_dev->modes = INDIO_DIRECT_MODE;
- 	indio_dev->channels = exynos_adc_iio_channels;
-@@ -627,11 +625,9 @@ static int exynos_adc_probe(struct platform_device *pdev)
+ 	data->base = devm_platform_ioremap_resource(pdev, 0);
+@@ -491,16 +493,15 @@ static int aspeed_adc_probe(struct platform_device *pdev)
+ 	/* Register ADC clock prescaler with source specified by device tree. */
+ 	spin_lock_init(&data->clk_lock);
+ 	snprintf(clk_parent_name, ARRAY_SIZE(clk_parent_name), "%s",
+-		 of_clk_get_parent_name(pdev->dev.of_node, 0));
++		 of_clk_get_parent_name(np, 0));
+ 	snprintf(clk_name, ARRAY_SIZE(clk_name), "%s-fixed-div",
+ 		 data->model_data->model_name);
+-	data->fixed_div_clk = clk_hw_register_fixed_factor(
+-		&pdev->dev, clk_name, clk_parent_name, 0, 1, 2);
++	data->fixed_div_clk = clk_hw_register_fixed_factor(dev, clk_name,
++							   clk_parent_name, 0, 1, 2);
+ 	if (IS_ERR(data->fixed_div_clk))
+ 		return PTR_ERR(data->fixed_div_clk);
  
- 	mutex_init(&info->lock);
+-	ret = devm_add_action_or_reset(data->dev,
+-				       aspeed_adc_unregister_fixed_divider,
++	ret = devm_add_action_or_reset(dev, aspeed_adc_unregister_fixed_divider,
+ 				       data->fixed_div_clk);
+ 	if (ret)
+ 		return ret;
+@@ -510,7 +511,7 @@ static int aspeed_adc_probe(struct platform_device *pdev)
+ 		snprintf(clk_name, ARRAY_SIZE(clk_name), "%s-prescaler",
+ 			 data->model_data->model_name);
+ 		data->clk_prescaler = devm_clk_hw_register_divider(
+-			&pdev->dev, clk_name, clk_parent_name, 0,
++			dev, clk_name, clk_parent_name, 0,
+ 			data->base + ASPEED_REG_CLOCK_CONTROL, 17, 15, 0,
+ 			&data->clk_lock);
+ 		if (IS_ERR(data->clk_prescaler))
+@@ -526,7 +527,7 @@ static int aspeed_adc_probe(struct platform_device *pdev)
+ 	snprintf(clk_name, ARRAY_SIZE(clk_name), "%s-scaler",
+ 		 data->model_data->model_name);
+ 	data->clk_scaler = devm_clk_hw_register_divider(
+-		&pdev->dev, clk_name, clk_parent_name, scaler_flags,
++		dev, clk_name, clk_parent_name, scaler_flags,
+ 		data->base + ASPEED_REG_CLOCK_CONTROL, 0,
+ 		data->model_data->scaler_bit_width,
+ 		data->model_data->need_prescaler ? CLK_DIVIDER_ONE_BASED : 0,
+@@ -534,15 +535,14 @@ static int aspeed_adc_probe(struct platform_device *pdev)
+ 	if (IS_ERR(data->clk_scaler))
+ 		return PTR_ERR(data->clk_scaler);
  
--	ret = request_irq(info->irq, exynos_adc_isr,
--					0, dev_name(&pdev->dev), info);
-+	ret = request_irq(info->irq, exynos_adc_isr, 0, dev_name(dev), info);
- 	if (ret < 0) {
--		dev_err(&pdev->dev, "failed requesting irq, irq = %d\n",
--							info->irq);
-+		dev_err(dev, "failed requesting irq, irq = %d\n", info->irq);
- 		goto err_disable_clk;
+-	data->rst = devm_reset_control_get_shared(&pdev->dev, NULL);
++	data->rst = devm_reset_control_get_shared(dev, NULL);
+ 	if (IS_ERR(data->rst))
+-		return dev_err_probe(&pdev->dev, PTR_ERR(data->rst),
++		return dev_err_probe(dev, PTR_ERR(data->rst),
+ 				     "invalid or missing reset controller device tree entry");
+ 
+ 	reset_control_deassert(data->rst);
+ 
+-	ret = devm_add_action_or_reset(data->dev, aspeed_adc_reset_assert,
+-				       data->rst);
++	ret = devm_add_action_or_reset(dev, aspeed_adc_reset_assert, data->rst);
+ 	if (ret)
+ 		return ret;
+ 
+@@ -554,7 +554,7 @@ static int aspeed_adc_probe(struct platform_device *pdev)
+ 	if (ret)
+ 		return ret;
+ 
+-	if (of_property_present(data->dev->of_node, "aspeed,battery-sensing")) {
++	if (of_property_present(np, "aspeed,battery-sensing")) {
+ 		if (data->model_data->bat_sense_sup) {
+ 			data->battery_sensing = 1;
+ 			if (readl(data->base + ASPEED_REG_ENGINE_CONTROL) &
+@@ -566,15 +566,13 @@ static int aspeed_adc_probe(struct platform_device *pdev)
+ 				data->battery_mode_gain.div = 2;
+ 			}
+ 		} else
+-			dev_warn(&pdev->dev,
+-				 "Failed to enable battery-sensing mode\n");
++			dev_warn(dev, "Failed to enable battery-sensing mode\n");
  	}
  
-@@ -644,7 +640,7 @@ static int exynos_adc_probe(struct platform_device *pdev)
+ 	ret = clk_prepare_enable(data->clk_scaler->clk);
+ 	if (ret)
+ 		return ret;
+-	ret = devm_add_action_or_reset(data->dev,
+-				       aspeed_adc_clk_disable_unprepare,
++	ret = devm_add_action_or_reset(dev, aspeed_adc_clk_disable_unprepare,
+ 				       data->clk_scaler->clk);
+ 	if (ret)
+ 		return ret;
+@@ -592,8 +590,7 @@ static int aspeed_adc_probe(struct platform_device *pdev)
+ 	writel(adc_engine_control_reg_val,
+ 	       data->base + ASPEED_REG_ENGINE_CONTROL);
  
- 	ret = of_platform_populate(np, exynos_adc_match, NULL, &indio_dev->dev);
- 	if (ret < 0) {
--		dev_err(&pdev->dev, "failed adding child nodes\n");
-+		dev_err(dev, "failed adding child nodes\n");
- 		goto err_of_populate;
- 	}
+-	ret = devm_add_action_or_reset(data->dev, aspeed_adc_power_down,
+-					data);
++	ret = devm_add_action_or_reset(dev, aspeed_adc_power_down, data);
+ 	if (ret)
+ 		return ret;
  
+@@ -625,8 +622,7 @@ static int aspeed_adc_probe(struct platform_device *pdev)
+ 					    aspeed_adc_iio_channels;
+ 	indio_dev->num_channels = data->model_data->num_channels;
+ 
+-	ret = devm_iio_device_register(data->dev, indio_dev);
+-	return ret;
++	return devm_iio_device_register(dev, indio_dev);
+ }
+ 
+ static const struct aspeed_adc_trim_locate ast2500_adc_trim = {
 -- 
 2.51.0
 
