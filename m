@@ -4,63 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00634E67497
-	for <linux-rockchip@archiver.kernel.org>; Sun, 21 Dec 2025 10:37:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF81EE66886
+	for <linux-rockchip@archiver.kernel.org>; Sun, 21 Dec 2025 10:47:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Pxon2Mqj0LFyISa8fJO4qGzDVlUFueobv0lCjqL4JQ8=; b=br9BGkre/ZtEcj
-	N5MNVM1zpF5vLm43r+5b+3ENTVWOTcZB0dttr9g97LtBgOtcYkU3CPx1+Dh22w0LCUL9V1YcFnHeS
-	8UC45hwQ2fZbjs3DMIvXdsFl9QAN4HLplG8KaKzlEPaXzd0cQbOcb5JOH2EeyKA4JGtLBg5mlKnY1
-	EEjj0hdfD0KE5B24FtKS3crAidqRjqa77kNAc9GcptDFZUlm28uPoSeHLqq3ZFdi0CKqL3o62QbUA
-	8kt9PEPTq+EDKMxdLDnhHLnfqIv71j6CqMmYOx2v9Yf8JjtKjb4lGdXl31b3kFEw1fb84kmhWJduZ
-	f/ttuu+w3usiP8BO1VcA==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=BFO36mt7E7h0eZTr3axm2ggSHetQyVoLFfJdZ/pli9Y=; b=vZNnKqxC/pzJ2d
+	qbiITaSWshcK901TidRqiQ+F1XRiDBO1EliZSdAESekJJ8H6FUdg7kPkgZ5Vyy90UO7oFgviMSqLn
+	Tw8DbGwrHqQ07YZMU4a2VClaNvirb00PZdQU5MuEkvrohHO3pojC4uO1OqOzkiWrJPhIAg822ojeS
+	ckKQ7nmpdkJUGvGDNQpPsUaP6ZtbsAYqNUrlmJN+UMndIe1ObDiQnIEfEGb8/XUyToq3tiRlaYxcE
+	CdumKENJKCidJw7YjFpTt3088K1XE5Vq6h4aDUV/5Scgl+/QG0XpjccJP9+iPLrxYbgG1M2d6X/1f
+	BfUMrYoWxIwQHvyOAA8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vXGo2-0000000CKEW-3cAb;
-	Sun, 21 Dec 2025 10:36:54 +0000
+	id 1vXGxw-0000000CKwZ-3E8i;
+	Sun, 21 Dec 2025 10:47:08 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vXGny-0000000CKC5-2mlX;
-	Sun, 21 Dec 2025 10:36:51 +0000
+	id 1vXGxt-0000000CKtv-1vNj;
+	Sun, 21 Dec 2025 10:47:06 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1766313407;
-	bh=vcptfxca5+TBz8Sygmhs5giULEcEQOzbFELMheyNl/A=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=Z1IiserHbDl3xk4O/fEwL0nSsY7kI7eAt1l3TDXi7bu2emKvDXQE+PfUjzDEi7s3q
-	 6xDgKaf27vh7p8fO2DHWhmNauHLU83p33Q300Tvq6C0xvGkVpzUSgDGUgu0yyJC7jS
-	 Fe76XUGcE/4YISAs5oAWwqpa+hHDNlF3VlX7rEM7iYkoP0JC8cpMRoUsKC7Ix+EHBA
-	 YK6atE57NGDQSX3cqBCU5ehQg+ZR0fZuHE+sy3dt/PJLrxHJmJ0UYCbUqQZRFbrnkH
-	 3SafHnZ5jph9BOxRCQe88d9NWGBDHbD6O+O4KJA/TZ2Fo0xLYmq7l5B7VIMLcQ2z6m
-	 p8nHz4/byih0g==
+	s=mail; t=1766314021;
+	bh=9LA2ZOjE1MM2HFgQPaMB79qBZSoN5v2lgsrIFF6ELp4=;
+	h=From:Subject:Date:To:Cc:From;
+	b=hXcV6gXvRR0wCcxQS3pP+uVfjX0bweL1ROLW777DSUuwnxGvF3QSvdu+5ePZyTjWs
+	 mfO2QoWWw3oyOHdwYkyKLvkDmpOXewkap0Y8MOFSBFiqkXQCi51moPqPykvXHqMSbt
+	 UE5umO30AYbwQ/p/nu1wqkptUyk8nmA0AXFIuGdgb9IUWkq9R90wDToeHJJfZM6ppu
+	 /cvtExUNhEWertVrKIEQ5BxSSMLxmWx63zrvYFCOG0Gw7dJ7czCm7rPXyA3/u4y8g/
+	 e7zLUp6fm5Cx8nwUDPsRzUki7sLzuMEHm+0kAboAyOkEPMlHgq0Lxmwsi6/glz1AQr
+	 O2SSI0Xn9Fjpg==
 Received: from localhost (unknown [82.79.138.145])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 030D817E1330;
-	Sun, 21 Dec 2025 11:36:46 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 961BC17E0463;
+	Sun, 21 Dec 2025 11:47:01 +0100 (CET)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Sun, 21 Dec 2025 12:36:24 +0200
-Subject: [PATCH v2 2/2] phy: rockchip: samsung-hdptx: Cleanup TMDS PLL
- config table
+Subject: [PATCH v5 00/11] Add HDMI 2.1 FRL support to
+ phy-rockchip-samsung-hdptx
+Date: Sun, 21 Dec 2025 12:46:47 +0200
+Message-Id: <20251221-phy-hdptx-frl-v5-0-dac390a780be@collabora.com>
 MIME-Version: 1.0
-Message-Id: <20251221-phy-hdptx-pll-fix-v2-2-ae4abf7f75a1@collabora.com>
-References: <20251221-phy-hdptx-pll-fix-v2-0-ae4abf7f75a1@collabora.com>
-In-Reply-To: <20251221-phy-hdptx-pll-fix-v2-0-ae4abf7f75a1@collabora.com>
+X-B4-Tracking: v=1; b=H4sIABfQR2kC/3XQwW7DIAyA4VeJOI8KDAkhp73HtEMAsyClTUayK
+ FXVd5/THlJ13dFIfLb+C5swJ5xYU1xYxiVNaTjRUL4VzHft6Qt5CjQzEFAKI2o+dmfehXFeecw
+ 9j14pY4KzEZDRnzFjTOvN+/ikuUvTPOTzjV/k9vqftEguuI8obIUAOup3P/R964bcHvxwZJu2w
+ C7UonwWgIQgZe2CdhUK90pQD4L8c4PabjDWWhNq5+CloHfBCngWNAkmVFaaShnl8Vm43iNl/P6
+ h1vO91J66KTZYgtAP8NhT6LRyYWrjLaCgTA21IMq1E3KCj2luiqU6SMuzl7Tm+gsKU6gP2gEAA
+ A==
+X-Change-ID: 20250708-phy-hdptx-frl-fc3377db9f2e
 To: Vinod Koul <vkoul@kernel.org>, 
- Neil Armstrong <neil.armstrong@linaro.org>, 
- Heiko Stuebner <heiko@sntech.de>, Dmitry Baryshkov <lumag@kernel.org>
+ Kishon Vijay Abraham I <kishon@kernel.org>, 
+ Heiko Stuebner <heiko@sntech.de>, Algea Cao <algea.cao@rock-chips.com>, 
+ Dmitry Baryshkov <lumag@kernel.org>, 
+ Neil Armstrong <neil.armstrong@linaro.org>
 Cc: kernel@collabora.com, linux-phy@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org
 X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251221_023650_895516_597DC67B 
-X-CRM114-Status: UNSURE (   9.31  )
+X-CRM114-CacheID: sfid-20251221_024705_657213_2066D0DB 
+X-CRM114-Status: UNSURE (   9.11  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -78,128 +85,85 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Drop a bunch of unused members from struct ropll_config and make the
-static ropll_tmds_cfg table more readable:
+The Samsung HDMI/eDP Transmitter Combo PHY is capable of handling four
+HDMI 2.1 Fixed Rate Link (FRL) lanes, while each lane can operate at
+3Gbps, 6Gbps, 8Gbps, 10Gbps or 12Gbps.
 
-* add a table header
-* sort rows by rate
-* convert hex values to decimal (for consistency)
+This patchset extends the HDMI PHY configuration API to manage the FRL
+mode and provides all the required HDMI driver changes to enable FRL in
+addition to the already supported TMDS mode.
+
+Also note that since v5 the series depends on the fixes provided by [2].
+
+[1] https://lore.kernel.org/r/20250902-phy-hdptx-fixes-v1-0-e8d9ef9748d6@collabora.com
+[2] https://lore.kernel.org/r/20251221-phy-hdptx-pll-fix-v2-0-ae4abf7f75a1@collabora.com/
 
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 82 +++++++----------------
- 1 file changed, 24 insertions(+), 58 deletions(-)
+Changes in v5:
+- Dropped all unused members from struct lcpll_config and improved the
+  readability of the rk_hdptx_frl_lcpll_cfg table
+- Rebased series onto v6.19-rc1 and replaced dependency [1] with [2]
+  (the former got merged)
+- Link to v4: https://lore.kernel.org/r/20250902-phy-hdptx-frl-v4-0-7d69176373ce@collabora.com
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-index cafa618d70fd..e3d817e81d6d 100644
---- a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-+++ b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-@@ -336,27 +336,13 @@ struct ropll_config {
- 	u8 pms_pdiv;
- 	u8 pms_refdiv;
- 	u8 pms_sdiv;
--	u8 pms_iqdiv_rstn;
--	u8 ref_clk_sel;
- 	u8 sdm_en;
--	u8 sdm_rstn;
--	u8 sdc_frac_en;
--	u8 sdc_rstn;
--	u8 sdm_clk_div;
- 	u8 sdm_deno;
- 	u8 sdm_num_sign;
- 	u8 sdm_num;
- 	u8 sdc_n;
- 	u8 sdc_num;
- 	u8 sdc_deno;
--	u8 sdc_ndiv_rstn;
--	u8 ssc_en;
--	u8 ssc_fm_dev;
--	u8 ssc_fm_freq;
--	u8 ssc_clk_div_sel;
--	u8 ana_cpp_ctrl;
--	u8 ana_lpf_c_sel;
--	u8 cd_tx_ser_rate_sel;
- };
- 
- struct tx_drv_ctrl {
-@@ -412,50 +398,30 @@ struct rk_hdptx_phy {
- };
- 
- static const struct ropll_config ropll_tmds_cfg[] = {
--	{ 594000000ULL, 124, 124, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 62, 1, 16, 5, 0,
--	  1, 1, 0, 0x20, 0x0c, 1, 0x0e, 0, 0, },
--	{ 461101250ULL, 97, 97, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 71, 1, 53, 2, 6,
--	  35, 1, 0, 0x20, 0x0c, 1, 0x0e, 0, 0, },
--	{ 371250000ULL, 155, 155, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 62, 1, 16, 5, 0,
--	  1, 1, 0, 0x20, 0x0c, 1, 0x0e, 0, 0, },
--	{ 297000000ULL, 124, 124, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 62, 1, 16, 5, 0,
--	  1, 1, 0, 0x20, 0x0c, 1, 0x0e, 0, 0, },
--	{ 162000000ULL, 135, 135, 1, 1, 3, 1, 1, 0, 1, 1, 1, 1, 4, 0, 3, 5, 5, 0x10,
--	  1, 0, 0x20, 0x0c, 1, 0x0e, 0, 0, },
--	{ 185625000ULL, 155, 155, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 62, 1, 16, 5, 0,
--	  1, 1, 0, 0x20, 0x0c, 1, 0x0e, 0, 0, },
--	{ 154000000ULL, 193, 193, 1, 1, 5, 1, 1, 1, 1, 1, 1, 1, 193, 1, 32, 2, 1,
--	  1, 1, 0, 0x20, 0x0c, 1, 0x0e, 0, 0, },
--	{ 148500000ULL, 0x7b, 0x7b, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 4, 0, 3, 5, 5,
--	  0x10, 1, 0, 0x20, 0x0c, 1, 0x0e, 0, 0, },
--	{ 146250000ULL, 122, 122, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 244, 1, 16, 2, 1, 1,
--	  1, 0, 0x20, 0x0c, 1, 0x0e, 0, 0, },
--	{ 119000000ULL, 149, 149, 1, 1, 5, 1, 1, 1, 1, 1, 1, 1, 149, 1, 16, 2, 1, 1,
--	  1, 0, 0x20, 0x0c, 1, 0x0e, 0, 0, },
--	{ 106500000ULL, 89, 89, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 89, 1, 16, 1, 0, 1,
--	  1, 0, 0x20, 0x0c, 1, 0x0e, 0, 0, },
--	{ 108000000ULL, 135, 135, 1, 1, 5, 1, 1, 0, 1, 0, 1, 1, 0x9, 0, 0x05, 0,
--	  0x14, 0x18, 1, 0, 0x20, 0x0c, 1, 0x0e, 0, 0, },
--	{ 85500000ULL, 214, 214, 1, 1, 11, 1, 1, 1, 1, 1, 1, 1, 214, 1, 16, 2, 1,
--	  1, 1, 0, 0x20, 0x0c, 1, 0x0e, 0, 0, },
--	{ 83500000ULL, 105, 105, 1, 1, 5, 1, 1, 1, 1, 1, 1, 1, 42, 1, 16, 1, 0,
--	  1, 1, 0, 0x20, 0x0c, 1, 0x0e, 0, 0, },
--	{ 92812500ULL, 155, 155, 1, 1, 7, 1, 1, 1, 1, 1, 1, 1, 62, 1, 16, 5, 0,
--	  1, 1, 0, 0x20, 0x0c, 1, 0x0e, 0, 0, },
--	{ 74250000ULL, 124, 124, 1, 1, 7, 1, 1, 1, 1, 1, 1, 1, 62, 1, 16, 5, 0,
--	  1, 1, 0, 0x20, 0x0c, 1, 0x0e, 0, 0, },
--	{ 65000000ULL, 162, 162, 1, 1, 11, 1, 1, 1, 1, 1, 1, 1, 54, 0, 16, 4, 1,
--	  1, 1, 0, 0x20, 0x0c, 1, 0x0e, 0, 0, },
--	{ 50250000ULL, 84, 84, 1, 1, 7, 1, 1, 1, 1, 1, 1, 1, 11, 1, 4, 5,
--	  4, 11, 1, 0, 0x20, 0x0c, 1, 0x0e, 0, 0, },
--	{ 33750000ULL, 0x70, 0x70, 1, 1, 0xf, 1, 1, 1, 1, 1, 1, 1, 0x2, 0, 0x01, 5,
--	  1, 1, 1, 0, 0x20, 0x0c, 1, 0x0e, 0, 0, },
--	{ 40000000ULL, 100, 100, 1, 1, 11, 1, 1, 0, 1, 0, 1, 1, 0x9, 0, 0x05, 0,
--	  0x14, 0x18, 1, 0, 0x20, 0x0c, 1, 0x0e, 0, 0, },
--	{ 27000000ULL, 0x5a, 0x5a, 1, 1, 0xf, 1, 1, 0, 1, 0, 1, 1, 0x9, 0, 0x05, 0,
--	  0x14, 0x18, 1, 0, 0x20, 0x0c, 1, 0x0e, 0, 0, },
--	{ 25175000ULL, 84, 84, 1, 1, 0xf, 1, 1, 1, 1, 1, 1, 1, 168, 1, 16, 4, 1, 1,
--	  1, 0, 0x20, 0x0c, 1, 0x0e, 0, 0, },
-+	/*             |              pms             |        sdm         |     sdc     | */
-+	/*        rate, mdiv, mdafc, pdiv, rdiv, sdiv, en, deno, nsig, num,  n, num, deno, */
-+	{ 594000000ULL,  124,   124,    1,    1,    0,  1,   62,    1,  16,  5,   0,    1, },
-+	{ 461101250ULL,   97,    97,    1,    1,    0,  1,   71,    1,  53,  2,   6,   35, },
-+	{ 371250000ULL,  155,   155,    1,    1,    1,  1,   62,    1,  16,  5,   0,    1, },
-+	{ 297000000ULL,  124,   124,    1,    1,    1,  1,   62,    1,  16,  5,   0,    1, },
-+	{ 185625000ULL,  155,   155,    1,    1,    3,  1,   62,    1,  16,  5,   0,    1, },
-+	{ 162000000ULL,  135,   135,    1,    1,    3,  0,    4,    0,   3,  5,   5,   16, },
-+	{ 154000000ULL,  193,   193,    1,    1,    5,  1,  193,    1,  32,  2,   1,    1, },
-+	{ 148500000ULL,  123,   123,    1,    1,    3,  1,    4,    0,   3,  5,   5,   16, },
-+	{ 146250000ULL,  122,   122,    1,    1,    3,  1,  244,    1,  16,  2,   1,    1, },
-+	{ 119000000ULL,  149,   149,    1,    1,    5,  1,  149,    1,  16,  2,   1,    1, },
-+	{ 108000000ULL,  135,   135,    1,    1,    5,  0,    9,    0,   5,  0,  20,   24, },
-+	{ 106500000ULL,   89,    89,    1,    1,    3,  1,   89,    1,  16,  1,   0,    1, },
-+	{  92812500ULL,  155,   155,    1,    1,    7,  1,   62,    1,  16,  5,   0,    1, },
-+	{  85500000ULL,  214,   214,    1,    1,   11,  1,  214,    1,  16,  2,   1,    1, },
-+	{  83500000ULL,  105,   105,    1,    1,    5,  1,   42,    1,  16,  1,   0,    1, },
-+	{  74250000ULL,  124,   124,    1,    1,    7,  1,   62,    1,  16,  5,   0,    1, },
-+	{  65000000ULL,  162,   162,    1,    1,   11,  1,   54,    0,  16,  4,   1,    1, },
-+	{  50250000ULL,   84,    84,    1,    1,    7,  1,   11,    1,   4,  5,   4,   11, },
-+	{  40000000ULL,  100,   100,    1,    1,   11,  0,    9,    0,   5,  0,  20,   24, },
-+	{  33750000ULL,  112,   112,    1,    1,   15,  1,    2,    0,   1,  5,   1,    1, },
-+	{  27000000ULL,   90,    90,    1,    1,   15,  0,    9,    0,   5,  0,  20,   24, },
-+	{  25175000ULL,   84,    84,    1,    1,   15,  1,  168,    1,  16,  4,   1,    1, },
- };
- 
- static const struct reg_sequence rk_hdtpx_common_cmn_init_seq[] = {
+Changes in v4:
+- Moved the following fixup patches into a separate series [1]:
+  * Fix reported clock rate in high bpc mode
+  * Reduce ROPLL loop bandwidth
+  * Prevent Inter-Pair Skew from exceeding the limits
+- Renamed enum phy_mode_hdmi to phy_hdmi_mode and
+  PHY_MODE_HDMI_{TMDS|FRL} to PHY_HDMI_MODE_{TMDS|FRL} (Dmitry)
+- Rebased remaining patches onto next-20250901
+- Link to v3: https://lore.kernel.org/r/20250818-phy-hdptx-frl-v3-0-c79997d8bb2b@collabora.com
 
--- 
-2.51.2
+Changes in v3:
+- Reworked patch "phy: hdmi: Add HDMI 2.1 FRL configuration options"
+  according to Dmitry's feedback
+  * Updated commit message providing a brief description of FRL mode
+  * Kept PHY_MODE_HDMI in enum phy_mode and introduced enum
+    phy_mode_hdmi defining the TMDS and FRL submodes
+- Updated "phy: rockchip: samsung-hdptx: Add HDMI 2.1 FRL support"
+  * Implemented .set_mode() callback in rk_hdptx_phy_ops
+  * Introduced .mode member in struct rk_hdptx_hdmi_cfg and used it
+    instead of phy_get_mode() to verify PHY_MODE_HDMI_FRL
+- Rebased series onto next-20250818
+- Link to v2: https://lore.kernel.org/r/20250805-phy-hdptx-frl-v2-0-d118bd4b6e0b@collabora.com
+
+Changes in v2:
+- Added a couple of new patches:
+  * Fix reported clock rate in high bpc mode
+  * Drop hw_rate driver data
+- Applied several tweaks to the following patches:
+  * Compute clk rate from PLL config
+  * Switch to driver specific HDMI config
+  * Add HDMI 2.1 FRL support
+- Rebased series onto next-20250804
+- Link to v1: https://lore.kernel.org/r/20250708-phy-hdptx-frl-v1-0-cfe096e224f4@collabora.com
+
+---
+Cristian Ciocaltea (11):
+      phy: hdmi: Add HDMI 2.1 FRL configuration options
+      phy: rockchip: samsung-hdptx: Use usleep_range() instead of udelay()
+      phy: rockchip: samsung-hdptx: Fix coding style alignment
+      phy: rockchip: samsung-hdptx: Consistently use [rk_]hdptx_[tmds_] prefixes
+      phy: rockchip: samsung-hdptx: Enable lane output in common helper
+      phy: rockchip: samsung-hdptx: Cleanup *_cmn_init_seq lists
+      phy: rockchip: samsung-hdptx: Compute clk rate from PLL config
+      phy: rockchip: samsung-hdptx: Drop hw_rate driver data
+      phy: rockchip: samsung-hdptx: Switch to driver specific HDMI config
+      phy: rockchip: samsung-hdptx: Extend rk_hdptx_phy_verify_hdmi_config() helper
+      phy: rockchip: samsung-hdptx: Add HDMI 2.1 FRL support
+
+ drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 666 ++++++++++++++++++----
+ include/linux/phy/phy-hdmi.h                      |  19 +-
+ 2 files changed, 585 insertions(+), 100 deletions(-)
+---
+base-commit: 3e7f562e20ee87a25e104ef4fce557d39d62fa85
+change-id: 20250708-phy-hdptx-frl-fc3377db9f2e
+prerequisite-change-id: 20251204-phy-hdptx-pll-fix-0787c92e0cfe:v2
+prerequisite-patch-id: 957a51ef580cfd4ae6d9e431a1d7a29c9f87ecc7
+prerequisite-patch-id: 0e5e89b08b36a5dc0b204ec4eb654f434b842ec6
 
 
 _______________________________________________
