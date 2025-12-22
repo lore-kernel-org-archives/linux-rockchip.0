@@ -4,73 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9688FE674B2
-	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Dec 2025 13:57:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEE03E677E9
+	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Dec 2025 15:33:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CFT9LH2xybq6nQk6HBlwM7QFlRZtjG4KplLNjQo911Y=; b=msvlyqC9blcg1N
-	5hmPQr2vodNfefvrNLpp7i8AtzhQHksQqQO78w8dCtW7dPVaTPxZo8g65/XfzjU9rygxfeQV/YVRB
-	T72UqCh2XybvZ/52A999h/1CbevxVGgWLwDAbSB6MO+bVb0/nxELjekaRLhGnrRTGbj7xF34qEv44
-	ZqiQSzGewuDQ4GfsX3xqUwvAh+HZ1b0mgNPTceK1niF5fgZ3uWkyi7Djr9n3aSbUMrtEuWVNnG4oQ
-	yU49t6HD+T0BIvxChmsgf5sjf7ka7kSyuDa167i9TnKv6v+PxRU3QKUo53Ug4BFQ1e55E966MEn8l
-	m36fCywGxg1Yn4tn1Thw==;
+	List-Owner; bh=kGbr7mRSKzaIEwfnjkikcGWUd+jiJbJJMkUzqlkoyXE=; b=JStx//MemkCyK6
+	F+eTHKO56zF3lLys4tfxyDueUpSJYykYI8xnoDTFCEAtz5xFzBlaw62Xl2naVp20+deug/C1VN1ql
+	B8p9t4FanIKcVYeNPkcRDWdJpWCjiIUi7Ik9put29ntmZjOgDRPM6jq2oafXxgQeNFjtWPIKdnP7c
+	3d6R8sK1Drx2UtObBm9//ArUNOLZ9DqGt9REqYvgzkPZ9gHlmTQlDynO4k2B+pibkToe9RN4Vezaa
+	7zWyBQg3BeDDazD3DZ4ARpZZHt1Bnr/39/PNYYISp8dL6Ke8uwk/8j9yfMVhMlCQjnetmlnlS+ORu
+	XxMdT8N/G0zLF3KQ6KZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vXgPK-0000000DqZk-1mTg;
-	Mon, 22 Dec 2025 13:57:06 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1vXhud-0000000DvZr-0rwv;
+	Mon, 22 Dec 2025 15:33:31 +0000
+Received: from mgamail.intel.com ([198.175.65.20])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vXgPG-0000000DqYn-2luQ
-	for linux-rockchip@lists.infradead.org;
-	Mon, 22 Dec 2025 13:57:03 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=KwANKK/fDIpWxZV9HLEANprowf4vF8Ghjk4Svi7KrWM=; b=rd4Qd2N0W0WmH+iVMVKh/Fps0G
-	RNbSQHnWPodfzBs/Z1Ma9SP4DoDEg/p3GMrknai2E3S7BZpeK7mK09FOmmHyLpUWv9okBpPii7Ywc
-	LcgsrCzirzVOPrmWDEgw/sys5ToUwieB6bbkB/l+wSfTLAzth3wikv/KFA8WsZE9VU6pzGLEaDi9k
-	XfVa1t7cbAlw6x7xA8dhnZc3w1hHkgCAIz94wdtumhRAEnHgP2U4T/Nek3pPYFw+PmfH/Ji7MUWEh
-	zi2G8Nue1G8sb/xBDwZ4YEkEnrQty36KC/liEb6QJcr1ujD3oOA8uv0BV/ahI1mCqk+KPgqFYtE0k
-	G6sf2ZkA==;
-Received: from [194.95.143.137] (helo=phil.dip.tu-dresden.de)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1vXgOn-00063E-Mx; Mon, 22 Dec 2025 14:56:33 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: FUKAUMI Naoki <naoki@radxa.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	quentin.schulz@cherry.de,
-	jonas@kwiboo.se,
-	kever.yang@rock-chips.com,
-	inindev@gmail.com,
-	michael.opdenacker@rootcommit.com,
-	honyuenkwun@gmail.com,
-	dsimic@manjaro.org,
-	andrew@lunn.ch,
-	pbrobinson@gmail.com,
-	joseph.kogut@gmail.com,
-	dmitriy@filchenko.org,
-	shawn.lin@rock-chips.com,
-	devicetree@vger.kernel.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v6 0/3] Add Radxa CM5 module and IO board dts
-Date: Mon, 22 Dec 2025 14:56:29 +0100
-Message-ID: <176641178743.1651325.16057448500999864390.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20251205120703.14721-1-naoki@radxa.com>
-References: <20251205120703.14721-1-naoki@radxa.com>
+	id 1vXhuZ-0000000DvZD-2eZO;
+	Mon, 22 Dec 2025 15:33:29 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1766417608; x=1797953608;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=oevZNtJK/umXqU3Iu+7UzKkPRbb+1+8qqTTjLfmC6wU=;
+  b=nLtUs/LhEAnBvt6bihL23Pn0cNRrmkMviSJ58rnDeGjRvTuw4NHNG6zj
+   8HnvSiwKmUUcj13zaiNICjLK913nY8MYkd7eWeESboY1j9Ey96oQVgsw0
+   U41mgkra0X33H6FKBHa1Mpz186jQ3RqDgwSlwORuaPwI7EWS/TglzhuNS
+   sOXXP7juZ85PJjBSI8axzd4AsRlE/eAxAJLGdw3a9ks4iyNE5W4LIxQuL
+   enhBa/MKktvCQPXT7jP3KEps5pv0ZWNrIQY0VW27rECz07y6SR8i1yhdm
+   jzvqgzgy1RYzzVbsIYTAtyUc2JxDy1TaxCeErfER/skoMdFlrqa6KCr9Q
+   A==;
+X-CSE-ConnectionGUID: YSWiR+hkQgGncmK8cR6WWg==
+X-CSE-MsgGUID: KG2279M4RAuUxLHiBfqxkA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11650"; a="68026716"
+X-IronPort-AV: E=Sophos;i="6.21,168,1763452800"; 
+   d="scan'208";a="68026716"
+Received: from fmviesa002.fm.intel.com ([10.60.135.142])
+  by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Dec 2025 07:33:26 -0800
+X-CSE-ConnectionGUID: ukAZI8NMSOiEtpG5QUZ/Uw==
+X-CSE-MsgGUID: L8+GSCwISZyJ+reXBPVunA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.21,168,1763452800"; 
+   d="scan'208";a="223033237"
+Received: from igk-lkp-server01.igk.intel.com (HELO 8a0c053bdd2a) ([10.211.93.152])
+  by fmviesa002.fm.intel.com with ESMTP; 22 Dec 2025 07:33:22 -0800
+Received: from kbuild by 8a0c053bdd2a with local (Exim 4.98.2)
+	(envelope-from <lkp@intel.com>)
+	id 1vXhuR-000000005Y0-3SMV;
+	Mon, 22 Dec 2025 15:33:19 +0000
+Date: Mon, 22 Dec 2025 16:32:53 +0100
+From: kernel test robot <lkp@intel.com>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, joro@8bytes.org,
+	will@kernel.org, robin.murphy@arm.com, robh@kernel.org,
+	krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de,
+	nicolas.dufresne@collabora.com, p.zabel@pengutronix.de,
+	mchehab@kernel.org
+Cc: Paul Gazzillo <paul@pgazz.com>,
+	Necip Fazil Yildiran <fazilyildiran@gmail.com>,
+	oe-kbuild-all@lists.linux.dev, iommu@lists.linux.dev,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-media@vger.kernel.org,
+	kernel@collabora.com,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: Re: [PATCH v10 5/7] media: verisilicon: AV1: Restore IOMMU context
+ before decoding a frame
+Message-ID: <202512221600.vlUX9PF6-lkp@intel.com>
+References: <20251215085349.10155-6-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20251215085349.10155-6-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251222_055702_701259_72863418 
-X-CRM114-Status: GOOD (  10.11  )
+X-CRM114-CacheID: sfid-20251222_073327_772500_B27B8A09 
+X-CRM114-Status: UNSURE (   9.99  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,30 +99,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Benjamin,
 
-On Fri, 05 Dec 2025 12:07:00 +0000, FUKAUMI Naoki wrote:
-> This patch series adds initial device tree support for the Radxa CM5 SoM
-> and accompanying IO board.
-> 
-> V5 -> V6:
->   Patch (2/3)
->   - Move gmac1 (except status) from cm5-io.dts (Jimmy)
->   - Move pmic from cm5-io.dts (Dmitriy)
-> 
-> [...]
+kernel test robot noticed the following build warnings:
 
-Applied, thanks!
+[auto build test WARNING on linus/master]
+[also build test WARNING on v6.19-rc2 next-20251219]
+[cannot apply to robh/for-next rockchip/for-next arm64/for-next/core]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-[1/3] dt-bindings: arm: rockchip: Add Radxa CM5 IO board
-      commit: 7beae528ddadd1c3f7d5670f937d993b0f39e0ea
-[2/3] arm64: dts: rockchip: Add rk3588 based Radxa CM5
-      commit: 36ee19ba42dcebe6a15ec6b442a7d32eb327eee4
-[3/3] arm64: dts: rockchip: Add support for CM5 IO carrier
-      commit: 51babf83f424a695179183204226d453c8af7dc7
+url:    https://github.com/intel-lab-lkp/linux/commits/Benjamin-Gaignard/dt-bindings-vendor-prefixes-Add-Verisilicon/20251215-165740
+base:   linus/master
+patch link:    https://lore.kernel.org/r/20251215085349.10155-6-benjamin.gaignard%40collabora.com
+patch subject: [PATCH v10 5/7] media: verisilicon: AV1: Restore IOMMU context before decoding a frame
+config: openrisc-kismet-CONFIG_VSI_IOMMU-CONFIG_VIDEO_HANTRO_ROCKCHIP-0-0 (https://download.01.org/0day-ci/archive/20251222/202512221600.vlUX9PF6-lkp@intel.com/config)
+reproduce: (https://download.01.org/0day-ci/archive/20251222/202512221600.vlUX9PF6-lkp@intel.com/reproduce)
 
-Best regards,
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202512221600.vlUX9PF6-lkp@intel.com/
+
+kismet warnings: (new ones prefixed by >>)
+>> kismet: WARNING: unmet direct dependencies detected for VSI_IOMMU when selected by VIDEO_HANTRO_ROCKCHIP
+   WARNING: unmet direct dependencies detected for VSI_IOMMU
+     Depends on [n]: IOMMU_SUPPORT [=n] && (ARCH_ROCKCHIP && ARM64 || COMPILE_TEST [=y])
+     Selected by [y]:
+     - VIDEO_HANTRO_ROCKCHIP [=y] && MEDIA_SUPPORT [=y] && MEDIA_PLATFORM_SUPPORT [=y] && MEDIA_PLATFORM_DRIVERS [=y] && VIDEO_HANTRO [=y] && (ARCH_ROCKCHIP || COMPILE_TEST [=y])
+
 -- 
-Heiko Stuebner <heiko@sntech.de>
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
 _______________________________________________
 Linux-rockchip mailing list
