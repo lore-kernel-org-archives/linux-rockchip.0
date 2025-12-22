@@ -4,73 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D089AE674AF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Dec 2025 13:40:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E311E674B2
+	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Dec 2025 13:56:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qOQhEnk3IhpDpxj1/rxmDhPQs3NUwyuwQbYdv6mZGF0=; b=1Kx/8wxN7Ksyz8
-	n2QGN7/5YJ4Sv3fNkXyPXeP+5u+MDBtsXpAGI4bNZyFQXq2uSVHBzhvb+u8+SeznFfwB018BlEVqO
-	DLf+n/M40v/3l2OnjPPtMtYDZN/Uuuu17gxj79nb6HiNUK7R0UoP/4G+sDcuFEixEBF+k/CPNubFT
-	/ZxYOymwcsRMPpV6pPapBrHBUK6ICd0WxgDTLCWM6Q1sz22KotWUF859LEly8xEruVBRLaOTK5ywF
-	mOMAfhRE7y0CJuGxGLE3IfSrgrxbouEwvYj3+RYXk0oH2VVkYV5bDdFQtzIBhZf0XJV34ZcR7S+Ty
-	2gesp5B5k9k490K4/BfA==;
+	List-Owner; bh=l38JxU4coX2/Eacn23OCwMadWfFZSP5C9DBWianq39Q=; b=o5yr4w1teqLev+
+	JaeqOnQCbFA0dUI5PIRGCu6tPAgtALzYhK+GO/TFW7UfxOFOBPrRojDNA8OzTAuoIITy8aBYNh6UZ
+	LwhKFZT3PWW1rC9eL2q7Yd91jpnw5DK2+DF0p1wUo2ZBQknEPKAthdXNIAqTFwRN5NeXVg9Dtv7XB
+	FZPI4zaW4Z6Bg6e6QdpGd8FcHi3o1+2JGVWyGdlDE9V1Lbu6NCfK/+cYC9oQcZsAET9ikNiKoOV1y
+	Nvpgh1WGP6H7xZl5bVRSMvMUGzUP34nG91O1qBpGMpvM6Lx0/fRIBaG9bb9iUxLaJMJOZQ8UcHvhO
+	DLX2d1lxUSZ+5xYDdxCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vXg8l-0000000DpNP-25PB;
-	Mon, 22 Dec 2025 13:39:59 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vXg8i-0000000DpMO-2d9W;
-	Mon, 22 Dec 2025 13:39:56 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
-	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=1c9ZPZRZkz14B3cF0kxLCmvcGTxuNJZNvYxvmg4ZTGA=; b=AoDgwDWB34drisoKS5l4zKoqMc
-	Y8Hnj8eBJLITuzJODxvKjNOlJM5BmceV50B4Kr9gs/KVcCtSdA5zdbOQD+ZsAOsfgPdjWPiOi0kZz
-	VwhYBW4oPcymH7XkKJlRBsqYSeXJf6lA+LgS9lDre07903cS1hQMQdkwcitBhirZmZnmucjxGmnfl
-	+Xl49gMP8don2KHSxGFnmooxUDvo2qLoqKyITDcuKQQQV4dLAuvyB9YhLIs/gNWLHkKEv7Rwm0NKm
-	YBml0noXznMTHK7MX42R9OFqBc25RxPPIBxlf3a4FC04F3xbO+3WCLmZGtTiP95tf0UlsDGzAuNs5
-	DqlE+k3Q==;
+	id 1vXgOs-0000000DqRH-200f;
+	Mon, 22 Dec 2025 13:56:38 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vXfHE-0000000F3S5-2NDa;
-	Mon, 22 Dec 2025 12:44:42 +0000
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vXgOp-0000000DqQT-31tb;
+	Mon, 22 Dec 2025 13:56:36 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=1c9ZPZRZkz14B3cF0kxLCmvcGTxuNJZNvYxvmg4ZTGA=; b=O7YYw/E5YjomHWfZoJ7vD3dncy
-	KzvaCkoIAq5An6hIlP6SiqkrKsZIG4DkoWc3ip7d/UDT46max9CrdQmtNsmEiOrxeaucRbK0E8d5q
-	3PMWS0Xkscx98wmUYiv5Lz8NUmOtLM3kELki8YHZ/uvUCuBhXonOmxl1WYyuEqOON6WznjJ2pvddG
-	XCDSBAgBXQicUbQnZElPczJ++2eQUbzzWHW8yf+k7lo4xuGo2gqdrRh0OKx+MWr3eS1iKKOfqV1ax
-	qBf4vllJMezhHj67Qo62y2yluC5pU/kTrv7cZNmbCgraWji41QCeczhHrLrtGM4ZiamH4Svn9LdrS
-	wOaUv7lQ==;
-Received: from [194.95.143.137] (helo=phil.localnet)
+	bh=eK/p7e3fc7SsB4duKbPsHZOKCFMC2c5QBc/M4q5ovsI=; b=Q4L3gBuCZBzEg26fPqZlRTWkzr
+	MdFKz0OZZcbe91brQ5tz6mes7nwc5M379wVTndK3VRBzUYk5LOsbgbEt64nQXPfy14Rso5WfKjsaM
+	bUszP23NhLINiV5eJeIFsU9bGJEupqeQv729tUWQVvtQT6UPjOr7+mOlGz4+P+T+MrIvzlLxRZWjL
+	HtWzpWSyyniaxihgvZ5361mDv69CdWiEF9yhP4dReRol11GVgRRD4lIVCknzh8d7hfmKYL+tV6foJ
+	nHGEa+pHCHYVdSbYAL5AxykQCCTGkzaEMSgXCN1bJMMw5nqVmlsqYcLiNYWQIGmVjpGif2FofqZc4
+	TIeZMRQw==;
+Received: from [194.95.143.137] (helo=phil.dip.tu-dresden.de)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1vXg8c-0005vi-1b; Mon, 22 Dec 2025 14:39:50 +0100
+	id 1vXgOn-00063E-7i; Mon, 22 Dec 2025 14:56:33 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: Chukun Pan <amadeus@jmu.edu.cn>,
- Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
-Subject: Re: [PATCH 3/3] arm64: dts: rockchip: enable saradc for ArmSoM Sige5
-Date: Mon, 22 Dec 2025 14:39:49 +0100
-Message-ID: <3767252.NG923GbCHz@phil>
-In-Reply-To: <aUlHa-QhCLOk8AGa@venus>
-References: <20251220100010.26643-1-amadeus@jmu.edu.cn>
- <20251220100010.26643-3-amadeus@jmu.edu.cn> <aUlHa-QhCLOk8AGa@venus>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: quentin.schulz@cherry.de,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 0/3] Move RK3368 Lion ethernet phy to a mdio subnode
+Date: Mon, 22 Dec 2025 14:56:28 +0100
+Message-ID: <176641178736.1651325.8963970192002690160.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.47.2
+In-Reply-To: <20251020100757.3669681-1-heiko@sntech.de>
+References: <20251020100757.3669681-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251222_124440_663598_B9D5B87E 
-X-CRM114-Status: GOOD (  15.19  )
+X-CRM114-CacheID: sfid-20251222_055635_787474_306FC9B0 
+X-CRM114-Status: GOOD (  11.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,27 +67,36 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-QW0gTW9udGFnLCAyMi4gRGV6ZW1iZXIgMjAyNSwgMTQ6MzI6NTMgTWl0dGVsZXVyb3DDpGlzY2hl
-IE5vcm1hbHplaXQgc2NocmllYiBTZWJhc3RpYW4gUmVpY2hlbDoKPiBIaSwKPiAKPiBPbiBTYXQs
-IERlYyAyMCwgMjAyNSBhdCAwNjowMDoxMFBNICswODAwLCBDaHVrdW4gUGFuIHdyb3RlOgo+ID4g
-QWRkIEFEQyBzdXBwb3J0IHRvIEFybVNvTSBTaWdlNSBib2FyZC4KPiA+IAo+ID4gU2lnbmVkLW9m
-Zi1ieTogQ2h1a3VuIFBhbiA8YW1hZGV1c0BqbXUuZWR1LmNuPgo+ID4gLS0tCj4gCj4gVGhlIHJl
-ZmVyZW5jZSB2b2x0YWdlIGlzIGRpZmZlcmVudCBiZXR3ZWVuIHRoZSBkaWZmZXJlbnQgYm9hcmQK
-PiByZXZpc2lvbnMuIE9sZGVyIGJvYXJkcyAoMS4xIGFuZCAxLjIpIGhhdmUgU0FSQURDX0FWREQx
-VjggY29ubmVjdGVkCj4gdG8gJnZjY2FfMXY4X3MwLCBidXQgbmV3ZXIgYm9hcmRzICgxLjMpIHVz
-ZSBWQ0NBMVY4X1BMRE8yX1MwCj4gaW5zdGVhZC4gSSBndWVzcyBjb25zaWRlcmluZyAmdmNjYTF2
-OF9wbGRvMl9zMCBpcyBtYXJrZWQgYXMgYWx3YXlzCj4gb24sIHdlIGNhbiBpZ25vcmUgdGhpcyBk
-aWZmZXJlbmNlLCBidXQgSSB0aGluayBpdCdzIHdvcnRoIGEgY29tbWVudAo+IGluIHRoZSBEVCBh
-bmQgdGhlIGNvbW1pdCBkZXNjcmlwdGlvbi4gT3RoZXJ3aXNlOgo+IAo+IFJldmlld2VkLWJ5OiBT
-ZWJhc3RpYW4gUmVpY2hlbCA8c2ViYXN0aWFuLnJlaWNoZWxAY29sbGFib3JhLmNvbT4KCmRhcm4s
-IHRvbyBsYXRlIGZvciB0aGlzIG9uZSAtIHNob3VsZCd2ZSB3YWl0ZWQgbG9uZ2VyIGZvcgp0aGlz
-IHBvc3NpYmxlIFJiIDotKSAuLi4gSSBkaWQgYWRkIHRoZSBvdGhlcnMgYmVmb3JlIHB1c2hpbmcK
-dGhvdWdoLgoKCkhlaWtvCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0
-cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGlu
-Zm8vbGludXgtcm9ja2NoaXAK
+
+On Mon, 20 Oct 2025 12:07:54 +0200, Heiko Stuebner wrote:
+> Don't use deprecated snps properties to describe the phy reset,
+> but instead add the mdio bus subnode to the gmac and correctly
+> describe the phy there.
+> 
+> This will also help us later to handle a lion-specific oddity where
+> the phy needs to enable its clock output for the needed mac clock.
+> 
+> [...]
+
+Applied, thanks!
+
+[1/3] arm64: dts: rockchip: add gmac reset property to rk3368
+      commit: 396870f53c4e736366b4ed2e127874c30ce2f965
+[2/3] arm64: dts: rockchip: add mdio subnode to gmac on rk3368
+      commit: bce933a74b8e785a8090da74bee8ec3f38be40b7
+[3/3] arm64: dts: rockchip: Correctly describe the ethernet phy on rk3368-lion
+      commit: 1cb0958a26aeffe315a60b3cbbc56b94246cc25a
+
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
