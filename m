@@ -4,59 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E709D711D5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Dec 2025 06:17:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9ABD4E67495
+	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Dec 2025 06:42:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=d0+ZEtZIwVltbwAsuZ5dNFfw/BG3n94uiObK3CHXR3k=; b=VTOtmbvobpur/8
-	0pzxCMN5NzqbrfFkT7kvDwvDzoPxswFEQsCNqJqJV9Xx/y91m8rIG9aAthKUdSUqth7NAc+Z25Gha
-	VOIoNX++md3770uSG5tkkpA3hu0Z2MLpoWrtHpehYpeKMWSvb9gcGSM9f78MrfdMQkRUiitcOaOAi
-	h5Q1wftskFWtY3IVo497DJ898yS+xEbLOzSiyzexcVNNkicAhc3cHgAY8t8fwQJIeGJTIyo49ESK1
-	mEq4FsEgh6IFlifyhZ0rpxAgRYReQYhASXl4IVQAF0G375t9px5b1a3U5MK0lEMkwXgxJdi/Z0fGS
-	DpMOfKkta0V7e96yDJzA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=mNaGOU5Xe2aWJIH+3Y3ogeGQuvVD2fWLZNlN7mF5Te8=; b=ggO9AVn3DchrBM
+	aSYSJ11muUl23VjrHh0h8mKttsHGVWMJX0SD2cbaj/C17duoi0ossIIC25APdfOLcgnq3HJ8QCObV
+	1OEHuvkj5Ce6Uve8NpStkMWxCfkBt1clbnFf32HyxLKP/4110mUGUvPBo11jbtyFSLjiqcH2sEgZE
+	3Y8poVD+Qvut0y7U9vd54Q43pEFueeBRj0VZcDgVNMqXbhMYnmI9WDGeDJPg79s2dq8PGgGTUEtV9
+	bbY3+LQ3fUciWn7XRAt1G6MW5JB0lkLhfNkq29AILVSxTjm2+iKxwj51OmFDodmmfZ3qF7HYQxpcw
+	IstNhTiEDRnC3w5zFFFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vXZEJ-0000000DHF6-3DeA;
-	Mon, 22 Dec 2025 06:17:15 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vXZcl-0000000DJx6-0Whp;
+	Mon, 22 Dec 2025 06:42:31 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vXZEI-0000000DHEZ-2YCD;
-	Mon, 22 Dec 2025 06:17:14 +0000
+	id 1vXZch-0000000DJwP-3gQM;
+	Mon, 22 Dec 2025 06:42:29 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id D7B6F6001D;
-	Mon, 22 Dec 2025 06:17:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C65A7C4CEF1;
-	Mon, 22 Dec 2025 06:17:07 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id DFD7E40E40;
+	Mon, 22 Dec 2025 06:42:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 882F7C4CEF1;
+	Mon, 22 Dec 2025 06:42:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1766384232;
-	bh=+PJJrLUZuuvwo/YknxXQIYCxBgkPwh5ViNEYKOPqGLk=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=QUOZEoyJQstFde3gfBLzzzrHX16nHgjhjNRxUJoGVckt+cwXYFKX/8s0ahpHkJUJ0
-	 wIvfxGJHOOxDkc7YqDXyD+Strd6UBqCkUddyT1eRF9MDsQGkSFjaY4wARRp1BKuM+Y
-	 0EdF87kTzSxmv8tWQr9bc5VWFdr8qyflO/sqUUm8+FAmm6eH4McKZHH/C5IstKkLlL
-	 jWj9I2HXicWC4Wv7JAk3x1wrwNA482sN7AZFQaYXm0R9aCkl7rzb7HHYzscZMTMSda
-	 RWKysMjOX0UO+6Z4iku0esn/gWAH/turVg2PCS10ycK93qiTQ5g1bBAhwezZ6NmrJ5
-	 Xt5Oz4xn7AbJw==
-Date: Mon, 22 Dec 2025 11:46:57 +0530
-From: Manivannan Sadhasivam <mani@kernel.org>
-To: Niklas Cassel <cassel@kernel.org>
-Cc: Jingoo Han <jingoohan1@gmail.com>, 
-	Lorenzo Pieralisi <lpieralisi@kernel.org>, Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
-	Heiko Stuebner <heiko@sntech.de>, Shawn Lin <shawn.lin@rock-chips.com>, 
-	FUKAUMI Naoki <naoki@radxa.com>, Krishna chaitanya chundru <quic_krichai@quicinc.com>, 
-	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org
-Subject: Re: [PATCH 0/6] PCI: dwc: Revert Link Up IRQ support
-Message-ID: <cngg5kifjqmrmb5ufyrv4k6dwo5tgatqssaeoog5aqpe7m253c@krov7axlplkw>
-References: <20251111105100.869997-8-cassel@kernel.org>
+	s=k20201202; t=1766385744;
+	bh=j/mEMdNJlnAjwrnihLKGYdQ3OZVjJQVBvrLHExhr67I=;
+	h=From:To:Cc:Subject:Date:From;
+	b=IfCgpAH8IAGbJyxYrETz1YYvyP0FIGZ2lg+1Hgdv0Ez+FHajVjZm+RFALf/CXLELF
+	 5iCRDuqdGAslhE9nnRKBi7sbPPgSCgkyzQnHBn//SPVwDWfAhELCMmE8bg9ZoNgT4v
+	 Pu3M1al55TbDY4Pue0hhu0t05TeNAsvyQq6WH7Vns2MRFmW8tl1Uk9fY4TJR5eBJKI
+	 EQPCg+Iuti6xOPdFWlWeUK8iCDSid4YajJOKe5ApYRcRm0X8ZJpsJVlxWwUnSgXLRa
+	 kKwm+QYx0HqpS+ext8hPDO5gaqOsadYmu7/aYzPmcpjPzOeA8dG6EJmVAWnUNfrYYa
+	 WdcohC/k6ZkZw==
+From: Niklas Cassel <cassel@kernel.org>
+To: Jingoo Han <jingoohan1@gmail.com>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: Shawn Lin <shawn.lin@rock-chips.com>,
+	FUKAUMI Naoki <naoki@radxa.com>,
+	Krishna chaitanya chundru <quic_krichai@quicinc.com>,
+	Damien Le Moal <dlemoal@kernel.org>,
+	Niklas Cassel <cassel@kernel.org>,
+	linux-pci@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org
+Subject: [PATCH v2 0/6] PCI: dwc: Revert Link Up IRQ support
+Date: Mon, 22 Dec 2025 07:42:07 +0100
+Message-ID: <20251222064207.3246632-8-cassel@kernel.org>
+X-Mailer: git-send-email 2.52.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20251111105100.869997-8-cassel@kernel.org>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3817; i=cassel@kernel.org; h=from:subject; bh=j/mEMdNJlnAjwrnihLKGYdQ3OZVjJQVBvrLHExhr67I=; b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGDI9Xtj/ZN8jXWwic1qlhM3JUqik+9IE8+OrHEI5VwbV7 dzfrlffUcrCIMbFICumyOL7w2V/cbf7lOOKd2xg5rAygQxh4OIUgIn8K2RkuDvz6PbDOq8Lj9/d nn3papF6/vUz8y79q6s5pP2b+YWCYQ8jw+XEkuTZV5cvXvl06fKjYs6zOO4tZj/5qGf3VlXvdUn sN1gA
+X-Developer-Key: i=cassel@kernel.org; a=openpgp; fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251221_224228_152656_502A29DA 
+X-CRM114-Status: GOOD (  12.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,81 +79,84 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlLCBOb3YgMTEsIDIwMjUgYXQgMTE6NTE6MDBBTSArMDEwMCwgTmlrbGFzIENhc3NlbCB3
-cm90ZToKPiBSZXZlcnQgYWxsIHBhdGNoZXMgcmVsYXRlZCB0byBwY2llLWRlc2lnbndhcmUgUm9v
-dCBDb21wbGV4IExpbmsgVXAgSVJRCj4gc3VwcG9ydC4KPiAKPiBXaGlsZSB0aGlzIGZha2UgaG90
-cGx1Z2dpbmcgd2FzIGEgbmljZSBpZGVhLCBpdCBoYXMgc2hvd24gdGhhdCB0aGlzIGZlYXR1cmUK
-PiBkb2VzIG5vdCBoYW5kbGUgUENJZSBzd2l0Y2hlcyBjb3JyZWN0bHk6Cj4gcGNpX2J1cyAwMDA0
-OjQzOiBidXNuX3JlczogY2FuIG5vdCBpbnNlcnQgW2J1cyA0My00MV0gdW5kZXIgW2J1cyA0Mi00
-MV0gKGNvbmZsaWN0cyB3aXRoIChudWxsKSBbYnVzIDQyLTQxXSkKPiBwY2lfYnVzIDAwMDQ6NDM6
-IGJ1c25fcmVzOiBbYnVzIDQzLTQxXSBlbmQgaXMgdXBkYXRlZCB0byA0Mwo+IHBjaV9idXMgMDAw
-NDo0MzogYnVzbl9yZXM6IGNhbiBub3QgaW5zZXJ0IFtidXMgNDNdIHVuZGVyIFtidXMgNDItNDFd
-IChjb25mbGljdHMgd2l0aCAobnVsbCkgW2J1cyA0Mi00MV0pCj4gcGNpIDAwMDQ6NDI6MDAuMDog
-ZGV2aWNlcyBiZWhpbmQgYnJpZGdlIGFyZSB1bnVzYWJsZSBiZWNhdXNlIFtidXMgNDNdIGNhbm5v
-dCBiZSBhc3NpZ25lZCBmb3IgdGhlbQo+IHBjaV9idXMgMDAwNDo0NDogYnVzbl9yZXM6IGNhbiBu
-b3QgaW5zZXJ0IFtidXMgNDQtNDFdIHVuZGVyIFtidXMgNDItNDFdIChjb25mbGljdHMgd2l0aCAo
-bnVsbCkgW2J1cyA0Mi00MV0pCj4gcGNpX2J1cyAwMDA0OjQ0OiBidXNuX3JlczogW2J1cyA0NC00
-MV0gZW5kIGlzIHVwZGF0ZWQgdG8gNDQKPiBwY2lfYnVzIDAwMDQ6NDQ6IGJ1c25fcmVzOiBjYW4g
-bm90IGluc2VydCBbYnVzIDQ0XSB1bmRlciBbYnVzIDQyLTQxXSAoY29uZmxpY3RzIHdpdGggKG51
-bGwpIFtidXMgNDItNDFdKQo+IHBjaSAwMDA0OjQyOjAyLjA6IGRldmljZXMgYmVoaW5kIGJyaWRn
-ZSBhcmUgdW51c2FibGUgYmVjYXVzZSBbYnVzIDQ0XSBjYW5ub3QgYmUgYXNzaWduZWQgZm9yIHRo
-ZW0KPiBwY2lfYnVzIDAwMDQ6NDU6IGJ1c25fcmVzOiBjYW4gbm90IGluc2VydCBbYnVzIDQ1LTQx
-XSB1bmRlciBbYnVzIDQyLTQxXSAoY29uZmxpY3RzIHdpdGggKG51bGwpIFtidXMgNDItNDFdKQo+
-IHBjaV9idXMgMDAwNDo0NTogYnVzbl9yZXM6IFtidXMgNDUtNDFdIGVuZCBpcyB1cGRhdGVkIHRv
-IDQ1Cj4gcGNpX2J1cyAwMDA0OjQ1OiBidXNuX3JlczogY2FuIG5vdCBpbnNlcnQgW2J1cyA0NV0g
-dW5kZXIgW2J1cyA0Mi00MV0gKGNvbmZsaWN0cyB3aXRoIChudWxsKSBbYnVzIDQyLTQxXSkKPiBw
-Y2kgMDAwNDo0MjowNi4wOiBkZXZpY2VzIGJlaGluZCBicmlkZ2UgYXJlIHVudXNhYmxlIGJlY2F1
-c2UgW2J1cyA0NV0gY2Fubm90IGJlIGFzc2lnbmVkIGZvciB0aGVtCj4gcGNpX2J1cyAwMDA0OjQ2
-OiBidXNuX3JlczogY2FuIG5vdCBpbnNlcnQgW2J1cyA0Ni00MV0gdW5kZXIgW2J1cyA0Mi00MV0g
-KGNvbmZsaWN0cyB3aXRoIChudWxsKSBbYnVzIDQyLTQxXSkKPiBwY2lfYnVzIDAwMDQ6NDY6IGJ1
-c25fcmVzOiBbYnVzIDQ2LTQxXSBlbmQgaXMgdXBkYXRlZCB0byA0Ngo+IHBjaV9idXMgMDAwNDo0
-NjogYnVzbl9yZXM6IGNhbiBub3QgaW5zZXJ0IFtidXMgNDZdIHVuZGVyIFtidXMgNDItNDFdIChj
-b25mbGljdHMgd2l0aCAobnVsbCkgW2J1cyA0Mi00MV0pCj4gcGNpIDAwMDQ6NDI6MGUuMDogZGV2
-aWNlcyBiZWhpbmQgYnJpZGdlIGFyZSB1bnVzYWJsZSBiZWNhdXNlIFtidXMgNDZdIGNhbm5vdCBi
-ZSBhc3NpZ25lZCBmb3IgdGhlbQo+IHBjaV9idXMgMDAwNDo0MjogYnVzbl9yZXM6IFtidXMgNDIt
-NDFdIGVuZCBpcyB1cGRhdGVkIHRvIDQ2Cj4gcGNpX2J1cyAwMDA0OjQyOiBidXNuX3JlczogY2Fu
-IG5vdCBpbnNlcnQgW2J1cyA0Mi00Nl0gdW5kZXIgW2J1cyA0MV0gKGNvbmZsaWN0cyB3aXRoIChu
-dWxsKSBbYnVzIDQxXSkKPiBwY2kgMDAwNDo0MTowMC4wOiBkZXZpY2VzIGJlaGluZCBicmlkZ2Ug
-YXJlIHVudXNhYmxlIGJlY2F1c2UgW2J1cyA0Mi00Nl0gY2Fubm90IGJlIGFzc2lnbmVkIGZvciB0
-aGVtCj4gcGNpZXBvcnQgMDAwNDo0MDowMC4wOiBicmlkZ2UgaGFzIHN1Ym9yZGluYXRlIDQxIGJ1
-dCBtYXggYnVzbiA0Ngo+IAo+IER1cmluZyB0aGUgaW5pdGlhbCBzY2FuLCBQQ0kgY29yZSBkb2Vz
-bid0IHNlZSB0aGUgc3dpdGNoIGFuZCBzaW5jZSB0aGUgUm9vdAo+IFBvcnQgaXMgbm90IGhvdCBw
-bHVnIGNhcGFibGUsIHRoZSBzZWNvbmRhcnkgYnVzIG51bWJlciBnZXRzIGFzc2lnbmVkIGFzIHRo
-ZQo+IHN1Ym9yZGluYXRlIGJ1cyBudW1iZXIuIFRoaXMgbWVhbnMsIHRoZSBQQ0kgY29yZSBhc3N1
-bWVzIHRoYXQgb25seSBvbmUgYnVzCj4gd2lsbCBhcHBlYXIgYmVoaW5kIHRoZSBSb290IFBvcnQg
-c2luY2UgdGhlIFJvb3QgUG9ydCBpcyBub3QgaG90IHBsdWcKPiBjYXBhYmxlLgo+IAo+IFRoaXMg
-d29ya3MgcGVyZmVjdGx5IGZpbmUgZm9yIFBDSWUgZW5kcG9pbnRzIGNvbm5lY3RlZCB0byB0aGUg
-Um9vdCBQb3J0LAo+IHNpbmNlIHRoZXkgZG9uJ3QgZXh0ZW5kIHRoZSBidXMuIEhvd2V2ZXIsIGlm
-IGEgUENJZSBzd2l0Y2ggaXMgY29ubmVjdGVkLAo+IHRoZW4gdGhlcmUgaXMgYSBwcm9ibGVtIHdo
-ZW4gdGhlIGRvd25zdHJlYW0gYnVzc2VzIHN0YXJ0cyBzaG93aW5nIHVwIGFuZAo+IHRoZSBQQ0kg
-Y29yZSBkb2Vzbid0IGV4dGVuZCB0aGUgc3Vib3JkaW5hdGUgYnVzIG51bWJlciBhZnRlciBpbml0
-aWFsIHNjYW4KPiBkdXJpbmcgYm9vdC4KPiAKPiBUaGUgbG9uZyB0ZXJtIHBsYW4gaXMgdG8gbWln
-cmF0ZSB0aGlzIGRyaXZlciB0byB0aGUgcHdyY3RybCBmcmFtZXdvcmssCj4gb25jZSBpdCBhZGRz
-IHByb3BlciBzdXBwb3J0IGZvciBwb3dlcmluZyB1cCBhbmQgZW51bWVyYXRpbmcgUENJZSBzd2l0
-Y2hlcy4KPiAKCkNvdWxkIHlvdSBwbGVhc2UgcmViYXNlIHRoaXMgc2VyaWVzIG9uIHRvcCBvZiBw
-Y2kvY29udHJvbGxlci9kd2MgYnJhbmNoIGFuZApyZXBvc3Q/CgotIE1hbmkKCj4gTmlrbGFzIENh
-c3NlbCAoNik6Cj4gICBSZXZlcnQgIlBDSTogZHctcm9ja2NoaXA6IERvbid0IHdhaXQgZm9yIGxp
-bmsgc2luY2Ugd2UgY2FuIGRldGVjdCBMaW5rCj4gICAgIFVwIgo+ICAgUmV2ZXJ0ICJQQ0k6IGR3
-LXJvY2tjaGlwOiBFbnVtZXJhdGUgZW5kcG9pbnRzIGJhc2VkIG9uIGRsbF9saW5rX3VwCj4gICAg
-IElSUSIKPiAgIFJldmVydCAiUENJOiBxY29tOiBEb24ndCB3YWl0IGZvciBsaW5rIGlmIHdlIGNh
-biBkZXRlY3QgTGluayBVcCIKPiAgIFJldmVydCAiUENJOiBxY29tOiBFbmFibGUgTVNJIGludGVy
-cnVwdHMgdG9nZXRoZXIgd2l0aCBMaW5rIHVwIGlmCj4gICAgICdHbG9iYWwgSVJRJyBpcyBzdXBw
-b3J0ZWQiCj4gICBSZXZlcnQgIlBDSTogcWNvbTogRW51bWVyYXRlIGVuZHBvaW50cyBiYXNlZCBv
-biBMaW5rIHVwIGV2ZW50IGluCj4gICAgICdnbG9iYWxfaXJxJyBpbnRlcnJ1cHQiCj4gICBSZXZl
-cnQgIlBDSTogZHdjOiBEb24ndCB3YWl0IGZvciBsaW5rIHVwIGlmIGRyaXZlciBjYW4gZGV0ZWN0
-IExpbmsgVXAKPiAgICAgZXZlbnQiCj4gCj4gIC4uLi9wY2kvY29udHJvbGxlci9kd2MvcGNpZS1k
-ZXNpZ253YXJlLWhvc3QuYyB8IDEwICstLQo+ICBkcml2ZXJzL3BjaS9jb250cm9sbGVyL2R3Yy9w
-Y2llLWRlc2lnbndhcmUuaCAgfCAgMSAtCj4gIGRyaXZlcnMvcGNpL2NvbnRyb2xsZXIvZHdjL3Bj
-aWUtZHctcm9ja2NoaXAuYyB8IDYwICstLS0tLS0tLS0tLS0tLS0tLQo+ICBkcml2ZXJzL3BjaS9j
-b250cm9sbGVyL2R3Yy9wY2llLXFjb20uYyAgICAgICAgfCA2MyArLS0tLS0tLS0tLS0tLS0tLS0t
-Cj4gIDQgZmlsZXMgY2hhbmdlZCwgNiBpbnNlcnRpb25zKCspLCAxMjggZGVsZXRpb25zKC0pCj4g
-Cj4gLS0gCj4gMi41MS4xCj4gCgotLSAK4K6u4K6j4K6/4K614K6j4K+N4K6j4K6p4K+NIOCumuCu
-pOCuvuCumuCuv+CuteCuruCvjQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxp
-c3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9saW51eC1yb2NrY2hpcAo=
+Revert all patches related to pcie-designware Root Complex Link Up IRQ
+support.
+
+While this fake hotplugging was a nice idea, it has shown that this feature
+does not handle PCIe switches correctly:
+pci_bus 0004:43: busn_res: can not insert [bus 43-41] under [bus 42-41] (conflicts with (null) [bus 42-41])
+pci_bus 0004:43: busn_res: [bus 43-41] end is updated to 43
+pci_bus 0004:43: busn_res: can not insert [bus 43] under [bus 42-41] (conflicts with (null) [bus 42-41])
+pci 0004:42:00.0: devices behind bridge are unusable because [bus 43] cannot be assigned for them
+pci_bus 0004:44: busn_res: can not insert [bus 44-41] under [bus 42-41] (conflicts with (null) [bus 42-41])
+pci_bus 0004:44: busn_res: [bus 44-41] end is updated to 44
+pci_bus 0004:44: busn_res: can not insert [bus 44] under [bus 42-41] (conflicts with (null) [bus 42-41])
+pci 0004:42:02.0: devices behind bridge are unusable because [bus 44] cannot be assigned for them
+pci_bus 0004:45: busn_res: can not insert [bus 45-41] under [bus 42-41] (conflicts with (null) [bus 42-41])
+pci_bus 0004:45: busn_res: [bus 45-41] end is updated to 45
+pci_bus 0004:45: busn_res: can not insert [bus 45] under [bus 42-41] (conflicts with (null) [bus 42-41])
+pci 0004:42:06.0: devices behind bridge are unusable because [bus 45] cannot be assigned for them
+pci_bus 0004:46: busn_res: can not insert [bus 46-41] under [bus 42-41] (conflicts with (null) [bus 42-41])
+pci_bus 0004:46: busn_res: [bus 46-41] end is updated to 46
+pci_bus 0004:46: busn_res: can not insert [bus 46] under [bus 42-41] (conflicts with (null) [bus 42-41])
+pci 0004:42:0e.0: devices behind bridge are unusable because [bus 46] cannot be assigned for them
+pci_bus 0004:42: busn_res: [bus 42-41] end is updated to 46
+pci_bus 0004:42: busn_res: can not insert [bus 42-46] under [bus 41] (conflicts with (null) [bus 41])
+pci 0004:41:00.0: devices behind bridge are unusable because [bus 42-46] cannot be assigned for them
+pcieport 0004:40:00.0: bridge has subordinate 41 but max busn 46
+
+During the initial scan, PCI core doesn't see the switch and since the Root
+Port is not hot plug capable, the secondary bus number gets assigned as the
+subordinate bus number. This means, the PCI core assumes that only one bus
+will appear behind the Root Port since the Root Port is not hot plug
+capable.
+
+This works perfectly fine for PCIe endpoints connected to the Root Port,
+since they don't extend the bus. However, if a PCIe switch is connected,
+then there is a problem when the downstream busses starts showing up and
+the PCI core doesn't extend the subordinate bus number after initial scan
+during boot.
+
+The long term plan is to migrate this driver to the pwrctrl framework,
+once it adds proper support for powering up and enumerating PCIe switches.
+
+
+Changes since v1:
+-Rebased against latest pci/controller/dwc
+-Picked up tags.
+
+
+Niklas Cassel (6):
+  Revert "PCI: dw-rockchip: Don't wait for link since we can detect Link
+    Up"
+  Revert "PCI: dw-rockchip: Enumerate endpoints based on dll_link_up
+    IRQ"
+  Revert "PCI: qcom: Don't wait for link if we can detect Link Up"
+  Revert "PCI: qcom: Enable MSI interrupts together with Link up if
+    'Global IRQ' is supported"
+  Revert "PCI: qcom: Enumerate endpoints based on Link up event in
+    'global_irq' interrupt"
+  Revert "PCI: dwc: Don't wait for link up if driver can detect Link Up
+    event"
+
+ .../pci/controller/dwc/pcie-designware-host.c | 10 +--
+ drivers/pci/controller/dwc/pcie-designware.h  |  1 -
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c | 60 +-----------------
+ drivers/pci/controller/dwc/pcie-qcom.c        | 63 +------------------
+ 4 files changed, 6 insertions(+), 128 deletions(-)
+
+
+base-commit: cfd2fdfd0a8da2e5bbfdc4009b9c4b8bf164c937
+-- 
+2.52.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
