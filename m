@@ -4,68 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93DAEE6748D
-	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Dec 2025 06:42:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 683B0D711D5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Dec 2025 07:11:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BRvwjFB62KzR0fqPCSStqTFowPh8F76PowJxxikn//4=; b=Q/LxH5aB0l9Raf
-	JnM38x77fiCdtA5YZHGJfzdUYITtTZjj6XV+ytklObDLgsur5NrEUA/s4Rr6WC2Egd7kHmUgs+sVk
-	5PwHuTE5X3OM2xoGOgLziBCdXjaL6HmazWHdC97rgHKObDK+Q0tDZQ6JE6jOOpWWh2k6yTCDH011t
-	wHtNWIMZ5RR6OCphkYDVSfIvsq0ygTjYlFASVf+sSJBm0qQ3Rgm7ccSvQhFHYmYq3YZ6tcPEb9yo7
-	vm4THIQA+nGnPVcI3VPEXCIZ7yn+g4Vl3jMqzyxkRAc90tDBmzReXGX/0W4Ha+ZRJqrPa73cPV7lO
-	8umkayf9CPHcAlVJjJdA==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=oN+Kbl1hoqFw14jrjKT5Abw4NqmS+eB1fvXiCAbEHNM=; b=maKnVpvpFM1Wno
+	DjDU8riva31ZJOGRcxWJu8BBQnmcOiBeBZjzsWiO447s2TzTWPm43r9nw0gZXpC7TUdOgpjD8kUFw
+	oEapKGEqFw/cllWg5c5+OirvFw0ihbSH3Mo1OjBULRooZRx6xugtsEzFHe7oWSWKY9DQYNa56aHG5
+	7+Q5p483W0cWvKuqSvpYyGGNxnS9JPRnhjDsXJ35pMHSOHXBX/Aa6m33Qe/x2RtQsYrObRDuj4tA9
+	G8laOQTjck/C1VYv0Y1toPwBXZJElZ4Mt+uoo16aDYAhXJ6Tj7W4ssuvSTn65HHuGf00YazC6FR4L
+	YaQ+waRcJwOp7zyGtkGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vXZct-0000000DK0j-2kGB;
-	Mon, 22 Dec 2025 06:42:39 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vXa57-0000000DLPy-1F24;
+	Mon, 22 Dec 2025 07:11:49 +0000
+Received: from mail-m19731109.qiye.163.com ([220.197.31.109])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vXZcn-0000000DJxs-2Ceh;
-	Mon, 22 Dec 2025 06:42:33 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 8AD016001D;
-	Mon, 22 Dec 2025 06:42:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4245CC4CEF1;
-	Mon, 22 Dec 2025 06:42:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1766385752;
-	bh=e0/niKpB0Lap+DhZVLSOS8gW0I1Z3rhogP6i1jO9zTU=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=KiKiI1QZedlTbBXaF79j9zJC0VpwLwRc60fYkZOew0t058sp5hxbAwWFBMN7P18fJ
-	 5UgFA5hVqEzll+yqsmP7o1yUOphIP7fyH3KgpgI59Z0Z4xLyFgtM5J2TBuJ6Osu1TN
-	 WxMpjgUYuPt38ulUr7MBhs82+JnrCuMISoE2qV595ks+C1+vOsZyvjsaa8Kg7Nn1gD
-	 Iho77d4XX0owKf6Z+CTo8WR8mTuj+MrLW4nseWQp//4gCyqN4fnk1cW6m/NUfDerlt
-	 A9VPWordUXl6ZIxjwFQB73sd/HawNekacQFA+mQXm7uM3zAWb1KkM/dk+pf3QaE6IF
-	 Xm5eBn07ing4Q==
-From: Niklas Cassel <cassel@kernel.org>
-To: Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Shawn Lin <shawn.lin@rock-chips.com>,
-	FUKAUMI Naoki <naoki@radxa.com>,
-	Krishna chaitanya chundru <quic_krichai@quicinc.com>,
-	Damien Le Moal <dlemoal@kernel.org>,
-	Niklas Cassel <cassel@kernel.org>,
-	stable@vger.kernel.org,
-	linux-pci@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH v2 2/6] Revert "PCI: dw-rockchip: Enumerate endpoints based on dll_link_up IRQ"
-Date: Mon, 22 Dec 2025 07:42:09 +0100
-Message-ID: <20251222064207.3246632-10-cassel@kernel.org>
-X-Mailer: git-send-email 2.52.0
-In-Reply-To: <20251222064207.3246632-8-cassel@kernel.org>
-References: <20251222064207.3246632-8-cassel@kernel.org>
-MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=6396; i=cassel@kernel.org; h=from:subject; bh=e0/niKpB0Lap+DhZVLSOS8gW0I1Z3rhogP6i1jO9zTU=; b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGDI9XrgJvNo3WXzeSeaJMZf/XgxjO7/si/D9rbtjHwg8n 1xZxBH8vKOUhUGMi0FWTJHF94fL/uJu9ynHFe/YwMxhZQIZwsDFKQATuTSZ4X+ileWW5E+93Pm7 131a92jOxoXcs9jnS1UfvHqqfcXihqWiDP9s9pyotTOYLie/Tq3p3/q9a47+kzWf/Xhv9P/FMbZ b09IYAQ==
-X-Developer-Key: i=cassel@kernel.org; a=openpgp; fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
+	id 1vXa53-0000000DLPO-3TME
+	for linux-rockchip@lists.infradead.org;
+	Mon, 22 Dec 2025 07:11:47 +0000
+Received: from localhost.localdomain (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 2e1915ea7;
+	Mon, 22 Dec 2025 15:11:31 +0800 (GMT+08:00)
+From: Shawn Lin <shawn.lin@rock-chips.com>
+To: Ulf Hansson <ulf.hansson@linaro.org>,
+	Adrian Hunter <adrian.hunter@intel.com>
+Cc: linux-rockchip@lists.infradead.org,
+	linux-mmc@vger.kernel.org,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Yifeng Zhao <yifeng.zhao@rock-chips.com>
+Subject: [PATCH] mmc: sdhci-of-dwcmshc: Prevent illegal clock reduction in HS200/HS400 mode
+Date: Mon, 22 Dec 2025 15:11:25 +0800
+Message-Id: <1766387485-205480-1-git-send-email-shawn.lin@rock-chips.com>
+X-Mailer: git-send-email 2.7.4
+X-HM-Tid: 0a9b44e6217109cckunm4bed3a38233852
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGk0dSlYaTR1IHktDTRkaGUJWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=EOPPGYHzk6kLsXnLNj40NzjhyqJTQtEaSmUoUDCDYJ2gArpMLAp+zEGE09V7EmlIDwuStV+0Yo3ynDzJ0bxHqCdW+p4xLIfO8EK9Rj6Mx3ifpMt3VHOs3u0SgKwJ/htu5QTKk7A5oiAZonwm/7R0gq/U7UXQOslf42z34ADTjOA=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=epFuvGNMnq8DZa8S9kytiEiXcwWoqxCo6P+b2a8XwfU=;
+	h=date:mime-version:subject:message-id:from;
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251221_231146_406221_031EEDB8 
+X-CRM114-Status: GOOD (  10.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,160 +66,61 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This reverts commit 0e0b45ab5d770a748487ba0ae8f77d1fb0f0de3e.
+When operating in HS200 or HS400 timing modes, reducing the clock frequency
+below 52MHz will lead to link broken as the Rockchip DWC MSHC controller
+requires maintaining a minimum clock of 52MHz in these modes.
 
-While this fake hotplugging was a nice idea, it has shown that this feature
-does not handle PCIe switches correctly:
-pci_bus 0004:43: busn_res: can not insert [bus 43-41] under [bus 42-41] (conflicts with (null) [bus 42-41])
-pci_bus 0004:43: busn_res: [bus 43-41] end is updated to 43
-pci_bus 0004:43: busn_res: can not insert [bus 43] under [bus 42-41] (conflicts with (null) [bus 42-41])
-pci 0004:42:00.0: devices behind bridge are unusable because [bus 43] cannot be assigned for them
-pci_bus 0004:44: busn_res: can not insert [bus 44-41] under [bus 42-41] (conflicts with (null) [bus 42-41])
-pci_bus 0004:44: busn_res: [bus 44-41] end is updated to 44
-pci_bus 0004:44: busn_res: can not insert [bus 44] under [bus 42-41] (conflicts with (null) [bus 42-41])
-pci 0004:42:02.0: devices behind bridge are unusable because [bus 44] cannot be assigned for them
-pci_bus 0004:45: busn_res: can not insert [bus 45-41] under [bus 42-41] (conflicts with (null) [bus 42-41])
-pci_bus 0004:45: busn_res: [bus 45-41] end is updated to 45
-pci_bus 0004:45: busn_res: can not insert [bus 45] under [bus 42-41] (conflicts with (null) [bus 42-41])
-pci 0004:42:06.0: devices behind bridge are unusable because [bus 45] cannot be assigned for them
-pci_bus 0004:46: busn_res: can not insert [bus 46-41] under [bus 42-41] (conflicts with (null) [bus 42-41])
-pci_bus 0004:46: busn_res: [bus 46-41] end is updated to 46
-pci_bus 0004:46: busn_res: can not insert [bus 46] under [bus 42-41] (conflicts with (null) [bus 42-41])
-pci 0004:42:0e.0: devices behind bridge are unusable because [bus 46] cannot be assigned for them
-pci_bus 0004:42: busn_res: [bus 42-41] end is updated to 46
-pci_bus 0004:42: busn_res: can not insert [bus 42-46] under [bus 41] (conflicts with (null) [bus 41])
-pci 0004:41:00.0: devices behind bridge are unusable because [bus 42-46] cannot be assigned for them
-pcieport 0004:40:00.0: bridge has subordinate 41 but max busn 46
+Add a check to prevent illegal clock reduction through debugfs:
 
-During the initial scan, PCI core doesn't see the switch and since the Root
-Port is not hot plug capable, the secondary bus number gets assigned as the
-subordinate bus number. This means, the PCI core assumes that only one bus
-will appear behind the Root Port since the Root Port is not hot plug
-capable.
+root@debian:/# echo 50000000 > /sys/kernel/debug/mmc0/clock
+root@debian:/# [   30.090146] mmc0: running CQE recovery
+mmc0: cqhci: Failed to halt
+mmc0: cqhci: spurious TCN for tag 0
+WARNING: drivers/mmc/host/cqhci-core.c:797 at cqhci_irq+0x254/0x818, CPU#1: kworker/1:0H/24
+Modules linked in:
+CPU: 1 UID: 0 PID: 24 Comm: kworker/1:0H Not tainted 6.19.0-rc1-00001-g09db0998649d-dirty #204 PREEMPT
+Hardware name: Rockchip RK3588 EVB1 V10 Board (DT)
+Workqueue: kblockd blk_mq_run_work_fn
+pstate: 604000c9 (nZCv daIF +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+pc : cqhci_irq+0x254/0x818
+lr : cqhci_irq+0x254/0x818
+...
 
-This works perfectly fine for PCIe endpoints connected to the Root Port,
-since they don't extend the bus. However, if a PCIe switch is connected,
-then there is a problem when the downstream busses starts showing up and
-the PCI core doesn't extend the subordinate bus number after initial scan
-during boot.
-
-The long term plan is to migrate this driver to the pwrctrl framework,
-once it adds proper support for powering up and enumerating PCIe switches.
-
-Cc: stable@vger.kernel.org
-Suggested-by: Manivannan Sadhasivam <mani@kernel.org>
-Acked-by: Shawn Lin <shawn.lin@rock-chips.com>
-Tested-by: Shawn Lin <shawn.lin@rock-chips.com>
-Signed-off-by: Niklas Cassel <cassel@kernel.org>
+Fixes: c6f361cba51c ("mmc: sdhci-of-dwcmshc: add support for rk3588")
+Cc: Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Yifeng Zhao <yifeng.zhao@rock-chips.com>
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 ---
- drivers/pci/controller/dwc/pcie-dw-rockchip.c | 59 +------------------
- 1 file changed, 3 insertions(+), 56 deletions(-)
 
-diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-index ca808d8f7975..352f513ebf03 100644
---- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-+++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-@@ -508,34 +508,6 @@ static const struct dw_pcie_ops dw_pcie_ops = {
- 	.get_ltssm = rockchip_pcie_get_ltssm,
- };
+ drivers/mmc/host/sdhci-of-dwcmshc.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/drivers/mmc/host/sdhci-of-dwcmshc.c b/drivers/mmc/host/sdhci-of-dwcmshc.c
+index 51949cd..204830b 100644
+--- a/drivers/mmc/host/sdhci-of-dwcmshc.c
++++ b/drivers/mmc/host/sdhci-of-dwcmshc.c
+@@ -739,6 +739,13 @@ static void dwcmshc_rk3568_set_clock(struct sdhci_host *host, unsigned int clock
+ 	sdhci_writel(host, extra, reg);
  
--static irqreturn_t rockchip_pcie_rc_sys_irq_thread(int irq, void *arg)
--{
--	struct rockchip_pcie *rockchip = arg;
--	struct dw_pcie *pci = &rockchip->pci;
--	struct dw_pcie_rp *pp = &pci->pp;
--	struct device *dev = pci->dev;
--	u32 reg;
--
--	reg = rockchip_pcie_readl_apb(rockchip, PCIE_CLIENT_INTR_STATUS_MISC);
--	rockchip_pcie_writel_apb(rockchip, reg, PCIE_CLIENT_INTR_STATUS_MISC);
--
--	dev_dbg(dev, "PCIE_CLIENT_INTR_STATUS_MISC: %#x\n", reg);
--	dev_dbg(dev, "LTSSM_STATUS: %#x\n", rockchip_pcie_get_ltssm_reg(rockchip));
--
--	if (reg & PCIE_RDLH_LINK_UP_CHGED) {
--		if (rockchip_pcie_link_up(pci)) {
--			msleep(PCIE_RESET_CONFIG_WAIT_MS);
--			dev_dbg(dev, "Received Link up event. Starting enumeration!\n");
--			/* Rescan the bus to enumerate endpoint devices */
--			pci_lock_rescan_remove();
--			pci_rescan_bus(pp->bridge->bus);
--			pci_unlock_rescan_remove();
--		}
--	}
--
--	return IRQ_HANDLED;
--}
--
- static irqreturn_t rockchip_pcie_ep_sys_irq_thread(int irq, void *arg)
- {
- 	struct rockchip_pcie *rockchip = arg;
-@@ -568,29 +540,14 @@ static irqreturn_t rockchip_pcie_ep_sys_irq_thread(int irq, void *arg)
- 	return IRQ_HANDLED;
- }
- 
--static int rockchip_pcie_configure_rc(struct platform_device *pdev,
--				      struct rockchip_pcie *rockchip)
-+static int rockchip_pcie_configure_rc(struct rockchip_pcie *rockchip)
- {
--	struct device *dev = &pdev->dev;
- 	struct dw_pcie_rp *pp;
--	int irq, ret;
- 	u32 val;
- 
- 	if (!IS_ENABLED(CONFIG_PCIE_ROCKCHIP_DW_HOST))
- 		return -ENODEV;
- 
--	irq = platform_get_irq_byname(pdev, "sys");
--	if (irq < 0)
--		return irq;
--
--	ret = devm_request_threaded_irq(dev, irq, NULL,
--					rockchip_pcie_rc_sys_irq_thread,
--					IRQF_ONESHOT, "pcie-sys-rc", rockchip);
--	if (ret) {
--		dev_err(dev, "failed to request PCIe sys IRQ\n");
--		return ret;
--	}
--
- 	/* LTSSM enable control mode */
- 	val = FIELD_PREP_WM16(PCIE_LTSSM_ENABLE_ENHANCE, 1);
- 	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_HOT_RESET_CTRL);
-@@ -602,17 +559,7 @@ static int rockchip_pcie_configure_rc(struct platform_device *pdev,
- 	pp = &rockchip->pci.pp;
- 	pp->ops = &rockchip_pcie_host_ops;
- 
--	ret = dw_pcie_host_init(pp);
--	if (ret) {
--		dev_err(dev, "failed to initialize host\n");
--		return ret;
--	}
--
--	/* unmask DLL up/down indicator */
--	val = FIELD_PREP_WM16(PCIE_RDLH_LINK_UP_CHGED, 0);
--	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_INTR_MASK_MISC);
--
--	return ret;
-+	return dw_pcie_host_init(pp);
- }
- 
- static int rockchip_pcie_configure_ep(struct platform_device *pdev,
-@@ -731,7 +678,7 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
- 
- 	switch (data->mode) {
- 	case DW_PCIE_RC_TYPE:
--		ret = rockchip_pcie_configure_rc(pdev, rockchip);
-+		ret = rockchip_pcie_configure_rc(rockchip);
- 		if (ret)
- 			goto deinit_clk;
- 		break;
+ 	if (clock <= 52000000) {
++		if (host->mmc->ios.timing == MMC_TIMING_MMC_HS200 ||
++		    host->mmc->ios.timing == MMC_TIMING_MMC_HS400) {
++			dev_err(mmc_dev(host->mmc),
++				"Can't reduce the clock below 52MHz in HS200/HS400 mode");
++			return;
++		}
++
+ 		/*
+ 		 * Disable DLL and reset both of sample and drive clock.
+ 		 * The bypass bit and start bit need to be set if DLL is not locked.
 -- 
-2.52.0
+2.7.4
 
 
 _______________________________________________
