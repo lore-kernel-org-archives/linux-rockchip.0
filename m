@@ -4,65 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 298B8E674AF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Dec 2025 13:39:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87AD4E674B1
+	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Dec 2025 13:39:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YfBfntpChBmWW1ilz/j2M8gMbfXeupuKghZH3EGwK7M=; b=xpU7trUCEmNtLK
-	odOXFClcuCo/XJgutW0z1fM40bw2AQ9SfPMF4KeghNFq0j5ci7MlfqgRNvH/kG9B1FX0ugg1EwQld
-	NIEIml5aMHEUnBKZBIHbaSNpRzrFi1Fw/4ijZbKR4VKm2OaEpxrDNQLuOTlzbT7wmfF+R/OeXJl6K
-	WzceYbXoeitW0BV6hARYYFkm/Y8wc0u/lLTtiEmsrgZomW+I5vrE3hiQDriEfruia7AzEDjwCC7jc
-	KYUfoshobEXZFL2+8MvLMvnggDGwa7Byb8UThJ0dwC0GWkK9S/A3asJNSSdvChIu/phNm/oJ/vm75
-	8bBRldprpM/hEwAqY+Jw==;
+	List-Owner; bh=nk9AtJJitzXEYRGYrRqYXFenkWlOxMH902ESqlJ5wPc=; b=FIrMxF1/hto9gy
+	WkYo8Z64STAZHIN2xQZ1ej5Qpg8LxS9nhNp49y1FoWbrkMe0xfW7oLPahHGefoSz3L/obKS3uW9Uw
+	GR6jC1ZrzqWFHooEEBfl/anYs4GjSAvsr0o/kCan1OuCNdpFb97HF4evOuMr/HAxYQTp85Gpd0BN2
+	LXhilDuos6imLzhU3/7O0hvfo1lBPz9XV8dbBL4tigD3eYa5/8/h+kA1IkyDbdKqM813Xh2uBpNod
+	RHrVzWRQsjzKuhj4hs07ctIvxjiQDApCdBFXCEDpWbNwQfmClk6QJaaf6pq6ZcVpVWvBxlaw1DAZW
+	jZcT20JhWulDr1OYBCQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vXg7e-0000000Doz2-278N;
-	Mon, 22 Dec 2025 13:38:50 +0000
+	id 1vXg7f-0000000DozU-21Yh;
+	Mon, 22 Dec 2025 13:38:51 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vXg7Q-0000000Dosl-16nk;
-	Mon, 22 Dec 2025 13:38:40 +0000
+	id 1vXg7U-0000000Dou4-3xLW;
+	Mon, 22 Dec 2025 13:38:42 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=HoYxV+zXHdjx75Q4JXjcDA7Kc8dxz5Omy/iV5ZA3rIg=; b=V+Us1nENppsFP8DjeU7zR9HX+c
-	dA81FE0TPgbx81C+jqK6AtS0CRTvA/BEZ9TX43OOmmwTLXvyk+MxWNreCJpqSLWcJlhenwn7GAyZz
-	nyDvl3soKpHAQP+JqfC7BiFvTRoRjJ4KhKG2DVeaxzxsIl8jdoeGtUBrue5ONxGRXHnEBc0g8pBls
-	BFw2L7VkAKih5Se0J8mEyUTdljEdB4oDLPsxCDdCy4Qz4s0KUCxBefw7jzxPND6L5zYeJ6fpJULz8
-	GO9Se/MYQwr0W/MtcR5NyxRgA4xqblN5vZMJr4L0Cpjmtw9zwUbGM/Gz+QSiYv0PS+77u25VwUJ8R
-	3PICEp0g==;
+	bh=zyNlIYVGdqBwPbC3NbHSO9fACJaQ81uwPvV6sz6WN6w=; b=aKJ20RLNXHNkpP2m2BcJ6miVeB
+	6GhEYyqmtsenDadUpjQQMitJZg3sWrSnZXcvMG5GIEdMvND5H9GZrhGs1X9EQkP2OBbbO4ofLUNO1
+	72cLOsJlZPrvNXiiyZxOytHX+jEA5bvXSycFudNyvQgUmmePQ/otQxFXV891s6IclLBhidX7L1sFx
+	Xk8A3uz5WWCwkBIeIuvSo8UQXfoAYT/nEtXFvRjKYZZtqdt1+oukQVGqFP7ZFchkIzKKcud/n6MYF
+	eZASupZg71vr114cvoI91jlMqOsrlxa5OvabmhCon4iw2osNSONtddl0X07oY0WIyb+duvpQRCSJ1
+	0npPj5Ww==;
 Received: from [194.95.143.137] (helo=phil.dip.tu-dresden.de)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1vXg7K-0005s2-Q4; Mon, 22 Dec 2025 14:38:30 +0100
+	id 1vXg7L-0005s2-6w; Mon, 22 Dec 2025 14:38:31 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: Rob Herring <robh@kernel.org>,
+To: Shawn Lin <shawn.lin@rock-chips.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
-	Tomeu Vizoso <tomeu@tomeuvizoso.net>,
-	Quentin Schulz <foss+kernel@0leil.net>
+	Johan Jonker <jbx6244@gmail.com>,
+	Dragan Simic <dsimic@manjaro.org>,
+	Geraldo Nascimento <geraldogabriel@gmail.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
+	linux-pci@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	Quentin Schulz <quentin.schulz@cherry.de>,
-	stable@vger.kernel.org
-Subject: Re: [PATCH] arm64: dts: rockchip: fix unit-address for RK3588 NPU's core1 and core2's IOMMU
-Date: Mon, 22 Dec 2025 14:38:23 +0100
-Message-ID: <176641067338.1648325.5634476513505380555.b4-ty@sntech.de>
+	devicetree@vger.kernel.org
+Subject: Re: (subset) [PATCH v2 0/4] PCI: rockchip: 5.0 GT/s speed may be dangerous
+Date: Mon, 22 Dec 2025 14:38:24 +0100
+Message-ID: <176641067349.1648325.7613113925741792154.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20251215-npu-dt-node-address-v1-1-840093e8a2bf@cherry.de>
-References: <20251215-npu-dt-node-address-v1-1-840093e8a2bf@cherry.de>
+In-Reply-To: <cover.1763415705.git.geraldogabriel@gmail.com>
+References: <cover.1763415705.git.geraldogabriel@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251222_053836_543888_BB0E9423 
-X-CRM114-Status: GOOD (  11.23  )
+X-CRM114-CacheID: sfid-20251222_053840_987782_61CE4591 
+X-CRM114-Status: UNSURE (   9.59  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,24 +86,25 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Mon, 15 Dec 2025 17:45:56 +0100, Quentin Schulz wrote:
-> The Device Tree specification specifies[1] that
-> 
-> """
-> Each node in the devicetree is named according to the following
-> convention:
-> 	node-name@unit-address
-> [...]
-> The unit-address must match the first address specified in the reg
-> property of the node.
-> """
+On Mon, 17 Nov 2025 18:46:43 -0300, Geraldo Nascimento wrote:
+> Dragan Simic already had warned me of potential issues with 5.0 GT/s
+> speed operation in Rockchip PCIe. However, in recent interactions
+> with Shawn Lin from Rockchip it came to my attention there's grave
+> danger in the unknown errata regarding 5.0 GT/s operational speed
+> of their PCIe core. Even if the odds are low, to contain any damage,
+> let's cover the remaining corner-cases where the default would lead
+> to 5.0 GT/s operation as well as add a comment to Root Complex driver
+> core, documenting this danger. Furthermore, remove redundant
+> declaration of max-link-speed from rk3399-nanopi-r4s.dtsi
 > 
 > [...]
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: fix unit-address for RK3588 NPU's core1 and core2's IOMMU
-      commit: cd8967ea3105d30adb878a9fea0e34a9378df610
+[3/4] arm64: dts: rockchip: remove dangerous max-link-speed from helios64
+      commit: 0368e4afcf20f377c81fa77b1c7d0dee4a625a44
+[4/4] arm64: dts: rockchip: remove redundant max-link-speed from nanopi-r4s
+      commit: ce652c98a7bfa0b7c675ef5cd85c44c186db96af
 
 Best regards,
 -- 
