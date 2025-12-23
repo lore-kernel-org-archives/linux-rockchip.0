@@ -4,61 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4331AE6FE24
-	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Dec 2025 16:30:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65C39E6FE23
+	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Dec 2025 17:34:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KvtOL+WhRfniYvJbw6MaqwJEUUIrX3HZ2PY4XSmGCIY=; b=iwkbvtl0ZqkMBk
-	j7WSxR0gGeJShOJBnL7zKSTOAE5TpaZBVVwyxraj3dw8TZApqu+eci3Pyn0XbGfmvPEQTgJ7/CSf7
-	bvpM5uElAsVGhV7yGNwI76Eer7SCvQEZJOPRip1eMRTiu0AtcEAr+prlts4Dppbf9CRw2x75dSkEF
-	lOI9AR0kl9322xBMwgFAmaELlkDrrYhYZVjk07x3dpIUXysmaHAM8ilVQOea/FOMa84XAqN728RKX
-	wYp2M2Y1Y4gCigFngDlZbmkbaPHzisfKSFU6NSvac8y60TYd9GlE3s6LbqEdlnNBw6H0XUUwKEXht
-	/4IR44Lpth0fMw8iUPWw==;
+	List-Owner; bh=ifR5fWLECxcmH9JbTC2rRmZA9r85OOC1+0O9UJyXZPk=; b=VSXos2jw7odZb9
+	cN+29OCtkr7vHhCGIPSvj9ag/QlerKNQeFIVmgMOV3aJWO61rp1IATsWm0emN1xEJrt5qjpynbhkW
+	HaPHyMa2VsJfIFJG7dfGYkg+Iwl1N3rNsQ4Vb6XJQJMWIKdz4QoUChZXMQAnuRi7zj9+gIHYOdaW6
+	SBpZfO9wGSHf5uDZJo8UNogXsgF0znYAQLMgCu7DK4VIAraYZMbW4JAI2VGpQWbhO/g8MQ7bAglcf
+	+RBLBqt/WfmRh7nLNRXSDuxkAyoREy6h2ZrQydUsOQ/Mg725aczhuurpWbF4x2Oti+5pwS3+9PDfx
+	WkCuFJD1HEXwfR+JxkbQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vY5HM-0000000FlgS-3T51;
-	Tue, 23 Dec 2025 16:30:32 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1vY6H6-0000000Fpot-101y;
+	Tue, 23 Dec 2025 17:34:20 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vY5HK-0000000Flfz-1eUG
-	for linux-rockchip@lists.infradead.org;
-	Tue, 23 Dec 2025 16:30:31 +0000
-Received: from pendragon.ideasonboard.com (81-175-209-152.bb.dnainternet.fi [81.175.209.152])
-	by perceval.ideasonboard.com (Postfix) with UTF8SMTPSA id 722AF833;
-	Tue, 23 Dec 2025 17:30:17 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1766507417;
-	bh=EssmU79hIAIBvgwSq9QzBKNjzESzJNuoxUB6MD1ZQGY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=rPvMJI8J+fn/vctuWtoIqAQRVV1gFno+Rr9dMoYJNGwJ7Xf72efjcoH+cnDB2lKvD
-	 y4hu1abpiq1up1Pad+/EhQIbC23w9kbr+O6FFF20xNa0OFZ38mJnj1b2p68EP7szHw
-	 jRE4BHEYVRm+3/Ac/iHl+knxbSj7mYEDvezfw7nM=
-Date: Tue, 23 Dec 2025 18:30:10 +0200
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: "Rafael J. Wysocki" <rafael@kernel.org>
-Cc: Linux PM <linux-pm@vger.kernel.org>,
-	LKML <linux-kernel@vger.kernel.org>,
-	Ulf Hansson <ulf.hansson@linaro.org>,
-	Brian Norris <briannorris@chromium.org>,
-	Dafna Hirschfeld <dafna@fastmail.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v1 05/23] media: rkisp1: Discard pm_runtime_put() return
- value
-Message-ID: <20251223163010.GJ9817@pendragon.ideasonboard.com>
-References: <6245770.lOV4Wx5bFT@rafael.j.wysocki>
- <2356323.iZASKD2KPV@rafael.j.wysocki>
+	id 1vY6Gx-0000000Fpkl-1uCR;
+	Tue, 23 Dec 2025 17:34:15 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 1B23D41B37;
+	Tue, 23 Dec 2025 17:34:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B9490C116B1;
+	Tue, 23 Dec 2025 17:34:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1766511251;
+	bh=udJxoZNtzJJ8YDA2L6z3Y5+PFcDl85FnCZanR1WdgZA=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=N+Xn6033wpW+5QNkYVNRqHjEKGenxB/bSabbWnNLVOuh4frnVWP3HnsPbLcR31Tf6
+	 PQBWaVajtxZ4oy1zoFk2xccN+shMwkSfy7YHedgWvj0xPS+5Hj2V9KuZmkxEqrnVNT
+	 r/uHZpYgm8EC0FeA68GMduCPfwyFvIHo8JQ7/FOJ5ehBP0bbJ/kVJ6bRcfOpVHDch2
+	 COlyQNzIUfSBbBx6unHPEZruHbGDJXGylIipV3+bnwR1DjvsgfYPnzfM3TjU9bH8JF
+	 Rpjid6A1aPcSzmn5BpHsOK7TQ2hOrolkuibqvLccKZJdt87E8nQrRm79hPwnQTpqFm
+	 QCg2BG0zTNyeg==
+From: Vinod Koul <vkoul@kernel.org>
+To: Kishon Vijay Abraham I <kishon@kernel.org>, 
+ Heiko Stuebner <heiko@sntech.de>, William Wu <wulf@rock-chips.com>, 
+ Luca Ceresoli <luca.ceresoli@bootlin.com>
+Cc: Kever Yang <kever.yang@rock-chips.com>, 
+ Minas Harutyunyan <Minas.Harutyunyan@synopsys.com>, 
+ Alan Stern <stern@rowland.harvard.edu>, 
+ Louis Chauvet <louis.chauvet@bootlin.com>, 
+ =?utf-8?q?Herv=C3=A9_Codina?= <herve.codina@bootlin.com>, 
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
+ =?utf-8?q?Th=C3=A9o_Lebrun?= <theo.lebrun@bootlin.com>, 
+ linux-phy@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, stable@vger.kernel.org
+In-Reply-To: <20251127-rk3308-fix-usb-gadget-phy-disconnect-v2-0-dac8a02cd2ca@bootlin.com>
+References: <20251127-rk3308-fix-usb-gadget-phy-disconnect-v2-0-dac8a02cd2ca@bootlin.com>
+Subject: Re: [PATCH v2 0/2] phy: rockchip: inno-usb2: fix gadget mode
+ disconnection after 6 seconds
+Message-Id: <176651124639.749296.13619922936818344494.b4-ty@kernel.org>
+Date: Tue, 23 Dec 2025 23:04:06 +0530
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <2356323.iZASKD2KPV@rafael.j.wysocki>
+X-Mailer: b4 0.13.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251223_083030_579326_15D54BBD 
-X-CRM114-Status: GOOD (  25.96  )
+X-CRM114-CacheID: sfid-20251223_093413_820827_E2AE9E75 
+X-CRM114-Status: UNSURE (   8.94  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,75 +83,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Rafael,
 
-Thank you for the patch.
+On Thu, 27 Nov 2025 11:26:15 +0100, Luca Ceresoli wrote:
+> The USB OTG port of the RK3308 exibits a bug when:
+> 
+>  - configured as peripheral, and
+>  - used in gadget mode, and
+>  - the USB cable is connected since before booting
+> 
+> The symptom is: about 6 seconds after configuring gadget mode the device is
+> disconnected and then re-enumerated. This happens only once per boot.
+> 
+> [...]
 
-On Mon, Dec 22, 2025 at 09:01:55PM +0100, Rafael J. Wysocki wrote:
-> From: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
-> 
-> Printing error messages on pm_runtime_put() returning negative values
-> is not particularly useful.
->  
-> Returning an error code from pm_runtime_put() merely means that it has
-> not queued up a work item to check whether or not the device can be
-> suspended and there are many perfectly valid situations in which that
-> can happen, like after writing "on" to the devices' runtime PM "control"
-> attribute in sysfs for one example.
-> 
-> Accordingly, update rkisp1_vb2_stop_streaming() to simply discard the
-> return value of pm_runtime_put().
-> 
-> This will facilitate a planned change of the pm_runtime_put() return
-> type to void in the future.
-> 
-> Signed-off-by: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
+Applied, thanks!
 
-Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+[1/2] phy: rockchip: inno-usb2: fix disconnection in gadget mode
+      commit: 028e8ca7b20fb7324f3e5db34ba8bd366d9d3acc
+[2/2] phy: rockchip: inno-usb2: fix communication disruption in gadget mode
+      commit: 7d8f725b79e35fa47e42c88716aad8711e1168d8
 
-> ---
-> 
-> This patch is part of a series, but it doesn't depend on anything else
-> in that series.  The last patch in the series depends on it.
-> 
-> It can be applied by itself and if you decide to do so, please let me
-> know.
-
-I've applied the patch to my tree for v6.20.
-
-> Otherwise, an ACK or equivalent will be appreciated, but also the lack
-> of specific criticism will be eventually regarded as consent.
-> 
-> ---
->  drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c |    5 +----
->  1 file changed, 1 insertion(+), 4 deletions(-)
-> 
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-> @@ -1123,7 +1123,6 @@ static void rkisp1_vb2_stop_streaming(st
->  	struct rkisp1_capture *cap = queue->drv_priv;
->  	struct rkisp1_vdev_node *node = &cap->vnode;
->  	struct rkisp1_device *rkisp1 = cap->rkisp1;
-> -	int ret;
->  
->  	mutex_lock(&cap->rkisp1->stream_lock);
->  
-> @@ -1132,9 +1131,7 @@ static void rkisp1_vb2_stop_streaming(st
->  	rkisp1_return_all_buffers(cap, VB2_BUF_STATE_ERROR);
->  
->  	v4l2_pipeline_pm_put(&node->vdev.entity);
-> -	ret = pm_runtime_put(rkisp1->dev);
-> -	if (ret < 0)
-> -		dev_err(rkisp1->dev, "power down failed error:%d\n", ret);
-> +	pm_runtime_put(rkisp1->dev);
->  
->  	rkisp1_dummy_buf_destroy(cap);
->  
-
+Best regards,
 -- 
-Regards,
+~Vinod
 
-Laurent Pinchart
+
 
 _______________________________________________
 Linux-rockchip mailing list
