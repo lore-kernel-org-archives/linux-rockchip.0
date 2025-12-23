@@ -4,57 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7765E6FE23
-	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Dec 2025 17:44:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FD1DE6F085
+	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Dec 2025 17:45:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
 	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UIiXal9s5ILgt7rv3FnmHd5SEMMUyEAODhqYlvJMY2s=; b=XjefN8kxbWfaTE
-	f8yc1rOhN5ObLS3k5YadtY01TY/fm67F12ckR5MRduw30Pt63sf3zfLZtsU0WD31UWnOTB99UdW1m
-	aljIsjpAxrnTEPfl6wZLWS6xawb0GLfpfy6r6TFVcSaJoQSdLqQ7CkAE4Sy4bF34LhD8dwyIzmrT2
-	076SFAQjNuJlta+xg0k4HDo1tidMoLZq4pyzgtbzGhX2vm1cNQm38cMk5TElJtHYiZALQfP1l3Whf
-	BH8WYTM5CMeLSadYHpULpHx1eYc+FibfSdamvXaVfFB+OmY/FhVrl01eKH9LMiXCQbzIVso8IH9c+
-	pe3OWOU97+sz440LO/Pg==;
+	List-Owner; bh=0HZBkWDGAjR4DMifwH8opDy6CGyf7tNwMX3nppdwdV0=; b=o4Beoewip5pGSF
+	y6z3pWmkESICq9DfZs897oRmhVkTEvzbe1C7Vnl2j1ni52+wEbJWmdb7by2QVwfrgiRmQfW7Cmja1
+	cPYd+hglKPfS71yuJJtIrNlNGi0OEBGai2CFe9HCRW0i6hNjJ8iUS3hBF2cIFqJZE67CUiYiUyUn5
+	Zt8zZgKomPsCZqecjotuwtPVdEwE7jqzS2HGxqZRKx8BUgirEF0ZxEDPBSiUbMrb/4trAzDQVHb1N
+	of88F3dJuHS4YWPQPmY3OPYOhD8o0fess0MeTU5qwdvMHwJ6tyJRbYa66V5nuCCmhbL+VR7jyQVnf
+	vg3uBfGa35XwKXveCatw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vY6R8-0000000Fqtk-2Rx7;
-	Tue, 23 Dec 2025 17:44:42 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vY6S2-0000000FrTW-1T6b;
+	Tue, 23 Dec 2025 17:45:38 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vY6R3-0000000Fqrd-26nf;
-	Tue, 23 Dec 2025 17:44:37 +0000
+	id 1vY6Rw-0000000FrPD-2UdV;
+	Tue, 23 Dec 2025 17:45:35 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id B1B7F60141;
-	Tue, 23 Dec 2025 17:44:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C169BC116B1;
-	Tue, 23 Dec 2025 17:44:33 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 298CB418D6;
+	Tue, 23 Dec 2025 17:45:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D9E3DC116D0;
+	Tue, 23 Dec 2025 17:45:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1766511876;
-	bh=IAcDB8EBKY8JVjS5RfhxZ7Lpy5Hv7UbwPlli3EbI6zs=;
+	s=k20201202; t=1766511932;
+	bh=QnfHw7gktqMQcpaZBa6HDrlNZ+/FNsdSEG4q/pIYhEA=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=VyXW6wT2pUXDxacv69qquj9G3+p2p7Drymo6p3/ufGLCA568I2m8xMpUeMWKwmQfO
-	 wV7TAtGMEUZllstAKxQ0K3d5/6Qr6LjZn1DsoE3UVxIYoJWrcG/CWLOehtBDe2RMwz
-	 6qri75yaBgqV7OGjent8f/r8Bpk7esdfJ+iXO91W567O8c5jEdtutqiRHgAB+abkY5
-	 ZORBlxHk2TYCVctkUZECDwkR2WTiuwXpuqGcNItad9gTGLqWFP1rIHFpTlTr6a8KcH
-	 Tenq3jFS2i45ESJAiKdh8VUDbTmJAWUJ5VesLhsz0cI1GNbSr2nyqiOjXXTMQXUW/F
-	 W/mBLYJfe3VHQ==
+	b=IsFkJxNq2dX725QpsMGli+i9KLKcfIijkuFrRUdWr79UNEQpmK9ldEIxz8RxuGk+f
+	 513pQs6migSmGO6EOWbqvSl9/2Apz6/WtgJWcoU1+uok2ByHrIqkzzZEzkcu/Q+LL8
+	 pfpwlEOpSvnqNdyQO5nRPyuECF//0+q5CK1KgUNbiqvtpDlyDVS8MOR4SYB7IpMGBD
+	 rgYAzQ29rQklDwTJRzVvwER+9cePLRES3AILfIb0IqUZoTyDvaMtYEX1aodp47KlKM
+	 DbtspiiKG4XwjrlezB9KeRPj/1qddmqOgRH+LosSc2xay2Pq8xfCJ7JMaI8t4iePTi
+	 Q/bpKEp6ivyOA==
 From: Vinod Koul <vkoul@kernel.org>
-To: Neil Armstrong <neil.armstrong@linaro.org>, 
- Heiko Stuebner <heiko@sntech.de>, Dmitry Baryshkov <lumag@kernel.org>, 
- Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: kernel@collabora.com, linux-phy@lists.infradead.org, 
+To: Chukun Pan <amadeus@jmu.edu.cn>
+Cc: Yao Zi <ziyao@disroot.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Kishon Vijay Abraham I <kishon@kernel.org>, 
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, Derek Foreman <derek.foreman@collabora.com>
-In-Reply-To: <20251221-phy-hdptx-pll-fix-v2-0-ae4abf7f75a1@collabora.com>
-References: <20251221-phy-hdptx-pll-fix-v2-0-ae4abf7f75a1@collabora.com>
-Subject: Re: [PATCH v2 0/2] Fixup HDMI PLL for phy-rockchip-samsung-hdptx
-Message-Id: <176651187342.759340.7650219710991415977.b4-ty@kernel.org>
-Date: Tue, 23 Dec 2025 23:14:33 +0530
+ linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org
+In-Reply-To: <20250910122000.951100-1-amadeus@jmu.edu.cn>
+References: <20250910122000.951100-1-amadeus@jmu.edu.cn>
+Subject: Re: [PATCH 1/1] phy: rockchip: naneng-combphy: use existing DT
+ property check for rk3528
+Message-Id: <176651192952.759340.11206011301842508188.b4-ty@kernel.org>
+Date: Tue, 23 Dec 2025 23:15:29 +0530
 MIME-Version: 1.0
 X-Mailer: b4 0.13.0
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251223_094532_691476_5EB158CB 
+X-CRM114-Status: UNSURE (   5.86  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,23 +76,18 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Sun, 21 Dec 2025 12:36:22 +0200, Cristian Ciocaltea wrote:
-> The Samsung HDMI/eDP TX PHY is currently not able to provide an accurate
-> enough PLL output frequency to match the TMDS rate of a 1080p@120Hz
-> display mode, when used with 10 bpc RGB.
+On Wed, 10 Sep 2025 20:20:00 +0800, Chukun Pan wrote:
+> The naneng-combphy driver already has DT property checks for
+> "rockchip,enable-ssc" and "rockchip,ext-refclk", use it for
+> the rk3528_combphy_cfg. Also aligned the indentation of the
+> rk3528_combphy_grfcfgs parameters (using tabs).
 > 
-> This patch set adds a new entry to the TMDS configuration table,
-> providing the necessary frequency division coefficients for the PHY PLL
-> to generate the expected 461.101250 MHz output.
 > 
-> [...]
 
 Applied, thanks!
 
-[1/2] phy: rockchip: samsung-hdptx: Pre-compute HDMI PLL config for 461.10125 MHz output
-      commit: f2daf0c67a1767ff6536aa3e96599afb42ca42e7
-[2/2] phy: rockchip: samsung-hdptx: Cleanup TMDS PLL config table
-      commit: 3be8131ee936abb6ff56ca9ec9d38c911251410b
+[1/1] phy: rockchip: naneng-combphy: use existing DT property check for rk3528
+      commit: 23c3373af05a3ec268acb02ffe962ac6882c673a
 
 Best regards,
 -- 
