@@ -4,69 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65C39E6FE23
-	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Dec 2025 17:34:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7765E6FE23
+	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Dec 2025 17:44:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
 	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ifR5fWLECxcmH9JbTC2rRmZA9r85OOC1+0O9UJyXZPk=; b=VSXos2jw7odZb9
-	cN+29OCtkr7vHhCGIPSvj9ag/QlerKNQeFIVmgMOV3aJWO61rp1IATsWm0emN1xEJrt5qjpynbhkW
-	HaPHyMa2VsJfIFJG7dfGYkg+Iwl1N3rNsQ4Vb6XJQJMWIKdz4QoUChZXMQAnuRi7zj9+gIHYOdaW6
-	SBpZfO9wGSHf5uDZJo8UNogXsgF0znYAQLMgCu7DK4VIAraYZMbW4JAI2VGpQWbhO/g8MQ7bAglcf
-	+RBLBqt/WfmRh7nLNRXSDuxkAyoREy6h2ZrQydUsOQ/Mg725aczhuurpWbF4x2Oti+5pwS3+9PDfx
-	WkCuFJD1HEXwfR+JxkbQ==;
+	List-Owner; bh=UIiXal9s5ILgt7rv3FnmHd5SEMMUyEAODhqYlvJMY2s=; b=XjefN8kxbWfaTE
+	f8yc1rOhN5ObLS3k5YadtY01TY/fm67F12ckR5MRduw30Pt63sf3zfLZtsU0WD31UWnOTB99UdW1m
+	aljIsjpAxrnTEPfl6wZLWS6xawb0GLfpfy6r6TFVcSaJoQSdLqQ7CkAE4Sy4bF34LhD8dwyIzmrT2
+	076SFAQjNuJlta+xg0k4HDo1tidMoLZq4pyzgtbzGhX2vm1cNQm38cMk5TElJtHYiZALQfP1l3Whf
+	BH8WYTM5CMeLSadYHpULpHx1eYc+FibfSdamvXaVfFB+OmY/FhVrl01eKH9LMiXCQbzIVso8IH9c+
+	pe3OWOU97+sz440LO/Pg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vY6H6-0000000Fpot-101y;
-	Tue, 23 Dec 2025 17:34:20 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vY6R8-0000000Fqtk-2Rx7;
+	Tue, 23 Dec 2025 17:44:42 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vY6Gx-0000000Fpkl-1uCR;
-	Tue, 23 Dec 2025 17:34:15 +0000
+	id 1vY6R3-0000000Fqrd-26nf;
+	Tue, 23 Dec 2025 17:44:37 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 1B23D41B37;
-	Tue, 23 Dec 2025 17:34:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B9490C116B1;
-	Tue, 23 Dec 2025 17:34:06 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id B1B7F60141;
+	Tue, 23 Dec 2025 17:44:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C169BC116B1;
+	Tue, 23 Dec 2025 17:44:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1766511251;
-	bh=udJxoZNtzJJ8YDA2L6z3Y5+PFcDl85FnCZanR1WdgZA=;
+	s=k20201202; t=1766511876;
+	bh=IAcDB8EBKY8JVjS5RfhxZ7Lpy5Hv7UbwPlli3EbI6zs=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=N+Xn6033wpW+5QNkYVNRqHjEKGenxB/bSabbWnNLVOuh4frnVWP3HnsPbLcR31Tf6
-	 PQBWaVajtxZ4oy1zoFk2xccN+shMwkSfy7YHedgWvj0xPS+5Hj2V9KuZmkxEqrnVNT
-	 r/uHZpYgm8EC0FeA68GMduCPfwyFvIHo8JQ7/FOJ5ehBP0bbJ/kVJ6bRcfOpVHDch2
-	 COlyQNzIUfSBbBx6unHPEZruHbGDJXGylIipV3+bnwR1DjvsgfYPnzfM3TjU9bH8JF
-	 Rpjid6A1aPcSzmn5BpHsOK7TQ2hOrolkuibqvLccKZJdt87E8nQrRm79hPwnQTpqFm
-	 QCg2BG0zTNyeg==
+	b=VyXW6wT2pUXDxacv69qquj9G3+p2p7Drymo6p3/ufGLCA568I2m8xMpUeMWKwmQfO
+	 wV7TAtGMEUZllstAKxQ0K3d5/6Qr6LjZn1DsoE3UVxIYoJWrcG/CWLOehtBDe2RMwz
+	 6qri75yaBgqV7OGjent8f/r8Bpk7esdfJ+iXO91W567O8c5jEdtutqiRHgAB+abkY5
+	 ZORBlxHk2TYCVctkUZECDwkR2WTiuwXpuqGcNItad9gTGLqWFP1rIHFpTlTr6a8KcH
+	 Tenq3jFS2i45ESJAiKdh8VUDbTmJAWUJ5VesLhsz0cI1GNbSr2nyqiOjXXTMQXUW/F
+	 W/mBLYJfe3VHQ==
 From: Vinod Koul <vkoul@kernel.org>
-To: Kishon Vijay Abraham I <kishon@kernel.org>, 
- Heiko Stuebner <heiko@sntech.de>, William Wu <wulf@rock-chips.com>, 
- Luca Ceresoli <luca.ceresoli@bootlin.com>
-Cc: Kever Yang <kever.yang@rock-chips.com>, 
- Minas Harutyunyan <Minas.Harutyunyan@synopsys.com>, 
- Alan Stern <stern@rowland.harvard.edu>, 
- Louis Chauvet <louis.chauvet@bootlin.com>, 
- =?utf-8?q?Herv=C3=A9_Codina?= <herve.codina@bootlin.com>, 
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
- =?utf-8?q?Th=C3=A9o_Lebrun?= <theo.lebrun@bootlin.com>, 
- linux-phy@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-kernel@vger.kernel.org, stable@vger.kernel.org
-In-Reply-To: <20251127-rk3308-fix-usb-gadget-phy-disconnect-v2-0-dac8a02cd2ca@bootlin.com>
-References: <20251127-rk3308-fix-usb-gadget-phy-disconnect-v2-0-dac8a02cd2ca@bootlin.com>
-Subject: Re: [PATCH v2 0/2] phy: rockchip: inno-usb2: fix gadget mode
- disconnection after 6 seconds
-Message-Id: <176651124639.749296.13619922936818344494.b4-ty@kernel.org>
-Date: Tue, 23 Dec 2025 23:04:06 +0530
+To: Neil Armstrong <neil.armstrong@linaro.org>, 
+ Heiko Stuebner <heiko@sntech.de>, Dmitry Baryshkov <lumag@kernel.org>, 
+ Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: kernel@collabora.com, linux-phy@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, Derek Foreman <derek.foreman@collabora.com>
+In-Reply-To: <20251221-phy-hdptx-pll-fix-v2-0-ae4abf7f75a1@collabora.com>
+References: <20251221-phy-hdptx-pll-fix-v2-0-ae4abf7f75a1@collabora.com>
+Subject: Re: [PATCH v2 0/2] Fixup HDMI PLL for phy-rockchip-samsung-hdptx
+Message-Id: <176651187342.759340.7650219710991415977.b4-ty@kernel.org>
+Date: Tue, 23 Dec 2025 23:14:33 +0530
 MIME-Version: 1.0
 X-Mailer: b4 0.13.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251223_093413_820827_E2AE9E75 
-X-CRM114-Status: UNSURE (   8.94  )
-X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,24 +72,23 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Thu, 27 Nov 2025 11:26:15 +0100, Luca Ceresoli wrote:
-> The USB OTG port of the RK3308 exibits a bug when:
+On Sun, 21 Dec 2025 12:36:22 +0200, Cristian Ciocaltea wrote:
+> The Samsung HDMI/eDP TX PHY is currently not able to provide an accurate
+> enough PLL output frequency to match the TMDS rate of a 1080p@120Hz
+> display mode, when used with 10 bpc RGB.
 > 
->  - configured as peripheral, and
->  - used in gadget mode, and
->  - the USB cable is connected since before booting
-> 
-> The symptom is: about 6 seconds after configuring gadget mode the device is
-> disconnected and then re-enumerated. This happens only once per boot.
+> This patch set adds a new entry to the TMDS configuration table,
+> providing the necessary frequency division coefficients for the PHY PLL
+> to generate the expected 461.101250 MHz output.
 > 
 > [...]
 
 Applied, thanks!
 
-[1/2] phy: rockchip: inno-usb2: fix disconnection in gadget mode
-      commit: 028e8ca7b20fb7324f3e5db34ba8bd366d9d3acc
-[2/2] phy: rockchip: inno-usb2: fix communication disruption in gadget mode
-      commit: 7d8f725b79e35fa47e42c88716aad8711e1168d8
+[1/2] phy: rockchip: samsung-hdptx: Pre-compute HDMI PLL config for 461.10125 MHz output
+      commit: f2daf0c67a1767ff6536aa3e96599afb42ca42e7
+[2/2] phy: rockchip: samsung-hdptx: Cleanup TMDS PLL config table
+      commit: 3be8131ee936abb6ff56ca9ec9d38c911251410b
 
 Best regards,
 -- 
