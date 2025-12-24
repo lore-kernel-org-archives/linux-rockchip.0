@@ -4,56 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9374CE75452
-	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Dec 2025 12:55:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F93FE75453
+	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Dec 2025 13:29:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-ID:MIME-Version:To:Cc:
-	Date:References:In-Reply-To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8dzJBn9DcAC8XyjiwhJOBYc1BzyBnEYJ7F/T08ufJUI=; b=JS5d+XHGs8q/aJ
-	JydUIXCtruay2fTJPOKlchM0EbDoj0Css6h0+ZZoCylRurSfiiCtdrI7K+FsVSpY9egjavuW/+M9Z
-	Agsey0N71gTiVIw5fEgUxozMlyPkVpYP5Xh67Bqj1fFx/5DsAgQVZVZc4L+Z7oTpj1IAXr5fdZKC9
-	ODuRllMLaur/6bQ9x03qiLvyRkyIOgCCNGsia4pTxJvIOLFySGeSxxCi9yma4esM0r5s78P1Yapue
-	BUoHXZfSpME7pBAow2fs8vM8oTR+UjJpwcIIVXDwfZJVApLcm9y4sBkIDwrvt27sI+nTT3S7DttVK
-	e/A8OfHIgvoNhtzGoRAg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:To:Subject:From:MIME-Version:Date:Message-ID:
+	Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=4UPKOTquqH9Y0dZMKnwxknJFVic1NgMnIBMUe6qsAJ0=; b=m2TRk/B8dZRAhS
+	XnWQlE/1ntfgXRbYQGWf4KAoOlYemQuv6sYgLqfPoyQlox3nzD9YemjtkfjeO+dpMs39YbahBjIry
+	/5vY5pDeBQIpFa0SksZsGerGDN7WGb3jn7QRixTFanvglhpNpogDHxUHeu4qVrcRbD5zKIoPr/8e2
+	9wjkt3z2lXaJyvokOiIP40pkLruT7mDS9rOECZDfskMXAuug0andT2IWpg2iVzXPxzkBonUwHmLm9
+	H7gN5DQZEtk/H3QCaXKBFsrdCx+SNKZu4z8ikAy/vDlA38ELQ8TVarR8/2KbuwrxQ0Bda565PrmX/
+	cFHTSV93SKWVNJ8QYJuA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vYOP8-0000000Gp3e-2b21;
-	Wed, 24 Dec 2025 12:55:50 +0000
-Received: from mail1.manjaro.org ([142.132.176.110])
+	id 1vYOvr-0000000GqjF-0vGo;
+	Wed, 24 Dec 2025 13:29:39 +0000
+Received: from mailgate01.uberspace.is ([2001:1a50:11:0:c83f:a8ff:fea6:c8da])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vYOOw-0000000Gp2H-1gzF;
-	Wed, 24 Dec 2025 12:55:40 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPA id 06125418A6;
-	Wed, 24 Dec 2025 13:55:29 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=dkim;
-	t=1766580933; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=He22hg7Pf60Vb1jpOAaSsU0Q2mSrOPk6nn6TP4vK02Y=;
-	b=rIH3fAA1weXMcnywGhw9J/NjYO7gM+SD1P8ggPsnJGW0N/G85XXy2sVfaEMeJUa6ars1h3
-	852lv/3i/IkLSgvI1ILhibJABZR4sNHlsMvLKMy2qMPvR4BwSxj4MCh25Bkcj0g4MrQEYn
-	81tFoyjdNzI3EvfwL6K6QBSkg1k/ylSxyBHevgh9Pw22k/hbGYJ3Bdadmi8TniM0jOmk1W
-	Qyyz5uGhdXO//fq37KF+HmSj8Rf1DD3rNpG9xR1RWlXu6e6fIXJIDvnxGN3p4Xc1E82h9Z
-	fXtIuIK3OhE1jg2EhX89ikMCDdrR0z4ASzaXwIMmKSeNyhYUN45R4qOiyIRoQw==
-From: "Dragan Simic" <dsimic@manjaro.org>
-In-Reply-To: <CANAwSgQPQUBi6VVb+hZNraMt71vnRpki+YK_at=Luo4aPVtOPg@mail.gmail.com>
-References: <cover.1763415705.git.geraldogabriel@gmail.com>
- <eaa9c75ca02a53f8bcc293b8bc73d013e26ec253.1763415706.git.geraldogabriel@gmail.com>
- <CANAwSgQ726J_vnDKEKd94Kq62kx8ToZzUGysz4r3tNAXvfAbGA@mail.gmail.com> <CAEsQvctSY7-RQEQF2TmJU2qKPZOe9TC5g-7Jat0LQKRHYz_6dQ@mail.gmail.com> <CANAwSgQPQUBi6VVb+hZNraMt71vnRpki+YK_at=Luo4aPVtOPg@mail.gmail.com>
-Date: Wed, 24 Dec 2025 13:55:29 +0100
-Cc: "Geraldo Nascimento" <geraldogabriel@gmail.com>, "Shawn Lin" <shawn.lin@rock-chips.com>, "Lorenzo Pieralisi" <lpieralisi@kernel.org>, =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, "Manivannan Sadhasivam" <mani@kernel.org>, "Rob Herring" <robh@kernel.org>, "Bjorn Helgaas" <bhelgaas@google.com>, "Heiko Stuebner" <heiko@sntech.de>, "Krzysztof Kozlowski" <krzk+dt@kernel.org>, "Conor Dooley" <conor+dt@kernel.org>, "Johan Jonker" <jbx6244@gmail.com>, linux-rockchip@lists.infradead.org, linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
-To: "Anand Moon" <linux.amoon@gmail.com>
+	id 1vYOvo-0000000Gqib-1OsM
+	for linux-rockchip@lists.infradead.org;
+	Wed, 24 Dec 2025 13:29:37 +0000
+Received: from devico.uberspace.de (devico.uberspace.de [185.26.156.185])
+	by mailgate01.uberspace.is (Postfix) with ESMTPS id 3770661173
+	for <linux-rockchip@lists.infradead.org>; Wed, 24 Dec 2025 14:29:21 +0100 (CET)
+Received: (qmail 9072 invoked by uid 990); 24 Dec 2025 13:29:21 -0000
+Authentication-Results: devico.uberspace.de;
+	auth=pass (plain)
+Received: from unknown (HELO unkown) (::1)
+	by devico.uberspace.de (Haraka/3.0.1) with ESMTPSA; Wed, 24 Dec 2025 14:29:20 +0100
+Message-ID: <4d25ff80-1cd6-4d84-b516-92aafd5be62e@lausen.nl>
+Date: Wed, 24 Dec 2025 14:29:20 +0100
 MIME-Version: 1.0
-Message-ID: <0afea20b-be22-2404-5a8e-c798ed45f2fd@manjaro.org>
-Subject: =?utf-8?q?Re=3A?= [PATCH v2 1/4] =?utf-8?q?PCI=3A?==?utf-8?q?_rockchip=3A?= 
- limit RK3399 to =?utf-8?q?2=2E5?= GT/s to prevent damage
-User-Agent: SOGoMail 5.12.3
-X-Last-TLS-Session-Version: None
+User-Agent: Mozilla Thunderbird
+Content-Language: en-US
+From: Leonard Lausen <leonard@lausen.nl>
+Subject: RK3576 Rock 4D: PCIe NVMe device not detected in mainline kernel
+ despite working in U-Boot
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
+ linux-rockchip@lists.infradead.org
+X-Rspamd-Bar: /
+X-Rspamd-Report: BAYES_HAM(-0.152501) XM_UA_NO_VERSION(0.01) MIME_GOOD(-0.1)
+X-Rspamd-Score: -0.242501
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=lausen.nl; s=uberspace;
+	h=from:to:subject:date;
+	bh=oE3wB8uGVz3HW6Yt5ZLvB8aBJkivtWELaAFqDlHgwHo=;
+	b=s+6HqmU196snugpRwzvb8vdfqwfNYduYw8A3JcUHMHlL3lvtepzMq8q3toLQiZMXJbueSlYrt4
+	BdxUd0Xa6/qugUE8uyh1rQywVSd0RU9elOzQkSZIN99MzSEbI+/f9zrWfQV+yfwR14Zg9i31H2Os
+	zRZBuvk8/6BH8mKywdXL5lHqthfOzo+8wOMbYHOiGiPgkOB4rI1hQMQHs11FBcOKEGhYIxxEFr14
+	/fpeGktjgAdxpo5Wf2hxdQvH2kzYPhfCULh+RFn9OIRPvU0AgXIk9WLQp0NUX5/tqy46OL9RmuKm
+	V+Gg8D6R7sPFTHmZwmzDylBH8+Yy/PP3OhlxDB9+mzQcOoWPW1yAPkMqYOLEXrYIQK2N+Bht5K41
+	GUz6hKIfS6TRtYJxxYTXuDR3STjPws2tYO9eHyKiPxnuTkBxJDgRxBK7vclgCpuNUDECCzCydgvy
+	+8thV2UyqRyFdM99dIEgHA5K7Y6cbFObTOoatZebF2Inj9K/18dEhswg9fsYLwi1j9ghnpXxppmX
+	5TtqORzP/bgmbU+RfEWwfYdzyhIqNtKmkUbAA5By2Eg8shoDoVSDYs9NbzkWoDDSvsmWXpzvyUup
+	AHUeu+q5w+WXV8ajMhl1DUUr6KNB8ApkDrKGKbiIUVXO5PBUBr6rakd5T1uO9ZYdSI2xZ6Z1Cnzl
+	U=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251224_045538_671053_E5B1DB65 
-X-CRM114-Status: GOOD (  16.48  )
+X-CRM114-CacheID: sfid-20251224_052936_596049_021F93AC 
+X-CRM114-Status: UNSURE (   5.12  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,45 +77,86 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGVsbG8gQW5hbmQsCgpPbiBXZWRuZXNkYXksIERlY2VtYmVyIDI0LCAyMDI1IDA5OjA0IENFVCwg
-QW5hbmQgTW9vbiA8bGludXguYW1vb25AZ21haWwuY29tPiB3cm90ZToKPiBPbiBXZWQsIDI0IERl
-YyAyMDI1IGF0IDExOjA4LCBHZXJhbGRvIE5hc2NpbWVudG8KPiA8Z2VyYWxkb2dhYnJpZWxAZ21h
-aWwuY29tPiB3cm90ZToKPiA+IE9uIFdlZCwgRGVjIDI0LCAyMDI1IGF0IDI6MTjigK9BTSBBbmFu
-ZCBNb29uIDxsaW51eC5hbW9vbkBnbWFpbC5jb20+IHdyb3RlOgo+ID4gPiBPbiBUdWUsIDE4IE5v
-diAyMDI1IGF0IDAzOjE3LCBHZXJhbGRvIE5hc2NpbWVudG8KPiA+ID4gPGdlcmFsZG9nYWJyaWVs
-QGdtYWlsLmNvbT4gd3JvdGU6Cj4gPiA+ID4gU2hhd24gTGluIGZyb20gUm9ja2NoaXAgaGFzIHJl
-aXRlcmF0ZWQgdGhhdCB0aGVyZSBtYXkgYmUgZGFuZ2VyIGluIHVzaW5nCj4gPiA+ID4gdGhlaXIg
-UENJZSB3aXRoIDUuMCBHVC9zIHNwZWVkcy4gV2FybiB0aGUgdXNlciBpZiB0aGV5IG1ha2UgYSBE
-VCBjaGFuZ2UKPiA+ID4gPiBmcm9tIHRoZSBkZWZhdWx0IGFuZCBkcml2ZSBhdCAyLjUgR1QvcyBv
-bmx5LCBldmVuIGlmIHRoZSBEVAo+ID4gPiA+IG1heC1saW5rLXNwZWVkIHByb3BlcnR5IGlzIGlu
-dmFsaWQgb3IgaW5leGlzdGVudC4KPiA+ID4gPgo+ID4gPiA+IFRoaXMgY2hhbmdlIGlzIGNvcnJv
-Ym9yYXRlZCBieSBSSzMzOTkgb2ZmaWNpYWwgZGF0YXNoZWV0IFsxXSwgd2hpY2gKPiA+ID4gPiBz
-YXlzIG1heGltdW0gbGluayBzcGVlZCBmb3IgdGhpcyBwbGF0Zm9ybSBpcyAyLjUgR1Qvcy4KPiA+
-ID4gPgo+ID4gPiA+IFsxXSBodHRwczovL29wZW5zb3VyY2Uucm9jay1jaGlwcy5jb20vaW1hZ2Vz
-L2QvZDcvUm9ja2NoaXBfUkszMzk5X0RhdGFzaGVldF9WMi4xLTIwMjAwMzIzLnBkZgo+ID4gPiA+
-Cj4gPiA+IFRvIGFjY3VyYXRlbHkgZGV0ZXJtaW5lIHRoZSBvcGVyYXRpbmcgc3BlZWQsIHdlIGNh
-biBsZXZlcmFnZSB0aGUKPiA+ID4gUENJRV9DTElFTlRfQkFTSUNfU1RBVFVTMC8xIGZpZWxkcy4K
-PiA+ID4gVGhpcyBwcm92aWRlcyBhIGR5bmFtaWMgbWVjaGFuaXNtIHRvIHJlc29sdmUgdGhlIGlz
-c3VlLgo+ID4gPgo+ID4gPiBbMV0gaHR0cHM6Ly9naXRodWIuY29tL3RvcnZhbGRzL2xpbnV4L2Js
-b2IvbWFzdGVyL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1yb2NrY2hpcC1lcC5jI0w1MzMt
-TDU5NQo+ID4KPiA+IG5vdCB0byBwdXQgeW91IGRvd24gYnV0IEkgdGhpbmsgeW91ciBhcHByb2Fj
-aCBhZGRzIHVubmVjZXNzYXJ5IGNvbXBsZXhpdHkuCj4gPgo+ID4gQWxsIEkgY2FyZSByZWFsbHkg
-aXMgdGhhdCB0aGUgS2VybmVsIFByb2plY3QgaXNuJ3QgYmxhbWVkIGluIHRoZQo+ID4gZnV0dXJl
-IGlmIHNvbWVvbmUgaGFwcGVucyB0byBsb3NlIHRoZWlyIGRhdGEuCj4gPgo+IEFsbG93IHRoZSBo
-YXJkd2FyZSB0byBuZWdvdGlhdGUgdGhlIGxpbmsgc3BlZWQgYmFzZWQgb24gdGhlCj4gYXZhaWxh
-YmxlIG51bWJlciBvZiBsYW5lcy4KPiBJIGRvbuKAmXQgYW50aWNpcGF0ZSBhbnkgZGF0YSBsb3Nz
-LCBzaW5jZSBQQ0llIHdpbGwgYXV0b21hdGljYWxseQo+IGNvbmZpZ3VyZSB0aGUgZGV2aWNlIHNw
-ZWVkIHdpdGggbGluayB0cmFpbmluZy4uCgpQbGVhc2UsIG5vdGUgdGhhdCB0aGlzIGlzbid0IGFi
-b3V0IHBlcmZvcm1pbmcgYXV0byBuZWdvdGlhdGlvbgphbmQgZm9sbG93aW5nIGl0cyByZXN1bHRz
-LCBidXQgYWJvdXQgImFydGlmaWNpYWxseSIgbGltaXRpbmcgdGhlClBDSWUgbGluayBzcGVlZCB0
-byAyLjUgR1QvcyBvbiBSSzMzOTksIGJlY2F1c2UgaXQncyB3ZWxsIGtub3duCmJ5IFJvY2tjaGlw
-IHRoYXQgNSBHVC9zIG9uIFJLMzM5OSdzIFBDSWUgaW50ZXJmYWNlIG1heSBjYXVzZQppc3N1ZXMg
-YW5kIGRhdGEgY29ycnVwdGlvbiBpbiBjZXJ0YWluIGNvcm5lciBjYXNlcy4KCgpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWls
-aW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
-aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Hi linux-rockchip, Hi Nicolas,
+
+I'm testing mainline kernel support on the Rock 4D board and 
+encountering an issue where PCIe NVMe devices are not detected by the 
+kernel, despite working correctly in U-Boot. That is despite Nicolas 
+recently enabling PCIe support for Rock 4D in 
+29ff4bbff793334d6aff2238fdc3ccf3859d60da.
+
+U-Boot successfully detects and initializes the NVMe device:
+
+pcie@2a200000: PCIe Linking... LTSSM is 0x0
+pcie@2a200000: PCIe Link up, LTSSM is 0x130011
+pcie@2a200000: PCIE-0: Link up (Gen2-x1, Bus0)
+
+Device 0: Vendor: 0x1344 Rev: HPS0050  Prod: UTFRQ0170J8QSZ
+             Type: Hard Disk
+             Capacity: 488386.3 MB = 476.9 GB (1000215216 x 512)
+
+
+However, after kernel boot, only the PCIe root port is visible:
+
+00:00.0 PCI bridge: Device 1d87:3576 (rev 01)
+
+
+PCIe rescan debug output:
+
+(initramfs) echo 1 > /sys/bus/pci/rescan
+[  106.782392] pci_bus 0000:00: scanning bus
+[  106.796249] pcieport 0000:00:00.0: restore config 0x2c: 0x00000000 -> 
+0x00000000
+[  106.797060] pcieport 0000:00:00.0: restore config 0x28: 0x00000000 -> 
+0x00000000
+[  106.797808] pcieport 0000:00:00.0: restore config 0x24: 0x0001fff1 -> 
+0x0001fff1
+[  106.798583] pcieport 0000:00:00.0: PME# disabled
+[  106.799069] pcieport 0000:00:00.0: scanning [bus 01-ff] behind 
+bridge, pass 0
+[  106.799795] pci_bus 0000:01: scanning bus
+[  106.803471] pci_bus 0000:01: bus scan returning with max=01
+[  106.804073] pcieport 0000:00:00.0: scanning [bus 01-ff] behind 
+bridge, pass 1
+[  106.804829] pci_bus 0000:00: bus scan returning with max=ff
+(initramfs) [  106.924154] pcieport 0000:00:00.0: save config 0x00: 
+0x35761d87
+[  106.924765] pcieport 0000:00:00.0: save config 0x04: 0x00100507
+[  106.925364] pcieport 0000:00:00.0: save config 0x08: 0x06040001
+[  106.925958] pcieport 0000:00:00.0: save config 0x0c: 0x00010000
+[  106.926534] pcieport 0000:00:00.0: save config 0x10: 0x00000000
+[  106.932142] pcieport 0000:00:00.0: save config 0x14: 0x00000000
+[  106.934608] pcieport 0000:00:00.0: save config 0x18: 0x00ff0100
+[  106.937206] pcieport 0000:00:00.0: save config 0x1c: 0x000000f0
+[  106.939575] pcieport 0000:00:00.0: save config 0x20: 0x0000fff0
+[  106.941883] pcieport 0000:00:00.0: save config 0x24: 0x0001fff1
+[  106.944138] pcieport 0000:00:00.0: save config 0x28: 0x00000000
+[  106.946335] pcieport 0000:00:00.0: save config 0x2c: 0x00000000
+[  106.948490] pcieport 0000:00:00.0: save config 0x30: 0x00000000
+[  106.950601] pcieport 0000:00:00.0: save config 0x34: 0x00000040
+[  106.952698] pcieport 0000:00:00.0: save config 0x38: 0x00000000
+[  106.954765] pcieport 0000:00:00.0: save config 0x3c: 0x0002012d
+[  106.956847] pcieport 0000:00:00.0: PME# enabled
+ls /sys/bus/pci/devices/
+drwxr-xr-x 2 0 0 0 .
+drwxr-xr-x 5 0 0 0 ..
+lrwxrwxrwx 1 0 0 0 0000:00:00.0 -> 
+../../../devices/platform/soc/22000000.pcie/pci0000:00/0000:00:00.0
+
+The full boot log including the u-boot part and kernel PCI_DEBUG output 
+is also attached.
+
+Thanks for any insights!
+
+Best regards,
+Leonard
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
