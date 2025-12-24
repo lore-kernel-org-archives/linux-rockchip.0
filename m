@@ -4,74 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A753E77361
-	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Dec 2025 15:54:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 375C4E7545C
+	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Dec 2025 16:00:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dd6zCQijUNsySbb7hjvS5edId0hRQ/dB4ge9ycQNGZg=; b=24jLiDxIz+6yiQodanwnv/e7TQ
-	t+JsKrcTMTXFPosFCAYo/ZENpHyCC5DwUIXJNwOXvJMHLUes7g/JWN9FiOT1tOrwVwPRVoi5dltFa
-	z/e7ZfS0+5oHW9XWML/Gbka6a4pqhDwLzNHHtAl348ETxvh/DuU7BcXm8d6hEt4x0SLUjgrsU8hZE
-	oTIWPi+Zy5lr1jjVaLvjFP1cLPoX1cWYGv05ZIqqkorCSxcz1XgCt5bXk3uqTqye5X4F0GOFRiDPf
-	zmVtec31oe4aBKLzmwHC9TsONY7tf2hW9miKHAmeU/CKMM2JuvXTEe09ZRxwlumxvlqURnkInRD88
-	/Ug3KtXg==;
+	bh=E2uV/T8L12NLt2BC2h5+loL4zbBDBbsGp2Y08C5zh6c=; b=m28CEefuZ8ZsNVJeaQttohJklU
+	EQVxHBqWIuG8m7Rm5A1RQRliVzUoC9mLQiEZgng+PsIBQ1qEhS+njJmAO5Eaus1GEufbyngi6wAqt
+	ZGcrVGippDlZBzojGceUoDd8EJDzgkpI+FIOPARl3r+EwencmpnP3/TACTRSoXD8nHBN2cAdOQJ6D
+	1ygQvLO28ICQY+Tnv+hUhlzFxJtaVELBsN937jJLCth4JfV9EmW2zt94BjEQblBRA5t6qaUpTbS99
+	oN23Q58yV0SgWRACG/UfSVsNO6zBCQd9WywFDxEOTZobt0JPpVSyDBJK2CPIPvm7Nd5hqY6cNpzBY
+	KgUIbDlQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vYRCI-0000000HAFQ-1Nke;
-	Wed, 24 Dec 2025 15:54:46 +0000
-Received: from mail-qv1-xf31.google.com ([2607:f8b0:4864:20::f31])
+	id 1vYRHI-0000000HAzh-3i6c;
+	Wed, 24 Dec 2025 15:59:56 +0000
+Received: from mail-qk1-x733.google.com ([2607:f8b0:4864:20::733])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vYRCB-0000000HADE-1ts4
+	id 1vYRHE-0000000HAyz-1SGx
 	for linux-rockchip@lists.infradead.org;
-	Wed, 24 Dec 2025 15:54:44 +0000
-Received: by mail-qv1-xf31.google.com with SMTP id 6a1803df08f44-88a367a1db0so98809816d6.3
-        for <linux-rockchip@lists.infradead.org>; Wed, 24 Dec 2025 07:54:38 -0800 (PST)
+	Wed, 24 Dec 2025 15:59:55 +0000
+Received: by mail-qk1-x733.google.com with SMTP id af79cd13be357-8b2ec756de0so613683385a.3
+        for <linux-rockchip@lists.infradead.org>; Wed, 24 Dec 2025 07:59:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1766591678; x=1767196478; darn=lists.infradead.org;
+        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1766591991; x=1767196791; darn=lists.infradead.org;
         h=mime-version:user-agent:autocrypt:references:in-reply-to:date:cc:to
          :from:subject:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=2psI/aP141t9WJvg+/Adc2m4sAlYqZvtnAn83waLW1A=;
-        b=XB/w+rEUwRBS0TTRScmVGb8g4zJeoozQ3Tj1e/FgLbTg7iSjgwZijCzE2ojVVfMYW8
-         eNtHFxBpQ/njDp/WONnx8JHyIOX8vVq8u+6s2+ubQ4zhxmSiQTr7I9HbY8gSFmFAk058
-         PXA2a2N732edAdfaAQncN+XKaGv7fc6BD2hjDNSXeCkIS6Eirrl46e+1pul5img3v26L
-         OQhvtJLuxhTWJ0+3BhkZXkUPKP4B32PhjcjQOANzHRNQNIgBSkCpOAqxcVikRVLedTiq
-         BgBxf7bLQs1vGDRz5uFP5AhWbj1pbG0CFJhGVbZlvmmSQ3XgWi2mXCzjbIcpGqjLTr0b
-         w/UQ==
+        bh=/WSMWE/26hpkCga2NLvtQJAspfFCx8jE0uqEewiIag0=;
+        b=dNaPFJGOxyWjr46jpZUWxw22bDIjs1udYiOqmZ5UYWGDE08hULFUSaEhbySlGEaN4M
+         bzHGh8EvmDXI2eqDnn5nBTsDzLJi7/4wGRZseVWEY4w0VN0eFeDkmStuKpwz7HjVYCRn
+         LlaxWUtpKV7Bwo0QSsKvvX1Em67EnUJvMiQq0nMRbR/kASk1Du9FVtgovBCsQkwpJ3V0
+         dCOY5VNquve/Owbw9wazSdT2t0qLEjDohAVZrePy7JutjzhLBXtKGQL+V6r3hiBCDm76
+         tFRnjcUXHz6DlYa+MUCIQ+dXCDLT87R4/jF5+nrCjbonqn4pSIL2aRCDDMMw4o/17yLn
+         8VTg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1766591678; x=1767196478;
+        d=1e100.net; s=20230601; t=1766591991; x=1767196791;
         h=mime-version:user-agent:autocrypt:references:in-reply-to:date:cc:to
          :from:subject:message-id:x-gm-gg:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=2psI/aP141t9WJvg+/Adc2m4sAlYqZvtnAn83waLW1A=;
-        b=aFHZ6/GSROhV8ysOJBF26ZiSmJKmNtQytukdsikK/7XgRtS8fyAQMPpqf9KItjyNd6
-         8fs3kS5z6f4plEb7gbU8K+ZJYfZzbCcJaKLFzqs6zlhTNFgzAzEm3RyzeIGt0EBmOjC5
-         r0G1lDodsvC1t889955ai4FsFJmFB3h+Gjeiq54/pZzG/bnK/vxvI8/j7W64eJgjWfBZ
-         pr0K9+6qa4Gl+lbIpdFR4shBhriMDWXpPjrHXj+x2ERT1/Lp2kOItoFn5Pk9u26uxPBh
-         pq1WubALzmP166C1kFlrz3yYnPulaKrhHxp0+6/U6I2h/RLg/EtVUrGShHHdejanJ/eX
-         xi3g==
-X-Forwarded-Encrypted: i=1; AJvYcCVi5zdwUhjBVTEGa/AwoMEzyanYxoYMXK+3Ij/c4GH9tdgtA/C5gcB3bOpRIoDB909F8NdKmcUnaH0ZQaJZpQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwzB6pgw659W2AN0mS5CXkU0uJSC9rzCP+gTGq47V7DHr/3qkH1
-	fkm0RFiFF2s634ZWYLaXorL5arFlW1V23kpHP/3xAhhfe5kW9InmM/nuj2/7XYd82VU=
-X-Gm-Gg: AY/fxX4rLWRrbNzKa7bmIiOBy+DyO9JkEyMeA8XwSYB/Jlt16sJkCtj8TYAOzXeLn7f
-	nZdmgJq1RlUWt6lpMWt5GrXbhK+aTxbN+Tz64SisSabWROXx5TKy0NhVyUrZRP3aRF3/P66gHcz
-	jHa91sEDmFXIEeMBCjwxg03EfQ08rTv/lMlCLV7N3nCUZ+8ETOlC4bOafewN3z6M1zh/MD2gTvY
-	IVLMNgGUcKnolh0Okeah8Sa5ezsmj6wkRcpywKcr2mQvfUbByRIc9XrI6z+bRqaABlarp5AfQhT
-	wWXghM/PW++G75S46IAgJsF9ZoyxJNnF9DNqqb9Vp0SLnGJyam3vY17izpVqLFZpjrxcpgvISA7
-	VhATRdd1+BKkSdCJwGxIdX6Nm80baqkMWz8abikz+jkgKp8M3mgbDMOtCe4SIbLwTyCmqbj1x6D
-	pkCEXWrcE8mg0GbJ/m
-X-Google-Smtp-Source: AGHT+IFedl+Q8MBCrfyVIi5r/7wpFkhmE319oxOmZ6vllizWd7jQjQ9oQPtTNc+Zn0Eoas5UOmjdHQ==
-X-Received: by 2002:a05:6214:240f:b0:88a:449d:73d7 with SMTP id 6a1803df08f44-88d82339423mr299817076d6.28.1766591678130;
-        Wed, 24 Dec 2025 07:54:38 -0800 (PST)
+        bh=/WSMWE/26hpkCga2NLvtQJAspfFCx8jE0uqEewiIag0=;
+        b=rkCkU9xdVrFsi3ol1/2x6ctfjKNpQEJ6sLkZZV3+hhAR5RFdjyiu9/mzQizx8Er6Sl
+         1u/cd2ajf4SUKlraXhbsh6SQ8g+4Oywo1yS9a3h9qwCeZEpU21q1rJw5jIL10GS+GOGM
+         nSVPe1lzVzhsIcqTgqKBl4d/khbEkVyw9yucxZa1sfX2B0r8KQMD649IuOyF8kok84bk
+         IZQitedpP+xxPx2AY6GmFPG+9AyZtPb+50s9KQUDnNVQam4mbLI8paZAApyup0RkQrBJ
+         YXAyPyLbTwEknk6Xk5fp+GVSrtjZvChgVYBBaAcSr62QatfriVWe+/lZJkSv6REo++4W
+         rzwQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUMc5Y6cm8qTZ0VcWn1otK+v79UybFtVqANNtBHutAaxzcZLZgK3akaOFPduSLPVeDIdOzpyd3d5CDnQt/jFQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yyyg18hyb97rfwCTOmuEDzfWfrffBlbJ9EahQYUYj85S0V3LiX8
+	e7lbn5o1dOoa1tnQ7qZDh60mJZuzLbnf5btlKEmybH+XYQ+ifskME+4ZX+Eaa1b1GZ8=
+X-Gm-Gg: AY/fxX690DiYVFuVk4o+xLUT1lOm2u356nJ9VxXRBAA+jnWlO2e0zHzXJipUamKe19Z
+	eHeAAGGjv6DQsvN3PiHvYX/LXRAM61a1dkkHmE7uk+8wfhOrXuDDxfPubfcbUOtJ+xRHCvSPREC
+	2PBmKl+mJwGCWD1IMjURqaZL5m4F9KRnq0w11rs8dUCb1IHC8tVTIMY1+y026FqWfWr/kw4gKJJ
+	8++GPpjJnOl6FZLgAEfBe2ZLWmuFCJZ/ECLOMiIjNVgVsXMDlreBcmwEbeC9ET8jlQ/anHu+6IW
+	BzGQ8nMmzxie0CmcFdqrGwH77OLEwIljZznSs4+zcgYh7HEGStZg9c3J5d0rpAHTm9F/6iUnrqZ
+	kHtyL+sOJ5vlnw3SQPoXZZonljELylsSVRUGWa7EK0jxgm1l7lMRhBxKDgOXb2sXt3ZZQCH/RkR
+	+avh4roej3dLbccKD/
+X-Google-Smtp-Source: AGHT+IEvTXUWsdfb1c7lXzx2lNU4vqAmRcfs5ge8eo5IMBugNQUMOnZvF8ghn8YowoKI01K6gIjpbg==
+X-Received: by 2002:a05:620a:691a:b0:8b2:eae0:bbf4 with SMTP id af79cd13be357-8c08f666fc0mr2781706885a.19.1766591991112;
+        Wed, 24 Dec 2025 07:59:51 -0800 (PST)
 Received: from ?IPv6:2606:6d00:17:7b4b::c41? ([2606:6d00:17:7b4b::c41])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-88d9759f164sm128316756d6.24.2025.12.24.07.54.37
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-8c0973f28e3sm1415561585a.45.2025.12.24.07.59.49
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 24 Dec 2025 07:54:37 -0800 (PST)
-Message-ID: <7c25b77adbadf5f325ce15996ff609c893a1e7b8.camel@ndufresne.ca>
-Subject: Re: [PATCH v2 16/22] media: rockchip: rga: remove size from
- rga_frame
+        Wed, 24 Dec 2025 07:59:50 -0800 (PST)
+Message-ID: <de09023e7bdb1698c0bcdeb8d625101cbf647595.camel@ndufresne.ca>
+Subject: Re: [PATCH v2 18/22] media: rockchip: rga: move rga_fmt to rga-hw.h
 From: Nicolas Dufresne <nicolas@ndufresne.ca>
 To: Sven =?ISO-8859-1?Q?P=FCschel?= <s.pueschel@pengutronix.de>, Jacob Chen
 	 <jacob-chen@iotwrt.com>, Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
@@ -82,10 +81,10 @@ To: Sven =?ISO-8859-1?Q?P=FCschel?= <s.pueschel@pengutronix.de>, Jacob Chen
 Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
 	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
 	devicetree@vger.kernel.org, kernel@pengutronix.de
-Date: Wed, 24 Dec 2025 10:54:36 -0500
-In-Reply-To: <20251203-spu-rga3-v2-16-989a67947f71@pengutronix.de>
+Date: Wed, 24 Dec 2025 10:59:49 -0500
+In-Reply-To: <20251203-spu-rga3-v2-18-989a67947f71@pengutronix.de>
 References: <20251203-spu-rga3-v2-0-989a67947f71@pengutronix.de>
-	 <20251203-spu-rga3-v2-16-989a67947f71@pengutronix.de>
+	 <20251203-spu-rga3-v2-18-989a67947f71@pengutronix.de>
 Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
  keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
  /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
@@ -102,8 +101,8 @@ Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
 User-Agent: Evolution 3.58.2 (3.58.2-1.fc43) 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251224_075439_509406_1528CBA3 
-X-CRM114-Status: GOOD (  19.48  )
+X-CRM114-CacheID: sfid-20251224_075952_447929_481CC34E 
+X-CRM114-Status: GOOD (  29.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,139 +114,406 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1573661960771956433=="
+Content-Type: multipart/mixed; boundary="===============8604705739190806734=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============1573661960771956433==
+--===============8604705739190806734==
 Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-iHp+SZRXdImhT9S7j5MC"
+	protocol="application/pgp-signature"; boundary="=-Yz7EV6xH1v3dWkULnR4e"
 
 
---=-iHp+SZRXdImhT9S7j5MC
+--=-Yz7EV6xH1v3dWkULnR4e
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
 Le mercredi 03 d=C3=A9cembre 2025 =C3=A0 16:52 +0100, Sven P=C3=BCschel a =
 =C3=A9crit=C2=A0:
-> The size member is only used for the mmu page table mapping.
-> Therefore avoid storing the value and instead only calculate it
-> in place. This also avoids the calculation entirely when an external
-> iommu is used.
+> Move rga_fmt to rga-hw in preparation of the RGA3 addition, as the struct
+> contains many RGA2 specific values. They are used to write the correct
+> register values quickly based on the chosen format. Therefore the
+> pointer to the rga_fmt struct is kept but changed to an opaque void
+> pointer outside of the rga-hw.h.
+>=20
+> To enumerate and set the correct formats, two helper functions need to
+> be exposed in the rga_hw struct:
+>=20
+> enum_format just get's the vidioc_enum_fmt format and it's return value
+> is also returned from vidioc_enum_fmt. This is a simple pass-through,
+> as the implementation is very simple.
+>=20
+> adjust_and_map_format is a simple abstraction around the previous
+> rga_find_format. But unlike rga_find_format, it always returns a valid
+> format. Therefore the passed format value is also a pointer to update
+> it in case the values are not supported by the hardware.
+> Due to the RGA3 supporting different formats on the capture and output
+> side, an additional parameter is_capture has been added to support
+> this use-case.
 >=20
 > Signed-off-by: Sven P=C3=BCschel <s.pueschel@pengutronix.de>
 > ---
-> =C2=A0drivers/media/platform/rockchip/rga/rga-buf.c | 6 +++++-
+> =C2=A0drivers/media/platform/rockchip/rga/rga-buf.c |=C2=A0 2 +-
+> =C2=A0drivers/media/platform/rockchip/rga/rga-hw.c=C2=A0 | 53 +++++++++++=
+++++++++++------
+> =C2=A0drivers/media/platform/rockchip/rga/rga-hw.h=C2=A0 | 12 ++++++
 > =C2=A0drivers/media/platform/rockchip/rga/rga.c=C2=A0=C2=A0=C2=A0=C2=A0 |=
- 8 ++------
+ 38 +++++--------------
 > =C2=A0drivers/media/platform/rockchip/rga/rga.h=C2=A0=C2=A0=C2=A0=C2=A0 |=
- 1 -
-> =C2=A03 files changed, 7 insertions(+), 8 deletions(-)
+ 17 ++-------
+> =C2=A05 files changed, 68 insertions(+), 54 deletions(-)
 >=20
 > diff --git a/drivers/media/platform/rockchip/rga/rga-buf.c b/drivers/medi=
 a/platform/rockchip/rga/rga-buf.c
-> index e8d1e2e579140..8de6b9c3fd615 100644
+> index 8de6b9c3fd615..b0f226f7f06d9 100644
 > --- a/drivers/media/platform/rockchip/rga/rga-buf.c
 > +++ b/drivers/media/platform/rockchip/rga/rga-buf.c
-> @@ -79,9 +79,13 @@ static int rga_buf_init(struct vb2_buffer *vb)
-> =C2=A0	struct rockchip_rga *rga =3D ctx->rga;
-> =C2=A0	struct rga_frame *f =3D rga_get_frame(ctx, vb->vb2_queue->type);
-> =C2=A0	size_t n_desc =3D 0;
-> +	u32 size =3D 0;
-> +	u8 i;
-
-Move in it the scope it is being used.
-
+> @@ -158,7 +158,7 @@ static int rga_buf_prepare(struct vb2_buffer *vb)
+> =C2=A0	}
 > =C2=A0
-> =C2=A0	if (rga_has_internal_iommu(rga)) {
-
-though, after looking more attentively, this function is a no-op when the i=
-s an
-external iommu. Using an early return would make this so much clearer, and =
-you
-can then drop the indent.
-
-	if (rga_has_internal_iommu(rga))
-		return 0;
-
-Perhaps a comment to be applied on patch 14 though.
-
-> -		n_desc =3D DIV_ROUND_UP(f->size, PAGE_SIZE);
-> +		for (i =3D 0; i < f->pix.num_planes; i++)
-> +			size +=3D f->pix.plane_fmt[i].sizeimage;
-> +		n_desc =3D DIV_ROUND_UP(size, PAGE_SIZE);
+> =C2=A0	/* Fill the remaining planes */
+> -	info =3D v4l2_format_info(f->fmt->fourcc);
+> +	info =3D v4l2_format_info(f->pix.pixelformat);
+> =C2=A0	for (i =3D info->mem_planes; i < info->comp_planes; i++)
+> =C2=A0		dma_addrs[i] =3D dma_addrs[0] + get_plane_offset(f, info, i);
 > =C2=A0
-> =C2=A0		rbuf->n_desc =3D n_desc;
-> =C2=A0		rbuf->dma_desc =3D dma_alloc_coherent(rga->dev,
+> diff --git a/drivers/media/platform/rockchip/rga/rga-hw.c b/drivers/media=
+/platform/rockchip/rga/rga-hw.c
+> index 4dee33d8f7206..a868a34a1452e 100644
+> --- a/drivers/media/platform/rockchip/rga/rga-hw.c
+> +++ b/drivers/media/platform/rockchip/rga/rga-hw.c
+> @@ -44,14 +44,15 @@ rga_get_corner_addrs(struct rga_frame *frm, struct rg=
+a_addrs *addrs,
+> =C2=A0	struct rga_addrs *lt, *lb, *rt, *rb;
+> =C2=A0	unsigned int x_div =3D 0,
+> =C2=A0		=C2=A0=C2=A0=C2=A0=C2=A0 y_div =3D 0, y_stride =3D 0, uv_stride =
+=3D 0, pixel_width =3D 0;
+> +	struct rga_fmt *fmt =3D frm->fmt;
+> =C2=A0
+> =C2=A0	lt =3D &corner_addrs.left_top;
+> =C2=A0	lb =3D &corner_addrs.left_bottom;
+> =C2=A0	rt =3D &corner_addrs.right_top;
+> =C2=A0	rb =3D &corner_addrs.right_bottom;
+> =C2=A0
+> -	x_div =3D frm->fmt->x_div;
+> -	y_div =3D frm->fmt->y_div;
+> +	x_div =3D fmt->x_div;
+> +	y_div =3D fmt->y_div;
+> =C2=A0	y_stride =3D frm->pix.plane_fmt[0].bytesperline;
+> =C2=A0	uv_stride =3D y_stride / x_div;
+> =C2=A0	pixel_width =3D y_stride / frm->pix.width;
+> @@ -162,6 +163,8 @@ static void rga_cmd_set_trans_info(struct rga_ctx *ct=
+x)
+> =C2=A0	union rga_dst_vir_info dst_vir_info;
+> =C2=A0	union rga_dst_act_info dst_act_info;
+> =C2=A0	u32 in_stride, out_stride;
+> +	struct rga_fmt *in_fmt =3D ctx->in.fmt;
+> +	struct rga_fmt *out_fmt =3D ctx->out.fmt;
+> =C2=A0
+> =C2=A0	src_h =3D ctx->in.crop.height;
+> =C2=A0	src_w =3D ctx->in.crop.width;
+> @@ -177,18 +180,18 @@ static void rga_cmd_set_trans_info(struct rga_ctx *=
+ctx)
+> =C2=A0	dst_vir_info.val =3D dest[(RGA_DST_VIR_INFO - RGA_MODE_BASE_REG) >=
+> 2];
+> =C2=A0	dst_act_info.val =3D dest[(RGA_DST_ACT_INFO - RGA_MODE_BASE_REG) >=
+> 2];
+> =C2=A0
+> -	src_info.data.format =3D ctx->in.fmt->hw_format;
+> -	src_info.data.swap =3D ctx->in.fmt->color_swap;
+> -	dst_info.data.format =3D ctx->out.fmt->hw_format;
+> -	dst_info.data.swap =3D ctx->out.fmt->color_swap;
+> +	src_info.data.format =3D in_fmt->hw_format;
+> +	src_info.data.swap =3D in_fmt->color_swap;
+> +	dst_info.data.format =3D out_fmt->hw_format;
+> +	dst_info.data.swap =3D out_fmt->color_swap;
+> =C2=A0
+> =C2=A0	/*
+> =C2=A0	 * CSC mode must only be set when the colorspace families differ b=
+etween
+> =C2=A0	 * input and output. It must remain unset (zeroed) if both are the=
+ same.
+> =C2=A0	 */
+> =C2=A0
+> -	if (RGA_COLOR_FMT_IS_YUV(ctx->in.fmt->hw_format) &&
+> -	=C2=A0=C2=A0=C2=A0 RGA_COLOR_FMT_IS_RGB(ctx->out.fmt->hw_format)) {
+> +	if (RGA_COLOR_FMT_IS_YUV(in_fmt->hw_format) &&
+> +	=C2=A0=C2=A0=C2=A0 RGA_COLOR_FMT_IS_RGB(out_fmt->hw_format)) {
+> =C2=A0		switch (ctx->in.pix.colorspace) {
+> =C2=A0		case V4L2_COLORSPACE_REC709:
+> =C2=A0			src_info.data.csc_mode =3D RGA_SRC_CSC_MODE_BT709_R0;
+> @@ -199,8 +202,8 @@ static void rga_cmd_set_trans_info(struct rga_ctx *ct=
+x)
+> =C2=A0		}
+> =C2=A0	}
+> =C2=A0
+> -	if (RGA_COLOR_FMT_IS_RGB(ctx->in.fmt->hw_format) &&
+> -	=C2=A0=C2=A0=C2=A0 RGA_COLOR_FMT_IS_YUV(ctx->out.fmt->hw_format)) {
+> +	if (RGA_COLOR_FMT_IS_RGB(in_fmt->hw_format) &&
+> +	=C2=A0=C2=A0=C2=A0 RGA_COLOR_FMT_IS_YUV(out_fmt->hw_format)) {
+> =C2=A0		switch (ctx->out.pix.colorspace) {
+> =C2=A0		case V4L2_COLORSPACE_REC709:
+> =C2=A0			dst_info.data.csc_mode =3D RGA_SRC_CSC_MODE_BT709_R0;
+> @@ -619,11 +622,35 @@ static struct rga_fmt formats[] =3D {
+> =C2=A0	},
+> =C2=A0};
+> =C2=A0
+> +static void *rga_adjust_and_map_format(struct v4l2_pix_format_mplane *fo=
+rmat,
+> +				=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bool is_output)
+> +{
+> +	unsigned int i;
+> +
+> +	if (!format)
+> +		return &formats[0];
+> +
+> +	for (i =3D 0; i < ARRAY_SIZE(formats); i++) {
+> +		if (formats[i].fourcc =3D=3D format->pixelformat)
+> +			return &formats[i];
+> +	}
+> +
+> +	format->pixelformat =3D formats[0].fourcc;
+> +	return &formats[0];
+> +}
+> +
+> +static int rga_enum_format(struct v4l2_fmtdesc *f)
+> +{
+> +	if (f->index >=3D ARRAY_SIZE(formats))
+> +		return -EINVAL;
+> +
+> +	f->pixelformat =3D formats[f->index].fourcc;
+> +	return 0;
+> +}
+> +
+> =C2=A0const struct rga_hw rga2_hw =3D {
+> =C2=A0	.card_type =3D "rga2",
+> =C2=A0	.has_internal_iommu =3D true,
+> -	.formats =3D formats,
+> -	.num_formats =3D ARRAY_SIZE(formats),
+> =C2=A0	.cmdbuf_size =3D RGA_CMDBUF_SIZE,
+> =C2=A0	.min_width =3D MIN_WIDTH,
+> =C2=A0	.max_width =3D MAX_WIDTH,
+> @@ -636,4 +663,6 @@ const struct rga_hw rga2_hw =3D {
+> =C2=A0	.start =3D rga_hw_start,
+> =C2=A0	.handle_irq =3D rga_handle_irq,
+> =C2=A0	.get_version =3D rga_get_version,
+> +	.adjust_and_map_format =3D rga_adjust_and_map_format,
+> +	.enum_format =3D rga_enum_format,
+> =C2=A0};
+> diff --git a/drivers/media/platform/rockchip/rga/rga-hw.h b/drivers/media=
+/platform/rockchip/rga/rga-hw.h
+> index fffcab0131225..3bc4b1f5acba2 100644
+> --- a/drivers/media/platform/rockchip/rga/rga-hw.h
+> +++ b/drivers/media/platform/rockchip/rga/rga-hw.h
+> @@ -6,6 +6,8 @@
+> =C2=A0#ifndef __RGA_HW_H__
+> =C2=A0#define __RGA_HW_H__
+> =C2=A0
+> +#include <linux/types.h>
+> +
+> =C2=A0#define RGA_CMDBUF_SIZE 0x20
+> =C2=A0
+> =C2=A0/* Hardware limits */
+> @@ -431,4 +433,14 @@ union rga_pat_con {
+> =C2=A0	} data;
+> =C2=A0};
+> =C2=A0
+> +struct rga_fmt {
+> +	u32 fourcc;
+> +	int depth;
+> +	u8 uv_factor;
+> +	u8 y_div;
+> +	u8 x_div;
+> +	u8 color_swap;
+> +	u8 hw_format;
+> +};
+> +
+> =C2=A0#endif
 > diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/pl=
 atform/rockchip/rga/rga.c
-> index 1bfc4021f4a7b..0d7b0bcac950e 100644
+> index 7e30fafb25fab..c991cc64b4b7f 100644
 > --- a/drivers/media/platform/rockchip/rga/rga.c
 > +++ b/drivers/media/platform/rockchip/rga/rga.c
-> @@ -221,7 +221,6 @@ static int rga_open(struct file *file)
+> @@ -185,17 +185,6 @@ static int rga_setup_ctrls(struct rga_ctx *ctx)
+> =C2=A0	return 0;
+> =C2=A0}
+> =C2=A0
+> -static struct rga_fmt *rga_fmt_find(struct rockchip_rga *rga, u32 pixelf=
+ormat)
+> -{
+> -	unsigned int i;
+> -
+> -	for (i =3D 0; i < rga->hw->num_formats; i++) {
+> -		if (rga->hw->formats[i].fourcc =3D=3D pixelformat)
+> -			return &rga->hw->formats[i];
+> -	}
+> -	return NULL;
+> -}
+> -
+> =C2=A0struct rga_frame *rga_get_frame(struct rga_ctx *ctx, enum v4l2_buf_=
+type type)
+> =C2=A0{
+> =C2=A0	if (V4L2_TYPE_IS_OUTPUT(type))
+> @@ -217,7 +206,6 @@ static int rga_open(struct file *file)
+> =C2=A0		.crop.top =3D 0,
+> =C2=A0		.crop.width =3D def_width,
+> =C2=A0		.crop.height =3D def_height,
+> -		.fmt =3D &rga->hw->formats[0],
 > =C2=A0	};
 > =C2=A0
-> =C2=A0	def_frame.stride =3D (def_width * def_frame.fmt->depth) >> 3;
-> -	def_frame.size =3D def_frame.stride * def_height;
-> =C2=A0
 > =C2=A0	ctx =3D kzalloc(sizeof(*ctx), GFP_KERNEL);
-> =C2=A0	if (!ctx)
-> @@ -428,9 +427,6 @@ static int vidioc_s_fmt(struct file *file, void *priv=
+> @@ -238,9 +226,11 @@ static int rga_open(struct file *file)
+> =C2=A0	ctx->in =3D def_frame;
+> =C2=A0	ctx->out =3D def_frame;
+> =C2=A0
+> -	v4l2_fill_pixfmt_mp_aligned(&ctx->in.pix, ctx->in.fmt->fourcc,
+> +	ctx->in.fmt =3D rga->hw->adjust_and_map_format(&ctx->in.pix, true);
+> +	v4l2_fill_pixfmt_mp_aligned(&ctx->in.pix, ctx->in.pix.pixelformat,
+> =C2=A0				=C2=A0=C2=A0=C2=A0 def_width, def_height, rga->hw->stride_align=
+ment);
+> -	v4l2_fill_pixfmt_mp_aligned(&ctx->out.pix, ctx->out.fmt->fourcc,
+> +	ctx->out.fmt =3D rga->hw->adjust_and_map_format(&ctx->out.pix, false);
+> +	v4l2_fill_pixfmt_mp_aligned(&ctx->out.pix, ctx->out.pix.pixelformat,
+> =C2=A0				=C2=A0=C2=A0=C2=A0 def_width, def_height, rga->hw->stride_align=
+ment);
+> =C2=A0
+> =C2=A0	if (mutex_lock_interruptible(&rga->mutex)) {
+> @@ -322,15 +312,8 @@ vidioc_querycap(struct file *file, void *priv, struc=
+t v4l2_capability *cap)
+> =C2=A0static int vidioc_enum_fmt(struct file *file, void *priv, struct v4=
+l2_fmtdesc *f)
+> =C2=A0{
+> =C2=A0	struct rockchip_rga *rga =3D video_drvdata(file);
+> -	struct rga_fmt *fmt;
+> =C2=A0
+> -	if (f->index >=3D rga->hw->num_formats)
+> -		return -EINVAL;
+> -
+> -	fmt =3D &rga->hw->formats[f->index];
+> -	f->pixelformat =3D fmt->fourcc;
+> -
+> -	return 0;
+> +	return rga->hw->enum_format(f);
+> =C2=A0}
+> =C2=A0
+> =C2=A0static int vidioc_g_fmt(struct file *file, void *priv, struct v4l2_=
+format *f)
+> @@ -355,15 +338,13 @@ static int vidioc_try_fmt(struct file *file, void *=
+priv, struct v4l2_format *f)
+> =C2=A0	struct rga_ctx *ctx =3D file_to_rga_ctx(file);
+> =C2=A0	struct rockchip_rga *rga =3D ctx->rga;
+> =C2=A0	const struct rga_hw *hw =3D rga->hw;
+> -	struct rga_fmt *fmt;
+> =C2=A0	u32 min_width =3D hw->min_width;
+> =C2=A0	u32 max_width =3D hw->max_width;
+> =C2=A0	u32 min_height =3D hw->min_height;
+> =C2=A0	u32 max_height =3D hw->max_height;
+> =C2=A0
+> -	fmt =3D rga_fmt_find(rga, pix_fmt->pixelformat);
+> -	if (!fmt)
+> -		fmt =3D &hw->formats[0];
+> +	hw->adjust_and_map_format(pix_fmt,
+> +				=C2=A0 V4L2_TYPE_IS_OUTPUT(f->type));
+> =C2=A0
+> =C2=A0	if (V4L2_TYPE_IS_OUTPUT(f->type) &&
+> =C2=A0	=C2=A0=C2=A0=C2=A0 v4l2_m2m_get_dst_vq(ctx->fh.m2m_ctx)->streaming=
+) {
+> @@ -425,7 +406,8 @@ static int vidioc_s_fmt(struct file *file, void *priv=
 , struct v4l2_format *f)
 > =C2=A0	frm =3D rga_get_frame(ctx, f->type);
 > =C2=A0	if (IS_ERR(frm))
 > =C2=A0		return PTR_ERR(frm);
-> -	frm->size =3D 0;
-> -	for (i =3D 0; i < pix_fmt->num_planes; i++)
-> -		frm->size +=3D pix_fmt->plane_fmt[i].sizeimage;
-> =C2=A0	frm->fmt =3D rga_fmt_find(rga, pix_fmt->pixelformat);
-> =C2=A0	frm->stride =3D pix_fmt->plane_fmt[0].bytesperline;
+> -	frm->fmt =3D rga_fmt_find(rga, pix_fmt->pixelformat);
+> +	frm->fmt =3D rga->hw->adjust_and_map_format(pix_fmt,
+> +						=C2=A0 V4L2_TYPE_IS_OUTPUT(f->type));
 > =C2=A0
-> @@ -443,10 +439,10 @@ static int vidioc_s_fmt(struct file *file, void *pr=
-iv, struct v4l2_format *f)
-> =C2=A0	frm->pix =3D *pix_fmt;
-> =C2=A0
+> =C2=A0	/* Reset crop settings */
+> =C2=A0	frm->crop.left =3D 0;
+> @@ -438,7 +420,7 @@ static int vidioc_s_fmt(struct file *file, void *priv=
+, struct v4l2_format *f)
 > =C2=A0	v4l2_dbg(debug, 1, &rga->v4l2_dev,
-> -		 "[%s] fmt - %p4cc %dx%d (stride %d, sizeimage %d)\n",
-> +		 "[%s] fmt - %p4cc %dx%d (stride %d)\n",
+> =C2=A0		 "[%s] fmt - %p4cc %dx%d (stride %d)\n",
 > =C2=A0		=C2=A0 V4L2_TYPE_IS_OUTPUT(f->type) ? "OUTPUT" : "CAPTURE",
-> =C2=A0		=C2=A0 &frm->fmt->fourcc, pix_fmt->width, pix_fmt->height,
-> -		=C2=A0 frm->stride, frm->size);
-> +		=C2=A0 frm->stride);
+> -		=C2=A0 &frm->fmt->fourcc, pix_fmt->width, pix_fmt->height,
+> +		=C2=A0 &pix_fmt->pixelformat, pix_fmt->width, pix_fmt->height,
+> =C2=A0		=C2=A0 pix_fmt->plane_fmt[0].bytesperline);
 > =C2=A0
 > =C2=A0	for (i =3D 0; i < pix_fmt->num_planes; i++) {
-> =C2=A0		v4l2_dbg(debug, 1, &rga->v4l2_dev,
 > diff --git a/drivers/media/platform/rockchip/rga/rga.h b/drivers/media/pl=
 atform/rockchip/rga/rga.h
-> index fc81bc5562792..466d568b9e614 100644
+> index a7f891b94a478..980f70f842317 100644
 > --- a/drivers/media/platform/rockchip/rga/rga.h
 > +++ b/drivers/media/platform/rockchip/rga/rga.h
-> @@ -37,7 +37,6 @@ struct rga_frame {
+> @@ -17,22 +17,12 @@
+> =C2=A0#define DEFAULT_WIDTH 100
+> =C2=A0#define DEFAULT_HEIGHT 100
 > =C2=A0
-> =C2=A0	/* Variables that can calculated once and reused */
-> =C2=A0	u32 stride;
-> -	u32 size;
+> -struct rga_fmt {
+> -	u32 fourcc;
+> -	int depth;
+> -	u8 uv_factor;
+> -	u8 y_div;
+> -	u8 x_div;
+> -	u8 color_swap;
+> -	u8 hw_format;
+> -};
+
+Ah! here's the removal of the unused variable. Not review friendly, but at =
+last
+removed.
+
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+
+> -
+> =C2=A0struct rga_frame {
+> =C2=A0	/* Crop */
+> =C2=A0	struct v4l2_rect crop;
+> =C2=A0
+> =C2=A0	/* Image format */
+> -	struct rga_fmt *fmt;
+> +	void *fmt;
+> =C2=A0	struct v4l2_pix_format_mplane pix;
 > =C2=A0};
 > =C2=A0
-> =C2=A0struct rga_dma_desc {
+> @@ -145,8 +135,6 @@ static inline void rga_mod(struct rockchip_rga *rga, =
+u32 reg, u32 val, u32 mask)
+> =C2=A0struct rga_hw {
+> =C2=A0	const char *card_type;
+> =C2=A0	bool has_internal_iommu;
+> -	struct rga_fmt *formats;
+> -	u32 num_formats;
+> =C2=A0	size_t cmdbuf_size;
+> =C2=A0	u32 min_width, min_height;
+> =C2=A0	u32 max_width, max_height;
+> @@ -158,6 +146,9 @@ struct rga_hw {
+> =C2=A0		=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 struct rga_vb_buffer *src, struct =
+rga_vb_buffer *dst);
+> =C2=A0	bool (*handle_irq)(struct rockchip_rga *rga);
+> =C2=A0	void (*get_version)(struct rockchip_rga *rga);
+> +	void *(*adjust_and_map_format)(struct v4l2_pix_format_mplane *format,
+> +				=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bool is_output);
+> +	int (*enum_format)(struct v4l2_fmtdesc *f);
+> =C2=A0};
+> =C2=A0
+> =C2=A0static inline bool rga_has_internal_iommu(const struct rockchip_rga=
+ *rga)
 
---=-iHp+SZRXdImhT9S7j5MC
+--=-Yz7EV6xH1v3dWkULnR4e
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: This is a digitally signed message part
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaUwMvAAKCRDZQZRRKWBy
-9MazAP9SPSZieUXA48LDd5tOkCfcSw+tIQ3exEWQZqU4r0gOYQD+NnIkcgsXCMtT
-DnOj2pkPBBxXjYYajH29kpn5EGDkJwM=
-=AGpj
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaUwN9QAKCRDZQZRRKWBy
+9PgbAP0Vfr6uJCAC5URmlDNN0VtVrSgkiLdQItl3mJA6ZjtYPAEA/6GG12wLnkPL
+G6ihuu2Lg+M6cft1cJyHcYK0Jg5Vgg4=
+=p/Dk
 -----END PGP SIGNATURE-----
 
---=-iHp+SZRXdImhT9S7j5MC--
+--=-Yz7EV6xH1v3dWkULnR4e--
 
 
---===============1573661960771956433==
+--===============8604705739190806734==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -258,5 +524,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============1573661960771956433==--
+--===============8604705739190806734==--
 
