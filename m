@@ -4,144 +4,147 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 633B7E7544E
-	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Dec 2025 10:10:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D544E7544B
+	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Dec 2025 12:44:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
-	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=8ty/kmmF4t5kZ9W34WfJfOLdhnbDSq5jXchg7H2CW0c=; b=2mDJLjDHXjWgYk
-	poLOJdjgTwtV87287DA5K7sFryDkF177A0AGhcuNy6b0VNQFWWjyJuWaP3MRImYYicEAttuHmMym+
-	xhRHmoj2f2c3ouKHV/NNA2R4os3hhm81qEWu5AYpO3r3WYw4HMw3R8Fz3P8712B63GzkhT7FAlp0Y
-	EeJZWBTWl7+nT7S5oA9zdJyhdW959Puxm4I0PpNt/f/EZqbn/rVQoDi9FJcAnL8+y/iTJ1cg4Zs5g
-	8iywqIGr3iJqboIfimaV9qlu53GfRVTGxePugbzrdskAzg+S/FYGrbqDWEZwH1ndvf2Y60MqWEbMs
-	4GbEEn7dBiQ2SXwwwxGg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=qexZuDxzCrTjpFKzE3giaQmIu6c8BvpcaFMImNnMLt0=; b=CADl0eQB3GTTP7
+	JP/eiHmGQCfnMe9GcTSmimGaYbijyb97xb44iWTxZlFa2bP10WwwhChRozU2F9QolWbmz8H6nVbwV
+	9HXUs7T7KpJD6XJYun1cz6djd46ufc8oCCL6JbmOWTAWR94VuxbBvyHCshD6thbqmSLXpZLi+Q3es
+	ZtCLXDZWbFkfCIMWvKA5vwwqFboTNnfgyv2YvO1GWpJCPHLUnmQKZaa4TO3SrKCcYGbpNue/9Sf6L
+	sRI/qUKK2BatBAaF2/Uh/WDZl01wVTi85IbL+wpIr6Pjdj8ZS/NoOXEhho+QiOSKuVhKcSDzvOhAb
+	kHmQjKOfBe8xDtTn/Keg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vYLpV-0000000GgOT-1za5;
-	Wed, 24 Dec 2025 10:10:53 +0000
+	id 1vYOE7-0000000GnjD-11EE;
+	Wed, 24 Dec 2025 12:44:27 +0000
 Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vYLpS-0000000GgNM-2WJA
+	id 1vYODz-0000000GneH-1Uxv
 	for linux-rockchip@lists.infradead.org;
-	Wed, 24 Dec 2025 10:10:51 +0000
-Received: from pps.filterd (m0279872.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 5BO6eg281245990
-	for <linux-rockchip@lists.infradead.org>; Wed, 24 Dec 2025 10:10:49 GMT
+	Wed, 24 Dec 2025 12:44:21 +0000
+Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 5BO4tRMA1018221
+	for <linux-rockchip@lists.infradead.org>; Wed, 24 Dec 2025 12:44:18 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-transfer-encoding:content-type:date:from:message-id
-	:mime-version:subject:to; s=qcppdkim1; bh=XZ3FDxXMHarmPLEBVnXVNx
-	8cfejAj3WmwsVhyYVYA0k=; b=d22GcvMTuW6GfT9ArSoF4tG0CzRXGxnSx86DNH
-	qpN/YlIXHkr/1u9GD+8EEDrYdjI0BT2nRMBzL+32iQLHqzhF/z53+H6dpzZOq4M2
-	7DfNzczJx+fiDZqE1tlgAUb+JaB/te4jY8d69ZGNHyJhS720MxUokVukXm3kXs3t
-	zRmZz7YlqEZUR7g2jDlR6LdKmMYL1yufwIKLGV41nXpTq3lrrdAm61XSqSpWJ9+h
-	KD/oMvD8QN0L+48UzpgSSMtzXFzVOk4JP+CwR8Bo/CkP61UCAQn/lW+vXwFrm+4C
-	NloC+hKk4EdfjT4CNISwCtzOs3Oio+PmyErRsgzxvr2eWM3Q==
-Received: from mail-pj1-f71.google.com (mail-pj1-f71.google.com [209.85.216.71])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4b7u9cu7et-1
+	cc:content-transfer-encoding:date:from:in-reply-to:message-id
+	:mime-version:references:subject:to; s=qcppdkim1; bh=XwDMAVWQZPL
+	sI1sS5NXBRncjTne3brdgriHnrD1ui2g=; b=dqxA+GV/rkc5VhB6myTFDMUB/GY
+	uAbaUL8/N1kydDU7ffMX2BU+dlIlVyshSsNxnTAzICsyNJJmDboko6yxNsHzDOUc
+	sAZDfvWrmMH7/2IikMAi9owFAuXndXWh4Xiwc20IvT3zIAzxNWGfEo8zUTsxV+8x
+	VtZHsSsCeyeAN1TryMUx3Y/Ndxkweg4RFeltzhSPtYt69BZuwrLN87+wjy6HhAQ0
+	Ue0gjkAXdcJ6Qka1VST2LIeFQSYGsM7WLxRC6uqzQGkCVabGg9/XcP37WvFYMRfX
+	ldIbIlY6f1ztsO++OHUv9N0P1XL6v/jYsjuEfeSPBSuqpFOz7tUq1ck7WgQ==
+Received: from mail-qt1-f197.google.com (mail-qt1-f197.google.com [209.85.160.197])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4b7xjsavfy-1
 	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-rockchip@lists.infradead.org>; Wed, 24 Dec 2025 10:10:49 +0000 (GMT)
-Received: by mail-pj1-f71.google.com with SMTP id 98e67ed59e1d1-34c48a76e75so12751774a91.1
-        for <linux-rockchip@lists.infradead.org>; Wed, 24 Dec 2025 02:10:49 -0800 (PST)
+	for <linux-rockchip@lists.infradead.org>; Wed, 24 Dec 2025 12:44:18 +0000 (GMT)
+Received: by mail-qt1-f197.google.com with SMTP id d75a77b69052e-4ee21a0d326so36500741cf.3
+        for <linux-rockchip@lists.infradead.org>; Wed, 24 Dec 2025 04:44:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1766571048; x=1767175848; darn=lists.infradead.org;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=XZ3FDxXMHarmPLEBVnXVNx8cfejAj3WmwsVhyYVYA0k=;
-        b=feCzqIjbGZFLkROTrc5P0avBkX2TyC4oTtkZTjK9C0pnZ35ElQF89A5D6symmXs4pM
-         P5ANkzvXC095KxYuLA5Wmfn+4b7DB0lhs1nqmTmdWHe0tdTSika2am9ZPTBS8sw2Q6mc
-         h8IA3ULMJ2UJr/yDMyKVedmw5ur2cjjx4S22K435ovRAum5b6ftpIcTh2shc6Zh0m13B
-         0E4uzeS4Il3vwC0xVMoRJNhTx+qbMZl0v1bXYexjktCF4CubJZaJnn5nSTMKMayPKZoS
-         h2ZYbYOqCjlPQHyzwiKx5kCdKnr+db5TtQLM3/110EXlKRChZu3FkuZ0JczvfaT9Iu9E
-         CG+A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1766571048; x=1767175848;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+        d=oss.qualcomm.com; s=google; t=1766580257; x=1767185057; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=XZ3FDxXMHarmPLEBVnXVNx8cfejAj3WmwsVhyYVYA0k=;
-        b=iWZ48ZUOa9oF0Lv9CI7pEpLl4jSzRjzQ0pvMCNAR/9J/t0+EuTF3jn+BHUE/tYgFTF
-         J3nbE4I7wxA0+4PDkWUpifOqwtGThVNwnRNGdHo8D+2oboH5NxxGMlWSjnKxc8qv2rP/
-         y0iXnhzSJTE3rv/JN7YcuOhLCx/HyH2RELQQGyto44sv/rl4E/yTaejwPm/UWSg6s0FD
-         iSDtPFWVX472YApC0FjeMR1rUgon8nqPG8h/3e/ZtNU8IJP7xqp9I5wHpXqkWe7BIVz5
-         X9WFGqGXjiPvgfkpL+IOzJbRtqxY7olAdJaCiCYZsu+H5K94IzpRb3nIeh5REob3jfcp
-         C5Gg==
-X-Forwarded-Encrypted: i=1; AJvYcCV15EOvX3vFoTUlQhsPu5vdPMWebbYoX9yPXGVKv4ZLdYQFNmk6M/p97Z36ynouh3CUPwLtp7ne5zdiHJVf0A==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxsh9gEFSWnXkky1d6p2Nw3UPKckWjXIeDqM5ceMk6Hh/slWB5Z
-	Uau8sTMfHNtUVcIz9DudPMeXLFGXUntRF2z82pY8FRL4suOIoyE4ddWADV/B0w8e659A02r3eC5
-	8B1R3p5MgnTFRYhdf7oOL7HuRP9eqG+Kr6CvKLQ7DhC50+vSiMKWXFCFwzwc6TcdqFLv9Rn0KIK
-	3SaQATCQ2rYg==
-X-Gm-Gg: AY/fxX5eb5Ko2nLYjja6f11uaGI1MgmxmwjflDbey+/AAvdDbstffAaTZvFaTFpXPB7
-	5Imt3pMnFxl7iVHFMf1QSBqrE+KaK7U2oPlc2kotQ/C88aSgS+LGnRz61c+fSjuuevPy0MxS1aC
-	gvimulufb8mqW00hYNYMTsn7h+3U5p2MCVKrrZ15KEJ3GUospklBSb9fc9gN1lXpdvSOr8l4qQ0
-	+JH9ArD6u1BgeEJML6HjzfcdglX/zK3fIHmLK74xtrBOR+S/8gFHyFywzTxL8nWcw0ur7+zXL/I
-	pq+HkWgRGW6sbeJE1Sk6sUxxFGHRnthcnctLn0EGfPkZ6XjEdU/J3d82PtkQJUtoUzvFxbhjLw5
-	VQYGsSGINTNm4i2dI59vClr28hHJkyd0rDlLPwmPuW35aFKHpLz5Yr0Nh
-X-Received: by 2002:a05:7022:f307:b0:11d:ef84:6cff with SMTP id a92af1059eb24-12172308947mr17530618c88.37.1766571048390;
-        Wed, 24 Dec 2025 02:10:48 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHqAiL4jHSU7/9+MwgxQ3qP3nId9JEayrA1C8JJppmIis0sasuK6f1Hyw36MlCj9gYMjatsdA==
-X-Received: by 2002:a05:7022:f307:b0:11d:ef84:6cff with SMTP id a92af1059eb24-12172308947mr17530605c88.37.1766571047809;
-        Wed, 24 Dec 2025 02:10:47 -0800 (PST)
-Received: from hu-qianyu-lv.qualcomm.com (Global_NAT1.qualcomm.com. [129.46.96.20])
-        by smtp.gmail.com with ESMTPSA id a92af1059eb24-121724cfd95sm64523514c88.1.2025.12.24.02.10.47
+        bh=XwDMAVWQZPLsI1sS5NXBRncjTne3brdgriHnrD1ui2g=;
+        b=EYAaXvQ1yS8Xpm1wgknE1M+xUkjvX5M8tRTamfRKD+26IRgn70/Vr0h95R8YnPqSd7
+         PIVGSZYYWQamIpcwb8Ol3jFduYzJm1oQ8XerkX48aRMtZtZpfpaE3tWoHLygOZw/D8GZ
+         Of8iSEcZgtsZlrJBiSJvhHhH8en9LBZZSDykvn7VmW6/e3kFUZN+kM989o1W3N6ms6Qf
+         3r2KZQEw5anlC7BwmQxc6jQhw4Pa8KC5hLpohkrEqbLkvdqAnRWyQcIXTK7eWYTOw0ti
+         8eDMZwQNH1gIWNhklki4qyUeUpTUf+H2hbuEpvQqqo2n3lpkd7RLRaT+XO1or45eDXZX
+         ul7Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1766580257; x=1767185057;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=XwDMAVWQZPLsI1sS5NXBRncjTne3brdgriHnrD1ui2g=;
+        b=lSYKT5+HMXvyyIh2YibuseRaOKULZAE7kzlfkeFwO5fwevKReb4zWO0rtViy99rLrK
+         80VvrAfHTBu8pQtyxTiT2nGRBFSzKX1O5415bWh2agHdnApSou6PyfNL0jsuqDQoP0p9
+         bsK1atCejgynLhn7+Bf3VqEeyIvgPj3zrSkB1WDu8e2AXdAqOTFOL6dxyhdbotgOCQuM
+         AXNgiKjO7WfFH17/JtdkXSCl6L+LvmeD2+6k+ye0zcRDGmaZyM0EeFHMXdSYBey4G2By
+         ZQ0IMOocnCF7mGL5k1XptlwOBpIAADDXObUJ6LE6bGfHWuoAKTaBvro+aNhi+89OwDWR
+         vHhw==
+X-Forwarded-Encrypted: i=1; AJvYcCViEPSadH3Rrki4RlWsJnFZmxWotZDTUDvKYJi2qQzgMC2N/fwjWAuBuW85Q2TOQ1N+6xRIvCSiOe6Lhv27mw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwX+uwU+nd059yDP40XuIMf5ffv2Nxn0/xLFnNdQ4eYjdAjq5Eb
+	Kv+6lP/UrDeJRzSqwdZ5++l+fbmOJASvNOjXtmC9eXzb5sFrxt1nu1n6Q4cPik7w5LdlHAVZ242
+	yX22a+iQCPqygoWq/NtgB4fup4mjv+dAuSh0gQnYxZYd/CW82/I1miQWO4xJpy4SLuS+RlQDxJ6
+	tm9/fzFaA=
+X-Gm-Gg: AY/fxX5Koob0NsZRR1oh6Pb/FgQhkzWjKweeR66CBgg2DRTkxAkZYPIT42lNtT+sucp
+	o4ISu6Bs1OrWbiNfYqT2fNNXRECtmNfxZWXcKt6PNcZRDlbSxNmgkG0EeZHADvUnLDmnfzBPD2P
+	g88oMkB3ozld8aZoiW+y50e68CGbXS/ii+lkIaa5LuU9p26eS0N1p8prOfQNkrJ/l3H4NLcc4WY
+	ew1VQ6Pr8ATdodWmPJ/YRVFZAS9lhv7gNQ4psMWtDa0N0vOkrEK/IV46SIbrNljVPfbPj281odr
+	r3B7RbTrEwftErUcMUNCGSm7b1ZvRQ+yyw5emNGT0ZZGy4hJR1xovDL+1Mvwwphm0i07tqz6NrL
+	Xcke+t4l5rS9f1lhfHNFljWg4M/BLRaICEYjk+Vhe/3zRr27K7FBm2BNgtl1DNNkfo2gouQ==
+X-Received: by 2002:a05:622a:578e:b0:4ee:278c:bde7 with SMTP id d75a77b69052e-4f4abd1c37cmr241696851cf.23.1766580257257;
+        Wed, 24 Dec 2025 04:44:17 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGQsrxYLgVYVborec/UqKUOFogNSAh9agcb0z7QoRP/7+Nr+7itTQ8LnBat5QNl7LHwl+pLjA==
+X-Received: by 2002:a05:622a:578e:b0:4ee:278c:bde7 with SMTP id d75a77b69052e-4f4abd1c37cmr241696601cf.23.1766580256899;
+        Wed, 24 Dec 2025 04:44:16 -0800 (PST)
+Received: from quoll.home (83.5.187.232.ipv4.supernova.orange.pl. [83.5.187.232])
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-64b916b66e2sm17049203a12.34.2025.12.24.04.44.13
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 24 Dec 2025 02:10:47 -0800 (PST)
-From: Qiang Yu <qiang.yu@oss.qualcomm.com>
-Date: Wed, 24 Dec 2025 02:10:46 -0800
-Subject: [PATCH] PCI: dwc: Remove duplicate
- dw_pcie_ep_hide_ext_capability() function
-MIME-Version: 1.0
-Message-Id: <20251224-remove_dw_pcie_ep_hide_ext_capability-v1-1-4302c9cdc316@oss.qualcomm.com>
-X-B4-Tracking: v=1; b=H4sIACW8S2kC/x2NwQqDMBAFf0X23IBJlEJ/pZRlTbb1QashEWsR/
- 93Q0zCXmZ2KZmihW7NT1hUF81TFXhoKo0wvNYjVybWut851JutnXpXjl1OAsiYeESu3hYMkGfD
- G8jM+DmL79ireW6qtlPWJ7f+5P47jBBFpZ2p3AAAA
-X-Change-ID: 20251224-remove_dw_pcie_ep_hide_ext_capability-3dba1507a331
-To: Jingoo Han <jingoohan1@gmail.com>, Manivannan Sadhasivam <mani@kernel.org>,
-        Lorenzo Pieralisi <lpieralisi@kernel.org>,
-        =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-        Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-        Heiko Stuebner <heiko@sntech.de>
-Cc: linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
+        Wed, 24 Dec 2025 04:44:15 -0800 (PST)
+From: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+To: Vinod Koul <vkoul@kernel.org>, Neil Armstrong <neil.armstrong@linaro.org>,
+        Geert Uytterhoeven <geert+renesas@glider.be>,
+        Magnus Damm <magnus.damm@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
+        linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org,
+        linux-renesas-soc@vger.kernel.org,
         linux-arm-kernel@lists.infradead.org,
-        linux-rockchip@lists.infradead.org, Niklas Cassel <cassel@kernel.org>,
-        Qiang Yu <qiang.yu@oss.qualcomm.com>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1766571047; l=4607;
- i=qiang.yu@oss.qualcomm.com; s=20250513; h=from:subject:message-id;
- bh=Xnv/sBrBqHQV+BvV3+s0nYNYKZOsfD25aEwqAwM49rc=;
- b=buJx2QJGgffIcLDxa1NPfng5yROlUFJRA1KD//+D3k35OGdkRjY7fl+/aSQpupAMdmodeo8mk
- XUZ/mNu/OGhD5/2s4OrjIWfRFxaLN8TJIX8z3mhsq7r7326qt3Wd3GU
-X-Developer-Key: i=qiang.yu@oss.qualcomm.com; a=ed25519;
- pk=Rr94t+fykoieF1ngg/bXxEfr5KoQxeXPtYxM8fBQTAI=
-X-Proofpoint-GUID: QDV6eOjtciOJQ_wTBwcRoio4ohjw0pbs
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMjI0MDA4NyBTYWx0ZWRfXySdfeTu8FHuC
- WMxo4F1jwGelTn92YsfJqv8AwkdA61maM2LLxysKJEi6tS5eC9AsWEu1WTNhGWDsZ+a4j3a83d0
- qoUyke94a1PNk2wierbIR3VTMUBu0pelmQrEyMf/yce5wuRe/g1KHxunCsTM/CF5dc+j5Jwh0oT
- 6iOxPOcGKQcVqAlXytEEocHDGQRbGRhcuOfqJ6dNwIzcR63eShUzUEEYI/K0pvRRBS7DCW2GSnG
- lyH1xInjZ97zqQpus65zqDOS4k+uokLP8tjNV+wBmOzF1F0nOMatY5CbA7xyKmg1xX3ciL92F96
- 4wL/fqMkab21A46wi117Z84n8R3Xvoo3LhOAVIW0SpkwqCC/WF46DHNkmAkBTTZadJk5LDiff5v
- HrfOzvpIKDpFlr9IUc8NYLNQmStXLwbagxwsFvcMAJQRpFvdCOt96UpEQuO1tttdMQoV5xMXinQ
- tPZwoZS88G0z6fJc8Bw==
-X-Authority-Analysis: v=2.4 cv=HsN72kTS c=1 sm=1 tr=0 ts=694bbc29 cx=c_pps
- a=UNFcQwm+pnOIJct1K4W+Mw==:117 a=ouPCqIW2jiPt+lZRy3xVPw==:17
- a=IkcTkHD0fZMA:10 a=wP3pNCr1ah4A:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=VwQbUJbxAAAA:8 a=EUspDBNiAAAA:8
- a=Svf4W_lptdzYmPpfBLsA:9 a=QEXdDO2ut3YA:10 a=uKXjsCUrEbL0IQVhDsJ9:22
-X-Proofpoint-ORIG-GUID: QDV6eOjtciOJQ_wTBwcRoio4ohjw0pbs
+        linux-rockchip@lists.infradead.org
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Subject: [PATCH 2/3] phy: core: Simplify with scoped for each OF child loop
+Date: Wed, 24 Dec 2025 13:44:09 +0100
+Message-ID: <20251224124407.208354-5-krzysztof.kozlowski@oss.qualcomm.com>
+X-Mailer: git-send-email 2.51.0
+In-Reply-To: <20251224124407.208354-4-krzysztof.kozlowski@oss.qualcomm.com>
+References: <20251224124407.208354-4-krzysztof.kozlowski@oss.qualcomm.com>
+MIME-Version: 1.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1093; i=krzysztof.kozlowski@oss.qualcomm.com;
+ h=from:subject; bh=ff6qdOZjoCBTn1TA60Yo0C5n/L273TXJ0BR/Wu/HAKg=;
+ b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBpS+AYVn99ItkzmuljyaB3Qxn+eI/v55ZapOafq
+ 3uK823nW6uJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCaUvgGAAKCRDBN2bmhouD
+ 1xSrD/4gkWzI15LqAW0wgK8pcxMbLEJXRORMilaiM0UfCmlhOWKuoVcEheRCnAes4+TldZXysBd
+ IrhuZKJTMIAhzG9yy6Ibw6Y7EAPvlo5VIszQOfC7vMqltZcUd0dgjGjFhuyE9BG7o0bbTRBVrE3
+ ymz5E0QrpUx6gWTbBegzdX3BrIJ/8Xqzyofm4pflhVbM+9RDD5GBjVjTIVsoHWTKUYgFW+bptBM
+ 3Yt/4kciBY0PSMacU0TQumoTX95Bj1I9gkoRlhTIMywAM39IUXwMbjzjA+wuL9oLaAdqI0QnOKK
+ a0/4l2oVbHI4PftnYKH1wLHLzOaHkmvs8O3A7xIUed9aj7L06jJ3J61sqkM26J2e6F0uW32x+pv
+ vtVBRr/d7gTrYEKPq99Bz2PsUK1jEfPh7yutVZw5FjHoYiCBbvsg/9S6DklN4BJ3keqnasyxKTJ
+ cfVGjgQMvaQo5CykKfu3HGPGGUXK/BiV38QD6J9/PxYs4wUKRTsmayZc2eDY2llVUOrIZ+QeaCu
+ aPitAi4cSTuRlssceHNG/ogzJm23CR3oaS0VR5gxJ6LjOfsyfSiZOH5nO7yiJzPr5NQjUO0FQuG
+ ZDy2CLgZaJyq6Fzzqu1u1r4Mj+fMC5T3zEUGwtey5a5+IKy6pK9dGPv0o9xGGp/7tpqLdJezVpg KzpkmvXcC+ehTRg==
+X-Developer-Key: i=krzysztof.kozlowski@oss.qualcomm.com; a=openpgp; fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMjI0MDExMCBTYWx0ZWRfX3ML1iaeZPRjB
+ By6JLxTqGT/lZFoV6pE0yiq8YzgcMmrAHpaNmwJ3JnckqYs95/X4w0mzafkdiFGjcbrpJxtxk23
+ 3x5WUggt5WXbtacYvUbitCOINvleUH8+U772EY6yqdskRrLn19lx/4iGKOCCXJz3kv0CgTWBYFa
+ q67IzNWhaZYkpQe0MqOzV2roKH1tS0RrJs8fau0DbcC7wLpH2jJkFl/eaSf2OfP8ptsSjykEK6d
+ /Md0usTwOKjZxt2Xa78VbcTahAks1Gvkx8Fu1hJFAF3tQQ3RRRDnzYB7yn2z9jypRFDTpY0eFBP
+ Fu61bC1d4Pj5N+SpMxq+aymDlCwjlUicu3aFY9MQ3JiZRuUMM5aX1aNA6J+sAD/gc6A3nMHpsv5
+ QFa7QEhYUu37n+IXMq/ke5SD8WuW9h+7AKTcz2pkjdthfm7a8S2c9/I8UIz83xLrpLzgi/kMuGW
+ VCzl/ZQBUsPwMotNqRA==
+X-Proofpoint-ORIG-GUID: WWgd_ZdxHCxE2A5P6bT0MJx1WallNAwF
+X-Authority-Analysis: v=2.4 cv=YcqwJgRf c=1 sm=1 tr=0 ts=694be022 cx=c_pps
+ a=EVbN6Ke/fEF3bsl7X48z0g==:117 a=urQ9wjG1USoGuMoDBEOPbA==:17
+ a=wP3pNCr1ah4A:10 a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=EUspDBNiAAAA:8 a=8TZc5ORpoUYqJhTIvu4A:9 a=a_PwQJl-kcHnX1M80qC6:22
+X-Proofpoint-GUID: WWgd_ZdxHCxE2A5P6bT0MJx1WallNAwF
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
  definitions=2025-12-24_03,2025-12-22_01,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0 lowpriorityscore=0 priorityscore=1501 suspectscore=0
- malwarescore=0 clxscore=1011 adultscore=0 bulkscore=0 phishscore=0
+ suspectscore=0 malwarescore=0 priorityscore=1501 impostorscore=0
+ lowpriorityscore=0 adultscore=0 phishscore=0 clxscore=1015 bulkscore=0
  spamscore=0 classifier=typeunknown authscore=0 authtc= authcc= route=outbound
  adjust=0 reason=mlx scancount=1 engine=8.22.0-2512120000
- definitions=main-2512240087
+ definitions=main-2512240110
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251224_021050_754243_BA0E53E1 
-X-CRM114-Status: GOOD (  14.06  )
+X-CRM114-CacheID: sfid-20251224_044419_943699_73D5FBCF 
+X-CRM114-Status: GOOD (  13.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -158,121 +161,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Remove dw_pcie_ep_hide_ext_capability() and replace its usage with
-dw_pcie_remove_ext_capability(). Both functions serve the same purpose
-of hiding PCIe extended capabilities, but dw_pcie_remove_ext_capability()
-provides a cleaner API that doesn't require the caller to specify the
-previous capability ID.
+Use scoped for-each loop when iterating over device nodes to make code a
+bit simpler.
 
-Compile-tested only. Runtime testing on RK3588 hardware would be
-appreciated.
-
-Suggested-by: Niklas Cassel <cassel@kernel.org>
-Signed-off-by: Qiang Yu <qiang.yu@oss.qualcomm.com>
+Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 ---
- drivers/pci/controller/dwc/pcie-designware-ep.c | 39 -------------------------
- drivers/pci/controller/dwc/pcie-designware.h    |  7 -----
- drivers/pci/controller/dwc/pcie-dw-rockchip.c   |  4 +--
- 3 files changed, 1 insertion(+), 49 deletions(-)
+ drivers/phy/phy-core.c | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/pci/controller/dwc/pcie-designware-ep.c b/drivers/pci/controller/dwc/pcie-designware-ep.c
-index 1195d401df19eafbab2fb267f5cda3c24ecdfbd1..cfd59899c7b85fd0dddc9c6ce6b9c9fed84ad7a3 100644
---- a/drivers/pci/controller/dwc/pcie-designware-ep.c
-+++ b/drivers/pci/controller/dwc/pcie-designware-ep.c
-@@ -75,45 +75,6 @@ static u8 dw_pcie_ep_find_capability(struct dw_pcie_ep *ep, u8 func_no, u8 cap)
- 				 cap, NULL, ep, func_no);
- }
- 
--/**
-- * dw_pcie_ep_hide_ext_capability - Hide a capability from the linked list
-- * @pci: DWC PCI device
-- * @prev_cap: Capability preceding the capability that should be hidden
-- * @cap: Capability that should be hidden
-- *
-- * Return: 0 if success, errno otherwise.
-- */
--int dw_pcie_ep_hide_ext_capability(struct dw_pcie *pci, u8 prev_cap, u8 cap)
--{
--	u16 prev_cap_offset, cap_offset;
--	u32 prev_cap_header, cap_header;
--
--	prev_cap_offset = dw_pcie_find_ext_capability(pci, prev_cap);
--	if (!prev_cap_offset)
--		return -EINVAL;
--
--	prev_cap_header = dw_pcie_readl_dbi(pci, prev_cap_offset);
--	cap_offset = PCI_EXT_CAP_NEXT(prev_cap_header);
--	cap_header = dw_pcie_readl_dbi(pci, cap_offset);
--
--	/* cap must immediately follow prev_cap. */
--	if (PCI_EXT_CAP_ID(cap_header) != cap)
--		return -EINVAL;
--
--	/* Clear next ptr. */
--	prev_cap_header &= ~GENMASK(31, 20);
--
--	/* Set next ptr to next ptr of cap. */
--	prev_cap_header |= cap_header & GENMASK(31, 20);
--
--	dw_pcie_dbi_ro_wr_en(pci);
--	dw_pcie_writel_dbi(pci, prev_cap_offset, prev_cap_header);
--	dw_pcie_dbi_ro_wr_dis(pci);
--
--	return 0;
--}
--EXPORT_SYMBOL_GPL(dw_pcie_ep_hide_ext_capability);
--
- static int dw_pcie_ep_write_header(struct pci_epc *epc, u8 func_no, u8 vfunc_no,
- 				   struct pci_epf_header *hdr)
+diff --git a/drivers/phy/phy-core.c b/drivers/phy/phy-core.c
+index 8d227890a345..d57c9525fa38 100644
+--- a/drivers/phy/phy-core.c
++++ b/drivers/phy/phy-core.c
+@@ -138,17 +138,14 @@ static struct phy *phy_find(struct device *dev, const char *con_id)
+ static struct phy_provider *of_phy_provider_lookup(struct device_node *node)
  {
-diff --git a/drivers/pci/controller/dwc/pcie-designware.h b/drivers/pci/controller/dwc/pcie-designware.h
-index 3a81d46e60b00f7cb92d9634eba6708244bce976..c5fff03073ea3945a5c38b1626838c6a67d21c57 100644
---- a/drivers/pci/controller/dwc/pcie-designware.h
-+++ b/drivers/pci/controller/dwc/pcie-designware.h
-@@ -909,7 +909,6 @@ int dw_pcie_ep_raise_msix_irq(struct dw_pcie_ep *ep, u8 func_no,
- int dw_pcie_ep_raise_msix_irq_doorbell(struct dw_pcie_ep *ep, u8 func_no,
- 				       u16 interrupt_num);
- void dw_pcie_ep_reset_bar(struct dw_pcie *pci, enum pci_barno bar);
--int dw_pcie_ep_hide_ext_capability(struct dw_pcie *pci, u8 prev_cap, u8 cap);
- struct dw_pcie_ep_func *
- dw_pcie_ep_get_func_from_ep(struct dw_pcie_ep *ep, u8 func_no);
- #else
-@@ -967,12 +966,6 @@ static inline void dw_pcie_ep_reset_bar(struct dw_pcie *pci, enum pci_barno bar)
- {
- }
+ 	struct phy_provider *phy_provider;
+-	struct device_node *child;
  
--static inline int dw_pcie_ep_hide_ext_capability(struct dw_pcie *pci,
--						 u8 prev_cap, u8 cap)
--{
--	return 0;
--}
--
- static inline struct dw_pcie_ep_func *
- dw_pcie_ep_get_func_from_ep(struct dw_pcie_ep *ep, u8 func_no)
- {
-diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-index 352f513ebf0363ff0ec79fdd8d8b245eeb28474c..77c4e6a4ddead91fe12eb6c727e77350207ef5fa 100644
---- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-+++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-@@ -347,9 +347,7 @@ static void rockchip_pcie_ep_hide_broken_ats_cap_rk3588(struct dw_pcie_ep *ep)
- 	if (!of_device_is_compatible(dev->of_node, "rockchip,rk3588-pcie-ep"))
- 		return;
+ 	list_for_each_entry(phy_provider, &phy_provider_list, list) {
+ 		if (phy_provider->dev->of_node == node)
+ 			return phy_provider;
  
--	if (dw_pcie_ep_hide_ext_capability(pci, PCI_EXT_CAP_ID_SECPCI,
--					   PCI_EXT_CAP_ID_ATS))
--		dev_err(dev, "failed to hide ATS capability\n");
-+	dw_pcie_remove_ext_capability(pci, PCI_EXT_CAP_ID_ATS);
- }
+-		for_each_child_of_node(phy_provider->children, child)
+-			if (child == node) {
+-				of_node_put(child);
++		for_each_child_of_node_scoped(phy_provider->children, child)
++			if (child == node)
+ 				return phy_provider;
+-			}
+ 	}
  
- static void rockchip_pcie_ep_init(struct dw_pcie_ep *ep)
-
----
-base-commit: 37781eb814e16c75abb78dec2f9412d2e4d88298
-change-id: 20251224-remove_dw_pcie_ep_hide_ext_capability-3dba1507a331
-
-Best regards,
+ 	return ERR_PTR(-EPROBE_DEFER);
 -- 
-Qiang Yu <qiang.yu@oss.qualcomm.com>
+2.51.0
 
 
 _______________________________________________
