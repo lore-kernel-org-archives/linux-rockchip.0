@@ -4,74 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C771E7545C
-	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Dec 2025 15:29:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74B08E776C0
+	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Dec 2025 15:39:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RIw1HcHVjUqbaE222izAjF3d/DjMVJvV0eEtxirrhAs=; b=DxwTr20Fh+R37TFoXAsMzK/+92
-	g80VPUw60iQsIQ4E8qbA5w26PlyLn2WHp+y+Mgh5Pvc3xbUCh7e6DSyTiSUIMVQWgPRvs16zThV65
-	U2PxzlpoIK+/ud1A0hbe/h7t3juNgPOWWhKF3PiCwQa2e70dlOH3pN3DK/K+yVq56JaQbMdTXJOrl
-	mXvm//gcC8UsntT/M4W1E8BWcCY+9hBAoc0MI0+kanp/nInaRk7jum3OYykQa2frudvRQAmgGHiuc
-	u/S5z9EGcdSyhds/yVbx0FNHpxLumWqePg35f82cZZhCILjCOMqVCdhr0DBWQbvUhXZJ+bXbOW/2f
-	Umh6RTqQ==;
+	bh=isIdxDB62hKulHvRfyp2TUcJjx5FCfeR+y7aMDVY5Uw=; b=xfjeP66nFnvcsdpw2zKD3jpnFD
+	mPPNErjHYqdKcOVavue1MMwPSDHrH/fi+yP9CogAe9Do8qX3RvQucokPe4515ASSQwbbmOjUNOOfe
+	ESWL5UjuQbp/4LB6VgSm7Nn34PLg67kvQBsDU0fd/gv3/Jz3OeTeotnUeiVA1I5WB6jy+dpBNRkNv
+	7TUHmFXCEAiF0bE3VOHvpBpo+kj4x1YNa8JDshZ97ioQ5HNf4kaKluH7GoolWwztg6m3PfhRyQZrg
+	8XVkDiZ8gcRCF2BOJpyJds54a0W2Mnp4Apkt5kb7+Ytzjr1xhgbhjL8j3Bpreiy9sFfJumAyBJgHe
+	I1+jyUBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vYQo6-0000000H6t4-2bD9;
-	Wed, 24 Dec 2025 15:29:46 +0000
-Received: from mail-qt1-x831.google.com ([2607:f8b0:4864:20::831])
+	id 1vYQxg-0000000H7vs-46hw;
+	Wed, 24 Dec 2025 15:39:40 +0000
+Received: from mail-qk1-x736.google.com ([2607:f8b0:4864:20::736])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vYQo3-0000000H6sH-3J3x
+	id 1vYQxc-0000000H7un-3DUA
 	for linux-rockchip@lists.infradead.org;
-	Wed, 24 Dec 2025 15:29:45 +0000
-Received: by mail-qt1-x831.google.com with SMTP id d75a77b69052e-4f1b1948ffaso39315301cf.2
-        for <linux-rockchip@lists.infradead.org>; Wed, 24 Dec 2025 07:29:43 -0800 (PST)
+	Wed, 24 Dec 2025 15:39:38 +0000
+Received: by mail-qk1-x736.google.com with SMTP id af79cd13be357-8b2ea2b9631so622372585a.3
+        for <linux-rockchip@lists.infradead.org>; Wed, 24 Dec 2025 07:39:36 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1766590182; x=1767194982; darn=lists.infradead.org;
+        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1766590775; x=1767195575; darn=lists.infradead.org;
         h=mime-version:user-agent:autocrypt:references:in-reply-to:date:cc:to
          :from:subject:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=TwkJIIAOyC+iGrxHsI9snh+xrQsvtUQwuewCKc8KNUQ=;
-        b=A4cKD/4sxKT4VJmzmzo08NgL1KL1obvBaO/BHb9IiBajaMGPRat+toUOsSBsbneTXY
-         2Cu/kbRgmBMnv1nfGEkBJMI5Gna3IBcdYORCcWe+ZxKI+yhw+5m88H4EBja9E6LLYEHD
-         HkARoTeIJ9M3ObCU6b6iAjAtXHaYWma9qfyyNjk2PujNERw1l58ApbUM6TzHMzeCxVWv
-         EYr8lq7x8IbS5d/VtMaxk2WSoxLv3vh6TScncve2hno5qsmhlYuZ+Yw2zghSuE7f16aI
-         2TYgs1k440/ec3LD08Lhf2sF+VVtsnqJwAph6jmny/OsAH9fjlxO15wIyZUDUnrJqoom
-         RpxQ==
+        bh=mNUTI3pZWA5T6KtDOWHIYgHw3tgiAFK7a4NWHyZgANA=;
+        b=aDmnjqbWTnCY+2rhhq5LqXYYhI300uo1+xdEGiQEvpCSHaFM1U9H4vveKoKKQjmqTc
+         AC/c7Z6SUKRDjr07QZmtg8rTDiRmJqqnhlGwcqr7oJm+QOIRUymRLY6iIJMVAsfo9S+h
+         Y7UEWQJxnCDOlmY35VD2LATlcQKkE96GY8ap+YhUPkNip4Zp5in8uuUyCKX0eMOAbpSK
+         EftvWXfGQXV2VpQEvx4YGCes+3+1sZar8CHCAP+MPs8tTcCgPkVa05GsfK1iDTuyWAhR
+         Jd1FmvqdFm/Fbjv5wgz9bOirntjGy4AQob6Jlw78ggQj88LLTFDjKaotb3vEwdP1VcL7
+         vwAw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1766590183; x=1767194983;
+        d=1e100.net; s=20230601; t=1766590775; x=1767195575;
         h=mime-version:user-agent:autocrypt:references:in-reply-to:date:cc:to
          :from:subject:message-id:x-gm-gg:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=TwkJIIAOyC+iGrxHsI9snh+xrQsvtUQwuewCKc8KNUQ=;
-        b=Ud77K8b3f/ZQXfxUDuKaZ0F8Bf2/FQgGlXXIfEUg+FIZaOhM/Kwq/Xbv9yc3QEF1OV
-         +3s3NHWkiENRmnYAuR1UpB2E6wjxM3H3GAXp4iY85e0jktxJguXemWLenB7x7yWB0kqC
-         Z+T4x7LlVlngi3rR40Xc/SPOMYwHxhtotoNduf43L2yVA6RlzWCm/tTiGRWmTfciwuRU
-         9kTOE4gcbrsx2RZfPseSsFNuaSewQWKQgfwG5FMy/Ln42HTVSP0uaBMibDF2l2bo+Dqf
-         52CK0/viEpLmoOZqUVdmic7xP61RPQ2Qjiyq10fGZUMZYfrzWXbHafB55dMSyyKJMhhv
-         IPGQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVQ0FoDOoOXjCJeEsrmbhTCmZ0eb1bNYVrZ5Qu7PQ3pKaDP7kgmYJvCcssBzCNu1ZSTpcxoO/0IHPr5DOo+/A==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzfD9gVAGstQdOUAO3DxpqCCauUZVaUzZeRwQliMLC7sRDPrWTN
-	3PXBTPUCg9gKOlPqCfieJIDO5VBJSlXnQoI1VGnLk92xYc4O6ICZII95Xe9yVuYAGAQ=
-X-Gm-Gg: AY/fxX69TKr1EFHFkNltoVrTuWHtjIPaRBrO+y0MAg4M2LO0sDMVBeBwJj4qFM42S3P
-	S/zguzE9qYCOzC9nCW1c1FlHwf698ttGQWIKtpw1Ft00UX2sZ4eYj8KpsxCJtW2xD9xqcTACoQP
-	gto6cXebqSYEZAm+qn05hqrEDOQtChJUz+lWjWu4bcoVSffKfBzdIjvZ4aYUG0KL2PF1BL6NVyz
-	3RrYYmWiEx5TCI7ysjlYiBc8ZO4ZubGNbAURchsZNMJybnuZ4eeALw0Z00ly5dX1tKmGe9pMJx3
-	fij5lLoiIZ2O1JZQjSp8G6juohebSj0/FgsoGRRWWhcTx1da1BA3rH77yylUO9ZhObhFdZldcyt
-	Ws5bUSnZJnHHBuLCxIyWgjNRKJ3q+uqCZzenOhbGE9hjrMJ145fkkeko3mIZh89mnWKvDxpy0jH
-	XPaNtaaLiorU9WNcuC
-X-Google-Smtp-Source: AGHT+IFurORRUJNULnlbX94R2za/XCt3vvaDyHm+KjHk3sOKh4CoRdkgBOx3YgO3VJabdA7p5qCnbw==
-X-Received: by 2002:a05:622a:4d93:b0:4e8:96ed:2e65 with SMTP id d75a77b69052e-4f4abcc50e0mr263126051cf.22.1766590182533;
-        Wed, 24 Dec 2025 07:29:42 -0800 (PST)
+        bh=mNUTI3pZWA5T6KtDOWHIYgHw3tgiAFK7a4NWHyZgANA=;
+        b=t0WUGczoO2JUdPNbqPn3v6OCyPDhZnJu08vsAqPvvpzSUqIlVJ8N0LjaaDEKmsD33/
+         V+48EyfaiI1zqFhw9VKA2/4xsbgdkVw6UzdrYNryMNM2MSBvhqi6SzbJxHKwfLNZIT9l
+         4bJq3+TCIVuE9j/IcGG7A2uYQ/e/nvqixUbuBbSMQn3dTfk5BjV7jAokK1FJgTDId5is
+         j4sxsEpktfaUE1WLYBofp+dlA98nwB2WAxw42OdibziuLzgnre7FsMLsnyKYA1YJFDSr
+         A11Sm7oQ5PEW9jt75wMdWqE+4QEeTqWCqir7j6KB79mD/WgMc9bxyldfhGIrF/irnPfr
+         LazA==
+X-Forwarded-Encrypted: i=1; AJvYcCXamEldcblSO+LKyQE3vdxDOSFfaJeKaLp1KPi0ghqcgw+Byye8XmeFi//oYt7zgFNU8AZpqOd2otmCRwXJgQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwvP5kZk4cP1o8It51Urxo2IdMv8vOZ7X0YJ5Wy6YGnp7156IDX
+	PaSFanHgCvsSaastiXheNimrs0zF6OVKt8dGBIZG+s2eVWkxcbks56LvD70JAC2chCo=
+X-Gm-Gg: AY/fxX7zOsi0Jq7QL7DMvhaF186h0bLVVHjBbdFzCWXn2fvWvATkmsxbbnN4xnkfwNY
+	Ji23ENShBH+/4cwk1F9k9Py1cWDHco5LFMk7zRWOj1a25n+D2my53z8WkO/zmT98FeiuejvlvSP
+	4DjRrtS1fCoethfNaoNdLenzypmRtDdVwaQoRkTbWfcAnQTP1GAdDQxIq1sEEi8ksT0nqC+GcY2
+	/deVuw7/azQ8XK6kCmpZWlQEyvrdgOvSNP558P9eNQYfp2CUaEUJyWvAffMQsxzdZ9qqgclnK91
+	ctlQYy9u5kKH6EYkGYL04kY512UKKmlHD6MVK+k5Uc2fD8cfs2uWzd36qGThzWzWypIzeKChKL8
+	08WmqJvFrzdZ6IJlmRSqbA0O/eDSygi3eXtDWemF6mNnE0/y8BqP7Ql7IElNqiNfxRPnhUK87rk
+	hWxtgXtz3vbwlNjg1t
+X-Google-Smtp-Source: AGHT+IFSQVZMcGV29sXDZH0xqe15IWvPTvLFEpBUAAJe4SAiUdACFbB2oBIQEWvMB6YCLNhKIB22Vw==
+X-Received: by 2002:a05:620a:40c2:b0:890:1cd0:efde with SMTP id af79cd13be357-8c08fd32f46mr2872904385a.64.1766590775335;
+        Wed, 24 Dec 2025 07:39:35 -0800 (PST)
 Received: from ?IPv6:2606:6d00:17:7b4b::c41? ([2606:6d00:17:7b4b::c41])
-        by smtp.gmail.com with ESMTPSA id d75a77b69052e-4f4ac66841bsm120154681cf.30.2025.12.24.07.29.41
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-8c0970f5fcdsm1308533385a.29.2025.12.24.07.39.34
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 24 Dec 2025 07:29:41 -0800 (PST)
-Message-ID: <8c3a3299036dd1bab158bdcd589abd027d2864b6.camel@ndufresne.ca>
-Subject: Re: [PATCH v2 10/22] media: rockchip: rga: prepare cmdbuf on
- streamon
+        Wed, 24 Dec 2025 07:39:34 -0800 (PST)
+Message-ID: <02ac025c0ecf17354377c7f2c2fc83b40a3a41e1.camel@ndufresne.ca>
+Subject: Re: [PATCH v2 11/22] media: rockchip: rga: check scaling factor
 From: Nicolas Dufresne <nicolas@ndufresne.ca>
 To: Sven =?ISO-8859-1?Q?P=FCschel?= <s.pueschel@pengutronix.de>, Jacob Chen
 	 <jacob-chen@iotwrt.com>, Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
@@ -82,10 +81,10 @@ To: Sven =?ISO-8859-1?Q?P=FCschel?= <s.pueschel@pengutronix.de>, Jacob Chen
 Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
 	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
 	devicetree@vger.kernel.org, kernel@pengutronix.de
-Date: Wed, 24 Dec 2025 10:29:41 -0500
-In-Reply-To: <20251203-spu-rga3-v2-10-989a67947f71@pengutronix.de>
+Date: Wed, 24 Dec 2025 10:39:33 -0500
+In-Reply-To: <20251203-spu-rga3-v2-11-989a67947f71@pengutronix.de>
 References: <20251203-spu-rga3-v2-0-989a67947f71@pengutronix.de>
-	 <20251203-spu-rga3-v2-10-989a67947f71@pengutronix.de>
+	 <20251203-spu-rga3-v2-11-989a67947f71@pengutronix.de>
 Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
  keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
  /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
@@ -102,8 +101,8 @@ Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
 User-Agent: Evolution 3.58.2 (3.58.2-1.fc43) 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251224_072943_845331_9F926376 
-X-CRM114-Status: GOOD (  20.41  )
+X-CRM114-CacheID: sfid-20251224_073936_850185_CD0DAD7F 
+X-CRM114-Status: GOOD (  30.40  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,164 +114,230 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============4021126795748429270=="
+Content-Type: multipart/mixed; boundary="===============8738008691772512047=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============4021126795748429270==
+--===============8738008691772512047==
 Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-wgUFX3W9vJo/GeY1uEul"
+	protocol="application/pgp-signature"; boundary="=-3yrJZ//37+CI7GA0IAKw"
 
 
---=-wgUFX3W9vJo/GeY1uEul
+--=-3yrJZ//37+CI7GA0IAKw
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-Hi,
-
 Le mercredi 03 d=C3=A9cembre 2025 =C3=A0 16:52 +0100, Sven P=C3=BCschel a =
 =C3=A9crit=C2=A0:
-> Prepare the command buffer on streamon to reuse it's contents instead of
-> completely writing it for every frame. Due to the stream settings being
-> fixed after a streamon we only need to replace the source and destination
-> addresses for each frame. This reduces the amount of CPU and memory
-> operations done in each frame.
+> Check the scaling factor to avoid potential problems. This is relevant
+> for the upcoming RGA3 support, as it can hang when the scaling factor
+> is exceeded.
+>=20
+> There are two relevant scenarios that have to be considered to protect
+> against invalid scaling values:
+>=20
+> When the output or capture is already streaming, setting the format on
+> the other side should consider the max scaling factor and clamp it
+> accordingly. This is only done in the streaming case, as it otherwise
+> may unintentionally clamp the value when the application sets the first
+> format (due to a default format on the other side).
+>=20
+> When the format is set on both sides first, then the format won't be
+> corrected by above means. Therefore the second streamon call has to
+> check the scaling factor and fail otherwise.
 
-My speculation is that flushing to device is usually more expensive then th=
-is,
-but I didn't check closely if you have enabled the caches. That being said,=
- this
-is good change. It highlight the inflexible nature of V4L2 imho, which in t=
-his
-case can be used to optimize.
+In codec specifications, we resolve this issue by resetting the capture for=
+mat
+every-time the output format is set. But without specification for color
+transforms, its impossible to say if this is right or wrong, and I don't ex=
+pect
+perfect interroperability between drivers until someone make the effort to
+specify this type of hardware.
 
-Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+What you describe is fine of course, but its a bit off nature of the way fo=
+rmat
+is normally being fixed by the driver to stay valid.
 
 >=20
 > Signed-off-by: Sven P=C3=BCschel <s.pueschel@pengutronix.de>
 > ---
-> =C2=A0drivers/media/platform/rockchip/rga/rga-hw.c | 13 +++++++++----
-> =C2=A0drivers/media/platform/rockchip/rga/rga.c=C2=A0=C2=A0=C2=A0 | 13 ++=
-++++++++++-
+> =C2=A0drivers/media/platform/rockchip/rga/rga-hw.c |=C2=A0 1 +
+> =C2=A0drivers/media/platform/rockchip/rga/rga-hw.h |=C2=A0 1 +
+> =C2=A0drivers/media/platform/rockchip/rga/rga.c=C2=A0=C2=A0=C2=A0 | 60 ++=
++++++++++++++++++++++++---
 > =C2=A0drivers/media/platform/rockchip/rga/rga.h=C2=A0=C2=A0=C2=A0 |=C2=A0=
  1 +
-> =C2=A03 files changed, 22 insertions(+), 5 deletions(-)
+> =C2=A04 files changed, 58 insertions(+), 5 deletions(-)
 >=20
 > diff --git a/drivers/media/platform/rockchip/rga/rga-hw.c b/drivers/media=
 /platform/rockchip/rga/rga-hw.c
-> index 56a2558539bfb..8cdfe089fd636 100644
+> index 8cdfe089fd636..2ed4f22a999d5 100644
 > --- a/drivers/media/platform/rockchip/rga/rga-hw.c
 > +++ b/drivers/media/platform/rockchip/rga/rga-hw.c
-> @@ -408,8 +408,6 @@ static void rga_cmd_set(struct rga_ctx *ctx,
-> =C2=A0{
-> =C2=A0	struct rockchip_rga *rga =3D ctx->rga;
-> =C2=A0
-> -	memset(ctx->cmdbuf_virt, 0, RGA_CMDBUF_SIZE * 4);
-> -
-> =C2=A0	rga_cmd_set_src_addr(ctx, src->dma_desc_pa);
-> =C2=A0	/*
-> =C2=A0	 * Due to hardware bug,
-> @@ -418,11 +416,9 @@ static void rga_cmd_set(struct rga_ctx *ctx,
-> =C2=A0	rga_cmd_set_src1_addr(ctx, dst->dma_desc_pa);
-> =C2=A0
-> =C2=A0	rga_cmd_set_dst_addr(ctx, dst->dma_desc_pa);
-> -	rga_cmd_set_mode(ctx);
-> =C2=A0
-> =C2=A0	rga_cmd_set_src_info(ctx, &src->offset);
-> =C2=A0	rga_cmd_set_dst_info(ctx, &dst->offset);
-> -	rga_cmd_set_trans_info(ctx);
-> =C2=A0
-> =C2=A0	rga_write(rga, RGA_CMD_BASE, ctx->cmdbuf_phy);
-> =C2=A0
-> @@ -431,6 +427,14 @@ static void rga_cmd_set(struct rga_ctx *ctx,
-> =C2=A0				=C2=A0=C2=A0 PAGE_SIZE, DMA_BIDIRECTIONAL);
-> =C2=A0}
-> =C2=A0
-> +static void rga_hw_setup_cmdbuf(struct rga_ctx *ctx)
-> +{
-> +	memset(ctx->cmdbuf_virt, 0, RGA_CMDBUF_SIZE * 4);
-> +
-> +	rga_cmd_set_mode(ctx);
-> +	rga_cmd_set_trans_info(ctx);
-> +}
-> +
-> =C2=A0static void rga_hw_start(struct rockchip_rga *rga,
-> =C2=A0			 struct rga_vb_buffer *src,=C2=A0 struct rga_vb_buffer *dst)
-> =C2=A0{
-> @@ -622,6 +626,7 @@ const struct rga_hw rga2_hw =3D {
+> @@ -624,6 +624,7 @@ const struct rga_hw rga2_hw =3D {
+> =C2=A0	.max_width =3D MAX_WIDTH,
+> =C2=A0	.min_height =3D MIN_HEIGHT,
 > =C2=A0	.max_height =3D MAX_HEIGHT,
+> +	.max_scaling_factor =3D MAX_SCALING_FACTOR,
 > =C2=A0	.stride_alignment =3D 4,
 > =C2=A0
-> +	.setup_cmdbuf =3D rga_hw_setup_cmdbuf,
-> =C2=A0	.start =3D rga_hw_start,
-> =C2=A0	.handle_irq =3D rga_handle_irq,
-> =C2=A0	.get_version =3D rga_get_version,
+> =C2=A0	.setup_cmdbuf =3D rga_hw_setup_cmdbuf,
+> diff --git a/drivers/media/platform/rockchip/rga/rga-hw.h b/drivers/media=
+/platform/rockchip/rga/rga-hw.h
+> index f4752aa823051..fffcab0131225 100644
+> --- a/drivers/media/platform/rockchip/rga/rga-hw.h
+> +++ b/drivers/media/platform/rockchip/rga/rga-hw.h
+> @@ -14,6 +14,7 @@
+> =C2=A0
+> =C2=A0#define MIN_WIDTH 34
+> =C2=A0#define MIN_HEIGHT 34
+> +#define MAX_SCALING_FACTOR 16
+> =C2=A0
+> =C2=A0#define RGA_TIMEOUT 500
+> =C2=A0
 > diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/pl=
 atform/rockchip/rga/rga.c
-> index 592c977a07cf3..f02ae02de26ca 100644
+> index f02ae02de26ca..46dc94db6f85e 100644
 > --- a/drivers/media/platform/rockchip/rga/rga.c
 > +++ b/drivers/media/platform/rockchip/rga/rga.c
-> @@ -523,6 +523,17 @@ static int vidioc_s_selection(struct file *file, voi=
-d *priv,
+> @@ -346,18 +346,47 @@ static int vidioc_g_fmt(struct file *file, void *pr=
+iv, struct v4l2_format *f)
+> =C2=A0static int vidioc_try_fmt(struct file *file, void *priv, struct v4l=
+2_format *f)
+> =C2=A0{
+> =C2=A0	struct v4l2_pix_format_mplane *pix_fmt =3D &f->fmt.pix_mp;
+> -	struct rockchip_rga *rga =3D video_drvdata(file);
+> +	struct rga_ctx *ctx =3D file_to_rga_ctx(file);
+> +	struct rockchip_rga *rga =3D ctx->rga;
+> =C2=A0	const struct rga_hw *hw =3D rga->hw;
+> =C2=A0	struct rga_fmt *fmt;
+> +	u32 min_width =3D hw->min_width;
+> +	u32 max_width =3D hw->max_width;
+> +	u32 min_height =3D hw->min_height;
+> +	u32 max_height =3D hw->max_height;
+> =C2=A0
+> =C2=A0	fmt =3D rga_fmt_find(rga, pix_fmt->pixelformat);
+> =C2=A0	if (!fmt)
+> =C2=A0		fmt =3D &hw->formats[0];
+> =C2=A0
+> -	pix_fmt->width =3D clamp(pix_fmt->width,
+> -			=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 hw->min_width, hw->max_width);
+> -	pix_fmt->height =3D clamp(pix_fmt->height,
+> -				hw->min_height, hw->max_height);
+> +	if (V4L2_TYPE_IS_OUTPUT(f->type) &&
+> +	=C2=A0=C2=A0=C2=A0 v4l2_m2m_get_dst_vq(ctx->fh.m2m_ctx)->streaming) {
+
+What if userspace wanted to get the buffer size computed, so it can allocat=
+e
+externally before it calls streamoff ? Hans did mention recently that try
+function should only be state aware if specified.
+
+I'd like other reviewers feedback on what should be done here, of course wr=
+iting
+a spec would be ideal.
+
+Nicolas
+
+> +		min_width =3D
+> +			MAX(min_width, DIV_ROUND_UP(ctx->out.pix.width,
+> +						=C2=A0=C2=A0=C2=A0 hw->max_scaling_factor));
+> +		max_width =3D MIN(max_width,
+> +				ctx->out.pix.width * hw->max_scaling_factor);
+> +		min_height =3D
+> +			MAX(min_height, DIV_ROUND_UP(ctx->out.pix.height,
+> +						=C2=A0=C2=A0=C2=A0=C2=A0 hw->max_scaling_factor));
+> +		max_height =3D MIN(max_height,
+> +				 ctx->out.pix.height * hw->max_scaling_factor);
+> +	} else if (V4L2_TYPE_IS_CAPTURE(f->type) &&
+> +		=C2=A0=C2=A0 v4l2_m2m_get_src_vq(ctx->fh.m2m_ctx)->streaming) {
+> +		min_width =3D
+> +			MAX(min_width, DIV_ROUND_UP(ctx->in.pix.width,
+> +						=C2=A0=C2=A0=C2=A0 hw->max_scaling_factor));
+> +		max_width =3D MIN(max_width,
+> +				ctx->in.pix.width * hw->max_scaling_factor);
+> +		min_height =3D
+> +			MAX(min_height, DIV_ROUND_UP(ctx->in.pix.height,
+> +						=C2=A0=C2=A0=C2=A0=C2=A0 hw->max_scaling_factor));
+> +		max_height =3D MIN(max_height,
+> +				 ctx->in.pix.height * hw->max_scaling_factor);
+> +	}
+> +
+> +	pix_fmt->width =3D clamp(pix_fmt->width, min_width, max_width);
+> +	pix_fmt->height =3D clamp(pix_fmt->height, min_height, max_height);
+> =C2=A0
+> =C2=A0	v4l2_fill_pixfmt_mp_aligned(pix_fmt, pix_fmt->pixelformat,
+> =C2=A0				=C2=A0=C2=A0=C2=A0 pix_fmt->width, pix_fmt->height, hw->stride_=
+alignment);
+> @@ -523,12 +552,33 @@ static int vidioc_s_selection(struct file *file, vo=
+id *priv,
 > =C2=A0	return ret;
 > =C2=A0}
 > =C2=A0
-> +static int vidioc_streamon(struct file *file, void *priv,
-> +			=C2=A0=C2=A0 enum v4l2_buf_type type)
+> +static bool check_scaling(const struct rga_hw *hw, u32 src_size, u32 dst=
+_size)
 > +{
-> +	struct rga_ctx *ctx =3D file_to_rga_ctx(file);
-> +	const struct rga_hw *hw =3D ctx->rga->hw;
-> +
-> +	hw->setup_cmdbuf(ctx);
-> +
-> +	return v4l2_m2m_streamon(file, ctx->fh.m2m_ctx, type);
+> +	if (src_size < dst_size)
+> +		return src_size * hw->max_scaling_factor >=3D dst_size;
+> +	else
+> +		return dst_size * hw->max_scaling_factor >=3D src_size;
 > +}
 > +
-> =C2=A0static const struct v4l2_ioctl_ops rga_ioctl_ops =3D {
-> =C2=A0	.vidioc_querycap =3D vidioc_querycap,
+> =C2=A0static int vidioc_streamon(struct file *file, void *priv,
+> =C2=A0			=C2=A0=C2=A0 enum v4l2_buf_type type)
+> =C2=A0{
+> =C2=A0	struct rga_ctx *ctx =3D file_to_rga_ctx(file);
+> =C2=A0	const struct rga_hw *hw =3D ctx->rga->hw;
 > =C2=A0
-> @@ -547,7 +558,7 @@ static const struct v4l2_ioctl_ops rga_ioctl_ops =3D =
-{
-> =C2=A0	.vidioc_subscribe_event =3D v4l2_ctrl_subscribe_event,
-> =C2=A0	.vidioc_unsubscribe_event =3D v4l2_event_unsubscribe,
+> +	if ((V4L2_TYPE_IS_OUTPUT(type) &&
+> +	=C2=A0=C2=A0=C2=A0=C2=A0 v4l2_m2m_get_dst_vq(ctx->fh.m2m_ctx)->streamin=
+g) ||
+> +	=C2=A0=C2=A0=C2=A0 (V4L2_TYPE_IS_CAPTURE(type) &&
+> +	=C2=A0=C2=A0=C2=A0=C2=A0 v4l2_m2m_get_src_vq(ctx->fh.m2m_ctx)->streamin=
+g)) {
+> +		/*
+> +		 * As the other side is already streaming,
+> +		 * check that the max scaling factor isn't exceeded.
+> +		 */
+> +		if (!check_scaling(hw, ctx->in.pix.width, ctx->out.pix.width) ||
+> +		=C2=A0=C2=A0=C2=A0 !check_scaling(hw, ctx->in.pix.height, ctx->out.pix=
+.height))
+> +			return -EINVAL;
+> +	}
+> +
+> =C2=A0	hw->setup_cmdbuf(ctx);
 > =C2=A0
-> -	.vidioc_streamon =3D v4l2_m2m_ioctl_streamon,
-> +	.vidioc_streamon =3D vidioc_streamon,
-> =C2=A0	.vidioc_streamoff =3D v4l2_m2m_ioctl_streamoff,
-> =C2=A0
-> =C2=A0	.vidioc_g_selection =3D vidioc_g_selection,
+> =C2=A0	return v4l2_m2m_streamon(file, ctx->fh.m2m_ctx, type);
 > diff --git a/drivers/media/platform/rockchip/rga/rga.h b/drivers/media/pl=
 atform/rockchip/rga/rga.h
-> index 0aef348dddb95..93162b118d069 100644
+> index 93162b118d069..d02d5730b4e3b 100644
 > --- a/drivers/media/platform/rockchip/rga/rga.h
 > +++ b/drivers/media/platform/rockchip/rga/rga.h
-> @@ -154,6 +154,7 @@ struct rga_hw {
+> @@ -152,6 +152,7 @@ struct rga_hw {
+> =C2=A0	size_t cmdbuf_size;
+> =C2=A0	u32 min_width, min_height;
 > =C2=A0	u32 max_width, max_height;
+> +	u8 max_scaling_factor;
 > =C2=A0	u8 stride_alignment;
 > =C2=A0
-> +	void (*setup_cmdbuf)(struct rga_ctx *ctx);
-> =C2=A0	void (*start)(struct rockchip_rga *rga,
-> =C2=A0		=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 struct rga_vb_buffer *src, struct =
-rga_vb_buffer *dst);
-> =C2=A0	bool (*handle_irq)(struct rockchip_rga *rga);
+> =C2=A0	void (*setup_cmdbuf)(struct rga_ctx *ctx);
 
---=-wgUFX3W9vJo/GeY1uEul
+--=-3yrJZ//37+CI7GA0IAKw
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: This is a digitally signed message part
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaUwG5QAKCRDZQZRRKWBy
-9O4FAP9E2aNeLRZt1zQcbEal6Ub+hRLjCwZuHvx4d6mo+exV+gD8D3fEU7lK1Rbl
-U4jgUBplP0NBwSIZ6m7R2BXkERRjOQA=
-=EAR/
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaUwJNQAKCRDZQZRRKWBy
+9It9AQCB0y2l7f5a6te5CTy3NSkJUT9TKJwDwpPMj6Jv9IBbFQEAv5SvNGpL5MSD
+LnCfcbIUIQkFc1BIIdG6Tp36lWNu0g4=
+=i83f
 -----END PGP SIGNATURE-----
 
---=-wgUFX3W9vJo/GeY1uEul--
+--=-3yrJZ//37+CI7GA0IAKw--
 
 
---===============4021126795748429270==
+--===============8738008691772512047==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -283,5 +348,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============4021126795748429270==--
+--===============8738008691772512047==--
 
