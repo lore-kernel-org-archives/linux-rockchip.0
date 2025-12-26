@@ -4,76 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9BADE82CAA
-	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Dec 2025 03:44:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB6E4E82CDE
+	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Dec 2025 04:17:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id
-	:Date:Subject:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=vK8tjo/e2ksrYfae89wKuThCDwdD/IQml1X/PGN7kyE=; b=DlKt6mRb/1hX3k
-	osuQ1YPgG7WW6RuYU7xbbiC6sczJhQwxawpiLlbVzsQczdCntHLlc33KD3fWIeE6Avy3aQ94tmlnX
-	fs6sKK+Wn7e90R3xBRQcQ/pMllUXlirBw+xipG3pf0BlWp+LrzjbbB30PqvmAIS4i76jM/lv73X6g
-	S/W0YtILcOg3fysGOetSCjjDPGiuU19jyy1LNq5wUO0XCBupL7FHGGJVSG2Sp7F0QsMm0kjYvQjXx
-	rqt8cqoUwxq/5IlyGsUqpJvQgMHMkvPYZafMUngil4q618+ZBE3najWYFXnBGaEwgvA4MHI8/xcse
-	V9fmugXJdUdctHqTGp4A==;
+	List-Owner; bh=ZuLl0IHQoSkZ8LUV+7ga2kMvOZYnc+E5ZeNoX8anJuc=; b=mqlwHCErIgZWPb
+	iZnLtgnr3sCwozLs0YtbxDYe5AoWHas6ghuMavjvKcziN9cKWaNeAHlsKj7mkN7PQW25VOGM7+Ls6
+	GKCliye7CcFRwM43g3cJChMhjqgPWv5shA871Ck2LGWufvKN9XfpvA0eSJkdWwfdjgtOSiEQgVGR5
+	0x2RQJyTHLo975RHVjKGVVUUs/9sZjkt2vjEX6NHe4aBwT0BfEFkmr0GKkbir6fOVwd65jcb4V5D4
+	ZHGbBarsArhlX1yYcQQnEfRhECJC5AcU2oYu3JHAEGIAFLKZW0VyhX1QQfntUyOmix+A41iQvNhd1
+	REfa1AKuHiXyXNvK2+jA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vYykW-00000000sRp-27UV;
-	Fri, 26 Dec 2025 03:44:20 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vYzGa-00000000taX-23Jl;
+	Fri, 26 Dec 2025 04:17:28 +0000
+Received: from smtp21.cstnet.cn ([159.226.251.21] helo=cstnet.cn)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vYykT-00000000sQv-2VtU;
-	Fri, 26 Dec 2025 03:44:17 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 59E086001A;
-	Fri, 26 Dec 2025 03:44:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 02C01C113D0;
-	Fri, 26 Dec 2025 03:44:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1766720656;
-	bh=Ou87PO0R/OWNEEu0ns8K1kPWQXC2moP4qrOtG3wy9A4=;
-	h=From:Subject:Date:To:Cc:Reply-To:From;
-	b=JkmsebiB6tMRQYMmXq3NVYB38HVoHVnwpUkosPj956QFLfUdG6RdmfWe9Qxl2v8hB
-	 VpPWqAHkWfv8DZqbibVmloL36GeHUljL0zqFvBWOkBkSN97SDtN9IDhmT9cfAZtG9A
-	 8677Q6yOJSGJheM9vZHZKbh2+t0f+LMyrMtle7LjRE+NhJbWAMtAa5eTMWRoTXWHjm
-	 saA9RvAu/C/qLgKwHo5ShhP1KT9YWHGldXOslqhWGNF6wko6sxoDrtvfd87dyVQanO
-	 sIIaKi5L7oMUpg2x80aF338vYk5X+fdG8D3kTcqY23R/Aqrj6dtz6gWZvl809ABTCR
-	 hbpB4Hdz8FRYw==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DEB1FE776C0;
-	Fri, 26 Dec 2025 03:44:15 +0000 (UTC)
-From: Rudraksha Gupta via B4 Relay <devnull+guptarud.gmail.com@kernel.org>
-Subject: [PATCH v6 0/2] Upstreaming Pinephone Pro Patches
-Date: Thu, 25 Dec 2025 19:43:18 -0800
-Message-Id: <20251225-ppp_light_accel_mag_vol-down-v6-0-8c79a4e87001@gmail.com>
+	id 1vYzGU-00000000tZo-3LU6;
+	Fri, 26 Dec 2025 04:17:26 +0000
+Received: from dfae2b116770.home.arpa (unknown [124.16.138.129])
+	by APP-01 (Coremail) with SMTP id qwCowAAnzWhNDE5psCHdAQ--.33559S2;
+	Fri, 26 Dec 2025 12:17:17 +0800 (CST)
+From: Wentao Liang <vulab@iscas.ac.cn>
+To: vkoul@kernel.org,
+	kishon@kernel.org,
+	heiko@sntech.de
+Cc: linux-phy@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Wentao Liang <vulab@iscas.ac.cn>,
+	stable@vger.kernel.org
+Subject: [PATCH] phy: rockchip: inno-usb2: Fix a double free bug in rockchip_usb2phy_probe()
+Date: Fri, 26 Dec 2025 04:17:11 +0000
+Message-Id: <20251226041711.2369638-1-vulab@iscas.ac.cn>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAFYETmkC/5XOTW6DMBCG4atEXteVbfxHV71HFaHBHoMlwAgiN
- 1XE3etkUaF0Qbt8Z/F8cyMrLhFX8na6kQVzXGOaSuiXE3E9TB3S6EsTwYRitWB0nudmiF1/acA
- 5HJoRuiangfr0OVHLjbMyeEDrSSHmBUO8PviPc+k+rpe0fD3WMr9f/whnThl1tm2dr1BgLd+7E
- eLw6tJI7nAWe4wfYKJgqFvntAMjAZ+x6j9YVTADQWvFgzH46zO5x+oDTBZMq9oGIXwlFX/G1A/
- GuZAHmCpYqIEzYKAYtnts27Zv3tJQ4fwBAAA=
-X-Change-ID: 20250920-ppp_light_accel_mag_vol-down-817c84fdae8d
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- phone-devel@vger.kernel.org, Rudraksha Gupta <guptarud@gmail.com>, 
- Ondrej Jirman <megi@xff.cz>, "Leonardo G. Trombetta" <lgtrombetta@gmx.com>, 
- Pavel Machek <pavel@ucw.cz>, Martijn Braam <martijn@brixit.nl>, 
- =?utf-8?q?Kamil_Trzci=C5=84ski?= <ayufan@ayufan.eu>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1766720655; l=3050;
- i=guptarud@gmail.com; s=20240916; h=from:subject:message-id;
- bh=Ou87PO0R/OWNEEu0ns8K1kPWQXC2moP4qrOtG3wy9A4=;
- b=NXdEf3OwQcE6VqJFKTxbvswHHnjmSS571lQw4+wcJjV7dCkSrwcycAfoIy/SeSYs2l/L/RQHz
- UIJaYULe4ggBZNaMuVIc+OofOTaJ3ywvj5163p+kmRPRtxgWsCzU5VE
-X-Developer-Key: i=guptarud@gmail.com; a=ed25519;
- pk=ETrudRugWAtOpr0OhRiheQ1lXM4Kk4KGFnBySlKDi2I=
-X-Endpoint-Received: by B4 Relay for guptarud@gmail.com/20240916 with
- auth_id=211
-X-Original-From: Rudraksha Gupta <guptarud@gmail.com>
+X-CM-TRANSID: qwCowAAnzWhNDE5psCHdAQ--.33559S2
+X-Coremail-Antispam: 1UD129KBjvJXoW7uw18KF15Wr15Wry3Jr43Jrb_yoW8GrW8pa
+	yDCrWDtrW8Kay8Wr1qyrn8ZFsYyayDt3yxGFZ2k3WfZ3Zxtw1DZa4fuFyUursxJFW8ZFsx
+	Jrs8ta4UAF43Zw7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDU0xBIdaVrnRJUUUvv14x267AKxVW8JVW5JwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
+	rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK02
+	1l84ACjcxK6xIIjxv20xvE14v26r4j6ryUM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26r4j
+	6F4UM28EF7xvwVC2z280aVAFwI0_Cr1j6rxdM28EF7xvwVC2z280aVCY1x0267AKxVWxJr
+	0_GcWle2I262IYc4CY6c8Ij28IcVAaY2xG8wAqx4xG64xvF2IEw4CE5I8CrVC2j2WlYx0E
+	2Ix0cI8IcVAFwI0_Wrv_ZF1lYx0Ex4A2jsIE14v26rkl6F8dMcvjeVCFs4IE7xkEbVWUJV
+	W8JwACjcxG0xvY0x0EwIxGrwACjI8F5VA0II8E6IAqYI8I648v4I1lc7CjxVAaw2AFwI0_
+	Jw0_GFylc2xSY4AK67AK6r45MxAIw28IcxkI7VAKI48JMxC20s026xCaFVCjc4AY6r1j6r
+	4UMI8I3I0E5I8CrVAFwI0_Jr0_Jr4lx2IqxVCjr7xvwVAFwI0_JrI_JrWlx4CE17CEb7AF
+	67AKxVWUtVW8ZwCIc40Y0x0EwIxGrwCI42IY6xIIjxv20xvE14v26r1j6r1xMIIF0xvE2I
+	x0cI8IcVCY1x0267AKxVWUJVW8JwCI42IY6xAIw20EY4v20xvaj40_Jr0_JF4lIxAIcVC2
+	z280aVAFwI0_Jr0_Gr1lIxAIcVC2z280aVCY1x0267AKxVWUJVW8JbIYCTnIWIevJa73Uj
+	IFyTuYvjTRAPEfUUUUU
+X-Originating-IP: [124.16.138.129]
+X-CM-SenderInfo: pyxotu46lvutnvoduhdfq/1tbiDAgIA2lN4TqlYQAAs0
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251225_201723_303340_63E947F8 
+X-CRM114-Status: UNSURE (   9.57  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,80 +78,49 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: guptarud@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Throughout the years, many have contributed to the Pinephone Pro (ppp)
-development. Unfortunately, these patches are scattered around various
-repositories in different states.
+The for_each_available_child_of_node() calls of_node_put() to
+release child_np in each success loop. After breaking from the
+loop with the child_np has been released, the code will jump to
+the put_child label and will call the of_node_put() again if the
+devm_request_threaded_irq() fails. These cause a double free bug.
 
-I will be attempting to upstream these patches. I will start off with the
-following small series:
-- Add light/proximity sensor support
-  - Link: https://codeberg.org/megi/linux/commit/f171bc7013bc7ad3de9af817bfbcbfa548ebe01c
-- Add magnetometer sensor support
-  - Link: https://codeberg.org/megi/linux/commit/2f7e67f451f16eaf15b81aa1dbdf126d54927d35
-- Add mount-matrix for magnetometer
-  - Link: https://codeberg.org/megi/linux/commit/d7cd2eab931e32fa94408a96d73b4e6c0616107a
+Fix by using a separate label to avoid the duplicate of_node_put().
 
-Already upstreamed:
-- Add accelerometer sensor support
-  - Link: https://codeberg.org/megi/linux/commit/b0bb7633e073a6760fa213b8c4a78ea2e73c7bf1
-- Fix voltage threshold for volume down key
-  - Link: https://codeberg.org/megi/linux/commit/7c496a5cc27ed4e38b740f36c2d8b2c62f80ae54
-
-Signed-off-by: Rudraksha Gupta <guptarud@gmail.com>
+Fixes: ed2b5a8e6b98 ("phy: phy-rockchip-inno-usb2: support muxed interrupts")
+Cc: stable@vger.kernel.org
+Signed-off-by: Wentao Liang <vulab@iscas.ac.cn>
 ---
-Changes in v6:
-- rebased to 6.18
-- sorted nodes alphabetically in compass and light/proximity
-- added pinctrl to compass
-- dropped accelerometer and volume patches as they are merged
-- Link to v5: https://lore.kernel.org/r/20251124-ppp_light_accel_mag_vol-down-v5-0-f9a10a0a50eb@gmail.com
+ drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-Changes in v5:
-- use monitor-sensor to verify accelerometer's mount-matrix, lux, proximity
-- use Leonardo's compass add to verify the compass's mount matrix
-- Link to v4: https://lore.kernel.org/r/20250929-ppp_light_accel_mag_vol-down-v4-0-6598f22d3451@gmail.com
-
-Changes in v4:
-- remove leda-supply and vdd-supply from dts to suppress warning
-- credit Martijn and Kamil for the light sensor and accelerometer patches
-  - Link: https://fosstodon.org/@martijnbraam/115272859701389599
-  - Link: https://codeberg.org/megi/linux/commit/fc5660685ebe4ecf60226bfa27a1ce47c1c1d020
-- combine the magnetometer related patches
-- corrected accelerometer's mount matrix to Documentation/devicetree/bindings/iio/mount-matrix.txt
-- filled out commit messages
-- rebased onto v6.17
-- Link to v3: https://lore.kernel.org/r/20250921-ppp_light_accel_mag_vol-down-v3-0-7af6651f77e4@gmail.com
-
-Changes in v3:
-- change magnetometer mount matrix
-- update volume button threshold
-- Link to v2: https://lore.kernel.org/r/20250921-ppp_light_accel_mag_vol-down-v2-0-e6bcc6ca74ae@gmail.com
-
-Changes in v2:
-- remove usb-typec node in dts from light/proximity sensor patch
-- Link to v1: https://lore.kernel.org/r/20250920-ppp_light_accel_mag_vol-down-v1-0-c8bbcd3e2e94@gmail.com
-
----
-Ondrej Jirman (2):
-      arm64: dts: rockchip: Add magnetometer sensor to Pinephone Pro
-      arm64: dts: rockchip: Add light/proximity sensor to Pinephone Pro
-
- .../boot/dts/rockchip/rk3399-pinephone-pro.dts     | 39 ++++++++++++++++++++++
- 1 file changed, 39 insertions(+)
----
-base-commit: 7d0a66e4bb9081d75c82ec4957c50034cb0ea449
-change-id: 20250920-ppp_light_accel_mag_vol-down-817c84fdae8d
-
-Best regards,
+diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
+index b0f23690ec30..f754c3b1c357 100644
+--- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
++++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
+@@ -1491,7 +1491,7 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)
+ 						rphy);
+ 		if (ret) {
+ 			dev_err_probe(rphy->dev, ret, "failed to request usb2phy irq handle\n");
+-			goto put_child;
++			goto ret_error;
+ 		}
+ 	}
+ 
+@@ -1499,6 +1499,7 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)
+ 
+ put_child:
+ 	of_node_put(child_np);
++ret_error:
+ 	return ret;
+ }
+ 
 -- 
-Rudraksha Gupta <guptarud@gmail.com>
-
+2.34.1
 
 
 _______________________________________________
