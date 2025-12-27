@@ -4,67 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27809E8FDBA
-	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Dec 2025 22:32:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1F3EE8FDB1
+	for <linux-rockchip@archiver.kernel.org>; Sat, 27 Dec 2025 02:41:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=mr2m5I6vvBM84Gd44z71ket6IqMIigwzccKZjm4IDD0=; b=vaWKBgyHjpCuCV
-	0nWHJLvGd2cCsr1Aoj4EdidS2kFLgTTIf3cBcq/ptJ6Aq6gUw0ogz40RIx/BGvoWDTxF8ip/seXTO
-	S3WL9p2Q5gqUp9vh0zpVYru4gQtXG1NU4ZLFhq8Sns7qsip7hsVi2jEgu2Ze8xZ6AfWuMICCgSmM1
-	aYh4PUn+LxaRsElUbYNOE35dfL32U76ENVv5biS1BQRIj+nY7UoNgtLYMkWYSC+gcMyKRkLKP+KKe
-	VMqdyqnkoFGnKH8NfpEjCbu677nFp8zsxGekP+iAwWJtuL1TulqV0FTt9nGKzE91+k+Mpar2wXpzF
-	FYuIcGvt8Xp5e0JJ9STw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=qw1SBF0FZXXq+DgXECTR+hjPCHgzHruUzH27f1qerqU=; b=nlODEbYbbbzj3/
+	CIvSO80AeeJ5MMYZ02k+s3cBrzRbEHrGopWBkqZG4d35H3bfXDyvoJGPBSKMJql3Y6WhOLfgEKiJO
+	K5nvDKvZ8R8Lkl61J8kBceIR/dq1lHsvSbO630OV7lFBeqRWoSVk0ugY6BYUMAEiTrx+P7FuO40It
+	1XeA7R7TYIchZkpW3Vtol1n5+QfYfJHrkospnM49MRWxtfpYW+vyLKA7d2iyVCweb0+RmxsunXhov
+	ihOBLY/fp6ZKW7OMEinlhHUX5+R4lzkzIkt+B2tdi8n3d8X72hZsWZgaAQ0dAw/Tqa9ZT2wke4TrH
+	FjtLbxD7uRv+KTla5MiA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vZGLt-00000001WG6-2q7X;
-	Fri, 26 Dec 2025 22:32:05 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vZKEq-00000001ejN-0k3K;
+	Sat, 27 Dec 2025 02:41:04 +0000
+Received: from mail-m1094.netease.com ([154.81.10.94])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vZGLq-00000001WFZ-3rNc;
-	Fri, 26 Dec 2025 22:32:04 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 83536444A7;
-	Fri, 26 Dec 2025 22:32:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 06D7EC4CEF7;
-	Fri, 26 Dec 2025 22:32:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1766788321;
-	bh=J5Jqm5xsdySK6xnw1VOys1NDqCq9XV/QNBpwKwi1/rM=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=b1HEiD2EHgPf9ffbPpEE6A2XqMeKh/t3qOKgip2nJydL4o3hl5o43AkPq/jBtUmIF
-	 478b6PN5m9qR3iMtaxcoWaTX90c/Yqog9RuZBT55YbNj+C4bTYrXtIKMpv9fdC+SXS
-	 NY10aMu1C4iiovc9Qh8M0wCPraOdrLjyDbUzKqLIGTP6X8FrjS2An2IMHP5zZ8L36M
-	 JHcTs1S61D01i9oLu1Ey7xcj4vVn4r9jVjmeH0V7YIe9tMVH0IRJ5iGgbxgcHDIwVa
-	 K5K3TxXbCqnsWRYKvj5+738dMefEX4SZ8ptQoSRdIv7o2EsMk22ECxvJdZh0JApuTe
-	 oqJEptSeNxHLA==
-Date: Fri, 26 Dec 2025 16:31:59 -0600
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Niklas Cassel <cassel@kernel.org>
-Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	FUKAUMI Naoki <naoki@radxa.com>,
-	Krishna chaitanya chundru <quic_krichai@quicinc.com>,
-	Damien Le Moal <dlemoal@kernel.org>, stable@vger.kernel.org,
-	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	Ilpo =?utf-8?B?SsOkcnZpbmVu?= <ilpo.jarvinen@linux.intel.com>
-Subject: Re: [PATCH v2 1/6] Revert "PCI: dw-rockchip: Don't wait for link
- since we can detect Link Up"
-Message-ID: <20251226223159.GA4143516@bhelgaas>
+	id 1vZKEl-00000001eir-2mlV;
+	Sat, 27 Dec 2025 02:41:02 +0000
+Received: from [172.16.12.16] (gy-adaptive-ssl-proxy-2-entmail-virt205.gy.ntes [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 2eb991a79;
+	Sat, 27 Dec 2025 10:40:46 +0800 (GMT+08:00)
+Message-ID: <85032ae4-4d82-4884-aa7c-b69fee76d509@rock-chips.com>
+Date: Sat, 27 Dec 2025 10:40:45 +0800
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20251222064207.3246632-9-cassel@kernel.org>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 6/7] dt-bindings: pinctrl: rockchip: Add RMIO
+ controller binding
+To: Linus Walleij <linusw@kernel.org>
+Cc: Linus Walleij <linus.walleij@linaro.org>, Heiko Stuebner
+ <heiko@sntech.de>, Bartosz Golaszewski <brgl@bgdev.pl>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, linux-gpio@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ tao.huang@rock-chips.com
+References: <20251216112053.1927852-1-ye.zhang@rock-chips.com>
+ <20251216112053.1927852-7-ye.zhang@rock-chips.com>
+ <CAD++jLntu4LY=VHOMSXeLKXOBD9MTNziv47B0qkDjxUa1xAsng@mail.gmail.com>
+From: Ye Zhang <ye.zhang@rock-chips.com>
+In-Reply-To: <CAD++jLntu4LY=VHOMSXeLKXOBD9MTNziv47B0qkDjxUa1xAsng@mail.gmail.com>
+X-HM-Tid: 0a9b5dae0c4309d8kunm0072215ab85e90
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQkxPS1YZTk9IGR4YS0IeQxpWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=S82G0n9alxeC/lJ7wczOryWq01BiBFxbD/UAUrYkHAT5q4Gw2jqum7W2VTN3FnmUURwmsfRZc3tjkMpsZjWkngiChIgVP7F+9x/NHNkMdbaMClH28qqiyG9ICq1N0tgwznp1JGm03WC2sw9P7+SpBCDRE95qATcYzcGMl0OO1j8=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=O4w+UFBbBnd7fGgwKE2LjjzpfQNimm6h/LQPdpbH+AY=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251226_143203_039060_E7720A7F 
-X-CRM114-Status: GOOD (  20.84  )
+X-CRM114-CacheID: sfid-20251226_184100_239780_F6535BE6 
+X-CRM114-Status: GOOD (  24.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,81 +72,94 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-[+cc Ilpo]
-
-On Mon, Dec 22, 2025 at 07:42:08AM +0100, Niklas Cassel wrote:
-> This reverts commit ec9fd499b9c60a187ac8d6414c3c343c77d32e42.
-> 
-> While this fake hotplugging was a nice idea, it has shown that this feature
-> does not handle PCIe switches correctly:
-> pci_bus 0004:43: busn_res: can not insert [bus 43-41] under [bus 42-41] (conflicts with (null) [bus 42-41])
-
-Apart from the actual problem you're fixing, it looks like some of our
-bus number resource setup is a little deficient here.  The "43-41" and
-"42-41" ranges are bogus and "(null)" doesn't tell us anything useful.
-
-> pci_bus 0004:43: busn_res: [bus 43-41] end is updated to 43
-> pci_bus 0004:43: busn_res: can not insert [bus 43] under [bus 42-41] (conflicts with (null) [bus 42-41])
-> pci 0004:42:00.0: devices behind bridge are unusable because [bus 43] cannot be assigned for them
-> pci_bus 0004:44: busn_res: can not insert [bus 44-41] under [bus 42-41] (conflicts with (null) [bus 42-41])
-> pci_bus 0004:44: busn_res: [bus 44-41] end is updated to 44
-> pci_bus 0004:44: busn_res: can not insert [bus 44] under [bus 42-41] (conflicts with (null) [bus 42-41])
-> pci 0004:42:02.0: devices behind bridge are unusable because [bus 44] cannot be assigned for them
-> pci_bus 0004:45: busn_res: can not insert [bus 45-41] under [bus 42-41] (conflicts with (null) [bus 42-41])
-> pci_bus 0004:45: busn_res: [bus 45-41] end is updated to 45
-> pci_bus 0004:45: busn_res: can not insert [bus 45] under [bus 42-41] (conflicts with (null) [bus 42-41])
-> pci 0004:42:06.0: devices behind bridge are unusable because [bus 45] cannot be assigned for them
-> pci_bus 0004:46: busn_res: can not insert [bus 46-41] under [bus 42-41] (conflicts with (null) [bus 42-41])
-> pci_bus 0004:46: busn_res: [bus 46-41] end is updated to 46
-> pci_bus 0004:46: busn_res: can not insert [bus 46] under [bus 42-41] (conflicts with (null) [bus 42-41])
-> pci 0004:42:0e.0: devices behind bridge are unusable because [bus 46] cannot be assigned for them
-> pci_bus 0004:42: busn_res: [bus 42-41] end is updated to 46
-> pci_bus 0004:42: busn_res: can not insert [bus 42-46] under [bus 41] (conflicts with (null) [bus 41])
-> pci 0004:41:00.0: devices behind bridge are unusable because [bus 42-46] cannot be assigned for them
-> pcieport 0004:40:00.0: bridge has subordinate 41 but max busn 46
-> 
-> During the initial scan, PCI core doesn't see the switch and since the Root
-> Port is not hot plug capable, the secondary bus number gets assigned as the
-> subordinate bus number. This means, the PCI core assumes that only one bus
-> will appear behind the Root Port since the Root Port is not hot plug
-> capable.
-> 
-> This works perfectly fine for PCIe endpoints connected to the Root Port,
-> since they don't extend the bus. However, if a PCIe switch is connected,
-> then there is a problem when the downstream busses starts showing up and
-> the PCI core doesn't extend the subordinate bus number after initial scan
-> during boot.
-
-I suppose this is could also be viewed as a resource management
-problem.  
-
-Even in the normal hotplug case, we never know what a hot-added
-hierarchy will look like, so we hack around it with the compiled-in
-DEFAULT_HOTPLUG_BUS_SIZE and the "hpbussize=" kernel parameter.
-
-It would be nice if we could allocate more bus numbers at hot-add (or
-link-up) time as needed.  That's hard after drivers have claimed
-nearby devices, but in this case there might not be anything nearby.
-
-> The long term plan is to migrate this driver to the pwrctrl framework,
-> once it adds proper support for powering up and enumerating PCIe switches.
-
-"Proper" is hiding some important details here.  pwrctrl already
-supports powering up and enumerating switches.  I think this refers to
-[1], where Mani says the plan is for pwrctrl to power up everything
-before the initial bus scan so we can figure out how many buses are
-needed.
-
-Bjorn
-
-[1] https://lore.kernel.org/linux-pci/fle74skju2rorxmfdvosmeyrx3g75rysuszov5ofvde2exj4ir@3kfjyfyhczmn/
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+CuWcqCAyMDI1LzEyLzI3IDI6MDcsIExpbnVzIFdhbGxlaWog5YaZ6YGTOgo+IEhpIFllLAo+Cj4g
+dGhhbmtzIGZvciB5b3VyIHBhdGNoIQo+Cj4gT24gVHVlLCBEZWMgMTYsIDIwMjUgYXQgMzo1MOKA
+r1BNIFllIFpoYW5nIDx5ZS56aGFuZ0Byb2NrLWNoaXBzLmNvbT4gd3JvdGU6Cj4KPgo+PiBkaWZm
+IC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3BpbmN0cmwvcm9ja2No
+aXAscm1pby55YW1sIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3BpbmN0cmwv
+cm9ja2NoaXAscm1pby55YW1sCj4+ICsgIHJvY2tjaGlwLHJtaW8tZ3JmOgo+PiArICAgICRyZWY6
+IC9zY2hlbWFzL3R5cGVzLnlhbWwjL2RlZmluaXRpb25zL3BoYW5kbGUKPj4gKyAgICBkZXNjcmlw
+dGlvbjoKPj4gKyAgICAgIFRoZSBwaGFuZGxlIG9mIHRoZSBzeXNjb24gbm9kZSAoR1JGIG9yIFBN
+VSkgY29udGFpbmluZyB0aGUgUk1JTyByZWdpc3RlcnMuCj4+ICsgICAgICBUaGlzIHByb3BlcnR5
+IGlzIHJlcXVpcmVkIGlmIHRoZSBSTUlPIHJlZ2lzdGVycyBhcmUgbG9jYXRlZCBpbiBhIGRpZmZl
+cmVudAo+PiArICAgICAgc3lzY29uIHRoYW4gdGhlIHBhcmVudCBwaW5jdHJsIG5vZGUuCj4+ICsK
+Pj4gKyAgcm9ja2NoaXAsb2Zmc2V0Ogo+PiArICAgICRyZWY6IC9zY2hlbWFzL3R5cGVzLnlhbWwj
+L2RlZmluaXRpb25zL3VpbnQzMgo+PiArICAgIGRlc2NyaXB0aW9uOgo+PiArICAgICAgVGhlIG9m
+ZnNldCBvZiB0aGUgUk1JTyBjb25maWd1cmF0aW9uIHJlZ2lzdGVycyB3aXRoaW4gdGhlIEdSRi4K
+PiBDYW4ndCB0aGlzIGp1c3QgYmUgYSBjZWxsIGluIHRoZSBwaGFuZGxlPwpJbiBteSB1cGNvbWlu
+ZyB2NCwgaXQgd2lsbCBiZSBtb3ZlZCBpbnRvIHRoZSBkcml2ZXIgY29kZS4KPj4gKyAgcm9ja2No
+aXAscGlucy1udW06Cj4+ICsgICAgJHJlZjogL3NjaGVtYXMvdHlwZXMueWFtbCMvZGVmaW5pdGlv
+bnMvdWludDMyCj4+ICsgICAgZGVzY3JpcHRpb246Cj4+ICsgICAgICBUaGUgbnVtYmVyIG9mIHBo
+eXNpY2FsIHBpbnMgc3VwcG9ydGVkIGJ5IHRoaXMgUk1JTyBpbnN0YW5jZS4KPj4gKyAgICAgIFVz
+ZWQgZm9yIGJvdW5kYXJ5IGNoZWNraW5nIGFuZCBkcml2ZXIgaW5pdGlhbGl6YXRpb24uCj4gSXNu
+J3QgdGhpcyBpbXBsaWNpdCBmcm9tIHRoZSBjb21wYXRpYmxlPyBXaHkgaXMgdGhpcyBkaWZmZXJl
+bnQKPiBiZXR3ZWVuIHR3byBkZXZpY2UgdHJlZXMgdXNpbmcgdGhlIHNhbWUgY29tcGF0aWJsZSBw
+aW4KPiBjb250cm9sbGVyPyBJIGRvbid0IGdldCBpdCwgSSB0aGluayB0aGlzIHNob3VsZCBiZSBh
+IGNvbnN0YW50IGluIHRoZQo+IGNvZGUgYmFzZWQgb24gdGhlIGNvbXBhdGlibGUgaW5zdGVhZC4K
+SW4gbXkgdXBjb21pbmcgdjQsIGl0IHdpbGwgYmUgbW92ZWQgaW50byB0aGUgZHJpdmVyIGNvZGUu
+Cj4+ICtwYXR0ZXJuUHJvcGVydGllczoKPj4gKyAgIl5bYS16MC05LV0rJCI6Cj4+ICsgICAgdHlw
+ZTogb2JqZWN0Cj4+ICsgICAgZGVzY3JpcHRpb246Cj4+ICsgICAgICBGdW5jdGlvbiBub2RlIGdy
+b3VwaW5nIG11bHRpcGxlIGdyb3Vwcy4KPj4gKwo+PiArICAgIHBhdHRlcm5Qcm9wZXJ0aWVzOgo+
+PiArICAgICAgIl5bYS16MC05LV0rJCI6Cj4+ICsgICAgICAgIHR5cGU6IG9iamVjdAo+PiArICAg
+ICAgICBkZXNjcmlwdGlvbjoKPj4gKyAgICAgICAgICBHcm91cCBub2RlIGNvbnRhaW5pbmcgdGhl
+IHBpbm11eCBjb25maWd1cmF0aW9uLgo+PiArCj4+ICsgICAgICAgIHByb3BlcnRpZXM6Cj4+ICsg
+ICAgICAgICAgcm9ja2NoaXAscm1pbzoKPj4gKyAgICAgICAgICAgICRyZWY6IC9zY2hlbWFzL3R5
+cGVzLnlhbWwjL2RlZmluaXRpb25zL3VpbnQzMi1tYXRyaXgKPj4gKyAgICAgICAgICAgIGRlc2Ny
+aXB0aW9uOgo+PiArICAgICAgICAgICAgICBBIGxpc3Qgb2YgcGluLWZ1bmN0aW9uIHBhaXJzLiBU
+aGUgZm9ybWF0IGlzIDxwaW5faWQgZnVuY3Rpb25faWQ+Lgo+PiArICAgICAgICAgICAgbWluSXRl
+bXM6IDEKPj4gKyAgICAgICAgICAgIGl0ZW1zOgo+PiArICAgICAgICAgICAgICBpdGVtczoKPj4g
+KyAgICAgICAgICAgICAgICAtIGRlc2NyaXB0aW9uOiBSTUlPIFBpbiBJRCAoMCB0byBwaW5zLW51
+bSAtIDEpCj4+ICsgICAgICAgICAgICAgICAgICBtaW5pbXVtOiAwCj4+ICsgICAgICAgICAgICAg
+ICAgICBtYXhpbXVtOiAzMQo+PiArICAgICAgICAgICAgICAgIC0gZGVzY3JpcHRpb246IEZ1bmN0
+aW9uIElECj4+ICsgICAgICAgICAgICAgICAgICBtaW5pbXVtOiAwCj4+ICsgICAgICAgICAgICAg
+ICAgICBtYXhpbXVtOiA5OAo+IFBsZWFzZSBhdm9pZCB0aGVzZSBjdXN0b20gcHJvcGVydGllcyBh
+bmQganVzdCB1c2UgdGhlIHN0YW5kYXJkCj4gInBpbm11eCIgcHJvcGVydHkuIEkgZG9uJ3Qgd2Fu
+dCBhbnkgbW9yZSBvcGFxdWUgY3VzdG9tIGJpbmRpbmdzCj4gZm9yIGZ1bmN0aW9ucyBhbmQgZ3Jv
+dXBzLgo+Cj4gUmVmZXJlbmNlIERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9waW5j
+dHJsL3Bpbm11eC1ub2RlLnlhbWwKPiBhbmQgdXNlIHBpbm11eCBmcm9tIHRoZXJlLgo+Cj4gWW91
+IGNhbiB1c2Ugc29tZSBzaGlmdGluZyBhbmQgZGVmaW5lcyB0byBzaG9laG9ybiB5b3VyIGNvbmZp
+Zwo+IGludG8gYSBzaW5nbGUgdTMyIGFuZCBwYXJzZSB0aGF0IGluIHlvdXIgZHJpdmVyOyBpLmUu
+IGluc3RlYWQgb2YKPiByb2NrY2hpcCxybWlvID0gPDEsIDI+Owo+IHVzZQo+IHBpbm11eCA9IDwx
+IDw8IDggfCAyIDw8IDA+Owo+IHRoZXNlIHNoaWZ0ZXIgbnVtZXJhbHMgY2FuIGNvbWUgZnJvbSBk
+ZWZpbmVzLgo+IEluIHRoZSBkcml2ZXIgc2hpZnQgJiBtYXNrIG91dCB0aGUgY29tcG9uZW50cyB5
+b3Ugd2FudC4KPgo+IGUuZy47Cj4KPj4gKyAgICAgICAgICAgIHJtaW8tdWFydCB7Cj4+ICsgICAg
+ICAgICAgICAgICAgcm1pb19waW4yN191YXJ0MV90eDogcm1pby1waW4yNy11YXJ0MS10eCB7Cj4+
+ICsgICAgICAgICAgICAgICAgICAgIHJvY2tjaGlwLHJtaW8gPSA8MjcgUk1JT19VQVJUMV9UWD47
+Cj4gcGlubXV4ID0gPDI3IDw8IDggfCBSTUlPX1VBUlQxX1RYPjsKCkluIHY0LCBJIHdpbGwgcmVt
+b3ZlIHJvY2tjaGlwLHJtaW8ueWFtbAoKSSB1bmRlcnN0YW5kIHlvdXIgcHJlZmVyZW5jZSBmb3Ig
+c3RhbmRhcmQgYmluZGluZ3MuwqAgSG93ZXZlciwgdGhlcmUgaXMgYSAKc3BlY2lmaWMgY29uc3Ry
+YWludCBoZXJlOiB0aGUgUk1JTyBhY3RzIGFzIGEgc2Vjb25kYXJ5IGxheWVyIG9mIG11eGluZywg
+CnNpdHRpbmcgYmVoaW5kIHRoZSBwcmltYXJ5IElPTVVYIGNvbnRyb2xsZXIuCgpUaGUgZXhpc3Rp
+bmcgUm9ja2NoaXAgcGluY3RybCBiaW5kaW5nIHVzZXMgdGhlIHZlbmRvci1zcGVjaWZpYyAKcm9j
+a2NoaXAscGlucyBwcm9wZXJ0eSBmb3IgdGhlIHByaW1hcnkgSU9NVVggY29uZmlndXJhdGlvbi7C
+oCBJZiBJIHdlcmUgCnRvIHVzZSB0aGUgc3RhbmRhcmQgcGlubXV4IHByb3BlcnR5IGZvciBSTUlP
+LCB0aGUgbm9kZSB3b3VsZCBjb250YWluIAptaXhlZCBiaW5kaW5ncyBsaWtlIHRoaXM6Cgpub2Rl
+IHsKIMKgIMKgIC8qIFByaW1hcnkgSU9NVVggKGV4aXN0aW5nIGJpbmRpbmcpICovCiDCoCDCoCBy
+b2NrY2hpcCxwaW5zID0gPDEgUktfUEIxIDE2ICZwY2ZnX3B1bGxfbm9uZT47CiDCoCDCoCAvKiBT
+ZWNvbmRhcnkgUk1JT8KgICovCiDCoCDCoCBwaW5tdXggPSA8KFJNSU9fSUQgPDwgMTYpIHwgKFJN
+SU9fUElOIDw8IDgpIHwgUk1JT19GVU5DPjsKfTsKClNpbmNlIHRoaXMgbm9kZSBkZXNjcmliZXMg
+YSBzaW5nbGUgaGFyZHdhcmUgcGluIGNvbmZpZ3VyYXRpb24gdGhhdCAKcmVxdWlyZXMgdHdvIHNl
+cGFyYXRlIGhhcmR3YXJlIHNldHRpbmdzIChQcmltYXJ5IE11eCArIFNlY29uZGFyeSBSTUlPKSwg
+CkkgdGhvdWdodCBrZWVwaW5nIHRoZSBzZWNvbmRhcnkgY29uZmlnIGFzIGEgdmVuZG9yLXNwZWNp
+ZmljIHByb3BlcnR5IAoocm9ja2NoaXAscm1pbykgYWxvbmdzaWRlIHJvY2tjaGlwLHBpbnMgd291
+bGQgYmUgbW9yZSBjb25zaXN0ZW50IGFuZCAKbGVzcyBjb25mdXNpbmcgdGhhbiBtaXhpbmcgbGVn
+YWN5IGN1c3RvbSBiaW5kaW5ncyB3aXRoIHN0YW5kYXJkIHBpbm11eC4KCkluIHY0LCBJIGhhdmUg
+cmVtb3ZlZCB0aGUgc2VwYXJhdGUgUk1JTyBjaGlsZCBub2RlIGVudGlyZWx5LsKgIFRoZSBSTUlP
+IApjb25maWd1cmF0aW9uIGlzIG5vdyBpbnRlZ3JhdGVkIGludG8gdGhlIG1haW4gcGluY3RybCBn
+cm91cCBhcyBhIApzdXBwbGVtZW50YWwgcHJvcGVydHk6Cgpub2RlIHsKCnJvY2tjaGlwLHBpbnMg
+PSA8MSBSS19QQjEgNyAmcGNmZ19wdWxsX25vbmU+CgovKiBybWlvX2lkIHBpbl9pZCBmdW5jX2lk
+ICovCnJvY2tjaGlwLHJtaW8tcGlucyA9IDwwIDI0IDY4PjsKfTsKCj4KPj4gKysrIGIvaW5jbHVk
+ZS9kdC1iaW5kaW5ncy9waW5jdHJsL3JvY2tjaGlwLHJrMzUwNi1ybWlvLmgKPiBUaGVzZSBudW1i
+ZXIgZHVtcHMgYXJlIG5vdCBhcHByZWNpYXRlZCBpbnNpZGUgdGhlIGJpbmRpbmdzCj4gZGVzcGl0
+ZSBxdWl0ZSBhIGZldyBmb3VuZCB0aGVpciB3YXkgaW4gdGhlcmUuCj4KPiBVc2Ugc29tZXRoaW5n
+IGxpa2UKPiBhcmNoLyovZHRzL3JvY2tjaGlwL3JrMzUwNi1ybWlvLXBpbnMuZHRzaQo+IGFuZCBp
+bmNsdWRlIHRoYXQgaW50byB5b3VyIGRldmljZSB0cmVlcyBpbnN0ZWFkLgpJbiBteSB1cGNvbWlu
+ZyB2NCwgcm9ja2NoaXAscmszNTA2LXJtaW8uaCB3aWxsIGJlIHJlbW92ZWQuCgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWls
+aW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
+aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
