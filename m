@@ -4,93 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93719E784BE
-	for <linux-rockchip@archiver.kernel.org>; Sun, 28 Dec 2025 07:53:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D94CDD3B7E5
+	for <linux-rockchip@archiver.kernel.org>; Sun, 28 Dec 2025 10:31:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2+DBfQ0XACfkR4C12/ggTCwhjlPrlMoC/RXE+z3aqxc=; b=btGbKxboZGMJ5V
-	onphWLDgZszj00qoyFke1aVLcrcvPl9/5KWI9fylgAjNm35e22Lu1C+Oh0fXDRIuegQnJz7NFIs3M
-	GZCk/taZijFNUl0mHW2C2+ZAvbFpiKHPVZRoQf4hJEeUaXCFXrhDjGr2xCRqb1OjEvAkfg9ynh28J
-	Le/992V0bl4Kt2Knc/lGI65yEHwECjbgQGo32bF0kI027px/Z0suh3mzKQhIR8oM1iS3iEDvrkGPR
-	wMryHcPa41eZYJfEUryEpF+BvlmCH4lJlB3g5sofQd91ZxSO24qO1F205/AnNwECb1jEwUELAYDVw
-	F+In+DjV8pmvcOxFiRCw==;
+	List-Owner; bh=woNeVOTGDay4zTsjX+fAtOzI6XmnSw0nRlCOYP2QG3I=; b=WZgnuxMbpJcypi
+	K+D0jQA9jCeepzW6aj0oVifJVOGhWwHxoUEJ4H1u59/EU24cYPBBxsdpPr5IZ/oqsun5faW+6J8IS
+	LDi+f01EKBXdLUrq1W5O/OBoOmbDcvBKQUB7Cg9bqK7YvTMjg/bF5ta6sAIWbpFYhhRbNFFKkWAlF
+	ZHB267nLd2XXaP6lsBU1h8lNcVI80ztdaHTMyj6eZ7EvAYa2MDewI7QR7ofYcGhnNmAe5X7dEqDar
+	h3tFtvP7jFGMCy1Fgc8NbuhwOFAFvJeukRCr5WvtYRu1ciu8YuCiwjVVHYO0Ekt6azk6lP9+mUNy3
+	ClwiggsADVwVjhP/37eQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vZlag-00000002aFv-0HJk;
-	Sun, 28 Dec 2025 07:53:26 +0000
-Received: from mgamail.intel.com ([192.198.163.18])
+	id 1vZo2w-00000002dOS-1MDI;
+	Sun, 28 Dec 2025 10:30:46 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vZlad-00000002aFQ-0WNA;
-	Sun, 28 Dec 2025 07:53:24 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1766908403; x=1798444403;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=/NwBfCj//7UaV/4OmePD5UbzYZj1ijABh9/72JuycQ0=;
-  b=Vxz3ayRPUOT8OiqUtcrQI5FFMR8MZWbpudlIsOKPycyd0ddy+n/H+gWH
-   TPq6Mf/0BxZZx8dpIGGSzISO2VzteVGFYZlvU5m31gzbk9Y3r3xYi7C6l
-   hiDJsbrNcGvJuLPHg6k103E0h9tJmIMpv42S6tFxF0rmqeM7aAayP4nUx
-   nTy25TM6NZ6HbJvl7GumHfb3C/eoPnMPPj7o9JEdyhtPpS4YeM0innU7H
-   bF3OvKGe5dw9m7387uKbxdiSe8P+gCGmsegwK+rwL4vkxhQnc7idKP9HL
-   HcgwCdndKyp9VY8OCDY0fOPRBeZUB4KMDPwhzzR+DIZJ14GUMX0uR00nS
-   g==;
-X-CSE-ConnectionGUID: fyyQpdpoTGunorm+c74lYQ==
-X-CSE-MsgGUID: Ah5sKifvStqCIgFggDZEJg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11654"; a="67766518"
-X-IronPort-AV: E=Sophos;i="6.21,183,1763452800"; 
-   d="scan'208";a="67766518"
-Received: from orviesa005.jf.intel.com ([10.64.159.145])
-  by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 Dec 2025 23:53:22 -0800
-X-CSE-ConnectionGUID: UEa8u94KT2q2ofB0p56tVw==
-X-CSE-MsgGUID: kE97tfBeR5Knrr2ku/cjWQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,183,1763452800"; 
-   d="scan'208";a="205715352"
-Received: from lkp-server02.sh.intel.com (HELO dd3453e2b682) ([10.239.97.151])
-  by orviesa005.jf.intel.com with ESMTP; 27 Dec 2025 23:53:16 -0800
-Received: from kbuild by dd3453e2b682 with local (Exim 4.98.2)
-	(envelope-from <lkp@intel.com>)
-	id 1vZlaT-000000006Kr-3CZq;
-	Sun, 28 Dec 2025 07:53:13 +0000
-Date: Sun, 28 Dec 2025 15:52:27 +0800
-From: kernel test robot <lkp@intel.com>
-To: Detlev Casanova <detlev.casanova@collabora.com>,
-	linux-kernel@vger.kernel.org
-Cc: oe-kbuild-all@lists.linux.dev,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	linux-media@vger.kernel.org,
-	Detlev Casanova <detlev.casanova@collabora.com>,
-	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Daniel Almeida <daniel.almeida@collabora.com>,
-	Jonathan Corbet <corbet@lwn.net>,
-	Ricardo Ribalda <ribalda@chromium.org>,
-	Hans Verkuil <hverkuil@xs4all.nl>, Yunke Cao <yunkec@google.com>,
-	Hans de Goede <hansg@kernel.org>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Pavan Bobba <opensource206@gmail.com>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	James Cowgill <james.cowgill@blaize.com>,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, kernel@collabora.com,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Diederik de Haas <didi.debian@cknow.org>
-Subject: Re: [PATCH v7 14/17] media: rkvdec: Add H264 support for the VDPU381
- variant
-Message-ID: <202512281536.56iWFq03-lkp@intel.com>
-References: <20251218232829.337811-15-detlev.casanova@collabora.com>
+	id 1vZo2u-00000002dOF-1Bsg;
+	Sun, 28 Dec 2025 10:30:44 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id AF9A860055;
+	Sun, 28 Dec 2025 10:30:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D8720C4CEFB;
+	Sun, 28 Dec 2025 10:30:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1766917842;
+	bh=iSoBZKWqJzZOiZShBZ0SH5d1WexPAjGU44wbacsprJ4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=BtWKMpXiztzSDj7ueLLhMipJA0rLwp//K64RVHmJIYzIcP8aKBgqMQZuxUOs4dt/Q
+	 cIOaepS2VAx1eWlAsn9mKJ7N3/Q+tQdGoge8olMwM+FZNCUtZstk0wrqQBS/fgGcp2
+	 eaKVA4PuMSKQqqHLPqnYd6SVDoci+13dF6M9LaGRvKy7pss/8PKpc8Qaln0h5p9agV
+	 EhRW9U6buwJrNDLBU/Gb+VocPuoPvcjxPcaJhkHyLtm2Ms3xXpq5fMbxUbfZPfgc0P
+	 g8J+rBuw5J1K11OlJzR57zjxeopKqGQTD4a4/2NR4n3W70p+Qf+Ls5puewFw+4/Mld
+	 qyBGOqBMt1f6g==
+Date: Sun, 28 Dec 2025 11:30:39 +0100
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Ye Zhang <ye.zhang@rock-chips.com>
+Cc: Linus Walleij <linus.walleij@linaro.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Bartosz Golaszewski <brgl@bgdev.pl>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	tao.huang@rock-chips.com
+Subject: Re: [PATCH v4 1/7] dt-bindings: pinctrl: Add rv1126b pinctrl support
+Message-ID: <20251228-airborne-elated-asp-c8f1fb@quoll>
+References: <20251227114957.3287944-1-ye.zhang@rock-chips.com>
+ <20251227114957.3287944-2-ye.zhang@rock-chips.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20251218232829.337811-15-detlev.casanova@collabora.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251227_235323_240126_9A8996A5 
-X-CRM114-Status: GOOD (  10.21  )
+In-Reply-To: <20251227114957.3287944-2-ye.zhang@rock-chips.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,37 +73,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Detlev,
+On Sat, Dec 27, 2025 at 07:49:51PM +0800, Ye Zhang wrote:
+> The RV1126B is a new SoC that is the successor of the RV1126. It has
+> different pinctrl registers and is not compatible with the RV1126.
+> Therefore, add a new compatible string for it.
+> 
+> Signed-off-by: Ye Zhang <ye.zhang@rock-chips.com>
+> ---
+>  Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml | 1 +
+>  1 file changed, 1 insertion(+)
 
-kernel test robot noticed the following build errors:
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 
-[auto build test ERROR on media-tree/master]
-[also build test ERROR on linus/master v6.19-rc2]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+Best regards,
+Krzysztof
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Detlev-Casanova/media-uapi-HEVC-Add-v4l2_ctrl_hevc_ext_sps_-ls-t_rps-controls/20251219-074342
-base:   git://linuxtv.org/media_tree.git master
-patch link:    https://lore.kernel.org/r/20251218232829.337811-15-detlev.casanova%40collabora.com
-patch subject: [PATCH v7 14/17] media: rkvdec: Add H264 support for the VDPU381 variant
-config: arm-randconfig-r071-20251224 (https://download.01.org/0day-ci/archive/20251228/202512281536.56iWFq03-lkp@intel.com/config)
-compiler: arm-linux-gnueabi-gcc (GCC) 8.5.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20251228/202512281536.56iWFq03-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202512281536.56iWFq03-lkp@intel.com/
-
-All errors (new ones prefixed by >>, old ones prefixed by <<):
-
->> ERROR: modpost: "__aeabi_uldivmod" [drivers/media/platform/rockchip/rkvdec/rockchip-vdec.ko] undefined!
->> ERROR: modpost: "__aeabi_ldivmod" [drivers/media/platform/rockchip/rkvdec/rockchip-vdec.ko] undefined!
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
 
 _______________________________________________
 Linux-rockchip mailing list
