@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 180AFD3B7E5
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8365CE9272A
 	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Dec 2025 10:12:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,70 +12,70 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iJZXhezQfRhZ4YOIy/yFS0ZOVy3TSetcfxTvLRN40+g=; b=aaagOMU09ZpIuL
-	XpFtB8AEHa8y/gL5n0leiRnr426UTWtw5wGT5scHmWdF+zChYZH4V1poUz0Lk3pbxxG/SDzIEmV1J
-	mvZ7yzt1x0FBek+iehbXCim+xAFXewC0lucdJABTYIgl2n9I5DVlidJlUOuKEZS8eK3iDAlIVDRo6
-	GyCZuj+BdhQGQ03eFSLGJrXsh4zvrVkmQ6tVGghHjI7ziZLi9HaF1jj7UgtO02rEH6MYmgOVcCMOo
-	cvKrGyEKataS3O/Q4wWOAvwpx7kpKJTHnhrs4Mj+nFcyLKEB0oFTEh2Vug7MPRq58LckxNmHQLzvs
-	kQmkvccS1LO0b8bW9twg==;
+	List-Owner; bh=uPL9ttQFijWjyv8BBftqe3IiTRXN9+RmXHafXDKtQog=; b=bS65nLlhxjoi5d
+	Y3Q3ulZI1v2KrF8l4algHmgnTfYiGGMM/x6dhLiwN0WCBTTfoZBawYwvK0z4OeKMEku9ch8rugnvM
+	yJvgfgfWxwqaGFj5hKl11Gl/JZluGlOLulpTHGzCHwTXnWiER3d8Q+saCl+VVhjQtda5lKSlfsgpD
+	THTRSlGl/Z9GAk+rd9Gb3ZzBJsnETghih1V8f3CDkWqSJCLdMoSS9lfnry9oYRaAHNSD13CrNfJJZ
+	1uehc4gHLZH+7cN3lO++GNEow7juOwepm+nXSmqhIScQSRjpXQBVIGF0iLYCu7jwvtAZXDLo/M9wP
+	3j4ouWwdSl+4Q0BsG7Lg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vaAEo-00000003XrW-0CO7;
-	Mon, 29 Dec 2025 10:12:30 +0000
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
+	id 1vaAEn-00000003Xqz-1zjI;
+	Mon, 29 Dec 2025 10:12:29 +0000
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vaAEl-00000003XpA-2mfP
+	id 1vaAEj-00000003XoG-098P
 	for linux-rockchip@lists.infradead.org;
-	Mon, 29 Dec 2025 10:12:28 +0000
-Received: by mail-wm1-x343.google.com with SMTP id 5b1f17b1804b1-47bdbc90dcaso55741105e9.1
-        for <linux-rockchip@lists.infradead.org>; Mon, 29 Dec 2025 02:12:27 -0800 (PST)
+	Mon, 29 Dec 2025 10:12:26 +0000
+Received: by mail-wm1-x332.google.com with SMTP id 5b1f17b1804b1-47775fb6cb4so51747515e9.0
+        for <linux-rockchip@lists.infradead.org>; Mon, 29 Dec 2025 02:12:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1767003146; x=1767607946; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1767003143; x=1767607943; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=Hmvq8IpMPngxZJ89oRl/9976MSq6MvT7IIFrbZGP6LM=;
-        b=mmAYe9RQsmWq4Q6aLRLBQA0HglSTPPcZTr7047imqeFD9bKvM66bpB4Uyh7iZyDTFx
-         25wG/HAqSbDr47v/OyH1CzbirbvggRf8HNScULrq0bpOjYJEJD8lj7IRZ6WlGUceO2CZ
-         7EatqcyV50eeSN5fe6jthBO3jcAwJ1EqdjuTJbxwMHUt4JJzQXDZsATpkE2R6oLCNGvU
-         jbN7D/dWkxC4VdbpMd1koUq6BxjA9F7RpA3ogJzgL9Jo0Q+ttsoM4FEypkZIKT0+F8Gj
-         p/vB9jt/e9OoTtsz2xzd3EsRuYox929JcDKWIoP72UetqyQBVDZl7e+r3uBEWbsBOFBh
-         DDaA==
+        bh=Ri0p4U6CFfsvzwsMRp5y6y8qxmA/cHDioM6peECfnxE=;
+        b=f0lChMLj1A3RdIIXWDt1bjGT9+tLt24YPuHksuNWlGdNc8QC6cvf4j2NZjZmvkXg7Q
+         rHsO3li+h+ni960ReeV2wBVFEdankfoAFTxzwz1CA5mEqZgpVHirGXSYk8S4lJ9634fq
+         VPhAqjRdQ2cxYHWksulwG4pReIdIFiA9p03YSLRg+CUWGpHT3/QAqvTXH+4Tlo8vCGFw
+         AniLPlWO8IFlgCWUbiCJ09BzEtUsOp40exZj+vSJej+D59sgA24RogUxByN04B0zOJdw
+         dLKLleLiytjXij5HSfYTQb7g6FDAVoedWAvklymgjaL1YsYpnlStNOh0PGOBzwrMV+H6
+         9luQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1767003146; x=1767607946;
+        d=1e100.net; s=20230601; t=1767003143; x=1767607943;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=Hmvq8IpMPngxZJ89oRl/9976MSq6MvT7IIFrbZGP6LM=;
-        b=P5GFLKRaj35d34hxsI//PXM/Z3MYyJZEyomOVdcjTJSjOxaSui+BV+NBgWQxqtRdsZ
-         5Tk8Df5P8/HUdQXyKVyPwPGEbnLOpli+T2PvA5yQGkqP7x8YW8/AsaPFTR6zOmCKdgKJ
-         pfQPlTKrA4C3OKcNIL+ohaEH1Oe+6dVmlGMPJOTAV8T9aNeo+zSkdDXb9c9hyur2MeeD
-         gX2jArbmQYpQsHqtvqQMKcvxnhycD+4f/ahqMDyUnkdHswZy22omEadHAK3Z0XQWN5Ls
-         bPrjfVa7Q78m/ErWQ1ggJTXHJ84n4X/HqhiqXAYJ/p8cuEz+2TrS6UEIdQ1f/5gJcaE5
-         C7Kw==
-X-Forwarded-Encrypted: i=1; AJvYcCXlq2WqeQxnyQ3tJF0XXUo2tvMVYNq/Ow+Kg1fI+BglZoEfEtxDz3+vE5Jhtqtt2F/RA6C6EbhjfLoe0xM/AA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz0fPwDK8q0D59PrwUo5sI+FM2yperF+K/RJnh9M/1PtQKOh8y8
-	g4+zZCzif2HtL9cgU0RVcwVUP0DEkmTNkatzT92A9GM8YDh7G/MaJlW/
-X-Gm-Gg: AY/fxX61VA6MniMj1lRyVlEj8Kd8st78LE7yLKT3sD3l62lbYCYLGXf1m1wUmSwWevg
-	C2jB3w8foiP6EXvUKkDe8U7BzFtka1r6UmBPnU4KaqkP1dOCRKJJwvMJwdlDo9mQa13lkokKeht
-	J9cNDg9nJ9tTChZHPRNWShT0D/uMN4lXk8wOAgbDM5MjVaa8aKVBeDkMBgkXHe4dI1XqJM2jsUk
-	zuitJzIZbc8x84RyBKAE5Q9OwDwqtjFNyYJMhwC+ITe86kVl1KdiYjNsn1C9r4ZKsx3gHU92VDA
-	twIOP2gZzzP7TD1cLWojb2brx/hVRVdmgQvY91jyMh5rI1VuJEoEJAdMhGs5p9AMXsDxhvb5vlI
-	VnkGEn2BgGcBccbN6TpSMiTydZmuXoeigY406VY0QyLf6mEBuqdjh5xUHlTbt02a52zs5nBkiU+
-	Y7vn52eAOdTXTRygZKYmKTfj76bXbwuFFNRBIKRWkFXiONB9kXL4axJn+ix6WZ
-X-Google-Smtp-Source: AGHT+IFAiAe+PhS2idEv0Ey0iDrFQE5elTI+8IG4cgjiYqs9uTdQ4Loam7NpxEwNgCGYGm4L7lRjHQ==
-X-Received: by 2002:a05:600c:1d1d:b0:477:9dc1:b706 with SMTP id 5b1f17b1804b1-47d19576d2cmr308387215e9.19.1767003145527;
-        Mon, 29 Dec 2025 02:12:25 -0800 (PST)
+        bh=Ri0p4U6CFfsvzwsMRp5y6y8qxmA/cHDioM6peECfnxE=;
+        b=DXsQDoTRiymQ0S84m1kBPUmRBG3jDxUhc4rdcN8ErbD+O2WlV4Vx8iqZv5z7bzx87k
+         xi1JWO4C5ziVvrmncvLe9Nd35DBUndCiIIlFAr0T480869/NriSZm3YKj+JpmBOHV56e
+         CuKDx8JJZ/vEd0XHl49DJ2HLx+Wll7fwqU/h3xSUVYFz/azQJi3vhtykqjhB60isavUs
+         TV2yrXum7P0OzRpviCs0qm96JUsvjpXDJu5tCsHKssi2WL7Ud4MzPYeUMqvEb/NG90K0
+         y7TWrJyuz43OSALuwLx68w7VTWeaV5KTnkTyW26DEYWjx22ulGraKqUzmhcUryZ4s6dn
+         M+UA==
+X-Forwarded-Encrypted: i=1; AJvYcCXEcc1cneAvHqVmoNtUXQFfVZvqYyfoMg3oiCzdG0W7uh4N50IdKVfURxStrAjQiKB8D7pBOqZpf36QDYmzDg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzEmAnAHgTEdOUedSibWFRXOFMjhbs3Lnt2PVAlDxqz1PEAYYbq
+	Ae+aFq1YiyygYYzbr8HRXDPMMoQGWWMqYFdoKQhmEQxBJC6pEsNSwINu
+X-Gm-Gg: AY/fxX4sETXEzHL3X6EcgUDdyb/nu2yYzwdST0NKCCkq83dT14WtM2Gg73+LnOw3Sxv
+	TljTdiJJSokFNZzxmGcVq1plzVk9GfJktCrI1rvyIVwE+uwqaeGYEH13ICsjwA/WqvKiKiIKke6
+	rVTSILi6dZXb783EBWURGWfRI7AavTnxjW3EVfuxp1Js2aIPPw4gZ/pCZ8QQkdZCFmO8aRNrCGU
+	o+gVFtufq6tcY899l8rB9rjYEtv5UA3vWmX5Av4jv54rhRC42xmmKvWKliAXo5TZHkFGuBN85/g
+	vLIHJovjuqAFIEj0qeYYiven6rr6gd8xUuX1uvtVg2OS9XCiZwXR10iMdeWXr2vWA/d8UlV460f
+	gpd9WodP8oK/SPCMI6f5uubrITvdBK97yCUN2JhU3S/NQNrjvL9wTESco3yOFx2JX3fmoN1CY0Z
+	3kde5tRt9SsfXSarKQLWjgd4MUupw+2Ta6tbz5JyUle2dnsa46g8XmR/EcGIHN
+X-Google-Smtp-Source: AGHT+IHJS63lS/dPKoA9lGVZ+ST8crjqL/wpGYOYPkSn4ew0eH8IPo2DWmLK76jUaU+P9S/JFHAnzg==
+X-Received: by 2002:a05:600c:468f:b0:45c:4470:271c with SMTP id 5b1f17b1804b1-47d269c7019mr304884895e9.18.1767003143012;
+        Mon, 29 Dec 2025 02:12:23 -0800 (PST)
 Received: from alchark-surface.localdomain (bba-94-59-45-246.alshamil.net.ae. [94.59.45.246])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-47d583f42dasm19840735e9.6.2025.12.29.02.12.23
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-47d583f42dasm19840735e9.6.2025.12.29.02.12.20
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 29 Dec 2025 02:12:25 -0800 (PST)
+        Mon, 29 Dec 2025 02:12:22 -0800 (PST)
 From: Alexey Charkov <alchark@gmail.com>
-Date: Mon, 29 Dec 2025 14:11:59 +0400
-Subject: [PATCH 2/7] arm64: dts: rockchip: Configure MCLK for analog sound
- on NanoPi M5
+Date: Mon, 29 Dec 2025 14:11:58 +0400
+Subject: [PATCH 1/7] arm64: dts: rockchip: Fix headphones widget name on
+ NanoPi M5
 MIME-Version: 1.0
-Message-Id: <20251229-rk3576-sound-v1-2-2f59ef0d19b1@gmail.com>
+Message-Id: <20251229-rk3576-sound-v1-1-2f59ef0d19b1@gmail.com>
 References: <20251229-rk3576-sound-v1-0-2f59ef0d19b1@gmail.com>
 In-Reply-To: <20251229-rk3576-sound-v1-0-2f59ef0d19b1@gmail.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -85,17 +85,17 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
  Alexey Charkov <alchark@gmail.com>, stable@vger.kernel.org
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1919; i=alchark@gmail.com;
- h=from:subject:message-id; bh=kx/5/gOv+LNdWrQToOMBSk2+QPj07MLFLi9t/6wsj9I=;
- b=owGbwMvMwCW2adGNfoHIK0sZT6slMWQGhTCKJ9zceEbqxZ/308R56qbLu/Ra14Txnm7u0bLLq
- 2y6xZrVMZGFQYyLwVJMkWXutyW2U434Zu3y8PgKM4eVCWSItEgDAxCwMPDlJuaVGukY6ZlqG+oZ
- GuoY6xgxcHEKwFSfUWT4wy8fvvBDn9NR65JzTw3m7Ar2a3y/fg+HZYS43d3Za85M+8/wT+nqtWu
- pwToNs8I/tjzh+vay0GnLrlszBc92pK9K+TBxCisA
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1245; i=alchark@gmail.com;
+ h=from:subject:message-id; bh=iE2CbCdrK0vI0FrVCavjC9uDM/vsBwXeGKRyKumfVTA=;
+ b=owGbwMvMwCW2adGNfoHIK0sZT6slMWQGhTAyn21XXvnWgbvV1bfrVXb3d+4/09j3Wy6MDfv3f
+ HW/jgRLx0QWBjEuBksxRZa535bYTjXim7XLw+MrzBxWJpAh0iINDEDAwsCXm5hXaqRjpGeqbahn
+ aKhjrGPEwMUpAFNt0czwv/xx55SdHdc3+vGw/vAK+MT34Y5LeVXqjptBHM8t3W4majMyLO/fV9j
+ 3R2jz/Z8/lb8YLTwVmbUz5dCkm12qVpMynSIqGQA=
 X-Developer-Key: i=alchark@gmail.com; a=openpgp;
  fpr=9DF6A43D95320E9ABA4848F5B2A2D88F1059D4A5
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251229_021227_729649_4CB50154 
-X-CRM114-Status: GOOD (  11.08  )
+X-CRM114-CacheID: sfid-20251229_021225_138294_57C9C115 
+X-CRM114-Status: GOOD (  11.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,58 +112,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-NanoPi M5 derives its analog sound signal from SAI2 in M0 pin mode, so the
-MCLK pin should be configured accordingly for the sound codec to get its
-I2S signal from the SoC. Request the required pin config.
+Fix the mismatch between the simple-audio-card routing table vs. widget
+names, which caused the following error at boot preventing the sound
+card from getting added:
 
-The clock itself should also be CLK_SAI2_MCLKOUT_TO_IO for the sound to
-work (otherwise there is only silence out of the audio out jack).
+[    6.625634] asoc-simple-card sound: ASoC: DAPM unknown pin Headphones
+[    6.627247] asoc-simple-card sound: ASoC: Failed to add route HPOL -> Headphones(*)
+[    6.627988] asoc-simple-card sound: ASoC: Failed to add route HPOR -> Headphones(*)
 
 Fixes: 96cbdfdd3ac2 ("arm64: dts: rockchip: Add FriendlyElec NanoPi M5 support")
 Cc: <stable@vger.kernel.org>
 Signed-off-by: Alexey Charkov <alchark@gmail.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3576-nanopi-m5.dts | 10 +++++++---
- 1 file changed, 7 insertions(+), 3 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3576-nanopi-m5.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3576-nanopi-m5.dts b/arch/arm64/boot/dts/rockchip/rk3576-nanopi-m5.dts
-index 37184913f918..bb2cc2814b83 100644
+index cce34c541f7c..37184913f918 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3576-nanopi-m5.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3576-nanopi-m5.dts
-@@ -201,6 +201,7 @@ sound {
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&hp_det_l>;
+@@ -211,7 +211,7 @@ sound {
+ 			"Headphones", "HPOR",
+ 			"IN1P", "Microphone Jack";
+ 		simple-audio-card,widgets =
+-			"Headphone", "Headphone Jack",
++			"Headphone", "Headphones",
+ 			"Microphone", "Microphone Jack";
  
-+		simple-audio-card,bitclock-master = <&masterdai>;
- 		simple-audio-card,format = "i2s";
- 		simple-audio-card,hp-det-gpios = <&gpio2 RK_PD6 GPIO_ACTIVE_LOW>;
- 		simple-audio-card,mclk-fs = <256>;
-@@ -218,8 +219,9 @@ simple-audio-card,codec {
- 			sound-dai = <&rt5616>;
- 		};
- 
--		simple-audio-card,cpu {
-+		masterdai: simple-audio-card,cpu {
- 			sound-dai = <&sai2>;
-+			system-clock-frequency = <12288000>;
- 		};
- 	};
- };
-@@ -727,10 +729,12 @@ &i2c5 {
- 	rt5616: audio-codec@1b {
- 		compatible = "realtek,rt5616";
- 		reg = <0x1b>;
--		assigned-clocks = <&cru CLK_SAI2_MCLKOUT>;
-+		assigned-clocks = <&cru CLK_SAI2_MCLKOUT_TO_IO>;
- 		assigned-clock-rates = <12288000>;
--		clocks = <&cru CLK_SAI2_MCLKOUT>;
-+		clocks = <&cru CLK_SAI2_MCLKOUT_TO_IO>;
- 		clock-names = "mclk";
-+		pinctrl-0 = <&sai2m0_mclk>;
-+		pinctrl-names = "default";
- 		#sound-dai-cells = <0>;
- 	};
- };
+ 		simple-audio-card,codec {
 
 -- 
 2.51.2
