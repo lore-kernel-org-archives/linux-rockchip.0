@@ -4,113 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECC38C44503
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D947FC4451B
 	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 08:48:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Date:From:MIME-Version:References:
+	In-Reply-To:Subject:Cc:To:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IiAHDjJkEdv+j3uBL6iMQYnwaaAJqZhD3ZcDI+TWH/8=; b=RPKMusTJtiBm0C
-	rg1tf1BIQObd78MP1pRB4EcSxN3P4XrPVHm3E1p9ndwVuwr05c+aE4g9xnEAwLDaNC7f6tdQ+Ifjv
-	qXUKt1cwYwhtYWPt0sPCdWuEOK/cEXNNeUnr+PF0dZkY62M/sfRRvRuodF5pHpXAlFerwEKUIrDT5
-	5rz3Q+bmg1BUyvnmmKgt0CwaQD3/ZqkWqd3Cr/Ul0c11kvshYINsJKn/ONBSSDl4wBalH1yb4yw9s
-	ZPcW9d0G8Q045Zh9Y7spW+0mJfhqzqclHpzWkoZP/5fw4ZnOF5U30Yjdb0RusVmYD4+8v9eVAbozi
-	F8Z5R6XNZ+Puua3p72sA==;
+	List-Owner; bh=XncPmthyVMQU4WrXn4LnvPYQP5BgFc4QvfHNhFmxoCc=; b=zyu7+x7dPZXCtc
+	52JPY1DaVF17jz8jcQZRsn6mE35sOIG05A6yVHgIsRplomOkN2u+ejgAq3vqMdWpRgrT29lLUg6Fi
+	VEULG4pAcwiQBTJVYkucpBckubBat8CmMg46QbfYA8PJD5etC2lfJfktKSkawU5xr6aNZFmuqAa35
+	nFdwYN5OLbovp9FdOC39a8tXqp3WsN4qLzFhgM6Ou1JO0MvEY6n55iNkVsRc2gyzXUJd9kRAF60ro
+	Q45TkWKM2byad+jVp+Ou3juYQk+q8vI6912KpLA/ZPMJ9Hq97b7f0C7Vb97PsqADX2RgHHSq97qCc
+	n3V+vvTcrS3I6E3e8GAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whkQp-00000001Us8-0nP1;
-	Thu, 09 Jul 2026 08:48:31 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1whkQk-00000001Uir-24RO;
+	Thu, 09 Jul 2026 08:48:26 +0000
+Received: from mail-m3296.qiye.163.com ([220.197.32.96])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vwOcB-0000000A7u2-1UQZ;
-	Sat, 28 Feb 2026 18:00:32 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 10D7142B82;
-	Sat, 28 Feb 2026 18:00:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id ED299C19423;
-	Sat, 28 Feb 2026 17:59:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1772301629;
-	bh=kHCRe4FxCpKOmGTFDbEGFmwKc5c1cbzYW9mRrhA/2zM=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=Y5Ww6oOt+Lwkhhw6KzkZzqCLx2GB5Y6V/naeD+g/YVnGDnFJykP4eczgV77pSo6aG
-	 MwceHNzWz3tTt2nQUPDrqo4OH/XpY1QPEj4j2coQSntozKAfKLK4GkW1a2dH8TyfFX
-	 5fZRLH0VdmJrHIj0bW/2HmeVqQPjJBYdjnqVErnT7/OV5v8nL9A1bM8hWX1+RqOS8L
-	 j+1xUXhbGCwz3WIiQx9BfetTOcQFR4X46hu07hQziT4+MpACIMVHSm6kKP/vnmJT2+
-	 XJSlGPNpWjGSFDy3clti8s912U34ZnWDCJSJbRQ//cNsZce6q9IlsPUYRVrZhQYnRM
-	 3szaWx8Sycbcw==
-Date: Sat, 28 Feb 2026 17:59:54 +0000
-From: Jonathan Cameron <jic23@kernel.org>
-To: David Lechner <dlechner@baylibre.com>
-Cc: Francesco Lavra <flavra@baylibre.com>, Jonathan Corbet <corbet@lwn.net>,
- Shuah Khan <skhan@linuxfoundation.org>, Lars-Peter Clausen
- <lars@metafoo.de>, Michael Hennerich <Michael.Hennerich@analog.com>, Lucas
- Stankus <lucas.p.stankus@gmail.com>, Nuno =?UTF-8?B?U8Oh?=
- <nuno.sa@analog.com>, Andy Shevchenko <andy@kernel.org>, Puranjay Mohan
- <puranjay@kernel.org>, Cosmin Tanislav <cosmin.tanislav@analog.com>, Ramona
- Gradinariu <ramona.gradinariu@analog.com>, Antoniu Miclaus
- <antoniu.miclaus@analog.com>, Petre Rodan <petre.rodan@subdimension.ro>,
- Dan Robertson <dan@dlrobertson.com>, Benson Leung <bleung@chromium.org>,
- Guenter Roeck <groeck@chromium.org>, Jiri Kosina <jikos@kernel.org>,
- Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>, Matti Vaittinen
- <mazziesaccount@gmail.com>, Marcelo Schmitt <marcelo.schmitt@analog.com>,
- Esteban Blanc <eblanc@baylibre.com>, Jorge Marques
- <jorge.marques@analog.com>, Sergiu Cuciurean <sergiu.cuciurean@analog.com>,
- Dragos Bogdan <dragos.bogdan@analog.com>, Alisa-Dariana Roman
- <alisa.roman@analog.com>, Trevor Gamblin <tgamblin@baylibre.com>, Renato
- Lui Geh <renatogeh@gmail.com>, Eugen Hristev <eugen.hristev@linaro.org>,
- Nicolas Ferre <nicolas.ferre@microchip.com>, Alexandre Belloni
- <alexandre.belloni@bootlin.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>,
- Andreas Klinger <ak@it-klinger.de>, Paul Cercueil <paul@crapouillou.net>,
- Ramona Bolboaca <ramona.bolboaca@analog.com>, Marcus Folkesson
- <marcus.folkesson@gmail.com>, Kent Gustavsson <kent@minoris.se>, Matthias
- Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Frank Li <Frank.Li@nxp.com>,
- Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team
- <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, Matteo
- Martelli <matteomartelli3@gmail.com>, Marius Cristea
- <marius.cristea@microchip.com>, Heiko Stuebner <heiko@sntech.de>, Maxime
- Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue
- <alexandre.torgue@foss.st.com>, Kurt Borja <kuurtb@gmail.com>, Francesco
- Dolcini <francesco@dolcini.it>, =?UTF-8?B?Sm/Do28=?= Paulo =?UTF-8?B?R29u?=
- =?UTF-8?B?w6dhbHZlcw==?= <jpaulo.silvagoncalves@gmail.com>, Leonard
- =?UTF-8?B?R8O2aHJz?= <l.goehrs@pengutronix.de>, Oleksij Rempel
- <o.rempel@pengutronix.de>, Haibo Chen <haibo.chen@nxp.com>, Salih Erim
- <salih.erim@amd.com>, Conall O'Griofa <conall.ogriofa@amd.com>, Michal
- Simek <michal.simek@amd.com>, Gustavo Silva <gustavograzs@gmail.com>,
- Tomasz Duszynski <tduszyns@gmail.com>, Roan van Dijk <roan@protonic.nl>,
- Jyoti Bhayana <jbhayana@google.com>, Mariel Tinaco
- <Mariel.Tinaco@analog.com>, Nishant Malpani <nish.malpani25@gmail.com>, Rui
- Miguel Silva <rmfrfs@gmail.com>, Linus Walleij <linusw@kernel.org>, Lorenzo
- Bianconi <lorenzo@kernel.org>, Alex Lanzano <lanzano.alex@gmail.com>,
- Jagath Jog J <jagathjog1996@gmail.com>, Jean-Baptiste Maneyrol
- <jean-baptiste.maneyrol@tdk.com>, Remi Buisson <remi.buisson@tdk.com>,
- Christian Eggers <ceggers@arri.de>, Mudit Sharma
- <muditsharma.info@gmail.com>, Javier Carrasco
- <javier.carrasco.cruz@gmail.com>, =?UTF-8?B?T25kxZllag==?= Jirman
- <megi@xff.cz>, Song Qiang <songqiang1304521@gmail.com>, Dixit Parmar
- <dixitparmar19@gmail.com>, Gerald Loacker <gerald.loacker@wolfvision.net>,
- linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-iio@vger.kernel.org, chrome-platform@lists.linux.dev,
- linux-input@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mips@vger.kernel.org, linux-mediatek@lists.infradead.org,
- imx@lists.linux.dev, linux-rockchip@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com
-Subject: Re: [PATCH v6 4/7] iio: Rename 'sign' field to `format` in struct
- iio_scan_type
-Message-ID: <20260228175954.1f0950a1@jic23-huawei>
-In-Reply-To: <120c7f33-4ca1-4d35-ac1b-b65362f1adfc@baylibre.com>
-References: <20260225100421.2366864-1-flavra@baylibre.com>
-	<20260225101735.2368252-1-flavra@baylibre.com>
-	<120c7f33-4ca1-4d35-ac1b-b65362f1adfc@baylibre.com>
-X-Mailer: Claws Mail 4.3.1 (GTK 3.24.51; x86_64-pc-linux-gnu)
+	id 1va7d0-00000003QXp-0U9r
+	for linux-rockchip@lists.infradead.org;
+	Mon, 29 Dec 2025 07:25:19 +0000
+Message-ID: <AGkAtwAtJy-UDFfi3M2RSaqR.3.1766993111418.Hmail.ye.zhang@rock-chips.com>
+To: Krzysztof Kozlowski  <krzk@kernel.org>
+Cc: Linus Walleij <linus.walleij@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
+	Bartosz Golaszewski <brgl@bgdev.pl>, Rob Herring <robh@kernel.org>, 
+	krzk+dt <krzk+dt@kernel.org>, conor+dt <conor+dt@kernel.org>, 
+	linux-gpio <linux-gpio@vger.kernel.org>, 
+	devicetree <devicetree@vger.kernel.org>, 
+	linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
+	linux-rockchip <linux-rockchip@lists.infradead.org>, 
+	linux-kernel <linux-kernel@vger.kernel.org>, 
+	"tao.huang" <tao.huang@rock-chips.com>
+Subject: =?UTF-8?B?UmU6IFtQQVRDSCB2NCA3LzddIEFSTTogZHRzOiByb2NrY2hpcDogcmszNTA2OiBBZGQgcGluY3RybCBhbmQgcm1pbyBkdHNpIGZvciByazM1MDY=?=
+X-Priority: 3
+X-Mailer: HMail Webmail Server V2.0 Copyright (c) 2016-163.com Sirius_WIN_1.51.1
+X-Originating-IP: 58.22.7.114
+In-Reply-To: <ebb720f6-4756-437f-a71a-d94f45d732e8@kernel.org>
+References: <20251227114957.3287944-1-ye.zhang@rock-chips.com> <20251227114957.3287944-8-ye.zhang@rock-chips.com> <ebb720f6-4756-437f-a71a-d94f45d732e8@kernel.org>
 MIME-Version: 1.0
+Received: from ye.zhang@rock-chips.com( [58.22.7.114] ) by ajax-webmail ( [127.0.0.1] ) ; Mon, 29 Dec 2025 15:25:11 +0800 (GMT+08:00)
+From: =?UTF-8?B?5byg54Oo?= <ye.zhang@rock-chips.com>
+Date: Mon, 29 Dec 2025 15:25:11 +0800 (GMT+08:00)
+X-HM-Tid: 0a9b68fc45e70300kunm50884eeed91f
+X-HM-MType: 1
+X-HM-NTES-SC: AL0_4z5B86Wr4Tz9jdMF+bhXMTRjsrDknlR9vNBzlnYPSNuiT0h4wr6guvdTSp
+	TBMvzEa6RMPKP1QW9Ei5Pi131B7yNhJhQODgKEpYrHZvY3oFy4q72HtESdjAjkJl2FwBpIyLx9Rn
+	3S5U8IgY8Wcx2T+/xpvPUqCzAB3fXos7T4P8Q=
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGUxCGVYfHUtPSRkYS01LHkNWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=WkKuWmQFz3txpY2yYplK5dluIOXnXkjH4vRBdu9Nb42mIcStOmBEaNV3yoEPveMzCmUolsHdI06ndn5t6dKugl+9K4nrI3cdy2o6z3EsLcdVS6R/KyqKfAHsTI3LBFQZ81Fa4jtvLED76Yk4pLRPSac8B7lj9Ghcbu6m/XuVMbU=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=MnJ455SKQ4fWCyvQTSN+37HvQ7g/ibRTP8V0NRo5BA8=;
+	h=date:mime-version:subject:message-id:from;
+X-Bad-Reply: References and In-Reply-To but no 'Re:' in Subject.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260228_100031_443057_2A1FA77A 
-X-CRM114-Status: GOOD (  14.68  )
-X-Mailman-Approved-At: Thu, 09 Jul 2026 01:48:24 -0700
+X-CRM114-CacheID: sfid-20251228_232518_651154_D33F88D6 
+X-CRM114-Status: UNSURE (   6.25  )
+X-CRM114-Notice: Please train this message.
+X-Mailman-Approved-At: Thu, 09 Jul 2026 01:48:23 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,39 +78,57 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, 25 Feb 2026 15:27:01 -0600
-David Lechner <dlechner@baylibre.com> wrote:
-
-> On 2/25/26 4:17 AM, Francesco Lavra wrote:
-> > This field is used to differentiate between signed and unsigned integers.
-> > A following commit will extend its use to in order to add support for non-
-> > integer scan elements; therefore, change its name from 'sign' to a more
-> > generic 'format'.
-> >   
-> 
-> Maybe Jonathan is OK with doing this all at once, but another alternative
-> could be to introduce a union to allow both names at the same time, then
-> we could make the change more gradually.
-
-Please do the union for v7.  Not so much because I mind a global change, but
-more because the chances of merge conflicts are too high.
-
-Perhaps for this series just introduce the union and use it in the driver
-here. We can then chase it through the rest of the tree as a separate step.
-
-Alternatively leave it with a misleading name for now (so allow 'f' to be a
-magic sign value) and we can do the rename as a follow up.
-
-Jonathan
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+5ZyoIDIwMjUvMTIvMjggMTg6MzcsIEtyenlzenRvZiBLb3psb3dza2kg5YaZ6YGTOgomZ3Q7IE9u
+IDI3LzEyLzIwMjUgMTI6NDksIFllIFpoYW5nIHdyb3RlOgomZ3Q7Jmd0OyArCQkvb21pdC1pZi1u
+by1yZWYvCiZndDsmZ3Q7ICsJCXJtX2lvMjhfdG91Y2hfa2V5X2luNjogcm0taW8yOC10b3VjaC1r
+ZXktaW42IHsKJmd0OyZndDsgKwkJCXJvY2tjaGlwLHBpbnMgPQomZ3Q7Jmd0OyArCQkJCSZsdDsx
+IFJLX1BDMyA3ICZhbXA7cGNmZ19wdWxsX25vbmUmZ3Q7OwomZ3Q7Jmd0OyArCQkJcm9ja2NoaXAs
+cm1pby1waW5zID0KJmd0OyZndDsgKwkJCQkmbHQ7MCAyOCA0OSZndDs7CiZndDsmZ3Q7ICsJCX07
+CiZndDsmZ3Q7ICsKJmd0OyZndDsgKwkJL29taXQtaWYtbm8tcmVmLwomZ3Q7Jmd0OyArCQlybV9p
+bzI4X3RvdWNoX2tleV9pbjc6IHJtLWlvMjgtdG91Y2gta2V5LWluNyB7CiZndDsmZ3Q7ICsJCQly
+b2NrY2hpcCxwaW5zID0KJmd0OyZndDsgKwkJCQkmbHQ7MSBSS19QQzMgNyAmYW1wO3BjZmdfcHVs
+bF9ub25lJmd0OzsKJmd0OyZndDsgKwkJCXJvY2tjaGlwLHJtaW8tcGlucyA9CiZndDsmZ3Q7ICsJ
+CQkJJmx0OzAgMjggNTAmZ3Q7OwomZ3Q7Jmd0OyArCQl9OwomZ3Q7Jmd0OyArCiZndDsmZ3Q7ICsJ
+CS9vbWl0LWlmLW5vLXJlZi8KJmd0OyZndDsgKwkJcm1faW8yOF9zYWkwX21jbGs6IHJtLWlvMjgt
+c2FpMC1tY2xrIHsKJmd0OyZndDsgKwkJCXJvY2tjaGlwLHBpbnMgPQomZ3Q7Jmd0OyArCQkJCSZs
+dDsxIFJLX1BDMyA3ICZhbXA7cGNmZ19wdWxsX25vbmUmZ3Q7OwomZ3Q7Jmd0OyArCQkJcm9ja2No
+aXAscm1pby1waW5zID0KJmd0OyZndDsgKwkJCQkmbHQ7MCAyOCA1MSZndDs7CiZndDsmZ3Q7ICsJ
+CX07CiZndDsmZ3Q7ICsKJmd0OyZndDsgKwkJL29taXQtaWYtbm8tcmVmLwomZ3Q7Jmd0OyArCQly
+bV9pbzI4X3NhaTBfc2Nsazogcm0taW8yOC1zYWkwLXNjbGsgewomZ3Q7Jmd0OyArCQkJcm9ja2No
+aXAscGlucyA9CiZndDsmZ3Q7ICsJCQkJJmx0OzEgUktfUEMzIDcgJmFtcDtwY2ZnX3B1bGxfbm9u
+ZSZndDs7CiZndDsmZ3Q7ICsJCQlyb2NrY2hpcCxybWlvLXBpbnMgPQomZ3Q7Jmd0OyArCQkJCSZs
+dDswIDI4IDUyJmd0OzsKJmd0OyZndDsgKwkJfTsKJmd0OyZndDsgKwomZ3Q7Jmd0OyArCQkvb21p
+dC1pZi1uby1yZWYvCiZndDsmZ3Q7ICsJCXJtX2lvMjhfc2FpMF9scmNrOiBybS1pbzI4LXNhaTAt
+bHJjayB7CiZndDsmZ3Q7ICsJCQlyb2NrY2hpcCxwaW5zID0KJmd0OyZndDsgKwkJCQkmbHQ7MSBS
+S19QQzMgNyAmYW1wO3BjZmdfcHVsbF9ub25lJmd0OzsKJmd0OyZndDsgKwkJCXJvY2tjaGlwLHJt
+aW8tcGlucyA9CiZndDsmZ3Q7ICsJCQkJJmx0OzAgMjggNTMmZ3Q7OwomZ3Q7Jmd0OyArCQl9Owom
+Z3Q7Jmd0OyArCiZndDsmZ3Q7ICsJCS9vbWl0LWlmLW5vLXJlZi8KJmd0OyZndDsgKwkJcm1faW8y
+OF9zYWkwX3NkaTA6IHJtLWlvMjgtc2FpMC1zZGkwIHsKJmd0OyZndDsgKwkJCXJvY2tjaGlwLHBp
+bnMgPQomZ3Q7Jmd0OyArCQkJCSZsdDsxIFJLX1BDMyA3ICZhbXA7cGNmZ19wdWxsX25vbmUmZ3Q7
+OwomZ3Q7Jmd0OyArCQkJcm9ja2NoaXAscm1pby1waW5zID0KJmd0OyZndDsgKwkJCQkmbHQ7MCAy
+OCA1NCZndDs7CiZndDsmZ3Q7ICsJCX07CiZndDsKJmd0OyBXaHkgYXJlIHlvdSBkZWZpbmluZyBh
+bGwgcGlucz8gVGhpcyBpcyB3cm9uZywgeW91ciBkcml2ZXIgaGFzIHRvIGRvIGl0LAomZ3Q7IG5v
+dCBEVFMuIEFsbCB0aGVzZSBkZWZpbml0aW9ucyB3aGVuIG5vdCB1c2VkIGFyZSBqdXN0IHBvaW50
+bGVzcy4KJmd0OwpUaGlzIGZpbGUgaXMgYXV0by1nZW5lcmF0ZWQgdG8gcHJvdmlkZSBhIGNvbXBs
+ZXRlIHNldCBvZiBSTUlPIGNvbmZpZ3VyYXRpb25zLiAgIE91ciBpbnRlbnRpb24gaXMgdG8gb2Zm
+ZXIgYSBnZW5lcmljIGxpYnJhcnkgZm9yIGFsbCBmdXR1cmUgYm9hcmQgZGV2ZWxvcGVycywgc28g
+dGhleSBjYW4gc2ltcGx5IHBpY2sgdGhlIG5lZWRlZCBub2RlcyBieSBwaGFuZGxlIHdpdGhvdXQg
+bWFudWFsbHkgbG9va2luZyB1cCByZWdpc3RlciB2YWx1ZXMgaW4gdGhlIGRhdGFzaGVldCBldmVy
+eSB0aW1lLiAgIFRoaXMgaW1wcm92ZXMgdXNhYmlsaXR5IGFuZCBzdGFuZGFyZGl6YXRpb24uCgpX
+ZSBhbHNvIHVzZWQgdGhlIC9vbWl0LWlmLW5vLXJlZi8gdGFnLCBzbyB0aGlzIHdpbGwgc3RyaWN0
+bHkgbm90IGluY3JlYXNlIHRoZSBzaXplIG9mIHRoZSBjb21waWxlZCBEVEIgYmluYXJ5IGF0IGFs
+bC4KCkNvdWxkIHlvdSBwbGVhc2UgcmVjb25zaWRlciBpZiB0aGlzICBhcHByb2FjaCBpcyBhY2Nl
+cHRhYmxlIGdpdmVuIHRoZSB1c2FiaWxpdHkgYmVuZWZpdHM/CgpJZiB5b3Ugc3RpbGwgY29uc2lk
+ZXIgdGhlIH4yNWsgbGluZXMgb2Ygc291cmNlIGNvZGUgYmxvYXQgdW5hY2NlcHRhYmxlIGZvciB1
+cHN0cmVhbSwgd2Ugd2lsbCBoYXZlIHRvIGRyb3AgdGhpcyBnZW5lcmljIGR0c2kgZmlsZSBhbmQg
+bGV0IHVzZXJzIChhbmQgb3Vyc2VsdmVzKSBtYW51YWxseSBkZWZpbmUgb25seSB0aGUgcmVxdWly
+ZWQgbm9kZXMgd2hlbiBhZGRpbmcgYm9hcmQgc3VwcG9ydC4iCgpCZXN0IHJlZ2FyZHMsClllIFpo
+YW5nCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4
+LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3Jn
+Cmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2No
+aXAK
