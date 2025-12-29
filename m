@@ -4,90 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A934DD3B7E5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Dec 2025 10:25:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81DA8D3B7E5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Dec 2025 12:18:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HfmCyzQCI6fYIKaPwNlVMw9ipgEai43z2biR9ICFY3Y=; b=knHjotlZfr4yiF
-	+dGmMpHahUG03gdU4AnlMVcfNg3WUJOboWUCBDOZh15eshC4d5AuGXkrgOcdgxNtff69a+uDkil+k
-	c2WJTJ8TvN93MeuWDG+fjHrPXMovqFkXo8KCyQodwEZM8vg6uNf0PULg8GyMbrDdji9b8XYbIvFhD
-	Tt8bmTGszTnx9+OESGkQVIXfec6G+CjHNSg0zWqO0svENygnt98IdAifzORQrWSklmNLQM2c7b7bD
-	rHLyiupwx/tjr8OuapvN7bbF3G9WPu77MO11Xvq06kSutKu/A24gH7DX+NGzXKaR9iWWT8BNau59O
-	iXYhkEECxMVfL8FZHrlA==;
+	List-Owner; bh=jHufgHimnoVsrR2YkUx8USp76IHDnYHQ7rcUnYEGtE8=; b=yd1SUVuyp1XMKq
+	SlKCEfUChLvtxkOvkmWKcQw3SN53c7Z6xayfrPSLvaT1SDULE5ZL7WSYkrkYZn/cWMYpKNkSCXtzE
+	jckLD1m9OrXSMtbF3Bvm3YfUhGvT9M46pJIAG7m9MyMGupbEqOIxCuEV8e5vp/jcyC6xa2xOE5d+2
+	KJXMZFq3WGN+d+EnkzYMZ5BLJw4tnptRsPzM1eul0hSVdHPG32zBCvN4531VDyg7V0yMEATtO50um
+	FX1OMK+RLWd7NM8VF3uGEnJysGsGwUUsDHjqxgMA0bbGP6HZ5UoVONIDRM8rv1fpJfbxnnInPJzGB
+	xykMeycru1Sx6+aBldYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vaARR-00000003ZQC-1Uye;
-	Mon, 29 Dec 2025 10:25:33 +0000
-Received: from mail-vk1-f175.google.com ([209.85.221.175])
+	id 1vaCCZ-00000003eyE-2V7s;
+	Mon, 29 Dec 2025 12:18:19 +0000
+Received: from fhigh-a5-smtp.messagingengine.com ([103.168.172.156])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vaARO-00000003ZOu-46Qf
+	id 1vaCCW-00000003exf-28t8
 	for linux-rockchip@lists.infradead.org;
-	Mon, 29 Dec 2025 10:25:32 +0000
-Received: by mail-vk1-f175.google.com with SMTP id 71dfb90a1353d-55b6a642a4cso6212241e0c.3
-        for <linux-rockchip@lists.infradead.org>; Mon, 29 Dec 2025 02:25:30 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1767003930; x=1767608730;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=fEHua9B0eiJ9krPOOGN9l1YijNcHX4oQExQFKvr6EFA=;
-        b=scDNc/9FBKlhuVCp3Ec0YVUyIO7sgQss/MYFl6dZSZ1+m0zgbOsT2TE/Y3u46mwX2H
-         z6yJdz2StjsMo9itZJmFlrCwoTNoNxtYPjMe3wZbSGBuotRMKrsBu8LFJL67nEjjaoWq
-         hphwFJKdaQrNjkY7O+Xlzy/e+GNhSOxi9VtfItFG5aXaUkReTpfrlLvQPtnnomsSzcMH
-         kP6D8KQ6Aq+5RBNqDekVuOEiFsY8Drp1PFzloIThW7WuIPH83H/buYByKeS0rUjqXIfE
-         FO5pj/ikuuGW5zdtp1w8LELyz8af8mTXics2QWeEQEY2mmObbWtEszAm+TB0mqtQtQGM
-         lk0g==
-X-Forwarded-Encrypted: i=1; AJvYcCUfdgKoUMp9Ftopxvg/HZoFG9PheyaT/PP4VCsbT5wfrNLK6E1sK9MjjjUI/q9NKLJ1XdjItV6yb3IsfC3YLQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxdwKzpu69hxUyBWCWQHEjGOnrfN/OBNpR6WNe6NB+5jBdEHlZJ
-	auVXmxkNwDSfQU8f72LRT1eXelcXmP5HHoHG3OMKGo2woQ6vfYsAkgeHKBEFYsdH
-X-Gm-Gg: AY/fxX49xMnqpo6c2RjKT7IIcorvxsoD1l/C9CCoQceSpemrArfBObb9EbnYxBA6oVP
-	Z3NKkNclObx04PJBa5hd98WmnALU9/7B0vZU9eIR6ms7cu1sU9qOQaqIDLekla5O3oQSoB7vmvx
-	JX89qKSBM/sUS1SOnU/yRPCElA5fbEQdH/Nj+fUMASuBZWlUUWDK2EabDwsh17vuIBUvFaPHP3v
-	BIVcwiDG8gWGONDCjQrHr1RlZ0qqXTKw5qLKALulEMSVcUbGIuGUySiMlkxOY8jYVbAAf8qtfN0
-	6FFd3b6VtuJ4kyOJmX6wYo4/1wuYc7o5SvSFIwPfU1Nphq7Yxx3pCgnaktQs78di7z2N8CnkNpt
-	ssiBmSvHs/8cVLSSlAAOOW23oRNTcJZUKWLRfidu3olm++UVHG3U0qrbBXEzVE8pQcjLl0Ro3Ew
-	hW/A65NcVDy1c6LnRRgrmwIdP0J7QABT3y7TWtuBsQ066Zh5vgRs/fZ4bFXec=
-X-Google-Smtp-Source: AGHT+IHmy2lCmmmWOirOe6AXT89Mwd8+hOeQmu/C82oYNgaeCBZtE1QzqJUnxBG9R/m4fI6LXfNsRg==
-X-Received: by 2002:a05:6122:168d:b0:557:c6d3:5c0f with SMTP id 71dfb90a1353d-5615be6b746mr9162400e0c.13.1767003929651;
-        Mon, 29 Dec 2025 02:25:29 -0800 (PST)
-Received: from mail-vs1-f47.google.com (mail-vs1-f47.google.com. [209.85.217.47])
-        by smtp.gmail.com with ESMTPSA id 71dfb90a1353d-5615d066ddcsm9181688e0c.9.2025.12.29.02.25.29
-        for <linux-rockchip@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 29 Dec 2025 02:25:29 -0800 (PST)
-Received: by mail-vs1-f47.google.com with SMTP id ada2fe7eead31-5dfa9c01c54so5601375137.0
-        for <linux-rockchip@lists.infradead.org>; Mon, 29 Dec 2025 02:25:29 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCUotMKk1io41Vh/aMgk/lXerlmB97VMRM48Qz1RpB7sSwOx9OFntifpSUuw4ixr/lLNTgGzfDLAtY9FdO97fw==@lists.infradead.org
-X-Received: by 2002:a05:6122:d85:b0:557:ddc4:dea4 with SMTP id
- 71dfb90a1353d-5615bd7150bmr9849393e0c.5.1767003543582; Mon, 29 Dec 2025
- 02:19:03 -0800 (PST)
+	Mon, 29 Dec 2025 12:18:18 +0000
+Received: from phl-compute-05.internal (phl-compute-05.internal [10.202.2.45])
+	by mailfhigh.phl.internal (Postfix) with ESMTP id D66CD14000BC;
+	Mon, 29 Dec 2025 07:18:12 -0500 (EST)
+Received: from phl-frontend-04 ([10.202.2.163])
+  by phl-compute-05.internal (MEProxy); Mon, 29 Dec 2025 07:18:12 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fastmail.com; h=
+	cc:cc:content-type:content-type:date:date:from:from:in-reply-to
+	:in-reply-to:message-id:mime-version:references:reply-to:subject
+	:subject:to:to; s=fm2; t=1767010692; x=1767097092; bh=Y0Yh64gwja
+	JdrPmmb7QhI3yP7/Gx3ZKWSjQKjpPaf3E=; b=DgG07hN3vYxSajb62fUPh/KiPC
+	vkSqi99JXEsOC9LjpDqWf2pzMMLOFThaf70ihLJRQxraaN1aI+isKGGb2FtcbdVw
+	eYEkcriDCsZj8gPXD1prsixRSIvXVPL69uXwwuDyFYQMt3UYZ2tG3XivxAislaw/
+	CDxS+VV8FYtnhp18tF0XqTsJyL3nZFKrGqV6wRjWAdxnM/LxjLa9ggOGLOSR96Yc
+	nCvEhvhFFq7d0L9ouGDH0jj0m3IwfkrscWUuEiHyJR654lzxovwyJpaA1ABA6xl+
+	X+mQGyHzrwNYHq8P4Hzqpx9L3Ht6oZ5Yyajg8sAUXaA742PGVEIRaI7krN3Q==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-type:content-type:date:date
+	:feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
+	:message-id:mime-version:references:reply-to:subject:subject:to
+	:to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=
+	1767010692; x=1767097092; bh=Y0Yh64gwjaJdrPmmb7QhI3yP7/Gx3ZKWSjQ
+	KjpPaf3E=; b=po9loQzQVOqEmKYgGRh32z5L7QOorcen6C2lCo6FJaLDTrc1msX
+	9OPE/Xs2SDXpSaa9AxVnwJitGxM4dOb8bGAb/430sDXR0y/ZppcXQeGyABYSYCia
+	9cOcKdDky6Ju7G1PiaUvredeP1p60Zn+ir/Qf8U1D1V8B+lqmZH1i2tCEbepQNx6
+	dscZkCAXxGzxsbrD3Rh0DEnaCgnT50++SeDO2brDcRjL/zvN4lkOn+NI11OCPeAL
+	cvjFcLmJpq9wnaTDj256XcnZn2dOMXmNyFVYxsOV81MqEdoAeGAY78Yb7cLh7P1a
+	DT0LJmLr9iZgL0wyxFyI//qVl8JbusJ7wPA==
+X-ME-Sender: <xms:hHFSaQDXMeXVsg2aaOWNZDgsK7rxVczsY8eftQoX0dYx_Pz1qFKGhw>
+    <xme:hHFSaQWZgmqiaDs7nwkNgTtY-dhAc8gSS1Je_tyN2vMupGASEBqfoqxhGUzrGeBz6
+    FCdaATqsmlaDD1RFAI5hHKOjxunnDjBEOfM5wgXmtBwhnP2SIyFLA>
+X-ME-Received: <xmr:hHFSaeDa8sIuVCidzdgDsBjAYMyi0IXAbNWdvtFIETG6KztyVtq0L3xiSM4DV48RkmSvhlNa--aq1z-aB3GUd7Uz3MzuuuT70w>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefgedrtddtgdejjeduvdcutefuodetggdotefrod
+    ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpuffrtefokffrpgfnqfghnecuuegr
+    ihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjug
+    hrpeffhffvvefukfhfgggtuggjfgesthdtredttderjeenucfhrhhomheplfgrnhcurfgr
+    lhhushcuoehjphgrlhhushesfhgrshhtmhgrihhlrdgtohhmqeenucggtffrrghtthgvrh
+    hnpeekhfegleejffffjeefudetledtgfeltdehjeegtdekveetieeugfefgeeufeejffen
+    ucffohhmrghinhepkhgvrhhnvghlrdhorhhgpdhgihhthhhusgdrtghomhenucevlhhush
+    htvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehjphgrlhhushesfhgr
+    shhtmhgrihhlrdgtohhmpdhnsggprhgtphhtthhopeegpdhmohguvgepshhmthhpohhuth
+    dprhgtphhtthhopehpsghrohgsihhnshhonhesghhmrghilhdrtghomhdprhgtphhtthho
+    pehlihhnuhigqdhrohgtkhgthhhipheslhhishhtshdrihhnfhhrrgguvggrugdrohhrgh
+    dprhgtphhtthhopehhvghikhhosehsnhhtvggthhdruggvpdhrtghpthhtoheprhgvghhr
+    vghsshhiohhnsheslhhishhtshdrlhhinhhugidruggvvh
+X-ME-Proxy: <xmx:hHFSaT-_IofjtbwXHhbw4QWZtcOgaMv6ajdlfdpUBgZAgcdmlpYelQ>
+    <xmx:hHFSaVEbnTlbeYgcQDUqPvBnpXyNshoTLju4WVnHpUjGdywpfrbnlg>
+    <xmx:hHFSaRNOSDb53j6oUlcgB8eUrEeLdHJuaRK_h5KbSQ3vA0gK0npXQg>
+    <xmx:hHFSaffihCnrzbfzRUuEBVzOc7MCIOwQfmtZjE1QUrERwHiAdY4GkQ>
+    <xmx:hHFSaWx8a15PCY_th6y2TX10VTKI1VZksq2AttXxAHNVCihA0F98bJlq>
+Feedback-ID: i01894241:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
+ 29 Dec 2025 07:18:11 -0500 (EST)
+Date: Mon, 29 Dec 2025 13:18:10 +0100
+From: Jan Palus <jpalus@fastmail.com>
+To: Peter Robinson <pbrobinson@gmail.com>
+Cc: linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, 
+	regressions@lists.linux.dev
+Subject: Re: [REGRESSION][BISECTED] wifi broken on pinebook pro
+Message-ID: <aVJutYTmhA14rwPY@rock.grzadka>
+References: <aUKOlj-RvTYlrpiS@rock.grzadka>
+ <CALeDE9OzCzbhKmc61Kgbmzr67oJnjZMjsO6yYbkXujzA-OuO+A@mail.gmail.com>
 MIME-Version: 1.0
-References: <20251212-phy-clk-round-rate-v3-0-beae3962f767@redhat.com> <20251212-phy-clk-round-rate-v3-9-beae3962f767@redhat.com>
-In-Reply-To: <20251212-phy-clk-round-rate-v3-9-beae3962f767@redhat.com>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Mon, 29 Dec 2025 11:18:52 +0100
-X-Gmail-Original-Message-ID: <CAMuHMdXudWW3MPKqP0-d+DyMNRF-X62oyHRnj=MM_9MSpJw6sw@mail.gmail.com>
-X-Gm-Features: AQt7F2rKWfaXfoMj8qssy3Tj3BKKzf9SWfuNGXkoZ2xYV04eFqP8YoD995Ts3mk
-Message-ID: <CAMuHMdXudWW3MPKqP0-d+DyMNRF-X62oyHRnj=MM_9MSpJw6sw@mail.gmail.com>
-Subject: Re: [PATCH v3 9/9] phy: ti: phy-j721e-wiz: convert from round_rate()
- to determine_rate()
-To: Brian Masney <bmasney@redhat.com>
-Cc: Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>, 
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Heiko Stuebner <heiko@sntech.de>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Stephen Boyd <sboyd@kernel.org>, 
-	Maxime Ripard <mripard@kernel.org>, linux-clk@vger.kernel.org, 
-	linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Content-Disposition: inline
+In-Reply-To: <CALeDE9OzCzbhKmc61Kgbmzr67oJnjZMjsO6yYbkXujzA-OuO+A@mail.gmail.com>
+User-Agent: NeoMutt/20251211
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251229_022531_053999_E4B97C2A 
-X-CRM114-Status: GOOD (  22.97  )
+X-CRM114-CacheID: sfid-20251229_041817_016581_BEBBA7FE 
+X-CRM114-Status: GOOD (  22.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,58 +111,74 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Brian,
+On 29.12.2025 06:23, Peter Robinson wrote:
+> On Wed, 17 Dec 2025 at 11:26, Jan Palus <jpalus@fastmail.com> wrote:
+> >
+> > WiFi no longer works on Pinebook Pro after upgrade to kernel 6.18. It
+> > appears firmware fails to load:
+> >
+> > ...
+> > mmc_host mmc0: card is non-removable.
+> > mmc_host mmc0: Bus speed (slot 0) = 400000Hz (slot req 400000Hz, actual 400000HZ div = 0)
+> > Bluetooth: hci0: BCM: features 0x0f
+> > Bluetooth: hci0: BCM4345C5 Ampak_CL1 UART 37.4 MHz BT 5.0 [Version: Version: 0039.0089]
+> > Bluetooth: hci0: BCM4345C5 (003.006.006) build 0089
+> > mmc_host mmc0: Bus speed (slot 0) = 148500000Hz (slot req 150000000Hz, actual 148500000HZ div = 0)
+> > dwmmc_rockchip fe310000.mmc: Successfully tuned phase to 55
+> > mmc0: new UHS-I speed SDR104 SDIO card at address 0001
+> > brcmfmac: brcmf_fw_alloc_request: using brcm/brcmfmac43456-sdio for chip BCM4345/9
+> > usbcore: registered new interface driver brcmfmac
+> > brcmfmac mmc0:0001:1: Direct firmware load for brcm/brcmfmac43456-sdio.pine64,pinebook-pro.bin failed with error -2
+> > brcmfmac: brcmf_sdio_bus_rxctl: resumed on timeout
+> > ieee80211 phy0: brcmf_bus_started: failed: -110
+> > ieee80211 phy0: brcmf_attach: dongle is not responding: err=-110
+> > brcmfmac: brcmf_sdio_firmware_callback: brcmf_attach failed
+> >
+> > compared to 6.17 instead of last 4 lines with errors there's single one
+> > with info about loaded firmware:
+> >
+> > brcmfmac: brcmf_c_preinit_dcmds: Firmware: BCM4345/9 wl0: May 14 2020 17:26:08 version 7.84.17.1 (r871554) FWID 01-3d9e1d87
+> >
+> > Bisected to:
+> >
+> > 6d54d935062e2d4a7d3f779ceb9eeff108d0535d is the first new commit
+> > commit 6d54d935062e2d4a7d3f779ceb9eeff108d0535d (HEAD)
+> > Author: Peter Robinson <pbrobinson@gmail.com>
+> > Date:   Wed Aug 27 16:30:37 2025
+> >
+> >     arm64: dts: rockchip: Further describe the WiFi for the Pinebook Pro
+> >
+> >     Update the wake-up pin and associated interupt details for the
+> >     Pinebook Pro WiFi module.
+> >
+> >     Signed-off-by: Peter Robinson <pbrobinson@gmail.com>
+> >     Link: https://lore.kernel.org/r/20250827143040.1644867-1-pbrobinson@gmail.com
+> >     Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+> >
+> >  arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts | 18 ++++++++++++++++++
+> >  1 file changed, 18 insertions(+)
+> >
+> >
+> > With this commit reverted on top of 6.18.1 wireless connection works
+> > fine.
+> >
+> > Not sure what could be relevant but:
+> > - it's an early model, I think second batch, delivered end of 2019
+> 
+> Is it the Synoptics or the Cypress/Infineon module? What firmware are you using?
 
-On Fri, 12 Dec 2025 at 00:21, Brian Masney <bmasney@redhat.com> wrote:
-> The round_rate() clk ops is deprecated, so migrate this driver from
-> round_rate() to determine_rate() using the Coccinelle semantic patch
-> on the cover letter of this series.
->
-> Signed-off-by: Brian Masney <bmasney@redhat.com>
+Judging by the fact acquisition by Synaptics happened sometime late
+2020/early 2021 I guess it must be Cypress? I'm not really familiar with
+BCM43456 chip history. Firmware files used are
+brcm/brcmfmac43456-sdio.{bin,clm_blob,txt} exactly those found at:
 
-Thanks for your patch, which is now commit 27287e3b52b5954b ("phy:
-ti: phy-j721e-wiz: convert from round_rate() to determine_rate()")
-in phy/next
+https://github.com/RPi-Distro/firmware-nonfree/tree/trixie/debian/config/brcm80211/brcm
 
-> --- a/drivers/phy/ti/phy-j721e-wiz.c
-> +++ b/drivers/phy/ti/phy-j721e-wiz.c
-> @@ -934,12 +934,15 @@ static unsigned long wiz_clk_div_recalc_rate(struct clk_hw *hw,
->         return divider_recalc_rate(hw, parent_rate, val, div->table, 0x0, 2);
->  }
->
-> -static long wiz_clk_div_round_rate(struct clk_hw *hw, unsigned long rate,
-> -                                  unsigned long *prate)
-> +static int wiz_clk_div_determine_rate(struct clk_hw *hw,
-> +                                     struct clk_rate_request *req)
->  {
->         struct wiz_clk_divider *div = to_wiz_clk_div(hw);
->
-> -       return divider_round_rate(hw, rate, prate, div->table, 2, 0x0);
-> +       req->rate = divider_round_rate(hw, req->rate, &req->best_parent_rate,
-> +                                      div->table, 2, 0x0);
-
-Is this correct?  divider_round_rate() can return a negative error code
-(from divider_ro_determine_rate()), which is not handled here?
-
-Looks like several other users of divider_round_rate() use this
-same logic, and thus are affected, too.
-
-> +
-> +       return 0;
->  }
->
->  static int wiz_clk_div_set_rate(struct clk_hw *hw, unsigned long rate,
-
-Gr{oetje,eeting}s,
-
-                        Geert
-
--- 
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
-
-In personal conversations with technical people, I call myself a hacker. But
-when I'm talking to journalists I just say "programmer" or something like that.
-                                -- Linus Torvalds
+> 
+> > - mainline uboot 2025.10 is used
+> >
+> >
+> > #regzbot introduced: 6d54d93506
 
 _______________________________________________
 Linux-rockchip mailing list
