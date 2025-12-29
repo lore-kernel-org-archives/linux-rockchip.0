@@ -4,79 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 972E2E8FDB1
-	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Dec 2025 07:59:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B602E8FDB1
+	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Dec 2025 08:48:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Bi+uWjx52/ACu48dn3Ih5UiF9Oq3X1BIPHPGeb9Glyo=; b=KkP9fNhQeNKTZz
-	MLIKM6jk8UF6Y42Ch8fPvkZ3pYJOuFYBZuTItaufdI+dJcljTjtcf3VvP+WL3ESnzBCo8xQF4Ka+K
-	S9/Ea2Qp9QA7XyyJbStQnY1CPYXtmg9jFKtwAgPGKuoI3JZkH8+kMOyVmGsD7mBanEhRA2oDp1rZq
-	sHZiCkhOAxzUz/1JlFZHnWNem60JZIt7TjVaaAa90hC0ifUj8gIiEkqzn3zihbsbqZrqTj27pUMvn
-	oCxyyJKd63ryLBB5PKOuaZI/4O5Gr7erWAaw/GejwSg1OuKiZMzrdiSoUss3+CJYghC+urCadXHBq
-	cPAeW73W8N/1qLThwKWw==;
+	List-Owner; bh=8BndeFUl2vrqsDbhn6sVmiVrPsmwz8O4uVrtOfHVPbo=; b=tZ5Xd1kEyfXktZ
+	Ana/Sn+IG5ofbU4aEQuJk0ZOe2IJhRk0ZRgm/T0kq3/nwi2VAghZ5ZUedV+z5dnRMw34LWh0QSbFf
+	V41V7fAtQ60WERncDm7KTvKv0+apBZRhLTjHzs9C9nzUYFIJqigZNtg/3txEUktr+i4LBo4RxmDEs
+	RYjf7zWJp0sk/cWG/5jBu7HEBehTUUz8bEG3AyJ3jwoBQYVRQMYYTXuvhlDVcj6isedJJJCJpovKq
+	6Iewy1vjAoHWz3yvmNDLWvd5ALi4+aQU5fnWj+KQK/CJ7RbEvBbN263U7ve5K7KvHyURsLXAqbIAf
+	3ecIlPx6dOqowfizkSwg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1va89f-00000003S4M-418a;
-	Mon, 29 Dec 2025 07:59:03 +0000
-Received: from smtpbguseast2.qq.com ([54.204.34.130])
+	id 1va8v5-00000003UMC-0LAP;
+	Mon, 29 Dec 2025 08:48:03 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1va89c-00000003S3X-3cfN
-	for linux-rockchip@lists.infradead.org;
-	Mon, 29 Dec 2025 07:59:02 +0000
-X-QQ-mid: zesmtpip4t1766995102t04fb815c
-X-QQ-Originating-IP: aX+gxg3+YMcTyAJHZj8K6KJO/EaqsqmjkAbqeYRXE7Q=
-Received: from [IPV6:240f:10b:7440:1:3961:bf03 ( [localhost])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Mon, 29 Dec 2025 15:58:19 +0800 (CST)
-X-QQ-SSF: 0000000000000000000000000000000
-X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 13615831732151771395
-Message-ID: <695F691E743D4DEE+18cf202a-fd78-4b3a-9387-eef18c061f5d@radxa.com>
-Date: Mon, 29 Dec 2025 16:58:19 +0900
+	id 1va8v3-00000003ULz-1oRL;
+	Mon, 29 Dec 2025 08:48:01 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 841BD60010;
+	Mon, 29 Dec 2025 08:48:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8ED58C4CEF7;
+	Mon, 29 Dec 2025 08:47:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1766998080;
+	bh=v44N2XjK2sH90Tnjd62vX1wVHggfuf7c0wYY7lW0ojw=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=j6wR2jaz06bwagPAFZPp9NkfKLy0tfyM0sR6Ei4rugvguB0/p45UYoVOiYhoXEJOH
+	 Eih13gd10GToygImTgWkbJy4EIGXbJ3lwdO3eNZAp6Hg2Aatl/jJiu8DZrcenWSzZ2
+	 QXHCoHHCmK1I2+zXTt9G18LvqAsiPCAuMvd2vaWsE4YxN+VyF1M1La6TvboxyRLFVi
+	 VLa8WVXUBY3RRoLNCmjfTUoVxJBlCpVMo8Ex4mlddkA74oYVd2bD+dXgIfKZfRXsgd
+	 UoUJ7L3k5I73UW66GchIZW7HDBErav/OZmQjgwXyNnOgTbSOHILRlyZ6wZ+5U04VpI
+	 d6pgLuMQYqUyg==
+Message-ID: <57d27a43-4c3a-415b-b633-3d52c9f96f5a@kernel.org>
+Date: Mon, 29 Dec 2025 09:47:54 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH 3/3] arm64: dts: rockchip: Add Radxa CM3J on RPi CM4
- IO Board
-To: heiko@sntech.de
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- catalin.marinas@arm.com, will@kernel.org, kever.yang@rock-chips.com,
- jonas@kwiboo.se, michael.opdenacker@rootcommit.com, honyuenkwun@gmail.com,
- quentin.schulz@cherry.de, dsimic@manjaro.org, alchark@gmail.com,
- pbrobinson@gmail.com, ziyao@disroot.org, devicetree@vger.kernel.org,
- linux-rockchip@lists.infradead.org
-References: <20251229073840.25516-1-naoki@radxa.com>
- <20251229073840.25516-3-naoki@radxa.com>
+Subject: Re: [PATCH v4 7/7] ARM: dts: rockchip: rk3506: Add pinctrl and rmio
+ dtsi for rk3506
+To: =?UTF-8?B?5byg54Oo?= <ye.zhang@rock-chips.com>
+Cc: Linus Walleij <linus.walleij@linaro.org>, Heiko Stuebner
+ <heiko@sntech.de>, Bartosz Golaszewski <brgl@bgdev.pl>,
+ Rob Herring <robh@kernel.org>, krzk+dt <krzk+dt@kernel.org>,
+ conor+dt <conor+dt@kernel.org>, linux-gpio <linux-gpio@vger.kernel.org>,
+ devicetree <devicetree@vger.kernel.org>,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
+ linux-rockchip <linux-rockchip@lists.infradead.org>,
+ linux-kernel <linux-kernel@vger.kernel.org>,
+ "tao.huang" <tao.huang@rock-chips.com>
+References: <20251227114957.3287944-1-ye.zhang@rock-chips.com>
+ <20251227114957.3287944-8-ye.zhang@rock-chips.com>
+ <ebb720f6-4756-437f-a71a-d94f45d732e8@kernel.org>
+ <AGkAtwAtJy-UDFfi3M2RSaqR.3.1766993111418.Hmail.ye.zhang@rock-chips.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
-From: FUKAUMI Naoki <naoki@radxa.com>
-In-Reply-To: <20251229073840.25516-3-naoki@radxa.com>
-X-QQ-SENDSIZE: 520
-Feedback-ID: zesmtpip:radxa.com:qybglogicsvrsz:qybglogicsvrsz4b-0
-X-QQ-XMAILINFO: NEDcVTmWjWOdhax4sen8UjI1gnikfAatErMeje1KTEubEQ8xKSCBAf7C
-	Xym2CsNtjLhWLzOH2Ew9q6t9T3VeALcOrZTBuzBV8HUY9hBis6A5jnn9Akq9ZigPcZ9cHFr
-	mmcbkvDpElzdTIf7toAPdnePIuj4/jAtwKaPVrcZuNXwpUTldgJAnm2yzczTsV8jpd9DYTX
-	pLDVWXWkXaPklU4UAGzkqv1/JrmEzuM/e75Oxn3Knx6xn7DHBZNbC+DqSyFv+KcKw55I/Ne
-	H/rYF2leKglp3fuwmWNtBRF+VKPcJDc1unYZoRfWwvj0ydT/Dotk6pWA6GeIWNTz+HXwh2W
-	7CmuY/9LuJKM3D3IHN5SIZ9FX4k1arVPQg6hlFcMwwUnwLUKV4HEP3C6o/V2SowERE+8Vdv
-	3OBbqbmunE521M1BnDR5Q7dJkm4qVUfwUrzdVgRndqVvJhBRBF7hW3yon8AJBxAnv/nchlh
-	GfQRAB71UndsFYnvHPlguGX6qEzQquLArm84K2owcS/MgLllWiZMU7gxMBvxaotPk8wqgws
-	7lB/uJuQvkUIWZVnYBiSWjLzVNYzYIm4hvEQJCWKHnlLWjwwdeffivLk01GUUPvE2hyks3j
-	5Ac1DhZAdKF0sVs8XXFsMEsUeV2btTkKwSXX2GHfZITGX49IMVIW4nT3UrGtvcVnqkTuDgE
-	/yBEVsFlOkPxH6nwpO0wZJMV8Xl1GUHP9J++lx5EdxJJDQtQYZqCEKycQ2VesXwjy1tKaT6
-	0N4c9xbbiof2JmJzb+c7LcgjygtCApI+OasGCFDxe6oTLwX2kSveCUF+Sw6NRm0wK8GG4NT
-	kVEB3ASYmPqtPRixk9gZ+NLntPESULsxVKjatVULXr7Z8bcb6PvS2QoZxaZHiaP8A4Ffc+C
-	4HB05+mL0aP/lMT84WQH56rALiPT6e3EIx2HCxqNxIEJKl1c7uCjappVrgjNXXVj2GlVtjy
-	c+kXXChZuCJjUPwPYBWzSLQXK5gpqKN+yIsVxKPnZnIRW8A9HauiSqp99pQyv3RrIH+HVEk
-	Um0FB0R5yruyLAOgYba5NuyCVcraYcHYqz3JECRLfKdLcsoGHuBJznpEReJH94v4MjhLdvp
-	g==
-X-QQ-XMRINFO: OD9hHCdaPRBwH5bRRRw8tsiH4UAatJqXfg==
-X-QQ-RECHKSPAM: 0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251228_235901_463542_122790DC 
-X-CRM114-Status: GOOD (  19.15  )
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <AGkAtwAtJy-UDFfi3M2RSaqR.3.1766993111418.Hmail.ye.zhang@rock-chips.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,289 +118,46 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi all,
-
-On 12/29/25 16:38, FUKAUMI Naoki wrote:
-> The Raspberry Pi Compute Module 4 IO Board is an application board for
-> the Compute Module 4. [1]
-> 
-> This patch adds support for the Radxa CM3J mounted on the RPi CM4 IO
-> Board.
-> 
-> Specification:
-> - 12V 5521 DC jack
-> - 2x full-size HDMI 2.0 connectors (only HDMI0 is supported with CM3J)
-> - Gigabit Ethernet RJ45 with PoE support
-> - 2x USB 2.0 connectors, with header for two more connectors
-> - Micro USB connector
-> - microSD card socket
-> - PCIe Gen 2 x1 socket
-> - 12V 4-pin PWM fan connector
-> - External power connector (+5V, +12V)
-> - 2x MIPI DSI connectors
-> - 2x MIPI CSI-2 connectors
-> - 40-pin GPIO header
-> - RTC with battery socket
-> - Red (power) and green (heartbeat) LEDs
-> 
-> [1] https://datasheets.raspberrypi.com/cm4io/cm4io-datasheet.pdf
-> 
-> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
-> ---
->   arch/arm64/boot/dts/rockchip/Makefile         |   1 +
->   .../rockchip/rk3568-radxa-cm3j-rpi-cm4.dts    | 204 ++++++++++++++++++
->   2 files changed, 205 insertions(+)
->   create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-radxa-cm3j-rpi-cm4.dts
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-> index 3fdd1e4832e1..37150e920b01 100644
-> --- a/arch/arm64/boot/dts/rockchip/Makefile
-> +++ b/arch/arm64/boot/dts/rockchip/Makefile
-> @@ -148,6 +148,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-odroid-m1.dtb
->   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-photonicat.dtb
->   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-qnap-ts233.dtb
->   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-qnap-ts433.dtb
-> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-radxa-cm3j-rpi-cm4.dtb
->   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-radxa-e25.dtb
->   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-roc-pc.dtb
->   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-rock-3a.dtb
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-radxa-cm3j-rpi-cm4.dts b/arch/arm64/boot/dts/rockchip/rk3568-radxa-cm3j-rpi-cm4.dts
-> new file mode 100644
-> index 000000000000..b91ac0ca854c
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/rockchip/rk3568-radxa-cm3j-rpi-cm4.dts
-> @@ -0,0 +1,204 @@
-> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-> +/*
-> + * Copyright (c) 2025 Radxa Computer (Shenzhen) Co., Ltd.
-> + */
-> +
-> +/dts-v1/;
-> +
-> +#include <dt-bindings/leds/common.h>
-> +#include <dt-bindings/gpio/gpio.h>
-> +#include <dt-bindings/pinctrl/rockchip.h>
-> +#include "rk3568-radxa-cm3j.dtsi"
-> +
-> +/ {
-> +	model = "Radxa CM3J on RPi CM4 IO Board";
-> +	compatible = "radxa,cm3j-rpi-cm4", "radxa,cm3j", "rockchip,rk3568";
-> +
-> +	aliases {
-> +		ethernet0 = &gmac1;
-> +		mmc1 = &sdmmc0;
-> +		rtc0 = &pcf85063;
-> +	};
-> +
-> +	chosen {
-> +		stdout-path = "serial2:1500000n8";
-> +	};
-> +
-> +	hdmi-con {
-> +		compatible = "hdmi-connector";
-> +		type = "a";
-> +
-> +		port {
-> +			hdmi_con_in: endpoint {
-> +				remote-endpoint = <&hdmi_out_con>;
-> +			};
-> +		};
-> +	};
-> +
-> +	leds-1 {
-> +		compatible = "gpio-leds";
-> +
-> +		led-1 {
-> +			color = <LED_COLOR_ID_RED>;
-> +			default-state = "on";
-> +			function = LED_FUNCTION_POWER;
-> +			gpios = <&gpio3 RK_PC4 GPIO_ACTIVE_LOW>;
-> +			pinctrl-names = "default";
-> +			pinctrl-0 = <&npwr_led>;
-> +		};
-> +
-> +		led-2 {
-> +			color = <LED_COLOR_ID_GREEN>;
-> +			default-state = "on";
-> +			function = LED_FUNCTION_STATUS;
-> +			gpios = <&gpio4 RK_PC6 GPIO_ACTIVE_LOW>;
-> +			linux,default-trigger = "heartbeat";
-> +			pinctrl-names = "default";
-> +			pinctrl-0 = <&pi_nled_activity>;
-> +		};
-> +	};
-> +
-> +	dc12v: regulator-12v0 {
-
-It's labeled as '+12v' in the schematic. Do you have any other 
-suggestions for the name?
-
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "dc12v";
-> +		regulator-always-on;
-> +		regulator-boot-on;
-> +		regulator-min-microvolt = <12000000>;
-> +		regulator-max-microvolt = <12000000>;
-> +	};
-> +
-> +	dc3v3_pcie: regulator-3v3-2 {
-
-It's labeled as '+3.3v' in the schematic. Do you have any other 
-suggestions for the name?
-
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "dc3v3_pcie";
-> +		regulator-always-on;
-> +		regulator-boot-on;
-> +		regulator-min-microvolt = <3300000>;
-> +		regulator-max-microvolt = <3300000>;
-> +		vin-supply = <&dc12v>;
-> +	};
-> +
-> +	gpio_vref: regulator-3v3-3 {
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "gpio_vref";
-> +		regulator-always-on;
-> +		regulator-boot-on;
-> +		regulator-min-microvolt = <3300000>;
-> +		regulator-max-microvolt = <3300000>;
-> +		vin-supply = <&dc3v3>;
-> +	};
-> +
-> +	dc5v: regulator-5v0 {
-
-It's labeled as '+5v' in the schematic. Do you have any other 
-suggestions for the name?
-
-Best regards,
-
---
-FUKAUMI Naoki
-Radxa Computer (Shenzhen) Co., Ltd.
-
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "dc5v";
-> +		regulator-always-on;
-> +		regulator-boot-on;
-> +		regulator-min-microvolt = <5000000>;
-> +		regulator-max-microvolt = <5000000>;
-> +		vin-supply = <&dc12v>;
-> +	};
-> +};
-> +
-> +&combphy0 {
-> +	status = "okay";
-> +};
-> +
-> +&combphy2 {
-> +	status = "okay";
-> +};
-> +
-> +&gmac1 {
-> +	status = "okay";
-> +};
-> +
-> +&gpio0 {
-> +	nextrst-hog {
-> +		gpio-hog;
-> +		/*
-> +		 * GPIO_ACTIVE_LOW + output-low here means that the pin is set
-> +		 * to high, because output-low decides the value pre-inversion.
-> +		 */
-> +		gpios = <RK_PC0 GPIO_ACTIVE_LOW>;
-> +		line-name = "nEXTRST";
-> +		output-low;
-> +	};
-> +};
-> +
-> +&hdmi {
-> +	status = "okay";
-> +};
-> +
-> +&hdmi_sound {
-> +	status = "okay";
-> +};
-> +
-> +&i2c0 {
-> +	emc2301: fan-controller@2f {
-> +		compatible = "microchip,emc2301", "microchip,emc2305";
-> +		reg = <0x2f>;
-> +		#address-cells = <1>;
-> +		#size-cells = <0>;
-> +		#pwm-cells = <3>;
-> +
-> +		fan@0 {
-> +			reg = <0x0>;
-> +			pwms = <&emc2301 26000 0 1>;
-> +			#cooling-cells = <2>;
-> +		};
-> +	};
-> +
-> +	pcf85063: rtc@51 {
-> +		compatible = "nxp,pcf85063a";
-> +		reg = <0x51>;
-> +		wakeup-source;
-> +	};
-> +};
-> +
-> +&i2s0_8ch {
-> +	status = "okay";
-> +};
-> +
-> +&pinctrl {
-> +	leds {
-> +		npwr_led: npwr-led {
-> +			rockchip,pins = <3 RK_PC4 RK_FUNC_GPIO &pcfg_pull_none>;
-> +		};
-> +
-> +		pi_nled_activity: pi-nled-activity {
-> +			rockchip,pins = <4 RK_PC6 RK_FUNC_GPIO &pcfg_pull_none>;
-> +		};
-> +	};
-> +};
-> +
-> +&pcie2x1 {
-> +	vpcie3v3-supply = <&dc3v3_pcie>;
-> +	status = "okay";
-> +};
-> +
-> +&sdmmc0 {
-> +	bus-width = <4>;
-> +	cap-sd-highspeed;
-> +	broken-cd;
-> +	disable-wp;
-> +	no-mmc;
-> +	no-sdio;
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&sdmmc0_bus4 &sdmmc0_clk &sdmmc0_cmd>;
-> +	vmmc-supply = <&dc3v3>;
-> +	status = "okay";
-> +};
-> +
-> +&uart2 {
-> +	status = "okay";
-> +};
-> +
-> +&usb2phy0 {
-> +	status = "okay";
-> +};
-> +
-> +&usb2phy0_otg {
-> +	status = "okay";
-> +};
-> +
-> +&usb_host0_xhci {
-> +	status = "okay";
-> +};
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gMjkvMTIvMjAyNSAwODoyNSwg5byg54OoIHdyb3RlOgo+IOWcqCAyMDI1LzEyLzI4IDE4OjM3
+LCBLcnp5c3p0b2YgS296bG93c2tpIOWGmemBkzoKPiAmZ3Q7IE9uIDI3LzEyLzIwMjUgMTI6NDks
+IFllIFpoYW5nIHdyb3RlOgo+ICZndDsmZ3Q7ICsJCS9vbWl0LWlmLW5vLXJlZi8KPiAmZ3Q7Jmd0
+OyArCQlybV9pbzI4X3RvdWNoX2tleV9pbjY6IHJtLWlvMjgtdG91Y2gta2V5LWluNiB7Cj4gJmd0
+OyZndDsgKwkJCXJvY2tjaGlwLHBpbnMgPQo+ICZndDsmZ3Q7ICsJCQkJJmx0OzEgUktfUEMzIDcg
+JmFtcDtwY2ZnX3B1bGxfbm9uZSZndDs7Cj4gJmd0OyZndDsgKwkJCXJvY2tjaGlwLHJtaW8tcGlu
+cyA9Cj4gJmd0OyZndDsgKwkJCQkmbHQ7MCAyOCA0OSZndDs7Cj4gJmd0OyZndDsgKwkJfTsKPiAm
+Z3Q7Jmd0OyArCj4gJmd0OyZndDsgKwkJL29taXQtaWYtbm8tcmVmLwo+ICZndDsmZ3Q7ICsJCXJt
+X2lvMjhfdG91Y2hfa2V5X2luNzogcm0taW8yOC10b3VjaC1rZXktaW43IHsKPiAmZ3Q7Jmd0OyAr
+CQkJcm9ja2NoaXAscGlucyA9Cj4gJmd0OyZndDsgKwkJCQkmbHQ7MSBSS19QQzMgNyAmYW1wO3Bj
+ZmdfcHVsbF9ub25lJmd0OzsKPiAmZ3Q7Jmd0OyArCQkJcm9ja2NoaXAscm1pby1waW5zID0KPiAm
+Z3Q7Jmd0OyArCQkJCSZsdDswIDI4IDUwJmd0OzsKPiAmZ3Q7Jmd0OyArCQl9Owo+ICZndDsmZ3Q7
+ICsKPiAmZ3Q7Jmd0OyArCQkvb21pdC1pZi1uby1yZWYvCj4gJmd0OyZndDsgKwkJcm1faW8yOF9z
+YWkwX21jbGs6IHJtLWlvMjgtc2FpMC1tY2xrIHsKPiAmZ3Q7Jmd0OyArCQkJcm9ja2NoaXAscGlu
+cyA9Cj4gJmd0OyZndDsgKwkJCQkmbHQ7MSBSS19QQzMgNyAmYW1wO3BjZmdfcHVsbF9ub25lJmd0
+OzsKPiAmZ3Q7Jmd0OyArCQkJcm9ja2NoaXAscm1pby1waW5zID0KPiAmZ3Q7Jmd0OyArCQkJCSZs
+dDswIDI4IDUxJmd0OzsKPiAmZ3Q7Jmd0OyArCQl9Owo+ICZndDsmZ3Q7ICsKPiAmZ3Q7Jmd0OyAr
+CQkvb21pdC1pZi1uby1yZWYvCj4gJmd0OyZndDsgKwkJcm1faW8yOF9zYWkwX3NjbGs6IHJtLWlv
+Mjgtc2FpMC1zY2xrIHsKPiAmZ3Q7Jmd0OyArCQkJcm9ja2NoaXAscGlucyA9Cj4gJmd0OyZndDsg
+KwkJCQkmbHQ7MSBSS19QQzMgNyAmYW1wO3BjZmdfcHVsbF9ub25lJmd0OzsKPiAmZ3Q7Jmd0OyAr
+CQkJcm9ja2NoaXAscm1pby1waW5zID0KPiAmZ3Q7Jmd0OyArCQkJCSZsdDswIDI4IDUyJmd0OzsK
+PiAmZ3Q7Jmd0OyArCQl9Owo+ICZndDsmZ3Q7ICsKPiAmZ3Q7Jmd0OyArCQkvb21pdC1pZi1uby1y
+ZWYvCj4gJmd0OyZndDsgKwkJcm1faW8yOF9zYWkwX2xyY2s6IHJtLWlvMjgtc2FpMC1scmNrIHsK
+PiAmZ3Q7Jmd0OyArCQkJcm9ja2NoaXAscGlucyA9Cj4gJmd0OyZndDsgKwkJCQkmbHQ7MSBSS19Q
+QzMgNyAmYW1wO3BjZmdfcHVsbF9ub25lJmd0OzsKPiAmZ3Q7Jmd0OyArCQkJcm9ja2NoaXAscm1p
+by1waW5zID0KPiAmZ3Q7Jmd0OyArCQkJCSZsdDswIDI4IDUzJmd0OzsKPiAmZ3Q7Jmd0OyArCQl9
+Owo+ICZndDsmZ3Q7ICsKPiAmZ3Q7Jmd0OyArCQkvb21pdC1pZi1uby1yZWYvCj4gJmd0OyZndDsg
+KwkJcm1faW8yOF9zYWkwX3NkaTA6IHJtLWlvMjgtc2FpMC1zZGkwIHsKPiAmZ3Q7Jmd0OyArCQkJ
+cm9ja2NoaXAscGlucyA9Cj4gJmd0OyZndDsgKwkJCQkmbHQ7MSBSS19QQzMgNyAmYW1wO3BjZmdf
+cHVsbF9ub25lJmd0OzsKPiAmZ3Q7Jmd0OyArCQkJcm9ja2NoaXAscm1pby1waW5zID0KPiAmZ3Q7
+Jmd0OyArCQkJCSZsdDswIDI4IDU0Jmd0OzsKPiAmZ3Q7Jmd0OyArCQl9Owo+ICZndDsKPiAmZ3Q7
+IFdoeSBhcmUgeW91IGRlZmluaW5nIGFsbCBwaW5zPyBUaGlzIGlzIHdyb25nLCB5b3VyIGRyaXZl
+ciBoYXMgdG8gZG8gaXQsCj4gJmd0OyBub3QgRFRTLiBBbGwgdGhlc2UgZGVmaW5pdGlvbnMgd2hl
+biBub3QgdXNlZCBhcmUganVzdCBwb2ludGxlc3MuCj4gJmd0OwoKRG9uJ3Qgc2VuZCBIVE1MIHRv
+IHVzLiBJIGNhbm5vdCBwYXJzZSBhYm92ZS4KCkJlc3QgcmVnYXJkcywKS3J6eXN6dG9mCgpfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hp
+cCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8v
+bGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
