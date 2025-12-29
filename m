@@ -4,42 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CC07E8FDB1
-	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Dec 2025 07:56:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 972E2E8FDB1
+	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Dec 2025 07:59:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nHlGwlc9G6akHeGDNSMR/40Cj2y/adYNfpw2KV6xDyg=; b=nMUfyHSD3VRbPz
-	Ji/hRCt7C5ZblQ5IjAb+wTzfSiZLG9juZxekIWwEGgXjBkgi8eKshKfdM6x/vpxfwGsLlcz8CkTWL
-	eUNEbUzeyaCXtyEjUv3KCVvB+i2vD4APRsiKTzBwrhwxpHjl6tZSrMC3XktP8UkCUnQx+Oal6OXgs
-	jlmP2cO+4vO86BgGfmAGKF0OrXAIHUwtlgOCtSSTz3Iq/sUa/CajojMPVytMl14PqiecnFxugb0Gu
-	gKC5n+5lhUy//qnyBdL6LhWo9U5xos+tmubh2ZbMW00/V4mvYvAPdNlyYftOQjYgUDIv5wVJxhd/r
-	Wor2WM2mqrEWjYO6/MKw==;
+	List-Owner; bh=Bi+uWjx52/ACu48dn3Ih5UiF9Oq3X1BIPHPGeb9Glyo=; b=KkP9fNhQeNKTZz
+	MLIKM6jk8UF6Y42Ch8fPvkZ3pYJOuFYBZuTItaufdI+dJcljTjtcf3VvP+WL3ESnzBCo8xQF4Ka+K
+	S9/Ea2Qp9QA7XyyJbStQnY1CPYXtmg9jFKtwAgPGKuoI3JZkH8+kMOyVmGsD7mBanEhRA2oDp1rZq
+	sHZiCkhOAxzUz/1JlFZHnWNem60JZIt7TjVaaAa90hC0ifUj8gIiEkqzn3zihbsbqZrqTj27pUMvn
+	oCxyyJKd63ryLBB5PKOuaZI/4O5Gr7erWAaw/GejwSg1OuKiZMzrdiSoUss3+CJYghC+urCadXHBq
+	cPAeW73W8N/1qLThwKWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1va86b-00000003RxB-3h8B;
-	Mon, 29 Dec 2025 07:55:53 +0000
-Received: from smtpbguseast3.qq.com ([54.243.244.52])
+	id 1va89f-00000003S4M-418a;
+	Mon, 29 Dec 2025 07:59:03 +0000
+Received: from smtpbguseast2.qq.com ([54.204.34.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1va86Y-00000003Rvd-2398
+	id 1va89c-00000003S3X-3cfN
 	for linux-rockchip@lists.infradead.org;
-	Mon, 29 Dec 2025 07:55:52 +0000
-X-QQ-mid: zesmtpip2t1766994916t7ee7f656
-X-QQ-Originating-IP: KN3kD2/XR8k/P3MfWGkrqW3OIzDVq6y+kcT0twBPoMw=
+	Mon, 29 Dec 2025 07:59:02 +0000
+X-QQ-mid: zesmtpip4t1766995102t04fb815c
+X-QQ-Originating-IP: aX+gxg3+YMcTyAJHZj8K6KJO/EaqsqmjkAbqeYRXE7Q=
 Received: from [IPV6:240f:10b:7440:1:3961:bf03 ( [localhost])
 	by bizesmtp.qq.com (ESMTP) with 
-	id ; Mon, 29 Dec 2025 15:55:13 +0800 (CST)
+	id ; Mon, 29 Dec 2025 15:58:19 +0800 (CST)
 X-QQ-SSF: 0000000000000000000000000000000
 X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 16543962298428795708
-Message-ID: <A7ADEB12E25ED346+00048ee9-c4d6-442d-a02c-cefbdc6be353@radxa.com>
-Date: Mon, 29 Dec 2025 16:55:13 +0900
+X-BIZMAIL-ID: 13615831732151771395
+Message-ID: <695F691E743D4DEE+18cf202a-fd78-4b3a-9387-eef18c061f5d@radxa.com>
+Date: Mon, 29 Dec 2025 16:58:19 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH 2/3] arm64: dts: rockchip: Add Radxa CM3J
+Subject: Re: [RFC PATCH 3/3] arm64: dts: rockchip: Add Radxa CM3J on RPi CM4
+ IO Board
 To: heiko@sntech.de
 Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
  catalin.marinas@arm.com, will@kernel.org, kever.yang@rock-chips.com,
@@ -48,32 +49,34 @@ Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
  pbrobinson@gmail.com, ziyao@disroot.org, devicetree@vger.kernel.org,
  linux-rockchip@lists.infradead.org
 References: <20251229073840.25516-1-naoki@radxa.com>
- <20251229073840.25516-2-naoki@radxa.com>
+ <20251229073840.25516-3-naoki@radxa.com>
 Content-Language: en-US
 From: FUKAUMI Naoki <naoki@radxa.com>
-In-Reply-To: <20251229073840.25516-2-naoki@radxa.com>
+In-Reply-To: <20251229073840.25516-3-naoki@radxa.com>
 X-QQ-SENDSIZE: 520
 Feedback-ID: zesmtpip:radxa.com:qybglogicsvrsz:qybglogicsvrsz4b-0
-X-QQ-XMAILINFO: OJG2NVWVA7qwfLp6zw6S2X/HCMh8RQYej43v2HbJBwa/jpvW3mCNf3dz
-	GUGrpZwPVteJBVis8Yx7UKkGgLM4M3OF6GWf3/UjsPJwebtprNo3lwQFGuobBYMFSiHXkng
-	wUKDVmQ1gUu0VVWNCBgaT964CZtK7ci2q+fth/siyUzj/5vBX9a5n1jjahY8P7fH2gfcZ4K
-	dQ0TBndbxEDdFTws9IsCV312o0bd/yI5nicHh2iRTtfB5Hyc/nzbgX8crYbmklkAxVCqlYm
-	l8+CzqX8ca9EUgkwWCNq0RLFpl60jkxm1Khh6Ybyx9f2RYKNlN3ALNIuY8k+eN+x1mCf2eR
-	vo3dHsmyqVyHf6AYILFoUEzfQ7Ge24qDrnfebDxA5RYcM7IJ9UQQAmpkHOYGu+TQ65QI61M
-	TWZ/kxZDuTwFV/uZ2XeJ5uSDv8JRQXiRyhSNmY2Wn7zcMm1z+fV5DH0LDMze+r/GJCDo5+y
-	hfiQMmVv9BOlLTL937HKDfvYjNZqOD4yKn+yp+2+5bnDbTKTdhzwjFP0TXWy2xIUKxp3ibO
-	8lzdWiJbFcugoWlcYMoldD+JZT8G5Ioz3xnWqu7muXuwbNpFgjKxwoJ0ZI7vX2jgVpDH2oD
-	Mrnq1g2Yas9ib8C8Rhstbjfw1Ms5ROUFjBtjN6A5OoCyBK0dlz7nTD+JPHPuTg8316m+Zd8
-	9uVHujd7GuaYjmuvkM1XB/tR1rdGSNeNRRAdCEmPmS4pWPPPE5FZrTQs9Hy1EYEa5oqsh+1
-	Jwr/Ma0fk9T8zqy6D1d3r420tMfpsPfrwpexopezUIeWnw6EPuCWLYk52VClQipNkDKGwXM
-	bNMUUJdlJ43LXvtpIq1NHhlXPDwu3ebkGbQ2ICVNlhrSsY1+2fj9w5I66gJI5zR+TVMz6bD
-	jsr6Qtk9NrwA1kK8rYmru2owWDvO2wQAiczT6hr/WvQc+hiJdQgc9wYwhC8GpC5z6RYBWQz
-	DO+upyFpx74nFZJjJ9EOQh4KLCz8qsNheoG8A7XB4HabfYkEBbcMR6xNXfV5EpV+r0r0=
-X-QQ-XMRINFO: NI4Ajvh11aEjEMj13RCX7UuhPEoou2bs1g==
+X-QQ-XMAILINFO: NEDcVTmWjWOdhax4sen8UjI1gnikfAatErMeje1KTEubEQ8xKSCBAf7C
+	Xym2CsNtjLhWLzOH2Ew9q6t9T3VeALcOrZTBuzBV8HUY9hBis6A5jnn9Akq9ZigPcZ9cHFr
+	mmcbkvDpElzdTIf7toAPdnePIuj4/jAtwKaPVrcZuNXwpUTldgJAnm2yzczTsV8jpd9DYTX
+	pLDVWXWkXaPklU4UAGzkqv1/JrmEzuM/e75Oxn3Knx6xn7DHBZNbC+DqSyFv+KcKw55I/Ne
+	H/rYF2leKglp3fuwmWNtBRF+VKPcJDc1unYZoRfWwvj0ydT/Dotk6pWA6GeIWNTz+HXwh2W
+	7CmuY/9LuJKM3D3IHN5SIZ9FX4k1arVPQg6hlFcMwwUnwLUKV4HEP3C6o/V2SowERE+8Vdv
+	3OBbqbmunE521M1BnDR5Q7dJkm4qVUfwUrzdVgRndqVvJhBRBF7hW3yon8AJBxAnv/nchlh
+	GfQRAB71UndsFYnvHPlguGX6qEzQquLArm84K2owcS/MgLllWiZMU7gxMBvxaotPk8wqgws
+	7lB/uJuQvkUIWZVnYBiSWjLzVNYzYIm4hvEQJCWKHnlLWjwwdeffivLk01GUUPvE2hyks3j
+	5Ac1DhZAdKF0sVs8XXFsMEsUeV2btTkKwSXX2GHfZITGX49IMVIW4nT3UrGtvcVnqkTuDgE
+	/yBEVsFlOkPxH6nwpO0wZJMV8Xl1GUHP9J++lx5EdxJJDQtQYZqCEKycQ2VesXwjy1tKaT6
+	0N4c9xbbiof2JmJzb+c7LcgjygtCApI+OasGCFDxe6oTLwX2kSveCUF+Sw6NRm0wK8GG4NT
+	kVEB3ASYmPqtPRixk9gZ+NLntPESULsxVKjatVULXr7Z8bcb6PvS2QoZxaZHiaP8A4Ffc+C
+	4HB05+mL0aP/lMT84WQH56rALiPT6e3EIx2HCxqNxIEJKl1c7uCjappVrgjNXXVj2GlVtjy
+	c+kXXChZuCJjUPwPYBWzSLQXK5gpqKN+yIsVxKPnZnIRW8A9HauiSqp99pQyv3RrIH+HVEk
+	Um0FB0R5yruyLAOgYba5NuyCVcraYcHYqz3JECRLfKdLcsoGHuBJznpEReJH94v4MjhLdvp
+	g==
+X-QQ-XMRINFO: OD9hHCdaPRBwH5bRRRw8tsiH4UAatJqXfg==
 X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251228_235551_073961_83C113A8 
-X-CRM114-Status: GOOD (  16.02  )
+X-CRM114-CacheID: sfid-20251228_235901_463542_122790DC 
+X-CRM114-Status: GOOD (  19.15  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,552 +96,156 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 Hi all,
 
 On 12/29/25 16:38, FUKAUMI Naoki wrote:
-> The Radxa CM3J is a feature rich industrial compute module based on
-> the Rockchip RK3568J SoC. [1]
+> The Raspberry Pi Compute Module 4 IO Board is an application board for
+> the Compute Module 4. [1]
+> 
+> This patch adds support for the Radxa CM3J mounted on the RPi CM4 IO
+> Board.
 > 
 > Specification:
-> - Quad-core Cortex-A55 CPU
-> - Mali-G52 2EE GPU
-> - 1TOPS NPU
-> - Up to 8GB LPDDR4x RAM
-> - Up to 32GB eMMC (optional)
-> - 16MB SPI flash (optional)
-> - Wi-Fi 5 / BT 5.0 with external antenna connector
-> - Gigabit Ethernet PHY
-> - RK809 PMIC
-> - Green (power) LED
+> - 12V 5521 DC jack
+> - 2x full-size HDMI 2.0 connectors (only HDMI0 is supported with CM3J)
+> - Gigabit Ethernet RJ45 with PoE support
+> - 2x USB 2.0 connectors, with header for two more connectors
+> - Micro USB connector
+> - microSD card socket
+> - PCIe Gen 2 x1 socket
+> - 12V 4-pin PWM fan connector
+> - External power connector (+5V, +12V)
+> - 2x MIPI DSI connectors
+> - 2x MIPI CSI-2 connectors
+> - 40-pin GPIO header
+> - RTC with battery socket
+> - Red (power) and green (heartbeat) LEDs
 > 
-> [1] https://dl.radxa.com/cm3j/docs/hw/radxa_cm3j_schematic_v1.2_20250115.pdf
+> [1] https://datasheets.raspberrypi.com/cm4io/cm4io-datasheet.pdf
 > 
 > Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
 > ---
->   .../boot/dts/rockchip/rk3568-radxa-cm3j.dtsi  | 570 ++++++++++++++++++
->   arch/arm64/configs/linux.radxa.config         |   1 +
->   2 files changed, 571 insertions(+)
->   create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-radxa-cm3j.dtsi
->   create mode 120000 arch/arm64/configs/linux.radxa.config
+>   arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+>   .../rockchip/rk3568-radxa-cm3j-rpi-cm4.dts    | 204 ++++++++++++++++++
+>   2 files changed, 205 insertions(+)
+>   create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-radxa-cm3j-rpi-cm4.dts
 > 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-radxa-cm3j.dtsi b/arch/arm64/boot/dts/rockchip/rk3568-radxa-cm3j.dtsi
+> diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+> index 3fdd1e4832e1..37150e920b01 100644
+> --- a/arch/arm64/boot/dts/rockchip/Makefile
+> +++ b/arch/arm64/boot/dts/rockchip/Makefile
+> @@ -148,6 +148,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-odroid-m1.dtb
+>   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-photonicat.dtb
+>   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-qnap-ts233.dtb
+>   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-qnap-ts433.dtb
+> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-radxa-cm3j-rpi-cm4.dtb
+>   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-radxa-e25.dtb
+>   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-roc-pc.dtb
+>   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-rock-3a.dtb
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-radxa-cm3j-rpi-cm4.dts b/arch/arm64/boot/dts/rockchip/rk3568-radxa-cm3j-rpi-cm4.dts
 > new file mode 100644
-> index 000000000000..c503e876bcfd
+> index 000000000000..b91ac0ca854c
 > --- /dev/null
-> +++ b/arch/arm64/boot/dts/rockchip/rk3568-radxa-cm3j.dtsi
-> @@ -0,0 +1,570 @@
+> +++ b/arch/arm64/boot/dts/rockchip/rk3568-radxa-cm3j-rpi-cm4.dts
+> @@ -0,0 +1,204 @@
 > +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 > +/*
 > + * Copyright (c) 2025 Radxa Computer (Shenzhen) Co., Ltd.
 > + */
 > +
+> +/dts-v1/;
+> +
 > +#include <dt-bindings/leds/common.h>
 > +#include <dt-bindings/gpio/gpio.h>
 > +#include <dt-bindings/pinctrl/rockchip.h>
-> +#include <dt-bindings/soc/rockchip,vop2.h>
-> +#include "rk3568.dtsi"
+> +#include "rk3568-radxa-cm3j.dtsi"
 > +
 > +/ {
+> +	model = "Radxa CM3J on RPi CM4 IO Board";
+> +	compatible = "radxa,cm3j-rpi-cm4", "radxa,cm3j", "rockchip,rk3568";
+> +
 > +	aliases {
-> +		mmc0 = &sdhci;
-> +		mmc2 = &sdmmc2;
+> +		ethernet0 = &gmac1;
+> +		mmc1 = &sdmmc0;
+> +		rtc0 = &pcf85063;
 > +	};
 > +
-> +	gmac1_clkin: clock-125m {
-> +		compatible = "fixed-clock";
-> +		clock-frequency = <125000000>;
-> +		clock-output-names = "gmac1_clkin";
-> +		#clock-cells = <0>;
+> +	chosen {
+> +		stdout-path = "serial2:1500000n8";
 > +	};
 > +
-> +	leds-0 {
-> +		compatible = "gpio-leds";
+> +	hdmi-con {
+> +		compatible = "hdmi-connector";
+> +		type = "a";
 > +
-> +		led-0 {
-> +			color = <LED_COLOR_ID_GREEN>;
-> +			default-state = "on";
-> +			function = LED_FUNCTION_POWER;
-> +			gpios = <&gpio0 RK_PB4 GPIO_ACTIVE_HIGH>;
-> +			pinctrl-names = "default";
-> +			pinctrl-0 = <&gpio0_b4_led>;
+> +		port {
+> +			hdmi_con_in: endpoint {
+> +				remote-endpoint = <&hdmi_out_con>;
+> +			};
 > +		};
 > +	};
 > +
-> +	vcc3v3_sys: regulator-3v3-0 {
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "vcc3v3_sys";
-> +		regulator-always-on;
-> +		regulator-boot-on;
-> +		regulator-min-microvolt = <3300000>;
-> +		regulator-max-microvolt = <3300000>;
-> +		vin-supply = <&dc5v>;
+> +	leds-1 {
+> +		compatible = "gpio-leds";
+> +
+> +		led-1 {
+> +			color = <LED_COLOR_ID_RED>;
+> +			default-state = "on";
+> +			function = LED_FUNCTION_POWER;
+> +			gpios = <&gpio3 RK_PC4 GPIO_ACTIVE_LOW>;
+> +			pinctrl-names = "default";
+> +			pinctrl-0 = <&npwr_led>;
+> +		};
+> +
+> +		led-2 {
+> +			color = <LED_COLOR_ID_GREEN>;
+> +			default-state = "on";
+> +			function = LED_FUNCTION_STATUS;
+> +			gpios = <&gpio4 RK_PC6 GPIO_ACTIVE_LOW>;
+> +			linux,default-trigger = "heartbeat";
+> +			pinctrl-names = "default";
+> +			pinctrl-0 = <&pi_nled_activity>;
+> +		};
 > +	};
 > +
-> +	vcc_3v3_1: regulator-3v3-1 {
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "vcc_3v3_1";
-> +		regulator-always-on;
-> +		regulator-boot-on;
-> +		regulator-min-microvolt = <3300000>;
-> +		regulator-max-microvolt = <3300000>;
-> +		vin-supply = <&vcc3v3_sys>;
-> +	};
-> +
-> +	sdio_pwrseq: sdio-pwrseq {
-> +		compatible = "mmc-pwrseq-simple";
-> +		clocks = <&rk809 1>;
-> +		clock-names = "ext_clock";
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&wifi_reg_on_h_gpio3_d4>;
-> +		reset-gpios = <&gpio3 RK_PD4 GPIO_ACTIVE_LOW>;
-> +	};
-> +};
-> +
-> +&cpu0 {
-> +	cpu-supply = <&vdd_cpu>;
-> +};
-> +
-> +&cpu1 {
-> +	cpu-supply = <&vdd_cpu>;
-> +};
-> +
-> +&cpu2 {
-> +	cpu-supply = <&vdd_cpu>;
-> +};
-> +
-> +&cpu3 {
-> +	cpu-supply = <&vdd_cpu>;
-> +};
-> +
-> +&gmac1 {
-> +	assigned-clocks = <&cru SCLK_GMAC1_RX_TX>, <&cru SCLK_GMAC1>;
-> +	assigned-clock-parents = <&cru SCLK_GMAC1_RGMII_SPEED>, <&gmac1_clkin>;
-> +	clock_in_out = "input";
-> +	phy-handle = <&rgmii_phy1>;
-> +	phy-mode = "rgmii-id";
-> +	phy-supply = <&vcc_3v3_1>;
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&gmac1m1_miim
-> +		     &gmac1m1_clkinout
-> +		     &gmac1m1_rx_bus2
-> +		     &gmac1m1_tx_bus2
-> +		     &gmac1m1_rgmii_clk
-> +		     &gmac1m1_rgmii_bus>;
-> +};
+> +	dc12v: regulator-12v0 {
 
-During a cold boot, it does not work in U-Boot:
-
-=> setenv ipaddr 192.168.0.99
-=> ping 192.168.0.1
-ethernet@fe010000 Waiting for PHY auto negotiation to complete....... done
-Using ethernet@fe010000 device
-
-ARP Retry count exceeded; starting again
-ping failed; host 192.168.0.1 is not alive
-
-However, it works fine in Linux, and also in U-Boot after a warm reboot.
-
-> +&gpu {
-> +	mali-supply = <&vdd_gpu>;
-> +	status = "okay";
-> +};
-> +
-> +&hdmi {
-> +	avdd-0v9-supply = <&vdda0v9_image>;
-> +	avdd-1v8-supply = <&vcca1v8_image>;
-> +};
-> +
-> +&hdmi_in {
-> +	hdmi_in_vp0: endpoint {
-> +		remote-endpoint = <&vp0_out_hdmi>;
-> +	};
-> +};
-> +
-> +&hdmi_out {
-> +	hdmi_out_con: endpoint {
-> +		remote-endpoint = <&hdmi_con_in>;
-> +	};
-> +};
-> +
-> +&i2c0 {
-> +	status = "okay";
-> +
-> +	rk809: pmic@20 {
-> +		compatible = "rockchip,rk809";
-> +		reg = <0x20>;
-> +		#clock-cells = <1>;
-> +		clock-output-names = "rk809-clkout1", "rk809-clkout2";
-> +		interrupt-parent = <&gpio0>;
-> +		interrupts = <RK_PA3 IRQ_TYPE_LEVEL_LOW>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&pmic_int_l>;
-> +		system-power-controller;
-> +		vcc1-supply = <&vcc3v3_sys>;
-> +		vcc2-supply = <&vcc3v3_sys>;
-> +		vcc3-supply = <&vcc3v3_sys>;
-> +		vcc4-supply = <&vcc3v3_sys>;
-> +		vcc5-supply = <&vcc3v3_sys>;
-> +		vcc6-supply = <&vcc3v3_sys>;
-> +		vcc7-supply = <&vcc3v3_sys>;
-> +		vcc8-supply = <&vcc3v3_sys>;
-> +		vcc9-supply = <&vcc3v3_sys>;
-> +		wakeup-source;
-> +
-> +		regulators {
-> +			vdd_logic: DCDC_REG1 {
-> +				regulator-name = "vdd_logic";
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-initial-mode = <0x2>;
-> +				regulator-min-microvolt = <500000>;
-> +				regulator-max-microvolt = <1350000>;
-> +				regulator-ramp-delay = <6001>;
-> +
-> +				regulator-state-mem {
-> +					regulator-off-in-suspend;
-> +				};
-> +			};
-> +
-> +			vdd_gpu: DCDC_REG2 {
-> +				regulator-name = "vdd_gpu";
-> +				regulator-initial-mode = <0x2>;
-> +				regulator-min-microvolt = <500000>;
-> +				regulator-max-microvolt = <1350000>;
-> +				regulator-ramp-delay = <6001>;
-> +
-> +				regulator-state-mem {
-> +					regulator-off-in-suspend;
-> +				};
-> +			};
-> +
-> +			vcc_ddr: DCDC_REG3 {
-> +				regulator-name = "vcc_ddr";
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-initial-mode = <0x2>;
-> +
-> +				regulator-state-mem {
-> +					regulator-on-in-suspend;
-> +				};
-> +			};
-> +
-> +			vdd_npu: DCDC_REG4 {
-> +				regulator-name = "vdd_npu";
-> +				regulator-initial-mode = <0x2>;
-> +				regulator-min-microvolt = <500000>;
-> +				regulator-max-microvolt = <1350000>;
-> +				regulator-ramp-delay = <6001>;
-> +
-> +				regulator-state-mem {
-> +					regulator-off-in-suspend;
-> +				};
-> +			};
-> +
-> +			dc1v8: vccio_flash: vcc_1v8: DCDC_REG5 {
-
-It's labeled as '+1.8v' in the schematic. Do you have any other 
+It's labeled as '+12v' in the schematic. Do you have any other 
 suggestions for the name?
 
-> +				regulator-name = "vcc_1v8";
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-min-microvolt = <1800000>;
-> +				regulator-max-microvolt = <1800000>;
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "dc12v";
+> +		regulator-always-on;
+> +		regulator-boot-on;
+> +		regulator-min-microvolt = <12000000>;
+> +		regulator-max-microvolt = <12000000>;
+> +	};
 > +
-> +				regulator-state-mem {
-> +					regulator-off-in-suspend;
-> +				};
-> +			};
-> +
-> +			vdda0v9_image: LDO_REG1 {
-> +				regulator-name = "vdda0v9_image";
-> +				regulator-min-microvolt = <900000>;
-> +				regulator-max-microvolt = <900000>;
-> +
-> +				regulator-state-mem {
-> +					regulator-off-in-suspend;
-> +				};
-> +			};
-> +
-> +			vdda_0v9: LDO_REG2 {
-> +				regulator-name = "vdda_0v9";
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-min-microvolt = <900000>;
-> +				regulator-max-microvolt = <900000>;
-> +
-> +				regulator-state-mem {
-> +					regulator-off-in-suspend;
-> +				};
-> +			};
-> +
-> +			vdda0v9_pmu: LDO_REG3 {
-> +				regulator-name = "vdda0v9_pmu";
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-min-microvolt = <900000>;
-> +				regulator-max-microvolt = <900000>;
-> +
-> +				regulator-state-mem {
-> +					regulator-on-in-suspend;
-> +					regulator-suspend-microvolt = <900000>;
-> +				};
-> +			};
-> +
-> +			vccio_acodec: LDO_REG4 {
-> +				regulator-name = "vccio_acodec";
-> +				regulator-min-microvolt = <3300000>;
-> +				regulator-max-microvolt = <3300000>;
-> +
-> +				regulator-state-mem {
-> +					regulator-off-in-suspend;
-> +				};
-> +			};
-> +
-> +			vccio_sd: LDO_REG5 {
-> +				regulator-name = "vccio_sd";
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-min-microvolt = <1800000>;
-> +				regulator-max-microvolt = <3300000>;
-> +
-> +				regulator-state-mem {
-> +					regulator-off-in-suspend;
-> +				};
-> +			};
-> +
-> +			vcc3v3_pmu: LDO_REG6 {
-> +				regulator-name = "vcc3v3_pmu";
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-min-microvolt = <3300000>;
-> +				regulator-max-microvolt = <3300000>;
-> +
-> +				regulator-state-mem {
-> +					regulator-on-in-suspend;
-> +					regulator-suspend-microvolt = <3300000>;
-> +				};
-> +			};
-> +
-> +			vcca_1v8: LDO_REG7 {
-> +				regulator-name = "vcca_1v8";
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-min-microvolt = <1800000>;
-> +				regulator-max-microvolt = <1800000>;
-> +
-> +				regulator-state-mem {
-> +					regulator-off-in-suspend;
-> +				};
-> +			};
-> +
-> +			vcca1v8_pmu: LDO_REG8 {
-> +				regulator-name = "vcca1v8_pmu";
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-min-microvolt = <1800000>;
-> +				regulator-max-microvolt = <1800000>;
-> +
-> +				regulator-state-mem {
-> +					regulator-on-in-suspend;
-> +					regulator-suspend-microvolt = <1800000>;
-> +				};
-> +			};
-> +
-> +			vcca1v8_image: LDO_REG9 {
-> +				regulator-name = "vcca1v8_image";
-> +				regulator-min-microvolt = <1800000>;
-> +				regulator-max-microvolt = <1800000>;
-> +
-> +				regulator-state-mem {
-> +					regulator-off-in-suspend;
-> +				};
-> +			};
-> +
-> +			dc3v3: vcc_3v3: SWITCH_REG1 {
+> +	dc3v3_pcie: regulator-3v3-2 {
 
 It's labeled as '+3.3v' in the schematic. Do you have any other 
 suggestions for the name?
 
-> +				regulator-name = "vcc_3v3";
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +
-> +				regulator-state-mem {
-> +					regulator-off-in-suspend;
-> +				};
-> +			};
-> +
-> +			vcc3v3_sd: SWITCH_REG2 {
-> +				regulator-name = "vcc3v3_sd";
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +
-> +				regulator-state-mem {
-> +					regulator-off-in-suspend;
-> +				};
-> +			};
-> +		};
-> +	};
-> +
-> +	vdd_cpu: regulator@40 {
-> +		compatible = "silergy,syr827";
-> +		reg = <0x40>;
-> +		fcs,suspend-voltage-selector = <1>;
-> +		regulator-name = "vdd_cpu";
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "dc3v3_pcie";
 > +		regulator-always-on;
 > +		regulator-boot-on;
-> +		regulator-min-microvolt = <712500>;
-> +		regulator-max-microvolt = <1390000>;
-> +		regulator-ramp-delay = <2300>;
-> +		vin-supply = <&dc5v>;
-> +	};
-> +};
-> +
-> +&i2c2 {
-> +	status = "okay";
-> +
-> +	eeprom@50 {
-> +		compatible = "belling,bl24c16a", "atmel,24c16";
-> +		reg = <0x50>;
-> +		pagesize = <16>;
-> +		read-only;
-> +		vcc-supply = <&gpio_vref>;
-> +	};
-> +};
-> +
-> +&mdio1 {
-> +	rgmii_phy1: ethernet-phy@0 {
-> +		compatible = "ethernet-phy-id001c.c916";
-> +		reg = <0x0>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&gmac1_rstn_gpio3_b0>; // GPIO4_C3
-> +		reset-assert-us = <20000>;
-> +		reset-deassert-us = <100000>;
-> +		reset-gpios = <&gpio4 RK_PC3 GPIO_ACTIVE_LOW>;
-> +	};
-> +};
-> +
-> +&pinctrl {
-> +	bluetooth {
-> +		bt_reg_on_h_gpio4_b2: bt-reg-on-h-gpio4-b2 {
-> +			rockchip,pins = <4 RK_PB2 RK_FUNC_GPIO &pcfg_pull_none>;
-> +		};
-> +
-> +		bt_wake_host_h_gpio4_b4: bt-wake-host-h-gpio4-b4 {
-> +			rockchip,pins = <4 RK_PB4 RK_FUNC_GPIO &pcfg_pull_down>;
-> +		};
-> +
-> +		host_wake_bt_h_gpio4_b5: host-wake-bt-h-gpio4-b5 {
-> +			rockchip,pins = <4 RK_PB5 RK_FUNC_GPIO &pcfg_pull_none>;
-> +		};
+> +		regulator-min-microvolt = <3300000>;
+> +		regulator-max-microvolt = <3300000>;
+> +		vin-supply = <&dc12v>;
 > +	};
 > +
-> +	ethernet {
-> +		gmac1_rstn_gpio3_b0: gmac1-rstn-gpio3-b0 {
-> +			rockchip,pins = <4 RK_PC3 RK_FUNC_GPIO &pcfg_pull_none>;
-> +		};
+> +	gpio_vref: regulator-3v3-3 {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "gpio_vref";
+> +		regulator-always-on;
+> +		regulator-boot-on;
+> +		regulator-min-microvolt = <3300000>;
+> +		regulator-max-microvolt = <3300000>;
+> +		vin-supply = <&dc3v3>;
 > +	};
 > +
-> +	leds {
-> +		gpio0_b4_led: gpio0-b4-led {
-> +			rockchip,pins = <0 RK_PB4 RK_FUNC_GPIO &pcfg_pull_none>;
-> +		};
-> +	};
-> +
-> +	pcie {
-> +		pcie20_clkreqnm2: pcie20_clkreqnm2 {
-> +			rockchip,pins = <1 RK_PB0 4 &pcfg_pull_none>;
-> +		};
-> +
-> +		pcie_nrst: pcie-nrst {
-> +			rockchip,pins = <1 RK_PB2 RK_FUNC_GPIO &pcfg_pull_none>;
-> +		};
-> +	};
-> +
-> +	pmic {
-> +		pmic_int_l: pmic-int-l {
-> +			rockchip,pins = <0 RK_PA3 RK_FUNC_GPIO &pcfg_pull_up>;
-> +		};
-> +	};
-> +
-> +	wifi {
-> +		wifi_reg_on_h_gpio3_d4: wifi-reg-on-h-gpio3-d4 {
-> +			rockchip,pins = <3 RK_PD4 RK_FUNC_GPIO &pcfg_pull_none>;
-> +		};
-> +
-> +		wifi_wake_host_h_gpio3_d5: wifi-wake-host-h-gpio3-d5 {
-> +			rockchip,pins = <3 RK_PD5 RK_FUNC_GPIO &pcfg_pull_down>;
-> +		};
-> +	};
-> +};
-> +
-> +&pcie2x1 {
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&pcie20_clkreqnm2 &pcie_nrst>;
-> +	reset-gpios = <&gpio1 RK_PB2 GPIO_ACTIVE_HIGH>;
-> +	supports-clkreq;
-> +};
-> +
-> +&pmu_io_domains {
-> +	pmuio1-supply = <&vcc3v3_pmu>;
-> +	pmuio2-supply = <&vcc_3v3>;
-> +	vccio1-supply = <&vccio_acodec>;
-> +	vccio2-supply = <&vccio_flash>;
-> +	vccio3-supply = <&vccio_sd>;
-> +	vccio4-supply = <&vcc_1v8>;
-> +	vccio5-supply = <&vcc_3v3>;
-> +	vccio6-supply = <&vcc_1v8>;
-> +	vccio7-supply = <&vcc_3v3>;
-> +	status = "okay";
-> +};
-> +
-> +&saradc {
-> +	vref-supply = <&vcca_1v8>;
-> +	status = "okay";
-> +};
-> +
-> +&sdhci {
-> +	bus-width = <8>;
-> +	cap-mmc-highspeed;
-> +	mmc-hs200-1_8v;
-> +	max-frequency = <200000000>;
-> +	no-sd;
-> +	no-sdio;
-> +	non-removable;
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&emmc_bus8 &emmc_clk &emmc_cmd &emmc_datastrobe>;
-> +	vmmc-supply = <&vcc_3v3>;
-> +	vqmmc-supply = <&vccio_flash>;
-> +	status = "okay";
-> +};
-> +
-> +&sdmmc2 {
-> +	#address-cells = <1>;
-> +	bus-width = <4>;
-> +	cap-sd-highspeed;
-> +	cap-sdio-irq;
-> +	disable-wp;
-> +	keep-power-in-suspend;
-> +	max-frequency = <200000000>;
-> +	mmc-pwrseq = <&sdio_pwrseq>;
-> +	no-mmc;
-> +	no-sd;
-> +	non-removable;
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&sdmmc2m0_bus4 &sdmmc2m0_clk &sdmmc2m0_cmd>;
-> +	sd-uhs-sdr104;
-> +	#size-cells = <0>;
-> +	status = "okay";
-> +
-> +	wifi@1 {
-> +		compatible = "brcm,bcm43456-fmac", "brcm,bcm4329-fmac";
-> +		reg = <1>;
-> +#if 0
-> +		// brcmfmac: brcmf_sdio_bus_rxctl: resumed on timeout
-> +		interrupt-parent = <&gpio3>;
-> +		interrupts = <RK_PD5 IRQ_TYPE_LEVEL_HIGH>;
-> +		interrupt-names = "host-wake";
-> +#endif
+> +	dc5v: regulator-5v0 {
 
-It doesn't work if interrupt is enabled. Any ideas?
+It's labeled as '+5v' in the schematic. Do you have any other 
+suggestions for the name?
 
 Best regards,
 
@@ -646,29 +253,102 @@ Best regards,
 FUKAUMI Naoki
 Radxa Computer (Shenzhen) Co., Ltd.
 
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&wifi_wake_host_h_gpio3_d5>;
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "dc5v";
+> +		regulator-always-on;
+> +		regulator-boot-on;
+> +		regulator-min-microvolt = <5000000>;
+> +		regulator-max-microvolt = <5000000>;
+> +		vin-supply = <&dc12v>;
 > +	};
 > +};
 > +
-> +&sfc {
-> +	#address-cells = <1>;
-> +	#size-cells = <0>;
+> +&combphy0 {
 > +	status = "okay";
+> +};
 > +
-> +	flash@0 {
-> +		compatible = "jedec,spi-nor";
-> +		reg = <0>;
-> +		spi-max-frequency = <104000000>;
-> +		spi-rx-bus-width = <4>;
-> +		spi-tx-bus-width = <4>;
-> +		vcc-supply = <&vccio_flash>;
+> +&combphy2 {
+> +	status = "okay";
+> +};
+> +
+> +&gmac1 {
+> +	status = "okay";
+> +};
+> +
+> +&gpio0 {
+> +	nextrst-hog {
+> +		gpio-hog;
+> +		/*
+> +		 * GPIO_ACTIVE_LOW + output-low here means that the pin is set
+> +		 * to high, because output-low decides the value pre-inversion.
+> +		 */
+> +		gpios = <RK_PC0 GPIO_ACTIVE_LOW>;
+> +		line-name = "nEXTRST";
+> +		output-low;
 > +	};
 > +};
 > +
-> +&tsadc {
-> +	rockchip,hw-tshut-mode = <1>;
-> +	rockchip,hw-tshut-polarity = <0>;
+> +&hdmi {
+> +	status = "okay";
+> +};
+> +
+> +&hdmi_sound {
+> +	status = "okay";
+> +};
+> +
+> +&i2c0 {
+> +	emc2301: fan-controller@2f {
+> +		compatible = "microchip,emc2301", "microchip,emc2305";
+> +		reg = <0x2f>;
+> +		#address-cells = <1>;
+> +		#size-cells = <0>;
+> +		#pwm-cells = <3>;
+> +
+> +		fan@0 {
+> +			reg = <0x0>;
+> +			pwms = <&emc2301 26000 0 1>;
+> +			#cooling-cells = <2>;
+> +		};
+> +	};
+> +
+> +	pcf85063: rtc@51 {
+> +		compatible = "nxp,pcf85063a";
+> +		reg = <0x51>;
+> +		wakeup-source;
+> +	};
+> +};
+> +
+> +&i2s0_8ch {
+> +	status = "okay";
+> +};
+> +
+> +&pinctrl {
+> +	leds {
+> +		npwr_led: npwr-led {
+> +			rockchip,pins = <3 RK_PC4 RK_FUNC_GPIO &pcfg_pull_none>;
+> +		};
+> +
+> +		pi_nled_activity: pi-nled-activity {
+> +			rockchip,pins = <4 RK_PC6 RK_FUNC_GPIO &pcfg_pull_none>;
+> +		};
+> +	};
+> +};
+> +
+> +&pcie2x1 {
+> +	vpcie3v3-supply = <&dc3v3_pcie>;
+> +	status = "okay";
+> +};
+> +
+> +&sdmmc0 {
+> +	bus-width = <4>;
+> +	cap-sd-highspeed;
+> +	broken-cd;
+> +	disable-wp;
+> +	no-mmc;
+> +	no-sdio;
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&sdmmc0_bus4 &sdmmc0_clk &sdmmc0_cmd>;
+> +	vmmc-supply = <&dc3v3>;
 > +	status = "okay";
 > +};
 > +
@@ -676,61 +356,18 @@ Radxa Computer (Shenzhen) Co., Ltd.
 > +	status = "okay";
 > +};
 > +
-> +&uart8 {
-> +	dma-names = "tx", "rx";
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&uart8m0_xfer &uart8m0_ctsn &uart8m0_rtsn>;
-> +	uart-has-rtscts;
+> +&usb2phy0 {
 > +	status = "okay";
+> +};
 > +
-> +	bluetooth {
-> +		compatible = "brcm,bcm4345c5";
-> +		clocks = <&rk809 1>;
-> +		clock-names = "lpo";
-> +		device-wakeup-gpios = <&gpio4 RK_PB5 GPIO_ACTIVE_HIGH>;
-> +		host-wakeup-gpios = <&gpio4 RK_PB4 GPIO_ACTIVE_HIGH>;
-> +		max-speed = <1500000>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&bt_reg_on_h_gpio4_b2
-> +			     &bt_wake_host_h_gpio4_b4
-> +			     &host_wake_bt_h_gpio4_b5>;
-> +		shutdown-gpios = <&gpio4 RK_PB2 GPIO_ACTIVE_HIGH>;
-> +		vbat-supply = <&vcc_3v3_1>;
-> +		vddio-supply = <&vcc_1v8>;
-> +	};
+> +&usb2phy0_otg {
+> +	status = "okay";
 > +};
 > +
 > +&usb_host0_xhci {
-> +	extcon = <&usb2phy0>;
-> +	maximum-speed = "high-speed";
-> +	phys = <&usb2phy0_otg>;
-> +	phy-names = "usb2-phy";
-> +};
-> +
-> +&vop {
-> +	assigned-clocks = <&cru DCLK_VOP0>, <&cru DCLK_VOP1>;
-> +	assigned-clock-parents = <&pmucru PLL_HPLL>, <&cru PLL_VPLL>;
 > +	status = "okay";
 > +};
-> +
-> +&vop_mmu {
-> +	status = "okay";
-> +};
-> +
-> +&vp0 {
-> +	vp0_out_hdmi: endpoint@ROCKCHIP_VOP2_EP_HDMI0 {
-> +		reg = <ROCKCHIP_VOP2_EP_HDMI0>;
-> +		remote-endpoint = <&hdmi_in_vp0>;
-> +	};
-> +};
-> diff --git a/arch/arm64/configs/linux.radxa.config b/arch/arm64/configs/linux.radxa.config
-> new file mode 120000
-> index 000000000000..8af66a0e7a96
-> --- /dev/null
-> +++ b/arch/arm64/configs/linux.radxa.config
-> @@ -0,0 +1 @@
-> +/home/radxa/linux.radxa.config
-> \ No newline at end of file
+
 
 
 _______________________________________________
