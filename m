@@ -4,52 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C6F2EE49BC
-	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Dec 2025 20:20:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A467FEE57C1
+	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Dec 2025 20:20:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=v6qN6K+EWh4gDLWIqMGz2mLw5psum7ijdSTssGJLtmM=; b=H20eNzg6qYfsQR
-	LqJE/j20SNBNjnO/pS4dVF88CulOL8bHdajTIH63KYBz/jnj+DwFmp7l7qrErl+ibbU9ygDbROzXB
-	bzoEQk+DE7jKngZVJx/Od+oDeKZY7y7107p+HIrVzVwuc4lAZsotParhf0YtQLVQl8SjYVag9IpCT
-	ZAMEUmSb0dOmc2FRxyc0eMw44uLVEUFZEqwL3s61NltaBPIIoKPH/eLYrSTzt/IqqlHV3rPNyih61
-	WTpgLeGLS6UVp6ajji5jQH/3BwCkusIu5J88EXeIU4opdbCSaEaA49EFqvvNDwp1blHAeZD3GN6m6
-	j53/rTLnELP5XBWKjivw==;
+	List-Owner; bh=+fOrirDcPmjcA2vGgETamkGBbEqXa0+L7DvF+RM4dfE=; b=5CZ/n2NAgjhzwE
+	KISwENWjfvRmBEoa7DPawxuuK6Cald025VDy/OeB1mYZs7ljkhmx1wI6hQI5IYC+fjmOv58lMJfK3
+	N69YeiKAO4FKBieMYp/XlPLF9b9Hytj7KFVdQIkQc+GL32G75BBdbv7CcbM74eiaEHGILuI6m38Mq
+	cwYVjVIQ8r+4k8FWNm8dm2ovgi2UZKDV5UT6jqsKp0Zeic2KhNWgR1lRL4LM3RACapQVQw07ESJDu
+	JoDZevMvAaX/ugo0Fknxa+QTLiMKlHabHKDFRteLx/Yr7rev7C/iaDVFuAPNgZYlcYvIuSE79Xy3E
+	2ws4dGyd9UtuIK5e8DoQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vagC0-00000005Gja-0WSn;
-	Tue, 30 Dec 2025 20:19:44 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vagBz-00000005GjD-2OXB;
+	Tue, 30 Dec 2025 20:19:43 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vagBv-00000005GhM-2Wm7;
-	Tue, 30 Dec 2025 20:19:41 +0000
+	id 1vagBw-00000005Gi1-2ScJ;
+	Tue, 30 Dec 2025 20:19:40 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 138C3442F0;
+	by tor.source.kernel.org (Postfix) with ESMTP id 58AE560054;
 	Tue, 30 Dec 2025 20:19:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id E453EC116D0;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 0975BC19422;
 	Tue, 30 Dec 2025 20:19:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1767125977;
-	bh=/+9+iLOtFvLLN5b53KbFCJPBG7n0Tv9fjrgIxHLR3G0=;
+	s=k20201202; t=1767125978;
+	bh=jXBJOVSY5/jtRd4MsqkK6D8JPXqyh0CeW8/F1DaF9Hw=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=sAzYxTEhgys0QWIhqy5nFnpXnieAFdNWgWsVCP2E4fpVVzead7ij37e4djarS3w/j
-	 Jw/M2EIdt5NyiF8d4NBew7I/5Jnmv1UbaYiRPjUNDUAKqpD6wIciXmraTBLvlIOCWN
-	 gdjvYswhuPihxsEKtnM7/okHNr+OlX0tf1ksQV2bbxN92gbP22E701KxqpPHYBhudJ
-	 z9FF8ODLN/nAsr3DzfF6rP5b2+DnYyVtTIcoky6DlPr40dpydPaBVrwOCU/tp+eOML
-	 G2I22sfONYy7AyiQhaKM+f78uN6FiW8FHAhVGLL92p0fL2uY8DhlUrMjbBcBoDc3Lq
-	 6VQjgqPqe+17A==
+	b=BX2PL9hZhZXEok+BI2UGLzRE8L/z/INqLlm6wEPC8sw7arwu/uTY+Lf/UIILOQmIU
+	 S5dcOB5NsR74T2XFe5AcDrI83lET+rT2V5nnTbJ2ry0Izvd3U8DFuggSNMEHAFjJmP
+	 QVcYfGX9GL13fT2HcPO4GNF1eR3cs14DlPD2glIP2qu2dBnD/I5qqwdYX2nZze1Vc6
+	 11SyXzKlqGvjqxgzB4CtiJHGHPKXqKqX8QVZeLWKMabIi22/rgW1GrCcuva1I/kQFV
+	 RCIMHArf8zUAQ5SCx5YfURX+caXh0OWS7NhkLs4SThx5aowY51XmZKbdEngqYHYSCD
+	 lOnDaY3EiP9qQ==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D1F2AEE49BC;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EC197EE57C2;
 	Tue, 30 Dec 2025 20:19:37 +0000 (UTC)
 From: Ricardo Pardini via B4 Relay <devnull+ricardo.pardini.net@kernel.org>
-Date: Tue, 30 Dec 2025 21:19:30 +0100
-Subject: [PATCH 1/3] arm64: dts: rockchip: Enable the NPU on NanoPC
- T6/T6-LTS
+Date: Tue, 30 Dec 2025 21:19:32 +0100
+Subject: [PATCH 3/3] arm64: dts: rockchip: Enable the NPU on Turing RK1
 MIME-Version: 1.0
-Message-Id: <20251230-arm64-dts-rockchip-rk3588-npu-enablements-v1-1-d38b182a59e3@pardini.net>
+Message-Id: <20251230-arm64-dts-rockchip-rk3588-npu-enablements-v1-3-d38b182a59e3@pardini.net>
 References: <20251230-arm64-dts-rockchip-rk3588-npu-enablements-v1-0-d38b182a59e3@pardini.net>
 In-Reply-To: <20251230-arm64-dts-rockchip-rk3588-npu-enablements-v1-0-d38b182a59e3@pardini.net>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -58,25 +57,21 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
  Ricardo Pardini <ricardo@pardini.net>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1346;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1285;
  i=ricardo@pardini.net; h=from:subject:message-id;
- bh=+QiHWgqrqCvAOEg9ZYrtyyD9Tb3C3HqtujZ2zGhDDrA=;
- b=owEBbQGS/pANAwAIATteP+Oex+3pAcsmYgBpVDPYgaaZKkBzk5d1Kj1a5IICn5fE5aQRqf38z
- EgnUptOBG2JATMEAAEIAB0WIQSsGCMM9q/qytxIiJM7Xj/jnsft6QUCaVQz2AAKCRA7Xj/jnsft
- 6SqoB/9N+rz+MEY6VoUs2Bu5JmiCmkTLSYSQ1vx7/Z7MNRq5hPaQFpYyJS21PQaubUXdeiqK8wy
- rmCwpXRMgyRZqOzJCMtzi1ujM8LgE1dJpYA2qriq+joLRWMYjVSNJeuA2XM6YJbwohD9eyge3X2
- waBMxjEBtXGOfwqco+U/KHT25sj2m+oTmXzZy6XR70XRsKyVZ55u2KnXYxaw97d598fkRAb3VaM
- tsqvrrYm8+ntXs+UxH3i9Q4NWrjbkTy1b9FJZttfwr8Q3sVikDw0Gl+EMBO3S/Ut1dVfmCzwFZk
- IfUp7KGg3dK6B+B8BspLcwNgYF29fKccdRuvhpdyAh6tnQRR
+ bh=XpijixYvzriBRVOmsT4VQTqyTNHU15VOJMdhO93m6dw=;
+ b=owEBbQGS/pANAwAIATteP+Oex+3pAcsmYgBpVDPYIftKqird7Gw+MbUTrhyNE9UgbCwk/G7ts
+ 4guJBNUd7eJATMEAAEIAB0WIQSsGCMM9q/qytxIiJM7Xj/jnsft6QUCaVQz2AAKCRA7Xj/jnsft
+ 6WIrB/0Y+4blBLv5BpU9K90rubcHvJSrE3X3bxnkDdVzGSdn1hIDUnerQd2mBp0UgG4AiLLN0Sk
+ ijuK36DfiVNwLOnTZFIggL+Va2OKhz2CovtYshrKJzz/oQ3gQZWf1UwinN5ZEqE01s+ZG+wjIDG
+ Za59n6vA7cIiR7RrlVbrSdfGUaqQNM4Ra6w69kBk6oq/LLkZLp343nu1qYwB9Wt8LW4mwk6DUFy
+ nPfZF8lrOKEGQpxd/Km0qYRBqH2hTd+gVDAWCrLGi/smXlO7LLQnRGAg33m+6RjuDEKqjqPwEUR
+ qtEDnlfTmnvYTEyi/hiRCY7bLRR+Y8TrUqeKM1drX7vIdvRn
 X-Developer-Key: i=ricardo@pardini.net; a=openpgp;
  fpr=AC18230CF6AFEACADC4888933B5E3FE39EC7EDE9
 X-Endpoint-Received: by B4 Relay for ricardo@pardini.net/default with
  auth_id=588
 X-Original-From: Ricardo Pardini <ricardo@pardini.net>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251230_121939_694940_303373C7 
-X-CRM114-Status: UNSURE (   9.16  )
-X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,19 +91,19 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Ricardo Pardini <ricardo@pardini.net>
 
-Enable the NPU on FriendlyElec NanoPC T6/T6-LTS boards.
+Enable the NPU on Turing RK1.
 The regulator vdd_npu_s0 was already described.
 
 Signed-off-by: Ricardo Pardini <ricardo@pardini.net>
 ---
- arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi | 35 ++++++++++++++++++++++
- 1 file changed, 35 insertions(+)
+ .../arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi | 34 ++++++++++++++++++++++
+ 1 file changed, 34 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
-index fafeabe9adf9e..93bd479118e92 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
-@@ -629,6 +629,10 @@ &pd_gpu {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi
+index 6daea8961fdd6..7b28ec9ce1945 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi
+@@ -293,6 +293,10 @@ &pd_gpu {
  	domain-supply = <&vdd_gpu_s0>;
  };
  
@@ -117,9 +112,9 @@ index fafeabe9adf9e..93bd479118e92 100644
 +};
 +
  &pinctrl {
- 	gpio-leds {
- 		sys_led_pin: sys-led-pin {
-@@ -706,6 +710,37 @@ &pwm1 {
+ 	fan {
+ 		fan_int: fan-int {
+@@ -333,6 +337,36 @@ &pwm0 {
  	status = "okay";
  };
  
@@ -153,10 +148,9 @@ index fafeabe9adf9e..93bd479118e92 100644
 +	status = "okay";
 +};
 +
-+
- &saradc {
- 	vref-supply = <&avcc_1v8_s0>;
- 	status = "okay";
+ &sdhci {
+ 	bus-width = <8>;
+ 	no-sdio;
 
 -- 
 2.52.0
