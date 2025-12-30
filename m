@@ -4,54 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49633EE498E
-	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Dec 2025 17:21:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEAABEE4990
+	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Dec 2025 18:03:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2w4E4SKABf+5YlAu+qkPFLRnNsk8lJLDOQmYuq4n+LE=; b=sPIPjTTkw3Ut2d
-	2zaW2sEx7yT8mBC0BOnl4Xgn5Z7rDGVyrMEY1fAeQTsZI/ofwoIUnMjbOn5wtPOugC8yB/pDvEj9N
-	absrSlLsyAtB0zQyE7nIUHAWO/sCg4pop+UQlSxayV5sYL0cTheQ4RFv5jRUD4HcIOx/mk+Tlzhfo
-	dm1HKW6eBeS3YDqvw4f4ZFBbL9u3sM95ONLnZPKf1Sq3Z42gchUkz7083eUpaK8uA+OowhN/Z9/ge
-	lDwRytGEJcbjJj518MwDHmMLr7sRvccWL82on5YUBtbX6+JcN5ySZfY/6eGAU2fiGe85Bz5uNganb
-	LUxjqqdwiGxEXQ8EEQrg==;
+	List-Owner; bh=094Wybr6XfRiAXjuT4JC4EuACanhB1kMf3mOAe+hgsk=; b=ivA2D6Jh7aFISU
+	oPL8ddF7WF1OKxzCqnYRH5gxBy+a2fUFA02piIZPl+6O7MgdoDTCxp1qO5AawfhPG2Fl1KqPJSvF7
+	XBke7Wjx/uJ69hCQ3Ntz7zkhU1lh9BUbMoMZEL7hlsL5Z7GaEdrheFAKRXH9g03cwvVxQsqCFaIUl
+	GVe1sL0IwUrCP28JmIRsqzCn9k7lB7hPhouO0M+m8QhX2QmapGhsxKpd8vcrXg4IHi1PdsOX5dd2b
+	medmg1XSc2ovkdb7cUV388wwe7CkWd3bdD+691pww4F13JXtGCF+ds2pNsItflqW19UdK3zyR9DGj
+	NYrnulIB3oZmzG9Yq+Sw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vadPQ-0000000572c-2gOC;
-	Tue, 30 Dec 2025 17:21:24 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vadOy-000000056pj-23eY;
-	Tue, 30 Dec 2025 17:21:05 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id E45CA1515;
-	Tue, 30 Dec 2025 09:20:47 -0800 (PST)
-Received: from 010265703453.localdomain (usa-sjc-mx-foss1.foss.arm.com [172.31.20.19])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id B9BC53F63F;
-	Tue, 30 Dec 2025 09:20:52 -0800 (PST)
-From: Robin Murphy <robin.murphy@arm.com>
-To: heiko@sntech.de,
-	neil.armstrong@linaro.org,
-	dianders@chromium.org,
-	thierry.reding@gmail.com,
-	sam@ravnborg.org
-Cc: jesszhan0024@gmail.com,
-	dri-devel@lists.freedesktop.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH 2/4] drm/panel-edp: Move FriendlyELEC HD702E
-Date: Tue, 30 Dec 2025 17:20:32 +0000
-Message-Id: <027763b36fbad2005d09eeb289b7716c57f65e76.1767111809.git.robin.murphy@arm.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <cover.1767111804.git.robin.murphy@arm.com>
-References: <cover.1767111804.git.robin.murphy@arm.com>
+	id 1vae3f-000000059us-3nVD;
+	Tue, 30 Dec 2025 18:02:59 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vae3d-000000059uM-3e2e
+	for linux-rockchip@lists.infradead.org;
+	Tue, 30 Dec 2025 18:02:59 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 2D57B43654;
+	Tue, 30 Dec 2025 18:02:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DE973C4CEFB;
+	Tue, 30 Dec 2025 18:02:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1767117777;
+	bh=iEJPo+RclQgKvgaNojcfutzZClUtmHHAkPxNewG49s0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=luy/Uv7k8FTMztHjS5L7JajzUoQCQsQzLvjCoJRgbm55HJJhxoMSmC92Q7VHvdfbE
+	 2mUCgAJ0LDJ0v0N6d/mTojzJ+KnQFwvkhi7zJyWFH9LLe04lALEZGkocwBfz15/DPI
+	 N+Gq4Je+5qppS1Cttc7HnyyPlaPIsHc37VZVjoKGyM1umdZZRoSfAmj4LifHLkRKi+
+	 CmACICSn17+Ri+umY7IimYQqODE7D2PtjnjoMj4bnZCyiDIqg2ciB1jv2qGKIUvtL1
+	 ycFxqv1ElusfYHvqvBCyX5ZH8aK2n7/zzu+xB6q7Rd70SD7VIYQtVsHU4U9Z3jcXBc
+	 V99y7VAIHpWtQ==
+Date: Tue, 30 Dec 2025 12:02:56 -0600
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: FUKAUMI Naoki <naoki@radxa.com>
+Cc: honyuenkwun@gmail.com, i@next.chainsx.cn, heiko@sntech.de,
+	krzk+dt@kernel.org, linux-rockchip@lists.infradead.org,
+	kever.yang@rock-chips.com, michael.opdenacker@rootcommit.com,
+	devicetree@vger.kernel.org, jonas@kwiboo.se, conor+dt@kernel.org
+Subject: Re: [PATCH 1/2] dt-bindings: arm: rockchip: fix description for
+ Radxa CM3I
+Message-ID: <176711777554.871580.14571318556214839794.robh@kernel.org>
+References: <20251229045838.2917-1-naoki@radxa.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20251229045838.2917-1-naoki@radxa.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251230_092058_881211_05056D80 
-X-CRM114-Status: GOOD (  10.01  )
+X-CRM114-CacheID: sfid-20251230_100257_942379_67DF7D31 
+X-CRM114-Status: UNSURE (   8.74  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,106 +76,19 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-FriendlyELEC's HD702E module is an eDP panel (in as much as it's some
-LVDS LCD behind a Chrontel CH7511B eDP bridge), so move its data over
-to the eDP driver, also resolving the warning about the missing bpc
-value in the process.
 
-Signed-off-by: Robin Murphy <robin.murphy@arm.com>
----
- drivers/gpu/drm/panel/panel-edp.c    | 26 ++++++++++++++++++++++++++
- drivers/gpu/drm/panel/panel-simple.c | 25 -------------------------
- 2 files changed, 26 insertions(+), 25 deletions(-)
+On Mon, 29 Dec 2025 04:58:37 +0000, FUKAUMI Naoki wrote:
+> "Radxa CM3I" is the correct name[1], so fix the description.
+> 
+> [1] https://dl.radxa.com/cm3i/docs/hw/radxa_cm3i_product_brief.pdf
+> 
+> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
+> ---
+>  Documentation/devicetree/bindings/arm/rockchip.yaml | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
 
-diff --git a/drivers/gpu/drm/panel/panel-edp.c b/drivers/gpu/drm/panel/panel-edp.c
-index 415b894890ad..dd53ccc209ce 100644
---- a/drivers/gpu/drm/panel/panel-edp.c
-+++ b/drivers/gpu/drm/panel/panel-edp.c
-@@ -1256,6 +1256,29 @@ static const struct panel_desc boe_nv140fhmn49 = {
- 	},
- };
- 
-+static const struct drm_display_mode friendlyarm_hd702e_mode = {
-+	.clock		= 67185,
-+	.hdisplay	= 800,
-+	.hsync_start	= 800 + 20,
-+	.hsync_end	= 800 + 20 + 24,
-+	.htotal		= 800 + 20 + 24 + 20,
-+	.vdisplay	= 1280,
-+	.vsync_start	= 1280 + 4,
-+	.vsync_end	= 1280 + 4 + 8,
-+	.vtotal		= 1280 + 4 + 8 + 4,
-+	.flags		= DRM_MODE_FLAG_NVSYNC | DRM_MODE_FLAG_NHSYNC,
-+};
-+
-+static const struct panel_desc friendlyarm_hd702e = {
-+	.modes = &friendlyarm_hd702e_mode,
-+	.num_modes = 1,
-+	.bpc = 8,
-+	.size = {
-+		.width	= 94,
-+		.height	= 151,
-+	},
-+};
-+
- static const struct drm_display_mode innolux_n116bca_ea1_mode = {
- 	.clock = 76420,
- 	.hdisplay = 1366,
-@@ -1663,6 +1686,9 @@ static const struct of_device_id platform_of_match[] = {
- 	}, {
- 		.compatible = "boe,nv140fhmn49",
- 		.data = &boe_nv140fhmn49,
-+	}, {
-+		.compatible = "friendlyarm,hd702e",
-+		.data = &friendlyarm_hd702e,
- 	}, {
- 		.compatible = "innolux,n116bca-ea1",
- 		.data = &innolux_n116bca_ea1,
-diff --git a/drivers/gpu/drm/panel/panel-simple.c b/drivers/gpu/drm/panel/panel-simple.c
-index b26b682826bc..3ea52667b858 100644
---- a/drivers/gpu/drm/panel/panel-simple.c
-+++ b/drivers/gpu/drm/panel/panel-simple.c
-@@ -2359,28 +2359,6 @@ static const struct panel_desc frida_frd350h54004 = {
- 	.connector_type = DRM_MODE_CONNECTOR_DPI,
- };
- 
--static const struct drm_display_mode friendlyarm_hd702e_mode = {
--	.clock		= 67185,
--	.hdisplay	= 800,
--	.hsync_start	= 800 + 20,
--	.hsync_end	= 800 + 20 + 24,
--	.htotal		= 800 + 20 + 24 + 20,
--	.vdisplay	= 1280,
--	.vsync_start	= 1280 + 4,
--	.vsync_end	= 1280 + 4 + 8,
--	.vtotal		= 1280 + 4 + 8 + 4,
--	.flags		= DRM_MODE_FLAG_NVSYNC | DRM_MODE_FLAG_NHSYNC,
--};
--
--static const struct panel_desc friendlyarm_hd702e = {
--	.modes = &friendlyarm_hd702e_mode,
--	.num_modes = 1,
--	.size = {
--		.width	= 94,
--		.height	= 151,
--	},
--};
--
- static const struct drm_display_mode giantplus_gpg482739qs5_mode = {
- 	.clock = 9000,
- 	.hdisplay = 480,
-@@ -5235,9 +5213,6 @@ static const struct of_device_id platform_of_match[] = {
- 	}, {
- 		.compatible = "frida,frd350h54004",
- 		.data = &frida_frd350h54004,
--	}, {
--		.compatible = "friendlyarm,hd702e",
--		.data = &friendlyarm_hd702e,
- 	}, {
- 		.compatible = "giantplus,gpg482739qs5",
- 		.data = &giantplus_gpg482739qs5
--- 
-2.34.1
+Acked-by: Rob Herring (Arm) <robh@kernel.org>
 
 
 _______________________________________________
