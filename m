@@ -4,79 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD692E95A79
-	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Dec 2025 11:26:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50C05E95A8D
+	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Dec 2025 13:24:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vsVSEMZz0buxyU4tlnzfNVUpvhJAJl1cC7BLnGtAI80=; b=TjLFcnO8FPrk/H
-	kWxXEkNuVQPpdegVsYfZciYP0Cb/sY+ygCzb8yOpWwxeh/g8yyxIlsCKI/SAPWFHfwxFziMLTev5D
-	u4l4oA5lzXOXXkbdO8G1VZynaHAAC+cF7JtTa2X8x6uLL/JC50JwuyRBr46nvW+qGaY4bTRmDy9jj
-	cEX1ekeNRTOxunEjlp6L1RqUHVxIV32dL7BQD2XiMziZi8/iCP54kZ80U0wOW/QDVeeKrEDSIO0Lp
-	4RdCfMM3XRk3PauyhhpeGNZQtwd00u9NQZzxth1ieHgx25PM2F1ZLp04QUlcFyArwvpgf9+BiNEzV
-	XXI4W5uTNYLOS9qN909A==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
+	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=VlrbEEkD4Lh96Dyq0wO/6hCc7JHHb4Xvw0ggvXmEpIU=; b=jtN474R3DEaYpA
+	6u+zmzouKJjNE0S90Kdh44G6SK54RvN5JorDiqw1Y0suT3zm7OAGMUF7SO8dHSTx2cneGrJQZU0B+
+	EkCAmag8PqT7bT2manWyBPxEdsl/MgkdXrYhvP0lbOeDkfJCcyvWyMnEqDK/MdJzvERhUobvmsEUY
+	24WlDa5e9ZmAY/YaNIQhY8RMy7Xpi8/cBMzzGlZFyio8S5eliXR20BpORp05m9gBBPckkgiKUrq/q
+	aySXRIqe6+YLkgLrANfSmNR+58DJmuUAXhyFT5W3C7sC4ciISCSA/G4PoquiQLyzZ4eDVYSP95uV7
+	Czx1pWqh+Ee0CeF0QhGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vaXsE-00000004l7U-3dNT;
-	Tue, 30 Dec 2025 11:26:46 +0000
-Received: from mgamail.intel.com ([192.198.163.17])
+	id 1vaZhW-00000004raL-1zxB;
+	Tue, 30 Dec 2025 13:23:50 +0000
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vaXsC-00000004l78-2l3c
+	id 1vaZhT-00000004rZZ-2hWL
 	for linux-rockchip@lists.infradead.org;
-	Tue, 30 Dec 2025 11:26:46 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1767094004; x=1798630004;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=KYfxjXq9J6AVt3eKknhB4OWOV8+O4kCM2eoYg1/0q9M=;
-  b=MMfMpeF8NTPD+io4tBYXq1MSWBhv8SokKWi+xXgiIQiNdXn9yiQ12NrK
-   9kuAy8D1gfR5SzsDeW67MFXH/CWhSU08see2ve4XTNrm8/ChAgcQD+KQW
-   S+C6oE/xwpFZQ0qDpsDN2olDX9YBRMDK/ctRm0eUxct/dJCVUxfqHuzPz
-   q29/RdNc8wJMm1obXS9i+q/FuhiPA0sApGBbQ1ntvqkqSFl75ogvKNYYv
-   UgshUupoEeHfK2PmF36qynB0vTpdxinaMzJX6WruD5v+RgsiqC19Md1sG
-   CfjLLv1X2ZWfL8Oo3to/5oyXCP0VnhQ4EQ4c0hRctFf18r2nw2H6k8GBu
-   A==;
-X-CSE-ConnectionGUID: dG2AibU4SdaEWOpT/6DBeA==
-X-CSE-MsgGUID: YB8d4BxJRQuudM9o+WbqPA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11656"; a="68574728"
-X-IronPort-AV: E=Sophos;i="6.21,188,1763452800"; 
-   d="scan'208";a="68574728"
-Received: from fmviesa009.fm.intel.com ([10.60.135.149])
-  by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Dec 2025 03:26:42 -0800
-X-CSE-ConnectionGUID: yUBeaH2sQiGGK28linQH1A==
-X-CSE-MsgGUID: 6zgjnLlITHe3zah+Qn74LQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,188,1763452800"; 
-   d="scan'208";a="201665824"
-Received: from egrumbac-mobl6.ger.corp.intel.com (HELO localhost) ([10.245.245.103])
-  by fmviesa009-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Dec 2025 03:26:40 -0800
-Date: Tue, 30 Dec 2025 13:26:37 +0200
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Diederik de Haas <diederik@cknow-tech.com>
-Cc: Michael Wu <michael@allwinnertech.com>, myungjoo.ham@samsung.com,
-	cw00.choi@samsung.com, linux-kernel@vger.kernel.org,
-	Dragan Simic <dsimic@manjaro.org>,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v3] extcon: Fixed sysfs duplicate filename issue
-Message-ID: <aVO27QwEol-4OkV8@smile.fi.intel.com>
-References: <20251024024946.16618-1-michael@allwinnertech.com>
- <DF3Y6Z8X4GC6.11WQOENQD4EDW@cknow-tech.com>
- <aU_2VbFLPKqcyvp_@smile.fi.intel.com>
- <DF9SRIU7GHOX.1G7OOKX72555M@cknow-tech.com>
- <aVFoNbsd13ufl7ge@smile.fi.intel.com>
- <DFB3BUDFOIN1.3IM5386T534NQ@cknow-tech.com>
+	Tue, 30 Dec 2025 13:23:49 +0000
+Received: by mail-wm1-x329.google.com with SMTP id 5b1f17b1804b1-477ba2c1ca2so105254055e9.2
+        for <linux-rockchip@lists.infradead.org>; Tue, 30 Dec 2025 05:23:46 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1767101025; x=1767705825; darn=lists.infradead.org;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=bzWnrkrlR5q++h42uLlncPmWAMWNl0rJ9nbD7WUwTfQ=;
+        b=INyKMsqHmBilv9QcyzyxGc3cgIGgT/+FBhiBaFGKpC0PDVKtAO0sL3ImwyHBPp9pq8
+         nzFzzJI2taYBjgdKgMHKOB20U5Xmkc8oEwJEKYbPZFkTh1WAS9afJobbfOXDYzkNS32S
+         KAW7AkAyN6kvvJjWfsO5LoU5u75Wk/eouQeH/+XJheED8CT5NqKIq5lyDouz1jozOuAy
+         prunlUnZjE8O14lqs/+kyu+SjriLFbDRJQEIRyEz3VU3EmSyP+27M6amm46yydXROiUT
+         dP6mM7jXinTRBPGgaVOc5nKwwdZA1hnVMLMyDP8w4w5XfgFe3/VZTZoEfY/mlS+0szAg
+         vFyQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1767101025; x=1767705825;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=bzWnrkrlR5q++h42uLlncPmWAMWNl0rJ9nbD7WUwTfQ=;
+        b=ewJhNNC3fFbon3XfryTciBOzTXJzyOT/9EjIPFKhePyRF0PMjdRv/LGAu9escRdFWU
+         tRXxGLDnGufwTI8n3xRQ1Cs1jP7I2/aAuuFqY9TwucI4VDBbkITpGmMYg7oywFMPLGPS
+         4MbHUtKDOxiBclggFt8jVpHBdQ1gyQMzGHt67b5vob4BKNkieWsaOIJvVxdTI0FK+Qlk
+         YwHGe099cI+6oUmAt9G1aOezMhLDetVGl7sDc8LzfHqH+6S+JcOyw/tKYkMopIFnaNH1
+         1JbDPPr1RbdnAziu4QbRtni1R4MSY5BOfeuhh3nVtL3lvVJTp/MJGsTNNVbCvMEPbRWC
+         h3Uw==
+X-Forwarded-Encrypted: i=1; AJvYcCXD511qs7rXmpx/bSLrR3iaADIi4Kl25kqe7d86Ww1BSjFEuGxpTBA1nI3G0sBgCAQotnmrUXkPSawxZz9i/A==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwKdYzahWn3K9jEHe3sSr6TpTYyyPSwWBNN10NVC2zWeALpakAo
+	/mGfAiRswy+LSvMdZQhvrgLZKsEhE1Mqe1mhVCRTn1OVb6i9uqau8hUM
+X-Gm-Gg: AY/fxX6HpEfAGfdCusFLzRjAVT9zOh0fTDbbKKYGlYSY8yvuafGOSEx3NW6f44X3dII
+	1CtM+1KTIQw7VstWXIEE0tbfTeWQsH6EqDzk7fPM2fv4v1Qh4cc8k2eAQKfNsuG3btgvNlXfOGt
+	5SaZ/o4IdlCnseBHrNDP2uiY0ZPZINMrIy0Mq2RGPoDndjkK6JesCMreLnb6CxQrIZCwrVuwCam
+	MHDBohA0FA0/iLw7Kcw4a9CA1o5ITf7S6Q5KrHQvuvLRKCen9pkIiDaQd1quQ0mqQEIry92uJ6W
+	CPWRdLcMr98qN4XqnUYB85MrlQvXTshqruoUsz5NkiY7YoEJB52gRBITsBcWLW+CXNJij00e/AU
+	QatSY2C1qQGOz6YLXZ5UBwlz7nRkBAgiPDcP1cO1fN6MH5pueXGHitq5wN9wQbah/B3f1tPIYbE
+	2CVavhttIrNumk0755l9oBYSeLLxaCEW1ZUJlAHJyBmV07yFQ07k7VsFDw5+nvINbFy9Pap9c=
+X-Google-Smtp-Source: AGHT+IFUxDCYOfLilQ6lfBDnwhOcL2E6VOHW1djgaGHT1hjypUZN67hw/Qlj7b7P8zYClnV8NZsXzg==
+X-Received: by 2002:a05:6000:1844:b0:430:fa58:a03d with SMTP id ffacd0b85a97d-4324e70ef05mr36872432f8f.63.1767101025060;
+        Tue, 30 Dec 2025 05:23:45 -0800 (PST)
+Received: from alchark-surface.localdomain (bba-94-59-45-246.alshamil.net.ae. [94.59.45.246])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-4324ea830fesm69332312f8f.20.2025.12.30.05.23.42
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 30 Dec 2025 05:23:44 -0800 (PST)
+From: Alexey Charkov <alchark@gmail.com>
+Date: Tue, 30 Dec 2025 17:23:34 +0400
+Subject: [PATCH v3] arm64: dts: rockchip: enable UFS controller on
+ FriendlyElec NanoPi M5
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <DFB3BUDFOIN1.3IM5386T534NQ@cknow-tech.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
- krs, Bertel Jungin Aukio 5, 02600 Espoo
+Message-Id: <20251230-nanopi-m5-ufs-v3-1-ed188ae34fdb@gmail.com>
+X-B4-Tracking: v=1; b=H4sIAFXSU2kC/3XMQQrCMBCF4atI1o5kRmPUlfcQFyWdtgM2KYkGp
+ fTupt0ogsv34PtHlTgKJ3VajSpyliTBl7Fdr5TrKt8ySF22Ik0GkSz4yodBoDfwaBIYasgZbTX
+ urSpmiNzIc+ldrmV3ku4hvpZ8xvn9V8oICLqmQ43GWiR3bvtKbhsXejWXMn00afzVVDQ7PjrNj
+ NbtvvU0TW9ja/Pf6AAAAA==
+X-Change-ID: 20251127-nanopi-m5-ufs-52f2c5070167
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Alexey Charkov <alchark@gmail.com>
+X-Mailer: b4 0.14.3
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2289; i=alchark@gmail.com;
+ h=from:subject:message-id; bh=UQ5DWsXFkrEb/TWPrQyCX2bixd/4Ob5s+086Cxhqs8I=;
+ b=owGbwMvMwCW2adGNfoHIK0sZT6slMWQGX4o7EtZ/bd/e2hyd6JaNJy59lZ/Wbv6rJ3NDHmfK/
+ N6LE5/N75jIwiDGxWAppsgy99sS26lGfLN2eXh8hZnDygQyRFqkgQEIWBj4chPzSo10jPRMtQ31
+ DA11jHWMGLg4BWCqL1sw/A9aqLEx9z6DTEq9eoCSQcfu/7Z/dS9uFT0Y5dVywlFes4Lhn21rzdx
+ 1P7fMDpo+M6TPeeYdefaco9pvbG7Jn/m16mCVOQsA
+X-Developer-Key: i=alchark@gmail.com; a=openpgp;
+ fpr=9DF6A43D95320E9ABA4848F5B2A2D88F1059D4A5
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251230_032644_742769_8EDBB2DF 
-X-CRM114-Status: GOOD (  39.89  )
+X-CRM114-CacheID: sfid-20251230_052347_700169_F87FBE3D 
+X-CRM114-Status: UNSURE (   9.54  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,80 +114,78 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Dec 30, 2025 at 12:31:17AM +0100, Diederik de Haas wrote:
-> On Sun Dec 28, 2025 at 6:26 PM CET, Andy Shevchenko wrote:
-> > On Sun, Dec 28, 2025 at 12:01:54PM +0100, Diederik de Haas wrote:
-> >> On Sat Dec 27, 2025 at 4:08 PM CET, Andy Shevchenko wrote:
-> >> > On Sun, Dec 21, 2025 at 03:01:11PM +0100, Diederik de Haas wrote:
-> >> >> On Fri Oct 24, 2025 at 4:49 AM CEST, Michael Wu wrote:
-> >> >> > With current extcon_dev_unregister() timing, ida_free is before
-> >> >> > device_unregister(), that may cause current id re-alloc to another
-> >> >> > device in extcon_dev_register() context but sysfs filename path not
-> >> >> > removal completed yet.
-> >> >> 
-> >> >> I periodically get errors like this:
-> >> >> 
-> >> >> [    7.116152] rockchip-usb2phy fe8a0000.usb2phy: error -EEXIST: failed to register extcon device
-> >> >> [    7.117005] rockchip-usb2phy fe8a0000.usb2phy: probe with driver rockchip-usb2phy failed with error -17
-> >> >> 
-> >> >> This was today on a NanoPi R5S (rk3568), but I have seen it before and
-> >> >> on multiple devices. They are all Rockchip based, but that's (quite)
-> >> >> possible because that's what I use the most (and where I pay quite a bit
-> >> >> of attention to dmesg).
-> >> >> 
-> >> >> Slightly fuller dmesg output of the above error is here:
-> >> >> https://paste.sr.ht/~diederik/42c6b3405386c823cd9f837d73a9a32e810361be
-> >> >> And via 'journalctl' I hopefully got the full dmesg output:
-> >> >> https://paste.sr.ht/~diederik/7a6109115b1ad85290de482db091dad3759ec159
-> >> >> 
-> >> >> Here are 2 similar logs, this time on PineTab2 and Quartz64-A (both rk3566)
-> >> >> https://paste.sr.ht/~diederik/cfe606801d3dab0267bea7049687d24c0d6e8d71
-> >> >> 
-> >> >> Those are all the logs I have saved, but it has happened several times
-> >> >> besides that. But most times I just rebooted and didn't save the log.
-> >> >> Today I looked a bit further, found commit 7bba9e81a6fb, searched on
-> >> >> lore.k.o and found this patch.
-> >> >> 
-> >> >> So I'm wondering whether this patch would also fix 'my' issue?
-> >> >> Or is this a different issue?
-> >> >
-> >> > But have you had a chance to test it? The code looks correct after this patch
-> >> > as the first we remove the struct device and all associated data (including
-> >> > sysfs nodes) and then remove the ID from the list. Without that there is a
-> >> > window to get the same id for the devices that is pending to be removed.
-> >> 
-> >> I've build a kernel with it and it will be part of my kernels going
-> >> forward. But it can take many months before the issue shows up again.
-> >> So if I don't get it in a year, then I'm going to *assume* it's probably
-> >> fixed.
-> >
-> > I believe you may speed up the test case by creating two shell scripts that
-> > trying insmod / rmmod the same module in parallel.
-> 
-> I checked on several devices and the phy_rockchip_inno_usb2 module is
-> used by various other modules on all of them, so I can't just 'rmmod' it.
-> I guess it should technically be possible to remove all its dependencies
-> and then remove that module. I don't know if my skills are sufficient
-> for that and it feels like I'm mostly testing the robustness of the USB
-> subsystem.
-> 
-> As I regularly already get the following kernel warning
-> ``Warning! ehci_hcd should always be loaded before uhci_hcd and ohci_hcd, not after``
-> which often results in USB 2 ports not working, I have my doubts about
-> the robustness anyway.
+The NanoPi M5 board supports pluggable UFS modules using the UFSHC
+inside its Rockchip RK3576 SoC.
 
-This is interesting issue, have you reported it to USB people (such as Alan Stern)?
+Enable the respective devicetree node and add its supply regulators.
 
-> So I'll just keep an eye out if the ``sysfs: cannot create duplicate
-> filename`` error pops up again 'naturally' and report if/when it does.
+Link: https://wiki.friendlyelec.com/wiki/images/9/97/NanoPi_M5_LP5_2411_SCH.pdf
+Signed-off-by: Alexey Charkov <alchark@gmail.com>
+---
+Changes in v3:
+- Dropped 'en-supply' from fixed regulators, as it's not envisaged by the
+  fixed regulator driver and seems like more trouble than its worth
+- Link to v2: https://lore.kernel.org/r/20251201-nanopi-m5-ufs-v2-1-ece9c0ee17c4@gmail.com
 
-Good, please monitor it and try to collect logs for the further investigations,
-if required.
+Changes in v2:
+- Describe UFS supply regulators
+- Add link to schematic
+- Link to v1: https://lore.kernel.org/r/20251127-nanopi-m5-ufs-v1-1-0d28d157712c@gmail.com
+---
+ arch/arm64/boot/dts/rockchip/rk3576-nanopi-m5.dts | 25 +++++++++++++++++++++++
+ 1 file changed, 25 insertions(+)
 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3576-nanopi-m5.dts b/arch/arm64/boot/dts/rockchip/rk3576-nanopi-m5.dts
+index cce34c541f7c..c5b34069a443 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3576-nanopi-m5.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3576-nanopi-m5.dts
+@@ -110,6 +110,22 @@ vcc12v_dcin: regulator-vcc12v-dcin {
+ 		regulator-name = "vcc12v_dcin";
+ 	};
+ 
++	vcc1v2_ufs_vccq: regulator-vcc1v2-ufs-vccq {
++		compatible = "regulator-fixed";
++		regulator-min-microvolt = <1200000>;
++		regulator-max-microvolt = <1200000>;
++		regulator-name = "vcc1v2_ufs_vccq";
++		vin-supply = <&vcc5v0_sys_s5>;
++	};
++
++	vcc1v8_ufs_vccq2: regulator-vcc1v8-ufs-vccq2 {
++		compatible = "regulator-fixed";
++		regulator-min-microvolt = <1800000>;
++		regulator-max-microvolt = <1800000>;
++		regulator-name = "vcc1v8_ufs_vccq2";
++		vin-supply = <&vcc_1v8_s3>;
++	};
++
+ 	vcc3v3_m2_keym: regulator-vcc3v3-m2-keym {
+ 		compatible = "regulator-fixed";
+ 		enable-active-high;
+@@ -906,6 +922,15 @@ &uart0 {
+ 	status = "okay";
+ };
+ 
++&ufshc {
++	vcc-supply = <&vcc_3v3_s3>;
++	vccq-supply = <&vcc1v2_ufs_vccq>;
++	vccq2-supply = <&vcc1v8_ufs_vccq2>;
++	vdd-hba-supply = <&vdda_1v2_s0>;
++
++	status = "okay";
++};
++
+ &usbdp_phy {
+ 	status = "okay";
+ };
+
+---
+base-commit: cc3aa43b44bdb43dfbac0fcb51c56594a11338a8
+change-id: 20251127-nanopi-m5-ufs-52f2c5070167
+
+Best regards,
 -- 
-With Best Regards,
-Andy Shevchenko
-
+Alexey Charkov <alchark@gmail.com>
 
 
 _______________________________________________
