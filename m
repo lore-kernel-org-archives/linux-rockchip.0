@@ -4,34 +4,34 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85675EE4991
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 828F0EE498F
 	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Dec 2025 17:21:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5vQx20Fr74DHX1/rnJA0ShiYFYkl/myeRSrffoclsic=; b=BaiGkihBnRIrzY
-	H8kvpPvX6r6187FFOuhwSwLLHKtDscWDD/AF1P2KP11UFf1XiuYw/56naB3SJ8ftDwcsOFodHqWt/
-	k9MPFCc5VJTedrwnTMR1RU/dLdsGFrFe9QmHs6naedBOoydbMyFYe9cEOh3BgUYytSqynCaf5HPAd
-	E9Mmncpd9XVMRlHTINj1KDdjmg5mhB7kj7/X4FTQb9sDBRbcJRAvIMM4cDETXqrVkTGJthfxeMX+h
-	G4Bvv19CBdp3lBi/oNWo8Yr2YUygusKKUj7gkeKP2Gzp2/fbFNBF9M9rpgOT2sbT0TXjJ3NwGYJ0l
-	Mrk7om8TC+gqfBrRWDEA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=d/XLPF4xDmYssfdZzdJAB0D0ZnNdj4eL467fmiyZZxI=; b=seWW0MPoPWNO3L
+	6020tkbcla9G6fRsbSJyoksqaM4LvrgoMex/NEeoVIz/d6zq/OWy73KN093O+KLeXcc5zvg4pq5nF
+	Gxs+kK7fOGx3KOyrhfc+RKyq6utwYlyRISDKVU7FawG11WnoNA5/Uxguyd3Q2a2LeCBJk+iAa4OPS
+	xN/6G/aMnXZxyqTfzNm3O0c6LDanj1tT7ijdGORy4IR6JjJc4DuACP5Oa50NZsJJyCe9Mc0ksSzib
+	mxSwSZ5yjbZB8/3eflo9Bi+o41EzCYSq69j5+fr4gXYCz5mjwfiH3mO1mn8UYSLi4WHihzWkzp/5R
+	y6FErd/id+fbw2vbZOsg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vadP7-000000056sO-2Eyh;
-	Tue, 30 Dec 2025 17:21:05 +0000
+	id 1vadP6-000000056rL-33BQ;
+	Tue, 30 Dec 2025 17:21:04 +0000
 Received: from foss.arm.com ([217.140.110.172])
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vadOz-000000056pn-3fSL;
+	id 1vadOv-000000056pQ-39vm;
 	Tue, 30 Dec 2025 17:21:01 +0000
 Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 2A44615A1;
-	Tue, 30 Dec 2025 09:20:50 -0800 (PST)
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 9F1D0497;
+	Tue, 30 Dec 2025 09:20:40 -0800 (PST)
 Received: from 010265703453.localdomain (usa-sjc-mx-foss1.foss.arm.com [172.31.20.19])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id 384443F63F;
-	Tue, 30 Dec 2025 09:20:55 -0800 (PST)
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id 9064D3F63F;
+	Tue, 30 Dec 2025 09:20:45 -0800 (PST)
 From: Robin Murphy <robin.murphy@arm.com>
 To: heiko@sntech.de,
 	neil.armstrong@linaro.org,
@@ -42,16 +42,14 @@ Cc: jesszhan0024@gmail.com,
 	dri-devel@lists.freedesktop.org,
 	linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH 3/4] arm64: dts: rockchip: Move RK3399 eDP pinctrl to boards
-Date: Tue, 30 Dec 2025 17:20:33 +0000
-Message-Id: <0b9488badb467ef83a0a464eeea921f59e32e6b0.1767111809.git.robin.murphy@arm.com>
+Subject: [PATCH 0/4] Properly support FriendlyElec HD702E
+Date: Tue, 30 Dec 2025 17:20:30 +0000
+Message-Id: <cover.1767111804.git.robin.murphy@arm.com>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <cover.1767111804.git.robin.murphy@arm.com>
-References: <cover.1767111804.git.robin.murphy@arm.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251230_092058_866360_CD96893F 
-X-CRM114-Status: GOOD (  10.01  )
+X-CRM114-CacheID: sfid-20251230_092053_828131_C6C7C745 
+X-CRM114-Status: GOOD (  11.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,73 +66,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The EDP_HOTPLUG pin is optional, and muxed with other functions (notably
-HDMI CEC), so move its selection from the SoC DTSI to the boards which
-apparently want it, namely those which enable eDP without "force-hpd".
-By the same token we drop it from Pinebook Pro, which already uses
-"force-hpd", and according to the schematics does not have the pin wired
-at all.
+Hi all,
 
-Signed-off-by: Robin Murphy <robin.murphy@arm.com>
----
- arch/arm64/boot/dts/rockchip/rk3399-base.dtsi              | 2 --
- arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi    | 2 ++
- arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts       | 2 --
- arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts | 2 ++
- 4 files changed, 4 insertions(+), 4 deletions(-)
+I've been using the HD702E LCD/touchscreen on my NanoPC-T4 for a few
+years using my own DT with the "simple-panel" binding, but now we have
+upstream overlays I figured it's about time to try doing it properly.
+The screen itself doesn't seem to want to work as a generic "edp-panel",
+as it appears the EDID isn't readable until after the whole lot is
+enabled - I'm guessing this might be to do with the Analogix driver's
+force-hpd behaviour - but since we do already have the legacy data, it
+doesn't seem unreasonable to keep using it.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-base.dtsi
-index 4dcceb9136b7..19a312baa9f1 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-base.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-base.dtsi
-@@ -2145,8 +2145,6 @@ edp: dp@ff970000 {
- 		interrupts = <GIC_SPI 10 IRQ_TYPE_LEVEL_HIGH 0>;
- 		clocks = <&cru PCLK_EDP>, <&cru PCLK_EDP_CTRL>, <&cru PCLK_VIO_GRF>;
- 		clock-names = "dp", "pclk", "grf";
--		pinctrl-names = "default";
--		pinctrl-0 = <&edp_hpd>;
- 		power-domains = <&power RK3399_PD_EDP>;
- 		resets = <&cru SRST_P_EDP_CTRL>;
- 		reset-names = "dp";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
-index 9d07353df52c..3f3cb0eb5809 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
-@@ -241,6 +241,8 @@ &dmc {
- };
- 
- &edp {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&edp_hpd>;
- 	status = "okay";
- 
- 	/*
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
-index eaaca08a7601..dcab04863d28 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
-@@ -401,8 +401,6 @@ &cpu_l3 {
- 
- &edp {
- 	force-hpd;
--	pinctrl-names = "default";
--	pinctrl-0 = <&edp_hpd>;
- 	status = "okay";
- };
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts b/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
-index a4ceafe6dd7a..80d6ea0eda84 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
-@@ -141,6 +141,8 @@ sdio_pwrseq: sdio-pwrseq {
- };
- 
- &edp {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&edp_hpd>;
- 	status = "okay";
- };
- 
+Thanks,
+Robin.
+
+
+Robin Murphy (4):
+  dt-bindings: display: panel: Move FriendlyElec HD702E to eDP
+  drm/panel-edp: Move FriendlyELEC HD702E
+  arm64: dts: rockchip: Move RK3399 eDP pinctrl to boards
+  arm64: dts: rockchip: Add overlay for FriendlyElec HD702E
+
+ .../display/panel/panel-edp-legacy.yaml       |  2 +
+ .../bindings/display/panel/panel-simple.yaml  |  2 -
+ arch/arm64/boot/dts/rockchip/Makefile         |  5 ++
+ arch/arm64/boot/dts/rockchip/rk3399-base.dtsi |  2 -
+ .../dts/rockchip/rk3399-gru-chromebook.dtsi   |  2 +
+ .../dts/rockchip/rk3399-nanopc-t4-hd702e.dtso | 62 +++++++++++++++++++
+ .../boot/dts/rockchip/rk3399-pinebook-pro.dts |  2 -
+ .../rockchip/rk3399-sapphire-excavator.dts    |  2 +
+ drivers/gpu/drm/panel/panel-edp.c             | 26 ++++++++
+ drivers/gpu/drm/panel/panel-simple.c          | 25 --------
+ 10 files changed, 99 insertions(+), 31 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4-hd702e.dtso
+
 -- 
 2.34.1
 
