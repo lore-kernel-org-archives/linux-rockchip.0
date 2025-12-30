@@ -4,100 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50C05E95A8D
-	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Dec 2025 13:24:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A284E94121
+	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Dec 2025 14:08:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
-	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=VlrbEEkD4Lh96Dyq0wO/6hCc7JHHb4Xvw0ggvXmEpIU=; b=jtN474R3DEaYpA
-	6u+zmzouKJjNE0S90Kdh44G6SK54RvN5JorDiqw1Y0suT3zm7OAGMUF7SO8dHSTx2cneGrJQZU0B+
-	EkCAmag8PqT7bT2manWyBPxEdsl/MgkdXrYhvP0lbOeDkfJCcyvWyMnEqDK/MdJzvERhUobvmsEUY
-	24WlDa5e9ZmAY/YaNIQhY8RMy7Xpi8/cBMzzGlZFyio8S5eliXR20BpORp05m9gBBPckkgiKUrq/q
-	aySXRIqe6+YLkgLrANfSmNR+58DJmuUAXhyFT5W3C7sC4ciISCSA/G4PoquiQLyzZ4eDVYSP95uV7
-	Czx1pWqh+Ee0CeF0QhGQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=zMhTqUsS9JO0VBmUUAE2mcCvNdY/Q1pcVoiB/5UFgVQ=; b=jCKCCjUF0M7rb3
+	8ZkC0cWTlfY64cghrMQVmz+v+XnYDWUnsu+txAMuruJDE8tswU1A/kfElVR9Pnpb/EdzLoWYSwt0A
+	DLRLpfCdPNFEBXjCmbiyH73QS6vNlTdxUEFAnUcjD1yKbGPhvECQd4nM2v1tyfaIA2qTdfCEJb8gr
+	zOQ3KXs97Fl6/YR7m6ians7Pne1Efy6NYSbH/ZWS5x3zw8jQTOPFnyN/JAQc2vdnT/WoNSgZ3CKvE
+	5syMyLMpwWnF5c4oEMfr40v8EiVc6vmil4f8SlzKpT9iwIL7kTRSoL92x1MLVNcTjOUcR/nnay1eA
+	KGAMh0Ps4I5BWIFmTbcA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vaZhW-00000004raL-1zxB;
-	Tue, 30 Dec 2025 13:23:50 +0000
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+	id 1vaaOY-00000004uqg-3tZH;
+	Tue, 30 Dec 2025 14:08:18 +0000
+Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vaZhT-00000004rZZ-2hWL
+	id 1vaaOW-00000004uqE-1koR
 	for linux-rockchip@lists.infradead.org;
-	Tue, 30 Dec 2025 13:23:49 +0000
-Received: by mail-wm1-x329.google.com with SMTP id 5b1f17b1804b1-477ba2c1ca2so105254055e9.2
-        for <linux-rockchip@lists.infradead.org>; Tue, 30 Dec 2025 05:23:46 -0800 (PST)
+	Tue, 30 Dec 2025 14:08:17 +0000
+Received: by mail-lf1-x134.google.com with SMTP id 2adb3069b0e04-59583505988so15474528e87.1
+        for <linux-rockchip@lists.infradead.org>; Tue, 30 Dec 2025 06:08:15 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1767101025; x=1767705825; darn=lists.infradead.org;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=bzWnrkrlR5q++h42uLlncPmWAMWNl0rJ9nbD7WUwTfQ=;
-        b=INyKMsqHmBilv9QcyzyxGc3cgIGgT/+FBhiBaFGKpC0PDVKtAO0sL3ImwyHBPp9pq8
-         nzFzzJI2taYBjgdKgMHKOB20U5Xmkc8oEwJEKYbPZFkTh1WAS9afJobbfOXDYzkNS32S
-         KAW7AkAyN6kvvJjWfsO5LoU5u75Wk/eouQeH/+XJheED8CT5NqKIq5lyDouz1jozOuAy
-         prunlUnZjE8O14lqs/+kyu+SjriLFbDRJQEIRyEz3VU3EmSyP+27M6amm46yydXROiUT
-         dP6mM7jXinTRBPGgaVOc5nKwwdZA1hnVMLMyDP8w4w5XfgFe3/VZTZoEfY/mlS+0szAg
-         vFyQ==
+        d=linaro.org; s=google; t=1767103694; x=1767708494; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=VyJApu1LEoZShSyHFwCDEnHWsxopeMuohegEMjDmgz8=;
+        b=Zzl8iYXUNr/xWTUnHZ7Vq1gWZgN63ogNxW5qF7L2aNuIEg//Wm/Dxp+IwkHAXLIlbj
+         qW+FZZ5tE8fO13lQC7ttAwZBbxhATzXn+WNjjhFyYdIZ5TrKGObNRcTm/YDL3MSLY6nv
+         tpEz2uGQxU2vGwI89B9SHPYLZZFwfZuRSaNPonGfGosohdFe7GuRvHn8PzSevFmRSW9j
+         T5Kb4Ic4sli9ACp0AZmog4KKoy2WwukqSTrwQISKESwZjkKJTpvGz+IYSfygukD2Swmg
+         SX33XmrKkVbhsGHheIvl2TxmL28nCwtqB0HA/TK1MIVjrzezjXAGaG67QuaDY5pkprOo
+         vBJg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1767101025; x=1767705825;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+        d=1e100.net; s=20230601; t=1767103694; x=1767708494;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=bzWnrkrlR5q++h42uLlncPmWAMWNl0rJ9nbD7WUwTfQ=;
-        b=ewJhNNC3fFbon3XfryTciBOzTXJzyOT/9EjIPFKhePyRF0PMjdRv/LGAu9escRdFWU
-         tRXxGLDnGufwTI8n3xRQ1Cs1jP7I2/aAuuFqY9TwucI4VDBbkITpGmMYg7oywFMPLGPS
-         4MbHUtKDOxiBclggFt8jVpHBdQ1gyQMzGHt67b5vob4BKNkieWsaOIJvVxdTI0FK+Qlk
-         YwHGe099cI+6oUmAt9G1aOezMhLDetVGl7sDc8LzfHqH+6S+JcOyw/tKYkMopIFnaNH1
-         1JbDPPr1RbdnAziu4QbRtni1R4MSY5BOfeuhh3nVtL3lvVJTp/MJGsTNNVbCvMEPbRWC
-         h3Uw==
-X-Forwarded-Encrypted: i=1; AJvYcCXD511qs7rXmpx/bSLrR3iaADIi4Kl25kqe7d86Ww1BSjFEuGxpTBA1nI3G0sBgCAQotnmrUXkPSawxZz9i/A==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwKdYzahWn3K9jEHe3sSr6TpTYyyPSwWBNN10NVC2zWeALpakAo
-	/mGfAiRswy+LSvMdZQhvrgLZKsEhE1Mqe1mhVCRTn1OVb6i9uqau8hUM
-X-Gm-Gg: AY/fxX6HpEfAGfdCusFLzRjAVT9zOh0fTDbbKKYGlYSY8yvuafGOSEx3NW6f44X3dII
-	1CtM+1KTIQw7VstWXIEE0tbfTeWQsH6EqDzk7fPM2fv4v1Qh4cc8k2eAQKfNsuG3btgvNlXfOGt
-	5SaZ/o4IdlCnseBHrNDP2uiY0ZPZINMrIy0Mq2RGPoDndjkK6JesCMreLnb6CxQrIZCwrVuwCam
-	MHDBohA0FA0/iLw7Kcw4a9CA1o5ITf7S6Q5KrHQvuvLRKCen9pkIiDaQd1quQ0mqQEIry92uJ6W
-	CPWRdLcMr98qN4XqnUYB85MrlQvXTshqruoUsz5NkiY7YoEJB52gRBITsBcWLW+CXNJij00e/AU
-	QatSY2C1qQGOz6YLXZ5UBwlz7nRkBAgiPDcP1cO1fN6MH5pueXGHitq5wN9wQbah/B3f1tPIYbE
-	2CVavhttIrNumk0755l9oBYSeLLxaCEW1ZUJlAHJyBmV07yFQ07k7VsFDw5+nvINbFy9Pap9c=
-X-Google-Smtp-Source: AGHT+IFUxDCYOfLilQ6lfBDnwhOcL2E6VOHW1djgaGHT1hjypUZN67hw/Qlj7b7P8zYClnV8NZsXzg==
-X-Received: by 2002:a05:6000:1844:b0:430:fa58:a03d with SMTP id ffacd0b85a97d-4324e70ef05mr36872432f8f.63.1767101025060;
-        Tue, 30 Dec 2025 05:23:45 -0800 (PST)
-Received: from alchark-surface.localdomain (bba-94-59-45-246.alshamil.net.ae. [94.59.45.246])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-4324ea830fesm69332312f8f.20.2025.12.30.05.23.42
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 30 Dec 2025 05:23:44 -0800 (PST)
-From: Alexey Charkov <alchark@gmail.com>
-Date: Tue, 30 Dec 2025 17:23:34 +0400
-Subject: [PATCH v3] arm64: dts: rockchip: enable UFS controller on
- FriendlyElec NanoPi M5
+        bh=VyJApu1LEoZShSyHFwCDEnHWsxopeMuohegEMjDmgz8=;
+        b=Gi99m9dFbnxt6/JOlXxfE8U8KAv+9gfn5/ZFUG0SDricZOXukpDKOUha2SBfMwRr7J
+         bSRjsBNMyBSNaiJso8tR4qFwVTWd1ET8alij26qZr/+3AeGxadXj2UUOabGdxKOvlxmF
+         +vZF9qkm1/u0uPhpS7RD4ZpzXwVZhuIjn8SA5bxiQqTo68zU9CdaUuJBkfe1J6Jdd2NB
+         cyVCnFV7VKL/KbdHA1PIGBy1gQP75/1kdLH/LSoi19gISwq0XaVAGFEAVTsTkCTc+hum
+         2XKsGrNDf6eI9ZKIkKtrZBVdscwsp2eAHo4e424x9n1dhABWjlrNDnZnMSzZGBPq8qvf
+         R4/w==
+X-Forwarded-Encrypted: i=1; AJvYcCVRx/gBvKPURhzVP6MBBkAMdvWoXJpNDCUTEDLgxqVQz3DaFCmshNKUaB8axE79UCCOHk3c7GGDBVWoOnloyw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxIHN4Vgbx8ghxrp98rYt4My9oulhQelpojsiUIuW/AFemjw7st
+	eLu2PwL62Sf75Y0FfavKfSoxelW3vB/2n4xLkaZvVSWo/90KDT+15ZTx6zkGBGo3lFGRlwEEDtx
+	snoLjPhjWhM98/xshW/71vGspXD8kqFWiCLymrKxvEuB59BG7/yV8vXI=
+X-Gm-Gg: AY/fxX5fVDYHUnkVrJ2dBGyd09/U7Hf4+qu6fEPV8J0U7WJeOxz6h+Qy4O0tGhRCM5N
+	GO3a4Qu9HpYKSdpjEn2cSwFk5/QzNgqMiesYfiuN9fzMWuRARAT/ZqJooTQgea7Pl4YvfZys7F8
+	ZeX/9pcmQLl9OIaaidu5XC7ohJ3D0yY5UqXh2gvR9jvj3VQOijahYUE46sl4wIoJKo07Lmu9/2j
+	GdWND2atHTtRsdTa9+ZQjbBgBwx+349vNf8N0EGjPhxkPAL1p4ih467ssdny7z1wq9Z8C+wjlgP
+	Utc2jOc=
+X-Google-Smtp-Source: AGHT+IE5fYKXYm6s7wg7VCYj3x3U8vGECYHQuPDTbdIUhcnUk9fct3+MvwocLHBZETGEXghR/RioxsyFpqqrT1jVOi8=
+X-Received: by 2002:a05:6512:3d9e:b0:595:7d7c:59a9 with SMTP id
+ 2adb3069b0e04-59a17d6bb20mr12422984e87.22.1767103693612; Tue, 30 Dec 2025
+ 06:08:13 -0800 (PST)
 MIME-Version: 1.0
-Message-Id: <20251230-nanopi-m5-ufs-v3-1-ed188ae34fdb@gmail.com>
-X-B4-Tracking: v=1; b=H4sIAFXSU2kC/3XMQQrCMBCF4atI1o5kRmPUlfcQFyWdtgM2KYkGp
- fTupt0ogsv34PtHlTgKJ3VajSpyliTBl7Fdr5TrKt8ySF22Ik0GkSz4yodBoDfwaBIYasgZbTX
- urSpmiNzIc+ldrmV3ku4hvpZ8xvn9V8oICLqmQ43GWiR3bvtKbhsXejWXMn00afzVVDQ7PjrNj
- NbtvvU0TW9ja/Pf6AAAAA==
-X-Change-ID: 20251127-nanopi-m5-ufs-52f2c5070167
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Alexey Charkov <alchark@gmail.com>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2289; i=alchark@gmail.com;
- h=from:subject:message-id; bh=UQ5DWsXFkrEb/TWPrQyCX2bixd/4Ob5s+086Cxhqs8I=;
- b=owGbwMvMwCW2adGNfoHIK0sZT6slMWQGX4o7EtZ/bd/e2hyd6JaNJy59lZ/Wbv6rJ3NDHmfK/
- N6LE5/N75jIwiDGxWAppsgy99sS26lGfLN2eXh8hZnDygQyRFqkgQEIWBj4chPzSo10jPRMtQ31
- DA11jHWMGLg4BWCqL1sw/A9aqLEx9z6DTEq9eoCSQcfu/7Z/dS9uFT0Y5dVywlFes4Lhn21rzdx
- 1P7fMDpo+M6TPeeYdefaco9pvbG7Jn/m16mCVOQsA
-X-Developer-Key: i=alchark@gmail.com; a=openpgp;
- fpr=9DF6A43D95320E9ABA4848F5B2A2D88F1059D4A5
+References: <20251216055247.13150-1-rmxpzlb@gmail.com>
+In-Reply-To: <20251216055247.13150-1-rmxpzlb@gmail.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Tue, 30 Dec 2025 15:07:37 +0100
+X-Gm-Features: AQt7F2pCXsP1gwfFRKDfAs1-CtV1ujaercDhCS5Kpm883EIuOK5DFfbTj1RsrhE
+Message-ID: <CAPDyKFpx-hxv4QVW+zp8Zbd=-9vvmwsVJ2adem6V1gWLQteYsQ@mail.gmail.com>
+Subject: Re: [PATCH v2] pmdomain:rockchip: Fix init genpd as GENPD_STATE_ON
+ before regulator ready
+To: Frank Zhang <rmxpzlb@gmail.com>
+Cc: heiko@sntech.de, linux-rockchip@lists.infradead.org, 
+	linux-pm@vger.kernel.org, chaoyi.chen@rock-chips.com, 
+	sebastian.reichel@collabora.com, quentin.schulz@cherry.de, 
+	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251230_052347_700169_F87FBE3D 
-X-CRM114-Status: UNSURE (   9.54  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251230_060816_490022_0B5408DE 
+X-CRM114-Status: GOOD (  19.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,79 +98,69 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The NanoPi M5 board supports pluggable UFS modules using the UFSHC
-inside its Rockchip RK3576 SoC.
++ Nicolas
 
-Enable the respective devicetree node and add its supply regulators.
+On Tue, 16 Dec 2025 at 06:53, Frank Zhang <rmxpzlb@gmail.com> wrote:
+>
+> RK3588_PD_NPU initialize as GENPD_STATE_ON before regulator ready.
+> rknn_iommu initlized success and suspend RK3588_PD_NPU. When rocket
+> driver register, it will resume rknn_iommu.
+>
+> If regulator is still not ready at this point, rknn_iommu resume fail,
+> pm runtime status will be error: -EPROBE_DEFER.
+>
+> This patch set pmdomain to off if it need regulator during probe,
+> consumer device can power on pmdomain after regulator ready.
+>
+> Signed-off-by: Frank Zhang <rmxpzlb@gmail.com>
+> Tested-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+> Tested-by: Quentin Schulz <quentin.schulz@cherry.de>
 
-Link: https://wiki.friendlyelec.com/wiki/images/9/97/NanoPi_M5_LP5_2411_SCH.pdf
-Signed-off-by: Alexey Charkov <alchark@gmail.com>
----
-Changes in v3:
-- Dropped 'en-supply' from fixed regulators, as it's not envisaged by the
-  fixed regulator driver and seems like more trouble than its worth
-- Link to v2: https://lore.kernel.org/r/20251201-nanopi-m5-ufs-v2-1-ece9c0ee17c4@gmail.com
+The problem with the child-domain using a regulator has been discussed
+before [1] between Nicolas, Heiko and me. That said, I have looped in
+Nicolas to allow him to share his opinion about this too.
 
-Changes in v2:
-- Describe UFS supply regulators
-- Add link to schematic
-- Link to v1: https://lore.kernel.org/r/20251127-nanopi-m5-ufs-v1-1-0d28d157712c@gmail.com
----
- arch/arm64/boot/dts/rockchip/rk3576-nanopi-m5.dts | 25 +++++++++++++++++++++++
- 1 file changed, 25 insertions(+)
+My view on is that I would prefer that we try to address/fix the root
+cause, rather than trying to paper over the problem as what seems to
+be suggested in the $subject patch. Or at least I need Nicolas/Heiko
+to confirm that they are fine with the $subject patch, before I pick
+it up.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576-nanopi-m5.dts b/arch/arm64/boot/dts/rockchip/rk3576-nanopi-m5.dts
-index cce34c541f7c..c5b34069a443 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576-nanopi-m5.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3576-nanopi-m5.dts
-@@ -110,6 +110,22 @@ vcc12v_dcin: regulator-vcc12v-dcin {
- 		regulator-name = "vcc12v_dcin";
- 	};
- 
-+	vcc1v2_ufs_vccq: regulator-vcc1v2-ufs-vccq {
-+		compatible = "regulator-fixed";
-+		regulator-min-microvolt = <1200000>;
-+		regulator-max-microvolt = <1200000>;
-+		regulator-name = "vcc1v2_ufs_vccq";
-+		vin-supply = <&vcc5v0_sys_s5>;
-+	};
-+
-+	vcc1v8_ufs_vccq2: regulator-vcc1v8-ufs-vccq2 {
-+		compatible = "regulator-fixed";
-+		regulator-min-microvolt = <1800000>;
-+		regulator-max-microvolt = <1800000>;
-+		regulator-name = "vcc1v8_ufs_vccq2";
-+		vin-supply = <&vcc_1v8_s3>;
-+	};
-+
- 	vcc3v3_m2_keym: regulator-vcc3v3-m2-keym {
- 		compatible = "regulator-fixed";
- 		enable-active-high;
-@@ -906,6 +922,15 @@ &uart0 {
- 	status = "okay";
- };
- 
-+&ufshc {
-+	vcc-supply = <&vcc_3v3_s3>;
-+	vccq-supply = <&vcc1v2_ufs_vccq>;
-+	vccq2-supply = <&vcc1v8_ufs_vccq2>;
-+	vdd-hba-supply = <&vdda_1v2_s0>;
-+
-+	status = "okay";
-+};
-+
- &usbdp_phy {
- 	status = "okay";
- };
+Kind regards
+Uffe
 
----
-base-commit: cc3aa43b44bdb43dfbac0fcb51c56594a11338a8
-change-id: 20251127-nanopi-m5-ufs-52f2c5070167
+> ---
+> Changes in v2:
+> - Simplified the regulator check logic, trun off pmdomain if need
+>   regulator.
+> ---
+>  drivers/pmdomain/rockchip/pm-domains.c | 10 ++++++++++
+>  1 file changed, 10 insertions(+)
+>
+> diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/rockchip/pm-domains.c
+> index 4f1336a0f49a..997e93c12951 100644
+> --- a/drivers/pmdomain/rockchip/pm-domains.c
+> +++ b/drivers/pmdomain/rockchip/pm-domains.c
+> @@ -879,6 +879,16 @@ static int rockchip_pm_add_one_domain(struct rockchip_pmu *pmu,
+>                 pd->genpd.name = pd->info->name;
+>         else
+>                 pd->genpd.name = kbasename(node->full_name);
+> +
+> +       /*
+> +        * power domain's needing a regulator should default to off, since
+> +        * the regulator state is unknown at probe time. Also the regulator
+> +        * state cannot be checked, since that usually requires IP needing
+> +        * (a different) power domain.
+> +        */
+> +       if (pd->info->need_regulator)
+> +               rockchip_pd_power(pd, false);
+> +
+>         pd->genpd.power_off = rockchip_pd_power_off;
+>         pd->genpd.power_on = rockchip_pd_power_on;
+>         pd->genpd.attach_dev = rockchip_pd_attach_dev;
 
-Best regards,
--- 
-Alexey Charkov <alchark@gmail.com>
-
+[1]
+https://lore.kernel.org/all/CAPDyKFr=GwJ+cO3cW4Ed_LsS=q_JtuuQPDweDpLgDO4hBLFXUA@mail.gmail.com/
 
 _______________________________________________
 Linux-rockchip mailing list
