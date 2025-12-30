@@ -4,89 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1D9BE9412E
-	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Dec 2025 09:04:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA77EE94108
+	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Dec 2025 10:14:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=i1LDsAUrBjwkpXprbdBglHj12Tm36KXY8eh0r8fNfgs=; b=skLqleM0+bUKWV
-	vwDr/QabqB8a2d0HtvRgGIHiokmbEfUv8fynoSr6+e6tNZtisDESwCeeuhduyhJw/fflMXr+XjYDB
-	qoX6K5AAmTNno0dbgLoL1cEc8Kw6mjadgqx27AZrFwZiXzydMuUrd4Aft4HsLM4GReFaS0jrkf0ck
-	jghKcpASDJ/TmHn/Pp6jReEIjWlRTp5HkXcuusO5z+8KMhqkNIIl1ZmQL+CAHLsjh2yzQN13/a2SA
-	Nu9xdr393wArKmxVBXDofM6Lle6hQMVdF1zp8er4VQAxCr7agUA2zNE3B9ydO3li8tg447wTfiD4s
-	B/3ZNpjtrxavK8SPS4ZA==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ZocpM67o9iTAk+zoXLSYwEyaEsfVNoLoco/nBhcH/BY=; b=XXF+zW4D8GA9r5
+	FRspEQlnvVxDf3KqQxqPwZmCJctXZ6sZA4FhfXp2XuKN5nw8m91etJhkQTV82FDJwQAjIFPReZfVq
+	Plk/7won5d5QjEEDIUnaudcWIq9pDGyLCRPKqBQ4kHP44FFcDF2omL47Fpv5v8e8Vh3WVPAmWI0Wq
+	GaGaDeiXDigfXvbFSdFVFY5YeFeFtWC7iRqUF3NZNaTAh0yYvThptZmqrGMN3XKnO5nV+4Ncr1+nS
+	0alStSRypi3bF2lUiJUKs7UAylStY0+OhfmgC+4F2fn8Jh7OZfDwz5iDGEwUCmf+0OUDs24fwXSZV
+	C8zh4THTi9PoAgiWcOFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vaVeQ-00000004cXv-224A;
-	Tue, 30 Dec 2025 09:04:22 +0000
-Received: from smtpbgsg1.qq.com ([54.254.200.92])
+	id 1vaWkA-00000004hl1-1iAW;
+	Tue, 30 Dec 2025 10:14:22 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vaVeM-00000004cVQ-1rRK;
-	Tue, 30 Dec 2025 09:04:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
-	s=altu2504; t=1767085407;
-	bh=/VpoCnIgKsRZ92pzrMxwDZZP7i+qPNxm3KzgXs7KlAU=;
-	h=From:To:Subject:Date:Message-Id;
-	b=rwxAVk/d7DubyMcA2DD7Yo08VoiBpyWogj10+wBd/ljg5ZFDYYT3J/BNg3fNSm6DG
-	 0D7N9vgbRHjsH9AOPlqKUq9E5sgUBhgX8Qdyk2+XCnC1HIFNPAVEBPYZByX0NwYYSW
-	 kXeL9PV3fWMJ281hSRSU8lyeZsbyoU0fKAHnTMKM=
-X-QQ-mid: esmtpgz16t1767085398tec99c1ed
-X-QQ-Originating-IP: /TmhuuJhxmP7FNa6N98cvNeOz2pDT9y88FQ2UnLeMZw=
-Received: from DESKTOP-8BT1A2O.localdomain ( [58.22.7.114])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Tue, 30 Dec 2025 17:03:15 +0800 (CST)
-X-QQ-SSF: 0000000000000000000000000000000
-X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 15785446282400789070
-From: Chaoyi Chen <kernel@airkyi.com>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
+	id 1vaWk7-00000004hkY-29ma;
+	Tue, 30 Dec 2025 10:14:20 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 5846243789;
+	Tue, 30 Dec 2025 10:14:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 09BC8C4CEFB;
+	Tue, 30 Dec 2025 10:14:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1767089656;
+	bh=Caci6saiVAb+HvtzJHAbyeQq5WFsqlhsTwR5cy1cZ88=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=GgqtloqwQpYOstMbM/OQEP/BH6DDA/vpcGRA5le0/zyfMKUxErS2rx1yGo9m/PxRC
+	 MUjrSLl5AqGmYMS4FxjzggbrNw7zSxcTDIK4HZvnKErHrIZ1GNaLGt93Z7tzR2V8VD
+	 53WLcwF4EFuqTmyUtuUhd3dXAnUzQ2lOfw+eLIdHuXj6UGLc2bMESE6DL0q0Jb5a0c
+	 KhCYEz+hiIqpvp+0/hqYH/RaN5cb85sC7LadNBBSyCSh7F+02VtIZGU5umhFb+GrCn
+	 TJD7i+76tJxndoz9XY5D1OMc/aLe6EVLqTd9AZsMa2NxXHgoR7rld44AQCvxTRbhWy
+	 nDG67YabVwpnw==
+Date: Tue, 30 Dec 2025 11:14:10 +0100
+From: Niklas Cassel <cassel@kernel.org>
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
 	Heiko Stuebner <heiko@sntech.de>,
-	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
-	Chaoyi Chen <chaoyi.chen@rock-chips.com>,
-	Kever Yang <kever.yang@rock-chips.com>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
-	Frank Wang <frank.wang@rock-chips.com>,
-	Alexey Charkov <alchark@gmail.com>,
-	Liang Chen <cl@rock-chips.com>,
-	Finley Xiao <finley.xiao@rock-chips.com>,
-	Elaine Zhang <zhangqing@rock-chips.com>,
-	Yifeng Zhao <yifeng.zhao@rock-chips.com>
-Cc: devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	FUKAUMI Naoki <naoki@radxa.com>,
+	Krishna chaitanya chundru <quic_krichai@quicinc.com>,
+	Damien Le Moal <dlemoal@kernel.org>, stable@vger.kernel.org,
+	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] arm64: dts: rockchip: Fix wrong register range of rk3576 gpu
-Date: Tue, 30 Dec 2025 17:02:46 +0800
-Message-Id: <20251230090246.46-1-kernel@airkyi.com>
-X-Mailer: git-send-email 2.17.1
-X-QQ-SENDSIZE: 520
-Feedback-ID: esmtpgz:airkyi.com:qybglogicsvrgz:qybglogicsvrgz6b-0
-X-QQ-XMAILINFO: MwQdfXoP8nuzj6ZsImoTwbRpq3kjUEZ+GsvAE7aPlYh11ur+xMi6Vvac
-	0QbMN19XpTW+AebC8zFI+VMLcPW4LKJYVnq7WRp6a8tPfteiCrikViTOjr33hRpCe4hEaD+
-	iit2VJ2+kQ7G1xtUDo6z3iobP7qnGWMdKXhH8sYafcCH+O8E//vq6QUwjT68/g+4jg5avbW
-	+E09WOGzF7dwhANaN5L12N4h9sjHOaDsquTN/ZyPllhCPFcyqDm8d8mmPHYAs9HURzd7B5Y
-	jZhJTBm18X2ISiMiV/rXYqGbt/Z79RnTb5bhyUAVwa8fl2irY7rdty4MV2KvF2H8P4IGMz0
-	QKw/8jcRF4hAk1YNX9T+e3NXHi1F0sXGheEqae9OC8xC+QoHBS6IefgDKms8gNOPKOk7ze5
-	IYZyUsPUao2An0i/oXq10mVwi09Ai2jtsPhteRZH0SQBm/Msah28P5OdNKRYTia+EpRsfjX
-	DTqEmShwrirj/KxnGHETPDyZJBCfwYy+tl7bf+EHO1uVPj6FGCD/OTt6btLVz58NPWd2jgR
-	pTl8lZOOVgW5OtYMgteqDoqdj53Eu41nKoZMMA34E+jbnR4uTS9l9z8hqEWwK1uYL5Ca27k
-	hD+pXCbw0k9MYG74ClcS/1tDiflgbp0N7WR71MM3X4n3ljUSLCGycZRdJ9qQktEZMB0ikwe
-	ryf/lgx81LYewcKHhGU8P433I52Y1wDIGs5QDtvpA9ntoXaFCay0Dvft5TxFNVThlzNdbnR
-	KzGvLwtecM5NVwXBk+HUebfATohKomKoxzaHAgflMM0uLbASqMk6raUfTyJpieWEtlnsZc1
-	/BZ/gg9QYHnAVNT4OkmE4RweeeHv0eCdae+lkOQ4ez3o0BWOHU9h+l9aSDc1cEeU4t6jI9q
-	YgA6P+GFwl54FQ6Gvu1WxLSLzbt1raeFGE5OI1xt5tpQX0tF9gRmZk//lqcQjdtjAzlCukB
-	Jp4PeI3rgARQwcnjoGxA8KKdzfYaqNglZgu5j4UeGEduG8QTHunRNOpzrKcVGjMbPy8c=
-X-QQ-XMRINFO: Nq+8W0+stu50tPAe92KXseR0ZZmBTk3gLg==
-X-QQ-RECHKSPAM: 0
+	Ilpo =?utf-8?B?SsOkcnZpbmVu?= <ilpo.jarvinen@linux.intel.com>
+Subject: Re: [PATCH v2 1/6] Revert "PCI: dw-rockchip: Don't wait for link
+ since we can detect Link Up"
+Message-ID: <aVOl8mfKiYX51gRL@ryzen>
+References: <20251222064207.3246632-9-cassel@kernel.org>
+ <20251226223159.GA4143516@bhelgaas>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20251226223159.GA4143516@bhelgaas>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251230_010418_936204_716AED32 
-X-CRM114-Status: GOOD (  10.11  )
+X-CRM114-CacheID: sfid-20251230_021419_569124_B7ABB069 
+X-CRM114-Status: GOOD (  14.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,39 +78,37 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+Hello Bjorn,
 
-According to RK3576 TRM part1 page13, the size of the GPU registers
-is 128 KB.
+On Fri, Dec 26, 2025 at 04:31:59PM -0600, Bjorn Helgaas wrote:
+> > The long term plan is to migrate this driver to the pwrctrl framework,
+> > once it adds proper support for powering up and enumerating PCIe switches.
+> 
+> "Proper" is hiding some important details here.  pwrctrl already
+> supports powering up and enumerating switches.  I think this refers to
+> [1], where Mani says the plan is for pwrctrl to power up everything
+> before the initial bus scan so we can figure out how many buses are
+> needed.
+> 
+> [1] https://lore.kernel.org/linux-pci/fle74skju2rorxmfdvosmeyrx3g75rysuszov5ofvde2exj4ir@3kfjyfyhczmn/
 
-Fixes: 57b1ce903966 ("arm64: dts: rockchip: Add rk3576 SoC base DT")
-Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
----
- arch/arm64/boot/dts/rockchip/rk3576.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Correct.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-index 6284e7bdc442..b375015f0662 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-@@ -1271,7 +1271,7 @@ power-domain@RK3576_PD_VO1 {
- 
- 		gpu: gpu@27800000 {
- 			compatible = "rockchip,rk3576-mali", "arm,mali-bifrost";
--			reg = <0x0 0x27800000 0x0 0x200000>;
-+			reg = <0x0 0x27800000 0x0 0x20000>;
- 			assigned-clocks = <&scmi_clk SCMI_CLK_GPU>;
- 			assigned-clock-rates = <198000000>;
- 			clocks = <&cru CLK_GPU>;
--- 
-2.51.1
+This series has already been merged to the pci/controller/dwc branch
+(although for some reason this branch is not merged to pci/next yet),
+and I can see that Mani have rephrased the commit messages to be more
+specific and to avoid the word proper.
 
+Please tell me if there is some futher action needed from my part.
+
+
+Kind regards,
+Niklas
 
 _______________________________________________
 Linux-rockchip mailing list
