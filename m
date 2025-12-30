@@ -4,34 +4,34 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 828F0EE498F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Dec 2025 17:21:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81F9AEE498E
+	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Dec 2025 17:21:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=d/XLPF4xDmYssfdZzdJAB0D0ZnNdj4eL467fmiyZZxI=; b=seWW0MPoPWNO3L
-	6020tkbcla9G6fRsbSJyoksqaM4LvrgoMex/NEeoVIz/d6zq/OWy73KN093O+KLeXcc5zvg4pq5nF
-	Gxs+kK7fOGx3KOyrhfc+RKyq6utwYlyRISDKVU7FawG11WnoNA5/Uxguyd3Q2a2LeCBJk+iAa4OPS
-	xN/6G/aMnXZxyqTfzNm3O0c6LDanj1tT7ijdGORy4IR6JjJc4DuACP5Oa50NZsJJyCe9Mc0ksSzib
-	mxSwSZ5yjbZB8/3eflo9Bi+o41EzCYSq69j5+fr4gXYCz5mjwfiH3mO1mn8UYSLi4WHihzWkzp/5R
-	y6FErd/id+fbw2vbZOsg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=cySZl3tm7JOjeR75emJsuMHVAVPbfD3QjU6Q9fUATqs=; b=LtZeZWGmAuJhU/
+	dr+xNEpP41J6u4wjDDv84O47Tn5dYT17zKuq7DZG8sTVYMocPjfF9P1wH3OKOdMmSnRfMpnvY7vTz
+	Fix+AryW7LapPtqMW0Qb0XFwxEUZodkEmqJYUV477WhGQkRgiDMckI+0NGnEl6KoIl2NBC0D4wXir
+	xvQ0V6zdfxfDKNWBVN1TW8QQABxJ1ZjS4xkEAS+s7wpkyijrOUnWOxKT8JF1K8wNkJ2qRYjR9wSAJ
+	g/CKYAKCoBJi569xCvt3R0xtN0GwEXWGv2togIQwHvY6SUDMPsy4fZfZTu3++qxavtzFSgNkkLAdu
+	H5IceSZE6ChAXOe5ROrg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vadP6-000000056rL-33BQ;
-	Tue, 30 Dec 2025 17:21:04 +0000
+	id 1vadPJ-000000056xV-1H2V;
+	Tue, 30 Dec 2025 17:21:17 +0000
 Received: from foss.arm.com ([217.140.110.172])
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vadOv-000000056pQ-39vm;
-	Tue, 30 Dec 2025 17:21:01 +0000
+	id 1vadOy-000000056pU-23cr;
+	Tue, 30 Dec 2025 17:21:04 +0000
 Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 9F1D0497;
-	Tue, 30 Dec 2025 09:20:40 -0800 (PST)
-Received: from 010265703453.localdomain (usa-sjc-mx-foss1.foss.arm.com [172.31.20.19])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id 9064D3F63F;
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 50D331424;
 	Tue, 30 Dec 2025 09:20:45 -0800 (PST)
+Received: from 010265703453.localdomain (usa-sjc-mx-foss1.foss.arm.com [172.31.20.19])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id 188953F63F;
+	Tue, 30 Dec 2025 09:20:49 -0800 (PST)
 From: Robin Murphy <robin.murphy@arm.com>
 To: heiko@sntech.de,
 	neil.armstrong@linaro.org,
@@ -41,15 +41,19 @@ To: heiko@sntech.de,
 Cc: jesszhan0024@gmail.com,
 	dri-devel@lists.freedesktop.org,
 	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH 0/4] Properly support FriendlyElec HD702E
-Date: Tue, 30 Dec 2025 17:20:30 +0000
-Message-Id: <cover.1767111804.git.robin.murphy@arm.com>
+	linux-arm-kernel@lists.infradead.org,
+	devicetree@vger.kernel.org
+Subject: [PATCH 1/4] dt-bindings: display: panel: Move FriendlyElec HD702E to eDP
+Date: Tue, 30 Dec 2025 17:20:31 +0000
+Message-Id: <80a68e706e869aadbdea228b207a5df52bbfd7b2.1767111807.git.robin.murphy@arm.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <cover.1767111804.git.robin.murphy@arm.com>
+References: <cover.1767111804.git.robin.murphy@arm.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251230_092053_828131_C6C7C745 
-X-CRM114-Status: GOOD (  11.23  )
+X-CRM114-CacheID: sfid-20251230_092058_884409_99F1E95F 
+X-CRM114-Status: UNSURE (   7.60  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,40 +70,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi all,
+The "E" alludes to the fact that FriendlyElec's HD702E is actually an
+eDP panel - move its compatible to the appropriate binding doc.
 
-I've been using the HD702E LCD/touchscreen on my NanoPC-T4 for a few
-years using my own DT with the "simple-panel" binding, but now we have
-upstream overlays I figured it's about time to try doing it properly.
-The screen itself doesn't seem to want to work as a generic "edp-panel",
-as it appears the EDID isn't readable until after the whole lot is
-enabled - I'm guessing this might be to do with the Analogix driver's
-force-hpd behaviour - but since we do already have the legacy data, it
-doesn't seem unreasonable to keep using it.
+Cc: <devicetree@vger.kernel.org>
+Signed-off-by: Robin Murphy <robin.murphy@arm.com>
+---
+ .../devicetree/bindings/display/panel/panel-edp-legacy.yaml     | 2 ++
+ .../devicetree/bindings/display/panel/panel-simple.yaml         | 2 --
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-Thanks,
-Robin.
-
-
-Robin Murphy (4):
-  dt-bindings: display: panel: Move FriendlyElec HD702E to eDP
-  drm/panel-edp: Move FriendlyELEC HD702E
-  arm64: dts: rockchip: Move RK3399 eDP pinctrl to boards
-  arm64: dts: rockchip: Add overlay for FriendlyElec HD702E
-
- .../display/panel/panel-edp-legacy.yaml       |  2 +
- .../bindings/display/panel/panel-simple.yaml  |  2 -
- arch/arm64/boot/dts/rockchip/Makefile         |  5 ++
- arch/arm64/boot/dts/rockchip/rk3399-base.dtsi |  2 -
- .../dts/rockchip/rk3399-gru-chromebook.dtsi   |  2 +
- .../dts/rockchip/rk3399-nanopc-t4-hd702e.dtso | 62 +++++++++++++++++++
- .../boot/dts/rockchip/rk3399-pinebook-pro.dts |  2 -
- .../rockchip/rk3399-sapphire-excavator.dts    |  2 +
- drivers/gpu/drm/panel/panel-edp.c             | 26 ++++++++
- drivers/gpu/drm/panel/panel-simple.c          | 25 --------
- 10 files changed, 99 insertions(+), 31 deletions(-)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4-hd702e.dtso
-
+diff --git a/Documentation/devicetree/bindings/display/panel/panel-edp-legacy.yaml b/Documentation/devicetree/bindings/display/panel/panel-edp-legacy.yaml
+index b308047c1edf..afe7dc54ebf4 100644
+--- a/Documentation/devicetree/bindings/display/panel/panel-edp-legacy.yaml
++++ b/Documentation/devicetree/bindings/display/panel/panel-edp-legacy.yaml
+@@ -44,6 +44,8 @@ properties:
+       - boe,nv133fhm-n62
+         # BOE NV140FHM-N49 14.0" FHD a-Si FT panel
+       - boe,nv140fhmn49
++        # FriendlyELEC HD702E 800x1280 LCD panel
++      - friendlyarm,hd702e
+         # Innolux Corporation 11.6" WXGA (1366x768) TFT LCD panel
+       - innolux,n116bca-ea1
+         # Innolux Corporation 11.6" WXGA (1366x768) TFT LCD panel
+diff --git a/Documentation/devicetree/bindings/display/panel/panel-simple.yaml b/Documentation/devicetree/bindings/display/panel/panel-simple.yaml
+index 24e277b19094..a01cf025aad1 100644
+--- a/Documentation/devicetree/bindings/display/panel/panel-simple.yaml
++++ b/Documentation/devicetree/bindings/display/panel/panel-simple.yaml
+@@ -144,8 +144,6 @@ properties:
+       - foxlink,fl500wvr00-a0t
+         # Frida FRD350H54004 3.5" QVGA TFT LCD panel
+       - frida,frd350h54004
+-        # FriendlyELEC HD702E 800x1280 LCD panel
+-      - friendlyarm,hd702e
+         # GiantPlus GPG48273QS5 4.3" (480x272) WQVGA TFT LCD panel
+       - giantplus,gpg48273qs5
+         # GiantPlus GPM940B0 3.0" QVGA TFT LCD panel
 -- 
 2.34.1
 
