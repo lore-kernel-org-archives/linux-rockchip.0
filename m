@@ -4,62 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E1B4E94100
-	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Dec 2025 23:31:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1D9BE9412E
+	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Dec 2025 09:04:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:From:Subject:Cc:
-	To:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pG2fxfmiFoU5CGBPBi5sFb9f5lw3V+zY4RAkNgmziuA=; b=wj9c3nUGCLdgRd
-	S97XqIFV+2dWOcpVtiGwjOoccc9ASzBm795JbE/UdDW/WJNiSMwjgUpOE35dZlBgDMgsDcmhdLK2Q
-	tDxrlrmeEn9t3rY3Ck8elLnvytN0S1hlJW2SNLXlDO0KfzuNiA9+ioubkWq9Txc0Qa81W+6XeyNVq
-	0k4KAWDAOwkiqBEn0v3OrxLUd7xkruKujz0MXXccCOQIQN6mqzSeH81xq9Nll2BiKLwNg3kfpBmPz
-	eajEFWYOniUoQOCddeIaeWDLiHIfHb5NdA3VF48fV5it8WeHQHTsAXNw0eSNB3cXmNxHWURc+JOFI
-	76ee/OpTIyeb1R4OqpuA==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=i1LDsAUrBjwkpXprbdBglHj12Tm36KXY8eh0r8fNfgs=; b=skLqleM0+bUKWV
+	vwDr/QabqB8a2d0HtvRgGIHiokmbEfUv8fynoSr6+e6tNZtisDESwCeeuhduyhJw/fflMXr+XjYDB
+	qoX6K5AAmTNno0dbgLoL1cEc8Kw6mjadgqx27AZrFwZiXzydMuUrd4Aft4HsLM4GReFaS0jrkf0ck
+	jghKcpASDJ/TmHn/Pp6jReEIjWlRTp5HkXcuusO5z+8KMhqkNIIl1ZmQL+CAHLsjh2yzQN13/a2SA
+	Nu9xdr393wArKmxVBXDofM6Lle6hQMVdF1zp8er4VQAxCr7agUA2zNE3B9ydO3li8tg447wTfiD4s
+	B/3ZNpjtrxavK8SPS4ZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vaMi6-0000000495R-1iHf;
-	Mon, 29 Dec 2025 23:31:34 +0000
-Received: from out-189.mta0.migadu.com ([91.218.175.189])
+	id 1vaVeQ-00000004cXv-224A;
+	Tue, 30 Dec 2025 09:04:22 +0000
+Received: from smtpbgsg1.qq.com ([54.254.200.92])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vaMi2-00000004952-3LFY
-	for linux-rockchip@lists.infradead.org;
-	Mon, 29 Dec 2025 23:31:33 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow-tech.com;
-	s=key1; t=1767051085;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=egUaL+sUnKDXbV077QdhT1ThHmuXbBNBbL/PZQAMPZI=;
-	b=LQG2D0R2RKv6aXIjVK5QMsxu+NDSMdPx8qrKKp8jsLQSYpaBtsf37p0mDHw2eQvl3LHr1t
-	ntwVvY4184WgcNhKrvbC01GZgmnnnsBal6mWQ2THrjYudOFlMLULYgyWWFmlGLABqVny45
-	pyUbVHOXw1dsru/Cs1jpW85yEgxWwlXllTaVpGisDFz56LCj8VbgiiWZoZOoetN0ZBeQY1
-	cdeh3QKuHlC/RVBi86Kl4RHTv37MSghtHs+qrk7uHGU2NsfsmbcQ8USxHllO7GCZIlyNB2
-	pOJ/KRYPNHmHEDjSkpw/10jirFytoq5/acrtPZzradT4xu5rEm7HPmLCGS62Qg==
-Date: Tue, 30 Dec 2025 00:31:17 +0100
-Message-Id: <DFB3BUDFOIN1.3IM5386T534NQ@cknow-tech.com>
-To: "Andy Shevchenko" <andriy.shevchenko@linux.intel.com>, "Diederik de
- Haas" <diederik@cknow-tech.com>
-Cc: "Michael Wu" <michael@allwinnertech.com>, <myungjoo.ham@samsung.com>,
- <cw00.choi@samsung.com>, <linux-kernel@vger.kernel.org>, "Dragan Simic"
- <dsimic@manjaro.org>, <linux-rockchip@lists.infradead.org>
-Subject: Re: [PATCH v3] extcon: Fixed sysfs duplicate filename issue
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <diederik@cknow-tech.com>
-References: <20251024024946.16618-1-michael@allwinnertech.com>
- <DF3Y6Z8X4GC6.11WQOENQD4EDW@cknow-tech.com>
- <aU_2VbFLPKqcyvp_@smile.fi.intel.com>
- <DF9SRIU7GHOX.1G7OOKX72555M@cknow-tech.com>
- <aVFoNbsd13ufl7ge@smile.fi.intel.com>
-In-Reply-To: <aVFoNbsd13ufl7ge@smile.fi.intel.com>
-X-Migadu-Flow: FLOW_OUT
+	id 1vaVeM-00000004cVQ-1rRK;
+	Tue, 30 Dec 2025 09:04:20 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
+	s=altu2504; t=1767085407;
+	bh=/VpoCnIgKsRZ92pzrMxwDZZP7i+qPNxm3KzgXs7KlAU=;
+	h=From:To:Subject:Date:Message-Id;
+	b=rwxAVk/d7DubyMcA2DD7Yo08VoiBpyWogj10+wBd/ljg5ZFDYYT3J/BNg3fNSm6DG
+	 0D7N9vgbRHjsH9AOPlqKUq9E5sgUBhgX8Qdyk2+XCnC1HIFNPAVEBPYZByX0NwYYSW
+	 kXeL9PV3fWMJ281hSRSU8lyeZsbyoU0fKAHnTMKM=
+X-QQ-mid: esmtpgz16t1767085398tec99c1ed
+X-QQ-Originating-IP: /TmhuuJhxmP7FNa6N98cvNeOz2pDT9y88FQ2UnLeMZw=
+Received: from DESKTOP-8BT1A2O.localdomain ( [58.22.7.114])
+	by bizesmtp.qq.com (ESMTP) with 
+	id ; Tue, 30 Dec 2025 17:03:15 +0800 (CST)
+X-QQ-SSF: 0000000000000000000000000000000
+X-QQ-GoodBg: 0
+X-BIZMAIL-ID: 15785446282400789070
+From: Chaoyi Chen <kernel@airkyi.com>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
+	Chaoyi Chen <chaoyi.chen@rock-chips.com>,
+	Kever Yang <kever.yang@rock-chips.com>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
+	Frank Wang <frank.wang@rock-chips.com>,
+	Alexey Charkov <alchark@gmail.com>,
+	Liang Chen <cl@rock-chips.com>,
+	Finley Xiao <finley.xiao@rock-chips.com>,
+	Elaine Zhang <zhangqing@rock-chips.com>,
+	Yifeng Zhao <yifeng.zhao@rock-chips.com>
+Cc: devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] arm64: dts: rockchip: Fix wrong register range of rk3576 gpu
+Date: Tue, 30 Dec 2025 17:02:46 +0800
+Message-Id: <20251230090246.46-1-kernel@airkyi.com>
+X-Mailer: git-send-email 2.17.1
+X-QQ-SENDSIZE: 520
+Feedback-ID: esmtpgz:airkyi.com:qybglogicsvrgz:qybglogicsvrgz6b-0
+X-QQ-XMAILINFO: MwQdfXoP8nuzj6ZsImoTwbRpq3kjUEZ+GsvAE7aPlYh11ur+xMi6Vvac
+	0QbMN19XpTW+AebC8zFI+VMLcPW4LKJYVnq7WRp6a8tPfteiCrikViTOjr33hRpCe4hEaD+
+	iit2VJ2+kQ7G1xtUDo6z3iobP7qnGWMdKXhH8sYafcCH+O8E//vq6QUwjT68/g+4jg5avbW
+	+E09WOGzF7dwhANaN5L12N4h9sjHOaDsquTN/ZyPllhCPFcyqDm8d8mmPHYAs9HURzd7B5Y
+	jZhJTBm18X2ISiMiV/rXYqGbt/Z79RnTb5bhyUAVwa8fl2irY7rdty4MV2KvF2H8P4IGMz0
+	QKw/8jcRF4hAk1YNX9T+e3NXHi1F0sXGheEqae9OC8xC+QoHBS6IefgDKms8gNOPKOk7ze5
+	IYZyUsPUao2An0i/oXq10mVwi09Ai2jtsPhteRZH0SQBm/Msah28P5OdNKRYTia+EpRsfjX
+	DTqEmShwrirj/KxnGHETPDyZJBCfwYy+tl7bf+EHO1uVPj6FGCD/OTt6btLVz58NPWd2jgR
+	pTl8lZOOVgW5OtYMgteqDoqdj53Eu41nKoZMMA34E+jbnR4uTS9l9z8hqEWwK1uYL5Ca27k
+	hD+pXCbw0k9MYG74ClcS/1tDiflgbp0N7WR71MM3X4n3ljUSLCGycZRdJ9qQktEZMB0ikwe
+	ryf/lgx81LYewcKHhGU8P433I52Y1wDIGs5QDtvpA9ntoXaFCay0Dvft5TxFNVThlzNdbnR
+	KzGvLwtecM5NVwXBk+HUebfATohKomKoxzaHAgflMM0uLbASqMk6raUfTyJpieWEtlnsZc1
+	/BZ/gg9QYHnAVNT4OkmE4RweeeHv0eCdae+lkOQ4ez3o0BWOHU9h+l9aSDc1cEeU4t6jI9q
+	YgA6P+GFwl54FQ6Gvu1WxLSLzbt1raeFGE5OI1xt5tpQX0tF9gRmZk//lqcQjdtjAzlCukB
+	Jp4PeI3rgARQwcnjoGxA8KKdzfYaqNglZgu5j4UeGEduG8QTHunRNOpzrKcVGjMbPy8c=
+X-QQ-XMRINFO: Nq+8W0+stu50tPAe92KXseR0ZZmBTk3gLg==
+X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251229_153131_539923_798B9D03 
-X-CRM114-Status: GOOD (  27.28  )
+X-CRM114-CacheID: sfid-20251230_010418_936204_716AED32 
+X-CRM114-Status: GOOD (  10.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,77 +98,39 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sun Dec 28, 2025 at 6:26 PM CET, Andy Shevchenko wrote:
-> On Sun, Dec 28, 2025 at 12:01:54PM +0100, Diederik de Haas wrote:
->> On Sat Dec 27, 2025 at 4:08 PM CET, Andy Shevchenko wrote:
->> > On Sun, Dec 21, 2025 at 03:01:11PM +0100, Diederik de Haas wrote:
->> >> On Fri Oct 24, 2025 at 4:49 AM CEST, Michael Wu wrote:
->> >> > With current extcon_dev_unregister() timing, ida_free is before
->> >> > device_unregister(), that may cause current id re-alloc to another
->> >> > device in extcon_dev_register() context but sysfs filename path not
->> >> > removal completed yet.
->> >> 
->> >> I periodically get errors like this:
->> >> 
->> >> [    7.116152] rockchip-usb2phy fe8a0000.usb2phy: error -EEXIST: failed to register extcon device
->> >> [    7.117005] rockchip-usb2phy fe8a0000.usb2phy: probe with driver rockchip-usb2phy failed with error -17
->> >> 
->> >> This was today on a NanoPi R5S (rk3568), but I have seen it before and
->> >> on multiple devices. They are all Rockchip based, but that's (quite)
->> >> possible because that's what I use the most (and where I pay quite a bit
->> >> of attention to dmesg).
->> >> 
->> >> Slightly fuller dmesg output of the above error is here:
->> >> https://paste.sr.ht/~diederik/42c6b3405386c823cd9f837d73a9a32e810361be
->> >> And via 'journalctl' I hopefully got the full dmesg output:
->> >> https://paste.sr.ht/~diederik/7a6109115b1ad85290de482db091dad3759ec159
->> >> 
->> >> Here are 2 similar logs, this time on PineTab2 and Quartz64-A (both rk3566)
->> >> https://paste.sr.ht/~diederik/cfe606801d3dab0267bea7049687d24c0d6e8d71
->> >> 
->> >> Those are all the logs I have saved, but it has happened several times
->> >> besides that. But most times I just rebooted and didn't save the log.
->> >> Today I looked a bit further, found commit 7bba9e81a6fb, searched on
->> >> lore.k.o and found this patch.
->> >> 
->> >> So I'm wondering whether this patch would also fix 'my' issue?
->> >> Or is this a different issue?
->> >
->> > But have you had a chance to test it? The code looks correct after this patch
->> > as the first we remove the struct device and all associated data (including
->> > sysfs nodes) and then remove the ID from the list. Without that there is a
->> > window to get the same id for the devices that is pending to be removed.
->> 
->> I've build a kernel with it and it will be part of my kernels going
->> forward. But it can take many months before the issue shows up again.
->> So if I don't get it in a year, then I'm going to *assume* it's probably
->> fixed.
->
-> I believe you may speed up the test case by creating two shell scripts that
-> trying insmod / rmmod the same module in parallel.
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
 
-I checked on several devices and the phy_rockchip_inno_usb2 module is
-used by various other modules on all of them, so I can't just 'rmmod' it.
-I guess it should technically be possible to remove all its dependencies
-and then remove that module. I don't know if my skills are sufficient
-for that and it feels like I'm mostly testing the robustness of the USB
-subsystem.
+According to RK3576 TRM part1 page13, the size of the GPU registers
+is 128 KB.
 
-As I regularly already get the following kernel warning
-``Warning! ehci_hcd should always be loaded before uhci_hcd and ohci_hcd, not after``
-which often results in USB 2 ports not working, I have my doubts about
-the robustness anyway.
+Fixes: 57b1ce903966 ("arm64: dts: rockchip: Add rk3576 SoC base DT")
+Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3576.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-So I'll just keep an eye out if the ``sysfs: cannot create duplicate
-filename`` error pops up again 'naturally' and report if/when it does.
+diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+index 6284e7bdc442..b375015f0662 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+@@ -1271,7 +1271,7 @@ power-domain@RK3576_PD_VO1 {
+ 
+ 		gpu: gpu@27800000 {
+ 			compatible = "rockchip,rk3576-mali", "arm,mali-bifrost";
+-			reg = <0x0 0x27800000 0x0 0x200000>;
++			reg = <0x0 0x27800000 0x0 0x20000>;
+ 			assigned-clocks = <&scmi_clk SCMI_CLK_GPU>;
+ 			assigned-clock-rates = <198000000>;
+ 			clocks = <&cru CLK_GPU>;
+-- 
+2.51.1
 
-Cheers,
-  Diederik
 
 _______________________________________________
 Linux-rockchip mailing list
