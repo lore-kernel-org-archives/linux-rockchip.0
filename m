@@ -4,62 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F1BEEE49BD
-	for <linux-rockchip@archiver.kernel.org>; Wed, 31 Dec 2025 03:10:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A3AFEE57D1
+	for <linux-rockchip@archiver.kernel.org>; Wed, 31 Dec 2025 07:33:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ChwsRqrIMF+XP1NKorolEAxJR3McYGy4CwgpDtEoiSs=; b=dcm5ffcwwThVoV
-	OM7ynBMhyA7kav5HtIoygHqq2xhe3w5Pw7vPAG/F12jA7mSsiBumuof3l7dLNIzjE/hISoqNfBJCW
-	WtR5fDaU6N73LsyaU6Bey5LZA2O+byqJl9dF+VZFIUJUXXYm0FtPm2D9Ao58ueY0rA06YiKVPO9Mg
-	98XXe0ykPMSUavsARHMwFMRNEcwVr3+KMAb4W3bZSch139wRR/N79jhf7Bvu/7DPJy3x1RGrqYUaB
-	DtotyfSvefZveIaFdmoyxOzDUbCwBDZUdi90ZWZo4X38chcj7zfQnqOf/vEwchuDTFeOK7KLA3FD0
-	7Tk5/nOptHXTLiaJTcOQ==;
+	List-Owner; bh=Q49rnRRk53svLcli0FrCe3lGkACA7ASHa966CMgLp+4=; b=18vqIEY/eZ14pn
+	U5vMcWaj0egZ/OkF5pxcojQNZ8vVCMtOA5Yf2rM6Lz5/wFd6QSsjjR0KnFMlfnMoUDmTh7R9VlLwn
+	bfFq5AEyst7gnQjw3dEdiPL/cV1MxCNNEwuMT04/hxaU1mzKfnJ/VWOc/40IAp9HBUqyZrB/5SM2p
+	PLUZNiazjo00n1P1Qg9nd9aYuxVBp7UlwoVfoA3lvNCZ7TGnFrtMS646VfvfVZQBh6ThbeUnjhem2
+	abgaY5q3l2y/TmhThCMeb+vqfUGMCW6TeLcTWS+V3KZ66vzun8cLTTJZt36ke8654E5+E/UeDqwR5
+	/99aTo2MG7esay/MXFBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vambf-00000005d0Z-1AAb;
-	Wed, 31 Dec 2025 03:10:39 +0000
-Received: from mail-m12853.netease.com ([103.209.128.53])
+	id 1vaqi9-00000005lWf-2Tjo;
+	Wed, 31 Dec 2025 07:33:37 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vambb-00000005cyv-1Phc
+	id 1vaqi7-00000005lWZ-3Ew2
 	for linux-rockchip@lists.infradead.org;
-	Wed, 31 Dec 2025 03:10:38 +0000
-Received: from localhost.localdomain (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 2f185eb54;
-	Wed, 31 Dec 2025 11:10:29 +0800 (GMT+08:00)
-From: Joseph Chen <chenjh@rock-chips.com>
-To: lee@kernel.org,
-	lgirdwood@gmail.com,
-	broonie@kernel.org,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org
-Cc: linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Joseph Chen <chenjh@rock-chips.com>
-Subject: [PATCH v1 2/2] mfd: rk808: Add RK801 support
-Date: Wed, 31 Dec 2025 11:09:51 +0800
-Message-Id: <20251231030951.818-3-chenjh@rock-chips.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20251231030951.818-1-chenjh@rock-chips.com>
-References: <20251231030951.818-1-chenjh@rock-chips.com>
+	Wed, 31 Dec 2025 07:33:35 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id B67AF60008;
+	Wed, 31 Dec 2025 07:33:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6C286C113D0;
+	Wed, 31 Dec 2025 07:33:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1767166414;
+	bh=Kn2rOA8ngNddtv/99RV0iubZACUw5gfx7jK3oKccYPY=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=qOaq5Agx862sK9dY7UOGmV1/9PlP4lhh6PZiidG8gFIuIhe0iHYGlthOSSedt4DmF
+	 4Vq7MAu3A+3zMhx15OGWmhqwQWm2l1h30qOm0wiiv3x/kvJdO8ue/HrGd9G68ikQGV
+	 KjuoI9HDiCF9J1w+Jb5qbtmKafzH3dDBe0htha/eCZpVBPv2BuCUBGKlWLIV0i/Abd
+	 82n+lGq6e/kernEFdXtHe4dRHYgl59cYhDsbOeP02MC62O7+SH2DFmUalHpV6FM29X
+	 Lg68A7ufKBHAdAYiJBdvj4BkUc3+mVIdlOjoRjosWUfHgThPlV7IQvM9ZS25hNyINq
+	 0J4DlFbojQz2A==
+Message-ID: <ab933944-6a5f-4418-92fd-e77997656861@kernel.org>
+Date: Wed, 31 Dec 2025 08:33:30 +0100
 MIME-Version: 1.0
-X-HM-Tid: 0a9b7262b08809d2kunm5c2c20206ab137
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGU0eGlYeGU0ZHklKQ0kYGkhWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=ZNdUVkChKYyFYvX94T/Ik02mBVndsE/nMS7Fy+0v2JHw6HelXhGk3dtVaqll5qTLhNffl3yWHpMy3X4BV102gjUE0G1PHbrXy6GsAHu7CuogzUFBCXFEUOxlWdONmds/rWhANs/Bne5K6jt2RzGunHK1LTMiU4iSGy8RqXzFk9A=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=3XiVce+pMvxcoZyi9xCODzohl8+z/vuE1MvCHUBl+zo=;
-	h=date:mime-version:subject:message-id:from;
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251230_191035_703609_4B06EBC4 
-X-CRM114-Status: GOOD (  18.51  )
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1 1/2] dt-bindings: mfd: Add rk801 binding
+To: Joseph Chen <chenjh@rock-chips.com>, lee@kernel.org, lgirdwood@gmail.com,
+ broonie@kernel.org, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org
+Cc: linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+References: <20251231030951.818-1-chenjh@rock-chips.com>
+ <20251231030951.818-2-chenjh@rock-chips.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <20251231030951.818-2-chenjh@rock-chips.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,685 +114,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The RK801 are a Power Management IC (PMIC) for multimedia
-and handheld devices. They contains the following components:
+On 31/12/2025 04:09, Joseph Chen wrote:
+> Add DT binding document for Rockchip's RK801 PMIC
+> 
+> Signed-off-by: Joseph Chen <chenjh@rock-chips.com>
+> ---
 
-- 4 BUCK
-- 2 LDO
-- 1 SWITCH
 
-Signed-off-by: Joseph Chen <chenjh@rock-chips.com>
----
- drivers/mfd/Kconfig                 |   6 +-
- drivers/mfd/rk8xx-core.c            |  81 ++++++++++
- drivers/mfd/rk8xx-i2c.c             |  33 +++-
- drivers/regulator/rk808-regulator.c | 243 ++++++++++++++++++++++++++++
- include/linux/mfd/rk808.h           | 118 ++++++++++++++
- 5 files changed, 477 insertions(+), 4 deletions(-)
+1. Please use scripts/get_maintainers.pl to get a list of necessary
+people and lists to CC. It might happen, that command when run on an
+older kernel, gives you outdated entries. Therefore please be sure you
+base your patches on recent Linux kernel.
 
-diff --git a/drivers/mfd/Kconfig b/drivers/mfd/Kconfig
-index 6cec1858947..5405e8633aa 100644
---- a/drivers/mfd/Kconfig
-+++ b/drivers/mfd/Kconfig
-@@ -1355,15 +1355,15 @@ config MFD_RK8XX
- 	select MFD_CORE
- 
- config MFD_RK8XX_I2C
--	tristate "Rockchip RK805/RK808/RK809/RK816/RK817/RK818 Power Management Chip"
-+	tristate "Rockchip RK801/RK805/RK808/RK809/RK816/RK817/RK818 Power Management Chip"
- 	depends on I2C && OF
- 	select MFD_CORE
- 	select REGMAP_I2C
- 	select REGMAP_IRQ
- 	select MFD_RK8XX
- 	help
--	  If you say yes here you get support for the RK805, RK808, RK809,
--	  RK816, RK817 and RK818 Power Management chips.
-+	  If you say yes here you get support for the RK801, RK805, RK808,
-+	  RK809, RK816, RK817 and RK818 Power Management chips.
- 	  This driver provides common support for accessing the device
- 	  through I2C interface. The device supports multiple sub-devices
- 	  including interrupts, RTC, LDO & DCDC regulators, and onkey.
-diff --git a/drivers/mfd/rk8xx-core.c b/drivers/mfd/rk8xx-core.c
-index def4587fdfb..3dcf6abfda7 100644
---- a/drivers/mfd/rk8xx-core.c
-+++ b/drivers/mfd/rk8xx-core.c
-@@ -37,6 +37,11 @@ static const struct resource rk817_rtc_resources[] = {
- 	DEFINE_RES_IRQ(RK817_IRQ_RTC_ALARM),
- };
- 
-+static const struct resource rk801_key_resources[] = {
-+	DEFINE_RES_IRQ(RK801_IRQ_PWRON_FALL),
-+	DEFINE_RES_IRQ(RK801_IRQ_PWRON_RISE),
-+};
-+
- static const struct resource rk805_key_resources[] = {
- 	DEFINE_RES_IRQ(RK805_IRQ_PWRON_RISE),
- 	DEFINE_RES_IRQ(RK805_IRQ_PWRON_FALL),
-@@ -57,6 +62,14 @@ static const struct resource rk817_charger_resources[] = {
- 	DEFINE_RES_IRQ(RK817_IRQ_PLUG_OUT),
- };
- 
-+static const struct mfd_cell rk801s[] = {
-+	{ .name = "rk808-regulator", },
-+	{	.name = "rk805-pwrkey",
-+		.num_resources = ARRAY_SIZE(rk801_key_resources),
-+		.resources = &rk801_key_resources[0],
-+	},
-+};
-+
- static const struct mfd_cell rk805s[] = {
- 	{ .name = "rk808-clkout", },
- 	{ .name = "rk808-regulator", },
-@@ -139,6 +152,15 @@ static const struct mfd_cell rk818s[] = {
- 	},
- };
- 
-+static const struct rk808_reg_data rk801_pre_init_reg[] = {
-+	{ RK801_SLEEP_CFG_REG, RK801_SLEEP_FUN_MSK, RK801_NONE_FUN },
-+	{ RK801_SYS_CFG2_REG, RK801_RST_MSK, RK801_RST_RESTART_REG_RESETB },
-+	{ RK801_INT_CONFIG_REG, RK801_INT_POL_MSK, RK801_INT_ACT_L },
-+	{ RK801_POWER_FPWM_EN_REG, RK801_PLDO_HRDEC_EN, RK801_PLDO_HRDEC_EN },
-+	{ RK801_BUCK_DEBUG5_REG, MASK_ALL, 0x54 },
-+	{ RK801_CON_BACK1_REG, MASK_ALL, 0x18 },
-+};
-+
- static const struct rk808_reg_data rk805_pre_init_reg[] = {
- 	{RK805_BUCK1_CONFIG_REG, RK805_BUCK1_2_ILMAX_MASK,
- 				 RK805_BUCK1_2_ILMAX_4000MA},
-@@ -284,6 +306,37 @@ static const struct rk808_reg_data rk818_pre_init_reg[] = {
- 						    VB_LO_SEL_3500MV },
- };
- 
-+static const struct regmap_irq rk801_irqs[] = {
-+	[RK801_IRQ_PWRON_FALL] = {
-+		.mask = RK801_IRQ_PWRON_FALL_MSK,
-+		.reg_offset = 0,
-+	},
-+	[RK801_IRQ_PWRON_RISE] = {
-+		.mask = RK801_IRQ_PWRON_RISE_MSK,
-+		.reg_offset = 0,
-+	},
-+	[RK801_IRQ_PWRON] = {
-+		.mask = RK801_IRQ_PWRON_MSK,
-+		.reg_offset = 0,
-+	},
-+	[RK801_IRQ_PWRON_LP] = {
-+		.mask = RK801_IRQ_PWRON_LP_MSK,
-+		.reg_offset = 0,
-+	},
-+	[RK801_IRQ_HOTDIE] = {
-+		.mask = RK801_IRQ_HOTDIE_MSK,
-+		.reg_offset = 0,
-+	},
-+	[RK801_IRQ_VDC_RISE] = {
-+		.mask = RK801_IRQ_VDC_RISE_MSK,
-+		.reg_offset = 0,
-+	},
-+	[RK801_IRQ_VDC_FALL] = {
-+		.mask = RK801_IRQ_VDC_FALL_MSK,
-+		.reg_offset = 0,
-+	},
-+};
-+
- static const struct regmap_irq rk805_irqs[] = {
- 	[RK805_IRQ_PWRON_RISE] = {
- 		.mask = RK805_IRQ_PWRON_RISE_MSK,
-@@ -532,6 +585,17 @@ static const struct regmap_irq rk817_irqs[RK817_IRQ_END] = {
- 	REGMAP_IRQ_REG_LINE(23, 8)
- };
- 
-+static const struct regmap_irq_chip rk801_irq_chip = {
-+	.name = "rk801",
-+	.irqs = rk801_irqs,
-+	.num_irqs = ARRAY_SIZE(rk801_irqs),
-+	.num_regs = 1,
-+	.status_base = RK801_INT_STS0_REG,
-+	.mask_base = RK801_INT_MASK0_REG,
-+	.ack_base = RK801_INT_STS0_REG,
-+	.init_ack_masked = true,
-+};
-+
- static const struct regmap_irq_chip rk805_irq_chip = {
- 	.name = "rk805",
- 	.irqs = rk805_irqs,
-@@ -610,6 +674,10 @@ static int rk808_power_off(struct sys_off_data *data)
- 	unsigned int reg, bit;
- 
- 	switch (rk808->variant) {
-+	case RK801_ID:
-+		reg = RK801_SYS_CFG2_REG;
-+		bit = DEV_OFF;
-+		break;
- 	case RK805_ID:
- 		reg = RK805_DEV_CTRL_REG;
- 		bit = DEV_OFF;
-@@ -714,6 +782,13 @@ int rk8xx_probe(struct device *dev, int variant, unsigned int irq, struct regmap
- 	dev_set_drvdata(dev, rk808);
- 
- 	switch (rk808->variant) {
-+	case RK801_ID:
-+		rk808->regmap_irq_chip = &rk801_irq_chip;
-+		pre_init_reg = rk801_pre_init_reg;
-+		nr_pre_init_regs = ARRAY_SIZE(rk801_pre_init_reg);
-+		cells = rk801s;
-+		nr_cells = ARRAY_SIZE(rk801s);
-+		break;
- 	case RK805_ID:
- 		rk808->regmap_irq_chip = &rk805_irq_chip;
- 		pre_init_reg = rk805_pre_init_reg;
-@@ -831,6 +906,12 @@ int rk8xx_suspend(struct device *dev)
- 	int ret = 0;
- 
- 	switch (rk808->variant) {
-+	case RK801_ID:
-+		ret = regmap_update_bits(rk808->regmap,
-+					 RK801_SLEEP_CFG_REG,
-+					 RK801_SLEEP_FUN_MSK,
-+					 RK801_SLEEP_FUN);
-+		break;
- 	case RK805_ID:
- 		ret = regmap_update_bits(rk808->regmap,
- 					 RK805_GPIO_IO_POL_REG,
-diff --git a/drivers/mfd/rk8xx-i2c.c b/drivers/mfd/rk8xx-i2c.c
-index 37287b06dab..2951b2911a3 100644
---- a/drivers/mfd/rk8xx-i2c.c
-+++ b/drivers/mfd/rk8xx-i2c.c
-@@ -1,6 +1,6 @@
- // SPDX-License-Identifier: GPL-2.0-only
- /*
-- * Rockchip RK805/RK808/RK816/RK817/RK818 Core (I2C) driver
-+ * Rockchip RK801/RK805/RK808/RK816/RK817/RK818 Core (I2C) driver
-  *
-  * Copyright (c) 2014, Fuzhou Rockchip Electronics Co., Ltd
-  * Copyright (C) 2016 PHYTEC Messtechnik GmbH
-@@ -21,6 +21,23 @@ struct rk8xx_i2c_platform_data {
- 	int variant;
- };
- 
-+static bool rk801_is_volatile_reg(struct device *dev, unsigned int reg)
-+{
-+	switch (reg) {
-+	case RK801_SYS_STS_REG:
-+	case RK801_INT_STS0_REG:
-+	case RK801_SYS_CFG0_REG:
-+	case RK801_SYS_CFG1_REG:
-+	case RK801_SYS_CFG2_REG:
-+	case RK801_SYS_CFG3_REG:
-+	case RK801_SYS_CFG4_REG:
-+	case RK801_SLEEP_CFG_REG:
-+		return true;
-+	}
-+
-+	return false;
-+}
-+
- static bool rk806_is_volatile_reg(struct device *dev, unsigned int reg)
- {
- 	switch (reg) {
-@@ -124,6 +141,14 @@ static const struct regmap_config rk818_regmap_config = {
- 	.volatile_reg = rk808_is_volatile_reg,
- };
- 
-+static const struct regmap_config rk801_regmap_config = {
-+	.reg_bits = 8,
-+	.val_bits = 8,
-+	.max_register = RK801_SYS_CFG3_OTP_REG,
-+	.cache_type = REGCACHE_RBTREE,
-+	.volatile_reg = rk801_is_volatile_reg,
-+};
-+
- static const struct regmap_config rk805_regmap_config = {
- 	.reg_bits = 8,
- 	.val_bits = 8,
-@@ -164,6 +189,11 @@ static const struct regmap_config rk817_regmap_config = {
- 	.volatile_reg = rk817_is_volatile_reg,
- };
- 
-+static const struct rk8xx_i2c_platform_data rk801_data = {
-+	.regmap_cfg = &rk801_regmap_config,
-+	.variant = RK801_ID,
-+};
-+
- static const struct rk8xx_i2c_platform_data rk805_data = {
- 	.regmap_cfg = &rk805_regmap_config,
- 	.variant = RK805_ID,
-@@ -224,6 +254,7 @@ static void rk8xx_i2c_shutdown(struct i2c_client *client)
- static SIMPLE_DEV_PM_OPS(rk8xx_i2c_pm_ops, rk8xx_suspend, rk8xx_resume);
- 
- static const struct of_device_id rk8xx_i2c_of_match[] = {
-+	{ .compatible = "rockchip,rk801", .data = &rk801_data },
- 	{ .compatible = "rockchip,rk805", .data = &rk805_data },
- 	{ .compatible = "rockchip,rk806", .data = &rk806_data },
- 	{ .compatible = "rockchip,rk808", .data = &rk808_data },
-diff --git a/drivers/regulator/rk808-regulator.c b/drivers/regulator/rk808-regulator.c
-index 1e814247965..5f87a070e72 100644
---- a/drivers/regulator/rk808-regulator.c
-+++ b/drivers/regulator/rk808-regulator.c
-@@ -24,6 +24,9 @@
- #include <linux/gpio/consumer.h>
- 
- /* Field definitions */
-+#define RK801_BUCK_VSEL_MASK		0x7f
-+#define RK801_LDO_VSEL_MASK		0x3f
-+
- #define RK808_BUCK_VSEL_MASK	0x3f
- #define RK808_BUCK4_VSEL_MASK	0xf
- #define RK808_LDO_VSEL_MASK	0x1f
-@@ -158,6 +161,11 @@
- 	RK8XX_DESC_COM(_id, _match, _supply, _min, _max, _step, _vreg,	\
- 	_vmask, _ereg, _emask, 0, 0, _etime, &rk808_reg_ops)
- 
-+#define RK801_DESC(_id, _match, _supply, _min, _max, _step, _vreg,	\
-+	_vmask, _ereg, _emask, _disval, _etime)				\
-+	RK8XX_DESC_COM(_id, _match, _supply, _min, _max, _step, _vreg,	\
-+	_vmask, _ereg, _emask, _emask, _disval, _etime, &rk801_reg_ops)
-+
- #define RK816_DESC(_id, _match, _supply, _min, _max, _step, _vreg,	\
- 	_vmask, _ereg, _emask, _disval, _etime)				\
- 	RK8XX_DESC_COM(_id, _match, _supply, _min, _max, _step, _vreg,	\
-@@ -185,6 +193,11 @@
- 		.ops		= _ops					\
- 	}
- 
-+#define RK801_DESC_SWITCH(_id, _match, _supply, _ereg, _emask,		\
-+	_disval)							\
-+	RKXX_DESC_SWITCH_COM(_id, _match, _supply, _ereg, _emask,	\
-+	_emask, _disval, &rk801_switch_ops)
-+
- #define RK817_DESC_SWITCH(_id, _match, _supply, _ereg, _emask,		\
- 	_disval)							\
- 	RKXX_DESC_SWITCH_COM(_id, _match, _supply, _ereg, _emask,	\
-@@ -802,6 +815,115 @@ static unsigned int rk8xx_regulator_of_map_mode(unsigned int mode)
- 	}
- }
- 
-+static unsigned int rk801_get_mode(struct regulator_dev *rdev)
-+{
-+	unsigned int val;
-+	int err;
-+
-+	err = regmap_read(rdev->regmap, RK801_POWER_FPWM_EN_REG, &val);
-+	if (err)
-+		return err;
-+
-+	if (val & BIT(rdev->desc->id))
-+		return REGULATOR_MODE_FAST;
-+	else
-+		return REGULATOR_MODE_NORMAL;
-+}
-+
-+static int rk801_set_mode(struct regulator_dev *rdev, unsigned int mode)
-+{
-+	unsigned int offset = rdev->desc->id;
-+
-+	switch (mode) {
-+	case REGULATOR_MODE_FAST:
-+		return regmap_update_bits(rdev->regmap, RK801_POWER_FPWM_EN_REG,
-+					  BIT(offset), RK801_FPWM_MODE << offset);
-+	case REGULATOR_MODE_NORMAL:
-+		return regmap_update_bits(rdev->regmap, RK801_POWER_FPWM_EN_REG,
-+					  BIT(offset), RK801_AUTO_PWM_MODE << offset);
-+	default:
-+		dev_err(&rdev->dev, "do not support this mode\n");
-+		return -EINVAL;
-+	}
-+
-+	return 0;
-+}
-+
-+static int rk801_set_suspend_voltage(struct regulator_dev *rdev, int uv)
-+{
-+	unsigned int reg;
-+	int sel;
-+
-+	if (rdev->desc->id < RK801_ID_LDO1)
-+		sel = regulator_map_voltage_linear_range(rdev, uv, uv);
-+	else
-+		sel = regulator_map_voltage_linear(rdev, uv, uv);
-+	if (sel < 0)
-+		return -EINVAL;
-+
-+	reg = rdev->desc->vsel_reg + RK801_SLP_REG_OFFSET;
-+
-+	return regmap_update_bits(rdev->regmap, reg,
-+				  rdev->desc->vsel_mask, sel);
-+}
-+
-+static int rk801_set_suspend_enable(struct regulator_dev *rdev)
-+{
-+	return regmap_update_bits(rdev->regmap, RK801_POWER_SLP_EN_REG,
-+				  BIT(rdev->desc->id), BIT(rdev->desc->id));
-+}
-+
-+static int rk801_set_suspend_disable(struct regulator_dev *rdev)
-+{
-+	return regmap_update_bits(rdev->regmap, RK801_POWER_SLP_EN_REG,
-+				  BIT(rdev->desc->id), 0);
-+}
-+
-+static int rk801_set_voltage_time_sel(struct regulator_dev *rdev,
-+				      unsigned int old_selector,
-+				      unsigned int new_selector)
-+{
-+	return regulator_set_voltage_time_sel(rdev, old_selector,
-+					      new_selector) + RK801_HW_SYNC_US;
-+}
-+
-+static const struct regulator_ops rk801_buck_ops = {
-+	.list_voltage		= regulator_list_voltage_linear_range,
-+	.map_voltage		= regulator_map_voltage_linear_range,
-+	.get_voltage_sel	= regulator_get_voltage_sel_regmap,
-+	.set_voltage_sel	= regulator_set_voltage_sel_regmap,
-+	.set_voltage_time_sel	= rk801_set_voltage_time_sel,
-+	.enable			= regulator_enable_regmap,
-+	.disable		= regulator_disable_regmap,
-+	.is_enabled		= regulator_is_enabled_regmap,
-+	.set_mode		= rk801_set_mode,
-+	.get_mode		= rk801_get_mode,
-+	.set_suspend_voltage	= rk801_set_suspend_voltage,
-+	.set_suspend_enable	= rk801_set_suspend_enable,
-+	.set_suspend_disable	= rk801_set_suspend_disable,
-+};
-+
-+static const struct regulator_ops rk801_reg_ops = {
-+	.list_voltage		= regulator_list_voltage_linear,
-+	.map_voltage		= regulator_map_voltage_linear,
-+	.get_voltage_sel	= regulator_get_voltage_sel_regmap,
-+	.set_voltage_sel	= regulator_set_voltage_sel_regmap,
-+	.enable			= regulator_enable_regmap,
-+	.disable		= regulator_disable_regmap,
-+	.is_enabled		= regulator_is_enabled_regmap,
-+	.set_suspend_voltage	= rk801_set_suspend_voltage,
-+	.set_suspend_enable	= rk801_set_suspend_enable,
-+	.set_suspend_disable	= rk801_set_suspend_disable,
-+};
-+
-+static const struct regulator_ops rk801_switch_ops = {
-+	.enable			= regulator_enable_regmap,
-+	.disable		= regulator_disable_regmap,
-+	.is_enabled		= regulator_is_enabled_regmap,
-+	.set_suspend_enable	= rk801_set_suspend_enable,
-+	.set_suspend_disable	= rk801_set_suspend_disable,
-+};
-+
- static const struct regulator_ops rk805_reg_ops = {
- 	.list_voltage           = regulator_list_voltage_linear,
- 	.map_voltage            = regulator_map_voltage_linear,
-@@ -1049,6 +1171,123 @@ static const struct regulator_ops rk817_switch_ops = {
- 	.set_suspend_disable	= rk817_set_suspend_disable,
- };
- 
-+static const struct linear_range rk801_buck1_voltage_ranges[] = {
-+	REGULATOR_LINEAR_RANGE(500000,   0, 80, 12500),	/* 0.5v - 1.5v */
-+	REGULATOR_LINEAR_RANGE(1800000, 81, 82, 400000),/* 1.8v - 2.2v */
-+	REGULATOR_LINEAR_RANGE(3300000, 83, 83, 0),	/* 3.3v */
-+	REGULATOR_LINEAR_RANGE(5000000, 84, 84, 0),	/* 5.0v */
-+	REGULATOR_LINEAR_RANGE(5250000, 85, 85, 0),	/* 5.25v */
-+};
-+
-+static const struct linear_range rk801_buck2_voltage_ranges[] = {
-+	REGULATOR_LINEAR_RANGE(800000,  0, 2, 50000),	/* 0.8v - 0.9v */
-+	REGULATOR_LINEAR_RANGE(1800000, 3, 4, 400000),	/* 1.8v - 2.2v */
-+	REGULATOR_LINEAR_RANGE(3300000, 5, 5, 0),	/* 3.3v */
-+	REGULATOR_LINEAR_RANGE(5000000, 6, 6, 0),	/* 5.0v */
-+	REGULATOR_LINEAR_RANGE(5250000, 7, 7, 0),	/* 5.25v */
-+};
-+
-+static const struct linear_range rk801_buck4_voltage_ranges[] = {
-+	REGULATOR_LINEAR_RANGE(500000,   0, 80, 12500),	/* 0.5v - 1.5v */
-+	REGULATOR_LINEAR_RANGE(1800000, 81, 82, 400000),/* 1.8v - 2.2v */
-+	REGULATOR_LINEAR_RANGE(2500000, 83, 83, 0),	/* 2.5v */
-+	REGULATOR_LINEAR_RANGE(2800000, 84, 84, 0),	/* 2.8v */
-+	REGULATOR_LINEAR_RANGE(3000000, 85, 85, 0),	/* 3.0v */
-+	REGULATOR_LINEAR_RANGE(3300000, 86, 86, 0),	/* 3.3v */
-+};
-+
-+static const struct regulator_desc rk801_reg[] = {
-+	{
-+		.name = "DCDC_REG1",
-+		.supply_name = "vcc1",
-+		.of_match = of_match_ptr("DCDC_REG1"),
-+		.regulators_node = of_match_ptr("regulators"),
-+		.id = RK801_ID_DCDC1,
-+		.ops = &rk801_buck_ops,
-+		.type = REGULATOR_VOLTAGE,
-+		.n_voltages = 86,
-+		.linear_ranges = rk801_buck1_voltage_ranges,
-+		.n_linear_ranges = ARRAY_SIZE(rk801_buck1_voltage_ranges),
-+		.vsel_reg = RK801_BUCK1_ON_VSEL_REG,
-+		.vsel_mask = RK801_BUCK_VSEL_MASK,
-+		.enable_reg = RK801_POWER_EN0_REG,
-+		.enable_mask = ENABLE_MASK(RK801_ID_DCDC1),
-+		.enable_val = ENABLE_MASK(RK801_ID_DCDC1),
-+		.disable_val = DISABLE_VAL(RK801_ID_DCDC1),
-+		.ramp_delay = 1000,
-+		.of_map_mode = rk8xx_regulator_of_map_mode,
-+		.enable_time = 400,
-+		.owner = THIS_MODULE,
-+	}, {
-+		.name = "DCDC_REG2",
-+		.supply_name = "vcc2",
-+		.of_match = of_match_ptr("DCDC_REG2"),
-+		.regulators_node = of_match_ptr("regulators"),
-+		.id = RK801_ID_DCDC2,
-+		.ops = &rk801_buck_ops,
-+		.type = REGULATOR_VOLTAGE,
-+		.n_voltages = 8,
-+		.linear_ranges = rk801_buck2_voltage_ranges,
-+		.n_linear_ranges = ARRAY_SIZE(rk801_buck2_voltage_ranges),
-+		.vsel_reg = RK801_BUCK2_ON_VSEL_REG,
-+		.vsel_mask = RK801_BUCK_VSEL_MASK,
-+		.enable_reg = RK801_POWER_EN0_REG,
-+		.enable_mask = ENABLE_MASK(RK801_ID_DCDC2),
-+		.enable_val = ENABLE_MASK(RK801_ID_DCDC2),
-+		.disable_val = DISABLE_VAL(RK801_ID_DCDC2),
-+		.ramp_delay = 1000,
-+		.of_map_mode = rk8xx_regulator_of_map_mode,
-+		.enable_time = 400,
-+		.owner = THIS_MODULE,
-+	}, {
-+		.name = "DCDC_REG3",
-+		.supply_name = "vcc3",
-+		.of_match = of_match_ptr("DCDC_REG3"),
-+		.regulators_node = of_match_ptr("regulators"),
-+		.id = RK801_ID_DCDC3,
-+		.ops = &rk801_switch_ops,
-+		.type = REGULATOR_VOLTAGE,
-+		.n_voltages = 1,
-+		.enable_reg = RK801_POWER_EN0_REG,
-+		.enable_mask = ENABLE_MASK(RK801_ID_DCDC3),
-+		.enable_val = ENABLE_MASK(RK801_ID_DCDC3),
-+		.disable_val = DISABLE_VAL(RK801_ID_DCDC3),
-+		.of_map_mode = rk8xx_regulator_of_map_mode,
-+		.enable_time = 400,
-+		.owner = THIS_MODULE,
-+	}, {
-+		.name = "DCDC_REG4",
-+		.supply_name = "vcc4",
-+		.of_match = of_match_ptr("DCDC_REG4"),
-+		.regulators_node = of_match_ptr("regulators"),
-+		.id = RK801_ID_DCDC4,
-+		.ops = &rk801_buck_ops,
-+		.type = REGULATOR_VOLTAGE,
-+		.n_voltages = 87,
-+		.linear_ranges = rk801_buck4_voltage_ranges,
-+		.n_linear_ranges = ARRAY_SIZE(rk801_buck4_voltage_ranges),
-+		.vsel_reg = RK801_BUCK4_ON_VSEL_REG,
-+		.vsel_mask = RK801_BUCK_VSEL_MASK,
-+		.enable_reg = RK801_POWER_EN0_REG,
-+		.enable_mask = ENABLE_MASK(RK801_ID_DCDC4),
-+		.enable_val = ENABLE_MASK(RK801_ID_DCDC4),
-+		.disable_val = DISABLE_VAL(RK801_ID_DCDC4),
-+		.ramp_delay = 1000,
-+		.of_map_mode = rk8xx_regulator_of_map_mode,
-+		.enable_time = 400,
-+		.owner = THIS_MODULE,
-+	},
-+
-+	RK801_DESC(RK801_ID_LDO1, "LDO_REG1", "vcc5", 500, 3400, 50,
-+		RK801_LDO1_ON_VSEL_REG, RK801_LDO_VSEL_MASK, RK801_POWER_EN1_REG,
-+		ENABLE_MASK(0), DISABLE_VAL(0), 400),
-+	RK801_DESC(RK801_ID_LDO2, "LDO_REG2", "vcc6", 500, 3400, 50,
-+		RK801_LDO2_ON_VSEL_REG, RK801_LDO_VSEL_MASK, RK801_POWER_EN1_REG,
-+		ENABLE_MASK(1), DISABLE_VAL(1), 400),
-+	RK801_DESC_SWITCH(RK801_ID_SWITCH, "SWITCH_REG", "vcc7", RK801_POWER_EN1_REG,
-+		ENABLE_MASK(2), DISABLE_VAL(2)),
-+};
-+
- static const struct regulator_desc rk805_reg[] = {
- 	{
- 		.name = "DCDC_REG1",
-@@ -1887,6 +2126,10 @@ static int rk808_regulator_probe(struct platform_device *pdev)
- 		return -ENOMEM;
- 
- 	switch (rk808->variant) {
-+	case RK801_ID:
-+		regulators = rk801_reg;
-+		nregulators = RK801_NUM_REGULATORS;
-+		break;
- 	case RK805_ID:
- 		regulators = rk805_reg;
- 		nregulators = RK805_NUM_REGULATORS;
-diff --git a/include/linux/mfd/rk808.h b/include/linux/mfd/rk808.h
-index 28170ee0889..7ffc904c864 100644
---- a/include/linux/mfd/rk808.h
-+++ b/include/linux/mfd/rk808.h
-@@ -340,6 +340,123 @@ enum rk818_reg {
- #define RK818_USB_ILMIN_2000MA		0x7
- #define RK818_USB_CHG_SD_VSEL_MASK	0x70
- 
-+/* RK801 */
-+enum rk801_reg {
-+	RK801_ID_DCDC1,
-+	RK801_ID_DCDC2,
-+	RK801_ID_DCDC4,
-+	RK801_ID_DCDC3,
-+	RK801_ID_LDO1,
-+	RK801_ID_LDO2,
-+	RK801_ID_SWITCH,
-+	RK801_ID_MAX,
-+};
-+
-+#define RK801_SLP_REG_OFFSET		5
-+#define RK801_NUM_REGULATORS		7
-+
-+#define RK801_HW_SYNC_US		32
-+
-+/* RK801 Register Definitions */
-+#define RK801_ID_MSB			0x00
-+#define RK801_ID_LSB			0x01
-+#define RK801_OTP_VER_REG		0x02
-+#define RK801_POWER_EN0_REG		0x03
-+#define RK801_POWER_EN1_REG		0x04
-+#define RK801_POWER_SLP_EN_REG		0x05
-+#define RK801_POWER_FPWM_EN_REG		0x06
-+#define RK801_SLP_LP_CONFIG_REG		0x07
-+#define RK801_BUCK_CONFIG_REG		0x08
-+#define RK801_BUCK1_ON_VSEL_REG		0x09
-+#define RK801_BUCK2_ON_VSEL_REG		0x0a
-+#define RK801_BUCK4_ON_VSEL_REG		0x0b
-+#define RK801_LDO1_ON_VSEL_REG		0x0c
-+#define RK801_LDO2_ON_VSEL_REG		0x0d
-+#define RK801_BUCK1_SLP_VSEL_REG	0x0e
-+#define RK801_BUCK2_SLP_VSEL_REG	0x0f
-+#define RK801_BUCK4_SLP_VSEL_REG	0x10
-+#define RK801_LDO1_SLP_VSEL_REG		0x11
-+#define RK801_LDO2_SLP_VSEL_REG		0x12
-+#define RK801_LDO_SW_IMAX_REG		0x13
-+#define RK801_SYS_STS_REG		0x14
-+#define RK801_SYS_CFG0_REG		0x15
-+#define RK801_SYS_CFG1_REG		0x16
-+#define RK801_SYS_CFG2_REG		0x17
-+#define RK801_SYS_CFG3_REG		0x18
-+#define RK801_SYS_CFG4_REG		0x19
-+#define RK801_SLEEP_CFG_REG		0x1a
-+#define RK801_ON_SOURCE_REG		0x1b
-+#define RK801_OFF_SOURCE_REG		0x1c
-+#define RK801_PWRON_KEY_REG		0x1d
-+#define RK801_INT_STS0_REG		0x1e
-+#define RK801_INT_MASK0_REG		0x1f
-+#define RK801_INT_CONFIG_REG		0x20
-+#define RK801_CON_BACK1_REG		0x21
-+#define RK801_CON_BACK2_REG		0x22
-+#define RK801_DATA_CON0_REG		0x23
-+#define RK801_DATA_CON1_REG		0x24
-+#define RK801_DATA_CON2_REG		0x25
-+#define RK801_DATA_CON3_REG		0x26
-+#define RK801_POWER_EXIT_SLP_SEQ0_REG	0x27
-+#define RK801_POWER_EXIT_SLP_SEQ1_REG	0x28
-+#define RK801_POWER_EXIT_SLP_SEQ2_REG	0x29
-+#define RK801_POWER_EXIT_SLP_SEQ3_REG	0x2a
-+#define RK801_POWER_ENTER_SLP_OR_SHTD_SEQ0_REG	0x2b
-+#define RK801_POWER_ENTER_SLP_OR_SHTD_SEQ1_REG	0x2c
-+#define RK801_POWER_ENTER_SLP_OR_SHTD_SEQ2_REG	0x2d
-+#define RK801_POWER_ENTER_SLP_OR_SHTD_SEQ3_REG	0x2e
-+#define RK801_BUCK_DEBUG1_REG		0x2f
-+#define RK801_BUCK_DEBUG2_REG		0x30
-+#define RK801_BUCK_DEBUG3_REG		0x31
-+#define RK801_BUCK_DEBUG4_REG		0x32
-+#define RK801_BUCK_DEBUG5_REG		0x33
-+#define RK801_BUCK_DEBUG7_REG		0x34
-+#define RK801_OTP_EN_CON_REG		0x35
-+#define RK801_TEST_CON_REG		0x36
-+#define RK801_EFUSE_CONTROL_REG		0x37
-+#define RK801_SYS_CFG3_OTP_REG		0x38
-+
-+/* RK801 IRQ Definitions */
-+#define RK801_IRQ_PWRON_FALL		0
-+#define RK801_IRQ_PWRON_RISE		1
-+#define RK801_IRQ_PWRON			2
-+#define RK801_IRQ_PWRON_LP		3
-+#define RK801_IRQ_HOTDIE		4
-+#define RK801_IRQ_VDC_RISE		5
-+#define RK801_IRQ_VDC_FALL		6
-+#define RK801_IRQ_PWRON_FALL_MSK	BIT(0)
-+#define RK801_IRQ_PWRON_RISE_MSK	BIT(1)
-+#define RK801_IRQ_PWRON_MSK		BIT(2)
-+#define RK801_IRQ_PWRON_LP_MSK		BIT(3)
-+#define RK801_IRQ_HOTDIE_MSK		BIT(4)
-+#define RK801_IRQ_VDC_RISE_MSK		BIT(5)
-+#define RK801_IRQ_VDC_FALL_MSK		BIT(6)
-+/* RK801_SLP_LP_CONFIG_REG */
-+#define RK801_BUCK_SLP_LP_EN		BIT(3)
-+#define RK801_PLDO_SLP_LP_EN		BIT(1)
-+#define RK801_SLP_LP_MASK		(RK801_PLDO_SLP_LP_EN | RK801_BUCK_SLP_LP_EN)
-+/* RK801_SLEEP_CFG_REG */
-+#define RK801_SLEEP_FUN_MSK		0x3
-+#define RK801_NONE_FUN			0x0
-+#define RK801_SLEEP_FUN			0x1
-+#define RK801_SHUTDOWN_FUN		0x2
-+#define RK801_RESET_FUN			0x3
-+/* RK801_SYS_CFG2_REG */
-+#define RK801_SLEEP_POL_MSK		BIT(1)
-+#define RK801_SLEEP_ACT_H		BIT(1)
-+#define RK801_SLEEP_ACT_L		0
-+#define RK801_RST_MSK			(0x3 << 4)
-+#define RK801_RST_RESTART_PMU		(0x0 << 4)
-+#define RK801_RST_RESTART_REG		(0x1 << 4)
-+#define RK801_RST_RESTART_REG_RESETB	(0x2 << 4)
-+/* RK801_INT_CONFIG_REG */
-+#define RK801_INT_POL_MSK		BIT(1)
-+#define RK801_INT_ACT_H			BIT(1)
-+#define RK801_INT_ACT_L			0
-+#define RK801_FPWM_MODE			1
-+#define RK801_AUTO_PWM_MODE		0
-+#define RK801_PLDO_HRDEC_EN		BIT(6)
-+
- /* RK805 */
- enum rk805_reg {
- 	RK805_ID_DCDC1,
-@@ -1332,6 +1449,7 @@ enum {
- };
- 
- enum {
-+	RK801_ID = 0x8010,
- 	RK805_ID = 0x8050,
- 	RK806_ID = 0x8060,
- 	RK808_ID = 0x0000,
--- 
-2.25.1
+Tools like b4 or scripts/get_maintainer.pl provide you proper list of
+people, so fix your workflow. Tools might also fail if you work on some
+ancient tree (don't, instead use mainline) or work on fork of kernel
+(don't, instead use mainline). Just use b4 and everything should be
+fine, although remember about `b4 prep --auto-to-cc` if you added new
+patches to the patchset.
 
+You missed at least devicetree list (maybe more), so this won't be
+tested by automated tooling. Performing review on untested code might be
+a waste of time.
+
+Please kindly resend and include all necessary To/Cc entries.
+
+
+2. Node names should be generic. See also an explanation and list of
+examples (not exhaustive) in DT specification:
+https://devicetree-specification.readthedocs.io/en/latest/chapter2-devicetree-basics.html#generic-names-recommendation
+If you cannot find a name matching your device, please check in kernel
+sources for similar cases or you can grow the spec (via pull request to
+DT spec repo).
+
+3. Underscore is not allowed in node names. Neither capital letters.
+Please read DTS coding style.
+
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
