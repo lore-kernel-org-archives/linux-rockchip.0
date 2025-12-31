@@ -4,58 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6708EE6432
-	for <linux-rockchip@archiver.kernel.org>; Wed, 31 Dec 2025 13:39:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50647EE57D7
+	for <linux-rockchip@archiver.kernel.org>; Wed, 31 Dec 2025 15:21:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:From:Subject:Cc:
-	To:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=S5/gWDS8+/Dqbbk/QbPuaEFyQXfj0vPHHf38GC7JBDM=; b=L+qNzw1oFfWRC4
-	4yZEENKTIas/zm+0kQcwJfFiv8qYwBfGhSTaaKnwkKt6JfCdALBxAm8vSgQE6S0qLsj+p92o8ZYPy
-	0Mf6lcCqAppiOEHQuCDquNE6TOtdBkcF0E9w+4xK1BGPHYW2DEW7TQwWCP7uNaxhkcINOIi2mbN9r
-	2Zy+UN6PAAf7v95A0YUhmeHvHV6N8pFMwD7C0Mc+T39qhzrsulTsIpRI8jffZYY3Ae5NY4EI8a3uT
-	eDllA34N/BuOHorxzEwVPL7jtyshwBA06iYSs7XZU3KjywaT+jJWj3dNmkLnHSBi+zrlsLqqATgL8
-	Q03RGtZU9qDONQ85Fq1Q==;
+	List-Owner; bh=IWKNPCg3H9WZ22dzpxRecqBBGR/W+rGilGcM7bwu1wU=; b=j893BUZPFLdtk7
+	+Xz1DuGMit3Re1czsqWbpoNkHsIaE7NRi15oycpVFc4Gg8xBvOw8FynMfwS31mcjZdCckf4HUnOY+
+	tqgM7PKmLuJCHvd6A7sb90zmJDznVH7WUNCMSYsGdOpKznzJfZglGxA06Ngs1yb/EABoTo5XZhwpY
+	7UIuh9ZOiPbpB+T8xMwU2ehrARctL36WBHbNJ9j9lGPwVI1lzyMdJI3q7NHMWBW3ISoum5FXMnk8v
+	2xI4fcox49oJMsq1eGP/uKJMAOrDrH7gzeaOfHnbsAjBsSEDDnPC++VyMR2U9rDsWUGcfXQKNndMv
+	pHPlxszIAvSCHjtNG9ow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vawQ4-000000060pz-1i28;
-	Wed, 31 Dec 2025 13:39:20 +0000
-Received: from out-179.mta1.migadu.com ([95.215.58.179])
+	id 1vay0Y-000000064Yg-0Zf1;
+	Wed, 31 Dec 2025 15:21:06 +0000
+Received: from mail-qv1-xf36.google.com ([2607:f8b0:4864:20::f36])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vawQ1-000000060lC-1h7N
+	id 1vay0T-000000064Xs-2ZwY
 	for linux-rockchip@lists.infradead.org;
-	Wed, 31 Dec 2025 13:39:19 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow-tech.com;
-	s=key1; t=1767188231;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=I/DC5HGhzFn6eB9/q1rg3HbClxsdFAQDVLotSyZqTjw=;
-	b=Sj5RDxgVWnEDDcM9EBb0Gi/q7VYGbi+rT2nD7JGMjgJ9zW6p+kqq35EyeX8fYYA+MiaSTx
-	SFAUZgiqGHSuQdjoO9eQ4pFhtvfqexwiCl3hyr7+aTG5TESwqfUQJu2bJvBt2xdDNCj7Ra
-	tp2ze9+u8+5iOGbICApuMCaE7hNkXkMHaHHd6O0rjVbR8Mm46ylb0jP+mqjWP4V3RW9hPs
-	PsC4gzIuHxtQfqZBIVL39vUFG518ZS4IHyPnWiU64Pwr8kjNCwpuLkZLYXZrbzJW/RD9D9
-	Exsgj+f0W+tOYZStonu+Gj0ObO3jIsoeNcarKWjuCqxKwJAtwDj5Vb3XnQGP1w==
-Date: Wed, 31 Dec 2025 14:36:48 +0100
-Message-Id: <DFCFXRAAOVDT.1I1RYJ45SV9GT@cknow-tech.com>
-To: "Joseph Chen" <chenjh@rock-chips.com>, <lee@kernel.org>,
- <lgirdwood@gmail.com>, <broonie@kernel.org>, <robh@kernel.org>,
- <krzk+dt@kernel.org>, <conor+dt@kernel.org>
-Cc: <linux-kernel@vger.kernel.org>, <linux-rockchip@lists.infradead.org>
-Subject: Re: [PATCH v1 1/2] dt-bindings: mfd: Add rk801 binding
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <diederik@cknow-tech.com>
-References: <20251231030951.818-1-chenjh@rock-chips.com>
- <20251231030951.818-2-chenjh@rock-chips.com>
-In-Reply-To: <20251231030951.818-2-chenjh@rock-chips.com>
-X-Migadu-Flow: FLOW_OUT
+	Wed, 31 Dec 2025 15:21:04 +0000
+Received: by mail-qv1-xf36.google.com with SMTP id 6a1803df08f44-88a3d2f3299so129179246d6.2
+        for <linux-rockchip@lists.infradead.org>; Wed, 31 Dec 2025 07:21:00 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=rowland.harvard.edu; s=google; t=1767194460; x=1767799260; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=iCsMgC1RHJ0xZHT2ayosqiToNS+TooDnH36P842rda4=;
+        b=v4WiPQU1wAaEdVFH4ROwvQzdua0Bib54eoADhTstQWhd1flBnK1kN1oPvglWePH+6r
+         QvzrITPyVZ+aMarPBcHP+S8AuME98wz4AuMWMcKOCHPjm5fB9xRXoAuCjiB9F8De6h7I
+         iHgyMBIU0dGJCAn1rTf/7cVoFX062ryv1xG2i3SWKlEwY34N7EzlXKPgf8n7QT02fKrG
+         51rt3mnb1C1pkZdzpreQi0QFFYVgqoYHV8GBr/JBXKZcjmIjpvj6bLe1zIfptHPulLBl
+         0+n8XCSs3x6DEZWmxRZU5HvSyYM2IxGNY1wYF4rRlx5nmSbsKpxfMzbISglLaCRO8FR4
+         /psw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1767194460; x=1767799260;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=iCsMgC1RHJ0xZHT2ayosqiToNS+TooDnH36P842rda4=;
+        b=VY4gNHEUDYbSXzXzTPErr+/fUBSwiyJMbFdzvt4poiQfNabV6HJmBR9njv2O0eBGb/
+         TZlbWmXHRZtf3tGr4i24ljKfL6b22SGYmOLg3qzHl82HtKeaRPR748/33j3PTeH/3NJI
+         zRoKr9tWC95C6VqwEzQ6tvKUi4GRiQLbdmQVX2JvrzH3A/1Ke5IyNeMZ+lLmjZECWD1n
+         muzi1BVxKQI66x12nGSi1vyef+Fg1LI5uy7GWsOG/utZWiX+EenTG2MU84zcv8YBbUsG
+         fmq4trVdsPV+A9Y2CvZ+2CcrBggjIKy3eMnYLi/BrxQVpNgUt/0SjcxeD0DP331ZPMxH
+         X1DA==
+X-Forwarded-Encrypted: i=1; AJvYcCVcv+6PfzP9rzmkrjZQtDv9XeQ6RY9COzbjay2AOP5H9boBThEKBo+vbvU2JOGkiPaEZgT8loQGUhyZjU8nng==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwMiHJB24fsCxzAwB68snpIsDwLJXqpZl9pG4MFyMGIpxTLXhtO
+	qkE9ELbaoHLNuskdpkUYJoQEvKIHY7d6z4OcWyedIYSjSJtnCSpbtvETSJDxjJ0PgA==
+X-Gm-Gg: AY/fxX4ABaz+cLBv5S/Z28PNuBNooxzmRfOI4goPyAD1vBv28HALo0PK9Uw9YTIMwSy
+	WfceT8D34J/HHkBwJ/hYcSOVWeAERQ2boPHY8ZpxgFg2c62J6RVfKKd1wHhOqIbrC04yGhVDqiX
+	+LdAVZIKnJ5Z5NS1cfHs+qd76z6REvqBzI73P5sEnpYMTR21FSHDAK7365YG2ZM9lKfMT3zagMg
+	zgnms5SwIKgW5JeESZ+ZzQf+176h7WreSXbC7CVK0P56/TjXjHRC+cGKUGh1h4mj/wXht4GTP+B
+	Rt2sJPXncabXvNuaRa82I4bgrmtenE4awt48tpbozaiD6NZs+8uKYqps1YyTwxaIjy6PLgnSVRi
+	I5EIGP3HPCXidu9eUCCY20ppDG6/53AhWxVlyxGQbAAmsQ1g2CBBb+lKLFAYlRgaHAQKTf7ZTxn
+	7KjV5IlWgM+jYa
+X-Google-Smtp-Source: AGHT+IGzcUj+q0xmvRBW/bmPF+mchNTCZWyYIyc4hZPOiB90Xz8x1i2LE/eY0oT3eC7aDYNsOokA1g==
+X-Received: by 2002:a05:622a:4295:b0:4ee:bff:7fbf with SMTP id d75a77b69052e-4f4abcf6ad2mr525954221cf.4.1767194459966;
+        Wed, 31 Dec 2025 07:20:59 -0800 (PST)
+Received: from rowland.harvard.edu ([2601:19b:d03:1700::7e72])
+        by smtp.gmail.com with ESMTPSA id d75a77b69052e-4f4ac62d53dsm271058211cf.19.2025.12.31.07.20.58
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 31 Dec 2025 07:20:59 -0800 (PST)
+Date: Wed, 31 Dec 2025 10:20:56 -0500
+From: Alan Stern <stern@rowland.harvard.edu>
+To: Huacai Chen <chenhuacai@kernel.org>
+Cc: Diederik de Haas <diederik@cknow-tech.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Huacai Chen <chenhuacai@loongson.cn>, linux-usb@vger.kernel.org,
+	linux-kernel@vger.kernel.org, stable@vger.kernel.org,
+	Shengwen Xiao <atzlinux@sina.com>,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH] USB: OHCI/UHCI: Add soft dependencies on ehci_hcd
+Message-ID: <0c85d288-405f-4aaf-944e-b1d452d0f275@rowland.harvard.edu>
+References: <20251230080014.3934590-1-chenhuacai@loongson.cn>
+ <2025123049-cadillac-straggler-d2fb@gregkh>
+ <DFBMNYF0U5PK.24YOAUZFZ0ESB@cknow-tech.com>
+ <73d472ea-e660-474c-b319-b0e8758406c0@rowland.harvard.edu>
+ <CAAhV-H6drj1df3Y4_Z67t4TzJ5n6YiexsEHKTPvi1caNvw5H9A@mail.gmail.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <CAAhV-H6drj1df3Y4_Z67t4TzJ5n6YiexsEHKTPvi1caNvw5H9A@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251231_053917_622522_513CA1BA 
-X-CRM114-Status: GOOD (  13.43  )
+X-CRM114-CacheID: sfid-20251231_072102_045474_2CCA6A9C 
+X-CRM114-Status: GOOD (  16.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,235 +107,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed Dec 31, 2025 at 4:09 AM CET, Joseph Chen wrote:
-> Add DT binding document for Rockchip's RK801 PMIC
->
-> Signed-off-by: Joseph Chen <chenjh@rock-chips.com>
-> ---
->  .../bindings/mfd/rockchip,rk801.yaml          | 199 ++++++++++++++++++
->  1 file changed, 199 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/mfd/rockchip,rk801.yaml
->
-> diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk801.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk801.yaml
-> new file mode 100644
-> index 00000000000..d591125dfe8
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/mfd/rockchip,rk801.yaml
-> @@ -0,0 +1,199 @@
-> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/mfd/rockchip,rk801.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: RK801 Power Management Integrated Circuit
-> +
-> +maintainers:
-> +  - Joseph Chen <chenjh@rock-chips.com>
-> +
-> +description: |
-> +  Rockchip RK801 series PMIC. This device consists of an i2c controlled MFD
-> +  that includes multiple switchable regulators.
-> +
-> +properties:
-> +  compatible:
-> +    enum:
-> +      - rockchip,rk801
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  interrupts:
-> +    maxItems: 1
-> +
-> +  rockchip,system-power-controller:
-> +    type: boolean
-> +    description:
-> +      Telling whether or not this PMIC is controlling the system power.
-> +
-> +  system-power-controller: true
+On Wed, Dec 31, 2025 at 05:38:05PM +0800, Huacai Chen wrote:
+> From your long explanation I think the order is still important. "New
+> connection" may be harmless for USB keyboard/mouse, but really
+> unacceptable for USB storage.
+> 
+> If we revert 05c92da0c524 and 9beeee6584b9, the real problem doesn't
+> disappear. Then we go back to pre-2008 to rely on distributions
+> providing a correct modprobe.conf?
 
-Why add 'rockchip,system-power-controller' while also adding
-'system-power-controller'?
+The warning message in 9beeee6584b9 was written a long time ago; back 
+then I didn't realize that the real dependency was between the -pci 
+drivers rather than the -hcd ones (and I wasn't aware of softdeps).  The 
+soft dependency in 05c92da0c524 is between the -pci drivers, so it is 
+correct.
 
-Property 'rockchip,system-power-controller' was deprecated in commit
-961748bb1555 ("dt-bindings: mfd: rk8xx: Deprecate rockchip,system-power-controller")
+To put it another way, on PCI-based systems it is not a problem if the 
+modules are loaded in this order: uhci-hcd, ohci-hcd, ehci-hcd, 
+ehci-pci, ohci-pci, uhci-pci.  Even though the warning message would be 
+logged, the message would be wrong.
 
-And because of that I submitted this patch/commit:
-b99ac7e2a1cc ("arm64: dts: rockchip: Drop rockchip prefix of s-p-c PMIC prop from rk356x")
-to replace the deprecated variant with the non-deprecated one.
+On the whole, I think the best approach is to revert 9beeee6584b9's 
+warning message while keeping 05c92da0c524's softdeps.  Greg might not 
+approve of soft dependencies between modules in general, but in this 
+case I believe it is appropriate.
 
-Cheers,
-  Diederik
+And so your patch really is not needed, as far as I can tell.  While it 
+might in theory help some peculiar platform-dependent scenario, I'm 
+not aware of any platforms like that.
 
-> +
-> +  wakeup-source:
-> +    type: boolean
-> +    description:
-> +      Device can be used as a wakeup source.
-> +
-> +  vcc1-supply:
-> +    description:
-> +      The input supply for DCDC_REG1.
-> +
-> +  vcc2-supply:
-> +    description:
-> +      The input supply for DCDC_REG2.
-> +
-> +  vcc3-supply:
-> +    description:
-> +      The input supply for DCDC_REG3.
-> +
-> +  vcc4-supply:
-> +    description:
-> +      The input supply for DCDC_REG4.
-> +
-> +  vcc5-supply:
-> +    description:
-> +      The input supply for LDO_REG1.
-> +
-> +  vcc6-supply:
-> +    description:
-> +      The input supply for LDO_REG2.
-> +
-> +  vcc7-supply:
-> +    description:
-> +      The input supply for SWITCH_REG.
-> +
-> +  regulators:
-> +    type: object
-> +    patternProperties:
-> +      "^(DCDC_REG[1-4]|LDO_REG[1-2]|SWITCH_REG)$":
-> +        type: object
-> +        $ref: /schemas/regulator/regulator.yaml#
-> +        unevaluatedProperties: false
-> +    unevaluatedProperties: false
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - interrupts
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/pinctrl/rockchip.h>
-> +    #include <dt-bindings/interrupt-controller/irq.h>
-> +    #include <dt-bindings/gpio/gpio.h>
-> +    i2c {
-> +        #address-cells = <1>;
-> +        #size-cells = <0>;
-> +
-> +        rk801: rk801@27 {
-> +            compatible = "rockchip,rk801";
-> +            reg = <0x27>;
-> +            interrupt-parent = <&gpio0>;
-> +            interrupts = <RK_PC0 IRQ_TYPE_LEVEL_LOW>;
-> +            pwrctrl-gpios = <&gpio0 RK_PC1 GPIO_ACTIVE_HIGH>;
-> +            pinctrl-names = "default";
-> +            pinctrl-0 = <&pmic_int_l>;
-> +            rockchip,system-power-controller;
-> +            wakeup-source;
-> +
-> +            vcc1-supply = <&vcc12v_dcin>;
-> +            vcc2-supply = <&vcc12v_dcin>;
-> +            vcc3-supply = <&vcc5v0_sys>;
-> +            vcc4-supply = <&vcc5v0_sys>;
-> +            vcc5-supply = <&vcc3v3_sys>;
-> +            vcc6-supply = <&vcc3v3_sys>;
-> +            vcc7-supply = <&vcc3v3_sys>;
-> +
-> +            regulators {
-> +                vdd_cpu: DCDC_REG1 {
-> +                    regulator-name = "vdd_cpu";
-> +                    regulator-min-microvolt = <500000>;
-> +                    regulator-max-microvolt = <1500000>;
-> +                    regulator-initial-mode = <0x1>;
-> +                    regulator-boot-on;
-> +                    regulator-always-on;
-> +                    regulator-state-mem {
-> +                        regulator-mode = <0x2>;
-> +                        regulator-off-in-suspend;
-> +                        regulator-suspend-microvolt = <950000>;
-> +                    };
-> +                };
-> +
-> +                vcc3v3_sys: DCDC_REG2 {
-> +                    regulator-name = "vcc3v3_sys";
-> +                    regulator-min-microvolt = <3300000>;
-> +                    regulator-max-microvolt = <3300000>;
-> +                    regulator-initial-mode = <0x1>;
-> +                    regulator-boot-on;
-> +                    regulator-always-on;
-> +                    regulator-state-mem {
-> +                        regulator-mode = <0x2>;
-> +                        regulator-on-in-suspend;
-> +                        regulator-suspend-microvolt = <3300000>;
-> +                    };
-> +                };
-> +
-> +                vcc_ddr: DCDC_REG3 {
-> +                    regulator-name = "vcc_ddr";
-> +                    regulator-boot-on;
-> +                    regulator-always-on;
-> +                    regulator-state-mem {
-> +                        regulator-mode = <0x2>;
-> +                        regulator-on-in-suspend;
-> +                    };
-> +                };
-> +
-> +                vdd_logic: DCDC_REG4 {
-> +                    regulator-name = "vdd_logic";
-> +                    regulator-min-microvolt = <500000>;
-> +                    regulator-max-microvolt = <1500000>;
-> +                    regulator-initial-mode = <0x1>;
-> +                    regulator-boot-on;
-> +                    regulator-always-on;
-> +                    regulator-state-mem {
-> +                        regulator-mode = <0x2>;
-> +                        regulator-off-in-suspend;
-> +                        regulator-suspend-microvolt = <900000>;
-> +                    };
-> +                };
-> +
-> +                vdd0v9_sys: LDO_REG1 {
-> +                    regulator-name = "vdd0v9_sys";
-> +                    regulator-min-microvolt = <900000>;
-> +                    regulator-max-microvolt = <900000>;
-> +                    regulator-boot-on;
-> +                    regulator-always-on;
-> +                    regulator-state-mem {
-> +                        regulator-off-in-suspend;
-> +                        regulator-suspend-microvolt = <900000>;
-> +                    };
-> +                };
-> +
-> +                vcc_1v8: LDO_REG2 {
-> +                    regulator-name = "vcc_1v8";
-> +                    regulator-min-microvolt = <1800000>;
-> +                    regulator-max-microvolt = <1800000>;
-> +                    regulator-boot-on;
-> +                    regulator-always-on;
-> +                    regulator-state-mem {
-> +                        regulator-off-in-suspend;
-> +                        regulator-suspend-microvolt = <1800000>;
-> +                    };
-> +                };
-> +
-> +                vcc_3v3: SWITCH_REG {
-> +                    regulator-name = "vcc_3v3";
-> +                    regulator-boot-on;
-> +                    regulator-always-on;
-> +                    regulator-state-mem {
-> +                        regulator-off-in-suspend;
-> +                        regulator-suspend-microvolt = <3300000>;
-> +                    };
-> +                };
-> +            };
-> +        };
-> +    };
-
+Alan Stern
 
 _______________________________________________
 Linux-rockchip mailing list
