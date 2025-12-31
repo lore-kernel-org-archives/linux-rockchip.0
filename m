@@ -4,84 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA126EE57D3
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE719EE57D1
 	for <linux-rockchip@archiver.kernel.org>; Wed, 31 Dec 2025 02:58:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qcM+trS5Zvh78wVu3ResFfRn6QCsxHG0Zy9IDPfCC0Q=; b=cfS1nb2CXOJ1WD
-	N+HJb7eC987Pgdcg9t4RKRiykeVV9+mNjNJ7JY9/wdW1tFKLu8nITgC5sesBnH8tWDKFogeg2ILAA
-	Nbje3q545456hGrCLBMfNQcxJxY3HohvWq7/WRbYjRkfBn9tJ8w2l1CETtZEMOO66WjqeBmN3sWj3
-	dqaX3K47BeRKIdhHqD76ySeMxjduPxjpHXptozfRuCIUZUab7ol1CYqwbw7vKG8RoGj7uCXYNoVDG
-	/H2l1koiSOPaDauDMW4sI3SmSuoe67jpxILXRAoNbydProlrTJao6LmjGpce+CLqYP20CqmLSRytZ
-	ishLVGBgBdKNXZ4E+uCQ==;
+	List-Owner; bh=ZqS3uof095jnvkMXjv8/bgI3J9ZruPw4JtOecJykkjY=; b=fUyBvNNsrQ3aPU
+	ATEKKg66FZYTFwnD4NyT8NRsYcjWodUZ7Kga87RiefsFxA20k2WyxMhpY/2cZfZl3IMhdX3KZSd92
+	PCJfyuYt+jCTANRw8xrSF0ilhrgqJSJ0L2mOZBuyV52hu1DRYH76sk0dhnomFn8sbjkuLQgWKyr5u
+	jK7/ofmPc5KfqXrbnXxe84AIhBJenIFGIjW48yIJ2vdK1JEhvPZoNHfcg1yTrcCF5PK3dnMVr9I7D
+	80zuBhOoIWEs09uWD9TTeNIqMu1ufLeaOWumg2k/1467fkDMRUBW9Jqj541jG+b+9YvVABEsUcGfn
+	h3lCAh4Doh6a/Gl1KcsA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vamQA-00000005c3h-00Re;
-	Wed, 31 Dec 2025 02:58:46 +0000
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+	id 1vamQ4-00000005c0m-42rG;
+	Wed, 31 Dec 2025 02:58:40 +0000
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vamQ5-00000005c0Z-1yID
+	id 1vamQ1-00000005bzF-1lho
 	for linux-rockchip@lists.infradead.org;
-	Wed, 31 Dec 2025 02:58:42 +0000
-Received: by mail-wr1-x42c.google.com with SMTP id ffacd0b85a97d-42fb2314eb0so8087046f8f.2
-        for <linux-rockchip@lists.infradead.org>; Tue, 30 Dec 2025 18:58:40 -0800 (PST)
+	Wed, 31 Dec 2025 02:58:39 +0000
+Received: by mail-ej1-x633.google.com with SMTP id a640c23a62f3a-b7a02592efaso1592717966b.1
+        for <linux-rockchip@lists.infradead.org>; Tue, 30 Dec 2025 18:58:36 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1767149919; x=1767754719; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=tjOF9AP1kWt7dtM4qZ2BnQTZbb0vLZh3HtXtIU2plOE=;
-        b=b20N1tS9OphmoJ/Ovc0EIOJKwhEQ2l0EDBzrJjRsZqyrVY+tAyl3OpKxtMXLdkN87l
-         ohrQY+B0/G6h6+qKJ9RCCGp8tcR+Co+6dn8a6KDkf7UAEDvAIe0laI48/q8J3CKBK8ZL
-         l5TpB031SfJDEb1XHsnrv91gxjW4JgzXQSndUnfkhfKntl8ekgTtO3eH2QRmfnOwNdr+
-         BiFgocGdh+eqinZtgxK9JTfOM7yLhkH7Mo7tCC69PB6IIbN/uOTNtJ0N799EcYp1YQLG
-         Dl6NGGZC2UBi4ZNfVv4NRCzRv36HPxf/pgfJaqkr6+RpgKCKmSn3rAMYq7MjPuOX9y42
-         G1IA==
+        d=pardini.net; s=google; t=1767149915; x=1767754715; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=zUfeQsuPis8+vWGa7ve6iy4exkmxdmo6Yqgm4mr4Xz0=;
+        b=LlT6CWKClfTbZVMbCUtMWgC7EhoQ/Mq4/hgNC1SjIo1CcONWDeHlv38HBe2iUimiie
+         q0iVDIge7dzINg3UflSwzmBigXjjjaLqnZgdIP0VHGmxzFE7WaXjyF7gHDjoaNgc4r1T
+         ZFsaPQFHV8Lh6cjQERoQuyLRXVzui5Lxixl2xnggANp8hBOHk12neJg0eiOouwLxWXhn
+         mC9Z218iV4ibWd6+cVLa2ckV2OJ+Z55yzugNQlGJSYwIQo8GcZDawUNUhdt/OkxuueTV
+         CYVYLX/gIVPYz+oO8OtEiMV9a8NwbKvGtBgy/DSNK5+hoop244ZlbnGtkrgtkywkAzdL
+         BUlA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1767149919; x=1767754719;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=tjOF9AP1kWt7dtM4qZ2BnQTZbb0vLZh3HtXtIU2plOE=;
-        b=tX4h3T2U3EVj3m3MzarL8UIFtkXWr9Bq0Iw5zalnv6DSs4cwsA2VzPR6oJQcSZ28V4
-         9Mb7U77QiVF8uB1KKuq/+QpXDXJh5rwobGq/8r9VKX/gJgK90ZUOiQ/Dzr/DT/eFjQBZ
-         +zYCABaUr9Jz79q1ciVpGCMATr1Bri4ERW6IigSt7d0Q3/RrQ1+bPTsBGw8FSIWXLs+6
-         TLNHpAC9F/aVLtIf+DB9+S5j4qfFWpTaqt3tJ4wCdUH6DPKpBvn+QUBI12AwZcVsyVv5
-         Ue9yC15nEiNefXUD7M85UMExAjB2oAeAH7DhZOVDRv+q2CuvPcmf7dg1KQKZNJCI3wss
-         mGmQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXU8rsDzR6mMB3BuA3/qwBaFhNzuW8kyNMwlMCuTP+t+qcnBxiIbp0m0EGs5PnizuSHb/O1aGw6HUaPdcilag==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxmeWjcE2VHJE+y4q6aqoIzXKVe2J0n20kC4dCoP3GzD/y4bS7V
-	GJsahLFUQdiymkTM6ONvVvN2vFDax4rgPCHcRLJ1pdihTQ7CjoagkfAsoHfju/fMv0eAbs7mXvg
-	O4J1m1WQPVQNmHoeNGUMhGHK4dQsLyw0=
-X-Gm-Gg: AY/fxX7+VSfDjX/vS1z2t2ONz+WyoGYABOMHfbzzaoEz9rhEHrT+faa7dIfH3HBhMKj
-	pXn9l72fB4HjnPT3UjH212j8IVBfSe3vC5B/qH76F4Z2TOdQxYq0wp0tnAlzXXT36sv8DwWK/lM
-	R9Cy/r+k4NSk0Mcuxfx9to2qRfUdX32oNpywmDZrc+dBpN3g5ULeuReGov6MGwd5ya9DqovCsCH
-	3PX5oczGS+NMdlhspBtmnrnXGy7q+AZcayo/oqoXwuo/TmrKsJjyYg8z+srgQ1TsqIVe54+k41L
-	SD+SFElKhou2D74gAwBB4B+DLa4=
-X-Google-Smtp-Source: AGHT+IED0/tBR9xef6QSyYr/ksg8LXHa3v+MUTMcvi0rmIK6StQUKqxOWmDb2kvsqCq0GK7718Mu28JTd3JN67IAXiA=
-X-Received: by 2002:a05:6000:40dc:b0:432:8667:51c7 with SMTP id
- ffacd0b85a97d-43286675205mr16586415f8f.44.1767149918957; Tue, 30 Dec 2025
- 18:58:38 -0800 (PST)
+        d=1e100.net; s=20230601; t=1767149915; x=1767754715;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=zUfeQsuPis8+vWGa7ve6iy4exkmxdmo6Yqgm4mr4Xz0=;
+        b=EdObRYrWD5Con6hDwns0b9b6OES4nfUeHc4MuQ9bEfxHvuVLlZV9dm6nSNSZgDGJcr
+         RenR4v9ko93OtxJTD9l5fn14R4s7eOsRKcXtYkHIH+xiU5Pk0GTTvJdAKd3ughv8FN8V
+         loxTdxicHXrosXJPStqFURUAMnUC5Aj6HQ3U6VA7SMD95j29x4sufH5XAntfVk+0JOCb
+         VgvxCRn290aoum6uX6HV0DhUWddsv/n14azbkRZZEjDvOgaq2O3xhUy++hV+56IXPuhz
+         2vkPQNu2VBMLjJu/ssqIK/yHiCquz/EqFHsg+/fSIa4WhCLkSNk1glUs0dtlWooD52AE
+         pZ9w==
+X-Forwarded-Encrypted: i=1; AJvYcCWBCLoRYIO1eJmEz8YgLvTaZWEeBR4hXlNDZCAt/Q46Ch/tbuMi5mL52OyMYJTIA8yM5dfSYMGQcNgopHa/sw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzVKmgbcTt8nKlXFWcMJB+rtqD+bd3VcUYxZarTl40Khoy7/VTf
+	O3kv5QfhN1qfutZq7cOUybsd+q6MK3DvYF2bdwNAlkbtO4FgyeEw+4rU+BrF7UmwDQ==
+X-Gm-Gg: AY/fxX5JFSnWQSspVzuFoqsgAP76rb0Jh9I4Giraspp8+btjA4/VNK/eNdYx5sJbdOh
+	rtiVLNPrpMWE9AzzFYfkD4liWzpuA5dZ7qxKyWQ4Kdzq664T6M64yno/1pfxj/GhYtePnesd5Cg
+	DNu45VeUPUuCSbRN+FT9OBh606VoOyc9J21beRbxM5/cwhsUOeRVT3Cwx0iDr+ZOZTRg/YwgwOW
+	DbKy1XSFLq4/stWY56og+tQLqQYy4IiFQc+vVoDDECPDCS+1xTeyIJz5fXgwqdgh5aIJHH7F0kK
+	m38lYT0O27CLd7O6cEO0dP4yjZ4SqIZYBXxDugel9Fmc214jSVSO66Uge9rj0q7DKGz5WP9ghGX
+	s9P+L+mHdVNPnsXE0BzDq2B1Q62jhpX0wbhkBauq+79uQqf78sdxZMG5jgVFegpdHY5B6Ypz8Y1
+	CQu9t/J5rT6Bwu5KuhyjrOeyexIIEpdO1IWe9r5a9ISWQbpc71wMDUJqvTvf1bRUzB2q0b3RVbl
+	+AR1xe4elqf+93OqIHPrg7c2IQ44vyLiESZPjhSOQ16iup6PNL5IsBM9g==
+X-Google-Smtp-Source: AGHT+IGGCF0sHMt1+YYCpeAxQN9Ovdj+s2AiArjZinsNakQ8z+N2JPpr7xnF8T/yZnTmh07agmcy1w==
+X-Received: by 2002:a17:907:1b15:b0:b73:9792:918b with SMTP id a640c23a62f3a-b8036f5fcf3mr4070078066b.27.1767149915064;
+        Tue, 30 Dec 2025 18:58:35 -0800 (PST)
+Received: from ?IPV6:2a02:a466:4d7a:0:49c0:3675:3f69:8ee2? (2a02-a466-4d7a-0-49c0-3675-3f69-8ee2.fixed6.kpn.net. [2a02:a466:4d7a:0:49c0:3675:3f69:8ee2])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-b83926533b7sm450609966b.20.2025.12.30.18.58.34
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 30 Dec 2025 18:58:34 -0800 (PST)
+Message-ID: <f5322597-c6dd-494a-863b-2caf24363f2d@pardini.net>
+Date: Wed, 31 Dec 2025 03:58:33 +0100
 MIME-Version: 1.0
-References: <20251230-arm64-dts-rockchip-rk3588-npu-enablements-v1-0-d38b182a59e3@pardini.net>
-In-Reply-To: <20251230-arm64-dts-rockchip-rk3588-npu-enablements-v1-0-d38b182a59e3@pardini.net>
-From: Jimmy Hon <honyuenkwun@gmail.com>
-Date: Tue, 30 Dec 2025 20:58:28 -0600
-X-Gm-Features: AQt7F2pDJ_ScaKl1BWdf-T290QF_8Ch1DTovPrz3SxZy6maCo-TigDI5eUGwzL4
-Message-ID: <CALWfF7KHyKmDcEL9=mYzfCRWc_cymNscoFdeXr8P2frJeww5vA@mail.gmail.com>
-Subject: Re: [PATCH 0/3] arm64: dts: rockchip: Enable the NPU on some rk3588 boards
-To: ricardo@pardini.net
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, nicolas.frattaroli@collabora.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v7 0/2] PCI: Configure Root Port MPS during host probing
+To: Hans Zhang <18255117159@163.com>, lpieralisi@kernel.org,
+ kwilczynski@kernel.org, bhelgaas@google.com, helgaas@kernel.org,
+ heiko@sntech.de, mani@kernel.org, yue.wang@Amlogic.com
+Cc: pali@kernel.org, neil.armstrong@linaro.org, robh@kernel.org,
+ jingoohan1@gmail.com, khilman@baylibre.com, jbrunet@baylibre.com,
+ martin.blumenstingl@googlemail.com, cassel@kernel.org,
+ linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org,
+ linux-rockchip@lists.infradead.org
+References: <20251127170908.14850-1-18255117159@163.com>
+Content-Language: en-US
+From: Ricardo Pardini <ricardo@pardini.net>
+In-Reply-To: <20251127170908.14850-1-18255117159@163.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251230_185841_553278_43DBB96D 
-X-CRM114-Status: GOOD (  14.07  )
+X-CRM114-CacheID: sfid-20251230_185837_502001_B6F7A4FC 
+X-CRM114-Status: GOOD (  11.44  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,42 +104,70 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlLCBEZWMgMzAsIDIwMjUgYXQgMjoyMOKAr1BNIFJpY2FyZG8gUGFyZGluaSB2aWEgQjQg
-UmVsYXkKPGRldm51bGwrcmljYXJkby5wYXJkaW5pLm5ldEBrZXJuZWwub3JnPiB3cm90ZToKPgo+
-IFRoaXMgc2VyaWVzIGVuYWJsZXMgdGhlIE5QVSBvbiBhIGZldyBSb2NrY2hpcCByazM1ODggYm9h
-cmRzLgo+IEluIGV2ZXJ5IGNhc2UgaGVyZSwgdGhlIHJlcXVpcmVkIHJlZ3VsYXRvciB3YXMgYWxy
-ZWFkeSBkZXNjcmliZWQuCk5vdyB0aGF0IHRoZSBwZF9ucHUgaGFzIGRlZmluZWQgdGhlIGRlcGVu
-ZGVuY3kgdG8gdGhlIHZkZF9ucHVfczAsCnNob3VsZG4ndCB0aGUgcmVndWxhdG9yLWFsd2F5cy1v
-biBiZSByZW1vdmVkIGZyb20gdGhlIHJlZ3VsYXRvcj8gV2hlbgp0aGUgUm9jazVCIGVuYWJsZWQg
-dGhlIE5QVSwgaXQgZGlkbid0IGRlZmluZSB0aGUgcmVndWxhdG9yIHdpdGggYWx3YXlzCm9uLiBb
-MV0KCk1vcmUgc3BlY2lmaWNhbGx5LCB0aGUgY29tbWl0IG1lc3NhZ2UgZm9yIHRoZSBpbnRyb2R1
-Y3Rpb24gb2YgdGhlCnBkX25wdSBsYWJlbCBtZW50aW9ucyBob3cgdGhlIHJlZ3VsYXRvciBubyBs
-b25nZXIgbmVlZHMgdG8gYmUgYWx3YXlzCm9uLiBbMl0KClsxXSBodHRwczovL2xvcmUua2VybmVs
-Lm9yZy9saW51eC1yb2NrY2hpcC8yMDI1MDcyMS02LTEwLXJvY2tldC12OS0xMC03N2ViZDQ4NDk0
-MWVAdG9tZXV2aXpvc28ubmV0LwpbMl0gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbGludXgtcm9j
-a2NoaXAvMjAyNTA3MjEtNi0xMC1yb2NrZXQtdjktNy03N2ViZDQ4NDk0MWVAdG9tZXV2aXpvc28u
-bmV0LwoKSmltbXkKCj4KPiBTaWduZWQtb2ZmLWJ5OiBSaWNhcmRvIFBhcmRpbmkgPHJpY2FyZG9A
-cGFyZGluaS5uZXQ+Cj4gLS0tCj4gUmljYXJkbyBQYXJkaW5pICgzKToKPiAgICAgICBhcm02NDog
-ZHRzOiByb2NrY2hpcDogRW5hYmxlIHRoZSBOUFUgb24gTmFub1BDIFQ2L1Q2LUxUUwo+ICAgICAg
-IGFybTY0OiBkdHM6IHJvY2tjaGlwOiBFbmFibGUgdGhlIE5QVSBvbiBGcmllbmRseUVsZWMgQ00z
-NTg4Cj4gICAgICAgYXJtNjQ6IGR0czogcm9ja2NoaXA6IEVuYWJsZSB0aGUgTlBVIG9uIFR1cmlu
-ZyBSSzEKPgo+ICAuLi4vZHRzL3JvY2tjaGlwL3JrMzU4OC1mcmllbmRseWVsZWMtY20zNTg4LmR0
-c2kgICB8IDM0ICsrKysrKysrKysrKysrKysrKysrKwo+ICBhcmNoL2FybTY0L2Jvb3QvZHRzL3Jv
-Y2tjaGlwL3JrMzU4OC1uYW5vcGMtdDYuZHRzaSB8IDM1ICsrKysrKysrKysrKysrKysrKysrKysK
-PiAgLi4uL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OC10dXJpbmctcmsxLmR0c2kgfCAz
-NCArKysrKysrKysrKysrKysrKysrKysKPiAgMyBmaWxlcyBjaGFuZ2VkLCAxMDMgaW5zZXJ0aW9u
-cygrKQo+IC0tLQo+IGJhc2UtY29tbWl0OiA5NDQ4NTk4YjIyYzUwYzhhNWJiNzdhOTEwM2UyZDQ5
-ZjEzNGM5NTc4Cj4gY2hhbmdlLWlkOiAyMDI1MTIzMC1hcm02NC1kdHMtcm9ja2NoaXAtcmszNTg4
-LW5wdS1lbmFibGVtZW50cy0xZTI4MzBkMmU3YjAKPgo+IEJlc3QgcmVnYXJkcywKPiAtLQo+IFJp
-Y2FyZG8gUGFyZGluaSA8cmljYXJkb0BwYXJkaW5pLm5ldD4KPgo+Cj4KPiBfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+IExpbnV4LXJvY2tjaGlwIG1haWxp
-bmcgbGlzdAo+IExpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKPiBodHRwOi8vbGlz
-dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCgpfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBt
-YWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlz
-dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+On 27/11/2025 18:09, Hans Zhang wrote:
+> Current PCIe initialization exhibits a key optimization gap: Root Ports
+> may operate with non-optimal Maximum Payload Size (MPS) settings. While
+> downstream device configuration is handled during bus enumeration, Root
+> Port MPS values inherited from firmware or hardware defaults often fail
+> to utilize the full capabilities supported by controller hardware. This
+> results in suboptimal data transfer efficiency throughout the PCIe
+> hierarchy.
+> 
+> This patch series addresses this by:
+> 
+> 1. Core PCI enhancement (Patch 1):
+> - Proactively configures Root Port MPS during host controller probing
+> - Sets initial MPS to hardware maximum (128 << dev->pcie_mpss)
+> - Conditional on PCIe bus tuning being enabled (PCIE_BUS_TUNE_OFF unset)
+>    and not in PCIE_BUS_PEER2PEER mode (which requires default 128 bytes)
+> - Maintains backward compatibility via PCIE_BUS_TUNE_OFF check
+> - Preserves standard MPS negotiation during downstream enumeration
+> 
+> 2. Driver cleanup (Patch 2):
+> - Removes redundant MPS configuration from Meson PCIe controller driver
+> - Functionality is now centralized in PCI core
+> - Simplifies driver maintenance long-term
+> 
+> ---
+> Changes in v7:
+> - Exclude PCIE_BUS_PEER2PEER mode from Root Port MPS configuration
+> - Remove redundant check for upstream bridge (Root Ports don't have one)
+> - Improve commit message and code comments as per Bjorn.
+Hi Hans,
+
+I've tested on an Odroid-HC4 with a SATA SSD (via an ASM1061) by 
+applying your v7 on v6.19-rc3 + Bjorn's 
+20251103221930.1831376-1-helgaas@kernel.org ("PCI: meson: Remove 
+meson_pcie_link_up() timeout, message, speed check" which is required to 
+get the meson PCIe to work at all since 6.18). With that setup I get:
+
+# hdparm --direct -t /dev/sda
+  Timing O_DIRECT disk reads: 832 MB in  3.00 seconds = 277.33 MB/sec
+
+I've an identical machine, with a similar disk (even slightly faster, on 
+paper), running plain 6.12.y and there I get:
+
+# hdparm --direct -t /dev/sda
+  Timing O_DIRECT disk reads: 764 MB in  3.00 seconds = 254.26 MB/sec
+
+I repeated those a few times, not very scientific, I know; but anyway:
+
+Tested-by: Ricardo Pardini <ricardo@pardini.net> # on Odroid-HC4
+
+I've also feedback from another user running with this series with 
+success on a different meson PCIe machine, will ask them to TB as well; 
+they had reported a significant drop in performance since v6.18 without 
+this.
+
+Thanks,
+Ricardo
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
