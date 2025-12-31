@@ -4,93 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50647EE57D7
-	for <linux-rockchip@archiver.kernel.org>; Wed, 31 Dec 2025 15:21:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81953EEB565
+	for <linux-rockchip@archiver.kernel.org>; Wed, 31 Dec 2025 17:34:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:From:Subject:
+	Cc:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IWKNPCg3H9WZ22dzpxRecqBBGR/W+rGilGcM7bwu1wU=; b=j893BUZPFLdtk7
-	+Xz1DuGMit3Re1czsqWbpoNkHsIaE7NRi15oycpVFc4Gg8xBvOw8FynMfwS31mcjZdCckf4HUnOY+
-	tqgM7PKmLuJCHvd6A7sb90zmJDznVH7WUNCMSYsGdOpKznzJfZglGxA06Ngs1yb/EABoTo5XZhwpY
-	7UIuh9ZOiPbpB+T8xMwU2ehrARctL36WBHbNJ9j9lGPwVI1lzyMdJI3q7NHMWBW3ISoum5FXMnk8v
-	2xI4fcox49oJMsq1eGP/uKJMAOrDrH7gzeaOfHnbsAjBsSEDDnPC++VyMR2U9rDsWUGcfXQKNndMv
-	pHPlxszIAvSCHjtNG9ow==;
+	List-Owner; bh=6+8XHvlDQ3gtdZIJmoMdTmjuz0gnCYtgGvSfWTYXdiA=; b=gfUHmgexeAu9Aw
+	gZyWRV/BnwP4sNZZ0cVehhF/xbTNoJ4VPDjkrtTd2NnuJsQpNm4YtQ9fzmggYD3Pj2XAjEJrq1Nzh
+	gl/awfPJKXcpoceoKBbHN+T/+QzWlazrwGJi1odVa2esFc/W0g+VTgVsXJzbKvN7yxAnDxJBF+HkO
+	QoUNMQOOEemU0IMBd2i5Q3G0k+rPuM4IodAWQOZAYQYaN+895ZYP+3zlkd7obhQX3DMBoE+zpJCgj
+	dd+YyjbqKdUzjT/AjOReyTej03vuEVzgF+8W6HSlRWdo0tXCTvbPDGusrTEjxMI1QzcZk7F+YRXHi
+	aRR7a5gemY3l31/iVVaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vay0Y-000000064Yg-0Zf1;
-	Wed, 31 Dec 2025 15:21:06 +0000
-Received: from mail-qv1-xf36.google.com ([2607:f8b0:4864:20::f36])
+	id 1vb052-00000006CUK-0rK1;
+	Wed, 31 Dec 2025 17:33:52 +0000
+Received: from out-187.mta1.migadu.com ([95.215.58.187])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vay0T-000000064Xs-2ZwY
+	id 1vb04y-00000006CTr-2jaF
 	for linux-rockchip@lists.infradead.org;
-	Wed, 31 Dec 2025 15:21:04 +0000
-Received: by mail-qv1-xf36.google.com with SMTP id 6a1803df08f44-88a3d2f3299so129179246d6.2
-        for <linux-rockchip@lists.infradead.org>; Wed, 31 Dec 2025 07:21:00 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=rowland.harvard.edu; s=google; t=1767194460; x=1767799260; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=iCsMgC1RHJ0xZHT2ayosqiToNS+TooDnH36P842rda4=;
-        b=v4WiPQU1wAaEdVFH4ROwvQzdua0Bib54eoADhTstQWhd1flBnK1kN1oPvglWePH+6r
-         QvzrITPyVZ+aMarPBcHP+S8AuME98wz4AuMWMcKOCHPjm5fB9xRXoAuCjiB9F8De6h7I
-         iHgyMBIU0dGJCAn1rTf/7cVoFX062ryv1xG2i3SWKlEwY34N7EzlXKPgf8n7QT02fKrG
-         51rt3mnb1C1pkZdzpreQi0QFFYVgqoYHV8GBr/JBXKZcjmIjpvj6bLe1zIfptHPulLBl
-         0+n8XCSs3x6DEZWmxRZU5HvSyYM2IxGNY1wYF4rRlx5nmSbsKpxfMzbISglLaCRO8FR4
-         /psw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1767194460; x=1767799260;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=iCsMgC1RHJ0xZHT2ayosqiToNS+TooDnH36P842rda4=;
-        b=VY4gNHEUDYbSXzXzTPErr+/fUBSwiyJMbFdzvt4poiQfNabV6HJmBR9njv2O0eBGb/
-         TZlbWmXHRZtf3tGr4i24ljKfL6b22SGYmOLg3qzHl82HtKeaRPR748/33j3PTeH/3NJI
-         zRoKr9tWC95C6VqwEzQ6tvKUi4GRiQLbdmQVX2JvrzH3A/1Ke5IyNeMZ+lLmjZECWD1n
-         muzi1BVxKQI66x12nGSi1vyef+Fg1LI5uy7GWsOG/utZWiX+EenTG2MU84zcv8YBbUsG
-         fmq4trVdsPV+A9Y2CvZ+2CcrBggjIKy3eMnYLi/BrxQVpNgUt/0SjcxeD0DP331ZPMxH
-         X1DA==
-X-Forwarded-Encrypted: i=1; AJvYcCVcv+6PfzP9rzmkrjZQtDv9XeQ6RY9COzbjay2AOP5H9boBThEKBo+vbvU2JOGkiPaEZgT8loQGUhyZjU8nng==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwMiHJB24fsCxzAwB68snpIsDwLJXqpZl9pG4MFyMGIpxTLXhtO
-	qkE9ELbaoHLNuskdpkUYJoQEvKIHY7d6z4OcWyedIYSjSJtnCSpbtvETSJDxjJ0PgA==
-X-Gm-Gg: AY/fxX4ABaz+cLBv5S/Z28PNuBNooxzmRfOI4goPyAD1vBv28HALo0PK9Uw9YTIMwSy
-	WfceT8D34J/HHkBwJ/hYcSOVWeAERQ2boPHY8ZpxgFg2c62J6RVfKKd1wHhOqIbrC04yGhVDqiX
-	+LdAVZIKnJ5Z5NS1cfHs+qd76z6REvqBzI73P5sEnpYMTR21FSHDAK7365YG2ZM9lKfMT3zagMg
-	zgnms5SwIKgW5JeESZ+ZzQf+176h7WreSXbC7CVK0P56/TjXjHRC+cGKUGh1h4mj/wXht4GTP+B
-	Rt2sJPXncabXvNuaRa82I4bgrmtenE4awt48tpbozaiD6NZs+8uKYqps1YyTwxaIjy6PLgnSVRi
-	I5EIGP3HPCXidu9eUCCY20ppDG6/53AhWxVlyxGQbAAmsQ1g2CBBb+lKLFAYlRgaHAQKTf7ZTxn
-	7KjV5IlWgM+jYa
-X-Google-Smtp-Source: AGHT+IGzcUj+q0xmvRBW/bmPF+mchNTCZWyYIyc4hZPOiB90Xz8x1i2LE/eY0oT3eC7aDYNsOokA1g==
-X-Received: by 2002:a05:622a:4295:b0:4ee:bff:7fbf with SMTP id d75a77b69052e-4f4abcf6ad2mr525954221cf.4.1767194459966;
-        Wed, 31 Dec 2025 07:20:59 -0800 (PST)
-Received: from rowland.harvard.edu ([2601:19b:d03:1700::7e72])
-        by smtp.gmail.com with ESMTPSA id d75a77b69052e-4f4ac62d53dsm271058211cf.19.2025.12.31.07.20.58
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 31 Dec 2025 07:20:59 -0800 (PST)
-Date: Wed, 31 Dec 2025 10:20:56 -0500
-From: Alan Stern <stern@rowland.harvard.edu>
-To: Huacai Chen <chenhuacai@kernel.org>
-Cc: Diederik de Haas <diederik@cknow-tech.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Huacai Chen <chenhuacai@loongson.cn>, linux-usb@vger.kernel.org,
-	linux-kernel@vger.kernel.org, stable@vger.kernel.org,
-	Shengwen Xiao <atzlinux@sina.com>,
-	linux-rockchip@lists.infradead.org
+	Wed, 31 Dec 2025 17:33:50 +0000
+Mime-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow-tech.com;
+	s=key1; t=1767202424;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=152GR3bpCkA4edsFB/mhHCnTqy+h5Kh1YyF59UsoHYI=;
+	b=XW5/xx9AeHfZWmeTvOCRcxRXv2ZTuRxLTSs7/g1QZzue0w9tJmLPm72NdIqmPMRyDOOjvG
+	dFDdtVt76pTua9SYE+iAD40KYkoYY3fKm60luRp2LKyzFqu8aNV7LVE1SZa9SvoHOKv5Jr
+	69760ZYS4hWuv5QIzgzbAcBm0bhHHI/b/XoRvUpfdnTBTaHQaral4qxfRGBUnrse9wc3Rw
+	llNM1K2GtGvXVB9Eqkeho5iH7aAP5HGCeouorozxxKWww3DXvVNOschi+a14ZQY++yty2d
+	q5CAHQiVjgO4GDiY1RMeFZQOQwEEaWRUwbQmX5I0BNtY9lDuYl8yILzpLlHWow==
+Date: Wed, 31 Dec 2025 18:33:34 +0100
+Message-Id: <DFCKZ1I7C83G.1DUX9IT96CYZ3@cknow-tech.com>
+Cc: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>, "Huacai Chen"
+ <chenhuacai@loongson.cn>, "Huacai Chen" <chenhuacai@kernel.org>,
+ <linux-usb@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <stable@vger.kernel.org>, "Shengwen Xiao" <atzlinux@sina.com>,
+ <linux-rockchip@lists.infradead.org>
 Subject: Re: [PATCH] USB: OHCI/UHCI: Add soft dependencies on ehci_hcd
-Message-ID: <0c85d288-405f-4aaf-944e-b1d452d0f275@rowland.harvard.edu>
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Diederik de Haas" <diederik@cknow-tech.com>
+To: "Alan Stern" <stern@rowland.harvard.edu>, "Diederik de Haas"
+ <diederik@cknow-tech.com>
 References: <20251230080014.3934590-1-chenhuacai@loongson.cn>
  <2025123049-cadillac-straggler-d2fb@gregkh>
  <DFBMNYF0U5PK.24YOAUZFZ0ESB@cknow-tech.com>
  <73d472ea-e660-474c-b319-b0e8758406c0@rowland.harvard.edu>
- <CAAhV-H6drj1df3Y4_Z67t4TzJ5n6YiexsEHKTPvi1caNvw5H9A@mail.gmail.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAAhV-H6drj1df3Y4_Z67t4TzJ5n6YiexsEHKTPvi1caNvw5H9A@mail.gmail.com>
+In-Reply-To: <73d472ea-e660-474c-b319-b0e8758406c0@rowland.harvard.edu>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251231_072102_045474_2CCA6A9C 
-X-CRM114-Status: GOOD (  16.20  )
+X-CRM114-CacheID: sfid-20251231_093349_284582_FD576C40 
+X-CRM114-Status: GOOD (  31.51  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,36 +77,104 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Dec 31, 2025 at 05:38:05PM +0800, Huacai Chen wrote:
-> From your long explanation I think the order is still important. "New
-> connection" may be harmless for USB keyboard/mouse, but really
-> unacceptable for USB storage.
-> 
-> If we revert 05c92da0c524 and 9beeee6584b9, the real problem doesn't
-> disappear. Then we go back to pre-2008 to rely on distributions
-> providing a correct modprobe.conf?
+On Tue Dec 30, 2025 at 5:42 PM CET, Alan Stern wrote:
+> On Tue, Dec 30, 2025 at 03:40:27PM +0100, Diederik de Haas wrote:
+>> On Tue Dec 30, 2025 at 9:15 AM CET, Greg Kroah-Hartman wrote:
+>> > On Tue, Dec 30, 2025 at 04:00:14PM +0800, Huacai Chen wrote:
+>> >> Commit 9beeee6584b9aa4f ("USB: EHCI: log a warning if ehci-hcd is not
+>> >> loaded first") said that ehci-hcd should be loaded before ohci-hcd and
+>> >> uhci-hcd. However, commit 05c92da0c52494ca ("usb: ohci/uhci - add soft
+>> >> dependencies on ehci_pci") only makes ohci-pci/uhci-pci depend on ehci-
+>> >> pci, which is not enough and we may still see the warnings in boot log.
+>> >> So fix it by also making ohci-hcd/uhci-hcd depend on ehci-hcd.
+>> >> <snip>
+>> 
+>> FWIW, I've been seeing this warning on several of my Rockchip based
+>> devices as well. ... but the last post also had this:
+>> 
+>> ```
+>> I checked the last 20 boots on my devices to see that warning (or not).
+>> Device				Number of times that warning showed up
+>> Rock64 (rk3328)			16x
+>> RockPro64 (rk3399)		11x
+>> Quartz64 Model A (rk3566)	 7x
+>> Quartz64 Model B (rk3566)	14x
+>> PineTab2 (rk3566)		17x
+>> NanoPi R5S (rk3568)		13x
+>> Rock 5B (rk3588)		12x
+>> ```
+>> 
+>> While I generally don't like seeing warning messages, it often also
+>> resulted in USB2 ports not working. Maybe even every time, but I only
+>> notice it when I actually tried to use one of the USB2 ports.
+>> 
+>> The first post mentioned what I 'assume' to be the problem:
+>> ```
+>> CONFIG_USB_XHCI_HCD=m
+>> CONFIG_USB_EHCI_HCD=m
+>> CONFIG_USB_OHCI_HCD=m
+>> ```
+>> 
+>> So I guess USB_EHCI_HCD doesn't work with '=m'.
+>
+> Not true, it really does work with "=m".
 
-The warning message in 9beeee6584b9 was written a long time ago; back 
-then I didn't realize that the real dependency was between the -pci 
-drivers rather than the -hcd ones (and I wasn't aware of softdeps).  The 
-soft dependency in 05c92da0c524 is between the -pci drivers, so it is 
-correct.
+I shouldn't have stated that before I fully investigated it.
+I do plan to change my kernel config to make it "=y" though.
 
-To put it another way, on PCI-based systems it is not a problem if the 
-modules are loaded in this order: uhci-hcd, ohci-hcd, ehci-hcd, 
-ehci-pci, ohci-pci, uhci-pci.  Even though the warning message would be 
-logged, the message would be wrong.
+> And in fact, your systems should work even if the modules are loaded in 
+> the wrong order.  The issue is that doing so can cause a brief 
+> interruption in the existing USB connections when the ehci-pci module is 
+> loaded.
+>
+> If your systems don't use PCI for these host controllers then I don't 
+> know how they would behave.  The issue is: How does the hardware route 
+> low-speed and full-speed USB connections to the different types of 
+> controller?
 
-On the whole, I think the best approach is to revert 9beeee6584b9's 
-warning message while keeping 05c92da0c524's softdeps.  Greg might not 
-approve of soft dependencies between modules in general, but in this 
-case I believe it is appropriate.
+One of the issue is that I don't (fully) understand how this (should)
+work. F.e. I wondered about all the PCI 'references' in your explanation
+(thanks for that :-)).
 
-And so your patch really is not needed, as far as I can tell.  While it 
-might in theory help some peculiar platform-dependent scenario, I'm 
-not aware of any platforms like that.
+I (also) wondered why the number on Quartz64-A was lower, but that
+actually has a PCIe slot ... with a USB3 controller card in it.
 
-Alan Stern
+If I do ``lsmod | grep pci`` on my PineTab2, I get zero hits, but I do
+get hits when doing it on my Q64-A.
+
+On my Rock 5B, I get 1 hit, "phy_rockchip_snps_pcie3", but that has a
+NVMe drive connected to it. And I have a (working) keyboard connected
+via a USB2 port. And/while I do have the warning ...
+
+Cheers,
+  Diederik
+
+> On PCI systems, when ehci-pci isn't loaded, the hardware routes all 
+> connections directly to the companion UHCI or OHCI controller.  When 
+> ehci-pci is loaded, the hardware routes connections to the EHCI 
+> controller, and when the driver sees that a connection isn't running at 
+> high speed (480 Mb/s), it tells the hardware to switch the connection 
+> over to the companion.
+>
+> So if a low-speed (1.5 Mb/s) or full-speed (12 Mb/s) device is connected 
+> before ehci-pci loads, its connection will get routed to the companion 
+> controller.  Then when ehci-pci loads, the connection will be switched 
+> over to the EHCI controller, which will cause the existing connection to 
+> be dropped.  Then the connection will be routed back to the companion 
+> controller, but it will be perceived as a new connection, resulting in a 
+> brief interruption in service.  For many devices this won't matter, but 
+> for some it might.  The only way to avoid the problem is to load 
+> ehci-pci before uhci-pci and ohci-pci.
+>
+> (A similar problem can occur with high-speed-capable devices.  When 
+> initially attached to the companion controller, they are forced to 
+> connect at full speed.  But when the connection is changed to the EHCI 
+> controller, they are able to run at high speed -- and again, the result 
+> is a new connection, causing service to be interrupted and then start up 
+> fresh but running much faster.)
+>
+> Alan Stern
+
 
 _______________________________________________
 Linux-rockchip mailing list
