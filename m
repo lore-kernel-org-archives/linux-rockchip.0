@@ -4,76 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9C39EE6425
-	for <linux-rockchip@archiver.kernel.org>; Wed, 31 Dec 2025 11:11:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6708EE6432
+	for <linux-rockchip@archiver.kernel.org>; Wed, 31 Dec 2025 13:39:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:Subject:From:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:From:Subject:Cc:
 	To:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qNp36u2RNlRW4LMvqwNeT0yzNzNge7Nw2/qIk3h2U5I=; b=r9D1KbXnEXy90Y
-	UNYBDeU7k5YHYrHKBHQjVBgPGkKGMxYoI7gyE7ngtciOCkB537XxAAS1tvBlZL1NBmXO5jZ07tLn3
-	ER2o0jRgkc1HNG5F94PRu97AeOcPehEDT3UklWzqaKc1yA/OZ1cb0z9KUcyvMu4IoLGmOMYE5qzvQ
-	1HGxw1EsseJtRpfkmBKm33AtT7ieBSeILfyAN3pYgLoW/V9DMib1Za//22+8xZEOH3WrDgFwdJti0
-	mNE6D9GKJYowFM9IqvZ3XulH4mW6f4pdEKxIGXshhStjw/4V0MHC+c+JvO+29vSGhhbKV9U7jdMso
-	hXXEDWfx5ZFCvQuksNZw==;
+	List-Owner; bh=S5/gWDS8+/Dqbbk/QbPuaEFyQXfj0vPHHf38GC7JBDM=; b=L+qNzw1oFfWRC4
+	4yZEENKTIas/zm+0kQcwJfFiv8qYwBfGhSTaaKnwkKt6JfCdALBxAm8vSgQE6S0qLsj+p92o8ZYPy
+	0Mf6lcCqAppiOEHQuCDquNE6TOtdBkcF0E9w+4xK1BGPHYW2DEW7TQwWCP7uNaxhkcINOIi2mbN9r
+	2Zy+UN6PAAf7v95A0YUhmeHvHV6N8pFMwD7C0Mc+T39qhzrsulTsIpRI8jffZYY3Ae5NY4EI8a3uT
+	eDllA34N/BuOHorxzEwVPL7jtyshwBA06iYSs7XZU3KjywaT+jJWj3dNmkLnHSBi+zrlsLqqATgL8
+	Q03RGtZU9qDONQ85Fq1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vau6z-00000005uY9-0317;
-	Wed, 31 Dec 2025 11:11:29 +0000
-Received: from smtpout-04.galae.net ([185.171.202.116])
+	id 1vawQ4-000000060pz-1i28;
+	Wed, 31 Dec 2025 13:39:20 +0000
+Received: from out-179.mta1.migadu.com ([95.215.58.179])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vau6v-00000005uXO-23UL
+	id 1vawQ1-000000060lC-1h7N
 	for linux-rockchip@lists.infradead.org;
-	Wed, 31 Dec 2025 11:11:27 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-04.galae.net (Postfix) with ESMTPS id 838ACC1AE22;
-	Wed, 31 Dec 2025 11:10:56 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id E455C60744;
-	Wed, 31 Dec 2025 11:11:21 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 23832113B0764;
-	Wed, 31 Dec 2025 12:11:08 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1767179480; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=55XhYgANfix4/exU+jGGVTiGXqeuZF3yQcF00ZiG0dM=;
-	b=SV1z9pfVtcvrATQfVDliiBBq97NU2utS5KLqyYqYIEj6QCeA4MJLMV0/aD0g5Kgy2ee3tw
-	veAPFFUoIjkP14Qn16fce692SQjf3ADHMll9fqtbkPG3bp6oQWbpgBpvzE+wWPpZgT+pXV
-	eYO2QQC1jxOxq44S19F4xyBKx0SCOpxb5zQ/ly1kI4hEIm4pb7Sh+yOhXln3rGW02DunPj
-	EJQlHqWuVLbsLvvlhtnaoHXIERp1gRaD4S6ql/3Yjzy47tbZM/cCNTPWXT5qCEu53eNF1P
-	AAve6YLAB9fWQWUp/Yu9yIzJrpJV1l1SZdgRcIuzp8Ez1v7p1prS1R34TIwyLw==
+	Wed, 31 Dec 2025 13:39:19 +0000
 Mime-Version: 1.0
-Date: Wed, 31 Dec 2025 12:11:08 +0100
-Message-Id: <DFCCU8AN0GZQ.2CYTKKV40JYLI@bootlin.com>
-To: "Damon Ding" <damon.ding@rock-chips.com>, <andrzej.hajda@intel.com>,
- <neil.armstrong@linaro.org>, <rfoss@kernel.org>
-From: "Luca Ceresoli" <luca.ceresoli@bootlin.com>
-Subject: Re: [PATCH v8 04/18] drm/bridge: analogix_dp: Add
- &analogix_dp_plat_data.next_bridge
-Cc: <Laurent.pinchart@ideasonboard.com>, <jonas@kwiboo.se>,
- <jernej.skrabec@gmail.com>, <maarten.lankhorst@linux.intel.com>,
- <mripard@kernel.org>, <tzimmermann@suse.de>, <airlied@gmail.com>,
- <simona@ffwll.ch>, <shawnguo@kernel.org>, <s.hauer@pengutronix.de>,
- <kernel@pengutronix.de>, <festevam@gmail.com>, <inki.dae@samsung.com>,
- <sw0312.kim@samsung.com>, <kyungmin.park@samsung.com>, <krzk@kernel.org>,
- <alim.akhtar@samsung.com>, <jingoohan1@gmail.com>,
- <p.zabel@pengutronix.de>, <hjc@rock-chips.com>, <heiko@sntech.de>,
- <andy.yan@rock-chips.com>, <dmitry.baryshkov@oss.qualcomm.com>,
- <dianders@chromium.org>, <m.szyprowski@samsung.com>,
- <jani.nikula@intel.com>, <linux-kernel@vger.kernel.org>,
- <dri-devel@lists.freedesktop.org>, <imx@lists.linux.dev>,
- <linux-arm-kernel@lists.infradead.org>,
- <linux-samsung-soc@vger.kernel.org>, <linux-rockchip@lists.infradead.org>
-X-Mailer: aerc 0.20.1
-References: <20251217093321.3108939-1-damon.ding@rock-chips.com>
- <20251217093321.3108939-5-damon.ding@rock-chips.com>
-In-Reply-To: <20251217093321.3108939-5-damon.ding@rock-chips.com>
-X-Last-TLS-Session-Version: TLSv1.3
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow-tech.com;
+	s=key1; t=1767188231;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=I/DC5HGhzFn6eB9/q1rg3HbClxsdFAQDVLotSyZqTjw=;
+	b=Sj5RDxgVWnEDDcM9EBb0Gi/q7VYGbi+rT2nD7JGMjgJ9zW6p+kqq35EyeX8fYYA+MiaSTx
+	SFAUZgiqGHSuQdjoO9eQ4pFhtvfqexwiCl3hyr7+aTG5TESwqfUQJu2bJvBt2xdDNCj7Ra
+	tp2ze9+u8+5iOGbICApuMCaE7hNkXkMHaHHd6O0rjVbR8Mm46ylb0jP+mqjWP4V3RW9hPs
+	PsC4gzIuHxtQfqZBIVL39vUFG518ZS4IHyPnWiU64Pwr8kjNCwpuLkZLYXZrbzJW/RD9D9
+	Exsgj+f0W+tOYZStonu+Gj0ObO3jIsoeNcarKWjuCqxKwJAtwDj5Vb3XnQGP1w==
+Date: Wed, 31 Dec 2025 14:36:48 +0100
+Message-Id: <DFCFXRAAOVDT.1I1RYJ45SV9GT@cknow-tech.com>
+To: "Joseph Chen" <chenjh@rock-chips.com>, <lee@kernel.org>,
+ <lgirdwood@gmail.com>, <broonie@kernel.org>, <robh@kernel.org>,
+ <krzk+dt@kernel.org>, <conor+dt@kernel.org>
+Cc: <linux-kernel@vger.kernel.org>, <linux-rockchip@lists.infradead.org>
+Subject: Re: [PATCH v1 1/2] dt-bindings: mfd: Add rk801 binding
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Diederik de Haas" <diederik@cknow-tech.com>
+References: <20251231030951.818-1-chenjh@rock-chips.com>
+ <20251231030951.818-2-chenjh@rock-chips.com>
+In-Reply-To: <20251231030951.818-2-chenjh@rock-chips.com>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251231_031125_689169_A2BD1589 
-X-CRM114-Status: GOOD (  15.24  )
+X-CRM114-CacheID: sfid-20251231_053917_622522_513CA1BA 
+X-CRM114-Status: GOOD (  13.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,62 +72,235 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Damon,
-
-On Wed Dec 17, 2025 at 10:33 AM CET, Damon Ding wrote:
-> In order to move the panel/bridge parsing and attachmenet to the
-> Analogix side, add component struct drm_bridge *next_bridge to
-> platform data struct analogix_dp_plat_data.
+On Wed Dec 31, 2025 at 4:09 AM CET, Joseph Chen wrote:
+> Add DT binding document for Rockchip's RK801 PMIC
 >
-> The movement makes sense because the panel/bridge should logically
-> be positioned behind the Analogix bridge in the display pipeline.
->
-> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
-> Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-> Tested-by: Marek Szyprowski <m.szyprowski@samsung.com>
->
+> Signed-off-by: Joseph Chen <chenjh@rock-chips.com>
 > ---
+>  .../bindings/mfd/rockchip,rk801.yaml          | 199 ++++++++++++++++++
+>  1 file changed, 199 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/mfd/rockchip,rk801.yaml
 >
-> Changes in v4:
-> - Rename the &analogix_dp_plat_data.bridge to
->   &analogix_dp_plat_data.next_bridge
-> ---
->  include/drm/bridge/analogix_dp.h | 1 +
->  1 file changed, 1 insertion(+)
->
-> diff --git a/include/drm/bridge/analogix_dp.h b/include/drm/bridge/analogix_dp.h
-> index cf17646c1310..582357c20640 100644
-> --- a/include/drm/bridge/analogix_dp.h
-> +++ b/include/drm/bridge/analogix_dp.h
-> @@ -27,6 +27,7 @@ static inline bool is_rockchip(enum analogix_dp_devtype type)
->  struct analogix_dp_plat_data {
->  	enum analogix_dp_devtype dev_type;
->  	struct drm_panel *panel;
-> +	struct drm_bridge *next_bridge;
->  	struct drm_encoder *encoder;
->  	struct drm_connector *connector;
->  	bool skip_connector;
+> diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk801.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk801.yaml
+> new file mode 100644
+> index 00000000000..d591125dfe8
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/mfd/rockchip,rk801.yaml
+> @@ -0,0 +1,199 @@
+> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/mfd/rockchip,rk801.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: RK801 Power Management Integrated Circuit
+> +
+> +maintainers:
+> +  - Joseph Chen <chenjh@rock-chips.com>
+> +
+> +description: |
+> +  Rockchip RK801 series PMIC. This device consists of an i2c controlled MFD
+> +  that includes multiple switchable regulators.
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - rockchip,rk801
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  rockchip,system-power-controller:
+> +    type: boolean
+> +    description:
+> +      Telling whether or not this PMIC is controlling the system power.
+> +
+> +  system-power-controller: true
 
-It took a while to understand why you are adding the next_bridge pointer in
-struct analogix_dp_plat_data instead of struct analogix_dp_device, where it
-would be more natural. I found an answer in patch 16: with current code you
-need to place next_bridge in struct analogix_dp_plat_data because it is
-used by user drivers to attach, and those drivers have no access to struct
-analogix_dp_device. However patch 16 (which looks a very good cleanup BTW)
-next_bridge can be moved to struct analogix_dp_device.
+Why add 'rockchip,system-power-controller' while also adding
+'system-power-controller'?
 
-So I'd suggest to move patch 16 before this one if it easily doable, so
-that you can introduce next_bridge in struct analogix_dp_device from the
-beginning. Should that be impossible, you can send a separate patch to move
-next_bridge, after patch 16.
+Property 'rockchip,system-power-controller' was deprecated in commit
+961748bb1555 ("dt-bindings: mfd: rk8xx: Deprecate rockchip,system-power-controller")
 
-Best regards,
-Luca
+And because of that I submitted this patch/commit:
+b99ac7e2a1cc ("arm64: dts: rockchip: Drop rockchip prefix of s-p-c PMIC prop from rk356x")
+to replace the deprecated variant with the non-deprecated one.
 
---
-Luca Ceresoli, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
+Cheers,
+  Diederik
+
+> +
+> +  wakeup-source:
+> +    type: boolean
+> +    description:
+> +      Device can be used as a wakeup source.
+> +
+> +  vcc1-supply:
+> +    description:
+> +      The input supply for DCDC_REG1.
+> +
+> +  vcc2-supply:
+> +    description:
+> +      The input supply for DCDC_REG2.
+> +
+> +  vcc3-supply:
+> +    description:
+> +      The input supply for DCDC_REG3.
+> +
+> +  vcc4-supply:
+> +    description:
+> +      The input supply for DCDC_REG4.
+> +
+> +  vcc5-supply:
+> +    description:
+> +      The input supply for LDO_REG1.
+> +
+> +  vcc6-supply:
+> +    description:
+> +      The input supply for LDO_REG2.
+> +
+> +  vcc7-supply:
+> +    description:
+> +      The input supply for SWITCH_REG.
+> +
+> +  regulators:
+> +    type: object
+> +    patternProperties:
+> +      "^(DCDC_REG[1-4]|LDO_REG[1-2]|SWITCH_REG)$":
+> +        type: object
+> +        $ref: /schemas/regulator/regulator.yaml#
+> +        unevaluatedProperties: false
+> +    unevaluatedProperties: false
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - interrupts
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/pinctrl/rockchip.h>
+> +    #include <dt-bindings/interrupt-controller/irq.h>
+> +    #include <dt-bindings/gpio/gpio.h>
+> +    i2c {
+> +        #address-cells = <1>;
+> +        #size-cells = <0>;
+> +
+> +        rk801: rk801@27 {
+> +            compatible = "rockchip,rk801";
+> +            reg = <0x27>;
+> +            interrupt-parent = <&gpio0>;
+> +            interrupts = <RK_PC0 IRQ_TYPE_LEVEL_LOW>;
+> +            pwrctrl-gpios = <&gpio0 RK_PC1 GPIO_ACTIVE_HIGH>;
+> +            pinctrl-names = "default";
+> +            pinctrl-0 = <&pmic_int_l>;
+> +            rockchip,system-power-controller;
+> +            wakeup-source;
+> +
+> +            vcc1-supply = <&vcc12v_dcin>;
+> +            vcc2-supply = <&vcc12v_dcin>;
+> +            vcc3-supply = <&vcc5v0_sys>;
+> +            vcc4-supply = <&vcc5v0_sys>;
+> +            vcc5-supply = <&vcc3v3_sys>;
+> +            vcc6-supply = <&vcc3v3_sys>;
+> +            vcc7-supply = <&vcc3v3_sys>;
+> +
+> +            regulators {
+> +                vdd_cpu: DCDC_REG1 {
+> +                    regulator-name = "vdd_cpu";
+> +                    regulator-min-microvolt = <500000>;
+> +                    regulator-max-microvolt = <1500000>;
+> +                    regulator-initial-mode = <0x1>;
+> +                    regulator-boot-on;
+> +                    regulator-always-on;
+> +                    regulator-state-mem {
+> +                        regulator-mode = <0x2>;
+> +                        regulator-off-in-suspend;
+> +                        regulator-suspend-microvolt = <950000>;
+> +                    };
+> +                };
+> +
+> +                vcc3v3_sys: DCDC_REG2 {
+> +                    regulator-name = "vcc3v3_sys";
+> +                    regulator-min-microvolt = <3300000>;
+> +                    regulator-max-microvolt = <3300000>;
+> +                    regulator-initial-mode = <0x1>;
+> +                    regulator-boot-on;
+> +                    regulator-always-on;
+> +                    regulator-state-mem {
+> +                        regulator-mode = <0x2>;
+> +                        regulator-on-in-suspend;
+> +                        regulator-suspend-microvolt = <3300000>;
+> +                    };
+> +                };
+> +
+> +                vcc_ddr: DCDC_REG3 {
+> +                    regulator-name = "vcc_ddr";
+> +                    regulator-boot-on;
+> +                    regulator-always-on;
+> +                    regulator-state-mem {
+> +                        regulator-mode = <0x2>;
+> +                        regulator-on-in-suspend;
+> +                    };
+> +                };
+> +
+> +                vdd_logic: DCDC_REG4 {
+> +                    regulator-name = "vdd_logic";
+> +                    regulator-min-microvolt = <500000>;
+> +                    regulator-max-microvolt = <1500000>;
+> +                    regulator-initial-mode = <0x1>;
+> +                    regulator-boot-on;
+> +                    regulator-always-on;
+> +                    regulator-state-mem {
+> +                        regulator-mode = <0x2>;
+> +                        regulator-off-in-suspend;
+> +                        regulator-suspend-microvolt = <900000>;
+> +                    };
+> +                };
+> +
+> +                vdd0v9_sys: LDO_REG1 {
+> +                    regulator-name = "vdd0v9_sys";
+> +                    regulator-min-microvolt = <900000>;
+> +                    regulator-max-microvolt = <900000>;
+> +                    regulator-boot-on;
+> +                    regulator-always-on;
+> +                    regulator-state-mem {
+> +                        regulator-off-in-suspend;
+> +                        regulator-suspend-microvolt = <900000>;
+> +                    };
+> +                };
+> +
+> +                vcc_1v8: LDO_REG2 {
+> +                    regulator-name = "vcc_1v8";
+> +                    regulator-min-microvolt = <1800000>;
+> +                    regulator-max-microvolt = <1800000>;
+> +                    regulator-boot-on;
+> +                    regulator-always-on;
+> +                    regulator-state-mem {
+> +                        regulator-off-in-suspend;
+> +                        regulator-suspend-microvolt = <1800000>;
+> +                    };
+> +                };
+> +
+> +                vcc_3v3: SWITCH_REG {
+> +                    regulator-name = "vcc_3v3";
+> +                    regulator-boot-on;
+> +                    regulator-always-on;
+> +                    regulator-state-mem {
+> +                        regulator-off-in-suspend;
+> +                        regulator-suspend-microvolt = <3300000>;
+> +                    };
+> +                };
+> +            };
+> +        };
+> +    };
+
 
 _______________________________________________
 Linux-rockchip mailing list
