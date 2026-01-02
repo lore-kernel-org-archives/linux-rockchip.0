@@ -4,75 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47DEBFA3741
-	for <linux-rockchip@archiver.kernel.org>; Fri,  2 Jan 2026 12:21:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 191D1FA3744
+	for <linux-rockchip@archiver.kernel.org>; Fri,  2 Jan 2026 13:18:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ju3TDv9QxvEXlzUpcSM1sa/YTc6KSwY/H8IaAgWqc/A=; b=MEb3TEFNkTj0VG
-	fK3NmPqZcuuN7TFx64jhDAydhsZYIBiDpl0nvS3p52vkEN2pNgcQ4RzADRttyxRpCitWlbIdrVOpe
-	Is7Nw7R3VYBpO3XUTRFJfeRrkYFsn3o27DfYc3ShPW2dZtxBEMRX6PFcCtmn0vNlq8yuBlgufCLcj
-	QHQ9+0ADvh35+Ade3uAhv5g9hXuiXvIK3tiKdE/cfwXJV/zqBwC9m1oF8uPTnf2nISLuaGeRMQ5jQ
-	wgtM5SW07lZDxtR775JUEx9jcoWWM6HJKfAIgtAxRomGTPrlIsP+p5KOcSFQKATlbWjaTf8+hW016
-	r9nz9x6G9RTdwIcmo4Ew==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=7uDNFY3bGEG+VQt+0RykP8d8emsL1oTxPcXbU2Vcdrw=; b=efAIBY8XDmz1Yb
+	KKG5XdivwnWR3gu09jpl7eZUx9mxlxo9gIWmFSVK86F4pQkz+I9PpoPqM2PkivMvW9PeXs9OoDYuc
+	6Xe93PJCyfJcSOet41VK+D4u8ZrOMe+8KhVi+VXwgC7ReAWKCMZ7jW6ro+4aKB+AVxWTLxJCtsZRO
+	oIJqUMJkrIgRKl7S0oAkDJhRBp2yDj8h89qioeAkbH8QqwSj4J2MiUF+Q1kZiA1S4koBxfPHnqbPJ
+	/IbBw/U4SmQOic2E9iApRoUeu0TA3VOEJqsx6AatRA/i3pziQDz22Pnmxno34Ey83MHKzNplaQZHK
+	5U/nH/NGqNk/0cfXv6IA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vbeAC-00000008BmQ-0SM4;
-	Fri, 02 Jan 2026 12:21:52 +0000
-Received: from smtpbgau2.qq.com ([54.206.34.216])
+	id 1vbf34-00000008HfQ-0ANT;
+	Fri, 02 Jan 2026 13:18:34 +0000
+Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vbeA9-00000008Bfz-0g13;
-	Fri, 02 Jan 2026 12:21:50 +0000
-X-QQ-mid: zesmtpsz6t1767356458t5fcba08d
-X-QQ-Originating-IP: Ayds/8A1YveSLFt2cgvOK9/WokTop4Ihr+EA4NhAefI=
-Received: from [192.168.254.128] ( [106.150.157.243])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Fri, 02 Jan 2026 20:20:56 +0800 (CST)
-X-QQ-SSF: 0000000000000000000000000000000
-X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 15471507593968518145
-Message-ID: <BDDA8BCAC5E40754+f8a6f461-6f79-4ba3-b77e-a7664896799d@radxa.com>
-Date: Fri, 2 Jan 2026 21:20:55 +0900
+	id 1vbf31-00000008Hf3-0zs3
+	for linux-rockchip@lists.infradead.org;
+	Fri, 02 Jan 2026 13:18:32 +0000
+Received: by mail-pf1-x434.google.com with SMTP id d2e1a72fcca58-7f89d0b37f0so5504388b3a.0
+        for <linux-rockchip@lists.infradead.org>; Fri, 02 Jan 2026 05:18:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1767359910; x=1767964710; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=Kh0+1+chHjNEp1bDD22RGjxNzSGu6tfL89BVhbtvA6w=;
+        b=Wd0P3DXkXqVlvQTnmE5QIwdg9iGAtMQ07ttuinzCfIuavRf7iTCkJ1xc5vTUtS9ppZ
+         OLhSYyWZql5A5VueIePqhqdxfPScI9PiuQRuwZeL+5ByUdgYZGvvUIOuAXziID1g3yw8
+         SxRGj19hSH6FTg3qwTkPRmeR4QfKpC7d7J4F9SaDQGeu2Zx67GLGqDRS18D8pPT8yBfx
+         FuROnNwtj2SIbv/qgfld1ii8eSb+SfwavlhF2rY7uIF6VA0N0ftXmUVO0Fpp8ifXJYfu
+         iZpllp/RZnfpclE3dZ7zAchHwqtsCev2L+siSB6NPgeDoPA3L+m9gRAhIrmUQkcrQBfP
+         Y5/g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1767359910; x=1767964710;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Kh0+1+chHjNEp1bDD22RGjxNzSGu6tfL89BVhbtvA6w=;
+        b=SeZ5nhl4jQkTs+O53hAYcaRMOoyw8K6MYsLtyDaForPKQUcY3xjQxVAAJd4WcWQmUE
+         OaJuo60iASDZ687ojZYNszoE/WMcFNy5KJDkqIOAWOV+itPPTKMYnnv7wKGFEAfcBX+M
+         BOc+HtYBNpWqL6SqecATPy0lg9w/ty0z6onwoCC9SdEUzFAyIqEPtZjNyASivUZLLP8T
+         L7yjfsU1RxYL9b09ddDkPP23dO1oZHAzpt26LopcgyqTKxXPCqiyec2CsqSkL8V48xld
+         +s8BgS5hXGl2i4M1GBMzEBGT2AqdPOQaBpc3s2ZQFkrGCZs2OXNYruax050U0QaQnCEC
+         PjnA==
+X-Forwarded-Encrypted: i=1; AJvYcCXaj3188uls/cAutbWMwjMo5EhnlLCaHB8g+38tduAtlA5YMBXMZigLjegWpMy8qLWfMzNdrV5oX4rkBRSfWQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzc3mDwjPQX8ZmZ1e5wVRjiIWzB427tr8PAvsgU/wmGI/5m9N04
+	8lMk8jYW3ddUw2Lv0UX3QSHVUvXB8/+7Rrm3JcG2X93VOz3K2eRB2wfs
+X-Gm-Gg: AY/fxX66bmS0wIzmn9o+H7zKprS2hQYAgCMnuPkvVPH3Ik9Pb08dOjHueiHdegDV+Af
+	u/oQcnWhbfp+jrkp+wVdpiLrB9Pu5dfDirMLw9EDcuI3sJszHOzx9noVNLyX8jaGX3nbyd0faea
+	pCYzWw1sUCTxDBL+M1YhUJLVLhFq47CP3yXLEHAk8B/iXJpT+BnytbA5osqJuhB3cNXLuDJ8mnx
+	cotCV7UEy9A1/gPCGKHGtrdU2GTXbP+NhGNa4CiF+y/DIbuIl3OPZ5sHNZkfm+ZrB5YDry4lvU4
+	7BL0jAeNag+lGGVSt3k8ExnaPua9bGIgdyvvzJf1Y6Q1HQDOOhQZCnkCWKOHtSkUPQtRGa8JVTE
+	VJuCiNkc/AzuBi09PsL7JnsSjwdAHyDypKzbVNxOUIsIENVoVYuLiYAVM0I2kidw94x9vbCw82X
+	/YlsYHkg==
+X-Google-Smtp-Source: AGHT+IFOoSD4aT3DrhU3ikdyAs6DYGzFL5+ZFBK1G4TTasauTKe+kqxCEq8s+rYlew1jpVJY/wcLlw==
+X-Received: by 2002:a05:6a20:3d07:b0:35d:8881:e69b with SMTP id adf61e73a8af0-3769f3352c8mr41132629637.18.1767359909649;
+        Fri, 02 Jan 2026 05:18:29 -0800 (PST)
+Received: from rockpi-5b ([45.112.0.8])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-c1e7961e039sm35278770a12.7.2026.01.02.05.18.24
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 02 Jan 2026 05:18:29 -0800 (PST)
+From: Anand Moon <linux.amoon@gmail.com>
+To: Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Niklas Cassel <cassel@kernel.org>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Hans Zhang <18255117159@163.com>,
+	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
+	linux-pci@vger.kernel.org (open list:PCI NATIVE HOST BRIDGE AND ENDPOINT DRIVERS),
+	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Rockchip SoC support),
+	linux-rockchip@lists.infradead.org (open list:ARM/Rockchip SoC support),
+	linux-kernel@vger.kernel.org (open list)
+Cc: Anand Moon <linux.amoon@gmail.com>
+Subject: [PATCH v2] PCI: dw-rockchip: Add runtime PM support to Rockchip PCIe
+Date: Fri,  2 Jan 2026 18:47:50 +0530
+Message-ID: <20260102131819.123745-1-linux.amoon@gmail.com>
+X-Mailer: git-send-email 2.50.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1] arm64: dts: rockchip: Add USB Type-C support for Radxa
- ZERO 3W
-To: Ke Sun <sunke@kylinos.cn>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- devicetree@vger.kernel.org
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- Alvin Sun <sk.alvin.x@gmail.com>
-References: <20260101083415.1327341-1-sunke@kylinos.cn>
-Content-Language: en-US
-From: FUKAUMI Naoki <naoki@radxa.com>
-In-Reply-To: <20260101083415.1327341-1-sunke@kylinos.cn>
-X-QQ-SENDSIZE: 520
-Feedback-ID: zesmtpsz:radxa.com:qybglogicsvrsz:qybglogicsvrsz4b-0
-X-QQ-XMAILINFO: NyAagKVozfn5v0hb6uyMXmLzpL2tCiEsp6JETTFHFsz6Nn8j8X4IMgvM
-	ZwaNfdVd/5YjKNEjYL4oir4rq9xu0XKOd1TbkGPwIHa4j7F2pecdsb6N1OE36yLnDp2wYUP
-	326eX4uD/R43DI/7rsZdRQ4AYpfAqL1gdkydvrEGDZdU1XwecZs628IC1yrqiM4X94CCCj9
-	6nKHLXjpbS5nzPZcFUDZB5ngssr8iwRVMhrGN10S1T9r+SNAgG0VRKzBzae++pOKsR3swoF
-	cUaKHQKCdb4/n5YKXJeCT+xe9EdXbOGkNiMMK2QnLErkKo9vHv5FfgvIQbg3XAyBHfT4Wtj
-	3+gvJDr7sZmStmT6gzlXLRRcAVc3iOZ/p7Aj9tPdSUCJoUL1eaRlOgre8q9LBshGpBUggHb
-	DuieSGtF0rSVSQiTLwEwL9Wi3XkOYk7cMDCpoM2saRotmga4cSYdp+X9l1fUrownz7FD7gO
-	zW6W33imYpS9qOxbLKu3/UgwgFKFbSBmwEC7JFZpthfG3XnmkdtDDGmZYxbiPaFzeYULm4R
-	3kYk/GJQoLkyhLwcnyY5ChD7dNx5Bqxp6QqSkhuw7N6q/bfW0MGdRLEr7LZ4hlzfI0T2BSj
-	kCOvDdytJKAXssSRgijc0iw2rSzLKurImHnUl0WsN34btX4yn6IX0Koys8Dit0UrViOdnf2
-	G8t3fVSpaNe+8LG3pac9MNsRgRQn7PnbOgy6lLnyQV8iPXiRW6KVBoLMkCTtv/wBrTyZcWh
-	zRObLQ48CyPMk/dLxbvNLnsnkRNvjvZM6l8DXlM2Mg5StuYwLlmOT2XqGNPnXlQytnDD66s
-	nZGeoPrKgLcY4GVjHBAhtjD3T6bg3iHV6AsSqmXEaDOzNyBh6tchDL0FOpGV/y6DBRdBM5J
-	ZAVrOulpEB1Rv8SHvyMVyCeDccuMB+BithMi0Aanjuj60bL832bE+uVZePeBS661dDHf0Qj
-	3BEbkQL5WbRLs50AerGQp/T0CuKrJ5aG2tlggXPlStc1wb3sAzsKhTEyl2vKjzG8E3I0509
-	a7Y5b1Bw==
-X-QQ-XMRINFO: MSVp+SPm3vtSI1QTLgDHQqIV1w2oNKDqfg==
-X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260102_042149_636155_0C457323 
-X-CRM114-Status: GOOD (  11.96  )
+X-CRM114-CacheID: sfid-20260102_051831_331465_1BBB96D1 
+X-CRM114-Status: GOOD (  13.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,91 +104,75 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Ke,
+Add runtime powwe manageement functionality into the Rockchip DesignWare
+PCIe controller driver. Calling devm_pm_runtime_enable() during device
+probing allows the controller to report its runtime PM status, enabling
+power management controls to be applied consistently across the entire
+connected PCIe hierarchy.
 
-On 1/1/26 17:34, Ke Sun wrote:
-> Add vbus_typec regulator and fusb302 Type-C controller configuration
-> for Radxa ZERO 3W board.
-> 
-> Link: https://dl.radxa.com/zero3/docs/hw/3w/radxa_zero_3w_v1110_schematic.pdf
-> Signed-off-by: Ke Sun <sunke@kylinos.cn>
-> ---
->   .../dts/rockchip/rk3566-radxa-zero-3.dtsi     | 10 +++++++++
->   .../dts/rockchip/rk3566-radxa-zero-3w.dts     | 22 +++++++++++++++++++
->   2 files changed, 32 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3.dtsi
-> index 1ee5d96a46a1b..79448016ab490 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3.dtsi
-> @@ -35,6 +35,16 @@ led-green {
->   		};
->   	};
->   
-> +	vbus_typec: vbus-typec-regulator {
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "vbus_typec";
-> +		regulator-always-on;
-> +		regulator-boot-on;
-> +		regulator-min-microvolt = <5000000>;
-> +		regulator-max-microvolt = <5000000>;
-> +		vin-supply = <&vcc_sys>;
-> +	};
-> +
->   	vcc_1v8: regulator-1v8-vcc {
->   		compatible = "regulator-fixed";
->   		regulator-name = "vcc_1v8";
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3w.dts b/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3w.dts
-> index f92475c59deb4..54f20856bcfc6 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3w.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3w.dts
-> @@ -50,6 +50,12 @@ wifi_wake_host_h: wifi-wake-host-h {
->   			rockchip,pins = <0 RK_PB7 RK_FUNC_GPIO &pcfg_pull_none>;
->   		};
->   	};
-> +
-> +	usb-typec {
-> +		usbc0_int: usbc0-int {
-> +			rockchip,pins = <3 RK_PC7 RK_FUNC_GPIO &pcfg_pull_up>;
-> +		};
-> +	};
->   };
->   
->   &sdhci {
-> @@ -90,3 +96,19 @@ &uart1 {
->   	uart-has-rtscts;
->   	status = "okay";
->   };
-> +
-> +&i2c3 {
-> +	status = "okay";
-> +	pinctrl-0 = <&i2c3m1_xfer>;
-> +
-> +	usbc0: fusb302@22 {
-> +		compatible = "fcs,fusb302";
-> +		reg = <0x22>;
-> +		interrupt-parent = <&gpio3>;
-> +		interrupts = <RK_PC7 IRQ_TYPE_LEVEL_LOW>;
-> +		sel-gpios= <&gpio0 RK_PC5 GPIO_ACTIVE_HIGH>;
+Signed-off-by: Anand Moon <linux.amoon@gmail.com>
+---
+v2:
+   improve the commit message
+   Drop the .remove patch
+   Drop the disable_pm_runtime
+v1:
+ https://lore.kernel.org/all/20251027145602.199154-3-linux.amoon@gmail.com/
+---
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
 
-Where is "sel-gpios" defined or handled?
+diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+index f8605fe61a415..2498ff5146a5a 100644
+--- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
++++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+@@ -20,6 +20,7 @@
+ #include <linux/of_irq.h>
+ #include <linux/phy/phy.h>
+ #include <linux/platform_device.h>
++#include <linux/pm_runtime.h>
+ #include <linux/regmap.h>
+ #include <linux/reset.h>
+ 
+@@ -709,6 +710,20 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+ 	if (ret)
+ 		goto deinit_phy;
+ 
++	ret = pm_runtime_set_suspended(dev);
++	if (ret)
++		goto deinit_clk;
++
++	ret = devm_pm_runtime_enable(dev);
++	if (ret) {
++		ret = dev_err_probe(dev, ret, "Failed to enable runtime PM\n");
++		goto deinit_clk;
++	}
++
++	ret = pm_runtime_resume_and_get(dev);
++	if (ret)
++		goto deinit_clk;
++
+ 	switch (data->mode) {
+ 	case DW_PCIE_RC_TYPE:
+ 		ret = rockchip_pcie_configure_rc(pdev, rockchip);
+@@ -730,6 +745,8 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+ 
+ deinit_clk:
+ 	clk_bulk_disable_unprepare(rockchip->clk_cnt, rockchip->clks);
++	pm_runtime_disable(dev);
++	pm_runtime_no_callbacks(dev);
+ deinit_phy:
+ 	rockchip_pcie_phy_deinit(rockchip);
+ 
 
-Best regards,
-
---
-FUKAUMI Naoki
-Radxa Computer (Shenzhen) Co., Ltd.
-
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&usbc0_int>;
-> +		vbus-supply = <&vbus_typec>;
-> +	};
-> +};
+base-commit: b69053dd3ffbc0d2dedbbc86182cdef6f641fe1b
+-- 
+2.50.1
 
 
 _______________________________________________
