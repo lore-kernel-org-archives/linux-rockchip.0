@@ -4,73 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0A69FA3738
-	for <linux-rockchip@archiver.kernel.org>; Fri,  2 Jan 2026 12:18:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47DEBFA3741
+	for <linux-rockchip@archiver.kernel.org>; Fri,  2 Jan 2026 12:21:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oMjTwIsA4qr00AypNeoSLlwSOQRemxPOeJTZXJrxerY=; b=o4gz1mSw3iy/Rh
-	IFlLXt1KjDPZaKCWkjPqg2L/JUUlXHDGcZfqDGbOWYGqdSdrV5bKmyiJkfppJSZvA3DRoOgXSRXQE
-	abbfsuo+FPJQ77CvgErzcLIlWOjwmM/xNJSUyTEpXO/Y4iTQBljz4DUiFfNgUZ3hulRu8O36dZdwI
-	YZmrsQiPhsIVXkpCgbx7BpdAuXR8yfPo246rxEWVf6FZegNW7TBj5AF98/Ouw1srjqr19+7wCiL5s
-	rPkR1iOFeWA8vsv/ZDKcHgI59u7dcAjCJTKf/p96CI8PgQJkwJNf60H600VcuN+CTd8zbfQXyChwk
-	3mDBaO2VAMGKIhQVcXvQ==;
+	List-Owner; bh=Ju3TDv9QxvEXlzUpcSM1sa/YTc6KSwY/H8IaAgWqc/A=; b=MEb3TEFNkTj0VG
+	fK3NmPqZcuuN7TFx64jhDAydhsZYIBiDpl0nvS3p52vkEN2pNgcQ4RzADRttyxRpCitWlbIdrVOpe
+	Is7Nw7R3VYBpO3XUTRFJfeRrkYFsn3o27DfYc3ShPW2dZtxBEMRX6PFcCtmn0vNlq8yuBlgufCLcj
+	QHQ9+0ADvh35+Ade3uAhv5g9hXuiXvIK3tiKdE/cfwXJV/zqBwC9m1oF8uPTnf2nISLuaGeRMQ5jQ
+	wgtM5SW07lZDxtR775JUEx9jcoWWM6HJKfAIgtAxRomGTPrlIsP+p5KOcSFQKATlbWjaTf8+hW016
+	r9nz9x6G9RTdwIcmo4Ew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vbe78-00000008BWO-0suN;
-	Fri, 02 Jan 2026 12:18:42 +0000
+	id 1vbeAC-00000008BmQ-0SM4;
+	Fri, 02 Jan 2026 12:21:52 +0000
 Received: from smtpbgau2.qq.com ([54.206.34.216])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vbe73-00000008BVH-1qTK
-	for linux-rockchip@lists.infradead.org;
-	Fri, 02 Jan 2026 12:18:41 +0000
-X-QQ-mid: zesmtpsz2t1767356272t8ce57337
-X-QQ-Originating-IP: 5updBiJ6j1JD1MnXiSXA33aFX2J4IACcm/jbI5OFIJA=
+	id 1vbeA9-00000008Bfz-0g13;
+	Fri, 02 Jan 2026 12:21:50 +0000
+X-QQ-mid: zesmtpsz6t1767356458t5fcba08d
+X-QQ-Originating-IP: Ayds/8A1YveSLFt2cgvOK9/WokTop4Ihr+EA4NhAefI=
 Received: from [192.168.254.128] ( [106.150.157.243])
 	by bizesmtp.qq.com (ESMTP) with 
-	id ; Fri, 02 Jan 2026 20:17:50 +0800 (CST)
+	id ; Fri, 02 Jan 2026 20:20:56 +0800 (CST)
 X-QQ-SSF: 0000000000000000000000000000000
 X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 13118132810811575579
-Message-ID: <ADED015D50C33884+c789fd7c-c5fd-4947-8497-033d2938ac34@radxa.com>
-Date: Fri, 2 Jan 2026 21:17:50 +0900
+X-BIZMAIL-ID: 15471507593968518145
+Message-ID: <BDDA8BCAC5E40754+f8a6f461-6f79-4ba3-b77e-a7664896799d@radxa.com>
+Date: Fri, 2 Jan 2026 21:20:55 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [REGRESSION][BISECTED] wifi broken on pinebook pro
-To: Jan Palus <jpalus@fastmail.com>, Peter Robinson <pbrobinson@gmail.com>
-Cc: linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>,
- regressions@lists.linux.dev
-References: <aUKOlj-RvTYlrpiS@rock.grzadka>
- <CALeDE9OzCzbhKmc61Kgbmzr67oJnjZMjsO6yYbkXujzA-OuO+A@mail.gmail.com>
- <aVJutYTmhA14rwPY@rock.grzadka>
+Subject: Re: [PATCH v1] arm64: dts: rockchip: Add USB Type-C support for Radxa
+ ZERO 3W
+To: Ke Sun <sunke@kylinos.cn>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ devicetree@vger.kernel.org
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ Alvin Sun <sk.alvin.x@gmail.com>
+References: <20260101083415.1327341-1-sunke@kylinos.cn>
 Content-Language: en-US
 From: FUKAUMI Naoki <naoki@radxa.com>
-In-Reply-To: <aVJutYTmhA14rwPY@rock.grzadka>
+In-Reply-To: <20260101083415.1327341-1-sunke@kylinos.cn>
 X-QQ-SENDSIZE: 520
 Feedback-ID: zesmtpsz:radxa.com:qybglogicsvrsz:qybglogicsvrsz4b-0
-X-QQ-XMAILINFO: M75I2DDAzREFOT+jt4RYYkNGiDtapIzh8tg/oLJaOL5w3vlVnhrczGMO
-	ufxdNrYMdlEFzQgQfs9I2ryhhnqKE05Hs887T7Awtd6b5Dk/K8t2dovrSq4WgcUksyKeWO+
-	i/4kG8OVaCG6bVO2KQDVsPe7T3FYYWimYXm2bzambJoiPUTuqbbcUm9UeiIsGfP9LHtRCbG
-	45sOKo4lkwa3rFU5gO/pMA2BP86JBpZBY3LZZfFfk+YGu0dziuEAmNuh/Tjrur4yM5iSUAQ
-	27RSHwAsGyFQDVdxSRGsL+At8htrvOLttn+jTxNoaiV/8BawJH02EEDde5Dnf7EgE+3iJ7o
-	LMjdXVhomx7wBDT+eyZ8F4SU8tGQFPRKdrFpvh796x99An1Ch4jJ7agQjbxn75LwiPI1FaF
-	GPP1vgosB3nZVXBUedNVtwQ2oezkRmLviY9bLnWHo7hFmYEihOy2TtpiLPgw3AHOd8hAWzX
-	PmxSPDXOjfXTZexs89vSdgm03V132wbLXwEK8Dq4zq/8JAeC8eErqwJ3F7TJGf69Rde9pbl
-	GhAqtfWcvFTv2sPSQoS+71p7Dz6TH7XFlQThcNCk3NdgFDI7tJslJwgia7Q7aavdvpS4eJy
-	G2tBYlUnT+F5KRbc4qqhwQ2/5BoiD98qSaOpNVX1CYipTQwEZ4JzA7roxY59hlmj4lb/QRv
-	eVBpLzsU02L+3f4qliIgqn/CD6RpqRbHNhDX4ocmKI0pTLEYfjv7glzhdQuDKPpSJCnKsWP
-	58e/2QtKMiffAKHr2wQk5d7/Lq6SbUsuRBBpO7rQWtdxWJ7TKCUHsA1X993e1RW4oqzsvPl
-	1AXqF8CGDDFtk6e2ZXNT6hSHMp2HTvkuqkBcsKKBkD9940n7i+nV2AuMS2y48IAq86XdAs+
-	N/j3E0cyPB/eVbaI2L5+TbvnmPpsmch9L7RKzxGLtzPE/LiB2+BVOtr+rKFIyWVGCuEpm0V
-	wUmbj9cSsQ/aUDjLkX2LQXIqSrBGlMDMHQ7Xo2f/jl81J5w==
+X-QQ-XMAILINFO: NyAagKVozfn5v0hb6uyMXmLzpL2tCiEsp6JETTFHFsz6Nn8j8X4IMgvM
+	ZwaNfdVd/5YjKNEjYL4oir4rq9xu0XKOd1TbkGPwIHa4j7F2pecdsb6N1OE36yLnDp2wYUP
+	326eX4uD/R43DI/7rsZdRQ4AYpfAqL1gdkydvrEGDZdU1XwecZs628IC1yrqiM4X94CCCj9
+	6nKHLXjpbS5nzPZcFUDZB5ngssr8iwRVMhrGN10S1T9r+SNAgG0VRKzBzae++pOKsR3swoF
+	cUaKHQKCdb4/n5YKXJeCT+xe9EdXbOGkNiMMK2QnLErkKo9vHv5FfgvIQbg3XAyBHfT4Wtj
+	3+gvJDr7sZmStmT6gzlXLRRcAVc3iOZ/p7Aj9tPdSUCJoUL1eaRlOgre8q9LBshGpBUggHb
+	DuieSGtF0rSVSQiTLwEwL9Wi3XkOYk7cMDCpoM2saRotmga4cSYdp+X9l1fUrownz7FD7gO
+	zW6W33imYpS9qOxbLKu3/UgwgFKFbSBmwEC7JFZpthfG3XnmkdtDDGmZYxbiPaFzeYULm4R
+	3kYk/GJQoLkyhLwcnyY5ChD7dNx5Bqxp6QqSkhuw7N6q/bfW0MGdRLEr7LZ4hlzfI0T2BSj
+	kCOvDdytJKAXssSRgijc0iw2rSzLKurImHnUl0WsN34btX4yn6IX0Koys8Dit0UrViOdnf2
+	G8t3fVSpaNe+8LG3pac9MNsRgRQn7PnbOgy6lLnyQV8iPXiRW6KVBoLMkCTtv/wBrTyZcWh
+	zRObLQ48CyPMk/dLxbvNLnsnkRNvjvZM6l8DXlM2Mg5StuYwLlmOT2XqGNPnXlQytnDD66s
+	nZGeoPrKgLcY4GVjHBAhtjD3T6bg3iHV6AsSqmXEaDOzNyBh6tchDL0FOpGV/y6DBRdBM5J
+	ZAVrOulpEB1Rv8SHvyMVyCeDccuMB+BithMi0Aanjuj60bL832bE+uVZePeBS661dDHf0Qj
+	3BEbkQL5WbRLs50AerGQp/T0CuKrJ5aG2tlggXPlStc1wb3sAzsKhTEyl2vKjzG8E3I0509
+	a7Y5b1Bw==
 X-QQ-XMRINFO: MSVp+SPm3vtSI1QTLgDHQqIV1w2oNKDqfg==
 X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260102_041837_921879_F7DE2B4D 
-X-CRM114-Status: GOOD (  16.36  )
+X-CRM114-CacheID: sfid-20260102_042149_636155_0C457323 
+X-CRM114-Status: GOOD (  11.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,79 +89,74 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Jan,
+Hi Ke,
 
-Just FYI,
-
-On 12/29/25 21:18, Jan Palus wrote:
-> On 29.12.2025 06:23, Peter Robinson wrote:
->> On Wed, 17 Dec 2025 at 11:26, Jan Palus <jpalus@fastmail.com> wrote:
->>>
->>> WiFi no longer works on Pinebook Pro after upgrade to kernel 6.18. It
->>> appears firmware fails to load:
->>>
->>> ...
->>> mmc_host mmc0: card is non-removable.
->>> mmc_host mmc0: Bus speed (slot 0) = 400000Hz (slot req 400000Hz, actual 400000HZ div = 0)
->>> Bluetooth: hci0: BCM: features 0x0f
->>> Bluetooth: hci0: BCM4345C5 Ampak_CL1 UART 37.4 MHz BT 5.0 [Version: Version: 0039.0089]
->>> Bluetooth: hci0: BCM4345C5 (003.006.006) build 0089
->>> mmc_host mmc0: Bus speed (slot 0) = 148500000Hz (slot req 150000000Hz, actual 148500000HZ div = 0)
->>> dwmmc_rockchip fe310000.mmc: Successfully tuned phase to 55
->>> mmc0: new UHS-I speed SDR104 SDIO card at address 0001
->>> brcmfmac: brcmf_fw_alloc_request: using brcm/brcmfmac43456-sdio for chip BCM4345/9
->>> usbcore: registered new interface driver brcmfmac
->>> brcmfmac mmc0:0001:1: Direct firmware load for brcm/brcmfmac43456-sdio.pine64,pinebook-pro.bin failed with error -2
->>> brcmfmac: brcmf_sdio_bus_rxctl: resumed on timeout
->>> ieee80211 phy0: brcmf_bus_started: failed: -110
->>> ieee80211 phy0: brcmf_attach: dongle is not responding: err=-110
->>> brcmfmac: brcmf_sdio_firmware_callback: brcmf_attach failed
->>>
->>> compared to 6.17 instead of last 4 lines with errors there's single one
->>> with info about loaded firmware:
->>>
->>> brcmfmac: brcmf_c_preinit_dcmds: Firmware: BCM4345/9 wl0: May 14 2020 17:26:08 version 7.84.17.1 (r871554) FWID 01-3d9e1d87
->>>
->>> Bisected to:
->>>
->>> 6d54d935062e2d4a7d3f779ceb9eeff108d0535d is the first new commit
->>> commit 6d54d935062e2d4a7d3f779ceb9eeff108d0535d (HEAD)
->>> Author: Peter Robinson <pbrobinson@gmail.com>
->>> Date:   Wed Aug 27 16:30:37 2025
->>>
->>>      arm64: dts: rockchip: Further describe the WiFi for the Pinebook Pro
->>>
->>>      Update the wake-up pin and associated interupt details for the
->>>      Pinebook Pro WiFi module.
->>>
->>>      Signed-off-by: Peter Robinson <pbrobinson@gmail.com>
->>>      Link: https://lore.kernel.org/r/20250827143040.1644867-1-pbrobinson@gmail.com
->>>      Signed-off-by: Heiko Stuebner <heiko@sntech.de>
->>>
->>>   arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts | 18 ++++++++++++++++++
->>>   1 file changed, 18 insertions(+)
->>>
->>>
->>> With this commit reverted on top of 6.18.1 wireless connection works
->>> fine.
->>>
->>> Not sure what could be relevant but:
->>> - it's an early model, I think second batch, delivered end of 2019
->>
->> Is it the Synoptics or the Cypress/Infineon module? What firmware are you using?
+On 1/1/26 17:34, Ke Sun wrote:
+> Add vbus_typec regulator and fusb302 Type-C controller configuration
+> for Radxa ZERO 3W board.
 > 
-> Judging by the fact acquisition by Synaptics happened sometime late
-> 2020/early 2021 I guess it must be Cypress? I'm not really familiar with
-> BCM43456 chip history. Firmware files used are
-> brcm/brcmfmac43456-sdio.{bin,clm_blob,txt} exactly those found at:
+> Link: https://dl.radxa.com/zero3/docs/hw/3w/radxa_zero_3w_v1110_schematic.pdf
+> Signed-off-by: Ke Sun <sunke@kylinos.cn>
+> ---
+>   .../dts/rockchip/rk3566-radxa-zero-3.dtsi     | 10 +++++++++
+>   .../dts/rockchip/rk3566-radxa-zero-3w.dts     | 22 +++++++++++++++++++
+>   2 files changed, 32 insertions(+)
 > 
-> https://github.com/RPi-Distro/firmware-nonfree/tree/trixie/debian/config/brcm80211/brcm
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3.dtsi
+> index 1ee5d96a46a1b..79448016ab490 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3.dtsi
+> @@ -35,6 +35,16 @@ led-green {
+>   		};
+>   	};
+>   
+> +	vbus_typec: vbus-typec-regulator {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "vbus_typec";
+> +		regulator-always-on;
+> +		regulator-boot-on;
+> +		regulator-min-microvolt = <5000000>;
+> +		regulator-max-microvolt = <5000000>;
+> +		vin-supply = <&vcc_sys>;
+> +	};
+> +
+>   	vcc_1v8: regulator-1v8-vcc {
+>   		compatible = "regulator-fixed";
+>   		regulator-name = "vcc_1v8";
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3w.dts b/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3w.dts
+> index f92475c59deb4..54f20856bcfc6 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3w.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3w.dts
+> @@ -50,6 +50,12 @@ wifi_wake_host_h: wifi-wake-host-h {
+>   			rockchip,pins = <0 RK_PB7 RK_FUNC_GPIO &pcfg_pull_none>;
+>   		};
+>   	};
+> +
+> +	usb-typec {
+> +		usbc0_int: usbc0-int {
+> +			rockchip,pins = <3 RK_PC7 RK_FUNC_GPIO &pcfg_pull_up>;
+> +		};
+> +	};
+>   };
+>   
+>   &sdhci {
+> @@ -90,3 +96,19 @@ &uart1 {
+>   	uart-has-rtscts;
+>   	status = "okay";
+>   };
+> +
+> +&i2c3 {
+> +	status = "okay";
+> +	pinctrl-0 = <&i2c3m1_xfer>;
+> +
+> +	usbc0: fusb302@22 {
+> +		compatible = "fcs,fusb302";
+> +		reg = <0x22>;
+> +		interrupt-parent = <&gpio3>;
+> +		interrupts = <RK_PC7 IRQ_TYPE_LEVEL_LOW>;
+> +		sel-gpios= <&gpio0 RK_PC5 GPIO_ACTIVE_HIGH>;
 
-I'm using the same firmware for the Radxa CM3J equipped with the 
-AP6745(BCM43456) and experiencing the same error(brcmf_sdio_bus_rxctl: 
-resumed on timeout) when the interrupt is enabled.
-
-  https://lore.kernel.org/linux-rockchip/A7ADEB12E25ED346+00048ee9-c4d6-442d-a02c-cefbdc6be353@radxa.com/
+Where is "sel-gpios" defined or handled?
 
 Best regards,
 
@@ -167,17 +164,11 @@ Best regards,
 FUKAUMI Naoki
 Radxa Computer (Shenzhen) Co., Ltd.
 
->>
->>> - mainline uboot 2025.10 is used
->>>
->>>
->>> #regzbot introduced: 6d54d93506
-> 
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
-> 
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&usbc0_int>;
+> +		vbus-supply = <&vbus_typec>;
+> +	};
+> +};
 
 
 _______________________________________________
