@@ -4,73 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37AE4FA3741
-	for <linux-rockchip@archiver.kernel.org>; Fri,  2 Jan 2026 13:21:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1ED11FA3741
+	for <linux-rockchip@archiver.kernel.org>; Fri,  2 Jan 2026 14:43:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
-	Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KYrBB+uKIMolfKTWFPqnGs24Hjduod9W18ft00yB3Nc=; b=kci8kY9KJMTo4zoS4KMxAn8nIo
-	4J4DxntoXm/Hmj5c/reG3v7gB4FPXU/e4u2IuaUoMQlk/pa0Xs4CjvMXIDPmJDDsXBHkikiYr+cFe
-	dbn9lEjs+bpEs8+JHkFu1tOdPksWwVognPgZpHWR5mn6yLaJbyYzbAe+EO619hHbe7idVvjZ2TP5H
-	wQmbFBA33YEO2w8ZqU8eNh65224QhnbxTya/fD+X5fS8vJLigDV7es0xkWZmrZxef7JQmFI1Pmpzd
-	2knhQGMHMbaREX+YLN/egz6zOjeCaWbsDgDLHezjuzHfH2YOb6gSUhLfkHWx3mPIJjMZ1fc2LKVnS
-	o7Yk0zzw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
+	In-Reply-To:To:Cc:MIME-Version:Date:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=XHOwMYb1Zo8vOtJQT8auXs32tk9eg8qVuW+Dkdapsrk=; b=dKVxhcAsIq4LToiu9t2EiwfuYe
+	Nz44070Aa2edlseIRTmxvme9r0WB4IcOzm08xmM0XVTudPibR4eVEA0iqOTLofXGftED0HrvX4J+z
+	ZMzsKPDTD9IhdyKBVyFCLrNbPT6BhJXvq0rKLdLR+lDdfY0VzW8deCRkMGJDYUYqa9GbTCan6dyYn
+	Mq8hH4gD1IXdzOcauhDPfg1JQ2HC/FFCtwBeLAqYorqlC2catICkS7v8qn5Hu2ERPGzHBLadCeVts
+	05QgnPaCv/PKz2qinRCCfdury/7ZHld0bLYBmRRVyE6RhObV0nDExh+aiIoQatfKbq4++E4gTKLfD
+	fY5R631Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vbf5n-00000008HsX-2Lwb;
-	Fri, 02 Jan 2026 13:21:23 +0000
-Received: from smtpbgsg2.qq.com ([54.254.200.128])
+	id 1vbgNP-00000008NBm-3VOZ;
+	Fri, 02 Jan 2026 14:43:39 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vbf5j-00000008Hrm-3bCY
-	for linux-rockchip@lists.infradead.org;
-	Fri, 02 Jan 2026 13:21:22 +0000
-X-QQ-mid: zesmtpsz5t1767360019t004966c6
-X-QQ-Originating-IP: f5uv8FcxxwFwVM2oyRvaqaqw+9rPR4iGHUlfH84PzKc=
-Received: from [192.168.254.128] ( [106.150.157.243])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Fri, 02 Jan 2026 21:20:17 +0800 (CST)
-X-QQ-SSF: 0000000000000000000000000000000
-X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 4329218392759813520
-Message-ID: <25AF3D04647ABA51+f6f704f6-1ecc-492a-9369-7dd0993a505e@radxa.com>
-Date: Fri, 2 Jan 2026 22:20:17 +0900
+	id 1vbgNM-00000008N9A-117p;
+	Fri, 02 Jan 2026 14:43:37 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 7888544367;
+	Fri,  2 Jan 2026 14:43:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3D406C116B1;
+	Fri,  2 Jan 2026 14:43:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1767365015;
+	bh=0Df0SE8dgCkt3UZVXXK8qLY/Fji0JTvOS7Cm6KxuTP0=;
+	h=From:Date:Cc:To:In-Reply-To:References:Subject:From;
+	b=j6XwfdPvYusFqQJYWmtSc+sIl1PgjyDXKoTZsEFOL63JI66uhz/QsN2fD9KsbK84j
+	 DdSRedWHQU4eQdUEbjROQu2HEhlX7UtxUssxBAjaXYVG51CqGQaot+scXbC+YnUvmj
+	 o5PlnWWJEYex8cxwrnRzeps4PTqPPA14poWOuvjDmAmpEwl6GY9MRPke/2CFn3sB5r
+	 QOdWhbLyw83s7K9jLY6RIn8AKob2qE97e1cSTlz/29fsDfUGLOky7BvKvcpDNMT2F/
+	 msNHDTUkN3yF/Kn681Eu4TK0iuV0zo757gZ05upkBklv6ixP0bSlwCRSqj8HhPZIvb
+	 IZp9z2KyW0KZA==
+From: Rob Herring <robh@kernel.org>
+Date: Fri, 02 Jan 2026 08:43:33 -0600
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: RK3576 Rock 4D: PCIe NVMe device not detected in mainline kernel
- despite working in U-Boot
-To: Leonard Lausen <leonard@lausen.nl>,
- Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
- linux-rockchip@lists.infradead.org
-References: <4d25ff80-1cd6-4d84-b516-92aafd5be62e@lausen.nl>
- <6e3ea290-5930-40b7-82da-5dd18f3dd247@lausen.nl>
-Content-Language: en-US
-From: FUKAUMI Naoki <naoki@radxa.com>
-In-Reply-To: <6e3ea290-5930-40b7-82da-5dd18f3dd247@lausen.nl>
-X-QQ-SENDSIZE: 520
-Feedback-ID: zesmtpsz:radxa.com:qybglogicsvrsz:qybglogicsvrsz4b-0
-X-QQ-XMAILINFO: ND3CPZxVFFQcK3TVVGutNjSR+rsRVUqKOFnIOtowk31bZyEoNtYpwzZD
-	FdXXp4JpIogCjmbnS+tqZWt12wwHeWUoFLtQgD0y58gxUPdj/uEeH7A69SHgMtG+YaIc0u+
-	EoZDNn0Zv9UU4WPd2ayQGzlI7WBoSAfvgYJfNYhfobaDCysy23nUFv7KAU3OVjxxYjD189y
-	bwHT/aj5ua1ixQ5GPbO2h7+/JHftt81SNck8s1SpLO8AyVt5weYQGUFFEFLs5FMZrrnhswx
-	oxsRVNzcfFvdl/+vuV0iyPG5oAVaAftDK+Y3Q+B4LFf1N93wcCGAFt16jXQ+amVow45X6Cq
-	8m4Ea7HbpJAo3IzRSJ+JEApF4+uh06jfrhokJ/ZHOjdsSzpJw4YWToQS+GDVe2B1pn+EODc
-	MWfJc7BsCLyz0wITXQzzro89Bh2WSVbVn6+KVatXKJQgxjVUyAskrTj/EFBb69CSlJKaesB
-	UqCpXRAbLpCcgQtAS+01VBGlnpD8tR30r7tUcINN3A4YzVMPYqho0yWPs6cPrP+nnLJ44LN
-	C2FZdycSJLmOCgwxg5OxPsV5/RmahPVPYGlrRP7JTvfW4Abhk2uZmZ0mi36YNumY3JH+Kao
-	b9VXqa5gA1MfJeXV4mPuH7XcA+pK7bNaWYKX6R8+FOn/xsoXIAeTVvL8P+jDKp6icYsnXYl
-	fi25Sx3yO/mub/0UGI3y4B23pNGTr4pNBWiDcElZmF2CCBA8ezDCurl1yfYCbHkbpDr0B0V
-	LyQESaQYrK0xp0M7RmLFWjH6CBRSSCTSaK3d+lNuzqoVzP007qMb0Yj/hUfOLHv3NsuPviE
-	qTunqZ54q2bnGc6ZwptRV/m8H9OQbDFouLP8ZxsijDcSAkVj6jAhd0q7htHtyEgS61ylZb+
-	iejRSuyPndnEu4AEBKJyyrDQqYlKo4GeFPWYzIL9U7Q8bIahVsR5Va3jJnS238lSfnUxOXN
-	ZtCOXVHaHENE+uY6gblABLepxJtVrWed6P7k=
-X-QQ-XMRINFO: NS+P29fieYNwqS3WCnRCOn9D1NpZuCnCRA==
-X-QQ-RECHKSPAM: 0
+Cc: Heiko Stuebner <heiko@sntech.de>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Alvin Sun <sk.alvin.x@gmail.com>, 
+ Conor Dooley <conor+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org
+To: Ke Sun <sunke@kylinos.cn>
+In-Reply-To: <20260101083415.1327341-1-sunke@kylinos.cn>
+References: <20260101083415.1327341-1-sunke@kylinos.cn>
+Message-Id: <176736452757.3671448.8519494279051899382.robh@kernel.org>
+Subject: Re: [PATCH v1] arm64: dts: rockchip: Add USB Type-C support for
+ Radxa ZERO 3W
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260102_052120_429312_B91330C8 
-X-CRM114-Status: GOOD (  11.95  )
+X-CRM114-CacheID: sfid-20260102_064336_310911_0FE67D46 
+X-CRM114-Status: GOOD (  13.58  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,80 +69,60 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgTGVvbmFyZCwKCk9uIDEyLzI0LzI1IDIyOjMwLCBMZW9uYXJkIExhdXNlbiB3cm90ZToKPiBB
-dHRhY2hlZCB0aGUgcHJvbWlzZWQgZnVsbCBib290IGxvZyBpbmNsdWRpbmcgdGhlIHUtYm9vdCBw
-YXJ0IGFuZCBrZXJuZWwgCj4gUENJX0RFQlVHIG91dHB1dC4KCkNvdWxkIHlvdSB0cnkgbWFpbmxp
-bmUgVS1Cb290IGFuZCB0aGUgRFRCIGZyb20gZWl0aGVyIG1haW5saW5lIExpbnV4IG9yIApVLUJv
-b3Q/CgpUaGUgZm9sbG93aW5nIEhBVHMgYXJlIHdvcmtpbmc6CgotIER1YWwgMi41RyBSb3V0ZXIg
-SEFUCi0gUGVudGEgU0FUQSBIQVQKCndpdGg6CgotIFUtQm9vdCB2MjAyNi4wMS1yYzUKLSBMaW51
-eCB2Ni4xOC4xL3Y2LjE5LXJjMwoKQmVzdCByZWdhcmRzLAoKLS0KRlVLQVVNSSBOYW9raQpSYWR4
-YSBDb21wdXRlciAoU2hlbnpoZW4pIENvLiwgTHRkLgoKPiBBbSAyNC4xMi4yNSB1bSAxNDoyOSBz
-Y2hyaWViIExlb25hcmQgTGF1c2VuOgo+PiBIaSBsaW51eC1yb2NrY2hpcCwgSGkgTmljb2xhcywK
-Pj4KPj4gSSdtIHRlc3RpbmcgbWFpbmxpbmUga2VybmVsIHN1cHBvcnQgb24gdGhlIFJvY2sgNEQg
-Ym9hcmQgYW5kIAo+PiBlbmNvdW50ZXJpbmcgYW4gaXNzdWUgd2hlcmUgUENJZSBOVk1lIGRldmlj
-ZXMgYXJlIG5vdCBkZXRlY3RlZCBieSB0aGUgCj4+IGtlcm5lbCwgZGVzcGl0ZSB3b3JraW5nIGNv
-cnJlY3RseSBpbiBVLUJvb3QuIFRoYXQgaXMgZGVzcGl0ZSBOaWNvbGFzIAo+PiByZWNlbnRseSBl
-bmFibGluZyBQQ0llIHN1cHBvcnQgZm9yIFJvY2sgNEQgaW4gCj4+IDI5ZmY0YmJmZjc5MzMzNGQ2
-YWZmMjIzOGZkYzNjY2YzODU5ZDYwZGEuCj4+Cj4+IFUtQm9vdCBzdWNjZXNzZnVsbHkgZGV0ZWN0
-cyBhbmQgaW5pdGlhbGl6ZXMgdGhlIE5WTWUgZGV2aWNlOgo+Pgo+PiBwY2llQDJhMjAwMDAwOiBQ
-Q0llIExpbmtpbmcuLi4gTFRTU00gaXMgMHgwCj4+IHBjaWVAMmEyMDAwMDA6IFBDSWUgTGluayB1
-cCwgTFRTU00gaXMgMHgxMzAwMTEKPj4gcGNpZUAyYTIwMDAwMDogUENJRS0wOiBMaW5rIHVwIChH
-ZW4yLXgxLCBCdXMwKQo+Pgo+PiBEZXZpY2UgMDogVmVuZG9yOiAweDEzNDQgUmV2OiBIUFMwMDUw
-wqAgUHJvZDogVVRGUlEwMTcwSjhRU1oKPj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIFR5cGU6
-IEhhcmQgRGlzawo+PiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgQ2FwYWNpdHk6IDQ4ODM4Ni4z
-IE1CID0gNDc2LjkgR0IgKDEwMDAyMTUyMTYgeCA1MTIpCj4+Cj4+Cj4+IEhvd2V2ZXIsIGFmdGVy
-IGtlcm5lbCBib290LCBvbmx5IHRoZSBQQ0llIHJvb3QgcG9ydCBpcyB2aXNpYmxlOgo+Pgo+PiAw
-MDowMC4wIFBDSSBicmlkZ2U6IERldmljZSAxZDg3OjM1NzYgKHJldiAwMSkKPj4KPj4KPj4gUENJ
-ZSByZXNjYW4gZGVidWcgb3V0cHV0Ogo+Pgo+PiAoaW5pdHJhbWZzKSBlY2hvIDEgPiAvc3lzL2J1
-cy9wY2kvcmVzY2FuCj4+IFvCoCAxMDYuNzgyMzkyXSBwY2lfYnVzIDAwMDA6MDA6IHNjYW5uaW5n
-IGJ1cwo+PiBbwqAgMTA2Ljc5NjI0OV0gcGNpZXBvcnQgMDAwMDowMDowMC4wOiByZXN0b3JlIGNv
-bmZpZyAweDJjOiAweDAwMDAwMDAwIAo+PiAtPiAweDAwMDAwMDAwCj4+IFvCoCAxMDYuNzk3MDYw
-XSBwY2llcG9ydCAwMDAwOjAwOjAwLjA6IHJlc3RvcmUgY29uZmlnIDB4Mjg6IDB4MDAwMDAwMDAg
-Cj4+IC0+IDB4MDAwMDAwMDAKPj4gW8KgIDEwNi43OTc4MDhdIHBjaWVwb3J0IDAwMDA6MDA6MDAu
-MDogcmVzdG9yZSBjb25maWcgMHgyNDogMHgwMDAxZmZmMSAKPj4gLT4gMHgwMDAxZmZmMQo+PiBb
-wqAgMTA2Ljc5ODU4M10gcGNpZXBvcnQgMDAwMDowMDowMC4wOiBQTUUjIGRpc2FibGVkCj4+IFvC
-oCAxMDYuNzk5MDY5XSBwY2llcG9ydCAwMDAwOjAwOjAwLjA6IHNjYW5uaW5nIFtidXMgMDEtZmZd
-IGJlaGluZCAKPj4gYnJpZGdlLCBwYXNzIDAKPj4gW8KgIDEwNi43OTk3OTVdIHBjaV9idXMgMDAw
-MDowMTogc2Nhbm5pbmcgYnVzCj4+IFvCoCAxMDYuODAzNDcxXSBwY2lfYnVzIDAwMDA6MDE6IGJ1
-cyBzY2FuIHJldHVybmluZyB3aXRoIG1heD0wMQo+PiBbwqAgMTA2LjgwNDA3M10gcGNpZXBvcnQg
-MDAwMDowMDowMC4wOiBzY2FubmluZyBbYnVzIDAxLWZmXSBiZWhpbmQgCj4+IGJyaWRnZSwgcGFz
-cyAxCj4+IFvCoCAxMDYuODA0ODI5XSBwY2lfYnVzIDAwMDA6MDA6IGJ1cyBzY2FuIHJldHVybmlu
-ZyB3aXRoIG1heD1mZgo+PiAoaW5pdHJhbWZzKSBbwqAgMTA2LjkyNDE1NF0gcGNpZXBvcnQgMDAw
-MDowMDowMC4wOiBzYXZlIGNvbmZpZyAweDAwOiAKPj4gMHgzNTc2MWQ4Nwo+PiBbwqAgMTA2Ljky
-NDc2NV0gcGNpZXBvcnQgMDAwMDowMDowMC4wOiBzYXZlIGNvbmZpZyAweDA0OiAweDAwMTAwNTA3
-Cj4+IFvCoCAxMDYuOTI1MzY0XSBwY2llcG9ydCAwMDAwOjAwOjAwLjA6IHNhdmUgY29uZmlnIDB4
-MDg6IDB4MDYwNDAwMDEKPj4gW8KgIDEwNi45MjU5NThdIHBjaWVwb3J0IDAwMDA6MDA6MDAuMDog
-c2F2ZSBjb25maWcgMHgwYzogMHgwMDAxMDAwMAo+PiBbwqAgMTA2LjkyNjUzNF0gcGNpZXBvcnQg
-MDAwMDowMDowMC4wOiBzYXZlIGNvbmZpZyAweDEwOiAweDAwMDAwMDAwCj4+IFvCoCAxMDYuOTMy
-MTQyXSBwY2llcG9ydCAwMDAwOjAwOjAwLjA6IHNhdmUgY29uZmlnIDB4MTQ6IDB4MDAwMDAwMDAK
-Pj4gW8KgIDEwNi45MzQ2MDhdIHBjaWVwb3J0IDAwMDA6MDA6MDAuMDogc2F2ZSBjb25maWcgMHgx
-ODogMHgwMGZmMDEwMAo+PiBbwqAgMTA2LjkzNzIwNl0gcGNpZXBvcnQgMDAwMDowMDowMC4wOiBz
-YXZlIGNvbmZpZyAweDFjOiAweDAwMDAwMGYwCj4+IFvCoCAxMDYuOTM5NTc1XSBwY2llcG9ydCAw
-MDAwOjAwOjAwLjA6IHNhdmUgY29uZmlnIDB4MjA6IDB4MDAwMGZmZjAKPj4gW8KgIDEwNi45NDE4
-ODNdIHBjaWVwb3J0IDAwMDA6MDA6MDAuMDogc2F2ZSBjb25maWcgMHgyNDogMHgwMDAxZmZmMQo+
-PiBbwqAgMTA2Ljk0NDEzOF0gcGNpZXBvcnQgMDAwMDowMDowMC4wOiBzYXZlIGNvbmZpZyAweDI4
-OiAweDAwMDAwMDAwCj4+IFvCoCAxMDYuOTQ2MzM1XSBwY2llcG9ydCAwMDAwOjAwOjAwLjA6IHNh
-dmUgY29uZmlnIDB4MmM6IDB4MDAwMDAwMDAKPj4gW8KgIDEwNi45NDg0OTBdIHBjaWVwb3J0IDAw
-MDA6MDA6MDAuMDogc2F2ZSBjb25maWcgMHgzMDogMHgwMDAwMDAwMAo+PiBbwqAgMTA2Ljk1MDYw
-MV0gcGNpZXBvcnQgMDAwMDowMDowMC4wOiBzYXZlIGNvbmZpZyAweDM0OiAweDAwMDAwMDQwCj4+
-IFvCoCAxMDYuOTUyNjk4XSBwY2llcG9ydCAwMDAwOjAwOjAwLjA6IHNhdmUgY29uZmlnIDB4Mzg6
-IDB4MDAwMDAwMDAKPj4gW8KgIDEwNi45NTQ3NjVdIHBjaWVwb3J0IDAwMDA6MDA6MDAuMDogc2F2
-ZSBjb25maWcgMHgzYzogMHgwMDAyMDEyZAo+PiBbwqAgMTA2Ljk1Njg0N10gcGNpZXBvcnQgMDAw
-MDowMDowMC4wOiBQTUUjIGVuYWJsZWQKPj4gbHMgL3N5cy9idXMvcGNpL2RldmljZXMvCj4+IGRy
-d3hyLXhyLXggMiAwIDAgMCAuCj4+IGRyd3hyLXhyLXggNSAwIDAgMCAuLgo+PiBscnd4cnd4cnd4
-IDEgMCAwIDAgMDAwMDowMDowMC4wIC0+IC4uLy4uLy4uL2RldmljZXMvcGxhdGZvcm0vIAo+PiBz
-b2MvMjIwMDAwMDAucGNpZS9wY2kwMDAwOjAwLzAwMDA6MDA6MDAuMAo+Pgo+PiBUaGUgZnVsbCBi
-b290IGxvZyBpbmNsdWRpbmcgdGhlIHUtYm9vdCBwYXJ0IGFuZCBrZXJuZWwgUENJX0RFQlVHIAo+
-PiBvdXRwdXQgaXMgYWxzbyBhdHRhY2hlZC4KPj4KPj4gVGhhbmtzIGZvciBhbnkgaW5zaWdodHMh
-Cj4+Cj4+IEJlc3QgcmVnYXJkcywKPj4gTGVvbmFyZAo+IAo+IF9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCj4gTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0
-Cj4gTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwo+IGh0dHA6Ly9saXN0cy5pbmZy
-YWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAKCgpfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5n
-IGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
-cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+
+On Thu, 01 Jan 2026 16:34:15 +0800, Ke Sun wrote:
+> Add vbus_typec regulator and fusb302 Type-C controller configuration
+> for Radxa ZERO 3W board.
+> 
+> Link: https://dl.radxa.com/zero3/docs/hw/3w/radxa_zero_3w_v1110_schematic.pdf
+> Signed-off-by: Ke Sun <sunke@kylinos.cn>
+> ---
+>  .../dts/rockchip/rk3566-radxa-zero-3.dtsi     | 10 +++++++++
+>  .../dts/rockchip/rk3566-radxa-zero-3w.dts     | 22 +++++++++++++++++++
+>  2 files changed, 32 insertions(+)
+> 
+
+
+My bot found new DTB warnings on the .dts files added or changed in this
+series.
+
+Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
+are fixed by another series. Ultimately, it is up to the platform
+maintainer whether these warnings are acceptable or not. No need to reply
+unless the platform maintainer has comments.
+
+If you already ran DT checks and didn't see these error(s), then
+make sure dt-schema is up to date:
+
+  pip3 install dtschema --upgrade
+
+
+This patch series was applied (using b4) to base:
+ Base: attempting to guess base-commit...
+ Base: tags/next-20251219 (exact match)
+ Base: tags/next-20251219 (use --merge-base to override)
+
+If this is not the correct base, please add 'base-commit' tag
+(or use b4 which does this automatically)
+
+New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/rockchip/' for 20260101083415.1327341-1-sunke@kylinos.cn:
+
+arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3w.dtb: fusb302@22 (fcs,fusb302): 'sel-gpios' does not match any of the regexes: '^pinctrl-[0-9]+$'
+	from schema $id: http://devicetree.org/schemas/usb/fcs,fusb302.yaml
+arch/arm64/boot/dts/rockchip/rk3566-radxa-zero-3w.dtb: fusb302@22 (fcs,fusb302): 'connector' is a required property
+	from schema $id: http://devicetree.org/schemas/usb/fcs,fusb302.yaml
+
+
+
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
