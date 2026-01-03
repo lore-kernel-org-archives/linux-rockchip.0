@@ -4,75 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E62DFC6180
-	for <linux-rockchip@archiver.kernel.org>; Sat,  3 Jan 2026 14:24:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C848FC6175
+	for <linux-rockchip@archiver.kernel.org>; Sat,  3 Jan 2026 16:41:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=69UhWfolL8V54a3rbwcQMXncJttWbtUnh/5Zc7rthtQ=; b=D4/v1iHjl8+eRdgfgSzVm6UjIo
-	IyY4SeBl2MMtypwRNZGdhpAo6isbCiBLiB5HhQITEvdvpetY31H33jusNS5niW5Utl5z4NiRr3u3b
-	Fsp5J5I0Gk3Bruo7krSrVcBNFNTIEmAaJhXWf4Z1IgBLo5vWL3LzExyhUZvp1ohGDrMqLSdpbTxYg
-	tpaSHvgnPUErbTLISKYH/SJDpVK2vgWjIFIsDQFexqtbyMlpYu5V/l59+c+5cJo7vubBotwY8nx0m
-	5Czw1bdlc1QIDHcWhZXJh88YLKyyljabpszrfztrTu/Su5IvVFZqAQSK6RjSTsUEJAGQJHVG/KO0y
-	jlYDg0bg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=02cFmD66ugPSoIGbw/rvPU6Bl6dRljetUS19q9G7qeU=; b=PcI1uCu+ElyeAw
+	syW0tZjy8WXDZqEFkWu/SbdqmeI/ntPBrDK3QjRgpInk2qSGBYJBXwzDKNfKpx2OWUdki5wBs6CFy
+	kjRD9O0AAuvaYc9cVM0rF3eLur5YFLEn2Tr5MTU8IJx6s6gFOuTknDili3BA+Fqs371kCcYBWgX+U
+	9vQcGb6a75UBat28cP5PR3ajdeUHRiFF1Zfnha69P+1hlLj4rxkuRyrsuMLnkI3EUV69EckPvCoUP
+	Er4IsX7wFfunT0z4QgeBi8lgQ7L0LuZzou7UNLeRL7ZA8sw1wADiznUe/zjB4w4cYhrmqJdtHJ62v
+	h5YBdXAL3sRD3JCtBxnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vc2YJ-00000009PEa-0moS;
-	Sat, 03 Jan 2026 14:24:23 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1vc4hB-00000009de5-3TUK;
+	Sat, 03 Jan 2026 16:41:41 +0000
+Received: from mail-qv1-xf2c.google.com ([2607:f8b0:4864:20::f2c])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vc2YF-00000009PE8-3ghT;
-	Sat, 03 Jan 2026 14:24:21 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1767450251; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=GrDAJsOcMRqa4lmRjcJ8byk9lPym882PrTIq79tcqvVWrr6QsydRXjaVBVtI3T/zgVCHVY8IroVf0Q2YwKgOwThXT5gz1ac63sKPV7Jzvre9ewDed+efyyggAJvj+cdV1yFPbtnjMCfFKDCnXrY/2l0ycWiP2TmOx+DCLMN6m5k=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1767450251; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=Ih+WSwVVDojt8+S5KlRj+VrWY8LbNzRPse4rqBZZ5G0=; 
-	b=mVJ63CjVN7jPXgOHuxu07CPxAqC0rV4eEoSFgaCCmR/wXImHSGLWcubp1BgJ0u8nW9nnadcqTSpbWxY6chxBrmn9bRC6/mMSpbh0+2g9joNJ6Sl8U8Obb19n2/v0PXWEBSBU1NC3hS7Lfq5wWm4MyFqgqI258flC/r6KfC956JU=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
-	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1767450251;
-	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
-	bh=Ih+WSwVVDojt8+S5KlRj+VrWY8LbNzRPse4rqBZZ5G0=;
-	b=MpCacc/zU7n4iYLpFcx3C1+y7S1j8UVNz1NHwBplAokSKOgMRlDU5WYfUC+SdFgi
-	cCbEQz3/3E+UcaTmCbm9pimWXbU3Ll990H2KRkCmyTi0QYMSOrElO8ZwlSnAVndCs+l
-	zKXqFK8XoJyYI2w6vIxu1BNyeUWimIAvV+2mDCdc=
-Received: by mx.zohomail.com with SMTPS id 1767450248307364.7110964115078;
-	Sat, 3 Jan 2026 06:24:08 -0800 (PST)
-Received: by venus (Postfix, from userid 1000)
-	id 8D11E18054C; Sat, 03 Jan 2026 15:24:03 +0100 (CET)
-Date: Sat, 3 Jan 2026 15:24:03 +0100
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Anand Moon <linux.amoon@gmail.com>
-Cc: Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Heikki Krogerus <heikki.krogerus@linux.intel.com>, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, FUKAUMI Naoki <naoki@radxa.com>, 
-	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, Diederik de Haas <didi.debian@cknow.org>, 
-	Yongbo Zhang <giraffesnn123@gmail.com>, 
-	"open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, 
-	"moderated list:ARM/Rockchip SoC support" <linux-arm-kernel@lists.infradead.org>, 
-	"open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>, open list <linux-kernel@vger.kernel.org>, 
-	"open list:USB TYPEC CLASS" <linux-usb@vger.kernel.org>
-Subject: Re: [PATCH v1 0/3] Typc fusb302 powerloss issue on Radxa Rock 5b
-Message-ID: <aVkinPvh_jxdh9wm@venus>
-References: <20260103083232.9510-1-linux.amoon@gmail.com>
+	id 1vc4h8-00000009ddK-06O6
+	for linux-rockchip@lists.infradead.org;
+	Sat, 03 Jan 2026 16:41:40 +0000
+Received: by mail-qv1-xf2c.google.com with SMTP id 6a1803df08f44-8888a1c50e8so174927776d6.0
+        for <linux-rockchip@lists.infradead.org>; Sat, 03 Jan 2026 08:41:37 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=rowland.harvard.edu; s=google; t=1767458496; x=1768063296; darn=lists.infradead.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=mlKFI5VRK7mDczHswg21LQqMhaeoNo0R7gM8QnlAtPU=;
+        b=VZenfrNndJZwgC9Nkbk2neKozs5bhgkcLb3ctCImJxDbsUN/W2+6KhkyHDoQ2orErQ
+         IWgvqXPThjnXEUUrgxYfPbpOkZT/Hb5PXJ7PNDNF2ngEhFOOIVNxFZqkAY/fovAXgF2D
+         jhgcmTpf12VTI59vriWhlxGS8fzy86rw2lvBydWPbhyDhl5p3c5TV2ft/p9vDolMwrQv
+         59G9S4RJqkUC0ECG7vt5q7RGdT40qH6LMxOF47QCo3dzXUg2efty5E77CeCtM8Pkyioa
+         +3dHm7O2qcLTdx4JGOgLo7qKUCA1kYc3Oego7IXXkPCK3E6oruERn6+2+V4yuN87DysH
+         /8Cg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1767458496; x=1768063296;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=mlKFI5VRK7mDczHswg21LQqMhaeoNo0R7gM8QnlAtPU=;
+        b=QjWLl6lBbZAv+LcD4l8JDetZgjZHsw3/547Li7gQheO0/zTFXtI6F5/3VLHHfhjifE
+         9jVo1LiGEAjreQBcDCXJ0vm7id9YC+/zZdC1VXQlANovZVVjohDZFE4r5DSTR5emxapW
+         HuVxSX06v31PG6gXewMNLwn4GaA/H4OvyLMw95Iyp/VnCBcgErPlaFdm9+yMXoz0GCpm
+         BazI+QjClTvqBbBQ+101z3vmP31052sFGeVugf96EZaACE730ezI5CGEbFzAj+HKsb/L
+         MYmnOgp+ZndiUWxWuyhIh7vV9XL9S1Almrygl69f8M36tt+eGuLp2PO6GAk1hPL591EW
+         m3iQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWiLuLML7lUzYyXUNYRyRXKoGqx+yQUUvXbI1UrQ7jnkPUAax7hkFTQ0OjHLQdqpb6ij44e9Yg2+j1K1uU87A==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxNm8YZ+fTBrwT2UKPmMkOpo5PGOoXekYkR3EZ+kOAAqNLBj/2w
+	xQadMFz0bZSihxcT5SljeZNE23Q0rVrvTb0a2bcyMC9iXnj/20KSdtNKX+uX6bLW1Q841vRSscl
+	qvyk=
+X-Gm-Gg: AY/fxX4PPnd2SgFywpXXpOQU5TGsU3KpMbmzD2xY13zyayRxf75T4UnD3ik/22f8xNg
+	eU8hDT1qjj5gxt7p2xpD/H8BToEvmxWr4HicljYe5cpVJ8KvsEQnFc6rg1npErFEafFM0AcF1Xh
+	lMh6PrH2MzhqAmciMj+rRPU5LQ6v8R63yb18eHLoojbXvmCwQGthtDbLFf4tXAeu8cgO/CFQS4f
+	KiTp62ZMctteEZojju5Wm15X/AUcE/ukw4t5zOErGy0VYVuoyG5BzLXUy0zrThExv209rCOy4HU
+	JuXi3C0bnzaWLnBnTmZkaBmP9TS3S2mWe4/ozvfIhbvFf58Bo9+XYyN8gK8oNN9rVEkfNP4f/ez
+	GA9fdkN+HozMAy1GcHBJs6Kqakgxm6WryR3tdZal/fUht1H1BndIwuFGJR0JlTcKqzTe40PGrzi
+	VATZVin1w/EzFL
+X-Google-Smtp-Source: AGHT+IFEZA7vyZ0ao1b1ph7zvhvjOx5pO8dLWGenWSlCMl0fhScK2fp2NqonAO6GMTVcN0krOHmCfA==
+X-Received: by 2002:a0c:fbc4:0:b0:797:1a0d:cdd3 with SMTP id 6a1803df08f44-88d82526111mr480719386d6.19.1767458496232;
+        Sat, 03 Jan 2026 08:41:36 -0800 (PST)
+Received: from rowland.harvard.edu ([2601:19b:d03:1700::16e7])
+        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-88d9aa363e3sm318143286d6.57.2026.01.03.08.41.34
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 03 Jan 2026 08:41:35 -0800 (PST)
+Date: Sat, 3 Jan 2026 11:41:32 -0500
+From: Alan Stern <stern@rowland.harvard.edu>
+To: Huacai Chen <chenhuacai@kernel.org>
+Cc: Diederik de Haas <diederik@cknow-tech.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Huacai Chen <chenhuacai@loongson.cn>, linux-usb@vger.kernel.org,
+	linux-kernel@vger.kernel.org, stable@vger.kernel.org,
+	Shengwen Xiao <atzlinux@sina.com>,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH] USB: OHCI/UHCI: Add soft dependencies on ehci_hcd
+Message-ID: <561129d8-67ff-406c-afe8-73430484bd96@rowland.harvard.edu>
+References: <2025123049-cadillac-straggler-d2fb@gregkh>
+ <DFBMNYF0U5PK.24YOAUZFZ0ESB@cknow-tech.com>
+ <73d472ea-e660-474c-b319-b0e8758406c0@rowland.harvard.edu>
+ <CAAhV-H6drj1df3Y4_Z67t4TzJ5n6YiexsEHKTPvi1caNvw5H9A@mail.gmail.com>
+ <0c85d288-405f-4aaf-944e-b1d452d0f275@rowland.harvard.edu>
+ <CAAhV-H5GdkMg-uzMpDQPGLs+gWNAy6ZOH33VoLqnNyWbRenNDw@mail.gmail.com>
+ <34c7edd0-3c0c-4a57-b0ea-71e4cba2ef26@rowland.harvard.edu>
+ <CAAhV-H7j=cD9dkaB5bWxNdPtoVR4NUFvFs=n46TaNte1zGqoOA@mail.gmail.com>
+ <98e36c6f-f0ee-40d2-be7f-d2ad9f36de07@rowland.harvard.edu>
+ <CAAhV-H601B96D9rFrnARho4Lr9A+ah7Cx7eKiPr=epbG17ODHQ@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20260103083232.9510-1-linux.amoon@gmail.com>
-X-Zoho-Virus-Status: 1
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-1.4.3/267.430.24
-X-ZohoMailClient: External
+Content-Disposition: inline
+In-Reply-To: <CAAhV-H601B96D9rFrnARho4Lr9A+ah7Cx7eKiPr=epbG17ODHQ@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260103_062419_962290_9FB099CD 
-X-CRM114-Status: GOOD (  25.32  )
+X-CRM114-CacheID: sfid-20260103_084138_407853_E6EAFDF5 
+X-CRM114-Status: GOOD (  22.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,150 +109,44 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6937280880723277711=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
---===============6937280880723277711==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="fhxt6xjqdij5sxjm"
-Content-Disposition: inline
-
-
---fhxt6xjqdij5sxjm
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v1 0/3] Typc fusb302 powerloss issue on Radxa Rock 5b
-MIME-Version: 1.0
-
-Hello Anand,
-
-On Sat, Jan 03, 2026 at 02:01:16PM +0530, Anand Moon wrote:
-> On the Radxa Rock 5B, the system occasionally experiences intermittent
-> hard resets during the boot process. Initially, I suspected a power supply
-> issue, but further investigation points to the Type-C fusb302 module as
-> the cause.
->=20
-> Specifically, probing or reloading the fusb302 module triggers a hard res=
-et,
-> which can result in immediate power loss and a reboot.
->=20
-> [root@rockpi-5b ~]# rmmod fusb302
-> [root@rockpi-5b ~]# lsmod | grep  fusb302
-> [root@rockpi-5b ~]# modprobe fusb302
-> [root@rockpi-5b ~]# [ 3389.031608][ T7143] typec_fusb302 4-0022: Initiati=
-ng hard-reset, which might result in machine power-loss.
-> [ 3390.030444][ T7143] typec_fusb302 4-0022: Initiating hard-reset, which=
- might result in machine power-loss.
-
-If you see this message the TypeC port manager (TCPM) state machine
-reached the hard reset error state. A USB-PD hard reset involves
-removing VBUS for a short time, which effectively removes the board
-power on ROCK 5B. Unfortunately the situation is quite complex :)
-
-> I attempted to trace the issue using ftrace but was unable to
-> pinpoint the root cause. The problem appears to originate either
-> from the I2C controller or the PMIC reset.
-
-I2C and PMIC are not at fault. This is all about USB-PD
-communication itself.
-
-> I have identified a potential workaround involving the I2C SCL debounce s=
-ettings
-> for the RK3588 and submitted a patch here:
->=20
-> [1] https://lore.kernel.org/all/20260103052506.6743-1-linux.amoon@gmail.c=
-om/
-
-This is most likely a red herring and just slightly changing timings
-in the USB PD communication.
-
-> Please note that the submitted changes address a minor aspect but do not =
-fully
-> resolve the underlying issue.
-
-I don't expect any fix from this series regarding your problem. Also
-I suggest having a look at my talk at the Linux Plumbers Conference
-=66rom last month where I discussed this issue :)
-
-slides: https://lpc.events/event/19/contributions/2156/attachments/1784/386=
-1/improving-stability-for-TCPM-using-boards-that-are-not-self-powered.pdf
-video: https://www.youtube.com/watch?v=3DDmLsePJoH8I
-
-Something that might be sensible to do on your end is figure out
-*how* the state machine ended up in the error state and check if
-we can avoid it. The related code for that lives in
-drivers/usb/typec/tcpm/tcpm.c and quite complex. I use the
-following two patches to ease debugging:
-
- * https://gitlab.collabora.com/hardware-enablement/rockchip-3588/linux/-/c=
-ommit/6edc68e3c0ec4c209b5e96b848e17201059ce9ee
- * https://gitlab.collabora.com/hardware-enablement/rockchip-3588/linux/-/c=
-ommit/8ca8b1d6ee36e80f794bcf351a8b78d5a96daf06
-
-Combined with CONFIG_DYNAMIC_DEBUG=3Dy and booting with the following
-kernel arguments: loglevel=3D8 tcpm.dyndbg=3D"+p" fusb302.dyndbg=3D"+p"
-
-Greetings,
-
--- Sebastian
-
->=20
-> Thanks
-> -Anand
->=20
-> Anand Moon (3):
->   arm64: dts: rockchip: rk3588-rock-5b-5bp-5t: Correct Type-C pin bias
->     settings
->   arm64: dts: rockchip: rk3588-rock-5b-5bp-5t: Fix USB host phy-supply
->     on Rock 5b-5bp-5t SbC
->   usb: typec: fusb302: Switch to threaded interrupt handler
->=20
->  arch/arm64/boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi | 7 +++----
->  drivers/usb/typec/tcpm/fusb302.c                        | 7 ++++---
->  2 files changed, 7 insertions(+), 7 deletions(-)
->=20
->=20
-> base-commit: 805f9a061372164d43ddef771d7cd63e3ba6d845
-> --=20
-> 2.50.1
->=20
-
---fhxt6xjqdij5sxjm
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmlZJoAACgkQ2O7X88g7
-+prmAQ//Szd3e+4Q3obakorrCA/Rkjd/Falf3rVKj3JWkmeucNnOTL2jHofdgZPQ
-Up3hSKfSWMN/zCotdRopg8tBkTAC6IfHfouCbq5n/ksodO4+yXH8VZ/XqisJW6wi
-b+Nd4pWrThDpeQ4a8Tq+qEpvFbmRUxbCktoKVb8hQY6YF0GMvjGUOWiJ3NhwrKEC
-M+PIICA6+pDqwvkY3ULR65kYBE9o7fIlaRwvz9MT+R+XzdJ4v6q7L+p6w4fNgppJ
-Yf4I0PgROlpHTWhaeYKS/EdlMqszFKrW+3ykVrO2BxusCFEtzI5jm065tNomBWoC
-Yy/LWQcyCE4yb5/fupabsBgmbSN/AZqpGMS1OMivIP1DLlF4s5Qzcn4Tpoeqzjo+
-JU6BVpXv5v3ms4DUZN1cCwOf8lg2KugFccqut6uH640IndAlwrfElsC/ac6NNAWK
-uhXfnJ7VDJtVFjF3t0qQ/960JdA+MpMnEHI3px+9IP46Mq43OTL4YITn5mSetckz
-Jie3G1ctO4nroo0ZBWlDh7zNn97bDbhpshBYKK9fR8lhEmchoVBhRJ1nRPtX9cW3
-ulvUri6WY1/QEi/erCXrsVxYMhYSm1H/is7tXDChwdbb0eZfmJBRzSK2CMxbsbyr
-O1zEi87Ei8ax4giABrrIVB2XsNmQNvpL/OCqHmog9v0Al0ysdm0=
-=tlFx
------END PGP SIGNATURE-----
-
---fhxt6xjqdij5sxjm--
-
-
---===============6937280880723277711==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============6937280880723277711==--
-
+T24gU2F0LCBKYW4gMDMsIDIwMjYgYXQgMTE6NTc6NDdBTSArMDgwMCwgSHVhY2FpIENoZW4gd3Jv
+dGU6Cj4gT24gU2F0LCBKYW4gMywgMjAyNiBhdCAxMTozM+KAr0FNIEFsYW4gU3Rlcm4gPHN0ZXJu
+QHJvd2xhbmQuaGFydmFyZC5lZHU+IHdyb3RlOgo+ID4gU2luY2UgdGhlc2Ugc3lzdGVtcyBkb24n
+dCB1c2UgUENJLCB0aGUgcXVlc3Rpb24gSSByYWlzZWQgZWFybGllciBzdGlsbAo+ID4gbmVlZHMg
+dG8gYmUgYW5zd2VyZWQ6IEhvdyBkbyB0aGV5IHJvdXRlIGNvbm5lY3Rpb25zIGJldHdlZW4gdGhl
+IHBvcnRzCj4gPiBhbmQgdGhlIHR3byBjb250cm9sbGVycz8KPiA+Cj4gPiBUaGVyZSBtYXkgYmUg
+c29tZSBleGNlcHRpb25zLCBidXQgZm9yIHRoZSBtb3N0IHBhcnQsIHRoZSBjb2RlIGluCj4gPiBl
+aGNpLWhjZCB3YXMgd3JpdHRlbiBhc3N1bWluZyB0aGF0IG9ubHkgUENJLWJhc2VkIGNvbnRyb2xs
+ZXJzIHdpbGwgaGF2ZQo+ID4gY29tcGFuaW9ucy4gIElmIHlvdSB3YW50IHRvIG1ha2UgYW4gZXhj
+ZXB0aW9uIGZvciBsb29uZ3Nvbi0yazA1MDAsIHlvdQo+ID4gd2lsbCBuZWVkIHRvIGZpZ3VyZSBv
+dXQgaG93IHRvIGdldCBpdCB0byB3b3JrLgo+IExvb25nc29uLTJLMDUwMCB1c2UgRUhDSS9PSENJ
+IHdpdGggcGxhdGZvcm0gYnVzLCB3aGlsZQo+IExvb25nc29uLTJLMTAwMC8yMDAwIHVzZSBFSENJ
+L09IQ0kgd2l0aCBQQ0kgYnVzLiBUaGV5IHVzZSB0aGUgc2FtZSBVU0IKPiBJUCBjb3Jlcywgc28g
+dGhlIHJvdXRlIGNvbm5lY3Rpb25zIGFyZSBwcm9iYWJseSB0aGUgc2FtZS4KCldpdGggUENJIHdl
+IGtub3cgZXhhY3RseSB3aGljaCBjb21wYW5pb24gY29udHJvbGxlciBlYWNoIHBvcnQgaXMgCmNv
+bm5lY3RlZCB0by4gIElzIHRoYXQgdHJ1ZSBpbiB5b3VyIHNpdHVhdGlvbj8KCk9yIGRvIHlvdSBo
+YXZlIG9ubHkgb25lIGNvbXBhbmlvbiBjb250cm9sbGVyPwoKRm9yIHRoYXQgbWF0dGVyLCBob3cg
+bWFueSBVU0IgcG9ydHMgZG8gdGhlc2Ugc3lzdGVtcyBoYXZlPyAgQXJlIHNvbWUgb2YgCnRoZW0g
+VVNCLTEgb25seSBvciBVU0ItMiBvbmx5PwoKPiA+IEhhdmUgeW91IHRlc3RlZCBhbnkgb2YgdGhv
+c2Ugc3lzdGVtcyB0byBzZWUgaG93IHRoZXkgYmVoYXZlIGlmIGEgVVNCLTEKPiA+IGRldmljZSBp
+cyBhbHJlYWR5IHBsdWdnZWQgaW4gYW5kIHJ1bm5pbmcgd2hlbiB0aGUgZWhjaS1oY2QgZHJpdmVy
+IGdldHMKPiA+IGxvYWRlZD8KCllvdSBkaWQgbm90IGFuc3dlciB0aGlzIHF1ZXN0aW9uLgoKVGhl
+cmUgYXJlIG90aGVyIGlzc3VlcyBpbnZvbHZpbmcgY29tcGFuaW9uIGNvbnRyb2xsZXJzLCBjb25u
+ZWN0ZWQgd2l0aCAKaGliZXJuYXRpb24uICBZb3Ugc2hvdWxkIHRha2UgYSBsb29rIGF0IGNvbW1p
+dCA2ZDE5YzAwOWNjNzggKCJVU0I6IAppbXBsZW1lbnQgbm9uLXRyZWUgcmVzdW1lIG9yZGVyaW5n
+IGNvbnN0cmFpbnRzIGZvciBQQ0kgaG9zdCAKY29udHJvbGxlcnMiKSwgd2hpY2ggd2FzIGxhdGVy
+IG1vZGlmaWVkIGJ5IGNvbW1pdCAwNTc2ODkxOGI5YTEgKCJVU0I6IAppbXByb3ZlIHBvcnQgdHJh
+bnNpdGlvbnMgd2hlbiBFSENJIHN0YXJ0cyB1cCIpIGFuZCBhIGZldyBvdGhlcnMuCgpBbHNvLCBy
+ZWFkIHRocm91Z2ggdGhlIGN1cnJlbnQgY29kZSBpbiBoY2QtcGNpLmMgKGZvcl9lYWNoX2NvbXBh
+bmlvbigpLCAKZWhjaV9wcmVfYWRkKCksIGVoY2lfcG9zdF9hZGQoKSwgbm9uX2VoY2lfYWRkKCks
+IGVoY2lfcmVtb3ZlKCksIGFuZCAKZWhjaV93YWl0X2Zvcl9jb21wYW5pb25zKCkpLiAgWW91ciBu
+b24tUENJIHN5c3RlbSB3aWxsIG5lZWQgdG8gaW1wbGVtZW50IApzb21lIHNvcnQgb2YgZXF1aXZh
+bGVudCB0byBhbGwgdGhlc2UgdGhpbmdzLgoKQWxhbiBTdGVybgoKX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0
+CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVh
+ZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
