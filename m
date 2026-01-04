@@ -4,62 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99650FC6182
-	for <linux-rockchip@archiver.kernel.org>; Sat,  3 Jan 2026 20:10:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B864C2A06A
+	for <linux-rockchip@archiver.kernel.org>; Sun,  4 Jan 2026 02:38:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1CCeotsC8GtQPPCVeUE/sn7Fe/5bdoarUV9U6AqADic=; b=KfqO6vHIH5If5a
-	TjLtkCE0eDld7OirbgCMLlu16p7KVFbOCzaMRZMInEgu3QCheVP2hSqI+Rkuvu1xgO6WTAKIPqmiN
-	daFyfhd2g3P37ma82ndgK3r1jUomKhvX4vjTsS3DYISeUGzV6L/T+tohBifvhlpAD6mH0Odgj89KY
-	dTlg6YxUVuun68XsYtnBsL1szYuWw6zI87TYEYuMGtfZlSoUuCKEkg2VN2L+LIzyHytpF1/AF++j4
-	Ub6/gVP1zZILLdefaB6KL72osV459JKoxrayX5HVrK0ZS8xR4YKHJP/JUDp15A4H8iY886eSuqqMS
-	O0qRFSNw6T6LYLit0Gew==;
+	List-Owner; bh=NacxfqnZgBPDcxALLWdugtqf7U9lWAAnGizrz2A0K2Y=; b=n6xejbt3gMc9ze
+	ttMxedo6AFge9PyCZquvIYhcpLjeraNTDNV/Y2kRHm15bUKVvOLMAWb2UmL4RlH8ufDRu0krlChI8
+	Lv84/YtsR5xJ/LCaS2UztwoE9uYvx3jzyQ20+o6vhqJ+GzYiIkWN23AIULMdCGrncwa9ZKUIJJBBL
+	b9EQpCEEX5e3I3aAjgHgus9CscCbpMJ7KDCu9EfrarVtdAU9qYml0oDycaZmseZsA2udIv/kbqBDa
+	b7Yu7/pjBCNmhbCgUgfajGtQROGbYO+rDgxCCvk/jqWjgyub2/4p0Emr360FFOpk34OC4jCDXmdyV
+	rUnwa2m2sDdXa092q2CQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vc7xD-00000009lCS-1xWv;
-	Sat, 03 Jan 2026 20:10:27 +0000
-Received: from mail.mainlining.org ([5.75.144.95])
+	id 1vcE0C-00000009y9g-2951;
+	Sun, 04 Jan 2026 02:37:56 +0000
+Received: from smtpbguseast3.qq.com ([54.243.244.52])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vc7xA-00000009lBk-05UG;
-	Sat, 03 Jan 2026 20:10:25 +0000
-DKIM-Signature: v=1; a=rsa-sha256; s=202507r; d=mainlining.org; c=relaxed/relaxed;
-	h=Message-ID:Date:Subject:To:From; t=1767471012; bh=5zS3GPiKua9VdhT2Gn8Zsd5
-	LMSooy+BVRaJpFgfl9+s=; b=Ug+sPEiv9fSbDr87P8hJArBBffoTyyAcUfBNo/Ua3aCZeaT0zF
-	s76+y9MITczt+7iH4r+EZdi3m0K/CudH6e4S6eEHmLL1qKgQEuYw3a5A6qFLTad3TcTcQ7LUzGn
-	eKp73i5k9OsZFgeymMCi0Tkel/t/G1sRfBkIFTOOpVX0SfUMokPBZZsCs3xPkL7/jsEPaM3eEBB
-	io3tmYBwFrTrclzgKH8k6xbCf7nKoDaUzECv58tVU3m7A6rj7+McsURPwOjT10bapi+u9M0+Npw
-	QkGaTK6aqbHj1FIo9EpH7p22AIpjDT8jrzQ4KIBTL5FATo2I+LQE+ZDmdfbzHcF42CQ==;
-DKIM-Signature: v=1; a=ed25519-sha256; s=202507e; d=mainlining.org; c=relaxed/relaxed;
-	h=Message-ID:Date:Subject:To:From; t=1767471012; bh=5zS3GPiKua9VdhT2Gn8Zsd5
-	LMSooy+BVRaJpFgfl9+s=; b=yoOz5K7aGnqDoUVzRKr4ISO6kGNEoGw44bcvAnrcVyvZwo1fhW
-	sUKTfXr4iB40CXJsjmzv8Bwfyl34/1X0QABA==;
-From: Dang Huynh <dang.huynh@mainlining.org>
-To: Detlev Casanova <detlev.casanova@collabora.com>,
- Olivier =?UTF-8?B?Q3LDqnRl?= <olivier.crete@collabora.com>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Heiko Stuebner <heiko@sntech.de>, Diederik de Haas <diederik@cknow-tech.com>,
- Dmitry Osipenko <dmitry.osipenko@collabora.com>,
- Thomas Gleixner <tglx@linutronix.de>, Dragan Simic <dsimic@manjaro.org>,
- Chukun Pan <amadeus@jmu.edu.cn>, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- Christian Hewitt <christianshewitt@gmail.com>
-Subject: Re: [PATCH v2 0/3] media: rockchip: rkvdec: add support for the VDPU346
- variant
-Date: Sat, 03 Jan 2026 20:10:08 +0000
-Message-ID: <8993014.lOV4Wx5bFT@melttower>
-In-Reply-To: <20251226113140.573759-1-christianshewitt@gmail.com>
-References: <20251226113140.573759-1-christianshewitt@gmail.com>
-MIME-Version: 1.0
+	id 1vcE09-00000009y8L-1uGT;
+	Sun, 04 Jan 2026 02:37:55 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
+	s=altu2504; t=1767494242;
+	bh=TNDZLWKhrHJbwF/L2WBt8vwEwWwKgWB+TaD3IW0Xxj0=;
+	h=From:To:Subject:Date:Message-Id;
+	b=XiSlwM3FVSC1U/iPZcM5xUrKlu8CJqni3KS05ziFp0jc7a2AGqZuKsoyM6aIg68O6
+	 U5qMN2+l8mBewGAcBqSsmc7F/4kuBGxztggkMbqmJDSERgMR7VHaoh1mqs4uhHueBb
+	 3Fsnrc6C6uZIRylRD9kwVgGmGF3r9kuDlImNlPos=
+X-QQ-mid: zesmtpsz2t1767494235td39373c4
+X-QQ-Originating-IP: BaSWeEwo/TkAf5is9miro6TBD6fknxA8mfPjOfcMmzQ=
+Received: from DESKTOP-8BT1A2O.localdomain ( [58.22.7.114])
+	by bizesmtp.qq.com (ESMTP) with 
+	id ; Sun, 04 Jan 2026 10:37:12 +0800 (CST)
+X-QQ-SSF: 0000000000000000000000000000000
+X-QQ-GoodBg: 0
+X-BIZMAIL-ID: 16547497180258447957
+EX-QQ-RecipientCnt: 22
+From: Chaoyi Chen <kernel@airkyi.com>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Quentin Schulz <quentin.schulz@cherry.de>,
+	Chaoyi Chen <chaoyi.chen@rock-chips.com>,
+	Kever Yang <kever.yang@rock-chips.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	John Clark <inindev@gmail.com>,
+	FUKAUMI Naoki <naoki@radxa.com>,
+	Jimmy Hon <honyuenkwun@gmail.com>,
+	Dragan Simic <dsimic@manjaro.org>,
+	Michael Riesch <michael.riesch@collabora.com>,
+	Peter Robinson <pbrobinson@gmail.com>,
+	Alexey Charkov <alchark@gmail.com>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Andy Yan <andy.yan@rock-chips.com>
+Cc: devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH 1/2] dt-bindings: arm: rockchip: Add rk3576 evb2 board
+Date: Sun,  4 Jan 2026 10:37:02 +0800
+Message-Id: <20260104023703.118-2-kernel@airkyi.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20260104023703.118-1-kernel@airkyi.com>
+References: <20260104023703.118-1-kernel@airkyi.com>
+X-QQ-SENDSIZE: 520
+Feedback-ID: zesmtpsz:airkyi.com:qybglogicsvrgz:qybglogicsvrgz6b-0
+X-QQ-XMAILINFO: NCtt2ALvHOv3QZeVyegWhrUERdDvfxlnohqEaZcCChyYC5NyBdTWLBuq
+	9Jqua0mlYafonPL4kdpKk3Me+k1XU9keCZDMnJfQnBtP+4dVz/dYRkyYLFR5slw4raJkA/q
+	+AmCpn2QqEVuD9eegBTlki0+huDSXDE5Wxvzgs1Jvhb5Qr3KktUp9+lLKGTgwuTeVvUKy0S
+	8YP3wwWcPgO2A9PUjt1P9DDQNDrCwYozRBAf+gLknPzLhr6KPXHTXszDSl1+ZHJfWqA/8Tu
+	8Fh2/0gtlYSmy8sZZIjtIz9Nx2Vapo3pdLKWzA34cT164qtjQ60+Or/jHB0tZGNOjvwAjp1
+	nBRPhpqU6pTpkWn75VO5SWaf2UZJLSAfIuePpVqBs+MOAg6XFsDXGg6ZtnyyeljDHt7z+oo
+	Tlf/XWUIp223MJ52ub2sJ+eFMiiKyxqNfybpZ5BF+7RPxORDuaB7W6LFTx2XQYV1W1J9YRu
+	PpEggBH7tYqIRmxOylTSoDvkY77jyM1GS2ofHLBogIzZ82Q4PLB8ReRC+jBNcpxwCdPA0gX
+	bpGCkI5EPzOGSzbY5+K2IuUs4ppQ4tDHGyO6DlzTSiaZRue+/FY9FfZtmST5WV8x70LG7Oo
+	1pTU6u8vca3/fj3omyO3++vW7YJynlhg/TJps19kmbSoH5NyuB9apuOZ/T8fh43D4pw5MTe
+	u3dv9AEW3lvrWHaJSm+lSEYaOXfqbcsZlXFVQXnc7gdUP7ffiJ2kKgCoZrcuXgCfhI+/d43
+	5R25IhotDdsPVtLxxvDietsLbURpBUa0P/qV85QVaXUNDqKSSdi5FPnILTRPoHKo0gzSfHS
+	sTRBWYGzUxMb8du4fRv9ByHr9yDAp1X08o67xuA5yJ34MZrMOlqkVMNlUjpJ6tHlD3PoSla
+	hjVA6Aj/15sqCk3ff1mOWaHfqklm3yCISTUSZCGqJS5AWH+5xQbwDcuUxPez59UZ/RE8bxZ
+	3Wz5UrmoIPw6NCMrBfPFIfmChmlEJ/3tvS82kpeABOlFwdy/GLQbw7TeMRYGCeBSE2fU=
+X-QQ-XMRINFO: Nq+8W0+stu50tPAe92KXseR0ZZmBTk3gLg==
+X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260103_121024_234026_DE3B6A08 
-X-CRM114-Status: GOOD (  22.15  )
+X-CRM114-CacheID: sfid-20260103_183754_061244_59A6A187 
+X-CRM114-Status: UNSURE (   9.26  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,67 +105,41 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgQ2hyaXN0aWFuLAoKT24gRnJpZGF5LCBEZWNlbWJlciAyNiwgMjAyNSAxMTozMTozN+KAr0FN
-IENvb3JkaW5hdGVkIFVuaXZlcnNhbCBUaW1lIENocmlzdGlhbiAKSGV3aXR0IHdyb3RlOgo+IFRo
-aXMgc2VyaWVzIGRlcGVuZHMgdXBvbiBEZXRsZXYgQ2FzYW5vdmEncyBjdXJyZW50IHY3IHNlcmll
-cyBmb3IgVkRQVTM4MSBhbmQKPiBWRFBVMzgzIHN1cHBvcnQgWzBdLiBJdCBhZGRzIHN1cHBvcnQg
-Zm9yIHRoZSBWRFBVMzQ2IElQIGJsb2NrIHVzZWQgZm9yCj4gSDI2NCwgSEVWQyBhbmQgKGluIGFj
-dGl2ZSB3b3JrKSBWUDkgb24gdGhlIFJLMzU2WCBib2FyZHMuIFZEUFUzNDYgYXBwZWFycwo+IHRv
-IGJlIGEgY2xvc2UgcmVsYXRpb24gdG8gVkRQVTM4MSB1c2VkIHdpdGggUkszNTg4LCBleGNlcHQg
-d2l0aCBhIHNpbmdsZQo+IGNvcmUsIG91dHB1dCBsaW1pdGVkIHRvIDRLLCBhbmQgbWlub3IgZmVh
-dHVyZSBkaWZmZXJlbmNlcywgZS5nLiBIRVZDIGxldmVsCj4gNS4xIG9uIFZEUFUzNDYgdnMgNi4x
-IG9uIFZEUFUzODEuIFRvIGhhbmRsZSBkaWZmZXJlbmNlcyB3ZSBkZWNsYXJlIGEgbmV3Cj4gY29t
-cGF0aWJsZS4KPiAKPiBUaGUgZGV2aWNlLXRyZWUgY2hhbmdlcyBhcmUgZGVyaXZlZCBmcm9tIHBy
-aW9yLWFydCBpbiBEZXRsZXYncyBwYXRjaGVzIGZvcgo+IFJLMzU3NiBhbmQgUkszNTg4LCB0aGUg
-dmVuZG9yIGtlcm5lbCBbMV0sIGFuZCBzb21lIGVhcmxpZXIgcGF0Y2ggYXR0ZW1wdHMKPiBmcm9t
-IFBpb3RyIE9uaXN6Y3p1ayBhbmQgRGllZGVyaWsgZGUgSGFhcy4KPiAKPiBUaGUgcmVnaXN0ZXIg
-ZGlmZmVyZW5jZXMgYmV0d2VlbiBWRFBVMzQ2IGFuZCBWRFBVMzgxIGFwcGVhciB0byBiZSBtaW5p
-bWFsIHNvCj4gd2UgY3VycmVudGx5IGFuZCBpbnRlbnRpb25hbGx5IHJldXNlIHRoZSBWRFBVMzgx
-IGgyNjQsIGhldmMsIGFuZCByZWdzIGZpbGVzCj4gdG8gYXZvaWQgZHVwbGljYXRpbmcgY29kZS4g
-VGhlcmUgaXMgc29tZSBldmlkZW5jZSBvZiBidWZmZXIgc2l6ZSBjaGFuZ2VzIGluCj4gdGVzdGlu
-ZyB3aGljaCBzdGlsbCBuZWVkIHRvIGJlIGV4cGxvcmVkLiBJZiBmdXJ0aGVyIHJlZ2lzdGVyIGFu
-YWx5c2lzIG5lZWRzCj4gc2VwYXJhdGUgZmlsZXMgZm9yIFZEUFUzNDYgdGhlIHJlZmFjdG9yaW5n
-IHdpbGwgYmUgYmV5b25kIG15IGN1cnJlbnQgbjAwYgo+IGNvZGluZyBza2lsbHMgYW5kIEkgd2ls
-bCBlaXRoZXIgbmVlZCBzb21lIGNvYWNoaW5nIG9yIHdvdWxkIGJlIGhhcHB5IHRvCj4gcGFzcyB0
-aGUgc2VyaWVzIG92ZXIgdG8gYSBtb3JlIGV4cGVyaWVuY2VkIGRldmVsb3Blci4KPiAKPiBOQjog
-VGVzdGluZyB3aXRoIHRoZSB2MSBzZXJpZXMgc2hvd2VkIGxvd2VyIG1icHMgYml0cmF0ZSBwZXJm
-b3JtYW5jZS4gVGhpcwo+IGFwcGVhcnMgdG8gYmUgcmVzb2x2ZWQgdGhvdWdoIGl0J3MgdW5jbGVh
-ciB0byBtZSB3aGV0aGVyIHRoaXMgcmVzdWx0cyBmcm9tCj4ga2VybmVsIGNoYW5nZXMgb3IgdGhl
-IG9uZ29pbmcgcmV3b3JraW5nIG9mIGZmbXBlZyB2NGwyX3JlcXVlc3Qgc3VwcG9ydCBbMl0uCj4g
-SG93ZXZlciB3aXRoIG15IGN1cnJlbnQgTGludXggNi4xOS1yYzIgdGVzdCBicmFuY2ggWzNdIEkn
-bSBub3cgYWJsZSB0byBwbGF5Cj4gSmVsbHlmaXNoIEgyNjQgYW5kIEhFVkMgdGVzdCBtZWRpYSBv
-dmVyIDEwMG1icHMuCj4gCj4gQ2hhbmdlcyBzaW5jZSB2MToKPiAtIERyb3AgRE8tTk9ULU1FUkdF
-IHBhdGNoIGFzIGNoYW5nZXMgaW5jbHVkZWQgaW4gRGV0dmxldiB2NyBzZXJpZXMKPiAtIEFkYXB0
-IHRvIHZhcmlhbnQvY2FwYWJpbGl0eSBjaGFuZ2VzIGluIERldGxldidzIHY3IHNlcmllcwo+IC0g
-QWRkIGJpbmRpbmdzIGFjayBmcm9tIFJvYgo+IC0gQWRkIHJrdmRlYyBhY2sgZnJvbSBOaWNvbGFz
-Cj4gLSBSZWJhc2UgYWdhaW5zdCBMaW51eCA2LjE5LXJjMgo+IAo+IFswXSBodHRwczovL3BhdGNo
-d29yay5rZXJuZWwub3JnL3Byb2plY3QvbGludXgtcm9ja2NoaXAvbGlzdC8/c2VyaWVzPTEwMzQ3
-OTQKPiBbMV0KPiBodHRwczovL2dpdGh1Yi5jb20vcm9ja2NoaXAtbGludXgva2VybmVsL2Jsb2Iv
-ZGV2ZWxvcC02LjYvYXJjaC9hcm02NC9ib290L2QKPiB0cy9yb2NrY2hpcC9yazM1NnguZHRzaSNM
-MTUzOSBbMl0KPiBodHRwczovL2NvZGUuZmZtcGVnLm9yZy9Ld2lib28vRkZtcGVnL2NvbW1pdHMv
-YnJhbmNoL3Y0bDJyZXF1ZXN0LXYzIFszXQo+IGh0dHBzOi8vZ2l0aHViLmNvbS9jaGV3aXR0L2xp
-bnV4L2NvbW1pdHMvcm9ja2NoaXAtNi4xOS55Cj4gCj4gQ2hyaXN0aWFuIEhld2l0dCAoMyk6Cj4g
-ICBtZWRpYTogZHQtYmluZGluZ3M6IHJvY2tjaGlwOiBBZGQgUkszNTY4IFZpZGVvIERlY29kZXIg
-YmluZGluZ3MKPiAgIG1lZGlhOiBya3ZkZWM6IEFkZCBzdXBwb3J0IGZvciB0aGUgVkRQVTM0NiB2
-YXJpYW50Cj4gICBhcm02NDogZHRzOiByb2NrY2hpcDogQWRkIHRoZSB2ZHB1MzQ2IFZpZGVvIERl
-Y29kZXJzIG9uIFJLMzU2WAo+IAo+ICAuLi4vYmluZGluZ3MvbWVkaWEvcm9ja2NoaXAsdmRlYy55
-YW1sICAgICAgICAgfCAgIDIgKwo+ICBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU2
-eC1iYXNlLmR0c2kgfCAgNDkgKysrKysrKysrCj4gIC4uLi9tZWRpYS9wbGF0Zm9ybS9yb2NrY2hp
-cC9ya3ZkZWMvcmt2ZGVjLmMgICB8IDEwMyArKysrKysrKysrKysrKysrKysKPiAgMyBmaWxlcyBj
-aGFuZ2VkLCAxNTQgaW5zZXJ0aW9ucygrKQoKSSB0ZXN0ZWQgdGhpcyBwYXRjaCBzZXJpZXMgb24g
-bXkgUkszNTY2IGJvYXJkIHdpdGggbXkgb3duIHRlc3QgdmlkZW9zIGFuZCBCQkIgCigxMDgwcDYw
-IGFuZCA0azMwKSB1c2luZyBtcHYgd2l0aCBbMV0gcGF0Y2hzZXQuCgpUaGUgY29tbWFuZCBJIHVz
-ZWQgd2FzOgpgbXB2IC0tdm89ZG1hYnVmLXdheWxhbmQgLS1od2RlYz12NGwycmVxdWVzdCBpbnB1
-dF9maWxlLm1wNGAKCkJvdGggSDI2NCBhbmQgSEVWQyBwbGF5cyB3aXRoIG1pbm9yIGZyYW1lZHJv
-cHMgKHdoaWNoIHRvIG1lIGlzbid0IG5vdGljZWFibGUpLgoKWW91IGNhbiBhZGQgbXkgVGVzdGVk
-LWJ5OgpUZXN0ZWQtYnk6IERhbmcgSHV5bmggPGRhbmcuaHV5bmhAbWFpbmxpbmluZy5vcmc+Cgpb
-MV06IGh0dHBzOi8vZ2l0aHViLmNvbS9tcHYtcGxheWVyL21wdi9wdWxsLzE0NjkwCgpCZXN0IHJl
-Z2FyZHMsCkRhbmcKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5m
-cmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
-bnV4LXJvY2tjaGlwCg==
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+
+Add devicetree binding for the rk3576 evb2 board.
+
+Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+---
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index 6aceaa8acbb2..59ed57082003 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -1136,7 +1136,9 @@ properties:
+ 
+       - description: Rockchip RK3576 Evaluation board
+         items:
+-          - const: rockchip,rk3576-evb1-v10
++          - enum:
++              - rockchip,rk3576-evb1-v10
++              - rockchip,rk3576-evb2-v10
+           - const: rockchip,rk3576
+ 
+       - description: Rockchip RK3588 Evaluation board
+-- 
+2.51.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
