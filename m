@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF08EC2A069
-	for <linux-rockchip@archiver.kernel.org>; Sun,  4 Jan 2026 19:15:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D546C2A077
+	for <linux-rockchip@archiver.kernel.org>; Sun,  4 Jan 2026 19:15:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+sx78akEEZT8KDwSV96U8jVMjYq7z4Yp1MmIUO0CPis=; b=w5X/Ae5a76Ewbq
-	Mwbm2uMgRZnIE0xxhbgUqxUfYZSCVKry8hcxnVO/glWzcztXap7RG22jL4Zvwdm0tgr1XBHWuUA8+
-	PSEGy806xhEtSnyu+CeZ0y7K3zbG35+wZ7TTwNTSi3OmxkVCX4O+6lbGHqKyj+93oeWWfJqdGlbZ/
-	IluneneWZE6JImunMTuBvB2ius0I8TO0x1rwm1uXVoo6MOX09m4bIkX0cDZhbDmLStZYnFA/ZSDyu
-	EzaMQvamNWfqNVlD6d/tiLjg8we4l0aayfl4Kjt+dwK1WfhQYdQfnICRPYh/kBrYwO7aRD6u0849h
-	4dXZ1zsit6U69Ypvy49g==;
+	List-Owner; bh=v3H7ODHpLyZEkAGA094E6cUmqaSKmu+68XfXSLDo4eA=; b=oZtk7ANBbq63vU
+	fCzQp0jhvlhAAqmIICXZRDLiBCICziubEhqzPwdV8vxFAigTmuRjtUpgaVvP9B1XGdcHf94p8PSUl
+	LERF3VfbSslwn97w4Xt0K/l9ovZZe8amTLyat7+oQD3NolfCSn3BaKls6B2XAzaa0i+rFgfpf2Cf3
+	YfyjX7pCsz4X55F3zaMzh+h+0WNMv6/SPgu/aO23JvQhiM9z0xkHEM/zNtMkDqwJFIcqOJtEE4Yh1
+	8thKx5kfEFJQL1AJLqBGqsIzcopf57osGqkU5wDWiJz00N+/QMlgsvkf+UoXcCX7Vwu7jSjt+BiOV
+	yLALm6GHY4IohGsDiSEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vcTZL-0000000AOlw-2sRn;
+	id 1vcTZL-0000000AOlg-0Fwh;
 	Sun, 04 Jan 2026 19:15:15 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vcTZJ-0000000AOkH-0fME;
-	Sun, 04 Jan 2026 19:15:13 +0000
+	id 1vcTZI-0000000AOkF-3hMb;
+	Sun, 04 Jan 2026 19:15:12 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-Type:Content-ID:Content-Description;
-	bh=krUEwvQtFBfxhDWJO7NHKWidgy0n/k7HYBmF9kBHcZE=; b=AWUKqaRfrM3RISkMVZSYaY9A3x
-	XI7aSWnAnbPEIj6zQDEwGRwHFWR6lGtDZRIkkKnvGBm5Xf4DYvohsQ9cU+Oml50Avbirc0IENKy8+
-	ryQ9MHuzLxpY417KcdMEDH1fXxTVwinLhJsNZJGMgzsnDXp1hWeR+j0zppRfcf7vYbZcLOxD6RpoF
-	ZVrhXnEnQxLuUu1/jwlZ2a9GGzb/yISVseMw/EWXnz+l9pjwPEYgvQtLOKGa4wy8juZ64axr2+AM4
-	0LFoHgNuf//upg/IV6C9eJ/p4W7/wWKC6dRHWfosNx2DzpeG/geY7B3Mtp0jI4xhUFvIjNEQHsQ54
-	ASNQNEHQ==;
+	bh=HSw1IaweIkWmZgcN12gmjxMT6CneZYi7udZOkO6OjGE=; b=jMwbMgItlE8qpkXB8+AiS/ok5o
+	JzM1QdT/kl5uE/tL8Jtt8qFAOJUEBfDdDsSVoUl1BHeB/RQ60C7u/MOxMq5lVfNVdmTfYL6EgPXtU
+	nSym/ocgFUNikvsMpawhgXXC5muLZC4jol3Fy/QaqwUgK/Uu4NbxeMcntGWxc13uzLGG88410mZ7L
+	5MMnFYxWtQwWx5dZY3MkBEl88bgKTvoiSxEi8iUSWoGNu67O5aeUsaxcQeYrISyUFaI66HjIAWtDw
+	pcoUEFCS7ndtjNXKpf7BlbbEoQrQ+nq0VJAqcIolfxeiInsRdAi7xRYO/yHsn35eymkUclVzyujyf
+	TbRZ/ghg==;
 Received: from gloria.sntech.de ([185.11.138.130])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vcTZG-00000007HIC-1054;
+	by casper.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vcTZF-00000009Kyy-3ESg;
 	Sun, 04 Jan 2026 19:15:11 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
 	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type;
-	bh=krUEwvQtFBfxhDWJO7NHKWidgy0n/k7HYBmF9kBHcZE=; b=o4Y87TThVKhJGNENMgptNDzxC9
-	0Bos1zVLGBH7Y/NT4m5kd2ah+v+0u97/rug+/6f1SmNQsoN0W+LfyBCSr55sQkWVm9aHZKXsiLv8D
-	fWB3amjeQh7UdMj6/+qOyH845mWSVirpS66Ea5ZAwK6wAv4JEJFEB41463xXWjqTlGm7jVe58zLkE
-	72kavU9ayuFFVbCvOmZByoo1yumfkPD0pbBdpO6tZgU6gjWFIU+73cQCrjWOpr9TrMInvtJ8ToykK
-	ES9WycngaP0ViBhok1b361V8kjVanRxHTIuKQEmTANX54fQj3LjEFfFVdwvPuy8aJqBznzvQKZ/vb
-	bCZMcOcw==;
+	bh=HSw1IaweIkWmZgcN12gmjxMT6CneZYi7udZOkO6OjGE=; b=xy8zIJpAk7m1GpF2Bkk3AECZCe
+	LKk6E0njVq1w5pJ36IxnE+1tb7mLD52w0SgJxFINIE3wYmIw3fLwuNXpk3+gmW+VAOJr5R+GCK7sY
+	RqpCJYtgaXYPBQuC0wpdCp58wWzlbwf+z3kyVstq8WjOm6fQNIiq2Nyzjekk5sAHm84s39IlVU+XM
+	Ric9GhEp09mRkW7IMbiZIYrHPUpX/QQN8BgIGBosSYPyQh9iiK2JZrwmx19f4Tv0xZhGk822G6QK6
+	B/KdyhtCHLSN+DgDHmGAIH1rsAf9e+mWHCdfHDYeDuSoMxYLvm7ku9wWLzZLJ9GqKvQr5APp/JQ9z
+	CfA+wWag==;
 Received: from i53875ac4.versanet.de ([83.135.90.196] helo=phil..)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1vcTZB-0012Mf-IS; Sun, 04 Jan 2026 20:15:06 +0100
+	id 1vcTZA-0012Mf-DJ; Sun, 04 Jan 2026 20:15:05 +0100
 From: Heiko Stuebner <heiko@sntech.de>
 To: heiko@sntech.de
 Cc: robh@kernel.org,
@@ -64,16 +64,16 @@ Cc: robh@kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH 4/5] dt-bindings: arm: rockchip: add TS133 to RK356x-based QNAP NAS devices
-Date: Sun,  4 Jan 2026 20:14:47 +0100
-Message-ID: <20260104191448.2693309-5-heiko@sntech.de>
+Subject: [PATCH 2/5] arm64: dts: rockchip: Fix the common combophy + SATA on QNAP TSx33 devices
+Date: Sun,  4 Jan 2026 20:14:45 +0100
+Message-ID: <20260104191448.2693309-3-heiko@sntech.de>
 X-Mailer: git-send-email 2.47.2
 In-Reply-To: <20260104191448.2693309-1-heiko@sntech.de>
 References: <20260104191448.2693309-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260104_191510_382980_912C49C0 
-X-CRM114-Status: GOOD (  11.40  )
+X-CRM114-CacheID: sfid-20260104_191509_868209_7ECA6286 
+X-CRM114-Status: GOOD (  11.49  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,43 +90,96 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-QNAP builds a number of variants of the RK356x-based NAS design.
-
-Add the 1-bay TS133 variant.
-
-This one is a tiny bit special as it is based around the RK3566 variant
-of the mostly similar RK3566/RK3568 SoCs.
+The common used SATA controller on all TSx33 devices is actually SATA2.
+So move the SATA controller + combophy enablement to their correct
+position between shared dtsi and board devicetrees.
 
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 ---
- .../devicetree/bindings/arm/rockchip.yaml          | 14 +++++++++-----
- 1 file changed, 9 insertions(+), 5 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3568-qnap-ts233.dts  |  6 +++---
+ arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts  |  6 +++---
+ arch/arm64/boot/dts/rockchip/rk3568-qnap-tsx33.dtsi | 10 +++++-----
+ 3 files changed, 11 insertions(+), 11 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-index d496421dbd87..2a5105be3d34 100644
---- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-+++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-@@ -894,11 +894,15 @@ properties:
-           - const: rockchip,rk3568
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts233.dts b/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts233.dts
+index 9a7d58e7ccc0..e76502180788 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts233.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts233.dts
+@@ -18,8 +18,8 @@ aliases {
+ 	};
+ };
  
-       - description: QNAP TS-x33 NAS devices
--        items:
--          - enum:
--              - qnap,ts233
--              - qnap,ts433
--          - const: rockchip,rk3568
-+        oneOf:
-+          - items:
-+              - const: qnap,ts133
-+              - const: rockchip,rk3566
-+          - items:
-+              - enum:
-+                  - qnap,ts233
-+                  - qnap,ts433
-+              - const: rockchip,rk3568
+-/* connected to sata2 */
+-&combphy2 {
++/* Connected to usb_host0_xhci */
++&combphy0 {
+ 	status = "okay";
+ };
  
-       - description: Radxa Compute Module 3 (CM3)
-         items:
+@@ -93,7 +93,7 @@ hdd2_led_pin: hdd2-led-pin {
+ 	};
+ };
+ 
+-&sata2 {
++&sata1 {
+ 	status = "okay";
+ };
+ 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts b/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts
+index 02d0974d79be..708e7f1f8d0d 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433.dts
+@@ -28,8 +28,8 @@ vcc3v3_pcie: regulator-vcc3v3-pcie {
+ 	};
+ };
+ 
+-/* connected to sata2 */
+-&combphy2 {
++/* Connected to usb_host0_xhci */
++&combphy0 {
+ 	status = "okay";
+ };
+ 
+@@ -151,7 +151,7 @@ hdd4_led_pin: hdd4_led-pin {
+ 	};
+ };
+ 
+-&sata2 {
++&sata1 {
+ 	status = "okay";
+ };
+ 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568-qnap-tsx33.dtsi b/arch/arm64/boot/dts/rockchip/rk3568-qnap-tsx33.dtsi
+index c372ca40fd50..482d8584ec88 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3568-qnap-tsx33.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3568-qnap-tsx33.dtsi
+@@ -112,13 +112,13 @@ vcc5v0_usb: regulator-vcc5v0-usb {
+ 	};
+ };
+ 
+-/* connected to usb_host0_xhci */
+-&combphy0 {
++/* Connected USB3 on TS133 / SATA1 on all the others */
++&combphy1 {
+ 	status = "okay";
+ };
+ 
+-/* connected to sata1 */
+-&combphy1 {
++/* Connected to SATA2 */
++&combphy2 {
+ 	status = "okay";
+ };
+ 
+@@ -484,7 +484,7 @@ &pmu_io_domains {
+ 	status = "okay";
+ };
+ 
+-&sata1 {
++&sata2 {
+ 	status = "okay";
+ };
+ 
 -- 
 2.47.2
 
