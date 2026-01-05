@@ -4,58 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6FB1C2A082
-	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Jan 2026 10:04:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7AADFC2A09A
+	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Jan 2026 11:29:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:Cc:From:Subject:
+	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IS/+CnSD7jyDHglboH+MmPLblZp2U+ximFz7HpUL2Vw=; b=eelOu9cLkJK01D
-	DeJ5Ph990HoE74GIFEvPzX4Co6z4F1u9Hd20vIeslFYEm3aRXv4BFa8thGKQXTgZ9ixmTfYMDNAWv
-	VYUPRPVo5GHeYngq71MbJak6K7yng0J/eV3wPeYOJ8hWJgEsy9zF7+FWqZymMQ+gr+75Z8ccVws9z
-	ZT4R6x+iFLKPegVzxH57Fi9Dr6t7s729LAi5Q1pRggdeRKvRODy3YYZi93bjto+tJvTCSlM6FdR9b
-	SY/LDpVpV3j8nPz/iNjvySJKH2IPjV2XNMFZr0s8VKotIp4Xu4eisibiS+AA6brH6wRtDD0a/WhaU
-	V7aMFq9/x8FpC600tPXA==;
+	List-Owner; bh=7cc9E/zsoaqxB5kAKExYNcKJgB/35ZyHYrcAa8fD3tk=; b=SiqroDSDZ/4IZ3
+	GJC0QrbyQGvthkSqvISpg90unEvaUAh94ourPTzg/lMebIwV9w3/1cogNtT5YZJax8fPYWvm8iRxn
+	m8ZPehGT7ctaNo5v4HNmhpL+avdWiccT5Kz32jSlJy17AqHtwZnEr1nLUeeIUFZJ9rIHAYmEfCjwa
+	c6sNuSyn8yZy+F5wZsZGTGvaoO23ewkr25P//SPir0u3XJH5Au1/lyjgA8/WNv+88SYBv8Tj8SuGZ
+	YM0fesKUwKKfPk6dOWjHxqOPRHCLZWs8/ZvCuuwpvPC7tG09bv9hcyIpEnl5EwVBbnlh7xCP/ipk2
+	BwbpA0/p/HOFtqU1Kqcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vchRg-0000000B5fS-2Yu7;
-	Mon, 05 Jan 2026 10:04:16 +0000
-Received: from mail-m4921.qiye.163.com ([45.254.49.21])
+	id 1vcimI-0000000BC1v-0Iln;
+	Mon, 05 Jan 2026 11:29:38 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vchRd-0000000B5ey-0SDt
-	for linux-rockchip@lists.infradead.org;
-	Mon, 05 Jan 2026 10:04:15 +0000
-Received: from [172.16.12.14] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 2f8a465c6;
-	Mon, 5 Jan 2026 18:04:06 +0800 (GMT+08:00)
-Message-ID: <27a654a1-b6a9-44f9-94f1-46da559cac6a@rock-chips.com>
-Date: Mon, 5 Jan 2026 18:04:05 +0800
+	id 1vcimE-0000000BC1C-30WE;
+	Mon, 05 Jan 2026 11:29:35 +0000
+Received: from pendragon.ideasonboard.com (cpc89244-aztw30-2-0-cust6594.18-1.cable.virginm.net [86.31.185.195])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 15C42664;
+	Mon,  5 Jan 2026 12:29:10 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1767612550;
+	bh=iISwdZtvnnraV/VMYYVj79jvGkuZPTBqF1C6SfCyOhY=;
+	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+	b=EzzMb8HOeneWwzjW6sYtITaQ8Sg50f2HmArAmxA9vGADkwgV6rGLYbY4Aps7IK0Ys
+	 qdJMpeVTgDso/wLf6WaCRV6v3Uylym63LK83uGB9IhtwGTE6E+6Vvc5YbsbEn0WI1L
+	 L90b+d9rvoArIvwQYmg3m+NbAijw4cYgT/Na4k7k=
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Cc: shawn.lin@rock-chips.com,
- Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
- linux-rockchip@lists.infradead.org
-Subject: Re: RK3576 Rock 4D: PCIe NVMe device not detected in mainline kernel
- despite working in U-Boot
-To: Leonard Lausen <leonard@lausen.nl>
-References: <4d25ff80-1cd6-4d84-b516-92aafd5be62e@lausen.nl>
-From: Shawn Lin <shawn.lin@rock-chips.com>
-In-Reply-To: <4d25ff80-1cd6-4d84-b516-92aafd5be62e@lausen.nl>
-X-HM-Tid: 0a9b8d9d2b5709cckunm2d35275973e2c8
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGkwZTlZNSh1MHxpISBlDGU9WFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpKQk
-	xVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=JKmJuye2pRHMw6rNMPzWTGVbWaViAnIMl/GkeNJbkPHEmM7t4DiE6sGrmkr4zY9UBLKmmtLlX8QxYpKpxeeDhn+sEpqIyHVbnuOaxQRjgpuXGZKnqjbCQSF7VxmUvdtYYKF9WzRkylh41qikNxQLJRnori+q1OZQ2oPpil4upFo=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=mCQm6QF8fwuRSRBJz53aIJD1J76BiZS28yomKodzc2A=;
-	h=date:mime-version:subject:message-id:from;
+In-Reply-To: <176465775606.135635.13034018447792643478@localhost>
+References: <20251202015025.601549-1-rui.wang@ideasonboard.com> <20251202015025.601549-2-rui.wang@ideasonboard.com> <176465775606.135635.13034018447792643478@localhost>
+Subject: Re: [PATCH v1 1/1] media: rkisp1: Fix filter mode register configuration
+From: Kieran Bingham <kieran.bingham@ideasonboard.com>
+Cc: libcamera-devel@lists.libcamera.org, Rui Wang <rui.wang@ideasonboard.com>
+To: Rui Wang <rui.wang@ideasonboard.com>, Stefan Klug <stefan.klug@ideasonboard.com>, dafna@fastmail.com, heiko@sntech.de, laurent.pinchart@ideasonboard.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, mchehab@kernel.org
+Date: Mon, 05 Jan 2026 11:29:27 +0000
+Message-ID: <176761256763.3192372.8001486757502337420@ping.linuxembedded.co.uk>
+User-Agent: alot/0.9.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260105_020413_863359_8392B62A 
-X-CRM114-Status: GOOD (  17.69  )
+X-CRM114-CacheID: sfid-20260105_032934_897653_2CA8F730 
+X-CRM114-Status: GOOD (  19.86  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,90 +60,80 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-5ZyoIDIwMjUvMTIvMjQg5pif5pyf5LiJIDIxOjI5LCBMZW9uYXJkIExhdXNlbiDlhpnpgZM6Cj4g
-SGkgbGludXgtcm9ja2NoaXAsIEhpIE5pY29sYXMsCj4gCj4gSSdtIHRlc3RpbmcgbWFpbmxpbmUg
-a2VybmVsIHN1cHBvcnQgb24gdGhlIFJvY2sgNEQgYm9hcmQgYW5kIAo+IGVuY291bnRlcmluZyBh
-biBpc3N1ZSB3aGVyZSBQQ0llIE5WTWUgZGV2aWNlcyBhcmUgbm90IGRldGVjdGVkIGJ5IHRoZSAK
-PiBrZXJuZWwsIGRlc3BpdGUgd29ya2luZyBjb3JyZWN0bHkgaW4gVS1Cb290LiBUaGF0IGlzIGRl
-c3BpdGUgTmljb2xhcyAKPiByZWNlbnRseSBlbmFibGluZyBQQ0llIHN1cHBvcnQgZm9yIFJvY2sg
-NEQgaW4gCj4gMjlmZjRiYmZmNzkzMzM0ZDZhZmYyMjM4ZmRjM2NjZjM4NTlkNjBkYS4KPiAKPiBV
-LUJvb3Qgc3VjY2Vzc2Z1bGx5IGRldGVjdHMgYW5kIGluaXRpYWxpemVzIHRoZSBOVk1lIGRldmlj
-ZToKPiAKPiBwY2llQDJhMjAwMDAwOiBQQ0llIExpbmtpbmcuLi4gTFRTU00gaXMgMHgwCj4gcGNp
-ZUAyYTIwMDAwMDogUENJZSBMaW5rIHVwLCBMVFNTTSBpcyAweDEzMDAxMQo+IHBjaWVAMmEyMDAw
-MDA6IFBDSUUtMDogTGluayB1cCAoR2VuMi14MSwgQnVzMCkKPiAKPiBEZXZpY2UgMDogVmVuZG9y
-OiAweDEzNDQgUmV2OiBIUFMwMDUwwqAgUHJvZDogVVRGUlEwMTcwSjhRU1oKPiAgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoCBUeXBlOiBIYXJkIERpc2sKPiAgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBD
-YXBhY2l0eTogNDg4Mzg2LjMgTUIgPSA0NzYuOSBHQiAoMTAwMDIxNTIxNiB4IDUxMikKPiAKPiAK
-PiBIb3dldmVyLCBhZnRlciBrZXJuZWwgYm9vdCwgb25seSB0aGUgUENJZSByb290IHBvcnQgaXMg
-dmlzaWJsZToKPiAKPiAwMDowMC4wIFBDSSBicmlkZ2U6IERldmljZSAxZDg3OjM1NzYgKHJldiAw
-MSkKPiAKPiAKCkN1cnJlbnRseSB0aGUgdXBzdHJlYW0gZHJpdmVyIGxhY2tzIHByb3BlciBkZWJ1
-ZyBzdXBwb3J0IGlmIGxpbmsKaXMgZmFpbHVyZS4gUGxlYXNlIHRyeSBiZWxvdyBwYXRjaCBhbmQg
-cmVwb3J0IGJhY2sgdGhlIGRlYnVnIGxvZywKdGhhbmtzLgoKLS0tIGEvZHJpdmVycy9wY2kvY29u
-dHJvbGxlci9kd2MvcGNpZS1kdy1yb2NrY2hpcC5jCisrKyBiL2RyaXZlcnMvcGNpL2NvbnRyb2xs
-ZXIvZHdjL3BjaWUtZHctcm9ja2NoaXAuYwpAQCAtMjIyLDYgKzIyMiwxNiBAQCBzdGF0aWMgYm9v
-bCByb2NrY2hpcF9wY2llX2xpbmtfdXAoc3RydWN0IGR3X3BjaWUgKnBjaSkKICB7CiAgICAgICAg
-IHN0cnVjdCByb2NrY2hpcF9wY2llICpyb2NrY2hpcCA9IHRvX3JvY2tjaGlwX3BjaWUocGNpKTsK
-ICAgICAgICAgdTMyIHZhbCA9IHJvY2tjaGlwX3BjaWVfZ2V0X2x0c3NtX3JlZyhyb2NrY2hpcCk7
-CisgICAgICAgdTMyIGxvb3A7CisKKyNkZWZpbmUgUENJRV9DTElFTlRfREJHX0ZJRk9fU1RBVFVT
-ICAgICAweDM1MAorICAgICAgIGlmIChGSUVMRF9HRVQoUENJRV9MSU5LVVBfTUFTSywgdmFsKSAh
-PSBQQ0lFX0xJTktVUCkgeworICAgICAgICAgICAgICAgZGV2X2luZm8ocGNpLT5kZXYsICJsdHNz
-bSA9IDB4JXhcbiIsCisgICAgICAgICAgICAgICAgICAgICAgIHJvY2tjaGlwX3BjaWVfcmVhZGxf
-YXBiKHJvY2tjaGlwLCAKUENJRV9DTElFTlRfTFRTU01fU1RBVFVTKSk7CisgICAgICAgICAgICAg
-ICBmb3IgKGxvb3AgPSAwOyBsb29wIDwgNjQ7IGxvb3ArKykKKyAgICAgICAgICAgICAgICAgICAg
-ICAgZGV2X2luZm8ocGNpLT5kZXYsICJmaWZvX3N0YXR1cyA9IDB4JXhcbiIsCisgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgIHJvY2tjaGlwX3BjaWVfcmVhZGxfYXBiKHJvY2tjaGlwLCAK
-UENJRV9DTElFTlRfREJHX0ZJRk9fU1RBVFVTKSk7CisgICAgICAgfQoKICAgICAgICAgcmV0dXJu
-IEZJRUxEX0dFVChQQ0lFX0xJTktVUF9NQVNLLCB2YWwpID09IFBDSUVfTElOS1VQOwogIH0KCgoK
-PiBQQ0llIHJlc2NhbiBkZWJ1ZyBvdXRwdXQ6Cj4gCj4gKGluaXRyYW1mcykgZWNobyAxID4gL3N5
-cy9idXMvcGNpL3Jlc2Nhbgo+IFvCoCAxMDYuNzgyMzkyXSBwY2lfYnVzIDAwMDA6MDA6IHNjYW5u
-aW5nIGJ1cwo+IFvCoCAxMDYuNzk2MjQ5XSBwY2llcG9ydCAwMDAwOjAwOjAwLjA6IHJlc3RvcmUg
-Y29uZmlnIDB4MmM6IDB4MDAwMDAwMDAgLT4gCj4gMHgwMDAwMDAwMAo+IFvCoCAxMDYuNzk3MDYw
-XSBwY2llcG9ydCAwMDAwOjAwOjAwLjA6IHJlc3RvcmUgY29uZmlnIDB4Mjg6IDB4MDAwMDAwMDAg
-LT4gCj4gMHgwMDAwMDAwMAo+IFvCoCAxMDYuNzk3ODA4XSBwY2llcG9ydCAwMDAwOjAwOjAwLjA6
-IHJlc3RvcmUgY29uZmlnIDB4MjQ6IDB4MDAwMWZmZjEgLT4gCj4gMHgwMDAxZmZmMQo+IFvCoCAx
-MDYuNzk4NTgzXSBwY2llcG9ydCAwMDAwOjAwOjAwLjA6IFBNRSMgZGlzYWJsZWQKPiBbwqAgMTA2
-Ljc5OTA2OV0gcGNpZXBvcnQgMDAwMDowMDowMC4wOiBzY2FubmluZyBbYnVzIDAxLWZmXSBiZWhp
-bmQgCj4gYnJpZGdlLCBwYXNzIDAKPiBbwqAgMTA2Ljc5OTc5NV0gcGNpX2J1cyAwMDAwOjAxOiBz
-Y2FubmluZyBidXMKPiBbwqAgMTA2LjgwMzQ3MV0gcGNpX2J1cyAwMDAwOjAxOiBidXMgc2NhbiBy
-ZXR1cm5pbmcgd2l0aCBtYXg9MDEKPiBbwqAgMTA2LjgwNDA3M10gcGNpZXBvcnQgMDAwMDowMDow
-MC4wOiBzY2FubmluZyBbYnVzIDAxLWZmXSBiZWhpbmQgCj4gYnJpZGdlLCBwYXNzIDEKPiBbwqAg
-MTA2LjgwNDgyOV0gcGNpX2J1cyAwMDAwOjAwOiBidXMgc2NhbiByZXR1cm5pbmcgd2l0aCBtYXg9
-ZmYKPiAoaW5pdHJhbWZzKSBbwqAgMTA2LjkyNDE1NF0gcGNpZXBvcnQgMDAwMDowMDowMC4wOiBz
-YXZlIGNvbmZpZyAweDAwOiAKPiAweDM1NzYxZDg3Cj4gW8KgIDEwNi45MjQ3NjVdIHBjaWVwb3J0
-IDAwMDA6MDA6MDAuMDogc2F2ZSBjb25maWcgMHgwNDogMHgwMDEwMDUwNwo+IFvCoCAxMDYuOTI1
-MzY0XSBwY2llcG9ydCAwMDAwOjAwOjAwLjA6IHNhdmUgY29uZmlnIDB4MDg6IDB4MDYwNDAwMDEK
-PiBbwqAgMTA2LjkyNTk1OF0gcGNpZXBvcnQgMDAwMDowMDowMC4wOiBzYXZlIGNvbmZpZyAweDBj
-OiAweDAwMDEwMDAwCj4gW8KgIDEwNi45MjY1MzRdIHBjaWVwb3J0IDAwMDA6MDA6MDAuMDogc2F2
-ZSBjb25maWcgMHgxMDogMHgwMDAwMDAwMAo+IFvCoCAxMDYuOTMyMTQyXSBwY2llcG9ydCAwMDAw
-OjAwOjAwLjA6IHNhdmUgY29uZmlnIDB4MTQ6IDB4MDAwMDAwMDAKPiBbwqAgMTA2LjkzNDYwOF0g
-cGNpZXBvcnQgMDAwMDowMDowMC4wOiBzYXZlIGNvbmZpZyAweDE4OiAweDAwZmYwMTAwCj4gW8Kg
-IDEwNi45MzcyMDZdIHBjaWVwb3J0IDAwMDA6MDA6MDAuMDogc2F2ZSBjb25maWcgMHgxYzogMHgw
-MDAwMDBmMAo+IFvCoCAxMDYuOTM5NTc1XSBwY2llcG9ydCAwMDAwOjAwOjAwLjA6IHNhdmUgY29u
-ZmlnIDB4MjA6IDB4MDAwMGZmZjAKPiBbwqAgMTA2Ljk0MTg4M10gcGNpZXBvcnQgMDAwMDowMDow
-MC4wOiBzYXZlIGNvbmZpZyAweDI0OiAweDAwMDFmZmYxCj4gW8KgIDEwNi45NDQxMzhdIHBjaWVw
-b3J0IDAwMDA6MDA6MDAuMDogc2F2ZSBjb25maWcgMHgyODogMHgwMDAwMDAwMAo+IFvCoCAxMDYu
-OTQ2MzM1XSBwY2llcG9ydCAwMDAwOjAwOjAwLjA6IHNhdmUgY29uZmlnIDB4MmM6IDB4MDAwMDAw
-MDAKPiBbwqAgMTA2Ljk0ODQ5MF0gcGNpZXBvcnQgMDAwMDowMDowMC4wOiBzYXZlIGNvbmZpZyAw
-eDMwOiAweDAwMDAwMDAwCj4gW8KgIDEwNi45NTA2MDFdIHBjaWVwb3J0IDAwMDA6MDA6MDAuMDog
-c2F2ZSBjb25maWcgMHgzNDogMHgwMDAwMDA0MAo+IFvCoCAxMDYuOTUyNjk4XSBwY2llcG9ydCAw
-MDAwOjAwOjAwLjA6IHNhdmUgY29uZmlnIDB4Mzg6IDB4MDAwMDAwMDAKPiBbwqAgMTA2Ljk1NDc2
-NV0gcGNpZXBvcnQgMDAwMDowMDowMC4wOiBzYXZlIGNvbmZpZyAweDNjOiAweDAwMDIwMTJkCj4g
-W8KgIDEwNi45NTY4NDddIHBjaWVwb3J0IDAwMDA6MDA6MDAuMDogUE1FIyBlbmFibGVkCj4gbHMg
-L3N5cy9idXMvcGNpL2RldmljZXMvCj4gZHJ3eHIteHIteCAyIDAgMCAwIC4KPiBkcnd4ci14ci14
-IDUgMCAwIDAgLi4KPiBscnd4cnd4cnd4IDEgMCAwIDAgMDAwMDowMDowMC4wIC0+IC4uLy4uLy4u
-L2RldmljZXMvcGxhdGZvcm0vIAo+IHNvYy8yMjAwMDAwMC5wY2llL3BjaTAwMDA6MDAvMDAwMDow
-MDowMC4wCj4gCj4gVGhlIGZ1bGwgYm9vdCBsb2cgaW5jbHVkaW5nIHRoZSB1LWJvb3QgcGFydCBh
-bmQga2VybmVsIFBDSV9ERUJVRyBvdXRwdXQgCj4gaXMgYWxzbyBhdHRhY2hlZC4KPiAKPiBUaGFu
-a3MgZm9yIGFueSBpbnNpZ2h0cyEKPiAKPiBCZXN0IHJlZ2FyZHMsCj4gTGVvbmFyZAo+IAo+IF9f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4gTGludXgtcm9j
-a2NoaXAgbWFpbGluZyBsaXN0Cj4gTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwo+
-IGh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2No
-aXAKPiAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpM
-aW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFk
-Lm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJv
-Y2tjaGlwCg==
+Quoting Stefan Klug (2025-12-02 06:42:36)
+> Hi Rui,
+> 
+> Thank you for the patch.
+> 
+> Quoting Rui Wang (2025-12-02 02:50:25)
+> > The rkisp1_flt_config() function performs an initial direct write to
+> > RKISP1_CIF_ISP_FILT_MODE without including the RKISP1_CIF_ISP_FLT_ENA
+> > bit, which clears the filter enable bit in the hardware.
+> 
+> That sentence is a bit hard for me to understand. Maybe:
+> 
+> "The rkisp1_flt_config() function overwrites RKISP1_CIF_ISP_FILT_MODE
+> without preserving the RKISP1_CIF_ISP_FLT_ENA bit thereby unconditionally
+> disabling the hardware block on reconfiguration.
+
+
+Stefan's proposal sounds good here.
+
+
+Reviewed-by: Kieran Bingham <kieran.bingham@ideasonboard.com>
+
+> 
+> But as I'm no native speaker you could maybe wait for feedback from a
+> native speaker.
+> 
+> Functionality wise the change is correct.
+> 
+> Reviewed-by: Stefan Klug <stefan.klug@ideasonboard.com>
+> 
+> Best regards,
+> Stefan
+> 
+> > 
+> > The subsequent read/modify/write sequence then reads back the register
+> > with the enable bit already cleared and cannot restore it, resulting in
+> > the filter being inadvertently disabled.
+> > 
+> > Remove the redundant direct write. The read/modify/write sequence alone
+> > correctly preserves the existing enable bit state while updating the
+> > DNR mode and filter configuration bits.
+> > 
+> > Signed-off-by: Rui Wang <rui.wang@ideasonboard.com>
+> > ---
+> >  drivers/media/platform/rockchip/rkisp1/rkisp1-params.c | 6 ------
+> >  1 file changed, 6 deletions(-)
+> > 
+> > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
+> > index c9f88635224c..6442436a5e42 100644
+> > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
+> > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
+> > @@ -411,12 +411,6 @@ static void rkisp1_flt_config(struct rkisp1_params *params,
+> >         rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_FILT_LUM_WEIGHT,
+> >                      arg->lum_weight);
+> >  
+> > -       rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_FILT_MODE,
+> > -                    (arg->mode ? RKISP1_CIF_ISP_FLT_MODE_DNR : 0) |
+> > -                    RKISP1_CIF_ISP_FLT_CHROMA_V_MODE(arg->chr_v_mode) |
+> > -                    RKISP1_CIF_ISP_FLT_CHROMA_H_MODE(arg->chr_h_mode) |
+> > -                    RKISP1_CIF_ISP_FLT_GREEN_STAGE1(arg->grn_stage1));
+> > -
+> >         /* avoid to override the old enable value */
+> >         filt_mode = rkisp1_read(params->rkisp1, RKISP1_CIF_ISP_FILT_MODE);
+> >         filt_mode &= RKISP1_CIF_ISP_FLT_ENA;
+> > -- 
+> > 2.43.0
+> >
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
