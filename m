@@ -4,66 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B41CC79FB0
-	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Jan 2026 18:04:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A279FC79FAD
+	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Jan 2026 18:05:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:From:Subject:
-	Cc:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ahhfrhoGv3vyKsgZlF61ShSDXwxd46FUTW8idQNxaPs=; b=InbyXCV+Nfdm9W
-	dtNgtAx511+wEkVQ8Wfv4uRIj+cyHUThi/evdiIuYSs/80DK4btJsG0Xaa4lYMhFcvO3Tdr83bCWW
-	lD/JTr893n/ln4GHqwBptw9dPWEJzBYzn8A0Krmx8+P4jj/LuTHVU1PmpuPsOMkfqdA7baUnddOkf
-	cZkn4qrvCKWQDpUXi5uxGdfzYOzSzEMtFU6KVs91sDUnUvbGOQjE9rEh5AcsU8ht2WJhZa0UEOD2j
-	g6uEOhXgrtmSfTTUC3bchpYEBmBAwmbMxdnOL5075U7Q3NvW14RxMIxix+4xEIWVZwAiVH63U44Qt
-	QEIBqP54JkGXiLyWRrGw==;
+	List-Owner; bh=ZToT9aMOOYBFXE3fRk4IGh9E6cAqe0h/duwPS3aO+9s=; b=ILQWv0wu5qioc6
+	A/9vQcYC4RDLuzF6dnZNsSzqoMiPzF+uqa7xXxG5xUzLheqq7/VgtreYnef4PODmJHZe7hzApavcW
+	22TBP1xTdo6JdU2YibtpUapXdkR6hQlAXsgUcZN90MJdp3w87+faSC6Zf/VQud8SK98ihQogDQW4Q
+	fmL3HAp2Kidava2k4hNzOrc7JqYZJv4Mfn4H8+lUoS8LcFPefyg5jA5zAQsdgBh4B9mPVs05+EzDW
+	bFwXUPT9pRbeI+ak7d1mWh03O1AIhndIXRP/CaFEB2aY0KvB4N0qG/GO0WItmdEfrOIlzXQtgQ8D2
+	dv+UgIZ34T4GgEcOzchg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vcow7-0000000BtjL-2Cuv;
-	Mon, 05 Jan 2026 18:04:11 +0000
-Received: from out-171.mta1.migadu.com ([95.215.58.171])
+	id 1vcoxR-0000000BtuR-1iN4;
+	Mon, 05 Jan 2026 18:05:33 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vcow4-0000000Bthx-0nFa
+	id 1vcoxQ-0000000BtuH-16ss
 	for linux-rockchip@lists.infradead.org;
-	Mon, 05 Jan 2026 18:04:09 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow-tech.com;
-	s=key1; t=1767636235;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=cAA+oxavMgc4zkXOGFmiSvR8+PD1TtQP41ZqvlXUThs=;
-	b=kMajOfcdtk45xWH0kGb3b41xCo1bO+xiDbACL0VyqrPG3w9btouiEBdZv+LwWEoIP7MJ8B
-	USaCShheXrvb1lw/XI10J/HOyAnqobbaXhuxDOXAnuuUeAcKVeggBwiSxEICCQNPb8tpEB
-	MaRwhBriswMcj17ycDs2ygwaOe4tlBRKJAm9VwhcKS6XhawGN33GGWsHUMhgJP26wCM6SF
-	Mh717+XFhjTJ5JctfLAGzs3VQRutSF6GwyfYMJrKM+Ns1JPRf4hjYa0PYNncc4881I/BP+
-	TtmkYBi+dp6ojwdq/YSbEKTNOR6am64xFn7uTFDk49IRSjkyC4fP8C8uZ8e1zQ==
-Date: Mon, 05 Jan 2026 19:03:32 +0100
-Message-Id: <DFGUQPIJWYDR.2LEI3CON9X7GJ@cknow-tech.com>
-Cc: <kernel@collabora.com>, <dri-devel@lists.freedesktop.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-rockchip@lists.infradead.org>
-Subject: Re: [PATCH 0/4] Add HDMI 2.0 support to DW HDMI QP TX
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <diederik@cknow-tech.com>
-To: "Cristian Ciocaltea" <cristian.ciocaltea@collabora.com>, "Andrzej Hajda"
- <andrzej.hajda@intel.com>, "Neil Armstrong" <neil.armstrong@linaro.org>,
- "Robert Foss" <rfoss@kernel.org>, "Laurent Pinchart"
- <Laurent.pinchart@ideasonboard.com>, "Jonas Karlman" <jonas@kwiboo.se>,
- "Jernej Skrabec" <jernej.skrabec@gmail.com>, "Maarten Lankhorst"
- <maarten.lankhorst@linux.intel.com>, "Maxime Ripard" <mripard@kernel.org>,
- "Thomas Zimmermann" <tzimmermann@suse.de>, "David Airlie"
- <airlied@gmail.com>, "Simona Vetter" <simona@ffwll.ch>, "Sandy Huang"
- <hjc@rock-chips.com>, =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
- "Andy Yan" <andy.yan@rock-chips.com>
-References: <20251203-dw-hdmi-qp-scramb-v1-0-836fe7401a69@collabora.com>
-In-Reply-To: <20251203-dw-hdmi-qp-scramb-v1-0-836fe7401a69@collabora.com>
-X-Migadu-Flow: FLOW_OUT
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260105_100408_373147_719325BD 
-X-CRM114-Status: GOOD (  15.40  )
+	Mon, 05 Jan 2026 18:05:32 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 670256011E;
+	Mon,  5 Jan 2026 18:05:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DD435C116D0;
+	Mon,  5 Jan 2026 18:05:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1767636331;
+	bh=GdjI++O5FHvFcVhhJqFQs8YBsaBzvX7sA6t19aYaiYo=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=XHXcvahaKUI7WI6t2L/vnVhLRONcdXcRMI3G0l86hi7MuXhhFyVTXgQHQlFALiarI
+	 Wvg0J1g/Q4Y46Ggy37ZGyaFGrO2PJf7112PTtk7HY8i0HpUkS3S9j6RoIcy+aV3nSU
+	 /QEvy79BE5WIuN8e2dmiuo5y9iOvQWr+A5lkpHtsxLH1UXDKS/yHb7ELlT94cmT1eA
+	 SAHgOmiZhbL8R6xJRK0XM+iZZidD+TwSoNZwrwLwhfdFa3fyfqmz2qhgFfvl2NUIQq
+	 W/oKlGEFEzhBEsD4W88Yal+ULBsoPLBd7xWGC0f+6dzVpD3gS5oUn00NzDgx+6b56p
+	 ccl3JBQ5YQFQA==
+Date: Mon, 5 Jan 2026 12:05:30 -0600
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: FUKAUMI Naoki <naoki@radxa.com>
+Cc: pbrobinson@gmail.com, alchark@gmail.com, ziyao@disroot.org,
+	linux-rockchip@lists.infradead.org,
+	michael.opdenacker@rootcommit.com, will@kernel.org,
+	catalin.marinas@arm.com, quentin.schulz@cherry.de,
+	kever.yang@rock-chips.com, jonas@kwiboo.se, conor+dt@kernel.org,
+	honyuenkwun@gmail.com, heiko@sntech.de, krzk+dt@kernel.org,
+	dsimic@manjaro.org, devicetree@vger.kernel.org
+Subject: Re: [RFC PATCH 1/3] dt-bindings: arm: rockchip: Add Radxa CM3J on
+ RPi CM4 IO Board
+Message-ID: <176763632953.3036662.6418177359981655547.robh@kernel.org>
+References: <20251229073840.25516-1-naoki@radxa.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20251229073840.25516-1-naoki@radxa.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,52 +75,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed Dec 3, 2025 at 7:27 PM CET, Cristian Ciocaltea wrote:
-> This patch series provides the missing support for high TMDS clock ratio
-> and scrambling to DW HDMI QP TX library, required for handling HDMI 2.0
-> display modes on RK3576 & RK3588 SoCs.
 
-I tested this patch set with my 4K TV and Rock 5B and without it I did
-not see 4K@60, only 4K@30. With this patch set also a number of 4K
-related display settings appeared which were not there without it.
-So thanks a lot for this patch set. Feel free to add:
-
-Tested-by: Diederik de Haas <diederik@cknow-tech.com>
-
-Cheers,
-  Diederik
-
-> In order to allow addressing the SCDC status lost on sink disconnects,
-> it adds an atomic variant of the drm_bridge_funcs.detect callback and a
-> new drm_bridge_detect_ctx() helper, which is further used in
-> drm_bridge_connector to switch to ->detect_ctx hook.
->
-> Furthermore, optimize HPD event handling in dw_hdmi_qp Rockchip platform
-> driver to run the detect cycle on the affected connector only.
->
-> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+On Mon, 29 Dec 2025 07:38:38 +0000, FUKAUMI Naoki wrote:
+> The Radxa CM3J is a feature rich industrial compute module developed
+> by Radxa, based on the Rockchip RK3568 SoC. [1]
+> 
+> Add devicetree binding documentation for the Radxa CM3J on RPi CM4 IO
+> Board.
+> 
+> [1] https://dl.radxa.com/cm3j/docs/hw/radxa_cm3j_product_brief_Revision_1.0.pdf
+> 
+> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
 > ---
-> Cristian Ciocaltea (4):
->       drm/bridge: Add ->detect_ctx hook and drm_bridge_detect_ctx()
->       drm/bridge-connector: Switch to using ->detect_ctx hook
->       drm/bridge: dw-hdmi-qp: Add high TMDS clock ratio and scrambling support
->       drm/rockchip: dw_hdmi_qp: Do not send HPD events for all connectors
->
->  drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c   | 174 +++++++++++++++++++++++--
->  drivers/gpu/drm/display/drm_bridge_connector.c |  73 ++++++-----
->  drivers/gpu/drm/drm_bridge.c                   |  58 +++++++++
->  drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c |  44 +++----
->  include/drm/drm_bridge.h                       |  30 +++++
->  5 files changed, 308 insertions(+), 71 deletions(-)
-> ---
-> base-commit: ac5b392a8c355001c4c3f230a0e4b1f904e359ca
-> change-id: 20251203-dw-hdmi-qp-scramb-cdbd8b57ccf9
->
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+>  Documentation/devicetree/bindings/arm/rockchip.yaml | 7 +++++++
+>  1 file changed, 7 insertions(+)
+> 
+
+Acked-by: Rob Herring (Arm) <robh@kernel.org>
 
 
 _______________________________________________
