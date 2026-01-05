@@ -4,72 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3B57C2A072
-	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Jan 2026 08:13:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7015C2A062
+	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Jan 2026 08:15:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JO0DlnJkXoH12H90J/V8WMkW0ub6Q2vtEU/2ucQ3U+o=; b=af4EU2uFhtaj2a
-	Z7741hpnRG+9zamjAHt5rnPYoG0nqQii+9bPeKT+HQjWyrKyDS9G5SO4MDkMbTl7UaOh9CrNxvqp7
-	FsZzsmYBxioiOFYdDXPaZAoCIyEc2k7AuVWp6Z+ay+jf8kDalvBB7THLGmbYpYZRHYWQDfIgTKgbL
-	sgO4mMW6/Qjg8Cvibd0bni9M6LwThAvr3wl2iakrDJuI7vZl3FU7ajyCqAj3p7gu6wzhbwRwe3Po9
-	hYEXSMBC7f9WW97WRQgosoTxv5lap5hl909FfHAycDcaVtv5wv+muVIz2QVl5rg+jqqU/aOdox3O0
-	84IN+rfLWq8reyU2T2eQ==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=zjCjkzCr3aS19C7heDlmuTK9gqg4msMOyI9tJZkaoDY=; b=ducv5uKSTf6c61
+	F5+PasYNUnHbdzwseZodICxfdWQV1H+tdEXHLIIFuLAuqczlz0OaYMepQly7BQswvSt3qlAQi010e
+	qZMlgqwDzOW7ieEVv2q0Mcw8OFViIwo5UBLZl+5+HgfCbPuQO7HR+y+P7N87RNvpaT9E903jWheYJ
+	jzJugRgw0FQnSC2mhVDfG2P3/MqCgQcg+NTu1CFUrV1U8y56Z053zrsoeMU8mGxIOdFpGuf/0+bF1
+	dJUjH3DgJ8AHl4oAgwyE1BXpe9pGTgk8wO+DR+BNoRnNHvn2U94ajgjKUKNVPvZPPkOMMx1dObzJj
+	t1LVIThdl1CIWuGzn6EQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vcfiP-0000000AxvU-2INF;
-	Mon, 05 Jan 2026 08:13:25 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1vcfkj-0000000AyAx-123g;
+	Mon, 05 Jan 2026 08:15:50 +0000
+Received: from mail-m32101.qiye.163.com ([220.197.32.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vcfiN-0000000AxuT-0YrV;
-	Mon, 05 Jan 2026 08:13:24 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1767600797; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=QdXw+QBWdhHBaWDiWFCWRqp8L+hYjX48wt7hN0jhvuqlM+QjKbEydSKgepGKrysb0g02n/qjNMtj7W38+H7Bm63L8kgu8e74YVxpEB6hBRRsHloZNlB1u+/mxigvOVnEBJnxV4odBvWY5W+Erq0n6NhFddo8zKOywom5tjNeXd8=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1767600797; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=bLisPGbELcHPPEG+rKVCKDHWdvS62k1e+Z4DLqfCveA=; 
-	b=lGWzhNoUQidxBINUgLQUoiRL0vUBXDEBsXrl9UsceHxsgqjU36LoQZ1cBKPWryukec7duDtsWsUAbqrkbUbPJIRrmEWnqzX7DN5WCIzUSXsy/INykBYbolCUSsRHYkw3edSO0ylTo+ZgOAkezTKK9At759BwzK5DmENZRR6mRgo=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1767600797;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=bLisPGbELcHPPEG+rKVCKDHWdvS62k1e+Z4DLqfCveA=;
-	b=WUprz+W2XfKk41Wqqox8kwJn9wpR2m1ClYf8aopBTRnCIuE6iyBt2fSZw9UcYpGW
-	IuLMILv/GPmYgXzm3hruPc8BueLicwR5BvwuzzUHSxN6nz6GporC3T/grAfTKVZw1d1
-	pMbrr0WBKn8fiE25aaMB2BITBFWP5q1/pbB6rxas=
-Received: by mx.zohomail.com with SMTPS id 176760079557383.79032239597313;
-	Mon, 5 Jan 2026 00:13:15 -0800 (PST)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Chaoyi Chen <chaoyi.chen@rock-chips.com>,
- Kever Yang <kever.yang@rock-chips.com>,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
- Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
- Frank Wang <frank.wang@rock-chips.com>, Alexey Charkov <alchark@gmail.com>,
- Liang Chen <cl@rock-chips.com>, Finley Xiao <finley.xiao@rock-chips.com>,
- Elaine Zhang <zhangqing@rock-chips.com>,
- Yifeng Zhao <yifeng.zhao@rock-chips.com>,
- Chaoyi Chen <chaoyi.chen@rock-chips.com>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] arm64: dts: rockchip: Fix wrong register range of rk3576 gpu
-Date: Mon, 05 Jan 2026 09:13:11 +0100
-Message-ID: <3395202.44csPzL39Z@workhorse>
-In-Reply-To: <010a23e0-4f55-431f-ba34-7b28ff5df43a@rock-chips.com>
-References: <20251230090246.46-1-kernel@airkyi.com> <5954009.DvuYhMxLoT@workhorse>
- <010a23e0-4f55-431f-ba34-7b28ff5df43a@rock-chips.com>
-MIME-Version: 1.0
+	id 1vcfkg-0000000AyAF-31HN
+	for linux-rockchip@lists.infradead.org;
+	Mon, 05 Jan 2026 08:15:48 +0000
+Received: from localhost.localdomain (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 2f85e4d07;
+	Mon, 5 Jan 2026 16:15:38 +0800 (GMT+08:00)
+From: Shawn Lin <shawn.lin@rock-chips.com>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Andrew Powers-Holmes <aholmes@omnom.net>
+Subject: [PATCH 1/2] arm64: dts: rockchip: Fix rk356x PCIe range mappings
+Date: Mon,  5 Jan 2026 16:15:28 +0800
+Message-Id: <1767600929-195341-1-git-send-email-shawn.lin@rock-chips.com>
+X-Mailer: git-send-email 2.7.4
+X-HM-Tid: 0a9b8d39dca709cckunm87ff53b7726b22
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGh4ZTFYaSUxNQkxKTkJMS0lWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=BmW/SlnH1FDYoIDQci5Tp87AGwQQk2NU9eTEPodA184jOJXsRysDSuLq6jLlJ2cwHNEHqKyAjDPVcpze7jpBbomtVBxtY39mbUeO61/OuYlvalMpXDc59KDB29DCd75dDB6edKmL01BQbGK0N/QvVK4q4lmJRjbCSDPWHJapr+8=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=6dbMpK2dfBqSZmRjZCdkcDlQmtOeSxIbo/hvOgrXFuw=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260105_001323_223278_A3C745D8 
-X-CRM114-Status: GOOD (  23.91  )
+X-CRM114-CacheID: sfid-20260105_001546_964439_48B95C10 
+X-CRM114-Status: GOOD (  11.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,72 +63,64 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Monday, 5 January 2026 09:12:00 Central European Standard Time Chaoyi Chen wrote:
-> Hello Nicolas,
-> 
-> On 1/5/2026 3:55 PM, Nicolas Frattaroli wrote:
-> > On Tuesday, 30 December 2025 10:02:46 Central European Standard Time Chaoyi Chen wrote:
-> >> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-> >>
-> >> According to RK3576 TRM part1 page13, the size of the GPU registers
-> >> is 128 KB.
-> >>
-> >> Fixes: 57b1ce903966 ("arm64: dts: rockchip: Add rk3576 SoC base DT")
-> >> Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-> >> ---
-> >>  arch/arm64/boot/dts/rockchip/rk3576.dtsi | 2 +-
-> >>  1 file changed, 1 insertion(+), 1 deletion(-)
-> >>
-> >> diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-> >> index 6284e7bdc442..b375015f0662 100644
-> >> --- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-> >> +++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-> >> @@ -1271,7 +1271,7 @@ power-domain@RK3576_PD_VO1 {
-> >>  
-> >>  		gpu: gpu@27800000 {
-> >>  			compatible = "rockchip,rk3576-mali", "arm,mali-bifrost";
-> >> -			reg = <0x0 0x27800000 0x0 0x200000>;
-> >> +			reg = <0x0 0x27800000 0x0 0x20000>;
-> >>  			assigned-clocks = <&scmi_clk SCMI_CLK_GPU>;
-> >>  			assigned-clock-rates = <198000000>;
-> >>  			clocks = <&cru CLK_GPU>;
-> >>
-> > 
-> > This is only true if you only consider the GPU_CONTROL and
-> > JOB_CONTROL register ranges, and leave out the MMU_STAGE1
-> > and MMU_STAGE2 ranges. I don't know if those need to be
-> > mapped, since the MMU control registers are < 0x2000.
-> > 
-> > What do other bifrost devices do?
-> > 
-> 
-> I don't quite understand your point. And this size is 0x20000,
-> not 0x2000. Before the change it was 0x200000, which overlaps the
-> address space of some hardware that comes after it like JPEG. 
-> 
-> Could you explain it again? Thank you.
+The pcie bus address should be mapped 1:1 to the cpu side MMIO address, so
+that there is no same address allocated from normal system memory. Otherwise
+it's broken if the same address assigned to the EP for DMA purpose.Fix it to
+sync with the vendor BSP.
 
-Oops, I misread. You are correct, there's one too many zeroes,
-and I thought you removed one too many. :)
+Fixes: 568a67e742df ("arm64: dts: rockchip: Fix rk356x PCIe register and range mappings")
+Fixes: 66b51ea7d70f ("arm64: dts: rockchip: Add rk3568 PCIe2x1 controller")
+Cc: Andrew Powers-Holmes <aholmes@omnom.net>
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+---
 
-Reviewed-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+ arch/arm64/boot/dts/rockchip/rk3568.dtsi      | 4 ++--
+ arch/arm64/boot/dts/rockchip/rk356x-base.dtsi | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
-> 
-> > Kind regards,
-> > Nicolas Frattaroli
-> > 
-> > 
-> > 
-> 
-> 
-
-
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568.dtsi b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
+index e719a3d..658097e 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3568.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
+@@ -185,7 +185,7 @@
+ 		      <0x0 0xf2000000 0x0 0x00100000>;
+ 		ranges = <0x01000000 0x0 0xf2100000 0x0 0xf2100000 0x0 0x00100000>,
+ 			 <0x02000000 0x0 0xf2200000 0x0 0xf2200000 0x0 0x01e00000>,
+-			 <0x03000000 0x0 0x40000000 0x3 0x40000000 0x0 0x40000000>;
++			 <0x03000000 0x3 0x40000000 0x3 0x40000000 0x0 0x40000000>;
+ 		reg-names = "dbi", "apb", "config";
+ 		resets = <&cru SRST_PCIE30X1_POWERUP>;
+ 		reset-names = "pipe";
+@@ -238,7 +238,7 @@
+ 		      <0x0 0xf0000000 0x0 0x00100000>;
+ 		ranges = <0x01000000 0x0 0xf0100000 0x0 0xf0100000 0x0 0x00100000>,
+ 			 <0x02000000 0x0 0xf0200000 0x0 0xf0200000 0x0 0x01e00000>,
+-			 <0x03000000 0x0 0x40000000 0x3 0x80000000 0x0 0x40000000>;
++			 <0x03000000 0x3 0x80000000 0x3 0x80000000 0x0 0x40000000>;
+ 		reg-names = "dbi", "apb", "config";
+ 		resets = <&cru SRST_PCIE30X2_POWERUP>;
+ 		reset-names = "pipe";
+diff --git a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
+index 8893b7b..a2c4957 100644
+--- a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
+@@ -1022,7 +1022,7 @@
+ 		power-domains = <&power RK3568_PD_PIPE>;
+ 		ranges = <0x01000000 0x0 0xf4100000 0x0 0xf4100000 0x0 0x00100000>,
+ 			 <0x02000000 0x0 0xf4200000 0x0 0xf4200000 0x0 0x01e00000>,
+-			 <0x03000000 0x0 0x40000000 0x3 0x00000000 0x0 0x40000000>;
++			 <0x03000000 0x3 0x00000000 0x3 0x00000000 0x0 0x40000000>;
+ 		resets = <&cru SRST_PCIE20_POWERUP>;
+ 		reset-names = "pipe";
+ 		#address-cells = <3>;
+-- 
+2.7.4
 
 
 _______________________________________________
