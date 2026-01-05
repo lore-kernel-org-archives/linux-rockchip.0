@@ -4,116 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B1E1C79F9E
-	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Jan 2026 15:12:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D68C1C79FA3
+	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Jan 2026 16:19:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Reply-To:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:
-	From:MIME-Version:Date:Message-ID:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=O6uaREvBoM/5n2kKeLTG/0gs5Tm5K/cNhyzOWjAS3U4=; b=h1X8BFX90SrUzqqz1BCfDnJC93
-	ExZV/lFQ5xAUreaj2FRjE1kwwJhI9LMf/gCRg6ZmXFkiiPnrV4AsVwlEaR5Atodz3kbV+LYvxkaOD
-	pvXZWvb1LG2HEgmUof2DDhWQSroiyOcZeUIoI2vTdeLxrkAh7XOWyddkwOrFRhesQyfMk3+4FhXTY
-	32SVMoijLNvpAXaVoPQcH02Zi72kDQfT8mrGhzg2cCUb+HQUVppdd4y1KhtiTOzxHPyDGPvpOw570
-	Kcqy1+t+idy7wVEkh0cdG3pSNmgHy0IfqxiBkmJ+UV0BkrA//ynyZO1/aNjfNKkTGS/5N9YTzo1PT
-	xO7pso4w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
+	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=OaGgCL9KCqMgGRJ4DA3SLD7RxjZaLABfQgaUs2j4i2Q=; b=cNQVfTdFJO+cJ4
+	zNR3xufptuEgSmD08PjQ0Mng3fDNQ3miI+ijdM2y8VwziIYwlyyHrb53Lbv3FkK359K+jSGlU8TyI
+	mDsWjJbv3682qXYIejaEpxkc8LGVUPDA1Y0RG52x+d6Qa7uGuJPVoAS+Mz3nr2w+IQbdhPAzF5obV
+	XAx/bOOWx50vSF9vfOu5Ae2yUs7D98PP8gXjlWB4gkCtlBPAbarn/9N02gfcLQzQZAPKY3Vw4aZNg
+	l6aQWjMSa/XY3JmuhCcbS4La0a637ylXKxr/jhFQ/nlT2sGlXdQ9YbxY7acwYBghrZuMLRuBksZjG
+	fXj7IDUUfvtVS6qNrjZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vcmFV-0000000BatM-2Jir;
-	Mon, 05 Jan 2026 15:12:01 +0000
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+	id 1vcnIl-0000000Bibm-1Wcn;
+	Mon, 05 Jan 2026 16:19:27 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vcmFS-0000000BasB-2WmG
-	for linux-rockchip@lists.infradead.org;
-	Mon, 05 Jan 2026 15:11:59 +0000
-Received: by mail-wm1-x32d.google.com with SMTP id 5b1f17b1804b1-47d5e021a53so72615e9.3
-        for <linux-rockchip@lists.infradead.org>; Mon, 05 Jan 2026 07:11:58 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1767625917; x=1768230717; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:organization:autocrypt
-         :content-language:references:cc:to:subject:reply-to:from:user-agent
-         :mime-version:date:message-id:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=ZICbs1ZKFUXAVw8Uv53chEaSv1izJm54XChd7BXTSFI=;
-        b=BltVfcdxXqj8NQk21/9GhftU26DJA/A7mOU/wZnubvoySKObb50B1kBcxUn8aE4yUr
-         VUzH4AtsNDLpcGLBJfaY3ZmZA4EuklSqfw2ZSrL2/AviHALXq+1YsKTT9VKE3I//W8zF
-         usSa6rqvNo20mylI4J4Zc8cJDUiEPE5z4Z/zwdNw606qHe0PLLY8EokTH9M+Da8H7oBl
-         bI1PVALwvZgzHH0wcXXObniD11JKbhkcv7RMhwJ0BPSZgKR+vQe4y5QIoqYyJVjwGiWZ
-         FU+8hUZOwJVs4RfwrKyG1QWRJ7BCqz0DEXB2G+jKhhpir9CZH1XNlJRtgbLEUkFh9OOy
-         DM5w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1767625917; x=1768230717;
-        h=content-transfer-encoding:in-reply-to:organization:autocrypt
-         :content-language:references:cc:to:subject:reply-to:from:user-agent
-         :mime-version:date:message-id:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=ZICbs1ZKFUXAVw8Uv53chEaSv1izJm54XChd7BXTSFI=;
-        b=RvQgANj45srgo3e8jmzP/GfAhQVkqxjJ8Ii694+xIj3tZuXjlr2jTtOpquPUIxZ4DG
-         cuLChnWlCJBXY/bicLRPCYL+FbnpVgPXR1MnzGALYB577Gigyg4lJEiRS1SZwjqj6T4S
-         0zyjfKdxBRr3TE0buDJCct/OudWH1CejIObu9XKakK4/xruUh0r9Ve6c3U43dHBnDWbm
-         w0L4Ryh3Yq4HIiQgxiFFQ9fdZzwMVppDgsd3H77vVqAw74DErktOfXtb74ACvY8/LsVh
-         8HOwhYGT7XudE2sn2l+8pJECFAyfvtkLhlwl7sqI9hYyocciMDJSGJDxHksMN8kD1vop
-         fSXg==
-X-Forwarded-Encrypted: i=1; AJvYcCXThfbJJ3KZttQR0QB56NWqMs0FiDt7zkZZDYHkUUejwGF/gOduHtSs1oDYyl7nHODvt6gfNjxOkttSrO+uKA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzV+VBny6uTomF9Y53wvVzZK+z2GrEMKdI8vj+gPNEhRrRRYISi
-	qUmSawGvNdHCl7FXnkDpbUzQbEQNt9GaO5mWdPwdE5PbwFL883ZJdnTCA4xhOWtGqX4=
-X-Gm-Gg: AY/fxX43TZPoUisSsZyIMNSMJwdhLF4IhmBCNjvu49jMpJy0cjhyyO14zuRz/tKYuak
-	Ni8CQaAIkisukJojABvwjklE+CU+KMahKxt9vvuKAJ0yErpSEQ6lHZ4WyFEdBNDi6uu0gOVCdY/
-	9nS0Ikb5Z9YmWl+LEAqzHsCQCRn22HpXQ99VNBgTSP+JBcSbvSouc6pRHt5k89CWC6xOZ1Hk4jw
-	2CsqpKDg9GRgPLO1X8gzKzrXtXsZ82s/iCXNeBThxlYS1AtYQtVJcR8swvcLx2hnGTeczn0tyMF
-	jnk491bkVSYVP+8TYm3ulQm3/+InnlbHfiNpiloafnPSUrMdkOTawxCKSGAz3QvJiaCFyip8Fq/
-	Spj7tNCVka+Q6GNJsiNPq3Gy7/A9sp7bLthedv7hKMqaLkjn9cNrm7AhgZVcVx0dBfgSqJB17iE
-	Rsuyo7A1SkHi2qv6YYQVkixGPQoVmxEF1qQ7mEWmQBCzAHvdVErOzLZJPnLHgbNyQ=
-X-Google-Smtp-Source: AGHT+IHRLvC8RFN1wxpNMmjmLXPXlAzEc9S+ADXuomF/jWk/3+qxIvBtpEcUlQn4VBvzYM2OCRH1ZA==
-X-Received: by 2002:a05:600c:154b:b0:477:55c9:c3ea with SMTP id 5b1f17b1804b1-47d1958e7b9mr656916475e9.35.1767625916649;
-        Mon, 05 Jan 2026 07:11:56 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:3d9:2080:d4c1:5589:eadb:1033? ([2a01:e0a:3d9:2080:d4c1:5589:eadb:1033])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-47d6d13e2e0sm197844145e9.1.2026.01.05.07.11.55
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 05 Jan 2026 07:11:56 -0800 (PST)
-Message-ID: <9fbeb95f-8f79-4983-857c-659566206835@linaro.org>
-Date: Mon, 5 Jan 2026 16:11:55 +0100
+	id 1vcnIi-0000000Biav-0Chx;
+	Mon, 05 Jan 2026 16:19:26 +0000
+Received: from [127.0.1.1] (cpc141996-chfd3-2-0-cust928.12-3.cable.virginm.net [86.13.91.161])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 28E7518D7;
+	Mon,  5 Jan 2026 17:18:59 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1767629939;
+	bh=k+H14FOgcNNYSO/kdraYro88vCxWdjv0/jWKuACripk=;
+	h=From:Date:Subject:To:Cc:From;
+	b=hNvkxA11QVi8Fwl6EhQHven4EtpHBMGu4/pgSWo4eCZfEd0+pMf1Mly3CoCgx7iqY
+	 LQoZlREm2InK9Qv76ACWl7u93hls0S/D1rPAw5b7Ckhcj8HCzA1jLUjToB2jTk38Y2
+	 /VTpjYdGMI6YjqNWQ6i4+zI795jta0PhXrKw+ScU=
+From: Daniel Scally <dan.scally@ideasonboard.com>
+Date: Mon, 05 Jan 2026 16:19:08 +0000
+Subject: [PATCH] media: rkisp1: request/free irqs in PM runtime ops
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-From: neil.armstrong@linaro.org
-Subject: Re: [PATCH 2/4] drm/panel-edp: Move FriendlyELEC HD702E
-To: Robin Murphy <robin.murphy@arm.com>, heiko@sntech.de,
- dianders@chromium.org, thierry.reding@gmail.com, sam@ravnborg.org
-Cc: jesszhan0024@gmail.com, dri-devel@lists.freedesktop.org,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
-References: <cover.1767111804.git.robin.murphy@arm.com>
- <027763b36fbad2005d09eeb289b7716c57f65e76.1767111809.git.robin.murphy@arm.com>
-Content-Language: en-US, fr
-Autocrypt: addr=neil.armstrong@linaro.org; keydata=
- xsBNBE1ZBs8BCAD78xVLsXPwV/2qQx2FaO/7mhWL0Qodw8UcQJnkrWmgTFRobtTWxuRx8WWP
- GTjuhvbleoQ5Cxjr+v+1ARGCH46MxFP5DwauzPekwJUD5QKZlaw/bURTLmS2id5wWi3lqVH4
- BVF2WzvGyyeV1o4RTCYDnZ9VLLylJ9bneEaIs/7cjCEbipGGFlfIML3sfqnIvMAxIMZrvcl9
- qPV2k+KQ7q+aXavU5W+yLNn7QtXUB530Zlk/d2ETgzQ5FLYYnUDAaRl+8JUTjc0CNOTpCeik
- 80TZcE6f8M76Xa6yU8VcNko94Ck7iB4vj70q76P/J7kt98hklrr85/3NU3oti3nrIHmHABEB
- AAHNKk5laWwgQXJtc3Ryb25nIDxuZWlsLmFybXN0cm9uZ0BsaW5hcm8ub3JnPsLAkQQTAQoA
- OwIbIwULCQgHAwUVCgkICwUWAgMBAAIeAQIXgBYhBInsPQWERiF0UPIoSBaat7Gkz/iuBQJk
- Q5wSAhkBAAoJEBaat7Gkz/iuyhMIANiD94qDtUTJRfEW6GwXmtKWwl/mvqQtaTtZID2dos04
- YqBbshiJbejgVJjy+HODcNUIKBB3PSLaln4ltdsV73SBcwUNdzebfKspAQunCM22Mn6FBIxQ
- GizsMLcP/0FX4en9NaKGfK6ZdKK6kN1GR9YffMJd2P08EO8mHowmSRe/ExAODhAs9W7XXExw
- UNCY4pVJyRPpEhv373vvff60bHxc1k/FF9WaPscMt7hlkbFLUs85kHtQAmr8pV5Hy9ezsSRa
- GzJmiVclkPc2BY592IGBXRDQ38urXeM4nfhhvqA50b/nAEXc6FzqgXqDkEIwR66/Gbp0t3+r
- yQzpKRyQif3OwE0ETVkGzwEIALyKDN/OGURaHBVzwjgYq+ZtifvekdrSNl8TIDH8g1xicBYp
- QTbPn6bbSZbdvfeQPNCcD4/EhXZuhQXMcoJsQQQnO4vwVULmPGgtGf8PVc7dxKOeta+qUh6+
- SRh3vIcAUFHDT3f/Zdspz+e2E0hPV2hiSvICLk11qO6cyJE13zeNFoeY3ggrKY+IzbFomIZY
- 4yG6xI99NIPEVE9lNBXBKIlewIyVlkOaYvJWSV+p5gdJXOvScNN1epm5YHmf9aE2ZjnqZGoM
- Mtsyw18YoX9BqMFInxqYQQ3j/HpVgTSvmo5ea5qQDDUaCsaTf8UeDcwYOtgI8iL4oHcsGtUX
- oUk33HEAEQEAAcLAXwQYAQIACQUCTVkGzwIbDAAKCRAWmrexpM/4rrXiB/sGbkQ6itMrAIfn
- M7IbRuiSZS1unlySUVYu3SD6YBYnNi3G5EpbwfBNuT3H8//rVvtOFK4OD8cRYkxXRQmTvqa3
- 3eDIHu/zr1HMKErm+2SD6PO9umRef8V82o2oaCLvf4WeIssFjwB0b6a12opuRP7yo3E3gTCS
- KmbUuLv1CtxKQF+fUV1cVaTPMyT25Od+RC1K+iOR0F54oUJvJeq7fUzbn/KdlhA8XPGzwGRy
- 4zcsPWvwnXgfe5tk680fEKZVwOZKIEuJC3v+/yZpQzDvGYJvbyix0lHnrCzq43WefRHI5XTT
- QbM0WUIBIcGmq38+OgUsMYu4NzLu7uZFAcmp6h8g
-Organization: Linaro
-In-Reply-To: <027763b36fbad2005d09eeb289b7716c57f65e76.1767111809.git.robin.murphy@arm.com>
+Message-Id: <20260105-rkisp1-irqs-v1-1-922f6a94a2e2@ideasonboard.com>
+X-B4-Tracking: v=1; b=H4sIAHvkW2kC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
+ vPSU3UzU4B8JSMDIzMDQwNT3aLszOICQ93MosJiXYvENNNEw1SDJAsLcyWgjoKi1LTMCrBp0bG
+ 1tQBZ//rtXQAAAA==
+X-Change-ID: 20260105-rkisp1-irqs-8af5a1e0b887
+To: Dafna Hirschfeld <dafna@fastmail.com>, 
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Heiko Stuebner <heiko@sntech.de>, 
+ Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, 
+ Daniel Scally <dan.scally@ideasonboard.com>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=8476;
+ i=dan.scally@ideasonboard.com; h=from:subject:message-id;
+ bh=k+H14FOgcNNYSO/kdraYro88vCxWdjv0/jWKuACripk=;
+ b=owEBbQKS/ZANAwAKAchJV3psRXUyAcsmYgBpW+SGrnyffhPiwN+tXg9mQFM6G3WLd5dKT21yk
+ sGjEF6RS5SJAjMEAAEKAB0WIQQqyuwyDnZdb+mxmm/ISVd6bEV1MgUCaVvkhgAKCRDISVd6bEV1
+ MhHvD/4stCLG18wjznfIsL1mTHYju7uzDWj18j6GLnZ0DKfwsihAsKNRMjq1RYYAYsbFeLtLqYj
+ CRTuNk4iAYnnuwwkGSXpO/qcKI2TFHPIVmEKdg3BoPUUkyWNsUy0H88j3kGB711TxhCrtphF0le
+ N2p8VyGhbShCuEmZeqULrsG7b1Y5gLeTntM3EMiDG9igJ745+43eVWZWXjESSTZURzniAJaUqNh
+ cjZT6a3SzUDrVmb+bfsE/gcTM8OYxP2vCd2zRcaLv7NnqlV7d0DJV1hBwE8znS9MTqfnHZC9ICQ
+ 6qkt/7B2ARBSu1wdLcjhuq/9HSgmBVatGig2YFpFf4tFOljyrKl2LlYcVTyprDTEolWU0rZd1Uy
+ APFwWbtLwfTkMj6lEHtx2tVQRrnqsuY/SSMdSJNBPmTdBF4DTJRVR0ZmByWWdQJfnXcfX+TWTwj
+ r4u+GGLsCfOIzzQV2N6NUk/uFFmQuZGDPX18C6anYvE8Kec2bj+uHzBrld70XIHWZbHo3A/zj/C
+ 4lfAiVaJh0+yqHpOOIq11tHTaKVImM696N/h/YelW0pnpt59ql6wp1TrSDRBKiccDrOB4EHoxDg
+ FKBBpVH9bm1p2NHnKxxW+xzAg6OUWn9uKWXhBIbdyEFYO2xbIJIows+H+5EkAzYkgu5h+AHkQGW
+ fUSTDEbvIdHt15Q==
+X-Developer-Key: i=dan.scally@ideasonboard.com; a=openpgp;
+ fpr=EEC699ACA1B7CB5D31330C0BBD501C2A3546CCF6
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260105_071158_707863_230F3371 
-X-CRM114-Status: GOOD (  14.63  )
+X-CRM114-CacheID: sfid-20260105_081924_398013_422243D1 
+X-CRM114-Status: GOOD (  32.44  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,116 +85,237 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: Neil Armstrong <neil.armstrong@linaro.org>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 12/30/25 18:20, Robin Murphy wrote:
-> FriendlyELEC's HD702E module is an eDP panel (in as much as it's some
-> LVDS LCD behind a Chrontel CH7511B eDP bridge), so move its data over
-> to the eDP driver, also resolving the warning about the missing bpc
-> value in the process.
-> 
-> Signed-off-by: Robin Murphy <robin.murphy@arm.com>
-> ---
->   drivers/gpu/drm/panel/panel-edp.c    | 26 ++++++++++++++++++++++++++
->   drivers/gpu/drm/panel/panel-simple.c | 25 -------------------------
->   2 files changed, 26 insertions(+), 25 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/panel/panel-edp.c b/drivers/gpu/drm/panel/panel-edp.c
-> index 415b894890ad..dd53ccc209ce 100644
-> --- a/drivers/gpu/drm/panel/panel-edp.c
-> +++ b/drivers/gpu/drm/panel/panel-edp.c
-> @@ -1256,6 +1256,29 @@ static const struct panel_desc boe_nv140fhmn49 = {
->   	},
->   };
->   
-> +static const struct drm_display_mode friendlyarm_hd702e_mode = {
-> +	.clock		= 67185,
-> +	.hdisplay	= 800,
-> +	.hsync_start	= 800 + 20,
-> +	.hsync_end	= 800 + 20 + 24,
-> +	.htotal		= 800 + 20 + 24 + 20,
-> +	.vdisplay	= 1280,
-> +	.vsync_start	= 1280 + 4,
-> +	.vsync_end	= 1280 + 4 + 8,
-> +	.vtotal		= 1280 + 4 + 8 + 4,
-> +	.flags		= DRM_MODE_FLAG_NVSYNC | DRM_MODE_FLAG_NHSYNC,
-> +};
-> +
-> +static const struct panel_desc friendlyarm_hd702e = {
-> +	.modes = &friendlyarm_hd702e_mode,
-> +	.num_modes = 1,
-> +	.bpc = 8,
-> +	.size = {
-> +		.width	= 94,
-> +		.height	= 151,
-> +	},
-> +};
-> +
->   static const struct drm_display_mode innolux_n116bca_ea1_mode = {
->   	.clock = 76420,
->   	.hdisplay = 1366,
-> @@ -1663,6 +1686,9 @@ static const struct of_device_id platform_of_match[] = {
->   	}, {
->   		.compatible = "boe,nv140fhmn49",
->   		.data = &boe_nv140fhmn49,
-> +	}, {
-> +		.compatible = "friendlyarm,hd702e",
-> +		.data = &friendlyarm_hd702e,
->   	}, {
->   		.compatible = "innolux,n116bca-ea1",
->   		.data = &innolux_n116bca_ea1,
-> diff --git a/drivers/gpu/drm/panel/panel-simple.c b/drivers/gpu/drm/panel/panel-simple.c
-> index b26b682826bc..3ea52667b858 100644
-> --- a/drivers/gpu/drm/panel/panel-simple.c
-> +++ b/drivers/gpu/drm/panel/panel-simple.c
-> @@ -2359,28 +2359,6 @@ static const struct panel_desc frida_frd350h54004 = {
->   	.connector_type = DRM_MODE_CONNECTOR_DPI,
->   };
->   
-> -static const struct drm_display_mode friendlyarm_hd702e_mode = {
-> -	.clock		= 67185,
-> -	.hdisplay	= 800,
-> -	.hsync_start	= 800 + 20,
-> -	.hsync_end	= 800 + 20 + 24,
-> -	.htotal		= 800 + 20 + 24 + 20,
-> -	.vdisplay	= 1280,
-> -	.vsync_start	= 1280 + 4,
-> -	.vsync_end	= 1280 + 4 + 8,
-> -	.vtotal		= 1280 + 4 + 8 + 4,
-> -	.flags		= DRM_MODE_FLAG_NVSYNC | DRM_MODE_FLAG_NHSYNC,
-> -};
-> -
-> -static const struct panel_desc friendlyarm_hd702e = {
-> -	.modes = &friendlyarm_hd702e_mode,
-> -	.num_modes = 1,
-> -	.size = {
-> -		.width	= 94,
-> -		.height	= 151,
-> -	},
-> -};
-> -
->   static const struct drm_display_mode giantplus_gpg482739qs5_mode = {
->   	.clock = 9000,
->   	.hdisplay = 480,
-> @@ -5235,9 +5213,6 @@ static const struct of_device_id platform_of_match[] = {
->   	}, {
->   		.compatible = "frida,frd350h54004",
->   		.data = &frida_frd350h54004,
-> -	}, {
-> -		.compatible = "friendlyarm,hd702e",
-> -		.data = &friendlyarm_hd702e,
->   	}, {
->   		.compatible = "giantplus,gpg482739qs5",
->   		.data = &giantplus_gpg482739qs5
+The rkisp1 driver tracks whether the IRQ handlers should take any
+action through the use of an "irqs_enabled" flag which is set true
+at the end of .runtime_resume() and false at the start of
+.runtime_suspend(). In .runtime_suspend(), after setting the flag,
+there's then a short window during which the hardware has not yet
+been disabled by the clock APIs but interrupts remain enabled. If an
+interrupt is triggered during that window the IRQ handlers will return
+IRQ_NONE and fail to clear the ISP's IRQ reset registers.
 
-Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
+Instead, delay calling request_irq() from .probe() to the end of the
+.runtime_resume() callback, and call free_irq() at the start of the
+.runtime_suspend() callback. This will prevent the interrupt handlers
+being called at all for the device once .runtime_suspend() has been
+called for it.
 
-Thanks,
-Neil
+Signed-off-by: Daniel Scally <dan.scally@ideasonboard.com>
+---
+We noticed this problem when testing hibernation with the streams
+running. In a typical use-case the stream might be stopped before the
+runtime PM suspend callback is called, and so the problem is avoided,
+but when hibernated with active streams there are sufficient interrupts
+coming in to reliably land one in the window between the irqs_enabled
+flag being set to false and the hardware being disabled through
+clk_bulk_disable_unprepare().
+
+I'm under the impression that requesting the IRQs when the device is
+in use in the manner of this patch and releasing the when it is not
+in use is preferred over requesting them in the .probe() function -
+possibly an impression I picked up from Linux Device Drivers. It
+doesn't seem to be a particularly common model though, so I thought
+I'd flag the method here.
+---
+ .../platform/rockchip/rkisp1/rkisp1-capture.c      |  3 -
+ .../media/platform/rockchip/rkisp1/rkisp1-common.h |  2 -
+ .../media/platform/rockchip/rkisp1/rkisp1-csi.c    |  3 -
+ .../media/platform/rockchip/rkisp1/rkisp1-dev.c    | 82 +++++++++++++++-------
+ .../media/platform/rockchip/rkisp1/rkisp1-isp.c    |  3 -
+ 5 files changed, 57 insertions(+), 36 deletions(-)
+
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
+index 6dcefd144d5abe358323e37ac6133c6134ac636e..510d1e8d8bbc86e8b8be3579571e308e5ad9f260 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
+@@ -820,9 +820,6 @@ irqreturn_t rkisp1_capture_isr(int irq, void *ctx)
+ 	unsigned int i;
+ 	u32 status;
+ 
+-	if (!rkisp1->irqs_enabled)
+-		return IRQ_NONE;
+-
+ 	status = rkisp1_read(rkisp1, RKISP1_CIF_MI_MIS);
+ 	if (!status)
+ 		return IRQ_NONE;
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+index 5e6a4d5f6fd12baf45a0083eff75de1095162b2d..2a5f6f69b217cdba2fa7c4d1f230ede5aff49149 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+@@ -507,7 +507,6 @@ struct rkisp1_debug {
+  * @debug:	   debug params to be exposed on debugfs
+  * @info:	   version-specific ISP information
+  * @irqs:          IRQ line numbers
+- * @irqs_enabled:  the hardware is enabled and can cause interrupts
+  */
+ struct rkisp1_device {
+ 	void __iomem *base_addr;
+@@ -532,7 +531,6 @@ struct rkisp1_device {
+ 	struct rkisp1_debug debug;
+ 	const struct rkisp1_info *info;
+ 	int irqs[RKISP1_NUM_IRQS];
+-	bool irqs_enabled;
+ };
+ 
+ /*
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
+index ddc6182f3e4bdacdd1962c86f6259334b16aa505..bfc33365ad9d09ccace4ccbb2b19a2fbe1b77eb2 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
+@@ -196,9 +196,6 @@ irqreturn_t rkisp1_csi_isr(int irq, void *ctx)
+ 	struct rkisp1_device *rkisp1 = dev_get_drvdata(dev);
+ 	u32 val, status;
+ 
+-	if (!rkisp1->irqs_enabled)
+-		return IRQ_NONE;
+-
+ 	status = rkisp1_read(rkisp1, RKISP1_CIF_MIPI_MIS);
+ 	if (!status)
+ 		return IRQ_NONE;
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+index 1791c02a40ae18205f5eb2fd6edca6cda6b459bf..6fa76423bacf3e92cbbb4ef1ceb55e194b88d963 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+@@ -307,28 +307,62 @@ static int rkisp1_subdev_notifier_register(struct rkisp1_device *rkisp1)
+  * Power
+  */
+ 
+-static int __maybe_unused rkisp1_runtime_suspend(struct device *dev)
++static void rkisp1_free_irqs(struct rkisp1_device *rkisp1)
+ {
+-	struct rkisp1_device *rkisp1 = dev_get_drvdata(dev);
++	for (unsigned int i = 0; i < ARRAY_SIZE(rkisp1->irqs); i++) {
++		if (rkisp1->irqs[i] == -1)
++			continue;
+ 
+-	rkisp1->irqs_enabled = false;
+-	/* Make sure the IRQ handler will see the above */
+-	mb();
++		if (irq_has_action(rkisp1->irqs[i]))
++			free_irq(rkisp1->irqs[i], rkisp1->dev);
++	}
++}
+ 
+-	/*
+-	 * Wait until any running IRQ handler has returned. The IRQ handler
+-	 * may get called even after this (as it's a shared interrupt line)
+-	 * but the 'irqs_enabled' flag will make the handler return immediately.
+-	 */
+-	for (unsigned int il = 0; il < ARRAY_SIZE(rkisp1->irqs); ++il) {
+-		if (rkisp1->irqs[il] == -1)
++static int rkisp1_request_irqs(struct rkisp1_device *rkisp1)
++{
++	const struct rkisp1_info *info = rkisp1->info;
++	int ret;
++
++	for (unsigned int irqn = 0; irqn < ARRAY_SIZE(rkisp1->irqs); irqn++) {
++		unsigned int isrn;
++
++		if (rkisp1->irqs[irqn] == -1)
+ 			continue;
+ 
+-		/* Skip if the irq line is the same as previous */
+-		if (il == 0 || rkisp1->irqs[il - 1] != rkisp1->irqs[il])
+-			synchronize_irq(rkisp1->irqs[il]);
++		if (irq_has_action(rkisp1->irqs[irqn]))
++			continue;
++
++		for (isrn = 0; isrn < info->isr_size; isrn++)
++			if ((info->isrs[isrn].line_mask & BIT(irqn)))
++				break;
++
++		if (isrn == info->isr_size) {
++			dev_err(rkisp1->dev, "Failed to find IRQ handler\n");
++			return -EINVAL;
++		}
++
++		ret = request_irq(rkisp1->irqs[irqn], info->isrs[isrn].isr,
++				  IRQF_SHARED, dev_driver_string(rkisp1->dev),
++				  rkisp1->dev);
++		if (ret) {
++			dev_err(rkisp1->dev, "Failed to request IRQ\n");
++			goto err_free_irqs;
++		}
+ 	}
+ 
++	return 0;
++
++err_free_irqs:
++	rkisp1_free_irqs(rkisp1);
++	return ret;
++}
++
++static int __maybe_unused rkisp1_runtime_suspend(struct device *dev)
++{
++	struct rkisp1_device *rkisp1 = dev_get_drvdata(dev);
++
++	rkisp1_free_irqs(rkisp1);
++
+ 	clk_bulk_disable_unprepare(rkisp1->clk_size, rkisp1->clks);
+ 	return pinctrl_pm_select_sleep_state(dev);
+ }
+@@ -345,11 +379,16 @@ static int __maybe_unused rkisp1_runtime_resume(struct device *dev)
+ 	if (ret)
+ 		return ret;
+ 
+-	rkisp1->irqs_enabled = true;
+-	/* Make sure the IRQ handler will see the above */
+-	mb();
++	ret = rkisp1_request_irqs(rkisp1);
++	if (ret)
++		goto err_clk_disable;
+ 
+ 	return 0;
++
++err_clk_disable:
++	clk_bulk_disable_unprepare(rkisp1->clk_size, rkisp1->clks);
++
++	return ret;
+ }
+ 
+ static const struct dev_pm_ops rkisp1_pm_ops = {
+@@ -694,13 +733,6 @@ static int rkisp1_probe(struct platform_device *pdev)
+ 			if (info->isrs[i].line_mask & BIT(il))
+ 				rkisp1->irqs[il] = irq;
+ 		}
+-
+-		ret = devm_request_irq(dev, irq, info->isrs[i].isr, IRQF_SHARED,
+-				       dev_driver_string(dev), dev);
+-		if (ret) {
+-			dev_err(dev, "request irq failed: %d\n", ret);
+-			return ret;
+-		}
+ 	}
+ 
+ 	ret = rkisp1_init_clocks(rkisp1);
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+index 2311672cedb1b6c9dd7f1b883adcac1516a685ae..c6b1ecd2d0c260f6739726c9f32562b98ca31364 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+@@ -1106,9 +1106,6 @@ irqreturn_t rkisp1_isp_isr(int irq, void *ctx)
+ 	struct rkisp1_device *rkisp1 = dev_get_drvdata(dev);
+ 	u32 status, isp_err;
+ 
+-	if (!rkisp1->irqs_enabled)
+-		return IRQ_NONE;
+-
+ 	status = rkisp1_read(rkisp1, RKISP1_CIF_ISP_MIS);
+ 	if (!status)
+ 		return IRQ_NONE;
+
+---
+base-commit: ee5b462b97162dbb6c536e18a37b3048f6520019
+change-id: 20260105-rkisp1-irqs-8af5a1e0b887
+
+Best regards,
+-- 
+Daniel Scally <dan.scally@ideasonboard.com>
+
 
 _______________________________________________
 Linux-rockchip mailing list
