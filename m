@@ -4,112 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 227EAC79F87
-	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Jan 2026 12:15:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B1E1C79F9E
+	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Jan 2026 15:12:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sBHN0/74SoraD/URFRErSnEvX+pfC/RnCimoTUL/ys0=; b=NWO76AUOwMALNb
-	PoT87PJ8OqvFE6QGO49mttDa2+SkybN/TrQBNDUL3BlGiUYwuvCz6wdNjaB+qCbninN+Fs1YpnLJl
-	EtBgdf/2saXiDsBCnkyp3jprnLGZlbK4ypqx7sGygpNZ0s7LuIKqU0SttK+gyfr8xMcEp6yfTY6Eg
-	kATvLsAKlk5QPF/pf+Qwi2di3VXvIUjbLbVImCNnDxKm1HRyycbdX6U5hQ6uGv0qtHGaDr+MpsRQ1
-	iA+nnLQ4eRfjzC2OL412mvu6f/0jQLE2JxrxjeZoeH1XLdofg25K61K1G38xPVNSi80MWUaQ3k4tm
-	9mdF+YVDZ3iFYJkDDgmA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Reply-To:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:
+	From:MIME-Version:Date:Message-ID:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=O6uaREvBoM/5n2kKeLTG/0gs5Tm5K/cNhyzOWjAS3U4=; b=h1X8BFX90SrUzqqz1BCfDnJC93
+	ExZV/lFQ5xAUreaj2FRjE1kwwJhI9LMf/gCRg6ZmXFkiiPnrV4AsVwlEaR5Atodz3kbV+LYvxkaOD
+	pvXZWvb1LG2HEgmUof2DDhWQSroiyOcZeUIoI2vTdeLxrkAh7XOWyddkwOrFRhesQyfMk3+4FhXTY
+	32SVMoijLNvpAXaVoPQcH02Zi72kDQfT8mrGhzg2cCUb+HQUVppdd4y1KhtiTOzxHPyDGPvpOw570
+	Kcqy1+t+idy7wVEkh0cdG3pSNmgHy0IfqxiBkmJ+UV0BkrA//ynyZO1/aNjfNKkTGS/5N9YTzo1PT
+	xO7pso4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vcjU7-0000000BGGC-41jL;
-	Mon, 05 Jan 2026 12:14:55 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1vcmFV-0000000BatM-2Jir;
+	Mon, 05 Jan 2026 15:12:01 +0000
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vcjU4-0000000BGDh-2Czw
+	id 1vcmFS-0000000BasB-2WmG
 	for linux-rockchip@lists.infradead.org;
-	Mon, 05 Jan 2026 12:14:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1767615289;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=pALCUxgG0Sih3gS1zvT5EYeP9u7uxFAHJ/wplVNqgIA=;
-	b=CL8esZY1GYAaPV/IZ7WsWlwGBj13y/IQcaqsIRArVMNb5/Q+NTkVPMf6qcDry5aokXap+e
-	Qp3p7aLxStjtEwdF7suBn1LLJZHAcxe29ykATjuPh/UQWkCkZjh/RbkOKXgCNOGU26R51K
-	fLMcj8qiKFH4EZ8ys6ngGpc5mZR7w5M=
-Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
- [209.85.222.197]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-154-uiCAABXxO--4MIMxGRiyAQ-1; Mon, 05 Jan 2026 07:14:48 -0500
-X-MC-Unique: uiCAABXxO--4MIMxGRiyAQ-1
-X-Mimecast-MFC-AGG-ID: uiCAABXxO--4MIMxGRiyAQ_1767615287
-Received: by mail-qk1-f197.google.com with SMTP id af79cd13be357-8ba026720eeso2340170185a.1
-        for <linux-rockchip@lists.infradead.org>; Mon, 05 Jan 2026 04:14:48 -0800 (PST)
+	Mon, 05 Jan 2026 15:11:59 +0000
+Received: by mail-wm1-x32d.google.com with SMTP id 5b1f17b1804b1-47d5e021a53so72615e9.3
+        for <linux-rockchip@lists.infradead.org>; Mon, 05 Jan 2026 07:11:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1767625917; x=1768230717; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:organization:autocrypt
+         :content-language:references:cc:to:subject:reply-to:from:user-agent
+         :mime-version:date:message-id:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=ZICbs1ZKFUXAVw8Uv53chEaSv1izJm54XChd7BXTSFI=;
+        b=BltVfcdxXqj8NQk21/9GhftU26DJA/A7mOU/wZnubvoySKObb50B1kBcxUn8aE4yUr
+         VUzH4AtsNDLpcGLBJfaY3ZmZA4EuklSqfw2ZSrL2/AviHALXq+1YsKTT9VKE3I//W8zF
+         usSa6rqvNo20mylI4J4Zc8cJDUiEPE5z4Z/zwdNw606qHe0PLLY8EokTH9M+Da8H7oBl
+         bI1PVALwvZgzHH0wcXXObniD11JKbhkcv7RMhwJ0BPSZgKR+vQe4y5QIoqYyJVjwGiWZ
+         FU+8hUZOwJVs4RfwrKyG1QWRJ7BCqz0DEXB2G+jKhhpir9CZH1XNlJRtgbLEUkFh9OOy
+         DM5w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1767615287; x=1768220087;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=pALCUxgG0Sih3gS1zvT5EYeP9u7uxFAHJ/wplVNqgIA=;
-        b=XNp59nUQ/gFEuzF27j0P+7l6Dd6L55NhWkXCWG1xINiQGmoNJrfUyFyxtLEV6uRBvs
-         E2EPcY3yvSH9zXjPS77FvRCZFZWX0DjXmj9Wq5q08DIxRV7gmJFcUZdpCHYzfn7b7Qrj
-         UBFcvziKlutwZsd3nvnacTQ5BRMflPGgcW/tX3VIxQhBcRRiqfuFsqjbvQ/SGzM+WVCR
-         p1+qeysBozKUA6iEae/MzFJIHmIdbAF/lLtyfIGhoAMEOm9Ajw+vVvrfjci8Y4l1QE8e
-         bJKbfL9bIzthu5G7PhKUjE5N6MrNRTmox8/8G1fkiECAORqUcKnJwKKNYguSDRDCgXPq
-         NdZw==
-X-Forwarded-Encrypted: i=1; AJvYcCX+O7YVo2yRTcPim3HZddACCiLNyNOjDosR2NvcXh2VRqp26ZVWjIqYPY/982TxpOK0vqEzTMnZdAuSHcnW7A==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yyk6i0Y+BUugutFdbYjvef1VCkyTS4VL6QI7G4m7oBMSskUZyDR
-	E4Fs/NebnzMAvStS6wzOUnWnkpJN7XYCqqJv9nc7WZoSLTNgaCgw5ob9P8KpdQCYJ/Ll2EJEBwU
-	FgsNBdq5psSQet2lIP41+DSxxFj7ACXPyqgOVKUicZ9iWi4bRsInXY2slE2VD013b9oiT49VfgQ
-	==
-X-Gm-Gg: AY/fxX59mFIqmR4NJTiyEvfX/zM5dhwWP120opTVS2OhBSh9M8/aQL6H+FbMuZUDjMa
-	ZLjXS+sp5Sc3sVIPPVJ9a1qh3rWrkXpHjPnRE5jYTsmjFn9Qx9qN14lboNjpnp4HS73R17ypo0R
-	QJvreeooKuy/QUg+QUowogjgW08sDE7jcNZr7dQ7Jrdi3ljYaaq0zMM1XlhF8NVPwvk52TRyB3t
-	kw2Au6DnwkmDxoDTTv7apVCkuSbKIyBy4JqmJSvm/QOrye1wkxRDOvkUPxn43MOCrOzagTXGXSh
-	nblJUcP4KmApE5x9ih+QOx/iDdtKPOj+nn4CacDvdWpQao/LK+m2UIFgaV8EbvrK0JYnJBnamsp
-	z01PrHleRckrI7UAk+ekuTmMOOA7ABGf8p4Up9CZH+0zV
-X-Received: by 2002:a05:620a:44d5:b0:8b2:d6eb:8203 with SMTP id af79cd13be357-8c090501db3mr7123130585a.69.1767615287420;
-        Mon, 05 Jan 2026 04:14:47 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFX37kzKtyI4pVa2B6zkJ45mbfVDYf5b4bq6gq1EC+G2OfHkde7TEgVCraCyU1NH7StTtKeCg==
-X-Received: by 2002:a05:620a:44d5:b0:8b2:d6eb:8203 with SMTP id af79cd13be357-8c090501db3mr7123126885a.69.1767615286882;
-        Mon, 05 Jan 2026 04:14:46 -0800 (PST)
-Received: from redhat.com (c-73-183-52-120.hsd1.pa.comcast.net. [73.183.52.120])
-        by smtp.gmail.com with ESMTPSA id af79cd13be357-8c0971ee247sm3701650785a.27.2026.01.05.04.14.44
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 05 Jan 2026 04:14:45 -0800 (PST)
-Date: Mon, 5 Jan 2026 07:14:43 -0500
-From: Brian Masney <bmasney@redhat.com>
-To: Geert Uytterhoeven <geert@linux-m68k.org>
-Cc: Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Stephen Boyd <sboyd@kernel.org>, Maxime Ripard <mripard@kernel.org>,
-	linux-clk@vger.kernel.org, linux-phy@lists.infradead.org,
-	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v3 9/9] phy: ti: phy-j721e-wiz: convert from round_rate()
- to determine_rate()
-Message-ID: <aVurM1XRqiYlzi1B@redhat.com>
-References: <20251212-phy-clk-round-rate-v3-0-beae3962f767@redhat.com>
- <20251212-phy-clk-round-rate-v3-9-beae3962f767@redhat.com>
- <CAMuHMdXudWW3MPKqP0-d+DyMNRF-X62oyHRnj=MM_9MSpJw6sw@mail.gmail.com>
+        d=1e100.net; s=20230601; t=1767625917; x=1768230717;
+        h=content-transfer-encoding:in-reply-to:organization:autocrypt
+         :content-language:references:cc:to:subject:reply-to:from:user-agent
+         :mime-version:date:message-id:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=ZICbs1ZKFUXAVw8Uv53chEaSv1izJm54XChd7BXTSFI=;
+        b=RvQgANj45srgo3e8jmzP/GfAhQVkqxjJ8Ii694+xIj3tZuXjlr2jTtOpquPUIxZ4DG
+         cuLChnWlCJBXY/bicLRPCYL+FbnpVgPXR1MnzGALYB577Gigyg4lJEiRS1SZwjqj6T4S
+         0zyjfKdxBRr3TE0buDJCct/OudWH1CejIObu9XKakK4/xruUh0r9Ve6c3U43dHBnDWbm
+         w0L4Ryh3Yq4HIiQgxiFFQ9fdZzwMVppDgsd3H77vVqAw74DErktOfXtb74ACvY8/LsVh
+         8HOwhYGT7XudE2sn2l+8pJECFAyfvtkLhlwl7sqI9hYyocciMDJSGJDxHksMN8kD1vop
+         fSXg==
+X-Forwarded-Encrypted: i=1; AJvYcCXThfbJJ3KZttQR0QB56NWqMs0FiDt7zkZZDYHkUUejwGF/gOduHtSs1oDYyl7nHODvt6gfNjxOkttSrO+uKA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzV+VBny6uTomF9Y53wvVzZK+z2GrEMKdI8vj+gPNEhRrRRYISi
+	qUmSawGvNdHCl7FXnkDpbUzQbEQNt9GaO5mWdPwdE5PbwFL883ZJdnTCA4xhOWtGqX4=
+X-Gm-Gg: AY/fxX43TZPoUisSsZyIMNSMJwdhLF4IhmBCNjvu49jMpJy0cjhyyO14zuRz/tKYuak
+	Ni8CQaAIkisukJojABvwjklE+CU+KMahKxt9vvuKAJ0yErpSEQ6lHZ4WyFEdBNDi6uu0gOVCdY/
+	9nS0Ikb5Z9YmWl+LEAqzHsCQCRn22HpXQ99VNBgTSP+JBcSbvSouc6pRHt5k89CWC6xOZ1Hk4jw
+	2CsqpKDg9GRgPLO1X8gzKzrXtXsZ82s/iCXNeBThxlYS1AtYQtVJcR8swvcLx2hnGTeczn0tyMF
+	jnk491bkVSYVP+8TYm3ulQm3/+InnlbHfiNpiloafnPSUrMdkOTawxCKSGAz3QvJiaCFyip8Fq/
+	Spj7tNCVka+Q6GNJsiNPq3Gy7/A9sp7bLthedv7hKMqaLkjn9cNrm7AhgZVcVx0dBfgSqJB17iE
+	Rsuyo7A1SkHi2qv6YYQVkixGPQoVmxEF1qQ7mEWmQBCzAHvdVErOzLZJPnLHgbNyQ=
+X-Google-Smtp-Source: AGHT+IHRLvC8RFN1wxpNMmjmLXPXlAzEc9S+ADXuomF/jWk/3+qxIvBtpEcUlQn4VBvzYM2OCRH1ZA==
+X-Received: by 2002:a05:600c:154b:b0:477:55c9:c3ea with SMTP id 5b1f17b1804b1-47d1958e7b9mr656916475e9.35.1767625916649;
+        Mon, 05 Jan 2026 07:11:56 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:3d9:2080:d4c1:5589:eadb:1033? ([2a01:e0a:3d9:2080:d4c1:5589:eadb:1033])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-47d6d13e2e0sm197844145e9.1.2026.01.05.07.11.55
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 05 Jan 2026 07:11:56 -0800 (PST)
+Message-ID: <9fbeb95f-8f79-4983-857c-659566206835@linaro.org>
+Date: Mon, 5 Jan 2026 16:11:55 +0100
 MIME-Version: 1.0
-In-Reply-To: <CAMuHMdXudWW3MPKqP0-d+DyMNRF-X62oyHRnj=MM_9MSpJw6sw@mail.gmail.com>
-User-Agent: Mutt/2.2.14 (2025-02-20)
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: DLPbp5zwdn1iz6IRlvOT9roi6Jg4-o2Uz_IF8_yvldk_1767615287
-X-Mimecast-Originator: redhat.com
-Content-Disposition: inline
+User-Agent: Mozilla Thunderbird
+From: neil.armstrong@linaro.org
+Subject: Re: [PATCH 2/4] drm/panel-edp: Move FriendlyELEC HD702E
+To: Robin Murphy <robin.murphy@arm.com>, heiko@sntech.de,
+ dianders@chromium.org, thierry.reding@gmail.com, sam@ravnborg.org
+Cc: jesszhan0024@gmail.com, dri-devel@lists.freedesktop.org,
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+References: <cover.1767111804.git.robin.murphy@arm.com>
+ <027763b36fbad2005d09eeb289b7716c57f65e76.1767111809.git.robin.murphy@arm.com>
+Content-Language: en-US, fr
+Autocrypt: addr=neil.armstrong@linaro.org; keydata=
+ xsBNBE1ZBs8BCAD78xVLsXPwV/2qQx2FaO/7mhWL0Qodw8UcQJnkrWmgTFRobtTWxuRx8WWP
+ GTjuhvbleoQ5Cxjr+v+1ARGCH46MxFP5DwauzPekwJUD5QKZlaw/bURTLmS2id5wWi3lqVH4
+ BVF2WzvGyyeV1o4RTCYDnZ9VLLylJ9bneEaIs/7cjCEbipGGFlfIML3sfqnIvMAxIMZrvcl9
+ qPV2k+KQ7q+aXavU5W+yLNn7QtXUB530Zlk/d2ETgzQ5FLYYnUDAaRl+8JUTjc0CNOTpCeik
+ 80TZcE6f8M76Xa6yU8VcNko94Ck7iB4vj70q76P/J7kt98hklrr85/3NU3oti3nrIHmHABEB
+ AAHNKk5laWwgQXJtc3Ryb25nIDxuZWlsLmFybXN0cm9uZ0BsaW5hcm8ub3JnPsLAkQQTAQoA
+ OwIbIwULCQgHAwUVCgkICwUWAgMBAAIeAQIXgBYhBInsPQWERiF0UPIoSBaat7Gkz/iuBQJk
+ Q5wSAhkBAAoJEBaat7Gkz/iuyhMIANiD94qDtUTJRfEW6GwXmtKWwl/mvqQtaTtZID2dos04
+ YqBbshiJbejgVJjy+HODcNUIKBB3PSLaln4ltdsV73SBcwUNdzebfKspAQunCM22Mn6FBIxQ
+ GizsMLcP/0FX4en9NaKGfK6ZdKK6kN1GR9YffMJd2P08EO8mHowmSRe/ExAODhAs9W7XXExw
+ UNCY4pVJyRPpEhv373vvff60bHxc1k/FF9WaPscMt7hlkbFLUs85kHtQAmr8pV5Hy9ezsSRa
+ GzJmiVclkPc2BY592IGBXRDQ38urXeM4nfhhvqA50b/nAEXc6FzqgXqDkEIwR66/Gbp0t3+r
+ yQzpKRyQif3OwE0ETVkGzwEIALyKDN/OGURaHBVzwjgYq+ZtifvekdrSNl8TIDH8g1xicBYp
+ QTbPn6bbSZbdvfeQPNCcD4/EhXZuhQXMcoJsQQQnO4vwVULmPGgtGf8PVc7dxKOeta+qUh6+
+ SRh3vIcAUFHDT3f/Zdspz+e2E0hPV2hiSvICLk11qO6cyJE13zeNFoeY3ggrKY+IzbFomIZY
+ 4yG6xI99NIPEVE9lNBXBKIlewIyVlkOaYvJWSV+p5gdJXOvScNN1epm5YHmf9aE2ZjnqZGoM
+ Mtsyw18YoX9BqMFInxqYQQ3j/HpVgTSvmo5ea5qQDDUaCsaTf8UeDcwYOtgI8iL4oHcsGtUX
+ oUk33HEAEQEAAcLAXwQYAQIACQUCTVkGzwIbDAAKCRAWmrexpM/4rrXiB/sGbkQ6itMrAIfn
+ M7IbRuiSZS1unlySUVYu3SD6YBYnNi3G5EpbwfBNuT3H8//rVvtOFK4OD8cRYkxXRQmTvqa3
+ 3eDIHu/zr1HMKErm+2SD6PO9umRef8V82o2oaCLvf4WeIssFjwB0b6a12opuRP7yo3E3gTCS
+ KmbUuLv1CtxKQF+fUV1cVaTPMyT25Od+RC1K+iOR0F54oUJvJeq7fUzbn/KdlhA8XPGzwGRy
+ 4zcsPWvwnXgfe5tk680fEKZVwOZKIEuJC3v+/yZpQzDvGYJvbyix0lHnrCzq43WefRHI5XTT
+ QbM0WUIBIcGmq38+OgUsMYu4NzLu7uZFAcmp6h8g
+Organization: Linaro
+In-Reply-To: <027763b36fbad2005d09eeb289b7716c57f65e76.1767111809.git.robin.murphy@arm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260105_041452_628703_6A7A5B68 
-X-CRM114-Status: GOOD (  22.48  )
+X-CRM114-CacheID: sfid-20260105_071158_707863_230F3371 
+X-CRM114-Status: GOOD (  14.63  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,59 +125,116 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
+Reply-To: Neil Armstrong <neil.armstrong@linaro.org>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Geert,
-
-On Mon, Dec 29, 2025 at 11:18:52AM +0100, Geert Uytterhoeven wrote:
-> Hi Brian,
+On 12/30/25 18:20, Robin Murphy wrote:
+> FriendlyELEC's HD702E module is an eDP panel (in as much as it's some
+> LVDS LCD behind a Chrontel CH7511B eDP bridge), so move its data over
+> to the eDP driver, also resolving the warning about the missing bpc
+> value in the process.
 > 
-> On Fri, 12 Dec 2025 at 00:21, Brian Masney <bmasney@redhat.com> wrote:
-> > The round_rate() clk ops is deprecated, so migrate this driver from
-> > round_rate() to determine_rate() using the Coccinelle semantic patch
-> > on the cover letter of this series.
-> >
-> > Signed-off-by: Brian Masney <bmasney@redhat.com>
+> Signed-off-by: Robin Murphy <robin.murphy@arm.com>
+> ---
+>   drivers/gpu/drm/panel/panel-edp.c    | 26 ++++++++++++++++++++++++++
+>   drivers/gpu/drm/panel/panel-simple.c | 25 -------------------------
+>   2 files changed, 26 insertions(+), 25 deletions(-)
 > 
-> Thanks for your patch, which is now commit 27287e3b52b5954b ("phy:
-> ti: phy-j721e-wiz: convert from round_rate() to determine_rate()")
-> in phy/next
-> 
-> > --- a/drivers/phy/ti/phy-j721e-wiz.c
-> > +++ b/drivers/phy/ti/phy-j721e-wiz.c
-> > @@ -934,12 +934,15 @@ static unsigned long wiz_clk_div_recalc_rate(struct clk_hw *hw,
-> >         return divider_recalc_rate(hw, parent_rate, val, div->table, 0x0, 2);
-> >  }
-> >
-> > -static long wiz_clk_div_round_rate(struct clk_hw *hw, unsigned long rate,
-> > -                                  unsigned long *prate)
-> > +static int wiz_clk_div_determine_rate(struct clk_hw *hw,
-> > +                                     struct clk_rate_request *req)
-> >  {
-> >         struct wiz_clk_divider *div = to_wiz_clk_div(hw);
-> >
-> > -       return divider_round_rate(hw, rate, prate, div->table, 2, 0x0);
-> > +       req->rate = divider_round_rate(hw, req->rate, &req->best_parent_rate,
-> > +                                      div->table, 2, 0x0);
-> 
-> Is this correct?  divider_round_rate() can return a negative error code
-> (from divider_ro_determine_rate()), which is not handled here?
-> 
-> Looks like several other users of divider_round_rate() use this
-> same logic, and thus are affected, too.
+> diff --git a/drivers/gpu/drm/panel/panel-edp.c b/drivers/gpu/drm/panel/panel-edp.c
+> index 415b894890ad..dd53ccc209ce 100644
+> --- a/drivers/gpu/drm/panel/panel-edp.c
+> +++ b/drivers/gpu/drm/panel/panel-edp.c
+> @@ -1256,6 +1256,29 @@ static const struct panel_desc boe_nv140fhmn49 = {
+>   	},
+>   };
+>   
+> +static const struct drm_display_mode friendlyarm_hd702e_mode = {
+> +	.clock		= 67185,
+> +	.hdisplay	= 800,
+> +	.hsync_start	= 800 + 20,
+> +	.hsync_end	= 800 + 20 + 24,
+> +	.htotal		= 800 + 20 + 24 + 20,
+> +	.vdisplay	= 1280,
+> +	.vsync_start	= 1280 + 4,
+> +	.vsync_end	= 1280 + 4 + 8,
+> +	.vtotal		= 1280 + 4 + 8 + 4,
+> +	.flags		= DRM_MODE_FLAG_NVSYNC | DRM_MODE_FLAG_NHSYNC,
+> +};
+> +
+> +static const struct panel_desc friendlyarm_hd702e = {
+> +	.modes = &friendlyarm_hd702e_mode,
+> +	.num_modes = 1,
+> +	.bpc = 8,
+> +	.size = {
+> +		.width	= 94,
+> +		.height	= 151,
+> +	},
+> +};
+> +
+>   static const struct drm_display_mode innolux_n116bca_ea1_mode = {
+>   	.clock = 76420,
+>   	.hdisplay = 1366,
+> @@ -1663,6 +1686,9 @@ static const struct of_device_id platform_of_match[] = {
+>   	}, {
+>   		.compatible = "boe,nv140fhmn49",
+>   		.data = &boe_nv140fhmn49,
+> +	}, {
+> +		.compatible = "friendlyarm,hd702e",
+> +		.data = &friendlyarm_hd702e,
+>   	}, {
+>   		.compatible = "innolux,n116bca-ea1",
+>   		.data = &innolux_n116bca_ea1,
+> diff --git a/drivers/gpu/drm/panel/panel-simple.c b/drivers/gpu/drm/panel/panel-simple.c
+> index b26b682826bc..3ea52667b858 100644
+> --- a/drivers/gpu/drm/panel/panel-simple.c
+> +++ b/drivers/gpu/drm/panel/panel-simple.c
+> @@ -2359,28 +2359,6 @@ static const struct panel_desc frida_frd350h54004 = {
+>   	.connector_type = DRM_MODE_CONNECTOR_DPI,
+>   };
+>   
+> -static const struct drm_display_mode friendlyarm_hd702e_mode = {
+> -	.clock		= 67185,
+> -	.hdisplay	= 800,
+> -	.hsync_start	= 800 + 20,
+> -	.hsync_end	= 800 + 20 + 24,
+> -	.htotal		= 800 + 20 + 24 + 20,
+> -	.vdisplay	= 1280,
+> -	.vsync_start	= 1280 + 4,
+> -	.vsync_end	= 1280 + 4 + 8,
+> -	.vtotal		= 1280 + 4 + 8 + 4,
+> -	.flags		= DRM_MODE_FLAG_NVSYNC | DRM_MODE_FLAG_NHSYNC,
+> -};
+> -
+> -static const struct panel_desc friendlyarm_hd702e = {
+> -	.modes = &friendlyarm_hd702e_mode,
+> -	.num_modes = 1,
+> -	.size = {
+> -		.width	= 94,
+> -		.height	= 151,
+> -	},
+> -};
+> -
+>   static const struct drm_display_mode giantplus_gpg482739qs5_mode = {
+>   	.clock = 9000,
+>   	.hdisplay = 480,
+> @@ -5235,9 +5213,6 @@ static const struct of_device_id platform_of_match[] = {
+>   	}, {
+>   		.compatible = "frida,frd350h54004",
+>   		.data = &frida_frd350h54004,
+> -	}, {
+> -		.compatible = "friendlyarm,hd702e",
+> -		.data = &friendlyarm_hd702e,
+>   	}, {
+>   		.compatible = "giantplus,gpg482739qs5",
+>   		.data = &giantplus_gpg482739qs5
 
-Thanks for the review! You are correct that this is a bug.
+Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
 
-I had planned once round_rate is removed from the clk core to post a
-series to remove divider_round_rate() and divider_ro_round_rate() (plus
-the _parent functions) since they call the corresponding determine_rate
-functions. I'll bump that up on my todo list this week.
-
-Brian
-
+Thanks,
+Neil
 
 _______________________________________________
 Linux-rockchip mailing list
