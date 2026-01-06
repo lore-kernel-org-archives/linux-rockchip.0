@@ -4,51 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 534ADCDC18E
-	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Jan 2026 12:25:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84E12CDC19F
+	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Jan 2026 13:36:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:Cc:From:Subject:
-	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Jh5s8qUT1e8tQhXwBX3ijcO0WJkHOwnT6jMcDxr8r1k=; b=AU/J/dCGFs2vTB
-	Yay/c0ThHROLCjOrZjlHuluT65rzJNX1TEeuOtXvQEoQKjamnpicdePDw4sfQPMUV0qbMLV0Ui7ob
-	6Z8tFP8+KfB9PGJPeGfAnGA3AqblRKRiyFmdaaBQ/ITRpyFubtGOBy0FEvv8CpaO5gTutSobfv7qO
-	Hs/yHjqdsVSd/Gh7dQraAv1u/Sey+imFh4Y46yEoK/hh4WFzHS3aYawcDNhERr6LfXaBQctKiKups
-	rGOLukfQa86O6HmsNbnKMSsRWk5nLpoLg4HiFdR1xhNLAK/P3tMYc/tlHgp8L5rick0rLTRyggDq0
-	pGt4fXr43ohSwUGgbH/Q==;
+	List-Owner; bh=/xalQ9Y/zBZRUGw4zQg4kh9T9yDnjrviLiC0oSCNWZk=; b=fUAcXjhkHpAqi1
+	7XPKIebNyY1OAg+bRN/P/Ag4Kv12Hez9My37tHIn+6fVc66uQ9VYvdPLS60utfEt9OYcD93m5M2GK
+	H7Ghv3DVlfNO+ijP9mPMx5jTa8RO6qkTR+hcZM7pv16Tifc9OAkKNqHtelGw3PkKEjeTSEf+fPDfg
+	XAiH+43wwSMFdcJVVET4YksjP5K+pATtN7mdnfxbUBginKqNPGz9u+uoisHBuku58sozFbQ5BUMuE
+	+3hCQ+B3+cwHzt58Op/HiehO8CEJTwZXXviwFDxSmLe3shqr6tlM3ev0IZCH5Rxd/H0Mn41jFqtii
+	/4GsTab3B/eke8zT7Dtw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vd67f-0000000Czhe-1Whk;
-	Tue, 06 Jan 2026 12:25:15 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1vd7Eh-0000000D6rJ-0uDB;
+	Tue, 06 Jan 2026 13:36:35 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vd67b-0000000CzgH-3kYi;
-	Tue, 06 Jan 2026 12:25:13 +0000
-Received: from pendragon.ideasonboard.com (cpc89244-aztw30-2-0-cust6594.18-1.cable.virginm.net [86.31.185.195])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 66F71581;
-	Tue,  6 Jan 2026 13:24:45 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1767702285;
-	bh=wBRsYLtKcDyFYvStHEhKrcma21Zlzgl0W/z54XToUP0=;
-	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
-	b=WbfyO5LVDaAUBZF/4QiTewmuodA+E4eD2oQH4IbmJioV3EDqPF9Yi7Nduu6InKEdk
-	 LBPer/1I9X4igMs25RQEmXYuKGHfmiAwRHYYYY7ds8mZ2P0t0LJq05k3omLm2Kz54v
-	 xH9PTpmM3USsjyeLOKT9wlN/nkRb/PJozmNFED6s=
+	id 1vd7Ef-0000000D6r2-0SyK;
+	Tue, 06 Jan 2026 13:36:33 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 23D086011E;
+	Tue,  6 Jan 2026 13:36:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9C11FC116C6;
+	Tue,  6 Jan 2026 13:36:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1767706591;
+	bh=nHXV1LgeY+ybeHMb4BYaUT8tHK4MVM5/lrtO7MTBwbk=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=cUU36bGsPCyB1zwaKXyEiDn53MGc9yjEYD31Zip37sFZB+brbZTX3m7w0iwNuq7IH
+	 72DGfxFCWXCqiLsY8+XmppJV3vMyl9utdvjSkRq4eYLLSYIxHwaePttTnNwgJVlV9S
+	 yo4OGgL8HqK5QEzBbTHIUQC4kFeLA0b8Ol0AtOWXs0KtFEoU3Kjbr7zzDHj1vEEqOA
+	 ov6owVdvvRQ5jTCgEpuO01wIavR0tftMBH+dag9ZJibe6vjy4rKacjtHL2kj3xUkrs
+	 g9d2b3AVkqj0I5VyiGRhfDCra2bWPRZaB1lLEZUpFGWN2tyIU4i+LW4259Dd9oCvO7
+	 fpddhn/lQs+Kg==
+Date: Tue, 6 Jan 2026 19:06:23 +0530
+From: Manivannan Sadhasivam <mani@kernel.org>
+To: Anand Moon <linux.amoon@gmail.com>
+Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, 
+	Niklas Cassel <cassel@kernel.org>, Shawn Lin <shawn.lin@rock-chips.com>, 
+	Hans Zhang <18255117159@163.com>, Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
+	"open list:PCI NATIVE HOST BRIDGE AND ENDPOINT DRIVERS" <linux-pci@vger.kernel.org>, 
+	"moderated list:ARM/Rockchip SoC support" <linux-arm-kernel@lists.infradead.org>, 
+	"open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>, open list <linux-kernel@vger.kernel.org>
+Subject: Re: [PATCH v2] PCI: dw-rockchip: Add runtime PM support to Rockchip
+ PCIe
+Message-ID: <ald3sxdzggbhqvpc7ra7x5nkf36xoamgwfumz5r4jwgirdzyes@nwvka2h256f6>
+References: <20260102131819.123745-1-linux.amoon@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20260105171142.147792-2-rui.wang@ideasonboard.com>
-References: <20260105171142.147792-1-rui.wang@ideasonboard.com> <20260105171142.147792-2-rui.wang@ideasonboard.com>
-Subject: Re: [PATCH v4 1/1] media: rkisp1: Fix filter mode register configuration
-From: Kieran Bingham <kieran.bingham@ideasonboard.com>
-Cc: libcamera-devel@lists.libcamera.org, Rui Wang <rui.wang@ideasonboard.com>
-To: Rui Wang <rui.wang@ideasonboard.com>, dafna@fastmail.com, heiko@sntech.de, laurent.pinchart@ideasonboard.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, mchehab@kernel.org
-Date: Tue, 06 Jan 2026 12:25:03 +0000
-Message-ID: <176770230345.3486172.1119327800680289066@ping.linuxembedded.co.uk>
-User-Agent: alot/0.9.1
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260106_042512_069759_4A8E6E91 
-X-CRM114-Status: GOOD (  15.76  )
+Content-Disposition: inline
+In-Reply-To: <20260102131819.123745-1-linux.amoon@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -60,66 +70,51 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Quoting Rui Wang (2026-01-05 17:11:42)
-> The rkisp1_flt_config() function performs an initial direct write to
-> RKISP1_CIF_ISP_FILT_MODE without including the RKISP1_CIF_ISP_FLT_ENA
-> bit, which clears the filter enable bit in the hardware.
-> 
-> The subsequent read/modify/write sequence then reads back the register
-> with the enable bit already cleared and cannot restore it, resulting in
-> the filter being inadvertently disabled.
-> 
-> Remove the redundant direct write. The read/modify/write sequence alone
-> correctly preserves the existing enable bit state while updating the
-> DNR mode and filter configuration bits.
-> 
-> Signed-off-by: Rui Wang <rui.wang@ideasonboard.com>
-> ---
->  
-> Changelog since v1:
->  1. Update version number from v1 to v4 to clarify the confusing
-> 
-> Reviewed-by Stefan Klug and Kieran Bingham
->  from v1 are carried over (no function code changes).
-
-To carry them over you need to include the tags.
-
-From the previous version:
-
-Reviewed-by: Stefan Klug <stefan.klug@ideasonboard.com>
-Reviewed-by: Kieran Bingham <kieran.bingham@ideasonboard.com>
-
-> 
->  drivers/media/platform/rockchip/rkisp1/rkisp1-params.c | 6 ------
->  1 file changed, 6 deletions(-)
-> 
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-> index c9f88635224c..6442436a5e42 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-> @@ -411,12 +411,6 @@ static void rkisp1_flt_config(struct rkisp1_params *params,
->         rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_FILT_LUM_WEIGHT,
->                      arg->lum_weight);
->  
-> -       rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_FILT_MODE,
-> -                    (arg->mode ? RKISP1_CIF_ISP_FLT_MODE_DNR : 0) |
-> -                    RKISP1_CIF_ISP_FLT_CHROMA_V_MODE(arg->chr_v_mode) |
-> -                    RKISP1_CIF_ISP_FLT_CHROMA_H_MODE(arg->chr_h_mode) |
-> -                    RKISP1_CIF_ISP_FLT_GREEN_STAGE1(arg->grn_stage1));
-> -
->         /* avoid to override the old enable value */
->         filt_mode = rkisp1_read(params->rkisp1, RKISP1_CIF_ISP_FILT_MODE);
->         filt_mode &= RKISP1_CIF_ISP_FLT_ENA;
-> -- 
-> 2.43.0
->
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gRnJpLCBKYW4gMDIsIDIwMjYgYXQgMDY6NDc6NTBQTSArMDUzMCwgQW5hbmQgTW9vbiB3cm90
+ZToKPiBBZGQgcnVudGltZSBwb3d3ZSBtYW5hZ2VlbWVudCBmdW5jdGlvbmFsaXR5IGludG8gdGhl
+IFJvY2tjaGlwIERlc2lnbldhcmUKPiBQQ0llIGNvbnRyb2xsZXIgZHJpdmVyLiBDYWxsaW5nIGRl
+dm1fcG1fcnVudGltZV9lbmFibGUoKSBkdXJpbmcgZGV2aWNlCj4gcHJvYmluZyBhbGxvd3MgdGhl
+IGNvbnRyb2xsZXIgdG8gcmVwb3J0IGl0cyBydW50aW1lIFBNIHN0YXR1cywgZW5hYmxpbmcKPiBw
+b3dlciBtYW5hZ2VtZW50IGNvbnRyb2xzIHRvIGJlIGFwcGxpZWQgY29uc2lzdGVudGx5IGFjcm9z
+cyB0aGUgZW50aXJlCj4gY29ubmVjdGVkIFBDSWUgaGllcmFyY2h5Lgo+IAo+IFNpZ25lZC1vZmYt
+Ynk6IEFuYW5kIE1vb24gPGxpbnV4LmFtb29uQGdtYWlsLmNvbT4KPiAtLS0KPiB2MjoKPiAgICBp
+bXByb3ZlIHRoZSBjb21taXQgbWVzc2FnZQo+ICAgIERyb3AgdGhlIC5yZW1vdmUgcGF0Y2gKPiAg
+ICBEcm9wIHRoZSBkaXNhYmxlX3BtX3J1bnRpbWUKPiB2MToKPiAgaHR0cHM6Ly9sb3JlLmtlcm5l
+bC5vcmcvYWxsLzIwMjUxMDI3MTQ1NjAyLjE5OTE1NC0zLWxpbnV4LmFtb29uQGdtYWlsLmNvbS8K
+PiAtLS0KPiAgZHJpdmVycy9wY2kvY29udHJvbGxlci9kd2MvcGNpZS1kdy1yb2NrY2hpcC5jIHwg
+MTcgKysrKysrKysrKysrKysrKysKPiAgMSBmaWxlIGNoYW5nZWQsIDE3IGluc2VydGlvbnMoKykK
+PiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9wY2kvY29udHJvbGxlci9kd2MvcGNpZS1kdy1yb2Nr
+Y2hpcC5jIGIvZHJpdmVycy9wY2kvY29udHJvbGxlci9kd2MvcGNpZS1kdy1yb2NrY2hpcC5jCj4g
+aW5kZXggZjg2MDVmZTYxYTQxNS4uMjQ5OGZmNTE0NmE1YSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJz
+L3BjaS9jb250cm9sbGVyL2R3Yy9wY2llLWR3LXJvY2tjaGlwLmMKPiArKysgYi9kcml2ZXJzL3Bj
+aS9jb250cm9sbGVyL2R3Yy9wY2llLWR3LXJvY2tjaGlwLmMKPiBAQCAtMjAsNiArMjAsNyBAQAo+
+ICAjaW5jbHVkZSA8bGludXgvb2ZfaXJxLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9waHkvcGh5Lmg+
+Cj4gICNpbmNsdWRlIDxsaW51eC9wbGF0Zm9ybV9kZXZpY2UuaD4KPiArI2luY2x1ZGUgPGxpbnV4
+L3BtX3J1bnRpbWUuaD4KPiAgI2luY2x1ZGUgPGxpbnV4L3JlZ21hcC5oPgo+ICAjaW5jbHVkZSA8
+bGludXgvcmVzZXQuaD4KPiAgCj4gQEAgLTcwOSw2ICs3MTAsMjAgQEAgc3RhdGljIGludCByb2Nr
+Y2hpcF9wY2llX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gIAlpZiAocmV0
+KQo+ICAJCWdvdG8gZGVpbml0X3BoeTsKPiAgCj4gKwlyZXQgPSBwbV9ydW50aW1lX3NldF9zdXNw
+ZW5kZWQoZGV2KTsKPiArCWlmIChyZXQpCj4gKwkJZ290byBkZWluaXRfY2xrOwoKU2VyaW91c2x5
+PyBXaHkgZG8geW91IG5lZWQgdGhpcz8gRGVmYXVsdCBQTSBzdGF0dXMgaXMgJ3N1c3BlbmRlZCcu
+Cgo+ICsKPiArCXJldCA9IGRldm1fcG1fcnVudGltZV9lbmFibGUoZGV2KTsKPiArCWlmIChyZXQp
+IHsKPiArCQlyZXQgPSBkZXZfZXJyX3Byb2JlKGRldiwgcmV0LCAiRmFpbGVkIHRvIGVuYWJsZSBy
+dW50aW1lIFBNXG4iKTsKPiArCQlnb3RvIGRlaW5pdF9jbGs7Cj4gKwl9Cj4gKwo+ICsJcmV0ID0g
+cG1fcnVudGltZV9yZXN1bWVfYW5kX2dldChkZXYpOwo+ICsJaWYgKHJldCkKPiArCQlnb3RvIGRl
+aW5pdF9jbGs7Cj4gKwo+ICAJc3dpdGNoIChkYXRhLT5tb2RlKSB7Cj4gIAljYXNlIERXX1BDSUVf
+UkNfVFlQRToKPiAgCQlyZXQgPSByb2NrY2hpcF9wY2llX2NvbmZpZ3VyZV9yYyhwZGV2LCByb2Nr
+Y2hpcCk7Cj4gQEAgLTczMCw2ICs3NDUsOCBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX3BjaWVfcHJv
+YmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPiAgCj4gIGRlaW5pdF9jbGs6Cj4gIAlj
+bGtfYnVsa19kaXNhYmxlX3VucHJlcGFyZShyb2NrY2hpcC0+Y2xrX2NudCwgcm9ja2NoaXAtPmNs
+a3MpOwo+ICsJcG1fcnVudGltZV9kaXNhYmxlKGRldik7CgpZb3UgdXNlZCBkZXZtXyBmb3IgZW5h
+YmxlLgoKPiArCXBtX3J1bnRpbWVfbm9fY2FsbGJhY2tzKGRldik7CgpXaHk/IFdoZXJlIGlzIHBt
+X3J1bnRpbWVfcHV0KCk/IFBsZWFzZSByZWFkIERvY3VtZW50YXRpb24vcG93ZXIvcnVudGltZV9w
+bS5yc3QuCgotIE1hbmkKCi0tIArgrq7grqPgrr/grrXgrqPgr43grqPgrqngr40g4K6a4K6k4K6+
+4K6a4K6/4K614K6u4K+NCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMu
+aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
+L2xpbnV4LXJvY2tjaGlwCg==
