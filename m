@@ -4,56 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66E22CEFCF2
-	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Jan 2026 18:53:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CDD73CEFD04
+	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Jan 2026 20:07:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6sfxHC4UgMkBLW83s97xMFnW7KhrYPzgvGwD4t4omuE=; b=b7f6d1o+3k/TrT
-	zTr2JG/gDV39yOReEhPwZX+feXqbVdaO5gl/x9lHp1Sa0nYZTbBACDPc2F6r0+Y5VB/6EVxk0ma6r
-	ZrfZjI7B7xnqkI/+1/mA1eZLuUQ7HfJdN4nvN6rpXsZQ+uqBRmq4EprtoD5RH9qrFkxTsVGQVOz3n
-	W90zsxsGvQt3GjKhwhCnUbfUxZAaiTMOKTF6dI8QAPURocNnz/avyOskDTR64+ABIK41UHYZEdUMS
-	tO9Xa9BVYdQQom08MRa/oNbWUe7nkfKJHXgrdVCWuXPDb1rL+lk+pfMi+pWI52c4OujMkvKZZIIAB
-	ysmTx3X2CEMYtZ6cIxjw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3x6Z9sSTjvfamiCRMcBbd/DPFwRh4hEVvE0jGIbC2iU=; b=odTgTGAaYRr5189scOZPD3xh+m
+	2Huu6DmwPriEw47448Qe0K89Hrs2dyIo193ornavRFgbgTp1aNqWC0UVG2qPCbHqODnEulbzoRuZf
+	ZjvnI6dgk6YZbP00d8sjRQK16Is7VoVgGDnrSlT0nZf04r2wfLbOHxBmUW3oebNrasM7378l9T1HF
+	xN8gDAIWulaV9ZUmj3E25tXKeRUH6i6+UoIhDL1kp47w12CyTT4hju6rHVdDYPfHQC0VxafQwav+D
+	wkys+9ZROhnUKcll2LHI8Hp24UOZ1QyYfPBe3Ih+U6KKT/B8G0RffXneq9CP2TZS9icyBBKbokJ4K
+	Zn4Q109w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdCAw-0000000Dip1-0R6i;
-	Tue, 06 Jan 2026 18:53:02 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1vdDL0-0000000Dnmy-1nDK;
+	Tue, 06 Jan 2026 20:07:30 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdCAs-0000000DioV-3QoI;
-	Tue, 06 Jan 2026 18:53:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=oYO5p75UGgbGYm00blLvxwY4qfzPbnXHml3ls2BGkb0=; b=Eps9U6h0eO3F9Yk1f/nHDeanUD
-	j+4USqm9bCRG/fAm+n39Sa3TQtaF/7vCKAtxQ9YXzkIP5tZeuxJTzq/y0eY2gRPlWP6mWVeRSu1js
-	l8d37K5Q2zKK98KdZ087U1NdgvnO2Z7YpxLCgqUg5aR9ruRPGcGEkwED+sFO9baxR4OI1uNCN/+tJ
-	GwaXrlxbw9ytJilp79JSRhN0Bkw4g+yHIilWUT0VQBGXZtEf0vB+ooTgzoYsXrMt84R0igoAYpLgP
-	epz5yrl5uP2PMtS92d1ih+JDAhHjUhDyEEBSGIw2kMyXdPvJL6izYs9iTheV90yW+FXrfQo2GYHfM
-	jGUF7DCQ==;
-Received: from [194.95.143.137] (helo=phil.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1vdCAq-001Hmr-6q; Tue, 06 Jan 2026 19:52:56 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: Quentin Schulz <quentin.schulz@cherry.de>
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, Heiko Stuebner <heiko.stuebner@cherry.de>
-Subject: Re: [PATCH 1/2] arm64: dts: rockchip: enable NPU on rk3588-tiger
-Date: Tue, 06 Jan 2026 19:52:56 +0100
-Message-ID: <4495583.CbtlEUcBR6@phil>
-In-Reply-To: <de401340-be1c-4354-b6c8-c86d6f724c73@cherry.de>
-References: <20250812085213.1071106-1-heiko@sntech.de>
- <de401340-be1c-4354-b6c8-c86d6f724c73@cherry.de>
+	id 1vdDKu-0000000DnmB-2cTx;
+	Tue, 06 Jan 2026 20:07:28 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1767730040;
+	bh=6vCvCpWevWY66jWQqRM/QOQ6GVMd9id6Itqb4gvVzdk=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=BaPnK1NxjtdpF/Dn8oFg1gj90KZdYCLea3LJNrpuGZCgmLRknjkeOjF/QJTfGFURT
+	 3GmViWfd7J6vyutO1xSqDHXjV7iPuxKsfkBNRVcKsSgS4hsOKPZZ/vLSv4PFs094g2
+	 9jFf3FJyU2TbcTvs8pB2aGoLSFFJDJM/EaH9oDb8sHvUd6Hh76xPcxpJdNPQERW6st
+	 HfWDvgzJcViZ8DpFyg+IIyI9tq8bmgsHfpIFu1vAJiEQuDPLplkA5vP4SAeOUDsCkO
+	 c0YvGwUmZKMcxNavo6S7071ui01HsryQ1U2slYKErDImJXwpsP9P9mN5pg3EjTMQZs
+	 rAQF284RmGF6w==
+Received: from [IPv6:2606:6d00:17:7b4b::5ac] (unknown [IPv6:2606:6d00:17:7b4b::5ac])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3C17C17E0CB0;
+	Tue,  6 Jan 2026 21:07:18 +0100 (CET)
+Message-ID: <70d2b73a4ec06bef75d7f4ad415ad654cf80ecf6.camel@collabora.com>
+Subject: Re: [PATCH v10 5/7] media: verisilicon: AV1: Restore IOMMU context
+ before decoding a frame
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, joro@8bytes.org, 
+	will@kernel.org, robin.murphy@arm.com, robh@kernel.org, krzk+dt@kernel.org,
+ 	conor+dt@kernel.org, heiko@sntech.de, p.zabel@pengutronix.de,
+ mchehab@kernel.org
+Cc: iommu@lists.linux.dev, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-media@vger.kernel.org, 
+	kernel@collabora.com
+Date: Tue, 06 Jan 2026 15:07:15 -0500
+In-Reply-To: <20251215085349.10155-6-benjamin.gaignard@collabora.com>
+References: <20251215085349.10155-1-benjamin.gaignard@collabora.com>
+	 <20251215085349.10155-6-benjamin.gaignard@collabora.com>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+Organization: Collabora Canada
+User-Agent: Evolution 3.58.2 (3.58.2-1.fc43) 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260106_105258_876920_EE922013 
-X-CRM114-Status: GOOD (  18.94  )
+X-CRM114-CacheID: sfid-20260106_120724_898141_3A601BDA 
+X-CRM114-Status: GOOD (  18.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,32 +89,127 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============1619215415460793228=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-QW0gRnJlaXRhZywgMjguIE5vdmVtYmVyIDIwMjUsIDExOjMyOjE3IE1pdHRlbGV1cm9ww6Rpc2No
-ZSBOb3JtYWx6ZWl0IHNjaHJpZWIgUXVlbnRpbiBTY2h1bHo6Cj4gSGkgSGVpa28sCj4gCj4gT24g
-OC8xMi8yNSAxMDo1MiBBTSwgSGVpa28gU3R1ZWJuZXIgd3JvdGU6Cj4gPiBGcm9tOiBIZWlrbyBT
-dHVlYm5lciA8aGVpa28uc3R1ZWJuZXJAY2hlcnJ5LmRlPgo+ID4gCj4gPiBFbmFibGUgdGhlIE5Q
-VSBjb3JlcyBhbmQgdGhlaXIgbW11cyBhbmQgd2lyZSB1cCB0aGUgc3VwcGx5LXJlZ3VsYXRvci4K
-PiA+IFRoZSByZWd1bGF0b3IgaXRzZWxmIHdhcyBhbHJlYWR5IGRlZmluZWQsIGJ1dCBpdCBkb2Vz
-IG5vdCBuZWVkIHRvIGJlCj4gPiBhbHdheXMgb24gLSB0aGUgbnB1IGNhbiBjb250cm9sIGl0Lgo+
-ID4gCj4gPiBTaWduZWQtb2ZmLWJ5OiBIZWlrbyBTdHVlYm5lciA8aGVpa28uc3R1ZWJuZXJAY2hl
-cnJ5LmRlPgo+IAo+IFJldmlld2VkLWJ5OiBRdWVudGluIFNjaHVseiA8cXVlbnRpbi5zY2h1bHpA
-Y2hlcnJ5LmRlPgo+IFRlc3RlZC1ieTogUXVlbnRpbiBTY2h1bHogPHF1ZW50aW4uc2NodWx6QGNo
-ZXJyeS5kZT4KPiAKPiBJIHN0aWxsIGhhdmUgdGhlIHNhbWUgcmVtYXJrIGFib3V0IHJlZ3VsYXRv
-ci1ib290LW9uIGJ1dCB0aGlzIGlzbid0IGEgCj4gYmxvY2tlciBwZXItc2UuCj4gCj4gVGhlIE9v
-cHMgSSBhbGx1ZGVkIHRvIGluIG15IGFuc3dlciB0byB0aGUgSmFndWFyIHBhdGNoIGlzIHRyaWdn
-ZXJlZCBieSAKPiBtYWtpbmcgRFJNX0FDQ0VMX1JPQ0tFVCBkcml2ZXIgYnVpbHQtaW4gaW5zdGVh
-ZCBvZiBhcyBhIG1vZHVsZS4gSSdtIG5vdCAKPiBzdXJlIGhvdyBtdWNoIEkgd2lsbCBkZWJ1ZyB0
-aGlzIG9uIG15IHNpZGUsIEknbGwgcHJvbGx5IGp1c3QgcmVwb3J0IHRoaXMgCj4gb24gdGhlIE1M
-IGluIGEgZmV3IGhvdXJzLgoKSnVzdCBmb3IgcGVvcGxlIHN0dW1ibGluZyBvdmVyIHRoaXMsIHRo
-ZSBjYXVzZSBpcyB0aGUgcG0tZG9tYWlucwpiZWluZyBvbiBvbiBib290IGFuZCB0aGUgaW9tbXUg
-YWZ0ZXIgcHJvYmluZyBkaXNhYmxpbmcgdGhlIGRvbWFpbi4KClNlZSBkaXNjdXNzaW9uIGluCmh0
-dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xpbnV4LXJvY2tjaGlwLzIwMjUxMjE2MDU1MjQ3LjEzMTUw
-LTEtcm14cHpsYkBnbWFpbC5jb20vCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hp
-cEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4v
-bGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+
+--===============1619215415460793228==
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-NsLgZPrOWbKHfJXnykTm"
+
+
+--=-NsLgZPrOWbKHfJXnykTm
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hi,
+
+Le lundi 15 d=C3=A9cembre 2025 =C3=A0 09:53 +0100, Benjamin Gaignard a =C3=
+=A9crit=C2=A0:
+> AV1 is a stateless decoder which means multiple AV1 bitstreams could be
+> decoded at the same time using the same hardware block. Before decoding
+> a frame it is needed to restore the iommu tables to avoid mixing decode
+> contexts.
+>=20
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+
+With the config fix you mentioned earlier, you can add my Rb in the next
+revision please.
+
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+
+> ---
+> changes in version 10:
+> - Fix build as module issue when Verisilicon video decoder is built-in.
+>=20
+> =C2=A0drivers/media/platform/verisilicon/Kconfig=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0 |=C2=A0 1 +
+> =C2=A0.../verisilicon/rockchip_vpu981_hw_av1_dec.c=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0 | 15 +++++++++++++++
+> =C2=A02 files changed, 16 insertions(+)
+>=20
+> diff --git a/drivers/media/platform/verisilicon/Kconfig b/drivers/media/p=
+latform/verisilicon/Kconfig
+> index 3272a24db71d..e64bc8b55235 100644
+> --- a/drivers/media/platform/verisilicon/Kconfig
+> +++ b/drivers/media/platform/verisilicon/Kconfig
+> @@ -49,6 +49,7 @@ config VIDEO_HANTRO_ROCKCHIP
+> =C2=A0	bool "Hantro VPU Rockchip support"
+> =C2=A0	depends on VIDEO_HANTRO
+> =C2=A0	depends on ARCH_ROCKCHIP || COMPILE_TEST
+> +	select VSI_IOMMU
+> =C2=A0	default y
+> =C2=A0	help
+> =C2=A0	=C2=A0 Enable support for RK3288, RK3328, and RK3399 SoCs.
+> diff --git a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_de=
+c.c b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
+> index e4703bb6be7c..d9e68e0ded68 100644
+> --- a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
+> +++ b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
+> @@ -5,6 +5,9 @@
+> =C2=A0 * Author: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> =C2=A0 */
+> =C2=A0
+> +#include <linux/iommu.h>
+> +#include <linux/vsi-iommu.h>
+> +
+> =C2=A0#include <media/v4l2-mem2mem.h>
+> =C2=A0#include "hantro.h"
+> =C2=A0#include "hantro_v4l2.h"
+> @@ -2095,12 +2098,24 @@ rockchip_vpu981_av1_dec_set_output_buffer(struct =
+hantro_ctx *ctx)
+> =C2=A0	hantro_write_addr(vpu, AV1_TILE_OUT_MV, mv_addr);
+> =C2=A0}
+> =C2=A0
+> +static void rockchip_vpu981_av1_restore_iommu(struct hantro_ctx *ctx)
+> +{
+> +	struct iommu_domain *domain;
+> +
+> +	/* Before decoding any frame iommu context need to be restored */
+> +	domain =3D iommu_get_domain_for_dev(ctx->dev->v4l2_dev.dev);
+> +	if (domain)
+> +		vsi_iommu_restore_ctx(domain);
+> +}
+> +
+> =C2=A0int rockchip_vpu981_av1_dec_run(struct hantro_ctx *ctx)
+> =C2=A0{
+> =C2=A0	struct hantro_dev *vpu =3D ctx->dev;
+> =C2=A0	struct vb2_v4l2_buffer *vb2_src;
+> =C2=A0	int ret;
+> =C2=A0
+> +	rockchip_vpu981_av1_restore_iommu(ctx);
+> +
+> =C2=A0	hantro_start_prepare_run(ctx);
+> =C2=A0
+> =C2=A0	ret =3D rockchip_vpu981_av1_dec_prepare_run(ctx);
+
+--=-NsLgZPrOWbKHfJXnykTm
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaV1rcwAKCRDZQZRRKWBy
+9D3iAP4vmq6NU5wkVXjJbhK2nVtJnaeTvw32c9vlufHhZ1L3FQD/YCmEiCWo2Nbq
+RsSiwxIPnq6ptHDWPcgpHrAsxpfPuw0=
+=mryd
+-----END PGP SIGNATURE-----
+
+--=-NsLgZPrOWbKHfJXnykTm--
+
+
+--===============1619215415460793228==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============1619215415460793228==--
+
