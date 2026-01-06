@@ -4,73 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44043CEFCF0
-	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Jan 2026 18:42:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D863ACEFCEF
+	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Jan 2026 18:42:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ze3vzVHL/708ucOmPENBdh7pT6jKPysvoO2HnxZvuQk=; b=pt9koWYP3giHeZ
-	W3DxfrxpqFq+/6aO94kRQcHLyj2mxjSFIuhAgYHjiNIG4KYrjMaZ+349kJ7SoyJy50FdyFCHZWfws
-	Xt4CIGQj5eQ1sbNAH9Q5VMeIU/St9pyf19gMKfkgHdTYVJdmjhm7w42o8lUgTigy1415LYAy6GRDZ
-	PevrFxOmqLOamQCy/jEjwFeutJwKDPI11lUk6gUY+PQYm63hGJHUwUNtwyc0pVkiB4iColmwGJQJ9
-	Ho+lwxOTI0oIfVkO9NLhx9kXfhpQ6V7M07qHxrwNPEgoKCLyBhzCPg2EAXOg2iX5jUP5OUjzYH41x
-	phpTYmDnDyYJfcHx/AGg==;
+	List-Owner; bh=MUGEibTywpL6CW7ZRhr5vg/3y/g4XbiS3sAhJBqW9Rk=; b=g6fVI6e28XgUgr
+	WMUhzBB4xsBt7DkBKJW53CCz12zeS/8PdfbM1LTpCnkY7VswGFdL6Bcg4RSL5zyrq5O1cZsNzi0ah
+	sqnxFNHel79ue4hmcSyPuK0OlzIKhLpg2rPu1LLc8tif+Z/2r8Du4uwbb9ptKHcQtFssfYf1mvtDX
+	AlKni7bTQXFSJAXp2mHVtKzOcSxsqsdw88JpcyysX2LNCCaJVPqcb35FKEr7hEBvE+Whl8HI4XOSN
+	m9VYN4ESWHGkKxw7+k/IWHpI7mITEwpMP39jm2WDLwSDpLwFFTG5ZOJ6ffnvZ+FCVvnOXn3FZmum/
+	Psp6SWDgilAJwAR5xWVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdC0d-0000000DhQr-3cZe;
-	Tue, 06 Jan 2026 18:42:24 +0000
+	id 1vdC0m-0000000Dhde-02u4;
+	Tue, 06 Jan 2026 18:42:32 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdC0Y-0000000DhFq-3oFM;
-	Tue, 06 Jan 2026 18:42:20 +0000
+	id 1vdC0j-0000000DhYs-21aC
+	for linux-rockchip@lists.infradead.org;
+	Tue, 06 Jan 2026 18:42:30 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=jNJKOe7dZBqtB2Q11qCQuBBieA0ZJeo2d+TUinZp+gU=; b=yVkmSm93YESmFzbN4kw9wIEc3i
-	vBCyeNE+ohLBBF3aBXTuDEKySq6SQuMWEujZqHob+W2eAkt+BR9nNbYT4KjichlYJW9FPSwLR5Pon
-	alqbiOLDSLkUYUW+3iy9EtaerN3/r+yHLrEHcWr7HRs55sSozd0zu578BpuyHeqiq80Sif8S2T0Zn
-	ElyizRyh8NZy237eYR7zbFeb71I7msHFp68xQcjTSbTMPz7TJ+xeHx7bpD8JvvrT0rlVapit0+1O1
-	6BWNjxFzQbfzSm8DpmD4ibfNM1NibLaqD15jWhSKiMNcI6Bn7ITHZ219jTlUUcL7LcC55HlPlkm9e
-	rXL1GtUA==;
+	bh=dy6XG18uHyaj1R13hOuexatpPOJvnVgc2qbu+yr+w9o=; b=siNHS6uOGCbAG1wXogNhMJuT+2
+	ZoaFsT1thIWu3gPZxhQ0JjSMXjssn6nGp+tSYlajffwNg89r55xQK1FctJGfW+aGUgNCku+EY7EPn
+	kczZc7wWpD3wSL3K2nOQP7cLZYv290OiIksmeNHEdKxomIDIkiies1LMeafjMrCabJ/8L9FnMbcJN
+	d7TJb/a47lVwOILEnolQXcCNHtIfCdrOqStbh02BAalhzQT3gv9fj/3WyIX/xc6VgE8xP70fdBLk+
+	cqXUCAf7mBGRVvO0fai6zSocXm6mMxY+iipWcmhW1Llv0em7YxJUZCRzB7+6Q5r5VRYd+PC4nbe9j
+	IlFr8s2Q==;
 Received: from [194.95.143.137] (helo=phil.dip.tu-dresden.de)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1vdC0O-001Hfs-2Z; Tue, 06 Jan 2026 19:42:08 +0100
+	id 1vdC0O-001Hfs-Da; Tue, 06 Jan 2026 19:42:09 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
-	Chaoyi Chen <chaoyi.chen@rock-chips.com>,
-	Kever Yang <kever.yang@rock-chips.com>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
-	Frank Wang <frank.wang@rock-chips.com>,
-	Alexey Charkov <alchark@gmail.com>,
-	Liang Chen <cl@rock-chips.com>,
-	Finley Xiao <finley.xiao@rock-chips.com>,
-	Elaine Zhang <zhangqing@rock-chips.com>,
-	Yifeng Zhao <yifeng.zhao@rock-chips.com>,
-	Chaoyi Chen <kernel@airkyi.com>
+To: FUKAUMI Naoki <naoki@radxa.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	jonas@kwiboo.se,
+	i@next.chainsx.cn,
+	kever.yang@rock-chips.com,
+	michael.opdenacker@rootcommit.com,
+	honyuenkwun@gmail.com,
 	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2] arm64: dts: rockchip: Fix wrong register range of rk3576 gpu
-Date: Tue,  6 Jan 2026 19:42:00 +0100
-Message-ID: <176772487179.3029798.9845347740107350561.b4-ty@sntech.de>
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 1/2] dt-bindings: arm: rockchip: fix description for Radxa CM3I
+Date: Tue,  6 Jan 2026 19:42:01 +0100
+Message-ID: <176772487186.3029798.11493005388525764062.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20260106071513.209-1-kernel@airkyi.com>
-References: <20260106071513.209-1-kernel@airkyi.com>
+In-Reply-To: <20251229045838.2917-1-naoki@radxa.com>
+References: <20251229045838.2917-1-naoki@radxa.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260106_104218_975592_C2740286 
-X-CRM114-Status: GOOD (  12.74  )
+X-CRM114-CacheID: sfid-20260106_104229_532413_F5515FEF 
+X-CRM114-Status: UNSURE (   8.74  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,21 +82,19 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Tue, 06 Jan 2026 15:15:13 +0800, Chaoyi Chen wrote:
-> According to RK3576 TRM part1 Table 1-1 Address Mapping, the size of
-> the GPU registers is 128 KB.
+On Mon, 29 Dec 2025 04:58:37 +0000, FUKAUMI Naoki wrote:
+> "Radxa CM3I" is the correct name[1], so fix the description.
 > 
-> The current mapping incorrectly includes the addresses of multiple
-> following IP like the eInk interface at 0x27900000. This has not
-> been detected by the DT tooling as none of the extra mapped IP is
-> described in the upstream RK3576 DT so far.
+> [1] https://dl.radxa.com/cm3i/docs/hw/radxa_cm3i_product_brief.pdf
 > 
-> [...]
+> 
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: Fix wrong register range of rk3576 gpu
-      commit: 955b263c421c6fe5075369c52199f278289ec8c4
+[1/2] dt-bindings: arm: rockchip: fix description for Radxa CM3I
+      commit: a1823b88d35f1bf04ec4e4f86b9206f699b362d0
+[2/2] dt-bindings: arm: rockchip: fix description for Radxa CM5
+      commit: fc808f80cf298caaa403755ca808cf650844f2f5
 
 Best regards,
 -- 
