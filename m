@@ -4,64 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86E6DCEFCEF
-	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Jan 2026 18:42:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86348CEFCEC
+	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Jan 2026 18:42:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hEVn3TB5bysvHHUZCvTD+9R17sNvdB63JnLXoy4mguc=; b=FZ9EwZkc1LgKWm
-	TbfLu4dzDGG8QOH/9roX1xU4WlOEny1vZnVfxhjSoftubQVKFNx/zmjKYATQYbdGBPR0DAH+TKEW9
-	9fHAU/hrQKbZLN08veiAdoHrsUhy9KX8zZmvf4KZyw/q0iqYg//oy9A1IJfWk2QLhcIgzo8v2P3UH
-	ZuDj/9vYY+66Ij68dz9zcjIY0KrOmoasj0mxAkLfk1xgcK67UIqOuhp4DN2Viukc/MIqUYeI4sDpO
-	6n6YPvNWk4fgubrw4i0iuUoMQoNrCu2v1k0Hd0kM9m/PL9wiEIQJHR+TPcztzMVT+sy7onLZHTE/a
-	ijzu8OpasomaPV3u0eLw==;
+	List-Owner; bh=Ecqbt4IopLOvKn48s+AHo1UpN3dUZHyM9gaXtZ+0Lys=; b=wqhTbcZ9/Fecq5
+	TTXHowc8Nqe3h3amKb2W6nv6e6QytG6Yp42bS09l7vVxqMm7tLn/Bq41cJqdaW3+nWQ6RBuoVITUD
+	onbv22J/V8GEl9++x9xSLJ3KAbhARtOR6/hg3ctMK7/70jyrg7tKKuaoYJ07ERktiu93hxmJAa2HL
+	CV8RezbG200quHXBs9VeXT0LfvDiYe7bUcd2ymr/e4UDdUGOsLKi7YpcQrT/qlgQb3aI5t7WLD5N3
+	7lmoD3KZCbuZUdhb7BrYqIOUGaC68I0CbDeW+CctCKdY1zurOnewZc11F8LP52+NoTeo0aHq9JzZF
+	j9pT0pM6lv9Iww82KZlw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdC0Y-0000000DhGh-171F;
-	Tue, 06 Jan 2026 18:42:18 +0000
+	id 1vdC0Z-0000000DhIs-1uya;
+	Tue, 06 Jan 2026 18:42:19 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdC0S-0000000DhAf-05kQ;
+	id 1vdC0R-0000000Dh9l-1ED7;
 	Tue, 06 Jan 2026 18:42:13 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=3Roch5L1+VH1+0dO78IGziVT5agDLByROysfuWI2AQw=; b=VVQBll6/qPS9kEYWtjU8WzaoZr
-	Yc2k9SUnJFgYIHeiJWSK+hjpc+dnC270P3Qox2EWklLP0Y8sgv3QiDA8fLuf6WBiHALD4jt5DGZbv
-	ekzxSyRb563y0DXN/A8qVBxk0V1BEKAUlYqy6JMe+BVvxeCTc1b38nqeAjBTEfovF/9HIIOVVGz3D
-	I5U5EOURziotTALYFJZSsm0+ddDeVx/etvzewbg9lUSxtW3yqnpDC3l8PkghGJL1Up74vnWQGra4K
-	csQ6FTcZ4d2Fane5gVvJTo4AyMrzycFhO97EzaMUBjv6lkC63w2N75fNBYTtLuHneqmzDVZMaHdJ/
-	h4brQY6g==;
+	bh=t9ScP5d8wekTX42aNwJVZH0BUxqMs75Bpo0k3QnzEAM=; b=tNoDj4IwtaXOKP5/uLMDTqaM3w
+	eapxoIpWRDskQPf0akaZY8cKXLFyfnGyAqPyUtlvm/WOqcgHB7f61UXqbOZJA+pjNK2LDKONJ8u46
+	Juv/aqauyVQl/H+mGEzixvLJfNcCqS8z+AOEzM5pgOtLAFJgArebT+uGyd8WF4+kbOUSRlxwyYMrK
+	XrEi9nO6MrW5MUgxmWZRXuZOKhUAFZwTOsAgOYKcgKfuvPsblLeWFHeEJks/SKqwThxtOx4/nbikW
+	IjLkThjNWjTOy2n3Js4nPLb7a/NVyR8cy/++jDm9QKVV84Qq02wrofM4jI+8Y3Fg5DLcHPwi85zPv
+	XENjpNjA==;
 Received: from [194.95.143.137] (helo=phil.dip.tu-dresden.de)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1vdC0O-001Hfs-PE; Tue, 06 Jan 2026 19:42:09 +0100
+	id 1vdC0P-001Hfs-13; Tue, 06 Jan 2026 19:42:09 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+To: Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
-	Ricardo Pardini <ricardo@pardini.net>
+	"Rob Herring (Arm)" <robh@kernel.org>
 Cc: Heiko Stuebner <heiko@sntech.de>,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Jimmy Hon <honyuenkwun@gmail.com>,
-	Tomeu Vizoso <tomeu@tomeuvizoso.net>
-Subject: Re: [PATCH v2 0/3] arm64: dts: rockchip: Enable the NPU on some rk3588 boards
-Date: Tue,  6 Jan 2026 19:42:02 +0100
-Message-ID: <176772487184.3029798.10396828129680965302.b4-ty@sntech.de>
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] arm64: dts: rockchip: rk3399-roc-pc-plus: Add missing everest,es8388 supplies
+Date: Tue,  6 Jan 2026 19:42:03 +0100
+Message-ID: <176772487182.3029798.12947667629234941436.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20260101-arm64-dts-rockchip-rk3588-npu-enablements-v2-0-013cf5d5c39d@pardini.net>
-References: <20260101-arm64-dts-rockchip-rk3588-npu-enablements-v2-0-013cf5d5c39d@pardini.net>
+In-Reply-To: <20260105193245.3167500-1-robh@kernel.org>
+References: <20260105193245.3167500-1-robh@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260106_104212_089611_23BE4771 
-X-CRM114-Status: GOOD (  12.86  )
+X-CRM114-CacheID: sfid-20260106_104211_351262_122C9334 
+X-CRM114-Status: GOOD (  11.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,26 +76,20 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Thu, 01 Jan 2026 07:43:08 +0100, Ricardo Pardini wrote:
-> This series enables the NPU on a few Rockchip rk3588 boards.
-> In every case here, the required regulator was already in place.
-> As suggested by Jimmy Hon [1], since the NPU power domain supply is
-> being described, also remove the always-on property from the regulator.
+On Mon, 05 Jan 2026 13:32:44 -0600, Rob Herring (Arm) wrote:
+> The regulator supplies for everest,es8388 audio codec are missing and
+> are required. Add them based on the schematics found here:
 > 
-> In Jimmy's words: the commit message for the introduction of the
-> pd_npu label mentions how the regulator no longer needs to be always on.
-> [2]
+> https://personalbsd.org/download/Documents/SCH/ROC-RK3399-PC-PLUS-V20-20210809.pdf
+> 
+> With this, "regulator-always-on" should no longer be necessary for LDO5.
 > 
 > [...]
 
 Applied, thanks!
 
-[1/3] arm64: dts: rockchip: Enable the NPU on NanoPC T6/T6-LTS
-      commit: 7127b6d899c74a2ba7af09f1755a22cf9c72dba9
-[2/3] arm64: dts: rockchip: Enable the NPU on FriendlyElec CM3588
-      commit: 628aea397d81cbec3f2ff9067c5223c927f220a2
-[3/3] arm64: dts: rockchip: Enable the NPU on Turing RK1
-      commit: 5360ad495b7bf1e3ea95f0e47961d5447a829f8e
+[1/1] arm64: dts: rockchip: rk3399-roc-pc-plus: Add missing everest,es8388 supplies
+      commit: 77712fe6847b2471a558ec88868311a4784afdce
 
 Best regards,
 -- 
