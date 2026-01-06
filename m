@@ -4,57 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 998C6CEFCEC
-	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Jan 2026 18:31:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83C20CEFCEC
+	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Jan 2026 18:42:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FCjpigdFYtgf1+Fw1cwQmUcMP3hkUGaYgTgbFEomt18=; b=C+L+XGJjLJhZ/S
-	vJcfUrGe0Nv9DaX+xI4cY8lbejuF0+WGYvzG0HSg/69DPbPb2FHVNwH5H9sgrK/f8rJw++3bv/UjQ
-	uzN0PpPGdxuWYFirCxZhlBDZkklu/Mv6whyC4mtg1MApOoPIPBXPSPvFRhCqVpJtLRcFKq6JTNAU7
-	GaOByZRYKKmLGfJkEBoU/f26FHR8pNHDV7ZH5RcsSAOcaiQh+ZYn/bLQGaoNGNmEmiVBUPre/ybj5
-	WD+hbpRKXgP5PbTjYzcsDWGzxOKl1RVDOuy4sSMyt94C/twtIre0irqPByrXx4YLY7kS+mFhfjnDo
-	QaCnhcINrvAJRZSUsv5A==;
+	List-Owner; bh=lQd/mDn3hv1GrhAEWFQhSodXHs70g9DDlCieVwLVLMk=; b=gnQNM5gTy1iGIt
+	C4Ydk4zieqPwPLbc2LzNSzAYUGl7lksvE4UUvH93PHdM3Y2KCZtJAuUFkDLMgjNDRtqtIK+2Lrq82
+	OPA9WTSdJ17+ijkm1l+6nF2a/A1BNFBkEvPxGbvZqSht5thwSUwt6grawzVf34GKGqgRhM/IxPPug
+	p0UU14vt992+HjOFoXjWpvSfHKmbFj1Imm30hMThMuAp87YvCJdu3o3UdxT618WfY3CLWGIrUCzZP
+	oV9WiQONZeDq8Rq7B/XM92R3Rf4Bo2h0E3qhou8UbeEJEd8HE4MbIpiyrLY8zo8MAjKU2urLuOM5H
+	VHpEWzvSmLrekKw9oVOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdBpd-0000000DgdI-3iUL;
-	Tue, 06 Jan 2026 18:31:01 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vdC0T-0000000DhCQ-3RgW;
+	Tue, 06 Jan 2026 18:42:13 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdBpb-0000000Dgcn-3Ske;
-	Tue, 06 Jan 2026 18:30:59 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id E221F60146;
-	Tue,  6 Jan 2026 18:30:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7D66EC116C6;
-	Tue,  6 Jan 2026 18:30:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1767724258;
-	bh=j3qYVdPPtQj7nJ6L9su6FYxFtx1ULd6M1YMn3jzqG1s=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=cVUNTnScjx9U13l0GiA6oDagtHlYJ+115kprdo0k5eSD2WN7/1FmZb3prYZusi8yv
-	 pqe47XT9I1GQbsqIyUYBO9Y10CIPbHWOWTzgNCWQylTYmUdUe2VjvO+RUG21PgHLcs
-	 OC66YnuftXr01LCENL8kRQaUT7IoatIgvdyRGJM/3M2BlRqJj7CPCfx+xWlbr2Tarn
-	 KMJuJZ0/1GqnW1EBTvQsr3A9kRoPZ/qFGMB/fDOcvUH5k/fsI3fHGLnQ4ff863bM0l
-	 95r0WUv1lvm3A1Ndwt4S7fq5ptXoYS+z5FALY+jUFlreeTyRObSLJ4dFf7MJL03EHR
-	 azjZmRORK8GpQ==
-Date: Tue, 6 Jan 2026 12:30:57 -0600
-From: "Rob Herring (Arm)" <robh@kernel.org>
+	id 1vdC0Q-0000000Dh9h-2eqJ;
+	Tue, 06 Jan 2026 18:42:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=HSEEqzdYtiS1406DqTsJxL8tp85dN4yIu/TBXgW76FM=; b=E4HeF9IcraYFP+HGdkS391KR0W
+	heXNUZzpgSYYpOA86sSpnunPco4eNUOQFPeTUZ5aaSMF8KITAiSV1hjjpeSaGYzRi4Y2u2cbYTSUU
+	EzN2PllxadUZ/iJfKYGrQSl8XiAC/Qa/6NKoQo1Oc6q7y22fC2hA50rUHhYHQusF6UVyMqepEUOad
+	DnOMZrj/donP0XhPCuiS/kp3kVkhPxbACSHxdqVlxa3AtaGb5CFptLzgI1/0tOb+fcbCY7h0wCl23
+	9THqENKSq0Kp/sBJsRJ7E5JZnFFKU0Cavo0F+DBMxVWFmkioiui1K9ohUR8hAaFN/q6TZENtD916q
+	E70q/nwQ==;
+Received: from [194.95.143.137] (helo=phil.dip.tu-dresden.de)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1vdC0N-001Hfs-JG; Tue, 06 Jan 2026 19:42:08 +0100
+From: Heiko Stuebner <heiko@sntech.de>
 To: Heiko Stuebner <heiko@sntech.de>
-Cc: conor+dt@kernel.org, krzk+dt@kernel.org, linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	uwe@kleine-koenig.org, linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH 4/5] dt-bindings: arm: rockchip: add TS133 to
- RK356x-based QNAP NAS devices
-Message-ID: <176772425740.2513273.11038899818156080578.robh@kernel.org>
-References: <20260104191448.2693309-1-heiko@sntech.de>
- <20260104191448.2693309-5-heiko@sntech.de>
+Cc: quentin.schulz@cherry.de,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Heiko Stuebner <heiko.stuebner@cherry.de>
+Subject: Re: [PATCH 1/2] arm64: dts: rockchip: enable NPU on rk3588-tiger
+Date: Tue,  6 Jan 2026 19:41:59 +0100
+Message-ID: <176772487193.3029798.6319873213784779771.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.47.2
+In-Reply-To: <20250812085213.1071106-1-heiko@sntech.de>
+References: <20250812085213.1071106-1-heiko@sntech.de>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260104191448.2693309-5-heiko@sntech.de>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260106_104210_736341_52F0A6FB 
+X-CRM114-Status: GOOD (  12.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,22 +74,23 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Sun, 04 Jan 2026 20:14:47 +0100, Heiko Stuebner wrote:
-> QNAP builds a number of variants of the RK356x-based NAS design.
+On Tue, 12 Aug 2025 10:52:12 +0200, Heiko Stuebner wrote:
+> Enable the NPU cores and their mmus and wire up the supply-regulator.
+> The regulator itself was already defined, but it does not need to be
+> always on - the npu can control it.
 > 
-> Add the 1-bay TS133 variant.
-> 
-> This one is a tiny bit special as it is based around the RK3566 variant
-> of the mostly similar RK3566/RK3568 SoCs.
-> 
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-> ---
->  .../devicetree/bindings/arm/rockchip.yaml          | 14 +++++++++-----
->  1 file changed, 9 insertions(+), 5 deletions(-)
 > 
 
-Acked-by: Rob Herring (Arm) <robh@kernel.org>
+Applied, thanks!
 
+[1/2] arm64: dts: rockchip: enable NPU on rk3588-tiger
+      commit: 8fd18d9b7b74bbd5ee5c562c2b94fdb7a356867e
+[2/2] arm64: dts: rockchip: enable NPU on rk3588-jaguar
+      commit: 843b912c7241ed0259f6234243da05e10ce67c0f
+
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
