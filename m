@@ -4,64 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC240C47BDD
-	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Jan 2026 10:21:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 534ADCDC18E
+	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Jan 2026 12:25:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:Cc:From:Subject:
+	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aZzhhfXpBUYxBmHQSJznSiatxy6xEhIiGpnZL1JcD2o=; b=vavTbTk40qraMp
-	s8ky2hd+ddVqXhqFtOqUPLZIdvZn0+O2sHF9In5J9ywwwxcDWC8IfIh2AndD5tWK5/ecl2XW9Jdum
-	ElQYUdfe1Pep2zIlH6Fn1D0gDKS364ntXevPoN9ghzfH7ekUUVWnykJBX4ashHXkC8/5fb7scc/dd
-	XCWOJb1mu3OoDdGJz31um2hsjBgShV3o8ogWWtC2iKhXccSu3fdLlxzsretjYFOS0aHrB5hYF448I
-	EFyBx2XoNzipIvJBxUYdsIRm1gUJx6IGn/e8zY/uciLrbEmMDAsc4u6f0EVx1jJ1vfO9Lmb4obLse
-	fzcd2wcXPEJ4pkz2ohmA==;
+	List-Owner; bh=Jh5s8qUT1e8tQhXwBX3ijcO0WJkHOwnT6jMcDxr8r1k=; b=AU/J/dCGFs2vTB
+	Yay/c0ThHROLCjOrZjlHuluT65rzJNX1TEeuOtXvQEoQKjamnpicdePDw4sfQPMUV0qbMLV0Ui7ob
+	6Z8tFP8+KfB9PGJPeGfAnGA3AqblRKRiyFmdaaBQ/ITRpyFubtGOBy0FEvv8CpaO5gTutSobfv7qO
+	Hs/yHjqdsVSd/Gh7dQraAv1u/Sey+imFh4Y46yEoK/hh4WFzHS3aYawcDNhERr6LfXaBQctKiKups
+	rGOLukfQa86O6HmsNbnKMSsRWk5nLpoLg4HiFdR1xhNLAK/P3tMYc/tlHgp8L5rick0rLTRyggDq0
+	pGt4fXr43ohSwUGgbH/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vd4Bm-0000000CmYW-2zj3;
-	Tue, 06 Jan 2026 10:21:22 +0000
-Received: from smtp.forwardemail.net ([149.28.215.223])
+	id 1vd67f-0000000Czhe-1Whk;
+	Tue, 06 Jan 2026 12:25:15 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vd4Bk-0000000CmXr-411i
-	for linux-rockchip@lists.infradead.org;
-	Tue, 06 Jan 2026 10:21:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1767694880;
- bh=x+Xak7wAR/JIg71hAoKMeJB5ByPewgiifbgu+4ypQ9g=;
- b=VcHEkyWs9VPDtuha5i2APpfASmm7gKH2e4NodxyeQVJfd5Jh9pj4GFtA53MSRWXeE568Am52k
- mSh+tl8c0q5Uj3AZpd6YKUDVfRjT3aqXBVTIe1grwtKA/414LlhBVM/OQpZQwBiQY7OjWDecS0K
- eKsAY7XHTXnr++oDfgQv0BvCqLJLucLs3dDFBcH5NKSO4tEJiFG//4EYzj5PJ0JVWDX25iMiT1k
- Q1+zSXCk+r2EkmZfpudelI/Vc6GIyTieTVEt4KWNzO29ED2TdSUgxPfltxuKVQpJTd+EtobxItn
- 3bk1+isU38Y8CzuW4HJln0CQs1tcQstjWa7Gjl9OKK8g==
-X-Forward-Email-ID: 695ce216a05bf2602ae3708a
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 149.28.215.223
-X-Forward-Email-Version: 2.2.1
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <1c5005b7-ceb9-4915-ad58-a9aa86cce394@kwiboo.se>
-Date: Tue, 6 Jan 2026 11:21:06 +0100
+	id 1vd67b-0000000CzgH-3kYi;
+	Tue, 06 Jan 2026 12:25:13 +0000
+Received: from pendragon.ideasonboard.com (cpc89244-aztw30-2-0-cust6594.18-1.cable.virginm.net [86.31.185.195])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 66F71581;
+	Tue,  6 Jan 2026 13:24:45 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1767702285;
+	bh=wBRsYLtKcDyFYvStHEhKrcma21Zlzgl0W/z54XToUP0=;
+	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+	b=WbfyO5LVDaAUBZF/4QiTewmuodA+E4eD2oQH4IbmJioV3EDqPF9Yi7Nduu6InKEdk
+	 LBPer/1I9X4igMs25RQEmXYuKGHfmiAwRHYYYY7ds8mZ2P0t0LJq05k3omLm2Kz54v
+	 xH9PTpmM3USsjyeLOKT9wlN/nkRb/PJozmNFED6s=
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/1] arm64: dts: rockchip: Enable PCIe for ArmSoM Sige1
-To: Chukun Pan <amadeus@jmu.edu.cn>, Heiko Stuebner <heiko@sntech.de>
-Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
-References: <20260106100000.225445-1-amadeus@jmu.edu.cn>
-Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <20260106100000.225445-1-amadeus@jmu.edu.cn>
+In-Reply-To: <20260105171142.147792-2-rui.wang@ideasonboard.com>
+References: <20260105171142.147792-1-rui.wang@ideasonboard.com> <20260105171142.147792-2-rui.wang@ideasonboard.com>
+Subject: Re: [PATCH v4 1/1] media: rkisp1: Fix filter mode register configuration
+From: Kieran Bingham <kieran.bingham@ideasonboard.com>
+Cc: libcamera-devel@lists.libcamera.org, Rui Wang <rui.wang@ideasonboard.com>
+To: Rui Wang <rui.wang@ideasonboard.com>, dafna@fastmail.com, heiko@sntech.de, laurent.pinchart@ideasonboard.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, mchehab@kernel.org
+Date: Tue, 06 Jan 2026 12:25:03 +0000
+Message-ID: <176770230345.3486172.1119327800680289066@ping.linuxembedded.co.uk>
+User-Agent: alot/0.9.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260106_022121_149121_F029F536 
-X-CRM114-Status: GOOD (  14.28  )
+X-CRM114-CacheID: sfid-20260106_042512_069759_4A8E6E91 
+X-CRM114-Status: GOOD (  15.76  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,77 +65,59 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Chukun,
-
-On 1/6/2026 11:00 AM, Chukun Pan wrote:
-> Enable the RTL8125 network controller and corresponding PHY
-> connected via PCIe on the ArmSoM Sige1.
+Quoting Rui Wang (2026-01-05 17:11:42)
+> The rkisp1_flt_config() function performs an initial direct write to
+> RKISP1_CIF_ISP_FILT_MODE without including the RKISP1_CIF_ISP_FLT_ENA
+> bit, which clears the filter enable bit in the hardware.
 > 
-> Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
-
-This matches what I currently have in my pending to do final test and
-then sent out branch at [1], so this is:
-
-Reviewed-by: Jonas Karlman <jonas@kwiboo.se>
-
-For the remaining RK3528 boards we should split up the pciemX_pins
-pinctrl group similar to how it has been done for RK3588, as there are
-freeze issues in U-Boot or problem using strict GPIO usage in Linux if
-we do not property configure the reset-gpios pin to GPIO func.
-
-[1] https://github.com/Kwiboo/linux-rockchip/commits/next-20251219-rk3528/
-
-Regards,
-Jonas
-
+> The subsequent read/modify/write sequence then reads back the register
+> with the enable bit already cleared and cannot restore it, resulting in
+> the filter being inadvertently disabled.
+> 
+> Remove the redundant direct write. The read/modify/write sequence alone
+> correctly preserves the existing enable bit state while updating the
+> DNR mode and filter configuration bits.
+> 
+> Signed-off-by: Rui Wang <rui.wang@ideasonboard.com>
 > ---
->  .../boot/dts/rockchip/rk3528-armsom-sige1.dts  | 18 ++++++++++++++++++
->  1 file changed, 18 insertions(+)
+>  
+> Changelog since v1:
+>  1. Update version number from v1 to v4 to clarify the confusing
 > 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3528-armsom-sige1.dts b/arch/arm64/boot/dts/rockchip/rk3528-armsom-sige1.dts
-> index 6e21579365a5..c41af8fc0c8d 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3528-armsom-sige1.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3528-armsom-sige1.dts
-> @@ -232,6 +232,10 @@ sdio_pwrseq: sdio-pwrseq {
->  	};
->  };
->  
-> +&combphy {
-> +	status = "okay";
-> +};
-> +
->  &cpu0 {
->  	cpu-supply = <&vdd_arm>;
->  };
-> @@ -293,6 +297,14 @@ rgmii_phy: ethernet-phy@1 {
->  	};
->  };
->  
-> +&pcie {
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&pcie20_perstn>;
-> +	reset-gpios = <&gpio4 RK_PA4 GPIO_ACTIVE_HIGH>;
-> +	vpcie3v3-supply = <&vcc_3v3>;
-> +	status = "okay";
-> +};
-> +
->  &pinctrl {
->  	bluetooth {
->  		bt_reg_on_h: bt-reg-on-h {
-> @@ -324,6 +336,12 @@ r_led: r-led {
->  		};
->  	};
->  
-> +	pcie {
-> +		pcie20_perstn: pcie20-perstn {
-> +			rockchip,pins = <4 RK_PA4 RK_FUNC_GPIO &pcfg_pull_none>;
-> +		};
-> +	};
-> +
->  	rtc {
->  		rtc_int_l: rtc-int-l {
->  			rockchip,pins = <4 RK_PA0 RK_FUNC_GPIO &pcfg_pull_up>;
+> Reviewed-by Stefan Klug and Kieran Bingham
+>  from v1 are carried over (no function code changes).
 
+To carry them over you need to include the tags.
+
+From the previous version:
+
+Reviewed-by: Stefan Klug <stefan.klug@ideasonboard.com>
+Reviewed-by: Kieran Bingham <kieran.bingham@ideasonboard.com>
+
+> 
+>  drivers/media/platform/rockchip/rkisp1/rkisp1-params.c | 6 ------
+>  1 file changed, 6 deletions(-)
+> 
+> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
+> index c9f88635224c..6442436a5e42 100644
+> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
+> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
+> @@ -411,12 +411,6 @@ static void rkisp1_flt_config(struct rkisp1_params *params,
+>         rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_FILT_LUM_WEIGHT,
+>                      arg->lum_weight);
+>  
+> -       rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_FILT_MODE,
+> -                    (arg->mode ? RKISP1_CIF_ISP_FLT_MODE_DNR : 0) |
+> -                    RKISP1_CIF_ISP_FLT_CHROMA_V_MODE(arg->chr_v_mode) |
+> -                    RKISP1_CIF_ISP_FLT_CHROMA_H_MODE(arg->chr_h_mode) |
+> -                    RKISP1_CIF_ISP_FLT_GREEN_STAGE1(arg->grn_stage1));
+> -
+>         /* avoid to override the old enable value */
+>         filt_mode = rkisp1_read(params->rkisp1, RKISP1_CIF_ISP_FILT_MODE);
+>         filt_mode &= RKISP1_CIF_ISP_FLT_ENA;
+> -- 
+> 2.43.0
+>
 
 _______________________________________________
 Linux-rockchip mailing list
