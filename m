@@ -4,133 +4,133 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E81C2CF6BFF
-	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Jan 2026 08:31:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DBD9CF6C17
+	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Jan 2026 09:12:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Bk7vlPfgNxZkrckwrai7JHDrVrkVGC8PHT0F1V5LCw0=; b=dTptRUoJd/bDx1
-	gDQYBawLY8NjTu5yIi9iAFzB6scoY17nEhS1NBk2HkCA0K7yxcCSfI+LIOTan3AZI4Bx5RdWWeqXn
-	br+j563Es+eJGvsdHiAzQkiguLRu17CDYOBUm8Un2ytGccgK2G9gxpbN0a7/kdog1l8knJ3rzA6da
-	jDxX/nK8eQ9AqTxqeJckQELbSoIXCTWHZYeuZIOnHHoS6yvbscrgdsp/tCWqPDd4Torswaro4ZNPp
-	yKVRWJ3vZeHeao9pxRAHWLEhzU+yrXtcWTlsFQ6SQtcTLX1073sWr4XaN6i/JxUXh9uJkPwV4NYdZ
-	JLI7hT1hWYf+MbdJl3Yw==;
+	List-Owner; bh=Wv5S1uZTJFVvLAr4B1LNLbq2nnGAkrwnYic5H+SG2wI=; b=k79Qv64A1zq+IK
+	KBbcqEByA/jhvEM/y4cOf5bdg0MRYzg+DIiGWdLqj1x8lDpX0i4NBOlQ0HIrsGAe20EOPFF1XBIFi
+	OW3jVtxyrdPkHz4mvnBOD76W7nYB/Y+OrW1eYkOHjFfrjlCo7iRGOoXLkjgBjnHsD1lcJUE0l+U50
+	a2uPb5ZBaPkSNpo9YZ++36qiokgdsxxXmEjmk0zAm+YdEBZ0Lv+HxqRTRNUyDqr4OxiDrdDc1vU65
+	A3JPgl32sZR45yTNbNObjCs+sVj1jQoqlHoGQvMolmMfsxgJ4F9VTixsWkuBBnEqLfm018uF0q5z4
+	ubQzNJVdtqyTTVoSyHPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdOx6-0000000EQ9Z-3ry1;
-	Wed, 07 Jan 2026 08:31:36 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1vdPaz-0000000EUh8-398I;
+	Wed, 07 Jan 2026 09:12:49 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdOx3-0000000EQ7u-0e2p
+	id 1vdPax-0000000EUgb-0GE2
 	for linux-rockchip@lists.infradead.org;
-	Wed, 07 Jan 2026 08:31:35 +0000
-Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 6075EBtI1462600
-	for <linux-rockchip@lists.infradead.org>; Wed, 7 Jan 2026 08:31:32 GMT
+	Wed, 07 Jan 2026 09:12:48 +0000
+Received: from pps.filterd (m0279873.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 6073dJ5R3888916
+	for <linux-rockchip@lists.infradead.org>; Wed, 7 Jan 2026 09:12:45 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
 	cc:content-transfer-encoding:content-type:date:from:in-reply-to
 	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	sO93H+QFa37P7vkvoHhZpkzVYY5lod2ZRIVKd4EtCKM=; b=YAf3ePHDs3CaRRWl
-	db3WyP0IRzXYAKProK7DkpioG0z/c1Ec3mPHK3x0oIpzV3ugmxYMq46Op6nciCp1
-	FgvXVcV87pUwboJc+pseSupjohRijHuJedKtmp/aPxEBw5/9SBSHeW6NBgxk7qxY
-	CPe1MfwMN+ZHfxi3xR2VSvN5WP/QYod1slvq6/GM0CCvxBU+s36zLnjcimzfuqX6
-	zKOrj/9/wtaMxXBoEt+j6ZRA/qc9ablPUG5GoSZKnud6heFuyor9gvra/PVlmeak
-	Ja6o6C+XBt40qpMTHdccdW4Mxk6EndKBM8Xc04kIirgoHUe8OVnfKPEtcX94Pu5o
-	cnNQQQ==
-Received: from mail-qt1-f198.google.com (mail-qt1-f198.google.com [209.85.160.198])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4bh0vm3j0a-1
+	hHAUzxwohVtVS8qEFuX6Wc1xyTV2ML0rdi33N1nF55Q=; b=PN8UjXowzxAvq379
+	+WruZgDBAuqdCSnsFmiiDoSslxtVltEPeBg2qZEMBYNJRnv/Mx8vOJGoou9SyTIi
+	Atolo/Swc4S7FAy8nYxk4+uV3F9kkm/6HOVikE2B2ubxoa5pRaRc7qhFvQm0xNFD
+	QzsZ7oLYFURoZQhASH/elchCInrr1WvxPyd+485q00pFkB0XjwFXsUaVkqw4FjRP
+	UUaD0ehPRG/Gr3jbNbS3KUMXgjZLX77DxXERynJseegZGns7IS31b7VU074uL3vT
+	JjO6a+ko196B9QrWAjOoJyFStTgjDc4BO8UXW2YkoPr3/NDVZrtetpQoh6x4iTF4
+	q/ww5g==
+Received: from mail-pj1-f70.google.com (mail-pj1-f70.google.com [209.85.216.70])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4bh6a0jpkp-1
 	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-rockchip@lists.infradead.org>; Wed, 07 Jan 2026 08:31:32 +0000 (GMT)
-Received: by mail-qt1-f198.google.com with SMTP id d75a77b69052e-4ee0995fa85so59491201cf.1
-        for <linux-rockchip@lists.infradead.org>; Wed, 07 Jan 2026 00:31:32 -0800 (PST)
+	for <linux-rockchip@lists.infradead.org>; Wed, 07 Jan 2026 09:12:45 +0000 (GMT)
+Received: by mail-pj1-f70.google.com with SMTP id 98e67ed59e1d1-34ea5074935so2267358a91.0
+        for <linux-rockchip@lists.infradead.org>; Wed, 07 Jan 2026 01:12:45 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1767774692; x=1768379492; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=sO93H+QFa37P7vkvoHhZpkzVYY5lod2ZRIVKd4EtCKM=;
-        b=fDxR96/ERJJJdaMyhftsi124Uo1JIUN+Lho4LenMe6cwxO8OJ7FNeu3+cwkEKutUvP
-         FNDSpYVCPHThder1MHuHSMg8d4AO+vUhJE7x2m5D8tOttSePhJj+4LXCO7NFbyLgC0dJ
-         2qynnviUvcEAH0MNqCgDsw7MP+Y6H0U+c4DsA2C3crY4iVm25Y5PQJwXIz3S+SGK9SpV
-         iJGIn7gtvL3rGmJnnyaGNF08MUkRK07QgvrVNsgl+dUhiqbycQUPa2pkrHLWBojUS6iu
-         adPVyN1e4Il2wvJxhQivNzV8Pwl66VBR3klL2lDEfHFpB2vqxZwDtQZUY+klsu23SMhb
-         eDFw==
+        d=oss.qualcomm.com; s=google; t=1767777164; x=1768381964; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=hHAUzxwohVtVS8qEFuX6Wc1xyTV2ML0rdi33N1nF55Q=;
+        b=MaDIMsj7N6nF0nNL/qKPAtCyRgeetypY4NcR7JQljTmwexAGpS/cs1wgKkhohY82AX
+         VeGi+e7pu9ox/0UWV3a9ygAuE0eHciNnfyeMyjk7p+1OXstC/yTP1djbC8DKwfJRPLD3
+         YH0Ei8gw+7yAYtB7Ea5TNQmvM9fB2WbubrRDjM3DlnOdDqdRce4niYvtQenOZrO7DkO4
+         q4pdAl72Td+ZyloTh7G/Gm5nubCUugWjiyBAx630Qx5NyUY/7qxRCDAzN7EuXOiJJ8LF
+         KzLZGGGga383luf+YwPFEGxxfLfF/6z7mfz3fP5ASkITAgDe0v3iLA9Nke4mc9J+VFh1
+         PZqg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1767774692; x=1768379492;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=sO93H+QFa37P7vkvoHhZpkzVYY5lod2ZRIVKd4EtCKM=;
-        b=peyEm2S4bL/3KFFP3QUzXcLcnEoAxhqyuoiwuYzXztiyPEgV4YwBU0v7XRI1fknHya
-         l4ji2AZLNxsfkq8pUMl37O0ppDzpSUgBYRBKGuxcHfVq9g+JiFo4ez0llPz0AuzSH+0m
-         V2zWribPo8fdPR8VFMeKdtTKwfM4ZiBBS7Zo+eVRmswKtDokOQ5KKOrMCBKmKdqRaGGy
-         7UoU2xkf1mRSP1tXgVauctH7TtxILDCMKKcijEtW2ID4t7DDCpCreaetcbnxW7sq4jy6
-         thwTJxOMM+Wv1oVJ4DFN+hU4aHFv1ZRwNNCh0NUGT5fFbhx6DHCGIwkxoM2mcUUyEcei
-         OCMA==
-X-Forwarded-Encrypted: i=1; AJvYcCUZo10591B/OxgPEnST9tXYwvJEcKyjoJgYEWXtI0BnbWnydu/VRXIene9pauSxAnbBPWFi3kWI3KGWJUH0jw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzUPORfA3+SmSlvoSwS9VXOA6r+Ep6IxzSBn7k1ADudp/9NDtDG
-	kz8hjv6EZIQaEejQHvoNe6Wf2vg0eSNzn4iVILKp74HqIzCVU9Y1rKUSoTnG8VNBuB7BsKcGNNV
-	Hmv6N1T2WKzRDR13md/1adZERQkqVyqpcYupVBMMt1f6S0XRwNpIufkwju/34il9mxyEA8HrHv2
-	k=
-X-Gm-Gg: AY/fxX6zjN0shDr0XqEQXNMjovIhvwgW8klxvOCRQziv1+xWxje5PPliqsUg5Agt+wo
-	f37Kg5NnkwiV4gxHZJjS3IPca+dE3oDNAR0yeJuMusQeCdWDA7aCwvYMiE4d4LC1C81q4nuo7cB
-	aKNkdAuQhoxicUus6V1HvAi2cgeO+HSdBjj7brFLLfI229pF+zDaEQg7R6Px/35ZfCLcBGk/0Lc
-	L1U3ETeW6xZiE+ovBdq+QNEE38g2CxFTMx5r5Zeh9zhc3FbKiYYGA5rKrSumeYiMOhyOhaft3ZK
-	C78GVToBXKPe38yP4tEVvpGQ/50ycVgdvRr82hPbPrz7u/6A8GhAev7Xks0i5yqHzqMJZ9gLY73
-	/O7RMTXIzLEU62L0rxcjgMHLosMa0MN+jfUrVxg==
-X-Received: by 2002:a05:622a:5c8e:b0:4ee:26bd:13f3 with SMTP id d75a77b69052e-4ffb484a739mr17380031cf.8.1767774691657;
-        Wed, 07 Jan 2026 00:31:31 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IF6IltAcpMqDUqZxq1/vVtnQVTIeTGNYCG+LcMYOkprAjPOhqleDalrgIZfMVCirRonr53pXQ==
-X-Received: by 2002:a05:622a:5c8e:b0:4ee:26bd:13f3 with SMTP id d75a77b69052e-4ffb484a739mr17379801cf.8.1767774691272;
-        Wed, 07 Jan 2026 00:31:31 -0800 (PST)
-Received: from brgl-qcom.home ([2a01:cb1d:dc:7e00:b90b:ec1:e402:4249])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-47d7f703a8csm84793845e9.13.2026.01.07.00.31.30
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 07 Jan 2026 00:31:30 -0800 (PST)
-From: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
-To: Linus Walleij <linusw@kernel.org>, Bartosz Golaszewski <brgl@kernel.org>,
-        Heiko Stuebner <heiko@sntech.de>,
-        Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
-Cc: linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-        linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-        stable@vger.kernel.org, Marek Szyprowski <m.szyprowski@samsung.com>
-Subject: Re: [PATCH] gpio: rockchip: mark the GPIO controller as sleeping
-Date: Wed,  7 Jan 2026 09:31:26 +0100
-Message-ID: <176777468354.15022.5475399715540988905.b4-ty@oss.qualcomm.com>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260106090011.21603-1-bartosz.golaszewski@oss.qualcomm.com>
-References: <20260106090011.21603-1-bartosz.golaszewski@oss.qualcomm.com>
+        d=1e100.net; s=20230601; t=1767777164; x=1768381964;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=hHAUzxwohVtVS8qEFuX6Wc1xyTV2ML0rdi33N1nF55Q=;
+        b=irC/Y2iqnO31WDWQYoSHH+th4Z7vZLjo2e+yuTPiL2AufjcFhpq6zmrMQ2+yiThEZv
+         cGOC20K24pbUYcle1a3fXbecpqI1AXktgjgiGIEiHbGLLngQhozDSRVMqPJTlgbR9IkV
+         JMS9mkslUbTcKVR2S5CGX78306O/n2vDvA4CPQSqBaKtSggWJFGHJkjS2J2UV/VI7cIR
+         r9jPiKcp6yuOnrswt/hl3XO4u9rKG68YIif6fdgKZWcpD8DBGOtELWuwYBzIty7SvqqY
+         sbToPmcdp53pQ7WoqFosSxI/uhUaB2XweNfVoNi+ggNyyc0vFUIGAcuXNpUn5jmzfmTZ
+         lPYg==
+X-Gm-Message-State: AOJu0YyEg2M8Xpz6cB6rtbX5BnkGpU+Bs3vGil8IGVQSR9sZpI2IUNjb
+	Cnm5INfBz7xKaVkCtK6Lg3YELRles615zHjmpxFemp1g0Sy0Dx/OMpYlziM/z4Q4iM4snzVrYHO
+	ZCilF5TmW9xhZ23+QZ99gq9s4EnvknY9v5QMVFSoHqV+wdlCq5/gELlKUgi8leX6/4NRnoiLPeu
+	A=
+X-Gm-Gg: AY/fxX4qhEaWXzvOOYjdONmzLS1ZrM8Loaw+WNAMIisxoPne0klDn8ybFFOPzKaPMg1
+	zX0NRN3jBu/qcFvr1pYcY/CNrH2CHum7ltDMTyPVUFZ7u/79v2rtiR51z7sRJ6Tr8aEydeJHw5S
+	J/Ghc+iuTUYE9C/cijmq0bOs5FN0uysviLa1ipQkdDjEyzsnGYG7OA7WWt0r5tYFevkRqh3tzkk
+	jIGpMu+5r2pGFE6Zzxm+7t3adX4SGN7T/Mgff5/KhNUPeeqohOOFwgu5uYx1cb5CoKRluncxhx3
+	ePrD650TV7oJD+JlHjiHVwKO45ZEEqXZKBWi8sogsUeDCDvzX/QIbLyUcbXz4nY3JugwzuPiiv/
+	6Eh6F/30lPaP6H4wfFqkaLYDX/9DczOYkR+NijSBz1yDDHEw=
+X-Received: by 2002:a17:90b:1d12:b0:340:e8e9:cc76 with SMTP id 98e67ed59e1d1-34f68c4ff6amr1877895a91.11.1767777164374;
+        Wed, 07 Jan 2026 01:12:44 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFM6Zy2UFfivjhElXjRRuklrVapne06gvWk7bAjM5RXr3nEWbLf6lxUhBfV7oDr5Z8sqtPPBw==
+X-Received: by 2002:a17:90b:1d12:b0:340:e8e9:cc76 with SMTP id 98e67ed59e1d1-34f68c4ff6amr1877874a91.11.1767777163839;
+        Wed, 07 Jan 2026 01:12:43 -0800 (PST)
+Received: from [192.168.55.102] ([223.196.168.13])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-34f5f8afba8sm4418849a91.13.2026.01.07.01.12.40
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 07 Jan 2026 01:12:43 -0800 (PST)
+Message-ID: <8d4e73f5-b4da-4aca-a2b2-b607be8c245a@oss.qualcomm.com>
+Date: Wed, 7 Jan 2026 14:42:38 +0530
 MIME-Version: 1.0
-X-Authority-Analysis: v=2.4 cv=Pa3yRyhd c=1 sm=1 tr=0 ts=695e19e4 cx=c_pps
- a=mPf7EqFMSY9/WdsSgAYMbA==:117 a=xqWC_Br6kY4A:10 a=IkcTkHD0fZMA:10
- a=vUbySO9Y5rIA:10 a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=EUspDBNiAAAA:8 a=R-3ehz3GvOBFeWroKLcA:9 a=QEXdDO2ut3YA:10
- a=dawVfQjAaf238kedN5IG:22
-X-Proofpoint-GUID: PQiv6zN2wyuD5lbRNnVYh26cA0D1xIEd
-X-Proofpoint-ORIG-GUID: PQiv6zN2wyuD5lbRNnVYh26cA0D1xIEd
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTA3MDA2NyBTYWx0ZWRfX8JTEY/o5he8I
- z4cE6lIjZXwWJWG3J5jxAt7YhKA7joKH9gViZl8jiSUhS7vA6kN9Esf5WtmVHG9VUD2CKd2/4FM
- vMslpJW1HQ53csiSHWydOZ23p83a/xrmAaD7ex1Dki1WwJmiLs284ocuybXBC2G+DY48NM99CzS
- GtghqFBX8hIkaEIoe/EQxedS16LKeNBfTqbc2R47lPaVE2X+9XF4lT2/24BDS56zsXh4s1YC1vz
- DGPSOg9IKWwNZJx1ixRx1YJAvh9M/hfjg5c25mg2z0GF5lIFjsLLetuR3ZMK+XuCADxeDd13NNo
- Ol0wyQ3auIHco5NQioH0cVemKAQET5fhb1mHTziYSfFls1foJR2hViJr6JOYIcxCIO1z6TYGecE
- h4x3zxEJ02gfOi56Tw1wKTrwgK6vImLVJpd1pwwP8kpLoRF8NiPIfFcpPEJ7nzTS6HbzrIbknph
- 2TTsY1RrR1on3X+v3rA==
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/2] PCI: dwc: Add LTSSM tracing support to debugfs
+To: Shawn Lin <shawn.lin@rock-chips.com>,
+        Manivannan Sadhasivam <mani@kernel.org>,
+        Jingoo Han <jingoohan1@gmail.com>, Bjorn Helgaas <bhelgaas@google.com>
+Cc: linux-rockchip@lists.infradead.org, Niklas Cassel <cassel@kernel.org>,
+        linux-pci@vger.kernel.org
+References: <1767691119-28287-1-git-send-email-shawn.lin@rock-chips.com>
+Content-Language: en-US
+From: Krishna Chaitanya Chundru <krishna.chundru@oss.qualcomm.com>
+In-Reply-To: <1767691119-28287-1-git-send-email-shawn.lin@rock-chips.com>
+X-Proofpoint-ORIG-GUID: WWomWHFIib-qBBcDLCfXBNFNCM0g4IMx
+X-Proofpoint-GUID: WWomWHFIib-qBBcDLCfXBNFNCM0g4IMx
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTA3MDA3NCBTYWx0ZWRfX3Y5uF5nbqcdu
+ 2BqAx7ESdkbOFgdKb+9rDot6G5zU9dVFUFKW+PjXZLMv1PWX0MyZQsdbNuz88Lv19QSO3uaznDn
+ 5GlDYSju4/9XJgZEfCXlltaS8YjptV6kU/dpoKlbSgG375GkqWmY8ypiaTzuOyYvc3p5mU7S8mP
+ zTv6na0MbtjX97fKRU07JRO3LOwYc3p65cGHUc5MFlguXG8gu+LsSonjBH8Cg5YDo0+uSM+rVn0
+ eaWw7aojVV7rbnmRtJ3Z6EOOS1x+e+pObM6YH7s+5zfNcozfO6jHAyCBIGegP2NZlPo5e65MBEK
+ uSpDiN3+V5B0RKa7MiMgw3OgAY/ujBtf+upG9Zukr1Ktkalh0p8MjIDUvzh42aelUmjcsIy5xOq
+ kr8KOU/WtH+YH526gTty0GWE+lXP1SuQlXjOexBrTyCAZl4xfEqvLRqmTWBccBauwWr045pAJEw
+ bmHz4tsqJup/aPDxktw==
+X-Authority-Analysis: v=2.4 cv=MtdfKmae c=1 sm=1 tr=0 ts=695e238d cx=c_pps
+ a=0uOsjrqzRL749jD1oC5vDA==:117 a=N6F11WvAWHOX8D43ukpQPg==:17
+ a=IkcTkHD0fZMA:10 a=vUbySO9Y5rIA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=s8YR1HE3AAAA:8 a=qaNWRtGRZj0PP8Kx_68A:9
+ a=QEXdDO2ut3YA:10 a=mQ_c8vxmzFEMiUWkPHU9:22 a=jGH_LyMDp9YhSvY-UuyI:22
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
  definitions=2026-01-06_03,2026-01-06_01,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0 clxscore=1015 priorityscore=1501 lowpriorityscore=0
- spamscore=0 adultscore=0 suspectscore=0 phishscore=0 malwarescore=0
- bulkscore=0 classifier=typeunknown authscore=0 authtc= authcc= route=outbound
- adjust=0 reason=mlx scancount=1 engine=8.22.0-2512120000
- definitions=main-2601070067
+ malwarescore=0 suspectscore=0 phishscore=0 adultscore=0 bulkscore=0
+ priorityscore=1501 clxscore=1011 impostorscore=0 spamscore=0
+ lowpriorityscore=0 classifier=typeunknown authscore=0 authtc= authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2512120000
+ definitions=main-2601070074
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260107_003133_194137_9550C72A 
-X-CRM114-Status: GOOD (  14.25  )
+X-CRM114-CacheID: sfid-20260107_011247_229582_62DDF462 
+X-CRM114-Status: GOOD (  22.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -142,90 +142,132 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Tue, 06 Jan 2026 10:00:11 +0100, Bartosz Golaszewski wrote:
-> The GPIO controller is configured as non-sleeping but it uses generic
-> pinctrl helpers which use a mutex for synchronization.
-> 
-> This can cause the following lockdep splat with shared GPIOs enabled on
-> boards which have multiple devices using the same GPIO:
-> 
-> BUG: sleeping function called from invalid context at
-> kernel/locking/mutex.c:591
-> in_atomic(): 1, irqs_disabled(): 1, non_block: 0, pid: 12, name:
-> kworker/u16:0
-> preempt_count: 1, expected: 0
-> RCU nest depth: 0, expected: 0
-> 6 locks held by kworker/u16:0/12:
->   #0: ffff0001f0018d48 ((wq_completion)events_unbound#2){+.+.}-{0:0},
-> at: process_one_work+0x18c/0x604
->   #1: ffff8000842dbdf0 (deferred_probe_work){+.+.}-{0:0}, at:
-> process_one_work+0x1b4/0x604
->   #2: ffff0001f18498f8 (&dev->mutex){....}-{4:4}, at:
-> __device_attach+0x38/0x1b0
->   #3: ffff0001f75f1e90 (&gdev->srcu){.+.?}-{0:0}, at:
-> gpiod_direction_output_raw_commit+0x0/0x360
->   #4: ffff0001f46e3db8 (&shared_desc->spinlock){....}-{3:3}, at:
-> gpio_shared_proxy_direction_output+0xd0/0x144 [gpio_shared_proxy]
->   #5: ffff0001f180ee90 (&gdev->srcu){.+.?}-{0:0}, at:
-> gpiod_direction_output_raw_commit+0x0/0x360
-> irq event stamp: 81450
-> hardirqs last  enabled at (81449): [<ffff8000813acba4>]
-> _raw_spin_unlock_irqrestore+0x74/0x78
-> hardirqs last disabled at (81450): [<ffff8000813abfb8>]
-> _raw_spin_lock_irqsave+0x84/0x88
-> softirqs last  enabled at (79616): [<ffff8000811455fc>]
-> __alloc_skb+0x17c/0x1e8
-> softirqs last disabled at (79614): [<ffff8000811455fc>]
-> __alloc_skb+0x17c/0x1e8
-> CPU: 2 UID: 0 PID: 12 Comm: kworker/u16:0 Not tainted
-> 6.19.0-rc4-next-20260105+ #11975 PREEMPT
-> Hardware name: Hardkernel ODROID-M1 (DT)
-> Workqueue: events_unbound deferred_probe_work_func
-> Call trace:
->   show_stack+0x18/0x24 (C)
->   dump_stack_lvl+0x90/0xd0
->   dump_stack+0x18/0x24
->   __might_resched+0x144/0x248
->   __might_sleep+0x48/0x98
->   __mutex_lock+0x5c/0x894
->   mutex_lock_nested+0x24/0x30
->   pinctrl_get_device_gpio_range+0x44/0x128
->   pinctrl_gpio_direction+0x3c/0xe0
->   pinctrl_gpio_direction_output+0x14/0x20
->   rockchip_gpio_direction_output+0xb8/0x19c
->   gpiochip_direction_output+0x38/0x94
->   gpiod_direction_output_raw_commit+0x1d8/0x360
->   gpiod_direction_output_nonotify+0x7c/0x230
->   gpiod_direction_output+0x34/0xf8
->   gpio_shared_proxy_direction_output+0xec/0x144 [gpio_shared_proxy]
->   gpiochip_direction_output+0x38/0x94
->   gpiod_direction_output_raw_commit+0x1d8/0x360
->   gpiod_direction_output_nonotify+0x7c/0x230
->   gpiod_configure_flags+0xbc/0x480
->   gpiod_find_and_request+0x1a0/0x574
->   gpiod_get_index+0x58/0x84
->   devm_gpiod_get_index+0x20/0xb4
->   devm_gpiod_get_optional+0x18/0x30
->   rockchip_pcie_probe+0x98/0x380
->   platform_probe+0x5c/0xac
->   really_probe+0xbc/0x298
-> 
-> [...]
 
-Applied, thanks!
+On 1/6/2026 2:48 PM, Shawn Lin wrote:
+> Some platforms may provide LTSSM trace functionality, recording historical
+> LTSSM state transition information. This is very useful for debugging, such
+> as when certain devices cannot be recognized. Add an ltssm_trace operation
+> node in debugfs for platform which could provide these information to show
+> the LTSSM history.
+>
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> ---
+>   .../controller/dwc/pcie-designware-debugfs.c  | 44 +++++++++++++++++++
+>   drivers/pci/controller/dwc/pcie-designware.h  |  6 +++
+>   2 files changed, 50 insertions(+)
+>
+> diff --git a/drivers/pci/controller/dwc/pcie-designware-debugfs.c b/drivers/pci/controller/dwc/pcie-designware-debugfs.c
+> index df98fee69892..569e8e078ef2 100644
+> --- a/drivers/pci/controller/dwc/pcie-designware-debugfs.c
+> +++ b/drivers/pci/controller/dwc/pcie-designware-debugfs.c
+> @@ -511,6 +511,38 @@ static int ltssm_status_open(struct inode *inode, struct file *file)
+>   	return single_open(file, ltssm_status_show, inode->i_private);
+>   }
+>   
+> +static struct dw_pcie_ltssm_history *dw_pcie_ltssm_trace(struct dw_pcie *pci)
+> +{
+> +	if (pci->ops && pci->ops->ltssm_trace)
+> +		return pci->ops->ltssm_trace(pci);
+> +
+> +	return NULL;
+> +}
+> +
+> +static int ltssm_trace_show(struct seq_file *s, void *v)
+> +{
+> +	struct dw_pcie *pci = s->private;
+> +	struct dw_pcie_ltssm_history *history;
+> +	enum dw_pcie_ltssm val;
+> +	u32 loop;
+> +
+> +	history = dw_pcie_ltssm_trace(pci);
+> +	if (!history)
+> +		return 0;
+> +
+> +	for (loop = 0; loop < history->count; loop++) {
+> +		val = history->states[loop];
+> +		seq_printf(s, "%s (0x%02x)\n", ltssm_status_string(val), val);
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +static int ltssm_trace_open(struct inode *inode, struct file *file)
+> +{
+> +	return single_open(file, ltssm_trace_show, inode->i_private);
+> +}
+> +
+>   #define dwc_debugfs_create(name)			\
+>   debugfs_create_file(#name, 0644, rasdes_debug, pci,	\
+>   			&dbg_ ## name ## _fops)
+> @@ -552,6 +584,11 @@ static const struct file_operations dwc_pcie_ltssm_status_ops = {
+>   	.read = seq_read,
+>   };
+>   
+> +static const struct file_operations dwc_pcie_ltssm_trace_ops = {
+> +	.open = ltssm_trace_open,
+> +	.read = seq_read,
+> +};
+> +
+>   static void dwc_pcie_rasdes_debugfs_deinit(struct dw_pcie *pci)
+>   {
+>   	struct dwc_pcie_rasdes_info *rinfo = pci->debugfs->rasdes_info;
+> @@ -644,6 +681,12 @@ static void dwc_pcie_ltssm_debugfs_init(struct dw_pcie *pci, struct dentry *dir)
+>   			    &dwc_pcie_ltssm_status_ops);
+>   }
+>   
+> +static void dwc_pcie_ltssm_trace_debugfs_init(struct dw_pcie *pci, struct dentry *dir)
+> +{
+> +	debugfs_create_file("ltssm_trace", 0444, dir, pci,
+> +			    &dwc_pcie_ltssm_trace_ops);
+Can we have this as the sysfs, so that if there is some issue in 
+production devices where debugfs is not available,
+we can use this to see LTSSM state figure out the issue.
 
-[1/1] gpio: rockchip: mark the GPIO controller as sleeping
-      commit: 20cf2aed89ac6d78a0122e31c875228e15247194
+- Krishna Chaitanya.
+> +}
+> +
+>   static int dw_pcie_ptm_check_capability(void *drvdata)
+>   {
+>   	struct dw_pcie *pci = drvdata;
+> @@ -922,6 +965,7 @@ void dwc_pcie_debugfs_init(struct dw_pcie *pci, enum dw_pcie_device_mode mode)
+>   			err);
+>   
+>   	dwc_pcie_ltssm_debugfs_init(pci, dir);
+> +	dwc_pcie_ltssm_trace_debugfs_init(pci, dir);
+>   
+>   	pci->mode = mode;
+>   	pci->ptm_debugfs = pcie_ptm_create_debugfs(pci->dev, pci,
+> diff --git a/drivers/pci/controller/dwc/pcie-designware.h b/drivers/pci/controller/dwc/pcie-designware.h
+> index 5cd27f5739f1..0df18995b7fe 100644
+> --- a/drivers/pci/controller/dwc/pcie-designware.h
+> +++ b/drivers/pci/controller/dwc/pcie-designware.h
+> @@ -395,6 +395,11 @@ enum dw_pcie_ltssm {
+>   	DW_PCIE_LTSSM_UNKNOWN = 0xFFFFFFFF,
+>   };
+>   
+> +struct dw_pcie_ltssm_history {
+> +    enum dw_pcie_ltssm *states;
+> +    u32 count;
+> +};
+> +
+>   struct dw_pcie_ob_atu_cfg {
+>   	int index;
+>   	int type;
+> @@ -499,6 +504,7 @@ struct dw_pcie_ops {
+>   			      size_t size, u32 val);
+>   	bool	(*link_up)(struct dw_pcie *pcie);
+>   	enum dw_pcie_ltssm (*get_ltssm)(struct dw_pcie *pcie);
+> +	struct dw_pcie_ltssm_history * (*ltssm_trace)(struct dw_pcie *pcie);
+>   	int	(*start_link)(struct dw_pcie *pcie);
+>   	void	(*stop_link)(struct dw_pcie *pcie);
+>   	int	(*assert_perst)(struct dw_pcie *pcie, bool assert);
 
-Best regards,
--- 
-Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
 
 _______________________________________________
 Linux-rockchip mailing list
