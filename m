@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C390DD0D15F
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44D69D0D15E
 	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Jan 2026 18:15:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,106 +12,106 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Wc1lx6BKmOFqvjDw9per0N0XUORPY/DCpLz64EZgh2g=; b=HwD0VpwPttmcav
-	ICzelMBDRG/9/BlVaYjF3FpSt1S6P4Maa0TM89h4+3jYMUOVRajRPDPBtWf3AQ5/FRNSKhDoz+XV+
-	6koYv4UYW4h0ta5b/Ntqlt57i2i/CvWearsVabamo/1/MqpTaz4ozbtsz0LEtFPGzsVMjHlFO8bPj
-	Fh/9ufhLmRYGFhrDom5diRFXv+NcIlQiw7HChLdR+vMhl70djUbxnLEpTTxit8ohyeCHIKvgeiX6Y
-	HaTamjEnts96DM1xqIcZ3RmyLTrZwaLaCOM1pVxDFaF84LrRa0Cj5gn3aIalXa0XU0D9RiqhrARQl
-	RteBNKl8hW+wYeAu4+6w==;
+	List-Owner; bh=B97qjs/nFcOA+kj1AQ7VEocIAiY4KPeCawFwKtyls6U=; b=C+Gga5Tc/6oFVO
+	Wrt0t0zDa0wef856J31H7gru/0J1f+UTGrYPOq6icaeo9hjgZ6kRIn/1ia8xPhw1AiFtEG+XmioY4
+	hbsF5BDM9WL4qjoLXIIQDDLR1WrAxdlThaCbsZ/+7v6V0JLrrOXemMZqbixM9lvm1F3nuNbHdvCgF
+	yLN5YzwqP0eUwM6oVHH9wXLhG+y+81Zk2MKYNmWyG3rxew84GgSouCe+N9pzbwEPkU605k7gnmAbp
+	2ctlfFDLscPBPus9l+UA8PBZbjYJXAo8dxcC1jsni7UL2H/WnG3G9m5v8vqtfWsT47j8Brn4hN9Ai
+	M3DJEsc8yIS/8yTYBfwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdY4a-0000000FRjo-0Wcz;
-	Wed, 07 Jan 2026 18:15:56 +0000
+	id 1vdY4Z-0000000FRjJ-3Se8;
+	Wed, 07 Jan 2026 18:15:55 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdY42-0000000FRQd-2jal
+	id 1vdY40-0000000FRQR-33Xi
 	for linux-rockchip@bombadil.infradead.org;
 	Wed, 07 Jan 2026 18:15:23 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
 	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=6ayeKTjgf6jc54pfgcQupo3DnEV3KmeCjaAg9qNbh2E=; b=pRzMnATyGE5jQivLXjhuG+SXC2
-	5yNYy7zscBA+o8ZRtIm8AUpUogL2CWGzCA9FP7Iyx0Pts9v0WezWn9A7DuJcq+AsfAfrZb1GjUjcz
-	RvGgNfZ81NsBqffw2OVnMO38bTiiH+DvkYkSfuaQmPDsrJajVoUUaS4LKf70SfGQXmVGRmmXEnV/z
-	U90/otSlgMit36hjurVVFvJfJqThd7897e7YBCBYZFLCzVD0KkbyELRnHetefnIA5mz80aQiFOc+O
-	hn1DOWGz0p1FFmH5qtdpTHpOPEmiop6q5DqvM/zZmN5BibXnXV4tCgOHXe68yHGzUZPXxKaRjp76S
-	JDu9F/0w==;
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	bh=ecVHGdcKUGcf1BVa43vSmPZjJ3ubI7MYeuQBBNyE8CA=; b=EXl4Mo4hXYT9jDXesVUUHEr2n/
+	HL1faev0ns5wYb4Y0nq0WZbYvJIC6yHObNiMPdS13M/Pu1oAsW8NxRkOfGAhEtvcyE+8RyKV+2M0O
+	TdLfZuGLxUkkSt6K1VPiGgLceR9K9g3W3QWJBKYK+D3KtA57qyJNs6g+CKSP4Qw2TW9+zgguJninR
+	BPXP/tO0/dcskF7+6r+rlu7Bc2GZkAsj2yS8Wsdr6iSL4m7x1m7FG8+30+GemP1gNj1zu4OC4RDbk
+	pTPUmfqNKmPWlijRfpXLi3DI2TMLz2ysHDOPerW/SLhms/iE6mJk/yvqicWRpVjjFZQKeHQPQk8dy
+	WIA1K2Gg==;
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdY3z-0000000BtFd-0DOO
+	id 1vdY3x-0000000BtFF-2wTn
 	for linux-rockchip@lists.infradead.org;
-	Wed, 07 Jan 2026 18:15:21 +0000
-Received: from pps.filterd (m0279871.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 607HVIqK3890324
-	for <linux-rockchip@lists.infradead.org>; Wed, 7 Jan 2026 18:15:17 GMT
+	Wed, 07 Jan 2026 18:15:19 +0000
+Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 607H93RN2593276
+	for <linux-rockchip@lists.infradead.org>; Wed, 7 Jan 2026 18:15:16 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
 	cc:content-transfer-encoding:content-type:date:from:in-reply-to
 	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	6ayeKTjgf6jc54pfgcQupo3DnEV3KmeCjaAg9qNbh2E=; b=YT98JyW5oGIce4yx
-	t62vyUO8gfpzGSWjao8mBdPTYJjg9dpxi69OPT+flXHjY6zvvx9HgiN5VBgBBE3z
-	aP7KS2Ai0vJ/lJpU1dpDd0Wxd3AfpuO+r5VqXRzqZpaUaKyoi0LPozqGRblpfFtK
-	8FFeJxxsq+wpaKuwqGiSnUZWk/S1M+hmWmUCx+hBTMfSwr6J6aj2V5QFdUUVf0kj
-	CHLH4uqz3dyg/R1Bh8EhaSUJI/DxjitNH/wMuHLMhRLagS+uW1jOa4CUCDBGeaVy
-	RdCTC2bWeHtpXMzHIcJEE6pFwJOYIGnHu5DTmubFL5Kv1LjS0Qoq4BlhHH+zqmpU
-	l0KWkw==
-Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com [209.85.222.197])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4bhuy704se-1
+	ecVHGdcKUGcf1BVa43vSmPZjJ3ubI7MYeuQBBNyE8CA=; b=KyrngcOKBiSTWSSY
+	izNCCazNvrE8uikK72XmK+Vv0T/Usx1TJnGEi7FoeFr+BCAWxFn5GM7sB7rkw2+R
+	xnkxDU2giwWfYxFgRXZm77sSilAwW+XQfLEnbHeNL5YkgC2bF8pOS/2zY6D1p8zU
+	ibMfQnY8buGFHBKi37HBa7fzog69JpxFX/4NuXpuhM5+I5jdzJdUKlQP3QuW94x3
+	bA1Uys7tKjWqj4sgvnKSkAfyCHp53cZhkuDxbTa5PCwLUHtNBOuNyxLNwnzd34Ed
+	j7PZBZxB2W5SxkdUVH/o8ptaf5HAjEgqZZJHE5EDaujMhMdI9SLzwqRb2mU52Aea
+	CfoW6A==
+Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com [209.85.222.200])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4bhn291n49-1
 	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-rockchip@lists.infradead.org>; Wed, 07 Jan 2026 18:15:17 +0000 (GMT)
-Received: by mail-qk1-f197.google.com with SMTP id af79cd13be357-8bb6a7fea4dso572346485a.0
-        for <linux-rockchip@lists.infradead.org>; Wed, 07 Jan 2026 10:15:17 -0800 (PST)
+	for <linux-rockchip@lists.infradead.org>; Wed, 07 Jan 2026 18:15:16 +0000 (GMT)
+Received: by mail-qk1-f200.google.com with SMTP id af79cd13be357-8bb9f029f31so632005085a.2
+        for <linux-rockchip@lists.infradead.org>; Wed, 07 Jan 2026 10:15:15 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1767809716; x=1768414516; darn=lists.infradead.org;
+        d=oss.qualcomm.com; s=google; t=1767809715; x=1768414515; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=6ayeKTjgf6jc54pfgcQupo3DnEV3KmeCjaAg9qNbh2E=;
-        b=Bm+AGhp0FyVTY9SLIGbY2HFgB7mvxiYbOByqAW+6vFjFERRNlmKk1hXqr3Sm3jP7cj
-         sRvaMnEjbBLeuMOBHvbyzYL6n+eeyS/VODEDS7E0d8NFihdIPr+Rd+tUYQXYwDwdHVwe
-         0W9Ze8CMrQXf81bGlI6KL3ZWoe/HUt6vvg5TRbDJ2QxKSzl5509mHMfMAHH4/ZI9M99G
-         0QuKTOnPADHUfpDtHTZg2HMAIK1rFdBnhUnuJB/IKTRZmDgAUX9+Eq6+D8hvdyNAzPM9
-         oLvayMlxPzcFKlytGkVguvB+vlVgGFw2Z5OuI/WgT4MnuKxYL9finwWa6AANkCcYqoh+
-         1vag==
+        bh=ecVHGdcKUGcf1BVa43vSmPZjJ3ubI7MYeuQBBNyE8CA=;
+        b=RxYzEtFPfKExQ5qCq2cMptgBbD+9Dc7L7VwdM+6WbABmpjXvlQvkbRX29Q6mn4QNug
+         DFk7AKRp54SYREqcv14J5Mf+M6zmf5APPi+nv4UmbOZmqVV09q+m/FpHebR6crJ+F6uG
+         VorezakvTl/jaQBoU66ee4cGWMW/hsr5hEOQmTVtIo52PssNZRsRkZ0xsDRY7HLv0/b9
+         AlZfE7OSzFAFL3XbZ1vPMM+hfWgrkYc5o00Xfmhw+JWkjzfhuFfiwy6+osv/xMFXuuWL
+         rYZB8vuyV9dCosSxaomxAP9VvtMPEm3V1NcHKcQ6PWfBfgAnXKj7YZcqTBRmDnX53d7S
+         uj1A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1767809716; x=1768414516;
+        d=1e100.net; s=20230601; t=1767809715; x=1768414515;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=6ayeKTjgf6jc54pfgcQupo3DnEV3KmeCjaAg9qNbh2E=;
-        b=RQ8hM0c5lR/QgZeyP1jmAy9njtPH1mcjC5he3naRJPzCMEPR7ImzY8We7cKOQMwRyC
-         dZLcYTY6MKcdHjFXQSPpEogllNFjKAVivsPeT8hK36+oNhtlwjABhP1DKPXFN9xGSvyw
-         OV3pVD5yYj2AUD+XCfHpn8wxprdno+ILyAKNFoorVrX66EqusSjG4aVyo6EUQIdWfWgG
-         yoj/BjbEqW7WqjssF89OgvDI6STefdUINrOpDaVStjDaW7oe7+Rd4zwZPMtviwxwKSWp
-         8Y1QhUuRxuVjc0sMmupxvF9jp4WT4R9P48JzCyM7ZfyoLzbHedclDxjGObOmxmTabAom
-         pPGg==
-X-Forwarded-Encrypted: i=1; AJvYcCURPTnwDuwAC1LAaOn+S9H/+9WwIPs/jDGKzmfmSbxHadoBYwEjeRBy3HMJ8h44YsraTvv9ghgklygdmYL13Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0YziucRx8TsXZVgaKYVuG1I9XrHPMJcY+ZEsFvK6QHN3+DLcKrYe
-	cwQfGLczt/89jLxYCY43VE3wuFvA2cqZ9k8WpPkjaOp67wpwEAUt6NWQM184qrqQQxGDvLgfWDK
-	PG86PC05HWBF0/NaB7GJc8pW1w4+bnhpv2Tge5NqrHCezUXlypxWfjU2hteL/YsSD748WipZmhZ
-	A=
-X-Gm-Gg: AY/fxX5VTAIsq3f1fJC7aYm5UdH/xJPV+ptUN7eknqBJinuG1DeRoyuiBh0zcsSuSkP
-	kTdSxBl2yJdCnWuMmkwSBs42kZeMLeG7OWrOuI7ni7Pj0dCK06qwYjl+FEqZ9o8uyHf5xm+I89B
-	a96e8q7vj3sDxrXYQSoskjawEa8XKoh6IGpZOqjoDD+JlSa0R6Qf0imoNIH4MpuaFJ8JV+bU7N2
-	VUrjjtc4eV0jFLdQMHXhhPLmNfs5hXhPRzU6nwQ53PA/pli5D0BXR6fAuYVPLhOj5TmHYXxVYks
-	wjdJ/VG6YK9Udh2T0DJxsA6SIs0Wf1BztoswD8h7512WZmEqGM9UOGwld/dJYlqkjXO5fWDS3zq
-	SKeALuo/wNFbxrO097uPCwFaOezY239r7GzGTboMwId1YHC833Vw+iuEP5X9G0Wd9YTOk5A3L89
-	ftuMt95VElhFA+i1XzOV2VKn8=
-X-Received: by 2002:a05:620a:2952:b0:89f:5a59:bf30 with SMTP id af79cd13be357-8c38940cc79mr440814585a.78.1767809716498;
-        Wed, 07 Jan 2026 10:15:16 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFzR6/I/M+rb+0CfWg9B2pwtmy0BCZ0528ZAW/PtSMTyk3JvUKmiud8K1hEOQV156GKBDOZmQ==
-X-Received: by 2002:a05:620a:2952:b0:89f:5a59:bf30 with SMTP id af79cd13be357-8c38940cc79mr440807085a.78.1767809715974;
-        Wed, 07 Jan 2026 10:15:15 -0800 (PST)
-Received: from umbar.lan (2001-14ba-a073-af00-264b-feff-fe8b-be8a.rev.dnainternet.fi. [2001:14ba:a073:af00:264b:feff:fe8b:be8a])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-59b65d6988asm1436884e87.80.2026.01.07.10.15.14
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        bh=ecVHGdcKUGcf1BVa43vSmPZjJ3ubI7MYeuQBBNyE8CA=;
+        b=UdNLRW5gscSvLqz8R18PL0tPcCH5eQUZFlQCzOdcd+1Zm3Qff/1kDmkVpxomAU/0KE
+         r0jIry2yt25/6HhAo/kDicZP4rsO1yJnTCslC5Tbi8U6JldmR7AX7nohnQ1wvABizPHa
+         HF1wNG17EI4Szb2U5UOXte6js+P5bypjTz1TVMkJJU+zQOAaXCbzMLHow/J9NV+xB695
+         N08u6lRDlu+bSsCMYkgRMnCZZRC1al0BHQyHjni3npPrl8exmnmk8J2qKFUaFiea8uzD
+         P0r0CkG33ramCV1WAigSnaMzt+CDKhYMVKKJQTcqX98FzqaYUHsyddN6TIESoABZAO8p
+         PIYQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXTRG8OIzzE8o0+rcPFiNSnXGpjt3xM5aq4uqte9Y1JecElZ61FualMK1/SdwDPp0uztiOVXXNw7RUBKAljYA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxUppMNxfkZVPiQkadZaUOU3eBn3e3rOaOB3aNrvpFoAD8taFTi
+	2xX4d8Ix9mdVFla/Pj6RzTO83PnB4IMdC2BhiCiQDdaaq0i8LlV6RQJ16I1DheWlTjxJc/UDWo6
+	AP6uakD+WJqtfSyge2KXk2WMl0KavPUATcFLS2PP850s6a8JXdTNCTQqjvNAyh231dA9aacxdgr
+	I=
+X-Gm-Gg: AY/fxX6lv5NnY2+wA/T5N5h/aBSX6f/Fog5F6NPdW41ctnouArH9q+QAqD+dIo3OJUn
+	rgn+gAH0FnNHPZdHtstt2xjGAt0v2n8DNl1bp7ZBvbGRBlPYcR+OLiVQ4xUZC99iQhgCRZeC1Ww
+	duNomBJN8zFD826wgYutPrn03XPC+cJ2tfswXI623T6CqA0/ihgBnrTQDYqENzhrPh8kQU3bvQq
+	8x/EekhCQIr6gUiIKnlPM/Hs401a+UXk1rZVaU7l/NEfV6MLKN4JEMPUtnGg00o9CZOfRyyFZnT
+	pbyDdZH+Abkv2+mRcVuJ2CjbrsHTqVmNCQ5AvZxuVwVNUH6UvrhjLeVV8q/yGAjGg+yrrTN4lre
+	3MvWNBz6safW1jmZ7Y04S4tbjgINb3b2W2CjuIJNrcvDUN1AF6EhOZ6nf6vnDqmWIc14TT2SMGG
+	ZRKAgsEOL0C+oV+U6VRJGR+RE=
+X-Received: by 2002:a05:620a:3941:b0:8b2:ed01:b65b with SMTP id af79cd13be357-8c38940dd0dmr456873085a.83.1767809714601;
         Wed, 07 Jan 2026 10:15:14 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IE+D5mrG5EJMb00tLGXnGg/5a3iMwygbvY5+APGv4MWQpPpWnlnvrx9Hf8phdL6F9vP8GwsHw==
+X-Received: by 2002:a05:620a:3941:b0:8b2:ed01:b65b with SMTP id af79cd13be357-8c38940dd0dmr456865885a.83.1767809713987;
+        Wed, 07 Jan 2026 10:15:13 -0800 (PST)
+Received: from umbar.lan (2001-14ba-a073-af00-264b-feff-fe8b-be8a.rev.dnainternet.fi. [2001:14ba:a073:af00:264b:feff:fe8b:be8a])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-59b65d6988asm1436884e87.80.2026.01.07.10.15.12
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 07 Jan 2026 10:15:13 -0800 (PST)
 From: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-Date: Wed, 07 Jan 2026 20:15:05 +0200
-Subject: [PATCH v4 08/10] drm/display: hdmi_state_helper: don't generate
- unsupported InfoFrames
+Date: Wed, 07 Jan 2026 20:15:04 +0200
+Subject: [PATCH v4 07/10] drm/display: hdmi_state_helper: reject Audio IF
+ updates if it's not supported
 MIME-Version: 1.0
-Message-Id: <20260107-limit-infoframes-2-v4-8-213d0d3bd490@oss.qualcomm.com>
+Message-Id: <20260107-limit-infoframes-2-v4-7-213d0d3bd490@oss.qualcomm.com>
 References: <20260107-limit-infoframes-2-v4-0-213d0d3bd490@oss.qualcomm.com>
 In-Reply-To: <20260107-limit-infoframes-2-v4-0-213d0d3bd490@oss.qualcomm.com>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
@@ -146,44 +146,45 @@ Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
         linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
         freedreno@lists.freedesktop.org, linux-rockchip@lists.infradead.org
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2066;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1357;
  i=dmitry.baryshkov@oss.qualcomm.com; h=from:subject:message-id;
- bh=/ZrVCxC2ORTh/25tcpqTF3QUmYMkLYWP2fYAuUO25LA=;
- b=owEBbQGS/pANAwAKAYs8ij4CKSjVAcsmYgBpXqKlLQRVN1fiNfBhJSnlQQ8yf8TEYh+A8edCs
- YWTlH3Bcj+JATMEAAEKAB0WIQRMcISVXLJjVvC4lX+LPIo+Aiko1QUCaV6ipQAKCRCLPIo+Aiko
- 1QOVB/oDjydk2pqigYtLHtwvNWcAKXJbbdPGQ26WTURthKMHJhz9rPZZV04J2QY5hTtypEXd//d
- nw5Vbwc0So6ysL8Tv/jIxpWqiL+ciHmVHitK6qOCEBS+i8W0MtTLVx1YAdnQ2gp8v5gmqGooPIj
- URRZkW/XopRmGOqd8hftr59SVEpUvh5HH5NGGNoX/Wx2rngOV+KmUfwE0HXApJlGUvk5kZ/fwRb
- bGSKspZn9xiu+96xWnVTNQqum/Ct/2q61VCFkl/XqCm0lDpae50DBapNsWOPBMIWt03yTjsHslN
- UvAY1W9Roxw/F/vls4Ff8wqqmvewupBjJYfykiyeu5Y2vHLK
+ bh=oV58YVZ6PqGUocr9XjdKTVXla4jnp1WcJhUj/fGMzJo=;
+ b=owGbwMvMwMXYbdNlx6SpcZXxtFoSQ2bcoqVOypf3nnz7ysbV1SEu2HFL4awvN5mTrKSPbj51+
+ +HNQtvQTkZjFgZGLgZZMUUWn4KWqTGbksM+7JhaDzOIlQlkCgMXpwBMZFMHB8MEnRhDz5j7S+s7
+ 33/wuCq3e4f0x0ZX/s8/n15gMap103T9tH1VXsdtoTyjK0HrN38MWXF5zjXm73UHjVK8GY/M2v3
+ SSqTuxuMI+9iXSq+6WG7sOSCfWmNi1tjVpBC7Sa7Atcb1jx7rMa1jP9dN6+f1uO6p0F7NLHKs7X
+ vYqkff23seqZc1hh1t9rINOs58UiHnRuAviVCTrfz7b1QtiT5vyfh3Et+uU3On8c8PKMyJ6V1Wl
+ Mzvy3zdzdrznXCNGIfM95Jm3xs73nrUaDuLFp77wabg8FSVhyN77+u9LzM4bD6zrSxoyyi2in6V
+ c7dLMv/d453GTG+Kbj738GAInXdKPufnrbyYBYbuh6TUAQ==
 X-Developer-Key: i=dmitry.baryshkov@oss.qualcomm.com; a=openpgp;
  fpr=8F88381DD5C873E4AE487DA5199BF1243632046A
-X-Proofpoint-ORIG-GUID: UlDY8lNYbJTgF_a-AMJ1A_8enK-oRFwo
-X-Proofpoint-GUID: UlDY8lNYbJTgF_a-AMJ1A_8enK-oRFwo
-X-Authority-Analysis: v=2.4 cv=DZEaa/tW c=1 sm=1 tr=0 ts=695ea2b5 cx=c_pps
- a=50t2pK5VMbmlHzFWWp8p/g==:117 a=xqWC_Br6kY4A:10 a=IkcTkHD0fZMA:10
+X-Proofpoint-ORIG-GUID: jSbmXhtdbMmjP-Jb6d7mI8x50FN1-vnW
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTA3MDE0NCBTYWx0ZWRfXyeKEl9G2sgtv
+ 5mc2VY8IrDpwlYsHHevjKmx6esJ1fGw3S77Hee2tqwZUe/HY7GhKI3KykzMf3/Jfe0mknWGXDat
+ 7H65bquiVjYHH6+CQWkURtPuydSMOb/Dlz2LC5L/Yj7a0fQ5LbkRZ3EWIuWhybRN+WJOvmUdDQQ
+ Loi0jop4cRTsv7HYyxznQF/wBgz24Zjcc5ZRGtrRZ0TBXeg6Ge/ItIpGAdFJMbdW3BxK7wMx1r8
+ tCGRWoDmqsP0OLa4fviK9Vx5RiLnRZPbsqyKy+7x+dXUX47d6S2mmlv9zV51UNidbgDt1ilXIHd
+ W1uWpgcW61+m8b9QQ342hn9wBCrQmryf3zMPNtVh5cgv9GPwzbNC/9IH63R1LyrATyUHjyHOa2J
+ fsVF6jXYAnIu5O/ntxt/5YNqF05lZG08Ibx/luM4kg/qVvSrpzPXUbdM8C97SxpiqvAXe/IITlz
+ k0XN1szWAdEwpnFmJzQ==
+X-Authority-Analysis: v=2.4 cv=P7k3RyAu c=1 sm=1 tr=0 ts=695ea2b4 cx=c_pps
+ a=hnmNkyzTK/kJ09Xio7VxxA==:117 a=xqWC_Br6kY4A:10 a=IkcTkHD0fZMA:10
  a=vUbySO9Y5rIA:10 a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=VwQbUJbxAAAA:8 a=EUspDBNiAAAA:8 a=58UsvUJqJn8fpqk6aeUA:9 a=QEXdDO2ut3YA:10
- a=IoWCM6iH3mJn3m4BftBB:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTA3MDE0NCBTYWx0ZWRfX5GjIeZ17yACj
- 6ny5QL8awYuCrGmYzcqkhCyYJK2p7BE6YVApbXcES+k9JnZy8+8UbS9k+xFaL0rW5tAR8Be1por
- KcpbzmVMHu6mOC6nWg7jyqMySf3m9ZmMuQQ/In0d15nugfuNMp0Dxs+k/QwSnTs38kT3XDEgCwo
- 7bKFh5ntbeJ0tsnANsy2UY33cFv9eFFssGkYzatPLRNA6ixME/MQU8jedKd8QpFGvtwQi2hsW1w
- 6+5byWbf+l35u+EUaoVS4DcypF7Cw9DYcoopIOGo+qM2rQlfw4f0MT6NxaQDAcyUPPwgcp+3ul3
- jL5IsPa2eIJzMPohuZSsuXoTbQ3kCO7N0kG20ne1IWEXyiHSlD4secN5GbyvstGI2UP6S1HiW8z
- 9paOMZh4emBcutC6aa/nHcp4jVgaesyoJCNBwz9gnwXF7ujbC8zidDbm7OzFK0Zb55hVoN9/s0n
- vwWsmP5dpTEPwTpXSvA==
+ a=EUspDBNiAAAA:8 a=FWtRXCEnrA9oX9MUO7wA:9 a=QEXdDO2ut3YA:10
+ a=PEH46H7Ffwr30OY-TuGO:22
+X-Proofpoint-GUID: jSbmXhtdbMmjP-Jb6d7mI8x50FN1-vnW
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
  definitions=2026-01-07_03,2026-01-06_01,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501 impostorscore=0 phishscore=0 bulkscore=0 adultscore=0
- spamscore=0 clxscore=1015 suspectscore=0 lowpriorityscore=0 malwarescore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2512120000 definitions=main-2601070144
+ suspectscore=0 spamscore=0 phishscore=0 clxscore=1015 malwarescore=0
+ lowpriorityscore=0 impostorscore=0 adultscore=0 priorityscore=1501
+ bulkscore=0 classifier=typeunknown authscore=0 authtc= authcc= route=outbound
+ adjust=0 reason=mlx scancount=1 engine=8.22.0-2512120000
+ definitions=main-2601070144
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260107_181519_425317_5C04E5BF 
-X-CRM114-Status: GOOD (  17.67  )
+X-CRM114-CacheID: sfid-20260107_181518_166708_559EAD79 
+X-CRM114-Status: GOOD (  15.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -200,60 +201,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-There is little point in generating InfoFrames which are not supported
-by the driver. Skip generating the unsupported InfoFrames, making sure
-that the kernel never tries to write the unsupported frame. As there are
-no remaining usecases, change write_infoframe / clear_infoframe helpers
-return an error if the corresponding callback is NULL.
+Updating the InfoFrame if it can not be sent over the wire makes no
+sense. Change drm_atomic_helper_connector_hdmi_update_audio_infoframe()
+and drm_atomic_helper_connector_hdmi_clear_audio_infoframe() to return
+an error if Audio InfoFrame callbacks are not implemented.
 
-Acked-by: Maxime Ripard <mripard@kernel.org>
 Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
 ---
- drivers/gpu/drm/display/drm_hdmi_state_helper.c | 10 ++++++++--
- 1 file changed, 8 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/display/drm_hdmi_state_helper.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/gpu/drm/display/drm_hdmi_state_helper.c b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-index e8556bf9e1da..a1d16762ac7a 100644
+index 5a3817271d91..e8556bf9e1da 100644
 --- a/drivers/gpu/drm/display/drm_hdmi_state_helper.c
 +++ b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-@@ -718,6 +718,9 @@ static int hdmi_generate_spd_infoframe(const struct drm_connector *connector,
- 
- 	infoframe->set = false;
- 
-+	if (!connector->hdmi.funcs->spd.write_infoframe)
-+		return 0;
-+
- 	ret = hdmi_spd_infoframe_init(frame,
- 				      connector->hdmi.vendor,
- 				      connector->hdmi.product);
-@@ -742,6 +745,9 @@ static int hdmi_generate_hdr_infoframe(const struct drm_connector *connector,
- 
- 	infoframe->set = false;
- 
-+	if (!connector->hdmi.funcs->hdr_drm.write_infoframe)
-+		return 0;
-+
- 	if (connector->max_bpc < 10)
+@@ -1061,7 +1061,7 @@ drm_atomic_helper_connector_hdmi_update_audio_infoframe(struct drm_connector *co
+ 	if (!info->is_hdmi)
  		return 0;
  
-@@ -902,7 +908,7 @@ static int clear_infoframe(struct drm_connector *connector,
- 
- 	if (!funcs->clear_infoframe) {
- 		drm_dbg_kms(dev, "Function not implemented, bailing.\n");
--		return 0;
-+		return -EOPNOTSUPP;
+-	if (!funcs) {
++	if (!funcs || !funcs->audio.write_infoframe) {
+ 		drm_dbg_kms(connector->dev, "Function not implemented, bailing.\n");
+ 		return -EINVAL;
  	}
+@@ -1102,7 +1102,7 @@ drm_atomic_helper_connector_hdmi_clear_audio_infoframe(struct drm_connector *con
+ 	if (!info->is_hdmi)
+ 		return 0;
  
- 	ret = funcs->clear_infoframe(connector);
-@@ -928,7 +934,7 @@ static int write_infoframe(struct drm_connector *connector,
- 
- 	if (!funcs->write_infoframe) {
- 		drm_dbg_kms(dev, "Function not implemented, bailing.\n");
--		return 0; /* XXX: temporal until we stop generating unsupported frames */
-+		return -EOPNOTSUPP;
+-	if (!funcs) {
++	if (!funcs || !funcs->audio.write_infoframe) {
+ 		drm_dbg_kms(connector->dev, "Function not implemented, bailing.\n");
+ 		return -EINVAL;
  	}
- 
- 	len = hdmi_infoframe_pack(&new_frame->data, buffer, sizeof(buffer));
 
 -- 
 2.47.3
