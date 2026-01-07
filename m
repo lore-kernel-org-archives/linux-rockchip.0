@@ -4,66 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 860A1CE9D48
-	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Jan 2026 12:18:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31E9FCE9D48
+	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Jan 2026 12:18:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:From:Subject:
-	Cc:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0iewfeoiKZ4nHz3FdLdVk0X+l94QBUphQ7/8N9iWHIE=; b=OuucAvdDHoG6AQ
-	pe/LhLNDVdYsP11rIhElalX4NZnKwEkqRNt77sLiQ94QlK2zoWdRb7soqzxRfhP1E4sxbPyhFNB2o
-	Zznf3CiCmvTjtil5nmZseMLVhy5xDtVDXkPNAqP7biSwvQ0uxrMWiQ4OwjqpbZoi4MzYNySCP2R8T
-	8rVHIueyY4u/G9/5B1XDEnG0I/2aKDtzHEtSSvQRgxcw2FGLxwdUjXQm/oFyz92texQhv1/xOMRWj
-	AkhczT/vqnqZrid85mpmcLxjlR8bHQRJXwMG2q4DiH7Q54wBLl+4TbcHY8QwFlI/JroLhozHOPjtY
-	wyi0ShH+5WXDNvg7VDOA==;
+	List-Owner; bh=UbHh0pQ9qctl2Guk6Nq7sLR8/XYYsJO2IDfE8hxBWmY=; b=IlYYf7FICpBvzC
+	nMbM84M8eClJZhrPwXVkB2Pl1VNWc+5atk66mo0cEqHkGJjUziqtaaZOrRQ4bjM7oiflVMSmONL8Y
+	OAz5hhHRUHkA5uifamQzcvEDcNtsN6F6f+z4ZY9//U4FqNcdczHnKK/2EO2tmssuAl12YQL6ePr8L
+	zJg0VUjv76iijS4rQSI5aaDvB/1c/Vx+NlEPNfEwv3bWwxkv7CrFzb2G54h4zMwbojPezPGglaC12
+	mbCe59zFeQ6nm825GJMeO/4FgXPRDSVaGWp7B9Xd2qLUkzftWPyjwezMR4zRyVPi2VvHCv51mN7gB
+	dBrpYX/7KYlAFHQYJ2Lg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdSUR-0000000EswJ-1Ueb;
-	Wed, 07 Jan 2026 12:18:15 +0000
-Received: from out-178.mta0.migadu.com ([91.218.175.178])
+	id 1vdSUY-0000000EsyP-3rVD;
+	Wed, 07 Jan 2026 12:18:22 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdSUN-0000000Esvf-3QdB
+	id 1vdSUW-0000000EsxK-3UvU
 	for linux-rockchip@lists.infradead.org;
-	Wed, 07 Jan 2026 12:18:13 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow-tech.com;
-	s=key1; t=1767788286;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=xyxOVVnJKKmmJxMZsTyn7vn2lBMNGNuEjeeeFoSFD1A=;
-	b=ADvw8/KkVnrrBg9xwWqTARss2+6AB6k1ESvzoORAXmCmGq2JXxtqo8stEoZE1W90OuQYp+
-	ZK3JtyON8mB11BqNNmFFktvl0N2HllrV/ujbW2oqVCsAMPDPlSgKFhc036D31nKlnJNKtW
-	DlCm2e96B8QcQpXyJ1+DXz37DH8sjsJboyTWrW8pvpIB+WpEOXwvkDid7hFv5bQHNFLf46
-	8AR1HpYJriKeGY5zqOl7wE9xEYU9XNLPnR8+lfY0gC07Yg0IkfMQh2kZrSq6HwwEsq02u9
-	+lD5gCn6npxDWl1Cwu/lnQbYGtUpx6Nby/ZckSxEXFOCAWSABHgIbC7Q+s/oog==
+	Wed, 07 Jan 2026 12:18:21 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=4h8Jx2ZI8h/J6LJOiYzY01rdWQD1J3ZD0e23g8rEcw4=; b=XXQItyR+AdD0pBYgPF6Xvj4Ow7
+	qVZOgNkle+9jo8i8Vrmxs2aPlmBET7SSe7eF1OyAsbpZmXDYFdQOw7+UjPjy+MB1FNcK8+KGyBHAj
+	lyX3GYOFpi8vsm0+nW2cbIU9XLyqg2hx0VCDgDEQYWAu9Dv+EBeR0V6WPutjl2ZH7UoZRzc4J4qRS
+	bVwkenez8q1yPufdg/gj+AjqpfyClU8FBqwMzgyKNtOVEL5w33UgeeOFivWUjkgcAY6DmTfVXuq/x
+	VDxNcY3GmGT0IYvNagOZ7j7OAViKwnspI7C59ef5+zG0p5e+w+lcjJ9Z4w+lVs7F5ynNIpWXDz7Z2
+	/hkApNAg==;
+Received: from i53875b57.versanet.de ([83.135.91.87] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1vdSUC-001NDi-JT; Wed, 07 Jan 2026 13:18:01 +0100
+From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
+To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Sandy Huang <hjc@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>,
+ Chaoyi Chen <kernel@airkyi.com>
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, Chaoyi Chen <chaoyi.chen@rock-chips.com>
+Subject: Re: [PATCH] drm/mipi-dsi: Only remove child devices that match the dsi device
+ type
 Date: Wed, 07 Jan 2026 13:18:00 +0100
-Message-Id: <DFICN8TKUFBH.1V8WHTIQ5BE2J@cknow-tech.com>
-Cc: "Robert Mader" <robert.mader@collabora.com>, <kernel@collabora.com>,
- <dri-devel@lists.freedesktop.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>,
- <linux-rockchip@lists.infradead.org>, "Matt Roper"
- <matthew.d.roper@intel.com>
-Subject: Re: [PATCH v3 0/4] Introduce BACKGROUND_COLOR DRM CRTC property
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <diederik@cknow-tech.com>
-To: "Cristian Ciocaltea" <cristian.ciocaltea@collabora.com>, "Maarten
- Lankhorst" <maarten.lankhorst@linux.intel.com>, "Maxime Ripard"
- <mripard@kernel.org>, "Thomas Zimmermann" <tzimmermann@suse.de>, "David
- Airlie" <airlied@gmail.com>, "Simona Vetter" <simona@ffwll.ch>, "Sandy
- Huang" <hjc@rock-chips.com>, =?utf-8?q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, "Andy Yan" <andy.yan@rock-chips.com>, "Louis Chauvet"
- <louis.chauvet@bootlin.com>, "Haneen Mohammed" <hamohammed.sa@gmail.com>,
- "Melissa Wen" <melissa.srw@gmail.com>
-References: <20251118-rk3588-bgcolor-v3-0-a2cc909428ea@collabora.com>
-In-Reply-To: <20251118-rk3588-bgcolor-v3-0-a2cc909428ea@collabora.com>
-X-Migadu-Flow: FLOW_OUT
+Message-ID: <2718437.9Mp67QZiUf@diego>
+In-Reply-To: <20251203115028.133-1-kernel@airkyi.com>
+References: <20251203115028.133-1-kernel@airkyi.com>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260107_041812_487608_59F0CD12 
-X-CRM114-Status: GOOD (  16.78  )
+X-CRM114-CacheID: sfid-20260107_041820_934013_4B9E67DE 
+X-CRM114-Status: GOOD (  22.76  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,117 +70,45 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-On Tue Nov 18, 2025 at 12:51 AM CET, Cristian Ciocaltea wrote:
-> Some display controllers can be hardware-configured to present non-black
-> colors for pixels which are not covered by any plane (or are exposed
-> through transparent regions of higher planes).
-> ...
-> The subsequent patches add background color support to VKMS and the VOP2
-> display controller used in the RK3568, RK3576, and RK3588 Rockchip SoC
-> families.
-
-Cristian provided a helper script which would show a test pattern and
-then iterate through setting Red, Green, Blue background color and then
-set it back to the original value.
-
-I first tested this on a Rock 5B (RK3588).
-Without this patch set, the background color was Black with every
-iteration. But with this patch set, I did see a Red, Green and Blue
-background color, after which it was set back to Black.
-
-diederik@rock5b:~$ grep -E "^Changing prop|^Read BACKGROUND_COLOR" bgcol-test-bash-user.log
-Read BACKGROUND_COLOR prop (ARGB64): 0xffff000000000000
-Changing prop value to: 0xffff00000000ffff
-Read BACKGROUND_COLOR prop (ARGB64): 0xffff00000000ffff
-Changing prop value to 0xffffffff00000000
-Read BACKGROUND_COLOR prop (ARGB64): 0xffffffff00000000
-Changing prop value to 0xffff0000ffff0000
-Read BACKGROUND_COLOR prop (ARGB64): 0xffff0000ffff0000
-Changing prop value to 0xffff00000000ffff
-Read BACKGROUND_COLOR prop (ARGB64): 0xffff00000000ffff
-Changing prop value to: 0xffff000000000000
-Read BACKGROUND_COLOR prop (ARGB64): 0xffff000000000000
-
-I then did the same test on a Quartz64-B (RK3566) and that too showed a
-Red, Green and Blue background color and then was set back to Black.
-
-diederik@quartz64b:~$ grep -E "^Changing prop|^Read BACKGROUND_COLOR" bgcol-test-bash-user-q64b.log
-Read BACKGROUND_COLOR prop (ARGB64): 0xffff000000000000
-Changing prop value to: 0xffff00000000ffff
-Read BACKGROUND_COLOR prop (ARGB64): 0xffff00000000ffff
-Changing prop value to 0xffffffff00000000
-Read BACKGROUND_COLOR prop (ARGB64): 0xffffffff00000000
-Changing prop value to 0xffff0000ffff0000
-Read BACKGROUND_COLOR prop (ARGB64): 0xffff0000ffff0000
-Changing prop value to 0xffff00000000ffff
-Read BACKGROUND_COLOR prop (ARGB64): 0xffff00000000ffff
-Changing prop value to: 0xffff000000000000
-Read BACKGROUND_COLOR prop (ARGB64): 0xffff000000000000
-
-So this patch set does what it is supposed to do, so feel free to add:
-
-Tested-by: Diederik de Haas <diederik@cknow-tech.com>
-
-Cheers,
-  Diederik
-
-> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-> ---
-> Changes in v3:
-> - Added new patches:
->   * uapi: Provide DIV_ROUND_CLOSEST()
->   * drm/vkms: Support setting custom background color
-> - Improved DRM_ARGB64_{PREP|GET}*() helpers by using a conversion ratio
->   for better color approximation when dealing with less than 16 bits of
->   precision
-> - Mentioned the IGT test in the cover letter while documenting the
->   validation results; also dropped references to the now useless
->   modetest wrapper script and its generated report
-> - Rebased series onto latest drm-misc-next
-> - Link to v2: https://lore.kernel.org/r/20251013-rk3588-bgcolor-v2-0-25cc3810ba8c@collabora.com
->
-> Changes in v2:
-> - Improved uAPI consistency and readability by introducing
->   DRM_ARGB64_PREP*() and DRM_ARGB64_GET*() helper macros
-> - Updated several code comment sections
-> - Referenced the counterpart Weston support in the cover letter
-> - Rebased series onto v6.18-rc1
-> - Link to v1: https://lore.kernel.org/r/20250902-rk3588-bgcolor-v1-0-fd97df91d89f@collabora.com
->
-> ---
-> Cristian Ciocaltea (4):
->       uapi: Provide DIV_ROUND_CLOSEST()
->       drm: Add CRTC background color property
->       drm/vkms: Support setting custom background color
->       drm/rockchip: vop2: Support setting custom background color
->
->  drivers/gpu/drm/drm_atomic_state_helper.c    |  1 +
->  drivers/gpu/drm/drm_atomic_uapi.c            |  4 ++
->  drivers/gpu/drm/drm_blend.c                  | 39 ++++++++++++++--
->  drivers/gpu/drm/drm_mode_config.c            |  6 +++
->  drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 13 +++++-
->  drivers/gpu/drm/rockchip/rockchip_drm_vop2.h |  4 ++
->  drivers/gpu/drm/vkms/vkms_composer.c         | 10 ++++-
->  drivers/gpu/drm/vkms/vkms_crtc.c             |  3 ++
->  include/drm/drm_blend.h                      |  4 +-
->  include/drm/drm_crtc.h                       | 12 +++++
->  include/drm/drm_mode_config.h                |  5 +++
->  include/linux/math.h                         | 18 +-------
->  include/uapi/drm/drm_mode.h                  | 67 ++++++++++++++++++++++++++++
->  include/uapi/linux/const.h                   | 17 +++++++
->  14 files changed, 178 insertions(+), 25 deletions(-)
-> ---
-> base-commit: 92c49b3f4df8f9acfa95551ef38fc00c675319fd
-> change-id: 20250829-rk3588-bgcolor-c1a7b9a507bc
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+QW0gTWl0dHdvY2gsIDMuIERlemVtYmVyIDIwMjUsIDEyOjUwOjI4IE1pdHRlbGV1cm9ww6Rpc2No
+ZSBOb3JtYWx6ZWl0IHNjaHJpZWIgQ2hhb3lpIENoZW46Cj4gRnJvbTogQ2hhb3lpIENoZW4gPGNo
+YW95aS5jaGVuQHJvY2stY2hpcHMuY29tPgo+IAo+IFRoaXMgcGF0Y2ggY2hlY2tzIHdoZXRoZXIg
+dGhlIGRldmljZSBpcyBhIHZhbGlkIG1pcGlfZHNpX2RldmljZSBiZWZvcmUKPiBhY2Nlc3Npbmcg
+aXQgaW4gbWlwaV9kc2lfcmVtb3ZlX2RldmljZV9mbigpLgo+IAo+IFRoZSBtaXBpX2RzaV9ob3N0
+X3VucmVnaXN0ZXIoKSBhc3N1bWVzIHRoYXQgYWxsIGNoaWxkIGRldmljZXMgb2YgdGhlCj4gaG9z
+dCBkZXZpY2UgYXJlIG1pcGlfZHNpX2RldmljZXMgYW5kIHVzZXMgbWlwaV9kc2lfcmVtb3ZlX2Rl
+dmljZV9mbigpCj4gdG8gcGVyZm9ybSBzdWJzZXF1ZW50IG9wZXJhdGlvbnMgc3BlY2lmaWMgdG8g
+bWlwaV9kc2lfZGV2aWNlLgo+IAo+IEluIHJvY2tjaGlwIHBsYXRmb3JtLCBmb3IgZHctbWlwaS1k
+c2ktcm9ja2NoaXAuYywgaXQgY3JlYXRlcyBhIGRwaHkKPiBkZXZpY2UsIGFuZCBpdCB1c2UgdGhl
+IGRzaSBob3N0IGRldmljZSBhcyBpdHMgcGFyZW50IGRldmljZS4KPiAKPiBBbmQgd2hlbiB3ZSBj
+YWxsIGR3X21pcGlfZHNpX3JlbW92ZSgpIGluCj4gZHdfbWlwaV9kc2lfcm9ja2NoaXBfcmVtb3Zl
+KCksIG1pcGlfZHNpX2hvc3RfdW5yZWdpc3RlcigpIHdpbGwgZ2V0Cj4gc3VjaCBhIGRwaHkgY2hp
+bGQgZGV2aWNlIGFuZCB0cmVhdCBpdCBhcyBhbiBtaXBpX2RzaV9kZXZpY2UsIHdoaWNoCj4gd2ls
+bCBsZWFkIHRvIGEgZnVydGhlciBwYW5pYy4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBDaGFveWkgQ2hl
+biA8Y2hhb3lpLmNoZW5Acm9jay1jaGlwcy5jb20+Cj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9k
+cm1fbWlwaV9kc2kuYyB8IDcgKysrKysrLQo+ICAxIGZpbGUgY2hhbmdlZCwgNiBpbnNlcnRpb25z
+KCspLCAxIGRlbGV0aW9uKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9kcm1f
+bWlwaV9kc2kuYyBiL2RyaXZlcnMvZ3B1L2RybS9kcm1fbWlwaV9kc2kuYwo+IGluZGV4IGE3MTJl
+MTc3YjM1MC4uNWI5Y2M3OTllYjg3IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9kcm1f
+bWlwaV9kc2kuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9kcm1fbWlwaV9kc2kuYwo+IEBAIC0z
+NDksNyArMzQ5LDEyIEBAIEVYUE9SVF9TWU1CT0wobWlwaV9kc2lfaG9zdF9yZWdpc3Rlcik7Cj4g
+IAo+ICBzdGF0aWMgaW50IG1pcGlfZHNpX3JlbW92ZV9kZXZpY2VfZm4oc3RydWN0IGRldmljZSAq
+ZGV2LCB2b2lkICpwcml2KQo+ICB7Cj4gLQlzdHJ1Y3QgbWlwaV9kc2lfZGV2aWNlICpkc2kgPSB0
+b19taXBpX2RzaV9kZXZpY2UoZGV2KTsKPiArCXN0cnVjdCBtaXBpX2RzaV9kZXZpY2UgKmRzaTsK
+PiArCj4gKwlpZiAoIWRldl9pc19taXBpX2RzaShkZXYpKQo+ICsJCXJldHVybiAwOwo+ICsKPiAr
+CWRzaSA9IHRvX21pcGlfZHNpX2RldmljZShkZXYpOwo+ICAKPiAgCWlmIChkc2ktPmF0dGFjaGVk
+KQo+ICAJCW1pcGlfZHNpX2RldGFjaChkc2kpOwo+IAoKVGhpcyBtYWtlcyBhIGxvdCBvZiBzZW5z
+ZS4KClJldmlld2VkLWJ5OiBIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPgoKCkZvciBw
+ZW9wbGUgcmVhZGluZyBhbG9uZzoKVGhlIERTSSBjb250cm9sbGVycyBvbiB0aGUgUkszMzk5IHVz
+ZXMgYSBwaHkgdGhhdCBpcyBfaW5zaWRlXyB0aGUKRFctRFNJIGNvbnRyb2xsZXIsIGluc3RlYWQg
+b2YgYSBzZXBhcmF0ZSBJUCBibG9jay4KCkJ1dCB0aGlzIGludGVybmFsIFBIWSBjYW4gYWxzbyB3
+b3JrIGFzIGEgcmVjZWl2ZXIgZm9yIGNhbWVyYSBkYXRhCmZvciB0aGUgSVNQIGJsb2NrIGluIHRo
+ZSBSSzMzOTkuCgpIZWlrbwoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlz
+dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
+bmZvL2xpbnV4LXJvY2tjaGlwCg==
