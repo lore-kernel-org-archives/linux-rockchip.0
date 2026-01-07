@@ -4,68 +4,133 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17B81CF6C00
-	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Jan 2026 08:21:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E81C2CF6BFF
+	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Jan 2026 08:31:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=m3SJLI7eaIk3nCxJ+9zlV9TLHGG4a667YiZ5AvOppdA=; b=1Sm0gSykYhzstz
-	6euwa6JqseHCs7yXDxQMIojG8r9rmwGUWYc9CxaYR4gY9yTMWfODIHfv5B4j6jVk0CM4BkcBTSsYD
-	IYsRGjryniv0t2EfhfLfXGI5Ur2jOT2bRKkCTOxXJSa5KWV6Qq24viWzE7cytxRDvP4DJvgAiricz
-	Qs7LRziXaziELrEZmsifh06t0SPW2UFO8ZcnubYQn+3m5frX7oyqVT1eexUDuld8DeEbrQBeQrnHo
-	nlv0c+IdombWLuX32s1jIEpN7Yedkc1u8LnJGja38h32SyzsadzTLZR5YezfkJx8Iujdjva9ItRvp
-	ZzQVDASc4e9zHNx52RlA==;
+	List-Owner; bh=Bk7vlPfgNxZkrckwrai7JHDrVrkVGC8PHT0F1V5LCw0=; b=dTptRUoJd/bDx1
+	gDQYBawLY8NjTu5yIi9iAFzB6scoY17nEhS1NBk2HkCA0K7yxcCSfI+LIOTan3AZI4Bx5RdWWeqXn
+	br+j563Es+eJGvsdHiAzQkiguLRu17CDYOBUm8Un2ytGccgK2G9gxpbN0a7/kdog1l8knJ3rzA6da
+	jDxX/nK8eQ9AqTxqeJckQELbSoIXCTWHZYeuZIOnHHoS6yvbscrgdsp/tCWqPDd4Torswaro4ZNPp
+	yKVRWJ3vZeHeao9pxRAHWLEhzU+yrXtcWTlsFQ6SQtcTLX1073sWr4XaN6i/JxUXh9uJkPwV4NYdZ
+	JLI7hT1hWYf+MbdJl3Yw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdOnK-0000000EOLb-0DVF;
-	Wed, 07 Jan 2026 08:21:30 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1vdOx6-0000000EQ9Z-3ry1;
+	Wed, 07 Jan 2026 08:31:36 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdOnG-0000000EOKa-2Ql5;
-	Wed, 07 Jan 2026 08:21:28 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=usWnJ1Rw5KKtaFN+POFS8USjtMWUxqAVJ7bixsDUg8k=; b=DLwSKyLYN/LdD0/WXvn2Rs89I5
-	2v7J+yhxRIWB39YOFf9Z+MLBFr6j7l8KJ+dLztW8zknXyw1d3LrDfPZB3BuY84D3bzkkdpyk8AjQy
-	YJmOSlFVD2/f+HDCpi1g/GZ/NbzkX2IZUPmXQXjIWA5bDSdFo2XSXs2Hakx4vKYeRPWll2qfWdOBA
-	GWrbX6AG6PJfWD4krWsr8ycofxnY4W3Mhp2T4+FK3u9A10m1XHWobrxfIozmM81w+xbj3eW8PbHLa
-	GTbii7pEW7P88JsVaZKUVyb7XW69PpO+fygTz9GcFYKOPPz+xAMELdWfL17wdp4+oBedV9vOneaX/
-	PiinqkuA==;
-Received: from i53875b57.versanet.de ([83.135.91.87] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1vdOmx-001Lir-9F; Wed, 07 Jan 2026 09:21:07 +0100
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: Chaoyi Chen <kernel@airkyi.com>, Alexey Charkov <alchark@gmail.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>,
- Quentin Schulz <quentin.schulz@cherry.de>,
- Chaoyi Chen <chaoyi.chen@rock-chips.com>,
- Kever Yang <kever.yang@rock-chips.com>, Jonas Karlman <jonas@kwiboo.se>,
- John Clark <inindev@gmail.com>, FUKAUMI Naoki <naoki@radxa.com>,
- Jimmy Hon <honyuenkwun@gmail.com>, Dragan Simic <dsimic@manjaro.org>,
- Michael Riesch <michael.riesch@collabora.com>,
- Peter Robinson <pbrobinson@gmail.com>, Shawn Lin <shawn.lin@rock-chips.com>,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
- Andy Yan <andy.yan@rock-chips.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 2/2] arm64: dts: rockchip: Add rk3576 evb2 board
-Date: Wed, 07 Jan 2026 09:21:06 +0100
-Message-ID: <2437891.BjyWNHgNrj@diego>
-In-Reply-To: <CABjd4Yw1Dqsa9EsMRFT8LOvyU8QN1C8VP+j0tY6h1uJhhXRSSw@mail.gmail.com>
-References: <20260107070322.323-1-kernel@airkyi.com>
- <20260107070322.323-3-kernel@airkyi.com>
- <CABjd4Yw1Dqsa9EsMRFT8LOvyU8QN1C8VP+j0tY6h1uJhhXRSSw@mail.gmail.com>
+	id 1vdOx3-0000000EQ7u-0e2p
+	for linux-rockchip@lists.infradead.org;
+	Wed, 07 Jan 2026 08:31:35 +0000
+Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 6075EBtI1462600
+	for <linux-rockchip@lists.infradead.org>; Wed, 7 Jan 2026 08:31:32 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+	sO93H+QFa37P7vkvoHhZpkzVYY5lod2ZRIVKd4EtCKM=; b=YAf3ePHDs3CaRRWl
+	db3WyP0IRzXYAKProK7DkpioG0z/c1Ec3mPHK3x0oIpzV3ugmxYMq46Op6nciCp1
+	FgvXVcV87pUwboJc+pseSupjohRijHuJedKtmp/aPxEBw5/9SBSHeW6NBgxk7qxY
+	CPe1MfwMN+ZHfxi3xR2VSvN5WP/QYod1slvq6/GM0CCvxBU+s36zLnjcimzfuqX6
+	zKOrj/9/wtaMxXBoEt+j6ZRA/qc9ablPUG5GoSZKnud6heFuyor9gvra/PVlmeak
+	Ja6o6C+XBt40qpMTHdccdW4Mxk6EndKBM8Xc04kIirgoHUe8OVnfKPEtcX94Pu5o
+	cnNQQQ==
+Received: from mail-qt1-f198.google.com (mail-qt1-f198.google.com [209.85.160.198])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4bh0vm3j0a-1
+	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+	for <linux-rockchip@lists.infradead.org>; Wed, 07 Jan 2026 08:31:32 +0000 (GMT)
+Received: by mail-qt1-f198.google.com with SMTP id d75a77b69052e-4ee0995fa85so59491201cf.1
+        for <linux-rockchip@lists.infradead.org>; Wed, 07 Jan 2026 00:31:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=oss.qualcomm.com; s=google; t=1767774692; x=1768379492; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=sO93H+QFa37P7vkvoHhZpkzVYY5lod2ZRIVKd4EtCKM=;
+        b=fDxR96/ERJJJdaMyhftsi124Uo1JIUN+Lho4LenMe6cwxO8OJ7FNeu3+cwkEKutUvP
+         FNDSpYVCPHThder1MHuHSMg8d4AO+vUhJE7x2m5D8tOttSePhJj+4LXCO7NFbyLgC0dJ
+         2qynnviUvcEAH0MNqCgDsw7MP+Y6H0U+c4DsA2C3crY4iVm25Y5PQJwXIz3S+SGK9SpV
+         iJGIn7gtvL3rGmJnnyaGNF08MUkRK07QgvrVNsgl+dUhiqbycQUPa2pkrHLWBojUS6iu
+         adPVyN1e4Il2wvJxhQivNzV8Pwl66VBR3klL2lDEfHFpB2vqxZwDtQZUY+klsu23SMhb
+         eDFw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1767774692; x=1768379492;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=sO93H+QFa37P7vkvoHhZpkzVYY5lod2ZRIVKd4EtCKM=;
+        b=peyEm2S4bL/3KFFP3QUzXcLcnEoAxhqyuoiwuYzXztiyPEgV4YwBU0v7XRI1fknHya
+         l4ji2AZLNxsfkq8pUMl37O0ppDzpSUgBYRBKGuxcHfVq9g+JiFo4ez0llPz0AuzSH+0m
+         V2zWribPo8fdPR8VFMeKdtTKwfM4ZiBBS7Zo+eVRmswKtDokOQ5KKOrMCBKmKdqRaGGy
+         7UoU2xkf1mRSP1tXgVauctH7TtxILDCMKKcijEtW2ID4t7DDCpCreaetcbnxW7sq4jy6
+         thwTJxOMM+Wv1oVJ4DFN+hU4aHFv1ZRwNNCh0NUGT5fFbhx6DHCGIwkxoM2mcUUyEcei
+         OCMA==
+X-Forwarded-Encrypted: i=1; AJvYcCUZo10591B/OxgPEnST9tXYwvJEcKyjoJgYEWXtI0BnbWnydu/VRXIene9pauSxAnbBPWFi3kWI3KGWJUH0jw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzUPORfA3+SmSlvoSwS9VXOA6r+Ep6IxzSBn7k1ADudp/9NDtDG
+	kz8hjv6EZIQaEejQHvoNe6Wf2vg0eSNzn4iVILKp74HqIzCVU9Y1rKUSoTnG8VNBuB7BsKcGNNV
+	Hmv6N1T2WKzRDR13md/1adZERQkqVyqpcYupVBMMt1f6S0XRwNpIufkwju/34il9mxyEA8HrHv2
+	k=
+X-Gm-Gg: AY/fxX6zjN0shDr0XqEQXNMjovIhvwgW8klxvOCRQziv1+xWxje5PPliqsUg5Agt+wo
+	f37Kg5NnkwiV4gxHZJjS3IPca+dE3oDNAR0yeJuMusQeCdWDA7aCwvYMiE4d4LC1C81q4nuo7cB
+	aKNkdAuQhoxicUus6V1HvAi2cgeO+HSdBjj7brFLLfI229pF+zDaEQg7R6Px/35ZfCLcBGk/0Lc
+	L1U3ETeW6xZiE+ovBdq+QNEE38g2CxFTMx5r5Zeh9zhc3FbKiYYGA5rKrSumeYiMOhyOhaft3ZK
+	C78GVToBXKPe38yP4tEVvpGQ/50ycVgdvRr82hPbPrz7u/6A8GhAev7Xks0i5yqHzqMJZ9gLY73
+	/O7RMTXIzLEU62L0rxcjgMHLosMa0MN+jfUrVxg==
+X-Received: by 2002:a05:622a:5c8e:b0:4ee:26bd:13f3 with SMTP id d75a77b69052e-4ffb484a739mr17380031cf.8.1767774691657;
+        Wed, 07 Jan 2026 00:31:31 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IF6IltAcpMqDUqZxq1/vVtnQVTIeTGNYCG+LcMYOkprAjPOhqleDalrgIZfMVCirRonr53pXQ==
+X-Received: by 2002:a05:622a:5c8e:b0:4ee:26bd:13f3 with SMTP id d75a77b69052e-4ffb484a739mr17379801cf.8.1767774691272;
+        Wed, 07 Jan 2026 00:31:31 -0800 (PST)
+Received: from brgl-qcom.home ([2a01:cb1d:dc:7e00:b90b:ec1:e402:4249])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-47d7f703a8csm84793845e9.13.2026.01.07.00.31.30
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 07 Jan 2026 00:31:30 -0800 (PST)
+From: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+To: Linus Walleij <linusw@kernel.org>, Bartosz Golaszewski <brgl@kernel.org>,
+        Heiko Stuebner <heiko@sntech.de>,
+        Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+Cc: linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+        linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+        stable@vger.kernel.org, Marek Szyprowski <m.szyprowski@samsung.com>
+Subject: Re: [PATCH] gpio: rockchip: mark the GPIO controller as sleeping
+Date: Wed,  7 Jan 2026 09:31:26 +0100
+Message-ID: <176777468354.15022.5475399715540988905.b4-ty@oss.qualcomm.com>
+X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20260106090011.21603-1-bartosz.golaszewski@oss.qualcomm.com>
+References: <20260106090011.21603-1-bartosz.golaszewski@oss.qualcomm.com>
 MIME-Version: 1.0
+X-Authority-Analysis: v=2.4 cv=Pa3yRyhd c=1 sm=1 tr=0 ts=695e19e4 cx=c_pps
+ a=mPf7EqFMSY9/WdsSgAYMbA==:117 a=xqWC_Br6kY4A:10 a=IkcTkHD0fZMA:10
+ a=vUbySO9Y5rIA:10 a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=EUspDBNiAAAA:8 a=R-3ehz3GvOBFeWroKLcA:9 a=QEXdDO2ut3YA:10
+ a=dawVfQjAaf238kedN5IG:22
+X-Proofpoint-GUID: PQiv6zN2wyuD5lbRNnVYh26cA0D1xIEd
+X-Proofpoint-ORIG-GUID: PQiv6zN2wyuD5lbRNnVYh26cA0D1xIEd
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTA3MDA2NyBTYWx0ZWRfX8JTEY/o5he8I
+ z4cE6lIjZXwWJWG3J5jxAt7YhKA7joKH9gViZl8jiSUhS7vA6kN9Esf5WtmVHG9VUD2CKd2/4FM
+ vMslpJW1HQ53csiSHWydOZ23p83a/xrmAaD7ex1Dki1WwJmiLs284ocuybXBC2G+DY48NM99CzS
+ GtghqFBX8hIkaEIoe/EQxedS16LKeNBfTqbc2R47lPaVE2X+9XF4lT2/24BDS56zsXh4s1YC1vz
+ DGPSOg9IKWwNZJx1ixRx1YJAvh9M/hfjg5c25mg2z0GF5lIFjsLLetuR3ZMK+XuCADxeDd13NNo
+ Ol0wyQ3auIHco5NQioH0cVemKAQET5fhb1mHTziYSfFls1foJR2hViJr6JOYIcxCIO1z6TYGecE
+ h4x3zxEJ02gfOi56Tw1wKTrwgK6vImLVJpd1pwwP8kpLoRF8NiPIfFcpPEJ7nzTS6HbzrIbknph
+ 2TTsY1RrR1on3X+v3rA==
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
+ definitions=2026-01-06_03,2026-01-06_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ impostorscore=0 clxscore=1015 priorityscore=1501 lowpriorityscore=0
+ spamscore=0 adultscore=0 suspectscore=0 phishscore=0 malwarescore=0
+ bulkscore=0 classifier=typeunknown authscore=0 authtc= authcc= route=outbound
+ adjust=0 reason=mlx scancount=1 engine=8.22.0-2512120000
+ definitions=main-2601070067
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260107_002126_888425_C08D280A 
-X-CRM114-Status: GOOD (  19.75  )
+X-CRM114-CacheID: sfid-20260107_003133_194137_9550C72A 
+X-CRM114-Status: GOOD (  14.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,82 +142,92 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-QW0gTWl0dHdvY2gsIDcuIEphbnVhciAyMDI2LCAwODo1NjowNCBNaXR0ZWxldXJvcMOkaXNjaGUg
-Tm9ybWFsemVpdCBzY2hyaWViIEFsZXhleSBDaGFya292Ogo+IEhpIENoYW95aSwKPiAKPiBPbiBX
-ZWQsIEphbiA3LCAyMDI2IGF0IDExOjA04oCvQU0gQ2hhb3lpIENoZW4gPGtlcm5lbEBhaXJreWku
-Y29tPiB3cm90ZToKPiA+Cj4gPiBGcm9tOiBDaGFveWkgQ2hlbiA8Y2hhb3lpLmNoZW5Acm9jay1j
-aGlwcy5jb20+Cj4gPgo+ID4gR2VuZXJhbCBmZWF0dXJlcyBmb3IgcmszNTc2IGV2YjIgYm9hcmQ6
-Cj4gPiAgICAgLSBSb2NrY2hpcCBSSzM1NzYKPiA+ICAgICAtIExQRERSNC80WAo+ID4gICAgIC0g
-ZU1NQzUuMQo+ID4gICAgIC0gUks4MDYtMngycGNzICsgRGlzY3JldGVQb3dlcgo+ID4gICAgIC0g
-MXggSERNSTIuMSBUWCAvIEhETUkyLjAgUlgKPiA+ICAgICAtIDF4IGZ1bGwgc2l6ZSBEUDEuNCBU
-WCAoT25seSAyIExhbmVzKQo+ID4gICAgIC0gMnggMTAvMTAwLzEwMDBNIEV0aGVybmV0Cj4gPiAg
-ICAgLSA1eCBTQVRBMy4wIDdQaW4gU2xvdAo+ID4gICAgIC0gMnggVVNCMy4yIEdlbjEgSG9zdAo+
-ID4gICAgIC0gM3ggVVNCMi4wIEhvc3QKPiA+ICAgICAtIFdJRkkvQlQKPiA+ICAgICAtIC4uLgo+
-ID4KPiA+IFRlc3RlZCB3aXRoIGVNTUMvU0RNTUMvSERNSS9VU0IvRXRoZXJuZXQvV0lGSS9CVCBt
-b2R1bGUuCj4gPgo+ID4gU2lnbmVkLW9mZi1ieTogQ2hhb3lpIENoZW4gPGNoYW95aS5jaGVuQHJv
-Y2stY2hpcHMuY29tPgoKWy4uLl0KCj4gPiArICAgICAgIHZidXM1djBfdHlwZWM6IHJlZ3VsYXRv
-ci12YnVzNXYwLXR5cGVjIHsKPiA+ICsgICAgICAgICAgICAgICBjb21wYXRpYmxlID0gInJlZ3Vs
-YXRvci1maXhlZCI7Cj4gPiArICAgICAgICAgICAgICAgcmVndWxhdG9yLW5hbWUgPSAidmJ1czV2
-MF90eXBlYyI7Cj4gCj4gVGhpcyBtaWdodCBiZXR0ZXIgYmUgcmVuYW1lZCwgZ2l2ZW4gdGhhdCBs
-YXN0IHRpbWUgeW91IG1lbnRpb25lZCB0aGlzCj4gYm9hcmQgZG9lc24ndCBoYXZlIGEgVHlwZS1D
-IGNvbm5lY3Rvci4gUGVyaGFwcyByZWd1bGF0b3ItdmJ1czV2MC1vdGc/CgpBbHRlcm5hdGl2ZWx5
-IGEgY29tbWVudCBhYm92ZSBpdC4KCkkuZS4gcmVndWxhdG9yLW5hbWluZyBzaG91bGQgYWx3YXlz
-IGZvbGxvdyB0aGUgbmFtaW5nIHVzZWQgaW4gdGhlCnNjaGVtYXRpY3MsIHNvIHRoYXQgaXQgZ2V0
-cyBlYXNpZXIgdG8gcmVmZXJlbmNlIGJldHdlZW4gc2NoZW1hdGljcwphbmQgZGV2aWNldHJlZS4K
-Cgo+ID4gKyAgICAgICAgICAgICAgIHJlZ3VsYXRvci1taW4tbWljcm92b2x0ID0gPDUwMDAwMDA+
-Owo+ID4gKyAgICAgICAgICAgICAgIHJlZ3VsYXRvci1tYXgtbWljcm92b2x0ID0gPDUwMDAwMDA+
-Owo+ID4gKyAgICAgICAgICAgICAgIGVuYWJsZS1hY3RpdmUtaGlnaDsKPiA+ICsgICAgICAgICAg
-ICAgICBncGlvID0gPCZncGlvMCBSS19QRDEgR1BJT19BQ1RJVkVfSElHSD47Cj4gPiArICAgICAg
-ICAgICAgICAgdmluLXN1cHBseSA9IDwmdmNjNXYwX2RldmljZT47Cj4gPiArICAgICAgICAgICAg
-ICAgcGluY3RybC1uYW1lcyA9ICJkZWZhdWx0IjsKPiA+ICsgICAgICAgICAgICAgICBwaW5jdHJs
-LTAgPSA8JnVzYl9vdGcwX3B3cmVuPjsKPiA+ICsgICAgICAgfTsKPiA+ICsKPiA+ICsgICAgICAg
-dmNjMTJ2X2RjaW46IHJlZ3VsYXRvci12Y2MxMnYtZGNpbiB7Cj4gPiArICAgICAgICAgICAgICAg
-Y29tcGF0aWJsZSA9ICJyZWd1bGF0b3ItZml4ZWQiOwo+ID4gKyAgICAgICAgICAgICAgIHJlZ3Vs
-YXRvci1uYW1lID0gInZjYzEydl9kY2luIjsKPiA+ICsgICAgICAgICAgICAgICByZWd1bGF0b3It
-YWx3YXlzLW9uOwo+ID4gKyAgICAgICAgICAgICAgIHJlZ3VsYXRvci1ib290LW9uOwo+ID4gKyAg
-ICAgICAgICAgICAgIHJlZ3VsYXRvci1taW4tbWljcm92b2x0ID0gPDEyMDAwMDAwPjsKPiA+ICsg
-ICAgICAgICAgICAgICByZWd1bGF0b3ItbWF4LW1pY3Jvdm9sdCA9IDwxMjAwMDAwMD47Cj4gPiAr
-ICAgICAgIH07Cj4gPiArCj4gPiArICAgICAgIHZjYzF2Ml91ZnNfdmNjcV9zMDogcmVndWxhdG9y
-LXZjYzF2Mi11ZnMtdmNjcS1zMCB7Cj4gPiArICAgICAgICAgICAgICAgY29tcGF0aWJsZSA9ICJy
-ZWd1bGF0b3ItZml4ZWQiOwo+ID4gKyAgICAgICAgICAgICAgIHJlZ3VsYXRvci1uYW1lID0gInZj
-YzF2Ml91ZnNfdmNjcV9zMCI7Cj4gPiArICAgICAgICAgICAgICAgcmVndWxhdG9yLWJvb3Qtb247
-Cj4gPiArICAgICAgICAgICAgICAgcmVndWxhdG9yLWFsd2F5cy1vbjsKPiA+ICsgICAgICAgICAg
-ICAgICByZWd1bGF0b3ItbWluLW1pY3Jvdm9sdCA9IDwxMjAwMDAwPjsKPiA+ICsgICAgICAgICAg
-ICAgICByZWd1bGF0b3ItbWF4LW1pY3Jvdm9sdCA9IDwxMjAwMDAwPjsKPiA+ICsgICAgICAgICAg
-ICAgICB2aW4tc3VwcGx5ID0gPCZ2Y2Nfc3lzPjsKPiA+ICsgICAgICAgfTsKPiA+ICsKPiA+ICsg
-ICAgICAgdmNjMXY4X3Vmc192Y2NxMl9zMDogcmVndWxhdG9yLXZjYzF2OC11ZnMtdmNjcTItczAg
-ewo+ID4gKyAgICAgICAgICAgICAgIGNvbXBhdGlibGUgPSAicmVndWxhdG9yLWZpeGVkIjsKPiA+
-ICsgICAgICAgICAgICAgICByZWd1bGF0b3ItbmFtZSA9ICJ2Y2MxdjhfdWZzX3ZjY3EyX3MwIjsK
-PiA+ICsgICAgICAgICAgICAgICByZWd1bGF0b3ItYm9vdC1vbjsKPiA+ICsgICAgICAgICAgICAg
-ICByZWd1bGF0b3ItYWx3YXlzLW9uOwo+ID4gKyAgICAgICAgICAgICAgIHJlZ3VsYXRvci1taW4t
-bWljcm92b2x0ID0gPDE4MDAwMDA+Owo+ID4gKyAgICAgICAgICAgICAgIHJlZ3VsYXRvci1tYXgt
-bWljcm92b2x0ID0gPDE4MDAwMDA+Owo+ID4gKyAgICAgICAgICAgICAgIHZpbi1zdXBwbHkgPSA8
-JnZjY18xdjhfczM+Owo+ID4gKyAgICAgICB9Owo+ID4gKwo+ID4gKyAgICAgICB2Y2MzdjNfaHVi
-cmVzZXQ6IHZjYzN2My1odWJyZXNldCB7Cj4gPiArICAgICAgICAgICAgICAgY29tcGF0aWJsZSA9
-ICJyZWd1bGF0b3ItZml4ZWQiOwo+ID4gKyAgICAgICAgICAgICAgIHJlZ3VsYXRvci1uYW1lID0g
-InZjYzN2M19odWJyZXNldCI7Cj4gPiArICAgICAgICAgICAgICAgcmVndWxhdG9yLWJvb3Qtb247
-Cj4gPiArICAgICAgICAgICAgICAgcmVndWxhdG9yLWFsd2F5cy1vbjsKPiAKPiBJZiB0aGlzIHJl
-Z3VsYXRvciBzdXBwbGllcyBhIHNvbGRlcmVkLW9uIGRpc2NyZXRlIGh1YiBhbmQgaXMgcmVxdWly
-ZWQKPiB0byBwb3dlciBpdCB1cCwgd29uJ3QgaXQgYmUgYmV0dGVyIHRvIGRlc2NyaWJlIHRoZSBo
-dWIgaW4gdGhlIGRldmljZQo+IHRyZWUgKHNlZSBiaW5kaW5nIGF0IFsxXSksIG1ha2UgdGhlIHJl
-Z3VsYXRvciBpdHMgc3VwcGx5LCBhbmQgcGVyaGFwcwo+IGRyb3AgdGhlICJyZWd1bGF0b3ItYm9v
-dC1vbi9yZWd1bGF0b3ItYWx3YXlzLW9uIiBhbm5vdGF0aW9uIGhlcmUsCj4gbGV0dGluZyB0aGUg
-cmVndWxhdG9yIGNvcmUgZGVhbCB3aXRoIGl0cyBlbmFibGluZyBpbnN0ZWFkPwo+IAo+IFsxXSBo
-dHRwczovL2dpdGh1Yi5jb20vdG9ydmFsZHMvbGludXgvYmxvYi9tYXN0ZXIvRG9jdW1lbnRhdGlv
-bi9kZXZpY2V0cmVlL2JpbmRpbmdzL3VzYi91c2ItZGV2aWNlLnlhbWwKClllcCwgaXQgd291bGQg
-YmUgbmljZXIgdG8gaXQgdGhpcyB3YXkuCkEgbGl2ZSBleGFtcGxlIGNhbiBiZSBmb3VuZCBpbiB0
-aGUgUm9jayA1IElUWCBbMl0KClsyXSBodHRwczovL2dpdC5rZXJuZWwub3JnL3B1Yi9zY20vbGlu
-dXgva2VybmVsL2dpdC90b3J2YWxkcy9saW51eC5naXQvdHJlZS9hcmNoL2FybTY0L2Jvb3QvZHRz
-L3JvY2tjaGlwL3JrMzU4OC1yb2NrLTUtaXR4LmR0cyNuMTI2NgoKCkhlaWtvCgoKPiBbc25pcF0K
-PiAKPiBPdGhlciB0aGFuIHRoZXNlLCBMR1RNIC0gdGhhbmtzIGZvciBhZGRyZXNzaW5nIG15IGNv
-bW1lbnRzIGZyb20gdjEhCj4gRmVlbCBmcmVlIHRvIGluY2x1ZGUgbXk6Cj4gCj4gUmV2aWV3ZWQt
-Ynk6IEFsZXhleSBDaGFya292IDxhbGNoYXJrQGdtYWlsLmNvbT4KPiAKPiBCZXN0IHJlZ2FyZHMs
-Cj4gQWxleGV5Cj4gCgoKCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3Rz
-LmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5m
-by9saW51eC1yb2NrY2hpcAo=
+
+On Tue, 06 Jan 2026 10:00:11 +0100, Bartosz Golaszewski wrote:
+> The GPIO controller is configured as non-sleeping but it uses generic
+> pinctrl helpers which use a mutex for synchronization.
+> 
+> This can cause the following lockdep splat with shared GPIOs enabled on
+> boards which have multiple devices using the same GPIO:
+> 
+> BUG: sleeping function called from invalid context at
+> kernel/locking/mutex.c:591
+> in_atomic(): 1, irqs_disabled(): 1, non_block: 0, pid: 12, name:
+> kworker/u16:0
+> preempt_count: 1, expected: 0
+> RCU nest depth: 0, expected: 0
+> 6 locks held by kworker/u16:0/12:
+>   #0: ffff0001f0018d48 ((wq_completion)events_unbound#2){+.+.}-{0:0},
+> at: process_one_work+0x18c/0x604
+>   #1: ffff8000842dbdf0 (deferred_probe_work){+.+.}-{0:0}, at:
+> process_one_work+0x1b4/0x604
+>   #2: ffff0001f18498f8 (&dev->mutex){....}-{4:4}, at:
+> __device_attach+0x38/0x1b0
+>   #3: ffff0001f75f1e90 (&gdev->srcu){.+.?}-{0:0}, at:
+> gpiod_direction_output_raw_commit+0x0/0x360
+>   #4: ffff0001f46e3db8 (&shared_desc->spinlock){....}-{3:3}, at:
+> gpio_shared_proxy_direction_output+0xd0/0x144 [gpio_shared_proxy]
+>   #5: ffff0001f180ee90 (&gdev->srcu){.+.?}-{0:0}, at:
+> gpiod_direction_output_raw_commit+0x0/0x360
+> irq event stamp: 81450
+> hardirqs last  enabled at (81449): [<ffff8000813acba4>]
+> _raw_spin_unlock_irqrestore+0x74/0x78
+> hardirqs last disabled at (81450): [<ffff8000813abfb8>]
+> _raw_spin_lock_irqsave+0x84/0x88
+> softirqs last  enabled at (79616): [<ffff8000811455fc>]
+> __alloc_skb+0x17c/0x1e8
+> softirqs last disabled at (79614): [<ffff8000811455fc>]
+> __alloc_skb+0x17c/0x1e8
+> CPU: 2 UID: 0 PID: 12 Comm: kworker/u16:0 Not tainted
+> 6.19.0-rc4-next-20260105+ #11975 PREEMPT
+> Hardware name: Hardkernel ODROID-M1 (DT)
+> Workqueue: events_unbound deferred_probe_work_func
+> Call trace:
+>   show_stack+0x18/0x24 (C)
+>   dump_stack_lvl+0x90/0xd0
+>   dump_stack+0x18/0x24
+>   __might_resched+0x144/0x248
+>   __might_sleep+0x48/0x98
+>   __mutex_lock+0x5c/0x894
+>   mutex_lock_nested+0x24/0x30
+>   pinctrl_get_device_gpio_range+0x44/0x128
+>   pinctrl_gpio_direction+0x3c/0xe0
+>   pinctrl_gpio_direction_output+0x14/0x20
+>   rockchip_gpio_direction_output+0xb8/0x19c
+>   gpiochip_direction_output+0x38/0x94
+>   gpiod_direction_output_raw_commit+0x1d8/0x360
+>   gpiod_direction_output_nonotify+0x7c/0x230
+>   gpiod_direction_output+0x34/0xf8
+>   gpio_shared_proxy_direction_output+0xec/0x144 [gpio_shared_proxy]
+>   gpiochip_direction_output+0x38/0x94
+>   gpiod_direction_output_raw_commit+0x1d8/0x360
+>   gpiod_direction_output_nonotify+0x7c/0x230
+>   gpiod_configure_flags+0xbc/0x480
+>   gpiod_find_and_request+0x1a0/0x574
+>   gpiod_get_index+0x58/0x84
+>   devm_gpiod_get_index+0x20/0xb4
+>   devm_gpiod_get_optional+0x18/0x30
+>   rockchip_pcie_probe+0x98/0x380
+>   platform_probe+0x5c/0xac
+>   really_probe+0xbc/0x298
+> 
+> [...]
+
+Applied, thanks!
+
+[1/1] gpio: rockchip: mark the GPIO controller as sleeping
+      commit: 20cf2aed89ac6d78a0122e31c875228e15247194
+
+Best regards,
+-- 
+Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
