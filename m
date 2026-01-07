@@ -4,61 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31E9FCE9D48
-	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Jan 2026 12:18:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B81A3CF6BEC
+	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Jan 2026 12:23:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UbHh0pQ9qctl2Guk6Nq7sLR8/XYYsJO2IDfE8hxBWmY=; b=IlYYf7FICpBvzC
-	nMbM84M8eClJZhrPwXVkB2Pl1VNWc+5atk66mo0cEqHkGJjUziqtaaZOrRQ4bjM7oiflVMSmONL8Y
-	OAz5hhHRUHkA5uifamQzcvEDcNtsN6F6f+z4ZY9//U4FqNcdczHnKK/2EO2tmssuAl12YQL6ePr8L
-	zJg0VUjv76iijS4rQSI5aaDvB/1c/Vx+NlEPNfEwv3bWwxkv7CrFzb2G54h4zMwbojPezPGglaC12
-	mbCe59zFeQ6nm825GJMeO/4FgXPRDSVaGWp7B9Xd2qLUkzftWPyjwezMR4zRyVPi2VvHCv51mN7gB
-	dBrpYX/7KYlAFHQYJ2Lg==;
+	List-Owner; bh=ZbMgAIGzAreoAx04370S9OzjfWrh2fjN1OalJd9TESA=; b=cUYXk44mqKTrE3
+	P4Ogmd/BONj4REQB+mJo1jwT8YBeL/iWxbx2R+ZBT2JYbeanyQd+YsTopBLubEEAtcG1stcNDj5vp
+	Gj8Xe0IMfyzRrd2P96cAfBak3r3D3RFhvvgEa83OBTwmXLCja5f2UZQhnfcrDYwtPx7Ues5sPecJW
+	wv+A+8Qt0bWJ+Z0LYc6zlotFsj6zEJnXlhNIdqnTYuzTs03LWMy/VgaCyngo1DDeSl23SJjPI4dWb
+	b2MhsuhSocqZIRRWLvUX3sMKB/Jmy/UPjs+ai2yGtkS9mXpFvQt1JM0jfSlvrEoq/Hlke7Sgr5tVy
+	br/pvXu0j5sWLOeIw/nA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdSUY-0000000EsyP-3rVD;
-	Wed, 07 Jan 2026 12:18:22 +0000
+	id 1vdSZW-0000000Etju-1KlR;
+	Wed, 07 Jan 2026 12:23:30 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdSUW-0000000EsxK-3UvU
+	id 1vdSZT-0000000EtjI-19uY
 	for linux-rockchip@lists.infradead.org;
-	Wed, 07 Jan 2026 12:18:21 +0000
+	Wed, 07 Jan 2026 12:23:28 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=4h8Jx2ZI8h/J6LJOiYzY01rdWQD1J3ZD0e23g8rEcw4=; b=XXQItyR+AdD0pBYgPF6Xvj4Ow7
-	qVZOgNkle+9jo8i8Vrmxs2aPlmBET7SSe7eF1OyAsbpZmXDYFdQOw7+UjPjy+MB1FNcK8+KGyBHAj
-	lyX3GYOFpi8vsm0+nW2cbIU9XLyqg2hx0VCDgDEQYWAu9Dv+EBeR0V6WPutjl2ZH7UoZRzc4J4qRS
-	bVwkenez8q1yPufdg/gj+AjqpfyClU8FBqwMzgyKNtOVEL5w33UgeeOFivWUjkgcAY6DmTfVXuq/x
-	VDxNcY3GmGT0IYvNagOZ7j7OAViKwnspI7C59ef5+zG0p5e+w+lcjJ9Z4w+lVs7F5ynNIpWXDz7Z2
-	/hkApNAg==;
-Received: from i53875b57.versanet.de ([83.135.91.87] helo=diego.localnet)
+	bh=UCt1lPgHWvel1sNHnwKhUv+0Xd6FvEiFSdmAT35AsTA=; b=QcMi+Mm2Qxw/hPUjXVJGubc3M9
+	ZeuRnypQwkTrC4Sg8m0/qzqCa+MPlSRB1RPQA+ptlRvDCSCQy79wQCzxQRw956eaOdsiWKyCYqclT
+	V03Lq5s7AX8jDbtTPprKtEbUpUr/YhVCFifQQlJLIfQds9sL8msieudO/3wIOjfCTPpIYI11FstMz
+	gNs3tzD3t17UqLjhPA8l4nnC1BfGwcGpMvr+wLyO0gkIWD7QTixpupJW9FhvY7YYRaryxrs2fI+Xo
+	GDH4Iq0l4lAJvKV9x9dezvGjECJH8M7eSpWBHM25kYKeXFnkFht+FGrfJ4VYCimXjQNVuuJSln98i
+	Po9ZwSHA==;
+Received: from i53875b57.versanet.de ([83.135.91.87] helo=phil..)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1vdSUC-001NDi-JT; Wed, 07 Jan 2026 13:18:01 +0100
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Sandy Huang <hjc@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>,
- Chaoyi Chen <kernel@airkyi.com>
-Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, Chaoyi Chen <chaoyi.chen@rock-chips.com>
-Subject: Re: [PATCH] drm/mipi-dsi: Only remove child devices that match the dsi device
- type
-Date: Wed, 07 Jan 2026 13:18:00 +0100
-Message-ID: <2718437.9Mp67QZiUf@diego>
-In-Reply-To: <20251203115028.133-1-kernel@airkyi.com>
-References: <20251203115028.133-1-kernel@airkyi.com>
+	id 1vdSZI-001NGe-8G; Wed, 07 Jan 2026 13:23:16 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: Andrzej Hajda <andrzej.hajda@intel.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Robert Foss <rfoss@kernel.org>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Sandy Huang <hjc@rock-chips.com>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>
+Subject: Re: [PATCH] drm/bridge: dw-hdmi-qp: Fix spurious IRQ on resume
+Date: Wed,  7 Jan 2026 13:23:13 +0100
+Message-ID: <176778858168.3105559.3292923031171588352.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.47.2
+In-Reply-To: <20251014-rockchip-hdmi-suspend-fix-v1-1-983fcbf44839@collabora.com>
+References: <20251014-rockchip-hdmi-suspend-fix-v1-1-983fcbf44839@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260107_041820_934013_4B9E67DE 
-X-CRM114-Status: GOOD (  22.76  )
+X-CRM114-CacheID: sfid-20260107_042327_311826_81899F92 
+X-CRM114-Status: UNSURE (   9.31  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,45 +73,38 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, kernel@collabora.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-QW0gTWl0dHdvY2gsIDMuIERlemVtYmVyIDIwMjUsIDEyOjUwOjI4IE1pdHRlbGV1cm9ww6Rpc2No
-ZSBOb3JtYWx6ZWl0IHNjaHJpZWIgQ2hhb3lpIENoZW46Cj4gRnJvbTogQ2hhb3lpIENoZW4gPGNo
-YW95aS5jaGVuQHJvY2stY2hpcHMuY29tPgo+IAo+IFRoaXMgcGF0Y2ggY2hlY2tzIHdoZXRoZXIg
-dGhlIGRldmljZSBpcyBhIHZhbGlkIG1pcGlfZHNpX2RldmljZSBiZWZvcmUKPiBhY2Nlc3Npbmcg
-aXQgaW4gbWlwaV9kc2lfcmVtb3ZlX2RldmljZV9mbigpLgo+IAo+IFRoZSBtaXBpX2RzaV9ob3N0
-X3VucmVnaXN0ZXIoKSBhc3N1bWVzIHRoYXQgYWxsIGNoaWxkIGRldmljZXMgb2YgdGhlCj4gaG9z
-dCBkZXZpY2UgYXJlIG1pcGlfZHNpX2RldmljZXMgYW5kIHVzZXMgbWlwaV9kc2lfcmVtb3ZlX2Rl
-dmljZV9mbigpCj4gdG8gcGVyZm9ybSBzdWJzZXF1ZW50IG9wZXJhdGlvbnMgc3BlY2lmaWMgdG8g
-bWlwaV9kc2lfZGV2aWNlLgo+IAo+IEluIHJvY2tjaGlwIHBsYXRmb3JtLCBmb3IgZHctbWlwaS1k
-c2ktcm9ja2NoaXAuYywgaXQgY3JlYXRlcyBhIGRwaHkKPiBkZXZpY2UsIGFuZCBpdCB1c2UgdGhl
-IGRzaSBob3N0IGRldmljZSBhcyBpdHMgcGFyZW50IGRldmljZS4KPiAKPiBBbmQgd2hlbiB3ZSBj
-YWxsIGR3X21pcGlfZHNpX3JlbW92ZSgpIGluCj4gZHdfbWlwaV9kc2lfcm9ja2NoaXBfcmVtb3Zl
-KCksIG1pcGlfZHNpX2hvc3RfdW5yZWdpc3RlcigpIHdpbGwgZ2V0Cj4gc3VjaCBhIGRwaHkgY2hp
-bGQgZGV2aWNlIGFuZCB0cmVhdCBpdCBhcyBhbiBtaXBpX2RzaV9kZXZpY2UsIHdoaWNoCj4gd2ls
-bCBsZWFkIHRvIGEgZnVydGhlciBwYW5pYy4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBDaGFveWkgQ2hl
-biA8Y2hhb3lpLmNoZW5Acm9jay1jaGlwcy5jb20+Cj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9k
-cm1fbWlwaV9kc2kuYyB8IDcgKysrKysrLQo+ICAxIGZpbGUgY2hhbmdlZCwgNiBpbnNlcnRpb25z
-KCspLCAxIGRlbGV0aW9uKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9kcm1f
-bWlwaV9kc2kuYyBiL2RyaXZlcnMvZ3B1L2RybS9kcm1fbWlwaV9kc2kuYwo+IGluZGV4IGE3MTJl
-MTc3YjM1MC4uNWI5Y2M3OTllYjg3IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9kcm1f
-bWlwaV9kc2kuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9kcm1fbWlwaV9kc2kuYwo+IEBAIC0z
-NDksNyArMzQ5LDEyIEBAIEVYUE9SVF9TWU1CT0wobWlwaV9kc2lfaG9zdF9yZWdpc3Rlcik7Cj4g
-IAo+ICBzdGF0aWMgaW50IG1pcGlfZHNpX3JlbW92ZV9kZXZpY2VfZm4oc3RydWN0IGRldmljZSAq
-ZGV2LCB2b2lkICpwcml2KQo+ICB7Cj4gLQlzdHJ1Y3QgbWlwaV9kc2lfZGV2aWNlICpkc2kgPSB0
-b19taXBpX2RzaV9kZXZpY2UoZGV2KTsKPiArCXN0cnVjdCBtaXBpX2RzaV9kZXZpY2UgKmRzaTsK
-PiArCj4gKwlpZiAoIWRldl9pc19taXBpX2RzaShkZXYpKQo+ICsJCXJldHVybiAwOwo+ICsKPiAr
-CWRzaSA9IHRvX21pcGlfZHNpX2RldmljZShkZXYpOwo+ICAKPiAgCWlmIChkc2ktPmF0dGFjaGVk
-KQo+ICAJCW1pcGlfZHNpX2RldGFjaChkc2kpOwo+IAoKVGhpcyBtYWtlcyBhIGxvdCBvZiBzZW5z
-ZS4KClJldmlld2VkLWJ5OiBIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPgoKCkZvciBw
-ZW9wbGUgcmVhZGluZyBhbG9uZzoKVGhlIERTSSBjb250cm9sbGVycyBvbiB0aGUgUkszMzk5IHVz
-ZXMgYSBwaHkgdGhhdCBpcyBfaW5zaWRlXyB0aGUKRFctRFNJIGNvbnRyb2xsZXIsIGluc3RlYWQg
-b2YgYSBzZXBhcmF0ZSBJUCBibG9jay4KCkJ1dCB0aGlzIGludGVybmFsIFBIWSBjYW4gYWxzbyB3
-b3JrIGFzIGEgcmVjZWl2ZXIgZm9yIGNhbWVyYSBkYXRhCmZvciB0aGUgSVNQIGJsb2NrIGluIHRo
-ZSBSSzMzOTkuCgpIZWlrbwoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlz
-dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
-bmZvL2xpbnV4LXJvY2tjaGlwCg==
+
+On Tue, 14 Oct 2025 18:00:57 +0200, Sebastian Reichel wrote:
+> After resume from suspend to RAM, the following splash is generated if
+> the HDMI driver is probed (independent of a connected cable):
+> 
+> [ 1194.484052] irq 80: nobody cared (try booting with the "irqpoll" option)
+> [ 1194.484074] CPU: 0 UID: 0 PID: 627 Comm: rtcwake Not tainted 6.17.0-rc7-g96f1a11414b3 #1 PREEMPT
+> [ 1194.484082] Hardware name: Rockchip RK3576 EVB V10 Board (DT)
+> [ 1194.484085] Call trace:
+> [ 1194.484087]  ... (stripped)
+> [ 1194.484283] handlers:
+> [ 1194.484285] [<00000000bc363dcb>] dw_hdmi_qp_main_hardirq [dw_hdmi_qp]
+> [ 1194.484302] Disabling IRQ #80
+> 
+> [...]
+
+Applied, thanks!
+
+[1/1] drm/bridge: dw-hdmi-qp: Fix spurious IRQ on resume
+      commit: 14adddc65340f2034751c95616861c0e888e2bb1
+
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
