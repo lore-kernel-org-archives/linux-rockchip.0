@@ -4,71 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDCFFCF6BE3
-	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Jan 2026 02:37:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE454CF6BF3
+	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Jan 2026 07:04:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:From:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3XynK3wCQLzWUi0nDAJuAi37GeiqSm4RHMtFIk58Mio=; b=EfbOg2vD2PeUEZ
-	KDAKIK1dBcx3ou7EaVCSIcOaX+RR5y/aKi0n25q6VyBKxQIMDEV+dF1It0UIYAuwPTokYis4dWfZm
-	OsThW6uAFMo846Hg/wrLYzC1MIymBqFvYIZVEpMcrEoDrVA742QO4NFBzZBZQoh0apApQBAkeEyE3
-	nIn0iDL5M4KFc38CZtoWsaofuhDkVTil3qA+a5Uw1xN8Lmpy4VUe+kdV75NGoKw3ncfGZc8rPYooc
-	Bu8sxzh6TnbgA0r8l1g8Yd0arN4k09V9/JyLWvIGf0iLbo+Gv+Qt5ftwMPiNfq0C5jsllAUlsR3qK
-	VlWS98nhZD1etcUoSTbg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=cOr+qqg0v44XRWY72XssVt1fcP4C28tilMohrw4zves=; b=Q3EzczmJhw0hTf
+	Nyarv39HXMywlAG7hvcLk549OKgJheqHb+bitSHJClDBM6XXA4wdHXgl9nXwZI5BWIQDe2vaVVKTY
+	zDw0tZ5CQsSN9mpf2OVKYDxVrPFl2HOys9ZWaUbLXqSYcAbxPLpZ30ZrwYJ7myw/rgG4eGJqMNmhb
+	NmbEf/Dke4jRSOZeg26Ayaq0pY9xEe07Wx7HN91beRtgQOO2hYxngIP3Be1nOQHhu/aYLEm5XBqic
+	r7O+oBUuWPkc3h7Ym//LnspEAYTM1OYDZF48zw5qa1uSwoX+RtTKhwtS/Bbhe7f5i1q7w3QsSD+ld
+	sPtSx4L41h8X93vVoIkw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdJQ5-0000000E575-3DKD;
-	Wed, 07 Jan 2026 02:37:09 +0000
-Received: from mail-m49212.qiye.163.com ([45.254.49.212])
+	id 1vdNaX-0000000EG1w-3kKb;
+	Wed, 07 Jan 2026 07:04:13 +0000
+Received: from smtpbgeu2.qq.com ([18.194.254.142])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdJQ2-0000000E55H-2cVF;
-	Wed, 07 Jan 2026 02:37:08 +0000
-Received: from [172.16.12.43] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 2fbef9ce3;
-	Wed, 7 Jan 2026 10:36:57 +0800 (GMT+08:00)
-Message-ID: <f644a5ab-5dd1-4f4e-b2e9-3585dec81a96@rock-chips.com>
-Date: Wed, 7 Jan 2026 10:36:57 +0800
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-From: Damon Ding <damon.ding@rock-chips.com>
-Subject: Re: [PATCH v8 04/18] drm/bridge: analogix_dp: Add
- &analogix_dp_plat_data.next_bridge
-To: Luca Ceresoli <luca.ceresoli@bootlin.com>, andrzej.hajda@intel.com,
- neil.armstrong@linaro.org, rfoss@kernel.org
-Cc: Laurent.pinchart@ideasonboard.com, jonas@kwiboo.se,
- jernej.skrabec@gmail.com, maarten.lankhorst@linux.intel.com,
- mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch,
- shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de,
- festevam@gmail.com, inki.dae@samsung.com, sw0312.kim@samsung.com,
- kyungmin.park@samsung.com, krzk@kernel.org, alim.akhtar@samsung.com,
- jingoohan1@gmail.com, p.zabel@pengutronix.de, hjc@rock-chips.com,
- heiko@sntech.de, andy.yan@rock-chips.com, dmitry.baryshkov@oss.qualcomm.com,
- dianders@chromium.org, m.szyprowski@samsung.com, jani.nikula@intel.com,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
- linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
-References: <20251217093321.3108939-1-damon.ding@rock-chips.com>
- <20251217093321.3108939-5-damon.ding@rock-chips.com>
- <DFCCU8AN0GZQ.2CYTKKV40JYLI@bootlin.com>
- <187b2c32-5a10-4555-8d49-cf1ee86a8eaa@rock-chips.com>
-Content-Language: en-US
-In-Reply-To: <187b2c32-5a10-4555-8d49-cf1ee86a8eaa@rock-chips.com>
-X-HM-Tid: 0a9b965081fc03a3kunme7026636f3fcd
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQx5DHlYdTEofSRpLSklPH0JWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpKQk
-	1VSktLVUpCWQY+
-DKIM-Signature: a=rsa-sha256;
-	b=XTc3ywoNaUASUctvi7aqpNtFJToV3y76ir90mhINcT3SspMUdeAXdYHXWAhULkBokH/TOTyxAl1xgR5zUham/P2R2/bTWNZKibwHhve030/J2UcGgRkWDPAlabHxczeZ0+/YEt8YtK3jl3yaUXGchACliUpEFdyJR41n+ftMllA=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=XG1ve9KKgO4Stoa/EGMqCZSP6qpS5GUgHSKbTxkyq9Q=;
-	h=date:mime-version:subject:message-id:from;
+	id 1vdNaR-0000000EFwi-0kr9;
+	Wed, 07 Jan 2026 07:04:12 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
+	s=altu2504; t=1767769416;
+	bh=nuKYj0Y1wUuUMoOaJ5Zpda3+a6WcEYKPz2uufgZ8dNM=;
+	h=From:To:Subject:Date:Message-Id;
+	b=j9HL/VjoUj1mXYP+4FNGnQ6+dj3eo8U8KcPV0KqK7hbEPBiOohLxjv5jETCdBI2go
+	 wvv+8oytcCACiZ6oN6vfxg4XnvnrsRxIF9LznHAUOLEybgK8cwDCnQ4b5yfPOBKsfy
+	 kNMdoN1YxIVc+cQZplEPcA0VMAoQMJQGewjkRod8=
+X-QQ-mid: zesmtpsz4t1767769409tae6e7355
+X-QQ-Originating-IP: oRYRdMTC6Kb1CbKXxp7jJ8XO4tRaEvz24K2T1J6H2Tg=
+Received: from DESKTOP-8BT1A2O.localdomain ( [58.22.7.114])
+	by bizesmtp.qq.com (ESMTP) with 
+	id ; Wed, 07 Jan 2026 15:03:26 +0800 (CST)
+X-QQ-SSF: 0000000000000000000000000000000
+X-QQ-GoodBg: 0
+X-BIZMAIL-ID: 1533395504835066326
+EX-QQ-RecipientCnt: 22
+From: Chaoyi Chen <kernel@airkyi.com>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Quentin Schulz <quentin.schulz@cherry.de>,
+	Chaoyi Chen <chaoyi.chen@rock-chips.com>,
+	Kever Yang <kever.yang@rock-chips.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	John Clark <inindev@gmail.com>,
+	FUKAUMI Naoki <naoki@radxa.com>,
+	Jimmy Hon <honyuenkwun@gmail.com>,
+	Dragan Simic <dsimic@manjaro.org>,
+	Michael Riesch <michael.riesch@collabora.com>,
+	Peter Robinson <pbrobinson@gmail.com>,
+	Alexey Charkov <alchark@gmail.com>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Andy Yan <andy.yan@rock-chips.com>
+Cc: devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v2 0/2] arm64: dts: rockchip: Add rk3576 evb2 board
+Date: Wed,  7 Jan 2026 15:03:20 +0800
+Message-Id: <20260107070322.323-1-kernel@airkyi.com>
+X-Mailer: git-send-email 2.17.1
+X-QQ-SENDSIZE: 520
+Feedback-ID: zesmtpsz:airkyi.com:qybglogicsvrgz:qybglogicsvrgz6b-0
+X-QQ-XMAILINFO: NFxyVI7Mb0/F3uMhF03SIqCSYPlyME6Smbp7Yj71Y+Q3s/Se14BSq/T8
+	CBmYFHnnozx766WE9Lwumpy2TlnEFDODUrf/MCuSGH1BKa2SUAWz4v605IVYpkK/VWCcF6t
+	rSowTFB7o4bxkPNPH9R9wH3Vkw2Uc1SMDPswmwxenoE0GFtCZM6hBrqSG8J3djavPtYEdyX
+	SvZJJAb5UWD7J6oIrDnid7qBtqScPIpMlLK3S9gOGCmtHb5pV/g5NwOPqRcVZhIvPtYCwoi
+	eOqKDM0EzGFJpiM51d1c5ifyxiYmotY9CA1SnKCgs/uc2V/aKrFI/mPkGZ/A+OOqDfAj+Vz
+	GLbqRLkTIG/wcXbfIL/puekAL9eaXM/uOxrqCosGZMErG12jr28IF12FXjCJe+40K7GLq3f
+	APQu1WNeqd5FeDYNcleKeiU7q5TonHhsFHmZDgiXZtgnct5nazxGWKi+1o6dUnHeVWlLUdT
+	uel7tvudfo/ze9+5md3j+8y71gMFlcDLM7f6eLHatlTyhwdmTYUf1GJqmNGXRegFyceRA+t
+	cgGTh+1celMHCanfbzbcnKvac8khEeknOddqb9WmpTM0r3JSrFiovcOx5CruD8G5FmgE+2g
+	+6g071hY6YUcCurqLuqzVQZJCk+00VvVs+D+L5z0nKmF+OvkdVXKjZTE68RqaJPS9tvtTRJ
+	Cl1WuQCrxAoBp4F15ys2VZbYUUawLmo+whaOhr18X7u7TsffmSqs96msGjaVnzDeGmBBCIf
+	S93DELYUwU+/UBpW5QUpfeuDTHusIZqQxscHHggxH8DIkJj36+4Jy5DQTm3DU+OVGt6vDO9
+	zZ94A2PUb9D0zBETC+mlYuBd3jOfsVOo02W/18vmbmGIBmjKJ1JV2mElF8QYhQoY93o3D1x
+	Y3OJwfVYVnrKDxTvKU4kmt1AWajdwSC/vsL5nrUvOr4/kbSNI1hPSS3dFr5wJETzMEARlZO
+	rKn9/I/pD6UyhF7ImumHEJm707q2KM2X6OfkK5yr0pr6NPtXvQCPcfdRT6eyM0n7EhW0X/5
+	3GWPIe3f2nGONZIaVFwT5FF9cdVPQ=
+X-QQ-XMRINFO: MSVp+SPm3vtSI1QTLgDHQqIV1w2oNKDqfg==
+X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260106_183707_174876_94A5C18C 
-X-CRM114-Status: GOOD (  19.90  )
+X-CRM114-CacheID: sfid-20260106_230407_686142_C5C84E9A 
+X-CRM114-Status: GOOD (  10.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,68 +103,57 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgTHVjYSwKCk9uIDEvNC8yMDI2IDEwOjUxIEFNLCBEYW1vbiBEaW5nIHdyb3RlOgo+IEhpIEx1
-Y2EsCj4gCj4gT24gMTIvMzEvMjAyNSA3OjExIFBNLCBMdWNhIENlcmVzb2xpIHdyb3RlOgo+PiBI
-ZWxsbyBEYW1vbiwKPj4KPj4gT24gV2VkIERlYyAxNywgMjAyNSBhdCAxMDozMyBBTSBDRVQsIERh
-bW9uIERpbmcgd3JvdGU6Cj4+PiBJbiBvcmRlciB0byBtb3ZlIHRoZSBwYW5lbC9icmlkZ2UgcGFy
-c2luZyBhbmQgYXR0YWNobWVuZXQgdG8gdGhlCj4+PiBBbmFsb2dpeCBzaWRlLCBhZGQgY29tcG9u
-ZW50IHN0cnVjdCBkcm1fYnJpZGdlICpuZXh0X2JyaWRnZSB0bwo+Pj4gcGxhdGZvcm0gZGF0YSBz
-dHJ1Y3QgYW5hbG9naXhfZHBfcGxhdF9kYXRhLgo+Pj4KPj4+IFRoZSBtb3ZlbWVudCBtYWtlcyBz
-ZW5zZSBiZWNhdXNlIHRoZSBwYW5lbC9icmlkZ2Ugc2hvdWxkIGxvZ2ljYWxseQo+Pj4gYmUgcG9z
-aXRpb25lZCBiZWhpbmQgdGhlIEFuYWxvZ2l4IGJyaWRnZSBpbiB0aGUgZGlzcGxheSBwaXBlbGlu
-ZS4KPj4+Cj4+PiBTaWduZWQtb2ZmLWJ5OiBEYW1vbiBEaW5nIDxkYW1vbi5kaW5nQHJvY2stY2hp
-cHMuY29tPgo+Pj4gUmV2aWV3ZWQtYnk6IERtaXRyeSBCYXJ5c2hrb3YgPGRtaXRyeS5iYXJ5c2hr
-b3ZAb3NzLnF1YWxjb21tLmNvbT4KPj4+IFRlc3RlZC1ieTogTWFyZWsgU3p5cHJvd3NraSA8bS5z
-enlwcm93c2tpQHNhbXN1bmcuY29tPgo+Pj4KPj4+IC0tLQo+Pj4KPj4+IENoYW5nZXMgaW4gdjQ6
-Cj4+PiAtIFJlbmFtZSB0aGUgJmFuYWxvZ2l4X2RwX3BsYXRfZGF0YS5icmlkZ2UgdG8KPj4+IMKg
-wqAgJmFuYWxvZ2l4X2RwX3BsYXRfZGF0YS5uZXh0X2JyaWRnZQo+Pj4gLS0tCj4+PiDCoCBpbmNs
-dWRlL2RybS9icmlkZ2UvYW5hbG9naXhfZHAuaCB8IDEgKwo+Pj4gwqAgMSBmaWxlIGNoYW5nZWQs
-IDEgaW5zZXJ0aW9uKCspCj4+Pgo+Pj4gZGlmZiAtLWdpdCBhL2luY2x1ZGUvZHJtL2JyaWRnZS9h
-bmFsb2dpeF9kcC5oIGIvaW5jbHVkZS9kcm0vYnJpZGdlLyAKPj4+IGFuYWxvZ2l4X2RwLmgKPj4+
-IGluZGV4IGNmMTc2NDZjMTMxMC4uNTgyMzU3YzIwNjQwIDEwMDY0NAo+Pj4gLS0tIGEvaW5jbHVk
-ZS9kcm0vYnJpZGdlL2FuYWxvZ2l4X2RwLmgKPj4+ICsrKyBiL2luY2x1ZGUvZHJtL2JyaWRnZS9h
-bmFsb2dpeF9kcC5oCj4+PiBAQCAtMjcsNiArMjcsNyBAQCBzdGF0aWMgaW5saW5lIGJvb2wgaXNf
-cm9ja2NoaXAoZW51bSAKPj4+IGFuYWxvZ2l4X2RwX2RldnR5cGUgdHlwZSkKPj4+IMKgIHN0cnVj
-dCBhbmFsb2dpeF9kcF9wbGF0X2RhdGEgewo+Pj4gwqDCoMKgwqDCoCBlbnVtIGFuYWxvZ2l4X2Rw
-X2RldnR5cGUgZGV2X3R5cGU7Cj4+PiDCoMKgwqDCoMKgIHN0cnVjdCBkcm1fcGFuZWwgKnBhbmVs
-Owo+Pj4gK8KgwqDCoCBzdHJ1Y3QgZHJtX2JyaWRnZSAqbmV4dF9icmlkZ2U7Cj4+PiDCoMKgwqDC
-oMKgIHN0cnVjdCBkcm1fZW5jb2RlciAqZW5jb2RlcjsKPj4+IMKgwqDCoMKgwqAgc3RydWN0IGRy
-bV9jb25uZWN0b3IgKmNvbm5lY3RvcjsKPj4+IMKgwqDCoMKgwqAgYm9vbCBza2lwX2Nvbm5lY3Rv
-cjsKPj4KPj4gSXQgdG9vayBhIHdoaWxlIHRvIHVuZGVyc3RhbmQgd2h5IHlvdSBhcmUgYWRkaW5n
-IHRoZSBuZXh0X2JyaWRnZSAKPj4gcG9pbnRlciBpbgo+PiBzdHJ1Y3QgYW5hbG9naXhfZHBfcGxh
-dF9kYXRhIGluc3RlYWQgb2Ygc3RydWN0IGFuYWxvZ2l4X2RwX2RldmljZSwgCj4+IHdoZXJlIGl0
-Cj4+IHdvdWxkIGJlIG1vcmUgbmF0dXJhbC4gSSBmb3VuZCBhbiBhbnN3ZXIgaW4gcGF0Y2ggMTY6
-IHdpdGggY3VycmVudCAKPj4gY29kZSB5b3UKPj4gbmVlZCB0byBwbGFjZSBuZXh0X2JyaWRnZSBp
-biBzdHJ1Y3QgYW5hbG9naXhfZHBfcGxhdF9kYXRhIGJlY2F1c2UgaXQgaXMKPj4gdXNlZCBieSB1
-c2VyIGRyaXZlcnMgdG8gYXR0YWNoLCBhbmQgdGhvc2UgZHJpdmVycyBoYXZlIG5vIGFjY2VzcyB0
-byAKPj4gc3RydWN0Cj4+IGFuYWxvZ2l4X2RwX2RldmljZS4gSG93ZXZlciBwYXRjaCAxNiAod2hp
-Y2ggbG9va3MgYSB2ZXJ5IGdvb2QgY2xlYW51cCAKPj4gQlRXKQo+PiBuZXh0X2JyaWRnZSBjYW4g
-YmUgbW92ZWQgdG8gc3RydWN0IGFuYWxvZ2l4X2RwX2RldmljZS4KPj4KPj4gU28gSSdkIHN1Z2dl
-c3QgdG8gbW92ZSBwYXRjaCAxNiBiZWZvcmUgdGhpcyBvbmUgaWYgaXQgZWFzaWx5IGRvYWJsZSwg
-c28KPj4gdGhhdCB5b3UgY2FuIGludHJvZHVjZSBuZXh0X2JyaWRnZSBpbiBzdHJ1Y3QgYW5hbG9n
-aXhfZHBfZGV2aWNlIGZyb20gdGhlCj4+IGJlZ2lubmluZy4gU2hvdWxkIHRoYXQgYmUgaW1wb3Nz
-aWJsZSwgeW91IGNhbiBzZW5kIGEgc2VwYXJhdGUgcGF0Y2ggdG8gCj4+IG1vdmUKPj4gbmV4dF9i
-cmlkZ2UsIGFmdGVyIHBhdGNoIDE2Lgo+Pgo+Pgo+IAo+IFRoYW5rcyBmb3IgeW91ciBuaWNlIHN1
-Z2dlc3Rpb24hIEFmdGVyIHBhdGNoIDE2LCBicmlkZ2UgYXR0YWNobWVudCBpcyAKPiB1bmlmaWVk
-IHRvIHRoZSBBbmFsb2dpeCBzaWRlLCB3aGljaCBhY3RzIGFzIGEgY29tbW9uIGJyaWRnZSBkcml2
-ZXIgZm9yIAo+IGJvdGggdGhlIFJvY2tjaGlwIGFuZCBFeHlub3Mgc2lkZXMsIHNvIG1vdmluZyBu
-ZXh0X2JyaWRnZSB0aGVyZSBtYWtlcyAKPiBwZXJmZWN0IHNlbnNlLiBJIHdpbGwgYWRkIGEgc2Vw
-YXJhdGUgcGF0Y2ggdG8gbW92ZSBuZXh0X2JyaWRnZSBpbiB2OS4KPiAKPiAKCk15IGFwb2xvZ2ll
-cyBmb3IgcmV2ZXJzaW5nIHRoZSBwbGFuIHRvIG1vdmUgbmV4dF9icmlkZ2UgdG8gdGhlIEFuYWxv
-Z2l4IApzaWRlIGluIHY5IC0tIEkgb25seSBjb25zaWRlcmVkIHRoZSBSb2NrY2hpcCBzaWRlIGJl
-Zm9yZS4KCldoZW4gSSB0cmllZCBtb2RpZnlpbmcgdGhlIGNvZGUgYmFzZWQgb24geW91ciBzdWdn
-ZXN0aW9uLCBJIGZvdW5kIGl0IApiZXR0ZXIgdG8ga2VlcCAmYW5hbG9naXhfcGxhdF9kYXRhLm5l
-eHRfYnJpZGdlIGFzIGlzLiBUaGlzIGlzIGJlY2F1c2UgCnRoZSBFeHlub3Mgc2lkZSBuZWVkcyB0
-byBtYWludGFpbiBjb21wYXRpYmlsaXR5IHdpdGggdGhlIGxlZ2FjeSBtZXRob2QgCm9mIHBhcnNp
-bmcgcGFuZWxzIGFuZCBicmlkZ2VzLCBzbyB0aGUgbmV4dCBicmlkZ2UgaXNuJ3QgYWx3YXlzIHBh
-cnNlZCBieSAKdGhlIGNvbW1vbiBBbmFsb2dpeCBzaWRlIGRyaXZlci4KClRoaXMgcGF0Y2ggc2Vy
-aWVzIGhhcyBiZWVuIHBlbmRpbmcgZm9yIGFnZXMsIGFuZCBJJ20gZXZlbiBhIGJpdCBmdXp6eSBv
-biAKdGhlIGRldGFpbHMgbXlzZWxmLiA7LSkKCkJlc3QgcmVnYXJkcywKRGFtb24KCgpfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBt
-YWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlz
-dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+
+Hi,
+
+This series add support for rk3576 evb2 board.
+
+General features for rk3576 evb2 board:
+    - Rockchip RK3576
+    - LPDDR4/4X
+    - eMMC5.1
+    - RK806-2x2pcs + DiscretePower
+    - 1x HDMI2.1 TX / HDMI2.0 RX
+    - 1x full size DP1.4 TX (Only 2 Lanes)
+    - 2x 10/100/1000M Ethernet
+    - 5x SATA3.0 7Pin Slot
+    - 2x USB3.2 Gen1 Host
+    - 3x USB2.0 Host
+    - WIFI/BT
+    - ...
+
+Changes in v2:
+- Link to v1: https://lore.kernel.org/all/20260104023703.118-1-kernel@airkyi.com/
+- Enable hdmi_sound and sai6.
+- Add more cpu-supply.
+- Use regulator to control sata power.
+- Remove "cap-mmc-highspeed" prop in sdmmc.
+- Add regulator supply for ufshc.
+- Add the missing vcc3v3_hubreset regulator.
+- Add otg capability for usb_drd0_dwc3.
+
+Chaoyi Chen (2):
+  dt-bindings: arm: rockchip: Add rk3576 evb2 board
+  arm64: dts: rockchip: Add rk3576 evb2 board
+
+ .../devicetree/bindings/arm/rockchip.yaml     |   4 +-
+ arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+ .../boot/dts/rockchip/rk3576-evb2-v10.dts     | 997 ++++++++++++++++++
+ 3 files changed, 1001 insertions(+), 1 deletion(-)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3576-evb2-v10.dts
+
+-- 
+2.51.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
