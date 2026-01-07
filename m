@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08D65D0D15C
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21B68D0D15D
 	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Jan 2026 18:15:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,90 +12,90 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KipxavAHd6w98ed5e+aXK+dX/e2uBH2VfLFrCDsOU5c=; b=Tu9TzmeEkA4HO3
-	87apecJhOw3RrB0HzKL3gY4dKHgU3rg6RIDWBuIHEFIjyObw2uOPdBBPXfeR7f6tTlbjXuSm01Swy
-	ZF0VNcUNfUTsgT5FG0PXk9/c3piIFAOeZoa1Dl1IcFFHkzlHRq1rzVZGaDPaEEVTDY3pMtzI3FwjF
-	uczvRDLPnlMLzwwuzk9smrs5Paw1gLndXSSIY40dMGX3M8S3WYdF6H/lQwwKHPoe9ya83ttNJSgtN
-	h59Xnq9fsrVYkOuKYfnPrRk3H8940/TNqi5zbe/IGNFePwTPt+U1V4J6DIvDnsbj6uWTu636oZdRu
-	8dJgxkbrXs8tAtWMOawA==;
+	List-Owner; bh=FtkJZmBPSVmXuXrxfcLN1rzZJn+64T3AIej14XFvpoo=; b=qmHEROEPfm5pSy
+	5zW9mAHEdavbSY73YOjKujHGbRg8+gfingmpgmZEIwZVaczHsXrNSdtN7l6W+VusfmMbC8ezzF1Qz
+	bSOdJxw9yzZFzdeVq2U3IDK4RIM68gqG6xIeT2cC7frZ6HSK/fmgQHvNybK+I7LZZKaMPDAVeVhrb
+	tusrZzZLH/3ditU8Jo+WksyJ7i7QQdeIAQQ9rqFGzzvLyUA2rEy+FkpDtS1nr6g1VTe7ZLIfcrae5
+	3ZJEzzkwH1UkhjU94A6Xr5lC22iO+XU+6fKc5bg0uSMkH43I2fG3cp2ZCCUgPeeG9i5zgFMZczXJ+
+	nRQxDIL5kfwNiXEkD3Rw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdY3u-0000000FROM-0KKW;
-	Wed, 07 Jan 2026 18:15:14 +0000
+	id 1vdY3t-0000000FRNy-3Hcb;
+	Wed, 07 Jan 2026 18:15:13 +0000
 Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdY3o-0000000FRJn-1ret
+	id 1vdY3n-0000000FRJ0-3N3m
 	for linux-rockchip@lists.infradead.org;
 	Wed, 07 Jan 2026 18:15:11 +0000
-Received: from pps.filterd (m0279862.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 607BMSGb3152627
-	for <linux-rockchip@lists.infradead.org>; Wed, 7 Jan 2026 18:15:08 GMT
+Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 607HYgDB2593277
+	for <linux-rockchip@lists.infradead.org>; Wed, 7 Jan 2026 18:15:07 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
 	cc:content-transfer-encoding:content-type:date:from:in-reply-to
 	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	pPEqdfktaAHE/Jjjjm6RwHrVcZ7AZ3stnlHc40P42b8=; b=XjdPzI+vprat0Amv
-	gwL3eg4VCPgxWlfP8SP+gmGcQl0yvekPl5SWJ98dXB9sRWjAFvjVdTlLxe8EsDSa
-	bCbSdg7e/6q1v+hHAmq4FOhGOMqEm8eC0vubYxM8GJOK1yBCU/+errTsYHLWBhIk
-	SFPQ4E2fTMzd2tn97gEbpm63rCCzXLmxJ8fjRb4dljA39rjJzOk3p/bPKBc/vyq8
-	qMbVmKT2l6RFKdu7HoY5DkvrKKkyxuMxaoYPucTRUJI5xhq1v5KKECgSmo+ZDHto
-	nL4i/tijX5o6Fw3wwCPH4i+Bgdnp1Qo1AS/xhUU6LQ28J/eDkz8qaF+rDPVZz9CJ
-	KR6m0A==
+	CvOBqRWntd3xVSUEtMwnv/Rm6Go596skSwj2MkU+rb8=; b=LcvKs90co5qyoc2Z
+	d/DIjr6T4wp6peOapih1HLy3dVAbvLTC7P2Kndnry/iEomJs8OzmIVngr3ixTOg4
+	tVc0xZ0DdmPlAIFS82JO8PKad+Hq37EPFHDDYa0GXy6zgBOnPD7vJ+6HgBeCQiT+
+	G8XV72EZ8iahnPwLPnscVkw1z9E1UZMXnq1dgZHv7GYsWAjoLBiC4TN5mTDh6g/J
+	6uEGqMsEJNdB6obsu3FYwEUHg8rQ/O4SdEcPEIwhJuQIkWpFmUB31BYP1mcGpKNr
+	8ZksV4agCherUaArKSC/9gV6QqRKNRz+GmwyFyV4PyNrFAU9PP6VNmmcPKTYAFYo
+	Lf4E3A==
 Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com [209.85.222.200])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4bhpjasa85-1
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4bhn291n2s-1
 	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
 	for <linux-rockchip@lists.infradead.org>; Wed, 07 Jan 2026 18:15:07 +0000 (GMT)
-Received: by mail-qk1-f200.google.com with SMTP id af79cd13be357-8bb6a7fea4dso572299085a.0
+Received: by mail-qk1-f200.google.com with SMTP id af79cd13be357-8b259f0da04so605096285a.0
         for <linux-rockchip@lists.infradead.org>; Wed, 07 Jan 2026 10:15:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1767809707; x=1768414507; darn=lists.infradead.org;
+        d=oss.qualcomm.com; s=google; t=1767809706; x=1768414506; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=pPEqdfktaAHE/Jjjjm6RwHrVcZ7AZ3stnlHc40P42b8=;
-        b=aqbaa5jWNxYn1QPVL1RdGQSVbrY+z8IsE1maKhOWbmdszshXFjK/z7K0ckRKnu2VqM
-         V6N3gh2YhcN+fVcPvz3hrgDaEQIj0NkZx7z9DF374eiNg9ri/f13Cgi/AV5QX+3mXZmz
-         96Bf6bdWmv94yA9L6JwABkUNjYHAfHyA0EYTfam7Jglzume2CLpIXyiryzUcsQgVuuzD
-         wiZdGXm3t86omRD2ptrvr3k0m056ce5glqT5qUL1blpSF0Kc86bw8dGTfzTIHCxBhB+m
-         ii1ylmOjqXS8/FT+6diZhZvGFq8iETwMNfY1qAkHe+ItiC5jjAJdkNBs/Tl36f1DSgF9
-         QOAQ==
+        bh=CvOBqRWntd3xVSUEtMwnv/Rm6Go596skSwj2MkU+rb8=;
+        b=P7QzqBhkqofOFuQUZNVFfX6OrSMtcQLXr+pujaSe+db3s3snHJMtXk56G9ItxNl9Sd
+         JNQU4ssjkEeutwctXRRmw8AjGewd675FYfFl0gxUEYlsSCTfIcH6nQZzX5O0NSjWy5Jy
+         1QGK19FKme6h+XR9ukYu6Tcf8q33cDP6l7ASgNLxRr7C5WoaO4J5qxQdnBBBSb1Ytv0Q
+         wWCyVrwbTOiGHo7q7BaJNFtA8NfDui3RUxZ2E5wvK8WYbR/+d7de256K654Y/yIGKyS/
+         AnKESczjc5Et+4SYUeUd8iOGZXX2wvAmsQJUrx/CJ2NEX8lAFi7tBpIW6JBsj+KW5rD2
+         G0Fg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1767809707; x=1768414507;
+        d=1e100.net; s=20230601; t=1767809706; x=1768414506;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=pPEqdfktaAHE/Jjjjm6RwHrVcZ7AZ3stnlHc40P42b8=;
-        b=FNG4niFgJO1fU+LczhyHJoqdGAEeug1Lj7+cnaK/MHDHOANXW4uGrVGQjwVRMXLPns
-         W95pLfaaqCIeccZbjuACgoH7td9BraYg+lSdE+4XQJP/oQzY0m9g1eRINTD8/bY0mXnO
-         XxmN/d9nWfJZt9aPdolYPupw0dvh6Q8ffb1F09j4oaCfKvS3Q53PQfStyjpAylnRkwk4
-         rtvZYr1xH5v87VRzsl1y2zbBx8AQZvxi7mVV665MPjpTtn4NmyzJ5fSQAgRVU3Ju2P/z
-         h28RvDPLfUPcSym33Vx1MPMFnomJ1mxjyUh+HwWBSXi9ViGbUaCNdi7hrQf34qlHZ7mt
-         d6uQ==
-X-Forwarded-Encrypted: i=1; AJvYcCW0J0iX5N0DW87slRWKPHzwOpd5LN03MQnaE2FJ0Jd+9KCPDh7Ztcd3gyOQJwt6vTgf5rE3p506Ujt54Etx3A==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyAZAYFz8J0i4qDYPP8JTpS5HhRFXJ0MYQO+y8jSpTrE4jUYqrh
-	1A1m/R7OTH9jji+xoPRUMfQZrpGi5xeO+E1RDh1zd2SBRpsvhPNmXnosjWZl35HnS7xxRjxIx1W
-	bC7UGf5Xm59mpLwyibNdZsn15UraZwUWYJ8HGrb5pt4D1bgCy1htyGX/TosXsgAbpuTJ2Co7/+5
-	o=
-X-Gm-Gg: AY/fxX5WusTa8/SUf4P861zQWAbsMJrchHSYzs/rV1I/ZUcrRMYyrv5HGMnFp88j23y
-	iUUyOFAp62+XJrNbhAPIrd2PpJZjb/dNXATc0GEH9BOHodQ23FKcEZMKhFpPbU4EcB27YW8ZtHF
-	Xz8yFEsxQTTSrv5OwQZmRezVatLKtKFjA63munkhQLmT741XGilYZn1PbAIb/YogyU85CWHIkr9
-	nmf4tIvjRFJ9LjjPz/I3cvONxjEP7dt0OYwowObzGsAUYx74gcExTLkDCL1DdV+p0QlbFWP822k
-	4x2q/2tbzvZnV1KS4rIOl1wR7JvqcjiNjOaPirmr5i7EjO2RguRF3NrCOT/qDqmzzbAqdTySFXh
-	WcmTXGEzOCjnfhDnj4XutK3lATS1CAVOSs8s5sYlGIdGdU4GQ0ltzYexso91VmDrGZ5uVWoNx5j
-	dduegyVjD+P1bewuU9N3rNXYA=
-X-Received: by 2002:a05:620a:711c:b0:8c0:cca6:8522 with SMTP id af79cd13be357-8c38939ce29mr472849485a.37.1767809706504;
+        bh=CvOBqRWntd3xVSUEtMwnv/Rm6Go596skSwj2MkU+rb8=;
+        b=wLZsYQyNxrMouQqQ3PhdrSj5OTCo6jWa54KUG+V0HGNOgc1bU0u/hf76KrwbkN/RLi
+         U3xM4e7OVoqhjbfkQIsPQuLBKJ5vKACjozxuAJqmw5zSl9sumzLFa13Ez7Rx7N7G7rEA
+         Nn1CrH5NfWTAi/Le0CmKdL2vfBNmLDWEojHFLHzdbOrLRtTJsD++JWT4o7m/pRXVFVcb
+         2aKqSdJKiumMzYmjUhzeZV7rK/1eeKFwV8qtrzD8audnKjQIzqn4Fs0tsZCq1NltAxjW
+         BSX4uuDej17sLdM4gkIE+lQrBWLD6nvoxHFoLq3EGjT9SMwhQ7KeHMzxx9QkskjhgsQg
+         QMPg==
+X-Forwarded-Encrypted: i=1; AJvYcCXBiyhhyUvGaeMMFK2ynUOs2xocSO70+IK/sk9IhQJl/zXYHIPNTTrfKc6j/z/omq6hha2ISvKxzlNJbQazmw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxRDP3yHS5z4DVo4hrmggGPGbirJafi5lQTzbsXKJ29HaPoYcU7
+	7FKJEbar7LLjtt+WAvDmfM8KZhiJbisH6WGo7Vsb5v4XlbaOqvINXHvXFUYNyhWDx28F7Ed2a1P
+	rCCDnfPVRUtHd5k3tBmkaIsv5TiVARdW6aOIwZAzAVKZo8chqSe116sg9I1hCYB0m3uBsmF0VGF
+	M=
+X-Gm-Gg: AY/fxX7BHU5RHdJ7K1glEKk+YtbOr/ZYFqK7/idMhddvWP9oAJnXWHBsCh3iCr5VXlP
+	5YLWKQ6KEPA6V9LlxaqFBhictBODtWG1/UULSstMhn12+cECRp9WhBEbPkOmQaheEap2N59P02V
+	W+3hRB7FqZfWB6ONtJwe5icPeAh+t+gQbG7DjSv1UV/55wIdmjl8UAFOJEq2du4P9QqdVIGadkm
+	7FNBT7Jhp+RTnFtESRW200KnN/AFtXudZsxNV1zDLzzYIZjAiifU2Gf75i1vqkS+TaXeYvVS9Cp
+	uJde5BQWVK/ukBU7R22+Md5BSw7OAJmwU4dyl7Izr/mLZMXdj+f1Ff6wWRihybOTnjYh/D8S4ru
+	ewmML/EtTi/HlvROaXE2CR8du5HeAl+Jryd1S4l0PkkWnGK7LN1aYSUckV+Z/oDvtU2K8xmoAQO
+	ExRX06j3T6aztRVjXAW+07Hjs=
+X-Received: by 2002:a05:620a:298c:b0:89f:5541:b5f5 with SMTP id af79cd13be357-8c3893751a1mr451572485a.17.1767809706393;
         Wed, 07 Jan 2026 10:15:06 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IE0AzgUocYSZpm2KC5Ln3K9tzKrPT4erDK/yC4UWYZHbUCAGZhC15uqj5QHGP7DsMDQRvR3PA==
-X-Received: by 2002:a05:620a:711c:b0:8c0:cca6:8522 with SMTP id af79cd13be357-8c38939ce29mr472830885a.37.1767809704473;
-        Wed, 07 Jan 2026 10:15:04 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IErco6iIlONdm8FoPmBoVGT4sMle7p6Daei/gbTGJZ8AsHe90PS3UuyAzSsRgYRNtmFv/UWZQ==
+X-Received: by 2002:a05:620a:298c:b0:89f:5541:b5f5 with SMTP id af79cd13be357-8c3893751a1mr451564685a.17.1767809705824;
+        Wed, 07 Jan 2026 10:15:05 -0800 (PST)
 Received: from umbar.lan (2001-14ba-a073-af00-264b-feff-fe8b-be8a.rev.dnainternet.fi. [2001:14ba:a073:af00:264b:feff:fe8b:be8a])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-59b65d6988asm1436884e87.80.2026.01.07.10.15.03
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-59b65d6988asm1436884e87.80.2026.01.07.10.15.04
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 07 Jan 2026 10:15:03 -0800 (PST)
+        Wed, 07 Jan 2026 10:15:05 -0800 (PST)
 From: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-Date: Wed, 07 Jan 2026 20:14:58 +0200
-Subject: [PATCH v4 01/10] drm/tests: hdmi: check the infoframes behaviour
+Date: Wed, 07 Jan 2026 20:14:59 +0200
+Subject: [PATCH v4 02/10] drm/vc4: hdmi: implement clear_infoframe
 MIME-Version: 1.0
-Message-Id: <20260107-limit-infoframes-2-v4-1-213d0d3bd490@oss.qualcomm.com>
+Message-Id: <20260107-limit-infoframes-2-v4-2-213d0d3bd490@oss.qualcomm.com>
 References: <20260107-limit-infoframes-2-v4-0-213d0d3bd490@oss.qualcomm.com>
 In-Reply-To: <20260107-limit-infoframes-2-v4-0-213d0d3bd490@oss.qualcomm.com>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
@@ -130,44 +130,45 @@ Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
         linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
         freedreno@lists.freedesktop.org, linux-rockchip@lists.infradead.org
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=26900;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1749;
  i=dmitry.baryshkov@oss.qualcomm.com; h=from:subject:message-id;
- bh=XZUiI+P1J2mQYMmzuj2kKLbF6PlyfBdfsh+uTUhKM3o=;
- b=owEBbQGS/pANAwAKAYs8ij4CKSjVAcsmYgBpXqKk/8Nl7ok1dk6fEgJIBY2eHmOcgrrVbCdGg
- 4G/w01IwRGJATMEAAEKAB0WIQRMcISVXLJjVvC4lX+LPIo+Aiko1QUCaV6ipAAKCRCLPIo+Aiko
- 1WqSB/0VrgfS9rAIG9Uf20YH0OIYY4ndo3LeHhBOi8y+NVnkkrgy2GYB7/rQtaNP7nFjGfA4cmL
- vbob0bl/yFwoZQmX5PkeiPuoQSoaXRP7AtTHFBeRCi8Rj9oXqeEBUvIHu+aQBv/49k7WQadCRsL
- mUZovgX/I4GjOMOxM5h0ygkXgQO3MvIU+0mML823mquPoOjHaRJ3jIOUUziNm5KhauTTSv8bEZm
- nSoWmvCvTd8ktElS/MnI/p7rdGaiBmxxWtJifxx6QQ4NVYcjP/iEq3BtdhrWCen/IWD7BodYU3K
- Hmu1TnqjIt4tgMI702qK4C1kVfoT8MkuGsTjtWOwHZpujBeq
+ bh=YjRxdH2GhgCXavyWIwCH6N3bsC345EISvDP2gtesFFg=;
+ b=owEBbQGS/pANAwAKAYs8ij4CKSjVAcsmYgBpXqKkcDiQpwhgi0U0jf8JGOrxJBwtl/l5GypPK
+ coPxI4tELuJATMEAAEKAB0WIQRMcISVXLJjVvC4lX+LPIo+Aiko1QUCaV6ipAAKCRCLPIo+Aiko
+ 1fRWB/92FTnBMUcYj37wwL0tkj2+9WhnXCNr6YaqOXhJHzBvMN3Ric79sLxWIk6V2x3r2jYCRTc
+ BkdlD9X0pnL+Hq2degXIglnJH2gA1p7PGCVq8s0gm0v1ELu41JL4luLf8f6sJieWu1QXoaJk5qP
+ 79zPwaA5N2vB9hfx5p+R6t4e8pTVe1kMeFaRCUvqmAe1Kovi1sIZ1KaVq04n6rv6Vhjro5yFiFn
+ LyRakv9HjVWBfthh1kbm1YCWTU0Rh+rmb3pMmr07+I6SSf6xRRJ0Yq6B0EcopvIhZhVA3ayoLhz
+ savBzIEyxFTHux8IDyABCGHnOtOfh5srllF0nQkfQKf8sNtQ
 X-Developer-Key: i=dmitry.baryshkov@oss.qualcomm.com; a=openpgp;
  fpr=8F88381DD5C873E4AE487DA5199BF1243632046A
-X-Authority-Analysis: v=2.4 cv=efMwvrEH c=1 sm=1 tr=0 ts=695ea2ac cx=c_pps
+X-Proofpoint-ORIG-GUID: qx58n1538nDKTlRUu6oALzwc5B0YDmnV
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTA3MDE0NCBTYWx0ZWRfX9RIjZF9lvcLE
+ UrxHmi0k+52tSQfQRdy9/AGzNhAVtNSCo7wUOjZmjUAMQM2ZhMc2G8HZGZmCszYP6R2ZJEZF4MW
+ LXFNlRNJYVGjKvDh2vuglAj8duH9I4ehN3ZAiJR1AaP2LaZ12GYpUqppH9uF3PrL5lxg4B/Pgx3
+ rxqPdrmvrH3yO7bzA5j6i05QKOb24LMtTxB7oaAIeJp2Rv/BaDWIlzHPP06P3XH0rFeY4xZK0h5
+ Fg9qNHfD+PVtFr/lNg59Xfg+aVE9qxpQ5NVw0nIxBicORSYSkmcfJOTYziaF6iVfD1nP/OWTEMK
+ vd0y5v+Sls0TxsDNWlV8l1hZe9v/F+kwXZDbfisztuKLJnzEsJwIXqLQK0/m/ySLlAedKyq8oqR
+ pKdwBNS+EJjqPSXg7CqGDlBboeiCZ5JLhRrmms28vZuPVvRKckHu31CPwXRg2PxdP801F/yxL1w
+ cCImtq13U/XjoqI1DXw==
+X-Authority-Analysis: v=2.4 cv=P7k3RyAu c=1 sm=1 tr=0 ts=695ea2ab cx=c_pps
  a=hnmNkyzTK/kJ09Xio7VxxA==:117 a=xqWC_Br6kY4A:10 a=IkcTkHD0fZMA:10
  a=vUbySO9Y5rIA:10 a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=EUspDBNiAAAA:8 a=VwQbUJbxAAAA:8 a=8CpnO3W62F676OTI3Z8A:9 a=QEXdDO2ut3YA:10
+ a=VwQbUJbxAAAA:8 a=EUspDBNiAAAA:8 a=gsP-wGJUQ9tQerkYUh8A:9 a=QEXdDO2ut3YA:10
  a=PEH46H7Ffwr30OY-TuGO:22
-X-Proofpoint-ORIG-GUID: MY0rx9jwmM0dw7dzypDaHQWz3WaYE4ub
-X-Proofpoint-GUID: MY0rx9jwmM0dw7dzypDaHQWz3WaYE4ub
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTA3MDE0NCBTYWx0ZWRfX29/vFB3IzjYI
- 0+e1xO2oLPP4K5MlxwhUj1sC844sktOjMCr+njiLLllUETQ8h1zpXmJMBPf+UeaT182txsOjtpj
- G5jpNvPUA1leDivDEkYUQcdlKpD2cPq3ZvF12HfMvmkgCVAqaDMTywq3HTkU6RmsNgWV9kvkAEt
- MLq5yO6kY/13JiWYaNnNZdpXaTQIpuYf15Z6Em/Xt8j7gx1qPP3iqt4aQfPdz25BQCSBOGN7GyN
- arli+7A1cgNvJbTnKyleeqkkgSUwTvLQGLEQPiafPOdnFX74DU0wMukebdPENqP8El7pdoJel0k
- CnYPZ2CawAPqQsCElr3/LwYVbdCCJZT74QkaBBQT2i8LyTMDmoEfYlcLhDI+P4qcgJ1WB3fMiw/
- KMxSEddWffVY6X+oK/930Te6A1XbIlMPzcKvG1lx6ltkKmSUdreoVDxH1c4uOG9cRABu4/t7g/k
- JGGkSCEV56asEKhzCKQ==
+X-Proofpoint-GUID: qx58n1538nDKTlRUu6oALzwc5B0YDmnV
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
  definitions=2026-01-07_03,2026-01-06_01,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- suspectscore=0 bulkscore=0 lowpriorityscore=0 spamscore=0 priorityscore=1501
- adultscore=0 phishscore=0 malwarescore=0 clxscore=1015 impostorscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2512120000 definitions=main-2601070144
+ suspectscore=0 spamscore=0 phishscore=0 clxscore=1015 malwarescore=0
+ lowpriorityscore=0 impostorscore=0 adultscore=0 priorityscore=1501
+ bulkscore=0 classifier=typeunknown authscore=0 authtc= authcc= route=outbound
+ adjust=0 reason=mlx scancount=1 engine=8.22.0-2512120000
+ definitions=main-2601070144
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260107_101508_493462_ECD53DCB 
-X-CRM114-Status: GOOD (  19.02  )
+X-CRM114-CacheID: sfid-20260107_101507_853836_31B11083 
+X-CRM114-Status: GOOD (  15.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -184,830 +185,58 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Verify the InfoFrames behaviour. Check that reporting InfoFrame as
-unsupported doesn't result in a commit error. Also check that HDR and
-Audio InfoFrames are not triggered if corresponding features are not
-enabled.
+Implement the clear_infoframe callback, disabling corresponding
+InfoFrame type.
 
+Acked-by: Maxime Ripard <mripard@kernel.org>
 Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
 ---
- drivers/gpu/drm/tests/drm_client_modeset_test.c    |   3 +
- drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c | 627 +++++++++++++++++++++
- drivers/gpu/drm/tests/drm_kunit_edid.h             | 119 ++++
- 3 files changed, 749 insertions(+)
+ drivers/gpu/drm/vc4/vc4_hdmi.c | 25 +++++++++++++++++++++++++
+ 1 file changed, 25 insertions(+)
 
-diff --git a/drivers/gpu/drm/tests/drm_client_modeset_test.c b/drivers/gpu/drm/tests/drm_client_modeset_test.c
-index 3f44fe5e92e4..ec58fe064d86 100644
---- a/drivers/gpu/drm/tests/drm_client_modeset_test.c
-+++ b/drivers/gpu/drm/tests/drm_client_modeset_test.c
-@@ -5,6 +5,7 @@
+diff --git a/drivers/gpu/drm/vc4/vc4_hdmi.c b/drivers/gpu/drm/vc4/vc4_hdmi.c
+index 1798d1156d10..4cfb7ebc0c81 100644
+--- a/drivers/gpu/drm/vc4/vc4_hdmi.c
++++ b/drivers/gpu/drm/vc4/vc4_hdmi.c
+@@ -624,6 +624,30 @@ static int vc4_hdmi_stop_packet(struct vc4_hdmi *vc4_hdmi,
+ 	return ret;
+ }
  
- #include <kunit/test.h>
- 
-+#include <drm/drm_atomic_state_helper.h>
- #include <drm/drm_connector.h>
- #include <drm/drm_edid.h>
- #include <drm/drm_drv.h>
-@@ -48,6 +49,8 @@ static const struct drm_connector_helper_funcs drm_client_modeset_connector_help
- };
- 
- static const struct drm_connector_funcs drm_client_modeset_connector_funcs = {
-+	.atomic_destroy_state   = drm_atomic_helper_connector_destroy_state,
-+	.atomic_duplicate_state = drm_atomic_helper_connector_duplicate_state
- };
- 
- static int drm_client_modeset_test_init(struct kunit *test)
-diff --git a/drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c b/drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c
-index 8bd412735000..80f819a9ff5b 100644
---- a/drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c
-+++ b/drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c
-@@ -35,11 +35,16 @@ struct drm_atomic_helper_connector_hdmi_priv {
- 
- 	const void *current_edid;
- 	size_t current_edid_len;
-+
-+	int hdmi_update_failures;
- };
- 
- #define connector_to_priv(c) \
- 	container_of_const(c, struct drm_atomic_helper_connector_hdmi_priv, connector)
- 
-+#define encoder_to_priv(e) \
-+	container_of_const(e, struct drm_atomic_helper_connector_hdmi_priv, encoder)
-+
- static struct drm_display_mode *find_preferred_mode(struct drm_connector *connector)
- {
- 	struct drm_device *drm = connector->dev;
-@@ -138,6 +143,22 @@ static const struct drm_connector_funcs dummy_connector_funcs = {
- 	.reset			= dummy_hdmi_connector_reset,
- };
- 
-+static void test_encoder_atomic_enable(struct drm_encoder *encoder,
-+			      struct drm_atomic_state *state)
++static int vc4_hdmi_clear_infoframe(struct drm_connector *connector,
++				    enum hdmi_infoframe_type type)
 +{
-+	struct drm_atomic_helper_connector_hdmi_priv *priv =
-+		encoder_to_priv(encoder);
++	struct vc4_hdmi *vc4_hdmi = connector_to_vc4_hdmi(connector);
++	struct drm_device *drm = connector->dev;
 +	int ret;
++	int idx;
 +
-+	ret = drm_atomic_helper_connector_hdmi_update_infoframes(&priv->connector, state);
++	if (!drm_dev_enter(drm, &idx))
++		return 0;
++
++	WARN_ONCE(!(HDMI_READ(HDMI_RAM_PACKET_CONFIG) &
++		    VC4_HDMI_RAM_PACKET_ENABLE),
++		  "Packet RAM has to be on to store the packet.");
++
++	ret = vc4_hdmi_stop_packet(vc4_hdmi, type, true);
 +	if (ret)
-+		priv->hdmi_update_failures++;
++		drm_err(drm, "Failed to wait for infoframe to go idle: %d\n", ret);
++
++	drm_dev_exit(idx);
++
++	return ret;
 +}
 +
-+static const struct drm_encoder_helper_funcs test_encoder_helper_funcs = {
-+	.atomic_enable = test_encoder_atomic_enable,
-+};
-+
- static
- struct drm_atomic_helper_connector_hdmi_priv *
- __connector_hdmi_init(struct kunit *test,
-@@ -2323,10 +2344,616 @@ static struct kunit_suite drm_atomic_helper_connector_hdmi_mode_valid_test_suite
- 	.test_cases	= drm_atomic_helper_connector_hdmi_mode_valid_tests,
+ static int vc4_hdmi_write_infoframe(struct drm_connector *connector,
+ 				    enum hdmi_infoframe_type type,
+ 				    const u8 *infoframe, size_t len)
+@@ -1660,6 +1684,7 @@ vc4_hdmi_connector_clock_valid(const struct drm_connector *connector,
+ 
+ static const struct drm_connector_hdmi_funcs vc4_hdmi_hdmi_connector_funcs = {
+ 	.tmds_char_rate_valid	= vc4_hdmi_connector_clock_valid,
++	.clear_infoframe	= vc4_hdmi_clear_infoframe,
+ 	.write_infoframe	= vc4_hdmi_write_infoframe,
  };
  
-+/*
-+ * Test that the default behaviour works without errors. We expect that
-+ * infoframe-related hooks are called and there are no errors raised.
-+ */
-+static void drm_test_check_infoframes(struct kunit *test)
-+{
-+	struct drm_atomic_helper_connector_hdmi_priv *priv;
-+	struct drm_modeset_acquire_ctx ctx;
-+	struct drm_crtc_state *crtc_state;
-+	struct drm_atomic_state *state;
-+	struct drm_display_mode *preferred;
-+	struct drm_connector *conn;
-+	struct drm_device *drm;
-+	struct drm_crtc *crtc;
-+	int old_hdmi_update_failures;
-+	int ret;
-+
-+	priv = drm_kunit_helper_connector_hdmi_init_with_edid_funcs(test,
-+				BIT(HDMI_COLORSPACE_RGB),
-+				8,
-+				&dummy_connector_hdmi_funcs,
-+				test_edid_hdmi_1080p_rgb_max_200mhz);
-+	KUNIT_ASSERT_NOT_NULL(test, priv);
-+
-+	drm = &priv->drm;
-+	crtc = priv->crtc;
-+	conn = &priv->connector;
-+
-+	preferred = find_preferred_mode(conn);
-+	KUNIT_ASSERT_NOT_NULL(test, preferred);
-+
-+	drm_modeset_acquire_init(&ctx, 0);
-+
-+retry_conn_enable:
-+	ret = drm_kunit_helper_enable_crtc_connector(test, drm,
-+						     crtc, conn,
-+						     preferred,
-+						     &ctx);
-+	if (ret == -EDEADLK) {
-+		ret = drm_modeset_backoff(&ctx);
-+		if (!ret)
-+			goto retry_conn_enable;
-+	}
-+	KUNIT_ASSERT_EQ(test, ret, 0);
-+
-+	state = drm_kunit_helper_atomic_state_alloc(test, drm, &ctx);
-+	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, state);
-+
-+retry_crtc_state:
-+	crtc_state = drm_atomic_get_crtc_state(state, crtc);
-+	if (PTR_ERR(crtc_state) == -EDEADLK) {
-+		drm_atomic_state_clear(state);
-+		ret = drm_modeset_backoff(&ctx);
-+		if (!ret)
-+			goto retry_crtc_state;
-+	}
-+	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, crtc_state);
-+
-+	crtc_state->mode_changed = true;
-+
-+	old_hdmi_update_failures = priv->hdmi_update_failures;
-+
-+	ret = drm_atomic_check_only(state);
-+	if (ret == -EDEADLK) {
-+		drm_atomic_state_clear(state);
-+		ret = drm_modeset_backoff(&ctx);
-+		if (!ret)
-+			goto retry_crtc_state;
-+	}
-+	KUNIT_ASSERT_EQ(test, ret, 0);
-+
-+	ret = drm_atomic_commit(state);
-+	if (ret == -EDEADLK) {
-+		drm_atomic_state_clear(state);
-+		ret = drm_modeset_backoff(&ctx);
-+		if (!ret)
-+			goto retry_crtc_state;
-+	}
-+	KUNIT_ASSERT_EQ(test, ret, 0);
-+
-+	KUNIT_EXPECT_GE(test, old_hdmi_update_failures, priv->hdmi_update_failures);
-+
-+	drm_modeset_drop_locks(&ctx);
-+	drm_modeset_acquire_fini(&ctx);
-+}
-+
-+static int reject_avi_infoframe_write_infoframe(struct drm_connector *connector,
-+						enum hdmi_infoframe_type type,
-+						const u8 *buffer, size_t len)
-+{
-+	if (type == HDMI_INFOFRAME_TYPE_AVI)
-+		return -EOPNOTSUPP;
-+
-+	return 0;
-+}
-+
-+static const struct drm_connector_hdmi_funcs reject_avi_infoframe_hdmi_funcs = {
-+	.write_infoframe = reject_avi_infoframe_write_infoframe,
-+};
-+
-+/*
-+ * Test that the rejection of AVI InfoFrame results in the failure of
-+ * drm_atomic_helper_connector_hdmi_update_infoframes().
-+ */
-+static void drm_test_check_reject_avi_infoframe(struct kunit *test)
-+{
-+	struct drm_atomic_helper_connector_hdmi_priv *priv;
-+	struct drm_modeset_acquire_ctx ctx;
-+	struct drm_atomic_state *state;
-+	struct drm_crtc_state *crtc_state;
-+	struct drm_display_mode *preferred;
-+	struct drm_connector *conn;
-+	struct drm_device *drm;
-+	struct drm_crtc *crtc;
-+	int old_hdmi_update_failures;
-+	int ret;
-+
-+	priv = drm_kunit_helper_connector_hdmi_init_with_edid_funcs(test,
-+				BIT(HDMI_COLORSPACE_RGB),
-+				8,
-+				&reject_avi_infoframe_hdmi_funcs,
-+				test_edid_hdmi_1080p_rgb_max_200mhz);
-+	KUNIT_ASSERT_NOT_NULL(test, priv);
-+
-+	drm = &priv->drm;
-+	crtc = priv->crtc;
-+	conn = &priv->connector;
-+
-+	preferred = find_preferred_mode(conn);
-+	KUNIT_ASSERT_NOT_NULL(test, preferred);
-+
-+	drm_modeset_acquire_init(&ctx, 0);
-+
-+retry_conn_enable:
-+	ret = drm_kunit_helper_enable_crtc_connector(test, drm,
-+						     crtc, conn,
-+						     preferred,
-+						     &ctx);
-+	if (ret == -EDEADLK) {
-+		ret = drm_modeset_backoff(&ctx);
-+		if (!ret)
-+			goto retry_conn_enable;
-+	}
-+	KUNIT_ASSERT_EQ(test, ret, 0);
-+
-+	drm_encoder_helper_add(&priv->encoder, &test_encoder_helper_funcs);
-+
-+	state = drm_kunit_helper_atomic_state_alloc(test, drm, &ctx);
-+	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, state);
-+
-+retry_crtc_state:
-+	crtc_state = drm_atomic_get_crtc_state(state, crtc);
-+	if (PTR_ERR(crtc_state) == -EDEADLK) {
-+		drm_atomic_state_clear(state);
-+		ret = drm_modeset_backoff(&ctx);
-+		if (!ret)
-+			goto retry_crtc_state;
-+	}
-+	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, crtc_state);
-+
-+	crtc_state->mode_changed = true;
-+
-+	old_hdmi_update_failures = priv->hdmi_update_failures;
-+
-+	ret = drm_atomic_check_only(state);
-+	if (ret == -EDEADLK) {
-+		drm_atomic_state_clear(state);
-+		ret = drm_modeset_backoff(&ctx);
-+		if (!ret)
-+			goto retry_crtc_state;
-+	}
-+	KUNIT_ASSERT_EQ(test, ret, 0);
-+
-+	ret = drm_atomic_commit(state);
-+	if (ret == -EDEADLK) {
-+		drm_atomic_state_clear(state);
-+		ret = drm_modeset_backoff(&ctx);
-+		if (!ret)
-+			goto retry_crtc_state;
-+	}
-+	KUNIT_ASSERT_EQ(test, ret, 0);
-+
-+	KUNIT_EXPECT_NE(test, old_hdmi_update_failures, priv->hdmi_update_failures);
-+
-+	drm_modeset_drop_locks(&ctx);
-+	drm_modeset_acquire_fini(&ctx);
-+}
-+
-+static int reject_hdr_infoframe_write_infoframe(struct drm_connector *connector,
-+						enum hdmi_infoframe_type type,
-+						const u8 *buffer, size_t len)
-+{
-+	if (type == HDMI_INFOFRAME_TYPE_DRM)
-+		return -EOPNOTSUPP;
-+
-+	return 0;
-+}
-+
-+static const struct drm_connector_hdmi_funcs reject_hdr_infoframe_hdmi_funcs = {
-+	.write_infoframe = reject_hdr_infoframe_write_infoframe,
-+};
-+
-+/*
-+ * Test that the HDR InfoFrame isn't programmed in
-+ * drm_atomic_helper_connector_hdmi_update_infoframes() if the max_bpc is 8.
-+ */
-+static void drm_test_check_reject_hdr_infoframe_bpc_8(struct kunit *test)
-+{
-+	struct drm_atomic_helper_connector_hdmi_priv *priv;
-+	struct drm_modeset_acquire_ctx ctx;
-+	struct drm_atomic_state *state;
-+	struct drm_connector_state *new_conn_state;
-+	struct drm_crtc_state *crtc_state;
-+	struct drm_display_mode *preferred;
-+	struct drm_connector *conn;
-+	struct drm_device *drm;
-+	struct drm_crtc *crtc;
-+	int old_hdmi_update_failures;
-+	int ret;
-+
-+	priv = drm_kunit_helper_connector_hdmi_init_with_edid_funcs(test,
-+				BIT(HDMI_COLORSPACE_RGB),
-+				8,
-+				&reject_hdr_infoframe_hdmi_funcs,
-+				test_edid_hdmi_1080p_rgb_max_200mhz_hdr);
-+	KUNIT_ASSERT_NOT_NULL(test, priv);
-+
-+	drm = &priv->drm;
-+	crtc = priv->crtc;
-+	conn = &priv->connector;
-+
-+	preferred = find_preferred_mode(conn);
-+	KUNIT_ASSERT_NOT_NULL(test, preferred);
-+
-+	drm_modeset_acquire_init(&ctx, 0);
-+
-+retry_conn_enable:
-+	ret = drm_kunit_helper_enable_crtc_connector(test, drm,
-+						     crtc, conn,
-+						     preferred,
-+						     &ctx);
-+	if (ret == -EDEADLK) {
-+		ret = drm_modeset_backoff(&ctx);
-+		if (!ret)
-+			goto retry_conn_enable;
-+	}
-+	KUNIT_ASSERT_EQ(test, ret, 0);
-+
-+	drm_encoder_helper_add(&priv->encoder, &test_encoder_helper_funcs);
-+
-+	state = drm_kunit_helper_atomic_state_alloc(test, drm, &ctx);
-+	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, state);
-+
-+retry_conn_state:
-+	new_conn_state = drm_atomic_get_connector_state(state, conn);
-+	if (PTR_ERR(new_conn_state) == -EDEADLK) {
-+		drm_atomic_state_clear(state);
-+		ret = drm_modeset_backoff(&ctx);
-+		if (!ret)
-+			goto retry_conn_state;
-+	}
-+	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, new_conn_state);
-+
-+	crtc_state = drm_atomic_get_crtc_state(state, crtc);
-+	if (PTR_ERR(crtc_state) == -EDEADLK) {
-+		drm_atomic_state_clear(state);
-+		ret = drm_modeset_backoff(&ctx);
-+		if (!ret)
-+			goto retry_conn_state;
-+	}
-+	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, crtc_state);
-+
-+	/* Verify that there is no HDR property, so "userspace" can't set it. */
-+	for (int i = 0; i < conn->base.properties->count; i++)
-+		KUNIT_ASSERT_PTR_NE(test,
-+				    drm->mode_config.hdr_output_metadata_property,
-+				    conn->base.properties->properties[i]);
-+
-+	crtc_state->mode_changed = true;
-+
-+	old_hdmi_update_failures = priv->hdmi_update_failures;
-+
-+	ret = drm_atomic_check_only(state);
-+	if (ret == -EDEADLK) {
-+		drm_atomic_state_clear(state);
-+		ret = drm_modeset_backoff(&ctx);
-+		if (!ret)
-+			goto retry_conn_state;
-+	}
-+	KUNIT_ASSERT_EQ(test, ret, 0);
-+
-+	ret = drm_atomic_commit(state);
-+	if (ret == -EDEADLK) {
-+		drm_atomic_state_clear(state);
-+		ret = drm_modeset_backoff(&ctx);
-+		if (!ret)
-+			goto retry_conn_state;
-+	}
-+	KUNIT_ASSERT_EQ(test, ret, 0);
-+
-+	KUNIT_EXPECT_EQ(test, old_hdmi_update_failures, priv->hdmi_update_failures);
-+
-+	new_conn_state = conn->state;
-+	KUNIT_ASSERT_NOT_NULL(test, new_conn_state);
-+
-+	KUNIT_ASSERT_EQ(test, new_conn_state->hdmi.output_bpc, 8);
-+	KUNIT_ASSERT_EQ(test, new_conn_state->hdmi.infoframes.hdr_drm.set, false);
-+
-+	drm_modeset_drop_locks(&ctx);
-+	drm_modeset_acquire_fini(&ctx);
-+}
-+
-+/*
-+ * Test that the rejection of HDR InfoFrame results in the failure of
-+ * drm_atomic_helper_connector_hdmi_update_infoframes() in the high bpc is
-+ * supported.
-+ */
-+static void drm_test_check_reject_hdr_infoframe_bpc_10(struct kunit *test)
-+{
-+	struct drm_atomic_helper_connector_hdmi_priv *priv;
-+	struct drm_modeset_acquire_ctx ctx;
-+	struct drm_atomic_state *state;
-+	struct drm_connector_state *new_conn_state;
-+	struct drm_crtc_state *crtc_state;
-+	struct drm_display_mode *preferred;
-+	struct drm_connector *conn;
-+	struct drm_device *drm;
-+	struct drm_crtc *crtc;
-+	int old_hdmi_update_failures;
-+	struct hdr_output_metadata hdr_data;
-+	struct drm_property_blob *hdr_blob;
-+	bool replaced;
-+	int ret;
-+
-+	priv = drm_kunit_helper_connector_hdmi_init_with_edid_funcs(test,
-+				BIT(HDMI_COLORSPACE_RGB),
-+				10,
-+				&reject_hdr_infoframe_hdmi_funcs,
-+				test_edid_hdmi_1080p_rgb_max_200mhz_hdr);
-+	KUNIT_ASSERT_NOT_NULL(test, priv);
-+
-+	drm = &priv->drm;
-+	crtc = priv->crtc;
-+	conn = &priv->connector;
-+
-+	preferred = find_preferred_mode(conn);
-+	KUNIT_ASSERT_NOT_NULL(test, preferred);
-+
-+	drm_modeset_acquire_init(&ctx, 0);
-+
-+retry_conn_enable:
-+	ret = drm_kunit_helper_enable_crtc_connector(test, drm,
-+						     crtc, conn,
-+						     preferred,
-+						     &ctx);
-+	if (ret == -EDEADLK) {
-+		ret = drm_modeset_backoff(&ctx);
-+		if (!ret)
-+			goto retry_conn_enable;
-+	}
-+	KUNIT_ASSERT_EQ(test, ret, 0);
-+
-+	drm_encoder_helper_add(&priv->encoder, &test_encoder_helper_funcs);
-+
-+	state = drm_kunit_helper_atomic_state_alloc(test, drm, &ctx);
-+	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, state);
-+
-+retry_conn_state:
-+	new_conn_state = drm_atomic_get_connector_state(state, conn);
-+	if (PTR_ERR(new_conn_state) == -EDEADLK) {
-+		drm_atomic_state_clear(state);
-+		ret = drm_modeset_backoff(&ctx);
-+		if (!ret)
-+			goto retry_conn_state;
-+	}
-+	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, new_conn_state);
-+
-+	crtc_state = drm_atomic_get_crtc_state(state, crtc);
-+	if (PTR_ERR(crtc_state) == -EDEADLK) {
-+		drm_atomic_state_clear(state);
-+		ret = drm_modeset_backoff(&ctx);
-+		if (!ret)
-+			goto retry_conn_state;
-+	}
-+	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, crtc_state);
-+
-+	hdr_data.metadata_type = HDMI_STATIC_METADATA_TYPE1;
-+	hdr_data.hdmi_metadata_type1.eotf = HDMI_EOTF_TRADITIONAL_GAMMA_SDR;
-+	hdr_data.hdmi_metadata_type1.metadata_type = HDMI_STATIC_METADATA_TYPE1;
-+
-+	hdr_blob = drm_property_create_blob(drm, sizeof(hdr_data), &hdr_data);
-+	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, hdr_blob);
-+
-+	ret = drm_property_replace_blob_from_id(drm,
-+						&new_conn_state->hdr_output_metadata,
-+						hdr_blob->base.id,
-+						sizeof(struct hdr_output_metadata), -1,
-+						&replaced);
-+	KUNIT_ASSERT_EQ(test, ret, 0);
-+	KUNIT_ASSERT_EQ(test, replaced, true);
-+
-+	crtc_state->mode_changed = true;
-+
-+	old_hdmi_update_failures = priv->hdmi_update_failures;
-+
-+	ret = drm_atomic_check_only(state);
-+	if (ret == -EDEADLK) {
-+		drm_atomic_state_clear(state);
-+		ret = drm_modeset_backoff(&ctx);
-+		if (!ret)
-+			goto retry_conn_state;
-+	}
-+	KUNIT_ASSERT_EQ(test, ret, 0);
-+
-+	ret = drm_atomic_commit(state);
-+	if (ret == -EDEADLK) {
-+		drm_atomic_state_clear(state);
-+		ret = drm_modeset_backoff(&ctx);
-+		if (!ret)
-+			goto retry_conn_state;
-+	}
-+	KUNIT_ASSERT_EQ(test, ret, 0);
-+
-+	KUNIT_EXPECT_LE(test, old_hdmi_update_failures, priv->hdmi_update_failures);
-+
-+	new_conn_state = conn->state;
-+	KUNIT_ASSERT_NOT_NULL(test, new_conn_state);
-+
-+	KUNIT_ASSERT_EQ(test, new_conn_state->hdmi.output_bpc, 10);
-+	KUNIT_ASSERT_EQ(test, new_conn_state->hdmi.infoframes.hdr_drm.set, true);
-+
-+	drm_modeset_drop_locks(&ctx);
-+	drm_modeset_acquire_fini(&ctx);
-+}
-+
-+static int reject_audio_infoframe_write_infoframe(struct drm_connector *connector,
-+						  enum hdmi_infoframe_type type,
-+						  const u8 *buffer, size_t len)
-+{
-+	if (type == HDMI_INFOFRAME_TYPE_AUDIO)
-+		return -EOPNOTSUPP;
-+
-+	return 0;
-+}
-+
-+static const struct drm_connector_hdmi_funcs reject_audio_infoframe_hdmi_funcs = {
-+	.write_infoframe = reject_audio_infoframe_write_infoframe,
-+};
-+
-+/*
-+ * Test that Audio InfoFrame is only programmed if we call a corresponding API,
-+ * thus the drivers can safely assume that they won't get Audio InfoFrames if
-+ * they don't call it.
-+ */
-+static void drm_test_check_reject_audio_infoframe(struct kunit *test)
-+{
-+	struct drm_atomic_helper_connector_hdmi_priv *priv;
-+	struct drm_modeset_acquire_ctx ctx;
-+	struct drm_atomic_state *state;
-+	struct drm_crtc_state *crtc_state;
-+	struct drm_display_mode *preferred;
-+	struct drm_connector *conn;
-+	struct drm_device *drm;
-+	struct drm_crtc *crtc;
-+	int old_hdmi_update_failures;
-+	struct hdmi_audio_infoframe cea;
-+	int ret;
-+
-+	priv = drm_kunit_helper_connector_hdmi_init_with_edid_funcs(test,
-+				BIT(HDMI_COLORSPACE_RGB),
-+				8,
-+				&reject_audio_infoframe_hdmi_funcs,
-+				test_edid_hdmi_1080p_rgb_max_200mhz);
-+	KUNIT_ASSERT_NOT_NULL(test, priv);
-+
-+	drm = &priv->drm;
-+	crtc = priv->crtc;
-+	conn = &priv->connector;
-+
-+	preferred = find_preferred_mode(conn);
-+	KUNIT_ASSERT_NOT_NULL(test, preferred);
-+
-+	drm_modeset_acquire_init(&ctx, 0);
-+
-+retry_conn_enable:
-+	ret = drm_kunit_helper_enable_crtc_connector(test, drm,
-+						     crtc, conn,
-+						     preferred,
-+						     &ctx);
-+	if (ret == -EDEADLK) {
-+		ret = drm_modeset_backoff(&ctx);
-+		if (!ret)
-+			goto retry_conn_enable;
-+	}
-+	KUNIT_ASSERT_EQ(test, ret, 0);
-+
-+	drm_encoder_helper_add(&priv->encoder, &test_encoder_helper_funcs);
-+
-+	state = drm_kunit_helper_atomic_state_alloc(test, drm, &ctx);
-+	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, state);
-+
-+retry_crtc_state:
-+	crtc_state = drm_atomic_get_crtc_state(state, crtc);
-+	if (PTR_ERR(crtc_state) == -EDEADLK) {
-+		drm_atomic_state_clear(state);
-+		ret = drm_modeset_backoff(&ctx);
-+		if (!ret)
-+			goto retry_crtc_state;
-+	}
-+	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, crtc_state);
-+
-+	crtc_state->mode_changed = true;
-+
-+	old_hdmi_update_failures = priv->hdmi_update_failures;
-+
-+	ret = drm_atomic_check_only(state);
-+	if (ret == -EDEADLK) {
-+		drm_atomic_state_clear(state);
-+		ret = drm_modeset_backoff(&ctx);
-+		if (!ret)
-+			goto retry_crtc_state;
-+	}
-+	KUNIT_ASSERT_EQ(test, ret, 0);
-+
-+	ret = drm_atomic_commit(state);
-+	if (ret == -EDEADLK) {
-+		drm_atomic_state_clear(state);
-+		ret = drm_modeset_backoff(&ctx);
-+		if (!ret)
-+			goto retry_crtc_state;
-+	}
-+	KUNIT_ASSERT_EQ(test, ret, 0);
-+
-+	KUNIT_EXPECT_EQ(test, old_hdmi_update_failures, priv->hdmi_update_failures);
-+
-+	/*
-+	 * So, it works without Audio InfoFrame, let's fail with it in place,
-+	 * checking that writing the infofraem actually gets triggered.
-+	 */
-+
-+	hdmi_audio_infoframe_init(&cea);
-+	cea.channels = 2;
-+	cea.coding_type = HDMI_AUDIO_CODING_TYPE_STREAM;
-+	cea.sample_size = HDMI_AUDIO_SAMPLE_SIZE_STREAM;
-+	cea.sample_frequency = HDMI_AUDIO_SAMPLE_FREQUENCY_STREAM;
-+
-+	ret = drm_atomic_helper_connector_hdmi_update_audio_infoframe(conn, &cea);
-+	KUNIT_ASSERT_EQ(test, ret, -EOPNOTSUPP);
-+
-+	state = drm_kunit_helper_atomic_state_alloc(test, drm, &ctx);
-+	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, state);
-+
-+retry_crtc_state_2:
-+	crtc_state = drm_atomic_get_crtc_state(state, crtc);
-+	if (PTR_ERR(crtc_state) == -EDEADLK) {
-+		drm_atomic_state_clear(state);
-+		ret = drm_modeset_backoff(&ctx);
-+		if (!ret)
-+			goto retry_crtc_state_2;
-+	}
-+	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, crtc_state);
-+
-+	crtc_state->mode_changed = true;
-+
-+	old_hdmi_update_failures = priv->hdmi_update_failures;
-+
-+	ret = drm_atomic_check_only(state);
-+	if (ret == -EDEADLK) {
-+		drm_atomic_state_clear(state);
-+		ret = drm_modeset_backoff(&ctx);
-+		if (!ret)
-+			goto retry_crtc_state_2;
-+	}
-+	KUNIT_ASSERT_EQ(test, ret, 0);
-+
-+	ret = drm_atomic_commit(state);
-+	if (ret == -EDEADLK) {
-+		drm_atomic_state_clear(state);
-+		ret = drm_modeset_backoff(&ctx);
-+		if (!ret)
-+			goto retry_crtc_state_2;
-+	}
-+	KUNIT_ASSERT_EQ(test, ret, 0);
-+
-+	KUNIT_EXPECT_LE(test, old_hdmi_update_failures, priv->hdmi_update_failures);
-+
-+	drm_modeset_drop_locks(&ctx);
-+	drm_modeset_acquire_fini(&ctx);
-+}
-+
-+
-+static struct kunit_case drm_atomic_helper_connector_hdmi_infoframes_tests[] = {
-+	KUNIT_CASE(drm_test_check_infoframes),
-+	KUNIT_CASE(drm_test_check_reject_avi_infoframe),
-+	KUNIT_CASE(drm_test_check_reject_hdr_infoframe_bpc_8),
-+	KUNIT_CASE(drm_test_check_reject_hdr_infoframe_bpc_10),
-+	KUNIT_CASE(drm_test_check_reject_audio_infoframe),
-+	{ }
-+};
-+
-+static struct kunit_suite drm_atomic_helper_connector_hdmi_infoframes_test_suite = {
-+	.name		= "drm_atomic_helper_connector_hdmi_infoframes",
-+	.test_cases	= drm_atomic_helper_connector_hdmi_infoframes_tests,
-+};
-+
- kunit_test_suites(
- 	&drm_atomic_helper_connector_hdmi_check_test_suite,
- 	&drm_atomic_helper_connector_hdmi_reset_test_suite,
- 	&drm_atomic_helper_connector_hdmi_mode_valid_test_suite,
-+	&drm_atomic_helper_connector_hdmi_infoframes_test_suite,
- );
- 
- MODULE_AUTHOR("Maxime Ripard <mripard@kernel.org>");
-diff --git a/drivers/gpu/drm/tests/drm_kunit_edid.h b/drivers/gpu/drm/tests/drm_kunit_edid.h
-index c59c8528a3f7..f4923157f5bf 100644
---- a/drivers/gpu/drm/tests/drm_kunit_edid.h
-+++ b/drivers/gpu/drm/tests/drm_kunit_edid.h
-@@ -293,6 +293,125 @@ static const unsigned char test_edid_hdmi_1080p_rgb_max_200mhz[] = {
- 	0x00, 0x00, 0x00, 0xfc
- };
- 
-+/*
-+ * edid-decode (hex):
-+ *
-+ * 00 ff ff ff ff ff ff 00 31 d8 2a 00 00 00 00 00
-+ * 00 21 01 03 81 a0 5a 78 02 00 00 00 00 00 00 00
-+ * 00 00 00 20 00 00 01 01 01 01 01 01 01 01 01 01
-+ * 01 01 01 01 01 01 02 3a 80 18 71 38 2d 40 58 2c
-+ * 45 00 40 84 63 00 00 1e 00 00 00 fc 00 54 65 73
-+ * 74 20 45 44 49 44 0a 20 20 20 00 00 00 fd 00 32
-+ * 46 1e 46 0f 00 0a 20 20 20 20 20 20 00 00 00 10
-+ * 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01 92
-+ *
-+ * 02 03 1c 81 e3 05 c0 20 41 10 e2 00 4a 67 03 0c
-+ * 00 12 34 00 28 e6 06 05 01 52 52 51 00 00 00 00
-+ * 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-+ * 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-+ * 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-+ * 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-+ * 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-+ * 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 4e
-+ *
-+ * ----------------
-+ *
-+ * Block 0, Base EDID:
-+ *   EDID Structure Version & Revision: 1.3
-+ *   Vendor & Product Identification:
-+ *     Manufacturer: LNX
-+ *     Model: 42
-+ *     Made in: 2023
-+ *   Basic Display Parameters & Features:
-+ *     Digital display
-+ *     DFP 1.x compatible TMDS
-+ *     Maximum image size: 160 cm x 90 cm
-+ *     Gamma: 2.20
-+ *     Monochrome or grayscale display
-+ *     First detailed timing is the preferred timing
-+ *   Color Characteristics:
-+ *     Red  : 0.0000, 0.0000
-+ *     Green: 0.0000, 0.0000
-+ *     Blue : 0.0000, 0.0000
-+ *     White: 0.0000, 0.0000
-+ *   Established Timings I & II:
-+ *     DMT 0x04:   640x480    59.940476 Hz   4:3     31.469 kHz     25.175000 MHz
-+ *   Standard Timings: none
-+ *   Detailed Timing Descriptors:
-+ *     DTD 1:  1920x1080   60.000000 Hz  16:9     67.500 kHz    148.500000 MHz (1600 mm x 900 mm)
-+ *                  Hfront   88 Hsync  44 Hback  148 Hpol P
-+ *                  Vfront    4 Vsync   5 Vback   36 Vpol P
-+ *     Display Product Name: 'Test EDID'
-+ *     Display Range Limits:
-+ *       Monitor ranges (GTF): 50-70 Hz V, 30-70 kHz H, max dotclock 150 MHz
-+ *     Dummy Descriptor:
-+ *   Extension blocks: 1
-+ * Checksum: 0x92
-+ *
-+ * ----------------
-+ *
-+ * Block 1, CTA-861 Extension Block:
-+ *   Revision: 3
-+ *   Underscans IT Video Formats by default
-+ *   Native detailed modes: 1
-+ *   Colorimetry Data Block:
-+ *     BT2020YCC
-+ *     BT2020RGB
-+ *     sRGB
-+ *   Video Data Block:
-+ *     VIC  16:  1920x1080   60.000000 Hz  16:9     67.500 kHz    148.500000 MHz
-+ *   Video Capability Data Block:
-+ *     YCbCr quantization: No Data
-+ *     RGB quantization: Selectable (via AVI Q)
-+ *     PT scan behavior: No Data
-+ *     IT scan behavior: Always Underscanned
-+ *     CE scan behavior: Always Underscanned
-+ *   Vendor-Specific Data Block (HDMI), OUI 00-0C-03:
-+ *     Source physical address: 1.2.3.4
-+ *     Maximum TMDS clock: 200 MHz
-+ *   HDR Static Metadata Data Block:
-+ *     Electro optical transfer functions:
-+ *       Traditional gamma - SDR luminance range
-+ *       SMPTE ST2084
-+ *     Supported static metadata descriptors:
-+ *       Static metadata type 1
-+ *     Desired content max luminance: 82 (295.365 cd/m^2)
-+ *     Desired content max frame-average luminance: 82 (295.365 cd/m^2)
-+ *     Desired content min luminance: 81 (0.298 cd/m^2)
-+ * Checksum: 0x4e  Unused space in Extension Block: 99 bytes
-+ *
-+ * ----------------
-+ *
-+ * edid-decode 1.31.0-5387
-+ * edid-decode SHA: 5508bc4301ac 2025-08-25 08:14:22
-+ *
-+ * EDID conformity: PASS
-+ */
-+static const unsigned char test_edid_hdmi_1080p_rgb_max_200mhz_hdr[] = {
-+	0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00, 0x31, 0xd8, 0x2a, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x21, 0x01, 0x03, 0x81, 0xa0, 0x5a, 0x78,
-+	0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20,
-+	0x00, 0x00, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01,
-+	0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x02, 0x3a, 0x80, 0x18, 0x71, 0x38,
-+	0x2d, 0x40, 0x58, 0x2c, 0x45, 0x00, 0x40, 0x84, 0x63, 0x00, 0x00, 0x1e,
-+	0x00, 0x00, 0x00, 0xfc, 0x00, 0x54, 0x65, 0x73, 0x74, 0x20, 0x45, 0x44,
-+	0x49, 0x44, 0x0a, 0x20, 0x20, 0x20, 0x00, 0x00, 0x00, 0xfd, 0x00, 0x32,
-+	0x46, 0x1e, 0x46, 0x0f, 0x00, 0x0a, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20,
-+	0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x92, 0x02, 0x03, 0x1c, 0x81,
-+	0xe3, 0x05, 0xc0, 0x20, 0x41, 0x10, 0xe2, 0x00, 0x4a, 0x67, 0x03, 0x0c,
-+	0x00, 0x12, 0x34, 0x78, 0x28, 0xe6, 0x06, 0x05, 0x01, 0x52, 0x52, 0x51,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0xd6,
-+};
-+
- /*
-  * edid-decode (hex):
-  *
 
 -- 
 2.47.3
