@@ -4,66 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5369D0D16E
-	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Jan 2026 19:42:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0618AD14883
+	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Jan 2026 01:02:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:From:Subject:Cc:
-	To:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OeD/t4OS/YTYkzsF6vs6HutvzG4pZx1GAUQ210ZhEUU=; b=bhgGM7h/QnUaXQ
-	swNhuoApVdF0yBejdSJQqh/PK5ER2FLpjfPv+trOEDq7H3WJctraq9LwkWm3+thP/yANHNQ8vfYE1
-	WaPMlKHuKyZame+4mnqF3eyw+9qQqTneiqB9SViRT+JDWepOPbba6l5NbC9kLjzBqEmaJz+2m/kqC
-	Z6UDOkMBOJAxAW/GgF/qpr2VYl8dUyPR9rbDI2tYc/ifuV2Rb7ABmdH3WOR3Fxxwj07RHSaBVvhwC
-	1AzgS/V5zb8OKfb2qXKoe1e2JRdvxHCyylvKABnHZnkrc5RoTuBTUuMo3F5F4PPWBXcOkwknWWWe9
-	A07oHP91Wq0Q0YCqkeYA==;
+	List-Owner; bh=zyvrL0wiSmH+kFfXi6BwB1WcomJx+XDWv8gjCSVZ6ak=; b=mO/c+04oWrcxWo
+	blVHmGvZjYUx3inEYWj0tPnDO3z5h4gSMovfmPWzUSc9jdLj/te5MPcozsGa7goO056l1R+VQxNOj
+	8fHvHM3hanZXJSVEpNnFqJtjqmcs/VyluGf5CtxLHzcg5fyGeZ5Byml9106YSkj1QnRncXz6waesP
+	dMG/dewYvRL9bva5T+JcFFkWCm1n6lHN7eP+QTU69BGoQPK21eX6jR8X3QLrBGOIj1mLMv+eKDBZ6
+	Cj9Wza31Em3DwbE4xQHcp0RWaOX35oXXWhawttS41cMegLOVBuU36uq3eSYly5hE9xZyN88tRqKfY
+	YKjozP4iHnuFK6S7n0OQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdZQi-0000000FZ19-3WvI;
-	Wed, 07 Jan 2026 19:42:52 +0000
-Received: from out-170.mta0.migadu.com ([91.218.175.170])
+	id 1vdePW-0000000Fn6L-0Lnz;
+	Thu, 08 Jan 2026 01:01:58 +0000
+Received: from mail-m81241.netease.com ([47.88.81.241])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdZQf-0000000FZ0h-2SPJ
+	id 1vdePR-0000000Fn5u-22Co
 	for linux-rockchip@lists.infradead.org;
-	Wed, 07 Jan 2026 19:42:51 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow-tech.com;
-	s=key1; t=1767814965;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=xRTbJOKwkZYdpEZZY1w1lPpqDpzoRzUFJtgND5Kkiuo=;
-	b=fOmNBsdQH3r8E465w1m0/hb7SvFn25larE0IcdL+p1lfYSACDzHb5rx1GxekuQfFPZg0n0
-	PacZa6h2gPIF1ZxVPSGMo8o3KJ81ZOAK7ScRXXRrHDVDxAHWgZZ7lhna3gLX7vG6u8LQHe
-	n9x5hBQZKAYarCTcs5jQRetHJujtp+aT9f2s/kgAzJSQk3SXMH8zHAHYodXdgdHnwyNnPI
-	ZXMyckftmevLGOp1LZw7xy5097Jl+7EQreUBjVLzWtZMsgLARl+VRDT1EE/5r0Ukd6+Njj
-	FmOmX3riFNYkP6h1MYdGzFQEIDDUtOkIdavKfqFuoqTgm5TKFVwFKTzh61GQjQ==
-Date: Wed, 07 Jan 2026 20:42:37 +0100
-Message-Id: <DFIM3O2VB0ZR.2D0W676YS74KG@cknow-tech.com>
-To: "Cristian Ciocaltea" <cristian.ciocaltea@collabora.com>, "Maarten
- Lankhorst" <maarten.lankhorst@linux.intel.com>, "Maxime Ripard"
- <mripard@kernel.org>, "Thomas Zimmermann" <tzimmermann@suse.de>, "David
- Airlie" <airlied@gmail.com>, "Simona Vetter" <simona@ffwll.ch>, "Sandy
- Huang" <hjc@rock-chips.com>, =?utf-8?q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, "Andy Yan" <andy.yan@rock-chips.com>, "Louis Chauvet"
- <louis.chauvet@bootlin.com>, "Haneen Mohammed" <hamohammed.sa@gmail.com>,
- "Melissa Wen" <melissa.srw@gmail.com>
-Cc: "Robert Mader" <robert.mader@collabora.com>, <kernel@collabora.com>,
- <dri-devel@lists.freedesktop.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>,
- <linux-rockchip@lists.infradead.org>, "Matt Roper"
- <matthew.d.roper@intel.com>
-Subject: Re: [PATCH v4 0/4] Introduce BACKGROUND_COLOR DRM CRTC property
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <diederik@cknow-tech.com>
-References: <20251219-rk3588-bgcolor-v4-0-2ff1127ea757@collabora.com>
-In-Reply-To: <20251219-rk3588-bgcolor-v4-0-2ff1127ea757@collabora.com>
-X-Migadu-Flow: FLOW_OUT
+	Thu, 08 Jan 2026 01:01:56 +0000
+Received: from [172.16.12.14] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 2fdf5f102;
+	Thu, 8 Jan 2026 09:01:46 +0800 (GMT+08:00)
+Message-ID: <2e1a3eff-5d4d-4e3a-a076-ef8a76e08d4c@rock-chips.com>
+Date: Thu, 8 Jan 2026 09:01:43 +0800
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Cc: shawn.lin@rock-chips.com, Jingoo Han <jingoohan1@gmail.com>,
+ Bjorn Helgaas <bhelgaas@google.com>, linux-rockchip@lists.infradead.org,
+ Niklas Cassel <cassel@kernel.org>, linux-pci@vger.kernel.org
+Subject: Re: [PATCH 1/2] PCI: dwc: Add LTSSM tracing support to debugfs
+To: Manivannan Sadhasivam <mani@kernel.org>
+References: <1767691119-28287-1-git-send-email-shawn.lin@rock-chips.com>
+ <cudy2lfd7q7tujfivampgciziuho7izkpvmabj3qa2udvzkvfh@lw5vasqcrs6c>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+In-Reply-To: <cudy2lfd7q7tujfivampgciziuho7izkpvmabj3qa2udvzkvfh@lw5vasqcrs6c>
+X-HM-Tid: 0a9b9b1fb81109cckunm9d3824df45bf9
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQ0NLQlZCHUtISxgeGEkYGUxWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=cVNLeEW3YGEZvq/6rU68VRSieK3Gy3nNsZzsyj2nD/I5dmyWcgyJzwjivN3Y5DefyYmuCeFOD1ANH97Mhqp94sWcwmhL/7//oXSCQPZlOEvIJkBt+KfiM7YVanSoH4ZJfhTN8bfbsLlLxn5B0YV4niAMEXgDAI4C95uHwPXDEF0=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=aCrN1wDilYD/7FbE23rryA6R/BHDqgWz4ZEspycCwys=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260107_114250_066030_A7072847 
-X-CRM114-Status: GOOD (  19.75  )
+X-CRM114-CacheID: sfid-20260107_170154_656092_D0094978 
+X-CRM114-Status: GOOD (  17.86  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,132 +67,94 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri Dec 19, 2025 at 10:46 PM CET, Cristian Ciocaltea wrote:
-> Some display controllers can be hardware-configured to present non-black
-> colors for pixels which are not covered by any plane (or are exposed
-> through transparent regions of higher planes).
-> ...
-> The subsequent patches add background color support to VKMS and the VOP2
-> display controller used in the RK3568, RK3576, and RK3588 Rockchip SoC
-> families.
-
-As previously reported against the v3, while I actually tested v4 ...
-
-Cristian provided a helper script which would show a test pattern and
-then iterate through setting Red, Green, Blue background color and then
-set it back to the original value.
-
-I first tested this on a Rock 5B (RK3588).
-Without this patch set, the background color was Black with every
-iteration. But with this patch set, I did see a Red, Green and Blue
-background color, after which it was set back to Black.
-
-diederik@rock5b:~$ grep -E "^Changing prop|^Read BACKGROUND_COLOR" bgcol-test-bash-user.log
-Read BACKGROUND_COLOR prop (ARGB64): 0xffff000000000000
-Changing prop value to: 0xffff00000000ffff
-Read BACKGROUND_COLOR prop (ARGB64): 0xffff00000000ffff
-Changing prop value to 0xffffffff00000000
-Read BACKGROUND_COLOR prop (ARGB64): 0xffffffff00000000
-Changing prop value to 0xffff0000ffff0000
-Read BACKGROUND_COLOR prop (ARGB64): 0xffff0000ffff0000
-Changing prop value to 0xffff00000000ffff
-Read BACKGROUND_COLOR prop (ARGB64): 0xffff00000000ffff
-Changing prop value to: 0xffff000000000000
-Read BACKGROUND_COLOR prop (ARGB64): 0xffff000000000000
-
-I then did the same test on a Quartz64-B (RK3566) and that too showed a
-Red, Green and Blue background color and then was set back to Black.
-
-diederik@quartz64b:~$ grep -E "^Changing prop|^Read BACKGROUND_COLOR" bgcol-test-bash-user-q64b.log
-Read BACKGROUND_COLOR prop (ARGB64): 0xffff000000000000
-Changing prop value to: 0xffff00000000ffff
-Read BACKGROUND_COLOR prop (ARGB64): 0xffff00000000ffff
-Changing prop value to 0xffffffff00000000
-Read BACKGROUND_COLOR prop (ARGB64): 0xffffffff00000000
-Changing prop value to 0xffff0000ffff0000
-Read BACKGROUND_COLOR prop (ARGB64): 0xffff0000ffff0000
-Changing prop value to 0xffff00000000ffff
-Read BACKGROUND_COLOR prop (ARGB64): 0xffff00000000ffff
-Changing prop value to: 0xffff000000000000
-Read BACKGROUND_COLOR prop (ARGB64): 0xffff000000000000
-
-So this patch set does what it is supposed to do, so feel free to add:
-
-Tested-by: Diederik de Haas <diederik@cknow-tech.com>
-
-Cheers,
-  Diederik
-
->
-> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-> ---
-> Changes in v4:
-> - Switched to simple bit-shifting approach when performing the bpc
->   conversion in the vop2 driver, to avoid the expensive division since
->   we shouldn't be concerned anymore about the precision (Chaoyi)
-> - Rebased series onto latest drm-misc-next
-> - Link to v3: https://lore.kernel.org/r/20251118-rk3588-bgcolor-v3-0-a2cc909428ea@collabora.com
->
-> Changes in v3:
-> - Added new patches:
->   * uapi: Provide DIV_ROUND_CLOSEST()
->   * drm/vkms: Support setting custom background color
-> - Improved DRM_ARGB64_{PREP|GET}*() helpers by using a conversion ratio
->   for better color approximation when dealing with less than 16 bits of
->   precision
-> - Mentioned the IGT test in the cover letter while documenting the
->   validation results; also dropped references to the now useless
->   modetest wrapper script and its generated report
-> - Rebased series onto latest drm-misc-next
-> - Link to v2: https://lore.kernel.org/r/20251013-rk3588-bgcolor-v2-0-25cc3810ba8c@collabora.com
->
-> Changes in v2:
-> - Improved uAPI consistency and readability by introducing
->   DRM_ARGB64_PREP*() and DRM_ARGB64_GET*() helper macros
-> - Updated several code comment sections
-> - Referenced the counterpart Weston support in the cover letter
-> - Rebased series onto v6.18-rc1
-> - Link to v1: https://lore.kernel.org/r/20250902-rk3588-bgcolor-v1-0-fd97df91d89f@collabora.com
->
-> ---
-> Cristian Ciocaltea (4):
->       uapi: Provide DIV_ROUND_CLOSEST()
->       drm: Add CRTC background color property
->       drm/vkms: Support setting custom background color
->       drm/rockchip: vop2: Support setting custom background color
->
->  drivers/gpu/drm/drm_atomic_state_helper.c    |  1 +
->  drivers/gpu/drm/drm_atomic_uapi.c            |  4 ++
->  drivers/gpu/drm/drm_blend.c                  | 39 ++++++++++++++--
->  drivers/gpu/drm/drm_mode_config.c            |  6 +++
->  drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 13 +++++-
->  drivers/gpu/drm/rockchip/rockchip_drm_vop2.h |  4 ++
->  drivers/gpu/drm/vkms/vkms_composer.c         | 10 ++++-
->  drivers/gpu/drm/vkms/vkms_crtc.c             |  3 ++
->  include/drm/drm_blend.h                      |  4 +-
->  include/drm/drm_crtc.h                       | 12 +++++
->  include/drm/drm_mode_config.h                |  5 +++
->  include/linux/math.h                         | 18 +-------
->  include/uapi/drm/drm_mode.h                  | 67 ++++++++++++++++++++++++++++
->  include/uapi/linux/const.h                   | 17 +++++++
->  14 files changed, 178 insertions(+), 25 deletions(-)
-> ---
-> base-commit: 8e7460eac786c72f48c4e04ce9be692b939428ce
-> change-id: 20250829-rk3588-bgcolor-c1a7b9a507bc
->
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+5ZyoIDIwMjYvMDEvMDcg5pif5pyf5LiJIDIwOjQxLCBNYW5pdmFubmFuIFNhZGhhc2l2YW0g5YaZ
+6YGTOgo+IE9uIFR1ZSwgSmFuIDA2LCAyMDI2IGF0IDA1OjE4OjM4UE0gKzA4MDAsIFNoYXduIExp
+biB3cm90ZToKPj4gU29tZSBwbGF0Zm9ybXMgbWF5IHByb3ZpZGUgTFRTU00gdHJhY2UgZnVuY3Rp
+b25hbGl0eSwgcmVjb3JkaW5nIGhpc3RvcmljYWwKPj4gTFRTU00gc3RhdGUgdHJhbnNpdGlvbiBp
+bmZvcm1hdGlvbi4gVGhpcyBpcyB2ZXJ5IHVzZWZ1bCBmb3IgZGVidWdnaW5nLCBzdWNoCj4+IGFz
+IHdoZW4gY2VydGFpbiBkZXZpY2VzIGNhbm5vdCBiZSByZWNvZ25pemVkLiBBZGQgYW4gbHRzc21f
+dHJhY2Ugb3BlcmF0aW9uCj4+IG5vZGUgaW4gZGVidWdmcyBmb3IgcGxhdGZvcm0gd2hpY2ggY291
+bGQgcHJvdmlkZSB0aGVzZSBpbmZvcm1hdGlvbiB0byBzaG93Cj4+IHRoZSBMVFNTTSBoaXN0b3J5
+Lgo+Pgo+IAo+IFdoeSBkb24ndCB5b3UgaW1wbGVtZW50IGl0IGFzIGEgdHJhY2Vwb2ludCBzaW5j
+ZSB5b3Ugd2FudCB0byBleHBvc2UgdHJhY2VzPwo+IAoKSSBldmFsdWF0ZWQgdGhpcyBvcHRpb24g
+YnV0IGRpZG4ndCBjaG9vc2UgdG8gZG8gaXQganVzdCBhcyBJIGRpZG4ndAp3YW50IHRvIHNlbGVj
+dCBDT05GSUdfVFJBQ0lOR19TVVBQT1JUIGZvciBkd2MgZHJpdmVyIGJlY2F1c2Ugb2YgdGhpcwpj
+aGVhcCBmdW5jdGlvbi4gQnV0IEknbSBmaW5lIHRvIGltcGxlbWVudCBpdCBhcyBhIHRyYWNlcG9p
+bnQuIEp1c3QgdG8KbWFrZSBpdCBjbGVhciwgaWYgYSB0cmFjZXBvaW50IGlzIHByZWZlcnJlZCwg
+c2hvdWxkIEkgbmVlZCB0byBjcmVhdGUgYSAKbmV3IGZpbGUgbGlrZSBwY2llLWRlc2lnbndhcmUt
+dHJhY2U/Cgo+IC0gTWFuaQo+IAo+PiBTaWduZWQtb2ZmLWJ5OiBTaGF3biBMaW4gPHNoYXduLmxp
+bkByb2NrLWNoaXBzLmNvbT4KPj4gLS0tCj4+ICAgLi4uL2NvbnRyb2xsZXIvZHdjL3BjaWUtZGVz
+aWdud2FyZS1kZWJ1Z2ZzLmMgIHwgNDQgKysrKysrKysrKysrKysrKysrKwo+PiAgIGRyaXZlcnMv
+cGNpL2NvbnRyb2xsZXIvZHdjL3BjaWUtZGVzaWdud2FyZS5oICB8ICA2ICsrKwo+PiAgIDIgZmls
+ZXMgY2hhbmdlZCwgNTAgaW5zZXJ0aW9ucygrKQo+Pgo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9w
+Y2kvY29udHJvbGxlci9kd2MvcGNpZS1kZXNpZ253YXJlLWRlYnVnZnMuYyBiL2RyaXZlcnMvcGNp
+L2NvbnRyb2xsZXIvZHdjL3BjaWUtZGVzaWdud2FyZS1kZWJ1Z2ZzLmMKPj4gaW5kZXggZGY5OGZl
+ZTY5ODkyLi41NjllOGUwNzhlZjIgMTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMvcGNpL2NvbnRyb2xs
+ZXIvZHdjL3BjaWUtZGVzaWdud2FyZS1kZWJ1Z2ZzLmMKPj4gKysrIGIvZHJpdmVycy9wY2kvY29u
+dHJvbGxlci9kd2MvcGNpZS1kZXNpZ253YXJlLWRlYnVnZnMuYwo+PiBAQCAtNTExLDYgKzUxMSwz
+OCBAQCBzdGF0aWMgaW50IGx0c3NtX3N0YXR1c19vcGVuKHN0cnVjdCBpbm9kZSAqaW5vZGUsIHN0
+cnVjdCBmaWxlICpmaWxlKQo+PiAgIAlyZXR1cm4gc2luZ2xlX29wZW4oZmlsZSwgbHRzc21fc3Rh
+dHVzX3Nob3csIGlub2RlLT5pX3ByaXZhdGUpOwo+PiAgIH0KPj4gICAKPj4gK3N0YXRpYyBzdHJ1
+Y3QgZHdfcGNpZV9sdHNzbV9oaXN0b3J5ICpkd19wY2llX2x0c3NtX3RyYWNlKHN0cnVjdCBkd19w
+Y2llICpwY2kpCj4+ICt7Cj4+ICsJaWYgKHBjaS0+b3BzICYmIHBjaS0+b3BzLT5sdHNzbV90cmFj
+ZSkKPj4gKwkJcmV0dXJuIHBjaS0+b3BzLT5sdHNzbV90cmFjZShwY2kpOwo+PiArCj4+ICsJcmV0
+dXJuIE5VTEw7Cj4+ICt9Cj4+ICsKPj4gK3N0YXRpYyBpbnQgbHRzc21fdHJhY2Vfc2hvdyhzdHJ1
+Y3Qgc2VxX2ZpbGUgKnMsIHZvaWQgKnYpCj4+ICt7Cj4+ICsJc3RydWN0IGR3X3BjaWUgKnBjaSA9
+IHMtPnByaXZhdGU7Cj4+ICsJc3RydWN0IGR3X3BjaWVfbHRzc21faGlzdG9yeSAqaGlzdG9yeTsK
+Pj4gKwllbnVtIGR3X3BjaWVfbHRzc20gdmFsOwo+PiArCXUzMiBsb29wOwo+PiArCj4+ICsJaGlz
+dG9yeSA9IGR3X3BjaWVfbHRzc21fdHJhY2UocGNpKTsKPj4gKwlpZiAoIWhpc3RvcnkpCj4+ICsJ
+CXJldHVybiAwOwo+PiArCj4+ICsJZm9yIChsb29wID0gMDsgbG9vcCA8IGhpc3RvcnktPmNvdW50
+OyBsb29wKyspIHsKPj4gKwkJdmFsID0gaGlzdG9yeS0+c3RhdGVzW2xvb3BdOwo+PiArCQlzZXFf
+cHJpbnRmKHMsICIlcyAoMHglMDJ4KVxuIiwgbHRzc21fc3RhdHVzX3N0cmluZyh2YWwpLCB2YWwp
+Owo+PiArCX0KPj4gKwo+PiArCXJldHVybiAwOwo+PiArfQo+PiArCj4+ICtzdGF0aWMgaW50IGx0
+c3NtX3RyYWNlX29wZW4oc3RydWN0IGlub2RlICppbm9kZSwgc3RydWN0IGZpbGUgKmZpbGUpCj4+
+ICt7Cj4+ICsJcmV0dXJuIHNpbmdsZV9vcGVuKGZpbGUsIGx0c3NtX3RyYWNlX3Nob3csIGlub2Rl
+LT5pX3ByaXZhdGUpOwo+PiArfQo+PiArCj4+ICAgI2RlZmluZSBkd2NfZGVidWdmc19jcmVhdGUo
+bmFtZSkJCQlcCj4+ICAgZGVidWdmc19jcmVhdGVfZmlsZSgjbmFtZSwgMDY0NCwgcmFzZGVzX2Rl
+YnVnLCBwY2ksCVwKPj4gICAJCQkmZGJnXyAjIyBuYW1lICMjIF9mb3BzKQo+PiBAQCAtNTUyLDYg
+KzU4NCwxMSBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IGZpbGVfb3BlcmF0aW9ucyBkd2NfcGNpZV9s
+dHNzbV9zdGF0dXNfb3BzID0gewo+PiAgIAkucmVhZCA9IHNlcV9yZWFkLAo+PiAgIH07Cj4+ICAg
+Cj4+ICtzdGF0aWMgY29uc3Qgc3RydWN0IGZpbGVfb3BlcmF0aW9ucyBkd2NfcGNpZV9sdHNzbV90
+cmFjZV9vcHMgPSB7Cj4+ICsJLm9wZW4gPSBsdHNzbV90cmFjZV9vcGVuLAo+PiArCS5yZWFkID0g
+c2VxX3JlYWQsCj4+ICt9Owo+PiArCj4+ICAgc3RhdGljIHZvaWQgZHdjX3BjaWVfcmFzZGVzX2Rl
+YnVnZnNfZGVpbml0KHN0cnVjdCBkd19wY2llICpwY2kpCj4+ICAgewo+PiAgIAlzdHJ1Y3QgZHdj
+X3BjaWVfcmFzZGVzX2luZm8gKnJpbmZvID0gcGNpLT5kZWJ1Z2ZzLT5yYXNkZXNfaW5mbzsKPj4g
+QEAgLTY0NCw2ICs2ODEsMTIgQEAgc3RhdGljIHZvaWQgZHdjX3BjaWVfbHRzc21fZGVidWdmc19p
+bml0KHN0cnVjdCBkd19wY2llICpwY2ksIHN0cnVjdCBkZW50cnkgKmRpcikKPj4gICAJCQkgICAg
+JmR3Y19wY2llX2x0c3NtX3N0YXR1c19vcHMpOwo+PiAgIH0KPj4gICAKPj4gK3N0YXRpYyB2b2lk
+IGR3Y19wY2llX2x0c3NtX3RyYWNlX2RlYnVnZnNfaW5pdChzdHJ1Y3QgZHdfcGNpZSAqcGNpLCBz
+dHJ1Y3QgZGVudHJ5ICpkaXIpCj4+ICt7Cj4+ICsJZGVidWdmc19jcmVhdGVfZmlsZSgibHRzc21f
+dHJhY2UiLCAwNDQ0LCBkaXIsIHBjaSwKPj4gKwkJCSAgICAmZHdjX3BjaWVfbHRzc21fdHJhY2Vf
+b3BzKTsKPj4gK30KPj4gKwo+PiAgIHN0YXRpYyBpbnQgZHdfcGNpZV9wdG1fY2hlY2tfY2FwYWJp
+bGl0eSh2b2lkICpkcnZkYXRhKQo+PiAgIHsKPj4gICAJc3RydWN0IGR3X3BjaWUgKnBjaSA9IGRy
+dmRhdGE7Cj4+IEBAIC05MjIsNiArOTY1LDcgQEAgdm9pZCBkd2NfcGNpZV9kZWJ1Z2ZzX2luaXQo
+c3RydWN0IGR3X3BjaWUgKnBjaSwgZW51bSBkd19wY2llX2RldmljZV9tb2RlIG1vZGUpCj4+ICAg
+CQkJZXJyKTsKPj4gICAKPj4gICAJZHdjX3BjaWVfbHRzc21fZGVidWdmc19pbml0KHBjaSwgZGly
+KTsKPj4gKwlkd2NfcGNpZV9sdHNzbV90cmFjZV9kZWJ1Z2ZzX2luaXQocGNpLCBkaXIpOwo+PiAg
+IAo+PiAgIAlwY2ktPm1vZGUgPSBtb2RlOwo+PiAgIAlwY2ktPnB0bV9kZWJ1Z2ZzID0gcGNpZV9w
+dG1fY3JlYXRlX2RlYnVnZnMocGNpLT5kZXYsIHBjaSwKPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMv
+cGNpL2NvbnRyb2xsZXIvZHdjL3BjaWUtZGVzaWdud2FyZS5oIGIvZHJpdmVycy9wY2kvY29udHJv
+bGxlci9kd2MvcGNpZS1kZXNpZ253YXJlLmgKPj4gaW5kZXggNWNkMjdmNTczOWYxLi4wZGYxODk5
+NWI3ZmUgMTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvZHdjL3BjaWUtZGVz
+aWdud2FyZS5oCj4+ICsrKyBiL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvZHdjL3BjaWUtZGVzaWdu
+d2FyZS5oCj4+IEBAIC0zOTUsNiArMzk1LDExIEBAIGVudW0gZHdfcGNpZV9sdHNzbSB7Cj4+ICAg
+CURXX1BDSUVfTFRTU01fVU5LTk9XTiA9IDB4RkZGRkZGRkYsCj4+ICAgfTsKPj4gICAKPj4gK3N0
+cnVjdCBkd19wY2llX2x0c3NtX2hpc3Rvcnkgewo+PiArICAgIGVudW0gZHdfcGNpZV9sdHNzbSAq
+c3RhdGVzOwo+PiArICAgIHUzMiBjb3VudDsKPj4gK307Cj4+ICsKPj4gICBzdHJ1Y3QgZHdfcGNp
+ZV9vYl9hdHVfY2ZnIHsKPj4gICAJaW50IGluZGV4Owo+PiAgIAlpbnQgdHlwZTsKPj4gQEAgLTQ5
+OSw2ICs1MDQsNyBAQCBzdHJ1Y3QgZHdfcGNpZV9vcHMgewo+PiAgIAkJCSAgICAgIHNpemVfdCBz
+aXplLCB1MzIgdmFsKTsKPj4gICAJYm9vbAkoKmxpbmtfdXApKHN0cnVjdCBkd19wY2llICpwY2ll
+KTsKPj4gICAJZW51bSBkd19wY2llX2x0c3NtICgqZ2V0X2x0c3NtKShzdHJ1Y3QgZHdfcGNpZSAq
+cGNpZSk7Cj4+ICsJc3RydWN0IGR3X3BjaWVfbHRzc21faGlzdG9yeSAqICgqbHRzc21fdHJhY2Up
+KHN0cnVjdCBkd19wY2llICpwY2llKTsKPj4gICAJaW50CSgqc3RhcnRfbGluaykoc3RydWN0IGR3
+X3BjaWUgKnBjaWUpOwo+PiAgIAl2b2lkCSgqc3RvcF9saW5rKShzdHJ1Y3QgZHdfcGNpZSAqcGNp
+ZSk7Cj4+ICAgCWludAkoKmFzc2VydF9wZXJzdCkoc3RydWN0IGR3X3BjaWUgKnBjaWUsIGJvb2wg
+YXNzZXJ0KTsKPj4gLS0gCj4+IDIuNDMuMAo+Pgo+Pgo+IAoKCl9fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApM
+aW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQu
+b3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
