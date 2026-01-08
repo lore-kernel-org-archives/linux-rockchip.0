@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A48B1D232C6
-	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Jan 2026 23:06:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEF4DD232C3
+	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Jan 2026 23:06:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=JyEp3/KocGsHrK/h9CPub/BPp7XJ9SKx2OTYwT3Bklg=; b=qlMV8byOsr5xOp
-	c9IBmj4JbNh4APWMZ8BfvmZGdQG0iwZbtuaQDANfV2XL6Xd4X007SoQTqkNbfCw4TvORGCE4slMEs
-	mB5UmKEfZBjRart5hr7s+iLr+RS7fYaiOV0IeVSZeQy83CeZl+bqZRYYcGN6rqvtr0Zi9ZeMGIGZ7
-	a2oMP25izu8LYRdLeG5FffbQtE3EmFNI5xRasREwBfGFFbKgA0nBWyNEcOoLiWZrDzApDEp5QpvTv
-	NCapW/KoeJwH0t082XraAFwFDcqHqDy2QJYE3fawLASrxIxZXxSzxyY7xuM1/hUMMaUt+srXcrnoC
-	p2URXhaSGaqqk5TzZNZQ==;
+	List-Owner; bh=IO7go4yR1T6/t0EdYIbL63zv1PvM6q3w3MFX8q45jJQ=; b=TPcQKO9uLPnbNh
+	u1jCAv5kUWUCA4eSMpk4rOX42iqDWF4vYFqPIECDd9QJDaxlkvzAyF7Xx/ptdqqZgHuuJM9QTgld/
+	AitFpB9/9JnBZM446AzL4BtHitWAcAZ30S9ucDdyhrGJJP15EDmnE0LgE0+k4s3Qy4/4l6gOfY3i+
+	3T2yMlFSzSIRdM8t+mXhjksR+7mg0/NyIe94VVaYi9r5tWi6sXa2U2zQlHsDX+H3eGapWHl6qGbEn
+	lIFzfiHVwSciOCOO/z6z/htalLU0k2K8upjFDHibgylpSLz+iNtU6XKtcky6bCxWQscoeW+qvRfxK
+	5LoVNuMHLUkIsAPiJPDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdz4z-00000000yOg-14xx;
-	Thu, 08 Jan 2026 23:06:09 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vdz54-00000000yRg-3MPG;
+	Thu, 08 Jan 2026 23:06:14 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdz4v-00000000yO4-2XEf;
-	Thu, 08 Jan 2026 23:06:06 +0000
+	id 1vdz52-00000000yQK-3FgS;
+	Thu, 08 Jan 2026 23:06:12 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id B0C1742BAD;
-	Thu,  8 Jan 2026 23:06:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7074DC116C6;
-	Thu,  8 Jan 2026 23:06:04 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 90D0F60130;
+	Thu,  8 Jan 2026 23:06:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2E43DC19421;
+	Thu,  8 Jan 2026 23:06:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1767913564;
-	bh=2IQ4kXPyDAgenTx3hMT0WnQ4Gm8ePKDN1OIlZnJo+nI=;
+	s=k20201202; t=1767913571;
+	bh=gOqkINbWRtUhwGq/lyJT42kBcohrQjAxPz/HofF8t8Q=;
 	h=From:To:Cc:Subject:Date:From;
-	b=poVEa1xZ5a9EHXWpyJ4aN2iqOCrwczthJzlj0KeEVVqbPHxtJXPjlARCCWL2Ixbf3
-	 Av6itpc5KsuwV0BuNzeqIFgzCROLGKSvEU82ztbFu+pSjtB50x5gVd0D8SIo1J8q+e
-	 Ek4Ow3Z+g3TKMlh3UoIi1KOAg7qm0Ri5LTUhntTtgLUjm9g79nCuizquKomBmGaCaW
-	 sWHBA6O3AbimJxIq/0M9RtKJEA2I13ijgGZYrMgy9yay+jxmIW3LmUPqpFr5HsLlUF
-	 GatoGJrVUpCCL1Ssqxcb4tOOFr+VzpPK1/FreMuD6eo1EKmBibhbwoA9xSK3HYiZj4
-	 Ua4LKJUG0bLaA==
+	b=Va2gQPL+6tzykR9zDwrdUBQanJa7jnqhlVb4D2HYQc9IQTgR3mzcA4EIU3hBn4wNN
+	 OY85ZAa8vpQvqfXTucvgARQ34oVwTc7VGxgW1Rfp+PlI+qs4h8Suln4ce8j6KLRCCU
+	 DZmlpaOFV007MmA03xsVbYJaZkVgPBcCw4aEWZhr+H6vbrXHWd2+TUtZkqC+UmiBM3
+	 6sL+g8Ar0US9fCOY0bt1/89CMYpkhyhLyaRkzv5oD0DPD6ANjvQgeF6QWVI7WOFWvX
+	 f4hfs4QRCXz4aAmRq/DeboKX/E9sPsbPJty5/etfyUiCJ+GyDrjRlq58eE1AmdeRT7
+	 qpIU67YZFYC8g==
 From: "Rob Herring (Arm)" <robh@kernel.org>
 To: Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
@@ -49,15 +49,11 @@ Cc: devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH] arm64: dts: rockchip: rk3568-wolfvision: Drop "sitronix,st7789v" fallback compatible
-Date: Thu,  8 Jan 2026 17:05:59 -0600
-Message-ID: <20260108230600.1348699-1-robh@kernel.org>
+Subject: [PATCH] arm64: dts: rockchip: Drop unsupported properties
+Date: Thu,  8 Jan 2026 17:06:07 -0600
+Message-ID: <20260108230607.1348879-1-robh@kernel.org>
 X-Mailer: git-send-email 2.51.0
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260108_150605_686975_3D29C7D0 
-X-CRM114-Status: UNSURE (   9.28  )
-X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,27 +70,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-"sitronix,st7789v" is not a defined fallback for
-"jasonic,jt240mhqs-hwt-ek-e3", so drop it.
+"pinctrl-names" is not valid without a pinctrl-N property.
+
+"max-freq" is not a defined property name. Maybe it was supposed to be
+"spi-max-frequency", but changing to that would be a change in behavior.
 
 Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
 ---
- .../boot/dts/rockchip/rk3568-wolfvision-pf5-display-vz.dtso    | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts | 1 -
+ arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts   | 1 -
+ 2 files changed, 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568-wolfvision-pf5-display-vz.dtso b/arch/arm64/boot/dts/rockchip/rk3568-wolfvision-pf5-display-vz.dtso
-index 70c23e1bf14b..d1a906031912 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568-wolfvision-pf5-display-vz.dtso
-+++ b/arch/arm64/boot/dts/rockchip/rk3568-wolfvision-pf5-display-vz.dtso
-@@ -11,7 +11,6 @@
- #include "rk3568-wolfvision-pf5-display.dtsi"
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts b/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
+index 78a7775c3b22..b2de018a7d36 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
+@@ -425,7 +425,6 @@ &pcie_phy {
+ &pcie0 {
+ 	ep-gpios = <&gpio2 RK_PD4 GPIO_ACTIVE_HIGH>;
+ 	num-lanes = <2>;
+-	pinctrl-names = "default";
+ 	status = "okay";
  
- &st7789 {
--	compatible = "jasonic,jt240mhqs-hwt-ek-e3",
--		     "sitronix,st7789v";
-+	compatible = "jasonic,jt240mhqs-hwt-ek-e3";
- 	rotation = <270>;
+ 	vpcie12v-supply = <&vcc12v_dcin>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
+index eaaca08a7601..810ab6ff4e67 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
+@@ -969,7 +969,6 @@ &sdhci {
  };
+ 
+ &spi1 {
+-	max-freq = <10000000>;
+ 	status = "okay";
+ 
+ 	spiflash: flash@0 {
 -- 
 2.51.0
 
