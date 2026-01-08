@@ -4,89 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1BD1D148A3
-	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Jan 2026 06:54:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7F44D148AF
+	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Jan 2026 06:55:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6m2K26wQTogOaJK3rnUjxWXs9hFKGDGQsAzHrlHktEg=; b=JXGcAdTt6w6/JC
-	NlZC5NE2Q5NGF9UN6rYlmsuuIZ+h/bEKUPm9w/j2jtfae1itSsrq6AnnpVH2a469v45sjOjv2LDaX
-	bPDOfGqv3e19GvjfwDw6ov+QgJhmZLzpQyMAxWx58oSA0/HEW+k4uqnowzNoBNa095pV4Rb+8sKb2
-	eI+JrOTB5RRu4SQSg8W4P5TrxVW4HjC+pmOkJcHfAaNlUoYDJqNo1n62gqJEuTEVPT+zsddB7FqVd
-	StpDcTVFB11pW3VxKKSlMSe886Mh/wqAiU0Ttq92aXld/IfvJtmXZD2HS3vhe/XLHv2CkUnKv3ND8
-	QxLxR4RjCCqqy/DOKL6A==;
+	List-Owner; bh=TNeEeYSrVUwTBy9zBLP65i0zZ1kK/drReQPfJCSbkQU=; b=MCSoM90YU46JWj
+	NEKe1ofzg2cAZQ9BTNGbaODVcFh05vohybwBw0BiMW5R8zRXZmWlxOwi7oTfEBkPSpax/QFbHTGur
+	mrir+KTiGMRBNIjNb+DqZVNRQNmBJu/WH8t7Rfc2z2R6fIm6MyUighVC+Zef8zev7oYKufpQy08am
+	wL7gi41IveDqWqcPVMCStFhFzpJJ85QKa275VFPkUJxjhIVvcECJpKM2fh89TE/UHUM8c/+qD40eW
+	NoJo4MejjqQPom9VdZM2ZkQA3wqiBi2s8QDvzKeumCOw3SyD8+t4i+eBOlZFmC7Nfag7Jr47qqBlq
+	3/eBpcoMI7CK8lirIqJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdjuw-0000000G26l-22LC;
-	Thu, 08 Jan 2026 06:54:46 +0000
+	id 1vdjvO-0000000G2Ep-2DU2;
+	Thu, 08 Jan 2026 06:55:14 +0000
 Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdjuu-0000000G25P-0OWZ
+	id 1vdjvM-0000000G2Dp-1Bb6
 	for linux-rockchip@lists.infradead.org;
-	Thu, 08 Jan 2026 06:54:45 +0000
-Received: by mail-ed1-x533.google.com with SMTP id 4fb4d7f45d1cf-6505d141d02so4468961a12.3
-        for <linux-rockchip@lists.infradead.org>; Wed, 07 Jan 2026 22:54:42 -0800 (PST)
+	Thu, 08 Jan 2026 06:55:13 +0000
+Received: by mail-ed1-x533.google.com with SMTP id 4fb4d7f45d1cf-64d4d8b3ad7so4401410a12.2
+        for <linux-rockchip@lists.infradead.org>; Wed, 07 Jan 2026 22:55:11 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1767855281; x=1768460081; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1767855311; x=1768460111; darn=lists.infradead.org;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=t4F2SB9f5d/mNn04/BKllqtDvhQr4G3ijObEiEkrROg=;
-        b=Wrn99rEKjmoMiom6bUrZ123VVa/KusbSj+ZJ+xtXB4IOBOqGJwOPrvtCfk1uC/Mq07
-         euTZUncvrlEizXa9Lgb3EIrwgt8mUIePsAitQ+jkhEQe54czYFH7CNQHkot+B0vsDcAa
-         HMn1Hb4Z8IwGQ88JCck3NBVh9KT/Wpe1f42PInTS3HVCL4bA4uUeqQoisLixBNRwjZ8w
-         7FJU4hAnXCQb491tr0xoa/O6TMMAQPexV3n2oMQuU99AkymFl/BRXq7VIJpk1kbIWVZL
-         P79t9S7gUKKMNl5dl1nPDHHbMB1QaeiqHJq0fmzbBGXivkknbaR+UPpdXxXDYwsrgNUQ
-         dvsA==
+        bh=yAyXDWLGELFvv1UWhWJn7SNZwSDSfP0ZE2dhDg/EXvA=;
+        b=VJoyb75v1Igmm3j4VHajc6b0OJXO0DwUkDOOcaNE73GOqatFqqjdCbKCot4KyC4JCK
+         rVDdBa+gGZ7FziWeTrMZPPfMD6YLpO6LeBOmWEIvHt2wnRQiGbK0AVHGbrZzHhpx2Tua
+         ZmI0ET/H/MJFE221K9EP4Rl21gS+EvNcFRMsUgtKTf9QkLu7c82BJUpOVzDvWw1CkvBF
+         uQxp9CuwxqzkMNQ2P/fdDqzJAaQcpwAItZT9JhfjnP/kuz/e3U1I3VNDB1aJ5k7I+PD8
+         EBOvmVq2fmYhu62F155bZ3kDCzYrO/RQ+OUsAF+qJ2I1SuDr8DqOQrFE+VUyuipw9qss
+         sn9Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1767855281; x=1768460081;
+        d=1e100.net; s=20230601; t=1767855311; x=1768460111;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=t4F2SB9f5d/mNn04/BKllqtDvhQr4G3ijObEiEkrROg=;
-        b=GvfERrfuxqYneXvC0WeL33NM2jRwvwgw6VAVVYi2HKoHA9Z1o+RieyKTBDuF8iSWJb
-         7PSP+TNi3h+96S+aH3bchuuM/WALhDi1d4cLnuvpEr0OmEQ8X5QY24Av463VaKcV2RSn
-         w8+mg7cZbswi+sm78jNFzn9LyTQ0JF6x0H0tMXyHPVWRrZ3f7SSOwZCK/1YE9tZ46PSD
-         6QvuXDwkxH+HW5C4TvV5Hl1RZ+VF5fYX1Z9J9FVZxwzSVb3vincYwdkzxY4RldjsRbLP
-         SklxrD69ZlAG1NcaHFe57AzNzt7XQcEv4HMdLld39mIsTX2/tmHSf39k0O0PugbqECt2
-         DevA==
-X-Forwarded-Encrypted: i=1; AJvYcCU/H51fqW+gtFnmBK2Vm6bb2akiNLBkAmmjPLgQP+cjl05B9n37x9Wj3E/7NcQ8CMkOG+msKn4WvDWruP3dIA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzPxANPsItRD9kLDtRZIgwShJS1QeP3p3u7z0RR5HALWrWy+Amc
-	/OwUrv0p0NVsbRekV1jLmyJinddRKPbPINv1Q7wgKw159i7xqsXn0Fw9OqWcLnVvSlF0mRLR+MZ
-	Gy/QZ3cyj9TJwYsJ8gqlaiJkm4gm6JVw=
-X-Gm-Gg: AY/fxX7blgb0nW2KsJ4KZfvWehDUwOzNfBjty98UyqhaT2ZxcpAXH3g2Lx/zGOMHBTT
-	tJHviqAGSweeIHX6nlFfBNPU+wsTpWyNSZAJ5Lnqf6zZC3qxTCPuAw5U6hmxnTgDAc7eX+yuLxI
-	HzPHW/Vn9LIVw3wHry6ymC/ixCQj6zXK9MoLDwlfxrAy+NqwodVLv3sxmVwylwfrdPVM8arX711
-	PDaeeW0ybAxPRn6E7cmJKF3n856w++FTxHLiUqXY6yOQ9K4+jkwnD8tVWaDSsScotM=
-X-Google-Smtp-Source: AGHT+IGASGpRE5geGPMFFoH+KZfseqKENFRmeBW4XZyTHbSYGX+MpMWOD4bcwRl1hOH7/QKo+S7o0hqO3wHruKhhRKs=
-X-Received: by 2002:a17:907:1c82:b0:b83:95ca:589b with SMTP id
- a640c23a62f3a-b8444c4007dmr536411766b.10.1767855281293; Wed, 07 Jan 2026
- 22:54:41 -0800 (PST)
+        bh=yAyXDWLGELFvv1UWhWJn7SNZwSDSfP0ZE2dhDg/EXvA=;
+        b=HDFx1SYeiOZPlm7gOv59AQNPgZdwa1Tf+qCdBPVHHZXbcD6X6sGq7KG3N7mJwZ3NYF
+         bKsdd8zWDkp6zB+FvLAOQvQjQRbTjT2dJwHtb/NmFibK6xHBQ0eMpKPMkWquYq02HKUB
+         jVJkLrPaIxw/luG+gMSlpzsGVTGRALT0gbx3wOqaHS6+yhV3HRBB4eNfhgUondWYXQLn
+         KJaJAVmVHX971wtdun+Tpp4ijGDGn4Gxyuhzm2EBKFwzutmTXSNpMI8NOp+jqhZe46Wd
+         NpQAblGzzvikVY2IfzcWuzS7jrVZhvHNVkbb9MtlHY1+dTrntTgSNbYHEjlqSz0+mIz4
+         QXQw==
+X-Forwarded-Encrypted: i=1; AJvYcCUyxUj6s/DXAOKnOpZTXxX2xLmbg2B06Dp3iOnNdk/Zw54C6nYr1UagvelmVy8sXIw5a1oNrDpKZ6/S67K26w==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxecVIOVn5jZz4pFyQ+ouuDQLUUCCuvwGe0D692ipkZAmYlNnPH
+	fyIML7O6ENmfadB5IXbIx620HVTObLpKEltLTJ09cSsPMpNQzf1oo9snRXrKakmzm20Nf366blf
+	ut5IMe5YIgqnUtYdkiglT+ptDx8wf8fU=
+X-Gm-Gg: AY/fxX7QTtZSIro/yOr6hAGjs/EGM3JhndjQqKki91lYFsqoXat2xHbGBv8yTrnzQTo
+	m5NvAnPduKpNgX/aNmwycF/GFRX70Eo/iIeOeLPsPpYpHmX0+3NpzUJsGQXMuPeIYRaAlg/6ijM
+	TDhnaF5//BTFjN27afh9Si2PsEa31PcvvaEQ+aOFgnfL1DzTm4akVQ/aEKcc2bmSshrWlmLjFVF
+	sPjMwpNZzwMqiYNsPZ1V4oDGTXC7JvlDbDd/3Sl4ea9HPY5C9PYsImtNeqQQ8aQJmY=
+X-Google-Smtp-Source: AGHT+IG4m9qvtkc1tMc4hksJp1Vna2m4aQX4wMUQg4Vqs3Y0Vu+b7EVPh7KsSp/EWOjuxv2xkQR9qBYjiSFRJ2sMnsk=
+X-Received: by 2002:a05:6402:27c8:b0:64b:5f4e:9e88 with SMTP id
+ 4fb4d7f45d1cf-65097e4d851mr3774748a12.21.1767855310352; Wed, 07 Jan 2026
+ 22:55:10 -0800 (PST)
 MIME-Version: 1.0
-References: <20260103083232.9510-1-linux.amoon@gmail.com> <aVkinPvh_jxdh9wm@venus>
-In-Reply-To: <aVkinPvh_jxdh9wm@venus>
+References: <20260103083232.9510-1-linux.amoon@gmail.com> <20260103083232.9510-2-linux.amoon@gmail.com>
+ <aVke1kQnHJLqWGHi@venus>
+In-Reply-To: <aVke1kQnHJLqWGHi@venus>
 From: Anand Moon <linux.amoon@gmail.com>
-Date: Thu, 8 Jan 2026 12:24:23 +0530
-X-Gm-Features: AQt7F2pq5ftUc3DeChtgdMDzbUbVtPyMHskj6HVuSaMN15yeS4QpeYTTmedIXIo
-Message-ID: <CANAwSgS=u3CG_5R21SZ=euEQuqQ=edxZmFp5LhzZN5Lk5ozqXA@mail.gmail.com>
-Subject: Re: [PATCH v1 0/3] Typc fusb302 powerloss issue on Radxa Rock 5b
+Date: Thu, 8 Jan 2026 12:24:50 +0530
+X-Gm-Features: AQt7F2qhaPGkLVIcZtPHVBeTYLw90eQbbpNMhgJtysYJBe3JW3HGYEkeT1DfTvQ
+Message-ID: <CANAwSgSd0TLrkxpnS5qdot8B7vkd4wH76-g8hAixqfbEtH4LyA@mail.gmail.com>
+Subject: Re: [PATCH v1 1/3] arm64: dts: rockchip: rk3588-rock-5b-5bp-5t:
+ Correct Type-C pin bias settings
 To: Sebastian Reichel <sebastian.reichel@collabora.com>
 Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
 	Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
 	Heikki Krogerus <heikki.krogerus@linux.intel.com>, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, FUKAUMI Naoki <naoki@radxa.com>, 
-	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, Diederik de Haas <didi.debian@cknow.org>, 
-	Yongbo Zhang <giraffesnn123@gmail.com>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, FUKAUMI Naoki <naoki@radxa.com>, 
+	Diederik de Haas <didi.debian@cknow.org>, Yongbo Zhang <giraffesnn123@gmail.com>, 
 	"open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, 
 	"moderated list:ARM/Rockchip SoC support" <linux-arm-kernel@lists.infradead.org>, 
 	"open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>, 
 	open list <linux-kernel@vger.kernel.org>, 
 	"open list:USB TYPEC CLASS" <linux-usb@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260107_225444_154725_C4FBE59D 
-X-CRM114-Status: GOOD (  30.46  )
+X-CRM114-CacheID: sfid-20260107_225512_357888_D4282D48 
+X-CRM114-Status: GOOD (  21.73  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,84 +107,92 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Hi Sebastian,
 
-Thanks for sharing the details.
+Thanks for your review comments.
 
-On Sat, 3 Jan 2026 at 19:54, Sebastian Reichel
+On Sat, 3 Jan 2026 at 19:23, Sebastian Reichel
 <sebastian.reichel@collabora.com> wrote:
 >
-> Hello Anand,
+> Hi,
 >
-> On Sat, Jan 03, 2026 at 02:01:16PM +0530, Anand Moon wrote:
-> > On the Radxa Rock 5B, the system occasionally experiences intermittent
-> > hard resets during the boot process. Initially, I suspected a power supply
-> > issue, but further investigation points to the Type-C fusb302 module as
-> > the cause.
+> On Sat, Jan 03, 2026 at 02:01:17PM +0530, Anand Moon wrote:
+> > As pre FUSB302 datasheet interrupt line (INT_N) is an open-drain,
+> > active-low signal. It requires a pull-up resistor to maintain a stable
+> > high state when deasserted. Similarly, the TYPEC5V_PWREN_H enable signal
+> > requires a pull-down resistor to ensure it defaults to a low state,
+> > preventing unintended power delivery during the boot sequence.
 > >
-> > Specifically, probing or reloading the fusb302 module triggers a hard reset,
-> > which can result in immediate power loss and a reboot.
+> > Update the pinctrl entries to use pcfg_pull_up for usbc0_int and
+> > pcfg_pull_down for vbus5v0_typec_en to align with the hardware's
+> > electrical requirements.
 > >
-> > [root@rockpi-5b ~]# rmmod fusb302
-> > [root@rockpi-5b ~]# lsmod | grep  fusb302
-> > [root@rockpi-5b ~]# modprobe fusb302
-> > [root@rockpi-5b ~]# [ 3389.031608][ T7143] typec_fusb302 4-0022: Initiating hard-reset, which might result in machine power-loss.
-> > [ 3390.030444][ T7143] typec_fusb302 4-0022: Initiating hard-reset, which might result in machine power-loss.
+> > Cc: Sebastian Reichel <sebastian.reichel@collabora.com>
+> > Fixes: 67b2c15d8fb3 ("arm64: dts: rockchip: add USB-C support for ROCK 5B/5B+/5T")
+> > Signed-off-by: Anand Moon <linux.amoon@gmail.com>
+> > ---
+> > v1: As per the shematics CC_INT_L interrupt pin is GPIO3_B4_u
+> >     As per the shematics TYPEC5V_PWREN_H pin is GPIO2_B6_d
+> > ---
 >
-> If you see this message the TypeC port manager (TCPM) state machine
-> reached the hard reset error state. A USB-PD hard reset involves
-> removing VBUS for a short time, which effectively removes the board
-> power on ROCK 5B. Unfortunately the situation is quite complex :)
+> Checking the schematics:
 >
-I completely understand this issue,
-> > I attempted to trace the issue using ftrace but was unable to
-> > pinpoint the root cause. The problem appears to originate either
-> > from the I2C controller or the PMIC reset.
+> 5B v1.45 - CC_INT_L - R2613 10K pull-up resistor
+> 5B v1.45 - TYPEC5V_PWREN_H - GPIO is effectively unused because R95035 is NC
 >
-> I2C and PMIC are not at fault. This is all about USB-PD
-> communication itself.
+> 5B+ v1.2 - CC_INT_L - R2613 10K pull-up resistor
+> 5B+ v1.2 - TYPEC5V_PWREN_H - R163 100K pull-down resistor
 >
-> > I have identified a potential workaround involving the I2C SCL debounce settings
-> > for the RK3588 and submitted a patch here:
-> >
-> > [1] https://lore.kernel.org/all/20260103052506.6743-1-linux.amoon@gmail.com/
+> 5T v1.2 - CC_INT_L - R2613 10K pull-up resistor
+> 5T v1.2 - TYPEC5V_PWREN_H - R163 100K pull-down resistor
 >
-> This is most likely a red herring and just slightly changing timings
-> in the USB PD communication.
-Yes, but it's related I2C protocol.
->
-> > Please note that the submitted changes address a minor aspect but do not fully
-> > resolve the underlying issue.
->
-> I don't expect any fix from this series regarding your problem. Also
-> I suggest having a look at my talk at the Linux Plumbers Conference
-> from last month where I discussed this issue :)
->
-> slides: https://lpc.events/event/19/contributions/2156/attachments/1784/3861/improving-stability-for-TCPM-using-boards-that-are-not-self-powered.pdf
-> video: https://www.youtube.com/watch?v=DmLsePJoH8I
->
-It's a great talk. I understood the issue much better
+CC_INT_L is gpio interrupt pin to enable the I2C read operation.
 
-I have understood the previous discussion regarding the reset failure.
-In this specific case, the Type-C power is controlled by the USB 3.0 and USB 2.0
-host controller power domains, I feel so.
+As per FUSB302 datasheet, here is the updated version of the commit message
 
-> Something that might be sensible to do on your end is figure out
-> *how* the state machine ended up in the error state and check if
-> we can avoid it. The related code for that lives in
-> drivers/usb/typec/tcpm/tcpm.c and quite complex. I use the
-> following two patches to ease debugging:
->
->  * https://gitlab.collabora.com/hardware-enablement/rockchip-3588/linux/-/commit/6edc68e3c0ec4c209b5e96b848e17201059ce9ee
->  * https://gitlab.collabora.com/hardware-enablement/rockchip-3588/linux/-/commit/8ca8b1d6ee36e80f794bcf351a8b78d5a96daf06
->
-> Combined with CONFIG_DYNAMIC_DEBUG=y and booting with the following
-> kernel arguments: loglevel=8 tcpm.dyndbg="+p" fusb302.dyndbg="+p"
->
-Yep, I have enabled this, but I could not find many details
+Configure CC_INT_L as an active-low, open-drain output. Per the hardware design,
+this pin utilizes an external pull-up and is driven LOW by the Type-C
+controller to
+signal the processor to perform I2C register reads.
 
-> Greetings,
+The TYPEC5V_PWREN_H pull-down resistor is turned on as a signal to
+the Type-C regulator, which has an active-enable-high property. In this context,
+the regulator is used to set the polarity of the GPIO used to enable or disable
+the regulator.
+
+> TLDR: All GPIOs have pull resistors in discrete hardware and do not
+> need them muxed in the SoC.
 >
-> -- Sebastian
->
+It depends on the GPIO, pinctrl PMU configuration.
+
+I was thinking of converting the vbus5v0_typec regulator to 'regulator-gpio.'
+to better reflect the hardware schematics. The TYPEC5V_PWREN_H signal
+(GPIO2_B6_d) acts as a state controller rather than a simple enable pin,
+and this change ensures the device tree aligns with that design
+
+[1] https://dl.radxa.com/rock5/5b/docs/hw/radxa_rock_5b_v1450_schematic.pdf
+(page 28)
+
+$ git diff arch/arm64/boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi
+b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi
+index 5f58e339a052..387ff009ec76 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi
+@@ -57,9 +57,10 @@ rfkill-bt {
+        };
+
+        vbus5v0_typec: vbus5v0-typec {
+-               compatible = "regulator-fixed";
++               compatible = "regulator-gpio";
+                enable-active-high;
+-               gpio = <&gpio2 RK_PB6 GPIO_ACTIVE_HIGH>;
++               gpios = <&gpio2 RK_PB6 GPIO_ACTIVE_HIGH>;
++               states = <5000000 0x1>, <0 0x0>;
+                pinctrl-names = "default";
+                pinctrl-0 = <&vbus5v0_typec_en>;
+                regulator-name = "vbus5v0_typec";
+
+Could you please try this at your end?
+
 Thanks
 -Anand
 
