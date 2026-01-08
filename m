@@ -4,70 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39406D1D486
-	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Jan 2026 19:04:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DA7ED1D488
+	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Jan 2026 19:04:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vAznJsU0qU7U6pDA7fzpROyJFtMHPMPUvRmG8/TKyWc=; b=WxGDqXJE4yr8GH
-	oE8emNTF68ZDAR1YC9bSbcZIAwg5dNHBZf2r4ijcYuN/d9LrznCv320dDR03c6Ry5NVn8Gs2MZDBm
-	EiZYyh2KUQDlcepwkymkHZygWbnWdJj5IHjFsTzNUBLyLFt0juVnWNdqnGXJoQlCRGZDUYVpYapGL
-	Kg0WVLYpAETfma+gYKK8yQntYdO825J3WklX2UqKqv9pC4HexTcFZ+MReRi4YSwL2apYDeLb1Gm0N
-	FGBkClUbHWbfUs+PG+LWhvE9ZWrnFGUh6fFThNQad2zG9p+beJuG+Zi7TMAJepxsJ9b/6CNJ4w6iO
-	c/t5IBtw5ia+koDTvWxw==;
+	List-Owner; bh=OBI5Vtxq1d07qoMj5b8JvcXXch8923pOozIIrC99rww=; b=JNkKbABcW/jFff
+	b0FegPuQDnxYCs//6ndiaRS6iau7b3QWwh+bFes0vK1atdAI0X4vK3tGRWX0m8kMq4JUEtISLLMx8
+	i7pSUQUIQVAuQgvc9vU831AGPaKJj0TlAbiHX15A3JEFmJhe8M1UGYINm1Mvf66EIHTeKiwBIuf62
+	9RwJ2RrIIlBjTQeeG34pbQjZA0zNhly22B7ISf7/9Vc9JS5jFtZkmm1AGo1adYosKszq98ZMqS7jK
+	kySpJEHCChtY9rAPLbTTDUc9hBWVOj/hqYzjC++H6FnXGshEyc4FReoOOfL3jIFIaxvE9o6azM5HD
+	Z9FAqblyYvyRSVdgF6Ig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdvJV-00000000hfq-0JLz;
-	Thu, 08 Jan 2026 19:04:53 +0000
+	id 1vdvJW-00000000hgw-2gsU;
+	Thu, 08 Jan 2026 19:04:54 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdvJS-00000000heJ-0cjn;
-	Thu, 08 Jan 2026 19:04:51 +0000
+	id 1vdvJT-00000000hee-2LQw;
+	Thu, 08 Jan 2026 19:04:52 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=+7r+KOhk72oCIseNLwLS7ExpfzV3F/ZLl5NOg862qTg=; b=zO5tlMjczGyTg0YSiQbS5bt1au
-	2jmpmWf5Bp/oN9GoydHgaDg0QTWmkUfgrVCV4zTAYcaEtx6ogrGb9ErpB32FM+bacHalQnUXqRbah
-	jn0D2wjN3KuWG+0GEfgUtHfeDUSWWUV037qYLYJXWmZERmjUXY2oo4fMyxv6Eb3e1qfauz59SaNmP
-	LJ0CXicMCAeQ1VKhvVYujcCkIBBdUxJcfBa7CvWqBAD+hWrHqrIcXNAmkYiVBRys0LFLLcCEyCzXC
-	liYhqVadFMqIv2M6W1F+LUB3STjT+nUve34TeXvg47fMEDzUoRtOQtVa3WfRX7MdIpKUJO1q1y5KD
-	acUCol9g==;
+	bh=WBscWiAcWdp/hFnULczKZ/bdY9UUlluznf57AoT+VeU=; b=BD6a4vJXOQQcwp946mh2IuOht6
+	QCqrXoCfVvwFYyjRpEyGtotTZjI5gEECIGbVWgYpFVizelst7RqVFw7V6ipRBUFYfFi//vrk4t02L
+	lNoyQTwoyh6tdVBIwGrPBP8PfuUrgw6itGx7kyw66jq2iLAcjOai7M3FeJv+sFgRtctCEMgYmLvnb
+	x8JqNBdRGMFgDMN3XldtxauDM2KgODhvWrNSBTAwsiCqPKlneKIL76yBa2XnEYfyIwPoF52M62eRo
+	KIjeQBcXHdkmxNDvAJrgK/7opHfNwQ3j3hYAUyPcsT2u/A/RapUegEkebxEOeHdfMgMm3QKZkEIdT
+	UNqPZt/g==;
 Received: from [192.76.154.238] (helo=phil.dip.tu-dresden.de)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1vdvJI-001XT5-So; Thu, 08 Jan 2026 20:04:41 +0100
+	id 1vdvJI-001XT5-Fo; Thu, 08 Jan 2026 20:04:41 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: Sandy Huang <hjc@rock-chips.com>,
-	Andy Yan <andy.yan@rock-chips.com>,
+To: Neil Armstrong <neil.armstrong@linaro.org>,
+	Jessica Zhang <jessica.zhang@oss.qualcomm.com>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>,
 	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
 	Maxime Ripard <mripard@kernel.org>,
 	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
-	Chaoyi Chen <chaoyi.chen@rock-chips.com>,
-	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Sandy Huang <hjc@rock-chips.com>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Chaoyi Chen <kernel@airkyi.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
-	David Laight <david.laight.linux@gmail.com>,
 	dri-devel@lists.freedesktop.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Daniel Stone <daniels@collabora.com>,
-	kernel@collabora.com
-Subject: Re: [PATCH v5 0/8] drm/rockchip: No more post-atomic_check fixups
-Date: Thu,  8 Jan 2026 20:04:37 +0100
-Message-ID: <176789904481.3303270.4157084512307461486.b4-ty@sntech.de>
+	linux-phy@lists.infradead.org,
+	Chaoyi Chen <chaoyi.chen@rock-chips.com>
+Subject: Re: (subset) [PATCH 0/9] drm/rockchip: Introduce Rockchip RK3506 VOP
+Date: Thu,  8 Jan 2026 20:04:36 +0100
+Message-ID: <176789904486.3303270.3558903343785181315.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20251215-vop2-atomic-fixups-v5-0-83463c075a8d@collabora.com>
-References: <20251215-vop2-atomic-fixups-v5-0-83463c075a8d@collabora.com>
+In-Reply-To: <20251106020632.92-1-kernel@airkyi.com>
+References: <20251106020632.92-1-kernel@airkyi.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260108_110450_187271_3860B83A 
-X-CRM114-Status: GOOD (  23.25  )
+X-CRM114-CacheID: sfid-20260108_110451_596031_F7870ADD 
+X-CRM114-Status: UNSURE (   8.14  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,56 +92,26 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Mon, 15 Dec 2025 15:09:16 +0100, Nicolas Frattaroli wrote:
-> I'm taking over this series to get it across the finish line. Original
-> cover letter from Daniel Stone on v1:
-> 
-> > Hi,
-> > This series is a pretty small and consistent one for VOP2. The atomic
-> > uAPI very clearly specifies that drivers should either do what userspace
-> > requested (on a successful commit), or fail atomic_check if it is not
-> > for any reason possible to do what userspace requested.
-> >
-> > VOP2 is unfortunately littered with a bunch of cases where it will apply
-> > fixups after atomic_check - doing something different to what userspace
-> > requested, e.g. clipping or aligning regions - or throw error messages
-> > into the log when userspace does request a condition which can't be met.
-> >
-> > Doing something different to what was requested is bad because it
-> > results in unexpected visual output which can look like artifacts.
-> > Throwing errors into the log is bad because generic userspace will
-> > reasonably attempt to try any configuration it can. For example,
-> > throwing an error message on a plane not being aligned to a 16 pixel
-> > boundary can result in 15 frames' worth of error output in the log when
-> > a window is being animated across a screen.
-> >
-> > This series removes all post-check fixups - failing the check if the
-> > configuration cannot be applied - and also demotes all messages about
-> > unsupported configurations to DEBUG_KMS.
-> >
-> > Cheers,
-> > Daniel
+On Thu, 06 Nov 2025 10:06:23 +0800, Chaoyi Chen wrote:
+> The VOP on rk3506:
+> - Support 2 lane MIPI DSI interface, 1.5Gbps/lane.
+> - Support RGB interface.
+> - Max output resolution is 1280x1280@60fps.
+> - WIN1 layer support RGB888/ARGB8888/RGB565.
+> - Support Gamma LUT.
 > 
 > [...]
 
 Applied, thanks!
 
-[1/8] drm/rockchip: vop2: Switch impossible format conditional to WARN_ON
-      commit: 78de5d28d7207f816565fa43ec44e6735c319ddf
-[2/8] drm/rockchip: vop2: Switch impossible pos conditional to WARN_ON
-      commit: 2f4e3f2bef45d1eb4d8204c5f204cf274e8a6ca6
-[3/8] drm/rockchip: vop2: Fix Esmart test condition
-      commit: f403945d240417761d404cb1ce8fa2c1ec02daf5
-[4/8] drm/rockchip: vop2: Enforce scaling workaround in plane_check
-      commit: dfb673c71fc0039a6495731d0c0fcefa8a97541d
-[5/8] drm/rockchip: vop2: Enforce AFBC source alignment in plane_check
-      commit: 8cdd4d858d7aaeb583ae2b4e5a0378936b18f0f0
-[6/8] drm/rockchip: vop2: Enforce AFBC transform stride align in plane_check
-      commit: 081676de4a22341a877ce81c4d5364737d167859
-[7/8] drm/rockchip: vop2: Use drm_is_afbc helper function
-      commit: c8c85c0a7fc2a545749da1ab8dc866de025c2314
-[8/8] drm/rockchip: vop2: Simplify format_mod_supported
-      commit: 28c2490458ca935b2d793ec0e6c22265855255a2
+[3/9] dt-bindings: display: rockchip,dw-mipi-dsi: Add compatible for rk3506
+      commit: 3af0f4d5d433921fa399bbe6396221c8a9985869
+[4/9] dt-bindings: display: rockchip,vop: Add compatible for rk3506
+      commit: 7919273e495b9154cc7e5f7713f002290f4d9597
+[7/9] drm/rockchip: dsi: Add support for rk3506
+      commit: cabeacc7eadc2d0033a2fc7304dfb900f9a32095
+[9/9] drm/rockchip: vop: Add support for rk3506
+      commit: ec27500c8f2b65a3be6ce39a5844d6d246d1b2b0
 
 Best regards,
 -- 
