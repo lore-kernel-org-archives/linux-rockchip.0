@@ -4,72 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD2D0CF6ABF
-	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Jan 2026 10:18:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE3C6D185C4
+	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Jan 2026 10:42:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=c0MTnny2s766BxNf+2Esh2DFoJomHeVAipCnkIyi2yo=; b=DtsIJKKv6L9pnA
-	7N2II8wau/QNg62uTyPdjeJH4tOUfE+tufhbPEpsLqtAMkQWAvFroJ4k5ZRCkANJNnAfciD5ersfF
-	y0EFy+RhxXo5X++S5eSHVUIcptO4ABCp5AHdrE3gzsG3Qu+rWebVRbI+ztmYKMQcBb5LSy3XATI3L
-	rBS0M98/q4hqkkUhYFpEZV0sFrYoAfpeMR5IEeJDhbwMaSXuR3mX8FqIdZ6nOi3nLgS+AEhoCO1j1
-	bcA/Oe0i1BIevv53ZczwFjv3Zljz3TkeIe2IA5jHO6z/Z5VCJYTEr2gu6mw7zQA1o+kLz+m52A2Gd
-	We9PitA1gESrbQ59MScg==;
+	List-Owner; bh=LFpaYZbp1nbR9G2/iYp/tbTDMC8Whz5bs4APnq31ljo=; b=tWtMzPLI9CXOT6
+	CmCqXJ2Kkhag7S0GTjVWZ+rnlyPWY68kQ65nHWwfTpI254yxhK0v7cFXynjD63OD8xFZqcSlt9ccu
+	Sxz9xamZi6WcLkhowJy/k9S5oleLh6CeXqVk7xhvksOrQ8L0iqzRanWme4XrMxMmczXiv65OAfoVh
+	fFUjkhzNQ9QoXe6+464skOJPQELhOqBb551cXeWM4+mXr8W/+03VkTORdKwDi+DrIawbxUTH1TdgC
+	p8/PhLwCX/C5YyGEulQUrvb0msKkA8o1wa9VL+0AQKyG1N3HFTornTT/ZoHPA3ZjuxtxAoVQ/ckPJ
+	lnhPHvsOdNKmrMCFmWgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdn5l-0000000Gask-36pR;
-	Thu, 08 Jan 2026 10:18:09 +0000
-Received: from smtpbgau2.qq.com ([54.206.34.216])
+	id 1vdnSt-0000000Gexo-4AIy;
+	Thu, 08 Jan 2026 10:42:03 +0000
+Received: from mail-m155116.qiye.163.com ([101.71.155.116])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdn5g-0000000GakD-3whS;
-	Thu, 08 Jan 2026 10:18:08 +0000
-X-QQ-mid: esmtpgz11t1767867447t17b301d6
-X-QQ-Originating-IP: iimORQ95rju0zXekm8eBvwFRScDDDgqOrWF9LwG6wVM=
-Received: from [192.168.254.128] ( [106.150.157.243])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Thu, 08 Jan 2026 18:17:24 +0800 (CST)
-X-QQ-SSF: 0000000000000000000000000000000
-X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 14971943080650209670
-Message-ID: <6547200DD4E67155+b1fb1848-2f11-4b3e-b556-9386373d23f1@radxa.com>
-Date: Thu, 8 Jan 2026 19:17:23 +0900
+	id 1vdnSp-0000000GewM-1aQ5;
+	Thu, 08 Jan 2026 10:42:02 +0000
+Received: from [172.16.12.51] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 2ff3a2c57;
+	Thu, 8 Jan 2026 18:41:47 +0800 (GMT+08:00)
+Message-ID: <c6fac95c-dd7a-4fdc-a93f-8ebac731d499@rock-chips.com>
+Date: Thu, 8 Jan 2026 18:41:46 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/1] arm64: dts: rockchip: remove RTC for Radxa E52C
-To: Chukun Pan <amadeus@jmu.edu.cn>, Heiko Stuebner <heiko@sntech.de>
-Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
-References: <20260108100000.110354-1-amadeus@jmu.edu.cn>
+Subject: Re: [PATCH v2 2/2] arm64: dts: rockchip: Add rk3576 evb2 board
+To: Quentin Schulz <quentin.schulz@cherry.de>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Kever Yang <kever.yang@rock-chips.com>, Jonas Karlman <jonas@kwiboo.se>,
+ John Clark <inindev@gmail.com>, FUKAUMI Naoki <naoki@radxa.com>,
+ Jimmy Hon <honyuenkwun@gmail.com>, Dragan Simic <dsimic@manjaro.org>,
+ Michael Riesch <michael.riesch@collabora.com>,
+ Peter Robinson <pbrobinson@gmail.com>, Alexey Charkov <alchark@gmail.com>,
+ Shawn Lin <shawn.lin@rock-chips.com>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Andy Yan <andy.yan@rock-chips.com>, Chaoyi Chen <kernel@airkyi.com>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20260107070322.323-1-kernel@airkyi.com>
+ <20260107070322.323-3-kernel@airkyi.com>
+ <afe968a0-f14b-423d-81a7-c1046d2b32bb@cherry.de>
+ <1b08bc47-70be-48fb-a05e-1101e633a776@rock-chips.com>
+ <0d99140e-8f57-4a7a-a492-92efa30292d8@cherry.de>
 Content-Language: en-US
-From: FUKAUMI Naoki <naoki@radxa.com>
-In-Reply-To: <20260108100000.110354-1-amadeus@jmu.edu.cn>
-X-QQ-SENDSIZE: 520
-Feedback-ID: esmtpgz:radxa.com:qybglogicsvrsz:qybglogicsvrsz4b-0
-X-QQ-XMAILINFO: OBDSLDo3By90tSlGmy9itwqN9NO9G4orDi6CCHIg+yJu1ZI4NLnO+pE6
-	NihuOgs14xcpbS1S5UCs1HA/ODBaPOzxPS6t2YPv8tQDyqo3FmsLq0d+iEX0+pqORjABZzk
-	B/1emMPqePZOBq8uz7ewvv4sBMaP7S/p3pwI83dV7wVzznaZj/JF8DuhC+emESvtUjlvw/5
-	dI05lask40L/IjXWuA5sdf0sgWaQtfUh0JXsojyqWm31/polJvQMmWxzv9XjvI47pjv5gSS
-	DBRWnYhsEqOac5hwq10xVDBmVCAqZ265iotQGPffMrPKICoX9OCwLoDig83x44d8giBTEyg
-	HsnXzmQM5SEFqTXAlYCmyK4hVLtDohU3OeBYEaYjZygj/rS2jLmBs4+JE4szLFGixhKXLxl
-	64yAO6tRJXQUnnjQsTIGHlhda2qV2tRmSVIB2/ZAnRL8mW/wDmAoS3q5iSJ/n00MHsqvKN7
-	M2Jd/MX8ICxsdjPiIo/+PmhktKCTCp64N8sZfRm/dPFTSx/6arEeIcjvkauCJ0rcAwWGP/q
-	g5QzNXxPVLiCepEyeKKwu2418tarr3AG22bVdDrjmgrdpckAleU5IhNvsrze9FdLQ/dsb3I
-	/3xEOTgsOutj0sUTVCD+/sOqtjK0kPGb+yZCCziwqpVOJDJcHHVJ7r7byRIICehJKq+ZU9M
-	rZN+vCt7E5tSrKbC3QPUXw6Ftent63p+kIwDaamIoWcvZHzoJ2UG4WzrHhMfib7joU2Zodh
-	zGGcwL1OdWrTkyvvY0W776uxvdr4H+Wpht/Iqfj57IZcjAe28TgVYwBo8KS7zRc1sxaMv8U
-	/M9MM4tOyHqVv4fxtuvC03qJfkNOezc+LQUSSkrtHCdcAhyOoHraG31Mls/QaI6PurBWZLK
-	sGlX5ork/5hPmV7AYQb1nrY0YLdOU8XvYTVwEJcdkriGe67+2kqZQn20sjL7/xIHIvTrNNY
-	OcFa9tTyxn2Uxg4S8tB8D/JoQO2vDPVKlXPVzp1tt/OFgrw==
-X-QQ-XMRINFO: Nq+8W0+stu50tPAe92KXseR0ZZmBTk3gLg==
-X-QQ-RECHKSPAM: 0
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+In-Reply-To: <0d99140e-8f57-4a7a-a492-92efa30292d8@cherry.de>
+X-HM-Tid: 0a9b9d32bee703abkunmbf4c270613cd5e
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQ09JSFYZGBkeHxgYQkJJSk1WFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=L1nQBYywUwxdSotoHvJ/6KJvzPK4O/1TyunGOLwEFOiieurKqEntt9HT5ltPIF6PQEJ0TivS0yH+cR1SqlPfp7wg1kmC9JDepjy84i4Q6LOOg++QM/3oPZl99+kefEJFdD74t8iWu1eDfnHc0JyHP8LvuWCDm4Mu29Hwkn0pC5k=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=rkQu0ywfCqJZE+WsNbm/KDvp35VhTZ7L4bvh8V9tH10=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260108_021806_969875_97CC66D6 
-X-CRM114-Status: GOOD (  12.48  )
+X-CRM114-CacheID: sfid-20260108_024200_811910_F626C1D2 
+X-CRM114-Status: GOOD (  30.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,79 +79,149 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Chukun,
+Hi Quentin,
 
-On 1/8/26 19:00, Chukun Pan wrote:
-> According to the Radxa E52C Schematic [1], both the i2c5 bus and the
-> hym8563 chip are marked as NC. Remove them to avoid the following log:
+On 1/8/2026 6:07 PM, Quentin Schulz wrote:
+> Hi Chaoyi,
 > 
-> rtc-hym8563 5-0051: could not init device, -110
-> rtc-hym8563 5-0051: probe with driver rtc-hym8563 failed with error -110
+> On 1/8/26 7:27 AM, Chaoyi Chen wrote:
+>> Hi Quentin,
+>>
+>> Thank you for your patient review.
+>>
+>> On 1/7/2026 11:46 PM, Quentin Schulz wrote:
+>>> Hi Chaoyi,
+>>>
+>>> On 1/7/26 8:03 AM, Chaoyi Chen wrote:
 > 
-> [1] https://dl.radxa.com/e/e52c/hw/radxa_e52c_v1.2_schematic.pdf
-
-V1.209 and later should have RTC. What version do you have?
-
-Best regards,
-
---
-FUKAUMI Naoki
-Radxa Computer (Shenzhen) Co., Ltd.
-
-> Fixes: 9be4171219b6 ("arm64: dts: rockchip: Add Radxa E52C")
-> Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
-> ---
->   .../boot/dts/rockchip/rk3582-radxa-e52c.dts   | 24 -------------------
->   1 file changed, 24 deletions(-)
+> [...]
 > 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dts b/arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dts
-> index 854c118418eb..c24ff264cae2 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dts
-> @@ -266,24 +266,6 @@ regulator-state-mem {
->   	};
->   };
->   
-> -&i2c5 {
-> -	pinctrl-names = "default";
-> -	pinctrl-0 = <&i2c5m2_xfer>;
-> -	status = "okay";
-> -
-> -	rtc@51 {
-> -		compatible = "haoyu,hym8563";
-> -		reg = <0x51>;
-> -		#clock-cells = <0>;
-> -		clock-output-names = "rtcic_32kout";
-> -		interrupt-parent = <&gpio0>;
-> -		interrupts = <RK_PB0 IRQ_TYPE_LEVEL_LOW>;
-> -		pinctrl-names = "default";
-> -		pinctrl-0 = <&rtc_int_l>;
-> -		wakeup-source;
-> -	};
-> -};
-> -
->   &pcie2x1l1 {
->   	pinctrl-names = "default";
->   	pinctrl-0 = <&pcie20x1_1_perstn_m1>;
-> @@ -329,12 +311,6 @@ vcc_5v0_pwren_h: vcc-5v0-pwren-h {
->   		};
->   	};
->   
-> -	rtc {
-> -		rtc_int_l: rtc-int-l {
-> -			rockchip,pins = <0 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
-> -		};
-> -	};
-> -
->   	usb {
->   		usb_otg_pwren_h: usb-otg-pwren-h {
->   			rockchip,pins = <0 RK_PD4 RK_FUNC_GPIO &pcfg_pull_none>;
+>>>> +        stdout-path = "serial0:1500000n8";
+>>>> +    };
+>>>> +
+>>>> +    adc_keys: adc-keys {
+>>>
+>>> Are we expecting to extend this node from another DT? Why the label?
+>>>
+>>> Won't comment on all other labeled-but-no-phandle-use instances, please check.
+>>>
+>>
+>> I think one exception is the regulator labels. Even though their
+>> phandles are unused, they match the names on the schematic, so it
+>> seems meaningful to keep them.
+>>
+> 
+> Can't you use the regulator-name property for that? Or a comment if you realllly want it to be somewhere in the DTS? If I remember correctly, labels make it to the DTB when building it with symbols (-@, enabled whenever there's a DTSO for the board; see __symbols__ node when decompiling), this will unnecessarily bloat the final DTB.
+>
 
+Oh, it make sense.
+
+>>>> +    vcc3v3_rtc_s5: regulator-vcc3v3-rtc-s5 {
+>>>> +        compatible = "regulator-fixed";
+>>>> +        regulator-name = "vcc3v3_rtc_s5";
+>>>> +        regulator-boot-on;
+>>>> +        regulator-always-on;
+>>>> +        regulator-min-microvolt = <3300000>;
+>>>> +        regulator-max-microvolt = <3300000>;
+>>>> +        vin-supply = <&vcc_sys>;
+>>>
+>>> If this is for the rtc, shouldn't we declare this dependency in the RTC device node and not have it always-on?
+>>>
+>>
+>> I checked other boards that use the hym8563 device and couldn't find
+>> a similar approach. Could you give an example?
+>>
+> 
+> If this is truly always on by hardware design, then I guess it's "fine". That other boards aren't doing isn't much of an argument, as they may not need it. Typically, you could need to update the driver (and its binding) to accept and control power supplies so that you can link the two together in the device tree. I'm assuming for an RTC it doesn't make much sense to have its power supply controllable as it likely needs to be powered even when the device is turned off (otherwise the RTC stops counting :) ).
+>
+
+Yes, this seems unnecessary, which is why I'm asking if you've
+encountered similar designs before.
+
+>>>> +    };
+>>>> +
+>>>> +    vcc3v3_sata_pwren: vcc3v3-sata-pwren {
+>>>> +        compatible = "regulator-fixed";
+>>>> +        regulator-name = "vcc3v3_sata_pwren";
+>>>> +        enable-active-high;
+>>>> +        regulator-boot-on;
+>>>> +        regulator-always-on;
+>>>
+>>> Why do we have this always-on? Seems like we're missing a dependency on this regulator in the SATA controller?
+>>>
+>>
+>> In v1 we set the pinctrl inside the SATA node. To keep the pins from
+>> being reused by mistake we added this regulator in v2.
+>>
+> 
+> This is a controllable regulator, which seems to be dedicated to SATA (from the name of it). Why isn't it something that the SATA controller controls?
+> 
+> You have ahci-supply, target-supply and phy-supply in ahci-common.yaml DT binding that may be appropriate for this regulator.
+>
+
+Thank you for provide these info. I will try to add them in v3.
+
+> The issue is if this regulator is probed *after* your SATA device, SATA probably won't work. Imagine REGULATOR_FIXED_VOLTAGE=m (or even =n, but then you likely have other issues) and your SATA controller driver is built-in, this will be broken.
+> 
+> Remove the always-on and set the proper link in the SATA controller device node so that this is handled properly.
+>
+
+Oh! I did overlook that point! I will try to do it in v3.
+
+>>>> +        gpio = <&gpio4 RK_PC7 GPIO_ACTIVE_HIGH>;
+>>>> +        pinctrl-names = "default";
+>>>> +        pinctrl-0 = <&satapm_pwren>;
+>>>> +    };
+>>>> +
+>>>> +    vcc5v0_device: regulator-vcc5v0-device {
+>>>> +        compatible = "regulator-fixed";
+>>>> +        regulator-name = "vcc5v0_device";
+>>>> +        regulator-always-on;
+>>>> +        regulator-boot-on;
+>>>> +        regulator-min-microvolt = <5000000>;
+>>>> +        regulator-max-microvolt = <5000000>;
+>>>> +        vin-supply = <&vcc12v_dcin>;
+>>>> +    };
+>>>> +
+>>>> +    vcc5v0_host: regulator-vcc5v0-host {
+>>>> +        compatible = "regulator-fixed";
+>>>> +        regulator-name = "vcc5v0_host";
+>>>> +        regulator-boot-on;
+>>>> +        regulator-always-on;
+>>>> +        regulator-min-microvolt = <5000000>;
+>>>> +        regulator-max-microvolt = <5000000>;
+>>>> +        enable-active-high;
+>>>> +        gpio = <&gpio0 RK_PC3 GPIO_ACTIVE_HIGH>;
+>>>> +        vin-supply = <&vcc5v0_device>;
+>>>> +        pinctrl-names = "default";
+>>>> +        pinctrl-0 = <&usb_host_pwren>;
+>>>> +    };
+>>>> +
+>>>
+>>> I assume both of the above are related to USB operating in host or device mode? Maybe there's a way to have something more useful to the user in regulator-name (and possibly the regulator node name) so that they have an idea what this pertains to?
+>>
+>> It's a good idea. Actually, we have two regulators here, one for USB0
+>> and another for USB1. I'll try to rename them in v2.
+>>
+> 
+> Are you sure? vcc5v0_device is a supply for vcc5v0_host, so it'd be odd that in order for USB1 to work, you need USB0 powered?
+
+No, the "vcc5v0_device" serves as the vin-supply for both
+"VCC5V0_USB3_HOST0" and "VCC5V0_USB3_HOST1". 
+And "VCC5V0_USB3_HOSTx" is supply for USB VBUS.
+
+All the names marked here are those shown in the schematic. As you
+suggested, it would be better to set regulator-name to the schematic
+name "VCC5V0_USB3_HOSTx" and use "usbx_vbus" for the label.
+
+-- 
+Best, 
+Chaoyi
 
 _______________________________________________
 Linux-rockchip mailing list
