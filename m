@@ -4,80 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07358D1D492
-	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Jan 2026 20:56:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC913D1D494
+	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Jan 2026 21:24:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MvyHcy+u7yk48FpxLafppUXAWJRW/HHStULz1v7j480=; b=lbs8D7YD3dqX3p
-	Xhh6HIAcw8EphPewKeysM0swZEkrnBEe6CgaWv3iCqZxmzSY+K881PBLZ/d/PU1m71foNTPfifuSY
-	5VJQMybTP7gywxTjK04h5zxtvasX33ayRKjfewpiEcEmIojjOBMd5XdmrAVrIFGH3Oj+mXcKhzllk
-	kgWARJ8UVbrnFHwcu0DS3RyjaF140obvyPGg9H+hr9r50tNrao68jDiZE7wzBcBhBxHQAClxo4zSf
-	VS+NVlWWfyywKVV3jLkR/RO15n238LJ/XCWJdhOu11HgSmJIvbVpZtAz/0E26p7YQ63GlIlmgCaQ+
-	+9C3GXhQeUYa012DzmWQ==;
+	List-Owner; bh=vmsBIl5+dy8WmDoQx1fIltjLgDyB8UV7bjhWlvWdzt4=; b=Oh/qotU0L7kEzE
+	a00efSSWIysUkAf4SiREDoOsEpbd8ykyrk9zcpkngmkj3BQ/akNdtu6gc97j1uD7F6L/bRgZFPWh4
+	j1hSH9SKLUWNxoUNXt/PYgJslIbT51R3DPpGumkG8Gi/ZGAW4aP6xZbezhOQu8qIdKgVzI7eCVipZ
+	9XGGfFfdYNpTLz30kpTXRbA7SWftoLmIwCPKW/GVeQAohEiTUkafJgInyWToYLKuQHRlEIa+YjZkx
+	IW7kRvIicluPjO40zHb1dRPUClUvTVEs+OtyX2sSC9RFbxRAC39qqkqhtlZqYqLtQmPCFgq9z+mjF
+	DBUEXLL38MnOekZrfAbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdx2m-00000000r6n-05RK;
-	Thu, 08 Jan 2026 20:55:44 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vdxU4-00000000u7Z-1HPF;
+	Thu, 08 Jan 2026 21:24:01 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdx2j-00000000r6M-3iMM;
-	Thu, 08 Jan 2026 20:55:43 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 5F8A040989;
-	Thu,  8 Jan 2026 20:55:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6B290C116C6;
-	Thu,  8 Jan 2026 20:55:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1767905740;
-	bh=xBJe/1TFcmT6ykWBd9m6VDk/sy5CDIe6A5UhmE5fQMc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=SjSg9NeThhyh+++t7oDphRi9jrjfHMpyjFOTzaeh0gYoZ3izGVjS4O26bFUA1QUvm
-	 J3SqsMuOQCewM7IKUQ96hK2KMq/kcHx9beh18yud/0R4cTYRVZLISqCM0zEThG8jQ+
-	 h5AYr5uN46Rj5jEJLWP1pW79KbPjBYUs+2Un3MzTPCOu3AXqD7aNoNxS/PtrsiFlh/
-	 hahC8p89QMUHjsXVrAsAGZl/GL0U9LcdaKzZNuS74lwloUO1xDsSnYzTWALX39Z9GL
-	 rvyrOUOB/9IfhehMJlaoXTpriWA0L1IpI4LhNpjLMymvGJSP5UfbZz9Kzfuz+mPimt
-	 U7lpSI5WgMQxg==
-Date: Thu, 8 Jan 2026 21:55:27 +0100
-From: Niklas Cassel <cassel@kernel.org>
-To: Koichiro Den <den@valinux.co.jp>
-Cc: jingoohan1@gmail.com, mani@kernel.org, lpieralisi@kernel.org,
-	kwilczynski@kernel.org, robh@kernel.org, bhelgaas@google.com,
-	vigneshr@ti.com, s-vadapalli@ti.com, hongxing.zhu@nxp.com,
-	l.stach@pengutronix.de, shawnguo@kernel.org, s.hauer@pengutronix.de,
-	kernel@pengutronix.de, festevam@gmail.com, minghuan.Lian@nxp.com,
-	mingkai.hu@nxp.com, roy.zang@nxp.com, jesper.nilsson@axis.com,
-	heiko@sntech.de, srikanth.thokala@intel.com,
-	marek.vasut+renesas@gmail.com, yoshihiro.shimoda.uh@renesas.com,
-	geert+renesas@glider.be, magnus.damm@gmail.com,
-	christian.bruel@foss.st.com, mcoquelin.stm32@gmail.com,
-	alexandre.torgue@foss.st.com, thierry.reding@gmail.com,
-	jonathanh@nvidia.com, hayashi.kunihiko@socionext.com,
-	mhiramat@kernel.org, kishon@kernel.org, jirislaby@kernel.org,
-	rongqianfeng@vivo.com, 18255117159@163.com,
-	shawn.lin@rock-chips.com, nicolas.frattaroli@collabora.com,
-	linux.amoon@gmail.com, vidyas@nvidia.com, Frank.Li@nxp.com,
-	linux-omap@vger.kernel.org, linux-pci@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	imx@lists.linux.dev, linuxppc-dev@lists.ozlabs.org,
-	linux-arm-kernel@axis.com, linux-rockchip@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-tegra@vger.kernel.org
-Subject: Re: [PATCH v5 3/3] PCI: dwc: ep: Support BAR subrange inbound
- mapping via Address Match Mode iATU
-Message-ID: <aWAZv3ZwdUmo4_wc@ryzen>
-References: <20260108172403.2629671-1-den@valinux.co.jp>
- <20260108172403.2629671-4-den@valinux.co.jp>
+	id 1vdxU0-00000000u5a-1yRP
+	for linux-rockchip@lists.infradead.org;
+	Thu, 08 Jan 2026 21:23:54 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1767907431;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=aMZTdMgEwkPQanj/a0OAHfxOFan2ydElF0bb71YGl8A=;
+	b=Uf7uzfNJ3+JSJCkeGBiusv/Kt7p1mxr2a1YeOLNrN0ZKArxnRyPkIes1TQa2m9iE2nTc/C
+	FtR2nf/nN65TFVxroidR3GAK+iYvvB13tMCHsTz1LLABaX/oMMRxaV0u/DrVRLjLy9QTcb
+	9hJYP+016PKwfrm1ol4yQuFj2QV5Qrg=
+Received: from mail-vk1-f199.google.com (mail-vk1-f199.google.com
+ [209.85.221.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-433-Wulaj-ilNrKTtUGq6dN19w-1; Thu, 08 Jan 2026 16:23:49 -0500
+X-MC-Unique: Wulaj-ilNrKTtUGq6dN19w-1
+X-Mimecast-MFC-AGG-ID: Wulaj-ilNrKTtUGq6dN19w_1767907429
+Received: by mail-vk1-f199.google.com with SMTP id 71dfb90a1353d-55995c43832so6974682e0c.3
+        for <linux-rockchip@lists.infradead.org>; Thu, 08 Jan 2026 13:23:49 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1767907429; x=1768512229;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=aMZTdMgEwkPQanj/a0OAHfxOFan2ydElF0bb71YGl8A=;
+        b=mumywTLspSo98/BSjNBynt0x3P0vhlrYq3r45wV0f9pPysuO49B2ZRSdDyj+QMeDwL
+         jS1MnebCWRHIMRl9a9zzbsNaCcF2FvjQKZXcsoiJURzfWp3qz/t2aAGtdYABstAD66Zp
+         2+m5Clgd3GUbjfDi1n5ON7/RIkvXadSiKUN8f7nK8gK0rmGOiaO9oxFRM9Bbfx09qFhS
+         J1+Bfo67RevpTlAaFWE6hG0tT8f9FQo0HSdyvir0VVxHm722z7M95BJg6mITDzLtNOHn
+         XDf/nhuxO/8RKtqxos77T0Itrev4odeUl7kt8EOYqZgXCwbyYAMFBgSjGLcZmQApr8sz
+         bUfw==
+X-Forwarded-Encrypted: i=1; AJvYcCXRcxsuFK9TADI2gSb2cq9RXj23eMnrgpWRUa8heDBZjKNuCOzXxzbva4xRfzc7FvuM5kK6oTJhf0BaKz463Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxaXvUuVsWtevI4z+HdeSw3bMpP8lihcwtHBGCDED+EIwIBRRuK
+	SYxZYNwFeHISuIwDOnihzfkxKa0vYTKcDlaoiUQigRIn5ble06qgVNdHrGX0u2PXKZXrE4rlgvC
+	7jKW6SF4G8JPpFZTfbPGtYTFK909029/PcADtq7vTOCRC9j1xb0BAWxSYwbcsBKqsCoGlIf37Cw
+	==
+X-Gm-Gg: AY/fxX6Dfjf5/+Hz25PjkET7+qVhB2TUJar7Gj/kxUe2Nlh9z9+/Uipp6/SzONRb+O0
+	v/gcPav266VkoqbGse4diR+Z4a5+o4QM2tY15SZJ+IjFIygQazbkQoRsfDzDUBivmMKFNdiwBux
+	s1RBpFb7zb993fks4ew4uR5HyMbbYk53rjYrXn/3eGciDHk5rzDLqzUULln62kzLg8hb9LAfWdM
+	n/ang3vqxxiNsO9jpAuvknuJCjsu1Os0yoTyM8XRMaXEO69ErF2+efhkAy+bcbViUymdBjb3LUk
+	uJH1YjWUMaKM73Kr9ay0QZnNo7zzEI26faHmH9fZ+KEBBlYaavsF7jpKNrrnisxeAJqErWt2dM0
+	QntQGCvtR
+X-Received: by 2002:a05:6102:162a:b0:5ee:a76a:8513 with SMTP id ada2fe7eead31-5eea76a8724mr1006314137.33.1767907429156;
+        Thu, 08 Jan 2026 13:23:49 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IE9+XK5E3OQPztXIo7GPKPfvpra0LA99i0XMQua/Tc/8Kj6tPqIGZY+3/QAUKTGxXE41kQHWQ==
+X-Received: by 2002:a05:6102:162a:b0:5ee:a76a:8513 with SMTP id ada2fe7eead31-5eea76a8724mr1006294137.33.1767907428708;
+        Thu, 08 Jan 2026 13:23:48 -0800 (PST)
+Received: from redhat.com ([2600:382:811f:d757:daa5:b867:12a3:9d12])
+        by smtp.gmail.com with ESMTPSA id ada2fe7eead31-5ec772e322asm7790577137.13.2026.01.08.13.23.39
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 08 Jan 2026 13:23:48 -0800 (PST)
+Date: Thu, 8 Jan 2026 16:23:34 -0500
+From: Brian Masney <bmasney@redhat.com>
+To: Geert Uytterhoeven <geert@linux-m68k.org>
+Cc: Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Stephen Boyd <sboyd@kernel.org>, Maxime Ripard <mripard@kernel.org>,
+	linux-clk@vger.kernel.org, linux-phy@lists.infradead.org,
+	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v3 9/9] phy: ti: phy-j721e-wiz: convert from round_rate()
+ to determine_rate()
+Message-ID: <aWAgVt599agpNqZQ@redhat.com>
+References: <20251212-phy-clk-round-rate-v3-0-beae3962f767@redhat.com>
+ <20251212-phy-clk-round-rate-v3-9-beae3962f767@redhat.com>
+ <CAMuHMdXudWW3MPKqP0-d+DyMNRF-X62oyHRnj=MM_9MSpJw6sw@mail.gmail.com>
+ <aVurM1XRqiYlzi1B@redhat.com>
 MIME-Version: 1.0
+In-Reply-To: <aVurM1XRqiYlzi1B@redhat.com>
+User-Agent: Mutt/2.2.14 (2025-02-20)
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 3Ebrv8r6bXNPnYWW5GSM7GI_SscQtxRZ9R8WEAtamfQ_1767907429
+X-Mimecast-Originator: redhat.com
 Content-Disposition: inline
-In-Reply-To: <20260108172403.2629671-4-den@valinux.co.jp>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260108_125541_989566_57393A5C 
-X-CRM114-Status: GOOD (  18.53  )
+X-CRM114-CacheID: sfid-20260108_132352_593935_CF0ED7CA 
+X-CRM114-Status: GOOD (  27.76  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,100 +127,60 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Koichiro,
+Hi Geert,
 
-On Fri, Jan 09, 2026 at 02:24:03AM +0900, Koichiro Den wrote:
+On Mon, Jan 05, 2026 at 07:14:43AM -0500, Brian Masney wrote:
+> On Mon, Dec 29, 2025 at 11:18:52AM +0100, Geert Uytterhoeven wrote:
+> > Hi Brian,
+> > 
+> > On Fri, 12 Dec 2025 at 00:21, Brian Masney <bmasney@redhat.com> wrote:
+> > > The round_rate() clk ops is deprecated, so migrate this driver from
+> > > round_rate() to determine_rate() using the Coccinelle semantic patch
+> > > on the cover letter of this series.
+> > >
+> > > Signed-off-by: Brian Masney <bmasney@redhat.com>
+> > 
+> > Thanks for your patch, which is now commit 27287e3b52b5954b ("phy:
+> > ti: phy-j721e-wiz: convert from round_rate() to determine_rate()")
+> > in phy/next
+> > 
+> > > --- a/drivers/phy/ti/phy-j721e-wiz.c
+> > > +++ b/drivers/phy/ti/phy-j721e-wiz.c
+> > > @@ -934,12 +934,15 @@ static unsigned long wiz_clk_div_recalc_rate(struct clk_hw *hw,
+> > >         return divider_recalc_rate(hw, parent_rate, val, div->table, 0x0, 2);
+> > >  }
+> > >
+> > > -static long wiz_clk_div_round_rate(struct clk_hw *hw, unsigned long rate,
+> > > -                                  unsigned long *prate)
+> > > +static int wiz_clk_div_determine_rate(struct clk_hw *hw,
+> > > +                                     struct clk_rate_request *req)
+> > >  {
+> > >         struct wiz_clk_divider *div = to_wiz_clk_div(hw);
+> > >
+> > > -       return divider_round_rate(hw, rate, prate, div->table, 2, 0x0);
+> > > +       req->rate = divider_round_rate(hw, req->rate, &req->best_parent_rate,
+> > > +                                      div->table, 2, 0x0);
+> > 
+> > Is this correct?  divider_round_rate() can return a negative error code
+> > (from divider_ro_determine_rate()), which is not handled here?
+> > 
+> > Looks like several other users of divider_round_rate() use this
+> > same logic, and thus are affected, too.
+> 
+> Thanks for the review! You are correct that this is a bug.
+> 
+> I had planned once round_rate is removed from the clk core to post a
+> series to remove divider_round_rate() and divider_ro_round_rate() (plus
+> the _parent functions) since they call the corresponding determine_rate
+> functions. I'll bump that up on my todo list this week.
 
-(snip)
+I posted a series that fixes the issue you identified, plus removes
+those deprecated APIs all in one go.
 
-> +/* Address Match Mode inbound iATU mapping */
-> +static int dw_pcie_ep_ib_atu_addr(struct dw_pcie_ep *ep, u8 func_no, int type,
-> +				  const struct pci_epf_bar *epf_bar)
-> +{
-> +	const struct pci_epf_bar_submap *submap = epf_bar->submap;
-> +	struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
-> +	enum pci_barno bar = epf_bar->barno;
-> +	struct device *dev = pci->dev;
-> +	u64 pci_addr, parent_bus_addr;
-> +	struct dw_pcie_ib_map *new;
-> +	u64 size, off, base;
-> +	unsigned long flags;
-> +	int free_win, ret;
-> +	unsigned int i;
-> +
-> +	if (!epf_bar->num_submap || !submap || !epf_bar->size)
-> +		return -EINVAL;
-> +
-> +	ret = dw_pcie_ep_validate_submap(ep, submap, epf_bar->num_submap,
-> +					 epf_bar->size);
-> +	if (ret)
-> +		return ret;
-> +
-> +	base = dw_pcie_ep_read_bar_assigned(ep, func_no, bar, epf_bar->flags);
-> +	if (!base) {
-> +		dev_err(dev,
-> +			"BAR%u not assigned, cannot set up sub-range mappings\n",
-> +			bar);
-> +		return -EINVAL;
-> +	}
+https://lore.kernel.org/linux-clk/20260108-clk-divider-round-rate-v1-0-535a3ed73bf3@redhat.com/T/#t
 
-Sorry for giving additional review comments.
+Brian
 
-But there is one thing that I might not be so obvious for someone just
-reading this source. How is this API supposed to be used in practice?
-
-Most DWC-based controllers are not hotplug capable.
-
-That means that we must boot the EP, create the EPF symlink in configfs,
-and start link training by writing to configfs, before starting the host.
-
-dw_pcie_ep_ib_atu_addr() reads the PCI address that the host has assigned
-to the BAR, and returns an error if the host has not already assigned a
-PCI addres to the BAR.
-
-Does that mean that the usage of this API will be something like:
-
-1) set_bar() ## using BAR match mode, since BAR match mode can write
-   the BAR mask to define a BAR size, so that the host can assign a
-   PCI address to the BAR.
-
-2) start() ## start link
-
-3) link up
-
-4) wait for some special command, perhaps NTB_EPF_COMMAND
-CMD_CONFIGURE_DOORBELL or NTB_EPF_COMMAND CMD_CONFIGURE_MW
-
-5) set_bar() ## using Address match mode. Because address match mode
-   requires that the host has assigned a PCI address to the BAR, we
-   can only change the mapping for a BAR after the host has assigned
-   PCI addresses for all bars.
-
-
-
-Perhaps you should add some text to:
-Documentation/PCI/endpoint/pci-endpoint.rst
-
-Because right now the documentation for pci_epc_set_bar() says:
-
-   The PCI endpoint function driver should use pci_epc_set_bar() to configure
-   the Base Address Register in order for the host to assign PCI addr space.
-   Register space of the function driver is usually configured
-   using this API.
-
-So it is obviously meant to be called *before* the host assigns a PCI
-address for the BAR. Now with submap ranges, it appears that it has to
-be called *after* the host assigned a PCI address for the BAR.
-
-So I can only assume that you will call set_bar() twice.
-Once with BAR match mode, and then a second time with address map mode.
-
-It might be obvious to you, but I think it makes sense to also have some
-kind of documentation for this feature.
-
-
-Kind regards,
-Niklas
 
 _______________________________________________
 Linux-rockchip mailing list
