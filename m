@@ -4,163 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D416D232E9
-	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Jan 2026 07:29:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6A41D232E9
+	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Jan 2026 07:33:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vjwg+/TeFow+ez76wbxfvS/A0cHFPTvi63luyTYNO0o=; b=QUlwJ715d3U1F9
-	iW+HGv6I7wDmtaXlxELZz31ik/T72mcAUwUqWDplLFWgwC07RaUL82WsIF4APJcsvCOb1PUZi9aps
-	ig5z02iJS3S2ysFrw9fQT7bF9a8pxYSkREwPcFlOKUNp0TvlPiKzcHxiroklJ7EMFj0d/Qgy+0KbM
-	fTuJKOSNZQYbxHJEgz9KbqlHKL6RT+OR4UeXAap/7gSCFLo2AcLMpKYlNXbdgz56WyT5vHelnUXwS
-	GDHTOqvtUNhxy1472TMn58QQmDlJoRW+6QDnvtu5gKo37+zT7alvyIeLKDuz9FUtDf7amZtEhzbxl
-	dt7FgrAkGsn3w9AflJhQ==;
+	List-Owner; bh=ZmkcH63wPA62PlYoEtfXB9WSC3NHv7ImTSFPcxFyrIw=; b=WswTEW06jLcVmU
+	qZ3lNtYwqSZYDu2TVSpPj8lTeH04Izm4B2LZiQYC82SXdVMY/ZViAdCa1QqvWIktk/0X8qE9QnaUs
+	2pAtf+/eP8xNE7Ab9tDm55ysKW5Pdb3vnrIKZAusgF5TjVU0fqNh+FYYV3TbtF80rRYCCOCw5BuF4
+	aJn65qdE/0DlDvzOjd2s8ssFdkiLtLJMvtlFAHA5sHFHEodLYrDl3Yh6YQgV5ij9idxdLdqBp6rFp
+	Le6LFFx7P8e9tt9y7+XOYaPH/0dlZ0t8VwBwNwiB9sPkFG13NaquvzJnW0JYa/73V7sSZbcUpN5lU
+	NLBmQf+L90Lb460fRoPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ve6w1-00000001inu-3H5e;
-	Fri, 09 Jan 2026 07:29:25 +0000
-Received: from mail-japaneastazlp170110002.outbound.protection.outlook.com ([2a01:111:f403:c405::2] helo=TYVP286CU001.outbound.protection.outlook.com)
+	id 1ve704-00000001kRD-2cj0;
+	Fri, 09 Jan 2026 07:33:36 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ve6vy-00000001imx-0gNd;
-	Fri, 09 Jan 2026 07:29:23 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=zJWu0JDFgtRwniLm0OmAkbS11y0d1pgxmEtSQ8yYPd+43J4OvNHIcRMjRdpZ1Q+i+6rounpZv0jZXBm672nO/0mtSktpA3W9dHP1/01OdgPdH+8dQtVQ+NodBZcaHgOdZki+rWrdK21EU0UAQyzdqRHjy8PJpRife6vHHE81kcAJ2mdOn+qLBfTpZC3zX2PM2aNPtsWxOJ6/+8zAo90QZDgQKbcPE8NMKk6zeGlKvwENeQNtOxO1zd4O7IWvtEABCGToMuZLPUbHi78OrMbS4NfQ95C4WFKJjY+RrEFbTUFpub2PikDWr7jITQCVWWttSw6Rjbe4ao6viqeI5l56Iw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=veU9tN9zvF09zNzl0P1xcmIqmWhRyWZWlSWTCLXzXPA=;
- b=lJPmX4TkrjCC90eFD21f1ZysXf+giemNBXrfW4bvlO/b3N/loAoS/+e1BRTACNn8MFLwrs7iDXqy+q0c8N0XiePClymzhEBZMz78E0vIGqgoepZRVhbcHW+Ydc7c6gcw1rN3O8V//XmjJ1z5uO4Y04zwpfCyCu2hWq3/xEggwrFbnbn3l0PV1GpoEFOvH2YRxdfptlFr60TUCXIKis+9eCUorTxZRb0mjCbPqJxm8jMbpJpAMf7uE92QwMhpQ5S1KkTATuYHi5Mp1SMB6KhmRSD5oHMA1HC3AfTiaKKIdTRvVQxZj53dhXR16noyT3/D9+likWQoLwS/OTZOxpmKwA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=valinux.co.jp; dmarc=pass action=none
- header.from=valinux.co.jp; dkim=pass header.d=valinux.co.jp; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=valinux.co.jp;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=veU9tN9zvF09zNzl0P1xcmIqmWhRyWZWlSWTCLXzXPA=;
- b=MSpFLE8b5Qm18oi1ZMW8MraSipXiejbbWXnPZFBQcIpzBTy1R9ZPS0qGSVvZFMbLJ0FZjoDVmoLKP4mWxusbssatzNtwBJ6dY0x8XmHH3hPOBQFTPwKS4odyYRy676cZgbAeK/Ba2VH3qGEwTlKnAubYmjXyRRqxALwMU7mFQUc=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=valinux.co.jp;
-Received: from TY7P286MB7722.JPNP286.PROD.OUTLOOK.COM (2603:1096:405:38f::10)
- by TY7P286MB6304.JPNP286.PROD.OUTLOOK.COM (2603:1096:405:327::7) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9499.3; Fri, 9 Jan
- 2026 07:29:16 +0000
-Received: from TY7P286MB7722.JPNP286.PROD.OUTLOOK.COM
- ([fe80::2305:327c:28ec:9b32]) by TY7P286MB7722.JPNP286.PROD.OUTLOOK.COM
- ([fe80::2305:327c:28ec:9b32%5]) with mapi id 15.20.9499.003; Fri, 9 Jan 2026
- 07:29:16 +0000
-Date: Fri, 9 Jan 2026 16:29:14 +0900
-From: Koichiro Den <den@valinux.co.jp>
-To: Niklas Cassel <cassel@kernel.org>
-Cc: jingoohan1@gmail.com, mani@kernel.org, lpieralisi@kernel.org, 
-	kwilczynski@kernel.org, robh@kernel.org, bhelgaas@google.com, vigneshr@ti.com, 
-	s-vadapalli@ti.com, hongxing.zhu@nxp.com, l.stach@pengutronix.de, 
-	shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de, 
-	festevam@gmail.com, minghuan.Lian@nxp.com, mingkai.hu@nxp.com, roy.zang@nxp.com, 
-	jesper.nilsson@axis.com, heiko@sntech.de, srikanth.thokala@intel.com, 
-	marek.vasut+renesas@gmail.com, yoshihiro.shimoda.uh@renesas.com, geert+renesas@glider.be, 
-	magnus.damm@gmail.com, christian.bruel@foss.st.com, mcoquelin.stm32@gmail.com, 
-	alexandre.torgue@foss.st.com, thierry.reding@gmail.com, jonathanh@nvidia.com, 
-	hayashi.kunihiko@socionext.com, mhiramat@kernel.org, kishon@kernel.org, jirislaby@kernel.org, 
-	rongqianfeng@vivo.com, 18255117159@163.com, shawn.lin@rock-chips.com, 
-	nicolas.frattaroli@collabora.com, linux.amoon@gmail.com, vidyas@nvidia.com, Frank.Li@nxp.com, 
-	linux-omap@vger.kernel.org, linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, imx@lists.linux.dev, linuxppc-dev@lists.ozlabs.org, 
-	linux-arm-kernel@axis.com, linux-rockchip@lists.infradead.org, 
-	linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
-	linux-stm32@st-md-mailman.stormreply.com, linux-tegra@vger.kernel.org
-Subject: Re: [PATCH v5 3/3] PCI: dwc: ep: Support BAR subrange inbound
- mapping via Address Match Mode iATU
-Message-ID: <nqpwi6ewen4kf7jqgon4ljerceqjeaule25dzb6ytas3wslqhp@ddkr3jum6eac>
-References: <20260108172403.2629671-1-den@valinux.co.jp>
- <20260108172403.2629671-4-den@valinux.co.jp>
- <aWAZv3ZwdUmo4_wc@ryzen>
-Content-Disposition: inline
-In-Reply-To: <aWAZv3ZwdUmo4_wc@ryzen>
-X-ClientProxiedBy: TY4PR01CA0111.jpnprd01.prod.outlook.com
- (2603:1096:405:378::12) To TY7P286MB7722.JPNP286.PROD.OUTLOOK.COM
- (2603:1096:405:38f::10)
+	id 1ve702-00000001kQG-1GEF
+	for linux-rockchip@lists.infradead.org;
+	Fri, 09 Jan 2026 07:33:35 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 8499844065;
+	Fri,  9 Jan 2026 07:33:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B7540C19421;
+	Fri,  9 Jan 2026 07:33:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1767944013;
+	bh=YD8BBxsP8yyonhYcxXOQeNujcleXzXA99h7hR1PrpUY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=gF84Q7a10ypZYFbesF8ARMjjzzwG7BWKjIDSNTQYc3jFHIcoe9xn0f/qifNDkrkwu
+	 shObJouqqNUPrTlziji0M0c4vGhxsswMPs/rAj0qgyLg/Qs5VzeEU40b2iBUtn3boA
+	 Podpos9lf3tFJB0nss0jq2LTU1AGILfx1oEmWL5n/vqHjSBZy2s74LM/OGF2tvGWzF
+	 kWE+1M79MvXGs8/uvHp4A87SGQUAzWZI53RyD+7PsZ1s6EnliHn+6/CvL8dw8+l6WA
+	 y740RPIuMcgyiXVSNc/3wC6nHQkHlwfAlKhKEBl1LCJa/udsFriUAhMI8rdxqZQEQD
+	 Rbo/6XVJjsQ2g==
+Date: Fri, 9 Jan 2026 13:03:26 +0530
+From: Manivannan Sadhasivam <mani@kernel.org>
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, 
+	linux-rockchip@lists.infradead.org, linux-pci@vger.kernel.org, linux-trace-kernel@vger.kernel.org, 
+	linux-doc@vger.kernel.org, Steven Rostedt <rostedt@goodmis.org>, 
+	Masami Hiramatsu <mhiramat@kernel.org>
+Subject: Re: [PATCH v2 3/3] PCI: dw-rockchip: Add pcie_ltssm_state_transition
+ trace support
+Message-ID: <z22h6xnioqcbnwszpxaip4rjqxkx45fg6wd4btliztr2bcvpiq@2pf625gvadmv>
+References: <1767929389-143957-1-git-send-email-shawn.lin@rock-chips.com>
+ <1767929389-143957-4-git-send-email-shawn.lin@rock-chips.com>
+ <uev63wla4msmmhww4j3t2jim7lhvxjikvujwpxiblg5mz7jwwa@2jucxkbtcsfm>
+ <dddbcb37-68d4-4ccb-9897-b1e5a4b41be7@rock-chips.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: TY7P286MB7722:EE_|TY7P286MB6304:EE_
-X-MS-Office365-Filtering-Correlation-Id: 4cf8b417-ad3d-4b48-75e3-08de4f50cb6e
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|10070799003|376014|7416014|1800799024|366016;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?7rrogRkJRKyKCKDVsYAQGGuLq8eFtMKxxc3/z/t4amg3fsWv9WOY1nJGVbUf?=
- =?us-ascii?Q?+GeVqoPGM5Vif/AbtG29642poQmyQznw3L9Ye02mcR1fiiG44pxQMyQ0ZPPh?=
- =?us-ascii?Q?XQNi37eJm+NTGi6CWAWwZ+pImES58iqT5wtZ0VGkljsr+zcHc+MkK0zFEsAI?=
- =?us-ascii?Q?QEIXteMgCcqYmuUGo6czo1nufCPq9axNx960tky822PeINDQFuqw3uM/mwlV?=
- =?us-ascii?Q?JKbMARbwdcB2nDskuXhWAkPHlxsYpJws2RY3roHOuH+2Zk7DSm2f3kofBbwn?=
- =?us-ascii?Q?dyMLx3hCi3KJUj44DuW40+6Y3PKBHzo0H8AWyiwcBq1RZfNtlB0EyNRPgmzM?=
- =?us-ascii?Q?8Hu5MY/FJZJi/trI6STZEkmqk008k7BkadaN3uKXw9pBb4hy6qbQS9cmiYd3?=
- =?us-ascii?Q?jt+yGSAqZyk2rKvgVH9SmpiloOn7yKMf++cI6KVGUademMSmkKnh5WzAo4yS?=
- =?us-ascii?Q?hYdI+zGS8UJTlA75fW29HbkAL5L8581uXRxqqRiQF9MqQUVD/CJrCtZ20OJA?=
- =?us-ascii?Q?t29HYokGAcJPvvzeSfkaulPyGgfEfxQxrwCs2mDGtR4CGzKNLbpdn2uNUYht?=
- =?us-ascii?Q?aSMlAvCE0IMEh2vaKJD5hGv+WCZ1d1TYVi2qWKEQ4EaFqAA2HuAMsn5LPk5K?=
- =?us-ascii?Q?XVieH3YvYyIsZF3LNQPleniMkOwWku1c2gGTPpePgIerOeEQtRLI5SLQ9Dmw?=
- =?us-ascii?Q?b3RhIrvOF9NJKPd0yzplEfL07Hrxjthe2SMDzZtMyDK5rtyj6p2lq38B1Est?=
- =?us-ascii?Q?5MhH3N5CytQm7Tlo0OMlj5MNSg1CeTtrH3ogpokEV3EPC3fhynfG/iGcnTa9?=
- =?us-ascii?Q?1+h+w+NE/BFADgmlwPKm+3GTVBCEz3m90wHV2YWpAymBTtjEBi1uXbtWNW9R?=
- =?us-ascii?Q?bs9f3PNNbN8+3XzEo3+JIzx0TdALA1xZa75yqMzhVxCTLunnOzskc3gmqZVv?=
- =?us-ascii?Q?rOZT5YYxg0fUai2fGcojRSe7St8OYkNyeglbOTw8/+67vWTJL5fBNxNlbb4a?=
- =?us-ascii?Q?3a4QXLf3cKa78E2xVyLliOtrVe1yYXZCB1QKx3Xo9HXbavwIor0vqd6nSsYd?=
- =?us-ascii?Q?pZ3iJYur6fWd7Q3WQu2scf1wVrQjxjsaI+sisnr8I9brJ0DypzMDuboxAN05?=
- =?us-ascii?Q?9/MCDaMgDJcyZJ7F4b6xKSSvUTrjuXjQZgQ2/u/PbXKGPqqe8tw/jedqfpB9?=
- =?us-ascii?Q?o5dPbek8SngthU8OzUU+BwUDpU+qnc1jD8cQc7SDG3ewFLzKXgcTYWX8+cdg?=
- =?us-ascii?Q?A7nCHU/jrJhg7OCg467IRa2/uN0VUKF2m93XE5vcVRfPElRLOQxAAmtHI0EL?=
- =?us-ascii?Q?huOkpJ6IMZqrHWHl6z4ZVF/rnBJSOshaoPwxqj2FXuYS5WP4IcWPHMQt/76b?=
- =?us-ascii?Q?ZXvKBNYWFAo4qUFTVooWBImXxJri/83hR2kIBZSVkiziG/4wFSkUXcETaAiz?=
- =?us-ascii?Q?3Jvn0KGuIIhSJONHevGIbn/cdl763n+q?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TY7P286MB7722.JPNP286.PROD.OUTLOOK.COM;PTR:;CAT:NONE;SFS:(13230040)(10070799003)(376014)(7416014)(1800799024)(366016);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?GF21yx6dHxf6HHDBRIl6KA9e7SQ72oMXM7pf+yTY+hrC/cW36qcete2yZ9aE?=
- =?us-ascii?Q?eJoojKQ1mBpxKpPnAyjkqZNGLYSOqASCQ1ghIRbCpOQvRBveOifZrkWtq6Zg?=
- =?us-ascii?Q?b+jTm+fFvK1TDFqvyUSyEzzr6k54WWIKPRA9PbWdxnh8dOkWVvd54uhMzvaK?=
- =?us-ascii?Q?YOmqbnV+mQNAC7yHAevQ/sMtm5T9D08aUE3spWPx+L1NXZXWi/LNrni1QGNY?=
- =?us-ascii?Q?olUtAKvSc0dWEzBc8M8ZQDoglkcVi/Ilb7r03y2p3rNQXjFnxtoTFC/FYwYv?=
- =?us-ascii?Q?QZvzUIGo+jEMzyF4s5Bv6yJybVGiQFETwx1HocKjjayOvDveuSeFqoTSrwfq?=
- =?us-ascii?Q?qP38Kaacg3Q9rNkTmRogVWjFGMqnEboCbwb88gtp8/VW0f0yd3ePtSYbBDfV?=
- =?us-ascii?Q?/JMmJFgpC6iSxiz7+XtOxY8eTl6OGmTTx3ARG0cSKiN1bqlwgFCIBZMI/ItK?=
- =?us-ascii?Q?F5epYZKdgmBuUSaiXq7Yi98f7nS6sX5BiBQIE+VjRXkmh8pN5aDLCIsJHf87?=
- =?us-ascii?Q?XnCSsV4dRyiHYtXiNTGtukqRRPUaKwHBOWYaopVfFiQp50yFobrfYIclxaA0?=
- =?us-ascii?Q?w6/VUMZUkJU6Yxqw9e89Dyjvz/dMnpSrC1zLyHeQFbEq0faVeLNOY8emDiX9?=
- =?us-ascii?Q?5LCSnvJRKkE6ATd2e3dwl4aP2vlnWCW6xJz4eDNz64o4LEaFrUcufMj0x9v/?=
- =?us-ascii?Q?qPTifm+8H44vofdBSMBHmAkWirPAYxxhOrqn2zd97R/F0kj/qv2MeQUuryR6?=
- =?us-ascii?Q?vuFvT76mqk8O9K3Zh5cSBjNxtEV/w7J5Bw1Nrfd7SX2NOgaf6D2KS+7K7083?=
- =?us-ascii?Q?YPVBZJ0O3xSDYdVY7oHO7i5TeiE5RivKEdHnxanUsy/ET1GvjZ5ad8UwSjrs?=
- =?us-ascii?Q?4GLRCPP9+ftSmO+rauqYBy1MrQgRQH37czGnWApbGzRS/m0cZAVO9vs/mNsC?=
- =?us-ascii?Q?3RPF42DkQdZ5kQt+lAGGs3LUjbaE/AZCaimWWziG46VFc/ALVw4lMQfL6WUJ?=
- =?us-ascii?Q?qt1xKtM59/Eig5JfbpIWHZ6dIhIfcGFp6JowOOYmAZeHLMMlOsdfAKdMUUoT?=
- =?us-ascii?Q?7dKlQKEUKuIBXgkUUjQ/xn9oUtxc6F4lxEFCKL8XdBv/71suco/Our9JfwW3?=
- =?us-ascii?Q?NWoo8u3Xl3N4X7/qVMecq1Iox6HQpD4Uab2fgrYyAuGKt9Y++4mQDk93+Xh/?=
- =?us-ascii?Q?2ZRUTqiu2b/f1owS6D2DwZ0EWzUcba9olPJdJGnUW0LlS3x68ONp2K7bt7kd?=
- =?us-ascii?Q?9rbx/gecNMD9peZ4zzJshNxteL/qS+aKwtUrHrbNeHzwD+P+YBNQpiuM78t9?=
- =?us-ascii?Q?/41E+GlEKpcZXlGTwCmjrEoGMZc2ftGH4XSdTew82Zl+0vBxFFx8DC/fi2kL?=
- =?us-ascii?Q?HfAO21Wm7705a4Uz+f3/NTDp479p15kQ5yH97Y0J0ZyVc44jUcia+lZCRIY3?=
- =?us-ascii?Q?fjJYJYAnLXaCgPxCZ/mNxz4gpyKQuz8gwNs5v8Ej3L9fWQPUgcQDL4r72qd5?=
- =?us-ascii?Q?jgwLcdJLTdQqiPrfVbFGfzuwLILQNzHhup66hZg3Pj1TjxJnDlhrRrBAvvaG?=
- =?us-ascii?Q?NnUgPQ8/PtT7lMLWNv12YkNFUmc9LEXkXSd32Zf8Cnjr/KMki9q4gu5ff9g5?=
- =?us-ascii?Q?rTT0uXK7YBFFZV5oAR8PvoS+IvaWyLUqHHAi99X9emeiT5uZyinnm580DJiS?=
- =?us-ascii?Q?wIm5sIdFPc4xMCdbTtYSzucgAZb1/4VEg0rCT4OJEzB3LvGqnX9HGWsBmIfV?=
- =?us-ascii?Q?3yhyLLlvD8gPLYjPclQZYBOrFczQSsJzuc4qpmHq/fNC5k2diyhT?=
-X-OriginatorOrg: valinux.co.jp
-X-MS-Exchange-CrossTenant-Network-Message-Id: 4cf8b417-ad3d-4b48-75e3-08de4f50cb6e
-X-MS-Exchange-CrossTenant-AuthSource: TY7P286MB7722.JPNP286.PROD.OUTLOOK.COM
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 09 Jan 2026 07:29:16.3830
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 7a57bee8-f73d-4c5f-a4f7-d72c91c8c111
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 2AYi5gJQMuOfXriMSAot87G4ZilBhrugThcH60/g3mTMW9DxFdYj5duN0m/03k7Qsqd39WFR/AlJ752KyPSs7Q==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TY7P286MB6304
+Content-Disposition: inline
+In-Reply-To: <dddbcb37-68d4-4ccb-9897-b1e5a4b41be7@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260108_232922_412566_B5B4F9A4 
-X-CRM114-Status: GOOD (  33.37  )
+X-CRM114-CacheID: sfid-20260108_233334_377218_A0585DA7 
+X-CRM114-Status: GOOD (  31.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -172,132 +73,90 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jan 08, 2026 at 09:55:27PM +0100, Niklas Cassel wrote:
-> Hello Koichiro,
-> 
-> On Fri, Jan 09, 2026 at 02:24:03AM +0900, Koichiro Den wrote:
-> 
-> (snip)
-> 
-> > +/* Address Match Mode inbound iATU mapping */
-> > +static int dw_pcie_ep_ib_atu_addr(struct dw_pcie_ep *ep, u8 func_no, int type,
-> > +				  const struct pci_epf_bar *epf_bar)
-> > +{
-> > +	const struct pci_epf_bar_submap *submap = epf_bar->submap;
-> > +	struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
-> > +	enum pci_barno bar = epf_bar->barno;
-> > +	struct device *dev = pci->dev;
-> > +	u64 pci_addr, parent_bus_addr;
-> > +	struct dw_pcie_ib_map *new;
-> > +	u64 size, off, base;
-> > +	unsigned long flags;
-> > +	int free_win, ret;
-> > +	unsigned int i;
-> > +
-> > +	if (!epf_bar->num_submap || !submap || !epf_bar->size)
-> > +		return -EINVAL;
-> > +
-> > +	ret = dw_pcie_ep_validate_submap(ep, submap, epf_bar->num_submap,
-> > +					 epf_bar->size);
-> > +	if (ret)
-> > +		return ret;
-> > +
-> > +	base = dw_pcie_ep_read_bar_assigned(ep, func_no, bar, epf_bar->flags);
-> > +	if (!base) {
-> > +		dev_err(dev,
-> > +			"BAR%u not assigned, cannot set up sub-range mappings\n",
-> > +			bar);
-> > +		return -EINVAL;
-> > +	}
-> 
-> Sorry for giving additional review comments.
-
-Thanks again for the detailed feedback.
-
-> 
-> But there is one thing that I might not be so obvious for someone just
-> reading this source. How is this API supposed to be used in practice?
-> 
-> Most DWC-based controllers are not hotplug capable.
-> 
-> That means that we must boot the EP, create the EPF symlink in configfs,
-> and start link training by writing to configfs, before starting the host.
-> 
-> dw_pcie_ep_ib_atu_addr() reads the PCI address that the host has assigned
-> to the BAR, and returns an error if the host has not already assigned a
-> PCI addres to the BAR.
-> 
-> Does that mean that the usage of this API will be something like:
-> 
-> 1) set_bar() ## using BAR match mode, since BAR match mode can write
->    the BAR mask to define a BAR size, so that the host can assign a
->    PCI address to the BAR.
-
-BAR sizing is done by dw_pcie_ep_set_bar_{programmable,resizable}() before
-iATU programming regardless of match mode. I keep BAR match mode here just
-because Address match mode requires a valid base address. That's why I
-added the `if (!base)` guard.
-
-> 
-> 2) start() ## start link
-> 
-> 3) link up
-> 
-> 4) wait for some special command, perhaps NTB_EPF_COMMAND
-> CMD_CONFIGURE_DOORBELL or NTB_EPF_COMMAND CMD_CONFIGURE_MW
-> 
-> 5) set_bar() ## using Address match mode. Because address match mode
->    requires that the host has assigned a PCI address to the BAR, we
->    can only change the mapping for a BAR after the host has assigned
->    PCI addresses for all bars.
-> 
-
-The overall usage flow matches what I'm assuming.
-
-> 
-> 
-> Perhaps you should add some text to:
-> Documentation/PCI/endpoint/pci-endpoint.rst
-> 
-> Because right now the documentation for pci_epc_set_bar() says:
-> 
->    The PCI endpoint function driver should use pci_epc_set_bar() to configure
->    the Base Address Register in order for the host to assign PCI addr space.
->    Register space of the function driver is usually configured
->    using this API.
-> 
-> So it is obviously meant to be called *before* the host assigns a PCI
-> address for the BAR. Now with submap ranges, it appears that it has to
-> be called *after* the host assigned a PCI address for the BAR.
-
-I agree. As I understand it, the current text seems not to reflect mainline
-since commit 4284c88fff0e ("PCI: designware-ep: Allow pci_epc_set_bar()
-update inbound map address"), but anyway I should add explicit
-documentation for this subrange mapping use case.
-
-> 
-> So I can only assume that you will call set_bar() twice.
-> Once with BAR match mode, and then a second time with address map mode.
-> 
-> It might be obvious to you, but I think it makes sense to also have some
-> kind of documentation for this feature.
-
-Ok, I'll update Documentation/PCI/endpoint/pci-endpoint.rst accordingly.
-
-Kind regards,
-Koichiro
-
-> 
-> 
-> Kind regards,
-> Niklas
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gRnJpLCBKYW4gMDksIDIwMjYgYXQgMDI6MjI6MTBQTSArMDgwMCwgU2hhd24gTGluIHdyb3Rl
+Ogo+IOWcqCAyMDI2LzAxLzA5IOaYn+acn+S6lCAxMzo1NSwgTWFuaXZhbm5hbiBTYWRoYXNpdmFt
+IOWGmemBkzoKPiA+IE9uIEZyaSwgSmFuIDA5LCAyMDI2IGF0IDExOjI5OjQ5QU0gKzA4MDAsIFNo
+YXduIExpbiB3cm90ZToKPiA+ID4gUm9ja2NoaXAgcGxhdGZvcm1zIHByb3ZpZGUgYSA2NHg0IGJ5
+dGVzIGRlYnVnIEZJRk8gdG8gdHJhY2UgdGhlCj4gPiA+IExUU1NNIGhpc3RvcnkuIEFueSBMVFNT
+TSBjaGFuZ2Ugd2lsbCBiZSByZWNvcmRlZC4gSXQncyB1c2VyZnVsCj4gPiA+IGZvciBkZWJ1ZyBw
+dXJwb3NlLCBmb3IgZXhhbXBsZSBsaW5rIGZhaWx1cmUsIGV0Yy4KPiA+ID4gCj4gPiA+IFNpZ25l
+ZC1vZmYtYnk6IFNoYXduIExpbiA8c2hhd24ubGluQHJvY2stY2hpcHMuY29tPgo+ID4gPiAtLS0K
+PiA+ID4gCj4gPiA+IENoYW5nZXMgaW4gdjI6Cj4gPiA+IC0gdXNlIHRyYWNlcG9pbnQKPiA+ID4g
+Cj4gPiA+ICAgZHJpdmVycy9wY2kvY29udHJvbGxlci9kd2MvcGNpZS1kdy1yb2NrY2hpcC5jIHwg
+OTIgKysrKysrKysrKysrKysrKysrKysrKysrKysrCj4gPiA+ICAgMSBmaWxlIGNoYW5nZWQsIDky
+IGluc2VydGlvbnMoKykKPiA+ID4gCj4gPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3BjaS9jb250
+cm9sbGVyL2R3Yy9wY2llLWR3LXJvY2tjaGlwLmMgYi9kcml2ZXJzL3BjaS9jb250cm9sbGVyL2R3
+Yy9wY2llLWR3LXJvY2tjaGlwLmMKPiA+ID4gaW5kZXggMzUyZjUxMy4uYmU5NjM5YWEgMTAwNjQ0
+Cj4gPiA+IC0tLSBhL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvZHdjL3BjaWUtZHctcm9ja2NoaXAu
+Ywo+ID4gPiArKysgYi9kcml2ZXJzL3BjaS9jb250cm9sbGVyL2R3Yy9wY2llLWR3LXJvY2tjaGlw
+LmMKPiA+ID4gQEAgLTIyLDYgKzIyLDggQEAKPiA+ID4gICAjaW5jbHVkZSA8bGludXgvcGxhdGZv
+cm1fZGV2aWNlLmg+Cj4gPiA+ICAgI2luY2x1ZGUgPGxpbnV4L3JlZ21hcC5oPgo+ID4gPiAgICNp
+bmNsdWRlIDxsaW51eC9yZXNldC5oPgo+ID4gPiArI2luY2x1ZGUgPGxpbnV4L3dvcmtxdWV1ZS5o
+Pgo+ID4gPiArI2luY2x1ZGUgPHRyYWNlL2V2ZW50cy9wY2lfY29udHJvbGxlci5oPgo+ID4gPiAg
+ICNpbmNsdWRlICIuLi8uLi9wY2kuaCIKPiA+ID4gICAjaW5jbHVkZSAicGNpZS1kZXNpZ253YXJl
+LmgiCj4gPiA+IEBAIC03Myw2ICs3NSwxOCBAQAo+ID4gPiAgICNkZWZpbmUgIFBDSUVfQ0xJRU5U
+X0NETV9SQVNERVNfVEJBX0wxXzEJQklUKDQpCj4gPiA+ICAgI2RlZmluZSAgUENJRV9DTElFTlRf
+Q0RNX1JBU0RFU19UQkFfTDFfMglCSVQoNSkKPiA+ID4gKy8qIERlYnVnIEZJRk8gaW5mb3JtYXRp
+b24gKi8KPiA+ID4gKyNkZWZpbmUgUENJRV9DTElFTlRfREJHX0ZJRk9fTU9ERV9DT04JMHgzMTAK
+PiA+ID4gKyNkZWZpbmUgIFBDSUVfQ0xJRU5UX0RCR19FTgkJMHhmZmZmMDAwNwo+ID4gPiArI2Rl
+ZmluZSAgUENJRV9DTElFTlRfREJHX0RJUwkJMHhmZmZmMDAwMAo+ID4gPiArI2RlZmluZSBQQ0lF
+X0NMSUVOVF9EQkdfRklGT19QVE5fSElUX0QwCTB4MzIwCj4gPiA+ICsjZGVmaW5lIFBDSUVfQ0xJ
+RU5UX0RCR19GSUZPX1BUTl9ISVRfRDEJMHgzMjQKPiA+ID4gKyNkZWZpbmUgUENJRV9DTElFTlRf
+REJHX0ZJRk9fVFJOX0hJVF9EMAkweDMyOAo+ID4gPiArI2RlZmluZSBQQ0lFX0NMSUVOVF9EQkdf
+RklGT19UUk5fSElUX0QxCTB4MzJjCj4gPiA+ICsjZGVmaW5lICBQQ0lFX0NMSUVOVF9EQkdfVFJB
+TlNJVElPTl9EQVRBIDB4ZmZmZjAwMDAKPiA+ID4gKyNkZWZpbmUgUENJRV9DTElFTlRfREJHX0ZJ
+Rk9fU1RBVFVTCTB4MzUwCj4gPiA+ICsjZGVmaW5lIFBDSUVfREJHX0xUU1NNX0hJU1RPUllfQ05U
+CTY0Cj4gPiA+ICsKPiA+ID4gICAvKiBIb3QgUmVzZXQgQ29udHJvbCBSZWdpc3RlciAqLwo+ID4g
+PiAgICNkZWZpbmUgUENJRV9DTElFTlRfSE9UX1JFU0VUX0NUUkwJMHgxODAKPiA+ID4gICAjZGVm
+aW5lICBQQ0lFX0xUU1NNX0FQUF9ETFkyX0VOCQlCSVQoMSkKPiA+ID4gQEAgLTk2LDYgKzExMCw3
+IEBAIHN0cnVjdCByb2NrY2hpcF9wY2llIHsKPiA+ID4gICAJc3RydWN0IGlycV9kb21haW4gKmly
+cV9kb21haW47Cj4gPiA+ICAgCWNvbnN0IHN0cnVjdCByb2NrY2hpcF9wY2llX29mX2RhdGEgKmRh
+dGE7Cj4gPiA+ICAgCWJvb2wgc3VwcG9ydHNfY2xrcmVxOwo+ID4gPiArCXN0cnVjdCBkZWxheWVk
+X3dvcmsgdHJhY2Vfd29yazsKPiA+ID4gICB9Owo+ID4gPiAgIHN0cnVjdCByb2NrY2hpcF9wY2ll
+X29mX2RhdGEgewo+ID4gPiBAQCAtMjA2LDYgKzIyMSw3OSBAQCBzdGF0aWMgZW51bSBkd19wY2ll
+X2x0c3NtIHJvY2tjaGlwX3BjaWVfZ2V0X2x0c3NtKHN0cnVjdCBkd19wY2llICpwY2kpCj4gPiA+
+ICAgCXJldHVybiByb2NrY2hpcF9wY2llX2dldF9sdHNzbV9yZWcocm9ja2NoaXApICYgUENJRV9M
+VFNTTV9TVEFUVVNfTUFTSzsKPiA+ID4gICB9Cj4gPiA+ICsjaWZkZWYgQ09ORklHX1RSQUNJTkcK
+PiA+ID4gK3N0YXRpYyB2b2lkIHJvY2tjaGlwX3BjaWVfbHRzc21fdHJhY2Vfd29yayhzdHJ1Y3Qg
+d29ya19zdHJ1Y3QgKndvcmspCj4gPiA+ICt7Cj4gPiA+ICsJc3RydWN0IHJvY2tjaGlwX3BjaWUg
+KnJvY2tjaGlwID0gY29udGFpbmVyX29mKHdvcmssIHN0cnVjdCByb2NrY2hpcF9wY2llLAo+ID4g
+PiArCQkJCQkJdHJhY2Vfd29yay53b3JrKTsKPiA+ID4gKwlzdHJ1Y3QgZHdfcGNpZSAqcGNpID0g
+JnJvY2tjaGlwLT5wY2k7Cj4gPiA+ICsJZW51bSBkd19wY2llX2x0c3NtIHN0YXRlOwo+ID4gPiAr
+CXUzMiB2YWwsIHJhdGUsIGwxc3MsIGxvb3AsIHByZXZfdmFsID0gRFdfUENJRV9MVFNTTV9VTktO
+T1dOOwo+ID4gCj4gPiBSZXZlcnNlIFhtYXMgb3JkZXIgcGxlYXNlLgo+ID4gCj4gPiA+ICsKPiA+
+ID4gKwlmb3IgKGxvb3AgPSAwOyBsb29wIDwgUENJRV9EQkdfTFRTU01fSElTVE9SWV9DTlQ7IGxv
+b3ArKykgewo+ID4gCj4gPiBzL2xvb3AvaT8KPiA+IAo+ID4gPiArCQl2YWwgPSByb2NrY2hpcF9w
+Y2llX3JlYWRsX2FwYihyb2NrY2hpcCwgUENJRV9DTElFTlRfREJHX0ZJRk9fU1RBVFVTKTsKPiA+
+ID4gKwkJcmF0ZSA9ICh2YWwgJiBHRU5NQVNLKDIyLCAyMCkpID4+IDIwOwo+ID4gPiArCQlsMXNz
+ID0gKHZhbCAmIEdFTk1BU0soMTAsIDgpKSA+PiA4Owo+ID4gPiArCQl2YWwgJj0gUENJRV9MVFNT
+TV9TVEFUVVNfTUFTSzsKPiA+IAo+ID4gQ2FuIHlvdSB1c2UgRklFTERfIG1hY3JvcyBoZXJlPwo+
+ID4gCj4gPiA+ICsKPiA+ID4gKwkJLyogVHdvIGNvbnNlY3V0aXZlIGlkZW50aWNhbCBMVFNTTSBt
+ZWFucyBpbnZhbGlkIHN1YnNlcXVlbnQgZGF0YSAqLwo+ID4gCj4gPiBJbnRlcmVzdGluZy4gRG9l
+cyB0aGUgaGFyZHdhcmUgbWFpbnRhaW4gYSBjb3VudGVyIHRvIHRyYWNrIHRoZSByZWFkcz8gU28g
+b25jZQo+ID4geW91IGJyZWFrIG91dCBvZiB0aGUgbG9vcCBhbmQgcmVhZCBpdCBhZnRlciA1cywg
+eW91J2xsIHN0YXJ0IGZyb20gd2hlcmUgeW91IGxlZnQKPiA+IGkuZS4sIHRoZSBkdXBsaWNhdGUg
+ZW50cnkgb3IgZnJvbSB0aGUgc3RhcnQgb2YgdGhlIGNvdW50ZXIgYWdhaW4/Cj4gPiAKPiAKPiBZ
+ZXMsIHRoZSByaW5nIEZJRk8gbWFpbnRhaW5zIGNvdW50ZXJzIGZvciByZWNvcmRpbmcgYm90aCBv
+ZiBsYXN0LXJlYWQtcG9pbnQKPiBmb3IgdXNlciB0byBjb250aW51ZSB0byByZWFkLCBhbmQgbGFz
+dC12YWxpZC1wb2ludCBmb3IgSFcgdG8KPiBjb250aW51ZSB0byB1cGRhdGUgdHJhbnNpdGlvbiBz
+dGF0ZS4gU28gd2UgY291bGQgc3RhcnQgZnJvbSB3aGVyZSB3ZQo+IGxlZnQuCj4gCgpPay4gVGhh
+bmtzIGZvciBjbGFyaWZpY2F0aW9uLiBJdCdkIGJlIHdvcnRoIHRvIGFkZCBpdCB0byB0aGUgZXhp
+c3RpbmcgY29tbWVudC4KCj4gPiA+ICsJCWlmICgobG9vcCA+IDAgJiYgdmFsID09IHByZXZfdmFs
+KSB8fCB2YWwgPiBEV19QQ0lFX0xUU1NNX1JDVlJZX0VRMykKPiA+ID4gKwkJCWJyZWFrOwo+ID4g
+PiArCj4gPiA+ICsJCXN0YXRlID0gcHJldl92YWwgPSB2YWw7Cj4gPiA+ICsJCWlmICh2YWwgPT0g
+RFdfUENJRV9MVFNTTV9MMV9JRExFKSB7Cj4gPiA+ICsJCQlpZiAobDFzcyA9PSAyKQo+ID4gPiAr
+CQkJCXN0YXRlID0gRFdfUENJRV9MVFNTTV9MMV8yOwo+ID4gPiArCQkJZWxzZSBpZiAobDFzcyA9
+PSAxKQo+ID4gPiArCQkJCXN0YXRlID0gRFdfUENJRV9MVFNTTV9MMV8xOwo+ID4gCj4gPiBJIGJl
+bGlldmUgTDEuMCBpcyBub3Qgc3VwcG9ydGVkLgo+ID4gCj4gCj4gSSdtIG5vdCBzdXJlIEkgZm9s
+bG93IHRoaXMgY29tbWVudC4gc3RhdGUgaXMgRFdfUENJRV9MVFNTTV9MMV9JRExFCj4g77yITDEu
+MO+8iSBpZiBsMXNzIGlzIG5laXRoZXIgMSBub3IgMi4KPiAKCkFoIG9rLiBJdCB3YXMgbm90IGNs
+ZWFyIHRoYXQgTDFfSURMRSBpcyBMMS4wCgotIE1hbmkKCi0tIArgrq7grqPgrr/grrXgrqPgr43g
+rqPgrqngr40g4K6a4K6k4K6+4K6a4K6/4K614K6u4K+NCgpfX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGlu
+dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
+Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
