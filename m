@@ -4,79 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7CE4D232EE
-	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Jan 2026 08:30:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AEC2D232F4
+	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Jan 2026 08:38:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1iZpATpG7BBpUQy2QUoLk2dSGH7CE3OPbOOjh3tdYCk=; b=1QyJUNraywbu4k
-	YvEhELoaYnvK+FrRwmd5xzcvgOWWpqeaAJQ+aoZXa6lg6mzrYWNJcSCQWvnbcLQ76xRsUSidkIf+6
-	pN2ksA2qwRK7o2hzCXBCKvuOmTukJNiJbfY3BNTOv/iFEF2kCY+L71CeOXd9Q+F4gUOYIrLUPJ3Lg
-	YCvZYpIfJ34fGrFeNfqO80WtVRDw/JySccyVICOppO03HSexF4/O6ArE8n4wmlKiquGlLx5ola3kC
-	EmJ5tP4aDDJBwKkY/jEOrmLSVPXCPDWEEhIPKG+pyFojkQY0cpkhlPqQBIMU8vDG3K+q3USkDcALI
-	7IZw3UonQsGfuwSX68Tw==;
+	List-Owner; bh=ZlV+FCqbjD6+h+ag2H39gXPkGPDcciCk/DCJ8sN18MY=; b=PNAyfAEls9wScj
+	pAvyV5q7vLXX9edjjp5rDVUy8Ge09iS3YvVY8Qywcshv1aEqmFZFkJjflsoe3+1l+GRlaFQcvFzSJ
+	/REW2MMv93yyi9+KPq+T9a6Ce/xn9zhdGiC7vtTmd1/7SykqzmxcCP8TdrTu/uqMSJAA7RW/SC2MO
+	RL/gTPN3ZlgmIEKS09/80ABfHoy1INgKxi/dl0Xw+HkINRduMJ+wDueKNkN/brTUhvi08j18naN04
+	9w2naIdYqhSPnrc5n0Y2FYZKC9UjmeInzVbh++JtBxRTLpjID5H9Smx1zpkHMcFXSLriJsOb4OfOT
+	JqHAkdOgGePGIanSShWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ve7sw-00000001uj9-2ocq;
-	Fri, 09 Jan 2026 08:30:18 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1ve81B-00000001vCJ-3Mlt;
+	Fri, 09 Jan 2026 08:38:49 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ve7sv-00000001uip-2nDQ;
-	Fri, 09 Jan 2026 08:30:17 +0000
+	id 1ve818-00000001vAw-2c6U;
+	Fri, 09 Jan 2026 08:38:47 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id AA1F060136;
-	Fri,  9 Jan 2026 08:30:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 929F2C4CEF1;
-	Fri,  9 Jan 2026 08:30:06 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id ACC50443E2;
+	Fri,  9 Jan 2026 08:38:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7B998C2BCB0;
+	Fri,  9 Jan 2026 08:38:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1767947416;
-	bh=3Y/4K7MdRQsPCaqilZFCu7ZODfNDBbKlBmqwPSVOHE4=;
+	s=k20201202; t=1767947925;
+	bh=a98W+72H+QrvZTa+W7QmD1B9sIhKMP4/j8pKEcILt+U=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=KaHmVdUwZWxvuB7ircX7ZztfhNCS1a9BTb6T0uPs+Q8BKvaZCbB+xYdh0efbbA/BR
-	 bkIBdQCmh2pdinGW6ArMfuOO6fvAaC1nJbcezIMdkn2kzkbHwDwRFXL2OpiN19nk8N
-	 4igYJU5hWPQG9zpkf1UjRb9Issh9v819ZcqIFnR52+WTmYfRzEv07jzrVDy/GKTXyi
-	 Y5gf1lPSGGMTiKQqntrZ6xy4Or5V7cJVR+A/Mo2DBg60Vo6XrD+dgWiMldLe/rBdU2
-	 SJIPFSwArTjX0JW+7sHkCG2FBzFloJGX/CmtARnJdYrNMmKN9qvU6cFpl6PtI7O/ep
-	 fOAbK1oUz946A==
-Date: Fri, 9 Jan 2026 09:30:04 +0100
+	b=AsCBqrk0vvLVhmih7qPc+AeKhH4Pu47oQfOdgYtmjO9go4kvStnPT8U3A8pvQHnNI
+	 j/2kTuMLpbzENN+/r4sdyNRrbMSiLsPU71fe7eBoMNvAgrKGKZLhzrjeuwruQMKK74
+	 wJ+PPJWdBrCml+yurM4+bZY6f7ptpb3sNGKBg7TAlvPCnZCfYLvW19QGbfJTO0W2YC
+	 hnVk5mUB7BbOWQBXqdlnjBBzil5KyFGzn9Z/Op3ivQM9ivLZ5W2d66JSiFwFqDgwMT
+	 ZqLE5NpDbCE/od6DnBMdYLvrcwA7gtQwDR96DDsVAghy/rf4TUUsZvH2HFWO2/rybu
+	 KFcL9DzNhOKTA==
+Date: Fri, 9 Jan 2026 09:38:38 +0100
 From: Niklas Cassel <cassel@kernel.org>
-To: Koichiro Den <den@valinux.co.jp>
-Cc: jingoohan1@gmail.com, mani@kernel.org, lpieralisi@kernel.org,
-	kwilczynski@kernel.org, robh@kernel.org, bhelgaas@google.com,
-	vigneshr@ti.com, s-vadapalli@ti.com, hongxing.zhu@nxp.com,
-	l.stach@pengutronix.de, shawnguo@kernel.org, s.hauer@pengutronix.de,
-	kernel@pengutronix.de, festevam@gmail.com, minghuan.Lian@nxp.com,
-	mingkai.hu@nxp.com, roy.zang@nxp.com, jesper.nilsson@axis.com,
-	heiko@sntech.de, srikanth.thokala@intel.com,
-	marek.vasut+renesas@gmail.com, yoshihiro.shimoda.uh@renesas.com,
-	geert+renesas@glider.be, magnus.damm@gmail.com,
-	christian.bruel@foss.st.com, mcoquelin.stm32@gmail.com,
-	alexandre.torgue@foss.st.com, thierry.reding@gmail.com,
-	jonathanh@nvidia.com, hayashi.kunihiko@socionext.com,
-	mhiramat@kernel.org, kishon@kernel.org, jirislaby@kernel.org,
-	rongqianfeng@vivo.com, 18255117159@163.com,
-	shawn.lin@rock-chips.com, nicolas.frattaroli@collabora.com,
-	linux.amoon@gmail.com, vidyas@nvidia.com, Frank.Li@nxp.com,
-	linux-omap@vger.kernel.org, linux-pci@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	imx@lists.linux.dev, linuxppc-dev@lists.ozlabs.org,
-	linux-arm-kernel@axis.com, linux-rockchip@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-tegra@vger.kernel.org
-Subject: Re: [PATCH v5 3/3] PCI: dwc: ep: Support BAR subrange inbound
- mapping via Address Match Mode iATU
-Message-ID: <aWC8jGTtKIzVuG-X@ryzen>
-References: <20260108172403.2629671-1-den@valinux.co.jp>
- <20260108172403.2629671-4-den@valinux.co.jp>
- <aWAZv3ZwdUmo4_wc@ryzen>
- <nqpwi6ewen4kf7jqgon4ljerceqjeaule25dzb6ytas3wslqhp@ddkr3jum6eac>
+To: Hans Zhang <18255117159@163.com>
+Cc: lpieralisi@kernel.org, kwilczynski@kernel.org, bhelgaas@google.com,
+	helgaas@kernel.org, heiko@sntech.de, mani@kernel.org,
+	yue.wang@amlogic.com, pali@kernel.org, neil.armstrong@linaro.org,
+	robh@kernel.org, jingoohan1@gmail.com, khilman@baylibre.com,
+	jbrunet@baylibre.com, martin.blumenstingl@googlemail.com,
+	linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-amlogic@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v7 0/2] PCI: Configure Root Port MPS during host probing
+Message-ID: <aWC-jkgIR7Q4scxn@ryzen>
+References: <20251127170908.14850-1-18255117159@163.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <nqpwi6ewen4kf7jqgon4ljerceqjeaule25dzb6ytas3wslqhp@ddkr3jum6eac>
+In-Reply-To: <20251127170908.14850-1-18255117159@163.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260109_003846_677757_29F7750E 
+X-CRM114-Status: UNSURE (   6.89  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,110 +79,18 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jan 09, 2026 at 04:29:14PM +0900, Koichiro Den wrote:
-> > Does that mean that the usage of this API will be something like:
-> > 
-> > 1) set_bar() ## using BAR match mode, since BAR match mode can write
-> >    the BAR mask to define a BAR size, so that the host can assign a
-> >    PCI address to the BAR.
-> 
-> BAR sizing is done by dw_pcie_ep_set_bar_{programmable,resizable}() before
-> iATU programming regardless of match mode. I keep BAR match mode here just
-> because Address match mode requires a valid base address. That's why I
-> added the `if (!base)` guard.
-> 
-> > 
-> > 2) start() ## start link
-> > 
-> > 3) link up
-> > 
-> > 4) wait for some special command, perhaps NTB_EPF_COMMAND
-> > CMD_CONFIGURE_DOORBELL or NTB_EPF_COMMAND CMD_CONFIGURE_MW
-> > 
-> > 5) set_bar() ## using Address match mode. Because address match mode
-> >    requires that the host has assigned a PCI address to the BAR, we
-> >    can only change the mapping for a BAR after the host has assigned
-> >    PCI addresses for all bars.
-> > 
-> 
-> The overall usage flow matches what I'm assuming.
+On Fri, Nov 28, 2025 at 01:09:06AM +0800, Hans Zhang wrote:
+> Current PCIe initialization exhibits a key optimization gap: Root Ports
+> may operate with non-optimal Maximum Payload Size (MPS) settings. While
+> downstream device configuration is handled during bus enumeration, Root
+> Port MPS values inherited from firmware or hardware defaults often fail
+> to utilize the full capabilities supported by controller hardware. This
+> results in suboptimal data transfer efficiency throughout the PCIe
+> hierarchy.
 
-Ok, perhaps document something that the submap feature requires that the
-BAR already has been assigned an address (and that it thus has to call
-set_bar() twice, without calling clear_bar() in-between.
+Hello PCI maintainers,
 
-This is a new feature, and since you provide a mapping for the whole BAR,
-I think it is logical for people to incorrectly assume that you could use
-this feature by just calling set_bar() once.
-
-
-> > Perhaps you should add some text to:
-> > Documentation/PCI/endpoint/pci-endpoint.rst
-> > 
-> > Because right now the documentation for pci_epc_set_bar() says:
-> > 
-> >    The PCI endpoint function driver should use pci_epc_set_bar() to configure
-> >    the Base Address Register in order for the host to assign PCI addr space.
-> >    Register space of the function driver is usually configured
-> >    using this API.
-> > 
-> > So it is obviously meant to be called *before* the host assigns a PCI
-> > address for the BAR. Now with submap ranges, it appears that it has to
-> > be called *after* the host assigned a PCI address for the BAR.
-> 
-> I agree. As I understand it, the current text seems not to reflect mainline
-> since commit 4284c88fff0e ("PCI: designware-ep: Allow pci_epc_set_bar()
-> update inbound map address"), but anyway I should add explicit
-> documentation for this subrange mapping use case.
-
-Sure, 4284c88fff0e ("PCI: designware-ep: Allow pci_epc_set_bar() update
-inbound map address") modified so that set_bar() can be called twice,
-without calling clear_bar().
-
-However, that patch was a mess because:
-1) It got merged via the NTB tree, even though the PCI maintainer wanted a
-   different design:
-   https://lore.kernel.org/linux-pci/20220818060230.GA12008@thinkpad/T/#m411b3e9f6625da9dde747f624ed6870bef3e8823
-2) It was buggy:
-   https://github.com/torvalds/linux/commit/c2a57ee0f2f1ad8c970ff58b78a43e85abbdeb7f
-3) It lacked the proper conditional checks for the feature to work (and it
-   lacked any comments in the source explaining why it was skipping steps):
-   https://github.com/torvalds/linux/commit/3708acbd5f169ebafe1faa519cb28adc56295546
-4) It failed to update the documentation.
-5) It failed to add a new flag for this feature in epc_features.
-   I seriously doubt that any non-DWC based EP controller supports changing
-   the inbound address translations without first disabling the BAR.
-   (It probably should have added a epc_features->dynamic_inbound_mapping bit.)
-
-
-So all in all 4284c88fff0e in not the best example :)
-
-
-Your new feature (epc_features->subrange_mapping) in epc_features appears
-to depend on epc_features->dynamic_inbound_mapping, so it is a shame that
-we don't have a epc_features->dynamic_inbound_mapping bit, so that this new
-feature could have depended on that bit.
-
-	if (epf_bar->use_submap &&
-	    !(epc_features->dynamic_inbound_mapping &&
-	      epc_features->subrange_mapping))
-		return -EINVAL;
-
-
-I think adding some documentation is a good step.
-
-Perhaps we should also introduce a epc_features->dynamic_inbound_mapping bit?
-Since you are making DWC glue drivers return a mutable EPC features, we could
-set this bit in the DWC driver after that commit. What do you think?
-
-I realize that we would not be able to add any actual verification for the
-epc_features->dynamic_inbound_mapping feature itself (in set_bar()), since
-there is no way for set_bar() to know if a BAR has already been configured
-(since struct pci_epc does not have an array of the currently configured BARs).
-
-But at least it would allow an EPF driver (e.g. vNTB) to know if it can call
-set_bar() twice or not, and can error out if the EPF driver is being used on
-a EPC that doesn't support epc_features->dynamic_inbound_mapping.
+any chance for this series to be applied?
 
 
 Kind regards,
