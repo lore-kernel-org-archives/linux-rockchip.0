@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65180D26D9C
-	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Jan 2026 19:52:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 068D9D26D9B
+	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Jan 2026 19:52:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ggYWPyVjTQR9JJGJ71neIMwKMLb9LyZ2Tb4z4wS8EBM=; b=J0izYPpO1hJMx/
-	ilDuLipZrj6hggEJcrupc5MJe3mt3Em3dYeSv7tbwb0M8xrWxvIJF7ArYwkeT4KJdXDTt3VKVOTLy
-	b9Ieg3WUKoQOJjRbFYOxMUrMR6DgU6QVdxt085dRJhnlbsdrpoeW0gi7AB6H9p0OjuIgCoPXTRtYr
-	umipvpt3PxYWZKF7xMPjH7j3DCaylbGdZz/5zepB49YB6Qta+Ai3WfOWNYWKNFAUWo3iSNEJwUO1E
-	2N+qX7McUmrXvtnAJD/vdZ1hddcjBSUQvW1lu/Fh/g42TZSr+RbjCEdBDUgZT7nB7ht4E79Uq0rHQ
-	jfzR/VNt3Wxd5mhh5ctw==;
+	List-Owner; bh=sjUxNWvYHxFT2qffnyVLBuRynfPtUmZJhpfd21WP19k=; b=gaNU33ufzPDtto
+	7UBS3kt9bfBgfr5fY9uMoUaNHgfk8kApcQl5Ba666fOEI/Hf1i5eTMvecxZEEeJP69tzobiOQIr1r
+	kTRYbIOc1dlZLVU9hQL9If+Yc1/gVccjamzpgym11rSHZjwjA5tUlSYhXK8bFwlk2S+kLyqezBq8J
+	EKM2a4oJTeUpm+IEbtOmkChn/FcUb/wg/dEiJdGLfWV68uWHSpaFGkUBmKp27RWGbUT4/UkMwCGPi
+	jeNKduEUTN3lTVJIfIOwi4eUodJCS8uXkSAvl4Qmlde8zJkqDXFAIU7/s3uKbyJZyJHBIW8As+K5t
+	kDKroK6bzlsU7PCgo06Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1veIWo-00000002xFY-0h8s;
-	Fri, 09 Jan 2026 19:52:10 +0000
+	id 1veIWr-00000002xIZ-3hrB;
+	Fri, 09 Jan 2026 19:52:13 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1veIWl-00000002xCZ-0xj9;
-	Fri, 09 Jan 2026 19:52:08 +0000
+	id 1veIWl-00000002xCa-28uO;
+	Fri, 09 Jan 2026 19:52:09 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=PDoxBGvur96sn5UQABuJBDOzxmuF+TGUGL1bD2paGak=; b=Az7xRXFY+vWHCJXqMUIfTMQ7nJ
-	yQM+qcsK/mjBui8Bx9ZV8bmNSTgV/ZtuLXBfVbSToUy0IjWu4/7ePv1rTrFWWgWcoXSL2V8wkQvn8
-	47cCxQkCSKC5peuXoWa3QwPBP78nq5kA/vZpm+Z2T/GcoKsVf1PLD6OfDxRtks5wq87IhIJBzeEpQ
-	LWYXT73dORYYdDXteTxd5qfDGm+skyEtuvDJxW9XtyQs2Zv4Wyk2IQ6nmBh148zIvpUBTipAuT4Wm
-	1WM9YJb5vQR/ueNjFH7siKEZfxrZm8uQHZH62lFRvWI5wbxoSK98fVkpipol0cCSyGlGTqv+bGU/+
-	QE4FNyUw==;
+	bh=VzAAm/QzdcX+CaBz0hkCJXnCthpHe5k6XsYpJKm2doE=; b=IyUtYcgV1l5rNqcUrdl254yINO
+	OxrKhI2z8EGNiqg2vZEfG383PtUU2BfFzr6Z6qg1iYYMV8v//JHxpOuf5gCXWVOIwnRiBHy4795UW
+	d02Lq9TDD1sJaZ6ekFyQ/g9aqyfwVC1u4WlyT8MtznGAiEH0GGs8UgJ95TMCXxCozpcT1t+dsJve/
+	2jj7Fz+qg4Qn4zgyvngbNMzGLxGDMFm7OTnB24s/se/b0uX+WTKrrAT3icEa4cMFJWl11Z1YfsSuR
+	xYbmvXKOPxCobNOamp/qVZpb5ukj2UdKTK+ioQ+0atvvoqbE2bkM766YtB1lubdj7gY6Y7DM6RquM
+	F4xUtNtQ==;
 Received: from [192.76.154.238] (helo=phil.dip.tu-dresden.de)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1veIWi-001fth-WF; Fri, 09 Jan 2026 20:52:05 +0100
+	id 1veIWj-001fth-7y; Fri, 09 Jan 2026 20:52:05 +0100
 From: Heiko Stuebner <heiko@sntech.de>
 To: Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
@@ -49,16 +49,16 @@ Cc: Heiko Stuebner <heiko@sntech.de>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] arm64: dts: rockchip: Drop unsupported properties
-Date: Fri,  9 Jan 2026 20:51:55 +0100
-Message-ID: <176798831390.3446147.10789004722764768066.b4-ty@sntech.de>
+Subject: Re: [PATCH] arm64: dts: rockchip: Fix gpio pinctrl node names
+Date: Fri,  9 Jan 2026 20:51:56 +0100
+Message-ID: <176798831389.3446147.13403203237802030067.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20260108230607.1348879-1-robh@kernel.org>
-References: <20260108230607.1348879-1-robh@kernel.org>
+In-Reply-To: <20260108230623.1349310-1-robh@kernel.org>
+References: <20260108230623.1349310-1-robh@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260109_115207_265114_46097F96 
-X-CRM114-Status: GOOD (  10.95  )
+X-CRM114-CacheID: sfid-20260109_115207_544090_9DA8128B 
+X-CRM114-Status: GOOD (  10.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,18 +76,17 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Thu, 08 Jan 2026 17:06:07 -0600, Rob Herring (Arm) wrote:
-> "pinctrl-names" is not valid without a pinctrl-N property.
-> 
-> "max-freq" is not a defined property name. Maybe it was supposed to be
-> "spi-max-frequency", but changing to that would be a change in behavior.
+On Thu, 08 Jan 2026 17:06:23 -0600, Rob Herring (Arm) wrote:
+> The pinctrl node names "gpios" or with "-gpio" suffix collide with GPIO
+> property names creating false warnings. Add a "-pins?" suffix to avoid
+> the issue.
 > 
 > 
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: Drop unsupported properties
-      commit: 56e7cc8dadf91cd2164e5d6dac9258f448d50182
+[1/1] arm64: dts: rockchip: Fix gpio pinctrl node names
+      commit: 5fc045974cdeafd16b25f2c360b0cf48502dd1c5
 
 Best regards,
 -- 
