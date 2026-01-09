@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 068D9D26D9B
-	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Jan 2026 19:52:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E698D26D9B
+	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Jan 2026 19:52:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sjUxNWvYHxFT2qffnyVLBuRynfPtUmZJhpfd21WP19k=; b=gaNU33ufzPDtto
-	7UBS3kt9bfBgfr5fY9uMoUaNHgfk8kApcQl5Ba666fOEI/Hf1i5eTMvecxZEEeJP69tzobiOQIr1r
-	kTRYbIOc1dlZLVU9hQL9If+Yc1/gVccjamzpgym11rSHZjwjA5tUlSYhXK8bFwlk2S+kLyqezBq8J
-	EKM2a4oJTeUpm+IEbtOmkChn/FcUb/wg/dEiJdGLfWV68uWHSpaFGkUBmKp27RWGbUT4/UkMwCGPi
-	jeNKduEUTN3lTVJIfIOwi4eUodJCS8uXkSAvl4Qmlde8zJkqDXFAIU7/s3uKbyJZyJHBIW8As+K5t
-	kDKroK6bzlsU7PCgo06Q==;
+	List-Owner; bh=YkT8I29BAQIZRM7cM4cCNsRxtLCEl/rA7sDxZrFFTzo=; b=21W65y7xqtIIxn
+	pmfkNWg9fxBligwKAhJKh+Yo5rSbvQJ+FVOD4ivjtunUUOUM4LNBvVj5wKYy3OOqatid/Ar6XSIgi
+	3QzomKVOsnIiLRyAL8qlxylv2zX5Fu/+yPvuf42dR+LBr3xBy90Dknu9UKkqd27dcipvdnVb7H3DR
+	tFa9j6Yc993/+/Sn9ChUggvS2zca9VMM6Ap9ThfSXLO0u2KRPVm4RiuFYPhqhraxUgwHkDy+Gm2nC
+	q9uvXRNIxtmJU7Gok9ZbXqRlfQZB4qo+uKKHTSE/nA4l4F38s5mExafKU+Vj4el8mJBKGEqoyKJVV
+	AvUx5nHC4znV4Q35h3FA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1veIWr-00000002xIZ-3hrB;
-	Fri, 09 Jan 2026 19:52:13 +0000
+	id 1veIWv-00000002xLB-29z4;
+	Fri, 09 Jan 2026 19:52:17 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1veIWl-00000002xCa-28uO;
+	id 1veIWl-00000002xCc-3vFJ;
 	Fri, 09 Jan 2026 19:52:09 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=VzAAm/QzdcX+CaBz0hkCJXnCthpHe5k6XsYpJKm2doE=; b=IyUtYcgV1l5rNqcUrdl254yINO
-	OxrKhI2z8EGNiqg2vZEfG383PtUU2BfFzr6Z6qg1iYYMV8v//JHxpOuf5gCXWVOIwnRiBHy4795UW
-	d02Lq9TDD1sJaZ6ekFyQ/g9aqyfwVC1u4WlyT8MtznGAiEH0GGs8UgJ95TMCXxCozpcT1t+dsJve/
-	2jj7Fz+qg4Qn4zgyvngbNMzGLxGDMFm7OTnB24s/se/b0uX+WTKrrAT3icEa4cMFJWl11Z1YfsSuR
-	xYbmvXKOPxCobNOamp/qVZpb5ukj2UdKTK+ioQ+0atvvoqbE2bkM766YtB1lubdj7gY6Y7DM6RquM
-	F4xUtNtQ==;
+	bh=4P1BZ2S3ppg4BrswMFpKk0YRpZ+g22ZUu1DsWyom+wc=; b=k0SIetiyKlkNC85ie9wDPucjzi
+	ev2Zp2p2s13okdxtHJ1dtRs3/iyP8xpwMUHcb6tcV4U42RoUmQpp1k8FpWK58pYpcOaZ4HwnP+4M7
+	fkkk3fgJj6NP6fbSfNf0Qq8RDAvarieMXEsp5tyFaGe7SK78iMzrUQJXFdZHbNcZI+R4c/xsEVIuB
+	LDG5k2RwBmfY2TAs5FtLUlvuMRE9WQtL6/Wmazk0POWH4lT2N57e5BzMcRYDthGKs331LHmd2tB97
+	MZ+WE0/hDgNFXOFw43xqGu6wUDWsT9YD+Vhgsz1aeXxWEN8/QIgoj/VPnKjeS3n+jKl4ZIcolTUxS
+	zOiQkuPA==;
 Received: from [192.76.154.238] (helo=phil.dip.tu-dresden.de)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1veIWj-001fth-7y; Fri, 09 Jan 2026 20:52:05 +0100
+	id 1veIWj-001fth-ND; Fri, 09 Jan 2026 20:52:06 +0100
 From: Heiko Stuebner <heiko@sntech.de>
 To: Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
@@ -49,16 +49,16 @@ Cc: Heiko Stuebner <heiko@sntech.de>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] arm64: dts: rockchip: Fix gpio pinctrl node names
-Date: Fri,  9 Jan 2026 20:51:56 +0100
-Message-ID: <176798831389.3446147.13403203237802030067.b4-ty@sntech.de>
+Subject: Re: [PATCH] arm64: dts: rockchip: rk3568-wolfvision: Drop "sitronix,st7789v" fallback compatible
+Date: Fri,  9 Jan 2026 20:51:58 +0100
+Message-ID: <176798831391.3446147.10313596091782977499.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20260108230623.1349310-1-robh@kernel.org>
-References: <20260108230623.1349310-1-robh@kernel.org>
+In-Reply-To: <20260108230600.1348699-1-robh@kernel.org>
+References: <20260108230600.1348699-1-robh@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260109_115207_544090_9DA8128B 
-X-CRM114-Status: GOOD (  10.30  )
+X-CRM114-CacheID: sfid-20260109_115207_969859_52017B5A 
+X-CRM114-Status: GOOD (  10.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,17 +76,16 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Thu, 08 Jan 2026 17:06:23 -0600, Rob Herring (Arm) wrote:
-> The pinctrl node names "gpios" or with "-gpio" suffix collide with GPIO
-> property names creating false warnings. Add a "-pins?" suffix to avoid
-> the issue.
+On Thu, 08 Jan 2026 17:05:59 -0600, Rob Herring (Arm) wrote:
+> "sitronix,st7789v" is not a defined fallback for
+> "jasonic,jt240mhqs-hwt-ek-e3", so drop it.
 > 
 > 
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: Fix gpio pinctrl node names
-      commit: 5fc045974cdeafd16b25f2c360b0cf48502dd1c5
+[1/1] arm64: dts: rockchip: rk3568-wolfvision: Drop "sitronix,st7789v" fallback compatible
+      commit: 3ea9fe578d1d2c1fb88410f53e378561d1531e45
 
 Best regards,
 -- 
