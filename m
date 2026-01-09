@@ -4,61 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E698D26D9B
-	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Jan 2026 19:52:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5093D26D9D
+	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Jan 2026 19:52:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YkT8I29BAQIZRM7cM4cCNsRxtLCEl/rA7sDxZrFFTzo=; b=21W65y7xqtIIxn
-	pmfkNWg9fxBligwKAhJKh+Yo5rSbvQJ+FVOD4ivjtunUUOUM4LNBvVj5wKYy3OOqatid/Ar6XSIgi
-	3QzomKVOsnIiLRyAL8qlxylv2zX5Fu/+yPvuf42dR+LBr3xBy90Dknu9UKkqd27dcipvdnVb7H3DR
-	tFa9j6Yc993/+/Sn9ChUggvS2zca9VMM6Ap9ThfSXLO0u2KRPVm4RiuFYPhqhraxUgwHkDy+Gm2nC
-	q9uvXRNIxtmJU7Gok9ZbXqRlfQZB4qo+uKKHTSE/nA4l4F38s5mExafKU+Vj4el8mJBKGEqoyKJVV
-	AvUx5nHC4znV4Q35h3FA==;
+	List-Owner; bh=ppsKiiMoj8CVA4vTtSKgBrdf59Yer4qAMKZQWvvyoG4=; b=xaT/FgJZKkUdUf
+	4MpuF8hELg3YNm3BFrkvVMVcrXGsb/bMMw+stir9Z82chx436BTTbZDVU4e3cWFKJ5DPALyfeR4c6
+	EkVjv64aVQxw8gm1qcJJXfNAB78ooEQqXWyCdELStxJer0vTaIm+XM2g9xTnwFgXd8gvn2yj482Mw
+	Uu8MCNtA8chxRlIA4BRHpMREiulpCCYwOe7QEEmqK5NtYhzqbkIlrTTG2RmfEjqkCdwgwUuy8CZ/w
+	6Ajk9bGtPfPSgrUmbSu2tB0D2AaHYNTU7wrz+3pvFTTuJr93I8CMOWiIS/HpPJqSYgkKZSmzL7Rda
+	7HICOChzNCxg5/3Hc+Ow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1veIWv-00000002xLB-29z4;
-	Fri, 09 Jan 2026 19:52:17 +0000
+	id 1veIWx-00000002xOY-49DO;
+	Fri, 09 Jan 2026 19:52:19 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1veIWl-00000002xCc-3vFJ;
-	Fri, 09 Jan 2026 19:52:09 +0000
+	id 1veIWq-00000002xG5-24Ij;
+	Fri, 09 Jan 2026 19:52:13 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=4P1BZ2S3ppg4BrswMFpKk0YRpZ+g22ZUu1DsWyom+wc=; b=k0SIetiyKlkNC85ie9wDPucjzi
-	ev2Zp2p2s13okdxtHJ1dtRs3/iyP8xpwMUHcb6tcV4U42RoUmQpp1k8FpWK58pYpcOaZ4HwnP+4M7
-	fkkk3fgJj6NP6fbSfNf0Qq8RDAvarieMXEsp5tyFaGe7SK78iMzrUQJXFdZHbNcZI+R4c/xsEVIuB
-	LDG5k2RwBmfY2TAs5FtLUlvuMRE9WQtL6/Wmazk0POWH4lT2N57e5BzMcRYDthGKs331LHmd2tB97
-	MZ+WE0/hDgNFXOFw43xqGu6wUDWsT9YD+Vhgsz1aeXxWEN8/QIgoj/VPnKjeS3n+jKl4ZIcolTUxS
-	zOiQkuPA==;
+	bh=xjbjUpsAsCVJ0RrUntwNzm+wTNXU0lp1MnQ6qvk5YjI=; b=N+RbX1AcVuJ0MQfIEnfmvzjJjL
+	6cK/v3XBYoW6UOL9O12FRfKl1MfNlt0OONGWPGXpsQkio/yN6FeRY9uQJ+pQipnXEVKt4TBsbXRJ+
+	85ObIbVp3U+zig0MfKBWhcGmb28xY4lzN18/EsbnwwnjFIIB46/ltrw7vCpwodjxe135nLzi0Epbq
+	ZOBQJAuwS0ZHHCjKT8G+T0W+r8+akZZIDtFknQJ3XagM6Ex0I5sQ6ODf/rdHmww19oZ71ICIF+TLS
+	kzwyyiC6USvjcySc8VZKpYsMwnnhng8MtShA+Lb8P8/5RjTg/XbweYc83w+mANb7OlnukurJqvA2h
+	jJmSCDeQ==;
 Received: from [192.76.154.238] (helo=phil.dip.tu-dresden.de)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1veIWj-001fth-ND; Fri, 09 Jan 2026 20:52:06 +0100
+	id 1veIWi-001fth-Od; Fri, 09 Jan 2026 20:52:05 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: Krzysztof Kozlowski <krzk+dt@kernel.org>,
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
-	"Rob Herring (Arm)" <robh@kernel.org>
+	David Petry <petry103@gmail.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
+	Damon Ding <damon.ding@rock-chips.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	=?UTF-8?q?Valentin=20H=C4=83loiu?= <valentin.haloiu@gmail.com>,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] arm64: dts: rockchip: rk3568-wolfvision: Drop "sitronix,st7789v" fallback compatible
-Date: Fri,  9 Jan 2026 20:51:58 +0100
-Message-ID: <176798831391.3446147.10313596091782977499.b4-ty@sntech.de>
+Subject: Re: [PATCH v2] arm64: dts: rockchip: Enable second HDMI output on CM3588
+Date: Fri,  9 Jan 2026 20:51:54 +0100
+Message-ID: <176798831382.3446147.12018502751434054481.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20260108230600.1348699-1-robh@kernel.org>
-References: <20260108230600.1348699-1-robh@kernel.org>
+In-Reply-To: <20251021160603.96934-1-petry103@gmail.com>
+References: <20251021160603.96934-1-petry103@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260109_115207_969859_52017B5A 
-X-CRM114-Status: GOOD (  10.03  )
+X-CRM114-CacheID: sfid-20260109_115212_537882_2711E056 
+X-CRM114-Status: GOOD (  10.49  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,16 +80,15 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Thu, 08 Jan 2026 17:05:59 -0600, Rob Herring (Arm) wrote:
-> "sitronix,st7789v" is not a defined fallback for
-> "jasonic,jt240mhqs-hwt-ek-e3", so drop it.
+On Tue, 21 Oct 2025 18:06:02 +0200, David Petry wrote:
+> Enable the second HDMI output port found on FriendlyElec CM3588 and CM3588 Plus
 > 
 > 
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: rk3568-wolfvision: Drop "sitronix,st7789v" fallback compatible
-      commit: 3ea9fe578d1d2c1fb88410f53e378561d1531e45
+[1/1] arm64: dts: rockchip: Enable second HDMI output on CM3588
+      commit: a770eb1f3219dfc4c28dac66c96735fa8acba4e6
 
 Best regards,
 -- 
