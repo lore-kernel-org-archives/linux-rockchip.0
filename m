@@ -4,55 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 846E5D26D9C
-	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Jan 2026 20:03:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13E4BD26D99
+	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Jan 2026 20:09:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uD7e3QQAumqa0fecQV4Zjzrzg/Jn79jP2SxSKc7Qce0=; b=oAxzLzIMwhfhyY
-	BH6rgZdvPwKs78TIBP5fDbjElNJ0DnJWJFEHHjV32Nju+GRPAQ19czeWuS1U0LXbl37UbVLWbEBKA
-	PRNfgc6zIiiyeVVo68/xC95QXE1rnX6UANcixQ3sApJuvBilMdZWELZresNQ8gS0zV51wDkbz6M/p
-	Q1XPwkPlGm2DyBoICiwi31ZpTj6pdVkGbk86+oAEmKahi+Z0dZMccSiU1jQSX0saDSk92jpJ28Fzr
-	wfREQTX0WOQ4f+ovNzJyRbX4W653/vjRLPxtsgKjBlHHKuqZvqsPNg5qJqQWXr+sANpV0jQ3ll+iw
-	O9TePJfd+CIKak0T6Fqw==;
+	List-Owner; bh=QySYOBqRXG8HARX+b0GuL0WiSuzrseGzCGMBFzHYAG0=; b=mvwBgZQGPKIqhj
+	yhF+p2RxdSY3cZyGSJo/9lS1fBwNRcuEY26L8ozxK8RNuKWolxADhou5xLjmkv09EP+4I85t/mlkr
+	hlulm0f59Be5dNCznhk2R77EzAsFJFtJ7viBLWisVHf1ITQMnOwjQOKf/SlrLIAW8qAxhdnBHjir3
+	OcPSlDedw/fYNwVhTAsS/lQ36uchJjId9t6INGh8OgiwWwRCI7bYGehJC6qXG2quM3BpGEeZfoAOd
+	UhirpcQmwZoK6Ekfefd6rpri6kGp7G0aCvCUlehModGs1DXyOeNiO2bStnoKbwgvtvjNpGcBf1mEU
+	VHYV8jaKAxNZKdRYyYlw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1veIhP-00000002yaD-3fj8;
-	Fri, 09 Jan 2026 20:03:07 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1veIne-00000002ysY-4Ab6;
+	Fri, 09 Jan 2026 20:09:34 +0000
+Received: from mgamail.intel.com ([192.198.163.15])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1veIhN-00000002yZj-03rA;
-	Fri, 09 Jan 2026 20:03:06 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=QIt8py9lcxC79AmMPcNOsD+iHnc6c89XW5lXglpgyC4=; b=hA97cqZ5zaXi80g11ILgwcHQc1
-	Qrb9lT40y4ssfXMj9mKhU8n3PMHYUiHcQ51oMJiXOj4aGFqFvs7C8Mp0xK8tB2SgZvgE5sgeWCRGk
-	OSsGWU1YF+YVBPko6w3IOGjM5dNRrr+Cp6cVw7071+PFizcZacNKZdurdHggyZMyckswdNcJG3+af
-	zu4iUGlugiRfG4Ks6r1Eas9M+Gz0O0hNEvLHiID8kSWB7rA0+xkVzDAuY3f9T2npiK1sKpCKP32cH
-	DTzlMhja1A/+fq2I+8WpOtc7PiW5zEoloPm6/89vRPxZE7ufgDOt9drMh40P0ysfz75aaPVyW2BrD
-	ZG8GqbLA==;
-Received: from [192.76.154.230] (helo=phil.dip.tu-dresden.de)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1veIh1-001fy0-13; Fri, 09 Jan 2026 21:02:43 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: linux-kernel@vger.kernel.org,
-	Detlev Casanova <detlev.casanova@collabora.com>
-Subject: Re: [PATCH v3 0/2] arm64: dts: rockchip: Add vdpu 381 and 383 nodes
-Date: Fri,  9 Jan 2026 21:02:40 +0100
-Message-ID: <176798895637.3449720.6051032825613833368.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20251020212009.8852-1-detlev.casanova@collabora.com>
-References: <20251020212009.8852-1-detlev.casanova@collabora.com>
+	id 1veInc-00000002ysA-0byQ
+	for linux-rockchip@lists.infradead.org;
+	Fri, 09 Jan 2026 20:09:33 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1767989372; x=1799525372;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=5axzby49Fa/0SEo5UFGiSuW7Dqdl7D33czvCIivdFOQ=;
+  b=ItFT97AcnWdhX8SHqjV+/BtnlNt+YQUWTW3YsRREaMGDx3Xkqd4qVhCb
+   YHJyOKpi8xgmt6+yZHwoz0X7TAx4riGf/nS5Ew8k5yDD5JDE09IwIj2SO
+   el2XNn/T13HVyU58p2Re7yHR0ICc0+lf5tzRaeyYo61djyjNtinMcvmlK
+   23oYt0qCrB4Ar6RlzhNBAkuBb3KZUDvaqONkyYT3Nf1RgBPxbVAzpTnPG
+   rwbP83z8WDYS91nUDYeq1AHWD5VUC98OMBSrtYpRLOzhkfkJYSBKy9dta
+   eTaGTBr3GJxru+lQi1F9DinJEdX+tkTYUihRikxx73TQAPSemoaoER6t/
+   w==;
+X-CSE-ConnectionGUID: LCXE8r0nRF65L0+cx/wcXA==
+X-CSE-MsgGUID: BkPGrb5zR1GUIFp2+bGmpg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11666"; a="69445830"
+X-IronPort-AV: E=Sophos;i="6.21,214,1763452800"; 
+   d="scan'208";a="69445830"
+Received: from orviesa004.jf.intel.com ([10.64.159.144])
+  by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Jan 2026 12:09:29 -0800
+X-CSE-ConnectionGUID: 7xfIFGvxRrm0x7xEk1P3Tw==
+X-CSE-MsgGUID: 9+5xRz03SICboPHoeOcpzA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.21,214,1763452800"; 
+   d="scan'208";a="208083989"
+Received: from igk-lkp-server01.igk.intel.com (HELO 92b2e8bd97aa) ([10.211.93.152])
+  by orviesa004.jf.intel.com with ESMTP; 09 Jan 2026 12:09:27 -0800
+Received: from kbuild by 92b2e8bd97aa with local (Exim 4.98.2)
+	(envelope-from <lkp@intel.com>)
+	id 1veInU-0000000028K-011v;
+	Fri, 09 Jan 2026 20:09:24 +0000
+Date: Fri, 9 Jan 2026 21:08:56 +0100
+From: kernel test robot <lkp@intel.com>
+To: Shawn Lin <shawn.lin@rock-chips.com>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Bjorn Helgaas <helgaas@kernel.org>
+Cc: oe-kbuild-all@lists.linux.dev, linux-rockchip@lists.infradead.org,
+	linux-pci@vger.kernel.org, linux-trace-kernel@vger.kernel.org,
+	linux-doc@vger.kernel.org, Steven Rostedt <rostedt@goodmis.org>,
+	Masami Hiramatsu <mhiramat@kernel.org>,
+	Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH v2 2/3] Documentation: tracing: Add PCI controller event
+ documentation
+Message-ID: <202601092104.0IlUz26P-lkp@intel.com>
+References: <1767929389-143957-3-git-send-email-shawn.lin@rock-chips.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <1767929389-143957-3-git-send-email-shawn.lin@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260109_120305_111057_0C0A5C12 
-X-CRM114-Status: GOOD (  13.23  )
+X-CRM114-CacheID: sfid-20260109_120932_229474_C1E5AE4B 
+X-CRM114-Status: GOOD (  11.60  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,35 +89,79 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko Stuebner <heiko@sntech.de>, Shawn Lin <shawn.lin@rock-chips.com>, Kever Yang <kever.yang@rock-chips.com>, Chukun Pan <amadeus@jmu.edu.cn>, Alexander Shiyan <eagle.alexander923@gmail.com>, kernel@collabora.com, Dragan Simic <dsimic@manjaro.org>, Rob Herring <robh@kernel.org>, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Damon Ding <damon.ding@rock-chips.com>, Chris Morgan <macromorgan@hotmail.com>, linux-arm-kernel@lists.infradead.org, Patrick Wildt <patrick@blueri.se>, Alexey Charkov <alchark@gmail.com>, Diederik de Haas <didi.debian@cknow.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, Tomeu Vizoso <tomeu@tomeuvizoso.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Shawn,
 
-On Mon, 20 Oct 2025 17:20:07 -0400, Detlev Casanova wrote:
-> Add the nodes for vdpu 381 and 383, respectively RK3588 and RK3576.
-> To keep compatibility with older variants, the reg ranges order is not
-> in register order so that the function reg range is kept first.
-> 
-> Also adds the corresponding iommu nodes.
-> 
-> Note that on RK3588, both cores are added as it represents the hardware,
-> but the driver, later will only register the first one.
-> 
-> [...]
+kernel test robot noticed the following build warnings:
 
-Applied, thanks!
+[auto build test WARNING on pci/next]
+[also build test WARNING on next-20260109]
+[cannot apply to pci/for-linus mani-mhi/mhi-next trace/for-next linus/master v6.19-rc4]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-[1/2] arm64: dts: rockchip: Add the vdpu381 Video Decoders on RK3588
-      commit: f61731bd60627b129b688c2d7b2071a5fe7f01d7
-[2/2] arm64: dts: rockchip: Add the vdpu383 Video Decoder on rk3576
-      commit: da0de806d8b46238ac3891a894806da4d1c26cdf
+url:    https://github.com/intel-lab-lkp/linux/commits/Shawn-Lin/PCI-trace-Add-PCI-controller-LTSSM-transition-tracepoint/20260109-153843
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/pci/pci.git next
+patch link:    https://lore.kernel.org/r/1767929389-143957-3-git-send-email-shawn.lin%40rock-chips.com
+patch subject: [PATCH v2 2/3] Documentation: tracing: Add PCI controller event documentation
+reproduce: (https://download.01.org/0day-ci/archive/20260109/202601092104.0IlUz26P-lkp@intel.com/reproduce)
 
-Best regards,
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202601092104.0IlUz26P-lkp@intel.com/
+
+All warnings (new ones prefixed by >>):
+
+   WARNING: No kernel-doc for file ./include/linux/delay.h
+   ERROR: Cannot find file ./include/linux/delay.h
+   WARNING: No kernel-doc for file ./include/linux/delay.h
+   ERROR: Cannot find file ./include/linux/delay.h
+   WARNING: No kernel-doc for file ./include/linux/delay.h
+>> Documentation/trace/events-pci-conotroller.rst:21: WARNING: Title underline too short.
+--
+   ERROR: Cannot find file ./include/linux/mutex.h
+   ERROR: Cannot find file ./include/linux/mutex.h
+   WARNING: No kernel-doc for file ./include/linux/mutex.h
+   ERROR: Cannot find file ./include/linux/fwctl.h
+   WARNING: No kernel-doc for file ./include/linux/fwctl.h
+>> Documentation/trace/events-pci-conotroller.rst: WARNING: document isn't included in any toctree [toc.not_included]
+
+
+vim +21 Documentation/trace/events-pci-conotroller.rst
+
+    19	
+    20	pcie_ltssm_state_transition
+  > 21	-----------------------
+    22	
+    23	Monitors PCIe LTSSM state transition including state and rate information
+    24	::
+    25	
+    26	    pcie_ltssm_state_transition  "dev: %s state: %s rate: %s\n"
+    27	
+    28	**Parameters**:
+    29	
+    30	* ``dev`` - PCIe root port name
+    31	* ``state`` - PCIe LTSSM state
+    32	* ``rate`` - PCIe bus speed
+    33	
+    34	**Example Usage**:
+    35	
+    36	    # Enable the tracepoint
+    37	    echo 1 > /sys/kernel/debug/tracing/events/pci/pcie_ltssm_state_transition/enable
+    38	
+    39	    # Monitor events (the following output is generated when a device is linking)
+    40	    cat /sys/kernel/debug/tracing/trace_pipe
+  > 41	       kworker/0:0-9       [000] .....     5.600221: pcie_ltssm_state_transition: dev: a40000000.pcie state: RCVRY_EQ2 rate: 8.0 GT/s
+
 -- 
-Heiko Stuebner <heiko@sntech.de>
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
 _______________________________________________
 Linux-rockchip mailing list
