@@ -4,70 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E00C1D232E4
-	for <linux-rockchip@archiver.kernel.org>; Sat, 10 Jan 2026 19:36:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4D67D25020
+	for <linux-rockchip@archiver.kernel.org>; Sat, 10 Jan 2026 21:13:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:From:Subject:
-	Cc:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dgfFUOUjTIjd6cAbRVkUfWoYR2xUGgY9paB2hlyPQo8=; b=pbQRk0p3VCK6Dp
-	Q7zCLn9nd/waVf5v78wKNQf/GAtjqtckWJI2z1bBQ4hiAIfHWSCFFULWJWBr3l9qTdciMIsb7r6Ay
-	LzbrgJoiLLa7hRMuZj/EXSQtD0bR6ZXvHfK4nuMTC5ZsjeApJH9amITzvv5gzfF7lfCJvaAc9SMJq
-	tcAsxugek40JgFCsZvOuZfm83HFeWDLvFWulKsox+SYgB42fo4VVN0B3BWOmk7S1rOt5U2ALcGh5R
-	Jtg45fSb4M363Tj0m2/9wOFMaA8Q9zkqtutkB2zzFoxASaDiAVxcvoWthqHPZvQwdXtEh0pMgeD4v
-	WQhFkmHLdw/tXcais3JA==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
+	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=fJxlDBrgHjJd1WFDzYLW6VJzcVyN81VwMxCuvKenrmc=; b=YG2H1cH6HZQUzK
+	PjYzle18Q3yRzEk4/qTODUGTVuDk4hxapkILJykshsJMpLnlYAukhfBXU34yUiC/XthObxVDSJyiT
+	jfioEwwYeoUCMa1eUw3S5tyAUVa+eR347jvc/vOIMyubUwGIyFQtlhAfjIT8R49WPkNdM3r7f2BtR
+	mqNqB01KtV16Bz1oWzf9QCffnHAYmCZ3VJHVCumUcrghpEoAQ3CdXtl0j2zrxXOxFhTPR8JgIIlgf
+	D0vsQDrQVheFL9IbRapvtHEb7eW45hjhuuSzS4cHwQlIZ+jgN2ysG3J/rR8Gy5sCn0P/HnVY9rQap
+	xr539M0VQ8eyy1ayYZKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1veekf-00000003dZr-3HzD;
-	Sat, 10 Jan 2026 19:35:57 +0000
-Received: from out-188.mta0.migadu.com ([91.218.175.188])
+	id 1vegGQ-00000003gHG-3UO4;
+	Sat, 10 Jan 2026 21:12:50 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1veekd-00000003dZD-023q
-	for linux-rockchip@lists.infradead.org;
-	Sat, 10 Jan 2026 19:35:56 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow-tech.com;
-	s=key1; t=1768073742;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=YYRmxOMkxzng4TMKTpoi3lSayf/NyY8ahAeAqOwq/3Q=;
-	b=fxLw6WmCoewuA/NmZizqtsuK2ZU49/df/OHEUiOiX6DS8PzOCAax5HvdogS/qo82H1nCIm
-	hYFIADCxjtguJY1oe2w941M0KkhzfmFvwlydh3o5fBEyXxy3pDghAK98WPsUG/EaDpQOJ2
-	i2hIrLqvnMYRs5MnVd33JqiZZQKvLH5WNNoSqXdJEWv0EaU0KmNOIbXydf33+1blEzliIg
-	B4q0NmMlVHKC0MxGJw3rsNZO7wtHtZ/ZKt0rsOE7bVBOCxZg/8Mu2VyMs/5HqVaupezTSu
-	zfqA737e8YP5MxZLG3xPycrIi7+JS32jEUUkeanaVsFvTH5METUHKrhutKYDaA==
-Date: Sat, 10 Jan 2026 20:35:37 +0100
-Message-Id: <DFL5TY0QQNMN.1RS04UM9D1V8S@cknow-tech.com>
-Cc: "Nicolas Dufresne" <nicolas.dufresne@collabora.com>, "Dang Huynh"
- <dang.huynh@mainlining.org>
-Subject: Re: [PATCH v3 2/3] media: rkvdec: Add support for the VDPU346
- variant
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <diederik@cknow-tech.com>
-To: "Christian Hewitt" <christianshewitt@gmail.com>, "Detlev Casanova"
- <detlev.casanova@collabora.com>, =?utf-8?q?Olivier_Cr=C3=AAte?=
- <olivier.crete@collabora.com>, "Ezequiel Garcia"
- <ezequiel@vanguardiasur.com.ar>, "Mauro Carvalho Chehab"
- <mchehab@kernel.org>, "Rob Herring" <robh@kernel.org>, "Krzysztof
- Kozlowski" <krzk+dt@kernel.org>, "Conor Dooley" <conor+dt@kernel.org>,
- "Heiko Stuebner" <heiko@sntech.de>, "Diederik de Haas"
- <diederik@cknow-tech.com>, "Dmitry Osipenko"
- <dmitry.osipenko@collabora.com>, "Thomas Gleixner" <tglx@linutronix.de>,
- "Dragan Simic" <dsimic@manjaro.org>, "Chukun Pan" <amadeus@jmu.edu.cn>,
- <linux-media@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>
-References: <20260110053727.2295260-1-christianshewitt@gmail.com>
- <20260110053727.2295260-3-christianshewitt@gmail.com>
-In-Reply-To: <20260110053727.2295260-3-christianshewitt@gmail.com>
-X-Migadu-Flow: FLOW_OUT
+	id 1vegGN-00000003gGl-2fio;
+	Sat, 10 Jan 2026 21:12:49 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1768079562;
+	bh=5oSK6ZqGW1O08DhJ5RerDVMpW9oPSKQr7Adg8seGHvM=;
+	h=From:Date:Subject:To:Cc:From;
+	b=ltzHVbKRz/LBWg7AQ+EKyQMVw6HQeghMfh1XBvkWj6CXkGT6MdOfa2BRy461NnsSo
+	 QxJQGmaNSNO95xoIPtKq8cAHrVPBi+P95fQC9TRkee28QzUIdzYQgm/aIpYH53/088
+	 VzzF/YOsR+mIbiiXpMWwtUPsmjzI1xhqES4yt7zBO+Hx18x+3ql3AJ5rIwfB+MVN9N
+	 /qDhcrC/OGVwW3gBHsznIh4RlurPjtbk8KGdzLa6tqSfe3wUrriuR9Fa6CqmRlZ/qA
+	 8JQPDJin5tFB6aa0zU+gqgAfdMrushf6D7yS7XgVk/+lMbCfYM0tJaeoIrJ7K+KWTV
+	 I2ZYbBeumw5Xg==
+Received: from localhost (unknown [82.79.138.145])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id ACE6F17E14FA;
+	Sat, 10 Jan 2026 22:12:42 +0100 (CET)
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Date: Sat, 10 Jan 2026 23:12:11 +0200
+Subject: [PATCH] drm/rockchip: dw_hdmi_qp: Switch to
+ gpiod_set_value_cansleep()
+MIME-Version: 1.0
+Message-Id: <20260110-dw-hdmi-qp-cansleep-v1-1-1ce937c5b201@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAKrAYmkC/x2MQQqAIBAAvxJ7bkENgvpKdFh0rYWyUqhA/HvSb
+ eYwkyFxFE4wNhki35LkCFV024BdKSyM4qqDUaZXWit0D65uF7xOtBTSxlzBEmnjaeh8B7U8I3t
+ 5/+s0l/IBzRSAzWUAAAA=
+X-Change-ID: 20260110-dw-hdmi-qp-cansleep-ccaa12fa93f3
+To: Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>
+Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org
+X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260110_113555_195091_C2F58C5F 
-X-CRM114-Status: GOOD (  14.95  )
+X-CRM114-CacheID: sfid-20260110_131247_872055_209E05A6 
+X-CRM114-Status: GOOD (  11.68  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,172 +82,63 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Christian,
+Since commit 20cf2aed89ac ("gpio: rockchip: mark the GPIO controller as
+sleeping"), the Rockchip GPIO chip operations potentially sleep, hence
+the kernel complains when trying to make use of the non-sleeping API:
 
-On Sat Jan 10, 2026 at 6:37 AM CET, Christian Hewitt wrote:
-> VDPU346 is similar to VDPU381 but with a single core and limited
-> to 4K60 media. It is also limited to H264 L5.1 and omits AV1 and
-> AVS2 capabilities. VDPU346 is used with RK3566 and RK3568.
->
-> Signed-off-by: Christian Hewitt <christianshewitt@gmail.com>
-> Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-> Tested-by: Dang Huynh <dang.huynh@mainlining.org> # Pinetab2
-> ---
->  .../media/platform/rockchip/rkvdec/rkvdec.c   | 103 ++++++++++++++++++
->  1 file changed, 103 insertions(+)
->
-> diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.c b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-> index a5cf6f3240f8..6e49b129d11f 100644
-> --- a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-> +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-> @@ -236,6 +236,62 @@ static const struct rkvdec_ctrls rkvdec_hevc_ctrls = {
->  	.num_ctrls = ARRAY_SIZE(rkvdec_hevc_ctrl_descs),
->  };
->  
-> +static const struct rkvdec_ctrl_desc vdpu346_hevc_ctrl_descs[] = {
-> +	{
-> +		.cfg.id = V4L2_CID_STATELESS_HEVC_DECODE_PARAMS,
-> +	},
-> +	{
-> +		.cfg.id = V4L2_CID_STATELESS_HEVC_SPS,
-> +		.cfg.ops = &rkvdec_ctrl_ops,
-> +	},
-> +	{
-> +		.cfg.id = V4L2_CID_STATELESS_HEVC_PPS,
-> +	},
-> +	{
-> +		.cfg.id = V4L2_CID_STATELESS_HEVC_SCALING_MATRIX,
-> +	},
-> +	{
-> +		.cfg.id = V4L2_CID_STATELESS_HEVC_DECODE_MODE,
-> +		.cfg.min = V4L2_STATELESS_HEVC_DECODE_MODE_FRAME_BASED,
-> +		.cfg.max = V4L2_STATELESS_HEVC_DECODE_MODE_FRAME_BASED,
-> +		.cfg.def = V4L2_STATELESS_HEVC_DECODE_MODE_FRAME_BASED,
-> +	},
-> +	{
-> +		.cfg.id = V4L2_CID_STATELESS_HEVC_START_CODE,
-> +		.cfg.min = V4L2_STATELESS_HEVC_START_CODE_ANNEX_B,
-> +		.cfg.def = V4L2_STATELESS_HEVC_START_CODE_ANNEX_B,
-> +		.cfg.max = V4L2_STATELESS_HEVC_START_CODE_ANNEX_B,
-> +	},
-> +	{
-> +		.cfg.id = V4L2_CID_MPEG_VIDEO_HEVC_PROFILE,
-> +		.cfg.min = V4L2_MPEG_VIDEO_HEVC_PROFILE_MAIN,
-> +		.cfg.max = V4L2_MPEG_VIDEO_HEVC_PROFILE_MAIN_10,
-> +		.cfg.menu_skip_mask =
-> +			BIT(V4L2_MPEG_VIDEO_HEVC_PROFILE_MAIN_STILL_PICTURE),
-> +		.cfg.def = V4L2_MPEG_VIDEO_HEVC_PROFILE_MAIN,
-> +	},
-> +	{
-> +		.cfg.id = V4L2_CID_MPEG_VIDEO_HEVC_LEVEL,
-> +		.cfg.min = V4L2_MPEG_VIDEO_HEVC_LEVEL_1,
-> +		.cfg.max = V4L2_MPEG_VIDEO_HEVC_LEVEL_5_1,
-> +	},
-> +	{
-> +		.cfg.id = V4L2_CID_STATELESS_HEVC_EXT_SPS_ST_RPS,
-> +		.cfg.ops = &rkvdec_ctrl_ops,
-> +		.cfg.dims = { 65 },
-> +	},
-> +	{
-> +		.cfg.id = V4L2_CID_STATELESS_HEVC_EXT_SPS_LT_RPS,
-> +		.cfg.ops = &rkvdec_ctrl_ops,
-> +		.cfg.dims = { 65 },
-> +	},
-> +};
-> +
-> +static const struct rkvdec_ctrls vdpu346_hevc_ctrls = {
-> +	.ctrls = vdpu346_hevc_ctrl_descs,
-> +	.num_ctrls = ARRAY_SIZE(vdpu346_hevc_ctrl_descs),
-> +};
-> +
->  static const struct rkvdec_ctrl_desc vdpu38x_hevc_ctrl_descs[] = {
->  	{
->  		.cfg.id = V4L2_CID_STATELESS_HEVC_DECODE_PARAMS,
-> @@ -463,6 +519,41 @@ static const struct rkvdec_coded_fmt_desc rk3288_coded_fmts[] = {
->  	}
->  };
->  
-> +static const struct rkvdec_coded_fmt_desc vdpu346_coded_fmts[] = {
-> +	{
-> +		.fourcc = V4L2_PIX_FMT_HEVC_SLICE,
-> +		.frmsize = {
-> +			.min_width = 64,
-> +			.max_width = 4096,
-> +			.step_width = 64,
-> +			.min_height = 64,
-> +			.max_height = 2304,
-> +			.step_height = 16,
-> +		},
-> +		.ctrls = &vdpu346_hevc_ctrls,
-> +		.ops = &rkvdec_vdpu381_hevc_fmt_ops,
-> +		.num_decoded_fmts = ARRAY_SIZE(rkvdec_hevc_decoded_fmts),
-> +		.decoded_fmts = rkvdec_hevc_decoded_fmts,
-> +		.subsystem_flags = VB2_V4L2_FL_SUPPORTS_M2M_HOLD_CAPTURE_BUF,
-> +	},
-> +	{
-> +		.fourcc = V4L2_PIX_FMT_H264_SLICE,
-> +		.frmsize = {
-> +			.min_width = 64,
-> +			.max_width =  4096,
-> +			.step_width = 64,
-> +			.min_height = 64,
-> +			.max_height =  2304,
-> +			.step_height = 16,
-> +		},
-> +		.ctrls = &rkvdec_h264_ctrls,
-> +		.ops = &rkvdec_vdpu381_h264_fmt_ops,
-> +		.num_decoded_fmts = ARRAY_SIZE(rkvdec_h264_decoded_fmts),
-> +		.decoded_fmts = rkvdec_h264_decoded_fmts,
-> +		.subsystem_flags = VB2_V4L2_FL_SUPPORTS_M2M_HOLD_CAPTURE_BUF,
-> +	},
-> +};
-> +
->  static const struct rkvdec_coded_fmt_desc vdpu381_coded_fmts[] = {
->  	{
->  		.fourcc = V4L2_PIX_FMT_HEVC_SLICE,
-> @@ -1657,6 +1748,14 @@ static const struct rkvdec_variant_ops vdpu381_variant_ops = {
->  	.flatten_matrices = transpose_and_flatten_matrices,
->  };
->  
-> +static const struct rkvdec_variant vdpu346_variant = {
-> +	.coded_fmts = vdpu346_coded_fmts,
-> +	.num_coded_fmts = ARRAY_SIZE(vdpu346_coded_fmts),
-> +	.rcb_sizes = vdpu381_rcb_sizes,
+[   16.653343] WARNING: drivers/gpio/gpiolib.c:3902 at gpiod_set_value+0xd0/0x108, CPU#5: kworker/5:1/93
+...
+[   16.678470] Hardware name: Radxa ROCK 5B (DT)
+[   16.682374] Workqueue: events dw_hdmi_qp_rk3588_hpd_work [rockchipdrm]
+...
+[   16.729314] Call trace:
+[   16.731846]  gpiod_set_value+0xd0/0x108 (P)
+[   16.734548]  dw_hdmi_qp_rockchip_encoder_enable+0xbc/0x3a8 [rockchipdrm]
+[   16.737487]  drm_atomic_helper_commit_encoder_bridge_enable+0x314/0x380 [drm_kms_helper]
+[   16.740555]  drm_atomic_helper_commit_tail_rpm+0xa4/0x100 [drm_kms_helper]
+[   16.743501]  commit_tail+0x1e0/0x2c0 [drm_kms_helper]
+[   16.746290]  drm_atomic_helper_commit+0x274/0x2b8 [drm_kms_helper]
+[   16.749178]  drm_atomic_commit+0x1f0/0x248 [drm]
+[   16.752000]  drm_client_modeset_commit_atomic+0x490/0x5d0 [drm]
+[   16.754954]  drm_client_modeset_commit_locked+0xf4/0x400 [drm]
+[   16.757911]  drm_client_modeset_commit+0x50/0x80 [drm]
+[   16.760791]  __drm_fb_helper_restore_fbdev_mode_unlocked+0x9c/0x170 [drm_kms_helper]
+[   16.763843]  drm_fb_helper_hotplug_event+0x340/0x368 [drm_kms_helper]
+[   16.766780]  drm_fbdev_client_hotplug+0x64/0x1d0 [drm_client_lib]
+[   16.769634]  drm_client_hotplug+0x178/0x240 [drm]
+[   16.772455]  drm_client_dev_hotplug+0x170/0x1c0 [drm]
+[   16.775303]  drm_connector_helper_hpd_irq_event+0xa4/0x178 [drm_kms_helper]
+[   16.778248]  dw_hdmi_qp_rk3588_hpd_work+0x44/0xb8 [rockchipdrm]
+[   16.781080]  process_one_work+0xc3c/0x1658
+[   16.783719]  worker_thread+0xa24/0xc40
+[   16.786333]  kthread+0x3b4/0x3d8
+[   16.788889]  ret_from_fork+0x10/0x20
 
-AFAICT this is not correct, the rcb_sizes are different for vdpu346 vs
-vdpu381. While for vdpu381 the sizes are the same across codecs, they
-vary for vdpu346. And vdpu346 does not have 'STRMD Row', 'Transd Row'
-and 'Transd col'.
+Since gpiod_get_value() is called from a context that can sleep, switch
+to its *_cansleep() variant and get rid of the issue.
 
-For RK3588/vdpu381 it is defined in RK3588 TRM V1.0 Part1 in
-paragraph 5.4.4.3 in 'Table 5-13 Row or Col buffer size required' on
-page 381.
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+---
+ drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-For RK3568/vdpu346 is is defines in RK3568 TRM V1.1 Part2 in
-paragraph 10.4.8 in 'Table 10-9 Row or Col buffer size required' on page
-474 and 475.
+diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
+index 6e39e8a00774..8604342f9943 100644
+--- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
+@@ -121,7 +121,7 @@ static void dw_hdmi_qp_rockchip_encoder_enable(struct drm_encoder *encoder)
+ 	struct drm_crtc *crtc = encoder->crtc;
+ 
+ 	/* Unconditionally switch to TMDS as FRL is not yet supported */
+-	gpiod_set_value(hdmi->frl_enable_gpio, 0);
++	gpiod_set_value_cansleep(hdmi->frl_enable_gpio, 0);
+ 
+ 	if (!crtc || !crtc->state)
+ 		return;
 
-Cheers,
-  Diederik
-
-> +	.num_rcb_sizes = ARRAY_SIZE(vdpu381_rcb_sizes),
-> +	.ops = &vdpu381_variant_ops,
-> +};
-> +
->  static const struct rkvdec_variant vdpu381_variant = {
->  	.coded_fmts = vdpu381_coded_fmts,
->  	.num_coded_fmts = ARRAY_SIZE(vdpu381_coded_fmts),
-> @@ -1705,6 +1804,10 @@ static const struct of_device_id of_rkvdec_match[] = {
->  		.compatible = "rockchip,rk3399-vdec",
->  		.data = &rk3399_rkvdec_variant,
->  	},
-> +	{
-> +		.compatible = "rockchip,rk3568-vdec",
-> +		.data = &vdpu346_variant,
-> +	},
->  	{
->  		.compatible = "rockchip,rk3588-vdec",
->  		.data = &vdpu381_variant,
+---
+base-commit: f417b7ffcbef7d76b0d8860518f50dae0e7e5eda
+change-id: 20260110-dw-hdmi-qp-cansleep-ccaa12fa93f3
 
 
 _______________________________________________
