@@ -4,72 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CB2BD277D0
-	for <linux-rockchip@archiver.kernel.org>; Sat, 10 Jan 2026 05:37:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 625DDD277D1
+	for <linux-rockchip@archiver.kernel.org>; Sat, 10 Jan 2026 05:37:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/F90k5LXPsfCqf3lWnYjWiZTbOM3G1rJmYyMfRakj68=; b=X2kI+BkQXaPVRI
-	CiqsqcINNp6CBsrb56IyZgJ5xUaeBW4cuG8ZepMjVNL0Z3Qq7YgvbIyccqz9H5qfnOCNV/isa7uSN
-	ywRTqMsEhn+ClJ3QVU8oIhg1MtavHbS7PBDzCpDOLufnGbgNYOg871LDRAJWM8H5C3gyOdBeLEjEh
-	YR3663oNhK2TwLuiicstkZeEivjq0tVb7zGUqD8yLNZVMp3q1GIY0APNHB4wr+KHMzZP9q+Fh2Pdz
-	hMUd8ULyBC+loMoZFJaD53f4t7e2a51oFEtjvaqMP3o4hJLw3Rt0EFq9l4Fm/n4I+HgINAZ+mZKqH
-	5mD9Kya7LayU1/xbJSFQ==;
+	List-Owner; bh=yZgEXU1MBILLA2pOXy/pAR4ftD1RCp6UW96oNcvQ/ys=; b=FXO8d7m98b8Lz6
+	Kb7Gs6X89idl8AyiFVe9Ko06cMxtzz5d/sSJ4Dq7W3W/qMGEk+yx5BgziPkJcYwZFjpScYTNmWbge
+	lnnS+lPYVaCuHpqrWQrCfCtdLC5yogjO3+jsXnK7a/YTuX9+FIyeRImU6+bBN540CVR0zwXe7/WdN
+	gRu2G+wHgKst8dbD6NGLZUrgcCYoqTrvZ6PN9kAhe2NbV9y89NjzBE0pmnD/nre9HpUnVmPhMBQyf
+	ysoJqdSx7Wpvo7epxFYxef+OImiIrPGTTOEtklSmGtXuK9wbl025f7tWuf2khyuP619myycQBvxg6
+	sXyX5imNb2p2evKS1Mpw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1veRfV-00000003HOh-0J01;
-	Sat, 10 Jan 2026 05:37:45 +0000
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+	id 1veRfW-00000003HQG-1Krk;
+	Sat, 10 Jan 2026 05:37:46 +0000
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1veRfR-00000003HKy-3bl2
+	id 1veRfU-00000003HNb-2gA8
 	for linux-rockchip@lists.infradead.org;
-	Sat, 10 Jan 2026 05:37:43 +0000
-Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-47795f6f5c0so30070505e9.1
-        for <linux-rockchip@lists.infradead.org>; Fri, 09 Jan 2026 21:37:41 -0800 (PST)
+	Sat, 10 Jan 2026 05:37:45 +0000
+Received: by mail-wr1-x435.google.com with SMTP id ffacd0b85a97d-42fb2314f52so2545673f8f.0
+        for <linux-rockchip@lists.infradead.org>; Fri, 09 Jan 2026 21:37:44 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1768023460; x=1768628260; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1768023463; x=1768628263; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=SwF/unBnaFW1rvIB2VegLLFRYP2bQTcQU4jqjcGifVk=;
-        b=D67QE1saGbuQPbfQ7kyn7Sc+SOAcmtGm+PL+PCtayhOuORjkbm50VvsghP+56llJob
-         fuxO20oWgEEukKykNeWScuDu7IG2487u6i77sxOLW0ydXP/Il2Zok0dshqQ9xp1vlCVt
-         PPcPSFQIyu1ozO5VWI9H7RfyNNhjIqY6GTkoC3wxT40UxiTPHQ+A9mUIqd1e5Jqvpjvo
-         5W5Hh4sTcFw4MGTgp51apSLMejhsRJ5/+62j4jZeMk7X5oXkR7xshKUjkPeDaGAP3hri
-         q077k4I8zbBHYL/z2LQ6YBWgMoRBKGi/svKzr0fHIMoqAzRHU95WSZaAaNIOLHLYCpfO
-         pvTg==
+        bh=KBV1jttw9vA0jCOoGP99Ua6fivA5lzhlMS+1uYQ4YFE=;
+        b=fb9+ovChJUEu2wtTiwdcL61Fh/W+YErOgy/mKBK1HzmTZNYHuUZxzrTcD256DZJW7D
+         enstYZ0H+3Qot+KrtlVoOBT6GK0HPE1MdwT/h4uFfJDNGo6kMnz7jy1SbpVTZ6FvCuJO
+         aPnVAjF4QqdmcjeRPgFkO54IIIN8KH40a4obEY2HC59janxHwV5RR324nB+yVKfCUGPo
+         ukH2FzKqmrOfeCDiesvML+3mkGgLn7TbXwvgmyUz0HizBL4Dr+CfCerS4gzi3mMinnDS
+         rbg5/9nzscK+FzfkpLUG24EdHu2wxE4yRLW8vbl5hwoeKVGeKggnJxC0M0ijOnRdta6p
+         YE1A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1768023460; x=1768628260;
+        d=1e100.net; s=20230601; t=1768023463; x=1768628263;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=SwF/unBnaFW1rvIB2VegLLFRYP2bQTcQU4jqjcGifVk=;
-        b=BQOer+myXCj+8rPYmMu3g5pxwznxRyNFb6Czq1I7oPUbGOBRkzGx4uv0ULExYM5STv
-         RYDsDNpHGUI3VakVwVros1ew5uAe4gG+TuY0D0hbkoQygVCfrzEjj9OF6bBXrbkexyoz
-         UpGUXZTFtrFt8pxvFqFiMrCx0alXOxZaSdJoOdGCQ5xU3ojV74RC0Wptm3cCzwk/38dB
-         HFr+BU/Kb01yqMhW3i8f5CT1qCaxm1ksGWj59Xf5AIlIwL9N+YOndESOR6odmY5uWTAy
-         MmG5H3fgeD2W6HLok7Fknx9LhZ5vkFjqRHJ1TtWWXMDyltq20ZzHRpKq/jGUa4zOUBqG
-         SGAQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWpX24sZ3JJr44e4VqN1xbdiEsR0hEEUbg4+0fB8CrEVs4S9cNeYzLBaNzvtx66YbCuT9mYuIYsMc9KWSOmaw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyAsqfuEziR79c77zYoTAAhjBTyG083CSJ5xOGtHEYZpIJB8wrc
-	n8zRFWb9Bl8KBT+cE0aPdp2139O934Vfip9/DrqSxBjrk6sXV89ilaiY
-X-Gm-Gg: AY/fxX4FKgAbPPqPNv55RSuiaIZexIj0f7Q5ZgLyeQ7dnAKinia7zfETIpUQ3QkjWhd
-	aWBdrLrUUqBb2N4v2VqQBVY+jgqLPkQDcTJ6UPzzvDdjyY5+Q4w7oAtD8xJlDYewIHRFAEncLUD
-	Xk/598Lxcg9pXUUKdnE0WhyFY+JILLBlzdobsVKqotcSXpV4BDX+B/5VbMeixc3x1PfqUXabO5Q
-	u065HY+0sQ64BW2n/kHcm7ZhXORFrn6JuOObd5V6ZUY6C0pkpsXpFZl3CXPY/qCHJgo4gwKuSHx
-	skkqa/5CFgN5UAs0hAExCXhXYr0RCTFKy4vypFWyQhkqS4r8Up/1XsCIM8bW9mXD7H14r0qAEoP
-	RIth/dn491D1AnCXxPoGN8ABosZOIhoiffaSXdup70AMEYHY3i5ZgwiCTxnUnOGhjf8gciOsxaL
-	CN9+5sh7cwLBo5E0Y=
-X-Google-Smtp-Source: AGHT+IETNRaHMNAZQeH2gwTg4jdbHnvg19YnwNKOZH/s/Wk/33B+6YxgXnlQIAepe6DAJfUBCWI5ig==
-X-Received: by 2002:a05:600c:8b65:b0:477:79f8:daa8 with SMTP id 5b1f17b1804b1-47d8fbda479mr66222065e9.17.1768023459645;
-        Fri, 09 Jan 2026 21:37:39 -0800 (PST)
+        bh=KBV1jttw9vA0jCOoGP99Ua6fivA5lzhlMS+1uYQ4YFE=;
+        b=j/+imMG2XbJ1W+xPkkTKQ1VSyLzJMsGK3+vOIdvoYvQJ5uUS3WOUNnTYnIrqtXvHRQ
+         FUHoGj8CpRSBAzAMeBHApEiNP/MXkBac5nsu3Am+ddy2X32BFvCeAThPuZkIJidGyLsZ
+         9NntDcI798GrJeZz8EBkQEcb2DGr+/6DPfNHXHdxUYIt1mmJ5cjJv9j1q3Hl+DH8XMSG
+         sgzxBOhLFU4SiKcsxvuwmoj0aJ0y5yO0GiHbBM1LhcWLJcrA7kLoLmLHZBSXOdDUhIGS
+         UzH37OT/bciSYKo2I5774BVztQB6eWDthcxpJeKjSgxeguZCD06FZMjBMQHWZYXn8X+3
+         2dYA==
+X-Forwarded-Encrypted: i=1; AJvYcCWn1IqXL6geqJPyAMAfprHXi02cN1BBMGBjoeOvHSMHu3GKQqWcRSY7XODYSEz7fkXobf93LOaj1XIqdhTl8A==@lists.infradead.org
+X-Gm-Message-State: AOJu0YywcZgpMwTEnaKCP+9nkmI4RnX981uV78JKeLBJZf+bTv+gAaPu
+	1+76xqkmt/2GqxmdAVU8yQhN8uweHTJymhxKONfFbp7eglDbyKsSdtE5
+X-Gm-Gg: AY/fxX70Y+MHs6mCepnAcRXRQFrkuB5Wx20v+PwO/qvdwP+3+TXVnALJqY3ZyqXhh6W
+	ASCtqXfuAD6CQgUo+KC8O8oN2OW+BbQAGAqPBlaUmMvwf6f/gyrPmm44i+XKBIF61nJzs9tc9G9
+	HcWwPuBL2pJCMRjR+iR7MrAS9AEJd0gWvHAK4DmIos/H4ld/I9nW+ebAYDo440ExXQJuPLzRl7Z
+	x93LDeeg8rJ0Kt3JRy3O19y6tf7ind46JoR+fJ0dwr4yAdgwJL/pRzSRm+3kCXGgTuF0ECW+pai
+	5LKs6sUI/BdQLdKu/lc2xUSRvf4+tcKZV8KmOQ1cZcBVwN2wnhEcnUwmtdfQog733heXgIRifrX
+	ZTpypn1Dpl+RdLFOH0X0Yr8/VGeMCl+zL3Cz8h+MeANo7F6bkNxtNFLYy2kbFqRjdzjwppt06J0
+	RxBhONuR/kY6iDuLw=
+X-Google-Smtp-Source: AGHT+IFcfMPIrhWiXPkS98R5rwsX/ACoRCaVo+plXZiPZaElaqnswMgbw6+184Fm/K+bJwMBmWeKXg==
+X-Received: by 2002:a05:6000:4287:b0:432:851d:35ef with SMTP id ffacd0b85a97d-432c37a3b62mr16501208f8f.42.1768023462952;
+        Fri, 09 Jan 2026 21:37:42 -0800 (PST)
 Received: from toolbox.. ([87.200.95.144])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-432bd0dadcfsm25973825f8f.3.2026.01.09.21.37.36
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-432bd0dadcfsm25973825f8f.3.2026.01.09.21.37.39
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 09 Jan 2026 21:37:39 -0800 (PST)
+        Fri, 09 Jan 2026 21:37:42 -0800 (PST)
 From: Christian Hewitt <christianshewitt@gmail.com>
 To: Detlev Casanova <detlev.casanova@collabora.com>,
 	=?UTF-8?q?Olivier=20Cr=C3=AAte?= <olivier.crete@collabora.com>,
@@ -89,18 +89,17 @@ To: Detlev Casanova <detlev.casanova@collabora.com>,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Cc: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Dang Huynh <dang.huynh@mainlining.org>
-Subject: [PATCH v3 2/3] media: rkvdec: Add support for the VDPU346 variant
-Date: Sat, 10 Jan 2026 05:37:26 +0000
-Message-ID: <20260110053727.2295260-3-christianshewitt@gmail.com>
+Cc: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
+Subject: [PATCH v3 3/3] arm64: dts: rockchip: Add the vdpu346 Video Decoders on RK356X
+Date: Sat, 10 Jan 2026 05:37:27 +0000
+Message-ID: <20260110053727.2295260-4-christianshewitt@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260110053727.2295260-1-christianshewitt@gmail.com>
 References: <20260110053727.2295260-1-christianshewitt@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260109_213741_958859_CA4F12F8 
-X-CRM114-Status: GOOD (  11.70  )
+X-CRM114-CacheID: sfid-20260109_213744_692604_6F759C98 
+X-CRM114-Status: GOOD (  10.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,152 +116,84 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-VDPU346 is similar to VDPU381 but with a single core and limited
-to 4K60 media. It is also limited to H264 L5.1 and omits AV1 and
-AVS2 capabilities. VDPU346 is used with RK3566 and RK3568.
+Add the vdpu346 Video Decoders to the rk356x-base devicetree to
+enable support on RK3566 and RK3568 boards. Also add the needed
+sram and vdec_mmu nodes.
 
+Suggested-by: Diederik de Haas <diederik@cknow-tech.com>
+Suggested-by: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
 Signed-off-by: Christian Hewitt <christianshewitt@gmail.com>
-Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Tested-by: Dang Huynh <dang.huynh@mainlining.org> # Pinetab2
 ---
- .../media/platform/rockchip/rkvdec/rkvdec.c   | 103 ++++++++++++++++++
- 1 file changed, 103 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk356x-base.dtsi | 49 +++++++++++++++++++
+ 1 file changed, 49 insertions(+)
 
-diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.c b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-index a5cf6f3240f8..6e49b129d11f 100644
---- a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-+++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-@@ -236,6 +236,62 @@ static const struct rkvdec_ctrls rkvdec_hevc_ctrls = {
- 	.num_ctrls = ARRAY_SIZE(rkvdec_hevc_ctrl_descs),
- };
+diff --git a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
+index a2c4957a5899..11536684479b 100644
+--- a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
+@@ -383,6 +383,19 @@ usb2phy1_grf: syscon@fdca8000 {
+ 		reg = <0x0 0xfdca8000 0x0 0x8000>;
+ 	};
  
-+static const struct rkvdec_ctrl_desc vdpu346_hevc_ctrl_descs[] = {
-+	{
-+		.cfg.id = V4L2_CID_STATELESS_HEVC_DECODE_PARAMS,
-+	},
-+	{
-+		.cfg.id = V4L2_CID_STATELESS_HEVC_SPS,
-+		.cfg.ops = &rkvdec_ctrl_ops,
-+	},
-+	{
-+		.cfg.id = V4L2_CID_STATELESS_HEVC_PPS,
-+	},
-+	{
-+		.cfg.id = V4L2_CID_STATELESS_HEVC_SCALING_MATRIX,
-+	},
-+	{
-+		.cfg.id = V4L2_CID_STATELESS_HEVC_DECODE_MODE,
-+		.cfg.min = V4L2_STATELESS_HEVC_DECODE_MODE_FRAME_BASED,
-+		.cfg.max = V4L2_STATELESS_HEVC_DECODE_MODE_FRAME_BASED,
-+		.cfg.def = V4L2_STATELESS_HEVC_DECODE_MODE_FRAME_BASED,
-+	},
-+	{
-+		.cfg.id = V4L2_CID_STATELESS_HEVC_START_CODE,
-+		.cfg.min = V4L2_STATELESS_HEVC_START_CODE_ANNEX_B,
-+		.cfg.def = V4L2_STATELESS_HEVC_START_CODE_ANNEX_B,
-+		.cfg.max = V4L2_STATELESS_HEVC_START_CODE_ANNEX_B,
-+	},
-+	{
-+		.cfg.id = V4L2_CID_MPEG_VIDEO_HEVC_PROFILE,
-+		.cfg.min = V4L2_MPEG_VIDEO_HEVC_PROFILE_MAIN,
-+		.cfg.max = V4L2_MPEG_VIDEO_HEVC_PROFILE_MAIN_10,
-+		.cfg.menu_skip_mask =
-+			BIT(V4L2_MPEG_VIDEO_HEVC_PROFILE_MAIN_STILL_PICTURE),
-+		.cfg.def = V4L2_MPEG_VIDEO_HEVC_PROFILE_MAIN,
-+	},
-+	{
-+		.cfg.id = V4L2_CID_MPEG_VIDEO_HEVC_LEVEL,
-+		.cfg.min = V4L2_MPEG_VIDEO_HEVC_LEVEL_1,
-+		.cfg.max = V4L2_MPEG_VIDEO_HEVC_LEVEL_5_1,
-+	},
-+	{
-+		.cfg.id = V4L2_CID_STATELESS_HEVC_EXT_SPS_ST_RPS,
-+		.cfg.ops = &rkvdec_ctrl_ops,
-+		.cfg.dims = { 65 },
-+	},
-+	{
-+		.cfg.id = V4L2_CID_STATELESS_HEVC_EXT_SPS_LT_RPS,
-+		.cfg.ops = &rkvdec_ctrl_ops,
-+		.cfg.dims = { 65 },
-+	},
-+};
++	sram@fdcc0000 {
++		compatible = "mmio-sram";
++		reg = <0x0 0xfdcc0000 0x0 0xb000>;
++		ranges = <0x0 0x0 0xfdcc0000 0xb000>;
++		#address-cells = <1>;
++		#size-cells = <1>;
 +
-+static const struct rkvdec_ctrls vdpu346_hevc_ctrls = {
-+	.ctrls = vdpu346_hevc_ctrl_descs,
-+	.num_ctrls = ARRAY_SIZE(vdpu346_hevc_ctrl_descs),
-+};
++		vdec_sram: rkvdec-sram@0 {
++			reg = <0x0 0xb000>;
++			pool;
++		};
++	};
 +
- static const struct rkvdec_ctrl_desc vdpu38x_hevc_ctrl_descs[] = {
- 	{
- 		.cfg.id = V4L2_CID_STATELESS_HEVC_DECODE_PARAMS,
-@@ -463,6 +519,41 @@ static const struct rkvdec_coded_fmt_desc rk3288_coded_fmts[] = {
- 	}
- };
+ 	pmucru: clock-controller@fdd00000 {
+ 		compatible = "rockchip,rk3568-pmucru";
+ 		reg = <0x0 0xfdd00000 0x0 0x1000>;
+@@ -619,6 +632,42 @@ vepu_mmu: iommu@fdee0800 {
+ 		#iommu-cells = <0>;
+ 	};
  
-+static const struct rkvdec_coded_fmt_desc vdpu346_coded_fmts[] = {
-+	{
-+		.fourcc = V4L2_PIX_FMT_HEVC_SLICE,
-+		.frmsize = {
-+			.min_width = 64,
-+			.max_width = 4096,
-+			.step_width = 64,
-+			.min_height = 64,
-+			.max_height = 2304,
-+			.step_height = 16,
-+		},
-+		.ctrls = &vdpu346_hevc_ctrls,
-+		.ops = &rkvdec_vdpu381_hevc_fmt_ops,
-+		.num_decoded_fmts = ARRAY_SIZE(rkvdec_hevc_decoded_fmts),
-+		.decoded_fmts = rkvdec_hevc_decoded_fmts,
-+		.subsystem_flags = VB2_V4L2_FL_SUPPORTS_M2M_HOLD_CAPTURE_BUF,
-+	},
-+	{
-+		.fourcc = V4L2_PIX_FMT_H264_SLICE,
-+		.frmsize = {
-+			.min_width = 64,
-+			.max_width =  4096,
-+			.step_width = 64,
-+			.min_height = 64,
-+			.max_height =  2304,
-+			.step_height = 16,
-+		},
-+		.ctrls = &rkvdec_h264_ctrls,
-+		.ops = &rkvdec_vdpu381_h264_fmt_ops,
-+		.num_decoded_fmts = ARRAY_SIZE(rkvdec_h264_decoded_fmts),
-+		.decoded_fmts = rkvdec_h264_decoded_fmts,
-+		.subsystem_flags = VB2_V4L2_FL_SUPPORTS_M2M_HOLD_CAPTURE_BUF,
-+	},
-+};
++	vdec: video-codec@fdf80100 {
++		compatible = "rockchip,rk3568-vdec";
++		reg = <0x0 0xfdf80200 0x0 0x500>,
++		      <0x0 0xfdf80100 0x0 0x100>,
++		      <0x0 0xfdf80700 0x0 0x100>;
++		reg-names = "function", "link", "cache";
++		interrupts = <GIC_SPI 91 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru ACLK_RKVDEC>, <&cru HCLK_RKVDEC>,
++			 <&cru CLK_RKVDEC_CA>, <&cru CLK_RKVDEC_CORE>,
++			 <&cru CLK_RKVDEC_HEVC_CA>;
++		clock-names = "axi", "ahb", "cabac", "core", "hevc_cabac";
++		assigned-clocks = <&cru ACLK_RKVDEC>,
++				  <&cru CLK_RKVDEC_CORE>,
++				  <&cru CLK_RKVDEC_CA>,
++				  <&cru CLK_RKVDEC_HEVC_CA>;
++		assigned-clock-rates = <297000000>, <297000000>,
++				       <297000000>, <600000000>;
++		iommus = <&vdec_mmu>;
++		power-domains = <&power RK3568_PD_RKVDEC>;
++		resets = <&cru SRST_A_RKVDEC>, <&cru SRST_H_RKVDEC>,
++			 <&cru SRST_RKVDEC_CA>, <&cru SRST_RKVDEC_CORE>,
++			 <&cru SRST_RKVDEC_HEVC_CA>;
++		reset-names = "axi", "ahb", "cabac", "core", "hevc_cabac";
++		sram = <&vdec_sram>;
++	};
 +
- static const struct rkvdec_coded_fmt_desc vdpu381_coded_fmts[] = {
- 	{
- 		.fourcc = V4L2_PIX_FMT_HEVC_SLICE,
-@@ -1657,6 +1748,14 @@ static const struct rkvdec_variant_ops vdpu381_variant_ops = {
- 	.flatten_matrices = transpose_and_flatten_matrices,
- };
- 
-+static const struct rkvdec_variant vdpu346_variant = {
-+	.coded_fmts = vdpu346_coded_fmts,
-+	.num_coded_fmts = ARRAY_SIZE(vdpu346_coded_fmts),
-+	.rcb_sizes = vdpu381_rcb_sizes,
-+	.num_rcb_sizes = ARRAY_SIZE(vdpu381_rcb_sizes),
-+	.ops = &vdpu381_variant_ops,
-+};
++	vdec_mmu: iommu@fdf80800 {
++		compatible = "rockchip,rk3568-iommu";
++		reg = <0x0 0xfdf80800 0x0 0x40>, <0x0 0xfdf80840 0x0 0x40>;
++		interrupts = <GIC_SPI 92 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru ACLK_RKVDEC>, <&cru HCLK_RKVDEC>;
++		clock-names = "aclk", "iface";
++		power-domains = <&power RK3568_PD_RKVDEC>;
++		#iommu-cells = <0>;
++	};
 +
- static const struct rkvdec_variant vdpu381_variant = {
- 	.coded_fmts = vdpu381_coded_fmts,
- 	.num_coded_fmts = ARRAY_SIZE(vdpu381_coded_fmts),
-@@ -1705,6 +1804,10 @@ static const struct of_device_id of_rkvdec_match[] = {
- 		.compatible = "rockchip,rk3399-vdec",
- 		.data = &rk3399_rkvdec_variant,
- 	},
-+	{
-+		.compatible = "rockchip,rk3568-vdec",
-+		.data = &vdpu346_variant,
-+	},
- 	{
- 		.compatible = "rockchip,rk3588-vdec",
- 		.data = &vdpu381_variant,
+ 	vicap: video-capture@fdfe0000 {
+ 		compatible = "rockchip,rk3568-vicap";
+ 		reg = <0x0 0xfdfe0000 0x0 0x200>;
 -- 
 2.43.0
 
