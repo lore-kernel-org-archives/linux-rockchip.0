@@ -4,68 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4D67D25020
-	for <linux-rockchip@archiver.kernel.org>; Sat, 10 Jan 2026 21:13:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0480D25032
+	for <linux-rockchip@archiver.kernel.org>; Sun, 11 Jan 2026 01:55:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
-	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=fJxlDBrgHjJd1WFDzYLW6VJzcVyN81VwMxCuvKenrmc=; b=YG2H1cH6HZQUzK
-	PjYzle18Q3yRzEk4/qTODUGTVuDk4hxapkILJykshsJMpLnlYAukhfBXU34yUiC/XthObxVDSJyiT
-	jfioEwwYeoUCMa1eUw3S5tyAUVa+eR347jvc/vOIMyubUwGIyFQtlhAfjIT8R49WPkNdM3r7f2BtR
-	mqNqB01KtV16Bz1oWzf9QCffnHAYmCZ3VJHVCumUcrghpEoAQ3CdXtl0j2zrxXOxFhTPR8JgIIlgf
-	D0vsQDrQVheFL9IbRapvtHEb7eW45hjhuuSzS4cHwQlIZ+jgN2ysG3J/rR8Gy5sCn0P/HnVY9rQap
-	xr539M0VQ8eyy1ayYZKQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=3zTsYtChOnrUr4zYoAenE27+hYjf1S4sa38CUGgY6Y4=; b=VBmz0jYcRjUlmI
+	ayYBs9h0BA+VnAInDWOcFqFAheUrXDAObEbyVvHxH59EZCoq5F2PKgamE+E9YVegMG2HrxvdaqdDx
+	fwk7k/KLUcGbyTLJQlfkxmSkYKSWZA9T0v7Cj+yTveBQUX/8DOPLD/SXEdFnBf1DbPJlFZc230nOZ
+	bzf1MpauatZi2Am5pR6FwV1v+P3OFTTjP0Vtz8UeCHwS5DeGFP2U3HIJXV4Zct6mZDL3s+8rknlKw
+	eeeX1QpWx9uBQDEUaQf8DM3UVGcSImxDvr+hu19ZiWiku0Js4uza19E4FBu2NfZEbP+1/YRQ4ubqq
+	MDJzNKPCQk1sdqMdV/7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vegGQ-00000003gHG-3UO4;
-	Sat, 10 Jan 2026 21:12:50 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vekfV-00000003p2q-3gLb;
+	Sun, 11 Jan 2026 01:55:01 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vegGN-00000003gGl-2fio;
-	Sat, 10 Jan 2026 21:12:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1768079562;
-	bh=5oSK6ZqGW1O08DhJ5RerDVMpW9oPSKQr7Adg8seGHvM=;
-	h=From:Date:Subject:To:Cc:From;
-	b=ltzHVbKRz/LBWg7AQ+EKyQMVw6HQeghMfh1XBvkWj6CXkGT6MdOfa2BRy461NnsSo
-	 QxJQGmaNSNO95xoIPtKq8cAHrVPBi+P95fQC9TRkee28QzUIdzYQgm/aIpYH53/088
-	 VzzF/YOsR+mIbiiXpMWwtUPsmjzI1xhqES4yt7zBO+Hx18x+3ql3AJ5rIwfB+MVN9N
-	 /qDhcrC/OGVwW3gBHsznIh4RlurPjtbk8KGdzLa6tqSfe3wUrriuR9Fa6CqmRlZ/qA
-	 8JQPDJin5tFB6aa0zU+gqgAfdMrushf6D7yS7XgVk/+lMbCfYM0tJaeoIrJ7K+KWTV
-	 I2ZYbBeumw5Xg==
-Received: from localhost (unknown [82.79.138.145])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id ACE6F17E14FA;
-	Sat, 10 Jan 2026 22:12:42 +0100 (CET)
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Sat, 10 Jan 2026 23:12:11 +0200
-Subject: [PATCH] drm/rockchip: dw_hdmi_qp: Switch to
- gpiod_set_value_cansleep()
+	id 1vekfU-00000003p2R-218K
+	for linux-rockchip@lists.infradead.org;
+	Sun, 11 Jan 2026 01:55:00 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id CD65160185
+	for <linux-rockchip@lists.infradead.org>; Sun, 11 Jan 2026 01:54:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 375A5C16AAE
+	for <linux-rockchip@lists.infradead.org>; Sun, 11 Jan 2026 01:54:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1768096497;
+	bh=3+boh/64J3UqZucLzwtl7B8Arc8PYtZWke74PMpbH5Q=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=Tt16OhBZKlk0+Go8ZDGIooj4m9Cy/cX8hjpPtxK3d+3SwCyZJnxUjpSpcbhfLcziW
+	 0TY0XrjCnJtIWjAlHgKqsp4T0nhE80SDzZPHjYV6hV+MzUUox6jlKJhumnSejXAEUH
+	 XBgWSAS5hmWjDTASBlZl4Lks5XpdKfR4GvxuqMSe4+0O7l443+Ya64BBqfbJNIOGgf
+	 iSYFU77G+SI+T5hJfcB6CVLCrh74XzkX8/qZNpyosUo78d3zq6btiQCzPXOFwipul7
+	 K1oQigx9ceirpAquoRX7PvNJjekrXNhISflbuoLsRxdIhxgYQ/j4vq7V6KRU1Nxuq3
+	 JOyVtEWPj6jcQ==
+Received: by mail-ed1-f51.google.com with SMTP id 4fb4d7f45d1cf-64b9dfc146fso4385448a12.0
+        for <linux-rockchip@lists.infradead.org>; Sat, 10 Jan 2026 17:54:57 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCUtlEDXc3n01KLMiQ/kPAgkzJ0ka4KdL+kPbynZqG2XXu8nxPn9Mr38IjaToprGVm7vYLD4f/ZehzNeVJfPHw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxjKKot9Dfipuv07bEHW4O6eGBS6aaOB7ClPq8K4i9oxKrcUATA
+	5YjYt5qzHSdQUK8m7ntLO6s3X8z2y4TXIqXZjTvZCGEI/Ma3fh2GBjFE7AKWMQDfCtimJ4W8RcY
+	Ekv0fIxeMubWZWOg629eGA0ZxJLUTdFw=
+X-Google-Smtp-Source: AGHT+IFefzhNqietnG7jCSa+J+bZNTm2sxT6EMCIzG2hX7dQNgvopeRcl429RcoFUOJJ8DD+HXIMkLRyHc5oHcFBqoE=
+X-Received: by 2002:a17:906:31c4:b0:b86:f558:ecbd with SMTP id
+ a640c23a62f3a-b86f558ef40mr259752266b.13.1768096495753; Sat, 10 Jan 2026
+ 17:54:55 -0800 (PST)
 MIME-Version: 1.0
-Message-Id: <20260110-dw-hdmi-qp-cansleep-v1-1-1ce937c5b201@collabora.com>
-X-B4-Tracking: v=1; b=H4sIAKrAYmkC/x2MQQqAIBAAvxJ7bkENgvpKdFh0rYWyUqhA/HvSb
- eYwkyFxFE4wNhki35LkCFV024BdKSyM4qqDUaZXWit0D65uF7xOtBTSxlzBEmnjaeh8B7U8I3t
- 5/+s0l/IBzRSAzWUAAAA=
-X-Change-ID: 20260110-dw-hdmi-qp-cansleep-ccaa12fa93f3
-To: Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Andy Yan <andy.yan@rock-chips.com>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>
-Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org
-X-Mailer: b4 0.14.3
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260110_131247_872055_209E05A6 
-X-CRM114-Status: GOOD (  11.68  )
+References: <73d472ea-e660-474c-b319-b0e8758406c0@rowland.harvard.edu>
+ <CAAhV-H6drj1df3Y4_Z67t4TzJ5n6YiexsEHKTPvi1caNvw5H9A@mail.gmail.com>
+ <0c85d288-405f-4aaf-944e-b1d452d0f275@rowland.harvard.edu>
+ <CAAhV-H5GdkMg-uzMpDQPGLs+gWNAy6ZOH33VoLqnNyWbRenNDw@mail.gmail.com>
+ <34c7edd0-3c0c-4a57-b0ea-71e4cba2ef26@rowland.harvard.edu>
+ <CAAhV-H7j=cD9dkaB5bWxNdPtoVR4NUFvFs=n46TaNte1zGqoOA@mail.gmail.com>
+ <98e36c6f-f0ee-40d2-be7f-d2ad9f36de07@rowland.harvard.edu>
+ <CAAhV-H601B96D9rFrnARho4Lr9A+ah7Cx7eKiPr=epbG17ODHQ@mail.gmail.com>
+ <561129d8-67ff-406c-afe8-73430484bd96@rowland.harvard.edu>
+ <CAAhV-H41kwndL+oz2Gcfpe3-MCagaQd2X21gK9kMO2vpw_thhA@mail.gmail.com> <e6a02bff-6371-4a03-910e-b47c5eec726c@rowland.harvard.edu>
+In-Reply-To: <e6a02bff-6371-4a03-910e-b47c5eec726c@rowland.harvard.edu>
+From: Huacai Chen <chenhuacai@kernel.org>
+Date: Sun, 11 Jan 2026 09:54:46 +0800
+X-Gmail-Original-Message-ID: <CAAhV-H7NGgHhrZ+oC2ZbzURj0--yVL8rpn4Z42xk9VzKD3E1Qw@mail.gmail.com>
+X-Gm-Features: AZwV_QjrxAmrXgM418NqjlVUfhPSmRQwnTXsOX72D4q8A2YzFMOxw5809vLsa1c
+Message-ID: <CAAhV-H7NGgHhrZ+oC2ZbzURj0--yVL8rpn4Z42xk9VzKD3E1Qw@mail.gmail.com>
+Subject: Re: [PATCH] USB: OHCI/UHCI: Add soft dependencies on ehci_hcd
+To: Alan Stern <stern@rowland.harvard.edu>
+Cc: Diederik de Haas <diederik@cknow-tech.com>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Huacai Chen <chenhuacai@loongson.cn>, 
+	linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	stable@vger.kernel.org, Shengwen Xiao <atzlinux@sina.com>, 
+	linux-rockchip@lists.infradead.org
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,71 +87,43 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Since commit 20cf2aed89ac ("gpio: rockchip: mark the GPIO controller as
-sleeping"), the Rockchip GPIO chip operations potentially sleep, hence
-the kernel complains when trying to make use of the non-sleeping API:
-
-[   16.653343] WARNING: drivers/gpio/gpiolib.c:3902 at gpiod_set_value+0xd0/0x108, CPU#5: kworker/5:1/93
-...
-[   16.678470] Hardware name: Radxa ROCK 5B (DT)
-[   16.682374] Workqueue: events dw_hdmi_qp_rk3588_hpd_work [rockchipdrm]
-...
-[   16.729314] Call trace:
-[   16.731846]  gpiod_set_value+0xd0/0x108 (P)
-[   16.734548]  dw_hdmi_qp_rockchip_encoder_enable+0xbc/0x3a8 [rockchipdrm]
-[   16.737487]  drm_atomic_helper_commit_encoder_bridge_enable+0x314/0x380 [drm_kms_helper]
-[   16.740555]  drm_atomic_helper_commit_tail_rpm+0xa4/0x100 [drm_kms_helper]
-[   16.743501]  commit_tail+0x1e0/0x2c0 [drm_kms_helper]
-[   16.746290]  drm_atomic_helper_commit+0x274/0x2b8 [drm_kms_helper]
-[   16.749178]  drm_atomic_commit+0x1f0/0x248 [drm]
-[   16.752000]  drm_client_modeset_commit_atomic+0x490/0x5d0 [drm]
-[   16.754954]  drm_client_modeset_commit_locked+0xf4/0x400 [drm]
-[   16.757911]  drm_client_modeset_commit+0x50/0x80 [drm]
-[   16.760791]  __drm_fb_helper_restore_fbdev_mode_unlocked+0x9c/0x170 [drm_kms_helper]
-[   16.763843]  drm_fb_helper_hotplug_event+0x340/0x368 [drm_kms_helper]
-[   16.766780]  drm_fbdev_client_hotplug+0x64/0x1d0 [drm_client_lib]
-[   16.769634]  drm_client_hotplug+0x178/0x240 [drm]
-[   16.772455]  drm_client_dev_hotplug+0x170/0x1c0 [drm]
-[   16.775303]  drm_connector_helper_hpd_irq_event+0xa4/0x178 [drm_kms_helper]
-[   16.778248]  dw_hdmi_qp_rk3588_hpd_work+0x44/0xb8 [rockchipdrm]
-[   16.781080]  process_one_work+0xc3c/0x1658
-[   16.783719]  worker_thread+0xa24/0xc40
-[   16.786333]  kthread+0x3b4/0x3d8
-[   16.788889]  ret_from_fork+0x10/0x20
-
-Since gpiod_get_value() is called from a context that can sleep, switch
-to its *_cansleep() variant and get rid of the issue.
-
-Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
----
- drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-index 6e39e8a00774..8604342f9943 100644
---- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-@@ -121,7 +121,7 @@ static void dw_hdmi_qp_rockchip_encoder_enable(struct drm_encoder *encoder)
- 	struct drm_crtc *crtc = encoder->crtc;
- 
- 	/* Unconditionally switch to TMDS as FRL is not yet supported */
--	gpiod_set_value(hdmi->frl_enable_gpio, 0);
-+	gpiod_set_value_cansleep(hdmi->frl_enable_gpio, 0);
- 
- 	if (!crtc || !crtc->state)
- 		return;
-
----
-base-commit: f417b7ffcbef7d76b0d8860518f50dae0e7e5eda
-change-id: 20260110-dw-hdmi-qp-cansleep-ccaa12fa93f3
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gU2F0LCBKYW4gMTAsIDIwMjYgYXQgMTE6MDDigK9QTSBBbGFuIFN0ZXJuIDxzdGVybkByb3ds
+YW5kLmhhcnZhcmQuZWR1PiB3cm90ZToKPgo+IE9uIFNhdCwgSmFuIDEwLCAyMDI2IGF0IDEyOjA1
+OjE5UE0gKzA4MDAsIEh1YWNhaSBDaGVuIHdyb3RlOgo+ID4gU28gSSB0aGluayB3ZSBuZWVkIGEg
+c29mdGRlcCBiZXR3ZWVuIG9oY2ktcGxhdGZvcm0vdWhjaS1wbGF0Zm9ybSBhbmQKPiA+IGVoY2kt
+cGxhdGZvcm0sIHdoaWNoIGlzIHNpbWlsYXIgdG8gdGhlIFBDSSBjYXNlLgo+Cj4gWWVzLCBvbiB5
+b3VyIHBsYXRmb3JtLiAgQnV0IG5vdCBvbiBvdGhlciBwbGF0Zm9ybXMuICAoRm9yIGV4YW1wbGUs
+IG5vdAo+IG9uIGEgcGxhdGZvcm0gdGhhdCBkb2Vzbid0IGhhdmUgYW4gRUhDSSBjb250cm9sbGVy
+LikKRm9yIHRoZSBQQ0kgY2FzZSwgT0hDSSB3aXRob3V0IEVIQ0kgaXMgYWxzbyBwb3NzaWJsZT8g
+U28gSSB0aGluayB0aGV5CmFyZSBzaW1pbGFyLgoKPgo+IEkgdGhpbmsgdGhlIGJlc3Qgd2F5IHRv
+IGRvIHRoaXMgaXMgdG8gY3JlYXRlIGEgbmV3IENPTkZJR19FSENJX1NPRlRERVBTCj4gS2NvbmZp
+ZyBzeW1ib2wsIGFuZCBhZGQgdGhlIHNvZnQgZGVwZW5kZW5jeSBvbmx5IGlmIHRoZSBzeW1ib2wg
+aXMKPiBkZWZpbmVkLiAgTm9ybWFsbHkgaXQgd2lsbCBiZSB1bmRlZmluZWQgYnkgZGVmYXVsdCwg
+YnV0IG9uIHlvdXIgcGxhdGZvcm0KPiAoYW5kIGFueSBvdGhlcnMgdGhhdCBuZWVkIGl0KSB5b3Ug
+Y2FuIHNlbGVjdCBpdC4KPgo+IEhvdyBkb2VzIHRoYXQgc291bmQ/CkZyb20gbXkgcG9pbnQgb2Yg
+dmlldywga2VlcGluZyBpdCBzaW1wbGUgbWF5IGJlIGJldHRlci4gSSB0aGluayBhbgp1bmNvbmRp
+dGlvbmFsIHNvZnRkZXAgaXMgaGFybWxlc3MuCgo+Cj4gPiA+IFRoZXJlIGFyZSBvdGhlciBpc3N1
+ZXMgaW52b2x2aW5nIGNvbXBhbmlvbiBjb250cm9sbGVycywgY29ubmVjdGVkIHdpdGgKPiA+ID4g
+aGliZXJuYXRpb24uICBZb3Ugc2hvdWxkIHRha2UgYSBsb29rIGF0IGNvbW1pdCA2ZDE5YzAwOWNj
+NzggKCJVU0I6Cj4gPiA+IGltcGxlbWVudCBub24tdHJlZSByZXN1bWUgb3JkZXJpbmcgY29uc3Ry
+YWludHMgZm9yIFBDSSBob3N0Cj4gPiA+IGNvbnRyb2xsZXJzIiksIHdoaWNoIHdhcyBsYXRlciBt
+b2RpZmllZCBieSBjb21taXQgMDU3Njg5MThiOWExICgiVVNCOgo+ID4gPiBpbXByb3ZlIHBvcnQg
+dHJhbnNpdGlvbnMgd2hlbiBFSENJIHN0YXJ0cyB1cCIpIGFuZCBhIGZldyBvdGhlcnMuCj4gPiA+
+Cj4gPiA+IEFsc28sIHJlYWQgdGhyb3VnaCB0aGUgY3VycmVudCBjb2RlIGluIGhjZC1wY2kuYyAo
+Zm9yX2VhY2hfY29tcGFuaW9uKCksCj4gPiA+IGVoY2lfcHJlX2FkZCgpLCBlaGNpX3Bvc3RfYWRk
+KCksIG5vbl9laGNpX2FkZCgpLCBlaGNpX3JlbW92ZSgpLCBhbmQKPiA+ID4gZWhjaV93YWl0X2Zv
+cl9jb21wYW5pb25zKCkpLiAgWW91ciBub24tUENJIHN5c3RlbSB3aWxsIG5lZWQgdG8gaW1wbGVt
+ZW50Cj4gPiA+IHNvbWUgc29ydCBvZiBlcXVpdmFsZW50IHRvIGFsbCB0aGVzZSB0aGluZ3MuCj4g
+PiBBdCBsZWFzdCBmb3IgdGhlIGRldmljZSBwcm9iZSwgYSBzb2Z0ZGVwIHNlZW1zIGVub3VnaC4K
+Pgo+IERvZXMgdGhpcyBwbGF0Zm9ybSBzdXBwb3J0IGhpYmVybmF0aW9uIGF0IGFsbD8KTFMySzUw
+MCBpcyBhbiBlbWJlZGRlZCBjaGlwLCBpdCBtYXkgb3IgbWF5IG5vdCBzdXBwb3J0IGhpYmVybmF0
+aW9uLApidXQgd2UgaGF2ZW4ndCB1c2VkIGhpYmVybmF0aW9uLgoKSHVhY2FpCgo+Cj4gQWxhbiBT
+dGVybgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGlu
+dXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5v
+cmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2Nr
+Y2hpcAo=
