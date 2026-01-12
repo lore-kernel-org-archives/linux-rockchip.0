@@ -4,58 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD8E2D25030
-	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Jan 2026 01:33:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F059D2502E
+	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Jan 2026 02:29:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=79uTQFgBV79OsQcb+134jmlrTpymrORTXyCOKXlkPlo=; b=wPz8z5FxtF0eqg
-	wO0AtEqbCu1P0w2oyLM+wEeuoATnAXRwNlr+fmilcMnjJ+54vV9yC/ksXTCj+6E6lyhhCTpBuGWcY
-	7SE0Kx234iOvNT062ZDIvwzKLKuqJxLaDpdbG3098HiBJAGLrDQDiiJYPL8PJ/fUtl4m6cfbGASJT
-	xmvh+nSJ+v0fUYyYedK/d3+hQ4ipJDBPMYmvicl/ECfWNX2InePfYkQ08RmxoiIQoWRt2/BxBCjZu
-	G1sqiFtHn2QSZmOBceeUg4L0IY/6BZI5TVV0CfCv91eklCciRpVHQabxPKpXhPP76Y+3dtBNjYxoH
-	UJ8ioinvBHDK9AkzK9Fg==;
+	List-Owner; bh=Z7RlCdtuwh8XSKUg5dmB5OrNYDxf5qW19tYEoLb8gcg=; b=Rs7cGG5kz24euN
+	LSGzv9t03/unKi53vZq19zJBbDTX+yTrt7pA/8+g9evV/u4AV2rAcrwzxYZVLzDXf/5HpBdx2oB+W
+	Fw3PzPI+btJ94giOa1/LlpuCFGZK+TxIVMa/9pQN6Mo/fad8dgGjC+R76F/Y6keH3HlOAF7gk9yBX
+	uH4NOY5Ofi6HNviJhtK+rPWkjG/EZXd6NAFd3GsIh9jvvenfK2fSJ/nk9BGbp9/S3qgNoc9J1YTql
+	vi2aNwKZDqDmOz1+52anoC1urtChzE3bSrboKqCNMLvAetf2TepUEi5/mS6xxAimmnL0CQsL/zbM7
+	XK1V8TGuIfMfdSjYYkkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vf6nl-00000004dJt-34b1;
-	Mon, 12 Jan 2026 01:33:01 +0000
-Received: from mail-m49237.qiye.163.com ([45.254.49.237])
+	id 1vf7gV-00000004fIU-0cGJ;
+	Mon, 12 Jan 2026 02:29:35 +0000
+Received: from smtpbg154.qq.com ([15.184.224.54])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vf6ng-00000004dJ6-3pzv;
-	Mon, 12 Jan 2026 01:33:00 +0000
-Received: from [172.16.12.14] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 303f0cc91;
-	Mon, 12 Jan 2026 09:32:50 +0800 (GMT+08:00)
-Message-ID: <67ccb8f6-f9bd-4266-b79a-b688bd6d030b@rock-chips.com>
-Date: Mon, 12 Jan 2026 09:32:49 +0800
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Cc: shawn.lin@rock-chips.com, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, linux-rockchip@lists.infradead.org,
- linux-mmc@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, heiko@sntech.de, ulf.hansson@linaro.org
-Subject: Re: [PATCH v1 0/3] mmc: dw_mmc-rockchip: Add stability quirk for
- NanoPi R76S
-To: Marco Schirrmeister <mschirrmeister@gmail.com>
-References: <20260110010715.1610159-1-mschirrmeister@gmail.com>
-From: Shawn Lin <shawn.lin@rock-chips.com>
-In-Reply-To: <20260110010715.1610159-1-mschirrmeister@gmail.com>
-X-HM-Tid: 0a9bafd59c4509cckunm6b904c3425d9cd
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQ0tKT1ZCGRgYH0hLHk0aT0NWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=PUZD15TFeHoo8gN2FFcDZ0avYlYQF5N7lfZAwZgerD57WM3N5NA8XTpdqiJRjcb7D8eXVbJPTrA+FaewvgoG9ZQn0n2ULA0ibPRhxksTlN7ilOpGtu4kLuykrxjWWvQPZNVq5SBZ0bWdp0ftlx2a+0N++WEODvAFbfRU+wKrCQ0=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=/coguvbuQJ6Lc8S2lu4ggKAcKXnFx/f9Jnk8AsJys3k=;
-	h=date:mime-version:subject:message-id:from;
+	id 1vf7gP-00000004fH6-306U;
+	Mon, 12 Jan 2026 02:29:32 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
+	s=altu2504; t=1768184919;
+	bh=R9TYb4gWx4pQMa+mSrqRnpOcGO3Ou10FWe02WnyGdtE=;
+	h=From:To:Subject:Date:Message-Id;
+	b=HsCjhaGyq6iSWk0sh0vZVCJoTk+47MpM91l65NhLqjRXbYHzokt2NwAgPpb51cdgv
+	 3OWzl6APzUt/iJbkvDxfDr9XLs43Cqbuo7gd7/lws6y6rGVsqN1aQGo1xlS7m+S1Bj
+	 4LvoThSC97EUBUF0fUP12BkmDJz8HdYDDRnMBPUY=
+X-QQ-mid: zesmtpsz4t1768184918tfa46568f
+X-QQ-Originating-IP: NfTxhgrGshMWgayL2mvvN7B9ABsVR4W9bWkJBwKMPOw=
+Received: from DESKTOP-8BT1A2O.localdomain ( [58.22.7.114])
+	by bizesmtp.qq.com (ESMTP) with 
+	id ; Mon, 12 Jan 2026 10:28:34 +0800 (CST)
+X-QQ-SSF: 0000000000000000000000000000000
+X-QQ-GoodBg: 0
+X-BIZMAIL-ID: 7953789143671575021
+EX-QQ-RecipientCnt: 23
+From: Chaoyi Chen <kernel@airkyi.com>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Quentin Schulz <quentin.schulz@cherry.de>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Chaoyi Chen <chaoyi.chen@rock-chips.com>,
+	Hsun Lai <i@chainsx.cn>,
+	John Clark <inindev@gmail.com>,
+	Jimmy Hon <honyuenkwun@gmail.com>,
+	Dragan Simic <dsimic@manjaro.org>,
+	Michael Riesch <michael.riesch@collabora.com>,
+	Peter Robinson <pbrobinson@gmail.com>,
+	Alexey Charkov <alchark@gmail.com>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Andy Yan <andy.yan@rock-chips.com>
+Cc: devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-usb@vger.kernel.org
+Subject: [PATCH v3 1/3] dt-bindings: usb: Add binding for WCH CH334/CH335 hub controller
+Date: Mon, 12 Jan 2026 10:28:21 +0800
+Message-Id: <20260112022823.91-2-kernel@airkyi.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20260112022823.91-1-kernel@airkyi.com>
+References: <20260112022823.91-1-kernel@airkyi.com>
+X-QQ-SENDSIZE: 520
+Feedback-ID: zesmtpsz:airkyi.com:qybglogicsvrgz:qybglogicsvrgz6b-0
+X-QQ-XMAILINFO: OX/+6nY/vs4TKOH7OjLM9IBHihBjqbrPr+6EC9hyLD721j9ZGGsnAEDc
+	yFGcGiFe9VIjeDGYLtKpGKDejqqhxMR9AT8CJAULS0DPj31tYnM30cWoYAWuBdtJKHYIGqp
+	p6hFq+m/bMx5iMLk+tE8MPXxopV9E+WP8FlxwU+VlE0PtTlKCzsIxT0lKnlwS5l5C+LfLZr
+	dll5tYy9tijzoG2RRh2R8VWdKccXsz3Qw+8Xhk2ZNTBZCv35iRMqUoZqwTUDNzbtJ+dCtTK
+	eDmxlbJGg9PyY8Q1xMGk4xvZ1C04eUXmgaFVPgy/oz7ATVJD7CAWkUzZ/3F0jtUk3xfWdpR
+	aag5M2jp4Sk617nkw2G8uSLOKas9b5gyLX1ia6tZ4+Q8HUom/qHMvu7ANk2BfpCrr03qys7
+	to8oDbAL6DRsas8gyhvc2nJUZRViU0ebN+gnscFld6Jlg86fRqPsMZd/7S7rO4duJJOLJiT
+	v77YzMU3fEzUCnj+eUvjSNRExuA0QU7+pI4REu/MzoQf+P01gJVZ8BOrXFaGXuxgWSDb1/d
+	l3zsjLW8qRBSfzD79jZF8JQ81+ZEzCnU5LQcZkkMI34QNtNUb/Qz4fAv4m7Yyhbqm8gOHAL
+	cKci1HKLhIFZ/xGJfQuUUQUvDFfVdAWTXfn9QZ9thL5YzCG8EFn8ZohJNCcpr0KKreroMXa
+	UB2BPXlFCJHGsbJuceHnMg6WeN6T8yB0kItZczhusPMUMH+Zc8GCbH/cwt8E8bIlhHJaEMy
+	tgtGPOvO8Fy3VEXPimTVjRb1+0dJ0CVUmjaTerRKinroiFpzyHk6Bq886S9nT6gtoUsVYpp
+	Bu4Kz/+z6P6pTbj72E7XUD+YgM4wFTuv9uy0D+lh/cVVfJSYLSKYVzY5tSIfpLyOAJXzNA+
+	rZzIvVYP8A6VxhMjEyQTH1oFQx4vEh+ef+syQLnXiNadigaRe/0A17225QB9O7lvl/GzXxH
+	fVjse/yZ2VIMmeUVwc+9BN+C70Km1YPxuU8dVqDVIiWC9mFy28QQw1VVTRpF3uV8THFJs0+
+	TtHNsyh2qOVZEonWo7V2muwbD9nmo=
+X-QQ-XMRINFO: OD9hHCdaPRBwH5bRRRw8tsiH4UAatJqXfg==
+X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260111_173259_077571_FC8E678E 
-X-CRM114-Status: GOOD (  16.47  )
+X-CRM114-CacheID: sfid-20260111_182931_305630_56538BAD 
+X-CRM114-Status: GOOD (  13.91  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,45 +106,108 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-5ZyoIDIwMjYvMDEvMTAg5pif5pyf5YWtIDk6MDcsIE1hcmNvIFNjaGlycm1laXN0ZXIg5YaZ6YGT
-Ogo+IFRoaXMgc2VyaWVzIGFkZHJlc3NlcyBhIG1pY3JvU0Qgc3RhYmlsaXR5IGlzc3VlIG9uIHRo
-ZSBGcmllbmRseUVsZWMKPiBOYW5vUGkgUjc2UyAoUkszNTc2KS4gVGhlIGJvYXJkIGN1cnJlbnRs
-eSBzdWZmZXJzIGZyb20gYSA0MDBrSHoKPiByZXR1bmluZyBsb29wIHdoZW4gdGhlIGNvbnRyb2xs
-ZXIgYXR0ZW1wdHMgdG8gZW50ZXIgcnVudGltZS1zdXNwZW5kCj4gZHVyaW5nIGlkbGUgcGVyaW9k
-cy4KPiAKPiBFdmlkZW5jZSBvZiB0aGUgZmFpbHVyZSBpbiBkbWVzZzoKPiBbRnJpIEphbiAgMiAw
-MToyODowMiAyMDI2XSBtbWNfaG9zdCBtbWMxOiBCdXMgc3BlZWQgKHNsb3QgMCkgPSA0MDAwMDBI
-ego+IFtGcmkgSmFuICAyIDAxOjI4OjAzIDIwMjZdIG1tY19ob3N0IG1tYzE6IEJ1cyBzcGVlZCAo
-c2xvdCAwKSA9IDE5ODAwMDAwMEh6Cj4gW0ZyaSBKYW4gIDIgMDE6Mjg6MDMgMjAyNl0gZHdtbWNf
-cm9ja2NoaXAgMmEzMTAwMDAubW1jOiBTdWNjZXNzZnVsbHkgdHVuZWQgcGhhc2UgdG8gMjMzCj4g
-W0ZyaSBKYW4gIDIgMDE6Mjg6MDQgMjAyNl0gbW1jX2hvc3QgbW1jMTogQnVzIHNwZWVkIChzbG90
-IDApID0gNDAwMDAwSHoKPiAKCkRvZXMgdGhpcyBwcm9ibGVtIGhhcHBlbiB3aXRoIGFsbCBtaWNy
-b1NEcyBvciBqdXN0ICphKiBtaWNyb1NEIHBlcgp5b3VyIGRlc2NyaXB0aW9uPwpIYXZlIHlvdSBl
-dmVyIHRyaWVkIHRvIGRpc2FibGUgU0RSMTA0IHN1cHBvcnQ/Cgo+IFRlc3RpbmcgY29uZmlybWVk
-IHRoYXQgdGhlIGlzc3VlIGNhbiBiZSBtYW51YWxseSBhZGRyZXNzZWQgYnkKPiBkaXNhYmxpbmcg
-cnVudGltZSBQTSB2aWEgc3lzZnM6Cj4gZWNobyBvbiA+IC9zeXMvZGV2aWNlcy9wbGF0Zm9ybS9z
-b2MvMmEzMTAwMDAubW1jL3Bvd2VyL2NvbnRyb2wKPiAKPiBJIGV4cGVyaW1lbnRlZCB3aXRoIHZh
-cmlvdXMgY2hhbmdlcyBpbiB0aGUgRGV2aWNlIFRyZWUsIGluY2x1ZGluZwo+IGxvd2VyaW5nIHRo
-ZSBidXMgZnJlcXVlbmN5IGFuZCBhdHRlbXB0aW5nIHRvIGtlZXAgdGhlIHBvd2VyIGRvbWFpbnMK
-PiBhY3RpdmUsIGJ1dCBub3RoaW5nIHN0b3BwZWQgdGhlIHJldHVuaW5nIGxvb3AuCj4gVGhlIGlz
-c3VlIG9ubHkgd2VudCBhd2F5IHdoZW4gSSBmb3JjZWQgdGhlIGNvbnRyb2xsZXIgdG8gc3RheSBh
-Y3RpdmUKPiBieSBkaXNhYmxpbmcgdGhlIHJ1bnRpbWUgcG93ZXIgbWFuYWdlbWVudC4KPiAKPiBU
-aGlzIHF1aXJrIGlzIHRoZSBvbmx5IHdheSBJIGhhdmUgZm91bmQgdG8ga2VlcCB0aGUgU0RSMTA0
-IGxpbmsgZnJvbQo+IGNyYXNoaW5nIG9uIHRoZSBOYW5vUGkgUjc2UywgSSBhbSBvcGVuIHRvIHN1
-Z2dlc3Rpb25zIGlmIHRoZXJlIGlzCj4gYSBiZXR0ZXIgd2F5IHRvIGhhbmRsZSB0aGlzIGluIHRo
-ZSBkcml2ZXIgb3IgdGhlIERUUy4KPiAKPiBNYXJjbyBTY2hpcnJtZWlzdGVyICgzKToKPiAgICBk
-dC1iaW5kaW5nczogbW1jOiByb2NrY2hpcC1kdy1tc2hjOiBhZGQgcm9ja2NoaXAsZGlzYWJsZS1y
-dW50aW1lLXBtCj4gICAgbW1jOiBob3N0OiBkd19tbWMtcm9ja2NoaXA6IGFkZCByb2NrY2hpcCxk
-aXNhYmxlLXJ1bnRpbWUtcG0gcXVpcmsKPiAgICBhcm02NDogZHRzOiByb2NrY2hpcDogYWRkIHN0
-YWJpbGl0eSBxdWlyayB0byBOYW5vUGkgUjc2Uwo+IAo+ICAgLi4uL2JpbmRpbmdzL21tYy9yb2Nr
-Y2hpcC1kdy1tc2hjLnlhbWwgICAgICAgIHwgIDggKysrKysrCj4gICAuLi4vYm9vdC9kdHMvcm9j
-a2NoaXAvcmszNTc2LW5hbm9waS1yNzZzLmR0cyAgfCAgMSArCj4gICBkcml2ZXJzL21tYy9ob3N0
-L2R3X21tYy1yb2NrY2hpcC5jICAgICAgICAgICAgfCAyNSArKysrKysrKysrKysrKysrLS0tCj4g
-ICAzIGZpbGVzIGNoYW5nZWQsIDMxIGluc2VydGlvbnMoKyksIDMgZGVsZXRpb25zKC0pCj4gCgoK
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9j
-a2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0
-cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+
+The WCH CH334/CH335[0] are USB2.0 protocol compliant 4-port USB HUB
+controller chips, supporting USB2.0 high-speed and full-speed for
+upstream ports, and USB2.0 high-speed 480Mbps, full-speed 12Mbps and
+low-speed 1.5Mbps for downstream ports, supporting not only low-cost STT
+mode (single TT schedules 4 downstream ports in time share), but also
+supports high performance MTT mode (4 TTs each corresponding to 1 port,
+concurrent processing).
+
+Add a device tree binding for it.
+
+[0]: https://www.wch-ic.com/downloads/CH334DS1_PDF.html
+
+Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+---
+ .../devicetree/bindings/usb/wch,ch334.yaml    | 65 +++++++++++++++++++
+ 1 file changed, 65 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/usb/wch,ch334.yaml
+
+diff --git a/Documentation/devicetree/bindings/usb/wch,ch334.yaml b/Documentation/devicetree/bindings/usb/wch,ch334.yaml
+new file mode 100644
+index 000000000000..2eeb92f25b4c
+--- /dev/null
++++ b/Documentation/devicetree/bindings/usb/wch,ch334.yaml
+@@ -0,0 +1,65 @@
++# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/usb/wch,ch334.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: WCH CH334/CH335 USB 2.0 Hub Controller
++
++maintainers:
++  - Chaoyi Chen <kernel@airkyi.com>
++
++allOf:
++  - $ref: usb-hub.yaml#
++
++properties:
++  compatible:
++    enum:
++      - usb1a86,8091
++
++  reg: true
++
++  reset-gpios:
++    description: GPIO controlling the RESET# pin.
++
++  vdd-supply:
++    description:
++      The regulator that provides 3.3V core power to the hub.
++
++  vdd2-supply:
++    description:
++      The regulator that provides 3.3V or 5V power to the hub.
++
++  ports:
++    $ref: /schemas/graph.yaml#/properties/ports
++
++    patternProperties:
++      '^port@':
++        $ref: /schemas/graph.yaml#/properties/port
++
++        properties:
++          reg:
++            minimum: 1
++            maximum: 4
++
++required:
++  - compatible
++  - reg
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/gpio/gpio.h>
++    usb {
++        dr_mode = "host";
++        #address-cells = <1>;
++        #size-cells = <0>;
++
++        hub: hub@1 {
++            compatible = "usb1a86,8091";
++            reg = <1>;
++            reset-gpios = <&gpio0 2 GPIO_ACTIVE_HIGH>;
++            vdd-supply = <&vcc_3v3>;
++        };
++    };
+-- 
+2.51.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
