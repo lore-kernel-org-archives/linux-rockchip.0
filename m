@@ -4,72 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD8BCCF45D4
-	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Jan 2026 22:41:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25B3ACF45D7
+	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Jan 2026 23:21:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NvHoHz2znkgEhlJwG7t/i5ltFcZl7hNFboG/BjCmJ3s=; b=NrP4IzkACcLjo5
-	D07R9FpOWfmITK/EmRrZFm1xVfmDEdmlEAYpSOg6pV5VAnFrmt+NkJOfV8cycv2zo7lbSNrgwZYk3
-	81cHmr6yv6Ey4tBct4bMgAdVoGm71XZW3Pw4MrLY7TQfBVZtkgp18fYriBbCsBmlEgafGLocrTHKe
-	pupcezfIjmdgFfI03SnjPZVzeWkaG5RwzsSnuwutJS29eWEa/6im1v5jivWc1I8VFb9WUbJ9HHm91
-	WaFA+a2JH9zmqgq8sUUT4OpkDz16UI+dProXYblZNRyXlg8Ty+u+NJpGFGbyxV8HZAPKMrhzZVw7u
-	5UnXQMszZ20S6cMqtUKw==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=9qllJla6cXJ3AmS0/0arSbBUCd/v4IcTesn/IcbMHRw=; b=Ow/FkrvbSpseL0
+	9yUdyrkh6Zq1itWDOzuH+8INCWnbTIxQh/GXO+wfAwH7FELD0erHvTV7fJe3pKvZ0YG1OgAkeltj9
+	bQ2LTDugH5D1Fcku2WqMLBbdcZxBPf5hOgLtkwuxf9YgUyXHEFpXBAor8viue8LVBREYITeV9LR40
+	f4OkC0bElXfAAFYCoxyi4u++uQwjVEwo/dgvlMVlsW3Zgzx4ZDQoHZahMh8+HeLEV29juo5SjTqG8
+	vOLvrGRaKOjSgowUupsnzUTffXxzbek5wTTAGl1OqqIVZZ7k2qQobypYf5hoMug+9Du6BBiJXtJfW
+	+OhhZj1pX0zPt9mgeb3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfQal-00000006Gat-1MXI;
-	Mon, 12 Jan 2026 22:40:55 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vfRDe-00000006HrD-0aiC;
+	Mon, 12 Jan 2026 23:21:06 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfQah-00000006GaR-1pWE;
-	Mon, 12 Jan 2026 22:40:52 +0000
+	id 1vfRDZ-00000006HqM-3pX2;
+	Mon, 12 Jan 2026 23:21:04 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1768257647;
-	bh=36qLqTSDEnjJClGk7t0KNXMJeK/xpEkNJs2C1xB0rkQ=;
-	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
-	b=Sd439CFmcd/A+4IKZDBrmZby+gwWEWv71fOHlhPZG6pLWjdY8WSGBmXZ0IzGOgTBf
-	 dfD9iJBdpB5x3IhAx+QD3YflxcRkvACP+kwFzStbPD6zN7CLpecZwijbQDaw5eL2rT
-	 LyiKW62IKPCDG/N6+HgwihPc1XXQdOtzw1VdoLzqayp+Jkkv2QATnM56FRDn/xcZBS
-	 yfJVWAygvVbC19rITn8mwK1+7XU80CFOZwHIJHrHDiB50gy3opZ+IZipXWKJ143NNz
-	 CGe+VrZvG9FVgzTntJCvEv2vAB2VOr0kGOb0n/apKoo0nXGNb921j4XyWboh+xHRg9
-	 GD74FBHo2o64Q==
-Received: from [192.168.1.90] (unknown [82.79.138.145])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	s=mail; t=1768260058;
+	bh=h0bRc8fFe1CrTyUCIPiwLR8ecCWXmwysclhrLiQSeAE=;
+	h=From:Subject:Date:To:Cc:From;
+	b=ovIQ/icPjPN5ATKBaWvue8EPmPWcHyd3mdEMPdgH1E3qna0PA+M9LeOlzwG56X71+
+	 vI2dbCYwkSqpz3E7GpTcX7DfSTjAriX3/aDJ2kaIdOSj3XdA1aTjxHLpN57kOa48ok
+	 q6ITyktAn/GTR7sFvbOC7MryKR2DDT49mSXFF40P65DdhBejSiPtguh6VYvPxUJzy4
+	 sJ9+aVpcj87PsAiFovDES9jyT96jgoNSO4uhrtQh00YouMeXKbHHK2vlJoc8zmtu0r
+	 uYT+FcB2g/g9R3oTyb9eLobkFO9WAX48HZaS90HlhNFLhF7qJOJvzItdoqziXWIhi6
+	 3t9UUxEVBQwMw==
+Received: from localhost (unknown [82.79.138.145])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C146F17E0A49;
-	Mon, 12 Jan 2026 23:40:46 +0100 (CET)
-Message-ID: <0b28ae6d-295d-4958-9571-190fedd95efe@collabora.com>
-Date: Tue, 13 Jan 2026 00:40:46 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 0/4] Add HDMI 2.0 support to DW HDMI QP TX
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4FED817E0E30;
+	Tue, 13 Jan 2026 00:20:58 +0100 (CET)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-To: Chris Morgan <macromorgan@hotmail.com>
-Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org,
- Diederik de Haas <diederik@cknow-tech.com>,
- Maud Spierings <maud_spierings@hotmail.com>,
- Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>
-References: <20260113-dw-hdmi-qp-scramb-v2-0-ae7b2c58d24d@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20260113-dw-hdmi-qp-scramb-v2-0-ae7b2c58d24d@collabora.com>
+Subject: [PATCH v6 00/11] Add HDMI 2.1 FRL support to
+ phy-rockchip-samsung-hdptx
+Date: Tue, 13 Jan 2026 01:20:47 +0200
+Message-Id: <20260113-phy-hdptx-frl-v6-0-8d5f97419c0b@collabora.com>
+MIME-Version: 1.0
+X-B4-Tracking: v=1; b=H4sIAM+BZWkC/3XRS07DMBAG4KtUXmNkjx07ZsU9EAs/xsRSqIMTo
+ lZV7o5TEEVpWP4jzad5XMiIJeFIng4XUnBOY8rHGtTDgfjOHt+QplAzAQYN06ylQ3emXRimE42
+ lp9ELoXVwJgKS2jMUjOl09V5ea+7SOOVyvvIzX6v/STOnjPqIzCgEkFE++9z31uViH31+J6s2w
+ 01oWbMVoAqB89YF6RQytyeIPwK/m0GsM2hjjA6tc7AryJtgGGwFWQUdlOFaCS087gnNr8AB+FZ
+ o1i2sF4ZZ3TJ3JyzfZy748Vm/Nf3celm+AE+KsMrLAQAA
+X-Change-ID: 20250708-phy-hdptx-frl-fc3377db9f2e
+To: Vinod Koul <vkoul@kernel.org>, 
+ Kishon Vijay Abraham I <kishon@kernel.org>, 
+ Heiko Stuebner <heiko@sntech.de>, Algea Cao <algea.cao@rock-chips.com>, 
+ Dmitry Baryshkov <lumag@kernel.org>, 
+ Neil Armstrong <neil.armstrong@linaro.org>
+Cc: kernel@collabora.com, linux-phy@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org
+X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260112_144051_651141_6DFB9ACA 
-X-CRM114-Status: GOOD (  13.83  )
+X-CRM114-CacheID: sfid-20260112_152102_150047_89BB0494 
+X-CRM114-Status: GOOD (  10.27  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,32 +83,83 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 1/13/26 12:26 AM, Cristian Ciocaltea wrote:
-> This patch series provides the missing support for high TMDS clock ratio
-> and scrambling to DW HDMI QP TX library, required for handling HDMI 2.0
-> display modes on RK3576 & RK3588 SoCs.
-> 
-> In order to allow addressing the SCDC status lost on sink disconnects,
-> it adds an atomic variant of the drm_bridge_funcs.detect callback and a
-> new drm_bridge_detect_ctx() helper, which is further used in
-> drm_bridge_connector to switch to ->detect_ctx hook.
-> 
-> Furthermore, it optimizes HPD event handling in dw_hdmi_qp Rockchip
-> platform driver to run the detect cycle on the affected connector only.
-> 
-> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-> ---
-> Changes in v2:
-> - Collected Tested-by tags from Diederik and Maud
-> - Rebased onto latest drm-misc-next
-> - Ensured the recently introduced 'no-hpd' support for dealing with
->   unconnected/repurposed/broken HPD pin is limited to HDMI 1.4 rates
+The Samsung HDMI/eDP Transmitter Combo PHY is capable of handling four
+HDMI 2.1 Fixed Rate Link (FRL) lanes, while each lane can operate at
+3Gbps, 6Gbps, 8Gbps, 10Gbps or 12Gbps.
 
-Chris, could you please confirm no-hpd is still functional with this series on
-your Gameforce Ace board when testing with a HDMI 2.0 display?
+This patchset extends the HDMI PHY configuration API to manage the FRL
+mode and provides all the required HDMI driver changes to enable FRL in
+addition to the already supported TMDS mode.
 
-Thanks,
-Cristian
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+---
+Changes in v6:
+- Rebased series onto next-20260109 and removed all patch dependencies
+- Handled the conflicts caused by the recent conversion from
+  round_rate() to determine_rate()
+- Link to v5: https://lore.kernel.org/r/20251221-phy-hdptx-frl-v5-0-dac390a780be@collabora.com
+
+Changes in v5:
+- Dropped all unused members from struct lcpll_config and improved the
+  readability of the rk_hdptx_frl_lcpll_cfg table
+- Rebased series onto v6.19-rc1 and replaced dependency [1] with [2]
+  (the former got merged)
+- Link to v4: https://lore.kernel.org/r/20250902-phy-hdptx-frl-v4-0-7d69176373ce@collabora.com
+
+Changes in v4:
+- Moved the following fixup patches into a separate series [1]:
+  * Fix reported clock rate in high bpc mode
+  * Reduce ROPLL loop bandwidth
+  * Prevent Inter-Pair Skew from exceeding the limits
+- Renamed enum phy_mode_hdmi to phy_hdmi_mode and
+  PHY_MODE_HDMI_{TMDS|FRL} to PHY_HDMI_MODE_{TMDS|FRL} (Dmitry)
+- Rebased remaining patches onto next-20250901
+- Link to v3: https://lore.kernel.org/r/20250818-phy-hdptx-frl-v3-0-c79997d8bb2b@collabora.com
+
+Changes in v3:
+- Reworked patch "phy: hdmi: Add HDMI 2.1 FRL configuration options"
+  according to Dmitry's feedback
+  * Updated commit message providing a brief description of FRL mode
+  * Kept PHY_MODE_HDMI in enum phy_mode and introduced enum
+    phy_mode_hdmi defining the TMDS and FRL submodes
+- Updated "phy: rockchip: samsung-hdptx: Add HDMI 2.1 FRL support"
+  * Implemented .set_mode() callback in rk_hdptx_phy_ops
+  * Introduced .mode member in struct rk_hdptx_hdmi_cfg and used it
+    instead of phy_get_mode() to verify PHY_MODE_HDMI_FRL
+- Rebased series onto next-20250818
+- Link to v2: https://lore.kernel.org/r/20250805-phy-hdptx-frl-v2-0-d118bd4b6e0b@collabora.com
+
+Changes in v2:
+- Added a couple of new patches:
+  * Fix reported clock rate in high bpc mode
+  * Drop hw_rate driver data
+- Applied several tweaks to the following patches:
+  * Compute clk rate from PLL config
+  * Switch to driver specific HDMI config
+  * Add HDMI 2.1 FRL support
+- Rebased series onto next-20250804
+- Link to v1: https://lore.kernel.org/r/20250708-phy-hdptx-frl-v1-0-cfe096e224f4@collabora.com
+
+---
+Cristian Ciocaltea (11):
+      phy: hdmi: Add HDMI 2.1 FRL configuration options
+      phy: rockchip: samsung-hdptx: Use usleep_range() instead of udelay()
+      phy: rockchip: samsung-hdptx: Fix coding style alignment
+      phy: rockchip: samsung-hdptx: Consistently use [rk_]hdptx_[tmds_] prefixes
+      phy: rockchip: samsung-hdptx: Enable lane output in common helper
+      phy: rockchip: samsung-hdptx: Cleanup *_cmn_init_seq lists
+      phy: rockchip: samsung-hdptx: Compute clk rate from PLL config
+      phy: rockchip: samsung-hdptx: Drop hw_rate driver data
+      phy: rockchip: samsung-hdptx: Switch to driver specific HDMI config
+      phy: rockchip: samsung-hdptx: Extend rk_hdptx_phy_verify_hdmi_config() helper
+      phy: rockchip: samsung-hdptx: Add HDMI 2.1 FRL support
+
+ drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 667 ++++++++++++++++++----
+ include/linux/phy/phy-hdmi.h                      |  19 +-
+ 2 files changed, 585 insertions(+), 101 deletions(-)
+---
+base-commit: f417b7ffcbef7d76b0d8860518f50dae0e7e5eda
+change-id: 20250708-phy-hdptx-frl-fc3377db9f2e
 
 
 _______________________________________________
