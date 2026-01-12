@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79C37C44502
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79C70C44506
 	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Jul 2026 15:30:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,90 +12,90 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CSV3OFYdOuAcmbAjegES2JY+uI2dqnntz5dpVDwNgKk=; b=eNzdMU1F2KSndQ
-	75KBS6FdIw7JPyTmaJPg0m+qjLs7Xs2LBG/FXPaflNXx3K5iX2+mkK45UDnCxs5XzdKkt843S8J7L
-	RRaUbqTFgnxvhq37+Uf4EGAY7dMoDS04pJh6/V6BncPDVL1SUABD+YTPtVxyQRlovAISz0IrZ987F
-	YxM7ShU3DUvJBkj+Q03oZo+oVWxlxcvsXEFSEvzPgmhpCvgm0k5OVHsdt6QNNzumc4DXw4o4WvxLj
-	dD/29zM59CDwPmxeV4OTQhw9qeTBBuoGbzVbnxJTcqzifOpR5aw1xxLn6aEviFtfuMUMIDcXKzvzT
-	0L0VqDM0vgdfMzpycDvA==;
+	List-Owner; bh=2muz/pt5SDV3i1I6fwTv3b9UMGdAiKEZYTLS6R6CjHA=; b=p/NJqN1qpqmuO6
+	WumPvm41MmhpF6MO4BsbjpW0f7xk4nH9yibVJom79qGkaeLcoK/gwFqSGvv4UDYImzLXas0ACqfi1
+	l+KO1FShnosnKXFjOnlxlq1Jniy2mL6zbx4koIClcJ5WmCl6/vAxm0p9GFhixUWFRBA9XfYijRi5A
+	ZpacSeCzHAVkIOGmffr7qRWHj7uKynwDIzNU8FqRbmxMgk7Iyz1uCXlHZMTJZX2xaCSIwbsaujOCP
+	TMnj+BEgznd7Vb5NhBPS5VM5/Bj45W+pBLQh7Ci72Zq4531eo4KbKgRvGdQX01/5VQmTNHi6PVrWH
+	bCZFjv+oo9hDBD4sYGzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wh7kI-0000000FICw-3W9G;
+	id 1wh7kI-0000000FICd-2zcq;
 	Tue, 07 Jul 2026 15:30:02 +0000
 Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfEyW-000000058bP-2uI0
+	id 1vfEyT-000000058X3-1Ocs
 	for linux-rockchip@lists.infradead.org;
-	Mon, 12 Jan 2026 10:16:42 +0000
-Received: from pps.filterd (m0279863.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 60C8rsIS675693
-	for <linux-rockchip@lists.infradead.org>; Mon, 12 Jan 2026 10:16:40 GMT
+	Mon, 12 Jan 2026 10:16:39 +0000
+Received: from pps.filterd (m0279866.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 60C8Hk7Z3306524
+	for <linux-rockchip@lists.infradead.org>; Mon, 12 Jan 2026 10:16:37 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
 	cc:content-transfer-encoding:content-type:date:from:in-reply-to
 	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	1mI+SoGu++t5t8DDdzkiN7FdMcg5cRsj8gUxzvIA8wg=; b=LzKp1vd3CVvTxyrg
-	891A3N3bCDhSzqosNgMudxdOkCW1ACjnF4NR0tLDYL/hiQZMP8SdOTJrz5Fy/HRO
-	yPL2rU5xEtH6ftkYw2tfao85xbkTcIvVQVdx822EppUHSztYV4ng7eioRQKX9D1T
-	MqFI85XMf5BeOnF3EbDWdn97v3LYIvQ1AHzbJKZUxzzal3t+klOneF0eAIUsHp+L
-	/iR4mjt0DYwO2ZtQ+g5Vb0ZhNpV+4VwJ6E/TDQcLmBDy/mdCTCrD1Ty8Sf4M2jCE
-	JbJ+YMLhA56yzDQE6HtIRGZdx7inIh7ykX/eb/jGtFF2XUN2PajYZ4/3o0T0PZAy
-	EoxMBg==
-Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com [209.85.222.200])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4bmwur893m-1
+	mODp1PyMkvfkftyQeHDkUUzUFlJxBLADJcEEezWUjCo=; b=J82g/RNVm849cx9V
+	dFFyzABcKBNY+CiRsaA33Ps0scP/CMuZcqyfPxphl8zZh4KXw1EheKUhOLCLSELn
+	fr73shiZALVUODPnid3Oxwt20bVRnDipcOwY3xUOqSkvUNu3g2BnarfxP3A3wi3v
+	1USjRt/sjkTVynSi0LajUP0Pi7KgNpgUfpZPsiu8IVr8izPHvhL4yqL30yYC/FPb
+	kPD1zWQEkIndjwmO7W76Q5fk1wRfeMnGHPSim1uq8gOZfDxkSlt1LJpFzSRiuLyx
+	0wxtvVRJ1w7IiFKQ8hnC4kB1R1fWLCa44+kcs3unZN8H3p2vRbyYNeoxSltMV34Z
+	3rUmBQ==
+Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com [209.85.222.199])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4bkntuky5v-1
 	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-rockchip@lists.infradead.org>; Mon, 12 Jan 2026 10:16:39 +0000 (GMT)
-Received: by mail-qk1-f200.google.com with SMTP id af79cd13be357-8bb6a7fea4dso1529745985a.0
-        for <linux-rockchip@lists.infradead.org>; Mon, 12 Jan 2026 02:16:39 -0800 (PST)
+	for <linux-rockchip@lists.infradead.org>; Mon, 12 Jan 2026 10:16:36 +0000 (GMT)
+Received: by mail-qk1-f199.google.com with SMTP id af79cd13be357-8b19a112b75so1564046885a.1
+        for <linux-rockchip@lists.infradead.org>; Mon, 12 Jan 2026 02:16:36 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1768212999; x=1768817799; darn=lists.infradead.org;
+        d=oss.qualcomm.com; s=google; t=1768212996; x=1768817796; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=1mI+SoGu++t5t8DDdzkiN7FdMcg5cRsj8gUxzvIA8wg=;
-        b=cgIGkwbCtLRbht/XH3g+05l0rAGrB6XeNpyeBwAWtDWuCEz+XfScN/0IaZ5fao6/LO
-         ko4Ax3ZGYK6YBQhDbXDgAdX60VgBC0qgHAGVBE64iJs+PVWqjrJ29xhtCkqTf7oT3Pek
-         UkERD53R0btL1SfyH+0/lvkBIFs19J1GfR9HYjovvv5t+A3THya36BYSsOLjrh+118HJ
-         awIYyxFwt6hJbILqxoG4MnnD3ayEfHowcdq4T+ONiAr8+Nlq9ERD6Gw2wnilb+Ur+i4+
-         hhdYU5+YGSS1xntj3ZNYwBicdjj0ZfgaA4LtZQhlQMFPVc7mV9UnBsa3lVVpZhdEMEVL
-         dsNQ==
+        bh=mODp1PyMkvfkftyQeHDkUUzUFlJxBLADJcEEezWUjCo=;
+        b=Do3gm/VfxYE2Csrk27zDfT5If/iQ8UWySrwwOvPEV54TwezyoMC24ubCWSb9wIfrgd
+         3dkUCclAwX+q7QMCiG4mcFOPNoFEpPE53xVnR5TtroemN+rjdLXvEbu2Kyt+/zpQvfwX
+         Ns4MNMiGg/4GGWyMqHtrF2s3pKCII50FtvoerWjbrV4nwgur+qF4BHHMSn+iQtPHkovD
+         X9DkcsbXf/wxI9eXnDIBQm2ra7pWpHyAkiQlQ9WGVP7hctheY3nDPe0EtU00ihTrLmvo
+         oQQTFAXeZq3AgQTCeyIxcFvtADEg68E641ZRELOPVCbMUfF6IEe0+RfuTMMBiyO3+FDW
+         KVFA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1768212999; x=1768817799;
+        d=1e100.net; s=20230601; t=1768212996; x=1768817796;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=1mI+SoGu++t5t8DDdzkiN7FdMcg5cRsj8gUxzvIA8wg=;
-        b=q7c5PJDKwuZYQPaEgMtBbjpcA9v3b5yFr2NyhQLA6D/h0tYF/pnRHqLCYvBEPhxtJn
-         SD8f2IGE7dGaowXCnAexL61F9LOXD8hG7t/34t/etgivCAG9c5kBMXAZc4WXGeVDlTwS
-         yk4EQxpXobDl3ellsP+rRmzLBTIlrYMoNITW3vEp2/jrcbImer2c71zMQVLD+x1pjUq6
-         iqnXv475yzzlbj2tkDtY/OuXBGF2YT10UuYr/SkycD7rJG01hgayBvdw8CBCdhC56O5m
-         H3iB+dv7bVLyuc7RhlDV2e1d8wth+DVLii+hPs/2Ar/UXoiVIeVJUX6KdNpf1I4+MaPr
-         6Egg==
-X-Forwarded-Encrypted: i=1; AJvYcCWa6mOghm646yMrk1ZG7XlW6XrdSzbca4p+k+alc18PTujop7jusKcjvKWak+EnrVrbTiIYqI8tCOkICeirAQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx5tIG4xuy3x4bv0E6dfUNOa4MmFSM2gE+erC75FmipGR5wE2v4
-	eGBRjsSo+YCyzLlMBeTKAA0n3IDnLrd8IxPa5wtg/i5p2dv/cLnu6L/bbU2W1JsARxbCIRfIYrN
-	SrN59pQmqSJYuVT0M6Hti/a5cbep0RPTJF2wcqx10MjmSmfqNZVKJbG87wn3jpq+owVpuUTZIrg
-	E=
-X-Gm-Gg: AY/fxX6cE4Lrb4aF4dVQ/3P+0L9D1+29xtt5qlcWv4dpvctQht5PAnoNtESKIi3tyJF
-	Tm6X33Rq2geRVhGs0tixWhZ03Vh8LzUlgumQbt1p79wbClTC1smk+41pEVY/LxVGaacnJ6GnI5u
-	oBh5sFqP/Hyar2vzH9aEpW97KeMVL9zFecpbr1Ye9i9wROonaW03lHf6S6vFxrfT2Nfoiv9qfR5
-	gXoBvwG51mWrkFLvSPthHqwnHmyo2YHCaYsxxXqeSIuLYakdU+cY/R/iq/OjW1gdzaD1U7iFqEJ
-	ZoS4qMMUtzctgKY5nvvW5YllREr5W76rxv3GfACetUNP06L2wYgjVLU7rdUW2KqKgBERDqW3Suu
-	GQFC2eVm0h9R0fBUd/X4oQTYiZUpNOKZoUUvN2EIq
-X-Received: by 2002:a05:620a:258c:b0:88f:c0e1:ec2 with SMTP id af79cd13be357-8c3893f7e49mr2354232685a.60.1768212999116;
-        Mon, 12 Jan 2026 02:16:39 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHChba9lYARVO8Wf79JzkrcaWw0Ivu8ZXpRcyXcwijI59hBIn5H5xOpL1yFSlfcxTqLJoYP2A==
-X-Received: by 2002:a05:620a:258c:b0:88f:c0e1:ec2 with SMTP id af79cd13be357-8c3893f7e49mr2354228485a.60.1768212998603;
-        Mon, 12 Jan 2026 02:16:38 -0800 (PST)
+        bh=mODp1PyMkvfkftyQeHDkUUzUFlJxBLADJcEEezWUjCo=;
+        b=UfjMe8ha3Y4RTa77a4QtTMEr6P9dx820p+ZfXSvDIu2a+2gAYarKeM+eclLU7EpKT+
+         hH3u/i503wy9DyCcfYuicvxh2cMEN8hTIBpPjvbducN/vLZLeyDkisfBrEwCa60SFmjg
+         mgZFaOhvol7CSi92e2uYDfIG6FvfPaGGycmH90k3Njw8zAJfYnk5hFjoFCTmAw5cQ5fi
+         B/dRhcNP2fevzLHI3aG5GIyvrr8vUQpYACp0maCVwAmp0o8AHrHxCc/uiE5/iMaV/fnL
+         lVLJA9nO8u6Rscp5C3xNs8F0vEzFVCaJBQ5fRzbVt54F5ECs0+k/LkNl2hE/1T1brkEp
+         AuJg==
+X-Forwarded-Encrypted: i=1; AJvYcCXA8tCaxrxMA8QAyuSCzplGojjrfN+Mn6D6CaE2wbgXojBRe9JrjUtMyEOjZa0qmaIH1po6o+zWD543QCAIWA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzZO5XyBFRfOrEGjffewvUlOAas0GgY2neXsEcNnZTJnaXkDV9O
+	wpkE0tqSK/c7UC16BeqU230YvO66GzOoksAk+BK/sscTvG8U9WABheGCDsG94XliqfIqfmZTsF2
+	m33NsxY/w/e5plDLMWi/P57MpA8+PbXdFgZ5QmUL6Qw6pNibRZ83IT2TM0GL5y1v4Fp6PRr0uK7
+	k=
+X-Gm-Gg: AY/fxX6Ns8ot1FC0PJT4g33FFj/P7fYSE84VaMLUwHNXFoy03RFyLEm1LAaI6b8QOT9
+	wvd0j5UpSOUKOXZTs+c/Rr/k61bvchzd+5qVQTiFAOWACODsJIkdy7E3RdbC+XTMAD/MkXxGtjD
+	vFzASnr43Dbx0BpfV1zwyH3kK3YUsI0QZWaGNY9ihFdCj9sf4qOa2cetRUmLu5A+adwSxecakcR
+	uR08cC5w5dS/Gz4psYCVGQFxD8K/+P/H5cBtZhaLGGuCy4nqKqi1no4Iv9RsBYY7UBKq//Rxr9G
+	Gh19HUE49X7KPqlpuLaNs28hiqKSi1+XuKJ7qq8AwanK5iF9asjYMGBlvwUXskhMR8Ll6KJK1NW
+	4W1NHdrXFaVvlYciSjZ1lz76+gni4PZz36pkHTiWC
+X-Received: by 2002:a05:620a:191b:b0:8b5:5a03:36b4 with SMTP id af79cd13be357-8c38942611amr2171265285a.71.1768212995590;
+        Mon, 12 Jan 2026 02:16:35 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHYulo3AW2dpzYmOgTmnb00p8XDyYkP6yaVRp/tr3YHxen6aKzZ4A66moQru8K3ffeDVCDlWg==
+X-Received: by 2002:a05:620a:191b:b0:8b5:5a03:36b4 with SMTP id af79cd13be357-8c38942611amr2171257585a.71.1768212994897;
+        Mon, 12 Jan 2026 02:16:34 -0800 (PST)
 Received: from brgl-qcom.local ([2a01:cb1d:dc:7e00:eb74:bf66:83a8:4e98])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-47d865f0cf2sm126530355e9.3.2026.01.12.02.16.35
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-47d865f0cf2sm126530355e9.3.2026.01.12.02.16.31
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 12 Jan 2026 02:16:38 -0800 (PST)
+        Mon, 12 Jan 2026 02:16:34 -0800 (PST)
 From: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
-Date: Mon, 12 Jan 2026 11:15:45 +0100
-Subject: [PATCH RESEND net-next v6 6/7] net: stmmac: qcom-ethqos: define a
- callback for setting the serdes speed
+Date: Mon, 12 Jan 2026 11:15:44 +0100
+Subject: [PATCH RESEND net-next v6 5/7] net: stmmac: qcom-ethqos: split
+ power management context into a separate struct
 MIME-Version: 1.0
-Message-Id: <20260112-qcom-sa8255p-emac-v6-6-86a3d4b2ad83@oss.qualcomm.com>
+Message-Id: <20260112-qcom-sa8255p-emac-v6-5-86a3d4b2ad83@oss.qualcomm.com>
 References: <20260112-qcom-sa8255p-emac-v6-0-86a3d4b2ad83@oss.qualcomm.com>
 In-Reply-To: <20260112-qcom-sa8255p-emac-v6-0-86a3d4b2ad83@oss.qualcomm.com>
 To: Bjorn Andersson <andersson@kernel.org>,
@@ -158,49 +158,49 @@ Cc: linux-arm-msm@vger.kernel.org, devicetree@vger.kernel.org,
         Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>,
         Bartosz Golaszewski <brgl@kernel.org>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1989;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=5018;
  i=bartosz.golaszewski@oss.qualcomm.com; h=from:subject:message-id;
- bh=XhZwpSvJ7UE7PtdunInQMevxaiqF8VYCYkdOSwXLngk=;
- b=owEBbQKS/ZANAwAKAQWdLsv/NoTDAcsmYgBpZMns4kbe8XUdsvQKvrAsOQ1wzF3np1c8DjUeM
- 3bh/6KE3EuJAjMEAAEKAB0WIQSR5RMt5bVGHXuiZfwFnS7L/zaEwwUCaWTJ7AAKCRAFnS7L/zaE
- w1PtD/9zyqAcP4ZgryRKibjlq5X13bpzu6/2kJ2pincj0K2b7lSUuzwczycjHuQLc4wndagggJI
- mvPxyLijrA2tCDAsMbbEJTrsy3HO/XOrXt6K/p1RZF+4zCSaNoP/Wzl4CASdrJx7/F1fA3CD8Hi
- r6nRm2l8eVWqVGMp1pbwIXpPhpLTq+8+rMhN5ir2pVHvlI6SYkkmiuc8CDM2ZuOTsXvChwftKHF
- e6OCAd2Qj5Klg5RP+WWiIEN+0/W1djw0WlLbm18SOKfPFiyo70K7BMaBRQDDV131rekfqUQqUKr
- IbsKs+nUHGj7WVpyrvYkBzvBSsPGfRyu6pqo/d9tayimwvMPzjLzgRoGpH9+a0381KriRGPc2Z1
- qe/mpz/jcm1tdaZj+PlLSYkNr6Dspjo3qLeUNRC/ZFhpKcFZolv8fIjq4V7ZuXPFy6Jlk1Sa9ed
- SkRit3Olz1XtMYdgD2Szhu5MA5NdZS6REnVyeQh7CcCuj4jl+i5e2YKpn3aiKkrDSO5QEi/8TyK
- 2hsl7l0BxZnaelZxdzMsUV0ycXT3EniRqFjaNyrDtSzrtbS3wl9cN3/kuPx/2UMnxRf/PEFNf6A
- 9tSHg0ZQVON4XnXyYSUSBdVRe3ZyL1Eo3Gec5MXfbhQ/AJAl8OHmy76nwzI86ZhuM2Hunxq7DV3
- qakjiD2YLFuHwwA==
+ bh=Ai4l3jd1/eF4m0deghb1F0cSTBLoK0XWRQHcHMJ+W4w=;
+ b=owEBbQKS/ZANAwAKAQWdLsv/NoTDAcsmYgBpZMnq1poFeCZEhGAbmOEx862guge+htaF08CAU
+ WRid/G2CfyJAjMEAAEKAB0WIQSR5RMt5bVGHXuiZfwFnS7L/zaEwwUCaWTJ6gAKCRAFnS7L/zaE
+ wxWZD/sEntiOzbImdwRltcgIShIGvZC8ukrcaFjCojiYxd1Oqi2LNK2fbi6NwZ+LBIG2uTaHk+2
+ QOuSh+pM9mO0GJdCbAR7vqrseDjB0+3EGZS9euka4b2fv3kXZKn5o5BIz5sZ/WbRN7HIHNh3qOE
+ PVeScp8uwCfAECOHVWZElnAW3RjMQ1uK+FRRIZ2afYqUI52Iv50UV5tIiaK6sY9MWFVbin0HTZZ
+ hqiD5ZNwZ02jnplOZIKlMbFAFQ54bBjNwYZphy7CJZAkzLMYSnPHLAKVS3VpPFLDo5XxE2qbSUc
+ ZjDZnPK1pT/Sv33lf5NOSCHOxnV+GUYj2LGWrcshhqNAjW+K0K8Ygfx2tQjWSK2EbfSg8sUrZXG
+ qAAH8nyRkDVFQXrOjnJTW9Ecw8BlKjqsEQeMd+7C8u0cc9jszvdkNCNevRfCBJejdjFdEftST01
+ jqUBVr04XNwxNNZkI8Cty2A42/DA8aDLr20cKzUo+aWrnCOY+WFZoKDOfy6T1WkzMqNrPUBEzpZ
+ PJ4HJHtWgOVVmHf1/K7B6skUMKINuR6aDPl1t5cOI9Eai8MF2SnrmZ8iUmhuXKP7dE1A+dVy6fM
+ y3EtIhGtRmd3ecY/vKJ7eHH69ZrXeiV4qiOdAYbaLuMRGglazNI7nuxNC7nuUa9bhF4JAVyC6Pz
+ xBXljylIoPiCmPw==
 X-Developer-Key: i=bartosz.golaszewski@oss.qualcomm.com; a=openpgp;
  fpr=169DEB6C0BC3C46013D2C79F11A72EA01471D772
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTEyMDA4MSBTYWx0ZWRfX45I+hRYFpK9j
- Lyy88fQtGN3fJcqu9iCH25LN87fk9IhVdgGiCqin4BHJ2L3L4rlQw44pICWwT7Ga1/BZPu78FgW
- PGuovPOyLCIa2vAz+3U+ULjHq8N6Nn/p9wXlNrx+26kNryZYYVlCDGSra6WzToFih6NkhFWw+hS
- p1OsduuDCaHMEdYjEwd/MkXT63TPoyEprti+XQYhD/t2zUDDHv7T+vsD0O0HK17dEd+LcrXoNh2
- V15rAQ/aLqG7FhrAL5v3xiZIcDWhSZ6WfKB8vu+CuEVdKi9aNoJTOAj6s9TFzOMatHcamI1KKj4
- MmBmWLdwGintQ7ktT5EnwXSbewrdf0qtH7RiistcJ6/EHIxjDWOwvcoRkMY2NGgsyXQ5Iulb1IH
- /7I4qMe2yTcdn3gTIszbdtQ0o6ahUs+QTERXTnVeZqoQgh8i/NUK/sljt14ftT90WpYqiBx5fbv
- Utw3Ezv7imrV7bEbYRA==
-X-Authority-Analysis: v=2.4 cv=HrJ72kTS c=1 sm=1 tr=0 ts=6964ca08 cx=c_pps
- a=hnmNkyzTK/kJ09Xio7VxxA==:117 a=xqWC_Br6kY4A:10 a=IkcTkHD0fZMA:10
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTEyMDA4MSBTYWx0ZWRfX8Sv04+SIxoSv
+ vgnqIOQq3P96MHIb5ohNJqrvbCbEkFfa5JGYFODdwGJl9l2Xy8UqKqsKIrziXLkvL6RboQPJZuZ
+ Y3Sx3Lrt7r9D2gqOa/HfY1Qag25QLQ0z+NlfeYztx6AOgnEA6JvNY9pUSd2JFLyY0D3aJlvaV0b
+ boawJOvpplYUrxed3z8F0djkFS+YD1JEJIIT4XS1yv3yVTjfI81k3chq1NVWCNa1YtXZA+LcqpH
+ OJyrX3gKNxfF7Bjwj7sPruc+pEzVA1aB8981K2RY3z80XnHR7Kgd4LO4Q/Plb59O7V70PABbXt2
+ pDLnGpOhrQ8krZBlsn9BXT36zRnlGVlmyqk+j8p8EjLoWsk8rySyyvgSJSg5wEGpHEmPiwRjzq9
+ mo5Z2du7asb1+kQ0gd62JrydGQua0hAAiJYoDNlxQv4wQxYzBArNR9kWURNb0IWXgqcqVEbs8YC
+ TgFB+PYoIpQ/9Q6TlXg==
+X-Authority-Analysis: v=2.4 cv=R6AO2NRX c=1 sm=1 tr=0 ts=6964ca04 cx=c_pps
+ a=HLyN3IcIa5EE8TELMZ618Q==:117 a=xqWC_Br6kY4A:10 a=IkcTkHD0fZMA:10
  a=vUbySO9Y5rIA:10 a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=VwQbUJbxAAAA:8 a=KKAkSRfTAAAA:8 a=EUspDBNiAAAA:8 a=pVQroq3X6MeQavp43gIA:9
- a=QEXdDO2ut3YA:10 a=PEH46H7Ffwr30OY-TuGO:22 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-GUID: 5ej9Zv8xd5CbCdRWRDBegyMbKyM45rhh
-X-Proofpoint-ORIG-GUID: 5ej9Zv8xd5CbCdRWRDBegyMbKyM45rhh
+ a=VwQbUJbxAAAA:8 a=KKAkSRfTAAAA:8 a=EUspDBNiAAAA:8 a=X-TyB6MtGS_gwYDveGAA:9
+ a=QEXdDO2ut3YA:10 a=bTQJ7kPSJx9SKPbeHEYW:22 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-ORIG-GUID: nct9EBLoeumXNypQQrBB7-AXk42359qD
+X-Proofpoint-GUID: nct9EBLoeumXNypQQrBB7-AXk42359qD
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
  definitions=2026-01-12_03,2026-01-09_02,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- phishscore=0 priorityscore=1501 malwarescore=0 bulkscore=0 adultscore=0
- clxscore=1015 impostorscore=0 spamscore=0 suspectscore=0 lowpriorityscore=0
+ malwarescore=0 bulkscore=0 spamscore=0 clxscore=1015 priorityscore=1501
+ adultscore=0 phishscore=0 suspectscore=0 lowpriorityscore=0 impostorscore=0
  classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
  reason=mlx scancount=1 engine=8.22.0-2512120000 definitions=main-2601120081
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260112_021640_864327_07672C1E 
-X-CRM114-Status: GOOD (  15.86  )
+X-CRM114-CacheID: sfid-20260112_021637_421661_AA797E54 
+X-CRM114-Status: GOOD (  18.69  )
 X-Mailman-Approved-At: Tue, 07 Jul 2026 08:29:46 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -220,55 +220,148 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Bartosz Golaszewski <brgl@kernel.org>
 
-Ahead of adding support for firmware driven power management, let's
-allow different ways of setting the PHY speed. To that end create a
-callback with a single implementation for now, that will be extended
-later.
+With match data split into general and power-management sections, let's
+now do the same with runtime device data.
 
 Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
 Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
 ---
- drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c | 9 ++++++++-
- 1 file changed, 8 insertions(+), 1 deletion(-)
+ .../ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c    | 46 ++++++++++++----------
+ 1 file changed, 25 insertions(+), 21 deletions(-)
 
 diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c
-index 856fa2c7c896ea3068ac38d9ee71b4173edce80b..8ba57bba3f2eebe9e44964f9e6c7c67e46ccb02d 100644
+index 54458ff5c9108a6255b38677f4de973511b5176d..856fa2c7c896ea3068ac38d9ee71b4173edce80b 100644
 --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c
 +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c
-@@ -120,6 +120,7 @@ struct qcom_ethqos {
- 	struct ethqos_emac_pm_ctx pm;
+@@ -105,17 +105,21 @@ struct ethqos_emac_match_data {
+ 	const struct ethqos_emac_pm_data *pm_data;
+ };
+ 
++struct ethqos_emac_pm_ctx {
++	struct clk *link_clk;
++	unsigned int link_clk_rate;
++	struct phy *serdes_phy;
++};
++
+ struct qcom_ethqos {
+ 	struct platform_device *pdev;
+ 	void __iomem *rgmii_base;
+ 	void __iomem *mac_base;
+ 	int (*configure_func)(struct qcom_ethqos *ethqos, int speed);
+ 
+-	unsigned int link_clk_rate;
+-	struct clk *link_clk;
+-	struct phy *serdes_phy;
+-	int serdes_speed;
++	struct ethqos_emac_pm_ctx pm;
  	phy_interface_t phy_mode;
- 	int serdes_speed;
-+	int (*set_serdes_speed)(struct qcom_ethqos *ethqos);
++	int serdes_speed;
  
  	const struct ethqos_emac_por *por;
  	unsigned int num_por;
-@@ -617,11 +618,16 @@ static int ethqos_configure_rgmii(struct qcom_ethqos *ethqos, int speed)
- 	return 0;
+@@ -193,9 +197,9 @@ ethqos_update_link_clk(struct qcom_ethqos *ethqos, int speed)
+ 
+ 	rate = rgmii_clock(speed);
+ 	if (rate > 0)
+-		ethqos->link_clk_rate = rate * 2;
++		ethqos->pm.link_clk_rate = rate * 2;
+ 
+-	clk_set_rate(ethqos->link_clk, ethqos->link_clk_rate);
++	clk_set_rate(ethqos->pm.link_clk, ethqos->pm.link_clk_rate);
  }
  
-+static int ethqos_set_serdes_speed_phy(struct qcom_ethqos *ethqos)
-+{
-+	return phy_set_speed(ethqos->pm.serdes_phy, ethqos->serdes_speed);
-+}
-+
+ static void
+@@ -616,7 +620,7 @@ static int ethqos_configure_rgmii(struct qcom_ethqos *ethqos, int speed)
  static void ethqos_set_serdes_speed(struct qcom_ethqos *ethqos, int speed)
  {
  	if (ethqos->serdes_speed != speed) {
--		phy_set_speed(ethqos->pm.serdes_phy, speed);
+-		phy_set_speed(ethqos->serdes_phy, speed);
++		phy_set_speed(ethqos->pm.serdes_phy, speed);
  		ethqos->serdes_speed = speed;
-+		ethqos->set_serdes_speed(ethqos);
  	}
  }
+@@ -683,23 +687,23 @@ static int qcom_ethqos_serdes_powerup(struct net_device *ndev, void *priv)
+ 	struct qcom_ethqos *ethqos = priv;
+ 	int ret;
  
-@@ -838,6 +844,7 @@ static int qcom_ethqos_probe(struct platform_device *pdev)
- 		return dev_err_probe(dev, PTR_ERR(ethqos->pm.serdes_phy),
+-	ret = phy_init(ethqos->serdes_phy);
++	ret = phy_init(ethqos->pm.serdes_phy);
+ 	if (ret)
+ 		return ret;
+ 
+-	ret = phy_power_on(ethqos->serdes_phy);
++	ret = phy_power_on(ethqos->pm.serdes_phy);
+ 	if (ret)
+ 		return ret;
+ 
+-	return phy_set_speed(ethqos->serdes_phy, ethqos->serdes_speed);
++	return phy_set_speed(ethqos->pm.serdes_phy, ethqos->serdes_speed);
+ }
+ 
+ static void qcom_ethqos_serdes_powerdown(struct net_device *ndev, void *priv)
+ {
+ 	struct qcom_ethqos *ethqos = priv;
+ 
+-	phy_power_off(ethqos->serdes_phy);
+-	phy_exit(ethqos->serdes_phy);
++	phy_power_off(ethqos->pm.serdes_phy);
++	phy_exit(ethqos->pm.serdes_phy);
+ }
+ 
+ static int ethqos_clks_config(void *priv, bool enabled)
+@@ -708,7 +712,7 @@ static int ethqos_clks_config(void *priv, bool enabled)
+ 	int ret = 0;
+ 
+ 	if (enabled) {
+-		ret = clk_prepare_enable(ethqos->link_clk);
++		ret = clk_prepare_enable(ethqos->pm.link_clk);
+ 		if (ret) {
+ 			dev_err(&ethqos->pdev->dev, "link_clk enable failed\n");
+ 			return ret;
+@@ -721,7 +725,7 @@ static int ethqos_clks_config(void *priv, bool enabled)
+ 		 */
+ 		ethqos_set_func_clk_en(ethqos);
+ 	} else {
+-		clk_disable_unprepare(ethqos->link_clk);
++		clk_disable_unprepare(ethqos->pm.link_clk);
+ 	}
+ 
+ 	return ret;
+@@ -816,9 +820,9 @@ static int qcom_ethqos_probe(struct platform_device *pdev)
+ 	ethqos->has_emac_ge_3 = drv_data->has_emac_ge_3;
+ 	ethqos->needs_sgmii_loopback = drv_data->needs_sgmii_loopback;
+ 
+-	ethqos->link_clk = devm_clk_get(dev, clk_name);
+-	if (IS_ERR(ethqos->link_clk))
+-		return dev_err_probe(dev, PTR_ERR(ethqos->link_clk),
++	ethqos->pm.link_clk = devm_clk_get(dev, clk_name);
++	if (IS_ERR(ethqos->pm.link_clk))
++		return dev_err_probe(dev, PTR_ERR(ethqos->pm.link_clk),
+ 				     "Failed to get link_clk\n");
+ 
+ 	ret = ethqos_clks_config(ethqos, true);
+@@ -829,9 +833,9 @@ static int qcom_ethqos_probe(struct platform_device *pdev)
+ 	if (ret)
+ 		return ret;
+ 
+-	ethqos->serdes_phy = devm_phy_optional_get(dev, "serdes");
+-	if (IS_ERR(ethqos->serdes_phy))
+-		return dev_err_probe(dev, PTR_ERR(ethqos->serdes_phy),
++	ethqos->pm.serdes_phy = devm_phy_optional_get(dev, "serdes");
++	if (IS_ERR(ethqos->pm.serdes_phy))
++		return dev_err_probe(dev, PTR_ERR(ethqos->pm.serdes_phy),
  				     "Failed to get serdes phy\n");
  
-+	ethqos->set_serdes_speed = ethqos_set_serdes_speed_phy;
  	ethqos->serdes_speed = SPEED_1000;
- 	ethqos_update_link_clk(ethqos, SPEED_1000);
- 	ethqos_set_func_clk_en(ethqos);
+@@ -853,7 +857,7 @@ static int qcom_ethqos_probe(struct platform_device *pdev)
+ 	if (drv_data->dma_addr_width)
+ 		plat_dat->host_dma_width = drv_data->dma_addr_width;
+ 
+-	if (ethqos->serdes_phy) {
++	if (ethqos->pm.serdes_phy) {
+ 		plat_dat->serdes_powerup = qcom_ethqos_serdes_powerup;
+ 		plat_dat->serdes_powerdown  = qcom_ethqos_serdes_powerdown;
+ 	}
 
 -- 
 2.47.3
