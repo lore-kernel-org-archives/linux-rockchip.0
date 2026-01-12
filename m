@@ -4,58 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08520CF45C8
-	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Jan 2026 20:32:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17748CF45D8
+	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Jan 2026 22:26:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AS97QuHoAgagLf2R1wQ5eidHyPosyaSTp5aHHUTslcw=; b=0i2fWnDlNKoCrU
-	m6dTdbd0zL2p2gBUZw/dSDbNsz5phT9qzZ4RyW6uiJVHqewrGxpjri9YTP0wj/oVbIrCyRXvW2jtL
-	95fjauzx7PJ3dALWMVeYBHWs6SadBRZw2oglnov5s2bR87zoNH6He8VkdnRZh8e0oM8UaB1kQbMAH
-	tLn9ArMsUNivenZKOXcgKrggIuW+3UBFqdH4h9xE/t0DX+wnlXbtyAaEgPNRlgTLQqaqwj12y/2Bg
-	v76aaPqheK0NedT90FrlfGglL8yYtEwfgj0r7J8Y0XtiaT3ZK/k/Oz2H7Ivw7IpXjJK2su4Kk5JkJ
-	p/XChWn4aieJE+WOyOvQ==;
+	List-Owner; bh=6ih7N5tulfIoVtesDg3tfTwfQSGtHNIig5+2ymTeHrI=; b=BzZNFoxkbwgAJW
+	Q5UxVuuBGs3pC+FZk8b/PFNYaFNywO9+XrZP3GnbsN01kN8nSb/eNMn7hcydC3G/bVfyLRfNBA/wK
+	GiCrKFt3zrtqwjxR6jOttQH0j55Y4C9VL+pajPvoo4KssvSaclRscjCEfr31YhzmpJub2rEvDNiqG
+	NWj4e8fGjpx8OSDIp0lVjBTBycQmVT8TeuBqR09rQsOS/Y+nGs1nSiZDBDYsPdjv4khjFxszmNux0
+	rKawcHyMOrqaS5BTRc8HyTbQb94UdPOsCYQ0nlL94MJdIdshCBd3dkoQ7uFy4sk1woBWQRF21kRlJ
+	XMEg5yXsnIJLGOtyskvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfOZn-00000006Amy-1XtS;
-	Mon, 12 Jan 2026 20:31:47 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vfQN0-00000006FoJ-30he;
+	Mon, 12 Jan 2026 22:26:42 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfOZm-00000006AmX-0ZcL;
-	Mon, 12 Jan 2026 20:31:46 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 12ADD6001A;
-	Mon, 12 Jan 2026 20:31:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EFCF0C19422;
-	Mon, 12 Jan 2026 20:31:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1768249904;
-	bh=5t/PHkzuAtB5kyna98ozuNlQ3IUj+2w0FHLqCEXojQs=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=EWSuwxEPI1SGu8lLAipl1qZ/PppmS2lxkqk5zx9Z7XyDrMxi5kBnA+KoGW3YFsrwY
-	 n5w78DAQzKzodvxAj6lym6+N7Tc9usfIcSOgIPWdVs7JJCzK/z1neNO4ZKZ/psjpx6
-	 3ihEz6Nam7SmaXbDgd9HHqQ9qt/3laar7dxQP2M2ANS4VYMxg/eHXtJL05A4qJbRT4
-	 u2FHiGz3OFBOwhelgrRU/ylzb+L2jPI9mbe9uZILjdXiW0hbM2oG9HpMhs9fLStBaL
-	 naPgBrkckrLzN59uDgKo+eVihc/zWKh6LYI95nne2gnBhThmQ3dUL1zMAz0vIk26n7
-	 JoeEQ6ke1CcwA==
-From: Mark Brown <broonie@kernel.org>
-To: Liam Girdwood <lgirdwood@gmail.com>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- "Rob Herring (Arm)" <robh@kernel.org>
-Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org
-In-Reply-To: <20260108224938.1320809-1-robh@kernel.org>
-References: <20260108224938.1320809-1-robh@kernel.org>
-Subject: Re: [PATCH] ASoC: dt-bindings: rockchip-spdif: Allow "port" node
-Message-Id: <176824990272.213661.5100930797551016319.b4-ty@kernel.org>
-Date: Mon, 12 Jan 2026 20:31:42 +0000
+	id 1vfQMw-00000006Flh-2kag;
+	Mon, 12 Jan 2026 22:26:39 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1768256795;
+	bh=BSp8s1EOO75dmJyosp8j2QYrOgKBYEekmYXUEjCJsHU=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=QEqGiGsIgdhQcxFD4AwHM8eHkhY2bGjH9v5rJlaiO/Sc9gJblRYOlTllq/XBu8O+8
+	 gWqqjCHJhMpPJgm1YAXSLjqWtgezq6AdKK8//HMvY0eColjUNcORJUorsyof6+oi5O
+	 RlPbXKR7/LWQ9MpJmE7gZwiho7UoIKJ9l1J6aTlWb17zCHUHsqyXuajVQkXBlLvNQf
+	 r3oxqk8Rix0fKRtjL5bKIB5u4sZvq5d8b2mQap1bV9Ufw+pfPZxCslTGsfICP3rNTN
+	 nN7dTxlMwrxNZAv8H2Ow7z0JKZy1ruf03UYyovvje6w5G9qWK8XbsCZPhyVb61LiUE
+	 KAlg++MxWiQMA==
+Received: from localhost (unknown [82.79.138.145])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5D92B17E1380;
+	Mon, 12 Jan 2026 23:26:35 +0100 (CET)
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Date: Tue, 13 Jan 2026 00:26:18 +0200
+Subject: [PATCH v2 1/4] drm/bridge: Add ->detect_ctx hook and
+ drm_bridge_detect_ctx()
 MIME-Version: 1.0
-X-Mailer: b4 0.15-dev-47773
+Message-Id: <20260113-dw-hdmi-qp-scramb-v2-1-ae7b2c58d24d@collabora.com>
+References: <20260113-dw-hdmi-qp-scramb-v2-0-ae7b2c58d24d@collabora.com>
+In-Reply-To: <20260113-dw-hdmi-qp-scramb-v2-0-ae7b2c58d24d@collabora.com>
+To: Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>
+Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, 
+ Diederik de Haas <diederik@cknow-tech.com>, 
+ Maud Spierings <maud_spierings@hotmail.com>
+X-Mailer: b4 0.14.3
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260112_142638_854365_054FD904 
+X-CRM114-Status: GOOD (  18.58  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,39 +86,141 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 08 Jan 2026 16:49:36 -0600, Rob Herring (Arm) wrote:
-> Add a "port" node entry for Rockchip S/PDIF binding. It's already in use
-> and a common property for DAIs.
-> 
-> 
+Add an atomic variant of the ->detect callback and a new helper to call
+the hook while passing an optional drm_modeset_acquire_ctx reference.
 
-Applied to
+When both ->detect_ctx and ->detect are defined, the latter is ignored.
+If acquire_ctx is unset, the function takes care of the locking,
+while also handling EDEADLK.
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+Tested-by: Diederik de Haas <diederik@cknow-tech.com>
+Tested-by: Maud Spierings <maud_spierings@hotmail.com>
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+---
+ drivers/gpu/drm/drm_bridge.c | 58 ++++++++++++++++++++++++++++++++++++++++++++
+ include/drm/drm_bridge.h     | 30 +++++++++++++++++++++++
+ 2 files changed, 88 insertions(+)
 
-Thanks!
+diff --git a/drivers/gpu/drm/drm_bridge.c b/drivers/gpu/drm/drm_bridge.c
+index 6dcf8f6d3ecf..0ef12bf98011 100644
+--- a/drivers/gpu/drm/drm_bridge.c
++++ b/drivers/gpu/drm/drm_bridge.c
+@@ -1344,6 +1344,64 @@ drm_bridge_detect(struct drm_bridge *bridge, struct drm_connector *connector)
+ }
+ EXPORT_SYMBOL_GPL(drm_bridge_detect);
+ 
++/**
++ * drm_bridge_detect_ctx - check if anything is attached to the bridge output
++ * @bridge: bridge control structure
++ * @connector: attached connector
++ * @ctx: acquire_ctx, or NULL to let this function handle locking
++ *
++ * If the bridge supports output detection, as reported by the
++ * DRM_BRIDGE_OP_DETECT bridge ops flag, call &drm_bridge_funcs.detect_ctx
++ * or &drm_bridge_funcs.detect for the bridge and return the connection status.
++ * Otherwise return connector_status_unknown.
++ *
++ * When both @ctx and &drm_bridge_funcs.detect_ctx are not set, this helper
++ * function is equivalent to drm_bridge_detect() above.
++ *
++ * RETURNS:
++ * The detection status on success, or connector_status_unknown if the bridge
++ * doesn't support output detection.
++ * If @ctx is set, it might also return -EDEADLK.
++ */
++int drm_bridge_detect_ctx(struct drm_bridge *bridge,
++			  struct drm_connector *connector,
++			  struct drm_modeset_acquire_ctx *ctx)
++{
++	if (!(bridge->ops & DRM_BRIDGE_OP_DETECT))
++		return connector_status_unknown;
++
++	if (bridge->funcs->detect_ctx) {
++		struct drm_modeset_acquire_ctx br_ctx;
++		int ret;
++
++		if (ctx)
++			return bridge->funcs->detect_ctx(bridge, connector, ctx);
++
++		drm_modeset_acquire_init(&br_ctx, 0);
++retry:
++		ret = drm_modeset_lock(&connector->dev->mode_config.connection_mutex,
++				       &br_ctx);
++		if (!ret)
++			ret = bridge->funcs->detect_ctx(bridge, connector, &br_ctx);
++
++		if (ret == -EDEADLK) {
++			drm_modeset_backoff(&br_ctx);
++			goto retry;
++		}
++
++		if (ret < 0)
++			ret = connector_status_unknown;
++
++		drm_modeset_drop_locks(&br_ctx);
++		drm_modeset_acquire_fini(&br_ctx);
++
++		return ret;
++	}
++
++	return bridge->funcs->detect(bridge, connector);
++}
++EXPORT_SYMBOL_GPL(drm_bridge_detect_ctx);
++
+ /**
+  * drm_bridge_get_modes - fill all modes currently valid for the sink into the
+  * @connector
+diff --git a/include/drm/drm_bridge.h b/include/drm/drm_bridge.h
+index 3e6cbfa9dc44..7a38ca37f2eb 100644
+--- a/include/drm/drm_bridge.h
++++ b/include/drm/drm_bridge.h
+@@ -664,6 +664,33 @@ struct drm_bridge_funcs {
+ 	enum drm_connector_status (*detect)(struct drm_bridge *bridge,
+ 					    struct drm_connector *connector);
+ 
++	/**
++	 * @detect_ctx:
++	 *
++	 * Check if anything is attached to the bridge output.
++	 *
++	 * This callback is optional, if not implemented the bridge will be
++	 * considered as always having a component attached to its output.
++	 * Bridges that implement this callback shall set the
++	 * DRM_BRIDGE_OP_DETECT flag in their &drm_bridge->ops.
++	 *
++	 * This is the atomic version of &drm_bridge_funcs.detect.
++	 *
++	 * To avoid races against concurrent connector state updates, the
++	 * helper libraries always call this with ctx set to a valid context,
++	 * and &drm_mode_config.connection_mutex will always be locked with
++	 * the ctx parameter set to this ctx. This allows taking additional
++	 * locks as required.
++	 *
++	 * RETURNS:
++	 *
++	 * &drm_connector_status indicating the bridge output status,
++	 * or the error code returned by drm_modeset_lock(), -EDEADLK.
++	 */
++	int (*detect_ctx)(struct drm_bridge *bridge,
++			  struct drm_connector *connector,
++			  struct drm_modeset_acquire_ctx *ctx);
++
+ 	/**
+ 	 * @get_modes:
+ 	 *
+@@ -1556,6 +1583,9 @@ drm_atomic_helper_bridge_propagate_bus_fmt(struct drm_bridge *bridge,
+ 
+ enum drm_connector_status
+ drm_bridge_detect(struct drm_bridge *bridge, struct drm_connector *connector);
++int drm_bridge_detect_ctx(struct drm_bridge *bridge,
++			  struct drm_connector *connector,
++			  struct drm_modeset_acquire_ctx *ctx);
+ int drm_bridge_get_modes(struct drm_bridge *bridge,
+ 			 struct drm_connector *connector);
+ const struct drm_edid *drm_bridge_edid_read(struct drm_bridge *bridge,
 
-[1/1] ASoC: dt-bindings: rockchip-spdif: Allow "port" node
-      commit: 70d95c5d2081faca7e849fa9c6665c9e0dae3923
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
+-- 
+2.52.0
 
 
 _______________________________________________
