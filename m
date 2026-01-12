@@ -4,32 +4,32 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6096D25030
-	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Jan 2026 03:50:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3ADCCD25038
+	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Jan 2026 03:50:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=upsb0ApEph2BYS4uKRapFUJH5SbT9VzmzTIcYM6ZCVg=; b=Aj+D+aU96MLs15
-	VJC/jlC53Orv8SMg5nyMf2jjcc3j8bkWnOp6sRZDTH6sRR3sgxI965b11ijk7d5U4qru8q3CBkB6m
-	VM8LZ0DzpBqfiHyCgU7G3FH94IQGDlsSnND4mhxdJl71N+jaeGGmNZ7yW11982A6owcrqp/Bzsij1
-	IQ1STg/b/kA5Sr3frA2fT29y+COb7XRIPid6TSU4twyUZv0pKS+XJvJLrkVGVLspyfJ8J0MYkZ80p
-	8B5TcNGw6WyANr8mCofDwRR621gTAIhidqiCUNjJSP/DSMePDHfmaEyA7cYj5A77a2XvQjkAs+fNB
-	Dw90J9fvfaELfJYU4qJw==;
+	List-Owner; bh=n1rqRBuTVpgIJpOlMTTKqRRauJbHG/qnK2C+tVWEYzg=; b=S4y0a2jzcFWhf+
+	n6fBcd+laf/bmdk7Jvnbf+Xl3scK3IjMJq4XKmJKByMlgsaH5jM5gCPu5ZWRFnkIYm11s4x7o0Oj/
+	2K6BbbRJ96WBAHHcDQn2Jz1+hUJ70k/xYj06W0qW3nbzlU9kZQKK43gzm7DKcJBN8Ms+xATpSTKJh
+	Fnkg1phU80d5r9EdplB0CwMHilw0VBSdugmq4TOa/xX+UfImDjq5ng4Lb7aYVwSxz4zwCD5MqGBiH
+	0f/0aNwtGg0GadnTADZ1PXwkrcYK3tC8Ocnb4c9Rd+p0x21yHzxCHAR7pBtxijaySjAD939+9+UKG
+	ujdJDQU5qUAV5TFd1mtA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vf8wK-00000004jRA-3QZS;
-	Mon, 12 Jan 2026 03:50:00 +0000
-Received: from mail-m8367.xmail.ntesmail.com ([156.224.83.67])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vf8wI-00000004jPy-1Vng
-	for linux-rockchip@lists.infradead.org;
+	id 1vf8wJ-00000004jQu-2MVl;
 	Mon, 12 Jan 2026 03:49:59 +0000
+Received: from mail-m32101.qiye.163.com ([220.197.32.101])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vf8wG-00000004jPv-0dQj
+	for linux-rockchip@lists.infradead.org;
+	Mon, 12 Jan 2026 03:49:57 +0000
 Received: from localhost.localdomain (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 30449dd2c;
-	Mon, 12 Jan 2026 11:49:53 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 30449dd21;
+	Mon, 12 Jan 2026 11:49:50 +0800 (GMT+08:00)
 From: Shawn Lin <shawn.lin@rock-chips.com>
 To: Heiko Stuebner <heiko@sntech.de>
 Cc: linux-rockchip@lists.infradead.org,
@@ -40,25 +40,25 @@ Cc: linux-rockchip@lists.infradead.org,
 	Tianling Shen <cnsztl@gmail.com>,
 	Detlev Casanova <detlev.casanova@collabora.com>,
 	Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH 2/3] soc: rockchip: grf: Support multiple grf to be handled
-Date: Mon, 12 Jan 2026 11:49:27 +0800
-Message-Id: <1768189768-96333-3-git-send-email-shawn.lin@rock-chips.com>
+Subject: [PATCH 1/3] soc: rockchip: grf: Fix wrong RK3576_IOCGRF_MISC_CON definition
+Date: Mon, 12 Jan 2026 11:49:26 +0800
+Message-Id: <1768189768-96333-2-git-send-email-shawn.lin@rock-chips.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1768189768-96333-1-git-send-email-shawn.lin@rock-chips.com>
 References: <1768189768-96333-1-git-send-email-shawn.lin@rock-chips.com>
-X-HM-Tid: 0a9bb05313fe09cckunm0fb8f84327b6ea
+X-HM-Tid: 0a9bb053089e09cckunm0fb8f84327b6cb
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGkpITFZLQ0tDHRhMGUpNTk1WFRQJFh
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGUhNS1ZLH0lNGk9JT0xCQ0hWFRQJFh
 	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
 	hVSktLVUpCS0tZBg++
 DKIM-Signature: a=rsa-sha256;
-	b=ZPcvrGlT5FDgGS3dgthhSL0Rn4PZ2mdAO9e3S90Lz60ybOb2smeQr4fNwv6QRQCaGruxnWJpN59Rfto1Q21BraMF8gLgQg77OroijW4BCKBrPp1n8p1Porx+U9ToVuAgJJS2PV15tfcuxp22FbA8ujfobbzkPN5FoZ4sOoEC5UU=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=vjsJcfjM9BS09ZeWpjnWfggvwfFc+kDyguSteWCYeQE=;
+	b=XnTWvu2OZ2+emR97zAbbAcrRFZZ+XHcawLX/KrzCAWbLoixeO3p0JwLNXHmdyu+rL7SbI/YoLIjqMbCSHZJANXR7mkD0RXZsjEJ2dRuISWaYs/hYuLHpkXuSXOM71GYzuTErR41/yKJX/cxR2HVL0/CBaZQEIjJSp/1DEfjb+QY=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=n7+klh8d751uJcTvhrJRMLJ4U3aNjLdcDAtlbNN4FnI=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260111_194958_682642_885885D5 
-X-CRM114-Status: GOOD (  16.00  )
+X-CRM114-CacheID: sfid-20260111_194956_482946_4F1B4F56 
+X-CRM114-Status: GOOD (  10.09  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,93 +76,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Currently, only the first matched node will be handled. This leads
-to jtag switching broken for RK3576, as rk3576-sys-grf is found before
-rk3576-ioc-grf. Change the code to scan all the possible node to fix
-the problem.
+RK3576_IOCGRF_MISC_CON is IOC_GRF + 0x40F0, fix it.
 
 Fixes: e1aaecacfa13 ("soc: rockchip: grf: Add rk3576 default GRF values")
 Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 ---
 
- drivers/soc/rockchip/grf.c | 59 +++++++++++++++++++++++-----------------------
- 1 file changed, 30 insertions(+), 29 deletions(-)
+ drivers/soc/rockchip/grf.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/soc/rockchip/grf.c b/drivers/soc/rockchip/grf.c
-index 8974d1c..6d1c624e 100644
+index 27bfa09..8974d1c 100644
 --- a/drivers/soc/rockchip/grf.c
 +++ b/drivers/soc/rockchip/grf.c
-@@ -213,40 +213,41 @@ static int __init rockchip_grf_init(void)
- {
- 	const struct rockchip_grf_info *grf_info;
- 	const struct of_device_id *match;
--	struct device_node *np;
-+	struct device_node *np, *from_np = NULL;
- 	struct regmap *grf;
- 	int ret, i;
+@@ -146,7 +146,7 @@ static const struct rockchip_grf_info rk3576_sysgrf __initconst = {
+ 	.num_values = ARRAY_SIZE(rk3576_defaults_sys_grf),
+ };
  
--	np = of_find_matching_node_and_match(NULL, rockchip_grf_dt_match,
--					     &match);
--	if (!np)
--		return -ENODEV;
--	if (!match || !match->data) {
--		pr_err("%s: missing grf data\n", __func__);
--		of_node_put(np);
--		return -EINVAL;
--	}
-+	while (1) {
-+		np = of_find_matching_node_and_match(from_np,
-+				rockchip_grf_dt_match, &match);
-+		if (!np)
-+			return 0;
-+		if (!match || !match->data) {
-+			pr_err("%s: missing grf data\n", __func__);
-+			of_node_put(np);
-+			return -EINVAL;
-+		}
+-#define RK3576_IOCGRF_MISC_CON		0x04F0
++#define RK3576_IOCGRF_MISC_CON		0x40F0
  
--	grf_info = match->data;
--
--	grf = syscon_node_to_regmap(np);
--	of_node_put(np);
--	if (IS_ERR(grf)) {
--		pr_err("%s: could not get grf syscon\n", __func__);
--		return PTR_ERR(grf);
--	}
-+		grf_info = match->data;
- 
--	for (i = 0; i < grf_info->num_values; i++) {
--		const struct rockchip_grf_value *val = &grf_info->values[i];
--
--		pr_debug("%s: adjusting %s in %#6x to %#10x\n", __func__,
--			val->desc, val->reg, val->val);
--		ret = regmap_write(grf, val->reg, val->val);
--		if (ret < 0)
--			pr_err("%s: write to %#6x failed with %d\n",
--			       __func__, val->reg, ret);
-+		grf = syscon_node_to_regmap(np);
-+		of_node_put(np);
-+		if (IS_ERR(grf)) {
-+			pr_err("%s: could not get grf syscon\n", __func__);
-+			return PTR_ERR(grf);
-+		}
-+
-+		for (i = 0; i < grf_info->num_values; i++) {
-+			const struct rockchip_grf_value *val = &grf_info->values[i];
-+
-+			pr_info("%s: adjusting %s in %#6x to %#10x\n", __func__,
-+				val->desc, val->reg, val->val);
-+			ret = regmap_write(grf, val->reg, val->val);
-+			if (ret < 0)
-+				pr_err("%s: write to %#6x failed with %d\n",
-+					__func__, val->reg, ret);
-+		}
-+		from_np = np;
- 	}
--
--	return 0;
- }
- postcore_initcall(rockchip_grf_init);
+ static const struct rockchip_grf_value rk3576_defaults_ioc_grf[] __initconst = {
+ 	{ "jtag switching", RK3576_IOCGRF_MISC_CON, FIELD_PREP_WM16_CONST(BIT(1), 0) },
 -- 
 2.7.4
 
