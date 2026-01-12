@@ -4,95 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C529AD25030
-	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Jan 2026 02:30:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2146AD25034
+	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Jan 2026 03:50:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
 	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=4kn0C0Rn5+emFMJEUK34S2CaQOI8CCGZhXzgENVIbV0=; b=lk4iVXceJHePGH
-	yfMpFzBBSQYB/T8EqM9xz06IjyJYsM047V5tcb8l2SNqrc895H7yw9wT6s7Qs+75wf9RDCGRBHpJu
-	v7hPi6VfaDn3s5dgVEIkVxY45hOyNGF2xcB/URTBVvK5MoAwjEuaK3G5yMu9fJ8m6QsXRcpPUwv1L
-	6jMYPLWBwHNv3e/C1YkkxMD+dAwgoFA6w/EkZxkpM7BUKgczTqvj8FXDpFQgUNriXl719lQkGVK6+
-	4G7G2BbSR5OjDAmIfW+ertPmNfzRW2AHqO4spvVrhXB9M09+hl8IJVurL0Hp85QCfG8CsvVaw/Dk1
-	EqrHXFNj/hooEdq5EGNQ==;
+	List-Owner; bh=PgKL3RcklYX3FFjX1eYWMY5IrvMH4u0Jb6Vu0nV9PEA=; b=YEbsh2Uhu38h1b
+	w5CNUyu1gS03cGVWNfuTZA4EtZh1H5XoRzSqkSmSgBDDFGs09gpt0c+66WJJiet2SGB9jtFvuKIE3
+	RL9cDpFQxZEJJXfGrUbNZ0QBR1K7trVuq+gLZR7LKy4Ql6+ijZJfrzAaY2ByTFERfaK+yphs6XEIi
+	Opo45f6CK6/7RNomTY46ooRuwwdo+dxsbNF/da/DPFkAIOohTyO47FveKnQHEyAsqQekAYct6Xdud
+	z6+uBUBfDZem0jxxEP+lGxAC3dXdsnLt3BeEnxMpozBhID0HZp1Q8g1wn3PJdJQna0yVUX04bOOp0
+	gzNV/1gN9ExVHCObejjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vf7hJ-00000004fa4-2aDx;
-	Mon, 12 Jan 2026 02:30:25 +0000
-Received: from smtpbgau2.qq.com ([54.206.34.216])
+	id 1vf8wJ-00000004jQp-1ErP;
+	Mon, 12 Jan 2026 03:49:59 +0000
+Received: from mail-m3294.qiye.163.com ([220.197.32.94])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vf7hG-00000004fSS-0flv;
-	Mon, 12 Jan 2026 02:30:23 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
-	s=altu2504; t=1768184914;
-	bh=5OwuqBa1SKtgkAufTwdNUgHq4LXbcH9yxhfSttEXZd4=;
-	h=From:To:Subject:Date:Message-Id;
-	b=QjVgpA+DN/Tc8QipuykbZtIg3b5K343C1zO1SxXZbyKoZTntCzzs/m54JGrW+mUBR
-	 YiTaueIBiMhHibvjqAHqRaOH3+dS89reMYNyw7DGPqgTwFos4t41FhNM6S8V2dUcEq
-	 qIsYMhf0yV0V9zAmqxw6ZmnlDhPe3Z9yxtBDjnK4=
-X-QQ-mid: zesmtpsz4t1768184911t0d1f0041
-X-QQ-Originating-IP: sntjFapz4HbC+mkqdoSmtzzuUOEeNdmwI5vWgXHYI1c=
-Received: from DESKTOP-8BT1A2O.localdomain ( [58.22.7.114])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Mon, 12 Jan 2026 10:28:29 +0800 (CST)
-X-QQ-SSF: 0000000000000000000000000000000
-X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 7699444275135992075
-EX-QQ-RecipientCnt: 23
-From: Chaoyi Chen <kernel@airkyi.com>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Quentin Schulz <quentin.schulz@cherry.de>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Chaoyi Chen <chaoyi.chen@rock-chips.com>,
-	Hsun Lai <i@chainsx.cn>,
+	id 1vf8wF-00000004jPu-0bl0
+	for linux-rockchip@lists.infradead.org;
+	Mon, 12 Jan 2026 03:49:57 +0000
+Received: from localhost.localdomain (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 30449dd17;
+	Mon, 12 Jan 2026 11:49:47 +0800 (GMT+08:00)
+From: Shawn Lin <shawn.lin@rock-chips.com>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	FUKAUMI Naoki <naoki@radxa.com>,
+	Marco Schirrmeister <mschirrmeister@gmail.com>,
 	John Clark <inindev@gmail.com>,
-	Jimmy Hon <honyuenkwun@gmail.com>,
-	Dragan Simic <dsimic@manjaro.org>,
-	Michael Riesch <michael.riesch@collabora.com>,
-	Peter Robinson <pbrobinson@gmail.com>,
-	Alexey Charkov <alchark@gmail.com>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Andy Yan <andy.yan@rock-chips.com>
-Cc: devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-usb@vger.kernel.org
-Subject: [PATCH v3 0/3] arm64: dts: rockchip: Add rk3576 evb2 board
-Date: Mon, 12 Jan 2026 10:28:20 +0800
-Message-Id: <20260112022823.91-1-kernel@airkyi.com>
-X-Mailer: git-send-email 2.17.1
-X-QQ-SENDSIZE: 520
-Feedback-ID: zesmtpsz:airkyi.com:qybglogicsvrgz:qybglogicsvrgz6b-0
-X-QQ-XMAILINFO: NUTz4BkILuKLFFWBZfchHmjoVwmwrFRkzImEnehPaR3jbEDZ3g2ylOBP
-	zyU4E/UQau/JqG0PeYlT4U6pgWBWE+dz3C6qZHXrNxQdTPmXYWk2/rXTm/KmjZBoInmvO8R
-	EotUfgw11arf0KDibY23rz6eseGt14yYjcV/l7nn3mE2rhxxFtsdao0nF3AzhZQYAHSf0cb
-	rSjvwX88NQ5890dyhnUVy6Oafvf+Yv5SsmGGqr3gl97hxkXwyqh+u2KapAmNAHVOVQSypkC
-	j0UhMBrOXbOxPL2mRTbmjrmvPqIB9wFo35ysnTLJ2xxonJi9afYAPvBxaYjl9VZ7paLzPGU
-	iir0CBFfcN3OnbYEB58YxJOgXrvSSHwTTgHYH4FI6NON97ylxpDZw0zWrho0zfEJrnsDvF+
-	Muiula7JhKnThdAhuU44mMBmaTUOfNt2trHPepV6T4MhFBLFfie1VUoDl57c5XHr0gVWgqh
-	SedXAWAor0XSlPU0XJzqzFkiS3K8waMzzuHx0SGC8Ocl0ubISUYA5/8EvmQgnnKnL3EOJGs
-	8rsbYVfN5WcuhujPj2PIY8J13mzOEHv+SqH//tQfjGsc1e+yuEqvPxDTzXkf90gLmNCAQD6
-	/KedC02g/OhjvuSuhiuOG3E8BiwTax6F89wK/qAw6fvRUWdh5+gLeIb7NUcJGCgfjve+uhV
-	LreDZq+l0tPSG4nzpVlYmlm2QEKAnXqkSXcisOXco2YDiWsJ3BMzX+8X5Yt4ADWOkImMHtE
-	ZKFMF9iJyJxgjAL11+2yvh5+SK2NYpCHUIzLvV8SGUWcZ7J085spljVfCtF9603VPf4teyl
-	Yw4MM2Qm8Kv9MpVfXAPVnlPkg1pqymKZv4mn16iHBPDyXNFrUhwo4UUa28PjDKwME4l6D1B
-	Q/iHsBR+JHgpPccXJUfS5x5o09+ItdKbLlmy9ICzV8cL+RAoUC70yDoi4+d4xlqAvmpGiPG
-	G6d6fTZx7n/ejU6xylHcfwxu5gMeDukUhdCD3wcWgwwRTl/OOo3wToapeRj7GmbgeBo8WV4
-	8II0ifReXt7EyCKL5H
-X-QQ-XMRINFO: M/715EihBoGS47X28/vv4NpnfpeBLnr4Qg==
-X-QQ-RECHKSPAM: 0
+	Tianling Shen <cnsztl@gmail.com>,
+	Detlev Casanova <detlev.casanova@collabora.com>,
+	Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [PATCH 0/3] Fix sd card support for RK3576
+Date: Mon, 12 Jan 2026 11:49:25 +0800
+Message-Id: <1768189768-96333-1-git-send-email-shawn.lin@rock-chips.com>
+X-Mailer: git-send-email 2.7.4
+X-HM-Tid: 0a9bb052faff09cckunm0fb8f84327b6aa
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQh0YTFZLGUtNTU5DQ0xDQ09WFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=GKnXFGw2jvbdnxpxIuiDw4PwRhA9/K7HrlxeBTmt2lL+fuhr/47cDcgIgL6WJzHz5ub4l2+2VM0I1hTkRIHQ7a4zDQxn9R/7day54yiqYL47GOQSiw16vXY1jMNtiYxKxgxfBfnzmqihIVIm/VH8qReJShX6s6gpGiDCyORb5PI=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=BvDJSbGVhZtIrpNEm1zPA0SacCMixIBe/XaEgL5wkLw=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260111_183022_636590_72CDF709 
-X-CRM114-Status: GOOD (  12.19  )
+X-CRM114-CacheID: sfid-20260111_194956_255016_5A13ECDA 
+X-CRM114-Status: UNSURE (   9.66  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,63 +75,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
 
-Hi,
+SD card support for RK3576 is totally broken. This is because sd cards
+should try to use slot-gpio(cd-gpios) instead of function IO for supporting
+runtime PM. In order to support slot-gpio method, we should disable jtag
+switching for RK3576.
 
-This series add support for rk3576 evb2 board.
+But the rockchip_grf_init fails to handle this because it couldn't handle
+multiple grf nodes. In this case, iocgrf is in behind of sysgrf, so only
+sysgrf is handled. We should scan all possible nodes.
 
-General features for rk3576 evb2 board:
-    - Rockchip RK3576
-    - LPDDR4/4X
-    - eMMC5.1
-    - RK806-2x2pcs + DiscretePower
-    - 1x HDMI2.1 TX / HDMI2.0 RX
-    - 1x full size DP1.4 TX (Only 2 Lanes)
-    - 2x 10/100/1000M Ethernet
-    - 5x SATA3.0 7Pin Slot
-    - 2x USB3.2 Gen1 Host
-    - 3x USB2.0 Host
-    - WIFI/BT
-    - ...
+Moreover, the offset is wrong as well. Per the TRM, the address of
+TOP_IOC_IOC_MISC_CON is 0x260440F0, which means the offset if 0x40F0
+intead of 0x040F.
 
-Changes in v3:
-- Link to v2: https://lore.kernel.org/all/20260107070322.323-1-kernel@airkyi.com/ 
-- Add binding for WCH CH334/CH335 hub controller.
-- Add alias for mmc.
-- Rename some usb vbus regulator.
-- Add DP regulator.
-- Change gmac phy-mode to rgmii-id.
-- Add target-supply for sata.
-- Change vcc-supply for ufshc.
-- Add usb hub.
-- ...
+This series fixes this mess but only adds slot-gpio support for RK3576-EVB1.
+Other boards are also missing slot-gpio support, but folks are all cced for
+checking the board they are using.
 
-Changes in v2:
-- Link to v1: https://lore.kernel.org/all/20260104023703.118-1-kernel@airkyi.com/
-- Enable hdmi_sound and sai6.
-- Add more cpu-supply.
-- Use regulator to control sata power.
-- Remove "cap-mmc-highspeed" prop in sdmmc.
-- Add regulator supply for ufshc.
-- Add the missing vcc3v3_hubreset regulator.
-- Add otg capability for usb_drd0_dwc3.
+Please review and test
 
-Chaoyi Chen (3):
-  dt-bindings: usb: Add binding for WCH CH334/CH335 hub controller
-  dt-bindings: arm: rockchip: Add rk3576 evb2 board
-  arm64: dts: rockchip: Add rk3576 evb2 board
 
- .../devicetree/bindings/arm/rockchip.yaml     |    4 +-
- .../devicetree/bindings/usb/wch,ch334.yaml    |   65 ++
- arch/arm64/boot/dts/rockchip/Makefile         |    1 +
- .../boot/dts/rockchip/rk3576-evb2-v10.dts     | 1002 +++++++++++++++++
- 4 files changed, 1071 insertions(+), 1 deletion(-)
- create mode 100644 Documentation/devicetree/bindings/usb/wch,ch334.yaml
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3576-evb2-v10.dts
+Shawn Lin (3):
+  soc: rockchip: grf: Fix wrong RK3576_IOCGRF_MISC_CON definition
+  soc: rockchip: grf: Support multiple grf to be handled
+  arm64: dts: rockchip: Add cd-gpios for sdmmc of RK3576 EVB1
 
---
-2.51.1
+ arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts |  1 +
+ drivers/soc/rockchip/grf.c                       | 61 ++++++++++++------------
+ 2 files changed, 32 insertions(+), 30 deletions(-)
+
+-- 
+2.7.4
 
 
 _______________________________________________
