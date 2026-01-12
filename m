@@ -4,67 +4,127 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0BF0C44525
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 08:48:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04E88C4452B
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 08:48:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jCDPi+VKf2GPs+s4Pl9xzcEkM9iZ43KRPvK9wLIKQ6U=; b=v0BezgJ67GaE77
-	8UdjZeb20rn81DAETmgZsyRs5FhfuvCTZrZkzMZfYoSCBzxMTbhU/y2tS/IL8Lg+SRjMVZVuvYb2y
-	pQ7Cpi/TTyO4DVIeApN8+t+UGyM0knV116ME1jq0WIzGKZ48BaJ0l1N6e8bNT6aM8EGsZZkZVH8wI
-	tBsEANHUgW40giyX8AwwQDyiVlYnauAPtdr7gb+UVSq5DofdBk+Rarrumk7nx65KLxoFdm/OMbLfS
-	SJKGyYYWyYQTsOOw/wFq0Z3+e68OjZgX3RGoFGc7dWgsnDEx0a9rC6Xl4fChGirX1MDLxcUvdqP+d
-	/FnQd4cGN7ThUVqFWhmQ==;
+	List-Owner; bh=3qQo+/NkirgCIZJKBWmxJkhUIeFKp3rOnhhBULLjNN0=; b=fPqalvcNPBaYPd
+	x9ziBPRqlP+SsrF3wRYNK0D6LUx7VqVySuVGCJZYLx/Hwh1z6PG7g5JYeGKC6ynViU2Exp7dge5dz
+	pqlO1OIq+1LLPyr260XZFD+dngzFQpR5re75Y8iMyCMLQK0p67sWlml+qog7xQtQOrMY217N80jeZ
+	r1KkhdIQnGCiKh0L0RXcHq94hEX8yizfzidxfaCgyLiNYoUKtRcNZS1OZZ+N2lRI0D2VD8QbWrOjk
+	2VSRplZ3f2iKkjI99wv4DM9OG5VmLnX6PSd9zDgGEupjTiXD8HrQ4KR63HvTxv8qSi+BU9UOj/oTj
+	xgx7D50FZMt8XLotomJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whkQl-00000001Ukh-2YJ5;
+	id 1whkQl-00000001UkX-2Bqb;
 	Thu, 09 Jul 2026 08:48:27 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfbP7-00000006srh-1kn0
-	for linux-rockchip@lists.infradead.org;
-	Tue, 13 Jan 2026 10:13:37 +0000
+	id 1vfMD7-00000005tva-2A6w;
+	Mon, 12 Jan 2026 18:00:13 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 6EC4F600C3
-	for <linux-rockchip@lists.infradead.org>; Tue, 13 Jan 2026 10:13:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 39B5BC2BCC6
-	for <linux-rockchip@lists.infradead.org>; Tue, 13 Jan 2026 10:13:36 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 1BE3C60055;
+	Mon, 12 Jan 2026 18:00:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DB923C16AAE;
+	Mon, 12 Jan 2026 18:00:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1768299216;
-	bh=RpOnPNW4xfI0Kz9zhPqicYu/rLC2pTmpoM33Trm+SMg=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=dBkyBNzZyikYWHBI84mEzG69MRM616RZBoMsO0F3Q1c1T/St0KrZ9e2JUQUHBxmA2
-	 3ghOxlMMpbwvS/wL74la9lRVcw7lVZLTyWJiprsxF5/oDzdFtYs3SmKTcdV3GQohVx
-	 6ukv6oI7L/80VLsINJQ3gIGwywWiYE4fp1vBKJEyuSQnejwmmr6sqzttwZsXeXj3ba
-	 X+Klx3wBvBhfpoXyoeO/EffiVahCypVxOcHqGQ6XJH0tDrCHhaz16CsG2xGrUPWY6N
-	 NsymtWt2Boevzn0e3ExO19xgQ8iQhqLMnifQUiiSr4WPa1qIiWHnrxefRm2bdiPR2v
-	 DCFLKopJUBlYA==
-Received: by mail-yw1-f175.google.com with SMTP id 00721157ae682-7927541abfaso25774527b3.3
-        for <linux-rockchip@lists.infradead.org>; Tue, 13 Jan 2026 02:13:36 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCVx22HJtG3KHvtTNyjcvnlwBOol0FsAA65Npbn/NfcFUyvcWhhrblF2BLIUO0oouzxPawgF99zSB10sKeQWHg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxc6m1FWCLQtWEMeZUdGloi18B1UHXfOYPBGfj7yqKfO6cAuxrS
-	CPtsHUTkEjEQIDAdwWpvNChWeQ8lqSqyYD+UPX9jrO0PXsK3ZxBy+MTalnbGYIhcOMu6IimY55L
-	C4EGtE1Dzi0e22PB1ca7RMzKfamREWwc=
-X-Google-Smtp-Source: AGHT+IEjXK4zNU3B8MFfoIndGOeB/FKQBt1cyG91VMuMhesDC6zUrt9ZhhHY6gJ4lWXzCFjcVvXXmBBHZkq1dqdQ1TU=
-X-Received: by 2002:a05:690e:1442:b0:644:51a4:4f1a with SMTP id
- 956f58d0204a3-64716c67be2mr17455597d50.46.1768299214202; Tue, 13 Jan 2026
- 02:13:34 -0800 (PST)
+	s=k20201202; t=1768240811;
+	bh=mGbofIjwnm9caXWlIFuD+vvkQiRMHg0CWCn2+iWjokQ=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=feB0lBBcPjMm6TcLwyV7ebbxAv/YTwcCPMIuU2dVmvhL5mGCrIawtev3cma1EX2dA
+	 gimcge4/rXibL+oI/bA4/8WLwnYBQjmUWgdqxGK+z6QcoubI5S8MGhmHsN6RGU3I0m
+	 bOaihftKwYyTpOxlZre+emHgYCTF4qUVx3nrUpVhTKwciuti+mwHDDCK+Uudv2JTSh
+	 R6RBys8rz+B/35nVnKrzi3MKeFCyoNWx7MF7/pgVShpqzu4mBxe+J9/cv0NwkEif1g
+	 VG+WPfM/JevSndphvgNzv7J2+6JAdWpT5GxWT+B4lRohyxUT14oeDlYMchDvMoo1+A
+	 VALVB9TuQpPSg==
+From: Jakub Kicinski <kuba@kernel.org>
+To: bartosz.golaszewski@oss.qualcomm.com
+Cc: Jakub Kicinski <kuba@kernel.org>,
+	jbrunet@baylibre.com,
+	linux-stm32@st-md-mailman.stormreply.com,
+	devicetree@vger.kernel.org,
+	neil.armstrong@linaro.org,
+	unicorn_wang@outlook.com,
+	andrew+netdev@lunn.ch,
+	vkoul@kernel.org,
+	peppe.cavallaro@st.com,
+	jernej.skrabec@gmail.com,
+	samin.guo@starfivetech.com,
+	david.wu@rock-chips.com,
+	christophe.roullier@foss.st.com,
+	linux-amlogic@lists.infradead.org,
+	linux-riscv@lists.infradead.org,
+	martin.blumenstingl@googlemail.com,
+	robh@kernel.org,
+	linux-imx@nxp.com,
+	andersson@kernel.org,
+	joabreu@synopsys.com,
+	s32@nxp.com,
+	swathi.ks@samsung.com,
+	konradybcio@kernel.org,
+	krzk+dt@kernel.org,
+	keguang.zhang@gmail.com,
+	kernel@pengutronix.de,
+	romain.gantois@bootlin.com,
+	brgl@kernel.org,
+	sophgo@lists.linux.dev,
+	netdev@vger.kernel.org,
+	xiaoning.wang@nxp.com,
+	imx@lists.linux.dev,
+	dfustini@tenstorrent.com,
+	davem@davemloft.net,
+	jan.petrous@oss.nxp.com,
+	magnus.damm@gmail.com,
+	lizhi2@eswincomputing.com,
+	linux-sunxi@lists.linux.dev,
+	linux-mips@vger.kernel.org,
+	vineetha.g.jaya.kumaran@intel.com,
+	matthew.gerlach@altera.com,
+	wefu@redhat.com,
+	geert+renesas@glider.be,
+	edumazet@google.com,
+	linux-kernel@vger.kernel.org,
+	Frank.Li@nxp.com,
+	conor+dt@kernel.org,
+	mripard@kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	kernel@esmil.dk,
+	linux-renesas-soc@vger.kernel.org,
+	alexandre.torgue@foss.st.com,
+	inochiama@gmail.com,
+	minda.chen@starfivetech.com,
+	s.hauer@pengutronix.de,
+	nobuhiro.iwamatsu.x90@mail.toshiba,
+	prabhakar.mahadev-lad.rj@bp.renesas.com,
+	fustini@kernel.org,
+	richardcochran@gmail.com,
+	pabeni@redhat.com,
+	shawnguo@kernel.org,
+	wens@kernel.org,
+	heiko@sntech.de,
+	guoren@kernel.org,
+	weishangjuan@eswincomputing.com,
+	mcoquelin.stm32@gmail.com,
+	khilman@baylibre.com,
+	festevam@gmail.com,
+	liangshuang@eswincomputing.com,
+	krzysztof.kozlowski@oss.qualcomm.com,
+	linux-arm-msm@vger.kernel.org,
+	konrad.dybcio@oss.qualcomm.com,
+	linux-rockchip@lists.infradead.org,
+	samuel@sholland.org
+Subject: Re: [RESEND,net-next,v6,7/7] net: stmmac: qcom-ethqos: add support for sa8255p
+Date: Mon, 12 Jan 2026 10:00:05 -0800
+Message-ID: <20260112180005.4144056-1-kuba@kernel.org>
+X-Mailer: git-send-email 2.52.0
+In-Reply-To: <20260112-qcom-sa8255p-emac-v6-7-86a3d4b2ad83@oss.qualcomm.com>
+References: <20260112-qcom-sa8255p-emac-v6-7-86a3d4b2ad83@oss.qualcomm.com>
 MIME-Version: 1.0
-References: <20260112203534.4186261-1-andriy.shevchenko@linux.intel.com>
-In-Reply-To: <20260112203534.4186261-1-andriy.shevchenko@linux.intel.com>
-From: Linus Walleij <linusw@kernel.org>
-Date: Tue, 13 Jan 2026 11:13:22 +0100
-X-Gmail-Original-Message-ID: <CAD++jLkBKcK9eKOCfry2H1DzG=5Z93w2U-SRwHf2dkRBhyxQRw@mail.gmail.com>
-X-Gm-Features: AZwV_Qgxd8O6AeWZ_24rr74gIMc3R8RlMUxlB-x9t8krXDZ9OpAu7ZlluLqPS50
-Message-ID: <CAD++jLkBKcK9eKOCfry2H1DzG=5Z93w2U-SRwHf2dkRBhyxQRw@mail.gmail.com>
-Subject: Re: [PATCH v2 0/4] spi: Make SPI core to take care of fwnode assignment
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Mark Brown <broonie@kernel.org>, Varshini Rajendran <varshini.rajendran@microchip.com>, Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Haotian Zhang <vulab@iscas.ac.cn>, Sunny Luo <sunny.luo@amlogic.com>, Janne Grunau <j@jannau.net>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Geert Uytterhoeven <geert+renesas@glider.be>, Chen-Yu Tsai <wens@kernel.org>, Amelie Delaunay <amelie.delaunay@foss.st.com>, Chin-Ting Kuo <chin-ting_kuo@aspeedtech.com>, CL Wang <cl634@andestech.com>, Patrice Chotard <patrice.chotard@foss.st.com>, Heiko Stuebner <heiko@sntech.de>, William Zhang <william.zhang@broadcom.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, Manikandan Muralidharan <manikandan.m@microchip.com>, David Lechner <dlechner@baylibre.com>, Florian Fainelli <florian.fainelli@broadcom.com>, Jonas Gorski <jonas.gorski@gmail.com>, Hang Zhou <929513338@qq.com>, Jun Guo <jun.guo@cixtech.com>, Philipp Stanner <phasta@kernel.org>, Charles Keepax <ckeepax@opensource.cirrus.com>, Bartosz Golaszewski <brgl@kernel.org>, =?UTF-8?Q?Beno=C3=AEt_Monin?= <benoit.monin@bootlin.com>, Shiji Yang <yangshiji66@outlook.com>, James Clark <james.clark@linaro.org>, Jonathan Marek <jonathan@marek.ca>, Carlos Song <carlos.song@nxp.com>, Sakari Ailus <sakari.ailus@linux.intel.com>, Huacai Chen <chenhuacai@kernel.org>, Xianwei Zhao <xianwei.zhao@amlogic.com>, Prajna Rajendra Kumar <prajna.rajendrakumar@microchip.com>, Sergio Perez Gonzalez <sperezglz@gmail.com>, Qianfeng Rong <rongqianfeng@vivo.com>, Haibo Chen <haibo.chen@nxp.com>, Gabor Juhos <j4g8y7@gmail.com>, Md Sadre Alam <quic_mdalam@quicinc.com>, Rosen Penev <rosenp@gmail.com>, Marek Szyprowski <m.szyprowski@samsung.com>, Luis de Arquer <luis.dearquer@inertim.com>, Cosmin Tanislav <cosmin-gabriel.tanislav.xa@renesas.com>, Tudor Ambarus <tudor.ambarus@linaro.org>, Krzysztof Kozlowski <krzk@kernel.org>, Longbin Li <looong.bin@gmail.com>, Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, =?UTF-8?Q?Cl=C3=A9ment_Le_Goffic?= <clement.legoffic@foss.st.com>, Alessandro Grassi <alessandro.grassi@mailbox.org>, Darshan R <rathod.darshan.0896@gmail.com>, Aaron Kling <webgeek1234@gmail.com>, Vishwaroop A <va@nvidia.com>, Haixu Cui <quic_haixcui@quicinc.com>, Darshan Rathod <darshanrathod475@gmail.com>, linux-spi@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-amlogic@lists.infradead.org, asahi@lists.linux.dev, linux-aspeed@lists.ozlabs.org, openbmc@lists.ozlabs.org, linux-rpi-kernel@lists.infradead.org, linux-sound@vger.kernel.org, patches@opensource.cirrus.com, imx@lists.linux.dev, linux-arm-msm@vger.kernel.org, linux-riscv@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-renesas-soc@vger.kernel.org, linux-samsung-soc@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org, virtualization@lists.linux.dev, Nicolas Ferre <nicolas.ferre@microchip.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>, Lorenzo Bianconi <lorenzo@kernel.org>, Ray Liu <ray.liu@airoha.com>, Sven Peter <sven@kernel.org>, Neal Gompa <neal@gompa.dev>, Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@codeconstruct.com.au>, Ryan Wanner <ryan.wanner@microchip.com>, Michael Hennerich <michael.hennerich@analog.com>, =?UTF-8?B?TnVubyBTw6E=?= <nuno.sa@analog.com>, Kamal Dasu <kamal.dasu@broadcom.com>, Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>, Kursad Oney <kursad.oney@broadcom.com>, Anand Gore <anand.gore@broadcom.com>, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>, David Rhodes <david.rhodes@cirrus.com>, Richard Fitzgerald <rf@opensource.cirrus.com>, Vladimir Oltean <olteanv@gmail.com>, Frank Li <Frank.Li@nxp.com>, Jean-Marie Verdun <verdun@hpe.com>, Nick Hawkins <nick.hawkins@hpe.com>, Yang Shen <shenyang39@huawei.com>, 
- Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, Lixu Zhang <lixu.zhang@intel.com>, Yinbo Zhu <zhuyinbo@loongson.cn>, Neil Armstrong <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, Conor Dooley <conor.dooley@microchip.com>, Daire McNamara <daire.mcnamara@microchip.com>, Matthias Brugger <matthias.bgg@gmail.com>, Avi Fishman <avifishman70@gmail.com>, Tomer Maimon <tmaimon77@gmail.com>, Tali Perry <tali.perry1@gmail.com>, Patrick Venture <venture@google.com>, Nancy Yuen <yuenn@google.com>, Benjamin Fair <benjaminfair@google.com>, Han Xu <han.xu@nxp.com>, Yogesh Gaur <yogeshgaur.83@gmail.com>, Daniel Mack <daniel@zonque.org>, Haojian Zhuang <haojian.zhuang@gmail.com>, Robert Jarzmik <robert.jarzmik@free.fr>, Chris Packham <chris.packham@alliedtelesis.co.nz>, Fabrizio Castro <fabrizio.castro.jz@renesas.com>, Andi Shyti <andi.shyti@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, Paul Walmsley <pjw@kernel.org>, Samuel Holland <samuel.holland@sifive.com>, Orson Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, Alain Volmat <alain.volmat@foss.st.com>, Jernej Skrabec <jernej.skrabec@gmail.com>, Li-hao Kuo <lhjeff911@gmail.com>, Masahisa Kojima <masahisa.kojima@linaro.org>, Jassi Brar <jaswinder.singh@linaro.org>, Laxman Dewangan <ldewangan@nvidia.com>, Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, Sowjanya Komatineni <skomatineni@nvidia.com>, Masami Hiramatsu <mhiramat@kernel.org>, =?UTF-8?Q?Jonathan_Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>, Michal Simek <michal.simek@amd.com>, Max Filippov <jcmvbkbc@gmail.com>
-X-Mailman-Approved-At: Thu, 09 Jul 2026 01:48:24 -0700
+X-Mailman-Approved-At: Thu, 09 Jul 2026 01:48:23 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,26 +136,120 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gTW9uLCBKYW4gMTIsIDIwMjYgYXQgOTozNeKAr1BNIEFuZHkgU2hldmNoZW5rbwo8YW5kcml5
-LnNoZXZjaGVua29AbGludXguaW50ZWwuY29tPiB3cm90ZToKCj4gSXQgc2VlbXMgYWxsIG9mIHRo
-ZSBTUEkgZHJpdmVycyB3YW50IHRvIHByb3BhZ2F0ZSBmd25vZGUgKG9yIG9mX25vZGUpCj4gb2Yg
-dGhlIHBoeXNpY2FsIGRldmljZSB0byB0aGUgU1BJIGRldmljZS4gTWFrZSBzdXJlIHdlIGRvbid0
-IGR1cGxpY2F0ZQo+IGl0IG92ZXIgYW5kIG92ZXIgaW4gZWFjaCBuZXcgZHJpdmVyICgrMiBpbiB0
-aGlzIGN5Y2xlKSBieSBtYWtpbmcgY29yZQo+IHRvIHRha2UgY2FyZSBvZiB0aGF0LiBOb3RlLCBz
-aW1pbGFyIGlzIGRvbmUgYWxyZWFkeSBieSBJSU8gYW5kCj4gScKyQyBzdWJzeXN0ZW1zLgo+Cj4g
-VGhlcmUgaXMgb25lIG5vdGljZWFibGUgYW5kIHF1aXRlIHNwZWNpZmljIGNhc2UgdGhhdCBpcyB0
-YWtlbiBjYXJlIGluCj4gdGhlIGZpcnN0IHBhdGNoIGFuZCBub3cgd2UgaGF2ZSBhIGNvbmZpcm1h
-dGlvbiBmcm9tIENpcnJ1cyB0aGF0IGV2ZXJ5dGhpbmcKPiBpcyBva2F5LiAgVGhlIHJlc3QgaXMg
-anVzdCBhIG1lY2hhbmljYWwgY29udmVyc2lvbiBhZnRlciBjaGVja2luZyB0aGF0Cj4gdGhlIHBh
-cmVudCBkZXZpY2UgaXMgYXNzaWduZWQgdG8gdGhlIHNhbWUgdGhhdCBwcm92aWRlcyB0aGUgcmVz
-cGVjdGl2ZQo+IGZ3bm9kZS4KClRoaXMgaXMgY2xlYXJseSBtYWtpbmcgdGhlIGtlcm5lbCBhIGJl
-dHRlciBwbGFjZS4KClRoZSBzZXJpZXM6ClJldmlld2VkLWJ5OiBMaW51cyBXYWxsZWlqIDxsaW51
-c3dAa2VybmVsLm9yZz4KCllvdXJzLApMaW51cyBXYWxsZWlqCgpfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QK
-TGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFk
-Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+This is an AI-generated review of your patch. The human sending this
+email has considered the AI review valid, or at least pausible.
+
+For local reproduction steps see https://netdev-ai.bots.linux.dev/ai-local.html
+---
+net: stmmac: qcom-ethqos: add support for sa8255p
+
+This commit adds support for the SA8255P SoC which uses power domains
+managed via SCMI firmware, rather than the traditional clock/phy-based
+power management used by other variants.
+
+> diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c
+> index 8ba57bba3f2e..54f8ef3cfd7d 100644
+> --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c
+> +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c
+
+[ ... ]
+
+> +static void ethqos_disable_serdes(void *data)
+> +{
+> +	struct qcom_ethqos *ethqos = data;
+> +
+> +	qcom_ethqos_domain_on(ethqos, ETHQOS_PD_SERDES);
+                          ^^
+
+Should this be qcom_ethqos_domain_off() instead of qcom_ethqos_domain_on()?
+
+This function is registered as a cleanup action via devm_add_action_or_reset()
+to undo the qcom_ethqos_domain_on(ETHQOS_PD_SERDES) call during probe. Using
+domain_on here would increment the PM runtime usage counter again rather than
+decrementing it. The serdes power domain would never be properly turned off
+on driver removal.
+
+Compare with qcom_ethqos_pd_serdes_powerdown() which correctly uses
+qcom_ethqos_domain_off().
+
+> +}
+
+[ ... ]
+
+> +static int qcom_ethqos_pd_init(struct device *dev, void *priv)
+> +{
+> +	struct qcom_ethqos *ethqos = priv;
+> +	int ret;
+> +
+> +	/*
+> +	 * Enable functional clock to prevent DMA reset after timeout due
+> +	 * to no PHY clock being enabled after the hardware block has been
+> +	 * power cycled. The actual configuration will be adjusted once
+> +	 * ethqos_fix_mac_speed() is called.
+> +	 */
+> +	ethqos_set_func_clk_en(ethqos);
+> +
+> +	ret = qcom_ethqos_domain_on(ethqos, ETHQOS_PD_CORE);
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = qcom_ethqos_domain_on(ethqos, ETHQOS_PD_MDIO);
+> +	if (ret) {
+> +		qcom_ethqos_domain_off(ethqos, ETHQOS_PD_CORE);
+> +		return ret;
+> +	}
+> +
+> +	return 0;
+> +}
+
+[ ... ]
+
+>  	if (pm_data && pm_data->use_domains) {
+>  		ethqos->set_serdes_speed = ethqos_set_serdes_speed_pd;
+>
+> +		ret = devm_pm_domain_attach_list(dev, &pm_data->pd,
+> +						 &ethqos->pd.pd_list);
+> +		if (ret < 0)
+> +			return dev_err_probe(dev, ret, "Failed to attach power domains\n");
+> +
+> +		plat_dat->clks_config = ethqos_pd_clks_config;
+> +		plat_dat->serdes_powerup = qcom_ethqos_pd_serdes_powerup;
+> +		plat_dat->serdes_powerdown = qcom_ethqos_pd_serdes_powerdown;
+> +		plat_dat->exit = qcom_ethqos_pd_exit;
+> +		plat_dat->init = qcom_ethqos_pd_init;
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+
+> +		plat_dat->clk_ptp_rate = pm_data->clk_ptp_rate;
+> +
+> +		ret = qcom_ethqos_pd_init(dev, ethqos);
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Is qcom_ethqos_pd_init() being called twice?
+
+It is assigned to plat_dat->init above, and then called directly here. Later,
+devm_stmmac_pltfr_probe() -> stmmac_pltfr_probe() -> stmmac_dvr_probe() will
+call plat_dat->init() again (see stmmac_main.c stmmac_dvr_probe function).
+
+Each call to qcom_ethqos_pd_init() increments the PM runtime usage counter
+for ETHQOS_PD_CORE and ETHQOS_PD_MDIO via pm_runtime_resume_and_get(). With
+two calls, the refcount would be 2 for each domain, but qcom_ethqos_pd_exit()
+only decrements once per domain. This would leave the power domains with a
+dangling reference.
+
+Perhaps the direct call to qcom_ethqos_pd_init() here should be removed, and
+let stmmac_dvr_probe() invoke it through the plat_dat->init callback?
+
+> +		if (ret)
+> +			return ret;
+
+[ ... ]
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
