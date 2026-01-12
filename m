@@ -4,70 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40FB0D25056
-	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Jan 2026 08:59:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E1E3D25059
+	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Jan 2026 09:08:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rFUt/TI2CdoPQlNNmSZsJ/2OP1xqmkMNbLeSoMHkhCo=; b=muM4cJJtSuONhj
-	i617jzJULZAqTBZqZw46NE/Ouojh5tw75b9d0FN40tL0osYmTxD7SVCD5Y2EpU3XChCmaV70MF3rM
-	0fewSqM6ufXYKvwYVTdsCQl3hVz/6m2lut3pSGiLUFFHLoZFbdX8P2nTJxNNfHCVcDvvUdcvDNb3P
-	eHIPw/b8J6jMNJJqazdYPfUtmYVPzpMlB5EXuVjQEdmyXFEqQKGYN+280hfySXmeavwsPGPj0nt3x
-	PsAaf7lBKWj/C8rIlI+bg14oR6KE6gisPoREVjTQm0W/N1+rpGjhlq93Bgz0ocMx2p3HRUf84C/Eh
-	7hyaeQOTrOp4xzDNu4iA==;
+	List-Owner; bh=m9JCGPdWdQqH59AoikYgZn6lYS0FL+Xy84/ER6CBEqo=; b=Q6VBf1MdDcxTg6
+	rKW0p2f16jk3fHEmkayLfZRlv9CMJ+3a02y50UbHt00M/EmzQqzNL+HhJaC1M1aIICphxf1t2NBCz
+	8CYKYr3UjoOgdd1mi9h/w+uLn/kfw800yG7TCg1QWwuEBLa2pzMj+FaBTFU6PCzY2fiZgb/p/+opd
+	057H3VlBzrKgvzPT4lo4FDKdMLUKYCNHC9iC3Ns13dFKoqzekDCm7LdjcA0cdY4Zjj2RAnnD15Umj
+	J7/+yJ1eaQtwcfGqwdLbi0CGbWQzdvBl/DfnJ5pADHyYWH0noK4BlGAUBYeTVePg2y17z5nOnK9uS
+	qeOjV4TZVqJhRll2ICuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfDlZ-000000052ni-3Flb;
-	Mon, 12 Jan 2026 08:59:13 +0000
-Received: from mail-m3268.qiye.163.com ([220.197.32.68])
+	id 1vfDum-000000053NX-2rLn;
+	Mon, 12 Jan 2026 09:08:44 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfDlX-000000052mv-1TyV;
-	Mon, 12 Jan 2026 08:59:12 +0000
-Received: from [127.0.0.1] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 30502a33a;
-	Mon, 12 Jan 2026 16:59:05 +0800 (GMT+08:00)
-Message-ID: <1515a445-576a-4833-a604-c31062f7d3fa@rock-chips.com>
-Date: Mon, 12 Jan 2026 16:59:01 +0800
+	id 1vfDuk-000000053MM-05d2
+	for linux-rockchip@lists.infradead.org;
+	Mon, 12 Jan 2026 09:08:43 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 38DDF44312
+	for <linux-rockchip@lists.infradead.org>; Mon, 12 Jan 2026 09:08:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1DB39C2BCAF
+	for <linux-rockchip@lists.infradead.org>; Mon, 12 Jan 2026 09:08:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1768208919;
+	bh=aNusfbvcvvIrZ1GK6+N/BWnHjCznHNoKX1GEoskKxrw=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=rdBWZ5KpxcbS00ewOLmz6VAc+OOKmUqd4MYWGLtm00Io/3Yei+jlv+kNP9Q0vdsOb
+	 edfSASkvbc/gWY8nmaY2Jj0OjaSNAlRYniK/ApsqCWGIoSm1rSwQNomse/Y8kK9PwY
+	 9fK1LpyqJng2uyWvtJoHtzXpxMoPWdWryEAxO+Drt6FRu+LeNlD4omI+l+jga+Y98t
+	 gSNiUppaEZd8ROLEV1T8mUS3jQ2JcldlKpm941SCK3wzEcc+AiTU+s4dybHV9IxsSb
+	 av8ri27WpDQhLEcGNkVC6sL707k1MmpdjObys2j7sl7neUqYOKqqqs4wn637/vDV15
+	 tBfj/lw8836yw==
+Received: by mail-lj1-f177.google.com with SMTP id 38308e7fff4ca-38316d0c26eso29798211fa.2
+        for <linux-rockchip@lists.infradead.org>; Mon, 12 Jan 2026 01:08:39 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCWS81kkNqOF2UM7XTIBaex/4tK5IxI9qrD15p+nN4LEyKlPaS4hsxsFAGiTkrPc5+1Ry4vvH9FMZ8me5NwT5w==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxdRGg8MJFbLzbQMPuVOSl0S/KIu2DpcdCMnH6PHPBK1DFDRuq9
+	qum0NI/HocfYdfbRfRkepNgPxcm4BH3fIlGvHeDEfkQkDN/APHtYNDEUyl01fbrinzgIpG74tQs
+	sF8bE+dKGRXZmtXMewFahdN2Xw20dV/uTQXHeWEfa7Q==
+X-Google-Smtp-Source: AGHT+IGTR9k5RSHNIpBJL834Ww0X8J1ZdzRZ6Hp2uk9hnACvGJbrlxz/VASX4yp2KTPlt556o88PPVY7jr7CQVZ9CaA=
+X-Received: by 2002:a2e:a590:0:b0:383:213c:fc61 with SMTP id
+ 38308e7fff4ca-383213cff5cmr24069241fa.31.1768208917628; Mon, 12 Jan 2026
+ 01:08:37 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 1/3] dt-bindings: usb: Add binding for WCH CH334/CH335
- hub controller
-To: Krzysztof Kozlowski <krzk@kernel.org>, Chaoyi Chen <kernel@airkyi.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Quentin Schulz <quentin.schulz@cherry.de>, Jonas Karlman <jonas@kwiboo.se>,
- Hsun Lai <i@chainsx.cn>, John Clark <inindev@gmail.com>,
- Jimmy Hon <honyuenkwun@gmail.com>, Dragan Simic <dsimic@manjaro.org>,
- Michael Riesch <michael.riesch@collabora.com>,
- Peter Robinson <pbrobinson@gmail.com>, Alexey Charkov <alchark@gmail.com>,
- Shawn Lin <shawn.lin@rock-chips.com>,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
- Andy Yan <andy.yan@rock-chips.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org
-References: <20260112022823.91-1-kernel@airkyi.com>
- <20260112022823.91-2-kernel@airkyi.com>
- <20260112-lively-hallowed-beetle-fc15b2@quoll>
-Content-Language: en-US
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-In-Reply-To: <20260112-lively-hallowed-beetle-fc15b2@quoll>
-X-HM-Tid: 0a9bb16e281a03abkunma6637fdf5a04c7
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGk9CH1ZLQkxOGUlJHR0fSxhWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSUJNS0
-	pVSktLVUtZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=IRBny3i1tny0lQHFT1Kqi2Zrp+U9KRru8lqXZ51/YlMkyThb2yqMK/JpU6UZiwbqTyvgn1Kphp/9+DbwHiCbHAtEw/Zt8qxZxPtWhVzjSxypG3x/yor73Pjw6G9NOLVxvR4W5nmhMD0Lh9jTcTDZ3ffUIG8W8dFmxCtmFSqfKuU=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=ldRCPrtOBfLYItSV9yMq54CAANmfFEavMvsJtpmTTys=;
-	h=date:mime-version:subject:message-id:from;
+References: <20260106090011.21603-1-bartosz.golaszewski@oss.qualcomm.com> <aWGSQYCXP4R08koQ@venus>
+In-Reply-To: <aWGSQYCXP4R08koQ@venus>
+From: Bartosz Golaszewski <brgl@kernel.org>
+Date: Mon, 12 Jan 2026 10:08:25 +0100
+X-Gmail-Original-Message-ID: <CAMRc=Mf0tRxRrh7tn5OaDn3a47N_qvUcjO=zqbTi-GhY-Y9hOg@mail.gmail.com>
+X-Gm-Features: AZwV_QhDDYd3G5smy1ZRDQbejdmCu0WGBNa60Ja3hID1ca2J3AnWia5Ug7Yy3bU
+Message-ID: <CAMRc=Mf0tRxRrh7tn5OaDn3a47N_qvUcjO=zqbTi-GhY-Y9hOg@mail.gmail.com>
+Subject: Re: [PATCH] gpio: rockchip: mark the GPIO controller as sleeping
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>, Linus Walleij <linusw@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, linux-gpio@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, stable@vger.kernel.org, 
+	Marek Szyprowski <m.szyprowski@samsung.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260112_005911_584029_CE40EF70 
-X-CRM114-Status: GOOD (  16.67  )
+X-CRM114-CacheID: sfid-20260112_010842_091131_9523C9AA 
+X-CRM114-Status: GOOD (  27.89  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,121 +81,57 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Krzysztof,
-
-On 1/12/2026 4:50 PM, Krzysztof Kozlowski wrote:
-> On Mon, Jan 12, 2026 at 10:28:21AM +0800, Chaoyi Chen wrote:
->> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
->>
->> The WCH CH334/CH335[0] are USB2.0 protocol compliant 4-port USB HUB
->> controller chips, supporting USB2.0 high-speed and full-speed for
->> upstream ports, and USB2.0 high-speed 480Mbps, full-speed 12Mbps and
->> low-speed 1.5Mbps for downstream ports, supporting not only low-cost STT
->> mode (single TT schedules 4 downstream ports in time share), but also
->> supports high performance MTT mode (4 TTs each corresponding to 1 port,
->> concurrent processing).
->>
->> Add a device tree binding for it.
->>
->> [0]: https://www.wch-ic.com/downloads/CH334DS1_PDF.html
->>
->> Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
->> ---
->>  .../devicetree/bindings/usb/wch,ch334.yaml    | 65 +++++++++++++++++++
-> 
-> This must be separate patch. Do not combine independent subsystems into
-> one patchset.
-> 
-
-Okay, thank you for the reminder.
-
->>  1 file changed, 65 insertions(+)
->>  create mode 100644 Documentation/devicetree/bindings/usb/wch,ch334.yaml
->>
->> diff --git a/Documentation/devicetree/bindings/usb/wch,ch334.yaml b/Documentation/devicetree/bindings/usb/wch,ch334.yaml
->> new file mode 100644
->> index 000000000000..2eeb92f25b4c
->> --- /dev/null
->> +++ b/Documentation/devicetree/bindings/usb/wch,ch334.yaml
->> @@ -0,0 +1,65 @@
->> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
->> +%YAML 1.2
->> +---
->> +$id: http://devicetree.org/schemas/usb/wch,ch334.yaml#
->> +$schema: http://devicetree.org/meta-schemas/core.yaml#
->> +
->> +title: WCH CH334/CH335 USB 2.0 Hub Controller
->> +
->> +maintainers:
->> +  - Chaoyi Chen <kernel@airkyi.com>
->> +
->> +allOf:
->> +  - $ref: usb-hub.yaml#
->> +
->> +properties:
->> +  compatible:
->> +    enum:
->> +      - usb1a86,8091
->> +
->> +  reg: true
->> +
->> +  reset-gpios:
->> +    description: GPIO controlling the RESET# pin.
->> +
->> +  vdd-supply:
->> +    description:
->> +      The regulator that provides 3.3V core power to the hub.
->> +
->> +  vdd2-supply:
->> +    description:
->> +      The regulator that provides 3.3V or 5V power to the hub.
->> +
->> +  ports:
->> +    $ref: /schemas/graph.yaml#/properties/ports
->> +
->> +    patternProperties:
->> +      '^port@':
->> +        $ref: /schemas/graph.yaml#/properties/port
->> +
->> +        properties:
->> +          reg:
->> +            minimum: 1
->> +            maximum: 4
->> +
->> +required:
->> +  - compatible
->> +  - reg
->> +
->> +additionalProperties: false
->> +
->> +examples:
->> +  - |
->> +    #include <dt-bindings/gpio/gpio.h>
->> +    usb {
->> +        dr_mode = "host";
->> +        #address-cells = <1>;
->> +        #size-cells = <0>;
->> +
->> +        hub: hub@1 {
->> +            compatible = "usb1a86,8091";
->> +            reg = <1>;
->> +            reset-gpios = <&gpio0 2 GPIO_ACTIVE_HIGH>;
-> 
-> Are you sure?
-
-I guess what you're concerned about here is the polarity? 
-If that's the case, then there's no problem.
-
--- 
-Best, 
-Chaoyi
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gU2F0LCBKYW4gMTAsIDIwMjYgYXQgMTI6NTXigK9BTSBTZWJhc3RpYW4gUmVpY2hlbAo8c2Vi
+YXN0aWFuLnJlaWNoZWxAY29sbGFib3JhLmNvbT4gd3JvdGU6Cj4KPiBIaSwKPgo+IE9uIFR1ZSwg
+SmFuIDA2LCAyMDI2IGF0IDEwOjAwOjExQU0gKzAxMDAsIEJhcnRvc3ogR29sYXN6ZXdza2kgd3Jv
+dGU6Cj4gPiBUaGUgR1BJTyBjb250cm9sbGVyIGlzIGNvbmZpZ3VyZWQgYXMgbm9uLXNsZWVwaW5n
+IGJ1dCBpdCB1c2VzIGdlbmVyaWMKPiA+IHBpbmN0cmwgaGVscGVycyB3aGljaCB1c2UgYSBtdXRl
+eCBmb3Igc3luY2hyb25pemF0aW9uLgo+ID4KPiA+IFRoaXMgY2FuIGNhdXNlIHRoZSBmb2xsb3dp
+bmcgbG9ja2RlcCBzcGxhdCB3aXRoIHNoYXJlZCBHUElPcyBlbmFibGVkIG9uCj4gPiBib2FyZHMg
+d2hpY2ggaGF2ZSBtdWx0aXBsZSBkZXZpY2VzIHVzaW5nIHRoZSBzYW1lIEdQSU86Cj4gPgoKW3Nu
+aXBdCgo+ID4KPiA+IEZpeGVzOiA5MzZlZTI2NzVlZWUgKCJncGlvL3JvY2tjaGlwOiBhZGQgZHJp
+dmVyIGZvciByb2NrY2hpcCBncGlvIikKPiA+IENjOiBzdGFibGVAdmdlci5rZXJuZWwub3JnCj4g
+PiBSZXBvcnRlZC1ieTogTWFyZWsgU3p5cHJvd3NraSA8bS5zenlwcm93c2tpQHNhbXN1bmcuY29t
+Pgo+ID4gQ2xvc2VzOiBodHRwczovL2xvcmUua2VybmVsLm9yZy9hbGwvZDAzNWZjMjktM2IwMy00
+Y2Q2LWI4ZWMtMDAxZjkzNTQwYmM2QHNhbXN1bmcuY29tLwo+ID4gU2lnbmVkLW9mZi1ieTogQmFy
+dG9zeiBHb2xhc3pld3NraSA8YmFydG9zei5nb2xhc3pld3NraUBvc3MucXVhbGNvbW0uY29tPgo+
+ID4gLS0tCj4gPiAgZHJpdmVycy9ncGlvL2dwaW8tcm9ja2NoaXAuYyB8IDEgKwo+ID4gIDEgZmls
+ZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKQo+ID4KPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dw
+aW8vZ3Bpby1yb2NrY2hpcC5jIGIvZHJpdmVycy9ncGlvL2dwaW8tcm9ja2NoaXAuYwo+ID4gaW5k
+ZXggNDcxNzRlYjNiYTc2Li5iYWUyMDYxZjE1ZmMgMTAwNjQ0Cj4gPiAtLS0gYS9kcml2ZXJzL2dw
+aW8vZ3Bpby1yb2NrY2hpcC5jCj4gPiArKysgYi9kcml2ZXJzL2dwaW8vZ3Bpby1yb2NrY2hpcC5j
+Cj4gPiBAQCAtNTkzLDYgKzU5Myw3IEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfZ3Bpb2xpYl9yZWdp
+c3RlcihzdHJ1Y3Qgcm9ja2NoaXBfcGluX2JhbmsgKmJhbmspCj4gPiAgICAgICBnYy0+bmdwaW8g
+PSBiYW5rLT5ucl9waW5zOwo+ID4gICAgICAgZ2MtPmxhYmVsID0gYmFuay0+bmFtZTsKPiA+ICAg
+ICAgIGdjLT5wYXJlbnQgPSBiYW5rLT5kZXY7Cj4gPiArICAgICBnYy0+Y2FuX3NsZWVwID0gdHJ1
+ZTsKPgo+IFRoaXMgbWVhbnMgYWxsIG9wZXJhdGlvbnMgYXJlIG1hcmtlZCBhcyBjYW5fc2xlZXAs
+IGV2ZW4gdGhvdWdoCj4gcGluY3RybCBvcGVyYXRpb25zIGFyZSBvbmx5IHVzZWQgZm9yIHRoZSBk
+aXJlY3Rpb24gc2V0dGluZy4KPiBJLmUuIHRoZSBjb21tb24gZ2V0L3NldCBvcGVyYXRpb25zIGFs
+d2F5cyB3b3JrZWQgaW4gYXRvbWljIG1vZGUsCj4gYnV0IG5vdyBjb21wbGFpbi4gU2VlIGZvciBl
+eGFtcGxlOgo+Cj4gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvYWxsLzIwMjYwMTA4LW1lZGlhLXN5
+bm9wc3lzLWhkbWlyeC1maXgtZ3Bpby1jYW5zbGVlcC12MS0xLTM1NzA1MThkOGJhYkBrZXJuZWwu
+b3JnLwo+Cj4gSXQncyBub3QgYSBiaWcgaXNzdWUgZm9yIHRoZSBoZG1pcnggZHJpdmVyIHNwZWNp
+ZmljYWxseSwgYnV0IEkgd29uZGVyCj4gaG93IG1hbnkgbW9yZSAobGVzcyBvZnRlbiB0ZXN0ZWQp
+IHJvY2tjaGlwIGRyaXZlcnMgdXNlIEdQSU9zIGZyb20gdGhlaXIKPiBJUlEgaGFuZGxlci4KPgo+
+IENvbnNpZGVyaW5nIHNldHRpbmcgb3IgZ2V0dGluZyB0aGUgR1BJTyBmcm9tIGF0b21pYyBjb250
+ZXh0IGlzIG11Y2gKPiBtb3JlIGNvbW1vbiB0aGFuIGNoYW5naW5nIHRoZSBkaXJlY3Rpb24gLSBp
+cyB0aGVyZSBzb21lIHdheSB0bwo+IGRlc2NyaWJlIHRoZSBzbGVlcCBiZWhhdmlvciBpbiBhIG1v
+cmUgc3BlY2lmaWMgd2F5IGluIHRoZSBHUElPCj4gY29udHJvbGxlcj8KPgoKTm8sIHRoZXJlJ3Mg
+bm8gc3VjaCBzd2l0Y2ggYXQgdGhlIG1vbWVudC4gVGhpcyBpcyBiZWNhdXNlIHRoZXJlIGFyZQpw
+YXRocyB0aGF0IHdlIGNhbiB0YWtlLCB3aGVyZSB3ZSAqZG8qIGVuZCB1cCBzZXR0aW5nIGRpcmVj
+dGlvbiBmcm9tCmdwaW9kX3NldF92YWx1ZSgpLiBGb3IgaW5zdGFuY2U6CgpncGlvZF9zZXRfdmFs
+dWUoKQogIGdwaW9kX3NldF92YWx1ZV9ub2NoZWNrKCkKICAgIGdwaW9fc2V0X29wZW5fZHJhaW5f
+dmFsdWVfY29tbWl0KCkKICAgICAgZ3Bpb2NoaXBfZGlyZWN0aW9uX291dHB1dCgpCgpJJ20gYWZy
+YWlkLCBmb3IgY29ycmVjdG5lc3MsIGl0IGhhcyB0byBiZSBlaXRoZXIgc2xlZXBpbmcsIG9yIG5v
+dC4gSQp3b3VsZCBsb3ZlIC0gYXQgc29tZSBwb2ludCAtIHRvIG1ha2UgcGluY3RybCBtb3N0bHkg
+bG9ja2xlc3Mgd2l0aApTUkNVLCBsaWtlIHdlIGRpZCB3aXRoIEdQSU8uIFRoYXQgd291bGQgc29s
+dmUgdGhpcyBpc3N1ZSBjb3JyZWN0bHkuCkJ1dCB1bnRpbCB0aGVuLCBJJ20gYWZyYWlkIHdlIG5l
+ZWQgdG8ga2VlcCBhIGNoaXAtZ2xvYmFsIHN3aXRjaCBmb3IKc2xlZXBpbmcuCgpCYXJ0b3N6Cgpf
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2Nr
+Y2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRw
+Oi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
