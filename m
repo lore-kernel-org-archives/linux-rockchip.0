@@ -4,81 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEEC8D232D7
-	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Jan 2026 10:16:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E17FDC9EC67
+	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Jan 2026 10:29:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MwtJYLxBewh8hYAIb/Qt1iX2ug2nMMD2MYVL5U3l6+c=; b=1ZgHJFrouc95po
-	ZJhC3v3o4szqIA0d/8f3oQFLJNZ7JGVVG6g8hz6AWqkzmXhIptJq40NVBl8cqZXassOmjpePw7m2z
-	lvj4NNyBHz/ODCTWmNbw6HoFgWrDKQj/JUDHcco/kNmOjn2tjVI7SdYiBV/doE5Y8vdwjdxqHEVAK
-	maJOWJSAgUya0AbWJQwQtUOEkL1Xfy4CJrYq8Vp17u3jmpbPxtuyVHMLtka9jioYGee34nR85ag/v
-	4smQAO7K+s7TTnq8yIsi1eNZd89EMfc3ds2OO1hjpl1OSF6xLLIJSwsRoKhKqWDslzY6MtidhMMeo
-	FLSjxlBA5mDbBPY3G9uw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=VeeMPvr1KNdlC/2G9jN+Wf7YVK0zokQ96Guq5bB2DhY=; b=RWNf/7bOTTZHtp
+	Wd2fyrhIbeceHU7SMOyGjei/fWio0YJf0mejyLLEw9D5DH9/MsgiQaFPOfxToc4WgfA/i2UUg169o
+	nbiowFBRNtk9zP96zbErY/JnXIxXV8usufbHzx+scqY1NGWvbBxy2HDNLBFm1Ek2jtTki/SzMBRty
+	WA9g5UJ73mkC8PK3fA0/obLsj1MycjHZe2/lXbLeMn+zSBeBNq+T1Nk/hhRzQXmu5zUwXhhLeDb4c
+	LYIVLf3P4VHx7MQp1eEcsdYcob+UAZTjmCVhddjSTa2ojFpitEirtlUT2jMN69+xPL1I05Phn3yBA
+	KUrZV75nJlZFNRp3XP5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfEyC-000000058GU-32lv;
-	Mon, 12 Jan 2026 10:16:20 +0000
-Received: from mgamail.intel.com ([198.175.65.9])
+	id 1vfFAj-00000005AhE-1JTK;
+	Mon, 12 Jan 2026 10:29:17 +0000
+Received: from mail-m15593.qiye.163.com ([101.71.155.93])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfEyA-000000058Eq-2KA2
-	for linux-rockchip@lists.infradead.org;
-	Mon, 12 Jan 2026 10:16:19 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1768212979; x=1799748979;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=H8gp41/PvMnd7tQ04BGrl2ztpsHRk7DIXiv5/QpR4qY=;
-  b=jr9R+c37TmxF0uyh+VMJrpbS1vpHP9rVhSu8WXhrsgJZjW/2POakyrJk
-   DugNQBu7Q3XV0glvdA1YCoSaV2YZrJtvWXnYzVART+yTGILO93MgMeeBP
-   9WIiHwN7l7awHZaPiCvW9qmnE6zpHPz0glv+SsziO3lyI5k4GWX2kz7uA
-   bKSo9VyWAqjFCLu2CFqIQ6JEcvniCjHVV0F9Kcv4MgsZXx+xxYhikoLrH
-   qOaTDHzo3uSEjvd9EAUVkhwH2cvKUJFqPespeGWkzkw+PJwoYulHFjnmF
-   G/PhsXxcYp6mOc/LVAVDfKClO0pAufy2NVokbhz6hpzLO5ZG9hQ7L02Av
-   Q==;
-X-CSE-ConnectionGUID: qgwoonrMTmeZpElvkwUQtQ==
-X-CSE-MsgGUID: B22saM1NRgSLKbrwtvbpfQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11668"; a="92151268"
-X-IronPort-AV: E=Sophos;i="6.21,219,1763452800"; 
-   d="scan'208";a="92151268"
-Received: from fmviesa008.fm.intel.com ([10.60.135.148])
-  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Jan 2026 02:16:16 -0800
-X-CSE-ConnectionGUID: kio9i+jfSvSXaI/JTm4KcQ==
-X-CSE-MsgGUID: lWCYiL/hQqyBbhD2t3nNQg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,219,1763452800"; 
-   d="scan'208";a="204337417"
-Received: from lkp-server01.sh.intel.com (HELO 765f4a05e27f) ([10.239.97.150])
-  by fmviesa008.fm.intel.com with ESMTP; 12 Jan 2026 02:16:12 -0800
-Received: from kbuild by 765f4a05e27f with local (Exim 4.98.2)
-	(envelope-from <lkp@intel.com>)
-	id 1vfEy2-00000000DFc-1HOY;
-	Mon, 12 Jan 2026 10:16:10 +0000
-Date: Mon, 12 Jan 2026 18:15:38 +0800
-From: kernel test robot <lkp@intel.com>
-To: Shawn Lin <shawn.lin@rock-chips.com>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Bjorn Helgaas <helgaas@kernel.org>
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	linux-rockchip@lists.infradead.org, linux-pci@vger.kernel.org,
-	linux-trace-kernel@vger.kernel.org, linux-doc@vger.kernel.org,
-	Steven Rostedt <rostedt@goodmis.org>,
-	Masami Hiramatsu <mhiramat@kernel.org>,
-	Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH v3 3/3] PCI: dw-rockchip: Add pcie_ltssm_state_transition
- trace support
-Message-ID: <202601121712.JbsMAjDZ-lkp@intel.com>
-References: <1768180800-63364-4-git-send-email-shawn.lin@rock-chips.com>
+	id 1vfFAf-00000005AgK-26jE;
+	Mon, 12 Jan 2026 10:29:16 +0000
+Received: from localhost.localdomain (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 3053af572;
+	Mon, 12 Jan 2026 18:29:06 +0800 (GMT+08:00)
+From: Joseph Chen <chenjh@rock-chips.com>
+To: Conor Dooley <conor+dt@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Lee Jones <lee@kernel.org>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>,
+	Rob Herring <robh@kernel.org>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	Joseph Chen <chenjh@rock-chips.com>
+Subject: [PATCH v2 0/3] Add RK801 PMIC support
+Date: Mon, 12 Jan 2026 18:28:46 +0800
+Message-Id: <20260112102849.1479-1-chenjh@rock-chips.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1768180800-63364-4-git-send-email-shawn.lin@rock-chips.com>
+X-HM-Tid: 0a9bb1c092a509d2kunm68a7e29c4d1efc
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGk0ZT1ZCQ0NDHhpCSExMTBhWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=IjUolPXGBI32U2/6Hp1ZxtsmY1GZzhC6zNLHxQc+MdRk5m0mCm9dbMm2Xh6FXnQPIOsVDm+3YyuIil8NjbLCJW6Qu0zzCOBJs9EIwyFniA8nlH4m0+aWe0+cLkLiiIZJ+WU7f28jHkCBzqjHeghND+jel6tT5bGanADyBtv+kQ0=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=JANRds0JTJSP9J51OSj0NJw6bCvgunMVHLtK63EJKKo=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260112_021618_640626_AA5E15D4 
-X-CRM114-Status: GOOD (  15.08  )
+X-CRM114-CacheID: sfid-20260112_022914_906514_9771F0D1 
+X-CRM114-Status: GOOD (  13.01  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,97 +76,53 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Shawn,
+This patch series adds support for the Rockchip RK801 Power Management
+Integrated Circuit (PMIC) to the Linux kernel.
 
-kernel test robot noticed the following build errors:
+The RK801 is a PMIC designed for multimedia and handheld devices. It
+includes:
+- 4 BUCK regulators (DCDC)
+- 2 LDO regulators
+- 1 SWITCH regulator
+- Interrupt support for power key events
 
-[auto build test ERROR on pci/next]
-[also build test ERROR on next-20260109]
-[cannot apply to pci/for-linus trace/for-next mani-mhi/mhi-next linus/master v6.19-rc5]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+The implementation follows the existing rk808 MFD driver architecture
+and integrates RK801 as a new variant in the RK8XX family.
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Shawn-Lin/PCI-trace-Add-PCI-controller-LTSSM-transition-tracepoint/20260112-100141
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/pci/pci.git next
-patch link:    https://lore.kernel.org/r/1768180800-63364-4-git-send-email-shawn.lin%40rock-chips.com
-patch subject: [PATCH v3 3/3] PCI: dw-rockchip: Add pcie_ltssm_state_transition trace support
-config: arm64-randconfig-004-20260112 (https://download.01.org/0day-ci/archive/20260112/202601121712.JbsMAjDZ-lkp@intel.com/config)
-compiler: clang version 18.1.8 (https://github.com/llvm/llvm-project 3b5b5c1ec4a3095ab096dd780e84d7ab81f3d7ff)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260112/202601121712.JbsMAjDZ-lkp@intel.com/reproduce)
+Patch 1 adds the device tree binding documentation for RK801, describing
+the compatible string, regulators configuration, and example usage.
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202601121712.JbsMAjDZ-lkp@intel.com/
+Patch 2 adds the MFD core support for RK801, including device detection
+and register definitions.
 
-All errors (new ones prefixed by >>):
+Patch 3 adds the regulator driver support for RK801, implementing the
+4 BUCK regulators, 2 LDO regulators, and 1 SWITCH regulator.
 
->> drivers/pci/controller/dwc/pcie-dw-rockchip.c:264:6: error: call to undeclared function 'dw_pcie_ltssm_status_string'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-     264 |                                         dw_pcie_ltssm_status_string(state),
-         |                                         ^
->> drivers/pci/controller/dwc/pcie-dw-rockchip.c:264:6: error: incompatible integer to pointer conversion passing 'int' to parameter of type 'const char *' [-Wint-conversion]
-     264 |                                         dw_pcie_ltssm_status_string(state),
-         |                                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   include/trace/events/pci_controller.h:20:45: note: passing argument to parameter 'state' here
-      20 |         TP_PROTO(const char *dev_name, const char *state, u32 rate),
-         |                                                    ^
-   2 errors generated.
+Changes in v2:
+- Include all necessary To/Cc entries
+- Rename pmic/regulator names from uppercase to lowercase(dcdc[1-4]|ldo[1-2]|switch)
+  to align with DT coding style
+- Drop 'rockchip,system-power-controller'
+- Remove unused 'pwrctrl-gpios' from DT binding example
+- Split regulator support into a separate patch (was part of mfd patch in v1)
 
+Joseph Chen (3):
+  dt-bindings: mfd: Add rk801 binding
+  mfd: rk8xx: Add RK801 support
+  regulator: rk808: Add RK801 support
 
-vim +/dw_pcie_ltssm_status_string +264 drivers/pci/controller/dwc/pcie-dw-rockchip.c
+ .../bindings/mfd/rockchip,rk801.yaml          | 197 ++++++++++++++
+ drivers/mfd/Kconfig                           |   6 +-
+ drivers/mfd/rk8xx-core.c                      |  81 ++++++
+ drivers/mfd/rk8xx-i2c.c                       |  33 ++-
+ drivers/regulator/rk808-regulator.c           | 243 ++++++++++++++++++
+ include/linux/mfd/rk808.h                     | 118 +++++++++
+ 6 files changed, 674 insertions(+), 4 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/mfd/rockchip,rk801.yaml
 
-   225	
-   226	#ifdef CONFIG_TRACING
-   227	static void rockchip_pcie_ltssm_trace_work(struct work_struct *work)
-   228	{
-   229		struct rockchip_pcie *rockchip = container_of(work, struct rockchip_pcie,
-   230							trace_work.work);
-   231		struct dw_pcie *pci = &rockchip->pci;
-   232		enum dw_pcie_ltssm state;
-   233		u32 i, l1ss, prev_val = DW_PCIE_LTSSM_UNKNOWN, rate, val;
-   234	
-   235		for (i = 0; i < PCIE_DBG_LTSSM_HISTORY_CNT; i++) {
-   236			val = rockchip_pcie_readl_apb(rockchip, PCIE_CLIENT_DBG_FIFO_STATUS);
-   237			rate = FIELD_GET(PCIE_DBG_FIFO_RATE_MASK, val);
-   238			l1ss = FIELD_GET(PCIE_DBG_FIFO_L1SUB_MASK, val);
-   239			val = FIELD_GET(PCIE_LTSSM_STATUS_MASK, val);
-   240	
-   241			/*
-   242			 * Hardware Mechanism: The ring FIFO employs two tracking counters:
-   243			 * - 'last-read-point': maintains the user's last read position
-   244			 * - 'last-valid-point': tracks the hardware's last state update
-   245			 *
-   246			 * Software Handling: When two consecutive LTSSM states are identical,
-   247			 * it indicates invalid subsequent data in the FIFO. In this case, we
-   248			 * skip the remaining entries. The dual-counter design ensures that on
-   249			 * the next state transition, reading can resume from the last user
-   250			 * position.
-   251			 */
-   252			if ((i > 0 && val == prev_val) || val > DW_PCIE_LTSSM_RCVRY_EQ3)
-   253				break;
-   254	
-   255			state = prev_val = val;
-   256			if (val == DW_PCIE_LTSSM_L1_IDLE) {
-   257				if (l1ss == 2)
-   258					state = DW_PCIE_LTSSM_L1_2;
-   259				else if (l1ss == 1)
-   260					state = DW_PCIE_LTSSM_L1_1;
-   261			}
-   262	
-   263			trace_pcie_ltssm_state_transition(dev_name(pci->dev),
- > 264						dw_pcie_ltssm_status_string(state),
-   265						((rate + 1) > pci->max_link_speed) ?
-   266						PCI_SPEED_UNKNOWN : PCIE_SPEED_2_5GT + rate);
-   267		}
-   268	
-   269		schedule_delayed_work(&rockchip->trace_work, msecs_to_jiffies(5000));
-   270	}
-   271	
+--
+2.25.1
 
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
 
 _______________________________________________
 Linux-rockchip mailing list
