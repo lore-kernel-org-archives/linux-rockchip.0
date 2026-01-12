@@ -4,80 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E854D232D3
-	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Jan 2026 09:32:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEEC8D232D7
+	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Jan 2026 10:16:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rxF53P77rWwbKNg/enOfReD3rXrFizu5xjhl9IGM1uk=; b=pJ31UFKD0UCw4t
-	5RCjjJNzznRuyZ9WmeucKpS7336dnSMc4/8HMUu3hut4XwsDz8U/vxEnoz025vjhJLibSwgcufovf
-	JkkvK2iERHql0QWelFyJ8X+dwQ0aoSpf6r3hf2okG3cARGzGGCaiZv107hYjSKax4P3iCh5lsJaVy
-	cML+PPKezx0M8K6yrw1JaH5VpvlRly80VV79gvTT5GZIkxN1kxylOkY93PXcC+ik5B4pqiuUbwNPz
-	PG8HqHN7c+WB7buT8mKyR8cmufe9aJ+uSHT7FlrSOIMufN3LEZ91BmTotfRWEl3xaS7QOAbfZCDR0
-	Gou/6OAtBBvEhw9DJLVw==;
+	List-Owner; bh=MwtJYLxBewh8hYAIb/Qt1iX2ug2nMMD2MYVL5U3l6+c=; b=1ZgHJFrouc95po
+	ZJhC3v3o4szqIA0d/8f3oQFLJNZ7JGVVG6g8hz6AWqkzmXhIptJq40NVBl8cqZXassOmjpePw7m2z
+	lvj4NNyBHz/ODCTWmNbw6HoFgWrDKQj/JUDHcco/kNmOjn2tjVI7SdYiBV/doE5Y8vdwjdxqHEVAK
+	maJOWJSAgUya0AbWJQwQtUOEkL1Xfy4CJrYq8Vp17u3jmpbPxtuyVHMLtka9jioYGee34nR85ag/v
+	4smQAO7K+s7TTnq8yIsi1eNZd89EMfc3ds2OO1hjpl1OSF6xLLIJSwsRoKhKqWDslzY6MtidhMMeo
+	FLSjxlBA5mDbBPY3G9uw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfEHX-000000055gx-0kmU;
-	Mon, 12 Jan 2026 09:32:15 +0000
-Received: from mgamail.intel.com ([192.198.163.7])
+	id 1vfEyC-000000058GU-32lv;
+	Mon, 12 Jan 2026 10:16:20 +0000
+Received: from mgamail.intel.com ([198.175.65.9])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfEHU-000000055gB-3CSz
+	id 1vfEyA-000000058Eq-2KA2
 	for linux-rockchip@lists.infradead.org;
-	Mon, 12 Jan 2026 09:32:14 +0000
+	Mon, 12 Jan 2026 10:16:19 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1768210333; x=1799746333;
+  t=1768212979; x=1799748979;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=MgXZAjy85l00z9kaenrBTZjVx8p9vhxJkgEZ/Kz95N8=;
-  b=Lzd5eHxaiXukmUsGe2oYRrCrXTXP3SlUtO4E9UzGLpG8jTOOpqrV7lG/
-   eFKjOCD29Snevs5U8Lcjz/HIjua+4PLH0A3BnkkBSrpSG+RQKrioQsbb8
-   TLM3xRCshZDhqJ2iNFLJM53RizSNS9HdVTaAJrnK7lTGtQXg/HSD4QIxg
-   fFJAexCFRAwuHzmfBzb2snB97xiRSAcaEcYyrOQIsHce242BGMi+m0Vu3
-   xC7l1lmqzN2cF/59DjLjGegJgv9mEzo4moeNt6/Sc82o5ljIYoY84bdTP
-   JR2WH/ShLPPb1JiUyulJEhKZNMXAepuI3BGjkehLetkS4spbgPO3fSsU7
+  bh=H8gp41/PvMnd7tQ04BGrl2ztpsHRk7DIXiv5/QpR4qY=;
+  b=jr9R+c37TmxF0uyh+VMJrpbS1vpHP9rVhSu8WXhrsgJZjW/2POakyrJk
+   DugNQBu7Q3XV0glvdA1YCoSaV2YZrJtvWXnYzVART+yTGILO93MgMeeBP
+   9WIiHwN7l7awHZaPiCvW9qmnE6zpHPz0glv+SsziO3lyI5k4GWX2kz7uA
+   bKSo9VyWAqjFCLu2CFqIQ6JEcvniCjHVV0F9Kcv4MgsZXx+xxYhikoLrH
+   qOaTDHzo3uSEjvd9EAUVkhwH2cvKUJFqPespeGWkzkw+PJwoYulHFjnmF
+   G/PhsXxcYp6mOc/LVAVDfKClO0pAufy2NVokbhz6hpzLO5ZG9hQ7L02Av
    Q==;
-X-CSE-ConnectionGUID: izRoqeHwRdS7ZlOlEUXl2A==
-X-CSE-MsgGUID: 1xSRh626Sg2YVnwFgHo5Dg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11668"; a="94958898"
+X-CSE-ConnectionGUID: qgwoonrMTmeZpElvkwUQtQ==
+X-CSE-MsgGUID: B22saM1NRgSLKbrwtvbpfQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11668"; a="92151268"
 X-IronPort-AV: E=Sophos;i="6.21,219,1763452800"; 
-   d="scan'208";a="94958898"
-Received: from fmviesa004.fm.intel.com ([10.60.135.144])
-  by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Jan 2026 01:32:11 -0800
-X-CSE-ConnectionGUID: jMOZdLVvSzGQ58D4KJ2F3w==
-X-CSE-MsgGUID: oaB/2rsJR962V+4WXXAhsg==
+   d="scan'208";a="92151268"
+Received: from fmviesa008.fm.intel.com ([10.60.135.148])
+  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Jan 2026 02:16:16 -0800
+X-CSE-ConnectionGUID: kio9i+jfSvSXaI/JTm4KcQ==
+X-CSE-MsgGUID: lWCYiL/hQqyBbhD2t3nNQg==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.21,219,1763452800"; 
-   d="scan'208";a="208880671"
+   d="scan'208";a="204337417"
 Received: from lkp-server01.sh.intel.com (HELO 765f4a05e27f) ([10.239.97.150])
-  by fmviesa004.fm.intel.com with ESMTP; 12 Jan 2026 01:32:09 -0800
+  by fmviesa008.fm.intel.com with ESMTP; 12 Jan 2026 02:16:12 -0800
 Received: from kbuild by 765f4a05e27f with local (Exim 4.98.2)
 	(envelope-from <lkp@intel.com>)
-	id 1vfEHO-00000000DCa-3j4D;
-	Mon, 12 Jan 2026 09:32:06 +0000
-Date: Mon, 12 Jan 2026 17:31:55 +0800
+	id 1vfEy2-00000000DFc-1HOY;
+	Mon, 12 Jan 2026 10:16:10 +0000
+Date: Mon, 12 Jan 2026 18:15:38 +0800
 From: kernel test robot <lkp@intel.com>
 To: Shawn Lin <shawn.lin@rock-chips.com>,
 	Manivannan Sadhasivam <mani@kernel.org>,
 	Bjorn Helgaas <helgaas@kernel.org>
-Cc: oe-kbuild-all@lists.linux.dev, linux-rockchip@lists.infradead.org,
-	linux-pci@vger.kernel.org, linux-trace-kernel@vger.kernel.org,
-	linux-doc@vger.kernel.org, Steven Rostedt <rostedt@goodmis.org>,
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+	linux-rockchip@lists.infradead.org, linux-pci@vger.kernel.org,
+	linux-trace-kernel@vger.kernel.org, linux-doc@vger.kernel.org,
+	Steven Rostedt <rostedt@goodmis.org>,
 	Masami Hiramatsu <mhiramat@kernel.org>,
 	Shawn Lin <shawn.lin@rock-chips.com>
 Subject: Re: [PATCH v3 3/3] PCI: dw-rockchip: Add pcie_ltssm_state_transition
  trace support
-Message-ID: <202601121734.epct0ieX-lkp@intel.com>
+Message-ID: <202601121712.JbsMAjDZ-lkp@intel.com>
 References: <1768180800-63364-4-git-send-email-shawn.lin@rock-chips.com>
 MIME-Version: 1.0
 Content-Disposition: inline
 In-Reply-To: <1768180800-63364-4-git-send-email-shawn.lin@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260112_013212_822595_8A6E1F8A 
-X-CRM114-Status: GOOD (  18.12  )
+X-CRM114-CacheID: sfid-20260112_021618_640626_AA5E15D4 
+X-CRM114-Status: GOOD (  15.08  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,10 +97,10 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Hi Shawn,
 
-kernel test robot noticed the following build warnings:
+kernel test robot noticed the following build errors:
 
-[auto build test WARNING on pci/next]
-[also build test WARNING on next-20260109]
+[auto build test ERROR on pci/next]
+[also build test ERROR on next-20260109]
 [cannot apply to pci/for-linus trace/for-next mani-mhi/mhi-next linus/master v6.19-rc5]
 [If your patch is applied to the wrong git tree, kindly drop us a note.
 And when submitting patch, we suggest to use '--base' as documented in
@@ -109,52 +110,30 @@ url:    https://github.com/intel-lab-lkp/linux/commits/Shawn-Lin/PCI-trace-Add-P
 base:   https://git.kernel.org/pub/scm/linux/kernel/git/pci/pci.git next
 patch link:    https://lore.kernel.org/r/1768180800-63364-4-git-send-email-shawn.lin%40rock-chips.com
 patch subject: [PATCH v3 3/3] PCI: dw-rockchip: Add pcie_ltssm_state_transition trace support
-config: arm64-randconfig-002-20260112 (https://download.01.org/0day-ci/archive/20260112/202601121734.epct0ieX-lkp@intel.com/config)
-compiler: aarch64-linux-gcc (GCC) 8.5.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260112/202601121734.epct0ieX-lkp@intel.com/reproduce)
+config: arm64-randconfig-004-20260112 (https://download.01.org/0day-ci/archive/20260112/202601121712.JbsMAjDZ-lkp@intel.com/config)
+compiler: clang version 18.1.8 (https://github.com/llvm/llvm-project 3b5b5c1ec4a3095ab096dd780e84d7ab81f3d7ff)
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260112/202601121712.JbsMAjDZ-lkp@intel.com/reproduce)
 
 If you fix the issue in a separate patch/commit (i.e. not just a new version of
 the same patch/commit), kindly add following tags
 | Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202601121734.epct0ieX-lkp@intel.com/
+| Closes: https://lore.kernel.org/oe-kbuild-all/202601121712.JbsMAjDZ-lkp@intel.com/
 
-All warnings (new ones prefixed by >>):
+All errors (new ones prefixed by >>):
 
-   drivers/pci/controller/dwc/pcie-dw-rockchip.c: In function 'rockchip_pcie_ltssm_trace_work':
-   drivers/pci/controller/dwc/pcie-dw-rockchip.c:264:6: error: implicit declaration of function 'dw_pcie_ltssm_status_string'; did you mean 'dw_pcie_start_link'? [-Werror=implicit-function-declaration]
-         dw_pcie_ltssm_status_string(state),
-         ^~~~~~~~~~~~~~~~~~~~~~~~~~~
-         dw_pcie_start_link
->> drivers/pci/controller/dwc/pcie-dw-rockchip.c:264:6: warning: passing argument 2 of 'trace_pcie_ltssm_state_transition' makes pointer from integer without a cast [-Wint-conversion]
-         dw_pcie_ltssm_status_string(state),
-         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   In file included from include/trace/events/pci_controller.h:9,
-                    from drivers/pci/controller/dwc/pcie-dw-rockchip.c:26:
-   include/trace/events/pci_controller.h:20:45: note: expected 'const char *' but argument is of type 'int'
-     TP_PROTO(const char *dev_name, const char *state, u32 rate),
-                                    ~~~~~~~~~~~~^~~~~
-   include/linux/tracepoint.h:288:34: note: in definition of macro '__DECLARE_TRACE'
-     static inline void trace_##name(proto)    \
-                                     ^~~~~
-   include/linux/tracepoint.h:494:24: note: in expansion of macro 'PARAMS'
-     __DECLARE_TRACE(name, PARAMS(proto), PARAMS(args),  \
-                           ^~~~~~
-   include/linux/tracepoint.h:632:2: note: in expansion of macro 'DECLARE_TRACE_EVENT'
-     DECLARE_TRACE_EVENT(name, PARAMS(proto), PARAMS(args))
-     ^~~~~~~~~~~~~~~~~~~
-   include/linux/tracepoint.h:632:28: note: in expansion of macro 'PARAMS'
-     DECLARE_TRACE_EVENT(name, PARAMS(proto), PARAMS(args))
-                               ^~~~~~
-   include/trace/events/pci_controller.h:19:1: note: in expansion of macro 'TRACE_EVENT'
-    TRACE_EVENT(pcie_ltssm_state_transition,
-    ^~~~~~~~~~~
-   include/trace/events/pci_controller.h:20:2: note: in expansion of macro 'TP_PROTO'
-     TP_PROTO(const char *dev_name, const char *state, u32 rate),
-     ^~~~~~~~
-   cc1: some warnings being treated as errors
+>> drivers/pci/controller/dwc/pcie-dw-rockchip.c:264:6: error: call to undeclared function 'dw_pcie_ltssm_status_string'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+     264 |                                         dw_pcie_ltssm_status_string(state),
+         |                                         ^
+>> drivers/pci/controller/dwc/pcie-dw-rockchip.c:264:6: error: incompatible integer to pointer conversion passing 'int' to parameter of type 'const char *' [-Wint-conversion]
+     264 |                                         dw_pcie_ltssm_status_string(state),
+         |                                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   include/trace/events/pci_controller.h:20:45: note: passing argument to parameter 'state' here
+      20 |         TP_PROTO(const char *dev_name, const char *state, u32 rate),
+         |                                                    ^
+   2 errors generated.
 
 
-vim +/trace_pcie_ltssm_state_transition +264 drivers/pci/controller/dwc/pcie-dw-rockchip.c
+vim +/dw_pcie_ltssm_status_string +264 drivers/pci/controller/dwc/pcie-dw-rockchip.c
 
    225	
    226	#ifdef CONFIG_TRACING
