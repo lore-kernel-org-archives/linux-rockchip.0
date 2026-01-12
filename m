@@ -4,85 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9DCCD2502E
-	for <linux-rockchip@archiver.kernel.org>; Sun, 11 Jan 2026 23:51:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6009CD2502E
+	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Jan 2026 01:11:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=B9kqq7g0qYHoM74ydrQpgt3HPrR9uZBBf6MLDEGn0QE=; b=m7Zp8tymXQzaDY
-	81Engc6yCUSLBjqgQQnfu57Yh5frdVLXyuhWFUgu9lgZ8oaBk9G/rBVoQ+iiS1M8vV2IWE/Ddt3vv
-	Idtu9CLDp1HVjA0XRanB4336jGKR9fN59+DBaZjbgw2x2l7JSSVZXBsogSmUahqJZdq+3086p4iT6
-	D1k0E2cML10JxF63NWBzSlfAEdO9JVszppnjSBpykV6wqa2kke/NUwr9aK2X9LxI+kboN72iypLD1
-	HsiCwUrJYK96x3NpOnmaw70n7vOFXojH8STmsjrNDZx5I9W4pvFXnF2WGEaVjpoVw7P0n/fpUz387
-	+8hOuN9GXWzGWmNpOxFA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=contGu9trF+E5//AzVfW72d0Ajd3c0NQRfQ/yQkzet0=; b=fheopXX/4ySfo80HzAgC4gBEDU
+	Xaw4A5XhMYOXgsE65PHsyM2ECNmq8qDxo0eH+vtXs2pYRJvPTAiyNCpakJyUW31PknWwxTQIBBogV
+	u0AiHSP5WuPG1OR6DzccKXxtia+yctfpctKWDH4Kf67UzEMBaDFkbDywfjkpU3Wt5jGpKlE5uagZw
+	mvgr442p5ZO/ZPh4+ynn79ThfBNPhtmVCQCZ8N4f/dlJYY6NuBNepGQCfCBv8Bp2RHfyyadQDo13Y
+	Hx/ef8OdWIDvx8CiYYHYhR83IeXp/U4Ky/AToAQMG22gfB9HMDMcnCB5o7osVW0tXWz3Y1mtsxyY8
+	GGQCQQCA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vf5Df-00000004ZtB-1Tci;
-	Sun, 11 Jan 2026 23:51:39 +0000
-Received: from mail-ot1-x331.google.com ([2607:f8b0:4864:20::331])
+	id 1vf6Si-00000004cE7-3Iix;
+	Mon, 12 Jan 2026 01:11:16 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vf5Dc-00000004ZsT-3rvH
+	id 1vf6Se-00000004cDi-3gBq
 	for linux-rockchip@lists.infradead.org;
-	Sun, 11 Jan 2026 23:51:37 +0000
-Received: by mail-ot1-x331.google.com with SMTP id 46e09a7af769-7c71cca8fc2so3924328a34.1
-        for <linux-rockchip@lists.infradead.org>; Sun, 11 Jan 2026 15:51:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1768175495; x=1768780295; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=D/ENBQX982lICCo3cjSQ7OsIstGG9Mk6/7pP55Ji4uo=;
-        b=jU0Hrw4Mw2jjNn5/gA7SVEgb6RbVLEDGy+bhS/z5RlM2h9tyb9iMB+fmShIhisUHyN
-         hJ0zPQJZm2pTeaxT7812qf/9g3mVI/EuHpQel88OEB0GobK+nRcu1J4XbkoSFv2lveZ8
-         9+QPeoHqv23gKHWoUN9N8/u9rw52L1RbaQQM0pvc7EQGWR2ckgSmYDCfSoT2APwiQN4n
-         a0cG4QeqtYbDJ8qt9mwAzHxZeE/mHpjVVbbcWgu7wqJHD9yaQOhQ5tRJWKegkiAMk35l
-         DKSsxGeU59Yp3lyt3el3ePBv+4kZEjdmgtN8V0nJ11IndFNm4cnrBnAY2Epyzl/cthhJ
-         4PFA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1768175495; x=1768780295;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=D/ENBQX982lICCo3cjSQ7OsIstGG9Mk6/7pP55Ji4uo=;
-        b=TlXziOHa4ybv/duXpOvapk0xwFiu+6lvClDxXRo4M+uyIj1NvYPH6CYM6QUGULGAnQ
-         hkkYyDmQF/JhlscWiJUTehpuE9ahT3A7XHaqjZw6PqLJJzU73VxXx8/kQ5d5DYqJ5M9L
-         OsGX5spx4h+1DfTMVZXyp+wIAqTAb2HY5UKA/wMRmCcKkWAUslQwoCj1ewgNsg1RbAy5
-         VLyX+t67pi4S0Tk1aoxepsKHaqkrmJR9XON9WtuofVgWmx3JK0gWz1vXbD7Axsuv4iNw
-         GYBScxfxWdxKYZju8miWbt/N9877xE0KO3p4ezVXPP+ob3Bo13TRwVtqPmLqHNXJ+Ku6
-         A7sw==
-X-Forwarded-Encrypted: i=1; AJvYcCVniQrXaLIULfb5yOqeZohnJxmtv82lWkLfRxRzAhcoiUfI4Kj9v87Vcpugqi+oKt+/pJEa19+Xh8zi49NPTw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzyb6sdPzzHYfqcyRraOStG4Ml3EAKueDxYMH0pGziU14rUYP0y
-	Su2Ndb61jyb6xDyrf3Kfg6EuHXzfXNaiLAf0zXLAFcAiDuk6t3PrXii0eo3t8zYQFHFLNkOjA8O
-	P5FXkZL1CC4+pfrPY4am9jQsMhj7fxBc=
-X-Gm-Gg: AY/fxX5Tiw8yLIBsUQkbIHDxK+40QgJnPh3U+y2Z4Y9jdC7/tlZZYug8HXGqM9RDiPb
-	FdkdP1rxv3OyrvWXx4U0jwe1+/kEkxKNhHc39ORRqyYTewGgw4RdJBmfLriyi5NTZe5ESy000/U
-	RE1rA+tiGDQdrrMmHGCXenfCO4MWDR0MadnHFtbc2ZEnvaYfczvDkLmEHhIx/wzcrVMU6vlyDVO
-	7PehM4k//vWX/G1WKn5xtDIvZ0n/Hy+YVuhTBZ22tUC9Z1e+kBNO/8UGfEaY9065mko60SH7Agi
-	OeiuIB+SP8XjhcgSqECMBCMYofc=
-X-Google-Smtp-Source: AGHT+IGlge53U08ebFfe8r244rsrE6CkWTn00e+I2aSY3bW6BvjGm0i6R4xXCnYggHKHg3FXbw80wZStXmjolJVgDDY=
-X-Received: by 2002:a05:6830:4111:b0:7c7:6c9f:bb06 with SMTP id
- 46e09a7af769-7ce50b7b138mr11464374a34.16.1768175495062; Sun, 11 Jan 2026
- 15:51:35 -0800 (PST)
+	Mon, 12 Jan 2026 01:11:14 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1768180260; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=N21o773jJjDmlswRNxgEuxl+d7tQFlAcAhyZPFLu8UodnACDP34XiR2fkMQFt9fJcOOifJV4MhXxyp3mtj5WplXTkEK9EzKXbG36b8Grpj7aOgVt8NfgRwpG2f7wcKDNn2FQETJ2Z/LQBeILV9F6TLLd49TC5BdAGhZ8LPlLw0U=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1768180260; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=8Og1eliBvsf3gBefrtGVcyrQDBbVCfL1s/AF126FL2E=; 
+	b=f0HH71Rt9sVuw4DXdGSExwXuyCcOs7SrMIWyEAAp6fBRiMzr50oAILoZts5HMIkplBwXGy+18w9zfqkOAojzb3OH0ha45QOyz5JyXovZHgXujddugoMFmFO0ximHPjPjFAkf8xJlGXMQm9/CswoUnyEafqpojseTzXbUaXcZ2wo=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1768180260;
+	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
+	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
+	bh=8Og1eliBvsf3gBefrtGVcyrQDBbVCfL1s/AF126FL2E=;
+	b=ARmG+g8r0Mf0FeRjOC24qOelNP56Zs/VUrG6aj8jH5yo7KB6CIYUrP43UBmMdmq7
+	uu/xKAEz1/2r/A2m91GGOgaL29GQvlFQK2fBi1WVoYcqQ5b0Ie/baZ/B1eLkNHi5QMP
+	3EcXQ+fr9taxNPJRhfiL/W6Dv4qEPp/GAac3qoOY=
+Received: by mx.zohomail.com with SMTPS id 1768180258907118.80627294544297;
+	Sun, 11 Jan 2026 17:10:58 -0800 (PST)
+Received: by venus (Postfix, from userid 1000)
+	id CF5641803AD; Mon, 12 Jan 2026 02:10:54 +0100 (CET)
+Date: Mon, 12 Jan 2026 02:10:54 +0100
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Frank Zhang <rmxpzlb@gmail.com>, heiko@sntech.de, 
+	linux-rockchip@lists.infradead.org, linux-pm@vger.kernel.org, chaoyi.chen@rock-chips.com, 
+	quentin.schulz@cherry.de, Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Subject: Re: [PATCH v2] pmdomain:rockchip: Fix init genpd as GENPD_STATE_ON
+ before regulator ready
+Message-ID: <aWRG8w8GxzV9gpUK@venus>
+References: <20251216055247.13150-1-rmxpzlb@gmail.com>
+ <CAPDyKFpx-hxv4QVW+zp8Zbd=-9vvmwsVJ2adem6V1gWLQteYsQ@mail.gmail.com>
 MIME-Version: 1.0
-References: <20260110010715.1610159-1-mschirrmeister@gmail.com>
- <20260110010715.1610159-2-mschirrmeister@gmail.com> <20260111-melodic-chestnut-coua-73e6ec@quoll>
-In-Reply-To: <20260111-melodic-chestnut-coua-73e6ec@quoll>
-From: Marco Schirrmeister <mschirrmeister@gmail.com>
-Date: Mon, 12 Jan 2026 00:51:24 +0100
-X-Gm-Features: AZwV_QgRXlN1CiuRYVEhXNkMAqD9Aoc5N6ROQBHLSJhP77NnrQn6dbThJj_qUMM
-Message-ID: <CAGJh8eAWNe0JzC7BdA2Rw5etCYgGq3O5Zdgk9zSzsLNv18k=ag@mail.gmail.com>
-Subject: Re: [PATCH v1 1/3] dt-bindings: mmc: rockchip-dw-mshc: add rockchip,disable-runtime-pm
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: heiko@sntech.de, ulf.hansson@linaro.org, robh@kernel.org, 
-	krzk+dt@kernel.org, conor+dt@kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-mmc@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org
+In-Reply-To: <CAPDyKFpx-hxv4QVW+zp8Zbd=-9vvmwsVJ2adem6V1gWLQteYsQ@mail.gmail.com>
+X-Zoho-Virus-Status: 1
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-1.5.1/268.172.5
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260111_155136_956551_2E829370 
-X-CRM114-Status: GOOD (  13.43  )
+X-CRM114-CacheID: sfid-20260111_171112_957173_160EC888 
+X-CRM114-Status: GOOD (  30.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,32 +80,151 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============8757094117385676192=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgS3J6eXN6dG9mLAoKVGhhbmsgeW91IGZvciB0aGUgZmVlZGJhY2suCgpPbiBTdW4sIEphbiAx
-MSwgMjAyNiBhdCAxMDo0MeKAr0FNIEtyenlzenRvZiBLb3psb3dza2kgPGtyemtAa2VybmVsLm9y
-Zz4gd3JvdGU6Cj4gPiArICByb2NrY2hpcCxkaXNhYmxlLXJ1bnRpbWUtcG06Cj4gPiArICAgIHR5
-cGU6IGJvb2xlYW4KPiA+ICsgICAgZGVzY3JpcHRpb246Cj4gPiArICAgICAgSW5oaWJpdCBydW50
-aW1lIHBvd2VyIG1hbmFnZW1lbnQuIFRoaXMgaXMgcmVxdWlyZWQgZm9yIGJvYXJkcwo+Cj4gV2hh
-dCBpcyBydW50aW1lIHBvd2VyIG1hbmFnZW1lbnQ/IExpa2UgTGludXggUE0/IElmIGFueXRoaW5n
-IHBocmFzZWQKPiBsaWtlIHRoYXQgaXMgaXQgaXMgYSBjbGVhciBubyBnby4gQmluZGluZ3MgZGVz
-Y3JpYmUgaGFyZHdhcmUuCgpZb3UgYXJlIHJpZ2h0LiBUaGlzIHJlZmVycyB0byB0aGUgTGludXgg
-UE0gc3Vic3lzdGVtIGFuZCBkZXNjcmliZXMKc29mdHdhcmUgYmVoYXZpb3IuCgo+ID4gKyAgICAg
-IHdoZXJlIHRoZSBidXMgdGltaW5nIGJlY29tZXMgdW5zdGFibGUgaWYgdGhlIGNvbnRyb2xsZXIg
-aXMKPiA+ICsgICAgICBydW50aW1lLXN1c3BlbmRlZC4KPgo+IFlvdSBkZXNjcmliZWQgdGhlIGRl
-c2lyZWQgTGludXggZmVhdHVyZSBvciBiZWhhdmlvciwgbm90IHRoZSBhY3R1YWwKPiBoYXJkd2Fy
-ZS4gVGhlIGJpbmRpbmdzIGFyZSBhYm91dCB0aGUgbGF0dGVyLCBzbyBpbnN0ZWFkIHlvdSBuZWVk
-IHRvCj4gcmVwaHJhc2UgdGhlIHByb3BlcnR5IGFuZCBpdHMgZGVzY3JpcHRpb24gdG8gbWF0Y2gg
-YWN0dWFsIGhhcmR3YXJlCj4gY2FwYWJpbGl0aWVzL2ZlYXR1cmVzL2NvbmZpZ3VyYXRpb24gZXRj
-LgoKT24gdGhpcyBib2FyZCwgdGhlIGJ1cyB0aW1pbmcgYmVjb21lcyB1bnN0YWJsZSB3aGVuIHdh
-a2luZyB1cCBmcm9tCmEgbG93LXBvd2VyIHN0YXRlLiBUaGlzIGNhdXNlcyBhIGNvbnN0YW50IHJl
-dHJhaW5pbmcgbG9vcC4KCkkgd2lsbCBtb3ZlIHRoaXMgbG9naWMgaW50byB0aGUgZHJpdmVyIGFu
-ZCBoYW5kbGUgaXQgYXMgYSBib2FyZCBzcGVjaWZpYwpxdWlyayB1c2luZyBvZl9tYWNoaW5lX2lz
-X2NvbXBhdGlibGUoImZyaWVuZGx5YXJtLG5hbm9waS1yNzZzIikKaW5zdGVhZC4gSSB3aWxsIHNl
-bmQgYSB2Mi4KCkJlc3QgcmVnYXJkcywKTWFyY28KCl9fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1y
-b2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
-aWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+
+--===============8757094117385676192==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="yswcx6kd7kioasxi"
+Content-Disposition: inline
+
+
+--yswcx6kd7kioasxi
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v2] pmdomain:rockchip: Fix init genpd as GENPD_STATE_ON
+ before regulator ready
+MIME-Version: 1.0
+
+Hi,
+
+On Tue, Dec 30, 2025 at 03:07:37PM +0100, Ulf Hansson wrote:
+> + Nicolas
+>=20
+> On Tue, 16 Dec 2025 at 06:53, Frank Zhang <rmxpzlb@gmail.com> wrote:
+> >
+> > RK3588_PD_NPU initialize as GENPD_STATE_ON before regulator ready.
+> > rknn_iommu initlized success and suspend RK3588_PD_NPU. When rocket
+> > driver register, it will resume rknn_iommu.
+> >
+> > If regulator is still not ready at this point, rknn_iommu resume fail,
+> > pm runtime status will be error: -EPROBE_DEFER.
+> >
+> > This patch set pmdomain to off if it need regulator during probe,
+> > consumer device can power on pmdomain after regulator ready.
+> >
+> > Signed-off-by: Frank Zhang <rmxpzlb@gmail.com>
+> > Tested-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+> > Tested-by: Quentin Schulz <quentin.schulz@cherry.de>
+>=20
+> The problem with the child-domain using a regulator has been discussed
+> before [1] between Nicolas, Heiko and me. That said, I have looped in
+> Nicolas to allow him to share his opinion about this too.
+> fauxbus
+> My view on is that I would prefer that we try to address/fix the root
+> cause, rather than trying to paper over the problem as what seems to
+> be suggested in the $subject patch. Or at least I need Nicolas/Heiko
+> to confirm that they are fine with the $subject patch, before I pick
+> it up.
+
+FWIW my thoughts on this:
+
+I believe the proper solution would be to acquire the regulator at
+probe time how it is usually being done in other drivers. I think
+this requires restructuring the driver, so that the sub-domains are
+registered as sub-devices (e.g. via fauxbus) to avoid the
+chicken-and-egg problem of the regulator for pmdomain1 needing
+pmdomain2. As this modification is most likely too big to be
+backported I think this patch should be merged for now:
+
+Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: stable@vger.kernel.org
+Fixes: db6df2e3fc16 ("pmdomain: rockchip: add regulator support")
+
+Greetings,
+
+-- Sebastian
+
+>=20
+> Kind regards
+> Uffe
+>=20
+> > ---
+> > Changes in v2:
+> > - Simplified the regulator check logic, trun off pmdomain if need
+> >   regulator.
+> > ---
+> >  drivers/pmdomain/rockchip/pm-domains.c | 10 ++++++++++
+> >  1 file changed, 10 insertions(+)
+> >
+> > diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/=
+rockchip/pm-domains.c
+> > index 4f1336a0f49a..997e93c12951 100644
+> > --- a/drivers/pmdomain/rockchip/pm-domains.c
+> > +++ b/drivers/pmdomain/rockchip/pm-domains.c
+> > @@ -879,6 +879,16 @@ static int rockchip_pm_add_one_domain(struct rockc=
+hip_pmu *pmu,
+> >                 pd->genpd.name =3D pd->info->name;
+> >         else
+> >                 pd->genpd.name =3D kbasename(node->full_name);
+> > +
+> > +       /*
+> > +        * power domain's needing a regulator should default to off, si=
+nce
+> > +        * the regulator state is unknown at probe time. Also the regul=
+ator
+> > +        * state cannot be checked, since that usually requires IP need=
+ing
+> > +        * (a different) power domain.
+> > +        */
+> > +       if (pd->info->need_regulator)
+> > +               rockchip_pd_power(pd, false);
+> > +
+> >         pd->genpd.power_off =3D rockchip_pd_power_off;
+> >         pd->genpd.power_on =3D rockchip_pd_power_on;
+> >         pd->genpd.attach_dev =3D rockchip_pd_attach_dev;
+>=20
+> [1]
+> https://lore.kernel.org/all/CAPDyKFr=3DGwJ+cO3cW4Ed_LsS=3Dq_JtuuQPDweDpLg=
+DO4hBLFXUA@mail.gmail.com/
+>=20
+
+--yswcx6kd7kioasxi
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmlkShsACgkQ2O7X88g7
++pr65xAAgfIFCC7Xr0sfqG7ERXrfaAYI9BzXdSm1e5ugYfrDKZ8YseKGhTTOAqXE
+9dUJmISY0WgffJDOQZMdc+FOlmcie165/qepgh4egtZNHC6OxnCwuec/hb3yqU7J
+Y/YTepEI/nJcKSFNRruY8pQ9TIYGLAIn1VXSGu6Bx8Zh1r3DVX4CCNNrjEsUBNbC
+rjwBUgnN1AwAI2sW033mU0/g0lymztj6uWRG6URFlmFSrqNSM+3hrO9cO7lgNQuy
+YCpnwsRYd7FLO8nAYPR5kYzCPO9xFQ4w/pgxUcuQTFI7DJNrCE4/hVpxxoe7lhDA
+5wNe5R/pD3910EOC6PH09QQ3k4VtrDIBpTihYm11/unVvfjGUY0eC2KQ+lP6fAyS
+h7N4useFHqIMf5am77ZPZ24Sx7eVwYfHYKA1vxlRGKHxCnJnPEwQ1X01+m5s44qs
+AVzufidRp1pFpSr9Y27unAEti8t3O8px2bMBSqCyYMOPFVPubyriqzWtQFEjDPr6
+gTfFdx6kqcD6rC0VVAQXM28eIZEV8rvDOx3ribZnbQdYetRuKEg3gt379Gzmv7RJ
+41ddX+pX8FMsKUPhMUz23eiUIH9dQHPnnCglRDqphtHvjFxizAg9cxAy9gjWwWPY
+9/2mgzoBiWD8JmBqgKgHPcaEQoI4TJKry3/kaecWFKrajKE2jgQ=
+=1ItU
+-----END PGP SIGNATURE-----
+
+--yswcx6kd7kioasxi--
+
+
+--===============8757094117385676192==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============8757094117385676192==--
+
