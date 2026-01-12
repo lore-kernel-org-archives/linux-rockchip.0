@@ -4,80 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 637D2D25039
-	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Jan 2026 06:43:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87FF1D2503F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Jan 2026 07:19:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zmRg4/rNbaB00BFnQAOp9BSKxn+9czHZXITDFXQteEc=; b=Lc5NK3/dARqTtE
-	gRkSGVvPUHqGmsSNtB/Ml2ahGzeph/KlH8aAwq91ZvQDOdlgdJ4b+AvACfqnWJrfVoLczGoF8uqXb
-	IH1eCzY0zLnctO9q1pSJRhK3JYd4pc68+082zaaMElSMmHIeQVuU42ETEg+LdcH5uiwIQ7Pwj812s
-	I65qrhEqEv/urwZZXPZ2aRPrMEtPo5c6Jzhe+i7IPLGNPqFKfrZchcVuOGhgOsBHsPHi7BR6HlPyZ
-	AMgqUxM+UKj6yPFKzAqxEWrVEe2WtjKaaZbmvDkPBZmg3MI1gkOILZPpCn96qlJisqjDsQ3sXjS+p
-	NFgKUp6htf+y4kqMEtvA==;
+	List-Owner; bh=4rDAW+D4w27XmBYVxioJGdeHpAGaD/pjTr11cy8oJrs=; b=ys6cNZPbsk/GQz
+	shGF9sSPdgtVOl5yMKRPw4UjNYGcoTfjfsQy72IubPPppy+bchJHMkwrp9f3jGP7RS2lAfw2emdP0
+	NZBiBm214CLuVLE4ud1fqkVCgLmlPJcm9wGs22H5A+wrK2tQdgOuFbCql+UmdrAh4FKn8Izatnb3e
+	j/L8c7Rzt5P4rgG2PKp0wLw1gYHeDC9eyvDxxl1yqnglwD3a8RWhsC9v1XYekwaAp7iHBm9yvp3Bv
+	cf7JqGV4rdYVMNsqvxdb5en5IAhlpKOITx7cL8kPJ0tpE/pzsXvqDtVb1makAw2+2yh6fIs+oY7PV
+	7ixjEKlSgQOdMUizGiig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfBdv-00000004pkd-2rOF;
-	Mon, 12 Jan 2026 06:43:11 +0000
-Received: from mgamail.intel.com ([192.198.163.8])
+	id 1vfCDN-00000004rlV-3cM4;
+	Mon, 12 Jan 2026 07:19:49 +0000
+Received: from mail-m1973171.qiye.163.com ([220.197.31.71])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfBds-00000004pkG-0WLg
+	id 1vfCDK-00000004rkp-10vr
 	for linux-rockchip@lists.infradead.org;
-	Mon, 12 Jan 2026 06:43:09 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1768200188; x=1799736188;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=KRUlzmZT+Po3605XqLGK09mDfYi+PQG5J8+1DirPpHE=;
-  b=MBO3HLebbf9zTijDtYkQJvXgnepreWrmvwK7nMnQSNyE4iEcgGcFylsu
-   maaSXL/KnGim/OAj1hjz11RDi7TOKBfbiRG4tVQvjQmKIaJ/VO6bjDZ9o
-   l8/G7ymFE3yJioRBxXuM56XI5ySUKCjd79ODNZZEAhfg+Kf4Zxc8LBc/m
-   k1cQkRICP4qQkIGGyQ4FAsGQwljPegLIqZlomQZnpss86SS1eOibTSgB3
-   ZX9BH4oeHcq7KK9cl5q3nilhPYkefWVB+D5vaQS70VPCQh5jU4IhMUqp0
-   XYFxe0iKGpxfOQ0qcFFmGa6fwyHfqhk62lrfqZPXqVsq0yDs1RyeoxOic
-   w==;
-X-CSE-ConnectionGUID: KHTKvH6HRoGMm/L0govZ4Q==
-X-CSE-MsgGUID: 3GZo1cq/TiKqfFwRCcmgwA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11668"; a="87057178"
-X-IronPort-AV: E=Sophos;i="6.21,219,1763452800"; 
-   d="scan'208";a="87057178"
-Received: from orviesa008.jf.intel.com ([10.64.159.148])
-  by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jan 2026 22:43:04 -0800
-X-CSE-ConnectionGUID: +5Qtarv8RWW4G95y5DgeJg==
-X-CSE-MsgGUID: fJOLnsbZQiCSQQ+NuTJRFQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,219,1763452800"; 
-   d="scan'208";a="204082216"
-Received: from lkp-server01.sh.intel.com (HELO 765f4a05e27f) ([10.239.97.150])
-  by orviesa008.jf.intel.com with ESMTP; 11 Jan 2026 22:43:01 -0800
-Received: from kbuild by 765f4a05e27f with local (Exim 4.98.2)
-	(envelope-from <lkp@intel.com>)
-	id 1vfBdi-00000000D4G-3xjw;
-	Mon, 12 Jan 2026 06:42:58 +0000
-Date: Mon, 12 Jan 2026 14:42:32 +0800
-From: kernel test robot <lkp@intel.com>
-To: Shawn Lin <shawn.lin@rock-chips.com>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Bjorn Helgaas <helgaas@kernel.org>
-Cc: oe-kbuild-all@lists.linux.dev, linux-rockchip@lists.infradead.org,
-	linux-pci@vger.kernel.org, linux-trace-kernel@vger.kernel.org,
-	linux-doc@vger.kernel.org, Steven Rostedt <rostedt@goodmis.org>,
-	Masami Hiramatsu <mhiramat@kernel.org>,
-	Shawn Lin <shawn.lin@rock-chips.com>
+	Mon, 12 Jan 2026 07:19:48 +0000
+Received: from [172.16.12.14] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 304bd6f5e;
+	Mon, 12 Jan 2026 15:19:37 +0800 (GMT+08:00)
+Message-ID: <b6667d54-ebb7-4594-a65e-011f0bf0d3cd@rock-chips.com>
+Date: Mon, 12 Jan 2026 15:19:36 +0800
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Cc: shawn.lin@rock-chips.com, oe-kbuild-all@lists.linux.dev,
+ linux-rockchip@lists.infradead.org, linux-pci@vger.kernel.org,
+ linux-trace-kernel@vger.kernel.org, linux-doc@vger.kernel.org,
+ Steven Rostedt <rostedt@goodmis.org>, Masami Hiramatsu <mhiramat@kernel.org>
 Subject: Re: [PATCH v3 3/3] PCI: dw-rockchip: Add pcie_ltssm_state_transition
  trace support
-Message-ID: <202601121428.WVvakywZ-lkp@intel.com>
+To: kernel test robot <lkp@intel.com>, Manivannan Sadhasivam
+ <mani@kernel.org>, Bjorn Helgaas <helgaas@kernel.org>
 References: <1768180800-63364-4-git-send-email-shawn.lin@rock-chips.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1768180800-63364-4-git-send-email-shawn.lin@rock-chips.com>
+ <202601121428.WVvakywZ-lkp@intel.com>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+In-Reply-To: <202601121428.WVvakywZ-lkp@intel.com>
+X-HM-Tid: 0a9bb113183609cckunm1596f8d92bc8bf
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGR1LS1ZLSUwZGhkfGB5MSEJWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSUJNS0
+	pVSktLVUtZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=Vwq6YcH02L/z2pSxGAI+djdeOneXnSlu4g4J0rkPgg1Vs3UCnWjVBxYaWuHuu0kScG34+K9P/gVm59huZBBaXAp9RqKIGc0oaPUCjzGtDzu0pvxDzgoJdDRPDTy597sGUFnf/hyIiBDDwWe6Item4gbwjjXbZk8/FcTEetG0iMc=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=e3jKY3hTxixp5DahAQTFxXosmfx7lVCjtHXMKuxx6ks=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260111_224308_219655_E4CB2726 
-X-CRM114-Status: GOOD (  16.57  )
+X-CRM114-CacheID: sfid-20260111_231946_829071_B1E85824 
+X-CRM114-Status: GOOD (  22.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,126 +70,125 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Shawn,
-
-kernel test robot noticed the following build errors:
-
-[auto build test ERROR on pci/next]
-[also build test ERROR on next-20260109]
-[cannot apply to pci/for-linus trace/for-next mani-mhi/mhi-next linus/master v6.19-rc5]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/Shawn-Lin/PCI-trace-Add-PCI-controller-LTSSM-transition-tracepoint/20260112-100141
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/pci/pci.git next
-patch link:    https://lore.kernel.org/r/1768180800-63364-4-git-send-email-shawn.lin%40rock-chips.com
-patch subject: [PATCH v3 3/3] PCI: dw-rockchip: Add pcie_ltssm_state_transition trace support
-config: loongarch-randconfig-002-20260112 (https://download.01.org/0day-ci/archive/20260112/202601121428.WVvakywZ-lkp@intel.com/config)
-compiler: loongarch64-linux-gcc (GCC) 15.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260112/202601121428.WVvakywZ-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202601121428.WVvakywZ-lkp@intel.com/
-
-All errors (new ones prefixed by >>):
-
-   drivers/pci/controller/dwc/pcie-dw-rockchip.c: In function 'rockchip_pcie_ltssm_trace_work':
->> drivers/pci/controller/dwc/pcie-dw-rockchip.c:264:41: error: implicit declaration of function 'dw_pcie_ltssm_status_string' [-Wimplicit-function-declaration]
-     264 |                                         dw_pcie_ltssm_status_string(state),
-         |                                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~
->> drivers/pci/controller/dwc/pcie-dw-rockchip.c:264:41: error: passing argument 2 of 'trace_pcie_ltssm_state_transition' makes pointer from integer without a cast [-Wint-conversion]
-     264 |                                         dw_pcie_ltssm_status_string(state),
-         |                                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-         |                                         |
-         |                                         int
-   In file included from include/trace/events/pci_controller.h:9,
-                    from drivers/pci/controller/dwc/pcie-dw-rockchip.c:26:
-   include/trace/events/pci_controller.h:20:52: note: expected 'const char *' but argument is of type 'int'
-      20 |         TP_PROTO(const char *dev_name, const char *state, u32 rate),
-         |                                        ~~~~~~~~~~~~^~~~~
-   include/linux/tracepoint.h:288:41: note: in definition of macro '__DECLARE_TRACE'
-     288 |         static inline void trace_##name(proto)                          \
-         |                                         ^~~~~
-   include/linux/tracepoint.h:494:31: note: in expansion of macro 'PARAMS'
-     494 |         __DECLARE_TRACE(name, PARAMS(proto), PARAMS(args),              \
-         |                               ^~~~~~
-   include/linux/tracepoint.h:632:9: note: in expansion of macro 'DECLARE_TRACE_EVENT'
-     632 |         DECLARE_TRACE_EVENT(name, PARAMS(proto), PARAMS(args))
-         |         ^~~~~~~~~~~~~~~~~~~
-   include/linux/tracepoint.h:632:35: note: in expansion of macro 'PARAMS'
-     632 |         DECLARE_TRACE_EVENT(name, PARAMS(proto), PARAMS(args))
-         |                                   ^~~~~~
-   include/trace/events/pci_controller.h:19:1: note: in expansion of macro 'TRACE_EVENT'
-      19 | TRACE_EVENT(pcie_ltssm_state_transition,
-         | ^~~~~~~~~~~
-   include/trace/events/pci_controller.h:20:9: note: in expansion of macro 'TP_PROTO'
-      20 |         TP_PROTO(const char *dev_name, const char *state, u32 rate),
-         |         ^~~~~~~~
-
-
-vim +/dw_pcie_ltssm_status_string +264 drivers/pci/controller/dwc/pcie-dw-rockchip.c
-
-   225	
-   226	#ifdef CONFIG_TRACING
-   227	static void rockchip_pcie_ltssm_trace_work(struct work_struct *work)
-   228	{
-   229		struct rockchip_pcie *rockchip = container_of(work, struct rockchip_pcie,
-   230							trace_work.work);
-   231		struct dw_pcie *pci = &rockchip->pci;
-   232		enum dw_pcie_ltssm state;
-   233		u32 i, l1ss, prev_val = DW_PCIE_LTSSM_UNKNOWN, rate, val;
-   234	
-   235		for (i = 0; i < PCIE_DBG_LTSSM_HISTORY_CNT; i++) {
-   236			val = rockchip_pcie_readl_apb(rockchip, PCIE_CLIENT_DBG_FIFO_STATUS);
-   237			rate = FIELD_GET(PCIE_DBG_FIFO_RATE_MASK, val);
-   238			l1ss = FIELD_GET(PCIE_DBG_FIFO_L1SUB_MASK, val);
-   239			val = FIELD_GET(PCIE_LTSSM_STATUS_MASK, val);
-   240	
-   241			/*
-   242			 * Hardware Mechanism: The ring FIFO employs two tracking counters:
-   243			 * - 'last-read-point': maintains the user's last read position
-   244			 * - 'last-valid-point': tracks the hardware's last state update
-   245			 *
-   246			 * Software Handling: When two consecutive LTSSM states are identical,
-   247			 * it indicates invalid subsequent data in the FIFO. In this case, we
-   248			 * skip the remaining entries. The dual-counter design ensures that on
-   249			 * the next state transition, reading can resume from the last user
-   250			 * position.
-   251			 */
-   252			if ((i > 0 && val == prev_val) || val > DW_PCIE_LTSSM_RCVRY_EQ3)
-   253				break;
-   254	
-   255			state = prev_val = val;
-   256			if (val == DW_PCIE_LTSSM_L1_IDLE) {
-   257				if (l1ss == 2)
-   258					state = DW_PCIE_LTSSM_L1_2;
-   259				else if (l1ss == 1)
-   260					state = DW_PCIE_LTSSM_L1_1;
-   261			}
-   262	
-   263			trace_pcie_ltssm_state_transition(dev_name(pci->dev),
- > 264						dw_pcie_ltssm_status_string(state),
-   265						((rate + 1) > pci->max_link_speed) ?
-   266						PCI_SPEED_UNKNOWN : PCIE_SPEED_2_5GT + rate);
-   267		}
-   268	
-   269		schedule_delayed_work(&rockchip->trace_work, msecs_to_jiffies(5000));
-   270	}
-   271	
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+CuWcqCAyMDI2LzAxLzEyIOaYn+acn+S4gCAxNDo0Miwga2VybmVsIHRlc3Qgcm9ib3Qg5YaZ6YGT
+Ogo+IEhpIFNoYXduLAo+IAo+IGtlcm5lbCB0ZXN0IHJvYm90IG5vdGljZWQgdGhlIGZvbGxvd2lu
+ZyBidWlsZCBlcnJvcnM6Cj4gCj4gW2F1dG8gYnVpbGQgdGVzdCBFUlJPUiBvbiBwY2kvbmV4dF0K
+PiBbYWxzbyBidWlsZCB0ZXN0IEVSUk9SIG9uIG5leHQtMjAyNjAxMDldCj4gW2Nhbm5vdCBhcHBs
+eSB0byBwY2kvZm9yLWxpbnVzIHRyYWNlL2Zvci1uZXh0IG1hbmktbWhpL21oaS1uZXh0IGxpbnVz
+L21hc3RlciB2Ni4xOS1yYzVdCj4gW0lmIHlvdXIgcGF0Y2ggaXMgYXBwbGllZCB0byB0aGUgd3Jv
+bmcgZ2l0IHRyZWUsIGtpbmRseSBkcm9wIHVzIGEgbm90ZS4KPiBBbmQgd2hlbiBzdWJtaXR0aW5n
+IHBhdGNoLCB3ZSBzdWdnZXN0IHRvIHVzZSAnLS1iYXNlJyBhcyBkb2N1bWVudGVkIGluCj4gaHR0
+cHM6Ly9naXQtc2NtLmNvbS9kb2NzL2dpdC1mb3JtYXQtcGF0Y2gjX2Jhc2VfdHJlZV9pbmZvcm1h
+dGlvbl0KPiAKPiB1cmw6ICAgIGh0dHBzOi8vZ2l0aHViLmNvbS9pbnRlbC1sYWItbGtwL2xpbnV4
+L2NvbW1pdHMvU2hhd24tTGluL1BDSS10cmFjZS1BZGQtUENJLWNvbnRyb2xsZXItTFRTU00tdHJh
+bnNpdGlvbi10cmFjZXBvaW50LzIwMjYwMTEyLTEwMDE0MQo+IGJhc2U6ICAgaHR0cHM6Ly9naXQu
+a2VybmVsLm9yZy9wdWIvc2NtL2xpbnV4L2tlcm5lbC9naXQvcGNpL3BjaS5naXQgbmV4dAo+IHBh
+dGNoIGxpbms6ICAgIGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL3IvMTc2ODE4MDgwMC02MzM2NC00
+LWdpdC1zZW5kLWVtYWlsLXNoYXduLmxpbiU0MHJvY2stY2hpcHMuY29tCj4gcGF0Y2ggc3ViamVj
+dDogW1BBVENIIHYzIDMvM10gUENJOiBkdy1yb2NrY2hpcDogQWRkIHBjaWVfbHRzc21fc3RhdGVf
+dHJhbnNpdGlvbiB0cmFjZSBzdXBwb3J0Cj4gY29uZmlnOiBsb29uZ2FyY2gtcmFuZGNvbmZpZy0w
+MDItMjAyNjAxMTIgKGh0dHBzOi8vZG93bmxvYWQuMDEub3JnLzBkYXktY2kvYXJjaGl2ZS8yMDI2
+MDExMi8yMDI2MDExMjE0MjguV1Z2YWt5d1otbGtwQGludGVsLmNvbS9jb25maWcpCj4gY29tcGls
+ZXI6IGxvb25nYXJjaDY0LWxpbnV4LWdjYyAoR0NDKSAxNS4yLjAKPiByZXByb2R1Y2UgKHRoaXMg
+aXMgYSBXPTEgYnVpbGQpOiAoaHR0cHM6Ly9kb3dubG9hZC4wMS5vcmcvMGRheS1jaS9hcmNoaXZl
+LzIwMjYwMTEyLzIwMjYwMTEyMTQyOC5XVnZha3l3Wi1sa3BAaW50ZWwuY29tL3JlcHJvZHVjZSkK
+PiAKPiBJZiB5b3UgZml4IHRoZSBpc3N1ZSBpbiBhIHNlcGFyYXRlIHBhdGNoL2NvbW1pdCAoaS5l
+LiBub3QganVzdCBhIG5ldyB2ZXJzaW9uIG9mCj4gdGhlIHNhbWUgcGF0Y2gvY29tbWl0KSwga2lu
+ZGx5IGFkZCBmb2xsb3dpbmcgdGFncwo+IHwgUmVwb3J0ZWQtYnk6IGtlcm5lbCB0ZXN0IHJvYm90
+IDxsa3BAaW50ZWwuY29tPgo+IHwgQ2xvc2VzOiBodHRwczovL2xvcmUua2VybmVsLm9yZy9vZS1r
+YnVpbGQtYWxsLzIwMjYwMTEyMTQyOC5XVnZha3l3Wi1sa3BAaW50ZWwuY29tLwo+IAo+IEFsbCBl
+cnJvcnMgKG5ldyBvbmVzIHByZWZpeGVkIGJ5ID4+KToKPiAKPiAgICAgZHJpdmVycy9wY2kvY29u
+dHJvbGxlci9kd2MvcGNpZS1kdy1yb2NrY2hpcC5jOiBJbiBmdW5jdGlvbiAncm9ja2NoaXBfcGNp
+ZV9sdHNzbV90cmFjZV93b3JrJzoKPj4+IGRyaXZlcnMvcGNpL2NvbnRyb2xsZXIvZHdjL3BjaWUt
+ZHctcm9ja2NoaXAuYzoyNjQ6NDE6IGVycm9yOiBpbXBsaWNpdCBkZWNsYXJhdGlvbiBvZiBmdW5j
+dGlvbiAnZHdfcGNpZV9sdHNzbV9zdGF0dXNfc3RyaW5nJyBbLVdpbXBsaWNpdC1mdW5jdGlvbi1k
+ZWNsYXJhdGlvbl0KPiAgICAgICAyNjQgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgZHdfcGNpZV9sdHNzbV9zdGF0dXNfc3RyaW5nKHN0YXRlKSwKCkhpIGxrcCwKCkl0
+IGRlcGVuZHMgb24gYW5vdGhlciBwYXRjaCBtZW50aW9uZWQgaW4gdGhlIGNvdmVyIGxldHRlci4g
+U28gdGhlCmNvbXBsaWUgZXJyb3IgaXMgZXhwZWN0ZWQgcmlnaHQgbm93LgoKCj4gICAgICAgICAg
+IHwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIF5+fn5+fn5+fn5+fn5+
+fn5+fn5+fn5+fn5+fgo+Pj4gZHJpdmVycy9wY2kvY29udHJvbGxlci9kd2MvcGNpZS1kdy1yb2Nr
+Y2hpcC5jOjI2NDo0MTogZXJyb3I6IHBhc3NpbmcgYXJndW1lbnQgMiBvZiAndHJhY2VfcGNpZV9s
+dHNzbV9zdGF0ZV90cmFuc2l0aW9uJyBtYWtlcyBwb2ludGVyIGZyb20gaW50ZWdlciB3aXRob3V0
+IGEgY2FzdCBbLVdpbnQtY29udmVyc2lvbl0KPiAgICAgICAyNjQgfCAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgZHdfcGNpZV9sdHNzbV9zdGF0dXNfc3RyaW5nKHN0YXRl
+KSwKPiAgICAgICAgICAgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+Xn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fgo+ICAgICAgICAgICB8ICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8Cj4gICAgICAgICAgIHwgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGludAo+ICAgICBJbiBmaWxlIGluY2x1ZGVk
+IGZyb20gaW5jbHVkZS90cmFjZS9ldmVudHMvcGNpX2NvbnRyb2xsZXIuaDo5LAo+ICAgICAgICAg
+ICAgICAgICAgICAgIGZyb20gZHJpdmVycy9wY2kvY29udHJvbGxlci9kd2MvcGNpZS1kdy1yb2Nr
+Y2hpcC5jOjI2Ogo+ICAgICBpbmNsdWRlL3RyYWNlL2V2ZW50cy9wY2lfY29udHJvbGxlci5oOjIw
+OjUyOiBub3RlOiBleHBlY3RlZCAnY29uc3QgY2hhciAqJyBidXQgYXJndW1lbnQgaXMgb2YgdHlw
+ZSAnaW50Jwo+ICAgICAgICAyMCB8ICAgICAgICAgVFBfUFJPVE8oY29uc3QgY2hhciAqZGV2X25h
+bWUsIGNvbnN0IGNoYXIgKnN0YXRlLCB1MzIgcmF0ZSksCj4gICAgICAgICAgIHwgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfn5+fn5+fn5+fn5+Xn5+fn4KPiAgICAgaW5j
+bHVkZS9saW51eC90cmFjZXBvaW50Lmg6Mjg4OjQxOiBub3RlOiBpbiBkZWZpbml0aW9uIG9mIG1h
+Y3JvICdfX0RFQ0xBUkVfVFJBQ0UnCj4gICAgICAgMjg4IHwgICAgICAgICBzdGF0aWMgaW5saW5l
+IHZvaWQgdHJhY2VfIyNuYW1lKHByb3RvKSAgICAgICAgICAgICAgICAgICAgICAgICAgXAo+ICAg
+ICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBefn5+fgo+
+ICAgICBpbmNsdWRlL2xpbnV4L3RyYWNlcG9pbnQuaDo0OTQ6MzE6IG5vdGU6IGluIGV4cGFuc2lv
+biBvZiBtYWNybyAnUEFSQU1TJwo+ICAgICAgIDQ5NCB8ICAgICAgICAgX19ERUNMQVJFX1RSQUNF
+KG5hbWUsIFBBUkFNUyhwcm90byksIFBBUkFNUyhhcmdzKSwgICAgICAgICAgICAgIFwKPiAgICAg
+ICAgICAgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBefn5+fn4KPiAgICAgaW5jbHVk
+ZS9saW51eC90cmFjZXBvaW50Lmg6NjMyOjk6IG5vdGU6IGluIGV4cGFuc2lvbiBvZiBtYWNybyAn
+REVDTEFSRV9UUkFDRV9FVkVOVCcKPiAgICAgICA2MzIgfCAgICAgICAgIERFQ0xBUkVfVFJBQ0Vf
+RVZFTlQobmFtZSwgUEFSQU1TKHByb3RvKSwgUEFSQU1TKGFyZ3MpKQo+ICAgICAgICAgICB8ICAg
+ICAgICAgXn5+fn5+fn5+fn5+fn5+fn5+fgo+ICAgICBpbmNsdWRlL2xpbnV4L3RyYWNlcG9pbnQu
+aDo2MzI6MzU6IG5vdGU6IGluIGV4cGFuc2lvbiBvZiBtYWNybyAnUEFSQU1TJwo+ICAgICAgIDYz
+MiB8ICAgICAgICAgREVDTEFSRV9UUkFDRV9FVkVOVChuYW1lLCBQQVJBTVMocHJvdG8pLCBQQVJB
+TVMoYXJncykpCj4gICAgICAgICAgIHwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+IF5+fn5+fgo+ICAgICBpbmNsdWRlL3RyYWNlL2V2ZW50cy9wY2lfY29udHJvbGxlci5oOjE5OjE6
+IG5vdGU6IGluIGV4cGFuc2lvbiBvZiBtYWNybyAnVFJBQ0VfRVZFTlQnCj4gICAgICAgIDE5IHwg
+VFJBQ0VfRVZFTlQocGNpZV9sdHNzbV9zdGF0ZV90cmFuc2l0aW9uLAo+ICAgICAgICAgICB8IF5+
+fn5+fn5+fn5+Cj4gICAgIGluY2x1ZGUvdHJhY2UvZXZlbnRzL3BjaV9jb250cm9sbGVyLmg6MjA6
+OTogbm90ZTogaW4gZXhwYW5zaW9uIG9mIG1hY3JvICdUUF9QUk9UTycKPiAgICAgICAgMjAgfCAg
+ICAgICAgIFRQX1BST1RPKGNvbnN0IGNoYXIgKmRldl9uYW1lLCBjb25zdCBjaGFyICpzdGF0ZSwg
+dTMyIHJhdGUpLAo+ICAgICAgICAgICB8ICAgICAgICAgXn5+fn5+fn4KPiAKPiAKPiB2aW0gKy9k
+d19wY2llX2x0c3NtX3N0YXR1c19zdHJpbmcgKzI2NCBkcml2ZXJzL3BjaS9jb250cm9sbGVyL2R3
+Yy9wY2llLWR3LXJvY2tjaGlwLmMKPiAKPiAgICAgMjI1CQo+ICAgICAyMjYJI2lmZGVmIENPTkZJ
+R19UUkFDSU5HCj4gICAgIDIyNwlzdGF0aWMgdm9pZCByb2NrY2hpcF9wY2llX2x0c3NtX3RyYWNl
+X3dvcmsoc3RydWN0IHdvcmtfc3RydWN0ICp3b3JrKQo+ICAgICAyMjgJewo+ICAgICAyMjkJCXN0
+cnVjdCByb2NrY2hpcF9wY2llICpyb2NrY2hpcCA9IGNvbnRhaW5lcl9vZih3b3JrLCBzdHJ1Y3Qg
+cm9ja2NoaXBfcGNpZSwKPiAgICAgMjMwCQkJCQkJCXRyYWNlX3dvcmsud29yayk7Cj4gICAgIDIz
+MQkJc3RydWN0IGR3X3BjaWUgKnBjaSA9ICZyb2NrY2hpcC0+cGNpOwo+ICAgICAyMzIJCWVudW0g
+ZHdfcGNpZV9sdHNzbSBzdGF0ZTsKPiAgICAgMjMzCQl1MzIgaSwgbDFzcywgcHJldl92YWwgPSBE
+V19QQ0lFX0xUU1NNX1VOS05PV04sIHJhdGUsIHZhbDsKPiAgICAgMjM0CQo+ICAgICAyMzUJCWZv
+ciAoaSA9IDA7IGkgPCBQQ0lFX0RCR19MVFNTTV9ISVNUT1JZX0NOVDsgaSsrKSB7Cj4gICAgIDIz
+NgkJCXZhbCA9IHJvY2tjaGlwX3BjaWVfcmVhZGxfYXBiKHJvY2tjaGlwLCBQQ0lFX0NMSUVOVF9E
+QkdfRklGT19TVEFUVVMpOwo+ICAgICAyMzcJCQlyYXRlID0gRklFTERfR0VUKFBDSUVfREJHX0ZJ
+Rk9fUkFURV9NQVNLLCB2YWwpOwo+ICAgICAyMzgJCQlsMXNzID0gRklFTERfR0VUKFBDSUVfREJH
+X0ZJRk9fTDFTVUJfTUFTSywgdmFsKTsKPiAgICAgMjM5CQkJdmFsID0gRklFTERfR0VUKFBDSUVf
+TFRTU01fU1RBVFVTX01BU0ssIHZhbCk7Cj4gICAgIDI0MAkKPiAgICAgMjQxCQkJLyoKPiAgICAg
+MjQyCQkJICogSGFyZHdhcmUgTWVjaGFuaXNtOiBUaGUgcmluZyBGSUZPIGVtcGxveXMgdHdvIHRy
+YWNraW5nIGNvdW50ZXJzOgo+ICAgICAyNDMJCQkgKiAtICdsYXN0LXJlYWQtcG9pbnQnOiBtYWlu
+dGFpbnMgdGhlIHVzZXIncyBsYXN0IHJlYWQgcG9zaXRpb24KPiAgICAgMjQ0CQkJICogLSAnbGFz
+dC12YWxpZC1wb2ludCc6IHRyYWNrcyB0aGUgaGFyZHdhcmUncyBsYXN0IHN0YXRlIHVwZGF0ZQo+
+ICAgICAyNDUJCQkgKgo+ICAgICAyNDYJCQkgKiBTb2Z0d2FyZSBIYW5kbGluZzogV2hlbiB0d28g
+Y29uc2VjdXRpdmUgTFRTU00gc3RhdGVzIGFyZSBpZGVudGljYWwsCj4gICAgIDI0NwkJCSAqIGl0
+IGluZGljYXRlcyBpbnZhbGlkIHN1YnNlcXVlbnQgZGF0YSBpbiB0aGUgRklGTy4gSW4gdGhpcyBj
+YXNlLCB3ZQo+ICAgICAyNDgJCQkgKiBza2lwIHRoZSByZW1haW5pbmcgZW50cmllcy4gVGhlIGR1
+YWwtY291bnRlciBkZXNpZ24gZW5zdXJlcyB0aGF0IG9uCj4gICAgIDI0OQkJCSAqIHRoZSBuZXh0
+IHN0YXRlIHRyYW5zaXRpb24sIHJlYWRpbmcgY2FuIHJlc3VtZSBmcm9tIHRoZSBsYXN0IHVzZXIK
+PiAgICAgMjUwCQkJICogcG9zaXRpb24uCj4gICAgIDI1MQkJCSAqLwo+ICAgICAyNTIJCQlpZiAo
+KGkgPiAwICYmIHZhbCA9PSBwcmV2X3ZhbCkgfHwgdmFsID4gRFdfUENJRV9MVFNTTV9SQ1ZSWV9F
+UTMpCj4gICAgIDI1MwkJCQlicmVhazsKPiAgICAgMjU0CQo+ICAgICAyNTUJCQlzdGF0ZSA9IHBy
+ZXZfdmFsID0gdmFsOwo+ICAgICAyNTYJCQlpZiAodmFsID09IERXX1BDSUVfTFRTU01fTDFfSURM
+RSkgewo+ICAgICAyNTcJCQkJaWYgKGwxc3MgPT0gMikKPiAgICAgMjU4CQkJCQlzdGF0ZSA9IERX
+X1BDSUVfTFRTU01fTDFfMjsKPiAgICAgMjU5CQkJCWVsc2UgaWYgKGwxc3MgPT0gMSkKPiAgICAg
+MjYwCQkJCQlzdGF0ZSA9IERXX1BDSUVfTFRTU01fTDFfMTsKPiAgICAgMjYxCQkJfQo+ICAgICAy
+NjIJCj4gICAgIDI2MwkJCXRyYWNlX3BjaWVfbHRzc21fc3RhdGVfdHJhbnNpdGlvbihkZXZfbmFt
+ZShwY2ktPmRldiksCj4gICA+IDI2NAkJCQkJCWR3X3BjaWVfbHRzc21fc3RhdHVzX3N0cmluZyhz
+dGF0ZSksCj4gICAgIDI2NQkJCQkJCSgocmF0ZSArIDEpID4gcGNpLT5tYXhfbGlua19zcGVlZCkg
+Pwo+ICAgICAyNjYJCQkJCQlQQ0lfU1BFRURfVU5LTk9XTiA6IFBDSUVfU1BFRURfMl81R1QgKyBy
+YXRlKTsKPiAgICAgMjY3CQl9Cj4gICAgIDI2OAkKPiAgICAgMjY5CQlzY2hlZHVsZV9kZWxheWVk
+X3dvcmsoJnJvY2tjaGlwLT50cmFjZV93b3JrLCBtc2Vjc190b19qaWZmaWVzKDUwMDApKTsKPiAg
+ICAgMjcwCX0KPiAgICAgMjcxCQo+IAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hp
+cEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4v
+bGlzdGluZm8vbGludXgtcm9ja2NoaXAK
