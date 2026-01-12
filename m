@@ -4,117 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A79CC9EC94
-	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Jan 2026 14:29:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C9C4C9EC94
+	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Jan 2026 15:16:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mAg/lNMwFhNQBPWsHtiqaRvJmhn5FSNy/FNo47d5Ack=; b=M9j+kqW9FZisyy
-	9uutNwcQatKoK3SIovfAfn7L33deDCQin3RblITt3xMigYRQMU/ooyjngnrEO9/G4LlIsf3KS20lM
-	Wr55jRWsN3pAH+QLPlK1myY3ZMZHWrRO3Vy7yfFaxx9FQzX5fbvdvPbNxrHtMi4EMjS43pNXTgD3j
-	7nBbc7oJt7A1G4Zh/GWy6m1se74YdK2OTYV6CRcBs5tuoHcbAOTvH+EoFBbHUetK/e/C1OsmZmLPC
-	VeCzBAVoMpOGjRHmZOesNhydC0bQE+VD90o6/9yL239p49a74FqZPEaA+NbUJPVK8GOJ0smZvtcFH
-	VgZNq2Yn08/J4mGSKmQQ==;
+	List-Owner; bh=hVfAxtOUSTvi5FET0wUNcY3mnnRQH6QXYpebHzUoq8A=; b=R1qYriOWS1/Uye
+	aITbPexa7Ncszf1RCgJngKIHK1pNZRIcBtf1m9A6HYHQKBFDnxykJry/7wQ/E5n04DYy+kjlKeQ9w
+	bS5/8Q/oe8KR0d9yHocXZc/nDnQ/pVOL42/WkDZetjWQiT2byVimuKfTaqQOKObrvNORhoDShKRVJ
+	pwzflhdacxBS4dxSdc8p9YS/yj/x5AGpBL6TqQg4MhxYl5G2fMeYKUcmu+Kj7Y30gmQyHNL8TNiHN
+	NlDklb4puMUqH0aTo1BCnDsbFL9ahRagR7k/uyReGEiUgHfB+C49PTjbepsfyNFETzVzhhhYHDT5l
+	7psnu31sFmZxMMf50eYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfIui-00000005WrF-1wJ1;
-	Mon, 12 Jan 2026 14:29:00 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vfJf0-00000005cYc-25BJ;
+	Mon, 12 Jan 2026 15:16:50 +0000
+Received: from smtprelay0017.hostedemail.com ([216.40.44.17] helo=relay.hostedemail.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfIuf-00000005Wqi-1Fha;
-	Mon, 12 Jan 2026 14:28:58 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 5E33F402DB;
-	Mon, 12 Jan 2026 14:28:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A196CC16AAE;
-	Mon, 12 Jan 2026 14:28:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1768228136;
-	bh=3VnkUbTBEArOUSGeAaf3mQrAVgBFlS6FTAMdfaVarkc=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=VhFOcj9d1mLIpngG5dKREWoyeL0bO4SB9n2CBuzTcs3VnteIe9yAc0V15IhVlyf/S
-	 GE61DWri81IE3rIqK4v4PN9NvZqqSXC4Cdri5FWsxOPbpJKdrwVrtW7wxjI7HceCSc
-	 YNi4mzMMGTrwxow1DtlfWOi92B1pWbOMo39n+9fhKboL4G6T9nWQTWxIE3nxlBT3Oj
-	 a4BERb8xCj+2Pc4ADChBBS7H7c15hhqErPLuS0urhymDTsnnJaoJpuIXBszjSQ+FAW
-	 BNNpkRiWBLrZ3rnA0RR8XjEOfoswF9SQaCVdSu6tiZ8WtJodo5PtsZxOCf/NftchFV
-	 d9euQqH+pSVDQ==
-Message-ID: <b4eb4ab6-6fde-4c01-8069-470545ffdac4@kernel.org>
-Date: Mon, 12 Jan 2026 15:28:49 +0100
+	id 1vfJey-00000005cXe-33zR
+	for linux-rockchip@lists.infradead.org;
+	Mon, 12 Jan 2026 15:16:50 +0000
+Received: from omf20.hostedemail.com (a10.router.float.18 [10.200.18.1])
+	by unirelay05.hostedemail.com (Postfix) with ESMTP id F167F59162;
+	Mon, 12 Jan 2026 15:16:43 +0000 (UTC)
+Received: from [HIDDEN] (Authenticated sender: rostedt@goodmis.org) by omf20.hostedemail.com (Postfix) with ESMTPA id EF4E42002B;
+	Mon, 12 Jan 2026 15:16:41 +0000 (UTC)
+Date: Mon, 12 Jan 2026 10:16:44 -0500
+From: Steven Rostedt <rostedt@goodmis.org>
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Manivannan Sadhasivam <mani@kernel.org>, Bjorn Helgaas
+ <bhelgaas@google.com>, linux-rockchip@lists.infradead.org,
+ linux-pci@vger.kernel.org, linux-trace-kernel@vger.kernel.org,
+ linux-doc@vger.kernel.org, Masami Hiramatsu <mhiramat@kernel.org>
+Subject: Re: [PATCH v3 3/3] PCI: dw-rockchip: Add
+ pcie_ltssm_state_transition trace support
+Message-ID: <20260112101644.5c1b772a@gandalf.local.home>
+In-Reply-To: <1768180800-63364-4-git-send-email-shawn.lin@rock-chips.com>
+References: <1768180800-63364-1-git-send-email-shawn.lin@rock-chips.com>
+	<1768180800-63364-4-git-send-email-shawn.lin@rock-chips.com>
+X-Mailer: Claws Mail 3.20.0git84 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 1/3] dt-bindings: usb: Add binding for WCH CH334/CH335
- hub controller
-To: Chaoyi Chen <chaoyi.chen@rock-chips.com>, Chaoyi Chen <kernel@airkyi.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Quentin Schulz <quentin.schulz@cherry.de>, Jonas Karlman <jonas@kwiboo.se>,
- Hsun Lai <i@chainsx.cn>, John Clark <inindev@gmail.com>,
- Jimmy Hon <honyuenkwun@gmail.com>, Dragan Simic <dsimic@manjaro.org>,
- Michael Riesch <michael.riesch@collabora.com>,
- Peter Robinson <pbrobinson@gmail.com>, Alexey Charkov <alchark@gmail.com>,
- Shawn Lin <shawn.lin@rock-chips.com>,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
- Andy Yan <andy.yan@rock-chips.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org
-References: <20260112022823.91-1-kernel@airkyi.com>
- <20260112022823.91-2-kernel@airkyi.com>
- <20260112-lively-hallowed-beetle-fc15b2@quoll>
- <1515a445-576a-4833-a604-c31062f7d3fa@rock-chips.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <1515a445-576a-4833-a604-c31062f7d3fa@rock-chips.com>
+X-Rspamd-Server: rspamout06
+X-Rspamd-Queue-Id: EF4E42002B
+X-Stat-Signature: pkqtmyjz99xk34i7gczso7nyxz4r8ksh
+X-Session-Marker: 726F737465647440676F6F646D69732E6F7267
+X-Session-ID: U2FsdGVkX18oHLU8bzt/wclyIb/7L7zxrvbI6h4Fzu4=
+X-HE-Tag: 1768231001-775116
+X-HE-Meta: U2FsdGVkX1+0ozTFidj5QYjHCytY6PnsZObGBoyUvQcbsME2aCgsV8Bqd+z+IQn22TVG6Z9v8kx5BcmsxhLQ03JfJ31/nTKUJdXObmPF2Px22LW4PizSVFOX2/RuPs+msd4DYCf0nlSKYNELv2zSL09/SIKtkfsV8dsMOq1e0qNaGjg/Mpdw2MX8D7eV0mI0nbxycs4HQgBOtWCpt02W9D/1M24aOTFqQT5cxO/zJnqgRfltvPmQ7qaXxU5BFuQZM2jLNV4ct33BvnmecUYgDZt6f+s9JMFu5bF/Bz7WT0mVxRdn8j622pKY1JKQPmYRwYI++4n3gkCiPcmgm/m+Nu07fmtKft/NgqqxYlC4Yp9ysE5mvNSK5Bvamus1PKygTFIILVUMsta+5MJvHzx2aWRwwYMiEd2F
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260112_062857_405649_630AD84A 
-X-CRM114-Status: UNSURE (   9.88  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260112_071648_838505_5BEC0DFA 
+X-CRM114-Status: GOOD (  30.08  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -131,38 +73,150 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 12/01/2026 09:59, Chaoyi Chen wrote:
->>> +required:
->>> +  - compatible
->>> +  - reg
->>> +
->>> +additionalProperties: false
->>> +
->>> +examples:
->>> +  - |
->>> +    #include <dt-bindings/gpio/gpio.h>
->>> +    usb {
->>> +        dr_mode = "host";
+On Mon, 12 Jan 2026 09:20:00 +0800
+Shawn Lin <shawn.lin@rock-chips.com> wrote:
 
-One more thing - drop above line.
-
->>> +        #address-cells = <1>;
->>> +        #size-cells = <0>;
->>> +
->>> +        hub: hub@1 {
->>> +            compatible = "usb1a86,8091";
->>> +            reg = <1>;
->>> +            reset-gpios = <&gpio0 2 GPIO_ACTIVE_HIGH>;
->>
->> Are you sure?
+> Rockchip platforms provide a 64x4 bytes debug FIFO to trace the
+> LTSSM history. Any LTSSM change will be recorded. It's userful
+> for debug purpose, for example link failure, etc.
 > 
-> I guess what you're concerned about here is the polarity? 
-> If that's the case, then there's no problem.
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> ---
+> 
+> Changes in v3:
+> - reorder variables(Mani)
+> - rename loop to i; rename en to enable(Mani)
+> - use FIELD_GET(Mani)
+> - add comment about how the FIFO works(Mani)
+> 
+> Changes in v2:
+> - use tracepoint
+> 
+>  drivers/pci/controller/dwc/pcie-dw-rockchip.c | 104 ++++++++++++++++++++++++++
+>  1 file changed, 104 insertions(+)
+> 
+> diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> index 352f513..344e0b9 100644
+> --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> @@ -22,6 +22,8 @@
+>  #include <linux/platform_device.h>
+>  #include <linux/regmap.h>
+>  #include <linux/reset.h>
+> +#include <linux/workqueue.h>
+> +#include <trace/events/pci_controller.h>
+>  
+>  #include "../../pci.h"
+>  #include "pcie-designware.h"
+> @@ -73,6 +75,20 @@
+>  #define  PCIE_CLIENT_CDM_RASDES_TBA_L1_1	BIT(4)
+>  #define  PCIE_CLIENT_CDM_RASDES_TBA_L1_2	BIT(5)
+>  
+> +/* Debug FIFO information */
+> +#define PCIE_CLIENT_DBG_FIFO_MODE_CON	0x310
+> +#define  PCIE_CLIENT_DBG_EN		0xffff0007
+> +#define  PCIE_CLIENT_DBG_DIS		0xffff0000
+> +#define PCIE_CLIENT_DBG_FIFO_PTN_HIT_D0	0x320
+> +#define PCIE_CLIENT_DBG_FIFO_PTN_HIT_D1	0x324
+> +#define PCIE_CLIENT_DBG_FIFO_TRN_HIT_D0	0x328
+> +#define PCIE_CLIENT_DBG_FIFO_TRN_HIT_D1	0x32c
+> +#define  PCIE_CLIENT_DBG_TRANSITION_DATA 0xffff0000
+> +#define PCIE_CLIENT_DBG_FIFO_STATUS	0x350
+> +#define  PCIE_DBG_FIFO_RATE_MASK	GENMASK(22, 20)
+> +#define  PCIE_DBG_FIFO_L1SUB_MASK	GENMASK(10, 8)
+> +#define PCIE_DBG_LTSSM_HISTORY_CNT	64
+> +
+>  /* Hot Reset Control Register */
+>  #define PCIE_CLIENT_HOT_RESET_CTRL	0x180
+>  #define  PCIE_LTSSM_APP_DLY2_EN		BIT(1)
+> @@ -96,6 +112,7 @@ struct rockchip_pcie {
+>  	struct irq_domain *irq_domain;
+>  	const struct rockchip_pcie_of_data *data;
+>  	bool supports_clkreq;
+> +	struct delayed_work trace_work;
+>  };
+>  
+>  struct rockchip_pcie_of_data {
+> @@ -206,6 +223,89 @@ static enum dw_pcie_ltssm rockchip_pcie_get_ltssm(struct dw_pcie *pci)
+>  	return rockchip_pcie_get_ltssm_reg(rockchip) & PCIE_LTSSM_STATUS_MASK;
+>  }
+>  
+> +#ifdef CONFIG_TRACING
+> +static void rockchip_pcie_ltssm_trace_work(struct work_struct *work)
+> +{
+> +	struct rockchip_pcie *rockchip = container_of(work, struct rockchip_pcie,
+> +						trace_work.work);
+> +	struct dw_pcie *pci = &rockchip->pci;
+> +	enum dw_pcie_ltssm state;
+> +	u32 i, l1ss, prev_val = DW_PCIE_LTSSM_UNKNOWN, rate, val;
+> +
+> +	for (i = 0; i < PCIE_DBG_LTSSM_HISTORY_CNT; i++) {
+> +		val = rockchip_pcie_readl_apb(rockchip, PCIE_CLIENT_DBG_FIFO_STATUS);
+> +		rate = FIELD_GET(PCIE_DBG_FIFO_RATE_MASK, val);
+> +		l1ss = FIELD_GET(PCIE_DBG_FIFO_L1SUB_MASK, val);
+> +		val = FIELD_GET(PCIE_LTSSM_STATUS_MASK, val);
+> +
+> +		/*
+> +		 * Hardware Mechanism: The ring FIFO employs two tracking counters:
+> +		 * - 'last-read-point': maintains the user's last read position
+> +		 * - 'last-valid-point': tracks the hardware's last state update
+> +		 *
+> +		 * Software Handling: When two consecutive LTSSM states are identical,
+> +		 * it indicates invalid subsequent data in the FIFO. In this case, we
+> +		 * skip the remaining entries. The dual-counter design ensures that on
+> +		 * the next state transition, reading can resume from the last user
+> +		 * position.
+> +		 */
+> +		if ((i > 0 && val == prev_val) || val > DW_PCIE_LTSSM_RCVRY_EQ3)
+> +			break;
+> +
+> +		state = prev_val = val;
+> +		if (val == DW_PCIE_LTSSM_L1_IDLE) {
+> +			if (l1ss == 2)
+> +				state = DW_PCIE_LTSSM_L1_2;
+> +			else if (l1ss == 1)
+> +				state = DW_PCIE_LTSSM_L1_1;
+> +		}
+> +
+> +		trace_pcie_ltssm_state_transition(dev_name(pci->dev),
+> +					dw_pcie_ltssm_status_string(state),
+> +					((rate + 1) > pci->max_link_speed) ?
+> +					PCI_SPEED_UNKNOWN : PCIE_SPEED_2_5GT + rate);
+> +	}
 
-Yes, I was wondering whether polarity is set correctly.
+Does it make sense to call this work function every 5 seconds when the
+tracepoint isn't enabled?
 
-Best regards,
-Krzysztof
+You can add a function callback to when the tracepoint is enabled by defining:
+
+TRACE_EVENT_FN(<name>
+ TP_PROTO(..)
+ TP_ARGS(..)
+ TP_STRUCT__entry(..)
+ TP_fast_assign(..)
+ TP_printk(..)
+
+ reg,
+ unreg)
+
+reg() gets called when the tracepoint is first enabled. This could be where
+you can start the work function. And unreg() would stop it.
+
+You would likely need to also include state variables as I guess you don't
+want to start it if the link is down. Also, if the tracepoint is enabled
+when the link goes up you want to start the work queue.
+
+I would recommend this so that you don't call this work function when it's
+not doing anything useful.
+
+-- Steve
+
+ 
+
+> +
+> +	schedule_delayed_work(&rockchip->trace_work, msecs_to_jiffies(5000));
+> +}
+> +
 
 _______________________________________________
 Linux-rockchip mailing list
