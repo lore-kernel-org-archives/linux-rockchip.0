@@ -4,31 +4,31 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B005C9EC82
-	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Jan 2026 12:44:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC6B5C9EC80
+	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Jan 2026 12:44:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=3Z9agIqk2tdslrkNufsLTQXPkWvA/jyFmvTDB0TUZsw=; b=yS3OUrpIM1UczD
-	QTE3Pv5gmbAxfCNogg4Oy/JGUapByefUwI9yeTqjhlmWg94ef2I35bza4e60bh5Y758jx+Jpmx4jq
-	IxqTnTNuJagqq4f0LTCTK6hCgxUbymW7o8csi2LKhG/OLOZoLvyh71qAzl3va2tZfa5X6AQOax5m6
-	bPOlXILMbED0/z18IfmsOyhkyT6G6zgWimioGbMcJzAeXkJjUJP6WjcDwXqlwSvO22IVSOoaCTuoL
-	0Q+WMHTwN2NUaRDC5gJEiOzwOR2WqkpLgAnziRBQippN3WrwQXvnfvasFj/tYNtCzusUkkoryuKYo
-	sPqEVzY8JITfR48ER19A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Zxa7rpo/knfISOO8hFrS02itd4YoZiKUb7YGBwrmU6M=; b=BQjnrdFhz91Ajw
+	IN4FeLi66gJ4+FKLHL0IbWyK+vJ/uqNrw6kBmfD2Mave4iEToxRATH5DVRMV1ZdBpDH9jzZL/P1x8
+	hZU0ESaSlBnGr01vALdACq6pVhJtSE9rv/eDlHUtj9owMKKum0EqmHsutc1kN8j9DtiOllq56QvgW
+	KWJWKkQa1IofYQ3L2OuzrHjC0InA/TqvXvEcxnPs9w3emyjQv8HcAGerVAH2UdOncfcF1LaG6s80I
+	vtzacvIpLPEWEGjuFFoc56z/ZJdjq6OwrFW4OfXLTS3W5dAzyO1tI7p/Jrz/bYRflLDLX274AXVuW
+	B9/vyQlXUI7Q5jNvfaWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfHHL-00000005L4B-2BOS;
-	Mon, 12 Jan 2026 12:44:15 +0000
-Received: from mail-m49194.qiye.163.com ([45.254.49.194])
+	id 1vfHHS-00000005L6f-0UEV;
+	Mon, 12 Jan 2026 12:44:22 +0000
+Received: from mail-m15593.qiye.163.com ([101.71.155.93])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfHHI-00000005L2g-0CGr;
-	Mon, 12 Jan 2026 12:44:13 +0000
+	id 1vfHHP-00000005L52-10Il;
+	Mon, 12 Jan 2026 12:44:20 +0000
 Received: from localhost.localdomain (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 305730432;
-	Mon, 12 Jan 2026 20:44:08 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 30573044a;
+	Mon, 12 Jan 2026 20:44:15 +0800 (GMT+08:00)
 From: Joseph Chen <chenjh@rock-chips.com>
 To: Conor Dooley <conor+dt@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -42,24 +42,26 @@ Cc: Heiko Stuebner <heiko@sntech.de>,
 	linux-kernel@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	Joseph Chen <chenjh@rock-chips.com>
-Subject: [PATCH v3 0/3] Add RK801 PMIC support
-Date: Mon, 12 Jan 2026 20:43:48 +0800
-Message-Id: <20260112124351.17707-1-chenjh@rock-chips.com>
+Subject: [PATCH v3 1/3] dt-bindings: mfd: Add rk801 binding
+Date: Mon, 12 Jan 2026 20:43:49 +0800
+Message-Id: <20260112124351.17707-2-chenjh@rock-chips.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20260112124351.17707-1-chenjh@rock-chips.com>
+References: <20260112124351.17707-1-chenjh@rock-chips.com>
 MIME-Version: 1.0
-X-HM-Tid: 0a9bb23c332509d2kunm3fddfe07a776
+X-HM-Tid: 0a9bb23c4efa09d2kunm3fddfe07a7c2
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQx0ZGVZCHx1CH0JPGhlLTkhWFRQJFh
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGkxNQlZJGBoYQ0pCHU1DTxhWFRQJFh
 	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
 	hVSktLVUpCS0tZBg++
 DKIM-Signature: a=rsa-sha256;
-	b=TkK8JX0KXZcpy90oV5dsPlnE7CtnXOhMVV/0yuvoGZF2anvjt205KjzvqyNQ+yMiAFv7VG7AL06UXUceZw4LP8ZMPvIs5Tj8+AeeEjdVm8IchwIJ8ndM/WndA7FzoONzuHbipPRHFXMjwBpcJ5fQGl+u4y/4gkJtoIGtMjKc5sU=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=7K96o9PfB6wlxTIuc4FqOnAFIU3qJ4/WcE8q4TkwfB8=;
+	b=cDlpH1BMYYZdN1TWXxCXeyvUCQtGkH47q9CK/F96Da9iPvzqPvJqx3QK3DItT4GPIECGqq6krzhCZreTl3vZsmJm+GDSHXhnT1i8JM2gNuuw4fRdMFXkmuLZ16ppLbASYQxxsl1AiWSIrxzrwVf3jU6t1yv9DUMQSV0Pp1PgoKk=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=2S8QoD+nAVfBD+btYxoEeVM+/hE0CQqqhO0ZYPFytuQ=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260112_044412_612995_4C995885 
-X-CRM114-Status: GOOD (  13.14  )
+X-CRM114-CacheID: sfid-20260112_044419_512983_3F45BF74 
+X-CRM114-Status: GOOD (  12.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,57 +78,218 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This patch series adds support for the Rockchip RK801 Power Management
-Integrated Circuit (PMIC) to the Linux kernel.
+Add DT binding document for Rockchip's RK801 PMIC
 
-The RK801 is a PMIC designed for multimedia and handheld devices. It
-includes:
-- 4 BUCK regulators (DCDC)
-- 2 LDO regulators
-- 1 SWITCH regulator
-- Interrupt support for power key events
-
-The implementation follows the existing rk808 MFD driver architecture
-and integrates RK801 as a new variant in the RK8XX family.
-
-Patch 1 adds the device tree binding documentation for RK801, describing
-the compatible string, regulators configuration, and example usage.
-
-Patch 2 adds the MFD core support for RK801, including device detection
-and register definitions.
-
-Patch 3 adds the regulator driver support for RK801, implementing the
-4 BUCK regulators, 2 LDO regulators, and 1 SWITCH regulator.
-
-Changes in v3:
-- Fix patch split issue: MFD patch incorrectly removed the entire
-  drivers/regulator/rk808-regulator.c file in v2
-- Kconfig description: use "Rockchip RK8xx Power Management Chips"
-  instead of listing all individual chips (suggested by Heiko)
-
-Changes in v2:
-- Include all necessary To/Cc entries
-- Rename pmic/regulator names from uppercase to lowercase(dcdc[1-4]|ldo[1-2]|switch)
-  to align with DT coding style
-- Drop 'rockchip,system-power-controller'
-- Remove unused 'pwrctrl-gpios' from DT binding example
-- Split regulator support into a separate patch (was part of mfd patch in v1)
-
-Joseph Chen (3):
-  dt-bindings: mfd: Add rk801 binding
-  mfd: rk8xx: Add RK801 support
-  regulator: rk808: Add RK801 support
-
- .../bindings/mfd/rockchip,rk801.yaml          | 197 ++++++++++++++
- drivers/mfd/Kconfig                           |   6 +-
- drivers/mfd/rk8xx-core.c                      |  81 ++++++
- drivers/mfd/rk8xx-i2c.c                       |  33 ++-
- drivers/regulator/rk808-regulator.c           | 243 ++++++++++++++++++
- include/linux/mfd/rk808.h                     | 118 +++++++++
- 6 files changed, 674 insertions(+), 4 deletions(-)
+Signed-off-by: Joseph Chen <chenjh@rock-chips.com>
+---
+ .../bindings/mfd/rockchip,rk801.yaml          | 197 ++++++++++++++++++
+ 1 file changed, 197 insertions(+)
  create mode 100644 Documentation/devicetree/bindings/mfd/rockchip,rk801.yaml
 
---
+diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk801.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk801.yaml
+new file mode 100644
+index 00000000000..7c71447200b
+--- /dev/null
++++ b/Documentation/devicetree/bindings/mfd/rockchip,rk801.yaml
+@@ -0,0 +1,197 @@
++# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/mfd/rockchip,rk801.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: RK801 Power Management Integrated Circuit
++
++maintainers:
++  - Joseph Chen <chenjh@rock-chips.com>
++
++description: |
++  Rockchip RK801 series PMIC. This device consists of an i2c controlled MFD
++  that includes multiple switchable regulators.
++
++properties:
++  compatible:
++    enum:
++      - rockchip,rk801
++
++  reg:
++    maxItems: 1
++
++  interrupts:
++    maxItems: 1
++
++  system-power-controller:
++    type: boolean
++    description:
++      Telling whether or not this PMIC is controlling the system power.
++
++  wakeup-source:
++    type: boolean
++    description:
++      Device can be used as a wakeup source.
++
++  vcc1-supply:
++    description:
++      The input supply for dcdc1.
++
++  vcc2-supply:
++    description:
++      The input supply for dcdc2.
++
++  vcc3-supply:
++    description:
++      The input supply for dcdc3.
++
++  vcc4-supply:
++    description:
++      The input supply for dcdc4.
++
++  vcc5-supply:
++    description:
++      The input supply for ldo1.
++
++  vcc6-supply:
++    description:
++      The input supply for ldo2.
++
++  vcc7-supply:
++    description:
++      The input supply for switch.
++
++  regulators:
++    type: object
++    patternProperties:
++      "^(dcdc[1-4]|ldo[1-2]|switch)$":
++        type: object
++        $ref: /schemas/regulator/regulator.yaml#
++        unevaluatedProperties: false
++    additionalProperties: false
++
++required:
++  - compatible
++  - reg
++  - interrupts
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/pinctrl/rockchip.h>
++    #include <dt-bindings/interrupt-controller/irq.h>
++    #include <dt-bindings/gpio/gpio.h>
++
++    i2c {
++        #address-cells = <1>;
++        #size-cells = <0>;
++
++        rk801: pmic@27 {
++            compatible = "rockchip,rk801";
++            reg = <0x27>;
++            interrupt-parent = <&gpio0>;
++            interrupts = <RK_PC0 IRQ_TYPE_LEVEL_LOW>;
++            pinctrl-names = "default";
++            pinctrl-0 = <&pmic_int_l>;
++            system-power-controller;
++            wakeup-source;
++
++            vcc1-supply = <&vcc_sys>;
++            vcc2-supply = <&vcc_sys>;
++            vcc3-supply = <&vcc_sys>;
++            vcc4-supply = <&vcc_sys>;
++            vcc5-supply = <&vcc3v3_sys>;
++            vcc6-supply = <&vcc3v3_sys>;
++            vcc7-supply = <&vcc3v3_sys>;
++
++            regulators {
++                vdd_cpu: dcdc1 {
++                    regulator-name = "vdd_cpu";
++                    regulator-min-microvolt = <500000>;
++                    regulator-max-microvolt = <1500000>;
++                    regulator-initial-mode = <0x1>;
++                    regulator-boot-on;
++                    regulator-always-on;
++                    regulator-state-mem {
++                        regulator-mode = <0x2>;
++                        regulator-off-in-suspend;
++                        regulator-suspend-microvolt = <950000>;
++                    };
++                };
++
++                vcc3v3_sys: dcdc2 {
++                    regulator-name = "vcc3v3_sys";
++                    regulator-min-microvolt = <3300000>;
++                    regulator-max-microvolt = <3300000>;
++                    regulator-initial-mode = <0x1>;
++                    regulator-boot-on;
++                    regulator-always-on;
++                    regulator-state-mem {
++                        regulator-mode = <0x2>;
++                        regulator-on-in-suspend;
++                        regulator-suspend-microvolt = <3300000>;
++                    };
++                };
++
++                vcc_ddr: dcdc3 {
++                    regulator-name = "vcc_ddr";
++                    regulator-boot-on;
++                    regulator-always-on;
++                    regulator-state-mem {
++                        regulator-mode = <0x2>;
++                        regulator-on-in-suspend;
++                    };
++                };
++
++                vdd_logic: dcdc4 {
++                    regulator-name = "vdd_logic";
++                    regulator-min-microvolt = <500000>;
++                    regulator-max-microvolt = <1500000>;
++                    regulator-initial-mode = <0x1>;
++                    regulator-boot-on;
++                    regulator-always-on;
++                    regulator-state-mem {
++                        regulator-mode = <0x2>;
++                        regulator-off-in-suspend;
++                        regulator-suspend-microvolt = <900000>;
++                    };
++                };
++
++                vdd0v9_sys: ldo1 {
++                    regulator-name = "vdd0v9_sys";
++                    regulator-min-microvolt = <900000>;
++                    regulator-max-microvolt = <900000>;
++                    regulator-boot-on;
++                    regulator-always-on;
++                    regulator-state-mem {
++                        regulator-off-in-suspend;
++                        regulator-suspend-microvolt = <900000>;
++                    };
++                };
++
++                vcc_1v8: ldo2 {
++                    regulator-name = "vcc_1v8";
++                    regulator-min-microvolt = <1800000>;
++                    regulator-max-microvolt = <1800000>;
++                    regulator-boot-on;
++                    regulator-always-on;
++                    regulator-state-mem {
++                        regulator-off-in-suspend;
++                        regulator-suspend-microvolt = <1800000>;
++                    };
++                };
++
++                vcc_3v3: switch {
++                    regulator-name = "vcc_3v3";
++                    regulator-boot-on;
++                    regulator-always-on;
++                    regulator-state-mem {
++                        regulator-off-in-suspend;
++                        regulator-suspend-microvolt = <3300000>;
++                    };
++                };
++            };
++        };
++    };
+-- 
 2.25.1
 
 
