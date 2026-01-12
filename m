@@ -4,89 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04ABDC9EC8D
-	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Jan 2026 14:13:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A79CC9EC94
+	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Jan 2026 14:29:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ViNiCY5YUj1JrrgB7KLaCppE2wfwBzcejGhW0bqJtuM=; b=ic2UFR26MO0cFw
-	2Pe9CuTc9gkv+ICGubzO4wxe6+CMhQCnhcCCrCMxsf8ZPB5qTuMWhY2x1m5ugyB3lBav5T962C+JQ
-	77QCTVqe3ExorvkxKZC45PP/Zp25tLGwEva13TCSb2q6WeWqmy06jXL/hDfDQL4P2snjlOWrerGiU
-	mBdiQkjmYOEMzUZ6fRNZslFkOkLNzDlhjbSS5llogw9JGbPIjp+XS7JMXTyu6UBzoHzfGF0+Jfyl1
-	z5ALnThO9WIdxKv+owEA85Jh8e7PW3+fqzIkRbt9UI1M2gqq6b4zAFhoO/hcv0GFntjuFOX4NS3H4
-	l34BCgNFhXjIUwPaNeBg==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=mAg/lNMwFhNQBPWsHtiqaRvJmhn5FSNy/FNo47d5Ack=; b=M9j+kqW9FZisyy
+	9uutNwcQatKoK3SIovfAfn7L33deDCQin3RblITt3xMigYRQMU/ooyjngnrEO9/G4LlIsf3KS20lM
+	Wr55jRWsN3pAH+QLPlK1myY3ZMZHWrRO3Vy7yfFaxx9FQzX5fbvdvPbNxrHtMi4EMjS43pNXTgD3j
+	7nBbc7oJt7A1G4Zh/GWy6m1se74YdK2OTYV6CRcBs5tuoHcbAOTvH+EoFBbHUetK/e/C1OsmZmLPC
+	VeCzBAVoMpOGjRHmZOesNhydC0bQE+VD90o6/9yL239p49a74FqZPEaA+NbUJPVK8GOJ0smZvtcFH
+	VgZNq2Yn08/J4mGSKmQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfIfh-00000005V2D-084V;
-	Mon, 12 Jan 2026 14:13:29 +0000
-Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
+	id 1vfIui-00000005WrF-1wJ1;
+	Mon, 12 Jan 2026 14:29:00 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfIfe-00000005V17-0ryM
-	for linux-rockchip@lists.infradead.org;
-	Mon, 12 Jan 2026 14:13:27 +0000
-Received: by mail-pl1-x630.google.com with SMTP id d9443c01a7336-2a0d06ffa2aso47039425ad.3
-        for <linux-rockchip@lists.infradead.org>; Mon, 12 Jan 2026 06:13:25 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1768227205; x=1768832005; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=+jlV+CAPs310WldW/buR8RNLyPHwhl+Y2cQ6sQ4HpnA=;
-        b=F13T5ZcvOt46p4X1HePBMvBW+a0kkt06A4w6M4222ydwppGeBJ1cvG1Y70uYcXGY7s
-         2R2Mh8FJBGvHdjKDJnIjlVkPZKUw9eR58Z3rVM176mVrbitMqK+Y+Sue41CTZazax46t
-         Yi0SUCzS1hwybItkLDYlAfsHgsUdm0rJUxiZORM71WzRfsRL0pvERhjlt6zaRk7Xb87A
-         mhHC9Lk+0NFs/EwhtR6Xeu+BE6gUkRRuwKcel+LLjdyVX/2LZH0/RBRBpnhldNWOX9OE
-         Dx8N+HYyfLK6lq3AZksVI0OYxRgRu1T1e3Fkzt8YqPlez+4cHzVzoBMpx+wnlgo7rCYo
-         7HRw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1768227205; x=1768832005;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=+jlV+CAPs310WldW/buR8RNLyPHwhl+Y2cQ6sQ4HpnA=;
-        b=g2DmTYTzBk+deiYOhKpSuEKdnX9+/DZx6eSaib1VwUx7sCpMGdXYVKHmgmirc9KA5o
-         NfIXYYTMKP39vMf65JwnNmaWDM8TwdtBfzNnoiGT7tIZeUy8rV8tgPlnPTpJgMFxikUW
-         faM6nhDpWVbwPyCJt3MziW0qjv5Rc7XaYO1x05W3Gdcu0umMhTfg/VoyiI1gDvHrfAV2
-         9C/HPVWchVj5U8Yfr8+ZJOYs0aaeZB7kpIv/rr3Y4lRBWCwQWl7X1CSbKnAyy8TDEC+W
-         RUKw9PPyOaDARyKJwqiHtVQ3f6rRw8Ap/WNmc50HHLi1sYTmGHlZ2CEZXvttsv1pEE7q
-         R1Zg==
-X-Forwarded-Encrypted: i=1; AJvYcCVt1rSPuMGr+zTSsVL4eZ7YcsIFkpnXCW8bJCt5BJ7DR6EpW3OA4cOAGHc9sr44akr1Te6rEfwn+gpTib5WNw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyeaMXY8xvcbqUSn6f8gNnXLje07yJ1c6tGDMRJuw50u23xCefI
-	/r4BJw5Ww4FDR6M2r/pWNxPQ+8KtuLcQkP3eu0PM9QDwsqqLzxI5QrnZ
-X-Gm-Gg: AY/fxX5PoccqbmpwW1Qy6/i/g1ZGWSYhpBH9UxDZbC2Sjnc54KtJtZQgRvzJthEJhaK
-	nHjBna6HZhdGvLlboYT77pFU3ueh8qrKPn7kdqchRd0+nH2S996vWVVCSwjfFYz0xXPMb05hXX1
-	z2sSznX7CVuk5JXnDeOD95CEbjEaXmcWEvYrvLH+YAqn9IrvWZidtWfOXuepgbZd/1RT18WRHWa
-	3zV95yO8qTW/QQW7jUPKn3nUDh5W/GxJavmOZXWIy0qvLT6pya95PZ4XquupbBvJv+jalFdsZvQ
-	zSEGY4BSW4iOVSXUrKyPGgGuVlzSjTEK25RoiZPQrbhK1MCdgZYcVAJjXevKCfqjoSwibU1tItL
-	Bmp3/gvD7B/ClMUhVo+MkLxpa8Iwqv7/f4Wve0lTW5KlJ+DFeYilDMKRqjppK4Gsx8VImhC3WAY
-	PYy7dd2wZQ
-X-Google-Smtp-Source: AGHT+IEce98yak9gOUEEAV8f478oht3gyp/nFi/fv0TYVmXF4aE5SsLzQdDp3zKy+V3GJSQ3S2BOSQ==
-X-Received: by 2002:a17:902:f54f:b0:299:bda7:ae3c with SMTP id d9443c01a7336-2a3ee428923mr168226395ad.14.1768227204669;
-        Mon, 12 Jan 2026 06:13:24 -0800 (PST)
-Received: from arch.localdomain ([2a09:bac1:6500:8::19a:1f0])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2a3e3c3a512sm179660615ad.10.2026.01.12.06.13.20
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 12 Jan 2026 06:13:24 -0800 (PST)
-From: Jun Yan <jerrysteve1101@gmail.com>
-To: heiko@sntech.de,
-	pbrobinson@gmail.com,
-	dsimic@manjaro.org,
-	didi.debian@cknow.org,
-	conor+dt@kernel.org
-Cc: devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	Jun Yan <jerrysteve1101@gmail.com>
-Subject: [PATCH] arm64: dts: rockchip: Remove hdmi_sound on rk3399-pinebook-pro
-Date: Mon, 12 Jan 2026 22:13:00 +0800
-Message-ID: <20260112141300.332996-1-jerrysteve1101@gmail.com>
-X-Mailer: git-send-email 2.52.0
+	id 1vfIuf-00000005Wqi-1Fha;
+	Mon, 12 Jan 2026 14:28:58 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 5E33F402DB;
+	Mon, 12 Jan 2026 14:28:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A196CC16AAE;
+	Mon, 12 Jan 2026 14:28:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1768228136;
+	bh=3VnkUbTBEArOUSGeAaf3mQrAVgBFlS6FTAMdfaVarkc=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=VhFOcj9d1mLIpngG5dKREWoyeL0bO4SB9n2CBuzTcs3VnteIe9yAc0V15IhVlyf/S
+	 GE61DWri81IE3rIqK4v4PN9NvZqqSXC4Cdri5FWsxOPbpJKdrwVrtW7wxjI7HceCSc
+	 YNi4mzMMGTrwxow1DtlfWOi92B1pWbOMo39n+9fhKboL4G6T9nWQTWxIE3nxlBT3Oj
+	 a4BERb8xCj+2Pc4ADChBBS7H7c15hhqErPLuS0urhymDTsnnJaoJpuIXBszjSQ+FAW
+	 BNNpkRiWBLrZ3rnA0RR8XjEOfoswF9SQaCVdSu6tiZ8WtJodo5PtsZxOCf/NftchFV
+	 d9euQqH+pSVDQ==
+Message-ID: <b4eb4ab6-6fde-4c01-8069-470545ffdac4@kernel.org>
+Date: Mon, 12 Jan 2026 15:28:49 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 1/3] dt-bindings: usb: Add binding for WCH CH334/CH335
+ hub controller
+To: Chaoyi Chen <chaoyi.chen@rock-chips.com>, Chaoyi Chen <kernel@airkyi.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Quentin Schulz <quentin.schulz@cherry.de>, Jonas Karlman <jonas@kwiboo.se>,
+ Hsun Lai <i@chainsx.cn>, John Clark <inindev@gmail.com>,
+ Jimmy Hon <honyuenkwun@gmail.com>, Dragan Simic <dsimic@manjaro.org>,
+ Michael Riesch <michael.riesch@collabora.com>,
+ Peter Robinson <pbrobinson@gmail.com>, Alexey Charkov <alchark@gmail.com>,
+ Shawn Lin <shawn.lin@rock-chips.com>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Andy Yan <andy.yan@rock-chips.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org
+References: <20260112022823.91-1-kernel@airkyi.com>
+ <20260112022823.91-2-kernel@airkyi.com>
+ <20260112-lively-hallowed-beetle-fc15b2@quoll>
+ <1515a445-576a-4833-a604-c31062f7d3fa@rock-chips.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <1515a445-576a-4833-a604-c31062f7d3fa@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260112_061326_263423_6A9F90CA 
-X-CRM114-Status: UNSURE (   9.93  )
+X-CRM114-CacheID: sfid-20260112_062857_405649_630AD84A 
+X-CRM114-Status: UNSURE (   9.88  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -104,37 +131,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-According to the Pinebook Pro specification, it lacks HDMI port,
-but hdmi_sound is wrongly enabled.
+On 12/01/2026 09:59, Chaoyi Chen wrote:
+>>> +required:
+>>> +  - compatible
+>>> +  - reg
+>>> +
+>>> +additionalProperties: false
+>>> +
+>>> +examples:
+>>> +  - |
+>>> +    #include <dt-bindings/gpio/gpio.h>
+>>> +    usb {
+>>> +        dr_mode = "host";
 
-This fixes the following warning:
+One more thing - drop above line.
 
-platform hdmi-sound: deferred probe pending: asoc-simple-card: parse error
+>>> +        #address-cells = <1>;
+>>> +        #size-cells = <0>;
+>>> +
+>>> +        hub: hub@1 {
+>>> +            compatible = "usb1a86,8091";
+>>> +            reg = <1>;
+>>> +            reset-gpios = <&gpio0 2 GPIO_ACTIVE_HIGH>;
+>>
+>> Are you sure?
+> 
+> I guess what you're concerned about here is the polarity? 
+> If that's the case, then there's no problem.
 
-Fixes: 5a65505a69884 ("arm64: dts: rockchip: Add initial support for Pinebook Pro")
-Signed-off-by: Jun Yan <jerrysteve1101@gmail.com>
----
- arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts | 4 ----
- 1 file changed, 4 deletions(-)
+Yes, I was wondering whether polarity is set correctly.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
-index eaaca08a7601..a6ac89567baf 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
-@@ -421,10 +421,6 @@ &gpu {
- 	status = "okay";
- };
- 
--&hdmi_sound {
--	status = "okay";
--};
--
- &i2c0 {
- 	clock-frequency = <400000>;
- 	i2c-scl-falling-time-ns = <4>;
--- 
-2.52.0
-
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
