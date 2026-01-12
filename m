@@ -4,55 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEF80CF45D7
-	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Jan 2026 22:26:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFF2ACF45D5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Jan 2026 22:26:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
-	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=SwLYK9XT5xrzQuisAqpKRm20hSm4x4gnPGs9nuSYBfM=; b=PH5MtrIbEq27DG
-	ePwqBGCV3RCaRZurAbyc8V5ToB5qXvxdBNLHEtLvhwS5LS9a9AActM3QmyLjhkyI4Tt1YD9ILuKJH
-	yJU7Y/sV1r7HdfgAE3j9YCZkZUj26nTGsxzPRJ//2erZAEsmzuN9g6oFRrajEsNjzVr0HmPxieuFm
-	lKyKdfoMAKKlpIifisjbKXug1S0O1TCuQRJLoEHPmyoZK4v1UT8QT7sZAsJv/guhtGa7JVvTwsx3u
-	J0zyCCh5V5qHrlZnDMlkiT1lr/rTQ1VP2Ov7SodKLCZCtnMiF/ZYUGDZ8VH064/oEE5gPM13F7zko
-	UHO/6E0OBMxoeKVBHGvQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=dB1I0UQbA/xowC5LW6cHW1iYnjHqP/FnB8OcLHffbnc=; b=j/kqBqOHzS0YOx
+	fZ0jnoYnWMAl6Fs12tQ/zw12fJHRobp9NTSXxRpK2XzrHRYgOpE/F9nU8bFkT6m9BNWjBcDC1/MC9
+	6D+hKJiYbSIRdzfPWvXUUj7iTTG79qJnvQNGkDKTVVfKUpmM0acKEu9+1pkEb2xY4jzDqpIMCKztr
+	iSB3QidVKIDlJ1osVid5SqfAt5+6X9E14iUbj6YEv2lshKdBGGxE5hD1yE+5rK/P9lf/6r2sFp6zq
+	yC9kMPenJGPcL1H69HMPDT08quO+GQ3oBafXYoyeJHsT1DsBBZj6fu3IO5yS0MGFVKl8mG2HnBUS1
+	fIHXFQ78F4+yiyfO5inw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfQMz-00000006FnP-0i4Z;
-	Mon, 12 Jan 2026 22:26:41 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vfQNB-00000006Fvy-0H3O;
+	Mon, 12 Jan 2026 22:26:53 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfQMv-00000006FlW-2p57;
-	Mon, 12 Jan 2026 22:26:39 +0000
+	id 1vfQN9-00000006FuH-14eu;
+	Mon, 12 Jan 2026 22:26:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=wWb/w85gdwaqFeKpkqi3eBmzYIDL+GjmRN6SfH9uJI8=; b=GTiKVqQOGC7lVhZ8ExcFKd41b7
+	TUfmDkwabP/GKa/M7WvBMwSFuRge9hheVJ62xldawKxuSnx+6YKm8XZ3x0WsIFBpHqdUikoiwmtQS
+	ZLkwBMwL+1qzqvQ9to2AlVW0v4OtgZkhEsqo0bxVlwD2rIgGaeWUikoiWvyftTFT5/6N36I85M0Ly
+	0aMNUwbE1lDdx/Eb3sOpQ/8qZ89bD3JzAGZX9q69HLhlCbUqA/ebObFq93CFQ4PeE+yxsmdbnShDV
+	smf24ddNqNuzcz8ZwrDBT6z08PeVPL/kjEu/aQ8CAh0LXnSjMxps0c/kBVjDONfHx1lJ7MYzleJ++
+	Yh25O22Q==;
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vfQN2-00000001l3A-3Gd9;
+	Mon, 12 Jan 2026 22:26:47 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1768256794;
-	bh=TgYUCidDKWv6b2I1M6WbhdnXeMuTPT1duM24nQAyZlg=;
-	h=From:Subject:Date:To:Cc:From;
-	b=PKj03XzgkwC/BaGrdJQaZl6lDTjl55mcEilEjibuY9NQaAqwg1A5mxKXN/5DzHlZR
-	 KivywoZZhIejOUv8q0Pmt+AXkay99Eo8lbFfhA+cvPR81ZiexTFwVzB9+EQSgU3ksx
-	 ic02rfNz/jgGtSqLr7jYQyilr+oa4Fn0oYIFQ3taR9TBf9NRIc5QM5Znq3WmgQSAYW
-	 46v5ZNtQQMo9g4vao4t5bPxcmrlWWoVocAhKYbf3yYFpx5mO1lUlZ8lhNr7JyO9y5A
-	 wb2bRH/IvEcf+lp4wNICVe3Slmd9clOckC3kshh9ARHydFwxDWxRta64hoXG+aA5tW
-	 Lb/VSnZnb7vGw==
+	s=mail; t=1768256798;
+	bh=hPdWONUuBZHvs/8qLAlcTuSIfRD9EX7k/uxvPVejFN8=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=SqJsOxj37Eryt6u1z5Lp1xwAEIilQBm1uUvAMhMyXI4GCvhcdh/Byqgv9ZAOySt4Z
+	 +v3jlk11NGLqiVST+FsK4Xa822xaTlf4fPN9XhWXepCZ3kz4qqlvmvcIF8Rc8MBfiM
+	 WBDKMDyG9UIyaN8Q9Z1mGLSflGLNgzMmw9PY7iGRIMYBkmob2op85rx+0Z+7oF1w5Y
+	 pVR5mkTpH7+J64Mxuir45vpj/njFoa6BN9tao5f4DRnCZm4tTtYiAjhdFiZ3Wg2LtK
+	 sbLVYASHE4AnYp84iTsJcs9r9ZqjZDotiX/CMVNg+JsDmDQY/R2YuwevVUJNBxHaYt
+	 GEw7bPfozWV1g==
 Received: from localhost (unknown [82.79.138.145])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7A67217E0A49;
-	Mon, 12 Jan 2026 23:26:34 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id E6C7517E1513;
+	Mon, 12 Jan 2026 23:26:37 +0100 (CET)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Subject: [PATCH v2 0/4] Add HDMI 2.0 support to DW HDMI QP TX
-Date: Tue, 13 Jan 2026 00:26:17 +0200
-Message-Id: <20260113-dw-hdmi-qp-scramb-v2-0-ae7b2c58d24d@collabora.com>
+Date: Tue, 13 Jan 2026 00:26:21 +0200
+Subject: [PATCH v2 4/4] drm/rockchip: dw_hdmi_qp: Do not send HPD events
+ for all connectors
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAAp1ZWkC/32NTQ6CMBBGr0Jm7Zi2yO/KexgW7bTIJECxNagh3
- N3KAVy+l3zv2yC6wC5Cm20Q3MqR/ZxAnTKgQc93h2wTgxKqkErkaF842InxsWCkoCeDZI2tTVE
- R9Q2k3RJcz++jeesSDxyfPnyOi1X+7L/aKlFgnZe9qy5C6rK5kh9HbXzQZ/ITdPu+fwFEpJprt
- gAAAA==
-X-Change-ID: 20251203-dw-hdmi-qp-scramb-cdbd8b57ccf9
+Message-Id: <20260113-dw-hdmi-qp-scramb-v2-4-ae7b2c58d24d@collabora.com>
+References: <20260113-dw-hdmi-qp-scramb-v2-0-ae7b2c58d24d@collabora.com>
+In-Reply-To: <20260113-dw-hdmi-qp-scramb-v2-0-ae7b2c58d24d@collabora.com>
 To: Andrzej Hajda <andrzej.hajda@intel.com>, 
  Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
  Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
@@ -70,8 +82,8 @@ Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
  Maud Spierings <maud_spierings@hotmail.com>
 X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260112_142637_903930_E3C310DA 
-X-CRM114-Status: GOOD (  10.99  )
+X-CRM114-CacheID: sfid-20260112_222645_907420_0DB2B705 
+X-CRM114-Status: GOOD (  14.90  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,43 +100,115 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This patch series provides the missing support for high TMDS clock ratio
-and scrambling to DW HDMI QP TX library, required for handling HDMI 2.0
-display modes on RK3576 & RK3588 SoCs.
+In order to optimize the HPD event handling and run the detect cycle on
+the affected connector only, make use of
+drm_connector_helper_hpd_irq_event() instead of
+drm_helper_hpd_irq_event().
 
-In order to allow addressing the SCDC status lost on sink disconnects,
-it adds an atomic variant of the drm_bridge_funcs.detect callback and a
-new drm_bridge_detect_ctx() helper, which is further used in
-drm_bridge_connector to switch to ->detect_ctx hook.
+Additionally, move devm_request_threaded_irq() after bridge connector
+initialization.
 
-Furthermore, it optimizes HPD event handling in dw_hdmi_qp Rockchip
-platform driver to run the detect cycle on the affected connector only.
-
+Tested-by: Diederik de Haas <diederik@cknow-tech.com>
+Tested-by: Maud Spierings <maud_spierings@hotmail.com>
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
-Changes in v2:
-- Collected Tested-by tags from Diederik and Maud
-- Rebased onto latest drm-misc-next
-- Ensured the recently introduced 'no-hpd' support for dealing with
-  unconnected/repurposed/broken HPD pin is limited to HDMI 1.4 rates
-- Link to v1: https://lore.kernel.org/r/20251203-dw-hdmi-qp-scramb-v1-0-836fe7401a69@collabora.com
+ drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 44 ++++++++++++--------------
+ 1 file changed, 20 insertions(+), 24 deletions(-)
 
----
-Cristian Ciocaltea (4):
-      drm/bridge: Add ->detect_ctx hook and drm_bridge_detect_ctx()
-      drm/bridge-connector: Switch to using ->detect_ctx hook
-      drm/bridge: dw-hdmi-qp: Add high TMDS clock ratio and scrambling support
-      drm/rockchip: dw_hdmi_qp: Do not send HPD events for all connectors
+diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
+index e91caae7e353..4091966a2075 100644
+--- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
+@@ -92,6 +92,7 @@ struct rockchip_hdmi_qp {
+ 	struct regmap *regmap;
+ 	struct regmap *vo_regmap;
+ 	struct rockchip_encoder encoder;
++	struct drm_connector *connector;
+ 	struct dw_hdmi_qp *hdmi;
+ 	struct phy *phy;
+ 	struct gpio_desc *frl_enable_gpio;
+@@ -251,14 +252,10 @@ static void dw_hdmi_qp_rk3588_hpd_work(struct work_struct *work)
+ 	struct rockchip_hdmi_qp *hdmi = container_of(work,
+ 						     struct rockchip_hdmi_qp,
+ 						     hpd_work.work);
+-	struct drm_device *drm = hdmi->encoder.encoder.dev;
+-	bool changed;
++	bool changed = drm_connector_helper_hpd_irq_event(hdmi->connector);
+ 
+-	if (drm) {
+-		changed = drm_helper_hpd_irq_event(drm);
+-		if (changed)
+-			dev_dbg(hdmi->dev, "connector status changed\n");
+-	}
++	if (changed)
++		dev_dbg(hdmi->dev, "connector status changed\n");
+ }
+ 
+ static irqreturn_t dw_hdmi_qp_rk3576_hardirq(int irq, void *dev_id)
+@@ -475,13 +472,12 @@ static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
+ 	struct dw_hdmi_qp_plat_data plat_data = {};
+ 	const struct rockchip_hdmi_qp_cfg *cfg;
+ 	struct drm_device *drm = data;
+-	struct drm_connector *connector;
+ 	struct drm_encoder *encoder;
+ 	struct rockchip_hdmi_qp *hdmi;
+ 	struct resource *res;
+ 	struct clk_bulk_data *clks;
+ 	struct clk *ref_clk;
+-	int ret, irq, i;
++	int ret, hpd_irq, i;
+ 
+ 	if (!pdev->dev.of_node)
+ 		return -ENODEV;
+@@ -582,17 +578,9 @@ static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
+ 	if (plat_data.cec_irq < 0)
+ 		return plat_data.cec_irq;
+ 
+-	irq = platform_get_irq_byname(pdev, "hpd");
+-	if (irq < 0)
+-		return irq;
+-
+-	ret = devm_request_threaded_irq(hdmi->dev, irq,
+-					cfg->ctrl_ops->hardirq_callback,
+-					cfg->ctrl_ops->irq_callback,
+-					IRQF_SHARED, "dw-hdmi-qp-hpd",
+-					hdmi);
+-	if (ret)
+-		return ret;
++	hpd_irq = platform_get_irq_byname(pdev, "hpd");
++	if (hpd_irq < 0)
++		return hpd_irq;
+ 
+ 	drm_encoder_helper_add(encoder, &dw_hdmi_qp_rockchip_encoder_helper_funcs);
+ 	drm_simple_encoder_init(drm, encoder, DRM_MODE_ENCODER_TMDS);
+@@ -606,12 +594,20 @@ static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
+ 				     "Failed to bind dw-hdmi-qp");
+ 	}
+ 
+-	connector = drm_bridge_connector_init(drm, encoder);
+-	if (IS_ERR(connector))
+-		return dev_err_probe(hdmi->dev, PTR_ERR(connector),
++	hdmi->connector = drm_bridge_connector_init(drm, encoder);
++	if (IS_ERR(hdmi->connector))
++		return dev_err_probe(hdmi->dev, PTR_ERR(hdmi->connector),
+ 				     "Failed to init bridge connector\n");
+ 
+-	return drm_connector_attach_encoder(connector, encoder);
++	ret = drm_connector_attach_encoder(hdmi->connector, encoder);
++	if (ret)
++		return ret;
++
++	return devm_request_threaded_irq(hdmi->dev, hpd_irq,
++					 cfg->ctrl_ops->hardirq_callback,
++					 cfg->ctrl_ops->irq_callback,
++					 IRQF_SHARED, "dw-hdmi-qp-hpd",
++					 hdmi);
+ }
+ 
+ static void dw_hdmi_qp_rockchip_unbind(struct device *dev,
 
- drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c   | 184 ++++++++++++++++++++++---
- drivers/gpu/drm/display/drm_bridge_connector.c |  73 +++++-----
- drivers/gpu/drm/drm_bridge.c                   |  58 ++++++++
- drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c |  44 +++---
- include/drm/drm_bridge.h                       |  30 ++++
- 5 files changed, 313 insertions(+), 76 deletions(-)
----
-base-commit: 38feb171b3f92d77e8061fafb5ddfffc2c13b672
-change-id: 20251203-dw-hdmi-qp-scramb-cdbd8b57ccf9
+-- 
+2.52.0
 
 
 _______________________________________________
