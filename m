@@ -4,218 +4,367 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF018C43458
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E432CC44503
 	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Jul 2026 15:31:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:CC:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jfKOU7x98o6GRZBE6wN+b2Y8a9VQR/t+Y10+ISYGNtQ=; b=qRUbnjLPgitqBq
-	NqAZk8lSNrDWdR1FKIqNe3/FAGEbtWEzOBZDsl1nIab/AE0D+B7QCuIRnxSHQqlASq6cLmGJJDqTd
-	Y3BEnqnEcK0Z36fWFbeC+fhX75OO0Ox7HIK6Z6cr7zYd2CDXtaA+uLAVSVNA5aLkygSOiRW2gxn7z
-	lAGwU+AJZbl/oIqWBbrEekMYWvsi9WuBhad/eaQG8jeUmjnmpLKWfw+frk+8I6ciIpzflZhrum3bN
-	tYBhBBkcZGfDf5D2J06mOXIhjcaA9vBSQ9vQKJNe99xcWfcWA5yRAr6DNjeP545hMDh1szMzzPd5f
-	l3Ky/sGH9RFfcdZ9teJw==;
+	List-Owner; bh=YgN8UeUilpcL8BmCJXs3tHWmjVeDKORC9BgCZ6WzYBU=; b=qf3RgQhV++hwV6
+	oLHFjVJcyt9/5hD+2RvMCtwhJU2s69TzLQG3kx5TAL64xc2eUe3ScUgqquePY1JeDnvalLw/+gEqG
+	TJC1FjQy4+cS8z4WkvsqqKTPTXAEB55n9khOVwTAJVDroKa8fekVLVYaUoHuOuqs8uxP4GRpCIIIH
+	nqxEiewGHg7ruFR0dbnlO+4D5RCDiRd2DUz7BkeAKx/NA+zgK3hVqevRRvATJJ3f4QNXStKEUGt1g
+	ZO3GmxH8DhtnMD4WLOZ6O8HvEUBRjHet8LKgXfzVaFwhSj2VvBQzBoqR0ZQns20h82WcaO+vASwQV
+	irLBHEm6duQfJNuLYTjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wh7lf-0000000FJ0r-1PI2;
+	id 1wh7lf-0000000FJ13-21Bc;
 	Tue, 07 Jul 2026 15:31:27 +0000
-Received: from mgamail.intel.com ([192.198.163.18])
+Received: from mx08-00178001.pphosted.com ([91.207.212.93] helo=mx07-00178001.pphosted.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdweW-00000000po5-2LjJ;
-	Thu, 08 Jan 2026 20:30:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1767904241; x=1799440241;
-  h=from:to:cc:subject:date:message-id:in-reply-to:
-   references:mime-version:content-transfer-encoding;
-  bh=vPbyTh7YzQWhQZBns/Fcr/oKbKUg0zp/D1q69bSSXVs=;
-  b=OAOcnWJabTwszrMXQjYRZaaNSo8Zy3DEk5ruerzM5KlmY/4ZqR8Vl+qq
-   nW/z9rHColKbshhj2t4PySBiPYk3H8MCyyW3Jze+0Ek7KCDQuBTvl3AL+
-   2wfNtxotQkRCLamIVthGI8kMOtRPcaGX8colxO3gai+1ePa60aoopCM5x
-   HeOguiZQrMEDRSMz255/0aA7wdt9am70nFNniUygfR/7LawjqjGe5rURk
-   bLMfXAwtmEmtHOBwy/WIJu+kQRYSD631ZTFZStemoLp7B0CNK9B2HrQ1D
-   DixOnagnmWr6Ck0H0+Z8KYwDzKPbMJEuUi3MQdWUgD7om7wRxHculPjzV
-   A==;
-X-CSE-ConnectionGUID: HsnLNlRNQDy+YvfpRztb2Q==
-X-CSE-MsgGUID: vggI+LsLSji8owwmcHlTKw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11665"; a="68486004"
-X-IronPort-AV: E=Sophos;i="6.21,211,1763452800"; 
-   d="scan'208";a="68486004"
-Received: from fmviesa002.fm.intel.com ([10.60.135.142])
-  by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Jan 2026 12:30:37 -0800
-X-CSE-ConnectionGUID: WiqnhKv9Rw+scZ+IrLbS7A==
-X-CSE-MsgGUID: +Y08kTfVSAqlwX30VeHBpQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,211,1763452800"; 
-   d="scan'208";a="226706634"
-Received: from black.igk.intel.com ([10.91.253.5])
-  by fmviesa002.fm.intel.com with ESMTP; 08 Jan 2026 12:30:26 -0800
-Received: by black.igk.intel.com (Postfix, from userid 1003)
-	id E597499; Thu, 08 Jan 2026 21:30:17 +0100 (CET)
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Mark Brown <broonie@kernel.org>,
-	Varshini Rajendran <varshini.rajendran@microchip.com>,
-	Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Sunny Luo <sunny.luo@amlogic.com>,
-	Janne Grunau <j@jannau.net>,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	Chin-Ting Kuo <chin-ting_kuo@aspeedtech.com>,
-	CL Wang <cl634@andestech.com>,
-	Manikandan Muralidharan <manikandan.m@microchip.com>,
-	David Lechner <dlechner@baylibre.com>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Jonas Gorski <jonas.gorski@gmail.com>,
-	Hang Zhou <929513338@qq.com>,
-	Jun Guo <jun.guo@cixtech.com>,
-	Philipp Stanner <phasta@kernel.org>,
-	Charles Keepax <ckeepax@opensource.cirrus.com>,
-	Bartosz Golaszewski <brgl@kernel.org>,
-	=?UTF-8?q?Beno=C3=AEt=20Monin?= <benoit.monin@bootlin.com>,
-	Shiji Yang <yangshiji66@outlook.com>,
-	James Clark <james.clark@linaro.org>,
-	Jonathan Marek <jonathan@marek.ca>,
-	Carlos Song <carlos.song@nxp.com>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	Huacai Chen <chenhuacai@kernel.org>,
-	Xianwei Zhao <xianwei.zhao@amlogic.com>,
-	Prajna Rajendra Kumar <prajna.rajendrakumar@microchip.com>,
-	Sergio Perez Gonzalez <sperezglz@gmail.com>,
-	Miquel Raynal <miquel.raynal@bootlin.com>,
-	Qianfeng Rong <rongqianfeng@vivo.com>,
-	Haibo Chen <haibo.chen@nxp.com>,
-	Gabor Juhos <j4g8y7@gmail.com>,
-	Md Sadre Alam <quic_mdalam@quicinc.com>,
-	Rosen Penev <rosenp@gmail.com>,
-	Luis de Arquer <luis.dearquer@inertim.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Cosmin Tanislav <cosmin-gabriel.tanislav.xa@renesas.com>,
-	Tudor Ambarus <tudor.ambarus@linaro.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Longbin Li <looong.bin@gmail.com>,
-	Patrice Chotard <patrice.chotard@foss.st.com>,
-	=?UTF-8?q?Cl=C3=A9ment=20Le=20Goffic?= <clement.legoffic@foss.st.com>,
-	Alessandro Grassi <alessandro.grassi@mailbox.org>,
-	Chen-Yu Tsai <wens@kernel.org>,
-	Darshan R <rathod.darshan.0896@gmail.com>,
-	Aaron Kling <webgeek1234@gmail.com>,
-	Vishwaroop A <va@nvidia.com>,
-	Haixu Cui <quic_haixcui@quicinc.com>,
-	Darshan Rathod <darshanrathod475@gmail.com>,
-	linux-spi@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-amlogic@lists.infradead.org,
-	asahi@lists.linux.dev,
-	linux-aspeed@lists.ozlabs.org,
-	openbmc@lists.ozlabs.org,
-	linux-rpi-kernel@lists.infradead.org,
-	linux-sound@vger.kernel.org,
-	patches@opensource.cirrus.com,
-	imx@lists.linux.dev,
-	linux-arm-msm@vger.kernel.org,
-	linux-riscv@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-samsung-soc@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-sunxi@lists.linux.dev,
-	linux-tegra@vger.kernel.org,
-	virtualization@lists.linux.dev
-Cc: Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ray Liu <ray.liu@airoha.com>,
-	Sven Peter <sven@kernel.org>,
-	Neal Gompa <neal@gompa.dev>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	Joel Stanley <joel@jms.id.au>,
-	Andrew Jeffery <andrew@codeconstruct.com.au>,
-	Ryan Wanner <ryan.wanner@microchip.com>,
-	Michael Hennerich <michael.hennerich@analog.com>,
-	=?UTF-8?q?Nuno=20S=C3=A1?= <nuno.sa@analog.com>,
-	Kamal Dasu <kamal.dasu@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Ray Jui <rjui@broadcom.com>,
-	Scott Branden <sbranden@broadcom.com>,
-	William Zhang <william.zhang@broadcom.com>,
-	Kursad Oney <kursad.oney@broadcom.com>,
-	Anand Gore <anand.gore@broadcom.com>,
-	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>,
-	David Rhodes <david.rhodes@cirrus.com>,
-	Richard Fitzgerald <rf@opensource.cirrus.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Frank Li <Frank.Li@nxp.com>,
-	Jean-Marie Verdun <verdun@hpe.com>,
-	Nick Hawkins <nick.hawkins@hpe.com>,
-	Yang Shen <shenyang39@huawei.com>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	Lixu Zhang <lixu.zhang@intel.com>,
-	Yinbo Zhu <zhuyinbo@loongson.cn>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Conor Dooley <conor.dooley@microchip.com>,
-	Daire McNamara <daire.mcnamara@microchip.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Avi Fishman <avifishman70@gmail.com>,
-	Tomer Maimon <tmaimon77@gmail.com>,
-	Tali Perry <tali.perry1@gmail.com>,
-	Patrick Venture <venture@google.com>,
-	Nancy Yuen <yuenn@google.com>,
-	Benjamin Fair <benjaminfair@google.com>,
-	Han Xu <han.xu@nxp.com>,
-	Yogesh Gaur <yogeshgaur.83@gmail.com>,
-	Linus Walleij <linusw@kernel.org>,
-	Daniel Mack <daniel@zonque.org>,
-	Haojian Zhuang <haojian.zhuang@gmail.com>,
-	Robert Jarzmik <robert.jarzmik@free.fr>,
-	Chris Packham <chris.packham@alliedtelesis.co.nz>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Fabrizio Castro <fabrizio.castro.jz@renesas.com>,
-	Andi Shyti <andi.shyti@kernel.org>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Paul Walmsley <pjw@kernel.org>,
-	Samuel Holland <samuel.holland@sifive.com>,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Alain Volmat <alain.volmat@foss.st.com>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Li-hao Kuo <lhjeff911@gmail.com>,
-	Masahisa Kojima <masahisa.kojima@linaro.org>,
-	Jassi Brar <jaswinder.singh@linaro.org>,
-	Laxman Dewangan <ldewangan@nvidia.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Sowjanya Komatineni <skomatineni@nvidia.com>,
-	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
-	Masami Hiramatsu <mhiramat@kernel.org>,
-	=?UTF-8?q?Jonathan=20Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>,
-	Michal Simek <michal.simek@amd.com>,
-	Max Filippov <jcmvbkbc@gmail.com>
-Subject: [PATCH v1 2/4] spi: Drop duplicate of_node assignment
-Date: Thu,  8 Jan 2026 21:23:39 +0100
-Message-ID: <20260108203004.3538449-3-andriy.shevchenko@linux.intel.com>
-X-Mailer: git-send-email 2.50.1
-In-Reply-To: <20260108203004.3538449-1-andriy.shevchenko@linux.intel.com>
-References: <20260108203004.3538449-1-andriy.shevchenko@linux.intel.com>
+	id 1vfCiT-00000004vlo-1Wbl;
+	Mon, 12 Jan 2026 07:51:59 +0000
+Received: from pps.filterd (m0046660.ppops.net [127.0.0.1])
+	by mx07-00178001.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 60C7cNla3097038;
+	Mon, 12 Jan 2026 08:50:52 +0100
+Received: from osppr02cu001.outbound.protection.outlook.com (mail-norwayeastazon11013004.outbound.protection.outlook.com [40.107.159.4])
+	by mx07-00178001.pphosted.com (PPS) with ESMTPS id 4bkcs84kxe-1
+	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT);
+	Mon, 12 Jan 2026 08:50:51 +0100 (CET)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=ngUqrA1w17P4duKmGIQQ7gqWijxd9Mc6ADUaYoVzDQ1D/8OXWUQtYaG1yiobMlgXgitr/NkqEDxYjPFob8ZNR+AXkKlRql0YeRmY+14QKK3u9P0Qv45nF2UbNBGuhGfmt5BzhNyo8k01DuM5umaLWjxYVLZJnwwSjlwSYu3HxpUq6aNEGWl2A161eASzyPz+4qLofnhT6h8UQmtnGwG2dzpVGf2AbmLaGpnsBPjnqBL3pE+e+hTcmgrDXHQWqBlFIv6AbH455ZkNJw3dOJmIZVqsXoqfpKSjvrvppcL9ypN//MHXQnMto6tSwwKBRk/a/pxeukZqJk8ftXSKwoaC5Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=jjMwkYQ16vfqedNTreqjsfPnukp+Z8KjoPS2xsulImw=;
+ b=HgIN11kpP9DRQraFRYQU2IlHsnq76E/q+eLSUmWE8quwrU2BkdTfYTB/0BT78g8jyO/iMek4jlVHQB7UxuZF/uJYMkufu3UhNhdaM5zEQ9+xXphAWgFMMh9sfrnuvb5T92XZoharP4CpJtfbDRQLtlHtXcSTDh30pbcNPGqMvXz/aAK662BkmCkRa/zMzRvp6g52OE5vCA+Gc7JSZpj40IIR2UD51UmIqiUgKtKeEsQR9pmaszfNPcWlSCCUgjKsFvRj9nFj+5+N/riYcp2eefb1SJAOydvHoACDMxojhCYYDlbet6Cmbo0+bfZhlhE/v/KYxS2SiePRXPrmW6Wlqw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=fail (sender ip is
+ 164.130.1.59) smtp.rcpttodomain=linux.intel.com smtp.mailfrom=foss.st.com;
+ dmarc=fail (p=none sp=none pct=100) action=none header.from=foss.st.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=foss.st.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=jjMwkYQ16vfqedNTreqjsfPnukp+Z8KjoPS2xsulImw=;
+ b=dKuKr6e6ris6qhtmKiTog8Q2g+D4G6+N1sDIBhIlT00qgxu5boFM1QKBdCtpbXhOGBqTx12MTxbGjSNZ6w3DA3ijB9ZsRbm8d24Knah9xQCqPJ2aN5x0SykShJ29UceJKZessjZi43a1i3jje5e2tY+daTlE3bqKHF/qPaizU97IX6p5uql/hZ7xjNt6c/GgO12uwD7ZDbkxdb0ZiqHKZJalAwlvCfVK3VjKy1qLfLquH9EC4v8QMpxHvk9KD78O2TjEYc6Smkv71aSejR/oUiwHm/yqsZZwNdTaaWIP1OL6SfYRKPbcF1k7HSN1S5dxF+X34wRdGJLSLNr+jw/WrQ==
+Received: from AS4P189CA0047.EURP189.PROD.OUTLOOK.COM (2603:10a6:20b:659::19)
+ by PA6PR10MB9597.EURPRD10.PROD.OUTLOOK.COM (2603:10a6:102:515::13) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9499.7; Mon, 12 Jan
+ 2026 07:50:45 +0000
+Received: from AMS0EPF00000199.eurprd05.prod.outlook.com
+ (2603:10a6:20b:659:cafe::b6) by AS4P189CA0047.outlook.office365.com
+ (2603:10a6:20b:659::19) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9499.7 via Frontend Transport; Mon,
+ 12 Jan 2026 07:50:44 +0000
+X-MS-Exchange-Authentication-Results: spf=fail (sender IP is 164.130.1.59)
+ smtp.mailfrom=foss.st.com; dkim=none (message not signed)
+ header.d=none;dmarc=fail action=none header.from=foss.st.com;
+Received-SPF: Fail (protection.outlook.com: domain of foss.st.com does not
+ designate 164.130.1.59 as permitted sender) receiver=protection.outlook.com;
+ client-ip=164.130.1.59; helo=smtpO365.st.com;
+Received: from smtpO365.st.com (164.130.1.59) by
+ AMS0EPF00000199.mail.protection.outlook.com (10.167.16.245) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.9520.1 via Frontend Transport; Mon, 12 Jan 2026 07:50:44 +0000
+Received: from STKDAG1NODE2.st.com (10.75.128.133) by smtpo365.st.com
+ (10.250.44.71) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.29; Mon, 12 Jan
+ 2026 08:52:07 +0100
+Received: from [10.48.87.33] (10.48.87.33) by STKDAG1NODE2.st.com
+ (10.75.128.133) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.29; Mon, 12 Jan
+ 2026 08:50:38 +0100
+Message-ID: <718e1a8f-240a-45db-80ad-0e9c97db316b@foss.st.com>
+Date: Mon, 12 Jan 2026 08:50:38 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [Linux-stm32] [PATCH v1 2/4] spi: Drop duplicate of_node
+ assignment
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+        Mark Brown
+	<broonie@kernel.org>,
+        Varshini Rajendran <varshini.rajendran@microchip.com>,
+        Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>,
+        "AngeloGioacchino Del
+ Regno" <angelogioacchino.delregno@collabora.com>,
+        Sunny Luo
+	<sunny.luo@amlogic.com>, Janne Grunau <j@jannau.net>,
+        Chin-Ting Kuo
+	<chin-ting_kuo@aspeedtech.com>,
+        CL Wang <cl634@andestech.com>,
+        "Manikandan
+ Muralidharan" <manikandan.m@microchip.com>,
+        David Lechner
+	<dlechner@baylibre.com>,
+        Florian Fainelli <florian.fainelli@broadcom.com>,
+        Jonas Gorski <jonas.gorski@gmail.com>, Hang Zhou <929513338@qq.com>,
+        Jun Guo
+	<jun.guo@cixtech.com>, Philipp Stanner <phasta@kernel.org>,
+        Charles Keepax
+	<ckeepax@opensource.cirrus.com>,
+        Bartosz Golaszewski <brgl@kernel.org>,
+        =?UTF-8?Q?Beno=C3=AEt_Monin?= <benoit.monin@bootlin.com>,
+        Shiji Yang
+	<yangshiji66@outlook.com>,
+        James Clark <james.clark@linaro.org>,
+        "Jonathan
+ Marek" <jonathan@marek.ca>,
+        Carlos Song <carlos.song@nxp.com>,
+        Sakari Ailus
+	<sakari.ailus@linux.intel.com>,
+        Huacai Chen <chenhuacai@kernel.org>,
+        "Xianwei
+ Zhao" <xianwei.zhao@amlogic.com>,
+        Prajna Rajendra Kumar
+	<prajna.rajendrakumar@microchip.com>,
+        Sergio Perez Gonzalez
+	<sperezglz@gmail.com>,
+        Miquel Raynal <miquel.raynal@bootlin.com>,
+        "Qianfeng
+ Rong" <rongqianfeng@vivo.com>,
+        Haibo Chen <haibo.chen@nxp.com>, Gabor Juhos
+	<j4g8y7@gmail.com>,
+        Md Sadre Alam <quic_mdalam@quicinc.com>,
+        Rosen Penev
+	<rosenp@gmail.com>,
+        Luis de Arquer <luis.dearquer@inertim.com>,
+        "Geert
+ Uytterhoeven" <geert+renesas@glider.be>,
+        Cosmin Tanislav
+	<cosmin-gabriel.tanislav.xa@renesas.com>,
+        Tudor Ambarus
+	<tudor.ambarus@linaro.org>,
+        Krzysztof Kozlowski <krzk@kernel.org>,
+        Longbin Li
+	<looong.bin@gmail.com>,
+        Patrice Chotard <patrice.chotard@foss.st.com>,
+        =?UTF-8?Q?Cl=C3=A9ment_Le_Goffic?= <clement.legoffic@foss.st.com>,
+        "Alessandro Grassi" <alessandro.grassi@mailbox.org>,
+        Chen-Yu Tsai
+	<wens@kernel.org>,
+        Darshan R <rathod.darshan.0896@gmail.com>,
+        Aaron Kling
+	<webgeek1234@gmail.com>, Vishwaroop A <va@nvidia.com>,
+        Haixu Cui
+	<quic_haixcui@quicinc.com>,
+        Darshan Rathod <darshanrathod475@gmail.com>,
+        <linux-spi@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+        <linux-kernel@vger.kernel.org>, <linux-amlogic@lists.infradead.org>,
+        <asahi@lists.linux.dev>, <linux-aspeed@lists.ozlabs.org>,
+        <openbmc@lists.ozlabs.org>, <linux-rpi-kernel@lists.infradead.org>,
+        <linux-sound@vger.kernel.org>, <patches@opensource.cirrus.com>,
+        <imx@lists.linux.dev>, <linux-arm-msm@vger.kernel.org>,
+        <linux-riscv@lists.infradead.org>,
+        <linux-mediatek@lists.infradead.org>,
+        <linux-rockchip@lists.infradead.org>,
+        <linux-renesas-soc@vger.kernel.org>,
+        <linux-samsung-soc@vger.kernel.org>,
+        <linux-stm32@st-md-mailman.stormreply.com>,
+        <linux-sunxi@lists.linux.dev>, <linux-tegra@vger.kernel.org>,
+        <virtualization@lists.linux.dev>
+CC: Kursad Oney <kursad.oney@broadcom.com>,
+        Alexandre Belloni
+	<alexandre.belloni@bootlin.com>,
+        Lixu Zhang <lixu.zhang@intel.com>,
+        "Kunihiko
+ Hayashi" <hayashi.kunihiko@socionext.com>,
+        Jean-Marie Verdun
+	<verdun@hpe.com>, Frank Li <Frank.Li@nxp.com>,
+        David Rhodes
+	<david.rhodes@cirrus.com>,
+        "Max Filippov" <jcmvbkbc@gmail.com>,
+        Conor Dooley
+	<conor.dooley@microchip.com>,
+        Laxman Dewangan <ldewangan@nvidia.com>,
+        Jernej
+ Skrabec <jernej.skrabec@gmail.com>,
+        Alim Akhtar <alim.akhtar@samsung.com>,
+        "Claudiu Beznea" <claudiu.beznea@tuxon.dev>,
+        =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?=
+	<rafal@milecki.pl>,
+        Masahisa Kojima <masahisa.kojima@linaro.org>,
+        "Fabio
+ Estevam" <festevam@gmail.com>,
+        Jerome Brunet <jbrunet@baylibre.com>,
+        "Li-hao
+ Kuo" <lhjeff911@gmail.com>,
+        Benjamin Fair <benjaminfair@google.com>,
+        "Yogesh
+ Gaur" <yogeshgaur.83@gmail.com>,
+        Kevin Hilman <khilman@baylibre.com>,
+        "Tomer
+ Maimon" <tmaimon77@gmail.com>,
+        Yinbo Zhu <zhuyinbo@loongson.cn>,
+        "Jonathan
+ Hunter" <jonathanh@nvidia.com>,
+        Nancy Yuen <yuenn@google.com>,
+        "Broadcom
+ internal kernel review list" <bcm-kernel-feedback-list@broadcom.com>,
+        "Joel
+ Stanley" <joel@jms.id.au>, Orson Zhai <orsonzhai@gmail.com>,
+        Andrew Jeffery
+	<andrew@codeconstruct.com.au>,
+        Lorenzo Bianconi <lorenzo@kernel.org>,
+        "Kamal
+ Dasu" <kamal.dasu@broadcom.com>,
+        Masami Hiramatsu <mhiramat@kernel.org>,
+        Fabrizio Castro <fabrizio.castro.jz@renesas.com>,
+        Maxime Coquelin
+	<mcoquelin.stm32@gmail.com>,
+        Ryan Wanner <ryan.wanner@microchip.com>,
+        "Anand
+ Gore" <anand.gore@broadcom.com>,
+        William Zhang <william.zhang@broadcom.com>,
+        Michael Hennerich <michael.hennerich@analog.com>,
+        Martin Blumenstingl
+	<martin.blumenstingl@googlemail.com>,
+        Ray Jui <rjui@broadcom.com>, "Sascha
+ Hauer" <s.hauer@pengutronix.de>,
+        =?UTF-8?Q?Jonathan_Neusch=C3=A4fer?=
+	<j.neuschaefer@gmx.net>,
+        Haojian Zhuang <haojian.zhuang@gmail.com>,
+        "Jassi
+ Brar" <jaswinder.singh@linaro.org>,
+        Richard Fitzgerald
+	<rf@opensource.cirrus.com>,
+        Chris Packham
+	<chris.packham@alliedtelesis.co.nz>,
+        =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
+	<clg@kaod.org>,
+        Nick Hawkins <nick.hawkins@hpe.com>,
+        Matthias Brugger
+	<matthias.bgg@gmail.com>, Han Xu <han.xu@nxp.com>,
+        Sven Peter
+	<sven@kernel.org>,
+        =?UTF-8?Q?Nuno_S=C3=A1?= <nuno.sa@analog.com>,
+        "Michal
+ Simek" <michal.simek@amd.com>,
+        Andi Shyti <andi.shyti@kernel.org>,
+        "Neil
+ Armstrong" <neil.armstrong@linaro.org>,
+        Yang Shen <shenyang39@huawei.com>, Vladimir Oltean <olteanv@gmail.com>,
+        Baolin Wang
+	<baolin.wang@linux.alibaba.com>,
+        Scott Branden <sbranden@broadcom.com>,
+        "Daire McNamara" <daire.mcnamara@microchip.com>,
+        Patrick Venture
+	<venture@google.com>,
+        Linus Walleij <linusw@kernel.org>, Heiko Stuebner
+	<heiko@sntech.de>,
+        Nicolas Ferre <nicolas.ferre@microchip.com>,
+        "Robert
+ Jarzmik" <robert.jarzmik@free.fr>,
+        Samuel Holland
+	<samuel.holland@sifive.com>,
+        Tali Perry <tali.perry1@gmail.com>,
+        Avi Fishman
+	<avifishman70@gmail.com>,
+        Thierry Reding <thierry.reding@gmail.com>,
+        Sowjanya
+ Komatineni <skomatineni@nvidia.com>,
+        Ray Liu <ray.liu@airoha.com>,
+        "Pengutronix Kernel Team" <kernel@pengutronix.de>,
+        Chunyan Zhang
+	<zhang.lyra@gmail.com>,
+        "Paul Walmsley" <pjw@kernel.org>, Neal Gompa
+	<neal@gompa.dev>,
+        Shawn Guo <shawnguo@kernel.org>, Daniel Mack
+	<daniel@zonque.org>
+References: <20260108203004.3538449-1-andriy.shevchenko@linux.intel.com>
+ <20260108203004.3538449-3-andriy.shevchenko@linux.intel.com>
+Content-Language: en-US
+From: Amelie Delaunay <amelie.delaunay@foss.st.com>
+In-Reply-To: <20260108203004.3538449-3-andriy.shevchenko@linux.intel.com>
+X-Originating-IP: [10.48.87.33]
+X-ClientProxiedBy: ENXCAS1NODE2.st.com (10.75.128.138) To STKDAG1NODE2.st.com
+ (10.75.128.133)
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: AMS0EPF00000199:EE_|PA6PR10MB9597:EE_
+X-MS-Office365-Filtering-Correlation-Id: bba13204-3bfc-4661-bfa1-08de51af4a75
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|32650700017|1800799024|82310400026|36860700013|7416014|376014|7053199007|921020|41080700001;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?aTNFanE4YmNwK3NpVXdVR3NoTERFWVVPQStPanhBM1RSNGlWbWkreUIxTFYw?=
+ =?utf-8?B?R1NvYjF4eTc1dnhyWFI4Zm84WTM0eURic3VRbkxDYTl3VVN0cnNFcmdyOGw1?=
+ =?utf-8?B?dU4reHpUZkNmaWdBYlhnSURHUjNWdEZpN3ArMkl0TFl1VmZJRGRPTnMvL0dD?=
+ =?utf-8?B?TTdySzZ3RXI5eDU1RVp4YUdjMGFVS0I0bDQxbUZQdStFRmN6NnhOVE1yY1lp?=
+ =?utf-8?B?Rm14RHN6RnpwMWdJNmhkc3BjTjZua0o4eUROQjJzUkVHYVVJR004dnpGd3J5?=
+ =?utf-8?B?d2o2ZEtjK0U5V1VDNytTempvVlBGM0R6Y1NXQkNtOE5KMC93M09RcXhsMWE3?=
+ =?utf-8?B?TFA5UURTc051YUg2MzVrUU5Wc0NDTmhIUkRHMmtwNms4b3pra245OERXV1Q2?=
+ =?utf-8?B?VGc1ZDUydCt5YnBnOWdnWDVnL0hONGl6cjhaaEtoaUl5dHFxdWtFZm52Rklm?=
+ =?utf-8?B?V0VML0xYUVpESXQxSVlVc0dXNmdrdlg3WkpkMEkyNitrZEc0VjVWdXhDWmpm?=
+ =?utf-8?B?M3ByTWxCU0thMXZ0bENZc0lFWWJCQ1ZYa0s5TGNqK3p5NER4Z04vY204WndL?=
+ =?utf-8?B?eTFuN1NjSnlPS1JSdTdHSllGdjBZTElYWGY0ZmpEN3AyS2VGb1FSc3dUSXEw?=
+ =?utf-8?B?OEtTZEwwY05tTytjb09HUWcwSjVvUFlCaGtPVWRkT1JGSDBpcGhBMjh3T0Y2?=
+ =?utf-8?B?ZERtK2IwTWdsY1dJaVB1U3VuTnNOYTNJN1JadEoxR09VR1VySUJaeUxEa2dp?=
+ =?utf-8?B?VGFVcmxqeHlBNU9rV2ZpNjJVRCtXa3Y1SDlOMkt6TEFVci9JcmhEcFFDTlZw?=
+ =?utf-8?B?YjlYOWV2cVByQkZ3Mm4raExaSDBwODkxK3htS2UzVlNzWVV1ZVZFd0pHcXl0?=
+ =?utf-8?B?SDk2M3drbnBQbUd4YjI4WTlZOVNhSWYvK2d3NXpTQnplT2xMK2p0dkJIUDFK?=
+ =?utf-8?B?b25sMStVMk8vYlJXUWhFS0JiYlpvK29VNzN6RCsrMlZ5Sm9NR3BlRnd2aGox?=
+ =?utf-8?B?dTByZUx6b1VmTWdxYlhvRllBZFF5aFNBeGcxTGkzNlNOUTY4dCsvc0R2TmpX?=
+ =?utf-8?B?Q3p5UFpnN0tMTjIrSGFnRjVJdkZZaUplMkxRY3RHSGo0N2lJTXJXMkU3Miti?=
+ =?utf-8?B?eWxYZm15c2RML2dnbFJQd2lqRHdFdlNJYURzNERweXNCdUhvNVBLdFhMNXlP?=
+ =?utf-8?B?c2FNZkZxZ3FpeGN1UmtCbk15YkprSUJnc0hldW9Zb0tIanBwczQ5QWx6eDA4?=
+ =?utf-8?B?QXUvSXNFZU84RnVjY2wxTHhVaXg3MmM1RkgxRGF5NmF4cXQ3b0Y2UjRVUW0y?=
+ =?utf-8?B?YnoxWEQ4d3ZTU3BiZ3hjVDdySXVWc2p3YVoxUnZvNU10VXlpdjFtTyt1M1M3?=
+ =?utf-8?B?eW1oZnhrYWlmcFlEbzM5LzFrekFBczZaMWhCaTFOVzRUV05MVnZVdjBvV002?=
+ =?utf-8?B?UHYvNVFhVVdET0g0RVBRblhWK0ZMdlhuSTlKeG0ySkxic0s1QU9NRGwvR2VV?=
+ =?utf-8?B?RHhNMEhSTnJnVDAwZnZkUU9wYUVFSkozMUhMcWUxczlpZG8vWXZxRTgwelps?=
+ =?utf-8?B?TERBayt4K0tjUkdzMUptU3RMRjVEUy9YUldOdmJxZnF3UlU1eDJ1c1BGamJG?=
+ =?utf-8?B?dnM5RUIzNmE5REdMY0h4M1lzVUhMQWphdis1K3dlekc0SEtQZ3dNbldIbzJL?=
+ =?utf-8?B?TVNjeUcrQ1dWYlo5NHZLb3Z0cXdTNTNWek5yOGFaaFd0S082ODVUWjFWbkNz?=
+ =?utf-8?B?aEZVc3VjQUdMV2tYOVFqTXJOUGU1RUJEWHozOGJtRFY2M09mR2gxNkJVeGRC?=
+ =?utf-8?B?NTJqcVB5RjNYMjNhazY4OVJmTFlZU3JQZVJERCtQQ3VsV0FIejFxTnRSVEVw?=
+ =?utf-8?B?bGtxODVOaFJZUHltZlZFcGRTdFFMSlpOTzlXaVBhL0thRlBiTTBOaXdVU3h2?=
+ =?utf-8?B?UitnWkVFVFFraVpaeDEya1hWNVhIZHM2b28rUzlzcHlTVjNSdEc4ZmVpR2hV?=
+ =?utf-8?B?NFFwVU8zRC9CUjhDNkxGQklORDRlZlBFNExHQ2thd2w0dmZ3bUx2MENuWHFu?=
+ =?utf-8?B?Z0c3UUI3Tm1ySW9qcllOaElKMzZYQTZ5ekJoQXAzMXZjVlRKRW96YWtYQWNm?=
+ =?utf-8?B?cG9HQUN0d01XcXBqUmxmTmR4RUNUb25GdDk3Q0prZllIeWE2bG45eThGY2xT?=
+ =?utf-8?B?Qmc9PQ==?=
+X-Forefront-Antispam-Report: CIP:164.130.1.59;CTRY:IT;LANG:en;SCL:1;SRV:;IPV:CAL;SFV:NSPM;H:smtpO365.st.com;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230040)(32650700017)(1800799024)(82310400026)(36860700013)(7416014)(376014)(7053199007)(921020)(41080700001);DIR:OUT;SFP:1101;
+X-OriginatorOrg: foss.st.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Jan 2026 07:50:44.2614
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: bba13204-3bfc-4661-bfa1-08de51af4a75
+X-MS-Exchange-CrossTenant-Id: 75e027c9-20d5-47d5-b82f-77d7cd041e8f
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=75e027c9-20d5-47d5-b82f-77d7cd041e8f;Ip=[164.130.1.59];Helo=[smtpO365.st.com]
+X-MS-Exchange-CrossTenant-AuthSource: AMS0EPF00000199.eurprd05.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PA6PR10MB9597
+X-Authority-Analysis: v=2.4 cv=XfSEDY55 c=1 sm=1 tr=0 ts=6964a7db cx=c_pps
+ a=jsgMSbbXZK7K/abHNvEvGw==:117 a=d6reE3nDawwanmLcZTMRXA==:17
+ a=6eWqkTHjU83fiwn7nKZWdM+Sl24=:19 a=WCiPZUQnSyoA:10 a=IkcTkHD0fZMA:10
+ a=vUbySO9Y5rIA:10 a=s63m1ICgrNkA:10 a=KrXZwBdWH7kA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=QyXUC8HyAAAA:8 a=8b9GpE9nAAAA:8
+ a=B_W6FIvUK9tx6VBtUlAA:9 a=QEXdDO2ut3YA:10 a=T3LWEMljR5ZiDmsYVIUa:22
+X-Proofpoint-GUID: PSqK1zGLpA3ol3FQjHkb5lmJuEWTEKww
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTEyMDA2MCBTYWx0ZWRfX6DLM3+mFn+8Q
+ TclPR8fbqV+02tNtQ4RUTVZ7GxRKrOXCLsiv3vv7k+9NxUcT8Aj3crjhUQP4G3sdWwluuuFJX2A
+ ABZMKlZTUWAYiS0pGKyeNZKVhRgPZGLAqYnwHVMzh8EgulmDvDsNEkZ0RTiyCldpu9Moz1ZeoKE
+ 5DsgDkLuCdtXcrJyrm5VvF0JoSgeeKow/OGvtF2ANOYTHTRTTAD8MiR2KfkWMDuQJYACmtCh64Z
+ HLFc/OUIiCZJJPITzJfoNyd1FkUkxGLPmkn6XDGIc0qJR4cXhv5fqY4bTBHeolSThccLXo31WhT
+ TOhIORZthEGDAu4QOJZ9jpdysdH1/LZ0UoroH6o8zItrZxOQTrE5Swi1KLmMGN4nlk28nj8uv2o
+ Fo8MY4z9jcdTjShYxPWX9YUDD6w2E1hvtPj0lngiqAqIrpJVPZiCOlkm8EkAfYBdID83r35Idb+
+ 8WTpUvN2lMHv9VO0t2g==
+X-Proofpoint-ORIG-GUID: PSqK1zGLpA3ol3FQjHkb5lmJuEWTEKww
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
+ definitions=2026-01-12_02,2026-01-09_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 clxscore=1011
+ spamscore=0 bulkscore=0 malwarescore=0 suspectscore=0 priorityscore=1501
+ lowpriorityscore=0 impostorscore=0 phishscore=0 adultscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2512120000 definitions=main-2601120060
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260108_123040_674315_E2EC1CE9 
-X-CRM114-Status: GOOD (  15.36  )
-X-Mailman-Approved-At: Tue, 07 Jul 2026 08:29:49 -0700
+X-CRM114-CacheID: sfid-20260111_235157_776139_BF5F556F 
+X-CRM114-Status: UNSURE (   6.32  )
+X-CRM114-Notice: Please train this message.
+X-Mailman-Approved-At: Tue, 07 Jul 2026 08:29:51 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -227,1170 +376,24 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The SPI core provides the default of_node for the controller,
-inherited from the actual (parent) device. No need to repeat it
-in the driver.
 
-Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
----
- drivers/spi/atmel-quadspi.c          | 1 -
- drivers/spi/spi-altera-platform.c    | 2 --
- drivers/spi/spi-amlogic-spifc-a1.c   | 1 -
- drivers/spi/spi-amlogic-spisg.c      | 1 -
- drivers/spi/spi-apple.c              | 1 -
- drivers/spi/spi-ar934x.c             | 1 -
- drivers/spi/spi-armada-3700.c        | 4 +---
- drivers/spi/spi-aspeed-smc.c         | 1 -
- drivers/spi/spi-atcspi200.c          | 1 -
- drivers/spi/spi-ath79.c              | 1 -
- drivers/spi/spi-atmel.c              | 1 -
- drivers/spi/spi-axi-spi-engine.c     | 1 -
- drivers/spi/spi-bcm-qspi.c           | 1 -
- drivers/spi/spi-bcm2835.c            | 1 -
- drivers/spi/spi-bcm2835aux.c         | 1 -
- drivers/spi/spi-bcm63xx-hsspi.c      | 1 -
- drivers/spi/spi-bcm63xx.c            | 1 -
- drivers/spi/spi-bcmbca-hsspi.c       | 1 -
- drivers/spi/spi-cadence-quadspi.c    | 1 -
- drivers/spi/spi-cadence-xspi.c       | 1 -
- drivers/spi/spi-cadence.c            | 1 -
- drivers/spi/spi-cavium-octeon.c      | 1 -
- drivers/spi/spi-cavium-thunderx.c    | 1 -
- drivers/spi/spi-clps711x.c           | 1 -
- drivers/spi/spi-davinci.c            | 1 -
- drivers/spi/spi-falcon.c             | 1 -
- drivers/spi/spi-fsl-dspi.c           | 1 -
- drivers/spi/spi-fsl-espi.c           | 1 -
- drivers/spi/spi-fsl-lib.c            | 1 -
- drivers/spi/spi-fsl-lpspi.c          | 1 -
- drivers/spi/spi-geni-qcom.c          | 1 -
- drivers/spi/spi-gxp.c                | 1 -
- drivers/spi/spi-img-spfi.c           | 1 -
- drivers/spi/spi-imx.c                | 1 -
- drivers/spi/spi-ingenic.c            | 1 -
- drivers/spi/spi-lantiq-ssc.c         | 1 -
- drivers/spi/spi-lp8841-rtc.c         | 1 -
- drivers/spi/spi-meson-spicc.c        | 1 -
- drivers/spi/spi-meson-spifc.c        | 1 -
- drivers/spi/spi-microchip-core-spi.c | 1 -
- drivers/spi/spi-mpc52xx.c            | 1 -
- drivers/spi/spi-mpfs.c               | 1 -
- drivers/spi/spi-mt65xx.c             | 1 -
- drivers/spi/spi-mt7621.c             | 1 -
- drivers/spi/spi-mtk-nor.c            | 1 -
- drivers/spi/spi-mtk-snfi.c           | 1 -
- drivers/spi/spi-mux.c                | 1 -
- drivers/spi/spi-mxic.c               | 1 -
- drivers/spi/spi-npcm-fiu.c           | 1 -
- drivers/spi/spi-npcm-pspi.c          | 1 -
- drivers/spi/spi-nxp-xspi.c           | 1 -
- drivers/spi/spi-oc-tiny.c            | 1 -
- drivers/spi/spi-orion.c              | 1 -
- drivers/spi/spi-pl022.c              | 1 -
- drivers/spi/spi-qcom-qspi.c          | 1 -
- drivers/spi/spi-qpic-snand.c         | 1 -
- drivers/spi/spi-qup.c                | 1 -
- drivers/spi/spi-rb4xx.c              | 1 -
- drivers/spi/spi-realtek-rtl.c        | 1 -
- drivers/spi/spi-rockchip-sfc.c       | 1 -
- drivers/spi/spi-rockchip.c           | 1 -
- drivers/spi/spi-rspi.c               | 1 -
- drivers/spi/spi-s3c64xx.c            | 1 -
- drivers/spi/spi-sg2044-nor.c         | 1 -
- drivers/spi/spi-sh-hspi.c            | 1 -
- drivers/spi/spi-sh-msiof.c           | 1 -
- drivers/spi/spi-sifive.c             | 1 -
- drivers/spi/spi-slave-mt27xx.c       | 1 -
- drivers/spi/spi-sn-f-ospi.c          | 1 -
- drivers/spi/spi-sprd-adi.c           | 1 -
- drivers/spi/spi-sprd.c               | 1 -
- drivers/spi/spi-stm32-ospi.c         | 1 -
- drivers/spi/spi-stm32-qspi.c         | 1 -
- drivers/spi/spi-stm32.c              | 1 -
- drivers/spi/spi-sun4i.c              | 1 -
- drivers/spi/spi-sun6i.c              | 1 -
- drivers/spi/spi-tegra114.c           | 1 -
- drivers/spi/spi-tegra20-sflash.c     | 1 -
- drivers/spi/spi-tegra20-slink.c      | 1 -
- drivers/spi/spi-tegra210-quad.c      | 1 -
- drivers/spi/spi-ti-qspi.c            | 1 -
- drivers/spi/spi-uniphier.c           | 1 -
- drivers/spi/spi-wpcm-fiu.c           | 1 -
- drivers/spi/spi-xcomm.c              | 1 -
- drivers/spi/spi-xilinx.c             | 1 -
- drivers/spi/spi-xlp.c                | 1 -
- drivers/spi/spi-xtensa-xtfpga.c      | 1 -
- 87 files changed, 1 insertion(+), 90 deletions(-)
 
-diff --git a/drivers/spi/atmel-quadspi.c b/drivers/spi/atmel-quadspi.c
-index d7a3d85d00c2..aaf7f4c46b22 100644
---- a/drivers/spi/atmel-quadspi.c
-+++ b/drivers/spi/atmel-quadspi.c
-@@ -1382,7 +1382,6 @@ static int atmel_qspi_probe(struct platform_device *pdev)
- 	ctrl->bus_num = -1;
- 	ctrl->mem_ops = &atmel_qspi_mem_ops;
- 	ctrl->num_chipselect = 1;
--	ctrl->dev.of_node = pdev->dev.of_node;
- 	platform_set_drvdata(pdev, ctrl);
- 
- 	/* Map the registers */
-diff --git a/drivers/spi/spi-altera-platform.c b/drivers/spi/spi-altera-platform.c
-index e163774fd65b..fc81de2610ef 100644
---- a/drivers/spi/spi-altera-platform.c
-+++ b/drivers/spi/spi-altera-platform.c
-@@ -67,8 +67,6 @@ static int altera_spi_probe(struct platform_device *pdev)
- 		host->bits_per_word_mask = SPI_BPW_RANGE_MASK(1, 16);
- 	}
- 
--	host->dev.of_node = pdev->dev.of_node;
--
- 	hw = spi_controller_get_devdata(host);
- 	hw->dev = &pdev->dev;
- 
-diff --git a/drivers/spi/spi-amlogic-spifc-a1.c b/drivers/spi/spi-amlogic-spifc-a1.c
-index eb503790017b..7ee4c92e6e09 100644
---- a/drivers/spi/spi-amlogic-spifc-a1.c
-+++ b/drivers/spi/spi-amlogic-spifc-a1.c
-@@ -358,7 +358,6 @@ static int amlogic_spifc_a1_probe(struct platform_device *pdev)
- 		return ret;
- 
- 	ctrl->num_chipselect = 1;
--	ctrl->dev.of_node = pdev->dev.of_node;
- 	ctrl->bits_per_word_mask = SPI_BPW_MASK(8);
- 	ctrl->auto_runtime_pm = true;
- 	ctrl->mem_ops = &amlogic_spifc_a1_mem_ops;
-diff --git a/drivers/spi/spi-amlogic-spisg.c b/drivers/spi/spi-amlogic-spisg.c
-index bcd7ec291ad0..1509df2b17ae 100644
---- a/drivers/spi/spi-amlogic-spisg.c
-+++ b/drivers/spi/spi-amlogic-spisg.c
-@@ -781,7 +781,6 @@ static int aml_spisg_probe(struct platform_device *pdev)
- 	pm_runtime_resume_and_get(&spisg->pdev->dev);
- 
- 	ctlr->num_chipselect = 4;
--	ctlr->dev.of_node = pdev->dev.of_node;
- 	ctlr->mode_bits = SPI_CPHA | SPI_CPOL | SPI_LSB_FIRST |
- 			  SPI_3WIRE | SPI_TX_QUAD | SPI_RX_QUAD;
- 	ctlr->max_speed_hz = 1000 * 1000 * 100;
-diff --git a/drivers/spi/spi-apple.c b/drivers/spi/spi-apple.c
-index 2fee7057ecc9..61eefb08d2a7 100644
---- a/drivers/spi/spi-apple.c
-+++ b/drivers/spi/spi-apple.c
-@@ -485,7 +485,6 @@ static int apple_spi_probe(struct platform_device *pdev)
- 	if (ret)
- 		return dev_err_probe(&pdev->dev, ret, "Unable to bind to interrupt\n");
- 
--	ctlr->dev.of_node = pdev->dev.of_node;
- 	ctlr->bus_num = pdev->id;
- 	ctlr->num_chipselect = 1;
- 	ctlr->mode_bits = SPI_CPHA | SPI_CPOL | SPI_LSB_FIRST;
-diff --git a/drivers/spi/spi-ar934x.c b/drivers/spi/spi-ar934x.c
-index 86c54fff9d6e..2210186feab8 100644
---- a/drivers/spi/spi-ar934x.c
-+++ b/drivers/spi/spi-ar934x.c
-@@ -195,7 +195,6 @@ static int ar934x_spi_probe(struct platform_device *pdev)
- 	ctlr->transfer_one_message = ar934x_spi_transfer_one_message;
- 	ctlr->bits_per_word_mask = SPI_BPW_MASK(32) | SPI_BPW_MASK(24) |
- 				   SPI_BPW_MASK(16) | SPI_BPW_MASK(8);
--	ctlr->dev.of_node = pdev->dev.of_node;
- 	ctlr->num_chipselect = 3;
- 
- 	dev_set_drvdata(&pdev->dev, ctlr);
-diff --git a/drivers/spi/spi-armada-3700.c b/drivers/spi/spi-armada-3700.c
-index 02c1e625742d..78248729d3e9 100644
---- a/drivers/spi/spi-armada-3700.c
-+++ b/drivers/spi/spi-armada-3700.c
-@@ -813,7 +813,6 @@ MODULE_DEVICE_TABLE(of, a3700_spi_dt_ids);
- static int a3700_spi_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
--	struct device_node *of_node = dev->of_node;
- 	struct spi_controller *host;
- 	struct a3700_spi *spi;
- 	u32 num_cs = 0;
-@@ -826,14 +825,13 @@ static int a3700_spi_probe(struct platform_device *pdev)
- 		goto out;
- 	}
- 
--	if (of_property_read_u32(of_node, "num-cs", &num_cs)) {
-+	if (of_property_read_u32(dev->of_node, "num-cs", &num_cs)) {
- 		dev_err(dev, "could not find num-cs\n");
- 		ret = -ENXIO;
- 		goto error;
- 	}
- 
- 	host->bus_num = pdev->id;
--	host->dev.of_node = of_node;
- 	host->mode_bits = SPI_MODE_3;
- 	host->num_chipselect = num_cs;
- 	host->bits_per_word_mask = SPI_BPW_MASK(8) | SPI_BPW_MASK(32);
-diff --git a/drivers/spi/spi-aspeed-smc.c b/drivers/spi/spi-aspeed-smc.c
-index db3e096f2eb0..fc565065c8fd 100644
---- a/drivers/spi/spi-aspeed-smc.c
-+++ b/drivers/spi/spi-aspeed-smc.c
-@@ -898,7 +898,6 @@ static int aspeed_spi_probe(struct platform_device *pdev)
- 	ctlr->setup = aspeed_spi_setup;
- 	ctlr->cleanup = aspeed_spi_cleanup;
- 	ctlr->num_chipselect = of_get_available_child_count(dev->of_node);
--	ctlr->dev.of_node = dev->of_node;
- 
- 	aspi->num_cs = ctlr->num_chipselect;
- 
-diff --git a/drivers/spi/spi-atcspi200.c b/drivers/spi/spi-atcspi200.c
-index 0af7446642e5..60a37ff5c6f5 100644
---- a/drivers/spi/spi-atcspi200.c
-+++ b/drivers/spi/spi-atcspi200.c
-@@ -552,7 +552,6 @@ static void atcspi_init_controller(struct platform_device *pdev,
- 	/* Initialize controller properties */
- 	host->bus_num = pdev->id;
- 	host->mode_bits = SPI_CPOL | SPI_CPHA | SPI_RX_QUAD | SPI_TX_QUAD;
--	host->dev.of_node = pdev->dev.of_node;
- 	host->num_chipselect = ATCSPI_MAX_CS_NUM;
- 	host->mem_ops = &atcspi_mem_ops;
- 	host->max_speed_hz = spi->sclk_rate;
-diff --git a/drivers/spi/spi-ath79.c b/drivers/spi/spi-ath79.c
-index 9a705a9fddd2..2f61e5b9943c 100644
---- a/drivers/spi/spi-ath79.c
-+++ b/drivers/spi/spi-ath79.c
-@@ -180,7 +180,6 @@ static int ath79_spi_probe(struct platform_device *pdev)
- 	}
- 
- 	sp = spi_controller_get_devdata(host);
--	host->dev.of_node = pdev->dev.of_node;
- 	platform_set_drvdata(pdev, sp);
- 
- 	host->use_gpio_descriptors = true;
-diff --git a/drivers/spi/spi-atmel.c b/drivers/spi/spi-atmel.c
-index 89977bff76d2..d71c0dbf1f38 100644
---- a/drivers/spi/spi-atmel.c
-+++ b/drivers/spi/spi-atmel.c
-@@ -1536,7 +1536,6 @@ static int atmel_spi_probe(struct platform_device *pdev)
- 	host->use_gpio_descriptors = true;
- 	host->mode_bits = SPI_CPOL | SPI_CPHA | SPI_CS_HIGH;
- 	host->bits_per_word_mask = SPI_BPW_RANGE_MASK(8, 16);
--	host->dev.of_node = pdev->dev.of_node;
- 	host->bus_num = pdev->id;
- 	host->num_chipselect = 4;
- 	host->setup = atmel_spi_setup;
-diff --git a/drivers/spi/spi-axi-spi-engine.c b/drivers/spi/spi-axi-spi-engine.c
-index e06f412190fd..91805eae9263 100644
---- a/drivers/spi/spi-axi-spi-engine.c
-+++ b/drivers/spi/spi-axi-spi-engine.c
-@@ -1080,7 +1080,6 @@ static int spi_engine_probe(struct platform_device *pdev)
- 	if (ret)
- 		return ret;
- 
--	host->dev.of_node = pdev->dev.of_node;
- 	host->mode_bits = SPI_CPOL | SPI_CPHA | SPI_3WIRE;
- 	host->bits_per_word_mask = SPI_BPW_RANGE_MASK(1, 32);
- 	host->max_speed_hz = clk_get_rate(spi_engine->ref_clk) / 2;
-diff --git a/drivers/spi/spi-bcm-qspi.c b/drivers/spi/spi-bcm-qspi.c
-index cfdaa5eaec76..9c06ac562f3e 100644
---- a/drivers/spi/spi-bcm-qspi.c
-+++ b/drivers/spi/spi-bcm-qspi.c
-@@ -1529,7 +1529,6 @@ int bcm_qspi_probe(struct platform_device *pdev,
- 	host->transfer_one = bcm_qspi_transfer_one;
- 	host->mem_ops = &bcm_qspi_mem_ops;
- 	host->cleanup = bcm_qspi_cleanup;
--	host->dev.of_node = dev->of_node;
- 	host->num_chipselect = NUM_CHIPSELECT;
- 	host->use_gpio_descriptors = true;
- 
-diff --git a/drivers/spi/spi-bcm2835.c b/drivers/spi/spi-bcm2835.c
-index 192cc5ef65fb..35ae50ca37ac 100644
---- a/drivers/spi/spi-bcm2835.c
-+++ b/drivers/spi/spi-bcm2835.c
-@@ -1368,7 +1368,6 @@ static int bcm2835_spi_probe(struct platform_device *pdev)
- 	ctlr->transfer_one = bcm2835_spi_transfer_one;
- 	ctlr->handle_err = bcm2835_spi_handle_err;
- 	ctlr->prepare_message = bcm2835_spi_prepare_message;
--	ctlr->dev.of_node = pdev->dev.of_node;
- 
- 	bs = spi_controller_get_devdata(ctlr);
- 	bs->ctlr = ctlr;
-diff --git a/drivers/spi/spi-bcm2835aux.c b/drivers/spi/spi-bcm2835aux.c
-index 90698d7d809d..f6847d3a76de 100644
---- a/drivers/spi/spi-bcm2835aux.c
-+++ b/drivers/spi/spi-bcm2835aux.c
-@@ -502,7 +502,6 @@ static int bcm2835aux_spi_probe(struct platform_device *pdev)
- 	host->handle_err = bcm2835aux_spi_handle_err;
- 	host->prepare_message = bcm2835aux_spi_prepare_message;
- 	host->unprepare_message = bcm2835aux_spi_unprepare_message;
--	host->dev.of_node = pdev->dev.of_node;
- 	host->use_gpio_descriptors = true;
- 
- 	bs = spi_controller_get_devdata(host);
-diff --git a/drivers/spi/spi-bcm63xx-hsspi.c b/drivers/spi/spi-bcm63xx-hsspi.c
-index d9e972ef2abd..612f8802e690 100644
---- a/drivers/spi/spi-bcm63xx-hsspi.c
-+++ b/drivers/spi/spi-bcm63xx-hsspi.c
-@@ -822,7 +822,6 @@ static int bcm63xx_hsspi_probe(struct platform_device *pdev)
- 	init_completion(&bs->done);
- 
- 	host->mem_ops = &bcm63xx_hsspi_mem_ops;
--	host->dev.of_node = dev->of_node;
- 	if (!dev->of_node)
- 		host->bus_num = HSSPI_BUS_NUM;
- 
-diff --git a/drivers/spi/spi-bcm63xx.c b/drivers/spi/spi-bcm63xx.c
-index 4c549f166b0f..47266bb23a33 100644
---- a/drivers/spi/spi-bcm63xx.c
-+++ b/drivers/spi/spi-bcm63xx.c
-@@ -571,7 +571,6 @@ static int bcm63xx_spi_probe(struct platform_device *pdev)
- 		goto out_err;
- 	}
- 
--	host->dev.of_node = dev->of_node;
- 	host->bus_num = bus_num;
- 	host->num_chipselect = num_cs;
- 	host->transfer_one_message = bcm63xx_spi_transfer_one;
-diff --git a/drivers/spi/spi-bcmbca-hsspi.c b/drivers/spi/spi-bcmbca-hsspi.c
-index f16298b75236..ece22260f570 100644
---- a/drivers/spi/spi-bcmbca-hsspi.c
-+++ b/drivers/spi/spi-bcmbca-hsspi.c
-@@ -500,7 +500,6 @@ static int bcmbca_hsspi_probe(struct platform_device *pdev)
- 	mutex_init(&bs->msg_mutex);
- 	init_completion(&bs->done);
- 
--	host->dev.of_node = dev->of_node;
- 	if (!dev->of_node)
- 		host->bus_num = HSSPI_BUS_NUM;
- 
-diff --git a/drivers/spi/spi-cadence-quadspi.c b/drivers/spi/spi-cadence-quadspi.c
-index b1cf182d6566..791015abafee 100644
---- a/drivers/spi/spi-cadence-quadspi.c
-+++ b/drivers/spi/spi-cadence-quadspi.c
-@@ -1827,7 +1827,6 @@ static int cqspi_probe(struct platform_device *pdev)
- 	host->mode_bits = SPI_RX_QUAD | SPI_RX_DUAL;
- 	host->mem_ops = &cqspi_mem_ops;
- 	host->mem_caps = &cqspi_mem_caps;
--	host->dev.of_node = pdev->dev.of_node;
- 
- 	cqspi = spi_controller_get_devdata(host);
- 
-diff --git a/drivers/spi/spi-cadence-xspi.c b/drivers/spi/spi-cadence-xspi.c
-index c4ab6b2fb43f..72384d90d113 100644
---- a/drivers/spi/spi-cadence-xspi.c
-+++ b/drivers/spi/spi-cadence-xspi.c
-@@ -1157,7 +1157,6 @@ static int cdns_xspi_probe(struct platform_device *pdev)
- 		cdns_xspi->sdma_handler = &cdns_xspi_sdma_handle;
- 		cdns_xspi->set_interrupts_handler = &cdns_xspi_set_interrupts;
- 	}
--	host->dev.of_node = pdev->dev.of_node;
- 	host->bus_num = -1;
- 
- 	platform_set_drvdata(pdev, host);
-diff --git a/drivers/spi/spi-cadence.c b/drivers/spi/spi-cadence.c
-index 47054da630d0..6cac015cfb5b 100644
---- a/drivers/spi/spi-cadence.c
-+++ b/drivers/spi/spi-cadence.c
-@@ -651,7 +651,6 @@ static int cdns_spi_probe(struct platform_device *pdev)
- 		return -ENOMEM;
- 
- 	xspi = spi_controller_get_devdata(ctlr);
--	ctlr->dev.of_node = pdev->dev.of_node;
- 	platform_set_drvdata(pdev, ctlr);
- 
- 	xspi->regs = devm_platform_ioremap_resource(pdev, 0);
-diff --git a/drivers/spi/spi-cavium-octeon.c b/drivers/spi/spi-cavium-octeon.c
-index a5ad90d66ec0..155085a053a1 100644
---- a/drivers/spi/spi-cavium-octeon.c
-+++ b/drivers/spi/spi-cavium-octeon.c
-@@ -54,7 +54,6 @@ static int octeon_spi_probe(struct platform_device *pdev)
- 	host->bits_per_word_mask = SPI_BPW_MASK(8);
- 	host->max_speed_hz = OCTEON_SPI_MAX_CLOCK_HZ;
- 
--	host->dev.of_node = pdev->dev.of_node;
- 	err = devm_spi_register_controller(&pdev->dev, host);
- 	if (err) {
- 		dev_err(&pdev->dev, "register host failed: %d\n", err);
-diff --git a/drivers/spi/spi-cavium-thunderx.c b/drivers/spi/spi-cavium-thunderx.c
-index 367ae7120bb3..99aac40a1bba 100644
---- a/drivers/spi/spi-cavium-thunderx.c
-+++ b/drivers/spi/spi-cavium-thunderx.c
-@@ -67,7 +67,6 @@ static int thunderx_spi_probe(struct pci_dev *pdev,
- 	host->transfer_one_message = octeon_spi_transfer_one_message;
- 	host->bits_per_word_mask = SPI_BPW_MASK(8);
- 	host->max_speed_hz = OCTEON_SPI_MAX_CLOCK_HZ;
--	host->dev.of_node = pdev->dev.of_node;
- 
- 	pci_set_drvdata(pdev, host);
- 
-diff --git a/drivers/spi/spi-clps711x.c b/drivers/spi/spi-clps711x.c
-index 5552ccd716fc..d6458e59d41b 100644
---- a/drivers/spi/spi-clps711x.c
-+++ b/drivers/spi/spi-clps711x.c
-@@ -107,7 +107,6 @@ static int spi_clps711x_probe(struct platform_device *pdev)
- 	host->bus_num = -1;
- 	host->mode_bits = SPI_CPHA | SPI_CS_HIGH;
- 	host->bits_per_word_mask = SPI_BPW_RANGE_MASK(1, 8);
--	host->dev.of_node = pdev->dev.of_node;
- 	host->prepare_message = spi_clps711x_prepare_message;
- 	host->transfer_one = spi_clps711x_transfer_one;
- 
-diff --git a/drivers/spi/spi-davinci.c b/drivers/spi/spi-davinci.c
-index 21a14e800eed..d680142a059f 100644
---- a/drivers/spi/spi-davinci.c
-+++ b/drivers/spi/spi-davinci.c
-@@ -988,7 +988,6 @@ static int davinci_spi_probe(struct platform_device *pdev)
- 	}
- 
- 	host->use_gpio_descriptors = true;
--	host->dev.of_node = pdev->dev.of_node;
- 	host->bus_num = pdev->id;
- 	host->num_chipselect = pdata->num_chipselect;
- 	host->bits_per_word_mask = SPI_BPW_RANGE_MASK(2, 16);
-diff --git a/drivers/spi/spi-falcon.c b/drivers/spi/spi-falcon.c
-index faa893f83dc5..cb15faabd88f 100644
---- a/drivers/spi/spi-falcon.c
-+++ b/drivers/spi/spi-falcon.c
-@@ -405,7 +405,6 @@ static int falcon_sflash_probe(struct platform_device *pdev)
- 	host->flags = SPI_CONTROLLER_HALF_DUPLEX;
- 	host->setup = falcon_sflash_setup;
- 	host->transfer_one_message = falcon_sflash_xfer_one;
--	host->dev.of_node = pdev->dev.of_node;
- 
- 	ret = devm_spi_register_controller(&pdev->dev, host);
- 	if (ret)
-diff --git a/drivers/spi/spi-fsl-dspi.c b/drivers/spi/spi-fsl-dspi.c
-index 83ea296597e9..76f142a54254 100644
---- a/drivers/spi/spi-fsl-dspi.c
-+++ b/drivers/spi/spi-fsl-dspi.c
-@@ -1555,7 +1555,6 @@ static int dspi_probe(struct platform_device *pdev)
- 
- 	ctlr->setup = dspi_setup;
- 	ctlr->transfer_one_message = dspi_transfer_one_message;
--	ctlr->dev.of_node = pdev->dev.of_node;
- 
- 	ctlr->cleanup = dspi_cleanup;
- 	ctlr->target_abort = dspi_target_abort;
-diff --git a/drivers/spi/spi-fsl-espi.c b/drivers/spi/spi-fsl-espi.c
-index f2f1d3298e6c..b06555a457f8 100644
---- a/drivers/spi/spi-fsl-espi.c
-+++ b/drivers/spi/spi-fsl-espi.c
-@@ -675,7 +675,6 @@ static int fsl_espi_probe(struct device *dev, struct resource *mem,
- 
- 	host->mode_bits = SPI_RX_DUAL | SPI_CPOL | SPI_CPHA | SPI_CS_HIGH |
- 			  SPI_LSB_FIRST | SPI_LOOP;
--	host->dev.of_node = dev->of_node;
- 	host->bits_per_word_mask = SPI_BPW_RANGE_MASK(4, 16);
- 	host->setup = fsl_espi_setup;
- 	host->cleanup = fsl_espi_cleanup;
-diff --git a/drivers/spi/spi-fsl-lib.c b/drivers/spi/spi-fsl-lib.c
-index bb7a625db5b0..1f8960f15483 100644
---- a/drivers/spi/spi-fsl-lib.c
-+++ b/drivers/spi/spi-fsl-lib.c
-@@ -91,7 +91,6 @@ void mpc8xxx_spi_probe(struct device *dev, struct resource *mem,
- 	ctlr->mode_bits = SPI_CPOL | SPI_CPHA | SPI_CS_HIGH
- 			| SPI_LSB_FIRST | SPI_LOOP;
- 
--	ctlr->dev.of_node = dev->of_node;
- 
- 	mpc8xxx_spi = spi_controller_get_devdata(ctlr);
- 	mpc8xxx_spi->dev = dev;
-diff --git a/drivers/spi/spi-fsl-lpspi.c b/drivers/spi/spi-fsl-lpspi.c
-index 8f45ead23836..6c692568bdf5 100644
---- a/drivers/spi/spi-fsl-lpspi.c
-+++ b/drivers/spi/spi-fsl-lpspi.c
-@@ -949,7 +949,6 @@ static int fsl_lpspi_probe(struct platform_device *pdev)
- 	controller->unprepare_transfer_hardware = lpspi_unprepare_xfer_hardware;
- 	controller->mode_bits = SPI_CPOL | SPI_CPHA | SPI_CS_HIGH;
- 	controller->flags = SPI_CONTROLLER_MUST_RX | SPI_CONTROLLER_MUST_TX;
--	controller->dev.of_node = pdev->dev.of_node;
- 	controller->bus_num = pdev->id;
- 	controller->num_chipselect = num_cs;
- 	controller->target_abort = fsl_lpspi_target_abort;
-diff --git a/drivers/spi/spi-geni-qcom.c b/drivers/spi/spi-geni-qcom.c
-index 5cca356cb673..0e5fd9df1a8f 100644
---- a/drivers/spi/spi-geni-qcom.c
-+++ b/drivers/spi/spi-geni-qcom.c
-@@ -1057,7 +1057,6 @@ static int spi_geni_probe(struct platform_device *pdev)
- 	}
- 
- 	spi->bus_num = -1;
--	spi->dev.of_node = dev->of_node;
- 	spi->mode_bits = SPI_CPOL | SPI_CPHA | SPI_LOOP | SPI_CS_HIGH;
- 	spi->bits_per_word_mask = SPI_BPW_RANGE_MASK(4, 32);
- 	spi->num_chipselect = 4;
-diff --git a/drivers/spi/spi-gxp.c b/drivers/spi/spi-gxp.c
-index 3aff5a166c94..97d2420108c0 100644
---- a/drivers/spi/spi-gxp.c
-+++ b/drivers/spi/spi-gxp.c
-@@ -284,7 +284,6 @@ static int gxp_spifi_probe(struct platform_device *pdev)
- 	ctlr->mem_ops = &gxp_spi_mem_ops;
- 	ctlr->setup = gxp_spi_setup;
- 	ctlr->num_chipselect = data->max_cs;
--	ctlr->dev.of_node = dev->of_node;
- 
- 	ret = devm_spi_register_controller(dev, ctlr);
- 	if (ret) {
-diff --git a/drivers/spi/spi-img-spfi.c b/drivers/spi/spi-img-spfi.c
-index 168ccf51f6d4..902fb64815c9 100644
---- a/drivers/spi/spi-img-spfi.c
-+++ b/drivers/spi/spi-img-spfi.c
-@@ -587,7 +587,6 @@ static int img_spfi_probe(struct platform_device *pdev)
- 	host->mode_bits = SPI_CPOL | SPI_CPHA | SPI_TX_DUAL | SPI_RX_DUAL;
- 	if (of_property_read_bool(spfi->dev->of_node, "img,supports-quad-mode"))
- 		host->mode_bits |= SPI_TX_QUAD | SPI_RX_QUAD;
--	host->dev.of_node = pdev->dev.of_node;
- 	host->bits_per_word_mask = SPI_BPW_MASK(32) | SPI_BPW_MASK(8);
- 	host->max_speed_hz = clk_get_rate(spfi->spfi_clk) / 4;
- 	host->min_speed_hz = clk_get_rate(spfi->spfi_clk) / 512;
-diff --git a/drivers/spi/spi-imx.c b/drivers/spi/spi-imx.c
-index 69c288c8c737..f65c0bf11a73 100644
---- a/drivers/spi/spi-imx.c
-+++ b/drivers/spi/spi-imx.c
-@@ -2368,7 +2368,6 @@ static int spi_imx_probe(struct platform_device *pdev)
- 
- 	spi_imx->devtype_data->intctrl(spi_imx, 0);
- 
--	controller->dev.of_node = pdev->dev.of_node;
- 	ret = spi_register_controller(controller);
- 	if (ret) {
- 		dev_err_probe(&pdev->dev, ret, "register controller failed\n");
-diff --git a/drivers/spi/spi-ingenic.c b/drivers/spi/spi-ingenic.c
-index 318b0768701e..adcf85bccbcc 100644
---- a/drivers/spi/spi-ingenic.c
-+++ b/drivers/spi/spi-ingenic.c
-@@ -442,7 +442,6 @@ static int spi_ingenic_probe(struct platform_device *pdev)
- 	ctlr->use_gpio_descriptors = true;
- 	ctlr->max_native_cs = pdata->max_native_cs;
- 	ctlr->num_chipselect = num_cs;
--	ctlr->dev.of_node = pdev->dev.of_node;
- 
- 	if (spi_ingenic_request_dma(ctlr, dev))
- 		dev_warn(dev, "DMA not available.\n");
-diff --git a/drivers/spi/spi-lantiq-ssc.c b/drivers/spi/spi-lantiq-ssc.c
-index 60849e07f674..f83cb63c9d0c 100644
---- a/drivers/spi/spi-lantiq-ssc.c
-+++ b/drivers/spi/spi-lantiq-ssc.c
-@@ -962,7 +962,6 @@ static int lantiq_ssc_probe(struct platform_device *pdev)
- 	spi->bits_per_word = 8;
- 	spi->speed_hz = 0;
- 
--	host->dev.of_node = pdev->dev.of_node;
- 	host->num_chipselect = num_cs;
- 	host->use_gpio_descriptors = true;
- 	host->setup = lantiq_ssc_setup;
-diff --git a/drivers/spi/spi-lp8841-rtc.c b/drivers/spi/spi-lp8841-rtc.c
-index 382e2a69f7a7..e466866d5e80 100644
---- a/drivers/spi/spi-lp8841-rtc.c
-+++ b/drivers/spi/spi-lp8841-rtc.c
-@@ -200,7 +200,6 @@ spi_lp8841_rtc_probe(struct platform_device *pdev)
- 	host->transfer_one = spi_lp8841_rtc_transfer_one;
- 	host->bits_per_word_mask = SPI_BPW_MASK(8);
- #ifdef CONFIG_OF
--	host->dev.of_node = pdev->dev.of_node;
- #endif
- 
- 	data = spi_controller_get_devdata(host);
-diff --git a/drivers/spi/spi-meson-spicc.c b/drivers/spi/spi-meson-spicc.c
-index 6b9137307533..a7001b9e36e6 100644
---- a/drivers/spi/spi-meson-spicc.c
-+++ b/drivers/spi/spi-meson-spicc.c
-@@ -1054,7 +1054,6 @@ static int meson_spicc_probe(struct platform_device *pdev)
- 	device_reset_optional(&pdev->dev);
- 
- 	host->num_chipselect = 4;
--	host->dev.of_node = pdev->dev.of_node;
- 	host->mode_bits = SPI_CPHA | SPI_CPOL | SPI_CS_HIGH | SPI_LOOP;
- 	host->flags = (SPI_CONTROLLER_MUST_RX | SPI_CONTROLLER_MUST_TX);
- 	host->min_speed_hz = spicc->data->min_speed_hz;
-diff --git a/drivers/spi/spi-meson-spifc.c b/drivers/spi/spi-meson-spifc.c
-index ef7efeaeee97..b818950a8cb7 100644
---- a/drivers/spi/spi-meson-spifc.c
-+++ b/drivers/spi/spi-meson-spifc.c
-@@ -322,7 +322,6 @@ static int meson_spifc_probe(struct platform_device *pdev)
- 	rate = clk_get_rate(spifc->clk);
- 
- 	host->num_chipselect = 1;
--	host->dev.of_node = pdev->dev.of_node;
- 	host->bits_per_word_mask = SPI_BPW_MASK(8);
- 	host->auto_runtime_pm = true;
- 	host->transfer_one = meson_spifc_transfer_one;
-diff --git a/drivers/spi/spi-microchip-core-spi.c b/drivers/spi/spi-microchip-core-spi.c
-index c8ebb58e0369..a4c128ae391b 100644
---- a/drivers/spi/spi-microchip-core-spi.c
-+++ b/drivers/spi/spi-microchip-core-spi.c
-@@ -360,7 +360,6 @@ static int mchp_corespi_probe(struct platform_device *pdev)
- 	host->bits_per_word_mask = SPI_BPW_RANGE_MASK(4, 32);
- 	host->transfer_one = mchp_corespi_transfer_one;
- 	host->set_cs = mchp_corespi_set_cs;
--	host->dev.of_node = dev->of_node;
- 
- 	ret = of_property_read_u32(dev->of_node, "fifo-depth", &spi->fifo_depth);
- 	if (ret)
-diff --git a/drivers/spi/spi-mpc52xx.c b/drivers/spi/spi-mpc52xx.c
-index 6d4dde15ac54..14188a6ba5a1 100644
---- a/drivers/spi/spi-mpc52xx.c
-+++ b/drivers/spi/spi-mpc52xx.c
-@@ -430,7 +430,6 @@ static int mpc52xx_spi_probe(struct platform_device *op)
- 	host->transfer = mpc52xx_spi_transfer;
- 	host->mode_bits = SPI_CPOL | SPI_CPHA | SPI_LSB_FIRST;
- 	host->bits_per_word_mask = SPI_BPW_MASK(8);
--	host->dev.of_node = op->dev.of_node;
- 
- 	platform_set_drvdata(op, host);
- 
-diff --git a/drivers/spi/spi-mpfs.c b/drivers/spi/spi-mpfs.c
-index 7e9e64d8e6c8..64d15a6188ac 100644
---- a/drivers/spi/spi-mpfs.c
-+++ b/drivers/spi/spi-mpfs.c
-@@ -550,7 +550,6 @@ static int mpfs_spi_probe(struct platform_device *pdev)
- 	host->transfer_one = mpfs_spi_transfer_one;
- 	host->prepare_message = mpfs_spi_prepare_message;
- 	host->set_cs = mpfs_spi_set_cs;
--	host->dev.of_node = pdev->dev.of_node;
- 
- 	spi = spi_controller_get_devdata(host);
- 
-diff --git a/drivers/spi/spi-mt65xx.c b/drivers/spi/spi-mt65xx.c
-index 90e5813cfdc3..0368a26bca9a 100644
---- a/drivers/spi/spi-mt65xx.c
-+++ b/drivers/spi/spi-mt65xx.c
-@@ -1184,7 +1184,6 @@ static int mtk_spi_probe(struct platform_device *pdev)
- 		return -ENOMEM;
- 
- 	host->auto_runtime_pm = true;
--	host->dev.of_node = dev->of_node;
- 	host->mode_bits = SPI_CPOL | SPI_CPHA | SPI_LSB_FIRST;
- 
- 	host->set_cs = mtk_spi_set_cs;
-diff --git a/drivers/spi/spi-mt7621.c b/drivers/spi/spi-mt7621.c
-index 3770b8e096a4..bbedfad2ccae 100644
---- a/drivers/spi/spi-mt7621.c
-+++ b/drivers/spi/spi-mt7621.c
-@@ -348,7 +348,6 @@ static int mt7621_spi_probe(struct platform_device *pdev)
- 	host->set_cs = mt7621_spi_set_native_cs;
- 	host->transfer_one = mt7621_spi_transfer_one;
- 	host->bits_per_word_mask = SPI_BPW_MASK(8);
--	host->dev.of_node = pdev->dev.of_node;
- 	host->max_native_cs = MT7621_NATIVE_CS_COUNT;
- 	host->num_chipselect = MT7621_NATIVE_CS_COUNT;
- 	host->use_gpio_descriptors = true;
-diff --git a/drivers/spi/spi-mtk-nor.c b/drivers/spi/spi-mtk-nor.c
-index 5cc4632e13d7..1e5ec0840174 100644
---- a/drivers/spi/spi-mtk-nor.c
-+++ b/drivers/spi/spi-mtk-nor.c
-@@ -851,7 +851,6 @@ static int mtk_nor_probe(struct platform_device *pdev)
- 	}
- 
- 	ctlr->bits_per_word_mask = SPI_BPW_MASK(8);
--	ctlr->dev.of_node = pdev->dev.of_node;
- 	ctlr->max_message_size = mtk_max_msg_size;
- 	ctlr->mem_ops = &mtk_nor_mem_ops;
- 	ctlr->mode_bits = SPI_RX_DUAL | SPI_RX_QUAD | SPI_TX_DUAL | SPI_TX_QUAD;
-diff --git a/drivers/spi/spi-mtk-snfi.c b/drivers/spi/spi-mtk-snfi.c
-index ae38c244e258..7f7d0dfec743 100644
---- a/drivers/spi/spi-mtk-snfi.c
-+++ b/drivers/spi/spi-mtk-snfi.c
-@@ -1448,7 +1448,6 @@ static int mtk_snand_probe(struct platform_device *pdev)
- 	ctlr->mem_caps = &mtk_snand_mem_caps;
- 	ctlr->bits_per_word_mask = SPI_BPW_MASK(8);
- 	ctlr->mode_bits = SPI_RX_DUAL | SPI_RX_QUAD | SPI_TX_DUAL | SPI_TX_QUAD;
--	ctlr->dev.of_node = pdev->dev.of_node;
- 	ret = spi_register_controller(ctlr);
- 	if (ret) {
- 		dev_err(&pdev->dev, "spi_register_controller failed.\n");
-diff --git a/drivers/spi/spi-mux.c b/drivers/spi/spi-mux.c
-index 0eb35c4e3987..bd122de152c0 100644
---- a/drivers/spi/spi-mux.c
-+++ b/drivers/spi/spi-mux.c
-@@ -161,7 +161,6 @@ static int spi_mux_probe(struct spi_device *spi)
- 	ctlr->setup = spi_mux_setup;
- 	ctlr->num_chipselect = mux_control_states(priv->mux);
- 	ctlr->bus_num = -1;
--	ctlr->dev.of_node = spi->dev.of_node;
- 	ctlr->must_async = true;
- 	ctlr->defer_optimize_message = true;
- 
-diff --git a/drivers/spi/spi-mxic.c b/drivers/spi/spi-mxic.c
-index eeaea6a5e310..f9369c69911c 100644
---- a/drivers/spi/spi-mxic.c
-+++ b/drivers/spi/spi-mxic.c
-@@ -768,7 +768,6 @@ static int mxic_spi_probe(struct platform_device *pdev)
- 	mxic = spi_controller_get_devdata(host);
- 	mxic->dev = &pdev->dev;
- 
--	host->dev.of_node = pdev->dev.of_node;
- 
- 	mxic->ps_clk = devm_clk_get(&pdev->dev, "ps_clk");
- 	if (IS_ERR(mxic->ps_clk))
-diff --git a/drivers/spi/spi-npcm-fiu.c b/drivers/spi/spi-npcm-fiu.c
-index cccd17f24775..3961b0ccdb4b 100644
---- a/drivers/spi/spi-npcm-fiu.c
-+++ b/drivers/spi/spi-npcm-fiu.c
-@@ -746,7 +746,6 @@ static int npcm_fiu_probe(struct platform_device *pdev)
- 	ctrl->bus_num = -1;
- 	ctrl->mem_ops = &npcm_fiu_mem_ops;
- 	ctrl->num_chipselect = fiu->info->max_cs;
--	ctrl->dev.of_node = dev->of_node;
- 
- 	return devm_spi_register_controller(dev, ctrl);
- }
-diff --git a/drivers/spi/spi-npcm-pspi.c b/drivers/spi/spi-npcm-pspi.c
-index 98b6479b961c..e60b3cc398ec 100644
---- a/drivers/spi/spi-npcm-pspi.c
-+++ b/drivers/spi/spi-npcm-pspi.c
-@@ -401,7 +401,6 @@ static int npcm_pspi_probe(struct platform_device *pdev)
- 	host->max_speed_hz = DIV_ROUND_UP(clk_hz, NPCM_PSPI_MIN_CLK_DIVIDER);
- 	host->min_speed_hz = DIV_ROUND_UP(clk_hz, NPCM_PSPI_MAX_CLK_DIVIDER);
- 	host->mode_bits = SPI_CPHA | SPI_CPOL;
--	host->dev.of_node = pdev->dev.of_node;
- 	host->bus_num = -1;
- 	host->bits_per_word_mask = SPI_BPW_MASK(8) | SPI_BPW_MASK(16);
- 	host->transfer_one = npcm_pspi_transfer_one;
-diff --git a/drivers/spi/spi-nxp-xspi.c b/drivers/spi/spi-nxp-xspi.c
-index 25339492bf3a..06fcdf22990b 100644
---- a/drivers/spi/spi-nxp-xspi.c
-+++ b/drivers/spi/spi-nxp-xspi.c
-@@ -1290,7 +1290,6 @@ static int nxp_xspi_probe(struct platform_device *pdev)
- 	ctlr->num_chipselect = NXP_XSPI_MAX_CHIPSELECT;
- 	ctlr->mem_ops = &nxp_xspi_mem_ops;
- 	ctlr->mem_caps = &nxp_xspi_mem_caps;
--	ctlr->dev.of_node = dev->of_node;
- 
- 	return devm_spi_register_controller(dev, ctlr);
- }
-diff --git a/drivers/spi/spi-oc-tiny.c b/drivers/spi/spi-oc-tiny.c
-index cba229920357..29333b1f82d7 100644
---- a/drivers/spi/spi-oc-tiny.c
-+++ b/drivers/spi/spi-oc-tiny.c
-@@ -192,7 +192,6 @@ static int tiny_spi_of_probe(struct platform_device *pdev)
- 
- 	if (!np)
- 		return 0;
--	hw->bitbang.ctlr->dev.of_node = pdev->dev.of_node;
- 	if (!of_property_read_u32(np, "clock-frequency", &val))
- 		hw->freq = val;
- 	if (!of_property_read_u32(np, "baud-width", &val))
-diff --git a/drivers/spi/spi-orion.c b/drivers/spi/spi-orion.c
-index 43bd9f21137f..7a2186b51b4c 100644
---- a/drivers/spi/spi-orion.c
-+++ b/drivers/spi/spi-orion.c
-@@ -780,7 +780,6 @@ static int orion_spi_probe(struct platform_device *pdev)
- 	if (status < 0)
- 		goto out_rel_pm;
- 
--	host->dev.of_node = pdev->dev.of_node;
- 	status = spi_register_controller(host);
- 	if (status < 0)
- 		goto out_rel_pm;
-diff --git a/drivers/spi/spi-pl022.c b/drivers/spi/spi-pl022.c
-index 9e56e8774614..c32a1fba31ef 100644
---- a/drivers/spi/spi-pl022.c
-+++ b/drivers/spi/spi-pl022.c
-@@ -1893,7 +1893,6 @@ static int pl022_probe(struct amba_device *adev, const struct amba_id *id)
- 	host->handle_err = pl022_handle_err;
- 	host->unprepare_transfer_hardware = pl022_unprepare_transfer_hardware;
- 	host->rt = platform_info->rt;
--	host->dev.of_node = dev->of_node;
- 	host->use_gpio_descriptors = true;
- 
- 	/*
-diff --git a/drivers/spi/spi-qcom-qspi.c b/drivers/spi/spi-qcom-qspi.c
-index 3aeddada58e1..7e39038160e0 100644
---- a/drivers/spi/spi-qcom-qspi.c
-+++ b/drivers/spi/spi-qcom-qspi.c
-@@ -763,7 +763,6 @@ static int qcom_qspi_probe(struct platform_device *pdev)
- 	host->dma_alignment = QSPI_ALIGN_REQ;
- 	host->num_chipselect = QSPI_NUM_CS;
- 	host->bus_num = -1;
--	host->dev.of_node = pdev->dev.of_node;
- 	host->mode_bits = SPI_MODE_0 |
- 			  SPI_TX_DUAL | SPI_RX_DUAL |
- 			  SPI_TX_QUAD | SPI_RX_QUAD;
-diff --git a/drivers/spi/spi-qpic-snand.c b/drivers/spi/spi-qpic-snand.c
-index 0334ba738bef..d7fef48f20ef 100644
---- a/drivers/spi/spi-qpic-snand.c
-+++ b/drivers/spi/spi-qpic-snand.c
-@@ -1583,7 +1583,6 @@ static int qcom_spi_probe(struct platform_device *pdev)
- 	ctlr->num_chipselect = QPIC_QSPI_NUM_CS;
- 	ctlr->mem_ops = &qcom_spi_mem_ops;
- 	ctlr->mem_caps = &qcom_spi_mem_caps;
--	ctlr->dev.of_node = pdev->dev.of_node;
- 	ctlr->mode_bits = SPI_TX_DUAL | SPI_RX_DUAL |
- 			    SPI_TX_QUAD | SPI_RX_QUAD;
- 
-diff --git a/drivers/spi/spi-qup.c b/drivers/spi/spi-qup.c
-index 7d647edf6bc3..6cbdcd060e8c 100644
---- a/drivers/spi/spi-qup.c
-+++ b/drivers/spi/spi-qup.c
-@@ -1091,7 +1091,6 @@ static int spi_qup_probe(struct platform_device *pdev)
- 	host->bits_per_word_mask = SPI_BPW_RANGE_MASK(4, 32);
- 	host->max_speed_hz = max_freq;
- 	host->transfer_one = spi_qup_transfer_one;
--	host->dev.of_node = pdev->dev.of_node;
- 	host->auto_runtime_pm = true;
- 	host->dma_alignment = dma_get_cache_alignment();
- 	host->max_dma_len = SPI_MAX_XFER;
-diff --git a/drivers/spi/spi-rb4xx.c b/drivers/spi/spi-rb4xx.c
-index 22b86fc89132..7b944f2819ec 100644
---- a/drivers/spi/spi-rb4xx.c
-+++ b/drivers/spi/spi-rb4xx.c
-@@ -160,7 +160,6 @@ static int rb4xx_spi_probe(struct platform_device *pdev)
- 	if (IS_ERR(ahb_clk))
- 		return PTR_ERR(ahb_clk);
- 
--	host->dev.of_node = pdev->dev.of_node;
- 	host->bus_num = 0;
- 	host->num_chipselect = 3;
- 	host->mode_bits = SPI_TX_DUAL;
-diff --git a/drivers/spi/spi-realtek-rtl.c b/drivers/spi/spi-realtek-rtl.c
-index 0b0123e20b54..d7acc02105ca 100644
---- a/drivers/spi/spi-realtek-rtl.c
-+++ b/drivers/spi/spi-realtek-rtl.c
-@@ -169,7 +169,6 @@ static int realtek_rtl_spi_probe(struct platform_device *pdev)
- 
- 	init_hw(rtspi);
- 
--	ctrl->dev.of_node = pdev->dev.of_node;
- 	ctrl->flags = SPI_CONTROLLER_HALF_DUPLEX;
- 	ctrl->set_cs = rt_set_cs;
- 	ctrl->transfer_one = transfer_one;
-diff --git a/drivers/spi/spi-rockchip-sfc.c b/drivers/spi/spi-rockchip-sfc.c
-index b3c2b03b1153..2990bf85ee47 100644
---- a/drivers/spi/spi-rockchip-sfc.c
-+++ b/drivers/spi/spi-rockchip-sfc.c
-@@ -622,7 +622,6 @@ static int rockchip_sfc_probe(struct platform_device *pdev)
- 	host->flags = SPI_CONTROLLER_HALF_DUPLEX;
- 	host->mem_ops = &rockchip_sfc_mem_ops;
- 	host->mem_caps = &rockchip_sfc_mem_caps;
--	host->dev.of_node = pdev->dev.of_node;
- 	host->mode_bits = SPI_TX_QUAD | SPI_TX_DUAL | SPI_RX_QUAD | SPI_RX_DUAL;
- 	host->max_speed_hz = SFC_MAX_SPEED;
- 	host->num_chipselect = SFC_MAX_CHIPSELECT_NUM;
-diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
-index 1a6381de6f33..3ab3f43a80d5 100644
---- a/drivers/spi/spi-rockchip.c
-+++ b/drivers/spi/spi-rockchip.c
-@@ -858,7 +858,6 @@ static int rockchip_spi_probe(struct platform_device *pdev)
- 		ctlr->num_chipselect = num_cs;
- 		ctlr->use_gpio_descriptors = true;
- 	}
--	ctlr->dev.of_node = pdev->dev.of_node;
- 	ctlr->bits_per_word_mask = SPI_BPW_MASK(16) | SPI_BPW_MASK(8) | SPI_BPW_MASK(4);
- 	ctlr->min_speed_hz = rs->freq / BAUDR_SCKDV_MAX;
- 	ctlr->max_speed_hz = min(rs->freq / BAUDR_SCKDV_MIN, MAX_SCLK_OUT);
-diff --git a/drivers/spi/spi-rspi.c b/drivers/spi/spi-rspi.c
-index 8e1d911b88b5..c739c1998b4c 100644
---- a/drivers/spi/spi-rspi.c
-+++ b/drivers/spi/spi-rspi.c
-@@ -1338,7 +1338,6 @@ static int rspi_probe(struct platform_device *pdev)
- 	ctlr->min_speed_hz = DIV_ROUND_UP(clksrc, ops->max_div);
- 	ctlr->max_speed_hz = DIV_ROUND_UP(clksrc, ops->min_div);
- 	ctlr->flags = ops->flags;
--	ctlr->dev.of_node = pdev->dev.of_node;
- 	ctlr->use_gpio_descriptors = true;
- 	ctlr->max_native_cs = rspi->ops->num_hw_ss;
- 
-diff --git a/drivers/spi/spi-s3c64xx.c b/drivers/spi/spi-s3c64xx.c
-index aab36c779c06..4fbefd85d2e2 100644
---- a/drivers/spi/spi-s3c64xx.c
-+++ b/drivers/spi/spi-s3c64xx.c
-@@ -1295,7 +1295,6 @@ static int s3c64xx_spi_probe(struct platform_device *pdev)
- 	sdd->tx_dma.direction = DMA_MEM_TO_DEV;
- 	sdd->rx_dma.direction = DMA_DEV_TO_MEM;
- 
--	host->dev.of_node = pdev->dev.of_node;
- 	host->bus_num = -1;
- 	host->setup = s3c64xx_spi_setup;
- 	host->cleanup = s3c64xx_spi_cleanup;
-diff --git a/drivers/spi/spi-sg2044-nor.c b/drivers/spi/spi-sg2044-nor.c
-index 37f1cfe10be4..f3bcb8a1b92b 100644
---- a/drivers/spi/spi-sg2044-nor.c
-+++ b/drivers/spi/spi-sg2044-nor.c
-@@ -455,7 +455,6 @@ static int sg2044_spifmc_probe(struct platform_device *pdev)
- 		return PTR_ERR(spifmc->io_base);
- 
- 	ctrl->num_chipselect = 1;
--	ctrl->dev.of_node = pdev->dev.of_node;
- 	ctrl->bits_per_word_mask = SPI_BPW_MASK(8);
- 	ctrl->auto_runtime_pm = false;
- 	ctrl->mem_ops = &sg2044_spifmc_mem_ops;
-diff --git a/drivers/spi/spi-sh-hspi.c b/drivers/spi/spi-sh-hspi.c
-index 93017faeb7b5..e03eaca1b1a7 100644
---- a/drivers/spi/spi-sh-hspi.c
-+++ b/drivers/spi/spi-sh-hspi.c
-@@ -253,7 +253,6 @@ static int hspi_probe(struct platform_device *pdev)
- 
- 	ctlr->bus_num = pdev->id;
- 	ctlr->mode_bits	= SPI_CPOL | SPI_CPHA;
--	ctlr->dev.of_node = pdev->dev.of_node;
- 	ctlr->auto_runtime_pm = true;
- 	ctlr->transfer_one_message = hspi_transfer_one_message;
- 	ctlr->bits_per_word_mask = SPI_BPW_MASK(8);
-diff --git a/drivers/spi/spi-sh-msiof.c b/drivers/spi/spi-sh-msiof.c
-index b695870fae8c..7f3e08810560 100644
---- a/drivers/spi/spi-sh-msiof.c
-+++ b/drivers/spi/spi-sh-msiof.c
-@@ -1276,7 +1276,6 @@ static int sh_msiof_spi_probe(struct platform_device *pdev)
- 	ctlr->flags = chipdata->ctlr_flags;
- 	ctlr->bus_num = pdev->id;
- 	ctlr->num_chipselect = p->info->num_chipselect;
--	ctlr->dev.of_node = dev->of_node;
- 	ctlr->setup = sh_msiof_spi_setup;
- 	ctlr->prepare_message = sh_msiof_prepare_message;
- 	ctlr->target_abort = sh_msiof_target_abort;
-diff --git a/drivers/spi/spi-sifive.c b/drivers/spi/spi-sifive.c
-index 87bde2a207a3..6c7aba8befa0 100644
---- a/drivers/spi/spi-sifive.c
-+++ b/drivers/spi/spi-sifive.c
-@@ -368,7 +368,6 @@ static int sifive_spi_probe(struct platform_device *pdev)
- 	}
- 
- 	/* Define our host */
--	host->dev.of_node = pdev->dev.of_node;
- 	host->bus_num = pdev->id;
- 	host->num_chipselect = num_cs;
- 	host->mode_bits = SPI_CPHA | SPI_CPOL
-diff --git a/drivers/spi/spi-slave-mt27xx.c b/drivers/spi/spi-slave-mt27xx.c
-index e331df967385..ce889cb33228 100644
---- a/drivers/spi/spi-slave-mt27xx.c
-+++ b/drivers/spi/spi-slave-mt27xx.c
-@@ -395,7 +395,6 @@ static int mtk_spi_slave_probe(struct platform_device *pdev)
- 	}
- 
- 	ctlr->auto_runtime_pm = true;
--	ctlr->dev.of_node = pdev->dev.of_node;
- 	ctlr->mode_bits = SPI_CPOL | SPI_CPHA;
- 	ctlr->mode_bits |= SPI_LSB_FIRST;
- 
-diff --git a/drivers/spi/spi-sn-f-ospi.c b/drivers/spi/spi-sn-f-ospi.c
-index c4969f66a0ba..bfcc140df810 100644
---- a/drivers/spi/spi-sn-f-ospi.c
-+++ b/drivers/spi/spi-sn-f-ospi.c
-@@ -628,7 +628,6 @@ static int f_ospi_probe(struct platform_device *pdev)
- 		return -ENOMEM;
- 	}
- 	ctlr->num_chipselect = num_cs;
--	ctlr->dev.of_node = dev->of_node;
- 
- 	ospi = spi_controller_get_devdata(ctlr);
- 	ospi->dev = dev;
-diff --git a/drivers/spi/spi-sprd-adi.c b/drivers/spi/spi-sprd-adi.c
-index 262c11d977ea..a05cc9a0a4ae 100644
---- a/drivers/spi/spi-sprd-adi.c
-+++ b/drivers/spi/spi-sprd-adi.c
-@@ -571,7 +571,6 @@ static int sprd_adi_probe(struct platform_device *pdev)
- 	if (sadi->data->wdg_rst)
- 		sadi->data->wdg_rst(sadi);
- 
--	ctlr->dev.of_node = pdev->dev.of_node;
- 	ctlr->bus_num = pdev->id;
- 	ctlr->num_chipselect = num_chipselect;
- 	ctlr->flags = SPI_CONTROLLER_HALF_DUPLEX;
-diff --git a/drivers/spi/spi-sprd.c b/drivers/spi/spi-sprd.c
-index ad75f5f0f2bf..0f9fc320363c 100644
---- a/drivers/spi/spi-sprd.c
-+++ b/drivers/spi/spi-sprd.c
-@@ -936,7 +936,6 @@ static int sprd_spi_probe(struct platform_device *pdev)
- 
- 	ss->phy_base = res->start;
- 	ss->dev = &pdev->dev;
--	sctlr->dev.of_node = pdev->dev.of_node;
- 	sctlr->mode_bits = SPI_CPOL | SPI_CPHA | SPI_3WIRE | SPI_TX_DUAL;
- 	sctlr->bus_num = pdev->id;
- 	sctlr->set_cs = sprd_spi_chipselect;
-diff --git a/drivers/spi/spi-stm32-ospi.c b/drivers/spi/spi-stm32-ospi.c
-index 58d8cec74c7b..c98afe02a1b6 100644
---- a/drivers/spi/spi-stm32-ospi.c
-+++ b/drivers/spi/spi-stm32-ospi.c
-@@ -942,7 +942,6 @@ static int stm32_ospi_probe(struct platform_device *pdev)
- 	ctrl->use_gpio_descriptors = true;
- 	ctrl->transfer_one_message = stm32_ospi_transfer_one_message;
- 	ctrl->num_chipselect = STM32_OSPI_MAX_NORCHIP;
--	ctrl->dev.of_node = dev->of_node;
- 
- 	pm_runtime_enable(ospi->dev);
- 	pm_runtime_set_autosuspend_delay(ospi->dev, STM32_AUTOSUSPEND_DELAY);
-diff --git a/drivers/spi/spi-stm32-qspi.c b/drivers/spi/spi-stm32-qspi.c
-index 5354faef936a..df1bbacec90a 100644
---- a/drivers/spi/spi-stm32-qspi.c
-+++ b/drivers/spi/spi-stm32-qspi.c
-@@ -860,7 +860,6 @@ static int stm32_qspi_probe(struct platform_device *pdev)
- 	ctrl->use_gpio_descriptors = true;
- 	ctrl->transfer_one_message = stm32_qspi_transfer_one_message;
- 	ctrl->num_chipselect = STM32_QSPI_MAX_NORCHIP;
--	ctrl->dev.of_node = dev->of_node;
- 
- 	pm_runtime_set_autosuspend_delay(dev, STM32_AUTOSUSPEND_DELAY);
- 	pm_runtime_use_autosuspend(dev);
-diff --git a/drivers/spi/spi-stm32.c b/drivers/spi/spi-stm32.c
-index 5c1e685a65d9..b99de8c4cc99 100644
---- a/drivers/spi/spi-stm32.c
-+++ b/drivers/spi/spi-stm32.c
-@@ -2464,7 +2464,6 @@ static int stm32_spi_probe(struct platform_device *pdev)
- 		goto err_clk_disable;
- 	}
- 
--	ctrl->dev.of_node = pdev->dev.of_node;
- 	ctrl->auto_runtime_pm = true;
- 	ctrl->bus_num = pdev->id;
- 	ctrl->mode_bits = SPI_CPHA | SPI_CPOL | SPI_CS_HIGH | SPI_LSB_FIRST |
-diff --git a/drivers/spi/spi-sun4i.c b/drivers/spi/spi-sun4i.c
-index aa92fd5a35a9..bfdf419a583c 100644
---- a/drivers/spi/spi-sun4i.c
-+++ b/drivers/spi/spi-sun4i.c
-@@ -471,7 +471,6 @@ static int sun4i_spi_probe(struct platform_device *pdev)
- 	host->num_chipselect = 4;
- 	host->mode_bits = SPI_CPOL | SPI_CPHA | SPI_CS_HIGH | SPI_LSB_FIRST;
- 	host->bits_per_word_mask = SPI_BPW_MASK(8);
--	host->dev.of_node = pdev->dev.of_node;
- 	host->auto_runtime_pm = true;
- 	host->max_transfer_size = sun4i_spi_max_transfer_size;
- 
-diff --git a/drivers/spi/spi-sun6i.c b/drivers/spi/spi-sun6i.c
-index d1de6c99e762..240e46f84f7b 100644
---- a/drivers/spi/spi-sun6i.c
-+++ b/drivers/spi/spi-sun6i.c
-@@ -673,7 +673,6 @@ static int sun6i_spi_probe(struct platform_device *pdev)
- 	host->mode_bits = SPI_CPOL | SPI_CPHA | SPI_CS_HIGH | SPI_LSB_FIRST |
- 			  sspi->cfg->mode_bits;
- 	host->bits_per_word_mask = SPI_BPW_MASK(8);
--	host->dev.of_node = pdev->dev.of_node;
- 	host->auto_runtime_pm = true;
- 	host->max_transfer_size = sun6i_spi_max_transfer_size;
- 
-diff --git a/drivers/spi/spi-tegra114.c b/drivers/spi/spi-tegra114.c
-index 795a8482c2c7..391823c3483f 100644
---- a/drivers/spi/spi-tegra114.c
-+++ b/drivers/spi/spi-tegra114.c
-@@ -1412,7 +1412,6 @@ static int tegra_spi_probe(struct platform_device *pdev)
- 		goto exit_pm_disable;
- 	}
- 
--	host->dev.of_node = pdev->dev.of_node;
- 	ret = devm_spi_register_controller(&pdev->dev, host);
- 	if (ret < 0) {
- 		dev_err(&pdev->dev, "can not register to host err %d\n", ret);
-diff --git a/drivers/spi/spi-tegra20-sflash.c b/drivers/spi/spi-tegra20-sflash.c
-index d5c8ee20b8e5..d9d536d7f7b6 100644
---- a/drivers/spi/spi-tegra20-sflash.c
-+++ b/drivers/spi/spi-tegra20-sflash.c
-@@ -505,7 +505,6 @@ static int tegra_sflash_probe(struct platform_device *pdev)
- 	tegra_sflash_writel(tsd, tsd->def_command_reg, SPI_COMMAND);
- 	pm_runtime_put(&pdev->dev);
- 
--	host->dev.of_node = pdev->dev.of_node;
- 	ret = devm_spi_register_controller(&pdev->dev, host);
- 	if (ret < 0) {
- 		dev_err(&pdev->dev, "can not register to host err %d\n", ret);
-diff --git a/drivers/spi/spi-tegra20-slink.c b/drivers/spi/spi-tegra20-slink.c
-index fe452d03c1ee..7d6f3fe8b7e3 100644
---- a/drivers/spi/spi-tegra20-slink.c
-+++ b/drivers/spi/spi-tegra20-slink.c
-@@ -1103,7 +1103,6 @@ static int tegra_slink_probe(struct platform_device *pdev)
- 	tegra_slink_writel(tspi, tspi->def_command_reg, SLINK_COMMAND);
- 	tegra_slink_writel(tspi, tspi->def_command2_reg, SLINK_COMMAND2);
- 
--	host->dev.of_node = pdev->dev.of_node;
- 	ret = spi_register_controller(host);
- 	if (ret < 0) {
- 		dev_err(&pdev->dev, "can not register to host err %d\n", ret);
-diff --git a/drivers/spi/spi-tegra210-quad.c b/drivers/spi/spi-tegra210-quad.c
-index cdc3cb7c01f9..8b5f5ded7943 100644
---- a/drivers/spi/spi-tegra210-quad.c
-+++ b/drivers/spi/spi-tegra210-quad.c
-@@ -1743,7 +1743,6 @@ static int tegra_qspi_probe(struct platform_device *pdev)
- 		goto exit_pm_disable;
- 	}
- 
--	host->dev.of_node = pdev->dev.of_node;
- 	ret = spi_register_controller(host);
- 	if (ret < 0) {
- 		dev_err(&pdev->dev, "failed to register host: %d\n", ret);
-diff --git a/drivers/spi/spi-ti-qspi.c b/drivers/spi/spi-ti-qspi.c
-index 0b7eaccbc797..d1d880a8ed7d 100644
---- a/drivers/spi/spi-ti-qspi.c
-+++ b/drivers/spi/spi-ti-qspi.c
-@@ -775,7 +775,6 @@ static int ti_qspi_probe(struct platform_device *pdev)
- 	host->setup = ti_qspi_setup;
- 	host->auto_runtime_pm = true;
- 	host->transfer_one_message = ti_qspi_start_transfer_one;
--	host->dev.of_node = pdev->dev.of_node;
- 	host->bits_per_word_mask = SPI_BPW_MASK(32) | SPI_BPW_MASK(16) |
- 				   SPI_BPW_MASK(8);
- 	host->mem_ops = &ti_qspi_mem_ops;
-diff --git a/drivers/spi/spi-uniphier.c b/drivers/spi/spi-uniphier.c
-index ff2142f87277..9e1d364a6198 100644
---- a/drivers/spi/spi-uniphier.c
-+++ b/drivers/spi/spi-uniphier.c
-@@ -697,7 +697,6 @@ static int uniphier_spi_probe(struct platform_device *pdev)
- 	host->max_speed_hz = DIV_ROUND_UP(clk_rate, SSI_MIN_CLK_DIVIDER);
- 	host->min_speed_hz = DIV_ROUND_UP(clk_rate, SSI_MAX_CLK_DIVIDER);
- 	host->mode_bits = SPI_CPOL | SPI_CPHA | SPI_CS_HIGH | SPI_LSB_FIRST;
--	host->dev.of_node = pdev->dev.of_node;
- 	host->bus_num = pdev->id;
- 	host->bits_per_word_mask = SPI_BPW_RANGE_MASK(1, 32);
- 
-diff --git a/drivers/spi/spi-wpcm-fiu.c b/drivers/spi/spi-wpcm-fiu.c
-index a9aee2a6c7dc..0e3ee5516587 100644
---- a/drivers/spi/spi-wpcm-fiu.c
-+++ b/drivers/spi/spi-wpcm-fiu.c
-@@ -471,7 +471,6 @@ static int wpcm_fiu_probe(struct platform_device *pdev)
- 	ctrl->bus_num = -1;
- 	ctrl->mem_ops = &wpcm_fiu_mem_ops;
- 	ctrl->num_chipselect = 4;
--	ctrl->dev.of_node = dev->of_node;
- 
- 	/*
- 	 * The FIU doesn't include a clock divider, the clock is entirely
-diff --git a/drivers/spi/spi-xcomm.c b/drivers/spi/spi-xcomm.c
-index 33b78c537520..130a3d716dd4 100644
---- a/drivers/spi/spi-xcomm.c
-+++ b/drivers/spi/spi-xcomm.c
-@@ -260,7 +260,6 @@ static int spi_xcomm_probe(struct i2c_client *i2c)
- 	host->bits_per_word_mask = SPI_BPW_MASK(8);
- 	host->flags = SPI_CONTROLLER_HALF_DUPLEX;
- 	host->transfer_one_message = spi_xcomm_transfer_one;
--	host->dev.of_node = i2c->dev.of_node;
- 
- 	ret = devm_spi_register_controller(&i2c->dev, host);
- 	if (ret < 0)
-diff --git a/drivers/spi/spi-xilinx.c b/drivers/spi/spi-xilinx.c
-index c86dc56f38b4..7d8f5460bebf 100644
---- a/drivers/spi/spi-xilinx.c
-+++ b/drivers/spi/spi-xilinx.c
-@@ -447,7 +447,6 @@ static int xilinx_spi_probe(struct platform_device *pdev)
- 
- 	host->bus_num = pdev->id;
- 	host->num_chipselect = num_cs;
--	host->dev.of_node = pdev->dev.of_node;
- 
- 	/*
- 	 * Detect endianess on the IP via loop bit in CR. Detection
-diff --git a/drivers/spi/spi-xlp.c b/drivers/spi/spi-xlp.c
-index 2fec18b68449..be8bbe1cbba3 100644
---- a/drivers/spi/spi-xlp.c
-+++ b/drivers/spi/spi-xlp.c
-@@ -409,7 +409,6 @@ static int xlp_spi_probe(struct platform_device *pdev)
- 	host->mode_bits = SPI_CPOL | SPI_CPHA | SPI_CS_HIGH;
- 	host->setup = xlp_spi_setup;
- 	host->transfer_one = xlp_spi_transfer_one;
--	host->dev.of_node = pdev->dev.of_node;
- 
- 	init_completion(&xspi->done);
- 	spi_controller_set_devdata(host, xspi);
-diff --git a/drivers/spi/spi-xtensa-xtfpga.c b/drivers/spi/spi-xtensa-xtfpga.c
-index 1b54d8f9f5ec..71f0f176cfd9 100644
---- a/drivers/spi/spi-xtensa-xtfpga.c
-+++ b/drivers/spi/spi-xtensa-xtfpga.c
-@@ -90,7 +90,6 @@ static int xtfpga_spi_probe(struct platform_device *pdev)
- 	host->flags = SPI_CONTROLLER_NO_RX;
- 	host->bits_per_word_mask = SPI_BPW_RANGE_MASK(1, 16);
- 	host->bus_num = pdev->dev.id;
--	host->dev.of_node = pdev->dev.of_node;
- 
- 	xspi = spi_controller_get_devdata(host);
- 	xspi->bitbang.ctlr = host;
--- 
-2.50.1
+On 1/8/26 21:23, Andy Shevchenko wrote:
+> The SPI core provides the default of_node for the controller,
+> inherited from the actual (parent) device. No need to repeat it
+> in the driver.
+> 
+> Signed-off-by: Andy Shevchenko<andriy.shevchenko@linux.intel.com>
+> --- drivers/spi/spi-stm32.c              | 1 -
 
+Thanks for your patch,
+
+Reviewed-by: Amelie Delaunay <amelie.delaunay@foss.st.com>
 
 _______________________________________________
 Linux-rockchip mailing list
