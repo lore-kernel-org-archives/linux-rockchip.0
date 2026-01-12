@@ -4,32 +4,32 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03DBBD2502E
-	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Jan 2026 01:20:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7640AD25030
+	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Jan 2026 01:20:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fQwxYke2MUOwa/l/s4wXE7WPm/+UrhV9P6jW1hsBeqA=; b=DdcB3fG0ifyslr
-	DF6imCYKZEq7EHi3R6d2ExGtLSQPWhppccbR8qoE30SfQB4HnnLDp4OJsjqQZ7Pf4lvxBOa3xsCMp
-	SfRLzKhlOrbaUlDfD2819N7fhiPXI9R3kCmr9TsTf2p+cYf9p5OgFCUkKDwcKtdHI4N7HOtu1JSUr
-	fSlVZD26Cdsdl7rqm+4MIB8RvRmfAZCK5PjnpGC8M6XMjsKBJlg4E7w2UnWqQUBCpPw8M5qFdzIQG
-	Jht1K6h+hvIed7Mc8oSWEWppUQpa+dCdlJPrECfv3ODQx7EJPSSEkdwbKTRaJRplf8rZgIL0TjxBR
-	cUPJt95Fwna7ZqRnprIQ==;
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=K9/6OW9lCtzEGo/qxsi1hu4S5ziZTj9AjhyJRcDA9o4=; b=HSytaoAbgGw89f
+	EoD8JuacGsulXdbW+avMvsH9TuPd8qZOmdZVZ+xshcqXBcG+QSFK+ZhN5/tq0dv5ju8dIAkGZSNbO
+	UDsCriQEpvUSK55iBJCQ6UwMCHl/9xwef1KywXIZVXtDzqZIbIoYQmZg9DG3D/1tO07yIPhGTnBSV
+	fWL9wl5PCd1YsZbikZ+NRw3IG6DWQkmW5nAFuV5o11xPWFXvE0G4x4cLuXODEUqW9cwG53IaNBuFP
+	RluffCqIQZh5vqHQPXKlH8lDH1I0p370CyajMEkZ5rZn/8GH81dyBm7b7w9FY9pOxvla6IPyvoUhq
+	GgZpZ6AOFbrHeds1eyVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vf6bo-00000004cuk-0uxM;
-	Mon, 12 Jan 2026 01:20:40 +0000
-Received: from mail-m1973195.qiye.163.com ([220.197.31.95])
+	id 1vf6bp-00000004cv2-1yti;
+	Mon, 12 Jan 2026 01:20:41 +0000
+Received: from mail-m19731100.qiye.163.com ([220.197.31.100])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vf6bl-00000004ctw-0jKk
+	id 1vf6bm-00000004ctx-26u6
 	for linux-rockchip@lists.infradead.org;
-	Mon, 12 Jan 2026 01:20:38 +0000
+	Mon, 12 Jan 2026 01:20:39 +0000
 Received: from localhost.localdomain (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 303e9191b;
-	Mon, 12 Jan 2026 09:20:27 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 303e9190b;
+	Mon, 12 Jan 2026 09:20:24 +0800 (GMT+08:00)
 From: Shawn Lin <shawn.lin@rock-chips.com>
 To: Manivannan Sadhasivam <mani@kernel.org>,
 	Bjorn Helgaas <bhelgaas@google.com>
@@ -40,25 +40,23 @@ Cc: linux-rockchip@lists.infradead.org,
 	Steven Rostedt <rostedt@goodmis.org>,
 	Masami Hiramatsu <mhiramat@kernel.org>,
 	Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH v3 1/3] PCI: trace: Add PCI controller LTSSM transition tracepoint
-Date: Mon, 12 Jan 2026 09:19:58 +0800
-Message-Id: <1768180800-63364-2-git-send-email-shawn.lin@rock-chips.com>
+Subject: [PATCH v3 0/3] PCI Controller event and LTSSM tracepoint support
+Date: Mon, 12 Jan 2026 09:19:57 +0800
+Message-Id: <1768180800-63364-1-git-send-email-shawn.lin@rock-chips.com>
 X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1768180800-63364-1-git-send-email-shawn.lin@rock-chips.com>
-References: <1768180800-63364-1-git-send-email-shawn.lin@rock-chips.com>
-X-HM-Tid: 0a9bafca448409cckunme7c7221b25b1e3
+X-HM-Tid: 0a9bafca36c309cckunme7c7221b25b1b7
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGh4ZS1YZGhpJSx0aGUgeTUtWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpOTE
-	pVSktLVUpCS0tZBg++
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGhofH1YdTh8eSE0eHU5LHUpWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
 DKIM-Signature: a=rsa-sha256;
-	b=fxmbcvl9QU7SQ960M8nAwr/VIUbe5NvESmiUx+PmKotOuoeblAq0CiYirx4jKgTjCn5TNq8jStqyT3zbhKGQWqxe6N1/YSpdTbSNkQfCQu1qH9/UrupucJTM8UpJBdOA293C1pux521fxpMhugcaTy5SU9el55au+OgrUE5d3aE=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=NJvs7o/RNR1z93AUHCN9w99dXiQC+cJHE/GqfadvgSk=;
+	b=kRE00F16qzlyjH3K3HMPRz1iGKsClCrSy8nVo+igKhs4etc08DZjlc7gmb4SuOF//MY7XcY5yNAYH05AbiiO7dsmKthxTJ1CGapDP0VwVQb/a/4QVgOb7PAqa/fKweVnuRd22bjORw134o2rruNrZ41tEdFVhkVEOMDS6d+60Sw=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=kkhEQlnOEXnjorPS87Efdu+3pm3OaHqhpE4I48ps7Qw=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260111_172037_735834_013A711B 
-X-CRM114-Status: GOOD (  13.32  )
+X-CRM114-CacheID: sfid-20260111_172038_733588_5FCAFFDD 
+X-CRM114-Status: GOOD (  11.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,91 +74,104 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Some platforms may provide LTSSM trace functionality, recording historical
-LTSSM state transition information. This is very useful for debugging, such
-as when certain devices cannot be recognized or link broken during test.
-Implement the pci controller tracepoint for recording LTSSM and rate.
 
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
----
+This patch-set adds new pci controller event and LTSSM tracepoint used by host drivers
+which provide LTSSM trace functionality. The first user is pcie-dw-rockchip with a 256
+Bytes FIFO for recording LTSSM transition.
+
+Dependency
+======
+Need to apply on top of Mani's rework of error handling of dw_pcie_wait_for_link()
+API in order to show the proper LTSSM name for dwc-based controller[1].
+
+[1] https://lore.kernel.org/linux-pci/20260107-pci-dwc-suspend-rework-v4-0-9b5f3c72df0a@oss.qualcomm.com/T/#mfc5885b2afdeef4db1322597eaee61967558821e
+
+Testing
+=======
+
+This series was tested on RK3588/RK3588s EVB1 with NVMe SSD connected to PCIe3 and PCIe2
+root ports.
+
+echo 1 > /sys/kernel/debug/tracing/events/pci_controller/pcie_ltssm_state_transition/enable
+cat /sys/kernel/debug/tracing/trace_pipe
+
+ # tracer: nop
+ #
+ # entries-in-buffer/entries-written: 64/64   #P:8
+ #
+ #                                _-----=> irqs-off/BH-disabled
+ #                               / _----=> need-resched
+ #                              | / _---=> hardirq/softirq
+ #                              || / _--=> preempt-depth
+ #                              ||| / _-=> migrate-disable
+ #                              |||| /     delay
+ #           TASK-PID     CPU#  |||||  TIMESTAMP  FUNCTION
+ #              | |         |   |||||     |         |
+      kworker/0:0-9       [000] .....     5.600194: pcie_ltssm_state_transition: dev: a40000000.pcie state: DETECT_ACT rate: Unknown
+      kworker/0:0-9       [000] .....     5.600198: pcie_ltssm_state_transition: dev: a40000000.pcie state: DETECT_WAIT rate: Unknown
+      kworker/0:0-9       [000] .....     5.600199: pcie_ltssm_state_transition: dev: a40000000.pcie state: DETECT_ACT rate: Unknown
+      kworker/0:0-9       [000] .....     5.600201: pcie_ltssm_state_transition: dev: a40000000.pcie state: POLL_ACTIVE rate: Unknown
+      kworker/0:0-9       [000] .....     5.600202: pcie_ltssm_state_transition: dev: a40000000.pcie state: POLL_CONFIG rate: Unknown
+      kworker/0:0-9       [000] .....     5.600204: pcie_ltssm_state_transition: dev: a40000000.pcie state: CFG_LINKWD_START rate: Unknown
+      kworker/0:0-9       [000] .....     5.600206: pcie_ltssm_state_transition: dev: a40000000.pcie state: CFG_LINKWD_ACEPT rate: Unknown
+      kworker/0:0-9       [000] .....     5.600207: pcie_ltssm_state_transition: dev: a40000000.pcie state: CFG_LANENUM_WAI rate: Unknown
+      kworker/0:0-9       [000] .....     5.600208: pcie_ltssm_state_transition: dev: a40000000.pcie state: CFG_LANENUM_ACEPT rate: Unknown
+      kworker/0:0-9       [000] .....     5.600210: pcie_ltssm_state_transition: dev: a40000000.pcie state: CFG_COMPLETE rate: Unknown
+      kworker/0:0-9       [000] .....     5.600212: pcie_ltssm_state_transition: dev: a40000000.pcie state: CFG_IDLE rate: Unknown
+      kworker/0:0-9       [000] .....     5.600213: pcie_ltssm_state_transition: dev: a40000000.pcie state: L0 rate: 2.5 GT/s
+      kworker/0:0-9       [000] .....     5.600214: pcie_ltssm_state_transition: dev: a40000000.pcie state: RCVRY_LOCK rate: Unknown
+      kworker/0:0-9       [000] .....     5.600216: pcie_ltssm_state_transition: dev: a40000000.pcie state: RCVRY_RCVRCFG rate: Unknown
+      kworker/0:0-9       [000] .....     5.600217: pcie_ltssm_state_transition: dev: a40000000.pcie state: RCVRY_SPEED rate: Unknown
+      kworker/0:0-9       [000] .....     5.600218: pcie_ltssm_state_transition: dev: a40000000.pcie state: RCVRY_LOCK rate: Unknown
+      kworker/0:0-9       [000] .....     5.600220: pcie_ltssm_state_transition: dev: a40000000.pcie state: RCVRY_EQ1 rate: Unknown
+      kworker/0:0-9       [000] .....     5.600221: pcie_ltssm_state_transition: dev: a40000000.pcie state: RCVRY_EQ2 rate: 8.0 GT/s
+      kworker/0:0-9       [000] .....     5.600222: pcie_ltssm_state_transition: dev: a40000000.pcie state: RCVRY_EQ3 rate: 8.0 GT/s
+      kworker/0:0-9       [000] .....     5.600224: pcie_ltssm_state_transition: dev: a40000000.pcie state: RCVRY_LOCK rate: 8.0 GT/s
+      kworker/0:0-9       [000] .....     5.600225: pcie_ltssm_state_transition: dev: a40000000.pcie state: RCVRY_RCVRCFG rate: 8.0 GT/s
+      kworker/0:0-9       [000] .....     5.600226: pcie_ltssm_state_transition: dev: a40000000.pcie state: RCVRY_IDLE rate: 8.0 GT/s
+      kworker/0:0-9       [000] .....     5.600227: pcie_ltssm_state_transition: dev: a40000000.pcie state: L0 rate: 8.0 GT/s
+      kworker/0:0-9       [000] .....     5.600228: pcie_ltssm_state_transition: dev: a40000000.pcie state: RCVRY_LOCK rate: 8.0 GT/s
+      kworker/0:0-9       [000] .....     5.600229: pcie_ltssm_state_transition: dev: a40000000.pcie state: RCVRY_RCVRCFG rate: 8.0 GT/s
+      kworker/0:0-9       [000] .....     5.600231: pcie_ltssm_state_transition: dev: a40000000.pcie state: RCVRY_IDLE rate: 8.0 GT/s
+      kworker/0:0-9       [000] .....     5.600232: pcie_ltssm_state_transition: dev: a40000000.pcie state: L0 rate: 8.0 GT/s
+      kworker/0:0-9       [000] .....     5.600233: pcie_ltssm_state_transition: dev: a40000000.pcie state: L123_SEND_EIDLE rate: 8.0 GT/s
+      kworker/0:0-9       [000] .....     5.600234: pcie_ltssm_state_transition: dev: a40000000.pcie state: L1_IDLE rate: 8.0 GT/s
+      kworker/0:0-9       [000] .....     5.600236: pcie_ltssm_state_transition: dev: a40000000.pcie state: RCVRY_LOCK rate: 8.0 GT/s
+      kworker/0:0-9       [000] .....     5.600237: pcie_ltssm_state_transition: dev: a40000000.pcie state: RCVRY_RCVRCFG rate: 8.0 GT/s
+      kworker/0:0-9       [000] .....     5.600238: pcie_ltssm_state_transition: dev: a40000000.pcie state: RCVRY_IDLE rate: 8.0 GT/s
+      kworker/0:0-9       [000] .....     5.600239: pcie_ltssm_state_transition: dev: a40000000.pcie state: L0 rate: 8.0 GT/s
+
 
 Changes in v3:
 - add TRACE_DEFINE_ENUM for all enums(Steven Rostedt)
+- Add toctree entry in Documentation/trace/index.rst(Bagas Sanjaya)
+- fix mismatch section underline length(Bagas Sanjaya)
+- Make example snippets in code block(Bagas Sanjaya)
+- warp context into 80 columns and fix the file name(Bjorn)
+- reorder variables(Mani)
+- rename loop to i; rename en to enable(Mani)
+- use FIELD_GET(Mani)
+- add comment about how the FIFO works(Mani)
+- Link to v2: https://lore.kernel.org/linux-pci/1767929389-143957-1-git-send-email-shawn.lin@rock-chips.com/T/#t
 
-Changes in v2: None
+Changes in v2:
+- use tracepoint
+- Link to v1: https://lore.kernel.org/linux-pci/ym435w3ltwc7vln7g6j3ijswsarubwjazux65ttcqtrbr3i5fu@gig3qlzdkopf/T/#t
 
- drivers/pci/trace.c                   |  1 +
- include/trace/events/pci_controller.h | 52 +++++++++++++++++++++++++++++++++++
- 2 files changed, 53 insertions(+)
+Shawn Lin (3):
+  PCI: trace: Add PCI controller LTSSM transition tracepoint
+  Documentation: tracing: Add PCI controller event documentation
+  PCI: dw-rockchip: Add pcie_ltssm_state_transition trace support
+
+ Documentation/trace/events-pci-controller.rst |  42 +++++++++++
+ Documentation/trace/index.rst                 |   1 +
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c | 104 ++++++++++++++++++++++++++
+ drivers/pci/trace.c                           |   1 +
+ include/trace/events/pci_controller.h         |  52 +++++++++++++
+ 5 files changed, 200 insertions(+)
+ create mode 100644 Documentation/trace/events-pci-controller.rst
  create mode 100644 include/trace/events/pci_controller.h
 
-diff --git a/drivers/pci/trace.c b/drivers/pci/trace.c
-index cf11abc..c1da9d3 100644
---- a/drivers/pci/trace.c
-+++ b/drivers/pci/trace.c
-@@ -9,3 +9,4 @@
- 
- #define CREATE_TRACE_POINTS
- #include <trace/events/pci.h>
-+#include <trace/events/pci_controller.h>
-diff --git a/include/trace/events/pci_controller.h b/include/trace/events/pci_controller.h
-new file mode 100644
-index 0000000..f38eedf
---- /dev/null
-+++ b/include/trace/events/pci_controller.h
-@@ -0,0 +1,52 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+#undef TRACE_SYSTEM
-+#define TRACE_SYSTEM pci_controller
-+
-+#if !defined(_TRACE_HW_EVENT_PCI_CONTROLLER_H) || defined(TRACE_HEADER_MULTI_READ)
-+#define _TRACE_HW_EVENT_PCI_CONTROLLER_H
-+
-+#include <uapi/linux/pci_regs.h>
-+#include <linux/tracepoint.h>
-+
-+TRACE_DEFINE_ENUM(PCIE_SPEED_2_5GT);
-+TRACE_DEFINE_ENUM(PCIE_SPEED_5_0GT);
-+TRACE_DEFINE_ENUM(PCIE_SPEED_8_0GT);
-+TRACE_DEFINE_ENUM(PCIE_SPEED_16_0GT);
-+TRACE_DEFINE_ENUM(PCIE_SPEED_32_0GT);
-+TRACE_DEFINE_ENUM(PCIE_SPEED_64_0GT);
-+TRACE_DEFINE_ENUM(PCI_SPEED_UNKNOWN);
-+
-+TRACE_EVENT(pcie_ltssm_state_transition,
-+	TP_PROTO(const char *dev_name, const char *state, u32 rate),
-+	TP_ARGS(dev_name, state, rate),
-+
-+	TP_STRUCT__entry(
-+		__string(dev_name, dev_name)
-+		__string(state, state)
-+		__field(u32, rate)
-+	),
-+
-+	TP_fast_assign(
-+		__assign_str(dev_name);
-+		__assign_str(state);
-+		__entry->rate = rate;
-+	),
-+
-+	TP_printk("dev: %s state: %s rate: %s",
-+		__get_str(dev_name), __get_str(state),
-+		__print_symbolic(__entry->rate,
-+			{ PCIE_SPEED_2_5GT,  "2.5 GT/s" },
-+			{ PCIE_SPEED_5_0GT,  "5.0 GT/s" },
-+			{ PCIE_SPEED_8_0GT,  "8.0 GT/s" },
-+			{ PCIE_SPEED_16_0GT, "16.0 GT/s" },
-+			{ PCIE_SPEED_32_0GT, "32.0 GT/s" },
-+			{ PCIE_SPEED_64_0GT, "64.0 GT/s" },
-+			{ PCI_SPEED_UNKNOWN, "Unknown" }
-+		)
-+	)
-+);
-+
-+#endif /* _TRACE_HW_EVENT_PCI_CONTROLLER_H */
-+
-+/* This part must be outside protection */
-+#include <trace/define_trace.h>
 -- 
 2.7.4
 
