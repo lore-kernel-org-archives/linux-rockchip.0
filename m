@@ -4,61 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E375DD2D111
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Jan 2026 14:35:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C840D0C85E
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Jan 2026 15:00:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UWD/yXDBVzZ0WtnAx0MUUyatDsZeLlGjYs+gapFkdSY=; b=rJSBAa2szcAlBo
-	/ix4QXZsNK58mdvJs99D//G44GdCuHG8EIeUbSEFv5sXoedWaF3wF9wadJtg4vSGwNuqPIrgVuy08
-	d2E9bnDfrI9omYYoHz5C7KYqtQTFdTviYOoRBA4ewlR9/1rKXfGED4w7t8KQLR1q1XKNYHHRrlinm
-	8aYZvwRqLOR4VHiqkEyaO0lQUM3E/mdCCiF5lanJdIKVp+UtZnE8dn/P5cOI4KeZ4VWiVgQAc7EQv
-	q6GE13PH39CqgI7IroEMk03TxInrXVozgUtE6vnz0FlGBQobWAWmaWUGcYxDN4NL6GeKKF9Z9jRUr
-	LplfaPZkH9wFBbFPB4WQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=f5bLOSA6hNLcKhC+cLG4obnjtV5vUdutAciEPFOgJWk=; b=JxP5XePG94qr2emsRXSd+AgbZ3
+	lYWugYgCKmaUlVP5Xk22J9OHhvAH3DumRm/y0yBiuzrW4Y9tUNgSVYoJuIio3KirTxjxOV46JaogR
+	/p4F5ZrlYvbHw1D1MomCm1Uf6R8J+3odNl9PgsiyOqFLWKR8v0CC3gv/cru7lWxwDBjPWCOb3z5cH
+	8VE6iKJBePHsYR5WEAgona6mVsq8C2oN2tcAmRI+icOqCJSW0d0JG011NoE3pFseh3oR+uicBTGcK
+	FE2SyzZWNq1RDOlQMMEliqS0mktDxATc/KX21rAlO8CJohK1CNmnZRI9xUYY/nWIpIwyMCAVqooEC
+	wS50gOtw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vffU6-00000007GYH-1Jpm;
-	Tue, 13 Jan 2026 14:35:02 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vffsN-00000007JFt-1zNA;
+	Tue, 13 Jan 2026 15:00:07 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vffU3-00000007GXC-2b5w;
-	Tue, 13 Jan 2026 14:35:00 +0000
+	id 1vffsL-00000007JEb-3tgC;
+	Tue, 13 Jan 2026 15:00:06 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 5DFDE442F0;
-	Tue, 13 Jan 2026 14:34:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 65F47C116C6;
-	Tue, 13 Jan 2026 14:34:55 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id EB430600AE;
+	Tue, 13 Jan 2026 15:00:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4BA9DC16AAE;
+	Tue, 13 Jan 2026 15:00:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1768314898;
-	bh=AzZQytbKoAJJfaB4z4AtSC0UhVkaJpMEr1pqnGeXh9I=;
+	s=k20201202; t=1768316404;
+	bh=bHL7bidi4XNXTo34ze3DKqMXsxi+U/ByKg+N3GwzUqA=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=MQNfju/Q9a6Hn8BI1P+idlfvG6yB1q8BDwruQgbECFoMUIsvVS2gOeytY885uwG7X
-	 +tjwGvxA0cfaMtbIPAX7V9Xb6sAdeu7wQDvIN0X49EJ8/j1BfRhR9E8MvJQIIJkCqW
-	 Au5RHD49jMU0HAZ12NZNsHajN5XUmuzOZHyKrf6NvlVMxoPESPULpCNKVrbU2tZOas
-	 VVzxa4SVZuIuc+/IBd4IdXgKTylQ/4es8ZhJ66VsoHqG5VyrPY9aHVC+LODho/Oe2P
-	 yH5qxPs3GaSPIy1zUwYdQfQy/+nQ6rAUwdsq4wUe0VXoWfAPmHjsl+JUwDuV+oVrq3
-	 tD4eBiT4ngUig==
-Date: Tue, 13 Jan 2026 20:04:50 +0530
-From: Manivannan Sadhasivam <mani@kernel.org>
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, Vinod Koul <vkoul@kernel.org>, 
-	linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-phy@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Sebastian Reichel <sebastian.reichel@collabora.com>
-Subject: Re: [PATCH 1/5] PCI: dw-rockchip: Add phy_calibrate() to check PHY
- lock status
-Message-ID: <og25pa5rxaktqjs7x2h3gkq4yvh77tq6xksc5usddvy3dpqxsp@honmrhi4fv5i>
-References: <1766560210-100883-1-git-send-email-shawn.lin@rock-chips.com>
- <1766560210-100883-2-git-send-email-shawn.lin@rock-chips.com>
+	b=LC19LC3rKkCG7NaBTHuROIQfK3vd9yt14mFBDpO9GVerhcLoRodOP1pYD9+hQjfoa
+	 PuSVtLA4lDp4Gk5C1voikCx3OAv3Xuml7CDLLnmj6NHqIkMDWO9qkAlV8Rc9LujA6k
+	 IRr8UM2tkQtq4IiTc96bdLC3iulmzKFTmKioeTLlt23OW+6qIRvnnlvpJVQgAMH5W3
+	 kkYYL91wlQEZgChebVYFplC8DawLk3avajI9Qa22tfMvp5EcyI/8O/xKIUEb2puax4
+	 6H0nn2Q8PHhed1nulRBZDySZbSjnCw3bbvJGF+w1ISlrJxXleB+xslY0u45Z+dLLyO
+	 Vu1dgcLLAO/qw==
+Date: Tue, 13 Jan 2026 16:00:01 +0100
+From: Maxime Ripard <mripard@kernel.org>
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+	Simona Vetter <simona@ffwll.ch>, Sandy Huang <hjc@rock-chips.com>, 
+	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, kernel@collabora.com, 
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	Diederik de Haas <diederik@cknow-tech.com>, Maud Spierings <maud_spierings@hotmail.com>
+Subject: Re: [PATCH v2 3/4] drm/bridge: dw-hdmi-qp: Add high TMDS clock ratio
+ and scrambling support
+Message-ID: <20260113-unselfish-russet-chicken-80d3c3@houat>
+References: <20260113-dw-hdmi-qp-scramb-v2-0-ae7b2c58d24d@collabora.com>
+ <20260113-dw-hdmi-qp-scramb-v2-3-ae7b2c58d24d@collabora.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1766560210-100883-2-git-send-email-shawn.lin@rock-chips.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260113_063459_685929_05B2437E 
-X-CRM114-Status: GOOD (  21.01  )
+In-Reply-To: <20260113-dw-hdmi-qp-scramb-v2-3-ae7b2c58d24d@collabora.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,42 +72,152 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============0278689507768970946=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkLCBEZWMgMjQsIDIwMjUgYXQgMDM6MTA6MDZQTSArMDgwMCwgU2hhd24gTGluIHdyb3Rl
-Ogo+IEN1cnJlbnQgd2Uga2VlcCBjb250cm9sbGVyIGluIHJlc2V0IHN0YXRlIHdoZW4gaW5pdGlh
-bGl6aW5nIFBIWSB3aGljaAo+IGlzIHRoZSByaWdodCB0aGluZyB0byBkby4gQnV0IHRoaXMgY2Fz
-ZSwgdGhlIFBIWSBpcyBhbHNvIHJlc2V0IGJlY2F1c2UKPiBpdCByZWZlcnMgdG8gYSBzaWduYWwg
-ZnJvbSBjb250cm9sbGVyLiBOb3cgd2UgY2hlY2sgUEhZIGxvY2sgc3RhdHVzCj4gaW5zaWRlIC5w
-aHlfaW5pdCgpIGNhbGxiYWNrIHdoaWNoIG1heSBiZSBib2d1cyBmb3IgY2VydGFpbiB0eXBlIG9m
-IFBIWSwKPiBiZWNhdXNlIG9mIHRoZSBmYWN0IGFib3ZlLiBBZGQgcGh5X2NhbGlicmF0ZSgpIHRv
-IGJldHRlciBjaGVjayBQSFkgbG9jawo+IHN0YXR1cyBpZiBwcm92aWRlZC4KPiAKPiBTaWduZWQt
-b2ZmLWJ5OiBTaGF3biBMaW4gPHNoYXduLmxpbkByb2NrLWNoaXBzLmNvbT4KCkkgZ3Vlc3MgdGhp
-cyBwYXRjaCBjYW4gZ2V0IG1lcmdlZCBzZXBhcmF0ZWx5IHdpdGhvdXQgdGhlIFBIWSBwYXRjaGVz
-IGFuZCBub3QKY2F1c2UgYW55IGZ1bmN0aW9uYWwgaXNzdWUuIEJ1dCBJJ2QgbGlrZSB0aGUgUEhZ
-IHBhdGNoZXMgdG8gZ2V0IHJldmlld2VkIHNvIHRoYXQKd2Uga25vdyB0aGF0IHRoZSBBUEkgdXNh
-Z2UgaXMgY29ycmVjdC4KCi0gTWFuaQoKPiAtLS0KPiAKPiAgZHJpdmVycy9wY2kvY29udHJvbGxl
-ci9kd2MvcGNpZS1kdy1yb2NrY2hpcC5jIHwgOSArKysrKysrKy0KPiAgMSBmaWxlIGNoYW5nZWQs
-IDggaW5zZXJ0aW9ucygrKSwgMSBkZWxldGlvbigtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJz
-L3BjaS9jb250cm9sbGVyL2R3Yy9wY2llLWR3LXJvY2tjaGlwLmMgYi9kcml2ZXJzL3BjaS9jb250
-cm9sbGVyL2R3Yy9wY2llLWR3LXJvY2tjaGlwLmMKPiBpbmRleCBmODYwNWZlLi43NWQ2MzA2IDEw
-MDY0NAo+IC0tLSBhL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvZHdjL3BjaWUtZHctcm9ja2NoaXAu
-Ywo+ICsrKyBiL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvZHdjL3BjaWUtZHctcm9ja2NoaXAuYwo+
-IEBAIC03MDUsNiArNzA1LDEyIEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfcGNpZV9wcm9iZShzdHJ1
-Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+ICAJaWYgKHJldCkKPiAgCQlnb3RvIGRlaW5pdF9w
-aHk7Cj4gIAo+ICsJcmV0ID0gcGh5X2NhbGlicmF0ZShyb2NrY2hpcC0+cGh5KTsKPiArCWlmIChy
-ZXQpIHsKPiArCQlkZXZfZXJyKGRldiwgInBoeSBsb2NrIGZhaWxlZFxuIik7Cj4gKwkJZ290byBh
-c3NlcnRfY29udHJvbGxlcjsKPiArCX0KPiArCj4gIAlyZXQgPSByb2NrY2hpcF9wY2llX2Nsa19p
-bml0KHJvY2tjaGlwKTsKPiAgCWlmIChyZXQpCj4gIAkJZ290byBkZWluaXRfcGh5Owo+IEBAIC03
-MjcsNyArNzMzLDggQEAgc3RhdGljIGludCByb2NrY2hpcF9wY2llX3Byb2JlKHN0cnVjdCBwbGF0
-Zm9ybV9kZXZpY2UgKnBkZXYpCj4gIAl9Cj4gIAo+ICAJcmV0dXJuIDA7Cj4gLQo+ICthc3NlcnRf
-Y29udHJvbGxlcjoKPiArCXJlc2V0X2NvbnRyb2xfYXNzZXJ0KHJvY2tjaGlwLT5yc3QpOwo+ICBk
-ZWluaXRfY2xrOgo+ICAJY2xrX2J1bGtfZGlzYWJsZV91bnByZXBhcmUocm9ja2NoaXAtPmNsa19j
-bnQsIHJvY2tjaGlwLT5jbGtzKTsKPiAgZGVpbml0X3BoeToKPiAtLSAKPiAyLjcuNAo+IAoKLS0g
-CuCuruCuo+Cuv+CuteCuo+CvjeCuo+CuqeCvjSDgrprgrqTgrr7grprgrr/grrXgrq7gr40KCl9f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tj
-aGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6
-Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+
+--===============0278689507768970946==
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="obg4uifwe4lk2yjg"
+Content-Disposition: inline
+
+
+--obg4uifwe4lk2yjg
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v2 3/4] drm/bridge: dw-hdmi-qp: Add high TMDS clock ratio
+ and scrambling support
+MIME-Version: 1.0
+
+On Tue, Jan 13, 2026 at 12:26:20AM +0200, Cristian Ciocaltea wrote:
+> @@ -902,13 +981,74 @@ static void dw_hdmi_qp_bridge_atomic_disable(struct=
+ drm_bridge *bridge,
+> =20
+>  	hdmi->tmds_char_rate =3D 0;
+> =20
+> +	dw_hdmi_qp_disable_scramb(hdmi);
+> +
+> +	hdmi->curr_conn =3D NULL;
+>  	hdmi->phy.ops->disable(hdmi, hdmi->phy.data);
+>  }
+> =20
+> -static enum drm_connector_status
+> -dw_hdmi_qp_bridge_detect(struct drm_bridge *bridge, struct drm_connector=
+ *connector)
+> +static int dw_hdmi_qp_reset_link(struct dw_hdmi_qp *hdmi,
+> +				 struct drm_connector *conn,
+> +				 struct drm_modeset_acquire_ctx *ctx)
+> +{
+> +	struct drm_crtc *crtc;
+> +	u8 config;
+> +	int ret;
+> +
+> +	if (!conn->state)
+> +		return 0;
+> +
+> +	crtc =3D conn->state->crtc;
+> +	if (!crtc)
+> +		return 0;
+> +
+> +retry:
+> +	ret =3D drm_modeset_lock(&crtc->mutex, ctx);
+> +	if (ret)
+> +		goto check_err;
+> +
+> +	if (!crtc->state->active)
+> +		return 0;
+> +
+> +	if (conn->state->commit &&
+> +	    !try_wait_for_completion(&conn->state->commit->hw_done))
+> +		return 0;
+> +
+> +	ret =3D drm_scdc_readb(hdmi->bridge.ddc, SCDC_TMDS_CONFIG, &config);
+> +	if (ret < 0) {
+> +		dev_err(hdmi->dev, "Failed to read TMDS config: %d\n", ret);
+> +		return 0;
+> +	}
+> +
+> +	if (!!(config & SCDC_SCRAMBLING_ENABLE) =3D=3D hdmi->scramb_enabled)
+> +		return 0;
+> +
+> +	dev_dbg(hdmi->dev, "%s resetting crtc\n", __func__);
+> +
+> +	drm_atomic_helper_connector_hdmi_hotplug(conn, connector_status_connect=
+ed);
+> +
+> +	/*
+> +	 * Conform to HDMI 2.0 spec by ensuring scrambled data is not sent
+> +	 * before configuring the sink scrambling, as well as suspending any
+> +	 * TMDS transmission while changing the TMDS clock rate in the sink.
+> +	 */
+> +	ret =3D drm_atomic_helper_reset_crtc(crtc, ctx);
+> +
+> +check_err:
+> +	if (ret =3D=3D -EDEADLK) {
+> +		drm_modeset_backoff(ctx);
+> +		goto retry;
+> +	}
+> +
+> +	return ret;
+> +}
+> +
+> +static int dw_hdmi_qp_bridge_detect(struct drm_bridge *bridge,
+> +				    struct drm_connector *connector,
+> +				    struct drm_modeset_acquire_ctx *ctx)
+>  {
+>  	struct dw_hdmi_qp *hdmi =3D bridge->driver_private;
+> +	enum drm_connector_status status;
+>  	const struct drm_edid *drm_edid;
+> =20
+>  	if (hdmi->no_hpd) {
+> @@ -919,7 +1059,15 @@ dw_hdmi_qp_bridge_detect(struct drm_bridge *bridge,=
+ struct drm_connector *connec
+>  			return connector_status_disconnected;
+>  	}
+> =20
+> -	return hdmi->phy.ops->read_hpd(hdmi, hdmi->phy.data);
+> +	status =3D hdmi->phy.ops->read_hpd(hdmi, hdmi->phy.data);
+> +
+> +	dev_dbg(hdmi->dev, "%s status=3D%d scramb=3D%d\n", __func__,
+> +		status, hdmi->scramb_enabled);
+> +
+> +	if (status =3D=3D connector_status_connected && hdmi->scramb_enabled)
+> +		dw_hdmi_qp_reset_link(hdmi, connector, ctx);
+> +
+> +	return status;
+>  }
+
+We have drm_bridge_helper_reset_crtc() now, any reason you didn't use it?
+
+Maxime
+
+--obg4uifwe4lk2yjg
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCaWZd7QAKCRAnX84Zoj2+
+dlp0AX4p2V7AchpI5eOf2uSzpRMW8pCKeTOAZ2dNExrrBfMPj660Ltr6w6d8et7J
+3KV99wsBgId9h0fMMjulQ3cULU3BgGvzBeZIpYskWi/riKxXPAOnwneatsZU93tf
+Xi3Evk4M9w==
+=fYIw
+-----END PGP SIGNATURE-----
+
+--obg4uifwe4lk2yjg--
+
+
+--===============0278689507768970946==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============0278689507768970946==--
+
