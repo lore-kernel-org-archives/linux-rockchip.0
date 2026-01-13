@@ -4,155 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 494E4D2F338
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Jan 2026 15:30:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7484FD2F338
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Jan 2026 15:47:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:CC:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vZLHZHryxkaV1Hh5+inOoeNUTvuhl9kTLs7EJJRSxso=; b=PQUTzLea4TW8AZ
-	aRCDh5vwpY2x7rt2wLbEkCCP6Z4jl8Zg5B103eMXZB8AV8Ps6vFCzQ8pKgOD4Jo15xUTAHwIxfIWw
-	22r5qOJ8w7GApfu951d4SYUwg+lbIkL9c/TEMU+DdDte+Uxsps2VOOC0f5inawzVGWR4DMm6FTMj1
-	ANHbx+wqR4BC4zcU79x+5Y1E8CQKqkUj24RI16pB2HAztKVQRmZwP7ccO9Enp3Uyt6kcNcr6qHs8X
-	p2yvoccMUSOoFmPv8dJZcfPPOTEj51NcxLsI8/mf29wyEMZB9/zUDXwhIS5hQhtzaEC7YNzo8+w21
-	Xh51V6TB2goY603vEXPg==;
+	List-Owner; bh=BL8xohH21GbSmqyeQWdNQk0REbcXWmKUrQ1i6+ACCRg=; b=NFLATlkjjRMk2v
+	aDQqEyRbmQkN7n/UV1duUo+SnWG9W0oydsdI6Z3X9lcA3iPrFu6AqM8vtuhKzjSiJU8HcSRcNx5Dr
+	NCbY3TpV4n8WTkXcaKIiQ3NvAZxGWIhp+9adTkgH39JO6JUIVTFZyXVvBsrGUbczrS+FTUOVFendx
+	1898Xd0tT4Yma+txVKWgtGZ8xRSVnG/EJw1Huru9u6BzrlchzbgQ7xV4GMP2+hO4KBfoGOe1LDyd8
+	g4RVWeQs9r+jWv5E74gTP/Q1v9LhVCsHxIciGQVeOPD1sF6rHWl5kdS2RYmnehEMbPVbhwyv2DJb/
+	DaX+CyhyKfWbgzn2EIZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfgLV-00000007NfE-0qKs;
-	Tue, 13 Jan 2026 15:30:13 +0000
-Received: from mail-northeuropeazlp170120005.outbound.protection.outlook.com ([2a01:111:f403:c200::5] helo=DUZPR83CU001.outbound.protection.outlook.com)
+	id 1vfgcO-00000007Pne-3vx8;
+	Tue, 13 Jan 2026 15:47:43 +0000
+Received: from mail-qt1-x82e.google.com ([2607:f8b0:4864:20::82e])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfgLN-00000007NZS-3GPS;
-	Tue, 13 Jan 2026 15:30:12 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=A38m9gne79HincyGvUnJoxSBAmSH91YmTNLWir00SwJmrxrhPCFUMn+iFGImQy5vvUHfw/7uBXR8eS8z/PWPMBdipFpt7NdCL1ccgbi04/V5JeDijfBpAiwxx1tl+C5YGyGfBo8xrc1YQ+AMaxPkVwVpgtn+6Xvn+M/Pzo0MQtRTX9yxeCBYty1p9ZnjfGMuqSRet3Agi7hhUxbzM+hQfFpcQRXIeh4quNWgIauJ5P7vD54aAw308UuhCP0FKQzgsK5Xy9YgssQfSxwKk4jcPRV2sVyU6SbsoCAKmzuxG1CfZ7/kqA9e0F/ZZcCLqOjrKu6HxjUCuETeOoAGxo/Z5Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=uwZSNiswjORV+k1ZF1ipec8s57WW53P2S+VSNW5dl4w=;
- b=rxUX6Q1pVrwjgb+vIVIroYFAM6vb9eYQCxkk5oqiVVBVgm//leAkbeFsp8dXEN0TNHgP79yHMQYTLg7BJjLccPRJB0bB8pfFB0YvLMjn7V3QgZMiNlad85Li6LaJ/j4NRKaU/Z7RMZ1nP/vIyvUpNH106hexJ+MHXGvfvWfY5OGRORE5Qyi3RA/Yhm9eMR1pp6Me0orzywWD63ZHPl/0LTTSAYMa1I9E+YfqF9tdyaZvst350WptOWbRCnuMYA0jZ/e1iSJJsxGb87GAbAMoFRv5UtAdBED1WcmHyprLXGQD9sEDOa/lKejdX2216I/9IRLU0QWHO8Pa2oCepvUVpg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=fail (sender ip is
- 164.130.1.59) smtp.rcpttodomain=linux.intel.com smtp.mailfrom=foss.st.com;
- dmarc=fail (p=none sp=none pct=100) action=none header.from=foss.st.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=foss.st.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=uwZSNiswjORV+k1ZF1ipec8s57WW53P2S+VSNW5dl4w=;
- b=noLVoJ6DLfFqbjohXjvdNf/2PWbv4PiPFb+f1zq8SRXXTTB2WYXhGKWpbEzPPYha3FEcyBq0br6Z6XmZJdVDjGR2XKrzDWWR0wYatz6uqCWIyi9oYsEHDsSKb0aHPEJ18v4kCLVJQTPN6FCFNzc7q7vKns0zceoniM+BHl/Xr8awMiowOIn6L+UqNGRcCNqOLUJ/m/E7zQyUz13lE+/WxVa7eHQuBaIbNDLcSVEVtuHs7oZ9LsfWKD9q8M74AURf6x2CnYGFtEByN0rSUV8N+PayyBAHW/eqlCp+Wr/QHX5lkKXauu90/ZfWhYwGbcbJfhaEUla5pQjEALG0zu8h+g==
-Received: from DB9PR01CA0016.eurprd01.prod.exchangelabs.com
- (2603:10a6:10:1d8::21) by PR3PR10MB3915.EURPRD10.PROD.OUTLOOK.COM
- (2603:10a6:102:4b::15) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9520.4; Tue, 13 Jan
- 2026 15:29:57 +0000
-Received: from DB1PEPF000509EA.eurprd03.prod.outlook.com
- (2603:10a6:10:1d8:cafe::2f) by DB9PR01CA0016.outlook.office365.com
- (2603:10a6:10:1d8::21) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.9520.4 via Frontend Transport; Tue,
- 13 Jan 2026 15:30:06 +0000
-X-MS-Exchange-Authentication-Results: spf=fail (sender IP is 164.130.1.59)
- smtp.mailfrom=foss.st.com; dkim=none (message not signed)
- header.d=none;dmarc=fail action=none header.from=foss.st.com;
-Received-SPF: Fail (protection.outlook.com: domain of foss.st.com does not
- designate 164.130.1.59 as permitted sender) receiver=protection.outlook.com;
- client-ip=164.130.1.59; helo=smtpO365.st.com;
-Received: from smtpO365.st.com (164.130.1.59) by
- DB1PEPF000509EA.mail.protection.outlook.com (10.167.242.68) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.9520.1 via Frontend Transport; Tue, 13 Jan 2026 15:29:56 +0000
-Received: from STKDAG1NODE1.st.com (10.75.128.132) by smtpo365.st.com
- (10.250.44.71) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.29; Tue, 13 Jan
- 2026 16:31:20 +0100
-Received: from [10.48.86.129] (10.48.86.129) by STKDAG1NODE1.st.com
- (10.75.128.132) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.29; Tue, 13 Jan
- 2026 16:29:54 +0100
-Message-ID: <5a9615d0-86f7-4930-b65d-d7f9196fb281@foss.st.com>
-Date: Tue, 13 Jan 2026 16:29:54 +0100
+	id 1vfgcK-00000007PnF-3Bms
+	for linux-rockchip@lists.infradead.org;
+	Tue, 13 Jan 2026 15:47:38 +0000
+Received: by mail-qt1-x82e.google.com with SMTP id d75a77b69052e-4ee14ba3d9cso85113321cf.1
+        for <linux-rockchip@lists.infradead.org>; Tue, 13 Jan 2026 07:47:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=rowland.harvard.edu; s=google; t=1768319255; x=1768924055; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=V4E29K8NtthQbL8xaHlQbXgCcFMaQ8I/QIsll/4mAVI=;
+        b=YA1EKLJukVSDbfLb+Czme7fQEEgRloVRCejy5JD3ZviAQn66IIi1iG4g+3GViZRzsZ
+         b08L7IGyCUAc/51oeCHlnTIH8jEK0ZkP0wzk0RXCzu7ijWW92C+DeWlLqqUdS2AyM4Qr
+         DyrpoLlfn7ICNJlGbkt1RibBWPFpGJMzS4ZE+Wm/XGVoR2lcmWbx2PZk0fvtlZzZI30Z
+         ipa3i+KvIYjiV0MoimmNmvdjFdEZvIrbePSfgZmxDXY6AIGdMV2QJF+IHhh0nrHwCWe6
+         0GSpuhrNrKpjc+DSeArm7JUlkRotNevzO5ST2KiMiw8r0r0wtBEe1uQfs+K0uHw9jJp7
+         tFww==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1768319255; x=1768924055;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=V4E29K8NtthQbL8xaHlQbXgCcFMaQ8I/QIsll/4mAVI=;
+        b=M8F6IbaXMmuxrjijyisHh13MO1HAext6WrlOdPKpjHobW3+V4Q9zjU17txp/BdJLfs
+         rKCEV4uA48U+jWVzA9X6No4cOe8LwUJfYvnqaRaLjoMh6bUFsCQYD54OjEr2D56Bx6VR
+         Y3jG7tCKUbUasZDeBhPyGyu+uUxqKn4TjVRW+VQuPEy2mux5mexSz/kXCqohicL0qpvT
+         GMwdTq4vQTdXTFiO+cFGeolsCs3+gx2a8pAMyY6KDIPDaRClJ+JU3juwm0j6QV3A5Pm0
+         L1InGEaIBqnJbMv5z6QUGgHbhYiiftQ2Jt6TRE467JliS54IwPvLVma+yq5DuQl32Vg9
+         L7sQ==
+X-Forwarded-Encrypted: i=1; AJvYcCW139o9ApibIFjNKMRRoLghR/5WFbhys/WRS3YTcU6XpTG+nSQdsa9POvI5SIyfdF3B8gUm1PVATnbq9avryg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyxiC4m2D6CDbfxz3BgL/8HH9uo1UmXKGphTNa623WY1LGIrxXj
+	kKcKJQbm0ABMrvyJkP09QV7uFJqYxAu2cmFEP4g0iStfBM94/J47DtXyWlchXoE1oQ==
+X-Gm-Gg: AY/fxX5skgYX4wTdaaC1KQK7bNeWn4OrpGMhDCeCmK9wISkhuC2Snxh0RlEw/cYEGKV
+	uUUIM2z/VTBbrkUiNgaRVaGP1ZKS0QmnTHPc/vTc6EdVLcTzATT3wvIwPgDm5FWmso0vefjTltF
+	kNhflb8RRxkor1QQmrcmBHeVl3AwMOEuYiZQcW6snG1WajV9TuWgxAQI4dhvpZoolz+ECdm9NP3
+	WaQb8AE4v182JJWOMyIdvMx2nIUrhklmLr6SuYQGW6X9CcwUjUa/Fot8ZKT8Gp0No+uXt2ozyRt
+	Y+4ClOqCrX1UaGAMaBUEu0T/+6jcGPtZxBecEJsWra2HrDshV1EknkeTxOGPyRqf0aOHSX7oalz
+	3BE+YPEwfzicqaZHwe3sxLobS9proVXy42cN7lmxIAa3g3rrXFhY4pqYroOUyY11XmuQI+QxqLA
+	DCotH2IIkqlQU6
+X-Google-Smtp-Source: AGHT+IFhjbjTMA3UG1+LzK0VTQpsT0ybcHnnkXUDGy3gkqerhp+UUzpz/yX8uxO8J69O4bodtuJvPw==
+X-Received: by 2002:a05:622a:20a:b0:4ee:24e8:c9a1 with SMTP id d75a77b69052e-4ffb499a89cmr245461151cf.44.1768319254559;
+        Tue, 13 Jan 2026 07:47:34 -0800 (PST)
+Received: from rowland.harvard.edu ([2601:19b:d03:1700::7a0a])
+        by smtp.gmail.com with ESMTPSA id d75a77b69052e-4ffa8d3d92esm149003291cf.5.2026.01.13.07.47.33
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 13 Jan 2026 07:47:34 -0800 (PST)
+Date: Tue, 13 Jan 2026 10:47:31 -0500
+From: Alan Stern <stern@rowland.harvard.edu>
+To: Diederik de Haas <diederik@cknow-tech.com>
+Cc: USB mailing list <linux-usb@vger.kernel.org>,
+	linux-rockchip@lists.infradead.org
+Subject: Re: Track down EHCI and companion errors on rk3xxx systems
+Message-ID: <38365c37-b125-4ffb-8ce7-bd4f3f7596ba@rowland.harvard.edu>
+References: <073879e4-aea8-4625-bc83-c4b6dd9c9231@rowland.harvard.edu>
+ <DFNI1Q9N7GC6.20PN0RG9LRAQF@cknow-tech.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 6/7] i2c: st: Use HZ_PER_GHZ constant instead of plain
- number
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Andi Shyti
-	<andi@smida.it>, Wolfram Sang <wsa+renesas@sang-engineering.com>, "Qianfeng
- Rong" <rongqianfeng@vivo.com>, <linux-i2c@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-rockchip@lists.infradead.org>
-CC: Khalil Blaiech <kblaiech@nvidia.com>, Asmaa Mnebhi <asmaa@nvidia.com>,
-	Andi Shyti <andi.shyti@kernel.org>, Qii Wang <qii.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Linus Walleij <linusw@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, Ard Biesheuvel <ardb@kernel.org>
-References: <20260112134900.4142954-1-andriy.shevchenko@linux.intel.com>
- <20260112134900.4142954-7-andriy.shevchenko@linux.intel.com>
-Content-Language: en-US
-From: Patrice CHOTARD <patrice.chotard@foss.st.com>
-In-Reply-To: <20260112134900.4142954-7-andriy.shevchenko@linux.intel.com>
-X-Originating-IP: [10.48.86.129]
-X-ClientProxiedBy: STKCAS1NODE1.st.com (10.75.128.134) To STKDAG1NODE1.st.com
- (10.75.128.132)
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DB1PEPF000509EA:EE_|PR3PR10MB3915:EE_
-X-MS-Office365-Filtering-Correlation-Id: ad846134-3179-4c3d-ab09-08de52b89b1c
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|7416014|1800799024|376014|82310400026|36860700013|7053199007;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?SG9yT3owNnJZckJOR2xhQlBnd0FLY2Z0MTVEa3M0UVFwRVBSS3dhUW5McFNs?=
- =?utf-8?B?VXh1NWMyY1NpenVJOXdscDdnT3o4VUFQWWdreVZXdm1HeGNxalluUUJ1Zk1j?=
- =?utf-8?B?T05HdjZzQWlpdEVZMEo2QTBEZmIwcHVoN1FYU3NPb3VqbkQya3cycTd6Tk9G?=
- =?utf-8?B?TTc2c3ZJM0RCald3TFp6TkorTTVWNkNCc2VPclhvbHF6OGRjR0djL3NRN2tz?=
- =?utf-8?B?ZURqeXBiUUNzM25MVDB5azZwcGNaSENCRk4xVk11bjNId0FCODNObUt1V0lY?=
- =?utf-8?B?MFZ0L1NQZG9LdWUrTmtSVE9JalhhVmk5bUhSb2hOQzYrRTlpajlBOERDWGpS?=
- =?utf-8?B?ZFNyNUluOVpkdjBJWWdZbURsbjNlakFBRXAxL1dMY21OTUY2ZHlMTUJkRVdL?=
- =?utf-8?B?YlNWaFV1SjZmaG9vS09aTU0xRFZISEw0UW43ZmNlZ0xDNXRscE51Y010R05h?=
- =?utf-8?B?d0xLRkhZcURJVkdPYSs2RFQvdFM1Z3BwT1dsSXgwMzVIWW5WemJEVnc5S29o?=
- =?utf-8?B?eGM1Vm5YeldsWHVObzJSQWJoajZLRXBRWFVBaXdkZDFwQ3RWZitzeTVCclov?=
- =?utf-8?B?bVkwQ3RGZ3ZVREo2eWlhZktuakRsaWtnZHh3c0x1U2FEVGlhczN6WHVTMTlC?=
- =?utf-8?B?TGhYRmtReVlnc2JEM21iek9NdVhwOTNHM0x6ckw2Vi9NR1RNdjFtdlJtSzda?=
- =?utf-8?B?Um50NGtsRFgwRlpJOHJNZjBqcGZ4VC80djRFNVpIUHFLUm40ZUQzRzBVS2x1?=
- =?utf-8?B?VFV2MmhjSWpKQ3BOL0dtMXJFeXhTQUxlcEExV1NmNFp4ak93MzQzVCswTy9D?=
- =?utf-8?B?bVlIMVlIbUg1dElMdkdUcE82SUJxLzNXL1FPSTIvYWNDUHVKUXdLWVdEc0pr?=
- =?utf-8?B?NDJmakJqTXFmbmlPUm4rZ1UwVWxXNVF4SHJmYUxTaGZ4ODgxVkFqZmtubVl0?=
- =?utf-8?B?ejlqZ1dLTWYyRm94eHFiWFlaNS8rbjNXcTNvNUVQZ2FQTWMzaGRpdGdHY0Mr?=
- =?utf-8?B?aDJLM0Y3dWpyRy9wV2tkZzM1N2hPL3Y2YSthWlRNNVhEei9HT1N3Z1VTQlBu?=
- =?utf-8?B?TTBrZ21ySXNNZ2VORTJRNmFPUVYzemhkRVhsM3FSeFZFTUFBQ0ZMR3ZRZFhr?=
- =?utf-8?B?UEViY2Q5RlZwUmJLbEVLNmZqWGg0aEJYcUJ5eENua3RXcUFtcnNpNllxbmZz?=
- =?utf-8?B?UUUyeXM5Wi9ZeFJpTFJJYkVmSzdkTXZaQ3hhRUVHUXMxOUVXc2JKQ3VhS0wz?=
- =?utf-8?B?UHk5S3NhdC9VZDYra0RwekFSL3FteHhnbWNEQ3NmZmRYZmR5a0ZySzlmZGlD?=
- =?utf-8?B?bThHYTZockxxOHpRbFdRZDhXeTI4dC9BRHFwYjE5N2c4TnNGZDJCNkhGMlhG?=
- =?utf-8?B?R3FtT1RWTmQ1L3ZwTE82WllhR09QODc3N3ZRL2NiUUhoVTFmbHl3TlZSMytv?=
- =?utf-8?B?UWozaERCdjB5SHUrWmtWcTUrREJNT0VsVEN0TlVobjhrRUZQc1lrZi9YUGRL?=
- =?utf-8?B?UFgzaFAxZ0Npa1NHQ2dmSFRMZG4xVlJ4L3pRZGVQbEllK2ZLN0lZMkZ5akZD?=
- =?utf-8?B?NzBZZURzV2svSEx6Y1VLYlJPbG9QeVhkdE5TSUs2THE4NzBFd0huM2taeXdZ?=
- =?utf-8?B?SEFnZU8yWGo0YllYZGRrMzRUTXhlSURHMVYxMVZzdERmaFdIKy9Md21JUUVz?=
- =?utf-8?B?YWdmRzZXRmNJcTVydkdVaUdtcHU1WEpOaFlQY2RCaVRQZFlVWFNacjRMaWVQ?=
- =?utf-8?B?OW1MeHdxTUhrNHRwNm1qK2Y0NFNDUTJhZU5qaE9NMkg3RGpZVno0Q2ZkUktD?=
- =?utf-8?B?eUJ3djN0cTZMQVdNK3pqclBnK0Z0QnFlRFVmVy91cDJQWitvZW02T2VsV1Zp?=
- =?utf-8?B?V2U2YXRlaUhmckE2RzY4V1JpRU5pZkpJazlHOUEraUZZS1ZKUGZaRU51MzlZ?=
- =?utf-8?B?WFkrOE8xYVpJNE9XVVdGQTdmOVAvVGppZWpHQ1JSc24zZWtmWHYrNDZSUHNI?=
- =?utf-8?B?c2dJNnNrb3Fhd3ZIeDQwQ3F1RkpiUE41eHVZcCtMKzdReFB3eitya2ttc0Jl?=
- =?utf-8?B?RG94N2ltY2sxQUczTlgxZ25FUzEwci9sSk1IOE1qT2pTZ3YvWUl1ZWJFTXU1?=
- =?utf-8?Q?sGTI=3D?=
-X-Forefront-Antispam-Report: CIP:164.130.1.59;CTRY:IT;LANG:en;SCL:1;SRV:;IPV:CAL;SFV:NSPM;H:smtpO365.st.com;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230040)(7416014)(1800799024)(376014)(82310400026)(36860700013)(7053199007);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: +D1AYEpJ+3bOXVJZNQAcnFX2vNVdFquACKRVknCNUqZoEce3a0Z1UjFPv3rhpKLlMw09khqR/iRd4S6zho6RFcFiVxJjvr8D7+YghW0W6nFw5WEj8sCcSfXW1vEG2MIb4X1i507OWnupCxURr1vyWEXdTrIpzZqfZk3+JV8tNWqNEOM36IHHEa1xKTfYVMPTAUutvsIARvCZ6jjPDT/dqtnujS3jAdW0R1RY4YpvdkiJjUCuq7vx7QMLjifcreXkPgQ2oECsOSKAaETLyUgP8wZzr5AQtv04ND8sJ0QkK2TRFxDWLfihgvDDsqi/r00oUIIYoPw2oGwPkWzhLTFhJe/fTI3MWGuNQB04rjTFI3s8zBWs4YgGHrIbXgY6GBRYcqrgRa47KHbIfDu2SCJ5bc1ZLRSMt3edmM+0uyxxExt/GFtxwm3MpJAMGGxITghFt0zm5RmOg/OU4ff2L2MFYxL1YVpY9vPa6R5u5b58eagWgCGCZtsBBtpK/Q8r9ePTVdNn2HaDXDW8E08fyNjNHwvXz+VRNUfRiRdHnZvR/SE+npBSWNaQ25v88FKXl1t14ESwdtw+69JLf1SRPn08W4/A2Z6GLEY5fFCcke+XJQNkpoy+Cr7HCbZRTJNzFmFGP5rDjm7/sSy0uiw1K/apqmSXrOYfB+0mPjZFJiSHG9i8Ho9yqGfE/sERAlm8S6nd
-X-OriginatorOrg: foss.st.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Jan 2026 15:29:56.1843
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: ad846134-3179-4c3d-ab09-08de52b89b1c
-X-MS-Exchange-CrossTenant-Id: 75e027c9-20d5-47d5-b82f-77d7cd041e8f
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=75e027c9-20d5-47d5-b82f-77d7cd041e8f;Ip=[164.130.1.59];Helo=[smtpO365.st.com]
-X-MS-Exchange-CrossTenant-AuthSource: DB1PEPF000509EA.eurprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PR3PR10MB3915
+Content-Disposition: inline
+In-Reply-To: <DFNI1Q9N7GC6.20PN0RG9LRAQF@cknow-tech.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260113_073006_087666_388466CF 
-X-CRM114-Status: GOOD (  11.88  )
+X-CRM114-CacheID: sfid-20260113_074737_203432_76583F06 
+X-CRM114-Status: GOOD (  15.94  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -169,43 +100,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-
-On 1/12/26 14:46, Andy Shevchenko wrote:
-> Use defined constant to avoid the possible mistakes and to provide
-> an additional information on the units.
+On Tue, Jan 13, 2026 at 02:35:21PM +0100, Diederik de Haas wrote:
+> Got my (gtkgreet) login screen and plugged in my keyboard adapter in the
+> *bottom* USB2 port ... and that did NOT work.
 > 
-> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-> ---
->  drivers/i2c/busses/i2c-st.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
+> Logged in via SSH and noticed it was indeed not listed in ``lsusb``.
+> Checked ``lsmod`` and ``dmesg | tail`` ... and noticed the kernel *did*
+> notice plugging in the keyboard adapter, so did ``lsusb`` *again* and
+> then it *did* list my keyboard adapter.
+> I did NOT employ my usual 'workaround' by plugging it into a USB3 port.
 > 
-> diff --git a/drivers/i2c/busses/i2c-st.c b/drivers/i2c/busses/i2c-st.c
-> index 97d70e667227..751ea421caaf 100644
-> --- a/drivers/i2c/busses/i2c-st.c
-> +++ b/drivers/i2c/busses/i2c-st.c
-> @@ -20,6 +20,7 @@
->  #include <linux/of.h>
->  #include <linux/pinctrl/consumer.h>
->  #include <linux/platform_device.h>
-> +#include <linux/units.h>
->  
->  /* SSC registers */
->  #define SSC_BRG				0x000
-> @@ -285,7 +286,7 @@ static void st_i2c_hw_config(struct st_i2c_dev *i2c_dev)
->  	writel_relaxed(val, i2c_dev->base + SSC_CTL);
->  
->  	rate = clk_get_rate(i2c_dev->clk);
-> -	ns_per_clk = 1000000000 / rate;
-> +	ns_per_clk = HZ_PER_GHZ / rate;
->  
->  	/* Baudrate */
->  	val = rate / (2 * t->rate);
+> So it may be that it would have always worked ... eventually ... if I
+> had just waited long enough?
+> While 'dmesg' seems to suggest it took little over 0.5 seconds, I'm
+> really not that fast ;-P (or that impatient)
 
-Reviewed-by: Patrice Chotard <patrice.chotard@foss.st.com>
+Is this repeatable?
 
-Thanks
-Patrice
+If it is, try doing the following.  After a fresh boot, log in via SSH 
+and turn on dynamic debugging for USB:
+
+	echo module usbcore =p >/sys/kernel/debug/dynamic_debug/control
+
+and clear the kernel's log buffer:
+
+	dmesg -C
+
+Then plug the keyboard adapter into the non-working bottom USB2 port and 
+wait a short time (say, 30 seconds).
+
+Then get a copy of the dmesg output and post it here.  Also, check to 
+see whether the keyboard is working.  In fact, you should check the 
+keyboard during that 30-second wait, so you will know just how long the 
+delay was before it started working.
+
+Another thing you can try is to force the necessary module(s) to load 
+before plugging in the keyboard adapter.  For now, a simple modprobe 
+issued over the SSH connection will do the job.  If this turns out to 
+help, you can configure modprobe to load the module(s) automatically at 
+boot time.
+
+Alan Stern
 
 _______________________________________________
 Linux-rockchip mailing list
