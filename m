@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EF21D29DE0
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Jan 2026 07:22:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DE03D29DE0
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Jan 2026 07:23:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uS1uz/ai02hi+5mA3kqFCm7SR5UbuAtWf9T6nWpX8Nk=; b=Erx6vExJcmnqKj
-	vuEGSRO3xEvrhbORqbP55l08G6sA8bfU+EoBm4jBAFTDq/dCkArKGHRrZs7XXolcNJ55IiuLRO0fr
-	iCR7tYFY+CQlM3sbjHj/O9ei2zjMjoN31HtBLLTMBcb1rGtpH6lldAImBzhlsng7y74yqDC0imRge
-	8IJRbH12ZF6Fk7JOZdXIzHkb0cqQKHBTKCm23F2KU+Rwfy9sotKc10WLFu4lblxXkkmcBkBQRQ0xw
-	Ioot9qPzWT7Z0CdSls5m7QRmo6DdBM6a436Z81N0hqI9STX24lhlOISsjk59voOkEti8YqIQmzhhl
-	7Jzhyv3aR4q4JVVUoLdg==;
+	List-Owner; bh=yDD4ik6KfCGJvxPrSW2J4mCkTcCXZlfyvcC9GhGMu2o=; b=JdPvIfw8sY7+iA
+	iTxVoDW8PMPY5pMxJt62dyGe12v+HiZU08DO3L3wM3MV+iJ8qSv0R4pZ++WEtLrLGRmnEohySxw7n
+	mu91YSZtp7JjIGaCyZlRMc9VRIWQ9wjcNvDJ1JNXRv1uQXFbLjP72+xCVqiVkd6yzNvGPJVvpfq6L
+	T0J/Fnb0OXlEHi24eMVCFgdmwP+lZ01Z78oIAQt9YICNk1kD5QBxl3/jWcjj/d8/9mp9IqByMFDtT
+	ywcbHglVLy9nhCrXuOeqNV9HrpPGo4LPii+/D8OtbOdl7S6q+kskxsxq5ZmIq5gE6r3qgHiJDydFU
+	Lc7oFLCPVrTSRV5YYxhw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfYjj-00000006dpK-1RZt;
-	Tue, 13 Jan 2026 07:22:43 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vfYkW-00000006dw5-45Vw;
+	Tue, 13 Jan 2026 07:23:32 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfYjf-00000006doc-0kL2;
-	Tue, 13 Jan 2026 07:22:41 +0000
+	id 1vfYkS-00000006dug-3rxQ;
+	Tue, 13 Jan 2026 07:23:30 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 3B5E943FE8;
-	Tue, 13 Jan 2026 07:22:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 202A1C116C6;
-	Tue, 13 Jan 2026 07:22:34 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 9149144263;
+	Tue, 13 Jan 2026 07:23:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B7408C116C6;
+	Tue, 13 Jan 2026 07:23:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1768288958;
-	bh=nvhotzmMws5lLcKwEEb//eLMnErYS7i8F844e5p4vNQ=;
+	s=k20201202; t=1768289007;
+	bh=1+F6dFfPAeqLcbkEBw1S8hDM8CN5TNoOf8Mc+HFOoGI=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=tTk9oHsosDc6bkVRA3p0hqLFjp5+Uhnsj7Ojnq1PBZq9eHpXpQEMkfwuVSS7X6xWI
-	 4u3JtXRwVubpzv7NaAj2pUHmhN/3+zz60eaNeAY+Rd7yiBOShCfCSfV3es6Rv+Io1w
-	 oq9Wqud+Q3YBe9hJDbuunvclp1L+OGL9M4QALPsmvbSjfWbhNJU7GEPzC8lWOFLjLe
-	 /oP3NBsxiR/13Yfq1044k0HiNgZ1aUiXKUw1FTxkPgT82cMcjqIhJPHgJxcRsuKyHm
-	 EQ35SOY+dldDN6NPgbnBEy1L6kvqsUxQy629sGaljQgkIrDdCa6rl4LAIX10fu9gWQ
-	 4+mhjunbLPmcw==
-Message-ID: <bcee4f0b-6159-46c9-81ba-ec2970994613@kernel.org>
-Date: Tue, 13 Jan 2026 08:22:33 +0100
+	b=tkOuDhwJmqo7p/d6TraJiEDtVh/tUnO0ZJLZ8yJ6kXY4HJjndlpfqtcWWvOU71yqH
+	 qQjw/oqxwq2qrr+g7CzjVx2JjSTq/K5A9n0F33Pe7whm5Dx/rJvNJZ/h5vjwjvb7GR
+	 7nhswMS/H/QiaXAHT/5rNy313fBoRuQyXO/w1B2n1miZpc9l01lyXDVfCyL+r7h80v
+	 HAynuK7vbVUz4ECeMUcYeL2B22ugKQ8EF4DLGfJOLczYns0/yqJJVpwsv7Mpvocrip
+	 TNe4DurmCxMMDeqjaMvI+SK7CAalFBSsVlxHo8Zs9ePJ85yO1JBvAtw9Nrk/2b47xa
+	 9l5vz/YOzoh1w==
+Message-ID: <3458d586-75a0-44c7-ac5d-e33539b8eb26@kernel.org>
+Date: Tue, 13 Jan 2026 08:23:23 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/3] arm64: dts: rockchip: Add modem to the Pinephone Pro
+Subject: Re: [PATCH 3/3] arm64: dts: rockchip: Remove interrupt GPIO for WiFi
+ for the Pinephone Pro
 To: guptarud@gmail.com, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
  <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
  Lee Jones <lee@kernel.org>
 Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- Martijn Braam <martijn@brixit.nl>, =?UTF-8?Q?Kamil_Trzci=C5=84ski?=
- <ayufan@ayufan.eu>, Ondrej Jirman <megi@xff.cz>,
- Danct12 <danct12@disroot.org>
+ Ondrej Jirman <megi@xff.cz>, Martijn Braam <martijn@brixit.nl>,
+ =?UTF-8?Q?Kamil_Trzci=C5=84ski?= <ayufan@ayufan.eu>
 References: <20260112-ppp_connectivity-v1-0-284d6e83b212@gmail.com>
- <20260112-ppp_connectivity-v1-1-284d6e83b212@gmail.com>
+ <20260112-ppp_connectivity-v1-3-284d6e83b212@gmail.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -102,10 +102,10 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  jWt87ecuHlpL3uuQ0ZZNWqHgZoQLXoqC2ZV5KrtKWb/jyiFX/sxSrodALf0zf+tfHv0FZWT2
  zHjUqd0t4njD/UOsuIMOQn4Ig0SdivYPfZukb5cdasKJukG1NOpbW7yRNivaCnfZz6dTawXw
  XRIV/KDsHQiyVxKvN73bThKhONkcX2LWuD928tAR6XMM2G5ovxLe09vuOzzfTWQDsm++9UKF a/A=
-In-Reply-To: <20260112-ppp_connectivity-v1-1-284d6e83b212@gmail.com>
+In-Reply-To: <20260112-ppp_connectivity-v1-3-284d6e83b212@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260112_232239_280778_DC76AB5F 
-X-CRM114-Status: UNSURE (   7.27  )
+X-CRM114-CacheID: sfid-20260112_232329_000551_DAA577FB 
+X-CRM114-Status: UNSURE (   7.08  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -124,17 +124,16 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 T24gMTMvMDEvMjAyNiAwNzo0MiwgUnVkcmFrc2hhIEd1cHRhIHZpYSBCNCBSZWxheSB3cm90ZToK
-PiBGcm9tOiBSdWRyYWtzaGEgR3VwdGEgPGd1cHRhcnVkQGdtYWlsLmNvbT4KPiAKPiBUaGlzIGFk
-ZHMgdGhlIFF1ZWN0ZWwgRUcyNS1HIG1vZGVtIHRvIHRoZSBQaW5lcGhvbmUgUHJvLgo+IAo+IENv
+PiBGcm9tOiBPbmRyZWogSmlybWFuIDxtZWdpQHhmZi5jej4KPiAKPiBXaWZpIGlzIGN1cnJlbnRs
+eSB1bnVzYWJsZSBpZiBpbnRlcnJ1cHRzIGFyZSBkZWZpbmVkLiBMZXQncyByZW1vdmUgdGhlbQo+
+IHNvIHRoYXQgV2lmaSBuZXR3b3JrcyBhcmUgYWN0dWFsbHkgZGlzY292ZXJhYmxlLgo+IAo+IENv
 LWRldmVsb3BlZC1ieTogTWFydGlqbiBCcmFhbSA8bWFydGlqbkBicml4aXQubmw+Cj4gU2lnbmVk
 LW9mZi1ieTogTWFydGlqbiBCcmFhbSA8bWFydGlqbkBicml4aXQubmw+Cj4gQ28tZGV2ZWxvcGVk
 LWJ5OiBLYW1pbCBUcnpjacWEc2tpIDxheXVmYW5AYXl1ZmFuLmV1Pgo+IFNpZ25lZC1vZmYtYnk6
-IEthbWlsIFRyemNpxYRza2kgPGF5dWZhbkBheXVmYW4uZXU+Cj4gQ28tZGV2ZWxvcGVkLWJ5OiBP
-bmRyZWogSmlybWFuIDxtZWdpQHhmZi5jej4KPiBTaWduZWQtb2ZmLWJ5OiBPbmRyZWogSmlybWFu
-IDxtZWdpQHhmZi5jej4KPiBDby1kZXZlbG9wZWQtYnk6IERhbmN0MTIgPGRhbmN0MTJAZGlzcm9v
-dC5vcmc+Cj4gU2lnbmVkLW9mZi1ieTogRGFuY3QxMiA8ZGFuY3QxMkBkaXNyb290Lm9yZz4KCllv
-dSBuZWVkIGZ1bGwgbmFtZXMuCgpBcmUgeW91IHN1cmUgc28gbWFueSBwZW9wbGUgYWN0dWFsbHkg
-d2VyZSBjby1kZXZlbG9waW5nIHRoaXM/CgpCZXN0IHJlZ2FyZHMsCktyenlzenRvZgoKX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAg
-bWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xp
-c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+IEthbWlsIFRyemNpxYRza2kgPGF5dWZhbkBheXVmYW4uZXU+Cj4gU2lnbmVkLW9mZi1ieTogT25k
+cmVqIEppcm1hbiA8bWVnaUB4ZmYuY3o+CgpTbyB0aHJlZSBwZW9wbGUgd2VyZSBkZXZlbG9waW5n
+IHRoaXMgc2ltcGxlIGludGVycnVwdCByZW1vdmFsIHBhdGNoPyBIb3cgc28/CgoKQmVzdCByZWdh
+cmRzLApLcnp5c3p0b2YKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5p
+bmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8v
+bGludXgtcm9ja2NoaXAK
