@@ -4,168 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B0E0D30CC1
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Jan 2026 20:26:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30257D30CC2
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Jan 2026 20:36:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Bc47nFVnaWXrM/GDJ4XP1LFzI0ARLU1rbnl9KnDcGWM=; b=R3z9vFVC8j/pXo
-	gT+MwkfWA0usqsa8GUdnGuPU9KMSePeMapMAlxIAqIeCa441HwvCNSlgVzcvg9wUYmNsXcraQOmmv
-	cDNg3D70gML+FjBNb+xMh4E2n3E8mCxK888iA0MHThC0W/pzRct/FDaZ8IIjaOfcUnex53XX+sN2n
-	Nl97wUYIvJCVw+5TvbDN9WCRdwtbhlSLPNWYhjfp4O1gapYxmdM4ZiScGMyV0IDa/UtrVI0fDAMox
-	5uwyo59qytDZSaBz8ki+mFgDnpvV/EUBO0kzhZ3fETWhuvOLlt4yeLY7gDdrk/XyDrDhz2K7xf5P9
-	+zkEAWuwrzk2JF9FfXXA==;
+	List-Owner; bh=meHhAXeHAhx7eRq9plvHX+ZbFSgQdRwslfGr7vLsCY0=; b=b2mbVQ8aJFBleB
+	BTE1w3mJZzmumtag35o3sBe5k610Hi1H+duJPPKJ9Fa7JE9c6s6lrFUhkN8DJ2Y8kijrTEzitDUKc
+	eEJfMg+fUQXu/94/Ldfzext3Bh24lgtvf9/bp9so6z4wAbaav+o0D/nct5oV27Ijdv+SJpt42lrFO
+	EuyXOgrXDxyTMClf72BYi4eUnkj0ARNffBglrCcHsoqTC/p2FdhVgCxeAwBAkeubyJgzh31p8NQTH
+	HNJzWNBu4KcC4TxszjLqhTNUWZTPagtl7UbCu3q2il1zKZgjMdlWi0j1MS/fBabD3D911WiSSNFMs
+	fZ31tzU201vN1CkdiLrQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfkyQ-00000007gko-1whO;
-	Tue, 13 Jan 2026 20:26:42 +0000
-Received: from mail-francesouthazlp170110003.outbound.protection.outlook.com ([2a01:111:f403:c207::3] helo=MRWPR03CU001.outbound.protection.outlook.com)
+	id 1vfl7L-00000007hT4-0z2u;
+	Tue, 13 Jan 2026 20:35:55 +0000
+Received: from mail-oa1-x2f.google.com ([2001:4860:4864:20::2f])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfkyN-00000007gkN-2nKI;
-	Tue, 13 Jan 2026 20:26:40 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=Au61bWIbkvmJCEvBPZjjJKtq01HtRT5V2+iCaDkEzCDt8tP+3P2YNeoCY4/hXT4UWAGBXVHOayaxbyc60RBu9BCl+SPc6fdo2InLQ/Fngw+lMiBM0XsKuxDgQDKTQP5uE1nYYBtmyAnmAjPooy20jIi1lNXCcNqgFID+8N0qJw+CKBU/57au8st9y1uAsfZnMg7V5UBHJBpjKptEa4FwDtUWMlqDRfdpClMrOmR+93IUPTGCisWyLerg/2CBuJ5Qj9IeQgg1Jn5+0kPhFY1prZpNHDiyxVEEKwFmYZeZOn/vvBtPMi4A27jLVFZgwKFrq0RID6IEvCXG6afpuxCUGQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=P/Bji9kb2pKnmOsvEEw2Xb8ObzCbj246NH6T0wrbnZY=;
- b=DVVpPsibA7OZsJNNmE5Kn8TqB24v7ubKnfT9eBqtdoFdM692ht5/4g22xB6/M9u6Wsl02h9353TKdVwM4wTeEQ6kKdqNr/arzIG+ka+9CHX+eBOR2LUq4JWhVJIqtLYC41cUYrw9C/H+BvQwWcKDMR2jNYTK5Um3MCI4jFeYOjJbkcXQ4gZRkswI2DwyrJdrqYIaC0mRDTuo73wd1yLHULEkuzti5mfxlNMM/oJqIAsTPZa41Nkv2CCE42xMfQtg4FI8jomZLK3Banh2Hsd1d2JRha3zQN1r4qWNr7N+VrejPVQJRt/oDCZQ+4tgUVYx4HwhVzgjVKyccpDkxYMQfA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
- header.d=nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=P/Bji9kb2pKnmOsvEEw2Xb8ObzCbj246NH6T0wrbnZY=;
- b=G/tDYaU6eIOszv8JWi3QOnQdbhTqkdfLFNPA732b6Al/bGLOg9ZTI0VYy1KI+FIc0afLwKRNZ20jx5TkEuc6EWEr69cL0BwkDv4tzai/XzzV6tkEdOfmMRQ+xVsnMR5Qc0AeR7Xj+ZKMFX/LlQWoNLR4HCkO/sslZ0nIJ3ez75ssiX0LgSRvtpuDFhJlZ4HMIJHfjo1+Q68Kv8RFAwg4qcQZMoQHck5vqoOi7mRjV/Md1Jc2V4SImO2PblxWMzq5yx9oUQWjeazSus9tYK1DHVtzzquu4WsNjmEoCQSFnhZ4apJXjKYy9Z4Drphk4GaguP6qWpSByJ7foNjR0XfBJg==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nxp.com;
-Received: from DU2PR04MB8951.eurprd04.prod.outlook.com (2603:10a6:10:2e2::22)
- by VI2PR04MB10761.eurprd04.prod.outlook.com (2603:10a6:800:27e::22) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9499.7; Tue, 13 Jan
- 2026 20:26:34 +0000
-Received: from DU2PR04MB8951.eurprd04.prod.outlook.com
- ([fe80::753c:468d:266:196]) by DU2PR04MB8951.eurprd04.prod.outlook.com
- ([fe80::753c:468d:266:196%4]) with mapi id 15.20.9478.004; Tue, 13 Jan 2026
- 20:26:33 +0000
-Date: Tue, 13 Jan 2026 15:26:17 -0500
-From: Frank Li <Frank.li@nxp.com>
-To: Koichiro Den <den@valinux.co.jp>
-Cc: jingoohan1@gmail.com, mani@kernel.org, lpieralisi@kernel.org,
-	kwilczynski@kernel.org, robh@kernel.org, bhelgaas@google.com,
-	cassel@kernel.org, vigneshr@ti.com, s-vadapalli@ti.com,
-	hongxing.zhu@nxp.com, l.stach@pengutronix.de, shawnguo@kernel.org,
-	s.hauer@pengutronix.de, kernel@pengutronix.de, festevam@gmail.com,
-	minghuan.Lian@nxp.com, mingkai.hu@nxp.com, roy.zang@nxp.com,
-	jesper.nilsson@axis.com, heiko@sntech.de,
-	srikanth.thokala@intel.com, marek.vasut+renesas@gmail.com,
-	yoshihiro.shimoda.uh@renesas.com, geert+renesas@glider.be,
-	magnus.damm@gmail.com, christian.bruel@foss.st.com,
-	mcoquelin.stm32@gmail.com, alexandre.torgue@foss.st.com,
-	thierry.reding@gmail.com, jonathanh@nvidia.com,
-	hayashi.kunihiko@socionext.com, mhiramat@kernel.org,
-	kishon@kernel.org, jirislaby@kernel.org, rongqianfeng@vivo.com,
-	18255117159@163.com, shawn.lin@rock-chips.com,
-	nicolas.frattaroli@collabora.com, linux.amoon@gmail.com,
-	vidyas@nvidia.com, linux-omap@vger.kernel.org,
-	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org, imx@lists.linux.dev,
-	linuxppc-dev@lists.ozlabs.org, linux-arm-kernel@axis.com,
-	linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-tegra@vger.kernel.org
-Subject: Re: [PATCH v7 2/6] PCI: endpoint: Add BAR subrange mapping support
-Message-ID: <aWaqablKcUnHx/mp@lizhi-Precision-Tower-5810>
-References: <20260113162719.3710268-1-den@valinux.co.jp>
- <20260113162719.3710268-3-den@valinux.co.jp>
-Content-Disposition: inline
-In-Reply-To: <20260113162719.3710268-3-den@valinux.co.jp>
-X-ClientProxiedBy: BYAPR06CA0022.namprd06.prod.outlook.com
- (2603:10b6:a03:d4::35) To DU2PR04MB8951.eurprd04.prod.outlook.com
- (2603:10a6:10:2e2::22)
+	id 1vfl7J-00000007hSf-0L3u
+	for linux-rockchip@lists.infradead.org;
+	Tue, 13 Jan 2026 20:35:54 +0000
+Received: by mail-oa1-x2f.google.com with SMTP id 586e51a60fabf-3f5aaa0c8d7so6035338fac.3
+        for <linux-rockchip@lists.infradead.org>; Tue, 13 Jan 2026 12:35:52 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1768336551; x=1768941351; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=6WxGsgh2CAg7ruexq6+FLP8qTdSDXPFg9Ux3XBnOTuc=;
+        b=QHuh+p80SFaO4c2V1iRdMSMgd3TCDhiiFYgxprAXNp0XEfK6D1qcYOFmp8o++sjozV
+         DaZeJPulCDl6KqkQnBUtmCzZzS7PV+d9gAwVIacsJordYQce73fxBcH2PBe58eNbzBIz
+         UZ4BZHbM8BAxSC5anXCDBfHaJpajBnYUInSM6lweA81Is/FLg5BcDbQtc9iKT3IW0qT3
+         e5BxfXVyysIYJIiNPenuMFHNPwL6T7bVCdF64m56hocJsdwbSGclPdFMb6PVTGq3Irq1
+         f3G0AXVNXVtD4eDPgNg23/p40fxtB5O+k44ExLHk4ny7C5CaBrsejBCHCgGzBefKNViZ
+         KYYQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1768336551; x=1768941351;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=6WxGsgh2CAg7ruexq6+FLP8qTdSDXPFg9Ux3XBnOTuc=;
+        b=T8vqtdfSLUOVolCz/QbnZhfwX26IAz4hjVaBlvfouRvXjRb4lo/lQwNos8rw79KFXX
+         vlbia1X5uJy0aekGkArFgPjgZqTSbq+9szRdO4pjv4UavPTXXPaiEktswcA3s1pKLUhP
+         IZm17fKq9WyDEzc9sOoydH2Hh9FWU7ylXaGukl7zvAbReYpbanNyghEzZLoLbTyYrSoR
+         e61zI4D7e/+YIOYpn661BYtrCMbTQZ6pD8cOKn0LOIcgP7EeROZfKGdx+Ih5vteo11G8
+         06wWZSg3nn/Z/7CsfqH5kBQGEWbtHTjXn0bH6Zp+GtcJc/+pV4WStp4yiWlzXPMqLMdc
+         p/WA==
+X-Forwarded-Encrypted: i=1; AJvYcCXe87UVtaDaHT+inKRU7fF5uDu4678upWyhmWWtikN6ojrRRjVRM/rl9/9tZo3hnpYNNG4fcwQfb3xp7qQPww==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzMbT3NP2UXxZbWMcCY8rzCXLUlAkTe80V3DsBS1lXEtDC80AIn
+	nlEFKoCNB+BZSjhiwQ8GadOGFyWpP5vahitKvc98zk9baOPvHC3eoJBiS3RAgzVkSlU+NkBmRRx
+	IP74whoc4SrUjvz0ygh7L+NEJ9U9SUyw=
+X-Gm-Gg: AY/fxX7qVbd036pnasHs0D9Z3n2pHqHJwUn6nVluuu4gkeUhqQ708RPbA7EMfA0AEP4
+	tYOALK4tmdVpgv9ZbbLHwXpfPYrhxrjGkha/d8SL1oe6rpcC7qdb45frR9yPSoB+rTR2e7035Qf
+	1cP88xbSD6dU3rp8QiEZAekcWkcGgka46bvpn12BASfPF6BmLa2LabJRSAEXIO6uuSsImZFjhUe
+	gXuSyu/6bp4JR2oz+Mpm0ZJlch+tFoytVVHde213u5M36r2z5dZnpwhS9UQiUdYCDzzgKjAwKbU
+	oHo+wpTmYx9gXYbNcdoYtrN7vQA=
+X-Received: by 2002:a05:6820:430e:b0:65d:5e1:ed1f with SMTP id
+ 006d021491bc7-661006aa2e3mr181003eaf.29.1768336551453; Tue, 13 Jan 2026
+ 12:35:51 -0800 (PST)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DU2PR04MB8951:EE_|VI2PR04MB10761:EE_
-X-MS-Office365-Filtering-Correlation-Id: 386a5e3c-5723-4d80-08fd-08de52e20b21
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|19092799006|366016|52116014|376014|7416014|1800799024|38350700014|7053199007;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?n0KUlTixbRG8bzhIMIgIKtXaBi7xeRw7RZ43UcYEnBxVscOSrsNdex31E7OU?=
- =?us-ascii?Q?ukv/8hiZE+XIhBUWbhIzPAalwGceGa3fZVEZ1qa8N5eBUeWws/drvtIVn7sf?=
- =?us-ascii?Q?8BKVDTEwticyWuf7AzKEE4ZU7Odqsh0UpvjAo+/4sLy0Dlv0lZof4LGyVLH5?=
- =?us-ascii?Q?An7fmpTC+73uvDZUkMSe56v+v7Gg/wLKesJSYOiwT2C+jOor75k7d7RJcJSc?=
- =?us-ascii?Q?P09wv2N7+U58iAlm//ZZZfM/EcwH9Hzq3T3opspISC5b1WS6mu0ECaGeE/sM?=
- =?us-ascii?Q?OpEgyhs8EU1+AO/xaYguNp2WhOBdsuY/KGBVlpLw2xSu9MUzFdO1ClOEt2eF?=
- =?us-ascii?Q?KjSZyg0bLIVkhgclcJxIv4xJv2i6cW2uv5c75kfhoi5IOZMqS/CfOBvWXEdm?=
- =?us-ascii?Q?bsc0dv+At3F7koE5Z50uW/3/DLYby6xI1GUOQzCqVGqqEsMl/+y4jxrRFyIL?=
- =?us-ascii?Q?XvadvB9jTAe4YNEcv/mPWIChbbCxR5hjVusg6ygLA8u9rdIhGlyV/Q9EhQPb?=
- =?us-ascii?Q?RAUjW6Xj67IoyPeRuKgG5edzOEMQDBRKvkwJiCBvS9eQFWGLyQvS5HADj8qp?=
- =?us-ascii?Q?VlJvvqY5cLwNKTHoyYYpmI91J5dVUI9c7MVHDvMnnpNVp5VrsXUe0ZEU5gpb?=
- =?us-ascii?Q?WyIMOIyRkXomuTAKqd5wKqSbmBcElRitXLGosbnFh/p5LNM5PbP6RxTQMeX9?=
- =?us-ascii?Q?+NhZYFoQmcOTUtkde6x02Kb1QFzl4lxTU/tdrugOsdoC1ee4kd9Gngil03kx?=
- =?us-ascii?Q?lJp306HExJy3QBe1s9e+7H2owjbIA8oqV/vK5ABLgZlmO6VMjl5cy95vCmJO?=
- =?us-ascii?Q?8AEl70AVBUrgnP/6z3q/QkG0Ksu7a3loisyOlQ1uEdTZT8SgUs3Z3HslaeFR?=
- =?us-ascii?Q?VIDCACOjpqDPj8NaT0hsFC4DjRM5rexlcVIyI33HVzxSimq7u6Sfp8Jn+riR?=
- =?us-ascii?Q?2KWavlxiLku3+cF7ZmXyemCA55d/jkMCPqouxxTlFMaM8J1vYOGgo2loUao5?=
- =?us-ascii?Q?+UtCHkKuEeOlTNuksC5oNiczmbPc8AxM9XCulQ4C62a2z8x46aspkLCRgV3X?=
- =?us-ascii?Q?8FfslwU9mRwrF0M28j9783LkDTjNOln/6aWNw1bg+KhnVLKTrPCcHLYQNEiJ?=
- =?us-ascii?Q?uZEa0DEl/xj0BuVNFTiGiBDAnYxZnRkGNMhGoGuPHY/WP4ztsjnWQmAh2T9b?=
- =?us-ascii?Q?lBlXpEdNagz4CbMkO3OTj2nK/HS4SNz1BDlBCZiE0JIu2Dk+PDflNtK2JY4B?=
- =?us-ascii?Q?UIcWv8vw3i0plMNUceEsAIsxZ2czYWONfNV6b5wQwIcllusMtc5cdXokgeRq?=
- =?us-ascii?Q?SGO386JiTJikHtHlg0tdRGWavReTLVIT+RpnQdEtZZh3NoiEByGZoHs5emBj?=
- =?us-ascii?Q?ox1d/5qUuL3eTU9cIaPzM8ENIS18GGlFNRyQK5wAHXd/AGu02QCMsI4m24EJ?=
- =?us-ascii?Q?ilSoKGYoxSMuc+FfW0gitvoGekHq9HwFjfZqFjtvr7Ru91v+dLlTa/xxVz2x?=
- =?us-ascii?Q?ovaMRLwjd/KBfaCIBZFtiUBh5NYj+UyfIRxk?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU2PR04MB8951.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(19092799006)(366016)(52116014)(376014)(7416014)(1800799024)(38350700014)(7053199007);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?4NbWw+yqdaqpkdNp+irJPfRKxknNNeHxhxwC2yTZPP2vpV6k3ZEjx74VnO5R?=
- =?us-ascii?Q?lUg6HgAGdkvdnzuxn+TDc/KHVvFHQO6fN2LzoaW81k8iReplcyy+BLfJeGXk?=
- =?us-ascii?Q?I1SMtYjVRMLljp1/NXJjqz27m74aoxEZuKpmuepi94cJFVVDZfgfhYTTAQSE?=
- =?us-ascii?Q?dVSys0JLda0R8Y58DhoYJhuThK+55bFcM25WQARgfgYfj56FfRObZEULYZ5l?=
- =?us-ascii?Q?jfTwnJ4CMFGt2/ozcPp/QI1hgAd4T8qU34FWY/reYyu+T38z0px2K+1enGMi?=
- =?us-ascii?Q?7awteLgoY4t/+opIRINrCCl1j9diWnclL3fHxMAOqSVFVq5Ljr21B5iKc1kg?=
- =?us-ascii?Q?bYgJpIm/fwAfhlywkFo8sUG/TY23bTG+bBIAYpGQL6odezu9qUIpXa62KnY8?=
- =?us-ascii?Q?9qcYHS/uCOvtg9TdnMudBn4qMMk2QrYuhfb+GSxraIQLU+/V9qn5/u49goGZ?=
- =?us-ascii?Q?jL/+hWl7HP1OoLKYOrYfKMGPyNrGNs1GKztYRqW/0mvqrTR58VOGLJeTVdvM?=
- =?us-ascii?Q?lJrPL7bAVxGA2k9JYr7wGiISiNxghh/zWQzlgABFSLHF5I4tVESmYmacAhRs?=
- =?us-ascii?Q?bb0pU5xo7vYbLv57NhtRgD9gOrqWJZ9/sET7/Dm7gV1Zcnw3m7Bn2J5OI8V3?=
- =?us-ascii?Q?cWW6GsQbFP4UWs4BWU45GCyA14QuF1KAXkf4e6W7iuL+OTtXkPiUZupUS1LS?=
- =?us-ascii?Q?UL20/0JVaW4f/PgQCLdF72SEQNg4kG0xtjJXJa7prTgdmaJjE1h6+ZsGla/z?=
- =?us-ascii?Q?4//oAKEXsL0hkpXGmhG1M8BmFx1z/K7ikXGQHuVK3ZJ0iwZM+4ITa8KveCER?=
- =?us-ascii?Q?f35E5imP4cnoB36f7IyBSdQtyzpUflITgWiDCTkzX0ZwqC0ovOUHSKsjCQZc?=
- =?us-ascii?Q?3gy2qUvSJbB8176nT6Gh98oSbHEv5MvT5axTeyiXqbl3NfS9pJ3OLBi5bE2z?=
- =?us-ascii?Q?Q6o9+NIAMq3KMrEeJ9p5YCuMTv7GkRXJUkuGYcfhu4YfUNKU6pWbVAiJ4goD?=
- =?us-ascii?Q?eSR6uDDMTM6Y9VsZgIrLJpSfyPObwPhbpboewIrVNvczKDh/mgj50pVbmS8V?=
- =?us-ascii?Q?6MjuGFG+q0REV1uFAu2ZBD0anybRiK6yr54EBsMHvKFwmi/bn0Y8R2eexX/F?=
- =?us-ascii?Q?CSZVUNC2Gi8yBodyRvDxqvHv2um4Ps6v+1NGsYX3ByXv9kdvOSUeFm7bfZqZ?=
- =?us-ascii?Q?sqtdyUym50ksOp0iaHXuWAnBe5wnAEnVIVMBcRYmMxIjewFhonZXnKEQoJPP?=
- =?us-ascii?Q?iNWIJkciCfqovc9DFOd9FFAD+nzYFVHSD79E1mpUFsY7paKEFjnRQ0tcJJEY?=
- =?us-ascii?Q?dJvRhXeDuwp++G6qLktoQLKltIZIg9B1+4YN906G8yV6ZzfOHBBrmLRD7QO9?=
- =?us-ascii?Q?uiCxwDnY4A0uJHMgKGByfdAtDGSlqRiaKUljEM4edn7QPvz0SXz8IHAwnZBq?=
- =?us-ascii?Q?5+EqeVVl1o4/EOVGs9FPZV8iuW7hlRCf9PEpn5BE95/tM6dQIparEKgEB5qy?=
- =?us-ascii?Q?DcEdROpGSIfellShGHH1UJb+KjN65GaDR7kVFko//YAmlcd7IA4QjHyEQlcH?=
- =?us-ascii?Q?RUIKoNDyLjDP6Dwt6i+ZuKC9eKZ1eOXdusyZAohF1jfSsflUe1yz4015pzpC?=
- =?us-ascii?Q?aimdV/FUEv1btdrGM5LGRqT0QLh8pJrZxVPf1QbbqFHxFLTKUSIckQ0xRn4r?=
- =?us-ascii?Q?6dKDRbKRp/GDNoKs98gmAOdcVOWIm4dmdX9dBt0kZbwdHp+SwPhKJ4+zVjA6?=
- =?us-ascii?Q?ZaQr6ZtVWg=3D=3D?=
-X-OriginatorOrg: nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 386a5e3c-5723-4d80-08fd-08de52e20b21
-X-MS-Exchange-CrossTenant-AuthSource: DU2PR04MB8951.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Jan 2026 20:26:33.7520
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: d51+s/mDIiHNJ6MdZd7zuiQ0Np31KCcYycuEcG9EKY5qRB5chuOEYbZbpFSuq2EOptFFSA1thrZ4i4NVlbGGjw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI2PR04MB10761
+References: <1768267105-127385-1-git-send-email-shawn.lin@rock-chips.com>
+In-Reply-To: <1768267105-127385-1-git-send-email-shawn.lin@rock-chips.com>
+From: Marco Schirrmeister <mschirrmeister@gmail.com>
+Date: Tue, 13 Jan 2026 21:35:40 +0100
+X-Gm-Features: AZwV_QgnTmo_KhsM_u7wvf8FEfx06bkPqZST7JgYwnI7K3SwWLXpl2ZhIKD6Bls
+Message-ID: <CAGJh8eAXC+CAMfjxOP8LUwR-xcQGgbwyxFkNLgAujFiP6c2hOg@mail.gmail.com>
+Subject: Re: [PATCH v2 0/3] Fix sd card support for RK3576
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, 
+	devicetree@vger.kernel.org, FUKAUMI Naoki <naoki@radxa.com>, 
+	John Clark <inindev@gmail.com>, Tianling Shen <cnsztl@gmail.com>, 
+	Detlev Casanova <detlev.casanova@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260113_122639_737608_2FEFFD6F 
-X-CRM114-Status: GOOD (  23.24  )
+X-CRM114-CacheID: sfid-20260113_123553_144606_F3049A13 
+X-CRM114-Status: UNSURE (   8.92  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -177,98 +93,26 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jan 14, 2026 at 01:27:15AM +0900, Koichiro Den wrote:
-> Extend the PCI endpoint core to support mapping subranges within a BAR.
-> Introduce a new 'submap' field and a 'use_submap' flag in struct
-> pci_epf_bar so an endpoint function driver can request inbound mappings
-> that fully cover the BAR.
->
-> Add a subrange_mapping feature bit to struct pci_epc_features so EPC
-> drivers can explicitly advertise support. Make pci_epc_set_bar() reject
-> use_submap requests (-EINVAL) when the EPC does not advertise
-> subrange_mapping, to avoid silently accepting a configuration that the
-> controller cannot implement.
->
-> The submap array describes the complete BAR layout (no overlaps and no
-> gaps are allowed to avoid exposing untranslated address ranges). This
-> provides the generic infrastructure needed to map multiple logical
-> regions into a single BAR at different offsets, without assuming a
-> controller-specific inbound address translation mechanism. Also, the
-> array must be sorted in ascending order by offset.
->
-> Reviewed-by: Niklas Cassel <cassel@kernel.org>
-> Signed-off-by: Koichiro Den <den@valinux.co.jp>
-> ---
-...
->
->  #define to_pci_epf_driver(drv) container_of_const((drv), struct pci_epf_driver, driver)
->
-> +/**
-> + * struct pci_epf_bar_submap - BAR subrange for inbound mapping
-> + * @phys_addr: target physical/DMA address for this subrange
-> + * @size: the size of the subrange to be mapped
-> + * @offset: byte offset within the BAR base
-> + *
-> + * When pci_epf_bar.use_submap is set, pci_epf_bar.submap describes the
-> + * complete BAR layout. This allows an EPC driver to program multiple
-> + * inbound translation windows for a single BAR when supported by the
-> + * controller.
-> + *
-> + * Note that the subranges:
-> + * - must be non-overlapping
-> + * - must exactly cover the BAR (i.e. no holes)
-> + * - must be sorted (in ascending order by offset)
-> + */
-> +struct pci_epf_bar_submap {
-> +	dma_addr_t	phys_addr;
-> +	size_t		size;
-> +	size_t		offset;
-> +};
-
-I suppose offset is sum of previous all submap's size? If yes, needn't
-offset.
-
-> +
->  /**
->   * struct pci_epf_bar - represents the BAR of EPF device
->   * @phys_addr: physical address that should be mapped to the BAR
-> @@ -119,6 +141,10 @@ struct pci_epf_driver {
->   *            requirement
->   * @barno: BAR number
->   * @flags: flags that are set for the BAR
-> + * @use_submap: set true to request subrange mappings within this BAR
-> + * @num_submap: number of entries in @submap
-> + * @submap: array of subrange descriptors allocated by the caller. See
-> + *          struct pci_epf_bar_submap for the restrictions in detail.
->   */
->  struct pci_epf_bar {
->  	dma_addr_t	phys_addr;
-> @@ -127,6 +153,11 @@ struct pci_epf_bar {
->  	size_t		mem_size;
->  	enum pci_barno	barno;
->  	int		flags;
-> +
-> +	/* Optional sub-range mapping */
-> +	bool		use_submap;
-> +	unsigned int	num_submap;
-
-can we use num_submap != 0 as use_submap?
-
-Frank
-> +	struct pci_epf_bar_submap	*submap;
->  };
->
->  /**
-> --
-> 2.51.0
->
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgU2hhd24sCgpPbiBUdWUsIEphbiAxMywgMjAyNiBhdCAyOjE54oCvQU0gU2hhd24gTGluIDxz
+aGF3bi5saW5Acm9jay1jaGlwcy5jb20+IHdyb3RlOgo+Cj4gVGhpcyBzZXJpZXMgZml4ZXMgdGhp
+cyBtZXNzIGJ1dCBvbmx5IGFkZHMgc2xvdC1ncGlvIHN1cHBvcnQgZm9yIFJLMzU3Ni1FVkIxLgo+
+IE90aGVyIGJvYXJkcyBhcmUgYWxzbyBtaXNzaW5nIHNsb3QtZ3BpbyBzdXBwb3J0LCBidXQgZm9s
+a3MgYXJlIGFsbCBjY2VkIGZvcgo+IGNoZWNraW5nIHRoZSBib2FyZHMgdGhleSBhcmUgdXNpbmcu
+Cj4KPiBQbGVhc2UgcmV2aWV3IGFuZCB0ZXN0CgpJIHRlc3RlZCB0aGlzIHNlcmllcyBvbiB0aGUg
+RnJpZW5kbHlFbGVjIE5hbm9QaSBSNzZTLgpXaXRoIHRoZSBhZGRpdGlvbiBvZiAnY2QtZ3Bpb3Mg
+PSA8JmdwaW8wIFJLX1BBNyBHUElPX0FDVElWRV9MT1c+OycKaW4gdGhlIGJvYXJkIERUUywgdGhl
+IMK1U0QgaG90LXBsdWcgbm93IHdvcmtzIGNvcnJlY3RseS4KCkhvd2V2ZXIsIGV2ZW4gd2l0aCB0
+aGlzIGZpeCwgdGhlIE5hbm9QaSBSNzZTIHN0aWxsIHN1ZmZlcnMgZnJvbSB0aGUKY29uc3RhbnQg
+NDAwa0h6IHJldHVuaW5nIGxvb3Agd2hlbiBydW50aW1lIFBNIGlzIGVuYWJsZWQuIEkgd2lsbCBz
+ZW5kCmEgdjIgb2YgbXkgZHJpdmVyIHF1aXJrIHRvIGFkZHJlc3MgdGhpcyBib2FyZC1zcGVjaWZp
+YyBpbnN0YWJpbGl0eS4KCkxpbmsgdG8gdjE6IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2FsbC8y
+MDI2MDExMDAxMDcxNS4xNjEwMTU5LTEtbXNjaGlycm1laXN0ZXJAZ21haWwuY29tL1QvI3QKClRl
+c3RlZC1ieTogTWFyY28gU2NoaXJybWVpc3RlciA8bXNjaGlycm1laXN0ZXJAZ21haWwuY29tPgoK
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9j
+a2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0
+cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
