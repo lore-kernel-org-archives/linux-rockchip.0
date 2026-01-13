@@ -4,60 +4,168 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECB8FD30CC2
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Jan 2026 20:21:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B0E0D30CC1
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Jan 2026 20:26:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CNVq1BaYpr1os3M2SNHWzRFvV0aey1m1aUlvvE5oto4=; b=wFy5wkxskbqVHJ
-	poZUQNN3MW5R/qhHwqTPckuN7jp3084yrxmqfwE5SUJoCEa4s6vaD+wAZGvgRyqivwCJWkQ/kMTQw
-	zbmSpK8j9gaOHvBujlwJ+HEo7801nuB6N82pezHCkbElK4YXrL20l2WILO8ml7EUdqm1NnEDY9D+W
-	CBjQNMSsdICnBfBv32xX04ecNLZbHaXOWB6OQouFa0i5XxRR/Z+rzehivVzlaFnXjpbREvdM/3Dwo
-	WUVxIu7aNyRJtEbXxIQUyXarQo57E6Ogf9XyPMHQw0818x504h79Ffw/+Uf0Z79d4b/7zHKW/9tCF
-	DWq7mrDW6V1Q75sB9akA==;
+	List-Owner; bh=Bc47nFVnaWXrM/GDJ4XP1LFzI0ARLU1rbnl9KnDcGWM=; b=R3z9vFVC8j/pXo
+	gT+MwkfWA0usqsa8GUdnGuPU9KMSePeMapMAlxIAqIeCa441HwvCNSlgVzcvg9wUYmNsXcraQOmmv
+	cDNg3D70gML+FjBNb+xMh4E2n3E8mCxK888iA0MHThC0W/pzRct/FDaZ8IIjaOfcUnex53XX+sN2n
+	Nl97wUYIvJCVw+5TvbDN9WCRdwtbhlSLPNWYhjfp4O1gapYxmdM4ZiScGMyV0IDa/UtrVI0fDAMox
+	5uwyo59qytDZSaBz8ki+mFgDnpvV/EUBO0kzhZ3fETWhuvOLlt4yeLY7gDdrk/XyDrDhz2K7xf5P9
+	+zkEAWuwrzk2JF9FfXXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfkt4-00000007gTl-2su6;
-	Tue, 13 Jan 2026 20:21:10 +0000
-Received: from vps.xff.cz ([195.181.215.36])
+	id 1vfkyQ-00000007gko-1whO;
+	Tue, 13 Jan 2026 20:26:42 +0000
+Received: from mail-francesouthazlp170110003.outbound.protection.outlook.com ([2a01:111:f403:c207::3] helo=MRWPR03CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfksw-00000007gTA-3yal;
-	Tue, 13 Jan 2026 20:21:07 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=xff.cz; s=mail;
-	t=1768335657; bh=4qRB3n1SAwl6RtI0sIa55a0VepVkx8uJIqy5veReaWg=;
-	h=Date:From:To:Cc:Subject:X-My-GPG-KeyId:References:From;
-	b=iMQZzVmEAPqwtnWIOrfBvjn78MLlUP45stGFjZBJOjL14mg5xgw24Fgce+Jm4CEm2
-	 Y8g4jgebc+b9Te1t/g5sFm8ivP6vGfwOw1IqpeeQaoXFhekYK4vyROH+jsgf+PRfOY
-	 x/Q3ToYiyAp9ipXF5lsQQDQSd2LBoeol7R1REkMU=
-Date: Tue, 13 Jan 2026 21:20:57 +0100
-From: =?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>
-To: guptarud@gmail.com
-Cc: Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Lee Jones <lee@kernel.org>, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	Kamil =?utf-8?Q?Trzci=C5=84ski?= <ayufan@ayufan.eu>, Martijn Braam <martijn@brixit.nl>
-Subject: Re: [PATCH 2/3] mfd: rk8xx-core: Configure `rk808-clkout2` function
-Message-ID: <w7vj2nkvxmledeptr7gd5twa6nxtgmaleenkdqjay22ppxba6t@z66nt7k5qi6q>
-Mail-Followup-To: =?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>, 
-	guptarud@gmail.com, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Lee Jones <lee@kernel.org>, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	Kamil =?utf-8?Q?Trzci=C5=84ski?= <ayufan@ayufan.eu>, Martijn Braam <martijn@brixit.nl>
-X-My-GPG-KeyId: EBFBDDE11FB918D44D1F56C1F9F0A873BE9777ED
- <https://xff.cz/key.txt>
-References: <20260112-ppp_connectivity-v1-0-284d6e83b212@gmail.com>
- <20260112-ppp_connectivity-v1-2-284d6e83b212@gmail.com>
-MIME-Version: 1.0
+	id 1vfkyN-00000007gkN-2nKI;
+	Tue, 13 Jan 2026 20:26:40 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=Au61bWIbkvmJCEvBPZjjJKtq01HtRT5V2+iCaDkEzCDt8tP+3P2YNeoCY4/hXT4UWAGBXVHOayaxbyc60RBu9BCl+SPc6fdo2InLQ/Fngw+lMiBM0XsKuxDgQDKTQP5uE1nYYBtmyAnmAjPooy20jIi1lNXCcNqgFID+8N0qJw+CKBU/57au8st9y1uAsfZnMg7V5UBHJBpjKptEa4FwDtUWMlqDRfdpClMrOmR+93IUPTGCisWyLerg/2CBuJ5Qj9IeQgg1Jn5+0kPhFY1prZpNHDiyxVEEKwFmYZeZOn/vvBtPMi4A27jLVFZgwKFrq0RID6IEvCXG6afpuxCUGQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=P/Bji9kb2pKnmOsvEEw2Xb8ObzCbj246NH6T0wrbnZY=;
+ b=DVVpPsibA7OZsJNNmE5Kn8TqB24v7ubKnfT9eBqtdoFdM692ht5/4g22xB6/M9u6Wsl02h9353TKdVwM4wTeEQ6kKdqNr/arzIG+ka+9CHX+eBOR2LUq4JWhVJIqtLYC41cUYrw9C/H+BvQwWcKDMR2jNYTK5Um3MCI4jFeYOjJbkcXQ4gZRkswI2DwyrJdrqYIaC0mRDTuo73wd1yLHULEkuzti5mfxlNMM/oJqIAsTPZa41Nkv2CCE42xMfQtg4FI8jomZLK3Banh2Hsd1d2JRha3zQN1r4qWNr7N+VrejPVQJRt/oDCZQ+4tgUVYx4HwhVzgjVKyccpDkxYMQfA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=P/Bji9kb2pKnmOsvEEw2Xb8ObzCbj246NH6T0wrbnZY=;
+ b=G/tDYaU6eIOszv8JWi3QOnQdbhTqkdfLFNPA732b6Al/bGLOg9ZTI0VYy1KI+FIc0afLwKRNZ20jx5TkEuc6EWEr69cL0BwkDv4tzai/XzzV6tkEdOfmMRQ+xVsnMR5Qc0AeR7Xj+ZKMFX/LlQWoNLR4HCkO/sslZ0nIJ3ez75ssiX0LgSRvtpuDFhJlZ4HMIJHfjo1+Q68Kv8RFAwg4qcQZMoQHck5vqoOi7mRjV/Md1Jc2V4SImO2PblxWMzq5yx9oUQWjeazSus9tYK1DHVtzzquu4WsNjmEoCQSFnhZ4apJXjKYy9Z4Drphk4GaguP6qWpSByJ7foNjR0XfBJg==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nxp.com;
+Received: from DU2PR04MB8951.eurprd04.prod.outlook.com (2603:10a6:10:2e2::22)
+ by VI2PR04MB10761.eurprd04.prod.outlook.com (2603:10a6:800:27e::22) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9499.7; Tue, 13 Jan
+ 2026 20:26:34 +0000
+Received: from DU2PR04MB8951.eurprd04.prod.outlook.com
+ ([fe80::753c:468d:266:196]) by DU2PR04MB8951.eurprd04.prod.outlook.com
+ ([fe80::753c:468d:266:196%4]) with mapi id 15.20.9478.004; Tue, 13 Jan 2026
+ 20:26:33 +0000
+Date: Tue, 13 Jan 2026 15:26:17 -0500
+From: Frank Li <Frank.li@nxp.com>
+To: Koichiro Den <den@valinux.co.jp>
+Cc: jingoohan1@gmail.com, mani@kernel.org, lpieralisi@kernel.org,
+	kwilczynski@kernel.org, robh@kernel.org, bhelgaas@google.com,
+	cassel@kernel.org, vigneshr@ti.com, s-vadapalli@ti.com,
+	hongxing.zhu@nxp.com, l.stach@pengutronix.de, shawnguo@kernel.org,
+	s.hauer@pengutronix.de, kernel@pengutronix.de, festevam@gmail.com,
+	minghuan.Lian@nxp.com, mingkai.hu@nxp.com, roy.zang@nxp.com,
+	jesper.nilsson@axis.com, heiko@sntech.de,
+	srikanth.thokala@intel.com, marek.vasut+renesas@gmail.com,
+	yoshihiro.shimoda.uh@renesas.com, geert+renesas@glider.be,
+	magnus.damm@gmail.com, christian.bruel@foss.st.com,
+	mcoquelin.stm32@gmail.com, alexandre.torgue@foss.st.com,
+	thierry.reding@gmail.com, jonathanh@nvidia.com,
+	hayashi.kunihiko@socionext.com, mhiramat@kernel.org,
+	kishon@kernel.org, jirislaby@kernel.org, rongqianfeng@vivo.com,
+	18255117159@163.com, shawn.lin@rock-chips.com,
+	nicolas.frattaroli@collabora.com, linux.amoon@gmail.com,
+	vidyas@nvidia.com, linux-omap@vger.kernel.org,
+	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org, imx@lists.linux.dev,
+	linuxppc-dev@lists.ozlabs.org, linux-arm-kernel@axis.com,
+	linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-tegra@vger.kernel.org
+Subject: Re: [PATCH v7 2/6] PCI: endpoint: Add BAR subrange mapping support
+Message-ID: <aWaqablKcUnHx/mp@lizhi-Precision-Tower-5810>
+References: <20260113162719.3710268-1-den@valinux.co.jp>
+ <20260113162719.3710268-3-den@valinux.co.jp>
 Content-Disposition: inline
-In-Reply-To: <20260112-ppp_connectivity-v1-2-284d6e83b212@gmail.com>
+In-Reply-To: <20260113162719.3710268-3-den@valinux.co.jp>
+X-ClientProxiedBy: BYAPR06CA0022.namprd06.prod.outlook.com
+ (2603:10b6:a03:d4::35) To DU2PR04MB8951.eurprd04.prod.outlook.com
+ (2603:10a6:10:2e2::22)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DU2PR04MB8951:EE_|VI2PR04MB10761:EE_
+X-MS-Office365-Filtering-Correlation-Id: 386a5e3c-5723-4d80-08fd-08de52e20b21
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|19092799006|366016|52116014|376014|7416014|1800799024|38350700014|7053199007;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?n0KUlTixbRG8bzhIMIgIKtXaBi7xeRw7RZ43UcYEnBxVscOSrsNdex31E7OU?=
+ =?us-ascii?Q?ukv/8hiZE+XIhBUWbhIzPAalwGceGa3fZVEZ1qa8N5eBUeWws/drvtIVn7sf?=
+ =?us-ascii?Q?8BKVDTEwticyWuf7AzKEE4ZU7Odqsh0UpvjAo+/4sLy0Dlv0lZof4LGyVLH5?=
+ =?us-ascii?Q?An7fmpTC+73uvDZUkMSe56v+v7Gg/wLKesJSYOiwT2C+jOor75k7d7RJcJSc?=
+ =?us-ascii?Q?P09wv2N7+U58iAlm//ZZZfM/EcwH9Hzq3T3opspISC5b1WS6mu0ECaGeE/sM?=
+ =?us-ascii?Q?OpEgyhs8EU1+AO/xaYguNp2WhOBdsuY/KGBVlpLw2xSu9MUzFdO1ClOEt2eF?=
+ =?us-ascii?Q?KjSZyg0bLIVkhgclcJxIv4xJv2i6cW2uv5c75kfhoi5IOZMqS/CfOBvWXEdm?=
+ =?us-ascii?Q?bsc0dv+At3F7koE5Z50uW/3/DLYby6xI1GUOQzCqVGqqEsMl/+y4jxrRFyIL?=
+ =?us-ascii?Q?XvadvB9jTAe4YNEcv/mPWIChbbCxR5hjVusg6ygLA8u9rdIhGlyV/Q9EhQPb?=
+ =?us-ascii?Q?RAUjW6Xj67IoyPeRuKgG5edzOEMQDBRKvkwJiCBvS9eQFWGLyQvS5HADj8qp?=
+ =?us-ascii?Q?VlJvvqY5cLwNKTHoyYYpmI91J5dVUI9c7MVHDvMnnpNVp5VrsXUe0ZEU5gpb?=
+ =?us-ascii?Q?WyIMOIyRkXomuTAKqd5wKqSbmBcElRitXLGosbnFh/p5LNM5PbP6RxTQMeX9?=
+ =?us-ascii?Q?+NhZYFoQmcOTUtkde6x02Kb1QFzl4lxTU/tdrugOsdoC1ee4kd9Gngil03kx?=
+ =?us-ascii?Q?lJp306HExJy3QBe1s9e+7H2owjbIA8oqV/vK5ABLgZlmO6VMjl5cy95vCmJO?=
+ =?us-ascii?Q?8AEl70AVBUrgnP/6z3q/QkG0Ksu7a3loisyOlQ1uEdTZT8SgUs3Z3HslaeFR?=
+ =?us-ascii?Q?VIDCACOjpqDPj8NaT0hsFC4DjRM5rexlcVIyI33HVzxSimq7u6Sfp8Jn+riR?=
+ =?us-ascii?Q?2KWavlxiLku3+cF7ZmXyemCA55d/jkMCPqouxxTlFMaM8J1vYOGgo2loUao5?=
+ =?us-ascii?Q?+UtCHkKuEeOlTNuksC5oNiczmbPc8AxM9XCulQ4C62a2z8x46aspkLCRgV3X?=
+ =?us-ascii?Q?8FfslwU9mRwrF0M28j9783LkDTjNOln/6aWNw1bg+KhnVLKTrPCcHLYQNEiJ?=
+ =?us-ascii?Q?uZEa0DEl/xj0BuVNFTiGiBDAnYxZnRkGNMhGoGuPHY/WP4ztsjnWQmAh2T9b?=
+ =?us-ascii?Q?lBlXpEdNagz4CbMkO3OTj2nK/HS4SNz1BDlBCZiE0JIu2Dk+PDflNtK2JY4B?=
+ =?us-ascii?Q?UIcWv8vw3i0plMNUceEsAIsxZ2czYWONfNV6b5wQwIcllusMtc5cdXokgeRq?=
+ =?us-ascii?Q?SGO386JiTJikHtHlg0tdRGWavReTLVIT+RpnQdEtZZh3NoiEByGZoHs5emBj?=
+ =?us-ascii?Q?ox1d/5qUuL3eTU9cIaPzM8ENIS18GGlFNRyQK5wAHXd/AGu02QCMsI4m24EJ?=
+ =?us-ascii?Q?ilSoKGYoxSMuc+FfW0gitvoGekHq9HwFjfZqFjtvr7Ru91v+dLlTa/xxVz2x?=
+ =?us-ascii?Q?ovaMRLwjd/KBfaCIBZFtiUBh5NYj+UyfIRxk?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU2PR04MB8951.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(19092799006)(366016)(52116014)(376014)(7416014)(1800799024)(38350700014)(7053199007);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?4NbWw+yqdaqpkdNp+irJPfRKxknNNeHxhxwC2yTZPP2vpV6k3ZEjx74VnO5R?=
+ =?us-ascii?Q?lUg6HgAGdkvdnzuxn+TDc/KHVvFHQO6fN2LzoaW81k8iReplcyy+BLfJeGXk?=
+ =?us-ascii?Q?I1SMtYjVRMLljp1/NXJjqz27m74aoxEZuKpmuepi94cJFVVDZfgfhYTTAQSE?=
+ =?us-ascii?Q?dVSys0JLda0R8Y58DhoYJhuThK+55bFcM25WQARgfgYfj56FfRObZEULYZ5l?=
+ =?us-ascii?Q?jfTwnJ4CMFGt2/ozcPp/QI1hgAd4T8qU34FWY/reYyu+T38z0px2K+1enGMi?=
+ =?us-ascii?Q?7awteLgoY4t/+opIRINrCCl1j9diWnclL3fHxMAOqSVFVq5Ljr21B5iKc1kg?=
+ =?us-ascii?Q?bYgJpIm/fwAfhlywkFo8sUG/TY23bTG+bBIAYpGQL6odezu9qUIpXa62KnY8?=
+ =?us-ascii?Q?9qcYHS/uCOvtg9TdnMudBn4qMMk2QrYuhfb+GSxraIQLU+/V9qn5/u49goGZ?=
+ =?us-ascii?Q?jL/+hWl7HP1OoLKYOrYfKMGPyNrGNs1GKztYRqW/0mvqrTR58VOGLJeTVdvM?=
+ =?us-ascii?Q?lJrPL7bAVxGA2k9JYr7wGiISiNxghh/zWQzlgABFSLHF5I4tVESmYmacAhRs?=
+ =?us-ascii?Q?bb0pU5xo7vYbLv57NhtRgD9gOrqWJZ9/sET7/Dm7gV1Zcnw3m7Bn2J5OI8V3?=
+ =?us-ascii?Q?cWW6GsQbFP4UWs4BWU45GCyA14QuF1KAXkf4e6W7iuL+OTtXkPiUZupUS1LS?=
+ =?us-ascii?Q?UL20/0JVaW4f/PgQCLdF72SEQNg4kG0xtjJXJa7prTgdmaJjE1h6+ZsGla/z?=
+ =?us-ascii?Q?4//oAKEXsL0hkpXGmhG1M8BmFx1z/K7ikXGQHuVK3ZJ0iwZM+4ITa8KveCER?=
+ =?us-ascii?Q?f35E5imP4cnoB36f7IyBSdQtyzpUflITgWiDCTkzX0ZwqC0ovOUHSKsjCQZc?=
+ =?us-ascii?Q?3gy2qUvSJbB8176nT6Gh98oSbHEv5MvT5axTeyiXqbl3NfS9pJ3OLBi5bE2z?=
+ =?us-ascii?Q?Q6o9+NIAMq3KMrEeJ9p5YCuMTv7GkRXJUkuGYcfhu4YfUNKU6pWbVAiJ4goD?=
+ =?us-ascii?Q?eSR6uDDMTM6Y9VsZgIrLJpSfyPObwPhbpboewIrVNvczKDh/mgj50pVbmS8V?=
+ =?us-ascii?Q?6MjuGFG+q0REV1uFAu2ZBD0anybRiK6yr54EBsMHvKFwmi/bn0Y8R2eexX/F?=
+ =?us-ascii?Q?CSZVUNC2Gi8yBodyRvDxqvHv2um4Ps6v+1NGsYX3ByXv9kdvOSUeFm7bfZqZ?=
+ =?us-ascii?Q?sqtdyUym50ksOp0iaHXuWAnBe5wnAEnVIVMBcRYmMxIjewFhonZXnKEQoJPP?=
+ =?us-ascii?Q?iNWIJkciCfqovc9DFOd9FFAD+nzYFVHSD79E1mpUFsY7paKEFjnRQ0tcJJEY?=
+ =?us-ascii?Q?dJvRhXeDuwp++G6qLktoQLKltIZIg9B1+4YN906G8yV6ZzfOHBBrmLRD7QO9?=
+ =?us-ascii?Q?uiCxwDnY4A0uJHMgKGByfdAtDGSlqRiaKUljEM4edn7QPvz0SXz8IHAwnZBq?=
+ =?us-ascii?Q?5+EqeVVl1o4/EOVGs9FPZV8iuW7hlRCf9PEpn5BE95/tM6dQIparEKgEB5qy?=
+ =?us-ascii?Q?DcEdROpGSIfellShGHH1UJb+KjN65GaDR7kVFko//YAmlcd7IA4QjHyEQlcH?=
+ =?us-ascii?Q?RUIKoNDyLjDP6Dwt6i+ZuKC9eKZ1eOXdusyZAohF1jfSsflUe1yz4015pzpC?=
+ =?us-ascii?Q?aimdV/FUEv1btdrGM5LGRqT0QLh8pJrZxVPf1QbbqFHxFLTKUSIckQ0xRn4r?=
+ =?us-ascii?Q?6dKDRbKRp/GDNoKs98gmAOdcVOWIm4dmdX9dBt0kZbwdHp+SwPhKJ4+zVjA6?=
+ =?us-ascii?Q?ZaQr6ZtVWg=3D=3D?=
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 386a5e3c-5723-4d80-08fd-08de52e20b21
+X-MS-Exchange-CrossTenant-AuthSource: DU2PR04MB8951.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Jan 2026 20:26:33.7520
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: d51+s/mDIiHNJ6MdZd7zuiQ0Np31KCcYycuEcG9EKY5qRB5chuOEYbZbpFSuq2EOptFFSA1thrZ4i4NVlbGGjw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI2PR04MB10761
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260113_122103_456530_EF4AAFDB 
-X-CRM114-Status: GOOD (  15.36  )
+X-CRM114-CacheID: sfid-20260113_122639_737608_2FEFFD6F 
+X-CRM114-Status: GOOD (  23.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,44 +177,98 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gTW9uLCBKYW4gMTIsIDIwMjYgYXQgMTA6NDI6MjVQTSAtMDgwMCwgUnVkcmFrc2hhIEd1cHRh
-IHZpYSBCNCBSZWxheSB3cm90ZToKPiBGcm9tOiBLYW1pbCBUcnpjacWEc2tpIDxheXVmYW5AYXl1
-ZmFuLmV1Pgo+IAo+IFdoaWxlIHRoZSBXaWZpIGFuZCBCbHVldG9vdGggY2hpcCBhcmUgZGVmaW5l
-ZCBpbiB0aGUgUGluZXBob25lIFBybydzCj4gRFRTLCBpdCBhY3R1YWxseSBpc24ndCBhYmxlIHRv
-IGJlIHVzZWQuIExldCdzIGRlZmluZSByazgwOC1jbGtvdXQyIHNvCj4gdGhhdCB1c2Vyc3BhY2Ug
-Y2FuIGFjdHVhbGx5IGludGVyYWN0IHdpdGggV2lmaSBhbmQgQmx1ZXRvb3RoCj4gCj4gQ28tZGV2
-ZWxvcGVkLWJ5OiBNYXJ0aWpuIEJyYWFtIDxtYXJ0aWpuQGJyaXhpdC5ubD4KPiBTaWduZWQtb2Zm
-LWJ5OiBNYXJ0aWpuIEJyYWFtIDxtYXJ0aWpuQGJyaXhpdC5ubD4KPiBTaWduZWQtb2ZmLWJ5OiBL
-YW1pbCBUcnpjacWEc2tpIDxheXVmYW5AYXl1ZmFuLmV1Pgo+IFNpZ25lZC1vZmYtYnk6IE9uZHJl
-aiBKaXJtYW4gPG1lZ2lAeGZmLmN6PgoKSGkgUnVkcmFrc2hhLCBJIGRvbid0IGJlbG9uZyBoZXJl
-LiBTZW1pLW9yaWdpbmFsIHBhdGNoIGZyb20gNSB5cnMgYWdvIGlzIGhlcmU6CiAgCiAgaHR0cHM6
-Ly9jb2RlYmVyZy5vcmcvbWVnaS9saW51eC9jb21taXQvNzViZTk2ZmFmOTM5NTA0ZDBmZDUxMTI4
-NDZlNzNlNDM3NTczZjcxNgoKdGhhbmtzLAoJby4KCj4gU2lnbmVkLW9mZi1ieTogUnVkcmFrc2hh
-IEd1cHRhIDxndXB0YXJ1ZEBnbWFpbC5jb20+Cj4gLS0tCj4gIGRyaXZlcnMvbWZkL3JrOHh4LWNv
-cmUuYyAgfCAxICsKPiAgaW5jbHVkZS9saW51eC9tZmQvcms4MDguaCB8IDIgKysKPiAgMiBmaWxl
-cyBjaGFuZ2VkLCAzIGluc2VydGlvbnMoKykKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9tZmQv
-cms4eHgtY29yZS5jIGIvZHJpdmVycy9tZmQvcms4eHgtY29yZS5jCj4gaW5kZXggZGVmNDU4N2Zk
-ZmI4Li42MDIyMTg2OTQzMzQgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9tZmQvcms4eHgtY29yZS5j
-Cj4gKysrIGIvZHJpdmVycy9tZmQvcms4eHgtY29yZS5jCj4gQEAgLTI4Miw2ICsyODIsNyBAQCBz
-dGF0aWMgY29uc3Qgc3RydWN0IHJrODA4X3JlZ19kYXRhIHJrODE4X3ByZV9pbml0X3JlZ1tdID0g
-ewo+ICAJeyBSSzgxOF9INVZfRU5fUkVHLAkgIEJJVCgwKSwJICAgIFJLODE4X0g1Vl9FTiB9LAo+
-ICAJeyBSSzgwOF9WQl9NT05fUkVHLAkgIE1BU0tfQUxMLAkgICAgVkJfTE9fQUNUIHwKPiAgCQkJ
-CQkJICAgIFZCX0xPX1NFTF8zNTAwTVYgfSwKPiArCXsgUks4MDhfQ0xLMzJPVVRfUkVHLCBDTEsz
-MktPVVQyX0ZVTkNfTUFTSywgQ0xLMzJLT1VUMl9GVU5DIH0sCj4gIH07Cj4gIAo+ICBzdGF0aWMg
-Y29uc3Qgc3RydWN0IHJlZ21hcF9pcnEgcms4MDVfaXJxc1tdID0gewo+IGRpZmYgLS1naXQgYS9p
-bmNsdWRlL2xpbnV4L21mZC9yazgwOC5oIGIvaW5jbHVkZS9saW51eC9tZmQvcms4MDguaAo+IGlu
-ZGV4IDI4MTcwZWUwODg5OC4uMDc3ZmUyZTE1Yjc4IDEwMDY0NAo+IC0tLSBhL2luY2x1ZGUvbGlu
-dXgvbWZkL3JrODA4LmgKPiArKysgYi9pbmNsdWRlL2xpbnV4L21mZC9yazgwOC5oCj4gQEAgLTkz
-NCw2ICs5MzQsOCBAQCBlbnVtIHJrODA2X2R2c19tb2RlIHsKPiAgCj4gICNkZWZpbmUgVk9VVF9M
-T19JTlQJQklUKDApCj4gICNkZWZpbmUgQ0xLMzJLT1VUMl9FTglCSVQoMCkKPiArI2RlZmluZSBD
-TEszMktPVVQyX0ZVTkMJCSgwIDw8IDEpCj4gKyNkZWZpbmUgQ0xLMzJLT1VUMl9GVU5DX01BU0sJ
-QklUKDEpCj4gIAo+ICAjZGVmaW5lIFRFTVAxMDVDCQkJMHgwOAo+ICAjZGVmaW5lIFRFTVAxMTVD
-CQkJMHgwYwo+IAo+IC0tIAo+IDIuNTIuMAo+IAo+IAoKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4
-LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+On Wed, Jan 14, 2026 at 01:27:15AM +0900, Koichiro Den wrote:
+> Extend the PCI endpoint core to support mapping subranges within a BAR.
+> Introduce a new 'submap' field and a 'use_submap' flag in struct
+> pci_epf_bar so an endpoint function driver can request inbound mappings
+> that fully cover the BAR.
+>
+> Add a subrange_mapping feature bit to struct pci_epc_features so EPC
+> drivers can explicitly advertise support. Make pci_epc_set_bar() reject
+> use_submap requests (-EINVAL) when the EPC does not advertise
+> subrange_mapping, to avoid silently accepting a configuration that the
+> controller cannot implement.
+>
+> The submap array describes the complete BAR layout (no overlaps and no
+> gaps are allowed to avoid exposing untranslated address ranges). This
+> provides the generic infrastructure needed to map multiple logical
+> regions into a single BAR at different offsets, without assuming a
+> controller-specific inbound address translation mechanism. Also, the
+> array must be sorted in ascending order by offset.
+>
+> Reviewed-by: Niklas Cassel <cassel@kernel.org>
+> Signed-off-by: Koichiro Den <den@valinux.co.jp>
+> ---
+...
+>
+>  #define to_pci_epf_driver(drv) container_of_const((drv), struct pci_epf_driver, driver)
+>
+> +/**
+> + * struct pci_epf_bar_submap - BAR subrange for inbound mapping
+> + * @phys_addr: target physical/DMA address for this subrange
+> + * @size: the size of the subrange to be mapped
+> + * @offset: byte offset within the BAR base
+> + *
+> + * When pci_epf_bar.use_submap is set, pci_epf_bar.submap describes the
+> + * complete BAR layout. This allows an EPC driver to program multiple
+> + * inbound translation windows for a single BAR when supported by the
+> + * controller.
+> + *
+> + * Note that the subranges:
+> + * - must be non-overlapping
+> + * - must exactly cover the BAR (i.e. no holes)
+> + * - must be sorted (in ascending order by offset)
+> + */
+> +struct pci_epf_bar_submap {
+> +	dma_addr_t	phys_addr;
+> +	size_t		size;
+> +	size_t		offset;
+> +};
+
+I suppose offset is sum of previous all submap's size? If yes, needn't
+offset.
+
+> +
+>  /**
+>   * struct pci_epf_bar - represents the BAR of EPF device
+>   * @phys_addr: physical address that should be mapped to the BAR
+> @@ -119,6 +141,10 @@ struct pci_epf_driver {
+>   *            requirement
+>   * @barno: BAR number
+>   * @flags: flags that are set for the BAR
+> + * @use_submap: set true to request subrange mappings within this BAR
+> + * @num_submap: number of entries in @submap
+> + * @submap: array of subrange descriptors allocated by the caller. See
+> + *          struct pci_epf_bar_submap for the restrictions in detail.
+>   */
+>  struct pci_epf_bar {
+>  	dma_addr_t	phys_addr;
+> @@ -127,6 +153,11 @@ struct pci_epf_bar {
+>  	size_t		mem_size;
+>  	enum pci_barno	barno;
+>  	int		flags;
+> +
+> +	/* Optional sub-range mapping */
+> +	bool		use_submap;
+> +	unsigned int	num_submap;
+
+can we use num_submap != 0 as use_submap?
+
+Frank
+> +	struct pci_epf_bar_submap	*submap;
+>  };
+>
+>  /**
+> --
+> 2.51.0
+>
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
