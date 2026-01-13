@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99EDFD30CC1
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Jan 2026 20:00:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CFD8D30CC0
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Jan 2026 20:00:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YD76HEq5ybcX8167lhGSDYka+v9YZ0DcRYGUQBlRH2M=; b=YT/tCdsCkhdI8Z
-	ND7eXiAK3KIujF/9IGIi7odiLodwrLiBaSLcZ1ho2yzuMSq6x9nx775VigkGVc8WcJszWP0FUYjnx
-	BprU4vi+dXh8NoUFRcXeskK3ndn8iFCao8aGDkIImPNaXiZRye9RxvbmS1IxItbsqHLukM7uDXftS
-	PJWkFZy1uXodVavXgVFAiFye9Y8tEYUO2XpjEXj1mwPp/8uqsCXgWO5vuAZzhc9USux0//CjbOCh5
-	JH92kEKUaPuhu6wCbhJ4kklDq8L20P6JdSSsucDacWupgu3F6EBTwjfWL9939nY2xC5ftk8eVuBx3
-	MvsqvfHrp17UaUKsbQgg==;
+	List-Owner; bh=lFt3bx8geZ4Td2MZPi9tmRWnIR+Xvx43o2sY3G/zoTI=; b=u8ASVyfzSR35Y2
+	oSieWbwZ/nxxOkv0uFEjQ1r3Miw41FNldb8mt2Gao2ZIL+pOQy6XFMX68TyutrKpCwII/Wu2e8JKy
+	HyGSn9BuapDHDqUmfHnLnlpb/X1iae7hQHyUqkrcutlPgKdN+KQ+uGS6bZXjkN66/QAf0gWswY3bq
+	/Jt7M33hIiVAnaQXjua4by+QvSPFON1aeJw9M+T/pdsVDq3svpmcHOK2Ov6G4OA/mhkY5bNBDwjhS
+	eIIVaStD5iK6SyhljcTwcU9YsrPQxlUm/NVPWRHfEqSwln6s5VNG/YySOXrLlf3LKVtaBmKdYv4nS
+	i/AVbSnHqxI+GvvavNcg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfkYV-00000007eah-2Y5X;
-	Tue, 13 Jan 2026 19:59:55 +0000
-Received: from mail-ot1-x32a.google.com ([2607:f8b0:4864:20::32a])
+	id 1vfkYS-00000007eZ9-3CKQ;
+	Tue, 13 Jan 2026 19:59:52 +0000
+Received: from mail-ot1-x332.google.com ([2607:f8b0:4864:20::332])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfkYS-00000007eYZ-1Z3d
+	id 1vfkYP-00000007eXf-2WSQ
 	for linux-rockchip@lists.infradead.org;
-	Tue, 13 Jan 2026 19:59:53 +0000
-Received: by mail-ot1-x32a.google.com with SMTP id 46e09a7af769-7c78d30649aso5552269a34.2
-        for <linux-rockchip@lists.infradead.org>; Tue, 13 Jan 2026 11:59:52 -0800 (PST)
+	Tue, 13 Jan 2026 19:59:50 +0000
+Received: by mail-ot1-x332.google.com with SMTP id 46e09a7af769-7c7aee74dceso3447684a34.2
+        for <linux-rockchip@lists.infradead.org>; Tue, 13 Jan 2026 11:59:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1768334391; x=1768939191; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1768334388; x=1768939188; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=c7BnGb+oB3kbI4HRBgeZdx4kG5LrqKQKlKTO5o5vGDY=;
-        b=TT9m+qRJJedo6kB/2B6io/I+CJWdK41TlLS6PPE5Z4F635flzT+ZogQxO7S4DH335B
-         IIX28+pjgIIUPR8bBvSSMjZzFrnXidfjbvU3V3Rwx5RVvxZSjO/IK+84Rpy2jgosjyMq
-         TkOb1H5PKe273xw4pHr/2HUYVn6VoZzmogtoibZbZUhNGaBcFqjXWvCMJtrOcpTueY0b
-         yUX2K7Uh+6pMmv6lzo333/4yn/MjuajsHzSQt3Dq+fx/jnYILN8FiJamOOLD0qT8L6h6
-         dUB/CZeA3rCstvxsRCicNlaa8zEkJsO/NMghafRxucbflrAmqSR1g0dOAxSI0wUpl3HE
-         wPQg==
+        bh=dJ3Ahf49hlWnxKtsDsKhHCo3RwD4rUKnAOeXD4F8idM=;
+        b=ky/LWf17M/HG/gYgBeKdD2sxk8cT8p/nR7iYsRIBHzYD1OSX65ivwTwiPhvRt2p+bh
+         b7r5OeKn629+lo4NJ69UOn/WIFK8cBNWt0rzHpYzqSF3P8RduOfX086pMx59pwzp1nrm
+         PkOgsCmUU/veRMMT/UpA7McbHlS5KK2QdZStGiShcH9Rh9GW2IoQYb7RhWQu8zRdEOtP
+         kBtDldMdAd7cIk+otzo0mE/r82/Xd80QV+YmN9cqQ7hc7kLbvbtw3fY00SIBuyse0O1U
+         ZA6Y22nKo/NNAhSFT7Jg2Ji4uRD9t3Z3/i1SnFldEgUb7pMiUQEBzqF/fxVDEAnXfM/r
+         TGJA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1768334391; x=1768939191;
+        d=1e100.net; s=20230601; t=1768334388; x=1768939188;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=c7BnGb+oB3kbI4HRBgeZdx4kG5LrqKQKlKTO5o5vGDY=;
-        b=sccfu4XEe4hH9lcEMZZVVbCduG9fJuPIEV3XtFrE5qrvCtCD4Uw6UwMvKokxBItZ8B
-         DxCZdj3vLiL7+7VwSWmenFQo8oqDPbXtUz4UXNiDo9axTK5HldFoVO8z25GF+Mtx4jwq
-         /ir8CCmm03jg/6cei1m7dT8lcewG0UvV/YhkvZSugmby0bg8Zvm1oVbQ0jmQkew7q0OE
-         8pvAF9rou2IsOZSrdOP0jOHIyqiLSPMm3SxPV9xoJBcfAncze46qAaHBK8aAnixY3kw+
-         FAb8QOjj7RSfPj5MBVeljlz6JWG7Iplr4a4uioZQRFnMUyQw1ojcuNWMkKYn2tam7wSe
-         1mhw==
-X-Gm-Message-State: AOJu0YzA8Wwd3wxWC0kjNJ9A4D7BXAMllC2zso8tC45fyCPpg5X/FJJU
-	Wb8+iAwzZm50wOXuMzrlp/SsHVbNUiRPFGX2czzL1vTUKuflzE6HylwgSn9b+A==
-X-Gm-Gg: AY/fxX4v0mS9Szvjnb9goDMSkZN99LG2HhKZPOn1Hi+Wa+ubOOE82P7D2sNx5IDxTuh
-	mJkaIRMm3ZEq2CzWRPV54vv5pi/1mkC4HqCw1ssF7jsaKxqUG+CAaLz0Zjhq9xEOU3q3aEGieSm
-	KXeb5NT0tmwTDg38oXL39Up5pqSyxsJnBZCTtwSkPWw6PUIvP3EJxiLtRNgTww+GAhbhiHMKy/d
-	ObfDCLy68vloTD/71iXurGGpIZFkW40vU9ZcIL9BTiQmcL5u6BMoIav8AvZ5M3qzVChgQd1E1hZ
-	nEYQnr71QV/W07wxuqEXfjNEi5QOff4WwAnHwU5gT45S7u5x9N/ijAmTLDAhH7yhGKRiy265APR
-	3M78EXfUOpQoORBd8Wxq2GIKYRB9LJlQcK0QDttRuxqVL9E5zoSntnnV/DCmCfiBo4XIVEwSdyH
-	4K8EmYYpE9
-X-Received: by 2002:a05:6830:4119:b0:7c6:a2da:ce4b with SMTP id 46e09a7af769-7cfc8a31752mr227469a34.5.1768334391060;
-        Tue, 13 Jan 2026 11:59:51 -0800 (PST)
+        bh=dJ3Ahf49hlWnxKtsDsKhHCo3RwD4rUKnAOeXD4F8idM=;
+        b=HKMEAQPODga8VGwsnv6Mir6waxFXkY7tcqQEZjdK1w2+JZFIn/k77vE8t8GGOO7Z2F
+         Wg18z0L0aVQJa+iF1WVzBIjcILKAbNhlPWs6lS/vANePPpgZV4ddu0fXy2QdP+0noKiO
+         Q5gtqXGhw12FD0Sdt4XwoQferxZMWum3X4bwkr9frEMsjnTyaDnqRsxMIeQAKpbGjjOX
+         CGnlBSF1T1wu1QY/ocvodp0cXxHYAA7db0Ub7sl+keclIbDeboHG34+3ZHMiMc+cSRgY
+         HZzJkrg3bdfN5WnFiyde09v8yUksXvf8i2WWvs4QfdRvX7yFWCAlNUWDdzyXahCEnoOq
+         wRPg==
+X-Gm-Message-State: AOJu0Yzo5CvXCcYS4XcM6cNM+JDmUZFH1cyYUpoXEucTzKnO4SYf545H
+	q8JUmciUH6mPTBpNuzPh3Gz0p1opPo4Fbj3lRSxxfwv48B6YHQwabZA/lLu4Aw==
+X-Gm-Gg: AY/fxX5H0ywOezWzDz0nbCZZFei8gBk1QKC/hVY7kKYdlYiIrWx1ifGv+5oXqFXkGqF
+	3w26uHs6G1BwDLt2T1VML3XUhpjub/GmVnQXU547Rj9hO8FcRcUhlt23RHNx4nljc9VRZLnVN7S
+	aftSB01vj6O+D55N/Wwi3QdqWZdj8FIspcLAKEceNrsIo9EMIPipyI7SDHQFoqeW87njp8RWU51
+	bMsdUWMwPqkwZ4LZY4fjtiW2OG/jUq1YenC4FnZ2xdkCsquf3XI3AOqx22ix8FRwE4E/GCaT1Xn
+	u1xwyoTbXGtPvoJOIorMc07f6StAIEZiSa83FvSG8IMPZZZKYuclMA7O1XnJpS67rsDTjpBz/MN
+	ObZBfe8+1D/15yVZTfABr8XZIMdg2dT7IJvvZXWePZNLnLPmZ5e6+GpI5AcSHBe0szpVkXMGhTe
+	lseM6BW6uS
+X-Received: by 2002:a05:6830:6408:b0:7bc:31fe:57a9 with SMTP id 46e09a7af769-7cfc8b3b8f6mr195237a34.31.1768334388271;
+        Tue, 13 Jan 2026 11:59:48 -0800 (PST)
 Received: from localhost.localdomain ([2600:1700:fb0:1bc0::54])
-        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7ce47801d4dsm16221119a34.5.2026.01.13.11.59.50
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7ce47801d4dsm16221119a34.5.2026.01.13.11.59.47
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 13 Jan 2026 11:59:50 -0800 (PST)
+        Tue, 13 Jan 2026 11:59:47 -0800 (PST)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: linux-rockchip@lists.infradead.org
 Cc: dri-devel@lists.freedesktop.org,
@@ -87,17 +87,16 @@ Cc: dri-devel@lists.freedesktop.org,
 	robh@kernel.org,
 	aweinzerl13@yahoo.com,
 	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH 4/6] dt-bindings: arm: rockchip: Add Anbernic RG-DS
-Date: Tue, 13 Jan 2026 13:57:19 -0600
-Message-ID: <20260113195721.151205-5-macroalpha82@gmail.com>
+Subject: [PATCH 1/6] drm: panel: jd9365da: Use gpiod_set_value_cansleep()
+Date: Tue, 13 Jan 2026 13:57:16 -0600
+Message-ID: <20260113195721.151205-2-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260113195721.151205-1-macroalpha82@gmail.com>
 References: <20260113195721.151205-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260113_115952_411753_BEBC441A 
-X-CRM114-Status: UNSURE (   8.29  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260113_115949_648975_BAB4F057 
+X-CRM114-Status: GOOD (  10.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,30 +115,50 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-Add compatible string for the Anbernic RG-DS.
+Change instances of gpiod_set_value() to gpiod_set_value_cansleep().
+Uses of gpiod_set_value() generates warnings when used in instances
+where desc->gdev->can_sleep is true.
 
 Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
 ---
- Documentation/devicetree/bindings/arm/rockchip.yaml | 6 ++++++
- 1 file changed, 6 insertions(+)
+ drivers/gpu/drm/panel/panel-jadard-jd9365da-h3.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-index d496421dbd87..4398f576e47f 100644
---- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-+++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-@@ -60,6 +60,12 @@ properties:
-               - anbernic,rg-arc-s
-           - const: rockchip,rk3566
+diff --git a/drivers/gpu/drm/panel/panel-jadard-jd9365da-h3.c b/drivers/gpu/drm/panel/panel-jadard-jd9365da-h3.c
+index aa05316dc57b..063ed9646d53 100644
+--- a/drivers/gpu/drm/panel/panel-jadard-jd9365da-h3.c
++++ b/drivers/gpu/drm/panel/panel-jadard-jd9365da-h3.c
+@@ -109,13 +109,13 @@ static int jadard_prepare(struct drm_panel *panel)
+ 	if (jadard->desc->lp11_to_reset_delay_ms)
+ 		msleep(jadard->desc->lp11_to_reset_delay_ms);
  
-+      - description: Anbernic RK3568 Handheld Gaming Console
-+        items:
-+          - enum:
-+              - anbernic,rg-ds
-+          - const: rockchip,rk3568
-+
-       - description: Ariaboard Photonicat
-         items:
-           - const: ariaboard,photonicat
+-	gpiod_set_value(jadard->reset, 0);
++	gpiod_set_value_cansleep(jadard->reset, 0);
+ 	msleep(5);
+ 
+-	gpiod_set_value(jadard->reset, 1);
++	gpiod_set_value_cansleep(jadard->reset, 1);
+ 	msleep(10);
+ 
+-	gpiod_set_value(jadard->reset, 0);
++	gpiod_set_value_cansleep(jadard->reset, 0);
+ 	msleep(130);
+ 
+ 	ret = jadard->desc->init(jadard);
+@@ -129,11 +129,11 @@ static int jadard_unprepare(struct drm_panel *panel)
+ {
+ 	struct jadard *jadard = panel_to_jadard(panel);
+ 
+-	gpiod_set_value(jadard->reset, 0);
++	gpiod_set_value_cansleep(jadard->reset, 0);
+ 	msleep(120);
+ 
+ 	if (jadard->desc->reset_before_power_off_vcioo) {
+-		gpiod_set_value(jadard->reset, 1);
++		gpiod_set_value_cansleep(jadard->reset, 1);
+ 
+ 		usleep_range(1000, 2000);
+ 	}
 -- 
 2.43.0
 
