@@ -4,81 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CE50D0C83B
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Jan 2026 10:28:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E95F9D0C853
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Jan 2026 11:04:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QSh4hvJOk1EB+P422bMqkiJwHY3uFM5n1JewJqtICBY=; b=cnbeRCtqO3zFW2
-	N4mj31jkNVyMAKwffHIUEVPd8Obe9TTzKglBYphbyFqVP5MikHYz3rhevOBMGLEFOLUIf+rpD8023
-	8aLxyF2p6jxPwuErRz9nD4pJWn7W2rPu1dqH/K+Dle22ED4IWBPWU2e4IiSdcW3W/SPxnCXDHhEV2
-	bjC73ktXglQ49fxV9x73sBEj9v/JBX/G66CFrbN0xb6AhEC5ONzQRbBCkl5c07Up5+CRDNEcqnWTu
-	RgbftBrOCQw0emLEQ+NC6O6UO55KdnJ2RhySpOKe0EITf7s9Bs9lo3fzl6u9lHUrdgWRC4kW4aOI+
-	qjgU2fVPZhYxupYccaXg==;
+	List-Owner; bh=XKNjHNNXRCA3MlP+9WeEpFIEKjkmxYRqXyAbwwGsYuo=; b=AnfOa7TzzvEbgc
+	suLsP/VudrsLTJ2NhdRpF0yjpbgXyomcyoGyE8EGUh3b9UiWcXxRVwXWFc47LR4c+FTYfvkSnMWdG
+	12rrp06p2nP2lun13GELpNhLQwlQ2zOP845HD11+/zyOdLzsQseEd8YT4J77iTY9fM90/v4Awg6cJ
+	qRAZkVAM+APYqCn+P/mAEjZmNiHBPFHwnNfFWfo6WJ005Bz9+O+hzvtRsGhxC52UbYgU224BgzKdP
+	RTgyNPzbj58ZkJBBAe+pnVYhnCgEABxPI3VG+Ytp6SFSTBzy4WyAqdc1SeQcFrdKm1UZ4nNnCmFOA
+	OvcDPLuJg3SyW+h61e6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfbcy-00000006uNg-3QNM;
-	Tue, 13 Jan 2026 10:27:56 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vfcCi-00000006z8M-3AKv;
+	Tue, 13 Jan 2026 11:04:52 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfbcw-00000006uMi-0g7h;
-	Tue, 13 Jan 2026 10:27:55 +0000
+	id 1vfcCh-00000006z85-1NLc;
+	Tue, 13 Jan 2026 11:04:51 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 615B74075A;
-	Tue, 13 Jan 2026 10:27:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 71FB0C116C6;
-	Tue, 13 Jan 2026 10:27:43 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 7183C6000A;
+	Tue, 13 Jan 2026 11:04:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 63185C116C6;
+	Tue, 13 Jan 2026 11:04:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1768300073;
-	bh=C8UgsS+YrsZDchnel7CNOtadN1mg/ONjw32g4J6+OCI=;
+	s=k20201202; t=1768302290;
+	bh=wOormaL9PD1DYwYJHqWiopjDekcsEFD3wPQ8gHBL2cw=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=KHVExecNeP0XkZg6xghaAQoJqr/q0z3GdC0x9jlfMNdwId0ErGseOxuOiGwv29fD7
-	 AvHvAxAYhEhEwlTtZ/HzVBPzak/DCiPS0cy2tK74aPn60U+CPG+/5TqEOYVmIpPOB+
-	 t0lfLQrTlza7crImIQKqJobRsLqGMk0r+g0eXbY9SIXRxX+hMLbFEU7eN5Xkq1qwjt
-	 tqZncLDnAqJDaSQnuMYsFLITR5wWfSPuJ4e3LtNOMwEMkXQnDUSM9mD8VFTfDQepbM
-	 3idXM1YFBgiHX990n6orktQZK0baqsg7qxAQ9euVwMmyZF8sanjixl845BLKqFX5sj
-	 jWW9lS8W7E+tQ==
-Date: Tue, 13 Jan 2026 11:27:40 +0100
-From: Niklas Cassel <cassel@kernel.org>
-To: Koichiro Den <den@valinux.co.jp>
-Cc: jingoohan1@gmail.com, mani@kernel.org, lpieralisi@kernel.org,
-	kwilczynski@kernel.org, robh@kernel.org, bhelgaas@google.com,
-	vigneshr@ti.com, s-vadapalli@ti.com, hongxing.zhu@nxp.com,
-	l.stach@pengutronix.de, shawnguo@kernel.org, s.hauer@pengutronix.de,
-	kernel@pengutronix.de, festevam@gmail.com, minghuan.Lian@nxp.com,
-	mingkai.hu@nxp.com, roy.zang@nxp.com, jesper.nilsson@axis.com,
-	heiko@sntech.de, srikanth.thokala@intel.com,
-	marek.vasut+renesas@gmail.com, yoshihiro.shimoda.uh@renesas.com,
-	geert+renesas@glider.be, magnus.damm@gmail.com,
-	christian.bruel@foss.st.com, mcoquelin.stm32@gmail.com,
-	alexandre.torgue@foss.st.com, thierry.reding@gmail.com,
-	jonathanh@nvidia.com, hayashi.kunihiko@socionext.com,
-	mhiramat@kernel.org, kishon@kernel.org, jirislaby@kernel.org,
-	rongqianfeng@vivo.com, 18255117159@163.com,
-	shawn.lin@rock-chips.com, nicolas.frattaroli@collabora.com,
-	linux.amoon@gmail.com, vidyas@nvidia.com, Frank.Li@nxp.com,
-	linux-omap@vger.kernel.org, linux-pci@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	imx@lists.linux.dev, linuxppc-dev@lists.ozlabs.org,
-	linux-arm-kernel@axis.com, linux-rockchip@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-tegra@vger.kernel.org
-Subject: Re: [PATCH v6 4/5] PCI: dwc: ep: Support BAR subrange inbound
- mapping via Address Match Mode iATU
-Message-ID: <aWYeHNoPEl9T-Qo-@ryzen>
-References: <20260113023715.3463724-1-den@valinux.co.jp>
- <20260113023715.3463724-5-den@valinux.co.jp>
- <aWYbTt6UjlXb9Uk-@ryzen>
+	b=caCPIhWUJaaWLRUhsVIf6sJpFdGESi270guP9LIaFZ4qr0jAh0mRMI7ntyHpCB7Y0
+	 YNVrWfB5Hy5jXNmtaOCcVoFsLjJ0OoOM2cQnSHH0hLwsMB8nmH7urYJONXD9PuUKGl
+	 Y952TiVZ/KfWRlYUIrQ+4ZdKfTK9NB2VJeXnXQJK5vmkYAVwM4ra2SEXLnVulhiuYs
+	 3UntSOeR+olyVNb1s0b1TdsMV00SzGdWImf2XZ6J3whYDx7vUHXVmGBzbx3sfkxGOh
+	 pGC9jmRyLZQB6F9/AazKgBWT5/e9z1+ZpHNN1NGIB7qgn7/0wm46tsC+ahU+kCUDeU
+	 Wlc2WyKPCxOKQ==
+Date: Tue, 13 Jan 2026 11:04:44 +0000
+From: Lee Jones <lee@kernel.org>
+To: guptarud@gmail.com
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Kamil =?utf-8?Q?Trzci=C5=84ski?= <ayufan@ayufan.eu>,
+	Martijn Braam <martijn@brixit.nl>, Ondrej Jirman <megi@xff.cz>
+Subject: Re: [PATCH 2/3] mfd: rk8xx-core: Configure `rk808-clkout2` function
+Message-ID: <20260113110444.GD1902656@google.com>
+References: <20260112-ppp_connectivity-v1-0-284d6e83b212@gmail.com>
+ <20260112-ppp_connectivity-v1-2-284d6e83b212@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <aWYbTt6UjlXb9Uk-@ryzen>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260113_022754_222621_5E10D816 
-X-CRM114-Status: GOOD (  17.53  )
+In-Reply-To: <20260112-ppp_connectivity-v1-2-284d6e83b212@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,48 +69,43 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jan 13, 2026 at 11:15:42AM +0100, Niklas Cassel wrote:
-> On Tue, Jan 13, 2026 at 11:37:14AM +0900, Koichiro Den wrote:
-> > @@ -626,11 +831,22 @@ static const struct pci_epc_features*
-> >  dw_pcie_ep_get_features(struct pci_epc *epc, u8 func_no, u8 vfunc_no)
-> >  {
-> >  	struct dw_pcie_ep *ep = epc_get_drvdata(epc);
-> > +	struct pci_epc_features *features;
-> >  
-> >  	if (!ep->ops->get_features)
-> >  		return NULL;
-> >  
-> > -	return ep->ops->get_features(ep);
-> > +	features = ep->ops->get_features(ep);
-> > +	if (!features)
-> > +		return NULL;
-> > +
-> > +	/* All DWC-based glue drivers support dynamic inbound mapping */
-> > +	features->dynamic_inbound_mapping = true;
-> 
-> I think you should create a separate patch, before this patch, that simply
-> sets:
-> features->dynamic_inbound_mapping = true;
-> 
-> Since that is technically a different feature, independent of this
-> feature, so it deserves its own patch.
-
-The commit message for that separate patch should mention that the reason
-why there are no code changes when exposing/enabling support for the
-dynamic_inbound_mapping feature, is because the actual code changes to the
-the DWC driver already in commit 4284c88fff0e ("PCI: designware-ep: Allow
-pci_epc_set_bar() update inbound map address").
-
-
-Kind regards,
-Niklas
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gTW9uLCAxMiBKYW4gMjAyNiwgUnVkcmFrc2hhIEd1cHRhIHZpYSBCNCBSZWxheSB3cm90ZToK
+Cj4gRnJvbTogS2FtaWwgVHJ6Y2nFhHNraSA8YXl1ZmFuQGF5dWZhbi5ldT4KPiAKPiBXaGlsZSB0
+aGUgV2lmaSBhbmQgQmx1ZXRvb3RoIGNoaXAgYXJlIGRlZmluZWQgaW4gdGhlIFBpbmVwaG9uZSBQ
+cm8ncwo+IERUUywgaXQgYWN0dWFsbHkgaXNuJ3QgYWJsZSB0byBiZSB1c2VkLiBMZXQncyBkZWZp
+bmUgcms4MDgtY2xrb3V0MiBzbwo+IHRoYXQgdXNlcnNwYWNlIGNhbiBhY3R1YWxseSBpbnRlcmFj
+dCB3aXRoIFdpZmkgYW5kIEJsdWV0b290aAo+IAo+IENvLWRldmVsb3BlZC1ieTogTWFydGlqbiBC
+cmFhbSA8bWFydGlqbkBicml4aXQubmw+Cj4gU2lnbmVkLW9mZi1ieTogTWFydGlqbiBCcmFhbSA8
+bWFydGlqbkBicml4aXQubmw+Cj4gU2lnbmVkLW9mZi1ieTogS2FtaWwgVHJ6Y2nFhHNraSA8YXl1
+ZmFuQGF5dWZhbi5ldT4KPiBTaWduZWQtb2ZmLWJ5OiBPbmRyZWogSmlybWFuIDxtZWdpQHhmZi5j
+ej4KPiBTaWduZWQtb2ZmLWJ5OiBSdWRyYWtzaGEgR3VwdGEgPGd1cHRhcnVkQGdtYWlsLmNvbT4K
+ClRoaXMgaXMgYSBib25rZXJzIGFtb3VudCBvZiBTb0JzIGZvciBhIDMtbGluZSBjaGFuZ2UuCgpX
+aGF0IG9uIGVhcnRoIGlzIGdvaW5nIG9uIGhlcmU/Cgo+IC0tLQo+ICBkcml2ZXJzL21mZC9yazh4
+eC1jb3JlLmMgIHwgMSArCj4gIGluY2x1ZGUvbGludXgvbWZkL3JrODA4LmggfCAyICsrCj4gIDIg
+ZmlsZXMgY2hhbmdlZCwgMyBpbnNlcnRpb25zKCspCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMv
+bWZkL3JrOHh4LWNvcmUuYyBiL2RyaXZlcnMvbWZkL3JrOHh4LWNvcmUuYwo+IGluZGV4IGRlZjQ1
+ODdmZGZiOC4uNjAyMjE4Njk0MzM0IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvbWZkL3JrOHh4LWNv
+cmUuYwo+ICsrKyBiL2RyaXZlcnMvbWZkL3JrOHh4LWNvcmUuYwo+IEBAIC0yODIsNiArMjgyLDcg
+QEAgc3RhdGljIGNvbnN0IHN0cnVjdCByazgwOF9yZWdfZGF0YSByazgxOF9wcmVfaW5pdF9yZWdb
+XSA9IHsKPiAgCXsgUks4MThfSDVWX0VOX1JFRywJICBCSVQoMCksCSAgICBSSzgxOF9INVZfRU4g
+fSwKPiAgCXsgUks4MDhfVkJfTU9OX1JFRywJICBNQVNLX0FMTCwJICAgIFZCX0xPX0FDVCB8Cj4g
+IAkJCQkJCSAgICBWQl9MT19TRUxfMzUwME1WIH0sCj4gKwl7IFJLODA4X0NMSzMyT1VUX1JFRywg
+Q0xLMzJLT1VUMl9GVU5DX01BU0ssIENMSzMyS09VVDJfRlVOQyB9LAo+ICB9Owo+ICAKPiAgc3Rh
+dGljIGNvbnN0IHN0cnVjdCByZWdtYXBfaXJxIHJrODA1X2lycXNbXSA9IHsKPiBkaWZmIC0tZ2l0
+IGEvaW5jbHVkZS9saW51eC9tZmQvcms4MDguaCBiL2luY2x1ZGUvbGludXgvbWZkL3JrODA4LmgK
+PiBpbmRleCAyODE3MGVlMDg4OTguLjA3N2ZlMmUxNWI3OCAxMDA2NDQKPiAtLS0gYS9pbmNsdWRl
+L2xpbnV4L21mZC9yazgwOC5oCj4gKysrIGIvaW5jbHVkZS9saW51eC9tZmQvcms4MDguaAo+IEBA
+IC05MzQsNiArOTM0LDggQEAgZW51bSByazgwNl9kdnNfbW9kZSB7Cj4gIAo+ICAjZGVmaW5lIFZP
+VVRfTE9fSU5UCUJJVCgwKQo+ICAjZGVmaW5lIENMSzMyS09VVDJfRU4JQklUKDApCj4gKyNkZWZp
+bmUgQ0xLMzJLT1VUMl9GVU5DCQkoMCA8PCAxKQo+ICsjZGVmaW5lIENMSzMyS09VVDJfRlVOQ19N
+QVNLCUJJVCgxKQo+ICAKPiAgI2RlZmluZSBURU1QMTA1QwkJCTB4MDgKPiAgI2RlZmluZSBURU1Q
+MTE1QwkJCTB4MGMKPiAKPiAtLSAKPiAyLjUyLjAKPiAKPiAKCi0tIApMZWUgSm9uZXMgW+adjueQ
+vOaWr10KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
+bnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
+b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9j
+a2NoaXAK
