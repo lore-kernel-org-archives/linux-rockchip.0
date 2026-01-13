@@ -4,56 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FB3FD2D0FD
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Jan 2026 13:35:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6648ED2D103
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Jan 2026 13:45:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Subject:Cc:To:
-	From:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YmFUQHl+AJZIUbcAQhAaFqlVNPouslXrQhomb3LTwyY=; b=QAVIT++nQmrpz5
-	YApXRi9xF8+UGNc59/DOOdS3pc8+O/DaakAMQ0VT4EuJD+dQfS6QRMqSuThwEeDbx1akIG36xR715
-	hiU8f4Sv/9/+fQ1vDSH+VJShPq5e4LW2i4jj6NwYPjST20vlkl3l6+CDeOuQxpxGEMioEHNuvKXx+
-	hgB/nnZ/N0QQdkZp211si002cD6zhP52Pa1CSkBSlnjmrks+rDLzxu4u94s04ocj/rgtb1OurnDhC
-	Z7vdlp0UO3rbHh4VVJHS8SktgyMjBnqIFu3mtdy6h8+GxFRrbUBG2tllbQ9bta6HoglwWgNR/xCKd
-	/Xwh0TBiR7VOgDREMCww==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=bt3Jo1pbAhWDUODGWLauOfagU1FWmldqwCHjKhKYfaw=; b=O9JqP858YkXbjw
+	wBn6HMTgpZckqqxyMVDxROoR7Z7RdvsQkcrhaj7mcH2ogDGNysGdVDM8fwHbdREuFwQMsqhJtwvIx
+	/mePAfiMBLW/Q7u1jhmlMlye5hJDPw3KO+LTe4B9ZhrZCsJwMdy3ndgBCX98FQtF6/RN1DwbaCf+j
+	8mnk3YHnL8ZWnIyvkoKjOkjJps0/HihQ2gKWI1D+CxHKcZ7W8hPwDH6HYKywxJEpK3eyjZ4+VexO8
+	g2xESQ4wtMGebG7YdGnZHOSBPyniQWI11Bjc66F5BhRQOxPgTewMukbIjGfZuimI+98fCp8B0R393
+	XB32WjO4nAwkoILvn0bQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfeYd-00000007AEJ-18Ux;
-	Tue, 13 Jan 2026 13:35:39 +0000
-Received: from out-181.mta0.migadu.com ([2001:41d0:1004:224b::b5])
+	id 1vfei6-00000007AfR-43H3;
+	Tue, 13 Jan 2026 13:45:26 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfeYZ-00000007ADg-0udy
-	for linux-rockchip@lists.infradead.org;
-	Tue, 13 Jan 2026 13:35:37 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow-tech.com;
-	s=key1; t=1768311325;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=CNg4cyT1A0ryDNTVCyPuutdiB+nl1aw6BVDcivrghy0=;
-	b=GM2dxYRgIHXk5rZMhppWsCyjt8xs9WYbjKprfP4glFV4bFYvUA1t/l2gn7RXXWJ6sQNdxE
-	gXf3zXWVi2SQfCzL8Gm9CohcNZ878PPsd5j767Xzp7CbhmzcXTq+lJwOskc1TTo1bLTSw3
-	Ec5/Hm/YnCJ4/t1lxo+DYAkADgs0dNLfKgqV1V7ZsbnB8YHb5YBpr1oIrx8Xy4bQOTSKuu
-	5apfcyVYwKhvAOSSJQ8ee0zqIo2yGOg9RRm1Xk6wfB8F+INOhyGG1JKnZPPYA11m7hLKU5
-	naJUdgDXB3YbX+w7kxx+J+ZhPd8FO3f7huV2AjL0uhH+rORrFsHju8ZEDkTuXA==
-Date: Tue, 13 Jan 2026 14:35:21 +0100
-Message-Id: <DFNI1Q9N7GC6.20PN0RG9LRAQF@cknow-tech.com>
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <diederik@cknow-tech.com>
-To: "Alan Stern" <stern@rowland.harvard.edu>
-Cc: "USB mailing list" <linux-usb@vger.kernel.org>,
- <linux-rockchip@lists.infradead.org>
-Subject: Re: Track down EHCI and companion errors on rk3xxx systems
-References: <073879e4-aea8-4625-bc83-c4b6dd9c9231@rowland.harvard.edu>
-In-Reply-To: <073879e4-aea8-4625-bc83-c4b6dd9c9231@rowland.harvard.edu>
-X-Migadu-Flow: FLOW_OUT
+	id 1vfei4-00000007Aew-3fPz;
+	Tue, 13 Jan 2026 13:45:26 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:In-Reply-To:References;
+	bh=z9jDZ0U0+KANI9tzxxMG4W2Nc4jLJjawz7bwnY2eJ5s=; b=STMTjWpcsiXuITptpYSE5yDqcO
+	CkMuO18H8U83fVn6n07DAR44pONJDLGyfu9vUEmMV8q5+O4ZSNf8xyim8lOd1+XUiHB/W/4q6Q21B
+	kGuZLdV5YS5znOqxwVKcbobtJkPNHmAYp+wwb4SnVsDiTLZR8xXD5qRtERYWJ8HQLJuID5oWLDRSc
+	vgmHHds4xJauYOoDtj17f7GXq1PC+sVLJdLeg+WDCIJ01yGafTFgPGxSnJlQ6ChZUW6W966QVjard
+	rwVF1m8Ypeh42dqDjvfjQkE4hGVKAHxFQlLHWTDh024SJZTRtPt4QllezzE8H2X9fT/zlEPdHSHpy
+	9J7iqiww==;
+Received: from i53875b63.versanet.de ([83.135.91.99] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1vfei2-00275y-6i; Tue, 13 Jan 2026 14:45:22 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: arm@kernel.org
+Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+Subject: [GIT PULL] Rockchip dts fixes for 6.19 #1
+Date: Tue, 13 Jan 2026 14:45:22 +0100
+Message-ID: <17171017.hlxOUv9cDv@diego>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260113_053536_387016_CB42D505 
-X-CRM114-Status: GOOD (  16.15  )
+X-CRM114-CacheID: sfid-20260113_054524_964168_AF7D0EE9 
+X-CRM114-Status: GOOD (  12.77  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,49 +67,79 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat Jan 3, 2026 at 5:52 PM CET, Alan Stern wrote:
-> On Sat, Jan 03, 2026 at 12:00:13PM +0100, Diederik de Haas wrote:
->> On Wed Dec 31, 2025 at 7:09 PM CET, Alan Stern wrote:
->> > I can't say anything specific about your systems without a lot more 
->> > information.  However, I suspect that any problems you are running into 
->> > are not related to that warning.
->> 
->> What kind of information do you need?
->
-> We can start with the output from "lsusb -t" as well as the dmesg log 
-> from a boot in which something (a USB-2 port, for example) didn't work.  
-> If the log shows something going wrong when you plugged in a device 
-> after boot, explain what you did, what happened, and what was wrong.
->
-> For now, concentrate on just a single system.
+Hi SoC maintainers,
 
-I was almost ready to declare 'issue fixed' when I actually did notice
-the issue on a Quartz64-B (RK3566). For 'reasons', that may not be the
-best test subject. Then I was preparing to test some media patches and
-prepared my Quartz64-A (also RK3566), which is usually online 24/7.
+please find a below some Rockchip fixes for the current 6.19 release-cycle.
 
-Plugged in my keyboard adapter in the top USB2 port and that worked.
-Installed some packages to make the graphical environment match that of
-my other test devices and rebooted.
-Got my (gtkgreet) login screen and plugged in my keyboard adapter in the
-*bottom* USB2 port ... and that did NOT work.
+Please pull
 
-Logged in via SSH and noticed it was indeed not listed in ``lsusb``.
-Checked ``lsmod`` and ``dmesg | tail`` ... and noticed the kernel *did*
-notice plugging in the keyboard adapter, so did ``lsusb`` *again* and
-then it *did* list my keyboard adapter.
-I did NOT employ my usual 'workaround' by plugging it into a USB3 port.
+Thanks
+Heiko
 
-So it may be that it would have always worked ... eventually ... if I
-had just waited long enough?
-While 'dmesg' seems to suggest it took little over 0.5 seconds, I'm
-really not that fast ;-P (or that impatient)
 
-Full log:
-https://paste.sr.ht/~diederik/34847f5c6873f1fc8d32eeb79f2bf2ff9dd4570c
+The following changes since commit 8f0b4cce4481fb22653697cced8d0d04027cb1e8:
 
-Cheers,
-  Diederik
+  Linux 6.19-rc1 (2025-12-14 16:05:07 +1200)
+
+are available in the Git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v6.19-rockchip-dtsfixes1
+
+for you to fetch changes up to 56e7cc8dadf91cd2164e5d6dac9258f448d50182:
+
+  arm64: dts: rockchip: Drop unsupported properties (2026-01-09 20:50:14 +0100)
+
+----------------------------------------------------------------
+In terms of bigger fixes, RK3576 GPU register range was overflowing into
+the next peripheral, Nano Pi M5 sound was not working correctly, the
+adc-keys voltage levels for 2 buttons on the Pinephone Pro were wrong
+and a really wrong PCIe linkspeed was removed from helios64.
+
+Apart from that there are a number of dt-cleanlieness fixes.
+
+----------------------------------------------------------------
+Alexey Charkov (2):
+      arm64: dts: rockchip: Fix headphones widget name on NanoPi M5
+      arm64: dts: rockchip: Configure MCLK for analog sound on NanoPi M5
+
+Chaoyi Chen (1):
+      arm64: dts: rockchip: Fix wrong register range of rk3576 gpu
+
+Geraldo Nascimento (2):
+      arm64: dts: rockchip: remove dangerous max-link-speed from helios64
+      arm64: dts: rockchip: remove redundant max-link-speed from nanopi-r4s
+
+Krzysztof Kozlowski (1):
+      arm64: dts: rockchip: Fix wifi interrupts flag on Sakura Pi RK3308B
+
+Ondrej Jirman (1):
+      arm64: dts: rockchip: Fix voltage threshold for volume keys for Pinephone Pro
+
+Quentin Schulz (1):
+      arm64: dts: rockchip: fix unit-address for RK3588 NPU's core1 and core2's IOMMU
+
+Rob Herring (Arm) (4):
+      arm64: dts: rockchip: Drop "sitronix,st7789v" fallback compatible from rk3568-wolfvision
+      arm64: dts: rockchip: Fix pinctrl property typo on rk3326-odroid-go3
+      arm64: dts: rockchip: Fix gpio pinctrl node names
+      arm64: dts: rockchip: Drop unsupported properties
+
+ arch/arm64/boot/dts/rockchip/rk3308-sakurapi-rk3308b.dts     |  2 +-
+ arch/arm64/boot/dts/rockchip/rk3326-odroid-go3.dts           |  3 ++-
+ arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts       |  2 --
+ arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dtsi          |  1 -
+ arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts         |  1 -
+ arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts        |  4 ++--
+ arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi                |  2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dts         |  4 ++--
+ .../boot/dts/rockchip/rk3568-wolfvision-pf5-display-vz.dtso  |  3 +--
+ arch/arm64/boot/dts/rockchip/rk3576-nanopi-m5.dts            | 12 ++++++++----
+ arch/arm64/boot/dts/rockchip/rk3576.dtsi                     |  2 +-
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi                |  4 ++--
+ 12 files changed, 20 insertions(+), 20 deletions(-)
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
