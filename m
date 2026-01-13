@@ -4,61 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49B05D2F34B
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Jan 2026 17:43:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D97AD2F352
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Jan 2026 18:44:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0mETt58rPoavQMDd6iRdsKa5g5ss+gpvb3kYuE5m7tk=; b=yrBgRR8IC/Qk2N
-	wTv2b+ZUPBMm144GMiYaja3j+4x1ftNq0Pca2yYJerFaeFVxrTx+vpF094RGk8BZCE18ub/mzpimj
-	l7hZjGc8VWqNkoAx7dqupzFP79ZFINVUVmM3jyHlKRv4qRtlw7ZI47b1KFW5CMmT4wLta48quwEpO
-	gX8A+pfhQ+JhQGD1+SEWuFOjrgShLqgaeumj1YlzfmJNS80SMGtKy/n6hKwPn9Zfcn0c2rboZL1hX
-	EYB1ZiKSqSu04Jz+/gsnqHtppu0FFz/p5xlSKYoDrDuZAfQemG+lNasY6rXjp3i6UXCOA3cV2TYbn
-	atiiD1XpjWH7I0++S3mg==;
+	List-Owner; bh=LvgVslhQewOBaDjKEtIAEi5rixyPwd3+mi8SpFLiAqc=; b=iX+kpgC7iW8Ham
+	ab7d14oydL8LP5i3+JejplyUl+gBBfTJfn643EXkiewjLZAlG13U9jjXTYiU5sJ9IYg22deKcpAtr
+	mKCt1bfthSVNnBf64YkZ+LYP7ZclKTAxgwWYz9k6dNEj4AT3pQ6df59tH0YPmZ85JU2Cbm78sOlFx
+	cvaRA5VXj7ucgIyDKklXdF0bESjUjrmeofLisF1XqIRVd7fsI98Axx7ZRvXOstPVUCHelwYOe7nNt
+	LvuXI87JpJ3aggBcB7du06tRL2YLVonmaaaBgJKkdv3S/D/jzHxaoyIB0joGOJHOk906J/nLl8nY2
+	fNuWpg8/6ZW5wEJYXB+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfiQY-00000007Y2C-3rBK;
-	Tue, 13 Jan 2026 17:43:34 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1vfjNh-00000007atG-2jmO;
+	Tue, 13 Jan 2026 18:44:41 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfiQW-00000007Y1h-2CMM
-	for linux-rockchip@lists.infradead.org;
-	Tue, 13 Jan 2026 17:43:33 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=kERDgTlZwEI8Z2uNkyJk/3htfhljWR3RUEeqFlNQCek=; b=J3SKXSstDC/Z/7l9Y2WHu8sKM3
-	fEv+8hlRmqWShI0vJ1TTBFu5CP4bCMBE4HLZy8oOvSBo2Ba/yWFy9fRNm6HU0G7juuXCW9mLm870h
-	hStVDsd0TgpXxYKq6orRt8W1WdkUhfD8Rv1b1jhtrtLOpQ/X3B2SDaz+LqGnPNfJuR/vQjUpe/uzU
-	hcIM71lQIVPf7bxD6AkWmWX7ICso2gjIVYdpvc52o6z5lwD/8Q6hxoOyRLfeRY0KvZOfgw4oocmdA
-	0zm0m6mNIk5WvvYdEsdp2o5W4WLUxa5LtLP15k6H3tMOrktV4wo5gXxx35MkXvK/NirgTb9dLiCKB
-	vQMOZMvA==;
-Received: from i53875b63.versanet.de ([83.135.91.99] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1vfiQB-0029ih-Iu; Tue, 13 Jan 2026 18:43:12 +0100
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- FUKAUMI Naoki <naoki@radxa.com>,
- Marco Schirrmeister <mschirrmeister@gmail.com>,
- John Clark <inindev@gmail.com>, Tianling Shen <cnsztl@gmail.com>,
- Detlev Casanova <detlev.casanova@collabora.com>,
- Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH v2 2/3] soc: rockchip: grf: Support multiple grf to be handled
-Date: Tue, 13 Jan 2026 18:43:11 +0100
-Message-ID: <1906413.BzM5BlMlMQ@diego>
-In-Reply-To: <1768267105-127385-3-git-send-email-shawn.lin@rock-chips.com>
-References: <1768267105-127385-1-git-send-email-shawn.lin@rock-chips.com>
- <1768267105-127385-3-git-send-email-shawn.lin@rock-chips.com>
+	id 1vfjNg-00000007at7-2Ajb;
+	Tue, 13 Jan 2026 18:44:40 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 2A8F76000A;
+	Tue, 13 Jan 2026 18:44:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AC54FC116C6;
+	Tue, 13 Jan 2026 18:44:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1768329878;
+	bh=guH+X5X5Zw5RK4+z7WReUiSq/PEpKm6VSIBaw1TF1Wk=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=mJ/epLMx61KYA6qPjpRXqerwQQ3NcjyRncy5NLUppRcvNbs2ALyBM6FjEhD9uCvW2
+	 eg+DxvUNeugL74YCHEYOOv4VS+A/BfA6G/dMZqmg4UIxaOswYQMpqwbpy7mH2VJssd
+	 pryhg1yTNddK0bWY9Uq9gE7ggwr1D0Kf4ak8pCyjAuuQxjtChOyO00kugpRuZ29n40
+	 WzTS8Cd0E4qQJrBcO9qMgrhYRyavxl9eWt+/iAY5yX2qEdebOKThI+hfkrhzfqh5HQ
+	 VQ0q4gLY53Z/GZ66GOvRjkXfxIKgJEY7/T6uorHk2QfWRmmEUeUhwAT/SFYMOSF+KF
+	 80DfzL+JVf/oA==
+Date: Tue, 13 Jan 2026 19:44:25 +0100
+From: Niklas Cassel <cassel@kernel.org>
+To: Koichiro Den <den@valinux.co.jp>
+Cc: jingoohan1@gmail.com, mani@kernel.org, lpieralisi@kernel.org,
+	kwilczynski@kernel.org, robh@kernel.org, bhelgaas@google.com,
+	vigneshr@ti.com, s-vadapalli@ti.com, hongxing.zhu@nxp.com,
+	l.stach@pengutronix.de, shawnguo@kernel.org, s.hauer@pengutronix.de,
+	kernel@pengutronix.de, festevam@gmail.com, minghuan.Lian@nxp.com,
+	mingkai.hu@nxp.com, roy.zang@nxp.com, jesper.nilsson@axis.com,
+	heiko@sntech.de, srikanth.thokala@intel.com,
+	marek.vasut+renesas@gmail.com, yoshihiro.shimoda.uh@renesas.com,
+	geert+renesas@glider.be, magnus.damm@gmail.com,
+	christian.bruel@foss.st.com, mcoquelin.stm32@gmail.com,
+	alexandre.torgue@foss.st.com, thierry.reding@gmail.com,
+	jonathanh@nvidia.com, hayashi.kunihiko@socionext.com,
+	mhiramat@kernel.org, kishon@kernel.org, jirislaby@kernel.org,
+	rongqianfeng@vivo.com, 18255117159@163.com,
+	shawn.lin@rock-chips.com, nicolas.frattaroli@collabora.com,
+	linux.amoon@gmail.com, vidyas@nvidia.com, Frank.Li@nxp.com,
+	linux-omap@vger.kernel.org, linux-pci@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	imx@lists.linux.dev, linuxppc-dev@lists.ozlabs.org,
+	linux-arm-kernel@axis.com, linux-rockchip@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-tegra@vger.kernel.org
+Subject: Re: [PATCH v7 4/6] PCI: dwc: Advertise dynamic inbound mapping
+ support
+Message-ID: <aWaSggUJpnxjAPA_@ryzen>
+References: <20260113162719.3710268-1-den@valinux.co.jp>
+ <20260113162719.3710268-5-den@valinux.co.jp>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260113_094332_625506_75BDB4DD 
-X-CRM114-Status: GOOD (  23.19  )
+Content-Disposition: inline
+In-Reply-To: <20260113162719.3710268-5-den@valinux.co.jp>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,67 +86,34 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgU2hhd24sCgpBbSBEaWVuc3RhZywgMTMuIEphbnVhciAyMDI2LCAwMjoxODoyNCBNaXR0ZWxl
-dXJvcMOkaXNjaGUgTm9ybWFsemVpdCBzY2hyaWViIFNoYXduIExpbjoKPiBDdXJyZW50bHksIG9u
-bHkgdGhlIGZpcnN0IG1hdGNoZWQgbm9kZSB3aWxsIGJlIGhhbmRsZWQuIFRoaXMgbGVhZHMKPiB0
-byBqdGFnIHN3aXRjaGluZyBicm9rZW4gZm9yIFJLMzU3NiwgYXMgcmszNTc2LXN5cy1ncmYgaXMg
-Zm91bmQgYmVmb3JlCj4gcmszNTc2LWlvYy1ncmYuIENoYW5nZSB0aGUgY29kZSB0byBzY2FuIGFs
-bCB0aGUgcG9zc2libGUgbm9kZXMgdG8gZml4Cj4gdGhlIHByb2JsZW0uCj4gCj4gRml4ZXM6IGUx
-YWFlY2FjZmExMyAoInNvYzogcm9ja2NoaXA6IGdyZjogQWRkIHJrMzU3NiBkZWZhdWx0IEdSRiB2
-YWx1ZXMiKQo+IENjOiBEZXRsZXYgQ2FzYW5vdmEgPGRldGxldi5jYXNhbm92YUBjb2xsYWJvcmEu
-Y29tPgo+IFNpZ25lZC1vZmYtYnk6IFNoYXduIExpbiA8c2hhd24ubGluQHJvY2stY2hpcHMuY29t
-Pgo+IC0tLQo+IAo+IENoYW5nZXMgaW4gdjI6Cj4gLSB1c2UgZm9yX2VhY2hfbWF0Y2hpbmdfbm9k
-ZV9hbmRfbWF0Y2goSGVpa28pCj4gCj4gIGRyaXZlcnMvc29jL3JvY2tjaGlwL2dyZi5jIHwgNTQg
-KysrKysrKysrKysrKysrKysrKysrKystLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQo+ICAxIGZpbGUg
-Y2hhbmdlZCwgMjcgaW5zZXJ0aW9ucygrKSwgMjcgZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdp
-dCBhL2RyaXZlcnMvc29jL3JvY2tjaGlwL2dyZi5jIGIvZHJpdmVycy9zb2Mvcm9ja2NoaXAvZ3Jm
-LmMKPiBpbmRleCA4OTc0ZDFjLi45YjM2MzkwIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvc29jL3Jv
-Y2tjaGlwL2dyZi5jCj4gKysrIGIvZHJpdmVycy9zb2Mvcm9ja2NoaXAvZ3JmLmMKPiBAQCAtMjE3
-LDM0ICsyMTcsMzQgQEAgc3RhdGljIGludCBfX2luaXQgcm9ja2NoaXBfZ3JmX2luaXQodm9pZCkK
-PiAgCXN0cnVjdCByZWdtYXAgKmdyZjsKPiAgCWludCByZXQsIGk7Cj4gIAo+IC0JbnAgPSBvZl9m
-aW5kX21hdGNoaW5nX25vZGVfYW5kX21hdGNoKE5VTEwsIHJvY2tjaGlwX2dyZl9kdF9tYXRjaCwK
-PiAtCQkJCQkgICAgICZtYXRjaCk7Cj4gLQlpZiAoIW5wKQo+IC0JCXJldHVybiAtRU5PREVWOwo+
-IC0JaWYgKCFtYXRjaCB8fCAhbWF0Y2gtPmRhdGEpIHsKPiAtCQlwcl9lcnIoIiVzOiBtaXNzaW5n
-IGdyZiBkYXRhXG4iLCBfX2Z1bmNfXyk7Cj4gKwlmb3JfZWFjaF9tYXRjaGluZ19ub2RlX2FuZF9t
-YXRjaChucCwgcm9ja2NoaXBfZ3JmX2R0X21hdGNoLCAmbWF0Y2gpIHsKPiArCQlpZiAoIW9mX2Rl
-dmljZV9pc19hdmFpbGFibGUobnApKQo+ICsJCQljb250aW51ZTsKPiArCQlpZiAoIW1hdGNoIHx8
-ICFtYXRjaC0+ZGF0YSkgewo+ICsJCQlwcl9lcnIoIiVzOiBtaXNzaW5nIGdyZiBkYXRhXG4iLCBf
-X2Z1bmNfXyk7Cj4gKwkJCW9mX25vZGVfcHV0KG5wKTsKPiArCQkJcmV0dXJuIC1FSU5WQUw7Cj4g
-KwkJfQo+ICsKPiArCQlncmZfaW5mbyA9IG1hdGNoLT5kYXRhOwo+ICsKPiArCQlncmYgPSBzeXNj
-b25fbm9kZV90b19yZWdtYXAobnApOwo+ICAJCW9mX25vZGVfcHV0KG5wKTsKClRoaXMgb2Zfbm9k
-ZV9wdXQgY2FuIGdvIGF3YXkgSSB0aGluay4KCmZvcl9lYWNoX21hdGNoaW5nX25vZGVfYW5kX21h
-dGNoIGl0ZXJhdGVzIG92ZXIgdGhlIG5vZGVzIHZpYSAKCW9mX2ZpbmRfbWF0Y2hpbmdfbm9kZV9h
-bmRfbWF0Y2goZG4sIG1hdGNoZXMsIG1hdGNoKSAgIFswXQoKYW5kIG9mX2ZpbmRfbWF0Y2hpbmdf
-bm9kZV9hbmRfbWF0Y2goKSB3aWxsIG9mX25vZGVfcHV0KCkgdGhlIGZyb20gbm9kZSBbMV0KCgpI
-ZWlrbwoKWzBdIGh0dHBzOi8vZWxpeGlyLmJvb3RsaW4uY29tL2xpbnV4L3Y2LjE4LjQvc291cmNl
-L2luY2x1ZGUvbGludXgvb2YuaCNMMTQ2OQpbMV0gaHR0cHM6Ly9lbGl4aXIuYm9vdGxpbi5jb20v
-bGludXgvdjYuMTguNC9zb3VyY2UvZHJpdmVycy9vZi9iYXNlLmMjTDExNDcKCj4gLQkJcmV0dXJu
-IC1FSU5WQUw7Cj4gLQl9Cj4gLQo+IC0JZ3JmX2luZm8gPSBtYXRjaC0+ZGF0YTsKPiAtCj4gLQln
-cmYgPSBzeXNjb25fbm9kZV90b19yZWdtYXAobnApOwo+IC0Jb2Zfbm9kZV9wdXQobnApOwo+IC0J
-aWYgKElTX0VSUihncmYpKSB7Cj4gLQkJcHJfZXJyKCIlczogY291bGQgbm90IGdldCBncmYgc3lz
-Y29uXG4iLCBfX2Z1bmNfXyk7Cj4gLQkJcmV0dXJuIFBUUl9FUlIoZ3JmKTsKPiAtCX0KPiAtCj4g
-LQlmb3IgKGkgPSAwOyBpIDwgZ3JmX2luZm8tPm51bV92YWx1ZXM7IGkrKykgewo+IC0JCWNvbnN0
-IHN0cnVjdCByb2NrY2hpcF9ncmZfdmFsdWUgKnZhbCA9ICZncmZfaW5mby0+dmFsdWVzW2ldOwo+
-IC0KPiAtCQlwcl9kZWJ1ZygiJXM6IGFkanVzdGluZyAlcyBpbiAlIzZ4IHRvICUjMTB4XG4iLCBf
-X2Z1bmNfXywKPiAtCQkJdmFsLT5kZXNjLCB2YWwtPnJlZywgdmFsLT52YWwpOwo+IC0JCXJldCA9
-IHJlZ21hcF93cml0ZShncmYsIHZhbC0+cmVnLCB2YWwtPnZhbCk7Cj4gLQkJaWYgKHJldCA8IDAp
-Cj4gLQkJCXByX2VycigiJXM6IHdyaXRlIHRvICUjNnggZmFpbGVkIHdpdGggJWRcbiIsCj4gLQkJ
-CSAgICAgICBfX2Z1bmNfXywgdmFsLT5yZWcsIHJldCk7Cj4gKwkJaWYgKElTX0VSUihncmYpKSB7
-Cj4gKwkJCXByX2VycigiJXM6IGNvdWxkIG5vdCBnZXQgZ3JmIHN5c2NvblxuIiwgX19mdW5jX18p
-Owo+ICsJCQlyZXR1cm4gUFRSX0VSUihncmYpOwo+ICsJCX0KPiArCj4gKwkJZm9yIChpID0gMDsg
-aSA8IGdyZl9pbmZvLT5udW1fdmFsdWVzOyBpKyspIHsKPiArCQkJY29uc3Qgc3RydWN0IHJvY2tj
-aGlwX2dyZl92YWx1ZSAqdmFsID0gJmdyZl9pbmZvLT52YWx1ZXNbaV07Cj4gKwo+ICsJCQlwcl9k
-ZWJ1ZygiJXM6IGFkanVzdGluZyAlcyBpbiAlIzZ4IHRvICUjMTB4XG4iLCBfX2Z1bmNfXywKPiAr
-CQkJCXZhbC0+ZGVzYywgdmFsLT5yZWcsIHZhbC0+dmFsKTsKPiArCQkJcmV0ID0gcmVnbWFwX3dy
-aXRlKGdyZiwgdmFsLT5yZWcsIHZhbC0+dmFsKTsKPiArCQkJaWYgKHJldCA8IDApCj4gKwkJCQlw
-cl9lcnIoIiVzOiB3cml0ZSB0byAlIzZ4IGZhaWxlZCB3aXRoICVkXG4iLAo+ICsJCQkJCV9fZnVu
-Y19fLCB2YWwtPnJlZywgcmV0KTsKPiArCQl9Cj4gIAl9Cj4gIAo+ICAJcmV0dXJuIDA7Cj4gCgoK
-CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgt
-cm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcK
-aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hp
-cAo=
+On Wed, Jan 14, 2026 at 01:27:17AM +0900, Koichiro Den wrote:
+> The DesignWare EP core has supported updating the inbound iATU mapping
+> for an already configured BAR (i.e. allowing pci_epc_set_bar() to be
+> called again without a prior pci_epc_clear_bar()) since
+> commit 4284c88fff0e ("PCI: designware-ep: Allow pci_epc_set_bar() update
+> inbound map address").
+> 
+> Now that the EPC layer exposes this capability via the
+> dynamic_inbound_mapping feature bit, set the bit centrally in the
+> DesignWare EP layer so that all DWC-based EP glue drivers report it
+> consistently, without duplicating the same flag in each individual
+> driver.
+> 
+> No functional change intended. This only advertises existing behavior to
+> EPF drivers.
+> 
+> Suggested-by: Niklas Cassel <cassel@kernel.org>
+> Signed-off-by: Koichiro Den <den@valinux.co.jp>
+> ---
+
+Reviewed-by: Niklas Cassel <cassel@kernel.org>
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
