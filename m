@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91B6CC44509
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89E90C44503
 	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Jul 2026 15:30:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,35 +12,37 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ezuAEpAbgrAE6swv0UIsUrCwUdEQggXXfswRUOYhPfY=; b=3G0G0tsBrjZC81
-	wY/jvpA+YHV7yPnUO7/FpB77aXdG7vb/F/qnohA6snH1VD9lXEZlLH6wSem8MurqqP55WjEIwYeO9
-	ExMy09ArKaVf5j+PfLoK+kNE/38nkqIVErRX2d6yWF3+PGyFVBmn8F9I64c1tJvYWz1499EucOme+
-	3evgSMEeS39xfaJYB4HUeaabGdocaMWMTMRUuFZs9kumRBbRlhwWhuIMvYtOr2mBANsvqkPZePzHj
-	RGwIqksd2RHTj9mTs8zEO4hUkALQx3IVoXe+Tsc5Bp7YqpPrkFSpqLPt01Hpo3SZHaK8BZqHSvaGP
-	juF0FKLfhJyMQ7oNyJYw==;
+	List-Owner; bh=BlMX2o1KY2CccIoKhqHJY+OlRV8FS/VAMvgKRyWExSw=; b=P5NxYeznTjYZ+Z
+	3U8obSC3xgezwDVwPnlXs2c2HOHcSWH7sWORSWosAssSrLfsoZfj1lQGzNdgM4u2DTHKpXmrffQu8
+	zBnYyGkCL/XdDVdXDLtpGgsPKc/r6Jfk45sTxeO9AoThJK7rTCc5M/ZGABIjX64OCs940F4eEq2u9
+	6Zv5IH3E+ys897zpVuthAI7B3D9ohbI3wA97OhGrA2ng4ywEMX6+pP4SkBj/k4DTU+5T33KPJKqhy
+	+Ub21O+vw0tNeNWCSN5oblKc4Ed95Ja0XSdEI5C5nBx7O3as9I4+r8TH4EcN6sJJnYC3kI4h3L4EH
+	HekuEcZWE1gA0udnH1xg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wh7kJ-0000000FIDt-0TM3;
+	id 1wh7kJ-0000000FIES-1jSr;
 	Tue, 07 Jul 2026 15:30:03 +0000
 Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfIF6-00000005R6c-1aeT;
-	Mon, 12 Jan 2026 13:46:02 +0000
+	id 1vfmXB-00000007nWD-0G9I;
+	Tue, 13 Jan 2026 22:06:42 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=avW/KaDunIxQhrdj8bFjXOe630cKt3gLzoDikVOnoMk=; b=H9qsQLhCSyxngrQPIlGbslrcbE
-	2OOrhEs03G96dXGfTdBYTBgsUVSjvZbmqGOIaBWluGAQ14HdZTeQcYL+qDS+q3aXeRcZPLLohTFOn
-	2GrJmbWew8Uyv2bkFMHdbaO2fstI/zVW/oWoAj3+NtNf4lnG3VwRCbbZdWsNNCaCuRnI=;
+	s=20171124; h=In-Reply-To:Content-Transfer-Encoding:Content-Disposition:
+	Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:From:
+	Sender:Reply-To:Subject:Date:Message-ID:To:Cc:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Content-Disposition:
+	In-Reply-To:References; bh=oBM2ZoOF22ddiLW29uUZvDBCanemUcQlDXTvmAcjlq4=; b=kI
+	Y8zUy97+/X5jNowUufRNGBEkL5lckHnRZAeGH2ky7o8DY2gnk+V1zKaO95hqWEgDAg40w523H3J+c
+	+cBn8rp7OJQD/Z+CBIQkEsT1pZZgZ0TM2oaYWUL7T5O8Q6hif/olvCQyS1uUtoDXmW//efHVd6A5l
+	wb+967zbnQezKGU=;
 Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
 	(envelope-from <andrew@lunn.ch>)
-	id 1vfIDx-002Trp-OL; Mon, 12 Jan 2026 14:44:49 +0100
-Date: Mon, 12 Jan 2026 14:44:49 +0100
+	id 1vfmWA-002hQ8-MR; Tue, 13 Jan 2026 23:05:38 +0100
+Date: Tue, 13 Jan 2026 23:05:38 +0100
 From: Andrew Lunn <andrew@lunn.ch>
-To: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
-Cc: Bjorn Andersson <andersson@kernel.org>,
+To: Bartosz Golaszewski <brgl@kernel.org>
+Cc: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>,
+	Bjorn Andersson <andersson@kernel.org>,
 	Konrad Dybcio <konradybcio@kernel.org>,
 	Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -89,11 +91,9 @@ Cc: Bjorn Andersson <andersson@kernel.org>,
 	Frank Li <Frank.Li@nxp.com>, David Wu <david.wu@rock-chips.com>,
 	Samin Guo <samin.guo@starfivetech.com>,
 	Christophe Roullier <christophe.roullier@foss.st.com>,
-	Swathi K S <swathi.ks@samsung.com>,
-	Bartosz Golaszewski <brgl@kernel.org>,
-	linux-arm-msm@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com,
+	Swathi K S <swathi.ks@samsung.com>, linux-arm-msm@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
 	linux-arm-kernel@lists.infradead.org,
 	Drew Fustini <dfustini@tenstorrent.com>,
 	linux-sunxi@lists.linux.dev, linux-amlogic@lists.infradead.org,
@@ -103,15 +103,17 @@ Cc: Bjorn Andersson <andersson@kernel.org>,
 	linux-riscv@lists.infradead.org
 Subject: Re: [PATCH RESEND net-next v6 2/7] net: stmmac: qcom-ethqos: use
  generic device properties
-Message-ID: <a2a610a3-aead-4e85-8a4c-7b83ccf276dc@lunn.ch>
+Message-ID: <7865a1fb-91bb-4aec-ab3a-b53050d992e8@lunn.ch>
 References: <20260112-qcom-sa8255p-emac-v6-0-86a3d4b2ad83@oss.qualcomm.com>
  <20260112-qcom-sa8255p-emac-v6-2-86a3d4b2ad83@oss.qualcomm.com>
+ <a2a610a3-aead-4e85-8a4c-7b83ccf276dc@lunn.ch>
+ <CAMRc=Mf8TTTcU9A3gc_LQF3Ow6Ww0omVJH6x-DQEnOSPXfaUQw@mail.gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20260112-qcom-sa8255p-emac-v6-2-86a3d4b2ad83@oss.qualcomm.com>
+In-Reply-To: <CAMRc=Mf8TTTcU9A3gc_LQF3Ow6Ww0omVJH6x-DQEnOSPXfaUQw@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260112_054600_415047_9B4C144F 
-X-CRM114-Status: GOOD (  13.42  )
+X-CRM114-CacheID: sfid-20260113_140641_121627_C0B3219D 
+X-CRM114-Status: GOOD (  12.40  )
 X-Mailman-Approved-At: Tue, 07 Jul 2026 08:29:46 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -124,44 +126,25 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jan 12, 2026 at 11:15:41AM +0100, Bartosz Golaszewski wrote:
-> From: Bartosz Golaszewski <brgl@kernel.org>
-> 
-> In order to drop the dependency on CONFIG_OF, convert all device property
-> getters from OF-specific to generic device properties and stop pulling
-> in any linux/of.h symbols.
-
-Is the intention to read these properties from ACPI tables?
-
-If so, it would be nice to document these properties in
-Documentation/firmware-guide/acpi/dsd.
-
-> -	if (of_property_read_bool(np, "snps,tso"))
-> +	if (device_property_present(dev, "snps,tso"))
->  		plat_dat->flags |= STMMAC_FLAG_TSO_EN;
-
-Do you actually need this in the ACPI binding? Is there a reason not
-to just hard code it enabled? You don't need to worry about backwards
-compatibility here, because this is the first ACPI device.
-
-> -	if (of_device_is_compatible(np, "qcom,qcs404-ethqos"))
-> +	if (device_is_compatible(dev, "qcom,qcs404-ethqos"))
->  		plat_dat->flags |= STMMAC_FLAG_RX_CLK_RUNS_IN_LPI;
-
-What is your target hardware? Will qcom,qcs404-ethqos every use ACPI?
-
-Maybe this should actually stay as of_device_is_compatible, to make it
-clear this is an device tree only device? There is no need to mess up
-the ACPI binding with things which will never actually use ACPI.
-
-   Andrew
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gVHVlLCBKYW4gMTMsIDIwMjYgYXQgMDE6MzY6NTNQTSArMDEwMCwgQmFydG9zeiBHb2xhc3pl
+d3NraSB3cm90ZToKPiBPbiBNb24sIEphbiAxMiwgMjAyNiBhdCAyOjQ14oCvUE0gQW5kcmV3IEx1
+bm4gPGFuZHJld0BsdW5uLmNoPiB3cm90ZToKPiA+Cj4gPiBPbiBNb24sIEphbiAxMiwgMjAyNiBh
+dCAxMToxNTo0MUFNICswMTAwLCBCYXJ0b3N6IEdvbGFzemV3c2tpIHdyb3RlOgo+ID4gPiBGcm9t
+OiBCYXJ0b3N6IEdvbGFzemV3c2tpIDxicmdsQGtlcm5lbC5vcmc+Cj4gPiA+Cj4gPiA+IEluIG9y
+ZGVyIHRvIGRyb3AgdGhlIGRlcGVuZGVuY3kgb24gQ09ORklHX09GLCBjb252ZXJ0IGFsbCBkZXZp
+Y2UgcHJvcGVydHkKPiA+ID4gZ2V0dGVycyBmcm9tIE9GLXNwZWNpZmljIHRvIGdlbmVyaWMgZGV2
+aWNlIHByb3BlcnRpZXMgYW5kIHN0b3AgcHVsbGluZwo+ID4gPiBpbiBhbnkgbGludXgvb2YuaCBz
+eW1ib2xzLgo+ID4KPiA+IElzIHRoZSBpbnRlbnRpb24gdG8gcmVhZCB0aGVzZSBwcm9wZXJ0aWVz
+IGZyb20gQUNQSSB0YWJsZXM/Cj4gPgo+IAo+IE5vLiBPdGhlciB0aGFuIGEgY291cGxlIHByb3Bl
+cnR5IGdldHRlcnMgd2hpY2ggY2FuIHVzZSB0aGUgZndub2RlCj4gYWJzdHJhY3Rpb24sIHRoZXJl
+J3Mgbm90aGluZyBoZXJlIHRoYXQgcmVxdWlyZXMgdGhlIE9GIGRlcGVuZGVuY2UuCgpTbyB3aGF0
+IGlzIHRoZSBuZWVkIGZvciBub3QgdXNpbmcgT0Y/IFdoeSBkbyB5b3Ugd2FudCB0aGlzIHBhdGNo
+PwoKICAgIEFuZHJldwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmlu
+ZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9s
+aW51eC1yb2NrY2hpcAo=
