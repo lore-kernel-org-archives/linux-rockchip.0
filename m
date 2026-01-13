@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40E3BD30CC3
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Jan 2026 20:00:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61EAAD2F35C
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Jan 2026 20:00:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yEL2h/pcvMA031ICnkJLawj1rMvuJAl+AJr7iviCE1Q=; b=dsOsbswT8qiN0L
-	HEg7iH18opRJ1/L0j+oGF7SEQKeiCfdntORtYwr38Gzo2Wqglgf/c9TlSjeMeMotj7r1WF0l6Yuc8
-	iOq8GvXHxtaMPwXy50z8HPY3tfjj3ZWGFyte3ZDMllJLcnWXYMjJJpjeqbplTnhZDEvTWS+YFEauX
-	1BNFP/TXrtdFTiiMdE8LZIeziiGKi5L/IPIIIpmqaykg1tM3FvaavRziKafV/7vi7mRbBsFGVbTQS
-	ExD5u819wyVau1iXm2X8aKcpd3u3ZcPg1TvC3gP49cGn0DFyLuycSU5r810EhWyLyDQ8AeE4pxT/r
-	e8sNiyXcpPd8bciQScpw==;
+	List-Owner; bh=xjHPDfxyPgGAC/x75cu9q1Z+3q4uPSiseNWcGUWGlww=; b=LO7Bw4058N92qt
+	r36ZZ5j10UdtJT6FMFKxupwVPf7WP0kcVStm8hqBrleJNvdEfixdOtPyRDV+ggdnIf6wTOs9pxkPn
+	qf+Ga86j/mNzkqzvxZC0jXYBp3J9N/qI6xdi3mKP6c+T9zJUG1yowU58dPhbNvqFSgQmrd5WZZVtj
+	dJYe97cH9G7FgQYeQEDh5XlG0C8tAK3GlXvOaZzHVJPo8TAb/xJP3GYsYrLBCVI0k/+qvY/BXUth7
+	ghDNkbeOMH6zsofaQ0gPjcF06gUAOaDhdTVpHNbiLQ0DhSwqismGVgXyB758I8J93q+kqC3gpM/u2
+	LInT4/WoT6WrWS8H9Yqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfkYV-00000007eaC-0AGs;
+	id 1vfkYV-00000007eaY-1Na8;
 	Tue, 13 Jan 2026 19:59:55 +0000
-Received: from mail-ot1-x329.google.com ([2607:f8b0:4864:20::329])
+Received: from mail-ot1-x32c.google.com ([2607:f8b0:4864:20::32c])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfkYQ-00000007eY3-1LIu
+	id 1vfkYR-00000007eYM-2Xug
 	for linux-rockchip@lists.infradead.org;
-	Tue, 13 Jan 2026 19:59:51 +0000
-Received: by mail-ot1-x329.google.com with SMTP id 46e09a7af769-7c6dbdaced8so6528280a34.1
-        for <linux-rockchip@lists.infradead.org>; Tue, 13 Jan 2026 11:59:50 -0800 (PST)
+	Tue, 13 Jan 2026 19:59:52 +0000
+Received: by mail-ot1-x32c.google.com with SMTP id 46e09a7af769-7c6d13986f8so162669a34.0
+        for <linux-rockchip@lists.infradead.org>; Tue, 13 Jan 2026 11:59:51 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1768334389; x=1768939189; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1768334390; x=1768939190; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=SqMQUQ/aJfEqDI2GLO0SzFgPGkoYzlQYbdw+E86b2Os=;
-        b=Xx7ipNzHzzeSPBZskFbHlFXr2mvf/SO0twYdzoENbmQR8W75dfZnxgQrhpgnQC1C1d
-         pzMqm1Kv/FIwSRNvZC9PTdcdYmPT+971M1OiVy0sPFE0+NWdbRaftSWStVHw2QeUBKn/
-         gotw3i8pFwcTfXyD5XyH02vbP+jcGH5b84QZ++7DAiyzVntQ4H+96GPAFLiuOp/+FruG
-         itcdoZHnBHADTt5rD0Pecrlc6aRzBj5cBJhEM5KrcKM6M/0tOQdLVn7KPIm1fIqgcmVC
-         tw6v65Dq0Wa9kyqNgT5pnknLo1565clrAvl1cN9v19DNjI0eqMQvwxuAI6dJFLjx6L47
-         nexA==
+        bh=/1xCfJteJeME9NGRhsVNII7duVLe6cYsSH/mt2zuydA=;
+        b=PXS7xL77cujIy1PLFlxnMnTn3P2VTR2SJb4KjzLqXMaY47cne2t1ezvHhsqYdjASU1
+         wwNNLaUfR6DawTc6JsRc2ej9t+N3xX2YZs3tj65IAFPP+/nDwOFJ0eNOMcjzxWu4Zvf6
+         n5byg98+IdrBTG47qT5b6cyr/1CnKXt3DygQWBsRwLt0YkeEDOiKfoQYXVJUZz0UA75m
+         Za8KZW0+CPUfh1uXq6O+0+rvjGPNxq1jjwf1YGsf+vuZSKGXvTxuVZ8UfqgG/502JgMA
+         Q8owXm7cP49mLv9mZmIAyjjqf2dAGvMhj6eT/fJWLztyJbhhZDRZMJjhqQHNPHEnJAyh
+         MJUA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1768334389; x=1768939189;
+        d=1e100.net; s=20230601; t=1768334390; x=1768939190;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=SqMQUQ/aJfEqDI2GLO0SzFgPGkoYzlQYbdw+E86b2Os=;
-        b=D4hUJAwV7qmc8oglcfu0cIdoVVdBDwUhRtUkF9a4HYRlTRk1X2DUm22Oj5q+O6h4BP
-         L0dLqFSskyqmikNkrjaQPiNgkeNK4gDfW0YFkUwNH++M6RWUJkbeyVnv/r4UsbwN1BXl
-         48xSKaLAYKAZdPsSLUBvVQWskiebLVp4baGSuohHG86HeQVzpJiientiqorqeSNk+u9O
-         Az4txOuji1XIc9Tz8Ry2ws1iqoZLt8ugF50APU1TgAJFNl1ymApHg72F6MbW6t+YbCaI
-         j5GCqUjgtvoZVgZUEUXSP8Y6dDd4tukjU7BdUl5NL0m8az2oY4Pztk4MOJbbQNTzEB6x
-         G5xA==
-X-Gm-Message-State: AOJu0YxkQitDfKEsX9KiVhvX1CVB5qBJRHVB76Y+ih0PoeKRspZ8wOYh
-	cYg8uoWhjTnNxLq+OfmZTEgznGgGo5W7OdTHWPNzP3X7a2bEq9YtLnbQS6Nd5w==
-X-Gm-Gg: AY/fxX54WPxJ7iCZtAVtyRXwCMJuJ4ZSduOFnfbAaK63ReFELlX1BDIERQXhBxw66Cs
-	u4Gpdn9bq9SNY/JA3vFJ1ClCBGOqenW/SQsiIMxDUMxaXirsZmlOGEgvApGQ/bpNGVpqdOHy2BZ
-	Aaz6gmy8lWConRTca5dReUJ6PXEn4pQ2Cla3uJgzrBZzvhw8/ZTttmEyCUpG/NxAcv1Q8UJbeOt
-	Zti0Sn9C3BwezBIy1AZiMFHPuVq6drxO4C02U8dYDcDnMsAVVNJ5mNPCeHSoF3LXKXBQsOGAioh
-	HDpErdduza0vUrMai51l+RB8ctfrufCeRe3DNDtkW8cQKTSIrKJu+Tqy/RnXbl7bziYVt4njJN8
-	e5PRrFZ5rMUUKUCi2znCsrPLVG8k5+KfWxCo3hz3SiSG8KzTjc2oPw+Krp5XSm2osTL06FcHbEP
-	A8isd/tCzh+977MsmsLuc=
-X-Received: by 2002:a05:6830:4ac6:b0:7c7:701:fb10 with SMTP id 46e09a7af769-7cfc8a40079mr209141a34.7.1768334389066;
-        Tue, 13 Jan 2026 11:59:49 -0800 (PST)
+        bh=/1xCfJteJeME9NGRhsVNII7duVLe6cYsSH/mt2zuydA=;
+        b=LdEpWhxE0VlzD0O2Kv3Or+faZNPuST6W1i4o1jZBTYeZpaqfYcXZTpyjqCbCSqUWJ4
+         jwd6GMkTmQ51vDR3gD2HXPu7flIbi6qqghyH1fFkkUCTYFQXD0aoC+6Grk/wV8K0vIVW
+         5bnXQkjXTzrZMAIgbq6pCT/8P2mCT710d3px+sKf7Gmvyj1xPjHXzW/Suwbo4WHiChWj
+         KwQ13hrGF2SWmAkxYoSJkuT7+oCQkxQ6BLBD/yX3eBwdFZ+kRq2lA/I+5+Hmtf/b1Vnw
+         apRg86eP0CmDQzazpBtDxOV74tQjtEtR80cRYNqRoL8UQ3NG6lHBq2luN3T+6PBGusHD
+         I5hA==
+X-Gm-Message-State: AOJu0YxpZC6mMTzswwqENbVXQVgsBZJZZQOnIFs3YfomgPKVq8FdDZRD
+	0H+KQVhbLN6zhE5Rel8b0BNjxyrTgnXj15GSHXetN8QFHqBfxn3DGT0GHA9tbg==
+X-Gm-Gg: AY/fxX7qq11IQxYnWU7fKA7gHxk5HtuWMMihEzPDJAC7rzq9r+lZdBKDv2qn8fvyMU5
+	6DCK54ZMWd0BO68EKG0PM5UShJy5Pepr79g9r6PDF/LWqeiHl4wIP6tZ08ed42ctj0buUl+uTmC
+	JDVhnLun1eS512T33/iIy/g6yIAsRHNRNejhox2e8YhFhHCzh6Oh8/m37EjxSRGpkRFgfInOmpf
+	cP8ng9VIKLrvvDhpQdb/kZxOPaoDRqXLl9zYTRRg/X4NC56KLP5OsuCYElv/kEHBFQoRbRCGsTg
+	jJmq9eQX4fNGv7FI8B2DRNCelY5KlDYffjrEAZ3btq8tAlFxP+xRruGVVwbGP66FBz1C0DgAb/T
+	hFO16O091VDYLUSDaUGbB35RMUFtiCbXOG4UmADGM6/2RVbcfjpAGnBaMbYmgj6DCLXfNeOyOGT
+	EtIhSWnE6S
+X-Received: by 2002:a9d:6c10:0:b0:7cd:f5dc:56ea with SMTP id 46e09a7af769-7cfbe3dad50mr1674790a34.4.1768334390048;
+        Tue, 13 Jan 2026 11:59:50 -0800 (PST)
 Received: from localhost.localdomain ([2600:1700:fb0:1bc0::54])
-        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7ce47801d4dsm16221119a34.5.2026.01.13.11.59.48
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7ce47801d4dsm16221119a34.5.2026.01.13.11.59.49
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 13 Jan 2026 11:59:48 -0800 (PST)
+        Tue, 13 Jan 2026 11:59:49 -0800 (PST)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: linux-rockchip@lists.infradead.org
 Cc: dri-devel@lists.freedesktop.org,
@@ -87,17 +87,16 @@ Cc: dri-devel@lists.freedesktop.org,
 	robh@kernel.org,
 	aweinzerl13@yahoo.com,
 	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH 2/6] dt-bindings: display: panel: Add compatible for Anbernic RG-DS
-Date: Tue, 13 Jan 2026 13:57:17 -0600
-Message-ID: <20260113195721.151205-3-macroalpha82@gmail.com>
+Subject: [PATCH 3/6] drm/panel: jd9365da: Support for Anbernic RG-DS Panel
+Date: Tue, 13 Jan 2026 13:57:18 -0600
+Message-ID: <20260113195721.151205-4-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260113195721.151205-1-macroalpha82@gmail.com>
 References: <20260113195721.151205-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260113_115950_380993_AEBAFE20 
-X-CRM114-Status: UNSURE (   8.94  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260113_115951_708795_A8BD727A 
+X-CRM114-Status: GOOD (  11.77  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,29 +115,324 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-The Anbernic RG-DS uses two (mostly) identical panels as a top
-and bottom panel which appear to use the same controller as the
-Jadard JD9365DA-H3. The panels differ with a parameter defined
-differently in the init sequence.
+Add support for both panels used in the Anbernic RG-DS. These panels
+are physically identical and differ only with a single instruction
+in the init sequence. The init sequence commands suggest it uses
+an identical controller as the jd9365da.
+
+Additionally, allow specifying per-panel dsi->mode_flags that can
+override the default values.
 
 Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+Co-developed-by: Alexander Weinzerl <aweinzerl13@yahoo.com>
+Signed-off-by: Alexander Weinzerl <aweinzerl13@yahoo.com>
 ---
- .../devicetree/bindings/display/panel/jadard,jd9365da-h3.yaml   | 2 ++
- 1 file changed, 2 insertions(+)
+ .../gpu/drm/panel/panel-jadard-jd9365da-h3.c  | 271 +++++++++++++++++-
+ 1 file changed, 269 insertions(+), 2 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/display/panel/jadard,jd9365da-h3.yaml b/Documentation/devicetree/bindings/display/panel/jadard,jd9365da-h3.yaml
-index b8783eba3ddc..5802fb3c9ffe 100644
---- a/Documentation/devicetree/bindings/display/panel/jadard,jd9365da-h3.yaml
-+++ b/Documentation/devicetree/bindings/display/panel/jadard,jd9365da-h3.yaml
-@@ -16,6 +16,8 @@ properties:
-   compatible:
-     items:
-       - enum:
-+          - anbernic,rg-ds-display-bottom
-+          - anbernic,rg-ds-display-top
-           - chongzhou,cz101b4001
-           - kingdisplay,kd101ne3-40ti
-           - melfas,lmfbx101117480
+diff --git a/drivers/gpu/drm/panel/panel-jadard-jd9365da-h3.c b/drivers/gpu/drm/panel/panel-jadard-jd9365da-h3.c
+index 063ed9646d53..5386a06fcd08 100644
+--- a/drivers/gpu/drm/panel/panel-jadard-jd9365da-h3.c
++++ b/drivers/gpu/drm/panel/panel-jadard-jd9365da-h3.c
+@@ -33,6 +33,7 @@ struct jadard_panel_desc {
+ 	unsigned int backlight_off_to_display_off_delay_ms;
+ 	unsigned int display_off_to_enter_sleep_delay_ms;
+ 	unsigned int enter_sleep_to_reset_down_delay_ms;
++	unsigned long mode_flags;
+ };
+ 
+ struct jadard {
+@@ -1113,6 +1114,258 @@ static const struct jadard_panel_desc melfas_lmfbx101117480_desc = {
+ 	.enter_sleep_to_reset_down_delay_ms = 100,
+ };
+ 
++static int anbernic_rgds_init_cmds(struct jadard *jadard)
++{
++	struct mipi_dsi_multi_context dsi_ctx = { .dsi = jadard->dsi };
++	struct drm_panel *panel = &jadard->panel;
++
++	jd9365da_switch_page(&dsi_ctx, 0x0);
++
++	jadard_enable_standard_cmds(&dsi_ctx);
++
++	jd9365da_switch_page(&dsi_ctx, 0x01);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x00, 0x00);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x01, 0x6a);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x03, 0x10);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x04, 0x6a);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x0c, 0x74);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x17, 0x00);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x18, 0xbf);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x19, 0x01);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x1a, 0x00);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x1b, 0xbf);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x1c, 0x01);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x24, 0xfe);
++
++	if (of_device_is_compatible(panel->dev->of_node,
++				    "anbernic,rg-ds-display-top"))
++		mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x37, 0x05);
++	else
++		mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x37, 0x09);
++
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x38, 0x02);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x39, 0x08);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x3a, 0x1f);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x3c, 0xf7);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x3d, 0xff);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x3e, 0xff);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x3f, 0xff);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x40, 0x03);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x41, 0x3c);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x42, 0xff);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x43, 0x0a);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x44, 0x11);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x45, 0x78);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x55, 0x02);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x57, 0x6d);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x58, 0x0a);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x59, 0x0a);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x5a, 0x1f);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x5b, 0x1f);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x5d, 0x7f);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x5e, 0x56);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x5f, 0x43);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x60, 0x34);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x61, 0x2f);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x62, 0x20);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x63, 0x22);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x64, 0x0c);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x65, 0x24);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x66, 0x24);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x67, 0x25);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x68, 0x43);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x69, 0x33);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x6a, 0x3a);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x6b, 0x2d);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x6c, 0x28);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x6d, 0x1b);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x6e, 0x0b);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x6f, 0x00);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x70, 0x7f);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x71, 0x56);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x72, 0x43);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x73, 0x34);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x74, 0x2f);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x75, 0x20);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x76, 0x22);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x77, 0x0c);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x78, 0x24);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x79, 0x24);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x7a, 0x25);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x7b, 0x43);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x7c, 0x33);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x7d, 0x3a);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x7e, 0x2d);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x7f, 0x28);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x80, 0x1b);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x81, 0x0b);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x82, 0x00);
++
++	jd9365da_switch_page(&dsi_ctx, 0x02);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x00, 0x5f);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x01, 0x5f);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x02, 0x5f);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x03, 0x5e);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x04, 0x50);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x05, 0x40);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x06, 0x5f);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x07, 0x57);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x08, 0x77);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x09, 0x48);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x0a, 0x48);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x0b, 0x4a);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x0c, 0x4a);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x0d, 0x44);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x0e, 0x44);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x0f, 0x46);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x10, 0x46);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x11, 0x5f);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x12, 0x5f);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x13, 0x5f);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x14, 0x5f);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x15, 0x5f);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x16, 0x5f);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x17, 0x5f);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x18, 0x5f);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x19, 0x5e);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x1a, 0x50);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x1b, 0x41);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x1c, 0x5f);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x1d, 0x57);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x1e, 0x77);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x1f, 0x49);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x20, 0x49);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x21, 0x4b);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x22, 0x4b);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x23, 0x45);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x24, 0x45);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x25, 0x47);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x26, 0x47);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x27, 0x5f);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x28, 0x5f);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x29, 0x5f);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x2a, 0x5f);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x2b, 0x5f);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x2c, 0x1f);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x2d, 0x1f);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x2e, 0x1e);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x2f, 0x1f);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x30, 0x10);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x31, 0x01);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x32, 0x1f);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x33, 0x17);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x34, 0x17);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x35, 0x07);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x36, 0x07);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x37, 0x05);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x38, 0x05);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x39, 0x0b);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x3a, 0x0b);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x3b, 0x09);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x3c, 0x09);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x3d, 0x1f);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x3e, 0x1f);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x3f, 0x1f);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x40, 0x1f);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x41, 0x1f);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x42, 0x1f);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x43, 0x1f);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x44, 0x1e);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x45, 0x1f);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x46, 0x10);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x47, 0x00);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x48, 0x1f);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x49, 0x17);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x4a, 0x17);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x4b, 0x06);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x4c, 0x06);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x4d, 0x04);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x4e, 0x04);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x4f, 0x0a);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x50, 0x0a);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x51, 0x08);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x52, 0x08);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x53, 0x1f);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x54, 0x1f);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x55, 0x1f);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x56, 0x1f);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x57, 0x1f);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x58, 0x40);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x59, 0x00);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x5a, 0x00);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x5b, 0x10);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x5c, 0x07);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x5d, 0x30);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x5e, 0x01);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x5f, 0x02);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x60, 0x30);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x61, 0x01);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x62, 0x02);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x63, 0x06);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x64, 0xe9);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x65, 0x40);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x66, 0x02);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x67, 0x73);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x68, 0x0b);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x69, 0x06);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x6a, 0xe9);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x6b, 0x08);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x75, 0xda);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x76, 0x00);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x77, 0x01);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x78, 0xfc);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x81, 0x08);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x83, 0xf4);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x87, 0x10);
++
++	jd9365da_switch_page(&dsi_ctx, 0x04);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x00, 0x0e);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x02, 0xb3);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x09, 0x60);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x0e, 0x48);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x1e, 0x00);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x37, 0x58);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x2b, 0x0f);
++
++	jd9365da_switch_page(&dsi_ctx, 0x05);
++	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x15, 0x1d);
++
++	jd9365da_switch_page(&dsi_ctx, 0x00);
++	mipi_dsi_msleep(&dsi_ctx, 120);
++	mipi_dsi_dcs_exit_sleep_mode_multi(&dsi_ctx);
++	mipi_dsi_msleep(&dsi_ctx, 120);
++	mipi_dsi_dcs_set_display_on_multi(&dsi_ctx);
++	mipi_dsi_msleep(&dsi_ctx, 10);
++
++	return dsi_ctx.accum_err;
++};
++
++static const struct jadard_panel_desc anbernic_rgds_display_desc = {
++	.mode = {
++		.clock		= (640 + 260 + 220 + 260) * (480 + 10 + 2 + 16) * 60 / 1000,
++
++		.hdisplay	= 640,
++		.hsync_start	= 640 + 260,
++		.hsync_end	= 640 + 260 + 220,
++		.htotal		= 640 + 260 + 220 + 260,
++
++		.vdisplay	= 480,
++		.vsync_start	= 480 + 10,
++		.vsync_end	= 480 + 10 + 2,
++		.vtotal		= 480 + 10 + 2 + 16,
++
++		.width_mm	= 68,
++		.height_mm	= 87,
++		.type		= DRM_MODE_TYPE_DRIVER | DRM_MODE_TYPE_PREFERRED,
++		.flags		= DRM_MODE_FLAG_NHSYNC | DRM_MODE_FLAG_NVSYNC,
++	},
++	.lanes = 4,
++	.format = MIPI_DSI_FMT_RGB888,
++	.init = anbernic_rgds_init_cmds,
++	.mode_flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_BURST |
++		      MIPI_DSI_CLOCK_NON_CONTINUOUS | MIPI_DSI_MODE_LPM,
++};
++
+ static int jadard_dsi_probe(struct mipi_dsi_device *dsi)
+ {
+ 	struct device *dev = &dsi->dev;
+@@ -1126,8 +1379,14 @@ static int jadard_dsi_probe(struct mipi_dsi_device *dsi)
+ 		return PTR_ERR(jadard);
+ 
+ 	desc = of_device_get_match_data(dev);
+-	dsi->mode_flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_BURST |
+-			  MIPI_DSI_MODE_NO_EOT_PACKET;
++
++	if (desc->mode_flags)
++		dsi->mode_flags = desc->mode_flags;
++	else
++		dsi->mode_flags = MIPI_DSI_MODE_VIDEO |
++				  MIPI_DSI_MODE_VIDEO_BURST |
++				  MIPI_DSI_MODE_NO_EOT_PACKET;
++
+ 	dsi->format = desc->format;
+ 	dsi->lanes = desc->lanes;
+ 
+@@ -1176,6 +1435,14 @@ static void jadard_dsi_remove(struct mipi_dsi_device *dsi)
+ }
+ 
+ static const struct of_device_id jadard_of_match[] = {
++	{
++		.compatible = "anbernic,rg-ds-display-bottom",
++		.data = &anbernic_rgds_display_desc
++	},
++	{
++		.compatible = "anbernic,rg-ds-display-top",
++		.data = &anbernic_rgds_display_desc
++	},
+ 	{
+ 		.compatible = "chongzhou,cz101b4001",
+ 		.data = &cz101b4001_desc
 -- 
 2.43.0
 
