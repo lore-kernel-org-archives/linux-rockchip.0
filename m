@@ -4,59 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DE03D29DE0
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Jan 2026 07:23:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86F49D29DE4
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Jan 2026 07:41:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yDD4ik6KfCGJvxPrSW2J4mCkTcCXZlfyvcC9GhGMu2o=; b=JdPvIfw8sY7+iA
-	iTxVoDW8PMPY5pMxJt62dyGe12v+HiZU08DO3L3wM3MV+iJ8qSv0R4pZ++WEtLrLGRmnEohySxw7n
-	mu91YSZtp7JjIGaCyZlRMc9VRIWQ9wjcNvDJ1JNXRv1uQXFbLjP72+xCVqiVkd6yzNvGPJVvpfq6L
-	T0J/Fnb0OXlEHi24eMVCFgdmwP+lZ01Z78oIAQt9YICNk1kD5QBxl3/jWcjj/d8/9mp9IqByMFDtT
-	ywcbHglVLy9nhCrXuOeqNV9HrpPGo4LPii+/D8OtbOdl7S6q+kskxsxq5ZmIq5gE6r3qgHiJDydFU
-	Lc7oFLCPVrTSRV5YYxhw==;
+	List-Owner; bh=z6ivAMwV8SVTtYn1TzRlDJDOyPRZjIHZyqSEIao/Le4=; b=ShAzV83bZr8nCQ
+	+WOo9uCi8rf/dGSIuXHwTXyeodRncS17sZQZlwDGbvoQnfHK5dQLQHMhLqn/XyioTGt8fvl1ZofXK
+	DxkDcZlkqJ3hoz7sIk7TGqdvMMojaL2ZLlw8sTkXdOJgE8FHNAnWJFOJS8pnWdwaVig9lKSPxLiy0
+	zw3QwlSs0ecqYo+6B+PJKvqJ8NNCVeqFNNhSbzIOBrrl9QnE3O6ObPn4ckDJ2b3KejLE3rmcWde2F
+	SAmi9UHk5PTnqqFzeRLL+7MvjkCkY7hbACowKfCjtlExsxj1T3vSxW4sgXE37gjOfaRlf5wbIT1M5
+	I2ADQzbk26QqOTWBlZew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfYkW-00000006dw5-45Vw;
-	Tue, 13 Jan 2026 07:23:32 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vfZ1n-00000006fjM-279V;
+	Tue, 13 Jan 2026 07:41:23 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfYkS-00000006dug-3rxQ;
-	Tue, 13 Jan 2026 07:23:30 +0000
+	id 1vfZ1k-00000006fit-3h55;
+	Tue, 13 Jan 2026 07:41:22 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 9149144263;
-	Tue, 13 Jan 2026 07:23:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B7408C116C6;
-	Tue, 13 Jan 2026 07:23:24 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 1353540894;
+	Tue, 13 Jan 2026 07:41:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1E5A5C116C6;
+	Tue, 13 Jan 2026 07:41:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1768289007;
-	bh=1+F6dFfPAeqLcbkEBw1S8hDM8CN5TNoOf8Mc+HFOoGI=;
+	s=k20201202; t=1768290079;
+	bh=81HjT9+8N+O6Gr1++xyqf2PHHjPaLODnq0PKKKCxY30=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=tkOuDhwJmqo7p/d6TraJiEDtVh/tUnO0ZJLZ8yJ6kXY4HJjndlpfqtcWWvOU71yqH
-	 qQjw/oqxwq2qrr+g7CzjVx2JjSTq/K5A9n0F33Pe7whm5Dx/rJvNJZ/h5vjwjvb7GR
-	 7nhswMS/H/QiaXAHT/5rNy313fBoRuQyXO/w1B2n1miZpc9l01lyXDVfCyL+r7h80v
-	 HAynuK7vbVUz4ECeMUcYeL2B22ugKQ8EF4DLGfJOLczYns0/yqJJVpwsv7Mpvocrip
-	 TNe4DurmCxMMDeqjaMvI+SK7CAalFBSsVlxHo8Zs9ePJ85yO1JBvAtw9Nrk/2b47xa
-	 9l5vz/YOzoh1w==
-Message-ID: <3458d586-75a0-44c7-ac5d-e33539b8eb26@kernel.org>
-Date: Tue, 13 Jan 2026 08:23:23 +0100
+	b=pcRZhtstZvUuvOptugh4Q3/Fuah9diETRW4laC1ty0aa1mD0ICVe42Hy23qx9SVKd
+	 +UoWycQZgkO8Z5Umj7MS0zO5RfvzagBNHvuMJwaJwG9Dd173SLv4rsDBnvGMdcwgb2
+	 uDGrqhgv0pXFOzFFFCvpDVxPI4NPFBsBZrYLn5TJPMQRT/PZ2pSEyHz8P2rq5m/WEI
+	 8dlaC+aWUIFZnnHjq29a3nrXVCfRyvRC+j+UJrU33+L88cVcjKmAozUJFoexHs+tcY
+	 4EqofYZl+MxlAnPmcW9gDoIw26Q2eKaZRR//0usKTBG1oipcP+7qX9hLKneqioCddT
+	 ECJccb1BK2E8A==
+Message-ID: <90011b58-3c12-45ec-b64f-b3847d9a3e16@kernel.org>
+Date: Tue, 13 Jan 2026 08:41:13 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/3] arm64: dts: rockchip: Remove interrupt GPIO for WiFi
- for the Pinephone Pro
-To: guptarud@gmail.com, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Lee Jones <lee@kernel.org>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- Ondrej Jirman <megi@xff.cz>, Martijn Braam <martijn@brixit.nl>,
- =?UTF-8?Q?Kamil_Trzci=C5=84ski?= <ayufan@ayufan.eu>
-References: <20260112-ppp_connectivity-v1-0-284d6e83b212@gmail.com>
- <20260112-ppp_connectivity-v1-3-284d6e83b212@gmail.com>
+Subject: Re: [PATCH v3 1/3] dt-bindings: usb: Add binding for WCH CH334/CH335
+ hub controller
+To: Chaoyi Chen <chaoyi.chen@rock-chips.com>, Chaoyi Chen <kernel@airkyi.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Quentin Schulz <quentin.schulz@cherry.de>, Jonas Karlman <jonas@kwiboo.se>,
+ Hsun Lai <i@chainsx.cn>, John Clark <inindev@gmail.com>,
+ Jimmy Hon <honyuenkwun@gmail.com>, Dragan Simic <dsimic@manjaro.org>,
+ Michael Riesch <michael.riesch@collabora.com>,
+ Peter Robinson <pbrobinson@gmail.com>, Alexey Charkov <alchark@gmail.com>,
+ Shawn Lin <shawn.lin@rock-chips.com>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Andy Yan <andy.yan@rock-chips.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org
+References: <20260112022823.91-1-kernel@airkyi.com>
+ <20260112022823.91-2-kernel@airkyi.com>
+ <20260112-lively-hallowed-beetle-fc15b2@quoll>
+ <1515a445-576a-4833-a604-c31062f7d3fa@rock-chips.com>
+ <b4eb4ab6-6fde-4c01-8069-470545ffdac4@kernel.org>
+ <568b9e25-bf96-4e78-9af0-4791cbb90a56@rock-chips.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -102,11 +112,10 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  jWt87ecuHlpL3uuQ0ZZNWqHgZoQLXoqC2ZV5KrtKWb/jyiFX/sxSrodALf0zf+tfHv0FZWT2
  zHjUqd0t4njD/UOsuIMOQn4Ig0SdivYPfZukb5cdasKJukG1NOpbW7yRNivaCnfZz6dTawXw
  XRIV/KDsHQiyVxKvN73bThKhONkcX2LWuD928tAR6XMM2G5ovxLe09vuOzzfTWQDsm++9UKF a/A=
-In-Reply-To: <20260112-ppp_connectivity-v1-3-284d6e83b212@gmail.com>
+In-Reply-To: <568b9e25-bf96-4e78-9af0-4791cbb90a56@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260112_232329_000551_DAA577FB 
-X-CRM114-Status: UNSURE (   7.08  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260112_234120_987870_7FA44AE8 
+X-CRM114-Status: GOOD (  13.63  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,22 +127,59 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMTMvMDEvMjAyNiAwNzo0MiwgUnVkcmFrc2hhIEd1cHRhIHZpYSBCNCBSZWxheSB3cm90ZToK
-PiBGcm9tOiBPbmRyZWogSmlybWFuIDxtZWdpQHhmZi5jej4KPiAKPiBXaWZpIGlzIGN1cnJlbnRs
-eSB1bnVzYWJsZSBpZiBpbnRlcnJ1cHRzIGFyZSBkZWZpbmVkLiBMZXQncyByZW1vdmUgdGhlbQo+
-IHNvIHRoYXQgV2lmaSBuZXR3b3JrcyBhcmUgYWN0dWFsbHkgZGlzY292ZXJhYmxlLgo+IAo+IENv
-LWRldmVsb3BlZC1ieTogTWFydGlqbiBCcmFhbSA8bWFydGlqbkBicml4aXQubmw+Cj4gU2lnbmVk
-LW9mZi1ieTogTWFydGlqbiBCcmFhbSA8bWFydGlqbkBicml4aXQubmw+Cj4gQ28tZGV2ZWxvcGVk
-LWJ5OiBLYW1pbCBUcnpjacWEc2tpIDxheXVmYW5AYXl1ZmFuLmV1Pgo+IFNpZ25lZC1vZmYtYnk6
-IEthbWlsIFRyemNpxYRza2kgPGF5dWZhbkBheXVmYW4uZXU+Cj4gU2lnbmVkLW9mZi1ieTogT25k
-cmVqIEppcm1hbiA8bWVnaUB4ZmYuY3o+CgpTbyB0aHJlZSBwZW9wbGUgd2VyZSBkZXZlbG9waW5n
-IHRoaXMgc2ltcGxlIGludGVycnVwdCByZW1vdmFsIHBhdGNoPyBIb3cgc28/CgoKQmVzdCByZWdh
-cmRzLApLcnp5c3p0b2YKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5p
-bmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8v
-bGludXgtcm9ja2NoaXAK
+On 13/01/2026 04:27, Chaoyi Chen wrote:
+> Hi Krzysztof,
+> 
+> On 1/12/2026 10:28 PM, Krzysztof Kozlowski wrote:
+>> On 12/01/2026 09:59, Chaoyi Chen wrote:
+>>>>> +required:
+>>>>> +  - compatible
+>>>>> +  - reg
+>>>>> +
+>>>>> +additionalProperties: false
+>>>>> +
+>>>>> +examples:
+>>>>> +  - |
+>>>>> +    #include <dt-bindings/gpio/gpio.h>
+>>>>> +    usb {
+>>>>> +        dr_mode = "host";
+>>
+>> One more thing - drop above line.
+>>
+> 
+> Will fix in next version.
+> 
+>>>>> +        #address-cells = <1>;
+>>>>> +        #size-cells = <0>;
+>>>>> +
+>>>>> +        hub: hub@1 {
+>>>>> +            compatible = "usb1a86,8091";
+>>>>> +            reg = <1>;
+>>>>> +            reset-gpios = <&gpio0 2 GPIO_ACTIVE_HIGH>;
+>>>>
+>>>> Are you sure?
+>>>
+>>> I guess what you're concerned about here is the polarity? 
+>>> If that's the case, then there's no problem.
+>>
+>> Yes, I was wondering whether polarity is set correctly.
+> 
+> Yes, it is active-low, so during normal operation it should be set to high.
+
+Then it is wrong.
+
+> 
+
+
+Best regards,
+Krzysztof
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
