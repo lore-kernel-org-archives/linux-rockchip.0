@@ -4,87 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16035D29DE4
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Jan 2026 08:07:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 510BFD29DE4
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Jan 2026 08:12:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:Reply-To:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=A6PXbw4npPYXyZwOPWn4iUN/N9FPvQ9zUJjaf7VxxM8=; b=kJJ3NYo0ZSUDOW
-	hLiZ8pJapRLH6h4MgD6dylzIOa8LwF8a3P/Qfbj1OAmBIQVE2fz3k7q5UhZQhXtAv5EtDvKdCWzEo
-	ncU5ZstnxzjcI5jcwPv7N43g4TRcNxgDF4yPKEv9BAQlfy13/0wb7RWc6DlxVDnYF0WNQzxevlVSI
-	l0KB4vyPNjJ/UY1psUMJ01kd/f3DL168TVHLzGZF1o7Cy9qabRLXcPgPxhvfxKFDnXiJLFBiLDgr7
-	hvzcVl4gkdzj11sX5bC84lwKJtE4O7MxxoMETBYu+wWcMqHKfBTbvm/GLDUtzPVIFNFgXJa9TFn2n
-	O/G06etyAQl8OYRWTWOw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:
+	From:MIME-Version:Date:Message-ID:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=4uBKbCXIs+tkXVtrIshtBPpJBTRHjtRIzVT1wgHBBcw=; b=iGnnzA0UrugvI6qSOIXNDGBsPO
+	UUnsyTvOV80jC6xZOn6eiTaYgxuLl/8nxOd2pgGQjgENJgVgWPMhaAtljpYaRMlqOg6SIMJ5T/yjb
+	41idjG4hcZV/JKPsAYND3FsDKyJNjpHxBJk5IOiVizLLKuXjolws6HFIhXPeFmYTzGW76g/C4Mzfs
+	loxhFHOxH86Z12xP13MOT74OAdb5kmGiKjve6U3dON8+sMpNWInLiSjz1DuLFVVWYkGvQDKi17mK+
+	CnJYYOcZKEIc6uefJEFoZoh5MmxkM+yChmfo1+113OGnYREawc1o4Z2aQ3Xn1hqXG+Ha7piGq30gU
+	iNIEdsyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfZQv-00000006hmO-0L5c;
-	Tue, 13 Jan 2026 08:07:21 +0000
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+	id 1vfZVU-00000006i4w-43zk;
+	Tue, 13 Jan 2026 08:12:04 +0000
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfZQr-00000006hkr-2ugr
+	id 1vfZVR-00000006i2s-2mse
 	for linux-rockchip@lists.infradead.org;
-	Tue, 13 Jan 2026 08:07:19 +0000
-Received: by mail-wr1-x42e.google.com with SMTP id ffacd0b85a97d-432da746749so1927650f8f.0
-        for <linux-rockchip@lists.infradead.org>; Tue, 13 Jan 2026 00:07:17 -0800 (PST)
+	Tue, 13 Jan 2026 08:12:03 +0000
+Received: by mail-wr1-x441.google.com with SMTP id ffacd0b85a97d-4308d81fdf6so3737327f8f.2
+        for <linux-rockchip@lists.infradead.org>; Tue, 13 Jan 2026 00:12:01 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1768291636; x=1768896436; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1768291920; x=1768896720; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:organization:autocrypt
-         :content-language:from:references:cc:to:subject:reply-to:user-agent
+         :content-language:references:cc:to:subject:reply-to:from:user-agent
          :mime-version:date:message-id:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=0kBiGdnwoKI9eDWcWQTGe4djU3SzpP0pSq/NoI+kjks=;
-        b=PX9lqE+6/Eic2peFKr8JIKcgNrEnGBlU16dJquBDrktSEA01VCpf4vRAwAoQljNwL7
-         fxQTXa/hbzJUyjYbJ+iASuzu2+Qjrgj3gORd0pg+cPujAN8Bprci6jVlpk5Z1hBCA1wK
-         xq0SWh3yCNGGmRcPzMwYiub6kgSiYYM6T55dKVo9KrEcw1whOU/aMWcxS4ff7VV6LzLc
-         hnB2TE6DzkXcIqvRkph2MPdCwdwXS4geqcza6lTrPFUam9BewiJyWAorkt3O/mm8C/ld
-         ZTcOEKEbkZJ/+5iDIPPXIXqW+QvtSY4DY/Q09PdY6E+viiZAJ+x54k+mUKuJxcyA3tgH
-         ScOA==
+        bh=0/MQilqGTab22ugg1CT5X4KmAKEpSnq+i+RZKZLJx6I=;
+        b=xrerd7SOs+54/3fJp5P0hWG+NWb181dEaxyjyQVJSwiz8p6o+P4nkM62D1Q+1gUiVT
+         jnDkj4KmOhT0XlLUITWAFVDbe3+SLE4gx7dH+j2V8t98vWMOjlmJvIg0XUy9FhZ5q7fi
+         GJ8ToPQJlMaLY/lIR8RllxoWXToeHFrQU5x6GDGrojGPsPye2ejXLNgqrEkuE6CrmwnT
+         I9bIMg/UmI1mtCKaTnSTKXd4htKYXceEqw6iotlk7SzEtq5Cir56hMvwpsHhdvegsPDp
+         VibXDZPpFEzgj02tgqfonjD0A9hGZKKtB3/AJ+hnVqRq9KBNdrprIIojU4GUwv7MiRU5
+         baWw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1768291636; x=1768896436;
+        d=1e100.net; s=20230601; t=1768291920; x=1768896720;
         h=content-transfer-encoding:in-reply-to:organization:autocrypt
-         :content-language:from:references:cc:to:subject:reply-to:user-agent
+         :content-language:references:cc:to:subject:reply-to:from:user-agent
          :mime-version:date:message-id:x-gm-gg:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=0kBiGdnwoKI9eDWcWQTGe4djU3SzpP0pSq/NoI+kjks=;
-        b=jSceC/Q0r51oM+ySlh2MER+2MmoLWzaMlyLGXU8RM6z73kiWH/cbc7zEgx5MxMrsw6
-         4D4BnzyDL6dN6af61mVjd6342Qb3hwLGk3Z+m73FcbhUv+1oki0RLTbLw9z9klWaIOau
-         N7vjL5UwOCjkBK7UiYnEPfE62wEGh0sd9EHgBwc0a2OsuySRuUS4QWz5vdWf3tHCf7u+
-         esL7mim8XFm1i8HPAziSJokyIV1wHDY/Y3v8VO4qnhfXE48qy4U2Cgm631PCp1eH9zXJ
-         1Ug+06Z9gi2pCRKV5qhNKX2nR8ljF5Gw/hqWceAHDar3ARKgLZ7q2//17AeCpkKX8ele
-         4f2A==
-X-Forwarded-Encrypted: i=1; AJvYcCW+uHINZjXNeM01gIVWHITMkG9xkKXcGZnEboz88xqiQp2vKJOdDPl/8Gg4iy7ZbwFNtlwhPkJfUzlV1wRHvA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxnrBXjpYa3dBdzjabsbIzNdRt32GsBsMNUU1/KC6nPLrhemMJP
-	9q2OeKgYTmBDx4RXR06eiSU1rKP7w0CS2cNXd22AQ2+M6IQVzICPmXeKBx86E33QBrA=
-X-Gm-Gg: AY/fxX5bUGM9N8Svh2JAycOOH4J7Npjfijyr3MhmMK+ISB8SgLsh1omPwAiMhd/B1hO
-	mAimGj9p+yVRGw5meO5M72w3WcKm1ERvSTbqeKll1MPi4VHTR7w87Fghl08a1p29KRTDmbVExuY
-	dkAU/oSJrAFzk5TnvfMsKpciA9Um7azGxKoqirZCfu2h2mSpYVucR+Udr5CFvXitKtcLZCAc9GU
-	uW2rF/+Gi4DV4IpC21NWbfUrEkf5vo8EvHJeUzTLXdBKrF1AY/uaf7jSWhgK7KeQmypVxzNPj0T
-	7zZNTSr6NMJea8C/XJ+rt8Ap2X6WBB/E3nhC7rr3DqfyZcGz3Rl1IQwBCXe5e0+Lc9M/b1w7gL5
-	ElVFl0bC28J095r023h8tkkSyCA4ZSi9Kt507YFRaS1c6Frg3mbHlEjrdbbtYVeFQDG+Wl/cvRZ
-	50KlmHmrtW4Ta0EmF2ABj3PAW3rDVbHnqk4s5cbENbXOuw3/2pJQ==
-X-Google-Smtp-Source: AGHT+IG6fAtmI1EQMhuKQOIVw+wGIFjBkyZewLv2jXMLbnUnN9fabCWnKyTIrO9pUyyRVG2gO/7/VA==
-X-Received: by 2002:a05:6000:178d:b0:432:8537:8592 with SMTP id ffacd0b85a97d-432c3628106mr24027748f8f.4.1768291635424;
-        Tue, 13 Jan 2026 00:07:15 -0800 (PST)
+        bh=0/MQilqGTab22ugg1CT5X4KmAKEpSnq+i+RZKZLJx6I=;
+        b=sgt73iaHvlr7EYzlR7YLNCr93jMrzkWY+QY+eQFD5TLQNFD0oEa5yWX2iSrifouO2c
+         f4C0AIOYj6KwONxREMZP/tkX6zOJ4N56DvF/0WdL+LwumKmv5dKklxNuGmPzjFENZj/N
+         ZkV9d52bgyyAihiX+ggl6Ro2jSHn5FpnrozkoR1BI8C0mKOKKD6xsrkx6pkyvLTLJsyf
+         cCqYXhcvGq4nKiNBQpsYooH0l9yha2r6qjtRWBlNzaB/SC72vQzBxOMX08EzMRpVbXZ1
+         OLMezpjC3DzmUYg4+LnXNgAFEn+ZhqnKzg5B2zVp+WVQO49UODzPQc9f8z2cvdE/w7LN
+         2Ojw==
+X-Forwarded-Encrypted: i=1; AJvYcCVTm6IwapIIySarUIFDuQCc2NdJF0U3jA1DI4FEAumGG2NS++8uIYiz78eNg9GIWL0hlYrYfd6w+jx1UlkDlg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YykxGpMeRc3RO2U3QEO9RT+H2U5C5vP2oeeoZzRr4YHeXjR5et7
+	FC+vk/OirrxQsiiV7rRs0b4Ci3xJIltH/JhaMstZC14+Ympq480qsPUAxvxk1z6pWOc=
+X-Gm-Gg: AY/fxX7Iw6PSl0Ggu3Q7h90UYNA7H83xIMGFQojlc/Rfohu96rQ98v9VwUUbVJagqh8
+	AE9PQoBSWH4wMQ4DjnJ7MHNMwxuAc9P/NBc+N/iC1DFpdfjFcIA+rfNHlAkjtRZH6pmWgVpcIkA
+	xirzy0KLhVMinSqs3KQb3zd2sJ5BhgNDenJsZwrq0y0U4WfrQcwMMnTOiq733enIKoPctFGo5NC
+	rVQU+A9yAREWfvvdHvDMSkPpR4U22J9C1fkMELdzH0d2qFzZQ+ffmmBZ2uEgQ/n6YwmoYT4xFrJ
+	fp8QFTzdequXFFlx2NJyZuMlYbiay0QXrJWXxKtguPdZ25DFD7gmx08hlNX5vejtodvuGe3zpTH
+	1uZ48nI5MGAcwZu490hQVgVu/kuQqnvqdDIUgr4qdIL7uyLrWjXyt4yjnDS89OlKM56s6fWrEo2
+	6SAQDneyujlXoLHGL0d9tlbl3bObdCMJLYbEytMTw=
+X-Google-Smtp-Source: AGHT+IF/E4DZmoNj85KKl/suQ05NfvV4pzSTyO36+Rt7tlIRyvZ+VngI5jHuau30KK8jUlb3532Tjw==
+X-Received: by 2002:a05:6000:4013:b0:432:8585:6830 with SMTP id ffacd0b85a97d-432c3760f78mr24536676f8f.45.1768291919604;
+        Tue, 13 Jan 2026 00:11:59 -0800 (PST)
 Received: from ?IPV6:2a01:e0a:3d9:2080::fa42:7768? ([2a01:e0a:3d9:2080::fa42:7768])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-432bd0e180csm41710261f8f.10.2026.01.13.00.07.14
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-432bd0dacd1sm42043981f8f.4.2026.01.13.00.11.55
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 13 Jan 2026 00:07:14 -0800 (PST)
-Message-ID: <2f18dda9-7163-44bf-a075-bdd46ac5cef8@linaro.org>
-Date: Tue, 13 Jan 2026 09:07:14 +0100
+        Tue, 13 Jan 2026 00:11:55 -0800 (PST)
+Message-ID: <bc3d3416-2f7c-4f4a-a90e-2b3d086ff568@linaro.org>
+Date: Tue, 13 Jan 2026 09:11:54 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] phy: rockchip: inno-usb2: Fix a double free bug in
- rockchip_usb2phy_probe()
-To: Wentao Liang <vulab@iscas.ac.cn>, vkoul@kernel.org, kishon@kernel.org,
- heiko@sntech.de
-Cc: linux-phy@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- stable@vger.kernel.org
-References: <20260109154626.2452034-1-vulab@iscas.ac.cn>
 From: Neil Armstrong <neil.armstrong@linaro.org>
+Subject: Re: [PATCH v6 03/11] phy: rockchip: samsung-hdptx: Fix coding style
+ alignment
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
+ Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>,
+ Heiko Stuebner <heiko@sntech.de>, Algea Cao <algea.cao@rock-chips.com>,
+ Dmitry Baryshkov <lumag@kernel.org>
+Cc: kernel@collabora.com, linux-phy@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org
+References: <20260113-phy-hdptx-frl-v6-0-8d5f97419c0b@collabora.com>
+ <20260113-phy-hdptx-frl-v6-3-8d5f97419c0b@collabora.com>
 Content-Language: en-US, fr
 Autocrypt: addr=neil.armstrong@linaro.org; keydata=
  xsBNBE1ZBs8BCAD78xVLsXPwV/2qQx2FaO/7mhWL0Qodw8UcQJnkrWmgTFRobtTWxuRx8WWP
@@ -111,10 +114,10 @@ Autocrypt: addr=neil.armstrong@linaro.org; keydata=
  4zcsPWvwnXgfe5tk680fEKZVwOZKIEuJC3v+/yZpQzDvGYJvbyix0lHnrCzq43WefRHI5XTT
  QbM0WUIBIcGmq38+OgUsMYu4NzLu7uZFAcmp6h8g
 Organization: Linaro
-In-Reply-To: <20260109154626.2452034-1-vulab@iscas.ac.cn>
+In-Reply-To: <20260113-phy-hdptx-frl-v6-3-8d5f97419c0b@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260113_000717_765752_943A4D01 
-X-CRM114-Status: GOOD (  17.53  )
+X-CRM114-CacheID: sfid-20260113_001201_727417_1F234D7C 
+X-CRM114-Status: GOOD (  11.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -132,41 +135,63 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 1/9/26 16:46, Wentao Liang wrote:
-> The for_each_available_child_of_node() calls of_node_put() to
-> release child_np in each success loop. After breaking from the
-> loop with the child_np has been released, the code will jump to
-> the put_child label and will call the of_node_put() again if the
-> devm_request_threaded_irq() fails. These cause a double free bug.
+On 1/13/26 00:20, Cristian Ciocaltea wrote:
+> Handle a bunch of reported checkpatch.pl complaints:
 > 
-> Fix by returning directly to avoid the duplicate of_node_put().
+>    CHECK: Alignment should match open parenthesis
 > 
-> Fixes: ed2b5a8e6b98 ("phy: phy-rockchip-inno-usb2: support muxed interrupts")
-> Cc: stable@vger.kernel.org
-> Signed-off-by: Wentao Liang <vulab@iscas.ac.cn>
-> 
+> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 > ---
-> Changes in v2:
-> - Drop error jumping label.
-> ---
->   drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+>   drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 12 ++++++------
+>   1 file changed, 6 insertions(+), 6 deletions(-)
 > 
-> diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-> index b0f23690ec30..fe97a26297af 100644
-> --- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-> +++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-> @@ -1491,7 +1491,7 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)
->   						rphy);
->   		if (ret) {
->   			dev_err_probe(rphy->dev, ret, "failed to request usb2phy irq handle\n");
-> -			goto put_child;
-> +			return ret;
->   		}
->   	}
->   
-
-Good catch !
+> diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
+> index 89710066d70c..3f8a7f4f5cd8 100644
+> --- a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
+> +++ b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
+> @@ -1624,11 +1624,11 @@ static void rk_hdptx_phy_set_voltage(struct rk_hdptx_phy *hdptx,
+>   		regmap_update_bits(hdptx->regmap, LANE_REG(030a) + offset,
+>   				   LN_TX_JEQ_EVEN_CTRL_RBR_MASK,
+>   				   FIELD_PREP(LN_TX_JEQ_EVEN_CTRL_RBR_MASK,
+> -				   ctrl->tx_jeq_even_ctrl));
+> +					      ctrl->tx_jeq_even_ctrl));
+>   		regmap_update_bits(hdptx->regmap, LANE_REG(030c) + offset,
+>   				   LN_TX_JEQ_ODD_CTRL_RBR_MASK,
+>   				   FIELD_PREP(LN_TX_JEQ_ODD_CTRL_RBR_MASK,
+> -				   ctrl->tx_jeq_odd_ctrl));
+> +					      ctrl->tx_jeq_odd_ctrl));
+>   		regmap_update_bits(hdptx->regmap, LANE_REG(0311) + offset,
+>   				   LN_TX_SER_40BIT_EN_RBR_MASK,
+>   				   FIELD_PREP(LN_TX_SER_40BIT_EN_RBR_MASK, 0x1));
+> @@ -1638,11 +1638,11 @@ static void rk_hdptx_phy_set_voltage(struct rk_hdptx_phy *hdptx,
+>   		regmap_update_bits(hdptx->regmap, LANE_REG(030b) + offset,
+>   				   LN_TX_JEQ_EVEN_CTRL_HBR_MASK,
+>   				   FIELD_PREP(LN_TX_JEQ_EVEN_CTRL_HBR_MASK,
+> -				   ctrl->tx_jeq_even_ctrl));
+> +					      ctrl->tx_jeq_even_ctrl));
+>   		regmap_update_bits(hdptx->regmap, LANE_REG(030d) + offset,
+>   				   LN_TX_JEQ_ODD_CTRL_HBR_MASK,
+>   				   FIELD_PREP(LN_TX_JEQ_ODD_CTRL_HBR_MASK,
+> -				   ctrl->tx_jeq_odd_ctrl));
+> +					      ctrl->tx_jeq_odd_ctrl));
+>   		regmap_update_bits(hdptx->regmap, LANE_REG(0311) + offset,
+>   				   LN_TX_SER_40BIT_EN_HBR_MASK,
+>   				   FIELD_PREP(LN_TX_SER_40BIT_EN_HBR_MASK, 0x1));
+> @@ -1653,11 +1653,11 @@ static void rk_hdptx_phy_set_voltage(struct rk_hdptx_phy *hdptx,
+>   		regmap_update_bits(hdptx->regmap, LANE_REG(030b) + offset,
+>   				   LN_TX_JEQ_EVEN_CTRL_HBR2_MASK,
+>   				   FIELD_PREP(LN_TX_JEQ_EVEN_CTRL_HBR2_MASK,
+> -				   ctrl->tx_jeq_even_ctrl));
+> +					      ctrl->tx_jeq_even_ctrl));
+>   		regmap_update_bits(hdptx->regmap, LANE_REG(030d) + offset,
+>   				   LN_TX_JEQ_ODD_CTRL_HBR2_MASK,
+>   				   FIELD_PREP(LN_TX_JEQ_ODD_CTRL_HBR2_MASK,
+> -				   ctrl->tx_jeq_odd_ctrl));
+> +					      ctrl->tx_jeq_odd_ctrl));
+>   		regmap_update_bits(hdptx->regmap, LANE_REG(0311) + offset,
+>   				   LN_TX_SER_40BIT_EN_HBR2_MASK,
+>   				   FIELD_PREP(LN_TX_SER_40BIT_EN_HBR2_MASK, 0x1));
+> 
 
 Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
 
