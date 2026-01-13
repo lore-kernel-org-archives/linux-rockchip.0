@@ -4,62 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB5F5D0C83B
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Jan 2026 10:26:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CE50D0C83B
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Jan 2026 10:28:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tRxFXu9JEsEJhfE53pFHy9L0w0H56x+ZlEfx7UGc7zM=; b=4bm6I6fCbYXdfQ
-	gGpcRSfXzARmYUUad0j3C54B7DbrnFFhhHzpZC8qSx1GVsxlfD2c1kyYP2J4Qkfahl5BGb7BwUGLV
-	BGcOVzDwiobNUstkJJwuoLmVvg12dBcTxvkb49oI96eizyrH/2Vl388I8P+Jco+bDSw5oOMXiKFqO
-	WoLRtn8tNzR0dfN025XJ5ShMqsFGeZAOA4i/UJ5yyhyQ5NHGbz/csHxgti7gOVdd6EIUS3kb1DYT7
-	Om3rrEkxdfMzUC2aGvEpkPEnW6VSk432a2A4nw9RhVrqcDoTJr4OufyNi2QSgO1v7ZJw5/M9zwTXY
-	4jOK/N2JjdrmNCnPVP+w==;
+	List-Owner; bh=QSh4hvJOk1EB+P422bMqkiJwHY3uFM5n1JewJqtICBY=; b=cnbeRCtqO3zFW2
+	N4mj31jkNVyMAKwffHIUEVPd8Obe9TTzKglBYphbyFqVP5MikHYz3rhevOBMGLEFOLUIf+rpD8023
+	8aLxyF2p6jxPwuErRz9nD4pJWn7W2rPu1dqH/K+Dle22ED4IWBPWU2e4IiSdcW3W/SPxnCXDHhEV2
+	bjC73ktXglQ49fxV9x73sBEj9v/JBX/G66CFrbN0xb6AhEC5ONzQRbBCkl5c07Up5+CRDNEcqnWTu
+	RgbftBrOCQw0emLEQ+NC6O6UO55KdnJ2RhySpOKe0EITf7s9Bs9lo3fzl6u9lHUrdgWRC4kW4aOI+
+	qjgU2fVPZhYxupYccaXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfbbY-00000006u4h-2964;
-	Tue, 13 Jan 2026 10:26:28 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1vfbcy-00000006uNg-3QNM;
+	Tue, 13 Jan 2026 10:27:56 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfbbT-00000006u3Q-3UzK;
-	Tue, 13 Jan 2026 10:26:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=5H/hNTgciu6FD3AcTNuZC1um8OdojwIPslmchvUjaNU=; b=f+oe9TAeVNeRg5dxijtlcbewz/
-	8NqL4OlUILWM3MaE4inNGMQXs/GqUCwYjwoj6kn5QKowFEPZR5vIjTVEGRLHYS17UyO0KSxRI/y+Y
-	mVg0qLOAAUPQL4YuGsCGYUtHx429wavsvYetCsCfZ6khZ0Wk9O8NaDL9SBogjxfPXi0DPI3QVJBbg
-	ud+/E4Ebaoik4+Iu4zRvEycPKg3I4XWW02JtvojWYnB5QPBmusI5OZTaoKa4ffwjx+6NT7v6z3yZj
-	Q0XqYllxcHVJ05dYNNgsqwbgZ7Mnc/Jrk9m9KOc/0McOMtf5N6geNPuNCFbQVXbKgdrC4ot9JCjt4
-	TpaIqXUA==;
-Received: from i53875b63.versanet.de ([83.135.91.99] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1vfbbR-0025PF-Ey; Tue, 13 Jan 2026 11:26:22 +0100
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Lee Jones <lee@kernel.org>,
- guptarud@gmail.com
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- Rudraksha Gupta <guptarud@gmail.com>, Ondrej Jirman <megi@xff.cz>,
- Martijn Braam <martijn@brixit.nl>,
- Kamil =?UTF-8?B?VHJ6Y2nFhHNraQ==?= <ayufan@ayufan.eu>
-Subject: Re: [PATCH 3/3] arm64: dts: rockchip: Remove interrupt GPIO for WiFi for the
- Pinephone Pro
-Date: Tue, 13 Jan 2026 11:26:21 +0100
-Message-ID: <14738774.lVVuGzaMjS@diego>
-In-Reply-To: <20260112-ppp_connectivity-v1-3-284d6e83b212@gmail.com>
-References: <20260112-ppp_connectivity-v1-0-284d6e83b212@gmail.com>
- <20260112-ppp_connectivity-v1-3-284d6e83b212@gmail.com>
+	id 1vfbcw-00000006uMi-0g7h;
+	Tue, 13 Jan 2026 10:27:55 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 615B74075A;
+	Tue, 13 Jan 2026 10:27:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 71FB0C116C6;
+	Tue, 13 Jan 2026 10:27:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1768300073;
+	bh=C8UgsS+YrsZDchnel7CNOtadN1mg/ONjw32g4J6+OCI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=KHVExecNeP0XkZg6xghaAQoJqr/q0z3GdC0x9jlfMNdwId0ErGseOxuOiGwv29fD7
+	 AvHvAxAYhEhEwlTtZ/HzVBPzak/DCiPS0cy2tK74aPn60U+CPG+/5TqEOYVmIpPOB+
+	 t0lfLQrTlza7crImIQKqJobRsLqGMk0r+g0eXbY9SIXRxX+hMLbFEU7eN5Xkq1qwjt
+	 tqZncLDnAqJDaSQnuMYsFLITR5wWfSPuJ4e3LtNOMwEMkXQnDUSM9mD8VFTfDQepbM
+	 3idXM1YFBgiHX990n6orktQZK0baqsg7qxAQ9euVwMmyZF8sanjixl845BLKqFX5sj
+	 jWW9lS8W7E+tQ==
+Date: Tue, 13 Jan 2026 11:27:40 +0100
+From: Niklas Cassel <cassel@kernel.org>
+To: Koichiro Den <den@valinux.co.jp>
+Cc: jingoohan1@gmail.com, mani@kernel.org, lpieralisi@kernel.org,
+	kwilczynski@kernel.org, robh@kernel.org, bhelgaas@google.com,
+	vigneshr@ti.com, s-vadapalli@ti.com, hongxing.zhu@nxp.com,
+	l.stach@pengutronix.de, shawnguo@kernel.org, s.hauer@pengutronix.de,
+	kernel@pengutronix.de, festevam@gmail.com, minghuan.Lian@nxp.com,
+	mingkai.hu@nxp.com, roy.zang@nxp.com, jesper.nilsson@axis.com,
+	heiko@sntech.de, srikanth.thokala@intel.com,
+	marek.vasut+renesas@gmail.com, yoshihiro.shimoda.uh@renesas.com,
+	geert+renesas@glider.be, magnus.damm@gmail.com,
+	christian.bruel@foss.st.com, mcoquelin.stm32@gmail.com,
+	alexandre.torgue@foss.st.com, thierry.reding@gmail.com,
+	jonathanh@nvidia.com, hayashi.kunihiko@socionext.com,
+	mhiramat@kernel.org, kishon@kernel.org, jirislaby@kernel.org,
+	rongqianfeng@vivo.com, 18255117159@163.com,
+	shawn.lin@rock-chips.com, nicolas.frattaroli@collabora.com,
+	linux.amoon@gmail.com, vidyas@nvidia.com, Frank.Li@nxp.com,
+	linux-omap@vger.kernel.org, linux-pci@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	imx@lists.linux.dev, linuxppc-dev@lists.ozlabs.org,
+	linux-arm-kernel@axis.com, linux-rockchip@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-tegra@vger.kernel.org
+Subject: Re: [PATCH v6 4/5] PCI: dwc: ep: Support BAR subrange inbound
+ mapping via Address Match Mode iATU
+Message-ID: <aWYeHNoPEl9T-Qo-@ryzen>
+References: <20260113023715.3463724-1-den@valinux.co.jp>
+ <20260113023715.3463724-5-den@valinux.co.jp>
+ <aWYbTt6UjlXb9Uk-@ryzen>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <aWYbTt6UjlXb9Uk-@ryzen>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260113_022624_136765_42E37921 
-X-CRM114-Status: GOOD (  15.90  )
+X-CRM114-CacheID: sfid-20260113_022754_222621_5E10D816 
+X-CRM114-Status: GOOD (  17.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,40 +90,48 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-QW0gRGllbnN0YWcsIDEzLiBKYW51YXIgMjAyNiwgMDc6NDI6MjYgTWl0dGVsZXVyb3DDpGlzY2hl
-IE5vcm1hbHplaXQgc2NocmllYiBSdWRyYWtzaGEgR3VwdGEgdmlhIEI0IFJlbGF5Ogo+IEZyb206
-IE9uZHJlaiBKaXJtYW4gPG1lZ2lAeGZmLmN6Pgo+IAo+IFdpZmkgaXMgY3VycmVudGx5IHVudXNh
-YmxlIGlmIGludGVycnVwdHMgYXJlIGRlZmluZWQuIExldCdzIHJlbW92ZSB0aGVtCj4gc28gdGhh
-dCBXaWZpIG5ldHdvcmtzIGFyZSBhY3R1YWxseSBkaXNjb3ZlcmFibGUuCgpQbGVhc2UgZG9uJ3Qg
-ZGVzY3JpYmUgbm90IHdoYXQgeW91J3JlIGRvaW5nIGJ1dCB3aHkuCgpUaGUgaW50ZXJydXB0IHNl
-ZW1zIHRvIHRoZSBvbmUgdGhhdCBpcyBjb25uZWN0ZWQgdG8gd2lmaSwgc28gSSdkIGV4cGVjdAph
-IGRlc2NyaXB0aW9uIHdoeSB0aGF0IGNhdXNlcyBwcm9ibGVtcyBmaXJzdCwgaW5zdGVhZCBvZiBn
-b2luZwoiZG9lc24ndCB3b3JrIGZvciBtZSIgLSAianVzdCByZW1vdmUgaXQiIC4KCkFzIHRoZSBi
-ZWxvdyBqdXN0IGxvb2tzIGxpa2UgYSB0ZW1wb3JhcnkgaGFjayB1bnRpbCB0aGUgcmVhbCBjYXVz
-ZSBpcwpmb3VuZC4KCj4gQ28tZGV2ZWxvcGVkLWJ5OiBNYXJ0aWpuIEJyYWFtIDxtYXJ0aWpuQGJy
-aXhpdC5ubD4KPiBTaWduZWQtb2ZmLWJ5OiBNYXJ0aWpuIEJyYWFtIDxtYXJ0aWpuQGJyaXhpdC5u
-bD4KPiBDby1kZXZlbG9wZWQtYnk6IEthbWlsIFRyemNpxYRza2kgPGF5dWZhbkBheXVmYW4uZXU+
-Cj4gU2lnbmVkLW9mZi1ieTogS2FtaWwgVHJ6Y2nFhHNraSA8YXl1ZmFuQGF5dWZhbi5ldT4KPiBT
-aWduZWQtb2ZmLWJ5OiBPbmRyZWogSmlybWFuIDxtZWdpQHhmZi5jej4KPiBTaWduZWQtb2ZmLWJ5
-OiBSdWRyYWtzaGEgR3VwdGEgPGd1cHRhcnVkQGdtYWlsLmNvbT4KPiAtLS0KPiAgYXJjaC9hcm02
-NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktcGluZXBob25lLXByby5kdHMgfCAzIC0tLQo+ICAx
-IGZpbGUgY2hhbmdlZCwgMyBkZWxldGlvbnMoLSkKPiAKPiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm02
-NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktcGluZXBob25lLXByby5kdHMgYi9hcmNoL2FybTY0
-L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1waW5lcGhvbmUtcHJvLmR0cwo+IGluZGV4IDk3ZDBi
-ZjQ1NTI1OC4uNjliYjlkZTRjZTU1IDEwMDY0NAo+IC0tLSBhL2FyY2gvYXJtNjQvYm9vdC9kdHMv
-cm9ja2NoaXAvcmszMzk5LXBpbmVwaG9uZS1wcm8uZHRzCj4gKysrIGIvYXJjaC9hcm02NC9ib290
-L2R0cy9yb2NrY2hpcC9yazMzOTktcGluZXBob25lLXByby5kdHMKPiBAQCAtODM0LDkgKzgzNCw2
-IEBAICZzZGlvMCB7Cj4gIAlicmNtZjogd2lmaUAxIHsKPiAgCQljb21wYXRpYmxlID0gImJyY20s
-YmNtNDMyOS1mbWFjIjsKPiAgCQlyZWcgPSA8MT47Cj4gLQkJaW50ZXJydXB0LXBhcmVudCA9IDwm
-Z3BpbzQ+Owo+IC0JCWludGVycnVwdHMgPSA8UktfUEQwIElSUV9UWVBFX0xFVkVMX0hJR0g+Owo+
-IC0JCWludGVycnVwdC1uYW1lcyA9ICJob3N0LXdha2UiOwo+ICAJCXBpbmN0cmwtbmFtZXMgPSAi
-ZGVmYXVsdCI7Cj4gIAkJcGluY3RybC0wID0gPCZ3aWZpX2hvc3Rfd2FrZV9sPjsKPiAgCX07Cj4g
-Cj4gCgpUaGFua3MKSGVpa28KCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxp
-c3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9saW51eC1yb2NrY2hpcAo=
+On Tue, Jan 13, 2026 at 11:15:42AM +0100, Niklas Cassel wrote:
+> On Tue, Jan 13, 2026 at 11:37:14AM +0900, Koichiro Den wrote:
+> > @@ -626,11 +831,22 @@ static const struct pci_epc_features*
+> >  dw_pcie_ep_get_features(struct pci_epc *epc, u8 func_no, u8 vfunc_no)
+> >  {
+> >  	struct dw_pcie_ep *ep = epc_get_drvdata(epc);
+> > +	struct pci_epc_features *features;
+> >  
+> >  	if (!ep->ops->get_features)
+> >  		return NULL;
+> >  
+> > -	return ep->ops->get_features(ep);
+> > +	features = ep->ops->get_features(ep);
+> > +	if (!features)
+> > +		return NULL;
+> > +
+> > +	/* All DWC-based glue drivers support dynamic inbound mapping */
+> > +	features->dynamic_inbound_mapping = true;
+> 
+> I think you should create a separate patch, before this patch, that simply
+> sets:
+> features->dynamic_inbound_mapping = true;
+> 
+> Since that is technically a different feature, independent of this
+> feature, so it deserves its own patch.
+
+The commit message for that separate patch should mention that the reason
+why there are no code changes when exposing/enabling support for the
+dynamic_inbound_mapping feature, is because the actual code changes to the
+the DWC driver already in commit 4284c88fff0e ("PCI: designware-ep: Allow
+pci_epc_set_bar() update inbound map address").
+
+
+Kind regards,
+Niklas
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
