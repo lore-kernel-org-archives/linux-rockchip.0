@@ -4,55 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 100D1D2F33E
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Jan 2026 16:19:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26FE3D2F33E
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Jan 2026 16:22:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-ID:MIME-Version:To:Cc:
-	Date:References:In-Reply-To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=m1CLi636S14FHYbqBzOJ2QPsFT/kVN2QbpjDk47t+3U=; b=WOpRJaRENAEUuv
-	XrZ844VXsnI8Ia+KSKIqTLeiSjy7yALyurpIw5FbeKOrUcMH4SWrTfESzdT2m59Hp1AdoFjf+eGOu
-	qhw7Ay4mXm/SHMZS/OW3D7hEA7qdfOxGmTxOuT4NySUEYyjomT0txxAM+Uch6sXNlHpEqPO9SUEQa
-	N0Ljhz+cSCjuPjtODpBKgqEZbmruDvbRZlY2ATYxrlPNaRO+SYmdBGhT/+gh6ErOibRG3lfLuNJ5P
-	9L6axTcGNqDNFpz8WKU0tUBnrYVKJajtBmb2WH88UfdujvGeyZN4UBs/GBHSkGp1InLWyg1WnZgHz
-	ZqyfJjF9x2LP9rmRGTEA==;
+	List-Owner; bh=WUSvOAxyRUCwPT56spUIcEaOb30juTeybMICcjexpZ0=; b=GoFieX6U6ukgYr
+	H7dEMQ6dVPH2VE9dRqqgZAMZM++pqwDkZ98cdGcoJKdbWFiI+AO/QPD/t9POolWDsfZuE60kN6wF6
+	7oAU11A9B+bdLd6JIVSbFkKHwx2tKI1/QM3HsGjM5kCGnIfoY/ZTV2kjI3H9b7vTSDduTCPbMytVZ
+	xpdSXVUlLbrz+Bdq/4q4Y04Kef2i8z7E4/G09FXapOj83hfRxkj2vXXQsdUcB8Ovq65bMiyBxU+R0
+	8eUjgfF+kMIhfK4fB/t51rYGWEu7EvkXMRQcs//H3PqETpVTpne7T+swi86OdI5CK6ecl8Jl2a0NP
+	hu7oCi1t5CfbbAdq0Yzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfh7E-00000007SQn-3iMY;
-	Tue, 13 Jan 2026 16:19:32 +0000
-Received: from mail1.manjaro.org ([2a01:4f8:c010:b6e8::1])
+	id 1vfhAP-00000007Sqg-3M5H;
+	Tue, 13 Jan 2026 16:22:49 +0000
+Received: from mail-qt1-x833.google.com ([2607:f8b0:4864:20::833])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfh7A-00000007SQH-3i3F;
-	Tue, 13 Jan 2026 16:19:32 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPA id D66D3417BD;
-	Tue, 13 Jan 2026 17:19:17 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=dkim;
-	t=1768321163; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=sgxXVC2FsBUN9t3WEgWwzTWuclM5HhRFteoBQ8njGPI=;
-	b=dkQBUFnGXLxGcBL1IwTitewtzZlr1MF+dr9gAvL+Rgv4zAXinS/wHcs3mc4RMR6rEzW8FU
-	Y6qYxgljyojIpsBQdri/tSMkvRqOgE1SpHyTILD+sIQbeGERw7yDNJZh0Us4wX9WdijpLJ
-	kp7ptijvu47Of3UZW9CC6J2pLB1oswc91cO2Cb0rWRgDdZyaoDYBmLq6fa28gaSNsIJNUR
-	nCLi/hQlY7n9xQzLqDNe5LAvvNw3/Pi4pphNSccAAR1RWklFA734zq80Z7sdwZ/n9eTJ0T
-	QrAJ9sQTKxJSw4d6dTofRaj6mxXC5Yu1jXHtBvZWixKbIYqJB2/YDv0wkiPlmg==
-From: "Dragan Simic" <dsimic@manjaro.org>
-In-Reply-To: <20260112141300.332996-1-jerrysteve1101@gmail.com>
-References: <20260112141300.332996-1-jerrysteve1101@gmail.com>
-Date: Tue, 13 Jan 2026 17:19:17 +0100
-Cc: heiko@sntech.de, pbrobinson@gmail.com, didi.debian@cknow.org, conor+dt@kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-To: "Jun Yan" <jerrysteve1101@gmail.com>
+	id 1vfhAN-00000007SqI-1XfF
+	for linux-rockchip@lists.infradead.org;
+	Tue, 13 Jan 2026 16:22:48 +0000
+Received: by mail-qt1-x833.google.com with SMTP id d75a77b69052e-4f1b1948ffaso53890311cf.2
+        for <linux-rockchip@lists.infradead.org>; Tue, 13 Jan 2026 08:22:46 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=rowland.harvard.edu; s=google; t=1768321366; x=1768926166; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=X74vWYnBsqzGHyfTnqM4DKdfP76kV6yU74BIUcrrZcc=;
+        b=qyDCR/wAIBeglgHP6R57P1/7j5MuTfPvwfAH9U7HxBwwLhHLmopEvgzxgiWAMw5xzY
+         6qYLr4q+RgoeYAfJOmCuqUw0t04ym1mm5zsyMgv8dL7ZR8WXPhAJTne2HSBMKnPPBizh
+         u1oRMVfsylqvRIEuOU4KHdlJPqKRKqL5KFpVaTBERBL2Sld3JhLk3S6/27VfkKNd0yNQ
+         gyDePPHVcJK8rQi1suTvrz/RBIxNs1y3Zl7URI1wJhpf/i8xTPWKZh1c80fNL9EnikPi
+         x72wz0JSL5u7H5jui2ysT/rkxNh7+36tNVVdGZJ4RvaJBwvn/GDKAqjB4WhUor0tx5sH
+         21BA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1768321366; x=1768926166;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=X74vWYnBsqzGHyfTnqM4DKdfP76kV6yU74BIUcrrZcc=;
+        b=ldhMr11bdTOVz7t3D5fZRGmqOvUlqj+cIJkPxESXOKhHmbXCo38v0kGR6BcHOiKWCQ
+         Cc+HloEJDue6RaSB2wKh4jfQ9TuwzJmSrlZrud4hScuLGiARISy4kRA+rwSNHaOf1CND
+         nZ+NSGc+aCp178prY3yGHR4/b3VLz/D/rOPC0Tfh2CCWAJMQKSVUtwbS9fG4JpfGZdCk
+         ci/JzfJUOjH0m9DLntLmsyOj4OeqZICdtJt7gi5TOYc7TbTyIRLifpPp2cYfJ0NEU9C3
+         xVqMwwDYmX+AQv+8lsyKz8MTbNNiuUMzw5PJ9a8v6PpSAKlLx9FFwGqW+0o3xEYBfM7F
+         l1GA==
+X-Forwarded-Encrypted: i=1; AJvYcCWJLpiFq6LsAnECU3QtNiUpfKSLI6ApyVw+8fAvXpu+MwJf/jF7zvaTLorSLcuThPCWOR9bhDZ0TLLeKjeaOw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzCbk1tBxNAMD2aNjbZouXW4nA3r/c4qsYTqVgLhYB981fdUo0j
+	cYK98Hn2vK+LSgP17HL6i7ckP25L6qMfgyRXcfV9SZRZndZ8WkCHPG+0f3YumX3Ai/JCLd8GJsj
+	UfzM=
+X-Gm-Gg: AY/fxX73lv0X8V9Ol2NOxijTRLhtA3F5fey4FhK3kSQmk1GD4SvxaDC5byydq20I1tK
+	JWPm2XGlgHfco6cU1CyRzrfK6AT9b8sZjz8B0bRBZCObwX1ObFKrsCyCy6z38vhEBb73iQvJHoY
+	+Eqm3HNm7f7i0mB2OnhO56a7AG71hK+4MhHO9awwl6rIev5RUeeIk8/K5y3p8J0Hc0RFPAuoR62
+	hrQrA9q0mw843Hj44NkWwHGaCgcIO9c27fv3UiAJgy2/X2lltnZww4/pbINAxxtqndc4OTnYUzC
+	wC5yzywoThlOj9PhF0Tayv1zaWf2N+jPT9Q2u2N6raZkGmiur1mBhkL15Ut7c2BECBTgiPXBu6L
+	4pr7kZm0iXVj06RBqh+54RYBv1Y28QjRJDLe/YhOU+wZCvWDCaPM1gbpmo1YWXZLHvArlfxM2C1
+	ct+ASpzL3DihOU
+X-Google-Smtp-Source: AGHT+IErkjpWa120sFbKMAdCMCgyMbzGdCF7VgpTh5sizxo1ArqrW9ocmCNmPhmTtyPd14FP/67arg==
+X-Received: by 2002:a05:622a:11d3:b0:4f1:cd0c:80f6 with SMTP id d75a77b69052e-4ffb4a44431mr309936451cf.49.1768321365696;
+        Tue, 13 Jan 2026 08:22:45 -0800 (PST)
+Received: from rowland.harvard.edu ([2601:19b:d03:1700::7a0a])
+        by smtp.gmail.com with ESMTPSA id d75a77b69052e-4ffa8d6d2ffsm156409631cf.15.2026.01.13.08.22.45
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 13 Jan 2026 08:22:45 -0800 (PST)
+Date: Tue, 13 Jan 2026 11:22:43 -0500
+From: Alan Stern <stern@rowland.harvard.edu>
+To: Diederik de Haas <diederik@cknow-tech.com>
+Cc: USB mailing list <linux-usb@vger.kernel.org>,
+	linux-rockchip@lists.infradead.org
+Subject: Re: Track down EHCI and companion errors on rk3xxx systems
+Message-ID: <b9041d32-1eab-4428-ab2b-769daefdbdcd@rowland.harvard.edu>
+References: <073879e4-aea8-4625-bc83-c4b6dd9c9231@rowland.harvard.edu>
+ <DFNI1Q9N7GC6.20PN0RG9LRAQF@cknow-tech.com>
+ <38365c37-b125-4ffb-8ce7-bd4f3f7596ba@rowland.harvard.edu>
+ <DFNLGSUWJA5Z.3OJHVYWST2YFH@cknow-tech.com>
 MIME-Version: 1.0
-Message-ID: <3468aed9-c760-fe0e-5c5f-4b03129873fd@manjaro.org>
-Subject: =?utf-8?q?Re=3A?= [PATCH] =?utf-8?q?arm64=3A?==?utf-8?q?_dts=3A?=
- =?utf-8?q?_rockchip=3A?= Remove =?utf-8?q?hdmi=5Fsound?= on 
- rk3399-pinebook-pro
-User-Agent: SOGoMail 5.12.3
-X-Last-TLS-Session-Version: None
+Content-Disposition: inline
+In-Reply-To: <DFNLGSUWJA5Z.3OJHVYWST2YFH@cknow-tech.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260113_081930_939930_41B536EE 
-X-CRM114-Status: GOOD (  16.00  )
+X-CRM114-CacheID: sfid-20260113_082247_413890_A48ADC87 
+X-CRM114-Status: GOOD (  29.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,64 +103,75 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Jun,
-
-On Monday, January 12, 2026 15:13 CET, Jun Yan <jerrysteve1101@gmail.com> wrote:
-> According to the Pinebook Pro specification, it lacks HDMI port,
-> but hdmi_sound is wrongly enabled.
+On Tue, Jan 13, 2026 at 05:16:05PM +0100, Diederik de Haas wrote:
+> On Tue Jan 13, 2026 at 4:47 PM CET, Alan Stern wrote:
+> > Is this repeatable?
 > 
-> This fixes the following warning:
+> It doesn't happen every time, but it did actually happen another time.
+> After that test, I shutdown the device and unplugged the keyboard
+> adapter. Then I powered on the device and waited till it had completed
+> the boot process.
+> Logged in via SSH, retrieved my usual boot process data (what you saw in
+> my 'paste' starting with ``uname -a``) and then did ``dmesg -W``.
 > 
-> platform hdmi-sound: deferred probe pending: asoc-simple-card: parse error
-
-Thanks for this patch!  I'd suggest that the patch description is rewritten
-a bit using the standard imperative mood, and without relying on the patch
-subject or the patch itself for establishing the required context.
-
-For example, it may all read like this:
-
-  arm64: dts: rockchip: Do not enable hdmi_sound node on Pinebook Pro
-
-  Remove the redundant enabling of the hdmi_sound node in the Pinebook Pro
-  board dts file, because the HDMI output is unused on this device. [1][2]
-  This also eliminates the following warning from the kernel log, which
-  also gets emitted on some other devices with HDMI ports, caused by some
-  other reasons that are still unclear:
-
-    platform hdmi-sound: deferred probe pending: asoc-simple-card: parse error
-
-  [1] https://files.pine64.org/doc/PinebookPro/pinebookpro_v2.1_mainboard_schematic.pdf
-  [2] https://files.pine64.org/doc/PinebookPro/pinebookpro_schematic_v21a_20220419.pdf
-
-As described above, getting rid of the quoted kernel warning is actually
-a nice side effect, so to speak.
-
-> Fixes: 5a65505a69884 ("arm64: dts: rockchip: Add initial support for Pinebook Pro")
-> Signed-off-by: Jun Yan <jerrysteve1101@gmail.com>
-
-The tags should also include "Cc: stable@vger.kernel.org", to have this fix
-propagated into the stable kernels as well.
-
-> ---
->  arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts | 4 ----
->  1 file changed, 4 deletions(-)
+> Then I plugged in my keyboard adapter in the bottom port and noticed it
+> didn't work (straight away). This time I waited, pressed various keys on
+> my keyboard, turned the keyboard off and on again, pressed some more
+> keys ... and after ~20 (or 30?) seconds, my keyboard started to work.
+> When I then switched back to my SSH session, I saw dmesg had (then)
+> printed messages indicating it saw the adapter plugged in and ``lsusb``
+> did see the device.
 > 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
-> index eaaca08a7601..a6ac89567baf 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
-> @@ -421,10 +421,6 @@ &gpu {
->  	status = "okay";
->  };
->  
-> -&hdmi_sound {
-> -	status = "okay";
-> -};
-> -
->  &i2c0 {
->  	clock-frequency = <400000>;
->  	i2c-scl-falling-time-ns = <4>;
+> But that ~20 seconds is key here. Normally I would conclude that "it
+> doesn't work" after (say) >5 seconds of nothing happening.
+> 
+> > If it is, try doing the following.  After a fresh boot, log in via SSH 
+> > and turn on dynamic debugging for USB:
+> >
+> > 	echo module usbcore =p >/sys/kernel/debug/dynamic_debug/control
+> >
+> > and clear the kernel's log buffer:
+> >
+> > 	dmesg -C
+> 
+> Would ``dmesg -W`` also work?
 
+The point is to get rid of the everything in the log from before the 
+time you plug in the keyboard adapter.  If you want to use "dmesg -W" 
+and edit out all the initial stuff by hand, that's fine.  I just don't 
+want to see it, because it's not useful and will only make the report 
+harder to figure out.
+
+> > Then plug the keyboard adapter into the non-working bottom USB2 port and 
+> > wait a short time (say, 30 seconds).
+> >
+> > Then get a copy of the dmesg output and post it here.  Also, check to 
+> > see whether the keyboard is working.  In fact, you should check the 
+> > keyboard during that 30-second wait, so you will know just how long the 
+> > delay was before it started working.
+> 
+> Normally my SSH session is displayed on the same monitor as the desktop
+> session of the Quartz64-A (I switch between HDMI-1 and HDMI-2 input
+> sources of my monitor). This makes doing any kind of precise timing
+> activity impossible. I'll try doing the SSH session via my laptop, which
+> hopefully allows timings to be closer (but likely still not precise).
+
+Exact timing isn't important.  An approximate number that can be 
+compared with the log is what we want.
+
+> > Another thing you can try is to force the necessary module(s) to load 
+> > before plugging in the keyboard adapter.  For now, a simple modprobe 
+> > issued over the SSH connection will do the job.  If this turns out to 
+> > help, you can configure modprobe to load the module(s) automatically at 
+> > boot time.
+> 
+> I was already planning to make it built-in as the chances of me not
+> needing USB2 in some way, are quite slim. And they should (hopefully)
+> prevent such issues and I'd have a warning less in dmesg.
+
+Okay.
+
+Alan Stern
 
 _______________________________________________
 Linux-rockchip mailing list
