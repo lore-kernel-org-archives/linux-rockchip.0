@@ -4,54 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31E87D29FF8
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jan 2026 12:45:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B236CD29FFF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jan 2026 13:00:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=INtXfE6YO7CIV5m6aqDqey5wZOMR33b6FlHubaGYjA0=; b=iu4l28phM9Wu8m
-	Dt73D8tEaD+hApx19xwZgU70XwkzJ2Gzm8EVd/maUYqpmlCFjUPuXfagGzJuEDGhY6R/U3DeWxudq
-	s197gauJk0IP7zazc8Kt48gxeV5jy9p7SQUa41wNMfdyzUwZS0UVYyM9Ue7BZhAK8yEI3BRW2neDY
-	jp7ilf51QxVy+WZNHEpQSNYA38+Hw2DweqQS8u+62YflDPC3/Rwyazp/RgFgOr+F4xAez2Ba/PW9n
-	Nhmgs+nSFNrHLAVhFqqVnHIE5yDcLUKRpj6iQ+ggWW+dBMQAROS9r2IXe4qKWS5zK0RunSd1vdXU7
-	V+hm0HJuqdelMIEwje3Q==;
+	List-Owner; bh=AE6HbsbQD+NSJ3V/uJ9B9FY5DMd9C9UzbzgKNfHrC+k=; b=saP2fUcvX5xBVz
+	efJiEli5POxkpxl/LpT4vn5zYBW/j7y/3S8q+4q0TjffPaVmvssKOPbs5IIuVfkTftqBqfw1hitVk
+	sUFy+/uaiVU0T63PRZ9rJvHQPY8iOkTaw//IyAoGKkWCHzHOXtLNrBLLQxvF6hHIvlehBR7ISDzlk
+	M1uICBiroaP+RIYtqrHLlqju0HdxNxKwg1LombRkgIS6mQF8lyOI9uvLTvqp/fZTwEAVn7FPfSVZp
+	4+F0W08C/QzygRlh+NDx/SU8Ydo0J7bZ68kWyPEesiKKT46yWaE/lV6D68uH9gRE0ka54ETPObVeW
+	YE+COpSkLHYnjC3E81ww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vg0FZ-00000009DxL-0Y2K;
-	Wed, 14 Jan 2026 12:45:25 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vg0FU-00000009DvK-0wH9;
-	Wed, 14 Jan 2026 12:45:23 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 10B0C1515;
-	Wed, 14 Jan 2026 04:45:09 -0800 (PST)
-Received: from [10.57.50.170] (unknown [10.57.50.170])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 482E43F632;
-	Wed, 14 Jan 2026 04:45:14 -0800 (PST)
-Message-ID: <abf8a1cd-488f-43d7-80f1-37ba8917b17b@arm.com>
-Date: Wed, 14 Jan 2026 12:45:07 +0000
+	id 1vg0Te-00000009FuV-0Wuo;
+	Wed, 14 Jan 2026 12:59:58 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vg0Ta-00000009Ftq-3nuW;
+	Wed, 14 Jan 2026 12:59:56 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id A1E98443C4;
+	Wed, 14 Jan 2026 12:59:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5347DC19425;
+	Wed, 14 Jan 2026 12:59:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1768395593;
+	bh=2/z3t3tjGrx/h34H8mnEiXZGVxzRQTFDBZSR/QkoL8s=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=qyl+x6niBnl+Hkqz669O/P43ZyunjSntia/2ZlIUSfxIlevMkhMao7Qj1TdQHI5Ik
+	 lq/rkz0Dfc1NJ8XdsUbMqrwIq6simoJ/gnqKq6L7Xy+mp/Np2Bt6wtAqi7hNKD7Ehq
+	 8vfXwH58/vx2kr3D32e/PnGfo3cJTC9dq+HytQRVUNZ4cBE5L8DHLF/nt/gogfGIU1
+	 ORST1I3YxO+MNv1TBAGazKLamw645HtPkKD/K/RJog7pJD0andkbL+APJ/ezW8e+nE
+	 nh0OSCokHR4CS5FQEgOlJoYlwn41MOuE0E3vZg1vH+CPraUVUSU8+GBgd8+irYngt4
+	 vEVTCOs43w7mQ==
+Date: Wed, 14 Jan 2026 12:59:47 +0000
+From: Will Deacon <will@kernel.org>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Cc: joro@8bytes.org, robin.murphy@arm.com, robh@kernel.org,
+	krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de,
+	nicolas.dufresne@collabora.com, p.zabel@pengutronix.de,
+	mchehab@kernel.org, iommu@lists.linux.dev,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-media@vger.kernel.org,
+	kernel@collabora.com
+Subject: Re: [PATCH v11 3/7] iommu: Add verisilicon IOMMU driver
+Message-ID: <aWeTQ50DOtntcniN@willie-the-truck>
+References: <20260107101005.84039-1-benjamin.gaignard@collabora.com>
+ <20260107101005.84039-4-benjamin.gaignard@collabora.com>
+ <aWZui-rn5RDPwpEO@willie-the-truck>
+ <68a49f8b-178c-4fa2-b4a9-315ad602271d@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/4] arm64: dts: rockchip: Move RK3399 eDP pinctrl to
- boards
-To: Dragan Simic <dsimic@manjaro.org>
-Cc: heiko@sntech.de, neil.armstrong@linaro.org, dianders@chromium.org,
- thierry.reding@gmail.com, sam@ravnborg.org, jesszhan0024@gmail.com,
- dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
-References: <cover.1767111804.git.robin.murphy@arm.com>
- <0b9488badb467ef83a0a464eeea921f59e32e6b0.1767111809.git.robin.murphy@arm.com>
- <81fcd769-d7a5-e909-7105-23cd3d09e473@manjaro.org>
-From: Robin Murphy <robin.murphy@arm.com>
-Content-Language: en-GB
-In-Reply-To: <81fcd769-d7a5-e909-7105-23cd3d09e473@manjaro.org>
+Content-Disposition: inline
+In-Reply-To: <68a49f8b-178c-4fa2-b4a9-315ad602271d@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260114_044522_797544_5E7C3E10 
-X-CRM114-Status: GOOD (  17.77  )
+X-CRM114-CacheID: sfid-20260114_045954_990191_6F1662C6 
+X-CRM114-Status: GOOD (  38.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,104 +75,127 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2026-01-14 11:49 am, Dragan Simic wrote:
-> Hello Robin,
-> 
-> On Tuesday, December 30, 2025 18:20 CET, Robin Murphy <robin.murphy@arm.com> wrote:
->> The EDP_HOTPLUG pin is optional, and muxed with other functions (notably
->> HDMI CEC), so move its selection from the SoC DTSI to the boards which
->> apparently want it, namely those which enable eDP without "force-hpd".
->> By the same token we drop it from Pinebook Pro, which already uses
->> "force-hpd", and according to the schematics does not have the pin wired
->> at all.
->>
->> Signed-off-by: Robin Murphy <robin.murphy@arm.com>
->> ---
->>   arch/arm64/boot/dts/rockchip/rk3399-base.dtsi              | 2 --
->>   arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi    | 2 ++
->>   arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts       | 2 --
->>   arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts | 2 ++
->>   4 files changed, 4 insertions(+), 4 deletions(-)
->>
->> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-base.dtsi
->> index 4dcceb9136b7..19a312baa9f1 100644
->> --- a/arch/arm64/boot/dts/rockchip/rk3399-base.dtsi
->> +++ b/arch/arm64/boot/dts/rockchip/rk3399-base.dtsi
->> @@ -2145,8 +2145,6 @@ edp: dp@ff970000 {
->>   		interrupts = <GIC_SPI 10 IRQ_TYPE_LEVEL_HIGH 0>;
->>   		clocks = <&cru PCLK_EDP>, <&cru PCLK_EDP_CTRL>, <&cru PCLK_VIO_GRF>;
->>   		clock-names = "dp", "pclk", "grf";
->> -		pinctrl-names = "default";
->> -		pinctrl-0 = <&edp_hpd>;
->>   		power-domains = <&power RK3399_PD_EDP>;
->>   		resets = <&cru SRST_P_EDP_CTRL>;
->>   		reset-names = "dp";
->> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
->> index 9d07353df52c..3f3cb0eb5809 100644
->> --- a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
->> +++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
->> @@ -241,6 +241,8 @@ &dmc {
->>   };
->>   
->>   &edp {
->> +	pinctrl-names = "default";
->> +	pinctrl-0 = <&edp_hpd>;
->>   	status = "okay";
->>   
->>   	/*
->> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
->> index eaaca08a7601..dcab04863d28 100644
->> --- a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
->> +++ b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
->> @@ -401,8 +401,6 @@ &cpu_l3 {
->>   
->>   &edp {
->>   	force-hpd;
->> -	pinctrl-names = "default";
->> -	pinctrl-0 = <&edp_hpd>;
->>   	status = "okay";
->>   };
->>   
->> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts b/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
->> index a4ceafe6dd7a..80d6ea0eda84 100644
->> --- a/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
->> +++ b/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
->> @@ -141,6 +141,8 @@ sdio_pwrseq: sdio-pwrseq {
->>   };
->>   
->>   &edp {
->> +	pinctrl-names = "default";
->> +	pinctrl-0 = <&edp_hpd>;
->>   	status = "okay";
->>   };
-> 
-> Thanks for this patch!  These changes are looking good to me, and the
-> board dts files changed in this patch are the right ones, i.e. those that
-> enable the "edp" node without specifying the "force-hpd" property.
-> 
-> Additionally,"/omit-if-no-ref/" should be added to the "edp" pinctrl node
-> in rk3399-base.dtsi, to not include the "edp_hpd" pinctrl definition in
-> the board dtb files where that actuually isn't used.
+On Tue, Jan 13, 2026 at 05:25:38PM +0100, Benjamin Gaignard wrote:
+> =
 
-Ah, indeed - I can't think of a realistic good reason for the pinctrl to 
-only be selected by an overlay rather than the base board, and even if 
-anyone did conjure up some such crazy modular system, they could always 
-change it back. Good thing I got distracted and didn't get round to 
-sending v2 last night :)
+> Le 13/01/2026 =E0 17:10, Will Deacon a =E9crit=A0:
+> > Hi Benjamin,
+> > =
 
-> With the note above addressed, please feel free to include
-> 
-> Reviewed-by: Dragan Simic <dsimic@manjaro.org>
+> > Thanks for posting a v11.
+> > =
 
-Thanks!
+> > On Wed, Jan 07, 2026 at 11:09:53AM +0100, Benjamin Gaignard wrote:
+> > > The Verisilicon IOMMU hardware block can be found in combination
+> > > with Verisilicon hardware video codecs (encoders or decoders) on
+> > > different SoCs.
+> > > Enable it will allow us to use non contiguous memory allocators
+> > > for Verisilicon video codecs.
+> > > If both decoder and this iommu driver are compiled has modules
+> > > there is undefined symboles issues so this iommu driver could
+> > > only be compiled has built-in.
+> > > =
 
-Robin.
+> > > Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> > > ---
+> > > changes in version 11:
+> > > - Fix dependency issue when decoder driver is build as module.
+> > > =
 
+> > >   drivers/iommu/Kconfig     |  11 +
+> > >   drivers/iommu/Makefile    |   1 +
+> > >   drivers/iommu/vsi-iommu.c | 808 +++++++++++++++++++++++++++++++++++=
++++
+> > >   include/linux/vsi-iommu.h |  21 +
+> > >   4 files changed, 841 insertions(+)
+> > >   create mode 100644 drivers/iommu/vsi-iommu.c
+> > >   create mode 100644 include/linux/vsi-iommu.h
+> > Based on your reply to v9:
+> > =
+
+> > https://lore.kernel.org/all/0eff8b1a-c45f-47b1-a871-59f4a0101f0f@collab=
+ora.com/
+> > =
+
+> > I took another look at this to see whether it had changed significantly
+> > from v6 when compared to the rockchip driver. Sadly, they still look
+> > very similar to me and I continue to suspect that the hardware is a
+> > derivative. I really don't understand why having a shared implementation
+> > of the default domain ops is difficult or controversial. Have you tried
+> > to write it?
+> > =
+
+> > However, given that nobody from the Rockchip side has contributed to the
+> > discussion and you claim that this is a distinct piece of IP, I don't
+> > want to block the merging of the driver by leaving the conversation
+> > hanging.
+> > =
+
+> > There is still one thing I don't understand (which, amusingly, the
+> > rockchip driver doesn't seem to suffer from):
+> > =
+
+> > > +static void vsi_iommu_flush_tlb_all(struct iommu_domain *domain)
+> > > +{
+> > > +	struct vsi_iommu_domain *vsi_domain =3D to_vsi_domain(domain);
+> > > +	struct list_head *pos;
+> > > +	unsigned long flags;
+> > > +
+> > > +	spin_lock_irqsave(&vsi_domain->lock, flags);
+> > > +
+> > > +	list_for_each(pos, &vsi_domain->iommus) {
+> > > +		struct vsi_iommu *iommu;
+> > > +		int ret;
+> > > +
+> > > +		iommu =3D list_entry(pos, struct vsi_iommu, node);
+> > > +		ret =3D pm_runtime_resume_and_get(iommu->dev);
+> > > +		if (ret < 0)
+> > > +			continue;
+> > > +
+> > > +		spin_lock(&iommu->lock);
+> > > +
+> > > +		writel(VSI_MMU_BIT_FLUSH, iommu->regs + VSI_MMU_FLUSH_BASE);
+> > > +		writel(0, iommu->regs + VSI_MMU_FLUSH_BASE);
+> > > +
+> > > +		spin_unlock(&iommu->lock);
+> > > +		pm_runtime_put_autosuspend(iommu->dev);
+> > > +	}
+> > > +
+> > > +	spin_unlock_irqrestore(&vsi_domain->lock, flags);
+> > > +}
+> > [...]
+> > =
+
+> > > +static const struct iommu_ops vsi_iommu_ops =3D {
+> > > +	.identity_domain =3D &vsi_identity_domain,
+> > > +	.release_domain =3D &vsi_identity_domain,
+> > > +	.domain_alloc_paging =3D vsi_iommu_domain_alloc_paging,
+> > > +	.of_xlate =3D vsi_iommu_of_xlate,
+> > > +	.probe_device =3D vsi_iommu_probe_device,
+> > > +	.release_device =3D vsi_iommu_release_device,
+> > > +	.device_group =3D generic_single_device_group,
+> > > +	.owner =3D THIS_MODULE,
+> > > +	.default_domain_ops =3D &(const struct iommu_domain_ops) {
+> > > +		.attach_dev		=3D vsi_iommu_attach_device,
+> > > +		.map_pages		=3D vsi_iommu_map,
+> > > +		.unmap_pages		=3D vsi_iommu_unmap,
+> > > +		.flush_iotlb_all	=3D vsi_iommu_flush_tlb_all,
+> > This has no callers and so your unmap routine appears to be broken.
+> =
+
+> It is a leftover of previous attempt to allow video decoder to clean/flush
+> the iommu by using a function from the API.
+> Now it is using vsi_iommu_restore_ctx().
+> I while remove it in version 12.
+
+Don't you still need some invalidation on the unmap path?
+
+Will
 
 _______________________________________________
 Linux-rockchip mailing list
