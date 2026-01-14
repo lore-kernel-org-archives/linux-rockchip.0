@@ -4,185 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7062ED37E59
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jan 2026 16:07:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FF60D37E59
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jan 2026 16:08:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PDEcVGvN7u0zJqTHs3dgML9RNx4Mgh9G2hco9q7oNIM=; b=gvCecIDlEl+lytxuUkEFWXH8MJ
-	Jsa0RGczwZ1bGWxk7DsbBSWx79lCCGONwF5jZtw7aII9EJocCcS1y/cnELYWI0wRIDsbmp2tlT0vR
-	E71+ob6xrRMmQhRc8LuuW3N9ezUHSEO9aXd2kpxi7FnNvWOwrmVDw7zwq1VpEVhnFF/9hiiREtQY/
-	M4yWGd+1bnK3xenRlWLWq2x+ooBgd55MkMwS8MZmzKwzEgzHGBUNno/pZh+iT3BsooSfzK7FUQu6F
-	4v46gbLyoqivmaX13bJs+NWC0k/wgv99SMEXEV/ztU9s2ucZ/7brJBuJyfuMFCzSkm7wHdTYe0oD0
-	1ZSNljUw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=wW7Yi41jBwAN/5wNFDOvxZJSY/5H+uWEteBg10YpLTQ=; b=v4wD4MQhBbo4Gq
+	7Mwe72vQwo1edlpdH2FW88hAzC5xCOG8zMK0OSN4CcBKSOkw8/I6Xm6padc6cJfYPabtc3Zia8EaT
+	NvZK2n0Qqf6OAEN5Gy209jkjnDFV5T7i9pbV8NBMDwUdY0IXRhBN3LyTmrf5O32T/uoqjyyuK9Ema
+	6nK7SLztihPlQoLNaNL1FN9IgMkb5o8xpAnu+SqxajP35tsSDDq6ApoVn3dWQdgeQee/kd3aTqIfG
+	K6R6fry++vurZHEZt1vyt0h25U7C0n7ScbSu0TJfs/g1bxKOKbViCT0TJSkw8sabpVSIMM4hWqx4Y
+	YTdGDpSKKFF7jLpP04cw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vg3P8-00000009rd2-2n9u;
-	Wed, 14 Jan 2026 16:07:30 +0000
-Received: from mail-northcentralusazlp170100001.outbound.protection.outlook.com ([2a01:111:f403:c105::1] helo=CH1PR05CU001.outbound.protection.outlook.com)
+	id 1vg3PU-00000009rkl-3yp1;
+	Wed, 14 Jan 2026 16:07:52 +0000
+Received: from mail-qv1-xf29.google.com ([2607:f8b0:4864:20::f29])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vg3P4-00000009rbN-3Fto;
-	Wed, 14 Jan 2026 16:07:28 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=Ae7+j5FhoetWXQAt7sgp07iBWAl1mphEmt1j6XeyV4uwT7EJ6kJPb+UHcq0toLb9BCIOzNAAqw7tgvk2pr2ZO4RjZOu8ERNKs3/qhpe1F0Qhz1mwT1Vx4VNgrEbRQniDdGLQXFBue2rvGuMfPDZg+XqlsTGotBCF/5GhS+BfATbcgH5IT4RJlnZ1iPlQQ6U6364Y3qcwtTCH7wKd3RHzletsGLHE7qTvaZoHGHO3NACpLW5m+Qs+rImrIIsU0oSkWzsNGuacCE59S6hhq5uEaOZqkIy2FmqXiKMbcWXdAlzRVXkw31r3JxArWBwHADTzFm0A5uRdjDUG6agEYhwMDw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=X4Y0gwYYHF0/ZfEAV7sUgX3yyICq6FWTyQoqpVfYfCU=;
- b=icL86bYWASsY31b/INzDGUD2P82N3jLYYsvRpZ6SOV7GcCoazvd5961sAyKINdNY6GeN0RWa66IDBojfJPXbjkbsV1ntntFmVIZ9eo1cbTlUNWpAZWJAgO3VnZ1rYitrrkUNsSO/kSzHsKyb9XZrOhQ8XqTfnW41QqtwkzfDJz6P/cO6DVS1cJMJ3o0KHcfx5eYhnkwZy90cKgV7lh5DlIli7QnVHqTMyLIMHAY4QQqrgtQpOABhrcOdRo9jSevRru6efmpq+WJGDHa50oTRWWMH5Y0bYjQOh7Sd79ppq9yCcni8egDkPkRE8//6kJ7+9aiH+sI/np8QQeQBUUZFEw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=X4Y0gwYYHF0/ZfEAV7sUgX3yyICq6FWTyQoqpVfYfCU=;
- b=GJvb11U0cZWt3hllvS9wJb24F+uOHqFSkD1FdUhmkc6foNwPskCYW932LyIzGgmxG4BDwEePE2VAUYA/XRDSlUraMpV01yDoiS0Cs5z2trrHiiO+CsWc0RtWZ/Zta68S44ZkmTHhzgKrp/rITSmO3LLNx897hjkZ3A8wWZe4t+arRN7z8MynQNViYT2uIF1PYtlmpx7z0nh342KDN2O2QbKoIZct3uJ/m5q0pv88uLV1fuCQnnRm3h7ekYHdYLhbKxY4WA9FOw0O2sqerst8u3b03VnRJzmcH+2kptu7RKwOV++UbBEVg3UYEZw3x8YuLwTfk2URt+TPgKiPYaBm+g==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from DS2PR12MB9750.namprd12.prod.outlook.com (2603:10b6:8:2b0::12)
- by LV3PR12MB9258.namprd12.prod.outlook.com (2603:10b6:408:1bb::12) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9520.5; Wed, 14 Jan
- 2026 16:07:07 +0000
-Received: from DS2PR12MB9750.namprd12.prod.outlook.com
- ([fe80::56a8:d6bf:e24c:b391]) by DS2PR12MB9750.namprd12.prod.outlook.com
- ([fe80::56a8:d6bf:e24c:b391%5]) with mapi id 15.20.9520.005; Wed, 14 Jan 2026
- 16:07:06 +0000
-Message-ID: <e8f79a63-be17-4814-97e9-dbbe57d73c3a@nvidia.com>
-Date: Wed, 14 Jan 2026 16:07:00 +0000
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 08/11] pinctrl: tegra-xusb: Return void in padctl
- enable/disable functions
-To: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Linus Walleij <linusw@kernel.org>, Joel Stanley <joel@jms.id.au>,
- Emil Renner Berthing <kernel@esmil.dk>, Hal Feng
- <hal.feng@starfivetech.com>, Chen Wang <unicorn_wang@outlook.com>,
- Inochi Amaoto <inochiama@gmail.com>,
- Basavaraj Natikar <Basavaraj.Natikar@amd.com>,
- Shyam Sundar S K <Shyam-sundar.S-k@amd.com>,
- Bartosz Golaszewski <brgl@kernel.org>,
- Steen Hegelund <Steen.Hegelund@microchip.com>,
- Daniel Machon <daniel.machon@microchip.com>, UNGLinuxDriver@microchip.com,
- Thierry Reding <thierry.reding@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
- Patrice Chotard <patrice.chotard@foss.st.com>
-Cc: linux-aspeed@lists.ozlabs.org, openbmc@lists.ozlabs.org,
- linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, sophgo@lists.linux.dev,
- linux-tegra@vger.kernel.org, linux-rockchip@lists.infradead.org
-References: <20260114-pinctrl-cleanup-guard-v1-0-a14572685cd3@oss.qualcomm.com>
- <20260114-pinctrl-cleanup-guard-v1-8-a14572685cd3@oss.qualcomm.com>
-From: Jon Hunter <jonathanh@nvidia.com>
-Content-Language: en-US
-In-Reply-To: <20260114-pinctrl-cleanup-guard-v1-8-a14572685cd3@oss.qualcomm.com>
-X-ClientProxiedBy: LO2P265CA0504.GBRP265.PROD.OUTLOOK.COM
- (2603:10a6:600:13b::11) To DS2PR12MB9750.namprd12.prod.outlook.com
- (2603:10b6:8:2b0::12)
+	id 1vg3PQ-00000009rir-3Vgk
+	for linux-rockchip@lists.infradead.org;
+	Wed, 14 Jan 2026 16:07:51 +0000
+Received: by mail-qv1-xf29.google.com with SMTP id 6a1803df08f44-88a34450f19so88901536d6.1
+        for <linux-rockchip@lists.infradead.org>; Wed, 14 Jan 2026 08:07:47 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=rowland.harvard.edu; s=google; t=1768406867; x=1769011667; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=0w8zIqQECJAGujQJ53HaaQtSuGI0B6FUk93HelliUNY=;
+        b=LTL7fzr31dYvn9FuJlwds12UYuCd9raFwegAdWr/6MM9tBoxm03px0tkno5p5SD5rK
+         ReFFEMZQ2PHix/cxDmEILLAKeLUCQn1vkGjGJNu6ts1b7w9j4bGMxI1lsZqdTLGvdaLJ
+         3Fjk48JruaKcIev1I+WSs6yfhNWzociwqBjmjTAvUO21qQ2My14Ip745kRJLnAqu2L7L
+         9MJpxKF3xTe+f8WB7sKtFPUVwA3xsmZhk0NkHAeBdGlchoHuRryD1s5WggIdb5U0kCv9
+         Kf9ppdxObJKGRq0DCbzpMW4HphF/wAgQvJSE7pJV33xzuG4qG7+1vlnsMun3Y0QehkEn
+         QUog==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1768406867; x=1769011667;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=0w8zIqQECJAGujQJ53HaaQtSuGI0B6FUk93HelliUNY=;
+        b=E2632ePfaa/sCTNa7tzrannQXqDzJkNYJO8KfHLwlzFugOGT74IewdG2YKrVhuAeTg
+         DS1l5kslEVeaQqeSB/9lju5s2I+tCQwxXmidBQtuuXcirJaDh8KvXd33c10BKAJqs0Fc
+         M2VpDFkQpF4irRcUQhH9qbWK/uBuFfVOOAUQZmkAtIGCtP4YA5zRt1vGL9YvlVbLg8GD
+         fW/SzdpbWH+FmvdsA6VbkjtFiGyhmliMdM1GrgtQsFhOVUGlBql+svkU+sVj8p85x17p
+         Sx26aIzxTviZixbvtSKtgK805LmL6oycPB47tlUCxvYK8agPpgrYY6exhU//K2eB13bm
+         iVuw==
+X-Forwarded-Encrypted: i=1; AJvYcCUyQZAmw9XUG8+qDX5Tr8wlRtXkfyPblGz6AIJnyQBHu/Zi1B0TqD1dVLtSk+S3Ed14eaGkYiLtpXj3zRNM9A==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzSubaEGILZ3Qr/8Wy0+XUmvsr2zkqKM4TiOc/2++zq73b9w71s
+	SAp1d4Om635prNGsOFoYoi0WWxgCUOIDGpaFFEtmi8EBLKOQfD8LJeVrNJmkr+SuPG9g89vIaaE
+	dQE8=
+X-Gm-Gg: AY/fxX7fViY5mVSnsjKgkICNhMOzti+LJjeNh9YZglGQPYNifW+D/XUjrPDMUGMJdoJ
+	WN8XHyR0+lbyYoI6MmsxW1mEM0VY8iynEXl+bh2/ZicGqYFpJ38THtdv3nxTCX2Kjr1sIiLuRwq
+	SQttxTukqdwSBKd+zSh/F22K8nZdPZqyLbjCXLpdWmUdCIhhgB/t5MH0gIoDJHc8gVJsu29Zmt2
+	mkBhtDmYP6D8s4FrCNkNm4txezwjaL415OSntOdmJopsolWNBAh+ONhWGDeg8k3PXlt6KwBbNEl
+	0SApO+1YGQXcQJteemx3cJ1dGeir86SnfKA+UzuioekPF8LyaVRaaF86KpTG5KezDzS2M7bKJ/b
+	W4+5/DHe8QobuWREEBNAVIIAfUit06DHx5SxbS2IPxdwjvjuZOyXao0XqaZVSStJCV6LcuRvUO3
+	vD1ByT3vMZFhRhzQEA+AS6dGaXPsSodyQNeD4o56D5
+X-Received: by 2002:ad4:5be5:0:b0:888:593d:c08c with SMTP id 6a1803df08f44-89274390c21mr42145126d6.20.1768406865775;
+        Wed, 14 Jan 2026 08:07:45 -0800 (PST)
+Received: from rowland.harvard.edu ([140.247.181.15])
+        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-8907728565dsm172303526d6.56.2026.01.14.08.07.45
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 14 Jan 2026 08:07:45 -0800 (PST)
+Date: Wed, 14 Jan 2026 11:07:42 -0500
+From: Alan Stern <stern@rowland.harvard.edu>
+To: Diederik de Haas <diederik@cknow-tech.com>
+Cc: USB mailing list <linux-usb@vger.kernel.org>,
+	linux-rockchip@lists.infradead.org
+Subject: Re: Track down EHCI and companion errors on rk3xxx systems
+Message-ID: <febe88e2-9abd-481e-af9d-3f0825ef204b@rowland.harvard.edu>
+References: <073879e4-aea8-4625-bc83-c4b6dd9c9231@rowland.harvard.edu>
+ <DFNI1Q9N7GC6.20PN0RG9LRAQF@cknow-tech.com>
+ <38365c37-b125-4ffb-8ce7-bd4f3f7596ba@rowland.harvard.edu>
+ <DFNLGSUWJA5Z.3OJHVYWST2YFH@cknow-tech.com>
+ <b9041d32-1eab-4428-ab2b-769daefdbdcd@rowland.harvard.edu>
+ <DFNRUF2LUPH4.1493G2SYERZ7Q@cknow-tech.com>
+ <b108b747-cc7c-4537-b9bc-b0862bac71ff@rowland.harvard.edu>
+ <DFOEGOTI1AQ9.175GP7V1VK1XU@cknow-tech.com>
+ <91fb697a-7bfa-4e26-85cd-40810a8d2be5@rowland.harvard.edu>
+ <DFOFCN7H0Z10.1FAC3SN3TX79O@cknow-tech.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DS2PR12MB9750:EE_|LV3PR12MB9258:EE_
-X-MS-Office365-Filtering-Correlation-Id: fad1225e-623c-4196-2a34-08de5386f669
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|7416014|376014|10070799003|366016|7053199007|921020;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?OFhCdkx6YkMxNmExeDhKR2JiZUJSSzd5aDZpRnRETk1hb2lvWmc4TzQwRk9s?=
- =?utf-8?B?aVlKR3JZU1J0YlgveFczVHdkTW82T1lZYU9PUXFxVjl1c25GeGR1Yi92S3N4?=
- =?utf-8?B?M1p3V3B4bXdIYnVSZkNwUXl5cFBQWlByR0krNVVnSE0wVTZSUkxaVnIyUENs?=
- =?utf-8?B?bUhJY0tOVkVSS0F6bjhkRmJtUmhEdHlLQUpNb25OZkp6QkhJN2FDNVpaQ2JI?=
- =?utf-8?B?Skk2Y0M4aUhIbm85dXVlNXE1aUdUYjNDZTV3YW9oS1ZmWTZlWU82NTcxYnBU?=
- =?utf-8?B?cS94RU9hSkNMOUFJMEJPSVAyd0RMdTJLNU9jbGR0Z1M4OFA2MlJzeTNkVlBI?=
- =?utf-8?B?eGU4M0lxeFp4S05LQjBnaVo5ZDZKNVZlQ0UxN1ZmVThEek5VNWQ2MDh0RnBQ?=
- =?utf-8?B?bzZHQW12Ry91cTdlM3dWU05tVW1nS1g5RkpTbFpPYkRyQkphY09kczRsREpU?=
- =?utf-8?B?MzRrRW9jeFdYd01mVDBNUlZzRVFuRDdJSGkvejh2VXpXRlQzTmZpekgvc29U?=
- =?utf-8?B?dGIvT3B5N3hRaHhORW9LeWNWdS8vOVJJTGNsazlkbzlWN0crV1ZiUStsQlN1?=
- =?utf-8?B?MWx2aWNZMHFWa010QkdVKzFiUVA3cW5hQWMwR0dndTBDemJLZ1RCRE82V3Nl?=
- =?utf-8?B?R05rVVcwV2JvQ3VNL0xoYWxySVZ2NHdacVkyZjBlbWN3ZHBqOE40L0tzcDR2?=
- =?utf-8?B?Q3ZBZ1BNZVRnWWIvY0JKaFhWclo2dTVOdHE3MWkxWS9RZm1oTEhJaG9OWFNQ?=
- =?utf-8?B?aWdyYnpWaGxnYjhEOU52a1M3ZDJEUUw1QVZlQkhvZlFRYktQY01kUmZFNU52?=
- =?utf-8?B?Uk5leUV0SFZ3Y1hBY25JZ05NMWpqeVRXV04vdnlHWkVhQVpMeXlwYkpqcDJU?=
- =?utf-8?B?OVllb1hFaUFlVHkvQy9WbTFCMTdxaTF4TkJiczhLNFlMT3RmdnBoaW1FRytV?=
- =?utf-8?B?TmExQTkxT0ROaWF4TjRBVTlaS081N2pZem5OWGhCUzBMNWVrYmwxMTk2N1JV?=
- =?utf-8?B?ZnJzK1N5Y3JGcDBGMy9MNUYxTS9FMUpyRDFsL3FlWEFSRENrUlVuZ0RaUTJL?=
- =?utf-8?B?ZmhkS1A0THZ4VktoN3hWMUQ0TFFSSFROTXNjSVMvbjliL2gwWjVBdDFNeUdm?=
- =?utf-8?B?a2xJN1d6MlA1WWZNdHNZZXprdmNkY3hHOG9sSmxZMFJwanhZTno1dnZGbzNt?=
- =?utf-8?B?SlpWdnhpTTIzNkZQK3RiVCs5YUdOVWdYWDZyYUFMN1pjS2VNZ0k5UnJtb2Vk?=
- =?utf-8?B?eUNPd3pUemU0eStCdDRxRno5Mnh2aWtxMkdHRjVESFh0aWIwZUlEUmVwa1ps?=
- =?utf-8?B?SUg1VHJISnQxWVk1WFBSZ0laY0VhR1ptNC9HUndMckNNeVRoeGhUcEFXZkFj?=
- =?utf-8?B?L3RUMWNYTEQ2TmRIRDZXUy84V3ZNdUp4R1BzYXBhNmNoRmZoVnRXaVhRM1A3?=
- =?utf-8?B?RFVOQ0J6bEZiL3JZdXQrMkxybnljb29Oc0R1M3ZSNnhMTGQxS3VVbU42Kzly?=
- =?utf-8?B?a0ZhSXlvTVovWURzU3NVMUxDWUVhbDdmY1gvTGkrb2cwbFhJMVloQUNlM1Jp?=
- =?utf-8?B?ZjhVZEp6cDFRTWZCbUxwN3RSTVppUTNnL09Gek55cjJWbWwzb1N5T1JNSUND?=
- =?utf-8?B?MWJOMGtHTmtubzlFMjJhYW0waEVmNWFmVXkrZUxWdnBDYTdwRzVEWDBTQ3d5?=
- =?utf-8?B?S3hXMmhsZmxCaFhWY0VEdDE5b0Jnd1FGM2RaYWp4T0FrZVE2cUtwdzJ5QTAx?=
- =?utf-8?B?RkdsajhobzNTaXFoRUNwVE1GTERVVW1vbzd2SUl0VTZpajBFL1RNUGhaUFY3?=
- =?utf-8?B?T2lSK2lqeW9pQU9zMEE1ejdrUEsvcy9oaGExbUhnS1BlLzd4SkJMOUdyTkVn?=
- =?utf-8?B?dnVtRHJSWHhZeVkrVDIzbTVtaWE1RVBwbG9JZmlUdWE4L1FMd1lXNHpvU3V5?=
- =?utf-8?B?TEpibEpZVU8xZU5BVVREYWFVZ1hXdlE4UnNLN0VQNkZxL3ZSTjB2M250Qld0?=
- =?utf-8?B?ZVI5Ny9kRUVxYzR5RjJoOGZxMWU4S2FMRmNCSDdPYnZEK1VZOHp1dTFRN3h2?=
- =?utf-8?B?Vm53UlNmY1NkY1JHN2RLczUvb0tkek9tTGFaZzE3TTRZVlZSY0tMSy8rSEhO?=
- =?utf-8?B?QXpoU000ZXV2bFhnT3lDQzZjaWdXSGZjWU9McjZYVDFkK0djUXpqYkd6RW1p?=
- =?utf-8?B?c0E9PQ==?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DS2PR12MB9750.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(7416014)(376014)(10070799003)(366016)(7053199007)(921020);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 2
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?MnRIczBTUzdLK204dUN1V1hQTU10cTJyUk9xWEh0aVJ6dXJCQWdRTlB3UU5H?=
- =?utf-8?B?MisyU3lkTlBIaHpVY0pLMXZ6cUpNcmdCenM4eXhPNFpBZUpta3JxWi94QTRE?=
- =?utf-8?B?LzN6SWpLS2JxbzVRdUZWNWxxcU93T1E3WEJ6RGRPWmFwOWlVdXZPdldhTllr?=
- =?utf-8?B?NHpkdjNld1hFRU94NFNFamYxdWZCclQra2Zzc0xxam5TMy9sYm5oVCtxcnpm?=
- =?utf-8?B?eXo1UkhSU3NTbFE2aHZkV0pUZ1M3Mk0ybUVkazRKMUNvMlZCdCtnYUU5TDRx?=
- =?utf-8?B?K2dkOXVxOG0rV2ZNRnNyaU5Hd3ZJV3VDOTk1OTZNVWxMai9zS2ZUYUcwWElR?=
- =?utf-8?B?ZFROSFBtMGRoczZPemFQOG8rTDB1RWV6NUh1ZENKVHhoamVhMm8wSC9TR0xU?=
- =?utf-8?B?bFF4UjFjVlRJNXhYNHEyV2Uxa2VUbmRMMmQ2SG1mb2RLWnNqUDR6aDRYUUVm?=
- =?utf-8?B?Mm9FeFE4L2swcmw3NVRrZmZxNHBaRTM2QStXc0pkcmJPenNyWlFRMU5lUHBO?=
- =?utf-8?B?NnpJRmljbU1mdktuRmpWL0tSTVZyamo0bmdVSDJPMkRRTFdRdTNhRklMMDRq?=
- =?utf-8?B?WE9rb1UycUtwbExtZVBGZ3BTVlg0cjhsMlhZOGR4RzlsTk9JUWQ1RElUSE96?=
- =?utf-8?B?YWQ5WTJycWR6TmhRVmxyQjhKNktPZUlrNU9IV0lINlAzbGFZN0hZdWwvUGJI?=
- =?utf-8?B?Tjl5VEZyMWtWdHgwdDcxdmliTzhNS3lQY05NeGc2OCticmZ4Z0lMREZoSmNG?=
- =?utf-8?B?ODZiTGpBUWxUNzVzeEpMYzZZb2xPQnZnWE5LWmlVbmNHaUVvcnpreUhaV3R0?=
- =?utf-8?B?MEdkOTlqa0loa2lUaTVrd28zQTRtTGZ1djNDN0w0WFl6V1NxaDF1cHVWTjJt?=
- =?utf-8?B?eDBnTnMrZTllUnJYUTZidEFxemRpL3RWTHA2Z29ML3cvUG1kSEUrT05GNXVh?=
- =?utf-8?B?bC85bHpPQ0Z2SXNwOXo2S2RaL2tVY2JXK3NmOGdIRjFuZU50MStiQ29pdFp0?=
- =?utf-8?B?Y3ViUEczekU2emJDRHZMdjQzaUVGZEV5OXVvNkxRbTB2UEVNaFhkMWZ5Vldp?=
- =?utf-8?B?c25QQzBxYi9JVFBQSmI2M3g4SzFuZGJGUWYybmVLVGtpajFnTlhjZWkrVCtv?=
- =?utf-8?B?bGZZSlI0dDRaZ1BwUkVBVGw0aDl6N1pyNGNMS0V1Qjk0QXhEU1Z1bHhpQ28r?=
- =?utf-8?B?Zms3WXQ2ZFYxcVpzV1pVOHhXYXhURi90TUtYLzZMY1dLb3hxWTFUSVQycFdG?=
- =?utf-8?B?RU1lMTRYSk1MWjJxQlBaM0Jtd2NSZGR0RmllWVRnSzc0Wms4MTBsMklySE9Q?=
- =?utf-8?B?SGJ4NEVVYWFuSkx0em9RdzlBTFJhUlVuZklGM0d2L05jSmFZNDMzSXNDdUV2?=
- =?utf-8?B?eGRaYzlpMkFmSU9ZTCthQm5nMjcxS0tXTnUwdytsd0N0ZEN6eGcxSGk2ZlJU?=
- =?utf-8?B?YmdCcTBaYW1BTmdEZ2E3RHZ5VjdiWHM4MHp1TXRHRGp4OElVbHAvb2dBWXdP?=
- =?utf-8?B?SzllcGNLNldFbU9RVkpMQ0ZZVzdySTVKRkNlb0VPeWR0YzFZMm1pWjBIakFh?=
- =?utf-8?B?T05RbjhBc1NwVHpNRGt3SlJNZStFQy8zYWlqMTdCeGhEYTRZUWpNKzh2SEFm?=
- =?utf-8?B?eU9RdWl5SGNPdkYwYWdzaWNtbXB1cW10QUZFY3BqeU8rU0FMeksxN2Z4WkpT?=
- =?utf-8?B?czJsbWo2Q211SkZhV0pXWk5ncElsaFRlNlBHRGIxZ1pJalZPZklaMkF6RWhB?=
- =?utf-8?B?NVUyZzQ1TXBMWndkSGozckFuNVllVGtRZWEyWFE4SnVoS3J4Y3hxaDhKMHRl?=
- =?utf-8?B?ZWJhUVNTRVhhMGc2NWlNKzZUZUQ1N091UzlkOFkwRWZMaFJiMFJhV05yNUtw?=
- =?utf-8?B?WWhrakV0ZWc1Nk1GR3R1OG5xdHAvaFluZWFVTk5nYTJ0UUM2bnFFWWJLY0lq?=
- =?utf-8?B?S0w1RUYrZzFPS2ZMNkZScGJsTERYWEZCZks1UnRvVTcxTC9aZk9GMFlEOWRW?=
- =?utf-8?B?UmFDWVhoajZ0U2ZRang5VVpMODNoSTZWY3QzMDIzbEtSQmFQRmY2YTNVb0Nv?=
- =?utf-8?B?RHJGeU9mUkYwc2pSVGQrTElWWTZYcks3NFlNeUdzeDhRZDUycTZ1SWxXckh0?=
- =?utf-8?B?bkEvUUtvU1hYWXJYN2VkbUJqMzNPSUVHZ09hZUFnRkxQR2xTbWNVOXgyaU45?=
- =?utf-8?B?STdQK2FHeXdZRVFKZi9lUHdIWHFhM0s3dlZVbzFzZU9EczdKRjNpbkUxWC9E?=
- =?utf-8?B?WlczajZtNjFFbzVLYVZFaW5QNW83dGI3MjBKV2dZc2N3Y3RsTWxhNUtBekNk?=
- =?utf-8?B?RWwrVUdmOHFkQkdoK04zWEgxYi9adTV6VHNqNG13ekZ3MGtINWE5ckxiQnIv?=
- =?utf-8?Q?aQ7cq7jNzwqZM55zcZBd1Olwnf7X/0kPN1BYVPy5EUJIg?=
-X-MS-Exchange-AntiSpam-MessageData-1: cspSR+/X9u5xxg==
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: fad1225e-623c-4196-2a34-08de5386f669
-X-MS-Exchange-CrossTenant-AuthSource: DS2PR12MB9750.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Jan 2026 16:07:06.0952
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: XS8KI+KdonUWjVXFH1bHtPcu8Np/QRAJQDp6vn5DiLvpl9wl0O2dDnPlWBQUBgGPKCyrQh+tXTJvpuZUv6kDDQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV3PR12MB9258
+Content-Disposition: inline
+In-Reply-To: <DFOFCN7H0Z10.1FAC3SN3TX79O@cknow-tech.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260114_080727_770353_72FD6014 
-X-CRM114-Status: GOOD (  15.01  )
+X-CRM114-CacheID: sfid-20260114_080749_016575_EA5F2ACE 
+X-CRM114-Status: GOOD (  17.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -194,86 +103,42 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-
-On 14/01/2026 15:30, Krzysztof Kozlowski wrote:
-> Make the padctl functions a bit simpler by returning void instead of
-> always '0'.  The callers - phy init/exit - still need to return 0, but
-> these are smaller function without if/branching.
+On Wed, Jan 14, 2026 at 04:41:13PM +0100, Diederik de Haas wrote:
+> On Wed Jan 14, 2026 at 4:19 PM CET, Alan Stern wrote:
+> > 30 seconds was a generous estimate on my part; 5 seconds probably would 
+> > have been enough.  However, the USB subsystem does include some timeouts 
+> > that are 2 seconds long and others that are 5 seconds long, and some of 
+> > these timeouts are inside retry loops.  So a 30-second wait isn't 
+> > unreasonable.
 > 
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-> ---
->   drivers/pinctrl/tegra/pinctrl-tegra-xusb.c | 14 ++++++++------
->   1 file changed, 8 insertions(+), 6 deletions(-)
-> 
-> diff --git a/drivers/pinctrl/tegra/pinctrl-tegra-xusb.c b/drivers/pinctrl/tegra/pinctrl-tegra-xusb.c
-> index 49c5edeba87f..34a373f7e04d 100644
-> --- a/drivers/pinctrl/tegra/pinctrl-tegra-xusb.c
-> +++ b/drivers/pinctrl/tegra/pinctrl-tegra-xusb.c
-> @@ -474,7 +474,7 @@ static const struct pinconf_ops tegra_xusb_padctl_pinconf_ops = {
->   #endif
->   };
->   
-> -static int tegra_xusb_padctl_enable(struct tegra_xusb_padctl *padctl)
-> +static void tegra_xusb_padctl_enable(struct tegra_xusb_padctl *padctl)
->   {
->   	u32 value;
->   
-> @@ -501,10 +501,9 @@ static int tegra_xusb_padctl_enable(struct tegra_xusb_padctl *padctl)
->   
->   out:
->   	mutex_unlock(&padctl->lock);
-> -	return 0;
->   }
->   
-> -static int tegra_xusb_padctl_disable(struct tegra_xusb_padctl *padctl)
-> +static void tegra_xusb_padctl_disable(struct tegra_xusb_padctl *padctl)
->   {
->   	u32 value;
->   
-> @@ -534,21 +533,24 @@ static int tegra_xusb_padctl_disable(struct tegra_xusb_padctl *padctl)
->   
->   out:
->   	mutex_unlock(&padctl->lock);
-> -	return 0;
->   }
->   
->   static int tegra_xusb_phy_init(struct phy *phy)
->   {
->   	struct tegra_xusb_padctl *padctl = phy_get_drvdata(phy);
->   
-> -	return tegra_xusb_padctl_enable(padctl);
-> +	tegra_xusb_padctl_enable(padctl);
-> +
-> +	return 0;
->   }
->   
->   static int tegra_xusb_phy_exit(struct phy *phy)
->   {
->   	struct tegra_xusb_padctl *padctl = phy_get_drvdata(phy);
->   
-> -	return tegra_xusb_padctl_disable(padctl);
-> +	tegra_xusb_padctl_disable(padctl);
-> +
-> +	return 0;
->   }
->   
->   static int pcie_phy_power_on(struct phy *phy)
-> 
+> But that's all processing times *after* it detected a USB device?
+> The thing that really surprised me that it took the kernel a minute to
+> detect anything had happened at all. If that had taken 30 secs, that
+> would've surprised me too. If it then took some time to make the device
+> fully available and operational, sure, fine.
 
-Reviewed-by: Jon Hunter <jonathanh@nvidia.com>
+Well yes, I wanted you to wait long enough for all the initial 
+processing (making the device fully available and operational) to finish 
+up.
 
-Thanks
-Jon
+However, I agree: 30 seconds is _much_ longer than it should take to 
+detect a newly plugged-in device.  It should take less than one second.  
+One possibility is that something involved in waking up the EHCI host 
+controller from its runtime suspend may have caused the delay -- that's 
+why I asked you to try turning off the controller's runtime suspend. 
 
--- 
-nvpublic
+Also, I'm not at all familiar with the particular hardware used by your 
+platform for receiving wakeup signals.  It's possible that a GPIO 
+responsible for this wasn't working right and that's why you were 
+getting all those warning messages.  Another reason for wanting to know 
+what will happen if you take suspends and wakeups out of the picture.
 
+Alan Stern
 
 _______________________________________________
 Linux-rockchip mailing list
