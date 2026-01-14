@@ -4,74 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93E71D31A3C
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jan 2026 10:08:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81C42D31A3C
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jan 2026 10:09:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:Cc:Subject:
-	From:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=38dUf1/8TMQEAju+g4kON//zRZpAYQ2DucsD5h8m/hc=; b=kz7TpHUbIxQ85m
-	8pkd6kLFakWgShLsPFfjDAYvn03pJI/CHXsCs8PMCCbCyE1slJB4m/4o4JYjV90tKLtBxjvkmQ0z0
-	N5p1ZjTe5NNSxW0NqNERN1T5v0kzXT61Qb+ANnOVL6LsY6o45d/MoX/NNU6hIFmrHTGEw7ETV30wX
-	RXmhjp91ByB0lpb0laQGF56E0k95zEZxhgUdsbG2wS7y5bklNwODnUlJNveDMc1FSBT71zQ+njyHX
-	nc4xd8JjTmYud/ZPaO3yRwBfPJcF+twzv4WOX0eroQRgsiWK1WSROBQQAK/aqhZusAfHoy5qRRc42
-	WRRdCcGtN/REgoCZbOQg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=eUwE1S1grhAdZ5c4W4lMgS/dgYvVOYcGcaYtQGaD4Bg=; b=IGT
+	Y/o5FpY0MhO3CL/W1nXDvnCmpf0C/U2EbNdGlIKhA/GH8M5m54QW1cHcWz5VzBkcPSMyYOblQpXgA
+	hf/75Si4NR4D9R0f91QjQYQe13WLGkiceANUepe9EpYggj8pG/sCqW4s243DC/ALLzt5z8plZF0JX
+	bRIx9VdSFzqLJe8FbCIo8d1+bQfJzKnad0WK/nWnRu3fMKstujY9OL+3615gh24Dt/RfltojjXADp
+	zDhrTTs/Qxd1emRtZ3lf6/v/yQW9uufnD7s6QokvR1f51SRJjNinQ7X7f2Nz3Rfbn5+H4bZmsyhKf
+	81DZhivA4yDtZMmjQHgX14mgPVAqV5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfxnm-00000008h9T-0TLA;
-	Wed, 14 Jan 2026 10:08:34 +0000
-Received: from smtpout-02.galae.net ([185.246.84.56])
+	id 1vfxom-00000008hag-3I6n;
+	Wed, 14 Jan 2026 10:09:36 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfxnj-00000008h83-2z0Z
-	for linux-rockchip@lists.infradead.org;
-	Wed, 14 Jan 2026 10:08:33 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-02.galae.net (Postfix) with ESMTPS id 174541A285D;
-	Wed, 14 Jan 2026 10:08:30 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id DE5BE6074A;
-	Wed, 14 Jan 2026 10:08:29 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id AFEF7103C8951;
-	Wed, 14 Jan 2026 11:08:21 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1768385308; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=Z9hmPzenFNHaMEP2WOiENDOqLl4/pBzRMvq4zXQDd30=;
-	b=GDEsWcN0OQmo0Xuf/4owyxd3IfW887wWvn+avOzD4aebrRZvNrcrd+7b+JuvSYf/BJ2o6y
-	XIRcpeASb8PCAFWvW13V53ww6G0cRESJL1ONydT3pTPnkqlGmG5Vnk8GkyMM+nZD6hJq+G
-	YjHdiw7GlND0SzDh6MFC1+1avZpJPzvWtDApAQci2AKko5jsCmwxcvh3wjpNaYEu74iBq0
-	e/rxHVQAoVuKHA+lxL3W0mS/U/v0ZIIKQ7sD5vFM9QBgIEtrC/pSFi985sfqLAIyyx5l8m
-	Wm0d2FaBgc1R1hO/tZQw8f/pw8h2Lfk2Q5VSnRmMfl84dJz8EzN8LCd2Kjz+8g==
-Mime-Version: 1.0
-Date: Wed, 14 Jan 2026 11:08:20 +0100
-Message-Id: <DFO89S1NDME1.1644YSMOMAAJ6@bootlin.com>
-From: "Luca Ceresoli" <luca.ceresoli@bootlin.com>
-Subject: Re: [PATCH v2 1/4] drm/bridge: Add ->detect_ctx hook and
- drm_bridge_detect_ctx()
-Cc: <kernel@collabora.com>, <dri-devel@lists.freedesktop.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-rockchip@lists.infradead.org>, "Diederik de Haas"
- <diederik@cknow-tech.com>, "Maud Spierings" <maud_spierings@hotmail.com>
-To: "Cristian Ciocaltea" <cristian.ciocaltea@collabora.com>, "Andrzej Hajda"
- <andrzej.hajda@intel.com>, "Neil Armstrong" <neil.armstrong@linaro.org>,
- "Robert Foss" <rfoss@kernel.org>, "Laurent Pinchart"
- <Laurent.pinchart@ideasonboard.com>, "Jonas Karlman" <jonas@kwiboo.se>,
- "Jernej Skrabec" <jernej.skrabec@gmail.com>, "Maarten Lankhorst"
- <maarten.lankhorst@linux.intel.com>, "Maxime Ripard" <mripard@kernel.org>,
- "Thomas Zimmermann" <tzimmermann@suse.de>, "David Airlie"
- <airlied@gmail.com>, "Simona Vetter" <simona@ffwll.ch>, "Sandy Huang"
- <hjc@rock-chips.com>, =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
- "Andy Yan" <andy.yan@rock-chips.com>
-X-Mailer: aerc 0.20.1
-References: <20260113-dw-hdmi-qp-scramb-v2-0-ae7b2c58d24d@collabora.com>
- <20260113-dw-hdmi-qp-scramb-v2-1-ae7b2c58d24d@collabora.com>
-In-Reply-To: <20260113-dw-hdmi-qp-scramb-v2-1-ae7b2c58d24d@collabora.com>
-X-Last-TLS-Session-Version: TLSv1.3
+	id 1vfxog-00000008hV5-10yX;
+	Wed, 14 Jan 2026 10:09:31 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1768385367;
+	bh=DNtLMGNbZb6Rx7hXH70qj+NI37bo1I4GXdx0IehFZUk=;
+	h=From:To:Cc:Subject:Date:From;
+	b=AlnMEg2e1zxsSG5taOVeiWQd8KWq7fUvwlsgur8Ag9kbN15koWkGWxik7QdVGAALc
+	 2RqifSLwOa9W/fgtUsmMCczEWbf9kQMb6+6vZOlgg1OmJ+R+Av7Lc0++t6z5H0lQd6
+	 aycLkCZKNp0jyybwWskXmyhwUXYBFLeuF+Dd+MbUVrCbAqjJrUp9nFYZSlZ1x646Jj
+	 wv0HoXXrFDocjr49DTid7d1vaFbwyKrhjRuE6Fp1AjwfAhrjXZW1El/7ZBKYGpFV9k
+	 oziHsI3omcdIm/fwHcpWJv1ebzgyhoo+V2NhtrKPL6BqsctagRHYgPrckibpA8RDuQ
+	 RhytmLaV0rmKQ==
+Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:1dad:60e8:7174:bd20])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: benjamin.gaignard)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 512CD17E10C8;
+	Wed, 14 Jan 2026 11:09:27 +0100 (CET)
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: joro@8bytes.org,
+	will@kernel.org,
+	robin.murphy@arm.com,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	heiko@sntech.de,
+	nicolas.dufresne@collabora.com,
+	p.zabel@pengutronix.de,
+	mchehab@kernel.org
+Cc: iommu@lists.linux.dev,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-media@vger.kernel.org,
+	kernel@collabora.com,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: [PATCH v12 0/6] Add support for Verisilicon IOMMU used by media
+Date: Wed, 14 Jan 2026 11:09:12 +0100
+Message-ID: <20260114100922.149187-1-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.43.0
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260114_020831_881413_73E94B27 
-X-CRM114-Status: GOOD (  29.15  )
+X-CRM114-CacheID: sfid-20260114_020930_457497_390207FF 
+X-CRM114-Status: GOOD (  17.64  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,154 +81,102 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============2389468775089936684=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Cristian,
+--===============2389468775089936684==
+Content-Type: text/plain; charset=a
+Content-Transfer-Encoding: 8bit
 
-On Mon Jan 12, 2026 at 11:26 PM CET, Cristian Ciocaltea wrote:
-> Add an atomic variant of the ->detect callback and a new helper to call
-> the hook while passing an optional drm_modeset_acquire_ctx reference.
->
-> When both ->detect_ctx and ->detect are defined, the latter is ignored.
-> If acquire_ctx is unset, the function takes care of the locking,
-> while also handling EDEADLK.
->
-> Tested-by: Diederik de Haas <diederik@cknow-tech.com>
-> Tested-by: Maud Spierings <maud_spierings@hotmail.com>
-> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-> ---
->  drivers/gpu/drm/drm_bridge.c | 58 ++++++++++++++++++++++++++++++++++++++++++++
->  include/drm/drm_bridge.h     | 30 +++++++++++++++++++++++
->  2 files changed, 88 insertions(+)
->
-> diff --git a/drivers/gpu/drm/drm_bridge.c b/drivers/gpu/drm/drm_bridge.c
-> index 6dcf8f6d3ecf..0ef12bf98011 100644
-> --- a/drivers/gpu/drm/drm_bridge.c
-> +++ b/drivers/gpu/drm/drm_bridge.c
-> @@ -1344,6 +1344,64 @@ drm_bridge_detect(struct drm_bridge *bridge, struct drm_connector *connector)
->  }
->  EXPORT_SYMBOL_GPL(drm_bridge_detect);
->
-> +/**
-> + * drm_bridge_detect_ctx - check if anything is attached to the bridge output
-> + * @bridge: bridge control structure
-> + * @connector: attached connector
-> + * @ctx: acquire_ctx, or NULL to let this function handle locking
-> + *
-> + * If the bridge supports output detection, as reported by the
-> + * DRM_BRIDGE_OP_DETECT bridge ops flag, call &drm_bridge_funcs.detect_ctx
-> + * or &drm_bridge_funcs.detect for the bridge and return the connection status.
-> + * Otherwise return connector_status_unknown.
-> + *
-> + * When both @ctx and &drm_bridge_funcs.detect_ctx are not set, this helper
-> + * function is equivalent to drm_bridge_detect() above.
-> + *
-> + * RETURNS:
-> + * The detection status on success, or connector_status_unknown if the bridge
-> + * doesn't support output detection.
-> + * If @ctx is set, it might also return -EDEADLK.
-> + */
-> +int drm_bridge_detect_ctx(struct drm_bridge *bridge,
-> +			  struct drm_connector *connector,
-> +			  struct drm_modeset_acquire_ctx *ctx)
+Hi all,
 
-Shouldn't this new function return the same type as detect, i.e. enum
-drm_connector_status?
+This patch series adds support for the Verisilicon IOMMU, which is found
+in front
+of hardware encoder and decoder blocks in several SoCs using Verisilicon
+IP. 
+A first implementation of this IOMMU is available on the Rockchip RK3588
+SoC.
 
-Otherwise (see below)...
+Rockchip provides a driver for this hardware in their 6.1 kernel branch:
+https://github.com/rockchip-linux/kernel/blob/develop-6.1/drivers/iommu/rockchip-iommu-av1d.c
 
-> +{
-> +	if (!(bridge->ops & DRM_BRIDGE_OP_DETECT))
-> +		return connector_status_unknown;
-> +
-> +	if (bridge->funcs->detect_ctx) {
-> +		struct drm_modeset_acquire_ctx br_ctx;
-> +		int ret;
-> +
-> +		if (ctx)
-> +			return bridge->funcs->detect_ctx(bridge, connector, ctx);
-> +
-> +		drm_modeset_acquire_init(&br_ctx, 0);
-> +retry:
-> +		ret = drm_modeset_lock(&connector->dev->mode_config.connection_mutex,
-> +				       &br_ctx);
-> +		if (!ret)
-> +			ret = bridge->funcs->detect_ctx(bridge, connector, &br_ctx);
-> +
-> +		if (ret == -EDEADLK) {
-> +			drm_modeset_backoff(&br_ctx);
-> +			goto retry;
-> +		}
-> +
-> +		if (ret < 0)
-> +			ret = connector_status_unknown;
-> +
-> +		drm_modeset_drop_locks(&br_ctx);
-> +		drm_modeset_acquire_fini(&br_ctx);
-> +
-> +		return ret;
-> +	}
-> +
-> +	return bridge->funcs->detect(bridge, connector);
+This series includes:
+- a new binding for the Verisilicon IOMMU
+- a driver implementation
+- DT updates for RK3588
 
-...here you're converting an enum into an int, which is ok-isk but not
-ideal.
+The driver was forward-ported from Rockchip’s 6.1 implementation, 
+the prefix was renamed to vsi for generality, and several fixes were
+applied.
 
-> --- a/include/drm/drm_bridge.h
-> +++ b/include/drm/drm_bridge.h
-> @@ -664,6 +664,33 @@ struct drm_bridge_funcs {
->  	enum drm_connector_status (*detect)(struct drm_bridge *bridge,
->  					    struct drm_connector *connector);
->
-> +	/**
-> +	 * @detect_ctx:
-> +	 *
-> +	 * Check if anything is attached to the bridge output.
-> +	 *
-> +	 * This callback is optional, if not implemented the bridge will be
-> +	 * considered as always having a component attached to its output.
-> +	 * Bridges that implement this callback shall set the
-> +	 * DRM_BRIDGE_OP_DETECT flag in their &drm_bridge->ops.
-> +	 *
-> +	 * This is the atomic version of &drm_bridge_funcs.detect.
+AV1 decoding was tested using the stateless VPU driver and Fluster.
+The test results show a score of 205/239, which confirms that no
+regressions were introduced by this series.
 
-I may be missing something, but I'm a bit puzzled by the "atomic" word
-here. For other funcs in this struct there's the old non-atomic func X and
-the new atomic_X func that receives a pointer to struct drm_atomic_state.
+Feedback and testing welcome.
 
-Here I think you are using "atomic" with a more generic meaning. Maybe we'd
-better use another wording to not confuse readers?
+changes in version 12:
+- Remove useless vsi_iommu_flush_tlb_all()
+- Merge MAINTAINERS changes in the patch introducing VSI iommu driver
 
-> +	 *
-> +	 * To avoid races against concurrent connector state updates, the
-> +	 * helper libraries always call this with ctx set to a valid context,
-> +	 * and &drm_mode_config.connection_mutex will always be locked with
-> +	 * the ctx parameter set to this ctx. This allows taking additional
-> +	 * locks as required.
-> +	 *
-> +	 * RETURNS:
-> +	 *
-> +	 * &drm_connector_status indicating the bridge output status,
-> +	 * or the error code returned by drm_modeset_lock(), -EDEADLK.
-> +	 */
-> +	int (*detect_ctx)(struct drm_bridge *bridge,
-> +			  struct drm_connector *connector,
-> +			  struct drm_modeset_acquire_ctx *ctx);
+changes in version 11:
+- Fix dependency issue when decoder driver is build as module.
 
-As above, shouldn't this new func return the same type as detect?
+changes in version 10:
+- Update vsi_iommu_identity_attach() and vsi_iommu_attach_device()
+  prototypes.
+- Fix build as module issue when Verisilicon video decoder is built-in.
+- Rebase on master branch.
 
-Best regards,
-Luca
+changes in version 9:
+- removing blanks lines.
 
---
-Luca Ceresoli, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
+changes in version 8:
+- Add myself in MAINTAINERS file.
+- Add API to restore VSI iommu context from decoder driver
+- Fix reported checkpatch issues: add comment in pinlock_t declaration
+  and remove blank line.
+- Include board name in defconfig patch commit message
+
+ 
+Benjamin Gaignard (6):
+  dt-bindings: vendor-prefixes: Add Verisilicon
+  dt-bindings: iommu: verisilicon: Add binding for VSI IOMMU
+  iommu: Add verisilicon IOMMU driver
+  media: verisilicon: AV1: Restore IOMMU context before decoding a frame
+  arm64: dts: rockchip: Add verisilicon IOMMU node on RK3588
+  arm64: defconfig: enable Verisilicon IOMMU for Rockchip RK3588
+
+ .../bindings/iommu/verisilicon,iommu.yaml     |  71 ++
+ .../devicetree/bindings/vendor-prefixes.yaml  |   2 +
+ MAINTAINERS                                   |   8 +
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi |  11 +
+ arch/arm64/configs/defconfig                  |   1 +
+ drivers/iommu/Kconfig                         |  11 +
+ drivers/iommu/Makefile                        |   1 +
+ drivers/iommu/vsi-iommu.c                     | 778 ++++++++++++++++++
+ .../verisilicon/rockchip_vpu981_hw_av1_dec.c  |  15 +
+ include/linux/vsi-iommu.h                     |  21 +
+ 10 files changed, 919 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/iommu/verisilicon,iommu.yaml
+ create mode 100644 drivers/iommu/vsi-iommu.c
+ create mode 100644 include/linux/vsi-iommu.h
+
+-- 
+2.43.0
+
+
+
+--===============2389468775089936684==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============2389468775089936684==--
