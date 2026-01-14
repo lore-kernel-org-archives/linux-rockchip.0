@@ -4,83 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D894D39014
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jan 2026 20:13:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CF89D3901A
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jan 2026 20:51:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Lnli6h5osaNRxUEV7t7lTnkUeFhv280GLkkUJ/SQRKM=; b=Q3CCeHa9BVkjIL
-	FiSNUoKeXIQn7I3XtZ5r04mAmouRWyycwaKs+ibCsNKHcqTdCSQVOjLQOTPY8DmDTZaNhk6Mzwo3L
-	EiC6kYbFd35JydAKFRBmcLVvU2DjUOv7EqQKTJV7Ty4wjh0w7j1RQmgPFwv+TpsGTBGYIy1va2jmK
-	GMb1PQqLFLHSP3HxzcDK+HKidTcpqfhmEI/UFzgY5C2J+aQBhlnRNxoU5mBoTIOIQFTD3ODWRUG9m
-	jtfkPPOLBAJciBMSiCp5CV9HMhxQghkLAn2NYyFmwkYpD+4A9KVv0qPt4rTK0sWjxNfjBCQkGoK8R
-	+i1tIg46Fzx+8uM+8EMw==;
+	List-Owner; bh=lXjxDR9xoo3LoQezrKt6cK6+yKOLBLdmunv+PGfcPjc=; b=cpfLlOeSgbtlq9
+	WulZ+5HoNP+sWG22My3vJh5OmSR6+LtQ5NLbJ5g4D8JMD15k933S8pqlSNnmVMckW4LZkLtQjv7Qu
+	uZQLDkcrGw3404qnY5MybNNJj1YNslPIEmu6S0XiktttUwPDUvBFMo1qqkQNnyof6X6ITtBhWllrc
+	+qk7vl1MszClgFp8lwGkTQn56LIdvy/tDqyP1vTDXyKFgFoJpWJY5jKnlwqUJbEcw1+jr4WxaaxdX
+	QHhnOyoMI2NdWFGgK/gmym3sLtPFnhY3+kiSDZuwXGpHHMvNRLmmsVi8jnRVUUGW5Zyzs8eT4f/qo
+	uEC4fuAz2EkbNmObc4mg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vg7FY-0000000AajK-2YTu;
-	Wed, 14 Jan 2026 20:13:52 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vg7qA-0000000AgqU-4Agv;
+	Wed, 14 Jan 2026 20:51:42 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vg7FW-0000000Aaim-37cz;
-	Wed, 14 Jan 2026 20:13:50 +0000
+	id 1vg7q7-0000000Agp8-01ko;
+	Wed, 14 Jan 2026 20:51:41 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 915826001D;
-	Wed, 14 Jan 2026 20:13:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3D89CC4CEF7;
-	Wed, 14 Jan 2026 20:13:37 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 51D3543A5D;
+	Wed, 14 Jan 2026 20:51:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 182EAC4CEF7;
+	Wed, 14 Jan 2026 20:51:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1768421629;
-	bh=MMH8BxTdLCMG6H0k3fKrVpip0aGLgha/EOhPfRlgxMQ=;
+	s=k20201202; t=1768423896;
+	bh=dwL47rYgTdWjH2R9TONSAhn5UmSu6UH5MGZCn6Mj7KM=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=c5mIULR/ygIzxL+Pxuty2E8BhuVMHRvwCUrYsJBWxe4NzUKKOvLAHR7O5T55F/bwX
-	 8Sao0YehpAnrOtH3Cv93t6hj77ccJbds7h9behm5sB/bF4j1EXJT+XINv2x1ke5C+i
-	 nBTDVTjP+ljthpD5TzWKEMWc32UsTKRs+aTvOb3d3kUOm1miZ8lNpyqikqvMgP3BDW
-	 WLIgmTjHA+HTTrPt2NMj093kfu2BQb33BcNhJChO49A8CRrFYcvFATIckjUkyHgWo8
-	 duYni3PcbrLxP3ol8/+Vqc3h2JQtvSwo/amvWEl164C/evEW3b51EsRId7Yoax4GR6
-	 0YROdUiZQvKJA==
-Date: Wed, 14 Jan 2026 21:13:34 +0100
-From: Niklas Cassel <cassel@kernel.org>
-To: Frank Li <Frank.li@nxp.com>
-Cc: Koichiro Den <den@valinux.co.jp>, jingoohan1@gmail.com, mani@kernel.org,
-	lpieralisi@kernel.org, kwilczynski@kernel.org, robh@kernel.org,
-	bhelgaas@google.com, vigneshr@ti.com, s-vadapalli@ti.com,
-	hongxing.zhu@nxp.com, l.stach@pengutronix.de, shawnguo@kernel.org,
-	s.hauer@pengutronix.de, kernel@pengutronix.de, festevam@gmail.com,
-	minghuan.Lian@nxp.com, mingkai.hu@nxp.com, roy.zang@nxp.com,
-	jesper.nilsson@axis.com, heiko@sntech.de,
-	srikanth.thokala@intel.com, marek.vasut+renesas@gmail.com,
-	yoshihiro.shimoda.uh@renesas.com, geert+renesas@glider.be,
-	magnus.damm@gmail.com, christian.bruel@foss.st.com,
-	mcoquelin.stm32@gmail.com, alexandre.torgue@foss.st.com,
-	thierry.reding@gmail.com, jonathanh@nvidia.com,
-	hayashi.kunihiko@socionext.com, mhiramat@kernel.org,
-	kishon@kernel.org, jirislaby@kernel.org, rongqianfeng@vivo.com,
-	18255117159@163.com, shawn.lin@rock-chips.com,
-	nicolas.frattaroli@collabora.com, linux.amoon@gmail.com,
-	vidyas@nvidia.com, linux-omap@vger.kernel.org,
-	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org, imx@lists.linux.dev,
-	linuxppc-dev@lists.ozlabs.org, linux-arm-kernel@axis.com,
-	linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-tegra@vger.kernel.org
-Subject: Re: [PATCH v7 3/6] PCI: dwc: Allow glue drivers to return mutable
- EPC features
-Message-ID: <aWf47s1oY-bjCDSA@fedora>
-References: <20260113162719.3710268-1-den@valinux.co.jp>
- <20260113162719.3710268-4-den@valinux.co.jp>
- <aWatVUFdyYz+JaMI@lizhi-Precision-Tower-5810>
- <mz3ahnech7yn66hcv7hqllir6rz6qpjd6m2aj3feh2gqfsvpwk@oobwtkb6o2jx>
- <aWe0KJnZNHqSUAKg@lizhi-Precision-Tower-5810>
- <m47oybaq4u2noqqd77czzgwwnmmquhvarjnxgijlhb5neulznt@dts3icronu6u>
- <aWfyDHZCoh1t6/vP@lizhi-Precision-Tower-5810>
+	b=pZ+BRXKTkbWWaLyq4wWKeIIyjyEvlnSYP1AyEi0okhBLvkruc56wx94x5hQ/dL++t
+	 J+F3kX2fQdga3hsjc3ddvDYmVgce6C//rbGgAOZt0A5B2cC4cbgdm+vzBuBx9k5qfT
+	 xORbUo5FFff8Dh2ZavSCYzkllYCEyj85N/mY3QIF+wZ+scQHH/V/RuBaxkchGTTXz6
+	 OlIpeP6UVrLQJ5FCf0gGZe9UXrUYRJSGtksUuzPOSgje0DFx40WD9rjMHZ3g3s/INJ
+	 dB0CXdoigNscXM8Fv5DNbhSWsxEoDiKAl/iw7uRM2sPC1THyKQJKIda0ODI6jx+j3m
+	 v0oj0sP3vdzkg==
+Date: Wed, 14 Jan 2026 14:51:35 -0600
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Robin Murphy <robin.murphy@arm.com>
+Cc: thierry.reding@gmail.com, devicetree@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, neil.armstrong@linaro.org,
+	dri-devel@lists.freedesktop.org, sam@ravnborg.org,
+	dianders@chromium.org, linux-arm-kernel@lists.infradead.org,
+	heiko@sntech.de, jesszhan0024@gmail.com
+Subject: Re: [PATCH 1/4] dt-bindings: display: panel: Move FriendlyElec
+ HD702E to eDP
+Message-ID: <176842389446.3188655.18330903813710913313.robh@kernel.org>
+References: <cover.1767111804.git.robin.murphy@arm.com>
+ <80a68e706e869aadbdea228b207a5df52bbfd7b2.1767111807.git.robin.murphy@arm.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <aWfyDHZCoh1t6/vP@lizhi-Precision-Tower-5810>
+In-Reply-To: <80a68e706e869aadbdea228b207a5df52bbfd7b2.1767111807.git.robin.murphy@arm.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260114_125139_232623_A1783254 
+X-CRM114-Status: UNSURE (   9.50  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,42 +77,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jan 14, 2026 at 02:44:12PM -0500, Frank Li wrote:
-> > > > > Add
-> > > > > 	DWC_EPC_DEFAULT, into every epc_features.
-> > > >
-> > > > One corner case is that pci-layerscape-ep.c builds the pci_epc_features
-> > >
-> > > It is our old platform. I checked code, it should be wrong. features should
-> > > report EPC hardware capibility.
-> >
-> > I'm not really sure whether commit cc255eb0bfbe ("PCI: layerscape: Modify
-> > the way of getting capability with different PEX") was wrong.
-> > Do you have a patch in mind?
+
+On Tue, 30 Dec 2025 17:20:31 +0000, Robin Murphy wrote:
+> The "E" alludes to the fact that FriendlyElec's HD702E is actually an
+> eDP panel - move its compatible to the appropriate binding doc.
 > 
-> I think it's wrong. And it doesn't impact your patch. Just leave it as it.
-> we can add submap support later if need.
+> Cc: <devicetree@vger.kernel.org>
+> Signed-off-by: Robin Murphy <robin.murphy@arm.com>
+> ---
+>  .../devicetree/bindings/display/panel/panel-edp-legacy.yaml     | 2 ++
+>  .../devicetree/bindings/display/panel/panel-simple.yaml         | 2 --
+>  2 files changed, 2 insertions(+), 2 deletions(-)
+> 
 
-Adding a macro:
-#define DWC_EPC_COMMON_FEATURES .dynamic_inbound_mapping = true
+Acked-by: Rob Herring (Arm) <robh@kernel.org>
 
-And including it in all the DWC glue drivers' epc_features sounds
-fine to me.
-
-Frank does have a point that if some glue driver ever has some random
-errata or bad integration, it will be simpler for a single glue driver
-to override the defaults.
-
-
-The commit that adds subrange mapping support would then just
-change the macro to something like:
-
-#define DWC_EPC_COMMON_FEATURES .dynamic_inbound_mapping = true, \
-				.subrange_mapping = true
-
-
-Kind regards,
-Niklas
 
 _______________________________________________
 Linux-rockchip mailing list
