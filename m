@@ -4,79 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 949DDD29FEF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jan 2026 11:21:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6DEED29FF8
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jan 2026 11:49:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yFZAvCZE5Fh2CJuFA3B7zKJMCK2K0cgbl4ZAkhwjccE=; b=fkygJM8ca0W0QeL8Y7vTXG4fBW
-	jJhR0EtcNU+310o4ZCVXEFNwyztIrX1ssAsjLKrS1Lek7cRlsXIeO7ZRVUuQZQf5vGfri/uJCPoAx
-	uQL5LFqXSegRTO17yjWkKgzfH+7x3RjsZ2xsI99iGdrpn0aisdNpDRezg7wAVml7phXEVHcAGzJQV
-	Ohj1EIzmJrPm/P+5oxrOLUz2S0lc7G+UT+9Gf9dxbyG1UUB+3NbWqZDXOzu+6x8SbiNvVhKKJf9RX
-	QQcO1ng3A1UIIv+/7K0R1Tz9qJ9su0OmekFQ3eAy85e3A66+/pp6NGPFCqxk72CA80sk2SP8AiztP
-	NB82ROfw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-ID:MIME-Version:To:Cc:
+	Date:References:In-Reply-To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=yLqvDLD8rKkibMzE+eD7lKXgES8n11NZT5W2rQ1UIOY=; b=FSr/Th3XN6RKvB
+	voksHkcvQp15le244v3ynTAq6Ur1HBPZso3MV5ijMMX/xynkfYOn0cgNucqYWBtKv9qEWtSsZwDz4
+	71lqBwL5oSzIiFChIUTKBCvmTKCjI5CY5W7VYtAdRYMOsVFZDrK2JLH/mrwly/Yg2dz730+BerK5s
+	AItFNHLGpxbUcxETwk9E3oW+5W2zuggewJuR6IdYy3IpWNKLVIouGTdSnNwdwYId46K8UXRCxXlDN
+	5qTAwZW17pbFzCXb4ipX3louxOszTysPk5pV+6gBKETaZ4VHmpdJUTPuSHDKS6gB1/ogZoEn4Eh5y
+	8zrD0ACZJ6uyk/94ZhuA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfyvi-00000008w8z-3v9d;
-	Wed, 14 Jan 2026 11:20:50 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1vfzNR-0000000921G-0UZe;
+	Wed, 14 Jan 2026 11:49:29 +0000
+Received: from mail1.manjaro.org ([142.132.176.110])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfyvh-00000008w8L-0In3;
-	Wed, 14 Jan 2026 11:20:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=Content-Type:MIME-Version:References:
-	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=McwtWZarGy/mqfWsR4TlM8acbCbH3jUkpH7EWjhWvVM=; b=gZ6PmiwHIfB854+dG9vt73Im7t
-	2kdtPYgmfkRV2BphL1R29H5oW0Gj/FJrlCQsObnNQLjSVJBnteCQdetqEs3ffrz+Bfx/eKYTpB6ud
-	J016zR8KZ1Al4rd7+1/KZ8EdcgYg/lQfXmu6EafpD8gLtxY8QH/37ukyefnG9w3Tmdurq+dQMlqS4
-	Cg3T091d1D9Xi41DGlTwVdNWkFSR7UCE4ESmtUAeo+LW24fhYig4Mrl7iQIS51xrN5lJO0IBluIbX
-	saiPmjqcVMldWjfko5VolZ6jCG21BqiGxg1nlefdzzbCdRMduWrBwJ3b+bSQ4K2JtNDlUndOdNOTd
-	EjAgAMLw==;
-Received: from layka.disroot.org ([178.21.23.139])
-	by casper.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfyvd-000000066ow-1N4v;
-	Wed, 14 Jan 2026 11:20:47 +0000
-Received: from mail01.disroot.lan (localhost [127.0.0.1])
-	by disroot.org (Postfix) with ESMTP id 9FCD525F65;
-	Wed, 14 Jan 2026 07:00:03 +0100 (CET)
-X-Virus-Scanned: SPAM Filter at disroot.org
-Received: from layka.disroot.org ([127.0.0.1])
- by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id PMC-TBv38890; Wed, 14 Jan 2026 07:00:02 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
-	t=1768370402; bh=McwtWZarGy/mqfWsR4TlM8acbCbH3jUkpH7EWjhWvVM=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=Lg7DywJZhDrdYLigBJpXvVi+gvXfb1x0GbLK8LVmtJSXSuAGZIdWUs9MR6HMf4ubX
-	 5hkran3Z6nplnFonZjtC+A87JXkLh0Fg3eiyY9qBOuA7NBwHovXBmvVcpR8q6CcAU7
-	 WjQBWxPlVNT8sy3WM+1iMbQaE3xHLMynnYHrLjC5MqmevEwCpl+NQFWvjh7XczrnOz
-	 BFTHteGavPoJiVPTbZ2nVRevuSq+BA/U3IydVFb91n66OvE+t5rKLqyG7JPdYfufYI
-	 dEmUjuZa1NQ+H4zisfuPuG3sYZ+FUuWJuI68NnE4Uor4yX+ZyzDZl4KirHhVDjrEjQ
-	 n1T64K/DHjQfg==
-From: Danct12 <danct12@disroot.org>
-To: guptarud@gmail.com, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Heiko Stuebner <heiko@sntech.de>, Lee Jones <lee@kernel.org>,
- Krzysztof Kozlowski <krzk@kernel.org>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- Martijn Braam <martijn@brixit.nl>,
- Kamil =?UTF-8?B?VHJ6Y2nFhHNraQ==?= <ayufan@ayufan.eu>,
- Ondrej Jirman <megi@xff.cz>
-Subject: Re: [PATCH 1/3] arm64: dts: rockchip: Add modem to the Pinephone Pro
-Date: Wed, 14 Jan 2026 05:57:03 +0000
-Message-ID: <6468173.31r3eYUQgx@melttower>
-In-Reply-To: <bcee4f0b-6159-46c9-81ba-ec2970994613@kernel.org>
-References: <20260112-ppp_connectivity-v1-0-284d6e83b212@gmail.com>
- <20260112-ppp_connectivity-v1-1-284d6e83b212@gmail.com>
- <bcee4f0b-6159-46c9-81ba-ec2970994613@kernel.org>
+	id 1vfzNG-000000091rk-0XZK;
+	Wed, 14 Jan 2026 11:49:26 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPA id 4409941A8A;
+	Wed, 14 Jan 2026 12:49:10 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=dkim;
+	t=1768391353; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:in-reply-to:references;
+	bh=bBfMjrGo4Jxvu45aSn6YILJa6MyAoiKKy1rZ35UryF8=;
+	b=v4U3pivYB5Ma0GveQD03fyuz4PEEBG/2vRZ/ToB5VLr5AMAuV7YFpG3Ms3jPjoxwEyQ4sI
+	FVOIk7iomjkvi820S+w1kWqZPawHztknia/Fqu+02pZrLhVhA+A+Egiaxhu/N+pgl/HB38
+	HKiMJuIPTXhBhgnn8wDye1FJ5YFZNLkANh8a2E6XY9ecvORG3cWpzeDSh4yZP/TcB2q9DU
+	jW3/b06Ms6y8rC+u8Yo5DzVfKbWf6e9GFYS8N6sllkZl94wscWZ1CPCH2esisuICasAVDS
+	30bpti0zOyTn13fh1UInsf497F7Ck5uM91hiLaNqmrZ2LlvOCfNkITGQ5lNXJg==
+From: "Dragan Simic" <dsimic@manjaro.org>
+In-Reply-To: <0b9488badb467ef83a0a464eeea921f59e32e6b0.1767111809.git.robin.murphy@arm.com>
+References: <cover.1767111804.git.robin.murphy@arm.com> <0b9488badb467ef83a0a464eeea921f59e32e6b0.1767111809.git.robin.murphy@arm.com>
+Date: Wed, 14 Jan 2026 12:49:09 +0100
+Cc: heiko@sntech.de, neil.armstrong@linaro.org, dianders@chromium.org, thierry.reding@gmail.com, sam@ravnborg.org, jesszhan0024@gmail.com, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+To: "Robin Murphy" <robin.murphy@arm.com>
 MIME-Version: 1.0
+Message-ID: <81fcd769-d7a5-e909-7105-23cd3d09e473@manjaro.org>
+Subject: =?utf-8?q?Re=3A?= [PATCH 3/4] =?utf-8?q?arm64=3A?==?utf-8?q?_dts=3A?=
+ =?utf-8?q?_rockchip=3A?= Move RK3399 eDP pinctrl to boards
+User-Agent: SOGoMail 5.12.3
+X-Last-TLS-Session-Version: None
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260114_112045_444696_02434B54 
-X-CRM114-Status: GOOD (  11.61  )
+X-CRM114-CacheID: sfid-20260114_034918_432429_DAB69DD8 
+X-CRM114-Status: GOOD (  14.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,107 +63,95 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============5618752448677798343=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============5618752448677798343==
-Content-Type: multipart/signed; boundary="nextPart6104322.LvFx2qVVIh";
- micalg="pgp-sha512"; protocol="application/pgp-signature"
+Hello Robin,
 
---nextPart6104322.LvFx2qVVIh
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="utf-8"; protected-headers="v1"
-From: Danct12 <danct12@disroot.org>
-Date: Wed, 14 Jan 2026 05:57:03 +0000
-Message-ID: <6468173.31r3eYUQgx@melttower>
-In-Reply-To: <bcee4f0b-6159-46c9-81ba-ec2970994613@kernel.org>
-MIME-Version: 1.0
+On Tuesday, December 30, 2025 18:20 CET, Robin Murphy <robin.murphy@arm.com> wrote:
+> The EDP_HOTPLUG pin is optional, and muxed with other functions (notably
+> HDMI CEC), so move its selection from the SoC DTSI to the boards which
+> apparently want it, namely those which enable eDP without "force-hpd".
+> By the same token we drop it from Pinebook Pro, which already uses
+> "force-hpd", and according to the schematics does not have the pin wired
+> at all.
+> 
+> Signed-off-by: Robin Murphy <robin.murphy@arm.com>
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3399-base.dtsi              | 2 --
+>  arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi    | 2 ++
+>  arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts       | 2 --
+>  arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts | 2 ++
+>  4 files changed, 4 insertions(+), 4 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-base.dtsi
+> index 4dcceb9136b7..19a312baa9f1 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-base.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-base.dtsi
+> @@ -2145,8 +2145,6 @@ edp: dp@ff970000 {
+>  		interrupts = <GIC_SPI 10 IRQ_TYPE_LEVEL_HIGH 0>;
+>  		clocks = <&cru PCLK_EDP>, <&cru PCLK_EDP_CTRL>, <&cru PCLK_VIO_GRF>;
+>  		clock-names = "dp", "pclk", "grf";
+> -		pinctrl-names = "default";
+> -		pinctrl-0 = <&edp_hpd>;
+>  		power-domains = <&power RK3399_PD_EDP>;
+>  		resets = <&cru SRST_P_EDP_CTRL>;
+>  		reset-names = "dp";
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
+> index 9d07353df52c..3f3cb0eb5809 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
+> @@ -241,6 +241,8 @@ &dmc {
+>  };
+>  
+>  &edp {
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&edp_hpd>;
+>  	status = "okay";
+>  
+>  	/*
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
+> index eaaca08a7601..dcab04863d28 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
+> @@ -401,8 +401,6 @@ &cpu_l3 {
+>  
+>  &edp {
+>  	force-hpd;
+> -	pinctrl-names = "default";
+> -	pinctrl-0 = <&edp_hpd>;
+>  	status = "okay";
+>  };
+>  
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts b/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
+> index a4ceafe6dd7a..80d6ea0eda84 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
+> @@ -141,6 +141,8 @@ sdio_pwrseq: sdio-pwrseq {
+>  };
+>  
+>  &edp {
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&edp_hpd>;
+>  	status = "okay";
+>  };
 
-Hi Krzysztof and Rudraksha,
+Thanks for this patch!  These changes are looking good to me, and the
+board dts files changed in this patch are the right ones, i.e. those that
+enable the "edp" node without specifying the "force-hpd" property.
 
-On Tuesday, January 13, 2026 7:22:33=E2=80=AFAM Coordinated Universal Time =
-Krzysztof=20
-Kozlowski wrote:
-> On 13/01/2026 07:42, Rudraksha Gupta via B4 Relay wrote:
-> > From: Rudraksha Gupta <guptarud@gmail.com>
-> >=20
-> > This adds the Quectel EG25-G modem to the Pinephone Pro.
-> >=20
-> > Co-developed-by: Martijn Braam <martijn@brixit.nl>
-> > Signed-off-by: Martijn Braam <martijn@brixit.nl>
-> > Co-developed-by: Kamil Trzci=C5=84ski <ayufan@ayufan.eu>
-> > Signed-off-by: Kamil Trzci=C5=84ski <ayufan@ayufan.eu>
-> > Co-developed-by: Ondrej Jirman <megi@xff.cz>
-> > Signed-off-by: Ondrej Jirman <megi@xff.cz>
-> > Co-developed-by: Danct12 <danct12@disroot.org>
-> > Signed-off-by: Danct12 <danct12@disroot.org>
-=46or clarification, I did not add my Signed-off-by.
+Additionally,"/omit-if-no-ref/" should be added to the "edp" pinctrl node
+in rk3399-base.dtsi, to not include the "edp_hpd" pinctrl definition in
+the board dtb files where that actuually isn't used.
 
-I'm pretty sure the original patch came from [1] which was a distribution-
-specific patch applied on top of [2] Linux fork, which does not have a Sign=
-ed-
-off tag.
+With the note above addressed, please feel free to include
 
-Please remove my (nick)name, Signed-off-by and Co-developed-by from this pa=
-tch.
+Reviewed-by: Dragan Simic <dsimic@manjaro.org>
 
->=20
-> You need full names.
->=20
-> Are you sure so many people actually were co-developing this?
->=20
-> Best regards,
-> Krzysztof
-
-[1]: https://github.com/dreemurrs-embedded/danctnix-packages/blob/main/pine=
-64/
-linux-megi/dts-pinephone-pro-remove-modem-node.patch
-[2]: https://codeberg.org/megi/linux
-
-Best regards,
-Dang
---nextPart6104322.LvFx2qVVIh
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part.
-Content-Transfer-Encoding: 7Bit
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE8JqTPA/gMx5VjKThZsq36qRd14EFAmlnMC8ACgkQZsq36qRd
-14GLtRAAraxXEz2JwF+2pZPPGY143ElMBaBuVO0UmPiP2C1cgLHQpW9OvoXnT082
-XGSl3jpjKBZH60MiWAHq3mp26nKLuByjCRklsIdG/eHxThcGYVbwi0xJS0BIus0I
-kpmR8X7lkdLYL4lndob6xE6xAdFmgqypI3DjpedjGQO/en+eoGqN7+lGODGa+iUU
-VJDs3OZDj7UMThD6+GepJgw+FS9SGwnsgeJRZou1HNaupaoQ/Bsrc1OA9S3SKlpD
-fDIrKchmHglpXhoC88bHf2VPO8Z0leT//+A0sDCTqeboDodlplrNLya+iIxGVBDF
-C2qJVGnee0oD6NJXtU7nhT9g0i16A86Ea+H6vT8VzNBFvA2RBZRRrXmCgH2SzqRr
-4/ycWKfhjLgALVty/q9wOE1lk5pejnX616zWikS1UKWi+nxyE0iq8SKnGi7CBHvz
-Jn3n+BWyEiVPp/EFbdRbmLcDcmOYdfD3FLaiaaUz+F9uBV6D5ug8JAL/sn7bor/0
-0LAQJ35PRi4MRYIyRq1XH2r56MYJEKcda0HQVVnsFoknnR5RCX2hr9t4j4K2ufnz
-DxA6bpgIhCN58BkA2NOsEL9JvxKCs6DFDVQj5MSW8feG3pdkO+ICaqvvrFtIfiP9
-Niu4Mr5U495aCGIDCEIrI4V+mBuKGZsduMyD19lzUA4/RhhHshI=
-=AxqS
------END PGP SIGNATURE-----
-
---nextPart6104322.LvFx2qVVIh--
-
-
-
-
-
---===============5618752448677798343==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============5618752448677798343==--
-
-
-
-
