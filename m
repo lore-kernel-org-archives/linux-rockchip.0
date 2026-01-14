@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 368ABD29DC5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jan 2026 10:09:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6C35D31A3C
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jan 2026 10:10:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xbiQh3RZEubxUNTWYhp5TRRfz3tQ4RDjM+c9xoMPd2Q=; b=YsRJOamFdXmXvx
-	BVi5zlvJOvkXmmchj8hQhfoksImpABsZ121lZJZVLw57TNhdsxXKzZkCkBpWDvF2I0nSy3BovEY/g
-	GO4Rx00bZulfPBSlZH1s0KM3anYjekqVf1/fxaJDPhwpxNcEMira7LviKiaPlTT1W/9LDoYOKCmQU
-	gm1OpGg6ShKbFYyov7YJUDcL+Sw7MTMVHf+MDU6rOV0e2JD9ZEaoj1rMPqsUxZk26ixke91otFjTe
-	/ggazx9L3YmEmWxrpTHvl4zZVIvvq89dmokdl7cdmJhXfJxxyhVSqLIcUf+fyMLhnRJayvX2PUP9g
-	5AW7e5Vuqm66ZUHrqelQ==;
+	List-Owner; bh=Hiz7fZ3JzkPJGnJmnyoNMfsEwrAQ5qei+d6HYqFpCnY=; b=Szr++ntuoXGEKY
+	MHb448k1rsBKV0YGrS0ihqr76QRGSANPfbH1SwOcDeA1RfQqWJHBICqSt1/ZPRQQTf0ByE50FsT0N
+	lcIjuhfBhoW8Ez0+zk/VGIOb2SANQwJbO8dumv5hQxrpdVLorOCRfrSIY46hXZxYkjZ/aoCscf5Hv
+	lC7VLVKSnh7Xvu+TgadlqEdrCmKk9y6WQOsNmh/eS9x6QISf/NGUt3GUf9ggPq3axBeDNe6Q6RQjR
+	Cxz9GrEGV2cH/A7WK028Yep3YyYxvlJ5vF3V2qwB7eOZLcAGjhjgojau26zOyxo9mi3d9RVfdMuKo
+	JC2oyNXTtp0IdidF5eVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfxor-00000008hf6-0Aps;
-	Wed, 14 Jan 2026 10:09:41 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vfxp2-00000008hlQ-3j4F;
+	Wed, 14 Jan 2026 10:09:52 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfxol-00000008hYI-2HRM;
+	id 1vfxol-00000008hY9-1Rke;
 	Wed, 14 Jan 2026 10:09:37 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1768385371;
-	bh=kfoyO6mLrJT+5jwg7vHiUeoqvatV7KVxcH5i/FCsdRc=;
+	s=mail; t=1768385370;
+	bh=dFDb+uXCI5iHJKzZgaeokj2YXCnxjmhPbpePbOplK+M=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=IhnVViitxQ0X37IQlOUJcltVqn1USTYsKeU+mV4NKl6qBFJaR2LuYrl2B7J4Dw2c8
-	 Ov0gO5HpqE1I0MnnVzeZRNGr5WC4jTnQVaskpcGTAvb4dOtoyyqDEQsgJ51KOA8RWU
-	 KaStQfxiGLua5E/qy0oaavf75KM0lI6Gagc5kddo3WfqaK4mb++ZN1ekxdhmvDXtYN
-	 LQltGJpP0MByFPRT4gOsLIxEnmwFguBttWQ+SpWqPptx0SK8Ymx+OFFVEUY/oePjsu
-	 TjZ7MlyOJTiD+aXeNT+eFlNwavQuN+7a0uJs3Y9HlqF65JOyALCUPBgSBe3YRoFs+R
-	 OZgq3EMJaqULA==
+	b=VNnafiZc99K6ZNICeG40UuCzvf8FzKR+bMOOX0Wja65WmiSBxZmAUC4mfl1XSkzDn
+	 cx9DFKtWMjYdqXAa853ZJazIabL96iZHt8HmHygfBmYHeonqQjgkdb+1pJNOfObEFW
+	 tc25wZgqtMnQsgge88Eb4lXBMgJV0MWx0C+oWkDgPFvKThdPokq2XsKqLjD0t21JV7
+	 tk7nvzrS9kb/UWBnpTmf4vF8g+xqN+mJaVgCc/ut4okefF79sj7gE2pksAoFPPiSZA
+	 NHz7YVQcAOC5lOUz4LGb+i14QYAF1qoFq8GRkn/WB5VTNjE6Z01B8uje6h6AFDrK/L
+	 xtQ3NfamTP2Kg==
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:1dad:60e8:7174:bd20])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 04E6C17E1525;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 677A617E1523;
 	Wed, 14 Jan 2026 11:09:30 +0100 (CET)
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: joro@8bytes.org,
@@ -62,16 +62,16 @@ Cc: iommu@lists.linux.dev,
 	linux-media@vger.kernel.org,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v12 6/6] arm64: defconfig: enable Verisilicon IOMMU for Rockchip RK3588
-Date: Wed, 14 Jan 2026 11:09:18 +0100
-Message-ID: <20260114100922.149187-7-benjamin.gaignard@collabora.com>
+Subject: [PATCH v12 5/6] arm64: dts: rockchip: Add verisilicon IOMMU node on RK3588
+Date: Wed, 14 Jan 2026 11:09:17 +0100
+Message-ID: <20260114100922.149187-6-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260114100922.149187-1-benjamin.gaignard@collabora.com>
 References: <20260114100922.149187-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260114_020935_730779_45ECA4B7 
-X-CRM114-Status: UNSURE (   7.77  )
+X-CRM114-CacheID: sfid-20260114_020935_551112_5FB32BA9 
+X-CRM114-Status: UNSURE (   9.05  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -89,26 +89,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Enable Verisilicon IOMMU used by Rockchip RK3588 AV1 hardware codec.
-This hardware block could be found in Radxa Rock 5B board.
+Add the device tree node for the Verisilicon IOMMU present
+in the RK3588 SoC.
+This IOMMU handles address translation for the VPU hardware blocks.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- arch/arm64/configs/defconfig | 1 +
- 1 file changed, 1 insertion(+)
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
-diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
-index 45288ec9eaf7..4751f7fa8bb0 100644
---- a/arch/arm64/configs/defconfig
-+++ b/arch/arm64/configs/defconfig
-@@ -1525,6 +1525,7 @@ CONFIG_ARM_SMMU=y
- CONFIG_ARM_SMMU_V3=y
- CONFIG_MTK_IOMMU=y
- CONFIG_QCOM_IOMMU=y
-+CONFIG_VSI_IOMMU=y
- CONFIG_REMOTEPROC=y
- CONFIG_IMX_REMOTEPROC=y
- CONFIG_MTK_SCP=m
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
+index 2a7921793020..acff8bb3a612 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
+@@ -1364,6 +1364,17 @@ av1d: video-codec@fdc70000 {
+ 		clock-names = "aclk", "hclk";
+ 		power-domains = <&power RK3588_PD_AV1>;
+ 		resets = <&cru SRST_A_AV1>, <&cru SRST_P_AV1>, <&cru SRST_A_AV1_BIU>, <&cru SRST_P_AV1_BIU>;
++		iommus = <&av1d_mmu>;
++	};
++
++	av1d_mmu: iommu@fdca0000 {
++		compatible = "rockchip,rk3588-av1-iommu", "verisilicon,iommu-1.2";
++		reg = <0x0 0xfdca0000 0x0 0x600>;
++		interrupts = <GIC_SPI 109 IRQ_TYPE_LEVEL_HIGH 0>;
++		clocks = <&cru ACLK_AV1>, <&cru PCLK_AV1>;
++		clock-names = "core", "iface";
++		#iommu-cells = <0>;
++		power-domains = <&power RK3588_PD_AV1>;
+ 	};
+ 
+ 	vop: vop@fdd90000 {
 -- 
 2.43.0
 
